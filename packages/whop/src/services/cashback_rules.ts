@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -64,11 +66,6 @@ export interface CreateCashbackRuleRequest {
   /** Client-generated key for replaying the same request safely for 24 hours. */
   idempotency_key?: string;
 }
-const CreateCashbackRuleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCashbackRuleRequest>;
-
 export interface CashbackRule {
   /** When the rule was created, as an ISO 8601 timestamp. */
   created_at: string;
@@ -95,14 +92,8 @@ export interface CashbackRule {
   /** When the rule was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-const CashbackRule = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CashbackRule>;
-
 export type ListCashbackRulesRequestOrder = "created_at";
-const ListCashbackRulesRequestOrder = S.String;
-
 export type ListCashbackRulesRequestDirection = "asc" | "desc";
-const ListCashbackRulesRequestDirection = S.String;
-
 export interface ListCashbackRulesRequest {
   /** Number of results to return from the start of the range. */
   first?: number;
@@ -117,37 +108,17 @@ export interface ListCashbackRulesRequest {
   /** Sort direction. Defaults to desc. */
   direction?: ListCashbackRulesRequestDirection | (string & {});
 }
-const ListCashbackRulesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListCashbackRulesRequest>;
-
 export type ListCashbackRulesResponseDataList = Array<CashbackRule>;
-const ListCashbackRulesResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListCashbackRulesResponseDataList>;
-
 export interface ListCashbackRulesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListCashbackRulesResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListCashbackRulesResponsePageInfo>;
-
 export interface ListCashbackRulesResponse {
   data: ListCashbackRulesResponseDataList;
   page_info: ListCashbackRulesResponsePageInfo;
 }
-const ListCashbackRulesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListCashbackRulesResponse>;
-
 export interface PayoutCashbackRulesRequest {
   /** Pay only this direct connected account. */
   account_id?: string | null;
@@ -158,15 +129,8 @@ export interface PayoutCashbackRulesRequest {
   /** Client-generated key for replaying the same request safely for 24 hours. */
   idempotency_key?: string;
 }
-const PayoutCashbackRulesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PayoutCashbackRulesRequest>;
-
 /** Request status. `processing` means background processing was queued, not that payment completed. `failed` means the queue rejected the request. Subsequent transaction failures retry automatically. */
 export type CashbackPayoutStatus = "processing" | "failed";
-const CashbackPayoutStatus = S.String;
-
 export interface CashbackPayout {
   /** Connected account filter from the request, prefixed `biz_`. Omitted when not supplied. */
   account_id?: string | null;
@@ -177,8 +141,6 @@ export interface CashbackPayout {
   /** Card transaction filter from the request, prefixed `citx_`. Omitted when not supplied. */
   transaction_id?: string | null;
 }
-const CashbackPayout = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CashbackPayout>;
-
 export interface UpdateCashbackRuleRequest {
   /** ID of the cashback rule, prefixed cicbr_. */
   id: string;
@@ -191,11 +153,6 @@ export interface UpdateCashbackRuleRequest {
   /** Raw merchant name reported by the card provider. Set null to match any merchant name. Supplied names must contain a non-whitespace character and match together with any MCC filter. Clearing both filters requires an existing scoped_account_id. */
   merchant_name?: string | null;
 }
-const UpdateCashbackRuleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UpdateCashbackRuleRequest>;
-
 export type CreateCashbackRuleError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create Cashback Rule Creates a future-dated card cashback rule funded by the authenticated platform account. Requires payout:transfer_funds. Merchant name and MCC are optional. Every supplied merchant filter must match. When both are omitted or null, scoped_account_id is required and all eligible transactions for that account match. Optionally limit the rule to one direct connected account. The funding account is derived from the credential and cannot be supplied. Creation does not transfer funds. Supports Idempotency-Key for safe retries. */
 export const createCashbackRule: API.OperationMethod<
@@ -204,8 +161,8 @@ export const createCashbackRule: API.OperationMethod<
   CreateCashbackRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCashbackRuleRequest,
-  output: CashbackRule,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCashbackRuleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CashbackRule>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -221,8 +178,8 @@ export const listCashbackRules: API.PaginatedOperationMethod<
   CashbackRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCashbackRulesRequest,
-    output: ListCashbackRulesResponse,
+    input: __S(2, __c0, 2) as any as S.Schema<ListCashbackRulesRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<ListCashbackRulesResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -246,8 +203,8 @@ export const payoutCashbackRules: API.OperationMethod<
   PayoutCashbackRulesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PayoutCashbackRulesRequest,
-  output: CashbackPayout,
+  input: __S(6, __c0, 6) as any as S.Schema<PayoutCashbackRulesRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CashbackPayout>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -261,8 +218,8 @@ export const updateCashbackRule: API.OperationMethod<
   UpdateCashbackRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCashbackRuleRequest,
-  output: CashbackRule,
+  input: __S(8, __c1, 0) as any as S.Schema<UpdateCashbackRuleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CashbackRule>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -310,12 +267,12 @@ function __c0(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListCashbackRulesRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListCashbackRulesRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/cashback_rules", code: 200 })),
       ).annotate({ identifier: "ListCashbackRulesRequest" });
     case 3:
-      return S.Array(CashbackRule);
+      return S.Array(__S(1, __c0, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -330,8 +287,8 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListCashbackRulesResponseDataList,
-          page_info: ListCashbackRulesResponsePageInfo,
+          data: __S(3, __c0, 3),
+          page_info: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "ListCashbackRulesResponse",
@@ -352,7 +309,7 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.optional(S.NullOr(S.String)),
           cashback_rule_id: S.optional(S.NullOr(S.String)),
-          status: CashbackPayoutStatus,
+          status: S.String,
           transaction_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CashbackPayout" });
@@ -373,4 +330,9 @@ function __c1(j: number): any {
         identifier: "UpdateCashbackRuleRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

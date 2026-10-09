@@ -9,6 +9,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -28,35 +30,19 @@ export type AddUsersRequestUsersItemCase1Role =
   | "contributor"
   | "read"
   | "no_access";
-const AddUsersRequestUsersItemCase1Role = S.String;
-
 export interface AddUsersRequestUsersItemCase1 {
   user: string;
   role: AddUsersRequestUsersItemCase1Role | (string & {});
 }
-const AddUsersRequestUsersItemCase1 = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddUsersRequestUsersItemCase1>;
-
 export type AddUsersRequestUsersItem =
   | AddUsersRequestUsersItemCase0
   | AddUsersRequestUsersItemCase1;
-const AddUsersRequestUsersItem = S.Unknown as any as S.Schema<AddUsersRequestUsersItem>;
-
 export type AddUsersRequestUsersList = Array<AddUsersRequestUsersItem>;
-const AddUsersRequestUsersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddUsersRequestUsersList>;
-
 export interface AddUsersRequest {
   name: string;
   resourceGroupId: string;
   users: AddUsersRequestUsersList;
 }
-const AddUsersRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddUsersRequest>;
-
 export type AddUsersResponseAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -75,8 +61,6 @@ export interface AddUsersResponseAutoJoinCase1 {
 export type AddUsersResponseAutoJoin =
   | AddUsersResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const AddUsersResponseAutoJoin = S.Unknown as any as S.Schema<AddUsersResponseAutoJoin>;
-
 export interface AddUsersResponseSpendLimits {
   total?: number;
   inferenceProviders?: number;
@@ -84,27 +68,18 @@ export interface AddUsersResponseSpendLimits {
   jobs?: number;
   endpoints?: number;
 }
-const AddUsersResponseSpendLimits = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddUsersResponseSpendLimits>;
-
 export type AddUsersResponseUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const AddUsersResponseUsersItemRole = S.String;
-
 export type AddUsersResponseUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const AddUsersResponseUsersItemOrgRole = S.String;
-
 export interface AddUsersResponseUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -116,17 +91,7 @@ export interface AddUsersResponseUsersItem {
   orgRole: AddUsersResponseUsersItemOrgRole;
   addedBy?: string;
 }
-const AddUsersResponseUsersItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AddUsersResponseUsersItem>;
-
 export type AddUsersResponseUsersList = Array<AddUsersResponseUsersItem>;
-const AddUsersResponseUsersList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AddUsersResponseUsersList>;
-
 export type AddUsersResponseResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -163,14 +128,7 @@ export type AddUsersResponseResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const AddUsersResponseResourcesItem = S.Unknown as any as S.Schema<AddUsersResponseResourcesItem>;
-
 export type AddUsersResponseResourcesList = Array<AddUsersResponseResourcesItem>;
-const AddUsersResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddUsersResponseResourcesList>;
-
 export interface AddUsersResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -181,22 +139,13 @@ export interface AddUsersResponse {
   users: AddUsersResponseUsersList;
   resources: AddUsersResponseResourcesList;
 }
-const AddUsersResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AddUsersResponse>;
-
 export type ChangeUserRoleRequestRole = "admin" | "write" | "contributor" | "read" | "no_access";
-const ChangeUserRoleRequestRole = S.String;
-
 export interface ChangeUserRoleRequest {
   name: string;
   resourceGroupId: string;
   username: string;
   role: ChangeUserRoleRequestRole | (string & {});
 }
-const ChangeUserRoleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ChangeUserRoleRequest>;
-
 export type ChangeUserRoleResponseAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -213,8 +162,6 @@ export type ChangeUserRoleResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export type ChangeUserRoleResponseAutoJoin =
   | ChangeUserRoleResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const ChangeUserRoleResponseAutoJoin = S.Unknown as any as S.Schema<ChangeUserRoleResponseAutoJoin>;
-
 export type ChangeUserRoleResponseSpendLimits = AddUsersResponseSpendLimits;
 export type ChangeUserRoleResponseUsersItemRole =
   | "admin"
@@ -240,9 +187,6 @@ export interface ChangeUserRoleResponseUsersItem {
   addedBy?: string;
 }
 export type ChangeUserRoleResponseUsersList = Array<ChangeUserRoleResponseUsersItem>;
-const ChangeUserRoleResponseUsersList =
-  AddUsersResponseUsersList as any as S.Schema<ChangeUserRoleResponseUsersList>;
-
 export type ChangeUserRoleResponseResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -266,15 +210,7 @@ export type ChangeUserRoleResponseResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const ChangeUserRoleResponseResourcesItem =
-  S.Unknown as any as S.Schema<ChangeUserRoleResponseResourcesItem>;
-
 export type ChangeUserRoleResponseResourcesList = Array<ChangeUserRoleResponseResourcesItem>;
-const ChangeUserRoleResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ChangeUserRoleResponseResourcesList>;
-
 export interface ChangeUserRoleResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -285,11 +221,6 @@ export interface ChangeUserRoleResponse {
   users: ChangeUserRoleResponseUsersList;
   resources: ChangeUserRoleResponseResourcesList;
 }
-const ChangeUserRoleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ChangeUserRoleResponse>;
-
 export type CreateResourceGroupRequestUsersItemRole =
   | "admin"
   | "write"
@@ -300,30 +231,13 @@ export interface CreateResourceGroupRequestUsersItem {
   user: string;
   role: CreateResourceGroupRequestUsersItemRole | (string & {});
 }
-const CreateResourceGroupRequestUsersItem =
-  AddUsersRequestUsersItemCase1 as any as S.Schema<CreateResourceGroupRequestUsersItem>;
-
 export type CreateResourceGroupRequestUsersList = Array<CreateResourceGroupRequestUsersItem>;
-const CreateResourceGroupRequestUsersList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateResourceGroupRequestUsersList>;
-
 export type RepoIdType = "dataset" | "model" | "space" | "bucket" | "kernel" | "container";
-const RepoIdType = S.String;
-
 export interface RepoId {
   name: string;
   type: RepoIdType | (string & {});
 }
-const RepoId = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RepoId>;
-
 export type CreateResourceGroupRequestReposList = Array<RepoId>;
-const CreateResourceGroupRequestReposList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateResourceGroupRequestReposList>;
-
 export type CreateResourceGroupRequestAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -340,9 +254,6 @@ export type CreateResourceGroupRequestAutoJoinCase1 = AddUsersResponseAutoJoinCa
 export type CreateResourceGroupRequestAutoJoin =
   | CreateResourceGroupRequestAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const CreateResourceGroupRequestAutoJoin =
-  S.Unknown as any as S.Schema<CreateResourceGroupRequestAutoJoin>;
-
 export interface CreateResourceGroupRequest {
   name: string;
   description?: string;
@@ -350,11 +261,6 @@ export interface CreateResourceGroupRequest {
   repos?: CreateResourceGroupRequestReposList;
   autoJoin?: CreateResourceGroupRequestAutoJoin;
 }
-const CreateResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateResourceGroupRequest>;
-
 export type CreateResourceGroupResponseAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -371,9 +277,6 @@ export type CreateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinC
 export type CreateResourceGroupResponseAutoJoin =
   | CreateResourceGroupResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const CreateResourceGroupResponseAutoJoin =
-  S.Unknown as any as S.Schema<CreateResourceGroupResponseAutoJoin>;
-
 export type CreateResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
 export type CreateResourceGroupResponseUsersItemRole =
   | "admin"
@@ -399,9 +302,6 @@ export interface CreateResourceGroupResponseUsersItem {
   addedBy?: string;
 }
 export type CreateResourceGroupResponseUsersList = Array<CreateResourceGroupResponseUsersItem>;
-const CreateResourceGroupResponseUsersList =
-  AddUsersResponseUsersList as any as S.Schema<CreateResourceGroupResponseUsersList>;
-
 export type CreateResourceGroupResponseResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -425,16 +325,8 @@ export type CreateResourceGroupResponseResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const CreateResourceGroupResponseResourcesItem =
-  S.Unknown as any as S.Schema<CreateResourceGroupResponseResourcesItem>;
-
 export type CreateResourceGroupResponseResourcesList =
   Array<CreateResourceGroupResponseResourcesItem>;
-const CreateResourceGroupResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateResourceGroupResponseResourcesList>;
-
 export interface CreateResourceGroupResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -445,37 +337,17 @@ export interface CreateResourceGroupResponse {
   users: CreateResourceGroupResponseUsersList;
   resources: CreateResourceGroupResponseResourcesList;
 }
-const CreateResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateResourceGroupResponse>;
-
 export interface DeleteResourceGroupRequest {
   name: string;
   resourceGroupId: string;
 }
-const DeleteResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteResourceGroupRequest>;
-
 export interface DeleteResourceGroupResponse {
   success: boolean;
 }
-const DeleteResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteResourceGroupResponse>;
-
 export interface GetResourceGroupRequest {
   name: string;
   resourceGroupId: string;
 }
-const GetResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetResourceGroupRequest>;
-
 export type GetResourceGroupResponseAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -492,9 +364,6 @@ export type GetResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase
 export type GetResourceGroupResponseAutoJoin =
   | GetResourceGroupResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const GetResourceGroupResponseAutoJoin =
-  S.Unknown as any as S.Schema<GetResourceGroupResponseAutoJoin>;
-
 export type GetResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
 export type GetResourceGroupResponseUsersItemRole =
   | "admin"
@@ -520,9 +389,6 @@ export interface GetResourceGroupResponseUsersItem {
   addedBy?: string;
 }
 export type GetResourceGroupResponseUsersList = Array<GetResourceGroupResponseUsersItem>;
-const GetResourceGroupResponseUsersList =
-  AddUsersResponseUsersList as any as S.Schema<GetResourceGroupResponseUsersList>;
-
 export type GetResourceGroupResponseResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -546,15 +412,7 @@ export type GetResourceGroupResponseResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const GetResourceGroupResponseResourcesItem =
-  S.Unknown as any as S.Schema<GetResourceGroupResponseResourcesItem>;
-
 export type GetResourceGroupResponseResourcesList = Array<GetResourceGroupResponseResourcesItem>;
-const GetResourceGroupResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetResourceGroupResponseResourcesList>;
-
 export interface GetResourceGroupResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -565,19 +423,9 @@ export interface GetResourceGroupResponse {
   users: GetResourceGroupResponseUsersList;
   resources: GetResourceGroupResponseResourcesList;
 }
-const GetResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetResourceGroupResponse>;
-
 export interface GetResourceGroupsRequest {
   name: string;
 }
-const GetResourceGroupsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetResourceGroupsRequest>;
-
 export type GetResourceGroupsResponseBodyItemAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -594,9 +442,6 @@ export type GetResourceGroupsResponseBodyItemAutoJoinCase1 = AddUsersResponseAut
 export type GetResourceGroupsResponseBodyItemAutoJoin =
   | GetResourceGroupsResponseBodyItemAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const GetResourceGroupsResponseBodyItemAutoJoin =
-  S.Unknown as any as S.Schema<GetResourceGroupsResponseBodyItemAutoJoin>;
-
 export type GetResourceGroupsResponseBodyItemSpendLimits = AddUsersResponseSpendLimits;
 export type GetResourceGroupsResponseBodyItemUsersItemRole =
   | "admin"
@@ -623,9 +468,6 @@ export interface GetResourceGroupsResponseBodyItemUsersItem {
 }
 export type GetResourceGroupsResponseBodyItemUsersList =
   Array<GetResourceGroupsResponseBodyItemUsersItem>;
-const GetResourceGroupsResponseBodyItemUsersList =
-  AddUsersResponseUsersList as any as S.Schema<GetResourceGroupsResponseBodyItemUsersList>;
-
 export type GetResourceGroupsResponseBodyItemResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -653,16 +495,8 @@ export type GetResourceGroupsResponseBodyItemResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const GetResourceGroupsResponseBodyItemResourcesItem =
-  S.Unknown as any as S.Schema<GetResourceGroupsResponseBodyItemResourcesItem>;
-
 export type GetResourceGroupsResponseBodyItemResourcesList =
   Array<GetResourceGroupsResponseBodyItemResourcesItem>;
-const GetResourceGroupsResponseBodyItemResourcesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetResourceGroupsResponseBodyItemResourcesList>;
-
 export interface GetResourceGroupsResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -673,23 +507,8 @@ export interface GetResourceGroupsResponseBodyItem {
   users: GetResourceGroupsResponseBodyItemUsersList;
   resources: GetResourceGroupsResponseBodyItemResourcesList;
 }
-const GetResourceGroupsResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetResourceGroupsResponseBodyItem>;
-
 export type GetResourceGroupsResponseBodyList = Array<GetResourceGroupsResponseBodyItem>;
-const GetResourceGroupsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetResourceGroupsResponseBodyList>;
-
 export type GetResourceGroupsResponse = GetResourceGroupsResponseBodyList;
-const GetResourceGroupsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetResourceGroupsResponse>;
-
 export type JoinConfigureAutoRequestAutoJoinCase0Enabled = boolean | string;
 export type JoinConfigureAutoRequestAutoJoinCase0Role =
   | "admin"
@@ -710,19 +529,11 @@ export interface JoinConfigureAutoRequestAutoJoinCase1 {
 export type JoinConfigureAutoRequestAutoJoin =
   | JoinConfigureAutoRequestAutoJoinCase0
   | JoinConfigureAutoRequestAutoJoinCase1;
-const JoinConfigureAutoRequestAutoJoin =
-  S.Unknown as any as S.Schema<JoinConfigureAutoRequestAutoJoin>;
-
 export interface JoinConfigureAutoRequest {
   name: string;
   resourceGroupId: string;
   autoJoin?: JoinConfigureAutoRequestAutoJoin;
 }
-const JoinConfigureAutoRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<JoinConfigureAutoRequest>;
-
 export type JoinConfigureAutoResponseAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -739,9 +550,6 @@ export type JoinConfigureAutoResponseAutoJoinCase1 = AddUsersResponseAutoJoinCas
 export type JoinConfigureAutoResponseAutoJoin =
   | JoinConfigureAutoResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const JoinConfigureAutoResponseAutoJoin =
-  S.Unknown as any as S.Schema<JoinConfigureAutoResponseAutoJoin>;
-
 export type JoinConfigureAutoResponseSpendLimits = AddUsersResponseSpendLimits;
 export type JoinConfigureAutoResponseUsersItemRole =
   | "admin"
@@ -767,9 +575,6 @@ export interface JoinConfigureAutoResponseUsersItem {
   addedBy?: string;
 }
 export type JoinConfigureAutoResponseUsersList = Array<JoinConfigureAutoResponseUsersItem>;
-const JoinConfigureAutoResponseUsersList =
-  AddUsersResponseUsersList as any as S.Schema<JoinConfigureAutoResponseUsersList>;
-
 export type JoinConfigureAutoResponseResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -793,15 +598,7 @@ export type JoinConfigureAutoResponseResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const JoinConfigureAutoResponseResourcesItem =
-  S.Unknown as any as S.Schema<JoinConfigureAutoResponseResourcesItem>;
-
 export type JoinConfigureAutoResponseResourcesList = Array<JoinConfigureAutoResponseResourcesItem>;
-const JoinConfigureAutoResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<JoinConfigureAutoResponseResourcesList>;
-
 export interface JoinConfigureAutoResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -812,18 +609,11 @@ export interface JoinConfigureAutoResponse {
   users: JoinConfigureAutoResponseUsersList;
   resources: JoinConfigureAutoResponseResourcesList;
 }
-const JoinConfigureAutoResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<JoinConfigureAutoResponse>;
-
 export interface RemoveUserRequest {
   name: string;
   resourceGroupId: string;
   username: string;
 }
-const RemoveUserRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<RemoveUserRequest>;
-
 export type RemoveUserResponseAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -840,8 +630,6 @@ export type RemoveUserResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export type RemoveUserResponseAutoJoin =
   | RemoveUserResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const RemoveUserResponseAutoJoin = S.Unknown as any as S.Schema<RemoveUserResponseAutoJoin>;
-
 export type RemoveUserResponseSpendLimits = AddUsersResponseSpendLimits;
 export type RemoveUserResponseUsersItemRole =
   | "admin"
@@ -867,9 +655,6 @@ export interface RemoveUserResponseUsersItem {
   addedBy?: string;
 }
 export type RemoveUserResponseUsersList = Array<RemoveUserResponseUsersItem>;
-const RemoveUserResponseUsersList =
-  AddUsersResponseUsersList as any as S.Schema<RemoveUserResponseUsersList>;
-
 export type RemoveUserResponseResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -893,15 +678,7 @@ export type RemoveUserResponseResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const RemoveUserResponseResourcesItem =
-  S.Unknown as any as S.Schema<RemoveUserResponseResourcesItem>;
-
 export type RemoveUserResponseResourcesList = Array<RemoveUserResponseResourcesItem>;
-const RemoveUserResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<RemoveUserResponseResourcesList>;
-
 export interface RemoveUserResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -912,8 +689,6 @@ export interface RemoveUserResponse {
   users: RemoveUserResponseUsersList;
   resources: RemoveUserResponseResourcesList;
 }
-const RemoveUserResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RemoveUserResponse>;
-
 export interface UpdateResourceGroupRequestSpendLimits {
   total?: number | null;
   inferenceProviders?: number | null;
@@ -921,22 +696,12 @@ export interface UpdateResourceGroupRequestSpendLimits {
   jobs?: number | null;
   endpoints?: number | null;
 }
-const UpdateResourceGroupRequestSpendLimits = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UpdateResourceGroupRequestSpendLimits>;
-
 export interface UpdateResourceGroupRequest {
   name: string;
   resourceGroupId: string;
   description?: string;
   spendLimits?: UpdateResourceGroupRequestSpendLimits;
 }
-const UpdateResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<UpdateResourceGroupRequest>;
-
 export type UpdateResourceGroupResponseAutoJoinCase0Role =
   | "admin"
   | "write"
@@ -953,9 +718,6 @@ export type UpdateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinC
 export type UpdateResourceGroupResponseAutoJoin =
   | UpdateResourceGroupResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-const UpdateResourceGroupResponseAutoJoin =
-  S.Unknown as any as S.Schema<UpdateResourceGroupResponseAutoJoin>;
-
 export type UpdateResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
 export type UpdateResourceGroupResponseUsersItemRole =
   | "admin"
@@ -981,9 +743,6 @@ export interface UpdateResourceGroupResponseUsersItem {
   addedBy?: string;
 }
 export type UpdateResourceGroupResponseUsersList = Array<UpdateResourceGroupResponseUsersItem>;
-const UpdateResourceGroupResponseUsersList =
-  AddUsersResponseUsersList as any as S.Schema<UpdateResourceGroupResponseUsersList>;
-
 export type UpdateResourceGroupResponseResourcesItemCase0Type =
   | "dataset"
   | "model"
@@ -1007,16 +766,8 @@ export type UpdateResourceGroupResponseResourcesItem =
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-const UpdateResourceGroupResponseResourcesItem =
-  S.Unknown as any as S.Schema<UpdateResourceGroupResponseResourcesItem>;
-
 export type UpdateResourceGroupResponseResourcesList =
   Array<UpdateResourceGroupResponseResourcesItem>;
-const UpdateResourceGroupResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateResourceGroupResponseResourcesList>;
-
 export interface UpdateResourceGroupResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -1027,11 +778,6 @@ export interface UpdateResourceGroupResponse {
   users: UpdateResourceGroupResponseUsersList;
   resources: UpdateResourceGroupResponseResourcesList;
 }
-const UpdateResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<UpdateResourceGroupResponse>;
-
 export type AddUsersError = HuggingFaceOpError;
 /** Add users Add one or more organization members to a resource group. Requires the org to have a Team plan or higher. */
 export const addUsers: API.OperationMethod<
@@ -1040,8 +786,8 @@ export const addUsers: API.OperationMethod<
   AddUsersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddUsersRequest,
-  output: AddUsersResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AddUsersRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<AddUsersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1055,8 +801,8 @@ export const changeUserRole: API.OperationMethod<
   ChangeUserRoleError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeUserRoleRequest,
-  output: ChangeUserRoleResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ChangeUserRoleRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ChangeUserRoleResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1070,8 +816,8 @@ export const createResourceGroup: API.OperationMethod<
   CreateResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourceGroupRequest,
-  output: CreateResourceGroupResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateResourceGroupRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1085,8 +831,8 @@ export const deleteResourceGroup: API.OperationMethod<
   DeleteResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourceGroupRequest,
-  output: DeleteResourceGroupResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteResourceGroupRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1100,8 +846,8 @@ export const getResourceGroup: API.OperationMethod<
   GetResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceGroupRequest,
-  output: GetResourceGroupResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<GetResourceGroupRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1115,8 +861,8 @@ export const getResourceGroups: API.OperationMethod<
   GetResourceGroupsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceGroupsRequest,
-  output: GetResourceGroupsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetResourceGroupsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetResourceGroupsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1130,8 +876,8 @@ export const joinConfigureAuto: API.OperationMethod<
   JoinConfigureAutoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JoinConfigureAutoRequest,
-  output: JoinConfigureAutoResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<JoinConfigureAutoRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<JoinConfigureAutoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1145,8 +891,8 @@ export const removeUser: API.OperationMethod<
   RemoveUserError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveUserRequest,
-  output: RemoveUserResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<RemoveUserRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<RemoveUserResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1160,8 +906,8 @@ export const updateResourceGroup: API.OperationMethod<
   UpdateResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceGroupRequest,
-  output: UpdateResourceGroupResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<UpdateResourceGroupRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<UpdateResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1174,19 +920,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           user: S.String,
-          role: AddUsersRequestUsersItemCase1Role,
+          role: S.String,
         }),
       ).annotate({
         identifier: "AddUsersRequestUsersItemCase1",
       });
     case 1:
-      return S.Array(AddUsersRequestUsersItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           resourceGroupId: S.String.pipe(T.Label()),
-          users: AddUsersRequestUsersList,
+          users: __S(1, __c0, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1215,27 +961,27 @@ function __c0(j: number): any {
           fullname: S.String,
           name: S.String,
           avatarUrl: S.String,
-          role: AddUsersResponseUsersItemRole,
-          orgRole: AddUsersResponseUsersItemOrgRole,
+          role: S.String,
+          orgRole: S.String,
           addedBy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AddUsersResponseUsersItem",
       });
     case 5:
-      return S.Array(AddUsersResponseUsersItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
-      return S.Array(AddUsersResponseResourcesItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(AddUsersResponseAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: AddUsersResponseUsersList,
-          resources: AddUsersResponseResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "AddUsersResponse" });
   }
@@ -1248,7 +994,7 @@ function __c1(j: number): any {
           name: S.String.pipe(T.Label()),
           resourceGroupId: S.String.pipe(T.Label()),
           username: S.String.pipe(T.Label()),
-          role: ChangeUserRoleRequestRole,
+          role: S.String,
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1258,38 +1004,38 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ChangeUserRoleRequest" });
     case 1:
-      return S.Array(ChangeUserRoleResponseResourcesItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(ChangeUserRoleResponseAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: ChangeUserRoleResponseUsersList,
-          resources: ChangeUserRoleResponseResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "ChangeUserRoleResponse" });
     case 3:
-      return S.Array(CreateResourceGroupRequestUsersItem);
+      return S.Array(__S(0, __c0, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: RepoIdType,
+          type: S.String,
         }),
       ).annotate({ identifier: "RepoId" });
     case 5:
-      return S.Array(RepoId);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          users: S.optional(CreateResourceGroupRequestUsersList),
-          repos: S.optional(CreateResourceGroupRequestReposList),
-          autoJoin: S.optional(CreateResourceGroupRequestAutoJoin),
+          users: S.optional(__S(11, __c1, 3)),
+          repos: S.optional(__S(13, __c1, 5)),
+          autoJoin: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/organizations/{name}/resource-groups", code: 200 }),
         ),
@@ -1297,7 +1043,7 @@ function __c1(j: number): any {
         identifier: "CreateResourceGroupRequest",
       });
     case 7:
-      return S.Array(CreateResourceGroupResponseResourcesItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c2(j: number): any {
@@ -1308,10 +1054,10 @@ function __c2(j: number): any {
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(CreateResourceGroupResponseAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: CreateResourceGroupResponseUsersList,
-          resources: CreateResourceGroupResponseResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(15, __c1, 7),
         }),
       ).annotate({
         identifier: "CreateResourceGroupResponse",
@@ -1353,17 +1099,17 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetResourceGroupRequest" });
     case 4:
-      return S.Array(GetResourceGroupResponseResourcesItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(GetResourceGroupResponseAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: GetResourceGroupResponseUsersList,
-          resources: GetResourceGroupResponseResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(20, __c2, 4),
         }),
       ).annotate({ identifier: "GetResourceGroupResponse" });
     case 6:
@@ -1375,7 +1121,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetResourceGroupsRequest" });
     case 7:
-      return S.Array(GetResourceGroupsResponseBodyItemResourcesItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c3(j: number): any {
@@ -1386,18 +1132,18 @@ function __c3(j: number): any {
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(GetResourceGroupsResponseBodyItemAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: GetResourceGroupsResponseBodyItemUsersList,
-          resources: GetResourceGroupsResponseBodyItemResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(23, __c2, 7),
         }),
       ).annotate({
         identifier: "GetResourceGroupsResponseBodyItem",
       });
     case 1:
-      return S.Array(GetResourceGroupsResponseBodyItem);
+      return S.Array(__S(24, __c3, 0));
     case 2:
-      return S.suspend(() => GetResourceGroupsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(25, __c3, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetResourceGroupsResponse",
       });
     case 3:
@@ -1405,7 +1151,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           resourceGroupId: S.String.pipe(T.Label()),
-          autoJoin: S.optional(JoinConfigureAutoRequestAutoJoin),
+          autoJoin: S.optional(S.Unknown),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1415,17 +1161,17 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "JoinConfigureAutoRequest" });
     case 4:
-      return S.Array(JoinConfigureAutoResponseResourcesItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(JoinConfigureAutoResponseAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: JoinConfigureAutoResponseUsersList,
-          resources: JoinConfigureAutoResponseResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(28, __c3, 4),
         }),
       ).annotate({
         identifier: "JoinConfigureAutoResponse",
@@ -1445,7 +1191,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "RemoveUserRequest" });
     case 7:
-      return S.Array(RemoveUserResponseResourcesItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c4(j: number): any {
@@ -1456,10 +1202,10 @@ function __c4(j: number): any {
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(RemoveUserResponseAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: RemoveUserResponseUsersList,
-          resources: RemoveUserResponseResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(31, __c3, 7),
         }),
       ).annotate({ identifier: "RemoveUserResponse" });
     case 1:
@@ -1480,7 +1226,7 @@ function __c4(j: number): any {
           name: S.String.pipe(T.Label()),
           resourceGroupId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          spendLimits: S.optional(UpdateResourceGroupRequestSpendLimits),
+          spendLimits: S.optional(__S(33, __c4, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1492,20 +1238,25 @@ function __c4(j: number): any {
         identifier: "UpdateResourceGroupRequest",
       });
     case 3:
-      return S.Array(UpdateResourceGroupResponseResourcesItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(UpdateResourceGroupResponseAutoJoin),
-          spendLimits: S.optional(AddUsersResponseSpendLimits),
-          users: UpdateResourceGroupResponseUsersList,
-          resources: UpdateResourceGroupResponseResourcesList,
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(3, __c0, 3)),
+          users: __S(5, __c0, 5),
+          resources: __S(35, __c4, 3),
         }),
       ).annotate({
         identifier: "UpdateResourceGroupResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

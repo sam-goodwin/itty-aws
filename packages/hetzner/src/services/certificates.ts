@@ -8,27 +8,17 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateCertificateRequestLabelsMap = { [key: string]: string | undefined };
-const CreateCertificateRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCertificateRequestLabelsMap>;
-
 /** Choose between uploading a Certificate in PEM format or requesting a managed *Let's Encrypt* Certificate. */
 export type CreateCertificateRequestType = "uploaded" | "managed";
-const CreateCertificateRequestType = S.String;
-
 /** Domains and subdomains that should be contained in the Certificate issued by *Let's Encrypt*. Required for type `managed` Certificates. */
 export type CreateCertificateRequestDomainNamesList = Array<string>;
-const CreateCertificateRequestDomainNamesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateCertificateRequestDomainNamesList>;
-
 export interface CreateCertificateRequest {
   /** Name of the Certificate. */
   name: string;
@@ -43,47 +33,25 @@ export interface CreateCertificateRequest {
   /** Domains and subdomains that should be contained in the Certificate issued by *Let's Encrypt*. Required for type `managed` Certificates. */
   domain_names?: CreateCertificateRequestDomainNamesList;
 }
-const CreateCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateCertificateRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateCertificateResponseCertificateLabelsMap = { [key: string]: string | undefined };
-const CreateCertificateResponseCertificateLabelsMap =
-  CreateCertificateRequestLabelsMap as any as S.Schema<CreateCertificateResponseCertificateLabelsMap>;
-
 /** Type of the Certificate. */
 export type CreateCertificateResponseCertificateType = "uploaded" | "managed";
-const CreateCertificateResponseCertificateType = S.String;
-
 /** Domains and subdomains covered by the Certificate. */
 export type CreateCertificateResponseCertificateDomainNamesList = Array<string>;
-const CreateCertificateResponseCertificateDomainNamesList =
-  CreateCertificateRequestDomainNamesList as any as S.Schema<CreateCertificateResponseCertificateDomainNamesList>;
-
 /** Status of the issuance process of the Certificate. */
 export type CreateCertificateResponseCertificateStatusIssuance = "pending" | "completed" | "failed";
-const CreateCertificateResponseCertificateStatusIssuance = S.String;
-
 /** Status of the renewal process of the Certificate. */
 export type CreateCertificateResponseCertificateStatusRenewal =
   | "scheduled"
   | "pending"
   | "failed"
   | "unavailable";
-const CreateCertificateResponseCertificateStatusRenewal = S.String;
-
 /** If issuance or renewal reports `failed`, this property contains information about what happened. */
 export interface CreateCertificateResponseCertificateStatusError {
   code?: string;
   message?: string;
 }
-const CreateCertificateResponseCertificateStatusError = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateCertificateResponseCertificateStatusError>;
-
 /** Current status of a type `managed` Certificate, always *null* for type `uploaded` Certificates. */
 export interface CreateCertificateResponseCertificateStatus {
   /** Status of the issuance process of the Certificate. */
@@ -93,30 +61,15 @@ export interface CreateCertificateResponseCertificateStatus {
   /** If issuance or renewal reports `failed`, this property contains information about what happened. */
   error?: CreateCertificateResponseCertificateStatusError | null;
 }
-const CreateCertificateResponseCertificateStatus = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateCertificateResponseCertificateStatus>;
-
 export interface CreateCertificateResponseCertificateUsedByItem {
   /** ID of resource referenced. */
   id: number;
   /** Type of resource referenced. */
   type: string;
 }
-const CreateCertificateResponseCertificateUsedByItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateCertificateResponseCertificateUsedByItem>;
-
 /** Resources currently using the Certificate. */
 export type CreateCertificateResponseCertificateUsedByList =
   Array<CreateCertificateResponseCertificateUsedByItem>;
-const CreateCertificateResponseCertificateUsedByList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateCertificateResponseCertificateUsedByList>;
-
 export interface CreateCertificateResponseCertificate {
   /** ID of the [Certificate](#tag/certificates). */
   id: number;
@@ -143,15 +96,8 @@ export interface CreateCertificateResponseCertificate {
   /** Resources currently using the Certificate. */
   used_by: CreateCertificateResponseCertificateUsedByList;
 }
-const CreateCertificateResponseCertificate = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateCertificateResponseCertificate>;
-
 /** Status of the Action. */
 export type CreateCertificateResponseActionStatus = "running" | "success" | "error";
-const CreateCertificateResponseActionStatus = S.String;
-
 export interface CreateCertificateResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
@@ -161,9 +107,6 @@ export interface CreateCertificateResponseActionResourcesItem {
 /** Resources the Action relates to. */
 export type CreateCertificateResponseActionResourcesList =
   Array<CreateCertificateResponseActionResourcesItem>;
-const CreateCertificateResponseActionResourcesList =
-  CreateCertificateResponseCertificateUsedByList as any as S.Schema<CreateCertificateResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateCertificateResponseActionError {
   /** Fixed error code for machines. */
@@ -171,11 +114,6 @@ export interface CreateCertificateResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const CreateCertificateResponseActionError = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateCertificateResponseActionError>;
-
 export interface CreateCertificateResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -194,58 +132,25 @@ export interface CreateCertificateResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateCertificateResponseActionError | null;
 }
-const CreateCertificateResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateCertificateResponseAction>;
-
 export interface CreateCertificateResponse {
   certificate: CreateCertificateResponseCertificate;
   action?: CreateCertificateResponseAction | null;
 }
-const CreateCertificateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateCertificateResponse>;
-
 export interface DeleteCertificateRequest {
   /** ID of the Certificate. */
   id: number;
 }
-const DeleteCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteCertificateRequest>;
-
 export interface DeleteCertificateResponse {}
-const DeleteCertificateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteCertificateResponse>;
-
 export interface GetCertificateRequest {
   /** ID of the Certificate. */
   id: number;
 }
-const GetCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetCertificateRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetCertificateResponseCertificateLabelsMap = { [key: string]: string | undefined };
-const GetCertificateResponseCertificateLabelsMap =
-  CreateCertificateRequestLabelsMap as any as S.Schema<GetCertificateResponseCertificateLabelsMap>;
-
 /** Type of the Certificate. */
 export type GetCertificateResponseCertificateType = "uploaded" | "managed";
-const GetCertificateResponseCertificateType = S.String;
-
 /** Domains and subdomains covered by the Certificate. */
 export type GetCertificateResponseCertificateDomainNamesList = Array<string>;
-const GetCertificateResponseCertificateDomainNamesList =
-  CreateCertificateRequestDomainNamesList as any as S.Schema<GetCertificateResponseCertificateDomainNamesList>;
-
 /** Status of the issuance process of the Certificate. */
 export type GetCertificateResponseCertificateStatusIssuance = "pending" | "completed" | "failed";
 /** Status of the renewal process of the Certificate. */
@@ -266,17 +171,11 @@ export interface GetCertificateResponseCertificateStatus {
   /** If issuance or renewal reports `failed`, this property contains information about what happened. */
   error?: CreateCertificateResponseCertificateStatusError | null;
 }
-const GetCertificateResponseCertificateStatus =
-  CreateCertificateResponseCertificateStatus as any as S.Schema<GetCertificateResponseCertificateStatus>;
-
 export type GetCertificateResponseCertificateUsedByItem =
   CreateCertificateResponseCertificateUsedByItem;
 /** Resources currently using the Certificate. */
 export type GetCertificateResponseCertificateUsedByList =
   Array<CreateCertificateResponseCertificateUsedByItem>;
-const GetCertificateResponseCertificateUsedByList =
-  CreateCertificateResponseCertificateUsedByList as any as S.Schema<GetCertificateResponseCertificateUsedByList>;
-
 export interface GetCertificateResponseCertificate {
   /** ID of the [Certificate](#tag/certificates). */
   id: number;
@@ -303,19 +202,9 @@ export interface GetCertificateResponseCertificate {
   /** Resources currently using the Certificate. */
   used_by: GetCertificateResponseCertificateUsedByList;
 }
-const GetCertificateResponseCertificate = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetCertificateResponseCertificate>;
-
 export interface GetCertificateResponse {
   certificate: GetCertificateResponseCertificate;
 }
-const GetCertificateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetCertificateResponse>;
-
 export type ListCertificatesRequestSortItem =
   | "id"
   | "id:asc"
@@ -326,24 +215,14 @@ export type ListCertificatesRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-const ListCertificatesRequestSortItem = S.String;
-
 export type ListCertificatesRequestSortList = Array<
   ListCertificatesRequestSortItem | (string & {})
 >;
-const ListCertificatesRequestSortList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListCertificatesRequestSortList>;
-
 /** Type of the Certificate. */
 export type ListCertificatesRequestTypeItem = "uploaded" | "managed";
 export type ListCertificatesRequestTypeList = Array<
   ListCertificatesRequestTypeItem | (string & {})
 >;
-const ListCertificatesRequestTypeList =
-  ListCertificatesRequestSortList as any as S.Schema<ListCertificatesRequestTypeList>;
-
 export interface ListCertificatesRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListCertificatesRequestSortList;
@@ -358,27 +237,14 @@ export interface ListCertificatesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListCertificatesRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListCertificatesResponseCertificatesItemLabelsMap = {
   [key: string]: string | undefined;
 };
-const ListCertificatesResponseCertificatesItemLabelsMap =
-  CreateCertificateRequestLabelsMap as any as S.Schema<ListCertificatesResponseCertificatesItemLabelsMap>;
-
 /** Type of the Certificate. */
 export type ListCertificatesResponseCertificatesItemType = "uploaded" | "managed";
-const ListCertificatesResponseCertificatesItemType = S.String;
-
 /** Domains and subdomains covered by the Certificate. */
 export type ListCertificatesResponseCertificatesItemDomainNamesList = Array<string>;
-const ListCertificatesResponseCertificatesItemDomainNamesList =
-  CreateCertificateRequestDomainNamesList as any as S.Schema<ListCertificatesResponseCertificatesItemDomainNamesList>;
-
 /** Status of the issuance process of the Certificate. */
 export type ListCertificatesResponseCertificatesItemStatusIssuance =
   | "pending"
@@ -402,17 +268,11 @@ export interface ListCertificatesResponseCertificatesItemStatus {
   /** If issuance or renewal reports `failed`, this property contains information about what happened. */
   error?: CreateCertificateResponseCertificateStatusError | null;
 }
-const ListCertificatesResponseCertificatesItemStatus =
-  CreateCertificateResponseCertificateStatus as any as S.Schema<ListCertificatesResponseCertificatesItemStatus>;
-
 export type ListCertificatesResponseCertificatesItemUsedByItem =
   CreateCertificateResponseCertificateUsedByItem;
 /** Resources currently using the Certificate. */
 export type ListCertificatesResponseCertificatesItemUsedByList =
   Array<CreateCertificateResponseCertificateUsedByItem>;
-const ListCertificatesResponseCertificatesItemUsedByList =
-  CreateCertificateResponseCertificateUsedByList as any as S.Schema<ListCertificatesResponseCertificatesItemUsedByList>;
-
 export interface ListCertificatesResponseCertificatesItem {
   /** ID of the [Certificate](#tag/certificates). */
   id: number;
@@ -439,18 +299,8 @@ export interface ListCertificatesResponseCertificatesItem {
   /** Resources currently using the Certificate. */
   used_by: ListCertificatesResponseCertificatesItemUsedByList;
 }
-const ListCertificatesResponseCertificatesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListCertificatesResponseCertificatesItem>;
-
 export type ListCertificatesResponseCertificatesList =
   Array<ListCertificatesResponseCertificatesItem>;
-const ListCertificatesResponseCertificatesList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListCertificatesResponseCertificatesList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListCertificatesResponseMetaPagination {
   /** Current page number. */
@@ -466,34 +316,16 @@ export interface ListCertificatesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListCertificatesResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListCertificatesResponseMetaPagination>;
-
 export interface ListCertificatesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListCertificatesResponseMetaPagination;
 }
-const ListCertificatesResponseMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListCertificatesResponseMeta>;
-
 export interface ListCertificatesResponse {
   certificates: ListCertificatesResponseCertificatesList;
   meta: ListCertificatesResponseMeta;
 }
-const ListCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListCertificatesResponse>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateCertificateRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateCertificateRequestLabelsMap =
-  CreateCertificateRequestLabelsMap as any as S.Schema<UpdateCertificateRequestLabelsMap>;
-
 export interface UpdateCertificateRequest {
   /** ID of the Certificate. */
   id: number;
@@ -502,25 +334,12 @@ export interface UpdateCertificateRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateCertificateRequestLabelsMap;
 }
-const UpdateCertificateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UpdateCertificateRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateCertificateResponseCertificateLabelsMap = { [key: string]: string | undefined };
-const UpdateCertificateResponseCertificateLabelsMap =
-  CreateCertificateRequestLabelsMap as any as S.Schema<UpdateCertificateResponseCertificateLabelsMap>;
-
 /** Type of the Certificate. */
 export type UpdateCertificateResponseCertificateType = "uploaded" | "managed";
-const UpdateCertificateResponseCertificateType = S.String;
-
 /** Domains and subdomains covered by the Certificate. */
 export type UpdateCertificateResponseCertificateDomainNamesList = Array<string>;
-const UpdateCertificateResponseCertificateDomainNamesList =
-  CreateCertificateRequestDomainNamesList as any as S.Schema<UpdateCertificateResponseCertificateDomainNamesList>;
-
 /** Status of the issuance process of the Certificate. */
 export type UpdateCertificateResponseCertificateStatusIssuance = "pending" | "completed" | "failed";
 /** Status of the renewal process of the Certificate. */
@@ -541,17 +360,11 @@ export interface UpdateCertificateResponseCertificateStatus {
   /** If issuance or renewal reports `failed`, this property contains information about what happened. */
   error?: CreateCertificateResponseCertificateStatusError | null;
 }
-const UpdateCertificateResponseCertificateStatus =
-  CreateCertificateResponseCertificateStatus as any as S.Schema<UpdateCertificateResponseCertificateStatus>;
-
 export type UpdateCertificateResponseCertificateUsedByItem =
   CreateCertificateResponseCertificateUsedByItem;
 /** Resources currently using the Certificate. */
 export type UpdateCertificateResponseCertificateUsedByList =
   Array<CreateCertificateResponseCertificateUsedByItem>;
-const UpdateCertificateResponseCertificateUsedByList =
-  CreateCertificateResponseCertificateUsedByList as any as S.Schema<UpdateCertificateResponseCertificateUsedByList>;
-
 export interface UpdateCertificateResponseCertificate {
   /** ID of the [Certificate](#tag/certificates). */
   id: number;
@@ -578,19 +391,9 @@ export interface UpdateCertificateResponseCertificate {
   /** Resources currently using the Certificate. */
   used_by: UpdateCertificateResponseCertificateUsedByList;
 }
-const UpdateCertificateResponseCertificate = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<UpdateCertificateResponseCertificate>;
-
 export interface UpdateCertificateResponse {
   certificate: UpdateCertificateResponseCertificate;
 }
-const UpdateCertificateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<UpdateCertificateResponse>;
-
 export type CreateCertificateError = HetznerOpError;
 /** Create a Certificate Creates a new Certificate. The default type **uploaded** allows for uploading your existing `certificate` and `private_key` in PEM format. You have to monitor its expiration date and handle renewal yourself. In contrast, type **managed** requests a new Certificate from *Let's Encrypt* for the specified `domain_names`. Only domains managed by *Hetzner DNS* are supported. We handle renewal and timely alert the project owner via email if problems occur. For type `managed` Certificates the `action` key of the response contains the Action that allows for tracking the issuance process. For type `uploaded` Certificates the `action` is always null. */
 export const createCertificate: API.OperationMethod<
@@ -599,8 +402,8 @@ export const createCertificate: API.OperationMethod<
   CreateCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificateRequest,
-  output: CreateCertificateResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateCertificateRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -614,8 +417,8 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificateRequest,
-  output: DeleteCertificateResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DeleteCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -629,8 +432,8 @@ export const getCertificate: API.OperationMethod<
   GetCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateRequest,
-  output: GetCertificateResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetCertificateRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -646,8 +449,8 @@ export const listCertificates: API.PaginatedOperationMethod<
   ListCertificatesResponseCertificatesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCertificatesRequest,
-    output: ListCertificatesResponse,
+    input: __S(17, __c2, 1) as any as S.Schema<ListCertificatesRequest>,
+    output: __S(22, __c2, 6) as any as S.Schema<ListCertificatesResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -670,8 +473,8 @@ export const updateCertificate: API.OperationMethod<
   UpdateCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCertificateRequest,
-  output: UpdateCertificateResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<UpdateCertificateRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<UpdateCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -688,11 +491,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          labels: S.optional(CreateCertificateRequestLabelsMap),
-          type: S.optional(CreateCertificateRequestType),
+          labels: S.optional(__S(0, __c0, 0)),
+          type: S.optional(S.String),
           certificate: S.optional(S.String),
           private_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          domain_names: S.optional(CreateCertificateRequestDomainNamesList),
+          domain_names: S.optional(__S(1, __c0, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 })),
       ).annotate({ identifier: "CreateCertificateRequest" });
     case 3:
@@ -707,9 +510,9 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          issuance: S.optional(CreateCertificateResponseCertificateStatusIssuance),
-          renewal: S.optional(CreateCertificateResponseCertificateStatusRenewal),
-          error: S.optional(S.NullOr(CreateCertificateResponseCertificateStatusError)),
+          issuance: S.optional(S.String),
+          renewal: S.optional(S.String),
+          error: S.optional(S.NullOr(__S(3, __c0, 3))),
         }),
       ).annotate({
         identifier: "CreateCertificateResponseCertificateStatus",
@@ -724,22 +527,22 @@ function __c0(j: number): any {
         identifier: "CreateCertificateResponseCertificateUsedByItem",
       });
     case 6:
-      return S.Array(CreateCertificateResponseCertificateUsedByItem);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: CreateCertificateResponseCertificateLabelsMap,
-          type: S.optional(CreateCertificateResponseCertificateType),
+          labels: __S(0, __c0, 0),
+          type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: CreateCertificateResponseCertificateDomainNamesList,
+          domain_names: __S(1, __c0, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(CreateCertificateResponseCertificateStatus)),
-          used_by: CreateCertificateResponseCertificateUsedByList,
+          status: S.optional(S.NullOr(__S(4, __c0, 4))),
+          used_by: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "CreateCertificateResponseCertificate",
@@ -762,12 +565,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: CreateCertificateResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: CreateCertificateResponseActionResourcesList,
-          error: S.NullOr(CreateCertificateResponseActionError),
+          resources: __S(6, __c0, 6),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "CreateCertificateResponseAction",
@@ -775,8 +578,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          certificate: CreateCertificateResponseCertificate,
-          action: S.optional(S.NullOr(CreateCertificateResponseAction)),
+          certificate: __S(7, __c0, 7),
+          action: S.optional(S.NullOr(__S(9, __c1, 1))),
         }),
       ).annotate({
         identifier: "CreateCertificateResponse",
@@ -802,16 +605,16 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: GetCertificateResponseCertificateLabelsMap,
-          type: S.optional(GetCertificateResponseCertificateType),
+          labels: __S(0, __c0, 0),
+          type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: GetCertificateResponseCertificateDomainNamesList,
+          domain_names: __S(1, __c0, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(GetCertificateResponseCertificateStatus)),
-          used_by: GetCertificateResponseCertificateUsedByList,
+          status: S.optional(S.NullOr(__S(4, __c0, 4))),
+          used_by: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "GetCertificateResponseCertificate",
@@ -819,7 +622,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          certificate: GetCertificateResponseCertificate,
+          certificate: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
@@ -827,14 +630,14 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListCertificatesRequestSortItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(ListCertificatesRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListCertificatesRequestTypeList.pipe(T.Query())),
+          type: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
@@ -844,22 +647,22 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: ListCertificatesResponseCertificatesItemLabelsMap,
-          type: S.optional(ListCertificatesResponseCertificatesItemType),
+          labels: __S(0, __c0, 0),
+          type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: ListCertificatesResponseCertificatesItemDomainNamesList,
+          domain_names: __S(1, __c0, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(ListCertificatesResponseCertificatesItemStatus)),
-          used_by: ListCertificatesResponseCertificatesItemUsedByList,
+          status: S.optional(S.NullOr(__S(4, __c0, 4))),
+          used_by: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "ListCertificatesResponseCertificatesItem",
       });
     case 3:
-      return S.Array(ListCertificatesResponseCertificatesItem);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -876,7 +679,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListCertificatesResponseMetaPagination,
+          pagination: __S(20, __c2, 4),
         }),
       ).annotate({
         identifier: "ListCertificatesResponseMeta",
@@ -884,8 +687,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          certificates: ListCertificatesResponseCertificatesList,
-          meta: ListCertificatesResponseMeta,
+          certificates: __S(19, __c2, 3),
+          meta: __S(21, __c2, 5),
         }),
       ).annotate({ identifier: "ListCertificatesResponse" });
     case 7:
@@ -893,7 +696,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(UpdateCertificateRequestLabelsMap),
+          labels: S.optional(__S(0, __c0, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/certificates/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateCertificateRequest" });
   }
@@ -905,16 +708,16 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: UpdateCertificateResponseCertificateLabelsMap,
-          type: S.optional(UpdateCertificateResponseCertificateType),
+          labels: __S(0, __c0, 0),
+          type: S.optional(S.String),
           certificate: S.NullOr(S.String),
           created: S.String,
           not_valid_before: S.NullOr(S.String),
           not_valid_after: S.NullOr(S.String),
-          domain_names: UpdateCertificateResponseCertificateDomainNamesList,
+          domain_names: __S(1, __c0, 1),
           fingerprint: S.NullOr(S.String),
-          status: S.optional(S.NullOr(UpdateCertificateResponseCertificateStatus)),
-          used_by: UpdateCertificateResponseCertificateUsedByList,
+          status: S.optional(S.NullOr(__S(4, __c0, 4))),
+          used_by: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "UpdateCertificateResponseCertificate",
@@ -922,10 +725,15 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certificate: UpdateCertificateResponseCertificate,
+          certificate: __S(24, __c3, 0),
         }),
       ).annotate({
         identifier: "UpdateCertificateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

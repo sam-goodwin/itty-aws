@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,28 +72,16 @@ export interface CheckFreeAccessPublicationsRequest {
   /** Required. The HTTP referrer. */
   httpReferrer?: string;
 }
-const CheckFreeAccessPublicationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckFreeAccessPublicationsRequest>;
-
 /** Response message for CheckFreeAccess */
 export interface CheckFreeAccessResponse {
   /** Output only. True if free access should be allowed, false otherwise. */
   isAllowed?: boolean;
 }
-const CheckFreeAccessResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckFreeAccessResponse>;
-
 export type PublicationOnboardingStateEnum =
   | "ONBOARDING_STATE_UNSPECIFIED"
   | "ACTION_REQUIRED"
   | "PENDING_VERIFICATION"
   | "COMPLETE";
-const PublicationOnboardingStateEnum = S.String;
-
 /** Subscription Linking (SL) product settings and status. */
 export interface SlProduct {
   /** Optional. The Google Cloud Project number associated with the publication. */
@@ -99,8 +89,6 @@ export interface SlProduct {
   /** Optional. Whether the Subscription Linking product is enabled. */
   enabled?: boolean;
 }
-const SlProduct = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SlProduct>;
-
 /** Details about the acceptance of the Terms of Service (TOS). */
 export interface TosAcceptance {
   /** Optional. Whether the user opted in to receive product updates and email communications. */
@@ -108,8 +96,6 @@ export interface TosAcceptance {
   /** Required. Whether the user has accepted the Terms of Service. */
   userAccepted?: boolean;
 }
-const TosAcceptance = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TosAcceptance>;
-
 /** Configuration and status of the Reader Revenue Manager (RRM) product for a publication. */
 export interface RrmProduct {
   /** Optional. The details of the TOS acceptance. */
@@ -119,8 +105,6 @@ export interface RrmProduct {
   /** Output only. The URL to the product-specific Terms of Service. */
   productTosUrl?: string;
 }
-const RrmProduct = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<RrmProduct>;
-
 /** Represents a domain property associated with a publication, typically used to verify ownership and scope access. */
 export interface DomainProperty {
   /** Required. The URL of the domain property (e.g., "https://example.com"). */
@@ -128,11 +112,7 @@ export interface DomainProperty {
   /** Output only. Whether the domain ownership has been verified (e.g., via Google Search Console). */
   ownershipVerified?: boolean;
 }
-const DomainProperty = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DomainProperty>;
-
 export type DomainPropertyList = Array<DomainProperty>;
-const DomainPropertyList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DomainPropertyList>;
-
 export type ContentPolicyStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "OK"
@@ -141,8 +121,6 @@ export type ContentPolicyStatusStateEnum =
   | "ORGANIZATION_VIOLATION_GRACE_PERIOD"
   | "ORGANIZATION_VIOLATION_ACTIVE"
   | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE";
-const ContentPolicyStatusStateEnum = S.String;
-
 /** The content policy status of the publication, indicating any violations. */
 export interface ContentPolicyStatus {
   /** Output only. URL pointing to more details about the policy violation or status. */
@@ -150,24 +128,16 @@ export interface ContentPolicyStatus {
   /** Output only. The current policy state. */
   state?: ContentPolicyStatusStateEnum | (string & {});
 }
-const ContentPolicyStatus = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ContentPolicyStatus>;
-
 export type PublicationPaymentOptionEnum =
   | "PAYMENT_OPTION_UNSPECIFIED"
   | "NONE"
   | "SUBSCRIPTIONS"
   | "CONTRIBUTIONS";
-const PublicationPaymentOptionEnum = S.String;
-
 export type PublicationPublicationTypeEnum =
   | "PUBLICATION_TYPE_UNSPECIFIED"
   | "FOR_PROFIT"
   | "NON_PROFIT";
-const PublicationPublicationTypeEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringList>;
-
 /** Represents a publisher's publication in Reader Revenue Manager. */
 export interface Publication {
   /** Output only. The current onboarding state. */
@@ -205,8 +175,6 @@ export interface Publication {
   /** Optional. The URL to the publisher's own Terms of Service. */
   publicationTosUrl?: string;
 }
-const Publication = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Publication>;
-
 export interface CreateOrganizationsPublicationsRequest {
   /** Required. The parent resource where this publication will be created. Format: `organizations/{organization}`. */
   parent: string;
@@ -215,17 +183,8 @@ export interface CreateOrganizationsPublicationsRequest {
   /** Request body */
   body?: Publication;
 }
-const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateOrganizationsPublicationsRequest>;
-
 export type CtaTypeEnum = "TYPE_UNSPECIFIED" | "NEWSLETTER_SIGNUP";
-const CtaTypeEnum = S.String;
-
 export type CtaStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE";
-const CtaStateEnum = S.String;
-
 /** Configuration for newsletter signup calls-to-action (CTAs). */
 export interface NewsletterConfig {
   /** Required. The title of the newsletter signup prompt. */
@@ -239,8 +198,6 @@ export interface NewsletterConfig {
   /** Optional. Custom consent or disclosure text shown to the user. */
   customConsentText?: string;
 }
-const NewsletterConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<NewsletterConfig>;
-
 /** Represents a Call-To-Action (CTA) configuration for a publication. */
 export interface Cta {
   /** Required. The user-visible display name of the CTA. */
@@ -254,8 +211,6 @@ export interface Cta {
   /** Identifier. The resource name of the Cta. Format: organizations/{organization}/publications/{publication}/ctas/{cta} */
   name?: string;
 }
-const Cta = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Cta>;
-
 export interface CreateOrganizationsPublicationsCtasRequest {
   /** Required. The parent publication resource where this CTA will be created. Format: `organizations/{organization}/publications/{publication}`. */
   parent: string;
@@ -264,29 +219,14 @@ export interface CreateOrganizationsPublicationsCtasRequest {
   /** Request body */
   body?: Cta;
 }
-const CreateOrganizationsPublicationsCtasRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateOrganizationsPublicationsCtasRequest>;
-
 /** Request message for `GeneratePlatformSiteTokens`. */
 export interface GeneratePlatformSiteTokensRequest {}
-const GeneratePlatformSiteTokensRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GeneratePlatformSiteTokensRequest>;
-
 export interface GeneratePlatformSiteTokensUsersRequest {
   /** Required. The resource name of the user to generate tokens for. Format: users/{user} */
   name: string;
   /** Request body */
   body?: GeneratePlatformSiteTokensRequest;
 }
-const GeneratePlatformSiteTokensUsersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GeneratePlatformSiteTokensUsersRequest>;
-
 /** Represents a domain-scoped secure token mapping. */
 export interface SiteToken {
   /** The domain-scoped secure token value (ESUT). */
@@ -294,39 +234,20 @@ export interface SiteToken {
   /** The domain scope this token is valid for. */
   domain?: string;
 }
-const SiteToken = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SiteToken>;
-
 export type SiteTokenList = Array<SiteToken>;
-const SiteTokenList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SiteTokenList>;
-
 /** Response message for `GeneratePlatformSiteTokens`. */
 export interface GeneratePlatformSiteTokensResponse {
   /** List of domain-scoped secure token mappings. */
   siteTokens?: SiteTokenList;
 }
-const GeneratePlatformSiteTokensResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GeneratePlatformSiteTokensResponse>;
-
 export interface GetOrganizationsPublicationsRequest {
   /** Required. The resource name of the publication to retrieve. Format: `organizations/{organization}/publications/{publication}`. */
   name: string;
 }
-const GetOrganizationsPublicationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetOrganizationsPublicationsRequest>;
-
 export interface GetOrganizationsPublicationsCtasRequest {
   /** Required. The resource name of the CTA to retrieve. Format: `organizations/{organization}/publications/{publication}/ctas/{cta}`. */
   name: string;
 }
-const GetOrganizationsPublicationsCtasRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetOrganizationsPublicationsCtasRequest>;
-
 export interface ListOrganizationsPublicationsRequest {
   /** Required. The parent organization whose publications to list, or "organizations/-" for all organizations a user has access to. Format: `organizations/{organization}`. */
   parent: string;
@@ -337,14 +258,7 @@ export interface ListOrganizationsPublicationsRequest {
   /** Optional. The maximum number of publications to return. The service may return fewer than this value. If unspecified, at most 50 publications will be returned. */
   pageSize?: number;
 }
-const ListOrganizationsPublicationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListOrganizationsPublicationsRequest>;
-
 export type PublicationList = Array<Publication>;
-const PublicationList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PublicationList>;
-
 /** Response message for `ListPublications`. */
 export interface ListPublicationsResponse {
   /** Output only. A token to retrieve the next page of results, or empty if there are no more results. */
@@ -352,11 +266,6 @@ export interface ListPublicationsResponse {
   /** Output only. The list of publications. */
   publications?: PublicationList;
 }
-const ListPublicationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListPublicationsResponse>;
-
 export interface ListOrganizationsPublicationsCtasRequest {
   /** Optional. The maximum number of CTAs to return. The service may return fewer than this value. If unspecified, at most 50 CTAs will be returned. */
   pageSize?: number;
@@ -365,14 +274,7 @@ export interface ListOrganizationsPublicationsCtasRequest {
   /** Required. The parent publication resource whose CTAs to list. Format: `organizations/{organization}/publications/{publication}`. */
   parent: string;
 }
-const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>;
-
 export type CtaList = Array<Cta>;
-const CtaList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CtaList>;
-
 /** Response message for `ListCtas`. */
 export interface ListCtasResponse {
   /** Output only. The list of CTAs. */
@@ -380,8 +282,6 @@ export interface ListCtasResponse {
   /** Output only. A token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
-const ListCtasResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListCtasResponse>;
-
 export interface PatchOrganizationsPublicationsRequest {
   /** Identifier. The resource name of the publication. Format: organizations/{organization}/publications/{publication} */
   name: string;
@@ -390,11 +290,6 @@ export interface PatchOrganizationsPublicationsRequest {
   /** Request body */
   body?: Publication;
 }
-const PatchOrganizationsPublicationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PatchOrganizationsPublicationsRequest>;
-
 export interface PatchOrganizationsPublicationsCtasRequest {
   /** Optional. The list of fields to update. */
   updateMask?: string;
@@ -403,11 +298,6 @@ export interface PatchOrganizationsPublicationsCtasRequest {
   /** Request body */
   body?: Cta;
 }
-const PatchOrganizationsPublicationsCtasRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PatchOrganizationsPublicationsCtasRequest>;
-
 export type CheckFreeAccessPublicationsError = NotFound | Forbidden | GcpOpError;
 /** Checks if a user is eligible for free article access. */
 export const checkFreeAccessPublications: API.OperationMethod<
@@ -416,8 +306,8 @@ export const checkFreeAccessPublications: API.OperationMethod<
   CheckFreeAccessPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckFreeAccessPublicationsRequest,
-  output: CheckFreeAccessResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckFreeAccessPublicationsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckFreeAccessResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -436,8 +326,8 @@ export const createOrganizationsPublications: API.OperationMethod<
   CreateOrganizationsPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsPublicationsRequest,
-  output: Publication,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateOrganizationsPublicationsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Publication>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -456,8 +346,8 @@ export const createOrganizationsPublicationsCtas: API.OperationMethod<
   CreateOrganizationsPublicationsCtasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsPublicationsCtasRequest,
-  output: Cta,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateOrganizationsPublicationsCtasRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Cta>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -476,8 +366,8 @@ export const generatePlatformSiteTokensUsers: API.OperationMethod<
   GeneratePlatformSiteTokensUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeneratePlatformSiteTokensUsersRequest,
-  output: GeneratePlatformSiteTokensResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GeneratePlatformSiteTokensUsersRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GeneratePlatformSiteTokensResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -491,8 +381,8 @@ export const getOrganizationsPublications: API.OperationMethod<
   GetOrganizationsPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsPublicationsRequest,
-  output: Publication,
+  input: __S(19, __c2, 3) as any as S.Schema<GetOrganizationsPublicationsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Publication>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -506,8 +396,8 @@ export const getOrganizationsPublicationsCtas: API.OperationMethod<
   GetOrganizationsPublicationsCtasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsPublicationsCtasRequest,
-  output: Cta,
+  input: __S(20, __c2, 4) as any as S.Schema<GetOrganizationsPublicationsCtasRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Cta>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -522,8 +412,8 @@ export const listOrganizationsPublications: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPublicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsPublicationsRequest,
-  output: ListPublicationsResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<ListOrganizationsPublicationsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ListPublicationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -539,8 +429,8 @@ export const listOrganizationsPublicationsCtas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCtasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsPublicationsCtasRequest,
-  output: ListCtasResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListCtasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -560,8 +450,8 @@ export const patchOrganizationsPublications: API.OperationMethod<
   PatchOrganizationsPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsPublicationsRequest,
-  output: Publication,
+  input: __S(27, __c3, 3) as any as S.Schema<PatchOrganizationsPublicationsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Publication>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -580,8 +470,8 @@ export const patchOrganizationsPublicationsCtas: API.OperationMethod<
   PatchOrganizationsPublicationsCtasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsPublicationsCtasRequest,
-  output: Cta,
+  input: __S(28, __c3, 4) as any as S.Schema<PatchOrganizationsPublicationsCtasRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Cta>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -629,7 +519,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tosAcceptance: S.optional(TosAcceptance),
+          tosAcceptance: S.optional(__S(3, __c0, 3)),
           enabled: S.optional(S.Boolean),
           productTosUrl: S.optional(S.String),
         }),
@@ -642,12 +532,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DomainProperty" });
     case 6:
-      return S.Array(DomainProperty);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           policyInfoUrl: S.optional(S.String),
-          state: S.optional(ContentPolicyStatusStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentPolicyStatus" });
   }
@@ -659,21 +549,21 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          onboardingState: S.optional(PublicationOnboardingStateEnum),
+          onboardingState: S.optional(S.String),
           publicationId: S.optional(S.String),
           name: S.optional(S.String),
-          slProduct: S.optional(SlProduct),
+          slProduct: S.optional(__S(2, __c0, 2)),
           publicationPrivacyPolicyUrl: S.optional(S.String),
-          rrmProduct: S.optional(RrmProduct),
-          additionalDomains: S.optional(DomainPropertyList),
-          primaryDomain: S.optional(DomainProperty),
+          rrmProduct: S.optional(__S(4, __c0, 4)),
+          additionalDomains: S.optional(__S(6, __c0, 6)),
+          primaryDomain: S.optional(__S(5, __c0, 5)),
           displayName: S.optional(S.String),
           organizationId: S.optional(S.String),
-          contentPolicyStatus: S.optional(ContentPolicyStatus),
-          paymentOption: S.optional(PublicationPaymentOptionEnum),
+          contentPolicyStatus: S.optional(__S(7, __c0, 7)),
+          paymentOption: S.optional(S.String),
           regionCode: S.optional(S.String),
-          publicationType: S.optional(PublicationPublicationTypeEnum),
-          products: S.optional(StringList),
+          publicationType: S.optional(S.String),
+          products: S.optional(__S(8, __c1, 0)),
           languageCode: S.optional(S.String),
           publicationTosUrl: S.optional(S.String),
         }),
@@ -683,7 +573,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           publicationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Publication.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -708,9 +598,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          type: S.optional(CtaTypeEnum),
-          state: S.optional(CtaStateEnum),
-          newsletterConfig: S.optional(NewsletterConfig),
+          type: S.optional(S.String),
+          state: S.optional(S.String),
+          newsletterConfig: S.optional(__S(11, __c1, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Cta" });
@@ -719,7 +609,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           ctaId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Cta.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -738,7 +628,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GeneratePlatformSiteTokensRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -761,11 +651,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SiteToken" });
     case 1:
-      return S.Array(SiteToken);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          siteTokens: S.optional(SiteTokenList),
+          siteTokens: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "GeneratePlatformSiteTokensResponse",
@@ -816,12 +706,12 @@ function __c2(j: number): any {
         identifier: "ListOrganizationsPublicationsRequest",
       });
     case 6:
-      return S.Array(Publication);
+      return S.Array(__S(9, __c1, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          publications: S.optional(PublicationList),
+          publications: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "ListPublicationsResponse" });
   }
@@ -845,11 +735,11 @@ function __c3(j: number): any {
         identifier: "ListOrganizationsPublicationsCtasRequest",
       });
     case 1:
-      return S.Array(Cta);
+      return S.Array(__S(12, __c1, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ctas: S.optional(CtaList),
+          ctas: S.optional(__S(25, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCtasResponse" });
@@ -858,7 +748,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Publication.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -874,7 +764,7 @@ function __c3(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Cta.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -886,4 +776,9 @@ function __c3(j: number): any {
         identifier: "PatchOrganizationsPublicationsCtasRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

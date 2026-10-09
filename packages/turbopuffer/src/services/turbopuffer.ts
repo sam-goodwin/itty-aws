@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { TurbopufferOpError, TurbopufferOpContext };
 
@@ -25,8 +27,6 @@ export interface EncryptionCase1 {
 }
 /** The encryption configuration for a namespace. */
 export type Encryption = EncryptionCase0 | EncryptionCase1;
-const Encryption = S.Unknown as any as S.Schema<Encryption>;
-
 export interface CreateNamespaceAsyncRequest {
   /** The name of the namespace. */
   namespace: string;
@@ -39,20 +39,10 @@ export interface CreateNamespaceAsyncRequest {
   /** (Optional) The encryption configuration for the destination namespace. */
   dest_encryption?: Encryption;
 }
-const CreateNamespaceAsyncRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateNamespaceAsyncRequest>;
-
 export interface CreateNamespaceAsyncResponse {
   /** The token identifying the copy operation. */
   token: string;
 }
-const CreateNamespaceAsyncResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateNamespaceAsyncResponse>;
-
 export interface CreateNamespaceDebugRecallRequest {
   /** The name of the namespace. */
   namespace: string;
@@ -67,61 +57,30 @@ export interface CreateNamespaceDebugRecallRequest {
   /** The ranking function to evaluate recall for. If provided, `num` must be either null or 1. */
   rank_by?: unknown;
 }
-const CreateNamespaceDebugRecallRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateNamespaceDebugRecallRequest>;
-
 /** The query vector used for this search. */
 export type CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList = Array<number>;
-const CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList>;
-
 /** An identifier for a document. */
 export type Id = string | number;
-const Id = S.Unknown as any as S.Schema<Id>;
-
 /** A dense vector encoded as an array of floats. */
 export type VectorCase0List = Array<number>;
 /** A vector embedding associated with a document. */
 export type Vector = VectorCase0List | string;
-const Vector = S.Unknown as any as S.Schema<Vector>;
-
 /** A single document, in a row-based format. */
 export interface Row {
   id: Id;
   vector?: Vector;
 }
-const Row = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Row>;
-
 /** The true nearest neighbors with their distances and vectors. */
 export type CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList = Array<Row>;
-const CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList>;
-
 export interface CreateNamespaceDebugRecallResponseGroundTruthItem {
   /** The query vector used for this search. */
   query_vector: CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList;
   /** The true nearest neighbors with their distances and vectors. */
   nearest_neighbors: CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList;
 }
-const CreateNamespaceDebugRecallResponseGroundTruthItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthItem>;
-
 /** Ground truth data including query vectors and true nearest neighbors. Only included when include_ground_truth is true. */
 export type CreateNamespaceDebugRecallResponseGroundTruthList =
   Array<CreateNamespaceDebugRecallResponseGroundTruthItem>;
-const CreateNamespaceDebugRecallResponseGroundTruthList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthList>;
-
 export interface CreateNamespaceDebugRecallResponse {
   /** The average recall of the queries. */
   avg_recall: number;
@@ -132,60 +91,27 @@ export interface CreateNamespaceDebugRecallResponse {
   /** Ground truth data including query vectors and true nearest neighbors. Only included when include_ground_truth is true. */
   ground_truth?: CreateNamespaceDebugRecallResponseGroundTruthList;
 }
-const CreateNamespaceDebugRecallResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateNamespaceDebugRecallResponse>;
-
 /** The consistency level for a query. */
 export interface CreateNamespaceExplainQueryRequestConsistency {
   /** The query's consistency level. */
   level?: unknown;
 }
-const CreateNamespaceExplainQueryRequestConsistency = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateNamespaceExplainQueryRequestConsistency>;
-
 /** Include exactly the specified attributes in the response. */
 export type IncludeAttributesCase1List = Array<string>;
-const IncludeAttributesCase1List = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<IncludeAttributesCase1List>;
-
 /** Whether to include attributes in the response. */
 export type IncludeAttributes = boolean | IncludeAttributesCase1List;
-const IncludeAttributes = S.Unknown as any as S.Schema<IncludeAttributes>;
-
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type CreateNamespaceExplainQueryRequestExcludeAttributesList = Array<string>;
-const CreateNamespaceExplainQueryRequestExcludeAttributesList =
-  IncludeAttributesCase1List as any as S.Schema<CreateNamespaceExplainQueryRequestExcludeAttributesList>;
-
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type CreateNamespaceExplainQueryRequestAggregateByMap = {
   [key: string]: unknown | undefined;
 };
-const CreateNamespaceExplainQueryRequestAggregateByMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateNamespaceExplainQueryRequestAggregateByMap>;
-
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type CreateNamespaceExplainQueryRequestGroupByList = Array<unknown>;
-const CreateNamespaceExplainQueryRequestGroupByList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateNamespaceExplainQueryRequestGroupByList>;
-
 /** Computes additional values on documents returned by a query. Each key is the name of the computed attribute; each value is an expression describing how to compute it. */
 export type CreateNamespaceExplainQueryRequestComputeAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const CreateNamespaceExplainQueryRequestComputeAttributesMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceExplainQueryRequestComputeAttributesMap>;
-
 /** The attributes to include in the limit key. */
 export type LimitPerAttributesList = Array<string>;
 /** Limits the number of documents with the same value for a set of attributes (the "limit key") that can appear in the results. */
@@ -203,9 +129,6 @@ export interface Limit {
   per?: LimitPer;
 }
 export type CreateNamespaceExplainQueryRequestLimit = number | Limit;
-const CreateNamespaceExplainQueryRequestLimit =
-  S.Unknown as any as S.Schema<CreateNamespaceExplainQueryRequestLimit>;
-
 export interface CreateNamespaceExplainQueryRequest {
   /** The name of the namespace. */
   namespace: string;
@@ -232,48 +155,23 @@ export interface CreateNamespaceExplainQueryRequest {
   distance_metric?: unknown;
   limit?: CreateNamespaceExplainQueryRequestLimit;
 }
-const CreateNamespaceExplainQueryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateNamespaceExplainQueryRequest>;
-
 export interface CreateNamespaceExplainQueryResponse {
   /** The textual representation of the query plan. */
   plan_text?: string;
 }
-const CreateNamespaceExplainQueryResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateNamespaceExplainQueryResponse>;
-
 /** The consistency level for a query. */
 export type CreateNamespaceQueryRequestConsistency = CreateNamespaceExplainQueryRequestConsistency;
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type CreateNamespaceQueryRequestExcludeAttributesList = Array<string>;
-const CreateNamespaceQueryRequestExcludeAttributesList =
-  IncludeAttributesCase1List as any as S.Schema<CreateNamespaceQueryRequestExcludeAttributesList>;
-
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type CreateNamespaceQueryRequestAggregateByMap = { [key: string]: unknown | undefined };
-const CreateNamespaceQueryRequestAggregateByMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryRequestAggregateByMap>;
-
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type CreateNamespaceQueryRequestGroupByList = Array<unknown>;
-const CreateNamespaceQueryRequestGroupByList =
-  CreateNamespaceExplainQueryRequestGroupByList as any as S.Schema<CreateNamespaceQueryRequestGroupByList>;
-
 /** Computes additional values on documents returned by a query. Each key is the name of the computed attribute; each value is an expression describing how to compute it. */
 export type CreateNamespaceQueryRequestComputeAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const CreateNamespaceQueryRequestComputeAttributesMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryRequestComputeAttributesMap>;
-
 export type CreateNamespaceQueryRequestLimit = number | Limit;
-const CreateNamespaceQueryRequestLimit =
-  S.Unknown as any as S.Schema<CreateNamespaceQueryRequestLimit>;
-
 export interface CreateNamespaceQueryRequest {
   /** The name of the namespace. */
   namespace: string;
@@ -300,32 +198,11 @@ export interface CreateNamespaceQueryRequest {
   distance_metric?: unknown;
   limit?: CreateNamespaceQueryRequestLimit;
 }
-const CreateNamespaceQueryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateNamespaceQueryRequest>;
-
 export type CreateNamespaceQueryResponseAggregationsMap = { [key: string]: unknown | undefined };
-const CreateNamespaceQueryResponseAggregationsMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryResponseAggregationsMap>;
-
 /** A single aggregation group. */
 export type AggregationGroup = { [key: string]: unknown | undefined };
-const AggregationGroup =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<AggregationGroup>;
-
 export type CreateNamespaceQueryResponseAggregationGroupsList = Array<AggregationGroup>;
-const CreateNamespaceQueryResponseAggregationGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateNamespaceQueryResponseAggregationGroupsList>;
-
 export type CreateNamespaceQueryResponseRowsList = Array<Row>;
-const CreateNamespaceQueryResponseRowsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateNamespaceQueryResponseRowsList>;
-
 /** The performance information for a query. */
 export interface QueryPerformance {
   /** The ratio of cache hits to total cache lookups. */
@@ -341,8 +218,6 @@ export interface QueryPerformance {
   /** the approximate number of documents in the namespace. */
   approx_namespace_size: number;
 }
-const QueryPerformance = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<QueryPerformance>;
-
 /** The billing information for a query. */
 export interface QueryBilling {
   /** The number of billable logical bytes queried from the namespace. */
@@ -350,8 +225,6 @@ export interface QueryBilling {
   /** The number of billable logical bytes returned from the query. */
   billable_logical_bytes_returned: number;
 }
-const QueryBilling = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<QueryBilling>;
-
 export interface CreateNamespaceQueryResponse {
   aggregations?: CreateNamespaceQueryResponseAggregationsMap;
   aggregation_groups?: CreateNamespaceQueryResponseAggregationGroupsList;
@@ -359,36 +232,17 @@ export interface CreateNamespaceQueryResponse {
   performance: QueryPerformance;
   billing: QueryBilling;
 }
-const CreateNamespaceQueryResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateNamespaceQueryResponse>;
-
 /** The consistency level for a query. */
 export type CreateNamespaceQueryRequestConsistency2 = CreateNamespaceExplainQueryRequestConsistency;
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type QueryExcludeAttributesList = Array<string>;
-const QueryExcludeAttributesList =
-  IncludeAttributesCase1List as any as S.Schema<QueryExcludeAttributesList>;
-
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type QueryAggregateByMap = { [key: string]: unknown | undefined };
-const QueryAggregateByMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<QueryAggregateByMap>;
-
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type QueryGroupByList = Array<unknown>;
-const QueryGroupByList =
-  CreateNamespaceExplainQueryRequestGroupByList as any as S.Schema<QueryGroupByList>;
-
 /** Computes additional values on documents returned by a query. Each key is the name of the computed attribute; each value is an expression describing how to compute it. */
 export type QueryComputeAttributesMap = { [key: string]: unknown | undefined };
-const QueryComputeAttributesMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<QueryComputeAttributesMap>;
-
 export type QueryLimit = number | Limit;
-const QueryLimit = S.Unknown as any as S.Schema<QueryLimit>;
-
 /** Query, filter, full-text search and vector search documents. */
 export interface Query {
   /** How to rank the documents in the namespace. */
@@ -411,14 +265,7 @@ export interface Query {
   distance_metric?: unknown;
   limit?: QueryLimit;
 }
-const Query = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Query>;
-
 export type CreateNamespaceQueryRequestQueriesList = Array<Query>;
-const CreateNamespaceQueryRequestQueriesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateNamespaceQueryRequestQueriesList>;
-
 /** Limits the total number of reranked documents returned. */
 export interface RerankLimit {
   /** Limits the total number of documents returned after reranking. */
@@ -426,9 +273,6 @@ export interface RerankLimit {
 }
 /** Limits the total number of reranked documents returned. */
 export type CreateNamespaceQueryRequestLimit2 = number | RerankLimit;
-const CreateNamespaceQueryRequestLimit2 =
-  S.Unknown as any as S.Schema<CreateNamespaceQueryRequestLimit2>;
-
 export interface CreateNamespaceQueryRequest2 {
   /** The name of the namespace. */
   namespace: string;
@@ -443,44 +287,21 @@ export interface CreateNamespaceQueryRequest2 {
   /** Number of reranked documents to skip before returning results. Requires `rerank_by` and `limit`. */
   offset?: number;
 }
-const CreateNamespaceQueryRequest2 = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateNamespaceQueryRequest2>;
-
 export type SingleQueryResultAggregationsMap = { [key: string]: unknown | undefined };
-const SingleQueryResultAggregationsMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<SingleQueryResultAggregationsMap>;
-
 export type SingleQueryResultAggregationGroupsList = Array<AggregationGroup>;
-const SingleQueryResultAggregationGroupsList =
-  CreateNamespaceQueryResponseAggregationGroupsList as any as S.Schema<SingleQueryResultAggregationGroupsList>;
-
 export type SingleQueryResultRowsList = Array<Row>;
-const SingleQueryResultRowsList =
-  CreateNamespaceQueryResponseRowsList as any as S.Schema<SingleQueryResultRowsList>;
-
 export interface SingleQueryResult {
   aggregations?: SingleQueryResultAggregationsMap;
   aggregation_groups?: SingleQueryResultAggregationGroupsList;
   rows?: SingleQueryResultRowsList;
 }
-const SingleQueryResult = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SingleQueryResult>;
-
 export type MultiQueryResultResultsList = Array<SingleQueryResult>;
-const MultiQueryResultResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MultiQueryResultResultsList>;
-
 /** The result of a multi-query. */
 export interface MultiQueryResult {
   results: MultiQueryResultResultsList;
   performance: QueryPerformance;
   billing: QueryBilling;
 }
-const MultiQueryResult = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MultiQueryResult>;
-
 /** Configuration options for full-text search. */
 export interface FullTextSearchConfig {
   /** The `k1` term saturation parameter for BM25. Defaults to `1.2`. */
@@ -502,8 +323,6 @@ export interface FullTextSearchConfig {
 }
 /** Whether this attribute can be used as part of a BM25 full-text search. Requires the `string` or `[]string` type, and by default, BM25-enabled attributes are not filterable. You can override this by setting `filterable: true`. */
 export type FullTextSearch = boolean | FullTextSearchConfig;
-const FullTextSearch = S.Unknown as any as S.Schema<FullTextSearch>;
-
 /** Configuration options for ANN (Approximate Nearest Neighbor) indexing. */
 export interface AnnConfig {
   distance_metric?: unknown;
@@ -512,14 +331,10 @@ export interface AnnConfig {
 }
 /** Whether to create an approximate nearest neighbor index for the attribute. Can be a boolean or a detailed configuration object. */
 export type Ann = boolean | AnnConfig;
-const Ann = S.Unknown as any as S.Schema<Ann>;
-
 /** Whether to create a sparse kNN index for the attribute. Requires the `{}f16` type. */
 export interface SparseKnn {
   distance_metric: unknown;
 }
-const SparseKnn = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SparseKnn>;
-
 /** Configuration options for automatic embedding. */
 export interface AttributeEmbedConfig {
   /** The name of an existing vector attribute to store embeddings in. If omitted, turbopuffer will generate a computed vector attribute named `$embed_<attribute>`. */
@@ -531,8 +346,6 @@ export interface AttributeEmbedConfig {
 }
 /** Whether to automatically embed this string attribute into a vector attribute. Can be a model name, a detailed configuration object, or `null` to remove an existing embedding configuration. */
 export type AttributeEmbed = string | AttributeEmbedConfig;
-const AttributeEmbed = S.Unknown as any as S.Schema<AttributeEmbed>;
-
 /** Detailed configuration for an attribute attached to a document. */
 export interface AttributeSchemaConfig {
   type: string;
@@ -549,98 +362,43 @@ export interface AttributeSchemaConfig {
   sparse_knn?: SparseKnn;
   embed?: AttributeEmbed | null;
 }
-const AttributeSchemaConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AttributeSchemaConfig>;
-
 /** The schema for an attribute attached to a document. */
 export type AttributeSchema = string | AttributeSchemaConfig;
-const AttributeSchema = S.Unknown as any as S.Schema<AttributeSchema>;
-
 /** The desired schema for the namespace. */
 export type CreateNamespaceSchemaRequestBodyMap = { [key: string]: AttributeSchema | undefined };
-const CreateNamespaceSchemaRequestBodyMap = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateNamespaceSchemaRequestBodyMap>;
-
 export interface CreateNamespaceSchemaRequest {
   /** The name of the namespace. */
   namespace: string;
   body?: CreateNamespaceSchemaRequestBodyMap;
 }
-const CreateNamespaceSchemaRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateNamespaceSchemaRequest>;
-
 /** The updated schema for the namespace. */
 export type CreateNamespaceSchemaResponseBodyMap = {
   [key: string]: AttributeSchemaConfig | undefined;
 };
-const CreateNamespaceSchemaResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateNamespaceSchemaResponseBodyMap>;
-
 export type CreateNamespaceSchemaResponse = CreateNamespaceSchemaResponseBodyMap;
-const CreateNamespaceSchemaResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateNamespaceSchemaResponse>;
-
 export interface DeleteNamespaceRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteNamespaceRequest>;
-
 export interface DeleteNamespaceResponse {
   /** The status of the request. */
   status: unknown;
 }
-const DeleteNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteNamespaceResponse>;
-
 export interface GetNamespaceHintCacheWarmRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-const GetNamespaceHintCacheWarmRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetNamespaceHintCacheWarmRequest>;
-
 export interface GetNamespaceHintCacheWarmResponse {
   /** The status of the request. */
   status: unknown;
   message?: string;
 }
-const GetNamespaceHintCacheWarmResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetNamespaceHintCacheWarmResponse>;
-
 export interface GetNamespaceMetadataRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-const GetNamespaceMetadataRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetNamespaceMetadataRequest>;
-
 /** The schema of the namespace. */
 export type NamespaceMetadataSchemaMap = { [key: string]: AttributeSchemaConfig | undefined };
-const NamespaceMetadataSchemaMap =
-  CreateNamespaceSchemaResponseBodyMap as any as S.Schema<NamespaceMetadataSchemaMap>;
-
 export interface NamespaceMetadataIndexCase0 {
   status: unknown;
 }
@@ -650,8 +408,6 @@ export interface NamespaceMetadataIndexCase1 {
   unindexed_bytes: number;
 }
 export type NamespaceMetadataIndex = NamespaceMetadataIndexCase0 | NamespaceMetadataIndexCase1;
-const NamespaceMetadataIndex = S.Unknown as any as S.Schema<NamespaceMetadataIndex>;
-
 /** Operational status for a pinned namespace. */
 export interface PinningStatus {
   /** The timestamp of the latest pinning status snapshot. */
@@ -663,26 +419,17 @@ export interface PinningStatus {
   /** Aggregate utilization for the pinned namespace, reported as a value between 0.0 and 1.0. */
   utilization: number;
 }
-const PinningStatus = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PinningStatus>;
-
 /** Configuration for namespace pinning, along with the current status of the pinned namespace. */
 export interface PinningConfigResponse {
   /** The number of read replicas to provision. Defaults to 1 if not specified. */
   replicas?: number;
   status?: PinningStatus;
 }
-const PinningConfigResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PinningConfigResponse>;
-
 /** Configuration for namespace sharding, which partitions a namespace's documents across multiple internal shards to scale indexing and query throughput beyond a single machine. Sharding can only be configured on a namespace's inaugural write, and cannot be added to or changed on an existing namespace. */
 export interface ShardingConfig {
   /** The number of shards to partition the namespace into. */
   num_shards: number;
 }
-const ShardingConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ShardingConfig>;
-
 /** Metadata about a namespace. */
 export interface NamespaceMetadata {
   /** The schema of the namespace. */
@@ -702,19 +449,12 @@ export interface NamespaceMetadata {
   /** Whether document and schema writes are rejected. Omitted when `false`. */
   read_only?: boolean;
 }
-const NamespaceMetadata = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<NamespaceMetadata>;
-
 export interface GetNamespaceOperationRequest {
   /** The name of the namespace. */
   namespace: string;
   /** The operation token obtained when starting the copy. */
   token: string;
 }
-const GetNamespaceOperationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetNamespaceOperationRequest>;
-
 export interface CopyFromNamespaceOperationCase0 {
   status: unknown;
   /** The time at which the operation started. */
@@ -724,36 +464,21 @@ export interface CopyFromNamespaceOperationCase0 {
 }
 /** The IDs of documents that were upserted. Only included when `return_affected_ids` is true and at least one document was upserted. */
 export type WriteResultUpsertedIdsList = Array<Id>;
-const WriteResultUpsertedIdsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<WriteResultUpsertedIdsList>;
-
 /** The IDs of documents that were patched. Only included when `return_affected_ids` is true and at least one document was patched. */
 export type WriteResultPatchedIdsList = Array<Id>;
-const WriteResultPatchedIdsList =
-  WriteResultUpsertedIdsList as any as S.Schema<WriteResultPatchedIdsList>;
-
 /** The IDs of documents that were deleted. Only included when `return_affected_ids` is true and at least one document was deleted. */
 export type WriteResultDeletedIdsList = Array<Id>;
-const WriteResultDeletedIdsList =
-  WriteResultUpsertedIdsList as any as S.Schema<WriteResultDeletedIdsList>;
-
 /** The billing information for a write request. */
 export interface WriteBilling {
   /** The number of billable logical bytes written to the namespace. */
   billable_logical_bytes_written: number;
   query?: QueryBilling;
 }
-const WriteBilling = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<WriteBilling>;
-
 /** The performance information for a write request. */
 export interface WritePerformance {
   /** Request time measured on the server, in milliseconds. */
   server_total_ms: number;
 }
-const WritePerformance = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<WritePerformance>;
-
 /** The response to a successful write request. */
 export interface WriteResult {
   /** The status of the request. */
@@ -779,8 +504,6 @@ export interface WriteResult {
   billing: WriteBilling;
   performance?: WritePerformance;
 }
-const WriteResult = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<WriteResult>;
-
 export interface CopyFromNamespaceOperationResultCase0 {
   success: WriteResult;
 }
@@ -814,31 +537,16 @@ export interface CopyFromNamespaceOperationCase1 {
 export type CopyFromNamespaceOperation =
   | CopyFromNamespaceOperationCase0
   | CopyFromNamespaceOperationCase1;
-const CopyFromNamespaceOperation = S.Unknown as any as S.Schema<CopyFromNamespaceOperation>;
-
 export type GetNamespaceOperationResponse = CopyFromNamespaceOperation;
-const GetNamespaceOperationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetNamespaceOperationResponse>;
-
 export interface GetNamespaceSchemaRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-const GetNamespaceSchemaRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetNamespaceSchemaRequest>;
-
 /** The response to a successful namespace schema request. */
 export type GetNamespaceSchemaResponseBodyMap = {
   [key: string]: AttributeSchemaConfig | undefined;
 };
 export type GetNamespaceSchemaResponse = GetNamespaceSchemaResponseBodyMap;
-const GetNamespaceSchemaResponse =
-  CreateNamespaceSchemaResponse as any as S.Schema<GetNamespaceSchemaResponse>;
-
 export interface ListNamespacesRequest {
   /** Retrieve the next page of results. */
   cursor?: string;
@@ -847,77 +555,40 @@ export interface ListNamespacesRequest {
   /** Limit the number of results per page. */
   page_size?: number;
 }
-const ListNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListNamespacesRequest>;
-
 /** A summary of a namespace. */
 export interface NamespaceSummary {
   /** The namespace ID. */
   id: string;
 }
-const NamespaceSummary = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<NamespaceSummary>;
-
 /** The list of namespaces. */
 export type ListNamespacesResponseNamespacesList = Array<NamespaceSummary>;
-const ListNamespacesResponseNamespacesList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListNamespacesResponseNamespacesList>;
-
 export interface ListNamespacesResponse {
   /** The list of namespaces. */
   namespaces?: ListNamespacesResponseNamespacesList;
   /** The cursor to use to retrieve the next page of results. */
   next_cursor?: string;
 }
-const ListNamespacesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListNamespacesResponse>;
-
 /** The IDs of the documents. */
 export type ColumnsIdList = Array<Id>;
-const ColumnsIdList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ColumnsIdList>;
-
 /** The vector embeddings of the documents. */
 export type ColumnsVectorCase0List = Array<Vector>;
 export type ColumnsVector = ColumnsVectorCase0List | Vector;
-const ColumnsVector = S.Unknown as any as S.Schema<ColumnsVector>;
-
 /** A list of documents in columnar format. Each key is a column name, mapped to an array of values for that column. */
 export interface Columns {
   /** The IDs of the documents. */
   id: ColumnsIdList;
   vector?: ColumnsVector;
 }
-const Columns = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Columns>;
-
 export type UpdateNamespaceRequestUpsertRowsList = Array<Row>;
-const UpdateNamespaceRequestUpsertRowsList =
-  CreateNamespaceQueryResponseRowsList as any as S.Schema<UpdateNamespaceRequestUpsertRowsList>;
-
 export type UpdateNamespaceRequestPatchRowsList = Array<Row>;
-const UpdateNamespaceRequestPatchRowsList =
-  CreateNamespaceQueryResponseRowsList as any as S.Schema<UpdateNamespaceRequestPatchRowsList>;
-
 export type UpdateNamespaceRequestDeletesList = Array<Id>;
-const UpdateNamespaceRequestDeletesList =
-  WriteResultUpsertedIdsList as any as S.Schema<UpdateNamespaceRequestDeletesList>;
-
 /** The schema of the attributes attached to the documents. */
 export type UpdateNamespaceRequestSchemaMap = { [key: string]: AttributeSchema | undefined };
-const UpdateNamespaceRequestSchemaMap =
-  CreateNamespaceSchemaRequestBodyMap as any as S.Schema<UpdateNamespaceRequestSchemaMap>;
-
 export interface BranchFromNamespaceConfig {
   /** The namespace to create an instant, copy-on-write clone of. */
   source_namespace: string;
 }
 export type BranchFromNamespaceParams = string | BranchFromNamespaceConfig;
-const BranchFromNamespaceParams = S.Unknown as any as S.Schema<BranchFromNamespaceParams>;
-
 export interface CopyFromNamespaceConfig {
   /** The namespace to copy documents from. */
   source_namespace: string;
@@ -927,20 +598,13 @@ export interface CopyFromNamespaceConfig {
   source_region?: string;
 }
 export type CopyFromNamespaceParams = string | CopyFromNamespaceConfig;
-const CopyFromNamespaceParams = S.Unknown as any as S.Schema<CopyFromNamespaceParams>;
-
 export type PatchByFilterPatchMap = { [key: string]: unknown | undefined };
-const PatchByFilterPatchMap =
-  CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<PatchByFilterPatchMap>;
-
 /** The patch and filter specifying which documents to patch. */
 export interface PatchByFilter {
   patch: PatchByFilterPatchMap;
   /** Filter by attributes. Same syntax as the query endpoint. */
   filters: unknown;
 }
-const PatchByFilter = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<PatchByFilter>;
-
 export interface UpdateNamespaceRequest {
   /** The name of the namespace. */
   namespace: string;
@@ -974,22 +638,12 @@ export interface UpdateNamespaceRequest {
   /** Disables write throttling (HTTP 429 responses) during high-volume ingestion. */
   disable_backpressure?: boolean;
 }
-const UpdateNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UpdateNamespaceRequest>;
-
 export interface UpdateNamespaceByNamespaceRequest {
   /** The name of the namespace. */
   namespace: string;
   /** The namespace to create an instant, copy-on-write clone of. */
   source_namespace: string;
 }
-const UpdateNamespaceByNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<UpdateNamespaceByNamespaceRequest>;
-
 export interface UpdateNamespaceByNamespaceRequest2 {
   /** The name of the namespace. */
   namespace: string;
@@ -1002,11 +656,6 @@ export interface UpdateNamespaceByNamespaceRequest2 {
   /** (Optional) The encryption configuration for the destination namespace. */
   dest_encryption?: Encryption;
 }
-const UpdateNamespaceByNamespaceRequest2 = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<UpdateNamespaceByNamespaceRequest2>;
-
 /** Configuration for namespace pinning. */
 export interface PinningConfig {
   /** The number of read replicas to provision. Defaults to 1 if not specified. */
@@ -1014,9 +663,6 @@ export interface PinningConfig {
 }
 /** Configuration for namespace pinning. - Missing field: no change to pinning configuration - `null` or `false`: explicitly remove pinning - `true`: enable pinning with default configuration - Object: set pinning configuration */
 export type UpdateNamespaceMetadataRequestPinning = boolean | PinningConfig;
-const UpdateNamespaceMetadataRequestPinning =
-  S.Unknown as any as S.Schema<UpdateNamespaceMetadataRequestPinning>;
-
 export interface UpdateNamespaceMetadataRequest {
   /** The name of the namespace. */
   namespace: string;
@@ -1025,11 +671,6 @@ export interface UpdateNamespaceMetadataRequest {
   /** Set to `true` to reject document and schema writes, or `false` to allow them. Writes already in progress may still commit. Metadata updates remain available. */
   read_only?: boolean;
 }
-const UpdateNamespaceMetadataRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<UpdateNamespaceMetadataRequest>;
-
 export type CreateNamespaceAsyncError = TurbopufferOpError;
 /** Start copying all documents from another namespace into this one. Returns an operation token without waiting for the copy to finish. Use the token to poll for progress and the result. */
 export const createNamespaceAsync: API.OperationMethod<
@@ -1038,8 +679,8 @@ export const createNamespaceAsync: API.OperationMethod<
   CreateNamespaceAsyncError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNamespaceAsyncRequest,
-  output: CreateNamespaceAsyncResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateNamespaceAsyncRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateNamespaceAsyncResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1053,8 +694,8 @@ export const createNamespaceDebugRecall: API.OperationMethod<
   CreateNamespaceDebugRecallError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNamespaceDebugRecallRequest,
-  output: CreateNamespaceDebugRecallResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateNamespaceDebugRecallRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateNamespaceDebugRecallResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1068,8 +709,8 @@ export const createNamespaceExplainQuery: API.OperationMethod<
   CreateNamespaceExplainQueryError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNamespaceExplainQueryRequest,
-  output: CreateNamespaceExplainQueryResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateNamespaceExplainQueryRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateNamespaceExplainQueryResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1083,8 +724,8 @@ export const createNamespaceQuery: API.OperationMethod<
   CreateNamespaceQueryError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNamespaceQueryRequest,
-  output: CreateNamespaceQueryResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateNamespaceQueryRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateNamespaceQueryResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1098,8 +739,8 @@ export const createNamespaceQuery2: API.OperationMethod<
   CreateNamespaceQuery2Error,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNamespaceQueryRequest2,
-  output: MultiQueryResult,
+  input: __S(23, __c2, 7) as any as S.Schema<CreateNamespaceQueryRequest2>,
+  output: __S(26, __c3, 2) as any as S.Schema<MultiQueryResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1113,8 +754,8 @@ export const createNamespaceSchema: API.OperationMethod<
   CreateNamespaceSchemaError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNamespaceSchemaRequest,
-  output: CreateNamespaceSchemaResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<CreateNamespaceSchemaRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CreateNamespaceSchemaResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1128,8 +769,8 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNamespaceRequest,
-  output: DeleteNamespaceResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1143,8 +784,8 @@ export const getNamespaceHintCacheWarm: API.OperationMethod<
   GetNamespaceHintCacheWarmError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceHintCacheWarmRequest,
-  output: GetNamespaceHintCacheWarmResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<GetNamespaceHintCacheWarmRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetNamespaceHintCacheWarmResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1158,8 +799,8 @@ export const getNamespaceMetadata: API.OperationMethod<
   GetNamespaceMetadataError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceMetadataRequest,
-  output: NamespaceMetadata,
+  input: __S(37, __c4, 5) as any as S.Schema<GetNamespaceMetadataRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<NamespaceMetadata>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1173,8 +814,8 @@ export const getNamespaceOperation: API.OperationMethod<
   GetNamespaceOperationError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceOperationRequest,
-  output: GetNamespaceOperationResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<GetNamespaceOperationRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetNamespaceOperationResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1188,8 +829,8 @@ export const getNamespaceSchema: API.OperationMethod<
   GetNamespaceSchemaError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceSchemaRequest,
-  output: GetNamespaceSchemaResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<GetNamespaceSchemaRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetNamespaceSchemaResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1203,8 +844,8 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespacesRequest,
-  output: ListNamespacesResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListNamespacesResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1218,8 +859,8 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNamespaceRequest,
-  output: WriteResult,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<WriteResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1233,8 +874,8 @@ export const updateNamespaceByNamespace: API.OperationMethod<
   UpdateNamespaceByNamespaceError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNamespaceByNamespaceRequest,
-  output: WriteResult,
+  input: __S(57, __c7, 1) as any as S.Schema<UpdateNamespaceByNamespaceRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<WriteResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1248,8 +889,8 @@ export const updateNamespaceByNamespace2: API.OperationMethod<
   UpdateNamespaceByNamespace2Error,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNamespaceByNamespaceRequest2,
-  output: WriteResult,
+  input: __S(58, __c7, 2) as any as S.Schema<UpdateNamespaceByNamespaceRequest2>,
+  output: __S(46, __c5, 6) as any as S.Schema<WriteResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1263,8 +904,8 @@ export const updateNamespaceMetadata: API.OperationMethod<
   UpdateNamespaceMetadataError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNamespaceMetadataRequest,
-  output: NamespaceMetadata,
+  input: __S(59, __c7, 3) as any as S.Schema<UpdateNamespaceMetadataRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<NamespaceMetadata>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -1280,7 +921,7 @@ function __c0(j: number): any {
           source_namespace: S.String,
           source_api_key: S.optional(S.String),
           source_region: S.optional(S.String),
-          dest_encryption: S.optional(Encryption),
+          dest_encryption: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}/async", code: 200 })),
       ).annotate({
         identifier: "CreateNamespaceAsyncRequest",
@@ -1313,23 +954,23 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: Id,
-          vector: S.optional(Vector),
+          id: S.Unknown,
+          vector: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Row" });
     case 5:
-      return S.Array(Row);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          query_vector: CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList,
-          nearest_neighbors: CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList,
+          query_vector: __S(3, __c0, 3),
+          nearest_neighbors: __S(5, __c0, 5),
         }),
       ).annotate({
         identifier: "CreateNamespaceDebugRecallResponseGroundTruthItem",
       });
     case 7:
-      return S.Array(CreateNamespaceDebugRecallResponseGroundTruthItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -1340,7 +981,7 @@ function __c1(j: number): any {
           avg_recall: S.Number,
           avg_exhaustive_count: S.Number,
           avg_ann_count: S.Number,
-          ground_truth: S.optional(CreateNamespaceDebugRecallResponseGroundTruthList),
+          ground_truth: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "CreateNamespaceDebugRecallResponse",
@@ -1364,18 +1005,18 @@ function __c1(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           vector_encoding: S.optional(S.Unknown),
-          consistency: S.optional(CreateNamespaceExplainQueryRequestConsistency),
+          consistency: S.optional(__S(9, __c1, 1)),
           rank_by: S.optional(S.Unknown),
           top_k: S.optional(S.Number),
           offset: S.optional(S.Number),
           filters: S.optional(S.Unknown),
-          include_attributes: S.optional(IncludeAttributes),
-          exclude_attributes: S.optional(CreateNamespaceExplainQueryRequestExcludeAttributesList),
-          aggregate_by: S.optional(CreateNamespaceExplainQueryRequestAggregateByMap),
-          group_by: S.optional(CreateNamespaceExplainQueryRequestGroupByList),
-          compute_attributes: S.optional(CreateNamespaceExplainQueryRequestComputeAttributesMap),
+          include_attributes: S.optional(S.Unknown),
+          exclude_attributes: S.optional(__S(10, __c1, 2)),
+          aggregate_by: S.optional(__S(11, __c1, 3)),
+          group_by: S.optional(__S(12, __c1, 4)),
+          compute_attributes: S.optional(__S(11, __c1, 3)),
           distance_metric: S.optional(S.Unknown),
-          limit: S.optional(CreateNamespaceExplainQueryRequestLimit),
+          limit: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}/explain_query", code: 200 }),
         ),
@@ -1395,18 +1036,18 @@ function __c1(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           vector_encoding: S.optional(S.Unknown),
-          consistency: S.optional(CreateNamespaceExplainQueryRequestConsistency),
+          consistency: S.optional(__S(9, __c1, 1)),
           rank_by: S.optional(S.Unknown),
           top_k: S.optional(S.Number),
           offset: S.optional(S.Number),
           filters: S.optional(S.Unknown),
-          include_attributes: S.optional(IncludeAttributes),
-          exclude_attributes: S.optional(CreateNamespaceQueryRequestExcludeAttributesList),
-          aggregate_by: S.optional(CreateNamespaceQueryRequestAggregateByMap),
-          group_by: S.optional(CreateNamespaceQueryRequestGroupByList),
-          compute_attributes: S.optional(CreateNamespaceQueryRequestComputeAttributesMap),
+          include_attributes: S.optional(S.Unknown),
+          exclude_attributes: S.optional(__S(10, __c1, 2)),
+          aggregate_by: S.optional(__S(11, __c1, 3)),
+          group_by: S.optional(__S(12, __c1, 4)),
+          compute_attributes: S.optional(__S(11, __c1, 3)),
           distance_metric: S.optional(S.Unknown),
-          limit: S.optional(CreateNamespaceQueryRequestLimit),
+          limit: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}/query", code: 200 })),
       ).annotate({
         identifier: "CreateNamespaceQueryRequest",
@@ -1416,9 +1057,9 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AggregationGroup);
+      return S.Array(__S(11, __c1, 3));
     case 1:
-      return S.Array(Row);
+      return S.Array(__S(4, __c0, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1440,11 +1081,11 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          aggregations: S.optional(CreateNamespaceQueryResponseAggregationsMap),
-          aggregation_groups: S.optional(CreateNamespaceQueryResponseAggregationGroupsList),
-          rows: S.optional(CreateNamespaceQueryResponseRowsList),
-          performance: QueryPerformance,
-          billing: QueryBilling,
+          aggregations: S.optional(__S(11, __c1, 3)),
+          aggregation_groups: S.optional(__S(16, __c2, 0)),
+          rows: S.optional(__S(17, __c2, 1)),
+          performance: __S(18, __c2, 2),
+          billing: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "CreateNamespaceQueryResponse",
@@ -1456,26 +1097,26 @@ function __c2(j: number): any {
           top_k: S.optional(S.Number),
           offset: S.optional(S.Number),
           filters: S.optional(S.Unknown),
-          include_attributes: S.optional(IncludeAttributes),
-          exclude_attributes: S.optional(QueryExcludeAttributesList),
-          aggregate_by: S.optional(QueryAggregateByMap),
-          group_by: S.optional(QueryGroupByList),
-          compute_attributes: S.optional(QueryComputeAttributesMap),
+          include_attributes: S.optional(S.Unknown),
+          exclude_attributes: S.optional(__S(10, __c1, 2)),
+          aggregate_by: S.optional(__S(11, __c1, 3)),
+          group_by: S.optional(__S(12, __c1, 4)),
+          compute_attributes: S.optional(__S(11, __c1, 3)),
           distance_metric: S.optional(S.Unknown),
-          limit: S.optional(QueryLimit),
+          limit: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Query" });
     case 6:
-      return S.Array(Query);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           vector_encoding: S.optional(S.Unknown),
-          consistency: S.optional(CreateNamespaceExplainQueryRequestConsistency),
-          queries: CreateNamespaceQueryRequestQueriesList,
+          consistency: S.optional(__S(9, __c1, 1)),
+          queries: __S(22, __c2, 6),
           rerank_by: S.optional(S.Unknown),
-          limit: S.optional(CreateNamespaceQueryRequestLimit2),
+          limit: S.optional(S.Unknown),
           offset: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}/query", code: 200 })),
       ).annotate({
@@ -1488,19 +1129,19 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          aggregations: S.optional(SingleQueryResultAggregationsMap),
-          aggregation_groups: S.optional(SingleQueryResultAggregationGroupsList),
-          rows: S.optional(SingleQueryResultRowsList),
+          aggregations: S.optional(__S(11, __c1, 3)),
+          aggregation_groups: S.optional(__S(16, __c2, 0)),
+          rows: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "SingleQueryResult" });
     case 1:
-      return S.Array(SingleQueryResult);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: MultiQueryResultResultsList,
-          performance: QueryPerformance,
-          billing: QueryBilling,
+          results: __S(25, __c3, 1),
+          performance: __S(18, __c2, 2),
+          billing: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "MultiQueryResult" });
     case 3:
@@ -1517,33 +1158,31 @@ function __c3(j: number): any {
           regex: S.optional(S.Boolean),
           glob: S.optional(S.Boolean),
           fuzzy: S.optional(S.Boolean),
-          full_text_search: S.optional(FullTextSearch),
-          ann: S.optional(Ann),
-          sparse_knn: S.optional(SparseKnn),
-          embed: S.optional(S.NullOr(AttributeEmbed)),
+          full_text_search: S.optional(S.Unknown),
+          ann: S.optional(S.Unknown),
+          sparse_knn: S.optional(__S(27, __c3, 3)),
+          embed: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "AttributeSchemaConfig" });
     case 5:
-      return S.Record(S.String, AttributeSchema);
+      return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          body: S.optional(CreateNamespaceSchemaRequestBodyMap.pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/v1/namespaces/{namespace}/schema", code: 200 })),
       ).annotate({
         identifier: "CreateNamespaceSchemaRequest",
       });
     case 7:
-      return S.Record(S.String, AttributeSchemaConfig);
+      return S.Record(S.String, __S(28, __c3, 4));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        CreateNamespaceSchemaResponseBodyMap.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateNamespaceSchemaResponse",
       });
     case 1:
@@ -1598,7 +1237,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           replicas: S.optional(S.Number),
-          status: S.optional(PinningStatus),
+          status: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "PinningConfigResponse" });
   }
@@ -1614,15 +1253,15 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schema: NamespaceMetadataSchemaMap,
+          schema: __S(31, __c3, 7),
           approx_row_count: S.Number,
           approx_logical_bytes: S.Number,
           created_at: S.String,
           updated_at: S.String,
-          encryption: Encryption,
-          index: NamespaceMetadataIndex,
-          pinning: S.optional(PinningConfigResponse),
-          sharding: S.optional(ShardingConfig),
+          encryption: S.Unknown,
+          index: S.Unknown,
+          pinning: S.optional(__S(39, __c4, 7)),
+          sharding: S.optional(__S(40, __c5, 0)),
           read_only: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NamespaceMetadata" });
@@ -1642,12 +1281,12 @@ function __c5(j: number): any {
         identifier: "GetNamespaceOperationRequest",
       });
     case 3:
-      return S.Array(Id);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           billable_logical_bytes_written: S.Number,
-          query: S.optional(QueryBilling),
+          query: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "WriteBilling" });
     case 5:
@@ -1666,15 +1305,15 @@ function __c5(j: number): any {
           rows_patched: S.optional(S.Number),
           rows_deleted: S.optional(S.Number),
           rows_remaining: S.optional(S.Boolean),
-          upserted_ids: S.optional(WriteResultUpsertedIdsList),
-          patched_ids: S.optional(WriteResultPatchedIdsList),
-          deleted_ids: S.optional(WriteResultDeletedIdsList),
-          billing: WriteBilling,
-          performance: S.optional(WritePerformance),
+          upserted_ids: S.optional(__S(43, __c5, 3)),
+          patched_ids: S.optional(__S(43, __c5, 3)),
+          deleted_ids: S.optional(__S(43, __c5, 3)),
+          billing: __S(44, __c5, 4),
+          performance: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "WriteResult" });
     case 7:
-      return S.suspend(() => CopyFromNamespaceOperation.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetNamespaceOperationResponse",
       });
   }
@@ -1704,27 +1343,27 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "NamespaceSummary" });
     case 3:
-      return S.Array(NamespaceSummary);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          namespaces: S.optional(ListNamespacesResponseNamespacesList),
+          namespaces: S.optional(__S(51, __c6, 3)),
           next_cursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNamespacesResponse" });
     case 5:
-      return S.Array(Id);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: ColumnsIdList,
-          vector: S.optional(ColumnsVector),
+          id: __S(53, __c6, 5),
+          vector: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Columns" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          patch: PatchByFilterPatchMap,
+          patch: __S(11, __c1, 3),
           filters: S.Unknown,
         }),
       ).annotate({ identifier: "PatchByFilter" });
@@ -1736,25 +1375,25 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          upsert_columns: S.optional(Columns),
-          upsert_rows: S.optional(UpdateNamespaceRequestUpsertRowsList),
-          patch_columns: S.optional(Columns),
-          patch_rows: S.optional(UpdateNamespaceRequestPatchRowsList),
-          deletes: S.optional(UpdateNamespaceRequestDeletesList),
+          upsert_columns: S.optional(__S(54, __c6, 6)),
+          upsert_rows: S.optional(__S(17, __c2, 1)),
+          patch_columns: S.optional(__S(54, __c6, 6)),
+          patch_rows: S.optional(__S(17, __c2, 1)),
+          deletes: S.optional(__S(43, __c5, 3)),
           upsert_condition: S.optional(S.Unknown),
           patch_condition: S.optional(S.Unknown),
           delete_condition: S.optional(S.Unknown),
           distance_metric: S.optional(S.Unknown),
-          schema: S.optional(UpdateNamespaceRequestSchemaMap),
-          branch_from_namespace: S.optional(BranchFromNamespaceParams),
-          copy_from_namespace: S.optional(CopyFromNamespaceParams),
+          schema: S.optional(__S(29, __c3, 5)),
+          branch_from_namespace: S.optional(S.Unknown),
+          copy_from_namespace: S.optional(S.Unknown),
           delete_by_filter: S.optional(S.Unknown),
           delete_by_filter_allow_partial: S.optional(S.Boolean),
-          patch_by_filter: S.optional(PatchByFilter),
+          patch_by_filter: S.optional(__S(55, __c6, 7)),
           patch_by_filter_allow_partial: S.optional(S.Boolean),
           return_affected_ids: S.optional(S.Boolean),
-          encryption: S.optional(Encryption),
-          sharding: S.optional(ShardingConfig),
+          encryption: S.optional(S.Unknown),
+          sharding: S.optional(__S(40, __c5, 0)),
           disable_backpressure: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
       ).annotate({ identifier: "UpdateNamespaceRequest" });
@@ -1774,7 +1413,7 @@ function __c7(j: number): any {
           source_namespace: S.String,
           source_api_key: S.optional(S.String),
           source_region: S.optional(S.String),
-          dest_encryption: S.optional(Encryption),
+          dest_encryption: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
       ).annotate({
         identifier: "UpdateNamespaceByNamespaceRequest2",
@@ -1783,11 +1422,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          pinning: S.optional(S.NullOr(UpdateNamespaceMetadataRequestPinning)),
+          pinning: S.optional(S.NullOr(S.Unknown)),
           read_only: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/namespaces/{namespace}/metadata", code: 200 })),
       ).annotate({
         identifier: "UpdateNamespaceMetadataRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

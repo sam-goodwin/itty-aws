@@ -11,6 +11,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "DevOps Agent",
   serviceShapeName: "DevOpsAgent",
@@ -111,7 +113,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     fieldList: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(260, __c32, 4)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -119,12 +121,8 @@ export class ValidationException
 export type AgentSpaceId = string;
 export type ServiceId = string;
 export type SourceAccountType = "source" | (string & {});
-const SourceAccountType = S.String;
-
 export type RoleArn = string;
 export type ValidationStatus = "valid" | "invalid" | "pending-confirmation" | (string & {});
-const ValidationStatus = S.String;
-
 export interface SourceAwsConfiguration {
   accountId: string;
   accountType: SourceAccountType;
@@ -133,13 +131,7 @@ export interface SourceAwsConfiguration {
   agentElevatedRoleArn?: string;
   agentElevatedRoleArnStatus?: ValidationStatus;
 }
-const SourceAwsConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<SourceAwsConfiguration>;
 export type MonitorAccountType = "monitor" | (string & {});
-const MonitorAccountType = S.String;
-
 export interface AWSConfiguration {
   assumableRoleArn: string;
   accountId: string;
@@ -147,10 +139,7 @@ export interface AWSConfiguration {
   agentElevatedRoleArn?: string;
   agentElevatedRoleArnStatus?: ValidationStatus;
 }
-const AWSConfiguration = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AWSConfiguration>;
 export type GithubRepoOwnerType = "organization" | "user" | (string & {});
-const GithubRepoOwnerType = S.String;
-
 export interface GitHubConfiguration {
   repoName: string;
   repoId: string;
@@ -159,154 +148,86 @@ export interface GitHubConfiguration {
   instanceIdentifier?: string;
   runtimeRoleArn?: string;
 }
-const GitHubConfiguration = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GitHubConfiguration>;
 export interface SlackChannel {
   channelName?: string;
   channelId: string;
 }
-const SlackChannel = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SlackChannel>;
 export interface SlackTransmissionTarget {
   opsOncallTarget: SlackChannel;
   opsSRETarget?: SlackChannel;
 }
-const SlackTransmissionTarget = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<SlackTransmissionTarget>;
 export interface SlackBidirectionalConfiguration {
   roleArn: string;
   enabled?: boolean;
 }
-const SlackBidirectionalConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SlackBidirectionalConfiguration>;
 export interface SlackConfiguration {
   workspaceId: string;
   workspaceName: string;
   transmissionTarget: SlackTransmissionTarget;
   bidirectional?: SlackBidirectionalConfiguration;
 }
-const SlackConfiguration = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SlackConfiguration>;
 export type DynatraceResourceList = string[];
-const DynatraceResourceList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface DynatraceConfiguration {
   envId: string;
   resources?: string[];
 }
-const DynatraceConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DynatraceConfiguration>;
 export type ServiceNowAuthenticationScopeList = string[];
-const ServiceNowAuthenticationScopeList =
-  DynatraceResourceList as any as S.Schema<ServiceNowAuthenticationScopeList>;
 export interface ServiceNowConfiguration {
   instanceId?: string;
   authScopes?: string[];
 }
-const ServiceNowConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ServiceNowConfiguration>;
 export interface MCPServerNewRelicConfiguration {
   accountId: string;
   endpoint: string;
 }
-const MCPServerNewRelicConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MCPServerNewRelicConfiguration>;
 export type ToolClassification = "READ_ONLY" | "MUTATIVE" | "DESTRUCTIVE" | (string & {});
-const ToolClassification = S.String;
-
 export interface MCPToolDetail {
   name: string;
   toolClassification?: ToolClassification;
 }
-const MCPToolDetail = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MCPToolDetail>;
 export type MCPToolDetailsList = MCPToolDetail[];
-const MCPToolDetailsList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface MCPServerDatadogConfiguration {
   enabledElevatedTools?: MCPToolDetail[];
 }
-const MCPServerDatadogConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<MCPServerDatadogConfiguration>;
 export type MCPToolsList = string[];
-const MCPToolsList = DynatraceResourceList as any as S.Schema<MCPToolsList>;
 export interface MCPServerConfiguration {
   tools: string[];
   toolDetails?: MCPToolDetail[];
 }
-const MCPServerConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<MCPServerConfiguration>;
 export interface GitLabConfiguration {
   projectId: string;
   projectPath: string;
   instanceIdentifier?: string;
   runtimeRoleArn?: string;
 }
-const GitLabConfiguration = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GitLabConfiguration>;
 export interface MCPServerSplunkConfiguration {}
-const MCPServerSplunkConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<MCPServerSplunkConfiguration>;
 export interface EventChannelConfiguration {}
-const EventChannelConfiguration =
-  MCPServerSplunkConfiguration as any as S.Schema<EventChannelConfiguration>;
 export interface AzureConfiguration {
   subscriptionId: string;
 }
-const AzureConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AzureConfiguration>;
 export interface AzureDevOpsConfiguration {
   organizationName: string;
   projectId: string;
   projectName: string;
 }
-const AzureDevOpsConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AzureDevOpsConfiguration>;
 export interface MCPServerGrafanaConfiguration {
   endpoint: string;
   organizationId?: string;
   tools?: string[];
   enabledElevatedTools?: MCPToolDetail[];
 }
-const MCPServerGrafanaConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<MCPServerGrafanaConfiguration>;
 export type PagerDutyServicesList = string[];
-const PagerDutyServicesList = DynatraceResourceList as any as S.Schema<PagerDutyServicesList>;
 export type EmailAddress = string | redacted.Redacted<string>;
 export interface PagerDutyConfiguration {
   services: string[];
   customerEmail: string | redacted.Redacted<string>;
 }
-const PagerDutyConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<PagerDutyConfiguration>;
 export interface MCPServerSigV4Configuration {
   tools: string[];
   toolDetails?: MCPToolDetail[];
 }
-const MCPServerSigV4Configuration = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<MCPServerSigV4Configuration>;
 export interface RemoteAgentConfiguration {}
-const RemoteAgentConfiguration =
-  MCPServerSplunkConfiguration as any as S.Schema<RemoteAgentConfiguration>;
 export interface RemoteAgentSigV4Configuration {}
-const RemoteAgentSigV4Configuration =
-  MCPServerSplunkConfiguration as any as S.Schema<RemoteAgentSigV4Configuration>;
 export type ServiceConfiguration =
   | {
       sourceAws: SourceAwsConfiguration;
@@ -707,52 +628,33 @@ export type ServiceConfiguration =
       remoteagent?: never;
       remoteagentsigv4: RemoteAgentSigV4Configuration;
     };
-const ServiceConfiguration = /*@__PURE__*/ __L.at(__c2, 6);
 export type CapabilityType =
   | "RELEASE_READINESS_REVIEW"
   | "RELEASE_READINESS_REVIEW_AUTOMATED_TESTING"
   | (string & {});
-const CapabilityType = S.String;
-
 export type TriggerEvent = "PULL_REQUEST_READY_FOR_REVIEW" | "PULL_REQUEST_DRAFT" | (string & {});
-const TriggerEvent = S.String;
-
 export type TriggerEventList = TriggerEvent[];
-const TriggerEventList = /*@__PURE__*/ __L.at(__c2, 7);
 export type TriggerRegexPattern = string;
 export type TriggerRegexPatternList = string[];
-const TriggerRegexPatternList = DynatraceResourceList as any as S.Schema<TriggerRegexPatternList>;
 export interface PatternFilter {
   patterns: string[];
 }
-const PatternFilter = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PatternFilter>;
 export interface TriggerFilterGroup {
   events?: TriggerEvent[];
   targetBranches?: PatternFilter;
 }
-const TriggerFilterGroup = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TriggerFilterGroup>;
 export type TriggerFilterGroups = TriggerFilterGroup[];
-const TriggerFilterGroups = /*@__PURE__*/ __L.at(__c3, 2);
 export interface CapabilityConfiguration {
   enabled?: boolean;
   triggerFilterGroups?: TriggerFilterGroup[];
 }
-const CapabilityConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CapabilityConfiguration>;
 export type AssociationCapabilities = { [key in CapabilityType]?: CapabilityConfiguration };
-const AssociationCapabilities = /*@__PURE__*/ __L.at(__c3, 4);
 export interface AssociateServiceInput {
   agentSpaceId: string;
   serviceId: string;
   configuration: ServiceConfiguration;
   capabilities?: { [key: string]: CapabilityConfiguration | undefined };
 }
-const AssociateServiceInput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AssociateServiceInput>;
 export type AssociationId = string;
 export interface Association {
   agentSpaceId: string;
@@ -764,10 +666,7 @@ export interface Association {
   configuration: ServiceConfiguration;
   capabilities?: { [key: string]: CapabilityConfiguration | undefined };
 }
-const Association = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Association>;
 export type WebhookType = "hmac" | "apikey" | "gitlab" | "pagerduty" | (string & {});
-const WebhookType = S.String;
-
 export type WebhookSecret = string | redacted.Redacted<string>;
 export type ApiKeyValue = string | redacted.Redacted<string>;
 export interface GenericWebhook {
@@ -777,15 +676,10 @@ export interface GenericWebhook {
   webhookSecret?: string | redacted.Redacted<string>;
   apiKey?: string | redacted.Redacted<string>;
 }
-const GenericWebhook = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GenericWebhook>;
 export interface AssociateServiceOutput {
   association: Association;
   webhook?: GenericWebhook;
 }
-const AssociateServiceOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AssociateServiceOutput>;
 export type AgentSpaceName = string;
 export type Description = string | redacted.Redacted<string>;
 export type Locale = string;
@@ -793,12 +687,8 @@ export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c4, 1);
 export type AgentSpacePreferenceKey = "elevatedActionsEnabled" | (string & {});
-const AgentSpacePreferenceKey = S.String;
-
 export type AgentSpacePreferences = { [key in AgentSpacePreferenceKey]?: boolean };
-const AgentSpacePreferences = /*@__PURE__*/ __L.at(__c4, 2);
 export interface CreateAgentSpaceInput {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -808,10 +698,6 @@ export interface CreateAgentSpaceInput {
   tags?: { [key: string]: string | undefined };
   preferences?: { [key: string]: boolean | undefined };
 }
-const CreateAgentSpaceInput = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateAgentSpaceInput>;
 export interface AgentSpace {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -822,46 +708,33 @@ export interface AgentSpace {
   agentSpaceId: string;
   preferences?: { [key: string]: boolean | undefined };
 }
-const AgentSpace = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AgentSpace>;
 export interface CreateAgentSpaceOutput {
   agentSpace: AgentSpace;
   tags?: { [key: string]: string | undefined };
 }
-const CreateAgentSpaceOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateAgentSpaceOutput>;
 export type AgentSpaceIdentifier = string;
 export type AssetType = string;
 export type AssetFilePath = string;
 export type AssetFileBytes = Uint8Array;
 export type AssetFileText = string;
 export type AssetFileBody = { bytes: Uint8Array; text?: never } | { bytes?: never; text: string };
-const AssetFileBody = /*@__PURE__*/ __L.at(__c4, 6);
 export interface AssetFileContent {
   path: string;
   body: AssetFileBody;
   metadata?: any;
 }
-const AssetFileContent = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AssetFileContent>;
 export type AssetZipBytes = Uint8Array;
 export interface AssetZipContent {
   zipFile: Uint8Array;
 }
-const AssetZipContent = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AssetZipContent>;
 export type AssetContentUrl = string;
 export interface AssetSourceUrlContent {
   url: string;
 }
-const AssetSourceUrlContent = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AssetSourceUrlContent>;
 export type AssetContent =
   | { file: AssetFileContent; zip?: never; sourceUrl?: never }
   | { file?: never; zip: AssetZipContent; sourceUrl?: never }
   | { file?: never; zip?: never; sourceUrl: AssetSourceUrlContent };
-const AssetContent = /*@__PURE__*/ __L.at(__c5, 2);
 export interface CreateAssetRequest {
   agentSpaceId: string;
   assetType: string;
@@ -869,7 +742,6 @@ export interface CreateAssetRequest {
   content: AssetContent;
   clientToken?: string;
 }
-const CreateAssetRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CreateAssetRequest>;
 export type ResourceId = string;
 export interface Asset {
   assetId: string;
@@ -879,11 +751,9 @@ export interface Asset {
   createdAt: Date;
   updatedAt: Date;
 }
-const Asset = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Asset>;
 export interface CreateAssetResponse {
   asset: Asset;
 }
-const CreateAssetResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateAssetResponse>;
 export interface CreateAssetFileRequest {
   agentSpaceId: string;
   assetId: string;
@@ -892,10 +762,6 @@ export interface CreateAssetFileRequest {
   metadata?: any;
   clientToken?: string;
 }
-const CreateAssetFileRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateAssetFileRequest>;
 export interface AssetFile {
   path: string;
   content: AssetFileBody;
@@ -904,14 +770,9 @@ export interface AssetFile {
   createdAt: Date;
   updatedAt: Date;
 }
-const AssetFile = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<AssetFile>;
 export interface CreateAssetFileResponse {
   file: AssetFile;
 }
-const CreateAssetFileResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateAssetFileResponse>;
 export interface ReferenceInput {
   system: string;
   title?: string;
@@ -919,20 +780,15 @@ export interface ReferenceInput {
   referenceUrl: string;
   associationId: string;
 }
-const ReferenceInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ReferenceInput>;
 export type TaskType =
   | "INVESTIGATION"
   | "EVALUATION"
   | "RELEASE_READINESS_REVIEW"
   | "RELEASE_TESTING"
   | (string & {});
-const TaskType = S.String;
-
 export type BacklogTaskTitle = string;
 export type BacklogTaskDescription = string;
 export type Priority = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "MINIMAL" | (string & {});
-const Priority = S.String;
-
 export interface CreateBacklogTaskRequest {
   agentSpaceId: string;
   reference?: ReferenceInput;
@@ -942,10 +798,6 @@ export interface CreateBacklogTaskRequest {
   priority: Priority;
   clientToken?: string;
 }
-const CreateBacklogTaskRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateBacklogTaskRequest>;
 export interface ReferenceOutput {
   system: string;
   title?: string;
@@ -953,7 +805,6 @@ export interface ReferenceOutput {
   referenceUrl: string;
   associationId: string;
 }
-const ReferenceOutput = ReferenceInput as any as S.Schema<ReferenceOutput>;
 export type TaskStatus =
   | "PENDING_TRIAGE"
   | "LINKED"
@@ -967,8 +818,6 @@ export type TaskStatus =
   | "SKIPPED"
   | "WAITING"
   | (string & {});
-const TaskStatus = S.String;
-
 export type BackLogTimestamp = Date;
 export interface Task {
   agentSpaceId: string;
@@ -989,48 +838,32 @@ export interface Task {
   statusReason?: string;
   hasLinkedTasks?: boolean;
 }
-const Task = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Task>;
 export interface CreateBacklogTaskResponse {
   task: Task;
 }
-const CreateBacklogTaskResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateBacklogTaskResponse>;
 export type UserType = "IAM" | "IDC" | "IDP" | (string & {});
-const UserType = S.String;
-
 export interface CreateChatRequest {
   agentSpaceId: string;
   userId?: string;
   userType?: UserType;
 }
-const CreateChatRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CreateChatRequest>;
 export interface CreateChatResponse {
   executionId: string;
   createdAt: Date;
 }
-const CreateChatResponse = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CreateChatResponse>;
 export type PrivateConnectionName = string;
 export type IpAddressOrDnsName = string;
 export type VpcId = string;
 export type SubnetId = string;
 export type ListOfSubnetIds = string[];
-const ListOfSubnetIds = DynatraceResourceList as any as S.Schema<ListOfSubnetIds>;
 export type SecurityGroupId = string;
 export type ListOfSecurityGroupIds = string[];
-const ListOfSecurityGroupIds = DynatraceResourceList as any as S.Schema<ListOfSecurityGroupIds>;
 export type IpAddressType = "IPV4" | "IPV6" | "DUAL_STACK" | (string & {});
-const IpAddressType = S.String;
-
 export type MaxIpv4AddressesPerEni = number;
 export type PortRange = string;
 export type PortRanges = string[];
-const PortRanges = DynatraceResourceList as any as S.Schema<PortRanges>;
 export type CertificateString = string;
 export type ResourceConfigDnsResolution = "PUBLIC" | "IN_VPC" | (string & {});
-const ResourceConfigDnsResolution = S.String;
-
 export interface ServiceManagedInput {
   hostAddress: string;
   vpcId: string;
@@ -1042,29 +875,20 @@ export interface ServiceManagedInput {
   certificate?: string;
   dnsResolution?: ResourceConfigDnsResolution;
 }
-const ServiceManagedInput = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ServiceManagedInput>;
 export type ResourceConfigurationArn = string;
 export interface SelfManagedInput {
   resourceConfigurationId: string;
   certificate?: string;
 }
-const SelfManagedInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<SelfManagedInput>;
 export type PrivateConnectionMode =
   | { serviceManaged: ServiceManagedInput; selfManaged?: never }
   | { serviceManaged?: never; selfManaged: SelfManagedInput };
-const PrivateConnectionMode = /*@__PURE__*/ __L.at(__c7, 1);
 export interface CreatePrivateConnectionInput {
   name: string;
   mode: PrivateConnectionMode;
   tags?: { [key: string]: string | undefined };
 }
-const CreatePrivateConnectionInput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreatePrivateConnectionInput>;
 export type PrivateConnectionType = "SELF_MANAGED" | "SERVICE_MANAGED" | (string & {});
-const PrivateConnectionType = S.String;
-
 export type ResourceGatewayArn = string;
 export type PrivateConnectionStatus =
   | "ACTIVE"
@@ -1073,8 +897,6 @@ export type PrivateConnectionStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-const PrivateConnectionStatus = S.String;
-
 export type FailureMessage = string;
 export interface CreatePrivateConnectionOutput {
   name: string;
@@ -1089,18 +911,12 @@ export interface CreatePrivateConnectionOutput {
   failureMessage?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreatePrivateConnectionOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreatePrivateConnectionOutput>;
 export type TriggerType = string;
 export type ScheduleExpression = string;
 export interface ScheduleCondition {
   expression: string;
 }
-const ScheduleCondition = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ScheduleCondition>;
 export type TriggerCondition = { schedule: ScheduleCondition };
-const TriggerCondition = /*@__PURE__*/ __L.at(__c7, 5);
 export type TriggerAction = unknown;
 export type TriggerStatus = string;
 export interface CreateTriggerRequest {
@@ -1111,7 +927,6 @@ export interface CreateTriggerRequest {
   status?: string;
   clientToken?: string;
 }
-const CreateTriggerRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CreateTriggerRequest>;
 export interface Trigger {
   triggerId: string;
   agentSpaceId: string;
@@ -1122,83 +937,43 @@ export interface Trigger {
   createdAt: Date;
   updatedAt: Date;
 }
-const Trigger = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Trigger>;
 export interface CreateTriggerResponse {
   trigger: Trigger;
 }
-const CreateTriggerResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateTriggerResponse>;
 export interface DeleteAgentSpaceInput {
   agentSpaceId: string;
 }
-const DeleteAgentSpaceInput = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteAgentSpaceInput>;
 export interface DeleteAgentSpaceOutput {}
-const DeleteAgentSpaceOutput =
-  MCPServerSplunkConfiguration as any as S.Schema<DeleteAgentSpaceOutput>;
 export interface DeleteAssetRequest {
   agentSpaceId: string;
   assetId: string;
 }
-const DeleteAssetRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteAssetRequest>;
 export interface DeleteAssetResponse {}
-const DeleteAssetResponse = MCPServerSplunkConfiguration as any as S.Schema<DeleteAssetResponse>;
 export interface DeleteAssetFileRequest {
   agentSpaceId: string;
   assetId: string;
   path: string;
 }
-const DeleteAssetFileRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteAssetFileRequest>;
 export interface DeleteAssetFileResponse {}
-const DeleteAssetFileResponse =
-  MCPServerSplunkConfiguration as any as S.Schema<DeleteAssetFileResponse>;
 export interface DeletePrivateConnectionInput {
   name: string;
 }
-const DeletePrivateConnectionInput = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeletePrivateConnectionInput>;
 export interface DeletePrivateConnectionOutput {
   name: string;
   status: PrivateConnectionStatus;
 }
-const DeletePrivateConnectionOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeletePrivateConnectionOutput>;
 export interface DeleteTriggerRequest {
   agentSpaceId: string;
   triggerId: string;
 }
-const DeleteTriggerRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<DeleteTriggerRequest>;
 export interface DeleteTriggerResponse {}
-const DeleteTriggerResponse =
-  MCPServerSplunkConfiguration as any as S.Schema<DeleteTriggerResponse>;
 export interface DeregisterServiceInput {
   serviceId: string;
 }
-const DeregisterServiceInput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeregisterServiceInput>;
 export interface DeregisterServiceOutput {}
-const DeregisterServiceOutput =
-  MCPServerSplunkConfiguration as any as S.Schema<DeregisterServiceOutput>;
 export interface DescribePrivateConnectionInput {
   name: string;
 }
-const DescribePrivateConnectionInput = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DescribePrivateConnectionInput>;
 export interface DescribePrivateConnectionOutput {
   name: string;
   type: PrivateConnectionType;
@@ -1212,33 +987,17 @@ export interface DescribePrivateConnectionOutput {
   failureMessage?: string;
   tags?: { [key: string]: string | undefined };
 }
-const DescribePrivateConnectionOutput =
-  CreatePrivateConnectionOutput as any as S.Schema<DescribePrivateConnectionOutput>;
 export type AuthFlow = "iam" | "idc" | "idp" | (string & {});
-const AuthFlow = S.String;
-
 export interface DisableOperatorAppInput {
   agentSpaceId: string;
   authFlow?: AuthFlow;
 }
-const DisableOperatorAppInput = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DisableOperatorAppInput>;
 export interface DisableOperatorAppResponse {}
-const DisableOperatorAppResponse =
-  MCPServerSplunkConfiguration as any as S.Schema<DisableOperatorAppResponse>;
 export interface DisassociateServiceInput {
   agentSpaceId: string;
   associationId: string;
 }
-const DisassociateServiceInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DisassociateServiceInput>;
 export interface DisassociateServiceOutput {}
-const DisassociateServiceOutput =
-  MCPServerSplunkConfiguration as any as S.Schema<DisassociateServiceOutput>;
 export type IdpClientId = string;
 export type IdpClientSecret = string | redacted.Redacted<string>;
 export interface EnableOperatorAppInput {
@@ -1251,17 +1010,12 @@ export interface EnableOperatorAppInput {
   idpClientSecret?: string | redacted.Redacted<string>;
   provider?: string;
 }
-const EnableOperatorAppInput = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<EnableOperatorAppInput>;
 export type OperatorAppUrl = string;
 export interface IamAuthConfiguration {
   operatorAppRoleArn: string;
   createdAt: Date;
   updatedAt?: Date;
 }
-const IamAuthConfiguration = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<IamAuthConfiguration>;
 export interface IdcAuthConfiguration {
   operatorAppRoleArn: string;
   idcInstanceArn: string;
@@ -1269,7 +1023,6 @@ export interface IdcAuthConfiguration {
   createdAt: Date;
   updatedAt?: Date;
 }
-const IdcAuthConfiguration = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<IdcAuthConfiguration>;
 export interface IdpAuthConfiguration {
   issuerUrl: string;
   clientId: string;
@@ -1278,7 +1031,6 @@ export interface IdpAuthConfiguration {
   createdAt: Date;
   updatedAt?: Date;
 }
-const IdpAuthConfiguration = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<IdpAuthConfiguration>;
 export interface EnableOperatorAppOutput {
   agentSpaceId: string;
   operatorAppUrl?: string;
@@ -1286,20 +1038,11 @@ export interface EnableOperatorAppOutput {
   idc?: IdcAuthConfiguration;
   idp?: IdpAuthConfiguration;
 }
-const EnableOperatorAppOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<EnableOperatorAppOutput>;
 export interface GetAccountUsageInput {}
-const GetAccountUsageInput = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetAccountUsageInput>;
 export interface UsageMetric {
   limit: number;
   usage: number;
 }
-const UsageMetric = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<UsageMetric>;
 export interface GetAccountUsageOutput {
   monthlyAccountInvestigationHours?: UsageMetric;
   monthlyAccountEvaluationHours?: UsageMetric;
@@ -1308,115 +1051,71 @@ export interface GetAccountUsageOutput {
   usagePeriodStartTime: Date;
   usagePeriodEndTime: Date;
 }
-const GetAccountUsageOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetAccountUsageOutput>;
 export interface GetAgentSpaceInput {
   agentSpaceId: string;
 }
-const GetAgentSpaceInput = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<GetAgentSpaceInput>;
 export interface GetAgentSpaceOutput {
   agentSpace: AgentSpace;
   tags?: { [key: string]: string | undefined };
 }
-const GetAgentSpaceOutput = CreateAgentSpaceOutput as any as S.Schema<GetAgentSpaceOutput>;
 export interface GetAssetRequest {
   agentSpaceId: string;
   assetId: string;
   assetVersion?: number;
 }
-const GetAssetRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetAssetRequest>;
 export interface GetAssetResponse {
   asset: Asset;
 }
-const GetAssetResponse = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetAssetResponse>;
 export interface GetAssetContentRequest {
   agentSpaceId: string;
   assetId: string;
   assetVersion?: number;
 }
-const GetAssetContentRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetAssetContentRequest>;
 export interface GetAssetContentResponse {
   content: AssetZipContent;
   version: number;
 }
-const GetAssetContentResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetAssetContentResponse>;
 export interface GetAssetFileRequest {
   agentSpaceId: string;
   assetId: string;
   path: string;
   assetVersion?: number;
 }
-const GetAssetFileRequest = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetAssetFileRequest>;
 export interface GetAssetFileResponse {
   file: AssetFile;
 }
-const GetAssetFileResponse = CreateAssetFileResponse as any as S.Schema<GetAssetFileResponse>;
 export interface GetAssociationInput {
   agentSpaceId: string;
   associationId: string;
 }
-const GetAssociationInput = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<GetAssociationInput>;
 export interface GetAssociationOutput {
   association: Association;
 }
-const GetAssociationOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetAssociationOutput>;
 export interface GetBacklogTaskRequest {
   agentSpaceId: string;
   taskId: string;
 }
-const GetBacklogTaskRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetBacklogTaskRequest>;
 export interface GetBacklogTaskResponse {
   task: Task;
 }
-const GetBacklogTaskResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetBacklogTaskResponse>;
 export interface GetOperatorAppInput {
   agentSpaceId: string;
 }
-const GetOperatorAppInput = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetOperatorAppInput>;
 export interface GetOperatorAppOutput {
   operatorAppUrl?: string;
   iam?: IamAuthConfiguration;
   idc?: IdcAuthConfiguration;
   idp?: IdpAuthConfiguration;
 }
-const GetOperatorAppOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetOperatorAppOutput>;
 export interface GetRecommendationRequest {
   agentSpaceId: string;
   recommendationId: string;
   recommendationVersion?: number;
 }
-const GetRecommendationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetRecommendationRequest>;
 export interface RecommendationContent {
   summary: string;
   spec?: string;
 }
-const RecommendationContent = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<RecommendationContent>;
 export type RecommendationStatus =
   | "PROPOSED"
   | "ACCEPTED"
@@ -1425,11 +1124,7 @@ export type RecommendationStatus =
   | "COMPLETED"
   | "UPDATE_IN_PROGRESS"
   | (string & {});
-const RecommendationStatus = S.String;
-
 export type RecommendationPriority = "HIGH" | "MEDIUM" | "LOW" | (string & {});
-const RecommendationPriority = S.String;
-
 export interface Recommendation {
   agentSpaceArn: string;
   recommendationId: string;
@@ -1447,18 +1142,12 @@ export interface Recommendation {
   updatedAt: Date;
   version: number;
 }
-const Recommendation = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<Recommendation>;
 export interface GetRecommendationResponse {
   recommendation: Recommendation;
 }
-const GetRecommendationResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetRecommendationResponse>;
 export interface GetServiceInput {
   serviceId: string;
 }
-const GetServiceInput = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetServiceInput>;
 export type Service =
   | "github"
   | "slack"
@@ -1479,36 +1168,23 @@ export type Service =
   | "remoteagent"
   | "remoteagentsigv4"
   | (string & {});
-const Service = S.String;
-
 export type ServiceName = string;
 export type DocumentList = any[];
-const DocumentList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface RegisteredGithubServiceDetails {
   owner: string;
   ownerType: GithubRepoOwnerType;
   targetUrl?: string;
 }
-const RegisteredGithubServiceDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<RegisteredGithubServiceDetails>;
 export interface RegisteredSlackServiceDetails {
   teamId: string;
   teamName: string;
 }
-const RegisteredSlackServiceDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<RegisteredSlackServiceDetails>;
 export type MCPServerAuthorizationMethod =
   | "oauth-client-credentials"
   | "oauth-3lo"
   | "api-key"
   | "bearer-token"
   | (string & {});
-const MCPServerAuthorizationMethod = S.String;
-
 export interface RegisteredMCPServerDetails {
   name: string;
   endpoint: string;
@@ -1516,87 +1192,47 @@ export interface RegisteredMCPServerDetails {
   description?: string | redacted.Redacted<string>;
   apiKeyHeader?: string;
 }
-const RegisteredMCPServerDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<RegisteredMCPServerDetails>;
 export type ServiceNowInstanceUrl = string;
 export interface RegisteredServiceNowDetails {
   instanceUrl?: string;
 }
-const RegisteredServiceNowDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<RegisteredServiceNowDetails>;
 export type GitLabTokenType = "personal" | "group" | (string & {});
-const GitLabTokenType = S.String;
-
 export interface RegisteredGitLabServiceDetails {
   targetUrl: string;
   tokenType: GitLabTokenType;
   groupId?: string;
 }
-const RegisteredGitLabServiceDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<RegisteredGitLabServiceDetails>;
 export type NewRelicRegion = "US" | "EU" | "JP" | (string & {});
-const NewRelicRegion = S.String;
-
 export interface RegisteredNewRelicDetails {
   accountId: string;
   region: NewRelicRegion;
   description?: string | redacted.Redacted<string>;
 }
-const RegisteredNewRelicDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<RegisteredNewRelicDetails>;
 export interface RegisteredAzureDevOpsServiceDetails {
   organizationName: string;
 }
-const RegisteredAzureDevOpsServiceDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<RegisteredAzureDevOpsServiceDetails>;
 export type Guid = string;
 export type WebIdentityTokenAudienceList = string[];
-const WebIdentityTokenAudienceList =
-  DynatraceResourceList as any as S.Schema<WebIdentityTokenAudienceList>;
 export interface RegisteredAzureIdentityDetails {
   tenantId: string;
   clientId: string;
   webIdentityRoleArn: string;
   webIdentityTokenAudiences: string[];
 }
-const RegisteredAzureIdentityDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<RegisteredAzureIdentityDetails>;
 export type MCPServerEndpoint = string;
 export interface RegisteredGrafanaServerDetails {
   endpoint: string;
   authorizationMethod: MCPServerAuthorizationMethod;
 }
-const RegisteredGrafanaServerDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<RegisteredGrafanaServerDetails>;
 export type PagerDutyScopesList = string[];
-const PagerDutyScopesList = DynatraceResourceList as any as S.Schema<PagerDutyScopesList>;
 export interface RegisteredPagerDutyDetails {
   scopes: string[];
 }
-const RegisteredPagerDutyDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<RegisteredPagerDutyDetails>;
 export type MCPServerName = string;
 export type SigV4Region = string;
 export type CustomHeaderName = string;
 export type CustomHeaderValue = string | redacted.Redacted<string>;
 export type CustomHeaders = { [key: string]: string | redacted.Redacted<string> | undefined };
-const CustomHeaders = /*@__PURE__*/ __L.at(__c13, 7);
 export interface RegisteredMCPServerSigV4Details {
   name: string;
   endpoint: string;
@@ -1607,10 +1243,6 @@ export interface RegisteredMCPServerSigV4Details {
   mcpRoleArn?: string;
   customHeaders?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const RegisteredMCPServerSigV4Details = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<RegisteredMCPServerSigV4Details>;
 export type RemoteAgentName = string;
 export type RemoteAgentEndpoint = string;
 export type RemoteAgentAuthorizationMethod =
@@ -1618,8 +1250,6 @@ export type RemoteAgentAuthorizationMethod =
   | "api-key"
   | "bearer-token"
   | (string & {});
-const RemoteAgentAuthorizationMethod = S.String;
-
 export interface RegisteredRemoteAgentDetails {
   name: string;
   endpoint: string;
@@ -1627,10 +1257,6 @@ export interface RegisteredRemoteAgentDetails {
   authorizationMethod: RemoteAgentAuthorizationMethod;
   apiKeyHeader?: string;
 }
-const RegisteredRemoteAgentDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<RegisteredRemoteAgentDetails>;
 export interface RegisteredRemoteAgentSigV4Details {
   name: string;
   endpoint: string;
@@ -1639,10 +1265,6 @@ export interface RegisteredRemoteAgentSigV4Details {
   service: string;
   roleArn?: string;
 }
-const RegisteredRemoteAgentSigV4Details = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<RegisteredRemoteAgentSigV4Details>;
 export type AdditionalServiceDetails =
   | {
       github: RegisteredGithubServiceDetails;
@@ -1899,7 +1521,6 @@ export type AdditionalServiceDetails =
       remoteagent?: never;
       remoteagentsigv4: RegisteredRemoteAgentSigV4Details;
     };
-const AdditionalServiceDetails = /*@__PURE__*/ __L.at(__c14, 3);
 export interface RegisteredService {
   serviceId: string;
   serviceType: Service;
@@ -1911,40 +1532,27 @@ export interface RegisteredService {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const RegisteredService = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<RegisteredService>;
 export interface GetServiceOutput {
   service: RegisteredService & { createdAt: Date; updatedAt: Date };
   tags?: { [key: string]: string | undefined };
 }
-const GetServiceOutput = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetServiceOutput>;
 export interface GetTriggerRequest {
   agentSpaceId: string;
   triggerId: string;
 }
-const GetTriggerRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GetTriggerRequest>;
 export interface GetTriggerResponse {
   trigger: Trigger;
 }
-const GetTriggerResponse = CreateTriggerResponse as any as S.Schema<GetTriggerResponse>;
 export type NextToken = string;
 export interface ListAgentSpacesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAgentSpacesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListAgentSpacesInput>;
 export type AgentSpaceList = AgentSpace[];
-const AgentSpaceList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListAgentSpacesOutput {
   nextToken?: string;
   agentSpaces: AgentSpace[];
 }
-const ListAgentSpacesOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListAgentSpacesOutput>;
 export interface ListAssetFilesRequest {
   agentSpaceId: string;
   assetId: string;
@@ -1952,10 +1560,6 @@ export interface ListAssetFilesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssetFilesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ListAssetFilesRequest>;
 export interface AssetFileSummary {
   path: string;
   metadata?: any;
@@ -1963,17 +1567,11 @@ export interface AssetFileSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const AssetFileSummary = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<AssetFileSummary>;
 export type AssetFileSummaryList = AssetFileSummary[];
-const AssetFileSummaryList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListAssetFilesResponse {
   items: AssetFileSummary[];
   nextToken?: string;
 }
-const ListAssetFilesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ListAssetFilesResponse>;
 export interface ListAssetsRequest {
   agentSpaceId: string;
   assetType?: string;
@@ -1982,92 +1580,54 @@ export interface ListAssetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssetsRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ListAssetsRequest>;
 export type AssetList = Asset[];
-const AssetList = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ListAssetsResponse {
   items: Asset[];
   nextToken?: string;
 }
-const ListAssetsResponse = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ListAssetsResponse>;
 export interface ListAssetTypesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssetTypesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListAssetTypesRequest>;
 export interface AssetTypeSummary {
   assetType: string;
   description: string;
 }
-const AssetTypeSummary = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<AssetTypeSummary>;
 export type AssetTypeList = AssetTypeSummary[];
-const AssetTypeList = /*@__PURE__*/ __L.at(__c16, 3);
 export interface ListAssetTypesResponse {
   items: AssetTypeSummary[];
   nextToken?: string;
 }
-const ListAssetTypesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListAssetTypesResponse>;
 export interface ListAssetVersionsRequest {
   agentSpaceId: string;
   assetId: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListAssetVersionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListAssetVersionsRequest>;
 export interface AssetVersionMetadata {
   version: number;
   createdAt: Date;
   updatedAt: Date;
 }
-const AssetVersionMetadata = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<AssetVersionMetadata>;
 export type AssetVersionMetadataList = AssetVersionMetadata[];
-const AssetVersionMetadataList = /*@__PURE__*/ __L.at(__c16, 7);
 export interface ListAssetVersionsResponse {
   items: AssetVersionMetadata[];
   nextToken?: string;
 }
-const ListAssetVersionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListAssetVersionsResponse>;
 export interface ListAssociationsInput {
   agentSpaceId: string;
   maxResults?: number;
   nextToken?: string;
   filterServiceTypes?: string;
 }
-const ListAssociationsInput = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListAssociationsInput>;
 export type AssociationsList = Association[];
-const AssociationsList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListAssociationsOutput {
   nextToken?: string;
   associations: Association[];
 }
-const ListAssociationsOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListAssociationsOutput>;
 export type PriorityList = Priority[];
-const PriorityList = TriggerEventList as any as S.Schema<PriorityList>;
 export type TaskStatusList = TaskStatus[];
-const TaskStatusList = TriggerEventList as any as S.Schema<TaskStatusList>;
 export type TaskTypeList = TaskType[];
-const TaskTypeList = TriggerEventList as any as S.Schema<TaskTypeList>;
 export interface TaskFilter {
   createdAfter?: Date;
   createdBefore?: Date;
@@ -2076,13 +1636,8 @@ export interface TaskFilter {
   taskType?: TaskType[];
   primaryTaskId?: string;
 }
-const TaskFilter = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<TaskFilter>;
 export type TaskSortField = "CREATED_AT" | "PRIORITY" | (string & {});
-const TaskSortField = S.String;
-
 export type TaskSortOrder = "ASC" | "DESC" | (string & {});
-const TaskSortOrder = S.String;
-
 export interface ListBacklogTasksRequest {
   agentSpaceId: string;
   filter?: TaskFilter;
@@ -2091,51 +1646,34 @@ export interface ListBacklogTasksRequest {
   sortField?: TaskSortField;
   order?: TaskSortOrder;
 }
-const ListBacklogTasksRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListBacklogTasksRequest>;
 export type TaskList = Task[];
-const TaskList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListBacklogTasksResponse {
   tasks: Task[];
   nextToken?: string;
 }
-const ListBacklogTasksResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListBacklogTasksResponse>;
 export interface ListChatsRequest {
   agentSpaceId: string;
   userId?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListChatsRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ListChatsRequest>;
 export interface ChatExecution {
   executionId: string;
   createdAt: Date;
   updatedAt?: Date;
   summary?: string;
 }
-const ChatExecution = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ChatExecution>;
 export type ChatExecutionList = ChatExecution[];
-const ChatExecutionList = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListChatsResponse {
   executions: ChatExecution[];
   nextToken?: string;
 }
-const ListChatsResponse = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ListChatsResponse>;
 export interface ListExecutionsRequest {
   agentSpaceId: string;
   taskId: string;
   limit?: number;
   nextToken?: string;
 }
-const ListExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListExecutionsRequest>;
 export type JournalTimestamp = Date;
 export type ExecutionStatus =
   | "FAILED"
@@ -2145,8 +1683,6 @@ export type ExecutionStatus =
   | "TIMED_OUT"
   | "WAITING"
   | (string & {});
-const ExecutionStatus = S.String;
-
 export interface Execution {
   agentSpaceId: string;
   executionId: string;
@@ -2158,23 +1694,13 @@ export interface Execution {
   agentType?: string;
   uid?: string;
 }
-const Execution = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<Execution>;
 export type ExecutionList = Execution[];
-const ExecutionList = /*@__PURE__*/ __L.at(__c18, 6);
 export interface ListExecutionsResponse {
   executions: Execution[];
   nextToken?: string;
 }
-const ListExecutionsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListExecutionsResponse>;
 export type GoalStatus = "ACTIVE" | "PAUSED" | "COMPLETE" | (string & {});
-const GoalStatus = S.String;
-
 export type GoalType = "CUSTOMER_DEFINED" | "ONCALL_REPORT" | (string & {});
-const GoalType = S.String;
-
 export interface ListGoalsRequest {
   agentSpaceId: string;
   status?: GoalStatus;
@@ -2182,20 +1708,15 @@ export interface ListGoalsRequest {
   limit?: number;
   nextToken?: string;
 }
-const ListGoalsRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<ListGoalsRequest>;
 export interface GoalContent {
   description: string;
   objectives: string;
 }
-const GoalContent = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GoalContent>;
 export type SchedulerState = "ENABLED" | "DISABLED" | (string & {});
-const SchedulerState = S.String;
-
 export interface GoalSchedule {
   state: SchedulerState;
   expression?: string;
 }
-const GoalSchedule = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<GoalSchedule>;
 export interface Goal {
   agentSpaceArn: string;
   goalId: string;
@@ -2211,17 +1732,12 @@ export interface Goal {
   version: number;
   evaluationSchedule?: GoalSchedule;
 }
-const Goal = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<Goal>;
 export type GoalList = Goal[];
-const GoalList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ListGoalsResponse {
   goals: Goal[];
   nextToken?: string;
 }
-const ListGoalsResponse = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ListGoalsResponse>;
 export type OrderType = "ASC" | "DESC" | (string & {});
-const OrderType = S.String;
-
 export interface ListJournalRecordsRequest {
   agentSpaceId: string;
   executionId: string;
@@ -2230,15 +1746,10 @@ export interface ListJournalRecordsRequest {
   recordType?: string;
   order?: OrderType;
 }
-const ListJournalRecordsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListJournalRecordsRequest>;
 export interface UserReference {
   userId: string;
   userType: UserType;
 }
-const UserReference = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<UserReference>;
 export interface JournalRecord {
   agentSpaceId: string;
   executionId: string;
@@ -2248,63 +1759,38 @@ export interface JournalRecord {
   recordType: string;
   userReference?: UserReference;
 }
-const JournalRecord = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<JournalRecord>;
 export type JournalRecordList = JournalRecord[];
-const JournalRecordList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListJournalRecordsResponse {
   records: JournalRecord[];
   nextToken?: string;
 }
-const ListJournalRecordsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListJournalRecordsResponse>;
 export interface ListPendingMessagesRequest {
   agentSpaceId: string;
   executionId: string;
 }
-const ListPendingMessagesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListPendingMessagesRequest>;
 export type UserMessageBlock =
   | { text: string; toolResult?: never }
   | { text?: never; toolResult: any };
-const UserMessageBlock = /*@__PURE__*/ __L.at(__c20, 4);
 export type UserMessage = UserMessageBlock[];
-const UserMessage = /*@__PURE__*/ __L.at(__c20, 5);
 export type AssistantMessageBlock =
   | { text: string; toolUse?: never }
   | { text?: never; toolUse: any };
-const AssistantMessageBlock = /*@__PURE__*/ __L.at(__c20, 6);
 export type AssistantMessage = AssistantMessageBlock[];
-const AssistantMessage = /*@__PURE__*/ __L.at(__c20, 7);
 export type Message =
   | { userMessage: UserMessageBlock[]; assistantMessage?: never }
   | { userMessage?: never; assistantMessage: AssistantMessageBlock[] };
-const Message = /*@__PURE__*/ __L.at(__c21, 0);
 export interface PendingMessage {
   messageId: string;
   message: Message;
 }
-const PendingMessage = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<PendingMessage>;
 export type PendingMessages = PendingMessage[];
-const PendingMessages = /*@__PURE__*/ __L.at(__c21, 2);
 export interface ListPendingMessagesResponse {
   agentSpaceId: string;
   executionId: string;
   messages: PendingMessage[];
   createdAt: Date;
 }
-const ListPendingMessagesResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListPendingMessagesResponse>;
 export interface ListPrivateConnectionsInput {}
-const ListPrivateConnectionsInput = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListPrivateConnectionsInput>;
 export interface PrivateConnectionSummary {
   name: string;
   type: PrivateConnectionType;
@@ -2317,19 +1803,10 @@ export interface PrivateConnectionSummary {
   dnsResolution?: ResourceConfigDnsResolution;
   failureMessage?: string;
 }
-const PrivateConnectionSummary = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<PrivateConnectionSummary>;
 export type PrivateConnectionSummaryList = PrivateConnectionSummary[];
-const PrivateConnectionSummaryList = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListPrivateConnectionsOutput {
   privateConnections: PrivateConnectionSummary[];
 }
-const ListPrivateConnectionsOutput = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListPrivateConnectionsOutput>;
 export interface ListRecommendationsRequest {
   agentSpaceId: string;
   taskId?: string;
@@ -2339,81 +1816,51 @@ export interface ListRecommendationsRequest {
   limit?: number;
   nextToken?: string;
 }
-const ListRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListRecommendationsRequest>;
 export type RecommendationList = Recommendation[];
-const RecommendationList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListRecommendationsResponse {
   recommendations: Recommendation[];
   nextToken?: string;
 }
-const ListRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListRecommendationsResponse>;
 export interface ListServicesInput {
   maxResults?: number;
   nextToken?: string;
   filterServiceType?: Service;
 }
-const ListServicesInput = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<ListServicesInput>;
 export type RegisteredServicesList = RegisteredService[];
-const RegisteredServicesList = /*@__PURE__*/ __L.at(__c22, 4);
 export interface ListServicesOutput {
   nextToken?: string;
   services: (RegisteredService & { createdAt: Date; updatedAt: Date })[];
 }
-const ListServicesOutput = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<ListServicesOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTriggersRequest {
   agentSpaceId: string;
   status?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListTriggersRequest = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ListTriggersRequest>;
 export type TriggerList = Trigger[];
-const TriggerList = /*@__PURE__*/ __L.at(__c23, 1);
 export interface ListTriggersResponse {
   items: Trigger[];
   nextToken?: string;
 }
-const ListTriggersResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListTriggersResponse>;
 export interface ListWebhooksInput {
   agentSpaceId: string;
   associationId: string;
 }
-const ListWebhooksInput = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<ListWebhooksInput>;
 export interface Webhook {
   webhookUrl: string;
   webhookType?: WebhookType;
   webhookId: string;
 }
-const Webhook = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<Webhook>;
 export type WebhooksList = Webhook[];
-const WebhooksList = /*@__PURE__*/ __L.at(__c23, 5);
 export interface ListWebhooksOutput {
   webhooks: Webhook[];
 }
-const ListWebhooksOutput = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ListWebhooksOutput>;
 export type PostRegisterServiceSupportedService =
   | "dynatrace"
   | "servicenow"
@@ -2430,12 +1877,9 @@ export type PostRegisterServiceSupportedService =
   | "remoteagent"
   | "remoteagentsigv4"
   | (string & {});
-const PostRegisterServiceSupportedService = S.String;
-
 export type ClientId = string | redacted.Redacted<string>;
 export type ExchangeParameterValue = string | redacted.Redacted<string>;
 export type ExchangeParameters = { [key: string]: string | redacted.Redacted<string> | undefined };
-const ExchangeParameters = CustomHeaders as any as S.Schema<ExchangeParameters>;
 export type ClientSecret = string | redacted.Redacted<string>;
 export interface DynatraceOAuthClientCredentialsConfig {
   clientName?: string;
@@ -2443,22 +1887,13 @@ export interface DynatraceOAuthClientCredentialsConfig {
   exchangeParameters?: { [key: string]: string | redacted.Redacted<string> | undefined };
   clientSecret: string | redacted.Redacted<string>;
 }
-const DynatraceOAuthClientCredentialsConfig = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DynatraceOAuthClientCredentialsConfig>;
 export type DynatraceServiceAuthorizationConfig = {
   oAuthClientCredentials: DynatraceOAuthClientCredentialsConfig;
 };
-const DynatraceServiceAuthorizationConfig = /*@__PURE__*/ __L.at(__c24, 0);
 export interface DynatraceServiceDetails {
   accountUrn: string;
   authorizationConfig?: DynatraceServiceAuthorizationConfig;
 }
-const DynatraceServiceDetails = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<DynatraceServiceDetails>;
 export interface ServiceNowOAuthClientCredentialsConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
@@ -2468,40 +1903,24 @@ export interface ServiceNowOAuthClientCredentialsConfig {
 export type ServiceNowServiceAuthorizationConfig = {
   oAuthClientCredentials: ServiceNowOAuthClientCredentialsConfig;
 };
-const ServiceNowServiceAuthorizationConfig =
-  DynatraceServiceAuthorizationConfig as any as S.Schema<ServiceNowServiceAuthorizationConfig>;
 export interface ServiceNowServiceDetails {
   instanceUrl: string;
   authorizationConfig?: ServiceNowServiceAuthorizationConfig;
 }
-const ServiceNowServiceDetails = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ServiceNowServiceDetails>;
 export interface MCPServerAuthorizationDiscoveryConfig {
   returnToEndpoint: string;
 }
-const MCPServerAuthorizationDiscoveryConfig = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<MCPServerAuthorizationDiscoveryConfig>;
 export type DatadogAuthorizationConfig = {
   authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig;
 };
-const DatadogAuthorizationConfig = /*@__PURE__*/ __L.at(__c24, 4);
 export interface DatadogServiceDetails {
   name: string;
   endpoint: string;
   description?: string | redacted.Redacted<string>;
   authorizationConfig: DatadogAuthorizationConfig;
 }
-const DatadogServiceDetails = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<DatadogServiceDetails>;
 export type OAuthScope = string;
 export type Scopes = string[];
-const Scopes = DynatraceResourceList as any as S.Schema<Scopes>;
 export interface MCPServerOAuthClientCredentialsConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
@@ -2510,10 +1929,6 @@ export interface MCPServerOAuthClientCredentialsConfig {
   exchangeUrl: string;
   scopes?: string[];
 }
-const MCPServerOAuthClientCredentialsConfig = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<MCPServerOAuthClientCredentialsConfig>;
 export interface MCPServerOAuth3LOConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
@@ -2525,29 +1940,17 @@ export interface MCPServerOAuth3LOConfig {
   supportCodeChallenge?: boolean;
   scopes?: string[];
 }
-const MCPServerOAuth3LOConfig = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<MCPServerOAuth3LOConfig>;
 export interface MCPServerAPIKeyConfig {
   apiKeyName: string;
   apiKeyValue: string | redacted.Redacted<string>;
   apiKeyHeader: string;
 }
-const MCPServerAPIKeyConfig = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<MCPServerAPIKeyConfig>;
 export type TokenValue = string | redacted.Redacted<string>;
 export interface MCPServerBearerTokenConfig {
   tokenName: string;
   tokenValue: string | redacted.Redacted<string>;
   authorizationHeader?: string;
 }
-const MCPServerBearerTokenConfig = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<MCPServerBearerTokenConfig>;
 export type MCPServerAuthorizationConfig =
   | {
       oAuthClientCredentials: MCPServerOAuthClientCredentialsConfig;
@@ -2584,14 +1987,12 @@ export type MCPServerAuthorizationConfig =
       bearerToken?: never;
       authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig;
     };
-const MCPServerAuthorizationConfig = /*@__PURE__*/ __L.at(__c25, 2);
 export interface MCPServerDetails {
   name: string;
   endpoint: string;
   description?: string | redacted.Redacted<string>;
   authorizationConfig: MCPServerAuthorizationConfig;
 }
-const MCPServerDetails = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<MCPServerDetails>;
 export type GitLabTokenValue = string | redacted.Redacted<string>;
 export interface GitLabDetails {
   targetUrl: string;
@@ -2599,14 +2000,10 @@ export interface GitLabDetails {
   tokenValue: string | redacted.Redacted<string>;
   groupId?: string;
 }
-const GitLabDetails = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<GitLabDetails>;
 export type NewRelicApiKey = string | redacted.Redacted<string>;
 export type NewRelicApplicationIds = string[];
-const NewRelicApplicationIds = DynatraceResourceList as any as S.Schema<NewRelicApplicationIds>;
 export type NewRelicEntityGuids = string[];
-const NewRelicEntityGuids = DynatraceResourceList as any as S.Schema<NewRelicEntityGuids>;
 export type NewRelicAlertPolicyIds = string[];
-const NewRelicAlertPolicyIds = DynatraceResourceList as any as S.Schema<NewRelicAlertPolicyIds>;
 export interface NewRelicApiKeyConfig {
   apiKey: string | redacted.Redacted<string>;
   accountId: string;
@@ -2615,35 +2012,21 @@ export interface NewRelicApiKeyConfig {
   entityGuids?: string[];
   alertPolicyIds?: string[];
 }
-const NewRelicApiKeyConfig = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<NewRelicApiKeyConfig>;
 export type NewRelicServiceAuthorizationConfig = { apiKey: NewRelicApiKeyConfig };
-const NewRelicServiceAuthorizationConfig = /*@__PURE__*/ __L.at(__c25, 6);
 export interface NewRelicServiceDetails {
   authorizationConfig: NewRelicServiceAuthorizationConfig;
 }
-const NewRelicServiceDetails = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<NewRelicServiceDetails>;
 export type EventChannelType = "webhook" | (string & {});
-const EventChannelType = S.String;
-
 export interface EventChannelDetails {
   type?: EventChannelType;
 }
-const EventChannelDetails = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<EventChannelDetails>;
 export interface GrafanaServiceDetails {
   name: string;
   endpoint: string;
   description?: string | redacted.Redacted<string>;
   authorizationConfig: MCPServerAuthorizationConfig;
 }
-const GrafanaServiceDetails = MCPServerDetails as any as S.Schema<GrafanaServiceDetails>;
 export type PagerDutyScopes = string[];
-const PagerDutyScopes = DynatraceResourceList as any as S.Schema<PagerDutyScopes>;
 export interface PagerDutyOAuthClientCredentialsConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
@@ -2653,13 +2036,10 @@ export interface PagerDutyOAuthClientCredentialsConfig {
 export type PagerDutyAuthorizationConfig = {
   oAuthClientCredentials: PagerDutyOAuthClientCredentialsConfig;
 };
-const PagerDutyAuthorizationConfig =
-  DynatraceServiceAuthorizationConfig as any as S.Schema<PagerDutyAuthorizationConfig>;
 export interface PagerDutyDetails {
   scopes: string[];
   authorizationConfig: PagerDutyAuthorizationConfig;
 }
-const PagerDutyDetails = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<PagerDutyDetails>;
 export interface MCPServerSigV4AuthorizationConfig {
   region: string;
   service: string;
@@ -2667,26 +2047,17 @@ export interface MCPServerSigV4AuthorizationConfig {
   mcpRoleArn?: string;
   customHeaders?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const MCPServerSigV4AuthorizationConfig = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<MCPServerSigV4AuthorizationConfig>;
 export interface MCPServerSigV4ServiceDetails {
   name: string;
   endpoint: string;
   description?: string | redacted.Redacted<string>;
   authorizationConfig: MCPServerSigV4AuthorizationConfig;
 }
-const MCPServerSigV4ServiceDetails = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<MCPServerSigV4ServiceDetails>;
 export interface RemoteAgentAPIKeyConfig {
   apiKeyName: string;
   apiKeyValue: string | redacted.Redacted<string>;
   apiKeyHeader: string;
 }
-const RemoteAgentAPIKeyConfig = MCPServerAPIKeyConfig as any as S.Schema<RemoteAgentAPIKeyConfig>;
 export interface RemoteAgentOAuthClientCredentialsConfig {
   clientName?: string;
   clientId: string | redacted.Redacted<string>;
@@ -2695,15 +2066,11 @@ export interface RemoteAgentOAuthClientCredentialsConfig {
   exchangeUrl: string;
   scopes?: string[];
 }
-const RemoteAgentOAuthClientCredentialsConfig =
-  MCPServerOAuthClientCredentialsConfig as any as S.Schema<RemoteAgentOAuthClientCredentialsConfig>;
 export interface RemoteAgentBearerTokenConfig {
   tokenName: string;
   tokenValue: string | redacted.Redacted<string>;
   authorizationHeader?: string;
 }
-const RemoteAgentBearerTokenConfig =
-  MCPServerBearerTokenConfig as any as S.Schema<RemoteAgentBearerTokenConfig>;
 export type RemoteAgentAuthorizationConfig =
   | { apiKey: RemoteAgentAPIKeyConfig; oAuthClientCredentials?: never; bearerToken?: never }
   | {
@@ -2712,36 +2079,23 @@ export type RemoteAgentAuthorizationConfig =
       bearerToken?: never;
     }
   | { apiKey?: never; oAuthClientCredentials?: never; bearerToken: RemoteAgentBearerTokenConfig };
-const RemoteAgentAuthorizationConfig = /*@__PURE__*/ __L.at(__c26, 4);
 export interface RemoteAgentServiceDetails {
   name: string;
   endpoint: string;
   description?: string | redacted.Redacted<string>;
   authorizationConfig: RemoteAgentAuthorizationConfig;
 }
-const RemoteAgentServiceDetails = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<RemoteAgentServiceDetails>;
 export interface RemoteAgentSigV4AuthorizationConfig {
   region: string;
   service: string;
   roleArn?: string;
 }
-const RemoteAgentSigV4AuthorizationConfig = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<RemoteAgentSigV4AuthorizationConfig>;
 export interface RemoteAgentSigV4ServiceDetails {
   name: string;
   endpoint: string;
   description?: string | redacted.Redacted<string>;
   authorizationConfig: RemoteAgentSigV4AuthorizationConfig;
 }
-const RemoteAgentSigV4ServiceDetails = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<RemoteAgentSigV4ServiceDetails>;
 export type ServiceDetails =
   | {
       dynatrace: DynatraceServiceDetails;
@@ -2967,7 +2321,6 @@ export type ServiceDetails =
       remoteagent?: never;
       remoteagentsigv4: RemoteAgentSigV4ServiceDetails;
     };
-const ServiceDetails = /*@__PURE__*/ __L.at(__c27, 0);
 export interface RegisterServiceInput {
   service: PostRegisterServiceSupportedService;
   serviceDetails: ServiceDetails;
@@ -2978,29 +2331,16 @@ export interface RegisterServiceInput {
   name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const RegisterServiceInput = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<RegisterServiceInput>;
 export interface OAuthAdditionalStepDetails {
   authorizationUrl: string;
 }
-const OAuthAdditionalStepDetails = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<OAuthAdditionalStepDetails>;
 export type AdditionalServiceRegistrationStep = { oauth: OAuthAdditionalStepDetails };
-const AdditionalServiceRegistrationStep = /*@__PURE__*/ __L.at(__c27, 3);
 export interface RegisterServiceOutput {
   serviceId?: string;
   additionalStep?: AdditionalServiceRegistrationStep;
   kmsKeyArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-const RegisterServiceOutput = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<RegisterServiceOutput>;
 export type ChatExecutionId = string;
 export type MessageContent = string;
 export type ToolUseId = string;
@@ -3008,8 +2348,6 @@ export type InterruptId = string;
 export type ApprovalId = string;
 export type ButtonText = string;
 export type ApprovalActionType = "APPROVED" | "REJECTED" | (string & {});
-const ApprovalActionType = S.String;
-
 export interface ApprovalAction {
   toolUseId?: string;
   interruptId?: string;
@@ -3017,16 +2355,13 @@ export interface ApprovalAction {
   buttonText?: string;
   action?: ApprovalActionType;
 }
-const ApprovalAction = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<ApprovalAction>;
 export interface SendMessageContext {
   currentPage?: string;
   lastMessage?: string;
   userActionResponse?: string;
   approvalAction?: ApprovalAction;
 }
-const SendMessageContext = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<SendMessageContext>;
 export type AssetIdList = string[];
-const AssetIdList = DynatraceResourceList as any as S.Schema<AssetIdList>;
 export interface SendMessageRequest {
   agentSpaceId: string;
   executionId: string;
@@ -3036,60 +2371,35 @@ export interface SendMessageRequest {
   assetIds?: string[];
   modelTier?: string;
 }
-const SendMessageRequest = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<SendMessageRequest>;
 export interface SendMessageResponseCreatedEvent {
   responseId?: string;
   sequenceNumber?: number;
 }
-const SendMessageResponseCreatedEvent = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<SendMessageResponseCreatedEvent>;
 export interface SendMessageResponseInProgressEvent {
   responseId?: string;
   sequenceNumber?: number;
 }
-const SendMessageResponseInProgressEvent =
-  SendMessageResponseCreatedEvent as any as S.Schema<SendMessageResponseInProgressEvent>;
 export interface SendMessageUsageInfo {
   inputTokens?: number;
   outputTokens?: number;
   totalTokens?: number;
 }
-const SendMessageUsageInfo = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<SendMessageUsageInfo>;
 export interface SendMessageResponseCompletedEvent {
   responseId?: string;
   usage?: SendMessageUsageInfo;
   sequenceNumber?: number;
 }
-const SendMessageResponseCompletedEvent = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<SendMessageResponseCompletedEvent>;
 export interface SendMessageResponseFailedEvent {
   responseId?: string;
   errorCode?: string;
   errorMessage?: string;
   sequenceNumber?: number;
 }
-const SendMessageResponseFailedEvent = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<SendMessageResponseFailedEvent>;
 export interface SendMessageSummaryEvent {
   content?: string;
   sequenceNumber?: number;
 }
-const SendMessageSummaryEvent = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<SendMessageSummaryEvent>;
 export interface SendMessageHeartbeatEvent {}
-const SendMessageHeartbeatEvent =
-  MCPServerSplunkConfiguration as any as S.Schema<SendMessageHeartbeatEvent>;
 export interface SendMessageContentBlockStartEvent {
   index?: number;
   type?: string;
@@ -3097,37 +2407,20 @@ export interface SendMessageContentBlockStartEvent {
   parentId?: string;
   sequenceNumber?: number;
 }
-const SendMessageContentBlockStartEvent = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<SendMessageContentBlockStartEvent>;
 export interface SendMessageTextDelta {
   text?: string;
 }
-const SendMessageTextDelta = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<SendMessageTextDelta>;
 export interface SendMessageJsonDelta {
   partialJson?: string;
 }
-const SendMessageJsonDelta = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<SendMessageJsonDelta>;
 export type SendMessageContentBlockDelta =
   | { textDelta: SendMessageTextDelta; jsonDelta?: never }
   | { textDelta?: never; jsonDelta: SendMessageJsonDelta };
-const SendMessageContentBlockDelta = /*@__PURE__*/ __L.at(__c29, 0);
 export interface SendMessageContentBlockDeltaEvent {
   index?: number;
   delta?: SendMessageContentBlockDelta;
   sequenceNumber?: number;
 }
-const SendMessageContentBlockDeltaEvent = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<SendMessageContentBlockDeltaEvent>;
 export interface SendMessageContentBlockStopEvent {
   index?: number;
   type?: string;
@@ -3135,10 +2428,6 @@ export interface SendMessageContentBlockStopEvent {
   last?: boolean;
   sequenceNumber?: number;
 }
-const SendMessageContentBlockStopEvent = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<SendMessageContentBlockStopEvent>;
 export type SendMessageEvents =
   | {
       responseCreated: SendMessageResponseCreatedEvent;
@@ -3239,33 +2528,20 @@ export type SendMessageEvents =
       contentBlockDelta?: never;
       contentBlockStop: SendMessageContentBlockStopEvent;
     };
-const SendMessageEvents = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<
-  stream.Stream<SendMessageEvents, Error, never>
->;
 export interface SendMessageResponse {
   events: stream.Stream<SendMessageEvents, Error, never>;
 }
-const SendMessageResponse = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<SendMessageResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = MCPServerSplunkConfiguration as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = DynatraceResourceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  MCPServerSplunkConfiguration as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAgentSpaceInput {
   agentSpaceId: string;
   name?: string;
@@ -3273,27 +2549,17 @@ export interface UpdateAgentSpaceInput {
   locale?: string;
   preferences?: { [key: string]: boolean | undefined };
 }
-const UpdateAgentSpaceInput = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<UpdateAgentSpaceInput>;
 export interface UpdateAgentSpaceOutput {
   agentSpace: AgentSpace;
 }
-const UpdateAgentSpaceOutput = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<UpdateAgentSpaceOutput>;
 export type ToolIdentifier = string;
 export type ApprovalPinKey = string;
 export type ApprovalPinValue = string;
 export type ApprovalArgumentPins = { [key: string]: string | undefined };
-const ApprovalArgumentPins = /*@__PURE__*/ __L.at(__c30, 1);
 export interface ApprovalPattern {
   tool: string;
   argumentPins: { [key: string]: string | undefined };
 }
-const ApprovalPattern = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<ApprovalPattern>;
 export type ApprovalReason = string;
 export interface UpdateApprovalActionRequest {
   agentSpaceId: string;
@@ -3304,10 +2570,6 @@ export interface UpdateApprovalActionRequest {
   ttlSeconds?: number;
   singleUse?: boolean;
 }
-const UpdateApprovalActionRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<UpdateApprovalActionRequest>;
 export type ApprovalStatus =
   | "PENDING"
   | "APPROVED"
@@ -3315,17 +2577,11 @@ export type ApprovalStatus =
   | "REVOKED"
   | "REDEEMED"
   | (string & {});
-const ApprovalStatus = S.String;
-
 export interface UpdateApprovalActionResponse {
   approvalId: string;
   status: ApprovalStatus;
   expiresAt?: Date;
 }
-const UpdateApprovalActionResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<UpdateApprovalActionResponse>;
 export interface UpdateAssetRequest {
   agentSpaceId: string;
   assetId: string;
@@ -3333,11 +2589,9 @@ export interface UpdateAssetRequest {
   content?: AssetContent;
   clientToken?: string;
 }
-const UpdateAssetRequest = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<UpdateAssetRequest>;
 export interface UpdateAssetResponse {
   asset: Asset;
 }
-const UpdateAssetResponse = CreateAssetResponse as any as S.Schema<UpdateAssetResponse>;
 export interface UpdateAssetFileRequest {
   agentSpaceId: string;
   assetId: string;
@@ -3346,83 +2600,52 @@ export interface UpdateAssetFileRequest {
   metadata?: any;
   clientToken?: string;
 }
-const UpdateAssetFileRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<UpdateAssetFileRequest>;
 export interface UpdateAssetFileResponse {
   file: AssetFile;
 }
-const UpdateAssetFileResponse = CreateAssetFileResponse as any as S.Schema<UpdateAssetFileResponse>;
 export interface UpdateAssociationInput {
   agentSpaceId: string;
   associationId: string;
   configuration: ServiceConfiguration;
   capabilities?: { [key: string]: CapabilityConfiguration | undefined };
 }
-const UpdateAssociationInput = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<UpdateAssociationInput>;
 export interface UpdateAssociationOutput {
   association: Association;
   webhook?: GenericWebhook;
 }
-const UpdateAssociationOutput = AssociateServiceOutput as any as S.Schema<UpdateAssociationOutput>;
 export interface UpdateBacklogTaskRequest {
   agentSpaceId: string;
   taskId: string;
   taskStatus?: TaskStatus;
   clientToken?: string;
 }
-const UpdateBacklogTaskRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<UpdateBacklogTaskRequest>;
 export interface UpdateBacklogTaskResponse {
   task: Task;
 }
-const UpdateBacklogTaskResponse =
-  CreateBacklogTaskResponse as any as S.Schema<UpdateBacklogTaskResponse>;
 export interface GoalScheduleInput {
   state: SchedulerState;
 }
-const GoalScheduleInput = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<GoalScheduleInput>;
 export interface UpdateGoalRequest {
   agentSpaceId: string;
   goalId: string;
   evaluationSchedule?: GoalScheduleInput;
   clientToken?: string;
 }
-const UpdateGoalRequest = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<UpdateGoalRequest>;
 export interface UpdateGoalResponse {
   goal: Goal;
 }
-const UpdateGoalResponse = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<UpdateGoalResponse>;
 export interface UpdateOperatorAppIdpConfigInput {
   agentSpaceId: string;
   idpClientSecret?: string | redacted.Redacted<string>;
 }
-const UpdateOperatorAppIdpConfigInput = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<UpdateOperatorAppIdpConfigInput>;
 export interface UpdateOperatorAppIdpConfigOutput {
   agentSpaceId: string;
   idp: IdpAuthConfiguration;
 }
-const UpdateOperatorAppIdpConfigOutput = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<UpdateOperatorAppIdpConfigOutput>;
 export interface UpdatePrivateConnectionCertificateInput {
   name: string;
   certificate: string;
 }
-const UpdatePrivateConnectionCertificateInput = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<UpdatePrivateConnectionCertificateInput>;
 export interface UpdatePrivateConnectionCertificateOutput {
   name: string;
   type: PrivateConnectionType;
@@ -3435,10 +2658,6 @@ export interface UpdatePrivateConnectionCertificateOutput {
   dnsResolution?: ResourceConfigDnsResolution;
   failureMessage?: string;
 }
-const UpdatePrivateConnectionCertificateOutput = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<UpdatePrivateConnectionCertificateOutput>;
 export interface UpdateRecommendationRequest {
   agentSpaceId: string;
   recommendationId: string;
@@ -3446,49 +2665,27 @@ export interface UpdateRecommendationRequest {
   additionalContext?: string;
   clientToken?: string;
 }
-const UpdateRecommendationRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<UpdateRecommendationRequest>;
 export interface UpdateRecommendationResponse {
   recommendation: Recommendation;
 }
-const UpdateRecommendationResponse =
-  GetRecommendationResponse as any as S.Schema<UpdateRecommendationResponse>;
 export interface UpdateTriggerRequest {
   agentSpaceId: string;
   triggerId: string;
   status?: string;
   clientToken?: string;
 }
-const UpdateTriggerRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<UpdateTriggerRequest>;
 export interface UpdateTriggerResponse {
   trigger: Trigger;
 }
-const UpdateTriggerResponse = CreateTriggerResponse as any as S.Schema<UpdateTriggerResponse>;
 export interface ValidateAwsAssociationsInput {
   agentSpaceId: string;
 }
-const ValidateAwsAssociationsInput = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ValidateAwsAssociationsInput>;
 export interface ValidateAwsAssociationsOutput {}
-const ValidateAwsAssociationsOutput =
-  MCPServerSplunkConfiguration as any as S.Schema<ValidateAwsAssociationsOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c32, 4);
 export type AssociateServiceError =
   | ConflictException
   | InternalServerException
@@ -3506,8 +2703,8 @@ export const associateService: API.OperationMethod<
   AssociateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateServiceInput,
-  output: AssociateServiceOutput,
+  input: __S(29, __c3, 5) as any as S.Schema<AssociateServiceInput>,
+  output: __S(32, __c4, 0) as any as S.Schema<AssociateServiceOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3539,8 +2736,8 @@ export const createAgentSpace: API.OperationMethod<
   CreateAgentSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentSpaceInput,
-  output: CreateAgentSpaceOutput,
+  input: __S(35, __c4, 3) as any as S.Schema<CreateAgentSpaceInput>,
+  output: __S(37, __c4, 5) as any as S.Schema<CreateAgentSpaceOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3571,8 +2768,8 @@ export const createAsset: API.OperationMethod<
   CreateAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssetRequest,
-  output: CreateAssetResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<CreateAssetRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<CreateAssetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3604,8 +2801,8 @@ export const createAssetFile: API.OperationMethod<
   CreateAssetFileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssetFileRequest,
-  output: CreateAssetFileResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<CreateAssetFileRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateAssetFileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3638,8 +2835,8 @@ export const createBacklogTask: API.OperationMethod<
   CreateBacklogTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBacklogTaskRequest,
-  output: CreateBacklogTaskResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateBacklogTaskRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<CreateBacklogTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3669,8 +2866,8 @@ export const createChat: API.OperationMethod<
   CreateChatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChatRequest,
-  output: CreateChatResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<CreateChatRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<CreateChatResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -3699,8 +2896,8 @@ export const createPrivateConnection: API.OperationMethod<
   CreatePrivateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateConnectionInput,
-  output: CreatePrivateConnectionOutput,
+  input: __S(58, __c7, 2) as any as S.Schema<CreatePrivateConnectionInput>,
+  output: __S(59, __c7, 3) as any as S.Schema<CreatePrivateConnectionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3731,8 +2928,8 @@ export const createTrigger: API.OperationMethod<
   CreateTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTriggerRequest,
-  output: CreateTriggerResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<CreateTriggerRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<CreateTriggerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3763,8 +2960,8 @@ export const deleteAgentSpace: API.OperationMethod<
   DeleteAgentSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentSpaceInput,
-  output: DeleteAgentSpaceOutput,
+  input: __S(65, __c8, 1) as any as S.Schema<DeleteAgentSpaceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAgentSpaceOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3795,8 +2992,8 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssetRequest,
-  output: DeleteAssetResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<DeleteAssetRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAssetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3827,8 +3024,8 @@ export const deleteAssetFile: API.OperationMethod<
   DeleteAssetFileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssetFileRequest,
-  output: DeleteAssetFileResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<DeleteAssetFileRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAssetFileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3858,8 +3055,8 @@ export const deletePrivateConnection: API.OperationMethod<
   DeletePrivateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateConnectionInput,
-  output: DeletePrivateConnectionOutput,
+  input: __S(68, __c8, 4) as any as S.Schema<DeletePrivateConnectionInput>,
+  output: __S(69, __c8, 5) as any as S.Schema<DeletePrivateConnectionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3890,8 +3087,8 @@ export const deleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTriggerRequest,
-  output: DeleteTriggerResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteTriggerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3922,8 +3119,8 @@ export const deregisterService: API.OperationMethod<
   DeregisterServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterServiceInput,
-  output: DeregisterServiceOutput,
+  input: __S(71, __c8, 7) as any as S.Schema<DeregisterServiceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeregisterServiceOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3953,8 +3150,8 @@ export const describePrivateConnection: API.OperationMethod<
   DescribePrivateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePrivateConnectionInput,
-  output: DescribePrivateConnectionOutput,
+  input: __S(72, __c9, 0) as any as S.Schema<DescribePrivateConnectionInput>,
+  output: __S(59, __c7, 3) as any as S.Schema<DescribePrivateConnectionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3983,8 +3180,8 @@ export const disableOperatorApp: API.OperationMethod<
   DisableOperatorAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableOperatorAppInput,
-  output: DisableOperatorAppResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<DisableOperatorAppInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DisableOperatorAppResponse>,
   errors: [
     IdentityCenterServiceException,
     InternalServerException,
@@ -4012,8 +3209,8 @@ export const disassociateService: API.OperationMethod<
   DisassociateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateServiceInput,
-  output: DisassociateServiceOutput,
+  input: __S(74, __c9, 2) as any as S.Schema<DisassociateServiceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DisassociateServiceOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4041,8 +3238,8 @@ export const enableOperatorApp: API.OperationMethod<
   EnableOperatorAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableOperatorAppInput,
-  output: EnableOperatorAppOutput,
+  input: __S(75, __c9, 3) as any as S.Schema<EnableOperatorAppInput>,
+  output: __S(79, __c9, 7) as any as S.Schema<EnableOperatorAppOutput>,
   errors: [
     IdentityCenterServiceException,
     InternalServerException,
@@ -4071,8 +3268,8 @@ export const getAccountUsage: API.OperationMethod<
   GetAccountUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountUsageInput,
-  output: GetAccountUsageOutput,
+  input: __S(80, __c10, 0) as any as S.Schema<GetAccountUsageInput>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetAccountUsageOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4101,8 +3298,8 @@ export const getAgentSpace: API.OperationMethod<
   GetAgentSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentSpaceInput,
-  output: GetAgentSpaceOutput,
+  input: __S(83, __c10, 3) as any as S.Schema<GetAgentSpaceInput>,
+  output: __S(37, __c4, 5) as any as S.Schema<GetAgentSpaceOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4131,8 +3328,8 @@ export const getAsset: API.OperationMethod<
   GetAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssetRequest,
-  output: GetAssetResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<GetAssetRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetAssetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4162,8 +3359,8 @@ export const getAssetContent: API.OperationMethod<
   GetAssetContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssetContentRequest,
-  output: GetAssetContentResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<GetAssetContentRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<GetAssetContentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4193,8 +3390,8 @@ export const getAssetFile: API.OperationMethod<
   GetAssetFileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssetFileRequest,
-  output: GetAssetFileResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<GetAssetFileRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetAssetFileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4223,8 +3420,8 @@ export const getAssociation: API.OperationMethod<
   GetAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssociationInput,
-  output: GetAssociationOutput,
+  input: __S(89, __c11, 1) as any as S.Schema<GetAssociationInput>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetAssociationOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4254,8 +3451,8 @@ export const getBacklogTask: API.OperationMethod<
   GetBacklogTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBacklogTaskRequest,
-  output: GetBacklogTaskResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<GetBacklogTaskRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetBacklogTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4284,8 +3481,8 @@ export const getOperatorApp: API.OperationMethod<
   GetOperatorAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperatorAppInput,
-  output: GetOperatorAppOutput,
+  input: __S(93, __c11, 5) as any as S.Schema<GetOperatorAppInput>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetOperatorAppOutput>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4309,8 +3506,8 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecommendationRequest,
-  output: GetRecommendationResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<GetRecommendationRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<GetRecommendationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4339,8 +3536,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceInput,
-  output: GetServiceOutput,
+  input: __S(99, __c12, 3) as any as S.Schema<GetServiceInput>,
+  output: __S(117, __c14, 5) as any as S.Schema<GetServiceOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4369,8 +3566,8 @@ export const getTrigger: API.OperationMethod<
   GetTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTriggerRequest,
-  output: GetTriggerResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<GetTriggerRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetTriggerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4399,8 +3596,8 @@ export const listAgentSpaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgentSpace
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAgentSpacesInput,
-  output: ListAgentSpacesOutput,
+  input: __S(119, __c14, 7) as any as S.Schema<ListAgentSpacesInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListAgentSpacesOutput>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4431,8 +3628,8 @@ export const listAssetFiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetFileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssetFilesRequest,
-  output: ListAssetFilesResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<ListAssetFilesRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<ListAssetFilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4468,8 +3665,8 @@ export const listAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Asset
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssetsRequest,
-  output: ListAssetsResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<ListAssetsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<ListAssetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4504,8 +3701,8 @@ export const listAssetTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetTypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssetTypesRequest,
-  output: ListAssetTypesResponse,
+  input: __S(129, __c16, 1) as any as S.Schema<ListAssetTypesRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<ListAssetTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4541,8 +3738,8 @@ export const listAssetVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetVersionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssetVersionsRequest,
-  output: ListAssetVersionsResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<ListAssetVersionsRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<ListAssetVersionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4578,8 +3775,8 @@ export const listAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssociationsInput,
-  output: ListAssociationsOutput,
+  input: __S(137, __c17, 1) as any as S.Schema<ListAssociationsInput>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListAssociationsOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4614,8 +3811,8 @@ export const listBacklogTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Task
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBacklogTasksRequest,
-  output: ListBacklogTasksResponse,
+  input: __S(141, __c17, 5) as any as S.Schema<ListBacklogTasksRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListBacklogTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4649,8 +3846,8 @@ export const listChats: API.OperationMethod<
   ListChatsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChatsRequest,
-  output: ListChatsResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<ListChatsRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<ListChatsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4680,8 +3877,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Execution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExecutionsRequest,
-  output: ListExecutionsResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<ListExecutionsRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<ListExecutionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4717,8 +3914,8 @@ export const listGoals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Goal
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGoalsRequest,
-  output: ListGoalsResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<ListGoalsRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ListGoalsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4754,8 +3951,8 @@ export const listJournalRecords: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JournalRecord
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListJournalRecordsRequest,
-  output: ListJournalRecordsResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<ListJournalRecordsRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<ListJournalRecordsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4791,8 +3988,8 @@ export const listPendingMessages: API.OperationMethod<
   ListPendingMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPendingMessagesRequest,
-  output: ListPendingMessagesResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<ListPendingMessagesRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<ListPendingMessagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4821,8 +4018,8 @@ export const listPrivateConnections: API.OperationMethod<
   ListPrivateConnectionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateConnectionsInput,
-  output: ListPrivateConnectionsOutput,
+  input: __S(172, __c21, 4) as any as S.Schema<ListPrivateConnectionsInput>,
+  output: __S(175, __c21, 7) as any as S.Schema<ListPrivateConnectionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4850,8 +4047,8 @@ export const listRecommendations: API.OperationMethod<
   ListRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRecommendationsRequest,
-  output: ListRecommendationsResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<ListRecommendationsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ListRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4879,8 +4076,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegisteredService
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesInput,
-  output: ListServicesOutput,
+  input: __S(179, __c22, 3) as any as S.Schema<ListServicesInput>,
+  output: __S(181, __c22, 5) as any as S.Schema<ListServicesOutput>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4909,8 +4106,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4940,8 +4137,8 @@ export const listTriggers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Trigger
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTriggersRequest,
-  output: ListTriggersResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<ListTriggersRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListTriggersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4976,8 +4173,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhooksInput,
-  output: ListWebhooksOutput,
+  input: __S(187, __c23, 3) as any as S.Schema<ListWebhooksInput>,
+  output: __S(190, __c23, 6) as any as S.Schema<ListWebhooksOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5005,8 +4202,8 @@ export const registerService: API.OperationMethod<
   RegisterServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterServiceInput,
-  output: RegisterServiceOutput,
+  input: __S(217, __c27, 1) as any as S.Schema<RegisterServiceInput>,
+  output: __S(220, __c27, 4) as any as S.Schema<RegisterServiceOutput>,
   errors: [
     InternalServerException,
     InvalidParameterException,
@@ -5036,8 +4233,8 @@ export const sendMessage: API.OperationMethod<
   SendMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendMessageRequest,
-  output: SendMessageResponse,
+  input: __S(223, __c27, 7) as any as S.Schema<SendMessageRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<SendMessageResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5067,8 +4264,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(237, __c29, 5) as any as S.Schema<TagResourceRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5096,8 +4293,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(238, __c29, 6) as any as S.Schema<UntagResourceRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5126,8 +4323,8 @@ export const updateAgentSpace: API.OperationMethod<
   UpdateAgentSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAgentSpaceInput,
-  output: UpdateAgentSpaceOutput,
+  input: __S(239, __c29, 7) as any as S.Schema<UpdateAgentSpaceInput>,
+  output: __S(240, __c30, 0) as any as S.Schema<UpdateAgentSpaceOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -5159,8 +4356,8 @@ export const updateApprovalAction: API.OperationMethod<
   UpdateApprovalActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApprovalActionRequest,
-  output: UpdateApprovalActionResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<UpdateApprovalActionRequest>,
+  output: __S(244, __c30, 4) as any as S.Schema<UpdateApprovalActionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5193,8 +4390,8 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssetRequest,
-  output: UpdateAssetResponse,
+  input: __S(245, __c30, 5) as any as S.Schema<UpdateAssetRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<UpdateAssetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5227,8 +4424,8 @@ export const updateAssetFile: API.OperationMethod<
   UpdateAssetFileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssetFileRequest,
-  output: UpdateAssetFileResponse,
+  input: __S(246, __c30, 6) as any as S.Schema<UpdateAssetFileRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UpdateAssetFileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5259,8 +4456,8 @@ export const updateAssociation: API.OperationMethod<
   UpdateAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssociationInput,
-  output: UpdateAssociationOutput,
+  input: __S(247, __c30, 7) as any as S.Schema<UpdateAssociationInput>,
+  output: __S(32, __c4, 0) as any as S.Schema<UpdateAssociationOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5290,8 +4487,8 @@ export const updateBacklogTask: API.OperationMethod<
   UpdateBacklogTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBacklogTaskRequest,
-  output: UpdateBacklogTaskResponse,
+  input: __S(248, __c31, 0) as any as S.Schema<UpdateBacklogTaskRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<UpdateBacklogTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5323,8 +4520,8 @@ export const updateGoal: API.OperationMethod<
   UpdateGoalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGoalRequest,
-  output: UpdateGoalResponse,
+  input: __S(250, __c31, 2) as any as S.Schema<UpdateGoalRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<UpdateGoalResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5354,8 +4551,8 @@ export const updateOperatorAppIdpConfig: API.OperationMethod<
   UpdateOperatorAppIdpConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOperatorAppIdpConfigInput,
-  output: UpdateOperatorAppIdpConfigOutput,
+  input: __S(252, __c31, 4) as any as S.Schema<UpdateOperatorAppIdpConfigInput>,
+  output: __S(253, __c31, 5) as any as S.Schema<UpdateOperatorAppIdpConfigOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5384,8 +4581,8 @@ export const updatePrivateConnectionCertificate: API.OperationMethod<
   UpdatePrivateConnectionCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePrivateConnectionCertificateInput,
-  output: UpdatePrivateConnectionCertificateOutput,
+  input: __S(254, __c31, 6) as any as S.Schema<UpdatePrivateConnectionCertificateInput>,
+  output: __S(255, __c31, 7) as any as S.Schema<UpdatePrivateConnectionCertificateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5416,8 +4613,8 @@ export const updateRecommendation: API.OperationMethod<
   UpdateRecommendationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRecommendationRequest,
-  output: UpdateRecommendationResponse,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateRecommendationRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UpdateRecommendationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5448,8 +4645,8 @@ export const updateTrigger: API.OperationMethod<
   UpdateTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTriggerRequest,
-  output: UpdateTriggerResponse,
+  input: __S(257, __c32, 1) as any as S.Schema<UpdateTriggerRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateTriggerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5478,8 +4675,8 @@ export const validateAwsAssociations: API.OperationMethod<
   ValidateAwsAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateAwsAssociationsInput,
-  output: ValidateAwsAssociationsOutput,
+  input: __S(258, __c32, 2) as any as S.Schema<ValidateAwsAssociationsInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<ValidateAwsAssociationsOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5499,11 +4696,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          accountType: SourceAccountType,
+          accountType: S.String,
           assumableRoleArn: S.String,
           externalId: S.optional(S.String),
           agentElevatedRoleArn: S.optional(S.String),
-          agentElevatedRoleArnStatus: S.optional(ValidationStatus),
+          agentElevatedRoleArnStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceAwsConfiguration" });
     case 1:
@@ -5511,9 +4708,9 @@ function __c0(j: number): any {
         S.Struct({
           assumableRoleArn: S.String,
           accountId: S.String,
-          accountType: MonitorAccountType,
+          accountType: S.String,
           agentElevatedRoleArn: S.optional(S.String),
-          agentElevatedRoleArnStatus: S.optional(ValidationStatus),
+          agentElevatedRoleArnStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "AWSConfiguration" });
     case 2:
@@ -5522,7 +4719,7 @@ function __c0(j: number): any {
           repoName: S.String,
           repoId: S.String,
           owner: S.String,
-          ownerType: GithubRepoOwnerType,
+          ownerType: S.String,
           instanceIdentifier: S.optional(S.String),
           runtimeRoleArn: S.optional(S.String),
         }),
@@ -5533,7 +4730,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SlackChannel" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ opsOncallTarget: SlackChannel, opsSRETarget: S.optional(SlackChannel) }),
+        S.Struct({ opsOncallTarget: __S(3, __c0, 3), opsSRETarget: S.optional(__S(3, __c0, 3)) }),
       ).annotate({ identifier: "SlackTransmissionTarget" });
     case 5:
       return S.suspend(() =>
@@ -5546,8 +4743,8 @@ function __c0(j: number): any {
         S.Struct({
           workspaceId: S.String,
           workspaceName: S.String,
-          transmissionTarget: SlackTransmissionTarget,
-          bidirectional: S.optional(SlackBidirectionalConfiguration),
+          transmissionTarget: __S(4, __c0, 4),
+          bidirectional: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "SlackConfiguration" });
     case 7:
@@ -5558,13 +4755,13 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ envId: S.String, resources: S.optional(DynatraceResourceList) }),
+        S.Struct({ envId: S.String, resources: S.optional(__S(7, __c0, 7)) }),
       ).annotate({ identifier: "DynatraceConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.optional(S.String),
-          authScopes: S.optional(ServiceNowAuthenticationScopeList),
+          authScopes: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "ServiceNowConfiguration" });
     case 2:
@@ -5573,19 +4770,19 @@ function __c1(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ name: S.String, toolClassification: S.optional(ToolClassification) }),
+        S.Struct({ name: S.String, toolClassification: S.optional(S.String) }),
       ).annotate({ identifier: "MCPToolDetail" });
     case 4:
-      return S.Array(MCPToolDetail);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ enabledElevatedTools: S.optional(MCPToolDetailsList) }),
+        S.Struct({ enabledElevatedTools: S.optional(__S(12, __c1, 4)) }),
       ).annotate({
         identifier: "MCPServerDatadogConfiguration",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ tools: MCPToolsList, toolDetails: S.optional(MCPToolDetailsList) }),
+        S.Struct({ tools: __S(7, __c0, 7), toolDetails: S.optional(__S(12, __c1, 4)) }),
       ).annotate({ identifier: "MCPServerConfiguration" });
     case 7:
       return S.suspend(() =>
@@ -5617,79 +4814,79 @@ function __c2(j: number): any {
         S.Struct({
           endpoint: S.String,
           organizationId: S.optional(S.String),
-          tools: S.optional(MCPToolsList),
-          enabledElevatedTools: S.optional(MCPToolDetailsList),
+          tools: S.optional(__S(7, __c0, 7)),
+          enabledElevatedTools: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "MCPServerGrafanaConfiguration",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ services: PagerDutyServicesList, customerEmail: SensitiveString }),
+        S.Struct({ services: __S(7, __c0, 7), customerEmail: SensitiveString }),
       ).annotate({ identifier: "PagerDutyConfiguration" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ tools: MCPToolsList, toolDetails: S.optional(MCPToolDetailsList) }),
+        S.Struct({ tools: __S(7, __c0, 7), toolDetails: S.optional(__S(12, __c1, 4)) }),
       ).annotate({
         identifier: "MCPServerSigV4Configuration",
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ sourceAws: SourceAwsConfiguration }),
-        /*@__PURE__*/ S.Struct({ aws: AWSConfiguration }),
-        /*@__PURE__*/ S.Struct({ github: GitHubConfiguration }),
-        /*@__PURE__*/ S.Struct({ slack: SlackConfiguration }),
-        /*@__PURE__*/ S.Struct({ dynatrace: DynatraceConfiguration }),
-        /*@__PURE__*/ S.Struct({ servicenow: ServiceNowConfiguration }),
-        /*@__PURE__*/ S.Struct({ mcpservernewrelic: MCPServerNewRelicConfiguration }),
-        /*@__PURE__*/ S.Struct({ mcpserverdatadog: MCPServerDatadogConfiguration }),
-        /*@__PURE__*/ S.Struct({ mcpserver: MCPServerConfiguration }),
-        /*@__PURE__*/ S.Struct({ gitlab: GitLabConfiguration }),
-        /*@__PURE__*/ S.Struct({ mcpserversplunk: MCPServerSplunkConfiguration }),
-        /*@__PURE__*/ S.Struct({ eventChannel: EventChannelConfiguration }),
-        /*@__PURE__*/ S.Struct({ azure: AzureConfiguration }),
-        /*@__PURE__*/ S.Struct({ azuredevops: AzureDevOpsConfiguration }),
-        /*@__PURE__*/ S.Struct({ mcpservergrafana: MCPServerGrafanaConfiguration }),
-        /*@__PURE__*/ S.Struct({ pagerduty: PagerDutyConfiguration }),
-        /*@__PURE__*/ S.Struct({ mcpserversigv4: MCPServerSigV4Configuration }),
-        /*@__PURE__*/ S.Struct({ remoteagent: RemoteAgentConfiguration }),
-        /*@__PURE__*/ S.Struct({ remoteagentsigv4: RemoteAgentSigV4Configuration }),
+        /*@__PURE__*/ S.Struct({ sourceAws: __S(0, __c0, 0) }),
+        /*@__PURE__*/ S.Struct({ aws: __S(1, __c0, 1) }),
+        /*@__PURE__*/ S.Struct({ github: __S(2, __c0, 2) }),
+        /*@__PURE__*/ S.Struct({ slack: __S(6, __c0, 6) }),
+        /*@__PURE__*/ S.Struct({ dynatrace: __S(8, __c1, 0) }),
+        /*@__PURE__*/ S.Struct({ servicenow: __S(9, __c1, 1) }),
+        /*@__PURE__*/ S.Struct({ mcpservernewrelic: __S(10, __c1, 2) }),
+        /*@__PURE__*/ S.Struct({ mcpserverdatadog: __S(13, __c1, 5) }),
+        /*@__PURE__*/ S.Struct({ mcpserver: __S(14, __c1, 6) }),
+        /*@__PURE__*/ S.Struct({ gitlab: __S(15, __c1, 7) }),
+        /*@__PURE__*/ S.Struct({ mcpserversplunk: __S(16, __c2, 0) }),
+        /*@__PURE__*/ S.Struct({ eventChannel: __S(16, __c2, 0) }),
+        /*@__PURE__*/ S.Struct({ azure: __S(17, __c2, 1) }),
+        /*@__PURE__*/ S.Struct({ azuredevops: __S(18, __c2, 2) }),
+        /*@__PURE__*/ S.Struct({ mcpservergrafana: __S(19, __c2, 3) }),
+        /*@__PURE__*/ S.Struct({ pagerduty: __S(20, __c2, 4) }),
+        /*@__PURE__*/ S.Struct({ mcpserversigv4: __S(21, __c2, 5) }),
+        /*@__PURE__*/ S.Struct({ remoteagent: __S(16, __c2, 0) }),
+        /*@__PURE__*/ S.Struct({ remoteagentsigv4: __S(16, __c2, 0) }),
       ]);
     case 7:
-      return S.Array(TriggerEvent);
+      return S.Array(S.String);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ patterns: TriggerRegexPatternList })).annotate({
+      return S.suspend(() => S.Struct({ patterns: __S(7, __c0, 7) })).annotate({
         identifier: "PatternFilter",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(TriggerEventList),
-          targetBranches: S.optional(PatternFilter),
+          events: S.optional(__S(23, __c2, 7)),
+          targetBranches: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "TriggerFilterGroup" });
     case 2:
-      return S.Array(TriggerFilterGroup);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          triggerFilterGroups: S.optional(TriggerFilterGroups),
+          triggerFilterGroups: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "CapabilityConfiguration" });
     case 4:
-      return S.Record(CapabilityType, /*@__PURE__*/ CapabilityConfiguration.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(27, __c3, 3).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           serviceId: S.String,
-          configuration: ServiceConfiguration,
-          capabilities: S.optional(AssociationCapabilities),
+          configuration: __S(22, __c2, 6),
+          capabilities: S.optional(__S(28, __c3, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/agentspaces/{agentSpaceId}/associations" }),
@@ -5707,11 +4904,11 @@ function __c3(j: number): any {
           agentSpaceId: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          status: S.optional(ValidationStatus),
+          status: S.optional(S.String),
           associationId: S.String,
           serviceId: S.String,
-          configuration: ServiceConfiguration,
-          capabilities: S.optional(AssociationCapabilities),
+          configuration: __S(22, __c2, 6),
+          capabilities: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "Association" });
     case 7:
@@ -5719,7 +4916,7 @@ function __c3(j: number): any {
         S.Struct({
           webhookUrl: S.optional(S.String),
           webhookId: S.optional(S.String),
-          webhookType: S.optional(WebhookType),
+          webhookType: S.optional(S.String),
           webhookSecret: S.optional(SensitiveString),
           apiKey: S.optional(SensitiveString),
         }),
@@ -5730,12 +4927,12 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ association: Association, webhook: S.optional(GenericWebhook) }),
+        S.Struct({ association: __S(30, __c3, 6), webhook: S.optional(__S(31, __c3, 7)) }),
       ).annotate({ identifier: "AssociateServiceOutput" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
-      return S.Record(AgentSpacePreferenceKey, /*@__PURE__*/ S.Boolean.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.Boolean.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5744,8 +4941,8 @@ function __c4(j: number): any {
           locale: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(Tags),
-          preferences: S.optional(AgentSpacePreferences),
+          tags: S.optional(__S(33, __c4, 1)),
+          preferences: S.optional(__S(34, __c4, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/agentspaces" }), svc, auth, proto, ver, rules),
         ),
@@ -5760,13 +4957,13 @@ function __c4(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           kmsKeyArn: S.optional(S.String),
           agentSpaceId: S.String,
-          preferences: S.optional(AgentSpacePreferences),
+          preferences: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "AgentSpace" });
     case 5:
-      return S.suspend(() => S.Struct({ agentSpace: AgentSpace, tags: S.optional(Tags) })).annotate(
-        { identifier: "CreateAgentSpaceOutput" },
-      );
+      return S.suspend(() =>
+        S.Struct({ agentSpace: __S(36, __c4, 4), tags: S.optional(__S(33, __c4, 1)) }),
+      ).annotate({ identifier: "CreateAgentSpaceOutput" });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
@@ -5774,7 +4971,7 @@ function __c4(j: number): any {
       ]);
     case 7:
       return S.suspend(() =>
-        S.Struct({ path: S.String, body: AssetFileBody, metadata: S.optional(S.Any) }),
+        S.Struct({ path: S.String, body: __S(38, __c4, 6), metadata: S.optional(S.Any) }),
       ).annotate({ identifier: "AssetFileContent" });
   }
 }
@@ -5790,9 +4987,9 @@ function __c5(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ file: AssetFileContent }),
-        /*@__PURE__*/ S.Struct({ zip: AssetZipContent }),
-        /*@__PURE__*/ S.Struct({ sourceUrl: AssetSourceUrlContent }),
+        /*@__PURE__*/ S.Struct({ file: __S(39, __c4, 7) }),
+        /*@__PURE__*/ S.Struct({ zip: __S(40, __c5, 0) }),
+        /*@__PURE__*/ S.Struct({ sourceUrl: __S(41, __c5, 1) }),
       ]);
     case 3:
       return S.suspend(() =>
@@ -5800,7 +4997,7 @@ function __c5(j: number): any {
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           assetType: S.String,
           metadata: S.optional(S.Any),
-          content: AssetContent,
+          content: __S(42, __c5, 2),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -5825,7 +5022,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Asset" });
     case 5:
-      return S.suspend(() => S.Struct({ asset: Asset })).annotate({
+      return S.suspend(() => S.Struct({ asset: __S(44, __c5, 4) })).annotate({
         identifier: "CreateAssetResponse",
       });
     case 6:
@@ -5834,7 +5031,7 @@ function __c5(j: number): any {
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           assetId: S.String.pipe(T.HttpLabel("assetId")),
           path: S.String.pipe(T.HttpLabel("path")),
-          content: AssetFileBody,
+          content: __S(38, __c4, 6),
           metadata: S.optional(S.Any),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -5855,7 +5052,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String,
-          content: AssetFileBody,
+          content: __S(38, __c4, 6),
           metadata: S.optional(S.Any),
           version: S.Number,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -5867,7 +5064,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ file: AssetFile })).annotate({
+      return S.suspend(() => S.Struct({ file: __S(47, __c5, 7) })).annotate({
         identifier: "CreateAssetFileResponse",
       });
     case 1:
@@ -5884,11 +5081,11 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
-          reference: S.optional(ReferenceInput),
-          taskType: TaskType,
+          reference: S.optional(__S(49, __c6, 1)),
+          taskType: S.String,
           title: S.String,
           description: S.optional(S.String),
-          priority: Priority,
+          priority: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -5909,10 +5106,10 @@ function __c6(j: number): any {
           executionId: S.optional(S.String),
           title: S.String,
           description: S.optional(S.String),
-          reference: S.optional(ReferenceOutput),
-          taskType: TaskType,
-          priority: Priority,
-          status: TaskStatus,
+          reference: S.optional(__S(49, __c6, 1)),
+          taskType: S.String,
+          priority: S.String,
+          status: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           version: S.Number,
@@ -5924,7 +5121,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Task" });
     case 4:
-      return S.suspend(() => S.Struct({ task: Task })).annotate({
+      return S.suspend(() => S.Struct({ task: __S(51, __c6, 3) })).annotate({
         identifier: "CreateBacklogTaskResponse",
       });
     case 5:
@@ -5932,7 +5129,7 @@ function __c6(j: number): any {
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           userId: S.optional(S.String).pipe(T.HttpQuery("userId")),
-          userType: S.optional(UserType).pipe(T.HttpQuery("userType")),
+          userType: S.optional(S.String).pipe(T.HttpQuery("userType")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/agents/agent-space/{agentSpaceId}/chat/create" }),
@@ -5956,13 +5153,13 @@ function __c6(j: number): any {
         S.Struct({
           hostAddress: S.String,
           vpcId: S.String,
-          subnetIds: ListOfSubnetIds,
-          securityGroupIds: S.optional(ListOfSecurityGroupIds),
-          ipAddressType: S.optional(IpAddressType),
+          subnetIds: __S(7, __c0, 7),
+          securityGroupIds: S.optional(__S(7, __c0, 7)),
+          ipAddressType: S.optional(S.String),
           ipv4AddressesPerEni: S.optional(S.Number),
-          portRanges: S.optional(PortRanges),
+          portRanges: S.optional(__S(7, __c0, 7)),
           certificate: S.optional(S.String),
-          dnsResolution: S.optional(ResourceConfigDnsResolution),
+          dnsResolution: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceManagedInput" });
   }
@@ -5975,12 +5172,16 @@ function __c7(j: number): any {
       ).annotate({ identifier: "SelfManagedInput" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ serviceManaged: ServiceManagedInput }),
-        /*@__PURE__*/ S.Struct({ selfManaged: SelfManagedInput }),
+        /*@__PURE__*/ S.Struct({ serviceManaged: __S(55, __c6, 7) }),
+        /*@__PURE__*/ S.Struct({ selfManaged: __S(56, __c7, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
-        S.Struct({ name: S.String, mode: PrivateConnectionMode, tags: S.optional(Tags) }).pipe(
+        S.Struct({
+          name: S.String,
+          mode: __S(57, __c7, 1),
+          tags: S.optional(__S(33, __c4, 1)),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/private-connections" }),
             svc,
@@ -5997,16 +5198,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: PrivateConnectionType,
+          type: S.String,
           resourceGatewayId: S.optional(S.String),
           hostAddress: S.optional(S.String),
           vpcId: S.optional(S.String),
           resourceConfigurationId: S.optional(S.String),
-          status: PrivateConnectionStatus,
+          status: S.String,
           certificateExpiryTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dnsResolution: S.optional(ResourceConfigDnsResolution),
+          dnsResolution: S.optional(S.String),
           failureMessage: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "CreatePrivateConnectionOutput",
@@ -6016,13 +5217,13 @@ function __c7(j: number): any {
         identifier: "ScheduleCondition",
       });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ schedule: ScheduleCondition })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ schedule: __S(60, __c7, 4) })]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           type: S.String,
-          condition: TriggerCondition,
+          condition: __S(61, __c7, 5),
           action: S.Any,
           status: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -6043,7 +5244,7 @@ function __c7(j: number): any {
           triggerId: S.String,
           agentSpaceId: S.String,
           type: S.String,
-          condition: TriggerCondition,
+          condition: __S(61, __c7, 5),
           action: S.Any,
           status: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -6055,7 +5256,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ trigger: Trigger })).annotate({
+      return S.suspend(() => S.Struct({ trigger: __S(63, __c7, 7) })).annotate({
         identifier: "CreateTriggerResponse",
       });
     case 1:
@@ -6123,9 +5324,7 @@ function __c8(j: number): any {
         identifier: "DeletePrivateConnectionInput",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, status: PrivateConnectionStatus }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ name: S.String, status: S.String })).annotate({
         identifier: "DeletePrivateConnectionOutput",
       });
     case 6:
@@ -6183,7 +5382,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
-          authFlow: S.optional(AuthFlow).pipe(T.HttpHeader("x-amzn-app-auth-flow")),
+          authFlow: S.optional(S.String).pipe(T.HttpHeader("x-amzn-app-auth-flow")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/v1/agentspaces/{agentSpaceId}/operator" }),
@@ -6218,7 +5417,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
-          authFlow: AuthFlow,
+          authFlow: S.String,
           operatorAppRoleArn: S.String,
           idcInstanceArn: S.optional(S.String),
           issuerUrl: S.optional(S.String),
@@ -6270,9 +5469,9 @@ function __c9(j: number): any {
         S.Struct({
           agentSpaceId: S.String,
           operatorAppUrl: S.optional(S.String),
-          iam: S.optional(IamAuthConfiguration),
-          idc: S.optional(IdcAuthConfiguration),
-          idp: S.optional(IdpAuthConfiguration),
+          iam: S.optional(__S(76, __c9, 4)),
+          idc: S.optional(__S(77, __c9, 5)),
+          idp: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({ identifier: "EnableOperatorAppOutput" });
   }
@@ -6292,10 +5491,10 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          monthlyAccountInvestigationHours: S.optional(UsageMetric),
-          monthlyAccountEvaluationHours: S.optional(UsageMetric),
-          monthlyAccountSystemLearningHours: S.optional(UsageMetric),
-          monthlyAccountOnDemandHours: S.optional(UsageMetric),
+          monthlyAccountInvestigationHours: S.optional(__S(81, __c10, 1)),
+          monthlyAccountEvaluationHours: S.optional(__S(81, __c10, 1)),
+          monthlyAccountSystemLearningHours: S.optional(__S(81, __c10, 1)),
+          monthlyAccountOnDemandHours: S.optional(__S(81, __c10, 1)),
           usagePeriodStartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           usagePeriodEndTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
@@ -6331,7 +5530,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "GetAssetRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ asset: Asset })).annotate({
+      return S.suspend(() => S.Struct({ asset: __S(44, __c5, 4) })).annotate({
         identifier: "GetAssetResponse",
       });
     case 6:
@@ -6355,7 +5554,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "GetAssetContentRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ content: AssetZipContent, version: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ content: __S(40, __c5, 0), version: S.Number })).annotate({
         identifier: "GetAssetContentResponse",
       });
   }
@@ -6403,7 +5602,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "GetAssociationInput" });
     case 2:
-      return S.suspend(() => S.Struct({ association: Association })).annotate({
+      return S.suspend(() => S.Struct({ association: __S(30, __c3, 6) })).annotate({
         identifier: "GetAssociationOutput",
       });
     case 3:
@@ -6423,7 +5622,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "GetBacklogTaskRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ task: Task })).annotate({
+      return S.suspend(() => S.Struct({ task: __S(51, __c6, 3) })).annotate({
         identifier: "GetBacklogTaskResponse",
       });
     case 5:
@@ -6443,9 +5642,9 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operatorAppUrl: S.optional(S.String),
-          iam: S.optional(IamAuthConfiguration),
-          idc: S.optional(IdcAuthConfiguration),
-          idp: S.optional(IdpAuthConfiguration),
+          iam: S.optional(__S(76, __c9, 4)),
+          idc: S.optional(__S(77, __c9, 5)),
+          idp: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({ identifier: "GetOperatorAppOutput" });
     case 7:
@@ -6484,9 +5683,9 @@ function __c12(j: number): any {
           taskId: S.String,
           goalId: S.optional(S.String),
           title: S.String,
-          content: RecommendationContent,
-          status: RecommendationStatus,
-          priority: RecommendationPriority,
+          content: __S(96, __c12, 0),
+          status: S.String,
+          priority: S.String,
           goalVersion: S.optional(S.Number),
           additionalContext: S.optional(S.String),
           rankPosition: S.optional(S.Number),
@@ -6497,7 +5696,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Recommendation" });
     case 2:
-      return S.suspend(() => S.Struct({ recommendation: Recommendation })).annotate({
+      return S.suspend(() => S.Struct({ recommendation: __S(97, __c12, 1) })).annotate({
         identifier: "GetRecommendationResponse",
       });
     case 3:
@@ -6519,7 +5718,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           owner: S.String,
-          ownerType: GithubRepoOwnerType,
+          ownerType: S.String,
           targetUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -6534,7 +5733,7 @@ function __c12(j: number): any {
         S.Struct({
           name: S.String,
           endpoint: S.String,
-          authorizationMethod: MCPServerAuthorizationMethod,
+          authorizationMethod: S.String,
           description: S.optional(SensitiveString),
           apiKeyHeader: S.optional(S.String),
         }),
@@ -6553,7 +5752,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetUrl: S.String,
-          tokenType: GitLabTokenType,
+          tokenType: S.String,
           groupId: S.optional(S.String),
         }),
       ).annotate({
@@ -6563,7 +5762,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          region: NewRelicRegion,
+          region: S.String,
           description: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -6579,19 +5778,19 @@ function __c13(j: number): any {
           tenantId: S.String,
           clientId: S.String,
           webIdentityRoleArn: S.String,
-          webIdentityTokenAudiences: WebIdentityTokenAudienceList,
+          webIdentityTokenAudiences: __S(7, __c0, 7),
         }),
       ).annotate({
         identifier: "RegisteredAzureIdentityDetails",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ endpoint: S.String, authorizationMethod: MCPServerAuthorizationMethod }),
+        S.Struct({ endpoint: S.String, authorizationMethod: S.String }),
       ).annotate({
         identifier: "RegisteredGrafanaServerDetails",
       });
     case 6:
-      return S.suspend(() => S.Struct({ scopes: PagerDutyScopesList })).annotate({
+      return S.suspend(() => S.Struct({ scopes: __S(7, __c0, 7) })).annotate({
         identifier: "RegisteredPagerDutyDetails",
       });
     case 7:
@@ -6610,7 +5809,7 @@ function __c14(j: number): any {
           service: S.String,
           roleArn: S.String,
           mcpRoleArn: S.optional(S.String),
-          customHeaders: S.optional(CustomHeaders),
+          customHeaders: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({
         identifier: "RegisteredMCPServerSigV4Details",
@@ -6621,7 +5820,7 @@ function __c14(j: number): any {
           name: S.String,
           endpoint: S.String,
           description: S.optional(SensitiveString),
-          authorizationMethod: RemoteAgentAuthorizationMethod,
+          authorizationMethod: S.String,
           apiKeyHeader: S.optional(S.String),
         }),
       ).annotate({
@@ -6642,30 +5841,30 @@ function __c14(j: number): any {
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ github: RegisteredGithubServiceDetails }),
-        /*@__PURE__*/ S.Struct({ slack: RegisteredSlackServiceDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserverdatadog: RegisteredMCPServerDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserver: RegisteredMCPServerDetails }),
-        /*@__PURE__*/ S.Struct({ servicenow: RegisteredServiceNowDetails }),
-        /*@__PURE__*/ S.Struct({ gitlab: RegisteredGitLabServiceDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserversplunk: RegisteredMCPServerDetails }),
-        /*@__PURE__*/ S.Struct({ mcpservernewrelic: RegisteredNewRelicDetails }),
-        /*@__PURE__*/ S.Struct({ azuredevops: RegisteredAzureDevOpsServiceDetails }),
-        /*@__PURE__*/ S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
-        /*@__PURE__*/ S.Struct({ mcpservergrafana: RegisteredGrafanaServerDetails }),
-        /*@__PURE__*/ S.Struct({ pagerduty: RegisteredPagerDutyDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserversigv4: RegisteredMCPServerSigV4Details }),
-        /*@__PURE__*/ S.Struct({ remoteagent: RegisteredRemoteAgentDetails }),
-        /*@__PURE__*/ S.Struct({ remoteagentsigv4: RegisteredRemoteAgentSigV4Details }),
+        /*@__PURE__*/ S.Struct({ github: __S(101, __c12, 5) }),
+        /*@__PURE__*/ S.Struct({ slack: __S(102, __c12, 6) }),
+        /*@__PURE__*/ S.Struct({ mcpserverdatadog: __S(103, __c12, 7) }),
+        /*@__PURE__*/ S.Struct({ mcpserver: __S(103, __c12, 7) }),
+        /*@__PURE__*/ S.Struct({ servicenow: __S(104, __c13, 0) }),
+        /*@__PURE__*/ S.Struct({ gitlab: __S(105, __c13, 1) }),
+        /*@__PURE__*/ S.Struct({ mcpserversplunk: __S(103, __c12, 7) }),
+        /*@__PURE__*/ S.Struct({ mcpservernewrelic: __S(106, __c13, 2) }),
+        /*@__PURE__*/ S.Struct({ azuredevops: __S(107, __c13, 3) }),
+        /*@__PURE__*/ S.Struct({ azureidentity: __S(108, __c13, 4) }),
+        /*@__PURE__*/ S.Struct({ mcpservergrafana: __S(109, __c13, 5) }),
+        /*@__PURE__*/ S.Struct({ pagerduty: __S(110, __c13, 6) }),
+        /*@__PURE__*/ S.Struct({ mcpserversigv4: __S(112, __c14, 0) }),
+        /*@__PURE__*/ S.Struct({ remoteagent: __S(113, __c14, 1) }),
+        /*@__PURE__*/ S.Struct({ remoteagentsigv4: __S(114, __c14, 2) }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String,
-          serviceType: Service,
+          serviceType: S.String,
           name: S.optional(S.String),
-          accessibleResources: S.optional(DocumentList),
-          additionalServiceDetails: S.optional(AdditionalServiceDetails),
+          accessibleResources: S.optional(__S(100, __c12, 4)),
+          additionalServiceDetails: S.optional(__S(115, __c14, 3)),
           kmsKeyArn: S.optional(S.String),
           privateConnectionName: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -6674,7 +5873,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "RegisteredService" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ service: RegisteredService, tags: S.optional(Tags) }),
+        S.Struct({ service: __S(116, __c14, 4), tags: S.optional(__S(33, __c4, 1)) }),
       ).annotate({ identifier: "GetServiceOutput" });
     case 6:
       return S.suspend(() =>
@@ -6716,10 +5915,10 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AgentSpace);
+      return S.Array(__S(36, __c4, 4));
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), agentSpaces: AgentSpaceList }),
+        S.Struct({ nextToken: S.optional(S.String), agentSpaces: __S(120, __c15, 0) }),
       ).annotate({ identifier: "ListAgentSpacesOutput" });
     case 2:
       return S.suspend(() =>
@@ -6754,10 +5953,10 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "AssetFileSummary" });
     case 4:
-      return S.Array(AssetFileSummary);
+      return S.Array(__S(123, __c15, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: AssetFileSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(124, __c15, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAssetFilesResponse" });
     case 6:
       return S.suspend(() =>
@@ -6784,14 +5983,14 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListAssetsRequest" });
     case 7:
-      return S.Array(Asset);
+      return S.Array(__S(44, __c5, 4));
   }
 }
 function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ items: AssetList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(127, __c15, 7), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAssetsResponse" });
     case 1:
       return S.suspend(() =>
@@ -6807,10 +6006,10 @@ function __c16(j: number): any {
         identifier: "AssetTypeSummary",
       });
     case 3:
-      return S.Array(AssetTypeSummary);
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ items: AssetTypeList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(131, __c16, 3), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAssetTypesResponse" });
     case 5:
       return S.suspend(() =>
@@ -6842,14 +6041,14 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "AssetVersionMetadata" });
     case 7:
-      return S.Array(AssetVersionMetadata);
+      return S.Array(__S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ items: AssetVersionMetadataList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(135, __c16, 7), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssetVersionsResponse",
       });
@@ -6872,19 +6071,19 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListAssociationsInput" });
     case 2:
-      return S.Array(Association);
+      return S.Array(__S(30, __c3, 6));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), associations: AssociationsList }),
+        S.Struct({ nextToken: S.optional(S.String), associations: __S(138, __c17, 2) }),
       ).annotate({ identifier: "ListAssociationsOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           createdAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           createdBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          priority: S.optional(PriorityList),
-          status: S.optional(TaskStatusList),
-          taskType: S.optional(TaskTypeList),
+          priority: S.optional(__S(23, __c2, 7)),
+          status: S.optional(__S(23, __c2, 7)),
+          taskType: S.optional(__S(23, __c2, 7)),
           primaryTaskId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskFilter" });
@@ -6892,11 +6091,11 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
-          filter: S.optional(TaskFilter),
+          filter: S.optional(__S(140, __c17, 4)),
           limit: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          sortField: S.optional(TaskSortField),
-          order: S.optional(TaskSortOrder),
+          sortField: S.optional(S.String),
+          order: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/backlog/agent-space/{agentSpaceId}/tasks/list" }),
@@ -6909,10 +6108,10 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListBacklogTasksRequest" });
     case 6:
-      return S.Array(Task);
+      return S.Array(__S(51, __c6, 3));
     case 7:
       return S.suspend(() =>
-        S.Struct({ tasks: TaskList, nextToken: S.optional(S.String) }),
+        S.Struct({ tasks: __S(142, __c17, 6), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListBacklogTasksResponse" });
   }
 }
@@ -6946,10 +6145,10 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ChatExecution" });
     case 2:
-      return S.Array(ChatExecution);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ executions: ChatExecutionList, nextToken: S.optional(S.String) }),
+        S.Struct({ executions: __S(146, __c18, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListChatsResponse" });
     case 4:
       return S.suspend(() =>
@@ -6978,16 +6177,16 @@ function __c18(j: number): any {
           agentSubTask: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          executionStatus: ExecutionStatus,
+          executionStatus: S.String,
           agentType: S.optional(S.String),
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "Execution" });
     case 6:
-      return S.Array(Execution);
+      return S.Array(__S(149, __c18, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ executions: ExecutionList, nextToken: S.optional(S.String) }),
+        S.Struct({ executions: __S(150, __c18, 6), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExecutionsResponse" });
   }
 }
@@ -6997,8 +6196,8 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
-          status: S.optional(GoalStatus),
-          goalType: S.optional(GoalType),
+          status: S.optional(S.String),
+          goalType: S.optional(S.String),
           limit: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7018,7 +6217,7 @@ function __c19(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ state: SchedulerState, expression: S.optional(S.String) }),
+        S.Struct({ state: S.String, expression: S.optional(S.String) }),
       ).annotate({ identifier: "GoalSchedule" });
     case 3:
       return S.suspend(() =>
@@ -7026,23 +6225,23 @@ function __c19(j: number): any {
           agentSpaceArn: S.String,
           goalId: S.String,
           title: S.String,
-          content: GoalContent,
-          status: GoalStatus,
-          goalType: GoalType,
+          content: __S(153, __c19, 1),
+          status: S.String,
+          goalType: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastEvaluatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastTaskId: S.optional(S.String),
           lastSuccessfulTaskId: S.optional(S.String),
           version: S.Number,
-          evaluationSchedule: S.optional(GoalSchedule),
+          evaluationSchedule: S.optional(__S(154, __c19, 2)),
         }),
       ).annotate({ identifier: "Goal" });
     case 4:
-      return S.Array(Goal);
+      return S.Array(__S(155, __c19, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ goals: GoalList, nextToken: S.optional(S.String) }),
+        S.Struct({ goals: __S(156, __c19, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGoalsResponse" });
     case 6:
       return S.suspend(() =>
@@ -7052,7 +6251,7 @@ function __c19(j: number): any {
           limit: S.optional(S.Number),
           nextToken: S.optional(S.String),
           recordType: S.optional(S.String),
-          order: S.optional(OrderType),
+          order: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/journal/agent-space/{agentSpaceId}/journalRecords" }),
@@ -7067,7 +6266,7 @@ function __c19(j: number): any {
         identifier: "ListJournalRecordsRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ userId: S.String, userType: UserType })).annotate({
+      return S.suspend(() => S.Struct({ userId: S.String, userType: S.String })).annotate({
         identifier: "UserReference",
       });
   }
@@ -7083,14 +6282,14 @@ function __c20(j: number): any {
           content: S.Any,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           recordType: S.String,
-          userReference: S.optional(UserReference),
+          userReference: S.optional(__S(159, __c19, 7)),
         }),
       ).annotate({ identifier: "JournalRecord" });
     case 1:
-      return S.Array(JournalRecord);
+      return S.Array(__S(160, __c20, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ records: JournalRecordList, nextToken: S.optional(S.String) }),
+        S.Struct({ records: __S(161, __c20, 1), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListJournalRecordsResponse",
       });
@@ -7118,35 +6317,37 @@ function __c20(j: number): any {
         /*@__PURE__*/ S.Struct({ toolResult: S.Any }),
       ]);
     case 5:
-      return S.Array(UserMessageBlock);
+      return S.Array(__S(164, __c20, 4));
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ text: S.String }),
         /*@__PURE__*/ S.Struct({ toolUse: S.Any }),
       ]);
     case 7:
-      return S.Array(AssistantMessageBlock);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ userMessage: UserMessage }),
-        /*@__PURE__*/ S.Struct({ assistantMessage: AssistantMessage }),
+        /*@__PURE__*/ S.Struct({ userMessage: __S(165, __c20, 5) }),
+        /*@__PURE__*/ S.Struct({ assistantMessage: __S(167, __c20, 7) }),
       ]);
     case 1:
-      return S.suspend(() => S.Struct({ messageId: S.String, message: Message })).annotate({
+      return S.suspend(() =>
+        S.Struct({ messageId: S.String, message: __S(168, __c21, 0) }),
+      ).annotate({
         identifier: "PendingMessage",
       });
     case 2:
-      return S.Array(PendingMessage);
+      return S.Array(__S(169, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           executionId: S.String,
-          messages: PendingMessages,
+          messages: __S(170, __c21, 2),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
@@ -7171,23 +6372,21 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: PrivateConnectionType,
+          type: S.String,
           resourceGatewayId: S.optional(S.String),
           hostAddress: S.optional(S.String),
           vpcId: S.optional(S.String),
           resourceConfigurationId: S.optional(S.String),
-          status: PrivateConnectionStatus,
+          status: S.String,
           certificateExpiryTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dnsResolution: S.optional(ResourceConfigDnsResolution),
+          dnsResolution: S.optional(S.String),
           failureMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateConnectionSummary" });
     case 6:
-      return S.Array(PrivateConnectionSummary);
+      return S.Array(__S(173, __c21, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ privateConnections: PrivateConnectionSummaryList }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ privateConnections: __S(174, __c21, 6) })).annotate({
         identifier: "ListPrivateConnectionsOutput",
       });
   }
@@ -7200,8 +6399,8 @@ function __c22(j: number): any {
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           taskId: S.optional(S.String),
           goalId: S.optional(S.String),
-          status: S.optional(RecommendationStatus),
-          priority: S.optional(RecommendationPriority),
+          status: S.optional(S.String),
+          priority: S.optional(S.String),
           limit: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7221,10 +6420,10 @@ function __c22(j: number): any {
         identifier: "ListRecommendationsRequest",
       });
     case 1:
-      return S.Array(Recommendation);
+      return S.Array(__S(97, __c12, 1));
     case 2:
       return S.suspend(() =>
-        S.Struct({ recommendations: RecommendationList, nextToken: S.optional(S.String) }),
+        S.Struct({ recommendations: __S(177, __c22, 1), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecommendationsResponse",
       });
@@ -7233,16 +6432,16 @@ function __c22(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filterServiceType: S.optional(Service).pipe(T.HttpQuery("filterServiceType")),
+          filterServiceType: S.optional(S.String).pipe(T.HttpQuery("filterServiceType")),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/services/list" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListServicesInput" });
     case 4:
-      return S.Array(RegisteredService);
+      return S.Array(__S(116, __c14, 4));
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), services: RegisteredServicesList }),
+        S.Struct({ nextToken: S.optional(S.String), services: __S(180, __c22, 4) }),
       ).annotate({ identifier: "ListServicesOutput" });
     case 6:
       return S.suspend(() =>
@@ -7260,7 +6459,7 @@ function __c22(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: Tags })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(33, __c4, 1) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -7286,10 +6485,10 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListTriggersRequest" });
     case 1:
-      return S.Array(Trigger);
+      return S.Array(__S(63, __c7, 7));
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: TriggerList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(185, __c23, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTriggersResponse" });
     case 3:
       return S.suspend(() =>
@@ -7314,14 +6513,14 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           webhookUrl: S.String,
-          webhookType: S.optional(WebhookType),
+          webhookType: S.optional(S.String),
           webhookId: S.String,
         }),
       ).annotate({ identifier: "Webhook" });
     case 5:
-      return S.Array(Webhook);
+      return S.Array(__S(188, __c23, 4));
     case 6:
-      return S.suspend(() => S.Struct({ webhooks: WebhooksList })).annotate({
+      return S.suspend(() => S.Struct({ webhooks: __S(189, __c23, 5) })).annotate({
         identifier: "ListWebhooksOutput",
       });
     case 7:
@@ -7329,7 +6528,7 @@ function __c23(j: number): any {
         S.Struct({
           clientName: S.optional(S.String),
           clientId: SensitiveString,
-          exchangeParameters: S.optional(ExchangeParameters),
+          exchangeParameters: S.optional(__S(111, __c13, 7)),
           clientSecret: SensitiveString,
         }),
       ).annotate({
@@ -7340,21 +6539,19 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ oAuthClientCredentials: DynatraceOAuthClientCredentialsConfig }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ oAuthClientCredentials: __S(191, __c23, 7) })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountUrn: S.String,
-          authorizationConfig: S.optional(DynatraceServiceAuthorizationConfig),
+          authorizationConfig: S.optional(__S(192, __c24, 0)),
         }),
       ).annotate({ identifier: "DynatraceServiceDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           instanceUrl: S.String,
-          authorizationConfig: S.optional(ServiceNowServiceAuthorizationConfig),
+          authorizationConfig: S.optional(__S(192, __c24, 0)),
         }),
       ).annotate({ identifier: "ServiceNowServiceDetails" });
     case 3:
@@ -7362,16 +6559,14 @@ function __c24(j: number): any {
         identifier: "MCPServerAuthorizationDiscoveryConfig",
       });
     case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ authorizationDiscovery: __S(195, __c24, 3) })]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           endpoint: S.String,
           description: S.optional(SensitiveString),
-          authorizationConfig: DatadogAuthorizationConfig,
+          authorizationConfig: __S(196, __c24, 4),
         }),
       ).annotate({ identifier: "DatadogServiceDetails" });
     case 6:
@@ -7379,10 +6574,10 @@ function __c24(j: number): any {
         S.Struct({
           clientName: S.optional(S.String),
           clientId: SensitiveString,
-          exchangeParameters: S.optional(ExchangeParameters),
+          exchangeParameters: S.optional(__S(111, __c13, 7)),
           clientSecret: SensitiveString,
           exchangeUrl: S.String,
-          scopes: S.optional(Scopes),
+          scopes: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "MCPServerOAuthClientCredentialsConfig",
@@ -7392,13 +6587,13 @@ function __c24(j: number): any {
         S.Struct({
           clientName: S.optional(S.String),
           clientId: SensitiveString,
-          exchangeParameters: S.optional(ExchangeParameters),
+          exchangeParameters: S.optional(__S(111, __c13, 7)),
           returnToEndpoint: S.String,
           authorizationUrl: S.String,
           exchangeUrl: S.String,
           clientSecret: S.optional(SensitiveString),
           supportCodeChallenge: S.optional(S.Boolean),
-          scopes: S.optional(Scopes),
+          scopes: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "MCPServerOAuth3LOConfig" });
   }
@@ -7421,11 +6616,11 @@ function __c25(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ oAuthClientCredentials: MCPServerOAuthClientCredentialsConfig }),
-        /*@__PURE__*/ S.Struct({ oAuth3LO: MCPServerOAuth3LOConfig }),
-        /*@__PURE__*/ S.Struct({ apiKey: MCPServerAPIKeyConfig }),
-        /*@__PURE__*/ S.Struct({ bearerToken: MCPServerBearerTokenConfig }),
-        /*@__PURE__*/ S.Struct({ authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig }),
+        /*@__PURE__*/ S.Struct({ oAuthClientCredentials: __S(198, __c24, 6) }),
+        /*@__PURE__*/ S.Struct({ oAuth3LO: __S(199, __c24, 7) }),
+        /*@__PURE__*/ S.Struct({ apiKey: __S(200, __c25, 0) }),
+        /*@__PURE__*/ S.Struct({ bearerToken: __S(201, __c25, 1) }),
+        /*@__PURE__*/ S.Struct({ authorizationDiscovery: __S(195, __c24, 3) }),
       ]);
     case 3:
       return S.suspend(() =>
@@ -7433,14 +6628,14 @@ function __c25(j: number): any {
           name: S.String,
           endpoint: S.String,
           description: S.optional(SensitiveString),
-          authorizationConfig: MCPServerAuthorizationConfig,
+          authorizationConfig: __S(202, __c25, 2),
         }),
       ).annotate({ identifier: "MCPServerDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           targetUrl: S.String,
-          tokenType: GitLabTokenType,
+          tokenType: S.String,
           tokenValue: SensitiveString,
           groupId: S.optional(S.String),
         }),
@@ -7450,29 +6645,29 @@ function __c25(j: number): any {
         S.Struct({
           apiKey: SensitiveString,
           accountId: S.String,
-          region: NewRelicRegion,
-          applicationIds: S.optional(NewRelicApplicationIds),
-          entityGuids: S.optional(NewRelicEntityGuids),
-          alertPolicyIds: S.optional(NewRelicAlertPolicyIds),
+          region: S.String,
+          applicationIds: S.optional(__S(7, __c0, 7)),
+          entityGuids: S.optional(__S(7, __c0, 7)),
+          alertPolicyIds: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "NewRelicApiKeyConfig" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ apiKey: NewRelicApiKeyConfig })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ apiKey: __S(205, __c25, 5) })]);
     case 7:
-      return S.suspend(() =>
-        S.Struct({ authorizationConfig: NewRelicServiceAuthorizationConfig }),
-      ).annotate({ identifier: "NewRelicServiceDetails" });
+      return S.suspend(() => S.Struct({ authorizationConfig: __S(206, __c25, 6) })).annotate({
+        identifier: "NewRelicServiceDetails",
+      });
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ type: S.optional(EventChannelType) })).annotate({
+      return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
         identifier: "EventChannelDetails",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ scopes: PagerDutyScopes, authorizationConfig: PagerDutyAuthorizationConfig }),
+        S.Struct({ scopes: __S(7, __c0, 7), authorizationConfig: __S(192, __c24, 0) }),
       ).annotate({ identifier: "PagerDutyDetails" });
     case 2:
       return S.suspend(() =>
@@ -7481,7 +6676,7 @@ function __c26(j: number): any {
           service: S.String,
           roleArn: S.optional(S.String),
           mcpRoleArn: S.optional(S.String),
-          customHeaders: S.optional(CustomHeaders),
+          customHeaders: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({
         identifier: "MCPServerSigV4AuthorizationConfig",
@@ -7492,16 +6687,16 @@ function __c26(j: number): any {
           name: S.String,
           endpoint: S.String,
           description: S.optional(SensitiveString),
-          authorizationConfig: MCPServerSigV4AuthorizationConfig,
+          authorizationConfig: __S(210, __c26, 2),
         }),
       ).annotate({
         identifier: "MCPServerSigV4ServiceDetails",
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ apiKey: RemoteAgentAPIKeyConfig }),
-        /*@__PURE__*/ S.Struct({ oAuthClientCredentials: RemoteAgentOAuthClientCredentialsConfig }),
-        /*@__PURE__*/ S.Struct({ bearerToken: RemoteAgentBearerTokenConfig }),
+        /*@__PURE__*/ S.Struct({ apiKey: __S(200, __c25, 0) }),
+        /*@__PURE__*/ S.Struct({ oAuthClientCredentials: __S(198, __c24, 6) }),
+        /*@__PURE__*/ S.Struct({ bearerToken: __S(201, __c25, 1) }),
       ]);
     case 5:
       return S.suspend(() =>
@@ -7509,7 +6704,7 @@ function __c26(j: number): any {
           name: S.String,
           endpoint: S.String,
           description: S.optional(SensitiveString),
-          authorizationConfig: RemoteAgentAuthorizationConfig,
+          authorizationConfig: __S(212, __c26, 4),
         }),
       ).annotate({
         identifier: "RemoteAgentServiceDetails",
@@ -7526,7 +6721,7 @@ function __c26(j: number): any {
           name: S.String,
           endpoint: S.String,
           description: S.optional(SensitiveString),
-          authorizationConfig: RemoteAgentSigV4AuthorizationConfig,
+          authorizationConfig: __S(214, __c26, 6),
         }),
       ).annotate({
         identifier: "RemoteAgentSigV4ServiceDetails",
@@ -7537,32 +6732,32 @@ function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ dynatrace: DynatraceServiceDetails }),
-        /*@__PURE__*/ S.Struct({ servicenow: ServiceNowServiceDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserverdatadog: DatadogServiceDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserver: MCPServerDetails }),
-        /*@__PURE__*/ S.Struct({ gitlab: GitLabDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserversplunk: MCPServerDetails }),
-        /*@__PURE__*/ S.Struct({ mcpservernewrelic: NewRelicServiceDetails }),
-        /*@__PURE__*/ S.Struct({ eventChannel: EventChannelDetails }),
-        /*@__PURE__*/ S.Struct({ mcpservergrafana: GrafanaServiceDetails }),
-        /*@__PURE__*/ S.Struct({ pagerduty: PagerDutyDetails }),
-        /*@__PURE__*/ S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
-        /*@__PURE__*/ S.Struct({ mcpserversigv4: MCPServerSigV4ServiceDetails }),
-        /*@__PURE__*/ S.Struct({ remoteagent: RemoteAgentServiceDetails }),
-        /*@__PURE__*/ S.Struct({ remoteagentsigv4: RemoteAgentSigV4ServiceDetails }),
+        /*@__PURE__*/ S.Struct({ dynatrace: __S(193, __c24, 1) }),
+        /*@__PURE__*/ S.Struct({ servicenow: __S(194, __c24, 2) }),
+        /*@__PURE__*/ S.Struct({ mcpserverdatadog: __S(197, __c24, 5) }),
+        /*@__PURE__*/ S.Struct({ mcpserver: __S(203, __c25, 3) }),
+        /*@__PURE__*/ S.Struct({ gitlab: __S(204, __c25, 4) }),
+        /*@__PURE__*/ S.Struct({ mcpserversplunk: __S(203, __c25, 3) }),
+        /*@__PURE__*/ S.Struct({ mcpservernewrelic: __S(207, __c25, 7) }),
+        /*@__PURE__*/ S.Struct({ eventChannel: __S(208, __c26, 0) }),
+        /*@__PURE__*/ S.Struct({ mcpservergrafana: __S(203, __c25, 3) }),
+        /*@__PURE__*/ S.Struct({ pagerduty: __S(209, __c26, 1) }),
+        /*@__PURE__*/ S.Struct({ azureidentity: __S(108, __c13, 4) }),
+        /*@__PURE__*/ S.Struct({ mcpserversigv4: __S(211, __c26, 3) }),
+        /*@__PURE__*/ S.Struct({ remoteagent: __S(213, __c26, 5) }),
+        /*@__PURE__*/ S.Struct({ remoteagentsigv4: __S(215, __c26, 7) }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          service: PostRegisterServiceSupportedService.pipe(T.HttpLabel("service")),
-          serviceDetails: ServiceDetails,
+          service: S.String.pipe(T.HttpLabel("service")),
+          serviceDetails: __S(216, __c27, 0),
           kmsKeyArn: S.optional(S.String),
           privateConnectionName: S.optional(S.String),
           targetUrlPrivateConnectionName: S.optional(S.String),
           exchangeUrlPrivateConnectionName: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(33, __c4, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/register/{service}" }),
@@ -7579,14 +6774,14 @@ function __c27(j: number): any {
         identifier: "OAuthAdditionalStepDetails",
       });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ oauth: OAuthAdditionalStepDetails })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ oauth: __S(218, __c27, 2) })]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.optional(S.String),
-          additionalStep: S.optional(AdditionalServiceRegistrationStep),
+          additionalStep: S.optional(__S(219, __c27, 3)),
           kmsKeyArn: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "RegisterServiceOutput" });
     case 5:
@@ -7596,7 +6791,7 @@ function __c27(j: number): any {
           interruptId: S.optional(S.String),
           approvalId: S.optional(S.String),
           buttonText: S.optional(S.String),
-          action: S.optional(ApprovalActionType),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApprovalAction" });
     case 6:
@@ -7605,7 +6800,7 @@ function __c27(j: number): any {
           currentPage: S.optional(S.String),
           lastMessage: S.optional(S.String),
           userActionResponse: S.optional(S.String),
-          approvalAction: S.optional(ApprovalAction),
+          approvalAction: S.optional(__S(221, __c27, 5)),
         }),
       ).annotate({ identifier: "SendMessageContext" });
     case 7:
@@ -7614,9 +6809,9 @@ function __c27(j: number): any {
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           executionId: S.String,
           content: S.String,
-          context: S.optional(SendMessageContext),
+          context: S.optional(__S(222, __c27, 6)),
           userId: S.optional(S.String),
-          assetIds: S.optional(AssetIdList),
+          assetIds: S.optional(__S(7, __c0, 7)),
           modelTier: S.optional(S.String),
         }).pipe(
           T.all(
@@ -7651,7 +6846,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           responseId: S.optional(S.String),
-          usage: S.optional(SendMessageUsageInfo),
+          usage: S.optional(__S(225, __c28, 1)),
           sequenceNumber: S.optional(S.Number),
         }),
       ).annotate({
@@ -7698,14 +6893,14 @@ function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ textDelta: SendMessageTextDelta }),
-        /*@__PURE__*/ S.Struct({ jsonDelta: SendMessageJsonDelta }),
+        /*@__PURE__*/ S.Struct({ textDelta: __S(230, __c28, 6) }),
+        /*@__PURE__*/ S.Struct({ jsonDelta: __S(231, __c28, 7) }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           index: S.optional(S.Number),
-          delta: S.optional(SendMessageContentBlockDelta),
+          delta: S.optional(__S(232, __c29, 0)),
           sequenceNumber: S.optional(S.Number),
         }),
       ).annotate({
@@ -7726,24 +6921,27 @@ function __c29(j: number): any {
     case 3:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ responseCreated: SendMessageResponseCreatedEvent }),
-          /*@__PURE__*/ S.Struct({ responseInProgress: SendMessageResponseInProgressEvent }),
-          /*@__PURE__*/ S.Struct({ responseCompleted: SendMessageResponseCompletedEvent }),
-          /*@__PURE__*/ S.Struct({ responseFailed: SendMessageResponseFailedEvent }),
-          /*@__PURE__*/ S.Struct({ summary: SendMessageSummaryEvent }),
-          /*@__PURE__*/ S.Struct({ heartbeat: SendMessageHeartbeatEvent }),
-          /*@__PURE__*/ S.Struct({ contentBlockStart: SendMessageContentBlockStartEvent }),
-          /*@__PURE__*/ S.Struct({ contentBlockDelta: SendMessageContentBlockDeltaEvent }),
-          /*@__PURE__*/ S.Struct({ contentBlockStop: SendMessageContentBlockStopEvent }),
+          /*@__PURE__*/ S.Struct({ responseCreated: __S(224, __c28, 0) }),
+          /*@__PURE__*/ S.Struct({ responseInProgress: __S(224, __c28, 0) }),
+          /*@__PURE__*/ S.Struct({ responseCompleted: __S(226, __c28, 2) }),
+          /*@__PURE__*/ S.Struct({ responseFailed: __S(227, __c28, 3) }),
+          /*@__PURE__*/ S.Struct({ summary: __S(228, __c28, 4) }),
+          /*@__PURE__*/ S.Struct({ heartbeat: __S(16, __c2, 0) }),
+          /*@__PURE__*/ S.Struct({ contentBlockStart: __S(229, __c28, 5) }),
+          /*@__PURE__*/ S.Struct({ contentBlockDelta: __S(233, __c29, 1) }),
+          /*@__PURE__*/ S.Struct({ contentBlockStop: __S(234, __c29, 2) }),
         ]),
       );
     case 4:
       return S.suspend(() =>
-        S.Struct({ events: SendMessageEvents.pipe(T.HttpPayload()) }),
+        S.Struct({ events: __S(235, __c29, 3).pipe(T.HttpPayload()) }),
       ).annotate({ identifier: "SendMessageResponse" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(33, __c4, 1),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -7758,7 +6956,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(7, __c0, 7).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -7777,7 +6975,7 @@ function __c29(j: number): any {
           name: S.optional(S.String),
           description: S.optional(SensitiveString),
           locale: S.optional(S.String),
-          preferences: S.optional(AgentSpacePreferences),
+          preferences: S.optional(__S(34, __c4, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/v1/agentspaces/{agentSpaceId}" }),
@@ -7794,22 +6992,22 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ agentSpace: AgentSpace })).annotate({
+      return S.suspend(() => S.Struct({ agentSpace: __S(36, __c4, 4) })).annotate({
         identifier: "UpdateAgentSpaceOutput",
       });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
       return S.suspend(() =>
-        S.Struct({ tool: S.String, argumentPins: ApprovalArgumentPins }),
+        S.Struct({ tool: S.String, argumentPins: __S(241, __c30, 1) }),
       ).annotate({ identifier: "ApprovalPattern" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           approvalId: S.String.pipe(T.HttpLabel("approvalId")),
-          action: ApprovalActionType,
-          finalPattern: S.optional(ApprovalPattern),
+          action: S.String,
+          finalPattern: S.optional(__S(242, __c30, 2)),
           reason: S.optional(S.String),
           ttlSeconds: S.optional(S.Number),
           singleUse: S.optional(S.Boolean),
@@ -7833,7 +7031,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           approvalId: S.String,
-          status: ApprovalStatus,
+          status: S.String,
           expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -7845,7 +7043,7 @@ function __c30(j: number): any {
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           assetId: S.String.pipe(T.HttpLabel("assetId")),
           metadata: S.optional(S.Any),
-          content: S.optional(AssetContent),
+          content: S.optional(__S(42, __c5, 2)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -7864,7 +7062,7 @@ function __c30(j: number): any {
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           assetId: S.String.pipe(T.HttpLabel("assetId")),
           path: S.String.pipe(T.HttpLabel("path")),
-          content: S.optional(AssetFileBody),
+          content: S.optional(__S(38, __c4, 6)),
           metadata: S.optional(S.Any),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -7886,8 +7084,8 @@ function __c30(j: number): any {
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           associationId: S.String.pipe(T.HttpLabel("associationId")),
-          configuration: ServiceConfiguration,
-          capabilities: S.optional(AssociationCapabilities),
+          configuration: __S(22, __c2, 6),
+          capabilities: S.optional(__S(28, __c3, 4)),
         }).pipe(
           T.all(
             T.Http({
@@ -7911,7 +7109,7 @@ function __c31(j: number): any {
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           taskId: S.String.pipe(T.HttpLabel("taskId")),
-          taskStatus: S.optional(TaskStatus),
+          taskStatus: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -7925,7 +7123,7 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "UpdateBacklogTaskRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ state: SchedulerState })).annotate({
+      return S.suspend(() => S.Struct({ state: S.String })).annotate({
         identifier: "GoalScheduleInput",
       });
     case 2:
@@ -7933,7 +7131,7 @@ function __c31(j: number): any {
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           goalId: S.String.pipe(T.HttpLabel("goalId")),
-          evaluationSchedule: S.optional(GoalScheduleInput),
+          evaluationSchedule: S.optional(__S(249, __c31, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -7947,7 +7145,7 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "UpdateGoalRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ goal: Goal })).annotate({
+      return S.suspend(() => S.Struct({ goal: __S(155, __c19, 3) })).annotate({
         identifier: "UpdateGoalResponse",
       });
     case 4:
@@ -7969,9 +7167,7 @@ function __c31(j: number): any {
         identifier: "UpdateOperatorAppIdpConfigInput",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ agentSpaceId: S.String, idp: IdpAuthConfiguration }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ agentSpaceId: S.String, idp: __S(78, __c9, 6) })).annotate({
         identifier: "UpdateOperatorAppIdpConfigOutput",
       });
     case 6:
@@ -7993,14 +7189,14 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: PrivateConnectionType,
+          type: S.String,
           resourceGatewayId: S.optional(S.String),
           hostAddress: S.optional(S.String),
           vpcId: S.optional(S.String),
           resourceConfigurationId: S.optional(S.String),
-          status: PrivateConnectionStatus,
+          status: S.String,
           certificateExpiryTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dnsResolution: S.optional(ResourceConfigDnsResolution),
+          dnsResolution: S.optional(S.String),
           failureMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -8015,7 +7211,7 @@ function __c32(j: number): any {
         S.Struct({
           agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
           recommendationId: S.String.pipe(T.HttpLabel("recommendationId")),
-          status: S.optional(RecommendationStatus),
+          status: S.optional(S.String),
           additionalContext: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -8075,6 +7271,11 @@ function __c32(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 4:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(259, __c32, 3));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

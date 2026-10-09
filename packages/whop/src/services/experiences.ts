@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,18 +54,11 @@ export interface AttachExperienceRequest {
   /** The unique identifier of the product to attach the experience to. */
   product_id: string;
 }
-const AttachExperienceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AttachExperienceRequest>;
-
 /** The icon image for this app, displayed on the app store, product pages, checkout, and as the default icon for experiences using this app. */
 export interface ExperienceAppIcon {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-const ExperienceAppIcon = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ExperienceAppIcon>;
-
 /** The app that powers this experience, defining its interface and behavior. */
 export interface ExperienceApp {
   /** The icon image for this app, displayed on the app store, product pages, checkout, and as the default icon for experiences using this app. */
@@ -73,8 +68,6 @@ export interface ExperienceApp {
   /** The display name of this app shown on the app store and in experience navigation. Maximum 30 characters. */
   name: string;
 }
-const ExperienceApp = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ExperienceApp>;
-
 /** The company that owns this experience. */
 export interface ExperienceCompany {
   /** The unique identifier for the company. */
@@ -84,8 +77,6 @@ export interface ExperienceCompany {
   /** The display name of the company shown to customers. */
   title: string;
 }
-const ExperienceCompany = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ExperienceCompany>;
-
 /** The custom logo image for this experience. Null if no custom logo has been uploaded. */
 export type ExperienceImage = ExperienceAppIcon;
 /** A product is a digital good or service sold on Whop. Products contain plans for pricing and experiences for content delivery. */
@@ -97,15 +88,8 @@ export interface ExperienceProductsItem {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-const ExperienceProductsItem = ExperienceCompany as any as S.Schema<ExperienceProductsItem>;
-
 /** The list of products this experience is attached to, which determines which customers have access. Empty if the experience is only visible to authorized company team members. */
 export type ExperienceProductsList = Array<ExperienceProductsItem>;
-const ExperienceProductsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ExperienceProductsList>;
-
 /** An experience is a feature or content module within a product, such as a chat, course, or custom app. */
 export interface Experience {
   /** The app that powers this experience, defining its interface and behavior. */
@@ -127,18 +111,11 @@ export interface Experience {
   /** The list of products this experience is attached to, which determines which customers have access. Empty if the experience is only visible to authorized company team members. */
   products: ExperienceProductsList;
 }
-const Experience = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Experience>;
-
 /** A logo image displayed alongside the experience name. */
 export interface CreateExperienceRequestLogo {
   /** The ID of an existing file object. */
   id: string;
 }
-const CreateExperienceRequestLogo = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateExperienceRequestLogo>;
-
 export interface CreateExperienceRequest {
   /** The unique identifier of the company to create this experience for. */
   account_id: string;
@@ -155,54 +132,27 @@ export interface CreateExperienceRequest {
   /** The unique identifier of the section to place the experience in. */
   section_id?: string | null;
 }
-const CreateExperienceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateExperienceRequest>;
-
 export interface DeleteExperienceRequest {
   /** The unique identifier of the experience to delete. */
   id: string;
 }
-const DeleteExperienceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteExperienceRequest>;
-
 export type DeleteExperienceResponse = boolean;
-const DeleteExperienceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteExperienceResponse>;
-
 export interface DetachExperienceRequest {
   /** The unique identifier of the experience to detach. */
   id: string;
   /** The unique identifier of the product to detach the experience from. */
   product_id: string;
 }
-const DetachExperienceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DetachExperienceRequest>;
-
 export interface DuplicateExperienceRequest {
   /** The unique identifier of the experience to duplicate. */
   id: string;
   /** The display name for the duplicated experience. Defaults to the original experience's name. */
   name?: string | null;
 }
-const DuplicateExperienceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DuplicateExperienceRequest>;
-
 export interface GetExperienceRequest {
   /** The unique identifier of the experience. */
   id: string;
 }
-const GetExperienceRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetExperienceRequest>;
-
 export interface ListExperienceRequest {
   after?: string;
   before?: string;
@@ -214,11 +164,6 @@ export interface ListExperienceRequest {
   created_after?: string;
   account_id: string;
 }
-const ListExperienceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListExperienceRequest>;
-
 /** The icon image for this app, displayed on the app store, product pages, checkout, and as the default icon for experiences using this app. */
 export type ExperienceListItemAppIcon = ExperienceAppIcon;
 /** The app that powers this experience, defining its interface and behavior. */
@@ -246,15 +191,8 @@ export interface ExperienceListItem {
   /** The sort position of this experience within its section. Lower values appear first. Null if no position has been set. */
   order: string | null;
 }
-const ExperienceListItem = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ExperienceListItem>;
-
 /** A list of nodes. */
 export type ListExperienceResponseDataList = Array<ExperienceListItem>;
-const ListExperienceResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListExperienceResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -266,23 +204,14 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PageInfo>;
-
 export interface ListExperienceResponse {
   /** A list of nodes. */
   data: ListExperienceResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListExperienceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListExperienceResponse>;
-
 /** The different access levels for experiences (PUBLIC IS NEVER USED ANYMORE). */
 export type ExperienceAccessLevels = "public" | "private";
-const ExperienceAccessLevels = S.String;
-
 /** A logo image displayed alongside the experience name. */
 export type UpdateExperienceRequestLogo = CreateExperienceRequestLogo;
 export interface UpdateExperienceRequest {
@@ -303,11 +232,6 @@ export interface UpdateExperienceRequest {
   /** The unique identifier of the section to move the experience into. */
   section_id?: string | null;
 }
-const UpdateExperienceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UpdateExperienceRequest>;
-
 export type AttachExperienceError =
   | BadRequest
   | Forbidden
@@ -321,8 +245,8 @@ export const attachExperience: API.OperationMethod<
   AttachExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachExperienceRequest,
-  output: Experience,
+  input: __S(0, __c0, 0) as any as S.Schema<AttachExperienceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -341,8 +265,8 @@ export const createExperience: API.OperationMethod<
   CreateExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperienceRequest,
-  output: Experience,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateExperienceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -361,8 +285,8 @@ export const deleteExperience: API.OperationMethod<
   DeleteExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExperienceRequest,
-  output: DeleteExperienceResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteExperienceRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteExperienceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -381,8 +305,8 @@ export const detachExperience: API.OperationMethod<
   DetachExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachExperienceRequest,
-  output: Experience,
+  input: __S(10, __c1, 2) as any as S.Schema<DetachExperienceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -401,8 +325,8 @@ export const duplicateExperience: API.OperationMethod<
   DuplicateExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DuplicateExperienceRequest,
-  output: Experience,
+  input: __S(11, __c1, 3) as any as S.Schema<DuplicateExperienceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -421,8 +345,8 @@ export const getExperience: API.OperationMethod<
   GetExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperienceRequest,
-  output: Experience,
+  input: __S(12, __c1, 4) as any as S.Schema<GetExperienceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -443,8 +367,8 @@ export const listExperience: API.PaginatedOperationMethod<
   ExperienceListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListExperienceRequest,
-    output: ListExperienceResponse,
+    input: __S(13, __c1, 5) as any as S.Schema<ListExperienceRequest>,
+    output: __S(17, __c2, 1) as any as S.Schema<ListExperienceResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -473,8 +397,8 @@ export const updateExperience: API.OperationMethod<
   UpdateExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExperienceRequest,
-  output: Experience,
+  input: __S(18, __c2, 2) as any as S.Schema<UpdateExperienceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -499,7 +423,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          icon: S.NullOr(ExperienceAppIcon),
+          icon: S.NullOr(__S(1, __c0, 1)),
           id: S.String,
           name: S.String,
         }),
@@ -513,19 +437,19 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ExperienceCompany" });
     case 4:
-      return S.Array(ExperienceProductsItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          app: ExperienceApp,
-          company: ExperienceCompany,
+          app: __S(2, __c0, 2),
+          company: __S(3, __c0, 3),
           created_at: S.String,
           id: S.String,
-          image: S.NullOr(ExperienceAppIcon),
+          image: S.NullOr(__S(1, __c0, 1)),
           is_public: S.Boolean,
           name: S.String,
           order: S.NullOr(S.String),
-          products: ExperienceProductsList,
+          products: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "Experience" });
     case 6:
@@ -542,7 +466,7 @@ function __c0(j: number): any {
           account_id: S.String,
           app_id: S.String,
           is_public: S.optional(S.NullOr(S.Boolean)),
-          logo: S.optional(S.NullOr(CreateExperienceRequestLogo)),
+          logo: S.optional(S.NullOr(__S(6, __c0, 6))),
           name: S.optional(S.NullOr(S.String)),
           notifications_enabled: S.optional(S.NullOr(S.Boolean)),
           section_id: S.optional(S.NullOr(S.String)),
@@ -601,18 +525,18 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          app: ExperienceApp,
-          company: ExperienceCompany,
+          app: __S(2, __c0, 2),
+          company: __S(3, __c0, 3),
           created_at: S.String,
           id: S.String,
-          image: S.NullOr(ExperienceAppIcon),
+          image: S.NullOr(__S(1, __c0, 1)),
           is_public: S.Boolean,
           name: S.String,
           order: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ExperienceListItem" });
     case 7:
-      return S.Array(ExperienceListItem);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -629,17 +553,17 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListExperienceResponseDataList,
-          page_info: PageInfo,
+          data: __S(15, __c1, 7),
+          page_info: __S(16, __c2, 0),
         }),
       ).annotate({ identifier: "ListExperienceResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          access_level: S.optional(S.NullOr(ExperienceAccessLevels)),
+          access_level: S.optional(S.NullOr(S.String)),
           is_public: S.optional(S.NullOr(S.Boolean)),
-          logo: S.optional(S.NullOr(CreateExperienceRequestLogo)),
+          logo: S.optional(S.NullOr(__S(6, __c0, 6))),
           name: S.optional(S.NullOr(S.String)),
           notifications_enabled: S.optional(S.NullOr(S.Boolean)),
           order: S.optional(S.NullOr(S.String)),
@@ -647,4 +571,9 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "PATCH", uri: "/experiences/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateExperienceRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

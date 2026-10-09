@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -91,11 +93,6 @@ export interface CreateFinetuneRequest {
   description?: string;
   public?: boolean;
 }
-const CreateFinetuneRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFinetuneRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateFinetuneResponse {
   id: string;
@@ -106,11 +103,6 @@ export interface CreateFinetuneResponse {
   public: boolean;
   description?: string | null;
 }
-const CreateFinetuneResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateFinetuneResponse>;
-
 export interface CreateFinetuneAssetRequest {
   accountId: string;
   finetuneId: string;
@@ -119,68 +111,34 @@ export interface CreateFinetuneAssetRequest {
   /** Name of the file (adapter_config.json or adapter_model.safetensors). */
   fileName: string;
 }
-const CreateFinetuneAssetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateFinetuneAssetRequest>;
-
 export interface CreateFinetuneAssetResponse {}
-const CreateFinetuneAssetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateFinetuneAssetResponse>;
-
 export interface GetModelSchemaRequest {
   /** Cloudflare account ID used for this AI model request. */
   accountId: string;
   /** AI model identifier, including its namespace and model name. */
   model: string;
 }
-const GetModelSchemaRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetModelSchemaRequest>;
-
 export interface ModelsSchemaGetResponseInput {
   additionalProperties: boolean;
   description: string;
   type: string;
 }
-const ModelsSchemaGetResponseInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ModelsSchemaGetResponseInput>;
-
 export type ModelsSchemaGetResponseOutput = ModelsSchemaGetResponseInput;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetModelSchemaResponse {
   input: ModelsSchemaGetResponseInput;
   output: ModelsSchemaGetResponseInput;
 }
-const GetModelSchemaResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetModelSchemaResponse>;
-
 export interface ListAuthorsRequest {
   accountId: string;
 }
-const ListAuthorsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListAuthorsRequest>;
-
 export type AuthorsListResultList = Array<unknown>;
-const AuthorsListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AuthorsListResultList>;
-
 export interface ListAuthorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AuthorsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAuthorsResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListAuthorsResponse>;
-
 export interface ListFinetunePublicsRequest {
   accountId: string;
   /** Pagination Limit. */
@@ -190,11 +148,6 @@ export interface ListFinetunePublicsRequest {
   /** Order By Column Name. */
   orderBy?: string;
 }
-const ListFinetunePublicsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListFinetunePublicsRequest>;
-
 export interface FinetunesPublicListResultItem {
   id: string;
   createdAt: string;
@@ -204,33 +157,16 @@ export interface FinetunesPublicListResultItem {
   public: boolean;
   description?: string | null;
 }
-const FinetunesPublicListResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<FinetunesPublicListResultItem>;
-
 export type FinetunesPublicListResultList = Array<FinetunesPublicListResultItem>;
-const FinetunesPublicListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<FinetunesPublicListResultList>;
-
 export interface ListFinetunePublicsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: FinetunesPublicListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListFinetunePublicsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListFinetunePublicsResponse>;
-
 export interface ListFinetunesRequest {
   accountId: string;
 }
-const ListFinetunesRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListFinetunesRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListFinetunesResponse {
   id: string;
@@ -240,14 +176,7 @@ export interface ListFinetunesResponse {
   name: string;
   description?: string | null;
 }
-const ListFinetunesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListFinetunesResponse>;
-
 export type ModelsListRequestFormat = "openrouter";
-const ModelsListRequestFormat = S.String;
-
 export interface ListModelsRequest {
   accountId: string;
   /** Filter by Author. */
@@ -267,17 +196,11 @@ export interface ListModelsRequest {
   /** Filter by Task Name. */
   task?: string;
 }
-const ListModelsRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListModelsRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListModelsResponse {}
-const ListModelsResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListModelsResponse>;
-
 export interface ListTasksRequest {
   accountId: string;
 }
-const ListTasksRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListTasksRequest>;
-
 export type TasksListResultList = Array<unknown>;
 export interface ListTasksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -285,49 +208,22 @@ export interface ListTasksResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListTasksResponse = ListAuthorsResponse as any as S.Schema<ListTasksResponse>;
-
 export type RunRequestTextTextEmbeddingsCase1List = Array<string>;
-const RunRequestTextTextEmbeddingsCase1List = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<RunRequestTextTextEmbeddingsCase1List>;
-
 export type RunRequestTextTextEmbeddings = string | RunRequestTextTextEmbeddingsCase1List;
 export type RunRequestTextMultimodalEmbeddingsList = Array<string>;
 export type RunRequestText =
   | string
   | RunRequestTextTextEmbeddings
   | RunRequestTextMultimodalEmbeddingsList;
-const RunRequestText = /*@__PURE__*/ __L.at(__c2, 4);
-
 export type RunRequestImageTextToImageList = Array<number>;
-const RunRequestImageTextToImageList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<RunRequestImageTextToImageList>;
-
 export type RunRequestImage = string | RunRequestImageTextToImageList;
-const RunRequestImage = /*@__PURE__*/ __L.at(__c2, 6);
-
 export type RunRequestMaskList = Array<number>;
-const RunRequestMaskList = RunRequestImageTextToImageList as any as S.Schema<RunRequestMaskList>;
-
 export type RunRequestAudioList = Array<number>;
-const RunRequestAudioList = RunRequestImageTextToImageList as any as S.Schema<RunRequestAudioList>;
-
 export type RunRequestResponseFormatType = "json_object" | "json_schema";
-const RunRequestResponseFormatType = S.String;
-
 export interface RunRequestResponseFormat {
   jsonSchema?: unknown;
   type?: RunRequestResponseFormatType | (string & {});
 }
-const RunRequestResponseFormat = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<RunRequestResponseFormat>;
-
 export interface RunRequestMessagesTextGenerationItemContentCase1Item {
   /** Text content */
   text?: string;
@@ -373,23 +269,11 @@ export type RunRequestMessagesImageTextToTextList = Array<RunRequestMessagesImag
 export type RunRequestMessages =
   | RunRequestMessagesTextGenerationList
   | RunRequestMessagesImageTextToTextList;
-const RunRequestMessages = /*@__PURE__*/ __L.at(__c3, 0);
-
 export interface RunRequestFunctionsItem {
   code: string;
   name: string;
 }
-const RunRequestFunctionsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<RunRequestFunctionsItem>;
-
 export type RunRequestFunctionsList = Array<RunRequestFunctionsItem>;
-const RunRequestFunctionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<RunRequestFunctionsList>;
-
 export interface RunRequestToolsItemCase0ParametersPropertiesValue {
   /** A description of the expected parameter. */
   description: string;
@@ -445,11 +329,7 @@ export interface RunRequestToolsItemFunction {
   type: string;
 }
 export type RunRequestToolsItem = RunRequestToolsItemCase0 | RunRequestToolsItemFunction;
-const RunRequestToolsItem = /*@__PURE__*/ __L.at(__c3, 3);
-
 export type RunRequestToolsList = Array<RunRequestToolsItem>;
-const RunRequestToolsList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<RunRequestToolsList>;
-
 export interface RunAiRequest {
   /** Cloudflare account ID used for this AI model request. */
   accountId: string;
@@ -520,8 +400,6 @@ export interface RunAiRequest {
   /** Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
   ignoreEos?: boolean;
 }
-const RunAiRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<RunAiRequest>;
-
 export interface RunResultTextClassificationItem {
   /** The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE') */
   label?: string | null;
@@ -640,69 +518,32 @@ export type RunResult =
   | RunResultImageToText
   | RunResultImageToText
   | RunResultMultimodalEmbeddings;
-const RunResult = /*@__PURE__*/ __L.at(__c3, 6);
-
 export type RunAiResponse = RunResult;
-const RunAiResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<RunAiResponse>;
-
 export interface SupportedToMarkdownRequest {
   /** Cloudflare account ID used for this AI model request. */
   accountId: string;
 }
-const SupportedToMarkdownRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<SupportedToMarkdownRequest>;
-
 export interface ToMarkdownSupportedResultItem {
   extension: string;
   mimeType: string;
 }
-const ToMarkdownSupportedResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ToMarkdownSupportedResultItem>;
-
 export type ToMarkdownSupportedResultList = Array<ToMarkdownSupportedResultItem>;
-const ToMarkdownSupportedResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ToMarkdownSupportedResultList>;
-
 export interface SupportedToMarkdownResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ToMarkdownSupportedResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const SupportedToMarkdownResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<SupportedToMarkdownResponse>;
-
 export type ToMarkdownTransformRequestFileFilesList = Array<string>;
-const ToMarkdownTransformRequestFileFilesList =
-  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<ToMarkdownTransformRequestFileFilesList>;
-
 export interface ToMarkdownTransformRequestFile {
   /** Files to convert, supplied as multipart file uploads. */
   files: ToMarkdownTransformRequestFileFilesList;
 }
-const ToMarkdownTransformRequestFile = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ToMarkdownTransformRequestFile>;
-
 export interface TransformToMarkdownRequest {
   /** Cloudflare account ID used for this AI model request. */
   accountId: string;
   file: ToMarkdownTransformRequestFile;
 }
-const TransformToMarkdownRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<TransformToMarkdownRequest>;
-
 export interface ToMarkdownTransformResultItem {
   data: string;
   format: string;
@@ -710,23 +551,8 @@ export interface ToMarkdownTransformResultItem {
   name: string;
   tokens: string;
 }
-const ToMarkdownTransformResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ToMarkdownTransformResultItem>;
-
 export type ToMarkdownTransformResultList = Array<ToMarkdownTransformResultItem>;
-const ToMarkdownTransformResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ToMarkdownTransformResultList>;
-
 export type TransformToMarkdownResponse = ToMarkdownTransformResultList;
-const TransformToMarkdownResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<TransformToMarkdownResponse>;
-
 export type CreateFinetuneError = ModelNotSupported | AccountNotFound | CloudflareOpError;
 /** Creates a new fine-tuning job for a Workers AI model using custom training data. */
 export const createFinetune: API.OperationMethod<
@@ -735,8 +561,8 @@ export const createFinetune: API.OperationMethod<
   CreateFinetuneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFinetuneRequest,
-  output: CreateFinetuneResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateFinetuneRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateFinetuneResponse>,
   errors: [ModelNotSupported, AccountNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -750,8 +576,8 @@ export const createFinetuneAsset: API.OperationMethod<
   CreateFinetuneAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFinetuneAssetRequest,
-  output: CreateFinetuneAssetResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateFinetuneAssetRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateFinetuneAssetResponse>,
   errors: [ModelNotSupported, AccountNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -769,8 +595,8 @@ export const getModelSchema: API.OperationMethod<
   GetModelSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelSchemaRequest,
-  output: GetModelSchemaResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetModelSchemaRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetModelSchemaResponse>,
   errors: [
     ModelNotSupported,
     ModelSchemaNotFound,
@@ -792,8 +618,8 @@ export const listAuthors: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAuthorsRequest,
-    output: ListAuthorsResponse,
+    input: __S(7, __c0, 7) as any as S.Schema<ListAuthorsRequest>,
+    output: __S(9, __c1, 1) as any as S.Schema<ListAuthorsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -812,8 +638,8 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
   FinetunesPublicListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListFinetunePublicsRequest,
-    output: ListFinetunePublicsResponse,
+    input: __S(10, __c1, 2) as any as S.Schema<ListFinetunePublicsRequest>,
+    output: __S(13, __c1, 5) as any as S.Schema<ListFinetunePublicsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -830,8 +656,8 @@ export const listFinetunes: API.OperationMethod<
   ListFinetunesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFinetunesRequest,
-  output: ListFinetunesResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<ListFinetunesRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ListFinetunesResponse>,
   errors: [AccountNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -845,8 +671,8 @@ export const listModels: API.OperationMethod<
   ListModelsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListModelsRequest,
-  output: ListModelsResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<ListModelsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ListModelsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -862,8 +688,8 @@ export const listTasks: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTasksRequest,
-    output: ListTasksResponse,
+    input: __S(18, __c2, 2) as any as S.Schema<ListTasksRequest>,
+    output: __S(9, __c1, 1) as any as S.Schema<ListTasksResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -880,8 +706,8 @@ export const runAi: API.OperationMethod<
   RunAiError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunAiRequest,
-  output: RunAiResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<RunAiRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<RunAiResponse>,
   errors: [ModelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -897,8 +723,8 @@ export const supportedToMarkdown: API.PaginatedOperationMethod<
   ToMarkdownSupportedResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: SupportedToMarkdownRequest,
-    output: SupportedToMarkdownResponse,
+    input: __S(32, __c4, 0) as any as S.Schema<SupportedToMarkdownRequest>,
+    output: __S(35, __c4, 3) as any as S.Schema<SupportedToMarkdownResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -915,8 +741,8 @@ export const transformToMarkdown: API.OperationMethod<
   TransformToMarkdownError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransformToMarkdownRequest,
-  output: TransformToMarkdownResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<TransformToMarkdownRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<TransformToMarkdownResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1001,8 +827,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          input: ModelsSchemaGetResponseInput,
-          output: ModelsSchemaGetResponseInput,
+          input: __S(5, __c0, 5) as any as S.Schema<ModelsSchemaGetResponseInput>,
+          output: __S(5, __c0, 5) as any as S.Schema<ModelsSchemaGetResponseInput>,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetModelSchemaResponse" });
     case 7:
@@ -1024,7 +850,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: AuthorsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(8, __c1, 0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAuthorsResponse" });
@@ -1058,11 +884,11 @@ function __c1(j: number): any {
         identifier: "FinetunesPublicListResultItem",
       });
     case 4:
-      return S.Array(FinetunesPublicListResultItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: FinetunesPublicListResultList.pipe(T.EnvelopePayload()),
+          result: __S(12, __c1, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1096,7 +922,7 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           author: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(ModelsListRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           hideExperimental: S.optional(S.Boolean.pipe(T.Query("hide_experimental"))),
           includeDeprecated: S.optional(S.Boolean.pipe(T.Query("include_deprecated"))),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -1134,7 +960,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
-          type: S.optional(RunRequestResponseFormatType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunRequestResponseFormat" });
   }
@@ -1151,7 +977,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "RunRequestFunctionsItem" });
     case 2:
-      return S.Array(RunRequestFunctionsItem);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -1160,26 +986,26 @@ function __c3(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(RunRequestToolsItem);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           modelName: S.String.pipe(T.Label("model_name")),
-          text: S.optional(RunRequestText),
+          text: S.optional(__S(20, __c2, 4)),
           prompt: S.optional(S.String),
           guidance: S.optional(S.Number),
           height: S.optional(S.Number),
-          image: S.optional(RunRequestImage),
+          image: S.optional(__S(22, __c2, 6)),
           imageB64: S.optional(S.String.pipe(T.Body("image_b64"))),
-          mask: S.optional(RunRequestMaskList),
+          mask: S.optional(__S(21, __c2, 5)),
           negativePrompt: S.optional(S.String.pipe(T.Body("negative_prompt"))),
           numSteps: S.optional(S.Number.pipe(T.Body("num_steps"))),
           seed: S.optional(S.Number),
           strength: S.optional(S.Number),
           width: S.optional(S.Number),
           lang: S.optional(S.String),
-          audio: S.optional(RunRequestAudioList),
+          audio: S.optional(__S(21, __c2, 5)),
           sourceLang: S.optional(S.String.pipe(T.Body("source_lang"))),
           targetLang: S.optional(S.String.pipe(T.Body("target_lang"))),
           frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
@@ -1188,14 +1014,14 @@ function __c3(j: number): any {
           presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
           raw: S.optional(S.Boolean),
           repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
-          responseFormat: S.optional(RunRequestResponseFormat.pipe(T.Body("response_format"))),
+          responseFormat: S.optional(__S(23, __c2, 7).pipe(T.Body("response_format"))),
           stream: S.optional(S.Boolean),
           temperature: S.optional(S.Number),
           topK: S.optional(S.Number.pipe(T.Body("top_k"))),
           topP: S.optional(S.Number.pipe(T.Body("top_p"))),
-          messages: S.optional(RunRequestMessages),
-          functions: S.optional(RunRequestFunctionsList),
-          tools: S.optional(RunRequestToolsList),
+          messages: S.optional(__S(24, __c3, 0)),
+          functions: S.optional(__S(26, __c3, 2)),
+          tools: S.optional(__S(28, __c3, 4)),
           inputText: S.optional(S.String.pipe(T.Body("input_text"))),
           maxLength: S.optional(S.Number.pipe(T.Body("max_length"))),
           ignoreEos: S.optional(S.Boolean.pipe(T.Body("ignore_eos"))),
@@ -1229,7 +1055,7 @@ function __c3(j: number): any {
       );
     case 7:
       return S.suspend(() =>
-        RunResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(30, __c3, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RunAiResponse" });
   }
 }
@@ -1261,11 +1087,11 @@ function __c4(j: number): any {
         identifier: "ToMarkdownSupportedResultItem",
       });
     case 2:
-      return S.Array(ToMarkdownSupportedResultItem);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: ToMarkdownSupportedResultList.pipe(T.EnvelopePayload()),
+          result: __S(34, __c4, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1274,7 +1100,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          files: ToMarkdownTransformRequestFileFilesList,
+          files: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ToMarkdownTransformRequestFile",
@@ -1283,7 +1109,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          file: ToMarkdownTransformRequestFile,
+          file: __S(36, __c4, 4),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/ai/tomarkdown", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1303,19 +1129,21 @@ function __c4(j: number): any {
         identifier: "ToMarkdownTransformResultItem",
       });
     case 7:
-      return S.Array(ToMarkdownTransformResultItem);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        ToMarkdownTransformResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(39, __c4, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "TransformToMarkdownResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

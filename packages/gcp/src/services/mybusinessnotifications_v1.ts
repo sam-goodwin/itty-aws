@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,11 +68,6 @@ export interface GetNotificationSettingAccountsRequest {
   /** Required. The resource name of the notification setting we are trying to fetch. */
   name: string;
 }
-const GetNotificationSettingAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetNotificationSettingAccountsRequest>;
-
 export type NotificationSettingNotificationTypesItemEnum =
   | "NOTIFICATION_TYPE_UNSPECIFIED"
   | "GOOGLE_UPDATE"
@@ -84,16 +81,9 @@ export type NotificationSettingNotificationTypesItemEnum =
   | "DUPLICATE_LOCATION"
   | "LOSS_OF_VOICE_OF_MERCHANT"
   | "VOICE_OF_MERCHANT_UPDATED";
-const NotificationSettingNotificationTypesItemEnum = S.String;
-
 export type NotificationSettingNotificationTypesItemEnumList = Array<
   NotificationSettingNotificationTypesItemEnum | (string & {})
 >;
-const NotificationSettingNotificationTypesItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<NotificationSettingNotificationTypesItemEnumList>;
-
 /** A Google Pub/Sub topic where notifications can be published when a location is updated or has a new review. There will be only one notification setting resource per-account. */
 export interface NotificationSetting {
   /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
@@ -103,8 +93,6 @@ export interface NotificationSetting {
   /** The types of notifications that will be sent to the Pub/Sub topic. To stop receiving notifications entirely, use NotificationSettings.UpdateNotificationSetting with an empty notification_types or set the pubsub_topic to an empty string. */
   notificationTypes?: NotificationSettingNotificationTypesItemEnumList;
 }
-const NotificationSetting = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<NotificationSetting>;
-
 export interface UpdateNotificationSettingAccountsRequest {
   /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
   name: string;
@@ -113,11 +101,6 @@ export interface UpdateNotificationSettingAccountsRequest {
   /** Request body */
   body?: NotificationSetting;
 }
-const UpdateNotificationSettingAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UpdateNotificationSettingAccountsRequest>;
-
 export type GetNotificationSettingAccountsError = NotFound | Forbidden | GcpOpError;
 /** Returns the pubsub notification settings for the account. */
 export const getNotificationSettingAccounts: API.OperationMethod<
@@ -126,8 +109,8 @@ export const getNotificationSettingAccounts: API.OperationMethod<
   GetNotificationSettingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotificationSettingAccountsRequest,
-  output: NotificationSetting,
+  input: __S(0, __c0, 0) as any as S.Schema<GetNotificationSettingAccountsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<NotificationSetting>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -146,8 +129,8 @@ export const updateNotificationSettingAccounts: API.OperationMethod<
   UpdateNotificationSettingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNotificationSettingAccountsRequest,
-  output: NotificationSetting,
+  input: __S(3, __c0, 3) as any as S.Schema<UpdateNotificationSettingAccountsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<NotificationSetting>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -171,13 +154,13 @@ function __c0(j: number): any {
         identifier: "GetNotificationSettingAccountsRequest",
       });
     case 1:
-      return S.Array(NotificationSettingNotificationTypesItemEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           pubsubTopic: S.optional(S.String),
-          notificationTypes: S.optional(NotificationSettingNotificationTypesItemEnumList),
+          notificationTypes: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "NotificationSetting" });
     case 3:
@@ -185,7 +168,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(NotificationSetting.pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -197,4 +180,9 @@ function __c0(j: number): any {
         identifier: "UpdateNotificationSettingAccountsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

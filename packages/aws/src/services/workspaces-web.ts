@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "WorkSpaces Web",
   serviceShapeName: "AWSErmineControlPlaneService",
@@ -154,7 +156,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(195, __c24, 3)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -166,143 +168,76 @@ export interface AssociateBrowserSettingsRequest {
   portalArn: string;
   browserSettingsArn: string;
 }
-const AssociateBrowserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateBrowserSettingsRequest>;
 export interface AssociateBrowserSettingsResponse {
   portalArn: string;
   browserSettingsArn: string;
 }
-const AssociateBrowserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateBrowserSettingsResponse>;
 export interface AssociateDataProtectionSettingsRequest {
   portalArn: string;
   dataProtectionSettingsArn: string;
 }
-const AssociateDataProtectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AssociateDataProtectionSettingsRequest>;
 export interface AssociateDataProtectionSettingsResponse {
   portalArn: string;
   dataProtectionSettingsArn: string;
 }
-const AssociateDataProtectionSettingsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AssociateDataProtectionSettingsResponse>;
 export interface AssociateIpAccessSettingsRequest {
   portalArn: string;
   ipAccessSettingsArn: string;
 }
-const AssociateIpAccessSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssociateIpAccessSettingsRequest>;
 export interface AssociateIpAccessSettingsResponse {
   portalArn: string;
   ipAccessSettingsArn: string;
 }
-const AssociateIpAccessSettingsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssociateIpAccessSettingsResponse>;
 export interface AssociateNetworkSettingsRequest {
   portalArn: string;
   networkSettingsArn: string;
 }
-const AssociateNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AssociateNetworkSettingsRequest>;
 export interface AssociateNetworkSettingsResponse {
   portalArn: string;
   networkSettingsArn: string;
 }
-const AssociateNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AssociateNetworkSettingsResponse>;
 export interface AssociateSessionLoggerRequest {
   portalArn: string;
   sessionLoggerArn: string;
 }
-const AssociateSessionLoggerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AssociateSessionLoggerRequest>;
 export interface AssociateSessionLoggerResponse {
   portalArn: string;
   sessionLoggerArn: string;
 }
-const AssociateSessionLoggerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AssociateSessionLoggerResponse>;
 export interface AssociateTrustStoreRequest {
   portalArn: string;
   trustStoreArn: string;
 }
-const AssociateTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AssociateTrustStoreRequest>;
 export interface AssociateTrustStoreResponse {
   portalArn: string;
   trustStoreArn: string;
 }
-const AssociateTrustStoreResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AssociateTrustStoreResponse>;
 export interface AssociateUserAccessLoggingSettingsRequest {
   portalArn: string;
   userAccessLoggingSettingsArn: string;
 }
-const AssociateUserAccessLoggingSettingsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AssociateUserAccessLoggingSettingsRequest>;
 export interface AssociateUserAccessLoggingSettingsResponse {
   portalArn: string;
   userAccessLoggingSettingsArn: string;
 }
-const AssociateUserAccessLoggingSettingsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AssociateUserAccessLoggingSettingsResponse>;
 export interface AssociateUserSettingsRequest {
   portalArn: string;
   userSettingsArn: string;
 }
-const AssociateUserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AssociateUserSettingsRequest>;
 export interface AssociateUserSettingsResponse {
   portalArn: string;
   userSettingsArn: string;
 }
-const AssociateUserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AssociateUserSettingsResponse>;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-const Tag = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c2, 1);
 export type KeyArn = string;
 export type StringType = string;
 export type EncryptionContextMap = { [key: string]: string | undefined };
-const EncryptionContextMap = /*@__PURE__*/ __L.at(__c2, 2);
 export type BrowserPolicy = string | redacted.Redacted<string>;
 export type ClientToken = string;
 export type Category =
@@ -334,22 +269,14 @@ export type Category =
   | "WebBasedEmail"
   | "ParkedDomains"
   | (string & {});
-const Category = S.String;
-
 export type BlockedCategories = Category[];
-const BlockedCategories = /*@__PURE__*/ __L.at(__c2, 3);
 export type UrlPattern = string | redacted.Redacted<string>;
 export type UrlPatternList = (string | redacted.Redacted<string>)[];
-const UrlPatternList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface WebContentFilteringPolicy {
   blockedCategories?: Category[];
   allowedUrls?: (string | redacted.Redacted<string>)[];
   blockedUrls?: (string | redacted.Redacted<string>)[];
 }
-const WebContentFilteringPolicy = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<WebContentFilteringPolicy>;
 export interface CreateBrowserSettingsRequest {
   tags?: Tag[];
   customerManagedKey?: string;
@@ -358,17 +285,9 @@ export interface CreateBrowserSettingsRequest {
   clientToken?: string;
   webContentFilteringPolicy?: WebContentFilteringPolicy;
 }
-const CreateBrowserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateBrowserSettingsRequest>;
 export interface CreateBrowserSettingsResponse {
   browserSettingsArn: string;
 }
-const CreateBrowserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateBrowserSettingsResponse>;
 export type DisplayNameSafe = string | redacted.Redacted<string>;
 export type DescriptionSafe = string | redacted.Redacted<string>;
 export type BuiltInPatternId = string | redacted.Redacted<string>;
@@ -380,17 +299,14 @@ export interface CustomPattern {
   patternDescription?: string | redacted.Redacted<string>;
   keywordRegex?: string | redacted.Redacted<string>;
 }
-const CustomPattern = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CustomPattern>;
 export type RedactionPlaceHolderType = string;
 export type RedactionPlaceHolderText = string | redacted.Redacted<string>;
 export interface RedactionPlaceHolder {
   redactionPlaceHolderType: string;
   redactionPlaceHolderText?: string | redacted.Redacted<string>;
 }
-const RedactionPlaceHolder = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<RedactionPlaceHolder>;
 export type InlineRedactionUrl = string | redacted.Redacted<string>;
 export type InlineRedactionUrls = (string | redacted.Redacted<string>)[];
-const InlineRedactionUrls = UrlPatternList as any as S.Schema<InlineRedactionUrls>;
 export type ConfidenceLevel = number;
 export interface InlineRedactionPattern {
   builtInPatternId?: string | redacted.Redacted<string>;
@@ -400,24 +316,14 @@ export interface InlineRedactionPattern {
   exemptUrls?: (string | redacted.Redacted<string>)[];
   confidenceLevel?: number;
 }
-const InlineRedactionPattern = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<InlineRedactionPattern>;
 export type InlineRedactionPatterns = InlineRedactionPattern[];
-const InlineRedactionPatterns = /*@__PURE__*/ __L.at(__c3, 3);
 export type GlobalInlineRedactionUrls = (string | redacted.Redacted<string>)[];
-const GlobalInlineRedactionUrls = UrlPatternList as any as S.Schema<GlobalInlineRedactionUrls>;
 export interface InlineRedactionConfiguration {
   inlineRedactionPatterns: InlineRedactionPattern[];
   globalEnforcedUrls?: (string | redacted.Redacted<string>)[];
   globalExemptUrls?: (string | redacted.Redacted<string>)[];
   globalConfidenceLevel?: number;
 }
-const InlineRedactionConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<InlineRedactionConfiguration>;
 export interface CreateDataProtectionSettingsRequest {
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
@@ -427,21 +333,12 @@ export interface CreateDataProtectionSettingsRequest {
   inlineRedactionConfiguration?: InlineRedactionConfiguration;
   clientToken?: string;
 }
-const CreateDataProtectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateDataProtectionSettingsRequest>;
 export interface CreateDataProtectionSettingsResponse {
   dataProtectionSettingsArn: string;
 }
-const CreateDataProtectionSettingsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateDataProtectionSettingsResponse>;
 export type IdentityProviderName = string | redacted.Redacted<string>;
 export type IdentityProviderType = string;
 export type IdentityProviderDetails = { [key: string]: string | undefined };
-const IdentityProviderDetails = EncryptionContextMap as any as S.Schema<IdentityProviderDetails>;
 export interface CreateIdentityProviderRequest {
   portalArn: string;
   identityProviderName: string | redacted.Redacted<string>;
@@ -450,18 +347,10 @@ export interface CreateIdentityProviderRequest {
   clientToken?: string;
   tags?: Tag[];
 }
-const CreateIdentityProviderRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateIdentityProviderRequest>;
 export type SubresourceARN = string;
 export interface CreateIdentityProviderResponse {
   identityProviderArn: string;
 }
-const CreateIdentityProviderResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateIdentityProviderResponse>;
 export type DisplayName = string | redacted.Redacted<string>;
 export type Description = string | redacted.Redacted<string>;
 export type IpRange = string | redacted.Redacted<string>;
@@ -469,9 +358,7 @@ export interface IpRule {
   ipRange: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
 }
-const IpRule = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<IpRule>;
 export type IpRuleList = IpRule[];
-const IpRuleList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface CreateIpAccessSettingsRequest {
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
@@ -481,24 +368,14 @@ export interface CreateIpAccessSettingsRequest {
   ipRules: IpRule[];
   clientToken?: string;
 }
-const CreateIpAccessSettingsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateIpAccessSettingsRequest>;
 export interface CreateIpAccessSettingsResponse {
   ipAccessSettingsArn: string;
 }
-const CreateIpAccessSettingsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateIpAccessSettingsResponse>;
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetIdList = string[];
-const SubnetIdList = /*@__PURE__*/ __L.at(__c4, 5);
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
-const SecurityGroupIdList = SubnetIdList as any as S.Schema<SecurityGroupIdList>;
 export interface CreateNetworkSettingsRequest {
   vpcId: string;
   subnetIds: string[];
@@ -506,17 +383,9 @@ export interface CreateNetworkSettingsRequest {
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateNetworkSettingsRequest>;
 export interface CreateNetworkSettingsResponse {
   networkSettingsArn: string;
 }
-const CreateNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateNetworkSettingsResponse>;
 export type AuthenticationType = string;
 export type InstanceType = string;
 export type MaxConcurrentSessions = number;
@@ -532,13 +401,11 @@ export interface CreatePortalRequest {
   maxConcurrentSessions?: number;
   portalCustomDomain?: string;
 }
-const CreatePortalRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CreatePortalRequest>;
 export type PortalEndpoint = string;
 export interface CreatePortalResponse {
   portalArn: string;
   portalEndpoint: string;
 }
-const CreatePortalResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CreatePortalResponse>;
 export type Event =
   | "WebsiteInteract"
   | "FileDownloadFromSecureBrowserToRemoteDisk"
@@ -559,20 +426,14 @@ export type Event =
   | "UrlBlockByContentFilter"
   | (string & {});
 export type Events = Event[];
-const Events = BlockedCategories as any as S.Schema<Events>;
 export type EventFilter =
   | { all: Record<string, never>; include?: never }
   | { all?: never; include: Event[] };
-const EventFilter = /*@__PURE__*/ __L.at(__c5, 2);
 export type S3Bucket = string | redacted.Redacted<string>;
 export type S3KeyPrefix = string | redacted.Redacted<string>;
 export type S3BucketOwner = string;
 export type LogFileFormat = "JSONLines" | "Json" | (string & {});
-const LogFileFormat = S.String;
-
 export type FolderStructure = "Flat" | "NestedByDate" | (string & {});
-const FolderStructure = S.String;
-
 export interface S3LogConfiguration {
   bucket: string | redacted.Redacted<string>;
   keyPrefix?: string | redacted.Redacted<string>;
@@ -580,11 +441,9 @@ export interface S3LogConfiguration {
   logFileFormat: LogFileFormat;
   folderStructure: FolderStructure;
 }
-const S3LogConfiguration = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<S3LogConfiguration>;
 export interface LogConfiguration {
   s3?: S3LogConfiguration;
 }
-const LogConfiguration = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<LogConfiguration>;
 export interface CreateSessionLoggerRequest {
   eventFilter: EventFilter;
   logConfiguration: LogConfiguration;
@@ -594,53 +453,28 @@ export interface CreateSessionLoggerRequest {
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateSessionLoggerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateSessionLoggerRequest>;
 export interface CreateSessionLoggerResponse {
   sessionLoggerArn: string;
 }
-const CreateSessionLoggerResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateSessionLoggerResponse>;
 export type CertificateAuthorityBody = Uint8Array;
 export type CertificateList = Uint8Array[];
-const CertificateList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface CreateTrustStoreRequest {
   certificateList: Uint8Array[];
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateTrustStoreRequest>;
 export interface CreateTrustStoreResponse {
   trustStoreArn: string;
 }
-const CreateTrustStoreResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateTrustStoreResponse>;
 export type KinesisStreamArn = string;
 export interface CreateUserAccessLoggingSettingsRequest {
   kinesisStreamArn: string;
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateUserAccessLoggingSettingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateUserAccessLoggingSettingsRequest>;
 export interface CreateUserAccessLoggingSettingsResponse {
   userAccessLoggingSettingsArn: string;
 }
-const CreateUserAccessLoggingSettingsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateUserAccessLoggingSettingsResponse>;
 export type EnabledType = string;
 export type DisconnectTimeoutInMinutes = number;
 export type IdleDisconnectTimeoutInMinutes = number;
@@ -652,22 +486,15 @@ export interface CookieSpecification {
   name?: string | redacted.Redacted<string>;
   path?: string | redacted.Redacted<string>;
 }
-const CookieSpecification = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CookieSpecification>;
 export type CookieSpecifications = CookieSpecification[];
-const CookieSpecifications = /*@__PURE__*/ __L.at(__c6, 5);
 export interface CookieSynchronizationConfiguration {
   allowlist: CookieSpecification[];
   blocklist?: CookieSpecification[];
 }
-const CookieSynchronizationConfiguration = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CookieSynchronizationConfiguration>;
 export type ToolbarType = string;
 export type VisualMode = string;
 export type ToolbarItem = string;
 export type HiddenToolbarItemList = string[];
-const HiddenToolbarItemList = SubnetIdList as any as S.Schema<HiddenToolbarItemList>;
 export type MaxDisplayResolution = string;
 export interface ToolbarConfiguration {
   toolbarType?: string;
@@ -675,16 +502,13 @@ export interface ToolbarConfiguration {
   hiddenToolbarItems?: string[];
   maxDisplayResolution?: string;
 }
-const ToolbarConfiguration = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ToolbarConfiguration>;
 export type IconImage = Uint8Array;
 export type S3Uri = string;
 export type IconImageInput = { blob: Uint8Array; s3Uri?: never } | { blob?: never; s3Uri: string };
-const IconImageInput = /*@__PURE__*/ __L.at(__c7, 0);
 export type WallpaperImage = Uint8Array;
 export type WallpaperImageInput =
   | { blob: Uint8Array; s3Uri?: never }
   | { blob?: never; s3Uri: string };
-const WallpaperImageInput = IconImageInput as any as S.Schema<WallpaperImageInput>;
 export type Locale =
   | "de-DE"
   | "en-US"
@@ -698,8 +522,6 @@ export type Locale =
   | "zh-CN"
   | "zh-TW"
   | (string & {});
-const Locale = S.String;
-
 export type BrandingSafeStringType = string;
 export type ContactLinkUrl = string;
 export interface LocalizedBrandingStrings {
@@ -712,15 +534,8 @@ export interface LocalizedBrandingStrings {
   contactButtonText?: string;
   loadingText?: string;
 }
-const LocalizedBrandingStrings = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<LocalizedBrandingStrings>;
 export type LocalizedBrandingStringMap = { [key in Locale]?: LocalizedBrandingStrings };
-const LocalizedBrandingStringMap = /*@__PURE__*/ __L.at(__c7, 2);
 export type ColorTheme = "Light" | "Dark" | (string & {});
-const ColorTheme = S.String;
-
 export type Markdown = string | redacted.Redacted<string>;
 export interface BrandingConfigurationCreateInput {
   logo: IconImageInput;
@@ -730,10 +545,6 @@ export interface BrandingConfigurationCreateInput {
   colorTheme: ColorTheme;
   termsOfService?: string | redacted.Redacted<string>;
 }
-const BrandingConfigurationCreateInput = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<BrandingConfigurationCreateInput>;
 export interface CreateUserSettingsRequest {
   copyAllowed: string;
   pasteAllowed: string;
@@ -752,219 +563,92 @@ export interface CreateUserSettingsRequest {
   brandingConfigurationInput?: BrandingConfigurationCreateInput;
   webAuthnAllowed?: string;
 }
-const CreateUserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateUserSettingsRequest>;
 export interface CreateUserSettingsResponse {
   userSettingsArn: string;
 }
-const CreateUserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateUserSettingsResponse>;
 export interface DeleteBrowserSettingsRequest {
   browserSettingsArn: string;
 }
-const DeleteBrowserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteBrowserSettingsRequest>;
 export interface DeleteBrowserSettingsResponse {}
-const DeleteBrowserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteBrowserSettingsResponse>;
 export interface DeleteDataProtectionSettingsRequest {
   dataProtectionSettingsArn: string;
 }
-const DeleteDataProtectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteDataProtectionSettingsRequest>;
 export interface DeleteDataProtectionSettingsResponse {}
-const DeleteDataProtectionSettingsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteDataProtectionSettingsResponse>;
 export interface DeleteIdentityProviderRequest {
   identityProviderArn: string;
 }
-const DeleteIdentityProviderRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteIdentityProviderRequest>;
 export interface DeleteIdentityProviderResponse {}
-const DeleteIdentityProviderResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<DeleteIdentityProviderResponse>;
 export interface DeleteIpAccessSettingsRequest {
   ipAccessSettingsArn: string;
 }
-const DeleteIpAccessSettingsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteIpAccessSettingsRequest>;
 export interface DeleteIpAccessSettingsResponse {}
-const DeleteIpAccessSettingsResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<DeleteIpAccessSettingsResponse>;
 export interface DeleteNetworkSettingsRequest {
   networkSettingsArn: string;
 }
-const DeleteNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteNetworkSettingsRequest>;
 export interface DeleteNetworkSettingsResponse {}
-const DeleteNetworkSettingsResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<DeleteNetworkSettingsResponse>;
 export interface DeletePortalRequest {
   portalArn: string;
 }
-const DeletePortalRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeletePortalRequest>;
 export interface DeletePortalResponse {}
-const DeletePortalResponse = DeleteBrowserSettingsResponse as any as S.Schema<DeletePortalResponse>;
 export interface DeleteSessionLoggerRequest {
   sessionLoggerArn: string;
 }
-const DeleteSessionLoggerRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteSessionLoggerRequest>;
 export interface DeleteSessionLoggerResponse {}
-const DeleteSessionLoggerResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<DeleteSessionLoggerResponse>;
 export interface DeleteTrustStoreRequest {
   trustStoreArn: string;
 }
-const DeleteTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteTrustStoreRequest>;
 export interface DeleteTrustStoreResponse {}
-const DeleteTrustStoreResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<DeleteTrustStoreResponse>;
 export interface DeleteUserAccessLoggingSettingsRequest {
   userAccessLoggingSettingsArn: string;
 }
-const DeleteUserAccessLoggingSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteUserAccessLoggingSettingsRequest>;
 export interface DeleteUserAccessLoggingSettingsResponse {}
-const DeleteUserAccessLoggingSettingsResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DeleteUserAccessLoggingSettingsResponse>;
 export interface DeleteUserSettingsRequest {
   userSettingsArn: string;
 }
-const DeleteUserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteUserSettingsRequest>;
 export interface DeleteUserSettingsResponse {}
-const DeleteUserSettingsResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<DeleteUserSettingsResponse>;
 export interface DisassociateBrowserSettingsRequest {
   portalArn: string;
 }
-const DisassociateBrowserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DisassociateBrowserSettingsRequest>;
 export interface DisassociateBrowserSettingsResponse {}
-const DisassociateBrowserSettingsResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateBrowserSettingsResponse>;
 export interface DisassociateDataProtectionSettingsRequest {
   portalArn: string;
 }
-const DisassociateDataProtectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DisassociateDataProtectionSettingsRequest>;
 export interface DisassociateDataProtectionSettingsResponse {}
-const DisassociateDataProtectionSettingsResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateDataProtectionSettingsResponse>;
 export interface DisassociateIpAccessSettingsRequest {
   portalArn: string;
 }
-const DisassociateIpAccessSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DisassociateIpAccessSettingsRequest>;
 export interface DisassociateIpAccessSettingsResponse {}
-const DisassociateIpAccessSettingsResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateIpAccessSettingsResponse>;
 export interface DisassociateNetworkSettingsRequest {
   portalArn: string;
 }
-const DisassociateNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DisassociateNetworkSettingsRequest>;
 export interface DisassociateNetworkSettingsResponse {}
-const DisassociateNetworkSettingsResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateNetworkSettingsResponse>;
 export interface DisassociateSessionLoggerRequest {
   portalArn: string;
 }
-const DisassociateSessionLoggerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DisassociateSessionLoggerRequest>;
 export interface DisassociateSessionLoggerResponse {}
-const DisassociateSessionLoggerResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateSessionLoggerResponse>;
 export interface DisassociateTrustStoreRequest {
   portalArn: string;
 }
-const DisassociateTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DisassociateTrustStoreRequest>;
 export interface DisassociateTrustStoreResponse {}
-const DisassociateTrustStoreResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<DisassociateTrustStoreResponse>;
 export interface DisassociateUserAccessLoggingSettingsRequest {
   portalArn: string;
 }
-const DisassociateUserAccessLoggingSettingsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DisassociateUserAccessLoggingSettingsRequest>;
 export interface DisassociateUserAccessLoggingSettingsResponse {}
-const DisassociateUserAccessLoggingSettingsResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateUserAccessLoggingSettingsResponse>;
 export interface DisassociateUserSettingsRequest {
   portalArn: string;
 }
-const DisassociateUserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DisassociateUserSettingsRequest>;
 export interface DisassociateUserSettingsResponse {}
-const DisassociateUserSettingsResponse =
-  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateUserSettingsResponse>;
 export type PortalId = string;
 export type SessionId = string;
 export interface ExpireSessionRequest {
   portalId: string;
   sessionId: string;
 }
-const ExpireSessionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ExpireSessionRequest>;
 export interface ExpireSessionResponse {}
-const ExpireSessionResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<ExpireSessionResponse>;
 export interface GetBrowserSettingsRequest {
   browserSettingsArn: string;
 }
-const GetBrowserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetBrowserSettingsRequest>;
 export type ArnList = string[];
-const ArnList = SubnetIdList as any as S.Schema<ArnList>;
 export interface BrowserSettings {
   browserSettingsArn: string;
   associatedPortalArns?: string[];
@@ -973,21 +657,12 @@ export interface BrowserSettings {
   additionalEncryptionContext?: { [key: string]: string | undefined };
   webContentFilteringPolicy?: WebContentFilteringPolicy;
 }
-const BrowserSettings = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<BrowserSettings>;
 export interface GetBrowserSettingsResponse {
   browserSettings?: BrowserSettings;
 }
-const GetBrowserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetBrowserSettingsResponse>;
 export interface GetDataProtectionSettingsRequest {
   dataProtectionSettingsArn: string;
 }
-const GetDataProtectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetDataProtectionSettingsRequest>;
 export interface DataProtectionSettings {
   dataProtectionSettingsArn: string;
   inlineRedactionConfiguration?: InlineRedactionConfiguration;
@@ -998,45 +673,24 @@ export interface DataProtectionSettings {
   customerManagedKey?: string;
   additionalEncryptionContext?: { [key: string]: string | undefined };
 }
-const DataProtectionSettings = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DataProtectionSettings>;
 export interface GetDataProtectionSettingsResponse {
   dataProtectionSettings?: DataProtectionSettings;
 }
-const GetDataProtectionSettingsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetDataProtectionSettingsResponse>;
 export interface GetIdentityProviderRequest {
   identityProviderArn: string;
 }
-const GetIdentityProviderRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetIdentityProviderRequest>;
 export interface IdentityProvider {
   identityProviderArn: string;
   identityProviderName?: string | redacted.Redacted<string>;
   identityProviderType?: string;
   identityProviderDetails?: { [key: string]: string | undefined };
 }
-const IdentityProvider = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<IdentityProvider>;
 export interface GetIdentityProviderResponse {
   identityProvider?: IdentityProvider;
 }
-const GetIdentityProviderResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetIdentityProviderResponse>;
 export interface GetIpAccessSettingsRequest {
   ipAccessSettingsArn: string;
 }
-const GetIpAccessSettingsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetIpAccessSettingsRequest>;
 export interface IpAccessSettings {
   ipAccessSettingsArn: string;
   associatedPortalArns?: string[];
@@ -1047,21 +701,12 @@ export interface IpAccessSettings {
   customerManagedKey?: string;
   additionalEncryptionContext?: { [key: string]: string | undefined };
 }
-const IpAccessSettings = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<IpAccessSettings>;
 export interface GetIpAccessSettingsResponse {
   ipAccessSettings?: IpAccessSettings;
 }
-const GetIpAccessSettingsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetIpAccessSettingsResponse>;
 export interface GetNetworkSettingsRequest {
   networkSettingsArn: string;
 }
-const GetNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetNetworkSettingsRequest>;
 export interface NetworkSettings {
   networkSettingsArn: string;
   associatedPortalArns?: string[];
@@ -1069,18 +714,12 @@ export interface NetworkSettings {
   subnetIds?: string[];
   securityGroupIds?: string[];
 }
-const NetworkSettings = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<NetworkSettings>;
 export interface GetNetworkSettingsResponse {
   networkSettings?: NetworkSettings;
 }
-const GetNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetNetworkSettingsResponse>;
 export interface GetPortalRequest {
   portalArn: string;
 }
-const GetPortalRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetPortalRequest>;
 export type RendererType = string;
 export type BrowserType = string;
 export type PortalStatus = string;
@@ -1109,39 +748,25 @@ export interface Portal {
   maxConcurrentSessions?: number;
   portalCustomDomain?: string;
 }
-const Portal = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Portal>;
 export interface GetPortalResponse {
   portal?: Portal;
 }
-const GetPortalResponse = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetPortalResponse>;
 export interface GetPortalServiceProviderMetadataRequest {
   portalArn: string;
 }
-const GetPortalServiceProviderMetadataRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetPortalServiceProviderMetadataRequest>;
 export type SamlMetadata = string;
 export interface GetPortalServiceProviderMetadataResponse {
   portalArn: string;
   serviceProviderSamlMetadata?: string;
 }
-const GetPortalServiceProviderMetadataResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetPortalServiceProviderMetadataResponse>;
 export interface GetSessionRequest {
   portalId: string;
   sessionId: string;
 }
-const GetSessionRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetSessionRequest>;
 export type Username = string | redacted.Redacted<string>;
 export type IpAddress = string | redacted.Redacted<string>;
 export type IpAddressList = (string | redacted.Redacted<string>)[];
-const IpAddressList = UrlPatternList as any as S.Schema<IpAddressList>;
 export type SessionStatus = "Active" | "Terminated" | (string & {});
-const SessionStatus = S.String;
-
 export interface Session {
   portalArn?: string;
   sessionId?: string;
@@ -1151,18 +776,12 @@ export interface Session {
   startTime?: Date;
   endTime?: Date;
 }
-const Session = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Session>;
 export interface GetSessionResponse {
   session?: Session;
 }
-const GetSessionResponse = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GetSessionResponse>;
 export interface GetSessionLoggerRequest {
   sessionLoggerArn: string;
 }
-const GetSessionLoggerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetSessionLoggerRequest>;
 export interface SessionLogger {
   sessionLoggerArn: string;
   eventFilter?: EventFilter;
@@ -1173,42 +792,24 @@ export interface SessionLogger {
   displayName?: string | redacted.Redacted<string>;
   creationDate?: Date;
 }
-const SessionLogger = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<SessionLogger>;
 export interface GetSessionLoggerResponse {
   sessionLogger?: SessionLogger;
 }
-const GetSessionLoggerResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetSessionLoggerResponse>;
 export interface GetTrustStoreRequest {
   trustStoreArn: string;
 }
-const GetTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetTrustStoreRequest>;
 export interface TrustStore {
   associatedPortalArns?: string[];
   trustStoreArn: string;
 }
-const TrustStore = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<TrustStore>;
 export interface GetTrustStoreResponse {
   trustStore?: TrustStore;
 }
-const GetTrustStoreResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetTrustStoreResponse>;
 export type CertificateThumbprint = string;
 export interface GetTrustStoreCertificateRequest {
   trustStoreArn: string;
   thumbprint: string;
 }
-const GetTrustStoreCertificateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetTrustStoreCertificateRequest>;
 export type CertificatePrincipal = string;
 export interface Certificate {
   thumbprint?: string;
@@ -1218,54 +819,30 @@ export interface Certificate {
   notValidAfter?: Date;
   body?: Uint8Array;
 }
-const Certificate = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Certificate>;
 export interface GetTrustStoreCertificateResponse {
   trustStoreArn: string;
   certificate?: Certificate;
 }
-const GetTrustStoreCertificateResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetTrustStoreCertificateResponse>;
 export interface GetUserAccessLoggingSettingsRequest {
   userAccessLoggingSettingsArn: string;
 }
-const GetUserAccessLoggingSettingsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetUserAccessLoggingSettingsRequest>;
 export interface UserAccessLoggingSettings {
   userAccessLoggingSettingsArn: string;
   associatedPortalArns?: string[];
   kinesisStreamArn?: string;
 }
-const UserAccessLoggingSettings = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<UserAccessLoggingSettings>;
 export interface GetUserAccessLoggingSettingsResponse {
   userAccessLoggingSettings?: UserAccessLoggingSettings;
 }
-const GetUserAccessLoggingSettingsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetUserAccessLoggingSettingsResponse>;
 export interface GetUserSettingsRequest {
   userSettingsArn: string;
 }
-const GetUserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetUserSettingsRequest>;
 export type MimeType = "image/png" | "image/jpeg" | "image/x-icon" | (string & {});
-const MimeType = S.String;
-
 export interface ImageMetadata {
   mimeType: MimeType;
   fileExtension: string;
   lastUploadTimestamp: Date;
 }
-const ImageMetadata = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ImageMetadata>;
 export interface BrandingConfiguration {
   logo: ImageMetadata;
   wallpaper?: ImageMetadata;
@@ -1274,10 +851,6 @@ export interface BrandingConfiguration {
   colorTheme: ColorTheme;
   termsOfService?: string | redacted.Redacted<string>;
 }
-const BrandingConfiguration = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<BrandingConfiguration>;
 export interface UserSettings {
   userSettingsArn: string;
   associatedPortalArns?: string[];
@@ -1296,156 +869,85 @@ export interface UserSettings {
   brandingConfiguration?: BrandingConfiguration;
   webAuthnAllowed?: string;
 }
-const UserSettings = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<UserSettings>;
 export interface GetUserSettingsResponse {
   userSettings?: UserSettings;
 }
-const GetUserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetUserSettingsResponse>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface ListBrowserSettingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListBrowserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListBrowserSettingsRequest>;
 export interface BrowserSettingsSummary {
   browserSettingsArn: string;
 }
-const BrowserSettingsSummary = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<BrowserSettingsSummary>;
 export type BrowserSettingsList = BrowserSettingsSummary[];
-const BrowserSettingsList = /*@__PURE__*/ __L.at(__c15, 5);
 export interface ListBrowserSettingsResponse {
   browserSettings?: BrowserSettingsSummary[];
   nextToken?: string;
 }
-const ListBrowserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListBrowserSettingsResponse>;
 export interface ListDataProtectionSettingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDataProtectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListDataProtectionSettingsRequest>;
 export interface DataProtectionSettingsSummary {
   dataProtectionSettingsArn: string;
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
   creationDate?: Date;
 }
-const DataProtectionSettingsSummary = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DataProtectionSettingsSummary>;
 export type DataProtectionSettingsList = DataProtectionSettingsSummary[];
-const DataProtectionSettingsList = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ListDataProtectionSettingsResponse {
   dataProtectionSettings?: DataProtectionSettingsSummary[];
   nextToken?: string;
 }
-const ListDataProtectionSettingsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListDataProtectionSettingsResponse>;
 export interface ListIdentityProvidersRequest {
   nextToken?: string;
   maxResults?: number;
   portalArn: string;
 }
-const ListIdentityProvidersRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListIdentityProvidersRequest>;
 export interface IdentityProviderSummary {
   identityProviderArn: string;
   identityProviderName?: string | redacted.Redacted<string>;
   identityProviderType?: string;
 }
-const IdentityProviderSummary = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<IdentityProviderSummary>;
 export type IdentityProviderList = IdentityProviderSummary[];
-const IdentityProviderList = /*@__PURE__*/ __L.at(__c16, 5);
 export interface ListIdentityProvidersResponse {
   nextToken?: string;
   identityProviders?: IdentityProviderSummary[];
 }
-const ListIdentityProvidersResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListIdentityProvidersResponse>;
 export interface ListIpAccessSettingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListIpAccessSettingsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListIpAccessSettingsRequest>;
 export interface IpAccessSettingsSummary {
   ipAccessSettingsArn: string;
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
   creationDate?: Date;
 }
-const IpAccessSettingsSummary = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<IpAccessSettingsSummary>;
 export type IpAccessSettingsList = IpAccessSettingsSummary[];
-const IpAccessSettingsList = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ListIpAccessSettingsResponse {
   ipAccessSettings?: IpAccessSettingsSummary[];
   nextToken?: string;
 }
-const ListIpAccessSettingsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListIpAccessSettingsResponse>;
 export interface ListNetworkSettingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListNetworkSettingsRequest>;
 export interface NetworkSettingsSummary {
   networkSettingsArn: string;
   vpcId?: string;
 }
-const NetworkSettingsSummary = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<NetworkSettingsSummary>;
 export type NetworkSettingsList = NetworkSettingsSummary[];
-const NetworkSettingsList = /*@__PURE__*/ __L.at(__c17, 5);
 export interface ListNetworkSettingsResponse {
   networkSettings?: NetworkSettingsSummary[];
   nextToken?: string;
 }
-const ListNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListNetworkSettingsResponse>;
 export interface ListPortalsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListPortalsRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ListPortalsRequest>;
 export interface PortalSummary {
   portalArn: string;
   rendererType?: string;
@@ -1467,45 +969,27 @@ export interface PortalSummary {
   maxConcurrentSessions?: number;
   portalCustomDomain?: string;
 }
-const PortalSummary = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<PortalSummary>;
 export type PortalList = PortalSummary[];
-const PortalList = /*@__PURE__*/ __L.at(__c18, 1);
 export interface ListPortalsResponse {
   portals?: PortalSummary[];
   nextToken?: string;
 }
-const ListPortalsResponse = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<ListPortalsResponse>;
 export interface ListSessionLoggersRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSessionLoggersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListSessionLoggersRequest>;
 export interface SessionLoggerSummary {
   sessionLoggerArn: string;
   logConfiguration?: LogConfiguration;
   displayName?: string | redacted.Redacted<string>;
   creationDate?: Date;
 }
-const SessionLoggerSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<SessionLoggerSummary>;
 export type SessionLoggerList = SessionLoggerSummary[];
-const SessionLoggerList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListSessionLoggersResponse {
   sessionLoggers?: SessionLoggerSummary[];
   nextToken?: string;
 }
-const ListSessionLoggersResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListSessionLoggersResponse>;
 export type SessionSortBy = "StartTimeAscending" | "StartTimeDescending" | (string & {});
-const SessionSortBy = S.String;
-
 export interface ListSessionsRequest {
   portalId: string;
   username?: string | redacted.Redacted<string>;
@@ -1515,7 +999,6 @@ export interface ListSessionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListSessionsRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ListSessionsRequest>;
 export interface SessionSummary {
   portalArn?: string;
   sessionId?: string;
@@ -1524,40 +1007,22 @@ export interface SessionSummary {
   startTime?: Date;
   endTime?: Date;
 }
-const SessionSummary = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<SessionSummary>;
 export type SessionSummaryList = SessionSummary[];
-const SessionSummaryList = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ListSessionsResponse {
   sessions: SessionSummary[];
   nextToken?: string;
 }
-const ListSessionsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListSessionsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTrustStoreCertificatesRequest {
   trustStoreArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListTrustStoreCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListTrustStoreCertificatesRequest>;
 export interface CertificateSummary {
   thumbprint?: string;
   subject?: string;
@@ -1565,74 +1030,41 @@ export interface CertificateSummary {
   notValidBefore?: Date;
   notValidAfter?: Date;
 }
-const CertificateSummary = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<CertificateSummary>;
 export type CertificateSummaryList = CertificateSummary[];
-const CertificateSummaryList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListTrustStoreCertificatesResponse {
   certificateList?: CertificateSummary[];
   trustStoreArn: string;
   nextToken?: string;
 }
-const ListTrustStoreCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListTrustStoreCertificatesResponse>;
 export interface ListTrustStoresRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListTrustStoresRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListTrustStoresRequest>;
 export interface TrustStoreSummary {
   trustStoreArn?: string;
 }
-const TrustStoreSummary = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<TrustStoreSummary>;
 export type TrustStoreSummaryList = TrustStoreSummary[];
-const TrustStoreSummaryList = /*@__PURE__*/ __L.at(__c20, 3);
 export interface ListTrustStoresResponse {
   trustStores?: TrustStoreSummary[];
   nextToken?: string;
 }
-const ListTrustStoresResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListTrustStoresResponse>;
 export interface ListUserAccessLoggingSettingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListUserAccessLoggingSettingsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListUserAccessLoggingSettingsRequest>;
 export interface UserAccessLoggingSettingsSummary {
   userAccessLoggingSettingsArn: string;
   kinesisStreamArn?: string;
 }
-const UserAccessLoggingSettingsSummary = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<UserAccessLoggingSettingsSummary>;
 export type UserAccessLoggingSettingsList = UserAccessLoggingSettingsSummary[];
-const UserAccessLoggingSettingsList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListUserAccessLoggingSettingsResponse {
   userAccessLoggingSettings?: UserAccessLoggingSettingsSummary[];
   nextToken?: string;
 }
-const ListUserAccessLoggingSettingsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListUserAccessLoggingSettingsResponse>;
 export interface ListUserSettingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListUserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListUserSettingsRequest>;
 export interface UserSettingsSummary {
   userSettingsArn: string;
   copyAllowed?: string;
@@ -1648,55 +1080,32 @@ export interface UserSettingsSummary {
   brandingConfiguration?: BrandingConfiguration;
   webAuthnAllowed?: string;
 }
-const UserSettingsSummary = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<UserSettingsSummary>;
 export type UserSettingsList = UserSettingsSummary[];
-const UserSettingsList = /*@__PURE__*/ __L.at(__c21, 3);
 export interface ListUserSettingsResponse {
   userSettings?: UserSettingsSummary[];
   nextToken?: string;
 }
-const ListUserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListUserSettingsResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
   clientToken?: string;
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteBrowserSettingsResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
-const TagKeyList = UrlPatternList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: (string | redacted.Redacted<string>)[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  DeleteBrowserSettingsResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBrowserSettingsRequest {
   browserSettingsArn: string;
   browserPolicy?: string | redacted.Redacted<string>;
   clientToken?: string;
   webContentFilteringPolicy?: WebContentFilteringPolicy;
 }
-const UpdateBrowserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<UpdateBrowserSettingsRequest>;
 export interface UpdateBrowserSettingsResponse {
   browserSettings: BrowserSettings;
 }
-const UpdateBrowserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<UpdateBrowserSettingsResponse>;
 export interface UpdateDataProtectionSettingsRequest {
   dataProtectionSettingsArn: string;
   inlineRedactionConfiguration?: InlineRedactionConfiguration;
@@ -1704,17 +1113,9 @@ export interface UpdateDataProtectionSettingsRequest {
   description?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-const UpdateDataProtectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<UpdateDataProtectionSettingsRequest>;
 export interface UpdateDataProtectionSettingsResponse {
   dataProtectionSettings: DataProtectionSettings;
 }
-const UpdateDataProtectionSettingsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<UpdateDataProtectionSettingsResponse>;
 export interface UpdateIdentityProviderRequest {
   identityProviderArn: string;
   identityProviderName?: string | redacted.Redacted<string>;
@@ -1722,17 +1123,9 @@ export interface UpdateIdentityProviderRequest {
   identityProviderDetails?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const UpdateIdentityProviderRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<UpdateIdentityProviderRequest>;
 export interface UpdateIdentityProviderResponse {
   identityProvider: IdentityProvider;
 }
-const UpdateIdentityProviderResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<UpdateIdentityProviderResponse>;
 export interface UpdateIpAccessSettingsRequest {
   ipAccessSettingsArn: string;
   displayName?: string | redacted.Redacted<string>;
@@ -1740,17 +1133,9 @@ export interface UpdateIpAccessSettingsRequest {
   ipRules?: IpRule[];
   clientToken?: string;
 }
-const UpdateIpAccessSettingsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<UpdateIpAccessSettingsRequest>;
 export interface UpdateIpAccessSettingsResponse {
   ipAccessSettings: IpAccessSettings;
 }
-const UpdateIpAccessSettingsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<UpdateIpAccessSettingsResponse>;
 export interface UpdateNetworkSettingsRequest {
   networkSettingsArn: string;
   vpcId?: string;
@@ -1758,17 +1143,9 @@ export interface UpdateNetworkSettingsRequest {
   securityGroupIds?: string[];
   clientToken?: string;
 }
-const UpdateNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<UpdateNetworkSettingsRequest>;
 export interface UpdateNetworkSettingsResponse {
   networkSettings: NetworkSettings;
 }
-const UpdateNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<UpdateNetworkSettingsResponse>;
 export interface UpdatePortalRequest {
   portalArn: string;
   displayName?: string | redacted.Redacted<string>;
@@ -1777,61 +1154,36 @@ export interface UpdatePortalRequest {
   maxConcurrentSessions?: number;
   portalCustomDomain?: string;
 }
-const UpdatePortalRequest = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<UpdatePortalRequest>;
 export interface UpdatePortalResponse {
   portal?: Portal;
 }
-const UpdatePortalResponse = GetPortalResponse as any as S.Schema<UpdatePortalResponse>;
 export interface UpdateSessionLoggerRequest {
   sessionLoggerArn: string;
   eventFilter?: EventFilter;
   logConfiguration?: LogConfiguration;
   displayName?: string | redacted.Redacted<string>;
 }
-const UpdateSessionLoggerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<UpdateSessionLoggerRequest>;
 export interface UpdateSessionLoggerResponse {
   sessionLogger: SessionLogger;
 }
-const UpdateSessionLoggerResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<UpdateSessionLoggerResponse>;
 export type CertificateThumbprintList = string[];
-const CertificateThumbprintList = SubnetIdList as any as S.Schema<CertificateThumbprintList>;
 export interface UpdateTrustStoreRequest {
   trustStoreArn: string;
   certificatesToAdd?: Uint8Array[];
   certificatesToDelete?: string[];
   clientToken?: string;
 }
-const UpdateTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UpdateTrustStoreRequest>;
 export interface UpdateTrustStoreResponse {
   trustStoreArn: string;
 }
-const UpdateTrustStoreResponse =
-  CreateTrustStoreResponse as any as S.Schema<UpdateTrustStoreResponse>;
 export interface UpdateUserAccessLoggingSettingsRequest {
   userAccessLoggingSettingsArn: string;
   kinesisStreamArn?: string;
   clientToken?: string;
 }
-const UpdateUserAccessLoggingSettingsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<UpdateUserAccessLoggingSettingsRequest>;
 export interface UpdateUserAccessLoggingSettingsResponse {
   userAccessLoggingSettings: UserAccessLoggingSettings;
 }
-const UpdateUserAccessLoggingSettingsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<UpdateUserAccessLoggingSettingsResponse>;
 export interface BrandingConfigurationUpdateInput {
   logo?: IconImageInput;
   wallpaper?: WallpaperImageInput;
@@ -1840,10 +1192,6 @@ export interface BrandingConfigurationUpdateInput {
   colorTheme?: ColorTheme;
   termsOfService?: string | redacted.Redacted<string>;
 }
-const BrandingConfigurationUpdateInput = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<BrandingConfigurationUpdateInput>;
 export interface UpdateUserSettingsRequest {
   userSettingsArn: string;
   copyAllowed?: string;
@@ -1860,17 +1208,9 @@ export interface UpdateUserSettingsRequest {
   brandingConfigurationInput?: BrandingConfigurationUpdateInput;
   webAuthnAllowed?: string;
 }
-const UpdateUserSettingsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<UpdateUserSettingsRequest>;
 export interface UpdateUserSettingsResponse {
   userSettings: UserSettings;
 }
-const UpdateUserSettingsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UpdateUserSettingsResponse>;
 export type ExceptionMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;
@@ -1883,12 +1223,7 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c24, 3);
 export type TagExceptionMessage = string;
 export type AssociateBrowserSettingsError =
   | AccessDeniedException
@@ -1907,8 +1242,8 @@ export const associateBrowserSettings: API.OperationMethod<
   AssociateBrowserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateBrowserSettingsRequest,
-  output: AssociateBrowserSettingsResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateBrowserSettingsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1939,8 +1274,8 @@ export const associateDataProtectionSettings: API.OperationMethod<
   AssociateDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateDataProtectionSettingsRequest,
-  output: AssociateDataProtectionSettingsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AssociateDataProtectionSettingsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AssociateDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1971,8 +1306,8 @@ export const associateIpAccessSettings: API.OperationMethod<
   AssociateIpAccessSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateIpAccessSettingsRequest,
-  output: AssociateIpAccessSettingsResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<AssociateIpAccessSettingsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AssociateIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2003,8 +1338,8 @@ export const associateNetworkSettings: API.OperationMethod<
   AssociateNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateNetworkSettingsRequest,
-  output: AssociateNetworkSettingsResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<AssociateNetworkSettingsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<AssociateNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2035,8 +1370,8 @@ export const associateSessionLogger: API.OperationMethod<
   AssociateSessionLoggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateSessionLoggerRequest,
-  output: AssociateSessionLoggerResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<AssociateSessionLoggerRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<AssociateSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2067,8 +1402,8 @@ export const associateTrustStore: API.OperationMethod<
   AssociateTrustStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateTrustStoreRequest,
-  output: AssociateTrustStoreResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<AssociateTrustStoreRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AssociateTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2099,8 +1434,8 @@ export const associateUserAccessLoggingSettings: API.OperationMethod<
   AssociateUserAccessLoggingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateUserAccessLoggingSettingsRequest,
-  output: AssociateUserAccessLoggingSettingsResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<AssociateUserAccessLoggingSettingsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AssociateUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2131,8 +1466,8 @@ export const associateUserSettings: API.OperationMethod<
   AssociateUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateUserSettingsRequest,
-  output: AssociateUserSettingsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<AssociateUserSettingsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<AssociateUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2164,8 +1499,8 @@ export const createBrowserSettings: API.OperationMethod<
   CreateBrowserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBrowserSettingsRequest,
-  output: CreateBrowserSettingsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<CreateBrowserSettingsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2198,8 +1533,8 @@ export const createDataProtectionSettings: API.OperationMethod<
   CreateDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataProtectionSettingsRequest,
-  output: CreateDataProtectionSettingsResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateDataProtectionSettingsRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<CreateDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2232,8 +1567,8 @@ export const createIdentityProvider: API.OperationMethod<
   CreateIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIdentityProviderRequest,
-  output: CreateIdentityProviderResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<CreateIdentityProviderRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CreateIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2265,8 +1600,8 @@ export const createIpAccessSettings: API.OperationMethod<
   CreateIpAccessSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpAccessSettingsRequest,
-  output: CreateIpAccessSettingsResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<CreateIpAccessSettingsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CreateIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2297,8 +1632,8 @@ export const createNetworkSettings: API.OperationMethod<
   CreateNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkSettingsRequest,
-  output: CreateNetworkSettingsResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<CreateNetworkSettingsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<CreateNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2330,8 +1665,8 @@ export const createPortal: API.OperationMethod<
   CreatePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePortalRequest,
-  output: CreatePortalResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<CreatePortalRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CreatePortalResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2363,8 +1698,8 @@ export const createSessionLogger: API.OperationMethod<
   CreateSessionLoggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionLoggerRequest,
-  output: CreateSessionLoggerResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<CreateSessionLoggerRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<CreateSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2395,8 +1730,8 @@ export const createTrustStore: API.OperationMethod<
   CreateTrustStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTrustStoreRequest,
-  output: CreateTrustStoreResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateTrustStoreRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreateTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2427,8 +1762,8 @@ export const createUserAccessLoggingSettings: API.OperationMethod<
   CreateUserAccessLoggingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserAccessLoggingSettingsRequest,
-  output: CreateUserAccessLoggingSettingsResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateUserAccessLoggingSettingsRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<CreateUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2460,8 +1795,8 @@ export const createUserSettings: API.OperationMethod<
   CreateUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserSettingsRequest,
-  output: CreateUserSettingsResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateUserSettingsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2492,8 +1827,8 @@ export const deleteBrowserSettings: API.OperationMethod<
   DeleteBrowserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBrowserSettingsRequest,
-  output: DeleteBrowserSettingsResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<DeleteBrowserSettingsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2522,8 +1857,8 @@ export const deleteDataProtectionSettings: API.OperationMethod<
   DeleteDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataProtectionSettingsRequest,
-  output: DeleteDataProtectionSettingsResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteDataProtectionSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2552,8 +1887,8 @@ export const deleteIdentityProvider: API.OperationMethod<
   DeleteIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIdentityProviderRequest,
-  output: DeleteIdentityProviderResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<DeleteIdentityProviderRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2582,8 +1917,8 @@ export const deleteIpAccessSettings: API.OperationMethod<
   DeleteIpAccessSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpAccessSettingsRequest,
-  output: DeleteIpAccessSettingsResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<DeleteIpAccessSettingsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2612,8 +1947,8 @@ export const deleteNetworkSettings: API.OperationMethod<
   DeleteNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkSettingsRequest,
-  output: DeleteNetworkSettingsResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<DeleteNetworkSettingsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2642,8 +1977,8 @@ export const deletePortal: API.OperationMethod<
   DeletePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePortalRequest,
-  output: DeletePortalResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<DeletePortalRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeletePortalResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2672,8 +2007,8 @@ export const deleteSessionLogger: API.OperationMethod<
   DeleteSessionLoggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSessionLoggerRequest,
-  output: DeleteSessionLoggerResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<DeleteSessionLoggerRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2702,8 +2037,8 @@ export const deleteTrustStore: API.OperationMethod<
   DeleteTrustStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTrustStoreRequest,
-  output: DeleteTrustStoreResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<DeleteTrustStoreRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2732,8 +2067,8 @@ export const deleteUserAccessLoggingSettings: API.OperationMethod<
   DeleteUserAccessLoggingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserAccessLoggingSettingsRequest,
-  output: DeleteUserAccessLoggingSettingsResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteUserAccessLoggingSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2762,8 +2097,8 @@ export const deleteUserSettings: API.OperationMethod<
   DeleteUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserSettingsRequest,
-  output: DeleteUserSettingsResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<DeleteUserSettingsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2793,8 +2128,8 @@ export const disassociateBrowserSettings: API.OperationMethod<
   DisassociateBrowserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateBrowserSettingsRequest,
-  output: DisassociateBrowserSettingsResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<DisassociateBrowserSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DisassociateBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2825,8 +2160,8 @@ export const disassociateDataProtectionSettings: API.OperationMethod<
   DisassociateDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateDataProtectionSettingsRequest,
-  output: DisassociateDataProtectionSettingsResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DisassociateDataProtectionSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DisassociateDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2857,8 +2192,8 @@ export const disassociateIpAccessSettings: API.OperationMethod<
   DisassociateIpAccessSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateIpAccessSettingsRequest,
-  output: DisassociateIpAccessSettingsResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DisassociateIpAccessSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DisassociateIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2889,8 +2224,8 @@ export const disassociateNetworkSettings: API.OperationMethod<
   DisassociateNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateNetworkSettingsRequest,
-  output: DisassociateNetworkSettingsResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DisassociateNetworkSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DisassociateNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2920,8 +2255,8 @@ export const disassociateSessionLogger: API.OperationMethod<
   DisassociateSessionLoggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateSessionLoggerRequest,
-  output: DisassociateSessionLoggerResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<DisassociateSessionLoggerRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DisassociateSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2951,8 +2286,8 @@ export const disassociateTrustStore: API.OperationMethod<
   DisassociateTrustStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateTrustStoreRequest,
-  output: DisassociateTrustStoreResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DisassociateTrustStoreRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DisassociateTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2983,8 +2318,8 @@ export const disassociateUserAccessLoggingSettings: API.OperationMethod<
   DisassociateUserAccessLoggingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateUserAccessLoggingSettingsRequest,
-  output: DisassociateUserAccessLoggingSettingsResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<DisassociateUserAccessLoggingSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DisassociateUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3015,8 +2350,8 @@ export const disassociateUserSettings: API.OperationMethod<
   DisassociateUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateUserSettingsRequest,
-  output: DisassociateUserSettingsResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<DisassociateUserSettingsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DisassociateUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3046,8 +2381,8 @@ export const expireSession: API.OperationMethod<
   ExpireSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExpireSessionRequest,
-  output: ExpireSessionResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<ExpireSessionRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<ExpireSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3076,8 +2411,8 @@ export const getBrowserSettings: API.OperationMethod<
   GetBrowserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBrowserSettingsRequest,
-  output: GetBrowserSettingsResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<GetBrowserSettingsRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3106,8 +2441,8 @@ export const getDataProtectionSettings: API.OperationMethod<
   GetDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataProtectionSettingsRequest,
-  output: GetDataProtectionSettingsResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<GetDataProtectionSettingsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3136,8 +2471,8 @@ export const getIdentityProvider: API.OperationMethod<
   GetIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityProviderRequest,
-  output: GetIdentityProviderResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<GetIdentityProviderRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<GetIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3166,8 +2501,8 @@ export const getIpAccessSettings: API.OperationMethod<
   GetIpAccessSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpAccessSettingsRequest,
-  output: GetIpAccessSettingsResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<GetIpAccessSettingsRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3196,8 +2531,8 @@ export const getNetworkSettings: API.OperationMethod<
   GetNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkSettingsRequest,
-  output: GetNetworkSettingsResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<GetNetworkSettingsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3226,8 +2561,8 @@ export const getPortal: API.OperationMethod<
   GetPortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPortalRequest,
-  output: GetPortalResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<GetPortalRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<GetPortalResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3256,8 +2591,8 @@ export const getPortalServiceProviderMetadata: API.OperationMethod<
   GetPortalServiceProviderMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPortalServiceProviderMetadataRequest,
-  output: GetPortalServiceProviderMetadataResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<GetPortalServiceProviderMetadataRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<GetPortalServiceProviderMetadataResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3286,8 +2621,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionRequest,
-  output: GetSessionResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<GetSessionRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3316,8 +2651,8 @@ export const getSessionLogger: API.OperationMethod<
   GetSessionLoggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionLoggerRequest,
-  output: GetSessionLoggerResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<GetSessionLoggerRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<GetSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3346,8 +2681,8 @@ export const getTrustStore: API.OperationMethod<
   GetTrustStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrustStoreRequest,
-  output: GetTrustStoreResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<GetTrustStoreRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3376,8 +2711,8 @@ export const getTrustStoreCertificate: API.OperationMethod<
   GetTrustStoreCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrustStoreCertificateRequest,
-  output: GetTrustStoreCertificateResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<GetTrustStoreCertificateRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<GetTrustStoreCertificateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3406,8 +2741,8 @@ export const getUserAccessLoggingSettings: API.OperationMethod<
   GetUserAccessLoggingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserAccessLoggingSettingsRequest,
-  output: GetUserAccessLoggingSettingsResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<GetUserAccessLoggingSettingsRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<GetUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3436,8 +2771,8 @@ export const getUserSettings: API.OperationMethod<
   GetUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserSettingsRequest,
-  output: GetUserSettingsResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<GetUserSettingsRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<GetUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3466,8 +2801,8 @@ export const listBrowserSettings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBrowserSettingsRequest,
-  output: ListBrowserSettingsResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<ListBrowserSettingsRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<ListBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3500,8 +2835,8 @@ export const listDataProtectionSettings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataProtectionSettingsSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDataProtectionSettingsRequest,
-  output: ListDataProtectionSettingsResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<ListDataProtectionSettingsRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<ListDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3535,8 +2870,8 @@ export const listIdentityProviders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListIdentityProvidersRequest,
-  output: ListIdentityProvidersResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<ListIdentityProvidersRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ListIdentityProvidersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3569,8 +2904,8 @@ export const listIpAccessSettings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListIpAccessSettingsRequest,
-  output: ListIpAccessSettingsResponse,
+  input: __S(135, __c16, 7) as any as S.Schema<ListIpAccessSettingsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3603,8 +2938,8 @@ export const listNetworkSettings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNetworkSettingsRequest,
-  output: ListNetworkSettingsResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<ListNetworkSettingsRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<ListNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3637,8 +2972,8 @@ export const listPortals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPortalsRequest,
-  output: ListPortalsResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<ListPortalsRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<ListPortalsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3671,8 +3006,8 @@ export const listSessionLoggers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionLoggerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSessionLoggersRequest,
-  output: ListSessionLoggersResponse,
+  input: __S(147, __c18, 3) as any as S.Schema<ListSessionLoggersRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<ListSessionLoggersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3707,8 +3042,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSessionsRequest,
-  output: ListSessionsResponse,
+  input: __S(151, __c18, 7) as any as S.Schema<ListSessionsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListSessionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3743,8 +3078,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3774,8 +3109,8 @@ export const listTrustStoreCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTrustStoreCertificatesRequest,
-  output: ListTrustStoreCertificatesResponse,
+  input: __S(157, __c19, 5) as any as S.Schema<ListTrustStoreCertificatesRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ListTrustStoreCertificatesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3809,8 +3144,8 @@ export const listTrustStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTrustStoresRequest,
-  output: ListTrustStoresResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<ListTrustStoresRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<ListTrustStoresResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3843,8 +3178,8 @@ export const listUserAccessLoggingSettings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUserAccessLoggingSettingsRequest,
-  output: ListUserAccessLoggingSettingsResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<ListUserAccessLoggingSettingsRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<ListUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3877,8 +3212,8 @@ export const listUserSettings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUserSettingsRequest,
-  output: ListUserSettingsResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<ListUserSettingsRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3912,8 +3247,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<TagResourceRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3943,8 +3278,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<UntagResourceRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3973,8 +3308,8 @@ export const updateBrowserSettings: API.OperationMethod<
   UpdateBrowserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBrowserSettingsRequest,
-  output: UpdateBrowserSettingsResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<UpdateBrowserSettingsRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UpdateBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4003,8 +3338,8 @@ export const updateDataProtectionSettings: API.OperationMethod<
   UpdateDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataProtectionSettingsRequest,
-  output: UpdateDataProtectionSettingsResponse,
+  input: __S(177, __c22, 1) as any as S.Schema<UpdateDataProtectionSettingsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<UpdateDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4033,8 +3368,8 @@ export const updateIdentityProvider: API.OperationMethod<
   UpdateIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIdentityProviderRequest,
-  output: UpdateIdentityProviderResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<UpdateIdentityProviderRequest>,
+  output: __S(180, __c22, 4) as any as S.Schema<UpdateIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4063,8 +3398,8 @@ export const updateIpAccessSettings: API.OperationMethod<
   UpdateIpAccessSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIpAccessSettingsRequest,
-  output: UpdateIpAccessSettingsResponse,
+  input: __S(181, __c22, 5) as any as S.Schema<UpdateIpAccessSettingsRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<UpdateIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4093,8 +3428,8 @@ export const updateNetworkSettings: API.OperationMethod<
   UpdateNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkSettingsRequest,
-  output: UpdateNetworkSettingsResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<UpdateNetworkSettingsRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<UpdateNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4125,8 +3460,8 @@ export const updatePortal: API.OperationMethod<
   UpdatePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePortalRequest,
-  output: UpdatePortalResponse,
+  input: __S(185, __c23, 1) as any as S.Schema<UpdatePortalRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<UpdatePortalResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4157,8 +3492,8 @@ export const updateSessionLogger: API.OperationMethod<
   UpdateSessionLoggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSessionLoggerRequest,
-  output: UpdateSessionLoggerResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<UpdateSessionLoggerRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<UpdateSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4188,8 +3523,8 @@ export const updateTrustStore: API.OperationMethod<
   UpdateTrustStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTrustStoreRequest,
-  output: UpdateTrustStoreResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<UpdateTrustStoreRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<UpdateTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4219,8 +3554,8 @@ export const updateUserAccessLoggingSettings: API.OperationMethod<
   UpdateUserAccessLoggingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserAccessLoggingSettingsRequest,
-  output: UpdateUserAccessLoggingSettingsResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<UpdateUserAccessLoggingSettingsRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<UpdateUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4249,8 +3584,8 @@ export const updateUserSettings: API.OperationMethod<
   UpdateUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserSettingsRequest,
-  output: UpdateUserSettingsResponse,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateUserSettingsRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<UpdateUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4469,19 +3804,19 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
-      return S.Array(Category);
+      return S.Array(S.String);
     case 4:
       return S.Array(SensitiveString);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          blockedCategories: S.optional(BlockedCategories),
-          allowedUrls: S.optional(UrlPatternList),
-          blockedUrls: S.optional(UrlPatternList),
+          blockedCategories: S.optional(__S(19, __c2, 3)),
+          allowedUrls: S.optional(__S(20, __c2, 4)),
+          blockedUrls: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "WebContentFilteringPolicy",
@@ -4489,12 +3824,12 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17, __c2, 1)),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
           browserPolicy: S.optional(SensitiveString),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          webContentFilteringPolicy: S.optional(WebContentFilteringPolicy),
+          webContentFilteringPolicy: S.optional(__S(21, __c2, 5)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/browserSettings" }), svc, auth, proto, ver, rules),
         ),
@@ -4529,21 +3864,21 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           builtInPatternId: S.optional(SensitiveString),
-          customPattern: S.optional(CustomPattern),
-          redactionPlaceHolder: RedactionPlaceHolder,
-          enforcedUrls: S.optional(InlineRedactionUrls),
-          exemptUrls: S.optional(InlineRedactionUrls),
+          customPattern: S.optional(__S(24, __c3, 0)),
+          redactionPlaceHolder: __S(25, __c3, 1),
+          enforcedUrls: S.optional(__S(20, __c2, 4)),
+          exemptUrls: S.optional(__S(20, __c2, 4)),
           confidenceLevel: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InlineRedactionPattern" });
     case 3:
-      return S.Array(InlineRedactionPattern);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inlineRedactionPatterns: InlineRedactionPatterns,
-          globalEnforcedUrls: S.optional(GlobalInlineRedactionUrls),
-          globalExemptUrls: S.optional(GlobalInlineRedactionUrls),
+          inlineRedactionPatterns: __S(27, __c3, 3),
+          globalEnforcedUrls: S.optional(__S(20, __c2, 4)),
+          globalExemptUrls: S.optional(__S(20, __c2, 4)),
           globalConfidenceLevel: S.optional(S.Number),
         }),
       ).annotate({
@@ -4554,10 +3889,10 @@ function __c3(j: number): any {
         S.Struct({
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17, __c2, 1)),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
-          inlineRedactionConfiguration: S.optional(InlineRedactionConfiguration),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
+          inlineRedactionConfiguration: S.optional(__S(28, __c3, 4)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4582,9 +3917,9 @@ function __c3(j: number): any {
           portalArn: S.String,
           identityProviderName: SensitiveString,
           identityProviderType: S.String,
-          identityProviderDetails: IdentityProviderDetails,
+          identityProviderDetails: __S(18, __c2, 2),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/identityProviders" }),
@@ -4611,16 +3946,16 @@ function __c4(j: number): any {
         S.Struct({ ipRange: SensitiveString, description: S.optional(SensitiveString) }),
       ).annotate({ identifier: "IpRule" });
     case 2:
-      return S.Array(IpRule);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17, __c2, 1)),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
-          ipRules: IpRuleList,
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
+          ipRules: __S(34, __c4, 2),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ipAccessSettings" }), svc, auth, proto, ver, rules),
@@ -4638,9 +3973,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vpcId: S.String,
-          subnetIds: SubnetIdList,
-          securityGroupIds: SecurityGroupIdList,
-          tags: S.optional(TagList),
+          subnetIds: __S(37, __c4, 5),
+          securityGroupIds: __S(37, __c4, 5),
+          tags: S.optional(__S(17, __c2, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/networkSettings" }), svc, auth, proto, ver, rules),
@@ -4660,9 +3995,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(SensitiveString),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17, __c2, 1)),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           authenticationType: S.optional(S.String),
           instanceType: S.optional(S.String),
@@ -4677,7 +4012,7 @@ function __c5(j: number): any {
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ all: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ include: Events }),
+        /*@__PURE__*/ S.Struct({ include: __S(19, __c2, 3) }),
       ]);
     case 3:
       return S.suspend(() =>
@@ -4685,23 +4020,23 @@ function __c5(j: number): any {
           bucket: SensitiveString,
           keyPrefix: S.optional(SensitiveString),
           bucketOwner: S.optional(S.String),
-          logFileFormat: LogFileFormat,
-          folderStructure: FolderStructure,
+          logFileFormat: S.String,
+          folderStructure: S.String,
         }),
       ).annotate({ identifier: "S3LogConfiguration" });
     case 4:
-      return S.suspend(() => S.Struct({ s3: S.optional(S3LogConfiguration) })).annotate({
+      return S.suspend(() => S.Struct({ s3: S.optional(__S(43, __c5, 3)) })).annotate({
         identifier: "LogConfiguration",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          eventFilter: EventFilter,
-          logConfiguration: LogConfiguration,
+          eventFilter: __S(42, __c5, 2),
+          logConfiguration: __S(44, __c5, 4),
           displayName: S.optional(SensitiveString),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
-          tags: S.optional(TagList),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(17, __c2, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/sessionLoggers" }), svc, auth, proto, ver, rules),
@@ -4722,8 +4057,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          certificateList: CertificateList,
-          tags: S.optional(TagList),
+          certificateList: __S(47, __c5, 7),
+          tags: S.optional(__S(17, __c2, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/trustStores" }), svc, auth, proto, ver, rules),
@@ -4737,7 +4072,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kinesisStreamArn: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17, __c2, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4765,10 +4100,10 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "CookieSpecification" });
     case 5:
-      return S.Array(CookieSpecification);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ allowlist: CookieSpecifications, blocklist: S.optional(CookieSpecifications) }),
+        S.Struct({ allowlist: __S(53, __c6, 5), blocklist: S.optional(__S(53, __c6, 5)) }),
       ).annotate({
         identifier: "CookieSynchronizationConfiguration",
       });
@@ -4777,7 +4112,7 @@ function __c6(j: number): any {
         S.Struct({
           toolbarType: S.optional(S.String),
           visualMode: S.optional(S.String),
-          hiddenToolbarItems: S.optional(HiddenToolbarItemList),
+          hiddenToolbarItems: S.optional(__S(37, __c4, 5)),
           maxDisplayResolution: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolbarConfiguration" });
@@ -4804,15 +4139,15 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "LocalizedBrandingStrings" });
     case 2:
-      return S.Record(Locale, /*@__PURE__*/ LocalizedBrandingStrings.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(57, __c7, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          logo: IconImageInput,
-          wallpaper: S.optional(WallpaperImageInput),
-          favicon: IconImageInput,
-          localizedStrings: LocalizedBrandingStringMap,
-          colorTheme: ColorTheme,
+          logo: __S(56, __c7, 0),
+          wallpaper: S.optional(__S(56, __c7, 0)),
+          favicon: __S(56, __c7, 0),
+          localizedStrings: __S(58, __c7, 2),
+          colorTheme: S.String,
           termsOfService: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -4826,16 +4161,16 @@ function __c7(j: number): any {
           downloadAllowed: S.String,
           uploadAllowed: S.String,
           printAllowed: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17, __c2, 1)),
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          cookieSynchronizationConfiguration: S.optional(CookieSynchronizationConfiguration),
+          cookieSynchronizationConfiguration: S.optional(__S(54, __c6, 6)),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(ToolbarConfiguration),
-          brandingConfigurationInput: S.optional(BrandingConfigurationCreateInput),
+          toolbarConfiguration: S.optional(__S(55, __c6, 7)),
+          brandingConfigurationInput: S.optional(__S(59, __c7, 3)),
           webAuthnAllowed: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/userSettings" }), svc, auth, proto, ver, rules),
@@ -5178,17 +4513,19 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           browserSettingsArn: S.String,
-          associatedPortalArns: S.optional(ArnList),
+          associatedPortalArns: S.optional(__S(37, __c4, 5)),
           browserPolicy: S.optional(SensitiveString),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
-          webContentFilteringPolicy: S.optional(WebContentFilteringPolicy),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
+          webContentFilteringPolicy: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "BrowserSettings" });
     case 5:
-      return S.suspend(() => S.Struct({ browserSettings: S.optional(BrowserSettings) })).annotate({
-        identifier: "GetBrowserSettingsResponse",
-      });
+      return S.suspend(() => S.Struct({ browserSettings: S.optional(__S(84, __c10, 4)) })).annotate(
+        {
+          identifier: "GetBrowserSettingsResponse",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5210,13 +4547,13 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataProtectionSettingsArn: S.String,
-          inlineRedactionConfiguration: S.optional(InlineRedactionConfiguration),
-          associatedPortalArns: S.optional(ArnList),
+          inlineRedactionConfiguration: S.optional(__S(28, __c3, 4)),
+          associatedPortalArns: S.optional(__S(37, __c4, 5)),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "DataProtectionSettings" });
   }
@@ -5225,7 +4562,7 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ dataProtectionSettings: S.optional(DataProtectionSettings) }),
+        S.Struct({ dataProtectionSettings: S.optional(__S(87, __c10, 7)) }),
       ).annotate({
         identifier: "GetDataProtectionSettingsResponse",
       });
@@ -5250,15 +4587,15 @@ function __c11(j: number): any {
           identityProviderArn: S.String,
           identityProviderName: S.optional(SensitiveString),
           identityProviderType: S.optional(S.String),
-          identityProviderDetails: S.optional(IdentityProviderDetails),
+          identityProviderDetails: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "IdentityProvider" });
     case 3:
-      return S.suspend(() => S.Struct({ identityProvider: S.optional(IdentityProvider) })).annotate(
-        {
-          identifier: "GetIdentityProviderResponse",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ identityProvider: S.optional(__S(90, __c11, 2)) }),
+      ).annotate({
+        identifier: "GetIdentityProviderResponse",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({ ipAccessSettingsArn: S.String.pipe(T.HttpLabel("ipAccessSettingsArn")) }).pipe(
@@ -5278,21 +4615,21 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ipAccessSettingsArn: S.String,
-          associatedPortalArns: S.optional(ArnList),
-          ipRules: S.optional(IpRuleList),
+          associatedPortalArns: S.optional(__S(37, __c4, 5)),
+          ipRules: S.optional(__S(34, __c4, 2)),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "IpAccessSettings" });
     case 6:
-      return S.suspend(() => S.Struct({ ipAccessSettings: S.optional(IpAccessSettings) })).annotate(
-        {
-          identifier: "GetIpAccessSettingsResponse",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ ipAccessSettings: S.optional(__S(93, __c11, 5)) }),
+      ).annotate({
+        identifier: "GetIpAccessSettingsResponse",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({ networkSettingsArn: S.String.pipe(T.HttpLabel("networkSettingsArn")) }).pipe(
@@ -5316,16 +4653,18 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkSettingsArn: S.String,
-          associatedPortalArns: S.optional(ArnList),
+          associatedPortalArns: S.optional(__S(37, __c4, 5)),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(SubnetIdList),
-          securityGroupIds: S.optional(SecurityGroupIdList),
+          subnetIds: S.optional(__S(37, __c4, 5)),
+          securityGroupIds: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "NetworkSettings" });
     case 1:
-      return S.suspend(() => S.Struct({ networkSettings: S.optional(NetworkSettings) })).annotate({
-        identifier: "GetNetworkSettingsResponse",
-      });
+      return S.suspend(() => S.Struct({ networkSettings: S.optional(__S(96, __c12, 0)) })).annotate(
+        {
+          identifier: "GetNetworkSettingsResponse",
+        },
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String.pipe(T.HttpLabel("portalArn")) }).pipe(
@@ -5360,14 +4699,14 @@ function __c12(j: number): any {
           authenticationType: S.optional(S.String),
           ipAccessSettingsArn: S.optional(S.String),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
           instanceType: S.optional(S.String),
           maxConcurrentSessions: S.optional(S.Number),
           portalCustomDomain: S.optional(S.String),
         }),
       ).annotate({ identifier: "Portal" });
     case 4:
-      return S.suspend(() => S.Struct({ portal: S.optional(Portal) })).annotate({
+      return S.suspend(() => S.Struct({ portal: S.optional(__S(99, __c12, 3)) })).annotate({
         identifier: "GetPortalResponse",
       });
     case 5:
@@ -5417,14 +4756,14 @@ function __c13(j: number): any {
           portalArn: S.optional(S.String),
           sessionId: S.optional(S.String),
           username: S.optional(SensitiveString),
-          clientIpAddresses: S.optional(IpAddressList),
-          status: S.optional(SessionStatus),
+          clientIpAddresses: S.optional(__S(20, __c2, 4)),
+          status: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Session" });
     case 1:
-      return S.suspend(() => S.Struct({ session: S.optional(Session) })).annotate({
+      return S.suspend(() => S.Struct({ session: S.optional(__S(104, __c13, 0)) })).annotate({
         identifier: "GetSessionResponse",
       });
     case 2:
@@ -5444,17 +4783,17 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionLoggerArn: S.String,
-          eventFilter: S.optional(EventFilter),
-          logConfiguration: S.optional(LogConfiguration),
+          eventFilter: S.optional(__S(42, __c5, 2)),
+          logConfiguration: S.optional(__S(44, __c5, 4)),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
-          associatedPortalArns: S.optional(ArnList),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
+          associatedPortalArns: S.optional(__S(37, __c4, 5)),
           displayName: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SessionLogger" });
     case 4:
-      return S.suspend(() => S.Struct({ sessionLogger: S.optional(SessionLogger) })).annotate({
+      return S.suspend(() => S.Struct({ sessionLogger: S.optional(__S(107, __c13, 3)) })).annotate({
         identifier: "GetSessionLoggerResponse",
       });
     case 5:
@@ -5472,10 +4811,10 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetTrustStoreRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ associatedPortalArns: S.optional(ArnList), trustStoreArn: S.String }),
+        S.Struct({ associatedPortalArns: S.optional(__S(37, __c4, 5)), trustStoreArn: S.String }),
       ).annotate({ identifier: "TrustStore" });
     case 7:
-      return S.suspend(() => S.Struct({ trustStore: S.optional(TrustStore) })).annotate({
+      return S.suspend(() => S.Struct({ trustStore: S.optional(__S(110, __c13, 6)) })).annotate({
         identifier: "GetTrustStoreResponse",
       });
   }
@@ -5513,7 +4852,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "Certificate" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ trustStoreArn: S.String, certificate: S.optional(Certificate) }),
+        S.Struct({ trustStoreArn: S.String, certificate: S.optional(__S(113, __c14, 1)) }),
       ).annotate({
         identifier: "GetTrustStoreCertificateResponse",
       });
@@ -5541,7 +4880,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userAccessLoggingSettingsArn: S.String,
-          associatedPortalArns: S.optional(ArnList),
+          associatedPortalArns: S.optional(__S(37, __c4, 5)),
           kinesisStreamArn: S.optional(S.String),
         }),
       ).annotate({
@@ -5549,7 +4888,7 @@ function __c14(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ userAccessLoggingSettings: S.optional(UserAccessLoggingSettings) }),
+        S.Struct({ userAccessLoggingSettings: S.optional(__S(116, __c14, 4)) }),
       ).annotate({
         identifier: "GetUserAccessLoggingSettingsResponse",
       });
@@ -5569,7 +4908,7 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mimeType: MimeType,
+          mimeType: S.String,
           fileExtension: S.String,
           lastUploadTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -5581,11 +4920,11 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logo: ImageMetadata,
-          wallpaper: S.optional(ImageMetadata),
-          favicon: ImageMetadata,
-          localizedStrings: LocalizedBrandingStringMap,
-          colorTheme: ColorTheme,
+          logo: __S(119, __c14, 7),
+          wallpaper: S.optional(__S(119, __c14, 7)),
+          favicon: __S(119, __c14, 7),
+          localizedStrings: __S(58, __c7, 2),
+          colorTheme: S.String,
           termsOfService: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "BrandingConfiguration" });
@@ -5593,7 +4932,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userSettingsArn: S.String,
-          associatedPortalArns: S.optional(ArnList),
+          associatedPortalArns: S.optional(__S(37, __c4, 5)),
           copyAllowed: S.optional(S.String),
           pasteAllowed: S.optional(S.String),
           downloadAllowed: S.optional(S.String),
@@ -5601,17 +4940,17 @@ function __c15(j: number): any {
           printAllowed: S.optional(S.String),
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
-          cookieSynchronizationConfiguration: S.optional(CookieSynchronizationConfiguration),
+          cookieSynchronizationConfiguration: S.optional(__S(54, __c6, 6)),
           customerManagedKey: S.optional(S.String),
-          additionalEncryptionContext: S.optional(EncryptionContextMap),
+          additionalEncryptionContext: S.optional(__S(18, __c2, 2)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(ToolbarConfiguration),
-          brandingConfiguration: S.optional(BrandingConfiguration),
+          toolbarConfiguration: S.optional(__S(55, __c6, 7)),
+          brandingConfiguration: S.optional(__S(120, __c15, 0)),
           webAuthnAllowed: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserSettings" });
     case 2:
-      return S.suspend(() => S.Struct({ userSettings: S.optional(UserSettings) })).annotate({
+      return S.suspend(() => S.Struct({ userSettings: S.optional(__S(121, __c15, 1)) })).annotate({
         identifier: "GetUserSettingsResponse",
       });
     case 3:
@@ -5630,11 +4969,11 @@ function __c15(j: number): any {
         identifier: "BrowserSettingsSummary",
       });
     case 5:
-      return S.Array(BrowserSettingsSummary);
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          browserSettings: S.optional(BrowserSettingsList),
+          browserSettings: S.optional(__S(125, __c15, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5674,11 +5013,11 @@ function __c16(j: number): any {
         identifier: "DataProtectionSettingsSummary",
       });
     case 1:
-      return S.Array(DataProtectionSettingsSummary);
+      return S.Array(__S(128, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataProtectionSettings: S.optional(DataProtectionSettingsList),
+          dataProtectionSettings: S.optional(__S(129, __c16, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5712,12 +5051,12 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "IdentityProviderSummary" });
     case 5:
-      return S.Array(IdentityProviderSummary);
+      return S.Array(__S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          identityProviders: S.optional(IdentityProviderList),
+          identityProviders: S.optional(__S(133, __c16, 5)),
         }),
       ).annotate({
         identifier: "ListIdentityProvidersResponse",
@@ -5747,11 +5086,11 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "IpAccessSettingsSummary" });
     case 1:
-      return S.Array(IpAccessSettingsSummary);
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ipAccessSettings: S.optional(IpAccessSettingsList),
+          ipAccessSettings: S.optional(__S(137, __c17, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5773,11 +5112,11 @@ function __c17(j: number): any {
         S.Struct({ networkSettingsArn: S.String, vpcId: S.optional(S.String) }),
       ).annotate({ identifier: "NetworkSettingsSummary" });
     case 5:
-      return S.Array(NetworkSettingsSummary);
+      return S.Array(__S(140, __c17, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          networkSettings: S.optional(NetworkSettingsList),
+          networkSettings: S.optional(__S(141, __c17, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5819,10 +5158,10 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "PortalSummary" });
     case 1:
-      return S.Array(PortalSummary);
+      return S.Array(__S(144, __c18, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ portals: S.optional(PortalList), nextToken: S.optional(S.String) }),
+        S.Struct({ portals: S.optional(__S(145, __c18, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPortalsResponse" });
     case 3:
       return S.suspend(() =>
@@ -5839,17 +5178,17 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionLoggerArn: S.String,
-          logConfiguration: S.optional(LogConfiguration),
+          logConfiguration: S.optional(__S(44, __c5, 4)),
           displayName: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SessionLoggerSummary" });
     case 5:
-      return S.Array(SessionLoggerSummary);
+      return S.Array(__S(148, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sessionLoggers: S.optional(SessionLoggerList),
+          sessionLoggers: S.optional(__S(149, __c18, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5861,8 +5200,8 @@ function __c18(j: number): any {
           portalId: S.String.pipe(T.HttpLabel("portalId")),
           username: S.optional(SensitiveString).pipe(T.HttpQuery("username")),
           sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
-          sortBy: S.optional(SessionSortBy).pipe(T.HttpQuery("sortBy")),
-          status: S.optional(SessionStatus).pipe(T.HttpQuery("status")),
+          sortBy: S.optional(S.String).pipe(T.HttpQuery("sortBy")),
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -5886,16 +5225,16 @@ function __c19(j: number): any {
           portalArn: S.optional(S.String),
           sessionId: S.optional(S.String),
           username: S.optional(SensitiveString),
-          status: S.optional(SessionStatus),
+          status: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SessionSummary" });
     case 1:
-      return S.Array(SessionSummary);
+      return S.Array(__S(152, __c19, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ sessions: SessionSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ sessions: __S(153, __c19, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 3:
       return S.suspend(() =>
@@ -5913,7 +5252,7 @@ function __c19(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(17, __c2, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
@@ -5946,7 +5285,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "CertificateSummary" });
     case 7:
-      return S.Array(CertificateSummary);
+      return S.Array(__S(158, __c19, 6));
   }
 }
 function __c20(j: number): any {
@@ -5954,7 +5293,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          certificateList: S.optional(CertificateSummaryList),
+          certificateList: S.optional(__S(159, __c19, 7)),
           trustStoreArn: S.String,
           nextToken: S.optional(S.String),
         }),
@@ -5975,11 +5314,11 @@ function __c20(j: number): any {
         identifier: "TrustStoreSummary",
       });
     case 3:
-      return S.Array(TrustStoreSummary);
+      return S.Array(__S(162, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          trustStores: S.optional(TrustStoreSummaryList),
+          trustStores: S.optional(__S(163, __c20, 3)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTrustStoresResponse" });
@@ -6011,7 +5350,7 @@ function __c20(j: number): any {
         identifier: "UserAccessLoggingSettingsSummary",
       });
     case 7:
-      return S.Array(UserAccessLoggingSettingsSummary);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -6019,7 +5358,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userAccessLoggingSettings: S.optional(UserAccessLoggingSettingsList),
+          userAccessLoggingSettings: S.optional(__S(167, __c20, 7)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6045,24 +5384,24 @@ function __c21(j: number): any {
           printAllowed: S.optional(S.String),
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
-          cookieSynchronizationConfiguration: S.optional(CookieSynchronizationConfiguration),
+          cookieSynchronizationConfiguration: S.optional(__S(54, __c6, 6)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(ToolbarConfiguration),
-          brandingConfiguration: S.optional(BrandingConfiguration),
+          toolbarConfiguration: S.optional(__S(55, __c6, 7)),
+          brandingConfiguration: S.optional(__S(120, __c15, 0)),
           webAuthnAllowed: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserSettingsSummary" });
     case 3:
-      return S.Array(UserSettingsSummary);
+      return S.Array(__S(170, __c21, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ userSettings: S.optional(UserSettingsList), nextToken: S.optional(S.String) }),
+        S.Struct({ userSettings: S.optional(__S(171, __c21, 3)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListUserSettingsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: TagList,
+          tags: __S(17, __c2, 1),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6079,7 +5418,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(20, __c2, 4).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn+}" }),
@@ -6097,7 +5436,7 @@ function __c21(j: number): any {
           browserSettingsArn: S.String.pipe(T.HttpLabel("browserSettingsArn")),
           browserPolicy: S.optional(SensitiveString),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          webContentFilteringPolicy: S.optional(WebContentFilteringPolicy),
+          webContentFilteringPolicy: S.optional(__S(21, __c2, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/browserSettings/{browserSettingsArn+}" }),
@@ -6116,14 +5455,14 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ browserSettings: BrowserSettings })).annotate({
+      return S.suspend(() => S.Struct({ browserSettings: __S(84, __c10, 4) })).annotate({
         identifier: "UpdateBrowserSettingsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           dataProtectionSettingsArn: S.String.pipe(T.HttpLabel("dataProtectionSettingsArn")),
-          inlineRedactionConfiguration: S.optional(InlineRedactionConfiguration),
+          inlineRedactionConfiguration: S.optional(__S(28, __c3, 4)),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -6144,18 +5483,16 @@ function __c22(j: number): any {
         identifier: "UpdateDataProtectionSettingsRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ dataProtectionSettings: DataProtectionSettings })).annotate(
-        {
-          identifier: "UpdateDataProtectionSettingsResponse",
-        },
-      );
+      return S.suspend(() => S.Struct({ dataProtectionSettings: __S(87, __c10, 7) })).annotate({
+        identifier: "UpdateDataProtectionSettingsResponse",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
           identityProviderArn: S.String.pipe(T.HttpLabel("identityProviderArn")),
           identityProviderName: S.optional(SensitiveString),
           identityProviderType: S.optional(S.String),
-          identityProviderDetails: S.optional(IdentityProviderDetails),
+          identityProviderDetails: S.optional(__S(18, __c2, 2)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6171,7 +5508,7 @@ function __c22(j: number): any {
         identifier: "UpdateIdentityProviderRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ identityProvider: IdentityProvider })).annotate({
+      return S.suspend(() => S.Struct({ identityProvider: __S(90, __c11, 2) })).annotate({
         identifier: "UpdateIdentityProviderResponse",
       });
     case 5:
@@ -6180,7 +5517,7 @@ function __c22(j: number): any {
           ipAccessSettingsArn: S.String.pipe(T.HttpLabel("ipAccessSettingsArn")),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
-          ipRules: S.optional(IpRuleList),
+          ipRules: S.optional(__S(34, __c4, 2)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6196,7 +5533,7 @@ function __c22(j: number): any {
         identifier: "UpdateIpAccessSettingsRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ipAccessSettings: IpAccessSettings })).annotate({
+      return S.suspend(() => S.Struct({ ipAccessSettings: __S(93, __c11, 5) })).annotate({
         identifier: "UpdateIpAccessSettingsResponse",
       });
     case 7:
@@ -6204,8 +5541,8 @@ function __c22(j: number): any {
         S.Struct({
           networkSettingsArn: S.String.pipe(T.HttpLabel("networkSettingsArn")),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(SubnetIdList),
-          securityGroupIds: S.optional(SecurityGroupIdList),
+          subnetIds: S.optional(__S(37, __c4, 5)),
+          securityGroupIds: S.optional(__S(37, __c4, 5)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6225,7 +5562,7 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ networkSettings: NetworkSettings })).annotate({
+      return S.suspend(() => S.Struct({ networkSettings: __S(96, __c12, 0) })).annotate({
         identifier: "UpdateNetworkSettingsResponse",
       });
     case 1:
@@ -6252,8 +5589,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionLoggerArn: S.String.pipe(T.HttpLabel("sessionLoggerArn")),
-          eventFilter: S.optional(EventFilter),
-          logConfiguration: S.optional(LogConfiguration),
+          eventFilter: S.optional(__S(42, __c5, 2)),
+          logConfiguration: S.optional(__S(44, __c5, 4)),
           displayName: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -6269,15 +5606,15 @@ function __c23(j: number): any {
         identifier: "UpdateSessionLoggerRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ sessionLogger: SessionLogger })).annotate({
+      return S.suspend(() => S.Struct({ sessionLogger: __S(107, __c13, 3) })).annotate({
         identifier: "UpdateSessionLoggerResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           trustStoreArn: S.String.pipe(T.HttpLabel("trustStoreArn")),
-          certificatesToAdd: S.optional(CertificateList),
-          certificatesToDelete: S.optional(CertificateThumbprintList),
+          certificatesToAdd: S.optional(__S(47, __c5, 7)),
+          certificatesToDelete: S.optional(__S(37, __c4, 5)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6313,19 +5650,17 @@ function __c23(j: number): any {
         identifier: "UpdateUserAccessLoggingSettingsRequest",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ userAccessLoggingSettings: UserAccessLoggingSettings }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ userAccessLoggingSettings: __S(116, __c14, 4) })).annotate({
         identifier: "UpdateUserAccessLoggingSettingsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          logo: S.optional(IconImageInput),
-          wallpaper: S.optional(WallpaperImageInput),
-          favicon: S.optional(IconImageInput),
-          localizedStrings: S.optional(LocalizedBrandingStringMap),
-          colorTheme: S.optional(ColorTheme),
+          logo: S.optional(__S(56, __c7, 0)),
+          wallpaper: S.optional(__S(56, __c7, 0)),
+          favicon: S.optional(__S(56, __c7, 0)),
+          localizedStrings: S.optional(__S(58, __c7, 2)),
+          colorTheme: S.optional(S.String),
           termsOfService: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -6347,10 +5682,10 @@ function __c24(j: number): any {
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          cookieSynchronizationConfiguration: S.optional(CookieSynchronizationConfiguration),
+          cookieSynchronizationConfiguration: S.optional(__S(54, __c6, 6)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(ToolbarConfiguration),
-          brandingConfigurationInput: S.optional(BrandingConfigurationUpdateInput),
+          toolbarConfiguration: S.optional(__S(55, __c6, 7)),
+          brandingConfigurationInput: S.optional(__S(191, __c23, 7)),
           webAuthnAllowed: S.optional(S.String),
         }).pipe(
           T.all(
@@ -6366,7 +5701,7 @@ function __c24(j: number): any {
         identifier: "UpdateUserSettingsRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ userSettings: UserSettings })).annotate({
+      return S.suspend(() => S.Struct({ userSettings: __S(121, __c15, 1) })).annotate({
         identifier: "UpdateUserSettingsResponse",
       });
     case 2:
@@ -6374,6 +5709,11 @@ function __c24(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 3:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(194, __c24, 2));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

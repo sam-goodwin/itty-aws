@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,15 +21,8 @@ export interface CheckFileShareNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
-const CheckFileShareNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckFileShareNameAvailabilityRequest>;
-
 /** The reason why the given name is not available. */
 export type CheckFileShareNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
-const CheckFileShareNameAvailabilityResponseReason = S.String;
-
 export interface CheckFileShareNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -36,19 +31,10 @@ export interface CheckFileShareNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-const CheckFileShareNameAvailabilityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckFileShareNameAvailabilityResponse>;
-
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-const PrivateEndpointInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PrivateEndpointInput>;
-
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-const PrivateEndpointServiceConnectionStatus = S.String;
-
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -58,11 +44,6 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The private endpoint resource. */
@@ -70,11 +51,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface CreatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -87,19 +63,10 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -115,30 +82,19 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SystemData>;
-
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PrivateEndpoint>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
-const PrivateEndpointConnectionProvisioningState = S.String;
-
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -150,11 +106,6 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -167,11 +118,6 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
-
 export interface DeleteFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -180,14 +126,7 @@ export interface DeleteFileShareRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-const DeleteFileShareRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteFileShareRequest>;
-
 export interface DeleteFileShareResponse {}
-const DeleteFileShareResponse = PrivateEndpointInput as any as S.Schema<DeleteFileShareResponse>;
-
 export interface DeleteFileShareSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -198,17 +137,7 @@ export interface DeleteFileShareSnapshotRequest {
   /** The name of the FileShareSnapshot */
   name: string;
 }
-const DeleteFileShareSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteFileShareSnapshotRequest>;
-
 export interface DeleteFileShareSnapshotResponse {}
-const DeleteFileShareSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteFileShareSnapshotResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -219,44 +148,19 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 /** Resource tags. */
 export type FileSharesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const FileSharesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<FileSharesCreateOrUpdateRequestTagsMap>;
-
 /** Media Tier enum. */
 export type MediaTier = "SSD";
-const MediaTier = S.String;
-
 /** Redundancy enum. */
 export type Redundancy = "Local" | "Zone";
-const Redundancy = S.String;
-
 /** Protocol enum. */
 export type Protocol = "NFS";
-const Protocol = S.String;
-
 /** Share root squash enum. */
 export type ShareRootSquash = "NoRootSquash" | "RootSquash" | "AllSquash";
-const ShareRootSquash = S.String;
-
 /** State of NFS encryption in transit. */
 export type EncryptionInTransitRequired = "Enabled" | "Disabled";
-const EncryptionInTransitRequired = S.String;
-
 /** Properties specific to the NFS protocol. */
 export interface NfsProtocolProperties {
   /** Root squash defines how root users on clients are mapped to the NFS share. */
@@ -264,30 +168,15 @@ export interface NfsProtocolProperties {
   /** Encryption in transit defines whether data is encrypted for NFS shares. */
   encryptionInTransitRequired?: EncryptionInTransitRequired | (string & {});
 }
-const NfsProtocolProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<NfsProtocolProperties>;
-
 /** The allowed set of subnets when access is restricted. */
 export type PublicAccessPropertiesAllowedSubnetsList = Array<string>;
-const PublicAccessPropertiesAllowedSubnetsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PublicAccessPropertiesAllowedSubnetsList>;
-
 /** The set of properties for control public access. */
 export interface PublicAccessProperties {
   /** The allowed set of subnets when access is restricted. */
   allowedSubnets?: PublicAccessPropertiesAllowedSubnetsList;
 }
-const PublicAccessProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PublicAccessProperties>;
-
 /** State of the public network access. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** File share properties */
 export interface FileSharePropertiesInput {
   /** The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system. */
@@ -311,11 +200,6 @@ export interface FileSharePropertiesInput {
   /** Gets or sets allow or disallow public network access to azure managed file share */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-const FileSharePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<FileSharePropertiesInput>;
-
 export interface FileSharesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -330,16 +214,8 @@ export interface FileSharesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileSharePropertiesInput;
 }
-const FileSharesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<FileSharesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type FileSharesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const FileSharesCreateOrUpdateResponseTagsMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileSharesCreateOrUpdateResponseTagsMap>;
-
 /** The status of file share's ProvisioningState. */
 export type FileShareProvisioningState =
   | "Succeeded"
@@ -354,8 +230,6 @@ export type FileShareProvisioningState =
   | "Creating"
   | "Patching"
   | "Posting";
-const FileShareProvisioningState = S.String;
-
 /** The private endpoint connection resource. */
 export interface FileSharePropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -369,17 +243,9 @@ export interface FileSharePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const FileSharePropertiesPrivateEndpointConnectionsItem =
-  CreatePrivateEndpointConnectionResponse as any as S.Schema<FileSharePropertiesPrivateEndpointConnectionsItem>;
-
 /** The list of associated private endpoint connections. */
 export type FileSharePropertiesPrivateEndpointConnectionsList =
   Array<FileSharePropertiesPrivateEndpointConnectionsItem>;
-const FileSharePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<FileSharePropertiesPrivateEndpointConnectionsList>;
-
 /** File share properties */
 export interface FileShareProperties {
   /** The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system. */
@@ -419,8 +285,6 @@ export interface FileShareProperties {
   /** The list of associated private endpoint connections. */
   privateEndpointConnections?: FileSharePropertiesPrivateEndpointConnectionsList;
 }
-const FileShareProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<FileShareProperties>;
-
 export interface FileSharesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -437,16 +301,8 @@ export interface FileSharesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-const FileSharesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<FileSharesCreateOrUpdateResponse>;
-
 /** The metadata */
 export type FileShareSnapshotPropertiesInputMetadataMap = { [key: string]: string | undefined };
-const FileShareSnapshotPropertiesInputMetadataMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileShareSnapshotPropertiesInputMetadataMap>;
-
 /** FileShareSnapshot properties */
 export interface FileShareSnapshotPropertiesInput {
   /** The initiator of the FileShareSnapshot. This is a user-defined value. */
@@ -454,11 +310,6 @@ export interface FileShareSnapshotPropertiesInput {
   /** The metadata */
   metadata?: FileShareSnapshotPropertiesInputMetadataMap;
 }
-const FileShareSnapshotPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<FileShareSnapshotPropertiesInput>;
-
 export interface FileShareSnapshotCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -471,15 +322,7 @@ export interface FileShareSnapshotCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotPropertiesInput;
 }
-const FileShareSnapshotCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<FileShareSnapshotCreateOrUpdateRequest>;
-
 export interface FileShareSnapshotCreateOrUpdateResponse {}
-const FileShareSnapshotCreateOrUpdateResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<FileShareSnapshotCreateOrUpdateResponse>;
-
 export interface GetFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -488,13 +331,8 @@ export interface GetFileShareRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-const GetFileShareRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetFileShareRequest>;
-
 /** Resource tags. */
 export type GetFileShareResponseTagsMap = { [key: string]: string | undefined };
-const GetFileShareResponseTagsMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<GetFileShareResponseTagsMap>;
-
 export interface GetFileShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -511,19 +349,12 @@ export interface GetFileShareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-const GetFileShareResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetFileShareResponse>;
-
 export interface GetFileShareLimitsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const GetFileShareLimitsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetFileShareLimitsRequest>;
-
 /** File share-related limits in the specified subscription/location. */
 export interface FileShareLimits {
   /** The maximum number of file shares that can be created. */
@@ -547,8 +378,6 @@ export interface FileShareLimits {
   /** The maximum provisioned throughput in MiB/s for a file share. */
   maxProvisionedThroughputMiBPerSec: number;
 }
-const FileShareLimits = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<FileShareLimits>;
-
 /** Constants used for calculating recommended values of file share provisioning properties. */
 export interface FileShareProvisioningConstants {
   /** Base IO per second. */
@@ -564,11 +393,6 @@ export interface FileShareProvisioningConstants {
   /** Guardrail scalar throughput in MiB per second. */
   guardrailThroughputScalar: number;
 }
-const FileShareProvisioningConstants = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<FileShareProvisioningConstants>;
-
 /** File share limits API result. */
 export interface FileShareLimitsOutput {
   /** The limits for the file share. */
@@ -576,31 +400,16 @@ export interface FileShareLimitsOutput {
   /** The provisioning constants for the file share. */
   provisioningConstants: FileShareProvisioningConstants;
 }
-const FileShareLimitsOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<FileShareLimitsOutput>;
-
 /** Response structure for file share limits API. */
 export interface FileShareLimitsResponse {
   /** The properties of the file share limits. */
   properties: FileShareLimitsOutput;
 }
-const FileShareLimitsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<FileShareLimitsResponse>;
-
 /** File share provisioning parameters recommendation API input structure. */
 export interface FileShareProvisioningRecommendationInput {
   /** The desired provisioned storage size of the share in GiB. Will be use to calculate the values of remaining provisioning parameters. */
   provisionedStorageGiB: number;
 }
-const FileShareProvisioningRecommendationInput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<FileShareProvisioningRecommendationInput>;
-
 export interface GetFileShareProvisioningRecommendationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -609,20 +418,9 @@ export interface GetFileShareProvisioningRecommendationRequest {
   /** The properties of the file share provisioning recommendation input. */
   properties: FileShareProvisioningRecommendationInput;
 }
-const GetFileShareProvisioningRecommendationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetFileShareProvisioningRecommendationRequest>;
-
 /** Redundancy options for the share. */
 export type FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
   Array<Redundancy>;
-const FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    3,
-  ) as any as S.Schema<FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList>;
-
 /** File share provisioning parameters recommendation API result. */
 export interface FileShareProvisioningRecommendationOutput {
   /** The recommended value of provisioned IO / sec of the share. */
@@ -632,21 +430,11 @@ export interface FileShareProvisioningRecommendationOutput {
   /** Redundancy options for the share. */
   availableRedundancyOptions: FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList;
 }
-const FileShareProvisioningRecommendationOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<FileShareProvisioningRecommendationOutput>;
-
 /** Response structure for file share provisioning parameters recommendation API. */
 export interface FileShareProvisioningRecommendationResponse {
   /** The properties of the file share provisioning recommendation output. */
   properties: FileShareProvisioningRecommendationOutput;
 }
-const FileShareProvisioningRecommendationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<FileShareProvisioningRecommendationResponse>;
-
 export interface GetFileShareSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -657,16 +445,8 @@ export interface GetFileShareSnapshotRequest {
   /** The name of the FileShareSnapshot */
   name: string;
 }
-const GetFileShareSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetFileShareSnapshotRequest>;
-
 /** The metadata */
 export type FileShareSnapshotPropertiesMetadataMap = { [key: string]: string | undefined };
-const FileShareSnapshotPropertiesMetadataMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileShareSnapshotPropertiesMetadataMap>;
-
 /** FileShareSnapshot properties */
 export interface FileShareSnapshotProperties {
   /** The FileShareSnapshot time in UTC in string representation */
@@ -676,11 +456,6 @@ export interface FileShareSnapshotProperties {
   /** The metadata */
   metadata?: FileShareSnapshotPropertiesMetadataMap;
 }
-const FileShareSnapshotProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<FileShareSnapshotProperties>;
-
 export interface GetFileShareSnapshotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -693,49 +468,27 @@ export interface GetFileShareSnapshotResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotProperties;
 }
-const GetFileShareSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetFileShareSnapshotResponse>;
-
 export interface GetFileShareUsageDataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const GetFileShareUsageDataRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetFileShareUsageDataRequest>;
-
 /** Usage data for live shares. */
 export interface LiveSharesUsageData {
   /** The number of active file shares. */
   fileShareCount: number;
 }
-const LiveSharesUsageData = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<LiveSharesUsageData>;
-
 /** File shares usage result. */
 export interface FileShareUsageDataOutput {
   /** File share usage data for active file shares. */
   liveShares: LiveSharesUsageData;
 }
-const FileShareUsageDataOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<FileShareUsageDataOutput>;
-
 /** Response structure for file shares usage in the specified subscription/location. */
 export interface FileShareUsageDataResponse {
   /** The properties of the file share usage data. */
   properties: FileShareUsageDataOutput;
 }
-const FileShareUsageDataResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<FileShareUsageDataResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -746,11 +499,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -763,9 +511,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -776,21 +521,10 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   privateLinkResourceName: string;
 }
-const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetPrivateLinkResourceRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -800,11 +534,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -817,22 +546,12 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetPrivateLinkResourceResponse>;
-
 export interface ListFileShareByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListFileShareByParentRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListFileShareByParentRequest>;
-
 /** Resource tags. */
 export type FileShareTagsMap = { [key: string]: string | undefined };
 /** File share resource */
@@ -852,15 +571,8 @@ export interface FileShare {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-const FileShare = GetFileShareResponse as any as S.Schema<FileShare>;
-
 /** The FileShare items on this page */
 export type FileShareListResultValueList = Array<FileShare>;
-const FileShareListResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<FileShareListResultValueList>;
-
 /** The response of a FileShare list operation. */
 export interface FileShareListResult {
   /** The FileShare items on this page */
@@ -868,17 +580,10 @@ export interface FileShareListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FileShareListResult = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<FileShareListResult>;
-
 export interface ListFileShareBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListFileShareBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListFileShareBySubscriptionRequest>;
-
 export interface ListFileShareSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -887,11 +592,6 @@ export interface ListFileShareSnapshotRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-const ListFileShareSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListFileShareSnapshotRequest>;
-
 /** FileShareSnapshot resource */
 export interface FileShareSnapshot {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -905,15 +605,8 @@ export interface FileShareSnapshot {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotProperties;
 }
-const FileShareSnapshot = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<FileShareSnapshot>;
-
 /** The FileShareSnapshot items on this page */
 export type FileShareSnapshotListResultValueList = Array<FileShareSnapshot>;
-const FileShareSnapshotListResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<FileShareSnapshotListResultValueList>;
-
 /** The response of a FileShareSnapshot list operation. */
 export interface FileShareSnapshotListResult {
   /** The FileShareSnapshot items on this page */
@@ -921,17 +614,7 @@ export interface FileShareSnapshotListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FileShareSnapshotListResult = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<FileShareSnapshotListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -943,16 +626,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -966,26 +643,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListPrivateEndpointConnectionByFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -994,20 +659,12 @@ export interface ListPrivateEndpointConnectionByFileShareRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-const ListPrivateEndpointConnectionByFileShareRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListPrivateEndpointConnectionByFileShareRequest>;
-
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   FileSharePropertiesPrivateEndpointConnectionsItem;
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<FileSharePropertiesPrivateEndpointConnectionsItem>;
-const PrivateEndpointConnectionListResultValueList =
-  FileSharePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -1015,11 +672,6 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1028,11 +680,6 @@ export interface ListPrivateLinkResourcesRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListPrivateLinkResourcesRequest>;
-
 /** A private link resource. */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1046,15 +693,8 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PrivateLinkResource>;
-
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** A list of private link resources. */
 export interface PrivateLinkResourceListResult {
   /** The PrivateLinkResource items on this page */
@@ -1062,16 +702,8 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 /** Resource tags. */
 export type UpdateFileShareRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFileShareRequestTagsMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFileShareRequestTagsMap>;
-
 /** The updatable properties of the FileShare. */
 export interface FileShareUpdateProperties {
   /** The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage. */
@@ -1087,11 +719,6 @@ export interface FileShareUpdateProperties {
   /** Gets or sets allow or disallow public network access to azure managed file share */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-const FileShareUpdateProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<FileShareUpdateProperties>;
-
 export interface UpdateFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1104,11 +731,6 @@ export interface UpdateFileShareRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileShareUpdateProperties;
 }
-const UpdateFileShareRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<UpdateFileShareRequest>;
-
 /** Resource tags. */
 export type UpdateFileShareResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateFileShareResponse {
@@ -1127,23 +749,13 @@ export interface UpdateFileShareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-const UpdateFileShareResponse = GetFileShareResponse as any as S.Schema<UpdateFileShareResponse>;
-
 /** The metadata */
 export type FileShareSnapshotUpdatePropertiesMetadataMap = { [key: string]: string | undefined };
-const FileShareSnapshotUpdatePropertiesMetadataMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileShareSnapshotUpdatePropertiesMetadataMap>;
-
 /** The updatable properties of the FileShareSnapshot. */
 export interface FileShareSnapshotUpdateProperties {
   /** The metadata */
   metadata?: FileShareSnapshotUpdatePropertiesMetadataMap;
 }
-const FileShareSnapshotUpdateProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<FileShareSnapshotUpdateProperties>;
-
 export interface UpdateFileShareSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1156,11 +768,6 @@ export interface UpdateFileShareSnapshotRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotUpdateProperties;
 }
-const UpdateFileShareSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UpdateFileShareSnapshotRequest>;
-
 export interface UpdateFileShareSnapshotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1173,9 +780,6 @@ export interface UpdateFileShareSnapshotResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotProperties;
 }
-const UpdateFileShareSnapshotResponse =
-  GetFileShareSnapshotResponse as any as S.Schema<UpdateFileShareSnapshotResponse>;
-
 export type CheckFileShareNameAvailabilityError = AzureOpError;
 /** Implements local CheckNameAvailability operations */
 export const CheckFileShareNameAvailability: API.OperationMethod<
@@ -1184,8 +788,8 @@ export const CheckFileShareNameAvailability: API.OperationMethod<
   CheckFileShareNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckFileShareNameAvailabilityRequest,
-  output: CheckFileShareNameAvailabilityResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckFileShareNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckFileShareNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1199,8 +803,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateEndpointConnectionRequest,
-  output: CreatePrivateEndpointConnectionResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1214,8 +818,8 @@ export const DeleteFileShare: API.OperationMethod<
   DeleteFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFileShareRequest,
-  output: DeleteFileShareResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteFileShareRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DeleteFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1229,8 +833,8 @@ export const DeleteFileShareSnapshot: API.OperationMethod<
   DeleteFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFileShareSnapshotRequest,
-  output: DeleteFileShareSnapshotResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteFileShareSnapshotRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1244,8 +848,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1259,8 +863,8 @@ export const FileSharesCreateOrUpdate: API.OperationMethod<
   FileSharesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileSharesCreateOrUpdateRequest,
-  output: FileSharesCreateOrUpdateResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<FileSharesCreateOrUpdateRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<FileSharesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1274,8 +878,8 @@ export const FileShareSnapshotCreateOrUpdate: API.OperationMethod<
   FileShareSnapshotCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileShareSnapshotCreateOrUpdateRequest,
-  output: FileShareSnapshotCreateOrUpdateResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<FileShareSnapshotCreateOrUpdateRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<FileShareSnapshotCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1289,8 +893,8 @@ export const GetFileShare: API.OperationMethod<
   GetFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileShareRequest,
-  output: GetFileShareResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<GetFileShareRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1304,8 +908,8 @@ export const GetFileShareLimits: API.OperationMethod<
   GetFileShareLimitsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileShareLimitsRequest,
-  output: FileShareLimitsResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<GetFileShareLimitsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<FileShareLimitsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1319,8 +923,8 @@ export const GetFileShareProvisioningRecommendation: API.OperationMethod<
   GetFileShareProvisioningRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileShareProvisioningRecommendationRequest,
-  output: FileShareProvisioningRecommendationResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<GetFileShareProvisioningRecommendationRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<FileShareProvisioningRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1334,8 +938,8 @@ export const GetFileShareSnapshot: API.OperationMethod<
   GetFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileShareSnapshotRequest,
-  output: GetFileShareSnapshotResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<GetFileShareSnapshotRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1349,8 +953,8 @@ export const GetFileShareUsageData: API.OperationMethod<
   GetFileShareUsageDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileShareUsageDataRequest,
-  output: FileShareUsageDataResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<GetFileShareUsageDataRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<FileShareUsageDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1364,8 +968,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1379,8 +983,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkResourceRequest,
-  output: GetPrivateLinkResourceResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1394,8 +998,8 @@ export const ListFileShareByParent: API.OperationMethod<
   ListFileShareByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFileShareByParentRequest,
-  output: FileShareListResult,
+  input: __S(49, __c6, 1) as any as S.Schema<ListFileShareByParentRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<FileShareListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1409,8 +1013,8 @@ export const ListFileShareBySubscription: API.OperationMethod<
   ListFileShareBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFileShareBySubscriptionRequest,
-  output: FileShareListResult,
+  input: __S(52, __c6, 4) as any as S.Schema<ListFileShareBySubscriptionRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<FileShareListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1424,8 +1028,8 @@ export const ListFileShareSnapshot: API.OperationMethod<
   ListFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFileShareSnapshotRequest,
-  output: FileShareSnapshotListResult,
+  input: __S(53, __c6, 5) as any as S.Schema<ListFileShareSnapshotRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<FileShareSnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1043,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<ListOperationsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1058,8 @@ export const ListPrivateEndpointConnectionByFileShare: API.OperationMethod<
   ListPrivateEndpointConnectionByFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionByFileShareRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(62, __c7, 6) as any as S.Schema<ListPrivateEndpointConnectionByFileShareRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1469,8 +1073,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourcesRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(64, __c8, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1484,8 +1088,8 @@ export const UpdateFileShare: API.OperationMethod<
   UpdateFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFileShareRequest,
-  output: UpdateFileShareResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<UpdateFileShareRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<UpdateFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1499,8 +1103,8 @@ export const UpdateFileShareSnapshot: API.OperationMethod<
   UpdateFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFileShareSnapshotRequest,
-  output: UpdateFileShareSnapshotResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<UpdateFileShareSnapshotRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1531,7 +1135,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(CheckFileShareNameAvailabilityResponseReason),
+          reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -1544,7 +1148,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -1554,8 +1158,8 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpointInput),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          privateEndpoint: S.optional(__S(2, __c0, 2)),
+          privateLinkServiceConnectionState: __S(3, __c0, 3),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -1567,7 +1171,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1583,10 +1187,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1605,10 +1209,10 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+          groupIds: S.optional(__S(7, __c0, 7)),
+          privateEndpoint: S.optional(__S(8, __c1, 0)),
+          privateLinkServiceConnectionState: __S(3, __c0, 3),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -1619,8 +1223,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionResponse",
@@ -1693,29 +1297,29 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rootSquash: S.optional(ShareRootSquash),
-          encryptionInTransitRequired: S.optional(EncryptionInTransitRequired),
+          rootSquash: S.optional(S.String),
+          encryptionInTransitRequired: S.optional(S.String),
         }),
       ).annotate({ identifier: "NfsProtocolProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedSubnets: S.optional(PublicAccessPropertiesAllowedSubnetsList),
+          allowedSubnets: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "PublicAccessProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           mountName: S.optional(S.String),
-          mediaTier: S.optional(MediaTier),
-          redundancy: S.optional(Redundancy),
-          protocol: S.optional(Protocol),
+          mediaTier: S.optional(S.String),
+          redundancy: S.optional(S.String),
+          protocol: S.optional(S.String),
           provisionedStorageGiB: S.optional(S.Number),
           provisionedIOPerSec: S.optional(S.Number),
           provisionedThroughputMiBPerSec: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(NfsProtocolProperties),
-          publicAccessProperties: S.optional(PublicAccessProperties),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          nfsProtocolProperties: S.optional(__S(17, __c2, 1)),
+          publicAccessProperties: S.optional(__S(18, __c2, 2)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileSharePropertiesInput" });
     case 4:
@@ -1724,9 +1328,9 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(FileSharesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(FileSharePropertiesInput),
+          properties: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1739,15 +1343,15 @@ function __c2(j: number): any {
         identifier: "FileSharesCreateOrUpdateRequest",
       });
     case 5:
-      return S.Array(FileSharePropertiesPrivateEndpointConnectionsItem);
+      return S.Array(__S(10, __c1, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
           mountName: S.optional(S.String),
           hostName: S.optional(S.String),
-          mediaTier: S.optional(MediaTier),
-          redundancy: S.optional(Redundancy),
-          protocol: S.optional(Protocol),
+          mediaTier: S.optional(S.String),
+          redundancy: S.optional(S.String),
+          protocol: S.optional(S.String),
           provisionedStorageGiB: S.optional(S.Number),
           provisionedStorageNextAllowedDowngrade: S.optional(S.String),
           provisionedIOPerSec: S.optional(S.Number),
@@ -1756,11 +1360,11 @@ function __c2(j: number): any {
           provisionedThroughputNextAllowedDowngrade: S.optional(S.String),
           includedBurstIOPerSec: S.optional(S.Number),
           maxBurstIOPerSecCredits: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(NfsProtocolProperties),
-          publicAccessProperties: S.optional(PublicAccessProperties),
-          provisioningState: S.optional(FileShareProvisioningState),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          privateEndpointConnections: S.optional(FileSharePropertiesPrivateEndpointConnectionsList),
+          nfsProtocolProperties: S.optional(__S(17, __c2, 1)),
+          publicAccessProperties: S.optional(__S(18, __c2, 2)),
+          provisioningState: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "FileShareProperties" });
     case 7:
@@ -1769,10 +1373,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(FileSharesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(FileShareProperties),
+          properties: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "FileSharesCreateOrUpdateResponse",
@@ -1785,7 +1389,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           initiatorId: S.optional(S.String),
-          metadata: S.optional(FileShareSnapshotPropertiesInputMetadataMap),
+          metadata: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "FileShareSnapshotPropertiesInput",
@@ -1797,7 +1401,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(FileShareSnapshotPropertiesInput),
+          properties: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1830,10 +1434,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetFileShareResponseTagsMap),
+          systemData: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(FileShareProperties),
+          properties: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "GetFileShareResponse" });
     case 4:
@@ -1883,8 +1487,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          limits: FileShareLimits,
-          provisioningConstants: FileShareProvisioningConstants,
+          limits: __S(29, __c3, 5),
+          provisioningConstants: __S(30, __c3, 6),
         }),
       ).annotate({ identifier: "FileShareLimitsOutput" });
   }
@@ -1894,7 +1498,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: FileShareLimitsOutput,
+          properties: __S(31, __c3, 7),
         }),
       ).annotate({ identifier: "FileShareLimitsResponse" });
     case 1:
@@ -1910,7 +1514,7 @@ function __c4(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          properties: FileShareProvisioningRecommendationInput,
+          properties: __S(33, __c4, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1923,14 +1527,13 @@ function __c4(j: number): any {
         identifier: "GetFileShareProvisioningRecommendationRequest",
       });
     case 3:
-      return S.Array(Redundancy);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           provisionedIOPerSec: S.Number,
           provisionedThroughputMiBPerSec: S.Number,
-          availableRedundancyOptions:
-            FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList,
+          availableRedundancyOptions: __S(35, __c4, 3),
         }),
       ).annotate({
         identifier: "FileShareProvisioningRecommendationOutput",
@@ -1938,7 +1541,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: FileShareProvisioningRecommendationOutput,
+          properties: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "FileShareProvisioningRecommendationResponse",
@@ -1966,7 +1569,7 @@ function __c4(j: number): any {
         S.Struct({
           snapshotTime: S.optional(S.String),
           initiatorId: S.optional(S.String),
-          metadata: S.optional(FileShareSnapshotPropertiesMetadataMap),
+          metadata: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "FileShareSnapshotProperties",
@@ -1981,8 +1584,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FileShareSnapshotProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "GetFileShareSnapshotResponse",
@@ -2012,13 +1615,13 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          liveShares: LiveSharesUsageData,
+          liveShares: __S(42, __c5, 2),
         }),
       ).annotate({ identifier: "FileShareUsageDataOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: FileShareUsageDataOutput,
+          properties: __S(43, __c5, 3),
         }),
       ).annotate({
         identifier: "FileShareUsageDataResponse",
@@ -2063,8 +1666,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(7, __c0, 7)),
+          requiredZoneNames: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -2079,8 +1682,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -2102,11 +1705,11 @@ function __c6(j: number): any {
         identifier: "ListFileShareByParentRequest",
       });
     case 2:
-      return S.Array(FileShare);
+      return S.Array(__S(27, __c3, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: FileShareListResultValueList,
+          value: __S(50, __c6, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShareListResult" });
@@ -2148,12 +1751,12 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FileShareSnapshotProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "FileShareSnapshot" });
     case 7:
-      return S.Array(FileShareSnapshot);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -2161,7 +1764,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: FileShareSnapshotListResultValueList,
+          value: __S(55, __c6, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2192,17 +1795,17 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(58, __c7, 2)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(60, __c7, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2226,7 +1829,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateEndpointConnectionListResultValueList,
+          value: __S(21, __c2, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2259,16 +1862,16 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 2:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateLinkResourceListResultValueList,
+          value: __S(66, __c8, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2280,9 +1883,9 @@ function __c8(j: number): any {
           provisionedStorageGiB: S.optional(S.Number),
           provisionedIOPerSec: S.optional(S.Number),
           provisionedThroughputMiBPerSec: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(NfsProtocolProperties),
-          publicAccessProperties: S.optional(PublicAccessProperties),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          nfsProtocolProperties: S.optional(__S(17, __c2, 1)),
+          publicAccessProperties: S.optional(__S(18, __c2, 2)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FileShareUpdateProperties",
@@ -2293,8 +1896,8 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateFileShareRequestTagsMap),
-          properties: S.optional(FileShareUpdateProperties),
+          tags: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(68, __c8, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2307,7 +1910,7 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(FileShareSnapshotUpdatePropertiesMetadataMap),
+          metadata: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "FileShareSnapshotUpdateProperties",
@@ -2319,7 +1922,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(FileShareSnapshotUpdateProperties),
+          properties: S.optional(__S(70, __c8, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2332,4 +1935,9 @@ function __c8(j: number): any {
         identifier: "UpdateFileShareSnapshotRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -70,11 +72,6 @@ export interface CardRequestInputBillingAddressAddressDetails {
   /** The first-order entity below a named building or location that represents the sub-premise. Usually a single building within a collection of buildings with a common name. Can be a flat, story, floor, room, or apartment. */
   sub_building?: string;
 }
-const CardRequestInputBillingAddressAddressDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CardRequestInputBillingAddressAddressDetails>;
-
 export interface CardRequestInputBillingAddress {
   /** The first line of the address, such as number and street, for example, `173 Drury Lane`. Needed for data entry, and Compliance and Risk checks. This field needs to pass the full address. */
   address_line_1?: string;
@@ -96,30 +93,16 @@ export interface CardRequestInputBillingAddress {
   /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
   address_details?: CardRequestInputBillingAddressAddressDetails;
 }
-const CardRequestInputBillingAddress = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CardRequestInputBillingAddress>;
-
 /** The phone type. */
 export type PhoneType = "FAX" | "HOME" | "MOBILE" | "OTHER" | "PAGER";
-const PhoneType = S.String;
-
 export interface CardCustomerPhonePhoneNumber {
   /** The national number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the country calling code (CC) and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   national_number: string;
 }
-const CardCustomerPhonePhoneNumber = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CardCustomerPhonePhoneNumber>;
-
 export interface CardCustomerPhone {
   phone_type?: PhoneType | (string & {});
   phone_number: CardCustomerPhonePhoneNumber;
 }
-const CardCustomerPhone = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CardCustomerPhone>;
-
 export interface CardCustomerName {
   /** The prefix, or title, to the party's name. */
   prefix?: string;
@@ -134,8 +117,6 @@ export interface CardCustomerName {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-const CardCustomerName = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CardCustomerName>;
-
 /** The details about a customer in PayPal's system of record. */
 export interface CardCustomer {
   id?: string;
@@ -145,59 +126,32 @@ export interface CardCustomer {
   /** Merchants and partners may already have a data-store where their customer information is persisted. Use merchant_customer_id to associate the PayPal-generated customer.id to your representation of a customer. */
   merchant_customer_id?: string;
 }
-const CardCustomer = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CardCustomer>;
-
 /** Defines how and when the payment source gets vaulted. */
 export type StoreInVaultInstruction = "ON_SUCCESS";
-const StoreInVaultInstruction = S.String;
-
 export interface CardRequestInputAttributesVault {
   store_in_vault?: StoreInVaultInstruction | (string & {});
 }
-const CardRequestInputAttributesVault = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CardRequestInputAttributesVault>;
-
 /** The method used for card verification. */
 export type CardRequestInputAttributesVerificationMethod =
   | "SCA_ALWAYS"
   | "SCA_WHEN_REQUIRED"
   | "3D_SECURE"
   | "AVS_CVV";
-const CardRequestInputAttributesVerificationMethod = S.String;
-
 export interface CardRequestInputAttributesVerification {
   /** The method used for card verification. */
   method?: CardRequestInputAttributesVerificationMethod | (string & {});
 }
-const CardRequestInputAttributesVerification = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CardRequestInputAttributesVerification>;
-
 export interface CardRequestInputAttributes {
   customer?: CardCustomer;
   vault?: CardRequestInputAttributesVault;
   verification?: CardRequestInputAttributesVerification;
 }
-const CardRequestInputAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CardRequestInputAttributes>;
-
 /** The person or party who initiated or triggered the payment. */
 export type PaymentInitiator = "CUSTOMER" | "MERCHANT";
-const PaymentInitiator = S.String;
-
 /** Indicates the type of the stored payment_source payment. */
 export type StoredPaymentSourcePaymentType = "ONE_TIME" | "RECURRING" | "UNSCHEDULED";
-const StoredPaymentSourcePaymentType = S.String;
-
 /** Indicates if this is a `first` or `subsequent` payment using a stored payment source (also referred to as stored credential or card on file). */
 export type StoredPaymentSourceUsageType = "FIRST" | "SUBSEQUENT" | "DERIVED";
-const StoredPaymentSourceUsageType = S.String;
-
 /** Reference values used by the card network to identify a transaction. */
 export interface NetworkTransaction {
   /** Transaction reference id returned by the scheme. For Visa and Amex, this is the "Tran id" field in response. For MasterCard, this is the "BankNet reference id" field in response. For Discover, this is the "NRID" field in response. The pattern we expect for this field from Visa/Amex/CB/Discover is numeric, Mastercard/BNPP is alphanumeric and Paysecure is alphanumeric with special character -. */
@@ -208,8 +162,6 @@ export interface NetworkTransaction {
   /** Reference ID issued for the card transaction. This ID can be used to track the transaction across processors, card brands and issuing banks. */
   acquirer_reference_number?: string;
 }
-const NetworkTransaction = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<NetworkTransaction>;
-
 /** Provides additional details to process a payment using a `card` that has been stored or is intended to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`.</li><li>Only one of the parameters - `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in the request.</li></ul> */
 export interface CardStoredCredential {
   payment_initiator: PaymentInitiator | (string & {});
@@ -217,8 +169,6 @@ export interface CardStoredCredential {
   usage?: StoredPaymentSourceUsageType | (string & {});
   previous_network_transaction_reference?: NetworkTransaction;
 }
-const CardStoredCredential = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CardStoredCredential>;
-
 /** Electronic Commerce Indicator (ECI). The ECI value is part of the 2 data elements that indicate the transaction was processed electronically. This should be passed on the authorization transaction to the Gateway/Processor. */
 export type EciFlag =
   | "MASTERCARD_NON_3D_SECURE_TRANSACTION"
@@ -227,8 +177,6 @@ export type EciFlag =
   | "FULLY_AUTHENTICATED_TRANSACTION"
   | "ATTEMPTED_AUTHENTICATION_TRANSACTION"
   | "NON_3D_SECURE_TRANSACTION";
-const EciFlag = S.String;
-
 export interface CardRequestInputNetworkToken {
   /** Third party network token number. */
   number: string;
@@ -239,20 +187,10 @@ export interface CardRequestInputNetworkToken {
   /** A TRID, or a Token Requestor ID, is an identifier used by merchants to request network tokens from card networks. A TRID is a precursor to obtaining a network token for a credit card primary account number (PAN), and will aid in enabling secure card on file (COF) payments and reducing fraud. */
   token_requestor_id?: string;
 }
-const CardRequestInputNetworkToken = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CardRequestInputNetworkToken>;
-
 export interface CardRequestInputExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const CardRequestInputExperienceContext = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CardRequestInputExperienceContext>;
-
 /** The payment card to use to fund a payment. Can be a credit or debit card.<blockquote><strong>Note:</strong> Passing card number, cvv and expiry directly via the API requires <a href="https://www.pcisecuritystandards.org/pci_security/completing_self_assessment"> PCI SAQ D compliance</a>. <br>*PayPal offers a mechanism by which you do not have to take on the <strong>PCI SAQ D</strong> burden by using hosted fields - refer to <a href="https://developer.paypal.com/docs/checkout/advanced/integrate/">this Integration Guide</a>*.</blockquote> */
 export interface CardRequestInput {
   id?: unknown;
@@ -274,12 +212,8 @@ export interface CardRequestInput {
   network_token?: CardRequestInputNetworkToken;
   experience_context?: CardRequestInputExperienceContext;
 }
-const CardRequestInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CardRequestInput>;
-
 /** The tokenization method that generated the ID. */
 export type TokenType = "BILLING_AGREEMENT";
-const TokenType = S.String;
-
 /** The tokenized payment source to fund a payment. */
 export interface Token {
   /** The PayPal-generated ID for the token. */
@@ -287,26 +221,17 @@ export interface Token {
   /** The tokenization method that generated the ID. */
   type: TokenType | (string & {});
 }
-const Token = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Token>;
-
 export type AuthorizeOrderRequestPaymentSourcePaypalName = CardCustomerName;
 export type AuthorizeOrderRequestPaymentSourcePaypalPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type AuthorizeOrderRequestPaymentSourcePaypalPhone = CardCustomerPhone;
 /** The customer's tax ID type. */
 export type AuthorizeOrderRequestPaymentSourcePaypalTaxInfoTaxIdType = "BR_CPF" | "BR_CNPJ";
-const AuthorizeOrderRequestPaymentSourcePaypalTaxInfoTaxIdType = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourcePaypalTaxInfo {
   /** The customer's tax ID value. */
   tax_id: string;
   /** The customer's tax ID type. */
   tax_id_type: AuthorizeOrderRequestPaymentSourcePaypalTaxInfoTaxIdType | (string & {});
 }
-const AuthorizeOrderRequestPaymentSourcePaypalTaxInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type AuthorizeOrderRequestPaymentSourcePaypalAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -330,8 +255,6 @@ export type AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultUsagePattern 
   | "UNSCHEDULED_POSTPAID"
   | "INSTALLMENT_PREPAID"
   | "INSTALLMENT_POSTPAID";
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultUsagePattern = S.String;
-
 export type AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingName = CardCustomerName;
 export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
@@ -341,31 +264,17 @@ export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShipping
   /** The extension number. */
   extension_number?: string;
 }
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    0,
-  ) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber>;
-
 /** A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either `type` or `options` may be present, but not both. */
 export type AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingType =
   | "SHIPPING"
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingType = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount {
   currency_code: string;
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-codes/). */
   value: string;
 }
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    1,
-  ) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount>;
-
 export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem {
   /** A unique ID that identifies a payer-selected shipping option. */
   id: string;
@@ -376,21 +285,9 @@ export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShipping
   /** If the API request sets `selected = true`, it represents the shipping option that the payee or merchant expects to be pre-selected for the payer when they first view the `shipping.options` in the PayPal Checkout experience. As part of the response if a `shipping.option` contains `selected=true`, it represents the shipping option that the payer selected during the course of checkout with PayPal. Only one `shipping.option` can be set to `selected=true`. */
   selected: boolean;
 }
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    2,
-  ) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    3,
-  ) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -406,23 +303,14 @@ export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShipping
   options?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList;
   address?: CardRequestInputBillingAddress;
 }
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShipping = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShipping>;
-
 /** The usage type associated with the PayPal payment token. */
 export type AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultUsageType =
   | "MERCHANT"
   | "PLATFORM";
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultUsageType = S.String;
-
 /** The customer type associated with the PayPal payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultCustomerType =
   | "CONSUMER"
   | "BUSINESS";
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultCustomerType = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVault {
   store_in_vault?: StoreInVaultInstruction | (string & {});
   /** The description displayed to PayPal consumer on the approval flow for PayPal, as well as on the PayPal payment token management experience on PayPal.com. */
@@ -441,105 +329,57 @@ export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVault {
   /** Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same PayPal account. This only applies to PayPal payment source. */
   permit_multiple_payment_tokens?: boolean;
 }
-const AuthorizeOrderRequestPaymentSourcePaypalAttributesVault = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalAttributesVault>;
-
 export interface AuthorizeOrderRequestPaymentSourcePaypalAttributes {
   customer?: CardCustomer;
   vault?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVault;
 }
-const AuthorizeOrderRequestPaymentSourcePaypalAttributes = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypalAttributes>;
-
 /** The location from which the shipping address is derived. */
 export type PaypalWalletExperienceContextInputShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const PaypalWalletExperienceContextInputShippingPreference = S.String;
-
 /** The preference to display the contact information (buyer's shipping email & phone number) on PayPal's checkout for easy merchant-buyer communication. */
 export type PaypalWalletExperienceContextInputContactPreference =
   | "NO_CONTACT_INFO"
   | "UPDATE_CONTACT_INFO"
   | "RETAIN_CONTACT_INFO";
-const PaypalWalletExperienceContextInputContactPreference = S.String;
-
 /** Merchant provided, buyer's native app preferences to app switch to the PayPal consumer app. */
 export interface NativeAppContextInput {}
-const NativeAppContextInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<NativeAppContextInput>;
-
 /** Buyer's mobile web browser context to app switch to the PayPal consumer app. */
 export interface MobileWebContextInput {
   /** User agent from the request originating from the buyer's device. This will be used to identify the buyer's operating system and browser versions. NOTE: Merchants must not alter or modify the buyer's device user agent. */
   buyer_user_agent?: string;
 }
-const MobileWebContextInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<MobileWebContextInput>;
-
 export interface PaypalWalletExperienceContextInputAppSwitchContext {
   native_app?: NativeAppContextInput;
   mobile_web?: MobileWebContextInput;
 }
-const PaypalWalletExperienceContextInputAppSwitchContext = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PaypalWalletExperienceContextInputAppSwitchContext>;
-
 /** The type of landing page to show on the PayPal site for customer checkout. */
 export type PaypalWalletExperienceContextInputLandingPage =
   | "LOGIN"
   | "GUEST_CHECKOUT"
   | "NO_PREFERENCE"
   | "BILLING";
-const PaypalWalletExperienceContextInputLandingPage = S.String;
-
 /** Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow. */
 export type PaypalWalletExperienceContextInputUserAction = "CONTINUE" | "PAY_NOW";
-const PaypalWalletExperienceContextInputUserAction = S.String;
-
 /** The merchant-preferred payment methods. */
 export type PaypalWalletExperienceContextInputPaymentMethodPreference =
   | "UNRESTRICTED"
   | "IMMEDIATE_PAYMENT_REQUIRED";
-const PaypalWalletExperienceContextInputPaymentMethodPreference = S.String;
-
 /** CallBack event. */
 export type PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsItem =
   | "SHIPPING_ADDRESS"
   | "SHIPPING_OPTIONS";
-const PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsItem = S.String;
-
 /** An array of callback events merchant can subscribe to for the corresponding callback url. */
 export type PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList = Array<
   PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsItem | (string & {})
 >;
-const PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    2,
-  ) as any as S.Schema<PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList>;
-
 export interface PaypalWalletExperienceContextInputOrderUpdateCallbackConfig {
   /** An array of callback events merchant can subscribe to for the corresponding callback url. */
   callback_events: PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList;
   /** Merchant provided CallBack url.PayPal/Venmo will use this url to call the merchant back when the events occur .PayPal/Venmo expects a secured url usually in the https format.merchant can append the cart id or other params part of the url as query or path params. */
   callback_url: string;
 }
-const PaypalWalletExperienceContextInputOrderUpdateCallbackConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PaypalWalletExperienceContextInputOrderUpdateCallbackConfig>;
-
 /** Customizes the payer experience during the approval process for payment with PayPal.<blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code> and <code>shipping_preference</code> during partner account setup, which overrides the request values.</blockquote> */
 export interface PaypalWalletExperienceContextInput {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
@@ -562,11 +402,6 @@ export interface PaypalWalletExperienceContextInput {
     | (string & {});
   order_update_callback_config?: PaypalWalletExperienceContextInputOrderUpdateCallbackConfig;
 }
-const PaypalWalletExperienceContextInput = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PaypalWalletExperienceContextInput>;
-
 /** Expected business/pricing model for the billing agreement. */
 export type ChargePattern =
   | "IMMEDIATE"
@@ -581,8 +416,6 @@ export type ChargePattern =
   | "UNSCHEDULED_POSTPAID"
   | "INSTALLMENT_PREPAID"
   | "INSTALLMENT_POSTPAID";
-const ChargePattern = S.String;
-
 /** Provides additional details to process a payment using the PayPal wallet billing agreement or a vaulted payment method that has been stored or is intended to be stored. */
 export interface PaypalWalletStoredCredential {
   payment_initiator: PaymentInitiator | (string & {});
@@ -590,11 +423,6 @@ export interface PaypalWalletStoredCredential {
   usage_pattern?: ChargePattern | (string & {});
   usage?: StoredPaymentSourceUsageType | (string & {});
 }
-const PaypalWalletStoredCredential = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<PaypalWalletStoredCredential>;
-
 export interface AuthorizeOrderRequestPaymentSourcePaypal {
   vault_id?: unknown;
   email_address?: unknown;
@@ -608,18 +436,11 @@ export interface AuthorizeOrderRequestPaymentSourcePaypal {
   billing_agreement_id?: string;
   stored_credential?: PaypalWalletStoredCredential;
 }
-const AuthorizeOrderRequestPaymentSourcePaypal = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourcePaypal>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceBancontactExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const AuthorizeOrderRequestPaymentSourceBancontactExperienceContextShippingPreference = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceBancontactExperienceContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
   brand_name?: string;
@@ -631,28 +452,16 @@ export interface AuthorizeOrderRequestPaymentSourceBancontactExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const AuthorizeOrderRequestPaymentSourceBancontactExperienceContext = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceBancontactExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceBancontact {
   name: unknown;
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceBancontactExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceBancontact = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceBancontact>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceBlikExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const AuthorizeOrderRequestPaymentSourceBlikExperienceContextShippingPreference = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceBlikExperienceContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
   brand_name?: string;
@@ -667,20 +476,10 @@ export interface AuthorizeOrderRequestPaymentSourceBlikExperienceContext {
   /** The payer's User Agent. For example, Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0). */
   consumer_user_agent?: string;
 }
-const AuthorizeOrderRequestPaymentSourceBlikExperienceContext = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceBlikExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceBlikLevel0 {
   /** The 6-digit code used to authenticate a consumer within BLIK. */
   auth_code: string;
 }
-const AuthorizeOrderRequestPaymentSourceBlikLevel0 = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceBlikLevel0>;
-
 export interface AuthorizeOrderRequestPaymentSourceBlikOneClick {
   /** The 6-digit code used to authenticate a consumer within BLIK. */
   auth_code?: string;
@@ -691,11 +490,6 @@ export interface AuthorizeOrderRequestPaymentSourceBlikOneClick {
   /** A Blik-defined identifier for a specific Blik-enabled bank account that is associated with a given merchant. Used only in conjunction with a Consumer Reference. */
   alias_key?: string;
 }
-const AuthorizeOrderRequestPaymentSourceBlikOneClick = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceBlikOneClick>;
-
 export interface AuthorizeOrderRequestPaymentSourceBlik {
   name: unknown;
   country_code: unknown;
@@ -704,18 +498,11 @@ export interface AuthorizeOrderRequestPaymentSourceBlik {
   level_0?: AuthorizeOrderRequestPaymentSourceBlikLevel0;
   one_click?: AuthorizeOrderRequestPaymentSourceBlikOneClick;
 }
-const AuthorizeOrderRequestPaymentSourceBlik = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceBlik>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceEpsExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const AuthorizeOrderRequestPaymentSourceEpsExperienceContextShippingPreference = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceEpsExperienceContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
   brand_name?: string;
@@ -727,28 +514,16 @@ export interface AuthorizeOrderRequestPaymentSourceEpsExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const AuthorizeOrderRequestPaymentSourceEpsExperienceContext = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceEpsExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceEps {
   name: unknown;
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceEpsExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceEps = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceEps>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceGiropayExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const AuthorizeOrderRequestPaymentSourceGiropayExperienceContextShippingPreference = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceGiropayExperienceContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
   brand_name?: string;
@@ -760,21 +535,11 @@ export interface AuthorizeOrderRequestPaymentSourceGiropayExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const AuthorizeOrderRequestPaymentSourceGiropayExperienceContext = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGiropayExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceGiropay {
   name: unknown;
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceGiropayExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceGiropay = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGiropay>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceIdealExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -791,20 +556,12 @@ export interface AuthorizeOrderRequestPaymentSourceIdealExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const AuthorizeOrderRequestPaymentSourceIdealExperienceContext =
-  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceIdealExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceIdeal {
   name: unknown;
   country_code: unknown;
   bic?: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceIdealExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceIdeal = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceIdeal>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceMybankExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -826,9 +583,6 @@ export interface AuthorizeOrderRequestPaymentSourceMybank {
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceMybankExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceMybank =
-  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<AuthorizeOrderRequestPaymentSourceMybank>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceP24ExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -845,20 +599,12 @@ export interface AuthorizeOrderRequestPaymentSourceP24ExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const AuthorizeOrderRequestPaymentSourceP24ExperienceContext =
-  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceP24ExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceP24 {
   name: unknown;
   email: unknown;
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceP24ExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceP24 = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceP24>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceSofortExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -880,9 +626,6 @@ export interface AuthorizeOrderRequestPaymentSourceSofort {
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceSofortExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceSofort =
-  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<AuthorizeOrderRequestPaymentSourceSofort>;
-
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceTrustlyExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -899,20 +642,12 @@ export interface AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext =
-  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceTrustly {
   name: unknown;
   country_code: unknown;
   email: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceTrustly = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceTrustly>;
-
 export type AuthorizeOrderRequestPaymentSourceApplePayPhoneNumber = CardCustomerPhonePhoneNumber;
 export type AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTransactionAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -929,32 +664,17 @@ export type AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCar
   | "SCA_WHEN_REQUIRED"
   | "3D_SECURE"
   | "AVS_CVV";
-const AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerificationMethod =
-  S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification {
   /** The method used for card verification. */
   method?:
     | AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerificationMethod
     | (string & {});
 }
-const AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    4,
-  ) as any as S.Schema<AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification>;
-
 export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes {
   customer?: CardCustomer;
   vault?: CardRequestInputAttributesVault;
   verification?: AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification;
 }
-const AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    5,
-  ) as any as S.Schema<AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes>;
-
 export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard {
   id?: unknown;
   /** The card holder's name as it appears on the card. */
@@ -970,17 +690,10 @@ export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokeniz
   billing_address?: CardRequestInputBillingAddress;
   attributes?: AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes;
 }
-const AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard>;
-
 /** Indicates the type of payment data passed, in case of Non China the payment data is 3DSECURE and for China it is EMV. */
 export type AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentDataType =
   | "3DSECURE"
   | "EMV";
-const AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentDataType = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData {
   /** Online payment cryptogram, as defined by 3D Secure. The pattern is defined by an external party and supports Unicode. */
   cryptogram?: string;
@@ -991,11 +704,6 @@ export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPayment
   /** Bank Key encrypted Apple Pay PIN. The pattern is defined by an external party and supports Unicode. */
   pin?: string;
 }
-const AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData>;
-
 export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedToken {
   transaction_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
   tokenized_card: AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard;
@@ -1007,11 +715,6 @@ export interface AuthorizeOrderRequestPaymentSourceApplePayDecryptedToken {
     | (string & {});
   payment_data?: AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData;
 }
-const AuthorizeOrderRequestPaymentSourceApplePayDecryptedToken = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceApplePayDecryptedToken>;
-
 export type CustomerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type CustomerPhone = CardCustomerPhone;
 export type CustomerName = CardCustomerName;
@@ -1022,34 +725,20 @@ export interface Customer {
   phone?: CardCustomerPhone;
   name?: CardCustomerName;
 }
-const Customer = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Customer>;
-
 /** Base vaulting specification. The object can be extended for specific use cases within each payment_source that supports vaulting. */
 export interface V3VaultInstructionBase {
   store_in_vault: StoreInVaultInstruction | (string & {});
 }
-const V3VaultInstructionBase = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<V3VaultInstructionBase>;
-
 /** Additional attributes associated with apple pay. */
 export interface ApplePayAttributes {
   customer?: Customer;
   vault?: V3VaultInstructionBase;
 }
-const ApplePayAttributes = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ApplePayAttributes>;
-
 /** Customizes the payer experience during the approval process for the payment. */
 export interface ApplePayExperienceContext {
   return_url: unknown;
   cancel_url: unknown;
 }
-const ApplePayExperienceContext = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ApplePayExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceApplePay {
   /** ApplePay transaction identifier, this will be the unique identifier for this transaction provided by Apple. The pattern is defined by an external party and supports Unicode. */
   id?: string;
@@ -1062,22 +751,12 @@ export interface AuthorizeOrderRequestPaymentSourceApplePay {
   attributes?: ApplePayAttributes;
   experience_context?: ApplePayExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceApplePay = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceApplePay>;
-
 export interface AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   country_code?: string;
   /** The national number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the country calling code (CC) and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   national_number: string;
 }
-const AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type AuthorizeOrderRequestPaymentSourceGooglePayCardBillingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -1093,15 +772,8 @@ export interface AuthorizeOrderRequestPaymentSourceGooglePayCard {
   brand?: unknown;
   billing_address?: CardRequestInputBillingAddress;
 }
-const AuthorizeOrderRequestPaymentSourceGooglePayCard = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGooglePayCard>;
-
 /** The type of the payment credential. Currently, only CARD is supported. */
 export type AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenPaymentMethod = "CARD";
-const AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenPaymentMethod = S.String;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCardBillingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -1118,17 +790,10 @@ export interface AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCard {
   brand?: unknown;
   billing_address?: CardRequestInputBillingAddress;
 }
-const AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCard = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCard>;
-
 /** Authentication Method which is used for the card transaction. */
 export type AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenAuthenticationMethod =
   | "PAN_ONLY"
   | "CRYPTOGRAM_3DS";
-const AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenAuthenticationMethod = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceGooglePayDecryptedToken {
   /** A unique ID that identifies the message in case it needs to be revoked or located at a later time. */
   message_id?: string;
@@ -1149,22 +814,12 @@ export interface AuthorizeOrderRequestPaymentSourceGooglePayDecryptedToken {
   /** Electronic Commerce Indicator may not always be present. It is only returned for tokens on the Visa card network. This value is passed through in the payment authorization request. */
   eci_indicator?: string;
 }
-const AuthorizeOrderRequestPaymentSourceGooglePayDecryptedToken = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGooglePayDecryptedToken>;
-
 export interface AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails {
   /** If true, indicates that Cardholder possession validation has been performed on returned payment credential. */
   account_verified?: boolean;
   /** If true, indicates that identification and verifications (ID&V) was performed on the returned payment credential.If false, the same risk-based authentication can be performed as you would for card transactions. This risk-based authentication can include, but not limited to, step-up with 3D Secure protocol if applicable. */
   card_holder_authenticated?: boolean;
 }
-const AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails>;
-
 /** Customizes the payer experience during the approval process for the payment. */
 export type GooglePayExperienceContext = ApplePayExperienceContext;
 export interface AuthorizeOrderRequestPaymentSourceGooglePay {
@@ -1176,18 +831,11 @@ export interface AuthorizeOrderRequestPaymentSourceGooglePay {
   assurance_details?: AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails;
   experience_context?: ApplePayExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceGooglePay = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceGooglePay>;
-
 /** The location from which the shipping address is derived. */
 export type VenmoWalletExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const VenmoWalletExperienceContextShippingPreference = S.String;
-
 /** CallBack event. */
 export type VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsItem =
   | "SHIPPING_ADDRESS"
@@ -1196,24 +844,14 @@ export type VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsI
 export type VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList = Array<
   VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsItem | (string & {})
 >;
-const VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList =
-  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList>;
-
 export interface VenmoWalletExperienceContextOrderUpdateCallbackConfig {
   /** An array of callback events merchant can subscribe to for the corresponding callback url. */
   callback_events: VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList;
   /** Merchant provided CallBack url.PayPal/Venmo will use this url to call the merchant back when the events occur .PayPal/Venmo expects a secured url usually in the https format.merchant can append the cart id or other params part of the url as query or path params. */
   callback_url: string;
 }
-const VenmoWalletExperienceContextOrderUpdateCallbackConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<VenmoWalletExperienceContextOrderUpdateCallbackConfig>;
-
 /** Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow. */
 export type VenmoWalletExperienceContextUserAction = "CONTINUE" | "PAY_NOW";
-const VenmoWalletExperienceContextUserAction = S.String;
-
 /** Customizes the buyer experience during the approval process for payment with Venmo.<blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>shipping_preference</code> during partner account setup, which overrides the request values.</blockquote> */
 export interface VenmoWalletExperienceContext {
   /** The business name of the merchant. The pattern is defined by an external party and supports Unicode. */
@@ -1224,11 +862,6 @@ export interface VenmoWalletExperienceContext {
   /** Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow. */
   user_action?: VenmoWalletExperienceContextUserAction | (string & {});
 }
-const VenmoWalletExperienceContext = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<VenmoWalletExperienceContext>;
-
 export type VenmoWalletCustomerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type VenmoWalletCustomerPhone = CardCustomerPhone;
 export type VenmoWalletCustomerName = CardCustomerName;
@@ -1242,20 +875,14 @@ export type AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultUsagePattern =
   | "RECURRING_POSTPAID"
   | "THRESHOLD_PREPAID"
   | "THRESHOLD_POSTPAID";
-const AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultUsagePattern = S.String;
-
 /** The usage type associated with the Venmo payment token. */
 export type AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultUsageType =
   | "MERCHANT"
   | "PLATFORM";
-const AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultUsageType = S.String;
-
 /** The customer type associated with the Venmo payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultCustomerType =
   | "CONSUMER"
   | "BUSINESS";
-const AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultCustomerType = S.String;
-
 export interface AuthorizeOrderRequestPaymentSourceVenmoAttributesVault {
   store_in_vault: StoreInVaultInstruction | (string & {});
   /** The description displayed to Venmo consumer on the approval flow for Venmo, as well as on the Venmo payment token management experience on Venmo.com. */
@@ -1273,31 +900,16 @@ export interface AuthorizeOrderRequestPaymentSourceVenmoAttributesVault {
   /** Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same Venmo account. */
   permit_multiple_payment_tokens?: boolean;
 }
-const AuthorizeOrderRequestPaymentSourceVenmoAttributesVault = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceVenmoAttributesVault>;
-
 export interface AuthorizeOrderRequestPaymentSourceVenmoAttributes {
   customer?: Customer;
   vault?: AuthorizeOrderRequestPaymentSourceVenmoAttributesVault;
 }
-const AuthorizeOrderRequestPaymentSourceVenmoAttributes = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceVenmoAttributes>;
-
 export interface AuthorizeOrderRequestPaymentSourceVenmo {
   vault_id?: unknown;
   email_address?: unknown;
   experience_context?: VenmoWalletExperienceContext;
   attributes?: AuthorizeOrderRequestPaymentSourceVenmoAttributes;
 }
-const AuthorizeOrderRequestPaymentSourceVenmo = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceVenmo>;
-
 export interface AuthorizeOrderRequestPaymentSourceCryptoName {
   /** The prefix, or title, to the account holder's name. */
   prefix?: string;
@@ -1308,31 +920,16 @@ export interface AuthorizeOrderRequestPaymentSourceCryptoName {
   /** When the account holder is a person, the account holder's middle name. Use also to store multiple middle names including the patronymic, or father's, middle name. */
   middle_name?: string;
 }
-const AuthorizeOrderRequestPaymentSourceCryptoName = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceCryptoName>;
-
 export interface AuthorizeOrderRequestPaymentSourceCryptoExperienceContext {
   locale?: unknown;
   return_url: unknown;
   cancel_url: unknown;
 }
-const AuthorizeOrderRequestPaymentSourceCryptoExperienceContext = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceCryptoExperienceContext>;
-
 export interface AuthorizeOrderRequestPaymentSourceCrypto {
   country_code: unknown;
   name: AuthorizeOrderRequestPaymentSourceCryptoName;
   experience_context: AuthorizeOrderRequestPaymentSourceCryptoExperienceContext;
 }
-const AuthorizeOrderRequestPaymentSourceCrypto = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSourceCrypto>;
-
 export interface AuthorizeOrderRequestPaymentSource {
   card?: CardRequestInput;
   token?: Token;
@@ -1351,11 +948,6 @@ export interface AuthorizeOrderRequestPaymentSource {
   venmo?: AuthorizeOrderRequestPaymentSourceVenmo;
   crypto?: AuthorizeOrderRequestPaymentSourceCrypto;
 }
-const AuthorizeOrderRequestPaymentSource = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<AuthorizeOrderRequestPaymentSource>;
-
 export interface AuthorizeOrderRequest {
   /** The ID of the order for which to authorize. */
   id: string;
@@ -1369,56 +961,27 @@ export interface AuthorizeOrderRequest {
   payPalAuthAssertion?: string;
   payment_source?: AuthorizeOrderRequestPaymentSource;
 }
-const AuthorizeOrderRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<AuthorizeOrderRequest>;
-
 /** Array of brands or networks associated with the card. */
 export type CardResponseAvailableNetworksList = Array<unknown>;
-const CardResponseAvailableNetworksList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CardResponseAvailableNetworksList>;
-
 /** Liability shift indicator. The outcome of the issuer's authentication. */
 export type LiabilityShift = "NO" | "POSSIBLE" | "UNKNOWN";
-const LiabilityShift = S.String;
-
 /** Results of 3D Secure Authentication. */
 export interface ThreeDSecureAuthenticationResponse {
   authentication_status?: unknown;
   enrollment_status?: unknown;
 }
-const ThreeDSecureAuthenticationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ThreeDSecureAuthenticationResponse>;
-
 /** Results of Authentication such as 3D Secure. */
 export interface AuthenticationResponse {
   liability_shift?: LiabilityShift;
   three_d_secure?: ThreeDSecureAuthenticationResponse;
 }
-const AuthenticationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<AuthenticationResponse>;
-
 /** The vault status. */
 export type CardVaultResponseStatus = "VAULTED" | "CREATED" | "APPROVED";
-const CardVaultResponseStatus = S.String;
-
 export type CardVaultResponseCustomerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export interface CardVaultResponseCustomerPhone {
   phone_type?: PhoneType;
   phone_number: CardCustomerPhonePhoneNumber;
 }
-const CardVaultResponseCustomerPhone = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CardVaultResponseCustomerPhone>;
-
 export type CardVaultResponseCustomerName = CardCustomerName;
 export interface CardVaultResponseCustomer {
   id?: string;
@@ -1426,11 +989,6 @@ export interface CardVaultResponseCustomer {
   phone?: CardVaultResponseCustomerPhone;
   name?: CardCustomerName;
 }
-const CardVaultResponseCustomer = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CardVaultResponseCustomer>;
-
 /** The HTTP method required to make the related call. */
 export type CardVaultResponseLinksItemMethod =
   | "GET"
@@ -1441,28 +999,14 @@ export type CardVaultResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CardVaultResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CardVaultResponseLinksItemSchemaAllOfList = Array<unknown>;
-const CardVaultResponseLinksItemSchemaAllOfList =
-  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaAllOfList>;
-
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CardVaultResponseLinksItemSchemaAnyOfList = Array<unknown>;
-const CardVaultResponseLinksItemSchemaAnyOfList =
-  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaAnyOfList>;
-
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CardVaultResponseLinksItemSchemaOneOfList = Array<unknown>;
-const CardVaultResponseLinksItemSchemaOneOfList =
-  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaOneOfList>;
-
 /** An array of links. */
 export type CardVaultResponseLinksItemSchemaLinksList = Array<unknown>;
-const CardVaultResponseLinksItemSchemaLinksList =
-  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaLinksList>;
-
 /** The media type and context-encoding scheme. */
 export interface CardVaultResponseLinksItemSchemaMedia {
   /** The media type. See [Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types](https://tools.ietf.org/html/rfc2046). */
@@ -1470,11 +1014,6 @@ export interface CardVaultResponseLinksItemSchemaMedia {
   /** The content-encoding scheme. See [Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies](https://tools.ietf.org/html/rfc2045). */
   binaryEncoding?: string;
 }
-const CardVaultResponseLinksItemSchemaMedia = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CardVaultResponseLinksItemSchemaMedia>;
-
 export interface CardVaultResponseLinksItemSchema {
   /** Any additional items. */
   additionalItems?: unknown;
@@ -1505,11 +1044,6 @@ export interface CardVaultResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CardVaultResponseLinksItemSchema = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CardVaultResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CardVaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -1550,9 +1084,6 @@ export interface CardVaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CardVaultResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<CardVaultResponseLinksItemTargetSchema>;
-
 export interface CardVaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -1569,18 +1100,8 @@ export interface CardVaultResponseLinksItem {
   schema?: CardVaultResponseLinksItemSchema;
   targetSchema?: CardVaultResponseLinksItemTargetSchema;
 }
-const CardVaultResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CardVaultResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. */
 export type CardVaultResponseLinksList = Array<CardVaultResponseLinksItem>;
-const CardVaultResponseLinksList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CardVaultResponseLinksList>;
-
 /** The details about a saved Card payment source. */
 export interface CardVaultResponse {
   /** The PayPal-generated ID for the saved payment source. */
@@ -1591,32 +1112,18 @@ export interface CardVaultResponse {
   /** An array of request-related HATEOAS links. */
   links?: CardVaultResponseLinksList;
 }
-const CardVaultResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CardVaultResponse>;
-
 /** Additional attributes associated with the use of this card. */
 export interface CardAttributesResponse {
   vault?: CardVaultResponse;
 }
-const CardAttributesResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CardAttributesResponse>;
-
 /** Representation of card details as received in the request. */
 export interface CardFromRequest {
   expiry?: unknown;
   /** The last digits of the payment card. */
   last_digits?: string;
 }
-const CardFromRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<CardFromRequest>;
-
 /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
 export type CardResponseBinDetailsProductsList = Array<string>;
-const CardResponseBinDetailsProductsList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CardResponseBinDetailsProductsList>;
-
 export interface CardResponseBinDetails {
   /** The Bank Identification Number (BIN) signifies the number that is being used to identify the granular level details (except the PII information) of the card. */
   bin?: string;
@@ -1626,11 +1133,6 @@ export interface CardResponseBinDetails {
   /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
   products?: CardResponseBinDetailsProductsList;
 }
-const CardResponseBinDetails = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CardResponseBinDetails>;
-
 /** The payment card to use to fund a payment. Card can be a credit or debit card. */
 export interface CardResponse {
   /** The card holder's name as it appears on the card. */
@@ -1648,12 +1150,8 @@ export interface CardResponse {
   bin_details?: CardResponseBinDetails;
   stored_credential?: CardStoredCredential;
 }
-const CardResponse = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<CardResponse>;
-
 /** The account status indicates whether the buyer has verified the financial details associated with their PayPal account. */
 export type PaypalWalletResponseAccountStatus = "VERIFIED" | "UNVERIFIED";
-const PaypalWalletResponseAccountStatus = S.String;
-
 export type PaypalWalletResponseName = CardCustomerName;
 export type PaypalWalletResponsePhoneNumber = CardCustomerPhonePhoneNumber;
 /** The customer's tax ID type. */
@@ -1664,17 +1162,12 @@ export interface PaypalWalletResponseTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: PaypalWalletResponseTaxInfoTaxIdType;
 }
-const PaypalWalletResponseTaxInfo =
-  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<PaypalWalletResponseTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PaypalWalletResponseAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
 export type PaypalWalletResponseAddress = CardRequestInputBillingAddress;
 /** The vault status. */
 export type PaypalWalletVaultResponseStatus = "VAULTED" | "CREATED" | "APPROVED";
-const PaypalWalletVaultResponseStatus = S.String;
-
 export type PaypalWalletVaultResponseCustomerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type PaypalWalletVaultResponseCustomerPhone = CardVaultResponseCustomerPhone;
 export type PaypalWalletVaultResponseCustomerName = CardCustomerName;
@@ -1689,8 +1182,6 @@ export type PaypalWalletVaultResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const PaypalWalletVaultResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type PaypalWalletVaultResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -1731,9 +1222,6 @@ export interface PaypalWalletVaultResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const PaypalWalletVaultResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<PaypalWalletVaultResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type PaypalWalletVaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -1775,9 +1263,6 @@ export interface PaypalWalletVaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const PaypalWalletVaultResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchema>;
-
 export interface PaypalWalletVaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -1794,18 +1279,8 @@ export interface PaypalWalletVaultResponseLinksItem {
   schema?: PaypalWalletVaultResponseLinksItemSchema;
   targetSchema?: PaypalWalletVaultResponseLinksItemTargetSchema;
 }
-const PaypalWalletVaultResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. */
 export type PaypalWalletVaultResponseLinksList = Array<PaypalWalletVaultResponseLinksItem>;
-const PaypalWalletVaultResponseLinksList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<PaypalWalletVaultResponseLinksList>;
-
 /** The details about a saved PayPal Wallet payment source. */
 export interface PaypalWalletVaultResponse {
   /** The PayPal-generated ID for the saved payment source. */
@@ -1816,25 +1291,12 @@ export interface PaypalWalletVaultResponse {
   /** An array of request-related HATEOAS links. */
   links?: PaypalWalletVaultResponseLinksList;
 }
-const PaypalWalletVaultResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PaypalWalletVaultResponse>;
-
 /** Array of labels for the cobranded card. */
 export type PaypalWalletAttributesResponseCobrandedCardsItemLabelsList = Array<string>;
-const PaypalWalletAttributesResponseCobrandedCardsItemLabelsList =
-  CardResponseBinDetailsProductsList as any as S.Schema<PaypalWalletAttributesResponseCobrandedCardsItemLabelsList>;
-
 export interface PaypalWalletAttributesResponseCobrandedCardsItemPayee {
   email_address?: unknown;
   merchant_id?: unknown;
 }
-const PaypalWalletAttributesResponseCobrandedCardsItemPayee = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PaypalWalletAttributesResponseCobrandedCardsItemPayee>;
-
 export type PaypalWalletAttributesResponseCobrandedCardsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export interface PaypalWalletAttributesResponseCobrandedCardsItem {
@@ -1843,38 +1305,21 @@ export interface PaypalWalletAttributesResponseCobrandedCardsItem {
   payee?: PaypalWalletAttributesResponseCobrandedCardsItemPayee;
   amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const PaypalWalletAttributesResponseCobrandedCardsItem = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<PaypalWalletAttributesResponseCobrandedCardsItem>;
-
 /** An array of merchant cobranded cards used by buyer to complete an order. This array will be present if a merchant has onboarded their cobranded card with PayPal and provided corresponding label(s). */
 export type PaypalWalletAttributesResponseCobrandedCardsList =
   Array<PaypalWalletAttributesResponseCobrandedCardsItem>;
-const PaypalWalletAttributesResponseCobrandedCardsList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<PaypalWalletAttributesResponseCobrandedCardsList>;
-
 /** Additional attributes associated with the use of a PayPal Wallet. */
 export interface PaypalWalletAttributesResponse {
   vault?: PaypalWalletVaultResponse;
   /** An array of merchant cobranded cards used by buyer to complete an order. This array will be present if a merchant has onboarded their cobranded card with PayPal and provided corresponding label(s). */
   cobranded_cards?: PaypalWalletAttributesResponseCobrandedCardsList;
 }
-const PaypalWalletAttributesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<PaypalWalletAttributesResponse>;
-
 /** This field indicates the status of PayPal's Checkout experience throughout the order lifecycle. The values reflect the current stage of the checkout process. */
 export type PaypalWalletResponseExperienceStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
   | "CANCELED"
   | "APPROVED";
-const PaypalWalletResponseExperienceStatus = S.String;
-
 /** The PayPal Wallet response. */
 export interface PaypalWalletResponse {
   email_address?: unknown;
@@ -1894,11 +1339,6 @@ export interface PaypalWalletResponse {
   /** This field indicates the status of PayPal's Checkout experience throughout the order lifecycle. The values reflect the current stage of the checkout process. */
   experience_status?: PaypalWalletResponseExperienceStatus;
 }
-const PaypalWalletResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PaypalWalletResponse>;
-
 /** Information used to pay Bancontact. */
 export interface Bancontact {
   name?: unknown;
@@ -1908,14 +1348,10 @@ export interface Bancontact {
   /** The last digits of the card used to fund the Bancontact payment. */
   card_last_digits?: string;
 }
-const Bancontact = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Bancontact>;
-
 export interface BlikOneClick {
   /** The merchant generated, unique reference serving as a primary identifier for accounts connected between Blik and a merchant. */
   consumer_reference?: string;
 }
-const BlikOneClick = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<BlikOneClick>;
-
 /** Information used to pay using BLIK. */
 export interface Blik {
   name?: unknown;
@@ -1923,16 +1359,12 @@ export interface Blik {
   email?: unknown;
   one_click?: BlikOneClick;
 }
-const Blik = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<Blik>;
-
 /** Information used to pay using eps. */
 export interface Eps {
   name?: unknown;
   country_code?: unknown;
   bic?: unknown;
 }
-const Eps = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Eps>;
-
 /** Information needed to pay using giropay. */
 export type Giropay = Eps;
 /** Information used to pay using iDEAL. */
@@ -1942,8 +1374,6 @@ export interface Ideal {
   bic?: unknown;
   iban_last_chars?: string;
 }
-const Ideal = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<Ideal>;
-
 /** Information used to pay using MyBank. */
 export type Mybank = Ideal;
 /** Information used to pay using P24(Przelewy24). */
@@ -1958,8 +1388,6 @@ export interface P24 {
   /** Friendly name of the payment scheme or bank used for the payment. */
   method_description?: string;
 }
-const P24 = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<P24>;
-
 /** Information used to pay using Sofort. */
 export type Sofort = Ideal;
 /** Information needed to pay using Trustly. */
@@ -1970,15 +1398,10 @@ export interface Trustly {
   bic?: unknown;
   iban_last_chars?: string;
 }
-const Trustly = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Trustly>;
-
 export type ApplePayPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
 /** Array of brands or networks associated with the card. */
 export type ApplePayCardAvailableNetworksList = Array<unknown>;
-const ApplePayCardAvailableNetworksList =
-  CardResponseAvailableNetworksList as any as S.Schema<ApplePayCardAvailableNetworksList>;
-
 /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
 export type ApplePayCardBinDetailsProductsList = Array<string>;
 export interface ApplePayCardBinDetails {
@@ -1990,8 +1413,6 @@ export interface ApplePayCardBinDetails {
   /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
   products?: ApplePayCardBinDetailsProductsList;
 }
-const ApplePayCardBinDetails = CardResponseBinDetails as any as S.Schema<ApplePayCardBinDetails>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ApplePayCardBillingAddressAddressDetails = CardRequestInputBillingAddressAddressDetails;
 export type ApplePayCardBillingAddress = CardRequestInputBillingAddress;
@@ -2013,12 +1434,8 @@ export interface ApplePayCard {
   billing_address?: CardRequestInputBillingAddress;
   country_code?: unknown;
 }
-const ApplePayCard = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ApplePayCard>;
-
 /** The vault status. */
 export type VaultResponseStatus = "VAULTED" | "CREATED" | "APPROVED";
-const VaultResponseStatus = S.String;
-
 export type VaultResponseCustomerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type VaultResponseCustomerPhone = CardVaultResponseCustomerPhone;
 export type VaultResponseCustomerName = CardCustomerName;
@@ -2033,8 +1450,6 @@ export type VaultResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const VaultResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VaultResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -2075,9 +1490,6 @@ export interface VaultResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const VaultResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<VaultResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -2118,9 +1530,6 @@ export interface VaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const VaultResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<VaultResponseLinksItemTargetSchema>;
-
 export interface VaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -2137,18 +1546,8 @@ export interface VaultResponseLinksItem {
   schema?: VaultResponseLinksItemSchema;
   targetSchema?: VaultResponseLinksItemTargetSchema;
 }
-const VaultResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<VaultResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. */
 export type VaultResponseLinksList = Array<VaultResponseLinksItem>;
-const VaultResponseLinksList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<VaultResponseLinksList>;
-
 /** The details about a saved payment source. */
 export interface VaultResponse {
   /** The PayPal-generated ID for the saved payment source. */
@@ -2159,13 +1558,9 @@ export interface VaultResponse {
   /** An array of request-related HATEOAS links. */
   links?: VaultResponseLinksList;
 }
-const VaultResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<VaultResponse>;
-
 export interface ApplePayAttributes2 {
   vault?: VaultResponse;
 }
-const ApplePayAttributes2 = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ApplePayAttributes2>;
-
 /** Information needed to pay using ApplePay. */
 export interface ApplePay {
   /** ApplePay transaction identifier, this will be the unique identifier for this transaction provided by Apple. The pattern is defined by an external party and supports Unicode. */
@@ -2179,8 +1574,6 @@ export interface ApplePay {
   attributes?: ApplePayAttributes2;
   stored_credential?: CardStoredCredential;
 }
-const ApplePay = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ApplePay>;
-
 export type GooglePayPhoneNumber = AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber;
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type GooglePayCardBillingAddressAddressDetails =
@@ -2196,8 +1589,6 @@ export interface GooglePayCard {
   billing_address?: CardRequestInputBillingAddress;
   authentication_result?: AuthenticationResponse;
 }
-const GooglePayCard = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GooglePayCard>;
-
 /** Google Pay Wallet payment data. */
 export interface GooglePay {
   name?: unknown;
@@ -2205,8 +1596,6 @@ export interface GooglePay {
   phone_number?: AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber;
   card?: GooglePayCard;
 }
-const GooglePay = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GooglePay>;
-
 export type VenmoWalletResponseName = CardCustomerName;
 export type VenmoWalletResponsePhoneNumber = CardCustomerPhonePhoneNumber;
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
@@ -2214,12 +1603,8 @@ export type VenmoWalletResponseAddressAddressDetails = CardRequestInputBillingAd
 export type VenmoWalletResponseAddress = CardRequestInputBillingAddress;
 /** Merchant preference on how the buyer can navigate back to merchant website post approving the transaction on the Venmo App. */
 export type VenmoWalletResponseReturnFlow = "AUTO" | "MANUAL";
-const VenmoWalletResponseReturnFlow = S.String;
-
 /** The vault status. */
 export type VenmoVaultResponseStatus = "VAULTED" | "CREATED" | "APPROVED";
-const VenmoVaultResponseStatus = S.String;
-
 export type VenmoVaultResponseCustomerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type VenmoVaultResponseCustomerPhone = CardVaultResponseCustomerPhone;
 export type VenmoVaultResponseCustomerName = CardCustomerName;
@@ -2234,8 +1619,6 @@ export type VenmoVaultResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const VenmoVaultResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VenmoVaultResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -2276,9 +1659,6 @@ export interface VenmoVaultResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const VenmoVaultResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<VenmoVaultResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VenmoVaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -2319,9 +1699,6 @@ export interface VenmoVaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const VenmoVaultResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<VenmoVaultResponseLinksItemTargetSchema>;
-
 export interface VenmoVaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -2338,18 +1715,8 @@ export interface VenmoVaultResponseLinksItem {
   schema?: VenmoVaultResponseLinksItemSchema;
   targetSchema?: VenmoVaultResponseLinksItemTargetSchema;
 }
-const VenmoVaultResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<VenmoVaultResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. */
 export type VenmoVaultResponseLinksList = Array<VenmoVaultResponseLinksItem>;
-const VenmoVaultResponseLinksList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<VenmoVaultResponseLinksList>;
-
 /** The details about a saved venmo payment source. */
 export interface VenmoVaultResponse {
   /** The PayPal-generated ID for the saved payment source. */
@@ -2360,17 +1727,10 @@ export interface VenmoVaultResponse {
   /** An array of request-related HATEOAS links. */
   links?: VenmoVaultResponseLinksList;
 }
-const VenmoVaultResponse = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<VenmoVaultResponse>;
-
 /** Additional attributes associated with the use of a Venmo Wallet. */
 export interface VenmoWalletAttributesResponse {
   vault?: VenmoVaultResponse;
 }
-const VenmoWalletAttributesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<VenmoWalletAttributesResponse>;
-
 /** Venmo wallet response. */
 export interface VenmoWalletResponse {
   email_address?: unknown;
@@ -2384,16 +1744,12 @@ export interface VenmoWalletResponse {
   return_flow?: VenmoWalletResponseReturnFlow;
   attributes?: VenmoWalletAttributesResponse;
 }
-const VenmoWalletResponse = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<VenmoWalletResponse>;
-
 export type CryptoName = AuthorizeOrderRequestPaymentSourceCryptoName;
 /** The location from which the shipping address is derived. */
 export type CryptoExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const CryptoExperienceContextShippingPreference = S.String;
-
 export interface CryptoExperienceContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
   brand_name?: string;
@@ -2403,19 +1759,12 @@ export interface CryptoExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const CryptoExperienceContext = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CryptoExperienceContext>;
-
 /** Pay With Crypto details response object. */
 export interface Crypto {
   country_code?: unknown;
   name?: AuthorizeOrderRequestPaymentSourceCryptoName;
   experience_context?: CryptoExperienceContext;
 }
-const Crypto = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Crypto>;
-
 export interface AuthorizeOrderResponsePaymentSource {
   card?: CardResponse;
   paypal?: PaypalWalletResponse;
@@ -2433,30 +1782,19 @@ export interface AuthorizeOrderResponsePaymentSource {
   venmo?: VenmoWalletResponse;
   crypto?: Crypto;
 }
-const AuthorizeOrderResponsePaymentSource = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<AuthorizeOrderResponsePaymentSource>;
-
 /** The intent to either capture payment immediately or authorize a payment for an order after order creation. */
 export type CheckoutPaymentIntent = "CAPTURE" | "AUTHORIZE";
-const CheckoutPaymentIntent = S.String;
-
 export type PayerName = CardCustomerName;
 export type PayerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type PayerPhone = CardVaultResponseCustomerPhone;
 /** The customer's tax ID type. */
 export type PayerTaxInfoTaxIdType = "BR_CPF" | "BR_CNPJ";
-const PayerTaxInfoTaxIdType = S.String;
-
 export interface PayerTaxInfo {
   /** The customer's tax ID value. */
   tax_id: string;
   /** The customer's tax ID type. */
   tax_id_type: PayerTaxInfoTaxIdType;
 }
-const PayerTaxInfo = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<PayerTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PayerAddressAddressDetails = CardRequestInputBillingAddressAddressDetails;
 export type PayerAddress = CardRequestInputBillingAddress;
@@ -2470,8 +1808,6 @@ export interface Payer {
   tax_info?: PayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-const Payer = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<Payer>;
-
 export type AmountBreakdownItemTotal =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type AmountBreakdownShipping =
@@ -2496,8 +1832,6 @@ export interface AmountBreakdown {
   shipping_discount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
   discount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const AmountBreakdown = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<AmountBreakdown>;
-
 /** The total order amount with an optional breakdown that provides details, such as the total item amount, total tax amount, shipping, handling, insurance, and discounts, if any.<br/>If you specify `amount.breakdown`, the amount equals `item_total` plus `tax_total` plus `shipping` plus `handling` plus `insurance` minus `shipping_discount` minus discount.<br/>The amount must be a positive number. For listed of supported currencies and decimal precision, see the PayPal REST APIs <a href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>. */
 export interface AmountWithBreakdown {
   currency_code: string;
@@ -2505,8 +1839,6 @@ export interface AmountWithBreakdown {
   value: string;
   breakdown?: AmountBreakdown;
 }
-const AmountWithBreakdown = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<AmountWithBreakdown>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 export type PaymentInstructionPlatformFeesItemAmount =
@@ -2517,18 +1849,8 @@ export interface PaymentInstructionPlatformFeesItem {
   amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
   payee?: PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 }
-const PaymentInstructionPlatformFeesItem = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<PaymentInstructionPlatformFeesItem>;
-
 /** An array of various fees, commissions, tips, or donations. This field is only applicable to merchants that been enabled for PayPal Complete Payments Platform for Marketplaces and Platforms capability. */
 export type PaymentInstructionPlatformFeesList = Array<PaymentInstructionPlatformFeesItem>;
-const PaymentInstructionPlatformFeesList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<PaymentInstructionPlatformFeesList>;
-
 /** Any additional payment instructions to be consider during payment processing. This processing instruction is applicable for Capturing an order or Authorizing an Order. */
 export interface PaymentInstruction {
   /** An array of various fees, commissions, tips, or donations. This field is only applicable to merchants that been enabled for PayPal Complete Payments Platform for Marketplaces and Platforms capability. */
@@ -2539,8 +1861,6 @@ export interface PaymentInstruction {
   /** FX identifier generated returned by PayPal to be used for payment processing in order to honor FX rate (for eligible integrations) to be used when amount is settled/received into the payee account. */
   payee_receivable_fx_rate_id?: string;
 }
-const PaymentInstruction = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<PaymentInstruction>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemItemsItemUnitAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type AuthorizeOrderResponsePurchaseUnitsItemItemsItemTax =
@@ -2550,8 +1870,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemItemsItemCategory =
   | "DIGITAL_GOODS"
   | "PHYSICAL_GOODS"
   | "DONATION";
-const AuthorizeOrderResponsePurchaseUnitsItemItemsItemCategory = S.String;
-
 /** The Universal Product Code type. */
 export type AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpcType =
   | "UPC-A"
@@ -2561,29 +1879,18 @@ export type AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpcType =
   | "UPC-E"
   | "UPC-2"
   | "UPC-5";
-const AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpcType = S.String;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc {
   /** The Universal Product Code type. */
   type: AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpcType;
   /** The UPC product code of the item. */
   code: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc>;
-
 /** The tenure type of the billing cycle identifies if the billing cycle is a trial(free or discounted) or regular billing cycle. */
 export type BillingCycleTenureType = "REGULAR" | "TRIAL";
-const BillingCycleTenureType = S.String;
-
 export type BillingCyclePricingSchemePrice =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 /** The pricing model for the billing cycle. */
 export type BillingCyclePricingSchemePricingModel = "FIXED" | "VARIABLE" | "AUTO_RELOAD";
-const BillingCyclePricingSchemePricingModel = S.String;
-
 export type BillingCyclePricingSchemeReloadThresholdAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export interface BillingCyclePricingScheme {
@@ -2592,11 +1899,6 @@ export interface BillingCyclePricingScheme {
   pricing_model: BillingCyclePricingSchemePricingModel | (string & {});
   reload_threshold_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const BillingCyclePricingScheme = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<BillingCyclePricingScheme>;
-
 /** The billing cycle providing details of the billing frequency, amount, duration and if the billing cycle is a free, discounted or regular billing cycle. The sequence of the billing cycle will be in the following order - free trial billing cycle(s), discounted trial billing cycle(s), regular billing cycle(s). */
 export interface BillingCycle {
   /** The tenure type of the billing cycle identifies if the billing cycle is a trial(free or discounted) or regular billing cycle. */
@@ -2608,15 +1910,8 @@ export interface BillingCycle {
   sequence?: number;
   start_date?: unknown;
 }
-const BillingCycle = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<BillingCycle>;
-
 /** An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle. */
 export type OrderBillingPlanBillingCyclesList = Array<BillingCycle>;
-const OrderBillingPlanBillingCyclesList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<OrderBillingPlanBillingCyclesList>;
-
 export type OrderBillingPlanSetupFee =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 /** Metadata for merchant-managed recurring billing plans. Valid only during the saved payment method token or billing agreement creation. */
@@ -2627,8 +1922,6 @@ export interface OrderBillingPlan {
   /** Name of the recurring plan. */
   name?: string;
 }
-const OrderBillingPlan = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<OrderBillingPlan>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemItemsItem {
   /** The item name or title. */
   name: string;
@@ -2649,19 +1942,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemItemsItem {
   upc?: AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemItemsItem = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemItemsItem>;
-
 /** An array of items that the customer purchases from the merchant. */
 export type AuthorizeOrderResponsePurchaseUnitsItemItemsList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemItemsItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemItemsList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemItemsList>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -2671,8 +1954,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const AuthorizeOrderResponsePurchaseUnitsItemShippingType = S.String;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsItem =
@@ -2680,19 +1961,12 @@ export type AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingAddress = CardRequestInputBillingAddress;
 /** The status of the item shipment. */
 export type TrackerStatus = "CANCELLED" | "SHIPPED";
-const TrackerStatus = S.String;
-
 /** The Universal Product Code type. */
 export type TrackerItemsItemUpcType =
   | "UPC-A"
@@ -2702,16 +1976,12 @@ export type TrackerItemsItemUpcType =
   | "UPC-E"
   | "UPC-2"
   | "UPC-5";
-const TrackerItemsItemUpcType = S.String;
-
 export interface TrackerItemsItemUpc {
   /** The Universal Product Code type. */
   type: TrackerItemsItemUpcType;
   /** The UPC product code of the item. */
   code: string;
 }
-const TrackerItemsItemUpc = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<TrackerItemsItemUpc>;
-
 export interface TrackerItemsItem {
   /** The item name or title. */
   name?: string;
@@ -2725,12 +1995,8 @@ export interface TrackerItemsItem {
   image_url?: string;
   upc?: TrackerItemsItemUpc;
 }
-const TrackerItemsItem = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<TrackerItemsItem>;
-
 /** An array of details of items in the shipment. */
 export type TrackerItemsList = Array<TrackerItemsItem>;
-const TrackerItemsList = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<TrackerItemsList>;
-
 /** The HTTP method required to make the related call. */
 export type TrackerLinksItemMethod =
   | "GET"
@@ -2741,28 +2007,14 @@ export type TrackerLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const TrackerLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type TrackerLinksItemSchemaAllOfList = Array<unknown>;
-const TrackerLinksItemSchemaAllOfList =
-  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaAllOfList>;
-
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type TrackerLinksItemSchemaAnyOfList = Array<unknown>;
-const TrackerLinksItemSchemaAnyOfList =
-  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaAnyOfList>;
-
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type TrackerLinksItemSchemaOneOfList = Array<unknown>;
-const TrackerLinksItemSchemaOneOfList =
-  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaOneOfList>;
-
 /** An array of links. */
 export type TrackerLinksItemSchemaLinksList = Array<unknown>;
-const TrackerLinksItemSchemaLinksList =
-  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaLinksList>;
-
 /** The media type and context-encoding scheme. */
 export type TrackerLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
 export interface TrackerLinksItemSchema {
@@ -2795,11 +2047,6 @@ export interface TrackerLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const TrackerLinksItemSchema = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<TrackerLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type TrackerLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -2840,9 +2087,6 @@ export interface TrackerLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const TrackerLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<TrackerLinksItemTargetSchema>;
-
 export interface TrackerLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -2859,12 +2103,8 @@ export interface TrackerLinksItem {
   schema?: TrackerLinksItemSchema;
   targetSchema?: TrackerLinksItemTargetSchema;
 }
-const TrackerLinksItem = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<TrackerLinksItem>;
-
 /** An array of request-related HATEOAS links. */
 export type TrackerLinksList = Array<TrackerLinksItem>;
-const TrackerLinksList = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<TrackerLinksList>;
-
 /** The tracking response on creation of tracker. */
 export interface Tracker {
   /** The tracker id. */
@@ -2877,15 +2117,8 @@ export interface Tracker {
   create_time?: unknown;
   update_time?: unknown;
 }
-const Tracker = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Tracker>;
-
 /** An array of trackers for a transaction. */
 export type AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-const AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
   email_address?: unknown;
@@ -2898,11 +2131,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemShipping {
   /** An array of trackers for a transaction. */
   trackers?: AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemShipping>;
-
 export type Level2CardProcessingDataTaxTotal =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 /** The level 2 card processing data collections. If your merchant account has been configured for Level 2 processing this field will be passed to the processor on your behalf. Please contact your PayPal Technical Account Manager to define level 2 data for your business. */
@@ -2911,11 +2139,6 @@ export interface Level2CardProcessingData {
   invoice_id?: string;
   tax_total?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const Level2CardProcessingData = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<Level2CardProcessingData>;
-
 export type Level3CardProcessingDataShippingAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type Level3CardProcessingDataDutyAmount =
@@ -2941,9 +2164,6 @@ export interface Level3CardProcessingDataLineItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-const Level3CardProcessingDataLineItemsItemUpc =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<Level3CardProcessingDataLineItemsItemUpc>;
-
 export type Level3CardProcessingDataLineItemsItemUnitAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type Level3CardProcessingDataLineItemsItemTax =
@@ -2976,18 +2196,8 @@ export interface Level3CardProcessingDataLineItemsItem {
   /** Unit of measure is a standard used to express the magnitude of a quantity in international trade. Most commonly used (but not limited to) examples are: Acre (ACR), Ampere (AMP), Centigram (CGM), Centimetre (CMT), Cubic inch (INQ), Cubic metre (MTQ), Fluid ounce (OZA), Foot (FOT), Hour (HUR), Item (ITM), Kilogram (KGM), Kilometre (KMT), Kilowatt (KWT), Liquid gallon (GLL), Liter (LTR), Pounds (LBS), Square foot (FTK). */
   unit_of_measure?: string;
 }
-const Level3CardProcessingDataLineItemsItem = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<Level3CardProcessingDataLineItemsItem>;
-
 /** A list of the items that were purchased with this payment. If your merchant account has been configured for Level 3 processing this field will be passed to the processor on your behalf. */
 export type Level3CardProcessingDataLineItemsList = Array<Level3CardProcessingDataLineItemsItem>;
-const Level3CardProcessingDataLineItemsList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<Level3CardProcessingDataLineItemsList>;
-
 /** The level 3 card processing data collections, If your merchant account has been configured for Level 3 processing this field will be passed to the processor on your behalf. Please contact your PayPal Technical Account Manager to define level 3 data for your business. */
 export interface Level3CardProcessingData {
   shipping_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -2999,43 +2209,21 @@ export interface Level3CardProcessingData {
   /** A list of the items that were purchased with this payment. If your merchant account has been configured for Level 3 processing this field will be passed to the processor on your behalf. */
   line_items?: Level3CardProcessingDataLineItemsList;
 }
-const Level3CardProcessingData = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<Level3CardProcessingData>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard {
   level_2?: Level2CardProcessingData;
   level_3?: Level3CardProcessingData;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard>;
-
 /** Profile information of the sender or receiver. */
 export interface ParticipantMetadata {
   ip_address?: unknown;
 }
-const ParticipantMetadata = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ParticipantMetadata>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataRisk {
   customer?: ParticipantMetadata;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataRisk = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataRisk>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData {
   card?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
   risk?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataRisk;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData>;
-
 /** The status for the authorized payment. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus =
   | "CREATED"
@@ -3044,25 +2232,14 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSta
   | "PARTIALLY_CAPTURED"
   | "VOIDED"
   | "PENDING";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus = S.String;
-
 /** The reason why the authorized status is `PENDING`. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason =
   | "PENDING_REVIEW"
   | "DECLINED_BY_RISK_FRAUD_FILTERS";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason =
-  S.String;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails {
   /** The reason why the authorized status is `PENDING`. */
   reason?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    4,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -3070,9 +2247,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSel
   | "ELIGIBLE"
   | "PARTIALLY_ELIGIBLE"
   | "NOT_ELIGIBLE";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus =
-  S.String;
-
 /** The condition that is covered for the transaction. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem =
   | "ITEM_NOT_RECEIVED"
@@ -3080,21 +2254,12 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSel
 /** An array of conditions that are covered for the transaction. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
   status?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus;
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    5,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
-
 /** The HTTP method required to make the related call. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
   | "GET"
@@ -3105,35 +2270,18 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLin
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    6,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
-
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
-
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
-
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
-
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaMedia =
   CardVaultResponseLinksItemSchemaMedia;
@@ -3167,36 +2315,18 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    7,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
-
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
-
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
-
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
-
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaMedia =
   CardVaultResponseLinksItemSchemaMedia;
@@ -3230,12 +2360,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    0,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -3252,21 +2376,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsIt
   schema?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema;
   targetSchema?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    1,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    2,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode =
   | "A"
@@ -3293,9 +2405,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemPro
   | "2"
   | "3"
   | "4";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode =
-  S.String;
-
 /** The card verification value code for for Visa, Discover, Mastercard, or American Express. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode =
   | "E"
@@ -3312,9 +2421,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemPro
   | "2"
   | "3"
   | "4";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode =
-  S.String;
-
 /** Processor response code for the non-PayPal payment processor errors. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode =
   | "0000"
@@ -3471,9 +2577,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemPro
   | "PPVC"
   | "PPVE"
   | "PPVT";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode =
-  S.String;
-
 /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode =
   | "01"
@@ -3491,9 +2594,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemPro
   | "30"
   | "40"
   | "43";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode =
-  S.String;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse {
   /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
   avs_code?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode;
@@ -3504,12 +2604,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsIt
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    3,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
   status?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus;
@@ -3530,19 +2624,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsIt
   update_time?: unknown;
   processor_response?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-
 /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList>;
-
 /** The status of the captured payment. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "COMPLETED"
@@ -3551,8 +2635,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus = S.String;
-
 /** The reason why the captured payment status is `PENDING` or `DENIED`. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason =
   | "BUYER_COMPLAINT"
@@ -3571,9 +2653,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStat
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus =
@@ -3593,9 +2672,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSell
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPaypalFee =
@@ -3612,12 +2688,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSell
   /** The target currency amount. Equivalent to one unit of the source currency. Formatted as integer or decimal value with one to 15 digits to the right of the decimal point. */
   value?: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    6,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesItemPayee =
@@ -3627,12 +2697,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerRec
 /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    7,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown {
   gross_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
   paypal_fee?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -3643,16 +2707,8 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSell
   /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
   platform_fees?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    0,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
-
 /** The funds that are held on behalf of the merchant. */
 export type DisbursementMode = "INSTANT" | "DELAYED";
-const DisbursementMode = S.String;
-
 /** The HTTP method required to make the related call. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
   | "GET"
@@ -3663,8 +2719,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -3710,9 +2764,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLink
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -3758,9 +2809,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLink
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -3777,19 +2825,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLink
   schema?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema;
   targetSchema?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode =
   | "A"
@@ -3816,9 +2854,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessor
   | "2"
   | "3"
   | "4";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode =
-  S.String;
-
 /** The card verification value code for for Visa, Discover, Mastercard, or American Express. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode =
   | "E"
@@ -3835,9 +2870,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessor
   | "2"
   | "3"
   | "4";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode =
-  S.String;
-
 /** Processor response code for the non-PayPal payment processor errors. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode =
   | "0000"
@@ -3994,9 +3026,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessor
   | "PPVC"
   | "PPVE"
   | "PPVT";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode =
-  S.String;
-
 /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode =
   | "01"
@@ -4014,9 +3043,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessor
   | "30"
   | "40"
   | "43";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode =
-  S.String;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse {
   /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
   avs_code?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode;
@@ -4027,12 +3053,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProc
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    3,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
   status?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus;
@@ -4056,27 +3076,15 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItem = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-
 /** An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesList = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesList>;
-
 /** The status of the refund. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
   | "COMPLETED";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus = S.String;
-
 /** The reason why the refund has the `PENDING` or `FAILED` status. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason =
   "ECHECK";
@@ -4084,9 +3092,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatu
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownGrossAmount =
@@ -4108,9 +3113,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPaya
 /** An array of platform or partner fees, commissions, or brokerage fees for the refund. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemConvertedAmount =
@@ -4122,21 +3124,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSelle
   converted_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
   exchange_rate?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    6,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
-
 /** An array of breakdown values for the net amount. Returned when the currency of the refund is different from the currency of the PayPal account where the payee holds their funds. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    7,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownTotalRefundedAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 /** The breakdown of the refund. */
@@ -4152,12 +3142,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSelle
   net_amount_breakdown?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList;
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    0,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
-
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 /** The HTTP method required to make the related call. */
@@ -4170,8 +3154,6 @@ export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemM
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -4217,9 +3199,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinks
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -4265,9 +3244,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinks
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -4284,19 +3260,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinks
   schema?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema;
   targetSchema?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   /** The status of the refund. */
   status?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus;
@@ -4320,19 +3286,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItem = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-
 /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsList>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItemPayments {
   /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
   authorizations?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList;
@@ -4341,11 +3297,6 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPayments {
   /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
   refunds?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsList;
 }
-const AuthorizeOrderResponsePurchaseUnitsItemPayments = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPayments>;
-
 export interface AuthorizeOrderResponsePurchaseUnitsItem {
   /** The API caller-provided external ID for the purchase unit. Required for multiple purchase units when you must update the order through `PATCH`. If you omit this value and the order contains only one purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote> */
   reference_id?: string;
@@ -4368,19 +3319,9 @@ export interface AuthorizeOrderResponsePurchaseUnitsItem {
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
   payments?: AuthorizeOrderResponsePurchaseUnitsItemPayments;
 }
-const AuthorizeOrderResponsePurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItem>;
-
 /** An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant. */
 export type AuthorizeOrderResponsePurchaseUnitsList =
   Array<AuthorizeOrderResponsePurchaseUnitsItem>;
-const AuthorizeOrderResponsePurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsList>;
-
 /** The HTTP method required to make the related call. */
 export type AuthorizeOrderResponseLinksItemMethod =
   | "GET"
@@ -4391,8 +3332,6 @@ export type AuthorizeOrderResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const AuthorizeOrderResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -4433,9 +3372,6 @@ export interface AuthorizeOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<AuthorizeOrderResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -4477,9 +3413,6 @@ export interface AuthorizeOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const AuthorizeOrderResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchema>;
-
 export interface AuthorizeOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -4496,18 +3429,8 @@ export interface AuthorizeOrderResponseLinksItem {
   schema?: AuthorizeOrderResponseLinksItemSchema;
   targetSchema?: AuthorizeOrderResponseLinksItemTargetSchema;
 }
-const AuthorizeOrderResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<AuthorizeOrderResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
 export type AuthorizeOrderResponseLinksList = Array<AuthorizeOrderResponseLinksItem>;
-const AuthorizeOrderResponseLinksList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<AuthorizeOrderResponseLinksList>;
-
 export interface AuthorizeOrderResponse {
   create_time?: unknown;
   update_time?: unknown;
@@ -4522,11 +3445,6 @@ export interface AuthorizeOrderResponse {
   /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
   links?: AuthorizeOrderResponseLinksList;
 }
-const AuthorizeOrderResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<AuthorizeOrderResponse>;
-
 export type CaptureOrderRequestPaymentSourcePaypalName = CardCustomerName;
 export type CaptureOrderRequestPaymentSourcePaypalPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type CaptureOrderRequestPaymentSourcePaypalPhone = CardCustomerPhone;
@@ -4538,9 +3456,6 @@ export interface CaptureOrderRequestPaymentSourcePaypalTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CaptureOrderRequestPaymentSourcePaypalTaxInfoTaxIdType | (string & {});
 }
-const CaptureOrderRequestPaymentSourcePaypalTaxInfo =
-  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderRequestPaymentSourcePaypalAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -4559,8 +3474,6 @@ export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultUsagePattern =
   | "UNSCHEDULED_POSTPAID"
   | "INSTALLMENT_PREPAID"
   | "INSTALLMENT_POSTPAID";
-const CaptureOrderRequestPaymentSourcePaypalAttributesVaultUsagePattern = S.String;
-
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingName = CardCustomerName;
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -4570,8 +3483,6 @@ export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingType = S.String;
-
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem =
@@ -4579,9 +3490,6 @@ export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptions
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList =
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -4597,23 +3505,14 @@ export interface CaptureOrderRequestPaymentSourcePaypalAttributesVaultShipping {
   options?: CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList;
   address?: CardRequestInputBillingAddress;
 }
-const CaptureOrderRequestPaymentSourcePaypalAttributesVaultShipping = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalAttributesVaultShipping>;
-
 /** The usage type associated with the PayPal payment token. */
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultUsageType =
   | "MERCHANT"
   | "PLATFORM";
-const CaptureOrderRequestPaymentSourcePaypalAttributesVaultUsageType = S.String;
-
 /** The customer type associated with the PayPal payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultCustomerType =
   | "CONSUMER"
   | "BUSINESS";
-const CaptureOrderRequestPaymentSourcePaypalAttributesVaultCustomerType = S.String;
-
 export interface CaptureOrderRequestPaymentSourcePaypalAttributesVault {
   store_in_vault?: StoreInVaultInstruction | (string & {});
   /** The description displayed to PayPal consumer on the approval flow for PayPal, as well as on the PayPal payment token management experience on PayPal.com. */
@@ -4628,20 +3527,10 @@ export interface CaptureOrderRequestPaymentSourcePaypalAttributesVault {
   /** Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same PayPal account. This only applies to PayPal payment source. */
   permit_multiple_payment_tokens?: boolean;
 }
-const CaptureOrderRequestPaymentSourcePaypalAttributesVault = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalAttributesVault>;
-
 export interface CaptureOrderRequestPaymentSourcePaypalAttributes {
   customer?: CardCustomer;
   vault?: CaptureOrderRequestPaymentSourcePaypalAttributesVault;
 }
-const CaptureOrderRequestPaymentSourcePaypalAttributes = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalAttributes>;
-
 export interface CaptureOrderRequestPaymentSourcePaypal {
   vault_id?: unknown;
   email_address?: unknown;
@@ -4655,11 +3544,6 @@ export interface CaptureOrderRequestPaymentSourcePaypal {
   billing_agreement_id?: string;
   stored_credential?: PaypalWalletStoredCredential;
 }
-const CaptureOrderRequestPaymentSourcePaypal = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<CaptureOrderRequestPaymentSourcePaypal>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceBancontactExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4681,9 +3565,6 @@ export interface CaptureOrderRequestPaymentSourceBancontact {
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceBancontactExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceBancontact =
-  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<CaptureOrderRequestPaymentSourceBancontact>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceBlikExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4715,9 +3596,6 @@ export interface CaptureOrderRequestPaymentSourceBlik {
   level_0?: AuthorizeOrderRequestPaymentSourceBlikLevel0;
   one_click?: AuthorizeOrderRequestPaymentSourceBlikOneClick;
 }
-const CaptureOrderRequestPaymentSourceBlik =
-  AuthorizeOrderRequestPaymentSourceBlik as any as S.Schema<CaptureOrderRequestPaymentSourceBlik>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceEpsExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4739,9 +3617,6 @@ export interface CaptureOrderRequestPaymentSourceEps {
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceEpsExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceEps =
-  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<CaptureOrderRequestPaymentSourceEps>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceGiropayExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4763,9 +3638,6 @@ export interface CaptureOrderRequestPaymentSourceGiropay {
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceGiropayExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceGiropay =
-  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<CaptureOrderRequestPaymentSourceGiropay>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceIdealExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4782,20 +3654,12 @@ export interface CaptureOrderRequestPaymentSourceIdealExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const CaptureOrderRequestPaymentSourceIdealExperienceContext =
-  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceIdealExperienceContext>;
-
 export interface CaptureOrderRequestPaymentSourceIdeal {
   name: unknown;
   country_code: unknown;
   bic?: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceIdealExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceIdeal = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<CaptureOrderRequestPaymentSourceIdeal>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceMybankExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4817,9 +3681,6 @@ export interface CaptureOrderRequestPaymentSourceMybank {
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceMybankExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceMybank =
-  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<CaptureOrderRequestPaymentSourceMybank>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceP24ExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4842,9 +3703,6 @@ export interface CaptureOrderRequestPaymentSourceP24 {
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceP24ExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceP24 =
-  AuthorizeOrderRequestPaymentSourceP24 as any as S.Schema<CaptureOrderRequestPaymentSourceP24>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceSofortExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4866,9 +3724,6 @@ export interface CaptureOrderRequestPaymentSourceSofort {
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceSofortExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceSofort =
-  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<CaptureOrderRequestPaymentSourceSofort>;
-
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceTrustlyExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -4891,9 +3746,6 @@ export interface CaptureOrderRequestPaymentSourceTrustly {
   email: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceTrustlyExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceTrustly =
-  AuthorizeOrderRequestPaymentSourceTrustly as any as S.Schema<CaptureOrderRequestPaymentSourceTrustly>;
-
 export type CaptureOrderRequestPaymentSourceApplePayPhoneNumber = CardCustomerPhonePhoneNumber;
 export type CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTransactionAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -4936,15 +3788,10 @@ export interface CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenized
   billing_address?: CardRequestInputBillingAddress;
   attributes?: CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes;
 }
-const CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard =
-  AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard>;
-
 /** Indicates the type of payment data passed, in case of Non China the payment data is 3DSECURE and for China it is EMV. */
 export type CaptureOrderRequestPaymentSourceApplePayDecryptedTokenPaymentDataType =
   | "3DSECURE"
   | "EMV";
-const CaptureOrderRequestPaymentSourceApplePayDecryptedTokenPaymentDataType = S.String;
-
 export type CaptureOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData =
   AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData;
 export interface CaptureOrderRequestPaymentSourceApplePayDecryptedToken {
@@ -4958,11 +3805,6 @@ export interface CaptureOrderRequestPaymentSourceApplePayDecryptedToken {
     | (string & {});
   payment_data?: AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData;
 }
-const CaptureOrderRequestPaymentSourceApplePayDecryptedToken = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedToken>;
-
 export interface CaptureOrderRequestPaymentSourceApplePay {
   /** ApplePay transaction identifier, this will be the unique identifier for this transaction provided by Apple. The pattern is defined by an external party and supports Unicode. */
   id?: string;
@@ -4975,11 +3817,6 @@ export interface CaptureOrderRequestPaymentSourceApplePay {
   attributes?: ApplePayAttributes;
   experience_context?: ApplePayExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceApplePay = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<CaptureOrderRequestPaymentSourceApplePay>;
-
 export type CaptureOrderRequestPaymentSourceGooglePayPhoneNumber =
   AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber;
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
@@ -4991,8 +3828,6 @@ export type CaptureOrderRequestPaymentSourceGooglePayCard =
   AuthorizeOrderRequestPaymentSourceGooglePayCard;
 /** The type of the payment credential. Currently, only CARD is supported. */
 export type CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenPaymentMethod = "CARD";
-const CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenPaymentMethod = S.String;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenCardBillingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -5005,8 +3840,6 @@ export type CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenCard =
 export type CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenAuthenticationMethod =
   | "PAN_ONLY"
   | "CRYPTOGRAM_3DS";
-const CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenAuthenticationMethod = S.String;
-
 export interface CaptureOrderRequestPaymentSourceGooglePayDecryptedToken {
   /** A unique ID that identifies the message in case it needs to be revoked or located at a later time. */
   message_id?: string;
@@ -5027,11 +3860,6 @@ export interface CaptureOrderRequestPaymentSourceGooglePayDecryptedToken {
   /** Electronic Commerce Indicator may not always be present. It is only returned for tokens on the Visa card network. This value is passed through in the payment authorization request. */
   eci_indicator?: string;
 }
-const CaptureOrderRequestPaymentSourceGooglePayDecryptedToken = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<CaptureOrderRequestPaymentSourceGooglePayDecryptedToken>;
-
 export type CaptureOrderRequestPaymentSourceGooglePayAssuranceDetails =
   AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails;
 export interface CaptureOrderRequestPaymentSourceGooglePay {
@@ -5043,11 +3871,6 @@ export interface CaptureOrderRequestPaymentSourceGooglePay {
   assurance_details?: AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails;
   experience_context?: ApplePayExperienceContext;
 }
-const CaptureOrderRequestPaymentSourceGooglePay = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<CaptureOrderRequestPaymentSourceGooglePay>;
-
 /** Expected business/pricing model for the billing agreement. */
 export type CaptureOrderRequestPaymentSourceVenmoAttributesVaultUsagePattern =
   | "IMMEDIATE"
@@ -5085,9 +3908,6 @@ export interface CaptureOrderRequestPaymentSourceVenmo {
   experience_context?: VenmoWalletExperienceContext;
   attributes?: CaptureOrderRequestPaymentSourceVenmoAttributes;
 }
-const CaptureOrderRequestPaymentSourceVenmo =
-  AuthorizeOrderRequestPaymentSourceVenmo as any as S.Schema<CaptureOrderRequestPaymentSourceVenmo>;
-
 export type CaptureOrderRequestPaymentSourceCryptoName =
   AuthorizeOrderRequestPaymentSourceCryptoName;
 export type CaptureOrderRequestPaymentSourceCryptoExperienceContext =
@@ -5111,11 +3931,6 @@ export interface CaptureOrderRequestPaymentSource {
   venmo?: CaptureOrderRequestPaymentSourceVenmo;
   crypto?: AuthorizeOrderRequestPaymentSourceCrypto;
 }
-const CaptureOrderRequestPaymentSource = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<CaptureOrderRequestPaymentSource>;
-
 export interface CaptureOrderRequest {
   /** The ID of the order for which to capture a payment. */
   id: string;
@@ -5129,8 +3944,6 @@ export interface CaptureOrderRequest {
   payPalAuthAssertion?: string;
   payment_source?: CaptureOrderRequestPaymentSource;
 }
-const CaptureOrderRequest = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<CaptureOrderRequest>;
-
 /** The payment source used to fund the payment. */
 export type PaymentSourceResponse = AuthorizeOrderResponsePaymentSource;
 export type CaptureOrderResponsePayerName = CardCustomerName;
@@ -5144,9 +3957,6 @@ export interface CaptureOrderResponsePayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CaptureOrderResponsePayerTaxInfoTaxIdType;
 }
-const CaptureOrderResponsePayerTaxInfo =
-  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CaptureOrderResponsePayerTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderResponsePayerAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -5160,11 +3970,6 @@ export interface CaptureOrderResponsePayer {
   tax_info?: CaptureOrderResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-const CaptureOrderResponsePayer = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<CaptureOrderResponsePayer>;
-
 export type CaptureOrderResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 export type CaptureOrderResponsePurchaseUnitsItemItemsItemUnitAmount =
@@ -5214,9 +4019,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemItemsItem {
 /** An array of items that the customer purchases from the merchant. */
 export type CaptureOrderResponsePurchaseUnitsItemItemsList =
   Array<CaptureOrderResponsePurchaseUnitsItemItemsItem>;
-const CaptureOrderResponsePurchaseUnitsItemItemsList =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemItemsList>;
-
 export type CaptureOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export type CaptureOrderResponsePurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -5226,8 +4028,6 @@ export type CaptureOrderResponsePurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const CaptureOrderResponsePurchaseUnitsItemShippingType = S.String;
-
 export type CaptureOrderResponsePurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CaptureOrderResponsePurchaseUnitsItemShippingOptionsItem =
@@ -5235,18 +4035,12 @@ export type CaptureOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CaptureOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const CaptureOrderResponsePurchaseUnitsItemShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
 export type CaptureOrderResponsePurchaseUnitsItemShippingAddress = CardRequestInputBillingAddress;
 /** An array of trackers for a transaction. */
 export type CaptureOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-const CaptureOrderResponsePurchaseUnitsItemShippingTrackersList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemShippingTrackersList>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
   email_address?: unknown;
@@ -5259,11 +4053,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemShipping {
   /** An array of trackers for a transaction. */
   trackers?: CaptureOrderResponsePurchaseUnitsItemShippingTrackersList;
 }
-const CaptureOrderResponsePurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemShipping>;
-
 export type CaptureOrderResponsePurchaseUnitsItemSupplementaryDataCard =
   AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
 export type CaptureOrderResponsePurchaseUnitsItemSupplementaryDataRisk =
@@ -5278,8 +4067,6 @@ export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatu
   | "PARTIALLY_CAPTURED"
   | "VOIDED"
   | "PENDING";
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus = S.String;
-
 /** The reason why the authorized status is `PENDING`. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason =
   | "PENDING_REVIEW"
@@ -5288,9 +4075,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** The reason why the authorized status is `PENDING`. */
   reason?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
-
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -5311,9 +4095,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
-
 /** The HTTP method required to make the related call. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
   | "GET"
@@ -5324,8 +4105,6 @@ export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinks
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -5371,9 +4150,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -5419,9 +4195,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -5438,21 +4211,9 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   schema?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema;
   targetSchema?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    0,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    1,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode =
   | "A"
@@ -5678,9 +4439,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
   status?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus;
@@ -5701,19 +4459,9 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   update_time?: unknown;
   processor_response?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-
 /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList>;
-
 /** The status of the captured payment. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "COMPLETED"
@@ -5722,8 +4470,6 @@ export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus = S.String;
-
 /** The reason why the captured payment status is `PENDING` or `DENIED`. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason =
   | "BUYER_COMPLAINT"
@@ -5742,9 +4488,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
-
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus =
@@ -5764,9 +4507,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
-
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPaypalFee =
@@ -5798,9 +4538,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
   platform_fees?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
-
 /** The HTTP method required to make the related call. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
   | "GET"
@@ -5811,8 +4548,6 @@ export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMe
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -5858,9 +4593,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -5906,9 +4638,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -5925,19 +4654,9 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   schema?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema;
   targetSchema?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode =
   | "A"
@@ -6163,9 +4882,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProces
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
   status?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus;
@@ -6189,36 +4905,21 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-
 /** An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesList = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesList>;
-
 /** The status of the refund. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
   | "COMPLETED";
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus = S.String;
-
 /** The reason why the refund has the `PENDING` or `FAILED` status. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason = "ECHECK";
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails {
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
-
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownGrossAmount =
@@ -6266,9 +4967,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerP
   net_amount_breakdown?: CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList;
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
-
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 /** The HTTP method required to make the related call. */
@@ -6281,8 +4979,6 @@ export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMet
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -6328,9 +5024,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -6376,9 +5069,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -6395,19 +5085,9 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   schema?: CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema;
   targetSchema?: CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   /** The status of the refund. */
   status?: CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus;
@@ -6431,19 +5111,9 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItem = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-
 /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsList = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsList>;
-
 export interface CaptureOrderResponsePurchaseUnitsItemPayments {
   /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
   authorizations?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList;
@@ -6452,11 +5122,6 @@ export interface CaptureOrderResponsePurchaseUnitsItemPayments {
   /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
   refunds?: CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsList;
 }
-const CaptureOrderResponsePurchaseUnitsItemPayments = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPayments>;
-
 export interface CaptureOrderResponsePurchaseUnitsItem {
   /** The API caller-provided external ID for the purchase unit. Required for multiple purchase units when you must update the order through `PATCH`. If you omit this value and the order contains only one purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote> */
   reference_id?: string;
@@ -6479,18 +5144,8 @@ export interface CaptureOrderResponsePurchaseUnitsItem {
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
   payments?: CaptureOrderResponsePurchaseUnitsItemPayments;
 }
-const CaptureOrderResponsePurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItem>;
-
 /** An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant. */
 export type CaptureOrderResponsePurchaseUnitsList = Array<CaptureOrderResponsePurchaseUnitsItem>;
-const CaptureOrderResponsePurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsList>;
-
 /** The HTTP method required to make the related call. */
 export type CaptureOrderResponseLinksItemMethod =
   | "GET"
@@ -6501,8 +5156,6 @@ export type CaptureOrderResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CaptureOrderResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -6543,9 +5196,6 @@ export interface CaptureOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<CaptureOrderResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -6586,9 +5236,6 @@ export interface CaptureOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CaptureOrderResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<CaptureOrderResponseLinksItemTargetSchema>;
-
 export interface CaptureOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -6605,18 +5252,8 @@ export interface CaptureOrderResponseLinksItem {
   schema?: CaptureOrderResponseLinksItemSchema;
   targetSchema?: CaptureOrderResponseLinksItemTargetSchema;
 }
-const CaptureOrderResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<CaptureOrderResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
 export type CaptureOrderResponseLinksList = Array<CaptureOrderResponseLinksItem>;
-const CaptureOrderResponseLinksList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<CaptureOrderResponseLinksList>;
-
 export interface CaptureOrderResponse {
   create_time?: unknown;
   update_time?: unknown;
@@ -6631,11 +5268,6 @@ export interface CaptureOrderResponse {
   /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
   links?: CaptureOrderResponseLinksList;
 }
-const CaptureOrderResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<CaptureOrderResponse>;
-
 export type PaymentSourceInputPaypalName = CardCustomerName;
 export type PaymentSourceInputPaypalPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type PaymentSourceInputPaypalPhone = CardCustomerPhone;
@@ -6647,9 +5279,6 @@ export interface PaymentSourceInputPaypalTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: PaymentSourceInputPaypalTaxInfoTaxIdType | (string & {});
 }
-const PaymentSourceInputPaypalTaxInfo =
-  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<PaymentSourceInputPaypalTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PaymentSourceInputPaypalAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -6668,8 +5297,6 @@ export type PaymentSourceInputPaypalAttributesVaultUsagePattern =
   | "UNSCHEDULED_POSTPAID"
   | "INSTALLMENT_PREPAID"
   | "INSTALLMENT_POSTPAID";
-const PaymentSourceInputPaypalAttributesVaultUsagePattern = S.String;
-
 export type PaymentSourceInputPaypalAttributesVaultShippingName = CardCustomerName;
 export type PaymentSourceInputPaypalAttributesVaultShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -6679,8 +5306,6 @@ export type PaymentSourceInputPaypalAttributesVaultShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const PaymentSourceInputPaypalAttributesVaultShippingType = S.String;
-
 export type PaymentSourceInputPaypalAttributesVaultShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type PaymentSourceInputPaypalAttributesVaultShippingOptionsItem =
@@ -6688,9 +5313,6 @@ export type PaymentSourceInputPaypalAttributesVaultShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type PaymentSourceInputPaypalAttributesVaultShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const PaymentSourceInputPaypalAttributesVaultShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<PaymentSourceInputPaypalAttributesVaultShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PaymentSourceInputPaypalAttributesVaultShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -6705,19 +5327,10 @@ export interface PaymentSourceInputPaypalAttributesVaultShipping {
   options?: PaymentSourceInputPaypalAttributesVaultShippingOptionsList;
   address?: CardRequestInputBillingAddress;
 }
-const PaymentSourceInputPaypalAttributesVaultShipping = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<PaymentSourceInputPaypalAttributesVaultShipping>;
-
 /** The usage type associated with the PayPal payment token. */
 export type PaymentSourceInputPaypalAttributesVaultUsageType = "MERCHANT" | "PLATFORM";
-const PaymentSourceInputPaypalAttributesVaultUsageType = S.String;
-
 /** The customer type associated with the PayPal payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type PaymentSourceInputPaypalAttributesVaultCustomerType = "CONSUMER" | "BUSINESS";
-const PaymentSourceInputPaypalAttributesVaultCustomerType = S.String;
-
 export interface PaymentSourceInputPaypalAttributesVault {
   store_in_vault?: StoreInVaultInstruction | (string & {});
   /** The description displayed to PayPal consumer on the approval flow for PayPal, as well as on the PayPal payment token management experience on PayPal.com. */
@@ -6732,20 +5345,10 @@ export interface PaymentSourceInputPaypalAttributesVault {
   /** Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same PayPal account. This only applies to PayPal payment source. */
   permit_multiple_payment_tokens?: boolean;
 }
-const PaymentSourceInputPaypalAttributesVault = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<PaymentSourceInputPaypalAttributesVault>;
-
 export interface PaymentSourceInputPaypalAttributes {
   customer?: CardCustomer;
   vault?: PaymentSourceInputPaypalAttributesVault;
 }
-const PaymentSourceInputPaypalAttributes = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<PaymentSourceInputPaypalAttributes>;
-
 export interface PaymentSourceInputPaypal {
   vault_id?: unknown;
   email_address?: unknown;
@@ -6759,11 +5362,6 @@ export interface PaymentSourceInputPaypal {
   billing_agreement_id?: string;
   stored_credential?: PaypalWalletStoredCredential;
 }
-const PaymentSourceInputPaypal = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<PaymentSourceInputPaypal>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputBancontactExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -6785,16 +5383,11 @@ export interface PaymentSourceInputBancontact {
   country_code: unknown;
   experience_context?: PaymentSourceInputBancontactExperienceContext;
 }
-const PaymentSourceInputBancontact =
-  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<PaymentSourceInputBancontact>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputBlikExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const PaymentSourceInputBlikExperienceContextShippingPreference = S.String;
-
 export interface PaymentSourceInputBlikExperienceContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
   brand_name?: string;
@@ -6807,11 +5400,6 @@ export interface PaymentSourceInputBlikExperienceContext {
   /** The payer's User Agent. For example, Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0). */
   consumer_user_agent?: string;
 }
-const PaymentSourceInputBlikExperienceContext = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<PaymentSourceInputBlikExperienceContext>;
-
 export type PaymentSourceInputBlikLevel0 = AuthorizeOrderRequestPaymentSourceBlikLevel0;
 export type PaymentSourceInputBlikOneClick = AuthorizeOrderRequestPaymentSourceBlikOneClick;
 export interface PaymentSourceInputBlik {
@@ -6822,18 +5410,11 @@ export interface PaymentSourceInputBlik {
   level_0?: AuthorizeOrderRequestPaymentSourceBlikLevel0;
   one_click?: AuthorizeOrderRequestPaymentSourceBlikOneClick;
 }
-const PaymentSourceInputBlik = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<PaymentSourceInputBlik>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputEpsExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const PaymentSourceInputEpsExperienceContextShippingPreference = S.String;
-
 export interface PaymentSourceInputEpsExperienceContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. The pattern is defined by an external party and supports Unicode. */
   brand_name?: string;
@@ -6843,21 +5424,11 @@ export interface PaymentSourceInputEpsExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const PaymentSourceInputEpsExperienceContext = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<PaymentSourceInputEpsExperienceContext>;
-
 export interface PaymentSourceInputEps {
   name: unknown;
   country_code: unknown;
   experience_context?: PaymentSourceInputEpsExperienceContext;
 }
-const PaymentSourceInputEps = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<PaymentSourceInputEps>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputGiropayExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -6874,19 +5445,11 @@ export interface PaymentSourceInputGiropayExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const PaymentSourceInputGiropayExperienceContext =
-  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputGiropayExperienceContext>;
-
 export interface PaymentSourceInputGiropay {
   name: unknown;
   country_code: unknown;
   experience_context?: PaymentSourceInputGiropayExperienceContext;
 }
-const PaymentSourceInputGiropay = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<PaymentSourceInputGiropay>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputIdealExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -6901,20 +5464,12 @@ export interface PaymentSourceInputIdealExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const PaymentSourceInputIdealExperienceContext =
-  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputIdealExperienceContext>;
-
 export interface PaymentSourceInputIdeal {
   name: unknown;
   country_code: unknown;
   bic?: unknown;
   experience_context?: PaymentSourceInputIdealExperienceContext;
 }
-const PaymentSourceInputIdeal = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<PaymentSourceInputIdeal>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputMybankExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -6934,8 +5489,6 @@ export interface PaymentSourceInputMybank {
   country_code: unknown;
   experience_context?: PaymentSourceInputMybankExperienceContext;
 }
-const PaymentSourceInputMybank = PaymentSourceInputEps as any as S.Schema<PaymentSourceInputMybank>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputP24ExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -6950,20 +5503,12 @@ export interface PaymentSourceInputP24ExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const PaymentSourceInputP24ExperienceContext =
-  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputP24ExperienceContext>;
-
 export interface PaymentSourceInputP24 {
   name: unknown;
   email: unknown;
   country_code: unknown;
   experience_context?: PaymentSourceInputP24ExperienceContext;
 }
-const PaymentSourceInputP24 = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<PaymentSourceInputP24>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputSofortExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -6983,8 +5528,6 @@ export interface PaymentSourceInputSofort {
   country_code: unknown;
   experience_context?: PaymentSourceInputSofortExperienceContext;
 }
-const PaymentSourceInputSofort = PaymentSourceInputEps as any as S.Schema<PaymentSourceInputSofort>;
-
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputTrustlyExperienceContextShippingPreference =
   | "GET_FROM_FILE"
@@ -7001,20 +5544,12 @@ export interface PaymentSourceInputTrustlyExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-const PaymentSourceInputTrustlyExperienceContext =
-  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputTrustlyExperienceContext>;
-
 export interface PaymentSourceInputTrustly {
   name: unknown;
   country_code: unknown;
   email: unknown;
   experience_context?: PaymentSourceInputTrustlyExperienceContext;
 }
-const PaymentSourceInputTrustly = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<PaymentSourceInputTrustly>;
-
 export type PaymentSourceInputApplePayPhoneNumber = CardCustomerPhonePhoneNumber;
 export type PaymentSourceInputApplePayDecryptedTokenTransactionAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -7031,30 +5566,17 @@ export type PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerif
   | "SCA_WHEN_REQUIRED"
   | "3D_SECURE"
   | "AVS_CVV";
-const PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerificationMethod = S.String;
-
 export interface PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerification {
   /** The method used for card verification. */
   method?:
     | PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerificationMethod
     | (string & {});
 }
-const PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerification =
-  /*@__PURE__*/ __L.at(
-    __c27,
-    6,
-  ) as any as S.Schema<PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerification>;
-
 export interface PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributes {
   customer?: CardCustomer;
   vault?: CardRequestInputAttributesVault;
   verification?: PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerification;
 }
-const PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributes = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributes>;
-
 export interface PaymentSourceInputApplePayDecryptedTokenTokenizedCard {
   id?: unknown;
   /** The card holder's name as it appears on the card. */
@@ -7070,15 +5592,8 @@ export interface PaymentSourceInputApplePayDecryptedTokenTokenizedCard {
   billing_address?: CardRequestInputBillingAddress;
   attributes?: PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributes;
 }
-const PaymentSourceInputApplePayDecryptedTokenTokenizedCard = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<PaymentSourceInputApplePayDecryptedTokenTokenizedCard>;
-
 /** Indicates the type of payment data passed, in case of Non China the payment data is 3DSECURE and for China it is EMV. */
 export type PaymentSourceInputApplePayDecryptedTokenPaymentDataType = "3DSECURE" | "EMV";
-const PaymentSourceInputApplePayDecryptedTokenPaymentDataType = S.String;
-
 export type PaymentSourceInputApplePayDecryptedTokenPaymentData =
   AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData;
 export interface PaymentSourceInputApplePayDecryptedToken {
@@ -7090,11 +5605,6 @@ export interface PaymentSourceInputApplePayDecryptedToken {
   payment_data_type?: PaymentSourceInputApplePayDecryptedTokenPaymentDataType | (string & {});
   payment_data?: AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData;
 }
-const PaymentSourceInputApplePayDecryptedToken = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<PaymentSourceInputApplePayDecryptedToken>;
-
 export interface PaymentSourceInputApplePay {
   /** ApplePay transaction identifier, this will be the unique identifier for this transaction provided by Apple. The pattern is defined by an external party and supports Unicode. */
   id?: string;
@@ -7107,11 +5617,6 @@ export interface PaymentSourceInputApplePay {
   attributes?: ApplePayAttributes;
   experience_context?: ApplePayExperienceContext;
 }
-const PaymentSourceInputApplePay = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<PaymentSourceInputApplePay>;
-
 export type PaymentSourceInputGooglePayPhoneNumber =
   AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber;
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
@@ -7121,8 +5626,6 @@ export type PaymentSourceInputGooglePayCardBillingAddress = CardRequestInputBill
 export type PaymentSourceInputGooglePayCard = AuthorizeOrderRequestPaymentSourceGooglePayCard;
 /** The type of the payment credential. Currently, only CARD is supported. */
 export type PaymentSourceInputGooglePayDecryptedTokenPaymentMethod = "CARD";
-const PaymentSourceInputGooglePayDecryptedTokenPaymentMethod = S.String;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PaymentSourceInputGooglePayDecryptedTokenCardBillingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -7135,8 +5638,6 @@ export type PaymentSourceInputGooglePayDecryptedTokenCard =
 export type PaymentSourceInputGooglePayDecryptedTokenAuthenticationMethod =
   | "PAN_ONLY"
   | "CRYPTOGRAM_3DS";
-const PaymentSourceInputGooglePayDecryptedTokenAuthenticationMethod = S.String;
-
 export interface PaymentSourceInputGooglePayDecryptedToken {
   /** A unique ID that identifies the message in case it needs to be revoked or located at a later time. */
   message_id?: string;
@@ -7155,11 +5656,6 @@ export interface PaymentSourceInputGooglePayDecryptedToken {
   /** Electronic Commerce Indicator may not always be present. It is only returned for tokens on the Visa card network. This value is passed through in the payment authorization request. */
   eci_indicator?: string;
 }
-const PaymentSourceInputGooglePayDecryptedToken = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<PaymentSourceInputGooglePayDecryptedToken>;
-
 export type PaymentSourceInputGooglePayAssuranceDetails =
   AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails;
 export interface PaymentSourceInputGooglePay {
@@ -7171,11 +5667,6 @@ export interface PaymentSourceInputGooglePay {
   assurance_details?: AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails;
   experience_context?: ApplePayExperienceContext;
 }
-const PaymentSourceInputGooglePay = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<PaymentSourceInputGooglePay>;
-
 /** Expected business/pricing model for the billing agreement. */
 export type PaymentSourceInputVenmoAttributesVaultUsagePattern =
   | "IMMEDIATE"
@@ -7205,20 +5696,12 @@ export interface PaymentSourceInputVenmoAttributes {
   customer?: Customer;
   vault?: PaymentSourceInputVenmoAttributesVault;
 }
-const PaymentSourceInputVenmoAttributes =
-  AuthorizeOrderRequestPaymentSourceVenmoAttributes as any as S.Schema<PaymentSourceInputVenmoAttributes>;
-
 export interface PaymentSourceInputVenmo {
   vault_id?: unknown;
   email_address?: unknown;
   experience_context?: VenmoWalletExperienceContext;
   attributes?: PaymentSourceInputVenmoAttributes;
 }
-const PaymentSourceInputVenmo = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<PaymentSourceInputVenmo>;
-
 export type PaymentSourceInputCryptoName = AuthorizeOrderRequestPaymentSourceCryptoName;
 export type PaymentSourceInputCryptoExperienceContext =
   AuthorizeOrderRequestPaymentSourceCryptoExperienceContext;
@@ -7242,8 +5725,6 @@ export interface PaymentSourceInput {
   venmo?: PaymentSourceInputVenmo;
   crypto?: AuthorizeOrderRequestPaymentSourceCrypto;
 }
-const PaymentSourceInput = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<PaymentSourceInput>;
-
 /** Provides additional details to process a payment using a `payment_source` that has been stored or is intended to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`.</li><li>Only one of the parameters - `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in the request.</li></ul> */
 export type StoredPaymentSource = CardStoredCredential;
 /** Customizes the payer confirmation experience. */
@@ -7257,11 +5738,6 @@ export interface OrderConfirmApplicationContext {
   cancel_url?: string;
   stored_payment_source?: CardStoredCredential;
 }
-const OrderConfirmApplicationContext = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<OrderConfirmApplicationContext>;
-
 export interface ConfirmOrderRequest {
   /** The ID of the order for which the payer confirms their intent to pay. */
   id: string;
@@ -7274,8 +5750,6 @@ export interface ConfirmOrderRequest {
   payment_source: PaymentSourceInput;
   application_context?: OrderConfirmApplicationContext;
 }
-const ConfirmOrderRequest = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<ConfirmOrderRequest>;
-
 export type ConfirmOrderResponsePayerName = CardCustomerName;
 export type ConfirmOrderResponsePayerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type ConfirmOrderResponsePayerPhone = CardVaultResponseCustomerPhone;
@@ -7300,9 +5774,6 @@ export interface ConfirmOrderResponsePayer {
   tax_info?: ConfirmOrderResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-const ConfirmOrderResponsePayer =
-  CaptureOrderResponsePayer as any as S.Schema<ConfirmOrderResponsePayer>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 export type ConfirmOrderResponsePurchaseUnitsItemItemsItemUnitAmount =
@@ -7352,9 +5823,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemItemsItem {
 /** An array of items that the customer purchases from the merchant. */
 export type ConfirmOrderResponsePurchaseUnitsItemItemsList =
   Array<ConfirmOrderResponsePurchaseUnitsItemItemsItem>;
-const ConfirmOrderResponsePurchaseUnitsItemItemsList =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemItemsList>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export type ConfirmOrderResponsePurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -7364,8 +5832,6 @@ export type ConfirmOrderResponsePurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const ConfirmOrderResponsePurchaseUnitsItemShippingType = S.String;
-
 export type ConfirmOrderResponsePurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type ConfirmOrderResponsePurchaseUnitsItemShippingOptionsItem =
@@ -7373,18 +5839,12 @@ export type ConfirmOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ConfirmOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
 export type ConfirmOrderResponsePurchaseUnitsItemShippingAddress = CardRequestInputBillingAddress;
 /** An array of trackers for a transaction. */
 export type ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-const ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
   email_address?: unknown;
@@ -7397,11 +5857,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemShipping {
   /** An array of trackers for a transaction. */
   trackers?: ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList;
 }
-const ConfirmOrderResponsePurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemShipping>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemSupplementaryDataCard =
   AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
 export type ConfirmOrderResponsePurchaseUnitsItemSupplementaryDataRisk =
@@ -7416,8 +5871,6 @@ export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatu
   | "PARTIALLY_CAPTURED"
   | "VOIDED"
   | "PENDING";
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus = S.String;
-
 /** The reason why the authorized status is `PENDING`. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason =
   | "PENDING_REVIEW"
@@ -7426,9 +5879,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** The reason why the authorized status is `PENDING`. */
   reason?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -7449,9 +5899,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
-
 /** The HTTP method required to make the related call. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
   | "GET"
@@ -7462,8 +5909,6 @@ export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinks
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -7509,9 +5954,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -7557,9 +5999,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -7576,21 +6015,9 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   schema?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema;
   targetSchema?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    2,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    3,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode =
   | "A"
@@ -7816,9 +6243,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
   status?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus;
@@ -7839,19 +6263,9 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   update_time?: unknown;
   processor_response?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-
 /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList>;
-
 /** The status of the captured payment. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "COMPLETED"
@@ -7860,8 +6274,6 @@ export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus = S.String;
-
 /** The reason why the captured payment status is `PENDING` or `DENIED`. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason =
   | "BUYER_COMPLAINT"
@@ -7880,9 +6292,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus =
@@ -7902,9 +6311,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPaypalFee =
@@ -7936,9 +6342,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
   platform_fees?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
-
 /** The HTTP method required to make the related call. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
   | "GET"
@@ -7949,8 +6352,6 @@ export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMe
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -7996,9 +6397,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -8044,9 +6442,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -8063,19 +6458,9 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   schema?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema;
   targetSchema?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode =
   | "A"
@@ -8301,9 +6686,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProces
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
   status?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus;
@@ -8327,36 +6709,21 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-
 /** An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesList = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesList>;
-
 /** The status of the refund. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
   | "COMPLETED";
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus = S.String;
-
 /** The reason why the refund has the `PENDING` or `FAILED` status. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason = "ECHECK";
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails {
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownGrossAmount =
@@ -8404,9 +6771,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerP
   net_amount_breakdown?: ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList;
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
-
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 /** The HTTP method required to make the related call. */
@@ -8419,8 +6783,6 @@ export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMet
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -8466,9 +6828,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -8514,9 +6873,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -8533,19 +6889,9 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   schema?: ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema;
   targetSchema?: ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   /** The status of the refund. */
   status?: ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus;
@@ -8569,19 +6915,9 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItem = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-
 /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsList = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsList>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItemPayments {
   /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
   authorizations?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList;
@@ -8590,11 +6926,6 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPayments {
   /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
   refunds?: ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsList;
 }
-const ConfirmOrderResponsePurchaseUnitsItemPayments = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPayments>;
-
 export interface ConfirmOrderResponsePurchaseUnitsItem {
   /** The API caller-provided external ID for the purchase unit. Required for multiple purchase units when you must update the order through `PATCH`. If you omit this value and the order contains only one purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote> */
   reference_id?: string;
@@ -8617,18 +6948,8 @@ export interface ConfirmOrderResponsePurchaseUnitsItem {
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
   payments?: ConfirmOrderResponsePurchaseUnitsItemPayments;
 }
-const ConfirmOrderResponsePurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItem>;
-
 /** An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant. */
 export type ConfirmOrderResponsePurchaseUnitsList = Array<ConfirmOrderResponsePurchaseUnitsItem>;
-const ConfirmOrderResponsePurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsList>;
-
 /** The HTTP method required to make the related call. */
 export type ConfirmOrderResponseLinksItemMethod =
   | "GET"
@@ -8639,8 +6960,6 @@ export type ConfirmOrderResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const ConfirmOrderResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -8681,9 +7000,6 @@ export interface ConfirmOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<ConfirmOrderResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -8724,9 +7040,6 @@ export interface ConfirmOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const ConfirmOrderResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchema>;
-
 export interface ConfirmOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -8743,18 +7056,8 @@ export interface ConfirmOrderResponseLinksItem {
   schema?: ConfirmOrderResponseLinksItemSchema;
   targetSchema?: ConfirmOrderResponseLinksItemTargetSchema;
 }
-const ConfirmOrderResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ConfirmOrderResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
 export type ConfirmOrderResponseLinksList = Array<ConfirmOrderResponseLinksItem>;
-const ConfirmOrderResponseLinksList = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ConfirmOrderResponseLinksList>;
-
 export interface ConfirmOrderResponse {
   create_time?: unknown;
   update_time?: unknown;
@@ -8769,11 +7072,6 @@ export interface ConfirmOrderResponse {
   /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
   links?: ConfirmOrderResponseLinksList;
 }
-const ConfirmOrderResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ConfirmOrderResponse>;
-
 export type CreateOrderRequestPayerName = CardCustomerName;
 export type CreateOrderRequestPayerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type CreateOrderRequestPayerPhone = CardCustomerPhone;
@@ -8785,9 +7083,6 @@ export interface CreateOrderRequestPayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CreateOrderRequestPayerTaxInfoTaxIdType | (string & {});
 }
-const CreateOrderRequestPayerTaxInfo =
-  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CreateOrderRequestPayerTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderRequestPayerAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -8801,11 +7096,6 @@ export interface CreateOrderRequestPayer {
   tax_info?: CreateOrderRequestPayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-const CreateOrderRequestPayer = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<CreateOrderRequestPayer>;
-
 export type CreateOrderRequestPurchaseUnitsItemAmount = AmountWithBreakdown;
 export type CreateOrderRequestPurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -8856,9 +7146,6 @@ export interface CreateOrderRequestPurchaseUnitsItemItemsItem {
 /** An array of items that the customer purchases from the merchant. */
 export type CreateOrderRequestPurchaseUnitsItemItemsList =
   Array<CreateOrderRequestPurchaseUnitsItemItemsItem>;
-const CreateOrderRequestPurchaseUnitsItemItemsList =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CreateOrderRequestPurchaseUnitsItemItemsList>;
-
 export type CreateOrderRequestPurchaseUnitsItemShippingName = CardCustomerName;
 export type CreateOrderRequestPurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -8868,8 +7155,6 @@ export type CreateOrderRequestPurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const CreateOrderRequestPurchaseUnitsItemShippingType = S.String;
-
 export type CreateOrderRequestPurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrderRequestPurchaseUnitsItemShippingOptionsItem =
@@ -8877,9 +7162,6 @@ export type CreateOrderRequestPurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CreateOrderRequestPurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const CreateOrderRequestPurchaseUnitsItemShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CreateOrderRequestPurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderRequestPurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -8894,11 +7176,6 @@ export interface CreateOrderRequestPurchaseUnitsItemShipping {
   options?: CreateOrderRequestPurchaseUnitsItemShippingOptionsList;
   address?: CardRequestInputBillingAddress;
 }
-const CreateOrderRequestPurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<CreateOrderRequestPurchaseUnitsItemShipping>;
-
 export type CreateOrderRequestPurchaseUnitsItemSupplementaryDataCard =
   AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
 export type CreateOrderRequestPurchaseUnitsItemSupplementaryDataRisk =
@@ -8924,45 +7201,25 @@ export interface CreateOrderRequestPurchaseUnitsItem {
   shipping?: CreateOrderRequestPurchaseUnitsItemShipping;
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
 }
-const CreateOrderRequestPurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<CreateOrderRequestPurchaseUnitsItem>;
-
 /** An array of purchase units. Each purchase unit establishes a contract between a payer and the payee. Each purchase unit represents either a full or partial order that the payer intends to purchase from the payee. */
 export type CreateOrderRequestPurchaseUnitsList = Array<CreateOrderRequestPurchaseUnitsItem>;
-const CreateOrderRequestPurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<CreateOrderRequestPurchaseUnitsList>;
-
 /** DEPRECATED. DEPRECATED. The type of landing page to show on the PayPal site for customer checkout. The fields in `application_context` are now available in the `experience_context` object under the `payment_source` which supports them (eg. `payment_source.paypal.experience_context.landing_page`). Please specify this field in the `experience_context` object instead of the `application_context` object. <b>DEPRECATED</b><br><table><tr><th>See</th><th>Since Version</th></tr><tr><td>payment_source.paypal.experience_context.landing_page</td><td>2.9</td></tr></table> */
 export type CreateOrderRequestApplicationContextLandingPage = "LOGIN" | "BILLING" | "NO_PREFERENCE";
-const CreateOrderRequestApplicationContextLandingPage = S.String;
-
 /** DEPRECATED. DEPRECATED. The shipping preference:<ul><li>Displays the shipping address to the customer.</li><li>Enables the customer to choose an address on the PayPal site.</li><li>Restricts the customer from changing the address during the payment-approval process.</li></ul>. The fields in `application_context` are now available in the `experience_context` object under the `payment_source` which supports them (eg. `payment_source.paypal.experience_context.shipping_preference`). Please specify this field in the `experience_context` object instead of the `application_context` object. <b>DEPRECATED</b><br><table><tr><th>See</th><th>Since Version</th></tr><tr><td>payment_source.paypal.experience_context.shipping_preference</td><td>2.9</td></tr></table> */
 export type CreateOrderRequestApplicationContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const CreateOrderRequestApplicationContextShippingPreference = S.String;
-
 /** DEPRECATED. Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow. The fields in `application_context` are now available in the `experience_context` object under the `payment_source` which supports them (eg. `payment_source.paypal.experience_context.user_action`). Please specify this field in the `experience_context` object instead of the `application_context` object. */
 export type CreateOrderRequestApplicationContextUserAction = "CONTINUE" | "PAY_NOW";
-const CreateOrderRequestApplicationContextUserAction = S.String;
-
 /** The merchant-preferred payment methods. */
 export type PayeePaymentMethodPreference = "UNRESTRICTED" | "IMMEDIATE_PAYMENT_REQUIRED";
-const PayeePaymentMethodPreference = S.String;
-
 /** NACHA (the regulatory body governing the ACH network) requires that API callers (merchants, partners) obtain the consumer's explicit authorization before initiating a transaction. To stay compliant, you'll need to make sure that you retain a compliant authorization for each transaction that you originate to the ACH Network using this API. ACH transactions are categorized (using SEC codes) by how you capture authorization from the Receiver (the person whose bank account is being debited or credited). PayPal supports the following SEC codes. */
 export type CreateOrderRequestApplicationContextPaymentMethodStandardEntryClassCode =
   | "TEL"
   | "WEB"
   | "CCD"
   | "PPD";
-const CreateOrderRequestApplicationContextPaymentMethodStandardEntryClassCode = S.String;
-
 export interface CreateOrderRequestApplicationContextPaymentMethod {
   payee_preferred?: PayeePaymentMethodPreference | (string & {});
   /** NACHA (the regulatory body governing the ACH network) requires that API callers (merchants, partners) obtain the consumer's explicit authorization before initiating a transaction. To stay compliant, you'll need to make sure that you retain a compliant authorization for each transaction that you originate to the ACH Network using this API. ACH transactions are categorized (using SEC codes) by how you capture authorization from the Receiver (the person whose bank account is being debited or credited). PayPal supports the following SEC codes. */
@@ -8970,11 +7227,6 @@ export interface CreateOrderRequestApplicationContextPaymentMethod {
     | CreateOrderRequestApplicationContextPaymentMethodStandardEntryClassCode
     | (string & {});
 }
-const CreateOrderRequestApplicationContextPaymentMethod = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<CreateOrderRequestApplicationContextPaymentMethod>;
-
 export type CreateOrderRequestApplicationContextStoredPaymentSource = CardStoredCredential;
 export interface CreateOrderRequestApplicationContext {
   /** DEPRECATED. The label that overrides the business name in the PayPal account on the PayPal site. The fields in `application_context` are now available in the `experience_context` object under the `payment_source` which supports them (eg. `payment_source.paypal.experience_context.brand_name`). Please specify this field in the `experience_context` object instead of the `application_context` object. */
@@ -8993,11 +7245,6 @@ export interface CreateOrderRequestApplicationContext {
   cancel_url?: string;
   stored_payment_source?: CardStoredCredential;
 }
-const CreateOrderRequestApplicationContext = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<CreateOrderRequestApplicationContext>;
-
 export interface CreateOrderRequest {
   /** The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager. It is mandatory for all single-step create order calls (E.g. Create Order Request with payment source information like Card, PayPal.vault_id, PayPal.billing_agreement_id, etc). */
   payPalRequestId?: string;
@@ -9016,8 +7263,6 @@ export interface CreateOrderRequest {
   payment_source?: PaymentSourceInput;
   application_context?: CreateOrderRequestApplicationContext;
 }
-const CreateOrderRequest = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<CreateOrderRequest>;
-
 export type CreateOrderResponsePayerName = CardCustomerName;
 export type CreateOrderResponsePayerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type CreateOrderResponsePayerPhone = CardVaultResponseCustomerPhone;
@@ -9029,9 +7274,6 @@ export interface CreateOrderResponsePayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CreateOrderResponsePayerTaxInfoTaxIdType;
 }
-const CreateOrderResponsePayerTaxInfo =
-  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CreateOrderResponsePayerTaxInfo>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderResponsePayerAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -9045,11 +7287,6 @@ export interface CreateOrderResponsePayer {
   tax_info?: CreateOrderResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-const CreateOrderResponsePayer = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<CreateOrderResponsePayer>;
-
 export type CreateOrderResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 export type CreateOrderResponsePurchaseUnitsItemItemsItemUnitAmount =
@@ -9099,9 +7336,6 @@ export interface CreateOrderResponsePurchaseUnitsItemItemsItem {
 /** An array of items that the customer purchases from the merchant. */
 export type CreateOrderResponsePurchaseUnitsItemItemsList =
   Array<CreateOrderResponsePurchaseUnitsItemItemsItem>;
-const CreateOrderResponsePurchaseUnitsItemItemsList =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemItemsList>;
-
 export type CreateOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export type CreateOrderResponsePurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -9111,8 +7345,6 @@ export type CreateOrderResponsePurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const CreateOrderResponsePurchaseUnitsItemShippingType = S.String;
-
 export type CreateOrderResponsePurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrderResponsePurchaseUnitsItemShippingOptionsItem =
@@ -9120,18 +7352,12 @@ export type CreateOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CreateOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const CreateOrderResponsePurchaseUnitsItemShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
 export type CreateOrderResponsePurchaseUnitsItemShippingAddress = CardRequestInputBillingAddress;
 /** An array of trackers for a transaction. */
 export type CreateOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-const CreateOrderResponsePurchaseUnitsItemShippingTrackersList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemShippingTrackersList>;
-
 export interface CreateOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
   email_address?: unknown;
@@ -9144,11 +7370,6 @@ export interface CreateOrderResponsePurchaseUnitsItemShipping {
   /** An array of trackers for a transaction. */
   trackers?: CreateOrderResponsePurchaseUnitsItemShippingTrackersList;
 }
-const CreateOrderResponsePurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemShipping>;
-
 export type CreateOrderResponsePurchaseUnitsItemSupplementaryDataCard =
   AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
 export type CreateOrderResponsePurchaseUnitsItemSupplementaryDataRisk =
@@ -9163,8 +7384,6 @@ export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus
   | "PARTIALLY_CAPTURED"
   | "VOIDED"
   | "PENDING";
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus = S.String;
-
 /** The reason why the authorized status is `PENDING`. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason =
   | "PENDING_REVIEW"
@@ -9173,9 +7392,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemS
   /** The reason why the authorized status is `PENDING`. */
   reason?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
-
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -9196,9 +7412,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemS
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
-
 /** The HTTP method required to make the related call. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
   | "GET"
@@ -9209,8 +7422,6 @@ export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksI
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -9256,9 +7467,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemL
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -9304,9 +7512,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemL
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -9323,21 +7528,9 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemL
   schema?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema;
   targetSchema?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem =
-  /*@__PURE__*/ __L.at(
-    __c32,
-    5,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
-  /*@__PURE__*/ __L.at(
-    __c32,
-    6,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode =
   | "A"
@@ -9563,9 +7756,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemP
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
   status?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus;
@@ -9586,19 +7776,9 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem 
   update_time?: unknown;
   processor_response?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-
 /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList>;
-
 /** The status of the captured payment. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "COMPLETED"
@@ -9607,8 +7787,6 @@ export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus = S.String;
-
 /** The reason why the captured payment status is `PENDING` or `DENIED`. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason =
   | "BUYER_COMPLAINT"
@@ -9627,9 +7805,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusD
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
-
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus =
@@ -9649,9 +7824,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerP
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
-
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPaypalFee =
@@ -9673,9 +7845,6 @@ export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceiv
 /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown {
   gross_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
   paypal_fee?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -9686,12 +7855,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerR
   /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
   platform_fees?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  /*@__PURE__*/ __L.at(
-    __c33,
-    1,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
-
 /** The HTTP method required to make the related call. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
   | "GET"
@@ -9702,8 +7865,6 @@ export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMet
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -9749,9 +7910,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -9797,9 +7955,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksIt
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -9816,19 +7971,9 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksIt
   schema?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema;
   targetSchema?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode =
   | "A"
@@ -10054,9 +8199,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcess
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
   status?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus;
@@ -10080,36 +8222,21 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-
 /** An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesList = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesList>;
-
 /** The status of the refund. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
   | "COMPLETED";
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus = S.String;
-
 /** The reason why the refund has the `PENDING` or `FAILED` status. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason = "ECHECK";
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails {
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
-
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownGrossAmount =
@@ -10157,9 +8284,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPa
   net_amount_breakdown?: CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList;
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
-
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 /** The HTTP method required to make the related call. */
@@ -10172,8 +8296,6 @@ export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMeth
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -10219,9 +8341,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIte
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -10267,9 +8386,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIte
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -10286,19 +8402,9 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIte
   schema?: CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema;
   targetSchema?: CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   /** The status of the refund. */
   status?: CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus;
@@ -10322,19 +8428,9 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItem = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-
 /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsList = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsList>;
-
 export interface CreateOrderResponsePurchaseUnitsItemPayments {
   /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
   authorizations?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList;
@@ -10343,11 +8439,6 @@ export interface CreateOrderResponsePurchaseUnitsItemPayments {
   /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
   refunds?: CreateOrderResponsePurchaseUnitsItemPaymentsRefundsList;
 }
-const CreateOrderResponsePurchaseUnitsItemPayments = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPayments>;
-
 export interface CreateOrderResponsePurchaseUnitsItem {
   /** The API caller-provided external ID for the purchase unit. Required for multiple purchase units when you must update the order through `PATCH`. If you omit this value and the order contains only one purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote> */
   reference_id?: string;
@@ -10370,18 +8461,8 @@ export interface CreateOrderResponsePurchaseUnitsItem {
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
   payments?: CreateOrderResponsePurchaseUnitsItemPayments;
 }
-const CreateOrderResponsePurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItem>;
-
 /** An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant. */
 export type CreateOrderResponsePurchaseUnitsList = Array<CreateOrderResponsePurchaseUnitsItem>;
-const CreateOrderResponsePurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsList>;
-
 /** The HTTP method required to make the related call. */
 export type CreateOrderResponseLinksItemMethod =
   | "GET"
@@ -10392,8 +8473,6 @@ export type CreateOrderResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrderResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -10434,9 +8513,6 @@ export interface CreateOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrderResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -10477,9 +8553,6 @@ export interface CreateOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrderResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrderResponseLinksItemTargetSchema>;
-
 export interface CreateOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -10496,18 +8569,8 @@ export interface CreateOrderResponseLinksItem {
   schema?: CreateOrderResponseLinksItemSchema;
   targetSchema?: CreateOrderResponseLinksItemTargetSchema;
 }
-const CreateOrderResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<CreateOrderResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
 export type CreateOrderResponseLinksList = Array<CreateOrderResponseLinksItem>;
-const CreateOrderResponseLinksList = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<CreateOrderResponseLinksList>;
-
 export interface CreateOrderResponse {
   create_time?: unknown;
   update_time?: unknown;
@@ -10522,8 +8585,6 @@ export interface CreateOrderResponse {
   /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
   links?: CreateOrderResponseLinksList;
 }
-const CreateOrderResponse = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<CreateOrderResponse>;
-
 /** The carrier for the shipment. Some carriers have a global version as well as local subsidiaries. The subsidiaries are repeated over many countries and might also have an entry in the global list. Choose the carrier for your country. If the carrier is not available for your country, choose the global version of the carrier. If your carrier name is not in the list, set `carrier` to `OTHER` and set carrier name in `carrier_name_other`. For allowed values, see <a href="/docs/tracking/reference/carriers/">Carriers</a>. */
 export type ShipmentCarrier =
   | "DPD_RU"
@@ -11939,8 +10000,6 @@ export type ShipmentCarrier =
   | "SFYDEXPRESS"
   | "TOPTRANS"
   | "OTHER";
-const ShipmentCarrier = S.String;
-
 /** The Universal Product Code type. */
 export type CreateOrdersTrackRequestItemsItemUpcType =
   | "UPC-A"
@@ -11956,9 +10015,6 @@ export interface CreateOrdersTrackRequestItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-const CreateOrdersTrackRequestItemsItemUpc =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<CreateOrdersTrackRequestItemsItemUpc>;
-
 export interface CreateOrdersTrackRequestItemsItem {
   /** The item name or title. */
   name?: string;
@@ -11972,18 +10028,8 @@ export interface CreateOrdersTrackRequestItemsItem {
   image_url?: string;
   upc?: CreateOrdersTrackRequestItemsItemUpc;
 }
-const CreateOrdersTrackRequestItemsItem = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<CreateOrdersTrackRequestItemsItem>;
-
 /** An array of details of items in the shipment. */
 export type CreateOrdersTrackRequestItemsList = Array<CreateOrdersTrackRequestItemsItem>;
-const CreateOrdersTrackRequestItemsList = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<CreateOrdersTrackRequestItemsList>;
-
 export interface CreateOrdersTrackRequest {
   /** The ID of the order that the tracking information is associated with. */
   id: string;
@@ -12001,11 +10047,6 @@ export interface CreateOrdersTrackRequest {
   /** An array of details of items in the shipment. */
   items?: CreateOrdersTrackRequestItemsList;
 }
-const CreateOrdersTrackRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<CreateOrdersTrackRequest>;
-
 export type CreateOrdersTrackResponsePayerName = CardCustomerName;
 export type CreateOrdersTrackResponsePayerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type CreateOrdersTrackResponsePayerPhone = CardVaultResponseCustomerPhone;
@@ -12030,9 +10071,6 @@ export interface CreateOrdersTrackResponsePayer {
   tax_info?: CreateOrdersTrackResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-const CreateOrdersTrackResponsePayer =
-  CaptureOrderResponsePayer as any as S.Schema<CreateOrdersTrackResponsePayer>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 export type CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUnitAmount =
@@ -12082,9 +10120,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemItemsItem {
 /** An array of items that the customer purchases from the merchant. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemItemsList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemItemsItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemItemsList =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemItemsList>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -12094,8 +10129,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const CreateOrdersTrackResponsePurchaseUnitsItemShippingType = S.String;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsItem =
@@ -12103,9 +10136,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -12113,9 +10143,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemShippingAddress =
   CardRequestInputBillingAddress;
 /** An array of trackers for a transaction. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-const CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
   email_address?: unknown;
@@ -12128,11 +10155,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemShipping {
   /** An array of trackers for a transaction. */
   trackers?: CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemShipping>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemSupplementaryDataCard =
   AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
 export type CreateOrdersTrackResponsePurchaseUnitsItemSupplementaryDataRisk =
@@ -12147,8 +10169,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   | "PARTIALLY_CAPTURED"
   | "VOIDED"
   | "PENDING";
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus = S.String;
-
 /** The reason why the authorized status is `PENDING`. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason =
   | "PENDING_REVIEW"
@@ -12157,9 +10177,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   /** The reason why the authorized status is `PENDING`. */
   reason?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -12167,9 +10184,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   | "ELIGIBLE"
   | "PARTIALLY_ELIGIBLE"
   | "NOT_ELIGIBLE";
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus =
-  S.String;
-
 /** The condition that is covered for the transaction. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem =
   | "ITEM_NOT_RECEIVED"
@@ -12177,21 +10191,12 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem
 /** An array of conditions that are covered for the transaction. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
   status?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus;
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    4,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
-
 /** The HTTP method required to make the related call. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
   | "GET"
@@ -12202,9 +10207,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
-  S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -12250,9 +10252,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -12298,9 +10297,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -12317,21 +10313,9 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   schema?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema;
   targetSchema?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    5,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    6,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode =
   | "A"
@@ -12557,9 +10541,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
   status?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus;
@@ -12580,19 +10561,9 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   update_time?: unknown;
   processor_response?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-
 /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsList = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsList>;
-
 /** The status of the captured payment. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "COMPLETED"
@@ -12601,8 +10572,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatus
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatus = S.String;
-
 /** The reason why the captured payment status is `PENDING` or `DENIED`. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason =
   | "BUYER_COMPLAINT"
@@ -12621,9 +10590,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemS
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemAmount =
   AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -12644,9 +10610,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemS
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPaypalFee =
@@ -12678,9 +10641,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemS
   /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
   platform_fees?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
-
 /** The HTTP method required to make the related call. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
   | "GET"
@@ -12691,8 +10651,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -12738,9 +10696,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemL
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -12786,9 +10741,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemL
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -12805,21 +10757,9 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemL
   schema?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema;
   targetSchema?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem =
-  /*@__PURE__*/ __L.at(
-    __c36,
-    1,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksList =
-  /*@__PURE__*/ __L.at(
-    __c36,
-    2,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode =
   | "A"
@@ -13045,9 +10985,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemP
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
   status?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatus;
@@ -13071,27 +11008,15 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem 
   create_time?: unknown;
   update_time?: unknown;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem>;
-
 /** An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesList = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesList>;
-
 /** The status of the refund. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatus =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
   | "COMPLETED";
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatus = S.String;
-
 /** The reason why the refund has the `PENDING` or `FAILED` status. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason =
   "ECHECK";
@@ -13099,9 +11024,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSt
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownGrossAmount =
@@ -13123,9 +11045,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerP
 /** An array of platform or partner fees, commissions, or brokerage fees for the refund. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemConvertedAmount =
@@ -13137,9 +11056,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerP
 /** An array of breakdown values for the net amount. Returned when the currency of the refund is different from the currency of the PayPal account where the payee holds their funds. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownTotalRefundedAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 /** The breakdown of the refund. */
@@ -13155,12 +11071,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSe
   net_amount_breakdown?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList;
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  /*@__PURE__*/ __L.at(
-    __c36,
-    5,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
-
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 /** The HTTP method required to make the related call. */
@@ -13173,8 +11083,6 @@ export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -13220,9 +11128,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLi
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -13268,9 +11173,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLi
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -13287,19 +11189,9 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLi
   schema?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema;
   targetSchema?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksList = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksList>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItem {
   /** The status of the refund. */
   status?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatus;
@@ -13323,19 +11215,9 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItem = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItem>;
-
 /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItem>;
-const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsList = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsList>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPayments {
   /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
   authorizations?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsList;
@@ -13344,11 +11226,6 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPayments {
   /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
   refunds?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsList;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItemPayments = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPayments>;
-
 export interface CreateOrdersTrackResponsePurchaseUnitsItem {
   /** The API caller-provided external ID for the purchase unit. Required for multiple purchase units when you must update the order through `PATCH`. If you omit this value and the order contains only one purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote> */
   reference_id?: string;
@@ -13371,19 +11248,9 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItem {
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
   payments?: CreateOrdersTrackResponsePurchaseUnitsItemPayments;
 }
-const CreateOrdersTrackResponsePurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItem>;
-
 /** An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant. */
 export type CreateOrdersTrackResponsePurchaseUnitsList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItem>;
-const CreateOrdersTrackResponsePurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsList>;
-
 /** The HTTP method required to make the related call. */
 export type CreateOrdersTrackResponseLinksItemMethod =
   | "GET"
@@ -13394,8 +11261,6 @@ export type CreateOrdersTrackResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const CreateOrdersTrackResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -13436,9 +11301,6 @@ export interface CreateOrdersTrackResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrdersTrackResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -13480,9 +11342,6 @@ export interface CreateOrdersTrackResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const CreateOrdersTrackResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchema>;
-
 export interface CreateOrdersTrackResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -13499,18 +11358,8 @@ export interface CreateOrdersTrackResponseLinksItem {
   schema?: CreateOrdersTrackResponseLinksItemSchema;
   targetSchema?: CreateOrdersTrackResponseLinksItemTargetSchema;
 }
-const CreateOrdersTrackResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
 export type CreateOrdersTrackResponseLinksList = Array<CreateOrdersTrackResponseLinksItem>;
-const CreateOrdersTrackResponseLinksList = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<CreateOrdersTrackResponseLinksList>;
-
 export interface CreateOrdersTrackResponse {
   create_time?: unknown;
   update_time?: unknown;
@@ -13525,11 +11374,6 @@ export interface CreateOrdersTrackResponse {
   /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
   links?: CreateOrdersTrackResponseLinksList;
 }
-const CreateOrdersTrackResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<CreateOrdersTrackResponse>;
-
 export interface GetOrderRequest {
   /** The ID of the order for which to show details. */
   id: string;
@@ -13538,8 +11382,6 @@ export interface GetOrderRequest {
   /** Header for an API client-provided JWT assertion that identifies the merchant. Establishing the consent to act-on-behalf of a merchant is a prerequisite for using this header. */
   payPalAuthAssertion?: string;
 }
-const GetOrderRequest = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<GetOrderRequest>;
-
 export type GetOrderResponsePayerName = CardCustomerName;
 export type GetOrderResponsePayerPhonePhoneNumber = CardCustomerPhonePhoneNumber;
 export type GetOrderResponsePayerPhone = CardVaultResponseCustomerPhone;
@@ -13564,8 +11406,6 @@ export interface GetOrderResponsePayer {
   tax_info?: GetOrderResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-const GetOrderResponsePayer = CreateOrderResponsePayer as any as S.Schema<GetOrderResponsePayer>;
-
 export type GetOrderResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 export type GetOrderResponsePurchaseUnitsItemItemsItemUnitAmount =
@@ -13615,9 +11455,6 @@ export interface GetOrderResponsePurchaseUnitsItemItemsItem {
 /** An array of items that the customer purchases from the merchant. */
 export type GetOrderResponsePurchaseUnitsItemItemsList =
   Array<GetOrderResponsePurchaseUnitsItemItemsItem>;
-const GetOrderResponsePurchaseUnitsItemItemsList =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<GetOrderResponsePurchaseUnitsItemItemsList>;
-
 export type GetOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export type GetOrderResponsePurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -13627,8 +11464,6 @@ export type GetOrderResponsePurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const GetOrderResponsePurchaseUnitsItemShippingType = S.String;
-
 export type GetOrderResponsePurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type GetOrderResponsePurchaseUnitsItemShippingOptionsItem =
@@ -13636,18 +11471,12 @@ export type GetOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type GetOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const GetOrderResponsePurchaseUnitsItemShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<GetOrderResponsePurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type GetOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
 export type GetOrderResponsePurchaseUnitsItemShippingAddress = CardRequestInputBillingAddress;
 /** An array of trackers for a transaction. */
 export type GetOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-const GetOrderResponsePurchaseUnitsItemShippingTrackersList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<GetOrderResponsePurchaseUnitsItemShippingTrackersList>;
-
 export interface GetOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
   email_address?: unknown;
@@ -13660,11 +11489,6 @@ export interface GetOrderResponsePurchaseUnitsItemShipping {
   /** An array of trackers for a transaction. */
   trackers?: GetOrderResponsePurchaseUnitsItemShippingTrackersList;
 }
-const GetOrderResponsePurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemShipping>;
-
 export type GetOrderResponsePurchaseUnitsItemSupplementaryDataCard =
   AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
 export type GetOrderResponsePurchaseUnitsItemSupplementaryDataRisk =
@@ -13679,8 +11503,6 @@ export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus =
   | "PARTIALLY_CAPTURED"
   | "VOIDED"
   | "PENDING";
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus = S.String;
-
 /** The reason why the authorized status is `PENDING`. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason =
   | "PENDING_REVIEW"
@@ -13689,9 +11511,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStat
   /** The reason why the authorized status is `PENDING`. */
   reason?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
-
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount = AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus =
@@ -13711,9 +11530,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSell
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
-
 /** The HTTP method required to make the related call. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
   | "GET"
@@ -13724,8 +11540,6 @@ export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -13771,9 +11585,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLink
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -13819,9 +11630,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLink
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
-
 export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -13838,19 +11646,9 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLink
   schema?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema;
   targetSchema?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem>;
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode =
   | "A"
@@ -14076,9 +11874,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProc
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
-
 export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
   status?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus;
@@ -14099,19 +11894,9 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   update_time?: unknown;
   processor_response?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-
 /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem>;
-const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList>;
-
 /** The status of the captured payment. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "COMPLETED"
@@ -14120,8 +11905,6 @@ export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus =
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus = S.String;
-
 /** The reason why the captured payment status is `PENDING` or `DENIED`. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason =
   | "BUYER_COMPLAINT"
@@ -14136,17 +11919,10 @@ export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsRe
   | "UNILATERAL"
   | "VERIFICATION_REQUIRED"
   | "DECLINED_BY_RISK_FRAUD_FILTERS";
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason = S.String;
-
 export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails {
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
-
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus =
@@ -14166,9 +11942,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProt
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
-
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPaypalFee =
@@ -14200,9 +11973,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerRece
   /** An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment. */
   platform_fees?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
-
 /** The HTTP method required to make the related call. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
   | "GET"
@@ -14213,8 +11983,6 @@ export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -14260,9 +12028,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemS
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -14308,9 +12073,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemT
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
-
 export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -14327,19 +12089,9 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem 
   schema?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema;
   targetSchema?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem>;
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList>;
-
 /** The address verification code for Visa, Discover, Mastercard, or American Express transactions. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode =
   | "A"
@@ -14565,9 +12317,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorR
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
-
 export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
   status?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus;
@@ -14591,36 +12340,21 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-
 /** An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem>;
-const GetOrderResponsePurchaseUnitsItemPaymentsCapturesList = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesList>;
-
 /** The status of the refund. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
   | "COMPLETED";
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus = S.String;
-
 /** The reason why the refund has the `PENDING` or `FAILED` status. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason = "ECHECK";
 export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails {
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
-
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownGrossAmount =
@@ -14668,9 +12402,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayab
   net_amount_breakdown?: GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList;
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
-
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
 /** The HTTP method required to make the related call. */
@@ -14683,8 +12414,6 @@ export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod 
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
@@ -14730,9 +12459,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSc
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
@@ -14778,9 +12504,6 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTa
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
-
 export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -14797,19 +12520,9 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   schema?: GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema;
   targetSchema?: GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-
 /** An array of related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem>;
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList>;
-
 export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   /** The status of the refund. */
   status?: GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus;
@@ -14833,19 +12546,9 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItem {
   create_time?: unknown;
   update_time?: unknown;
 }
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItem = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-
 /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItem>;
-const GetOrderResponsePurchaseUnitsItemPaymentsRefundsList = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsList>;
-
 export interface GetOrderResponsePurchaseUnitsItemPayments {
   /** An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. */
   authorizations?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList;
@@ -14854,11 +12557,6 @@ export interface GetOrderResponsePurchaseUnitsItemPayments {
   /** An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. */
   refunds?: GetOrderResponsePurchaseUnitsItemPaymentsRefundsList;
 }
-const GetOrderResponsePurchaseUnitsItemPayments = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPayments>;
-
 export interface GetOrderResponsePurchaseUnitsItem {
   /** The API caller-provided external ID for the purchase unit. Required for multiple purchase units when you must update the order through `PATCH`. If you omit this value and the order contains only one purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote> */
   reference_id?: string;
@@ -14881,18 +12579,8 @@ export interface GetOrderResponsePurchaseUnitsItem {
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
   payments?: GetOrderResponsePurchaseUnitsItemPayments;
 }
-const GetOrderResponsePurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItem>;
-
 /** An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant. */
 export type GetOrderResponsePurchaseUnitsList = Array<GetOrderResponsePurchaseUnitsItem>;
-const GetOrderResponsePurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsList>;
-
 /** The HTTP method required to make the related call. */
 export type GetOrderResponseLinksItemMethod =
   | "GET"
@@ -14903,8 +12591,6 @@ export type GetOrderResponseLinksItemMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const GetOrderResponseLinksItemMethod = S.String;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -14945,9 +12631,6 @@ export interface GetOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponseLinksItemSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<GetOrderResponseLinksItemSchema>;
-
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
@@ -14988,9 +12671,6 @@ export interface GetOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-const GetOrderResponseLinksItemTargetSchema =
-  CardVaultResponseLinksItemSchema as any as S.Schema<GetOrderResponseLinksItemTargetSchema>;
-
 export interface GetOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
   href: string;
@@ -15007,18 +12687,8 @@ export interface GetOrderResponseLinksItem {
   schema?: GetOrderResponseLinksItemSchema;
   targetSchema?: GetOrderResponseLinksItemTargetSchema;
 }
-const GetOrderResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetOrderResponseLinksItem>;
-
 /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
 export type GetOrderResponseLinksList = Array<GetOrderResponseLinksItem>;
-const GetOrderResponseLinksList = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetOrderResponseLinksList>;
-
 export interface GetOrderResponse {
   create_time?: unknown;
   update_time?: unknown;
@@ -15033,12 +12703,8 @@ export interface GetOrderResponse {
   /** An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. */
   links?: GetOrderResponseLinksList;
 }
-const GetOrderResponse = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<GetOrderResponse>;
-
 /** The operation. */
 export type PatchRequestItemOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-const PatchRequestItemOp = S.String;
-
 export interface PatchRequestItem {
   /** The operation. */
   op: PatchRequestItemOp | (string & {});
@@ -15049,12 +12715,8 @@ export interface PatchRequestItem {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-const PatchRequestItem = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<PatchRequestItem>;
-
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<PatchRequestItem>;
-const PatchRequest = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<PatchRequest>;
-
 export interface PatchOrderRequest {
   /** The ID of the order to update. */
   id: string;
@@ -15062,11 +12724,7 @@ export interface PatchOrderRequest {
   payPalAuthAssertion?: string;
   body?: PatchRequest;
 }
-const PatchOrderRequest = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<PatchOrderRequest>;
-
 export interface PatchOrderResponse {}
-const PatchOrderResponse = NativeAppContextInput as any as S.Schema<PatchOrderResponse>;
-
 export interface PatchOrdersTrackerRequest {
   /** The ID of the order that the tracking information is associated with. */
   id: string;
@@ -15076,15 +12734,7 @@ export interface PatchOrdersTrackerRequest {
   payPalAuthAssertion?: string;
   body?: PatchRequest;
 }
-const PatchOrdersTrackerRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<PatchOrdersTrackerRequest>;
-
 export interface PatchOrdersTrackerResponse {}
-const PatchOrdersTrackerResponse =
-  NativeAppContextInput as any as S.Schema<PatchOrdersTrackerResponse>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ServerCallbackRequestShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -15143,9 +12793,6 @@ export interface ServerCallbackRequestPurchaseUnitsItemItemsItem {
 /** An array of items that the customer purchases from the merchant. */
 export type ServerCallbackRequestPurchaseUnitsItemItemsList =
   Array<ServerCallbackRequestPurchaseUnitsItemItemsItem>;
-const ServerCallbackRequestPurchaseUnitsItemItemsList =
-  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemItemsList>;
-
 export type ServerCallbackRequestPurchaseUnitsItemShippingName = CardCustomerName;
 export type ServerCallbackRequestPurchaseUnitsItemShippingPhoneNumber =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber;
@@ -15155,8 +12802,6 @@ export type ServerCallbackRequestPurchaseUnitsItemShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const ServerCallbackRequestPurchaseUnitsItemShippingType = S.String;
-
 export type ServerCallbackRequestPurchaseUnitsItemShippingOptionsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 export type ServerCallbackRequestPurchaseUnitsItemShippingOptionsItem =
@@ -15164,9 +12809,6 @@ export type ServerCallbackRequestPurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type ServerCallbackRequestPurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-const ServerCallbackRequestPurchaseUnitsItemShippingOptionsList =
-  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemShippingOptionsList>;
-
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ServerCallbackRequestPurchaseUnitsItemShippingAddressAddressDetails =
   CardRequestInputBillingAddressAddressDetails;
@@ -15181,11 +12823,6 @@ export interface ServerCallbackRequestPurchaseUnitsItemShipping {
   options?: ServerCallbackRequestPurchaseUnitsItemShippingOptionsList;
   address?: CardRequestInputBillingAddress;
 }
-const ServerCallbackRequestPurchaseUnitsItemShipping = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemShipping>;
-
 export type ServerCallbackRequestPurchaseUnitsItemSupplementaryDataCard =
   AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard;
 export type ServerCallbackRequestPurchaseUnitsItemSupplementaryDataRisk =
@@ -15211,39 +12848,19 @@ export interface ServerCallbackRequestPurchaseUnitsItem {
   shipping?: ServerCallbackRequestPurchaseUnitsItemShipping;
   supplementary_data?: AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData;
 }
-const ServerCallbackRequestPurchaseUnitsItem = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<ServerCallbackRequestPurchaseUnitsItem>;
-
 /** An array of purchase units. At present only 1 purchase_unit is supported. Each purchase unit establishes a contract between a payer and the payee. Each purchase unit represents either a full or partial order that the payer intends to purchase from the payee. */
 export type ServerCallbackRequestPurchaseUnitsList = Array<ServerCallbackRequestPurchaseUnitsItem>;
-const ServerCallbackRequestPurchaseUnitsList = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<ServerCallbackRequestPurchaseUnitsList>;
-
 export interface ServerCallbackRequest {
   shipping_address?: CardRequestInputBillingAddress;
   shipping_option?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem;
   /** An array of purchase units. At present only 1 purchase_unit is supported. Each purchase unit establishes a contract between a payer and the payee. Each purchase unit represents either a full or partial order that the payer intends to purchase from the payee. */
   purchase_units: ServerCallbackRequestPurchaseUnitsList;
 }
-const ServerCallbackRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<ServerCallbackRequest>;
-
 /** Returns the updated shipping options for an order. */
 export interface OrderUpdateCallbackResponse {
   /** The ID of the order. */
   id?: string;
 }
-const OrderUpdateCallbackResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<OrderUpdateCallbackResponse>;
-
 export type AuthorizeOrderError =
   | BadRequest
   | Forbidden
@@ -15258,8 +12875,8 @@ export const authorizeOrder: API.OperationMethod<
   AuthorizeOrderError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeOrderRequest,
-  output: AuthorizeOrderResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<AuthorizeOrderRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<AuthorizeOrderResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15279,8 +12896,8 @@ export const captureOrder: API.OperationMethod<
   CaptureOrderError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CaptureOrderRequest,
-  output: CaptureOrderResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<CaptureOrderRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<CaptureOrderResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15294,8 +12911,8 @@ export const confirmOrder: API.OperationMethod<
   ConfirmOrderError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmOrderRequest,
-  output: ConfirmOrderResponse,
+  input: __S(232, __c29, 0) as any as S.Schema<ConfirmOrderRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<ConfirmOrderResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15309,8 +12926,8 @@ export const createOrder: API.OperationMethod<
   CreateOrderError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrderRequest,
-  output: CreateOrderResponse,
+  input: __S(258, __c32, 2) as any as S.Schema<CreateOrderRequest>,
+  output: __S(279, __c34, 7) as any as S.Schema<CreateOrderResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15329,8 +12946,8 @@ export const createOrdersTrack: API.OperationMethod<
   CreateOrdersTrackError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrdersTrackRequest,
-  output: CreateOrdersTrackResponse,
+  input: __S(282, __c35, 2) as any as S.Schema<CreateOrdersTrackRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<CreateOrdersTrackResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15344,8 +12961,8 @@ export const getOrder: API.OperationMethod<
   GetOrderError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrderRequest,
-  output: GetOrderResponse,
+  input: __S(304, __c38, 0) as any as S.Schema<GetOrderRequest>,
+  output: __S(324, __c40, 4) as any as S.Schema<GetOrderResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15364,8 +12981,8 @@ export const patchOrder: API.OperationMethod<
   PatchOrderError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrderRequest,
-  output: PatchOrderResponse,
+  input: __S(327, __c40, 7) as any as S.Schema<PatchOrderRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<PatchOrderResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15384,8 +13001,8 @@ export const patchOrdersTracker: API.OperationMethod<
   PatchOrdersTrackerError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrdersTrackerRequest,
-  output: PatchOrdersTrackerResponse,
+  input: __S(328, __c41, 0) as any as S.Schema<PatchOrdersTrackerRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<PatchOrdersTrackerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15399,8 +13016,8 @@ export const serverCallback: API.OperationMethod<
   ServerCallbackError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServerCallbackRequest,
-  output: OrderUpdateCallbackResponse,
+  input: __S(332, __c41, 4) as any as S.Schema<ServerCallbackRequest>,
+  output: __S(333, __c41, 5) as any as S.Schema<OrderUpdateCallbackResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -15434,7 +13051,7 @@ function __c0(j: number): any {
           admin_area_1: S.optional(S.String),
           postal_code: S.optional(S.String),
           country_code: S.String,
-          address_details: S.optional(CardRequestInputBillingAddressAddressDetails),
+          address_details: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "CardRequestInputBillingAddress",
@@ -15450,8 +13067,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          phone_type: S.optional(PhoneType),
-          phone_number: CardCustomerPhonePhoneNumber,
+          phone_type: S.optional(S.String),
+          phone_number: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "CardCustomerPhone" });
     case 4:
@@ -15470,15 +13087,15 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           email_address: S.optional(S.Unknown),
-          phone: S.optional(CardCustomerPhone),
-          name: S.optional(CardCustomerName),
+          phone: S.optional(__S(3, __c0, 3)),
+          name: S.optional(__S(4, __c0, 4)),
           merchant_customer_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "CardCustomer" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          store_in_vault: S.optional(StoreInVaultInstruction),
+          store_in_vault: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CardRequestInputAttributesVault",
@@ -15486,7 +13103,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(CardRequestInputAttributesVerificationMethod),
+          method: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CardRequestInputAttributesVerification",
@@ -15498,9 +13115,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(CardCustomer),
-          vault: S.optional(CardRequestInputAttributesVault),
-          verification: S.optional(CardRequestInputAttributesVerification),
+          customer: S.optional(__S(5, __c0, 5)),
+          vault: S.optional(__S(6, __c0, 6)),
+          verification: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "CardRequestInputAttributes",
@@ -15517,10 +13134,10 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          payment_initiator: PaymentInitiator,
-          payment_type: StoredPaymentSourcePaymentType,
-          usage: S.optional(StoredPaymentSourceUsageType),
-          previous_network_transaction_reference: S.optional(NetworkTransaction),
+          payment_initiator: S.String,
+          payment_type: S.String,
+          usage: S.optional(S.String),
+          previous_network_transaction_reference: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "CardStoredCredential" });
     case 3:
@@ -15529,7 +13146,7 @@ function __c1(j: number): any {
           number: S.String,
           expiry: S.Unknown,
           cryptogram: S.optional(S.String),
-          eci_flag: S.optional(EciFlag),
+          eci_flag: S.optional(S.String),
           token_requestor_id: S.optional(S.String),
         }),
       ).annotate({
@@ -15555,27 +13172,27 @@ function __c1(j: number): any {
           card_type: S.optional(S.Unknown),
           type: S.optional(S.Unknown),
           brand: S.optional(S.Unknown),
-          billing_address: S.optional(CardRequestInputBillingAddress),
-          attributes: S.optional(CardRequestInputAttributes),
+          billing_address: S.optional(__S(1, __c0, 1)),
+          attributes: S.optional(__S(8, __c1, 0)),
           vault_id: S.optional(S.Unknown),
           single_use_token: S.optional(S.Unknown),
-          stored_credential: S.optional(CardStoredCredential),
-          network_token: S.optional(CardRequestInputNetworkToken),
-          experience_context: S.optional(CardRequestInputExperienceContext),
+          stored_credential: S.optional(__S(10, __c1, 2)),
+          network_token: S.optional(__S(11, __c1, 3)),
+          experience_context: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "CardRequestInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TokenType,
+          type: S.String,
         }),
       ).annotate({ identifier: "Token" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           tax_id: S.String,
-          tax_id_type: AuthorizeOrderRequestPaymentSourcePaypalTaxInfoTaxIdType,
+          tax_id_type: S.String,
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourcePaypalTaxInfo",
@@ -15610,29 +13227,23 @@ function __c2(j: number): any {
           id: S.String,
           label: S.String,
           type: S.optional(S.Unknown),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          amount: S.optional(__S(17, __c2, 1)),
           selected: S.Boolean,
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem",
       });
     case 3:
-      return S.Array(AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingType),
-          options: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList,
-          ),
-          address: S.optional(CardRequestInputBillingAddress),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(19, __c2, 3)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShipping",
@@ -15640,16 +13251,12 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          store_in_vault: S.optional(StoreInVaultInstruction),
+          store_in_vault: S.optional(S.String),
           description: S.optional(S.String),
-          usage_pattern: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultUsagePattern,
-          ),
-          shipping: S.optional(AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShipping),
-          usage_type: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultUsageType,
-          customer_type: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultCustomerType,
-          ),
+          usage_pattern: S.optional(S.String),
+          shipping: S.optional(__S(20, __c2, 4)),
+          usage_type: S.String,
+          customer_type: S.optional(S.String),
           permit_multiple_payment_tokens: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -15658,8 +13265,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(CardCustomer),
-          vault: S.optional(AuthorizeOrderRequestPaymentSourcePaypalAttributesVault),
+          customer: S.optional(__S(5, __c0, 5)),
+          vault: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourcePaypalAttributes",
@@ -15681,19 +13288,18 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          native_app: S.optional(NativeAppContextInput),
-          mobile_web: S.optional(MobileWebContextInput),
+          native_app: S.optional(__S(23, __c2, 7)),
+          mobile_web: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "PaypalWalletExperienceContextInputAppSwitchContext",
       });
     case 2:
-      return S.Array(PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsItem);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          callback_events:
-            PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList,
+          callback_events: __S(26, __c3, 2),
           callback_url: S.String,
         }),
       ).annotate({
@@ -15704,19 +13310,15 @@ function __c3(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(PaypalWalletExperienceContextInputShippingPreference),
-          contact_preference: S.optional(PaypalWalletExperienceContextInputContactPreference),
+          shipping_preference: S.optional(S.String),
+          contact_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
-          app_switch_context: S.optional(PaypalWalletExperienceContextInputAppSwitchContext),
-          landing_page: S.optional(PaypalWalletExperienceContextInputLandingPage),
-          user_action: S.optional(PaypalWalletExperienceContextInputUserAction),
-          payment_method_preference: S.optional(
-            PaypalWalletExperienceContextInputPaymentMethodPreference,
-          ),
-          order_update_callback_config: S.optional(
-            PaypalWalletExperienceContextInputOrderUpdateCallbackConfig,
-          ),
+          app_switch_context: S.optional(__S(25, __c3, 1)),
+          landing_page: S.optional(S.String),
+          user_action: S.optional(S.String),
+          payment_method_preference: S.optional(S.String),
+          order_update_callback_config: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "PaypalWalletExperienceContextInput",
@@ -15724,10 +13326,10 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          payment_initiator: PaymentInitiator,
+          payment_initiator: S.String,
           charge_pattern: S.optional(S.Unknown),
-          usage_pattern: S.optional(ChargePattern),
-          usage: S.optional(StoredPaymentSourceUsageType),
+          usage_pattern: S.optional(S.String),
+          usage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PaypalWalletStoredCredential",
@@ -15737,15 +13339,15 @@ function __c3(j: number): any {
         S.Struct({
           vault_id: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          name: S.optional(CardCustomerName),
-          phone: S.optional(CardCustomerPhone),
+          name: S.optional(__S(4, __c0, 4)),
+          phone: S.optional(__S(3, __c0, 3)),
           birth_date: S.optional(S.Unknown),
-          tax_info: S.optional(AuthorizeOrderRequestPaymentSourcePaypalTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
-          attributes: S.optional(AuthorizeOrderRequestPaymentSourcePaypalAttributes),
-          experience_context: S.optional(PaypalWalletExperienceContextInput),
+          tax_info: S.optional(__S(15, __c1, 7)),
+          address: S.optional(__S(1, __c0, 1)),
+          attributes: S.optional(__S(22, __c2, 6)),
+          experience_context: S.optional(__S(28, __c3, 4)),
           billing_agreement_id: S.optional(S.String),
-          stored_credential: S.optional(PaypalWalletStoredCredential),
+          stored_credential: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourcePaypal",
@@ -15755,9 +13357,7 @@ function __c3(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(
-            AuthorizeOrderRequestPaymentSourceBancontactExperienceContextShippingPreference,
-          ),
+          shipping_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
         }),
@@ -15773,9 +13373,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.Unknown,
           country_code: S.Unknown,
-          experience_context: S.optional(
-            AuthorizeOrderRequestPaymentSourceBancontactExperienceContext,
-          ),
+          experience_context: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceBancontact",
@@ -15785,9 +13383,7 @@ function __c4(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(
-            AuthorizeOrderRequestPaymentSourceBlikExperienceContextShippingPreference,
-          ),
+          shipping_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
           consumer_ip: S.optional(S.Unknown),
@@ -15821,9 +13417,9 @@ function __c4(j: number): any {
           name: S.Unknown,
           country_code: S.Unknown,
           email: S.optional(S.Unknown),
-          experience_context: S.optional(AuthorizeOrderRequestPaymentSourceBlikExperienceContext),
-          level_0: S.optional(AuthorizeOrderRequestPaymentSourceBlikLevel0),
-          one_click: S.optional(AuthorizeOrderRequestPaymentSourceBlikOneClick),
+          experience_context: S.optional(__S(33, __c4, 1)),
+          level_0: S.optional(__S(34, __c4, 2)),
+          one_click: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceBlik",
@@ -15833,9 +13429,7 @@ function __c4(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(
-            AuthorizeOrderRequestPaymentSourceEpsExperienceContextShippingPreference,
-          ),
+          shipping_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
         }),
@@ -15847,7 +13441,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.Unknown,
           country_code: S.Unknown,
-          experience_context: S.optional(AuthorizeOrderRequestPaymentSourceEpsExperienceContext),
+          experience_context: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceEps",
@@ -15857,9 +13451,7 @@ function __c4(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(
-            AuthorizeOrderRequestPaymentSourceGiropayExperienceContextShippingPreference,
-          ),
+          shipping_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
         }),
@@ -15875,9 +13467,7 @@ function __c5(j: number): any {
         S.Struct({
           name: S.Unknown,
           country_code: S.Unknown,
-          experience_context: S.optional(
-            AuthorizeOrderRequestPaymentSourceGiropayExperienceContext,
-          ),
+          experience_context: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceGiropay",
@@ -15888,7 +13478,7 @@ function __c5(j: number): any {
           name: S.Unknown,
           country_code: S.Unknown,
           bic: S.optional(S.Unknown),
-          experience_context: S.optional(AuthorizeOrderRequestPaymentSourceIdealExperienceContext),
+          experience_context: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceIdeal",
@@ -15899,7 +13489,7 @@ function __c5(j: number): any {
           name: S.Unknown,
           email: S.Unknown,
           country_code: S.Unknown,
-          experience_context: S.optional(AuthorizeOrderRequestPaymentSourceP24ExperienceContext),
+          experience_context: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceP24",
@@ -15910,9 +13500,7 @@ function __c5(j: number): any {
           name: S.Unknown,
           country_code: S.Unknown,
           email: S.Unknown,
-          experience_context: S.optional(
-            AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext,
-          ),
+          experience_context: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceTrustly",
@@ -15920,9 +13508,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(
-            AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerificationMethod,
-          ),
+          method: S.optional(S.String),
         }),
       ).annotate({
         identifier:
@@ -15931,11 +13517,9 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(CardCustomer),
-          vault: S.optional(CardRequestInputAttributesVault),
-          verification: S.optional(
-            AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification,
-          ),
+          customer: S.optional(__S(5, __c0, 5)),
+          vault: S.optional(__S(6, __c0, 6)),
+          verification: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({
         identifier:
@@ -15952,10 +13536,8 @@ function __c5(j: number): any {
           card_type: S.optional(S.Unknown),
           type: S.optional(S.Unknown),
           brand: S.optional(S.Unknown),
-          billing_address: S.optional(CardRequestInputBillingAddress),
-          attributes: S.optional(
-            AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes,
-          ),
+          billing_address: S.optional(__S(1, __c0, 1)),
+          attributes: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard",
@@ -15978,17 +13560,11 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          transaction_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          tokenized_card: AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard,
+          transaction_amount: S.optional(__S(17, __c2, 1)),
+          tokenized_card: __S(46, __c5, 6),
           device_manufacturer_id: S.optional(S.String),
-          payment_data_type: S.optional(
-            AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentDataType,
-          ),
-          payment_data: S.optional(
-            AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData,
-          ),
+          payment_data_type: S.optional(S.String),
+          payment_data: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceApplePayDecryptedToken",
@@ -15998,21 +13574,21 @@ function __c6(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           email_address: S.optional(S.Unknown),
-          phone: S.optional(CardCustomerPhone),
-          name: S.optional(CardCustomerName),
+          phone: S.optional(__S(3, __c0, 3)),
+          name: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Customer" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          store_in_vault: StoreInVaultInstruction,
+          store_in_vault: S.String,
         }),
       ).annotate({ identifier: "V3VaultInstructionBase" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(Customer),
-          vault: S.optional(V3VaultInstructionBase),
+          customer: S.optional(__S(49, __c6, 1)),
+          vault: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "ApplePayAttributes" });
     case 4:
@@ -16030,12 +13606,12 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(CardCustomerPhonePhoneNumber),
-          decrypted_token: S.optional(AuthorizeOrderRequestPaymentSourceApplePayDecryptedToken),
-          stored_credential: S.optional(CardStoredCredential),
+          phone_number: S.optional(__S(2, __c0, 2)),
+          decrypted_token: S.optional(__S(48, __c6, 0)),
+          stored_credential: S.optional(__S(10, __c1, 2)),
           vault_id: S.optional(S.Unknown),
-          attributes: S.optional(ApplePayAttributes),
-          experience_context: S.optional(ApplePayExperienceContext),
+          attributes: S.optional(__S(51, __c6, 3)),
+          experience_context: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceApplePay",
@@ -16057,7 +13633,7 @@ function __c6(j: number): any {
           expiry: S.optional(S.Unknown),
           type: S.optional(S.Unknown),
           brand: S.optional(S.Unknown),
-          billing_address: S.optional(CardRequestInputBillingAddress),
+          billing_address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceGooglePayCard",
@@ -16074,7 +13650,7 @@ function __c7(j: number): any {
           expiry: S.Unknown,
           type: S.optional(S.Unknown),
           brand: S.optional(S.Unknown),
-          billing_address: S.optional(CardRequestInputBillingAddress),
+          billing_address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCard",
@@ -16084,10 +13660,9 @@ function __c7(j: number): any {
         S.Struct({
           message_id: S.optional(S.String),
           message_expiration: S.optional(S.String),
-          payment_method: AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenPaymentMethod,
-          card: AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCard,
-          authentication_method:
-            AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenAuthenticationMethod,
+          payment_method: S.String,
+          card: __S(56, __c7, 0),
+          authentication_method: S.String,
           cryptogram: S.optional(S.String),
           eci_indicator: S.optional(S.String),
         }),
@@ -16108,13 +13683,11 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber),
-          card: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayCard),
-          decrypted_token: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayDecryptedToken),
-          assurance_details: S.optional(
-            AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails,
-          ),
-          experience_context: S.optional(ApplePayExperienceContext),
+          phone_number: S.optional(__S(54, __c6, 6)),
+          card: S.optional(__S(55, __c6, 7)),
+          decrypted_token: S.optional(__S(57, __c7, 1)),
+          assurance_details: S.optional(__S(58, __c7, 2)),
+          experience_context: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceGooglePay",
@@ -16122,7 +13695,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          callback_events: VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList,
+          callback_events: __S(26, __c3, 2),
           callback_url: S.String,
         }),
       ).annotate({
@@ -16132,11 +13705,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           brand_name: S.optional(S.String),
-          shipping_preference: S.optional(VenmoWalletExperienceContextShippingPreference),
-          order_update_callback_config: S.optional(
-            VenmoWalletExperienceContextOrderUpdateCallbackConfig,
-          ),
-          user_action: S.optional(VenmoWalletExperienceContextUserAction),
+          shipping_preference: S.optional(S.String),
+          order_update_callback_config: S.optional(__S(60, __c7, 4)),
+          user_action: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VenmoWalletExperienceContext",
@@ -16144,15 +13715,11 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          store_in_vault: StoreInVaultInstruction,
+          store_in_vault: S.String,
           description: S.optional(S.String),
-          usage_pattern: S.optional(
-            AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultUsagePattern,
-          ),
-          usage_type: AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultUsageType,
-          customer_type: S.optional(
-            AuthorizeOrderRequestPaymentSourceVenmoAttributesVaultCustomerType,
-          ),
+          usage_pattern: S.optional(S.String),
+          usage_type: S.String,
+          customer_type: S.optional(S.String),
           permit_multiple_payment_tokens: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -16161,8 +13728,8 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(Customer),
-          vault: S.optional(AuthorizeOrderRequestPaymentSourceVenmoAttributesVault),
+          customer: S.optional(__S(49, __c6, 1)),
+          vault: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceVenmoAttributes",
@@ -16176,8 +13743,8 @@ function __c8(j: number): any {
         S.Struct({
           vault_id: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          experience_context: S.optional(VenmoWalletExperienceContext),
-          attributes: S.optional(AuthorizeOrderRequestPaymentSourceVenmoAttributes),
+          experience_context: S.optional(__S(61, __c7, 5)),
+          attributes: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceVenmo",
@@ -16207,8 +13774,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           country_code: S.Unknown,
-          name: AuthorizeOrderRequestPaymentSourceCryptoName,
-          experience_context: AuthorizeOrderRequestPaymentSourceCryptoExperienceContext,
+          name: __S(65, __c8, 1),
+          experience_context: __S(66, __c8, 2),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSourceCrypto",
@@ -16216,22 +13783,22 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          card: S.optional(CardRequestInput),
-          token: S.optional(Token),
-          paypal: S.optional(AuthorizeOrderRequestPaymentSourcePaypal),
-          bancontact: S.optional(AuthorizeOrderRequestPaymentSourceBancontact),
-          blik: S.optional(AuthorizeOrderRequestPaymentSourceBlik),
-          eps: S.optional(AuthorizeOrderRequestPaymentSourceEps),
-          giropay: S.optional(AuthorizeOrderRequestPaymentSourceGiropay),
-          ideal: S.optional(AuthorizeOrderRequestPaymentSourceIdeal),
-          mybank: S.optional(AuthorizeOrderRequestPaymentSourceMybank),
-          p24: S.optional(AuthorizeOrderRequestPaymentSourceP24),
-          sofort: S.optional(AuthorizeOrderRequestPaymentSourceSofort),
-          trustly: S.optional(AuthorizeOrderRequestPaymentSourceTrustly),
-          apple_pay: S.optional(AuthorizeOrderRequestPaymentSourceApplePay),
-          google_pay: S.optional(AuthorizeOrderRequestPaymentSourceGooglePay),
-          venmo: S.optional(AuthorizeOrderRequestPaymentSourceVenmo),
-          crypto: S.optional(AuthorizeOrderRequestPaymentSourceCrypto),
+          card: S.optional(__S(13, __c1, 5)),
+          token: S.optional(__S(14, __c1, 6)),
+          paypal: S.optional(__S(30, __c3, 6)),
+          bancontact: S.optional(__S(32, __c4, 0)),
+          blik: S.optional(__S(36, __c4, 4)),
+          eps: S.optional(__S(38, __c4, 6)),
+          giropay: S.optional(__S(40, __c5, 0)),
+          ideal: S.optional(__S(41, __c5, 1)),
+          mybank: S.optional(__S(40, __c5, 0)),
+          p24: S.optional(__S(42, __c5, 2)),
+          sofort: S.optional(__S(40, __c5, 0)),
+          trustly: S.optional(__S(43, __c5, 3)),
+          apple_pay: S.optional(__S(53, __c6, 5)),
+          google_pay: S.optional(__S(59, __c7, 3)),
+          venmo: S.optional(__S(64, __c8, 0)),
+          crypto: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderRequestPaymentSource",
@@ -16244,7 +13811,7 @@ function __c8(j: number): any {
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
           payPalClientMetadataId: S.optional(S.String.pipe(T.Header("PayPal-Client-Metadata-Id"))),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          payment_source: S.optional(AuthorizeOrderRequestPaymentSource),
+          payment_source: S.optional(__S(68, __c8, 4)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/checkout/orders/{id}/authorize", code: 200 })),
       ).annotate({ identifier: "AuthorizeOrderRequest" });
     case 6:
@@ -16265,15 +13832,15 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          liability_shift: S.optional(LiabilityShift),
-          three_d_secure: S.optional(ThreeDSecureAuthenticationResponse),
+          liability_shift: S.optional(S.String),
+          three_d_secure: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "AuthenticationResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          phone_type: S.optional(PhoneType),
-          phone_number: CardCustomerPhonePhoneNumber,
+          phone_type: S.optional(S.String),
+          phone_number: __S(2, __c0, 2),
         }),
       ).annotate({
         identifier: "CardVaultResponseCustomerPhone",
@@ -16283,8 +13850,8 @@ function __c9(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           email_address: S.optional(S.Unknown),
-          phone: S.optional(CardVaultResponseCustomerPhone),
-          name: S.optional(CardCustomerName),
+          phone: S.optional(__S(73, __c9, 1)),
+          name: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "CardVaultResponseCustomer",
@@ -16307,13 +13874,13 @@ function __c9(j: number): any {
           definitions: S.optional(S.Unknown),
           patternProperties: S.optional(S.Unknown),
           properties: S.optional(S.Unknown),
-          allOf: S.optional(CardVaultResponseLinksItemSchemaAllOfList),
-          anyOf: S.optional(CardVaultResponseLinksItemSchemaAnyOfList),
-          oneOf: S.optional(CardVaultResponseLinksItemSchemaOneOfList),
+          allOf: S.optional(__S(70, __c8, 6)),
+          anyOf: S.optional(__S(70, __c8, 6)),
+          oneOf: S.optional(__S(70, __c8, 6)),
           not: S.optional(S.Unknown),
-          links: S.optional(CardVaultResponseLinksItemSchemaLinksList),
+          links: S.optional(__S(70, __c8, 6)),
           fragmentResolution: S.optional(S.String),
-          media: S.optional(CardVaultResponseLinksItemSchemaMedia),
+          media: S.optional(__S(75, __c9, 3)),
           pathStart: S.optional(S.String),
         }),
       ).annotate({
@@ -16324,25 +13891,25 @@ function __c9(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(CardVaultResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(CardVaultResponseLinksItemSchema),
-          targetSchema: S.optional(CardVaultResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "CardVaultResponseLinksItem",
       });
     case 6:
-      return S.Array(CardVaultResponseLinksItem);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(CardVaultResponseStatus),
-          customer: S.optional(CardVaultResponseCustomer),
-          links: S.optional(CardVaultResponseLinksList),
+          status: S.optional(S.String),
+          customer: S.optional(__S(74, __c9, 2)),
+          links: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({ identifier: "CardVaultResponse" });
   }
@@ -16352,7 +13919,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vault: S.optional(CardVaultResponse),
+          vault: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({ identifier: "CardAttributesResponse" });
     case 1:
@@ -16370,7 +13937,7 @@ function __c10(j: number): any {
           bin: S.optional(S.String),
           issuing_bank: S.optional(S.String),
           bin_country_code: S.optional(S.Unknown),
-          products: S.optional(CardResponseBinDetailsProductsList),
+          products: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "CardResponseBinDetails" });
     case 4:
@@ -16379,14 +13946,14 @@ function __c10(j: number): any {
           name: S.optional(S.String),
           last_digits: S.optional(S.String),
           brand: S.optional(S.Unknown),
-          available_networks: S.optional(CardResponseAvailableNetworksList),
+          available_networks: S.optional(__S(70, __c8, 6)),
           type: S.optional(S.Unknown),
-          authentication_result: S.optional(AuthenticationResponse),
-          attributes: S.optional(CardAttributesResponse),
-          from_request: S.optional(CardFromRequest),
+          authentication_result: S.optional(__S(72, __c9, 0)),
+          attributes: S.optional(__S(80, __c10, 0)),
+          from_request: S.optional(__S(81, __c10, 1)),
           expiry: S.optional(S.Unknown),
-          bin_details: S.optional(CardResponseBinDetails),
-          stored_credential: S.optional(CardStoredCredential),
+          bin_details: S.optional(__S(83, __c10, 3)),
+          stored_credential: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "CardResponse" });
     case 5:
@@ -16394,25 +13961,25 @@ function __c10(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(PaypalWalletVaultResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(PaypalWalletVaultResponseLinksItemSchema),
-          targetSchema: S.optional(PaypalWalletVaultResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "PaypalWalletVaultResponseLinksItem",
       });
     case 6:
-      return S.Array(PaypalWalletVaultResponseLinksItem);
+      return S.Array(__S(85, __c10, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(PaypalWalletVaultResponseStatus),
-          customer: S.optional(CardVaultResponseCustomer),
-          links: S.optional(PaypalWalletVaultResponseLinksList),
+          status: S.optional(S.String),
+          customer: S.optional(__S(74, __c9, 2)),
+          links: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({
         identifier: "PaypalWalletVaultResponse",
@@ -16433,22 +14000,20 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemLabelsList),
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          labels: S.optional(__S(82, __c10, 2)),
+          payee: S.optional(__S(88, __c11, 0)),
+          amount: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "PaypalWalletAttributesResponseCobrandedCardsItem",
       });
     case 2:
-      return S.Array(PaypalWalletAttributesResponseCobrandedCardsItem);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          vault: S.optional(PaypalWalletVaultResponse),
-          cobranded_cards: S.optional(PaypalWalletAttributesResponseCobrandedCardsList),
+          vault: S.optional(__S(87, __c10, 7)),
+          cobranded_cards: S.optional(__S(90, __c11, 2)),
         }),
       ).annotate({
         identifier: "PaypalWalletAttributesResponse",
@@ -16458,17 +14023,17 @@ function __c11(j: number): any {
         S.Struct({
           email_address: S.optional(S.Unknown),
           account_id: S.optional(S.Unknown),
-          account_status: S.optional(PaypalWalletResponseAccountStatus),
-          name: S.optional(CardCustomerName),
-          phone_type: S.optional(PhoneType),
-          phone_number: S.optional(CardCustomerPhonePhoneNumber),
+          account_status: S.optional(S.String),
+          name: S.optional(__S(4, __c0, 4)),
+          phone_type: S.optional(S.String),
+          phone_number: S.optional(__S(2, __c0, 2)),
           birth_date: S.optional(S.Unknown),
           business_name: S.optional(S.String),
-          tax_info: S.optional(PaypalWalletResponseTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
-          attributes: S.optional(PaypalWalletAttributesResponse),
-          stored_credential: S.optional(PaypalWalletStoredCredential),
-          experience_status: S.optional(PaypalWalletResponseExperienceStatus),
+          tax_info: S.optional(__S(15, __c1, 7)),
+          address: S.optional(__S(1, __c0, 1)),
+          attributes: S.optional(__S(91, __c11, 3)),
+          stored_credential: S.optional(__S(29, __c3, 5)),
+          experience_status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaypalWalletResponse" });
     case 5:
@@ -16493,7 +14058,7 @@ function __c11(j: number): any {
           name: S.optional(S.Unknown),
           country_code: S.optional(S.Unknown),
           email: S.optional(S.Unknown),
-          one_click: S.optional(BlikOneClick),
+          one_click: S.optional(__S(94, __c11, 6)),
         }),
       ).annotate({ identifier: "Blik" });
   }
@@ -16544,15 +14109,15 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           last_digits: S.optional(S.String),
           brand: S.optional(S.Unknown),
-          available_networks: S.optional(ApplePayCardAvailableNetworksList),
+          available_networks: S.optional(__S(70, __c8, 6)),
           type: S.optional(S.Unknown),
-          authentication_result: S.optional(AuthenticationResponse),
-          attributes: S.optional(CardAttributesResponse),
-          from_request: S.optional(CardFromRequest),
+          authentication_result: S.optional(__S(72, __c9, 0)),
+          attributes: S.optional(__S(80, __c10, 0)),
+          from_request: S.optional(__S(81, __c10, 1)),
           expiry: S.optional(S.Unknown),
-          bin_details: S.optional(ApplePayCardBinDetails),
-          stored_credential: S.optional(CardStoredCredential),
-          billing_address: S.optional(CardRequestInputBillingAddress),
+          bin_details: S.optional(__S(83, __c10, 3)),
+          stored_credential: S.optional(__S(10, __c1, 2)),
+          billing_address: S.optional(__S(1, __c0, 1)),
           country_code: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ApplePayCard" });
@@ -16561,23 +14126,23 @@ function __c12(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(VaultResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(VaultResponseLinksItemSchema),
-          targetSchema: S.optional(VaultResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({ identifier: "VaultResponseLinksItem" });
     case 6:
-      return S.Array(VaultResponseLinksItem);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(VaultResponseStatus),
-          customer: S.optional(CardVaultResponseCustomer),
-          links: S.optional(VaultResponseLinksList),
+          status: S.optional(S.String),
+          customer: S.optional(__S(74, __c9, 2)),
+          links: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({ identifier: "VaultResponse" });
   }
@@ -16587,7 +14152,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vault: S.optional(VaultResponse),
+          vault: S.optional(__S(103, __c12, 7)),
         }),
       ).annotate({ identifier: "ApplePayAttributes2" });
     case 1:
@@ -16597,12 +14162,10 @@ function __c13(j: number): any {
           token: S.optional(S.String),
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          card: S.optional(ApplePayCard),
-          attributes: S.optional(ApplePayAttributes2),
-          stored_credential: S.optional(CardStoredCredential),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          card: S.optional(__S(100, __c12, 4)),
+          attributes: S.optional(__S(104, __c13, 0)),
+          stored_credential: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "ApplePay" });
     case 2:
@@ -16612,8 +14175,8 @@ function __c13(j: number): any {
           last_digits: S.optional(S.String),
           type: S.optional(S.Unknown),
           brand: S.optional(S.Unknown),
-          billing_address: S.optional(CardRequestInputBillingAddress),
-          authentication_result: S.optional(AuthenticationResponse),
+          billing_address: S.optional(__S(1, __c0, 1)),
+          authentication_result: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "GooglePayCard" });
     case 3:
@@ -16621,8 +14184,8 @@ function __c13(j: number): any {
         S.Struct({
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber),
-          card: S.optional(GooglePayCard),
+          phone_number: S.optional(__S(54, __c6, 6)),
+          card: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({ identifier: "GooglePay" });
     case 4:
@@ -16630,31 +14193,31 @@ function __c13(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(VenmoVaultResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(VenmoVaultResponseLinksItemSchema),
-          targetSchema: S.optional(VenmoVaultResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "VenmoVaultResponseLinksItem",
       });
     case 5:
-      return S.Array(VenmoVaultResponseLinksItem);
+      return S.Array(__S(108, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(VenmoVaultResponseStatus),
-          customer: S.optional(CardVaultResponseCustomer),
-          links: S.optional(VenmoVaultResponseLinksList),
+          status: S.optional(S.String),
+          customer: S.optional(__S(74, __c9, 2)),
+          links: S.optional(__S(109, __c13, 5)),
         }),
       ).annotate({ identifier: "VenmoVaultResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vault: S.optional(VenmoVaultResponse),
+          vault: S.optional(__S(110, __c13, 6)),
         }),
       ).annotate({
         identifier: "VenmoWalletAttributesResponse",
@@ -16669,11 +14232,11 @@ function __c14(j: number): any {
           email_address: S.optional(S.Unknown),
           account_id: S.optional(S.Unknown),
           user_name: S.optional(S.String),
-          name: S.optional(CardCustomerName),
-          phone_number: S.optional(CardCustomerPhonePhoneNumber),
-          address: S.optional(CardRequestInputBillingAddress),
-          return_flow: S.optional(VenmoWalletResponseReturnFlow),
-          attributes: S.optional(VenmoWalletAttributesResponse),
+          name: S.optional(__S(4, __c0, 4)),
+          phone_number: S.optional(__S(2, __c0, 2)),
+          address: S.optional(__S(1, __c0, 1)),
+          return_flow: S.optional(S.String),
+          attributes: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({ identifier: "VenmoWalletResponse" });
     case 1:
@@ -16681,7 +14244,7 @@ function __c14(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(CryptoExperienceContextShippingPreference),
+          shipping_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
         }),
@@ -16690,28 +14253,28 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           country_code: S.optional(S.Unknown),
-          name: S.optional(AuthorizeOrderRequestPaymentSourceCryptoName),
-          experience_context: S.optional(CryptoExperienceContext),
+          name: S.optional(__S(65, __c8, 1)),
+          experience_context: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({ identifier: "Crypto" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          card: S.optional(CardResponse),
-          paypal: S.optional(PaypalWalletResponse),
-          bancontact: S.optional(Bancontact),
-          blik: S.optional(Blik),
-          eps: S.optional(Eps),
-          giropay: S.optional(Eps),
-          ideal: S.optional(Ideal),
-          mybank: S.optional(Ideal),
-          p24: S.optional(P24),
-          sofort: S.optional(Ideal),
-          trustly: S.optional(Trustly),
-          apple_pay: S.optional(ApplePay),
-          google_pay: S.optional(GooglePay),
-          venmo: S.optional(VenmoWalletResponse),
-          crypto: S.optional(Crypto),
+          card: S.optional(__S(84, __c10, 4)),
+          paypal: S.optional(__S(92, __c11, 4)),
+          bancontact: S.optional(__S(93, __c11, 5)),
+          blik: S.optional(__S(95, __c11, 7)),
+          eps: S.optional(__S(96, __c12, 0)),
+          giropay: S.optional(__S(96, __c12, 0)),
+          ideal: S.optional(__S(97, __c12, 1)),
+          mybank: S.optional(__S(97, __c12, 1)),
+          p24: S.optional(__S(98, __c12, 2)),
+          sofort: S.optional(__S(97, __c12, 1)),
+          trustly: S.optional(__S(99, __c12, 3)),
+          apple_pay: S.optional(__S(105, __c13, 1)),
+          google_pay: S.optional(__S(107, __c13, 3)),
+          venmo: S.optional(__S(112, __c14, 0)),
+          crypto: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePaymentSource",
@@ -16720,7 +14283,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tax_id: S.String,
-          tax_id_type: PayerTaxInfoTaxIdType,
+          tax_id_type: S.String,
         }),
       ).annotate({ identifier: "PayerTaxInfo" });
     case 5:
@@ -16728,37 +14291,23 @@ function __c14(j: number): any {
         S.Struct({
           email_address: S.optional(S.Unknown),
           payer_id: S.optional(S.Unknown),
-          name: S.optional(CardCustomerName),
-          phone: S.optional(CardVaultResponseCustomerPhone),
+          name: S.optional(__S(4, __c0, 4)),
+          phone: S.optional(__S(73, __c9, 1)),
           birth_date: S.optional(S.Unknown),
-          tax_info: S.optional(PayerTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
+          tax_info: S.optional(__S(116, __c14, 4)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "Payer" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          item_total: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          shipping: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          handling: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          tax_total: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          insurance: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          shipping_discount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          discount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          item_total: S.optional(__S(17, __c2, 1)),
+          shipping: S.optional(__S(17, __c2, 1)),
+          handling: S.optional(__S(17, __c2, 1)),
+          tax_total: S.optional(__S(17, __c2, 1)),
+          insurance: S.optional(__S(17, __c2, 1)),
+          shipping_discount: S.optional(__S(17, __c2, 1)),
+          discount: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "AmountBreakdown" });
     case 7:
@@ -16766,7 +14315,7 @@ function __c14(j: number): any {
         S.Struct({
           currency_code: S.String,
           value: S.String,
-          breakdown: S.optional(AmountBreakdown),
+          breakdown: S.optional(__S(118, __c14, 6)),
         }),
       ).annotate({ identifier: "AmountWithBreakdown" });
   }
@@ -16776,18 +14325,18 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
+          amount: __S(17, __c2, 1),
+          payee: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({
         identifier: "PaymentInstructionPlatformFeesItem",
       });
     case 1:
-      return S.Array(PaymentInstructionPlatformFeesItem);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          platform_fees: S.optional(PaymentInstructionPlatformFeesList),
+          platform_fees: S.optional(__S(121, __c15, 1)),
           disbursement_mode: S.optional(S.Unknown),
           payee_pricing_tier_id: S.optional(S.String),
           payee_receivable_fx_rate_id: S.optional(S.String),
@@ -16796,7 +14345,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpcType,
+          type: S.String,
           code: S.String,
         }),
       ).annotate({
@@ -16805,13 +14354,9 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          price: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          pricing_model: BillingCyclePricingSchemePricingModel,
-          reload_threshold_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          price: S.optional(__S(17, __c2, 1)),
+          pricing_model: S.String,
+          reload_threshold_amount: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "BillingCyclePricingScheme",
@@ -16819,22 +14364,20 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tenure_type: BillingCycleTenureType,
-          pricing_scheme: S.optional(BillingCyclePricingScheme),
+          tenure_type: S.String,
+          pricing_scheme: S.optional(__S(124, __c15, 4)),
           total_cycles: S.optional(S.Number),
           sequence: S.optional(S.Number),
           start_date: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "BillingCycle" });
     case 6:
-      return S.Array(BillingCycle);
+      return S.Array(__S(125, __c15, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          billing_cycles: OrderBillingPlanBillingCyclesList,
-          setup_fee: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          billing_cycles: __S(126, __c15, 6),
+          setup_fee: S.optional(__S(17, __c2, 1)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderBillingPlan" });
@@ -16846,31 +14389,28 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          unit_amount:
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          tax: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          unit_amount: __S(17, __c2, 1),
+          tax: S.optional(__S(17, __c2, 1)),
           quantity: S.String,
           description: S.optional(S.String),
           sku: S.optional(S.String),
           url: S.optional(S.String),
-          category: S.optional(AuthorizeOrderResponsePurchaseUnitsItemItemsItemCategory),
+          category: S.optional(S.String),
           image_url: S.optional(S.String),
-          upc: S.optional(AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc),
-          billing_plan: S.optional(OrderBillingPlan),
+          upc: S.optional(__S(123, __c15, 3)),
+          billing_plan: S.optional(__S(127, __c15, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemItemsItem",
       });
     case 1:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItemItemsItem);
+      return S.Array(__S(128, __c16, 0));
     case 2:
-      return S.Array(AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem);
+      return S.Array(__S(18, __c2, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: TrackerItemsItemUpcType,
+          type: S.String,
           code: S.String,
         }),
       ).annotate({ identifier: "TrackerItemsItemUpc" });
@@ -16882,11 +14422,11 @@ function __c16(j: number): any {
           sku: S.optional(S.String),
           url: S.optional(S.String),
           image_url: S.optional(S.String),
-          upc: S.optional(TrackerItemsItemUpc),
+          upc: S.optional(__S(131, __c16, 3)),
         }),
       ).annotate({ identifier: "TrackerItemsItem" });
     case 5:
-      return S.Array(TrackerItemsItem);
+      return S.Array(__S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -16896,13 +14436,13 @@ function __c16(j: number): any {
           definitions: S.optional(S.Unknown),
           patternProperties: S.optional(S.Unknown),
           properties: S.optional(S.Unknown),
-          allOf: S.optional(TrackerLinksItemSchemaAllOfList),
-          anyOf: S.optional(TrackerLinksItemSchemaAnyOfList),
-          oneOf: S.optional(TrackerLinksItemSchemaOneOfList),
+          allOf: S.optional(__S(70, __c8, 6)),
+          anyOf: S.optional(__S(70, __c8, 6)),
+          oneOf: S.optional(__S(70, __c8, 6)),
           not: S.optional(S.Unknown),
-          links: S.optional(TrackerLinksItemSchemaLinksList),
+          links: S.optional(__S(70, __c8, 6)),
           fragmentResolution: S.optional(S.String),
-          media: S.optional(CardVaultResponseLinksItemSchemaMedia),
+          media: S.optional(__S(75, __c9, 3)),
           pathStart: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrackerLinksItemSchema" });
@@ -16911,12 +14451,12 @@ function __c16(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(TrackerLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(TrackerLinksItemSchema),
-          targetSchema: S.optional(TrackerLinksItemTargetSchema),
+          schema: S.optional(__S(134, __c16, 6)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({ identifier: "TrackerLinksItem" });
   }
@@ -16924,32 +14464,30 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TrackerLinksItem);
+      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(TrackerStatus),
-          items: S.optional(TrackerItemsList),
-          links: S.optional(TrackerLinksList),
+          status: S.optional(S.String),
+          items: S.optional(__S(133, __c16, 5)),
+          links: S.optional(__S(136, __c17, 0)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Tracker" });
     case 2:
-      return S.Array(Tracker);
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(AuthorizeOrderResponsePurchaseUnitsItemShippingType),
-          options: S.optional(AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
-          trackers: S.optional(AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
+          trackers: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemShipping",
@@ -16958,9 +14496,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           invoice_id: S.optional(S.String),
-          tax_total: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          tax_total: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "Level2CardProcessingData" });
     case 5:
@@ -16972,43 +14508,29 @@ function __c17(j: number): any {
           sku: S.optional(S.String),
           url: S.optional(S.String),
           image_url: S.optional(S.String),
-          upc: S.optional(Level3CardProcessingDataLineItemsItemUpc),
-          billing_plan: S.optional(OrderBillingPlan),
-          unit_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          tax: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          upc: S.optional(__S(123, __c15, 3)),
+          billing_plan: S.optional(__S(127, __c15, 7)),
+          unit_amount: S.optional(__S(17, __c2, 1)),
+          tax: S.optional(__S(17, __c2, 1)),
           commodity_code: S.optional(S.String),
-          discount_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          total_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          discount_amount: S.optional(__S(17, __c2, 1)),
+          total_amount: S.optional(__S(17, __c2, 1)),
           unit_of_measure: S.optional(S.String),
         }),
       ).annotate({
         identifier: "Level3CardProcessingDataLineItemsItem",
       });
     case 6:
-      return S.Array(Level3CardProcessingDataLineItemsItem);
+      return S.Array(__S(141, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          shipping_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          duty_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          discount_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          shipping_address: S.optional(CardRequestInputBillingAddress),
+          shipping_amount: S.optional(__S(17, __c2, 1)),
+          duty_amount: S.optional(__S(17, __c2, 1)),
+          discount_amount: S.optional(__S(17, __c2, 1)),
+          shipping_address: S.optional(__S(1, __c0, 1)),
           ships_from_postal_code: S.optional(S.String),
-          line_items: S.optional(Level3CardProcessingDataLineItemsList),
+          line_items: S.optional(__S(142, __c17, 6)),
         }),
       ).annotate({ identifier: "Level3CardProcessingData" });
   }
@@ -17018,8 +14540,8 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          level_2: S.optional(Level2CardProcessingData),
-          level_3: S.optional(Level3CardProcessingData),
+          level_2: S.optional(__S(140, __c17, 4)),
+          level_3: S.optional(__S(143, __c17, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard",
@@ -17033,7 +14555,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(ParticipantMetadata),
+          customer: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataRisk",
@@ -17041,8 +14563,8 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          card: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataCard),
-          risk: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryDataRisk),
+          card: S.optional(__S(144, __c18, 0)),
+          risk: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData",
@@ -17050,9 +14572,7 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason,
-          ),
+          reason: S.optional(S.String),
         }),
       ).annotate({
         identifier:
@@ -17061,12 +14581,8 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus,
-          ),
-          dispute_categories: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList,
-          ),
+          status: S.optional(S.String),
+          dispute_categories: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier:
@@ -17083,21 +14599,13 @@ function __c18(j: number): any {
           definitions: S.optional(S.Unknown),
           patternProperties: S.optional(S.Unknown),
           properties: S.optional(S.Unknown),
-          allOf: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList,
-          ),
-          anyOf: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList,
-          ),
-          oneOf: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList,
-          ),
+          allOf: S.optional(__S(150, __c18, 6)),
+          anyOf: S.optional(__S(150, __c18, 6)),
+          oneOf: S.optional(__S(150, __c18, 6)),
           not: S.optional(S.Unknown),
-          links: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList,
-          ),
+          links: S.optional(__S(150, __c18, 6)),
           fragmentResolution: S.optional(S.String),
-          media: S.optional(CardVaultResponseLinksItemSchemaMedia),
+          media: S.optional(__S(75, __c9, 3)),
           pathStart: S.optional(S.String),
         }),
       ).annotate({
@@ -17117,21 +14625,13 @@ function __c19(j: number): any {
           definitions: S.optional(S.Unknown),
           patternProperties: S.optional(S.Unknown),
           properties: S.optional(S.Unknown),
-          allOf: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList,
-          ),
-          anyOf: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList,
-          ),
-          oneOf: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList,
-          ),
+          allOf: S.optional(__S(150, __c18, 6)),
+          anyOf: S.optional(__S(150, __c18, 6)),
+          oneOf: S.optional(__S(150, __c18, 6)),
           not: S.optional(S.Unknown),
-          links: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList,
-          ),
+          links: S.optional(__S(150, __c18, 6)),
           fragmentResolution: S.optional(S.String),
-          media: S.optional(CardVaultResponseLinksItemSchemaMedia),
+          media: S.optional(__S(75, __c9, 3)),
           pathStart: S.optional(S.String),
         }),
       ).annotate({
@@ -17143,39 +14643,25 @@ function __c19(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem",
       });
     case 2:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem);
+      return S.Array(__S(153, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          avs_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode,
-          ),
-          cvv_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode,
-          ),
-          response_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode,
-          ),
-          payment_advice_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode,
-          ),
+          avs_code: S.optional(S.String),
+          cvv_code: S.optional(S.String),
+          response_code: S.optional(S.String),
+          payment_advice_code: S.optional(S.String),
         }),
       ).annotate({
         identifier:
@@ -17184,35 +14670,25 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus,
-          ),
-          status_details: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           expiration_time: S.optional(S.Unknown),
-          links: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList,
-          ),
+          links: S.optional(__S(154, __c19, 2)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
-          processor_response: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse,
-          ),
+          processor_response: S.optional(__S(155, __c19, 3)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem",
       });
     case 5:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem);
+      return S.Array(__S(156, __c19, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -17225,7 +14701,7 @@ function __c19(j: number): any {
           "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate",
       });
     case 7:
-      return S.Array(PaymentInstructionPlatformFeesItem);
+      return S.Array(__S(120, __c15, 0));
   }
 }
 function __c20(j: number): any {
@@ -17233,26 +14709,13 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gross_amount:
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          paypal_fee: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          paypal_fee_in_receivable_currency: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          net_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          receivable_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          exchange_rate: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate,
-          ),
-          platform_fees: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList,
-          ),
+          gross_amount: __S(17, __c2, 1),
+          paypal_fee: S.optional(__S(17, __c2, 1)),
+          paypal_fee_in_receivable_currency: S.optional(__S(17, __c2, 1)),
+          net_amount: S.optional(__S(17, __c2, 1)),
+          receivable_amount: S.optional(__S(17, __c2, 1)),
+          exchange_rate: S.optional(__S(158, __c19, 6)),
+          platform_fees: S.optional(__S(159, __c19, 7)),
         }),
       ).annotate({
         identifier:
@@ -17263,39 +14726,25 @@ function __c20(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem",
       });
     case 2:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem);
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          avs_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode,
-          ),
-          cvv_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode,
-          ),
-          response_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode,
-          ),
-          payment_advice_code: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode,
-          ),
+          avs_code: S.optional(S.String),
+          cvv_code: S.optional(S.String),
+          response_code: S.optional(S.String),
+          payment_advice_code: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse",
@@ -17303,27 +14752,19 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus),
-          status_details: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown,
-          ),
-          disbursement_mode: S.optional(DisbursementMode),
-          links: S.optional(AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList),
-          processor_response: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse,
-          ),
+          seller_receivable_breakdown: S.optional(__S(160, __c20, 0)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(162, __c20, 2)),
+          processor_response: S.optional(__S(163, __c20, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -17331,28 +14772,20 @@ function __c20(j: number): any {
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItem",
       });
     case 5:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItem);
+      return S.Array(__S(164, __c20, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          payable_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          converted_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          exchange_rate: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate,
-          ),
+          payable_amount: S.optional(__S(17, __c2, 1)),
+          converted_amount: S.optional(__S(17, __c2, 1)),
+          exchange_rate: S.optional(__S(158, __c19, 6)),
         }),
       ).annotate({
         identifier:
           "AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem",
       });
     case 7:
-      return S.Array(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem,
-      );
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -17360,30 +14793,14 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gross_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          paypal_fee: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          paypal_fee_in_receivable_currency: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          net_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          net_amount_in_receivable_currency: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          platform_fees: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList,
-          ),
-          net_amount_breakdown: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList,
-          ),
-          total_refunded_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          gross_amount: S.optional(__S(17, __c2, 1)),
+          paypal_fee: S.optional(__S(17, __c2, 1)),
+          paypal_fee_in_receivable_currency: S.optional(__S(17, __c2, 1)),
+          net_amount: S.optional(__S(17, __c2, 1)),
+          net_amount_in_receivable_currency: S.optional(__S(17, __c2, 1)),
+          platform_fees: S.optional(__S(159, __c19, 7)),
+          net_amount_breakdown: S.optional(__S(167, __c20, 7)),
+          total_refunded_amount: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier:
@@ -17394,44 +14811,32 @@ function __c21(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem",
       });
     case 2:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem);
+      return S.Array(__S(169, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus),
-          status_details: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          amount: S.optional(__S(17, __c2, 1)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
           acquirer_reference_number: S.optional(S.String),
           note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown,
-          ),
-          payer: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          links: S.optional(AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList),
+          seller_payable_breakdown: S.optional(__S(168, __c21, 0)),
+          payer: S.optional(__S(88, __c11, 0)),
+          links: S.optional(__S(170, __c21, 2)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -17439,15 +14844,13 @@ function __c21(j: number): any {
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItem",
       });
     case 4:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItem);
+      return S.Array(__S(171, __c21, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList,
-          ),
-          captures: S.optional(AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesList),
-          refunds: S.optional(AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsList),
+          authorizations: S.optional(__S(157, __c19, 5)),
+          captures: S.optional(__S(165, __c20, 5)),
+          refunds: S.optional(__S(172, __c21, 4)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItemPayments",
@@ -17456,24 +14859,24 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: S.optional(__S(119, __c14, 7)),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(AuthorizeOrderResponsePurchaseUnitsItemItemsList),
-          shipping: S.optional(AuthorizeOrderResponsePurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
-          payments: S.optional(AuthorizeOrderResponsePurchaseUnitsItemPayments),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(139, __c17, 3)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
+          payments: S.optional(__S(173, __c21, 5)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponsePurchaseUnitsItem",
       });
     case 7:
-      return S.Array(AuthorizeOrderResponsePurchaseUnitsItem);
+      return S.Array(__S(174, __c21, 6));
   }
 }
 function __c22(j: number): any {
@@ -17483,45 +14886,41 @@ function __c22(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(AuthorizeOrderResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(AuthorizeOrderResponseLinksItemSchema),
-          targetSchema: S.optional(AuthorizeOrderResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "AuthorizeOrderResponseLinksItem",
       });
     case 1:
-      return S.Array(AuthorizeOrderResponseLinksItem);
+      return S.Array(__S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
           id: S.optional(S.String),
-          payment_source: S.optional(AuthorizeOrderResponsePaymentSource),
-          intent: S.optional(CheckoutPaymentIntent),
-          payer: S.optional(Payer),
-          purchase_units: S.optional(AuthorizeOrderResponsePurchaseUnitsList),
+          payment_source: S.optional(__S(115, __c14, 3)),
+          intent: S.optional(S.String),
+          payer: S.optional(__S(117, __c14, 5)),
+          purchase_units: S.optional(__S(175, __c21, 7)),
           status: S.optional(S.Unknown),
-          links: S.optional(AuthorizeOrderResponseLinksList),
+          links: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "AuthorizeOrderResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingType),
-          options: S.optional(
-            CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList,
-          ),
-          address: S.optional(CardRequestInputBillingAddress),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(19, __c2, 3)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSourcePaypalAttributesVaultShipping",
@@ -17529,16 +14928,12 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          store_in_vault: S.optional(StoreInVaultInstruction),
+          store_in_vault: S.optional(S.String),
           description: S.optional(S.String),
-          usage_pattern: S.optional(
-            CaptureOrderRequestPaymentSourcePaypalAttributesVaultUsagePattern,
-          ),
-          shipping: S.optional(CaptureOrderRequestPaymentSourcePaypalAttributesVaultShipping),
-          usage_type: CaptureOrderRequestPaymentSourcePaypalAttributesVaultUsageType,
-          customer_type: S.optional(
-            CaptureOrderRequestPaymentSourcePaypalAttributesVaultCustomerType,
-          ),
+          usage_pattern: S.optional(S.String),
+          shipping: S.optional(__S(179, __c22, 3)),
+          usage_type: S.String,
+          customer_type: S.optional(S.String),
           permit_multiple_payment_tokens: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -17547,8 +14942,8 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(CardCustomer),
-          vault: S.optional(CaptureOrderRequestPaymentSourcePaypalAttributesVault),
+          customer: S.optional(__S(5, __c0, 5)),
+          vault: S.optional(__S(180, __c22, 4)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSourcePaypalAttributes",
@@ -17558,15 +14953,15 @@ function __c22(j: number): any {
         S.Struct({
           vault_id: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          name: S.optional(CardCustomerName),
-          phone: S.optional(CardCustomerPhone),
+          name: S.optional(__S(4, __c0, 4)),
+          phone: S.optional(__S(3, __c0, 3)),
           birth_date: S.optional(S.Unknown),
-          tax_info: S.optional(CaptureOrderRequestPaymentSourcePaypalTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
-          attributes: S.optional(CaptureOrderRequestPaymentSourcePaypalAttributes),
-          experience_context: S.optional(PaypalWalletExperienceContextInput),
+          tax_info: S.optional(__S(15, __c1, 7)),
+          address: S.optional(__S(1, __c0, 1)),
+          attributes: S.optional(__S(181, __c22, 5)),
+          experience_context: S.optional(__S(28, __c3, 4)),
           billing_agreement_id: S.optional(S.String),
-          stored_credential: S.optional(PaypalWalletStoredCredential),
+          stored_credential: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSourcePaypal",
@@ -17577,7 +14972,7 @@ function __c22(j: number): any {
           name: S.Unknown,
           country_code: S.Unknown,
           bic: S.optional(S.Unknown),
-          experience_context: S.optional(CaptureOrderRequestPaymentSourceIdealExperienceContext),
+          experience_context: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSourceIdeal",
@@ -17589,17 +14984,11 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          transaction_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          tokenized_card: CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard,
+          transaction_amount: S.optional(__S(17, __c2, 1)),
+          tokenized_card: __S(46, __c5, 6),
           device_manufacturer_id: S.optional(S.String),
-          payment_data_type: S.optional(
-            CaptureOrderRequestPaymentSourceApplePayDecryptedTokenPaymentDataType,
-          ),
-          payment_data: S.optional(
-            AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData,
-          ),
+          payment_data_type: S.optional(S.String),
+          payment_data: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSourceApplePayDecryptedToken",
@@ -17610,12 +14999,12 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(CardCustomerPhonePhoneNumber),
-          decrypted_token: S.optional(CaptureOrderRequestPaymentSourceApplePayDecryptedToken),
-          stored_credential: S.optional(CardStoredCredential),
+          phone_number: S.optional(__S(2, __c0, 2)),
+          decrypted_token: S.optional(__S(184, __c23, 0)),
+          stored_credential: S.optional(__S(10, __c1, 2)),
           vault_id: S.optional(S.Unknown),
-          attributes: S.optional(ApplePayAttributes),
-          experience_context: S.optional(ApplePayExperienceContext),
+          attributes: S.optional(__S(51, __c6, 3)),
+          experience_context: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSourceApplePay",
@@ -17625,10 +15014,9 @@ function __c23(j: number): any {
         S.Struct({
           message_id: S.optional(S.String),
           message_expiration: S.optional(S.String),
-          payment_method: CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenPaymentMethod,
-          card: AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCard,
-          authentication_method:
-            CaptureOrderRequestPaymentSourceGooglePayDecryptedTokenAuthenticationMethod,
+          payment_method: S.String,
+          card: __S(56, __c7, 0),
+          authentication_method: S.String,
           cryptogram: S.optional(S.String),
           eci_indicator: S.optional(S.String),
         }),
@@ -17640,13 +15028,11 @@ function __c23(j: number): any {
         S.Struct({
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber),
-          card: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayCard),
-          decrypted_token: S.optional(CaptureOrderRequestPaymentSourceGooglePayDecryptedToken),
-          assurance_details: S.optional(
-            AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails,
-          ),
-          experience_context: S.optional(ApplePayExperienceContext),
+          phone_number: S.optional(__S(54, __c6, 6)),
+          card: S.optional(__S(55, __c6, 7)),
+          decrypted_token: S.optional(__S(186, __c23, 2)),
+          assurance_details: S.optional(__S(58, __c7, 2)),
+          experience_context: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSourceGooglePay",
@@ -17654,22 +15040,22 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          card: S.optional(CardRequestInput),
-          token: S.optional(Token),
-          paypal: S.optional(CaptureOrderRequestPaymentSourcePaypal),
-          bancontact: S.optional(CaptureOrderRequestPaymentSourceBancontact),
-          blik: S.optional(CaptureOrderRequestPaymentSourceBlik),
-          eps: S.optional(CaptureOrderRequestPaymentSourceEps),
-          giropay: S.optional(CaptureOrderRequestPaymentSourceGiropay),
-          ideal: S.optional(CaptureOrderRequestPaymentSourceIdeal),
-          mybank: S.optional(CaptureOrderRequestPaymentSourceMybank),
-          p24: S.optional(CaptureOrderRequestPaymentSourceP24),
-          sofort: S.optional(CaptureOrderRequestPaymentSourceSofort),
-          trustly: S.optional(CaptureOrderRequestPaymentSourceTrustly),
-          apple_pay: S.optional(CaptureOrderRequestPaymentSourceApplePay),
-          google_pay: S.optional(CaptureOrderRequestPaymentSourceGooglePay),
-          venmo: S.optional(CaptureOrderRequestPaymentSourceVenmo),
-          crypto: S.optional(AuthorizeOrderRequestPaymentSourceCrypto),
+          card: S.optional(__S(13, __c1, 5)),
+          token: S.optional(__S(14, __c1, 6)),
+          paypal: S.optional(__S(182, __c22, 6)),
+          bancontact: S.optional(__S(40, __c5, 0)),
+          blik: S.optional(__S(36, __c4, 4)),
+          eps: S.optional(__S(38, __c4, 6)),
+          giropay: S.optional(__S(40, __c5, 0)),
+          ideal: S.optional(__S(183, __c22, 7)),
+          mybank: S.optional(__S(38, __c4, 6)),
+          p24: S.optional(__S(42, __c5, 2)),
+          sofort: S.optional(__S(38, __c4, 6)),
+          trustly: S.optional(__S(43, __c5, 3)),
+          apple_pay: S.optional(__S(185, __c23, 1)),
+          google_pay: S.optional(__S(187, __c23, 3)),
+          venmo: S.optional(__S(64, __c8, 0)),
+          crypto: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({
         identifier: "CaptureOrderRequestPaymentSource",
@@ -17682,7 +15068,7 @@ function __c23(j: number): any {
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
           payPalClientMetadataId: S.optional(S.String.pipe(T.Header("PayPal-Client-Metadata-Id"))),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          payment_source: S.optional(CaptureOrderRequestPaymentSource),
+          payment_source: S.optional(__S(188, __c23, 4)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/checkout/orders/{id}/capture", code: 200 })),
       ).annotate({ identifier: "CaptureOrderRequest" });
     case 6:
@@ -17690,11 +15076,11 @@ function __c23(j: number): any {
         S.Struct({
           email_address: S.optional(S.Unknown),
           payer_id: S.optional(S.Unknown),
-          name: S.optional(CardCustomerName),
-          phone: S.optional(CardVaultResponseCustomerPhone),
+          name: S.optional(__S(4, __c0, 4)),
+          phone: S.optional(__S(73, __c9, 1)),
           birth_date: S.optional(S.Unknown),
-          tax_info: S.optional(CaptureOrderResponsePayerTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
+          tax_info: S.optional(__S(15, __c1, 7)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePayer",
@@ -17702,15 +15088,13 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(CaptureOrderResponsePurchaseUnitsItemShippingType),
-          options: S.optional(CaptureOrderResponsePurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
-          trackers: S.optional(CaptureOrderResponsePurchaseUnitsItemShippingTrackersList),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
+          trackers: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePurchaseUnitsItemShipping",
@@ -17724,101 +15108,73 @@ function __c24(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem",
       });
     case 1:
-      return S.Array(CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem);
+      return S.Array(__S(192, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus),
-          status_details: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           expiration_time: S.optional(S.Unknown),
-          links: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList,
-          ),
+          links: S.optional(__S(193, __c24, 1)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
-          processor_response: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse,
-          ),
+          processor_response: S.optional(__S(163, __c20, 3)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem",
       });
     case 3:
-      return S.Array(CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem);
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem",
       });
     case 5:
-      return S.Array(CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem);
+      return S.Array(__S(196, __c24, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus),
-          status_details: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown,
-          ),
-          disbursement_mode: S.optional(DisbursementMode),
-          links: S.optional(CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList),
-          processor_response: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse,
-          ),
+          seller_receivable_breakdown: S.optional(__S(160, __c20, 0)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(197, __c24, 5)),
+          processor_response: S.optional(__S(163, __c20, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -17826,7 +15182,7 @@ function __c24(j: number): any {
         identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem",
       });
     case 7:
-      return S.Array(CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem);
+      return S.Array(__S(198, __c24, 6));
   }
 }
 function __c25(j: number): any {
@@ -17836,44 +15192,32 @@ function __c25(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem",
       });
     case 1:
-      return S.Array(CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem);
+      return S.Array(__S(200, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus),
-          status_details: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          amount: S.optional(__S(17, __c2, 1)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
           acquirer_reference_number: S.optional(S.String),
           note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown,
-          ),
-          payer: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          links: S.optional(CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList),
+          seller_payable_breakdown: S.optional(__S(168, __c21, 0)),
+          payer: S.optional(__S(88, __c11, 0)),
+          links: S.optional(__S(201, __c25, 1)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -17881,15 +15225,13 @@ function __c25(j: number): any {
         identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItem",
       });
     case 3:
-      return S.Array(CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItem);
+      return S.Array(__S(202, __c25, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(
-            CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList,
-          ),
-          captures: S.optional(CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesList),
-          refunds: S.optional(CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsList),
+          authorizations: S.optional(__S(195, __c24, 3)),
+          captures: S.optional(__S(199, __c24, 7)),
+          refunds: S.optional(__S(203, __c25, 3)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePurchaseUnitsItemPayments",
@@ -17898,35 +15240,35 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: S.optional(__S(119, __c14, 7)),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(CaptureOrderResponsePurchaseUnitsItemItemsList),
-          shipping: S.optional(CaptureOrderResponsePurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
-          payments: S.optional(CaptureOrderResponsePurchaseUnitsItemPayments),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(191, __c23, 7)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
+          payments: S.optional(__S(204, __c25, 4)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponsePurchaseUnitsItem",
       });
     case 6:
-      return S.Array(CaptureOrderResponsePurchaseUnitsItem);
+      return S.Array(__S(205, __c25, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(CaptureOrderResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(CaptureOrderResponseLinksItemSchema),
-          targetSchema: S.optional(CaptureOrderResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "CaptureOrderResponseLinksItem",
@@ -17936,32 +15278,30 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CaptureOrderResponseLinksItem);
+      return S.Array(__S(207, __c25, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
           id: S.optional(S.String),
-          payment_source: S.optional(AuthorizeOrderResponsePaymentSource),
-          intent: S.optional(CheckoutPaymentIntent),
-          payer: S.optional(CaptureOrderResponsePayer),
-          purchase_units: S.optional(CaptureOrderResponsePurchaseUnitsList),
+          payment_source: S.optional(__S(115, __c14, 3)),
+          intent: S.optional(S.String),
+          payer: S.optional(__S(190, __c23, 6)),
+          purchase_units: S.optional(__S(206, __c25, 6)),
           status: S.optional(S.Unknown),
-          links: S.optional(CaptureOrderResponseLinksList),
+          links: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({ identifier: "CaptureOrderResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(PaymentSourceInputPaypalAttributesVaultShippingType),
-          options: S.optional(PaymentSourceInputPaypalAttributesVaultShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputPaypalAttributesVaultShipping",
@@ -17969,12 +15309,12 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          store_in_vault: S.optional(StoreInVaultInstruction),
+          store_in_vault: S.optional(S.String),
           description: S.optional(S.String),
-          usage_pattern: S.optional(PaymentSourceInputPaypalAttributesVaultUsagePattern),
-          shipping: S.optional(PaymentSourceInputPaypalAttributesVaultShipping),
-          usage_type: PaymentSourceInputPaypalAttributesVaultUsageType,
-          customer_type: S.optional(PaymentSourceInputPaypalAttributesVaultCustomerType),
+          usage_pattern: S.optional(S.String),
+          shipping: S.optional(__S(210, __c26, 2)),
+          usage_type: S.String,
+          customer_type: S.optional(S.String),
           permit_multiple_payment_tokens: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -17983,8 +15323,8 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(CardCustomer),
-          vault: S.optional(PaymentSourceInputPaypalAttributesVault),
+          customer: S.optional(__S(5, __c0, 5)),
+          vault: S.optional(__S(211, __c26, 3)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputPaypalAttributes",
@@ -17994,15 +15334,15 @@ function __c26(j: number): any {
         S.Struct({
           vault_id: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          name: S.optional(CardCustomerName),
-          phone: S.optional(CardCustomerPhone),
+          name: S.optional(__S(4, __c0, 4)),
+          phone: S.optional(__S(3, __c0, 3)),
           birth_date: S.optional(S.Unknown),
-          tax_info: S.optional(PaymentSourceInputPaypalTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
-          attributes: S.optional(PaymentSourceInputPaypalAttributes),
-          experience_context: S.optional(PaypalWalletExperienceContextInput),
+          tax_info: S.optional(__S(15, __c1, 7)),
+          address: S.optional(__S(1, __c0, 1)),
+          attributes: S.optional(__S(212, __c26, 4)),
+          experience_context: S.optional(__S(28, __c3, 4)),
           billing_agreement_id: S.optional(S.String),
-          stored_credential: S.optional(PaypalWalletStoredCredential),
+          stored_credential: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "PaymentSourceInputPaypal" });
     case 6:
@@ -18010,9 +15350,7 @@ function __c26(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(
-            PaymentSourceInputBlikExperienceContextShippingPreference,
-          ),
+          shipping_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
           consumer_ip: S.optional(S.Unknown),
@@ -18027,9 +15365,9 @@ function __c26(j: number): any {
           name: S.Unknown,
           country_code: S.Unknown,
           email: S.optional(S.Unknown),
-          experience_context: S.optional(PaymentSourceInputBlikExperienceContext),
-          level_0: S.optional(AuthorizeOrderRequestPaymentSourceBlikLevel0),
-          one_click: S.optional(AuthorizeOrderRequestPaymentSourceBlikOneClick),
+          experience_context: S.optional(__S(214, __c26, 6)),
+          level_0: S.optional(__S(34, __c4, 2)),
+          one_click: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "PaymentSourceInputBlik" });
   }
@@ -18041,7 +15379,7 @@ function __c27(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          shipping_preference: S.optional(PaymentSourceInputEpsExperienceContextShippingPreference),
+          shipping_preference: S.optional(S.String),
           return_url: S.optional(S.Unknown),
           cancel_url: S.optional(S.Unknown),
         }),
@@ -18053,7 +15391,7 @@ function __c27(j: number): any {
         S.Struct({
           name: S.Unknown,
           country_code: S.Unknown,
-          experience_context: S.optional(PaymentSourceInputEpsExperienceContext),
+          experience_context: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "PaymentSourceInputEps" });
     case 2:
@@ -18061,7 +15399,7 @@ function __c27(j: number): any {
         S.Struct({
           name: S.Unknown,
           country_code: S.Unknown,
-          experience_context: S.optional(PaymentSourceInputGiropayExperienceContext),
+          experience_context: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputGiropay",
@@ -18072,7 +15410,7 @@ function __c27(j: number): any {
           name: S.Unknown,
           country_code: S.Unknown,
           bic: S.optional(S.Unknown),
-          experience_context: S.optional(PaymentSourceInputIdealExperienceContext),
+          experience_context: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "PaymentSourceInputIdeal" });
     case 4:
@@ -18081,7 +15419,7 @@ function __c27(j: number): any {
           name: S.Unknown,
           email: S.Unknown,
           country_code: S.Unknown,
-          experience_context: S.optional(PaymentSourceInputP24ExperienceContext),
+          experience_context: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "PaymentSourceInputP24" });
     case 5:
@@ -18090,7 +15428,7 @@ function __c27(j: number): any {
           name: S.Unknown,
           country_code: S.Unknown,
           email: S.Unknown,
-          experience_context: S.optional(PaymentSourceInputTrustlyExperienceContext),
+          experience_context: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputTrustly",
@@ -18098,9 +15436,7 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(
-            PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerificationMethod,
-          ),
+          method: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerification",
@@ -18108,11 +15444,9 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(CardCustomer),
-          vault: S.optional(CardRequestInputAttributesVault),
-          verification: S.optional(
-            PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributesVerification,
-          ),
+          customer: S.optional(__S(5, __c0, 5)),
+          vault: S.optional(__S(6, __c0, 6)),
+          verification: S.optional(__S(222, __c27, 6)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributes",
@@ -18132,8 +15466,8 @@ function __c28(j: number): any {
           card_type: S.optional(S.Unknown),
           type: S.optional(S.Unknown),
           brand: S.optional(S.Unknown),
-          billing_address: S.optional(CardRequestInputBillingAddress),
-          attributes: S.optional(PaymentSourceInputApplePayDecryptedTokenTokenizedCardAttributes),
+          billing_address: S.optional(__S(1, __c0, 1)),
+          attributes: S.optional(__S(223, __c27, 7)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputApplePayDecryptedTokenTokenizedCard",
@@ -18141,15 +15475,11 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          transaction_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          tokenized_card: PaymentSourceInputApplePayDecryptedTokenTokenizedCard,
+          transaction_amount: S.optional(__S(17, __c2, 1)),
+          tokenized_card: __S(224, __c28, 0),
           device_manufacturer_id: S.optional(S.String),
-          payment_data_type: S.optional(PaymentSourceInputApplePayDecryptedTokenPaymentDataType),
-          payment_data: S.optional(
-            AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenPaymentData,
-          ),
+          payment_data_type: S.optional(S.String),
+          payment_data: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputApplePayDecryptedToken",
@@ -18160,12 +15490,12 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(CardCustomerPhonePhoneNumber),
-          decrypted_token: S.optional(PaymentSourceInputApplePayDecryptedToken),
-          stored_credential: S.optional(CardStoredCredential),
+          phone_number: S.optional(__S(2, __c0, 2)),
+          decrypted_token: S.optional(__S(225, __c28, 1)),
+          stored_credential: S.optional(__S(10, __c1, 2)),
           vault_id: S.optional(S.Unknown),
-          attributes: S.optional(ApplePayAttributes),
-          experience_context: S.optional(ApplePayExperienceContext),
+          attributes: S.optional(__S(51, __c6, 3)),
+          experience_context: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputApplePay",
@@ -18175,9 +15505,9 @@ function __c28(j: number): any {
         S.Struct({
           message_id: S.optional(S.String),
           message_expiration: S.optional(S.String),
-          payment_method: PaymentSourceInputGooglePayDecryptedTokenPaymentMethod,
-          card: AuthorizeOrderRequestPaymentSourceGooglePayDecryptedTokenCard,
-          authentication_method: PaymentSourceInputGooglePayDecryptedTokenAuthenticationMethod,
+          payment_method: S.String,
+          card: __S(56, __c7, 0),
+          authentication_method: S.String,
           cryptogram: S.optional(S.String),
           eci_indicator: S.optional(S.String),
         }),
@@ -18189,13 +15519,11 @@ function __c28(j: number): any {
         S.Struct({
           name: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayPhoneNumber),
-          card: S.optional(AuthorizeOrderRequestPaymentSourceGooglePayCard),
-          decrypted_token: S.optional(PaymentSourceInputGooglePayDecryptedToken),
-          assurance_details: S.optional(
-            AuthorizeOrderRequestPaymentSourceGooglePayAssuranceDetails,
-          ),
-          experience_context: S.optional(ApplePayExperienceContext),
+          phone_number: S.optional(__S(54, __c6, 6)),
+          card: S.optional(__S(55, __c6, 7)),
+          decrypted_token: S.optional(__S(227, __c28, 3)),
+          assurance_details: S.optional(__S(58, __c7, 2)),
+          experience_context: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "PaymentSourceInputGooglePay",
@@ -18205,29 +15533,29 @@ function __c28(j: number): any {
         S.Struct({
           vault_id: S.optional(S.Unknown),
           email_address: S.optional(S.Unknown),
-          experience_context: S.optional(VenmoWalletExperienceContext),
-          attributes: S.optional(PaymentSourceInputVenmoAttributes),
+          experience_context: S.optional(__S(61, __c7, 5)),
+          attributes: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({ identifier: "PaymentSourceInputVenmo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          card: S.optional(CardRequestInput),
-          token: S.optional(Token),
-          paypal: S.optional(PaymentSourceInputPaypal),
-          bancontact: S.optional(PaymentSourceInputBancontact),
-          blik: S.optional(PaymentSourceInputBlik),
-          eps: S.optional(PaymentSourceInputEps),
-          giropay: S.optional(PaymentSourceInputGiropay),
-          ideal: S.optional(PaymentSourceInputIdeal),
-          mybank: S.optional(PaymentSourceInputMybank),
-          p24: S.optional(PaymentSourceInputP24),
-          sofort: S.optional(PaymentSourceInputSofort),
-          trustly: S.optional(PaymentSourceInputTrustly),
-          apple_pay: S.optional(PaymentSourceInputApplePay),
-          google_pay: S.optional(PaymentSourceInputGooglePay),
-          venmo: S.optional(PaymentSourceInputVenmo),
-          crypto: S.optional(AuthorizeOrderRequestPaymentSourceCrypto),
+          card: S.optional(__S(13, __c1, 5)),
+          token: S.optional(__S(14, __c1, 6)),
+          paypal: S.optional(__S(213, __c26, 5)),
+          bancontact: S.optional(__S(38, __c4, 6)),
+          blik: S.optional(__S(215, __c26, 7)),
+          eps: S.optional(__S(217, __c27, 1)),
+          giropay: S.optional(__S(218, __c27, 2)),
+          ideal: S.optional(__S(219, __c27, 3)),
+          mybank: S.optional(__S(217, __c27, 1)),
+          p24: S.optional(__S(220, __c27, 4)),
+          sofort: S.optional(__S(217, __c27, 1)),
+          trustly: S.optional(__S(221, __c27, 5)),
+          apple_pay: S.optional(__S(226, __c28, 2)),
+          google_pay: S.optional(__S(228, __c28, 4)),
+          venmo: S.optional(__S(229, __c28, 5)),
+          crypto: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "PaymentSourceInput" });
     case 7:
@@ -18237,7 +15565,7 @@ function __c28(j: number): any {
           locale: S.optional(S.Unknown),
           return_url: S.optional(S.String),
           cancel_url: S.optional(S.String),
-          stored_payment_source: S.optional(CardStoredCredential),
+          stored_payment_source: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "OrderConfirmApplicationContext",
@@ -18253,8 +15581,8 @@ function __c29(j: number): any {
           payPalClientMetadataId: S.optional(S.String.pipe(T.Header("PayPal-Client-Metadata-Id"))),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
-          payment_source: PaymentSourceInput,
-          application_context: S.optional(OrderConfirmApplicationContext),
+          payment_source: __S(230, __c28, 6),
+          application_context: S.optional(__S(231, __c28, 7)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18266,15 +15594,13 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(ConfirmOrderResponsePurchaseUnitsItemShippingType),
-          options: S.optional(ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
-          trackers: S.optional(ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
+          trackers: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponsePurchaseUnitsItemShipping",
@@ -18284,77 +15610,57 @@ function __c29(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem",
       });
     case 3:
-      return S.Array(ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem);
+      return S.Array(__S(234, __c29, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus),
-          status_details: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           expiration_time: S.optional(S.Unknown),
-          links: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList,
-          ),
+          links: S.optional(__S(235, __c29, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
-          processor_response: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse,
-          ),
+          processor_response: S.optional(__S(163, __c20, 3)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem",
       });
     case 5:
-      return S.Array(ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem);
+      return S.Array(__S(236, __c29, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem",
       });
     case 7:
-      return S.Array(ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem);
+      return S.Array(__S(238, __c29, 6));
   }
 }
 function __c30(j: number): any {
@@ -18362,27 +15668,19 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus),
-          status_details: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown,
-          ),
-          disbursement_mode: S.optional(DisbursementMode),
-          links: S.optional(ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList),
-          processor_response: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse,
-          ),
+          seller_receivable_breakdown: S.optional(__S(160, __c20, 0)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(239, __c29, 7)),
+          processor_response: S.optional(__S(163, __c20, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -18390,50 +15688,38 @@ function __c30(j: number): any {
         identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem",
       });
     case 1:
-      return S.Array(ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem);
+      return S.Array(__S(240, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem",
       });
     case 3:
-      return S.Array(ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem);
+      return S.Array(__S(242, __c30, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus),
-          status_details: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          amount: S.optional(__S(17, __c2, 1)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
           acquirer_reference_number: S.optional(S.String),
           note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown,
-          ),
-          payer: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          links: S.optional(ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList),
+          seller_payable_breakdown: S.optional(__S(168, __c21, 0)),
+          payer: S.optional(__S(88, __c11, 0)),
+          links: S.optional(__S(243, __c30, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -18441,15 +15727,13 @@ function __c30(j: number): any {
         identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItem",
       });
     case 5:
-      return S.Array(ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItem);
+      return S.Array(__S(244, __c30, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(
-            ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList,
-          ),
-          captures: S.optional(ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesList),
-          refunds: S.optional(ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsList),
+          authorizations: S.optional(__S(237, __c29, 5)),
+          captures: S.optional(__S(241, __c30, 1)),
+          refunds: S.optional(__S(245, __c30, 5)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponsePurchaseUnitsItemPayments",
@@ -18458,18 +15742,18 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: S.optional(__S(119, __c14, 7)),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(ConfirmOrderResponsePurchaseUnitsItemItemsList),
-          shipping: S.optional(ConfirmOrderResponsePurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
-          payments: S.optional(ConfirmOrderResponsePurchaseUnitsItemPayments),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(233, __c29, 1)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
+          payments: S.optional(__S(246, __c30, 6)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponsePurchaseUnitsItem",
@@ -18479,36 +15763,36 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ConfirmOrderResponsePurchaseUnitsItem);
+      return S.Array(__S(247, __c30, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(ConfirmOrderResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(ConfirmOrderResponseLinksItemSchema),
-          targetSchema: S.optional(ConfirmOrderResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "ConfirmOrderResponseLinksItem",
       });
     case 2:
-      return S.Array(ConfirmOrderResponseLinksItem);
+      return S.Array(__S(249, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
           id: S.optional(S.String),
-          payment_source: S.optional(AuthorizeOrderResponsePaymentSource),
-          intent: S.optional(CheckoutPaymentIntent),
-          payer: S.optional(ConfirmOrderResponsePayer),
-          purchase_units: S.optional(ConfirmOrderResponsePurchaseUnitsList),
+          payment_source: S.optional(__S(115, __c14, 3)),
+          intent: S.optional(S.String),
+          payer: S.optional(__S(190, __c23, 6)),
+          purchase_units: S.optional(__S(248, __c31, 0)),
           status: S.optional(S.Unknown),
-          links: S.optional(ConfirmOrderResponseLinksList),
+          links: S.optional(__S(250, __c31, 2)),
         }),
       ).annotate({ identifier: "ConfirmOrderResponse" });
     case 4:
@@ -18516,24 +15800,22 @@ function __c31(j: number): any {
         S.Struct({
           email_address: S.optional(S.Unknown),
           payer_id: S.optional(S.Unknown),
-          name: S.optional(CardCustomerName),
-          phone: S.optional(CardCustomerPhone),
+          name: S.optional(__S(4, __c0, 4)),
+          phone: S.optional(__S(3, __c0, 3)),
           birth_date: S.optional(S.Unknown),
-          tax_info: S.optional(CreateOrderRequestPayerTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
+          tax_info: S.optional(__S(15, __c1, 7)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "CreateOrderRequestPayer" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(CreateOrderRequestPurchaseUnitsItemShippingType),
-          options: S.optional(CreateOrderRequestPurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CreateOrderRequestPurchaseUnitsItemShipping",
@@ -18542,22 +15824,22 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: AmountWithBreakdown,
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: __S(119, __c14, 7),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(CreateOrderRequestPurchaseUnitsItemItemsList),
-          shipping: S.optional(CreateOrderRequestPurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(253, __c31, 5)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
         }),
       ).annotate({
         identifier: "CreateOrderRequestPurchaseUnitsItem",
       });
     case 7:
-      return S.Array(CreateOrderRequestPurchaseUnitsItem);
+      return S.Array(__S(254, __c31, 6));
   }
 }
 function __c32(j: number): any {
@@ -18565,10 +15847,8 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          payee_preferred: S.optional(PayeePaymentMethodPreference),
-          standard_entry_class_code: S.optional(
-            CreateOrderRequestApplicationContextPaymentMethodStandardEntryClassCode,
-          ),
+          payee_preferred: S.optional(S.String),
+          standard_entry_class_code: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateOrderRequestApplicationContextPaymentMethod",
@@ -18578,13 +15858,13 @@ function __c32(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.Unknown),
-          landing_page: S.optional(CreateOrderRequestApplicationContextLandingPage),
-          shipping_preference: S.optional(CreateOrderRequestApplicationContextShippingPreference),
-          user_action: S.optional(CreateOrderRequestApplicationContextUserAction),
-          payment_method: S.optional(CreateOrderRequestApplicationContextPaymentMethod),
+          landing_page: S.optional(S.String),
+          shipping_preference: S.optional(S.String),
+          user_action: S.optional(S.String),
+          payment_method: S.optional(__S(256, __c32, 0)),
           return_url: S.optional(S.String),
           cancel_url: S.optional(S.String),
-          stored_payment_source: S.optional(CardStoredCredential),
+          stored_payment_source: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "CreateOrderRequestApplicationContext",
@@ -18599,11 +15879,11 @@ function __c32(j: number): any {
           payPalClientMetadataId: S.optional(S.String.pipe(T.Header("PayPal-Client-Metadata-Id"))),
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          intent: CheckoutPaymentIntent,
-          payer: S.optional(CreateOrderRequestPayer),
-          purchase_units: CreateOrderRequestPurchaseUnitsList,
-          payment_source: S.optional(PaymentSourceInput),
-          application_context: S.optional(CreateOrderRequestApplicationContext),
+          intent: S.String,
+          payer: S.optional(__S(252, __c31, 4)),
+          purchase_units: __S(255, __c31, 7),
+          payment_source: S.optional(__S(230, __c28, 6)),
+          application_context: S.optional(__S(257, __c32, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/checkout/orders", code: 200 })),
       ).annotate({ identifier: "CreateOrderRequest" });
     case 3:
@@ -18611,25 +15891,23 @@ function __c32(j: number): any {
         S.Struct({
           email_address: S.optional(S.Unknown),
           payer_id: S.optional(S.Unknown),
-          name: S.optional(CardCustomerName),
-          phone: S.optional(CardVaultResponseCustomerPhone),
+          name: S.optional(__S(4, __c0, 4)),
+          phone: S.optional(__S(73, __c9, 1)),
           birth_date: S.optional(S.Unknown),
-          tax_info: S.optional(CreateOrderResponsePayerTaxInfo),
-          address: S.optional(CardRequestInputBillingAddress),
+          tax_info: S.optional(__S(15, __c1, 7)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "CreateOrderResponsePayer" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(CreateOrderResponsePurchaseUnitsItemShippingType),
-          options: S.optional(CreateOrderResponsePurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
-          trackers: S.optional(CreateOrderResponsePurchaseUnitsItemShippingTrackersList),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
+          trackers: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "CreateOrderResponsePurchaseUnitsItemShipping",
@@ -18639,48 +15917,34 @@ function __c32(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem",
       });
     case 6:
-      return S.Array(CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem);
+      return S.Array(__S(261, __c32, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus),
-          status_details: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           expiration_time: S.optional(S.Unknown),
-          links: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList,
-          ),
+          links: S.optional(__S(262, __c32, 6)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
-          processor_response: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse,
-          ),
+          processor_response: S.optional(__S(163, __c20, 3)),
         }),
       ).annotate({
         identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem",
@@ -18690,30 +15954,17 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem);
+      return S.Array(__S(263, __c32, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gross_amount:
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          paypal_fee: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          paypal_fee_in_receivable_currency: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          net_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          receivable_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          exchange_rate: S.optional(
-            AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate,
-          ),
-          platform_fees: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList,
-          ),
+          gross_amount: __S(17, __c2, 1),
+          paypal_fee: S.optional(__S(17, __c2, 1)),
+          paypal_fee_in_receivable_currency: S.optional(__S(17, __c2, 1)),
+          net_amount: S.optional(__S(17, __c2, 1)),
+          receivable_amount: S.optional(__S(17, __c2, 1)),
+          exchange_rate: S.optional(__S(158, __c19, 6)),
+          platform_fees: S.optional(__S(159, __c19, 7)),
         }),
       ).annotate({
         identifier:
@@ -18724,48 +15975,34 @@ function __c33(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem",
       });
     case 3:
-      return S.Array(CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem);
+      return S.Array(__S(266, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus),
-          status_details: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown,
-          ),
-          disbursement_mode: S.optional(DisbursementMode),
-          links: S.optional(CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList),
-          processor_response: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse,
-          ),
+          seller_receivable_breakdown: S.optional(__S(265, __c33, 1)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(267, __c33, 3)),
+          processor_response: S.optional(__S(163, __c20, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -18773,30 +16010,24 @@ function __c33(j: number): any {
         identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem",
       });
     case 5:
-      return S.Array(CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem);
+      return S.Array(__S(268, __c33, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem",
       });
     case 7:
-      return S.Array(CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem);
+      return S.Array(__S(270, __c33, 6));
   }
 }
 function __c34(j: number): any {
@@ -18804,23 +16035,17 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus),
-          status_details: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          amount: S.optional(__S(17, __c2, 1)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
           acquirer_reference_number: S.optional(S.String),
           note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown,
-          ),
-          payer: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          links: S.optional(CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList),
+          seller_payable_breakdown: S.optional(__S(168, __c21, 0)),
+          payer: S.optional(__S(88, __c11, 0)),
+          links: S.optional(__S(271, __c33, 7)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -18828,15 +16053,13 @@ function __c34(j: number): any {
         identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItem",
       });
     case 1:
-      return S.Array(CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItem);
+      return S.Array(__S(272, __c34, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(
-            CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList,
-          ),
-          captures: S.optional(CreateOrderResponsePurchaseUnitsItemPaymentsCapturesList),
-          refunds: S.optional(CreateOrderResponsePurchaseUnitsItemPaymentsRefundsList),
+          authorizations: S.optional(__S(264, __c33, 0)),
+          captures: S.optional(__S(269, __c33, 5)),
+          refunds: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({
         identifier: "CreateOrderResponsePurchaseUnitsItemPayments",
@@ -18845,53 +16068,53 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: S.optional(__S(119, __c14, 7)),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(CreateOrderResponsePurchaseUnitsItemItemsList),
-          shipping: S.optional(CreateOrderResponsePurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
-          payments: S.optional(CreateOrderResponsePurchaseUnitsItemPayments),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(260, __c32, 4)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
+          payments: S.optional(__S(274, __c34, 2)),
         }),
       ).annotate({
         identifier: "CreateOrderResponsePurchaseUnitsItem",
       });
     case 4:
-      return S.Array(CreateOrderResponsePurchaseUnitsItem);
+      return S.Array(__S(275, __c34, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(CreateOrderResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(CreateOrderResponseLinksItemSchema),
-          targetSchema: S.optional(CreateOrderResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "CreateOrderResponseLinksItem",
       });
     case 6:
-      return S.Array(CreateOrderResponseLinksItem);
+      return S.Array(__S(277, __c34, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
           id: S.optional(S.String),
-          payment_source: S.optional(AuthorizeOrderResponsePaymentSource),
-          intent: S.optional(CheckoutPaymentIntent),
-          payer: S.optional(CreateOrderResponsePayer),
-          purchase_units: S.optional(CreateOrderResponsePurchaseUnitsList),
+          payment_source: S.optional(__S(115, __c14, 3)),
+          intent: S.optional(S.String),
+          payer: S.optional(__S(259, __c32, 3)),
+          purchase_units: S.optional(__S(276, __c34, 4)),
           status: S.optional(S.Unknown),
-          links: S.optional(CreateOrderResponseLinksList),
+          links: S.optional(__S(278, __c34, 6)),
         }),
       ).annotate({ identifier: "CreateOrderResponse" });
   }
@@ -18906,38 +16129,36 @@ function __c35(j: number): any {
           sku: S.optional(S.String),
           url: S.optional(S.String),
           image_url: S.optional(S.String),
-          upc: S.optional(CreateOrdersTrackRequestItemsItemUpc),
+          upc: S.optional(__S(123, __c15, 3)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackRequestItemsItem",
       });
     case 1:
-      return S.Array(CreateOrdersTrackRequestItemsItem);
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
           tracking_number: S.String,
-          carrier: ShipmentCarrier,
+          carrier: S.String,
           carrier_name_other: S.optional(S.String),
           capture_id: S.String,
           notify_payer: S.optional(S.Boolean),
-          items: S.optional(CreateOrdersTrackRequestItemsList),
+          items: S.optional(__S(281, __c35, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/checkout/orders/{id}/track", code: 200 })),
       ).annotate({ identifier: "CreateOrdersTrackRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemShippingType),
-          options: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
-          trackers: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
+          trackers: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemShipping",
@@ -18945,12 +16166,8 @@ function __c35(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus,
-          ),
-          dispute_categories: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList,
-          ),
+          status: S.optional(S.String),
+          dispute_categories: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier:
@@ -18961,50 +16178,34 @@ function __c35(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(152, __c19, 0)),
+          targetSchema: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem",
       });
     case 6:
-      return S.Array(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem);
+      return S.Array(__S(285, __c35, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus,
-          ),
-          status_details: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(284, __c35, 4)),
           expiration_time: S.optional(S.Unknown),
-          links: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList,
-          ),
+          links: S.optional(__S(286, __c35, 6)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
-          processor_response: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse,
-          ),
+          processor_response: S.optional(__S(155, __c19, 3)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem",
@@ -19014,56 +16215,40 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem);
+      return S.Array(__S(287, __c35, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem",
       });
     case 2:
-      return S.Array(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem);
+      return S.Array(__S(289, __c36, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatus),
-          status_details: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown,
-          ),
-          disbursement_mode: S.optional(DisbursementMode),
-          links: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksList,
-          ),
-          processor_response: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse,
-          ),
+          seller_receivable_breakdown: S.optional(__S(160, __c20, 0)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(290, __c36, 2)),
+          processor_response: S.optional(__S(163, __c20, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -19071,34 +16256,18 @@ function __c36(j: number): any {
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem",
       });
     case 4:
-      return S.Array(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem);
+      return S.Array(__S(291, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gross_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          paypal_fee: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          paypal_fee_in_receivable_currency: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          net_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          net_amount_in_receivable_currency: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
-          platform_fees: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList,
-          ),
-          net_amount_breakdown: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList,
-          ),
-          total_refunded_amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          gross_amount: S.optional(__S(17, __c2, 1)),
+          paypal_fee: S.optional(__S(17, __c2, 1)),
+          paypal_fee_in_receivable_currency: S.optional(__S(17, __c2, 1)),
+          net_amount: S.optional(__S(17, __c2, 1)),
+          net_amount_in_receivable_currency: S.optional(__S(17, __c2, 1)),
+          platform_fees: S.optional(__S(159, __c19, 7)),
+          net_amount_breakdown: S.optional(__S(167, __c20, 7)),
+          total_refunded_amount: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier:
@@ -19109,24 +16278,18 @@ function __c36(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem",
       });
     case 7:
-      return S.Array(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem);
+      return S.Array(__S(294, __c36, 6));
   }
 }
 function __c37(j: number): any {
@@ -19134,23 +16297,17 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatus),
-          status_details: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          amount: S.optional(__S(17, __c2, 1)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
           acquirer_reference_number: S.optional(S.String),
           note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown,
-          ),
-          payer: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          links: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksList),
+          seller_payable_breakdown: S.optional(__S(293, __c36, 5)),
+          payer: S.optional(__S(88, __c11, 0)),
+          links: S.optional(__S(295, __c36, 7)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -19158,15 +16315,13 @@ function __c37(j: number): any {
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItem",
       });
     case 1:
-      return S.Array(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItem);
+      return S.Array(__S(296, __c37, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(
-            CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsList,
-          ),
-          captures: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesList),
-          refunds: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsList),
+          authorizations: S.optional(__S(288, __c36, 0)),
+          captures: S.optional(__S(292, __c36, 4)),
+          refunds: S.optional(__S(297, __c37, 1)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPayments",
@@ -19175,53 +16330,53 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: S.optional(__S(119, __c14, 7)),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemItemsList),
-          shipping: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
-          payments: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemPayments),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(283, __c35, 3)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
+          payments: S.optional(__S(298, __c37, 2)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponsePurchaseUnitsItem",
       });
     case 4:
-      return S.Array(CreateOrdersTrackResponsePurchaseUnitsItem);
+      return S.Array(__S(299, __c37, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(CreateOrdersTrackResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(CreateOrdersTrackResponseLinksItemSchema),
-          targetSchema: S.optional(CreateOrdersTrackResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponseLinksItem",
       });
     case 6:
-      return S.Array(CreateOrdersTrackResponseLinksItem);
+      return S.Array(__S(301, __c37, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
           id: S.optional(S.String),
-          payment_source: S.optional(AuthorizeOrderResponsePaymentSource),
-          intent: S.optional(CheckoutPaymentIntent),
-          payer: S.optional(CreateOrdersTrackResponsePayer),
-          purchase_units: S.optional(CreateOrdersTrackResponsePurchaseUnitsList),
+          payment_source: S.optional(__S(115, __c14, 3)),
+          intent: S.optional(S.String),
+          payer: S.optional(__S(190, __c23, 6)),
+          purchase_units: S.optional(__S(300, __c37, 4)),
           status: S.optional(S.Unknown),
-          links: S.optional(CreateOrdersTrackResponseLinksList),
+          links: S.optional(__S(302, __c37, 6)),
         }),
       ).annotate({
         identifier: "CreateOrdersTrackResponse",
@@ -19241,15 +16396,13 @@ function __c38(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(GetOrderResponsePurchaseUnitsItemShippingType),
-          options: S.optional(GetOrderResponsePurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
-          trackers: S.optional(GetOrderResponsePurchaseUnitsItemShippingTrackersList),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
+          trackers: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItemShipping",
@@ -19259,58 +16412,44 @@ function __c38(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod,
-          ),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema,
-          ),
-          targetSchema: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem",
       });
     case 3:
-      return S.Array(GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem);
+      return S.Array(__S(306, __c38, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatus),
-          status_details: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(148, __c18, 4)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           expiration_time: S.optional(S.Unknown),
-          links: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksList),
+          links: S.optional(__S(307, __c38, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
-          processor_response: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse,
-          ),
+          processor_response: S.optional(__S(163, __c20, 3)),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem",
       });
     case 5:
-      return S.Array(GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem);
+      return S.Array(__S(308, __c38, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason,
-          ),
+          reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails",
@@ -19320,14 +16459,12 @@ function __c38(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema),
-          targetSchema: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem",
@@ -19337,31 +16474,23 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem);
+      return S.Array(__S(311, __c38, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus),
-          status_details: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(310, __c38, 6)),
           id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
+          amount: S.optional(__S(119, __c14, 7)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
-          network_transaction_reference: S.optional(NetworkTransaction),
-          seller_protection: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection,
-          ),
+          network_transaction_reference: S.optional(__S(9, __c1, 1)),
+          seller_protection: S.optional(__S(149, __c18, 5)),
           final_capture: S.optional(S.Boolean),
-          seller_receivable_breakdown: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown,
-          ),
-          disbursement_mode: S.optional(DisbursementMode),
-          links: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksList),
-          processor_response: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse,
-          ),
+          seller_receivable_breakdown: S.optional(__S(265, __c33, 1)),
+          disbursement_mode: S.optional(S.String),
+          links: S.optional(__S(312, __c39, 0)),
+          processor_response: S.optional(__S(163, __c20, 3)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -19369,46 +16498,38 @@ function __c39(j: number): any {
         identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem",
       });
     case 2:
-      return S.Array(GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem);
+      return S.Array(__S(313, __c39, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema),
-          targetSchema: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema,
-          ),
+          schema: S.optional(__S(151, __c18, 7)),
+          targetSchema: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem",
       });
     case 4:
-      return S.Array(GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem);
+      return S.Array(__S(315, __c39, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatus),
-          status_details: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails,
-          ),
+          status: S.optional(S.String),
+          status_details: S.optional(__S(310, __c38, 6)),
           id: S.optional(S.String),
-          amount: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-          ),
+          amount: S.optional(__S(17, __c2, 1)),
           invoice_id: S.optional(S.String),
           custom_id: S.optional(S.String),
           acquirer_reference_number: S.optional(S.String),
           note_to_payer: S.optional(S.String),
-          seller_payable_breakdown: S.optional(
-            GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown,
-          ),
-          payer: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          links: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksList),
+          seller_payable_breakdown: S.optional(__S(168, __c21, 0)),
+          payer: S.optional(__S(88, __c11, 0)),
+          links: S.optional(__S(316, __c39, 4)),
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
         }),
@@ -19416,13 +16537,13 @@ function __c39(j: number): any {
         identifier: "GetOrderResponsePurchaseUnitsItemPaymentsRefundsItem",
       });
     case 6:
-      return S.Array(GetOrderResponsePurchaseUnitsItemPaymentsRefundsItem);
+      return S.Array(__S(317, __c39, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsList),
-          captures: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsCapturesList),
-          refunds: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsRefundsList),
+          authorizations: S.optional(__S(309, __c38, 5)),
+          captures: S.optional(__S(314, __c39, 2)),
+          refunds: S.optional(__S(318, __c39, 6)),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItemPayments",
@@ -19435,72 +16556,72 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: S.optional(AmountWithBreakdown),
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: S.optional(__S(119, __c14, 7)),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(GetOrderResponsePurchaseUnitsItemItemsList),
-          shipping: S.optional(GetOrderResponsePurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
-          payments: S.optional(GetOrderResponsePurchaseUnitsItemPayments),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(305, __c38, 1)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
+          payments: S.optional(__S(319, __c39, 7)),
         }),
       ).annotate({
         identifier: "GetOrderResponsePurchaseUnitsItem",
       });
     case 1:
-      return S.Array(GetOrderResponsePurchaseUnitsItem);
+      return S.Array(__S(320, __c40, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(GetOrderResponseLinksItemMethod),
+          method: S.optional(S.String),
           title: S.optional(S.String),
           mediaType: S.optional(S.String),
           encType: S.optional(S.String),
-          schema: S.optional(GetOrderResponseLinksItemSchema),
-          targetSchema: S.optional(GetOrderResponseLinksItemTargetSchema),
+          schema: S.optional(__S(76, __c9, 4)),
+          targetSchema: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "GetOrderResponseLinksItem",
       });
     case 3:
-      return S.Array(GetOrderResponseLinksItem);
+      return S.Array(__S(322, __c40, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           create_time: S.optional(S.Unknown),
           update_time: S.optional(S.Unknown),
           id: S.optional(S.String),
-          payment_source: S.optional(AuthorizeOrderResponsePaymentSource),
-          intent: S.optional(CheckoutPaymentIntent),
-          payer: S.optional(GetOrderResponsePayer),
-          purchase_units: S.optional(GetOrderResponsePurchaseUnitsList),
+          payment_source: S.optional(__S(115, __c14, 3)),
+          intent: S.optional(S.String),
+          payer: S.optional(__S(259, __c32, 3)),
+          purchase_units: S.optional(__S(321, __c40, 1)),
           status: S.optional(S.Unknown),
-          links: S.optional(GetOrderResponseLinksList),
+          links: S.optional(__S(323, __c40, 3)),
         }),
       ).annotate({ identifier: "GetOrderResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          op: PatchRequestItemOp,
+          op: S.String,
           path: S.optional(S.String),
           value: S.optional(S.Unknown),
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchRequestItem" });
     case 6:
-      return S.Array(PatchRequestItem);
+      return S.Array(__S(325, __c40, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          body: S.optional(PatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(326, __c40, 6).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PATCH", uri: "/v2/checkout/orders/{id}", code: 200 })),
       ).annotate({ identifier: "PatchOrderRequest" });
   }
@@ -19513,7 +16634,7 @@ function __c41(j: number): any {
           id: S.String.pipe(T.Label()),
           tracker_id: S.String.pipe(T.Label()),
           payPalAuthAssertion: S.optional(S.String.pipe(T.Header("PayPal-Auth-Assertion"))),
-          body: S.optional(PatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(326, __c40, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19527,14 +16648,12 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CardCustomerName),
+          name: S.optional(__S(4, __c0, 4)),
           email_address: S.optional(S.Unknown),
-          phone_number: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingPhoneNumber,
-          ),
-          type: S.optional(ServerCallbackRequestPurchaseUnitsItemShippingType),
-          options: S.optional(ServerCallbackRequestPurchaseUnitsItemShippingOptionsList),
-          address: S.optional(CardRequestInputBillingAddress),
+          phone_number: S.optional(__S(16, __c2, 0)),
+          type: S.optional(S.String),
+          options: S.optional(__S(130, __c16, 2)),
+          address: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "ServerCallbackRequestPurchaseUnitsItemShipping",
@@ -19543,30 +16662,28 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reference_id: S.optional(S.String),
-          amount: AmountWithBreakdown,
-          payee: S.optional(PaypalWalletAttributesResponseCobrandedCardsItemPayee),
-          payment_instruction: S.optional(PaymentInstruction),
+          amount: __S(119, __c14, 7),
+          payee: S.optional(__S(88, __c11, 0)),
+          payment_instruction: S.optional(__S(122, __c15, 2)),
           description: S.optional(S.String),
           custom_id: S.optional(S.String),
           invoice_id: S.optional(S.String),
           soft_descriptor: S.optional(S.String),
-          items: S.optional(ServerCallbackRequestPurchaseUnitsItemItemsList),
-          shipping: S.optional(ServerCallbackRequestPurchaseUnitsItemShipping),
-          supplementary_data: S.optional(AuthorizeOrderResponsePurchaseUnitsItemSupplementaryData),
+          items: S.optional(__S(129, __c16, 1)),
+          shipping: S.optional(__S(329, __c41, 1)),
+          supplementary_data: S.optional(__S(147, __c18, 3)),
         }),
       ).annotate({
         identifier: "ServerCallbackRequestPurchaseUnitsItem",
       });
     case 3:
-      return S.Array(ServerCallbackRequestPurchaseUnitsItem);
+      return S.Array(__S(330, __c41, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          shipping_address: S.optional(CardRequestInputBillingAddress),
-          shipping_option: S.optional(
-            AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-          ),
-          purchase_units: ServerCallbackRequestPurchaseUnitsList,
+          shipping_address: S.optional(__S(1, __c0, 1)),
+          shipping_option: S.optional(__S(18, __c2, 2)),
+          purchase_units: __S(331, __c41, 3),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/checkout/orders/order-update-callback", code: 200 }),
         ),
@@ -19580,4 +16697,9 @@ function __c41(j: number): any {
         identifier: "OrderUpdateCallbackResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

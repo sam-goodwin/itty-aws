@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -28,19 +30,12 @@ export type CreateRequestActionMode =
   | "challenge"
   | "js_challenge"
   | "managed_challenge";
-const CreateRequestActionMode = S.String;
-
 export interface CreateRequestActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
   body?: string;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
   contentType?: string;
 }
-const CreateRequestActionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRequestActionResponse>;
-
 export interface CreateRequestAction {
   /** The action to perform. */
   mode?: CreateRequestActionMode | (string & {});
@@ -49,11 +44,7 @@ export interface CreateRequestAction {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or "js_challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value. */
   timeout?: number;
 }
-const CreateRequestAction = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateRequestAction>;
-
 export type CreateRequestMatchHeadersItemOp = "eq" | "ne";
-const CreateRequestMatchHeadersItemOp = S.String;
-
 export interface CreateRequestMatchHeadersItem {
   /** The name of the response header to match. */
   name?: string;
@@ -62,17 +53,7 @@ export interface CreateRequestMatchHeadersItem {
   /** The value of the response header, which must match exactly. */
   value?: string;
 }
-const CreateRequestMatchHeadersItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateRequestMatchHeadersItem>;
-
 export type CreateRequestMatchHeadersList = Array<CreateRequestMatchHeadersItem>;
-const CreateRequestMatchHeadersList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateRequestMatchHeadersList>;
-
 export type CreateRequestMatchRequestMethodsItem =
   | "GET"
   | "POST"
@@ -81,22 +62,10 @@ export type CreateRequestMatchRequestMethodsItem =
   | "PATCH"
   | "HEAD"
   | "_ALL_";
-const CreateRequestMatchRequestMethodsItem = S.String;
-
 export type CreateRequestMatchRequestMethodsList = Array<
   CreateRequestMatchRequestMethodsItem | (string & {})
 >;
-const CreateRequestMatchRequestMethodsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateRequestMatchRequestMethodsList>;
-
 export type CreateRequestMatchRequestSchemesList = Array<string>;
-const CreateRequestMatchRequestSchemesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateRequestMatchRequestSchemesList>;
-
 export interface CreateRequestMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
   methods?: CreateRequestMatchRequestMethodsList;
@@ -105,27 +74,15 @@ export interface CreateRequestMatchRequest {
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
   url?: string;
 }
-const CreateRequestMatchRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateRequestMatchRequest>;
-
 export interface CreateRequestMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. Notes: This field is deprecated. Instead, use response headers and set "origin_traffic" to "false" to avoid legacy behaviour interacting with the "response_headers" property. */
   originTraffic?: boolean;
 }
-const CreateRequestMatchResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateRequestMatchResponse>;
-
 export interface CreateRequestMatch {
   headers?: CreateRequestMatchHeadersList;
   request?: CreateRequestMatchRequest;
   response?: CreateRequestMatchResponse;
 }
-const CreateRequestMatch = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateRequestMatch>;
-
 export interface CreateRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -138,31 +95,14 @@ export interface CreateRateLimitRequest {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold: number;
 }
-const CreateRateLimitRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateRateLimitRequest>;
-
 export interface CreateRateLimitResponse {}
-const CreateRateLimitResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateRateLimitResponse>;
-
 export interface DeleteRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique identifier of the rate limit. */
   rateLimitId: string;
 }
-const DeleteRateLimitRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteRateLimitRequest>;
-
 export interface DeleteRateLimitResponse {}
-const DeleteRateLimitResponse = CreateRateLimitResponse as any as S.Schema<DeleteRateLimitResponse>;
-
 export type EditRequestActionMode =
   | "simulate"
   | "ban"
@@ -178,8 +118,6 @@ export interface EditRequestAction {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or "js_challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value. */
   timeout?: number;
 }
-const EditRequestAction = CreateRequestAction as any as S.Schema<EditRequestAction>;
-
 export type EditRequestMatchHeadersItemOp = "eq" | "ne";
 export interface EditRequestMatchHeadersItem {
   /** The name of the response header to match. */
@@ -190,9 +128,6 @@ export interface EditRequestMatchHeadersItem {
   value?: string;
 }
 export type EditRequestMatchHeadersList = Array<EditRequestMatchHeadersItem>;
-const EditRequestMatchHeadersList =
-  CreateRequestMatchHeadersList as any as S.Schema<EditRequestMatchHeadersList>;
-
 export type EditRequestMatchRequestMethodsItem =
   | "GET"
   | "POST"
@@ -204,13 +139,7 @@ export type EditRequestMatchRequestMethodsItem =
 export type EditRequestMatchRequestMethodsList = Array<
   EditRequestMatchRequestMethodsItem | (string & {})
 >;
-const EditRequestMatchRequestMethodsList =
-  CreateRequestMatchRequestMethodsList as any as S.Schema<EditRequestMatchRequestMethodsList>;
-
 export type EditRequestMatchRequestSchemesList = Array<string>;
-const EditRequestMatchRequestSchemesList =
-  CreateRequestMatchRequestSchemesList as any as S.Schema<EditRequestMatchRequestSchemesList>;
-
 export interface EditRequestMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
   methods?: EditRequestMatchRequestMethodsList;
@@ -219,19 +148,12 @@ export interface EditRequestMatchRequest {
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
   url?: string;
 }
-const EditRequestMatchRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<EditRequestMatchRequest>;
-
 export type EditRequestMatchResponse = CreateRequestMatchResponse;
 export interface EditRequestMatch {
   headers?: EditRequestMatchHeadersList;
   request?: EditRequestMatchRequest;
   response?: CreateRequestMatchResponse;
 }
-const EditRequestMatch = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EditRequestMatch>;
-
 export interface EditRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -246,22 +168,14 @@ export interface EditRateLimitRequest {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold: number;
 }
-const EditRateLimitRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<EditRateLimitRequest>;
-
 export interface EditRateLimitResponse {}
-const EditRateLimitResponse = CreateRateLimitResponse as any as S.Schema<EditRateLimitResponse>;
-
 export interface GetRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique identifier of the rate limit. */
   rateLimitId: string;
 }
-const GetRateLimitRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetRateLimitRequest>;
-
 export interface GetRateLimitResponse {}
-const GetRateLimitResponse = CreateRateLimitResponse as any as S.Schema<GetRateLimitResponse>;
-
 export interface ListRateLimitsRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -270,14 +184,7 @@ export interface ListRateLimitsRequest {
   /** Defines the maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`. */
   perPage?: number;
 }
-const ListRateLimitsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListRateLimitsRequest>;
-
 export interface ListRateLimitsResponse {}
-const ListRateLimitsResponse = CreateRateLimitResponse as any as S.Schema<ListRateLimitsResponse>;
-
 export type CreateRateLimitError = CloudflareOpError;
 /** **Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead. */
 export const createRateLimit: API.OperationMethod<
@@ -286,8 +193,8 @@ export const createRateLimit: API.OperationMethod<
   CreateRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRateLimitRequest,
-  output: CreateRateLimitResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateRateLimitRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -301,8 +208,8 @@ export const deleteRateLimit: API.OperationMethod<
   DeleteRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRateLimitRequest,
-  output: DeleteRateLimitResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteRateLimitRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeleteRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -316,8 +223,8 @@ export const editRateLimit: API.OperationMethod<
   EditRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditRateLimitRequest,
-  output: EditRateLimitResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<EditRateLimitRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<EditRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -331,8 +238,8 @@ export const getRateLimit: API.OperationMethod<
   GetRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRateLimitRequest,
-  output: GetRateLimitResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GetRateLimitRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -346,8 +253,8 @@ export const listRateLimits: API.OperationMethod<
   ListRateLimitsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRateLimitsRequest,
-  output: ListRateLimitsResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<ListRateLimitsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListRateLimitsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -368,8 +275,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(CreateRequestActionMode),
-          response: S.optional(CreateRequestActionResponse),
+          mode: S.optional(S.String),
+          response: S.optional(__S(0, __c0, 0)),
           timeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CreateRequestAction" });
@@ -377,23 +284,23 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          op: S.optional(CreateRequestMatchHeadersItemOp),
+          op: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateRequestMatchHeadersItem",
       });
     case 3:
-      return S.Array(CreateRequestMatchHeadersItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
-      return S.Array(CreateRequestMatchRequestMethodsItem);
+      return S.Array(S.String);
     case 5:
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(CreateRequestMatchRequestMethodsList),
-          schemes: S.optional(CreateRequestMatchRequestSchemesList),
+          methods: S.optional(__S(4, __c0, 4)),
+          schemes: S.optional(__S(5, __c0, 5)),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -414,17 +321,17 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(CreateRequestMatchHeadersList),
-          request: S.optional(CreateRequestMatchRequest),
-          response: S.optional(CreateRequestMatchResponse),
+          headers: S.optional(__S(3, __c0, 3)),
+          request: S.optional(__S(6, __c0, 6)),
+          response: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "CreateRequestMatch" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          action: CreateRequestAction,
-          match: CreateRequestMatch,
+          action: __S(1, __c0, 1),
+          match: __S(8, __c1, 0),
           period: S.Number,
           threshold: S.Number,
         })
@@ -453,17 +360,17 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(EditRequestMatchRequestMethodsList),
-          schemes: S.optional(EditRequestMatchRequestSchemesList),
+          methods: S.optional(__S(4, __c0, 4)),
+          schemes: S.optional(__S(5, __c0, 5)),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "EditRequestMatchRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(EditRequestMatchHeadersList),
-          request: S.optional(EditRequestMatchRequest),
-          response: S.optional(CreateRequestMatchResponse),
+          headers: S.optional(__S(3, __c0, 3)),
+          request: S.optional(__S(12, __c1, 4)),
+          response: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "EditRequestMatch" });
     case 6:
@@ -471,8 +378,8 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
-          action: EditRequestAction,
-          match: EditRequestMatch,
+          action: __S(1, __c0, 1),
+          match: __S(13, __c1, 5),
           period: S.Number,
           threshold: S.Number,
         })
@@ -515,4 +422,9 @@ function __c2(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRateLimitsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

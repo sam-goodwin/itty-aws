@@ -9,6 +9,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -16,46 +18,25 @@ export interface GetBlogResourceGroupRequest {
   namespace: string;
   slug: string;
 }
-const GetBlogResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetBlogResourceGroupRequest>;
-
 export interface GetBlogResourceGroupResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
-const GetBlogResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetBlogResourceGroupResponse>;
-
 export type ListBlogsRequestCommunitySort = "trending" | "recent";
-const ListBlogsRequestCommunitySort = S.String;
-
 export interface ListBlogsRequest {
   p?: number;
   community_sort?: ListBlogsRequestCommunitySort | (string & {});
   tag?: string;
 }
-const ListBlogsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListBlogsRequest>;
-
 export interface ListBlogsResponse {}
-const ListBlogsResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListBlogsResponse>;
-
 export interface SetBlogResourceGroupRequest {
   namespace: string;
   slug: string;
   /** The resource group to assign the blog to. If null, the blog is removed from any resource group. */
   resourceGroupId: string | null;
 }
-const SetBlogResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<SetBlogResourceGroupRequest>;
-
 export interface SetBlogResourceGroupResponse {
   resourceGroupId: string | null;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -65,11 +46,6 @@ export interface SetBlogResourceGroupResponse {
   private: boolean;
   addedBy: string;
 }
-const SetBlogResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SetBlogResourceGroupResponse>;
-
 export type GetBlogResourceGroupError = HuggingFaceOpError;
 /** Blog resource group */
 export const getBlogResourceGroup: API.OperationMethod<
@@ -78,8 +54,8 @@ export const getBlogResourceGroup: API.OperationMethod<
   GetBlogResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBlogResourceGroupRequest,
-  output: GetBlogResourceGroupResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetBlogResourceGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetBlogResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -93,8 +69,8 @@ export const listBlogs: API.OperationMethod<
   ListBlogsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBlogsRequest,
-  output: ListBlogsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ListBlogsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ListBlogsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -108,8 +84,8 @@ export const setBlogResourceGroup: API.OperationMethod<
   SetBlogResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetBlogResourceGroupRequest,
-  output: SetBlogResourceGroupResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<SetBlogResourceGroupRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<SetBlogResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -143,7 +119,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           p: S.optional(S.Number.pipe(T.Query())),
-          community_sort: S.optional(ListBlogsRequestCommunitySort.pipe(T.Query())),
+          community_sort: S.optional(S.String.pipe(T.Query())),
           tag: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/blog/zh", code: 200 })),
       ).annotate({ identifier: "ListBlogsRequest" });
@@ -177,4 +153,9 @@ function __c0(j: number): any {
         identifier: "SetBlogResourceGroupResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

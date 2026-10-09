@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,16 +69,9 @@ export type AdminAccessBindingOrganizationRolesItemEnum =
   | "ORG_ADMIN_ROLE"
   | "USER_ADMIN_ROLE"
   | "BILLING_ADMIN_ROLE";
-const AdminAccessBindingOrganizationRolesItemEnum = S.String;
-
 export type AdminAccessBindingOrganizationRolesItemEnumList = Array<
   AdminAccessBindingOrganizationRolesItemEnum | (string & {})
 >;
-const AdminAccessBindingOrganizationRolesItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AdminAccessBindingOrganizationRolesItemEnumList>;
-
 /** A resource message representing a binding to a set of roles. */
 export interface AdminAccessBinding {
   /** Resource name of the user group. */
@@ -88,25 +83,16 @@ export interface AdminAccessBinding {
   /** Identifier. The resource name of this AdminAccessBinding. Format: organizations/{org_id}/adminAccessBindings/{admin_access_binding_id} Example: "organizations/123abc/adminAccessBindings/456def" */
   name?: string;
 }
-const AdminAccessBinding = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AdminAccessBinding>;
-
 export interface CreateOrganizationsAdminAccessBindingsRequest {
   /** Required. The parent organization, which owns this Admin Access Binding. Format: organizations/{org_id} */
   parent: string;
   /** Request body */
   body?: AdminAccessBinding;
 }
-const CreateOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateOrganizationsAdminAccessBindingsRequest>;
-
 export type AnalyticsAccountLinkLinkVerificationStateEnum =
   | "LINK_VERIFICATION_STATE_UNSPECIFIED"
   | "LINK_VERIFICATION_STATE_VERIFIED"
   | "LINK_VERIFICATION_STATE_NOT_VERIFIED";
-const AnalyticsAccountLinkLinkVerificationStateEnum = S.String;
-
 /** A resource message representing the link between a Google Analytics account and a Google Marketing Platform organization. */
 export interface AnalyticsAccountLink {
   /** Output only. The verification state of the link between the Analytics account and the parent organization. */
@@ -118,19 +104,12 @@ export interface AnalyticsAccountLink {
   /** Output only. The human-readable name for the Analytics account. */
   displayName?: string;
 }
-const AnalyticsAccountLink = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AnalyticsAccountLink>;
-
 export interface CreateOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The parent resource where this Analytics account link will be created. Format: organizations/{org_id} */
   parent: string;
   /** Request body */
   body?: AnalyticsAccountLink;
 }
-const CreateOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateOrganizationsAnalyticsAccountLinksRequest>;
-
 /** A resource message representing a user group in a GMP organization. */
 export interface UserGroup {
   /** Identifier. Resource name of this UserGroup. Format: organizations/{org_id}/userGroups/{user_group_id} Example: "organizations/123abc/userGroups/456def" */
@@ -140,25 +119,16 @@ export interface UserGroup {
   /** Optional. The description of the user group. */
   description?: string;
 }
-const UserGroup = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<UserGroup>;
-
 export interface CreateOrganizationsUserGroupsRequest {
   /** Required. The parent resource where this UserGroup will be created. Format: organizations/{org_id} */
   parent: string;
   /** Request body */
   body?: UserGroup;
 }
-const CreateOrganizationsUserGroupsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateOrganizationsUserGroupsRequest>;
-
 export type UserGroupMemberMembershipRoleEnum =
   | "MEMBERSHIP_ROLE_UNSPECIFIED"
   | "MEMBERSHIP_ROLE_OWNER"
   | "MEMBERSHIP_ROLE_MEMBER";
-const UserGroupMemberMembershipRoleEnum = S.String;
-
 /** A resource message representing a member of a user group. */
 export interface UserGroupMember {
   /** Email address of the user member. */
@@ -170,71 +140,37 @@ export interface UserGroupMember {
   /** Optional. The role of the member in the user group. */
   membershipRole?: UserGroupMemberMembershipRoleEnum | (string & {});
 }
-const UserGroupMember = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UserGroupMember>;
-
 export interface CreateOrganizationsUserGroupsMembersRequest {
   /** Required. The parent resource where this UserGroupMember will be created. Format: organizations/{org_id}/userGroups/{user_group_id} */
   parent: string;
   /** Request body */
   body?: UserGroupMember;
 }
-const CreateOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateOrganizationsUserGroupsMembersRequest>;
-
 export interface DeleteOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The name of the Analytics account link to delete. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} */
   name: string;
 }
-const DeleteOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Empty>;
-
 export interface DeleteOrganizationsUserGroupsRequest {
   /** Required. The name of the user group to delete. Format: organizations/{org_id}/userGroups/{user_group_id} */
   name: string;
 }
-const DeleteOrganizationsUserGroupsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteOrganizationsUserGroupsRequest>;
-
 export interface DeleteOrganizationsUserGroupsMembersRequest {
   /** Required. The name of the user group member to delete. Format: organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} */
   name: string;
 }
-const DeleteOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteOrganizationsUserGroupsMembersRequest>;
-
 /** Request message for FindSalesPartnerManagedClients RPC. */
 export interface FindSalesPartnerManagedClientsRequest {
   /** Optional. If set, only active and just ended clients will be returned. */
   isActive?: boolean;
 }
-const FindSalesPartnerManagedClientsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<FindSalesPartnerManagedClientsRequest>;
-
 export interface FindSalesPartnerManagedClientsOrganizationsRequest {
   /** Required. The name of the sales partner organization. Format: organizations/{org_id} */
   organization: string;
   /** Request body */
   body?: FindSalesPartnerManagedClientsRequest;
 }
-const FindSalesPartnerManagedClientsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<FindSalesPartnerManagedClientsOrganizationsRequest>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Marketingplatformadmin_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -244,11 +180,6 @@ export interface Marketingplatformadmin_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-const Marketingplatformadmin_Date = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<Marketingplatformadmin_Date>;
-
 /** A resource message representing a Google Marketing Platform organization. */
 export interface Organization {
   /** Identifier. The resource name of the GMP organization. Format: organizations/{org_id} */
@@ -256,8 +187,6 @@ export interface Organization {
   /** The human-readable name for the organization. */
   displayName?: string;
 }
-const Organization = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Organization>;
-
 /** Contains the client data. */
 export interface ClientData {
   /** The end date of the contract between the sales org and the end client. */
@@ -267,71 +196,35 @@ export interface ClientData {
   /** The start date of the contract between the sales org and the end client. */
   startDate?: Marketingplatformadmin_Date;
 }
-const ClientData = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ClientData>;
-
 export type ClientDataList = Array<ClientData>;
-const ClientDataList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ClientDataList>;
-
 /** Response message for FindSalesPartnerManagedClients RPC. */
 export interface FindSalesPartnerManagedClientsResponse {
   /** The clients managed by the sales org. */
   clientData?: ClientDataList;
 }
-const FindSalesPartnerManagedClientsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<FindSalesPartnerManagedClientsResponse>;
-
 export interface GetOrganizationsRequest {
   /** Required. The name of the Organization to retrieve. Format: organizations/{org_id} */
   name: string;
 }
-const GetOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetOrganizationsRequest>;
-
 export interface GetOrganizationsAdminAccessBindingsRequest {
   /** Required. The name of the AdminAccessBinding to retrieve. Format: organizations/{org_id}/adminAccessBindings/{admin_access_binding_id} */
   name: string;
 }
-const GetOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetOrganizationsAdminAccessBindingsRequest>;
-
 export interface GetOrganizationsUserGroupsRequest {
   /** Required. The name of the UserGroup to retrieve. Format: organizations/{org_id}/userGroups/{user_group_id} */
   name: string;
 }
-const GetOrganizationsUserGroupsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetOrganizationsUserGroupsRequest>;
-
 export interface GetOrganizationsUserGroupsMembersRequest {
   /** Required. The name of the user group member to retrieve. Format: organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} */
   name: string;
 }
-const GetOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetOrganizationsUserGroupsMembersRequest>;
-
 export interface ListOrganizationsRequest {
   /** Optional. A page token, received from a previous ListOrganizations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListOrganizations` must match the call that provided the page token. */
   pageToken?: string;
   /** Optional. The maximum number of organizations to return in one call. The service may return fewer than this value. If unspecified, at most 50 organizations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListOrganizationsRequest>;
-
 export type OrganizationList = Array<Organization>;
-const OrganizationList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<OrganizationList>;
-
 /** Response message for ListOrganizations RPC. */
 export interface ListOrganizationsResponse {
   /** The Organization resource that the user has access to, which includes the org id and display name. */
@@ -339,11 +232,6 @@ export interface ListOrganizationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListOrganizationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListOrganizationsResponse>;
-
 export interface ListOrganizationsAdminAccessBindingsRequest {
   /** Optional. A page token, received from a previous ListAdminAccessBindings call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAdminAccessBindings` must match the call that provided the page token. */
   pageToken?: string;
@@ -352,17 +240,7 @@ export interface ListOrganizationsAdminAccessBindingsRequest {
   /** Required. The parent organization, which owns this collection of Admin Access Bindings. Format: organizations/{org_id} */
   parent: string;
 }
-const ListOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListOrganizationsAdminAccessBindingsRequest>;
-
 export type AdminAccessBindingList = Array<AdminAccessBinding>;
-const AdminAccessBindingList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AdminAccessBindingList>;
-
 /** Response message for ListAdminAccessBindings RPC. */
 export interface ListAdminAccessBindingsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -370,11 +248,6 @@ export interface ListAdminAccessBindingsResponse {
   /** Admin Access Bindings in the organization. */
   adminAccessBindings?: AdminAccessBindingList;
 }
-const ListAdminAccessBindingsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListAdminAccessBindingsResponse>;
-
 export interface ListOrganizationsAnalyticsAccountLinksRequest {
   /** Optional. The maximum number of Analytics account links to return in one call. The service may return fewer than this value. If unspecified, at most 50 Analytics account links will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -383,17 +256,7 @@ export interface ListOrganizationsAnalyticsAccountLinksRequest {
   /** Optional. A page token, received from a previous ListAnalyticsAccountLinks call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAnalyticsAccountLinks` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
-
 export type AnalyticsAccountLinkList = Array<AnalyticsAccountLink>;
-const AnalyticsAccountLinkList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AnalyticsAccountLinkList>;
-
 /** Response message for ListAnalyticsAccountLinks RPC. */
 export interface ListAnalyticsAccountLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -401,11 +264,6 @@ export interface ListAnalyticsAccountLinksResponse {
   /** Analytics account links in this organization. */
   analyticsAccountLinks?: AnalyticsAccountLinkList;
 }
-const ListAnalyticsAccountLinksResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListAnalyticsAccountLinksResponse>;
-
 export interface ListOrganizationsUserGroupsRequest {
   /** Optional. A page token, received from a previous ListUserGroups call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUserGroups` must match the call that provided the page token. */
   pageToken?: string;
@@ -414,14 +272,7 @@ export interface ListOrganizationsUserGroupsRequest {
   /** Required. The parent org where this UserGroup will be listed. Format: organizations/{org_id} */
   parent: string;
 }
-const ListOrganizationsUserGroupsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListOrganizationsUserGroupsRequest>;
-
 export type UserGroupList = Array<UserGroup>;
-const UserGroupList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UserGroupList>;
-
 /** Response message for ListUserGroups RPC. */
 export interface ListUserGroupsResponse {
   /** User groups in the organization. */
@@ -429,11 +280,6 @@ export interface ListUserGroupsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListUserGroupsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListUserGroupsResponse>;
-
 export interface ListOrganizationsUserGroupsMembersRequest {
   /** Optional. A page token, received from a previous ListUserGroupMembers call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUserGroupMembers` must match the call that provided the page token. */
   pageToken?: string;
@@ -442,14 +288,7 @@ export interface ListOrganizationsUserGroupsMembersRequest {
   /** Optional. The maximum number of user group members to return in one call. The service may return fewer than this value. If unspecified, at most 50 user group members will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListOrganizationsUserGroupsMembersRequest>;
-
 export type UserGroupMemberList = Array<UserGroupMember>;
-const UserGroupMemberList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<UserGroupMemberList>;
-
 /** Response message for ListUserGroupMembers RPC. */
 export interface ListUserGroupMembersResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -457,11 +296,6 @@ export interface ListUserGroupMembersResponse {
   /** User group members in the user group. */
   userGroupMembers?: UserGroupMemberList;
 }
-const ListUserGroupMembersResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListUserGroupMembersResponse>;
-
 export interface PatchOrganizationsAdminAccessBindingsRequest {
   /** Required. The list of fields to update. Field names must be in snake case (for example, "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. */
   updateMask?: string;
@@ -470,11 +304,6 @@ export interface PatchOrganizationsAdminAccessBindingsRequest {
   /** Request body */
   body?: AdminAccessBinding;
 }
-const PatchOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PatchOrganizationsAdminAccessBindingsRequest>;
-
 export interface PatchOrganizationsUserGroupsRequest {
   /** Required. The list of fields to update. Field names must be in snake case (for example, "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. */
   updateMask?: string;
@@ -483,11 +312,6 @@ export interface PatchOrganizationsUserGroupsRequest {
   /** Request body */
   body?: UserGroup;
 }
-const PatchOrganizationsUserGroupsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PatchOrganizationsUserGroupsRequest>;
-
 export interface PatchOrganizationsUserGroupsMembersRequest {
   /** Identifier. The resource name of this UserGroupMember. Format: organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} Example: "organizations/123abc/userGroups/456def/members/789ghi" */
   name: string;
@@ -496,45 +320,26 @@ export interface PatchOrganizationsUserGroupsMembersRequest {
   /** Request body */
   body?: UserGroupMember;
 }
-const PatchOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<PatchOrganizationsUserGroupsMembersRequest>;
-
 /** Request message for ReportPropertyUsage RPC. */
 export interface ReportPropertyUsageRequest {
   /** Required. The target month to list property usages. Format: YYYY-MM. For example, "2025-05" */
   month?: string;
 }
-const ReportPropertyUsageRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ReportPropertyUsageRequest>;
-
 export interface ReportPropertyUsageOrganizationsRequest {
   /** Required. Specifies the organization whose property usage will be listed. Format: organizations/{org_id} */
   organization: string;
   /** Request body */
   body?: ReportPropertyUsageRequest;
 }
-const ReportPropertyUsageOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ReportPropertyUsageOrganizationsRequest>;
-
 export type PropertyUsageServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
   | "ANALYTICS_SERVICE_LEVEL_360";
-const PropertyUsageServiceLevelEnum = S.String;
-
 export type PropertyUsagePropertyTypeEnum =
   | "ANALYTICS_PROPERTY_TYPE_UNSPECIFIED"
   | "ANALYTICS_PROPERTY_TYPE_ORDINARY"
   | "ANALYTICS_PROPERTY_TYPE_SUBPROPERTY"
   | "ANALYTICS_PROPERTY_TYPE_ROLLUP";
-const PropertyUsagePropertyTypeEnum = S.String;
-
 /** Contains the count of events received by the property, along with metadata that influences the volume of `billable` events. */
 export interface PropertyUsage {
   /** Total event count that the property received during the requested month. */
@@ -552,11 +357,7 @@ export interface PropertyUsage {
   /** The name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
   property?: string;
 }
-const PropertyUsage = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PropertyUsage>;
-
 export type PropertyUsageList = Array<PropertyUsage>;
-const PropertyUsageList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<PropertyUsageList>;
-
 /** Represents an amount of money with its currency type. */
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
@@ -566,8 +367,6 @@ export interface Money {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
   units?: string;
 }
-const Money = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Money>;
-
 /** Contains the bill amount. */
 export interface BillInfo {
   /** The amount of the event fee. */
@@ -579,8 +378,6 @@ export interface BillInfo {
   /** The amount of the monthly base fee. */
   baseFee?: Money;
 }
-const BillInfo = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<BillInfo>;
-
 /** Response message for ReportPropertyUsage RPC. */
 export interface ReportPropertyUsageResponse {
   /** Usage data for all properties in the specified organization and month. */
@@ -588,17 +385,10 @@ export interface ReportPropertyUsageResponse {
   /** Bill amount in the specified organization and month. Will be empty if user only has access to usage data. */
   billInfo?: BillInfo;
 }
-const ReportPropertyUsageResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ReportPropertyUsageResponse>;
-
 export type SetPropertyServiceLevelRequestServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
   | "ANALYTICS_SERVICE_LEVEL_360";
-const SetPropertyServiceLevelRequestServiceLevelEnum = S.String;
-
 /** Request message for SetPropertyServiceLevel RPC. */
 export interface SetPropertyServiceLevelRequest {
   /** Required. The Analytics property to change the ServiceLevel setting. This field is the name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
@@ -606,29 +396,14 @@ export interface SetPropertyServiceLevelRequest {
   /** Required. The service level to set for this property. */
   serviceLevel?: SetPropertyServiceLevelRequestServiceLevelEnum | (string & {});
 }
-const SetPropertyServiceLevelRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<SetPropertyServiceLevelRequest>;
-
 export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The parent AnalyticsAccountLink scope where this property is in. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} */
   analyticsAccountLink: string;
   /** Request body */
   body?: SetPropertyServiceLevelRequest;
 }
-const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
-
 /** Response message for SetPropertyServiceLevel RPC. */
 export interface SetPropertyServiceLevelResponse {}
-const SetPropertyServiceLevelResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<SetPropertyServiceLevelResponse>;
-
 export type CreateOrganizationsAdminAccessBindingsError =
   | NotFound
   | Forbidden
@@ -642,8 +417,8 @@ export const createOrganizationsAdminAccessBindings: API.OperationMethod<
   CreateOrganizationsAdminAccessBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsAdminAccessBindingsRequest,
-  output: AdminAccessBinding,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateOrganizationsAdminAccessBindingsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminAccessBinding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -662,8 +437,8 @@ export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   CreateOrganizationsAnalyticsAccountLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsAnalyticsAccountLinksRequest,
-  output: AnalyticsAccountLink,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateOrganizationsAnalyticsAccountLinksRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AnalyticsAccountLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -682,8 +457,8 @@ export const createOrganizationsUserGroups: API.OperationMethod<
   CreateOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsUserGroupsRequest,
-  output: UserGroup,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateOrganizationsUserGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<UserGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -702,8 +477,8 @@ export const createOrganizationsUserGroupsMembers: API.OperationMethod<
   CreateOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsUserGroupsMembersRequest,
-  output: UserGroupMember,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateOrganizationsUserGroupsMembersRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UserGroupMember>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -722,8 +497,8 @@ export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   DeleteOrganizationsAnalyticsAccountLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsAnalyticsAccountLinksRequest,
-  output: Empty,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -742,8 +517,8 @@ export const deleteOrganizationsUserGroups: API.OperationMethod<
   DeleteOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsUserGroupsRequest,
-  output: Empty,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteOrganizationsUserGroupsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -762,8 +537,8 @@ export const deleteOrganizationsUserGroupsMembers: API.OperationMethod<
   DeleteOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsUserGroupsMembersRequest,
-  output: Empty,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteOrganizationsUserGroupsMembersRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -782,8 +557,8 @@ export const findSalesPartnerManagedClientsOrganizations: API.OperationMethod<
   FindSalesPartnerManagedClientsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FindSalesPartnerManagedClientsOrganizationsRequest,
-  output: FindSalesPartnerManagedClientsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<FindSalesPartnerManagedClientsOrganizationsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<FindSalesPartnerManagedClientsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -797,8 +572,8 @@ export const getOrganizations: API.OperationMethod<
   GetOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsRequest,
-  output: Organization,
+  input: __S(20, __c2, 4) as any as S.Schema<GetOrganizationsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Organization>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -812,8 +587,8 @@ export const getOrganizationsAdminAccessBindings: API.OperationMethod<
   GetOrganizationsAdminAccessBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsAdminAccessBindingsRequest,
-  output: AdminAccessBinding,
+  input: __S(21, __c2, 5) as any as S.Schema<GetOrganizationsAdminAccessBindingsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminAccessBinding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -827,8 +602,8 @@ export const getOrganizationsUserGroups: API.OperationMethod<
   GetOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsUserGroupsRequest,
-  output: UserGroup,
+  input: __S(22, __c2, 6) as any as S.Schema<GetOrganizationsUserGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<UserGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -842,8 +617,8 @@ export const getOrganizationsUserGroupsMembers: API.OperationMethod<
   GetOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsUserGroupsMembersRequest,
-  output: UserGroupMember,
+  input: __S(23, __c2, 7) as any as S.Schema<GetOrganizationsUserGroupsMembersRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UserGroupMember>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -858,8 +633,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOrganizationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsRequest,
-  output: ListOrganizationsResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListOrganizationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -875,8 +650,8 @@ export const listOrganizationsAdminAccessBindings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdminAccessBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsAdminAccessBindingsRequest,
-  output: ListAdminAccessBindingsResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<ListOrganizationsAdminAccessBindingsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ListAdminAccessBindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -892,8 +667,8 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
   GcpOpContext,
   ListAnalyticsAccountLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsAnalyticsAccountLinksRequest,
-  output: ListAnalyticsAccountLinksResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ListAnalyticsAccountLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -909,8 +684,8 @@ export const listOrganizationsUserGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsUserGroupsRequest,
-  output: ListUserGroupsResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<ListOrganizationsUserGroupsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListUserGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -926,8 +701,8 @@ export const listOrganizationsUserGroupsMembers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserGroupMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsUserGroupsMembersRequest,
-  output: ListUserGroupMembersResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<ListOrganizationsUserGroupsMembersRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<ListUserGroupMembersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -947,8 +722,8 @@ export const patchOrganizationsAdminAccessBindings: API.OperationMethod<
   PatchOrganizationsAdminAccessBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsAdminAccessBindingsRequest,
-  output: AdminAccessBinding,
+  input: __S(39, __c4, 7) as any as S.Schema<PatchOrganizationsAdminAccessBindingsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminAccessBinding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -967,8 +742,8 @@ export const patchOrganizationsUserGroups: API.OperationMethod<
   PatchOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsUserGroupsRequest,
-  output: UserGroup,
+  input: __S(40, __c5, 0) as any as S.Schema<PatchOrganizationsUserGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<UserGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -987,8 +762,8 @@ export const patchOrganizationsUserGroupsMembers: API.OperationMethod<
   PatchOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsUserGroupsMembersRequest,
-  output: UserGroupMember,
+  input: __S(41, __c5, 1) as any as S.Schema<PatchOrganizationsUserGroupsMembersRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UserGroupMember>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1007,8 +782,8 @@ export const reportPropertyUsageOrganizations: API.OperationMethod<
   ReportPropertyUsageOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportPropertyUsageOrganizationsRequest,
-  output: ReportPropertyUsageResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<ReportPropertyUsageOrganizationsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<ReportPropertyUsageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1027,8 +802,12 @@ export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.Oper
   SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
-  output: SetPropertyServiceLevelResponse,
+  input: __S(
+    50,
+    __c6,
+    2,
+  ) as any as S.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<SetPropertyServiceLevelResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1038,13 +817,13 @@ export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.Oper
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AdminAccessBindingOrganizationRolesItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           userGroup: S.optional(S.String),
           userEmail: S.optional(S.String),
-          organizationRoles: S.optional(AdminAccessBindingOrganizationRolesItemEnumList),
+          organizationRoles: S.optional(__S(0, __c0, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdminAccessBinding" });
@@ -1052,7 +831,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AdminAccessBinding.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1066,7 +845,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          linkVerificationState: S.optional(AnalyticsAccountLinkLinkVerificationStateEnum),
+          linkVerificationState: S.optional(S.String),
           name: S.optional(S.String),
           analyticsAccount: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -1076,7 +855,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AnalyticsAccountLink.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1099,7 +878,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1116,7 +895,7 @@ function __c0(j: number): any {
           userEmail: S.optional(S.String),
           userGroup: S.optional(S.String),
           name: S.optional(S.String),
-          membershipRole: S.optional(UserGroupMemberMembershipRoleEnum),
+          membershipRole: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserGroupMember" });
   }
@@ -1127,7 +906,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserGroupMember.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1196,7 +975,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
-          body: S.optional(FindSalesPartnerManagedClientsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1231,17 +1010,17 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          endDate: S.optional(Marketingplatformadmin_Date),
-          organization: S.optional(Organization),
-          startDate: S.optional(Marketingplatformadmin_Date),
+          endDate: S.optional(__S(15, __c1, 7)),
+          organization: S.optional(__S(16, __c2, 0)),
+          startDate: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "ClientData" });
     case 2:
-      return S.Array(ClientData);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clientData: S.optional(ClientDataList),
+          clientData: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "FindSalesPartnerManagedClientsResponse",
@@ -1318,11 +1097,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListOrganizationsRequest" });
     case 1:
-      return S.Array(Organization);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organizations: S.optional(OrganizationList),
+          organizations: S.optional(__S(25, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1345,12 +1124,12 @@ function __c3(j: number): any {
         identifier: "ListOrganizationsAdminAccessBindingsRequest",
       });
     case 4:
-      return S.Array(AdminAccessBinding);
+      return S.Array(__S(1, __c0, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          adminAccessBindings: S.optional(AdminAccessBindingList),
+          adminAccessBindings: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "ListAdminAccessBindingsResponse",
@@ -1372,7 +1151,7 @@ function __c3(j: number): any {
         identifier: "ListOrganizationsAnalyticsAccountLinksRequest",
       });
     case 7:
-      return S.Array(AnalyticsAccountLink);
+      return S.Array(__S(3, __c0, 3));
   }
 }
 function __c4(j: number): any {
@@ -1381,7 +1160,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          analyticsAccountLinks: S.optional(AnalyticsAccountLinkList),
+          analyticsAccountLinks: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier: "ListAnalyticsAccountLinksResponse",
@@ -1403,11 +1182,11 @@ function __c4(j: number): any {
         identifier: "ListOrganizationsUserGroupsRequest",
       });
     case 2:
-      return S.Array(UserGroup);
+      return S.Array(__S(5, __c0, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          userGroups: S.optional(UserGroupList),
+          userGroups: S.optional(__S(34, __c4, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUserGroupsResponse" });
@@ -1428,12 +1207,12 @@ function __c4(j: number): any {
         identifier: "ListOrganizationsUserGroupsMembersRequest",
       });
     case 5:
-      return S.Array(UserGroupMember);
+      return S.Array(__S(7, __c0, 7));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          userGroupMembers: S.optional(UserGroupMemberList),
+          userGroupMembers: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "ListUserGroupMembersResponse",
@@ -1443,7 +1222,7 @@ function __c4(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(AdminAccessBinding.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1463,7 +1242,7 @@ function __c5(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(UserGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1479,7 +1258,7 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(UserGroupMember.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1502,7 +1281,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
-          body: S.optional(ReportPropertyUsageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1517,8 +1296,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalEventCount: S.optional(S.String),
-          serviceLevel: S.optional(PropertyUsageServiceLevelEnum),
-          propertyType: S.optional(PropertyUsagePropertyTypeEnum),
+          serviceLevel: S.optional(S.String),
+          propertyType: S.optional(S.String),
           accountId: S.optional(S.String),
           billableEventCount: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -1526,7 +1305,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "PropertyUsage" });
     case 5:
-      return S.Array(PropertyUsage);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1538,10 +1317,10 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          eventFee: S.optional(Money),
-          total: S.optional(Money),
-          priceProtectionCredit: S.optional(Money),
-          baseFee: S.optional(Money),
+          eventFee: S.optional(__S(46, __c5, 6)),
+          total: S.optional(__S(46, __c5, 6)),
+          priceProtectionCredit: S.optional(__S(46, __c5, 6)),
+          baseFee: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "BillInfo" });
   }
@@ -1551,8 +1330,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          propertyUsages: S.optional(PropertyUsageList),
-          billInfo: S.optional(BillInfo),
+          propertyUsages: S.optional(__S(45, __c5, 5)),
+          billInfo: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "ReportPropertyUsageResponse",
@@ -1561,7 +1340,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           analyticsProperty: S.optional(S.String),
-          serviceLevel: S.optional(SetPropertyServiceLevelRequestServiceLevelEnum),
+          serviceLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SetPropertyServiceLevelRequest",
@@ -1570,7 +1349,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           analyticsAccountLink: S.String.pipe(T.Label()),
-          body: S.optional(SetPropertyServiceLevelRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1586,4 +1365,9 @@ function __c6(j: number): any {
         identifier: "SetPropertyServiceLevelResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

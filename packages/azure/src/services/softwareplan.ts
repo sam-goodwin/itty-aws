@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -14,15 +16,8 @@ export interface Sku {
   /** Name of the SKU to be applied */
   name?: string;
 }
-const Sku = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Sku>;
-
 /** Hybrid use benefit properties */
 export interface HybridUseBenefitPropertiesInput {}
-const HybridUseBenefitPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<HybridUseBenefitPropertiesInput>;
-
 export interface CreateHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
@@ -33,15 +28,8 @@ export interface CreateHybridUseBenefitRequest {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitPropertiesInput;
 }
-const CreateHybridUseBenefitRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateHybridUseBenefitRequest>;
-
 /** Represent the current state of the Reservation. */
 export type ProvisioningState = "Succeeded" | "Cancelled" | "Failed";
-const ProvisioningState = S.String;
-
 /** Hybrid use benefit properties */
 export interface HybridUseBenefitProperties {
   /** Provisioning state */
@@ -51,11 +39,6 @@ export interface HybridUseBenefitProperties {
   /** Last updated date */
   lastUpdatedDate?: string;
 }
-const HybridUseBenefitProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<HybridUseBenefitProperties>;
-
 export interface CreateHybridUseBenefitResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -70,39 +53,19 @@ export interface CreateHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-const CreateHybridUseBenefitResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateHybridUseBenefitResponse>;
-
 export interface DeleteHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
 }
-const DeleteHybridUseBenefitRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteHybridUseBenefitRequest>;
-
 export interface DeleteHybridUseBenefitResponse {}
-const DeleteHybridUseBenefitResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteHybridUseBenefitResponse>;
-
 export interface GetHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
 }
-const GetHybridUseBenefitRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetHybridUseBenefitRequest>;
-
 export interface GetHybridUseBenefitResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -117,20 +80,12 @@ export interface GetHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-const GetHybridUseBenefitResponse =
-  CreateHybridUseBenefitResponse as any as S.Schema<GetHybridUseBenefitResponse>;
-
 export interface ListHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
   /** Supports applying filter on the type of SKU */
   _filter?: string;
 }
-const ListHybridUseBenefitRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListHybridUseBenefitRequest>;
-
 /** Response on GET of a hybrid use benefit */
 export interface HybridUseBenefitModel {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -146,18 +101,8 @@ export interface HybridUseBenefitModel {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-const HybridUseBenefitModel = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<HybridUseBenefitModel>;
-
 /** List of hybrid use benefits */
 export type HybridUseBenefitListResultValueList = Array<HybridUseBenefitModel>;
-const HybridUseBenefitListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<HybridUseBenefitListResultValueList>;
-
 /** List of hybrid use benefits */
 export interface HybridUseBenefitListResult {
   /** List of hybrid use benefits */
@@ -165,31 +110,16 @@ export interface HybridUseBenefitListResult {
   /** Url to get the next page of items. */
   nextLink?: string;
 }
-const HybridUseBenefitListResult = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<HybridUseBenefitListResult>;
-
 export interface ListHybridUseBenefitRevisionRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
 }
-const ListHybridUseBenefitRevisionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListHybridUseBenefitRevisionRequest>;
-
 export interface ListOperationsRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Display fields for an operation. */
 export interface OperationDisplay {
   /** Resource Provider name */
@@ -201,8 +131,6 @@ export interface OperationDisplay {
   /** Description of the operation */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<OperationDisplay>;
-
 /** Operation response. */
 export interface OperationResponse {
   /** Name of the operation */
@@ -212,15 +140,8 @@ export interface OperationResponse {
   /** Origin of the response */
   origin?: string;
 }
-const OperationResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<OperationResponse>;
-
 /** List of all operations */
 export type OperationListValueList = Array<OperationResponse>;
-const OperationListValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<OperationListValueList>;
-
 /** List all the operations. */
 export interface OperationList {
   /** List of all operations */
@@ -228,21 +149,11 @@ export interface OperationList {
   /** Url to get the next page of items. */
   nextLink?: string;
 }
-const OperationList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<OperationList>;
-
 export interface RegisterSoftwarePlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const RegisterSoftwarePlanRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RegisterSoftwarePlanRequest>;
-
 export interface RegisterSoftwarePlanResponse {}
-const RegisterSoftwarePlanResponse =
-  DeleteHybridUseBenefitResponse as any as S.Schema<RegisterSoftwarePlanResponse>;
-
 export interface UpdateHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
@@ -253,11 +164,6 @@ export interface UpdateHybridUseBenefitRequest {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitPropertiesInput;
 }
-const UpdateHybridUseBenefitRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdateHybridUseBenefitRequest>;
-
 export interface UpdateHybridUseBenefitResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -272,9 +178,6 @@ export interface UpdateHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-const UpdateHybridUseBenefitResponse =
-  CreateHybridUseBenefitResponse as any as S.Schema<UpdateHybridUseBenefitResponse>;
-
 export type CreateHybridUseBenefitError = AzureOpError;
 /** Create a new hybrid use benefit under a given scope */
 export const CreateHybridUseBenefit: API.OperationMethod<
@@ -283,8 +186,8 @@ export const CreateHybridUseBenefit: API.OperationMethod<
   CreateHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHybridUseBenefitRequest,
-  output: CreateHybridUseBenefitResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateHybridUseBenefitRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -298,8 +201,8 @@ export const DeleteHybridUseBenefit: API.OperationMethod<
   DeleteHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHybridUseBenefitRequest,
-  output: DeleteHybridUseBenefitResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteHybridUseBenefitRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -313,8 +216,8 @@ export const GetHybridUseBenefit: API.OperationMethod<
   GetHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHybridUseBenefitRequest,
-  output: GetHybridUseBenefitResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetHybridUseBenefitRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -328,8 +231,8 @@ export const ListHybridUseBenefit: API.OperationMethod<
   ListHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHybridUseBenefitRequest,
-  output: HybridUseBenefitListResult,
+  input: __S(8, __c1, 0) as any as S.Schema<ListHybridUseBenefitRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<HybridUseBenefitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -343,8 +246,8 @@ export const ListHybridUseBenefitRevision: API.OperationMethod<
   ListHybridUseBenefitRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHybridUseBenefitRevisionRequest,
-  output: HybridUseBenefitListResult,
+  input: __S(12, __c1, 4) as any as S.Schema<ListHybridUseBenefitRevisionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<HybridUseBenefitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -358,8 +261,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationList,
+  input: __S(13, __c1, 5) as any as S.Schema<ListOperationsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -373,8 +276,8 @@ export const RegisterSoftwarePlan: API.OperationMethod<
   RegisterSoftwarePlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterSoftwarePlanRequest,
-  output: RegisterSoftwarePlanResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<RegisterSoftwarePlanRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<RegisterSoftwarePlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -388,8 +291,8 @@ export const UpdateHybridUseBenefit: API.OperationMethod<
   UpdateHybridUseBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHybridUseBenefitRequest,
-  output: UpdateHybridUseBenefitResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<UpdateHybridUseBenefitRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<UpdateHybridUseBenefitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -413,8 +316,8 @@ function __c0(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           planId: S.String.pipe(T.Label()),
-          sku: Sku,
-          properties: S.optional(HybridUseBenefitPropertiesInput),
+          sku: __S(0, __c0, 0),
+          properties: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -429,7 +332,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           createdDate: S.optional(S.String),
           lastUpdatedDate: S.optional(S.String),
         }),
@@ -442,9 +345,9 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          sku: Sku,
+          sku: __S(0, __c0, 0),
           etag: S.optional(S.Number),
-          properties: S.optional(HybridUseBenefitProperties),
+          properties: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "CreateHybridUseBenefitResponse",
@@ -511,17 +414,17 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          sku: Sku,
+          sku: __S(0, __c0, 0),
           etag: S.optional(S.Number),
-          properties: S.optional(HybridUseBenefitProperties),
+          properties: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "HybridUseBenefitModel" });
     case 2:
-      return S.Array(HybridUseBenefitModel);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(HybridUseBenefitListResultValueList),
+          value: S.optional(__S(10, __c1, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -569,7 +472,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(14, __c1, 6)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResponse" });
@@ -578,11 +481,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OperationResponse);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListValueList),
+          value: S.optional(__S(16, __c2, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
@@ -606,8 +509,8 @@ function __c2(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           planId: S.String.pipe(T.Label()),
-          sku: Sku,
-          properties: S.optional(HybridUseBenefitPropertiesInput),
+          sku: __S(0, __c0, 0),
+          properties: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -620,4 +523,9 @@ function __c2(j: number): any {
         identifier: "UpdateHybridUseBenefitRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

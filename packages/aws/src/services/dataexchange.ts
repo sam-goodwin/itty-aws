@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "DataExchange",
   serviceShapeName: "DataExchange",
@@ -137,10 +139,6 @@ export type DataGrantArn = string;
 export interface AcceptDataGrantRequest {
   DataGrantArn: string;
 }
-const AcceptDataGrantRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptDataGrantRequest>;
 export type DataGrantName = string;
 export type SenderPrincipal = string;
 export type ReceiverPrincipal = string;
@@ -164,19 +162,12 @@ export interface AcceptDataGrantResponse {
   CreatedAt: Date;
   UpdatedAt: Date;
 }
-const AcceptDataGrantResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptDataGrantResponse>;
 export interface CancelJobRequest {
   JobId: string;
 }
-const CancelJobRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CancelJobRequest>;
 export interface CancelJobResponse {}
-const CancelJobResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CancelJobResponse>;
 export type Description = string;
 export type MapOf__string = { [key: string]: string | undefined };
-const MapOf__string = /*@__PURE__*/ __L.at(__c0, 4);
 export interface CreateDataGrantRequest {
   Name: string;
   GrantDistributionScope: string;
@@ -186,10 +177,6 @@ export interface CreateDataGrantRequest {
   Description?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateDataGrantRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateDataGrantRequest>;
 export interface CreateDataGrantResponse {
   Name: string;
   SenderPrincipal: string;
@@ -207,10 +194,6 @@ export interface CreateDataGrantResponse {
   UpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateDataGrantResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDataGrantResponse>;
 export type AssetType = string;
 export type Name = string;
 export interface CreateDataSetRequest {
@@ -219,13 +202,11 @@ export interface CreateDataSetRequest {
   Name: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateDataSetRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateDataSetRequest>;
 export type Origin = string;
 export interface OriginDetails {
   ProductId?: string;
   DataGrantId?: string;
 }
-const OriginDetails = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OriginDetails>;
 export interface CreateDataSetResponse {
   Arn?: string;
   AssetType?: string;
@@ -239,56 +220,33 @@ export interface CreateDataSetResponse {
   Tags?: { [key: string]: string | undefined };
   UpdatedAt?: Date;
 }
-const CreateDataSetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateDataSetResponse>;
 export type ServerSideEncryptionTypes = string;
 export interface ExportServerSideEncryption {
   KmsKeyArn?: string;
   Type: string;
 }
-const ExportServerSideEncryption = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ExportServerSideEncryption>;
 export interface AutoExportRevisionDestinationEntry {
   Bucket: string;
   KeyPattern?: string;
 }
-const AutoExportRevisionDestinationEntry = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AutoExportRevisionDestinationEntry>;
 export interface AutoExportRevisionToS3RequestDetails {
   Encryption?: ExportServerSideEncryption;
   RevisionDestination: AutoExportRevisionDestinationEntry;
 }
-const AutoExportRevisionToS3RequestDetails = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AutoExportRevisionToS3RequestDetails>;
 export interface Action {
   ExportRevisionToS3?: AutoExportRevisionToS3RequestDetails;
 }
-const Action = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Action>;
 export interface RevisionPublished {
   DataSetId: string;
 }
-const RevisionPublished = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RevisionPublished>;
 export interface Event {
   RevisionPublished?: RevisionPublished;
 }
-const Event = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Event>;
 export interface CreateEventActionRequest {
   Action: Action;
   Event: Event;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateEventActionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateEventActionRequest>;
 export interface CreateEventActionResponse {
   Action?: Action;
   Arn?: string;
@@ -298,71 +256,42 @@ export interface CreateEventActionResponse {
   Tags?: { [key: string]: string | undefined };
   UpdatedAt?: Date;
 }
-const CreateEventActionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateEventActionResponse>;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Tag>;
 export type ListOfTag = Tag[];
-const ListOfTag = /*@__PURE__*/ __L.at(__c2, 3);
 export interface AssetConfiguration {
   Tags?: Tag[];
 }
-const AssetConfiguration = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AssetConfiguration>;
 export interface ExportAssetToSignedUrlRequestDetails {
   AssetId: string;
   DataSetId: string;
   RevisionId: string;
 }
-const ExportAssetToSignedUrlRequestDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ExportAssetToSignedUrlRequestDetails>;
 export interface AssetDestinationEntry {
   AssetId: string;
   Bucket: string;
   Key?: string;
 }
-const AssetDestinationEntry = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AssetDestinationEntry>;
 export type ListOfAssetDestinationEntry = AssetDestinationEntry[];
-const ListOfAssetDestinationEntry = /*@__PURE__*/ __L.at(__c2, 7);
 export interface ExportAssetsToS3RequestDetails {
   AssetDestinations: AssetDestinationEntry[];
   DataSetId: string;
   Encryption?: ExportServerSideEncryption;
   RevisionId: string;
 }
-const ExportAssetsToS3RequestDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ExportAssetsToS3RequestDetails>;
 export interface RevisionDestinationEntry {
   Bucket: string;
   KeyPattern?: string;
   RevisionId: string;
 }
-const RevisionDestinationEntry = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<RevisionDestinationEntry>;
 export type ListOfRevisionDestinationEntry = RevisionDestinationEntry[];
-const ListOfRevisionDestinationEntry = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ExportRevisionsToS3RequestDetails {
   DataSetId: string;
   Encryption?: ExportServerSideEncryption;
   RevisionDestinations: RevisionDestinationEntry[];
 }
-const ExportRevisionsToS3RequestDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ExportRevisionsToS3RequestDetails>;
 export type AssetName = string;
 export type __stringMin24Max24PatternAZaZ094AZaZ092AZaZ093 = string;
 export interface ImportAssetFromSignedUrlRequestDetails {
@@ -371,44 +300,25 @@ export interface ImportAssetFromSignedUrlRequestDetails {
   Md5Hash: string;
   RevisionId: string;
 }
-const ImportAssetFromSignedUrlRequestDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ImportAssetFromSignedUrlRequestDetails>;
 export interface AssetSourceEntry {
   Bucket: string;
   Key: string;
 }
-const AssetSourceEntry = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AssetSourceEntry>;
 export type ListOfAssetSourceEntry = AssetSourceEntry[];
-const ListOfAssetSourceEntry = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ImportAssetsFromS3RequestDetails {
   AssetSources: AssetSourceEntry[];
   DataSetId: string;
   RevisionId: string;
 }
-const ImportAssetsFromS3RequestDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ImportAssetsFromS3RequestDetails>;
 export interface RedshiftDataShareAssetSourceEntry {
   DataShareArn: string;
 }
-const RedshiftDataShareAssetSourceEntry = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<RedshiftDataShareAssetSourceEntry>;
 export type ListOfRedshiftDataShareAssetSourceEntry = RedshiftDataShareAssetSourceEntry[];
-const ListOfRedshiftDataShareAssetSourceEntry = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ImportAssetsFromRedshiftDataSharesRequestDetails {
   AssetSources: RedshiftDataShareAssetSourceEntry[];
   DataSetId: string;
   RevisionId: string;
 }
-const ImportAssetsFromRedshiftDataSharesRequestDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ImportAssetsFromRedshiftDataSharesRequestDetails>;
 export type ApiDescription = string;
 export type ProtocolType = string;
 export interface ImportAssetFromApiGatewayApiRequestDetails {
@@ -422,68 +332,42 @@ export interface ImportAssetFromApiGatewayApiRequestDetails {
   RevisionId: string;
   Stage: string;
 }
-const ImportAssetFromApiGatewayApiRequestDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ImportAssetFromApiGatewayApiRequestDetails>;
 export type ListOf__string = string[];
-const ListOf__string = /*@__PURE__*/ __L.at(__c4, 4);
 export type KmsKeyArn = string;
 export interface KmsKeyToGrant {
   KmsKeyArn: string;
 }
-const KmsKeyToGrant = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<KmsKeyToGrant>;
 export type ListOfKmsKeysToGrant = KmsKeyToGrant[];
-const ListOfKmsKeysToGrant = /*@__PURE__*/ __L.at(__c4, 6);
 export interface S3DataAccessAssetSourceEntry {
   Bucket: string;
   KeyPrefixes?: string[];
   Keys?: string[];
   KmsKeysToGrant?: KmsKeyToGrant[];
 }
-const S3DataAccessAssetSourceEntry = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<S3DataAccessAssetSourceEntry>;
 export interface CreateS3DataAccessFromS3BucketRequestDetails {
   AssetSource: S3DataAccessAssetSourceEntry;
   DataSetId: string;
   RevisionId: string;
 }
-const CreateS3DataAccessFromS3BucketRequestDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateS3DataAccessFromS3BucketRequestDetails>;
 export type AwsAccountId = string;
 export type ListOfLFTagValues = string[];
-const ListOfLFTagValues = ListOf__string as any as S.Schema<ListOfLFTagValues>;
 export interface LFTag {
   TagKey: string;
   TagValues: string[];
 }
-const LFTag = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<LFTag>;
 export type ListOfLFTags = LFTag[];
-const ListOfLFTags = /*@__PURE__*/ __L.at(__c5, 2);
 export type DatabaseLFTagPolicyPermission = string;
 export type ListOfDatabaseLFTagPolicyPermissions = string[];
-const ListOfDatabaseLFTagPolicyPermissions =
-  ListOf__string as any as S.Schema<ListOfDatabaseLFTagPolicyPermissions>;
 export interface DatabaseLFTagPolicyAndPermissions {
   Expression: LFTag[];
   Permissions: string[];
 }
-const DatabaseLFTagPolicyAndPermissions = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DatabaseLFTagPolicyAndPermissions>;
 export type TableTagPolicyLFPermission = string;
 export type ListOfTableTagPolicyLFPermissions = string[];
 export interface TableLFTagPolicyAndPermissions {
   Expression: LFTag[];
   Permissions: string[];
 }
-const TableLFTagPolicyAndPermissions =
-  DatabaseLFTagPolicyAndPermissions as any as S.Schema<TableLFTagPolicyAndPermissions>;
 export type RoleArn = string;
 export interface ImportAssetsFromLakeFormationTagPolicyRequestDetails {
   CatalogId: string;
@@ -493,10 +377,6 @@ export interface ImportAssetsFromLakeFormationTagPolicyRequestDetails {
   DataSetId: string;
   RevisionId: string;
 }
-const ImportAssetsFromLakeFormationTagPolicyRequestDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ImportAssetsFromLakeFormationTagPolicyRequestDetails>;
 export interface RequestDetails {
   ExportAssetToSignedUrl?: ExportAssetToSignedUrlRequestDetails;
   ExportAssetsToS3?: ExportAssetsToS3RequestDetails;
@@ -508,14 +388,12 @@ export interface RequestDetails {
   CreateS3DataAccessFromS3Bucket?: CreateS3DataAccessFromS3BucketRequestDetails;
   ImportAssetsFromLakeFormationTagPolicy?: ImportAssetsFromLakeFormationTagPolicyRequestDetails;
 }
-const RequestDetails = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<RequestDetails>;
 export type Type = string;
 export interface CreateJobRequest {
   AssetConfiguration?: AssetConfiguration;
   Details: RequestDetails;
   Type: string;
 }
-const CreateJobRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CreateJobRequest>;
 export interface ExportAssetToSignedUrlResponseDetails {
   AssetId: string;
   DataSetId: string;
@@ -523,28 +401,18 @@ export interface ExportAssetToSignedUrlResponseDetails {
   SignedUrl?: string;
   SignedUrlExpiresAt?: Date;
 }
-const ExportAssetToSignedUrlResponseDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ExportAssetToSignedUrlResponseDetails>;
 export interface ExportAssetsToS3ResponseDetails {
   AssetDestinations: AssetDestinationEntry[];
   DataSetId: string;
   Encryption?: ExportServerSideEncryption;
   RevisionId: string;
 }
-const ExportAssetsToS3ResponseDetails =
-  ExportAssetsToS3RequestDetails as any as S.Schema<ExportAssetsToS3ResponseDetails>;
 export interface ExportRevisionsToS3ResponseDetails {
   DataSetId: string;
   Encryption?: ExportServerSideEncryption;
   RevisionDestinations: RevisionDestinationEntry[];
   EventActionArn?: string;
 }
-const ExportRevisionsToS3ResponseDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ExportRevisionsToS3ResponseDetails>;
 export interface ImportAssetFromSignedUrlResponseDetails {
   AssetName: string;
   DataSetId: string;
@@ -553,24 +421,16 @@ export interface ImportAssetFromSignedUrlResponseDetails {
   SignedUrl?: string;
   SignedUrlExpiresAt?: Date;
 }
-const ImportAssetFromSignedUrlResponseDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ImportAssetFromSignedUrlResponseDetails>;
 export interface ImportAssetsFromS3ResponseDetails {
   AssetSources: AssetSourceEntry[];
   DataSetId: string;
   RevisionId: string;
 }
-const ImportAssetsFromS3ResponseDetails =
-  ImportAssetsFromS3RequestDetails as any as S.Schema<ImportAssetsFromS3ResponseDetails>;
 export interface ImportAssetsFromRedshiftDataSharesResponseDetails {
   AssetSources: RedshiftDataShareAssetSourceEntry[];
   DataSetId: string;
   RevisionId: string;
 }
-const ImportAssetsFromRedshiftDataSharesResponseDetails =
-  ImportAssetsFromRedshiftDataSharesRequestDetails as any as S.Schema<ImportAssetsFromRedshiftDataSharesResponseDetails>;
 export interface ImportAssetFromApiGatewayApiResponseDetails {
   ApiDescription?: string;
   ApiId: string;
@@ -584,17 +444,11 @@ export interface ImportAssetFromApiGatewayApiResponseDetails {
   RevisionId: string;
   Stage: string;
 }
-const ImportAssetFromApiGatewayApiResponseDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ImportAssetFromApiGatewayApiResponseDetails>;
 export interface CreateS3DataAccessFromS3BucketResponseDetails {
   AssetSource: S3DataAccessAssetSourceEntry;
   DataSetId: string;
   RevisionId: string;
 }
-const CreateS3DataAccessFromS3BucketResponseDetails =
-  CreateS3DataAccessFromS3BucketRequestDetails as any as S.Schema<CreateS3DataAccessFromS3BucketResponseDetails>;
 export interface ImportAssetsFromLakeFormationTagPolicyResponseDetails {
   CatalogId: string;
   Database?: DatabaseLFTagPolicyAndPermissions;
@@ -603,8 +457,6 @@ export interface ImportAssetsFromLakeFormationTagPolicyResponseDetails {
   DataSetId: string;
   RevisionId: string;
 }
-const ImportAssetsFromLakeFormationTagPolicyResponseDetails =
-  ImportAssetsFromLakeFormationTagPolicyRequestDetails as any as S.Schema<ImportAssetsFromLakeFormationTagPolicyResponseDetails>;
 export interface ResponseDetails {
   ExportAssetToSignedUrl?: ExportAssetToSignedUrlResponseDetails;
   ExportAssetsToS3?: ExportAssetsToS3ResponseDetails;
@@ -616,20 +468,14 @@ export interface ResponseDetails {
   CreateS3DataAccessFromS3Bucket?: CreateS3DataAccessFromS3BucketResponseDetails;
   ImportAssetsFromLakeFormationTagPolicy?: ImportAssetsFromLakeFormationTagPolicyResponseDetails;
 }
-const ResponseDetails = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ResponseDetails>;
 export type Code = string;
 export interface ImportAssetFromSignedUrlJobErrorDetails {
   AssetName: string;
 }
-const ImportAssetFromSignedUrlJobErrorDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ImportAssetFromSignedUrlJobErrorDetails>;
 export interface Details {
   ImportAssetFromSignedUrlJobErrorDetails?: ImportAssetFromSignedUrlJobErrorDetails;
   ImportAssetsFromS3JobErrorDetails?: AssetSourceEntry[];
 }
-const Details = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Details>;
 export type JobErrorLimitName = string;
 export type JobErrorResourceTypes = string;
 export interface JobError {
@@ -641,9 +487,7 @@ export interface JobError {
   ResourceId?: string;
   ResourceType?: string;
 }
-const JobError = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<JobError>;
 export type ListOfJobError = JobError[];
-const ListOfJobError = /*@__PURE__*/ __L.at(__c6, 7);
 export type State = string;
 export interface CreateJobResponse {
   Arn?: string;
@@ -656,17 +500,12 @@ export interface CreateJobResponse {
   Type?: string;
   UpdatedAt?: Date;
 }
-const CreateJobResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CreateJobResponse>;
 export type __stringMin0Max16384 = string;
 export interface CreateRevisionRequest {
   Comment?: string;
   DataSetId: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRevisionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateRevisionRequest>;
 export type __stringMin10Max512 = string;
 export interface CreateRevisionResponse {
   Arn?: string;
@@ -682,71 +521,42 @@ export interface CreateRevisionResponse {
   Revoked?: boolean;
   RevokedAt?: Date;
 }
-const CreateRevisionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateRevisionResponse>;
 export interface DeleteAssetRequest {
   AssetId: string;
   DataSetId: string;
   RevisionId: string;
 }
-const DeleteAssetRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DeleteAssetRequest>;
 export interface DeleteAssetResponse {}
-const DeleteAssetResponse = CancelJobResponse as any as S.Schema<DeleteAssetResponse>;
 export type DataGrantId = string;
 export interface DeleteDataGrantRequest {
   DataGrantId: string;
 }
-const DeleteDataGrantRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteDataGrantRequest>;
 export interface DeleteDataGrantResponse {}
-const DeleteDataGrantResponse = CancelJobResponse as any as S.Schema<DeleteDataGrantResponse>;
 export interface DeleteDataSetRequest {
   DataSetId: string;
 }
-const DeleteDataSetRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeleteDataSetRequest>;
 export interface DeleteDataSetResponse {}
-const DeleteDataSetResponse = CancelJobResponse as any as S.Schema<DeleteDataSetResponse>;
 export interface DeleteEventActionRequest {
   EventActionId: string;
 }
-const DeleteEventActionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteEventActionRequest>;
 export interface DeleteEventActionResponse {}
-const DeleteEventActionResponse = CancelJobResponse as any as S.Schema<DeleteEventActionResponse>;
 export interface DeleteRevisionRequest {
   DataSetId: string;
   RevisionId: string;
 }
-const DeleteRevisionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteRevisionRequest>;
 export interface DeleteRevisionResponse {}
-const DeleteRevisionResponse = CancelJobResponse as any as S.Schema<DeleteRevisionResponse>;
 export interface GetAssetRequest {
   AssetId: string;
   DataSetId: string;
   RevisionId: string;
 }
-const GetAssetRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetAssetRequest>;
 export type __doubleMin0 = number;
 export interface S3SnapshotAsset {
   Size: number;
 }
-const S3SnapshotAsset = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<S3SnapshotAsset>;
 export interface RedshiftDataShareAsset {
   Arn: string;
 }
-const RedshiftDataShareAsset = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<RedshiftDataShareAsset>;
 export interface ApiGatewayApiAsset {
   ApiDescription?: string;
   ApiEndpoint?: string;
@@ -758,7 +568,6 @@ export interface ApiGatewayApiAsset {
   ProtocolType?: string;
   Stage?: string;
 }
-const ApiGatewayApiAsset = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ApiGatewayApiAsset>;
 export interface S3DataAccessAsset {
   Bucket: string;
   KeyPrefixes?: string[];
@@ -767,48 +576,34 @@ export interface S3DataAccessAsset {
   S3AccessPointArn?: string;
   KmsKeysToGrant?: KmsKeyToGrant[];
 }
-const S3DataAccessAsset = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<S3DataAccessAsset>;
 export type LFResourceType = string;
 export interface DatabaseLFTagPolicy {
   Expression: LFTag[];
 }
-const DatabaseLFTagPolicy = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DatabaseLFTagPolicy>;
 export interface TableLFTagPolicy {
   Expression: LFTag[];
 }
-const TableLFTagPolicy = DatabaseLFTagPolicy as any as S.Schema<TableLFTagPolicy>;
 export interface LFResourceDetails {
   Database?: DatabaseLFTagPolicy;
   Table?: TableLFTagPolicy;
 }
-const LFResourceDetails = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<LFResourceDetails>;
 export interface LFTagPolicyDetails {
   CatalogId: string;
   ResourceType: string;
   ResourceDetails: LFResourceDetails;
 }
-const LFTagPolicyDetails = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<LFTagPolicyDetails>;
 export interface LakeFormationDataPermissionDetails {
   LFTagPolicy?: LFTagPolicyDetails;
 }
-const LakeFormationDataPermissionDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<LakeFormationDataPermissionDetails>;
 export type LakeFormationDataPermissionType = string;
 export type LFPermission = string;
 export type ListOfLFPermissions = string[];
-const ListOfLFPermissions = ListOf__string as any as S.Schema<ListOfLFPermissions>;
 export interface LakeFormationDataPermissionAsset {
   LakeFormationDataPermissionDetails: LakeFormationDataPermissionDetails;
   LakeFormationDataPermissionType: string;
   Permissions: string[];
   RoleArn?: string;
 }
-const LakeFormationDataPermissionAsset = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<LakeFormationDataPermissionAsset>;
 export interface AssetDetails {
   S3SnapshotAsset?: S3SnapshotAsset;
   RedshiftDataShareAsset?: RedshiftDataShareAsset;
@@ -816,7 +611,6 @@ export interface AssetDetails {
   S3DataAccessAsset?: S3DataAccessAsset;
   LakeFormationDataPermissionAsset?: LakeFormationDataPermissionAsset;
 }
-const AssetDetails = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<AssetDetails>;
 export interface GetAssetResponse {
   Arn?: string;
   AssetDetails?: AssetDetails;
@@ -830,11 +624,9 @@ export interface GetAssetResponse {
   Tags?: { [key: string]: string | undefined };
   UpdatedAt?: Date;
 }
-const GetAssetResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetAssetResponse>;
 export interface GetDataGrantRequest {
   DataGrantId: string;
 }
-const GetDataGrantRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetDataGrantRequest>;
 export interface GetDataGrantResponse {
   Name: string;
   SenderPrincipal: string;
@@ -852,11 +644,9 @@ export interface GetDataGrantResponse {
   UpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const GetDataGrantResponse = CreateDataGrantResponse as any as S.Schema<GetDataGrantResponse>;
 export interface GetDataSetRequest {
   DataSetId: string;
 }
-const GetDataSetRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetDataSetRequest>;
 export interface GetDataSetResponse {
   Arn?: string;
   AssetType?: string;
@@ -870,14 +660,9 @@ export interface GetDataSetResponse {
   Tags?: { [key: string]: string | undefined };
   UpdatedAt?: Date;
 }
-const GetDataSetResponse = CreateDataSetResponse as any as S.Schema<GetDataSetResponse>;
 export interface GetEventActionRequest {
   EventActionId: string;
 }
-const GetEventActionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetEventActionRequest>;
 export interface GetEventActionResponse {
   Action?: Action;
   Arn?: string;
@@ -887,14 +672,9 @@ export interface GetEventActionResponse {
   Tags?: { [key: string]: string | undefined };
   UpdatedAt?: Date;
 }
-const GetEventActionResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetEventActionResponse>;
 export interface GetJobRequest {
   JobId: string;
 }
-const GetJobRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetJobRequest>;
 export interface GetJobResponse {
   Arn?: string;
   AssetConfiguration?: AssetConfiguration;
@@ -906,14 +686,9 @@ export interface GetJobResponse {
   Type?: string;
   UpdatedAt?: Date;
 }
-const GetJobResponse = CreateJobResponse as any as S.Schema<GetJobResponse>;
 export interface GetReceivedDataGrantRequest {
   DataGrantArn: string;
 }
-const GetReceivedDataGrantRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetReceivedDataGrantRequest>;
 export interface GetReceivedDataGrantResponse {
   Name: string;
   SenderPrincipal?: string;
@@ -929,15 +704,10 @@ export interface GetReceivedDataGrantResponse {
   CreatedAt: Date;
   UpdatedAt: Date;
 }
-const GetReceivedDataGrantResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetReceivedDataGrantResponse>;
 export interface GetRevisionRequest {
   DataSetId: string;
   RevisionId: string;
 }
-const GetRevisionRequest = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<GetRevisionRequest>;
 export interface GetRevisionResponse {
   Arn?: string;
   Comment?: string;
@@ -952,16 +722,11 @@ export interface GetRevisionResponse {
   Revoked?: boolean;
   RevokedAt?: Date;
 }
-const GetRevisionResponse = CreateRevisionResponse as any as S.Schema<GetRevisionResponse>;
 export type MaxResults = number;
 export interface ListDataGrantsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListDataGrantsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListDataGrantsRequest>;
 export interface DataGrantSummaryEntry {
   Name: string;
   SenderPrincipal: string;
@@ -976,30 +741,17 @@ export interface DataGrantSummaryEntry {
   CreatedAt: Date;
   UpdatedAt: Date;
 }
-const DataGrantSummaryEntry = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DataGrantSummaryEntry>;
 export type ListOfDataGrantSummaryEntry = DataGrantSummaryEntry[];
-const ListOfDataGrantSummaryEntry = /*@__PURE__*/ __L.at(__c10, 6);
 export type NextToken = string;
 export interface ListDataGrantsResponse {
   DataGrantSummaries?: DataGrantSummaryEntry[];
   NextToken?: string;
 }
-const ListDataGrantsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListDataGrantsResponse>;
 export interface ListDataSetRevisionsRequest {
   DataSetId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListDataSetRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListDataSetRevisionsRequest>;
 export interface RevisionEntry {
   Arn: string;
   Comment?: string;
@@ -1013,23 +765,16 @@ export interface RevisionEntry {
   Revoked?: boolean;
   RevokedAt?: Date;
 }
-const RevisionEntry = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<RevisionEntry>;
 export type ListOfRevisionEntry = RevisionEntry[];
-const ListOfRevisionEntry = /*@__PURE__*/ __L.at(__c11, 2);
 export interface ListDataSetRevisionsResponse {
   NextToken?: string;
   Revisions?: RevisionEntry[];
 }
-const ListDataSetRevisionsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListDataSetRevisionsResponse>;
 export interface ListDataSetsRequest {
   MaxResults?: number;
   NextToken?: string;
   Origin?: string;
 }
-const ListDataSetsRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ListDataSetsRequest>;
 export interface DataSetEntry {
   Arn: string;
   AssetType: string;
@@ -1042,26 +787,16 @@ export interface DataSetEntry {
   SourceId?: string;
   UpdatedAt: Date;
 }
-const DataSetEntry = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<DataSetEntry>;
 export type ListOfDataSetEntry = DataSetEntry[];
-const ListOfDataSetEntry = /*@__PURE__*/ __L.at(__c11, 6);
 export interface ListDataSetsResponse {
   DataSets?: DataSetEntry[];
   NextToken?: string;
 }
-const ListDataSetsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListDataSetsResponse>;
 export interface ListEventActionsRequest {
   EventSourceId?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListEventActionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListEventActionsRequest>;
 export interface EventActionEntry {
   Action: Action;
   Arn: string;
@@ -1070,24 +805,17 @@ export interface EventActionEntry {
   Id: string;
   UpdatedAt: Date;
 }
-const EventActionEntry = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<EventActionEntry>;
 export type ListOfEventActionEntry = EventActionEntry[];
-const ListOfEventActionEntry = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListEventActionsResponse {
   EventActions?: EventActionEntry[];
   NextToken?: string;
 }
-const ListEventActionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListEventActionsResponse>;
 export interface ListJobsRequest {
   DataSetId?: string;
   MaxResults?: number;
   NextToken?: string;
   RevisionId?: string;
 }
-const ListJobsRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ListJobsRequest>;
 export interface JobEntry {
   Arn: string;
   AssetConfiguration?: AssetConfiguration;
@@ -1099,26 +827,18 @@ export interface JobEntry {
   Type: string;
   UpdatedAt: Date;
 }
-const JobEntry = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<JobEntry>;
 export type ListOfJobEntry = JobEntry[];
-const ListOfJobEntry = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ListJobsResponse {
   Jobs?: JobEntry[];
   NextToken?: string;
 }
-const ListJobsResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ListJobsResponse>;
 export type AcceptanceStateFilterValue = string;
 export type AcceptanceStateFilterValues = string[];
-const AcceptanceStateFilterValues = ListOf__string as any as S.Schema<AcceptanceStateFilterValues>;
 export interface ListReceivedDataGrantsRequest {
   MaxResults?: number;
   NextToken?: string;
   AcceptanceState?: string[];
 }
-const ListReceivedDataGrantsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListReceivedDataGrantsRequest>;
 export interface ReceivedDataGrantSummariesEntry {
   Name: string;
   SenderPrincipal: string;
@@ -1132,30 +852,17 @@ export interface ReceivedDataGrantSummariesEntry {
   CreatedAt: Date;
   UpdatedAt: Date;
 }
-const ReceivedDataGrantSummariesEntry = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ReceivedDataGrantSummariesEntry>;
 export type ListOfReceivedDataGrantSummariesEntry = ReceivedDataGrantSummariesEntry[];
-const ListOfReceivedDataGrantSummariesEntry = /*@__PURE__*/ __L.at(__c13, 2);
 export interface ListReceivedDataGrantsResponse {
   DataGrantSummaries?: ReceivedDataGrantSummariesEntry[];
   NextToken?: string;
 }
-const ListReceivedDataGrantsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListReceivedDataGrantsResponse>;
 export interface ListRevisionAssetsRequest {
   DataSetId: string;
   MaxResults?: number;
   NextToken?: string;
   RevisionId: string;
 }
-const ListRevisionAssetsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListRevisionAssetsRequest>;
 export interface AssetEntry {
   Arn: string;
   AssetDetails: AssetDetails;
@@ -1168,40 +875,22 @@ export interface AssetEntry {
   SourceId?: string;
   UpdatedAt: Date;
 }
-const AssetEntry = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<AssetEntry>;
 export type ListOfAssetEntry = AssetEntry[];
-const ListOfAssetEntry = /*@__PURE__*/ __L.at(__c13, 6);
 export interface ListRevisionAssetsResponse {
   Assets?: AssetEntry[];
   NextToken?: string;
 }
-const ListRevisionAssetsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListRevisionAssetsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RevokeRevisionRequest {
   DataSetId: string;
   RevisionId: string;
   RevocationComment: string;
 }
-const RevokeRevisionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<RevokeRevisionRequest>;
 export interface RevokeRevisionResponse {
   Arn?: string;
   Comment?: string;
@@ -1215,10 +904,6 @@ export interface RevokeRevisionResponse {
   Revoked?: boolean;
   RevokedAt?: Date;
 }
-const RevokeRevisionResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<RevokeRevisionResponse>;
 export interface SendApiAssetRequest {
   Body?: string;
   QueryStringParameters?: { [key: string]: string | undefined };
@@ -1229,25 +914,15 @@ export interface SendApiAssetRequest {
   Path?: string;
   RevisionId: string;
 }
-const SendApiAssetRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<SendApiAssetRequest>;
 export interface SendApiAssetResponse {
   Body?: string;
   ResponseHeaders?: { [key: string]: string | undefined };
 }
-const SendApiAssetResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<SendApiAssetResponse>;
 export interface LakeFormationTagPolicyDetails {
   Database?: string;
   Table?: string;
 }
-const LakeFormationTagPolicyDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<LakeFormationTagPolicyDetails>;
 export type ListOfLakeFormationTagPolicies = LakeFormationTagPolicyDetails[];
-const ListOfLakeFormationTagPolicies = /*@__PURE__*/ __L.at(__c14, 7);
 export interface RedshiftDataShareDetails {
   Arn: string;
   Database: string;
@@ -1256,64 +931,41 @@ export interface RedshiftDataShareDetails {
   Schema?: string;
   View?: string;
 }
-const RedshiftDataShareDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<RedshiftDataShareDetails>;
 export type ListOfRedshiftDataShares = RedshiftDataShareDetails[];
-const ListOfRedshiftDataShares = /*@__PURE__*/ __L.at(__c15, 1);
 export interface S3DataAccessDetails {
   KeyPrefixes?: string[];
   Keys?: string[];
 }
-const S3DataAccessDetails = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<S3DataAccessDetails>;
 export type ListOfS3DataAccesses = S3DataAccessDetails[];
-const ListOfS3DataAccesses = /*@__PURE__*/ __L.at(__c15, 3);
 export interface ScopeDetails {
   LakeFormationTagPolicies?: LakeFormationTagPolicyDetails[];
   RedshiftDataShares?: RedshiftDataShareDetails[];
   S3DataAccesses?: S3DataAccessDetails[];
 }
-const ScopeDetails = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ScopeDetails>;
 export type ClientToken = string;
 export type __stringMin0Max4096 = string;
 export interface DataUpdateRequestDetails {
   DataUpdatedAt?: Date;
 }
-const DataUpdateRequestDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DataUpdateRequestDetails>;
 export interface DeprecationRequestDetails {
   DeprecationAt: Date;
 }
-const DeprecationRequestDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeprecationRequestDetails>;
 export type SchemaChangeType = string;
 export interface SchemaChangeDetails {
   Name: string;
   Type: string;
   Description?: string;
 }
-const SchemaChangeDetails = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<SchemaChangeDetails>;
 export type ListOfSchemaChangeDetails = SchemaChangeDetails[];
-const ListOfSchemaChangeDetails = /*@__PURE__*/ __L.at(__c16, 0);
 export interface SchemaChangeRequestDetails {
   Changes?: SchemaChangeDetails[];
   SchemaChangeAt: Date;
 }
-const SchemaChangeRequestDetails = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<SchemaChangeRequestDetails>;
 export interface NotificationDetails {
   DataUpdate?: DataUpdateRequestDetails;
   Deprecation?: DeprecationRequestDetails;
   SchemaChange?: SchemaChangeRequestDetails;
 }
-const NotificationDetails = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<NotificationDetails>;
 export type NotificationType = string;
 export interface SendDataSetNotificationRequest {
   Scope?: ScopeDetails;
@@ -1323,45 +975,27 @@ export interface SendDataSetNotificationRequest {
   Details?: NotificationDetails;
   Type: string;
 }
-const SendDataSetNotificationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<SendDataSetNotificationRequest>;
 export interface SendDataSetNotificationResponse {}
-const SendDataSetNotificationResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<SendDataSetNotificationResponse>;
 export interface StartJobRequest {
   JobId: string;
 }
-const StartJobRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<StartJobRequest>;
 export interface StartJobResponse {}
-const StartJobResponse = CancelJobResponse as any as S.Schema<StartJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = CancelJobResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = CancelJobResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAssetRequest {
   AssetId: string;
   DataSetId: string;
   Name: string;
   RevisionId: string;
 }
-const UpdateAssetRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<UpdateAssetRequest>;
 export interface UpdateAssetResponse {
   Arn?: string;
   AssetDetails?: AssetDetails;
@@ -1374,16 +1008,11 @@ export interface UpdateAssetResponse {
   SourceId?: string;
   UpdatedAt?: Date;
 }
-const UpdateAssetResponse = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<UpdateAssetResponse>;
 export interface UpdateDataSetRequest {
   DataSetId: string;
   Description?: string;
   Name?: string;
 }
-const UpdateDataSetRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<UpdateDataSetRequest>;
 export interface UpdateDataSetResponse {
   Arn?: string;
   AssetType?: string;
@@ -1396,18 +1025,10 @@ export interface UpdateDataSetResponse {
   SourceId?: string;
   UpdatedAt?: Date;
 }
-const UpdateDataSetResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<UpdateDataSetResponse>;
 export interface UpdateEventActionRequest {
   Action?: Action;
   EventActionId: string;
 }
-const UpdateEventActionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<UpdateEventActionRequest>;
 export interface UpdateEventActionResponse {
   Action?: Action;
   Arn?: string;
@@ -1416,20 +1037,12 @@ export interface UpdateEventActionResponse {
   Id?: string;
   UpdatedAt?: Date;
 }
-const UpdateEventActionResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<UpdateEventActionResponse>;
 export interface UpdateRevisionRequest {
   Comment?: string;
   DataSetId: string;
   Finalized?: boolean;
   RevisionId: string;
 }
-const UpdateRevisionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<UpdateRevisionRequest>;
 export interface UpdateRevisionResponse {
   Arn?: string;
   Comment?: string;
@@ -1443,7 +1056,6 @@ export interface UpdateRevisionResponse {
   Revoked?: boolean;
   RevokedAt?: Date;
 }
-const UpdateRevisionResponse = RevokeRevisionResponse as any as S.Schema<UpdateRevisionResponse>;
 export type ResourceType = string;
 export type ExceptionCause = string;
 export type LimitName = string;
@@ -1464,8 +1076,8 @@ export const acceptDataGrant: API.OperationMethod<
   AcceptDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptDataGrantRequest,
-  output: AcceptDataGrantResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AcceptDataGrantRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AcceptDataGrantResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1495,8 +1107,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelJobRequest,
-  output: CancelJobResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CancelJobRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CancelJobResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1526,8 +1138,8 @@ export const createDataGrant: API.OperationMethod<
   CreateDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataGrantRequest,
-  output: CreateDataGrantResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateDataGrantRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreateDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1557,8 +1169,8 @@ export const createDataSet: API.OperationMethod<
   CreateDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataSetRequest,
-  output: CreateDataSetResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateDataSetRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateDataSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1587,8 +1199,8 @@ export const createEventAction: API.OperationMethod<
   CreateEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventActionRequest,
-  output: CreateEventActionResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateEventActionRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateEventActionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1618,8 +1230,8 @@ export const createJob: API.OperationMethod<
   CreateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJobRequest,
-  output: CreateJobResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<CreateJobRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1649,8 +1261,8 @@ export const createRevision: API.OperationMethod<
   CreateRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRevisionRequest,
-  output: CreateRevisionResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<CreateRevisionRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<CreateRevisionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1680,8 +1292,8 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssetRequest,
-  output: DeleteAssetResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<DeleteAssetRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteAssetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1711,8 +1323,8 @@ export const deleteDataGrant: API.OperationMethod<
   DeleteDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataGrantRequest,
-  output: DeleteDataGrantResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<DeleteDataGrantRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1742,8 +1354,8 @@ export const deleteDataSet: API.OperationMethod<
   DeleteDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataSetRequest,
-  output: DeleteDataSetResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<DeleteDataSetRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteDataSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1772,8 +1384,8 @@ export const deleteEventAction: API.OperationMethod<
   DeleteEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventActionRequest,
-  output: DeleteEventActionResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<DeleteEventActionRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteEventActionResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1802,8 +1414,8 @@ export const deleteRevision: API.OperationMethod<
   DeleteRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRevisionRequest,
-  output: DeleteRevisionResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<DeleteRevisionRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1832,8 +1444,8 @@ export const getAsset: API.OperationMethod<
   GetAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssetRequest,
-  output: GetAssetResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<GetAssetRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetAssetResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1861,8 +1473,8 @@ export const getDataGrant: API.OperationMethod<
   GetDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataGrantRequest,
-  output: GetDataGrantResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<GetDataGrantRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1890,8 +1502,8 @@ export const getDataSet: API.OperationMethod<
   GetDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataSetRequest,
-  output: GetDataSetResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<GetDataSetRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetDataSetResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1918,8 +1530,8 @@ export const getEventAction: API.OperationMethod<
   GetEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventActionRequest,
-  output: GetEventActionResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetEventActionRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetEventActionResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1946,8 +1558,8 @@ export const getJob: API.OperationMethod<
   GetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobRequest,
-  output: GetJobResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetJobResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1975,8 +1587,8 @@ export const getReceivedDataGrant: API.OperationMethod<
   GetReceivedDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReceivedDataGrantRequest,
-  output: GetReceivedDataGrantResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<GetReceivedDataGrantRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetReceivedDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2004,8 +1616,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRevisionRequest,
-  output: GetRevisionResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<GetRevisionRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetRevisionResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2034,8 +1646,8 @@ export const listDataGrants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataGrantSummaryEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDataGrantsRequest,
-  output: ListDataGrantsResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<ListDataGrantsRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<ListDataGrantsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2070,8 +1682,8 @@ export const listDataSetRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RevisionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDataSetRevisionsRequest,
-  output: ListDataSetRevisionsResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<ListDataSetRevisionsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListDataSetRevisionsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2105,8 +1717,8 @@ export const listDataSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSetEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDataSetsRequest,
-  output: ListDataSetsResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<ListDataSetsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<ListDataSetsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2140,8 +1752,8 @@ export const listEventActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventActionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEventActionsRequest,
-  output: ListEventActionsResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<ListEventActionsRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ListEventActionsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2175,8 +1787,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListJobsRequest,
-  output: ListJobsResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<ListJobsRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<ListJobsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2211,8 +1823,8 @@ export const listReceivedDataGrants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReceivedDataGrantSummariesEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListReceivedDataGrantsRequest,
-  output: ListReceivedDataGrantsResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<ListReceivedDataGrantsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<ListReceivedDataGrantsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2247,8 +1859,8 @@ export const listRevisionAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRevisionAssetsRequest,
-  output: ListRevisionAssetsResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<ListRevisionAssetsRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<ListRevisionAssetsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2276,8 +1888,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2301,8 +1913,8 @@ export const revokeRevision: API.OperationMethod<
   RevokeRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeRevisionRequest,
-  output: RevokeRevisionResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<RevokeRevisionRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<RevokeRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2332,8 +1944,8 @@ export const sendApiAsset: API.OperationMethod<
   SendApiAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendApiAssetRequest,
-  output: SendApiAssetResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<SendApiAssetRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<SendApiAssetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2364,8 +1976,8 @@ export const sendDataSetNotification: API.OperationMethod<
   SendDataSetNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendDataSetNotificationRequest,
-  output: SendDataSetNotificationResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<SendDataSetNotificationRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<SendDataSetNotificationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2396,8 +2008,8 @@ export const startJob: API.OperationMethod<
   StartJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartJobRequest,
-  output: StartJobResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<StartJobRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<StartJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2421,8 +2033,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(134, __c16, 6) as any as S.Schema<TagResourceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2439,8 +2051,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(135, __c16, 7) as any as S.Schema<UntagResourceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2464,8 +2076,8 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssetRequest,
-  output: UpdateAssetResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateAssetRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<UpdateAssetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2495,8 +2107,8 @@ export const updateDataSet: API.OperationMethod<
   UpdateDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataSetRequest,
-  output: UpdateDataSetResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<UpdateDataSetRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<UpdateDataSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2525,8 +2137,8 @@ export const updateEventAction: API.OperationMethod<
   UpdateEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventActionRequest,
-  output: UpdateEventActionResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<UpdateEventActionRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<UpdateEventActionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2556,8 +2168,8 @@ export const updateRevision: API.OperationMethod<
   UpdateRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRevisionRequest,
-  output: UpdateRevisionResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<UpdateRevisionRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<UpdateRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2633,7 +2245,7 @@ function __c0(j: number): any {
           SourceDataSetId: S.String,
           EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Description: S.optional(S.String),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/data-grants" }), svc, auth, proto, ver, rules),
         ),
@@ -2655,7 +2267,7 @@ function __c0(j: number): any {
           Arn: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "CreateDataGrantResponse" });
     case 7:
@@ -2664,7 +2276,7 @@ function __c0(j: number): any {
           AssetType: S.String,
           Description: S.String,
           Name: S.String,
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/data-sets" }), svc, auth, proto, ver, rules),
         ),
@@ -2687,9 +2299,9 @@ function __c1(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Origin: S.optional(S.String),
-          OriginDetails: S.optional(OriginDetails),
+          OriginDetails: S.optional(__S(8, __c1, 0)),
           SourceId: S.optional(S.String),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateDataSetResponse" });
@@ -2708,15 +2320,15 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Encryption: S.optional(ExportServerSideEncryption),
-          RevisionDestination: AutoExportRevisionDestinationEntry,
+          Encryption: S.optional(__S(10, __c1, 2)),
+          RevisionDestination: __S(11, __c1, 3),
         }),
       ).annotate({
         identifier: "AutoExportRevisionToS3RequestDetails",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ExportRevisionToS3: S.optional(AutoExportRevisionToS3RequestDetails) }),
+        S.Struct({ ExportRevisionToS3: S.optional(__S(12, __c1, 4)) }),
       ).annotate({ identifier: "Action" });
     case 6:
       return S.suspend(() => S.Struct({ DataSetId: S.String })).annotate({
@@ -2724,7 +2336,7 @@ function __c1(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ RevisionPublished: S.optional(RevisionPublished) }),
+        S.Struct({ RevisionPublished: S.optional(__S(14, __c1, 6)) }),
       ).annotate({ identifier: "Event" });
   }
 }
@@ -2732,19 +2344,23 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Action: Action, Event: Event, Tags: S.optional(MapOf__string) }).pipe(
+        S.Struct({
+          Action: __S(13, __c1, 5),
+          Event: __S(15, __c1, 7),
+          Tags: S.optional(__S(4, __c0, 4)),
+        }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/event-actions" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateEventActionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(__S(13, __c1, 5)),
           Arn: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Event: S.optional(Event),
+          Event: S.optional(__S(15, __c1, 7)),
           Id: S.optional(S.String),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
@@ -2755,9 +2371,9 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 3:
-      return S.Array(Tag);
+      return S.Array(__S(18, __c2, 2));
     case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(ListOfTag) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(19, __c2, 3)) })).annotate({
         identifier: "AssetConfiguration",
       });
     case 5:
@@ -2771,7 +2387,7 @@ function __c2(j: number): any {
         S.Struct({ AssetId: S.String, Bucket: S.String, Key: S.optional(S.String) }),
       ).annotate({ identifier: "AssetDestinationEntry" });
     case 7:
-      return S.Array(AssetDestinationEntry);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -2779,9 +2395,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AssetDestinations: ListOfAssetDestinationEntry,
+          AssetDestinations: __S(23, __c2, 7),
           DataSetId: S.String,
-          Encryption: S.optional(ExportServerSideEncryption),
+          Encryption: S.optional(__S(10, __c1, 2)),
           RevisionId: S.String,
         }),
       ).annotate({
@@ -2792,13 +2408,13 @@ function __c3(j: number): any {
         S.Struct({ Bucket: S.String, KeyPattern: S.optional(S.String), RevisionId: S.String }),
       ).annotate({ identifier: "RevisionDestinationEntry" });
     case 2:
-      return S.Array(RevisionDestinationEntry);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String,
-          Encryption: S.optional(ExportServerSideEncryption),
-          RevisionDestinations: ListOfRevisionDestinationEntry,
+          Encryption: S.optional(__S(10, __c1, 2)),
+          RevisionDestinations: __S(26, __c3, 2),
         }),
       ).annotate({
         identifier: "ExportRevisionsToS3RequestDetails",
@@ -2819,11 +2435,11 @@ function __c3(j: number): any {
         identifier: "AssetSourceEntry",
       });
     case 6:
-      return S.Array(AssetSourceEntry);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AssetSources: ListOfAssetSourceEntry,
+          AssetSources: __S(30, __c3, 6),
           DataSetId: S.String,
           RevisionId: S.String,
         }),
@@ -2839,11 +2455,11 @@ function __c4(j: number): any {
         identifier: "RedshiftDataShareAssetSourceEntry",
       });
     case 1:
-      return S.Array(RedshiftDataShareAssetSourceEntry);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AssetSources: ListOfRedshiftDataShareAssetSourceEntry,
+          AssetSources: __S(33, __c4, 1),
           DataSetId: S.String,
           RevisionId: S.String,
         }),
@@ -2873,14 +2489,14 @@ function __c4(j: number): any {
         identifier: "KmsKeyToGrant",
       });
     case 6:
-      return S.Array(KmsKeyToGrant);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String,
-          KeyPrefixes: S.optional(ListOf__string),
-          Keys: S.optional(ListOf__string),
-          KmsKeysToGrant: S.optional(ListOfKmsKeysToGrant),
+          KeyPrefixes: S.optional(__S(36, __c4, 4)),
+          Keys: S.optional(__S(36, __c4, 4)),
+          KmsKeysToGrant: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({
         identifier: "S3DataAccessAssetSourceEntry",
@@ -2892,7 +2508,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AssetSource: S3DataAccessAssetSourceEntry,
+          AssetSource: __S(39, __c4, 7),
           DataSetId: S.String,
           RevisionId: S.String,
         }),
@@ -2900,14 +2516,14 @@ function __c5(j: number): any {
         identifier: "CreateS3DataAccessFromS3BucketRequestDetails",
       });
     case 1:
-      return S.suspend(() => S.Struct({ TagKey: S.String, TagValues: ListOfLFTagValues })).annotate(
-        { identifier: "LFTag" },
-      );
+      return S.suspend(() => S.Struct({ TagKey: S.String, TagValues: __S(36, __c4, 4) })).annotate({
+        identifier: "LFTag",
+      });
     case 2:
-      return S.Array(LFTag);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Expression: ListOfLFTags, Permissions: ListOfDatabaseLFTagPolicyPermissions }),
+        S.Struct({ Expression: __S(42, __c5, 2), Permissions: __S(36, __c4, 4) }),
       ).annotate({
         identifier: "DatabaseLFTagPolicyAndPermissions",
       });
@@ -2915,8 +2531,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.String,
-          Database: S.optional(DatabaseLFTagPolicyAndPermissions),
-          Table: S.optional(TableLFTagPolicyAndPermissions),
+          Database: S.optional(__S(43, __c5, 3)),
+          Table: S.optional(__S(43, __c5, 3)),
           RoleArn: S.String,
           DataSetId: S.String,
           RevisionId: S.String,
@@ -2927,26 +2543,22 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ExportAssetToSignedUrl: S.optional(ExportAssetToSignedUrlRequestDetails),
-          ExportAssetsToS3: S.optional(ExportAssetsToS3RequestDetails),
-          ExportRevisionsToS3: S.optional(ExportRevisionsToS3RequestDetails),
-          ImportAssetFromSignedUrl: S.optional(ImportAssetFromSignedUrlRequestDetails),
-          ImportAssetsFromS3: S.optional(ImportAssetsFromS3RequestDetails),
-          ImportAssetsFromRedshiftDataShares: S.optional(
-            ImportAssetsFromRedshiftDataSharesRequestDetails,
-          ),
-          ImportAssetFromApiGatewayApi: S.optional(ImportAssetFromApiGatewayApiRequestDetails),
-          CreateS3DataAccessFromS3Bucket: S.optional(CreateS3DataAccessFromS3BucketRequestDetails),
-          ImportAssetsFromLakeFormationTagPolicy: S.optional(
-            ImportAssetsFromLakeFormationTagPolicyRequestDetails,
-          ),
+          ExportAssetToSignedUrl: S.optional(__S(21, __c2, 5)),
+          ExportAssetsToS3: S.optional(__S(24, __c3, 0)),
+          ExportRevisionsToS3: S.optional(__S(27, __c3, 3)),
+          ImportAssetFromSignedUrl: S.optional(__S(28, __c3, 4)),
+          ImportAssetsFromS3: S.optional(__S(31, __c3, 7)),
+          ImportAssetsFromRedshiftDataShares: S.optional(__S(34, __c4, 2)),
+          ImportAssetFromApiGatewayApi: S.optional(__S(35, __c4, 3)),
+          CreateS3DataAccessFromS3Bucket: S.optional(__S(40, __c5, 0)),
+          ImportAssetsFromLakeFormationTagPolicy: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "RequestDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AssetConfiguration: S.optional(AssetConfiguration),
-          Details: RequestDetails,
+          AssetConfiguration: S.optional(__S(20, __c2, 4)),
+          Details: __S(45, __c5, 5),
           Type: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/jobs" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateJobRequest" });
@@ -2970,8 +2582,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String,
-          Encryption: S.optional(ExportServerSideEncryption),
-          RevisionDestinations: ListOfRevisionDestinationEntry,
+          Encryption: S.optional(__S(10, __c1, 2)),
+          RevisionDestinations: __S(26, __c3, 2),
           EventActionArn: S.optional(S.String),
         }),
       ).annotate({
@@ -3011,19 +2623,15 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ExportAssetToSignedUrl: S.optional(ExportAssetToSignedUrlResponseDetails),
-          ExportAssetsToS3: S.optional(ExportAssetsToS3ResponseDetails),
-          ExportRevisionsToS3: S.optional(ExportRevisionsToS3ResponseDetails),
-          ImportAssetFromSignedUrl: S.optional(ImportAssetFromSignedUrlResponseDetails),
-          ImportAssetsFromS3: S.optional(ImportAssetsFromS3ResponseDetails),
-          ImportAssetsFromRedshiftDataShares: S.optional(
-            ImportAssetsFromRedshiftDataSharesResponseDetails,
-          ),
-          ImportAssetFromApiGatewayApi: S.optional(ImportAssetFromApiGatewayApiResponseDetails),
-          CreateS3DataAccessFromS3Bucket: S.optional(CreateS3DataAccessFromS3BucketResponseDetails),
-          ImportAssetsFromLakeFormationTagPolicy: S.optional(
-            ImportAssetsFromLakeFormationTagPolicyResponseDetails,
-          ),
+          ExportAssetToSignedUrl: S.optional(__S(47, __c5, 7)),
+          ExportAssetsToS3: S.optional(__S(24, __c3, 0)),
+          ExportRevisionsToS3: S.optional(__S(48, __c6, 0)),
+          ImportAssetFromSignedUrl: S.optional(__S(49, __c6, 1)),
+          ImportAssetsFromS3: S.optional(__S(31, __c3, 7)),
+          ImportAssetsFromRedshiftDataShares: S.optional(__S(34, __c4, 2)),
+          ImportAssetFromApiGatewayApi: S.optional(__S(50, __c6, 2)),
+          CreateS3DataAccessFromS3Bucket: S.optional(__S(40, __c5, 0)),
+          ImportAssetsFromLakeFormationTagPolicy: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "ResponseDetails" });
     case 4:
@@ -3033,17 +2641,15 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ImportAssetFromSignedUrlJobErrorDetails: S.optional(
-            ImportAssetFromSignedUrlJobErrorDetails,
-          ),
-          ImportAssetsFromS3JobErrorDetails: S.optional(ListOfAssetSourceEntry),
+          ImportAssetFromSignedUrlJobErrorDetails: S.optional(__S(52, __c6, 4)),
+          ImportAssetsFromS3JobErrorDetails: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "Details" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           Code: S.String,
-          Details: S.optional(Details),
+          Details: S.optional(__S(53, __c6, 5)),
           LimitName: S.optional(S.String),
           LimitValue: S.optional(S.Number),
           Message: S.String,
@@ -3052,7 +2658,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "JobError" });
     case 7:
-      return S.Array(JobError);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -3061,10 +2667,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          AssetConfiguration: S.optional(AssetConfiguration),
+          AssetConfiguration: S.optional(__S(20, __c2, 4)),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Details: S.optional(ResponseDetails),
-          Errors: S.optional(ListOfJobError),
+          Details: S.optional(__S(51, __c6, 3)),
+          Errors: S.optional(__S(55, __c6, 7)),
           Id: S.optional(S.String),
           State: S.optional(S.String),
           Type: S.optional(S.String),
@@ -3076,7 +2682,7 @@ function __c7(j: number): any {
         S.Struct({
           Comment: S.optional(S.String),
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/data-sets/{DataSetId}/revisions" }),
@@ -3098,7 +2704,7 @@ function __c7(j: number): any {
           Finalized: S.optional(S.Boolean),
           Id: S.optional(S.String),
           SourceId: S.optional(S.String),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           RevocationComment: S.optional(S.String),
           Revoked: S.optional(S.Boolean),
@@ -3232,22 +2838,22 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String,
-          KeyPrefixes: S.optional(ListOf__string),
-          Keys: S.optional(ListOf__string),
+          KeyPrefixes: S.optional(__S(36, __c4, 4)),
+          Keys: S.optional(__S(36, __c4, 4)),
           S3AccessPointAlias: S.optional(S.String),
           S3AccessPointArn: S.optional(S.String),
-          KmsKeysToGrant: S.optional(ListOfKmsKeysToGrant),
+          KmsKeysToGrant: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "S3DataAccessAsset" });
     case 5:
-      return S.suspend(() => S.Struct({ Expression: ListOfLFTags })).annotate({
+      return S.suspend(() => S.Struct({ Expression: __S(42, __c5, 2) })).annotate({
         identifier: "DatabaseLFTagPolicy",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Database: S.optional(DatabaseLFTagPolicy),
-          Table: S.optional(TableLFTagPolicy),
+          Database: S.optional(__S(69, __c8, 5)),
+          Table: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "LFResourceDetails" });
     case 7:
@@ -3255,7 +2861,7 @@ function __c8(j: number): any {
         S.Struct({
           CatalogId: S.String,
           ResourceType: S.String,
-          ResourceDetails: LFResourceDetails,
+          ResourceDetails: __S(70, __c8, 6),
         }),
       ).annotate({ identifier: "LFTagPolicyDetails" });
   }
@@ -3263,15 +2869,15 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ LFTagPolicy: S.optional(LFTagPolicyDetails) })).annotate({
+      return S.suspend(() => S.Struct({ LFTagPolicy: S.optional(__S(71, __c8, 7)) })).annotate({
         identifier: "LakeFormationDataPermissionDetails",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LakeFormationDataPermissionDetails: LakeFormationDataPermissionDetails,
+          LakeFormationDataPermissionDetails: __S(72, __c9, 0),
           LakeFormationDataPermissionType: S.String,
-          Permissions: ListOfLFPermissions,
+          Permissions: __S(36, __c4, 4),
           RoleArn: S.optional(S.String),
         }),
       ).annotate({
@@ -3280,18 +2886,18 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          S3SnapshotAsset: S.optional(S3SnapshotAsset),
-          RedshiftDataShareAsset: S.optional(RedshiftDataShareAsset),
-          ApiGatewayApiAsset: S.optional(ApiGatewayApiAsset),
-          S3DataAccessAsset: S.optional(S3DataAccessAsset),
-          LakeFormationDataPermissionAsset: S.optional(LakeFormationDataPermissionAsset),
+          S3SnapshotAsset: S.optional(__S(65, __c8, 1)),
+          RedshiftDataShareAsset: S.optional(__S(66, __c8, 2)),
+          ApiGatewayApiAsset: S.optional(__S(67, __c8, 3)),
+          S3DataAccessAsset: S.optional(__S(68, __c8, 4)),
+          LakeFormationDataPermissionAsset: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "AssetDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          AssetDetails: S.optional(AssetDetails),
+          AssetDetails: S.optional(__S(74, __c9, 2)),
           AssetType: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DataSetId: S.optional(S.String),
@@ -3299,7 +2905,7 @@ function __c9(j: number): any {
           Name: S.optional(S.String),
           RevisionId: S.optional(S.String),
           SourceId: S.optional(S.String),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "GetAssetResponse" });
@@ -3345,12 +2951,12 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(__S(13, __c1, 5)),
           Arn: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Event: S.optional(Event),
+          Event: S.optional(__S(15, __c1, 7)),
           Id: S.optional(S.String),
-          Tags: S.optional(MapOf__string),
+          Tags: S.optional(__S(4, __c0, 4)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "GetEventActionResponse" });
@@ -3442,11 +3048,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "DataGrantSummaryEntry" });
     case 6:
-      return S.Array(DataGrantSummaryEntry);
+      return S.Array(__S(85, __c10, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DataGrantSummaries: S.optional(ListOfDataGrantSummaryEntry),
+          DataGrantSummaries: S.optional(__S(86, __c10, 6)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataGrantsResponse" });
@@ -3490,10 +3096,10 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "RevisionEntry" });
     case 2:
-      return S.Array(RevisionEntry);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Revisions: S.optional(ListOfRevisionEntry) }),
+        S.Struct({ NextToken: S.optional(S.String), Revisions: S.optional(__S(90, __c11, 2)) }),
       ).annotate({
         identifier: "ListDataSetRevisionsResponse",
       });
@@ -3517,16 +3123,16 @@ function __c11(j: number): any {
           Id: S.String,
           Name: S.String,
           Origin: S.String,
-          OriginDetails: S.optional(OriginDetails),
+          OriginDetails: S.optional(__S(8, __c1, 0)),
           SourceId: S.optional(S.String),
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "DataSetEntry" });
     case 6:
-      return S.Array(DataSetEntry);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ DataSets: S.optional(ListOfDataSetEntry), NextToken: S.optional(S.String) }),
+        S.Struct({ DataSets: S.optional(__S(94, __c11, 6)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDataSetsResponse" });
   }
 }
@@ -3545,20 +3151,20 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Action: Action,
+          Action: __S(13, __c1, 5),
           Arn: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Event: Event,
+          Event: __S(15, __c1, 7),
           Id: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "EventActionEntry" });
     case 2:
-      return S.Array(EventActionEntry);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EventActions: S.optional(ListOfEventActionEntry),
+          EventActions: S.optional(__S(98, __c12, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEventActionsResponse" });
@@ -3575,10 +3181,10 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          AssetConfiguration: S.optional(AssetConfiguration),
+          AssetConfiguration: S.optional(__S(20, __c2, 4)),
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Details: ResponseDetails,
-          Errors: S.optional(ListOfJobError),
+          Details: __S(51, __c6, 3),
+          Errors: S.optional(__S(55, __c6, 7)),
           Id: S.String,
           State: S.String,
           Type: S.String,
@@ -3586,10 +3192,10 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "JobEntry" });
     case 6:
-      return S.Array(JobEntry);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Jobs: S.optional(ListOfJobEntry), NextToken: S.optional(S.String) }),
+        S.Struct({ Jobs: S.optional(__S(102, __c12, 6)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListJobsResponse" });
   }
 }
@@ -3600,9 +3206,7 @@ function __c13(j: number): any {
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          AcceptanceState: S.optional(AcceptanceStateFilterValues).pipe(
-            T.HttpQuery("acceptanceState"),
-          ),
+          AcceptanceState: S.optional(__S(36, __c4, 4)).pipe(T.HttpQuery("acceptanceState")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/v1/received-data-grants" }),
@@ -3635,11 +3239,11 @@ function __c13(j: number): any {
         identifier: "ReceivedDataGrantSummariesEntry",
       });
     case 2:
-      return S.Array(ReceivedDataGrantSummariesEntry);
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DataGrantSummaries: S.optional(ListOfReceivedDataGrantSummariesEntry),
+          DataGrantSummaries: S.optional(__S(106, __c13, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3672,7 +3276,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          AssetDetails: AssetDetails,
+          AssetDetails: __S(74, __c9, 2),
           AssetType: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           DataSetId: S.String,
@@ -3684,10 +3288,10 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "AssetEntry" });
     case 6:
-      return S.Array(AssetEntry);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Assets: S.optional(ListOfAssetEntry), NextToken: S.optional(S.String) }),
+        S.Struct({ Assets: S.optional(__S(110, __c13, 6)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRevisionAssetsResponse",
       });
@@ -3712,7 +3316,7 @@ function __c14(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(MapOf__string) }).pipe(S.encodeKeys({ Tags: "tags" })),
+        S.Struct({ Tags: S.optional(__S(4, __c0, 4)) }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -3756,10 +3360,10 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String).pipe(T.HttpPayload()),
-          QueryStringParameters: S.optional(MapOf__string).pipe(T.HttpQueryParams()),
+          QueryStringParameters: S.optional(__S(4, __c0, 4)).pipe(T.HttpQueryParams()),
           AssetId: S.String.pipe(T.HttpHeader("x-amzn-dataexchange-asset-id")),
           DataSetId: S.String.pipe(T.HttpHeader("x-amzn-dataexchange-data-set-id")),
-          RequestHeaders: S.optional(MapOf__string).pipe(
+          RequestHeaders: S.optional(__S(4, __c0, 4)).pipe(
             T.HttpPrefixHeaders("x-amzn-dataexchange-header-"),
           ),
           Method: S.optional(S.String).pipe(T.HttpHeader("x-amzn-dataexchange-http-method")),
@@ -3771,7 +3375,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String).pipe(T.HttpPayload()),
-          ResponseHeaders: S.optional(MapOf__string).pipe(T.HttpPrefixHeaders("")),
+          ResponseHeaders: S.optional(__S(4, __c0, 4)).pipe(T.HttpPrefixHeaders("")),
         }),
       ).annotate({ identifier: "SendApiAssetResponse" });
     case 6:
@@ -3781,7 +3385,7 @@ function __c14(j: number): any {
         identifier: "LakeFormationTagPolicyDetails",
       });
     case 7:
-      return S.Array(LakeFormationTagPolicyDetails);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -3798,19 +3402,19 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "RedshiftDataShareDetails" });
     case 1:
-      return S.Array(RedshiftDataShareDetails);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ KeyPrefixes: S.optional(ListOf__string), Keys: S.optional(ListOf__string) }),
+        S.Struct({ KeyPrefixes: S.optional(__S(36, __c4, 4)), Keys: S.optional(__S(36, __c4, 4)) }),
       ).annotate({ identifier: "S3DataAccessDetails" });
     case 3:
-      return S.Array(S3DataAccessDetails);
+      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          LakeFormationTagPolicies: S.optional(ListOfLakeFormationTagPolicies),
-          RedshiftDataShares: S.optional(ListOfRedshiftDataShares),
-          S3DataAccesses: S.optional(ListOfS3DataAccesses),
+          LakeFormationTagPolicies: S.optional(__S(119, __c14, 7)),
+          RedshiftDataShares: S.optional(__S(121, __c15, 1)),
+          S3DataAccesses: S.optional(__S(123, __c15, 3)),
         }),
       ).annotate({ identifier: "ScopeDetails" });
     case 5:
@@ -3834,11 +3438,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SchemaChangeDetails);
+      return S.Array(__S(127, __c15, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Changes: S.optional(ListOfSchemaChangeDetails),
+          Changes: S.optional(__S(128, __c16, 0)),
           SchemaChangeAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
@@ -3847,19 +3451,19 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DataUpdate: S.optional(DataUpdateRequestDetails),
-          Deprecation: S.optional(DeprecationRequestDetails),
-          SchemaChange: S.optional(SchemaChangeRequestDetails),
+          DataUpdate: S.optional(__S(125, __c15, 5)),
+          Deprecation: S.optional(__S(126, __c15, 6)),
+          SchemaChange: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({ identifier: "NotificationDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Scope: S.optional(ScopeDetails),
+          Scope: S.optional(__S(124, __c15, 4)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           Comment: S.optional(S.String),
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
-          Details: S.optional(NotificationDetails),
+          Details: S.optional(__S(130, __c16, 2)),
           Type: S.String,
         }).pipe(
           T.all(
@@ -3886,7 +3490,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "StartJobRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: MapOf__string })
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(4, __c0, 4) })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
             T.all(
@@ -3903,7 +3507,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: ListOf__string.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(36, __c4, 4).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -3944,7 +3548,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          AssetDetails: S.optional(AssetDetails),
+          AssetDetails: S.optional(__S(74, __c9, 2)),
           AssetType: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DataSetId: S.optional(S.String),
@@ -3982,7 +3586,7 @@ function __c17(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Origin: S.optional(S.String),
-          OriginDetails: S.optional(OriginDetails),
+          OriginDetails: S.optional(__S(8, __c1, 0)),
           SourceId: S.optional(S.String),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -3990,7 +3594,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(__S(13, __c1, 5)),
           EventActionId: S.String.pipe(T.HttpLabel("EventActionId")),
         }).pipe(
           T.all(
@@ -4006,10 +3610,10 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(__S(13, __c1, 5)),
           Arn: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Event: S.optional(Event),
+          Event: S.optional(__S(15, __c1, 7)),
           Id: S.optional(S.String),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -4035,4 +3639,9 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "UpdateRevisionRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

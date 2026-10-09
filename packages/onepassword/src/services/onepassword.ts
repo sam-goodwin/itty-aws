@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OnepasswordOpError, OnepasswordOpContext };
 
@@ -44,11 +46,6 @@ export class NotFound
 export interface CreateVaultItemRequestVault {
   id: string;
 }
-const CreateVaultItemRequestVault = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateVaultItemRequestVault>;
-
 export type CreateVaultItemRequestCategory =
   | "LOGIN"
   | "PASSWORD"
@@ -72,50 +69,21 @@ export type CreateVaultItemRequestCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-const CreateVaultItemRequestCategory = S.String;
-
 export interface CreateVaultItemRequestUrlsItem {
   label?: string;
   primary?: boolean;
   href: string;
 }
-const CreateVaultItemRequestUrlsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateVaultItemRequestUrlsItem>;
-
 export type CreateVaultItemRequestUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-const CreateVaultItemRequestUrlsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateVaultItemRequestUrlsList>;
-
 export type CreateVaultItemRequestTagsList = Array<string>;
-const CreateVaultItemRequestTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateVaultItemRequestTagsList>;
-
 export interface CreateVaultItemRequestSectionsItem {
   id?: string;
   label?: string;
 }
-const CreateVaultItemRequestSectionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateVaultItemRequestSectionsItem>;
-
 export type CreateVaultItemRequestSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-const CreateVaultItemRequestSectionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateVaultItemRequestSectionsList>;
-
 export interface FieldInputSection {
   id?: string;
 }
-const FieldInputSection = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FieldInputSection>;
-
 export type FieldInputType =
   | "STRING"
   | "EMAIL"
@@ -125,23 +93,12 @@ export type FieldInputType =
   | "DATE"
   | "MONTH_YEAR"
   | "MENU";
-const FieldInputType = S.String;
-
 /** Some item types, Login and Password, have fields used for autofill. This property indicates that purpose and is required for some item types. */
 export type FieldInputPurpose = "" | "USERNAME" | "PASSWORD" | "NOTES";
-const FieldInputPurpose = S.String;
-
 export type GeneratorRecipeCharacterSetsItem = "LETTERS" | "DIGITS" | "SYMBOLS";
-const GeneratorRecipeCharacterSetsItem = S.String;
-
 export type GeneratorRecipeCharacterSetsList = Array<
   GeneratorRecipeCharacterSetsItem | (string & {})
 >;
-const GeneratorRecipeCharacterSetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GeneratorRecipeCharacterSetsList>;
-
 /** The recipe is used in conjunction with the "generate" property to set the character set used to generate a new secure value */
 export interface GeneratorRecipe {
   /** Length of the generated value */
@@ -150,8 +107,6 @@ export interface GeneratorRecipe {
   /** List of all characters that should be excluded from generated passwords. */
   excludeCharacters?: string;
 }
-const GeneratorRecipe = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GeneratorRecipe>;
-
 export interface FieldInput {
   id: string;
   section?: FieldInputSection;
@@ -164,14 +119,7 @@ export interface FieldInput {
   generate?: boolean;
   recipe?: GeneratorRecipe;
 }
-const FieldInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FieldInput>;
-
 export type CreateVaultItemRequestFieldsList = Array<FieldInput>;
-const CreateVaultItemRequestFieldsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateVaultItemRequestFieldsList>;
-
 /** For files that are in a section, this field describes the section. */
 export type FileInputSection = FieldInputSection;
 export interface FileInput {
@@ -186,14 +134,7 @@ export interface FileInput {
   /** Base64-encoded contents of the file. Only set if size <= OP_MAX_INLINE_FILE_SIZE_KB kb and `inline_files` is set to `true`. */
   content?: string;
 }
-const FileInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<FileInput>;
-
 export type CreateVaultItemRequestFilesList = Array<FileInput>;
-const CreateVaultItemRequestFilesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateVaultItemRequestFilesList>;
-
 export interface CreateVaultItemRequest {
   /** The UUID of the Vault to create an Item in */
   vaultUuid: string;
@@ -209,11 +150,6 @@ export interface CreateVaultItemRequest {
   fields?: CreateVaultItemRequestFieldsList;
   files?: CreateVaultItemRequestFilesList;
 }
-const CreateVaultItemRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateVaultItemRequest>;
-
 export type CreateVaultItemResponseVault = CreateVaultItemRequestVault;
 export type CreateVaultItemResponseCategory =
   | "LOGIN"
@@ -238,25 +174,12 @@ export type CreateVaultItemResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-const CreateVaultItemResponseCategory = S.String;
-
 export type CreateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 export type CreateVaultItemResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-const CreateVaultItemResponseUrlsList =
-  CreateVaultItemRequestUrlsList as any as S.Schema<CreateVaultItemResponseUrlsList>;
-
 export type CreateVaultItemResponseTagsList = Array<string>;
-const CreateVaultItemResponseTagsList =
-  CreateVaultItemRequestTagsList as any as S.Schema<CreateVaultItemResponseTagsList>;
-
 export type CreateVaultItemResponseState = "ARCHIVED" | "DELETED";
-const CreateVaultItemResponseState = S.String;
-
 export type CreateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
 export type CreateVaultItemResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-const CreateVaultItemResponseSectionsList =
-  CreateVaultItemRequestSectionsList as any as S.Schema<CreateVaultItemResponseSectionsList>;
-
 export type FieldSection = FieldInputSection;
 export type FieldType =
   | "STRING"
@@ -267,12 +190,8 @@ export type FieldType =
   | "DATE"
   | "MONTH_YEAR"
   | "MENU";
-const FieldType = S.String;
-
 /** Some item types, Login and Password, have fields used for autofill. This property indicates that purpose and is required for some item types. */
 export type FieldPurpose = "" | "USERNAME" | "PASSWORD" | "NOTES";
-const FieldPurpose = S.String;
-
 export interface Field {
   id: string;
   section?: FieldInputSection;
@@ -287,14 +206,7 @@ export interface Field {
   /** For fields with a purpose of `PASSWORD` this is the entropy of the value */
   entropy?: number;
 }
-const Field = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Field>;
-
 export type CreateVaultItemResponseFieldsList = Array<Field>;
-const CreateVaultItemResponseFieldsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateVaultItemResponseFieldsList>;
-
 /** For files that are in a section, this field describes the section. */
 export type FileSection = FieldInputSection;
 export interface File {
@@ -311,14 +223,7 @@ export interface File {
   /** Base64-encoded contents of the file. Only set if size <= OP_MAX_INLINE_FILE_SIZE_KB kb and `inline_files` is set to `true`. */
   content?: string;
 }
-const File = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<File>;
-
 export type CreateVaultItemResponseFilesList = Array<File>;
-const CreateVaultItemResponseFilesList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateVaultItemResponseFilesList>;
-
 export interface CreateVaultItemResponse {
   id?: string;
   title?: string;
@@ -336,28 +241,13 @@ export interface CreateVaultItemResponse {
   fields?: CreateVaultItemResponseFieldsList;
   files?: CreateVaultItemResponseFilesList;
 }
-const CreateVaultItemResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateVaultItemResponse>;
-
 export interface DeleteVaultItemRequest {
   /** The UUID of the Vault the item is in */
   vaultUuid: string;
   /** The UUID of the Item to update */
   itemUuid: string;
 }
-const DeleteVaultItemRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteVaultItemRequest>;
-
 export interface DeleteVaultItemResponse {}
-const DeleteVaultItemResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteVaultItemResponse>;
-
 export interface DownloadFileByIDRequest {
   /** The UUID of the Vault the item is in */
   vaultUuid: string;
@@ -366,32 +256,15 @@ export interface DownloadFileByIDRequest {
   /** UUID of the file to get content from */
   fileUuid: string;
 }
-const DownloadFileByIDRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DownloadFileByIDRequest>;
-
 export interface DownloadFileByIDResponse {}
-const DownloadFileByIDResponse =
-  DeleteVaultItemResponse as any as S.Schema<DownloadFileByIDResponse>;
-
 export interface GetApiActivityRequest {
   /** How many API Events should be retrieved in a single request. */
   limit?: number;
   /** How far into the collection of API Events should the response start */
   offset?: number;
 }
-const GetApiActivityRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetApiActivityRequest>;
-
 export type APIRequestAction = "READ" | "CREATE" | "UPDATE" | "DELETE";
-const APIRequestAction = S.String;
-
 export type APIRequestResult = "SUCCESS" | "DENY";
-const APIRequestResult = S.String;
-
 export interface APIRequestActor {
   id?: string;
   account?: string;
@@ -399,11 +272,7 @@ export interface APIRequestActor {
   userAgent?: string;
   requestIp?: string;
 }
-const APIRequestActor = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<APIRequestActor>;
-
 export type APIRequestResourceType = "ITEM" | "VAULT";
-const APIRequestResourceType = S.String;
-
 export type APIRequestResourceVault = FieldInputSection;
 export type APIRequestResourceItem = FieldInputSection;
 export interface APIRequestResource {
@@ -412,8 +281,6 @@ export interface APIRequestResource {
   item?: FieldInputSection;
   itemVersion?: number;
 }
-const APIRequestResource = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<APIRequestResource>;
-
 /** Represents a request that was made to the API. Including what Token was used and what resource was accessed. */
 export interface APIRequest {
   /** The unique id used to identify a single request. */
@@ -425,20 +292,8 @@ export interface APIRequest {
   actor?: APIRequestActor;
   resource?: APIRequestResource;
 }
-const APIRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<APIRequest>;
-
 export type GetApiActivityResponseBodyList = Array<APIRequest>;
-const GetApiActivityResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetApiActivityResponseBodyList>;
-
 export type GetApiActivityResponse = GetApiActivityResponseBodyList;
-const GetApiActivityResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetApiActivityResponse>;
-
 export interface GetDetailsOfFileByIdRequest {
   /** The UUID of the Vault to fetch Item from */
   vaultUuid: string;
@@ -449,17 +304,8 @@ export interface GetDetailsOfFileByIdRequest {
   /** Tells server to return the base64-encoded file contents in the response. */
   inline_files?: boolean;
 }
-const GetDetailsOfFileByIdRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetDetailsOfFileByIdRequest>;
-
 export interface GetHeartbeatRequest {}
-const GetHeartbeatRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetHeartbeatRequest>;
-
 export interface GetHeartbeatResponse {}
-const GetHeartbeatResponse = DeleteVaultItemResponse as any as S.Schema<GetHeartbeatResponse>;
-
 export interface GetItemFilesRequest {
   /** The UUID of the Vault to fetch Items from */
   vaultUuid: string;
@@ -468,31 +314,11 @@ export interface GetItemFilesRequest {
   /** Tells server to return the base64-encoded file contents in the response. */
   inline_files?: boolean;
 }
-const GetItemFilesRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetItemFilesRequest>;
-
 export type GetItemFilesResponseBodyList = Array<File>;
-const GetItemFilesResponseBodyList =
-  CreateVaultItemResponseFilesList as any as S.Schema<GetItemFilesResponseBodyList>;
-
 export type GetItemFilesResponse = GetItemFilesResponseBodyList;
-const GetItemFilesResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetItemFilesResponse>;
-
 export interface GetPrometheusMetricsRequest {}
-const GetPrometheusMetricsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetPrometheusMetricsRequest>;
-
 export interface GetPrometheusMetricsResponse {}
-const GetPrometheusMetricsResponse =
-  DeleteVaultItemResponse as any as S.Schema<GetPrometheusMetricsResponse>;
-
 export interface GetServerHealthRequest {}
-const GetServerHealthRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetServerHealthRequest>;
-
 /** The state of a registered server dependency. */
 export interface ServiceDependency {
   service?: string;
@@ -500,34 +326,18 @@ export interface ServiceDependency {
   /** Human-readable message for explaining the current state. */
   message?: string;
 }
-const ServiceDependency = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ServiceDependency>;
-
 export type GetServerHealthResponseDependenciesList = Array<ServiceDependency>;
-const GetServerHealthResponseDependenciesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetServerHealthResponseDependenciesList>;
-
 export interface GetServerHealthResponse {
   name: string;
   /** The Connect server's version */
   version: string;
   dependencies?: GetServerHealthResponseDependenciesList;
 }
-const GetServerHealthResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetServerHealthResponse>;
-
 export interface GetVaultByIdRequest {
   /** The UUID of the Vault to fetch Items from */
   vaultUuid: string;
 }
-const GetVaultByIdRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetVaultByIdRequest>;
-
 export type VaultType = "USER_CREATED" | "PERSONAL" | "EVERYONE" | "TRANSFER";
-const VaultType = S.String;
-
 export interface Vault {
   id?: string;
   name?: string;
@@ -542,19 +352,12 @@ export interface Vault {
   createdAt?: string;
   updatedAt?: string;
 }
-const Vault = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Vault>;
-
 export interface GetVaultItemByIdRequest {
   /** The UUID of the Vault to fetch Item from */
   vaultUuid: string;
   /** The UUID of the Item to fetch */
   itemUuid: string;
 }
-const GetVaultItemByIdRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetVaultItemByIdRequest>;
-
 export type GetVaultItemByIdResponseVault = CreateVaultItemRequestVault;
 export type GetVaultItemByIdResponseCategory =
   | "LOGIN"
@@ -579,33 +382,14 @@ export type GetVaultItemByIdResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-const GetVaultItemByIdResponseCategory = S.String;
-
 export type GetVaultItemByIdResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 export type GetVaultItemByIdResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-const GetVaultItemByIdResponseUrlsList =
-  CreateVaultItemRequestUrlsList as any as S.Schema<GetVaultItemByIdResponseUrlsList>;
-
 export type GetVaultItemByIdResponseTagsList = Array<string>;
-const GetVaultItemByIdResponseTagsList =
-  CreateVaultItemRequestTagsList as any as S.Schema<GetVaultItemByIdResponseTagsList>;
-
 export type GetVaultItemByIdResponseState = "ARCHIVED" | "DELETED";
-const GetVaultItemByIdResponseState = S.String;
-
 export type GetVaultItemByIdResponseSectionsItem = CreateVaultItemRequestSectionsItem;
 export type GetVaultItemByIdResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-const GetVaultItemByIdResponseSectionsList =
-  CreateVaultItemRequestSectionsList as any as S.Schema<GetVaultItemByIdResponseSectionsList>;
-
 export type GetVaultItemByIdResponseFieldsList = Array<Field>;
-const GetVaultItemByIdResponseFieldsList =
-  CreateVaultItemResponseFieldsList as any as S.Schema<GetVaultItemByIdResponseFieldsList>;
-
 export type GetVaultItemByIdResponseFilesList = Array<File>;
-const GetVaultItemByIdResponseFilesList =
-  CreateVaultItemResponseFilesList as any as S.Schema<GetVaultItemByIdResponseFilesList>;
-
 export interface GetVaultItemByIdResponse {
   id?: string;
   title?: string;
@@ -623,19 +407,12 @@ export interface GetVaultItemByIdResponse {
   fields?: GetVaultItemByIdResponseFieldsList;
   files?: GetVaultItemByIdResponseFilesList;
 }
-const GetVaultItemByIdResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetVaultItemByIdResponse>;
-
 export interface GetVaultItemsRequest {
   /** The UUID of the Vault to fetch Items from */
   vaultUuid: string;
   /** Filter the Item collection based on Item name using SCIM eq filter */
   filter?: string;
 }
-const GetVaultItemsRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetVaultItemsRequest>;
-
 export type ItemVault = CreateVaultItemRequestVault;
 export type ItemCategory =
   | "LOGIN"
@@ -660,18 +437,10 @@ export type ItemCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-const ItemCategory = S.String;
-
 export type ItemUrlsItem = CreateVaultItemRequestUrlsItem;
 export type ItemUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-const ItemUrlsList = CreateVaultItemRequestUrlsList as any as S.Schema<ItemUrlsList>;
-
 export type ItemTagsList = Array<string>;
-const ItemTagsList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ItemTagsList>;
-
 export type ItemState = "ARCHIVED" | "DELETED";
-const ItemState = S.String;
-
 export interface Item {
   id?: string;
   title?: string;
@@ -686,35 +455,14 @@ export interface Item {
   updatedAt?: string;
   lastEditedBy?: string;
 }
-const Item = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Item>;
-
 export type GetVaultItemsResponseBodyList = Array<Item>;
-const GetVaultItemsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetVaultItemsResponseBodyList>;
-
 export type GetVaultItemsResponse = GetVaultItemsResponseBodyList;
-const GetVaultItemsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetVaultItemsResponse>;
-
 export interface GetVaultsRequest {
   /** Filter the Vault collection based on Vault name using SCIM eq filter */
   filter?: string;
 }
-const GetVaultsRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetVaultsRequest>;
-
 export type GetVaultsResponseBodyList = Array<Vault>;
-const GetVaultsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetVaultsResponseBodyList>;
-
 export type GetVaultsResponse = GetVaultsResponseBodyList;
-const GetVaultsResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetVaultsResponse>;
-
 export type UpdateVaultItemRequestVault = CreateVaultItemRequestVault;
 export type UpdateVaultItemRequestCategory =
   | "LOGIN"
@@ -739,30 +487,13 @@ export type UpdateVaultItemRequestCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-const UpdateVaultItemRequestCategory = S.String;
-
 export type UpdateVaultItemRequestUrlsItem = CreateVaultItemRequestUrlsItem;
 export type UpdateVaultItemRequestUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-const UpdateVaultItemRequestUrlsList =
-  CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemRequestUrlsList>;
-
 export type UpdateVaultItemRequestTagsList = Array<string>;
-const UpdateVaultItemRequestTagsList =
-  CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemRequestTagsList>;
-
 export type UpdateVaultItemRequestSectionsItem = CreateVaultItemRequestSectionsItem;
 export type UpdateVaultItemRequestSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-const UpdateVaultItemRequestSectionsList =
-  CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemRequestSectionsList>;
-
 export type UpdateVaultItemRequestFieldsList = Array<FieldInput>;
-const UpdateVaultItemRequestFieldsList =
-  CreateVaultItemRequestFieldsList as any as S.Schema<UpdateVaultItemRequestFieldsList>;
-
 export type UpdateVaultItemRequestFilesList = Array<FileInput>;
-const UpdateVaultItemRequestFilesList =
-  CreateVaultItemRequestFilesList as any as S.Schema<UpdateVaultItemRequestFilesList>;
-
 export interface UpdateVaultItemRequest {
   /** The UUID of the Item's Vault */
   vaultUuid: string;
@@ -780,11 +511,6 @@ export interface UpdateVaultItemRequest {
   fields?: UpdateVaultItemRequestFieldsList;
   files?: UpdateVaultItemRequestFilesList;
 }
-const UpdateVaultItemRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<UpdateVaultItemRequest>;
-
 export type UpdateVaultItemResponseVault = CreateVaultItemRequestVault;
 export type UpdateVaultItemResponseCategory =
   | "LOGIN"
@@ -809,33 +535,14 @@ export type UpdateVaultItemResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-const UpdateVaultItemResponseCategory = S.String;
-
 export type UpdateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 export type UpdateVaultItemResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-const UpdateVaultItemResponseUrlsList =
-  CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemResponseUrlsList>;
-
 export type UpdateVaultItemResponseTagsList = Array<string>;
-const UpdateVaultItemResponseTagsList =
-  CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemResponseTagsList>;
-
 export type UpdateVaultItemResponseState = "ARCHIVED" | "DELETED";
-const UpdateVaultItemResponseState = S.String;
-
 export type UpdateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
 export type UpdateVaultItemResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-const UpdateVaultItemResponseSectionsList =
-  CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemResponseSectionsList>;
-
 export type UpdateVaultItemResponseFieldsList = Array<Field>;
-const UpdateVaultItemResponseFieldsList =
-  CreateVaultItemResponseFieldsList as any as S.Schema<UpdateVaultItemResponseFieldsList>;
-
 export type UpdateVaultItemResponseFilesList = Array<File>;
-const UpdateVaultItemResponseFilesList =
-  CreateVaultItemResponseFilesList as any as S.Schema<UpdateVaultItemResponseFilesList>;
-
 export interface UpdateVaultItemResponse {
   id?: string;
   title?: string;
@@ -853,25 +560,14 @@ export interface UpdateVaultItemResponse {
   fields?: UpdateVaultItemResponseFieldsList;
   files?: UpdateVaultItemResponseFilesList;
 }
-const UpdateVaultItemResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<UpdateVaultItemResponse>;
-
 export type PatchItemOp = "add" | "remove" | "replace";
-const PatchItemOp = S.String;
-
 export interface PatchItem {
   op: PatchItemOp | (string & {});
   /** An RFC6901 JSON Pointer pointing to the Item document, an Item Attribute, and Item Field by Field ID, or an Item Field Attribute */
   path: string;
   value?: unknown;
 }
-const PatchItem = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PatchItem>;
-
 export type Patch = Array<PatchItem>;
-const Patch = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Patch>;
-
 export interface UpdateVaultItemByItemUuidRequest {
   /** The UUID of the Vault the item is in */
   vaultUuid: string;
@@ -879,11 +575,6 @@ export interface UpdateVaultItemByItemUuidRequest {
   itemUuid: string;
   body?: Patch;
 }
-const UpdateVaultItemByItemUuidRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<UpdateVaultItemByItemUuidRequest>;
-
 export type UpdateVaultItemByItemUuidResponseVault = CreateVaultItemRequestVault;
 export type UpdateVaultItemByItemUuidResponseCategory =
   | "LOGIN"
@@ -908,34 +599,15 @@ export type UpdateVaultItemByItemUuidResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-const UpdateVaultItemByItemUuidResponseCategory = S.String;
-
 export type UpdateVaultItemByItemUuidResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 export type UpdateVaultItemByItemUuidResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-const UpdateVaultItemByItemUuidResponseUrlsList =
-  CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemByItemUuidResponseUrlsList>;
-
 export type UpdateVaultItemByItemUuidResponseTagsList = Array<string>;
-const UpdateVaultItemByItemUuidResponseTagsList =
-  CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemByItemUuidResponseTagsList>;
-
 export type UpdateVaultItemByItemUuidResponseState = "ARCHIVED" | "DELETED";
-const UpdateVaultItemByItemUuidResponseState = S.String;
-
 export type UpdateVaultItemByItemUuidResponseSectionsItem = CreateVaultItemRequestSectionsItem;
 export type UpdateVaultItemByItemUuidResponseSectionsList =
   Array<CreateVaultItemRequestSectionsItem>;
-const UpdateVaultItemByItemUuidResponseSectionsList =
-  CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemByItemUuidResponseSectionsList>;
-
 export type UpdateVaultItemByItemUuidResponseFieldsList = Array<Field>;
-const UpdateVaultItemByItemUuidResponseFieldsList =
-  CreateVaultItemResponseFieldsList as any as S.Schema<UpdateVaultItemByItemUuidResponseFieldsList>;
-
 export type UpdateVaultItemByItemUuidResponseFilesList = Array<File>;
-const UpdateVaultItemByItemUuidResponseFilesList =
-  CreateVaultItemResponseFilesList as any as S.Schema<UpdateVaultItemByItemUuidResponseFilesList>;
-
 export interface UpdateVaultItemByItemUuidResponse {
   id?: string;
   title?: string;
@@ -953,11 +625,6 @@ export interface UpdateVaultItemByItemUuidResponse {
   fields?: UpdateVaultItemByItemUuidResponseFieldsList;
   files?: UpdateVaultItemByItemUuidResponseFilesList;
 }
-const UpdateVaultItemByItemUuidResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<UpdateVaultItemByItemUuidResponse>;
-
 export type CreateVaultItemError = BadRequest | Forbidden | NotFound | OnepasswordOpError;
 /** Create a new Item */
 export const createVaultItem: API.OperationMethod<
@@ -966,8 +633,8 @@ export const createVaultItem: API.OperationMethod<
   CreateVaultItemError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVaultItemRequest,
-  output: CreateVaultItemResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateVaultItemRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CreateVaultItemResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -981,8 +648,8 @@ export const deleteVaultItem: API.OperationMethod<
   DeleteVaultItemError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVaultItemRequest,
-  output: DeleteVaultItemResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteVaultItemRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DeleteVaultItemResponse>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -996,8 +663,8 @@ export const downloadFileByID: API.OperationMethod<
   DownloadFileByIDError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadFileByIDRequest,
-  output: DownloadFileByIDResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<DownloadFileByIDRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DownloadFileByIDResponse>,
   errors: [NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1011,8 +678,8 @@ export const getApiActivity: API.OperationMethod<
   GetApiActivityError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiActivityRequest,
-  output: GetApiActivityResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetApiActivityRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetApiActivityResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1026,8 +693,8 @@ export const getDetailsOfFileById: API.OperationMethod<
   GetDetailsOfFileByIdError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDetailsOfFileByIdRequest,
-  output: File,
+  input: __S(28, __c3, 4) as any as S.Schema<GetDetailsOfFileByIdRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<File>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1041,8 +708,8 @@ export const getHeartbeat: API.OperationMethod<
   GetHeartbeatError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHeartbeatRequest,
-  output: GetHeartbeatResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<GetHeartbeatRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetHeartbeatResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1056,8 +723,8 @@ export const getItemFiles: API.OperationMethod<
   GetItemFilesError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetItemFilesRequest,
-  output: GetItemFilesResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<GetItemFilesRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetItemFilesResponse>,
   errors: [NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1071,8 +738,8 @@ export const getPrometheusMetrics: API.OperationMethod<
   GetPrometheusMetricsError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrometheusMetricsRequest,
-  output: GetPrometheusMetricsResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetPrometheusMetricsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetPrometheusMetricsResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1086,8 +753,8 @@ export const getServerHealth: API.OperationMethod<
   GetServerHealthError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServerHealthRequest,
-  output: GetServerHealthResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetServerHealthRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetServerHealthResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1101,8 +768,8 @@ export const getVaultById: API.OperationMethod<
   GetVaultByIdError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultByIdRequest,
-  output: Vault,
+  input: __S(37, __c4, 5) as any as S.Schema<GetVaultByIdRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Vault>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1116,8 +783,8 @@ export const getVaultItemById: API.OperationMethod<
   GetVaultItemByIdError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultItemByIdRequest,
-  output: GetVaultItemByIdResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<GetVaultItemByIdRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetVaultItemByIdResponse>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1131,8 +798,8 @@ export const getVaultItems: API.OperationMethod<
   GetVaultItemsError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultItemsRequest,
-  output: GetVaultItemsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<GetVaultItemsRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GetVaultItemsResponse>,
   errors: [NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1146,8 +813,8 @@ export const getVaults: API.OperationMethod<
   GetVaultsError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultsRequest,
-  output: GetVaultsResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<GetVaultsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetVaultsResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1161,8 +828,8 @@ export const updateVaultItem: API.OperationMethod<
   UpdateVaultItemError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVaultItemRequest,
-  output: UpdateVaultItemResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<UpdateVaultItemRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<UpdateVaultItemResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1176,8 +843,8 @@ export const updateVaultItemByItemUuid: API.OperationMethod<
   UpdateVaultItemByItemUuidError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVaultItemByItemUuidRequest,
-  output: UpdateVaultItemByItemUuidResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<UpdateVaultItemByItemUuidRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<UpdateVaultItemByItemUuidResponse>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -1205,7 +872,7 @@ function __c0(j: number): any {
         identifier: "CreateVaultItemRequestUrlsItem",
       });
     case 2:
-      return S.Array(CreateVaultItemRequestUrlsItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.Array(S.String);
     case 4:
@@ -1218,7 +885,7 @@ function __c0(j: number): any {
         identifier: "CreateVaultItemRequestSectionsItem",
       });
     case 5:
-      return S.Array(CreateVaultItemRequestSectionsItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1226,7 +893,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FieldInputSection" });
     case 7:
-      return S.Array(GeneratorRecipeCharacterSetsItem);
+      return S.Array(S.String);
   }
 }
 function __c1(j: number): any {
@@ -1235,7 +902,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           length: S.optional(S.Number),
-          characterSets: S.optional(GeneratorRecipeCharacterSetsList),
+          characterSets: S.optional(__S(7, __c0, 7)),
           excludeCharacters: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeneratorRecipe" });
@@ -1243,62 +910,62 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          section: S.optional(FieldInputSection),
-          type: FieldInputType,
-          purpose: S.optional(FieldInputPurpose),
+          section: S.optional(__S(6, __c0, 6)),
+          type: S.String,
+          purpose: S.optional(S.String),
           label: S.optional(S.String),
           value: S.optional(S.String),
           generate: S.optional(S.Boolean),
-          recipe: S.optional(GeneratorRecipe),
+          recipe: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "FieldInput" });
     case 2:
-      return S.Array(FieldInput);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           size: S.optional(S.Number),
-          section: S.optional(FieldInputSection),
+          section: S.optional(__S(6, __c0, 6)),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileInput" });
     case 4:
-      return S.Array(FileInput);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           vaultUuid: S.String.pipe(T.Label()),
           id: S.optional(S.String),
           title: S.optional(S.String),
-          vault: CreateVaultItemRequestVault,
-          category: CreateVaultItemRequestCategory,
-          urls: S.optional(CreateVaultItemRequestUrlsList),
+          vault: __S(0, __c0, 0),
+          category: S.String,
+          urls: S.optional(__S(2, __c0, 2)),
           favorite: S.optional(S.Boolean),
-          tags: S.optional(CreateVaultItemRequestTagsList),
+          tags: S.optional(__S(3, __c0, 3)),
           version: S.optional(S.Number),
-          sections: S.optional(CreateVaultItemRequestSectionsList),
-          fields: S.optional(CreateVaultItemRequestFieldsList),
-          files: S.optional(CreateVaultItemRequestFilesList),
+          sections: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(10, __c1, 2)),
+          files: S.optional(__S(12, __c1, 4)),
         }).pipe(T.Http({ method: "POST", uri: "/vaults/{vaultUuid}/items", code: 200 })),
       ).annotate({ identifier: "CreateVaultItemRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          section: S.optional(FieldInputSection),
-          type: FieldType,
-          purpose: S.optional(FieldPurpose),
+          section: S.optional(__S(6, __c0, 6)),
+          type: S.String,
+          purpose: S.optional(S.String),
           label: S.optional(S.String),
           value: S.optional(S.String),
           generate: S.optional(S.Boolean),
-          recipe: S.optional(GeneratorRecipe),
+          recipe: S.optional(__S(8, __c1, 0)),
           entropy: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Field" });
     case 7:
-      return S.Array(Field);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1310,30 +977,30 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           size: S.optional(S.Number),
           content_path: S.optional(S.String),
-          section: S.optional(FieldInputSection),
+          section: S.optional(__S(6, __c0, 6)),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "File" });
     case 1:
-      return S.Array(File);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
-          vault: CreateVaultItemRequestVault,
-          category: CreateVaultItemResponseCategory,
-          urls: S.optional(CreateVaultItemResponseUrlsList),
+          vault: __S(0, __c0, 0),
+          category: S.String,
+          urls: S.optional(__S(2, __c0, 2)),
           favorite: S.optional(S.Boolean),
-          tags: S.optional(CreateVaultItemResponseTagsList),
+          tags: S.optional(__S(3, __c0, 3)),
           version: S.optional(S.Number),
-          state: S.optional(CreateVaultItemResponseState),
+          state: S.optional(S.String),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           lastEditedBy: S.optional(S.String),
-          sections: S.optional(CreateVaultItemResponseSectionsList),
-          fields: S.optional(CreateVaultItemResponseFieldsList),
-          files: S.optional(CreateVaultItemResponseFilesList),
+          sections: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(15, __c1, 7)),
+          files: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "CreateVaultItemResponse" });
     case 3:
@@ -1387,9 +1054,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(APIRequestResourceType),
-          vault: S.optional(FieldInputSection),
-          item: S.optional(FieldInputSection),
+          type: S.optional(S.String),
+          vault: S.optional(__S(6, __c0, 6)),
+          item: S.optional(__S(6, __c0, 6)),
           itemVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "APIRequestResource" });
@@ -1398,16 +1065,16 @@ function __c3(j: number): any {
         S.Struct({
           requestId: S.optional(S.String),
           timestamp: S.optional(S.String),
-          action: S.optional(APIRequestAction),
-          result: S.optional(APIRequestResult),
-          actor: S.optional(APIRequestActor),
-          resource: S.optional(APIRequestResource),
+          action: S.optional(S.String),
+          result: S.optional(S.String),
+          actor: S.optional(__S(23, __c2, 7)),
+          resource: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "APIRequest" });
     case 2:
-      return S.Array(APIRequest);
+      return S.Array(__S(25, __c3, 1));
     case 3:
-      return S.suspend(() => GetApiActivityResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetApiActivityResponse",
       });
     case 4:
@@ -1442,7 +1109,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "GetItemFilesRequest" });
     case 7:
-      return S.suspend(() => GetItemFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(17, __c2, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetItemFilesResponse",
       });
   }
@@ -1468,13 +1135,13 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ServiceDependency" });
     case 3:
-      return S.Array(ServiceDependency);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version: S.String,
-          dependencies: S.optional(GetServerHealthResponseDependenciesList),
+          dependencies: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "GetServerHealthResponse" });
     case 5:
@@ -1492,7 +1159,7 @@ function __c4(j: number): any {
           attributeVersion: S.optional(S.Number),
           contentVersion: S.optional(S.Number),
           items: S.optional(S.Number),
-          type: S.optional(VaultType),
+          type: S.optional(S.String),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
@@ -1513,19 +1180,19 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
-          vault: CreateVaultItemRequestVault,
-          category: GetVaultItemByIdResponseCategory,
-          urls: S.optional(GetVaultItemByIdResponseUrlsList),
+          vault: __S(0, __c0, 0),
+          category: S.String,
+          urls: S.optional(__S(2, __c0, 2)),
           favorite: S.optional(S.Boolean),
-          tags: S.optional(GetVaultItemByIdResponseTagsList),
+          tags: S.optional(__S(3, __c0, 3)),
           version: S.optional(S.Number),
-          state: S.optional(GetVaultItemByIdResponseState),
+          state: S.optional(S.String),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           lastEditedBy: S.optional(S.String),
-          sections: S.optional(GetVaultItemByIdResponseSectionsList),
-          fields: S.optional(GetVaultItemByIdResponseFieldsList),
-          files: S.optional(GetVaultItemByIdResponseFilesList),
+          sections: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(15, __c1, 7)),
+          files: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "GetVaultItemByIdResponse" });
     case 1:
@@ -1542,22 +1209,22 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
-          vault: CreateVaultItemRequestVault,
-          category: ItemCategory,
-          urls: S.optional(ItemUrlsList),
+          vault: __S(0, __c0, 0),
+          category: S.String,
+          urls: S.optional(__S(2, __c0, 2)),
           favorite: S.optional(S.Boolean),
-          tags: S.optional(ItemTagsList),
+          tags: S.optional(__S(42, __c5, 2)),
           version: S.optional(S.Number),
-          state: S.optional(ItemState),
+          state: S.optional(S.String),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           lastEditedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "Item" });
     case 4:
-      return S.Array(Item);
+      return S.Array(__S(43, __c5, 3));
     case 5:
-      return S.suspend(() => GetVaultItemsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(44, __c5, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVaultItemsResponse",
       });
     case 6:
@@ -1567,13 +1234,13 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/vaults", code: 200 })),
       ).annotate({ identifier: "GetVaultsRequest" });
     case 7:
-      return S.Array(Vault);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => GetVaultsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(47, __c5, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVaultsResponse",
       });
     case 1:
@@ -1583,15 +1250,15 @@ function __c6(j: number): any {
           itemUuid: S.String.pipe(T.Label()),
           id: S.optional(S.String),
           title: S.optional(S.String),
-          vault: CreateVaultItemRequestVault,
-          category: UpdateVaultItemRequestCategory,
-          urls: S.optional(UpdateVaultItemRequestUrlsList),
+          vault: __S(0, __c0, 0),
+          category: S.String,
+          urls: S.optional(__S(2, __c0, 2)),
           favorite: S.optional(S.Boolean),
-          tags: S.optional(UpdateVaultItemRequestTagsList),
+          tags: S.optional(__S(3, __c0, 3)),
           version: S.optional(S.Number),
-          sections: S.optional(UpdateVaultItemRequestSectionsList),
-          fields: S.optional(UpdateVaultItemRequestFieldsList),
-          files: S.optional(UpdateVaultItemRequestFilesList),
+          sections: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(10, __c1, 2)),
+          files: S.optional(__S(12, __c1, 4)),
         }).pipe(T.Http({ method: "PUT", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 })),
       ).annotate({ identifier: "UpdateVaultItemRequest" });
     case 2:
@@ -1599,37 +1266,37 @@ function __c6(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
-          vault: CreateVaultItemRequestVault,
-          category: UpdateVaultItemResponseCategory,
-          urls: S.optional(UpdateVaultItemResponseUrlsList),
+          vault: __S(0, __c0, 0),
+          category: S.String,
+          urls: S.optional(__S(2, __c0, 2)),
           favorite: S.optional(S.Boolean),
-          tags: S.optional(UpdateVaultItemResponseTagsList),
+          tags: S.optional(__S(3, __c0, 3)),
           version: S.optional(S.Number),
-          state: S.optional(UpdateVaultItemResponseState),
+          state: S.optional(S.String),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           lastEditedBy: S.optional(S.String),
-          sections: S.optional(UpdateVaultItemResponseSectionsList),
-          fields: S.optional(UpdateVaultItemResponseFieldsList),
-          files: S.optional(UpdateVaultItemResponseFilesList),
+          sections: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(15, __c1, 7)),
+          files: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "UpdateVaultItemResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          op: PatchItemOp,
+          op: S.String,
           path: S.String,
           value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "PatchItem" });
     case 4:
-      return S.Array(PatchItem);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           vaultUuid: S.String.pipe(T.Label()),
           itemUuid: S.String.pipe(T.Label()),
-          body: S.optional(Patch.pipe(T.HttpBody())),
+          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 }),
         ),
@@ -1641,22 +1308,27 @@ function __c6(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
-          vault: CreateVaultItemRequestVault,
-          category: UpdateVaultItemByItemUuidResponseCategory,
-          urls: S.optional(UpdateVaultItemByItemUuidResponseUrlsList),
+          vault: __S(0, __c0, 0),
+          category: S.String,
+          urls: S.optional(__S(2, __c0, 2)),
           favorite: S.optional(S.Boolean),
-          tags: S.optional(UpdateVaultItemByItemUuidResponseTagsList),
+          tags: S.optional(__S(3, __c0, 3)),
           version: S.optional(S.Number),
-          state: S.optional(UpdateVaultItemByItemUuidResponseState),
+          state: S.optional(S.String),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           lastEditedBy: S.optional(S.String),
-          sections: S.optional(UpdateVaultItemByItemUuidResponseSectionsList),
-          fields: S.optional(UpdateVaultItemByItemUuidResponseFieldsList),
-          files: S.optional(UpdateVaultItemByItemUuidResponseFilesList),
+          sections: S.optional(__S(5, __c0, 5)),
+          fields: S.optional(__S(15, __c1, 7)),
+          files: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "UpdateVaultItemByItemUuidResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "fis",
   serviceShapeName: "FaultInjectionSimulator",
@@ -120,42 +122,27 @@ export interface CreateExperimentTemplateStopConditionInput {
   source: string;
   value?: string;
 }
-const CreateExperimentTemplateStopConditionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateExperimentTemplateStopConditionInput>;
 export type CreateExperimentTemplateStopConditionInputList =
   CreateExperimentTemplateStopConditionInput[];
-const CreateExperimentTemplateStopConditionInputList = /*@__PURE__*/ __L.at(__c0, 1);
 export type ExperimentTemplateTargetName = string;
 export type TargetResourceTypeId = string;
 export type ResourceArn = string;
 export type ResourceArnList = string[];
-const ResourceArnList = /*@__PURE__*/ __L.at(__c0, 2);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 3);
 export type ExperimentTemplateTargetFilterPath = string;
 export type ExperimentTemplateTargetFilterValue = string;
 export type ExperimentTemplateTargetFilterValues = string[];
-const ExperimentTemplateTargetFilterValues =
-  ResourceArnList as any as S.Schema<ExperimentTemplateTargetFilterValues>;
 export interface ExperimentTemplateTargetInputFilter {
   path: string;
   values: string[];
 }
-const ExperimentTemplateTargetInputFilter = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ExperimentTemplateTargetInputFilter>;
 export type ExperimentTemplateTargetFilterInputList = ExperimentTemplateTargetInputFilter[];
-const ExperimentTemplateTargetFilterInputList = /*@__PURE__*/ __L.at(__c0, 5);
 export type ExperimentTemplateTargetSelectionMode = string;
 export type ExperimentTemplateTargetParameterName = string;
 export type ExperimentTemplateTargetParameterValue = string;
 export type ExperimentTemplateTargetParameterMap = { [key: string]: string | undefined };
-const ExperimentTemplateTargetParameterMap = /*@__PURE__*/ __L.at(__c0, 6);
 export interface CreateExperimentTemplateTargetInput {
   resourceType: string;
   resourceArns?: string[];
@@ -164,30 +151,19 @@ export interface CreateExperimentTemplateTargetInput {
   selectionMode: string;
   parameters?: { [key: string]: string | undefined };
 }
-const CreateExperimentTemplateTargetInput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateExperimentTemplateTargetInput>;
 export type CreateExperimentTemplateTargetInputMap = {
   [key: string]: CreateExperimentTemplateTargetInput | undefined;
 };
-const CreateExperimentTemplateTargetInputMap = /*@__PURE__*/ __L.at(__c1, 0);
 export type ExperimentTemplateActionName = string;
 export type ActionId = string;
 export type ExperimentTemplateActionDescription = string;
 export type ExperimentTemplateActionParameterName = string;
 export type ExperimentTemplateActionParameter = string;
 export type ExperimentTemplateActionParameterMap = { [key: string]: string | undefined };
-const ExperimentTemplateActionParameterMap =
-  ExperimentTemplateTargetParameterMap as any as S.Schema<ExperimentTemplateActionParameterMap>;
 export type ExperimentTemplateActionTargetName = string;
 export type ExperimentTemplateActionTargetMap = { [key: string]: string | undefined };
-const ExperimentTemplateActionTargetMap =
-  ExperimentTemplateTargetParameterMap as any as S.Schema<ExperimentTemplateActionTargetMap>;
 export type ExperimentTemplateActionStartAfter = string;
 export type ExperimentTemplateActionStartAfterList = string[];
-const ExperimentTemplateActionStartAfterList =
-  ResourceArnList as any as S.Schema<ExperimentTemplateActionStartAfterList>;
 export interface CreateExperimentTemplateActionInput {
   actionId: string;
   description?: string;
@@ -195,91 +171,49 @@ export interface CreateExperimentTemplateActionInput {
   targets?: { [key: string]: string | undefined };
   startAfter?: string[];
 }
-const CreateExperimentTemplateActionInput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateExperimentTemplateActionInput>;
 export type CreateExperimentTemplateActionInputMap = {
   [key: string]: CreateExperimentTemplateActionInput | undefined;
 };
-const CreateExperimentTemplateActionInputMap = /*@__PURE__*/ __L.at(__c1, 2);
 export type RoleArn = string;
 export type CloudWatchLogGroupArn = string;
 export interface ExperimentTemplateCloudWatchLogsLogConfigurationInput {
   logGroupArn: string;
 }
-const ExperimentTemplateCloudWatchLogsLogConfigurationInput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ExperimentTemplateCloudWatchLogsLogConfigurationInput>;
 export type S3BucketName = string;
 export type S3ObjectKey = string;
 export interface ExperimentTemplateS3LogConfigurationInput {
   bucketName: string;
   prefix?: string;
 }
-const ExperimentTemplateS3LogConfigurationInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ExperimentTemplateS3LogConfigurationInput>;
 export type LogSchemaVersion = number;
 export interface CreateExperimentTemplateLogConfigurationInput {
   cloudWatchLogsConfiguration?: ExperimentTemplateCloudWatchLogsLogConfigurationInput;
   s3Configuration?: ExperimentTemplateS3LogConfigurationInput;
   logSchemaVersion: number;
 }
-const CreateExperimentTemplateLogConfigurationInput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateExperimentTemplateLogConfigurationInput>;
 export type AccountTargeting = "single-account" | "multi-account" | (string & {});
-const AccountTargeting = S.String;
-
 export type EmptyTargetResolutionMode = "fail" | "skip" | (string & {});
-const EmptyTargetResolutionMode = S.String;
-
 export interface CreateExperimentTemplateExperimentOptionsInput {
   accountTargeting?: AccountTargeting;
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
 }
-const CreateExperimentTemplateExperimentOptionsInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateExperimentTemplateExperimentOptionsInput>;
 export type ReportConfigurationS3OutputPrefix = string;
 export interface ReportConfigurationS3OutputInput {
   bucketName?: string;
   prefix?: string;
 }
-const ReportConfigurationS3OutputInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ReportConfigurationS3OutputInput>;
 export interface ExperimentTemplateReportConfigurationOutputsInput {
   s3Configuration?: ReportConfigurationS3OutputInput;
 }
-const ExperimentTemplateReportConfigurationOutputsInput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ExperimentTemplateReportConfigurationOutputsInput>;
 export type ReportConfigurationCloudWatchDashboardIdentifier = string;
 export interface ReportConfigurationCloudWatchDashboardInput {
   dashboardIdentifier?: string;
 }
-const ReportConfigurationCloudWatchDashboardInput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ReportConfigurationCloudWatchDashboardInput>;
 export type ReportConfigurationCloudWatchDashboardInputList =
   ReportConfigurationCloudWatchDashboardInput[];
-const ReportConfigurationCloudWatchDashboardInputList = /*@__PURE__*/ __L.at(__c2, 2);
 export interface ExperimentTemplateReportConfigurationDataSourcesInput {
   cloudWatchDashboards?: ReportConfigurationCloudWatchDashboardInput[];
 }
-const ExperimentTemplateReportConfigurationDataSourcesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ExperimentTemplateReportConfigurationDataSourcesInput>;
 export type ReportConfigurationDuration = string;
 export interface CreateExperimentTemplateReportConfigurationInput {
   outputs?: ExperimentTemplateReportConfigurationOutputsInput;
@@ -287,10 +221,6 @@ export interface CreateExperimentTemplateReportConfigurationInput {
   preExperimentDuration?: string;
   postExperimentDuration?: string;
 }
-const CreateExperimentTemplateReportConfigurationInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateExperimentTemplateReportConfigurationInput>;
 export interface CreateExperimentTemplateRequest {
   clientToken: string;
   description: string;
@@ -303,21 +233,12 @@ export interface CreateExperimentTemplateRequest {
   experimentOptions?: CreateExperimentTemplateExperimentOptionsInput;
   experimentReportConfiguration?: CreateExperimentTemplateReportConfigurationInput;
 }
-const CreateExperimentTemplateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateExperimentTemplateRequest>;
 export type ExperimentTemplateId = string;
 export interface ExperimentTemplateTargetFilter {
   path?: string;
   values?: string[];
 }
-const ExperimentTemplateTargetFilter = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ExperimentTemplateTargetFilter>;
 export type ExperimentTemplateTargetFilterList = ExperimentTemplateTargetFilter[];
-const ExperimentTemplateTargetFilterList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface ExperimentTemplateTarget {
   resourceType?: string;
   resourceArns?: string[];
@@ -326,12 +247,7 @@ export interface ExperimentTemplateTarget {
   selectionMode?: string;
   parameters?: { [key: string]: string | undefined };
 }
-const ExperimentTemplateTarget = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ExperimentTemplateTarget>;
 export type ExperimentTemplateTargetMap = { [key: string]: ExperimentTemplateTarget | undefined };
-const ExperimentTemplateTargetMap = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ExperimentTemplateAction {
   actionId?: string;
   description?: string;
@@ -339,52 +255,30 @@ export interface ExperimentTemplateAction {
   targets?: { [key: string]: string | undefined };
   startAfter?: string[];
 }
-const ExperimentTemplateAction = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ExperimentTemplateAction>;
 export type ExperimentTemplateActionMap = { [key: string]: ExperimentTemplateAction | undefined };
-const ExperimentTemplateActionMap = /*@__PURE__*/ __L.at(__c3, 3);
 export interface ExperimentTemplateStopCondition {
   source?: string;
   value?: string;
 }
-const ExperimentTemplateStopCondition = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ExperimentTemplateStopCondition>;
 export type ExperimentTemplateStopConditionList = ExperimentTemplateStopCondition[];
-const ExperimentTemplateStopConditionList = /*@__PURE__*/ __L.at(__c3, 5);
 export type CreationTime = Date;
 export type LastUpdateTime = Date;
 export interface ExperimentTemplateCloudWatchLogsLogConfiguration {
   logGroupArn?: string;
 }
-const ExperimentTemplateCloudWatchLogsLogConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ExperimentTemplateCloudWatchLogsLogConfiguration>;
 export interface ExperimentTemplateS3LogConfiguration {
   bucketName?: string;
   prefix?: string;
 }
-const ExperimentTemplateS3LogConfiguration =
-  ReportConfigurationS3OutputInput as any as S.Schema<ExperimentTemplateS3LogConfiguration>;
 export interface ExperimentTemplateLogConfiguration {
   cloudWatchLogsConfiguration?: ExperimentTemplateCloudWatchLogsLogConfiguration;
   s3Configuration?: ExperimentTemplateS3LogConfiguration;
   logSchemaVersion?: number;
 }
-const ExperimentTemplateLogConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ExperimentTemplateLogConfiguration>;
 export interface ExperimentTemplateExperimentOptions {
   accountTargeting?: AccountTargeting;
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
 }
-const ExperimentTemplateExperimentOptions =
-  CreateExperimentTemplateExperimentOptionsInput as any as S.Schema<ExperimentTemplateExperimentOptions>;
 export type TargetAccountConfigurationsCount = number;
 export interface ReportConfigurationS3Output {
   bucketName?: string;
@@ -393,35 +287,20 @@ export interface ReportConfigurationS3Output {
 export interface ExperimentTemplateReportConfigurationOutputs {
   s3Configuration?: ReportConfigurationS3Output;
 }
-const ExperimentTemplateReportConfigurationOutputs =
-  ExperimentTemplateReportConfigurationOutputsInput as any as S.Schema<ExperimentTemplateReportConfigurationOutputs>;
 export interface ExperimentTemplateReportConfigurationCloudWatchDashboard {
   dashboardIdentifier?: string;
 }
-const ExperimentTemplateReportConfigurationCloudWatchDashboard = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ExperimentTemplateReportConfigurationCloudWatchDashboard>;
 export type ExperimentTemplateReportConfigurationCloudWatchDashboardList =
   ExperimentTemplateReportConfigurationCloudWatchDashboard[];
-const ExperimentTemplateReportConfigurationCloudWatchDashboardList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ExperimentTemplateReportConfigurationDataSources {
   cloudWatchDashboards?: ExperimentTemplateReportConfigurationCloudWatchDashboard[];
 }
-const ExperimentTemplateReportConfigurationDataSources = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ExperimentTemplateReportConfigurationDataSources>;
 export interface ExperimentTemplateReportConfiguration {
   outputs?: ExperimentTemplateReportConfigurationOutputs;
   dataSources?: ExperimentTemplateReportConfigurationDataSources;
   preExperimentDuration?: string;
   postExperimentDuration?: string;
 }
-const ExperimentTemplateReportConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ExperimentTemplateReportConfiguration>;
 export interface ExperimentTemplate {
   id?: string;
   arn?: string;
@@ -438,14 +317,9 @@ export interface ExperimentTemplate {
   targetAccountConfigurationsCount?: number;
   experimentReportConfiguration?: ExperimentTemplateReportConfiguration;
 }
-const ExperimentTemplate = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ExperimentTemplate>;
 export interface CreateExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
-const CreateExperimentTemplateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateExperimentTemplateResponse>;
 export type TargetAccountId = string;
 export type TargetAccountConfigurationDescription = string;
 export interface CreateTargetAccountConfigurationRequest {
@@ -455,55 +329,30 @@ export interface CreateTargetAccountConfigurationRequest {
   roleArn: string;
   description?: string;
 }
-const CreateTargetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateTargetAccountConfigurationRequest>;
 export interface TargetAccountConfiguration {
   roleArn?: string;
   accountId?: string;
   description?: string;
 }
-const TargetAccountConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<TargetAccountConfiguration>;
 export interface CreateTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
-const CreateTargetAccountConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateTargetAccountConfigurationResponse>;
 export interface DeleteExperimentTemplateRequest {
   id: string;
 }
-const DeleteExperimentTemplateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteExperimentTemplateRequest>;
 export interface DeleteExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
-const DeleteExperimentTemplateResponse =
-  CreateExperimentTemplateResponse as any as S.Schema<DeleteExperimentTemplateResponse>;
 export interface DeleteTargetAccountConfigurationRequest {
   experimentTemplateId: string;
   accountId: string;
 }
-const DeleteTargetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteTargetAccountConfigurationRequest>;
 export interface DeleteTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
-const DeleteTargetAccountConfigurationResponse =
-  CreateTargetAccountConfigurationResponse as any as S.Schema<DeleteTargetAccountConfigurationResponse>;
 export interface GetActionRequest {
   id: string;
 }
-const GetActionRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetActionRequest>;
 export type ActionDescription = string;
 export type ActionParameterName = string;
 export type ActionParameterDescription = string;
@@ -512,16 +361,12 @@ export interface ActionParameter {
   description?: string;
   required?: boolean;
 }
-const ActionParameter = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ActionParameter>;
 export type ActionParameterMap = { [key: string]: ActionParameter | undefined };
-const ActionParameterMap = /*@__PURE__*/ __L.at(__c5, 5);
 export type ActionTargetName = string;
 export interface ActionTarget {
   resourceType?: string;
 }
-const ActionTarget = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ActionTarget>;
 export type ActionTargetMap = { [key: string]: ActionTarget | undefined };
-const ActionTargetMap = /*@__PURE__*/ __L.at(__c5, 7);
 export interface Action {
   id?: string;
   arn?: string;
@@ -530,16 +375,13 @@ export interface Action {
   targets?: { [key: string]: ActionTarget | undefined };
   tags?: { [key: string]: string | undefined };
 }
-const Action = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Action>;
 export interface GetActionResponse {
   action?: Action;
 }
-const GetActionResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetActionResponse>;
 export type ExperimentId = string;
 export interface GetExperimentRequest {
   id: string;
 }
-const GetExperimentRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetExperimentRequest>;
 export type ExperimentStatus =
   | "pending"
   | "initiating"
@@ -550,8 +392,6 @@ export type ExperimentStatus =
   | "failed"
   | "cancelled"
   | (string & {});
-const ExperimentStatus = S.String;
-
 export type ExperimentStatusReason = string;
 export type ExperimentErrorAccountId = string;
 export type ExperimentErrorCode = string;
@@ -561,35 +401,24 @@ export interface ExperimentError {
   code?: string;
   location?: string;
 }
-const ExperimentError = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ExperimentError>;
 export interface ExperimentState {
   status?: ExperimentStatus;
   reason?: string;
   error?: ExperimentError;
 }
-const ExperimentState = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ExperimentState>;
 export type ExperimentTargetName = string;
 export type ExperimentTargetFilterPath = string;
 export type ExperimentTargetFilterValue = string;
 export type ExperimentTargetFilterValues = string[];
-const ExperimentTargetFilterValues =
-  ResourceArnList as any as S.Schema<ExperimentTargetFilterValues>;
 export interface ExperimentTargetFilter {
   path?: string;
   values?: string[];
 }
-const ExperimentTargetFilter = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ExperimentTargetFilter>;
 export type ExperimentTargetFilterList = ExperimentTargetFilter[];
-const ExperimentTargetFilterList = /*@__PURE__*/ __L.at(__c6, 6);
 export type ExperimentTargetSelectionMode = string;
 export type ExperimentTargetParameterName = string;
 export type ExperimentTargetParameterValue = string;
 export type ExperimentTargetParameterMap = { [key: string]: string | undefined };
-const ExperimentTargetParameterMap =
-  ExperimentTemplateTargetParameterMap as any as S.Schema<ExperimentTargetParameterMap>;
 export interface ExperimentTarget {
   resourceType?: string;
   resourceArns?: string[];
@@ -598,24 +427,16 @@ export interface ExperimentTarget {
   selectionMode?: string;
   parameters?: { [key: string]: string | undefined };
 }
-const ExperimentTarget = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ExperimentTarget>;
 export type ExperimentTargetMap = { [key: string]: ExperimentTarget | undefined };
-const ExperimentTargetMap = /*@__PURE__*/ __L.at(__c7, 0);
 export type ExperimentActionName = string;
 export type ExperimentActionDescription = string;
 export type ExperimentActionParameterName = string;
 export type ExperimentActionParameter = string;
 export type ExperimentActionParameterMap = { [key: string]: string | undefined };
-const ExperimentActionParameterMap =
-  ExperimentTemplateTargetParameterMap as any as S.Schema<ExperimentActionParameterMap>;
 export type ExperimentActionTargetName = string;
 export type ExperimentActionTargetMap = { [key: string]: string | undefined };
-const ExperimentActionTargetMap =
-  ExperimentTemplateTargetParameterMap as any as S.Schema<ExperimentActionTargetMap>;
 export type ExperimentActionStartAfter = string;
 export type ExperimentActionStartAfterList = string[];
-const ExperimentActionStartAfterList =
-  ResourceArnList as any as S.Schema<ExperimentActionStartAfterList>;
 export type ExperimentActionStatus =
   | "pending"
   | "initiating"
@@ -627,17 +448,11 @@ export type ExperimentActionStatus =
   | "failed"
   | "skipped"
   | (string & {});
-const ExperimentActionStatus = S.String;
-
 export type ExperimentActionStatusReason = string;
 export interface ExperimentActionState {
   status?: ExperimentActionStatus;
   reason?: string;
 }
-const ExperimentActionState = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ExperimentActionState>;
 export type ExperimentActionStartTime = Date;
 export type ExperimentActionEndTime = Date;
 export interface ExperimentAction {
@@ -650,19 +465,12 @@ export interface ExperimentAction {
   startTime?: Date;
   endTime?: Date;
 }
-const ExperimentAction = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ExperimentAction>;
 export type ExperimentActionMap = { [key: string]: ExperimentAction | undefined };
-const ExperimentActionMap = /*@__PURE__*/ __L.at(__c7, 3);
 export interface ExperimentStopCondition {
   source?: string;
   value?: string;
 }
-const ExperimentStopCondition = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ExperimentStopCondition>;
 export type ExperimentStopConditionList = ExperimentStopCondition[];
-const ExperimentStopConditionList = /*@__PURE__*/ __L.at(__c7, 5);
 export type ExperimentStartTime = Date;
 export type ExperimentEndTime = Date;
 export interface ExperimentCloudWatchLogsLogConfiguration {
@@ -677,17 +485,12 @@ export interface ExperimentLogConfiguration {
   s3Configuration?: ExperimentS3LogConfiguration;
   logSchemaVersion?: number;
 }
-const ExperimentLogConfiguration =
-  ExperimentTemplateLogConfiguration as any as S.Schema<ExperimentLogConfiguration>;
 export type ActionsMode = "skip-all" | "run-all" | (string & {});
-const ActionsMode = S.String;
-
 export interface ExperimentOptions {
   accountTargeting?: AccountTargeting;
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
   actionsMode?: ActionsMode;
 }
-const ExperimentOptions = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ExperimentOptions>;
 export interface ExperimentReportConfigurationOutputsS3Configuration {
   bucketName?: string;
   prefix?: string;
@@ -695,32 +498,20 @@ export interface ExperimentReportConfigurationOutputsS3Configuration {
 export interface ExperimentReportConfigurationOutputs {
   s3Configuration?: ExperimentReportConfigurationOutputsS3Configuration;
 }
-const ExperimentReportConfigurationOutputs =
-  ExperimentTemplateReportConfigurationOutputsInput as any as S.Schema<ExperimentReportConfigurationOutputs>;
 export interface ExperimentReportConfigurationCloudWatchDashboard {
   dashboardIdentifier?: string;
 }
 export type ExperimentReportConfigurationCloudWatchDashboardList =
   ExperimentReportConfigurationCloudWatchDashboard[];
-const ExperimentReportConfigurationCloudWatchDashboardList =
-  ReportConfigurationCloudWatchDashboardInputList as any as S.Schema<ExperimentReportConfigurationCloudWatchDashboardList>;
 export interface ExperimentReportConfigurationDataSources {
   cloudWatchDashboards?: ExperimentReportConfigurationCloudWatchDashboard[];
 }
-const ExperimentReportConfigurationDataSources = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ExperimentReportConfigurationDataSources>;
 export interface ExperimentReportConfiguration {
   outputs?: ExperimentReportConfigurationOutputs;
   dataSources?: ExperimentReportConfigurationDataSources;
   preExperimentDuration?: string;
   postExperimentDuration?: string;
 }
-const ExperimentReportConfiguration = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ExperimentReportConfiguration>;
 export type ExperimentReportStatus =
   | "pending"
   | "running"
@@ -728,43 +519,27 @@ export type ExperimentReportStatus =
   | "cancelled"
   | "failed"
   | (string & {});
-const ExperimentReportStatus = S.String;
-
 export type ExperimentReportReason = string;
 export type ExperimentReportErrorCode = string;
 export interface ExperimentReportError {
   code?: string;
 }
-const ExperimentReportError = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ExperimentReportError>;
 export interface ExperimentReportState {
   status?: ExperimentReportStatus;
   reason?: string;
   error?: ExperimentReportError;
 }
-const ExperimentReportState = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ExperimentReportState>;
 export type ExperimentReportS3ReportArn = string;
 export type ExperimentReportS3ReportType = string;
 export interface ExperimentReportS3Report {
   arn?: string;
   reportType?: string;
 }
-const ExperimentReportS3Report = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ExperimentReportS3Report>;
 export type ExperimentReportS3ReportList = ExperimentReportS3Report[];
-const ExperimentReportS3ReportList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ExperimentReport {
   state?: ExperimentReportState;
   s3Reports?: ExperimentReportS3Report[];
 }
-const ExperimentReport = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ExperimentReport>;
 export interface Experiment {
   id?: string;
   arn?: string;
@@ -784,22 +559,13 @@ export interface Experiment {
   experimentReportConfiguration?: ExperimentReportConfiguration;
   experimentReport?: ExperimentReport;
 }
-const Experiment = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Experiment>;
 export interface GetExperimentResponse {
   experiment?: Experiment;
 }
-const GetExperimentResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetExperimentResponse>;
 export interface GetExperimentTargetAccountConfigurationRequest {
   experimentId: string;
   accountId: string;
 }
-const GetExperimentTargetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetExperimentTargetAccountConfigurationRequest>;
 export interface ExperimentTargetAccountConfiguration {
   roleArn?: string;
   accountId?: string;
@@ -808,68 +574,40 @@ export interface ExperimentTargetAccountConfiguration {
 export interface GetExperimentTargetAccountConfigurationResponse {
   targetAccountConfiguration?: ExperimentTargetAccountConfiguration;
 }
-const GetExperimentTargetAccountConfigurationResponse =
-  CreateTargetAccountConfigurationResponse as any as S.Schema<GetExperimentTargetAccountConfigurationResponse>;
 export interface GetExperimentTemplateRequest {
   id: string;
 }
-const GetExperimentTemplateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetExperimentTemplateRequest>;
 export interface GetExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
-const GetExperimentTemplateResponse =
-  CreateExperimentTemplateResponse as any as S.Schema<GetExperimentTemplateResponse>;
 export type SafetyLeverId = string;
 export interface GetSafetyLeverRequest {
   id: string;
 }
-const GetSafetyLeverRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetSafetyLeverRequest>;
 export type SafetyLeverStatus = "disengaged" | "engaged" | "engaging" | (string & {});
 export type SafetyLeverStatusReason = string;
 export interface SafetyLeverState {
   status?: SafetyLeverStatus;
   reason?: string;
 }
-const SafetyLeverState = ExperimentActionState as any as S.Schema<SafetyLeverState>;
 export interface SafetyLever {
   id?: string;
   arn?: string;
   state?: SafetyLeverState;
 }
-const SafetyLever = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SafetyLever>;
 export interface GetSafetyLeverResponse {
   safetyLever?: SafetyLever;
 }
-const GetSafetyLeverResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetSafetyLeverResponse>;
 export interface GetTargetAccountConfigurationRequest {
   experimentTemplateId: string;
   accountId: string;
 }
-const GetTargetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetTargetAccountConfigurationRequest>;
 export interface GetTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
-const GetTargetAccountConfigurationResponse =
-  CreateTargetAccountConfigurationResponse as any as S.Schema<GetTargetAccountConfigurationResponse>;
 export interface GetTargetResourceTypeRequest {
   resourceType: string;
 }
-const GetTargetResourceTypeRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetTargetResourceTypeRequest>;
 export type TargetResourceTypeDescription = string;
 export type TargetResourceTypeParameterName = string;
 export type TargetResourceTypeParameterDescription = string;
@@ -878,34 +616,23 @@ export interface TargetResourceTypeParameter {
   description?: string;
   required?: boolean;
 }
-const TargetResourceTypeParameter = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<TargetResourceTypeParameter>;
 export type TargetResourceTypeParameterMap = {
   [key: string]: TargetResourceTypeParameter | undefined;
 };
-const TargetResourceTypeParameterMap = /*@__PURE__*/ __L.at(__c10, 0);
 export interface TargetResourceType {
   resourceType?: string;
   description?: string;
   parameters?: { [key: string]: TargetResourceTypeParameter | undefined };
 }
-const TargetResourceType = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TargetResourceType>;
 export interface GetTargetResourceTypeResponse {
   targetResourceType?: TargetResourceType;
 }
-const GetTargetResourceTypeResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetTargetResourceTypeResponse>;
 export type ListActionsMaxResults = number;
 export type NextToken = string;
 export interface ListActionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListActionsRequest = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ListActionsRequest>;
 export interface ActionSummary {
   id?: string;
   arn?: string;
@@ -913,14 +640,11 @@ export interface ActionSummary {
   targets?: { [key: string]: ActionTarget | undefined };
   tags?: { [key: string]: string | undefined };
 }
-const ActionSummary = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ActionSummary>;
 export type ActionSummaryList = ActionSummary[];
-const ActionSummaryList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface ListActionsResponse {
   actions?: ActionSummary[];
   nextToken?: string;
 }
-const ListActionsResponse = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ListActionsResponse>;
 export type ListExperimentResolvedTargetsMaxResults = number;
 export type TargetName = string;
 export interface ListExperimentResolvedTargetsRequest {
@@ -929,41 +653,25 @@ export interface ListExperimentResolvedTargetsRequest {
   nextToken?: string;
   targetName?: string;
 }
-const ListExperimentResolvedTargetsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListExperimentResolvedTargetsRequest>;
 export type TargetInformationKey = string;
 export type TargetInformationValue = string;
 export type TargetInformationMap = { [key: string]: string | undefined };
-const TargetInformationMap =
-  ExperimentTemplateTargetParameterMap as any as S.Schema<TargetInformationMap>;
 export interface ResolvedTarget {
   resourceType?: string;
   targetName?: string;
   targetInformation?: { [key: string]: string | undefined };
 }
-const ResolvedTarget = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ResolvedTarget>;
 export type ResolvedTargetList = ResolvedTarget[];
-const ResolvedTargetList = /*@__PURE__*/ __L.at(__c11, 1);
 export interface ListExperimentResolvedTargetsResponse {
   resolvedTargets?: ResolvedTarget[];
   nextToken?: string;
 }
-const ListExperimentResolvedTargetsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListExperimentResolvedTargetsResponse>;
 export type ListExperimentsMaxResults = number;
 export interface ListExperimentsRequest {
   maxResults?: number;
   nextToken?: string;
   experimentTemplateId?: string;
 }
-const ListExperimentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListExperimentsRequest>;
 export interface ExperimentSummary {
   id?: string;
   arn?: string;
@@ -973,52 +681,31 @@ export interface ExperimentSummary {
   tags?: { [key: string]: string | undefined };
   experimentOptions?: ExperimentOptions;
 }
-const ExperimentSummary = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ExperimentSummary>;
 export type ExperimentSummaryList = ExperimentSummary[];
-const ExperimentSummaryList = /*@__PURE__*/ __L.at(__c11, 5);
 export interface ListExperimentsResponse {
   experiments?: ExperimentSummary[];
   nextToken?: string;
 }
-const ListExperimentsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListExperimentsResponse>;
 export interface ListExperimentTargetAccountConfigurationsRequest {
   experimentId: string;
   nextToken?: string;
 }
-const ListExperimentTargetAccountConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListExperimentTargetAccountConfigurationsRequest>;
 export interface ExperimentTargetAccountConfigurationSummary {
   roleArn?: string;
   accountId?: string;
   description?: string;
 }
-const ExperimentTargetAccountConfigurationSummary =
-  TargetAccountConfiguration as any as S.Schema<ExperimentTargetAccountConfigurationSummary>;
 export type ExperimentTargetAccountConfigurationList =
   ExperimentTargetAccountConfigurationSummary[];
-const ExperimentTargetAccountConfigurationList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface ListExperimentTargetAccountConfigurationsResponse {
   targetAccountConfigurations?: ExperimentTargetAccountConfigurationSummary[];
   nextToken?: string;
 }
-const ListExperimentTargetAccountConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListExperimentTargetAccountConfigurationsResponse>;
 export type ListExperimentTemplatesMaxResults = number;
 export interface ListExperimentTemplatesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListExperimentTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListExperimentTemplatesRequest>;
 export interface ExperimentTemplateSummary {
   id?: string;
   arn?: string;
@@ -1027,44 +714,23 @@ export interface ExperimentTemplateSummary {
   lastUpdateTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
-const ExperimentTemplateSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ExperimentTemplateSummary>;
 export type ExperimentTemplateSummaryList = ExperimentTemplateSummary[];
-const ExperimentTemplateSummaryList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface ListExperimentTemplatesResponse {
   experimentTemplates?: ExperimentTemplateSummary[];
   nextToken?: string;
 }
-const ListExperimentTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListExperimentTemplatesResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type ListTargetAccountConfigurationsMaxResults = number;
 export interface ListTargetAccountConfigurationsRequest {
   experimentTemplateId: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListTargetAccountConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListTargetAccountConfigurationsRequest>;
 export interface TargetAccountConfigurationSummary {
   roleArn?: string;
   accountId?: string;
@@ -1075,94 +741,55 @@ export interface ListTargetAccountConfigurationsResponse {
   targetAccountConfigurations?: TargetAccountConfigurationSummary[];
   nextToken?: string;
 }
-const ListTargetAccountConfigurationsResponse =
-  ListExperimentTargetAccountConfigurationsResponse as any as S.Schema<ListTargetAccountConfigurationsResponse>;
 export type ListTargetResourceTypesMaxResults = number;
 export interface ListTargetResourceTypesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListTargetResourceTypesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListTargetResourceTypesRequest>;
 export interface TargetResourceTypeSummary {
   resourceType?: string;
   description?: string;
 }
-const TargetResourceTypeSummary = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<TargetResourceTypeSummary>;
 export type TargetResourceTypeSummaryList = TargetResourceTypeSummary[];
-const TargetResourceTypeSummaryList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface ListTargetResourceTypesResponse {
   targetResourceTypes?: TargetResourceTypeSummary[];
   nextToken?: string;
 }
-const ListTargetResourceTypesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListTargetResourceTypesResponse>;
 export interface StartExperimentExperimentOptionsInput {
   actionsMode?: ActionsMode;
 }
-const StartExperimentExperimentOptionsInput = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<StartExperimentExperimentOptionsInput>;
 export interface StartExperimentRequest {
   clientToken: string;
   experimentTemplateId: string;
   experimentOptions?: StartExperimentExperimentOptionsInput;
   tags?: { [key: string]: string | undefined };
 }
-const StartExperimentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<StartExperimentRequest>;
 export interface StartExperimentResponse {
   experiment?: Experiment;
 }
-const StartExperimentResponse = GetExperimentResponse as any as S.Schema<StartExperimentResponse>;
 export interface StopExperimentRequest {
   id: string;
 }
-const StopExperimentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<StopExperimentRequest>;
 export interface StopExperimentResponse {
   experiment?: Experiment;
 }
-const StopExperimentResponse = GetExperimentResponse as any as S.Schema<StopExperimentResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ResourceArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys?: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateExperimentTemplateStopConditionInput {
   source: string;
   value?: string;
 }
 export type UpdateExperimentTemplateStopConditionInputList =
   UpdateExperimentTemplateStopConditionInput[];
-const UpdateExperimentTemplateStopConditionInputList =
-  CreateExperimentTemplateStopConditionInputList as any as S.Schema<UpdateExperimentTemplateStopConditionInputList>;
 export interface UpdateExperimentTemplateTargetInput {
   resourceType: string;
   resourceArns?: string[];
@@ -1174,8 +801,6 @@ export interface UpdateExperimentTemplateTargetInput {
 export type UpdateExperimentTemplateTargetInputMap = {
   [key: string]: UpdateExperimentTemplateTargetInput | undefined;
 };
-const UpdateExperimentTemplateTargetInputMap =
-  CreateExperimentTemplateTargetInputMap as any as S.Schema<UpdateExperimentTemplateTargetInputMap>;
 export interface UpdateExperimentTemplateActionInputItem {
   actionId?: string;
   description?: string;
@@ -1183,38 +808,23 @@ export interface UpdateExperimentTemplateActionInputItem {
   targets?: { [key: string]: string | undefined };
   startAfter?: string[];
 }
-const UpdateExperimentTemplateActionInputItem = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<UpdateExperimentTemplateActionInputItem>;
 export type UpdateExperimentTemplateActionInputMap = {
   [key: string]: UpdateExperimentTemplateActionInputItem | undefined;
 };
-const UpdateExperimentTemplateActionInputMap = /*@__PURE__*/ __L.at(__c14, 4);
 export interface UpdateExperimentTemplateLogConfigurationInput {
   cloudWatchLogsConfiguration?: ExperimentTemplateCloudWatchLogsLogConfigurationInput;
   s3Configuration?: ExperimentTemplateS3LogConfigurationInput;
   logSchemaVersion?: number;
 }
-const UpdateExperimentTemplateLogConfigurationInput = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<UpdateExperimentTemplateLogConfigurationInput>;
 export interface UpdateExperimentTemplateExperimentOptionsInput {
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
 }
-const UpdateExperimentTemplateExperimentOptionsInput = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<UpdateExperimentTemplateExperimentOptionsInput>;
 export interface UpdateExperimentTemplateReportConfigurationInput {
   outputs?: ExperimentTemplateReportConfigurationOutputsInput;
   dataSources?: ExperimentTemplateReportConfigurationDataSourcesInput;
   preExperimentDuration?: string;
   postExperimentDuration?: string;
 }
-const UpdateExperimentTemplateReportConfigurationInput =
-  CreateExperimentTemplateReportConfigurationInput as any as S.Schema<UpdateExperimentTemplateReportConfigurationInput>;
 export interface UpdateExperimentTemplateRequest {
   id: string;
   description?: string;
@@ -1226,56 +836,30 @@ export interface UpdateExperimentTemplateRequest {
   experimentOptions?: UpdateExperimentTemplateExperimentOptionsInput;
   experimentReportConfiguration?: UpdateExperimentTemplateReportConfigurationInput;
 }
-const UpdateExperimentTemplateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<UpdateExperimentTemplateRequest>;
 export interface UpdateExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
-const UpdateExperimentTemplateResponse =
-  CreateExperimentTemplateResponse as any as S.Schema<UpdateExperimentTemplateResponse>;
 export type SafetyLeverStatusInput = "disengaged" | "engaged" | (string & {});
-const SafetyLeverStatusInput = S.String;
-
 export interface UpdateSafetyLeverStateInput {
   status: SafetyLeverStatusInput;
   reason: string;
 }
-const UpdateSafetyLeverStateInput = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<UpdateSafetyLeverStateInput>;
 export interface UpdateSafetyLeverStateRequest {
   id: string;
   state: UpdateSafetyLeverStateInput;
 }
-const UpdateSafetyLeverStateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<UpdateSafetyLeverStateRequest>;
 export interface UpdateSafetyLeverStateResponse {
   safetyLever?: SafetyLever;
 }
-const UpdateSafetyLeverStateResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<UpdateSafetyLeverStateResponse>;
 export interface UpdateTargetAccountConfigurationRequest {
   experimentTemplateId: string;
   accountId: string;
   roleArn?: string;
   description?: string;
 }
-const UpdateTargetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<UpdateTargetAccountConfigurationRequest>;
 export interface UpdateTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
-const UpdateTargetAccountConfigurationResponse =
-  CreateTargetAccountConfigurationResponse as any as S.Schema<UpdateTargetAccountConfigurationResponse>;
 export type ExceptionMessage = string;
 export type CreateExperimentTemplateError =
   | ConflictException
@@ -1308,8 +892,8 @@ export const createExperimentTemplate: API.OperationMethod<
   CreateExperimentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentTemplateRequest,
-  output: CreateExperimentTemplateResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateExperimentTemplateRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<CreateExperimentTemplateResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1339,8 +923,8 @@ export const createTargetAccountConfiguration: API.OperationMethod<
   CreateTargetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTargetAccountConfigurationRequest,
-  output: CreateTargetAccountConfigurationResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<CreateTargetAccountConfigurationRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateTargetAccountConfigurationResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1365,8 +949,8 @@ export const deleteExperimentTemplate: API.OperationMethod<
   DeleteExperimentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExperimentTemplateRequest,
-  output: DeleteExperimentTemplateResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<DeleteExperimentTemplateRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<DeleteExperimentTemplateResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1386,8 +970,8 @@ export const deleteTargetAccountConfiguration: API.OperationMethod<
   DeleteTargetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTargetAccountConfigurationRequest,
-  output: DeleteTargetAccountConfigurationResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<DeleteTargetAccountConfigurationRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteTargetAccountConfigurationResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1404,8 +988,8 @@ export const getAction: API.OperationMethod<
   GetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionRequest,
-  output: GetActionResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<GetActionRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetActionResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1422,8 +1006,8 @@ export const getExperiment: API.OperationMethod<
   GetExperimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentRequest,
-  output: GetExperimentResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<GetExperimentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<GetExperimentResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1443,8 +1027,8 @@ export const getExperimentTargetAccountConfiguration: API.OperationMethod<
   GetExperimentTargetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentTargetAccountConfigurationRequest,
-  output: GetExperimentTargetAccountConfigurationResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<GetExperimentTargetAccountConfigurationRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetExperimentTargetAccountConfigurationResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1464,8 +1048,8 @@ export const getExperimentTemplate: API.OperationMethod<
   GetExperimentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentTemplateRequest,
-  output: GetExperimentTemplateResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<GetExperimentTemplateRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<GetExperimentTemplateResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1482,8 +1066,8 @@ export const getSafetyLever: API.OperationMethod<
   GetSafetyLeverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSafetyLeverRequest,
-  output: GetSafetyLeverResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<GetSafetyLeverRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GetSafetyLeverResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1503,8 +1087,8 @@ export const getTargetAccountConfiguration: API.OperationMethod<
   GetTargetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTargetAccountConfigurationRequest,
-  output: GetTargetAccountConfigurationResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<GetTargetAccountConfigurationRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetTargetAccountConfigurationResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1524,8 +1108,8 @@ export const getTargetResourceType: API.OperationMethod<
   GetTargetResourceTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTargetResourceTypeRequest,
-  output: GetTargetResourceTypeResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetTargetResourceTypeRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetTargetResourceTypeResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1543,8 +1127,8 @@ export const listActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListActionsRequest,
-  output: ListActionsResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<ListActionsRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<ListActionsResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1571,8 +1155,8 @@ export const listExperimentResolvedTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResolvedTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExperimentResolvedTargetsRequest,
-  output: ListExperimentResolvedTargetsResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<ListExperimentResolvedTargetsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListExperimentResolvedTargetsResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1596,8 +1180,8 @@ export const listExperiments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExperimentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExperimentsRequest,
-  output: ListExperimentsResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<ListExperimentsRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<ListExperimentsResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1623,8 +1207,8 @@ export const listExperimentTargetAccountConfigurations: API.OperationMethod<
   ListExperimentTargetAccountConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExperimentTargetAccountConfigurationsRequest,
-  output: ListExperimentTargetAccountConfigurationsResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<ListExperimentTargetAccountConfigurationsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ListExperimentTargetAccountConfigurationsResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1642,8 +1226,8 @@ export const listExperimentTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExperimentTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExperimentTemplatesRequest,
-  output: ListExperimentTemplatesResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<ListExperimentTemplatesRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<ListExperimentTemplatesResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1666,8 +1250,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(102, __c12, 6) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1688,8 +1272,8 @@ export const listTargetAccountConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TargetAccountConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTargetAccountConfigurationsRequest,
-  output: ListTargetAccountConfigurationsResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<ListTargetAccountConfigurationsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ListTargetAccountConfigurationsResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1713,8 +1297,8 @@ export const listTargetResourceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TargetResourceTypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTargetResourceTypesRequest,
-  output: ListTargetResourceTypesResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<ListTargetResourceTypesRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<ListTargetResourceTypesResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1742,8 +1326,8 @@ export const startExperiment: API.OperationMethod<
   StartExperimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartExperimentRequest,
-  output: StartExperimentResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<StartExperimentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<StartExperimentResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1765,8 +1349,8 @@ export const stopExperiment: API.OperationMethod<
   StopExperimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopExperimentRequest,
-  output: StopExperimentResponse,
+  input: __S(111, __c13, 7) as any as S.Schema<StopExperimentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<StopExperimentResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1783,8 +1367,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1801,8 +1385,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<UntagResourceRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1823,8 +1407,8 @@ export const updateExperimentTemplate: API.OperationMethod<
   UpdateExperimentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExperimentTemplateRequest,
-  output: UpdateExperimentTemplateResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<UpdateExperimentTemplateRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<UpdateExperimentTemplateResponse>,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1845,8 +1429,8 @@ export const updateSafetyLeverState: API.OperationMethod<
   UpdateSafetyLeverStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSafetyLeverStateRequest,
-  output: UpdateSafetyLeverStateResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<UpdateSafetyLeverStateRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<UpdateSafetyLeverStateResponse>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1866,8 +1450,8 @@ export const updateTargetAccountConfiguration: API.OperationMethod<
   UpdateTargetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTargetAccountConfigurationRequest,
-  output: UpdateTargetAccountConfigurationResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<UpdateTargetAccountConfigurationRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateTargetAccountConfigurationResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1882,30 +1466,28 @@ function __c0(j: number): any {
         identifier: "CreateExperimentTemplateStopConditionInput",
       });
     case 1:
-      return S.Array(CreateExperimentTemplateStopConditionInput);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.Array(S.String);
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ path: S.String, values: ExperimentTemplateTargetFilterValues }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ path: S.String, values: __S(2, __c0, 2) })).annotate({
         identifier: "ExperimentTemplateTargetInputFilter",
       });
     case 5:
-      return S.Array(ExperimentTemplateTargetInputFilter);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
-          resourceArns: S.optional(ResourceArnList),
-          resourceTags: S.optional(TagMap),
-          filters: S.optional(ExperimentTemplateTargetFilterInputList),
+          resourceArns: S.optional(__S(2, __c0, 2)),
+          resourceTags: S.optional(__S(3, __c0, 3)),
+          filters: S.optional(__S(5, __c0, 5)),
           selectionMode: S.String,
-          parameters: S.optional(ExperimentTemplateTargetParameterMap),
+          parameters: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "CreateExperimentTemplateTargetInput",
@@ -1915,21 +1497,21 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ CreateExperimentTemplateTargetInput.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(7, __c0, 7).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           actionId: S.String,
           description: S.optional(S.String),
-          parameters: S.optional(ExperimentTemplateActionParameterMap),
-          targets: S.optional(ExperimentTemplateActionTargetMap),
-          startAfter: S.optional(ExperimentTemplateActionStartAfterList),
+          parameters: S.optional(__S(6, __c0, 6)),
+          targets: S.optional(__S(6, __c0, 6)),
+          startAfter: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "CreateExperimentTemplateActionInput",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ CreateExperimentTemplateActionInput.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(9, __c1, 1).pipe(S.optional));
     case 3:
       return S.suspend(() => S.Struct({ logGroupArn: S.String })).annotate({
         identifier: "ExperimentTemplateCloudWatchLogsLogConfigurationInput",
@@ -1943,10 +1525,8 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          cloudWatchLogsConfiguration: S.optional(
-            ExperimentTemplateCloudWatchLogsLogConfigurationInput,
-          ),
-          s3Configuration: S.optional(ExperimentTemplateS3LogConfigurationInput),
+          cloudWatchLogsConfiguration: S.optional(__S(11, __c1, 3)),
+          s3Configuration: S.optional(__S(12, __c1, 4)),
           logSchemaVersion: S.Number,
         }),
       ).annotate({
@@ -1955,8 +1535,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accountTargeting: S.optional(AccountTargeting),
-          emptyTargetResolutionMode: S.optional(EmptyTargetResolutionMode),
+          accountTargeting: S.optional(S.String),
+          emptyTargetResolutionMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateExperimentTemplateExperimentOptionsInput",
@@ -1972,9 +1552,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ s3Configuration: S.optional(ReportConfigurationS3OutputInput) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ s3Configuration: S.optional(__S(15, __c1, 7)) })).annotate({
         identifier: "ExperimentTemplateReportConfigurationOutputsInput",
       });
     case 1:
@@ -1982,11 +1560,11 @@ function __c2(j: number): any {
         identifier: "ReportConfigurationCloudWatchDashboardInput",
       });
     case 2:
-      return S.Array(ReportConfigurationCloudWatchDashboardInput);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cloudWatchDashboards: S.optional(ReportConfigurationCloudWatchDashboardInputList),
+          cloudWatchDashboards: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "ExperimentTemplateReportConfigurationDataSourcesInput",
@@ -1994,8 +1572,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          outputs: S.optional(ExperimentTemplateReportConfigurationOutputsInput),
-          dataSources: S.optional(ExperimentTemplateReportConfigurationDataSourcesInput),
+          outputs: S.optional(__S(16, __c2, 0)),
+          dataSources: S.optional(__S(19, __c2, 3)),
           preExperimentDuration: S.optional(S.String),
           postExperimentDuration: S.optional(S.String),
         }),
@@ -2007,16 +1585,14 @@ function __c2(j: number): any {
         S.Struct({
           clientToken: S.String.pipe(T.IdempotencyToken()),
           description: S.String,
-          stopConditions: CreateExperimentTemplateStopConditionInputList,
-          targets: S.optional(CreateExperimentTemplateTargetInputMap),
-          actions: CreateExperimentTemplateActionInputMap,
+          stopConditions: __S(1, __c0, 1),
+          targets: S.optional(__S(8, __c1, 0)),
+          actions: __S(10, __c1, 2),
           roleArn: S.String,
-          tags: S.optional(TagMap),
-          logConfiguration: S.optional(CreateExperimentTemplateLogConfigurationInput),
-          experimentOptions: S.optional(CreateExperimentTemplateExperimentOptionsInput),
-          experimentReportConfiguration: S.optional(
-            CreateExperimentTemplateReportConfigurationInput,
-          ),
+          tags: S.optional(__S(3, __c0, 3)),
+          logConfiguration: S.optional(__S(13, __c1, 5)),
+          experimentOptions: S.optional(__S(14, __c1, 6)),
+          experimentReportConfiguration: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/experimentTemplates" }),
@@ -2034,13 +1610,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          values: S.optional(ExperimentTemplateTargetFilterValues),
+          values: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "ExperimentTemplateTargetFilter",
       });
     case 7:
-      return S.Array(ExperimentTemplateTargetFilter);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -2049,27 +1625,27 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          resourceArns: S.optional(ResourceArnList),
-          resourceTags: S.optional(TagMap),
-          filters: S.optional(ExperimentTemplateTargetFilterList),
+          resourceArns: S.optional(__S(2, __c0, 2)),
+          resourceTags: S.optional(__S(3, __c0, 3)),
+          filters: S.optional(__S(23, __c2, 7)),
           selectionMode: S.optional(S.String),
-          parameters: S.optional(ExperimentTemplateTargetParameterMap),
+          parameters: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ExperimentTemplateTarget" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ ExperimentTemplateTarget.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(24, __c3, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           actionId: S.optional(S.String),
           description: S.optional(S.String),
-          parameters: S.optional(ExperimentTemplateActionParameterMap),
-          targets: S.optional(ExperimentTemplateActionTargetMap),
-          startAfter: S.optional(ExperimentTemplateActionStartAfterList),
+          parameters: S.optional(__S(6, __c0, 6)),
+          targets: S.optional(__S(6, __c0, 6)),
+          startAfter: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "ExperimentTemplateAction" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ ExperimentTemplateAction.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(26, __c3, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({ source: S.optional(S.String), value: S.optional(S.String) }),
@@ -2077,7 +1653,7 @@ function __c3(j: number): any {
         identifier: "ExperimentTemplateStopCondition",
       });
     case 5:
-      return S.Array(ExperimentTemplateStopCondition);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() => S.Struct({ logGroupArn: S.optional(S.String) })).annotate({
         identifier: "ExperimentTemplateCloudWatchLogsLogConfiguration",
@@ -2085,8 +1661,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cloudWatchLogsConfiguration: S.optional(ExperimentTemplateCloudWatchLogsLogConfiguration),
-          s3Configuration: S.optional(ExperimentTemplateS3LogConfiguration),
+          cloudWatchLogsConfiguration: S.optional(__S(30, __c3, 6)),
+          s3Configuration: S.optional(__S(15, __c1, 7)),
           logSchemaVersion: S.optional(S.Number),
         }),
       ).annotate({
@@ -2101,13 +1677,11 @@ function __c4(j: number): any {
         identifier: "ExperimentTemplateReportConfigurationCloudWatchDashboard",
       });
     case 1:
-      return S.Array(ExperimentTemplateReportConfigurationCloudWatchDashboard);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cloudWatchDashboards: S.optional(
-            ExperimentTemplateReportConfigurationCloudWatchDashboardList,
-          ),
+          cloudWatchDashboards: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "ExperimentTemplateReportConfigurationDataSources",
@@ -2115,8 +1689,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          outputs: S.optional(ExperimentTemplateReportConfigurationOutputs),
-          dataSources: S.optional(ExperimentTemplateReportConfigurationDataSources),
+          outputs: S.optional(__S(16, __c2, 0)),
+          dataSources: S.optional(__S(34, __c4, 2)),
           preExperimentDuration: S.optional(S.String),
           postExperimentDuration: S.optional(S.String),
         }),
@@ -2129,22 +1703,22 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           arn: S.optional(S.String),
           description: S.optional(S.String),
-          targets: S.optional(ExperimentTemplateTargetMap),
-          actions: S.optional(ExperimentTemplateActionMap),
-          stopConditions: S.optional(ExperimentTemplateStopConditionList),
+          targets: S.optional(__S(25, __c3, 1)),
+          actions: S.optional(__S(27, __c3, 3)),
+          stopConditions: S.optional(__S(29, __c3, 5)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           roleArn: S.optional(S.String),
-          tags: S.optional(TagMap),
-          logConfiguration: S.optional(ExperimentTemplateLogConfiguration),
-          experimentOptions: S.optional(ExperimentTemplateExperimentOptions),
+          tags: S.optional(__S(3, __c0, 3)),
+          logConfiguration: S.optional(__S(31, __c3, 7)),
+          experimentOptions: S.optional(__S(14, __c1, 6)),
           targetAccountConfigurationsCount: S.optional(S.Number),
-          experimentReportConfiguration: S.optional(ExperimentTemplateReportConfiguration),
+          experimentReportConfiguration: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "ExperimentTemplate" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ experimentTemplate: S.optional(ExperimentTemplate) }),
+        S.Struct({ experimentTemplate: S.optional(__S(36, __c4, 4)) }),
       ).annotate({
         identifier: "CreateExperimentTemplateResponse",
       });
@@ -2188,7 +1762,7 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ targetAccountConfiguration: S.optional(TargetAccountConfiguration) }),
+        S.Struct({ targetAccountConfiguration: S.optional(__S(39, __c4, 7)) }),
       ).annotate({
         identifier: "CreateTargetAccountConfigurationResponse",
       });
@@ -2239,13 +1813,13 @@ function __c5(j: number): any {
         S.Struct({ description: S.optional(S.String), required: S.optional(S.Boolean) }),
       ).annotate({ identifier: "ActionParameter" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ ActionParameter.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(44, __c5, 4).pipe(S.optional));
     case 6:
       return S.suspend(() => S.Struct({ resourceType: S.optional(S.String) })).annotate({
         identifier: "ActionTarget",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ActionTarget.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(46, __c5, 6).pipe(S.optional));
   }
 }
 function __c6(j: number): any {
@@ -2256,13 +1830,13 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           arn: S.optional(S.String),
           description: S.optional(S.String),
-          parameters: S.optional(ActionParameterMap),
-          targets: S.optional(ActionTargetMap),
-          tags: S.optional(TagMap),
+          parameters: S.optional(__S(45, __c5, 5)),
+          targets: S.optional(__S(47, __c5, 7)),
+          tags: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Action" });
     case 1:
-      return S.suspend(() => S.Struct({ action: S.optional(Action) })).annotate({
+      return S.suspend(() => S.Struct({ action: S.optional(__S(48, __c6, 0)) })).annotate({
         identifier: "GetActionResponse",
       });
     case 2:
@@ -2282,26 +1856,26 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ExperimentStatus),
+          status: S.optional(S.String),
           reason: S.optional(S.String),
-          error: S.optional(ExperimentError),
+          error: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "ExperimentState" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ path: S.optional(S.String), values: S.optional(ExperimentTargetFilterValues) }),
+        S.Struct({ path: S.optional(S.String), values: S.optional(__S(2, __c0, 2)) }),
       ).annotate({ identifier: "ExperimentTargetFilter" });
     case 6:
-      return S.Array(ExperimentTargetFilter);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          resourceArns: S.optional(ResourceArnList),
-          resourceTags: S.optional(TagMap),
-          filters: S.optional(ExperimentTargetFilterList),
+          resourceArns: S.optional(__S(2, __c0, 2)),
+          resourceTags: S.optional(__S(3, __c0, 3)),
+          filters: S.optional(__S(54, __c6, 6)),
           selectionMode: S.optional(S.String),
-          parameters: S.optional(ExperimentTargetParameterMap),
+          parameters: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ExperimentTarget" });
   }
@@ -2309,44 +1883,44 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ ExperimentTarget.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(55, __c6, 7).pipe(S.optional));
     case 1:
       return S.suspend(() =>
-        S.Struct({ status: S.optional(ExperimentActionStatus), reason: S.optional(S.String) }),
+        S.Struct({ status: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({ identifier: "ExperimentActionState" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           actionId: S.optional(S.String),
           description: S.optional(S.String),
-          parameters: S.optional(ExperimentActionParameterMap),
-          targets: S.optional(ExperimentActionTargetMap),
-          startAfter: S.optional(ExperimentActionStartAfterList),
-          state: S.optional(ExperimentActionState),
+          parameters: S.optional(__S(6, __c0, 6)),
+          targets: S.optional(__S(6, __c0, 6)),
+          startAfter: S.optional(__S(2, __c0, 2)),
+          state: S.optional(__S(57, __c7, 1)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ExperimentAction" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ ExperimentAction.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(58, __c7, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({ source: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "ExperimentStopCondition" });
     case 5:
-      return S.Array(ExperimentStopCondition);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accountTargeting: S.optional(AccountTargeting),
-          emptyTargetResolutionMode: S.optional(EmptyTargetResolutionMode),
-          actionsMode: S.optional(ActionsMode),
+          accountTargeting: S.optional(S.String),
+          emptyTargetResolutionMode: S.optional(S.String),
+          actionsMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExperimentOptions" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cloudWatchDashboards: S.optional(ExperimentReportConfigurationCloudWatchDashboardList),
+          cloudWatchDashboards: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "ExperimentReportConfigurationDataSources",
@@ -2358,8 +1932,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          outputs: S.optional(ExperimentReportConfigurationOutputs),
-          dataSources: S.optional(ExperimentReportConfigurationDataSources),
+          outputs: S.optional(__S(16, __c2, 0)),
+          dataSources: S.optional(__S(63, __c7, 7)),
           preExperimentDuration: S.optional(S.String),
           postExperimentDuration: S.optional(S.String),
         }),
@@ -2373,9 +1947,9 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ExperimentReportStatus),
+          status: S.optional(S.String),
           reason: S.optional(S.String),
-          error: S.optional(ExperimentReportError),
+          error: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "ExperimentReportState" });
     case 3:
@@ -2383,12 +1957,12 @@ function __c8(j: number): any {
         S.Struct({ arn: S.optional(S.String), reportType: S.optional(S.String) }),
       ).annotate({ identifier: "ExperimentReportS3Report" });
     case 4:
-      return S.Array(ExperimentReportS3Report);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ExperimentReportState),
-          s3Reports: S.optional(ExperimentReportS3ReportList),
+          state: S.optional(__S(66, __c8, 2)),
+          s3Reports: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "ExperimentReport" });
     case 6:
@@ -2398,23 +1972,23 @@ function __c8(j: number): any {
           arn: S.optional(S.String),
           experimentTemplateId: S.optional(S.String),
           roleArn: S.optional(S.String),
-          state: S.optional(ExperimentState),
-          targets: S.optional(ExperimentTargetMap),
-          actions: S.optional(ExperimentActionMap),
-          stopConditions: S.optional(ExperimentStopConditionList),
+          state: S.optional(__S(52, __c6, 4)),
+          targets: S.optional(__S(56, __c7, 0)),
+          actions: S.optional(__S(59, __c7, 3)),
+          stopConditions: S.optional(__S(61, __c7, 5)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(TagMap),
-          logConfiguration: S.optional(ExperimentLogConfiguration),
-          experimentOptions: S.optional(ExperimentOptions),
+          tags: S.optional(__S(3, __c0, 3)),
+          logConfiguration: S.optional(__S(31, __c3, 7)),
+          experimentOptions: S.optional(__S(62, __c7, 6)),
           targetAccountConfigurationsCount: S.optional(S.Number),
-          experimentReportConfiguration: S.optional(ExperimentReportConfiguration),
-          experimentReport: S.optional(ExperimentReport),
+          experimentReportConfiguration: S.optional(__S(64, __c8, 0)),
+          experimentReport: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "Experiment" });
     case 7:
-      return S.suspend(() => S.Struct({ experiment: S.optional(Experiment) })).annotate({
+      return S.suspend(() => S.Struct({ experiment: S.optional(__S(70, __c8, 6)) })).annotate({
         identifier: "GetExperimentResponse",
       });
   }
@@ -2468,11 +2042,11 @@ function __c9(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           arn: S.optional(S.String),
-          state: S.optional(SafetyLeverState),
+          state: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "SafetyLever" });
     case 4:
-      return S.suspend(() => S.Struct({ safetyLever: S.optional(SafetyLever) })).annotate({
+      return S.suspend(() => S.Struct({ safetyLever: S.optional(__S(75, __c9, 3)) })).annotate({
         identifier: "GetSafetyLeverResponse",
       });
     case 5:
@@ -2522,18 +2096,18 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ TargetResourceTypeParameter.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(79, __c9, 7).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
           description: S.optional(S.String),
-          parameters: S.optional(TargetResourceTypeParameterMap),
+          parameters: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "TargetResourceType" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ targetResourceType: S.optional(TargetResourceType) }),
+        S.Struct({ targetResourceType: S.optional(__S(81, __c10, 1)) }),
       ).annotate({
         identifier: "GetTargetResourceTypeResponse",
       });
@@ -2550,15 +2124,15 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           arn: S.optional(S.String),
           description: S.optional(S.String),
-          targets: S.optional(ActionTargetMap),
-          tags: S.optional(TagMap),
+          targets: S.optional(__S(47, __c5, 7)),
+          tags: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ActionSummary" });
     case 5:
-      return S.Array(ActionSummary);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ actions: S.optional(ActionSummaryList), nextToken: S.optional(S.String) }),
+        S.Struct({ actions: S.optional(__S(85, __c10, 5)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListActionsResponse" });
     case 7:
       return S.suspend(() =>
@@ -2589,15 +2163,15 @@ function __c11(j: number): any {
         S.Struct({
           resourceType: S.optional(S.String),
           targetName: S.optional(S.String),
-          targetInformation: S.optional(TargetInformationMap),
+          targetInformation: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ResolvedTarget" });
     case 1:
-      return S.Array(ResolvedTarget);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resolvedTargets: S.optional(ResolvedTargetList),
+          resolvedTargets: S.optional(__S(89, __c11, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2619,18 +2193,18 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           arn: S.optional(S.String),
           experimentTemplateId: S.optional(S.String),
-          state: S.optional(ExperimentState),
+          state: S.optional(__S(52, __c6, 4)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(TagMap),
-          experimentOptions: S.optional(ExperimentOptions),
+          tags: S.optional(__S(3, __c0, 3)),
+          experimentOptions: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({ identifier: "ExperimentSummary" });
     case 5:
-      return S.Array(ExperimentSummary);
+      return S.Array(__S(92, __c11, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          experiments: S.optional(ExperimentSummaryList),
+          experiments: S.optional(__S(93, __c11, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListExperimentsResponse" });
@@ -2660,11 +2234,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExperimentTargetAccountConfigurationSummary);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          targetAccountConfigurations: S.optional(ExperimentTargetAccountConfigurationList),
+          targetAccountConfigurations: S.optional(__S(96, __c12, 0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2696,17 +2270,17 @@ function __c12(j: number): any {
           description: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "ExperimentTemplateSummary",
       });
     case 4:
-      return S.Array(ExperimentTemplateSummary);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          experimentTemplates: S.optional(ExperimentTemplateSummaryList),
+          experimentTemplates: S.optional(__S(100, __c12, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2728,7 +2302,7 @@ function __c12(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(3, __c0, 3)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2782,18 +2356,18 @@ function __c13(j: number): any {
         identifier: "TargetResourceTypeSummary",
       });
     case 3:
-      return S.Array(TargetResourceTypeSummary);
+      return S.Array(__S(106, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          targetResourceTypes: S.optional(TargetResourceTypeSummaryList),
+          targetResourceTypes: S.optional(__S(107, __c13, 3)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListTargetResourceTypesResponse",
       });
     case 5:
-      return S.suspend(() => S.Struct({ actionsMode: S.optional(ActionsMode) })).annotate({
+      return S.suspend(() => S.Struct({ actionsMode: S.optional(S.String) })).annotate({
         identifier: "StartExperimentExperimentOptionsInput",
       });
     case 6:
@@ -2801,8 +2375,8 @@ function __c13(j: number): any {
         S.Struct({
           clientToken: S.String.pipe(T.IdempotencyToken()),
           experimentTemplateId: S.String,
-          experimentOptions: S.optional(StartExperimentExperimentOptionsInput),
-          tags: S.optional(TagMap),
+          experimentOptions: S.optional(__S(109, __c13, 5)),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/experiments" }), svc, auth, proto, ver, rules),
         ),
@@ -2826,7 +2400,10 @@ function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(3, __c0, 3),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -2845,7 +2422,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: S.optional(TagKeyList).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: S.optional(__S(2, __c0, 2)).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2862,25 +2439,20 @@ function __c14(j: number): any {
         S.Struct({
           actionId: S.optional(S.String),
           description: S.optional(S.String),
-          parameters: S.optional(ExperimentTemplateActionParameterMap),
-          targets: S.optional(ExperimentTemplateActionTargetMap),
-          startAfter: S.optional(ExperimentTemplateActionStartAfterList),
+          parameters: S.optional(__S(6, __c0, 6)),
+          targets: S.optional(__S(6, __c0, 6)),
+          startAfter: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "UpdateExperimentTemplateActionInputItem",
       });
     case 4:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ UpdateExperimentTemplateActionInputItem.pipe(S.optional),
-      );
+      return S.Record(S.String, /*@__PURE__*/ __S(115, __c14, 3).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          cloudWatchLogsConfiguration: S.optional(
-            ExperimentTemplateCloudWatchLogsLogConfigurationInput,
-          ),
-          s3Configuration: S.optional(ExperimentTemplateS3LogConfigurationInput),
+          cloudWatchLogsConfiguration: S.optional(__S(11, __c1, 3)),
+          s3Configuration: S.optional(__S(12, __c1, 4)),
           logSchemaVersion: S.optional(S.Number),
         }),
       ).annotate({
@@ -2888,7 +2460,7 @@ function __c14(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ emptyTargetResolutionMode: S.optional(EmptyTargetResolutionMode) }),
+        S.Struct({ emptyTargetResolutionMode: S.optional(S.String) }),
       ).annotate({
         identifier: "UpdateExperimentTemplateExperimentOptionsInput",
       });
@@ -2897,15 +2469,13 @@ function __c14(j: number): any {
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
           description: S.optional(S.String),
-          stopConditions: S.optional(UpdateExperimentTemplateStopConditionInputList),
-          targets: S.optional(UpdateExperimentTemplateTargetInputMap),
-          actions: S.optional(UpdateExperimentTemplateActionInputMap),
+          stopConditions: S.optional(__S(1, __c0, 1)),
+          targets: S.optional(__S(8, __c1, 0)),
+          actions: S.optional(__S(116, __c14, 4)),
           roleArn: S.optional(S.String),
-          logConfiguration: S.optional(UpdateExperimentTemplateLogConfigurationInput),
-          experimentOptions: S.optional(UpdateExperimentTemplateExperimentOptionsInput),
-          experimentReportConfiguration: S.optional(
-            UpdateExperimentTemplateReportConfigurationInput,
-          ),
+          logConfiguration: S.optional(__S(117, __c14, 5)),
+          experimentOptions: S.optional(__S(118, __c14, 6)),
+          experimentReportConfiguration: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/experimentTemplates/{id}" }),
@@ -2924,14 +2494,12 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ status: SafetyLeverStatusInput, reason: S.String }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ status: S.String, reason: S.String })).annotate({
         identifier: "UpdateSafetyLeverStateInput",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), state: UpdateSafetyLeverStateInput }).pipe(
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), state: __S(120, __c15, 0) }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/safetyLevers/{id}/state" }),
             svc,
@@ -2945,7 +2513,7 @@ function __c15(j: number): any {
         identifier: "UpdateSafetyLeverStateRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ safetyLever: S.optional(SafetyLever) })).annotate({
+      return S.suspend(() => S.Struct({ safetyLever: S.optional(__S(75, __c9, 3)) })).annotate({
         identifier: "UpdateSafetyLeverStateResponse",
       });
     case 3:
@@ -2972,4 +2540,9 @@ function __c15(j: number): any {
         identifier: "UpdateTargetAccountConfigurationRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,11 +68,7 @@ export type DocumentBoilerplateHandlingEnum =
   | "BOILERPLATE_HANDLING_UNSPECIFIED"
   | "SKIP_BOILERPLATE"
   | "KEEP_BOILERPLATE";
-const DocumentBoilerplateHandlingEnum = S.String;
-
 export type DocumentTypeEnum = "TYPE_UNSPECIFIED" | "PLAIN_TEXT" | "HTML";
-const DocumentTypeEnum = S.String;
-
 /** Represents the input to API methods. */
 export interface Document {
   /** The web URI where the document comes from. This URI is not used for fetching the content, but as a hint for analyzing the document. */
@@ -86,11 +84,7 @@ export interface Document {
   /** The Google Cloud Storage URI where the file content is located. This URI must be of the form: gs://bucket_name/object_name. For more details, see https://cloud.google.com/storage/docs/reference-uris. NOTE: Cloud Storage object versioning is not supported. */
   gcsContentUri?: string;
 }
-const Document = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Document>;
-
 export type AnalyzeEntitiesRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
-const AnalyzeEntitiesRequestEncodingTypeEnum = S.String;
-
 /** The entity analysis request message. */
 export interface AnalyzeEntitiesRequest {
   /** Required. Input document. */
@@ -98,20 +92,10 @@ export interface AnalyzeEntitiesRequest {
   /** The encoding type used by the API to calculate offsets. */
   encodingType?: AnalyzeEntitiesRequestEncodingTypeEnum | (string & {});
 }
-const AnalyzeEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AnalyzeEntitiesRequest>;
-
 export interface AnalyzeEntitiesDocumentsRequest {
   /** Request body */
   body?: AnalyzeEntitiesRequest;
 }
-const AnalyzeEntitiesDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AnalyzeEntitiesDocumentsRequest>;
-
 /** Represents the feeling associated with the entire text or entities in the text. */
 export interface Sentiment {
   /** Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment). */
@@ -119,11 +103,7 @@ export interface Sentiment {
   /** A non-negative number in the [0, +inf] range, which represents the absolute magnitude of sentiment regardless of score (positive or negative). */
   magnitude?: number;
 }
-const Sentiment = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Sentiment>;
-
 export type EntityMentionTypeEnum = "TYPE_UNKNOWN" | "PROPER" | "COMMON";
-const EntityMentionTypeEnum = S.String;
-
 /** Represents a text span in the input document. */
 export interface TextSpan {
   /** The API calculates the beginning offset of the content in the original document according to the EncodingType specified in the API request. */
@@ -131,8 +111,6 @@ export interface TextSpan {
   /** The content of the text span, which is a substring of the document. */
   content?: string;
 }
-const TextSpan = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TextSpan>;
-
 /** Represents a mention for an entity in the text. Currently, proper noun mentions are supported. */
 export interface EntityMention {
   /** For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this field will contain the sentiment expressed for this mention of the entity in the provided document. */
@@ -142,11 +120,7 @@ export interface EntityMention {
   /** The mention text. */
   text?: TextSpan;
 }
-const EntityMention = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EntityMention>;
-
 export type EntityMentionList = Array<EntityMention>;
-const EntityMentionList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EntityMentionList>;
-
 export type EntityTypeEnum =
   | "UNKNOWN"
   | "PERSON"
@@ -161,11 +135,7 @@ export type EntityTypeEnum =
   | "DATE"
   | "NUMBER"
   | "PRICE";
-const EntityTypeEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringMap>;
-
 /** Represents a phrase in the text that is a known entity, such as a person, an organization, or location. The API associates information, such as salience and mentions, with entities. */
 export interface Entity {
   /** The mentions of this entity in the input document. The API currently supports proper noun mentions. */
@@ -181,11 +151,7 @@ export interface Entity {
   /** The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity provides information about the importance or centrality of that entity to the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient. */
   salience?: number;
 }
-const Entity = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Entity>;
-
 export type EntityList = Array<Entity>;
-const EntityList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<EntityList>;
-
 /** The entity analysis response message. */
 export interface AnalyzeEntitiesResponse {
   /** The recognized entities in the input document. */
@@ -193,14 +159,7 @@ export interface AnalyzeEntitiesResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
 }
-const AnalyzeEntitiesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AnalyzeEntitiesResponse>;
-
 export type AnalyzeEntitySentimentRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
-const AnalyzeEntitySentimentRequestEncodingTypeEnum = S.String;
-
 /** The entity-level sentiment analysis request message. */
 export interface AnalyzeEntitySentimentRequest {
   /** Required. Input document. */
@@ -208,20 +167,10 @@ export interface AnalyzeEntitySentimentRequest {
   /** The encoding type used by the API to calculate offsets. */
   encodingType?: AnalyzeEntitySentimentRequestEncodingTypeEnum | (string & {});
 }
-const AnalyzeEntitySentimentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AnalyzeEntitySentimentRequest>;
-
 export interface AnalyzeEntitySentimentDocumentsRequest {
   /** Request body */
   body?: AnalyzeEntitySentimentRequest;
 }
-const AnalyzeEntitySentimentDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AnalyzeEntitySentimentDocumentsRequest>;
-
 /** The entity-level sentiment analysis response message. */
 export interface AnalyzeEntitySentimentResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
@@ -229,11 +178,6 @@ export interface AnalyzeEntitySentimentResponse {
   /** The recognized entities in the input document with associated sentiments. */
   entities?: EntityList;
 }
-const AnalyzeEntitySentimentResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AnalyzeEntitySentimentResponse>;
-
 export type AnalyzeSentimentRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
 /** The sentiment analysis request message. */
 export interface AnalyzeSentimentRequest {
@@ -242,17 +186,10 @@ export interface AnalyzeSentimentRequest {
   /** The encoding type used by the API to calculate sentence offsets for the sentence sentiment. */
   encodingType?: AnalyzeSentimentRequestEncodingTypeEnum | (string & {});
 }
-const AnalyzeSentimentRequest = AnalyzeEntitiesRequest as any as S.Schema<AnalyzeSentimentRequest>;
-
 export interface AnalyzeSentimentDocumentsRequest {
   /** Request body */
   body?: AnalyzeSentimentRequest;
 }
-const AnalyzeSentimentDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AnalyzeSentimentDocumentsRequest>;
-
 /** Represents a sentence in the input document. */
 export interface Sentence {
   /** For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set to true, this field will contain the sentiment for the sentence. */
@@ -260,11 +197,7 @@ export interface Sentence {
   /** The sentence text. */
   text?: TextSpan;
 }
-const Sentence = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Sentence>;
-
 export type SentenceList = Array<Sentence>;
-const SentenceList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SentenceList>;
-
 /** The sentiment analysis response message. */
 export interface AnalyzeSentimentResponse {
   /** The sentiment for all the sentences in the document. */
@@ -274,11 +207,6 @@ export interface AnalyzeSentimentResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
 }
-const AnalyzeSentimentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AnalyzeSentimentResponse>;
-
 export type AnalyzeSyntaxRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
 /** The syntax analysis request message. */
 export interface AnalyzeSyntaxRequest {
@@ -287,17 +215,10 @@ export interface AnalyzeSyntaxRequest {
   /** The encoding type used by the API to calculate offsets. */
   encodingType?: AnalyzeSyntaxRequestEncodingTypeEnum | (string & {});
 }
-const AnalyzeSyntaxRequest = AnalyzeEntitiesRequest as any as S.Schema<AnalyzeSyntaxRequest>;
-
 export interface AnalyzeSyntaxDocumentsRequest {
   /** Request body */
   body?: AnalyzeSyntaxRequest;
 }
-const AnalyzeSyntaxDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AnalyzeSyntaxDocumentsRequest>;
-
 export type PartOfSpeechFormEnum =
   | "FORM_UNKNOWN"
   | "ADNOMIAL"
@@ -311,8 +232,6 @@ export type PartOfSpeechFormEnum =
   | "LONG"
   | "ORDER"
   | "SPECIFIC";
-const PartOfSpeechFormEnum = S.String;
-
 export type PartOfSpeechTenseEnum =
   | "TENSE_UNKNOWN"
   | "CONDITIONAL_TENSE"
@@ -321,11 +240,7 @@ export type PartOfSpeechTenseEnum =
   | "PRESENT"
   | "IMPERFECT"
   | "PLUPERFECT";
-const PartOfSpeechTenseEnum = S.String;
-
 export type PartOfSpeechProperEnum = "PROPER_UNKNOWN" | "PROPER" | "NOT_PROPER";
-const PartOfSpeechProperEnum = S.String;
-
 export type PartOfSpeechMoodEnum =
   | "MOOD_UNKNOWN"
   | "CONDITIONAL_MOOD"
@@ -334,28 +249,16 @@ export type PartOfSpeechMoodEnum =
   | "INTERROGATIVE"
   | "JUSSIVE"
   | "SUBJUNCTIVE";
-const PartOfSpeechMoodEnum = S.String;
-
 export type PartOfSpeechNumberEnum = "NUMBER_UNKNOWN" | "SINGULAR" | "PLURAL" | "DUAL";
-const PartOfSpeechNumberEnum = S.String;
-
 export type PartOfSpeechVoiceEnum = "VOICE_UNKNOWN" | "ACTIVE" | "CAUSATIVE" | "PASSIVE";
-const PartOfSpeechVoiceEnum = S.String;
-
 export type PartOfSpeechReciprocityEnum = "RECIPROCITY_UNKNOWN" | "RECIPROCAL" | "NON_RECIPROCAL";
-const PartOfSpeechReciprocityEnum = S.String;
-
 export type PartOfSpeechGenderEnum = "GENDER_UNKNOWN" | "FEMININE" | "MASCULINE" | "NEUTER";
-const PartOfSpeechGenderEnum = S.String;
-
 export type PartOfSpeechPersonEnum =
   | "PERSON_UNKNOWN"
   | "FIRST"
   | "SECOND"
   | "THIRD"
   | "REFLEXIVE_PERSON";
-const PartOfSpeechPersonEnum = S.String;
-
 export type PartOfSpeechCaseEnum =
   | "CASE_UNKNOWN"
   | "ACCUSATIVE"
@@ -372,15 +275,11 @@ export type PartOfSpeechCaseEnum =
   | "REFLEXIVE_CASE"
   | "RELATIVE_CASE"
   | "VOCATIVE";
-const PartOfSpeechCaseEnum = S.String;
-
 export type PartOfSpeechAspectEnum =
   | "ASPECT_UNKNOWN"
   | "PERFECTIVE"
   | "IMPERFECTIVE"
   | "PROGRESSIVE";
-const PartOfSpeechAspectEnum = S.String;
-
 export type PartOfSpeechTagEnum =
   | "UNKNOWN"
   | "ADJ"
@@ -396,8 +295,6 @@ export type PartOfSpeechTagEnum =
   | "VERB"
   | "X"
   | "AFFIX";
-const PartOfSpeechTagEnum = S.String;
-
 /** Represents part of speech information for a token. */
 export interface PartOfSpeech {
   /** The grammatical form. */
@@ -425,8 +322,6 @@ export interface PartOfSpeech {
   /** The part of speech tag. */
   tag?: PartOfSpeechTagEnum;
 }
-const PartOfSpeech = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<PartOfSpeech>;
-
 export type DependencyEdgeLabelEnum =
   | "UNKNOWN"
   | "ABBREV"
@@ -511,8 +406,6 @@ export type DependencyEdgeLabelEnum =
   | "INFMOD"
   | "MES"
   | "NCOMP";
-const DependencyEdgeLabelEnum = S.String;
-
 /** Represents dependency parse tree information for a token. */
 export interface DependencyEdge {
   /** Represents the head of this token in the dependency tree. This is the index of the token which has an arc going to this token. The index is the position of the token in the array of tokens returned by the API method. If this token is a root token, then the `head_token_index` is its own index. */
@@ -520,8 +413,6 @@ export interface DependencyEdge {
   /** The parse label for the token. */
   label?: DependencyEdgeLabelEnum;
 }
-const DependencyEdge = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DependencyEdge>;
-
 /** Represents the smallest syntactic building block of the text. */
 export interface Token {
   /** Parts of speech tag for this token. */
@@ -533,11 +424,7 @@ export interface Token {
   /** Dependency tree parse for this token. */
   dependencyEdge?: DependencyEdge;
 }
-const Token = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Token>;
-
 export type TokenList = Array<Token>;
-const TokenList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TokenList>;
-
 /** The syntax analysis response message. */
 export interface AnalyzeSyntaxResponse {
   /** Tokens, along with their syntactic information, in the input document. */
@@ -547,24 +434,12 @@ export interface AnalyzeSyntaxResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
 }
-const AnalyzeSyntaxResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AnalyzeSyntaxResponse>;
-
 /** Options for the V1 model. */
 export interface ClassificationModelOptionsV1Model {}
-const ClassificationModelOptionsV1Model = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ClassificationModelOptionsV1Model>;
-
 export type ClassificationModelOptionsV2ModelContentCategoriesVersionEnum =
   | "CONTENT_CATEGORIES_VERSION_UNSPECIFIED"
   | "V1"
   | "V2";
-const ClassificationModelOptionsV2ModelContentCategoriesVersionEnum = S.String;
-
 /** Options for the V2 model. */
 export interface ClassificationModelOptionsV2Model {
   /** The content categories used for classification. */
@@ -572,11 +447,6 @@ export interface ClassificationModelOptionsV2Model {
     | ClassificationModelOptionsV2ModelContentCategoriesVersionEnum
     | (string & {});
 }
-const ClassificationModelOptionsV2Model = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ClassificationModelOptionsV2Model>;
-
 /** Model options available for classification requests. */
 export interface ClassificationModelOptions {
   /** Setting this field will use the V1 model and V1 content categories version. The V1 model is a legacy model; support for this will be discontinued in the future. */
@@ -584,11 +454,6 @@ export interface ClassificationModelOptions {
   /** Setting this field will use the V2 model with the appropriate content categories version. The V2 model is a better performing model. */
   v2Model?: ClassificationModelOptionsV2Model;
 }
-const ClassificationModelOptions = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ClassificationModelOptions>;
-
 /** All available features for sentiment, syntax, and semantic analysis. Setting each one to true will enable that specific analysis for the input. */
 export interface AnnotateTextRequestFeatures {
   /** Classify the full document into categories. If this is true, the API will use the default model which classifies into a [predefined taxonomy](https://cloud.google.com/natural-language/docs/categories). */
@@ -606,14 +471,7 @@ export interface AnnotateTextRequestFeatures {
   /** Extract syntax information. */
   extractSyntax?: boolean;
 }
-const AnnotateTextRequestFeatures = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<AnnotateTextRequestFeatures>;
-
 export type AnnotateTextRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
-const AnnotateTextRequestEncodingTypeEnum = S.String;
-
 /** The request message for the text annotation API, which can perform multiple analysis types (sentiment, entities, and syntax) in one call. */
 export interface AnnotateTextRequest {
   /** Required. The enabled features. */
@@ -623,17 +481,10 @@ export interface AnnotateTextRequest {
   /** The encoding type used by the API to calculate offsets. */
   encodingType?: AnnotateTextRequestEncodingTypeEnum | (string & {});
 }
-const AnnotateTextRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AnnotateTextRequest>;
-
 export interface AnnotateTextDocumentsRequest {
   /** Request body */
   body?: AnnotateTextRequest;
 }
-const AnnotateTextDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AnnotateTextDocumentsRequest>;
-
 /** Represents a category returned from the text classifier. */
 export interface ClassificationCategory {
   /** The classifier's confidence of the category. Number represents how certain the classifier is that this category represents the given text. */
@@ -641,17 +492,7 @@ export interface ClassificationCategory {
   /** The name of the category representing the document. */
   name?: string;
 }
-const ClassificationCategory = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ClassificationCategory>;
-
 export type ClassificationCategoryList = Array<ClassificationCategory>;
-const ClassificationCategoryList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ClassificationCategoryList>;
-
 /** The text annotations response message. */
 export interface AnnotateTextResponse {
   /** Tokens, along with their syntactic information, in the input document. Populated if the user enables AnnotateTextRequest.Features.extract_syntax. */
@@ -669,8 +510,6 @@ export interface AnnotateTextResponse {
   /** Sentences in the input document. Populated if the user enables AnnotateTextRequest.Features.extract_syntax. */
   sentences?: SentenceList;
 }
-const AnnotateTextResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AnnotateTextResponse>;
-
 /** The document classification request message. */
 export interface ClassifyTextRequest {
   /** Required. Input document. */
@@ -678,47 +517,29 @@ export interface ClassifyTextRequest {
   /** Optional. Model options to use for classification. Defaults to v1 options if not specified. */
   classificationModelOptions?: ClassificationModelOptions;
 }
-const ClassifyTextRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ClassifyTextRequest>;
-
 export interface ClassifyTextDocumentsRequest {
   /** Request body */
   body?: ClassifyTextRequest;
 }
-const ClassifyTextDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ClassifyTextDocumentsRequest>;
-
 /** The document classification response message. */
 export interface ClassifyTextResponse {
   /** Categories representing the input document. */
   categories?: ClassificationCategoryList;
 }
-const ClassifyTextResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ClassifyTextResponse>;
-
 /** The document moderation request message. */
 export interface ModerateTextRequest {
   /** Required. Input document. */
   document?: Document;
 }
-const ModerateTextRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ModerateTextRequest>;
-
 export interface ModerateTextDocumentsRequest {
   /** Request body */
   body?: ModerateTextRequest;
 }
-const ModerateTextDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ModerateTextDocumentsRequest>;
-
 /** The document moderation response message. */
 export interface ModerateTextResponse {
   /** Harmful and sensitive categories representing the input document. */
   moderationCategories?: ClassificationCategoryList;
 }
-const ModerateTextResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ModerateTextResponse>;
-
 export type AnalyzeEntitiesDocumentsError =
   | NotFound
   | Forbidden
@@ -732,8 +553,8 @@ export const analyzeEntitiesDocuments: API.OperationMethod<
   AnalyzeEntitiesDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyzeEntitiesDocumentsRequest,
-  output: AnalyzeEntitiesResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AnalyzeEntitiesDocumentsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<AnalyzeEntitiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -752,8 +573,8 @@ export const analyzeEntitySentimentDocuments: API.OperationMethod<
   AnalyzeEntitySentimentDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyzeEntitySentimentDocumentsRequest,
-  output: AnalyzeEntitySentimentResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<AnalyzeEntitySentimentDocumentsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AnalyzeEntitySentimentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -772,8 +593,8 @@ export const analyzeSentimentDocuments: API.OperationMethod<
   AnalyzeSentimentDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyzeSentimentDocumentsRequest,
-  output: AnalyzeSentimentResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<AnalyzeSentimentDocumentsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<AnalyzeSentimentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -787,8 +608,8 @@ export const analyzeSyntaxDocuments: API.OperationMethod<
   AnalyzeSyntaxDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyzeSyntaxDocumentsRequest,
-  output: AnalyzeSyntaxResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<AnalyzeSyntaxDocumentsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<AnalyzeSyntaxResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -802,8 +623,8 @@ export const annotateTextDocuments: API.OperationMethod<
   AnnotateTextDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnnotateTextDocumentsRequest,
-  output: AnnotateTextResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<AnnotateTextDocumentsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AnnotateTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -817,8 +638,8 @@ export const classifyTextDocuments: API.OperationMethod<
   ClassifyTextDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClassifyTextDocumentsRequest,
-  output: ClassifyTextResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<ClassifyTextDocumentsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ClassifyTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -832,8 +653,8 @@ export const moderateTextDocuments: API.OperationMethod<
   ModerateTextDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModerateTextDocumentsRequest,
-  output: ModerateTextResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<ModerateTextDocumentsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<ModerateTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -847,23 +668,23 @@ function __c0(j: number): any {
         S.Struct({
           referenceWebUri: S.optional(S.String),
           content: S.optional(S.String),
-          boilerplateHandling: S.optional(DocumentBoilerplateHandlingEnum),
+          boilerplateHandling: S.optional(S.String),
           language: S.optional(S.String),
-          type: S.optional(DocumentTypeEnum),
+          type: S.optional(S.String),
           gcsContentUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "Document" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          document: S.optional(Document),
-          encodingType: S.optional(AnalyzeEntitiesRequestEncodingTypeEnum),
+          document: S.optional(__S(0, __c0, 0)),
+          encodingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalyzeEntitiesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AnalyzeEntitiesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -891,13 +712,13 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sentiment: S.optional(Sentiment),
-          type: S.optional(EntityMentionTypeEnum),
-          text: S.optional(TextSpan),
+          sentiment: S.optional(__S(3, __c0, 3)),
+          type: S.optional(S.String),
+          text: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "EntityMention" });
     case 6:
-      return S.Array(EntityMention);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.Record(S.String, S.String);
   }
@@ -907,28 +728,28 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mentions: S.optional(EntityMentionList),
-          type: S.optional(EntityTypeEnum),
+          mentions: S.optional(__S(6, __c0, 6)),
+          type: S.optional(S.String),
           name: S.optional(S.String),
-          sentiment: S.optional(Sentiment),
-          metadata: S.optional(StringMap),
+          sentiment: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(7, __c0, 7)),
           salience: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Entity" });
     case 1:
-      return S.Array(Entity);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(EntityList),
+          entities: S.optional(__S(9, __c1, 1)),
           language: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalyzeEntitiesResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          document: S.optional(Document),
-          encodingType: S.optional(AnalyzeEntitySentimentRequestEncodingTypeEnum),
+          document: S.optional(__S(0, __c0, 0)),
+          encodingType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AnalyzeEntitySentimentRequest",
@@ -936,7 +757,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AnalyzeEntitySentimentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -951,7 +772,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           language: S.optional(S.String),
-          entities: S.optional(EntityList),
+          entities: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "AnalyzeEntitySentimentResponse",
@@ -959,7 +780,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AnalyzeSentimentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -973,8 +794,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sentiment: S.optional(Sentiment),
-          text: S.optional(TextSpan),
+          sentiment: S.optional(__S(3, __c0, 3)),
+          text: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Sentence" });
   }
@@ -982,19 +803,19 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Sentence);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sentences: S.optional(SentenceList),
-          documentSentiment: S.optional(Sentiment),
+          sentences: S.optional(__S(16, __c2, 0)),
+          documentSentiment: S.optional(__S(3, __c0, 3)),
           language: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalyzeSentimentResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AnalyzeSyntaxRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1008,43 +829,43 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          form: S.optional(PartOfSpeechFormEnum),
-          tense: S.optional(PartOfSpeechTenseEnum),
-          proper: S.optional(PartOfSpeechProperEnum),
-          mood: S.optional(PartOfSpeechMoodEnum),
-          number: S.optional(PartOfSpeechNumberEnum),
-          voice: S.optional(PartOfSpeechVoiceEnum),
-          reciprocity: S.optional(PartOfSpeechReciprocityEnum),
-          gender: S.optional(PartOfSpeechGenderEnum),
-          person: S.optional(PartOfSpeechPersonEnum),
-          case: S.optional(PartOfSpeechCaseEnum),
-          aspect: S.optional(PartOfSpeechAspectEnum),
-          tag: S.optional(PartOfSpeechTagEnum),
+          form: S.optional(S.String),
+          tense: S.optional(S.String),
+          proper: S.optional(S.String),
+          mood: S.optional(S.String),
+          number: S.optional(S.String),
+          voice: S.optional(S.String),
+          reciprocity: S.optional(S.String),
+          gender: S.optional(S.String),
+          person: S.optional(S.String),
+          case: S.optional(S.String),
+          aspect: S.optional(S.String),
+          tag: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartOfSpeech" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           headTokenIndex: S.optional(S.Number),
-          label: S.optional(DependencyEdgeLabelEnum),
+          label: S.optional(S.String),
         }),
       ).annotate({ identifier: "DependencyEdge" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          partOfSpeech: S.optional(PartOfSpeech),
+          partOfSpeech: S.optional(__S(19, __c2, 3)),
           lemma: S.optional(S.String),
-          text: S.optional(TextSpan),
-          dependencyEdge: S.optional(DependencyEdge),
+          text: S.optional(__S(4, __c0, 4)),
+          dependencyEdge: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "Token" });
     case 6:
-      return S.Array(Token);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tokens: S.optional(TokenList),
-          sentences: S.optional(SentenceList),
+          tokens: S.optional(__S(22, __c2, 6)),
+          sentences: S.optional(__S(16, __c2, 0)),
           language: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalyzeSyntaxResponse" });
@@ -1059,9 +880,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentCategoriesVersion: S.optional(
-            ClassificationModelOptionsV2ModelContentCategoriesVersionEnum,
-          ),
+          contentCategoriesVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClassificationModelOptionsV2Model",
@@ -1069,8 +888,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          v1Model: S.optional(ClassificationModelOptionsV1Model),
-          v2Model: S.optional(ClassificationModelOptionsV2Model),
+          v1Model: S.optional(__S(24, __c3, 0)),
+          v2Model: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "ClassificationModelOptions",
@@ -1082,7 +901,7 @@ function __c3(j: number): any {
           extractEntities: S.optional(S.Boolean),
           extractEntitySentiment: S.optional(S.Boolean),
           moderateText: S.optional(S.Boolean),
-          classificationModelOptions: S.optional(ClassificationModelOptions),
+          classificationModelOptions: S.optional(__S(26, __c3, 2)),
           extractDocumentSentiment: S.optional(S.Boolean),
           extractSyntax: S.optional(S.Boolean),
         }),
@@ -1092,15 +911,15 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(AnnotateTextRequestFeatures),
-          document: S.optional(Document),
-          encodingType: S.optional(AnnotateTextRequestEncodingTypeEnum),
+          features: S.optional(__S(27, __c3, 3)),
+          document: S.optional(__S(0, __c0, 0)),
+          encodingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnnotateTextRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AnnotateTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1119,7 +938,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ClassificationCategory" });
     case 7:
-      return S.Array(ClassificationCategory);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1127,26 +946,26 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tokens: S.optional(TokenList),
+          tokens: S.optional(__S(22, __c2, 6)),
           language: S.optional(S.String),
-          entities: S.optional(EntityList),
-          categories: S.optional(ClassificationCategoryList),
-          moderationCategories: S.optional(ClassificationCategoryList),
-          documentSentiment: S.optional(Sentiment),
-          sentences: S.optional(SentenceList),
+          entities: S.optional(__S(9, __c1, 1)),
+          categories: S.optional(__S(31, __c3, 7)),
+          moderationCategories: S.optional(__S(31, __c3, 7)),
+          documentSentiment: S.optional(__S(3, __c0, 3)),
+          sentences: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "AnnotateTextResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          document: S.optional(Document),
-          classificationModelOptions: S.optional(ClassificationModelOptions),
+          document: S.optional(__S(0, __c0, 0)),
+          classificationModelOptions: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "ClassifyTextRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ClassifyTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1160,19 +979,19 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(ClassificationCategoryList),
+          categories: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "ClassifyTextResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          document: S.optional(Document),
+          document: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ModerateTextRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ModerateTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1186,8 +1005,13 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          moderationCategories: S.optional(ClassificationCategoryList),
+          moderationCategories: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "ModerateTextResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

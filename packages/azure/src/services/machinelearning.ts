@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,17 +19,7 @@ export interface DeleteWorkspaceRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteWorkspaceRequest>;
-
 export interface DeleteWorkspaceResponse {}
-const DeleteWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteWorkspaceResponse>;
-
 export interface GetWorkspaceRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -36,15 +28,8 @@ export interface GetWorkspaceRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetWorkspaceRequest>;
-
 /** The tags of the resource. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-const GetWorkspaceResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetWorkspaceResponseTagsMap>;
-
 /** Sku of the resource */
 export interface Sku {
   /** Name of the sku */
@@ -52,8 +37,6 @@ export interface Sku {
   /** Tier of the sku like Basic or Enterprise */
   tier?: string;
 }
-const Sku = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Sku>;
-
 /** The type of this workspace. */
 export type WorkspacePropertiesWorkspaceType =
   | "Production"
@@ -61,8 +44,6 @@ export type WorkspacePropertiesWorkspaceType =
   | "Anonymous"
   | "PaidStandard"
   | "PaidPremium";
-const WorkspacePropertiesWorkspaceType = S.String;
-
 /** The current state of workspace resource. */
 export type WorkspacePropertiesWorkspaceState =
   | "Deleted"
@@ -72,8 +53,6 @@ export type WorkspacePropertiesWorkspaceState =
   | "Updated"
   | "Registered"
   | "Unregistered";
-const WorkspacePropertiesWorkspaceState = S.String;
-
 /** The properties of a machine learning workspace. */
 export interface WorkspaceProperties {
   /** The fully qualified arm id of the storage account associated with this workspace. */
@@ -93,8 +72,6 @@ export interface WorkspaceProperties {
   /** The key vault identifier used for encrypted workspaces. */
   keyVaultIdentifierId?: string;
 }
-const WorkspaceProperties = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<WorkspaceProperties>;
-
 export interface GetWorkspaceResponse {
   /** The resource ID. */
   id?: string;
@@ -111,14 +88,7 @@ export interface GetWorkspaceResponse {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-const GetWorkspaceResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetWorkspaceResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Display name of operation */
 export interface OperationDisplay {
   /** The resource provider name: Microsoft.MachineLearning */
@@ -130,8 +100,6 @@ export interface OperationDisplay {
   /** The description for the operation. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OperationDisplay>;
-
 /** Azure Machine Learning Studio REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -139,33 +107,19 @@ export interface Operation {
   /** Display name of operation */
   display?: OperationDisplay;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Operation>;
-
 /** List of AML Studio operations supported by the AML Studio resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** An array of operations supported by the resource provider. */
 export interface OperationListResult {
   /** List of AML Studio operations supported by the AML Studio resource provider. */
   value?: OperationListResultValueList;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<OperationListResult>;
-
 export interface ListWorkspaceByResourceGroupRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
   /** The name of the resource group to which the machine learning workspace belongs. */
   resourceGroupName: string;
 }
-const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListWorkspaceByResourceGroupRequest>;
-
 /** The tags of the resource. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
 /** An object that represents a machine learning workspace. */
@@ -185,15 +139,8 @@ export interface Workspace {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
-
 /** The list of machine learning workspaces. Since this list may be incomplete, the nextLink field should be used to request the next list of machine learning workspaces. */
 export type WorkspaceListResultValueList = Array<Workspace>;
-const WorkspaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<WorkspaceListResultValueList>;
-
 /** The result of a request to list machine learning workspace keys. */
 export interface WorkspaceListResult {
   /** The list of machine learning workspaces. Since this list may be incomplete, the nextLink field should be used to request the next list of machine learning workspaces. */
@@ -201,17 +148,10 @@ export interface WorkspaceListResult {
   /** The URI that can be used to request the next list of machine learning workspaces. */
   nextLink?: string;
 }
-const WorkspaceListResult = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<WorkspaceListResult>;
-
 export interface ListWorkspacesRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
 }
-const ListWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListWorkspacesRequest>;
-
 export interface ListWorkspaceWorkspaceKeysRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -220,11 +160,6 @@ export interface ListWorkspaceWorkspaceKeysRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-const ListWorkspaceWorkspaceKeysRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListWorkspaceWorkspaceKeysRequest>;
-
 /** Workspace authorization keys for a workspace. */
 export interface WorkspaceKeysResponse {
   /** Primary authorization key for this workspace. */
@@ -232,16 +167,8 @@ export interface WorkspaceKeysResponse {
   /** Secondary authorization key for this workspace. */
   secondaryToken?: string;
 }
-const WorkspaceKeysResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<WorkspaceKeysResponse>;
-
 /** The resource tags for the machine learning workspace. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWorkspaceRequestTagsMap =
-  GetWorkspaceResponseTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
-
 /** The current state of workspace resource. */
 export type WorkspacePropertiesUpdateParametersWorkspaceState =
   | "Deleted"
@@ -251,8 +178,6 @@ export type WorkspacePropertiesUpdateParametersWorkspaceState =
   | "Updated"
   | "Registered"
   | "Unregistered";
-const WorkspacePropertiesUpdateParametersWorkspaceState = S.String;
-
 /** The parameters for updating the properties of a machine learning workspace. */
 export interface WorkspacePropertiesUpdateParameters {
   /** The current state of workspace resource. */
@@ -262,11 +187,6 @@ export interface WorkspacePropertiesUpdateParameters {
   /** The sku of the workspace. */
   sku?: Sku;
 }
-const WorkspacePropertiesUpdateParameters = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<WorkspacePropertiesUpdateParameters>;
-
 export interface UpdateWorkspaceRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -279,11 +199,6 @@ export interface UpdateWorkspaceRequest {
   /** The properties that the machine learning workspace will be updated with. */
   properties?: WorkspacePropertiesUpdateParameters;
 }
-const UpdateWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdateWorkspaceRequest>;
-
 /** The tags of the resource. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWorkspaceResponse {
@@ -302,13 +217,8 @@ export interface UpdateWorkspaceResponse {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-const UpdateWorkspaceResponse = GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
-
 /** The tags of the resource. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WorkspacesCreateOrUpdateRequestTagsMap =
-  GetWorkspaceResponseTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
-
 /** The properties of a machine learning workspace. */
 export interface WorkspacePropertiesInput {
   /** The fully qualified arm id of the storage account associated with this workspace. */
@@ -318,11 +228,6 @@ export interface WorkspacePropertiesInput {
   /** The key vault identifier used for encrypted workspaces. */
   keyVaultIdentifierId?: string;
 }
-const WorkspacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<WorkspacePropertiesInput>;
-
 export interface WorkspacesCreateOrUpdateRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -339,16 +244,8 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** The properties of the machine learning workspace. */
   properties?: WorkspacePropertiesInput;
 }
-const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
-
 /** The tags of the resource. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const WorkspacesCreateOrUpdateResponseTagsMap =
-  GetWorkspaceResponseTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
-
 export interface WorkspacesCreateOrUpdateResponse {
   /** The resource ID. */
   id?: string;
@@ -365,11 +262,6 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<WorkspacesCreateOrUpdateResponse>;
-
 export interface WorkspacesResyncStorageKeysRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -378,17 +270,7 @@ export interface WorkspacesResyncStorageKeysRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-const WorkspacesResyncStorageKeysRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<WorkspacesResyncStorageKeysRequest>;
-
 export interface WorkspacesResyncStorageKeysResponse {}
-const WorkspacesResyncStorageKeysResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<WorkspacesResyncStorageKeysResponse>;
-
 export type DeleteWorkspaceError = AzureOpError;
 /** Deletes a machine learning workspace. */
 export const DeleteWorkspace: API.OperationMethod<
@@ -397,8 +279,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkspaceRequest,
-  output: DeleteWorkspaceResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -412,8 +294,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkspaceRequest,
-  output: GetWorkspaceResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -427,8 +309,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(7, __c0, 7) as any as S.Schema<ListOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -442,8 +324,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceByResourceGroupRequest,
-  output: WorkspaceListResult,
+  input: __S(12, __c1, 4) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -457,8 +339,8 @@ export const ListWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspacesRequest,
-  output: WorkspaceListResult,
+  input: __S(15, __c1, 7) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -472,8 +354,8 @@ export const ListWorkspaceWorkspaceKeys: API.OperationMethod<
   ListWorkspaceWorkspaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceWorkspaceKeysRequest,
-  output: WorkspaceKeysResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<ListWorkspaceWorkspaceKeysRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<WorkspaceKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -487,8 +369,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkspaceRequest,
-  output: UpdateWorkspaceResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -502,8 +384,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacesCreateOrUpdateRequest,
-  output: WorkspacesCreateOrUpdateResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -517,8 +399,8 @@ export const WorkspacesResyncStorageKeys: API.OperationMethod<
   WorkspacesResyncStorageKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacesResyncStorageKeysRequest,
-  output: WorkspacesResyncStorageKeysResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<WorkspacesResyncStorageKeysRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<WorkspacesResyncStorageKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -575,8 +457,8 @@ function __c0(j: number): any {
         S.Struct({
           userStorageAccountId: S.String,
           ownerEmail: S.String,
-          workspaceType: S.optional(WorkspacePropertiesWorkspaceType),
-          workspaceState: S.optional(WorkspacePropertiesWorkspaceState),
+          workspaceType: S.optional(S.String),
+          workspaceState: S.optional(S.String),
           workspaceId: S.optional(S.String),
           creationTime: S.optional(S.String),
           studioEndpoint: S.optional(S.String),
@@ -590,9 +472,9 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(GetWorkspaceResponseTagsMap),
-          sku: S.optional(Sku),
-          properties: S.optional(WorkspaceProperties),
+          tags: S.optional(__S(3, __c0, 3)),
+          sku: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
     case 7:
@@ -623,15 +505,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(Operation);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "OperationListResult" });
     case 4:
@@ -651,11 +533,11 @@ function __c1(j: number): any {
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
     case 5:
-      return S.Array(Workspace);
+      return S.Array(__S(6, __c0, 6));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WorkspaceListResultValueList),
+          value: S.optional(__S(13, __c1, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
@@ -703,9 +585,9 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          workspaceState: S.optional(WorkspacePropertiesUpdateParametersWorkspaceState),
+          workspaceState: S.optional(S.String),
           keyVaultIdentifierId: S.optional(S.String),
-          sku: S.optional(Sku),
+          sku: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "WorkspacePropertiesUpdateParameters",
@@ -716,8 +598,8 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateWorkspaceRequestTagsMap),
-          properties: S.optional(WorkspacePropertiesUpdateParameters),
+          tags: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -742,9 +624,9 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
-          sku: S.optional(Sku),
-          properties: S.optional(WorkspacePropertiesInput),
+          tags: S.optional(__S(3, __c0, 3)),
+          sku: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -763,9 +645,9 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(WorkspacesCreateOrUpdateResponseTagsMap),
-          sku: S.optional(Sku),
-          properties: S.optional(WorkspaceProperties),
+          tags: S.optional(__S(3, __c0, 3)),
+          sku: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
@@ -796,4 +678,9 @@ function __c3(j: number): any {
         identifier: "WorkspacesResyncStorageKeysResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

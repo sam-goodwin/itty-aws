@@ -5,15 +5,12 @@ import * as S from "@distilled.cloud/core/schema";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
 export interface GetGeneralAPISettingsRequest {}
-const GetGeneralAPISettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetGeneralAPISettingsRequest>;
-
 /** GeneralAPISettings contains global api settings exposed by it */
 export interface GeneralAPISettings {
   default_git_trees_per_page?: number;
@@ -21,14 +18,7 @@ export interface GeneralAPISettings {
   default_paging_num?: number;
   max_response_items?: number;
 }
-const GeneralAPISettings = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GeneralAPISettings>;
-
 export interface GetGeneralAttachmentSettingsRequest {}
-const GetGeneralAttachmentSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetGeneralAttachmentSettingsRequest>;
-
 /** GeneralAttachmentSettings contains global Attachment settings exposed by API */
 export interface GeneralAttachmentSettings {
   allowed_types?: string;
@@ -36,17 +26,7 @@ export interface GeneralAttachmentSettings {
   max_files?: number;
   max_size?: number;
 }
-const GeneralAttachmentSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GeneralAttachmentSettings>;
-
 export interface GetGeneralRepositorySettingsRequest {}
-const GetGeneralRepositorySettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetGeneralRepositorySettingsRequest>;
-
 /** GeneralRepoSettings contains global repository settings exposed by API */
 export interface GeneralRepoSettings {
   forks_disabled?: boolean;
@@ -57,32 +37,15 @@ export interface GeneralRepoSettings {
   stars_disabled?: boolean;
   time_tracking_disabled?: boolean;
 }
-const GeneralRepoSettings = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GeneralRepoSettings>;
-
 export interface GetGeneralUISettingsRequest {}
-const GetGeneralUISettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetGeneralUISettingsRequest>;
-
 export type GeneralUISettingsAllowedReactionsList = Array<string>;
-const GeneralUISettingsAllowedReactionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GeneralUISettingsAllowedReactionsList>;
-
 export type GeneralUISettingsCustomEmojisList = Array<string>;
-const GeneralUISettingsCustomEmojisList =
-  GeneralUISettingsAllowedReactionsList as any as S.Schema<GeneralUISettingsCustomEmojisList>;
-
 /** GeneralUISettings contains global ui settings exposed by API */
 export interface GeneralUISettings {
   allowed_reactions?: GeneralUISettingsAllowedReactionsList;
   custom_emojis?: GeneralUISettingsCustomEmojisList;
   default_theme?: string;
 }
-const GeneralUISettings = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GeneralUISettings>;
-
 export type GetGeneralAPISettingsError = ForgejoOpError;
 /** Get instance's global settings for api */
 export const getGeneralAPISettings: API.OperationMethod<
@@ -91,8 +54,8 @@ export const getGeneralAPISettings: API.OperationMethod<
   GetGeneralAPISettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeneralAPISettingsRequest,
-  output: GeneralAPISettings,
+  input: __S(0, __c0, 0) as any as S.Schema<GetGeneralAPISettingsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GeneralAPISettings>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -106,8 +69,8 @@ export const getGeneralAttachmentSettings: API.OperationMethod<
   GetGeneralAttachmentSettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeneralAttachmentSettingsRequest,
-  output: GeneralAttachmentSettings,
+  input: __S(2, __c0, 2) as any as S.Schema<GetGeneralAttachmentSettingsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GeneralAttachmentSettings>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -121,8 +84,8 @@ export const getGeneralRepositorySettings: API.OperationMethod<
   GetGeneralRepositorySettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeneralRepositorySettingsRequest,
-  output: GeneralRepoSettings,
+  input: __S(4, __c0, 4) as any as S.Schema<GetGeneralRepositorySettingsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GeneralRepoSettings>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -136,8 +99,8 @@ export const getGeneralUISettings: API.OperationMethod<
   GetGeneralUISettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeneralUISettingsRequest,
-  output: GeneralUISettings,
+  input: __S(6, __c0, 6) as any as S.Schema<GetGeneralUISettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GeneralUISettings>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -211,10 +174,15 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowed_reactions: S.optional(GeneralUISettingsAllowedReactionsList),
-          custom_emojis: S.optional(GeneralUISettingsCustomEmojisList),
+          allowed_reactions: S.optional(__S(7, __c0, 7)),
+          custom_emojis: S.optional(__S(7, __c0, 7)),
           default_theme: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeneralUISettings" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

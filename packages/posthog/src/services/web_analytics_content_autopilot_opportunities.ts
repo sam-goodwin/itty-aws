@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,19 +16,10 @@ export interface GetWebAnalyticsContentAutopilotOpportunityRequest {
   /** A UUID string identifying this content autopilot opportunity. */
   id: string;
 }
-const GetWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetWebAnalyticsContentAutopilotOpportunityRequest>;
-
 /** * `ai_visibility_gap` - AI visibility gap */
 export type ContentAutopilotOpportunityKindEnum = "ai_visibility_gap";
-const ContentAutopilotOpportunityKindEnum = S.String;
-
 /** * `new_content` - New content * `page_improvement` - Page improvement */
 export type ContentAutopilotProposalProposalTypeEnum = "new_content" | "page_improvement";
-const ContentAutopilotProposalProposalTypeEnum = S.String;
-
 /** * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
 export type OpportunityKindEnum =
   | "poor_ctr"
@@ -34,8 +27,6 @@ export type OpportunityKindEnum =
   | "organic_decline"
   | "ai_visibility_gap"
   | "site_hygiene";
-const OpportunityKindEnum = S.String;
-
 export interface ContentAutopilotEvidence {
   /** Reason the opportunity was selected. * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
   opportunity_kind: OpportunityKindEnum;
@@ -46,50 +37,20 @@ export interface ContentAutopilotEvidence {
   /** Search query supported by this evidence. */
   query?: string;
 }
-const ContentAutopilotEvidence = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ContentAutopilotEvidence>;
-
 /** Why this opportunity was selected. */
 export type ContentAutopilotOpportunityEvidenceList = Array<ContentAutopilotEvidence>;
-const ContentAutopilotOpportunityEvidenceList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ContentAutopilotOpportunityEvidenceList>;
-
 /** Engines that answered the prompt. */
 export type ContentAutopilotCitationGapEnginesList = Array<string>;
-const ContentAutopilotCitationGapEnginesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ContentAutopilotCitationGapEnginesList>;
-
 /** Engines that never cited the site in the window. */
 export type ContentAutopilotCitationGapEnginesNotCitingList = Array<string>;
-const ContentAutopilotCitationGapEnginesNotCitingList =
-  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
-
 /** Other sites' pages the engines cited, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorUrlsList = Array<string>;
-const ContentAutopilotCitationGapCompetitorUrlsList =
-  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
-
 /** Domains the engines cited instead, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorDomainsList = Array<string>;
-const ContentAutopilotCitationGapCompetitorDomainsList =
-  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
-
 /** Web searches the engines ran while answering. */
 export type ContentAutopilotCitationGapEngineSearchQueriesList = Array<string>;
-const ContentAutopilotCitationGapEngineSearchQueriesList =
-  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
-
 /** Site pages the engines cited when they did cite the site. */
 export type ContentAutopilotCitationGapOurCitedUrlsList = Array<string>;
-const ContentAutopilotCitationGapOurCitedUrlsList =
-  ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
-
 export interface ContentAutopilotEngineAnswer {
   /** Answer engine that gave the answer. */
   engine: string;
@@ -98,18 +59,8 @@ export interface ContentAutopilotEngineAnswer {
   /** When the answer was recorded, in ISO 8601. */
   checked_at: string;
 }
-const ContentAutopilotEngineAnswer = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ContentAutopilotEngineAnswer>;
-
 /** Most recent answer per engine. */
 export type ContentAutopilotCitationGapLatestAnswersList = Array<ContentAutopilotEngineAnswer>;
-const ContentAutopilotCitationGapLatestAnswersList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ContentAutopilotCitationGapLatestAnswersList>;
-
 export interface ContentAutopilotCitationGap {
   /** Successful citation checks in the lookback window. */
   checks: number;
@@ -136,15 +87,8 @@ export interface ContentAutopilotCitationGap {
   /** When the prompt was last checked, in ISO 8601. */
   last_checked_at: string;
 }
-const ContentAutopilotCitationGap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ContentAutopilotCitationGap>;
-
 /** * `new` - New * `dismissed` - Dismissed * `queued` - Queued * `drafted` - Drafted */
 export type ContentAutopilotOpportunityStatusEnum = "new" | "dismissed" | "queued" | "drafted";
-const ContentAutopilotOpportunityStatusEnum = S.String;
-
 export interface ContentAutopilotOpportunity {
   id: string;
   /** Site profile this opportunity belongs to. */
@@ -174,11 +118,6 @@ export interface ContentAutopilotOpportunity {
   created_at: string;
   updated_at: string;
 }
-const ContentAutopilotOpportunity = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ContentAutopilotOpportunity>;
-
 export interface ListWebAnalyticsContentAutopilotOpportunitiesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -189,29 +128,14 @@ export interface ListWebAnalyticsContentAutopilotOpportunitiesRequest {
   /** Site profile to list opportunities for. */
   profile_id: string;
 }
-const ListWebAnalyticsContentAutopilotOpportunitiesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListWebAnalyticsContentAutopilotOpportunitiesRequest>;
-
 export type PaginatedContentAutopilotOpportunityListResultsList =
   Array<ContentAutopilotOpportunity>;
-const PaginatedContentAutopilotOpportunityListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PaginatedContentAutopilotOpportunityListResultsList>;
-
 export interface PaginatedContentAutopilotOpportunityList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedContentAutopilotOpportunityListResultsList;
 }
-const PaginatedContentAutopilotOpportunityList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PaginatedContentAutopilotOpportunityList>;
-
 export type GetWebAnalyticsContentAutopilotOpportunityError = PosthogOpError;
 export const getWebAnalyticsContentAutopilotOpportunity: API.OperationMethod<
   GetWebAnalyticsContentAutopilotOpportunityRequest,
@@ -219,8 +143,8 @@ export const getWebAnalyticsContentAutopilotOpportunity: API.OperationMethod<
   GetWebAnalyticsContentAutopilotOpportunityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebAnalyticsContentAutopilotOpportunityRequest,
-  output: ContentAutopilotOpportunity,
+  input: __S(0, __c0, 0) as any as S.Schema<GetWebAnalyticsContentAutopilotOpportunityRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ContentAutopilotOpportunity>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -233,8 +157,8 @@ export const listWebAnalyticsContentAutopilotOpportunities: API.OperationMethod<
   ListWebAnalyticsContentAutopilotOpportunitiesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebAnalyticsContentAutopilotOpportunitiesRequest,
-  output: PaginatedContentAutopilotOpportunityList,
+  input: __S(8, __c1, 0) as any as S.Schema<ListWebAnalyticsContentAutopilotOpportunitiesRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PaginatedContentAutopilotOpportunityList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -261,14 +185,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          opportunity_kind: OpportunityKindEnum,
+          opportunity_kind: S.String,
           explanation: S.String,
           page_url: S.optional(S.String),
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentAutopilotEvidence" });
     case 2:
-      return S.Array(ContentAutopilotEvidence);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.Array(S.String);
     case 4:
@@ -282,7 +206,7 @@ function __c0(j: number): any {
         identifier: "ContentAutopilotEngineAnswer",
       });
     case 5:
-      return S.Array(ContentAutopilotEngineAnswer);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -290,13 +214,13 @@ function __c0(j: number): any {
           cited_checks: S.Number,
           mentioned_checks: S.optional(S.Number),
           citation_rate: S.Number,
-          engines: ContentAutopilotCitationGapEnginesList,
-          engines_not_citing: ContentAutopilotCitationGapEnginesNotCitingList,
-          competitor_urls: ContentAutopilotCitationGapCompetitorUrlsList,
-          competitor_domains: ContentAutopilotCitationGapCompetitorDomainsList,
-          engine_search_queries: ContentAutopilotCitationGapEngineSearchQueriesList,
-          our_cited_urls: ContentAutopilotCitationGapOurCitedUrlsList,
-          latest_answers: ContentAutopilotCitationGapLatestAnswersList,
+          engines: __S(3, __c0, 3),
+          engines_not_citing: __S(3, __c0, 3),
+          competitor_urls: __S(3, __c0, 3),
+          competitor_domains: __S(3, __c0, 3),
+          engine_search_queries: __S(3, __c0, 3),
+          our_cited_urls: __S(3, __c0, 3),
+          latest_answers: __S(5, __c0, 5),
           last_checked_at: S.String,
         }),
       ).annotate({
@@ -309,14 +233,14 @@ function __c0(j: number): any {
           profile_id: S.String,
           run_id: S.NullOr(S.String),
           proposal_id: S.NullOr(S.String),
-          kind: ContentAutopilotOpportunityKindEnum,
+          kind: S.String,
           title: S.String,
           score: S.Number,
-          recommended_type: ContentAutopilotProposalProposalTypeEnum,
+          recommended_type: S.String,
           target_url: S.String,
-          evidence: ContentAutopilotOpportunityEvidenceList,
-          gap: ContentAutopilotCitationGap,
-          status: ContentAutopilotOpportunityStatusEnum,
+          evidence: __S(2, __c0, 2),
+          gap: __S(6, __c0, 6),
+          status: S.String,
           last_refreshed_at: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -346,17 +270,22 @@ function __c1(j: number): any {
         identifier: "ListWebAnalyticsContentAutopilotOpportunitiesRequest",
       });
     case 1:
-      return S.Array(ContentAutopilotOpportunity);
+      return S.Array(__S(7, __c0, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedContentAutopilotOpportunityListResultsList,
+          results: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "PaginatedContentAutopilotOpportunityList",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

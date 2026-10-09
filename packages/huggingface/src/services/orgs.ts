@@ -10,62 +10,35 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type ChangeMemberRoleRequestRole = "admin" | "write" | "contributor" | "read" | "no_access";
-const ChangeMemberRoleRequestRole = S.String;
-
 export type ChangeMemberRoleRequestResourceGroupsItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const ChangeMemberRoleRequestResourceGroupsItemRole = S.String;
-
 export interface ChangeMemberRoleRequestResourceGroupsItem {
   id: string;
   role: ChangeMemberRoleRequestResourceGroupsItemRole | (string & {});
 }
-const ChangeMemberRoleRequestResourceGroupsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ChangeMemberRoleRequestResourceGroupsItem>;
-
 export type ChangeMemberRoleRequestResourceGroupsList =
   Array<ChangeMemberRoleRequestResourceGroupsItem>;
-const ChangeMemberRoleRequestResourceGroupsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ChangeMemberRoleRequestResourceGroupsList>;
-
 export interface ChangeMemberRoleRequest {
   name: string;
   username: string;
   role: ChangeMemberRoleRequestRole | (string & {});
   resourceGroups?: ChangeMemberRoleRequestResourceGroupsList;
 }
-const ChangeMemberRoleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ChangeMemberRoleRequest>;
-
 export interface ChangeMemberRoleResponse {}
-const ChangeMemberRoleResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ChangeMemberRoleResponse>;
-
 export interface ExportAuditLogRequest {
   name: string;
   q?: string;
 }
-const ExportAuditLogRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ExportAuditLogRequest>;
-
 export type ExportAuditLogResponseBodyItemType =
   | "billing.update_payment_method"
   | "billing.create_customer"
@@ -185,21 +158,12 @@ export type ExportAuditLogResponseBodyItemType =
   | "org.service_account.token.rotate"
   | "org.service_account.token.update"
   | "oauth.token";
-const ExportAuditLogResponseBodyItemType = S.String;
-
 export interface ExportAuditLogResponseBodyItemLocation {
   formatted: string;
   country?: string;
   city?: string;
 }
-const ExportAuditLogResponseBodyItemLocation = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ExportAuditLogResponseBodyItemLocation>;
-
 export type ExportAuditLogResponseBodyItemAuthorType = "user" | "system";
-const ExportAuditLogResponseBodyItemAuthorType = S.String;
-
 export interface ExportAuditLogResponseBodyItemAuthor {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -208,14 +172,7 @@ export interface ExportAuditLogResponseBodyItemAuthor {
   type: ExportAuditLogResponseBodyItemAuthorType;
   deleted?: boolean;
 }
-const ExportAuditLogResponseBodyItemAuthor = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ExportAuditLogResponseBodyItemAuthor>;
-
 export type ExportAuditLogResponseBodyItemTokenRole = "read" | "write" | "fineGrained";
-const ExportAuditLogResponseBodyItemTokenRole = S.String;
-
 export interface ExportAuditLogResponseBodyItemToken {
   type: string;
   id: string;
@@ -223,20 +180,10 @@ export interface ExportAuditLogResponseBodyItemToken {
   last4?: string;
   deleted: boolean;
 }
-const ExportAuditLogResponseBodyItemToken = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ExportAuditLogResponseBodyItemToken>;
-
 export interface ExportAuditLogResponseBodyItemOauth {
   clientId: string;
   name?: string;
 }
-const ExportAuditLogResponseBodyItemOauth = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ExportAuditLogResponseBodyItemOauth>;
-
 export interface ExportAuditLogResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -251,48 +198,19 @@ export interface ExportAuditLogResponseBodyItem {
   token?: ExportAuditLogResponseBodyItemToken;
   oauth?: ExportAuditLogResponseBodyItemOauth;
 }
-const ExportAuditLogResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ExportAuditLogResponseBodyItem>;
-
 export type ExportAuditLogResponseBodyList = Array<ExportAuditLogResponseBodyItem>;
-const ExportAuditLogResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ExportAuditLogResponseBodyList>;
-
 export type ExportAuditLogResponse = ExportAuditLogResponseBodyList;
-const ExportAuditLogResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ExportAuditLogResponse>;
-
 export interface GetAvatarRequest {
   name: string;
   redirect?: string;
 }
-const GetAvatarRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetAvatarRequest>;
-
 export interface GetAvatarResponse {
   avatarUrl: string;
 }
-const GetAvatarResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetAvatarResponse>;
-
 export interface GetNetworkSecuritySettingsRequest {
   name: string;
 }
-const GetNetworkSecuritySettingsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetNetworkSecuritySettingsRequest>;
-
 export type GetNetworkSecuritySettingsResponseIpRangesList = Array<string>;
-const GetNetworkSecuritySettingsResponseIpRangesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetNetworkSecuritySettingsResponseIpRangesList>;
-
 export type GetNetworkSecuritySettingsResponseBlockedContentsItemResourceCase0 =
   | "dataset"
   | "model"
@@ -303,25 +221,12 @@ export type GetNetworkSecuritySettingsResponseBlockedContentsItemResourceCase0 =
 export type GetNetworkSecuritySettingsResponseBlockedContentsItemResource =
   | GetNetworkSecuritySettingsResponseBlockedContentsItemResourceCase0
   | string;
-const GetNetworkSecuritySettingsResponseBlockedContentsItemResource =
-  S.Unknown as any as S.Schema<GetNetworkSecuritySettingsResponseBlockedContentsItemResource>;
-
 export interface GetNetworkSecuritySettingsResponseBlockedContentsItem {
   resource: GetNetworkSecuritySettingsResponseBlockedContentsItemResource;
   scope: string;
 }
-const GetNetworkSecuritySettingsResponseBlockedContentsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetNetworkSecuritySettingsResponseBlockedContentsItem>;
-
 export type GetNetworkSecuritySettingsResponseBlockedContentsList =
   Array<GetNetworkSecuritySettingsResponseBlockedContentsItem>;
-const GetNetworkSecuritySettingsResponseBlockedContentsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetNetworkSecuritySettingsResponseBlockedContentsList>;
-
 export type GetNetworkSecuritySettingsResponseAllowedContentsItemResourceCase0 =
   | "dataset"
   | "model"
@@ -332,25 +237,12 @@ export type GetNetworkSecuritySettingsResponseAllowedContentsItemResourceCase0 =
 export type GetNetworkSecuritySettingsResponseAllowedContentsItemResource =
   | GetNetworkSecuritySettingsResponseAllowedContentsItemResourceCase0
   | string;
-const GetNetworkSecuritySettingsResponseAllowedContentsItemResource =
-  S.Unknown as any as S.Schema<GetNetworkSecuritySettingsResponseAllowedContentsItemResource>;
-
 export interface GetNetworkSecuritySettingsResponseAllowedContentsItem {
   resource: GetNetworkSecuritySettingsResponseAllowedContentsItemResource;
   scope: string;
 }
-const GetNetworkSecuritySettingsResponseAllowedContentsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetNetworkSecuritySettingsResponseAllowedContentsItem>;
-
 export type GetNetworkSecuritySettingsResponseAllowedContentsList =
   Array<GetNetworkSecuritySettingsResponseAllowedContentsItem>;
-const GetNetworkSecuritySettingsResponseAllowedContentsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetNetworkSecuritySettingsResponseAllowedContentsList>;
-
 export interface GetNetworkSecuritySettingsResponse {
   enforceAuth: boolean;
   /** Whether the declared ipRanges match the admin-validated CIDR ranges */
@@ -362,11 +254,6 @@ export interface GetNetworkSecuritySettingsResponse {
   allowedContents: GetNetworkSecuritySettingsResponseAllowedContentsList;
   keepReposMetadataVisible: boolean;
 }
-const GetNetworkSecuritySettingsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetNetworkSecuritySettingsResponse>;
-
 export interface GetOrganizationMembersRequest {
   name: string;
   search?: string;
@@ -374,45 +261,26 @@ export interface GetOrganizationMembersRequest {
   cursor?: string;
   limit?: number;
 }
-const GetOrganizationMembersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetOrganizationMembersRequest>;
-
 export type GetOrganizationMembersResponseBodyItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const GetOrganizationMembersResponseBodyItemRole = S.String;
-
 export type GetOrganizationMembersResponseBodyItemResourceGroupsItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const GetOrganizationMembersResponseBodyItemResourceGroupsItemRole = S.String;
-
 export interface GetOrganizationMembersResponseBodyItemResourceGroupsItem {
   name: string;
   id: string;
   numUsers: number;
   role: GetOrganizationMembersResponseBodyItemResourceGroupsItemRole;
 }
-const GetOrganizationMembersResponseBodyItemResourceGroupsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetOrganizationMembersResponseBodyItemResourceGroupsItem>;
-
 export type GetOrganizationMembersResponseBodyItemResourceGroupsList =
   Array<GetOrganizationMembersResponseBodyItemResourceGroupsItem>;
-const GetOrganizationMembersResponseBodyItemResourceGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetOrganizationMembersResponseBodyItemResourceGroupsList>;
-
 export interface GetOrganizationMembersResponseBodyItem {
   avatarUrl: string;
   fullname: string;
@@ -429,71 +297,31 @@ export interface GetOrganizationMembersResponseBodyItem {
   verifiedEmail?: string | null;
   isExternalCollaborator?: boolean;
 }
-const GetOrganizationMembersResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetOrganizationMembersResponseBodyItem>;
-
 export type GetOrganizationMembersResponseBodyList = Array<GetOrganizationMembersResponseBodyItem>;
-const GetOrganizationMembersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetOrganizationMembersResponseBodyList>;
-
 export type GetOrganizationMembersResponse = GetOrganizationMembersResponseBodyList;
-const GetOrganizationMembersResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetOrganizationMembersResponse>;
-
 export interface GetOrgUsageV2Request {
   name: string;
   startDate: number;
   endDate: number;
 }
-const GetOrgUsageV2Request = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetOrgUsageV2Request>;
-
 export interface GetOrgUsageV2Response {}
-const GetOrgUsageV2Response = ChangeMemberRoleResponse as any as S.Schema<GetOrgUsageV2Response>;
-
 export interface GetResourceGroupUsageRequest {
   name: string;
   startDate?: string;
   endDate?: string;
 }
-const GetResourceGroupUsageRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetResourceGroupUsageRequest>;
-
 export interface GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemStorage {
   privateGB: number;
   publicGB: number;
 }
-const GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemStorage = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemStorage>;
-
 export interface GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemInference {
   requestCount: number;
   costCents: number;
 }
-const GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemInference = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemInference>;
-
 export interface GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces {
   uptimeSec: number;
   costCents: number;
 }
-const GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    7,
-  ) as any as S.Schema<GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces>;
-
 export type GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeEndpoints =
   GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces;
 export type GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeJobs =
@@ -503,11 +331,6 @@ export interface GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompu
   endpoints: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces;
   jobs: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces;
 }
-const GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompute = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompute>;
-
 export interface GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem {
   id: string | null;
   name: string | null;
@@ -515,138 +338,61 @@ export interface GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem {
   inference: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemInference;
   compute: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompute;
 }
-const GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem>;
-
 export type GetResourceGroupUsageResponsePeriodsItemResourceGroupsList =
   Array<GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem>;
-const GetResourceGroupUsageResponsePeriodsItemResourceGroupsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetResourceGroupUsageResponsePeriodsItemResourceGroupsList>;
-
 export interface GetResourceGroupUsageResponsePeriodsItem {
   period: string;
   resourceGroups: GetResourceGroupUsageResponsePeriodsItemResourceGroupsList;
 }
-const GetResourceGroupUsageResponsePeriodsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetResourceGroupUsageResponsePeriodsItem>;
-
 export type GetResourceGroupUsageResponsePeriodsList =
   Array<GetResourceGroupUsageResponsePeriodsItem>;
-const GetResourceGroupUsageResponsePeriodsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetResourceGroupUsageResponsePeriodsList>;
-
 export interface GetResourceGroupUsageResponse {
   currency: string;
   periods: GetResourceGroupUsageResponsePeriodsList;
 }
-const GetResourceGroupUsageResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetResourceGroupUsageResponse>;
-
 export interface GetSessionInferenceUsageRequest {
   name: string;
   startDate?: string;
   endDate?: string;
 }
-const GetSessionInferenceUsageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetSessionInferenceUsageRequest>;
-
 export interface GetSessionInferenceUsageResponsePeriodsItemSessionsItem {
   id: string;
   requestCount: number;
   costCents: number;
 }
-const GetSessionInferenceUsageResponsePeriodsItemSessionsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsItemSessionsItem>;
-
 export type GetSessionInferenceUsageResponsePeriodsItemSessionsList =
   Array<GetSessionInferenceUsageResponsePeriodsItemSessionsItem>;
-const GetSessionInferenceUsageResponsePeriodsItemSessionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsItemSessionsList>;
-
 export interface GetSessionInferenceUsageResponsePeriodsItem {
   period: string;
   sessions: GetSessionInferenceUsageResponsePeriodsItemSessionsList;
 }
-const GetSessionInferenceUsageResponsePeriodsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsItem>;
-
 export type GetSessionInferenceUsageResponsePeriodsList =
   Array<GetSessionInferenceUsageResponsePeriodsItem>;
-const GetSessionInferenceUsageResponsePeriodsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsList>;
-
 export interface GetSessionInferenceUsageResponse {
   currency: string;
   periods: GetSessionInferenceUsageResponsePeriodsList;
 }
-const GetSessionInferenceUsageResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetSessionInferenceUsageResponse>;
-
 export interface GetSocialHandlesRequest {
   name: string;
 }
-const GetSocialHandlesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetSocialHandlesRequest>;
-
 export interface GetSocialHandlesResponseSocialHandles {
   twitter?: string;
   github?: string;
   linkedin?: string;
 }
-const GetSocialHandlesResponseSocialHandles = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetSocialHandlesResponseSocialHandles>;
-
 export interface GetSocialHandlesResponse {
   _id: string;
   org: string;
   socialHandles: GetSocialHandlesResponseSocialHandles;
 }
-const GetSocialHandlesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetSocialHandlesResponse>;
-
 export interface ListMemberAccessTokensRequest {
   name: string;
   cursor?: string;
   limit?: number;
   q?: string;
 }
-const ListMemberAccessTokensRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListMemberAccessTokensRequest>;
-
 /** Kind of access the token carries. `read` and `write` reach everything their owner can reach, while `fineGrained` is limited to the permissions listed under `fineGrained` */
 export type ListMemberAccessTokensResponseBodyItemRole = "read" | "write" | "fineGrained";
-const ListMemberAccessTokensResponseBodyItemRole = S.String;
-
 /** Organization member the token belongs to */
 export interface ListMemberAccessTokensResponseBodyItemOwner {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -656,30 +402,18 @@ export interface ListMemberAccessTokensResponseBodyItemOwner {
   fullname: string;
   avatarUrl: string;
 }
-const ListMemberAccessTokensResponseBodyItemOwner = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItemOwner>;
-
 /** `pending` while the token awaits an administrator's decision, `approved` once it may act on the organization, `denied` if an administrator refused it, and `revoked` if an administrator withdrew access it had already been granted */
 export type ListMemberAccessTokensResponseBodyItemAuthorizationStatus =
   | "pending"
   | "approved"
   | "revoked"
   | "denied";
-const ListMemberAccessTokensResponseBodyItemAuthorizationStatus = S.String;
-
 /** User who granted the token its access. Absent when `authorizedAt` is, and when that account has since been deleted */
 export interface ListMemberAccessTokensResponseBodyItemAuthorizationAuthorizer {
   name: string;
   fullname: string;
   avatarUrl: string;
 }
-const ListMemberAccessTokensResponseBodyItemAuthorizationAuthorizer = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItemAuthorizationAuthorizer>;
-
 /** Where the token stands in the organization's approval flow. Reported by organizations that require administrator approval of member tokens, and on any token whose access has been revoked */
 export interface ListMemberAccessTokensResponseBodyItemAuthorization {
   /** `pending` while the token awaits an administrator's decision, `approved` once it may act on the organization, `denied` if an administrator refused it, and `revoked` if an administrator withdrew access it had already been granted */
@@ -691,11 +425,6 @@ export interface ListMemberAccessTokensResponseBodyItemAuthorization {
   /** User who granted the token its access. Absent when `authorizedAt` is, and when that account has since been deleted */
   authorizer?: ListMemberAccessTokensResponseBodyItemAuthorizationAuthorizer;
 }
-const ListMemberAccessTokensResponseBodyItemAuthorization = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItemAuthorization>;
-
 export type ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntityType =
   | "dataset"
   | "model"
@@ -708,19 +437,12 @@ export type ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntityTyp
   | "user"
   | "resource-group"
   | "oauth-app";
-const ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntityType = S.String;
-
 /** Entity the permissions apply to the organization itself, or one of its repositories */
 export interface ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
   type: ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntityType;
 }
-const ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity>;
-
 export type ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsItem =
   | "repo.read"
   | "repo.content.read"
@@ -804,46 +526,23 @@ export type ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissio
   | "sql-console.embed.write"
   | "job.read"
   | "job.write";
-const ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsItem = S.String;
-
 /** Permissions the token holds on the entity */
 export type ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsList =
   Array<ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsItem>;
-const ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsList =
-  /*@__PURE__*/ __L.at(
-    __c6,
-    4,
-  ) as any as S.Schema<ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsList>;
-
 export interface ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem {
   /** Entity the permissions apply to the organization itself, or one of its repositories */
   entity: ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity;
   /** Permissions the token holds on the entity */
   permissions: ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsList;
 }
-const ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem>;
-
 /** Permissions the token holds on individual entities, limited to the organization and the repositories it owns. Scopes pointing elsewhere are omitted */
 export type ListMemberAccessTokensResponseBodyItemFineGrainedScopedList =
   Array<ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem>;
-const ListMemberAccessTokensResponseBodyItemFineGrainedScopedList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItemFineGrainedScopedList>;
-
 /** Permissions carried by a `fineGrained` token, narrowed to those that bear on the organization. Absent on `read` and `write` tokens, whose access is not expressed as a permission list, and never covering the account-wide permissions the token may hold elsewhere */
 export interface ListMemberAccessTokensResponseBodyItemFineGrained {
   /** Permissions the token holds on individual entities, limited to the organization and the repositories it owns. Scopes pointing elsewhere are omitted */
   scoped: ListMemberAccessTokensResponseBodyItemFineGrainedScopedList;
 }
-const ListMemberAccessTokensResponseBodyItemFineGrained = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItemFineGrained>;
-
 export interface ListMemberAccessTokensResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -864,23 +563,8 @@ export interface ListMemberAccessTokensResponseBodyItem {
   /** Permissions carried by a `fineGrained` token, narrowed to those that bear on the organization. Absent on `read` and `write` tokens, whose access is not expressed as a permission list, and never covering the account-wide permissions the token may hold elsewhere */
   fineGrained?: ListMemberAccessTokensResponseBodyItemFineGrained;
 }
-const ListMemberAccessTokensResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyItem>;
-
 export type ListMemberAccessTokensResponseBodyList = Array<ListMemberAccessTokensResponseBodyItem>;
-const ListMemberAccessTokensResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListMemberAccessTokensResponseBodyList>;
-
 export type ListMemberAccessTokensResponse = ListMemberAccessTokensResponseBodyList;
-const ListMemberAccessTokensResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListMemberAccessTokensResponse>;
-
 /** Filter by repository type */
 export type ListOrganizationRepositoriesRequestType =
   | "dataset"
@@ -889,16 +573,10 @@ export type ListOrganizationRepositoriesRequestType =
   | "bucket"
   | "kernel"
   | "container";
-const ListOrganizationRepositoriesRequestType = S.String;
-
 /** Sort field (default: storage) */
 export type ListOrganizationRepositoriesRequestSort = "storage" | "updatedAt";
-const ListOrganizationRepositoriesRequestSort = S.String;
-
 /** Sort direction (default: desc) */
 export type ListOrganizationRepositoriesRequestDirection = "asc" | "desc";
-const ListOrganizationRepositoriesRequestDirection = S.String;
-
 export interface ListOrganizationRepositoriesRequest {
   name: string;
   search?: string;
@@ -907,11 +585,6 @@ export interface ListOrganizationRepositoriesRequest {
   sort?: ListOrganizationRepositoriesRequestSort | (string & {});
   direction?: ListOrganizationRepositoriesRequestDirection | (string & {});
 }
-const ListOrganizationRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListOrganizationRepositoriesRequest>;
-
 export type ListOrganizationRepositoriesResponseBodyItemType =
   | "dataset"
   | "model"
@@ -919,14 +592,10 @@ export type ListOrganizationRepositoriesResponseBodyItemType =
   | "bucket"
   | "kernel"
   | "container";
-const ListOrganizationRepositoriesResponseBodyItemType = S.String;
-
 export type ListOrganizationRepositoriesResponseBodyItemVisibility =
   | "public"
   | "private"
   | "protected";
-const ListOrganizationRepositoriesResponseBodyItemVisibility = S.String;
-
 export interface ListOrganizationRepositoriesResponseBodyItem {
   id: string;
   type: ListOrganizationRepositoriesResponseBodyItemType;
@@ -935,37 +604,14 @@ export interface ListOrganizationRepositoriesResponseBodyItem {
   storage: number;
   storagePercent: number;
 }
-const ListOrganizationRepositoriesResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListOrganizationRepositoriesResponseBodyItem>;
-
 export type ListOrganizationRepositoriesResponseBodyList =
   Array<ListOrganizationRepositoriesResponseBodyItem>;
-const ListOrganizationRepositoriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListOrganizationRepositoriesResponseBodyList>;
-
 export type ListOrganizationRepositoriesResponse = ListOrganizationRepositoriesResponseBodyList;
-const ListOrganizationRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListOrganizationRepositoriesResponse>;
-
 export interface RevokeMemberTokenRequest {
   name: string;
   tokenId: string;
 }
-const RevokeMemberTokenRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<RevokeMemberTokenRequest>;
-
 export interface RevokeMemberTokenResponse {}
-const RevokeMemberTokenResponse =
-  ChangeMemberRoleResponse as any as S.Schema<RevokeMemberTokenResponse>;
-
 /** OIDC client secret */
 export interface RotateSsoCredentialsRequestBodyCase0 {
   clientSecret: string | Redacted.Redacted<string>;
@@ -977,36 +623,16 @@ export interface RotateSsoCredentialsRequestBodyCase1 {
 export type RotateSsoCredentialsRequestBody =
   | RotateSsoCredentialsRequestBodyCase0
   | RotateSsoCredentialsRequestBodyCase1;
-const RotateSsoCredentialsRequestBody =
-  S.Unknown as any as S.Schema<RotateSsoCredentialsRequestBody>;
-
 export interface RotateSsoCredentialsRequest {
   name: string;
   body?: RotateSsoCredentialsRequestBody;
 }
-const RotateSsoCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<RotateSsoCredentialsRequest>;
-
 export type RotateSsoCredentialsResponse = unknown;
-const RotateSsoCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RotateSsoCredentialsResponse>;
-
 export interface StreamUsageRequest {
   name: string;
 }
-const StreamUsageRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<StreamUsageRequest>;
-
 export interface StreamUsageResponse {}
-const StreamUsageResponse = ChangeMemberRoleResponse as any as S.Schema<StreamUsageResponse>;
-
 export type UpdateNetworkSecurityRequestIpRangesList = Array<string>;
-const UpdateNetworkSecurityRequestIpRangesList =
-  GetNetworkSecuritySettingsResponseIpRangesList as any as S.Schema<UpdateNetworkSecurityRequestIpRangesList>;
-
 export type UpdateNetworkSecurityRequestBlockedContentsItemResourceCase0 =
   | "dataset"
   | "model"
@@ -1017,25 +643,12 @@ export type UpdateNetworkSecurityRequestBlockedContentsItemResourceCase0 =
 export type UpdateNetworkSecurityRequestBlockedContentsItemResource =
   | UpdateNetworkSecurityRequestBlockedContentsItemResourceCase0
   | string;
-const UpdateNetworkSecurityRequestBlockedContentsItemResource =
-  S.Unknown as any as S.Schema<UpdateNetworkSecurityRequestBlockedContentsItemResource>;
-
 export interface UpdateNetworkSecurityRequestBlockedContentsItem {
   resource: UpdateNetworkSecurityRequestBlockedContentsItemResource;
   scope: string;
 }
-const UpdateNetworkSecurityRequestBlockedContentsItem = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<UpdateNetworkSecurityRequestBlockedContentsItem>;
-
 export type UpdateNetworkSecurityRequestBlockedContentsList =
   Array<UpdateNetworkSecurityRequestBlockedContentsItem>;
-const UpdateNetworkSecurityRequestBlockedContentsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<UpdateNetworkSecurityRequestBlockedContentsList>;
-
 export type UpdateNetworkSecurityRequestAllowedContentsItemResourceCase0 =
   | "dataset"
   | "model"
@@ -1046,25 +659,12 @@ export type UpdateNetworkSecurityRequestAllowedContentsItemResourceCase0 =
 export type UpdateNetworkSecurityRequestAllowedContentsItemResource =
   | UpdateNetworkSecurityRequestAllowedContentsItemResourceCase0
   | string;
-const UpdateNetworkSecurityRequestAllowedContentsItemResource =
-  S.Unknown as any as S.Schema<UpdateNetworkSecurityRequestAllowedContentsItemResource>;
-
 export interface UpdateNetworkSecurityRequestAllowedContentsItem {
   resource: UpdateNetworkSecurityRequestAllowedContentsItemResource;
   scope: string;
 }
-const UpdateNetworkSecurityRequestAllowedContentsItem = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<UpdateNetworkSecurityRequestAllowedContentsItem>;
-
 export type UpdateNetworkSecurityRequestAllowedContentsList =
   Array<UpdateNetworkSecurityRequestAllowedContentsItem>;
-const UpdateNetworkSecurityRequestAllowedContentsList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UpdateNetworkSecurityRequestAllowedContentsList>;
-
 export interface UpdateNetworkSecurityRequest {
   name: string;
   enforceAuth?: boolean;
@@ -1075,19 +675,8 @@ export interface UpdateNetworkSecurityRequest {
   allowedContents?: UpdateNetworkSecurityRequestAllowedContentsList;
   keepReposMetadataVisible?: boolean;
 }
-const UpdateNetworkSecurityRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UpdateNetworkSecurityRequest>;
-
 export type UpdateNetworkSecurityResponseEnforceAuth = boolean | string;
-const UpdateNetworkSecurityResponseEnforceAuth =
-  S.Unknown as any as S.Schema<UpdateNetworkSecurityResponseEnforceAuth>;
-
 export type UpdateNetworkSecurityResponseIpRangesList = Array<string>;
-const UpdateNetworkSecurityResponseIpRangesList =
-  GetNetworkSecuritySettingsResponseIpRangesList as any as S.Schema<UpdateNetworkSecurityResponseIpRangesList>;
-
 export type UpdateNetworkSecurityResponseBlockedContentsItemResourceCase0 =
   | "dataset"
   | "model"
@@ -1098,25 +687,12 @@ export type UpdateNetworkSecurityResponseBlockedContentsItemResourceCase0 =
 export type UpdateNetworkSecurityResponseBlockedContentsItemResource =
   | UpdateNetworkSecurityResponseBlockedContentsItemResourceCase0
   | string;
-const UpdateNetworkSecurityResponseBlockedContentsItemResource =
-  S.Unknown as any as S.Schema<UpdateNetworkSecurityResponseBlockedContentsItemResource>;
-
 export interface UpdateNetworkSecurityResponseBlockedContentsItem {
   resource: UpdateNetworkSecurityResponseBlockedContentsItemResource;
   scope: string;
 }
-const UpdateNetworkSecurityResponseBlockedContentsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UpdateNetworkSecurityResponseBlockedContentsItem>;
-
 export type UpdateNetworkSecurityResponseBlockedContentsList =
   Array<UpdateNetworkSecurityResponseBlockedContentsItem>;
-const UpdateNetworkSecurityResponseBlockedContentsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateNetworkSecurityResponseBlockedContentsList>;
-
 export type UpdateNetworkSecurityResponseAllowedContentsItemResourceCase0 =
   | "dataset"
   | "model"
@@ -1127,25 +703,12 @@ export type UpdateNetworkSecurityResponseAllowedContentsItemResourceCase0 =
 export type UpdateNetworkSecurityResponseAllowedContentsItemResource =
   | UpdateNetworkSecurityResponseAllowedContentsItemResourceCase0
   | string;
-const UpdateNetworkSecurityResponseAllowedContentsItemResource =
-  S.Unknown as any as S.Schema<UpdateNetworkSecurityResponseAllowedContentsItemResource>;
-
 export interface UpdateNetworkSecurityResponseAllowedContentsItem {
   resource: UpdateNetworkSecurityResponseAllowedContentsItemResource;
   scope: string;
 }
-const UpdateNetworkSecurityResponseAllowedContentsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateNetworkSecurityResponseAllowedContentsItem>;
-
 export type UpdateNetworkSecurityResponseAllowedContentsList =
   Array<UpdateNetworkSecurityResponseAllowedContentsItem>;
-const UpdateNetworkSecurityResponseAllowedContentsList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UpdateNetworkSecurityResponseAllowedContentsList>;
-
 export interface UpdateNetworkSecurityResponse {
   enforceAuth: UpdateNetworkSecurityResponseEnforceAuth;
   enforceIpRestriction: boolean;
@@ -1157,11 +720,6 @@ export interface UpdateNetworkSecurityResponse {
   /** Whether the declared ipRanges match the admin-validated CIDR ranges */
   areCidrRangesApproved: boolean;
 }
-const UpdateNetworkSecurityResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<UpdateNetworkSecurityResponse>;
-
 export type ChangeMemberRoleError = HuggingFaceOpError;
 /** Change member role Change the role of a member in the organization. Need a paid plan. */
 export const changeMemberRole: API.OperationMethod<
@@ -1170,8 +728,8 @@ export const changeMemberRole: API.OperationMethod<
   ChangeMemberRoleError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeMemberRoleRequest,
-  output: ChangeMemberRoleResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ChangeMemberRoleRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ChangeMemberRoleResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1185,8 +743,8 @@ export const exportAuditLog: API.OperationMethod<
   ExportAuditLogError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportAuditLogRequest,
-  output: ExportAuditLogResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<ExportAuditLogRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ExportAuditLogResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1200,8 +758,8 @@ export const getAvatar: API.OperationMethod<
   GetAvatarError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAvatarRequest,
-  output: GetAvatarResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetAvatarRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetAvatarResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1215,8 +773,8 @@ export const getNetworkSecuritySettings: API.OperationMethod<
   GetNetworkSecuritySettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkSecuritySettingsRequest,
-  output: GetNetworkSecuritySettingsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetNetworkSecuritySettingsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetNetworkSecuritySettingsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1230,8 +788,8 @@ export const getOrganizationMembers: API.OperationMethod<
   GetOrganizationMembersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationMembersRequest,
-  output: GetOrganizationMembersResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<GetOrganizationMembersRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetOrganizationMembersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1245,8 +803,8 @@ export const getOrgUsageV2: API.OperationMethod<
   GetOrgUsageV2Error,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgUsageV2Request,
-  output: GetOrgUsageV2Response,
+  input: __S(27, __c3, 3) as any as S.Schema<GetOrgUsageV2Request>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetOrgUsageV2Response>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1260,8 +818,8 @@ export const getResourceGroupUsage: API.OperationMethod<
   GetResourceGroupUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceGroupUsageRequest,
-  output: GetResourceGroupUsageResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<GetResourceGroupUsageRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<GetResourceGroupUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1275,8 +833,8 @@ export const getSessionInferenceUsage: API.OperationMethod<
   GetSessionInferenceUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionInferenceUsageRequest,
-  output: GetSessionInferenceUsageResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<GetSessionInferenceUsageRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetSessionInferenceUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1290,8 +848,8 @@ export const getSocialHandles: API.OperationMethod<
   GetSocialHandlesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSocialHandlesRequest,
-  output: GetSocialHandlesResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetSocialHandlesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<GetSocialHandlesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1305,8 +863,8 @@ export const listMemberAccessTokens: API.OperationMethod<
   ListMemberAccessTokensError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMemberAccessTokensRequest,
-  output: ListMemberAccessTokensResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<ListMemberAccessTokensRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ListMemberAccessTokensResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1320,8 +878,8 @@ export const listOrganizationRepositories: API.OperationMethod<
   ListOrganizationRepositoriesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationRepositoriesRequest,
-  output: ListOrganizationRepositoriesResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<ListOrganizationRepositoriesRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<ListOrganizationRepositoriesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1335,8 +893,8 @@ export const revokeMemberToken: API.OperationMethod<
   RevokeMemberTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeMemberTokenRequest,
-  output: RevokeMemberTokenResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<RevokeMemberTokenRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<RevokeMemberTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1350,8 +908,8 @@ export const rotateSsoCredentials: API.OperationMethod<
   RotateSsoCredentialsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateSsoCredentialsRequest,
-  output: RotateSsoCredentialsResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<RotateSsoCredentialsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<RotateSsoCredentialsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1365,8 +923,8 @@ export const streamUsage: API.OperationMethod<
   StreamUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamUsageRequest,
-  output: StreamUsageResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<StreamUsageRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<StreamUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1380,8 +938,8 @@ export const updateNetworkSecurity: API.OperationMethod<
   UpdateNetworkSecurityError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkSecurityRequest,
-  output: UpdateNetworkSecurityResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<UpdateNetworkSecurityRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<UpdateNetworkSecurityResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1394,20 +952,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          role: ChangeMemberRoleRequestResourceGroupsItemRole,
+          role: S.String,
         }),
       ).annotate({
         identifier: "ChangeMemberRoleRequestResourceGroupsItem",
       });
     case 1:
-      return S.Array(ChangeMemberRoleRequestResourceGroupsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           username: S.String.pipe(T.Label()),
-          role: ChangeMemberRoleRequestRole,
-          resourceGroups: S.optional(ChangeMemberRoleRequestResourceGroupsList),
+          role: S.String,
+          resourceGroups: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1445,7 +1003,7 @@ function __c0(j: number): any {
           _id: S.String,
           user: S.String,
           avatarUrl: S.String,
-          type: ExportAuditLogResponseBodyItemAuthorType,
+          type: S.String,
           deleted: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1456,7 +1014,7 @@ function __c0(j: number): any {
         S.Struct({
           type: S.String,
           id: S.String,
-          role: S.optional(ExportAuditLogResponseBodyItemTokenRole),
+          role: S.optional(S.String),
           last4: S.optional(S.String),
           deleted: S.Boolean,
         }),
@@ -1481,23 +1039,23 @@ function __c1(j: number): any {
         S.Struct({
           _id: S.String,
           createdAt: S.String,
-          type: ExportAuditLogResponseBodyItemType,
+          type: S.String,
           data: S.optional(S.Unknown),
           message: S.String,
           ip: S.optional(S.String),
-          location: S.optional(ExportAuditLogResponseBodyItemLocation),
+          location: S.optional(__S(5, __c0, 5)),
           userAgent: S.optional(S.String),
-          author: ExportAuditLogResponseBodyItemAuthor,
-          token: S.optional(ExportAuditLogResponseBodyItemToken),
-          oauth: S.optional(ExportAuditLogResponseBodyItemOauth),
+          author: __S(6, __c0, 6),
+          token: S.optional(__S(7, __c0, 7)),
+          oauth: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ExportAuditLogResponseBodyItem",
       });
     case 2:
-      return S.Array(ExportAuditLogResponseBodyItem);
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.suspend(() => ExportAuditLogResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ExportAuditLogResponse",
       });
     case 4:
@@ -1536,25 +1094,25 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: GetNetworkSecuritySettingsResponseBlockedContentsItemResource,
+          resource: S.Unknown,
           scope: S.String,
         }),
       ).annotate({
         identifier: "GetNetworkSecuritySettingsResponseBlockedContentsItem",
       });
     case 1:
-      return S.Array(GetNetworkSecuritySettingsResponseBlockedContentsItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resource: GetNetworkSecuritySettingsResponseAllowedContentsItemResource,
+          resource: S.Unknown,
           scope: S.String,
         }),
       ).annotate({
         identifier: "GetNetworkSecuritySettingsResponseAllowedContentsItem",
       });
     case 3:
-      return S.Array(GetNetworkSecuritySettingsResponseAllowedContentsItem);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1562,9 +1120,9 @@ function __c2(j: number): any {
           areCidrRangesApproved: S.Boolean,
           enforceIpRestriction: S.Boolean,
           highRateLimits: S.Boolean,
-          ipRanges: GetNetworkSecuritySettingsResponseIpRangesList,
-          blockedContents: GetNetworkSecuritySettingsResponseBlockedContentsList,
-          allowedContents: GetNetworkSecuritySettingsResponseAllowedContentsList,
+          ipRanges: __S(15, __c1, 7),
+          blockedContents: __S(17, __c2, 1),
+          allowedContents: __S(19, __c2, 3),
           keepReposMetadataVisible: S.Boolean,
         }),
       ).annotate({
@@ -1588,13 +1146,13 @@ function __c2(j: number): any {
           name: S.String,
           id: S.String,
           numUsers: S.Number,
-          role: GetOrganizationMembersResponseBodyItemResourceGroupsItemRole,
+          role: S.String,
         }),
       ).annotate({
         identifier: "GetOrganizationMembersResponseBodyItemResourceGroupsItem",
       });
     case 7:
-      return S.Array(GetOrganizationMembersResponseBodyItemResourceGroupsItem);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1609,8 +1167,8 @@ function __c3(j: number): any {
           type: S.String,
           isFollowing: S.optional(S.Boolean),
           _id: S.String,
-          role: S.optional(GetOrganizationMembersResponseBodyItemRole),
-          resourceGroups: S.optional(GetOrganizationMembersResponseBodyItemResourceGroupsList),
+          role: S.optional(S.String),
+          resourceGroups: S.optional(__S(23, __c2, 7)),
           twoFaEnabled: S.optional(S.Boolean),
           verifiedEmail: S.optional(S.NullOr(S.String)),
           isExternalCollaborator: S.optional(S.Boolean),
@@ -1619,11 +1177,9 @@ function __c3(j: number): any {
         identifier: "GetOrganizationMembersResponseBodyItem",
       });
     case 1:
-      return S.Array(GetOrganizationMembersResponseBodyItem);
+      return S.Array(__S(24, __c3, 0));
     case 2:
-      return S.suspend(() =>
-        GetOrganizationMembersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(25, __c3, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrganizationMembersResponse",
       });
     case 3:
@@ -1686,9 +1242,9 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          spaces: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces,
-          endpoints: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces,
-          jobs: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces,
+          spaces: __S(31, __c3, 7),
+          endpoints: __S(31, __c3, 7),
+          jobs: __S(31, __c3, 7),
         }),
       ).annotate({
         identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompute",
@@ -1698,31 +1254,31 @@ function __c4(j: number): any {
         S.Struct({
           id: S.NullOr(S.String),
           name: S.NullOr(S.String),
-          storage: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemStorage,
-          inference: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemInference,
-          compute: GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompute,
+          storage: __S(29, __c3, 5),
+          inference: __S(30, __c3, 6),
+          compute: __S(32, __c4, 0),
         }),
       ).annotate({
         identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem",
       });
     case 2:
-      return S.Array(GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           period: S.String,
-          resourceGroups: GetResourceGroupUsageResponsePeriodsItemResourceGroupsList,
+          resourceGroups: __S(34, __c4, 2),
         }),
       ).annotate({
         identifier: "GetResourceGroupUsageResponsePeriodsItem",
       });
     case 4:
-      return S.Array(GetResourceGroupUsageResponsePeriodsItem);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
-          periods: GetResourceGroupUsageResponsePeriodsList,
+          periods: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "GetResourceGroupUsageResponse",
@@ -1758,23 +1314,23 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetSessionInferenceUsageResponsePeriodsItemSessionsItem);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           period: S.String,
-          sessions: GetSessionInferenceUsageResponsePeriodsItemSessionsList,
+          sessions: __S(40, __c5, 0),
         }),
       ).annotate({
         identifier: "GetSessionInferenceUsageResponsePeriodsItem",
       });
     case 2:
-      return S.Array(GetSessionInferenceUsageResponsePeriodsItem);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
-          periods: GetSessionInferenceUsageResponsePeriodsList,
+          periods: __S(42, __c5, 2),
         }),
       ).annotate({
         identifier: "GetSessionInferenceUsageResponse",
@@ -1800,7 +1356,7 @@ function __c5(j: number): any {
         S.Struct({
           _id: S.String,
           org: S.String,
-          socialHandles: GetSocialHandlesResponseSocialHandles,
+          socialHandles: __S(45, __c5, 5),
         }),
       ).annotate({ identifier: "GetSocialHandlesResponse" });
     case 7:
@@ -1844,10 +1400,10 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: ListMemberAccessTokensResponseBodyItemAuthorizationStatus,
+          status: S.String,
           requestedAt: S.String,
           authorizedAt: S.optional(S.String),
-          authorizer: S.optional(ListMemberAccessTokensResponseBodyItemAuthorizationAuthorizer),
+          authorizer: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({
         identifier: "ListMemberAccessTokensResponseBodyItemAuthorization",
@@ -1856,28 +1412,28 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
-          type: ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntityType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity",
       });
     case 4:
-      return S.Array(ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsItem);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entity: ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity,
-          permissions: ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemPermissionsList,
+          entity: __S(51, __c6, 3),
+          permissions: __S(52, __c6, 4),
         }),
       ).annotate({
         identifier: "ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem",
       });
     case 6:
-      return S.Array(ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scoped: ListMemberAccessTokensResponseBodyItemFineGrainedScopedList,
+          scoped: __S(54, __c6, 6),
         }),
       ).annotate({
         identifier: "ListMemberAccessTokensResponseBodyItemFineGrained",
@@ -1891,23 +1447,21 @@ function __c7(j: number): any {
         S.Struct({
           _id: S.String,
           displayName: S.String,
-          role: ListMemberAccessTokensResponseBodyItemRole,
+          role: S.String,
           last4: S.optional(S.String),
           createdAt: S.String,
           lastUsedAt: S.optional(S.String),
-          owner: ListMemberAccessTokensResponseBodyItemOwner,
-          authorization: S.optional(ListMemberAccessTokensResponseBodyItemAuthorization),
-          fineGrained: S.optional(ListMemberAccessTokensResponseBodyItemFineGrained),
+          owner: __S(48, __c6, 0),
+          authorization: S.optional(__S(50, __c6, 2)),
+          fineGrained: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({
         identifier: "ListMemberAccessTokensResponseBodyItem",
       });
     case 1:
-      return S.Array(ListMemberAccessTokensResponseBodyItem);
+      return S.Array(__S(56, __c7, 0));
     case 2:
-      return S.suspend(() =>
-        ListMemberAccessTokensResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(57, __c7, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMemberAccessTokensResponse",
       });
     case 3:
@@ -1915,10 +1469,10 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           search: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListOrganizationRepositoriesRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(ListOrganizationRepositoriesRequestSort.pipe(T.Query())),
-          direction: S.optional(ListOrganizationRepositoriesRequestDirection.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1933,9 +1487,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ListOrganizationRepositoriesResponseBodyItemType,
+          type: S.String,
           updatedAt: S.String,
-          visibility: ListOrganizationRepositoriesResponseBodyItemVisibility,
+          visibility: S.String,
           storage: S.Number,
           storagePercent: S.Number,
         }),
@@ -1943,11 +1497,9 @@ function __c7(j: number): any {
         identifier: "ListOrganizationRepositoriesResponseBodyItem",
       });
     case 5:
-      return S.Array(ListOrganizationRepositoriesResponseBodyItem);
+      return S.Array(__S(60, __c7, 4));
     case 6:
-      return S.suspend(() =>
-        ListOrganizationRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(61, __c7, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationRepositoriesResponse",
       });
     case 7:
@@ -1971,7 +1523,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RotateSsoCredentialsRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1997,25 +1549,25 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resource: UpdateNetworkSecurityRequestBlockedContentsItemResource,
+          resource: S.Unknown,
           scope: S.String,
         }),
       ).annotate({
         identifier: "UpdateNetworkSecurityRequestBlockedContentsItem",
       });
     case 4:
-      return S.Array(UpdateNetworkSecurityRequestBlockedContentsItem);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resource: UpdateNetworkSecurityRequestAllowedContentsItemResource,
+          resource: S.Unknown,
           scope: S.String,
         }),
       ).annotate({
         identifier: "UpdateNetworkSecurityRequestAllowedContentsItem",
       });
     case 6:
-      return S.Array(UpdateNetworkSecurityRequestAllowedContentsItem);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2023,9 +1575,9 @@ function __c8(j: number): any {
           enforceAuth: S.optional(S.Boolean),
           enforceIpRestriction: S.optional(S.Boolean),
           highRateLimits: S.optional(S.Boolean),
-          ipRanges: S.optional(UpdateNetworkSecurityRequestIpRangesList),
-          blockedContents: S.optional(UpdateNetworkSecurityRequestBlockedContentsList),
-          allowedContents: S.optional(UpdateNetworkSecurityRequestAllowedContentsList),
+          ipRanges: S.optional(__S(15, __c1, 7)),
+          blockedContents: S.optional(__S(68, __c8, 4)),
+          allowedContents: S.optional(__S(70, __c8, 6)),
           keepReposMetadataVisible: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2044,34 +1596,34 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: UpdateNetworkSecurityResponseBlockedContentsItemResource,
+          resource: S.Unknown,
           scope: S.String,
         }),
       ).annotate({
         identifier: "UpdateNetworkSecurityResponseBlockedContentsItem",
       });
     case 1:
-      return S.Array(UpdateNetworkSecurityResponseBlockedContentsItem);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resource: UpdateNetworkSecurityResponseAllowedContentsItemResource,
+          resource: S.Unknown,
           scope: S.String,
         }),
       ).annotate({
         identifier: "UpdateNetworkSecurityResponseAllowedContentsItem",
       });
     case 3:
-      return S.Array(UpdateNetworkSecurityResponseAllowedContentsItem);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          enforceAuth: UpdateNetworkSecurityResponseEnforceAuth,
+          enforceAuth: S.Unknown,
           enforceIpRestriction: S.Boolean,
           highRateLimits: S.Boolean,
-          ipRanges: UpdateNetworkSecurityResponseIpRangesList,
-          blockedContents: UpdateNetworkSecurityResponseBlockedContentsList,
-          allowedContents: UpdateNetworkSecurityResponseAllowedContentsList,
+          ipRanges: __S(15, __c1, 7),
+          blockedContents: __S(73, __c9, 1),
+          allowedContents: __S(75, __c9, 3),
           keepReposMetadataVisible: S.Boolean,
           areCidrRangesApproved: S.Boolean,
         }),
@@ -2079,4 +1631,9 @@ function __c9(j: number): any {
         identifier: "UpdateNetworkSecurityResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

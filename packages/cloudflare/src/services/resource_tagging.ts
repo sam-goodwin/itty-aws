@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -63,17 +65,7 @@ export interface DeleteAccountTagRequest {
   /** Identifier of the Worker to remove tags from. */
   workerId?: string;
 }
-const DeleteAccountTagRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteAccountTagRequest>;
-
 export interface DeleteAccountTagResponse {}
-const DeleteAccountTagResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteAccountTagResponse>;
-
 export interface DeleteZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
   zoneId: string;
@@ -85,11 +77,7 @@ export interface DeleteZoneTagRequest {
   /** Identifier of the Access application to remove tags from. */
   accessApplicationId?: string;
 }
-const DeleteZoneTagRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteZoneTagRequest>;
-
 export interface DeleteZoneTagResponse {}
-const DeleteZoneTagResponse = DeleteAccountTagResponse as any as S.Schema<DeleteZoneTagResponse>;
-
 export type AccountTagsGetRequestResourceType =
   | "access_application"
   | "access_group"
@@ -122,8 +110,6 @@ export type AccountTagsGetRequestResourceType =
   | "vectorize_index"
   | "worker"
   | "worker_version";
-const AccountTagsGetRequestResourceType = S.String;
-
 export interface GetAccountTagRequest {
   /** Identifier. */
   accountId: string;
@@ -134,14 +120,7 @@ export interface GetAccountTagRequest {
   /** Worker identifier. Required for worker_version resources. */
   workerId?: string;
 }
-const GetAccountTagRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetAccountTagRequest>;
-
 export type AccountTagsGetResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-const AccountTagsGetResultAccessApplicationTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccountTagsGetResultAccessApplicationTagsMap>;
-
 export type AccountTagsGetResultAccessApplicationType = "access_application";
 export interface AccountTagsGetResultAccessApplication {
   /** Identifies the unique resource. */
@@ -846,42 +825,22 @@ export type AccountTagsGetResult =
   | AccountTagsGetResultWorkerVersion
   | AccountTagsGetResultZone
   | AccountTagsGetResultZoneRuleset;
-const AccountTagsGetResult = /*@__PURE__*/ __L.at(__c0, 5);
-
 export type GetAccountTagResponse = AccountTagsGetResult;
-const GetAccountTagResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetAccountTagResponse>;
-
 export interface GetSummaryRequest {
   /** Identifier. */
   accountId: string;
   /** Cursor for pagination. */
   cursor?: string;
 }
-const GetSummaryRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetSummaryRequest>;
-
 export type GetSummaryResultItemValuesList = Array<string>;
-const GetSummaryResultItemValuesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetSummaryResultItemValuesList>;
-
 export interface GetSummaryResultItem {
   /** A tag key. */
   key: string;
   /** All distinct values for this tag key. */
   values: GetSummaryResultItemValuesList;
 }
-const GetSummaryResultItem = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetSummaryResultItem>;
-
 export type GetSummaryResultList = Array<GetSummaryResultItem>;
-const GetSummaryResultList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetSummaryResultList>;
-
 export type GetSummaryResponse = GetSummaryResultList;
-const GetSummaryResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetSummaryResponse>;
-
 export type ZoneTagsGetRequestResourceType =
   | "access_application_policy"
   | "api_gateway_operation"
@@ -894,8 +853,6 @@ export type ZoneTagsGetRequestResourceType =
   | "worker_route"
   | "zone"
   | "zone_ruleset";
-const ZoneTagsGetRequestResourceType = S.String;
-
 export interface GetZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
   zoneId: string;
@@ -906,8 +863,6 @@ export interface GetZoneTagRequest {
   /** Access application ID identifier. Required for access_application_policy resources. */
   accessApplicationId?: string;
 }
-const GetZoneTagRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetZoneTagRequest>;
-
 export type ZoneTagsGetResultAccessApplicationTagsMap = { [key: string]: string | undefined };
 export type ZoneTagsGetResultAccessApplicationType = "access_application";
 export interface ZoneTagsGetResultAccessApplication {
@@ -1609,36 +1564,22 @@ export type ZoneTagsGetResult =
   | ZoneTagsGetResultWorkerVersion
   | ZoneTagsGetResultZone
   | ZoneTagsGetResultZoneRuleset;
-const ZoneTagsGetResult = /*@__PURE__*/ __L.at(__c1, 5);
-
 export type GetZoneTagResponse = ZoneTagsGetResult;
-const GetZoneTagResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetZoneTagResponse>;
-
 export interface ListKeysRequest {
   /** Identifier. */
   accountId: string;
   /** Cursor for pagination. */
   cursor?: string;
 }
-const ListKeysRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListKeysRequest>;
-
 export type KeysListResultList = Array<string>;
-const KeysListResultList = GetSummaryResultItemValuesList as any as S.Schema<KeysListResultList>;
-
 export interface ListKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: KeysListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListKeysResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListKeysResponse>;
-
 export type ListRequestIdList = Array<string>;
-const ListRequestIdList = GetSummaryResultItemValuesList as any as S.Schema<ListRequestIdList>;
-
 export type ListRequestTagList = Array<string>;
-const ListRequestTagList = GetSummaryResultItemValuesList as any as S.Schema<ListRequestTagList>;
-
 export type ListRequestType =
   | "access_application"
   | "access_application_policy"
@@ -1682,11 +1623,7 @@ export type ListRequestType =
   | "worker_version"
   | "zone"
   | "zone_ruleset";
-const ListRequestType = S.String;
-
 export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
-const ListRequestTypeList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListRequestTypeList>;
-
 export interface ListResourceTaggingsRequest {
   /** Identifier. */
   accountId: string;
@@ -1703,11 +1640,6 @@ export interface ListResourceTaggingsRequest {
   /** Filter by resource type. Can be repeated to filter by multiple types (OR logic). Example: ?type=zone&amp;type=worker */
   type?: ListRequestTypeList;
 }
-const ListResourceTaggingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListResourceTaggingsRequest>;
-
 export type ListResultItemAccessApplicationTagsMap = { [key: string]: string | undefined };
 export type ListResultItemAccessApplicationType = "access_application";
 export interface ListResultItemAccessApplication {
@@ -2407,22 +2339,13 @@ export type ListResultItem =
   | ListResultItemWorkerVersion
   | ListResultItemZone
   | ListResultItemZoneRuleset;
-const ListResultItem = /*@__PURE__*/ __L.at(__c2, 3);
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListResultList>;
-
 export interface ListResourceTaggingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListResourceTaggingsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListResourceTaggingsResponse>;
-
 export type ValuesListRequestType =
   | "access_application"
   | "access_application_policy"
@@ -2466,8 +2389,6 @@ export type ValuesListRequestType =
   | "worker_version"
   | "zone"
   | "zone_ruleset";
-const ValuesListRequestType = S.String;
-
 export interface ListValuesRequest {
   /** Identifier. */
   accountId: string;
@@ -2477,8 +2398,6 @@ export interface ListValuesRequest {
   /** Filter by resource type. */
   type?: ValuesListRequestType | (string & {});
 }
-const ListValuesRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListValuesRequest>;
-
 export type ValuesListResultList = Array<string>;
 export interface ListValuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -2486,8 +2405,6 @@ export interface ListValuesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListValuesResponse = ListKeysResponse as any as S.Schema<ListValuesResponse>;
-
 export type AccountTagsUpdateRequestResourceType =
   | "worker_version"
   | "access_application"
@@ -2520,12 +2437,7 @@ export type AccountTagsUpdateRequestResourceType =
   | "stream_video"
   | "vectorize_index"
   | "worker";
-const AccountTagsUpdateRequestResourceType = S.String;
-
 export type AccountTagsUpdateRequestTagsMap = { [key: string]: string | undefined };
-const AccountTagsUpdateRequestTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateRequestTagsMap>;
-
 export interface PutAccountTagRequest {
   /** Identifier. */
   accountId: string;
@@ -2539,8 +2451,6 @@ export interface PutAccountTagRequest {
   tags?: AccountTagsUpdateRequestTagsMap;
   ifMatch?: string;
 }
-const PutAccountTagRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PutAccountTagRequest>;
-
 export type AccountTagsUpdateResultAccessApplicationTagsMap = { [key: string]: string | undefined };
 export type AccountTagsUpdateResultAccessApplicationType = "access_application";
 export interface AccountTagsUpdateResultAccessApplication {
@@ -3252,14 +3162,7 @@ export type AccountTagsUpdateResult =
   | AccountTagsUpdateResultWorkerVersion
   | AccountTagsUpdateResultZone
   | AccountTagsUpdateResultZoneRuleset;
-const AccountTagsUpdateResult = /*@__PURE__*/ __L.at(__c3, 0);
-
 export type PutAccountTagResponse = AccountTagsUpdateResult;
-const PutAccountTagResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PutAccountTagResponse>;
-
 export type ZoneTagsUpdateRequestResourceType =
   | "access_application_policy"
   | "api_gateway_operation"
@@ -3272,12 +3175,7 @@ export type ZoneTagsUpdateRequestResourceType =
   | "worker_route"
   | "zone"
   | "zone_ruleset";
-const ZoneTagsUpdateRequestResourceType = S.String;
-
 export type ZoneTagsUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ZoneTagsUpdateRequestTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateRequestTagsMap>;
-
 export interface PutZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
   zoneId: string;
@@ -3291,8 +3189,6 @@ export interface PutZoneTagRequest {
   accessApplicationId?: string;
   ifMatch?: string;
 }
-const PutZoneTagRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PutZoneTagRequest>;
-
 export type ZoneTagsUpdateResultAccessApplicationTagsMap = { [key: string]: string | undefined };
 export type ZoneTagsUpdateResultAccessApplicationType = "access_application";
 export interface ZoneTagsUpdateResultAccessApplication {
@@ -3998,11 +3894,7 @@ export type ZoneTagsUpdateResult =
   | ZoneTagsUpdateResultWorkerVersion
   | ZoneTagsUpdateResultZone
   | ZoneTagsUpdateResultZoneRuleset;
-const ZoneTagsUpdateResult = /*@__PURE__*/ __L.at(__c3, 3);
-
 export type PutZoneTagResponse = ZoneTagsUpdateResult;
-const PutZoneTagResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<PutZoneTagResponse>;
-
 export type DeleteAccountTagError = Forbidden | CloudflareOpError;
 /** Removes all tags from a specific account-level resource. */
 export const deleteAccountTag: API.OperationMethod<
@@ -4011,8 +3903,8 @@ export const deleteAccountTag: API.OperationMethod<
   DeleteAccountTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountTagRequest,
-  output: DeleteAccountTagResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteAccountTagRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteAccountTagResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4026,8 +3918,8 @@ export const deleteZoneTag: API.OperationMethod<
   DeleteZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteZoneTagRequest,
-  output: DeleteZoneTagResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteZoneTagRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteZoneTagResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4041,8 +3933,8 @@ export const getAccountTag: API.OperationMethod<
   GetAccountTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountTagRequest,
-  output: GetAccountTagResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<GetAccountTagRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetAccountTagResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4056,8 +3948,8 @@ export const getSummary: API.OperationMethod<
   GetSummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSummaryRequest,
-  output: GetSummaryResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetSummaryRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetSummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4071,8 +3963,8 @@ export const getZoneTag: API.OperationMethod<
   GetZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetZoneTagRequest,
-  output: GetZoneTagResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetZoneTagRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetZoneTagResponse>,
   errors: [ZoneTagResourceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4088,8 +3980,8 @@ export const listKeys: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListKeysRequest,
-    output: ListKeysResponse,
+    input: __S(15, __c1, 7) as any as S.Schema<ListKeysRequest>,
+    output: __S(16, __c2, 0) as any as S.Schema<ListKeysResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4113,8 +4005,8 @@ export const listResourceTaggings: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListResourceTaggingsRequest,
-    output: ListResourceTaggingsResponse,
+    input: __S(18, __c2, 2) as any as S.Schema<ListResourceTaggingsRequest>,
+    output: __S(21, __c2, 5) as any as S.Schema<ListResourceTaggingsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4138,8 +4030,8 @@ export const listValues: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListValuesRequest,
-    output: ListValuesResponse,
+    input: __S(22, __c2, 6) as any as S.Schema<ListValuesRequest>,
+    output: __S(16, __c2, 0) as any as S.Schema<ListValuesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4161,8 +4053,8 @@ export const putAccountTag: API.OperationMethod<
   PutAccountTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccountTagRequest,
-  output: PutAccountTagResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<PutAccountTagRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<PutAccountTagResponse>,
   errors: [Forbidden, TagPreconditionFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4180,8 +4072,8 @@ export const putZoneTag: API.OperationMethod<
   PutZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutZoneTagRequest,
-  output: PutZoneTagResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<PutZoneTagRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<PutZoneTagResponse>,
   errors: [
     ZoneTagResourceNotFound,
     Forbidden,
@@ -4229,7 +4121,7 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           resourceId: S.String.pipe(T.Query("resource_id")),
-          resourceType: AccountTagsGetRequestResourceType.pipe(T.Query("resource_type")),
+          resourceType: S.String.pipe(T.Query("resource_type")),
           workerId: S.optional(S.String.pipe(T.Query("worker_id"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags", code: 200 }))
@@ -4344,7 +4236,7 @@ function __c0(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        AccountTagsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(5, __c0, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAccountTagResponse" });
     case 7:
       return S.suspend(() =>
@@ -4365,21 +4257,21 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          values: GetSummaryResultItemValuesList,
+          values: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "GetSummaryResultItem" });
     case 2:
-      return S.Array(GetSummaryResultItem);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
-        GetSummaryResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(10, __c1, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSummaryResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           resourceId: S.String.pipe(T.Query("resource_id")),
-          resourceType: ZoneTagsGetRequestResourceType.pipe(T.Query("resource_type")),
+          resourceType: S.String.pipe(T.Query("resource_type")),
           accessApplicationId: S.optional(S.String.pipe(T.Query("access_application_id"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 }))
@@ -4492,7 +4384,7 @@ function __c1(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        ZoneTagsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(13, __c1, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetZoneTagResponse" });
     case 7:
       return S.suspend(() =>
@@ -4510,22 +4402,22 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: KeysListResultList.pipe(T.EnvelopePayload()),
+          result: __S(8, __c1, 0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListKeysResponse" });
     case 1:
-      return S.Array(ListRequestType);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          id: S.optional(ListRequestIdList.pipe(T.Query())),
+          id: S.optional(__S(8, __c1, 0).pipe(T.Query())),
           caseInsensitive: S.optional(S.Boolean.pipe(T.Query("case_insensitive"))),
           cursor: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          tag: S.optional(ListRequestTagList.pipe(T.Query())),
-          type: S.optional(ListRequestTypeList.pipe(T.Query())),
+          tag: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          type: S.optional(__S(17, __c2, 1).pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/tags/resources", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -4638,11 +4530,11 @@ function __c2(j: number): any {
         ),
       );
     case 4:
-      return S.Array(ListResultItem);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(20, __c2, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -4654,7 +4546,7 @@ function __c2(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           tagKey: S.String.pipe(T.Label("tag_key")),
           cursor: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ValuesListRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -4670,9 +4562,9 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           resourceId: S.String.pipe(T.Body("resource_id")),
-          resourceType: AccountTagsUpdateRequestResourceType.pipe(T.Body("resource_type")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
           workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-          tags: S.optional(AccountTagsUpdateRequestTagsMap),
+          tags: S.optional(__S(4, __c0, 4)),
           ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }))
@@ -4789,15 +4681,15 @@ function __c3(j: number): any {
       );
     case 1:
       return S.suspend(() =>
-        AccountTagsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(24, __c3, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutAccountTagResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           resourceId: S.String.pipe(T.Body("resource_id")),
-          resourceType: ZoneTagsUpdateRequestResourceType.pipe(T.Body("resource_type")),
-          tags: S.optional(ZoneTagsUpdateRequestTagsMap),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          tags: S.optional(__S(4, __c0, 4)),
           accessApplicationId: S.optional(S.String.pipe(T.Body("access_application_id"))),
           ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
         })
@@ -4911,7 +4803,12 @@ function __c3(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        ZoneTagsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(27, __c3, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutZoneTagResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

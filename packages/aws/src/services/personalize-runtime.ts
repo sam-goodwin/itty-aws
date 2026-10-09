@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Personalize Runtime",
   serviceShapeName: "AmazonPersonalizeRuntime",
@@ -96,7 +98,6 @@ export type NumResults = number;
 export type FilterAttributeName = string;
 export type FilterAttributeValue = string | redacted.Redacted<string>;
 export type FilterValues = { [key: string]: string | redacted.Redacted<string> | undefined };
-const FilterValues = /*@__PURE__*/ __L.at(__c0, 0);
 export interface GetActionRecommendationsRequest {
   campaignArn?: string;
   userId?: string;
@@ -104,41 +105,27 @@ export interface GetActionRecommendationsRequest {
   filterArn?: string;
   filterValues?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const GetActionRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetActionRecommendationsRequest>;
 export type ActionID = string;
 export type Score = number;
 export interface PredictedAction {
   actionId?: string;
   score?: number;
 }
-const PredictedAction = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PredictedAction>;
 export type ActionList = PredictedAction[];
-const ActionList = /*@__PURE__*/ __L.at(__c0, 3);
 export type RecommendationID = string;
 export interface GetActionRecommendationsResponse {
   actionList?: PredictedAction[];
   recommendationId?: string;
 }
-const GetActionRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetActionRecommendationsResponse>;
 export type ItemID = string;
 export type InputList = string[];
-const InputList = /*@__PURE__*/ __L.at(__c0, 5);
 export type AttributeName = string;
 export type AttributeValue = string | redacted.Redacted<string>;
 export type Context = { [key: string]: string | redacted.Redacted<string> | undefined };
-const Context = FilterValues as any as S.Schema<Context>;
 export type DatasetType = string;
 export type ColumnName = string;
 export type ColumnNamesList = string[];
-const ColumnNamesList = InputList as any as S.Schema<ColumnNamesList>;
 export type MetadataColumns = { [key: string]: string[] | undefined };
-const MetadataColumns = /*@__PURE__*/ __L.at(__c0, 6);
 export interface GetPersonalizedRankingRequest {
   campaignArn: string;
   inputList: string[];
@@ -148,17 +135,11 @@ export interface GetPersonalizedRankingRequest {
   filterValues?: { [key: string]: string | redacted.Redacted<string> | undefined };
   metadataColumns?: { [key: string]: string[] | undefined };
 }
-const GetPersonalizedRankingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetPersonalizedRankingRequest>;
 export type Name = string;
 export type ColumnValue = string;
 export type Metadata = { [key: string]: string | undefined };
-const Metadata = /*@__PURE__*/ __L.at(__c1, 0);
 export type Reason = string;
 export type ReasonList = string[];
-const ReasonList = InputList as any as S.Schema<ReasonList>;
 export interface PredictedItem {
   itemId?: string;
   score?: number;
@@ -166,17 +147,11 @@ export interface PredictedItem {
   metadata?: { [key: string]: string | undefined };
   reason?: string[];
 }
-const PredictedItem = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PredictedItem>;
 export type ItemList = PredictedItem[];
-const ItemList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface GetPersonalizedRankingResponse {
   personalizedRanking?: PredictedItem[];
   recommendationId?: string;
 }
-const GetPersonalizedRankingResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetPersonalizedRankingResponse>;
 export type PercentPromotedItems = number;
 export interface Promotion {
   name?: string;
@@ -184,9 +159,7 @@ export interface Promotion {
   filterArn?: string;
   filterValues?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const Promotion = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Promotion>;
 export type PromotionList = Promotion[];
-const PromotionList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface GetRecommendationsRequest {
   campaignArn?: string;
   itemId?: string;
@@ -199,18 +172,10 @@ export interface GetRecommendationsRequest {
   promotions?: Promotion[];
   metadataColumns?: { [key: string]: string[] | undefined };
 }
-const GetRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetRecommendationsRequest>;
 export interface GetRecommendationsResponse {
   itemList?: PredictedItem[];
   recommendationId?: string;
 }
-const GetRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetRecommendationsResponse>;
 export type ErrorMessage = string;
 export type GetActionRecommendationsError =
   | InvalidInputException
@@ -230,8 +195,8 @@ export const getActionRecommendations: API.OperationMethod<
   GetActionRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionRecommendationsRequest,
-  output: GetActionRecommendationsResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<GetActionRecommendationsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetActionRecommendationsResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -255,8 +220,8 @@ export const getPersonalizedRanking: API.OperationMethod<
   GetPersonalizedRankingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonalizedRankingRequest,
-  output: GetPersonalizedRankingResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetPersonalizedRankingRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetPersonalizedRankingResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -287,8 +252,8 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecommendationsRequest,
-  output: GetRecommendationsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetRecommendationsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetRecommendationsResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -307,7 +272,7 @@ function __c0(j: number): any {
           userId: S.optional(S.String),
           numResults: S.optional(S.Number),
           filterArn: S.optional(S.String),
-          filterValues: S.optional(FilterValues),
+          filterValues: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/action-recommendations" }),
@@ -326,27 +291,30 @@ function __c0(j: number): any {
         S.Struct({ actionId: S.optional(S.String), score: S.optional(S.Number) }),
       ).annotate({ identifier: "PredictedAction" });
     case 3:
-      return S.Array(PredictedAction);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ actionList: S.optional(ActionList), recommendationId: S.optional(S.String) }),
+        S.Struct({
+          actionList: S.optional(__S(3, __c0, 3)),
+          recommendationId: S.optional(S.String),
+        }),
       ).annotate({
         identifier: "GetActionRecommendationsResponse",
       });
     case 5:
       return S.Array(S.String);
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ ColumnNamesList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(5, __c0, 5).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           campaignArn: S.String,
-          inputList: InputList,
+          inputList: __S(5, __c0, 5),
           userId: S.String,
-          context: S.optional(Context),
+          context: S.optional(__S(0, __c0, 0)),
           filterArn: S.optional(S.String),
-          filterValues: S.optional(FilterValues),
-          metadataColumns: S.optional(MetadataColumns),
+          filterValues: S.optional(__S(0, __c0, 0)),
+          metadataColumns: S.optional(__S(6, __c0, 6)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/personalize-ranking" }),
@@ -372,16 +340,16 @@ function __c1(j: number): any {
           itemId: S.optional(S.String),
           score: S.optional(S.Number),
           promotionName: S.optional(S.String),
-          metadata: S.optional(Metadata),
-          reason: S.optional(ReasonList),
+          metadata: S.optional(__S(8, __c1, 0)),
+          reason: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "PredictedItem" });
     case 2:
-      return S.Array(PredictedItem);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          personalizedRanking: S.optional(ItemList),
+          personalizedRanking: S.optional(__S(10, __c1, 2)),
           recommendationId: S.optional(S.String),
         }),
       ).annotate({
@@ -393,11 +361,11 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           percentPromotedItems: S.optional(S.Number),
           filterArn: S.optional(S.String),
-          filterValues: S.optional(FilterValues),
+          filterValues: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "Promotion" });
     case 5:
-      return S.Array(Promotion);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -405,12 +373,12 @@ function __c1(j: number): any {
           itemId: S.optional(S.String),
           userId: S.optional(S.String),
           numResults: S.optional(S.Number),
-          context: S.optional(Context),
+          context: S.optional(__S(0, __c0, 0)),
           filterArn: S.optional(S.String),
-          filterValues: S.optional(FilterValues),
+          filterValues: S.optional(__S(0, __c0, 0)),
           recommenderArn: S.optional(S.String),
-          promotions: S.optional(PromotionList),
-          metadataColumns: S.optional(MetadataColumns),
+          promotions: S.optional(__S(13, __c1, 5)),
+          metadataColumns: S.optional(__S(6, __c0, 6)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/recommendations" }), svc, auth, proto, ver, rules),
         ),
@@ -419,9 +387,17 @@ function __c1(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ itemList: S.optional(ItemList), recommendationId: S.optional(S.String) }),
+        S.Struct({
+          itemList: S.optional(__S(10, __c1, 2)),
+          recommendationId: S.optional(S.String),
+        }),
       ).annotate({
         identifier: "GetRecommendationsResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

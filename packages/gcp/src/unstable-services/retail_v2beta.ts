@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Facet values to ignore on facets during the specified time range for the given SearchResponse.Facet.key attribute. */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues {
   /** List of facet values to ignore for the following time range. The facet values are the same as the attribute values. There is a limit of 10 values per instance of IgnoredFacetValues. Each value can have at most 128 characters. */
@@ -74,19 +74,8 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetV
   /** If start time is empty and end time is not empty, then ignore these facet values before end time. */
   endTime?: string;
 }
-const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
-
 export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList =
   Array<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
-const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    2,
-  ) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList>;
-
 /** A floating point interval. */
 export interface GoogleCloudRetailV2betaInterval {
   /** Exclusive lower bound. */
@@ -98,17 +87,7 @@ export interface GoogleCloudRetailV2betaInterval {
   /** Exclusive upper bound. */
   exclusiveMaximum?: number;
 }
-const GoogleCloudRetailV2betaInterval = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaInterval>;
-
 export type GoogleCloudRetailV2betaIntervalList = Array<GoogleCloudRetailV2betaInterval>;
-const GoogleCloudRetailV2betaIntervalList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaIntervalList>;
-
 /** Replaces a set of textual facet values by the same (possibly different) merged facet value. Each facet value should appear at most once as a value per CatalogAttribute. This feature is available only for textual custom attributes. */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue {
   /** All the facet values that are replaces by the same merged_value that follows. The maximum number of values per MergedFacetValue is 25. Each value can have up to 128 characters. */
@@ -116,28 +95,13 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetVa
   /** All the previous values are replaced by this merged facet value. This merged_value must be non-empty and can have up to 128 characters. */
   mergedValue?: string;
 }
-const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
-
 export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList =
   Array<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
-const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList>;
-
 /** The current facet key (i.e. attribute config) maps into the merged_facet_key. A facet key can have at most one child. The current facet key and the merged facet key need both to be textual custom attributes or both numerical custom attributes (same type). */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet {
   /** The merged facet key should be a valid facet key that is different than the facet key of the current catalog attribute. We refer this is merged facet key as the child of the current catalog attribute. This merged facet key can't be a parent of another facet key (i.e. no directed path of length 2). This merged facet key needs to be either a textual custom attribute or a numerical custom attribute. */
   mergedFacetKey?: string;
 }
-const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet>;
-
 /** Options to rerank based on facet values engaged by the user for the current key. That key needs to be a custom textual key and facetable. To use this control, you also need to pass all the facet keys engaged by the user in the request using the field [SearchRequest.FacetSpec]. In particular, if you don't pass the facet keys engaged that you want to rerank on, this control won't be effective. Moreover, to obtain better results, the facet values that you want to rerank on should be close to English (ideally made of words, underscores, and spaces). */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig {
   /** If set to true, then we also rerank the dynamic facets based on the facet values engaged by the user for the current attribute key during serving. */
@@ -145,11 +109,6 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig 
   /** If empty, rerank on all facet values for the current key. Otherwise, will rerank on the facet values from this list only. */
   facetValues?: StringList;
 }
-const GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig>;
-
 /** Possible options for the facet that corresponds to the current attribute config. */
 export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfig {
   /** Each instance represents a list of attribute values to ignore as facet values for a specific time range. The maximum number of instances per CatalogAttribute is 25. */
@@ -163,50 +122,31 @@ export interface GoogleCloudRetailV2betaCatalogAttributeFacetConfig {
   /** Set this field only if you want to rerank based on facet values engaged by the user for the current key. This option is only possible for custom facetable textual keys. */
   rerankConfig?: GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig;
 }
-const GoogleCloudRetailV2betaCatalogAttributeFacetConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfig>;
-
 export type GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum =
   | "SEARCHABLE_OPTION_UNSPECIFIED"
   | "SEARCHABLE_ENABLED"
   | "SEARCHABLE_DISABLED";
-const GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum = S.String;
-
 export type GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum =
   | "RETRIEVABLE_OPTION_UNSPECIFIED"
   | "RETRIEVABLE_ENABLED"
   | "RETRIEVABLE_DISABLED";
-const GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum = S.String;
-
 export type GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum =
   | "INDEXABLE_OPTION_UNSPECIFIED"
   | "INDEXABLE_ENABLED"
   | "INDEXABLE_DISABLED";
-const GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum = S.String;
-
 export type GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum =
   | "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
   | "RECOMMENDATIONS_FILTERING_DISABLED"
   | "RECOMMENDATIONS_FILTERING_ENABLED";
-const GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum = S.String;
-
 export type GoogleCloudRetailV2betaCatalogAttributeTypeEnum = "UNKNOWN" | "TEXTUAL" | "NUMERICAL";
-const GoogleCloudRetailV2betaCatalogAttributeTypeEnum = S.String;
-
 export type GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum =
   | "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED"
   | "DYNAMIC_FACETABLE_ENABLED"
   | "DYNAMIC_FACETABLE_DISABLED";
-const GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum = S.String;
-
 export type GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum =
   | "EXACT_SEARCHABLE_OPTION_UNSPECIFIED"
   | "EXACT_SEARCHABLE_ENABLED"
   | "EXACT_SEARCHABLE_DISABLED";
-const GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum = S.String;
-
 /** Catalog level attribute config for an attribute. For example, if customers want to enable/disable facet for a specific attribute. */
 export interface GoogleCloudRetailV2betaCatalogAttribute {
   /** Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute name can contain only alpha-numeric characters and underscores. For example, an attribute named `attributes.abc_xyz` can be indexed, but an attribute named `attributes.abc-xyz` cannot be indexed. If the attribute key starts with `attributes.`, then the attribute is a custom attribute. Attributes such as `brands`, `patterns`, and `title` are built-in and called system attributes. */
@@ -236,46 +176,24 @@ export interface GoogleCloudRetailV2betaCatalogAttribute {
     | GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum
     | (string & {});
 }
-const GoogleCloudRetailV2betaCatalogAttribute = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttribute>;
-
 /** Request for CatalogService.AddCatalogAttribute method. */
 export interface GoogleCloudRetailV2betaAddCatalogAttributeRequest {
   /** Required. The CatalogAttribute to add. */
   catalogAttribute?: GoogleCloudRetailV2betaCatalogAttribute;
 }
-const GoogleCloudRetailV2betaAddCatalogAttributeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaAddCatalogAttributeRequest>;
-
 export interface AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
   attributesConfig: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaAddCatalogAttributeRequest;
 }
-const AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
-
 export type GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum =
   | "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED"
   | "PRODUCT_LEVEL_ATTRIBUTE_CONFIG"
   | "CATALOG_LEVEL_ATTRIBUTE_CONFIG";
-const GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum = S.String;
-
 export type GoogleCloudRetailV2betaCatalogAttributeMap = {
   [key: string]: GoogleCloudRetailV2betaCatalogAttribute | undefined;
 };
-const GoogleCloudRetailV2betaCatalogAttributeMap = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeMap>;
-
 /** Catalog level attribute config. */
 export interface GoogleCloudRetailV2betaAttributesConfig {
   /** Output only. The AttributeConfigLevel used for this catalog. */
@@ -287,68 +205,37 @@ export interface GoogleCloudRetailV2betaAttributesConfig {
   /** Required. Immutable. The fully qualified resource name of the attribute config. Format: `projects/*\/locations/*\/catalogs/*\/attributesConfig` */
   name?: string;
 }
-const GoogleCloudRetailV2betaAttributesConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>;
-
 /** Request for AddControl method. */
 export interface GoogleCloudRetailV2betaAddControlRequest {
   /** Required. The id of the control to apply. Assumed to be in the same catalog as the serving config - if id is not found a NOT_FOUND error is returned. */
   controlId?: string;
 }
-const GoogleCloudRetailV2betaAddControlRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaAddControlRequest>;
-
 export interface AddControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
   servingConfig: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaAddControlRequest;
 }
-const AddControlProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AddControlProjectsLocationsCatalogsServingConfigsRequest>;
-
 export type GoogleCloudRetailV2betaServingConfigDiversityTypeEnum =
   | "DIVERSITY_TYPE_UNSPECIFIED"
   | "RULE_BASED_DIVERSITY"
   | "DATA_DRIVEN_DIVERSITY";
-const GoogleCloudRetailV2betaServingConfigDiversityTypeEnum = S.String;
-
 export type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "AUTO"
   | "DISABLED";
-const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum = S.String;
-
 /** The specification for personalization. */
 export interface GoogleCloudRetailV2betaSearchRequestPersonalizationSpec {
   /** Defaults to Mode.AUTO. */
   mode?: GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum | (string & {});
 }
-const GoogleCloudRetailV2betaSearchRequestPersonalizationSpec = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestPersonalizationSpec>;
-
 export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
   | "SOLUTION_TYPE_RECOMMENDATION"
   | "SOLUTION_TYPE_SEARCH";
-const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum = S.String;
-
 export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList = Array<
   GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum | (string & {})
 >;
-const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList>;
-
 export type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
@@ -358,9 +245,6 @@ export interface GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
   /** Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset. */
   mode?: GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum | (string & {});
 }
-const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec =
-  GoogleCloudRetailV2betaSearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec>;
-
 /** Configures metadata that is used to generate serving time results (e.g. search results or recommendation predictions). */
 export interface GoogleCloudRetailV2betaServingConfig {
   /** Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. */
@@ -404,11 +288,6 @@ export interface GoogleCloudRetailV2betaServingConfig {
   /** Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. */
   boostControlIds?: StringList;
 }
-const GoogleCloudRetailV2betaServingConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>;
-
 /** Request message for ProductService.AddFulfillmentPlaces method. */
 export interface GoogleCloudRetailV2betaAddFulfillmentPlacesRequest {
   /** Required. The IDs for this type, such as the store IDs for "pickup-in-store" or the region IDs for "same-day-delivery" to be added for this type. Duplicate IDs will be automatically ignored. At least 1 value is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned. If the total number of place IDs exceeds 2000 for this type after adding, then the update will be rejected. */
@@ -420,28 +299,14 @@ export interface GoogleCloudRetailV2betaAddFulfillmentPlacesRequest {
   /** The time when the fulfillment updates are issued, used to prevent out-of-order updates on fulfillment information. If not provided, the internal system time will be used. */
   addTime?: string;
 }
-const GoogleCloudRetailV2betaAddFulfillmentPlacesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaAddFulfillmentPlacesRequest>;
-
 export interface AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   product: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaAddFulfillmentPlacesRequest;
 }
-const AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -451,8 +316,6 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -466,11 +329,6 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 /** The price range of all variant Product having the same Product.primary_product_id. */
 export interface GoogleCloudRetailV2betaPriceInfoPriceRange {
   /** The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id. */
@@ -478,11 +336,6 @@ export interface GoogleCloudRetailV2betaPriceInfoPriceRange {
   /** The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id. */
   originalPrice?: GoogleCloudRetailV2betaInterval;
 }
-const GoogleCloudRetailV2betaPriceInfoPriceRange = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaPriceInfoPriceRange>;
-
 /** The price information of a Product. */
 export interface GoogleCloudRetailV2betaPriceInfo {
   /** The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search. */
@@ -500,14 +353,7 @@ export interface GoogleCloudRetailV2betaPriceInfo {
   /** Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown. */
   originalPrice?: number;
 }
-const GoogleCloudRetailV2betaPriceInfo = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaPriceInfo>;
-
 export type DoubleList = Array<number>;
-const DoubleList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DoubleList>;
-
 /** A custom attribute that is not explicitly modeled in Product. */
 export interface GoogleCloudRetailV2betaCustomAttribute {
   /** This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned. */
@@ -519,19 +365,9 @@ export interface GoogleCloudRetailV2betaCustomAttribute {
   /** This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details. */
   indexable?: boolean;
 }
-const GoogleCloudRetailV2betaCustomAttribute = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaCustomAttribute>;
-
 export type GoogleCloudRetailV2betaCustomAttributeMap = {
   [key: string]: GoogleCloudRetailV2betaCustomAttribute | undefined;
 };
-const GoogleCloudRetailV2betaCustomAttributeMap = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaCustomAttributeMap>;
-
 /** The inventory information at a place (e.g. a store) identified by a place ID. */
 export interface GoogleCloudRetailV2betaLocalInventory {
   /** Optional. Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). */
@@ -543,18 +379,8 @@ export interface GoogleCloudRetailV2betaLocalInventory {
   /** Optional. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned. */
   fulfillmentTypes?: StringList;
 }
-const GoogleCloudRetailV2betaLocalInventory = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaLocalInventory>;
-
 export type GoogleCloudRetailV2betaLocalInventoryList =
   Array<GoogleCloudRetailV2betaLocalInventory>;
-const GoogleCloudRetailV2betaLocalInventoryList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaLocalInventoryList>;
-
 /** Request message for ProductService.AddLocalInventories method. */
 export interface GoogleCloudRetailV2betaAddLocalInventoriesRequest {
   /** Indicates which inventory fields in the provided list of LocalInventory to update. The field is updated to the provided value. If a field is set while the place does not have a previous local inventory, the local inventory at that store is created. If a field is set while the value of that field is not provided, the original field value, if it exists, is deleted. If the mask is not set or set with empty paths, all inventory fields will be updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned and the entire update will be ignored. */
@@ -566,44 +392,23 @@ export interface GoogleCloudRetailV2betaAddLocalInventoriesRequest {
   /** If set to true, and the Product is not found, the local inventory will still be processed and retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found. */
   allowMissing?: boolean;
 }
-const GoogleCloudRetailV2betaAddLocalInventoriesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaAddLocalInventoriesRequest>;
-
 export interface AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   product: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaAddLocalInventoriesRequest;
 }
-const AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Request for CatalogService.BatchRemoveCatalogAttributes method. */
 export interface GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest {
   /** Required. The attribute name keys of the CatalogAttributes to delete. A maximum of 1000 catalog attributes can be deleted in a batch. */
   attributeKeys?: StringList;
 }
-const GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest>;
-
 export interface BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. The attributes config resource shared by all catalog attributes being deleted. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
   attributesConfig: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest;
 }
-const BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    4,
-  ) as any as S.Schema<BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest>;
-
 /** Response of the CatalogService.BatchRemoveCatalogAttributes. */
 export interface GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse {
   /** Catalog attributes that were reset. Catalog attributes that are either in use by products or are predefined attributes cannot be deleted; however, their configuration properties will reset to default values upon removal request. */
@@ -611,11 +416,6 @@ export interface GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse {
   /** Catalog attributes that were deleted. Only pre-loaded catalog attributes that are neither in use by products nor predefined can be deleted. */
   deletedCatalogAttributes?: StringList;
 }
-const GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse>;
-
 /** Configuration for a single generated question. */
 export interface GoogleCloudRetailV2betaGenerativeQuestionConfig {
   /** Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
@@ -633,11 +433,6 @@ export interface GoogleCloudRetailV2betaGenerativeQuestionConfig {
   /** Optional. Whether the question is asked at serving time. */
   allowedInConversation?: boolean;
 }
-const GoogleCloudRetailV2betaGenerativeQuestionConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
-
 /** Request for UpdateGenerativeQuestionConfig method. */
 export interface GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest {
   /** Required. The question to update. */
@@ -645,56 +440,26 @@ export interface GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest {
   /** Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The following are NOT supported: * GenerativeQuestionConfig.frequency If not set or empty, all supported fields are updated. */
   updateMask?: string;
 }
-const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
-
 export type GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList =
   Array<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
-const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList>;
-
 /** Request for BatchUpdateGenerativeQuestionConfig method. */
 export interface GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest {
   /** Required. The updates question configs. */
   requests?: GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList;
 }
-const GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest>;
-
 export interface BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest {
   /** Optional. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest;
 }
-const BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>;
-
 export type GoogleCloudRetailV2betaGenerativeQuestionConfigList =
   Array<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
-const GoogleCloudRetailV2betaGenerativeQuestionConfigList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionConfigList>;
-
 /** Aggregated response for UpdateGenerativeQuestionConfig method. */
 export interface GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse {
   /** Optional. The updates question configs. */
   generativeQuestionConfigs?: GoogleCloudRetailV2betaGenerativeQuestionConfigList;
 }
-const GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse>;
-
 /** Request message for CollectUserEvent method. */
 export interface GoogleCloudRetailV2betaCollectUserEventRequest {
   /** An arbitrary serialized JSON string that contains necessary information that can comprise a user event. When this field is specified, the user_event field will be ignored. Note: line-delimited JSON is not supported, a single JSON only. */
@@ -708,22 +473,12 @@ export interface GoogleCloudRetailV2betaCollectUserEventRequest {
   /** The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters. This is often more useful than the referer URL, because many browsers only send the domain for 3rd party requests. */
   uri?: string;
 }
-const GoogleCloudRetailV2betaCollectUserEventRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaCollectUserEventRequest>;
-
 export interface CollectProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The parent catalog name, such as `projects/1234/locations/global/catalogs/default_catalog`. */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaCollectUserEventRequest;
 }
-const CollectProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CollectProjectsLocationsCatalogsUserEventsRequest>;
-
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface GoogleApiHttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
@@ -733,8 +488,6 @@ export interface GoogleApiHttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-const GoogleApiHttpBody = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GoogleApiHttpBody>;
-
 export interface CompleteQueryProjectsLocationsCatalogsRequest {
   /** Recommended field. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. */
   visitorId?: string;
@@ -755,11 +508,6 @@ export interface CompleteQueryProjectsLocationsCatalogsRequest {
   /** Required. Catalog for which the completion is performed. Full resource name of catalog, such as `projects/*\/locations/global/catalogs/default_catalog`. */
   catalog: string;
 }
-const CompleteQueryProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CompleteQueryProjectsLocationsCatalogsRequest>;
-
 /** Resource that represents completion results. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult {
   /** Custom attributes for the suggestion term. * For `user-data`, the attributes are additional custom attributes ingested through BigQuery. * For `cloud-retail`, the attributes are product attributes generated by Cloud Retail. It requires UserEvent.product_details is imported properly. */
@@ -767,53 +515,23 @@ export interface GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult {
   /** The suggestion for the query. */
   suggestion?: string;
 }
-const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
-
 export type GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList =
   Array<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
-const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList>;
-
 /** Deprecated: Recent search of this user. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult {
   /** The recent search query. */
   recentSearch?: string;
 }
-const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
-
 export type GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList =
   Array<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
-const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList>;
-
 /** Resource that represents attribute results. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult {
   /** The list of suggestions for the attribute. */
   suggestions?: StringList;
 }
-const GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult>;
-
 export type GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap = {
   [key: string]: GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult | undefined;
 };
-const GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap>;
-
 /** Response of the autocomplete query. */
 export interface GoogleCloudRetailV2betaCompleteQueryResponse {
   /** A unique complete token. This should be included in the UserEvent.completion_detail for search events resulting from this completion, which enables accurate attribution of complete model performance. */
@@ -825,19 +543,11 @@ export interface GoogleCloudRetailV2betaCompleteQueryResponse {
   /** A map of matched attribute suggestions. This field is only available for `cloud-retail` dataset. Current supported keys: * `brands` * `categories` */
   attributeResults?: GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap;
 }
-const GoogleCloudRetailV2betaCompleteQueryResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponse>;
-
 export type GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED"
   | "CONVERSATIONAL_FILTER_ONLY";
-const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
-  S.String;
-
 /** Product attribute which structured by an attribute name and value. This structure is used in conversational search filters and answers. For example, if we have `name=color` and `value=red`, this means that the color is `red`. */
 export interface GoogleCloudRetailV2betaProductAttributeValue {
   /** The attribute name. */
@@ -845,22 +555,11 @@ export interface GoogleCloudRetailV2betaProductAttributeValue {
   /** The attribute value. */
   value?: string;
 }
-const GoogleCloudRetailV2betaProductAttributeValue = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeValue>;
-
 /** This field specifies the selected answers during the conversational search. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer {
   /** Optional. This field specifies the selected answer which is a attribute key-value. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-const GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    1,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer>;
-
 /** This field specifies the current user answer during the conversational filtering search. This can be either user selected from suggested answers or user input plain text. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer {
   /** This field specifies the incremental input text from the user during the conversational search. */
@@ -868,11 +567,6 @@ export interface GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer {
   /** Optional. This field specifies the selected answer during the conversational search. This should be a subset of ConversationalSearchResponse.FollowupQuestion.SuggestedAnswer. */
   selectedAnswer?: GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer;
 }
-const GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer>;
-
 /** This field specifies all conversational filtering related parameters addition to conversational retail search. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec {
   /** Optional. This field is deprecated. Please use ConversationalFilteringSpec.conversational_filtering_mode instead. */
@@ -884,12 +578,6 @@ export interface GoogleCloudRetailV2betaConversationalSearchRequestConversationa
   /** Optional. This field specifies the current user answer during the conversational filtering search. It can be either user selected from suggested answers or user input plain text. */
   userAnswer?: GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer;
 }
-const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    3,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec>;
-
 export type GoogleCloudRetailV2betaSafetySettingCategoryEnum =
   | "HARM_CATEGORY_UNSPECIFIED"
   | "HARM_CATEGORY_HATE_SPEECH"
@@ -897,8 +585,6 @@ export type GoogleCloudRetailV2betaSafetySettingCategoryEnum =
   | "HARM_CATEGORY_HARASSMENT"
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
   | "HARM_CATEGORY_CIVIC_INTEGRITY";
-const GoogleCloudRetailV2betaSafetySettingCategoryEnum = S.String;
-
 export type GoogleCloudRetailV2betaSafetySettingThresholdEnum =
   | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
   | "BLOCK_LOW_AND_ABOVE"
@@ -906,14 +592,10 @@ export type GoogleCloudRetailV2betaSafetySettingThresholdEnum =
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
   | "OFF";
-const GoogleCloudRetailV2betaSafetySettingThresholdEnum = S.String;
-
 export type GoogleCloudRetailV2betaSafetySettingMethodEnum =
   | "HARM_BLOCK_METHOD_UNSPECIFIED"
   | "SEVERITY"
   | "PROBABILITY";
-const GoogleCloudRetailV2betaSafetySettingMethodEnum = S.String;
-
 /** Safety settings. */
 export interface GoogleCloudRetailV2betaSafetySetting {
   /** Harm category. */
@@ -923,20 +605,8 @@ export interface GoogleCloudRetailV2betaSafetySetting {
   /** Optional. Specify if the threshold is used for probability or severity score. If not specified, the threshold is used for probability score. */
   method?: GoogleCloudRetailV2betaSafetySettingMethodEnum | (string & {});
 }
-const GoogleCloudRetailV2betaSafetySetting = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaSafetySetting>;
-
 export type GoogleCloudRetailV2betaSafetySettingList = Array<GoogleCloudRetailV2betaSafetySetting>;
-const GoogleCloudRetailV2betaSafetySettingList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaSafetySettingList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<StringMap>;
-
 /** Boost applies to products which match a condition. */
 export interface GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec {
   /** Strength of the condition boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored. */
@@ -944,18 +614,8 @@ export interface GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec
   /** An expression which specifies a boost condition. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": * (id: ANY("product_1", "product_2")) AND (colorFamilies: ANY("Red","Blue")) */
   condition?: string;
 }
-const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
-
 export type GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList =
   Array<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
-const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList>;
-
 /** Boost specification to boost certain items. */
 export interface GoogleCloudRetailV2betaSearchRequestBoostSpec {
   /** Whether to skip boostspec validation. If this field is set to true, invalid BoostSpec.condition_boost_specs will be ignored and valid BoostSpec.condition_boost_specs will still be applied. */
@@ -963,11 +623,6 @@ export interface GoogleCloudRetailV2betaSearchRequestBoostSpec {
   /** Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. */
   conditionBoostSpecs?: GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList;
 }
-const GoogleCloudRetailV2betaSearchRequestBoostSpec = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpec>;
-
 /** Search parameters. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequestSearchParams {
   /** Optional. The boost spec to specify the boosting of search results. The syntax of the boost spec is the same as SearchRequest.boost_spec. */
@@ -979,11 +634,6 @@ export interface GoogleCloudRetailV2betaConversationalSearchRequestSearchParams 
   /** Optional. The sort string to specify the sorting of search results. The syntax of the sort string is the same as SearchRequest.order_by. */
   sortBy?: string;
 }
-const GoogleCloudRetailV2betaConversationalSearchRequestSearchParams = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestSearchParams>;
-
 /** Information of an end user. */
 export interface GoogleCloudRetailV2betaUserInfo {
   /** The end user's IP address. This field is used to extract location information for personalization. This field must be either an IPv4 address (e.g. "104.133.9.80") or an IPv6 address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334"). Otherwise, an INVALID_ARGUMENT error is returned. This should not be set when: * setting SearchRequest.user_info. * using the JavaScript tag in UserEventService.CollectUserEvent or if direct_user_request is set. */
@@ -995,11 +645,6 @@ export interface GoogleCloudRetailV2betaUserInfo {
   /** User agent as included in the HTTP header. The field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This should not be set when using the client side event reporting with GTM or JavaScript tag in UserEventService.CollectUserEvent or if direct_user_request is set. */
   userAgent?: string;
 }
-const GoogleCloudRetailV2betaUserInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaUserInfo>;
-
 /** Request message for ConversationalSearchService.ConversationalSearch method. */
 export interface GoogleCloudRetailV2betaConversationalSearchRequest {
   /** Required. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This should be the same identifier as UserEvent.visitor_id. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. */
@@ -1023,47 +668,23 @@ export interface GoogleCloudRetailV2betaConversationalSearchRequest {
   /** Optional. The categories associated with a category page. Must be set for category navigation queries to achieve good search quality. The format should be the same as UserEvent.page_categories; To represent the full path of category, use the '>' sign, with one space on each side, to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). Category pages include special pages such as sales or promotions. For instance, a special sale page may have the category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"]. */
   pageCategories?: StringList;
 }
-const GoogleCloudRetailV2betaConversationalSearchRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequest>;
-
 export interface ConversationalSearchProjectsLocationsCatalogsPlacementsRequest {
   /** Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search. */
   placement: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaConversationalSearchRequest;
 }
-const ConversationalSearchProjectsLocationsCatalogsPlacementsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsPlacementsRequest>;
-
 export type GoogleCloudRetailV2betaConversationalSearchResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "STREAMING"
   | "SUCCEEDED";
-const GoogleCloudRetailV2betaConversationalSearchResponseStateEnum = S.String;
-
 /** Suggested answers to the follow-up question. If it's numerical attribute, only ProductAttributeInterval will be set. If it's textual attribute, only productAttributeValue will be set. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer {
   /** Product attribute value, including an attribute key and an attribute value. Other types can be added here in the future. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    6,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
-
 export type GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
   Array<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
-const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    7,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList>;
-
 /** The conversational followup question generated for Intent refinement. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion {
   /** The conversational followup question generated for Intent refinement. */
@@ -1071,28 +692,13 @@ export interface GoogleCloudRetailV2betaConversationalSearchResponseFollowupQues
   /** The answer options provided to client for the follow-up question. */
   suggestedAnswers?: GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList;
 }
-const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion>;
-
 /** The proposed refined search for intent-refinement/bundled shopping conversation. When using CONVERSATIONAL_FILTER_ONLY mode, the refined_query from search response will be populated here. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch {
   /** The query to be used for search. */
   query?: string;
 }
-const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
-
 export type GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList =
   Array<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
-const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList>;
-
 /** Additional filter that client side need to apply. */
 export type GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResultAdditionalFilter =
   GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer;
@@ -1103,12 +709,6 @@ export interface GoogleCloudRetailV2betaConversationalSearchResponseConversation
   /** This is the incremental additional filters implied from the current user answer. User should add the suggested addition filters to the previous ConversationalSearchRequest.SearchParams.filter and SearchRequest.filter, and use the merged filter in the follow up requests. */
   additionalFilter?: GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer;
 }
-const GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    3,
-  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult>;
-
 /** Response message for ConversationalSearchService.ConversationalSearch method. */
 export interface GoogleCloudRetailV2betaConversationalSearchResponse {
   /** The conversational answer-based text response generated by the Server. */
@@ -1126,22 +726,12 @@ export interface GoogleCloudRetailV2betaConversationalSearchResponse {
   /** This field specifies all related information that is needed on client side for UI rendering of conversational filtering search. */
   conversationalFilteringResult?: GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult;
 }
-const GoogleCloudRetailV2betaConversationalSearchResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponse>;
-
 export interface ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search. */
   placement: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaConversationalSearchRequest;
 }
-const ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest>;
-
 /** Product image. Recommendations AI and Retail Search use product images to improve prediction and search results. Product images can be returned in results, and are shown in prediction or search previews in the console. Please try to provide correct product images and avoid using images with size too small. */
 export interface GoogleCloudRetailV2betaImage {
   /** Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned. */
@@ -1151,31 +741,14 @@ export interface GoogleCloudRetailV2betaImage {
   /** Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned. */
   width?: number;
 }
-const GoogleCloudRetailV2betaImage = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaImage>;
-
 export type GoogleCloudRetailV2betaImageList = Array<GoogleCloudRetailV2betaImage>;
-const GoogleCloudRetailV2betaImageList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaImageList>;
-
 export type GoogleCloudRetailV2betaProductAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "PREORDER"
   | "BACKORDER";
-const GoogleCloudRetailV2betaProductAvailabilityEnum = S.String;
-
 export type GoogleCloudRetailV2betaProductList = Array<GoogleCloudRetailV2betaProduct>;
-const GoogleCloudRetailV2betaProductList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaProductList>;
-
 /** An intended audience of the Product for whom it's sold. */
 export interface GoogleCloudRetailV2betaAudience {
   /** The genders of the audience. Strongly encouraged to use the standard values: "male", "female", "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](https://support.google.com/merchants/answer/6324479). Schema.org property [Product.audience.suggestedGender](https://schema.org/suggestedGender). */
@@ -1183,11 +756,6 @@ export interface GoogleCloudRetailV2betaAudience {
   /** The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3-12 months old), "toddler" (1-5 years old), "kids" (5-13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge). */
   ageGroups?: StringList;
 }
-const GoogleCloudRetailV2betaAudience = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaAudience>;
-
 /** The color information of a Product. */
 export interface GoogleCloudRetailV2betaColorInfo {
   /** The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 75 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color). */
@@ -1195,14 +763,7 @@ export interface GoogleCloudRetailV2betaColorInfo {
   /** The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color). The colorFamilies field as a system attribute is not a required field but strongly recommended to be specified. Google Search models treat this field as more important than a custom product attribute when specified. */
   colorFamilies?: StringList;
 }
-const GoogleCloudRetailV2betaColorInfo = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaColorInfo>;
-
 export type IntegerList = Array<number>;
-const IntegerList = DoubleList as any as S.Schema<IntegerList>;
-
 /** The rating of a Product. */
 export interface GoogleCloudRetailV2betaRating {
   /** The total number of ratings. This value is independent of the value of rating_histogram. This value must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned. */
@@ -1212,11 +773,6 @@ export interface GoogleCloudRetailV2betaRating {
   /** The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned. */
   averageRating?: number;
 }
-const GoogleCloudRetailV2betaRating = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaRating>;
-
 /** Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. */
 export interface GoogleCloudRetailV2betaFulfillmentInfo {
   /** The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. */
@@ -1224,41 +780,19 @@ export interface GoogleCloudRetailV2betaFulfillmentInfo {
   /** The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned. */
   placeIds?: StringList;
 }
-const GoogleCloudRetailV2betaFulfillmentInfo = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfo>;
-
 export type GoogleCloudRetailV2betaFulfillmentInfoList =
   Array<GoogleCloudRetailV2betaFulfillmentInfo>;
-const GoogleCloudRetailV2betaFulfillmentInfoList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfoList>;
-
 export type GoogleCloudRetailV2betaProductTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PRIMARY"
   | "VARIANT"
   | "COLLECTION";
-const GoogleCloudRetailV2betaProductTypeEnum = S.String;
-
 /** Promotion specification. */
 export interface GoogleCloudRetailV2betaPromotion {
   /** Promotion identifier, which is the final component of name. For example, this field is "free_gift", if name is `projects/*\/locations/global/catalogs/default_catalog/promotions/free_gift`. The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Corresponds to Google Merchant Center property [promotion_id](https://support.google.com/merchants/answer/7050148). */
   promotionId?: string;
 }
-const GoogleCloudRetailV2betaPromotion = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaPromotion>;
-
 export type GoogleCloudRetailV2betaPromotionList = Array<GoogleCloudRetailV2betaPromotion>;
-const GoogleCloudRetailV2betaPromotionList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaPromotionList>;
-
 /** Product captures all metadata information of items to be recommended or searched. */
 export interface GoogleCloudRetailV2betaProduct {
   /** Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset. */
@@ -1330,11 +864,6 @@ export interface GoogleCloudRetailV2betaProduct {
   /** The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return. */
   collectionMemberIds?: StringList;
 }
-const GoogleCloudRetailV2betaProduct = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaProduct>;
-
 export interface CreateProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. The parent catalog resource name, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch`. */
   parent: string;
@@ -1343,11 +872,6 @@ export interface CreateProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaProduct;
 }
-const CreateProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateProjectsLocationsCatalogsBranchesProductsRequest>;
-
 export type GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
   | "SOLUTION_TYPE_RECOMMENDATION"
@@ -1355,23 +879,13 @@ export type GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
 export type GoogleCloudRetailV2betaControlSolutionTypesItemEnumList = Array<
   GoogleCloudRetailV2betaControlSolutionTypesItemEnum | (string & {})
 >;
-const GoogleCloudRetailV2betaControlSolutionTypesItemEnumList =
-  GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList as any as S.Schema<GoogleCloudRetailV2betaControlSolutionTypesItemEnumList>;
-
 export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum =
   | "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"
   | "SEARCH_SOLUTION_USE_CASE_SEARCH"
   | "SEARCH_SOLUTION_USE_CASE_BROWSE";
-const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum = S.String;
-
 export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList = Array<
   GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum | (string & {})
 >;
-const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList>;
-
 /** Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position. */
 export interface GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment {
   /** The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long. */
@@ -1379,30 +893,13 @@ export interface GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionA
   /** This is the position in the request as explained above. It should be strictly positive be at most 100. */
   position?: number;
 }
-const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    3,
-  ) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
-
 export type GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList =
   Array<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
-const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    4,
-  ) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList>;
-
 /** Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank. */
 export interface GoogleCloudRetailV2betaRuleForceReturnFacetAction {
   /** Each instance corresponds to a force return attribute for the given condition. There can't be more 15 instances here. */
   facetPositionAdjustments?: GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList;
 }
-const GoogleCloudRetailV2betaRuleForceReturnFacetAction = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetAction>;
-
 /** Query terms that we want to match on. */
 export interface GoogleCloudRetailV2betaConditionQueryTerm {
   /** Whether this is supposed to be a full or partial match. */
@@ -1410,18 +907,8 @@ export interface GoogleCloudRetailV2betaConditionQueryTerm {
   /** The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match. */
   value?: string;
 }
-const GoogleCloudRetailV2betaConditionQueryTerm = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaConditionQueryTerm>;
-
 export type GoogleCloudRetailV2betaConditionQueryTermList =
   Array<GoogleCloudRetailV2betaConditionQueryTerm>;
-const GoogleCloudRetailV2betaConditionQueryTermList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaConditionQueryTermList>;
-
 /** Used for time-dependent conditions. Example: Want to have rule applied for week long sale. */
 export interface GoogleCloudRetailV2betaConditionTimeRange {
   /** End of time range. Range is inclusive. */
@@ -1429,18 +916,8 @@ export interface GoogleCloudRetailV2betaConditionTimeRange {
   /** Start of time range. Range is inclusive. */
   startTime?: string;
 }
-const GoogleCloudRetailV2betaConditionTimeRange = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaConditionTimeRange>;
-
 export type GoogleCloudRetailV2betaConditionTimeRangeList =
   Array<GoogleCloudRetailV2betaConditionTimeRange>;
-const GoogleCloudRetailV2betaConditionTimeRangeList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaConditionTimeRangeList>;
-
 /** Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted. */
 export interface GoogleCloudRetailV2betaCondition {
   /** A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator). */
@@ -1450,21 +927,11 @@ export interface GoogleCloudRetailV2betaCondition {
   /** Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories; */
   pageCategories?: StringList;
 }
-const GoogleCloudRetailV2betaCondition = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaCondition>;
-
 /** Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers". */
 export interface GoogleCloudRetailV2betaRuleTwowaySynonymsAction {
   /** Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms. */
   synonyms?: StringList;
 }
-const GoogleCloudRetailV2betaRuleTwowaySynonymsAction = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleTwowaySynonymsAction>;
-
 /** Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers". */
 export interface GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
   /** Will be [deprecated = true] post migration; */
@@ -1474,11 +941,6 @@ export interface GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
   /** Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms. */
   queryTerms?: StringList;
 }
-const GoogleCloudRetailV2betaRuleOnewaySynonymsAction = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleOnewaySynonymsAction>;
-
 /** Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap". */
 export interface GoogleCloudRetailV2betaRuleDoNotAssociateAction {
   /** Will be [deprecated = true] post migration; */
@@ -1488,31 +950,16 @@ export interface GoogleCloudRetailV2betaRuleDoNotAssociateAction {
   /** Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms. */
   queryTerms?: StringList;
 }
-const GoogleCloudRetailV2betaRuleDoNotAssociateAction = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleDoNotAssociateAction>;
-
 /** Prevents a term in the query from being used in search. Example: Don't search for "shoddy". */
 export interface GoogleCloudRetailV2betaRuleIgnoreAction {
   /** Terms to ignore in the search query. */
   ignoreTerms?: StringList;
 }
-const GoogleCloudRetailV2betaRuleIgnoreAction = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleIgnoreAction>;
-
 /** Pins one or more specified products to a specific position in the results. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: mapping of `[pin_position, product_id]` pairs (pin position uses 1-based indexing). * Action Result: Will pin products with matching ids to the position specified in the final result order. Example: Suppose the query is `shoes`, the Condition.query_terms is `shoes` and the pin_map has `{1, "pid1"}`, then product with `pid1` will be pinned to the top position in the final results. If multiple PinActions are matched to a single request the actions will be processed from most to least recently updated. Pins to positions larger than the max allowed page size of 120 are not allowed. */
 export interface GoogleCloudRetailV2betaRulePinAction {
   /** Required. A map of positions to product_ids. Partial matches per action are allowed, if a certain position in the map is already filled that `[position, product_id]` pair will be ignored but the rest may still be applied. This case will only occur if multiple pin actions are matched to a single request, as the map guarantees that pin positions are unique within the same action. Duplicate product_ids are not permitted within a single pin map. The max size of this map is 120, equivalent to the max [request page size](https://cloud.google.com/retail/docs/reference/rest/v2/projects.locations.catalogs.placements/search#request-body). */
   pinMap?: StringMap;
 }
-const GoogleCloudRetailV2betaRulePinAction = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaRulePinAction>;
-
 /** Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe". */
 export interface GoogleCloudRetailV2betaRuleReplacementAction {
   /** Will be [deprecated = true] post migration; */
@@ -1522,41 +969,21 @@ export interface GoogleCloudRetailV2betaRuleReplacementAction {
   /** Term that will be used for replacement. */
   replacementTerm?: string;
 }
-const GoogleCloudRetailV2betaRuleReplacementAction = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleReplacementAction>;
-
 /** * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter. */
 export interface GoogleCloudRetailV2betaRuleFilterAction {
   /** A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) * */
   filter?: string;
 }
-const GoogleCloudRetailV2betaRuleFilterAction = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleFilterAction>;
-
 /** Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri. */
 export interface GoogleCloudRetailV2betaRuleRedirectAction {
   /** URL must have length equal or less than 2000 characters. */
   redirectUri?: string;
 }
-const GoogleCloudRetailV2betaRuleRedirectAction = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleRedirectAction>;
-
 /** Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present). */
 export interface GoogleCloudRetailV2betaRuleRemoveFacetAction {
   /** The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters. */
   attributeNames?: StringList;
 }
-const GoogleCloudRetailV2betaRuleRemoveFacetAction = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleRemoveFacetAction>;
-
 /** A boost action to apply to results matching condition specified above. */
 export interface GoogleCloudRetailV2betaRuleBoostAction {
   /** The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) * */
@@ -1564,11 +991,6 @@ export interface GoogleCloudRetailV2betaRuleBoostAction {
   /** Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored. */
   boost?: number;
 }
-const GoogleCloudRetailV2betaRuleBoostAction = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaRuleBoostAction>;
-
 /** A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH. */
 export interface GoogleCloudRetailV2betaRule {
   /** Force returns an attribute as a facet in the request. */
@@ -1596,11 +1018,6 @@ export interface GoogleCloudRetailV2betaRule {
   /** A boost action. */
   boostAction?: GoogleCloudRetailV2betaRuleBoostAction;
 }
-const GoogleCloudRetailV2betaRule = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaRule>;
-
 /** Configures dynamic metadata that can be linked to a ServingConfig and affect search or recommendation results at serving time. */
 export interface GoogleCloudRetailV2betaControl {
   /** Required. Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH. */
@@ -1616,11 +1033,6 @@ export interface GoogleCloudRetailV2betaControl {
   /** A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes". */
   rule?: GoogleCloudRetailV2betaRule;
 }
-const GoogleCloudRetailV2betaControl = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaControl>;
-
 export interface CreateProjectsLocationsCatalogsControlsRequest {
   /** Required. Full resource name of parent catalog. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
   parent: string;
@@ -1629,54 +1041,30 @@ export interface CreateProjectsLocationsCatalogsControlsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaControl;
 }
-const CreateProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateProjectsLocationsCatalogsControlsRequest>;
-
 /** Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations. */
 export interface GoogleCloudRetailV2betaModelServingConfigList {
   /** Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`. */
   servingConfigIds?: StringList;
 }
-const GoogleCloudRetailV2betaModelServingConfigList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaModelServingConfigList>;
-
 export type GoogleCloudRetailV2betaModelServingConfigListList =
   Array<GoogleCloudRetailV2betaModelServingConfigList>;
-const GoogleCloudRetailV2betaModelServingConfigListList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaModelServingConfigListList>;
-
 export type GoogleCloudRetailV2betaModelPeriodicTuningStateEnum =
   | "PERIODIC_TUNING_STATE_UNSPECIFIED"
   | "PERIODIC_TUNING_DISABLED"
   | "ALL_TUNING_DISABLED"
   | "PERIODIC_TUNING_ENABLED";
-const GoogleCloudRetailV2betaModelPeriodicTuningStateEnum = S.String;
-
 export type GoogleCloudRetailV2betaModelFilteringOptionEnum =
   | "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
   | "RECOMMENDATIONS_FILTERING_DISABLED"
   | "RECOMMENDATIONS_FILTERING_ENABLED";
-const GoogleCloudRetailV2betaModelFilteringOptionEnum = S.String;
-
 export type GoogleCloudRetailV2betaModelDataStateEnum =
   | "DATA_STATE_UNSPECIFIED"
   | "DATA_OK"
   | "DATA_ERROR";
-const GoogleCloudRetailV2betaModelDataStateEnum = S.String;
-
 export type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
   | "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED"
   | "SINGLE_CONTEXT_PRODUCT"
   | "MULTIPLE_CONTEXT_PRODUCTS";
-const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
-  S.String;
-
 /** Additional configs for the frequently-bought-together model type. */
 export interface GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig {
   /** Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS. */
@@ -1684,34 +1072,20 @@ export interface GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesCon
     | GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum
     | (string & {});
 }
-const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig>;
-
 /** Additional model features config. */
 export interface GoogleCloudRetailV2betaModelModelFeaturesConfig {
   /** Additional configs for frequently-bought-together models. */
   frequentlyBoughtTogetherConfig?: GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig;
 }
-const GoogleCloudRetailV2betaModelModelFeaturesConfig = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaModelModelFeaturesConfig>;
-
 export type GoogleCloudRetailV2betaModelTrainingStateEnum =
   | "TRAINING_STATE_UNSPECIFIED"
   | "PAUSED"
   | "TRAINING";
-const GoogleCloudRetailV2betaModelTrainingStateEnum = S.String;
-
 export type GoogleCloudRetailV2betaModelServingStateEnum =
   | "SERVING_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ACTIVE"
   | "TUNED";
-const GoogleCloudRetailV2betaModelServingStateEnum = S.String;
-
 /** Metadata that describes the training and serving parameters of a Model. A Model can be associated with a ServingConfig and then queried through the Predict API. */
 export interface GoogleCloudRetailV2betaModel {
   /** Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs. */
@@ -1745,11 +1119,6 @@ export interface GoogleCloudRetailV2betaModel {
   /** Required. The display name of the model. Should be human readable, used to display Recommendation Models in the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters. */
   displayName?: string;
 }
-const GoogleCloudRetailV2betaModel = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaModel>;
-
 export interface CreateProjectsLocationsCatalogsModelsRequest {
   /** Required. The parent resource under which to create the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
   parent: string;
@@ -1758,11 +1127,6 @@ export interface CreateProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaModel;
 }
-const CreateProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateProjectsLocationsCatalogsModelsRequest>;
-
 export interface CreateProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/. */
   servingConfigId?: string;
@@ -1771,61 +1135,29 @@ export interface CreateProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaServingConfig;
 }
-const CreateProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<CreateProjectsLocationsCatalogsServingConfigsRequest>;
-
 export interface DeleteProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to delete the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Product to delete does not exist, a NOT_FOUND error is returned. The Product to delete can neither be a Product.Type.COLLECTION Product member nor a Product.Type.PRIMARY Product with more than one variants. Otherwise, an INVALID_ARGUMENT error is returned. All inventory information for the named Product will be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<GoogleProtobufEmpty>;
-
 export interface DeleteProjectsLocationsCatalogsControlsRequest {
   /** Required. The resource name of the Control to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}` */
   name: string;
 }
-const DeleteProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsCatalogsControlsRequest>;
-
 export interface DeleteProjectsLocationsCatalogsModelsRequest {
   /** Required. The resource name of the Model to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` */
   name: string;
 }
-const DeleteProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsCatalogsModelsRequest>;
-
 export interface DeleteProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-const DeleteProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsCatalogsServingConfigsRequest>;
-
 /** The Google Cloud Storage output destination configuration. */
 export interface GoogleCloudRetailV2betaOutputConfigGcsDestination {
   /** Required. The output uri prefix for saving output data to json files. Some mapping examples are as follows: output_uri_prefix sample output(assuming the object is foo.json) ======================== ============================================= gs://bucket/ gs://bucket/foo.json gs://bucket/folder/ gs://bucket/folder/foo.json gs://bucket/folder/item_ gs://bucket/folder/item_foo.json */
   outputUriPrefix?: string;
 }
-const GoogleCloudRetailV2betaOutputConfigGcsDestination = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaOutputConfigGcsDestination>;
-
 /** The BigQuery output destination configuration. */
 export interface GoogleCloudRetailV2betaOutputConfigBigQueryDestination {
   /** Required. Describes the table type. The following values are supported: * `table`: A BigQuery native table. * `view`: A virtual table defined by a SQL query. */
@@ -1835,11 +1167,6 @@ export interface GoogleCloudRetailV2betaOutputConfigBigQueryDestination {
   /** Required. The prefix of exported BigQuery tables. */
   tableIdPrefix?: string;
 }
-const GoogleCloudRetailV2betaOutputConfigBigQueryDestination = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaOutputConfigBigQueryDestination>;
-
 /** The output configuration setting. */
 export interface GoogleCloudRetailV2betaOutputConfig {
   /** The Google Cloud Storage location where the output is to be written to. */
@@ -1847,11 +1174,6 @@ export interface GoogleCloudRetailV2betaOutputConfig {
   /** The BigQuery location where the output is to be written to. */
   bigqueryDestination?: GoogleCloudRetailV2betaOutputConfigBigQueryDestination;
 }
-const GoogleCloudRetailV2betaOutputConfig = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaOutputConfig>;
-
 /** Request message for the `ExportAnalyticsMetrics` method. */
 export interface GoogleCloudRetailV2betaExportAnalyticsMetricsRequest {
   /** Required. The output location of the data. Only `bigquery_destination` is supported, and `bigquery_destination.table_type` must be set to `view`. */
@@ -1859,22 +1181,12 @@ export interface GoogleCloudRetailV2betaExportAnalyticsMetricsRequest {
   /** A filtering expression to specify restrictions on returned metrics. The expression is a sequence of terms. Each term applies a restriction to the returned metrics. Use this expression to restrict results to a specific time range. Currently we expect only one types of fields: * `timestamp`: This can be specified twice, once with a less than operator and once with a greater than operator. The `timestamp` restriction should result in one, contiguous, valid, `timestamp` range. Some examples of valid filters expressions: * Example 1: `timestamp > "2012-04-23T18:25:43.511Z" timestamp < "2012-04-23T18:30:43.511Z"` * Example 2: `timestamp > "2012-04-23T18:25:43.511Z"` */
   filter?: string;
 }
-const GoogleCloudRetailV2betaExportAnalyticsMetricsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaExportAnalyticsMetricsRequest>;
-
 export interface ExportAnalyticsMetricsProjectsLocationsCatalogsRequest {
   /** Required. Full resource name of the parent catalog. Expected format: `projects/*\/locations/*\/catalogs/*` */
   catalog: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaExportAnalyticsMetricsRequest;
 }
-const ExportAnalyticsMetricsProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ExportAnalyticsMetricsProjectsLocationsCatalogsRequest>;
-
 /** Request message for ExportProducts method. */
 export interface GoogleCloudRetailV2betaExportProductsRequest {
   /** Deprecated: This field is deprecated. Any filter provided will be ignored. */
@@ -1882,22 +1194,12 @@ export interface GoogleCloudRetailV2betaExportProductsRequest {
   /** Required. The output location of the data. Only `bigquery_destination` is supported, and `bigquery_destination.table_type` must be set to `view`. */
   outputConfig?: GoogleCloudRetailV2betaOutputConfig;
 }
-const GoogleCloudRetailV2betaExportProductsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaExportProductsRequest>;
-
 export interface ExportProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Resource name of a Branch, and `default_branch` for branch_id component is supported. For example `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaExportProductsRequest;
 }
-const ExportProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ExportProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Request message for the `ExportUserEvents` method. */
 export type GoogleCloudRetailV2betaExportUserEventsRequest =
   GoogleCloudRetailV2betaExportProductsRequest;
@@ -1907,43 +1209,21 @@ export interface ExportProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaExportProductsRequest;
 }
-const ExportProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ExportProjectsLocationsCatalogsUserEventsRequest>;
-
 export interface GetAlertConfigProjectsRequest {
   /** Required. Full AlertConfig resource name. Format: projects/{project_number}/alertConfig */
   name: string;
 }
-const GetAlertConfigProjectsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetAlertConfigProjectsRequest>;
-
 /** Recipient contact information. */
 export interface GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient {
   /** Email address of the recipient. */
   emailAddress?: string;
 }
-const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
-
 export type GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList =
   Array<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
-const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList>;
-
 export type GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum =
   | "ENROLL_STATUS_UNSPECIFIED"
   | "ENROLLED"
   | "DECLINED";
-const GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum = S.String;
-
 /** Alert policy for a customer. */
 export interface GoogleCloudRetailV2betaAlertConfigAlertPolicy {
   /** Recipients for the alert policy. One alert policy should not exceed 20 recipients. */
@@ -1953,18 +1233,8 @@ export interface GoogleCloudRetailV2betaAlertConfigAlertPolicy {
   /** The enrollment status of a customer. */
   enrollStatus?: GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum | (string & {});
 }
-const GoogleCloudRetailV2betaAlertConfigAlertPolicy = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
-
 export type GoogleCloudRetailV2betaAlertConfigAlertPolicyList =
   Array<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
-const GoogleCloudRetailV2betaAlertConfigAlertPolicyList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyList>;
-
 /** Project level alert config. */
 export interface GoogleCloudRetailV2betaAlertConfig {
   /** Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*\/alertConfig */
@@ -1972,29 +1242,14 @@ export interface GoogleCloudRetailV2betaAlertConfig {
   /** Alert policies for a customer. They must be unique by [AlertPolicy.alert_group] */
   alertPolicies?: GoogleCloudRetailV2betaAlertConfigAlertPolicyList;
 }
-const GoogleCloudRetailV2betaAlertConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaAlertConfig>;
-
 export interface GetAttributesConfigProjectsLocationsCatalogsRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
   name: string;
 }
-const GetAttributesConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetAttributesConfigProjectsLocationsCatalogsRequest>;
-
 export interface GetCompletionConfigProjectsLocationsCatalogsRequest {
   /** Required. Full CompletionConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig` */
   name: string;
 }
-const GetCompletionConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetCompletionConfigProjectsLocationsCatalogsRequest>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -2004,8 +1259,6 @@ export interface GoogleTypeDate {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-const GoogleTypeDate = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<GoogleTypeDate>;
-
 /** BigQuery source import data from. */
 export interface GoogleCloudRetailV2betaBigQuerySource {
   /** BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format. */
@@ -2021,21 +1274,11 @@ export interface GoogleCloudRetailV2betaBigQuerySource {
   /** Required. The BigQuery data set to copy the data from with a length limit of 1,024 characters. */
   datasetId?: string;
 }
-const GoogleCloudRetailV2betaBigQuerySource = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaBigQuerySource>;
-
 /** The input config source for completion data. */
 export interface GoogleCloudRetailV2betaCompletionDataInputConfig {
   /** Required. BigQuery input source. Add the IAM permission "BigQuery Data Viewer" for cloud-retail-customer-data-access@system.gserviceaccount.com before using this feature otherwise an error is thrown. */
   bigQuerySource?: GoogleCloudRetailV2betaBigQuerySource;
 }
-const GoogleCloudRetailV2betaCompletionDataInputConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaCompletionDataInputConfig>;
-
 /** Catalog level autocomplete config for customers to customize autocomplete feature's settings. */
 export interface GoogleCloudRetailV2betaCompletionConfig {
   /** The maximum number of autocomplete suggestions returned per term. Default value is 20. If left unset or set to 0, then will fallback to default value. Value range is 1 to 20. */
@@ -2061,27 +1304,14 @@ export interface GoogleCloudRetailV2betaCompletionConfig {
   /** Output only. The source data for the latest import of the autocomplete allowlist phrases. */
   allowlistInputConfig?: GoogleCloudRetailV2betaCompletionDataInputConfig;
 }
-const GoogleCloudRetailV2betaCompletionConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaCompletionConfig>;
-
 export interface GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   name: string;
 }
-const GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    0,
-  ) as any as S.Schema<GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>;
-
 export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum =
   | "OPERATION_UNSPECIFIED"
   | "EXACT_MATCH"
   | "CONTAINS";
-const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum = S.String;
-
 /** An inline force intent classification configuration. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent {
   /** Optional. The operation to perform for the query. */
@@ -2093,28 +1323,13 @@ export interface GoogleCloudRetailV2betaIntentClassificationConfigInlineForceInt
   /** Optional. The intent_type must match one of the predefined intent types defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype */
   intentType?: string;
 }
-const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
-
 export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList =
   Array<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
-const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList>;
-
 /** Inline source for intent classifications. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfigInlineSource {
   /** Optional. A list of inline force intent classifications. */
   inlineForceIntents?: GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList;
 }
-const GoogleCloudRetailV2betaIntentClassificationConfigInlineSource = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineSource>;
-
 /** An example for intent classification. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfigExample {
   /** Optional. The intent_type must match one of the predefined intent types defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype */
@@ -2126,18 +1341,8 @@ export interface GoogleCloudRetailV2betaIntentClassificationConfigExample {
   /** Required. Example query. */
   query?: string;
 }
-const GoogleCloudRetailV2betaIntentClassificationConfigExample = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
-
 export type GoogleCloudRetailV2betaIntentClassificationConfigExampleList =
   Array<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
-const GoogleCloudRetailV2betaIntentClassificationConfigExampleList = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExampleList>;
-
 /** The public proto to represent the intent classification config. It will be converted to the internal proto in the backend. */
 export interface GoogleCloudRetailV2betaIntentClassificationConfig {
   /** Optional. Inline source for intent classifications. */
@@ -2151,11 +1356,6 @@ export interface GoogleCloudRetailV2betaIntentClassificationConfig {
   /** Optional. A list of intent types that will be disabled for this customer. The intent types must match one of the predefined intent types defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype */
   disabledIntentTypes?: StringList;
 }
-const GoogleCloudRetailV2betaIntentClassificationConfig = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfig>;
-
 /** The public proto to represent the conversational search customization config. It will be converted to the internal proto in the backend. */
 export interface GoogleCloudRetailV2betaConversationalSearchCustomizationConfig {
   /** Optional. The configs for intent classification. */
@@ -2165,20 +1365,10 @@ export interface GoogleCloudRetailV2betaConversationalSearchCustomizationConfig 
   /** Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   catalog?: string;
 }
-const GoogleCloudRetailV2betaConversationalSearchCustomizationConfig = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchCustomizationConfig>;
-
 export interface GetDefaultBranchProjectsLocationsCatalogsRequest {
   /** The parent catalog resource name, such as `projects/*\/locations/global/catalogs/default_catalog`. */
   catalog: string;
 }
-const GetDefaultBranchProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetDefaultBranchProjectsLocationsCatalogsRequest>;
-
 /** Response message of CatalogService.GetDefaultBranch. */
 export interface GoogleCloudRetailV2betaGetDefaultBranchResponse {
   /** This corresponds to SetDefaultBranchRequest.note field, when this branch was set as default. */
@@ -2188,20 +1378,10 @@ export interface GoogleCloudRetailV2betaGetDefaultBranchResponse {
   /** Full resource name of the branch id currently set as default branch. */
   branch?: string;
 }
-const GoogleCloudRetailV2betaGetDefaultBranchResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaGetDefaultBranchResponse>;
-
 export interface GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   catalog: string;
 }
-const GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>;
-
 /** Configuration for overall generative question feature state. */
 export interface GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig {
   /** Required. Resource name of the affected catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
@@ -2211,93 +1391,43 @@ export interface GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig {
   /** Optional. Determines whether questions will be used at serving time. Note: This feature cannot be enabled until initial data requirements are satisfied. */
   featureEnabled?: boolean;
 }
-const GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig>;
-
 export interface GetProjectsLocationsCatalogsBranchesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsCatalogsBranchesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetProjectsLocationsCatalogsBranchesOperationsRequest>;
-
 export interface GetProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Product does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-const GetProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetProjectsLocationsCatalogsBranchesProductsRequest>;
-
 export interface GetProjectsLocationsCatalogsControlsRequest {
   /** Required. The resource name of the Control to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}` */
   name: string;
 }
-const GetProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GetProjectsLocationsCatalogsControlsRequest>;
-
 export interface GetProjectsLocationsCatalogsModelsRequest {
   /** Required. The resource name of the Model to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog}/models/{model_id}` */
   name: string;
 }
-const GetProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetProjectsLocationsCatalogsModelsRequest>;
-
 export interface GetProjectsLocationsCatalogsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsCatalogsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>;
-
 export interface GetProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-const GetProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetProjectsLocationsCatalogsServingConfigsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetProjectsOperationsRequest>;
-
 /** The inline source for the input config for ImportProducts method. */
 export interface GoogleCloudRetailV2betaProductInlineSource {
   /** Required. A list of products to update/create. Each product must have a valid Product.id. Recommended max of 100 items. */
   products?: GoogleCloudRetailV2betaProductList;
 }
-const GoogleCloudRetailV2betaProductInlineSource = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaProductInlineSource>;
-
 /** Google Cloud Storage location for input content. */
 export interface GoogleCloudRetailV2betaGcsSource {
   /** The schema to use when parsing the data from the source. Supported values for product imports: * `product` (default): One JSON Product per line. Each product must have a valid Product.id. * `product_merchant_center`: See [Importing catalog data from Merchant Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: Using https://support.google.com/analytics/answer/3437719. Supported values for control imports: * `control` (default): One JSON Control per line. Supported values for catalog attribute imports: * `catalog_attribute` (default): One CSV CatalogAttribute per line. */
@@ -2305,11 +1435,6 @@ export interface GoogleCloudRetailV2betaGcsSource {
   /** Required. Google Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match the full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such as `gs://bucket/directory/*.json`. A request can contain at most 100 files, and each file can be up to 2 GB. See [Importing product information](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog) for the expected file format and setup instructions. */
   inputUris?: StringList;
 }
-const GoogleCloudRetailV2betaGcsSource = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaGcsSource>;
-
 /** The input config source for products. */
 export interface GoogleCloudRetailV2betaProductInputConfig {
   /** The Inline source for the input content for products. */
@@ -2319,27 +1444,15 @@ export interface GoogleCloudRetailV2betaProductInputConfig {
   /** BigQuery input source. */
   bigQuerySource?: GoogleCloudRetailV2betaBigQuerySource;
 }
-const GoogleCloudRetailV2betaProductInputConfig = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaProductInputConfig>;
-
 export type GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum =
   | "RECONCILIATION_MODE_UNSPECIFIED"
   | "INCREMENTAL"
   | "FULL";
-const GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum = S.String;
-
 /** Configuration of destination for Import related errors. */
 export interface GoogleCloudRetailV2betaImportErrorsConfig {
   /** Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory. Import errors are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
-const GoogleCloudRetailV2betaImportErrorsConfig = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaImportErrorsConfig>;
-
 /** Request message for Import methods. */
 export interface GoogleCloudRetailV2betaImportProductsRequest {
   /** Indicates which fields in the provided imported `products` to update. If not set, all fields are updated. If provided, only the existing product fields are updated. Missing products will not be created. */
@@ -2357,22 +1470,12 @@ export interface GoogleCloudRetailV2betaImportProductsRequest {
   /** The desired location of errors incurred during the Import. */
   errorsConfig?: GoogleCloudRetailV2betaImportErrorsConfig;
 }
-const GoogleCloudRetailV2betaImportProductsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaImportProductsRequest>;
-
 export interface ImportProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` If no updateMask is specified, requires products.create permission. If updateMask is specified, requires products.update permission. */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaImportProductsRequest;
 }
-const ImportProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ImportProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Request message for ImportCompletionData methods. */
 export interface GoogleCloudRetailV2betaImportCompletionDataRequest {
   /** Pub/Sub topic for receiving notification. If this field is set, when the import is finished, a notification is sent to specified Pub/Sub topic. The message data is JSON string of a Operation. Format of the Pub/Sub topic is `projects/{project}/topics/{topic}`. */
@@ -2380,22 +1483,12 @@ export interface GoogleCloudRetailV2betaImportCompletionDataRequest {
   /** Required. The desired input location of the data. */
   inputConfig?: GoogleCloudRetailV2betaCompletionDataInputConfig;
 }
-const GoogleCloudRetailV2betaImportCompletionDataRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaImportCompletionDataRequest>;
-
 export interface ImportProjectsLocationsCatalogsCompletionDataRequest {
   /** Required. The catalog which the suggestions dataset belongs to. Format: `projects/1234/locations/global/catalogs/default_catalog`. */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaImportCompletionDataRequest;
 }
-const ImportProjectsLocationsCatalogsCompletionDataRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ImportProjectsLocationsCatalogsCompletionDataRequest>;
-
 /** Detailed product information associated with a user event. */
 export interface GoogleCloudRetailV2betaProductDetail {
   /** Quantity of the product associated with the user event. For example, this field will be 2 if two products are added to the shopping cart for `purchase-complete` event. Required for `add-to-cart` and `purchase-complete` event types. */
@@ -2403,17 +1496,7 @@ export interface GoogleCloudRetailV2betaProductDetail {
   /** Required. Product information. Required field(s): * Product.id Optional override field(s): * Product.price_info If any supported optional fields are provided, we will treat them as a full override when looking up product information from the catalog. Thus, it is important to ensure that the overriding fields are accurate and complete. All other product fields are ignored and instead populated via catalog lookup after event ingestion. */
   product?: GoogleCloudRetailV2betaProduct;
 }
-const GoogleCloudRetailV2betaProductDetail = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaProductDetail>;
-
 export type GoogleCloudRetailV2betaProductDetailList = Array<GoogleCloudRetailV2betaProductDetail>;
-const GoogleCloudRetailV2betaProductDetailList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaProductDetailList>;
-
 /** Detailed panel information associated with a user event. */
 export interface GoogleCloudRetailV2betaPanelInfo {
   /** Optional. The total number of panels, including this one, shown to the user. Must be set if panel_position is set. */
@@ -2429,17 +1512,7 @@ export interface GoogleCloudRetailV2betaPanelInfo {
   /** Required. The panel ID. */
   panelId?: string;
 }
-const GoogleCloudRetailV2betaPanelInfo = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaPanelInfo>;
-
 export type GoogleCloudRetailV2betaPanelInfoList = Array<GoogleCloudRetailV2betaPanelInfo>;
-const GoogleCloudRetailV2betaPanelInfoList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaPanelInfoList>;
-
 /** A transaction represents the entire purchase transaction. */
 export interface GoogleCloudRetailV2betaPurchaseTransaction {
   /** Required. Total non-zero revenue or grand total associated with the transaction. This value include shipping, tax, or other adjustments to total revenue that you want to include as part of your revenue calculations. */
@@ -2453,11 +1526,6 @@ export interface GoogleCloudRetailV2betaPurchaseTransaction {
   /** Required. Currency code. Use three-character ISO-4217 code. */
   currencyCode?: string;
 }
-const GoogleCloudRetailV2betaPurchaseTransaction = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaPurchaseTransaction>;
-
 /** Detailed completion information including completion attribution token and clicked completion info. */
 export interface GoogleCloudRetailV2betaCompletionDetail {
   /** End user selected CompleteQueryResponse.CompletionResult.suggestion. */
@@ -2467,11 +1535,6 @@ export interface GoogleCloudRetailV2betaCompletionDetail {
   /** Completion attribution token in CompleteQueryResponse.attribution_token. */
   completionAttributionToken?: string;
 }
-const GoogleCloudRetailV2betaCompletionDetail = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaCompletionDetail>;
-
 /** UserEvent captures all metadata information AI Commerce Search API needs to know about how end users interact with customers' website. */
 export interface GoogleCloudRetailV2betaUserEvent {
   /** User information. */
@@ -2519,27 +1582,12 @@ export interface GoogleCloudRetailV2betaUserEvent {
   /** The main auto-completion details related to the event. This field should be set for `search` event when autocomplete function is enabled and the user clicks a suggestion for search. */
   completionDetail?: GoogleCloudRetailV2betaCompletionDetail;
 }
-const GoogleCloudRetailV2betaUserEvent = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaUserEvent>;
-
 export type GoogleCloudRetailV2betaUserEventList = Array<GoogleCloudRetailV2betaUserEvent>;
-const GoogleCloudRetailV2betaUserEventList = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaUserEventList>;
-
 /** The inline source for the input config for ImportUserEvents method. */
 export interface GoogleCloudRetailV2betaUserEventInlineSource {
   /** Required. A list of user events to import. Recommended max of 10k items. */
   userEvents?: GoogleCloudRetailV2betaUserEventList;
 }
-const GoogleCloudRetailV2betaUserEventInlineSource = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaUserEventInlineSource>;
-
 /** The input config source for user events. */
 export interface GoogleCloudRetailV2betaUserEventInputConfig {
   /** Required. The Inline source for the input content for UserEvents. */
@@ -2549,11 +1597,6 @@ export interface GoogleCloudRetailV2betaUserEventInputConfig {
   /** Required. BigQuery input source. */
   bigQuerySource?: GoogleCloudRetailV2betaBigQuerySource;
 }
-const GoogleCloudRetailV2betaUserEventInputConfig = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaUserEventInputConfig>;
-
 /** Request message for the ImportUserEvents request. */
 export interface GoogleCloudRetailV2betaImportUserEventsRequest {
   /** The desired location of errors incurred during the Import. Cannot be set for inline user event imports. */
@@ -2561,22 +1604,12 @@ export interface GoogleCloudRetailV2betaImportUserEventsRequest {
   /** Required. The desired input location of the data. */
   inputConfig?: GoogleCloudRetailV2betaUserEventInputConfig;
 }
-const GoogleCloudRetailV2betaImportUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaImportUserEventsRequest>;
-
 export interface ImportProjectsLocationsCatalogsUserEventsRequest {
   /** Required. `projects/1234/locations/global/catalogs/default_catalog` */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaImportUserEventsRequest;
 }
-const ImportProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ImportProjectsLocationsCatalogsUserEventsRequest>;
-
 export interface ListProjectsLocationsCatalogsRequest {
   /** A page token ListCatalogsResponse.next_page_token, received from a previous CatalogService.ListCatalogs call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to CatalogService.ListCatalogs must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned. */
   pageToken?: string;
@@ -2585,11 +1618,6 @@ export interface ListProjectsLocationsCatalogsRequest {
   /** Maximum number of Catalogs to return. If unspecified, defaults to 50. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT is returned. */
   pageSize?: number;
 }
-const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
-
 /** Merchant Center Feed filter criterion. */
 export interface GoogleCloudRetailV2betaMerchantCenterFeedFilter {
   /** AFM data source ID. */
@@ -2599,18 +1627,8 @@ export interface GoogleCloudRetailV2betaMerchantCenterFeedFilter {
   /** Merchant Center primary feed ID. Deprecated: use data_source_id instead. */
   primaryFeedId?: string;
 }
-const GoogleCloudRetailV2betaMerchantCenterFeedFilter = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
-
 export type GoogleCloudRetailV2betaMerchantCenterFeedFilterList =
   Array<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
-const GoogleCloudRetailV2betaMerchantCenterFeedFilterList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterFeedFilterList>;
-
 /** Represents a link between a Merchant Center account and a branch. After a link is established, products from the linked Merchant Center account are streamed to the linked branch. */
 export interface GoogleCloudRetailV2betaMerchantCenterLink {
   /** Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO 639-1. This specifies the language of offers in Merchant Center that will be accepted. If empty no language filtering will be performed. Example value: `en`. */
@@ -2626,28 +1644,13 @@ export interface GoogleCloudRetailV2betaMerchantCenterLink {
   /** The branch ID (e.g. 0/1/2) within this catalog that products from merchant_center_account_id are streamed to. When updating this field, an empty value will use the currently configured default branch. However, changing the default branch later on won't change the linked branch here. A single branch ID can only have one linked Merchant Center account ID. */
   branchId?: string;
 }
-const GoogleCloudRetailV2betaMerchantCenterLink = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLink>;
-
 export type GoogleCloudRetailV2betaMerchantCenterLinkList =
   Array<GoogleCloudRetailV2betaMerchantCenterLink>;
-const GoogleCloudRetailV2betaMerchantCenterLinkList = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLinkList>;
-
 /** Configures Merchant Center linking. Links contained in the config will be used to sync data from a Merchant Center account to a Cloud Retail branch. */
 export interface GoogleCloudRetailV2betaMerchantCenterLinkingConfig {
   /** Links between Merchant Center accounts and branches. */
   links?: GoogleCloudRetailV2betaMerchantCenterLinkList;
 }
-const GoogleCloudRetailV2betaMerchantCenterLinkingConfig = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLinkingConfig>;
-
 /** Configures what level the product should be uploaded with regards to how users will be send events and how predictions will be made. */
 export interface GoogleCloudRetailV2betaProductLevelConfig {
   /** The type of Products allowed to be ingested into the catalog. Acceptable values are: * `primary` (default): You can ingest Products of all types. When ingesting a Product, its type will default to Product.Type.PRIMARY if unset. * `variant` (incompatible with Retail Search): You can only ingest Product.Type.VARIANT Products. This means Product.primary_product_id cannot be empty. If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. If this field is `variant` and merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT error is returned. See [Product levels](https://cloud.google.com/retail/docs/catalog#product-levels) for more details. */
@@ -2655,11 +1658,6 @@ export interface GoogleCloudRetailV2betaProductLevelConfig {
   /** Which field of [Merchant Center Product](/bigquery-transfer/docs/merchant-center-products-schema) should be imported as Product.id. Acceptable values are: * `offerId` (default): Import `offerId` as the product ID. * `itemGroupId`: Import `itemGroupId` as the product ID. Notice that Retail API will choose one item from the ones with the same `itemGroupId`, and use it to represent the item group. If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. If this field is `itemGroupId` and ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned. See [Product levels](https://cloud.google.com/retail/docs/catalog#product-levels) for more details. */
   merchantCenterProductIdField?: string;
 }
-const GoogleCloudRetailV2betaProductLevelConfig = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaProductLevelConfig>;
-
 /** The catalog configuration. */
 export interface GoogleCloudRetailV2betaCatalog {
   /** Required. Immutable. The catalog display name. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. */
@@ -2671,17 +1669,7 @@ export interface GoogleCloudRetailV2betaCatalog {
   /** Required. Immutable. The fully qualified resource name of the catalog. */
   name?: string;
 }
-const GoogleCloudRetailV2betaCatalog = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalog>;
-
 export type GoogleCloudRetailV2betaCatalogList = Array<GoogleCloudRetailV2betaCatalog>;
-const GoogleCloudRetailV2betaCatalogList = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaCatalogList>;
-
 /** Response for CatalogService.ListCatalogs method. */
 export interface GoogleCloudRetailV2betaListCatalogsResponse {
   /** All the customer's Catalogs. */
@@ -2689,11 +1677,6 @@ export interface GoogleCloudRetailV2betaListCatalogsResponse {
   /** A token that can be sent as ListCatalogsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudRetailV2betaListCatalogsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaListCatalogsResponse>;
-
 export interface ListProjectsLocationsCatalogsBranchesProductsRequest {
   /** The fields of Product to return in the responses. If not set or empty, the following fields are returned: * Product.name * Product.id * Product.title * Product.uri * Product.images * Product.price_info * Product.brands If "*" is provided, all fields are returned. Product.name is always returned no matter what mask is set. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. */
   readMask?: string;
@@ -2706,11 +1689,6 @@ export interface ListProjectsLocationsCatalogsBranchesProductsRequest {
   /** Maximum number of Products to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT error is returned. */
   pageSize?: number;
 }
-const ListProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ListProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Response message for ProductService.ListProducts method. */
 export interface GoogleCloudRetailV2betaListProductsResponse {
   /** A token that can be sent as ListProductsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2718,11 +1696,6 @@ export interface GoogleCloudRetailV2betaListProductsResponse {
   /** The Products. */
   products?: GoogleCloudRetailV2betaProductList;
 }
-const GoogleCloudRetailV2betaListProductsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaListProductsResponse>;
-
 export interface ListProjectsLocationsCatalogsControlsRequest {
   /** Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
   parent: string;
@@ -2733,17 +1706,7 @@ export interface ListProjectsLocationsCatalogsControlsRequest {
   /** Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. * List controls that are used in a single ServingConfig: 'serving_config = "boosted_home_page_cvr"' */
   filter?: string;
 }
-const ListProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>;
-
 export type GoogleCloudRetailV2betaControlList = Array<GoogleCloudRetailV2betaControl>;
-const GoogleCloudRetailV2betaControlList = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaControlList>;
-
 /** Response for ListControls method. */
 export interface GoogleCloudRetailV2betaListControlsResponse {
   /** Pagination token, if not returned indicates the last page. */
@@ -2751,30 +1714,15 @@ export interface GoogleCloudRetailV2betaListControlsResponse {
   /** All the Controls for a given catalog. */
   controls?: GoogleCloudRetailV2betaControlList;
 }
-const GoogleCloudRetailV2betaListControlsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaListControlsResponse>;
-
 export interface ListProjectsLocationsCatalogsGenerativeQuestionsRequest {
   /** Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   parent: string;
 }
-const ListProjectsLocationsCatalogsGenerativeQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListProjectsLocationsCatalogsGenerativeQuestionsRequest>;
-
 /** Response for ListQuestions method. */
 export interface GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse {
   /** All the questions for a given catalog. */
   generativeQuestionConfigs?: GoogleCloudRetailV2betaGenerativeQuestionConfigList;
 }
-const GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse>;
-
 export interface ListProjectsLocationsCatalogsModelsRequest {
   /** Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. */
   pageSize?: number;
@@ -2783,17 +1731,7 @@ export interface ListProjectsLocationsCatalogsModelsRequest {
   /** Optional. A page token, received from a previous `ListModels` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>;
-
 export type GoogleCloudRetailV2betaModelList = Array<GoogleCloudRetailV2betaModel>;
-const GoogleCloudRetailV2betaModelList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaModelList>;
-
 /** Response to a ListModelRequest. */
 export interface GoogleCloudRetailV2betaListModelsResponse {
   /** List of Models. */
@@ -2801,11 +1739,6 @@ export interface GoogleCloudRetailV2betaListModelsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
-const GoogleCloudRetailV2betaListModelsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaListModelsResponse>;
-
 export interface ListProjectsLocationsCatalogsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -2818,17 +1751,7 @@ export interface ListProjectsLocationsCatalogsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsCatalogsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -2838,11 +1761,6 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 export interface ListProjectsLocationsCatalogsServingConfigsRequest {
   /** Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
@@ -2851,17 +1769,7 @@ export interface ListProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` */
   parent: string;
 }
-const ListProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>;
-
 export type GoogleCloudRetailV2betaServingConfigList = Array<GoogleCloudRetailV2betaServingConfig>;
-const GoogleCloudRetailV2betaServingConfigList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaServingConfigList>;
-
 /** Response for ListServingConfigs method. */
 export interface GoogleCloudRetailV2betaListServingConfigsResponse {
   /** Pagination token, if not returned indicates the last page. */
@@ -2869,11 +1777,6 @@ export interface GoogleCloudRetailV2betaListServingConfigsResponse {
   /** All the ServingConfigs for a given catalog. */
   servingConfigs?: GoogleCloudRetailV2betaServingConfigList;
 }
-const GoogleCloudRetailV2betaListServingConfigsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaListServingConfigsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -2886,11 +1789,6 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -2903,11 +1801,6 @@ export interface ListProjectsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListProjectsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListProjectsOperationsRequest>;
-
 export interface PatchProjectsLocationsCatalogsRequest {
   /** Required. Immutable. The fully qualified resource name of the catalog. */
   name: string;
@@ -2916,11 +1809,6 @@ export interface PatchProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaCatalog;
 }
-const PatchProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>;
-
 export interface PatchProjectsLocationsCatalogsBranchesProductsRequest {
   /** If set to true, and the Product is not found, a new Product will be created. In this situation, `update_mask` is ignored. */
   allowMissing?: boolean;
@@ -2931,11 +1819,6 @@ export interface PatchProjectsLocationsCatalogsBranchesProductsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaProduct;
 }
-const PatchProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<PatchProjectsLocationsCatalogsBranchesProductsRequest>;
-
 export interface PatchProjectsLocationsCatalogsControlsRequest {
   /** Immutable. Fully qualified name `projects/*\/locations/global/catalogs/*\/controls/*` */
   name: string;
@@ -2944,11 +1827,6 @@ export interface PatchProjectsLocationsCatalogsControlsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaControl;
 }
-const PatchProjectsLocationsCatalogsControlsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<PatchProjectsLocationsCatalogsControlsRequest>;
-
 export interface PatchProjectsLocationsCatalogsModelsRequest {
   /** Required. The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40. */
   name: string;
@@ -2957,11 +1835,6 @@ export interface PatchProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaModel;
 }
-const PatchProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<PatchProjectsLocationsCatalogsModelsRequest>;
-
 export interface PatchProjectsLocationsCatalogsServingConfigsRequest {
   /** Immutable. Fully qualified name `projects/*\/locations/global/catalogs/*\/servingConfig/*` */
   name: string;
@@ -2970,29 +1843,14 @@ export interface PatchProjectsLocationsCatalogsServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaServingConfig;
 }
-const PatchProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<PatchProjectsLocationsCatalogsServingConfigsRequest>;
-
 /** Request for pausing training of a model. */
 export interface GoogleCloudRetailV2betaPauseModelRequest {}
-const GoogleCloudRetailV2betaPauseModelRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaPauseModelRequest>;
-
 export interface PauseProjectsLocationsCatalogsModelsRequest {
   /** Required. The name of the model to pause. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` */
   name: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaPauseModelRequest;
 }
-const PauseProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<PauseProjectsLocationsCatalogsModelsRequest>;
-
 /** Request message for Predict method. */
 export interface GoogleCloudRetailV2betaPredictRequest {
   /** Additional domain specific parameters for the predictions. Allowed values: * `returnProduct`: Boolean. If set to true, the associated product object will be returned in the `results.metadata` field in the prediction response. * `returnScore`: Boolean. If set to true, the prediction 'score' corresponding to each returned product will be set in the `results.metadata` field in the prediction response. The given 'score' indicates the probability of a product being clicked/purchased given the user's context and history. * `strictFiltering`: Boolean. True by default. If set to false, the service will return generic (unfiltered) popular products instead of empty if your filter blocks all prediction results. * `priceRerankLevel`: String. Default empty. If set to be non-empty, then it needs to be one of {'no-price-reranking', 'low-price-reranking', 'medium-price-reranking', 'high-price-reranking'}. This gives request-level control and adjusts prediction results based on product price. * `diversityLevel`: String. Default empty. If set to be non-empty, then it needs to be one of {'no-diversity', 'low-diversity', 'medium-diversity', 'high-diversity', 'auto-diversity'}. This gives request-level control and adjusts prediction results based on product category. * `filterSyntaxV2`: Boolean. False by default. If set to true, the `filter` field is interpreteted according to the new, attribute-based syntax. */
@@ -3010,22 +1868,12 @@ export interface GoogleCloudRetailV2betaPredictRequest {
   /** Use validate only mode for this prediction query. If set to true, a dummy model will be used that returns arbitrary products. Note that the validate only mode should only be used for testing the API, or if the model is not ready. */
   validateOnly?: boolean;
 }
-const GoogleCloudRetailV2betaPredictRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaPredictRequest>;
-
 export interface PredictProjectsLocationsCatalogsPlacementsRequest {
   /** Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs */
   placement: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaPredictRequest;
 }
-const PredictProjectsLocationsCatalogsPlacementsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<PredictProjectsLocationsCatalogsPlacementsRequest>;
-
 /** PredictionResult represents the recommendation prediction results. */
 export interface GoogleCloudRetailV2betaPredictResponsePredictionResult {
   /** Additional product metadata / annotations. Possible values: * `product`: JSON representation of the product. Is set if `returnProduct` is set to true in `PredictRequest.params`. * `score`: Prediction score in double value. Is set if `returnScore` is set to true in `PredictRequest.params`. */
@@ -3033,18 +1881,8 @@ export interface GoogleCloudRetailV2betaPredictResponsePredictionResult {
   /** ID of the recommended product */
   id?: string;
 }
-const GoogleCloudRetailV2betaPredictResponsePredictionResult = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
-
 export type GoogleCloudRetailV2betaPredictResponsePredictionResultList =
   Array<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
-const GoogleCloudRetailV2betaPredictResponsePredictionResultList = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaPredictResponsePredictionResultList>;
-
 /** Response message for predict method. */
 export interface GoogleCloudRetailV2betaPredictResponse {
   /** True if the validateOnly property was set in the request. */
@@ -3056,22 +1894,12 @@ export interface GoogleCloudRetailV2betaPredictResponse {
   /** A list of recommended products. The order represents the ranking (from the most relevant product to the least). */
   results?: GoogleCloudRetailV2betaPredictResponsePredictionResultList;
 }
-const GoogleCloudRetailV2betaPredictResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaPredictResponse>;
-
 export interface PredictProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs */
   placement: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaPredictRequest;
 }
-const PredictProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<PredictProjectsLocationsCatalogsServingConfigsRequest>;
-
 /** Request message for PurgeProducts method. */
 export interface GoogleCloudRetailV2betaPurgeProductsRequest {
   /** Actually perform the purge. If `force` is set to false, the method will return the expected purge count without deleting any products. */
@@ -3079,22 +1907,12 @@ export interface GoogleCloudRetailV2betaPurgeProductsRequest {
   /** Required. The filter string to specify the products to be deleted with a length limit of 5,000 characters. Empty string filter is not allowed. "*" implies delete all items in a branch. The eligible fields for filtering are: * `availability`: Double quoted Product.availability string. * `create_time` : in ISO 8601 "zulu" format. Supported syntax: * Comparators (">", "<", ">=", "<=", "="). Examples: * create_time <= "2015-02-13T17:05:46Z" * availability = "IN_STOCK" * Conjunctions ("AND") Examples: * create_time <= "2015-02-13T17:05:46Z" AND availability = "PREORDER" * Disjunctions ("OR") Examples: * create_time <= "2015-02-13T17:05:46Z" OR availability = "IN_STOCK" * Can support nested queries. Examples: * (create_time <= "2015-02-13T17:05:46Z" AND availability = "PREORDER") OR (create_time >= "2015-02-14T13:03:32Z" AND availability = "IN_STOCK") * Filter Limits: * Filter should not contain more than 6 conditions. * Max nesting depth should not exceed 2 levels. Examples queries: * Delete back order products created before a timestamp. create_time <= "2015-02-13T17:05:46Z" OR availability = "BACKORDER" */
   filter?: string;
 }
-const GoogleCloudRetailV2betaPurgeProductsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaPurgeProductsRequest>;
-
 export interface PurgeProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. The resource name of the branch under which the products are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}` */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaPurgeProductsRequest;
 }
-const PurgeProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<PurgeProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Request message for PurgeUserEvents method. */
 export interface GoogleCloudRetailV2betaPurgeUserEventsRequest {
   /** Required. The filter string to specify the events to be deleted with a length limit of 5,000 characters. Empty string filter is not allowed. The eligible fields for filtering are: * `eventType`: Double quoted UserEvent.event_type string. * `eventTime`: in ISO 8601 "zulu" format. * `visitorId`: Double quoted string. Specifying this will delete all events associated with a visitor. * `userId`: Double quoted string. Specifying this will delete all events associated with a user. Examples: * Deleting all events in a time range: `eventTime > "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z"` * Deleting specific eventType in time range: `eventTime > "2012-04-23T18:25:43.511Z" eventType = "detail-page-view"` * Deleting all events for a specific visitor: `visitorId = "visitor1024"` The filtering fields are assumed to have an implicit AND. */
@@ -3102,28 +1920,16 @@ export interface GoogleCloudRetailV2betaPurgeUserEventsRequest {
   /** Actually perform the purge. If `force` is set to false, the method will return the expected purge count without deleting any user events. */
   force?: boolean;
 }
-const GoogleCloudRetailV2betaPurgeUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaPurgeUserEventsRequest>;
-
 export interface PurgeProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The resource name of the catalog under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}` */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaPurgeUserEventsRequest;
 }
-const PurgeProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>;
-
 export type GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum =
   | "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED"
   | "JOINED_EVENTS"
   | "UNJOINED_EVENTS";
-const GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum = S.String;
-
 /** Request message for RejoinUserEvents method. */
 export interface GoogleCloudRetailV2betaRejoinUserEventsRequest {
   /** The type of the user event rejoin to define the scope and range of the user events to be rejoined with the latest product catalog. Defaults to `USER_EVENT_REJOIN_SCOPE_UNSPECIFIED` if this field is not set, or set to an invalid integer value. */
@@ -3131,62 +1937,34 @@ export interface GoogleCloudRetailV2betaRejoinUserEventsRequest {
     | GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum
     | (string & {});
 }
-const GoogleCloudRetailV2betaRejoinUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaRejoinUserEventsRequest>;
-
 export interface RejoinProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`. */
   parent: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaRejoinUserEventsRequest;
 }
-const RejoinProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<RejoinProjectsLocationsCatalogsUserEventsRequest>;
-
 /** Request for CatalogService.RemoveCatalogAttribute method. */
 export interface GoogleCloudRetailV2betaRemoveCatalogAttributeRequest {
   /** Required. The attribute name key of the CatalogAttribute to remove. */
   key?: string;
 }
-const GoogleCloudRetailV2betaRemoveCatalogAttributeRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaRemoveCatalogAttributeRequest>;
-
 export interface RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
   attributesConfig: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveCatalogAttributeRequest;
 }
-const RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
-
 /** Request for RemoveControl method. */
 export interface GoogleCloudRetailV2betaRemoveControlRequest {
   /** Required. The id of the control to apply. Assumed to be in the same catalog as the serving config. */
   controlId?: string;
 }
-const GoogleCloudRetailV2betaRemoveControlRequest =
-  GoogleCloudRetailV2betaAddControlRequest as any as S.Schema<GoogleCloudRetailV2betaRemoveControlRequest>;
-
 export interface RemoveControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
   servingConfig: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveControlRequest;
 }
-const RemoveControlProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<RemoveControlProjectsLocationsCatalogsServingConfigsRequest>;
-
 /** Request message for ProductService.RemoveFulfillmentPlaces method. */
 export interface GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest {
   /** If set to true, and the Product is not found, the fulfillment information will still be processed and retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found. */
@@ -3198,23 +1976,12 @@ export interface GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest {
   /** The time when the fulfillment updates are issued, used to prevent out-of-order updates on fulfillment information. If not provided, the internal system time will be used. */
   removeTime?: string;
 }
-const GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest>;
-
 export interface RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   product: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest;
 }
-const RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    3,
-  ) as any as S.Schema<RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Request message for ProductService.RemoveLocalInventories method. */
 export interface GoogleCloudRetailV2betaRemoveLocalInventoriesRequest {
   /** The time when the inventory deletions are issued. Used to prevent out-of-order updates and deletions on local inventory fields. If not provided, the internal system time will be used. */
@@ -3224,22 +1991,12 @@ export interface GoogleCloudRetailV2betaRemoveLocalInventoriesRequest {
   /** Required. A list of place IDs to have their inventory deleted. At most 3000 place IDs are allowed per request. */
   placeIds?: StringList;
 }
-const GoogleCloudRetailV2betaRemoveLocalInventoriesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaRemoveLocalInventoriesRequest>;
-
 export interface RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest {
   /** Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   product: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaRemoveLocalInventoriesRequest;
 }
-const RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Request for CatalogService.ReplaceCatalogAttribute method. */
 export interface GoogleCloudRetailV2betaReplaceCatalogAttributeRequest {
   /** Optional. Indicates which fields in the provided CatalogAttribute to update. The following are NOT supported: * CatalogAttribute.key If not set, all supported fields are updated. */
@@ -3247,23 +2004,12 @@ export interface GoogleCloudRetailV2betaReplaceCatalogAttributeRequest {
   /** Required. The updated CatalogAttribute. */
   catalogAttribute?: GoogleCloudRetailV2betaCatalogAttribute;
 }
-const GoogleCloudRetailV2betaReplaceCatalogAttributeRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaReplaceCatalogAttributeRequest>;
-
 export interface ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest {
   /** Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` */
   attributesConfig: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaReplaceCatalogAttributeRequest;
 }
-const ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    7,
-  ) as any as S.Schema<ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>;
-
 /** Request for resuming training of a model. */
 export type GoogleCloudRetailV2betaResumeModelRequest = GoogleCloudRetailV2betaPauseModelRequest;
 export interface ResumeProjectsLocationsCatalogsModelsRequest {
@@ -3272,11 +2018,6 @@ export interface ResumeProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaPauseModelRequest;
 }
-const ResumeProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ResumeProjectsLocationsCatalogsModelsRequest>;
-
 /** Specifies how a facet is computed. */
 export interface GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
   /** Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5 */
@@ -3298,11 +2039,6 @@ export interface GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
   /** Returns the min and max value for each numerical facet intervals. Ignored for textual facets. */
   returnMinMax?: boolean;
 }
-const GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey>;
-
 /** A facet specification to perform faceted search. */
 export interface GoogleCloudRetailV2betaSearchRequestFacetSpec {
   /** Required. The facet key specification. */
@@ -3314,24 +2050,12 @@ export interface GoogleCloudRetailV2betaSearchRequestFacetSpec {
   /** List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 products with the color facet "Red" and 200 products with the color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and having "colorFamilies" as FacetKey.key would by default return only "Red" products in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue products available, "Blue" would not be shown as an available facet value. If "colorFamilies" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" products. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned. */
   excludedFilterKeys?: StringList;
 }
-const GoogleCloudRetailV2betaSearchRequestFacetSpec = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
-
 export type GoogleCloudRetailV2betaSearchRequestFacetSpecList =
   Array<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
-const GoogleCloudRetailV2betaSearchRequestFacetSpecList = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpecList>;
-
 export type GoogleCloudRetailV2betaSearchRequestSearchModeEnum =
   | "SEARCH_MODE_UNSPECIFIED"
   | "PRODUCT_SEARCH_ONLY"
   | "FACETED_SEARCH_ONLY";
-const GoogleCloudRetailV2betaSearchRequestSearchModeEnum = S.String;
-
 export type GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "SUGGESTION_ONLY"
@@ -3341,16 +2065,8 @@ export interface GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec {
   /** The mode under which spell correction should take effect to replace the original search query. Default to Mode.AUTO. */
   mode?: GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum | (string & {});
 }
-const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec =
-  GoogleCloudRetailV2betaSearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec>;
-
 export type GoogleCloudRetailV2betaProductAttributeValueList =
   Array<GoogleCloudRetailV2betaProductAttributeValue>;
-const GoogleCloudRetailV2betaProductAttributeValueList = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeValueList>;
-
 /** This field specifies the selected answers during the conversational search. */
 export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer {
   /** This field is deprecated and should not be set. */
@@ -3358,12 +2074,6 @@ export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUse
   /** This field specifies the selected answer which is a attribute key-value. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    5,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer>;
-
 /** This field specifies the current user answer during the conversational search. This can be either user selected from suggested answers or user input plain text. */
 export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer {
   /** This field specifies the selected attributes during the conversational search. This should be a subset of SearchResponse.ConversationalSearchResult.suggested_answers. */
@@ -3371,11 +2081,6 @@ export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUse
   /** This field specifies the incremental input text from the user during the conversational search. */
   textAnswer?: string;
 }
-const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer>;
-
 /** This field specifies all conversational related parameters addition to traditional retail search. */
 export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec {
   /** This field specifies the current user answer during the conversational search. This can be either user selected from suggested answers or user input plain text. */
@@ -3385,17 +2090,10 @@ export interface GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec {
   /** This field specifies the conversation id, which maintains the state of the conversation between client side and server side. Use the value from the previous SearchResponse.ConversationalSearchResult.conversation_id. For the initial request, this should be empty. */
   conversationId?: string;
 }
-const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec>;
-
 export type GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum =
   | "CONDITION_UNSPECIFIED"
   | "DISABLED"
   | "AUTO";
-const GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum = S.String;
-
 /** Specification to determine under which conditions query expansion should occur. */
 export interface GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec {
   /** Whether to pin unexpanded results. The default value is false. If this field is set to true, unexpanded products are always at the top of the search results, followed by the expanded results. */
@@ -3403,29 +2101,14 @@ export interface GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec {
   /** The condition under which query expansion should occur. Default to Condition.DISABLED. */
   condition?: GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum | (string & {});
 }
-const GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec>;
-
 /** A list of string values. */
 export interface GoogleCloudRetailV2betaStringList {
   /** String values. */
   values?: StringList;
 }
-const GoogleCloudRetailV2betaStringList = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaStringList>;
-
 export type GoogleCloudRetailV2betaStringListMap = {
   [key: string]: GoogleCloudRetailV2betaStringList | undefined;
 };
-const GoogleCloudRetailV2betaStringListMap = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaStringListMap>;
-
 /** Product attribute name and numeric interval. */
 export interface GoogleCloudRetailV2betaProductAttributeInterval {
   /** The numeric interval (e.g. [10, 20)) */
@@ -3433,11 +2116,6 @@ export interface GoogleCloudRetailV2betaProductAttributeInterval {
   /** The attribute name (e.g. "length") */
   name?: string;
 }
-const GoogleCloudRetailV2betaProductAttributeInterval = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaProductAttributeInterval>;
-
 /** This field specifies the tile information including an attribute key, attribute value. More fields will be added in the future, eg: product id or product counts, etc. */
 export interface GoogleCloudRetailV2betaTile {
   /** The product attribute key-numeric interval. */
@@ -3447,17 +2125,7 @@ export interface GoogleCloudRetailV2betaTile {
   /** The product attribute key-value. */
   productAttributeValue?: GoogleCloudRetailV2betaProductAttributeValue;
 }
-const GoogleCloudRetailV2betaTile = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaTile>;
-
 export type GoogleCloudRetailV2betaTileList = Array<GoogleCloudRetailV2betaTile>;
-const GoogleCloudRetailV2betaTileList = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaTileList>;
-
 /** This field specifies tile navigation related parameters. */
 export interface GoogleCloudRetailV2betaSearchRequestTileNavigationSpec {
   /** This field specifies whether the customer would like to request tile navigation. */
@@ -3465,11 +2133,6 @@ export interface GoogleCloudRetailV2betaSearchRequestTileNavigationSpec {
   /** This optional field specifies the tiles which are already clicked in client side. While the feature works without this field set, particularly for an initial query, it is highly recommended to set this field because it can improve the quality of the search response and removes possible duplicate tiles. NOTE: This field is not being used for filtering search products. Client side should also put all the applied tiles in SearchRequest.filter. */
   appliedTiles?: GoogleCloudRetailV2betaTileList;
 }
-const GoogleCloudRetailV2betaSearchRequestTileNavigationSpec = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestTileNavigationSpec>;
-
 /** Request message for SearchService.Search method. */
 export interface GoogleCloudRetailV2betaSearchRequest {
   /** User information. */
@@ -3527,40 +2190,20 @@ export interface GoogleCloudRetailV2betaSearchRequest {
   /** The filter syntax consists of an expression language for constructing a predicate from one or more fields of the products being filtered. Filter expression is case-sensitive. For more information, see [Filter](https://cloud.google.com/retail/docs/filter-and-order#filter). If this field is unrecognizable, an INVALID_ARGUMENT is returned. */
   filter?: string;
 }
-const GoogleCloudRetailV2betaSearchRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchRequest>;
-
 export interface SearchProjectsLocationsCatalogsPlacementsRequest {
   /** Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search. */
   placement: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaSearchRequest;
 }
-const SearchProjectsLocationsCatalogsPlacementsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<SearchProjectsLocationsCatalogsPlacementsRequest>;
-
 /** List of product ids which have associated pins. */
 export interface GoogleCloudRetailV2betaPinControlMetadataProductPins {
   /** List of product ids which have associated pins. */
   productId?: StringList;
 }
-const GoogleCloudRetailV2betaPinControlMetadataProductPins = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadataProductPins>;
-
 export type GoogleCloudRetailV2betaPinControlMetadataProductPinsMap = {
   [key: string]: GoogleCloudRetailV2betaPinControlMetadataProductPins | undefined;
 };
-const GoogleCloudRetailV2betaPinControlMetadataProductPinsMap = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadataProductPinsMap>;
-
 /** Metadata for pinning to be returned in the response. This is used for distinguishing between applied vs dropped pins. */
 export interface GoogleCloudRetailV2betaPinControlMetadata {
   /** Map of pins that were dropped due to overlap with other matching pins, keyed by pin position. */
@@ -3568,39 +2211,19 @@ export interface GoogleCloudRetailV2betaPinControlMetadata {
   /** Map of all matched pins, keyed by pin position. */
   allMatchedPins?: GoogleCloudRetailV2betaPinControlMetadataProductPinsMap;
 }
-const GoogleCloudRetailV2betaPinControlMetadata = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaPinControlMetadata>;
-
 /** This field specifies all related information for tile navigation that will be used in client side. */
 export interface GoogleCloudRetailV2betaSearchResponseTileNavigationResult {
   /** The current tiles that are used for tile navigation, sorted by engagement. */
   tiles?: GoogleCloudRetailV2betaTileList;
 }
-const GoogleCloudRetailV2betaSearchResponseTileNavigationResult = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseTileNavigationResult>;
-
 /** A message with a list of double values. */
 export interface GoogleCloudRetailV2betaDoubleList {
   /** The list of double values. */
   values?: DoubleList;
 }
-const GoogleCloudRetailV2betaDoubleList = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaDoubleList>;
-
 export type GoogleCloudRetailV2betaDoubleListMap = {
   [key: string]: GoogleCloudRetailV2betaDoubleList | undefined;
 };
-const GoogleCloudRetailV2betaDoubleListMap = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaDoubleListMap>;
-
 /** Represents the search results. */
 export interface GoogleCloudRetailV2betaSearchResponseSearchResult {
   /** If a variant Product matches the search query, this map indicates which Product fields are matched. The key is the Product.name, the value is a field mask of the matched Product fields. If matched attributes cannot be determined, this map will be empty. For example, a key "sku1" with field mask "products.color_info" indicates there is a match between "sku1" ColorInfo and the query. */
@@ -3618,18 +2241,8 @@ export interface GoogleCloudRetailV2betaSearchResponseSearchResult {
   /** The count of matched variant Products. */
   matchingVariantCount?: number;
 }
-const GoogleCloudRetailV2betaSearchResponseSearchResult = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseSearchResult>;
-
 export type GoogleCloudRetailV2betaSearchResponseSearchResultList =
   Array<GoogleCloudRetailV2betaSearchResponseSearchResult>;
-const GoogleCloudRetailV2betaSearchResponseSearchResultList = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseSearchResultList>;
-
 /** Information describing query expansion including whether expansion has occurred. */
 export interface GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo {
   /** Bool describing whether query expansion has occurred. */
@@ -3637,11 +2250,6 @@ export interface GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo {
   /** Number of pinned results. This field will only be set when expansion happens and SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true. */
   pinnedResultCount?: string;
 }
-const GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo>;
-
 /** Metadata for active serving config A/B tests. */
 export interface GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment {
   /** The fully qualified resource name of the original SearchRequest.placement in the search request prior to reassignment by experiment API. For example: `projects/*\/locations/*\/catalogs/*\/servingConfigs/*`. */
@@ -3649,11 +2257,6 @@ export interface GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment {
   /** The fully qualified resource name of the serving config `Experiment.VariantArm.serving_config_id` responsible for generating the search response. For example: `projects/*\/locations/*\/catalogs/*\/servingConfigs/*`. */
   experimentServingConfig?: string;
 }
-const GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment>;
-
 /** Metadata for active A/B testing experiment. */
 export interface GoogleCloudRetailV2betaExperimentInfo {
   /** A/B test between existing Cloud Retail Search ServingConfigs. */
@@ -3661,18 +2264,8 @@ export interface GoogleCloudRetailV2betaExperimentInfo {
   /** The fully qualified resource name of the experiment that provides the serving config under test, should an active experiment exist. For example: `projects/*\/locations/global/catalogs/default_catalog/experiments/experiment_id` */
   experiment?: string;
 }
-const GoogleCloudRetailV2betaExperimentInfo = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfo>;
-
 export type GoogleCloudRetailV2betaExperimentInfoList =
   Array<GoogleCloudRetailV2betaExperimentInfo>;
-const GoogleCloudRetailV2betaExperimentInfoList = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfoList>;
-
 /** A facet value which contains value names and their count. */
 export interface GoogleCloudRetailV2betaSearchResponseFacetFacetValue {
   /** Text value of a facet, such as "Black" for facet "colorFamilies". */
@@ -3686,18 +2279,8 @@ export interface GoogleCloudRetailV2betaSearchResponseFacetFacetValue {
   /** The maximum value in the FacetValue.interval. Only supported on numerical facets and returned if SearchRequest.FacetSpec.FacetKey.return_min_max is true. */
   maxValue?: number;
 }
-const GoogleCloudRetailV2betaSearchResponseFacetFacetValue = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
-
 export type GoogleCloudRetailV2betaSearchResponseFacetFacetValueList =
   Array<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
-const GoogleCloudRetailV2betaSearchResponseFacetFacetValueList = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetFacetValueList>;
-
 /** A facet result. */
 export interface GoogleCloudRetailV2betaSearchResponseFacet {
   /** The key for this facet. E.g., "colorFamilies" or "price" or "attributes.attr1". */
@@ -3707,34 +2290,18 @@ export interface GoogleCloudRetailV2betaSearchResponseFacet {
   /** Whether the facet is dynamically generated. */
   dynamicFacet?: boolean;
 }
-const GoogleCloudRetailV2betaSearchResponseFacet = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacet>;
-
 export type GoogleCloudRetailV2betaSearchResponseFacetList =
   Array<GoogleCloudRetailV2betaSearchResponseFacet>;
-const GoogleCloudRetailV2betaSearchResponseFacetList = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetList>;
-
 /** Suggested answers to the follow-up question. */
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer =
   GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer;
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
   Array<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
-const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
-  GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList>;
-
 /** Additional filter that client side need to apply. */
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter =
   GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer;
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
   Array<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
-const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
-  GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList>;
-
 /** This field specifies all related information that is needed on client side for UI rendering of conversational retail search. */
 export interface GoogleCloudRetailV2betaSearchResponseConversationalSearchResult {
   /** The follow-up question. e.g., `What is the color?` */
@@ -3750,11 +2317,6 @@ export interface GoogleCloudRetailV2betaSearchResponseConversationalSearchResult
   /** This field is deprecated but will be kept for backward compatibility. There is expected to have only one additional filter and the value will be the same to the same as field `additional_filter`. */
   additionalFilters?: GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList;
 }
-const GoogleCloudRetailV2betaSearchResponseConversationalSearchResult = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResult>;
-
 /** Response message for SearchService.Search method. */
 export interface GoogleCloudRetailV2betaSearchResponse {
   /** The invalid SearchRequest.BoostSpec.condition_boost_specs that are not applied during serving. */
@@ -3786,22 +2348,12 @@ export interface GoogleCloudRetailV2betaSearchResponse {
   /** A token that can be sent as SearchRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudRetailV2betaSearchResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<GoogleCloudRetailV2betaSearchResponse>;
-
 export interface SearchProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search. */
   placement: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaSearchRequest;
 }
-const SearchProjectsLocationsCatalogsServingConfigsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<SearchProjectsLocationsCatalogsServingConfigsRequest>;
-
 /** Request message to set a specified branch as new default_branch. */
 export interface GoogleCloudRetailV2betaSetDefaultBranchRequest {
   /** Some note on this request, this can be retrieved by CatalogService.GetDefaultBranch before next valid default branch set occurs. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. */
@@ -3811,22 +2363,12 @@ export interface GoogleCloudRetailV2betaSetDefaultBranchRequest {
   /** The final component of the resource name of a branch. This field must be one of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT error is returned. If there are no sufficient active products in the targeted branch and force is not set, a FAILED_PRECONDITION error is returned. */
   branchId?: string;
 }
-const GoogleCloudRetailV2betaSetDefaultBranchRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GoogleCloudRetailV2betaSetDefaultBranchRequest>;
-
 export interface SetDefaultBranchProjectsLocationsCatalogsRequest {
   /** Full resource name of the catalog, such as `projects/*\/locations/global/catalogs/default_catalog`. */
   catalog: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaSetDefaultBranchRequest;
 }
-const SetDefaultBranchProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<SetDefaultBranchProjectsLocationsCatalogsRequest>;
-
 /** Request message for ProductService.SetInventory method. */
 export interface GoogleCloudRetailV2betaSetInventoryRequest {
   /** If set to true, and the Product with name Product.name is not found, the inventory update will still be processed and retained for at most 1 day until the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found. */
@@ -3838,22 +2380,12 @@ export interface GoogleCloudRetailV2betaSetInventoryRequest {
   /** Indicates which inventory fields in the provided Product to update. At least one field must be provided. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned and the entire update will be ignored. */
   setMask?: string;
 }
-const GoogleCloudRetailV2betaSetInventoryRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GoogleCloudRetailV2betaSetInventoryRequest>;
-
 export interface SetInventoryProjectsLocationsCatalogsBranchesProductsRequest {
   /** Immutable. Full resource name of the product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. */
   name: string;
   /** Request body */
   body?: GoogleCloudRetailV2betaSetInventoryRequest;
 }
-const SetInventoryProjectsLocationsCatalogsBranchesProductsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<SetInventoryProjectsLocationsCatalogsBranchesProductsRequest>;
-
 /** Request to manually start a tuning process now (instead of waiting for the periodically scheduled tuning to happen). */
 export type GoogleCloudRetailV2betaTuneModelRequest = GoogleCloudRetailV2betaPauseModelRequest;
 export interface TuneProjectsLocationsCatalogsModelsRequest {
@@ -3862,11 +2394,6 @@ export interface TuneProjectsLocationsCatalogsModelsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaPauseModelRequest;
 }
-const TuneProjectsLocationsCatalogsModelsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<TuneProjectsLocationsCatalogsModelsRequest>;
-
 export interface UpdateAlertConfigProjectsRequest {
   /** Indicates which fields in the provided AlertConfig to update. If not set, all supported fields are updated. */
   updateMask?: string;
@@ -3875,11 +2402,6 @@ export interface UpdateAlertConfigProjectsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaAlertConfig;
 }
-const UpdateAlertConfigProjectsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<UpdateAlertConfigProjectsRequest>;
-
 export interface UpdateAttributesConfigProjectsLocationsCatalogsRequest {
   /** Optional. Indicates which fields in the provided AttributesConfig to update. The following is the only supported field: * AttributesConfig.catalog_attributes If not set, all supported fields are updated. */
   updateMask?: string;
@@ -3888,11 +2410,6 @@ export interface UpdateAttributesConfigProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaAttributesConfig;
 }
-const UpdateAttributesConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<UpdateAttributesConfigProjectsLocationsCatalogsRequest>;
-
 export interface UpdateCompletionConfigProjectsLocationsCatalogsRequest {
   /** Optional. Indicates which fields in the provided CompletionConfig to update. The following are the only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not set, all supported fields are updated. */
   updateMask?: string;
@@ -3901,11 +2418,6 @@ export interface UpdateCompletionConfigProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaCompletionConfig;
 }
-const UpdateCompletionConfigProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<UpdateCompletionConfigProjectsLocationsCatalogsRequest>;
-
 export interface UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest {
   /** Optional. Indicates which fields in the provided ConversationalSearchCustomizationConfig to update. If not set or empty, all supported fields are updated. */
   updateMask?: string;
@@ -3914,12 +2426,6 @@ export interface UpdateConversationalSearchCustomizationConfigProjectsLocationsC
   /** Request body */
   body?: GoogleCloudRetailV2betaConversationalSearchCustomizationConfig;
 }
-const UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    4,
-  ) as any as S.Schema<UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>;
-
 export interface UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest {
   /** Required. Resource name of the affected catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
   catalog: string;
@@ -3928,11 +2434,6 @@ export interface UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest
   /** Request body */
   body?: GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig;
 }
-const UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>;
-
 export interface UpdateGenerativeQuestionProjectsLocationsCatalogsRequest {
   /** Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The following are NOT supported: * GenerativeQuestionConfig.frequency If not set or empty, all supported fields are updated. */
   updateMask?: string;
@@ -3941,11 +2442,6 @@ export interface UpdateGenerativeQuestionProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaGenerativeQuestionConfig;
 }
-const UpdateGenerativeQuestionProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<UpdateGenerativeQuestionProjectsLocationsCatalogsRequest>;
-
 export interface WriteProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`. */
   parent: string;
@@ -3954,11 +2450,6 @@ export interface WriteProjectsLocationsCatalogsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudRetailV2betaUserEvent;
 }
-const WriteProjectsLocationsCatalogsUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<WriteProjectsLocationsCatalogsUserEventsRequest>;
-
 export type AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigError =
   | NotFound
   | Forbidden
@@ -3972,8 +2463,12 @@ export const addCatalogAttributeProjectsLocationsCatalogsAttributesConfig: API.O
   AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
-  output: GoogleCloudRetailV2betaAttributesConfig,
+  input: __S(
+    12,
+    __c1,
+    4,
+  ) as any as S.Schema<AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3992,8 +2487,12 @@ export const addControlProjectsLocationsCatalogsServingConfigs: API.OperationMet
   AddControlProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddControlProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaServingConfig,
+  input: __S(
+    16,
+    __c2,
+    0,
+  ) as any as S.Schema<AddControlProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4012,8 +2511,12 @@ export const addFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: API.
   AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    21,
+    __c2,
+    5,
+  ) as any as S.Schema<AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4032,8 +2535,12 @@ export const addLocalInventoriesProjectsLocationsCatalogsBranchesProducts: API.O
   AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    34,
+    __c4,
+    2,
+  ) as any as S.Schema<AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4052,8 +2559,16 @@ export const batchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConf
   BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest,
-  output: GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse,
+  input: __S(
+    36,
+    __c4,
+    4,
+  ) as any as S.Schema<BatchRemoveCatalogAttributesProjectsLocationsCatalogsAttributesConfigRequest>,
+  output: __S(
+    37,
+    __c4,
+    5,
+  ) as any as S.Schema<GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4072,8 +2587,16 @@ export const batchUpdateProjectsLocationsCatalogsGenerativeQuestion: API.Operati
   BatchUpdateProjectsLocationsCatalogsGenerativeQuestionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest,
-  output: GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse,
+  input: __S(
+    42,
+    __c5,
+    2,
+  ) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>,
+  output: __S(
+    44,
+    __c5,
+    4,
+  ) as any as S.Schema<GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4092,8 +2615,8 @@ export const collectProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   CollectProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CollectProjectsLocationsCatalogsUserEventsRequest,
-  output: GoogleApiHttpBody,
+  input: __S(46, __c5, 6) as any as S.Schema<CollectProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4107,8 +2630,8 @@ export const completeQueryProjectsLocationsCatalogs: API.OperationMethod<
   CompleteQueryProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteQueryProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaCompleteQueryResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<CompleteQueryProjectsLocationsCatalogsRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4127,8 +2650,12 @@ export const conversationalSearchProjectsLocationsCatalogsPlacements: API.Operat
   ConversationalSearchProjectsLocationsCatalogsPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConversationalSearchProjectsLocationsCatalogsPlacementsRequest,
-  output: GoogleCloudRetailV2betaConversationalSearchResponse,
+  input: __S(
+    69,
+    __c8,
+    5,
+  ) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsPlacementsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4147,8 +2674,12 @@ export const conversationalSearchProjectsLocationsCatalogsServingConfigs: API.Op
   ConversationalSearchProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaConversationalSearchResponse,
+  input: __S(
+    77,
+    __c9,
+    5,
+  ) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4167,8 +2698,12 @@ export const createProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   CreateProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleCloudRetailV2betaProduct,
+  input: __S(
+    89,
+    __c11,
+    1,
+  ) as any as S.Schema<CreateProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GoogleCloudRetailV2betaProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4187,8 +2722,8 @@ export const createProjectsLocationsCatalogsControls: API.OperationMethod<
   CreateProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsCatalogsControlsRequest,
-  output: GoogleCloudRetailV2betaControl,
+  input: __S(111, __c13, 7) as any as S.Schema<CreateProjectsLocationsCatalogsControlsRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<GoogleCloudRetailV2betaControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4207,8 +2742,8 @@ export const createProjectsLocationsCatalogsModels: API.OperationMethod<
   CreateProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsCatalogsModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(117, __c14, 5) as any as S.Schema<CreateProjectsLocationsCatalogsModelsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4227,8 +2762,12 @@ export const createProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   CreateProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaServingConfig,
+  input: __S(
+    118,
+    __c14,
+    6,
+  ) as any as S.Schema<CreateProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4247,8 +2786,12 @@ export const deleteProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   DeleteProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    119,
+    __c14,
+    7,
+  ) as any as S.Schema<DeleteProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4267,8 +2810,8 @@ export const deleteProjectsLocationsCatalogsControls: API.OperationMethod<
   DeleteProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCatalogsControlsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(121, __c15, 1) as any as S.Schema<DeleteProjectsLocationsCatalogsControlsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4287,8 +2830,8 @@ export const deleteProjectsLocationsCatalogsModels: API.OperationMethod<
   DeleteProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCatalogsModelsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(122, __c15, 2) as any as S.Schema<DeleteProjectsLocationsCatalogsModelsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4307,8 +2850,12 @@ export const deleteProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   DeleteProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    123,
+    __c15,
+    3,
+  ) as any as S.Schema<DeleteProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4327,8 +2874,12 @@ export const exportAnalyticsMetricsProjectsLocationsCatalogs: API.OperationMetho
   ExportAnalyticsMetricsProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportAnalyticsMetricsProjectsLocationsCatalogsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    128,
+    __c16,
+    0,
+  ) as any as S.Schema<ExportAnalyticsMetricsProjectsLocationsCatalogsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4347,8 +2898,12 @@ export const exportProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   ExportProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    130,
+    __c16,
+    2,
+  ) as any as S.Schema<ExportProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4367,8 +2922,8 @@ export const exportProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   ExportProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectsLocationsCatalogsUserEventsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(131, __c16, 3) as any as S.Schema<ExportProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4382,8 +2937,8 @@ export const getAlertConfigProjects: API.OperationMethod<
   GetAlertConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertConfigProjectsRequest,
-  output: GoogleCloudRetailV2betaAlertConfig,
+  input: __S(132, __c16, 4) as any as S.Schema<GetAlertConfigProjectsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GoogleCloudRetailV2betaAlertConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4397,8 +2952,8 @@ export const getAttributesConfigProjectsLocationsCatalogs: API.OperationMethod<
   GetAttributesConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAttributesConfigProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaAttributesConfig,
+  input: __S(138, __c17, 2) as any as S.Schema<GetAttributesConfigProjectsLocationsCatalogsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4412,8 +2967,8 @@ export const getCompletionConfigProjectsLocationsCatalogs: API.OperationMethod<
   GetCompletionConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCompletionConfigProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaCompletionConfig,
+  input: __S(139, __c17, 3) as any as S.Schema<GetCompletionConfigProjectsLocationsCatalogsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<GoogleCloudRetailV2betaCompletionConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4430,8 +2985,16 @@ export const getConversationalSearchCustomizationConfigProjectsLocationsCatalogs
   GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaConversationalSearchCustomizationConfig,
+  input: __S(
+    144,
+    __c18,
+    0,
+  ) as any as S.Schema<GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>,
+  output: __S(
+    151,
+    __c18,
+    7,
+  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchCustomizationConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4445,8 +3008,8 @@ export const getDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   GetDefaultBranchProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultBranchProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaGetDefaultBranchResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<GetDefaultBranchProjectsLocationsCatalogsRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GoogleCloudRetailV2betaGetDefaultBranchResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4463,8 +3026,16 @@ export const getGenerativeQuestionFeatureProjectsLocationsCatalogs: API.Operatio
   GetGenerativeQuestionFeatureProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig,
+  input: __S(
+    154,
+    __c19,
+    2,
+  ) as any as S.Schema<GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>,
+  output: __S(
+    155,
+    __c19,
+    3,
+  ) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4478,8 +3049,12 @@ export const getProjectsLocationsCatalogsBranchesOperations: API.OperationMethod
   GetProjectsLocationsCatalogsBranchesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCatalogsBranchesOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    156,
+    __c19,
+    4,
+  ) as any as S.Schema<GetProjectsLocationsCatalogsBranchesOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4493,8 +3068,8 @@ export const getProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   GetProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleCloudRetailV2betaProduct,
+  input: __S(157, __c19, 5) as any as S.Schema<GetProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GoogleCloudRetailV2betaProduct>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4508,8 +3083,8 @@ export const getProjectsLocationsCatalogsControls: API.OperationMethod<
   GetProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCatalogsControlsRequest,
-  output: GoogleCloudRetailV2betaControl,
+  input: __S(158, __c19, 6) as any as S.Schema<GetProjectsLocationsCatalogsControlsRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<GoogleCloudRetailV2betaControl>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4523,8 +3098,8 @@ export const getProjectsLocationsCatalogsModels: API.OperationMethod<
   GetProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCatalogsModelsRequest,
-  output: GoogleCloudRetailV2betaModel,
+  input: __S(159, __c19, 7) as any as S.Schema<GetProjectsLocationsCatalogsModelsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GoogleCloudRetailV2betaModel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4538,8 +3113,8 @@ export const getProjectsLocationsCatalogsOperations: API.OperationMethod<
   GetProjectsLocationsCatalogsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCatalogsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(160, __c20, 0) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4553,8 +3128,8 @@ export const getProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   GetProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaServingConfig,
+  input: __S(161, __c20, 1) as any as S.Schema<GetProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4568,8 +3143,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(162, __c20, 2) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4583,8 +3158,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(163, __c20, 3) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4603,8 +3178,12 @@ export const importProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   ImportProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    169,
+    __c21,
+    1,
+  ) as any as S.Schema<ImportProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4623,8 +3202,12 @@ export const importProjectsLocationsCatalogsCompletionData: API.OperationMethod<
   ImportProjectsLocationsCatalogsCompletionDataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportProjectsLocationsCatalogsCompletionDataRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    171,
+    __c21,
+    3,
+  ) as any as S.Schema<ImportProjectsLocationsCatalogsCompletionDataRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4643,8 +3226,8 @@ export const importProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   ImportProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportProjectsLocationsCatalogsUserEventsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(183, __c22, 7) as any as S.Schema<ImportProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4659,8 +3242,8 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRetailV2betaListCatalogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaListCatalogsResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<GoogleCloudRetailV2betaListCatalogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4676,8 +3259,12 @@ export const listProjectsLocationsCatalogsBranchesProducts: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudRetailV2betaListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleCloudRetailV2betaListProductsResponse,
+  input: __S(
+    194,
+    __c24,
+    2,
+  ) as any as S.Schema<ListProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<GoogleCloudRetailV2betaListProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4693,8 +3280,8 @@ export const listProjectsLocationsCatalogsControls: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudRetailV2betaListControlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCatalogsControlsRequest,
-  output: GoogleCloudRetailV2betaListControlsResponse,
+  input: __S(196, __c24, 4) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<GoogleCloudRetailV2betaListControlsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4712,8 +3299,16 @@ export const listProjectsLocationsCatalogsGenerativeQuestions: API.OperationMeth
   ListProjectsLocationsCatalogsGenerativeQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsCatalogsGenerativeQuestionsRequest,
-  output: GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse,
+  input: __S(
+    199,
+    __c24,
+    7,
+  ) as any as S.Schema<ListProjectsLocationsCatalogsGenerativeQuestionsRequest>,
+  output: __S(
+    200,
+    __c25,
+    0,
+  ) as any as S.Schema<GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4728,8 +3323,8 @@ export const listProjectsLocationsCatalogsModels: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRetailV2betaListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCatalogsModelsRequest,
-  output: GoogleCloudRetailV2betaListModelsResponse,
+  input: __S(201, __c25, 1) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<GoogleCloudRetailV2betaListModelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4745,8 +3340,8 @@ export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCatalogsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(204, __c25, 4) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4762,8 +3357,8 @@ export const listProjectsLocationsCatalogsServingConfigs: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudRetailV2betaListServingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaListServingConfigsResponse,
+  input: __S(207, __c25, 7) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<GoogleCloudRetailV2betaListServingConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4779,8 +3374,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4796,8 +3391,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(211, __c26, 3) as any as S.Schema<ListProjectsOperationsRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4817,8 +3412,8 @@ export const patchProjectsLocationsCatalogs: API.OperationMethod<
   PatchProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaCatalog,
+  input: __S(212, __c26, 4) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<GoogleCloudRetailV2betaCatalog>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4837,8 +3432,12 @@ export const patchProjectsLocationsCatalogsBranchesProducts: API.OperationMethod
   PatchProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleCloudRetailV2betaProduct,
+  input: __S(
+    213,
+    __c26,
+    5,
+  ) as any as S.Schema<PatchProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GoogleCloudRetailV2betaProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4857,8 +3456,8 @@ export const patchProjectsLocationsCatalogsControls: API.OperationMethod<
   PatchProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsCatalogsControlsRequest,
-  output: GoogleCloudRetailV2betaControl,
+  input: __S(214, __c26, 6) as any as S.Schema<PatchProjectsLocationsCatalogsControlsRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<GoogleCloudRetailV2betaControl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4877,8 +3476,8 @@ export const patchProjectsLocationsCatalogsModels: API.OperationMethod<
   PatchProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsCatalogsModelsRequest,
-  output: GoogleCloudRetailV2betaModel,
+  input: __S(215, __c26, 7) as any as S.Schema<PatchProjectsLocationsCatalogsModelsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GoogleCloudRetailV2betaModel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4897,8 +3496,8 @@ export const patchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   PatchProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaServingConfig,
+  input: __S(216, __c27, 0) as any as S.Schema<PatchProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4917,8 +3516,8 @@ export const pauseProjectsLocationsCatalogsModels: API.OperationMethod<
   PauseProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseProjectsLocationsCatalogsModelsRequest,
-  output: GoogleCloudRetailV2betaModel,
+  input: __S(218, __c27, 2) as any as S.Schema<PauseProjectsLocationsCatalogsModelsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GoogleCloudRetailV2betaModel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4937,8 +3536,8 @@ export const predictProjectsLocationsCatalogsPlacements: API.OperationMethod<
   PredictProjectsLocationsCatalogsPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PredictProjectsLocationsCatalogsPlacementsRequest,
-  output: GoogleCloudRetailV2betaPredictResponse,
+  input: __S(220, __c27, 4) as any as S.Schema<PredictProjectsLocationsCatalogsPlacementsRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<GoogleCloudRetailV2betaPredictResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4957,8 +3556,12 @@ export const predictProjectsLocationsCatalogsServingConfigs: API.OperationMethod
   PredictProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PredictProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaPredictResponse,
+  input: __S(
+    224,
+    __c28,
+    0,
+  ) as any as S.Schema<PredictProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<GoogleCloudRetailV2betaPredictResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4977,8 +3580,12 @@ export const purgeProjectsLocationsCatalogsBranchesProducts: API.OperationMethod
   PurgeProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    226,
+    __c28,
+    2,
+  ) as any as S.Schema<PurgeProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4997,8 +3604,8 @@ export const purgeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   PurgeProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeProjectsLocationsCatalogsUserEventsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(228, __c28, 4) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5017,8 +3624,8 @@ export const rejoinProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   RejoinProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejoinProjectsLocationsCatalogsUserEventsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(230, __c28, 6) as any as S.Schema<RejoinProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5037,8 +3644,12 @@ export const removeCatalogAttributeProjectsLocationsCatalogsAttributesConfig: AP
   RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
-  output: GoogleCloudRetailV2betaAttributesConfig,
+  input: __S(
+    232,
+    __c29,
+    0,
+  ) as any as S.Schema<RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5057,8 +3668,12 @@ export const removeControlProjectsLocationsCatalogsServingConfigs: API.Operation
   RemoveControlProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveControlProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaServingConfig,
+  input: __S(
+    233,
+    __c29,
+    1,
+  ) as any as S.Schema<RemoveControlProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2betaServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5077,8 +3692,12 @@ export const removeFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: A
   RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    235,
+    __c29,
+    3,
+  ) as any as S.Schema<RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5097,8 +3716,12 @@ export const removeLocalInventoriesProjectsLocationsCatalogsBranchesProducts: AP
   RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    237,
+    __c29,
+    5,
+  ) as any as S.Schema<RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5117,8 +3740,12 @@ export const replaceCatalogAttributeProjectsLocationsCatalogsAttributesConfig: A
   ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest,
-  output: GoogleCloudRetailV2betaAttributesConfig,
+  input: __S(
+    239,
+    __c29,
+    7,
+  ) as any as S.Schema<ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5137,8 +3764,8 @@ export const resumeProjectsLocationsCatalogsModels: API.OperationMethod<
   ResumeProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeProjectsLocationsCatalogsModelsRequest,
-  output: GoogleCloudRetailV2betaModel,
+  input: __S(240, __c30, 0) as any as S.Schema<ResumeProjectsLocationsCatalogsModelsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GoogleCloudRetailV2betaModel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5157,8 +3784,8 @@ export const searchProjectsLocationsCatalogsPlacements: API.OperationMethod<
   SearchProjectsLocationsCatalogsPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchProjectsLocationsCatalogsPlacementsRequest,
-  output: GoogleCloudRetailV2betaSearchResponse,
+  input: __S(256, __c32, 0) as any as S.Schema<SearchProjectsLocationsCatalogsPlacementsRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<GoogleCloudRetailV2betaSearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5177,8 +3804,12 @@ export const searchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   SearchProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchProjectsLocationsCatalogsServingConfigsRequest,
-  output: GoogleCloudRetailV2betaSearchResponse,
+  input: __S(
+    275,
+    __c34,
+    3,
+  ) as any as S.Schema<SearchProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<GoogleCloudRetailV2betaSearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5197,8 +3828,8 @@ export const setDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   SetDefaultBranchProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetDefaultBranchProjectsLocationsCatalogsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(277, __c34, 5) as any as S.Schema<SetDefaultBranchProjectsLocationsCatalogsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5217,8 +3848,12 @@ export const setInventoryProjectsLocationsCatalogsBranchesProducts: API.Operatio
   SetInventoryProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetInventoryProjectsLocationsCatalogsBranchesProductsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    279,
+    __c34,
+    7,
+  ) as any as S.Schema<SetInventoryProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5237,8 +3872,8 @@ export const tuneProjectsLocationsCatalogsModels: API.OperationMethod<
   TuneProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TuneProjectsLocationsCatalogsModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(280, __c35, 0) as any as S.Schema<TuneProjectsLocationsCatalogsModelsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5257,8 +3892,8 @@ export const updateAlertConfigProjects: API.OperationMethod<
   UpdateAlertConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAlertConfigProjectsRequest,
-  output: GoogleCloudRetailV2betaAlertConfig,
+  input: __S(281, __c35, 1) as any as S.Schema<UpdateAlertConfigProjectsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GoogleCloudRetailV2betaAlertConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5277,8 +3912,12 @@ export const updateAttributesConfigProjectsLocationsCatalogs: API.OperationMetho
   UpdateAttributesConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAttributesConfigProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaAttributesConfig,
+  input: __S(
+    282,
+    __c35,
+    2,
+  ) as any as S.Schema<UpdateAttributesConfigProjectsLocationsCatalogsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2betaAttributesConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5297,8 +3936,12 @@ export const updateCompletionConfigProjectsLocationsCatalogs: API.OperationMetho
   UpdateCompletionConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCompletionConfigProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaCompletionConfig,
+  input: __S(
+    283,
+    __c35,
+    3,
+  ) as any as S.Schema<UpdateCompletionConfigProjectsLocationsCatalogsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<GoogleCloudRetailV2betaCompletionConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5317,8 +3960,16 @@ export const updateConversationalSearchCustomizationConfigProjectsLocationsCatal
   UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaConversationalSearchCustomizationConfig,
+  input: __S(
+    284,
+    __c35,
+    4,
+  ) as any as S.Schema<UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>,
+  output: __S(
+    151,
+    __c18,
+    7,
+  ) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchCustomizationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5337,8 +3988,16 @@ export const updateGenerativeQuestionFeatureProjectsLocationsCatalogs: API.Opera
   UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig,
+  input: __S(
+    285,
+    __c35,
+    5,
+  ) as any as S.Schema<UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>,
+  output: __S(
+    155,
+    __c19,
+    3,
+  ) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5357,8 +4016,12 @@ export const updateGenerativeQuestionProjectsLocationsCatalogs: API.OperationMet
   UpdateGenerativeQuestionProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGenerativeQuestionProjectsLocationsCatalogsRequest,
-  output: GoogleCloudRetailV2betaGenerativeQuestionConfig,
+  input: __S(
+    286,
+    __c35,
+    6,
+  ) as any as S.Schema<UpdateGenerativeQuestionProjectsLocationsCatalogsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GoogleCloudRetailV2betaGenerativeQuestionConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5377,8 +4040,8 @@ export const writeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   WriteProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WriteProjectsLocationsCatalogsUserEventsRequest,
-  output: GoogleCloudRetailV2betaUserEvent,
+  input: __S(287, __c35, 7) as any as S.Schema<WriteProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<GoogleCloudRetailV2betaUserEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5392,7 +4055,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList),
+          values: S.optional(__S(0, __c0, 0)),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
@@ -5400,7 +4063,7 @@ function __c0(j: number): any {
         identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5413,18 +4076,18 @@ function __c0(j: number): any {
         identifier: "GoogleCloudRetailV2betaInterval",
       });
     case 4:
-      return S.Array(GoogleCloudRetailV2betaInterval);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList),
+          values: S.optional(__S(0, __c0, 0)),
           mergedValue: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue",
       });
     case 6:
-      return S.Array(GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5441,7 +4104,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rerankFacet: S.optional(S.Boolean),
-          facetValues: S.optional(StringList),
+          facetValues: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig",
@@ -5449,15 +4112,11 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ignoredFacetValues: S.optional(
-            GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList,
-          ),
-          facetIntervals: S.optional(GoogleCloudRetailV2betaIntervalList),
-          mergedFacetValues: S.optional(
-            GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList,
-          ),
-          mergedFacet: S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet),
-          rerankConfig: S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig),
+          ignoredFacetValues: S.optional(__S(2, __c0, 2)),
+          facetIntervals: S.optional(__S(4, __c0, 4)),
+          mergedFacetValues: S.optional(__S(6, __c0, 6)),
+          mergedFacet: S.optional(__S(7, __c0, 7)),
+          rerankConfig: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCatalogAttributeFacetConfig",
@@ -5466,23 +4125,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          facetConfig: S.optional(GoogleCloudRetailV2betaCatalogAttributeFacetConfig),
+          facetConfig: S.optional(__S(9, __c1, 1)),
           inUse: S.optional(S.Boolean),
-          searchableOption: S.optional(GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum),
-          retrievableOption: S.optional(
-            GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum,
-          ),
-          indexableOption: S.optional(GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum),
-          recommendationsFilteringOption: S.optional(
-            GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum,
-          ),
-          type: S.optional(GoogleCloudRetailV2betaCatalogAttributeTypeEnum),
-          dynamicFacetableOption: S.optional(
-            GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum,
-          ),
-          exactSearchableOption: S.optional(
-            GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum,
-          ),
+          searchableOption: S.optional(S.String),
+          retrievableOption: S.optional(S.String),
+          indexableOption: S.optional(S.String),
+          recommendationsFilteringOption: S.optional(S.String),
+          type: S.optional(S.String),
+          dynamicFacetableOption: S.optional(S.String),
+          exactSearchableOption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCatalogAttribute",
@@ -5490,7 +4141,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          catalogAttribute: S.optional(GoogleCloudRetailV2betaCatalogAttribute),
+          catalogAttribute: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaAddCatalogAttributeRequest",
@@ -5499,7 +4150,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           attributesConfig: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaAddCatalogAttributeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5511,14 +4162,12 @@ function __c1(j: number): any {
         identifier: "AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
       });
     case 5:
-      return S.Record(S.String, GoogleCloudRetailV2betaCatalogAttribute);
+      return S.Record(S.String, __S(10, __c1, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attributeConfigLevel: S.optional(
-            GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum,
-          ),
-          catalogAttributes: S.optional(GoogleCloudRetailV2betaCatalogAttributeMap),
+          attributeConfigLevel: S.optional(S.String),
+          catalogAttributes: S.optional(__S(13, __c1, 5)),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -5540,7 +4189,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaAddControlRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5554,36 +4203,36 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum),
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchRequestPersonalizationSpec",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          redirectControlIds: S.optional(StringList),
+          redirectControlIds: S.optional(__S(0, __c0, 0)),
           ignoreRecsDenylist: S.optional(S.Boolean),
-          doNotAssociateControlIds: S.optional(StringList),
-          diversityType: S.optional(GoogleCloudRetailV2betaServingConfigDiversityTypeEnum),
+          doNotAssociateControlIds: S.optional(__S(0, __c0, 0)),
+          diversityType: S.optional(S.String),
           enableCategoryFilterLevel: S.optional(S.String),
-          facetControlIds: S.optional(StringList),
-          twowaySynonymsControlIds: S.optional(StringList),
+          facetControlIds: S.optional(__S(0, __c0, 0)),
+          twowaySynonymsControlIds: S.optional(__S(0, __c0, 0)),
           name: S.optional(S.String),
           priceRerankingLevel: S.optional(S.String),
-          onewaySynonymsControlIds: S.optional(StringList),
-          personalizationSpec: S.optional(GoogleCloudRetailV2betaSearchRequestPersonalizationSpec),
-          ignoreControlIds: S.optional(StringList),
-          filterControlIds: S.optional(StringList),
-          solutionTypes: S.optional(GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList),
+          onewaySynonymsControlIds: S.optional(__S(0, __c0, 0)),
+          personalizationSpec: S.optional(__S(17, __c2, 1)),
+          ignoreControlIds: S.optional(__S(0, __c0, 0)),
+          filterControlIds: S.optional(__S(0, __c0, 0)),
+          solutionTypes: S.optional(__S(18, __c2, 2)),
           diversityLevel: S.optional(S.String),
-          dynamicFacetSpec: S.optional(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec),
+          dynamicFacetSpec: S.optional(__S(17, __c2, 1)),
           modelId: S.optional(S.String),
-          replacementControlIds: S.optional(StringList),
+          replacementControlIds: S.optional(__S(0, __c0, 0)),
           displayName: S.optional(S.String),
-          boostControlIds: S.optional(StringList),
+          boostControlIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaServingConfig",
@@ -5591,7 +4240,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          placeIds: S.optional(StringList),
+          placeIds: S.optional(__S(0, __c0, 0)),
           type: S.optional(S.String),
           allowMissing: S.optional(S.Boolean),
           addTime: S.optional(S.String),
@@ -5603,7 +4252,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           product: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaAddFulfillmentPlacesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5617,7 +4266,7 @@ function __c2(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -5626,18 +4275,18 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(23, __c2, 7)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(GoogleRpcStatus),
+          error: S.optional(__S(24, __c3, 0)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(22, __c2, 6)),
+          response: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -5645,8 +4294,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          price: S.optional(GoogleCloudRetailV2betaInterval),
-          originalPrice: S.optional(GoogleCloudRetailV2betaInterval),
+          price: S.optional(__S(3, __c0, 3)),
+          originalPrice: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaPriceInfoPriceRange",
@@ -5655,7 +4304,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           priceExpireTime: S.optional(S.String),
-          priceRange: S.optional(GoogleCloudRetailV2betaPriceInfoPriceRange),
+          priceRange: S.optional(__S(26, __c3, 2)),
           currencyCode: S.optional(S.String),
           priceEffectiveTime: S.optional(S.String),
           price: S.optional(S.Number),
@@ -5671,22 +4320,22 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           searchable: S.optional(S.Boolean),
-          numbers: S.optional(DoubleList),
-          text: S.optional(StringList),
+          numbers: S.optional(__S(28, __c3, 4)),
+          text: S.optional(__S(0, __c0, 0)),
           indexable: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCustomAttribute",
       });
     case 6:
-      return S.Record(S.String, GoogleCloudRetailV2betaCustomAttribute);
+      return S.Record(S.String, __S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          priceInfo: S.optional(GoogleCloudRetailV2betaPriceInfo),
+          priceInfo: S.optional(__S(27, __c3, 3)),
           placeId: S.optional(S.String),
-          attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
-          fulfillmentTypes: S.optional(StringList),
+          attributes: S.optional(__S(30, __c3, 6)),
+          fulfillmentTypes: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaLocalInventory",
@@ -5696,13 +4345,13 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaLocalInventory);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           addMask: S.optional(S.String),
           addTime: S.optional(S.String),
-          localInventories: S.optional(GoogleCloudRetailV2betaLocalInventoryList),
+          localInventories: S.optional(__S(32, __c4, 0)),
           allowMissing: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5712,7 +4361,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           product: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaAddLocalInventoriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5726,7 +4375,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributeKeys: S.optional(StringList),
+          attributeKeys: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest",
@@ -5735,9 +4384,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           attributesConfig: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5751,8 +4398,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resetCatalogAttributes: S.optional(StringList),
-          deletedCatalogAttributes: S.optional(StringList),
+          resetCatalogAttributes: S.optional(__S(0, __c0, 0)),
+          deletedCatalogAttributes: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse",
@@ -5765,7 +4412,7 @@ function __c4(j: number): any {
           finalQuestion: S.optional(S.String),
           generatedQuestion: S.optional(S.String),
           frequency: S.optional(S.Number),
-          exampleValues: S.optional(StringList),
+          exampleValues: S.optional(__S(0, __c0, 0)),
           allowedInConversation: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5774,7 +4421,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          generativeQuestionConfig: S.optional(GoogleCloudRetailV2betaGenerativeQuestionConfig),
+          generativeQuestionConfig: S.optional(__S(38, __c4, 6)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
@@ -5785,11 +4432,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList),
+          requests: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest",
@@ -5798,9 +4445,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5812,13 +4457,11 @@ function __c5(j: number): any {
         identifier: "BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest",
       });
     case 3:
-      return S.Array(GoogleCloudRetailV2betaGenerativeQuestionConfig);
+      return S.Array(__S(38, __c4, 6));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          generativeQuestionConfigs: S.optional(
-            GoogleCloudRetailV2betaGenerativeQuestionConfigList,
-          ),
+          generativeQuestionConfigs: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse",
@@ -5839,7 +4482,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaCollectUserEventRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5853,7 +4496,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(DocumentMapList),
+          extensions: S.optional(__S(23, __c2, 7)),
           data: S.optional(S.String),
           contentType: S.optional(S.String),
         }),
@@ -5867,7 +4510,7 @@ function __c6(j: number): any {
         S.Struct({
           visitorId: S.optional(S.String.pipe(T.Query())),
           maxSuggestions: S.optional(S.Number.pipe(T.Query())),
-          languageCodes: S.optional(StringList.pipe(T.Query())),
+          languageCodes: S.optional(__S(0, __c0, 0).pipe(T.Query())),
           enableAttributeSuggestions: S.optional(S.Boolean.pipe(T.Query())),
           dataset: S.optional(S.String.pipe(T.Query())),
           entity: S.optional(S.String.pipe(T.Query())),
@@ -5887,14 +4530,14 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
+          attributes: S.optional(__S(30, __c3, 6)),
           suggestion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5904,30 +4547,24 @@ function __c6(j: number): any {
         identifier: "GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult",
       });
     case 4:
-      return S.Array(GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          suggestions: S.optional(StringList),
+          suggestions: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult",
       });
     case 6:
-      return S.Record(S.String, GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult);
+      return S.Record(S.String, __S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           attributionToken: S.optional(S.String),
-          completionResults: S.optional(
-            GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList,
-          ),
-          recentSearchResults: S.optional(
-            GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList,
-          ),
-          attributeResults: S.optional(
-            GoogleCloudRetailV2betaCompleteQueryResponseAttributeResultMap,
-          ),
+          completionResults: S.optional(__S(50, __c6, 2)),
+          recentSearchResults: S.optional(__S(52, __c6, 4)),
+          attributeResults: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCompleteQueryResponse",
@@ -5948,7 +4585,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          productAttributeValue: S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+          productAttributeValue: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer",
@@ -5957,9 +4594,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           textAnswer: S.optional(S.String),
-          selectedAnswer: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchRequestUserAnswerSelectedAnswer,
-          ),
+          selectedAnswer: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer",
@@ -5968,10 +4603,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enableConversationalFiltering: S.optional(S.Boolean),
-          conversationalFilteringMode: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum,
-          ),
-          userAnswer: S.optional(GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer),
+          conversationalFilteringMode: S.optional(S.String),
+          userAnswer: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec",
@@ -5979,15 +4612,15 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(GoogleCloudRetailV2betaSafetySettingCategoryEnum),
-          threshold: S.optional(GoogleCloudRetailV2betaSafetySettingThresholdEnum),
-          method: S.optional(GoogleCloudRetailV2betaSafetySettingMethodEnum),
+          category: S.optional(S.String),
+          threshold: S.optional(S.String),
+          method: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSafetySetting",
       });
     case 5:
-      return S.Array(GoogleCloudRetailV2betaSafetySetting);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.Record(S.String, S.String);
     case 7:
@@ -6004,14 +4637,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           skipBoostSpecValidation: S.optional(S.Boolean),
-          conditionBoostSpecs: S.optional(
-            GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList,
-          ),
+          conditionBoostSpecs: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchRequestBoostSpec",
@@ -6019,7 +4650,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          boostSpec: S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpec),
+          boostSpec: S.optional(__S(65, __c8, 1)),
           canonicalFilter: S.optional(S.String),
           filter: S.optional(S.String),
           sortBy: S.optional(S.String),
@@ -6042,17 +4673,15 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           visitorId: S.optional(S.String),
-          conversationalFilteringSpec: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpec,
-          ),
-          safetySettings: S.optional(GoogleCloudRetailV2betaSafetySettingList),
+          conversationalFilteringSpec: S.optional(__S(59, __c7, 3)),
+          safetySettings: S.optional(__S(61, __c7, 5)),
           conversationId: S.optional(S.String),
-          userLabels: S.optional(StringMap),
+          userLabels: S.optional(__S(62, __c7, 6)),
           query: S.optional(S.String),
           branch: S.optional(S.String),
-          searchParams: S.optional(GoogleCloudRetailV2betaConversationalSearchRequestSearchParams),
-          userInfo: S.optional(GoogleCloudRetailV2betaUserInfo),
-          pageCategories: S.optional(StringList),
+          searchParams: S.optional(__S(66, __c8, 2)),
+          userInfo: S.optional(__S(67, __c8, 3)),
+          pageCategories: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaConversationalSearchRequest",
@@ -6061,7 +4690,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaConversationalSearchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6075,16 +4704,14 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          productAttributeValue: S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+          productAttributeValue: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer",
       });
     case 7:
-      return S.Array(
-        GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-      );
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -6093,9 +4720,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           followupQuestion: S.optional(S.String),
-          suggestedAnswers: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList,
-          ),
+          suggestedAnswers: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion",
@@ -6109,16 +4734,12 @@ function __c9(j: number): any {
         identifier: "GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          followupQuestion: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion,
-          ),
-          additionalFilter: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-          ),
+          followupQuestion: S.optional(__S(72, __c9, 0)),
+          additionalFilter: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({
         identifier:
@@ -6128,18 +4749,12 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           conversationalTextResponse: S.optional(S.String),
-          state: S.optional(GoogleCloudRetailV2betaConversationalSearchResponseStateEnum),
-          followupQuestion: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion,
-          ),
+          state: S.optional(S.String),
+          followupQuestion: S.optional(__S(72, __c9, 0)),
           conversationId: S.optional(S.String),
-          userQueryTypes: S.optional(StringList),
-          refinedSearch: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList,
-          ),
-          conversationalFilteringResult: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchResponseConversationalFilteringResult,
-          ),
+          userQueryTypes: S.optional(__S(0, __c0, 0)),
+          refinedSearch: S.optional(__S(74, __c9, 2)),
+          conversationalFilteringResult: S.optional(__S(75, __c9, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaConversationalSearchResponse",
@@ -6148,7 +4763,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaConversationalSearchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6170,18 +4785,18 @@ function __c9(j: number): any {
         identifier: "GoogleCloudRetailV2betaImage",
       });
     case 7:
-      return S.Array(GoogleCloudRetailV2betaImage);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.suspend(() => GoogleCloudRetailV2betaProduct));
+      return S.Array(S.suspend(() => __S(88, __c11, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          genders: S.optional(StringList),
-          ageGroups: S.optional(StringList),
+          genders: S.optional(__S(0, __c0, 0)),
+          ageGroups: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaAudience",
@@ -6189,8 +4804,8 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          colors: S.optional(StringList),
-          colorFamilies: S.optional(StringList),
+          colors: S.optional(__S(0, __c0, 0)),
+          colorFamilies: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaColorInfo",
@@ -6199,7 +4814,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ratingCount: S.optional(S.Number),
-          ratingHistogram: S.optional(IntegerList),
+          ratingHistogram: S.optional(__S(28, __c3, 4)),
           averageRating: S.optional(S.Number),
         }),
       ).annotate({
@@ -6209,13 +4824,13 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          placeIds: S.optional(StringList),
+          placeIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaFulfillmentInfo",
       });
     case 5:
-      return S.Array(GoogleCloudRetailV2betaFulfillmentInfo);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6225,7 +4840,7 @@ function __c10(j: number): any {
         identifier: "GoogleCloudRetailV2betaPromotion",
       });
     case 7:
-      return S.Array(GoogleCloudRetailV2betaPromotion);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -6235,38 +4850,38 @@ function __c11(j: number): any {
         S.Struct({
           languageCode: S.optional(S.String),
           description: S.optional(S.String),
-          images: S.optional(GoogleCloudRetailV2betaImageList),
+          images: S.optional(__S(79, __c9, 7)),
           name: S.optional(S.String),
-          tags: S.optional(StringList),
+          tags: S.optional(__S(0, __c0, 0)),
           retrievableFields: S.optional(S.String),
           expireTime: S.optional(S.String),
           ttl: S.optional(S.String),
-          availability: S.optional(GoogleCloudRetailV2betaProductAvailabilityEnum),
+          availability: S.optional(S.String),
           availableTime: S.optional(S.String),
-          priceInfo: S.optional(GoogleCloudRetailV2betaPriceInfo),
-          brands: S.optional(StringList),
-          patterns: S.optional(StringList),
-          materials: S.optional(StringList),
-          sizes: S.optional(StringList),
+          priceInfo: S.optional(__S(27, __c3, 3)),
+          brands: S.optional(__S(0, __c0, 0)),
+          patterns: S.optional(__S(0, __c0, 0)),
+          materials: S.optional(__S(0, __c0, 0)),
+          sizes: S.optional(__S(0, __c0, 0)),
           id: S.optional(S.String),
-          categories: S.optional(StringList),
+          categories: S.optional(__S(0, __c0, 0)),
           publishTime: S.optional(S.String),
-          variants: S.optional(GoogleCloudRetailV2betaProductList),
+          variants: S.optional(__S(80, __c10, 0)),
           primaryProductId: S.optional(S.String),
-          audience: S.optional(GoogleCloudRetailV2betaAudience),
-          colorInfo: S.optional(GoogleCloudRetailV2betaColorInfo),
-          rating: S.optional(GoogleCloudRetailV2betaRating),
+          audience: S.optional(__S(81, __c10, 1)),
+          colorInfo: S.optional(__S(82, __c10, 2)),
+          rating: S.optional(__S(83, __c10, 3)),
           title: S.optional(S.String),
           availableQuantity: S.optional(S.Number),
-          fulfillmentInfo: S.optional(GoogleCloudRetailV2betaFulfillmentInfoList),
-          localInventories: S.optional(GoogleCloudRetailV2betaLocalInventoryList),
+          fulfillmentInfo: S.optional(__S(85, __c10, 5)),
+          localInventories: S.optional(__S(32, __c4, 0)),
           gtin: S.optional(S.String),
-          conditions: S.optional(StringList),
-          attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
+          conditions: S.optional(__S(0, __c0, 0)),
+          attributes: S.optional(__S(30, __c3, 6)),
           uri: S.optional(S.String),
-          type: S.optional(GoogleCloudRetailV2betaProductTypeEnum),
-          promotions: S.optional(GoogleCloudRetailV2betaPromotionList),
-          collectionMemberIds: S.optional(StringList),
+          type: S.optional(S.String),
+          promotions: S.optional(__S(87, __c10, 7)),
+          collectionMemberIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaProduct",
@@ -6276,7 +4891,7 @@ function __c11(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           productId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaProduct.pipe(T.HttpBody())),
+          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6288,7 +4903,7 @@ function __c11(j: number): any {
         identifier: "CreateProjectsLocationsCatalogsBranchesProductsRequest",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6299,13 +4914,11 @@ function __c11(j: number): any {
         identifier: "GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment",
       });
     case 4:
-      return S.Array(GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment);
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          facetPositionAdjustments: S.optional(
-            GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList,
-          ),
+          facetPositionAdjustments: S.optional(__S(92, __c11, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRuleForceReturnFacetAction",
@@ -6320,7 +4933,7 @@ function __c11(j: number): any {
         identifier: "GoogleCloudRetailV2betaConditionQueryTerm",
       });
     case 7:
-      return S.Array(GoogleCloudRetailV2betaConditionQueryTerm);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -6335,13 +4948,13 @@ function __c12(j: number): any {
         identifier: "GoogleCloudRetailV2betaConditionTimeRange",
       });
     case 1:
-      return S.Array(GoogleCloudRetailV2betaConditionTimeRange);
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          queryTerms: S.optional(GoogleCloudRetailV2betaConditionQueryTermList),
-          activeTimeRange: S.optional(GoogleCloudRetailV2betaConditionTimeRangeList),
-          pageCategories: S.optional(StringList),
+          queryTerms: S.optional(__S(95, __c11, 7)),
+          activeTimeRange: S.optional(__S(97, __c12, 1)),
+          pageCategories: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCondition",
@@ -6349,7 +4962,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          synonyms: S.optional(StringList),
+          synonyms: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRuleTwowaySynonymsAction",
@@ -6357,9 +4970,9 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          onewayTerms: S.optional(StringList),
-          synonyms: S.optional(StringList),
-          queryTerms: S.optional(StringList),
+          onewayTerms: S.optional(__S(0, __c0, 0)),
+          synonyms: S.optional(__S(0, __c0, 0)),
+          queryTerms: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRuleOnewaySynonymsAction",
@@ -6367,9 +4980,9 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          terms: S.optional(StringList),
-          doNotAssociateTerms: S.optional(StringList),
-          queryTerms: S.optional(StringList),
+          terms: S.optional(__S(0, __c0, 0)),
+          doNotAssociateTerms: S.optional(__S(0, __c0, 0)),
+          queryTerms: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRuleDoNotAssociateAction",
@@ -6377,7 +4990,7 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ignoreTerms: S.optional(StringList),
+          ignoreTerms: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRuleIgnoreAction",
@@ -6385,7 +4998,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pinMap: S.optional(StringMap),
+          pinMap: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRulePinAction",
@@ -6398,7 +5011,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           term: S.optional(S.String),
-          queryTerms: S.optional(StringList),
+          queryTerms: S.optional(__S(0, __c0, 0)),
           replacementTerm: S.optional(S.String),
         }),
       ).annotate({
@@ -6423,7 +5036,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributeNames: S.optional(StringList),
+          attributeNames: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRuleRemoveFacetAction",
@@ -6440,18 +5053,18 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          forceReturnFacetAction: S.optional(GoogleCloudRetailV2betaRuleForceReturnFacetAction),
-          condition: S.optional(GoogleCloudRetailV2betaCondition),
-          twowaySynonymsAction: S.optional(GoogleCloudRetailV2betaRuleTwowaySynonymsAction),
-          onewaySynonymsAction: S.optional(GoogleCloudRetailV2betaRuleOnewaySynonymsAction),
-          doNotAssociateAction: S.optional(GoogleCloudRetailV2betaRuleDoNotAssociateAction),
-          ignoreAction: S.optional(GoogleCloudRetailV2betaRuleIgnoreAction),
-          pinAction: S.optional(GoogleCloudRetailV2betaRulePinAction),
-          replacementAction: S.optional(GoogleCloudRetailV2betaRuleReplacementAction),
-          filterAction: S.optional(GoogleCloudRetailV2betaRuleFilterAction),
-          redirectAction: S.optional(GoogleCloudRetailV2betaRuleRedirectAction),
-          removeFacetAction: S.optional(GoogleCloudRetailV2betaRuleRemoveFacetAction),
-          boostAction: S.optional(GoogleCloudRetailV2betaRuleBoostAction),
+          forceReturnFacetAction: S.optional(__S(93, __c11, 5)),
+          condition: S.optional(__S(98, __c12, 2)),
+          twowaySynonymsAction: S.optional(__S(99, __c12, 3)),
+          onewaySynonymsAction: S.optional(__S(100, __c12, 4)),
+          doNotAssociateAction: S.optional(__S(101, __c12, 5)),
+          ignoreAction: S.optional(__S(102, __c12, 6)),
+          pinAction: S.optional(__S(103, __c12, 7)),
+          replacementAction: S.optional(__S(104, __c13, 0)),
+          filterAction: S.optional(__S(105, __c13, 1)),
+          redirectAction: S.optional(__S(106, __c13, 2)),
+          removeFacetAction: S.optional(__S(107, __c13, 3)),
+          boostAction: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRule",
@@ -6459,14 +5072,12 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          solutionTypes: S.optional(GoogleCloudRetailV2betaControlSolutionTypesItemEnumList),
+          solutionTypes: S.optional(__S(18, __c2, 2)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          associatedServingConfigIds: S.optional(StringList),
-          searchSolutionUseCase: S.optional(
-            GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList,
-          ),
-          rule: S.optional(GoogleCloudRetailV2betaRule),
+          associatedServingConfigIds: S.optional(__S(0, __c0, 0)),
+          searchSolutionUseCase: S.optional(__S(90, __c11, 2)),
+          rule: S.optional(__S(109, __c13, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaControl",
@@ -6476,7 +5087,7 @@ function __c13(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           controlId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaControl.pipe(T.HttpBody())),
+          body: S.optional(__S(110, __c13, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6494,19 +5105,17 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          servingConfigIds: S.optional(StringList),
+          servingConfigIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaModelServingConfigList",
       });
     case 1:
-      return S.Array(GoogleCloudRetailV2betaModelServingConfigList);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          contextProductsType: S.optional(
-            GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum,
-          ),
+          contextProductsType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig",
@@ -6514,9 +5123,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          frequentlyBoughtTogetherConfig: S.optional(
-            GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig,
-          ),
+          frequentlyBoughtTogetherConfig: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaModelModelFeaturesConfig",
@@ -6526,15 +5133,15 @@ function __c14(j: number): any {
         S.Struct({
           type: S.optional(S.String),
           lastTuneTime: S.optional(S.String),
-          servingConfigLists: S.optional(GoogleCloudRetailV2betaModelServingConfigListList),
-          periodicTuningState: S.optional(GoogleCloudRetailV2betaModelPeriodicTuningStateEnum),
-          filteringOption: S.optional(GoogleCloudRetailV2betaModelFilteringOptionEnum),
+          servingConfigLists: S.optional(__S(113, __c14, 1)),
+          periodicTuningState: S.optional(S.String),
+          filteringOption: S.optional(S.String),
           updateTime: S.optional(S.String),
-          dataState: S.optional(GoogleCloudRetailV2betaModelDataStateEnum),
-          modelFeaturesConfig: S.optional(GoogleCloudRetailV2betaModelModelFeaturesConfig),
+          dataState: S.optional(S.String),
+          modelFeaturesConfig: S.optional(__S(115, __c14, 3)),
           name: S.optional(S.String),
-          trainingState: S.optional(GoogleCloudRetailV2betaModelTrainingStateEnum),
-          servingState: S.optional(GoogleCloudRetailV2betaModelServingStateEnum),
+          trainingState: S.optional(S.String),
+          servingState: S.optional(S.String),
           createTime: S.optional(S.String),
           optimizationObjective: S.optional(S.String),
           tuningOperation: S.optional(S.String),
@@ -6548,7 +5155,7 @@ function __c14(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaModel.pipe(T.HttpBody())),
+          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6564,7 +5171,7 @@ function __c14(j: number): any {
         S.Struct({
           servingConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaServingConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6660,8 +5267,8 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(GoogleCloudRetailV2betaOutputConfigGcsDestination),
-          bigqueryDestination: S.optional(GoogleCloudRetailV2betaOutputConfigBigQueryDestination),
+          gcsDestination: S.optional(__S(124, __c15, 4)),
+          bigqueryDestination: S.optional(__S(125, __c15, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaOutputConfig",
@@ -6669,7 +5276,7 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          outputConfig: S.optional(GoogleCloudRetailV2betaOutputConfig),
+          outputConfig: S.optional(__S(126, __c15, 6)),
           filter: S.optional(S.String),
         }),
       ).annotate({
@@ -6683,7 +5290,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaExportAnalyticsMetricsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(127, __c15, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6698,7 +5305,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          outputConfig: S.optional(GoogleCloudRetailV2betaOutputConfig),
+          outputConfig: S.optional(__S(126, __c15, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaExportProductsRequest",
@@ -6707,7 +5314,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaExportProductsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6722,7 +5329,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaExportProductsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6756,13 +5363,13 @@ function __c16(j: number): any {
         identifier: "GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient",
       });
     case 6:
-      return S.Array(GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient);
+      return S.Array(__S(133, __c16, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          recipients: S.optional(GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList),
+          recipients: S.optional(__S(134, __c16, 6)),
           alertGroup: S.optional(S.String),
-          enrollStatus: S.optional(GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum),
+          enrollStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaAlertConfigAlertPolicy",
@@ -6772,12 +5379,12 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaAlertConfigAlertPolicy);
+      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          alertPolicies: S.optional(GoogleCloudRetailV2betaAlertConfigAlertPolicyList),
+          alertPolicies: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaAlertConfig",
@@ -6821,7 +5428,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          partitionDate: S.optional(GoogleTypeDate),
+          partitionDate: S.optional(__S(140, __c17, 4)),
           projectId: S.optional(S.String),
           dataSchema: S.optional(S.String),
           tableId: S.optional(S.String),
@@ -6834,7 +5441,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bigQuerySource: S.optional(GoogleCloudRetailV2betaBigQuerySource),
+          bigQuerySource: S.optional(__S(141, __c17, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCompletionDataInputConfig",
@@ -6844,15 +5451,15 @@ function __c17(j: number): any {
         S.Struct({
           maxSuggestions: S.optional(S.Number),
           lastAllowlistImportOperation: S.optional(S.String),
-          denylistInputConfig: S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+          denylistInputConfig: S.optional(__S(142, __c17, 6)),
           matchingOrder: S.optional(S.String),
           name: S.optional(S.String),
-          suggestionsInputConfig: S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+          suggestionsInputConfig: S.optional(__S(142, __c17, 6)),
           minPrefixLength: S.optional(S.Number),
           lastSuggestionsImportOperation: S.optional(S.String),
           lastDenylistImportOperation: S.optional(S.String),
           autoLearning: S.optional(S.Boolean),
-          allowlistInputConfig: S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+          allowlistInputConfig: S.optional(__S(142, __c17, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaCompletionConfig",
@@ -6878,9 +5485,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(
-            GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum,
-          ),
+          operation: S.optional(S.String),
           query: S.optional(S.String),
           intentType: S.optional(S.String),
         }),
@@ -6888,13 +5493,11 @@ function __c18(j: number): any {
         identifier: "GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          inlineForceIntents: S.optional(
-            GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList,
-          ),
+          inlineForceIntents: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaIntentClassificationConfigInlineSource",
@@ -6911,15 +5514,15 @@ function __c18(j: number): any {
         identifier: "GoogleCloudRetailV2betaIntentClassificationConfigExample",
       });
     case 5:
-      return S.Array(GoogleCloudRetailV2betaIntentClassificationConfigExample);
+      return S.Array(__S(148, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inlineSource: S.optional(GoogleCloudRetailV2betaIntentClassificationConfigInlineSource),
-          example: S.optional(GoogleCloudRetailV2betaIntentClassificationConfigExampleList),
-          blocklistKeywords: S.optional(StringList),
+          inlineSource: S.optional(__S(147, __c18, 3)),
+          example: S.optional(__S(149, __c18, 5)),
+          blocklistKeywords: S.optional(__S(0, __c0, 0)),
           modelPreamble: S.optional(S.String),
-          disabledIntentTypes: S.optional(StringList),
+          disabledIntentTypes: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaIntentClassificationConfig",
@@ -6927,7 +5530,7 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          intentClassificationConfig: S.optional(GoogleCloudRetailV2betaIntentClassificationConfig),
+          intentClassificationConfig: S.optional(__S(150, __c18, 6)),
           retailerDisplayName: S.optional(S.String),
           catalog: S.optional(S.String),
         }),
@@ -7105,7 +5708,7 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(GoogleCloudRetailV2betaProductList),
+          products: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaProductInlineSource",
@@ -7114,7 +5717,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataSchema: S.optional(S.String),
-          inputUris: S.optional(StringList),
+          inputUris: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaGcsSource",
@@ -7122,9 +5725,9 @@ function __c20(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          productInlineSource: S.optional(GoogleCloudRetailV2betaProductInlineSource),
-          gcsSource: S.optional(GoogleCloudRetailV2betaGcsSource),
-          bigQuerySource: S.optional(GoogleCloudRetailV2betaBigQuerySource),
+          productInlineSource: S.optional(__S(164, __c20, 4)),
+          gcsSource: S.optional(__S(165, __c20, 5)),
+          bigQuerySource: S.optional(__S(141, __c17, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaProductInputConfig",
@@ -7145,13 +5748,11 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          inputConfig: S.optional(GoogleCloudRetailV2betaProductInputConfig),
-          reconciliationMode: S.optional(
-            GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum,
-          ),
+          inputConfig: S.optional(__S(166, __c20, 6)),
+          reconciliationMode: S.optional(S.String),
           requestId: S.optional(S.String),
           notificationPubsubTopic: S.optional(S.String),
-          errorsConfig: S.optional(GoogleCloudRetailV2betaImportErrorsConfig),
+          errorsConfig: S.optional(__S(167, __c20, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaImportProductsRequest",
@@ -7160,7 +5761,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaImportProductsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7175,7 +5776,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           notificationPubsubTopic: S.optional(S.String),
-          inputConfig: S.optional(GoogleCloudRetailV2betaCompletionDataInputConfig),
+          inputConfig: S.optional(__S(142, __c17, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaImportCompletionDataRequest",
@@ -7184,7 +5785,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaImportCompletionDataRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7199,13 +5800,13 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           quantity: S.optional(S.Number),
-          product: S.optional(GoogleCloudRetailV2betaProduct),
+          product: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaProductDetail",
       });
     case 5:
-      return S.Array(GoogleCloudRetailV2betaProductDetail);
+      return S.Array(__S(172, __c21, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7213,14 +5814,14 @@ function __c21(j: number): any {
           displayName: S.optional(S.String),
           panelPosition: S.optional(S.Number),
           attributionToken: S.optional(S.String),
-          productDetails: S.optional(GoogleCloudRetailV2betaProductDetailList),
+          productDetails: S.optional(__S(173, __c21, 5)),
           panelId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaPanelInfo",
       });
     case 7:
-      return S.Array(GoogleCloudRetailV2betaPanelInfo);
+      return S.Array(__S(174, __c21, 6));
   }
 }
 function __c22(j: number): any {
@@ -7250,38 +5851,38 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          userInfo: S.optional(GoogleCloudRetailV2betaUserInfo),
+          userInfo: S.optional(__S(67, __c8, 3)),
           pageViewId: S.optional(S.String),
           offset: S.optional(S.Number),
           entity: S.optional(S.String),
           searchQuery: S.optional(S.String),
           referrerUri: S.optional(S.String),
-          attributes: S.optional(GoogleCloudRetailV2betaCustomAttributeMap),
+          attributes: S.optional(__S(30, __c3, 6)),
           orderBy: S.optional(S.String),
           sessionId: S.optional(S.String),
           cartId: S.optional(S.String),
-          panels: S.optional(GoogleCloudRetailV2betaPanelInfoList),
+          panels: S.optional(__S(175, __c21, 7)),
           uri: S.optional(S.String),
           eventTime: S.optional(S.String),
           visitorId: S.optional(S.String),
           filter: S.optional(S.String),
-          experimentIds: S.optional(StringList),
+          experimentIds: S.optional(__S(0, __c0, 0)),
           attributionToken: S.optional(S.String),
-          productDetails: S.optional(GoogleCloudRetailV2betaProductDetailList),
-          pageCategories: S.optional(StringList),
-          purchaseTransaction: S.optional(GoogleCloudRetailV2betaPurchaseTransaction),
+          productDetails: S.optional(__S(173, __c21, 5)),
+          pageCategories: S.optional(__S(0, __c0, 0)),
+          purchaseTransaction: S.optional(__S(176, __c22, 0)),
           eventType: S.optional(S.String),
-          completionDetail: S.optional(GoogleCloudRetailV2betaCompletionDetail),
+          completionDetail: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaUserEvent",
       });
     case 3:
-      return S.Array(GoogleCloudRetailV2betaUserEvent);
+      return S.Array(__S(178, __c22, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          userEvents: S.optional(GoogleCloudRetailV2betaUserEventList),
+          userEvents: S.optional(__S(179, __c22, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaUserEventInlineSource",
@@ -7289,9 +5890,9 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          userEventInlineSource: S.optional(GoogleCloudRetailV2betaUserEventInlineSource),
-          gcsSource: S.optional(GoogleCloudRetailV2betaGcsSource),
-          bigQuerySource: S.optional(GoogleCloudRetailV2betaBigQuerySource),
+          userEventInlineSource: S.optional(__S(180, __c22, 4)),
+          gcsSource: S.optional(__S(165, __c20, 5)),
+          bigQuerySource: S.optional(__S(141, __c17, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaUserEventInputConfig",
@@ -7299,8 +5900,8 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          errorsConfig: S.optional(GoogleCloudRetailV2betaImportErrorsConfig),
-          inputConfig: S.optional(GoogleCloudRetailV2betaUserEventInputConfig),
+          errorsConfig: S.optional(__S(167, __c20, 7)),
+          inputConfig: S.optional(__S(181, __c22, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaImportUserEventsRequest",
@@ -7309,7 +5910,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaImportUserEventsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(182, __c22, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7351,14 +5952,14 @@ function __c23(j: number): any {
         identifier: "GoogleCloudRetailV2betaMerchantCenterFeedFilter",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaMerchantCenterFeedFilter);
+      return S.Array(__S(185, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
-          feeds: S.optional(GoogleCloudRetailV2betaMerchantCenterFeedFilterList),
+          feeds: S.optional(__S(186, __c23, 2)),
           merchantCenterAccountId: S.optional(S.String),
-          destinations: S.optional(StringList),
+          destinations: S.optional(__S(0, __c0, 0)),
           regionCode: S.optional(S.String),
           branchId: S.optional(S.String),
         }),
@@ -7366,11 +5967,11 @@ function __c23(j: number): any {
         identifier: "GoogleCloudRetailV2betaMerchantCenterLink",
       });
     case 4:
-      return S.Array(GoogleCloudRetailV2betaMerchantCenterLink);
+      return S.Array(__S(187, __c23, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(GoogleCloudRetailV2betaMerchantCenterLinkList),
+          links: S.optional(__S(188, __c23, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaMerchantCenterLinkingConfig",
@@ -7388,10 +5989,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          merchantCenterLinkingConfig: S.optional(
-            GoogleCloudRetailV2betaMerchantCenterLinkingConfig,
-          ),
-          productLevelConfig: S.optional(GoogleCloudRetailV2betaProductLevelConfig),
+          merchantCenterLinkingConfig: S.optional(__S(189, __c23, 5)),
+          productLevelConfig: S.optional(__S(190, __c23, 6)),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -7402,11 +6001,11 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaCatalog);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          catalogs: S.optional(GoogleCloudRetailV2betaCatalogList),
+          catalogs: S.optional(__S(192, __c24, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7434,7 +6033,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(GoogleCloudRetailV2betaProductList),
+          products: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaListProductsResponse",
@@ -7457,12 +6056,12 @@ function __c24(j: number): any {
         identifier: "ListProjectsLocationsCatalogsControlsRequest",
       });
     case 5:
-      return S.Array(GoogleCloudRetailV2betaControl);
+      return S.Array(__S(110, __c13, 6));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          controls: S.optional(GoogleCloudRetailV2betaControlList),
+          controls: S.optional(__S(197, __c24, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaListControlsResponse",
@@ -7488,9 +6087,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          generativeQuestionConfigs: S.optional(
-            GoogleCloudRetailV2betaGenerativeQuestionConfigList,
-          ),
+          generativeQuestionConfigs: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse",
@@ -7512,11 +6109,11 @@ function __c25(j: number): any {
         identifier: "ListProjectsLocationsCatalogsModelsRequest",
       });
     case 2:
-      return S.Array(GoogleCloudRetailV2betaModel);
+      return S.Array(__S(116, __c14, 4));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(GoogleCloudRetailV2betaModelList),
+          models: S.optional(__S(202, __c25, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7541,13 +6138,13 @@ function __c25(j: number): any {
         identifier: "ListProjectsLocationsCatalogsOperationsRequest",
       });
     case 5:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(25, __c3, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(0, __c0, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(GoogleLongrunningOperationList),
+          operations: S.optional(__S(205, __c25, 5)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -7573,12 +6170,12 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaServingConfig);
+      return S.Array(__S(19, __c2, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          servingConfigs: S.optional(GoogleCloudRetailV2betaServingConfigList),
+          servingConfigs: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaListServingConfigsResponse",
@@ -7624,7 +6221,7 @@ function __c26(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaCatalog.pipe(T.HttpBody())),
+          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7641,7 +6238,7 @@ function __c26(j: number): any {
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaProduct.pipe(T.HttpBody())),
+          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7657,7 +6254,7 @@ function __c26(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaControl.pipe(T.HttpBody())),
+          body: S.optional(__S(110, __c13, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7673,7 +6270,7 @@ function __c26(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaModel.pipe(T.HttpBody())),
+          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7693,7 +6290,7 @@ function __c27(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaServingConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7712,7 +6309,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaPauseModelRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7726,9 +6323,9 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          params: S.optional(DocumentMap),
-          labels: S.optional(StringMap),
-          userEvent: S.optional(GoogleCloudRetailV2betaUserEvent),
+          params: S.optional(__S(22, __c2, 6)),
+          labels: S.optional(__S(62, __c7, 6)),
+          userEvent: S.optional(__S(178, __c22, 2)),
           filter: S.optional(S.String),
           pageSize: S.optional(S.Number),
           pageToken: S.optional(S.String),
@@ -7741,7 +6338,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaPredictRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(219, __c27, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7755,21 +6352,21 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(22, __c2, 6)),
           id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaPredictResponsePredictionResult",
       });
     case 6:
-      return S.Array(GoogleCloudRetailV2betaPredictResponsePredictionResult);
+      return S.Array(__S(221, __c27, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
-          missingIds: S.optional(StringList),
+          missingIds: S.optional(__S(0, __c0, 0)),
           attributionToken: S.optional(S.String),
-          results: S.optional(GoogleCloudRetailV2betaPredictResponsePredictionResultList),
+          results: S.optional(__S(222, __c27, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaPredictResponse",
@@ -7782,7 +6379,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaPredictRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(219, __c27, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7806,7 +6403,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaPurgeProductsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7830,7 +6427,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaPurgeUserEventsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(227, __c28, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7844,9 +6441,7 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          userEventRejoinScope: S.optional(
-            GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum,
-          ),
+          userEventRejoinScope: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRejoinUserEventsRequest",
@@ -7855,7 +6450,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaRejoinUserEventsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(229, __c28, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7882,7 +6477,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           attributesConfig: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaRemoveCatalogAttributeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(231, __c28, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7897,7 +6492,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaRemoveControlRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7913,7 +6508,7 @@ function __c29(j: number): any {
         S.Struct({
           allowMissing: S.optional(S.Boolean),
           type: S.optional(S.String),
-          placeIds: S.optional(StringList),
+          placeIds: S.optional(__S(0, __c0, 0)),
           removeTime: S.optional(S.String),
         }),
       ).annotate({
@@ -7923,9 +6518,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           product: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(234, __c29, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7941,7 +6534,7 @@ function __c29(j: number): any {
         S.Struct({
           removeTime: S.optional(S.String),
           allowMissing: S.optional(S.Boolean),
-          placeIds: S.optional(StringList),
+          placeIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaRemoveLocalInventoriesRequest",
@@ -7950,7 +6543,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           product: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaRemoveLocalInventoriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(236, __c29, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7965,7 +6558,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          catalogAttribute: S.optional(GoogleCloudRetailV2betaCatalogAttribute),
+          catalogAttribute: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaReplaceCatalogAttributeRequest",
@@ -7974,9 +6567,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           attributesConfig: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudRetailV2betaReplaceCatalogAttributeRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(238, __c29, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7995,7 +6586,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaPauseModelRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8009,12 +6600,12 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          restrictedValues: S.optional(StringList),
+          restrictedValues: S.optional(__S(0, __c0, 0)),
           key: S.optional(S.String),
-          prefixes: S.optional(StringList),
-          contains: S.optional(StringList),
+          prefixes: S.optional(__S(0, __c0, 0)),
+          contains: S.optional(__S(0, __c0, 0)),
           orderBy: S.optional(S.String),
-          intervals: S.optional(GoogleCloudRetailV2betaIntervalList),
+          intervals: S.optional(__S(4, __c0, 4)),
           caseInsensitive: S.optional(S.Boolean),
           query: S.optional(S.String),
           returnMinMax: S.optional(S.Boolean),
@@ -8025,23 +6616,23 @@ function __c30(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          facetKey: S.optional(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey),
+          facetKey: S.optional(__S(241, __c30, 1)),
           limit: S.optional(S.Number),
           enableDynamicPosition: S.optional(S.Boolean),
-          excludedFilterKeys: S.optional(StringList),
+          excludedFilterKeys: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchRequestFacetSpec",
       });
     case 3:
-      return S.Array(GoogleCloudRetailV2betaSearchRequestFacetSpec);
+      return S.Array(__S(242, __c30, 2));
     case 4:
-      return S.Array(GoogleCloudRetailV2betaProductAttributeValue);
+      return S.Array(__S(56, __c7, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          productAttributeValues: S.optional(GoogleCloudRetailV2betaProductAttributeValueList),
-          productAttributeValue: S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+          productAttributeValues: S.optional(__S(244, __c30, 4)),
+          productAttributeValue: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier:
@@ -8050,9 +6641,7 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          selectedAnswer: S.optional(
-            GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer,
-          ),
+          selectedAnswer: S.optional(__S(245, __c30, 5)),
           textAnswer: S.optional(S.String),
         }),
       ).annotate({
@@ -8061,9 +6650,7 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userAnswer: S.optional(
-            GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer,
-          ),
+          userAnswer: S.optional(__S(246, __c30, 6)),
           followupConversationRequested: S.optional(S.Boolean),
           conversationId: S.optional(S.String),
         }),
@@ -8078,9 +6665,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pinUnexpandedResults: S.optional(S.Boolean),
-          condition: S.optional(
-            GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum,
-          ),
+          condition: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec",
@@ -8088,17 +6673,17 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList),
+          values: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaStringList",
       });
     case 2:
-      return S.Record(S.String, GoogleCloudRetailV2betaStringList);
+      return S.Record(S.String, __S(249, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          interval: S.optional(GoogleCloudRetailV2betaInterval),
+          interval: S.optional(__S(3, __c0, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -8107,20 +6692,20 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          productAttributeInterval: S.optional(GoogleCloudRetailV2betaProductAttributeInterval),
+          productAttributeInterval: S.optional(__S(251, __c31, 3)),
           representativeProductId: S.optional(S.String),
-          productAttributeValue: S.optional(GoogleCloudRetailV2betaProductAttributeValue),
+          productAttributeValue: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaTile",
       });
     case 5:
-      return S.Array(GoogleCloudRetailV2betaTile);
+      return S.Array(__S(252, __c31, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           tileNavigationRequested: S.optional(S.Boolean),
-          appliedTiles: S.optional(GoogleCloudRetailV2betaTileList),
+          appliedTiles: S.optional(__S(253, __c31, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchRequestTileNavigationSpec",
@@ -8128,31 +6713,29 @@ function __c31(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userInfo: S.optional(GoogleCloudRetailV2betaUserInfo),
-          facetSpecs: S.optional(GoogleCloudRetailV2betaSearchRequestFacetSpecList),
+          userInfo: S.optional(__S(67, __c8, 3)),
+          facetSpecs: S.optional(__S(243, __c30, 3)),
           pageSize: S.optional(S.Number),
-          searchMode: S.optional(GoogleCloudRetailV2betaSearchRequestSearchModeEnum),
+          searchMode: S.optional(S.String),
           languageCode: S.optional(S.String),
-          spellCorrectionSpec: S.optional(GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec),
-          pageCategories: S.optional(StringList),
+          spellCorrectionSpec: S.optional(__S(17, __c2, 1)),
+          pageCategories: S.optional(__S(0, __c0, 0)),
           offset: S.optional(S.Number),
-          conversationalSearchSpec: S.optional(
-            GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec,
-          ),
-          queryExpansionSpec: S.optional(GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec),
+          conversationalSearchSpec: S.optional(__S(247, __c30, 7)),
+          queryExpansionSpec: S.optional(__S(248, __c31, 0)),
           orderBy: S.optional(S.String),
-          userAttributes: S.optional(GoogleCloudRetailV2betaStringListMap),
-          tileNavigationSpec: S.optional(GoogleCloudRetailV2betaSearchRequestTileNavigationSpec),
+          userAttributes: S.optional(__S(250, __c31, 2)),
+          tileNavigationSpec: S.optional(__S(254, __c31, 6)),
           regionCode: S.optional(S.String),
-          labels: S.optional(StringMap),
-          dynamicFacetSpec: S.optional(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec),
+          labels: S.optional(__S(62, __c7, 6)),
+          dynamicFacetSpec: S.optional(__S(17, __c2, 1)),
           pageToken: S.optional(S.String),
-          boostSpec: S.optional(GoogleCloudRetailV2betaSearchRequestBoostSpec),
+          boostSpec: S.optional(__S(65, __c8, 1)),
           entity: S.optional(S.String),
           branch: S.optional(S.String),
           placeId: S.optional(S.String),
-          personalizationSpec: S.optional(GoogleCloudRetailV2betaSearchRequestPersonalizationSpec),
-          variantRollupKeys: S.optional(StringList),
+          personalizationSpec: S.optional(__S(17, __c2, 1)),
+          variantRollupKeys: S.optional(__S(0, __c0, 0)),
           query: S.optional(S.String),
           canonicalFilter: S.optional(S.String),
           visitorId: S.optional(S.String),
@@ -8169,7 +6752,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaSearchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8183,18 +6766,18 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          productId: S.optional(StringList),
+          productId: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaPinControlMetadataProductPins",
       });
     case 2:
-      return S.Record(S.String, GoogleCloudRetailV2betaPinControlMetadataProductPins);
+      return S.Record(S.String, __S(257, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          droppedPins: S.optional(GoogleCloudRetailV2betaPinControlMetadataProductPinsMap),
-          allMatchedPins: S.optional(GoogleCloudRetailV2betaPinControlMetadataProductPinsMap),
+          droppedPins: S.optional(__S(258, __c32, 2)),
+          allMatchedPins: S.optional(__S(258, __c32, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaPinControlMetadata",
@@ -8202,7 +6785,7 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tiles: S.optional(GoogleCloudRetailV2betaTileList),
+          tiles: S.optional(__S(253, __c31, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchResponseTileNavigationResult",
@@ -8210,21 +6793,21 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(DoubleList),
+          values: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaDoubleList",
       });
     case 6:
-      return S.Record(S.String, GoogleCloudRetailV2betaDoubleList);
+      return S.Record(S.String, __S(261, __c32, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          matchingVariantFields: S.optional(StringMap),
-          modelScores: S.optional(GoogleCloudRetailV2betaDoubleListMap),
-          variantRollupValues: S.optional(DocumentMap),
-          personalLabels: S.optional(StringList),
-          product: S.optional(GoogleCloudRetailV2betaProduct),
+          matchingVariantFields: S.optional(__S(62, __c7, 6)),
+          modelScores: S.optional(__S(262, __c32, 6)),
+          variantRollupValues: S.optional(__S(22, __c2, 6)),
+          personalLabels: S.optional(__S(0, __c0, 0)),
+          product: S.optional(__S(88, __c11, 0)),
           id: S.optional(S.String),
           matchingVariantCount: S.optional(S.Number),
         }),
@@ -8236,7 +6819,7 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaSearchResponseSearchResult);
+      return S.Array(__S(263, __c32, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8258,35 +6841,33 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          servingConfigExperiment: S.optional(
-            GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment,
-          ),
+          servingConfigExperiment: S.optional(__S(266, __c33, 2)),
           experiment: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaExperimentInfo",
       });
     case 4:
-      return S.Array(GoogleCloudRetailV2betaExperimentInfo);
+      return S.Array(__S(267, __c33, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           count: S.optional(S.String),
           minValue: S.optional(S.Number),
-          interval: S.optional(GoogleCloudRetailV2betaInterval),
+          interval: S.optional(__S(3, __c0, 3)),
           maxValue: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchResponseFacetFacetValue",
       });
     case 6:
-      return S.Array(GoogleCloudRetailV2betaSearchResponseFacetFacetValue);
+      return S.Array(__S(269, __c33, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          values: S.optional(GoogleCloudRetailV2betaSearchResponseFacetFacetValueList),
+          values: S.optional(__S(270, __c33, 6)),
           dynamicFacet: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -8297,22 +6878,16 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRetailV2betaSearchResponseFacet);
+      return S.Array(__S(271, __c33, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           followupQuestion: S.optional(S.String),
-          suggestedAnswers: S.optional(
-            GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList,
-          ),
+          suggestedAnswers: S.optional(__S(71, __c8, 7)),
           refinedQuery: S.optional(S.String),
-          additionalFilter: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-          ),
+          additionalFilter: S.optional(__S(70, __c8, 6)),
           conversationId: S.optional(S.String),
-          additionalFilters: S.optional(
-            GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList,
-          ),
+          additionalFilters: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2betaSearchResponseConversationalSearchResult",
@@ -8320,24 +6895,18 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          invalidConditionBoostSpecs: S.optional(
-            GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList,
-          ),
-          pinControlMetadata: S.optional(GoogleCloudRetailV2betaPinControlMetadata),
-          tileNavigationResult: S.optional(
-            GoogleCloudRetailV2betaSearchResponseTileNavigationResult,
-          ),
-          results: S.optional(GoogleCloudRetailV2betaSearchResponseSearchResultList),
+          invalidConditionBoostSpecs: S.optional(__S(64, __c8, 0)),
+          pinControlMetadata: S.optional(__S(259, __c32, 3)),
+          tileNavigationResult: S.optional(__S(260, __c32, 4)),
+          results: S.optional(__S(264, __c33, 0)),
           totalSize: S.optional(S.Number),
-          queryExpansionInfo: S.optional(GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo),
+          queryExpansionInfo: S.optional(__S(265, __c33, 1)),
           correctedQuery: S.optional(S.String),
-          experimentInfo: S.optional(GoogleCloudRetailV2betaExperimentInfoList),
-          appliedControls: S.optional(StringList),
+          experimentInfo: S.optional(__S(268, __c33, 4)),
+          appliedControls: S.optional(__S(0, __c0, 0)),
           redirectUri: S.optional(S.String),
-          facets: S.optional(GoogleCloudRetailV2betaSearchResponseFacetList),
-          conversationalSearchResult: S.optional(
-            GoogleCloudRetailV2betaSearchResponseConversationalSearchResult,
-          ),
+          facets: S.optional(__S(272, __c34, 0)),
+          conversationalSearchResult: S.optional(__S(273, __c34, 1)),
           attributionToken: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -8348,7 +6917,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaSearchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8373,7 +6942,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaSetDefaultBranchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(276, __c34, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8389,7 +6958,7 @@ function __c34(j: number): any {
         S.Struct({
           allowMissing: S.optional(S.Boolean),
           setTime: S.optional(S.String),
-          inventory: S.optional(GoogleCloudRetailV2betaProduct),
+          inventory: S.optional(__S(88, __c11, 0)),
           setMask: S.optional(S.String),
         }),
       ).annotate({
@@ -8399,7 +6968,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaSetInventoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(278, __c34, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8418,7 +6987,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaPauseModelRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(217, __c27, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8434,7 +7003,7 @@ function __c35(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaAlertConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8450,7 +7019,7 @@ function __c35(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaAttributesConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8466,7 +7035,7 @@ function __c35(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaCompletionConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8482,9 +7051,7 @@ function __c35(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           catalog: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudRetailV2betaConversationalSearchCustomizationConfig.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(151, __c18, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8500,9 +7067,7 @@ function __c35(j: number): any {
         S.Struct({
           catalog: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(
-            GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8518,7 +7083,7 @@ function __c35(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           catalog: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRetailV2betaGenerativeQuestionConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8534,7 +7099,7 @@ function __c35(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           writeAsync: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(GoogleCloudRetailV2betaUserEvent.pipe(T.HttpBody())),
+          body: S.optional(__S(178, __c22, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8546,4 +7111,9 @@ function __c35(j: number): any {
         identifier: "WriteProjectsLocationsCatalogsUserEventsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

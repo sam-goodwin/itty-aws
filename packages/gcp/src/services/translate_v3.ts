@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -85,8 +87,6 @@ export interface GlossaryConfig {
   /** Optional. Indicates match is case insensitive. The default value is `false` if missing. */
   ignoreCase?: boolean;
 }
-const GlossaryConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GlossaryConfig>;
-
 /** A pair of sentences used as reference in source and target languages. */
 export interface ReferenceSentencePair {
   /** Source sentence in the sentence pair. */
@@ -94,33 +94,13 @@ export interface ReferenceSentencePair {
   /** Target sentence in the sentence pair. */
   targetSentence?: string;
 }
-const ReferenceSentencePair = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ReferenceSentencePair>;
-
 export type ReferenceSentencePairList_ = Array<ReferenceSentencePair>;
-const ReferenceSentencePairList_ = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ReferenceSentencePairList_>;
-
 /** A list of reference sentence pairs. */
 export interface ReferenceSentencePairList {
   /** Reference sentence pairs. */
   referenceSentencePairs?: ReferenceSentencePairList_;
 }
-const ReferenceSentencePairList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ReferenceSentencePairList>;
-
 export type ReferenceSentencePairListList = Array<ReferenceSentencePairList>;
-const ReferenceSentencePairListList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ReferenceSentencePairListList>;
-
 /** Message of caller-provided reference configuration. */
 export interface ReferenceSentenceConfig {
   /** Reference sentences pair lists. Each list will be used as the references to translate the sentence under "content" field at the corresponding index. Length of the list is required to be equal to the length of "content" field. */
@@ -130,14 +110,7 @@ export interface ReferenceSentenceConfig {
   /** Target language code. */
   targetLanguageCode?: string;
 }
-const ReferenceSentenceConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ReferenceSentenceConfig>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
-
 /** The request for sending an AdaptiveMt translation query. */
 export interface AdaptiveMtTranslateRequest {
   /** Optional. Glossary to be applied. The glossary must be within the same region (have the same location-id) as the model, otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -151,38 +124,18 @@ export interface AdaptiveMtTranslateRequest {
   /** The format of the source text. Currently only text/plain is supported. */
   mimeType?: string;
 }
-const AdaptiveMtTranslateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AdaptiveMtTranslateRequest>;
-
 export interface AdaptiveMtTranslateProjectsLocationsRequest {
   /** Required. Location to make a regional call. Format: `projects/{project-number-or-id}/locations/{location-id}`. */
   parent: string;
   /** Request body */
   body?: AdaptiveMtTranslateRequest;
 }
-const AdaptiveMtTranslateProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AdaptiveMtTranslateProjectsLocationsRequest>;
-
 /** An AdaptiveMt translation. */
 export interface AdaptiveMtTranslation {
   /** Output only. The translated text. */
   translatedText?: string;
 }
-const AdaptiveMtTranslation = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AdaptiveMtTranslation>;
-
 export type AdaptiveMtTranslationList = Array<AdaptiveMtTranslation>;
-const AdaptiveMtTranslationList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AdaptiveMtTranslationList>;
-
 /** An AdaptiveMtTranslate response. */
 export interface AdaptiveMtTranslateResponse {
   /** Text translation response if a glossary is provided in the request. This could be the same as 'translation' above if no terms apply. */
@@ -192,11 +145,6 @@ export interface AdaptiveMtTranslateResponse {
   /** Output only. The translation's language code. */
   languageCode?: string;
 }
-const AdaptiveMtTranslateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AdaptiveMtTranslateResponse>;
-
 /** Configures which glossary is used for a specific target language and defines options for applying that glossary. */
 export interface TranslateTextGlossaryConfig {
   /** Optional. Indicates match is case insensitive. The default value is `false` if missing. */
@@ -206,62 +154,31 @@ export interface TranslateTextGlossaryConfig {
   /** Required. The `glossary` to be applied for this translation. The format depends on the glossary: - User-provided custom glossary: `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}` */
   glossary?: string;
 }
-const TranslateTextGlossaryConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TranslateTextGlossaryConfig>;
-
 export type TranslateTextGlossaryConfigMap = {
   [key: string]: TranslateTextGlossaryConfig | undefined;
 };
-const TranslateTextGlossaryConfigMap = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<TranslateTextGlossaryConfigMap>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringMap>;
-
 /** The Google Cloud Storage location for the input content. */
 export interface GcsSource {
   /** Required. Source data URI. For example, `gs://my_bucket/my_object`. */
   inputUri?: string;
 }
-const GcsSource = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GcsSource>;
-
 /** Input configuration for BatchTranslateDocument request. */
 export interface BatchDocumentInputConfig {
   /** Google Cloud Storage location for the source input. This can be a single file (for example, `gs://translation-test/input.docx`) or a wildcard (for example, `gs://translation-test/*`). File mime type is determined based on extension. Supported mime type includes: - `pdf`, application/pdf - `docx`, application/vnd.openxmlformats-officedocument.wordprocessingml.document - `pptx`, application/vnd.openxmlformats-officedocument.presentationml.presentation - `xlsx`, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet The max file size to support for `.docx`, `.pptx` and `.xlsx` is 100MB. The max file size to support for `.pdf` is 1GB and the max page limit is 1000 pages. The max file size to support for all input documents is 1GB. */
   gcsSource?: GcsSource;
 }
-const BatchDocumentInputConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BatchDocumentInputConfig>;
-
 export type BatchDocumentInputConfigList = Array<BatchDocumentInputConfig>;
-const BatchDocumentInputConfigList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BatchDocumentInputConfigList>;
-
 /** The Google Cloud Storage location for the output content. */
 export interface GcsDestination {
   /** Required. The bucket used in 'output_uri_prefix' must exist and there must be no files under 'output_uri_prefix'. 'output_uri_prefix' must end with "/" and start with "gs://". One 'output_uri_prefix' can only be used by one batch translation job at a time. Otherwise an INVALID_ARGUMENT (400) error is returned. */
   outputUriPrefix?: string;
 }
-const GcsDestination = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GcsDestination>;
-
 /** Output configuration for BatchTranslateDocument request. */
 export interface BatchDocumentOutputConfig {
   /** Google Cloud Storage destination for output content. For every single input document (for example, gs://a/b/c.[extension]), we generate at most 2 * n output files. (n is the # of target_language_codes in the BatchTranslateDocumentRequest). While the input documents are being processed, we write/update an index file `index.csv` under `gcs_destination.output_uri_prefix` (for example, gs://translation_output/index.csv) The index file is generated/updated as new files are being translated. The format is: input_document,target_language_code,translation_output,error_output, glossary_translation_output,glossary_error_output `input_document` is one file we matched using gcs_source.input_uri. `target_language_code` is provided in the request. `translation_output` contains the translations. (details provided below) `error_output` contains the error message during processing of the file. Both translations_file and errors_file could be empty strings if we have no content to output. `glossary_translation_output` and `glossary_error_output` are the translated output/error when we apply glossaries. They could also be empty if we have no content to output. Once a row is present in index.csv, the input/output matching never changes. Callers should also expect all the content in input_file are processed and ready to be consumed (that is, no partial output file is written). Since index.csv will be keeping updated during the process, please make sure there is no custom retention policy applied on the output bucket that may avoid file updating. (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The naming format of translation output files follows (for target language code [trg]): `translation_output`: `gs://translation_output/a_b_c_[trg]_translation.[extension]` `glossary_translation_output`: `gs://translation_test/a_b_c_[trg]_glossary_translation.[extension]`. The output document will maintain the same file format as the input document. The naming format of error output files follows (for target language code [trg]): `error_output`: `gs://translation_test/a_b_c_[trg]_errors.txt` `glossary_error_output`: `gs://translation_test/a_b_c_[trg]_glossary_translation.txt`. The error output is a txt file containing error details. */
   gcsDestination?: GcsDestination;
 }
-const BatchDocumentOutputConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BatchDocumentOutputConfig>;
-
 /** The BatchTranslateDocument request. */
 export interface BatchTranslateDocumentRequest {
   /** Optional. If true, enable auto rotation correction in DVS. */
@@ -287,28 +204,14 @@ export interface BatchTranslateDocumentRequest {
   /** Required. Output configuration. If 2 input configs match to the same file (that is, same input path), we don't generate output for duplicate inputs. */
   outputConfig?: BatchDocumentOutputConfig;
 }
-const BatchTranslateDocumentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<BatchTranslateDocumentRequest>;
-
 export interface BatchTranslateDocumentProjectsLocationsRequest {
   /** Required. Location to make a regional call. Format: `projects/{project-number-or-id}/locations/{location-id}`. The `global` location is not supported for batch translation. Only AutoML Translation models or glossaries within the same region (have the same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
   /** Request body */
   body?: BatchTranslateDocumentRequest;
 }
-const BatchTranslateDocumentProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BatchTranslateDocumentProjectsLocationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -318,8 +221,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -333,8 +234,6 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Operation>;
-
 /** Input configuration for BatchTranslateText request. */
 export interface InputConfig {
   /** Optional. Can be "text/plain" or "text/html". For `.tsv`, "text/html" is used if mime_type is missing. For `.html`, this field must be "text/html" or empty. For `.txt`, this field must be "text/plain" or empty. */
@@ -342,18 +241,12 @@ export interface InputConfig {
   /** Required. Google Cloud Storage location for the source input. This can be a single file (for example, `gs://translation-test/input.tsv`) or a wildcard (for example, `gs://translation-test/*`). If a file extension is `.tsv`, it can contain either one or two columns. The first column (optional) is the id of the text request. If the first column is missing, we use the row number (0-based) from the input file as the ID in the output file. The second column is the actual text to be translated. We recommend each row be <= 10K Unicode codepoints, otherwise an error might be returned. Note that the input tsv must be RFC 4180 compliant. You could use https://github.com/Clever/csvlint to check potential formatting errors in your tsv file. csvlint --delimiter='\t' your_input_file.tsv The other supported file extensions are `.txt` or `.html`, which is treated as a single large chunk of text. */
   gcsSource?: GcsSource;
 }
-const InputConfig = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<InputConfig>;
-
 export type InputConfigList = Array<InputConfig>;
-const InputConfigList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<InputConfigList>;
-
 /** Output configuration for BatchTranslateText request. */
 export interface OutputConfig {
   /** Google Cloud Storage destination for output content. For every single input file (for example, gs://a/b/c.[extension]), we generate at most 2 * n output files. (n is the # of target_language_codes in the BatchTranslateTextRequest). Output files (tsv) generated are compliant with RFC 4180 except that record delimiters are '\n' instead of '\r\n'. We don't provide any way to change record delimiters. While the input files are being processed, we write/update an index file 'index.csv' under 'output_uri_prefix' (for example, gs://translation-test/index.csv) The index file is generated/updated as new files are being translated. The format is: input_file,target_language_code,translations_file,errors_file, glossary_translations_file,glossary_errors_file input_file is one file we matched using gcs_source.input_uri. target_language_code is provided in the request. translations_file contains the translations. (details provided below) errors_file contains the errors during processing of the file. (details below). Both translations_file and errors_file could be empty strings if we have no content to output. glossary_translations_file and glossary_errors_file are always empty strings if the input_file is tsv. They could also be empty if we have no content to output. Once a row is present in index.csv, the input/output matching never changes. Callers should also expect all the content in input_file are processed and ready to be consumed (that is, no partial output file is written). Since index.csv will be keeping updated during the process, please make sure there is no custom retention policy applied on the output bucket that may avoid file updating. (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The format of translations_file (for target language code 'trg') is: `gs://translation_test/a_b_c_'trg'_translations.[extension]` If the input file extension is tsv, the output has the following columns: Column 1: ID of the request provided in the input, if it's not provided in the input, then the input row number is used (0-based). Column 2: source sentence. Column 3: translation without applying a glossary. Empty string if there is an error. Column 4 (only present if a glossary is provided in the request): translation after applying the glossary. Empty string if there is an error applying the glossary. Could be same string as column 3 if there is no glossary applied. If input file extension is a txt or html, the translation is directly written to the output file. If glossary is requested, a separate glossary_translations_file has format of `gs://translation_test/a_b_c_'trg'_glossary_translations.[extension]` The format of errors file (for target language code 'trg') is: `gs://translation_test/a_b_c_'trg'_errors.[extension]` If the input file extension is tsv, errors_file contains the following: Column 1: ID of the request provided in the input, if it's not provided in the input, then the input row number is used (0-based). Column 2: source sentence. Column 3: Error detail for the translation. Could be empty. Column 4 (only present if a glossary is provided in the request): Error when applying the glossary. If the input file extension is txt or html, glossary_error_file will be generated that contains error details. glossary_error_file has format of `gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]` */
   gcsDestination?: GcsDestination;
 }
-const OutputConfig = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<OutputConfig>;
-
 /** The batch translation request. */
 export interface BatchTranslateTextRequest {
   /** Optional. Glossaries to be applied for translation. It's keyed by target language code. */
@@ -371,44 +264,22 @@ export interface BatchTranslateTextRequest {
   /** Required. Output configuration. If 2 input configs match to the same file (that is, same input path), we don't generate output for duplicate inputs. */
   outputConfig?: OutputConfig;
 }
-const BatchTranslateTextRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<BatchTranslateTextRequest>;
-
 export interface BatchTranslateTextProjectsLocationsRequest {
   /** Required. Location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}`. The `global` location is not supported for batch translation. Only AutoML Translation models or glossaries within the same region (have the same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
   /** Request body */
   body?: BatchTranslateTextRequest;
 }
-const BatchTranslateTextProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<BatchTranslateTextProjectsLocationsRequest>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 /** An Adaptive MT Dataset. */
 export interface AdaptiveMtDataset {
   /** The BCP-47 language code of the source language. */
@@ -426,19 +297,12 @@ export interface AdaptiveMtDataset {
   /** Output only. Timestamp when this dataset was created. */
   createTime?: string;
 }
-const AdaptiveMtDataset = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AdaptiveMtDataset>;
-
 export interface CreateProjectsLocationsAdaptiveMtDatasetsRequest {
   /** Required. Name of the parent project. In form of `projects/{project-number-or-id}/locations/{location-id}` */
   parent: string;
   /** Request body */
   body?: AdaptiveMtDataset;
 }
-const CreateProjectsLocationsAdaptiveMtDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateProjectsLocationsAdaptiveMtDatasetsRequest>;
-
 /** A dataset that hosts the examples (sentence pairs) used for translation models. */
 export interface Dataset {
   /** Output only. Timestamp when this dataset was last updated. */
@@ -462,19 +326,12 @@ export interface Dataset {
   /** Output only. Timestamp when this dataset was created. */
   createTime?: string;
 }
-const Dataset = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Dataset>;
-
 export interface CreateProjectsLocationsDatasetsRequest {
   /** Required. The project name. */
   parent: string;
   /** Request body */
   body?: Dataset;
 }
-const CreateProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateProjectsLocationsDatasetsRequest>;
-
 /** Used with unidirectional glossaries. */
 export interface LanguageCodePair {
   /** Required. The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code. */
@@ -482,22 +339,16 @@ export interface LanguageCodePair {
   /** Required. The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code. */
   targetLanguageCode?: string;
 }
-const LanguageCodePair = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<LanguageCodePair>;
-
 /** Used with equivalent term set glossaries. */
 export interface LanguageCodesSet {
   /** Optional. The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code. */
   languageCodes?: StringList;
 }
-const LanguageCodesSet = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<LanguageCodesSet>;
-
 /** Input configuration for glossaries. */
 export interface GlossaryInputConfig {
   /** Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): Two column file, tab- or comma-separated. The first column is source text. The second column is target text. No headers in this file. The first row contains data and not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary). */
   gcsSource?: GcsSource;
 }
-const GlossaryInputConfig = BatchDocumentInputConfig as any as S.Schema<GlossaryInputConfig>;
-
 /** Represents a glossary built from user-provided data. */
 export interface Glossary {
   /** Output only. The number of entries defined in the glossary. */
@@ -517,19 +368,12 @@ export interface Glossary {
   /** Output only. When the glossary creation was finished. */
   endTime?: string;
 }
-const Glossary = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Glossary>;
-
 export interface CreateProjectsLocationsGlossariesRequest {
   /** Required. The project name. */
   parent: string;
   /** Request body */
   body?: Glossary;
 }
-const CreateProjectsLocationsGlossariesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateProjectsLocationsGlossariesRequest>;
-
 /** Represents a single glossary term */
 export interface GlossaryTerm {
   /** The text for the glossary term. */
@@ -537,8 +381,6 @@ export interface GlossaryTerm {
   /** The language for this glossary term. */
   languageCode?: string;
 }
-const GlossaryTerm = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GlossaryTerm>;
-
 /** Represents a single entry for an unidirectional glossary. */
 export interface GlossaryTermsPair {
   /** The source term is the term that will get match in the text, */
@@ -546,18 +388,12 @@ export interface GlossaryTermsPair {
   /** The term that will replace the match source term. */
   targetTerm?: GlossaryTerm;
 }
-const GlossaryTermsPair = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GlossaryTermsPair>;
-
 export type GlossaryTermList = Array<GlossaryTerm>;
-const GlossaryTermList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GlossaryTermList>;
-
 /** Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set. */
 export interface GlossaryTermsSet {
   /** Each term in the set represents a term that can be replaced by the other terms. */
   terms?: GlossaryTermList;
 }
-const GlossaryTermsSet = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GlossaryTermsSet>;
-
 /** Represents a single entry in a glossary. */
 export interface GlossaryEntry {
   /** Describes the glossary entry. */
@@ -569,19 +405,12 @@ export interface GlossaryEntry {
   /** Used for an equivalent term sets glossary. */
   termsSet?: GlossaryTermsSet;
 }
-const GlossaryEntry = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GlossaryEntry>;
-
 export interface CreateProjectsLocationsGlossariesGlossaryEntriesRequest {
   /** Required. The resource name of the glossary to create the entry under. */
   parent: string;
   /** Request body */
   body?: GlossaryEntry;
 }
-const CreateProjectsLocationsGlossariesGlossaryEntriesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateProjectsLocationsGlossariesGlossaryEntriesRequest>;
-
 /** A trained translation model. */
 export interface Model {
   /** The name of the model to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9. */
@@ -605,82 +434,40 @@ export interface Model {
   /** Output only. Number of examples (sentence pairs) used to test the model. */
   testExampleCount?: number;
 }
-const Model = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Model>;
-
 export interface CreateProjectsLocationsModelsRequest {
   /** Required. The project name, in form of `projects/{project}/locations/{location}` */
   parent: string;
   /** Request body */
   body?: Model;
 }
-const CreateProjectsLocationsModelsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateProjectsLocationsModelsRequest>;
-
 export interface DeleteProjectsLocationsAdaptiveMtDatasetsRequest {
   /** Required. Name of the dataset. In the form of `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}` */
   name: string;
 }
-const DeleteProjectsLocationsAdaptiveMtDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsAdaptiveMtDatasetsRequest>;
-
 export interface DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest {
   /** Required. The resource name of the file to delete, in form of `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}` */
   name: string;
 }
-const DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>;
-
 export interface DeleteProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to delete. */
   name: string;
 }
-const DeleteProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsDatasetsRequest>;
-
 export interface DeleteProjectsLocationsGlossariesRequest {
   /** Required. The name of the glossary to delete. */
   name: string;
 }
-const DeleteProjectsLocationsGlossariesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsGlossariesRequest>;
-
 export interface DeleteProjectsLocationsGlossariesGlossaryEntriesRequest {
   /** Required. The resource name of the glossary entry to delete */
   name: string;
 }
-const DeleteProjectsLocationsGlossariesGlossaryEntriesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsGlossariesGlossaryEntriesRequest>;
-
 export interface DeleteProjectsLocationsModelsRequest {
   /** Required. The name of the model to delete. */
   name: string;
 }
-const DeleteProjectsLocationsModelsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsModelsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 /** A document translation request input config. */
 export interface DocumentInputConfig {
   /** Document's content represented as a stream of bytes. */
@@ -690,8 +477,6 @@ export interface DocumentInputConfig {
   /** Specifies the input document's mime_type. If not specified it will be determined using the file extension for gcs_source provided files. For a file provided through bytes content the mime_type must be provided. Currently supported mime types are: - application/pdf - application/vnd.openxmlformats-officedocument.wordprocessingml.document - application/vnd.openxmlformats-officedocument.presentationml.presentation - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet */
   mimeType?: string;
 }
-const DocumentInputConfig = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DocumentInputConfig>;
-
 /** The request message for language detection. */
 export interface DetectLanguageRequest {
   /** Optional. The document configuration of the input. */
@@ -705,22 +490,12 @@ export interface DetectLanguageRequest {
   /** The content of the input stored as a string. */
   content?: string;
 }
-const DetectLanguageRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DetectLanguageRequest>;
-
 export interface DetectLanguageProjectsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
   /** Request body */
   body?: DetectLanguageRequest;
 }
-const DetectLanguageProjectsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DetectLanguageProjectsRequest>;
-
 /** The response message for language detection. */
 export interface DetectedLanguage {
   /** The confidence of the detection result for this language. */
@@ -728,32 +503,18 @@ export interface DetectedLanguage {
   /** The ISO-639 language code of the source content in the request, detected automatically. */
   languageCode?: string;
 }
-const DetectedLanguage = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DetectedLanguage>;
-
 export type DetectedLanguageList = Array<DetectedLanguage>;
-const DetectedLanguageList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DetectedLanguageList>;
-
 /** The response message for language detection. */
 export interface DetectLanguageResponse {
   /** The most probable language detected by the Translation API. For each request, the Translation API will always return only one result. */
   languages?: DetectedLanguageList;
 }
-const DetectLanguageResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DetectLanguageResponse>;
-
 export interface DetectLanguageProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
   /** Request body */
   body?: DetectLanguageRequest;
 }
-const DetectLanguageProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DetectLanguageProjectsLocationsRequest>;
-
 /** The Google Cloud Storage location for the output content. */
 export interface GcsOutputDestination {
   /** Required. Google Cloud Storage URI to output directory. For example, `gs://bucket/directory`. The requesting user must have write permission to the bucket. The directory will be created if it doesn't exist. */
@@ -764,35 +525,21 @@ export interface DatasetOutputConfig {
   /** Google Cloud Storage destination to write the output. */
   gcsDestination?: GcsOutputDestination;
 }
-const DatasetOutputConfig = OutputConfig as any as S.Schema<DatasetOutputConfig>;
-
 /** Request message for ExportData. */
 export interface ExportDataRequest {
   /** Required. The config for the output content. */
   outputConfig?: DatasetOutputConfig;
 }
-const ExportDataRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ExportDataRequest>;
-
 export interface ExportDataProjectsLocationsDatasetsRequest {
   /** Required. Name of the dataset. In form of `projects/{project-number-or-id}/locations/{location-id}/datasets/{dataset-id}` */
   dataset: string;
   /** Request body */
   body?: ExportDataRequest;
 }
-const ExportDataProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ExportDataProjectsLocationsDatasetsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -806,26 +553,14 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsAdaptiveMtDatasetsRequest {
   /** Required. Name of the dataset. In the form of `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}` */
   name: string;
 }
-const GetProjectsLocationsAdaptiveMtDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetProjectsLocationsAdaptiveMtDatasetsRequest>;
-
 export interface GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest {
   /** Required. The resource name of the file, in form of `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}` */
   name: string;
 }
-const GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>;
-
 /** An AdaptiveMtFile. */
 export interface AdaptiveMtFile {
   /** Identifier. The resource name of the file, in form of `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}` */
@@ -839,53 +574,26 @@ export interface AdaptiveMtFile {
   /** The number of entries that the file contains. */
   entryCount?: number;
 }
-const AdaptiveMtFile = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AdaptiveMtFile>;
-
 export interface GetProjectsLocationsDatasetsRequest {
   /** Required. The resource name of the dataset to retrieve. */
   name: string;
 }
-const GetProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetProjectsLocationsDatasetsRequest>;
-
 export interface GetProjectsLocationsGlossariesRequest {
   /** Required. The name of the glossary to retrieve. */
   name: string;
 }
-const GetProjectsLocationsGlossariesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetProjectsLocationsGlossariesRequest>;
-
 export interface GetProjectsLocationsGlossariesGlossaryEntriesRequest {
   /** Required. The resource name of the glossary entry to get */
   name: string;
 }
-const GetProjectsLocationsGlossariesGlossaryEntriesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetProjectsLocationsGlossariesGlossaryEntriesRequest>;
-
 export interface GetProjectsLocationsModelsRequest {
   /** Required. The resource name of the model to retrieve. */
   name: string;
 }
-const GetProjectsLocationsModelsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetProjectsLocationsModelsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetSupportedLanguagesProjectsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for AutoML models. Only models within the same region (have same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
@@ -894,11 +602,6 @@ export interface GetSupportedLanguagesProjectsRequest {
   /** Optional. Get supported languages of this model. The format depends on model type: - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, Returns languages supported by the specified model. If missing, we get supported languages of Google general NMT model. */
   model?: string;
 }
-const GetSupportedLanguagesProjectsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetSupportedLanguagesProjectsRequest>;
-
 /** A single supported language response corresponds to information related to one supported language. */
 export interface SupportedLanguage {
   /** Can be used as a target language. */
@@ -910,21 +613,12 @@ export interface SupportedLanguage {
   /** Supported language code, generally consisting of its ISO 639-1 identifier, for example, 'en', 'ja'. In certain cases, ISO-639 codes including language and region identifiers are returned (for example, 'zh-TW' and 'zh-CN'). */
   languageCode?: string;
 }
-const SupportedLanguage = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<SupportedLanguage>;
-
 export type SupportedLanguageList = Array<SupportedLanguage>;
-const SupportedLanguageList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<SupportedLanguageList>;
-
 /** The response message for discovering supported languages. */
 export interface SupportedLanguages {
   /** A list of supported language responses. This list contains an entry for each language the Translation API supports. */
   languages?: SupportedLanguageList;
 }
-const SupportedLanguages = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SupportedLanguages>;
-
 export interface GetSupportedLanguagesProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for AutoML models. Only models within the same region (have same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
@@ -933,11 +627,6 @@ export interface GetSupportedLanguagesProjectsLocationsRequest {
   /** Optional. Get supported languages of this model. The format depends on model type: - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, Returns languages supported by the specified model. If missing, we get supported languages of Google general NMT model. */
   model?: string;
 }
-const GetSupportedLanguagesProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetSupportedLanguagesProjectsLocationsRequest>;
-
 /** An inlined file. */
 export interface FileInputSource {
   /** Required. The file's mime type. */
@@ -947,8 +636,6 @@ export interface FileInputSource {
   /** Required. The file's display name. */
   displayName?: string;
 }
-const FileInputSource = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<FileInputSource>;
-
 /** The Google Cloud Storage location for the input content. */
 export type GcsInputSource = GcsSource;
 /** The request for importing an AdaptiveMt file along with its sentences. */
@@ -958,32 +645,17 @@ export interface ImportAdaptiveMtFileRequest {
   /** Google Cloud Storage file source. */
   gcsInputSource?: GcsSource;
 }
-const ImportAdaptiveMtFileRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ImportAdaptiveMtFileRequest>;
-
 export interface ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest {
   /** Required. The resource name of the file, in form of `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}` */
   parent: string;
   /** Request body */
   body?: ImportAdaptiveMtFileRequest;
 }
-const ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest>;
-
 /** The response for importing an AdaptiveMtFile */
 export interface ImportAdaptiveMtFileResponse {
   /** Output only. The Adaptive MT file that was imported. */
   adaptiveMtFile?: AdaptiveMtFile;
 }
-const ImportAdaptiveMtFileResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ImportAdaptiveMtFileResponse>;
-
 /** An input file. */
 export interface InputFile {
   /** Optional. Usage of the file contents. Options are TRAIN|VALIDATION|TEST, or UNASSIGNED (by default) for auto split. */
@@ -991,36 +663,23 @@ export interface InputFile {
   /** Google Cloud Storage file source. */
   gcsSource?: GcsSource;
 }
-const InputFile = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<InputFile>;
-
 export type InputFileList = Array<InputFile>;
-const InputFileList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<InputFileList>;
-
 /** Input configuration for datasets. */
 export interface DatasetInputConfig {
   /** Files containing the sentence pairs to be imported to the dataset. */
   inputFiles?: InputFileList;
 }
-const DatasetInputConfig = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<DatasetInputConfig>;
-
 /** Request message for ImportData. */
 export interface ImportDataRequest {
   /** Required. The config for the input content. */
   inputConfig?: DatasetInputConfig;
 }
-const ImportDataRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ImportDataRequest>;
-
 export interface ImportDataProjectsLocationsDatasetsRequest {
   /** Required. Name of the dataset. In form of `projects/{project-number-or-id}/locations/{location-id}/datasets/{dataset-id}` */
   dataset: string;
   /** Request body */
   body?: ImportDataRequest;
 }
-const ImportDataProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ImportDataProjectsLocationsDatasetsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
@@ -1033,14 +692,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1048,11 +700,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsAdaptiveMtDatasetsRequest {
   /** Required. The resource name of the project from which to list the Adaptive MT datasets. `projects/{project-number-or-id}/locations/{location-id}` */
   parent: string;
@@ -1063,17 +710,7 @@ export interface ListProjectsLocationsAdaptiveMtDatasetsRequest {
   /** Optional. An expression for filtering the results of the request. Filter is not supported yet. */
   filter?: string;
 }
-const ListProjectsLocationsAdaptiveMtDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsRequest>;
-
 export type AdaptiveMtDatasetList = Array<AdaptiveMtDataset>;
-const AdaptiveMtDatasetList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<AdaptiveMtDatasetList>;
-
 /** A list of AdaptiveMtDatasets. */
 export interface ListAdaptiveMtDatasetsResponse {
   /** Output only. A list of Adaptive MT datasets. */
@@ -1081,11 +718,6 @@ export interface ListAdaptiveMtDatasetsResponse {
   /** Optional. A token to retrieve a page of results. Pass this value in the [ListAdaptiveMtDatasetsRequest.page_token] field in the subsequent call to `ListAdaptiveMtDatasets` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListAdaptiveMtDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListAdaptiveMtDatasetsResponse>;
-
 export interface ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest {
   /** Optional. */
   pageSize?: number;
@@ -1094,14 +726,7 @@ export interface ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest {
   /** Required. The resource name of the dataset from which to list the Adaptive MT files. `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}` */
   parent: string;
 }
-const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>;
-
 export type AdaptiveMtFileList = Array<AdaptiveMtFile>;
-const AdaptiveMtFileList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<AdaptiveMtFileList>;
-
 /** The response for listing all AdaptiveMt files under a given dataset. */
 export interface ListAdaptiveMtFilesResponse {
   /** Output only. The Adaptive MT files. */
@@ -1109,11 +734,6 @@ export interface ListAdaptiveMtFilesResponse {
   /** Optional. A token to retrieve a page of results. Pass this value in the ListAdaptiveMtFilesRequest.page_token field in the subsequent call to `ListAdaptiveMtFiles` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListAdaptiveMtFilesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListAdaptiveMtFilesResponse>;
-
 export interface ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest {
   /** Required. The resource name of the Adaptive MT file from which to list the sentences. The following format lists all sentences under a file. `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}` The following format lists all sentences within a dataset. `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}` */
   parent: string;
@@ -1121,12 +741,6 @@ export interface ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveM
   pageToken?: string;
   pageSize?: number;
 }
-const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    2,
-  ) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest>;
-
 /** An AdaptiveMt sentence entry. */
 export interface AdaptiveMtSentence {
   /** Required. The source sentence. */
@@ -1140,14 +754,7 @@ export interface AdaptiveMtSentence {
   /** Identifier. The resource name of the file, in form of `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}/adaptiveMtSentences/{sentence}` */
   name?: string;
 }
-const AdaptiveMtSentence = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<AdaptiveMtSentence>;
-
 export type AdaptiveMtSentenceList = Array<AdaptiveMtSentence>;
-const AdaptiveMtSentenceList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<AdaptiveMtSentenceList>;
-
 /** List AdaptiveMt sentences response. */
 export interface ListAdaptiveMtSentencesResponse {
   /** Output only. The list of AdaptiveMtSentences. */
@@ -1155,11 +762,6 @@ export interface ListAdaptiveMtSentencesResponse {
   /** Optional. */
   nextPageToken?: string;
 }
-const ListAdaptiveMtSentencesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListAdaptiveMtSentencesResponse>;
-
 export interface ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListAdaptiveMtSentencesRequest.next_page_token returned from the previous call to `ListTranslationMemories` method. The first page is returned if `page_token` is empty or missing. */
   pageToken?: string;
@@ -1167,11 +769,6 @@ export interface ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesReque
   parent: string;
   pageSize?: number;
 }
-const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest>;
-
 export interface ListProjectsLocationsDatasetsRequest {
   /** Required. Name of the parent project. In form of `projects/{project-number-or-id}/locations/{location-id}` */
   parent: string;
@@ -1180,14 +777,7 @@ export interface ListProjectsLocationsDatasetsRequest {
   /** Optional. Requested page size. The server can return fewer results than requested. */
   pageSize?: number;
 }
-const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListProjectsLocationsDatasetsRequest>;
-
 export type DatasetList = Array<Dataset>;
-const DatasetList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<DatasetList>;
-
 /** Response message for ListDatasets. */
 export interface ListDatasetsResponse {
   /** A token to retrieve next page of results. Pass this token to the page_token field in the ListDatasetsRequest to obtain the corresponding page. */
@@ -1195,11 +785,6 @@ export interface ListDatasetsResponse {
   /** The datasets read. */
   datasets?: DatasetList;
 }
-const ListDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListDatasetsResponse>;
-
 export interface ListProjectsLocationsDatasetsExamplesRequest {
   /** Optional. An expression for filtering the examples that will be returned. Example filter: * `usage=TRAIN` */
   filter?: string;
@@ -1210,11 +795,6 @@ export interface ListProjectsLocationsDatasetsExamplesRequest {
   /** Required. Name of the parent dataset. In form of `projects/{project-number-or-id}/locations/{location-id}/datasets/{dataset-id}` */
   parent: string;
 }
-const ListProjectsLocationsDatasetsExamplesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListProjectsLocationsDatasetsExamplesRequest>;
-
 /** A sentence pair. */
 export interface Example {
   /** Sentence in source language. */
@@ -1226,11 +806,7 @@ export interface Example {
   /** Output only. The resource name of the example, in form of `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}/examples/{example_id}` */
   name?: string;
 }
-const Example = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<Example>;
-
 export type ExampleList = Array<Example>;
-const ExampleList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ExampleList>;
-
 /** Response message for ListExamples. */
 export interface ListExamplesResponse {
   /** The sentence pairs. */
@@ -1238,11 +814,6 @@ export interface ListExamplesResponse {
   /** A token to retrieve next page of results. Pass this token to the page_token field in the ListExamplesRequest to obtain the corresponding page. */
   nextPageToken?: string;
 }
-const ListExamplesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListExamplesResponse>;
-
 export interface ListProjectsLocationsGlossariesRequest {
   /** Required. The name of the project from which to list all of the glossaries. */
   parent: string;
@@ -1253,14 +824,7 @@ export interface ListProjectsLocationsGlossariesRequest {
   /** Optional. A token identifying a page of results the server should return. Typically, this is the value of [ListGlossariesResponse.next_page_token] returned from the previous call to `ListGlossaries` method. The first page is returned if `page_token`is empty or missing. */
   pageToken?: string;
 }
-const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListProjectsLocationsGlossariesRequest>;
-
 export type GlossaryList = Array<Glossary>;
-const GlossaryList = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GlossaryList>;
-
 /** Response message for ListGlossaries. */
 export interface ListGlossariesResponse {
   /** A token to retrieve a page of results. Pass this value in the [ListGlossariesRequest.page_token] field in the subsequent call to `ListGlossaries` method to retrieve the next page of results. */
@@ -1268,11 +832,6 @@ export interface ListGlossariesResponse {
   /** The list of glossaries for a project. */
   glossaries?: GlossaryList;
 }
-const ListGlossariesResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListGlossariesResponse>;
-
 export interface ListProjectsLocationsGlossariesGlossaryEntriesRequest {
   /** Optional. Requested page size. The server may return fewer glossary entries than requested. If unspecified, the server picks an appropriate default. */
   pageSize?: number;
@@ -1281,14 +840,7 @@ export interface ListProjectsLocationsGlossariesGlossaryEntriesRequest {
   /** Required. The parent glossary resource name for listing the glossary's entries. */
   parent: string;
 }
-const ListProjectsLocationsGlossariesGlossaryEntriesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListProjectsLocationsGlossariesGlossaryEntriesRequest>;
-
 export type GlossaryEntryList = Array<GlossaryEntry>;
-const GlossaryEntryList = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<GlossaryEntryList>;
-
 /** Response message for ListGlossaryEntries */
 export interface ListGlossaryEntriesResponse {
   /** Optional. The Glossary Entries */
@@ -1296,11 +848,6 @@ export interface ListGlossaryEntriesResponse {
   /** Optional. A token to retrieve a page of results. Pass this value in the [ListGLossaryEntriesRequest.page_token] field in the subsequent calls. */
   nextPageToken?: string;
 }
-const ListGlossaryEntriesResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListGlossaryEntriesResponse>;
-
 export interface ListProjectsLocationsModelsRequest {
   /** Optional. A token identifying a page of results for the server to return. Typically obtained from next_page_token field in the response of a ListModels call. */
   pageToken?: string;
@@ -1311,14 +858,7 @@ export interface ListProjectsLocationsModelsRequest {
   /** Optional. Requested page size. The server can return fewer results than requested. */
   pageSize?: number;
 }
-const ListProjectsLocationsModelsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListProjectsLocationsModelsRequest>;
-
 export type ModelList = Array<Model>;
-const ModelList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ModelList>;
-
 /** Response message for ListModels. */
 export interface ListModelsResponse {
   /** A token to retrieve next page of results. Pass this token to the page_token field in the ListModelsRequest to obtain the corresponding page. */
@@ -1326,8 +866,6 @@ export interface ListModelsResponse {
   /** The models read. */
   models?: ModelList;
 }
-const ListModelsResponse = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListModelsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -1340,14 +878,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1357,11 +888,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsGlossariesRequest {
   /** The list of fields to be updated. Currently, only `display_name` and `input_config` are supported. */
   updateMask?: string;
@@ -1370,22 +896,12 @@ export interface PatchProjectsLocationsGlossariesRequest {
   /** Request body */
   body?: Glossary;
 }
-const PatchProjectsLocationsGlossariesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<PatchProjectsLocationsGlossariesRequest>;
-
 export interface PatchProjectsLocationsGlossariesGlossaryEntriesRequest {
   /** Identifier. The resource name of the entry. Format: `projects/*\/locations/*\/glossaries/*\/glossaryEntries/*` */
   name: string;
   /** Request body */
   body?: GlossaryEntry;
 }
-const PatchProjectsLocationsGlossariesGlossaryEntriesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<PatchProjectsLocationsGlossariesGlossaryEntriesRequest>;
-
 /** A single refinement entry for RefineTextRequest. */
 export interface RefinementEntry {
   /** Required. The source text to be refined. */
@@ -1393,11 +909,7 @@ export interface RefinementEntry {
   /** Required. The original translation of the source text. */
   originalTranslation?: string;
 }
-const RefinementEntry = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<RefinementEntry>;
-
 export type RefinementEntryList = Array<RefinementEntry>;
-const RefinementEntryList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<RefinementEntryList>;
-
 /** Request message for RefineText. */
 export interface RefineTextRequest {
   /** Required. The BCP-47 language code of the source text in the request, for example, "en-US". */
@@ -1407,26 +919,17 @@ export interface RefineTextRequest {
   /** Required. The source texts and original translations in the source and target languages. */
   refinementEntries?: RefinementEntryList;
 }
-const RefineTextRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<RefineTextRequest>;
-
 export interface RefineTextProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. */
   parent: string;
   /** Request body */
   body?: RefineTextRequest;
 }
-const RefineTextProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<RefineTextProjectsLocationsRequest>;
-
 /** Response message for RefineText. */
 export interface RefineTextResponse {
   /** The refined translations obtained from the original translations. */
   refinedTranslations?: StringList;
 }
-const RefineTextResponse = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<RefineTextResponse>;
-
 /** The request message for synchronous romanization. */
 export interface RomanizeTextRequest {
   /** Optional. The ISO-639 language code of the input text if known, for example, "hi" or "zh". Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages#roman). If the source language isn't specified, the API attempts to identify the source language automatically and returns the source language for each content in the response. */
@@ -1434,19 +937,12 @@ export interface RomanizeTextRequest {
   /** Required. The content of the input in string format. */
   contents?: StringList;
 }
-const RomanizeTextRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<RomanizeTextRequest>;
-
 export interface RomanizeTextProjectsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. */
   parent: string;
   /** Request body */
   body?: RomanizeTextRequest;
 }
-const RomanizeTextProjectsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<RomanizeTextProjectsRequest>;
-
 /** A single romanization response. */
 export interface Romanization {
   /** Romanized text. If an error occurs during romanization, this field might be excluded from the response. */
@@ -1454,32 +950,18 @@ export interface Romanization {
   /** The ISO-639 language code of source text in the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language does not occur and this field is empty. */
   detectedLanguageCode?: string;
 }
-const Romanization = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Romanization>;
-
 export type RomanizationList = Array<Romanization>;
-const RomanizationList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<RomanizationList>;
-
 /** The response message for synchronous romanization. */
 export interface RomanizeTextResponse {
   /** Text romanization responses. This field has the same length as `contents`. */
   romanizations?: RomanizationList;
 }
-const RomanizeTextResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<RomanizeTextResponse>;
-
 export interface RomanizeTextProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. */
   parent: string;
   /** Request body */
   body?: RomanizeTextRequest;
 }
-const RomanizeTextProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<RomanizeTextProjectsLocationsRequest>;
-
 /** A document translation request output config. */
 export interface DocumentOutputConfig {
   /** Optional. Google Cloud Storage destination for the translation output, e.g., `gs://my_bucket/my_directory/`. The destination directory provided does not have to be empty, but the bucket must exist. If a file with the same name as the output file already exists in the destination an error will be returned. For a DocumentInputConfig.contents provided document, the output file will have the name "output_[trg]_translations.[ext]", where - [trg] corresponds to the translated file's language code, - [ext] corresponds to the translated file's extension according to its mime type. For a DocumentInputConfig.gcs_uri provided document, the output file will have a name according to its URI. For example: an input file with URI: `gs://a/b/c.[extension]` stored in a gcs_destination bucket with name "my_bucket" will have an output URI: `gs://my_bucket/a_b_c_[trg]_translations.[ext]`, where - [trg] corresponds to the translated file's language code, - [ext] corresponds to the translated file's extension according to its mime type. If the document was directly provided through the request, then the output document will have the format: `gs://my_bucket/translated_document_[trg]_translations.[ext]`, where - [trg] corresponds to the translated file's language code, - [ext] corresponds to the translated file's extension according to its mime type. If a glossary was provided, then the output URI for the glossary translation will be equal to the default output URI but have `glossary_translations` instead of `translations`. For the previous example, its glossary URI would be: `gs://my_bucket/a_b_c_[trg]_glossary_translations.[ext]`. Thus the max number of output files will be 2 (Translated document, Glossary translated document). Callers should expect no partial outputs. If there is any error during document translation, no output will be stored in the Cloud Storage bucket. */
@@ -1487,11 +969,6 @@ export interface DocumentOutputConfig {
   /** Optional. Specifies the translated document's mime_type. If not specified, the translated file's mime type will be the same as the input file's mime type. Currently only support the output mime type to be the same as input mime type. - application/pdf - application/vnd.openxmlformats-officedocument.wordprocessingml.document - application/vnd.openxmlformats-officedocument.presentationml.presentation - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet */
   mimeType?: string;
 }
-const DocumentOutputConfig = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DocumentOutputConfig>;
-
 /** A document translation request. */
 export interface TranslateDocumentRequest {
   /** Optional. is_translate_native_pdf_only field for external customers. If true, the page limit of online native pdf translation is 300 and only native pdf pages will be translated. */
@@ -1517,22 +994,12 @@ export interface TranslateDocumentRequest {
   /** Optional. This flag is to support user customized attribution. If not provided, the default is `Machine Translated by Google`. Customized attribution should follow rules in https://cloud.google.com/translate/attribution#attribution_and_logos */
   customizedAttribution?: string;
 }
-const TranslateDocumentRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<TranslateDocumentRequest>;
-
 export interface TranslateDocumentProjectsLocationsRequest {
   /** Required. Location to make a regional call. Format: `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for requests using AutoML models or custom glossaries. Models and glossaries must be within the same region (have the same location-id), otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
   /** Request body */
   body?: TranslateDocumentRequest;
 }
-const TranslateDocumentProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<TranslateDocumentProjectsLocationsRequest>;
-
 /** A translated document message. */
 export interface DocumentTranslation {
   /** The detected language for the input document. If the user did not provide the source language for the input document, this field will have the language code automatically detected. If the source language was passed, auto-detection of the language does not occur and this field is empty. */
@@ -1542,8 +1009,6 @@ export interface DocumentTranslation {
   /** The translated document's mime type. */
   mimeType?: string;
 }
-const DocumentTranslation = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<DocumentTranslation>;
-
 /** A translated document response message. */
 export interface TranslateDocumentResponse {
   /** Translated document. */
@@ -1555,21 +1020,11 @@ export interface TranslateDocumentResponse {
   /** Only present when 'model' is present in the request. 'model' is normalized to have a project number. For example: If the 'model' field in TranslateDocumentRequest is: `projects/{project-id}/locations/{location-id}/models/general/nmt` then `model` here would be normalized to `projects/{project-number}/locations/{location-id}/models/general/nmt`. */
   model?: string;
 }
-const TranslateDocumentResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<TranslateDocumentResponse>;
-
 /** Configures transliteration feature on top of translation. */
 export interface TransliterationConfig {
   /** If true, source text in romanized form can be translated to the target language. */
   enableTransliteration?: boolean;
 }
-const TransliterationConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<TransliterationConfig>;
-
 /** The request message for synchronous translation. */
 export interface TranslateTextRequest {
   /** Optional. The ISO-639 language code of the input text if known, for example, "en-US" or "sr-Latn". Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). If the source language isn't specified, the API attempts to identify the source language automatically and returns the source language within the response. */
@@ -1589,22 +1044,12 @@ export interface TranslateTextRequest {
   /** Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. See https://cloud.google.com/translate/docs/advanced/labels for more information. */
   labels?: StringMap;
 }
-const TranslateTextRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<TranslateTextRequest>;
-
 export interface TranslateTextProjectsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for requests using AutoML models or custom glossaries. Models and glossaries must be within the same region (have same location-id), otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
   /** Request body */
   body?: TranslateTextRequest;
 }
-const TranslateTextProjectsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<TranslateTextProjectsRequest>;
-
 /** A single translation response. */
 export interface Translation {
   /** Text translated into the target language. If an error occurs during translation, this field might be excluded from the response. */
@@ -1616,54 +1061,30 @@ export interface Translation {
   /** Only present when `model` is present in the request. `model` here is normalized to have project number. For example: If the `model` requested in TranslationTextRequest is `projects/{project-id}/locations/{location-id}/models/general/nmt` then `model` here would be normalized to `projects/{project-number}/locations/{location-id}/models/general/nmt`. */
   model?: string;
 }
-const Translation = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<Translation>;
-
 export type TranslationList = Array<Translation>;
-const TranslationList = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<TranslationList>;
-
 export interface TranslateTextResponse {
   /** Text translation responses with no glossary applied. This field has the same length as `contents`. */
   translations?: TranslationList;
   /** Text translation responses if a glossary is provided in the request. This can be the same as `translations` if no terms apply. This field has the same length as `contents`. */
   glossaryTranslations?: TranslationList;
 }
-const TranslateTextResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<TranslateTextResponse>;
-
 export interface TranslateTextProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for requests using AutoML models or custom glossaries. Models and glossaries must be within the same region (have same location-id), otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
   /** Request body */
   body?: TranslateTextRequest;
 }
-const TranslateTextProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<TranslateTextProjectsLocationsRequest>;
-
 /** The request message for Operations.WaitOperation. */
 export interface WaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
-const WaitOperationRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<WaitOperationRequest>;
-
 export interface WaitProjectsLocationsOperationsRequest {
   /** The name of the operation resource to wait on. */
   name: string;
   /** Request body */
   body?: WaitOperationRequest;
 }
-const WaitProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<WaitProjectsLocationsOperationsRequest>;
-
 export type AdaptiveMtTranslateProjectsLocationsError =
   | NotFound
   | Forbidden
@@ -1678,8 +1099,8 @@ export const adaptiveMtTranslateProjectsLocations: API.OperationMethod<
   AdaptiveMtTranslateProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdaptiveMtTranslateProjectsLocationsRequest,
-  output: AdaptiveMtTranslateResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<AdaptiveMtTranslateProjectsLocationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AdaptiveMtTranslateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AdaptiveMtDatasetTooSmall, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1119,8 @@ export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
   BatchTranslateDocumentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchTranslateDocumentProjectsLocationsRequest,
-  output: Operation,
+  input: __S(21, __c2, 5) as any as S.Schema<BatchTranslateDocumentProjectsLocationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1718,8 +1139,8 @@ export const batchTranslateTextProjectsLocations: API.OperationMethod<
   BatchTranslateTextProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchTranslateTextProjectsLocationsRequest,
-  output: Operation,
+  input: __S(30, __c3, 6) as any as S.Schema<BatchTranslateTextProjectsLocationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1159,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(32, __c4, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1758,8 +1179,8 @@ export const createProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
   CreateProjectsLocationsAdaptiveMtDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAdaptiveMtDatasetsRequest,
-  output: AdaptiveMtDataset,
+  input: __S(34, __c4, 2) as any as S.Schema<CreateProjectsLocationsAdaptiveMtDatasetsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<AdaptiveMtDataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1778,8 +1199,8 @@ export const createProjectsLocationsDatasets: API.OperationMethod<
   CreateProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDatasetsRequest,
-  output: Operation,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateProjectsLocationsDatasetsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1219,8 @@ export const createProjectsLocationsGlossaries: API.OperationMethod<
   CreateProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGlossariesRequest,
-  output: Operation,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateProjectsLocationsGlossariesRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1239,12 @@ export const createProjectsLocationsGlossariesGlossaryEntries: API.OperationMeth
   CreateProjectsLocationsGlossariesGlossaryEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGlossariesGlossaryEntriesRequest,
-  output: GlossaryEntry,
+  input: __S(
+    46,
+    __c5,
+    6,
+  ) as any as S.Schema<CreateProjectsLocationsGlossariesGlossaryEntriesRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GlossaryEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1838,8 +1263,8 @@ export const createProjectsLocationsModels: API.OperationMethod<
   CreateProjectsLocationsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsModelsRequest,
-  output: Operation,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateProjectsLocationsModelsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1283,8 @@ export const deleteProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
   DeleteProjectsLocationsAdaptiveMtDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAdaptiveMtDatasetsRequest,
-  output: Empty,
+  input: __S(49, __c6, 1) as any as S.Schema<DeleteProjectsLocationsAdaptiveMtDatasetsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1303,12 @@ export const deleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.Opera
   DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest,
-  output: Empty,
+  input: __S(
+    50,
+    __c6,
+    2,
+  ) as any as S.Schema<DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1898,8 +1327,8 @@ export const deleteProjectsLocationsDatasets: API.OperationMethod<
   DeleteProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDatasetsRequest,
-  output: Operation,
+  input: __S(51, __c6, 3) as any as S.Schema<DeleteProjectsLocationsDatasetsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1347,8 @@ export const deleteProjectsLocationsGlossaries: API.OperationMethod<
   DeleteProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGlossariesRequest,
-  output: Operation,
+  input: __S(52, __c6, 4) as any as S.Schema<DeleteProjectsLocationsGlossariesRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1367,12 @@ export const deleteProjectsLocationsGlossariesGlossaryEntries: API.OperationMeth
   DeleteProjectsLocationsGlossariesGlossaryEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGlossariesGlossaryEntriesRequest,
-  output: Empty,
+  input: __S(
+    53,
+    __c6,
+    5,
+  ) as any as S.Schema<DeleteProjectsLocationsGlossariesGlossaryEntriesRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1958,8 +1391,8 @@ export const deleteProjectsLocationsModels: API.OperationMethod<
   DeleteProjectsLocationsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsModelsRequest,
-  output: Operation,
+  input: __S(54, __c6, 6) as any as S.Schema<DeleteProjectsLocationsModelsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1978,8 +1411,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(55, __c6, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1426,8 @@ export const detectLanguageProjects: API.OperationMethod<
   DetectLanguageProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetectLanguageProjectsRequest,
-  output: DetectLanguageResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<DetectLanguageProjectsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<DetectLanguageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2013,8 +1446,8 @@ export const detectLanguageProjectsLocations: API.OperationMethod<
   DetectLanguageProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetectLanguageProjectsLocationsRequest,
-  output: DetectLanguageResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<DetectLanguageProjectsLocationsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<DetectLanguageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2033,8 +1466,8 @@ export const exportDataProjectsLocationsDatasets: API.OperationMethod<
   ExportDataProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportDataProjectsLocationsDatasetsRequest,
-  output: Operation,
+  input: __S(64, __c8, 0) as any as S.Schema<ExportDataProjectsLocationsDatasetsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2048,8 +1481,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(65, __c8, 1) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2063,8 +1496,8 @@ export const getProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
   GetProjectsLocationsAdaptiveMtDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAdaptiveMtDatasetsRequest,
-  output: AdaptiveMtDataset,
+  input: __S(67, __c8, 3) as any as S.Schema<GetProjectsLocationsAdaptiveMtDatasetsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<AdaptiveMtDataset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2081,8 +1514,12 @@ export const getProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.Operatio
   GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest,
-  output: AdaptiveMtFile,
+  input: __S(
+    68,
+    __c8,
+    4,
+  ) as any as S.Schema<GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<AdaptiveMtFile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2096,8 +1533,8 @@ export const getProjectsLocationsDatasets: API.OperationMethod<
   GetProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDatasetsRequest,
-  output: Dataset,
+  input: __S(70, __c8, 6) as any as S.Schema<GetProjectsLocationsDatasetsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2111,8 +1548,8 @@ export const getProjectsLocationsGlossaries: API.OperationMethod<
   GetProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlossariesRequest,
-  output: Glossary,
+  input: __S(71, __c8, 7) as any as S.Schema<GetProjectsLocationsGlossariesRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<Glossary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2126,8 +1563,8 @@ export const getProjectsLocationsGlossariesGlossaryEntries: API.OperationMethod<
   GetProjectsLocationsGlossariesGlossaryEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlossariesGlossaryEntriesRequest,
-  output: GlossaryEntry,
+  input: __S(72, __c9, 0) as any as S.Schema<GetProjectsLocationsGlossariesGlossaryEntriesRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GlossaryEntry>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2141,8 +1578,8 @@ export const getProjectsLocationsModels: API.OperationMethod<
   GetProjectsLocationsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsModelsRequest,
-  output: Model,
+  input: __S(73, __c9, 1) as any as S.Schema<GetProjectsLocationsModelsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<Model>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2156,8 +1593,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(74, __c9, 2) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2171,8 +1608,8 @@ export const getSupportedLanguagesProjects: API.OperationMethod<
   GetSupportedLanguagesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportedLanguagesProjectsRequest,
-  output: SupportedLanguages,
+  input: __S(75, __c9, 3) as any as S.Schema<GetSupportedLanguagesProjectsRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<SupportedLanguages>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2186,8 +1623,8 @@ export const getSupportedLanguagesProjectsLocations: API.OperationMethod<
   GetSupportedLanguagesProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportedLanguagesProjectsLocationsRequest,
-  output: SupportedLanguages,
+  input: __S(79, __c9, 7) as any as S.Schema<GetSupportedLanguagesProjectsLocationsRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<SupportedLanguages>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2206,8 +1643,12 @@ export const importAdaptiveMtFileProjectsLocationsAdaptiveMtDatasets: API.Operat
   ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest,
-  output: ImportAdaptiveMtFileResponse,
+  input: __S(
+    82,
+    __c10,
+    2,
+  ) as any as S.Schema<ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ImportAdaptiveMtFileResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2226,8 +1667,8 @@ export const importDataProjectsLocationsDatasets: API.OperationMethod<
   ImportDataProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDataProjectsLocationsDatasetsRequest,
-  output: Operation,
+  input: __S(88, __c11, 0) as any as S.Schema<ImportDataProjectsLocationsDatasetsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2242,8 +1683,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2259,8 +1700,8 @@ export const listProjectsLocationsAdaptiveMtDatasets: API.PaginatedOperationMeth
   GcpOpContext,
   ListAdaptiveMtDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAdaptiveMtDatasetsRequest,
-  output: ListAdaptiveMtDatasetsResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<ListAdaptiveMtDatasetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2279,8 +1720,12 @@ export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.Paginat
   GcpOpContext,
   ListAdaptiveMtFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest,
-  output: ListAdaptiveMtFilesResponse,
+  input: __S(
+    95,
+    __c11,
+    7,
+  ) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ListAdaptiveMtFilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2299,8 +1744,12 @@ export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSen
   GcpOpContext,
   ListAdaptiveMtSentencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest,
-  output: ListAdaptiveMtSentencesResponse,
+  input: __S(
+    98,
+    __c12,
+    2,
+  ) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<ListAdaptiveMtSentencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2319,8 +1768,12 @@ export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentences: API.Pag
   GcpOpContext,
   ListAdaptiveMtSentencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest,
-  output: ListAdaptiveMtSentencesResponse,
+  input: __S(
+    102,
+    __c12,
+    6,
+  ) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<ListAdaptiveMtSentencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2336,8 +1789,8 @@ export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDatasetsRequest,
-  output: ListDatasetsResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<ListProjectsLocationsDatasetsRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<ListDatasetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2353,8 +1806,8 @@ export const listProjectsLocationsDatasetsExamples: API.PaginatedOperationMethod
   GcpOpContext,
   ListExamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDatasetsExamplesRequest,
-  output: ListExamplesResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<ListProjectsLocationsDatasetsExamplesRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<ListExamplesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2370,8 +1823,8 @@ export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGlossariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlossariesRequest,
-  output: ListGlossariesResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<ListProjectsLocationsGlossariesRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ListGlossariesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2387,8 +1840,12 @@ export const listProjectsLocationsGlossariesGlossaryEntries: API.PaginatedOperat
   GcpOpContext,
   ListGlossaryEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlossariesGlossaryEntriesRequest,
-  output: ListGlossaryEntriesResponse,
+  input: __S(
+    113,
+    __c14,
+    1,
+  ) as any as S.Schema<ListProjectsLocationsGlossariesGlossaryEntriesRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<ListGlossaryEntriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2404,8 +1861,8 @@ export const listProjectsLocationsModels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsModelsRequest,
-  output: ListModelsResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<ListProjectsLocationsModelsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<ListModelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2421,8 +1878,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2442,8 +1899,8 @@ export const patchProjectsLocationsGlossaries: API.OperationMethod<
   PatchProjectsLocationsGlossariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGlossariesRequest,
-  output: Operation,
+  input: __S(122, __c15, 2) as any as S.Schema<PatchProjectsLocationsGlossariesRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2462,8 +1919,12 @@ export const patchProjectsLocationsGlossariesGlossaryEntries: API.OperationMetho
   PatchProjectsLocationsGlossariesGlossaryEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGlossariesGlossaryEntriesRequest,
-  output: GlossaryEntry,
+  input: __S(
+    123,
+    __c15,
+    3,
+  ) as any as S.Schema<PatchProjectsLocationsGlossariesGlossaryEntriesRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GlossaryEntry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2482,8 +1943,8 @@ export const refineTextProjectsLocations: API.OperationMethod<
   RefineTextProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefineTextProjectsLocationsRequest,
-  output: RefineTextResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<RefineTextProjectsLocationsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<RefineTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2497,8 +1958,8 @@ export const romanizeTextProjects: API.OperationMethod<
   RomanizeTextProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RomanizeTextProjectsRequest,
-  output: RomanizeTextResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<RomanizeTextProjectsRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<RomanizeTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2517,8 +1978,8 @@ export const romanizeTextProjectsLocations: API.OperationMethod<
   RomanizeTextProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RomanizeTextProjectsLocationsRequest,
-  output: RomanizeTextResponse,
+  input: __S(134, __c16, 6) as any as S.Schema<RomanizeTextProjectsLocationsRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<RomanizeTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2537,8 +1998,8 @@ export const translateDocumentProjectsLocations: API.OperationMethod<
   TranslateDocumentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TranslateDocumentProjectsLocationsRequest,
-  output: TranslateDocumentResponse,
+  input: __S(137, __c17, 1) as any as S.Schema<TranslateDocumentProjectsLocationsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<TranslateDocumentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2552,8 +2013,8 @@ export const translateTextProjects: API.OperationMethod<
   TranslateTextProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TranslateTextProjectsRequest,
-  output: TranslateTextResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<TranslateTextProjectsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<TranslateTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2572,8 +2033,8 @@ export const translateTextProjectsLocations: API.OperationMethod<
   TranslateTextProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TranslateTextProjectsLocationsRequest,
-  output: TranslateTextResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<TranslateTextProjectsLocationsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<TranslateTextResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2592,8 +2053,8 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
   WaitProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WaitProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(148, __c18, 4) as any as S.Schema<WaitProjectsLocationsOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2618,21 +2079,21 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ReferenceSentencePair" });
     case 2:
-      return S.Array(ReferenceSentencePair);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          referenceSentencePairs: S.optional(ReferenceSentencePairList_),
+          referenceSentencePairs: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "ReferenceSentencePairList",
       });
     case 4:
-      return S.Array(ReferenceSentencePairList);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          referenceSentencePairLists: S.optional(ReferenceSentencePairListList),
+          referenceSentencePairLists: S.optional(__S(4, __c0, 4)),
           sourceLanguageCode: S.optional(S.String),
           targetLanguageCode: S.optional(S.String),
         }),
@@ -2642,10 +2103,10 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          glossaryConfig: S.optional(GlossaryConfig),
-          referenceSentenceConfig: S.optional(ReferenceSentenceConfig),
+          glossaryConfig: S.optional(__S(0, __c0, 0)),
+          referenceSentenceConfig: S.optional(__S(5, __c0, 5)),
           dataset: S.optional(S.String),
-          content: S.optional(StringList),
+          content: S.optional(__S(6, __c0, 6)),
           mimeType: S.optional(S.String),
         }),
       ).annotate({
@@ -2659,7 +2120,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AdaptiveMtTranslateRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2677,12 +2138,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AdaptiveMtTranslation" });
     case 2:
-      return S.Array(AdaptiveMtTranslation);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          glossaryTranslations: S.optional(AdaptiveMtTranslationList),
-          translations: S.optional(AdaptiveMtTranslationList),
+          glossaryTranslations: S.optional(__S(10, __c1, 2)),
+          translations: S.optional(__S(10, __c1, 2)),
           languageCode: S.optional(S.String),
         }),
       ).annotate({
@@ -2699,7 +2160,7 @@ function __c1(j: number): any {
         identifier: "TranslateTextGlossaryConfig",
       });
     case 5:
-      return S.Record(S.String, TranslateTextGlossaryConfig);
+      return S.Record(S.String, __S(12, __c1, 4));
     case 6:
       return S.Record(S.String, S.String);
     case 7:
@@ -2715,11 +2176,11 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(GcsSource),
+          gcsSource: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "BatchDocumentInputConfig" });
     case 1:
-      return S.Array(BatchDocumentInputConfig);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2729,7 +2190,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(GcsDestination),
+          gcsDestination: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "BatchDocumentOutputConfig",
@@ -2740,14 +2201,14 @@ function __c2(j: number): any {
           enableRotationCorrection: S.optional(S.Boolean),
           sourceLanguageCode: S.optional(S.String),
           enableShadowRemovalNativePdf: S.optional(S.Boolean),
-          glossaries: S.optional(TranslateTextGlossaryConfigMap),
+          glossaries: S.optional(__S(13, __c1, 5)),
           pdfNativeOnly: S.optional(S.Boolean),
-          formatConversions: S.optional(StringMap),
-          targetLanguageCodes: S.optional(StringList),
-          models: S.optional(StringMap),
-          inputConfigs: S.optional(BatchDocumentInputConfigList),
+          formatConversions: S.optional(__S(14, __c1, 6)),
+          targetLanguageCodes: S.optional(__S(6, __c0, 6)),
+          models: S.optional(__S(14, __c1, 6)),
+          inputConfigs: S.optional(__S(17, __c2, 1)),
           customizedAttribution: S.optional(S.String),
-          outputConfig: S.optional(BatchDocumentOutputConfig),
+          outputConfig: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "BatchTranslateDocumentRequest",
@@ -2756,7 +2217,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchTranslateDocumentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2770,7 +2231,7 @@ function __c2(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -2780,44 +2241,44 @@ function __c3(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(24, __c3, 0)),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(22, __c2, 6)),
+          response: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           mimeType: S.optional(S.String),
-          gcsSource: S.optional(GcsSource),
+          gcsSource: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "InputConfig" });
     case 3:
-      return S.Array(InputConfig);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(GcsDestination),
+          gcsDestination: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "OutputConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          glossaries: S.optional(TranslateTextGlossaryConfigMap),
+          glossaries: S.optional(__S(13, __c1, 5)),
           sourceLanguageCode: S.optional(S.String),
-          models: S.optional(StringMap),
-          inputConfigs: S.optional(InputConfigList),
-          targetLanguageCodes: S.optional(StringList),
-          labels: S.optional(StringMap),
-          outputConfig: S.optional(OutputConfig),
+          models: S.optional(__S(14, __c1, 6)),
+          inputConfigs: S.optional(__S(27, __c3, 3)),
+          targetLanguageCodes: S.optional(__S(6, __c0, 6)),
+          labels: S.optional(__S(14, __c1, 6)),
+          outputConfig: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "BatchTranslateTextRequest",
@@ -2826,7 +2287,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchTranslateTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2849,7 +2310,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2876,7 +2337,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AdaptiveMtDataset.pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2906,7 +2367,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Dataset.pipe(T.HttpBody())),
+          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2927,18 +2388,18 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          languageCodes: S.optional(StringList),
+          languageCodes: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "LanguageCodesSet" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           entryCount: S.optional(S.Number),
-          languagePair: S.optional(LanguageCodePair),
+          languagePair: S.optional(__S(37, __c4, 5)),
           submitTime: S.optional(S.String),
-          languageCodesSet: S.optional(LanguageCodesSet),
+          languageCodesSet: S.optional(__S(38, __c4, 6)),
           name: S.optional(S.String),
-          inputConfig: S.optional(GlossaryInputConfig),
+          inputConfig: S.optional(__S(16, __c2, 0)),
           displayName: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
@@ -2951,7 +2412,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Glossary.pipe(T.HttpBody())),
+          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2972,16 +2433,16 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceTerm: S.optional(GlossaryTerm),
-          targetTerm: S.optional(GlossaryTerm),
+          sourceTerm: S.optional(__S(41, __c5, 1)),
+          targetTerm: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "GlossaryTermsPair" });
     case 3:
-      return S.Array(GlossaryTerm);
+      return S.Array(__S(41, __c5, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          terms: S.optional(GlossaryTermList),
+          terms: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "GlossaryTermsSet" });
     case 5:
@@ -2989,15 +2450,15 @@ function __c5(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           name: S.optional(S.String),
-          termsPair: S.optional(GlossaryTermsPair),
-          termsSet: S.optional(GlossaryTermsSet),
+          termsPair: S.optional(__S(42, __c5, 2)),
+          termsSet: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "GlossaryEntry" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GlossaryEntry.pipe(T.HttpBody())),
+          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3031,7 +2492,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Model.pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3148,15 +2609,15 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
-          gcsSource: S.optional(GcsSource),
+          gcsSource: S.optional(__S(15, __c1, 7)),
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentInputConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          documentInputConfig: S.optional(DocumentInputConfig),
-          labels: S.optional(StringMap),
+          documentInputConfig: S.optional(__S(56, __c7, 0)),
+          labels: S.optional(__S(14, __c1, 6)),
           mimeType: S.optional(S.String),
           model: S.optional(S.String),
           content: S.optional(S.String),
@@ -3166,7 +2627,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3185,18 +2646,18 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "DetectedLanguage" });
     case 4:
-      return S.Array(DetectedLanguage);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          languages: S.optional(DetectedLanguageList),
+          languages: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "DetectLanguageResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3210,7 +2671,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          outputConfig: S.optional(DatasetOutputConfig),
+          outputConfig: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "ExportDataRequest" });
   }
@@ -3221,7 +2682,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataset: S.String.pipe(T.Label()),
-          body: S.optional(ExportDataRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3251,8 +2712,8 @@ function __c8(j: number): any {
         S.Struct({
           locationId: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          labels: S.optional(StringMap),
+          metadata: S.optional(__S(22, __c2, 6)),
+          labels: S.optional(__S(14, __c1, 6)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -3394,11 +2855,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SupportedLanguage" });
     case 5:
-      return S.Array(SupportedLanguage);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          languages: S.optional(SupportedLanguageList),
+          languages: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({ identifier: "SupportedLanguages" });
     case 7:
@@ -3432,8 +2893,8 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fileInputSource: S.optional(FileInputSource),
-          gcsInputSource: S.optional(GcsSource),
+          fileInputSource: S.optional(__S(80, __c10, 0)),
+          gcsInputSource: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
         identifier: "ImportAdaptiveMtFileRequest",
@@ -3442,7 +2903,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ImportAdaptiveMtFileRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3456,7 +2917,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          adaptiveMtFile: S.optional(AdaptiveMtFile),
+          adaptiveMtFile: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({
         identifier: "ImportAdaptiveMtFileResponse",
@@ -3465,21 +2926,21 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           usage: S.optional(S.String),
-          gcsSource: S.optional(GcsSource),
+          gcsSource: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "InputFile" });
     case 5:
-      return S.Array(InputFile);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inputFiles: S.optional(InputFileList),
+          inputFiles: S.optional(__S(85, __c10, 5)),
         }),
       ).annotate({ identifier: "DatasetInputConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          inputConfig: S.optional(DatasetInputConfig),
+          inputConfig: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({ identifier: "ImportDataRequest" });
   }
@@ -3490,7 +2951,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataset: S.String.pipe(T.Label()),
-          body: S.optional(ImportDataRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3508,7 +2969,7 @@ function __c11(j: number): any {
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(6, __c0, 6).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3520,11 +2981,11 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 2:
-      return S.Array(Location);
+      return S.Array(__S(66, __c8, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(90, __c11, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -3546,11 +3007,11 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsAdaptiveMtDatasetsRequest",
       });
     case 5:
-      return S.Array(AdaptiveMtDataset);
+      return S.Array(__S(33, __c4, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          adaptiveMtDatasets: S.optional(AdaptiveMtDatasetList),
+          adaptiveMtDatasets: S.optional(__S(93, __c11, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3577,11 +3038,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AdaptiveMtFile);
+      return S.Array(__S(69, __c8, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          adaptiveMtFiles: S.optional(AdaptiveMtFileList),
+          adaptiveMtFiles: S.optional(__S(96, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3615,11 +3076,11 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "AdaptiveMtSentence" });
     case 4:
-      return S.Array(AdaptiveMtSentence);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          adaptiveMtSentences: S.optional(AdaptiveMtSentenceList),
+          adaptiveMtSentences: S.optional(__S(100, __c12, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3662,12 +3123,12 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Dataset);
+      return S.Array(__S(35, __c4, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          datasets: S.optional(DatasetList),
+          datasets: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "ListDatasetsResponse" });
     case 2:
@@ -3697,11 +3158,11 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "Example" });
     case 4:
-      return S.Array(Example);
+      return S.Array(__S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          examples: S.optional(ExampleList),
+          examples: S.optional(__S(108, __c13, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListExamplesResponse" });
@@ -3723,7 +3184,7 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsGlossariesRequest",
       });
     case 7:
-      return S.Array(Glossary);
+      return S.Array(__S(39, __c4, 7));
   }
 }
 function __c14(j: number): any {
@@ -3732,7 +3193,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          glossaries: S.optional(GlossaryList),
+          glossaries: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({ identifier: "ListGlossariesResponse" });
     case 1:
@@ -3752,11 +3213,11 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsGlossariesGlossaryEntriesRequest",
       });
     case 2:
-      return S.Array(GlossaryEntry);
+      return S.Array(__S(45, __c5, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          glossaryEntries: S.optional(GlossaryEntryList),
+          glossaryEntries: S.optional(__S(114, __c14, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3780,12 +3241,12 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsModelsRequest",
       });
     case 5:
-      return S.Array(Model);
+      return S.Array(__S(47, __c5, 7));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          models: S.optional(ModelList),
+          models: S.optional(__S(117, __c14, 5)),
         }),
       ).annotate({ identifier: "ListModelsResponse" });
     case 7:
@@ -3811,12 +3272,12 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(25, __c3, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(120, __c15, 0)),
+          unreachable: S.optional(__S(6, __c0, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3825,7 +3286,7 @@ function __c15(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Glossary.pipe(T.HttpBody())),
+          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3840,7 +3301,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GlossaryEntry.pipe(T.HttpBody())),
+          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3859,20 +3320,20 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "RefinementEntry" });
     case 5:
-      return S.Array(RefinementEntry);
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           sourceLanguageCode: S.optional(S.String),
           targetLanguageCode: S.optional(S.String),
-          refinementEntries: S.optional(RefinementEntryList),
+          refinementEntries: S.optional(__S(125, __c15, 5)),
         }),
       ).annotate({ identifier: "RefineTextRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RefineTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(126, __c15, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3890,21 +3351,21 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          refinedTranslations: S.optional(StringList),
+          refinedTranslations: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "RefineTextResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           sourceLanguageCode: S.optional(S.String),
-          contents: S.optional(StringList),
+          contents: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "RomanizeTextRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RomanizeTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3923,18 +3384,18 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "Romanization" });
     case 4:
-      return S.Array(Romanization);
+      return S.Array(__S(131, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          romanizations: S.optional(RomanizationList),
+          romanizations: S.optional(__S(132, __c16, 4)),
         }),
       ).annotate({ identifier: "RomanizeTextResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RomanizeTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3948,7 +3409,7 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(GcsDestination),
+          gcsDestination: S.optional(__S(18, __c2, 2)),
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentOutputConfig" });
@@ -3963,11 +3424,11 @@ function __c17(j: number): any {
           enableRotationCorrection: S.optional(S.Boolean),
           sourceLanguageCode: S.optional(S.String),
           targetLanguageCode: S.optional(S.String),
-          documentOutputConfig: S.optional(DocumentOutputConfig),
-          documentInputConfig: S.optional(DocumentInputConfig),
+          documentOutputConfig: S.optional(__S(135, __c16, 7)),
+          documentInputConfig: S.optional(__S(56, __c7, 0)),
           enableShadowRemovalNativePdf: S.optional(S.Boolean),
-          labels: S.optional(StringMap),
-          glossaryConfig: S.optional(TranslateTextGlossaryConfig),
+          labels: S.optional(__S(14, __c1, 6)),
+          glossaryConfig: S.optional(__S(12, __c1, 4)),
           model: S.optional(S.String),
           customizedAttribution: S.optional(S.String),
         }),
@@ -3976,7 +3437,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(TranslateDocumentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3991,16 +3452,16 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           detectedLanguageCode: S.optional(S.String),
-          byteStreamOutputs: S.optional(StringList),
+          byteStreamOutputs: S.optional(__S(6, __c0, 6)),
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentTranslation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          documentTranslation: S.optional(DocumentTranslation),
-          glossaryDocumentTranslation: S.optional(DocumentTranslation),
-          glossaryConfig: S.optional(TranslateTextGlossaryConfig),
+          documentTranslation: S.optional(__S(138, __c17, 2)),
+          glossaryDocumentTranslation: S.optional(__S(138, __c17, 2)),
+          glossaryConfig: S.optional(__S(12, __c1, 4)),
           model: S.optional(S.String),
         }),
       ).annotate({
@@ -4017,19 +3478,19 @@ function __c17(j: number): any {
         S.Struct({
           sourceLanguageCode: S.optional(S.String),
           targetLanguageCode: S.optional(S.String),
-          contents: S.optional(StringList),
-          glossaryConfig: S.optional(TranslateTextGlossaryConfig),
-          transliterationConfig: S.optional(TransliterationConfig),
+          contents: S.optional(__S(6, __c0, 6)),
+          glossaryConfig: S.optional(__S(12, __c1, 4)),
+          transliterationConfig: S.optional(__S(140, __c17, 4)),
           mimeType: S.optional(S.String),
           model: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "TranslateTextRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(TranslateTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4044,7 +3505,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           translatedText: S.optional(S.String),
-          glossaryConfig: S.optional(TranslateTextGlossaryConfig),
+          glossaryConfig: S.optional(__S(12, __c1, 4)),
           detectedLanguageCode: S.optional(S.String),
           model: S.optional(S.String),
         }),
@@ -4054,19 +3515,19 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Translation);
+      return S.Array(__S(143, __c17, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          translations: S.optional(TranslationList),
-          glossaryTranslations: S.optional(TranslationList),
+          translations: S.optional(__S(144, __c18, 0)),
+          glossaryTranslations: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({ identifier: "TranslateTextResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(TranslateTextRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4087,7 +3548,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(WaitOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4099,4 +3560,9 @@ function __c18(j: number): any {
         identifier: "WaitProjectsLocationsOperationsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

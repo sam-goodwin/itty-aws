@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "EKS Auth",
   serviceShapeName: "EKSAuthFrontend",
@@ -126,35 +128,24 @@ export interface AssumeRoleForPodIdentityRequest {
   instanceId?: string;
   zone?: string;
 }
-const AssumeRoleForPodIdentityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssumeRoleForPodIdentityRequest>;
 export interface Subject {
   namespace: string;
   serviceAccount: string;
 }
-const Subject = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Subject>;
 export interface PodIdentityAssociation {
   associationArn: string;
   associationId: string;
 }
-const PodIdentityAssociation = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PodIdentityAssociation>;
 export interface AssumedRoleUser {
   arn: string;
   assumeRoleId: string;
 }
-const AssumedRoleUser = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AssumedRoleUser>;
 export interface Credentials {
   sessionToken: string | redacted.Redacted<string>;
   secretAccessKey: string | redacted.Redacted<string>;
   accessKeyId: string;
   expiration: Date;
 }
-const Credentials = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Credentials>;
 export interface AssumeRoleForPodIdentityResponse {
   subject: Subject;
   audience: string;
@@ -162,10 +153,6 @@ export interface AssumeRoleForPodIdentityResponse {
   assumedRoleUser: AssumedRoleUser;
   credentials: Credentials;
 }
-const AssumeRoleForPodIdentityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssumeRoleForPodIdentityResponse>;
 export type AssumeRoleForPodIdentityError =
   | AccessDeniedException
   | ExpiredTokenException
@@ -188,8 +175,8 @@ export const assumeRoleForPodIdentity: API.OperationMethod<
   AssumeRoleForPodIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssumeRoleForPodIdentityRequest,
-  output: AssumeRoleForPodIdentityResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AssumeRoleForPodIdentityRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AssumeRoleForPodIdentityResponse>,
   errors: [
     AccessDeniedException,
     ExpiredTokenException,
@@ -254,14 +241,19 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subject: Subject,
+          subject: __S(1, __c0, 1),
           audience: S.String,
-          podIdentityAssociation: PodIdentityAssociation,
-          assumedRoleUser: AssumedRoleUser,
-          credentials: Credentials,
+          podIdentityAssociation: __S(2, __c0, 2),
+          assumedRoleUser: __S(3, __c0, 3),
+          credentials: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "AssumeRoleForPodIdentityResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

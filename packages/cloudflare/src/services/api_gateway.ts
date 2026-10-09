@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -137,30 +139,13 @@ export interface LabelsUserBulkCreateRequestBodyItem {
   /** Metadata for the label */
   metadata?: unknown;
 }
-const LabelsUserBulkCreateRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<LabelsUserBulkCreateRequestBodyItem>;
-
 export type LabelsUserBulkCreateRequestBodyList = Array<LabelsUserBulkCreateRequestBodyItem>;
-const LabelsUserBulkCreateRequestBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<LabelsUserBulkCreateRequestBodyList>;
-
 export interface BulkCreateLabelUsersRequest {
   /** Identifier. */
   zoneId: string;
   body: LabelsUserBulkCreateRequestBodyList;
 }
-const BulkCreateLabelUsersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BulkCreateLabelUsersRequest>;
-
 export type LabelsUserBulkCreateResultItemSource = "user" | "managed";
-const LabelsUserBulkCreateResultItemSource = S.String;
-
 export interface LabelsUserBulkCreateResultItem {
   createdAt: string;
   /** The description of the label */
@@ -173,73 +158,30 @@ export interface LabelsUserBulkCreateResultItem {
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
   source: LabelsUserBulkCreateResultItemSource;
 }
-const LabelsUserBulkCreateResultItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<LabelsUserBulkCreateResultItem>;
-
 export type LabelsUserBulkCreateResultList = Array<LabelsUserBulkCreateResultItem>;
-const LabelsUserBulkCreateResultList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<LabelsUserBulkCreateResultList>;
-
 export interface BulkCreateLabelUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LabelsUserBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const BulkCreateLabelUsersResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BulkCreateLabelUsersResponse>;
-
 export type OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList = Array<string>;
-const OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList>;
-
 export interface OperationsLabelsBulkCreateRequestSelectorInclude {
   operationIds: OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList;
 }
-const OperationsLabelsBulkCreateRequestSelectorInclude = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<OperationsLabelsBulkCreateRequestSelectorInclude>;
-
 export interface OperationsLabelsBulkCreateRequestSelector {
   include: OperationsLabelsBulkCreateRequestSelectorInclude;
 }
-const OperationsLabelsBulkCreateRequestSelector = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<OperationsLabelsBulkCreateRequestSelector>;
-
 export type OperationsLabelsBulkCreateRequestManagedLabelsList = Array<string>;
-const OperationsLabelsBulkCreateRequestManagedLabelsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<OperationsLabelsBulkCreateRequestManagedLabelsList>;
-
 export interface OperationsLabelsBulkCreateRequestManaged {
   /** List of managed label names. */
   labels?: OperationsLabelsBulkCreateRequestManagedLabelsList;
 }
-const OperationsLabelsBulkCreateRequestManaged = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<OperationsLabelsBulkCreateRequestManaged>;
-
 export type OperationsLabelsBulkCreateRequestUserLabelsList = Array<string>;
 export interface OperationsLabelsBulkCreateRequestUser {
   /** List of user label names. */
   labels?: OperationsLabelsBulkCreateRequestUserLabelsList;
 }
-const OperationsLabelsBulkCreateRequestUser =
-  OperationsLabelsBulkCreateRequestManaged as any as S.Schema<OperationsLabelsBulkCreateRequestUser>;
-
 export interface BulkCreateOperationLabelsRequest {
   /** Identifier. */
   zoneId: string;
@@ -248,11 +190,6 @@ export interface BulkCreateOperationLabelsRequest {
   managed?: OperationsLabelsBulkCreateRequestManaged;
   user?: OperationsLabelsBulkCreateRequestUser;
 }
-const BulkCreateOperationLabelsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BulkCreateOperationLabelsRequest>;
-
 export type OperationsLabelsBulkCreateResultItemMethod =
   | "GET"
   | "POST"
@@ -263,8 +200,6 @@ export type OperationsLabelsBulkCreateResultItemMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsLabelsBulkCreateResultItemMethod = S.String;
-
 export type OperationsLabelsBulkCreateResultItemLabelsItemSource = "user" | "managed";
 export interface OperationsLabelsBulkCreateResultItemLabelsItem {
   createdAt: string;
@@ -280,9 +215,6 @@ export interface OperationsLabelsBulkCreateResultItemLabelsItem {
 }
 export type OperationsLabelsBulkCreateResultItemLabelsList =
   Array<OperationsLabelsBulkCreateResultItemLabelsItem>;
-const OperationsLabelsBulkCreateResultItemLabelsList =
-  LabelsUserBulkCreateResultList as any as S.Schema<OperationsLabelsBulkCreateResultItemLabelsList>;
-
 export interface OperationsLabelsBulkCreateResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
   endpoint: string;
@@ -295,28 +227,13 @@ export interface OperationsLabelsBulkCreateResultItem {
   operationId: string;
   labels?: OperationsLabelsBulkCreateResultItemLabelsList | null;
 }
-const OperationsLabelsBulkCreateResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<OperationsLabelsBulkCreateResultItem>;
-
 export type OperationsLabelsBulkCreateResultList = Array<OperationsLabelsBulkCreateResultItem>;
-const OperationsLabelsBulkCreateResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<OperationsLabelsBulkCreateResultList>;
-
 export interface BulkCreateOperationLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: OperationsLabelsBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const BulkCreateOperationLabelsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BulkCreateOperationLabelsResponse>;
-
 export type OperationsBulkCreateRequestBodyItemMethod =
   | "GET"
   | "POST"
@@ -327,8 +244,6 @@ export type OperationsBulkCreateRequestBodyItemMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsBulkCreateRequestBodyItemMethod = S.String;
-
 export interface OperationsBulkCreateRequestBodyItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
   endpoint: string;
@@ -337,27 +252,12 @@ export interface OperationsBulkCreateRequestBodyItem {
   /** The HTTP method used to access the endpoint. */
   method: OperationsBulkCreateRequestBodyItemMethod | (string & {});
 }
-const OperationsBulkCreateRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<OperationsBulkCreateRequestBodyItem>;
-
 export type OperationsBulkCreateRequestBodyList = Array<OperationsBulkCreateRequestBodyItem>;
-const OperationsBulkCreateRequestBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<OperationsBulkCreateRequestBodyList>;
-
 export interface BulkCreateOperationsRequest {
   /** Identifier. */
   zoneId: string;
   body: OperationsBulkCreateRequestBodyList;
 }
-const BulkCreateOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BulkCreateOperationsRequest>;
-
 export type OperationsBulkCreateResultItemMethod =
   | "GET"
   | "POST"
@@ -368,8 +268,6 @@ export type OperationsBulkCreateResultItemMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsBulkCreateResultItemMethod = S.String;
-
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
   authIdTokens?: number | null;
@@ -473,8 +371,6 @@ export type OperationsBulkCreateResultItemFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
-const OperationsBulkCreateResultItemFeatures = /*@__PURE__*/ __L.at(__c2, 2);
-
 export interface OperationsBulkCreateResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
   endpoint: string;
@@ -487,37 +383,17 @@ export interface OperationsBulkCreateResultItem {
   operationId: string;
   features?: OperationsBulkCreateResultItemFeatures | null;
 }
-const OperationsBulkCreateResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<OperationsBulkCreateResultItem>;
-
 export type OperationsBulkCreateResultList = Array<OperationsBulkCreateResultItem>;
-const OperationsBulkCreateResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<OperationsBulkCreateResultList>;
-
 export interface BulkCreateOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: OperationsBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const BulkCreateOperationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BulkCreateOperationsResponse>;
-
 export interface BulkDeleteLabelUsersRequest {
   /** Identifier. */
   zoneId: string;
 }
-const BulkDeleteLabelUsersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BulkDeleteLabelUsersRequest>;
-
 export type LabelsUserBulkDeleteResultItemSource = "user" | "managed";
 export interface LabelsUserBulkDeleteResultItem {
   createdAt: string;
@@ -538,18 +414,10 @@ export interface BulkDeleteLabelUsersResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const BulkDeleteLabelUsersResponse =
-  BulkCreateLabelUsersResponse as any as S.Schema<BulkDeleteLabelUsersResponse>;
-
 export interface BulkDeleteOperationLabelsRequest {
   /** Identifier. */
   zoneId: string;
 }
-const BulkDeleteOperationLabelsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BulkDeleteOperationLabelsRequest>;
-
 export type OperationsLabelsBulkDeleteResultItemMethod =
   | "GET"
   | "POST"
@@ -594,93 +462,38 @@ export interface BulkDeleteOperationLabelsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const BulkDeleteOperationLabelsResponse =
-  BulkCreateOperationLabelsResponse as any as S.Schema<BulkDeleteOperationLabelsResponse>;
-
 export interface BulkDeleteOperationsRequest {
   /** Identifier. */
   zoneId: string;
 }
-const BulkDeleteOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BulkDeleteOperationsRequest>;
-
 export interface BulkDeleteOperationsResponse {}
-const BulkDeleteOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BulkDeleteOperationsResponse>;
-
 export type DiscoveryOperationsBulkEditRequestBodyValueState = "review" | "ignored";
-const DiscoveryOperationsBulkEditRequestBodyValueState = S.String;
-
 export interface DiscoveryOperationsBulkEditRequestBodyValue {
   /** Mark state of operation in API Discovery */
   state?: DiscoveryOperationsBulkEditRequestBodyValueState | (string & {});
 }
-const DiscoveryOperationsBulkEditRequestBodyValue = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DiscoveryOperationsBulkEditRequestBodyValue>;
-
 export type DiscoveryOperationsBulkEditRequestBodyMap = {
   [key: string]: DiscoveryOperationsBulkEditRequestBodyValue | undefined;
 };
-const DiscoveryOperationsBulkEditRequestBodyMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DiscoveryOperationsBulkEditRequestBodyMap>;
-
 export interface BulkPatchDiscoveryOperationsRequest {
   /** Identifier. */
   zoneId: string;
   body: DiscoveryOperationsBulkEditRequestBodyMap;
 }
-const BulkPatchDiscoveryOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<BulkPatchDiscoveryOperationsRequest>;
-
 export type DiscoveryOperationsBulkEditResultValueState = "review" | "ignored";
-const DiscoveryOperationsBulkEditResultValueState = S.String;
-
 export interface DiscoveryOperationsBulkEditResultValue {
   /** Mark state of operation in API Discovery */
   state?: DiscoveryOperationsBulkEditResultValueState | null;
 }
-const DiscoveryOperationsBulkEditResultValue = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DiscoveryOperationsBulkEditResultValue>;
-
 export type DiscoveryOperationsBulkEditResultMap = {
   [key: string]: DiscoveryOperationsBulkEditResultValue | undefined;
 };
-const DiscoveryOperationsBulkEditResultMap = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DiscoveryOperationsBulkEditResultMap>;
-
 export type BulkPatchDiscoveryOperationsResponse = DiscoveryOperationsBulkEditResultMap;
-const BulkPatchDiscoveryOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>;
-
 export type OperationsLabelsBulkUpdateRequestManagedLabelsList = Array<string>;
-const OperationsLabelsBulkUpdateRequestManagedLabelsList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsBulkUpdateRequestManagedLabelsList>;
-
 export interface OperationsLabelsBulkUpdateRequestManaged {
   /** List of managed label names. Providing an empty array will result in all managed labels being removed from all affected operations */
   labels: OperationsLabelsBulkUpdateRequestManagedLabelsList;
 }
-const OperationsLabelsBulkUpdateRequestManaged = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<OperationsLabelsBulkUpdateRequestManaged>;
-
 export type OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList = Array<string>;
 export interface OperationsLabelsBulkUpdateRequestSelectorInclude {
   operationIds: OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList;
@@ -688,17 +501,11 @@ export interface OperationsLabelsBulkUpdateRequestSelectorInclude {
 export interface OperationsLabelsBulkUpdateRequestSelector {
   include: OperationsLabelsBulkUpdateRequestSelectorInclude;
 }
-const OperationsLabelsBulkUpdateRequestSelector =
-  OperationsLabelsBulkCreateRequestSelector as any as S.Schema<OperationsLabelsBulkUpdateRequestSelector>;
-
 export type OperationsLabelsBulkUpdateRequestUserLabelsList = Array<string>;
 export interface OperationsLabelsBulkUpdateRequestUser {
   /** List of user label names. Providing an empty array will result in all user labels being removed from all affected operations */
   labels: OperationsLabelsBulkUpdateRequestUserLabelsList;
 }
-const OperationsLabelsBulkUpdateRequestUser =
-  OperationsLabelsBulkUpdateRequestManaged as any as S.Schema<OperationsLabelsBulkUpdateRequestUser>;
-
 export interface BulkUpdateOperationLabelsRequest {
   /** Identifier. */
   zoneId: string;
@@ -709,11 +516,6 @@ export interface BulkUpdateOperationLabelsRequest {
   /** User labels to replace for all affected operations */
   user: OperationsLabelsBulkUpdateRequestUser;
 }
-const BulkUpdateOperationLabelsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<BulkUpdateOperationLabelsRequest>;
-
 export type OperationsLabelsBulkUpdateResultItemMethod =
   | "GET"
   | "POST"
@@ -758,24 +560,13 @@ export interface BulkUpdateOperationLabelsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const BulkUpdateOperationLabelsResponse =
-  BulkCreateOperationLabelsResponse as any as S.Schema<BulkUpdateOperationLabelsResponse>;
-
 export type ExpressionTemplateFallthroughCreateRequestHostsList = Array<string>;
-const ExpressionTemplateFallthroughCreateRequestHostsList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<ExpressionTemplateFallthroughCreateRequestHostsList>;
-
 export interface CreateExpressionTemplateFallthroughRequest {
   /** Identifier. */
   zoneId: string;
   /** List of hosts to be targeted in the expression */
   hosts: ExpressionTemplateFallthroughCreateRequestHostsList;
 }
-const CreateExpressionTemplateFallthroughRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateExpressionTemplateFallthroughRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateExpressionTemplateFallthroughResponse {
   /** WAF Expression for fallthrough */
@@ -783,11 +574,6 @@ export interface CreateExpressionTemplateFallthroughResponse {
   /** Title for the expression */
   title: string;
 }
-const CreateExpressionTemplateFallthroughResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateExpressionTemplateFallthroughResponse>;
-
 export type OperationsCreateRequestMethod =
   | "GET"
   | "POST"
@@ -798,8 +584,6 @@ export type OperationsCreateRequestMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsCreateRequestMethod = S.String;
-
 export interface CreateOperationRequest {
   /** Identifier. */
   zoneId: string;
@@ -810,11 +594,6 @@ export interface CreateOperationRequest {
   /** The HTTP method used to access the endpoint. */
   method: OperationsCreateRequestMethod | (string & {});
 }
-const CreateOperationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateOperationRequest>;
-
 export type OperationsCreateResponseMethod =
   | "GET"
   | "POST"
@@ -825,8 +604,6 @@ export type OperationsCreateResponseMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsCreateResponseMethod = S.String;
-
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds =
@@ -886,40 +663,20 @@ export type OperationsCreateResponseFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
-const OperationsCreateResponseFeatures = /*@__PURE__*/ __L.at(__c4, 5);
-
 export type OperationsCreateResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
 };
-const OperationsCreateResponseSchemasLearnedParametersItemMap = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<OperationsCreateResponseSchemasLearnedParametersItemMap>;
-
 export type OperationsCreateResponseSchemasLearnedParametersList =
   Array<OperationsCreateResponseSchemasLearnedParametersItemMap>;
-const OperationsCreateResponseSchemasLearnedParametersList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<OperationsCreateResponseSchemasLearnedParametersList>;
-
 export type OperationsCreateResponseSchemasLearnedRequestBodyMap = {
   [key: string]: unknown | undefined;
 };
-const OperationsCreateResponseSchemasLearnedRequestBodyMap =
-  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsCreateResponseSchemasLearnedRequestBodyMap>;
-
 export interface OperationsCreateResponseSchemasLearned {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
   parameters?: OperationsCreateResponseSchemasLearnedParametersList | null;
   /** OpenAPI request body object describing the expected request payload. */
   requestBody?: OperationsCreateResponseSchemasLearnedRequestBodyMap | null;
 }
-const OperationsCreateResponseSchemasLearned = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<OperationsCreateResponseSchemasLearned>;
-
 export type OperationsCreateResponseSchemasUploadedParametersItemMap = {
   [key: string]: unknown | undefined;
 };
@@ -934,20 +691,12 @@ export interface OperationsCreateResponseSchemasUploaded {
   /** OpenAPI request body object describing the expected request payload. */
   requestBody?: OperationsCreateResponseSchemasUploadedRequestBodyMap | null;
 }
-const OperationsCreateResponseSchemasUploaded =
-  OperationsCreateResponseSchemasLearned as any as S.Schema<OperationsCreateResponseSchemasUploaded>;
-
 export interface OperationsCreateResponseSchemas {
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
   learned?: OperationsCreateResponseSchemasLearned | null;
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
   uploaded?: OperationsCreateResponseSchemasUploaded | null;
 }
-const OperationsCreateResponseSchemas = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<OperationsCreateResponseSchemas>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOperationResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -963,19 +712,8 @@ export interface CreateOperationResponse {
   /** OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas. */
   schemas?: OperationsCreateResponseSchemas | null;
 }
-const CreateOperationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateOperationResponse>;
-
 export type OperationsLabelsCreateRequestManagedList = Array<string>;
-const OperationsLabelsCreateRequestManagedList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsCreateRequestManagedList>;
-
 export type OperationsLabelsCreateRequestUserList = Array<string>;
-const OperationsLabelsCreateRequestUserList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsCreateRequestUserList>;
-
 export interface CreateOperationLabelRequest {
   /** Identifier. */
   zoneId: string;
@@ -986,11 +724,6 @@ export interface CreateOperationLabelRequest {
   /** List of user label names. */
   user?: OperationsLabelsCreateRequestUserList;
 }
-const CreateOperationLabelRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateOperationLabelRequest>;
-
 export type OperationsLabelsCreateResponseMethod =
   | "GET"
   | "POST"
@@ -1001,8 +734,6 @@ export type OperationsLabelsCreateResponseMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsLabelsCreateResponseMethod = S.String;
-
 export type OperationsLabelsCreateResponseLabelsItemSource = "user" | "managed";
 export interface OperationsLabelsCreateResponseLabelsItem {
   createdAt: string;
@@ -1018,9 +749,6 @@ export interface OperationsLabelsCreateResponseLabelsItem {
 }
 export type OperationsLabelsCreateResponseLabelsList =
   Array<OperationsLabelsCreateResponseLabelsItem>;
-const OperationsLabelsCreateResponseLabelsList =
-  LabelsUserBulkCreateResultList as any as S.Schema<OperationsLabelsCreateResponseLabelsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOperationLabelResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -1034,11 +762,6 @@ export interface CreateOperationLabelResponse {
   operationId: string;
   labels?: OperationsLabelsCreateResponseLabelsList | null;
 }
-const CreateOperationLabelResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateOperationLabelResponse>;
-
 export interface CreateUserSchemaRequest {
   /** Identifier. */
   zoneId: string;
@@ -1051,14 +774,7 @@ export interface CreateUserSchemaRequest {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean;
 }
-const CreateUserSchemaRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateUserSchemaRequest>;
-
 export type UserSchemasCreateResponseSchemaKind = "openapi_v3";
-const UserSchemasCreateResponseSchemaKind = S.String;
-
 export interface UserSchemasCreateResponseSchema {
   createdAt: string;
   /** Kind of schema */
@@ -1072,15 +788,7 @@ export interface UserSchemasCreateResponseSchema {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean | null;
 }
-const UserSchemasCreateResponseSchema = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<UserSchemasCreateResponseSchema>;
-
 export type UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList = Array<string>;
-const UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList =
-  OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList as any as S.Schema<UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList>;
-
 export interface UserSchemasCreateResponseUploadDetailsWarningsItem {
   /** Code that identifies the event that occurred. */
   code: number;
@@ -1089,51 +797,24 @@ export interface UserSchemasCreateResponseUploadDetailsWarningsItem {
   /** Diagnostic message that describes the event. */
   message?: string | null;
 }
-const UserSchemasCreateResponseUploadDetailsWarningsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UserSchemasCreateResponseUploadDetailsWarningsItem>;
-
 export type UserSchemasCreateResponseUploadDetailsWarningsList =
   Array<UserSchemasCreateResponseUploadDetailsWarningsItem>;
-const UserSchemasCreateResponseUploadDetailsWarningsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<UserSchemasCreateResponseUploadDetailsWarningsList>;
-
 export interface UserSchemasCreateResponseUploadDetails {
   /** Diagnostic warning events that occurred during processing. These events are non-critical errors found within the schema. */
   warnings?: UserSchemasCreateResponseUploadDetailsWarningsList | null;
 }
-const UserSchemasCreateResponseUploadDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<UserSchemasCreateResponseUploadDetails>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateUserSchemaResponse {
   schema: UserSchemasCreateResponseSchema;
   uploadDetails?: UserSchemasCreateResponseUploadDetails | null;
 }
-const CreateUserSchemaResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateUserSchemaResponse>;
-
 export interface DeleteLabelUserRequest {
   /** Identifier. */
   zoneId: string;
   /** The name of the label */
   name: string;
 }
-const DeleteLabelUserRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteLabelUserRequest>;
-
 export type LabelsUserDeleteResponseSource = "user" | "managed";
-const LabelsUserDeleteResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteLabelUserResponse {
   createdAt: string;
@@ -1147,39 +828,19 @@ export interface DeleteLabelUserResponse {
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
   source: LabelsUserDeleteResponseSource;
 }
-const DeleteLabelUserResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteLabelUserResponse>;
-
 export interface DeleteOperationRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   operationId: string;
 }
-const DeleteOperationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteOperationRequest>;
-
 export interface DeleteOperationResponse {}
-const DeleteOperationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeleteOperationResponse>;
-
 export interface DeleteOperationLabelRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   operationId: string;
 }
-const DeleteOperationLabelRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DeleteOperationLabelRequest>;
-
 export type OperationsLabelsDeleteResponseMethod =
   | "GET"
   | "POST"
@@ -1218,34 +879,18 @@ export interface DeleteOperationLabelResponse {
   operationId: string;
   labels?: OperationsLabelsDeleteResponseLabelsList | null;
 }
-const DeleteOperationLabelResponse =
-  CreateOperationLabelResponse as any as S.Schema<DeleteOperationLabelResponse>;
-
 export interface DeleteUserSchemaRequest {
   /** Identifier. */
   zoneId: string;
   schemaId: string;
 }
-const DeleteUserSchemaRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteUserSchemaRequest>;
-
 export interface DeleteUserSchemaResponse {}
-const DeleteUserSchemaResponse =
-  DeleteOperationResponse as any as S.Schema<DeleteUserSchemaResponse>;
-
 export interface GetConfigurationRequest {
   /** Identifier. */
   zoneId: string;
   /** Ensures that the configuration is written or retrieved in normalized fashion */
   normalize?: boolean;
 }
-const GetConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetConfigurationRequest>;
-
 export type ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   | "header"
   | "cookie";
@@ -1266,43 +911,22 @@ export interface ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuth
 export type ConfigurationsGetResponseAuthIdCharacteristicsItem =
   | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
   | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
-const ConfigurationsGetResponseAuthIdCharacteristicsItem = /*@__PURE__*/ __L.at(__c7, 2);
-
 export type ConfigurationsGetResponseAuthIdCharacteristicsList =
   Array<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
-const ConfigurationsGetResponseAuthIdCharacteristicsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigurationResponse {
   authIdCharacteristics: ConfigurationsGetResponseAuthIdCharacteristicsList;
 }
-const GetConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetConfigurationResponse>;
-
 export interface GetDiscoveryRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetDiscoveryRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetDiscoveryRequest>;
-
 export type DiscoveryGetResponseSchemasList = Array<unknown>;
-const DiscoveryGetResponseSchemasList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DiscoveryGetResponseSchemasList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDiscoveryResponse {
   schemas: DiscoveryGetResponseSchemasList;
   timestamp: string;
 }
-const GetDiscoveryResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GetDiscoveryResponse>;
-
 export interface GetLabelManagedRequest {
   /** Identifier. */
   zoneId: string;
@@ -1311,14 +935,7 @@ export interface GetLabelManagedRequest {
   /** Include `mapped_resources` for each label */
   withMappedResourceCounts?: boolean;
 }
-const GetLabelManagedRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetLabelManagedRequest>;
-
 export type LabelsManagedGetResponseSource = "user" | "managed";
-const LabelsManagedGetResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLabelManagedResponse {
   createdAt: string;
@@ -1334,11 +951,6 @@ export interface GetLabelManagedResponse {
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
-const GetLabelManagedResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetLabelManagedResponse>;
-
 export interface GetLabelUserRequest {
   /** Identifier. */
   zoneId: string;
@@ -1347,8 +959,6 @@ export interface GetLabelUserRequest {
   /** Include `mapped_resources` for each label */
   withMappedResourceCounts?: boolean;
 }
-const GetLabelUserRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetLabelUserRequest>;
-
 export type LabelsUserGetResponseSource = "user" | "managed";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLabelUserResponse {
@@ -1365,21 +975,12 @@ export interface GetLabelUserResponse {
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
-const GetLabelUserResponse = GetLabelManagedResponse as any as S.Schema<GetLabelUserResponse>;
-
 export type OperationsGetRequestFeature =
   | "thresholds"
   | "parameter_schemas"
   | "schema_info"
   | "confidence_intervals";
-const OperationsGetRequestFeature = S.String;
-
 export type OperationsGetRequestFeatureList = Array<OperationsGetRequestFeature | (string & {})>;
-const OperationsGetRequestFeatureList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<OperationsGetRequestFeatureList>;
-
 export interface GetOperationRequest {
   /** Identifier. */
   zoneId: string;
@@ -1390,8 +991,6 @@ export interface GetOperationRequest {
   /** When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval. */
   withSchemas?: boolean;
 }
-const GetOperationRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetOperationRequest>;
-
 export type OperationsGetResponseMethod =
   | "GET"
   | "POST"
@@ -1402,8 +1001,6 @@ export type OperationsGetResponseMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsGetResponseMethod = S.String;
-
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds =
@@ -1463,8 +1060,6 @@ export type OperationsGetResponseFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
-const OperationsGetResponseFeatures = /*@__PURE__*/ __L.at(__c8, 5);
-
 export type OperationsGetResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
 };
@@ -1499,9 +1094,6 @@ export interface OperationsGetResponseSchemas {
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
   uploaded?: OperationsGetResponseSchemasUploaded | null;
 }
-const OperationsGetResponseSchemas =
-  OperationsCreateResponseSchemas as any as S.Schema<OperationsGetResponseSchemas>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOperationResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -1517,22 +1109,13 @@ export interface GetOperationResponse {
   /** OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas. */
   schemas?: OperationsGetResponseSchemas | null;
 }
-const GetOperationResponse = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetOperationResponse>;
-
 export interface GetOperationSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   operationId: string;
 }
-const GetOperationSchemaValidationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetOperationSchemaValidationRequest>;
-
 export type OperationsSchemaValidationGetResponseMitigationAction = "log" | "block" | "none";
-const OperationsSchemaValidationGetResponseMitigationAction = S.String;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetOperationSchemaValidationResponse {
   /** When set, this applies a mitigation action to this operation */
@@ -1540,25 +1123,12 @@ export interface GetOperationSchemaValidationResponse {
   /** UUID. */
   operationId?: string | null;
 }
-const GetOperationSchemaValidationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetOperationSchemaValidationResponse>;
-
 export interface GetSettingSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetSettingSchemaValidationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetSettingSchemaValidationRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSettingSchemaValidationResponse {}
-const GetSettingSchemaValidationResponse =
-  BulkDeleteOperationsResponse as any as S.Schema<GetSettingSchemaValidationResponse>;
-
 export interface GetUserSchemaRequest {
   /** Identifier. */
   zoneId: string;
@@ -1566,11 +1136,7 @@ export interface GetUserSchemaRequest {
   /** Omit the source-files of schemas and only retrieve their meta-data. */
   omitSource?: boolean;
 }
-const GetUserSchemaRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<GetUserSchemaRequest>;
-
 export type UserSchemasGetResponseKind = "openapi_v3";
-const UserSchemasGetResponseKind = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUserSchemaResponse {
   createdAt: string;
@@ -1585,36 +1151,17 @@ export interface GetUserSchemaResponse {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean | null;
 }
-const GetUserSchemaResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetUserSchemaResponse>;
-
 export type DiscoveryOperationsListRequestDirection = "asc" | "desc";
-const DiscoveryOperationsListRequestDirection = S.String;
-
 export type DiscoveryOperationsListRequestHostList = Array<string>;
-const DiscoveryOperationsListRequestHostList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<DiscoveryOperationsListRequestHostList>;
-
 export type DiscoveryOperationsListRequestMethodList = Array<string>;
-const DiscoveryOperationsListRequestMethodList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<DiscoveryOperationsListRequestMethodList>;
-
 export type DiscoveryOperationsListRequestOrder =
   | "host"
   | "method"
   | "endpoint"
   | "traffic_stats.requests"
   | "traffic_stats.last_updated";
-const DiscoveryOperationsListRequestOrder = S.String;
-
 export type DiscoveryOperationsListRequestOrigin = "ML" | "SessionIdentifier" | "LabelDiscovery";
-const DiscoveryOperationsListRequestOrigin = S.String;
-
 export type DiscoveryOperationsListRequestState = "review" | "saved" | "ignored";
-const DiscoveryOperationsListRequestState = S.String;
-
 export interface ListDiscoveryOperationsRequest {
   /** Identifier. */
   zoneId: string;
@@ -1639,11 +1186,6 @@ export interface ListDiscoveryOperationsRequest {
   /** Filter results to only include discovery results in a particular state. States are as follows */
   state?: DiscoveryOperationsListRequestState | (string & {});
 }
-const ListDiscoveryOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListDiscoveryOperationsRequest>;
-
 export type DiscoveryOperationsListResultItemMethod =
   | "GET"
   | "POST"
@@ -1654,20 +1196,13 @@ export type DiscoveryOperationsListResultItemMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const DiscoveryOperationsListResultItemMethod = S.String;
-
 export type DiscoveryOperationsListResultItemOriginItem =
   | "ML"
   | "SessionIdentifier"
   | "LabelDiscovery";
 export type DiscoveryOperationsListResultItemOriginList =
   Array<DiscoveryOperationsListResultItemOriginItem>;
-const DiscoveryOperationsListResultItemOriginList =
-  OperationsGetRequestFeatureList as any as S.Schema<DiscoveryOperationsListResultItemOriginList>;
-
 export type DiscoveryOperationsListResultItemState = "review" | "saved" | "ignored";
-const DiscoveryOperationsListResultItemState = S.String;
-
 export interface DiscoveryOperationsListResultItemFeaturesTrafficStats {
   lastUpdated: string;
   /** The period in seconds these statistics were computed over */
@@ -1675,19 +1210,9 @@ export interface DiscoveryOperationsListResultItemFeaturesTrafficStats {
   /** The average number of requests seen during this period */
   requests: number;
 }
-const DiscoveryOperationsListResultItemFeaturesTrafficStats = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DiscoveryOperationsListResultItemFeaturesTrafficStats>;
-
 export interface DiscoveryOperationsListResultItemFeatures {
   trafficStats?: DiscoveryOperationsListResultItemFeaturesTrafficStats | null;
 }
-const DiscoveryOperationsListResultItemFeatures = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DiscoveryOperationsListResultItemFeatures>;
-
 export interface DiscoveryOperationsListResultItem {
   /** UUID. */
   id: string;
@@ -1704,42 +1229,21 @@ export interface DiscoveryOperationsListResultItem {
   state: DiscoveryOperationsListResultItemState;
   features?: DiscoveryOperationsListResultItemFeatures | null;
 }
-const DiscoveryOperationsListResultItem = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DiscoveryOperationsListResultItem>;
-
 export type DiscoveryOperationsListResultList = Array<DiscoveryOperationsListResultItem>;
-const DiscoveryOperationsListResultList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DiscoveryOperationsListResultList>;
-
 export interface ListDiscoveryOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DiscoveryOperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDiscoveryOperationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListDiscoveryOperationsResponse>;
-
 export type LabelsListRequestDirection = "asc" | "desc";
-const LabelsListRequestDirection = S.String;
-
 export type LabelsListRequestOrder =
   | "name"
   | "description"
   | "created_at"
   | "last_updated"
   | "mapped_resources.operations";
-const LabelsListRequestOrder = S.String;
-
 export type LabelsListRequestSource = "user" | "managed";
-const LabelsListRequestSource = S.String;
-
 export interface ListLabelsRequest {
   /** Identifier. */
   zoneId: string;
@@ -1758,11 +1262,7 @@ export interface ListLabelsRequest {
   /** Include `mapped_resources` for each label */
   withMappedResourceCounts?: boolean;
 }
-const ListLabelsRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ListLabelsRequest>;
-
 export type LabelsListResultItemSource = "user" | "managed";
-const LabelsListResultItemSource = S.String;
-
 export interface LabelsListResultItem {
   createdAt: string;
   /** The description of the label */
@@ -1777,48 +1277,23 @@ export interface LabelsListResultItem {
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
-const LabelsListResultItem = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<LabelsListResultItem>;
-
 export type LabelsListResultList = Array<LabelsListResultItem>;
-const LabelsListResultList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<LabelsListResultList>;
-
 export interface ListLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LabelsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListLabelsResponse = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ListLabelsResponse>;
-
 export type OperationsListRequestDirection = "asc" | "desc";
-const OperationsListRequestDirection = S.String;
-
 export type OperationsListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
   | "schema_info"
   | "confidence_intervals";
 export type OperationsListRequestFeatureList = Array<OperationsListRequestFeature | (string & {})>;
-const OperationsListRequestFeatureList =
-  OperationsGetRequestFeatureList as any as S.Schema<OperationsListRequestFeatureList>;
-
 export type OperationsListRequestHostList = Array<string>;
-const OperationsListRequestHostList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsListRequestHostList>;
-
 export type OperationsListRequestMethodList = Array<string>;
-const OperationsListRequestMethodList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsListRequestMethodList>;
-
 export type OperationsListRequestOrder = "method" | "host" | "endpoint" | "thresholds.$key";
-const OperationsListRequestOrder = S.String;
-
 export interface ListOperationsRequest {
   /** Identifier. */
   zoneId: string;
@@ -1839,11 +1314,6 @@ export interface ListOperationsRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 export type OperationsListResultItemMethod =
   | "GET"
   | "POST"
@@ -1854,8 +1324,6 @@ export type OperationsListResultItemMethod =
   | "CONNECT"
   | "PATCH"
   | "TRACE";
-const OperationsListResultItemMethod = S.String;
-
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds =
@@ -1915,8 +1383,6 @@ export type OperationsListResultItemFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
-const OperationsListResultItemFeatures = /*@__PURE__*/ __L.at(__c10, 7);
-
 export interface OperationsListResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
   endpoint: string;
@@ -1929,48 +1395,24 @@ export interface OperationsListResultItem {
   operationId: string;
   features?: OperationsListResultItemFeatures | null;
 }
-const OperationsListResultItem = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<OperationsListResultItem>;
-
 export type OperationsListResultList = Array<OperationsListResultItem>;
-const OperationsListResultList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<OperationsListResultList>;
-
 export interface ListOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: OperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export type SchemasListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
   | "schema_info"
   | "confidence_intervals";
 export type SchemasListRequestFeatureList = Array<SchemasListRequestFeature | (string & {})>;
-const SchemasListRequestFeatureList =
-  OperationsGetRequestFeatureList as any as S.Schema<SchemasListRequestFeatureList>;
-
 export type SchemasListRequestHostList = Array<string>;
-const SchemasListRequestHostList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<SchemasListRequestHostList>;
-
 export type SchemasListRequestIncludeSchemaKind = "learned";
 export type SchemasListRequestIncludeSchemaKindList = Array<
   SchemasListRequestIncludeSchemaKind | (string & {})
 >;
-const SchemasListRequestIncludeSchemaKindList =
-  OperationsGetRequestFeatureList as any as S.Schema<SchemasListRequestIncludeSchemaKindList>;
-
 export interface ListSchemasRequest {
   /** Identifier. */
   zoneId: string;
@@ -1981,19 +1423,12 @@ export interface ListSchemasRequest {
   /** Schema kinds to include in exported OpenAPI schemas. */
   includeSchemaKind?: SchemasListRequestIncludeSchemaKindList;
 }
-const ListSchemasRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ListSchemasRequest>;
-
 export type SchemasListResponseSchemasList = Array<unknown>;
-const SchemasListResponseSchemasList =
-  DiscoveryGetResponseSchemasList as any as S.Schema<SchemasListResponseSchemasList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListSchemasResponse {
   schemas?: SchemasListResponseSchemasList | null;
   timestamp?: string | null;
 }
-const ListSchemasResponse = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ListSchemasResponse>;
-
 export interface ListUserSchemaHostsRequest {
   /** Identifier. */
   zoneId: string;
@@ -2002,15 +1437,7 @@ export interface ListUserSchemaHostsRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const ListUserSchemaHostsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListUserSchemaHostsRequest>;
-
 export type UserSchemasHostsListResultItemHostsList = Array<string>;
-const UserSchemasHostsListResultItemHostsList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<UserSchemasHostsListResultItemHostsList>;
-
 export interface UserSchemasHostsListResultItem {
   createdAt: string;
   /** Hosts serving the schema, e.g zone.host.com */
@@ -2020,28 +1447,13 @@ export interface UserSchemasHostsListResultItem {
   /** UUID. */
   schemaId: string;
 }
-const UserSchemasHostsListResultItem = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<UserSchemasHostsListResultItem>;
-
 export type UserSchemasHostsListResultList = Array<UserSchemasHostsListResultItem>;
-const UserSchemasHostsListResultList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UserSchemasHostsListResultList>;
-
 export interface ListUserSchemaHostsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: UserSchemasHostsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListUserSchemaHostsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListUserSchemaHostsResponse>;
-
 export type UserSchemasOperationsListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
@@ -2050,20 +1462,9 @@ export type UserSchemasOperationsListRequestFeature =
 export type UserSchemasOperationsListRequestFeatureList = Array<
   UserSchemasOperationsListRequestFeature | (string & {})
 >;
-const UserSchemasOperationsListRequestFeatureList =
-  OperationsGetRequestFeatureList as any as S.Schema<UserSchemasOperationsListRequestFeatureList>;
-
 export type UserSchemasOperationsListRequestHostList = Array<string>;
-const UserSchemasOperationsListRequestHostList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<UserSchemasOperationsListRequestHostList>;
-
 export type UserSchemasOperationsListRequestMethodList = Array<string>;
-const UserSchemasOperationsListRequestMethodList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<UserSchemasOperationsListRequestMethodList>;
-
 export type UserSchemasOperationsListRequestOperationStatus = "new" | "existing";
-const UserSchemasOperationsListRequestOperationStatus = S.String;
-
 export interface ListUserSchemaOperationsRequest {
   /** Identifier. */
   zoneId: string;
@@ -2083,11 +1484,6 @@ export interface ListUserSchemaOperationsRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const ListUserSchemaOperationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListUserSchemaOperationsRequest>;
-
 export type UserSchemasOperationsListResultItemAPIShieldOperationMethod =
   | "GET"
   | "POST"
@@ -2190,25 +1586,13 @@ export interface UserSchemasOperationsListResultItemAPIShieldBasicOperation {
 export type UserSchemasOperationsListResultItem =
   | UserSchemasOperationsListResultItemAPIShieldOperation
   | UserSchemasOperationsListResultItemAPIShieldBasicOperation;
-const UserSchemasOperationsListResultItem = /*@__PURE__*/ __L.at(__c12, 2);
-
 export type UserSchemasOperationsListResultList = Array<UserSchemasOperationsListResultItem>;
-const UserSchemasOperationsListResultList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<UserSchemasOperationsListResultList>;
-
 export interface ListUserSchemaOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: UserSchemasOperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListUserSchemaOperationsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListUserSchemaOperationsResponse>;
-
 export interface ListUserSchemasRequest {
   /** Identifier. */
   zoneId: string;
@@ -2221,11 +1605,6 @@ export interface ListUserSchemasRequest {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean;
 }
-const ListUserSchemasRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListUserSchemasRequest>;
-
 export type UserSchemasListResultItemKind = "openapi_v3";
 export interface UserSchemasListResultItem {
   createdAt: string;
@@ -2240,26 +1619,13 @@ export interface UserSchemasListResultItem {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean | null;
 }
-const UserSchemasListResultItem =
-  UserSchemasCreateResponseSchema as any as S.Schema<UserSchemasListResultItem>;
-
 export type UserSchemasListResultList = Array<UserSchemasListResultItem>;
-const UserSchemasListResultList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<UserSchemasListResultList>;
-
 export interface ListUserSchemasResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: UserSchemasListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListUserSchemasResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListUserSchemasResponse>;
-
 export interface PatchLabelUserRequest {
   /** Identifier. */
   zoneId: string;
@@ -2270,11 +1636,6 @@ export interface PatchLabelUserRequest {
   /** Metadata for the label */
   metadata?: unknown;
 }
-const PatchLabelUserRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<PatchLabelUserRequest>;
-
 export type LabelsUserEditResponseSource = "user" | "managed";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchLabelUserResponse {
@@ -2289,59 +1650,34 @@ export interface PatchLabelUserResponse {
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
   source: LabelsUserEditResponseSource;
 }
-const PatchLabelUserResponse = DeleteLabelUserResponse as any as S.Schema<PatchLabelUserResponse>;
-
 export type OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction =
   | "log"
   | "block"
   | "none";
-const OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction = S.String;
-
 export interface OperationsSchemaValidationEditRequestSettingsMultipleRequest {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?:
     | OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction
     | (string & {});
 }
-const OperationsSchemaValidationEditRequestSettingsMultipleRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<OperationsSchemaValidationEditRequestSettingsMultipleRequest>;
-
 export interface PatchOperationSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
   settingsMultipleRequest: OperationsSchemaValidationEditRequestSettingsMultipleRequest;
 }
-const PatchOperationSchemaValidationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<PatchOperationSchemaValidationRequest>;
-
 export type OperationsSchemaValidationEditResponseMitigationAction = "log" | "block" | "none";
-const OperationsSchemaValidationEditResponseMitigationAction = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchOperationSchemaValidationResponse {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?: OperationsSchemaValidationEditResponseMitigationAction | null;
 }
-const PatchOperationSchemaValidationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<PatchOperationSchemaValidationResponse>;
-
 export type SettingsSchemaValidationEditRequestValidationDefaultMitigationAction =
   | "none"
   | "log"
   | "block";
-const SettingsSchemaValidationEditRequestValidationDefaultMitigationAction = S.String;
-
 export type SettingsSchemaValidationEditRequestValidationOverrideMitigationAction =
   | "none"
   | "disable_override";
-const SettingsSchemaValidationEditRequestValidationOverrideMitigationAction = S.String;
-
 export interface PatchSettingSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
@@ -2354,16 +1690,8 @@ export interface PatchSettingSchemaValidationRequest {
     | SettingsSchemaValidationEditRequestValidationOverrideMitigationAction
     | (string & {});
 }
-const PatchSettingSchemaValidationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<PatchSettingSchemaValidationRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PatchSettingSchemaValidationResponse {}
-const PatchSettingSchemaValidationResponse =
-  BulkDeleteOperationsResponse as any as S.Schema<PatchSettingSchemaValidationResponse>;
-
 export interface PatchUserSchemaRequest {
   /** Identifier. */
   zoneId: string;
@@ -2371,11 +1699,6 @@ export interface PatchUserSchemaRequest {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean;
 }
-const PatchUserSchemaRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<PatchUserSchemaRequest>;
-
 export type UserSchemasEditResponseKind = "openapi_v3";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchUserSchemaResponse {
@@ -2391,8 +1714,6 @@ export interface PatchUserSchemaResponse {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean | null;
 }
-const PatchUserSchemaResponse = GetUserSchemaResponse as any as S.Schema<PatchUserSchemaResponse>;
-
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   | "header"
   | "cookie";
@@ -2415,15 +1736,8 @@ export interface ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAu
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
   | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
   | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
-const ConfigurationsUpdateRequestAuthIdCharacteristicsItem = /*@__PURE__*/ __L.at(__c13, 6);
-
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsList =
   Array<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;
-const ConfigurationsUpdateRequestAuthIdCharacteristicsList = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsList>;
-
 export interface PutConfigurationRequest {
   /** Identifier. */
   zoneId: string;
@@ -2431,11 +1745,6 @@ export interface PutConfigurationRequest {
   normalize?: boolean;
   authIdCharacteristics: ConfigurationsUpdateRequestAuthIdCharacteristicsList;
 }
-const PutConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<PutConfigurationRequest>;
-
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   | "header"
   | "cookie";
@@ -2456,45 +1765,20 @@ export interface ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldA
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
   | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
   | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
-const ConfigurationsUpdateResponseAuthIdCharacteristicsItem = /*@__PURE__*/ __L.at(__c14, 1);
-
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsList =
   Array<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;
-const ConfigurationsUpdateResponseAuthIdCharacteristicsList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutConfigurationResponse {
   authIdCharacteristics: ConfigurationsUpdateResponseAuthIdCharacteristicsList;
 }
-const PutConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<PutConfigurationResponse>;
-
 export type LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   Array<string>;
-const LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList as any as S.Schema<LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList>;
-
 export interface LabelsManagedResourcesOperationUpdateRequestSelectorInclude {
   operationIds: LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList;
 }
-const LabelsManagedResourcesOperationUpdateRequestSelectorInclude = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<LabelsManagedResourcesOperationUpdateRequestSelectorInclude>;
-
 export interface LabelsManagedResourcesOperationUpdateRequestSelector {
   include: LabelsManagedResourcesOperationUpdateRequestSelectorInclude;
 }
-const LabelsManagedResourcesOperationUpdateRequestSelector = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<LabelsManagedResourcesOperationUpdateRequestSelector>;
-
 export interface PutLabelManagedResourceOperationRequest {
   /** Identifier. */
   zoneId: string;
@@ -2503,14 +1787,7 @@ export interface PutLabelManagedResourceOperationRequest {
   /** Operation IDs selector */
   selector: LabelsManagedResourcesOperationUpdateRequestSelector;
 }
-const PutLabelManagedResourceOperationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<PutLabelManagedResourceOperationRequest>;
-
 export type LabelsManagedResourcesOperationUpdateResponseSource = "user" | "managed";
-const LabelsManagedResourcesOperationUpdateResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutLabelManagedResourceOperationResponse {
   createdAt: string;
@@ -2526,11 +1803,6 @@ export interface PutLabelManagedResourceOperationResponse {
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
-const PutLabelManagedResourceOperationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<PutLabelManagedResourceOperationResponse>;
-
 export interface PutLabelUserRequest {
   /** Identifier. */
   zoneId: string;
@@ -2541,8 +1813,6 @@ export interface PutLabelUserRequest {
   /** Metadata for the label */
   metadata?: unknown;
 }
-const PutLabelUserRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<PutLabelUserRequest>;
-
 export type LabelsUserUpdateResponseSource = "user" | "managed";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutLabelUserResponse {
@@ -2557,29 +1827,14 @@ export interface PutLabelUserResponse {
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
   source: LabelsUserUpdateResponseSource;
 }
-const PutLabelUserResponse = DeleteLabelUserResponse as any as S.Schema<PutLabelUserResponse>;
-
 export type LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   Array<string>;
-const LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList as any as S.Schema<LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList>;
-
 export interface LabelsUserResourcesOperationUpdateRequestSelectorInclude {
   operationIds: LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList;
 }
-const LabelsUserResourcesOperationUpdateRequestSelectorInclude = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<LabelsUserResourcesOperationUpdateRequestSelectorInclude>;
-
 export interface LabelsUserResourcesOperationUpdateRequestSelector {
   include: LabelsUserResourcesOperationUpdateRequestSelectorInclude;
 }
-const LabelsUserResourcesOperationUpdateRequestSelector = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<LabelsUserResourcesOperationUpdateRequestSelector>;
-
 export interface PutLabelUserResourceOperationRequest {
   /** Identifier. */
   zoneId: string;
@@ -2588,11 +1843,6 @@ export interface PutLabelUserResourceOperationRequest {
   /** Operation IDs selector */
   selector: LabelsUserResourcesOperationUpdateRequestSelector;
 }
-const PutLabelUserResourceOperationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<PutLabelUserResourceOperationRequest>;
-
 export type LabelsUserResourcesOperationUpdateResponseSource = "user" | "managed";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutLabelUserResourceOperationResponse {
@@ -2609,12 +1859,7 @@ export interface PutLabelUserResourceOperationResponse {
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
-const PutLabelUserResourceOperationResponse =
-  PutLabelManagedResourceOperationResponse as any as S.Schema<PutLabelUserResourceOperationResponse>;
-
 export type OperationsSchemaValidationUpdateRequestMitigationAction = "log" | "block" | "none";
-const OperationsSchemaValidationUpdateRequestMitigationAction = S.String;
-
 export interface PutOperationSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
@@ -2623,11 +1868,6 @@ export interface PutOperationSchemaValidationRequest {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?: OperationsSchemaValidationUpdateRequestMitigationAction | (string & {});
 }
-const PutOperationSchemaValidationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<PutOperationSchemaValidationRequest>;
-
 export type OperationsSchemaValidationUpdateResponseMitigationAction = "log" | "block" | "none";
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PutOperationSchemaValidationResponse {
@@ -2636,20 +1876,13 @@ export interface PutOperationSchemaValidationResponse {
   /** UUID. */
   operationId?: string | null;
 }
-const PutOperationSchemaValidationResponse =
-  GetOperationSchemaValidationResponse as any as S.Schema<PutOperationSchemaValidationResponse>;
-
 export type SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction =
   | "none"
   | "log"
   | "block";
-const SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction = S.String;
-
 export type SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction =
   | "none"
   | "disable_override";
-const SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction = S.String;
-
 export interface PutSettingSchemaValidationRequest {
   /** Identifier. */
   zoneId: string;
@@ -2662,24 +1895,10 @@ export interface PutSettingSchemaValidationRequest {
     | SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction
     | (string & {});
 }
-const PutSettingSchemaValidationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<PutSettingSchemaValidationRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PutSettingSchemaValidationResponse {}
-const PutSettingSchemaValidationResponse =
-  BulkDeleteOperationsResponse as any as S.Schema<PutSettingSchemaValidationResponse>;
-
 export type OperationsLabelsUpdateRequestManagedList = Array<string>;
-const OperationsLabelsUpdateRequestManagedList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsUpdateRequestManagedList>;
-
 export type OperationsLabelsUpdateRequestUserList = Array<string>;
-const OperationsLabelsUpdateRequestUserList =
-  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsUpdateRequestUserList>;
-
 export interface UpdateOperationLabelRequest {
   /** Identifier. */
   zoneId: string;
@@ -2690,11 +1909,6 @@ export interface UpdateOperationLabelRequest {
   /** List of user label names. Omitting this property or passing an empty array will result in all user labels being removed from the operation */
   user?: OperationsLabelsUpdateRequestUserList;
 }
-const UpdateOperationLabelRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<UpdateOperationLabelRequest>;
-
 export type OperationsLabelsUpdateResponseMethod =
   | "GET"
   | "POST"
@@ -2733,9 +1947,6 @@ export interface UpdateOperationLabelResponse {
   operationId: string;
   labels?: OperationsLabelsUpdateResponseLabelsList | null;
 }
-const UpdateOperationLabelResponse =
-  CreateOperationLabelResponse as any as S.Schema<UpdateOperationLabelResponse>;
-
 export type BulkCreateLabelUsersError = LabelAlreadyExists | Forbidden | CloudflareOpError;
 /** Creates one or more user-defined labels for classifying web and API operations. */
 export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
@@ -2746,8 +1957,8 @@ export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
   LabelsUserBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BulkCreateLabelUsersRequest,
-    output: BulkCreateLabelUsersResponse,
+    input: __S(2, __c0, 2) as any as S.Schema<BulkCreateLabelUsersRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<BulkCreateLabelUsersResponse>,
     errors: [LabelAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2766,8 +1977,8 @@ export const bulkCreateOperationLabels: API.PaginatedOperationMethod<
   OperationsLabelsBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BulkCreateOperationLabelsRequest,
-    output: BulkCreateOperationLabelsResponse,
+    input: __S(11, __c1, 3) as any as S.Schema<BulkCreateOperationLabelsRequest>,
+    output: __S(14, __c1, 6) as any as S.Schema<BulkCreateOperationLabelsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2786,8 +1997,8 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
   OperationsBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BulkCreateOperationsRequest,
-    output: BulkCreateOperationsResponse,
+    input: __S(17, __c2, 1) as any as S.Schema<BulkCreateOperationsRequest>,
+    output: __S(21, __c2, 5) as any as S.Schema<BulkCreateOperationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2806,8 +2017,8 @@ export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
   LabelsUserBulkDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BulkDeleteLabelUsersRequest,
-    output: BulkDeleteLabelUsersResponse,
+    input: __S(22, __c2, 6) as any as S.Schema<BulkDeleteLabelUsersRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<BulkDeleteLabelUsersResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2826,8 +2037,8 @@ export const bulkDeleteOperationLabels: API.PaginatedOperationMethod<
   OperationsLabelsBulkDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BulkDeleteOperationLabelsRequest,
-    output: BulkDeleteOperationLabelsResponse,
+    input: __S(23, __c2, 7) as any as S.Schema<BulkDeleteOperationLabelsRequest>,
+    output: __S(14, __c1, 6) as any as S.Schema<BulkDeleteOperationLabelsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2844,8 +2055,8 @@ export const bulkDeleteOperations: API.OperationMethod<
   BulkDeleteOperationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteOperationsRequest,
-  output: BulkDeleteOperationsResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<BulkDeleteOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<BulkDeleteOperationsResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2862,8 +2073,8 @@ export const bulkPatchDiscoveryOperations: API.OperationMethod<
   BulkPatchDiscoveryOperationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkPatchDiscoveryOperationsRequest,
-  output: BulkPatchDiscoveryOperationsResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<BulkPatchDiscoveryOperationsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>,
   errors: [InvalidObjectIdentifier, NotEntitled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2879,8 +2090,8 @@ export const bulkUpdateOperationLabels: API.PaginatedOperationMethod<
   OperationsLabelsBulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BulkUpdateOperationLabelsRequest,
-    output: BulkUpdateOperationLabelsResponse,
+    input: __S(33, __c4, 1) as any as S.Schema<BulkUpdateOperationLabelsRequest>,
+    output: __S(14, __c1, 6) as any as S.Schema<BulkUpdateOperationLabelsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2897,8 +2108,8 @@ export const createExpressionTemplateFallthrough: API.OperationMethod<
   CreateExpressionTemplateFallthroughError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExpressionTemplateFallthroughRequest,
-  output: CreateExpressionTemplateFallthroughResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<CreateExpressionTemplateFallthroughRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<CreateExpressionTemplateFallthroughResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2912,8 +2123,8 @@ export const createOperation: API.OperationMethod<
   CreateOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOperationRequest,
-  output: CreateOperationResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateOperationRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<CreateOperationResponse>,
   errors: [InvalidObjectIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2927,8 +2138,8 @@ export const createOperationLabel: API.OperationMethod<
   CreateOperationLabelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOperationLabelRequest,
-  output: CreateOperationLabelResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<CreateOperationLabelRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<CreateOperationLabelResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2942,8 +2153,8 @@ export const createUserSchema: API.OperationMethod<
   CreateUserSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserSchemaRequest,
-  output: CreateUserSchemaResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<CreateUserSchemaRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<CreateUserSchemaResponse>,
   errors: [InvalidObjectIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2957,8 +2168,8 @@ export const deleteLabelUser: API.OperationMethod<
   DeleteLabelUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLabelUserRequest,
-  output: DeleteLabelUserResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<DeleteLabelUserRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<DeleteLabelUserResponse>,
   errors: [LabelNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2976,8 +2187,8 @@ export const deleteOperation: API.OperationMethod<
   DeleteOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOperationRequest,
-  output: DeleteOperationResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<DeleteOperationRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<DeleteOperationResponse>,
   errors: [
     InvalidObjectIdentifier,
     OperationNotFound,
@@ -2997,8 +2208,8 @@ export const deleteOperationLabel: API.OperationMethod<
   DeleteOperationLabelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOperationLabelRequest,
-  output: DeleteOperationLabelResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<DeleteOperationLabelRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<DeleteOperationLabelResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3016,8 +2227,8 @@ export const deleteUserSchema: API.OperationMethod<
   DeleteUserSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserSchemaRequest,
-  output: DeleteUserSchemaResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteUserSchemaRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<DeleteUserSchemaResponse>,
   errors: [
     InvalidObjectIdentifier,
     SchemaNotFound,
@@ -3041,8 +2252,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationRequest,
-  output: GetConfigurationResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<GetConfigurationResponse>,
   errors: [InvalidObjectIdentifier, NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3056,8 +2267,8 @@ export const getDiscovery: API.OperationMethod<
   GetDiscoveryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDiscoveryRequest,
-  output: GetDiscoveryResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<GetDiscoveryRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<GetDiscoveryResponse>,
   errors: [InvalidObjectIdentifier, NotEntitled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3071,8 +2282,8 @@ export const getLabelManaged: API.OperationMethod<
   GetLabelManagedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLabelManagedRequest,
-  output: GetLabelManagedResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<GetLabelManagedRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetLabelManagedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3086,8 +2297,8 @@ export const getLabelUser: API.OperationMethod<
   GetLabelUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLabelUserRequest,
-  output: GetLabelUserResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<GetLabelUserRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetLabelUserResponse>,
   errors: [LabelNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3105,8 +2316,8 @@ export const getOperation: API.OperationMethod<
   GetOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationRequest,
-  output: GetOperationResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<GetOperationRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<GetOperationResponse>,
   errors: [
     InvalidObjectIdentifier,
     OperationNotFound,
@@ -3129,8 +2340,8 @@ export const getOperationSchemaValidation: API.OperationMethod<
   GetOperationSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationSchemaValidationRequest,
-  output: GetOperationSchemaValidationResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<GetOperationSchemaValidationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetOperationSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, OperationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3144,8 +2355,8 @@ export const getSettingSchemaValidation: API.OperationMethod<
   GetSettingSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingSchemaValidationRequest,
-  output: GetSettingSchemaValidationResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<GetSettingSchemaValidationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetSettingSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3163,8 +2374,8 @@ export const getUserSchema: API.OperationMethod<
   GetUserSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserSchemaRequest,
-  output: GetUserSchemaResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<GetUserSchemaRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetUserSchemaResponse>,
   errors: [
     InvalidObjectIdentifier,
     SchemaNotFound,
@@ -3186,8 +2397,8 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
   DiscoveryOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDiscoveryOperationsRequest,
-    output: ListDiscoveryOperationsResponse,
+    input: __S(76, __c9, 4) as any as S.Schema<ListDiscoveryOperationsRequest>,
+    output: __S(81, __c10, 1) as any as S.Schema<ListDiscoveryOperationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3212,8 +2423,8 @@ export const listLabels: API.PaginatedOperationMethod<
   LabelsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLabelsRequest,
-    output: ListLabelsResponse,
+    input: __S(82, __c10, 2) as any as S.Schema<ListLabelsRequest>,
+    output: __S(85, __c10, 5) as any as S.Schema<ListLabelsResponse>,
     errors: [ZonePurged, Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3238,8 +2449,8 @@ export const listOperations: API.PaginatedOperationMethod<
   OperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListOperationsRequest,
-    output: ListOperationsResponse,
+    input: __S(86, __c10, 6) as any as S.Schema<ListOperationsRequest>,
+    output: __S(90, __c11, 2) as any as S.Schema<ListOperationsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3262,8 +2473,8 @@ export const listSchemas: API.OperationMethod<
   ListSchemasError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSchemasRequest,
-  output: ListSchemasResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<ListSchemasRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<ListSchemasResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3279,8 +2490,8 @@ export const listUserSchemaHosts: API.PaginatedOperationMethod<
   UserSchemasHostsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListUserSchemaHostsRequest,
-    output: ListUserSchemaHostsResponse,
+    input: __S(93, __c11, 5) as any as S.Schema<ListUserSchemaHostsRequest>,
+    output: __S(96, __c12, 0) as any as S.Schema<ListUserSchemaHostsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3305,8 +2516,8 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
   UserSchemasOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListUserSchemaOperationsRequest,
-    output: ListUserSchemaOperationsResponse,
+    input: __S(97, __c12, 1) as any as S.Schema<ListUserSchemaOperationsRequest>,
+    output: __S(100, __c12, 4) as any as S.Schema<ListUserSchemaOperationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3331,8 +2542,8 @@ export const listUserSchemas: API.PaginatedOperationMethod<
   UserSchemasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListUserSchemasRequest,
-    output: ListUserSchemasResponse,
+    input: __S(101, __c12, 5) as any as S.Schema<ListUserSchemasRequest>,
+    output: __S(103, __c12, 7) as any as S.Schema<ListUserSchemasResponse>,
     errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3355,8 +2566,8 @@ export const patchLabelUser: API.OperationMethod<
   PatchLabelUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchLabelUserRequest,
-  output: PatchLabelUserResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<PatchLabelUserRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<PatchLabelUserResponse>,
   errors: [LabelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3370,8 +2581,8 @@ export const patchOperationSchemaValidation: API.OperationMethod<
   PatchOperationSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOperationSchemaValidationRequest,
-  output: PatchOperationSchemaValidationResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<PatchOperationSchemaValidationRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<PatchOperationSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3385,8 +2596,8 @@ export const patchSettingSchemaValidation: API.OperationMethod<
   PatchSettingSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSettingSchemaValidationRequest,
-  output: PatchSettingSchemaValidationResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<PatchSettingSchemaValidationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<PatchSettingSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3404,8 +2615,8 @@ export const patchUserSchema: API.OperationMethod<
   PatchUserSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUserSchemaRequest,
-  output: PatchUserSchemaResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<PatchUserSchemaRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<PatchUserSchemaResponse>,
   errors: [
     InvalidObjectIdentifier,
     SchemaNotFound,
@@ -3429,8 +2640,8 @@ export const putConfiguration: API.OperationMethod<
   PutConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutConfigurationRequest,
-  output: PutConfigurationResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<PutConfigurationRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<PutConfigurationResponse>,
   errors: [InvalidObjectIdentifier, NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3444,8 +2655,8 @@ export const putLabelManagedResourceOperation: API.OperationMethod<
   PutLabelManagedResourceOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutLabelManagedResourceOperationRequest,
-  output: PutLabelManagedResourceOperationResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<PutLabelManagedResourceOperationRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<PutLabelManagedResourceOperationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3459,8 +2670,8 @@ export const putLabelUser: API.OperationMethod<
   PutLabelUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutLabelUserRequest,
-  output: PutLabelUserResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<PutLabelUserRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<PutLabelUserResponse>,
   errors: [LabelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3474,8 +2685,8 @@ export const putLabelUserResourceOperation: API.OperationMethod<
   PutLabelUserResourceOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutLabelUserResourceOperationRequest,
-  output: PutLabelUserResourceOperationResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<PutLabelUserResourceOperationRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<PutLabelUserResourceOperationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3492,8 +2703,8 @@ export const putOperationSchemaValidation: API.OperationMethod<
   PutOperationSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOperationSchemaValidationRequest,
-  output: PutOperationSchemaValidationResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<PutOperationSchemaValidationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<PutOperationSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, OperationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3507,8 +2718,8 @@ export const putSettingSchemaValidation: API.OperationMethod<
   PutSettingSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSettingSchemaValidationRequest,
-  output: PutSettingSchemaValidationResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<PutSettingSchemaValidationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<PutSettingSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3522,8 +2733,8 @@ export const updateOperationLabel: API.OperationMethod<
   UpdateOperationLabelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOperationLabelRequest,
-  output: UpdateOperationLabelResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<UpdateOperationLabelRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateOperationLabelResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3543,12 +2754,12 @@ function __c0(j: number): any {
         identifier: "LabelsUserBulkCreateRequestBodyItem",
       });
     case 1:
-      return S.Array(LabelsUserBulkCreateRequestBodyItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: LabelsUserBulkCreateRequestBodyList.pipe(T.HttpBody()),
+          body: __S(1, __c0, 1).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/api_gateway/labels/user", code: 200 }),
@@ -3565,17 +2776,17 @@ function __c0(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           metadata: S.Unknown,
           name: S.String,
-          source: LabelsUserBulkCreateResultItemSource,
+          source: S.String,
         }),
       ).annotate({
         identifier: "LabelsUserBulkCreateResultItem",
       });
     case 4:
-      return S.Array(LabelsUserBulkCreateResultItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: LabelsUserBulkCreateResultList.pipe(T.EnvelopePayload()),
+          result: __S(4, __c0, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3586,9 +2797,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operationIds: OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList.pipe(
-            T.Body("operation_ids"),
-          ),
+          operationIds: __S(6, __c0, 6).pipe(T.Body("operation_ids")),
         }),
       ).annotate({
         identifier: "OperationsLabelsBulkCreateRequestSelectorInclude",
@@ -3600,7 +2809,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          include: OperationsLabelsBulkCreateRequestSelectorInclude,
+          include: __S(7, __c0, 7),
         }),
       ).annotate({
         identifier: "OperationsLabelsBulkCreateRequestSelector",
@@ -3610,7 +2819,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(OperationsLabelsBulkCreateRequestManagedLabelsList),
+          labels: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "OperationsLabelsBulkCreateRequestManaged",
@@ -3619,9 +2828,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          selector: OperationsLabelsBulkCreateRequestSelector,
-          managed: S.optional(OperationsLabelsBulkCreateRequestManaged),
-          user: S.optional(OperationsLabelsBulkCreateRequestUser),
+          selector: __S(8, __c1, 0),
+          managed: S.optional(__S(10, __c1, 2)),
+          user: S.optional(__S(10, __c1, 2)),
         })
           .pipe(
             T.Http({
@@ -3640,19 +2849,19 @@ function __c1(j: number): any {
           endpoint: S.String,
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
-          method: OperationsLabelsBulkCreateResultItemMethod,
+          method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          labels: S.optional(S.NullOr(OperationsLabelsBulkCreateResultItemLabelsList)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
         }),
       ).annotate({
         identifier: "OperationsLabelsBulkCreateResultItem",
       });
     case 5:
-      return S.Array(OperationsLabelsBulkCreateResultItem);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: OperationsLabelsBulkCreateResultList.pipe(T.EnvelopePayload()),
+          result: __S(13, __c1, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3663,7 +2872,7 @@ function __c1(j: number): any {
         S.Struct({
           endpoint: S.String,
           host: S.String,
-          method: OperationsBulkCreateRequestBodyItemMethod,
+          method: S.String,
         }),
       ).annotate({
         identifier: "OperationsBulkCreateRequestBodyItem",
@@ -3673,12 +2882,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OperationsBulkCreateRequestBodyItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: OperationsBulkCreateRequestBodyList.pipe(T.HttpBody()),
+          body: __S(16, __c2, 0).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/api_gateway/operations", code: 200 }),
@@ -3703,19 +2912,19 @@ function __c2(j: number): any {
           endpoint: S.String,
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
-          method: OperationsBulkCreateResultItemMethod,
+          method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          features: S.optional(S.NullOr(OperationsBulkCreateResultItemFeatures)),
+          features: S.optional(S.NullOr(__S(18, __c2, 2))),
         }),
       ).annotate({
         identifier: "OperationsBulkCreateResultItem",
       });
     case 4:
-      return S.Array(OperationsBulkCreateResultItem);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: OperationsBulkCreateResultList.pipe(T.EnvelopePayload()),
+          result: __S(20, __c2, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3776,18 +2985,18 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(DiscoveryOperationsBulkEditRequestBodyValueState),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DiscoveryOperationsBulkEditRequestBodyValue",
       });
     case 3:
-      return S.Record(S.String, DiscoveryOperationsBulkEditRequestBodyValue);
+      return S.Record(S.String, __S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: DiscoveryOperationsBulkEditRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(27, __c3, 3).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -3803,19 +3012,16 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.NullOr(DiscoveryOperationsBulkEditResultValueState)),
+          state: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DiscoveryOperationsBulkEditResultValue",
       });
     case 6:
-      return S.Record(S.String, DiscoveryOperationsBulkEditResultValue);
+      return S.Record(S.String, __S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
-        DiscoveryOperationsBulkEditResultMap.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(30, __c3, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkPatchDiscoveryOperationsResponse",
       });
@@ -3826,7 +3032,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: OperationsLabelsBulkUpdateRequestManagedLabelsList,
+          labels: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "OperationsLabelsBulkUpdateRequestManaged",
@@ -3835,9 +3041,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          managed: OperationsLabelsBulkUpdateRequestManaged,
-          selector: OperationsLabelsBulkUpdateRequestSelector,
-          user: OperationsLabelsBulkUpdateRequestUser,
+          managed: __S(32, __c4, 0),
+          selector: __S(8, __c1, 0),
+          user: __S(32, __c4, 0),
         })
           .pipe(
             T.Http({
@@ -3854,7 +3060,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          hosts: ExpressionTemplateFallthroughCreateRequestHostsList,
+          hosts: __S(9, __c1, 1),
         })
           .pipe(
             T.Http({
@@ -3882,7 +3088,7 @@ function __c4(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           endpoint: S.String,
           host: S.String,
-          method: OperationsCreateRequestMethod,
+          method: S.String,
         })
           .pipe(
             T.Http({
@@ -3906,7 +3112,7 @@ function __c4(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(OperationsCreateResponseSchemasLearnedParametersItemMap);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -3914,8 +3120,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(S.NullOr(OperationsCreateResponseSchemasLearnedParametersList)),
-          requestBody: S.optional(S.NullOr(OperationsCreateResponseSchemasLearnedRequestBodyMap)),
+          parameters: S.optional(S.NullOr(__S(39, __c4, 7))),
+          requestBody: S.optional(S.NullOr(__S(38, __c4, 6))),
         }),
       ).annotate({
         identifier: "OperationsCreateResponseSchemasLearned",
@@ -3923,8 +3129,8 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          learned: S.optional(S.NullOr(OperationsCreateResponseSchemasLearned)),
-          uploaded: S.optional(S.NullOr(OperationsCreateResponseSchemasUploaded)),
+          learned: S.optional(S.NullOr(__S(40, __c5, 0))),
+          uploaded: S.optional(S.NullOr(__S(40, __c5, 0))),
         }),
       ).annotate({
         identifier: "OperationsCreateResponseSchemas",
@@ -3935,10 +3141,10 @@ function __c5(j: number): any {
           endpoint: S.String,
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
-          method: OperationsCreateResponseMethod,
+          method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          features: S.optional(S.NullOr(OperationsCreateResponseFeatures)),
-          schemas: S.optional(S.NullOr(OperationsCreateResponseSchemas)),
+          features: S.optional(S.NullOr(__S(37, __c4, 5))),
+          schemas: S.optional(S.NullOr(__S(41, __c5, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateOperationResponse" });
     case 3:
@@ -3946,8 +3152,8 @@ function __c5(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           operationId: S.String.pipe(T.Label("operation_id")),
-          managed: S.optional(OperationsLabelsCreateRequestManagedList),
-          user: S.optional(OperationsLabelsCreateRequestUserList),
+          managed: S.optional(__S(9, __c1, 1)),
+          user: S.optional(__S(9, __c1, 1)),
         })
           .pipe(
             T.Http({
@@ -3966,9 +3172,9 @@ function __c5(j: number): any {
           endpoint: S.String,
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
-          method: OperationsLabelsCreateResponseMethod,
+          method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          labels: S.optional(S.NullOr(OperationsLabelsCreateResponseLabelsList)),
+          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateOperationLabelResponse",
@@ -3998,7 +3204,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
-          kind: UserSchemasCreateResponseSchemaKind,
+          kind: S.String,
           name: S.String,
           schemaId: S.String.pipe(T.Body("schema_id")),
           source: S.optional(S.NullOr(S.String)),
@@ -4011,9 +3217,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.Number,
-          locations: S.optional(
-            S.NullOr(UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList),
-          ),
+          locations: S.optional(S.NullOr(__S(6, __c0, 6))),
           message: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -4024,11 +3228,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserSchemasCreateResponseUploadDetailsWarningsItem);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          warnings: S.optional(S.NullOr(UserSchemasCreateResponseUploadDetailsWarningsList)),
+          warnings: S.optional(S.NullOr(__S(48, __c6, 0))),
         }),
       ).annotate({
         identifier: "UserSchemasCreateResponseUploadDetails",
@@ -4036,10 +3240,8 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schema: UserSchemasCreateResponseSchema,
-          uploadDetails: S.optional(
-            S.NullOr(UserSchemasCreateResponseUploadDetails).pipe(T.Body("upload_details")),
-          ),
+          schema: __S(46, __c5, 6),
+          uploadDetails: S.optional(S.NullOr(__S(49, __c6, 1)).pipe(T.Body("upload_details"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateUserSchemaResponse" });
     case 3:
@@ -4065,7 +3267,7 @@ function __c6(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           metadata: S.Unknown,
           name: S.String,
-          source: LabelsUserDeleteResponseSource,
+          source: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteLabelUserResponse" });
     case 5:
@@ -4142,13 +3344,11 @@ function __c7(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(ConfigurationsGetResponseAuthIdCharacteristicsItem);
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authIdCharacteristics: ConfigurationsGetResponseAuthIdCharacteristicsList.pipe(
-            T.Body("auth_id_characteristics"),
-          ),
+          authIdCharacteristics: __S(59, __c7, 3).pipe(T.Body("auth_id_characteristics")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigurationResponse" });
     case 5:
@@ -4164,7 +3364,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          schemas: DiscoveryGetResponseSchemasList,
+          schemas: __S(62, __c7, 6),
           timestamp: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDiscoveryResponse" });
@@ -4198,7 +3398,7 @@ function __c8(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           metadata: S.Unknown,
           name: S.String,
-          source: LabelsManagedGetResponseSource,
+          source: S.String,
           mappedResources: S.optional(S.NullOr(S.Unknown).pipe(T.Body("mapped_resources"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLabelManagedResponse" });
@@ -4221,13 +3421,13 @@ function __c8(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLabelUserRequest" });
     case 3:
-      return S.Array(OperationsGetRequestFeature);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           operationId: S.String.pipe(T.Label("operation_id")),
-          feature: S.optional(OperationsGetRequestFeatureList.pipe(T.Query())),
+          feature: S.optional(__S(67, __c8, 3).pipe(T.Query())),
           withSchemas: S.optional(S.Boolean.pipe(T.Query("with_schemas"))),
         })
           .pipe(
@@ -4255,10 +3455,10 @@ function __c8(j: number): any {
           endpoint: S.String,
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
-          method: OperationsGetResponseMethod,
+          method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          features: S.optional(S.NullOr(OperationsGetResponseFeatures)),
-          schemas: S.optional(S.NullOr(OperationsGetResponseSchemas)),
+          features: S.optional(S.NullOr(__S(69, __c8, 5))),
+          schemas: S.optional(S.NullOr(__S(41, __c5, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetOperationResponse" });
     case 7:
@@ -4285,11 +3485,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mitigationAction: S.optional(
-            S.NullOr(OperationsSchemaValidationGetResponseMitigationAction).pipe(
-              T.Body("mitigation_action"),
-            ),
-          ),
+          mitigationAction: S.optional(S.NullOr(S.String).pipe(T.Body("mitigation_action"))),
           operationId: S.optional(S.NullOr(S.String).pipe(T.Body("operation_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -4331,7 +3527,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
-          kind: UserSchemasGetResponseKind,
+          kind: S.String,
           name: S.String,
           schemaId: S.String.pipe(T.Body("schema_id")),
           source: S.optional(S.NullOr(S.String)),
@@ -4343,15 +3539,15 @@ function __c9(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           diff: S.optional(S.Boolean.pipe(T.Query())),
-          direction: S.optional(DiscoveryOperationsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           endpoint: S.optional(S.String.pipe(T.Query())),
-          host: S.optional(DiscoveryOperationsListRequestHostList.pipe(T.Query())),
-          method: S.optional(DiscoveryOperationsListRequestMethodList.pipe(T.Query())),
-          order: S.optional(DiscoveryOperationsListRequestOrder.pipe(T.Query())),
-          origin: S.optional(DiscoveryOperationsListRequestOrigin.pipe(T.Query())),
+          host: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          method: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          origin: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          state: S.optional(DiscoveryOperationsListRequestState.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -4377,11 +3573,7 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          trafficStats: S.optional(
-            S.NullOr(DiscoveryOperationsListResultItemFeaturesTrafficStats).pipe(
-              T.Body("traffic_stats"),
-            ),
-          ),
+          trafficStats: S.optional(S.NullOr(__S(77, __c9, 5)).pipe(T.Body("traffic_stats"))),
         }),
       ).annotate({
         identifier: "DiscoveryOperationsListResultItemFeatures",
@@ -4393,10 +3585,10 @@ function __c9(j: number): any {
           endpoint: S.String,
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
-          method: DiscoveryOperationsListResultItemMethod,
-          origin: DiscoveryOperationsListResultItemOriginList,
-          state: DiscoveryOperationsListResultItemState,
-          features: S.optional(S.NullOr(DiscoveryOperationsListResultItemFeatures)),
+          method: S.String,
+          origin: __S(67, __c8, 3),
+          state: S.String,
+          features: S.optional(S.NullOr(__S(78, __c9, 6))),
         }),
       ).annotate({
         identifier: "DiscoveryOperationsListResultItem",
@@ -4406,11 +3598,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DiscoveryOperationsListResultItem);
+      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: DiscoveryOperationsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(80, __c10, 0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -4420,12 +3612,12 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(LabelsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(LabelsListRequestOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          source: S.optional(LabelsListRequestSource.pipe(T.Query())),
+          source: S.optional(S.String.pipe(T.Query())),
           withMappedResourceCounts: S.optional(
             S.Boolean.pipe(T.Query("with_mapped_resource_counts")),
           ),
@@ -4441,16 +3633,16 @@ function __c10(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           metadata: S.Unknown,
           name: S.String,
-          source: LabelsListResultItemSource,
+          source: S.String,
           mappedResources: S.optional(S.NullOr(S.Unknown).pipe(T.Body("mapped_resources"))),
         }),
       ).annotate({ identifier: "LabelsListResultItem" });
     case 4:
-      return S.Array(LabelsListResultItem);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: LabelsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(84, __c10, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLabelsResponse" });
@@ -4458,12 +3650,12 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(OperationsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           endpoint: S.optional(S.String.pipe(T.Query())),
-          feature: S.optional(OperationsListRequestFeatureList.pipe(T.Query())),
-          host: S.optional(OperationsListRequestHostList.pipe(T.Query())),
-          method: S.optional(OperationsListRequestMethodList.pipe(T.Query())),
-          order: S.optional(OperationsListRequestOrder.pipe(T.Query())),
+          feature: S.optional(__S(67, __c8, 3).pipe(T.Query())),
+          host: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          method: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -4492,17 +3684,17 @@ function __c11(j: number): any {
           endpoint: S.String,
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
-          method: OperationsListResultItemMethod,
+          method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          features: S.optional(S.NullOr(OperationsListResultItemFeatures)),
+          features: S.optional(S.NullOr(__S(87, __c10, 7))),
         }),
       ).annotate({ identifier: "OperationsListResultItem" });
     case 1:
-      return S.Array(OperationsListResultItem);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: OperationsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(89, __c11, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -4510,11 +3702,9 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          feature: S.optional(SchemasListRequestFeatureList.pipe(T.Query())),
-          host: S.optional(SchemasListRequestHostList.pipe(T.Query())),
-          includeSchemaKind: S.optional(
-            SchemasListRequestIncludeSchemaKindList.pipe(T.Query("include_schema_kind")),
-          ),
+          feature: S.optional(__S(67, __c8, 3).pipe(T.Query())),
+          host: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          includeSchemaKind: S.optional(__S(67, __c8, 3).pipe(T.Query("include_schema_kind"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/api_gateway/schemas", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -4522,7 +3712,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          schemas: S.optional(S.NullOr(SchemasListResponseSchemasList)),
+          schemas: S.optional(S.NullOr(__S(62, __c7, 6))),
           timestamp: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSchemasResponse" });
@@ -4548,7 +3738,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
-          hosts: UserSchemasHostsListResultItemHostsList,
+          hosts: __S(9, __c1, 1),
           name: S.String,
           schemaId: S.String.pipe(T.Body("schema_id")),
         }),
@@ -4556,7 +3746,7 @@ function __c11(j: number): any {
         identifier: "UserSchemasHostsListResultItem",
       });
     case 7:
-      return S.Array(UserSchemasHostsListResultItem);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -4564,7 +3754,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: UserSchemasHostsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(95, __c11, 7).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -4576,12 +3766,10 @@ function __c12(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           schemaId: S.String.pipe(T.Label("schema_id")),
           endpoint: S.optional(S.String.pipe(T.Query())),
-          feature: S.optional(UserSchemasOperationsListRequestFeatureList.pipe(T.Query())),
-          host: S.optional(UserSchemasOperationsListRequestHostList.pipe(T.Query())),
-          method: S.optional(UserSchemasOperationsListRequestMethodList.pipe(T.Query())),
-          operationStatus: S.optional(
-            UserSchemasOperationsListRequestOperationStatus.pipe(T.Query("operation_status")),
-          ),
+          feature: S.optional(__S(67, __c8, 3).pipe(T.Query())),
+          host: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          method: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          operationStatus: S.optional(S.String.pipe(T.Query("operation_status"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -4604,11 +3792,11 @@ function __c12(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(UserSchemasOperationsListResultItem);
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: UserSchemasOperationsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(99, __c12, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -4629,11 +3817,11 @@ function __c12(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListUserSchemasRequest" });
     case 6:
-      return S.Array(UserSchemasListResultItem);
+      return S.Array(__S(46, __c5, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: UserSchemasListResultList.pipe(T.EnvelopePayload()),
+          result: __S(102, __c12, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListUserSchemasResponse" });
@@ -4661,11 +3849,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mitigationAction: S.optional(
-            OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction.pipe(
-              T.Body("mitigation_action"),
-            ),
-          ),
+          mitigationAction: S.optional(S.String.pipe(T.Body("mitigation_action"))),
         }),
       ).annotate({
         identifier: "OperationsSchemaValidationEditRequestSettingsMultipleRequest",
@@ -4674,10 +3858,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          settingsMultipleRequest:
-            OperationsSchemaValidationEditRequestSettingsMultipleRequest.pipe(
-              T.Body("settings_multiple_request"),
-            ),
+          settingsMultipleRequest: __S(105, __c13, 1).pipe(T.Body("settings_multiple_request")),
         })
           .pipe(
             T.Http({
@@ -4693,11 +3874,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mitigationAction: S.optional(
-            S.NullOr(OperationsSchemaValidationEditResponseMitigationAction).pipe(
-              T.Body("mitigation_action"),
-            ),
-          ),
+          mitigationAction: S.optional(S.NullOr(S.String).pipe(T.Body("mitigation_action"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchOperationSchemaValidationResponse",
@@ -4707,14 +3884,10 @@ function __c13(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           validationDefaultMitigationAction: S.optional(
-            SettingsSchemaValidationEditRequestValidationDefaultMitigationAction.pipe(
-              T.Body("validation_default_mitigation_action"),
-            ),
+            S.String.pipe(T.Body("validation_default_mitigation_action")),
           ),
           validationOverrideMitigationAction: S.optional(
-            SettingsSchemaValidationEditRequestValidationOverrideMitigationAction.pipe(
-              T.Body("validation_override_mitigation_action"),
-            ),
+            S.String.pipe(T.Body("validation_override_mitigation_action")),
           ),
         })
           .pipe(
@@ -4752,7 +3925,7 @@ function __c13(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(ConfigurationsUpdateRequestAuthIdCharacteristicsItem);
+      return S.Array(__S(110, __c13, 6));
   }
 }
 function __c14(j: number): any {
@@ -4762,9 +3935,7 @@ function __c14(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           normalize: S.optional(S.Boolean.pipe(T.Query())),
-          authIdCharacteristics: ConfigurationsUpdateRequestAuthIdCharacteristicsList.pipe(
-            T.Body("auth_id_characteristics"),
-          ),
+          authIdCharacteristics: __S(111, __c13, 7).pipe(T.Body("auth_id_characteristics")),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/api_gateway/configuration", code: 200 }),
@@ -4779,22 +3950,17 @@ function __c14(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(ConfigurationsUpdateResponseAuthIdCharacteristicsItem);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authIdCharacteristics: ConfigurationsUpdateResponseAuthIdCharacteristicsList.pipe(
-            T.Body("auth_id_characteristics"),
-          ),
+          authIdCharacteristics: __S(114, __c14, 2).pipe(T.Body("auth_id_characteristics")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutConfigurationResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operationIds:
-            LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList.pipe(
-              T.Body("operation_ids"),
-            ),
+          operationIds: __S(6, __c0, 6).pipe(T.Body("operation_ids")),
         }),
       ).annotate({
         identifier: "LabelsManagedResourcesOperationUpdateRequestSelectorInclude",
@@ -4802,7 +3968,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          include: LabelsManagedResourcesOperationUpdateRequestSelectorInclude,
+          include: __S(116, __c14, 4),
         }),
       ).annotate({
         identifier: "LabelsManagedResourcesOperationUpdateRequestSelector",
@@ -4812,7 +3978,7 @@ function __c14(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           name: S.String.pipe(T.Label()),
-          selector: LabelsManagedResourcesOperationUpdateRequestSelector,
+          selector: __S(117, __c14, 5),
         })
           .pipe(
             T.Http({
@@ -4833,7 +3999,7 @@ function __c14(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           metadata: S.Unknown,
           name: S.String,
-          source: LabelsManagedResourcesOperationUpdateResponseSource,
+          source: S.String,
           mappedResources: S.optional(S.NullOr(S.Unknown).pipe(T.Body("mapped_resources"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -4863,10 +4029,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operationIds:
-            LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList.pipe(
-              T.Body("operation_ids"),
-            ),
+          operationIds: __S(6, __c0, 6).pipe(T.Body("operation_ids")),
         }),
       ).annotate({
         identifier: "LabelsUserResourcesOperationUpdateRequestSelectorInclude",
@@ -4874,7 +4037,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          include: LabelsUserResourcesOperationUpdateRequestSelectorInclude,
+          include: __S(121, __c15, 1),
         }),
       ).annotate({
         identifier: "LabelsUserResourcesOperationUpdateRequestSelector",
@@ -4884,7 +4047,7 @@ function __c15(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           name: S.String.pipe(T.Label()),
-          selector: LabelsUserResourcesOperationUpdateRequestSelector,
+          selector: __S(122, __c15, 2),
         })
           .pipe(
             T.Http({
@@ -4902,11 +4065,7 @@ function __c15(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           operationId: S.String.pipe(T.Label("operation_id")),
-          mitigationAction: S.optional(
-            OperationsSchemaValidationUpdateRequestMitigationAction.pipe(
-              T.Body("mitigation_action"),
-            ),
-          ),
+          mitigationAction: S.optional(S.String.pipe(T.Body("mitigation_action"))),
         })
           .pipe(
             T.Http({
@@ -4923,14 +4082,11 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          validationDefaultMitigationAction:
-            SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction.pipe(
-              T.Body("validation_default_mitigation_action"),
-            ),
+          validationDefaultMitigationAction: S.String.pipe(
+            T.Body("validation_default_mitigation_action"),
+          ),
           validationOverrideMitigationAction: S.optional(
-            SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction.pipe(
-              T.Body("validation_override_mitigation_action"),
-            ),
+            S.String.pipe(T.Body("validation_override_mitigation_action")),
           ),
         })
           .pipe(
@@ -4949,8 +4105,8 @@ function __c15(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           operationId: S.String.pipe(T.Label("operation_id")),
-          managed: S.optional(OperationsLabelsUpdateRequestManagedList),
-          user: S.optional(OperationsLabelsUpdateRequestUserList),
+          managed: S.optional(__S(9, __c1, 1)),
+          user: S.optional(__S(9, __c1, 1)),
         })
           .pipe(
             T.Http({
@@ -4964,4 +4120,9 @@ function __c15(j: number): any {
         identifier: "UpdateOperationLabelRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

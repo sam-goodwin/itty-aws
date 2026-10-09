@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Location",
   serviceShapeName: "LocationService",
@@ -114,7 +116,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: S.String,
-      FieldList: /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+      FieldList: /*@__PURE__*/ S.suspend(() => __S(224, __c28, 0)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     },
@@ -126,85 +128,45 @@ export interface AssociateTrackerConsumerRequest {
   TrackerName: string;
   ConsumerArn: string;
 }
-const AssociateTrackerConsumerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateTrackerConsumerRequest>;
 export interface AssociateTrackerConsumerResponse {}
-const AssociateTrackerConsumerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateTrackerConsumerResponse>;
 export type Id = string;
 export type DeviceIdsList = string[];
-const DeviceIdsList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface BatchDeleteDevicePositionHistoryRequest {
   TrackerName: string;
   DeviceIds: string[];
 }
-const BatchDeleteDevicePositionHistoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BatchDeleteDevicePositionHistoryRequest>;
 export type BatchItemErrorCode = string;
 export interface BatchItemError {
   Code?: string;
   Message?: string;
 }
-const BatchItemError = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<BatchItemError>;
 export interface BatchDeleteDevicePositionHistoryError_ {
   DeviceId: string;
   Error: BatchItemError;
 }
-const BatchDeleteDevicePositionHistoryError_ = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BatchDeleteDevicePositionHistoryError_>;
 export type BatchDeleteDevicePositionHistoryErrorList = BatchDeleteDevicePositionHistoryError_[];
-const BatchDeleteDevicePositionHistoryErrorList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface BatchDeleteDevicePositionHistoryResponse {
   Errors: BatchDeleteDevicePositionHistoryError_[];
 }
-const BatchDeleteDevicePositionHistoryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchDeleteDevicePositionHistoryResponse>;
 export type IdList = string[];
-const IdList = DeviceIdsList as any as S.Schema<IdList>;
 export interface BatchDeleteGeofenceRequest {
   CollectionName: string;
   GeofenceIds: string[];
 }
-const BatchDeleteGeofenceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchDeleteGeofenceRequest>;
 export interface BatchDeleteGeofenceError_ {
   GeofenceId: string;
   Error: BatchItemError;
 }
-const BatchDeleteGeofenceError_ = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchDeleteGeofenceError_>;
 export type BatchDeleteGeofenceErrorList = BatchDeleteGeofenceError_[];
-const BatchDeleteGeofenceErrorList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface BatchDeleteGeofenceResponse {
   Errors: BatchDeleteGeofenceError_[];
 }
-const BatchDeleteGeofenceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BatchDeleteGeofenceResponse>;
 export type Position = number[];
-const Position = /*@__PURE__*/ __L.at(__c1, 4);
 export type SensitiveDouble = number;
 export interface PositionalAccuracy {
   Horizontal: number;
 }
-const PositionalAccuracy = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PositionalAccuracy>;
 export type PositionPropertyMap = { [key: string]: string | undefined };
-const PositionPropertyMap = /*@__PURE__*/ __L.at(__c1, 6);
 export interface DevicePositionUpdate {
   DeviceId: string;
   SampleTime: Date;
@@ -212,53 +174,29 @@ export interface DevicePositionUpdate {
   Accuracy?: PositionalAccuracy;
   PositionProperties?: { [key: string]: string | undefined };
 }
-const DevicePositionUpdate = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DevicePositionUpdate>;
 export type DevicePositionUpdateList = DevicePositionUpdate[];
-const DevicePositionUpdateList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface BatchEvaluateGeofencesRequest {
   CollectionName: string;
   DevicePositionUpdates: DevicePositionUpdate[];
 }
-const BatchEvaluateGeofencesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BatchEvaluateGeofencesRequest>;
 export interface BatchEvaluateGeofencesError_ {
   DeviceId: string;
   SampleTime: Date;
   Error: BatchItemError;
 }
-const BatchEvaluateGeofencesError_ = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BatchEvaluateGeofencesError_>;
 export type BatchEvaluateGeofencesErrorList = BatchEvaluateGeofencesError_[];
-const BatchEvaluateGeofencesErrorList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface BatchEvaluateGeofencesResponse {
   Errors?: BatchEvaluateGeofencesError_[];
 }
-const BatchEvaluateGeofencesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<BatchEvaluateGeofencesResponse>;
 export interface BatchGetDevicePositionRequest {
   TrackerName: string;
   DeviceIds: string[];
 }
-const BatchGetDevicePositionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BatchGetDevicePositionRequest>;
 export interface BatchGetDevicePositionError_ {
   DeviceId: string;
   Error: BatchItemError;
 }
-const BatchGetDevicePositionError_ = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BatchGetDevicePositionError_>;
 export type BatchGetDevicePositionErrorList = BatchGetDevicePositionError_[];
-const BatchGetDevicePositionErrorList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface DevicePosition {
   DeviceId?: string;
   SampleTime: Date;
@@ -267,114 +205,65 @@ export interface DevicePosition {
   Accuracy?: PositionalAccuracy;
   PositionProperties?: { [key: string]: string | undefined };
 }
-const DevicePosition = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DevicePosition>;
 export type DevicePositionList = DevicePosition[];
-const DevicePositionList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface BatchGetDevicePositionResponse {
   Errors: BatchGetDevicePositionError_[];
   DevicePositions: DevicePosition[];
 }
-const BatchGetDevicePositionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BatchGetDevicePositionResponse>;
 export type LinearRing = number[][];
-const LinearRing = /*@__PURE__*/ __L.at(__c3, 3);
 export type LinearRings = number[][][];
-const LinearRings = /*@__PURE__*/ __L.at(__c3, 4);
 export interface Circle {
   Center: number[];
   Radius: number;
 }
-const Circle = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Circle>;
 export type Base64EncodedGeobuf = Uint8Array | redacted.Redacted<Uint8Array>;
 export type MultiLinearRings = number[][][][];
-const MultiLinearRings = /*@__PURE__*/ __L.at(__c3, 6);
 export interface GeofenceGeometry {
   Polygon?: number[][][];
   Circle?: Circle;
   Geobuf?: Uint8Array | redacted.Redacted<Uint8Array>;
   MultiPolygon?: number[][][][];
 }
-const GeofenceGeometry = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GeofenceGeometry>;
 export type PropertyMap = { [key: string]: string | undefined };
-const PropertyMap = PositionPropertyMap as any as S.Schema<PropertyMap>;
 export interface BatchPutGeofenceRequestEntry {
   GeofenceId: string;
   Geometry: GeofenceGeometry;
   GeofenceProperties?: { [key: string]: string | undefined };
 }
-const BatchPutGeofenceRequestEntry = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<BatchPutGeofenceRequestEntry>;
 export type BatchPutGeofenceRequestEntryList = BatchPutGeofenceRequestEntry[];
-const BatchPutGeofenceRequestEntryList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface BatchPutGeofenceRequest {
   CollectionName: string;
   Entries: BatchPutGeofenceRequestEntry[];
 }
-const BatchPutGeofenceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<BatchPutGeofenceRequest>;
 export interface BatchPutGeofenceSuccess {
   GeofenceId: string;
   CreateTime: Date;
   UpdateTime: Date;
 }
-const BatchPutGeofenceSuccess = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<BatchPutGeofenceSuccess>;
 export type BatchPutGeofenceSuccessList = BatchPutGeofenceSuccess[];
-const BatchPutGeofenceSuccessList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface BatchPutGeofenceError_ {
   GeofenceId: string;
   Error: BatchItemError;
 }
-const BatchPutGeofenceError_ = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<BatchPutGeofenceError_>;
 export type BatchPutGeofenceErrorList = BatchPutGeofenceError_[];
-const BatchPutGeofenceErrorList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface BatchPutGeofenceResponse {
   Successes: BatchPutGeofenceSuccess[];
   Errors: BatchPutGeofenceError_[];
 }
-const BatchPutGeofenceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<BatchPutGeofenceResponse>;
 export interface BatchUpdateDevicePositionRequest {
   TrackerName: string;
   Updates: DevicePositionUpdate[];
 }
-const BatchUpdateDevicePositionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<BatchUpdateDevicePositionRequest>;
 export interface BatchUpdateDevicePositionError_ {
   DeviceId: string;
   SampleTime: Date;
   Error: BatchItemError;
 }
-const BatchUpdateDevicePositionError_ = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<BatchUpdateDevicePositionError_>;
 export type BatchUpdateDevicePositionErrorList = BatchUpdateDevicePositionError_[];
-const BatchUpdateDevicePositionErrorList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface BatchUpdateDevicePositionResponse {
   Errors: BatchUpdateDevicePositionError_[];
 }
-const BatchUpdateDevicePositionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<BatchUpdateDevicePositionResponse>;
 export type WaypointPositionList = number[][];
-const WaypointPositionList = LinearRing as any as S.Schema<WaypointPositionList>;
 export type TravelMode = string;
 export type SensitiveBoolean = boolean;
 export type DistanceUnit = string;
@@ -382,10 +271,6 @@ export interface CalculateRouteCarModeOptions {
   AvoidFerries?: boolean;
   AvoidTolls?: boolean;
 }
-const CalculateRouteCarModeOptions = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CalculateRouteCarModeOptions>;
 export type DimensionUnit = string;
 export interface TruckDimensions {
   Length?: number;
@@ -393,23 +278,17 @@ export interface TruckDimensions {
   Width?: number;
   Unit?: string;
 }
-const TruckDimensions = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TruckDimensions>;
 export type VehicleWeightUnit = string;
 export interface TruckWeight {
   Total?: number;
   Unit?: string;
 }
-const TruckWeight = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<TruckWeight>;
 export interface CalculateRouteTruckModeOptions {
   AvoidFerries?: boolean;
   AvoidTolls?: boolean;
   Dimensions?: TruckDimensions;
   Weight?: TruckWeight;
 }
-const CalculateRouteTruckModeOptions = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CalculateRouteTruckModeOptions>;
 export type OptimizationMode = string;
 export type ApiKey = string | redacted.Redacted<string>;
 export interface CalculateRouteRequest {
@@ -428,16 +307,10 @@ export interface CalculateRouteRequest {
   OptimizeFor?: string;
   Key?: string | redacted.Redacted<string>;
 }
-const CalculateRouteRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CalculateRouteRequest>;
 export type LineString = number[][];
-const LineString = LinearRing as any as S.Schema<LineString>;
 export interface LegGeometry {
   LineString?: number[][];
 }
-const LegGeometry = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<LegGeometry>;
 export interface Step {
   StartPosition: number[];
   EndPosition: number[];
@@ -445,9 +318,7 @@ export interface Step {
   DurationSeconds: number;
   GeometryOffset?: number;
 }
-const Step = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Step>;
 export type StepList = Step[];
-const StepList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface Leg {
   StartPosition: number[];
   EndPosition: number[];
@@ -456,11 +327,8 @@ export interface Leg {
   Geometry?: LegGeometry;
   Steps: Step[];
 }
-const Leg = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Leg>;
 export type LegList = Leg[];
-const LegList = /*@__PURE__*/ __L.at(__c6, 5);
 export type BoundingBox = number[];
-const BoundingBox = Position as any as S.Schema<BoundingBox>;
 export interface CalculateRouteSummary {
   RouteBBox: number[];
   DataSource: string;
@@ -468,20 +336,11 @@ export interface CalculateRouteSummary {
   DurationSeconds: number;
   DistanceUnit: string;
 }
-const CalculateRouteSummary = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CalculateRouteSummary>;
 export interface CalculateRouteResponse {
   Legs: Leg[];
   Summary: CalculateRouteSummary;
 }
-const CalculateRouteResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CalculateRouteResponse>;
 export type PositionList = number[][];
-const PositionList = LinearRing as any as S.Schema<PositionList>;
 export interface CalculateRouteMatrixRequest {
   CalculatorName: string;
   DeparturePositions: number[][];
@@ -494,54 +353,34 @@ export interface CalculateRouteMatrixRequest {
   TruckModeOptions?: CalculateRouteTruckModeOptions;
   Key?: string | redacted.Redacted<string>;
 }
-const CalculateRouteMatrixRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CalculateRouteMatrixRequest>;
 export type RouteMatrixErrorCode = string;
 export interface RouteMatrixEntryError {
   Code: string;
   Message?: string;
 }
-const RouteMatrixEntryError = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<RouteMatrixEntryError>;
 export interface RouteMatrixEntry {
   Distance?: number;
   DurationSeconds?: number;
   Error?: RouteMatrixEntryError;
 }
-const RouteMatrixEntry = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<RouteMatrixEntry>;
 export type RouteMatrixRow = RouteMatrixEntry[];
-const RouteMatrixRow = /*@__PURE__*/ __L.at(__c7, 3);
 export type RouteMatrix = RouteMatrixEntry[][];
-const RouteMatrix = /*@__PURE__*/ __L.at(__c7, 4);
 export interface CalculateRouteMatrixSummary {
   DataSource: string;
   RouteCount: number;
   ErrorCount: number;
   DistanceUnit: string;
 }
-const CalculateRouteMatrixSummary = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CalculateRouteMatrixSummary>;
 export interface CalculateRouteMatrixResponse {
   RouteMatrix: RouteMatrixEntry[][];
   SnappedDeparturePositions?: number[][];
   SnappedDestinationPositions?: number[][];
   Summary: CalculateRouteMatrixSummary;
 }
-const CalculateRouteMatrixResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CalculateRouteMatrixResponse>;
 export type JobId = string;
 export interface CancelJobRequest {
   JobId: string;
 }
-const CancelJobRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CancelJobRequest>;
 export type GeoArn = string;
 export type JobStatus = string;
 export interface CancelJobResponse {
@@ -549,13 +388,11 @@ export interface CancelJobResponse {
   JobId: string;
   Status: string;
 }
-const CancelJobResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<CancelJobResponse>;
 export type PricingPlan = string;
 export type ResourceDescription = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c8, 1);
 export type KmsKeyId = string;
 export interface CreateGeofenceCollectionRequest {
   CollectionName: string;
@@ -565,44 +402,29 @@ export interface CreateGeofenceCollectionRequest {
   Tags?: { [key: string]: string | undefined };
   KmsKeyId?: string;
 }
-const CreateGeofenceCollectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateGeofenceCollectionRequest>;
 export interface CreateGeofenceCollectionResponse {
   CollectionName: string;
   CollectionArn: string;
   CreateTime: Date;
 }
-const CreateGeofenceCollectionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateGeofenceCollectionResponse>;
 export type ApiKeyAction = string;
 export type ApiKeyActionList = string[];
-const ApiKeyActionList = DeviceIdsList as any as S.Schema<ApiKeyActionList>;
 export type GeoArnV2 = string;
 export type GeoArnList = string[];
-const GeoArnList = DeviceIdsList as any as S.Schema<GeoArnList>;
 export type RefererPattern = string | redacted.Redacted<string>;
 export type RefererPatternList = (string | redacted.Redacted<string>)[];
-const RefererPatternList = /*@__PURE__*/ __L.at(__c8, 4);
 export type AndroidPackageName = string;
 export type Sha1CertificateFingerprint = string;
 export interface AndroidApp {
   Package: string;
   CertificateFingerprint: string;
 }
-const AndroidApp = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AndroidApp>;
 export type AndroidAppList = AndroidApp[];
-const AndroidAppList = /*@__PURE__*/ __L.at(__c8, 6);
 export type AppleBundleId = string;
 export interface AppleApp {
   BundleId: string;
 }
-const AppleApp = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<AppleApp>;
 export type AppleAppList = AppleApp[];
-const AppleAppList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface ApiKeyRestrictions {
   AllowActions: string[];
   AllowResources: string[];
@@ -610,7 +432,6 @@ export interface ApiKeyRestrictions {
   AllowAndroidApps?: AndroidApp[];
   AllowAppleApps?: AppleApp[];
 }
-const ApiKeyRestrictions = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ApiKeyRestrictions>;
 export interface CreateKeyRequest {
   KeyName: string;
   Restrictions: ApiKeyRestrictions;
@@ -619,25 +440,21 @@ export interface CreateKeyRequest {
   NoExpiry?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateKeyRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<CreateKeyRequest>;
 export interface CreateKeyResponse {
   Key: string | redacted.Redacted<string>;
   KeyArn: string;
   KeyName: string;
   CreateTime: Date;
 }
-const CreateKeyResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<CreateKeyResponse>;
 export type MapStyle = string;
 export type CountryCode3 = string | redacted.Redacted<string>;
 export type CustomLayer = string;
 export type CustomLayerList = string[];
-const CustomLayerList = DeviceIdsList as any as S.Schema<CustomLayerList>;
 export interface MapConfiguration {
   Style: string;
   PoliticalView?: string | redacted.Redacted<string>;
   CustomLayers?: string[];
 }
-const MapConfiguration = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<MapConfiguration>;
 export interface CreateMapRequest {
   MapName: string;
   Configuration: MapConfiguration;
@@ -645,21 +462,15 @@ export interface CreateMapRequest {
   Description?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateMapRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<CreateMapRequest>;
 export interface CreateMapResponse {
   MapName: string;
   MapArn: string;
   CreateTime: Date;
 }
-const CreateMapResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<CreateMapResponse>;
 export type IntendedUse = string;
 export interface DataSourceConfiguration {
   IntendedUse?: string;
 }
-const DataSourceConfiguration = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DataSourceConfiguration>;
 export interface CreatePlaceIndexRequest {
   IndexName: string;
   DataSource: string;
@@ -668,19 +479,11 @@ export interface CreatePlaceIndexRequest {
   DataSourceConfiguration?: DataSourceConfiguration;
   Tags?: { [key: string]: string | undefined };
 }
-const CreatePlaceIndexRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreatePlaceIndexRequest>;
 export interface CreatePlaceIndexResponse {
   IndexName: string;
   IndexArn: string;
   CreateTime: Date;
 }
-const CreatePlaceIndexResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreatePlaceIndexResponse>;
 export interface CreateRouteCalculatorRequest {
   CalculatorName: string;
   DataSource: string;
@@ -688,19 +491,11 @@ export interface CreateRouteCalculatorRequest {
   Description?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRouteCalculatorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateRouteCalculatorRequest>;
 export interface CreateRouteCalculatorResponse {
   CalculatorName: string;
   CalculatorArn: string;
   CreateTime: Date;
 }
-const CreateRouteCalculatorResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateRouteCalculatorResponse>;
 export type PositionFiltering = string;
 export interface CreateTrackerRequest {
   TrackerName: string;
@@ -713,77 +508,39 @@ export interface CreateTrackerRequest {
   EventBridgeEnabled?: boolean;
   KmsKeyEnableGeospatialQueries?: boolean;
 }
-const CreateTrackerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateTrackerRequest>;
 export interface CreateTrackerResponse {
   TrackerName: string;
   TrackerArn: string;
   CreateTime: Date;
 }
-const CreateTrackerResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateTrackerResponse>;
 export interface DeleteGeofenceCollectionRequest {
   CollectionName: string;
 }
-const DeleteGeofenceCollectionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteGeofenceCollectionRequest>;
 export interface DeleteGeofenceCollectionResponse {}
-const DeleteGeofenceCollectionResponse =
-  AssociateTrackerConsumerResponse as any as S.Schema<DeleteGeofenceCollectionResponse>;
 export interface DeleteKeyRequest {
   KeyName: string;
   ForceDelete?: boolean;
 }
-const DeleteKeyRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<DeleteKeyRequest>;
 export interface DeleteKeyResponse {}
-const DeleteKeyResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<DeleteKeyResponse>;
 export interface DeleteMapRequest {
   MapName: string;
 }
-const DeleteMapRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<DeleteMapRequest>;
 export interface DeleteMapResponse {}
-const DeleteMapResponse = DeleteKeyResponse as any as S.Schema<DeleteMapResponse>;
 export interface DeletePlaceIndexRequest {
   IndexName: string;
 }
-const DeletePlaceIndexRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeletePlaceIndexRequest>;
 export interface DeletePlaceIndexResponse {}
-const DeletePlaceIndexResponse = DeleteKeyResponse as any as S.Schema<DeletePlaceIndexResponse>;
 export interface DeleteRouteCalculatorRequest {
   CalculatorName: string;
 }
-const DeleteRouteCalculatorRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteRouteCalculatorRequest>;
 export interface DeleteRouteCalculatorResponse {}
-const DeleteRouteCalculatorResponse =
-  DeleteKeyResponse as any as S.Schema<DeleteRouteCalculatorResponse>;
 export interface DeleteTrackerRequest {
   TrackerName: string;
 }
-const DeleteTrackerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteTrackerRequest>;
 export interface DeleteTrackerResponse {}
-const DeleteTrackerResponse = DeleteKeyResponse as any as S.Schema<DeleteTrackerResponse>;
 export interface DescribeGeofenceCollectionRequest {
   CollectionName: string;
 }
-const DescribeGeofenceCollectionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DescribeGeofenceCollectionRequest>;
 export interface DescribeGeofenceCollectionResponse {
   CollectionName: string;
   CollectionArn: string;
@@ -796,14 +553,9 @@ export interface DescribeGeofenceCollectionResponse {
   UpdateTime: Date;
   GeofenceCount?: number;
 }
-const DescribeGeofenceCollectionResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DescribeGeofenceCollectionResponse>;
 export interface DescribeKeyRequest {
   KeyName: string;
 }
-const DescribeKeyRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DescribeKeyRequest>;
 export interface DescribeKeyResponse {
   Key: string | redacted.Redacted<string>;
   KeyArn: string;
@@ -815,11 +567,9 @@ export interface DescribeKeyResponse {
   Description?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const DescribeKeyResponse = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<DescribeKeyResponse>;
 export interface DescribeMapRequest {
   MapName: string;
 }
-const DescribeMapRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<DescribeMapRequest>;
 export interface DescribeMapResponse {
   MapName: string;
   MapArn: string;
@@ -831,14 +581,9 @@ export interface DescribeMapResponse {
   CreateTime: Date;
   UpdateTime: Date;
 }
-const DescribeMapResponse = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<DescribeMapResponse>;
 export interface DescribePlaceIndexRequest {
   IndexName: string;
 }
-const DescribePlaceIndexRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DescribePlaceIndexRequest>;
 export interface DescribePlaceIndexResponse {
   IndexName: string;
   IndexArn: string;
@@ -850,17 +595,9 @@ export interface DescribePlaceIndexResponse {
   DataSourceConfiguration: DataSourceConfiguration;
   Tags?: { [key: string]: string | undefined };
 }
-const DescribePlaceIndexResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DescribePlaceIndexResponse>;
 export interface DescribeRouteCalculatorRequest {
   CalculatorName: string;
 }
-const DescribeRouteCalculatorRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DescribeRouteCalculatorRequest>;
 export interface DescribeRouteCalculatorResponse {
   CalculatorName: string;
   CalculatorArn: string;
@@ -871,17 +608,9 @@ export interface DescribeRouteCalculatorResponse {
   DataSource: string;
   Tags?: { [key: string]: string | undefined };
 }
-const DescribeRouteCalculatorResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DescribeRouteCalculatorResponse>;
 export interface DescribeTrackerRequest {
   TrackerName: string;
 }
-const DescribeTrackerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DescribeTrackerRequest>;
 export interface DescribeTrackerResponse {
   TrackerName: string;
   TrackerArn: string;
@@ -896,29 +625,15 @@ export interface DescribeTrackerResponse {
   EventBridgeEnabled?: boolean;
   KmsKeyEnableGeospatialQueries?: boolean;
 }
-const DescribeTrackerResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DescribeTrackerResponse>;
 export interface DisassociateTrackerConsumerRequest {
   TrackerName: string;
   ConsumerArn: string;
 }
-const DisassociateTrackerConsumerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DisassociateTrackerConsumerRequest>;
 export interface DisassociateTrackerConsumerResponse {}
-const DisassociateTrackerConsumerResponse =
-  AssociateTrackerConsumerResponse as any as S.Schema<DisassociateTrackerConsumerResponse>;
 export interface ForecastGeofenceEventsDeviceState {
   Position: number[];
   Speed?: number;
 }
-const ForecastGeofenceEventsDeviceState = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ForecastGeofenceEventsDeviceState>;
 export type SpeedUnit = string;
 export type LargeToken = string;
 export interface ForecastGeofenceEventsRequest {
@@ -930,10 +645,6 @@ export interface ForecastGeofenceEventsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ForecastGeofenceEventsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ForecastGeofenceEventsRequest>;
 export type Uuid = string;
 export type NearestDistance = number;
 export type ForecastedGeofenceEventType = string;
@@ -946,27 +657,17 @@ export interface ForecastedEvent {
   ForecastedBreachTime?: Date;
   GeofenceProperties?: { [key: string]: string | undefined };
 }
-const ForecastedEvent = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ForecastedEvent>;
 export type ForecastedEventsList = ForecastedEvent[];
-const ForecastedEventsList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ForecastGeofenceEventsResponse {
   ForecastedEvents: ForecastedEvent[];
   NextToken?: string;
   DistanceUnit: string;
   SpeedUnit: string;
 }
-const ForecastGeofenceEventsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ForecastGeofenceEventsResponse>;
 export interface GetDevicePositionRequest {
   TrackerName: string;
   DeviceId: string;
 }
-const GetDevicePositionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetDevicePositionRequest>;
 export interface GetDevicePositionResponse {
   DeviceId?: string;
   SampleTime: Date;
@@ -975,10 +676,6 @@ export interface GetDevicePositionResponse {
   Accuracy?: PositionalAccuracy;
   PositionProperties?: { [key: string]: string | undefined };
 }
-const GetDevicePositionResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetDevicePositionResponse>;
 export type Token = string;
 export interface GetDevicePositionHistoryRequest {
   TrackerName: string;
@@ -988,23 +685,14 @@ export interface GetDevicePositionHistoryRequest {
   EndTimeExclusive?: Date;
   MaxResults?: number;
 }
-const GetDevicePositionHistoryRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetDevicePositionHistoryRequest>;
 export interface GetDevicePositionHistoryResponse {
   DevicePositions: DevicePosition[];
   NextToken?: string;
 }
-const GetDevicePositionHistoryResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetDevicePositionHistoryResponse>;
 export interface GetGeofenceRequest {
   CollectionName: string;
   GeofenceId: string;
 }
-const GetGeofenceRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetGeofenceRequest>;
 export interface GetGeofenceResponse {
   GeofenceId: string;
   Geometry: GeofenceGeometry;
@@ -1013,36 +701,25 @@ export interface GetGeofenceResponse {
   UpdateTime: Date;
   GeofenceProperties?: { [key: string]: string | undefined };
 }
-const GetGeofenceResponse = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<GetGeofenceResponse>;
 export interface GetJobRequest {
   JobId: string;
 }
-const GetJobRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetJobRequest>;
 export type JobAction = string;
 export type ValidateAddressAdditionalFeature = string;
 export type ValidateAddressAdditionalFeatureList = string[];
-const ValidateAddressAdditionalFeatureList =
-  DeviceIdsList as any as S.Schema<ValidateAddressAdditionalFeatureList>;
 export interface ValidateAddressActionOptions {
   AdditionalFeatures?: string[];
 }
-const ValidateAddressActionOptions = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ValidateAddressActionOptions>;
 export interface JobActionOptions {
   ValidateAddress?: ValidateAddressActionOptions;
 }
-const JobActionOptions = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<JobActionOptions>;
 export type JobErrorCode = string;
 export type JobErrorMessage = string;
 export type JobErrorMessagesList = string[];
-const JobErrorMessagesList = DeviceIdsList as any as S.Schema<JobErrorMessagesList>;
 export interface JobError {
   Code: string;
   Messages?: string[];
 }
-const JobError = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<JobError>;
 export type IamRoleArn = string;
 export type JobInputLocation = string;
 export type JobInputFormat = string;
@@ -1050,14 +727,12 @@ export interface JobInputOptions {
   Location: string;
   Format: string;
 }
-const JobInputOptions = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<JobInputOptions>;
 export type JobOutputFormat = string;
 export type JobOutputLocation = string;
 export interface JobOutputOptions {
   Format: string;
   Location: string;
 }
-const JobOutputOptions = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<JobOutputOptions>;
 export interface GetJobResponse {
   Action: string;
   ActionOptions?: JobActionOptions;
@@ -1074,55 +749,36 @@ export interface GetJobResponse {
   UpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const GetJobResponse = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetJobResponse>;
 export interface GetMapGlyphsRequest {
   MapName: string;
   FontStack: string;
   FontUnicodeRange: string;
   Key?: string | redacted.Redacted<string>;
 }
-const GetMapGlyphsRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GetMapGlyphsRequest>;
 export interface GetMapGlyphsResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
 }
-const GetMapGlyphsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetMapGlyphsResponse>;
 export interface GetMapSpritesRequest {
   MapName: string;
   FileName: string;
   Key?: string | redacted.Redacted<string>;
 }
-const GetMapSpritesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetMapSpritesRequest>;
 export interface GetMapSpritesResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
 }
-const GetMapSpritesResponse = GetMapGlyphsResponse as any as S.Schema<GetMapSpritesResponse>;
 export interface GetMapStyleDescriptorRequest {
   MapName: string;
   Key?: string | redacted.Redacted<string>;
 }
-const GetMapStyleDescriptorRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetMapStyleDescriptorRequest>;
 export interface GetMapStyleDescriptorResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
 }
-const GetMapStyleDescriptorResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetMapStyleDescriptorResponse>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetMapTileRequest {
   MapName: string;
@@ -1131,13 +787,11 @@ export interface GetMapTileRequest {
   Y: string | redacted.Redacted<string>;
   Key?: string | redacted.Redacted<string>;
 }
-const GetMapTileRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GetMapTileRequest>;
 export interface GetMapTileResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
 }
-const GetMapTileResponse = GetMapGlyphsResponse as any as S.Schema<GetMapTileResponse>;
 export type PlaceId = string | redacted.Redacted<string>;
 export type LanguageTag = string;
 export interface GetPlaceRequest {
@@ -1146,24 +800,18 @@ export interface GetPlaceRequest {
   Language?: string;
   Key?: string | redacted.Redacted<string>;
 }
-const GetPlaceRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<GetPlaceRequest>;
 export interface PlaceGeometry {
   Point?: number[];
 }
-const PlaceGeometry = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<PlaceGeometry>;
 export type SensitiveInteger = number;
 export interface TimeZone {
   Name: string | redacted.Redacted<string>;
   Offset?: number;
 }
-const TimeZone = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<TimeZone>;
 export type PlaceCategory = string | redacted.Redacted<string>;
 export type PlaceCategoryList = (string | redacted.Redacted<string>)[];
-const PlaceCategoryList = RefererPatternList as any as S.Schema<PlaceCategoryList>;
 export type PlaceSupplementalCategory = string | redacted.Redacted<string>;
 export type PlaceSupplementalCategoryList = (string | redacted.Redacted<string>)[];
-const PlaceSupplementalCategoryList =
-  RefererPatternList as any as S.Schema<PlaceSupplementalCategoryList>;
 export interface Place {
   Label?: string | redacted.Redacted<string>;
   Geometry: PlaceGeometry;
@@ -1183,28 +831,18 @@ export interface Place {
   SupplementalCategories?: (string | redacted.Redacted<string>)[];
   SubMunicipality?: string | redacted.Redacted<string>;
 }
-const Place = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<Place>;
 export interface GetPlaceResponse {
   Place: Place;
 }
-const GetPlaceResponse = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetPlaceResponse>;
 export interface TrackingFilterGeometry {
   Polygon?: number[][][];
 }
-const TrackingFilterGeometry = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<TrackingFilterGeometry>;
 export interface ListDevicePositionsRequest {
   TrackerName: string;
   MaxResults?: number;
   NextToken?: string;
   FilterGeometry?: TrackingFilterGeometry;
 }
-const ListDevicePositionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListDevicePositionsRequest>;
 export interface ListDevicePositionsResponseEntry {
   DeviceId: string;
   SampleTime: Date;
@@ -1212,28 +850,15 @@ export interface ListDevicePositionsResponseEntry {
   Accuracy?: PositionalAccuracy;
   PositionProperties?: { [key: string]: string | undefined };
 }
-const ListDevicePositionsResponseEntry = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListDevicePositionsResponseEntry>;
 export type ListDevicePositionsResponseEntryList = ListDevicePositionsResponseEntry[];
-const ListDevicePositionsResponseEntryList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListDevicePositionsResponse {
   Entries: ListDevicePositionsResponseEntry[];
   NextToken?: string;
 }
-const ListDevicePositionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListDevicePositionsResponse>;
 export interface ListGeofenceCollectionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListGeofenceCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListGeofenceCollectionsRequest>;
 export interface ListGeofenceCollectionsResponseEntry {
   CollectionName: string;
   Description?: string;
@@ -1242,29 +867,16 @@ export interface ListGeofenceCollectionsResponseEntry {
   CreateTime: Date;
   UpdateTime: Date;
 }
-const ListGeofenceCollectionsResponseEntry = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListGeofenceCollectionsResponseEntry>;
 export type ListGeofenceCollectionsResponseEntryList = ListGeofenceCollectionsResponseEntry[];
-const ListGeofenceCollectionsResponseEntryList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListGeofenceCollectionsResponse {
   Entries: ListGeofenceCollectionsResponseEntry[];
   NextToken?: string;
 }
-const ListGeofenceCollectionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListGeofenceCollectionsResponse>;
 export interface ListGeofencesRequest {
   CollectionName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListGeofencesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListGeofencesRequest>;
 export interface ListGeofenceResponseEntry {
   GeofenceId: string;
   Geometry: GeofenceGeometry;
@@ -1273,30 +885,19 @@ export interface ListGeofenceResponseEntry {
   UpdateTime: Date;
   GeofenceProperties?: { [key: string]: string | undefined };
 }
-const ListGeofenceResponseEntry = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListGeofenceResponseEntry>;
 export type ListGeofenceResponseEntryList = ListGeofenceResponseEntry[];
-const ListGeofenceResponseEntryList = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListGeofencesResponse {
   Entries: ListGeofenceResponseEntry[];
   NextToken?: string;
 }
-const ListGeofencesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListGeofencesResponse>;
 export interface JobsFilter {
   JobStatus?: string;
 }
-const JobsFilter = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<JobsFilter>;
 export interface ListJobsRequest {
   Filter?: JobsFilter;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListJobsRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<ListJobsRequest>;
 export interface ListJobsResponseEntry {
   Action: string;
   ActionOptions?: JobActionOptions;
@@ -1312,28 +913,20 @@ export interface ListJobsResponseEntry {
   Status: string;
   UpdatedAt: Date;
 }
-const ListJobsResponseEntry = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListJobsResponseEntry>;
 export type ListJobsResponseEntryList = ListJobsResponseEntry[];
-const ListJobsResponseEntryList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListJobsResponse {
   Entries: ListJobsResponseEntry[];
   NextToken?: string;
 }
-const ListJobsResponse = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<ListJobsResponse>;
 export type Status = string;
 export interface ApiKeyFilter {
   KeyStatus?: string;
 }
-const ApiKeyFilter = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ApiKeyFilter>;
 export interface ListKeysRequest {
   MaxResults?: number;
   NextToken?: string;
   Filter?: ApiKeyFilter;
 }
-const ListKeysRequest = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<ListKeysRequest>;
 export interface ListKeysResponseEntry {
   KeyName: string;
   ExpireTime: Date;
@@ -1342,22 +935,15 @@ export interface ListKeysResponseEntry {
   CreateTime: Date;
   UpdateTime: Date;
 }
-const ListKeysResponseEntry = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListKeysResponseEntry>;
 export type ListKeysResponseEntryList = ListKeysResponseEntry[];
-const ListKeysResponseEntryList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ListKeysResponse {
   Entries: ListKeysResponseEntry[];
   NextToken?: string;
 }
-const ListKeysResponse = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ListKeysResponse>;
 export interface ListMapsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListMapsRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<ListMapsRequest>;
 export interface ListMapsResponseEntry {
   MapName: string;
   Description?: string;
@@ -1366,25 +952,15 @@ export interface ListMapsResponseEntry {
   CreateTime: Date;
   UpdateTime: Date;
 }
-const ListMapsResponseEntry = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListMapsResponseEntry>;
 export type ListMapsResponseEntryList = ListMapsResponseEntry[];
-const ListMapsResponseEntryList = /*@__PURE__*/ __L.at(__c20, 0);
 export interface ListMapsResponse {
   Entries: ListMapsResponseEntry[];
   NextToken?: string;
 }
-const ListMapsResponse = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListMapsResponse>;
 export interface ListPlaceIndexesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPlaceIndexesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListPlaceIndexesRequest>;
 export interface ListPlaceIndexesResponseEntry {
   IndexName: string;
   Description?: string;
@@ -1393,28 +969,15 @@ export interface ListPlaceIndexesResponseEntry {
   CreateTime: Date;
   UpdateTime: Date;
 }
-const ListPlaceIndexesResponseEntry = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListPlaceIndexesResponseEntry>;
 export type ListPlaceIndexesResponseEntryList = ListPlaceIndexesResponseEntry[];
-const ListPlaceIndexesResponseEntryList = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListPlaceIndexesResponse {
   Entries: ListPlaceIndexesResponseEntry[];
   NextToken?: string;
 }
-const ListPlaceIndexesResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListPlaceIndexesResponse>;
 export interface ListRouteCalculatorsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRouteCalculatorsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListRouteCalculatorsRequest>;
 export interface ListRouteCalculatorsResponseEntry {
   CalculatorName: string;
   Description?: string;
@@ -1423,58 +986,31 @@ export interface ListRouteCalculatorsResponseEntry {
   CreateTime: Date;
   UpdateTime: Date;
 }
-const ListRouteCalculatorsResponseEntry = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListRouteCalculatorsResponseEntry>;
 export type ListRouteCalculatorsResponseEntryList = ListRouteCalculatorsResponseEntry[];
-const ListRouteCalculatorsResponseEntryList = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListRouteCalculatorsResponse {
   Entries: ListRouteCalculatorsResponseEntry[];
   NextToken?: string;
 }
-const ListRouteCalculatorsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListRouteCalculatorsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTrackerConsumersRequest {
   TrackerName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListTrackerConsumersRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListTrackerConsumersRequest>;
 export type ArnList = string[];
-const ArnList = DeviceIdsList as any as S.Schema<ArnList>;
 export interface ListTrackerConsumersResponse {
   ConsumerArns: string[];
   NextToken?: string;
 }
-const ListTrackerConsumersResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListTrackerConsumersResponse>;
 export interface ListTrackersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListTrackersRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListTrackersRequest>;
 export interface ListTrackersResponseEntry {
   TrackerName: string;
   Description?: string;
@@ -1483,33 +1019,22 @@ export interface ListTrackersResponseEntry {
   CreateTime: Date;
   UpdateTime: Date;
 }
-const ListTrackersResponseEntry = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListTrackersResponseEntry>;
 export type ListTrackersResponseEntryList = ListTrackersResponseEntry[];
-const ListTrackersResponseEntryList = /*@__PURE__*/ __L.at(__c22, 0);
 export interface ListTrackersResponse {
   Entries: ListTrackersResponseEntry[];
   NextToken?: string;
 }
-const ListTrackersResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListTrackersResponse>;
 export interface PutGeofenceRequest {
   CollectionName: string;
   GeofenceId: string;
   Geometry: GeofenceGeometry;
   GeofenceProperties?: { [key: string]: string | undefined };
 }
-const PutGeofenceRequest = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<PutGeofenceRequest>;
 export interface PutGeofenceResponse {
   GeofenceId: string;
   CreateTime: Date;
   UpdateTime: Date;
 }
-const PutGeofenceResponse = BatchPutGeofenceSuccess as any as S.Schema<PutGeofenceResponse>;
 export type PlaceIndexSearchResultLimit = number;
 export interface SearchPlaceIndexForPositionRequest {
   IndexName: string;
@@ -1518,43 +1043,24 @@ export interface SearchPlaceIndexForPositionRequest {
   Language?: string;
   Key?: string | redacted.Redacted<string>;
 }
-const SearchPlaceIndexForPositionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<SearchPlaceIndexForPositionRequest>;
 export interface SearchPlaceIndexForPositionSummary {
   Position: number[];
   MaxResults?: number;
   DataSource: string;
   Language?: string;
 }
-const SearchPlaceIndexForPositionSummary = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<SearchPlaceIndexForPositionSummary>;
 export interface SearchForPositionResult {
   Place: Place;
   Distance: number;
   PlaceId?: string | redacted.Redacted<string>;
 }
-const SearchForPositionResult = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<SearchForPositionResult>;
 export type SearchForPositionResultList = SearchForPositionResult[];
-const SearchForPositionResultList = /*@__PURE__*/ __L.at(__c22, 6);
 export interface SearchPlaceIndexForPositionResponse {
   Summary: SearchPlaceIndexForPositionSummary;
   Results: SearchForPositionResult[];
 }
-const SearchPlaceIndexForPositionResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<SearchPlaceIndexForPositionResponse>;
 export type CountryCodeList = (string | redacted.Redacted<string>)[];
-const CountryCodeList = RefererPatternList as any as S.Schema<CountryCodeList>;
 export type FilterPlaceCategoryList = (string | redacted.Redacted<string>)[];
-const FilterPlaceCategoryList = RefererPatternList as any as S.Schema<FilterPlaceCategoryList>;
 export interface SearchPlaceIndexForSuggestionsRequest {
   IndexName: string;
   Text: string | redacted.Redacted<string>;
@@ -1566,10 +1072,6 @@ export interface SearchPlaceIndexForSuggestionsRequest {
   FilterCategories?: (string | redacted.Redacted<string>)[];
   Key?: string | redacted.Redacted<string>;
 }
-const SearchPlaceIndexForSuggestionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<SearchPlaceIndexForSuggestionsRequest>;
 export interface SearchPlaceIndexForSuggestionsSummary {
   Text: string | redacted.Redacted<string>;
   BiasPosition?: number[];
@@ -1580,30 +1082,17 @@ export interface SearchPlaceIndexForSuggestionsSummary {
   Language?: string;
   FilterCategories?: (string | redacted.Redacted<string>)[];
 }
-const SearchPlaceIndexForSuggestionsSummary = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<SearchPlaceIndexForSuggestionsSummary>;
 export interface SearchForSuggestionsResult {
   Text: string | redacted.Redacted<string>;
   PlaceId?: string | redacted.Redacted<string>;
   Categories?: (string | redacted.Redacted<string>)[];
   SupplementalCategories?: (string | redacted.Redacted<string>)[];
 }
-const SearchForSuggestionsResult = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<SearchForSuggestionsResult>;
 export type SearchForSuggestionsResultList = SearchForSuggestionsResult[];
-const SearchForSuggestionsResultList = /*@__PURE__*/ __L.at(__c23, 3);
 export interface SearchPlaceIndexForSuggestionsResponse {
   Summary: SearchPlaceIndexForSuggestionsSummary;
   Results: SearchForSuggestionsResult[];
 }
-const SearchPlaceIndexForSuggestionsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<SearchPlaceIndexForSuggestionsResponse>;
 export interface SearchPlaceIndexForTextRequest {
   IndexName: string;
   Text: string | redacted.Redacted<string>;
@@ -1615,10 +1104,6 @@ export interface SearchPlaceIndexForTextRequest {
   FilterCategories?: (string | redacted.Redacted<string>)[];
   Key?: string | redacted.Redacted<string>;
 }
-const SearchPlaceIndexForTextRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<SearchPlaceIndexForTextRequest>;
 export interface SearchPlaceIndexForTextSummary {
   Text: string | redacted.Redacted<string>;
   BiasPosition?: number[];
@@ -1630,27 +1115,17 @@ export interface SearchPlaceIndexForTextSummary {
   Language?: string;
   FilterCategories?: (string | redacted.Redacted<string>)[];
 }
-const SearchPlaceIndexForTextSummary = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<SearchPlaceIndexForTextSummary>;
 export interface SearchForTextResult {
   Place: Place;
   Distance?: number;
   Relevance?: number;
   PlaceId?: string | redacted.Redacted<string>;
 }
-const SearchForTextResult = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<SearchForTextResult>;
 export type SearchForTextResultList = SearchForTextResult[];
-const SearchForTextResultList = /*@__PURE__*/ __L.at(__c24, 0);
 export interface SearchPlaceIndexForTextResponse {
   Summary: SearchPlaceIndexForTextSummary;
   Results: SearchForTextResult[];
 }
-const SearchPlaceIndexForTextResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<SearchPlaceIndexForTextResponse>;
 export type ClientToken = string;
 export interface StartJobRequest {
   ClientToken?: string;
@@ -1662,52 +1137,34 @@ export interface StartJobRequest {
   OutputOptions: JobOutputOptions;
   Tags?: { [key: string]: string | undefined };
 }
-const StartJobRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<StartJobRequest>;
 export interface StartJobResponse {
   CreatedAt: Date;
   JobArn: string;
   JobId: string;
   Status: string;
 }
-const StartJobResponse = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<StartJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteKeyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-const TagKeys = DeviceIdsList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteKeyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateGeofenceCollectionRequest {
   CollectionName: string;
   PricingPlan?: string;
   PricingPlanDataSource?: string;
   Description?: string;
 }
-const UpdateGeofenceCollectionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UpdateGeofenceCollectionRequest>;
 export interface UpdateGeofenceCollectionResponse {
   CollectionName: string;
   CollectionArn: string;
   UpdateTime: Date;
 }
-const UpdateGeofenceCollectionResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<UpdateGeofenceCollectionResponse>;
 export interface UpdateKeyRequest {
   KeyName: string;
   Description?: string;
@@ -1716,72 +1173,48 @@ export interface UpdateKeyRequest {
   ForceUpdate?: boolean;
   Restrictions?: ApiKeyRestrictions;
 }
-const UpdateKeyRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<UpdateKeyRequest>;
 export interface UpdateKeyResponse {
   KeyArn: string;
   KeyName: string;
   UpdateTime: Date;
 }
-const UpdateKeyResponse = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<UpdateKeyResponse>;
 export type CountryCode3OrEmpty = string | redacted.Redacted<string>;
 export interface MapConfigurationUpdate {
   PoliticalView?: string | redacted.Redacted<string>;
   CustomLayers?: string[];
 }
-const MapConfigurationUpdate = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<MapConfigurationUpdate>;
 export interface UpdateMapRequest {
   MapName: string;
   PricingPlan?: string;
   Description?: string;
   ConfigurationUpdate?: MapConfigurationUpdate;
 }
-const UpdateMapRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<UpdateMapRequest>;
 export interface UpdateMapResponse {
   MapName: string;
   MapArn: string;
   UpdateTime: Date;
 }
-const UpdateMapResponse = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<UpdateMapResponse>;
 export interface UpdatePlaceIndexRequest {
   IndexName: string;
   PricingPlan?: string;
   Description?: string;
   DataSourceConfiguration?: DataSourceConfiguration;
 }
-const UpdatePlaceIndexRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<UpdatePlaceIndexRequest>;
 export interface UpdatePlaceIndexResponse {
   IndexName: string;
   IndexArn: string;
   UpdateTime: Date;
 }
-const UpdatePlaceIndexResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<UpdatePlaceIndexResponse>;
 export interface UpdateRouteCalculatorRequest {
   CalculatorName: string;
   PricingPlan?: string;
   Description?: string;
 }
-const UpdateRouteCalculatorRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<UpdateRouteCalculatorRequest>;
 export interface UpdateRouteCalculatorResponse {
   CalculatorName: string;
   CalculatorArn: string;
   UpdateTime: Date;
 }
-const UpdateRouteCalculatorResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<UpdateRouteCalculatorResponse>;
 export interface UpdateTrackerRequest {
   TrackerName: string;
   PricingPlan?: string;
@@ -1791,26 +1224,16 @@ export interface UpdateTrackerRequest {
   EventBridgeEnabled?: boolean;
   KmsKeyEnableGeospatialQueries?: boolean;
 }
-const UpdateTrackerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<UpdateTrackerRequest>;
 export interface UpdateTrackerResponse {
   TrackerName: string;
   TrackerArn: string;
   UpdateTime: Date;
 }
-const UpdateTrackerResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<UpdateTrackerResponse>;
 export interface WiFiAccessPoint {
   MacAddress: string;
   Rss: number;
 }
-const WiFiAccessPoint = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<WiFiAccessPoint>;
 export type WiFiAccessPointList = WiFiAccessPoint[];
-const WiFiAccessPointList = /*@__PURE__*/ __L.at(__c26, 4);
 export type EutranCellId = number;
 export type Earfcn = number;
 export type Pci = number;
@@ -1818,7 +1241,6 @@ export interface LteLocalId {
   Earfcn: number;
   Pci: number;
 }
-const LteLocalId = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<LteLocalId>;
 export type Rsrp = number;
 export type Rsrq = number;
 export interface LteNetworkMeasurements {
@@ -1828,12 +1250,7 @@ export interface LteNetworkMeasurements {
   Rsrp?: number;
   Rsrq?: number;
 }
-const LteNetworkMeasurements = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<LteNetworkMeasurements>;
 export type LteNetworkMeasurementsList = LteNetworkMeasurements[];
-const LteNetworkMeasurementsList = /*@__PURE__*/ __L.at(__c26, 7);
 export interface LteCellDetails {
   CellId: number;
   Mcc: number;
@@ -1846,13 +1263,10 @@ export interface LteCellDetails {
   Rsrq?: number;
   Tac?: number;
 }
-const LteCellDetails = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<LteCellDetails>;
 export type LteCellDetailsList = LteCellDetails[];
-const LteCellDetailsList = /*@__PURE__*/ __L.at(__c27, 1);
 export interface CellSignals {
   LteCellDetails: LteCellDetails[];
 }
-const CellSignals = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<CellSignals>;
 export interface DeviceState {
   DeviceId: string;
   SampleTime: Date;
@@ -1862,23 +1276,17 @@ export interface DeviceState {
   WiFiAccessPoints?: WiFiAccessPoint[];
   CellSignals?: CellSignals;
 }
-const DeviceState = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<DeviceState>;
 export interface VerifyDevicePositionRequest {
   TrackerName: string;
   DeviceState: DeviceState;
   DistanceUnit?: string;
 }
-const VerifyDevicePositionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<VerifyDevicePositionRequest>;
 export interface InferredState {
   Position?: number[];
   Accuracy?: PositionalAccuracy;
   DeviationDistance?: number;
   ProxyDetected: boolean;
 }
-const InferredState = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<InferredState>;
 export interface VerifyDevicePositionResponse {
   InferredState: InferredState;
   DeviceId: string;
@@ -1886,21 +1294,12 @@ export interface VerifyDevicePositionResponse {
   ReceivedTime: Date;
   DistanceUnit: string;
 }
-const VerifyDevicePositionResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<VerifyDevicePositionResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c28, 0);
 export type AssociateTrackerConsumerError =
   | AccessDeniedException
   | ConflictException
@@ -1923,8 +1322,8 @@ export const associateTrackerConsumer: API.OperationMethod<
   AssociateTrackerConsumerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateTrackerConsumerRequest,
-  output: AssociateTrackerConsumerResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateTrackerConsumerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateTrackerConsumerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1956,8 +1355,8 @@ export const batchDeleteDevicePositionHistory: API.OperationMethod<
   BatchDeleteDevicePositionHistoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteDevicePositionHistoryRequest,
-  output: BatchDeleteDevicePositionHistoryResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<BatchDeleteDevicePositionHistoryRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<BatchDeleteDevicePositionHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1989,8 +1388,8 @@ export const batchDeleteGeofence: API.OperationMethod<
   BatchDeleteGeofenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteGeofenceRequest,
-  output: BatchDeleteGeofenceResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<BatchDeleteGeofenceRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<BatchDeleteGeofenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2032,8 +1431,8 @@ export const batchEvaluateGeofences: API.OperationMethod<
   BatchEvaluateGeofencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchEvaluateGeofencesRequest,
-  output: BatchEvaluateGeofencesResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<BatchEvaluateGeofencesRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<BatchEvaluateGeofencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2063,8 +1462,8 @@ export const batchGetDevicePosition: API.OperationMethod<
   BatchGetDevicePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetDevicePositionRequest,
-  output: BatchGetDevicePositionResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<BatchGetDevicePositionRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<BatchGetDevicePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2094,8 +1493,8 @@ export const batchPutGeofence: API.OperationMethod<
   BatchPutGeofenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchPutGeofenceRequest,
-  output: BatchPutGeofenceResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<BatchPutGeofenceRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<BatchPutGeofenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2131,8 +1530,8 @@ export const batchUpdateDevicePosition: API.OperationMethod<
   BatchUpdateDevicePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateDevicePositionRequest,
-  output: BatchUpdateDevicePositionResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<BatchUpdateDevicePositionRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<BatchUpdateDevicePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2184,8 +1583,8 @@ export const calculateRoute: API.OperationMethod<
   CalculateRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CalculateRouteRequest,
-  output: CalculateRouteResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<CalculateRouteRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<CalculateRouteResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2241,8 +1640,8 @@ export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CalculateRouteMatrixRequest,
-  output: CalculateRouteMatrixResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<CalculateRouteMatrixRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<CalculateRouteMatrixResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2274,8 +1673,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelJobRequest,
-  output: CancelJobResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<CancelJobRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<CancelJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2306,8 +1705,8 @@ export const createGeofenceCollection: API.OperationMethod<
   CreateGeofenceCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGeofenceCollectionRequest,
-  output: CreateGeofenceCollectionResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<CreateGeofenceCollectionRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<CreateGeofenceCollectionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2341,8 +1740,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyRequest,
-  output: CreateKeyResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<CreateKeyRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<CreateKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2388,8 +1787,8 @@ export const createMap: API.OperationMethod<
   CreateMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMapRequest,
-  output: CreateMapResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<CreateMapRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<CreateMapResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2435,8 +1834,8 @@ export const createPlaceIndex: API.OperationMethod<
   CreatePlaceIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlaceIndexRequest,
-  output: CreatePlaceIndexResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<CreatePlaceIndexRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<CreatePlaceIndexResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2484,8 +1883,8 @@ export const createRouteCalculator: API.OperationMethod<
   CreateRouteCalculatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRouteCalculatorRequest,
-  output: CreateRouteCalculatorResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<CreateRouteCalculatorRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<CreateRouteCalculatorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2517,8 +1916,8 @@ export const createTracker: API.OperationMethod<
   CreateTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTrackerRequest,
-  output: CreateTrackerResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<CreateTrackerRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<CreateTrackerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2551,8 +1950,8 @@ export const deleteGeofenceCollection: API.OperationMethod<
   DeleteGeofenceCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGeofenceCollectionRequest,
-  output: DeleteGeofenceCollectionResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<DeleteGeofenceCollectionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteGeofenceCollectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2584,8 +1983,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyRequest,
-  output: DeleteKeyResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteKeyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2629,8 +2028,8 @@ export const deleteMap: API.OperationMethod<
   DeleteMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMapRequest,
-  output: DeleteMapResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<DeleteMapRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteMapResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2674,8 +2073,8 @@ export const deletePlaceIndex: API.OperationMethod<
   DeletePlaceIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePlaceIndexRequest,
-  output: DeletePlaceIndexResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<DeletePlaceIndexRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeletePlaceIndexResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2719,8 +2118,8 @@ export const deleteRouteCalculator: API.OperationMethod<
   DeleteRouteCalculatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRouteCalculatorRequest,
-  output: DeleteRouteCalculatorResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<DeleteRouteCalculatorRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteRouteCalculatorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2752,8 +2151,8 @@ export const deleteTracker: API.OperationMethod<
   DeleteTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTrackerRequest,
-  output: DeleteTrackerResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<DeleteTrackerRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteTrackerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2783,8 +2182,8 @@ export const describeGeofenceCollection: API.OperationMethod<
   DescribeGeofenceCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeGeofenceCollectionRequest,
-  output: DescribeGeofenceCollectionResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<DescribeGeofenceCollectionRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<DescribeGeofenceCollectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2816,8 +2215,8 @@ export const describeKey: API.OperationMethod<
   DescribeKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeKeyRequest,
-  output: DescribeKeyResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<DescribeKeyRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DescribeKeyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2859,8 +2258,8 @@ export const describeMap: API.OperationMethod<
   DescribeMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeMapRequest,
-  output: DescribeMapResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<DescribeMapRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<DescribeMapResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2902,8 +2301,8 @@ export const describePlaceIndex: API.OperationMethod<
   DescribePlaceIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePlaceIndexRequest,
-  output: DescribePlaceIndexResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<DescribePlaceIndexRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<DescribePlaceIndexResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2945,8 +2344,8 @@ export const describeRouteCalculator: API.OperationMethod<
   DescribeRouteCalculatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeRouteCalculatorRequest,
-  output: DescribeRouteCalculatorResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<DescribeRouteCalculatorRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<DescribeRouteCalculatorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2976,8 +2375,8 @@ export const describeTracker: API.OperationMethod<
   DescribeTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeTrackerRequest,
-  output: DescribeTrackerResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<DescribeTrackerRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DescribeTrackerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3009,8 +2408,8 @@ export const disassociateTrackerConsumer: API.OperationMethod<
   DisassociateTrackerConsumerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateTrackerConsumerRequest,
-  output: DisassociateTrackerConsumerResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<DisassociateTrackerConsumerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisassociateTrackerConsumerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3049,8 +2448,8 @@ export const forecastGeofenceEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ForecastedEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ForecastGeofenceEventsRequest,
-  output: ForecastGeofenceEventsResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<ForecastGeofenceEventsRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<ForecastGeofenceEventsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3088,8 +2487,8 @@ export const getDevicePosition: API.OperationMethod<
   GetDevicePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePositionRequest,
-  output: GetDevicePositionResponse,
+  input: __S(111, __c13, 7) as any as S.Schema<GetDevicePositionRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetDevicePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3122,8 +2521,8 @@ export const getDevicePositionHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DevicePosition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetDevicePositionHistoryRequest,
-  output: GetDevicePositionHistoryResponse,
+  input: __S(113, __c14, 1) as any as S.Schema<GetDevicePositionHistoryRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<GetDevicePositionHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3161,8 +2560,8 @@ export const getGeofence: API.OperationMethod<
   GetGeofenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeofenceRequest,
-  output: GetGeofenceResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<GetGeofenceRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GetGeofenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3194,8 +2593,8 @@ export const getJob: API.OperationMethod<
   GetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobRequest,
-  output: GetJobResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<GetJobRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<GetJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3237,8 +2636,8 @@ export const getMapGlyphs: API.OperationMethod<
   GetMapGlyphsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMapGlyphsRequest,
-  output: GetMapGlyphsResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<GetMapGlyphsRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<GetMapGlyphsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3280,8 +2679,8 @@ export const getMapSprites: API.OperationMethod<
   GetMapSpritesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMapSpritesRequest,
-  output: GetMapSpritesResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<GetMapSpritesRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<GetMapSpritesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3325,8 +2724,8 @@ export const getMapStyleDescriptor: API.OperationMethod<
   GetMapStyleDescriptorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMapStyleDescriptorRequest,
-  output: GetMapStyleDescriptorResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<GetMapStyleDescriptorRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetMapStyleDescriptorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3370,8 +2769,8 @@ export const getMapTile: API.OperationMethod<
   GetMapTileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMapTileRequest,
-  output: GetMapTileResponse,
+  input: __S(129, __c16, 1) as any as S.Schema<GetMapTileRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<GetMapTileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3423,8 +2822,8 @@ export const getPlace: API.OperationMethod<
   GetPlaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlaceRequest,
-  output: GetPlaceResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<GetPlaceRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<GetPlaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3454,8 +2853,8 @@ export const listDevicePositions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListDevicePositionsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicePositionsRequest,
-  output: ListDevicePositionsResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<ListDevicePositionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListDevicePositionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3490,8 +2889,8 @@ export const listGeofenceCollections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListGeofenceCollectionsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGeofenceCollectionsRequest,
-  output: ListGeofenceCollectionsResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<ListGeofenceCollectionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListGeofenceCollectionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3527,8 +2926,8 @@ export const listGeofences: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListGeofenceResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGeofencesRequest,
-  output: ListGeofencesResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<ListGeofencesRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<ListGeofencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3566,8 +2965,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListJobsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListJobsRequest,
-  output: ListJobsResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<ListJobsRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<ListJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3604,8 +3003,8 @@ export const listKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListKeysResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListKeysRequest,
-  output: ListKeysResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<ListKeysRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ListKeysResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3652,8 +3051,8 @@ export const listMaps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListMapsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMapsRequest,
-  output: ListMapsResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<ListMapsRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListMapsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3700,8 +3099,8 @@ export const listPlaceIndexes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListPlaceIndexesResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlaceIndexesRequest,
-  output: ListPlaceIndexesResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<ListPlaceIndexesRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<ListPlaceIndexesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3748,8 +3147,8 @@ export const listRouteCalculators: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListRouteCalculatorsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRouteCalculatorsRequest,
-  output: ListRouteCalculatorsResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<ListRouteCalculatorsRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListRouteCalculatorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3784,8 +3183,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3816,8 +3215,8 @@ export const listTrackerConsumers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Arn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTrackerConsumersRequest,
-  output: ListTrackerConsumersResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<ListTrackerConsumersRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<ListTrackerConsumersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3853,8 +3252,8 @@ export const listTrackers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListTrackersResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTrackersRequest,
-  output: ListTrackersResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<ListTrackersRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<ListTrackersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3890,8 +3289,8 @@ export const putGeofence: API.OperationMethod<
   PutGeofenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutGeofenceRequest,
-  output: PutGeofenceResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<PutGeofenceRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PutGeofenceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3932,8 +3331,8 @@ export const searchPlaceIndexForPosition: API.OperationMethod<
   SearchPlaceIndexForPositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchPlaceIndexForPositionRequest,
-  output: SearchPlaceIndexForPositionResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<SearchPlaceIndexForPositionRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<SearchPlaceIndexForPositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3977,8 +3376,8 @@ export const searchPlaceIndexForSuggestions: API.OperationMethod<
   SearchPlaceIndexForSuggestionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchPlaceIndexForSuggestionsRequest,
-  output: SearchPlaceIndexForSuggestionsResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<SearchPlaceIndexForSuggestionsRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<SearchPlaceIndexForSuggestionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4024,8 +3423,8 @@ export const searchPlaceIndexForText: API.OperationMethod<
   SearchPlaceIndexForTextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchPlaceIndexForTextRequest,
-  output: SearchPlaceIndexForTextResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<SearchPlaceIndexForTextRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<SearchPlaceIndexForTextResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4056,8 +3455,8 @@ export const startJob: API.OperationMethod<
   StartJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartJobRequest,
-  output: StartJobResponse,
+  input: __S(194, __c24, 2) as any as S.Schema<StartJobRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<StartJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4092,8 +3491,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(196, __c24, 4) as any as S.Schema<TagResourceRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4123,8 +3522,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(197, __c24, 5) as any as S.Schema<UntagResourceRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4154,8 +3553,8 @@ export const updateGeofenceCollection: API.OperationMethod<
   UpdateGeofenceCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGeofenceCollectionRequest,
-  output: UpdateGeofenceCollectionResponse,
+  input: __S(198, __c24, 6) as any as S.Schema<UpdateGeofenceCollectionRequest>,
+  output: __S(199, __c24, 7) as any as S.Schema<UpdateGeofenceCollectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4185,8 +3584,8 @@ export const updateKey: API.OperationMethod<
   UpdateKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeyRequest,
-  output: UpdateKeyResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateKeyRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<UpdateKeyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4228,8 +3627,8 @@ export const updateMap: API.OperationMethod<
   UpdateMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMapRequest,
-  output: UpdateMapResponse,
+  input: __S(203, __c25, 3) as any as S.Schema<UpdateMapRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<UpdateMapResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4271,8 +3670,8 @@ export const updatePlaceIndex: API.OperationMethod<
   UpdatePlaceIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePlaceIndexRequest,
-  output: UpdatePlaceIndexResponse,
+  input: __S(205, __c25, 5) as any as S.Schema<UpdatePlaceIndexRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<UpdatePlaceIndexResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4314,8 +3713,8 @@ export const updateRouteCalculator: API.OperationMethod<
   UpdateRouteCalculatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRouteCalculatorRequest,
-  output: UpdateRouteCalculatorResponse,
+  input: __S(207, __c25, 7) as any as S.Schema<UpdateRouteCalculatorRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<UpdateRouteCalculatorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4345,8 +3744,8 @@ export const updateTracker: API.OperationMethod<
   UpdateTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTrackerRequest,
-  output: UpdateTrackerResponse,
+  input: __S(209, __c26, 1) as any as S.Schema<UpdateTrackerRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<UpdateTrackerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4378,8 +3777,8 @@ export const verifyDevicePosition: API.OperationMethod<
   VerifyDevicePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyDevicePositionRequest,
-  output: VerifyDevicePositionResponse,
+  input: __S(220, __c27, 4) as any as S.Schema<VerifyDevicePositionRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<VerifyDevicePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4424,7 +3823,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TrackerName: S.String.pipe(T.HttpLabel("TrackerName")),
-          DeviceIds: DeviceIdsList,
+          DeviceIds: __S(2, __c0, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tracking/v0/trackers/{TrackerName}/delete-positions" }),
@@ -4443,15 +3842,13 @@ function __c0(j: number): any {
         S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "BatchItemError" });
     case 5:
-      return S.suspend(() => S.Struct({ DeviceId: S.String, Error: BatchItemError })).annotate({
+      return S.suspend(() => S.Struct({ DeviceId: S.String, Error: __S(4, __c0, 4) })).annotate({
         identifier: "BatchDeleteDevicePositionHistoryError",
       });
     case 6:
-      return S.Array(BatchDeleteDevicePositionHistoryError_);
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Errors: BatchDeleteDevicePositionHistoryErrorList }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Errors: __S(6, __c0, 6) })).annotate({
         identifier: "BatchDeleteDevicePositionHistoryResponse",
       });
   }
@@ -4462,7 +3859,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
-          GeofenceIds: IdList,
+          GeofenceIds: __S(2, __c0, 2),
         }).pipe(
           T.all(
             T.Http({
@@ -4480,13 +3877,13 @@ function __c1(j: number): any {
         identifier: "BatchDeleteGeofenceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ GeofenceId: S.String, Error: BatchItemError })).annotate({
+      return S.suspend(() => S.Struct({ GeofenceId: S.String, Error: __S(4, __c0, 4) })).annotate({
         identifier: "BatchDeleteGeofenceError",
       });
     case 2:
-      return S.Array(BatchDeleteGeofenceError_);
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.suspend(() => S.Struct({ Errors: BatchDeleteGeofenceErrorList })).annotate({
+      return S.suspend(() => S.Struct({ Errors: __S(10, __c1, 2) })).annotate({
         identifier: "BatchDeleteGeofenceResponse",
       });
     case 4:
@@ -4502,9 +3899,9 @@ function __c1(j: number): any {
         S.Struct({
           DeviceId: S.String,
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Position: Position,
-          Accuracy: S.optional(PositionalAccuracy),
-          PositionProperties: S.optional(PositionPropertyMap),
+          Position: __S(12, __c1, 4),
+          Accuracy: S.optional(__S(13, __c1, 5)),
+          PositionProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "DevicePositionUpdate" });
   }
@@ -4512,12 +3909,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DevicePositionUpdate);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
-          DevicePositionUpdates: DevicePositionUpdateList,
+          DevicePositionUpdates: __S(16, __c2, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -4539,24 +3936,22 @@ function __c2(j: number): any {
         S.Struct({
           DeviceId: S.String,
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Error: BatchItemError,
+          Error: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "BatchEvaluateGeofencesError",
       });
     case 3:
-      return S.Array(BatchEvaluateGeofencesError_);
+      return S.Array(__S(18, __c2, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Errors: S.optional(BatchEvaluateGeofencesErrorList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Errors: S.optional(__S(19, __c2, 3)) })).annotate({
         identifier: "BatchEvaluateGeofencesResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           TrackerName: S.String.pipe(T.HttpLabel("TrackerName")),
-          DeviceIds: IdList,
+          DeviceIds: __S(2, __c0, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tracking/v0/trackers/{TrackerName}/get-positions" }),
@@ -4571,11 +3966,11 @@ function __c2(j: number): any {
         identifier: "BatchGetDevicePositionRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ DeviceId: S.String, Error: BatchItemError })).annotate({
+      return S.suspend(() => S.Struct({ DeviceId: S.String, Error: __S(4, __c0, 4) })).annotate({
         identifier: "BatchGetDevicePositionError",
       });
     case 7:
-      return S.Array(BatchGetDevicePositionError_);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -4586,36 +3981,36 @@ function __c3(j: number): any {
           DeviceId: S.optional(S.String),
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ReceivedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Position: Position,
-          Accuracy: S.optional(PositionalAccuracy),
-          PositionProperties: S.optional(PositionPropertyMap),
+          Position: __S(12, __c1, 4),
+          Accuracy: S.optional(__S(13, __c1, 5)),
+          PositionProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "DevicePosition" });
     case 1:
-      return S.Array(DevicePosition);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Errors: BatchGetDevicePositionErrorList, DevicePositions: DevicePositionList }),
+        S.Struct({ Errors: __S(23, __c2, 7), DevicePositions: __S(25, __c3, 1) }),
       ).annotate({
         identifier: "BatchGetDevicePositionResponse",
       });
     case 3:
-      return S.Array(Position);
+      return S.Array(__S(12, __c1, 4));
     case 4:
-      return S.Array(LinearRing);
+      return S.Array(__S(27, __c3, 3));
     case 5:
-      return S.suspend(() => S.Struct({ Center: Position, Radius: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ Center: __S(12, __c1, 4), Radius: S.Number })).annotate({
         identifier: "Circle",
       });
     case 6:
-      return S.Array(LinearRings);
+      return S.Array(__S(28, __c3, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Polygon: S.optional(LinearRings),
-          Circle: S.optional(Circle),
+          Polygon: S.optional(__S(28, __c3, 4)),
+          Circle: S.optional(__S(29, __c3, 5)),
           Geobuf: S.optional(SensitiveBlob),
-          MultiPolygon: S.optional(MultiLinearRings),
+          MultiPolygon: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "GeofenceGeometry" });
   }
@@ -4626,19 +4021,19 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GeofenceId: S.String,
-          Geometry: GeofenceGeometry,
-          GeofenceProperties: S.optional(PropertyMap),
+          Geometry: __S(31, __c3, 7),
+          GeofenceProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "BatchPutGeofenceRequestEntry",
       });
     case 1:
-      return S.Array(BatchPutGeofenceRequestEntry);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
-          Entries: BatchPutGeofenceRequestEntryList,
+          Entries: __S(33, __c4, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -4662,16 +4057,16 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "BatchPutGeofenceSuccess" });
     case 4:
-      return S.Array(BatchPutGeofenceSuccess);
+      return S.Array(__S(35, __c4, 3));
     case 5:
-      return S.suspend(() => S.Struct({ GeofenceId: S.String, Error: BatchItemError })).annotate({
+      return S.suspend(() => S.Struct({ GeofenceId: S.String, Error: __S(4, __c0, 4) })).annotate({
         identifier: "BatchPutGeofenceError",
       });
     case 6:
-      return S.Array(BatchPutGeofenceError_);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Successes: BatchPutGeofenceSuccessList, Errors: BatchPutGeofenceErrorList }),
+        S.Struct({ Successes: __S(36, __c4, 4), Errors: __S(38, __c4, 6) }),
       ).annotate({ identifier: "BatchPutGeofenceResponse" });
   }
 }
@@ -4681,7 +4076,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TrackerName: S.String.pipe(T.HttpLabel("TrackerName")),
-          Updates: DevicePositionUpdateList,
+          Updates: __S(16, __c2, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tracking/v0/trackers/{TrackerName}/positions" }),
@@ -4700,15 +4095,15 @@ function __c5(j: number): any {
         S.Struct({
           DeviceId: S.String,
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Error: BatchItemError,
+          Error: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "BatchUpdateDevicePositionError",
       });
     case 2:
-      return S.Array(BatchUpdateDevicePositionError_);
+      return S.Array(__S(41, __c5, 1));
     case 3:
-      return S.suspend(() => S.Struct({ Errors: BatchUpdateDevicePositionErrorList })).annotate({
+      return S.suspend(() => S.Struct({ Errors: __S(42, __c5, 2) })).annotate({
         identifier: "BatchUpdateDevicePositionResponse",
       });
     case 4:
@@ -4735,8 +4130,8 @@ function __c5(j: number): any {
         S.Struct({
           AvoidFerries: S.optional(S.Boolean),
           AvoidTolls: S.optional(S.Boolean),
-          Dimensions: S.optional(TruckDimensions),
-          Weight: S.optional(TruckWeight),
+          Dimensions: S.optional(__S(45, __c5, 5)),
+          Weight: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({
         identifier: "CalculateRouteTruckModeOptions",
@@ -4749,16 +4144,16 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CalculatorName: S.String.pipe(T.HttpLabel("CalculatorName")),
-          DeparturePosition: Position,
-          DestinationPosition: Position,
-          WaypointPositions: S.optional(WaypointPositionList),
+          DeparturePosition: __S(12, __c1, 4),
+          DestinationPosition: __S(12, __c1, 4),
+          WaypointPositions: S.optional(__S(27, __c3, 3)),
           TravelMode: S.optional(S.String),
           DepartureTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DepartNow: S.optional(S.Boolean),
           DistanceUnit: S.optional(S.String),
           IncludeLegGeometry: S.optional(S.Boolean),
-          CarModeOptions: S.optional(CalculateRouteCarModeOptions),
-          TruckModeOptions: S.optional(CalculateRouteTruckModeOptions),
+          CarModeOptions: S.optional(__S(44, __c5, 4)),
+          TruckModeOptions: S.optional(__S(47, __c5, 7)),
           ArrivalTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           OptimizeFor: S.optional(S.String),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
@@ -4777,38 +4172,38 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "CalculateRouteRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ LineString: S.optional(LineString) })).annotate({
+      return S.suspend(() => S.Struct({ LineString: S.optional(__S(27, __c3, 3)) })).annotate({
         identifier: "LegGeometry",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          StartPosition: Position,
-          EndPosition: Position,
+          StartPosition: __S(12, __c1, 4),
+          EndPosition: __S(12, __c1, 4),
           Distance: S.Number,
           DurationSeconds: S.Number,
           GeometryOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Step" });
     case 3:
-      return S.Array(Step);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          StartPosition: Position,
-          EndPosition: Position,
+          StartPosition: __S(12, __c1, 4),
+          EndPosition: __S(12, __c1, 4),
           Distance: S.Number,
           DurationSeconds: S.Number,
-          Geometry: S.optional(LegGeometry),
-          Steps: StepList,
+          Geometry: S.optional(__S(49, __c6, 1)),
+          Steps: __S(51, __c6, 3),
         }),
       ).annotate({ identifier: "Leg" });
     case 5:
-      return S.Array(Leg);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RouteBBox: BoundingBox,
+          RouteBBox: __S(12, __c1, 4),
           DataSource: S.String,
           Distance: S.Number,
           DurationSeconds: S.Number,
@@ -4816,7 +4211,9 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "CalculateRouteSummary" });
     case 7:
-      return S.suspend(() => S.Struct({ Legs: LegList, Summary: CalculateRouteSummary })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Legs: __S(53, __c6, 5), Summary: __S(54, __c6, 6) }),
+      ).annotate({
         identifier: "CalculateRouteResponse",
       });
   }
@@ -4827,14 +4224,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CalculatorName: S.String.pipe(T.HttpLabel("CalculatorName")),
-          DeparturePositions: PositionList,
-          DestinationPositions: PositionList,
+          DeparturePositions: __S(27, __c3, 3),
+          DestinationPositions: __S(27, __c3, 3),
           TravelMode: S.optional(S.String),
           DepartureTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DepartNow: S.optional(S.Boolean),
           DistanceUnit: S.optional(S.String),
-          CarModeOptions: S.optional(CalculateRouteCarModeOptions),
-          TruckModeOptions: S.optional(CalculateRouteTruckModeOptions),
+          CarModeOptions: S.optional(__S(44, __c5, 4)),
+          TruckModeOptions: S.optional(__S(47, __c5, 7)),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
         }).pipe(
           T.all(
@@ -4861,13 +4258,13 @@ function __c7(j: number): any {
         S.Struct({
           Distance: S.optional(S.Number),
           DurationSeconds: S.optional(S.Number),
-          Error: S.optional(RouteMatrixEntryError),
+          Error: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "RouteMatrixEntry" });
     case 3:
-      return S.Array(RouteMatrixEntry);
+      return S.Array(__S(58, __c7, 2));
     case 4:
-      return S.Array(RouteMatrixRow);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4882,10 +4279,10 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RouteMatrix: RouteMatrix,
-          SnappedDeparturePositions: S.optional(PositionList),
-          SnappedDestinationPositions: S.optional(PositionList),
-          Summary: CalculateRouteMatrixSummary,
+          RouteMatrix: __S(60, __c7, 4),
+          SnappedDeparturePositions: S.optional(__S(27, __c3, 3)),
+          SnappedDestinationPositions: S.optional(__S(27, __c3, 3)),
+          Summary: __S(61, __c7, 5),
         }),
       ).annotate({
         identifier: "CalculateRouteMatrixResponse",
@@ -4920,7 +4317,7 @@ function __c8(j: number): any {
           PricingPlan: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
           KmsKeyId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4952,7 +4349,7 @@ function __c8(j: number): any {
         S.Struct({ Package: S.String, CertificateFingerprint: S.String }),
       ).annotate({ identifier: "AndroidApp" });
     case 6:
-      return S.Array(AndroidApp);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() => S.Struct({ BundleId: S.String })).annotate({
         identifier: "AppleApp",
@@ -4962,26 +4359,26 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AppleApp);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AllowActions: ApiKeyActionList,
-          AllowResources: GeoArnList,
-          AllowReferers: S.optional(RefererPatternList),
-          AllowAndroidApps: S.optional(AndroidAppList),
-          AllowAppleApps: S.optional(AppleAppList),
+          AllowActions: __S(2, __c0, 2),
+          AllowResources: __S(2, __c0, 2),
+          AllowReferers: S.optional(__S(68, __c8, 4)),
+          AllowAndroidApps: S.optional(__S(70, __c8, 6)),
+          AllowAppleApps: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "ApiKeyRestrictions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           KeyName: S.String,
-          Restrictions: ApiKeyRestrictions,
+          Restrictions: __S(73, __c9, 1),
           Description: S.optional(S.String),
           ExpireTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NoExpiry: S.optional(S.Boolean),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/metadata/v0/keys" }), svc, auth, proto, ver, rules),
         ),
@@ -5000,17 +4397,17 @@ function __c9(j: number): any {
         S.Struct({
           Style: S.String,
           PoliticalView: S.optional(SensitiveString),
-          CustomLayers: S.optional(CustomLayerList),
+          CustomLayers: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "MapConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           MapName: S.String,
-          Configuration: MapConfiguration,
+          Configuration: __S(76, __c9, 4),
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/maps/v0/maps" }), svc, auth, proto, ver, rules),
         ),
@@ -5038,8 +4435,8 @@ function __c10(j: number): any {
           DataSource: S.String,
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
-          DataSourceConfiguration: S.optional(DataSourceConfiguration),
-          Tags: S.optional(TagMap),
+          DataSourceConfiguration: S.optional(__S(79, __c9, 7)),
+          Tags: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/places/v0/indexes" }),
@@ -5066,7 +4463,7 @@ function __c10(j: number): any {
           DataSource: S.String,
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/routes/v0/calculators" }),
@@ -5098,7 +4495,7 @@ function __c10(j: number): any {
           KmsKeyId: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
           PositionFiltering: S.optional(S.String),
           EventBridgeEnabled: S.optional(S.Boolean),
           KmsKeyEnableGeospatialQueries: S.optional(S.Boolean),
@@ -5238,7 +4635,7 @@ function __c11(j: number): any {
           PricingPlan: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           GeofenceCount: S.optional(S.Number),
@@ -5269,12 +4666,12 @@ function __c12(j: number): any {
           Key: SensitiveString,
           KeyArn: S.String,
           KeyName: S.String,
-          Restrictions: ApiKeyRestrictions,
+          Restrictions: __S(73, __c9, 1),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ExpireTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "DescribeKeyResponse" });
     case 1:
@@ -5297,9 +4694,9 @@ function __c12(j: number): any {
           MapArn: S.String,
           PricingPlan: S.optional(S.String),
           DataSource: S.String,
-          Configuration: MapConfiguration,
+          Configuration: __S(76, __c9, 4),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
@@ -5329,8 +4726,8 @@ function __c12(j: number): any {
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           DataSource: S.String,
-          DataSourceConfiguration: DataSourceConfiguration,
-          Tags: S.optional(TagMap),
+          DataSourceConfiguration: __S(79, __c9, 7),
+          Tags: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({
         identifier: "DescribePlaceIndexResponse",
@@ -5360,7 +4757,7 @@ function __c12(j: number): any {
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           DataSource: S.String,
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({
         identifier: "DescribeRouteCalculatorResponse",
@@ -5390,7 +4787,7 @@ function __c13(j: number): any {
           Description: S.optional(S.String),
           PricingPlan: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           KmsKeyId: S.optional(S.String),
@@ -5422,7 +4819,7 @@ function __c13(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Position: Position, Speed: S.optional(S.Number) }),
+        S.Struct({ Position: __S(12, __c1, 4), Speed: S.optional(S.Number) }),
       ).annotate({
         identifier: "ForecastGeofenceEventsDeviceState",
       });
@@ -5430,7 +4827,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
-          DeviceState: ForecastGeofenceEventsDeviceState,
+          DeviceState: __S(106, __c13, 2),
           TimeHorizonMinutes: S.optional(S.Number),
           DistanceUnit: S.optional(S.String),
           SpeedUnit: S.optional(S.String),
@@ -5461,15 +4858,15 @@ function __c13(j: number): any {
           NearestDistance: S.Number,
           EventType: S.String,
           ForecastedBreachTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          GeofenceProperties: S.optional(PropertyMap),
+          GeofenceProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "ForecastedEvent" });
     case 5:
-      return S.Array(ForecastedEvent);
+      return S.Array(__S(108, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ForecastedEvents: ForecastedEventsList,
+          ForecastedEvents: __S(109, __c13, 5),
           NextToken: S.optional(S.String),
           DistanceUnit: S.String,
           SpeedUnit: S.String,
@@ -5506,9 +4903,9 @@ function __c14(j: number): any {
           DeviceId: S.optional(S.String),
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ReceivedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Position: Position,
-          Accuracy: S.optional(PositionalAccuracy),
-          PositionProperties: S.optional(PositionPropertyMap),
+          Position: __S(12, __c1, 4),
+          Accuracy: S.optional(__S(13, __c1, 5)),
+          PositionProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "GetDevicePositionResponse",
@@ -5540,7 +4937,7 @@ function __c14(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DevicePositions: DevicePositionList, NextToken: S.optional(S.String) }),
+        S.Struct({ DevicePositions: __S(25, __c3, 1), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetDevicePositionHistoryResponse",
       });
@@ -5567,11 +4964,11 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GeofenceId: S.String,
-          Geometry: GeofenceGeometry,
+          Geometry: __S(31, __c3, 7),
           Status: S.String,
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          GeofenceProperties: S.optional(PropertyMap),
+          GeofenceProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "GetGeofenceResponse" });
     case 5:
@@ -5589,13 +4986,13 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetJobRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AdditionalFeatures: S.optional(ValidateAddressAdditionalFeatureList) }),
+        S.Struct({ AdditionalFeatures: S.optional(__S(2, __c0, 2)) }),
       ).annotate({
         identifier: "ValidateAddressActionOptions",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ValidateAddress: S.optional(ValidateAddressActionOptions) }),
+        S.Struct({ ValidateAddress: S.optional(__S(118, __c14, 6)) }),
       ).annotate({ identifier: "JobActionOptions" });
   }
 }
@@ -5603,7 +5000,7 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Code: S.String, Messages: S.optional(JobErrorMessagesList) }),
+        S.Struct({ Code: S.String, Messages: S.optional(__S(2, __c0, 2)) }),
       ).annotate({ identifier: "JobError" });
     case 1:
       return S.suspend(() => S.Struct({ Location: S.String, Format: S.String })).annotate({
@@ -5617,19 +5014,19 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Action: S.String,
-          ActionOptions: S.optional(JobActionOptions),
+          ActionOptions: S.optional(__S(119, __c14, 7)),
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Error: S.optional(JobError),
+          Error: S.optional(__S(120, __c15, 0)),
           ExecutionRoleArn: S.String,
-          InputOptions: JobInputOptions,
+          InputOptions: __S(121, __c15, 1),
           JobArn: S.String,
           JobId: S.String,
           Name: S.optional(S.String),
-          OutputOptions: JobOutputOptions,
+          OutputOptions: __S(122, __c15, 2),
           Status: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "GetJobResponse" });
     case 4:
@@ -5748,7 +5145,7 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "GetPlaceRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ Point: S.optional(Position) })).annotate({
+      return S.suspend(() => S.Struct({ Point: S.optional(__S(12, __c1, 4)) })).annotate({
         identifier: "PlaceGeometry",
       });
     case 4:
@@ -5759,7 +5156,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Label: S.optional(SensitiveString),
-          Geometry: PlaceGeometry,
+          Geometry: __S(131, __c16, 3),
           AddressNumber: S.optional(SensitiveString),
           Street: S.optional(SensitiveString),
           Neighborhood: S.optional(SensitiveString),
@@ -5769,20 +5166,20 @@ function __c16(j: number): any {
           Country: S.optional(SensitiveString),
           PostalCode: S.optional(SensitiveString),
           Interpolated: S.optional(S.Boolean),
-          TimeZone: S.optional(TimeZone),
+          TimeZone: S.optional(__S(132, __c16, 4)),
           UnitType: S.optional(SensitiveString),
           UnitNumber: S.optional(SensitiveString),
-          Categories: S.optional(PlaceCategoryList),
-          SupplementalCategories: S.optional(PlaceSupplementalCategoryList),
+          Categories: S.optional(__S(68, __c8, 4)),
+          SupplementalCategories: S.optional(__S(68, __c8, 4)),
           SubMunicipality: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "Place" });
     case 6:
-      return S.suspend(() => S.Struct({ Place: Place })).annotate({
+      return S.suspend(() => S.Struct({ Place: __S(133, __c16, 5) })).annotate({
         identifier: "GetPlaceResponse",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Polygon: S.optional(LinearRings) })).annotate({
+      return S.suspend(() => S.Struct({ Polygon: S.optional(__S(28, __c3, 4)) })).annotate({
         identifier: "TrackingFilterGeometry",
       });
   }
@@ -5795,7 +5192,7 @@ function __c17(j: number): any {
           TrackerName: S.String.pipe(T.HttpLabel("TrackerName")),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          FilterGeometry: S.optional(TrackingFilterGeometry),
+          FilterGeometry: S.optional(__S(135, __c16, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tracking/v0/trackers/{TrackerName}/list-positions" }),
@@ -5814,19 +5211,19 @@ function __c17(j: number): any {
         S.Struct({
           DeviceId: S.String,
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Position: Position,
-          Accuracy: S.optional(PositionalAccuracy),
-          PositionProperties: S.optional(PositionPropertyMap),
+          Position: __S(12, __c1, 4),
+          Accuracy: S.optional(__S(13, __c1, 5)),
+          PositionProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ListDevicePositionsResponseEntry",
       });
     case 2:
-      return S.Array(ListDevicePositionsResponseEntry);
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Entries: ListDevicePositionsResponseEntryList,
+          Entries: __S(138, __c17, 2),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5861,11 +5258,11 @@ function __c17(j: number): any {
         identifier: "ListGeofenceCollectionsResponseEntry",
       });
     case 6:
-      return S.Array(ListGeofenceCollectionsResponseEntry);
+      return S.Array(__S(141, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Entries: ListGeofenceCollectionsResponseEntryList,
+          Entries: __S(142, __c17, 6),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5899,20 +5296,20 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GeofenceId: S.String,
-          Geometry: GeofenceGeometry,
+          Geometry: __S(31, __c3, 7),
           Status: S.String,
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          GeofenceProperties: S.optional(PropertyMap),
+          GeofenceProperties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ListGeofenceResponseEntry",
       });
     case 2:
-      return S.Array(ListGeofenceResponseEntry);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Entries: ListGeofenceResponseEntryList, NextToken: S.optional(S.String) }),
+        S.Struct({ Entries: __S(146, __c18, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGeofencesResponse" });
     case 4:
       return S.suspend(() => S.Struct({ JobStatus: S.optional(S.String) })).annotate({
@@ -5921,7 +5318,7 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(JobsFilter),
+          Filter: S.optional(__S(148, __c18, 4)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -5939,29 +5336,29 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Action: S.String,
-          ActionOptions: S.optional(JobActionOptions),
+          ActionOptions: S.optional(__S(119, __c14, 7)),
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ExecutionRoleArn: S.String,
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Error: S.optional(JobError),
-          InputOptions: JobInputOptions,
+          Error: S.optional(__S(120, __c15, 0)),
+          InputOptions: __S(121, __c15, 1),
           JobId: S.String,
           JobArn: S.String,
           Name: S.optional(S.String),
-          OutputOptions: JobOutputOptions,
+          OutputOptions: __S(122, __c15, 2),
           Status: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "ListJobsResponseEntry" });
     case 7:
-      return S.Array(ListJobsResponseEntry);
+      return S.Array(__S(150, __c18, 6));
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Entries: ListJobsResponseEntryList, NextToken: S.optional(S.String) }),
+        S.Struct({ Entries: __S(151, __c18, 7), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListJobsResponse" });
     case 1:
       return S.suspend(() => S.Struct({ KeyStatus: S.optional(S.String) })).annotate({
@@ -5972,7 +5369,7 @@ function __c19(j: number): any {
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filter: S.optional(ApiKeyFilter),
+          Filter: S.optional(__S(153, __c19, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/metadata/v0/list-keys" }),
@@ -5990,16 +5387,16 @@ function __c19(j: number): any {
           KeyName: S.String,
           ExpireTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Description: S.optional(S.String),
-          Restrictions: ApiKeyRestrictions,
+          Restrictions: __S(73, __c9, 1),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "ListKeysResponseEntry" });
     case 4:
-      return S.Array(ListKeysResponseEntry);
+      return S.Array(__S(155, __c19, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Entries: ListKeysResponseEntryList, NextToken: S.optional(S.String) }),
+        S.Struct({ Entries: __S(156, __c19, 4), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListKeysResponse" });
     case 6:
       return S.suspend(() =>
@@ -6030,10 +5427,10 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListMapsResponseEntry);
+      return S.Array(__S(159, __c19, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Entries: ListMapsResponseEntryList, NextToken: S.optional(S.String) }),
+        S.Struct({ Entries: __S(160, __c20, 0), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMapsResponse" });
     case 2:
       return S.suspend(() =>
@@ -6062,10 +5459,10 @@ function __c20(j: number): any {
         identifier: "ListPlaceIndexesResponseEntry",
       });
     case 4:
-      return S.Array(ListPlaceIndexesResponseEntry);
+      return S.Array(__S(163, __c20, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Entries: ListPlaceIndexesResponseEntryList, NextToken: S.optional(S.String) }),
+        S.Struct({ Entries: __S(164, __c20, 4), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPlaceIndexesResponse" });
     case 6:
       return S.suspend(() =>
@@ -6100,11 +5497,11 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListRouteCalculatorsResponseEntry);
+      return S.Array(__S(167, __c20, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Entries: ListRouteCalculatorsResponseEntryList,
+          Entries: __S(168, __c21, 0),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6126,7 +5523,7 @@ function __c21(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(65, __c8, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -6150,7 +5547,7 @@ function __c21(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ConsumerArns: ArnList, NextToken: S.optional(S.String) }),
+        S.Struct({ ConsumerArns: __S(2, __c0, 2), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTrackerConsumersResponse",
       });
@@ -6185,18 +5582,18 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListTrackersResponseEntry);
+      return S.Array(__S(175, __c21, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Entries: ListTrackersResponseEntryList, NextToken: S.optional(S.String) }),
+        S.Struct({ Entries: __S(176, __c22, 0), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTrackersResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
           GeofenceId: S.String.pipe(T.HttpLabel("GeofenceId")),
-          Geometry: GeofenceGeometry,
-          GeofenceProperties: S.optional(PropertyMap),
+          Geometry: __S(31, __c3, 7),
+          GeofenceProperties: S.optional(__S(14, __c1, 6)),
         }).pipe(
           T.all(
             T.Http({
@@ -6215,7 +5612,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String.pipe(T.HttpLabel("IndexName")),
-          Position: Position,
+          Position: __S(12, __c1, 4),
           MaxResults: S.optional(S.Number),
           Language: S.optional(S.String),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
@@ -6235,7 +5632,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Position: Position,
+          Position: __S(12, __c1, 4),
           MaxResults: S.optional(S.Number),
           DataSource: S.String,
           Language: S.optional(S.String),
@@ -6245,15 +5642,19 @@ function __c22(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Place: Place, Distance: S.Number, PlaceId: S.optional(SensitiveString) }),
+        S.Struct({
+          Place: __S(133, __c16, 5),
+          Distance: S.Number,
+          PlaceId: S.optional(SensitiveString),
+        }),
       ).annotate({ identifier: "SearchForPositionResult" });
     case 6:
-      return S.Array(SearchForPositionResult);
+      return S.Array(__S(181, __c22, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Summary: SearchPlaceIndexForPositionSummary,
-          Results: SearchForPositionResultList,
+          Summary: __S(180, __c22, 4),
+          Results: __S(182, __c22, 6),
         }),
       ).annotate({
         identifier: "SearchPlaceIndexForPositionResponse",
@@ -6267,12 +5668,12 @@ function __c23(j: number): any {
         S.Struct({
           IndexName: S.String.pipe(T.HttpLabel("IndexName")),
           Text: SensitiveString,
-          BiasPosition: S.optional(Position),
-          FilterBBox: S.optional(BoundingBox),
-          FilterCountries: S.optional(CountryCodeList),
+          BiasPosition: S.optional(__S(12, __c1, 4)),
+          FilterBBox: S.optional(__S(12, __c1, 4)),
+          FilterCountries: S.optional(__S(68, __c8, 4)),
           MaxResults: S.optional(S.Number),
           Language: S.optional(S.String),
-          FilterCategories: S.optional(FilterPlaceCategoryList),
+          FilterCategories: S.optional(__S(68, __c8, 4)),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
         }).pipe(
           T.all(
@@ -6291,13 +5692,13 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Text: SensitiveString,
-          BiasPosition: S.optional(Position),
-          FilterBBox: S.optional(BoundingBox),
-          FilterCountries: S.optional(CountryCodeList),
+          BiasPosition: S.optional(__S(12, __c1, 4)),
+          FilterBBox: S.optional(__S(12, __c1, 4)),
+          FilterCountries: S.optional(__S(68, __c8, 4)),
           MaxResults: S.optional(S.Number),
           DataSource: S.String,
           Language: S.optional(S.String),
-          FilterCategories: S.optional(FilterPlaceCategoryList),
+          FilterCategories: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({
         identifier: "SearchPlaceIndexForSuggestionsSummary",
@@ -6307,19 +5708,19 @@ function __c23(j: number): any {
         S.Struct({
           Text: SensitiveString,
           PlaceId: S.optional(SensitiveString),
-          Categories: S.optional(PlaceCategoryList),
-          SupplementalCategories: S.optional(PlaceSupplementalCategoryList),
+          Categories: S.optional(__S(68, __c8, 4)),
+          SupplementalCategories: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({
         identifier: "SearchForSuggestionsResult",
       });
     case 3:
-      return S.Array(SearchForSuggestionsResult);
+      return S.Array(__S(186, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Summary: SearchPlaceIndexForSuggestionsSummary,
-          Results: SearchForSuggestionsResultList,
+          Summary: __S(185, __c23, 1),
+          Results: __S(187, __c23, 3),
         }),
       ).annotate({
         identifier: "SearchPlaceIndexForSuggestionsResponse",
@@ -6329,12 +5730,12 @@ function __c23(j: number): any {
         S.Struct({
           IndexName: S.String.pipe(T.HttpLabel("IndexName")),
           Text: SensitiveString,
-          BiasPosition: S.optional(Position),
-          FilterBBox: S.optional(BoundingBox),
-          FilterCountries: S.optional(CountryCodeList),
+          BiasPosition: S.optional(__S(12, __c1, 4)),
+          FilterBBox: S.optional(__S(12, __c1, 4)),
+          FilterCountries: S.optional(__S(68, __c8, 4)),
           MaxResults: S.optional(S.Number),
           Language: S.optional(S.String),
-          FilterCategories: S.optional(FilterPlaceCategoryList),
+          FilterCategories: S.optional(__S(68, __c8, 4)),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
         }).pipe(
           T.all(
@@ -6353,14 +5754,14 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Text: SensitiveString,
-          BiasPosition: S.optional(Position),
-          FilterBBox: S.optional(BoundingBox),
-          FilterCountries: S.optional(CountryCodeList),
+          BiasPosition: S.optional(__S(12, __c1, 4)),
+          FilterBBox: S.optional(__S(12, __c1, 4)),
+          FilterCountries: S.optional(__S(68, __c8, 4)),
           MaxResults: S.optional(S.Number),
-          ResultBBox: S.optional(BoundingBox),
+          ResultBBox: S.optional(__S(12, __c1, 4)),
           DataSource: S.String,
           Language: S.optional(S.String),
-          FilterCategories: S.optional(FilterPlaceCategoryList),
+          FilterCategories: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({
         identifier: "SearchPlaceIndexForTextSummary",
@@ -6368,7 +5769,7 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Place: Place,
+          Place: __S(133, __c16, 5),
           Distance: S.optional(S.Number),
           Relevance: S.optional(S.Number),
           PlaceId: S.optional(SensitiveString),
@@ -6379,10 +5780,10 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SearchForTextResult);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Summary: SearchPlaceIndexForTextSummary, Results: SearchForTextResultList }),
+        S.Struct({ Summary: __S(190, __c23, 6), Results: __S(192, __c24, 0) }),
       ).annotate({
         identifier: "SearchPlaceIndexForTextResponse",
       });
@@ -6391,12 +5792,12 @@ function __c24(j: number): any {
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           Action: S.String,
-          ActionOptions: S.optional(JobActionOptions),
+          ActionOptions: S.optional(__S(119, __c14, 7)),
           ExecutionRoleArn: S.String,
-          InputOptions: JobInputOptions,
+          InputOptions: __S(121, __c15, 1),
           Name: S.optional(S.String),
-          OutputOptions: JobOutputOptions,
-          Tags: S.optional(TagMap),
+          OutputOptions: __S(122, __c15, 2),
+          Tags: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/metadata/v0/jobs" }), svc, auth, proto, ver, rules),
         ),
@@ -6412,7 +5813,10 @@ function __c24(j: number): any {
       ).annotate({ identifier: "StartJobResponse" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap }).pipe(
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: __S(65, __c8, 1),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -6427,7 +5831,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(2, __c0, 2).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -6481,7 +5885,7 @@ function __c25(j: number): any {
           ExpireTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NoExpiry: S.optional(S.Boolean),
           ForceUpdate: S.optional(S.Boolean),
-          Restrictions: S.optional(ApiKeyRestrictions),
+          Restrictions: S.optional(__S(73, __c9, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/metadata/v0/keys/{KeyName}" }),
@@ -6505,7 +5909,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PoliticalView: S.optional(SensitiveString),
-          CustomLayers: S.optional(CustomLayerList),
+          CustomLayers: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "MapConfigurationUpdate" });
     case 3:
@@ -6514,7 +5918,7 @@ function __c25(j: number): any {
           MapName: S.String.pipe(T.HttpLabel("MapName")),
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
-          ConfigurationUpdate: S.optional(MapConfigurationUpdate),
+          ConfigurationUpdate: S.optional(__S(202, __c25, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/maps/v0/maps/{MapName}" }),
@@ -6540,7 +5944,7 @@ function __c25(j: number): any {
           IndexName: S.String.pipe(T.HttpLabel("IndexName")),
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
-          DataSourceConfiguration: S.optional(DataSourceConfiguration),
+          DataSourceConfiguration: S.optional(__S(79, __c9, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/places/v0/indexes/{IndexName}" }),
@@ -6627,7 +6031,7 @@ function __c26(j: number): any {
         identifier: "WiFiAccessPoint",
       });
     case 4:
-      return S.Array(WiFiAccessPoint);
+      return S.Array(__S(211, __c26, 3));
     case 5:
       return S.suspend(() => S.Struct({ Earfcn: S.Number, Pci: S.Number })).annotate({
         identifier: "LteLocalId",
@@ -6643,7 +6047,7 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "LteNetworkMeasurements" });
     case 7:
-      return S.Array(LteNetworkMeasurements);
+      return S.Array(__S(214, __c26, 6));
   }
 }
 function __c27(j: number): any {
@@ -6654,8 +6058,8 @@ function __c27(j: number): any {
           CellId: S.Number,
           Mcc: S.Number,
           Mnc: S.Number,
-          LocalId: S.optional(LteLocalId),
-          NetworkMeasurements: S.optional(LteNetworkMeasurementsList),
+          LocalId: S.optional(__S(213, __c26, 5)),
+          NetworkMeasurements: S.optional(__S(215, __c26, 7)),
           TimingAdvance: S.optional(S.Number),
           NrCapable: S.optional(S.Boolean),
           Rsrp: S.optional(S.Number),
@@ -6664,9 +6068,9 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "LteCellDetails" });
     case 1:
-      return S.Array(LteCellDetails);
+      return S.Array(__S(216, __c27, 0));
     case 2:
-      return S.suspend(() => S.Struct({ LteCellDetails: LteCellDetailsList })).annotate({
+      return S.suspend(() => S.Struct({ LteCellDetails: __S(217, __c27, 1) })).annotate({
         identifier: "CellSignals",
       });
     case 3:
@@ -6674,18 +6078,18 @@ function __c27(j: number): any {
         S.Struct({
           DeviceId: S.String,
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Position: Position,
-          Accuracy: S.optional(PositionalAccuracy),
+          Position: __S(12, __c1, 4),
+          Accuracy: S.optional(__S(13, __c1, 5)),
           Ipv4Address: S.optional(S.String),
-          WiFiAccessPoints: S.optional(WiFiAccessPointList),
-          CellSignals: S.optional(CellSignals),
+          WiFiAccessPoints: S.optional(__S(212, __c26, 4)),
+          CellSignals: S.optional(__S(218, __c27, 2)),
         }),
       ).annotate({ identifier: "DeviceState" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           TrackerName: S.String.pipe(T.HttpLabel("TrackerName")),
-          DeviceState: DeviceState,
+          DeviceState: __S(219, __c27, 3),
           DistanceUnit: S.optional(S.String),
         }).pipe(
           T.all(
@@ -6703,8 +6107,8 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Position: S.optional(Position),
-          Accuracy: S.optional(PositionalAccuracy),
+          Position: S.optional(__S(12, __c1, 4)),
+          Accuracy: S.optional(__S(13, __c1, 5)),
           DeviationDistance: S.optional(S.Number),
           ProxyDetected: S.Boolean,
         }),
@@ -6712,7 +6116,7 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InferredState: InferredState,
+          InferredState: __S(221, __c27, 5),
           DeviceId: S.String,
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ReceivedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -6732,6 +6136,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(223, __c27, 7));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

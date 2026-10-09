@@ -7,6 +7,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -32,15 +34,8 @@ export interface GetVrackServiceResourceRequest {
   /** Vrack services ID */
   vrackServicesId: string;
 }
-const GetVrackServiceResourceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetVrackServiceResourceRequest>;
-
 /** ProductStatusEnum */
 export type VrackServicesProductStatusEnum = "ACTIVE" | "DRAFT" | "SUSPENDED";
-const VrackServicesProductStatusEnum = S.String;
-
 /** Endpoint holding a managed service IP */
 export interface VrackServicesEndpoint {
   /** IP description defined in the managed service */
@@ -48,18 +43,8 @@ export interface VrackServicesEndpoint {
   /** IP address assigned by OVHcloud */
   ip?: string;
 }
-const VrackServicesEndpoint = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<VrackServicesEndpoint>;
-
 /** Endpoints representing the IPs assigned to the managed services */
 export type VrackServicesServiceEndpointEndpointsList = Array<VrackServicesEndpoint>;
-const VrackServicesServiceEndpointEndpointsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<VrackServicesServiceEndpointEndpointsList>;
-
 /** A Service Endpoint provides an access to managed services directly from one or several private IPs in the associated vRack */
 export interface VrackServicesServiceEndpoint {
   /** Endpoints representing the IPs assigned to the managed services */
@@ -67,18 +52,8 @@ export interface VrackServicesServiceEndpoint {
   /** IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call. */
   managedServiceURN?: string;
 }
-const VrackServicesServiceEndpoint = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<VrackServicesServiceEndpoint>;
-
 /** Service endpoints of the subnet */
 export type VrackServicesSubnetServiceEndpointsList = Array<VrackServicesServiceEndpoint>;
-const VrackServicesSubnetServiceEndpointsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<VrackServicesSubnetServiceEndpointsList>;
-
 /** Definition of the range dedicated to the subnet's services */
 export interface VrackServicesServiceRange {
   /** CIDR dedicated to the subnet's services */
@@ -90,11 +65,6 @@ export interface VrackServicesServiceRange {
   /** Number of service range IPs assigned to the managed services */
   usedIps?: number;
 }
-const VrackServicesServiceRange = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<VrackServicesServiceRange>;
-
 /** A network segment of the associated vRack. It represents an IP addressing scheme inside the private network */
 export interface VrackServicesSubnet {
   /** IP address range of the subnet in CIDR format */
@@ -108,15 +78,8 @@ export interface VrackServicesSubnet {
   /** Unique inner VLAN that allows subnets segregation */
   vlan?: number | null;
 }
-const VrackServicesSubnet = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<VrackServicesSubnet>;
-
 /** Subnets of the current vRack Services */
 export type VrackServicesVrackServicesCurrentStateSubnetsList = Array<VrackServicesSubnet>;
-const VrackServicesVrackServicesCurrentStateSubnetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<VrackServicesVrackServicesCurrentStateSubnetsList>;
-
 /** Current state of the vRack Services */
 export interface VrackServicesVrackServicesCurrentState {
   /** Product status of the vRack Services */
@@ -128,15 +91,8 @@ export interface VrackServicesVrackServicesCurrentState {
   /** vRack associated to the vRack Services */
   vrackId?: string | null;
 }
-const VrackServicesVrackServicesCurrentState = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<VrackServicesVrackServicesCurrentState>;
-
 /** Current status of a task. A task in ERROR cannot be retried without your inputs. PENDING tasks will be executed as soon as possible. A RUNNING task is currently executing your original request. SCHEDULED is used for tasks that will be executed in the future */
 export type CommonCurrentTaskStatusEnum = "ERROR" | "PENDING" | "RUNNING" | "SCHEDULED";
-const CommonCurrentTaskStatusEnum = S.String;
-
 /** Asynchronous operation currently running */
 export interface CommonCurrentTask {
   /** Identifier of the current task */
@@ -148,22 +104,10 @@ export interface CommonCurrentTask {
   /** Type of the current task */
   type?: string;
 }
-const CommonCurrentTask = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CommonCurrentTask>;
-
 /** Asynchronous operations ongoing on the vRack Services */
 export type VrackServicesVrackServicesWithIAMCurrentTasksList = Array<CommonCurrentTask>;
-const VrackServicesVrackServicesWithIAMCurrentTasksList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<VrackServicesVrackServicesWithIAMCurrentTasksList>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -175,8 +119,6 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<IamResourceMetadata>;
-
 /** It reflects the readiness of the vRack Services resource. The status `READY` indicates that the vRack Services state is stable. It guarantees that the `currentState` is fully aligned with the `targetSpec`. A new target specification request will be accepted only in this status. */
 export type VrackServicesResourceStatusEnum =
   | "CREATING"
@@ -184,36 +126,19 @@ export type VrackServicesResourceStatusEnum =
   | "ERROR"
   | "READY"
   | "UPDATING";
-const VrackServicesResourceStatusEnum = S.String;
-
 /** Target specification of a Service Endpoint. A Service Endpoint provides an access to a managed service directly from one or several private IPs in the associated vRack */
 export interface VrackServicesTargetServiceEndpoint {
   /** IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call */
   managedServiceURN: string;
 }
-const VrackServicesTargetServiceEndpoint = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<VrackServicesTargetServiceEndpoint>;
-
 /** Target specification of the Service Endpoints */
 export type VrackServicesTargetSubnetServiceEndpointsList =
   Array<VrackServicesTargetServiceEndpoint>;
-const VrackServicesTargetSubnetServiceEndpointsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<VrackServicesTargetSubnetServiceEndpointsList>;
-
 /** Target specification of the range dedicated to the subnet's services */
 export interface VrackServicesTargetServiceRange {
   /** IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29 */
   cidr: string;
 }
-const VrackServicesTargetServiceRange = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<VrackServicesTargetServiceRange>;
-
 /** Target specification of a subnet */
 export interface VrackServicesTargetSubnet {
   /** IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24 */
@@ -227,28 +152,13 @@ export interface VrackServicesTargetSubnet {
   /** Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic) */
   vlan?: number | null;
 }
-const VrackServicesTargetSubnet = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<VrackServicesTargetSubnet>;
-
 /** Target specification of the subnets. Maximum one subnet per vRack Services */
 export type VrackServicesVrackServicesTargetSpecSubnetsList = Array<VrackServicesTargetSubnet>;
-const VrackServicesVrackServicesTargetSpecSubnetsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<VrackServicesVrackServicesTargetSpecSubnetsList>;
-
 /** Target specification of the vRack Services */
 export interface VrackServicesVrackServicesTargetSpec {
   /** Target specification of the subnets. Maximum one subnet per vRack Services */
   subnets: VrackServicesVrackServicesTargetSpecSubnetsList;
 }
-const VrackServicesVrackServicesTargetSpec = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<VrackServicesVrackServicesTargetSpec>;
-
 /** A vRack Services */
 export interface VrackServicesVrackServicesWithIAM {
   /** Computed hash used to control concurrent modification requests. Here, it represents the current target specification value */
@@ -270,37 +180,21 @@ export interface VrackServicesVrackServicesWithIAM {
   /** Date of the Last vRack Services update */
   updatedAt?: string;
 }
-const VrackServicesVrackServicesWithIAM = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<VrackServicesVrackServicesWithIAM>;
-
 export interface GetVrackServiceResourceTaskRequest {
   /** Vrack services ID */
   vrackServicesId: string;
   /** Task ID */
   taskId: string;
 }
-const GetVrackServiceResourceTaskRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetVrackServiceResourceTaskRequest>;
-
 /** Errors that occured on the task */
 export interface CommonTaskError {
   /** Error description */
   message?: string;
 }
-const CommonTaskError = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CommonTaskError>;
-
 /** Errors that occured on the task */
 export type CommonTaskErrorsList = Array<CommonTaskError>;
-const CommonTaskErrorsList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CommonTaskErrorsList>;
-
 /** TaskStatusEnum */
 export type CommonTaskStatusEnum = "DONE" | "ERROR" | "PENDING" | "RUNNING" | "SCHEDULED";
-const CommonTaskStatusEnum = S.String;
-
 /** Detailed information about an asynchronous operation progress steps */
 export interface CommonTaskProgress {
   /** Progress step name */
@@ -308,15 +202,8 @@ export interface CommonTaskProgress {
   /** Current status of the progress step */
   status?: CommonTaskStatusEnum;
 }
-const CommonTaskProgress = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CommonTaskProgress>;
-
 /** Progress steps of the asynchronous operation */
 export type CommonTaskProgressList = Array<CommonTaskProgress>;
-const CommonTaskProgressList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CommonTaskProgressList>;
-
 /** Asynchronous operation */
 export interface CommonTask {
   /** Creation date of the task */
@@ -342,84 +229,35 @@ export interface CommonTask {
   /** Last update of the task */
   updatedAt?: string;
 }
-const CommonTask = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CommonTask>;
-
 export interface ListVrackServiceReferenceCompatibleManagedServiceTypeRequest {
   /** Pagination cursor */
   xPaginationCursor?: string;
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListVrackServiceReferenceCompatibleManagedServiceTypeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeRequest>;
-
 export type ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList = Array<string>;
-const ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList>;
-
 export type ListVrackServiceReferenceCompatibleManagedServiceTypeResponse =
   ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList;
-const ListVrackServiceReferenceCompatibleManagedServiceTypeResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponse>;
-
 export interface ListVrackServiceReferenceRegionRequest {
   /** Pagination cursor */
   xPaginationCursor?: string;
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListVrackServiceReferenceRegionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListVrackServiceReferenceRegionRequest>;
-
 /** A vRack Services compatible localization */
 export interface VrackServicesRegion {
   /** Region name */
   name?: string;
 }
-const VrackServicesRegion = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<VrackServicesRegion>;
-
 export type ListVrackServiceReferenceRegionResponseBodyList = Array<VrackServicesRegion>;
-const ListVrackServiceReferenceRegionResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListVrackServiceReferenceRegionResponseBodyList>;
-
 export type ListVrackServiceReferenceRegionResponse =
   ListVrackServiceReferenceRegionResponseBodyList;
-const ListVrackServiceReferenceRegionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListVrackServiceReferenceRegionResponse>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListVrackServiceResourceRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListVrackServiceResourceRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListVrackServiceResourceRequestIamTagsValueList>;
-
 export type ListVrackServiceResourceRequestIamTagsMap = {
   [key: string]: ListVrackServiceResourceRequestIamTagsValueList | undefined;
 };
-const ListVrackServiceResourceRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListVrackServiceResourceRequestIamTagsMap>;
-
 export interface ListVrackServiceResourceRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListVrackServiceResourceRequestIamTagsMap;
@@ -428,23 +266,8 @@ export interface ListVrackServiceResourceRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListVrackServiceResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListVrackServiceResourceRequest>;
-
 export type ListVrackServiceResourceResponseBodyList = Array<VrackServicesVrackServicesWithIAM>;
-const ListVrackServiceResourceResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListVrackServiceResourceResponseBodyList>;
-
 export type ListVrackServiceResourceResponse = ListVrackServiceResourceResponseBodyList;
-const ListVrackServiceResourceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListVrackServiceResourceResponse>;
-
 export interface ListVrackServiceResourceEligibleManagedServiceRequest {
   /** Vrack services ID */
   vrackServicesId: string;
@@ -453,18 +276,8 @@ export interface ListVrackServiceResourceEligibleManagedServiceRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListVrackServiceResourceEligibleManagedServiceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceRequest>;
-
 /** List of IAM resource URNs */
 export type VrackServicesEligibleManagedServiceManagedServiceURNsList = Array<string>;
-const VrackServicesEligibleManagedServiceManagedServiceURNsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<VrackServicesEligibleManagedServiceManagedServiceURNsList>;
-
 /** List of managed services eligible to the requested vRack Services */
 export interface VrackServicesEligibleManagedService {
   /** IAM resource type. Compatible managed service types are listed by /reference/compatibleManagedServiceType call. */
@@ -472,25 +285,10 @@ export interface VrackServicesEligibleManagedService {
   /** List of IAM resource URNs */
   managedServiceURNs?: VrackServicesEligibleManagedServiceManagedServiceURNsList;
 }
-const VrackServicesEligibleManagedService = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<VrackServicesEligibleManagedService>;
-
 export type ListVrackServiceResourceEligibleManagedServiceResponseBodyList =
   Array<VrackServicesEligibleManagedService>;
-const ListVrackServiceResourceEligibleManagedServiceResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceResponseBodyList>;
-
 export type ListVrackServiceResourceEligibleManagedServiceResponse =
   ListVrackServiceResourceEligibleManagedServiceResponseBodyList;
-const ListVrackServiceResourceEligibleManagedServiceResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceResponse>;
-
 export interface ListVrackServiceResourceTaskRequest {
   /** Vrack services ID */
   vrackServicesId: string;
@@ -499,23 +297,8 @@ export interface ListVrackServiceResourceTaskRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListVrackServiceResourceTaskRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListVrackServiceResourceTaskRequest>;
-
 export type ListVrackServiceResourceTaskResponseBodyList = Array<CommonTask>;
-const ListVrackServiceResourceTaskResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListVrackServiceResourceTaskResponseBodyList>;
-
 export type ListVrackServiceResourceTaskResponse = ListVrackServiceResourceTaskResponseBodyList;
-const ListVrackServiceResourceTaskResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListVrackServiceResourceTaskResponse>;
-
 export interface PutVrackServiceResourceRequest {
   /** Vrack services ID */
   vrackServicesId: string;
@@ -524,16 +307,8 @@ export interface PutVrackServiceResourceRequest {
   /** Requested target specification */
   targetSpec: VrackServicesVrackServicesTargetSpec;
 }
-const PutVrackServiceResourceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<PutVrackServiceResourceRequest>;
-
 /** Asynchronous operations ongoing on the vRack Services */
 export type VrackServicesVrackServicesCurrentTasksList = Array<CommonCurrentTask>;
-const VrackServicesVrackServicesCurrentTasksList =
-  VrackServicesVrackServicesWithIAMCurrentTasksList as any as S.Schema<VrackServicesVrackServicesCurrentTasksList>;
-
 /** A vRack Services */
 export interface VrackServicesVrackServices {
   /** Computed hash used to control concurrent modification requests. Here, it represents the current target specification value */
@@ -553,11 +328,6 @@ export interface VrackServicesVrackServices {
   /** Date of the Last vRack Services update */
   updatedAt?: string;
 }
-const VrackServicesVrackServices = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<VrackServicesVrackServices>;
-
 export type GetVrackServiceResourceError = NotFound | OvhOpError;
 /** Retrieve a vRack Services */
 export const getVrackServiceResource: API.OperationMethod<
@@ -566,8 +336,8 @@ export const getVrackServiceResource: API.OperationMethod<
   GetVrackServiceResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackServiceResourceRequest,
-  output: VrackServicesVrackServicesWithIAM,
+  input: __S(0, __c0, 0) as any as S.Schema<GetVrackServiceResourceRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<VrackServicesVrackServicesWithIAM>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -581,8 +351,8 @@ export const getVrackServiceResourceTask: API.OperationMethod<
   GetVrackServiceResourceTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackServiceResourceTaskRequest,
-  output: CommonTask,
+  input: __S(20, __c2, 4) as any as S.Schema<GetVrackServiceResourceTaskRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CommonTask>,
   errors: [BadRequest, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -596,8 +366,16 @@ export const listVrackServiceReferenceCompatibleManagedServiceType: API.Operatio
   ListVrackServiceReferenceCompatibleManagedServiceTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackServiceReferenceCompatibleManagedServiceTypeRequest,
-  output: ListVrackServiceReferenceCompatibleManagedServiceTypeResponse,
+  input: __S(
+    26,
+    __c3,
+    2,
+  ) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeRequest>,
+  output: __S(
+    28,
+    __c3,
+    4,
+  ) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -611,8 +389,8 @@ export const listVrackServiceReferenceRegion: API.OperationMethod<
   ListVrackServiceReferenceRegionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackServiceReferenceRegionRequest,
-  output: ListVrackServiceReferenceRegionResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<ListVrackServiceReferenceRegionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ListVrackServiceReferenceRegionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -626,8 +404,8 @@ export const listVrackServiceResource: API.OperationMethod<
   ListVrackServiceResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackServiceResourceRequest,
-  output: ListVrackServiceResourceResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<ListVrackServiceResourceRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<ListVrackServiceResourceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -641,8 +419,12 @@ export const listVrackServiceResourceEligibleManagedService: API.OperationMethod
   ListVrackServiceResourceEligibleManagedServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackServiceResourceEligibleManagedServiceRequest,
-  output: ListVrackServiceResourceEligibleManagedServiceResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceRequest>,
+  output: __S(
+    43,
+    __c5,
+    3,
+  ) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -656,8 +438,8 @@ export const listVrackServiceResourceTask: API.OperationMethod<
   ListVrackServiceResourceTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackServiceResourceTaskRequest,
-  output: ListVrackServiceResourceTaskResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<ListVrackServiceResourceTaskRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<ListVrackServiceResourceTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -671,8 +453,8 @@ export const putVrackServiceResource: API.OperationMethod<
   PutVrackServiceResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutVrackServiceResourceRequest,
-  output: VrackServicesVrackServices,
+  input: __S(47, __c5, 7) as any as S.Schema<PutVrackServiceResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<VrackServicesVrackServices>,
   errors: [BadRequest, NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -699,18 +481,18 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "VrackServicesEndpoint" });
     case 2:
-      return S.Array(VrackServicesEndpoint);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(VrackServicesServiceEndpointEndpointsList),
+          endpoints: S.optional(__S(2, __c0, 2)),
           managedServiceURN: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VrackServicesServiceEndpoint",
       });
     case 4:
-      return S.Array(VrackServicesServiceEndpoint);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -727,13 +509,13 @@ function __c0(j: number): any {
         S.Struct({
           cidr: S.optional(S.String),
           displayName: S.optional(S.NullOr(S.String)),
-          serviceEndpoints: S.optional(VrackServicesSubnetServiceEndpointsList),
-          serviceRange: S.optional(VrackServicesServiceRange),
+          serviceEndpoints: S.optional(__S(4, __c0, 4)),
+          serviceRange: S.optional(__S(5, __c0, 5)),
           vlan: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "VrackServicesSubnet" });
     case 7:
-      return S.Array(VrackServicesSubnet);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -741,9 +523,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          productStatus: S.optional(VrackServicesProductStatusEnum),
+          productStatus: S.optional(S.String),
           region: S.optional(S.String),
-          subnets: S.optional(VrackServicesVrackServicesCurrentStateSubnetsList),
+          subnets: S.optional(__S(7, __c0, 7)),
           vrackId: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -754,12 +536,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           link: S.optional(S.String),
-          status: S.optional(S.NullOr(CommonCurrentTaskStatusEnum)),
+          status: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonCurrentTask" });
     case 2:
-      return S.Array(CommonCurrentTask);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.Record(S.String, S.String);
     case 4:
@@ -767,7 +549,7 @@ function __c1(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(11, __c1, 3))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -780,7 +562,7 @@ function __c1(j: number): any {
         identifier: "VrackServicesTargetServiceEndpoint",
       });
     case 6:
-      return S.Array(VrackServicesTargetServiceEndpoint);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -798,19 +580,19 @@ function __c2(j: number): any {
         S.Struct({
           cidr: S.String,
           displayName: S.optional(S.NullOr(S.String)),
-          serviceEndpoints: VrackServicesTargetSubnetServiceEndpointsList,
-          serviceRange: VrackServicesTargetServiceRange,
+          serviceEndpoints: __S(14, __c1, 6),
+          serviceRange: __S(15, __c1, 7),
           vlan: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "VrackServicesTargetSubnet",
       });
     case 1:
-      return S.Array(VrackServicesTargetSubnet);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subnets: VrackServicesVrackServicesTargetSpecSubnetsList,
+          subnets: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "VrackServicesVrackServicesTargetSpec",
@@ -820,12 +602,12 @@ function __c2(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(VrackServicesVrackServicesCurrentState),
-          currentTasks: S.optional(S.NullOr(VrackServicesVrackServicesWithIAMCurrentTasksList)),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          currentState: S.optional(__S(8, __c1, 0)),
+          currentTasks: S.optional(S.NullOr(__S(10, __c1, 2))),
+          iam: S.optional(S.NullOr(__S(12, __c1, 4))),
           id: S.optional(S.String),
-          resourceStatus: S.optional(VrackServicesResourceStatusEnum),
-          targetSpec: S.optional(VrackServicesVrackServicesTargetSpec),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(18, __c2, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -853,12 +635,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CommonTaskError" });
     case 6:
-      return S.Array(CommonTaskError);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(CommonTaskStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonTaskProgress" });
   }
@@ -866,19 +648,19 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CommonTaskProgress);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          errors: S.optional(S.NullOr(CommonTaskErrorsList)),
+          errors: S.optional(S.NullOr(__S(22, __c2, 6))),
           finishedAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           link: S.optional(S.String),
           message: S.optional(S.String),
-          progress: S.optional(CommonTaskProgressList),
+          progress: S.optional(__S(24, __c3, 0)),
           startedAt: S.optional(S.NullOr(S.String)),
-          status: S.optional(CommonTaskStatusEnum),
+          status: S.optional(S.String),
           type: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
@@ -901,11 +683,7 @@ function __c3(j: number): any {
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.suspend(() =>
-        ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceReferenceCompatibleManagedServiceTypeResponse",
       });
     case 5:
@@ -924,15 +702,13 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "VrackServicesRegion" });
     case 7:
-      return S.Array(VrackServicesRegion);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListVrackServiceReferenceRegionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceReferenceRegionResponse",
       });
     case 1:
@@ -940,13 +716,13 @@ function __c4(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 2:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(33, __c4, 1));
     case 3:
-      return S.Record(S.String, ListVrackServiceResourceRequestIamTagsValueList);
+      return S.Record(S.String, __S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListVrackServiceResourceRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(35, __c4, 3).pipe(T.Query())),
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(T.Http({ method: "GET", uri: "/vrackServices/resource", code: 200 })),
@@ -954,11 +730,9 @@ function __c4(j: number): any {
         identifier: "ListVrackServiceResourceRequest",
       });
     case 5:
-      return S.Array(VrackServicesVrackServicesWithIAM);
+      return S.Array(__S(19, __c2, 3));
     case 6:
-      return S.suspend(() =>
-        ListVrackServiceResourceResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(37, __c4, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceResourceResponse",
       });
     case 7:
@@ -987,17 +761,15 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           managedServiceType: S.optional(S.String),
-          managedServiceURNs: S.optional(VrackServicesEligibleManagedServiceManagedServiceURNsList),
+          managedServiceURNs: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "VrackServicesEligibleManagedService",
       });
     case 2:
-      return S.Array(VrackServicesEligibleManagedService);
+      return S.Array(__S(41, __c5, 1));
     case 3:
-      return S.suspend(() =>
-        ListVrackServiceResourceEligibleManagedServiceResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(42, __c5, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceResourceEligibleManagedServiceResponse",
       });
     case 4:
@@ -1017,11 +789,9 @@ function __c5(j: number): any {
         identifier: "ListVrackServiceResourceTaskRequest",
       });
     case 5:
-      return S.Array(CommonTask);
+      return S.Array(__S(25, __c3, 1));
     case 6:
-      return S.suspend(() =>
-        ListVrackServiceResourceTaskResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(45, __c5, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackServiceResourceTaskResponse",
       });
     case 7:
@@ -1029,7 +799,7 @@ function __c5(j: number): any {
         S.Struct({
           vrackServicesId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: VrackServicesVrackServicesTargetSpec,
+          targetSpec: __S(18, __c2, 2),
         }).pipe(
           T.Http({ method: "PUT", uri: "/vrackServices/resource/{vrackServicesId}", code: 200 }),
         ),
@@ -1045,15 +815,20 @@ function __c6(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(VrackServicesVrackServicesCurrentState),
-          currentTasks: S.optional(S.NullOr(VrackServicesVrackServicesCurrentTasksList)),
+          currentState: S.optional(__S(8, __c1, 0)),
+          currentTasks: S.optional(S.NullOr(__S(10, __c1, 2))),
           id: S.optional(S.String),
-          resourceStatus: S.optional(VrackServicesResourceStatusEnum),
-          targetSpec: S.optional(VrackServicesVrackServicesTargetSpec),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(18, __c2, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VrackServicesVrackServices",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

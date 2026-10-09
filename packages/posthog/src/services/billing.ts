@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -12,52 +14,19 @@ export interface BillingActivateAuthorizeCreateRequest {
   plan: string;
   billing_limit: number;
 }
-const BillingActivateAuthorizeCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<BillingActivateAuthorizeCreateRequest>;
-
 export interface BillingActivateAuthorizeCreateResponse {}
-const BillingActivateAuthorizeCreateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BillingActivateAuthorizeCreateResponse>;
-
 export interface BillingActivateAuthorizeStatusCreateRequest {
   plan: string;
   billing_limit: number;
 }
-const BillingActivateAuthorizeStatusCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BillingActivateAuthorizeStatusCreateRequest>;
-
 export interface BillingActivateAuthorizeStatusCreateResponse {}
-const BillingActivateAuthorizeStatusCreateResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingActivateAuthorizeStatusCreateResponse>;
-
 export interface BillingActivateCreateRequest {
   plan: string;
   billing_limit: number;
 }
-const BillingActivateCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BillingActivateCreateRequest>;
-
 export interface BillingActivateCreateResponse {}
-const BillingActivateCreateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BillingActivateCreateResponse>;
-
 /** HogFunction IDs to delete as one atomic destination group. */
 export type BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = Array<string>;
-const BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
-
 export interface BillingAlertsDestinationsDeleteCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -66,55 +35,21 @@ export interface BillingAlertsDestinationsDeleteCreateRequest {
   /** HogFunction IDs to delete as one atomic destination group. */
   hog_function_ids: BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList;
 }
-const BillingAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequest>;
-
 export interface BillingAlertsDestinationsDeleteCreateResponse {}
-const BillingAlertsDestinationsDeleteCreateResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingAlertsDestinationsDeleteCreateResponse>;
-
 export interface BillingAlertsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this billing alert configuration. */
   id: string;
 }
-const BillingAlertsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BillingAlertsDestroyRequest>;
-
 export interface BillingAlertsDestroyResponse {}
-const BillingAlertsDestroyResponse =
-  BillingActivateCreateResponse as any as S.Schema<BillingAlertsDestroyResponse>;
-
 export interface BillingDeactivateCreateRequest {
   plan: string;
   billing_limit: number;
 }
-const BillingDeactivateCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BillingDeactivateCreateRequest>;
-
 export interface BillingDeactivateCreateResponse {}
-const BillingDeactivateCreateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BillingDeactivateCreateResponse>;
-
 export interface BillingGetInvoicesRetrieveRequest {}
-const BillingGetInvoicesRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BillingGetInvoicesRetrieveRequest>;
-
 export interface BillingGetInvoicesRetrieveResponse {}
-const BillingGetInvoicesRetrieveResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingGetInvoicesRetrieveResponse>;
-
 export interface BillingSpendExportRetrieveRequest {
   /** The `next` cursor from the previous page. Opaque. Ignored without page_size. */
   after?: string;
@@ -134,54 +69,22 @@ export interface BillingSpendExportRetrieveRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-const BillingSpendExportRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BillingSpendExportRetrieveRequest>;
-
 export interface BillingSpendExportRetrieveResponse {}
-const BillingSpendExportRetrieveResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingSpendExportRetrieveResponse>;
-
 export interface BillingStartupsApplyCreateRequest {
   plan: string;
   billing_limit: number;
 }
-const BillingStartupsApplyCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BillingStartupsApplyCreateRequest>;
-
 export interface BillingStartupsApplyCreateResponse {}
-const BillingStartupsApplyCreateResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingStartupsApplyCreateResponse>;
-
 export interface BillingTrialsActivateCreateRequest {
   plan: string;
   billing_limit: number;
 }
-const BillingTrialsActivateCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BillingTrialsActivateCreateRequest>;
-
 export interface BillingTrialsActivateCreateResponse {}
-const BillingTrialsActivateCreateResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingTrialsActivateCreateResponse>;
-
 export interface BillingTrialsCancelCreateRequest {
   plan: string;
   billing_limit: number;
 }
-const BillingTrialsCancelCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BillingTrialsCancelCreateRequest>;
-
 export interface BillingTrialsCancelCreateResponse {}
-const BillingTrialsCancelCreateResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingTrialsCancelCreateResponse>;
-
 export interface BillingUsageExportRetrieveRequest {
   /** The `next` cursor from the previous page. Opaque. Ignored without page_size. */
   after?: string;
@@ -201,41 +104,19 @@ export interface BillingUsageExportRetrieveRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-const BillingUsageExportRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BillingUsageExportRetrieveRequest>;
-
 export interface BillingUsageExportRetrieveResponse {}
-const BillingUsageExportRetrieveResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingUsageExportRetrieveResponse>;
-
 /** * `spend` - Spend * `projected_spend` - Projected spend */
 export type BillingAlertConfigurationMetricEnum = "spend" | "projected_spend";
-const BillingAlertConfigurationMetricEnum = S.String;
-
 /** * `relative_increase` - Relative increase * `absolute_value` - Absolute value * `absolute_increase` - Absolute increase */
 export type BillingAlertConfigurationThresholdTypeEnum =
   | "relative_increase"
   | "absolute_value"
   | "absolute_increase";
-const BillingAlertConfigurationThresholdTypeEnum = S.String;
-
 export type BillingAlertDestinationChangesDeleteItemList = Array<string>;
-const BillingAlertDestinationChangesDeleteItemList =
-  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationChangesDeleteItemList>;
-
 export type BillingAlertDestinationChangesDeleteList =
   Array<BillingAlertDestinationChangesDeleteItemList>;
-const BillingAlertDestinationChangesDeleteList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BillingAlertDestinationChangesDeleteList>;
-
 /** * `slack` - slack * `webhook` - webhook * `teams` - teams */
 export type NotificationDestinationTypeEnum = "slack" | "webhook" | "teams";
-const NotificationDestinationTypeEnum = S.String;
-
 export interface BillingAlertDestinationCreateData {
   /** Destination type. * `slack` - slack * `webhook` - webhook * `teams` - teams */
   type: NotificationDestinationTypeEnum | (string & {});
@@ -248,26 +129,11 @@ export interface BillingAlertDestinationCreateData {
   /** HTTPS webhook URL for webhook or Microsoft Teams delivery. */
   webhook_url?: string;
 }
-const BillingAlertDestinationCreateData = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BillingAlertDestinationCreateData>;
-
 export type BillingAlertDestinationChangesCreateList = Array<BillingAlertDestinationCreateData>;
-const BillingAlertDestinationChangesCreateList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BillingAlertDestinationChangesCreateList>;
-
 export interface BillingAlertDestinationChanges {
   delete?: BillingAlertDestinationChangesDeleteList;
   create?: BillingAlertDestinationChangesCreateList;
 }
-const BillingAlertDestinationChanges = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BillingAlertDestinationChanges>;
-
 export interface CreateBillingAlertRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -298,15 +164,8 @@ export interface CreateBillingAlertRequest {
   /** Destination groups to create or delete in the same transaction as this configuration write. */
   destination_changes?: BillingAlertDestinationChanges;
 }
-const CreateBillingAlertRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateBillingAlertRequest>;
-
 /** * `USD` - USD */
 export type CurrencyEnum = "USD";
-const CurrencyEnum = S.String;
-
 /** * `not_firing` - Not firing * `firing` - Firing * `errored` - Errored * `snoozed` - Snoozed * `broken` - Broken */
 export type BillingAlertConfigurationStateEnum =
   | "not_firing"
@@ -314,28 +173,13 @@ export type BillingAlertConfigurationStateEnum =
   | "errored"
   | "snoozed"
   | "broken";
-const BillingAlertConfigurationStateEnum = S.String;
-
 export type BillingAlertDestinationSummaryHogFunctionIdsList = Array<string>;
-const BillingAlertDestinationSummaryHogFunctionIdsList =
-  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationSummaryHogFunctionIdsList>;
-
 export interface BillingAlertDestinationSummary {
   type: NotificationDestinationTypeEnum;
   hog_function_ids: BillingAlertDestinationSummaryHogFunctionIdsList;
 }
-const BillingAlertDestinationSummary = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BillingAlertDestinationSummary>;
-
 /** Notification destination groups configured for this alert, including their shared HogFunctions. */
 export type BillingAlertConfigurationOutputDestinationsList = Array<BillingAlertDestinationSummary>;
-const BillingAlertConfigurationOutputDestinationsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BillingAlertConfigurationOutputDestinationsList>;
-
 export interface BillingAlertConfigurationOutput {
   /** Unique identifier for this billing alert. */
   id: string;
@@ -392,22 +236,12 @@ export interface BillingAlertConfigurationOutput {
   /** When this alert was last updated. */
   updated_at: string | null;
 }
-const BillingAlertConfigurationOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BillingAlertConfigurationOutput>;
-
 export interface CreateBillingAlertsCheckNowRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this billing alert configuration. */
   id: string;
 }
-const CreateBillingAlertsCheckNowRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateBillingAlertsCheckNowRequest>;
-
 /** * `check` - Check * `firing` - Firing * `resolved` - Resolved * `errored` - Errored * `broken_config` - Broken config */
 export type BillingAlertEventKindEnum =
   | "check"
@@ -415,12 +249,8 @@ export type BillingAlertEventKindEnum =
   | "resolved"
   | "errored"
   | "broken_config";
-const BillingAlertEventKindEnum = S.String;
-
 /** * `scheduled` - Scheduled * `manual` - Manual */
 export type BillingAlertEventSourceEnum = "scheduled" | "manual";
-const BillingAlertEventSourceEnum = S.String;
-
 export interface BillingAlertEvent {
   /** Unique identifier for this billing alert event. */
   id: string;
@@ -469,8 +299,6 @@ export interface BillingAlertEvent {
   /** Human-readable explanation of the evaluation outcome. */
   reason: string;
 }
-const BillingAlertEvent = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BillingAlertEvent>;
-
 export interface BillingAlertCheckNowResponse {
   /** Evaluation event recorded by the manual check, or null for a paused preview. */
   event?: BillingAlertEvent | null;
@@ -483,11 +311,6 @@ export interface BillingAlertCheckNowResponse {
   /** Evaluated billing-period total, or null when billing data was not available. */
   current_value?: string | null;
 }
-const BillingAlertCheckNowResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BillingAlertCheckNowResponse>;
-
 export interface CreateBillingAlertsDestinationRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -504,120 +327,44 @@ export interface CreateBillingAlertsDestinationRequest {
   /** HTTPS webhook URL for webhook or Microsoft Teams delivery. */
   webhook_url?: string;
 }
-const CreateBillingAlertsDestinationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateBillingAlertsDestinationRequest>;
-
 export type BillingAlertDestinationResponseHogFunctionIdsList = Array<string>;
-const BillingAlertDestinationResponseHogFunctionIdsList =
-  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationResponseHogFunctionIdsList>;
-
 export interface BillingAlertDestinationResponse {
   hog_function_ids: BillingAlertDestinationResponseHogFunctionIdsList;
 }
-const BillingAlertDestinationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<BillingAlertDestinationResponse>;
-
 export interface CreateBillingCouponsClaimRequest {
   plan: string;
   billing_limit: number;
 }
-const CreateBillingCouponsClaimRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateBillingCouponsClaimRequest>;
-
 export interface CreateBillingCouponsClaimResponse {}
-const CreateBillingCouponsClaimResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingCouponsClaimResponse>;
-
 export interface CreateBillingCreditsPurchaseRequest {
   plan: string;
   billing_limit: number;
 }
-const CreateBillingCreditsPurchaseRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateBillingCreditsPurchaseRequest>;
-
 export interface CreateBillingCreditsPurchaseResponse {}
-const CreateBillingCreditsPurchaseResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingCreditsPurchaseResponse>;
-
 export interface CreateBillingSubscriptionSwitchPlanRequest {
   plan: string;
   billing_limit: number;
 }
-const CreateBillingSubscriptionSwitchPlanRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateBillingSubscriptionSwitchPlanRequest>;
-
 export interface CreateBillingSubscriptionSwitchPlanResponse {}
-const CreateBillingSubscriptionSwitchPlanResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingSubscriptionSwitchPlanResponse>;
-
 export interface GetBillingAlertRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this billing alert configuration. */
   id: string;
 }
-const GetBillingAlertRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetBillingAlertRequest>;
-
 export interface GetBillingCouponsOverviewRequest {}
-const GetBillingCouponsOverviewRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetBillingCouponsOverviewRequest>;
-
 export interface GetBillingCouponsOverviewResponse {}
-const GetBillingCouponsOverviewResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<GetBillingCouponsOverviewResponse>;
-
 export interface GetBillingCreditsOverviewRequest {}
-const GetBillingCreditsOverviewRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetBillingCreditsOverviewRequest>;
-
 export interface GetBillingCreditsOverviewResponse {}
-const GetBillingCreditsOverviewResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<GetBillingCreditsOverviewResponse>;
-
 export interface GetBillingPeriodRequest {}
-const GetBillingPeriodRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetBillingPeriodRequest>;
-
 export interface BillingPeriodResponse {
   /** Start of the organization's current billing period, or null when billing has not synced a period. */
   current_period_start: string | null;
   /** End of the organization's current billing period, or null when billing has not synced a period. */
   current_period_end: string | null;
 }
-const BillingPeriodResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<BillingPeriodResponse>;
-
 export interface GetBillingPortalRequest {}
-const GetBillingPortalRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetBillingPortalRequest>;
-
 export interface GetBillingPortalResponse {}
-const GetBillingPortalResponse =
-  BillingActivateCreateResponse as any as S.Schema<GetBillingPortalResponse>;
-
 export interface GetBillingSpendRequest {
   /** The `next` cursor from the previous page. Opaque. Ignored without page_size. */
   after?: string;
@@ -637,25 +384,10 @@ export interface GetBillingSpendRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-const GetBillingSpendRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetBillingSpendRequest>;
-
 export type BillingTimeSeriesPointDataList = Array<number>;
-const BillingTimeSeriesPointDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<BillingTimeSeriesPointDataList>;
-
 export type BillingTimeSeriesPointDatesList = Array<string>;
-const BillingTimeSeriesPointDatesList =
-  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingTimeSeriesPointDatesList>;
-
 /** * `type` - type * `team` - team * `multiple` - multiple */
 export type BreakdownTypeEnum = "type" | "team" | "multiple";
-const BreakdownTypeEnum = S.String;
-
 export interface BillingTimeSeriesPoint {
   id?: number;
   label?: string;
@@ -664,21 +396,8 @@ export interface BillingTimeSeriesPoint {
   breakdown_type?: BreakdownTypeEnum | null;
   breakdown_value?: unknown;
 }
-const BillingTimeSeriesPoint = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<BillingTimeSeriesPoint>;
-
 export type BillingTimeSeriesResponseResultsList = Array<BillingTimeSeriesPoint>;
-const BillingTimeSeriesResponseResultsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<BillingTimeSeriesResponseResultsList>;
-
 export type BillingTimeSeriesResponseTeamIdOptionsList = Array<number>;
-const BillingTimeSeriesResponseTeamIdOptionsList =
-  BillingTimeSeriesPointDataList as any as S.Schema<BillingTimeSeriesResponseTeamIdOptionsList>;
-
 export interface BillingTimeSeriesResponse {
   status?: string;
   type?: string;
@@ -688,11 +407,6 @@ export interface BillingTimeSeriesResponse {
   next?: string;
   total_count?: number;
 }
-const BillingTimeSeriesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<BillingTimeSeriesResponse>;
-
 export interface GetBillingUsageRequest {
   /** The `next` cursor from the previous page. Opaque. Ignored without page_size. */
   after?: string;
@@ -712,60 +426,22 @@ export interface GetBillingUsageRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-const GetBillingUsageRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetBillingUsageRequest>;
-
 export interface GetBillingUsageTeamOptionRequest {}
-const GetBillingUsageTeamOptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetBillingUsageTeamOptionRequest>;
-
 /** Project ids that appear in the organization's usage reports. */
 export type BillingTeamOptionsResponseTeamIdOptionsList = Array<number>;
-const BillingTeamOptionsResponseTeamIdOptionsList =
-  BillingTimeSeriesPointDataList as any as S.Schema<BillingTeamOptionsResponseTeamIdOptionsList>;
-
 export interface BillingTeamOptionsResponse {
   /** Project ids that appear in the organization's usage reports. */
   team_id_options: BillingTeamOptionsResponseTeamIdOptionsList;
 }
-const BillingTeamOptionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<BillingTeamOptionsResponse>;
-
 export interface ListBillingRequest {}
-const ListBillingRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ListBillingRequest>;
-
 export type BillingOverviewResponseProductsItemMap = { [key: string]: unknown | undefined };
-const BillingOverviewResponseProductsItemMap = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<BillingOverviewResponseProductsItemMap>;
-
 /** Subscribed and available products/addons with pricing, plan, limit, usage, and entitlement metadata. */
 export type BillingOverviewResponseProductsList = Array<BillingOverviewResponseProductsItemMap>;
-const BillingOverviewResponseProductsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<BillingOverviewResponseProductsList>;
-
 export type BillingOverviewResponseAvailableProductFeaturesList = Array<string>;
-const BillingOverviewResponseAvailableProductFeaturesList =
-  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingOverviewResponseAvailableProductFeaturesList>;
-
 export interface BillingManagedByPartner {
   /** Name of the partner that pays for this organization. Can be empty. */
   partner_name: string;
 }
-const BillingManagedByPartner = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<BillingManagedByPartner>;
-
 export interface BillingOverviewResponse {
   customer_id?: string | null;
   billing_plan?: string | null;
@@ -802,11 +478,6 @@ export interface BillingOverviewResponse {
   /** Set when a provisioning partner pays for this organization and the organization has no Stripe customer of its own. Self-serve subscription and payment changes are refused while it is set. Null otherwise. */
   billing_managed_by_partner: BillingManagedByPartner | null;
 }
-const BillingOverviewResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<BillingOverviewResponse>;
-
 export interface ListBillingAlertsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -815,29 +486,14 @@ export interface ListBillingAlertsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListBillingAlertsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListBillingAlertsRequest>;
-
 export type PaginatedBillingAlertConfigurationListOutputResultsList =
   Array<BillingAlertConfigurationOutput>;
-const PaginatedBillingAlertConfigurationListOutputResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PaginatedBillingAlertConfigurationListOutputResultsList>;
-
 export interface PaginatedBillingAlertConfigurationListOutput {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedBillingAlertConfigurationListOutputResultsList;
 }
-const PaginatedBillingAlertConfigurationListOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<PaginatedBillingAlertConfigurationListOutput>;
-
 export interface ListBillingAlertsEventsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -848,28 +504,13 @@ export interface ListBillingAlertsEventsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListBillingAlertsEventsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListBillingAlertsEventsRequest>;
-
 export type PaginatedBillingAlertEventListResultsList = Array<BillingAlertEvent>;
-const PaginatedBillingAlertEventListResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<PaginatedBillingAlertEventListResultsList>;
-
 export interface PaginatedBillingAlertEventList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedBillingAlertEventListResultsList;
 }
-const PaginatedBillingAlertEventList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PaginatedBillingAlertEventList>;
-
 export interface UpdateBillingAlertRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -902,11 +543,6 @@ export interface UpdateBillingAlertRequest {
   /** Destination groups to create or delete in the same transaction as this configuration write. */
   destination_changes?: BillingAlertDestinationChanges;
 }
-const UpdateBillingAlertRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<UpdateBillingAlertRequest>;
-
 export interface UpdateBillingAlertsPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -939,24 +575,11 @@ export interface UpdateBillingAlertsPartialRequest {
   /** Destination groups to create or delete in the same transaction as this configuration write. */
   destination_changes?: BillingAlertDestinationChanges;
 }
-const UpdateBillingAlertsPartialRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<UpdateBillingAlertsPartialRequest>;
-
 export interface UpdateBillingLicensePartialRequest {
   plan?: string;
   billing_limit?: number;
 }
-const UpdateBillingLicensePartialRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<UpdateBillingLicensePartialRequest>;
-
 export interface UpdateBillingLicensePartialResponse {}
-const UpdateBillingLicensePartialResponse =
-  BillingActivateAuthorizeCreateResponse as any as S.Schema<UpdateBillingLicensePartialResponse>;
-
 export type BillingActivateAuthorizeCreateError = PosthogOpError;
 export const billingActivateAuthorizeCreate: API.OperationMethod<
   BillingActivateAuthorizeCreateRequest,
@@ -964,8 +587,8 @@ export const billingActivateAuthorizeCreate: API.OperationMethod<
   BillingActivateAuthorizeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingActivateAuthorizeCreateRequest,
-  output: BillingActivateAuthorizeCreateResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<BillingActivateAuthorizeCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingActivateAuthorizeCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -978,8 +601,8 @@ export const billingActivateAuthorizeStatusCreate: API.OperationMethod<
   BillingActivateAuthorizeStatusCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingActivateAuthorizeStatusCreateRequest,
-  output: BillingActivateAuthorizeStatusCreateResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<BillingActivateAuthorizeStatusCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingActivateAuthorizeStatusCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -992,8 +615,8 @@ export const billingActivateCreate: API.OperationMethod<
   BillingActivateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingActivateCreateRequest,
-  output: BillingActivateCreateResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<BillingActivateCreateRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<BillingActivateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1007,8 +630,8 @@ export const billingAlertsDestinationsDeleteCreate: API.OperationMethod<
   BillingAlertsDestinationsDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingAlertsDestinationsDeleteCreateRequest,
-  output: BillingAlertsDestinationsDeleteCreateResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingAlertsDestinationsDeleteCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1021,8 +644,8 @@ export const billingAlertsDestroy: API.OperationMethod<
   BillingAlertsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingAlertsDestroyRequest,
-  output: BillingAlertsDestroyResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<BillingAlertsDestroyRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<BillingAlertsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1035,8 +658,8 @@ export const billingDeactivateCreate: API.OperationMethod<
   BillingDeactivateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingDeactivateCreateRequest,
-  output: BillingDeactivateCreateResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<BillingDeactivateCreateRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<BillingDeactivateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1049,8 +672,8 @@ export const billingGetInvoicesRetrieve: API.OperationMethod<
   BillingGetInvoicesRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingGetInvoicesRetrieveRequest,
-  output: BillingGetInvoicesRetrieveResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<BillingGetInvoicesRetrieveRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingGetInvoicesRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1064,8 +687,8 @@ export const billingSpendExportRetrieve: API.OperationMethod<
   BillingSpendExportRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingSpendExportRetrieveRequest,
-  output: BillingSpendExportRetrieveResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<BillingSpendExportRetrieveRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingSpendExportRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1078,8 +701,8 @@ export const billingStartupsApplyCreate: API.OperationMethod<
   BillingStartupsApplyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingStartupsApplyCreateRequest,
-  output: BillingStartupsApplyCreateResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<BillingStartupsApplyCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingStartupsApplyCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1092,8 +715,8 @@ export const billingTrialsActivateCreate: API.OperationMethod<
   BillingTrialsActivateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingTrialsActivateCreateRequest,
-  output: BillingTrialsActivateCreateResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<BillingTrialsActivateCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingTrialsActivateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1106,8 +729,8 @@ export const billingTrialsCancelCreate: API.OperationMethod<
   BillingTrialsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingTrialsCancelCreateRequest,
-  output: BillingTrialsCancelCreateResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<BillingTrialsCancelCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingTrialsCancelCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1121,8 +744,8 @@ export const billingUsageExportRetrieve: API.OperationMethod<
   BillingUsageExportRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingUsageExportRetrieveRequest,
-  output: BillingUsageExportRetrieveResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<BillingUsageExportRetrieveRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BillingUsageExportRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1135,8 +758,8 @@ export const createBillingAlert: API.OperationMethod<
   CreateBillingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAlertRequest,
-  output: BillingAlertConfigurationOutput,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateBillingAlertRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1150,8 +773,8 @@ export const createBillingAlertsCheckNow: API.OperationMethod<
   CreateBillingAlertsCheckNowError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAlertsCheckNowRequest,
-  output: BillingAlertCheckNowResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateBillingAlertsCheckNowRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<BillingAlertCheckNowResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1165,8 +788,8 @@ export const createBillingAlertsDestination: API.OperationMethod<
   CreateBillingAlertsDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAlertsDestinationRequest,
-  output: BillingAlertDestinationResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<CreateBillingAlertsDestinationRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<BillingAlertDestinationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1179,8 +802,8 @@ export const createBillingCouponsClaim: API.OperationMethod<
   CreateBillingCouponsClaimError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingCouponsClaimRequest,
-  output: CreateBillingCouponsClaimResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateBillingCouponsClaimRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBillingCouponsClaimResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1193,8 +816,8 @@ export const createBillingCreditsPurchase: API.OperationMethod<
   CreateBillingCreditsPurchaseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingCreditsPurchaseRequest,
-  output: CreateBillingCreditsPurchaseResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<CreateBillingCreditsPurchaseRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBillingCreditsPurchaseResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1207,8 +830,8 @@ export const createBillingSubscriptionSwitchPlan: API.OperationMethod<
   CreateBillingSubscriptionSwitchPlanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingSubscriptionSwitchPlanRequest,
-  output: CreateBillingSubscriptionSwitchPlanResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<CreateBillingSubscriptionSwitchPlanRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBillingSubscriptionSwitchPlanResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1221,8 +844,8 @@ export const getBillingAlert: API.OperationMethod<
   GetBillingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAlertRequest,
-  output: BillingAlertConfigurationOutput,
+  input: __S(32, __c4, 0) as any as S.Schema<GetBillingAlertRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1235,8 +858,8 @@ export const getBillingCouponsOverview: API.OperationMethod<
   GetBillingCouponsOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingCouponsOverviewRequest,
-  output: GetBillingCouponsOverviewResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetBillingCouponsOverviewRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetBillingCouponsOverviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1249,8 +872,8 @@ export const getBillingCreditsOverview: API.OperationMethod<
   GetBillingCreditsOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingCreditsOverviewRequest,
-  output: GetBillingCreditsOverviewResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<GetBillingCreditsOverviewRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetBillingCreditsOverviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1264,8 +887,8 @@ export const getBillingPeriod: API.OperationMethod<
   GetBillingPeriodError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingPeriodRequest,
-  output: BillingPeriodResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<GetBillingPeriodRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<BillingPeriodResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1278,8 +901,8 @@ export const getBillingPortal: API.OperationMethod<
   GetBillingPortalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingPortalRequest,
-  output: GetBillingPortalResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<GetBillingPortalRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetBillingPortalResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1293,8 +916,8 @@ export const getBillingSpend: API.OperationMethod<
   GetBillingSpendError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingSpendRequest,
-  output: BillingTimeSeriesResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<GetBillingSpendRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<BillingTimeSeriesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1307,8 +930,8 @@ export const getBillingUsage: API.OperationMethod<
   GetBillingUsageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingUsageRequest,
-  output: BillingTimeSeriesResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<GetBillingUsageRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<BillingTimeSeriesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1322,8 +945,8 @@ export const getBillingUsageTeamOption: API.OperationMethod<
   GetBillingUsageTeamOptionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingUsageTeamOptionRequest,
-  output: BillingTeamOptionsResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetBillingUsageTeamOptionRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<BillingTeamOptionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1336,8 +959,8 @@ export const listBilling: API.OperationMethod<
   ListBillingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBillingRequest,
-  output: BillingOverviewResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<ListBillingRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<BillingOverviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1350,8 +973,8 @@ export const listBillingAlerts: API.OperationMethod<
   ListBillingAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBillingAlertsRequest,
-  output: PaginatedBillingAlertConfigurationListOutput,
+  input: __S(51, __c6, 3) as any as S.Schema<ListBillingAlertsRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<PaginatedBillingAlertConfigurationListOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1365,8 +988,8 @@ export const listBillingAlertsEvents: API.OperationMethod<
   ListBillingAlertsEventsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBillingAlertsEventsRequest,
-  output: PaginatedBillingAlertEventList,
+  input: __S(54, __c6, 6) as any as S.Schema<ListBillingAlertsEventsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PaginatedBillingAlertEventList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1379,8 +1002,8 @@ export const updateBillingAlert: API.OperationMethod<
   UpdateBillingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBillingAlertRequest,
-  output: BillingAlertConfigurationOutput,
+  input: __S(57, __c7, 1) as any as S.Schema<UpdateBillingAlertRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1393,8 +1016,8 @@ export const updateBillingAlertsPartial: API.OperationMethod<
   UpdateBillingAlertsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBillingAlertsPartialRequest,
-  output: BillingAlertConfigurationOutput,
+  input: __S(58, __c7, 2) as any as S.Schema<UpdateBillingAlertsPartialRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1407,8 +1030,8 @@ export const updateBillingLicensePartial: API.OperationMethod<
   UpdateBillingLicensePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBillingLicensePartialRequest,
-  output: UpdateBillingLicensePartialResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<UpdateBillingLicensePartialRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateBillingLicensePartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1461,7 +1084,7 @@ function __c0(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          hog_function_ids: BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList,
+          hog_function_ids: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1574,11 +1197,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BillingAlertDestinationChangesDeleteItemList);
+      return S.Array(__S(5, __c0, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: NotificationDestinationTypeEnum,
+          type: S.String,
           slack_workspace_id: S.optional(S.Number),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
@@ -1588,12 +1211,12 @@ function __c2(j: number): any {
         identifier: "BillingAlertDestinationCreateData",
       });
     case 2:
-      return S.Array(BillingAlertDestinationCreateData);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          delete: S.optional(BillingAlertDestinationChangesDeleteList),
-          create: S.optional(BillingAlertDestinationChangesCreateList),
+          delete: S.optional(__S(16, __c2, 0)),
+          create: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "BillingAlertDestinationChanges",
@@ -1605,8 +1228,8 @@ function __c2(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metric: S.optional(BillingAlertConfigurationMetricEnum),
-          threshold_type: S.optional(BillingAlertConfigurationThresholdTypeEnum),
+          metric: S.optional(S.String),
+          threshold_type: S.optional(S.String),
           threshold_percentage: S.optional(S.NullOr(S.String)),
           threshold_value: S.optional(S.NullOr(S.String)),
           minimum_value: S.optional(S.String),
@@ -1614,7 +1237,7 @@ function __c2(j: number): any {
           evaluation_delay_hours: S.optional(S.Number),
           cooldown_hours: S.optional(S.Number),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          destination_changes: S.optional(BillingAlertDestinationChanges),
+          destination_changes: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1628,14 +1251,14 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: NotificationDestinationTypeEnum,
-          hog_function_ids: BillingAlertDestinationSummaryHogFunctionIdsList,
+          type: S.String,
+          hog_function_ids: __S(5, __c0, 5),
         }),
       ).annotate({
         identifier: "BillingAlertDestinationSummary",
       });
     case 6:
-      return S.Array(BillingAlertDestinationSummary);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1647,23 +1270,23 @@ function __c2(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metric: S.optional(BillingAlertConfigurationMetricEnum),
-          currency: CurrencyEnum,
+          metric: S.optional(S.String),
+          currency: S.String,
           configuration_revision: S.Number,
-          threshold_type: S.optional(BillingAlertConfigurationThresholdTypeEnum),
+          threshold_type: S.optional(S.String),
           threshold_percentage: S.optional(S.NullOr(S.String)),
           threshold_value: S.optional(S.NullOr(S.String)),
           minimum_value: S.optional(S.String),
           baseline_window_days: S.optional(S.Number),
           evaluation_delay_hours: S.optional(S.Number),
-          state: BillingAlertConfigurationStateEnum,
+          state: S.String,
           cooldown_hours: S.optional(S.Number),
           snoozed_until: S.optional(S.NullOr(S.String)),
           next_check_at: S.NullOr(S.String),
           last_checked_at: S.NullOr(S.String),
           last_notified_at: S.NullOr(S.String),
           consecutive_failures: S.Number,
-          destinations: BillingAlertConfigurationOutputDestinationsList,
+          destinations: __S(22, __c2, 6),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
@@ -1693,22 +1316,22 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: BillingAlertEventKindEnum,
-          source: BillingAlertEventSourceEnum,
+          kind: S.String,
+          source: S.String,
           attempt_number: S.Number,
           created_at: S.String,
           evaluation_date: S.NullOr(S.String),
           configuration_revision: S.Number,
           period_start: S.NullOr(S.String),
           period_end: S.NullOr(S.String),
-          metric: BillingAlertConfigurationMetricEnum,
+          metric: S.String,
           current_value: S.NullOr(S.String),
           baseline_value: S.NullOr(S.String),
           absolute_delta: S.NullOr(S.String),
           relative_delta_percentage: S.NullOr(S.String),
           threshold_breached: S.Boolean,
-          state_before: S.NullOr(BillingAlertConfigurationStateEnum),
-          state_after: S.NullOr(BillingAlertConfigurationStateEnum),
+          state_before: S.NullOr(S.String),
+          state_after: S.NullOr(S.String),
           notification_sent_at: S.NullOr(S.String),
           targets_notified: S.Unknown,
           query_duration_ms: S.NullOr(S.Number),
@@ -1720,7 +1343,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          event: S.optional(S.NullOr(BillingAlertEvent)),
+          event: S.optional(S.NullOr(__S(25, __c3, 1))),
           dispatched_destinations: S.Number,
           preview: S.Boolean,
           threshold_breached: S.Boolean,
@@ -1734,7 +1357,7 @@ function __c3(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          type: NotificationDestinationTypeEnum,
+          type: S.String,
           slack_workspace_id: S.optional(S.Number),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
@@ -1752,7 +1375,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          hog_function_ids: BillingAlertDestinationResponseHogFunctionIdsList,
+          hog_function_ids: __S(5, __c0, 5),
         }),
       ).annotate({
         identifier: "BillingAlertDestinationResponse",
@@ -1859,22 +1482,22 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           label: S.optional(S.String),
-          data: S.optional(BillingTimeSeriesPointDataList),
-          dates: S.optional(BillingTimeSeriesPointDatesList),
-          breakdown_type: S.optional(S.NullOr(BreakdownTypeEnum)),
+          data: S.optional(__S(39, __c4, 7)),
+          dates: S.optional(__S(5, __c0, 5)),
+          breakdown_type: S.optional(S.NullOr(S.String)),
           breakdown_value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "BillingTimeSeriesPoint" });
     case 1:
-      return S.Array(BillingTimeSeriesPoint);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           type: S.optional(S.String),
           customer_id: S.optional(S.Number),
-          results: BillingTimeSeriesResponseResultsList,
-          team_id_options: S.optional(BillingTimeSeriesResponseTeamIdOptionsList),
+          results: __S(41, __c5, 1),
+          team_id_options: S.optional(__S(39, __c4, 7)),
           next: S.optional(S.String),
           total_count: S.optional(S.Number),
         }),
@@ -1906,7 +1529,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          team_id_options: BillingTeamOptionsResponseTeamIdOptionsList,
+          team_id_options: __S(39, __c4, 7),
         }),
       ).annotate({
         identifier: "BillingTeamOptionsResponse",
@@ -1922,7 +1545,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BillingOverviewResponseProductsItemMap);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1952,10 +1575,8 @@ function __c6(j: number): any {
           startup_program_label_previous: S.optional(S.NullOr(S.String)),
           stripe_portal_url: S.optional(S.String),
           external_billing_provider_invoices_url: S.optional(S.String),
-          products: S.optional(BillingOverviewResponseProductsList),
-          available_product_features: S.optional(
-            BillingOverviewResponseAvailableProductFeaturesList,
-          ),
+          products: S.optional(__S(48, __c6, 0)),
+          available_product_features: S.optional(__S(5, __c0, 5)),
           usage_summary: S.optional(S.Unknown),
           billing_period: S.optional(S.Unknown),
           custom_limits_usd: S.optional(S.Unknown),
@@ -1965,7 +1586,7 @@ function __c6(j: number): any {
           account_owner: S.optional(S.Unknown),
           customer_trust_scores: S.optional(S.Unknown),
           never_drop_data: S.optional(S.Boolean),
-          billing_managed_by_partner: S.NullOr(BillingManagedByPartner),
+          billing_managed_by_partner: S.NullOr(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "BillingOverviewResponse" });
     case 3:
@@ -1983,14 +1604,14 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListBillingAlertsRequest" });
     case 4:
-      return S.Array(BillingAlertConfigurationOutput);
+      return S.Array(__S(23, __c2, 7));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedBillingAlertConfigurationListOutputResultsList,
+          results: __S(52, __c6, 4),
         }),
       ).annotate({
         identifier: "PaginatedBillingAlertConfigurationListOutput",
@@ -2013,7 +1634,7 @@ function __c6(j: number): any {
         identifier: "ListBillingAlertsEventsRequest",
       });
     case 7:
-      return S.Array(BillingAlertEvent);
+      return S.Array(__S(25, __c3, 1));
   }
 }
 function __c7(j: number): any {
@@ -2024,7 +1645,7 @@ function __c7(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedBillingAlertEventListResultsList,
+          results: __S(55, __c6, 7),
         }),
       ).annotate({
         identifier: "PaginatedBillingAlertEventList",
@@ -2037,8 +1658,8 @@ function __c7(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metric: S.optional(BillingAlertConfigurationMetricEnum),
-          threshold_type: S.optional(BillingAlertConfigurationThresholdTypeEnum),
+          metric: S.optional(S.String),
+          threshold_type: S.optional(S.String),
           threshold_percentage: S.optional(S.NullOr(S.String)),
           threshold_value: S.optional(S.NullOr(S.String)),
           minimum_value: S.optional(S.String),
@@ -2046,7 +1667,7 @@ function __c7(j: number): any {
           evaluation_delay_hours: S.optional(S.Number),
           cooldown_hours: S.optional(S.Number),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          destination_changes: S.optional(BillingAlertDestinationChanges),
+          destination_changes: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2065,8 +1686,8 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metric: S.optional(BillingAlertConfigurationMetricEnum),
-          threshold_type: S.optional(BillingAlertConfigurationThresholdTypeEnum),
+          metric: S.optional(S.String),
+          threshold_type: S.optional(S.String),
           threshold_percentage: S.optional(S.NullOr(S.String)),
           threshold_value: S.optional(S.NullOr(S.String)),
           minimum_value: S.optional(S.String),
@@ -2074,7 +1695,7 @@ function __c7(j: number): any {
           evaluation_delay_hours: S.optional(S.Number),
           cooldown_hours: S.optional(S.Number),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          destination_changes: S.optional(BillingAlertDestinationChanges),
+          destination_changes: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2095,4 +1716,9 @@ function __c7(j: number): any {
         identifier: "UpdateBillingLicensePartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

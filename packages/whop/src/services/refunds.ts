@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -41,8 +43,6 @@ export interface GetRefundRequest {
   /** The refund to retrieve, prefixed `rf_`. */
   id: string;
 }
-const GetRefundRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetRefundRequest>;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -53,8 +53,6 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Money>;
-
 /** Why the refund failed, normalized across providers. Null unless the refund failed or was canceled. */
 export type RefundFailureReason =
   | "bank_declined"
@@ -65,8 +63,6 @@ export type RefundFailureReason =
   | "not_refundable"
   | "merchant_request"
   | "unknown";
-const RefundFailureReason = S.String;
-
 /** Why the refund was issued, when recorded. */
 export type RefundReason =
   | "duplicate"
@@ -74,23 +70,15 @@ export type RefundReason =
   | "requested_by_customer"
   | "expired_uncaptured_charge"
   | "dispute_alert";
-const RefundReason = S.String;
-
 /** Whether a banking-network tracking reference is available for this refund. */
 export type RefundReferenceStatus = "available" | "pending" | "unavailable";
-const RefundReferenceStatus = S.String;
-
 /** The kind of tracking reference, such as an acquirer reference number. */
 export type RefundReferenceType =
   | "acquirer_reference_number"
   | "retrieval_reference_number"
   | "system_trace_audit_number";
-const RefundReferenceType = S.String;
-
 /** Where the refund stands with the processor: `pending`, `requires_action`, `succeeded`, `failed`, or `canceled`. */
 export type RefundStatus = "pending" | "requires_action" | "succeeded" | "failed" | "canceled";
-const RefundStatus = S.String;
-
 export interface Refund {
   /** The account that issued the refund, prefixed `biz_`. */
   account_id: string | null;
@@ -127,14 +115,8 @@ export interface Refund {
   /** True when the card network initiated the refund through Rapid Dispute Resolution. */
   visa_rdr: boolean;
 }
-const Refund = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Refund>;
-
 export type ListRefundsRequestOrder = "created_at";
-const ListRefundsRequestOrder = S.String;
-
 export type ListRefundsRequestDirection = "asc" | "desc";
-const ListRefundsRequestDirection = S.String;
-
 export interface ListRefundsRequest {
   /** Only refunds issued by this account, prefixed `biz_`. */
   account_id?: string;
@@ -159,31 +141,17 @@ export interface ListRefundsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListRefundsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListRefundsRequest>;
-
 export type ListRefundsResponseDataList = Array<Refund>;
-const ListRefundsResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListRefundsResponseDataList>;
-
 export interface ListRefundsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListRefundsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListRefundsResponsePageInfo>;
-
 export interface ListRefundsResponse {
   data: ListRefundsResponseDataList;
   page_info: ListRefundsResponsePageInfo;
 }
-const ListRefundsResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListRefundsResponse>;
-
 export type GetRefundError = Forbidden | NotFound | WhopOpError;
 /** Retrieve Refund Returns one refund. */
 export const getRefund: API.OperationMethod<
@@ -192,8 +160,8 @@ export const getRefund: API.OperationMethod<
   GetRefundError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRefundRequest,
-  output: Refund,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRefundRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Refund>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -209,8 +177,8 @@ export const listRefunds: API.PaginatedOperationMethod<
   Refund
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRefundsRequest,
-    output: ListRefundsResponse,
+    input: __S(3, __c0, 3) as any as S.Schema<ListRefundsRequest>,
+    output: __S(6, __c0, 6) as any as S.Schema<ListRefundsResponse>,
     errors: [BadRequest, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -248,20 +216,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
-          amount: S.NullOr(Money),
+          amount: S.NullOr(__S(1, __c0, 1)),
           created_at: S.String,
           failure_message: S.NullOr(S.String),
-          failure_reason: S.NullOr(RefundFailureReason),
+          failure_reason: S.NullOr(S.String),
           id: S.String,
-          original_amount: Money,
+          original_amount: __S(1, __c0, 1),
           payment_id: S.String,
           provider: S.String,
           provider_created_at: S.NullOr(S.String),
-          reason: S.NullOr(RefundReason),
-          reference_status: S.NullOr(RefundReferenceStatus),
-          reference_type: S.NullOr(RefundReferenceType),
+          reason: S.NullOr(S.String),
+          reference_status: S.NullOr(S.String),
+          reference_type: S.NullOr(S.String),
           reference_value: S.NullOr(S.String),
-          status: RefundStatus,
+          status: S.String,
           updated_at: S.String,
           visa_rdr: S.Boolean,
         }),
@@ -274,8 +242,8 @@ function __c0(j: number): any {
           user_id: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListRefundsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListRefundsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -283,7 +251,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/refunds", code: 200 })),
       ).annotate({ identifier: "ListRefundsRequest" });
     case 4:
-      return S.Array(Refund);
+      return S.Array(__S(2, __c0, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -298,9 +266,14 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ListRefundsResponseDataList,
-          page_info: ListRefundsResponsePageInfo,
+          data: __S(4, __c0, 4),
+          page_info: __S(5, __c0, 5),
         }),
       ).annotate({ identifier: "ListRefundsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

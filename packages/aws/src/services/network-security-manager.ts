@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Network Security Manager",
   serviceShapeName: "PiccoloCustomerAPIService",
@@ -128,12 +130,12 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(148, __c18, 4)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -147,29 +149,20 @@ export type EnableCrossAccountVisibility = boolean;
 export interface DeploymentConfiguration {
   enableCrossAccountVisibility: boolean;
 }
-const DeploymentConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeploymentConfiguration>;
 export type PolicyIdentifier = string;
 export interface PolicyReference {
   policyIdentifier: string;
 }
-const PolicyReference = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PolicyReference>;
 export type PolicyReferenceList = PolicyReference[];
-const PolicyReferenceList = /*@__PURE__*/ __L.at(__c0, 2);
 export type ScopeIdentifier = string;
 export interface ScopeReference {
   scopeIdentifier: string;
 }
-const ScopeReference = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ScopeReference>;
 export type ScopeReferenceList = ScopeReference[];
-const ScopeReferenceList = /*@__PURE__*/ __L.at(__c0, 4);
 export type IsPublished = boolean;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CreateDeploymentInput {
   clientToken?: string;
   deploymentName: string;
@@ -180,38 +173,25 @@ export interface CreateDeploymentInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDeploymentInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDeploymentInput>;
 export type DeploymentId = string;
 export type DeploymentArn = string;
 export type EntityStatus = "DRAFT" | "ACTIVE" | "DISABLED" | (string & {});
-const EntityStatus = S.String;
-
 export type PolicyArn = string;
 export interface AssociatedPolicy {
   policyArn: string;
 }
-const AssociatedPolicy = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AssociatedPolicy>;
 export type AssociatedPolicyList = AssociatedPolicy[];
-const AssociatedPolicyList = /*@__PURE__*/ __L.at(__c1, 0);
 export type ScopeArn = string;
 export interface AssociatedScope {
   scopeArn: string;
 }
-const AssociatedScope = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AssociatedScope>;
 export type AssociatedScopeList = AssociatedScope[];
-const AssociatedScopeList = /*@__PURE__*/ __L.at(__c1, 2);
 export type EntityVersion = string;
 export type UpdateToken = string;
 export type IsSnapshot = boolean;
 export type HasPublishedVersion = boolean;
 export type PolicyFirewallType = "WAF" | "SHIELD_ADVANCED" | (string & {});
-const PolicyFirewallType = S.String;
-
 export type DeploymentPolicyArnList = string[];
-const DeploymentPolicyArnList = /*@__PURE__*/ __L.at(__c1, 3);
 export type ScopeResourceType =
   | "AWS::ApiGateway::Stage"
   | "AWS::CloudFront::Distribution"
@@ -219,32 +199,19 @@ export type ScopeResourceType =
   | "AWS::ElasticLoadBalancingV2::LoadBalancer::application"
   | "AWS::ElasticLoadBalancing::LoadBalancer"
   | (string & {});
-const ScopeResourceType = S.String;
-
 export type DeploymentResourceTypeList = ScopeResourceType[];
-const DeploymentResourceTypeList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface DeploymentCoverageEntry {
   firewallType: PolicyFirewallType;
   policyArns: string[];
   inScopeResourceTypes: ScopeResourceType[];
 }
-const DeploymentCoverageEntry = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeploymentCoverageEntry>;
 export type DeploymentCoverageList = DeploymentCoverageEntry[];
-const DeploymentCoverageList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface DeploymentWarningEntry {
   code: string;
   policyArn: string;
   message: string;
 }
-const DeploymentWarningEntry = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeploymentWarningEntry>;
 export type DeploymentWarningList = DeploymentWarningEntry[];
-const DeploymentWarningList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface CreateDeploymentOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -262,20 +229,12 @@ export interface CreateDeploymentOutput {
   warnings?: DeploymentWarningEntry[];
   updatedAt?: Date;
 }
-const CreateDeploymentOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateDeploymentOutput>;
 export type DeploymentIdentifier = string;
 export interface CreateDeploymentSnapshotInput {
   deploymentIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDeploymentSnapshotInput = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateDeploymentSnapshotInput>;
 export interface CreateDeploymentSnapshotOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -291,10 +250,6 @@ export interface CreateDeploymentSnapshotOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateDeploymentSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateDeploymentSnapshotOutput>;
 export type PolicyName = string;
 export type Priority = number;
 export type TemplateIdentifier = string;
@@ -302,9 +257,7 @@ export type RuleIdentifier = string;
 export type TemplateOrRuleReference =
   | { templateIdentifier: string; ruleIdentifier?: never }
   | { templateIdentifier?: never; ruleIdentifier: string };
-const TemplateOrRuleReference = /*@__PURE__*/ __L.at(__c2, 4);
 export type TemplateAndRuleReferenceList = TemplateOrRuleReference[];
-const TemplateAndRuleReferenceList = /*@__PURE__*/ __L.at(__c2, 5);
 export type RemediationEnabled = boolean;
 export type ResourcesCleanUp = boolean;
 export type ExistingCustomerWebACLResolution =
@@ -312,22 +265,16 @@ export type ExistingCustomerWebACLResolution =
   | "OVERRIDE_ASSOCIATION"
   | "NO_REMEDIATION"
   | (string & {});
-const ExistingCustomerWebACLResolution = S.String;
-
 export type WAFConflictResolutionOptions = "MERGE_WHERE_APPLICABLE" | (string & {});
-const WAFConflictResolutionOptions = S.String;
-
 export interface WafConfig {
   existingCustomerWebACLResolution: ExistingCustomerWebACLResolution;
   conflictResolution: WAFConflictResolutionOptions;
 }
-const WafConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<WafConfig>;
 export interface PolicyConfiguration {
   remediationEnabled: boolean;
   resourcesCleanUp: boolean;
   wafConfig?: WafConfig;
 }
-const PolicyConfiguration = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PolicyConfiguration>;
 export interface CreatePolicyInput {
   clientToken?: string;
   policyName: string;
@@ -339,16 +286,13 @@ export interface CreatePolicyInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreatePolicyInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreatePolicyInput>;
 export type PolicyId = string;
 export type TemplateArn = string;
 export type RuleArn = string;
 export type AssociatedTemplateOrRule =
   | { templateArn: string; ruleArn?: never }
   | { templateArn?: never; ruleArn: string };
-const AssociatedTemplateOrRule = /*@__PURE__*/ __L.at(__c3, 1);
 export type AssociatedTemplateAndRuleList = AssociatedTemplateOrRule[];
-const AssociatedTemplateAndRuleList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface CreatePolicyOutput {
   policyId: string;
   policyArn: string;
@@ -365,16 +309,11 @@ export interface CreatePolicyOutput {
   policyConfiguration?: PolicyConfiguration;
   updatedAt?: Date;
 }
-const CreatePolicyOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreatePolicyOutput>;
 export interface CreatePolicySnapshotInput {
   policyIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreatePolicySnapshotInput = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreatePolicySnapshotInput>;
 export interface CreatePolicySnapshotOutput {
   policyId: string;
   policyArn: string;
@@ -391,17 +330,9 @@ export interface CreatePolicySnapshotOutput {
   policyConfiguration?: PolicyConfiguration;
   updatedAt?: Date;
 }
-const CreatePolicySnapshotOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreatePolicySnapshotOutput>;
 export type RuleName = string;
 export type RuleFirewallType = "WAF" | (string & {});
-const RuleFirewallType = S.String;
-
 export type RuleType = "CONFIGURATION" | "INSPECTION" | (string & {});
-const RuleType = S.String;
-
 export type JsonDocument = unknown;
 export interface CreateRuleInput {
   clientToken?: string;
@@ -413,7 +344,6 @@ export interface CreateRuleInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateRuleInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateRuleInput>;
 export type RuleId = string;
 export interface CreateRuleOutput {
   ruleId: string;
@@ -430,16 +360,11 @@ export interface CreateRuleOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateRuleOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateRuleOutput>;
 export interface CreateRuleSnapshotInput {
   ruleIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateRuleSnapshotInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateRuleSnapshotInput>;
 export interface CreateRuleSnapshotOutput {
   ruleId: string;
   ruleArn: string;
@@ -455,76 +380,51 @@ export interface CreateRuleSnapshotOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateRuleSnapshotOutput = CreateRuleOutput as any as S.Schema<CreateRuleSnapshotOutput>;
 export type ScopeName = string;
 export type AccountId = string;
 export type AccountList = string[];
-const AccountList = DeploymentPolicyArnList as any as S.Schema<AccountList>;
 export type OrganizationalUnit = string;
 export type OrganizationalUnitList = string[];
-const OrganizationalUnitList = DeploymentPolicyArnList as any as S.Schema<OrganizationalUnitList>;
 export interface AccountSet {
   accountIds?: string[];
   organizationalUnits?: string[];
 }
-const AccountSet = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AccountSet>;
 export type AccountFilter =
   | { includeAll: Record<string, never>; include?: never; exclude?: never }
   | { includeAll?: never; include: AccountSet; exclude?: never }
   | { includeAll?: never; include?: never; exclude: AccountSet };
-const AccountFilter = /*@__PURE__*/ __L.at(__c4, 2);
 export type Arn = string;
 export type ResourceArnList = string[];
-const ResourceArnList = DeploymentPolicyArnList as any as S.Schema<ResourceArnList>;
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = TagMap as any as S.Schema<StringMap>;
 export type Scheme = "internet-facing" | "internal" | (string & {});
-const Scheme = S.String;
-
 export type IpAddressType = "ipv4" | "dualstack" | "dualstack-without-public-ipv4" | (string & {});
-const IpAddressType = S.String;
-
 export interface AlbConfiguration {
   scheme?: Scheme;
   ipAddressType?: IpAddressType;
 }
-const AlbConfiguration = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AlbConfiguration>;
 export type ResourceCriteria =
   | { tags: { [key: string]: string | undefined }; albConfig?: never }
   | { tags?: never; albConfig: AlbConfiguration };
-const ResourceCriteria = /*@__PURE__*/ __L.at(__c4, 4);
 export type ResourceLogicalExpressionList = ResourceLogicalExpression[];
-const ResourceLogicalExpressionList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ResourceLogicalExpressionList>;
 export type ResourceLogicalExpression =
   | { criteria: ResourceCriteria; and?: never; or?: never; not?: never }
   | { criteria?: never; and: ResourceLogicalExpression[]; or?: never; not?: never }
   | { criteria?: never; and?: never; or: ResourceLogicalExpression[]; not?: never }
   | { criteria?: never; and?: never; or?: never; not: ResourceLogicalExpression };
-const ResourceLogicalExpression = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ResourceLogicalExpression>;
 export interface ResourceSet {
   explicitArns?: string[];
   expression?: ResourceLogicalExpression;
 }
-const ResourceSet = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ResourceSet>;
 export interface ResourceScope {
   includeAll?: boolean;
   include?: ResourceSet;
   exclude?: ResourceSet;
 }
-const ResourceScope = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ResourceScope>;
 export type ResourceScopeMap = { [key in ScopeResourceType]?: ResourceScope };
-const ResourceScopeMap = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ScopeConfiguration {
   accountFilter?: AccountFilter;
   resourceScopes: { [key: string]: ResourceScope | undefined };
 }
-const ScopeConfiguration = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ScopeConfiguration>;
 export interface CreateScopeInput {
   clientToken?: string;
   scopeName: string;
@@ -533,7 +433,6 @@ export interface CreateScopeInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateScopeInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CreateScopeInput>;
 export type ScopeId = string;
 export interface CreateScopeOutput {
   scopeId: string;
@@ -548,16 +447,11 @@ export interface CreateScopeOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateScopeOutput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateScopeOutput>;
 export interface CreateScopeSnapshotInput {
   scopeIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateScopeSnapshotInput = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateScopeSnapshotInput>;
 export interface CreateScopeSnapshotOutput {
   scopeId: string;
   scopeArn: string;
@@ -571,20 +465,12 @@ export interface CreateScopeSnapshotOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateScopeSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateScopeSnapshotOutput>;
 export type TemplateName = string;
 export interface RuleReference {
   ruleIdentifier: string;
 }
-const RuleReference = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RuleReference>;
 export type RuleReferenceList = RuleReference[];
-const RuleReferenceList = /*@__PURE__*/ __L.at(__c6, 0);
 export type TemplateFirewallType = "WAF" | (string & {});
-const TemplateFirewallType = S.String;
-
 export interface CreateTemplateInput {
   clientToken?: string;
   templateName: string;
@@ -594,14 +480,11 @@ export interface CreateTemplateInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateTemplateInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateTemplateInput>;
 export type TemplateId = string;
 export interface AssociatedRule {
   ruleArn: string;
 }
-const AssociatedRule = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AssociatedRule>;
 export type AssociatedRuleList = AssociatedRule[];
-const AssociatedRuleList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface CreateTemplateOutput {
   templateId: string;
   templateArn: string;
@@ -616,16 +499,11 @@ export interface CreateTemplateOutput {
   firewallType: TemplateFirewallType;
   updatedAt?: Date;
 }
-const CreateTemplateOutput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CreateTemplateOutput>;
 export interface CreateTemplateSnapshotInput {
   templateIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateTemplateSnapshotInput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateTemplateSnapshotInput>;
 export interface CreateTemplateSnapshotOutput {
   templateId: string;
   templateArn: string;
@@ -640,57 +518,30 @@ export interface CreateTemplateSnapshotOutput {
   firewallType: TemplateFirewallType;
   updatedAt?: Date;
 }
-const CreateTemplateSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateTemplateSnapshotOutput>;
 export interface DeleteAdminAccountRequest {
   accountId: string;
 }
-const DeleteAdminAccountRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DeleteAdminAccountRequest>;
 export interface DeleteAdminAccountResponse {}
-const DeleteAdminAccountResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteAdminAccountResponse>;
 export interface DeleteDeploymentInput {
   deploymentIdentifier: string;
 }
-const DeleteDeploymentInput = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DeleteDeploymentInput>;
 export interface DeleteDeploymentResponse {}
-const DeleteDeploymentResponse =
-  DeleteAdminAccountResponse as any as S.Schema<DeleteDeploymentResponse>;
 export interface DeletePolicyInput {
   policyIdentifier: string;
 }
-const DeletePolicyInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeletePolicyInput>;
 export interface DeletePolicyResponse {}
-const DeletePolicyResponse = DeleteAdminAccountResponse as any as S.Schema<DeletePolicyResponse>;
 export interface DeleteRuleInput {
   ruleIdentifier: string;
 }
-const DeleteRuleInput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DeleteRuleInput>;
 export interface DeleteRuleResponse {}
-const DeleteRuleResponse = DeleteAdminAccountResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DeleteScopeInput {
   scopeIdentifier: string;
 }
-const DeleteScopeInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeleteScopeInput>;
 export interface DeleteScopeResponse {}
-const DeleteScopeResponse = DeleteAdminAccountResponse as any as S.Schema<DeleteScopeResponse>;
 export interface DeleteTemplateInput {
   templateIdentifier: string;
 }
-const DeleteTemplateInput = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeleteTemplateInput>;
 export interface DeleteTemplateResponse {}
-const DeleteTemplateResponse =
-  DeleteAdminAccountResponse as any as S.Schema<DeleteTemplateResponse>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type WAFConfigDataType =
   | "DefaultAction"
@@ -704,8 +555,6 @@ export type WAFConfigDataType =
   | "OnSourceDDoSProtectionConfig"
   | "TokenDomains"
   | (string & {});
-const WAFConfigDataType = S.String;
-
 export interface GenerateRuleConfigurationRequest {
   prompt: string | redacted.Redacted<string>;
   ruleFirewallType: RuleFirewallType;
@@ -714,25 +563,13 @@ export interface GenerateRuleConfigurationRequest {
   currentConfiguration?: string;
   clientToken?: string;
 }
-const GenerateRuleConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GenerateRuleConfigurationRequest>;
 export interface GenerateRuleConfigurationResponse {
   configuration: string;
   description?: string;
 }
-const GenerateRuleConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GenerateRuleConfigurationResponse>;
 export interface GetAdminAccountRequest {
   accountId: string;
 }
-const GetAdminAccountRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetAdminAccountRequest>;
 export type AdminPriority = number;
 export type SensitiveAccountName = string | redacted.Redacted<string>;
 export type SensitiveAccountEmail = string | redacted.Redacted<string>;
@@ -741,66 +578,43 @@ export interface AccountReference {
   name?: string | redacted.Redacted<string>;
   email?: string | redacted.Redacted<string>;
 }
-const AccountReference = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<AccountReference>;
 export type AccountReferenceList = AccountReference[];
-const AccountReferenceList = /*@__PURE__*/ __L.at(__c8, 2);
 export type OrganizationalUnitId = string;
 export interface OrganizationalUnitReference {
   ouId: string;
   name?: string;
 }
-const OrganizationalUnitReference = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<OrganizationalUnitReference>;
 export type OrganizationalUnitReferenceList = OrganizationalUnitReference[];
-const OrganizationalUnitReferenceList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface AdminScopeSelection {
   accounts?: AccountReference[];
   organizationalUnits?: OrganizationalUnitReference[];
 }
-const AdminScopeSelection = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AdminScopeSelection>;
 export type AdminScopeFilter =
   | { includeAll: Record<string, never>; includeOnly?: never; excludeOnly?: never }
   | { includeAll?: never; includeOnly: AdminScopeSelection; excludeOnly?: never }
   | { includeAll?: never; includeOnly?: never; excludeOnly: AdminScopeSelection };
-const AdminScopeFilter = /*@__PURE__*/ __L.at(__c8, 6);
 export type FirewallTypeList = PolicyFirewallType[];
-const FirewallTypeList = DeploymentResourceTypeList as any as S.Schema<FirewallTypeList>;
 export interface AdminFirewallTypeScope {
   allFirewallTypesEnabled?: boolean;
   firewallTypes?: PolicyFirewallType[];
 }
-const AdminFirewallTypeScope = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<AdminFirewallTypeScope>;
 export interface AdminScope {
   scopeFilter?: AdminScopeFilter;
   firewallTypeScope?: AdminFirewallTypeScope;
 }
-const AdminScope = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<AdminScope>;
 export type AdminAccountStatus = "ONBOARDED" | "OFFBOARDED" | (string & {});
-const AdminAccountStatus = S.String;
-
 export interface AdminAccountDetails {
   adminAccount: string;
   priority: number;
   adminScope?: AdminScope;
   status?: AdminAccountStatus;
 }
-const AdminAccountDetails = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<AdminAccountDetails>;
 export interface GetAdminAccountResponse {
   adminAccountDetails?: AdminAccountDetails;
 }
-const GetAdminAccountResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetAdminAccountResponse>;
 export interface GetDeploymentInput {
   deploymentIdentifier: string;
 }
-const GetDeploymentInput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetDeploymentInput>;
 export interface GetDeploymentOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -818,11 +632,9 @@ export interface GetDeploymentOutput {
   deploymentCoverage?: DeploymentCoverageEntry[];
   warnings?: DeploymentWarningEntry[];
 }
-const GetDeploymentOutput = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetDeploymentOutput>;
 export interface GetPolicyInput {
   policyIdentifier: string;
 }
-const GetPolicyInput = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetPolicyInput>;
 export interface GetPolicyOutput {
   policyId: string;
   policyArn: string;
@@ -839,11 +651,9 @@ export interface GetPolicyOutput {
   policyConfiguration?: PolicyConfiguration;
   updatedAt?: Date;
 }
-const GetPolicyOutput = CreatePolicyOutput as any as S.Schema<GetPolicyOutput>;
 export interface GetRuleInput {
   ruleIdentifier: string;
 }
-const GetRuleInput = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetRuleInput>;
 export interface GetRuleOutput {
   ruleId: string;
   ruleArn: string;
@@ -859,11 +669,9 @@ export interface GetRuleOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const GetRuleOutput = CreateRuleOutput as any as S.Schema<GetRuleOutput>;
 export interface GetScopeInput {
   scopeIdentifier: string;
 }
-const GetScopeInput = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetScopeInput>;
 export interface GetScopeOutput {
   scopeId: string;
   scopeArn: string;
@@ -877,11 +685,9 @@ export interface GetScopeOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const GetScopeOutput = CreateScopeOutput as any as S.Schema<GetScopeOutput>;
 export interface GetTemplateInput {
   templateIdentifier: string;
 }
-const GetTemplateInput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetTemplateInput>;
 export interface GetTemplateOutput {
   templateId: string;
   templateArn: string;
@@ -896,17 +702,12 @@ export interface GetTemplateOutput {
   firewallType: TemplateFirewallType;
   updatedAt?: Date;
 }
-const GetTemplateOutput = CreateTemplateOutput as any as S.Schema<GetTemplateOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListAdminAccountsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAdminAccountsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListAdminAccountsRequest>;
 export type SensitiveName = string | redacted.Redacted<string>;
 export type SensitiveEmail = string | redacted.Redacted<string>;
 export interface AdminAccountSummary {
@@ -915,29 +716,17 @@ export interface AdminAccountSummary {
   name?: string | redacted.Redacted<string>;
   email?: string | redacted.Redacted<string>;
 }
-const AdminAccountSummary = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AdminAccountSummary>;
 export type AdminAccountSummaryList = AdminAccountSummary[];
-const AdminAccountSummaryList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface ListAdminAccountsResponse {
   nextToken?: string;
   adminAccounts: AdminAccountSummary[];
 }
-const ListAdminAccountsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListAdminAccountsResponse>;
 export type SynchronizationStatus = "IN_SYNC" | "OUT_OF_SYNC" | "NOT_APPLICABLE" | (string & {});
-const SynchronizationStatus = S.String;
-
 export interface ListAggregateResourceSynchronizationStatusesInput {
   synchronizationStatus?: SynchronizationStatus;
   maxResults?: number;
   nextToken?: string;
 }
-const ListAggregateResourceSynchronizationStatusesInput = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListAggregateResourceSynchronizationStatusesInput>;
 export type ResourceType =
   | "AWS::ApiGateway::Stage"
   | "AWS::CloudFront::Distribution"
@@ -948,16 +737,12 @@ export type ResourceType =
   | "AWS::Shield::Protection"
   | "AWS::ShieldRegional::Protection"
   | (string & {});
-const ResourceType = S.String;
-
 export interface ConfigurationIssue {
   configurationName?: string;
   expectedValue?: string;
   actualValue?: string;
 }
-const ConfigurationIssue = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ConfigurationIssue>;
 export type ConfigurationIssueList = ConfigurationIssue[];
-const ConfigurationIssueList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface InvalidFirewallReasons {
   incorrectSingleValueConfigurations?: ConfigurationIssue[];
   missingAppendableConfigurationValues?: ConfigurationIssue[];
@@ -966,39 +751,25 @@ export interface InvalidFirewallReasons {
   missingMergeableConfigurationValues?: ConfigurationIssue[];
   unexpectedMergeableConfigurationValues?: ConfigurationIssue[];
 }
-const InvalidFirewallReasons = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<InvalidFirewallReasons>;
 export type FirewallSyncReason =
   | { missingFirewall: string; invalidFirewall?: never }
   | { missingFirewall?: never; invalidFirewall: InvalidFirewallReasons };
-const FirewallSyncReason = /*@__PURE__*/ __L.at(__c11, 1);
 export type OutOfSyncReasons = { [key in PolicyFirewallType]?: FirewallSyncReason };
-const OutOfSyncReasons = /*@__PURE__*/ __L.at(__c11, 2);
 export interface NotVisibleMarker {
   reason: string;
 }
-const NotVisibleMarker = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<NotVisibleMarker>;
 export type OutOfSyncReasonsView =
   | { reasons: { [key: string]: FirewallSyncReason | undefined }; notVisible?: never }
   | { reasons?: never; notVisible: NotVisibleMarker };
-const OutOfSyncReasonsView = /*@__PURE__*/ __L.at(__c11, 4);
 export interface RemediationIssueDetails {
   issueType?: string;
   message?: string;
   correctiveAction?: string;
 }
-const RemediationIssueDetails = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<RemediationIssueDetails>;
 export type RemediationIssues = { [key in PolicyFirewallType]?: RemediationIssueDetails };
-const RemediationIssues = /*@__PURE__*/ __L.at(__c11, 6);
 export type RemediationIssuesView =
   | { issues: { [key: string]: RemediationIssueDetails | undefined }; notVisible?: never }
   | { issues?: never; notVisible: NotVisibleMarker };
-const RemediationIssuesView = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ResourceSynchronizationStatusSummary {
   synchronizationStatus: SynchronizationStatus;
   accountId: string;
@@ -1010,32 +781,17 @@ export interface ResourceSynchronizationStatusSummary {
   remediationIssues?: RemediationIssuesView;
   evaluatedAt?: Date;
 }
-const ResourceSynchronizationStatusSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ResourceSynchronizationStatusSummary>;
 export type ResourceSynchronizationStatusSummaryList = ResourceSynchronizationStatusSummary[];
-const ResourceSynchronizationStatusSummaryList = /*@__PURE__*/ __L.at(__c12, 1);
 export interface ListAggregateResourceSynchronizationStatusesOutput {
   nextToken?: string;
   resourceSynchronizationStatuses: ResourceSynchronizationStatusSummary[];
 }
-const ListAggregateResourceSynchronizationStatusesOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListAggregateResourceSynchronizationStatusesOutput>;
 export type EntityStatusFilter = "ACTIVE" | "DRAFT" | "DISABLED" | (string & {});
-const EntityStatusFilter = S.String;
-
 export interface ListDeploymentsInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListDeploymentsInput = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListDeploymentsInput>;
 export interface DeploymentSummary {
   deploymentId: string;
   deploymentArn: string;
@@ -1045,40 +801,25 @@ export interface DeploymentSummary {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const DeploymentSummary = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<DeploymentSummary>;
 export type DeploymentSummaryList = DeploymentSummary[];
-const DeploymentSummaryList = /*@__PURE__*/ __L.at(__c12, 5);
 export interface ListDeploymentsOutput {
   nextToken?: string;
   deployments: DeploymentSummary[];
 }
-const ListDeploymentsOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListDeploymentsOutput>;
 export interface ListDeploymentSnapshotsInput {
   deploymentIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListDeploymentSnapshotsInput = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListDeploymentSnapshotsInput>;
 export interface ListDeploymentSnapshotsOutput {
   nextToken?: string;
   snapshots: DeploymentSummary[];
 }
-const ListDeploymentSnapshotsOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListDeploymentSnapshotsOutput>;
 export interface ListPoliciesInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListPoliciesInput = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ListPoliciesInput>;
 export interface PolicySummary {
   policyId: string;
   policyArn: string;
@@ -1090,41 +831,26 @@ export interface PolicySummary {
   priority?: number;
   updatedAt?: Date;
 }
-const PolicySummary = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<PolicySummary>;
 export type PolicySummaryList = PolicySummary[];
-const PolicySummaryList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface ListPoliciesOutput {
   nextToken?: string;
   policies: PolicySummary[];
 }
-const ListPoliciesOutput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ListPoliciesOutput>;
 export interface ListPolicySnapshotsInput {
   policyIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListPolicySnapshotsInput = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListPolicySnapshotsInput>;
 export interface ListPolicySnapshotsOutput {
   nextToken?: string;
   snapshots: PolicySummary[];
 }
-const ListPolicySnapshotsOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListPolicySnapshotsOutput>;
 export type ResourceIdentifier = string;
 export interface ListResourceAssociationsInput {
   resourceIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListResourceAssociationsInput = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListResourceAssociationsInput>;
 export type ServiceResourceType =
   | "Rule"
   | "Template"
@@ -1132,45 +858,30 @@ export type ServiceResourceType =
   | "Deployment"
   | "Scope"
   | (string & {});
-const ServiceResourceType = S.String;
-
 export interface ResourceAssociation {
   arn: string;
   resourceType: ServiceResourceType;
 }
-const ResourceAssociation = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ResourceAssociation>;
 export type ResourceAssociationList = ResourceAssociation[];
-const ResourceAssociationList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface ListResourceAssociationsOutput {
   nextToken?: string;
   resourceAssociations: ResourceAssociation[];
 }
-const ListResourceAssociationsOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListResourceAssociationsOutput>;
 export interface ListResourceSynchronizationStatusesInput {
   deploymentIdentifier: string;
   synchronizationStatus?: SynchronizationStatus;
   maxResults?: number;
   nextToken?: string;
 }
-const ListResourceSynchronizationStatusesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListResourceSynchronizationStatusesInput>;
 export interface ListResourceSynchronizationStatusesOutput {
   nextToken?: string;
   resourceSynchronizationStatuses: ResourceSynchronizationStatusSummary[];
 }
-const ListResourceSynchronizationStatusesOutput =
-  ListAggregateResourceSynchronizationStatusesOutput as any as S.Schema<ListResourceSynchronizationStatusesOutput>;
 export interface ListRulesInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListRulesInput = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ListRulesInput>;
 export interface RuleSummary {
   ruleId: string;
   ruleArn: string;
@@ -1182,37 +893,25 @@ export interface RuleSummary {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const RuleSummary = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<RuleSummary>;
 export type RuleSummaryList = RuleSummary[];
-const RuleSummaryList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface ListRulesOutput {
   nextToken?: string;
   rules: RuleSummary[];
 }
-const ListRulesOutput = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ListRulesOutput>;
 export interface ListRuleSnapshotsInput {
   ruleIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListRuleSnapshotsInput = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListRuleSnapshotsInput>;
 export interface ListRuleSnapshotsOutput {
   nextToken?: string;
   snapshots: RuleSummary[];
 }
-const ListRuleSnapshotsOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListRuleSnapshotsOutput>;
 export interface ListScopesInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListScopesInput = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ListScopesInput>;
 export interface ScopeSummary {
   scopeId: string;
   scopeArn: string;
@@ -1222,51 +921,31 @@ export interface ScopeSummary {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const ScopeSummary = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ScopeSummary>;
 export type ScopeSummaryList = ScopeSummary[];
-const ScopeSummaryList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListScopesOutput {
   nextToken?: string;
   scopes: ScopeSummary[];
 }
-const ListScopesOutput = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ListScopesOutput>;
 export interface ListScopeSnapshotsInput {
   scopeIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListScopeSnapshotsInput = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListScopeSnapshotsInput>;
 export interface ListScopeSnapshotsOutput {
   nextToken?: string;
   snapshots: ScopeSummary[];
 }
-const ListScopeSnapshotsOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListScopeSnapshotsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export interface ListTemplatesInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListTemplatesInput = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListTemplatesInput>;
 export interface TemplateSummary {
   templateId: string;
   templateArn: string;
@@ -1277,83 +956,53 @@ export interface TemplateSummary {
   firewallType?: TemplateFirewallType;
   updatedAt?: Date;
 }
-const TemplateSummary = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<TemplateSummary>;
 export type TemplateSummaryList = TemplateSummary[];
-const TemplateSummaryList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListTemplatesOutput {
   nextToken?: string;
   templates: TemplateSummary[];
 }
-const ListTemplatesOutput = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ListTemplatesOutput>;
 export interface ListTemplateSnapshotsInput {
   templateIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListTemplateSnapshotsInput = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListTemplateSnapshotsInput>;
 export interface ListTemplateSnapshotsOutput {
   nextToken?: string;
   snapshots: TemplateSummary[];
 }
-const ListTemplateSnapshotsOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListTemplateSnapshotsOutput>;
 export type AccountIdList = string[];
-const AccountIdList = DeploymentPolicyArnList as any as S.Schema<AccountIdList>;
 export type OrganizationalUnitIdList = string[];
-const OrganizationalUnitIdList =
-  DeploymentPolicyArnList as any as S.Schema<OrganizationalUnitIdList>;
 export interface AdminScopeSelectionInput {
   accounts?: string[];
   organizationalUnits?: string[];
 }
-const AdminScopeSelectionInput = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<AdminScopeSelectionInput>;
 export type AdminScopeFilterInput =
   | { includeAll: Record<string, never>; includeOnly?: never; excludeOnly?: never }
   | { includeAll?: never; includeOnly: AdminScopeSelectionInput; excludeOnly?: never }
   | { includeAll?: never; includeOnly?: never; excludeOnly: AdminScopeSelectionInput };
-const AdminScopeFilterInput = /*@__PURE__*/ __L.at(__c17, 1);
 export interface AdminScopeInput {
   scopeFilter?: AdminScopeFilterInput;
   firewallTypeScope?: AdminFirewallTypeScope;
 }
-const AdminScopeInput = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<AdminScopeInput>;
 export interface PutAdminAccountRequest {
   accountId: string;
   priority: number;
   adminScope?: AdminScopeInput;
 }
-const PutAdminAccountRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<PutAdminAccountRequest>;
 export interface PutAdminAccountResponse {
   adminAccountDetails?: AdminAccountDetails;
 }
-const PutAdminAccountResponse = GetAdminAccountResponse as any as S.Schema<PutAdminAccountResponse>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = DeleteAdminAccountResponse as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-const TagKeyList = DeploymentPolicyArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = DeleteAdminAccountResponse as any as S.Schema<UntagResourceOutput>;
 export interface UpdateDeploymentInput {
   deploymentIdentifier: string;
   updateToken: string;
@@ -1364,10 +1013,6 @@ export interface UpdateDeploymentInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateDeploymentInput = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<UpdateDeploymentInput>;
 export interface UpdateDeploymentOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -1385,7 +1030,6 @@ export interface UpdateDeploymentOutput {
   warnings?: DeploymentWarningEntry[];
   updatedAt?: Date;
 }
-const UpdateDeploymentOutput = CreateDeploymentOutput as any as S.Schema<UpdateDeploymentOutput>;
 export interface UpdatePolicyInput {
   policyIdentifier: string;
   updateToken: string;
@@ -1396,7 +1040,6 @@ export interface UpdatePolicyInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdatePolicyInput = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<UpdatePolicyInput>;
 export interface UpdatePolicyOutput {
   policyId: string;
   policyArn: string;
@@ -1413,7 +1056,6 @@ export interface UpdatePolicyOutput {
   policyConfiguration?: PolicyConfiguration;
   updatedAt?: Date;
 }
-const UpdatePolicyOutput = CreatePolicyOutput as any as S.Schema<UpdatePolicyOutput>;
 export interface UpdateRuleInput {
   ruleIdentifier: string;
   updateToken: string;
@@ -1423,7 +1065,6 @@ export interface UpdateRuleInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateRuleInput = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<UpdateRuleInput>;
 export interface UpdateRuleOutput {
   ruleId: string;
   ruleArn: string;
@@ -1439,7 +1080,6 @@ export interface UpdateRuleOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const UpdateRuleOutput = CreateRuleOutput as any as S.Schema<UpdateRuleOutput>;
 export interface UpdateScopeInput {
   scopeIdentifier: string;
   updateToken: string;
@@ -1448,7 +1088,6 @@ export interface UpdateScopeInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateScopeInput = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<UpdateScopeInput>;
 export interface UpdateScopeOutput {
   scopeId: string;
   scopeArn: string;
@@ -1462,7 +1101,6 @@ export interface UpdateScopeOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const UpdateScopeOutput = CreateScopeOutput as any as S.Schema<UpdateScopeOutput>;
 export interface UpdateTemplateInput {
   templateIdentifier: string;
   updateToken: string;
@@ -1471,7 +1109,6 @@ export interface UpdateTemplateInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateTemplateInput = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<UpdateTemplateInput>;
 export interface UpdateTemplateOutput {
   templateId: string;
   templateArn: string;
@@ -1486,24 +1123,16 @@ export interface UpdateTemplateOutput {
   firewallType: TemplateFirewallType;
   updatedAt?: Date;
 }
-const UpdateTemplateOutput = CreateTemplateOutput as any as S.Schema<UpdateTemplateOutput>;
 export type ValidationExceptionReason =
   | "ACCOUNT_NOT_ONBOARDED"
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c18, 4);
 export type CreateDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -1523,8 +1152,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentInput,
-  output: CreateDeploymentOutput,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateDeploymentInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1558,8 +1187,8 @@ export const createDeploymentSnapshot: API.OperationMethod<
   CreateDeploymentSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentSnapshotInput,
-  output: CreateDeploymentSnapshotOutput,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateDeploymentSnapshotInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateDeploymentSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1593,8 +1222,8 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePolicyInput,
-  output: CreatePolicyOutput,
+  input: __S(24, __c3, 0) as any as S.Schema<CreatePolicyInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<CreatePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1628,8 +1257,8 @@ export const createPolicySnapshot: API.OperationMethod<
   CreatePolicySnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePolicySnapshotInput,
-  output: CreatePolicySnapshotOutput,
+  input: __S(28, __c3, 4) as any as S.Schema<CreatePolicySnapshotInput>,
+  output: __S(29, __c3, 5) as any as S.Schema<CreatePolicySnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1663,8 +1292,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleInput,
-  output: CreateRuleOutput,
+  input: __S(30, __c3, 6) as any as S.Schema<CreateRuleInput>,
+  output: __S(31, __c3, 7) as any as S.Schema<CreateRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1698,8 +1327,8 @@ export const createRuleSnapshot: API.OperationMethod<
   CreateRuleSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleSnapshotInput,
-  output: CreateRuleSnapshotOutput,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateRuleSnapshotInput>,
+  output: __S(31, __c3, 7) as any as S.Schema<CreateRuleSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1733,8 +1362,8 @@ export const createScope: API.OperationMethod<
   CreateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateScopeInput,
-  output: CreateScopeOutput,
+  input: __S(43, __c5, 3) as any as S.Schema<CreateScopeInput>,
+  output: __S(44, __c5, 4) as any as S.Schema<CreateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1768,8 +1397,8 @@ export const createScopeSnapshot: API.OperationMethod<
   CreateScopeSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateScopeSnapshotInput,
-  output: CreateScopeSnapshotOutput,
+  input: __S(45, __c5, 5) as any as S.Schema<CreateScopeSnapshotInput>,
+  output: __S(46, __c5, 6) as any as S.Schema<CreateScopeSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1803,8 +1432,8 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTemplateInput,
-  output: CreateTemplateOutput,
+  input: __S(49, __c6, 1) as any as S.Schema<CreateTemplateInput>,
+  output: __S(52, __c6, 4) as any as S.Schema<CreateTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1838,8 +1467,8 @@ export const createTemplateSnapshot: API.OperationMethod<
   CreateTemplateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTemplateSnapshotInput,
-  output: CreateTemplateSnapshotOutput,
+  input: __S(53, __c6, 5) as any as S.Schema<CreateTemplateSnapshotInput>,
+  output: __S(54, __c6, 6) as any as S.Schema<CreateTemplateSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1869,8 +1498,8 @@ export const deleteAdminAccount: API.OperationMethod<
   DeleteAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdminAccountRequest,
-  output: DeleteAdminAccountResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<DeleteAdminAccountRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1898,8 +1527,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentInput,
-  output: DeleteDeploymentResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<DeleteDeploymentInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1928,8 +1557,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePolicyInput,
-  output: DeletePolicyResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<DeletePolicyInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1958,8 +1587,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleInput,
-  output: DeleteRuleResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<DeleteRuleInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteRuleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1988,8 +1617,8 @@ export const deleteScope: API.OperationMethod<
   DeleteScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScopeInput,
-  output: DeleteScopeResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<DeleteScopeInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteScopeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2018,8 +1647,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTemplateInput,
-  output: DeleteTemplateResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<DeleteTemplateInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2047,8 +1676,8 @@ export const generateRuleConfiguration: API.OperationMethod<
   GenerateRuleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateRuleConfigurationRequest,
-  output: GenerateRuleConfigurationResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<GenerateRuleConfigurationRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<GenerateRuleConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2076,8 +1705,8 @@ export const getAdminAccount: API.OperationMethod<
   GetAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminAccountRequest,
-  output: GetAdminAccountResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<GetAdminAccountRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<GetAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2106,8 +1735,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentInput,
-  output: GetDeploymentOutput,
+  input: __S(75, __c9, 3) as any as S.Schema<GetDeploymentInput>,
+  output: __S(76, __c9, 4) as any as S.Schema<GetDeploymentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2136,8 +1765,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyInput,
-  output: GetPolicyOutput,
+  input: __S(77, __c9, 5) as any as S.Schema<GetPolicyInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetPolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2166,8 +1795,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRuleInput,
-  output: GetRuleOutput,
+  input: __S(78, __c9, 6) as any as S.Schema<GetRuleInput>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2196,8 +1825,8 @@ export const getScope: API.OperationMethod<
   GetScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScopeInput,
-  output: GetScopeOutput,
+  input: __S(79, __c9, 7) as any as S.Schema<GetScopeInput>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetScopeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2226,8 +1855,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTemplateInput,
-  output: GetTemplateOutput,
+  input: __S(80, __c10, 0) as any as S.Schema<GetTemplateInput>,
+  output: __S(52, __c6, 4) as any as S.Schema<GetTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2256,8 +1885,8 @@ export const listAdminAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdminAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminAccountsRequest,
-  output: ListAdminAccountsResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<ListAdminAccountsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<ListAdminAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2291,8 +1920,8 @@ export const listAggregateResourceSynchronizationStatuses: API.PaginatedOperatio
   Credentials | HttpClient.HttpClient,
   ResourceSynchronizationStatusSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAggregateResourceSynchronizationStatusesInput,
-  output: ListAggregateResourceSynchronizationStatusesOutput,
+  input: __S(85, __c10, 5) as any as S.Schema<ListAggregateResourceSynchronizationStatusesInput>,
+  output: __S(98, __c12, 2) as any as S.Schema<ListAggregateResourceSynchronizationStatusesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2326,8 +1955,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDeploymentsInput,
-  output: ListDeploymentsOutput,
+  input: __S(99, __c12, 3) as any as S.Schema<ListDeploymentsInput>,
+  output: __S(102, __c12, 6) as any as S.Schema<ListDeploymentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2362,8 +1991,8 @@ export const listDeploymentSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDeploymentSnapshotsInput,
-  output: ListDeploymentSnapshotsOutput,
+  input: __S(103, __c12, 7) as any as S.Schema<ListDeploymentSnapshotsInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<ListDeploymentSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2398,8 +2027,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPoliciesInput,
-  output: ListPoliciesOutput,
+  input: __S(105, __c13, 1) as any as S.Schema<ListPoliciesInput>,
+  output: __S(108, __c13, 4) as any as S.Schema<ListPoliciesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2434,8 +2063,8 @@ export const listPolicySnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPolicySnapshotsInput,
-  output: ListPolicySnapshotsOutput,
+  input: __S(109, __c13, 5) as any as S.Schema<ListPolicySnapshotsInput>,
+  output: __S(110, __c13, 6) as any as S.Schema<ListPolicySnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2470,8 +2099,8 @@ export const listResourceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListResourceAssociationsInput,
-  output: ListResourceAssociationsOutput,
+  input: __S(111, __c13, 7) as any as S.Schema<ListResourceAssociationsInput>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListResourceAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2506,8 +2135,8 @@ export const listResourceSynchronizationStatuses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSynchronizationStatusSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListResourceSynchronizationStatusesInput,
-  output: ListResourceSynchronizationStatusesOutput,
+  input: __S(115, __c14, 3) as any as S.Schema<ListResourceSynchronizationStatusesInput>,
+  output: __S(98, __c12, 2) as any as S.Schema<ListResourceSynchronizationStatusesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2542,8 +2171,8 @@ export const listRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRulesInput,
-  output: ListRulesOutput,
+  input: __S(116, __c14, 4) as any as S.Schema<ListRulesInput>,
+  output: __S(119, __c14, 7) as any as S.Schema<ListRulesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2578,8 +2207,8 @@ export const listRuleSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRuleSnapshotsInput,
-  output: ListRuleSnapshotsOutput,
+  input: __S(120, __c15, 0) as any as S.Schema<ListRuleSnapshotsInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListRuleSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2614,8 +2243,8 @@ export const listScopes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScopeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListScopesInput,
-  output: ListScopesOutput,
+  input: __S(122, __c15, 2) as any as S.Schema<ListScopesInput>,
+  output: __S(125, __c15, 5) as any as S.Schema<ListScopesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2650,8 +2279,8 @@ export const listScopeSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScopeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListScopeSnapshotsInput,
-  output: ListScopeSnapshotsOutput,
+  input: __S(126, __c15, 6) as any as S.Schema<ListScopeSnapshotsInput>,
+  output: __S(127, __c15, 7) as any as S.Schema<ListScopeSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2686,8 +2315,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(128, __c16, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(129, __c16, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2716,8 +2345,8 @@ export const listTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTemplatesInput,
-  output: ListTemplatesOutput,
+  input: __S(130, __c16, 2) as any as S.Schema<ListTemplatesInput>,
+  output: __S(133, __c16, 5) as any as S.Schema<ListTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2752,8 +2381,8 @@ export const listTemplateSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTemplateSnapshotsInput,
-  output: ListTemplateSnapshotsOutput,
+  input: __S(134, __c16, 6) as any as S.Schema<ListTemplateSnapshotsInput>,
+  output: __S(135, __c16, 7) as any as S.Schema<ListTemplateSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2792,8 +2421,8 @@ export const putAdminAccount: API.OperationMethod<
   PutAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAdminAccountRequest,
-  output: PutAdminAccountResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<PutAdminAccountRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<PutAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2825,8 +2454,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(140, __c17, 4) as any as S.Schema<TagResourceInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2857,8 +2486,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(141, __c17, 5) as any as S.Schema<UntagResourceInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2890,8 +2519,8 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeploymentInput,
-  output: UpdateDeploymentOutput,
+  input: __S(142, __c17, 6) as any as S.Schema<UpdateDeploymentInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdateDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2924,8 +2553,8 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePolicyInput,
-  output: UpdatePolicyOutput,
+  input: __S(143, __c17, 7) as any as S.Schema<UpdatePolicyInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<UpdatePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2958,8 +2587,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRuleInput,
-  output: UpdateRuleOutput,
+  input: __S(144, __c18, 0) as any as S.Schema<UpdateRuleInput>,
+  output: __S(31, __c3, 7) as any as S.Schema<UpdateRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2992,8 +2621,8 @@ export const updateScope: API.OperationMethod<
   UpdateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateScopeInput,
-  output: UpdateScopeOutput,
+  input: __S(145, __c18, 1) as any as S.Schema<UpdateScopeInput>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3026,8 +2655,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTemplateInput,
-  output: UpdateTemplateOutput,
+  input: __S(146, __c18, 2) as any as S.Schema<UpdateTemplateInput>,
+  output: __S(52, __c6, 4) as any as S.Schema<UpdateTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3054,13 +2683,13 @@ function __c0(j: number): any {
         identifier: "PolicyReference",
       });
     case 2:
-      return S.Array(PolicyReference);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() => S.Struct({ scopeIdentifier: S.String })).annotate({
         identifier: "ScopeReference",
       });
     case 4:
-      return S.Array(ScopeReference);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
@@ -3069,11 +2698,11 @@ function __c0(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
-          deploymentConfiguration: DeploymentConfiguration,
-          associatedPolicyList: PolicyReferenceList,
-          associatedScopeList: ScopeReferenceList,
+          deploymentConfiguration: __S(0, __c0, 0),
+          associatedPolicyList: __S(2, __c0, 2),
+          associatedScopeList: __S(4, __c0, 4),
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/deployments" }), svc, auth, proto, ver, rules),
         ),
@@ -3087,27 +2716,27 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AssociatedPolicy);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() => S.Struct({ scopeArn: S.String })).annotate({
         identifier: "AssociatedScope",
       });
     case 2:
-      return S.Array(AssociatedScope);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.Array(ScopeResourceType);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          firewallType: PolicyFirewallType,
-          policyArns: DeploymentPolicyArnList,
-          inScopeResourceTypes: DeploymentResourceTypeList,
+          firewallType: S.String,
+          policyArns: __S(11, __c1, 3),
+          inScopeResourceTypes: __S(12, __c1, 4),
         }),
       ).annotate({ identifier: "DeploymentCoverageEntry" });
     case 6:
-      return S.Array(DeploymentCoverageEntry);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({ code: S.String, policyArn: S.String, message: S.String }),
@@ -3117,7 +2746,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeploymentWarningEntry);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3125,16 +2754,16 @@ function __c2(j: number): any {
           deploymentArn: S.String,
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
-          status: EntityStatus,
-          deploymentConfiguration: S.optional(DeploymentConfiguration),
-          associatedPolicyList: AssociatedPolicyList,
-          associatedScopeList: AssociatedScopeList,
+          status: S.String,
+          deploymentConfiguration: S.optional(__S(0, __c0, 0)),
+          associatedPolicyList: __S(8, __c1, 0),
+          associatedScopeList: __S(10, __c1, 2),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
-          deploymentCoverage: S.optional(DeploymentCoverageList),
-          warnings: S.optional(DeploymentWarningList),
+          deploymentCoverage: S.optional(__S(14, __c1, 6)),
+          warnings: S.optional(__S(16, __c2, 0)),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateDeploymentOutput" });
@@ -3143,7 +2772,7 @@ function __c2(j: number): any {
         S.Struct({
           deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/deployments/{deploymentIdentifier}/snapshots" }),
@@ -3164,10 +2793,10 @@ function __c2(j: number): any {
           deploymentArn: S.String,
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
-          status: EntityStatus,
-          deploymentConfiguration: S.optional(DeploymentConfiguration),
-          associatedPolicyList: AssociatedPolicyList,
-          associatedScopeList: AssociatedScopeList,
+          status: S.String,
+          deploymentConfiguration: S.optional(__S(0, __c0, 0)),
+          associatedPolicyList: __S(8, __c1, 0),
+          associatedScopeList: __S(10, __c1, 2),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
@@ -3183,12 +2812,12 @@ function __c2(j: number): any {
         /*@__PURE__*/ S.Struct({ ruleIdentifier: S.String }),
       ]);
     case 5:
-      return S.Array(TemplateOrRuleReference);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          existingCustomerWebACLResolution: ExistingCustomerWebACLResolution,
-          conflictResolution: WAFConflictResolutionOptions,
+          existingCustomerWebACLResolution: S.String,
+          conflictResolution: S.String,
         }),
       ).annotate({ identifier: "WafConfig" });
     case 7:
@@ -3196,7 +2825,7 @@ function __c2(j: number): any {
         S.Struct({
           remediationEnabled: S.Boolean,
           resourcesCleanUp: S.Boolean,
-          wafConfig: S.optional(WafConfig),
+          wafConfig: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "PolicyConfiguration" });
   }
@@ -3210,11 +2839,11 @@ function __c3(j: number): any {
           policyName: S.String,
           policyDescription: S.optional(S.String),
           priority: S.Number,
-          associatedTemplateAndRuleList: S.optional(TemplateAndRuleReferenceList),
-          firewallType: PolicyFirewallType,
-          policyConfiguration: PolicyConfiguration,
+          associatedTemplateAndRuleList: S.optional(__S(21, __c2, 5)),
+          firewallType: S.String,
+          policyConfiguration: __S(23, __c2, 7),
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/policies" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePolicyInput" });
     case 1:
@@ -3223,7 +2852,7 @@ function __c3(j: number): any {
         /*@__PURE__*/ S.Struct({ ruleArn: S.String }),
       ]);
     case 2:
-      return S.Array(AssociatedTemplateOrRule);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3231,15 +2860,15 @@ function __c3(j: number): any {
           policyArn: S.String,
           policyName: S.String,
           policyDescription: S.optional(S.String),
-          status: EntityStatus,
+          status: S.String,
           priority: S.Number,
-          associatedTemplateAndRuleList: AssociatedTemplateAndRuleList,
+          associatedTemplateAndRuleList: __S(26, __c3, 2),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: PolicyFirewallType,
-          policyConfiguration: S.optional(PolicyConfiguration),
+          firewallType: S.String,
+          policyConfiguration: S.optional(__S(23, __c2, 7)),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreatePolicyOutput" });
@@ -3248,7 +2877,7 @@ function __c3(j: number): any {
         S.Struct({
           policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/policies/{policyIdentifier}/snapshots" }),
@@ -3269,15 +2898,15 @@ function __c3(j: number): any {
           policyArn: S.String,
           policyName: S.String,
           policyDescription: S.optional(S.String),
-          status: EntityStatus,
+          status: S.String,
           priority: S.Number,
-          associatedTemplateAndRuleList: AssociatedTemplateAndRuleList,
+          associatedTemplateAndRuleList: __S(26, __c3, 2),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: PolicyFirewallType,
-          policyConfiguration: S.optional(PolicyConfiguration),
+          firewallType: S.String,
+          policyConfiguration: S.optional(__S(23, __c2, 7)),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
@@ -3288,12 +2917,12 @@ function __c3(j: number): any {
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ruleName: S.String,
-          firewallType: RuleFirewallType,
-          ruleType: RuleType,
+          firewallType: S.String,
+          ruleType: S.String,
           ruleDescription: S.optional(S.String),
           configuration: S.Any,
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/rules" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleInput" });
     case 7:
@@ -3302,11 +2931,11 @@ function __c3(j: number): any {
           ruleId: S.String,
           ruleArn: S.String,
           ruleName: S.String,
-          firewallType: RuleFirewallType,
-          ruleType: S.optional(RuleType),
+          firewallType: S.String,
+          ruleType: S.optional(S.String),
           ruleDescription: S.optional(S.String),
           configuration: S.Any,
-          status: EntityStatus,
+          status: S.String,
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
@@ -3323,7 +2952,7 @@ function __c4(j: number): any {
         S.Struct({
           ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/rules/{ruleIdentifier}/snapshots" }),
@@ -3338,46 +2967,46 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountList),
-          organizationalUnits: S.optional(OrganizationalUnitList),
+          accountIds: S.optional(__S(11, __c1, 3)),
+          organizationalUnits: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "AccountSet" });
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ include: AccountSet }),
-        /*@__PURE__*/ S.Struct({ exclude: AccountSet }),
+        /*@__PURE__*/ S.Struct({ include: __S(33, __c4, 1) }),
+        /*@__PURE__*/ S.Struct({ exclude: __S(33, __c4, 1) }),
       ]);
     case 3:
       return S.suspend(() =>
-        S.Struct({ scheme: S.optional(Scheme), ipAddressType: S.optional(IpAddressType) }),
+        S.Struct({ scheme: S.optional(S.String), ipAddressType: S.optional(S.String) }),
       ).annotate({ identifier: "AlbConfiguration" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ tags: StringMap }),
-        /*@__PURE__*/ S.Struct({ albConfig: AlbConfiguration }),
+        /*@__PURE__*/ S.Struct({ tags: __S(5, __c0, 5) }),
+        /*@__PURE__*/ S.Struct({ albConfig: __S(35, __c4, 3) }),
       ]);
     case 5:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(38, __c4, 6)).annotate({
           identifier: "ResourceLogicalExpression",
         }),
       );
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ criteria: ResourceCriteria }),
+        /*@__PURE__*/ S.Struct({ criteria: __S(36, __c4, 4) }),
         /*@__PURE__*/ S.Struct({
-          and: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
+          and: /*@__PURE__*/ S.suspend(() => __S(37, __c4, 5)).annotate({
             identifier: "ResourceLogicalExpressionList",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          or: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
+          or: /*@__PURE__*/ S.suspend(() => __S(37, __c4, 5)).annotate({
             identifier: "ResourceLogicalExpressionList",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          not: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
+          not: /*@__PURE__*/ S.suspend(() => __S(38, __c4, 6)).annotate({
             identifier: "ResourceLogicalExpression",
           }),
         }),
@@ -3385,8 +3014,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          explicitArns: S.optional(ResourceArnList),
-          expression: S.optional(ResourceLogicalExpression),
+          explicitArns: S.optional(__S(11, __c1, 3)),
+          expression: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "ResourceSet" });
   }
@@ -3397,15 +3026,15 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           includeAll: S.optional(S.Boolean),
-          include: S.optional(ResourceSet),
-          exclude: S.optional(ResourceSet),
+          include: S.optional(__S(39, __c4, 7)),
+          exclude: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "ResourceScope" });
     case 1:
-      return S.Record(ScopeResourceType, /*@__PURE__*/ ResourceScope.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(40, __c5, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
-        S.Struct({ accountFilter: S.optional(AccountFilter), resourceScopes: ResourceScopeMap }),
+        S.Struct({ accountFilter: S.optional(__S(34, __c4, 2)), resourceScopes: __S(41, __c5, 1) }),
       ).annotate({ identifier: "ScopeConfiguration" });
     case 3:
       return S.suspend(() =>
@@ -3413,9 +3042,9 @@ function __c5(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           scopeName: S.String,
           scopeDescription: S.optional(S.String),
-          scopeConfiguration: ScopeConfiguration,
+          scopeConfiguration: __S(42, __c5, 2),
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/scopes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateScopeInput" });
     case 4:
@@ -3425,8 +3054,8 @@ function __c5(j: number): any {
           scopeArn: S.String,
           scopeName: S.String,
           scopeDescription: S.optional(S.String),
-          scopeConfiguration: S.optional(ScopeConfiguration),
-          status: EntityStatus,
+          scopeConfiguration: S.optional(__S(42, __c5, 2)),
+          status: S.String,
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
@@ -3439,7 +3068,7 @@ function __c5(j: number): any {
         S.Struct({
           scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/scopes/{scopeIdentifier}/snapshots" }),
@@ -3458,8 +3087,8 @@ function __c5(j: number): any {
           scopeArn: S.String,
           scopeName: S.String,
           scopeDescription: S.optional(S.String),
-          scopeConfiguration: S.optional(ScopeConfiguration),
-          status: EntityStatus,
+          scopeConfiguration: S.optional(__S(42, __c5, 2)),
+          status: S.String,
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
@@ -3478,17 +3107,17 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RuleReference);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           templateName: S.String,
           templateDescription: S.optional(S.String),
-          associatedRuleList: RuleReferenceList,
-          firewallType: TemplateFirewallType,
+          associatedRuleList: __S(48, __c6, 0),
+          firewallType: S.String,
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/templates" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTemplateInput" });
     case 2:
@@ -3496,7 +3125,7 @@ function __c6(j: number): any {
         identifier: "AssociatedRule",
       });
     case 3:
-      return S.Array(AssociatedRule);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3504,13 +3133,13 @@ function __c6(j: number): any {
           templateArn: S.String,
           templateName: S.String,
           templateDescription: S.optional(S.String),
-          status: EntityStatus,
+          status: S.String,
           version: S.String,
-          associatedRuleList: AssociatedRuleList,
+          associatedRuleList: __S(51, __c6, 3),
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: TemplateFirewallType,
+          firewallType: S.String,
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateTemplateOutput" });
@@ -3519,7 +3148,7 @@ function __c6(j: number): any {
         S.Struct({
           templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/templates/{templateIdentifier}/snapshots" }),
@@ -3540,13 +3169,13 @@ function __c6(j: number): any {
           templateArn: S.String,
           templateName: S.String,
           templateDescription: S.optional(S.String),
-          status: EntityStatus,
+          status: S.String,
           version: S.String,
-          associatedRuleList: AssociatedRuleList,
+          associatedRuleList: __S(51, __c6, 3),
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: TemplateFirewallType,
+          firewallType: S.String,
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
@@ -3644,9 +3273,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           prompt: SensitiveString,
-          ruleFirewallType: RuleFirewallType,
-          ruleType: RuleType,
-          wafConfigDataType: S.optional(WAFConfigDataType),
+          ruleFirewallType: S.String,
+          ruleType: S.String,
+          wafConfigDataType: S.optional(S.String),
           currentConfiguration: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -3694,31 +3323,31 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "AccountReference" });
     case 2:
-      return S.Array(AccountReference);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() => S.Struct({ ouId: S.String, name: S.optional(S.String) })).annotate({
         identifier: "OrganizationalUnitReference",
       });
     case 4:
-      return S.Array(OrganizationalUnitReference);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(AccountReferenceList),
-          organizationalUnits: S.optional(OrganizationalUnitReferenceList),
+          accounts: S.optional(__S(66, __c8, 2)),
+          organizationalUnits: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "AdminScopeSelection" });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelection }),
-        /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelection }),
+        /*@__PURE__*/ S.Struct({ includeOnly: __S(69, __c8, 5) }),
+        /*@__PURE__*/ S.Struct({ excludeOnly: __S(69, __c8, 5) }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           allFirewallTypesEnabled: S.optional(S.Boolean),
-          firewallTypes: S.optional(FirewallTypeList),
+          firewallTypes: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "AdminFirewallTypeScope" });
   }
@@ -3728,8 +3357,8 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scopeFilter: S.optional(AdminScopeFilter),
-          firewallTypeScope: S.optional(AdminFirewallTypeScope),
+          scopeFilter: S.optional(__S(70, __c8, 6)),
+          firewallTypeScope: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "AdminScope" });
     case 1:
@@ -3737,13 +3366,13 @@ function __c9(j: number): any {
         S.Struct({
           adminAccount: S.String,
           priority: S.Number,
-          adminScope: S.optional(AdminScope),
-          status: S.optional(AdminAccountStatus),
+          adminScope: S.optional(__S(72, __c9, 0)),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdminAccountDetails" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ adminAccountDetails: S.optional(AdminAccountDetails) }),
+        S.Struct({ adminAccountDetails: S.optional(__S(73, __c9, 1)) }),
       ).annotate({ identifier: "GetAdminAccountResponse" });
     case 3:
       return S.suspend(() =>
@@ -3765,17 +3394,17 @@ function __c9(j: number): any {
           deploymentArn: S.String,
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
-          status: EntityStatus,
-          deploymentConfiguration: S.optional(DeploymentConfiguration),
-          associatedPolicyList: AssociatedPolicyList,
-          associatedScopeList: AssociatedScopeList,
+          status: S.String,
+          deploymentConfiguration: S.optional(__S(0, __c0, 0)),
+          associatedPolicyList: __S(8, __c1, 0),
+          associatedScopeList: __S(10, __c1, 2),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          deploymentCoverage: S.optional(DeploymentCoverageList),
-          warnings: S.optional(DeploymentWarningList),
+          deploymentCoverage: S.optional(__S(14, __c1, 6)),
+          warnings: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "GetDeploymentOutput" });
     case 5:
@@ -3853,19 +3482,17 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "AdminAccountSummary" });
     case 3:
-      return S.Array(AdminAccountSummary);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), adminAccounts: AdminAccountSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), adminAccounts: __S(83, __c10, 3) }),
       ).annotate({
         identifier: "ListAdminAccountsResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          synchronizationStatus: S.optional(SynchronizationStatus).pipe(
-            T.HttpQuery("synchronizationStatus"),
-          ),
+          synchronizationStatus: S.optional(S.String).pipe(T.HttpQuery("synchronizationStatus")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -3890,7 +3517,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ConfigurationIssue" });
     case 7:
-      return S.Array(ConfigurationIssue);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -3898,29 +3525,29 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          incorrectSingleValueConfigurations: S.optional(ConfigurationIssueList),
-          missingAppendableConfigurationValues: S.optional(ConfigurationIssueList),
-          unexpectedAppendableConfigurationValues: S.optional(ConfigurationIssueList),
-          incorrectAppendableConfigurationOrder: S.optional(ConfigurationIssueList),
-          missingMergeableConfigurationValues: S.optional(ConfigurationIssueList),
-          unexpectedMergeableConfigurationValues: S.optional(ConfigurationIssueList),
+          incorrectSingleValueConfigurations: S.optional(__S(87, __c10, 7)),
+          missingAppendableConfigurationValues: S.optional(__S(87, __c10, 7)),
+          unexpectedAppendableConfigurationValues: S.optional(__S(87, __c10, 7)),
+          incorrectAppendableConfigurationOrder: S.optional(__S(87, __c10, 7)),
+          missingMergeableConfigurationValues: S.optional(__S(87, __c10, 7)),
+          unexpectedMergeableConfigurationValues: S.optional(__S(87, __c10, 7)),
         }),
       ).annotate({ identifier: "InvalidFirewallReasons" });
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ missingFirewall: S.String }),
-        /*@__PURE__*/ S.Struct({ invalidFirewall: InvalidFirewallReasons }),
+        /*@__PURE__*/ S.Struct({ invalidFirewall: __S(88, __c11, 0) }),
       ]);
     case 2:
-      return S.Record(PolicyFirewallType, /*@__PURE__*/ FirewallSyncReason.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(89, __c11, 1).pipe(S.optional));
     case 3:
       return S.suspend(() => S.Struct({ reason: S.String })).annotate({
         identifier: "NotVisibleMarker",
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ reasons: OutOfSyncReasons }),
-        /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
+        /*@__PURE__*/ S.Struct({ reasons: __S(90, __c11, 2) }),
+        /*@__PURE__*/ S.Struct({ notVisible: __S(91, __c11, 3) }),
       ]);
     case 5:
       return S.suspend(() =>
@@ -3931,11 +3558,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "RemediationIssueDetails" });
     case 6:
-      return S.Record(PolicyFirewallType, /*@__PURE__*/ RemediationIssueDetails.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(93, __c11, 5).pipe(S.optional));
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ issues: RemediationIssues }),
-        /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
+        /*@__PURE__*/ S.Struct({ issues: __S(94, __c11, 6) }),
+        /*@__PURE__*/ S.Struct({ notVisible: __S(91, __c11, 3) }),
       ]);
   }
 }
@@ -3944,26 +3571,26 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          synchronizationStatus: SynchronizationStatus,
+          synchronizationStatus: S.String,
           accountId: S.String,
           resourceArn: S.String,
           deploymentArn: S.optional(S.String),
-          resourceType: S.optional(ResourceType),
+          resourceType: S.optional(S.String),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          outOfSyncReasons: S.optional(OutOfSyncReasonsView),
-          remediationIssues: S.optional(RemediationIssuesView),
+          outOfSyncReasons: S.optional(__S(92, __c11, 4)),
+          remediationIssues: S.optional(__S(95, __c11, 7)),
           evaluatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
         identifier: "ResourceSynchronizationStatusSummary",
       });
     case 1:
-      return S.Array(ResourceSynchronizationStatusSummary);
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          resourceSynchronizationStatuses: ResourceSynchronizationStatusSummaryList,
+          resourceSynchronizationStatuses: __S(97, __c12, 1),
         }),
       ).annotate({
         identifier: "ListAggregateResourceSynchronizationStatusesOutput",
@@ -3973,7 +3600,7 @@ function __c12(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/deployments" }), svc, auth, proto, ver, rules),
         ),
@@ -3984,17 +3611,17 @@ function __c12(j: number): any {
           deploymentId: S.String,
           deploymentArn: S.String,
           deploymentName: S.optional(S.String),
-          status: S.optional(EntityStatus),
+          status: S.optional(S.String),
           version: S.optional(S.String),
           hasPublishedVersion: S.optional(S.Boolean),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "DeploymentSummary" });
     case 5:
-      return S.Array(DeploymentSummary);
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), deployments: DeploymentSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), deployments: __S(101, __c12, 5) }),
       ).annotate({ identifier: "ListDeploymentsOutput" });
     case 7:
       return S.suspend(() =>
@@ -4021,7 +3648,7 @@ function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: DeploymentSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(101, __c12, 5) }),
       ).annotate({
         identifier: "ListDeploymentSnapshotsOutput",
       });
@@ -4030,7 +3657,7 @@ function __c13(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/policies" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPoliciesInput" });
     case 2:
@@ -4039,19 +3666,19 @@ function __c13(j: number): any {
           policyId: S.String,
           policyArn: S.String,
           policyName: S.optional(S.String),
-          status: S.optional(EntityStatus),
+          status: S.optional(S.String),
           version: S.optional(S.String),
           hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: S.optional(PolicyFirewallType),
+          firewallType: S.optional(S.String),
           priority: S.optional(S.Number),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PolicySummary" });
     case 3:
-      return S.Array(PolicySummary);
+      return S.Array(__S(106, __c13, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), policies: PolicySummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), policies: __S(107, __c13, 3) }),
       ).annotate({ identifier: "ListPoliciesOutput" });
     case 5:
       return S.suspend(() =>
@@ -4072,7 +3699,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ListPolicySnapshotsInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: PolicySummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(107, __c13, 3) }),
       ).annotate({
         identifier: "ListPolicySnapshotsOutput",
       });
@@ -4100,16 +3727,16 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String, resourceType: ServiceResourceType }),
-      ).annotate({ identifier: "ResourceAssociation" });
+      return S.suspend(() => S.Struct({ arn: S.String, resourceType: S.String })).annotate({
+        identifier: "ResourceAssociation",
+      });
     case 1:
-      return S.Array(ResourceAssociation);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          resourceAssociations: ResourceAssociationList,
+          resourceAssociations: __S(113, __c14, 1),
         }),
       ).annotate({
         identifier: "ListResourceAssociationsOutput",
@@ -4118,9 +3745,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deploymentIdentifier: S.String.pipe(T.HttpQuery("deploymentIdentifier")),
-          synchronizationStatus: S.optional(SynchronizationStatus).pipe(
-            T.HttpQuery("synchronizationStatus"),
-          ),
+          synchronizationStatus: S.optional(S.String).pipe(T.HttpQuery("synchronizationStatus")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -4141,7 +3766,7 @@ function __c14(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/rules" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListRulesInput" });
     case 5:
@@ -4150,19 +3775,19 @@ function __c14(j: number): any {
           ruleId: S.String,
           ruleArn: S.String,
           ruleName: S.String,
-          firewallType: S.optional(RuleFirewallType),
-          ruleType: S.optional(RuleType),
-          status: S.optional(EntityStatus),
+          firewallType: S.optional(S.String),
+          ruleType: S.optional(S.String),
+          status: S.optional(S.String),
           version: S.optional(S.String),
           hasPublishedVersion: S.optional(S.Boolean),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "RuleSummary" });
     case 6:
-      return S.Array(RuleSummary);
+      return S.Array(__S(117, __c14, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), rules: RuleSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), rules: __S(118, __c14, 6) }),
       ).annotate({ identifier: "ListRulesOutput" });
   }
 }
@@ -4187,14 +3812,14 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ListRuleSnapshotsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: RuleSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(118, __c14, 6) }),
       ).annotate({ identifier: "ListRuleSnapshotsOutput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/scopes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListScopesInput" });
     case 3:
@@ -4203,17 +3828,17 @@ function __c15(j: number): any {
           scopeId: S.String,
           scopeArn: S.String,
           scopeName: S.optional(S.String),
-          status: S.optional(EntityStatus),
+          status: S.optional(S.String),
           version: S.optional(S.String),
           hasPublishedVersion: S.optional(S.Boolean),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ScopeSummary" });
     case 4:
-      return S.Array(ScopeSummary);
+      return S.Array(__S(123, __c15, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), scopes: ScopeSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), scopes: __S(124, __c15, 4) }),
       ).annotate({ identifier: "ListScopesOutput" });
     case 6:
       return S.suspend(() =>
@@ -4234,7 +3859,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ListScopeSnapshotsInput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: ScopeSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(124, __c15, 4) }),
       ).annotate({ identifier: "ListScopeSnapshotsOutput" });
   }
 }
@@ -4254,7 +3879,7 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(5, __c0, 5)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 2:
@@ -4262,7 +3887,7 @@ function __c16(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/templates" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTemplatesInput" });
     case 3:
@@ -4271,18 +3896,18 @@ function __c16(j: number): any {
           templateId: S.String,
           templateArn: S.String,
           templateName: S.String,
-          status: S.optional(EntityStatus),
+          status: S.optional(S.String),
           version: S.optional(S.String),
           hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: S.optional(TemplateFirewallType),
+          firewallType: S.optional(S.String),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "TemplateSummary" });
     case 4:
-      return S.Array(TemplateSummary);
+      return S.Array(__S(131, __c16, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), templates: TemplateSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), templates: __S(132, __c16, 4) }),
       ).annotate({ identifier: "ListTemplatesOutput" });
     case 6:
       return S.suspend(() =>
@@ -4305,7 +3930,7 @@ function __c16(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: TemplateSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(132, __c16, 4) }),
       ).annotate({
         identifier: "ListTemplateSnapshotsOutput",
       });
@@ -4316,21 +3941,21 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(AccountIdList),
-          organizationalUnits: S.optional(OrganizationalUnitIdList),
+          accounts: S.optional(__S(11, __c1, 3)),
+          organizationalUnits: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "AdminScopeSelectionInput" });
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelectionInput }),
-        /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelectionInput }),
+        /*@__PURE__*/ S.Struct({ includeOnly: __S(136, __c17, 0) }),
+        /*@__PURE__*/ S.Struct({ excludeOnly: __S(136, __c17, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scopeFilter: S.optional(AdminScopeFilterInput),
-          firewallTypeScope: S.optional(AdminFirewallTypeScope),
+          scopeFilter: S.optional(__S(137, __c17, 1)),
+          firewallTypeScope: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "AdminScopeInput" });
     case 3:
@@ -4338,14 +3963,17 @@ function __c17(j: number): any {
         S.Struct({
           accountId: S.String,
           priority: S.Number,
-          adminScope: S.optional(AdminScopeInput),
+          adminScope: S.optional(__S(138, __c17, 2)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/admin-account" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutAdminAccountRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(5, __c0, 5),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -4360,7 +3988,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(11, __c1, 3).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -4378,9 +4006,9 @@ function __c17(j: number): any {
           deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
           updateToken: S.String,
           deploymentDescription: S.optional(S.String),
-          deploymentConfiguration: S.optional(DeploymentConfiguration),
-          associatedPolicyList: S.optional(PolicyReferenceList),
-          associatedScopeList: S.optional(ScopeReferenceList),
+          deploymentConfiguration: S.optional(__S(0, __c0, 0)),
+          associatedPolicyList: S.optional(__S(2, __c0, 2)),
+          associatedScopeList: S.optional(__S(4, __c0, 4)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4401,8 +4029,8 @@ function __c17(j: number): any {
           updateToken: S.String,
           policyDescription: S.optional(S.String),
           priority: S.optional(S.Number),
-          associatedTemplateAndRuleList: S.optional(TemplateAndRuleReferenceList),
-          policyConfiguration: S.optional(PolicyConfiguration),
+          associatedTemplateAndRuleList: S.optional(__S(21, __c2, 5)),
+          policyConfiguration: S.optional(__S(23, __c2, 7)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4425,7 +4053,7 @@ function __c18(j: number): any {
         S.Struct({
           ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
           updateToken: S.String,
-          ruleType: S.optional(RuleType),
+          ruleType: S.optional(S.String),
           ruleDescription: S.optional(S.String),
           configuration: S.optional(S.Any),
           isPublished: S.Boolean,
@@ -4447,7 +4075,7 @@ function __c18(j: number): any {
           scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
           updateToken: S.String,
           scopeDescription: S.optional(S.String),
-          scopeConfiguration: S.optional(ScopeConfiguration),
+          scopeConfiguration: S.optional(__S(42, __c5, 2)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4467,7 +4095,7 @@ function __c18(j: number): any {
           templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
           updateToken: S.String,
           templateDescription: S.optional(S.String),
-          associatedRuleList: S.optional(RuleReferenceList),
+          associatedRuleList: S.optional(__S(48, __c6, 0)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4486,6 +4114,11 @@ function __c18(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 4:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(147, __c18, 3));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

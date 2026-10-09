@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -80,8 +82,6 @@ export type PagesTestsCreateRequestRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const PagesTestsCreateRequestRegion = S.String;
-
 export interface CreatePageTestRequest {
   /** Identifier. */
   zoneId: string;
@@ -90,22 +90,13 @@ export interface CreatePageTestRequest {
   /** A test region. */
   region?: PagesTestsCreateRequestRegion | (string & {});
 }
-const CreatePageTestRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreatePageTestRequest>;
-
 export type PagesTestsCreateResponseDesktopReportDeviceType = "DESKTOP" | "MOBILE";
-const PagesTestsCreateResponseDesktopReportDeviceType = S.String;
-
 export type PagesTestsCreateResponseDesktopReportErrorCode =
   | "NOT_REACHABLE"
   | "DNS_FAILURE"
   | "NOT_HTML"
   | "LIGHTHOUSE_TIMEOUT"
   | "UNKNOWN";
-const PagesTestsCreateResponseDesktopReportErrorCode = S.String;
-
 export interface PagesTestsCreateResponseDesktopReportError {
   /** The error code of the Lighthouse result. */
   code?: PagesTestsCreateResponseDesktopReportErrorCode | null;
@@ -114,14 +105,7 @@ export interface PagesTestsCreateResponseDesktopReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-const PagesTestsCreateResponseDesktopReportError = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PagesTestsCreateResponseDesktopReportError>;
-
 export type PagesTestsCreateResponseDesktopReportState = "RUNNING" | "COMPLETE" | "FAILED";
-const PagesTestsCreateResponseDesktopReportState = S.String;
-
 export interface PagesTestsCreateResponseDesktopReport {
   /** Cumulative Layout Shift. */
   cls?: number | null;
@@ -147,11 +131,6 @@ export interface PagesTestsCreateResponseDesktopReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-const PagesTestsCreateResponseDesktopReport = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PagesTestsCreateResponseDesktopReport>;
-
 export type PagesTestsCreateResponseMobileReportDeviceType = "DESKTOP" | "MOBILE";
 export type PagesTestsCreateResponseMobileReportErrorCode =
   | "NOT_REACHABLE"
@@ -193,9 +172,6 @@ export interface PagesTestsCreateResponseMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-const PagesTestsCreateResponseMobileReport =
-  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsCreateResponseMobileReport>;
-
 export type PagesTestsCreateResponseRegionValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -218,21 +194,12 @@ export type PagesTestsCreateResponseRegionValue =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const PagesTestsCreateResponseRegionValue = S.String;
-
 export interface PagesTestsCreateResponseRegion {
   label?: string | null;
   /** A test region. */
   value?: PagesTestsCreateResponseRegionValue | null;
 }
-const PagesTestsCreateResponseRegion = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PagesTestsCreateResponseRegion>;
-
 export type PagesTestsCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
-const PagesTestsCreateResponseScheduleFrequency = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePageTestResponse {
   /** UUID. */
@@ -249,14 +216,7 @@ export interface CreatePageTestResponse {
   /** A URL. */
   url?: string | null;
 }
-const CreatePageTestResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreatePageTestResponse>;
-
 export type ScheduleCreateRequestFrequency = "DAILY" | "WEEKLY";
-const ScheduleCreateRequestFrequency = S.String;
-
 export type ScheduleCreateRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -279,8 +239,6 @@ export type ScheduleCreateRequestRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const ScheduleCreateRequestRegion = S.String;
-
 export interface CreateScheduleRequest {
   /** Identifier. */
   zoneId: string;
@@ -291,14 +249,7 @@ export interface CreateScheduleRequest {
   /** A test region. */
   region?: ScheduleCreateRequestRegion | (string & {});
 }
-const CreateScheduleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateScheduleRequest>;
-
 export type ScheduleCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
-const ScheduleCreateResponseScheduleFrequency = S.String;
-
 export type ScheduleCreateResponseScheduleRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -321,8 +272,6 @@ export type ScheduleCreateResponseScheduleRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const ScheduleCreateResponseScheduleRegion = S.String;
-
 export interface ScheduleCreateResponseSchedule {
   /** The frequency of the test. */
   frequency?: ScheduleCreateResponseScheduleFrequency | null;
@@ -331,11 +280,6 @@ export interface ScheduleCreateResponseSchedule {
   /** A URL. */
   url?: string | null;
 }
-const ScheduleCreateResponseSchedule = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ScheduleCreateResponseSchedule>;
-
 export type ScheduleCreateResponseTestDesktopReportDeviceType = "DESKTOP" | "MOBILE";
 export type ScheduleCreateResponseTestDesktopReportErrorCode =
   | "NOT_REACHABLE"
@@ -377,9 +321,6 @@ export interface ScheduleCreateResponseTestDesktopReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-const ScheduleCreateResponseTestDesktopReport =
-  PagesTestsCreateResponseDesktopReport as any as S.Schema<ScheduleCreateResponseTestDesktopReport>;
-
 export type ScheduleCreateResponseTestMobileReportDeviceType = "DESKTOP" | "MOBILE";
 export type ScheduleCreateResponseTestMobileReportErrorCode =
   | "NOT_REACHABLE"
@@ -421,9 +362,6 @@ export interface ScheduleCreateResponseTestMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-const ScheduleCreateResponseTestMobileReport =
-  PagesTestsCreateResponseDesktopReport as any as S.Schema<ScheduleCreateResponseTestMobileReport>;
-
 export type ScheduleCreateResponseTestRegionValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -451,12 +389,7 @@ export interface ScheduleCreateResponseTestRegion {
   /** A test region. */
   value?: ScheduleCreateResponseTestRegionValue | null;
 }
-const ScheduleCreateResponseTestRegion =
-  PagesTestsCreateResponseRegion as any as S.Schema<ScheduleCreateResponseTestRegion>;
-
 export type ScheduleCreateResponseTestScheduleFrequency = "DAILY" | "WEEKLY";
-const ScheduleCreateResponseTestScheduleFrequency = S.String;
-
 export interface ScheduleCreateResponseTest {
   /** UUID. */
   id?: string | null;
@@ -472,22 +405,12 @@ export interface ScheduleCreateResponseTest {
   /** A URL. */
   url?: string | null;
 }
-const ScheduleCreateResponseTest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ScheduleCreateResponseTest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateScheduleResponse {
   /** The test schedule. */
   schedule?: ScheduleCreateResponseSchedule | null;
   test?: ScheduleCreateResponseTest | null;
 }
-const CreateScheduleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateScheduleResponse>;
-
 export type PagesTestsDeleteRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -510,8 +433,6 @@ export type PagesTestsDeleteRequestRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const PagesTestsDeleteRequestRegion = S.String;
-
 export interface DeletePageTestRequest {
   /** Identifier. */
   zoneId: string;
@@ -520,21 +441,11 @@ export interface DeletePageTestRequest {
   /** A test region. */
   region?: PagesTestsDeleteRequestRegion | (string & {});
 }
-const DeletePageTestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeletePageTestRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeletePageTestResponse {
   /** Number of items affected. */
   count?: number | null;
 }
-const DeletePageTestResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeletePageTestResponse>;
-
 export type ScheduleDeleteRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -557,8 +468,6 @@ export type ScheduleDeleteRequestRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const ScheduleDeleteRequestRegion = S.String;
-
 export interface DeleteScheduleRequest {
   /** Identifier. */
   zoneId: string;
@@ -567,18 +476,11 @@ export interface DeleteScheduleRequest {
   /** A test region. */
   region?: ScheduleDeleteRequestRegion | (string & {});
 }
-const DeleteScheduleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteScheduleRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteScheduleResponse {
   /** Number of items affected. */
   count?: number | null;
 }
-const DeleteScheduleResponse = DeletePageTestResponse as any as S.Schema<DeleteScheduleResponse>;
-
 export interface GetPageTestRequest {
   /** Identifier. */
   zoneId: string;
@@ -586,8 +488,6 @@ export interface GetPageTestRequest {
   url: string;
   testId: string;
 }
-const GetPageTestRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetPageTestRequest>;
-
 export type PagesTestsGetResponseDesktopReportDeviceType = "DESKTOP" | "MOBILE";
 export type PagesTestsGetResponseDesktopReportErrorCode =
   | "NOT_REACHABLE"
@@ -714,8 +614,6 @@ export interface GetPageTestResponse {
   /** A URL. */
   url?: string | null;
 }
-const GetPageTestResponse = CreatePageTestResponse as any as S.Schema<GetPageTestResponse>;
-
 export type ScheduleGetRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -738,8 +636,6 @@ export type ScheduleGetRequestRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const ScheduleGetRequestRegion = S.String;
-
 export interface GetScheduleRequest {
   /** Identifier. */
   zoneId: string;
@@ -748,11 +644,7 @@ export interface GetScheduleRequest {
   /** A test region. */
   region?: ScheduleGetRequestRegion | (string & {});
 }
-const GetScheduleRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetScheduleRequest>;
-
 export type ScheduleGetResponseFrequency = "DAILY" | "WEEKLY";
-const ScheduleGetResponseFrequency = S.String;
-
 export type ScheduleGetResponseRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -775,8 +667,6 @@ export type ScheduleGetResponseRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const ScheduleGetResponseRegion = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScheduleResponse {
   /** The frequency of the test. */
@@ -786,37 +676,20 @@ export interface GetScheduleResponse {
   /** A URL. */
   url?: string | null;
 }
-const GetScheduleResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetScheduleResponse>;
-
 export interface ListAvailabilitiesRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ListAvailabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListAvailabilitiesRequest>;
-
 export interface AvailabilitiesListResponseQuotaQuotasPerPlanValue {
   business?: number | null;
   enterprise?: number | null;
   free?: number | null;
   pro?: number | null;
 }
-const AvailabilitiesListResponseQuotaQuotasPerPlanValue = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AvailabilitiesListResponseQuotaQuotasPerPlanValue>;
-
 export interface AvailabilitiesListResponseQuotaQuotasPerPlan {
   /** Counts per account plan. */
   value?: AvailabilitiesListResponseQuotaQuotasPerPlanValue | null;
 }
-const AvailabilitiesListResponseQuotaQuotasPerPlan = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AvailabilitiesListResponseQuotaQuotasPerPlan>;
-
 export type AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue =
   AvailabilitiesListResponseQuotaQuotasPerPlanValue;
 export type AvailabilitiesListResponseQuotaScheduleQuotasPerPlan =
@@ -833,11 +706,6 @@ export interface AvailabilitiesListResponseQuota {
   /** The number of schedules available per plan. */
   scheduleQuotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan | null;
 }
-const AvailabilitiesListResponseQuota = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AvailabilitiesListResponseQuota>;
-
 export type AvailabilitiesListResponseRegionsItemValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -865,15 +733,7 @@ export interface AvailabilitiesListResponseRegionsItem {
   /** A test region. */
   value?: AvailabilitiesListResponseRegionsItemValue | null;
 }
-const AvailabilitiesListResponseRegionsItem =
-  PagesTestsCreateResponseRegion as any as S.Schema<AvailabilitiesListResponseRegionsItem>;
-
 export type AvailabilitiesListResponseRegionsList = Array<AvailabilitiesListResponseRegionsItem>;
-const AvailabilitiesListResponseRegionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AvailabilitiesListResponseRegionsList>;
-
 export type AvailabilitiesListResponseRegionsPerPlanBusinessItemValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -903,9 +763,6 @@ export interface AvailabilitiesListResponseRegionsPerPlanBusinessItem {
 }
 export type AvailabilitiesListResponseRegionsPerPlanBusinessList =
   Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
-const AvailabilitiesListResponseRegionsPerPlanBusinessList =
-  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessList>;
-
 export type AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -935,9 +792,6 @@ export interface AvailabilitiesListResponseRegionsPerPlanEnterpriseItem {
 }
 export type AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
   Array<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
-const AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
-  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseList>;
-
 export type AvailabilitiesListResponseRegionsPerPlanFreeItemValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -967,9 +821,6 @@ export interface AvailabilitiesListResponseRegionsPerPlanFreeItem {
 }
 export type AvailabilitiesListResponseRegionsPerPlanFreeList =
   Array<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
-const AvailabilitiesListResponseRegionsPerPlanFreeList =
-  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeList>;
-
 export type AvailabilitiesListResponseRegionsPerPlanProItemValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -999,20 +850,12 @@ export interface AvailabilitiesListResponseRegionsPerPlanProItem {
 }
 export type AvailabilitiesListResponseRegionsPerPlanProList =
   Array<AvailabilitiesListResponseRegionsPerPlanProItem>;
-const AvailabilitiesListResponseRegionsPerPlanProList =
-  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProList>;
-
 export interface AvailabilitiesListResponseRegionsPerPlan {
   business?: AvailabilitiesListResponseRegionsPerPlanBusinessList | null;
   enterprise?: AvailabilitiesListResponseRegionsPerPlanEnterpriseList | null;
   free?: AvailabilitiesListResponseRegionsPerPlanFreeList | null;
   pro?: AvailabilitiesListResponseRegionsPerPlanProList | null;
 }
-const AvailabilitiesListResponseRegionsPerPlan = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlan>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListAvailabilitiesResponse {
   quota?: AvailabilitiesListResponseQuota | null;
@@ -1020,17 +863,10 @@ export interface ListAvailabilitiesResponse {
   /** Available regions. */
   regionsPerPlan?: AvailabilitiesListResponseRegionsPerPlan | null;
 }
-const ListAvailabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListAvailabilitiesResponse>;
-
 export interface ListPagesRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ListPagesRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListPagesRequest>;
-
 export type PagesListResultItemRegionValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -1058,12 +894,7 @@ export interface PagesListResultItemRegion {
   /** A test region. */
   value?: PagesListResultItemRegionValue | null;
 }
-const PagesListResultItemRegion =
-  PagesTestsCreateResponseRegion as any as S.Schema<PagesListResultItemRegion>;
-
 export type PagesListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
-const PagesListResultItemScheduleFrequency = S.String;
-
 export type PagesListResultItemTestsItemDesktopReportDeviceType = "DESKTOP" | "MOBILE";
 export type PagesListResultItemTestsItemDesktopReportErrorCode =
   | "NOT_REACHABLE"
@@ -1189,15 +1020,7 @@ export interface PagesListResultItemTestsItem {
   /** A URL. */
   url?: string | null;
 }
-const PagesListResultItemTestsItem =
-  ScheduleCreateResponseTest as any as S.Schema<PagesListResultItemTestsItem>;
-
 export type PagesListResultItemTestsList = Array<PagesListResultItemTestsItem>;
-const PagesListResultItemTestsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<PagesListResultItemTestsList>;
-
 export interface PagesListResultItem {
   /** A test region with a label. */
   region?: PagesListResultItemRegion | null;
@@ -1207,19 +1030,13 @@ export interface PagesListResultItem {
   /** A URL. */
   url?: string | null;
 }
-const PagesListResultItem = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PagesListResultItem>;
-
 export type PagesListResultList = Array<PagesListResultItem>;
-const PagesListResultList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PagesListResultList>;
-
 export interface ListPagesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PagesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListPagesResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListPagesResponse>;
-
 export type PagesTestsListRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -1242,8 +1059,6 @@ export type PagesTestsListRequestRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const PagesTestsListRequestRegion = S.String;
-
 export interface ListPageTestsRequest {
   /** Identifier. */
   zoneId: string;
@@ -1254,8 +1069,6 @@ export interface ListPageTestsRequest {
   /** A test region. */
   region?: PagesTestsListRequestRegion | (string & {});
 }
-const ListPageTestsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListPageTestsRequest>;
-
 export type PagesTestsListResultItemDesktopReportDeviceType = "DESKTOP" | "MOBILE";
 export type PagesTestsListResultItemDesktopReportErrorCode =
   | "NOT_REACHABLE"
@@ -1297,9 +1110,6 @@ export interface PagesTestsListResultItemDesktopReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-const PagesTestsListResultItemDesktopReport =
-  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsListResultItemDesktopReport>;
-
 export type PagesTestsListResultItemMobileReportDeviceType = "DESKTOP" | "MOBILE";
 export type PagesTestsListResultItemMobileReportErrorCode =
   | "NOT_REACHABLE"
@@ -1341,9 +1151,6 @@ export interface PagesTestsListResultItemMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-const PagesTestsListResultItemMobileReport =
-  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsListResultItemMobileReport>;
-
 export type PagesTestsListResultItemRegionValue =
   | "asia-east1"
   | "asia-northeast1"
@@ -1371,12 +1178,7 @@ export interface PagesTestsListResultItemRegion {
   /** A test region. */
   value?: PagesTestsListResultItemRegionValue | null;
 }
-const PagesTestsListResultItemRegion =
-  PagesTestsCreateResponseRegion as any as S.Schema<PagesTestsListResultItemRegion>;
-
 export type PagesTestsListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
-const PagesTestsListResultItemScheduleFrequency = S.String;
-
 export interface PagesTestsListResultItem {
   /** UUID. */
   id?: string | null;
@@ -1392,31 +1194,14 @@ export interface PagesTestsListResultItem {
   /** A URL. */
   url?: string | null;
 }
-const PagesTestsListResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PagesTestsListResultItem>;
-
 export type PagesTestsListResultList = Array<PagesTestsListResultItem>;
-const PagesTestsListResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<PagesTestsListResultList>;
-
 export interface ListPageTestsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PagesTestsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListPageTestsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListPageTestsResponse>;
-
 export type PagesTrendRequestDeviceType = "DESKTOP" | "MOBILE";
-const PagesTrendRequestDeviceType = S.String;
-
 export type PagesTrendRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
@@ -1439,8 +1224,6 @@ export type PagesTrendRequestRegion =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-const PagesTrendRequestRegion = S.String;
-
 export interface TrendPageRequest {
   /** Identifier. */
   zoneId: string;
@@ -1457,42 +1240,14 @@ export interface TrendPageRequest {
   tz: string;
   end?: string;
 }
-const TrendPageRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TrendPageRequest>;
-
 export type PagesTrendResponseClsList = Array<number>;
-const PagesTrendResponseClsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PagesTrendResponseClsList>;
-
 export type PagesTrendResponseFcpList = Array<number>;
-const PagesTrendResponseFcpList =
-  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseFcpList>;
-
 export type PagesTrendResponseLcpList = Array<number>;
-const PagesTrendResponseLcpList =
-  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseLcpList>;
-
 export type PagesTrendResponsePerformanceScoreList = Array<number>;
-const PagesTrendResponsePerformanceScoreList =
-  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponsePerformanceScoreList>;
-
 export type PagesTrendResponseSiList = Array<number>;
-const PagesTrendResponseSiList =
-  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseSiList>;
-
 export type PagesTrendResponseTbtList = Array<number>;
-const PagesTrendResponseTbtList =
-  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseTbtList>;
-
 export type PagesTrendResponseTtfbList = Array<number>;
-const PagesTrendResponseTtfbList =
-  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseTtfbList>;
-
 export type PagesTrendResponseTtiList = Array<number>;
-const PagesTrendResponseTtiList =
-  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseTtiList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TrendPageResponse {
   /** Cumulative Layout Shift trend. */
@@ -1512,8 +1267,6 @@ export interface TrendPageResponse {
   /** Time To Interactive trend. */
   tti?: PagesTrendResponseTtiList | null;
 }
-const TrendPageResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TrendPageResponse>;
-
 export type CreatePageTestError = CloudflareOpError;
 /** Starts a test for a specific webpage, in a specific region. */
 export const createPageTest: API.OperationMethod<
@@ -1522,8 +1275,8 @@ export const createPageTest: API.OperationMethod<
   CreatePageTestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePageTestRequest,
-  output: CreatePageTestResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePageTestRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreatePageTestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1294,8 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateScheduleRequest,
-  output: CreateScheduleResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateScheduleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateScheduleResponse>,
   errors: [
     TestScheduleAlreadyExists,
     TestScheduleQuotaReached,
@@ -1562,8 +1315,8 @@ export const deletePageTest: API.OperationMethod<
   DeletePageTestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePageTestRequest,
-  output: DeletePageTestResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeletePageTestRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeletePageTestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1577,8 +1330,8 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScheduleRequest,
-  output: DeleteScheduleResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteScheduleRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeleteScheduleResponse>,
   errors: [TestScheduleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1592,8 +1345,8 @@ export const getPageTest: API.OperationMethod<
   GetPageTestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPageTestRequest,
-  output: GetPageTestResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetPageTestRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetPageTestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1360,8 @@ export const getSchedule: API.OperationMethod<
   GetScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScheduleRequest,
-  output: GetScheduleResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetScheduleRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetScheduleResponse>,
   errors: [TestScheduleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1375,8 @@ export const listAvailabilities: API.OperationMethod<
   ListAvailabilitiesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAvailabilitiesRequest,
-  output: ListAvailabilitiesResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<ListAvailabilitiesRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ListAvailabilitiesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1639,8 +1392,8 @@ export const listPages: API.PaginatedOperationMethod<
   PagesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPagesRequest,
-    output: ListPagesResponse,
+    input: __S(22, __c2, 6) as any as S.Schema<ListPagesRequest>,
+    output: __S(26, __c3, 2) as any as S.Schema<ListPagesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1659,8 +1412,8 @@ export const listPageTests: API.PaginatedOperationMethod<
   PagesTestsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPageTestsRequest,
-    output: ListPageTestsResponse,
+    input: __S(27, __c3, 3) as any as S.Schema<ListPageTestsRequest>,
+    output: __S(30, __c3, 6) as any as S.Schema<ListPageTestsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1683,8 +1436,8 @@ export const trendPage: API.OperationMethod<
   TrendPageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TrendPageRequest,
-  output: TrendPageResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<TrendPageRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<TrendPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1698,7 +1451,7 @@ function __c0(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           url: S.String.pipe(T.Label()),
-          region: S.optional(PagesTestsCreateRequestRegion),
+          region: S.optional(S.String),
         })
           .pipe(
             T.Http({
@@ -1712,7 +1465,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReportErrorCode)),
+          code: S.optional(S.NullOr(S.String)),
           detail: S.optional(S.NullOr(S.String)),
           finalDisplayedUrl: S.optional(S.NullOr(S.String)),
         }),
@@ -1723,14 +1476,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cls: S.optional(S.NullOr(S.Number)),
-          deviceType: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReportDeviceType)),
-          error: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReportError)),
+          deviceType: S.optional(S.NullOr(S.String)),
+          error: S.optional(S.NullOr(__S(1, __c0, 1))),
           fcp: S.optional(S.NullOr(S.Number)),
           jsonReportUrl: S.optional(S.NullOr(S.String)),
           lcp: S.optional(S.NullOr(S.Number)),
           performanceScore: S.optional(S.NullOr(S.Number)),
           si: S.optional(S.NullOr(S.Number)),
-          state: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReportState)),
+          state: S.optional(S.NullOr(S.String)),
           tbt: S.optional(S.NullOr(S.Number)),
           ttfb: S.optional(S.NullOr(S.Number)),
           tti: S.optional(S.NullOr(S.Number)),
@@ -1742,7 +1495,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(PagesTestsCreateResponseRegionValue)),
+          value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PagesTestsCreateResponseRegion",
@@ -1752,10 +1505,10 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           date: S.optional(S.NullOr(S.String)),
-          desktopReport: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReport)),
-          mobileReport: S.optional(S.NullOr(PagesTestsCreateResponseMobileReport)),
-          region: S.optional(S.NullOr(PagesTestsCreateResponseRegion)),
-          scheduleFrequency: S.optional(S.NullOr(PagesTestsCreateResponseScheduleFrequency)),
+          desktopReport: S.optional(S.NullOr(__S(2, __c0, 2))),
+          mobileReport: S.optional(S.NullOr(__S(2, __c0, 2))),
+          region: S.optional(S.NullOr(__S(3, __c0, 3))),
+          scheduleFrequency: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePageTestResponse" });
@@ -1764,8 +1517,8 @@ function __c0(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           url: S.String.pipe(T.Label()),
-          frequency: S.optional(ScheduleCreateRequestFrequency.pipe(T.Query())),
-          region: S.optional(ScheduleCreateRequestRegion.pipe(T.Query())),
+          frequency: S.optional(S.String.pipe(T.Query())),
+          region: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/speed_api/schedule/{url}", code: 200 }),
@@ -1775,8 +1528,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.NullOr(ScheduleCreateResponseScheduleFrequency)),
-          region: S.optional(S.NullOr(ScheduleCreateResponseScheduleRegion)),
+          frequency: S.optional(S.NullOr(S.String)),
+          region: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -1787,10 +1540,10 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           date: S.optional(S.NullOr(S.String)),
-          desktopReport: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReport)),
-          mobileReport: S.optional(S.NullOr(ScheduleCreateResponseTestMobileReport)),
-          region: S.optional(S.NullOr(ScheduleCreateResponseTestRegion)),
-          scheduleFrequency: S.optional(S.NullOr(ScheduleCreateResponseTestScheduleFrequency)),
+          desktopReport: S.optional(S.NullOr(__S(2, __c0, 2))),
+          mobileReport: S.optional(S.NullOr(__S(2, __c0, 2))),
+          region: S.optional(S.NullOr(__S(3, __c0, 3))),
+          scheduleFrequency: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -1803,8 +1556,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          schedule: S.optional(S.NullOr(ScheduleCreateResponseSchedule)),
-          test: S.optional(S.NullOr(ScheduleCreateResponseTest)),
+          schedule: S.optional(S.NullOr(__S(6, __c0, 6))),
+          test: S.optional(S.NullOr(__S(7, __c0, 7))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateScheduleResponse" });
     case 1:
@@ -1812,7 +1565,7 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           url: S.String.pipe(T.Label()),
-          region: S.optional(PagesTestsDeleteRequestRegion.pipe(T.Query())),
+          region: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -1834,7 +1587,7 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           url: S.String.pipe(T.Label()),
-          region: S.optional(ScheduleDeleteRequestRegion.pipe(T.Query())),
+          region: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -1866,7 +1619,7 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           url: S.String.pipe(T.Label()),
-          region: S.optional(ScheduleGetRequestRegion.pipe(T.Query())),
+          region: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/zones/{zone_id}/speed_api/schedule/{url}", code: 200 }),
@@ -1876,8 +1629,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.NullOr(ScheduleGetResponseFrequency)),
-          region: S.optional(S.NullOr(ScheduleGetResponseRegion)),
+          frequency: S.optional(S.NullOr(S.String)),
+          region: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScheduleResponse" });
@@ -1911,7 +1664,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlanValue)),
+          value: S.optional(S.NullOr(__S(16, __c2, 0))),
         }),
       ).annotate({
         identifier: "AvailabilitiesListResponseQuotaQuotasPerPlan",
@@ -1920,23 +1673,23 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           plan: S.optional(S.NullOr(S.String)),
-          quotasPerPlan: S.optional(S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan)),
+          quotasPerPlan: S.optional(S.NullOr(__S(17, __c2, 1))),
           remainingSchedules: S.optional(S.NullOr(S.Number)),
           remainingTests: S.optional(S.NullOr(S.Number)),
-          scheduleQuotasPerPlan: S.optional(S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan)),
+          scheduleQuotasPerPlan: S.optional(S.NullOr(__S(17, __c2, 1))),
         }),
       ).annotate({
         identifier: "AvailabilitiesListResponseQuota",
       });
     case 3:
-      return S.Array(AvailabilitiesListResponseRegionsItem);
+      return S.Array(__S(3, __c0, 3));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          business: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanBusinessList)),
-          enterprise: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanEnterpriseList)),
-          free: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanFreeList)),
-          pro: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanProList)),
+          business: S.optional(S.NullOr(__S(19, __c2, 3))),
+          enterprise: S.optional(S.NullOr(__S(19, __c2, 3))),
+          free: S.optional(S.NullOr(__S(19, __c2, 3))),
+          pro: S.optional(S.NullOr(__S(19, __c2, 3))),
         }),
       ).annotate({
         identifier: "AvailabilitiesListResponseRegionsPerPlan",
@@ -1944,9 +1697,9 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          quota: S.optional(S.NullOr(AvailabilitiesListResponseQuota)),
-          regions: S.optional(S.NullOr(AvailabilitiesListResponseRegionsList)),
-          regionsPerPlan: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlan)),
+          quota: S.optional(S.NullOr(__S(18, __c2, 2))),
+          regions: S.optional(S.NullOr(__S(19, __c2, 3))),
+          regionsPerPlan: S.optional(S.NullOr(__S(20, __c2, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListAvailabilitiesResponse",
@@ -1960,7 +1713,7 @@ function __c2(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPagesRequest" });
     case 7:
-      return S.Array(PagesListResultItemTestsItem);
+      return S.Array(__S(7, __c0, 7));
   }
 }
 function __c3(j: number): any {
@@ -1968,18 +1721,18 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          region: S.optional(S.NullOr(PagesListResultItemRegion)),
-          scheduleFrequency: S.optional(S.NullOr(PagesListResultItemScheduleFrequency)),
-          tests: S.optional(S.NullOr(PagesListResultItemTestsList)),
+          region: S.optional(S.NullOr(__S(3, __c0, 3))),
+          scheduleFrequency: S.optional(S.NullOr(S.String)),
+          tests: S.optional(S.NullOr(__S(23, __c2, 7))),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PagesListResultItem" });
     case 1:
-      return S.Array(PagesListResultItem);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: PagesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(25, __c3, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPagesResponse" });
@@ -1990,7 +1743,7 @@ function __c3(j: number): any {
           url: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          region: S.optional(PagesTestsListRequestRegion.pipe(T.Query())),
+          region: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -2006,19 +1759,19 @@ function __c3(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           date: S.optional(S.NullOr(S.String)),
-          desktopReport: S.optional(S.NullOr(PagesTestsListResultItemDesktopReport)),
-          mobileReport: S.optional(S.NullOr(PagesTestsListResultItemMobileReport)),
-          region: S.optional(S.NullOr(PagesTestsListResultItemRegion)),
-          scheduleFrequency: S.optional(S.NullOr(PagesTestsListResultItemScheduleFrequency)),
+          desktopReport: S.optional(S.NullOr(__S(2, __c0, 2))),
+          mobileReport: S.optional(S.NullOr(__S(2, __c0, 2))),
+          region: S.optional(S.NullOr(__S(3, __c0, 3))),
+          scheduleFrequency: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PagesTestsListResultItem" });
     case 5:
-      return S.Array(PagesTestsListResultItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: PagesTestsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(29, __c3, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPageTestsResponse" });
@@ -2027,9 +1780,9 @@ function __c3(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           url: S.String.pipe(T.Label()),
-          deviceType: PagesTrendRequestDeviceType.pipe(T.Query()),
+          deviceType: S.String.pipe(T.Query()),
           metrics: S.String.pipe(T.Query()),
-          region: PagesTrendRequestRegion.pipe(T.Query()),
+          region: S.String.pipe(T.Query()),
           start: S.String.pipe(T.Query()),
           tz: S.String.pipe(T.Query()),
           end: S.optional(S.String.pipe(T.Query())),
@@ -2052,15 +1805,20 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cls: S.optional(S.NullOr(PagesTrendResponseClsList)),
-          fcp: S.optional(S.NullOr(PagesTrendResponseFcpList)),
-          lcp: S.optional(S.NullOr(PagesTrendResponseLcpList)),
-          performanceScore: S.optional(S.NullOr(PagesTrendResponsePerformanceScoreList)),
-          si: S.optional(S.NullOr(PagesTrendResponseSiList)),
-          tbt: S.optional(S.NullOr(PagesTrendResponseTbtList)),
-          ttfb: S.optional(S.NullOr(PagesTrendResponseTtfbList)),
-          tti: S.optional(S.NullOr(PagesTrendResponseTtiList)),
+          cls: S.optional(S.NullOr(__S(32, __c4, 0))),
+          fcp: S.optional(S.NullOr(__S(32, __c4, 0))),
+          lcp: S.optional(S.NullOr(__S(32, __c4, 0))),
+          performanceScore: S.optional(S.NullOr(__S(32, __c4, 0))),
+          si: S.optional(S.NullOr(__S(32, __c4, 0))),
+          tbt: S.optional(S.NullOr(__S(32, __c4, 0))),
+          ttfb: S.optional(S.NullOr(__S(32, __c4, 0))),
+          tti: S.optional(S.NullOr(__S(32, __c4, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "TrendPageResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

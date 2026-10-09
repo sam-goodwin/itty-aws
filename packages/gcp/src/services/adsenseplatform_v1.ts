@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -78,26 +80,15 @@ export class NotFound
 
 /** Request definition for the account close rpc. */
 export interface CloseAccountRequest {}
-const CloseAccountRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CloseAccountRequest>;
-
 export interface ClosePlatformsAccountsRequest {
   /** Required. Account to close. Format: platforms/{platform}/accounts/{account_id} */
   name: string;
   /** Request body */
   body?: CloseAccountRequest;
 }
-const ClosePlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ClosePlatformsAccountsRequest>;
-
 /** Response definition for the account close rpc. */
 export interface CloseAccountResponse {}
-const CloseAccountResponse = CloseAccountRequest as any as S.Schema<CloseAccountResponse>;
-
 export type AccountStateEnum = "STATE_UNSPECIFIED" | "UNCHECKED" | "APPROVED" | "DISAPPROVED";
-const AccountStateEnum = S.String;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -105,8 +96,6 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-const TimeZone = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TimeZone>;
-
 /** Representation of an Account. */
 export interface Account {
   /** Required. An opaque token that uniquely identifies the account among all the platform's accounts. This string may contain at most 64 non-whitespace ASCII characters, but otherwise has no predefined structure. However, it is expected to be a platform-specific identifier for the user creating the account, so that only a single account can be created for any given user. This field must not contain any information that is recognizable as personally identifiable information. e.g. it should not be an email address or login name. Once an account has been created, a second attempt to create an account using the same creation_request_id will result in an ALREADY_EXISTS error. */
@@ -124,25 +113,16 @@ export interface Account {
   /** Output only. Resource name of the account. Format: platforms/pub-[0-9]+/accounts/pub-[0-9]+ */
   name?: string;
 }
-const Account = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Account>;
-
 export interface CreatePlatformsAccountsRequest {
   /** Required. Platform to create an account for. Format: platforms/{platform} */
   parent: string;
   /** Request body */
   body?: Account;
 }
-const CreatePlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreatePlatformsAccountsRequest>;
-
 export type EventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "LOG_IN_VIA_PLATFORM"
   | "SIGN_UP_VIA_PLATFORM";
-const EventEventTypeEnum = S.String;
-
 /** Address data. */
 export interface Address {
   /** State. Max length 60 bytes or 30 characters. */
@@ -166,8 +146,6 @@ export interface Address {
   /** Name of the company. Max length 255 bytes or 34 characters. */
   company?: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Address>;
-
 /** Private information for partner recorded events (PII). */
 export interface EventInfo {
   /** Required. The email address that is associated with the publisher when performing the event. */
@@ -175,8 +153,6 @@ export interface EventInfo {
   /** The billing address of the publisher associated with this event, if available. */
   billingAddress?: Address;
 }
-const EventInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EventInfo>;
-
 /** A platform sub-account event to record spam signals. */
 export interface Event {
   /** Required. Event type. */
@@ -186,27 +162,18 @@ export interface Event {
   /** Required. Information associated with the event. */
   eventInfo?: EventInfo;
 }
-const Event = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Event>;
-
 export interface CreatePlatformsAccountsEventsRequest {
   /** Required. Account to log events about. Format: platforms/{platform}/accounts/{account} */
   parent: string;
   /** Request body */
   body?: Event;
 }
-const CreatePlatformsAccountsEventsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreatePlatformsAccountsEventsRequest>;
-
 export type SiteStateEnum =
   | "STATE_UNSPECIFIED"
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
   | "NEEDS_ATTENTION";
-const SiteStateEnum = S.String;
-
 /** Representation of a Site. */
 export interface Site {
   /** Output only. State of a site. */
@@ -216,50 +183,26 @@ export interface Site {
   /** Output only. Resource name of a site. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name?: string;
 }
-const Site = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Site>;
-
 export interface CreatePlatformsAccountsSitesRequest {
   /** Required. Account to create site. Format: platforms/{platform}/accounts/{account_id} */
   parent: string;
   /** Request body */
   body?: Site;
 }
-const CreatePlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreatePlatformsAccountsSitesRequest>;
-
 export interface DeletePlatformsAccountsSitesRequest {
   /** Required. The name of the site to delete. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-const DeletePlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeletePlatformsAccountsSitesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CloseAccountRequest as any as S.Schema<Empty>;
-
 export interface GetPlatformsAccountsRequest {
   /** Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} */
   name: string;
 }
-const GetPlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetPlatformsAccountsRequest>;
-
 export interface GetPlatformsAccountsSitesRequest {
   /** Required. The name of the site to retrieve. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-const GetPlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetPlatformsAccountsSitesRequest>;
-
 export interface ListPlatformsAccountsRequest {
   /** Required. Platform who parents the accounts. Format: platforms/{platform} */
   parent: string;
@@ -268,14 +211,7 @@ export interface ListPlatformsAccountsRequest {
   /** Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListPlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListPlatformsAccountsRequest>;
-
 export type AccountList = Array<Account>;
-const AccountList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AccountList>;
-
 /** Response definition for the list accounts rpc. */
 export interface ListAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -283,8 +219,6 @@ export interface ListAccountsResponse {
   /** The Accounts returned in the list response. Represented by a partial view of the Account resource, populating `name` and `creation_request_id`. */
   accounts?: AccountList;
 }
-const ListAccountsResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListAccountsResponse>;
-
 export interface ListPlatformsAccountsSitesRequest {
   /** A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. */
   pageToken?: string;
@@ -293,14 +227,7 @@ export interface ListPlatformsAccountsSitesRequest {
   /** Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} */
   parent: string;
 }
-const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
-
 export type SiteList = Array<Site>;
-const SiteList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SiteList>;
-
 /** Response definition for the site list rpc. */
 export interface ListSitesResponse {
   /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -308,42 +235,23 @@ export interface ListSitesResponse {
   /** The sites returned in this list response. */
   sites?: SiteList;
 }
-const ListSitesResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListSitesResponse>;
-
 export interface LookupPlatformsAccountsRequest {
   /** Optional. The creation_request_id provided when calling createAccount. */
   creationRequestId?: string;
   /** Required. Platform who parents the account. Format: platforms/{platform} */
   parent: string;
 }
-const LookupPlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<LookupPlatformsAccountsRequest>;
-
 /** Response definition for the lookup account rpc. */
 export interface LookupAccountResponse {
   /** The name of the Account Format: platforms/{platform}/accounts/{account_id} */
   name?: string;
 }
-const LookupAccountResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<LookupAccountResponse>;
-
 export interface RequestReviewPlatformsAccountsSitesRequest {
   /** Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-const RequestReviewPlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>;
-
 /** Response definition for the site request review rpc. */
 export interface RequestSiteReviewResponse {}
-const RequestSiteReviewResponse = CloseAccountRequest as any as S.Schema<RequestSiteReviewResponse>;
-
 export type ClosePlatformsAccountsError =
   | NotFound
   | Forbidden
@@ -358,8 +266,8 @@ export const closePlatformsAccounts: API.OperationMethod<
   ClosePlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClosePlatformsAccountsRequest,
-  output: CloseAccountResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<ClosePlatformsAccountsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<CloseAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -379,8 +287,8 @@ export const createPlatformsAccounts: API.OperationMethod<
   CreatePlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlatformsAccountsRequest,
-  output: Account,
+  input: __S(4, __c0, 4) as any as S.Schema<CreatePlatformsAccountsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -400,8 +308,8 @@ export const createPlatformsAccountsEvents: API.OperationMethod<
   CreatePlatformsAccountsEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlatformsAccountsEventsRequest,
-  output: Event,
+  input: __S(8, __c1, 0) as any as S.Schema<CreatePlatformsAccountsEventsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -421,8 +329,8 @@ export const createPlatformsAccountsSites: API.OperationMethod<
   CreatePlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlatformsAccountsSitesRequest,
-  output: Site,
+  input: __S(10, __c1, 2) as any as S.Schema<CreatePlatformsAccountsSitesRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -442,8 +350,8 @@ export const deletePlatformsAccountsSites: API.OperationMethod<
   DeletePlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePlatformsAccountsSitesRequest,
-  output: Empty,
+  input: __S(11, __c1, 3) as any as S.Schema<DeletePlatformsAccountsSitesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -457,8 +365,8 @@ export const getPlatformsAccounts: API.OperationMethod<
   GetPlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlatformsAccountsRequest,
-  output: Account,
+  input: __S(12, __c1, 4) as any as S.Schema<GetPlatformsAccountsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -472,8 +380,8 @@ export const getPlatformsAccountsSites: API.OperationMethod<
   GetPlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlatformsAccountsSitesRequest,
-  output: Site,
+  input: __S(13, __c1, 5) as any as S.Schema<GetPlatformsAccountsSitesRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -488,8 +396,8 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsAccountsRequest,
-  output: ListAccountsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<ListPlatformsAccountsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ListAccountsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -509,8 +417,8 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsAccountsSitesRequest,
-  output: ListSitesResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<ListPlatformsAccountsSitesRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListSitesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -525,8 +433,8 @@ export const lookupPlatformsAccounts: API.OperationMethod<
   LookupPlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupPlatformsAccountsRequest,
-  output: LookupAccountResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<LookupPlatformsAccountsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<LookupAccountResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +454,8 @@ export const requestReviewPlatformsAccountsSites: API.OperationMethod<
   RequestReviewPlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestReviewPlatformsAccountsSitesRequest,
-  output: RequestSiteReviewResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<RequestSiteReviewResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -564,7 +472,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CloseAccountRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -586,10 +494,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creationRequestId: S.optional(S.String),
-          state: S.optional(AccountStateEnum),
+          state: S.optional(S.String),
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
-          timeZone: S.optional(TimeZone),
+          timeZone: S.optional(__S(2, __c0, 2)),
           regionCode: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -598,7 +506,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Account.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -628,15 +536,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
-          billingAddress: S.optional(Address),
+          billingAddress: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "EventInfo" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          eventType: S.optional(EventEventTypeEnum),
+          eventType: S.optional(S.String),
           eventTime: S.optional(S.String),
-          eventInfo: S.optional(EventInfo),
+          eventInfo: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Event" });
   }
@@ -647,7 +555,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Event.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -661,7 +569,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(SiteStateEnum),
+          state: S.optional(S.String),
           domain: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -670,7 +578,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Site.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -740,7 +648,7 @@ function __c1(j: number): any {
         identifier: "ListPlatformsAccountsRequest",
       });
     case 7:
-      return S.Array(Account);
+      return S.Array(__S(3, __c0, 3));
   }
 }
 function __c2(j: number): any {
@@ -749,7 +657,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accounts: S.optional(AccountList),
+          accounts: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
     case 1:
@@ -769,12 +677,12 @@ function __c2(j: number): any {
         identifier: "ListPlatformsAccountsSitesRequest",
       });
     case 2:
-      return S.Array(Site);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sites: S.optional(SiteList),
+          sites: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
     case 4:
@@ -813,4 +721,9 @@ function __c2(j: number): any {
         identifier: "RequestReviewPlatformsAccountsSitesRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

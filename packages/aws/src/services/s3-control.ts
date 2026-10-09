@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://awss3control.amazonaws.com/doc/2018-08-20/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "S3 Control",
@@ -979,49 +981,28 @@ export interface AssociateAccessGrantsIdentityCenterRequest {
   AccountId: string;
   IdentityCenterArn: string;
 }
-const AssociateAccessGrantsIdentityCenterRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateAccessGrantsIdentityCenterRequest>;
 export interface AssociateAccessGrantsIdentityCenterResponse {}
-const AssociateAccessGrantsIdentityCenterResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateAccessGrantsIdentityCenterResponse>;
 export type AccessGrantsLocationId = string;
 export type S3Prefix = string;
 export interface AccessGrantsLocationConfiguration {
   S3SubPrefix?: string;
 }
-const AccessGrantsLocationConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccessGrantsLocationConfiguration>;
 export type GranteeType = "DIRECTORY_USER" | "DIRECTORY_GROUP" | "IAM" | (string & {});
-const GranteeType = S.String;
-
 export type GranteeIdentifier = string;
 export interface Grantee {
   GranteeType?: GranteeType;
   GranteeIdentifier?: string;
 }
-const Grantee = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Grantee>;
 export type Permission = "READ" | "WRITE" | "READWRITE" | (string & {});
-const Permission = S.String;
-
 export type IdentityCenterApplicationArn = string;
 export type S3PrefixType = "Object" | (string & {});
-const S3PrefixType = S.String;
-
 export type TagKeyString = string;
 export type TagValueString = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CreateAccessGrantRequest {
   AccountId: string;
   AccessGrantsLocationId: string;
@@ -1032,10 +1013,6 @@ export interface CreateAccessGrantRequest {
   S3PrefixType?: S3PrefixType;
   Tags?: Tag[];
 }
-const CreateAccessGrantRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAccessGrantRequest>;
 export type CreationTimestamp = Date;
 export type AccessGrantId = string;
 export type AccessGrantArn = string;
@@ -1050,19 +1027,11 @@ export interface CreateAccessGrantResult {
   ApplicationArn?: string;
   GrantScope?: string;
 }
-const CreateAccessGrantResult = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateAccessGrantResult>;
 export interface CreateAccessGrantsInstanceRequest {
   AccountId: string;
   IdentityCenterArn?: string;
   Tags?: Tag[];
 }
-const CreateAccessGrantsInstanceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateAccessGrantsInstanceRequest>;
 export type AccessGrantsInstanceId = string;
 export type AccessGrantsInstanceArn = string;
 export interface CreateAccessGrantsInstanceResult {
@@ -1073,10 +1042,6 @@ export interface CreateAccessGrantsInstanceResult {
   IdentityCenterInstanceArn?: string;
   IdentityCenterApplicationArn?: string;
 }
-const CreateAccessGrantsInstanceResult = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateAccessGrantsInstanceResult>;
 export type IAMRoleArn = string;
 export interface CreateAccessGrantsLocationRequest {
   AccountId: string;
@@ -1084,10 +1049,6 @@ export interface CreateAccessGrantsLocationRequest {
   IAMRoleArn: string;
   Tags?: Tag[];
 }
-const CreateAccessGrantsLocationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateAccessGrantsLocationRequest>;
 export type AccessGrantsLocationArn = string;
 export interface CreateAccessGrantsLocationResult {
   CreatedAt?: Date;
@@ -1096,17 +1057,12 @@ export interface CreateAccessGrantsLocationResult {
   LocationScope?: string;
   IAMRoleArn?: string;
 }
-const CreateAccessGrantsLocationResult = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateAccessGrantsLocationResult>;
 export type AccessPointName = string;
 export type BucketName = string;
 export type VpcId = string;
 export interface VpcConfiguration {
   VpcId: string;
 }
-const VpcConfiguration = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<VpcConfiguration>;
 export type Setting = boolean;
 export interface PublicAccessBlockConfiguration {
   BlockPublicAcls?: boolean;
@@ -1114,13 +1070,8 @@ export interface PublicAccessBlockConfiguration {
   BlockPublicPolicy?: boolean;
   RestrictPublicBuckets?: boolean;
 }
-const PublicAccessBlockConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PublicAccessBlockConfiguration>;
 export type Prefix = string;
 export type PrefixesList = string[];
-const PrefixesList = /*@__PURE__*/ __L.at(__c1, 6);
 export type ScopePermission =
   | "GetObject"
   | "GetObjectAttributes"
@@ -1131,15 +1082,11 @@ export type ScopePermission =
   | "DeleteObject"
   | "AbortMultipartUpload"
   | (string & {});
-const ScopePermission = S.String;
-
 export type ScopePermissionList = ScopePermission[];
-const ScopePermissionList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface Scope {
   Prefixes?: string[];
   Permissions?: ScopePermission[];
 }
-const Scope = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Scope>;
 export interface CreateAccessPointRequest {
   AccountId: string;
   Name: string;
@@ -1150,20 +1097,12 @@ export interface CreateAccessPointRequest {
   Scope?: Scope;
   Tags?: Tag[];
 }
-const CreateAccessPointRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateAccessPointRequest>;
 export type S3AccessPointArn = string;
 export type Alias = string;
 export interface CreateAccessPointResult {
   AccessPointArn?: string;
   Alias?: string;
 }
-const CreateAccessPointResult = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateAccessPointResult>;
 export type ObjectLambdaAccessPointName = string;
 export type ObjectLambdaSupportingAccessPointArn = string;
 export type ObjectLambdaAllowedFeature =
@@ -1172,92 +1111,56 @@ export type ObjectLambdaAllowedFeature =
   | "HeadObject-Range"
   | "HeadObject-PartNumber"
   | (string & {});
-const ObjectLambdaAllowedFeature = S.String;
-
 export type ObjectLambdaAllowedFeaturesList = ObjectLambdaAllowedFeature[];
-const ObjectLambdaAllowedFeaturesList = /*@__PURE__*/ __L.at(__c2, 3);
 export type ObjectLambdaTransformationConfigurationAction =
   | "GetObject"
   | "HeadObject"
   | "ListObjects"
   | "ListObjectsV2"
   | (string & {});
-const ObjectLambdaTransformationConfigurationAction = S.String;
-
 export type ObjectLambdaTransformationConfigurationActionsList =
   ObjectLambdaTransformationConfigurationAction[];
-const ObjectLambdaTransformationConfigurationActionsList = /*@__PURE__*/ __L.at(__c2, 4);
 export type FunctionArnString = string;
 export type AwsLambdaTransformationPayload = string;
 export interface AwsLambdaTransformation {
   FunctionArn: string;
   FunctionPayload?: string;
 }
-const AwsLambdaTransformation = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AwsLambdaTransformation>;
 export type ObjectLambdaContentTransformation = { AwsLambda: AwsLambdaTransformation };
-const ObjectLambdaContentTransformation = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ObjectLambdaTransformationConfiguration {
   Actions: ObjectLambdaTransformationConfigurationAction[];
   ContentTransformation: ObjectLambdaContentTransformation;
 }
-const ObjectLambdaTransformationConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ObjectLambdaTransformationConfiguration>;
 export type ObjectLambdaTransformationConfigurationsList =
   ObjectLambdaTransformationConfiguration[];
-const ObjectLambdaTransformationConfigurationsList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface ObjectLambdaConfiguration {
   SupportingAccessPoint: string;
   CloudWatchMetricsEnabled?: boolean;
   AllowedFeatures?: ObjectLambdaAllowedFeature[];
   TransformationConfigurations: ObjectLambdaTransformationConfiguration[];
 }
-const ObjectLambdaConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ObjectLambdaConfiguration>;
 export interface CreateAccessPointForObjectLambdaRequest {
   AccountId: string;
   Name: string;
   Configuration: ObjectLambdaConfiguration;
 }
-const CreateAccessPointForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateAccessPointForObjectLambdaRequest>;
 export type ObjectLambdaAccessPointArn = string;
 export type ObjectLambdaAccessPointAliasValue = string;
 export type ObjectLambdaAccessPointAliasStatus = "PROVISIONING" | "READY" | (string & {});
-const ObjectLambdaAccessPointAliasStatus = S.String;
-
 export interface ObjectLambdaAccessPointAlias {
   Value?: string;
   Status?: ObjectLambdaAccessPointAliasStatus;
 }
-const ObjectLambdaAccessPointAlias = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ObjectLambdaAccessPointAlias>;
 export interface CreateAccessPointForObjectLambdaResult {
   ObjectLambdaAccessPointArn?: string;
   Alias?: ObjectLambdaAccessPointAlias;
 }
-const CreateAccessPointForObjectLambdaResult = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateAccessPointForObjectLambdaResult>;
 export type BucketCannedACL =
   | "private"
   | "public-read"
   | "public-read-write"
   | "authenticated-read"
   | (string & {});
-const BucketCannedACL = S.String;
-
 export type BucketLocationConstraint =
   | "EU"
   | "eu-west-1"
@@ -1271,15 +1174,9 @@ export type BucketLocationConstraint =
   | "cn-north-1"
   | "eu-central-1"
   | (string & {});
-const BucketLocationConstraint = S.String;
-
 export interface CreateBucketConfiguration {
   LocationConstraint?: BucketLocationConstraint;
 }
-const CreateBucketConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateBucketConfiguration>;
 export type GrantFullControl = string;
 export type GrantRead = string;
 export type GrantReadACP = string;
@@ -1299,27 +1196,20 @@ export interface CreateBucketRequest {
   ObjectLockEnabledForBucket?: boolean;
   OutpostId?: string;
 }
-const CreateBucketRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateBucketRequest>;
 export type Location = string;
 export type S3RegionalBucketArn = string;
 export interface CreateBucketResult {
   Location?: string;
   BucketArn?: string;
 }
-const CreateBucketResult = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateBucketResult>;
 export type ConfirmationRequired = boolean;
 export type MaxLength1024String = string;
 export type UserArguments = { [key: string]: string | undefined };
-const UserArguments = /*@__PURE__*/ __L.at(__c4, 0);
 export interface LambdaInvokeOperation {
   FunctionArn?: string;
   InvocationSchemaVersion?: string;
   UserArguments?: { [key: string]: string | undefined };
 }
-const LambdaInvokeOperation = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<LambdaInvokeOperation>;
 export type S3RegionalOrS3ExpressBucketArnString = string;
 export type S3CannedAccessControlList =
   | "private"
@@ -1330,18 +1220,13 @@ export type S3CannedAccessControlList =
   | "bucket-owner-read"
   | "bucket-owner-full-control"
   | (string & {});
-const S3CannedAccessControlList = S.String;
-
 export type S3GranteeTypeIdentifier = "id" | "emailAddress" | "uri" | (string & {});
-const S3GranteeTypeIdentifier = S.String;
-
 export type NonEmptyMaxLength1024String = string;
 export interface S3Grantee {
   TypeIdentifier?: S3GranteeTypeIdentifier;
   Identifier?: string;
   DisplayName?: string;
 }
-const S3Grantee = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<S3Grantee>;
 export type S3Permission =
   | "FULL_CONTROL"
   | "READ"
@@ -1349,27 +1234,16 @@ export type S3Permission =
   | "READ_ACP"
   | "WRITE_ACP"
   | (string & {});
-const S3Permission = S.String;
-
 export interface S3Grant {
   Grantee?: S3Grantee;
   Permission?: S3Permission;
 }
-const S3Grant = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<S3Grant>;
 export type S3GrantList = S3Grant[];
-const S3GrantList = /*@__PURE__*/ __L.at(__c4, 4);
 export type S3MetadataDirective = "COPY" | "REPLACE" | (string & {});
-const S3MetadataDirective = S.String;
-
 export type S3AnnotationDirective = "COPY" | "EXCLUDE" | (string & {});
-const S3AnnotationDirective = S.String;
-
 export type S3UserMetadata = { [key: string]: string | undefined };
-const S3UserMetadata = /*@__PURE__*/ __L.at(__c4, 5);
 export type S3ContentLength = number;
 export type S3SSEAlgorithm = "AES256" | "KMS" | (string & {});
-const S3SSEAlgorithm = S.String;
-
 export interface S3ObjectMetadata {
   CacheControl?: string;
   ContentDisposition?: string;
@@ -1383,14 +1257,11 @@ export interface S3ObjectMetadata {
   RequesterCharged?: boolean;
   SSEAlgorithm?: S3SSEAlgorithm;
 }
-const S3ObjectMetadata = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<S3ObjectMetadata>;
 export interface S3Tag {
   Key: string;
   Value: string;
 }
-const S3Tag = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<S3Tag>;
 export type S3TagSet = S3Tag[];
-const S3TagSet = /*@__PURE__*/ __L.at(__c5, 0);
 export type NonEmptyMaxLength2048String = string;
 export type S3StorageClass =
   | "STANDARD"
@@ -1401,15 +1272,9 @@ export type S3StorageClass =
   | "DEEP_ARCHIVE"
   | "GLACIER_IR"
   | (string & {});
-const S3StorageClass = S.String;
-
 export type KmsKeyArnString = string;
 export type S3ObjectLockLegalHoldStatus = "OFF" | "ON" | (string & {});
-const S3ObjectLockLegalHoldStatus = S.String;
-
 export type S3ObjectLockMode = "COMPLIANCE" | "GOVERNANCE" | (string & {});
-const S3ObjectLockMode = S.String;
-
 export type S3ChecksumAlgorithm =
   | "CRC32"
   | "CRC32C"
@@ -1422,21 +1287,13 @@ export type S3ChecksumAlgorithm =
   | "XXHASH3"
   | "XXHASH128"
   | (string & {});
-const S3ChecksumAlgorithm = S.String;
-
 export type S3ObjectLockEventHold = "ON" | "OFF" | (string & {});
-const S3ObjectLockEventHold = S.String;
-
 export type S3ObjectLockEventHoldDurationDays = number;
 export type S3ObjectLockEventHoldDurationYears = number;
 export interface S3ObjectLockEventHoldDuration {
   Days?: number;
   Years?: number;
 }
-const S3ObjectLockEventHoldDuration = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<S3ObjectLockEventHoldDuration>;
 export interface S3CopyObjectOperation {
   TargetResource?: string;
   CannedAccessControlList?: S3CannedAccessControlList;
@@ -1460,109 +1317,56 @@ export interface S3CopyObjectOperation {
   ObjectLockEventHold?: S3ObjectLockEventHold;
   ObjectLockEventHoldDuration?: S3ObjectLockEventHoldDuration;
 }
-const S3CopyObjectOperation = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<S3CopyObjectOperation>;
 export interface S3ObjectOwner {
   ID?: string;
   DisplayName?: string;
 }
-const S3ObjectOwner = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<S3ObjectOwner>;
 export interface S3AccessControlList {
   Owner: S3ObjectOwner;
   Grants?: S3Grant[];
 }
-const S3AccessControlList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<S3AccessControlList>;
 export interface S3AccessControlPolicy {
   AccessControlList?: S3AccessControlList;
   CannedAccessControlList?: S3CannedAccessControlList;
 }
-const S3AccessControlPolicy = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<S3AccessControlPolicy>;
 export interface S3SetObjectAclOperation {
   AccessControlPolicy?: S3AccessControlPolicy;
 }
-const S3SetObjectAclOperation = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<S3SetObjectAclOperation>;
 export interface S3SetObjectTaggingOperation {
   TagSet?: S3Tag[];
 }
-const S3SetObjectTaggingOperation = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<S3SetObjectTaggingOperation>;
 export interface S3DeleteObjectTaggingOperation {}
-const S3DeleteObjectTaggingOperation = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<S3DeleteObjectTaggingOperation>;
 export type S3ExpirationInDays = number;
 export type S3GlacierJobTier = "BULK" | "STANDARD" | (string & {});
-const S3GlacierJobTier = S.String;
-
 export interface S3InitiateRestoreObjectOperation {
   ExpirationInDays?: number;
   GlacierJobTier?: S3GlacierJobTier;
 }
-const S3InitiateRestoreObjectOperation = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<S3InitiateRestoreObjectOperation>;
 export interface S3ObjectLockLegalHold {
   Status: S3ObjectLockLegalHoldStatus;
 }
-const S3ObjectLockLegalHold = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<S3ObjectLockLegalHold>;
 export interface S3SetObjectLegalHoldOperation {
   LegalHold: S3ObjectLockLegalHold;
 }
-const S3SetObjectLegalHoldOperation = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<S3SetObjectLegalHoldOperation>;
 export type S3ObjectLockRetentionMode = "COMPLIANCE" | "GOVERNANCE" | (string & {});
-const S3ObjectLockRetentionMode = S.String;
-
 export type S3ObjectLockRetentionEventHold = "ON" | "OFF" | (string & {});
-const S3ObjectLockRetentionEventHold = S.String;
-
 export type S3ObjectLockRetentionEventHoldDurationDays = number;
 export type S3ObjectLockRetentionEventHoldDurationYears = number;
 export interface S3ObjectLockRetentionEventHoldDuration {
   Days?: number;
   Years?: number;
 }
-const S3ObjectLockRetentionEventHoldDuration = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<S3ObjectLockRetentionEventHoldDuration>;
 export interface S3Retention {
   RetainUntilDate?: Date;
   Mode?: S3ObjectLockRetentionMode;
   EventHold?: S3ObjectLockRetentionEventHold;
   EventHoldDuration?: S3ObjectLockRetentionEventHoldDuration;
 }
-const S3Retention = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<S3Retention>;
 export interface S3SetObjectRetentionOperation {
   BypassGovernanceRetention?: boolean;
   Retention: S3Retention;
 }
-const S3SetObjectRetentionOperation = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<S3SetObjectRetentionOperation>;
 export interface S3ReplicateObjectOperation {}
-const S3ReplicateObjectOperation = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<S3ReplicateObjectOperation>;
 export type ComputeObjectChecksumAlgorithm =
   | "CRC32"
   | "CRC32C"
@@ -1575,39 +1379,22 @@ export type ComputeObjectChecksumAlgorithm =
   | "XXHASH3"
   | "XXHASH128"
   | (string & {});
-const ComputeObjectChecksumAlgorithm = S.String;
-
 export type ComputeObjectChecksumType = "FULL_OBJECT" | "COMPOSITE" | (string & {});
-const ComputeObjectChecksumType = S.String;
-
 export interface S3ComputeObjectChecksumOperation {
   ChecksumAlgorithm?: ComputeObjectChecksumAlgorithm;
   ChecksumType?: ComputeObjectChecksumType;
 }
-const S3ComputeObjectChecksumOperation = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<S3ComputeObjectChecksumOperation>;
 export type NonEmptyKmsKeyArnString = string;
 export interface S3UpdateObjectEncryptionSSEKMS {
   KMSKeyArn: string;
   BucketKeyEnabled?: boolean;
 }
-const S3UpdateObjectEncryptionSSEKMS = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<S3UpdateObjectEncryptionSSEKMS>;
 export interface ObjectEncryption {
   SSEKMS?: S3UpdateObjectEncryptionSSEKMS;
 }
-const ObjectEncryption = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ObjectEncryption>;
 export interface S3UpdateObjectEncryptionOperation {
   ObjectEncryption?: ObjectEncryption;
 }
-const S3UpdateObjectEncryptionOperation = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<S3UpdateObjectEncryptionOperation>;
 export interface JobOperation {
   LambdaInvoke?: LambdaInvokeOperation;
   S3PutObjectCopy?: S3CopyObjectOperation;
@@ -1621,15 +1408,10 @@ export interface JobOperation {
   S3ComputeObjectChecksum?: S3ComputeObjectChecksumOperation;
   S3UpdateObjectEncryption?: S3UpdateObjectEncryptionOperation;
 }
-const JobOperation = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<JobOperation>;
 export type S3BucketArnString = string;
 export type JobReportFormat = "Report_CSV_20180820" | (string & {});
-const JobReportFormat = S.String;
-
 export type ReportPrefixString = string;
 export type JobReportScope = "AllTasks" | "FailedTasksOnly" | (string & {});
-const JobReportScope = S.String;
-
 export interface JobReport {
   Bucket?: string;
   Format?: JobReportFormat;
@@ -1638,23 +1420,16 @@ export interface JobReport {
   ReportScope?: JobReportScope;
   ExpectedBucketOwner?: string;
 }
-const JobReport = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<JobReport>;
 export type JobManifestFormat =
   | "S3BatchOperations_CSV_20180820"
   | "S3InventoryReport_CSV_20161130"
   | (string & {});
-const JobManifestFormat = S.String;
-
 export type JobManifestFieldName = "Ignore" | "Bucket" | "Key" | "VersionId" | (string & {});
-const JobManifestFieldName = S.String;
-
 export type JobManifestFieldList = JobManifestFieldName[];
-const JobManifestFieldList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface JobManifestSpec {
   Format: JobManifestFormat;
   Fields?: JobManifestFieldName[];
 }
-const JobManifestSpec = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<JobManifestSpec>;
 export type S3KeyArnString = string;
 export type S3ObjectVersionId = string;
 export interface JobManifestLocation {
@@ -1662,32 +1437,22 @@ export interface JobManifestLocation {
   ObjectVersionId?: string;
   ETag: string;
 }
-const JobManifestLocation = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<JobManifestLocation>;
 export interface JobManifest {
   Spec: JobManifestSpec;
   Location: JobManifestLocation;
 }
-const JobManifest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<JobManifest>;
 export type NonEmptyMaxLength256String = string;
 export type JobPriority = number;
 export type ManifestPrefixString = string;
 export interface SSES3Encryption {}
-const SSES3Encryption = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<SSES3Encryption>;
 export interface SSEKMSEncryption {
   KeyId: string;
 }
-const SSEKMSEncryption = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<SSEKMSEncryption>;
 export interface GeneratedManifestEncryption {
   SSES3?: SSES3Encryption;
   SSEKMS?: SSEKMSEncryption;
 }
-const GeneratedManifestEncryption = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GeneratedManifestEncryption>;
 export type GeneratedManifestFormat = "S3InventoryReport_CSV_20211130" | (string & {});
-const GeneratedManifestFormat = S.String;
-
 export interface S3ManifestOutputLocation {
   ExpectedManifestBucketOwner?: string;
   Bucket: string;
@@ -1695,52 +1460,35 @@ export interface S3ManifestOutputLocation {
   ManifestEncryption?: GeneratedManifestEncryption;
   ManifestFormat: GeneratedManifestFormat;
 }
-const S3ManifestOutputLocation = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<S3ManifestOutputLocation>;
 export type ObjectCreationTime = Date;
 export type ReplicationStatus = "COMPLETED" | "FAILED" | "REPLICA" | "NONE" | (string & {});
-const ReplicationStatus = S.String;
-
 export type ReplicationStatusFilterList = ReplicationStatus[];
-const ReplicationStatusFilterList = /*@__PURE__*/ __L.at(__c8, 6);
 export type NonEmptyMaxLength1024StringList = string[];
-const NonEmptyMaxLength1024StringList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface KeyNameConstraint {
   MatchAnyPrefix?: string[];
   MatchAnySuffix?: string[];
   MatchAnySubstring?: string[];
 }
-const KeyNameConstraint = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<KeyNameConstraint>;
 export type ObjectSizeGreaterThanBytes = number;
 export type ObjectSizeLessThanBytes = number;
 export type StorageClassList = S3StorageClass[];
-const StorageClassList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface SSES3Filter {}
-const SSES3Filter = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<SSES3Filter>;
 export interface SSEKMSFilter {
   KmsKeyArn?: string;
   BucketKeyEnabled?: boolean;
 }
-const SSEKMSFilter = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SSEKMSFilter>;
 export interface DSSEKMSFilter {
   KmsKeyArn?: string;
 }
-const DSSEKMSFilter = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<DSSEKMSFilter>;
 export interface SSECFilter {}
-const SSECFilter = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<SSECFilter>;
 export interface NotSSEFilter {}
-const NotSSEFilter = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<NotSSEFilter>;
 export type ObjectEncryptionFilter =
   | { SSES3: SSES3Filter; SSEKMS?: never; DSSEKMS?: never; SSEC?: never; NOTSSE?: never }
   | { SSES3?: never; SSEKMS: SSEKMSFilter; DSSEKMS?: never; SSEC?: never; NOTSSE?: never }
   | { SSES3?: never; SSEKMS?: never; DSSEKMS: DSSEKMSFilter; SSEC?: never; NOTSSE?: never }
   | { SSES3?: never; SSEKMS?: never; DSSEKMS?: never; SSEC: SSECFilter; NOTSSE?: never }
   | { SSES3?: never; SSEKMS?: never; DSSEKMS?: never; SSEC?: never; NOTSSE: NotSSEFilter };
-const ObjectEncryptionFilter = /*@__PURE__*/ __L.at(__c9, 7);
 export type ObjectEncryptionFilterList = ObjectEncryptionFilter[];
-const ObjectEncryptionFilterList = /*@__PURE__*/ __L.at(__c10, 0);
 export interface JobManifestGeneratorFilter {
   EligibleForReplication?: boolean;
   CreatedAfter?: Date;
@@ -1752,10 +1500,6 @@ export interface JobManifestGeneratorFilter {
   MatchAnyStorageClass?: S3StorageClass[];
   MatchAnyObjectEncryption?: ObjectEncryptionFilter[];
 }
-const JobManifestGeneratorFilter = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<JobManifestGeneratorFilter>;
 export interface S3JobManifestGenerator {
   ExpectedBucketOwner?: string;
   SourceBucket: string;
@@ -1763,12 +1507,7 @@ export interface S3JobManifestGenerator {
   Filter?: JobManifestGeneratorFilter;
   EnableManifestOutput: boolean;
 }
-const S3JobManifestGenerator = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<S3JobManifestGenerator>;
 export type JobManifestGenerator = { S3JobManifestGenerator: S3JobManifestGenerator };
-const JobManifestGenerator = /*@__PURE__*/ __L.at(__c10, 3);
 export interface CreateJobRequest {
   AccountId: string;
   ConfirmationRequired?: boolean;
@@ -1782,12 +1521,10 @@ export interface CreateJobRequest {
   Tags?: S3Tag[];
   ManifestGenerator?: JobManifestGenerator;
 }
-const CreateJobRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<CreateJobRequest>;
 export type JobId = string;
 export interface CreateJobResult {
   JobId?: string;
 }
-const CreateJobResult = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CreateJobResult>;
 export type MultiRegionAccessPointClientToken = string;
 export type MultiRegionAccessPointName = string;
 export interface Region {
@@ -1796,53 +1533,35 @@ export interface Region {
 }
 const Region = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Region>;
 export type RegionCreationList = Region[];
-const RegionCreationList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface CreateMultiRegionAccessPointInput {
   Name: string;
   PublicAccessBlock?: PublicAccessBlockConfiguration;
   Regions: Region[];
 }
-const CreateMultiRegionAccessPointInput = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CreateMultiRegionAccessPointInput>;
 export interface CreateMultiRegionAccessPointRequest {
   AccountId: string;
   ClientToken: string;
   Details: CreateMultiRegionAccessPointInput;
 }
-const CreateMultiRegionAccessPointRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateMultiRegionAccessPointRequest>;
 export type AsyncRequestTokenARN = string;
 export interface CreateMultiRegionAccessPointResult {
   RequestTokenARN?: string;
 }
-const CreateMultiRegionAccessPointResult = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateMultiRegionAccessPointResult>;
 export type StorageLensGroupName = string;
 export type MatchAnyPrefix = string[];
-const MatchAnyPrefix = /*@__PURE__*/ __L.at(__c11, 3);
 export type Suffix = string;
 export type MatchAnySuffix = string[];
-const MatchAnySuffix = /*@__PURE__*/ __L.at(__c11, 4);
 export type MatchAnyTag = S3Tag[];
-const MatchAnyTag = /*@__PURE__*/ __L.at(__c11, 5);
 export type ObjectAgeValue = number;
 export interface MatchObjectAge {
   DaysGreaterThan?: number;
   DaysLessThan?: number;
 }
-const MatchObjectAge = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<MatchObjectAge>;
 export type ObjectSizeValue = number;
 export interface MatchObjectSize {
   BytesGreaterThan?: number;
   BytesLessThan?: number;
 }
-const MatchObjectSize = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<MatchObjectSize>;
 export interface StorageLensGroupAndOperator {
   MatchAnyPrefix?: string[];
   MatchAnySuffix?: string[];
@@ -1850,10 +1569,6 @@ export interface StorageLensGroupAndOperator {
   MatchObjectAge?: MatchObjectAge;
   MatchObjectSize?: MatchObjectSize;
 }
-const StorageLensGroupAndOperator = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<StorageLensGroupAndOperator>;
 export interface StorageLensGroupOrOperator {
   MatchAnyPrefix?: string[];
   MatchAnySuffix?: string[];
@@ -1861,10 +1576,6 @@ export interface StorageLensGroupOrOperator {
   MatchObjectAge?: MatchObjectAge;
   MatchObjectSize?: MatchObjectSize;
 }
-const StorageLensGroupOrOperator = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<StorageLensGroupOrOperator>;
 export interface StorageLensGroupFilter {
   MatchAnyPrefix?: string[];
   MatchAnySuffix?: string[];
@@ -1874,301 +1585,126 @@ export interface StorageLensGroupFilter {
   And?: StorageLensGroupAndOperator;
   Or?: StorageLensGroupOrOperator;
 }
-const StorageLensGroupFilter = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<StorageLensGroupFilter>;
 export type StorageLensGroupArn = string;
 export interface StorageLensGroup {
   Name: string;
   Filter: StorageLensGroupFilter;
   StorageLensGroupArn?: string;
 }
-const StorageLensGroup = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<StorageLensGroup>;
 export interface CreateStorageLensGroupRequest {
   AccountId: string;
   StorageLensGroup: StorageLensGroup;
   Tags?: Tag[];
 }
-const CreateStorageLensGroupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateStorageLensGroupRequest>;
 export interface CreateStorageLensGroupResponse {}
-const CreateStorageLensGroupResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateStorageLensGroupResponse>;
 export interface DeleteAccessGrantRequest {
   AccountId: string;
   AccessGrantId: string;
 }
-const DeleteAccessGrantRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DeleteAccessGrantRequest>;
 export interface DeleteAccessGrantResponse {}
-const DeleteAccessGrantResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteAccessGrantResponse>;
 export interface DeleteAccessGrantsInstanceRequest {
   AccountId: string;
 }
-const DeleteAccessGrantsInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteAccessGrantsInstanceRequest>;
 export interface DeleteAccessGrantsInstanceResponse {}
-const DeleteAccessGrantsInstanceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteAccessGrantsInstanceResponse>;
 export interface DeleteAccessGrantsInstanceResourcePolicyRequest {
   AccountId: string;
 }
-const DeleteAccessGrantsInstanceResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyRequest>;
 export interface DeleteAccessGrantsInstanceResourcePolicyResponse {}
-const DeleteAccessGrantsInstanceResourcePolicyResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyResponse>;
 export interface DeleteAccessGrantsLocationRequest {
   AccountId: string;
   AccessGrantsLocationId: string;
 }
-const DeleteAccessGrantsLocationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteAccessGrantsLocationRequest>;
 export interface DeleteAccessGrantsLocationResponse {}
-const DeleteAccessGrantsLocationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DeleteAccessGrantsLocationResponse>;
 export interface DeleteAccessPointRequest {
   AccountId: string;
   Name: string;
 }
-const DeleteAccessPointRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DeleteAccessPointRequest>;
 export interface DeleteAccessPointResponse {}
-const DeleteAccessPointResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DeleteAccessPointResponse>;
 export interface DeleteAccessPointForObjectLambdaRequest {
   AccountId: string;
   Name: string;
 }
-const DeleteAccessPointForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeleteAccessPointForObjectLambdaRequest>;
 export interface DeleteAccessPointForObjectLambdaResponse {}
-const DeleteAccessPointForObjectLambdaResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeleteAccessPointForObjectLambdaResponse>;
 export interface DeleteAccessPointPolicyRequest {
   AccountId: string;
   Name: string;
 }
-const DeleteAccessPointPolicyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeleteAccessPointPolicyRequest>;
 export interface DeleteAccessPointPolicyResponse {}
-const DeleteAccessPointPolicyResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeleteAccessPointPolicyResponse>;
 export interface DeleteAccessPointPolicyForObjectLambdaRequest {
   AccountId: string;
   Name: string;
 }
-const DeleteAccessPointPolicyForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaRequest>;
 export interface DeleteAccessPointPolicyForObjectLambdaResponse {}
-const DeleteAccessPointPolicyForObjectLambdaResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaResponse>;
 export interface DeleteAccessPointScopeRequest {
   AccountId: string;
   Name: string;
 }
-const DeleteAccessPointScopeRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DeleteAccessPointScopeRequest>;
 export interface DeleteAccessPointScopeResponse {}
-const DeleteAccessPointScopeResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DeleteAccessPointScopeResponse>;
 export interface DeleteBucketRequest {
   AccountId: string;
   Bucket: string;
 }
-const DeleteBucketRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<DeleteBucketRequest>;
 export interface DeleteBucketResponse {}
-const DeleteBucketResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteBucketResponse>;
 export interface DeleteBucketLifecycleConfigurationRequest {
   AccountId: string;
   Bucket: string;
 }
-const DeleteBucketLifecycleConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteBucketLifecycleConfigurationRequest>;
 export interface DeleteBucketLifecycleConfigurationResponse {}
-const DeleteBucketLifecycleConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DeleteBucketLifecycleConfigurationResponse>;
 export interface DeleteBucketPolicyRequest {
   AccountId: string;
   Bucket: string;
 }
-const DeleteBucketPolicyRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DeleteBucketPolicyRequest>;
 export interface DeleteBucketPolicyResponse {}
-const DeleteBucketPolicyResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DeleteBucketPolicyResponse>;
 export interface DeleteBucketReplicationRequest {
   AccountId: string;
   Bucket: string;
 }
-const DeleteBucketReplicationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeleteBucketReplicationRequest>;
 export interface DeleteBucketReplicationResponse {}
-const DeleteBucketReplicationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DeleteBucketReplicationResponse>;
 export interface DeleteBucketTaggingRequest {
   AccountId: string;
   Bucket: string;
 }
-const DeleteBucketTaggingRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DeleteBucketTaggingRequest>;
 export interface DeleteBucketTaggingResponse {}
-const DeleteBucketTaggingResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DeleteBucketTaggingResponse>;
 export interface DeleteJobTaggingRequest {
   AccountId: string;
   JobId: string;
 }
-const DeleteJobTaggingRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<DeleteJobTaggingRequest>;
 export interface DeleteJobTaggingResult {}
-const DeleteJobTaggingResult = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DeleteJobTaggingResult>;
 export interface DeleteMultiRegionAccessPointInput {
   Name: string;
 }
-const DeleteMultiRegionAccessPointInput = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<DeleteMultiRegionAccessPointInput>;
 export interface DeleteMultiRegionAccessPointRequest {
   AccountId: string;
   ClientToken: string;
   Details: DeleteMultiRegionAccessPointInput;
 }
-const DeleteMultiRegionAccessPointRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<DeleteMultiRegionAccessPointRequest>;
 export interface DeleteMultiRegionAccessPointResult {
   RequestTokenARN?: string;
 }
-const DeleteMultiRegionAccessPointResult = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DeleteMultiRegionAccessPointResult>;
 export interface DeletePublicAccessBlockRequest {
   AccountId: string;
 }
-const DeletePublicAccessBlockRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DeletePublicAccessBlockRequest>;
 export interface DeletePublicAccessBlockResponse {}
-const DeletePublicAccessBlockResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<DeletePublicAccessBlockResponse>;
 export type ConfigId = string;
 export interface DeleteStorageLensConfigurationRequest {
   ConfigId: string;
   AccountId: string;
 }
-const DeleteStorageLensConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<DeleteStorageLensConfigurationRequest>;
 export interface DeleteStorageLensConfigurationResponse {}
-const DeleteStorageLensConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DeleteStorageLensConfigurationResponse>;
 export interface DeleteStorageLensConfigurationTaggingRequest {
   ConfigId: string;
   AccountId: string;
 }
-const DeleteStorageLensConfigurationTaggingRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<DeleteStorageLensConfigurationTaggingRequest>;
 export interface DeleteStorageLensConfigurationTaggingResult {}
-const DeleteStorageLensConfigurationTaggingResult = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DeleteStorageLensConfigurationTaggingResult>;
 export interface DeleteStorageLensGroupRequest {
   Name: string;
   AccountId: string;
 }
-const DeleteStorageLensGroupRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<DeleteStorageLensGroupRequest>;
 export interface DeleteStorageLensGroupResponse {}
-const DeleteStorageLensGroupResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<DeleteStorageLensGroupResponse>;
 export interface DescribeJobRequest {
   AccountId: string;
   JobId: string;
 }
-const DescribeJobRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<DescribeJobRequest>;
 export type JobArn = string;
 export type JobStatus =
   | "Active"
@@ -2185,8 +1721,6 @@ export type JobStatus =
   | "Ready"
   | "Suspended"
   | (string & {});
-const JobStatus = S.String;
-
 export type JobTotalNumberOfTasks = number;
 export type JobNumberOfTasksSucceeded = number;
 export type JobNumberOfTasksFailed = number;
@@ -2194,14 +1728,12 @@ export type JobTimeInStateSeconds = number;
 export interface JobTimers {
   ElapsedTimeInActiveSeconds?: number;
 }
-const JobTimers = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<JobTimers>;
 export interface JobProgressSummary {
   TotalNumberOfTasks?: number;
   NumberOfTasksSucceeded?: number;
   NumberOfTasksFailed?: number;
   Timers?: JobTimers;
 }
-const JobProgressSummary = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<JobProgressSummary>;
 export type JobStatusUpdateReason = string;
 export type JobFailureCode = string;
 export type JobFailureReason = string;
@@ -2209,9 +1741,7 @@ export interface JobFailure {
   FailureCode?: string;
   FailureReason?: string;
 }
-const JobFailure = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<JobFailure>;
 export type JobFailureList = JobFailure[];
-const JobFailureList = /*@__PURE__*/ __L.at(__c18, 3);
 export type JobCreationTime = Date;
 export type JobTerminationDate = Date;
 export type SuspendedDate = Date;
@@ -2220,10 +1750,6 @@ export interface S3GeneratedManifestDescriptor {
   Format?: GeneratedManifestFormat;
   Location?: JobManifestLocation;
 }
-const S3GeneratedManifestDescriptor = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<S3GeneratedManifestDescriptor>;
 export interface JobDescriptor {
   JobId?: string;
   ConfirmationRequired?: boolean;
@@ -2245,79 +1771,49 @@ export interface JobDescriptor {
   ManifestGenerator?: JobManifestGenerator;
   GeneratedManifestDescriptor?: S3GeneratedManifestDescriptor;
 }
-const JobDescriptor = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<JobDescriptor>;
 export interface DescribeJobResult {
   Job?: JobDescriptor;
 }
-const DescribeJobResult = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<DescribeJobResult>;
 export interface DescribeMultiRegionAccessPointOperationRequest {
   AccountId: string;
   RequestTokenARN: string;
 }
-const DescribeMultiRegionAccessPointOperationRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<DescribeMultiRegionAccessPointOperationRequest>;
 export type AsyncCreationTimestamp = Date;
 export type AsyncOperationName =
   | "CreateMultiRegionAccessPoint"
   | "DeleteMultiRegionAccessPoint"
   | "PutMultiRegionAccessPointPolicy"
   | (string & {});
-const AsyncOperationName = S.String;
-
 export type Policy = string;
 export interface PutMultiRegionAccessPointPolicyInput {
   Name: string;
   Policy: string;
 }
-const PutMultiRegionAccessPointPolicyInput = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<PutMultiRegionAccessPointPolicyInput>;
 export interface AsyncRequestParameters {
   CreateMultiRegionAccessPointRequest?: CreateMultiRegionAccessPointInput;
   DeleteMultiRegionAccessPointRequest?: DeleteMultiRegionAccessPointInput;
   PutMultiRegionAccessPointPolicyRequest?: PutMultiRegionAccessPointPolicyInput;
 }
-const AsyncRequestParameters = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<AsyncRequestParameters>;
 export type AsyncRequestStatus = string;
 export type RegionName = string;
 export interface MultiRegionAccessPointRegionalResponse {
   Name?: string;
   RequestStatus?: string;
 }
-const MultiRegionAccessPointRegionalResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<MultiRegionAccessPointRegionalResponse>;
 export type MultiRegionAccessPointRegionalResponseList = MultiRegionAccessPointRegionalResponse[];
-const MultiRegionAccessPointRegionalResponseList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface MultiRegionAccessPointsAsyncResponse {
   Regions?: MultiRegionAccessPointRegionalResponse[];
 }
-const MultiRegionAccessPointsAsyncResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<MultiRegionAccessPointsAsyncResponse>;
 export interface AsyncErrorDetails {
   Code?: string;
   Message?: string;
   Resource?: string;
   RequestId?: string;
 }
-const AsyncErrorDetails = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<AsyncErrorDetails>;
 export interface AsyncResponseDetails {
   MultiRegionAccessPointDetails?: MultiRegionAccessPointsAsyncResponse;
   ErrorDetails?: AsyncErrorDetails;
 }
-const AsyncResponseDetails = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<AsyncResponseDetails>;
 export interface AsyncOperation {
   CreationTime?: Date;
   Operation?: AsyncOperationName;
@@ -2326,34 +1822,17 @@ export interface AsyncOperation {
   RequestStatus?: string;
   ResponseDetails?: AsyncResponseDetails;
 }
-const AsyncOperation = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<AsyncOperation>;
 export interface DescribeMultiRegionAccessPointOperationResult {
   AsyncOperation?: AsyncOperation;
 }
-const DescribeMultiRegionAccessPointOperationResult = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DescribeMultiRegionAccessPointOperationResult>;
 export interface DissociateAccessGrantsIdentityCenterRequest {
   AccountId: string;
 }
-const DissociateAccessGrantsIdentityCenterRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DissociateAccessGrantsIdentityCenterRequest>;
 export interface DissociateAccessGrantsIdentityCenterResponse {}
-const DissociateAccessGrantsIdentityCenterResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DissociateAccessGrantsIdentityCenterResponse>;
 export interface GetAccessGrantRequest {
   AccountId: string;
   AccessGrantId: string;
 }
-const GetAccessGrantRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetAccessGrantRequest>;
 export interface GetAccessGrantResult {
   CreatedAt?: Date;
   AccessGrantId?: string;
@@ -2365,17 +1844,9 @@ export interface GetAccessGrantResult {
   GrantScope?: string;
   ApplicationArn?: string;
 }
-const GetAccessGrantResult = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetAccessGrantResult>;
 export interface GetAccessGrantsInstanceRequest {
   AccountId: string;
 }
-const GetAccessGrantsInstanceRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetAccessGrantsInstanceRequest>;
 export interface GetAccessGrantsInstanceResult {
   AccessGrantsInstanceArn?: string;
   AccessGrantsInstanceId?: string;
@@ -2384,33 +1855,17 @@ export interface GetAccessGrantsInstanceResult {
   IdentityCenterApplicationArn?: string;
   CreatedAt?: Date;
 }
-const GetAccessGrantsInstanceResult = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GetAccessGrantsInstanceResult>;
 export interface GetAccessGrantsInstanceForPrefixRequest {
   AccountId: string;
   S3Prefix: string;
 }
-const GetAccessGrantsInstanceForPrefixRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetAccessGrantsInstanceForPrefixRequest>;
 export interface GetAccessGrantsInstanceForPrefixResult {
   AccessGrantsInstanceArn?: string;
   AccessGrantsInstanceId?: string;
 }
-const GetAccessGrantsInstanceForPrefixResult = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GetAccessGrantsInstanceForPrefixResult>;
 export interface GetAccessGrantsInstanceResourcePolicyRequest {
   AccountId: string;
 }
-const GetAccessGrantsInstanceResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyRequest>;
 export type PolicyDocument = string;
 export type Organization = string;
 export interface GetAccessGrantsInstanceResourcePolicyResult {
@@ -2418,18 +1873,10 @@ export interface GetAccessGrantsInstanceResourcePolicyResult {
   Organization?: string;
   CreatedAt?: Date;
 }
-const GetAccessGrantsInstanceResourcePolicyResult = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyResult>;
 export interface GetAccessGrantsLocationRequest {
   AccountId: string;
   AccessGrantsLocationId: string;
 }
-const GetAccessGrantsLocationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetAccessGrantsLocationRequest>;
 export interface GetAccessGrantsLocationResult {
   CreatedAt?: Date;
   AccessGrantsLocationId?: string;
@@ -2437,25 +1884,14 @@ export interface GetAccessGrantsLocationResult {
   LocationScope?: string;
   IAMRoleArn?: string;
 }
-const GetAccessGrantsLocationResult = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GetAccessGrantsLocationResult>;
 export interface GetAccessPointRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GetAccessPointRequest>;
 export type AccessPointBucketName = string;
 export type NetworkOrigin = "Internet" | "VPC" | (string & {});
-const NetworkOrigin = S.String;
-
 export type CreationDate = Date;
 export type Endpoints = { [key: string]: string | undefined };
-const Endpoints = /*@__PURE__*/ __L.at(__c21, 6);
 export type DataSourceId = string;
 export type DataSourceType = string;
 export interface GetAccessPointResult {
@@ -2472,144 +1908,77 @@ export interface GetAccessPointResult {
   DataSourceId?: string;
   DataSourceType?: string;
 }
-const GetAccessPointResult = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetAccessPointResult>;
 export interface GetAccessPointConfigurationForObjectLambdaRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointConfigurationForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaRequest>;
 export interface GetAccessPointConfigurationForObjectLambdaResult {
   Configuration?: ObjectLambdaConfiguration;
 }
-const GetAccessPointConfigurationForObjectLambdaResult = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaResult>;
 export interface GetAccessPointForObjectLambdaRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetAccessPointForObjectLambdaRequest>;
 export interface GetAccessPointForObjectLambdaResult {
   Name?: string;
   PublicAccessBlockConfiguration?: PublicAccessBlockConfiguration;
   CreationDate?: Date;
   Alias?: ObjectLambdaAccessPointAlias;
 }
-const GetAccessPointForObjectLambdaResult = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetAccessPointForObjectLambdaResult>;
 export interface GetAccessPointPolicyRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointPolicyRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetAccessPointPolicyRequest>;
 export interface GetAccessPointPolicyResult {
   Policy?: string;
 }
-const GetAccessPointPolicyResult = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GetAccessPointPolicyResult>;
 export interface GetAccessPointPolicyForObjectLambdaRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointPolicyForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetAccessPointPolicyForObjectLambdaRequest>;
 export type ObjectLambdaPolicy = string;
 export interface GetAccessPointPolicyForObjectLambdaResult {
   Policy?: string;
 }
-const GetAccessPointPolicyForObjectLambdaResult = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetAccessPointPolicyForObjectLambdaResult>;
 export interface GetAccessPointPolicyStatusRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointPolicyStatusRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<GetAccessPointPolicyStatusRequest>;
 export type IsPublic = boolean;
 export interface PolicyStatus {
   IsPublic?: boolean;
 }
-const PolicyStatus = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<PolicyStatus>;
 export interface GetAccessPointPolicyStatusResult {
   PolicyStatus?: PolicyStatus;
 }
-const GetAccessPointPolicyStatusResult = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetAccessPointPolicyStatusResult>;
 export interface GetAccessPointPolicyStatusForObjectLambdaRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointPolicyStatusForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaRequest>;
 export interface GetAccessPointPolicyStatusForObjectLambdaResult {
   PolicyStatus?: PolicyStatus;
 }
-const GetAccessPointPolicyStatusForObjectLambdaResult = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaResult>;
 export interface GetAccessPointScopeRequest {
   AccountId: string;
   Name: string;
 }
-const GetAccessPointScopeRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetAccessPointScopeRequest>;
 export interface GetAccessPointScopeResult {
   Scope?: Scope;
 }
-const GetAccessPointScopeResult = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetAccessPointScopeResult>;
 export interface GetBucketRequest {
   AccountId: string;
   Bucket: string;
 }
-const GetBucketRequest = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<GetBucketRequest>;
 export type PublicAccessBlockEnabled = boolean;
 export interface GetBucketResult {
   Bucket?: string;
   PublicAccessBlockEnabled?: boolean;
   CreationDate?: Date;
 }
-const GetBucketResult = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<GetBucketResult>;
 export interface GetBucketLifecycleConfigurationRequest {
   AccountId: string;
   Bucket: string;
 }
-const GetBucketLifecycleConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GetBucketLifecycleConfigurationRequest>;
 export type Days = number;
 export type ExpiredObjectDeleteMarker = boolean;
 export interface LifecycleExpiration {
@@ -2617,7 +1986,6 @@ export interface LifecycleExpiration {
   Days?: number;
   ExpiredObjectDeleteMarker?: boolean;
 }
-const LifecycleExpiration = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<LifecycleExpiration>;
 export type ID = string;
 export interface LifecycleRuleAndOperator {
   Prefix?: string;
@@ -2625,10 +1993,6 @@ export interface LifecycleRuleAndOperator {
   ObjectSizeGreaterThan?: number;
   ObjectSizeLessThan?: number;
 }
-const LifecycleRuleAndOperator = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<LifecycleRuleAndOperator>;
 export interface LifecycleRuleFilter {
   Prefix?: string;
   Tag?: S3Tag;
@@ -2636,10 +2000,7 @@ export interface LifecycleRuleFilter {
   ObjectSizeGreaterThan?: number;
   ObjectSizeLessThan?: number;
 }
-const LifecycleRuleFilter = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<LifecycleRuleFilter>;
 export type ExpirationStatus = "Enabled" | "Disabled" | (string & {});
-const ExpirationStatus = S.String;
-
 export type TransitionStorageClass =
   | "GLACIER"
   | "STANDARD_IA"
@@ -2647,43 +2008,26 @@ export type TransitionStorageClass =
   | "INTELLIGENT_TIERING"
   | "DEEP_ARCHIVE"
   | (string & {});
-const TransitionStorageClass = S.String;
-
 export interface Transition {
   Date?: Date;
   Days?: number;
   StorageClass?: TransitionStorageClass;
 }
-const Transition = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<Transition>;
 export type TransitionList = Transition[];
-const TransitionList = /*@__PURE__*/ __L.at(__c24, 6);
 export interface NoncurrentVersionTransition {
   NoncurrentDays?: number;
   StorageClass?: TransitionStorageClass;
 }
-const NoncurrentVersionTransition = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<NoncurrentVersionTransition>;
 export type NoncurrentVersionTransitionList = NoncurrentVersionTransition[];
-const NoncurrentVersionTransitionList = /*@__PURE__*/ __L.at(__c25, 0);
 export type NoncurrentVersionCount = number;
 export interface NoncurrentVersionExpiration {
   NoncurrentDays?: number;
   NewerNoncurrentVersions?: number;
 }
-const NoncurrentVersionExpiration = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<NoncurrentVersionExpiration>;
 export type DaysAfterInitiation = number;
 export interface AbortIncompleteMultipartUpload {
   DaysAfterInitiation?: number;
 }
-const AbortIncompleteMultipartUpload = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<AbortIncompleteMultipartUpload>;
 export interface LifecycleRule {
   Expiration?: LifecycleExpiration;
   ID?: string;
@@ -2694,142 +2038,72 @@ export interface LifecycleRule {
   NoncurrentVersionExpiration?: NoncurrentVersionExpiration;
   AbortIncompleteMultipartUpload?: AbortIncompleteMultipartUpload;
 }
-const LifecycleRule = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<LifecycleRule>;
 export type LifecycleRules = LifecycleRule[];
-const LifecycleRules = /*@__PURE__*/ __L.at(__c25, 4);
 export interface GetBucketLifecycleConfigurationResult {
   Rules?: LifecycleRule[];
 }
-const GetBucketLifecycleConfigurationResult = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GetBucketLifecycleConfigurationResult>;
 export interface GetBucketPolicyRequest {
   AccountId: string;
   Bucket: string;
 }
-const GetBucketPolicyRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<GetBucketPolicyRequest>;
 export interface GetBucketPolicyResult {
   Policy?: string;
 }
-const GetBucketPolicyResult = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<GetBucketPolicyResult>;
 export interface GetBucketReplicationRequest {
   AccountId: string;
   Bucket: string;
 }
-const GetBucketReplicationRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<GetBucketReplicationRequest>;
 export type Role = string;
 export type Priority = number;
 export interface ReplicationRuleAndOperator {
   Prefix?: string;
   Tags?: S3Tag[];
 }
-const ReplicationRuleAndOperator = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ReplicationRuleAndOperator>;
 export interface ReplicationRuleFilter {
   Prefix?: string;
   Tag?: S3Tag;
   And?: ReplicationRuleAndOperator;
 }
-const ReplicationRuleFilter = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ReplicationRuleFilter>;
 export type ReplicationRuleStatus = "Enabled" | "Disabled" | (string & {});
-const ReplicationRuleStatus = S.String;
-
 export type SseKmsEncryptedObjectsStatus = "Enabled" | "Disabled" | (string & {});
-const SseKmsEncryptedObjectsStatus = S.String;
-
 export interface SseKmsEncryptedObjects {
   Status: SseKmsEncryptedObjectsStatus;
 }
-const SseKmsEncryptedObjects = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<SseKmsEncryptedObjects>;
 export type ReplicaModificationsStatus = "Enabled" | "Disabled" | (string & {});
-const ReplicaModificationsStatus = S.String;
-
 export interface ReplicaModifications {
   Status: ReplicaModificationsStatus;
 }
-const ReplicaModifications = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ReplicaModifications>;
 export interface SourceSelectionCriteria {
   SseKmsEncryptedObjects?: SseKmsEncryptedObjects;
   ReplicaModifications?: ReplicaModifications;
 }
-const SourceSelectionCriteria = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<SourceSelectionCriteria>;
 export type ExistingObjectReplicationStatus = "Enabled" | "Disabled" | (string & {});
-const ExistingObjectReplicationStatus = S.String;
-
 export interface ExistingObjectReplication {
   Status: ExistingObjectReplicationStatus;
 }
-const ExistingObjectReplication = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ExistingObjectReplication>;
 export type BucketIdentifierString = string;
 export type ReplicationTimeStatus = "Enabled" | "Disabled" | (string & {});
-const ReplicationTimeStatus = S.String;
-
 export type Minutes = number;
 export interface ReplicationTimeValue {
   Minutes?: number;
 }
-const ReplicationTimeValue = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ReplicationTimeValue>;
 export interface ReplicationTime {
   Status: ReplicationTimeStatus;
   Time: ReplicationTimeValue;
 }
-const ReplicationTime = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<ReplicationTime>;
 export type OwnerOverride = "Destination" | (string & {});
-const OwnerOverride = S.String;
-
 export interface AccessControlTranslation {
   Owner: OwnerOverride;
 }
-const AccessControlTranslation = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<AccessControlTranslation>;
 export type ReplicaKmsKeyID = string;
 export interface EncryptionConfiguration {
   ReplicaKmsKeyID?: string;
 }
-const EncryptionConfiguration = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<EncryptionConfiguration>;
 export type MetricsStatus = "Enabled" | "Disabled" | (string & {});
-const MetricsStatus = S.String;
-
 export interface Metrics {
   Status: MetricsStatus;
   EventThreshold?: ReplicationTimeValue;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<Metrics>;
 export type ReplicationStorageClass =
   | "STANDARD"
   | "REDUCED_REDUNDANCY"
@@ -2841,8 +2115,6 @@ export type ReplicationStorageClass =
   | "OUTPOSTS"
   | "GLACIER_IR"
   | (string & {});
-const ReplicationStorageClass = S.String;
-
 export interface Destination {
   Account?: string;
   Bucket: string;
@@ -2852,17 +2124,10 @@ export interface Destination {
   Metrics?: Metrics;
   StorageClass?: ReplicationStorageClass;
 }
-const Destination = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<Destination>;
 export type DeleteMarkerReplicationStatus = "Enabled" | "Disabled" | (string & {});
-const DeleteMarkerReplicationStatus = S.String;
-
 export interface DeleteMarkerReplication {
   Status: DeleteMarkerReplicationStatus;
 }
-const DeleteMarkerReplication = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DeleteMarkerReplication>;
 export interface ReplicationRule {
   ID?: string;
   Priority?: number;
@@ -2875,65 +2140,33 @@ export interface ReplicationRule {
   DeleteMarkerReplication?: DeleteMarkerReplication;
   Bucket: string;
 }
-const ReplicationRule = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<ReplicationRule>;
 export type ReplicationRules = ReplicationRule[];
-const ReplicationRules = /*@__PURE__*/ __L.at(__c27, 7);
 export interface ReplicationConfiguration {
   Role: string;
   Rules: ReplicationRule[];
 }
-const ReplicationConfiguration = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ReplicationConfiguration>;
 export interface GetBucketReplicationResult {
   ReplicationConfiguration?: ReplicationConfiguration;
 }
-const GetBucketReplicationResult = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GetBucketReplicationResult>;
 export interface GetBucketTaggingRequest {
   AccountId: string;
   Bucket: string;
 }
-const GetBucketTaggingRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GetBucketTaggingRequest>;
 export interface GetBucketTaggingResult {
   TagSet: S3Tag[];
 }
-const GetBucketTaggingResult = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<GetBucketTaggingResult>;
 export interface GetBucketVersioningRequest {
   AccountId: string;
   Bucket: string;
 }
-const GetBucketVersioningRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<GetBucketVersioningRequest>;
 export type BucketVersioningStatus = "Enabled" | "Suspended" | (string & {});
-const BucketVersioningStatus = S.String;
-
 export type MFADeleteStatus = "Enabled" | "Disabled" | (string & {});
-const MFADeleteStatus = S.String;
-
 export interface GetBucketVersioningResult {
   Status?: BucketVersioningStatus;
   MFADelete?: MFADeleteStatus;
 }
-const GetBucketVersioningResult = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<GetBucketVersioningResult>;
 export type DurationSeconds = number;
 export type Privilege = "Minimal" | "Default" | (string & {});
-const Privilege = S.String;
-
 export type AuditContext = string;
 export interface GetDataAccessRequest {
   AccountId: string;
@@ -2944,10 +2177,6 @@ export interface GetDataAccessRequest {
   TargetType?: S3PrefixType;
   AuditContext?: string;
 }
-const GetDataAccessRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<GetDataAccessRequest>;
 export type AccessKeyId = string | redacted.Redacted<string>;
 export type SecretAccessKey = string | redacted.Redacted<string>;
 export type SessionToken = string | redacted.Redacted<string>;
@@ -2958,33 +2187,22 @@ export interface Credentials {
   SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
-const Credentials = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<Credentials>;
 export interface GetDataAccessResult {
   Credentials?: Credentials;
   MatchedGrantTarget?: string;
   Grantee?: Grantee;
 }
-const GetDataAccessResult = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<GetDataAccessResult>;
 export interface GetJobTaggingRequest {
   AccountId: string;
   JobId: string;
 }
-const GetJobTaggingRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GetJobTaggingRequest>;
 export interface GetJobTaggingResult {
   Tags?: S3Tag[];
 }
-const GetJobTaggingResult = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<GetJobTaggingResult>;
 export interface GetMultiRegionAccessPointRequest {
   AccountId: string;
   Name: string;
 }
-const GetMultiRegionAccessPointRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<GetMultiRegionAccessPointRequest>;
 export type MultiRegionAccessPointAlias = string;
 export type MultiRegionAccessPointStatus =
   | "READY"
@@ -2994,16 +2212,12 @@ export type MultiRegionAccessPointStatus =
   | "PARTIALLY_DELETED"
   | "DELETING"
   | (string & {});
-const MultiRegionAccessPointStatus = S.String;
-
 export interface RegionReport {
   Bucket?: string;
   Region?: string;
   BucketAccountId?: string;
 }
-const RegionReport = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<RegionReport>;
 export type RegionReportList = RegionReport[];
-const RegionReportList = /*@__PURE__*/ __L.at(__c29, 5);
 export interface MultiRegionAccessPointReport {
   Name?: string;
   Alias?: string;
@@ -3012,125 +2226,63 @@ export interface MultiRegionAccessPointReport {
   Status?: MultiRegionAccessPointStatus;
   Regions?: RegionReport[];
 }
-const MultiRegionAccessPointReport = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<MultiRegionAccessPointReport>;
 export interface GetMultiRegionAccessPointResult {
   AccessPoint?: MultiRegionAccessPointReport;
 }
-const GetMultiRegionAccessPointResult = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<GetMultiRegionAccessPointResult>;
 export interface GetMultiRegionAccessPointPolicyRequest {
   AccountId: string;
   Name: string;
 }
-const GetMultiRegionAccessPointPolicyRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GetMultiRegionAccessPointPolicyRequest>;
 export interface EstablishedMultiRegionAccessPointPolicy {
   Policy?: string;
 }
-const EstablishedMultiRegionAccessPointPolicy = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<EstablishedMultiRegionAccessPointPolicy>;
 export interface ProposedMultiRegionAccessPointPolicy {
   Policy?: string;
 }
-const ProposedMultiRegionAccessPointPolicy = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ProposedMultiRegionAccessPointPolicy>;
 export interface MultiRegionAccessPointPolicyDocument {
   Established?: EstablishedMultiRegionAccessPointPolicy;
   Proposed?: ProposedMultiRegionAccessPointPolicy;
 }
-const MultiRegionAccessPointPolicyDocument = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<MultiRegionAccessPointPolicyDocument>;
 export interface GetMultiRegionAccessPointPolicyResult {
   Policy?: MultiRegionAccessPointPolicyDocument;
 }
-const GetMultiRegionAccessPointPolicyResult = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<GetMultiRegionAccessPointPolicyResult>;
 export interface GetMultiRegionAccessPointPolicyStatusRequest {
   AccountId: string;
   Name: string;
 }
-const GetMultiRegionAccessPointPolicyStatusRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusRequest>;
 export interface GetMultiRegionAccessPointPolicyStatusResult {
   Established?: PolicyStatus;
 }
-const GetMultiRegionAccessPointPolicyStatusResult = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusResult>;
 export type MultiRegionAccessPointId = string;
 export interface GetMultiRegionAccessPointRoutesRequest {
   AccountId: string;
   Mrap: string;
 }
-const GetMultiRegionAccessPointRoutesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetMultiRegionAccessPointRoutesRequest>;
 export type TrafficDialPercentage = number;
 export interface MultiRegionAccessPointRoute {
   Bucket?: string;
   Region?: string;
   TrafficDialPercentage: number;
 }
-const MultiRegionAccessPointRoute = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<MultiRegionAccessPointRoute>;
 export type RouteList = MultiRegionAccessPointRoute[];
-const RouteList = /*@__PURE__*/ __L.at(__c31, 1);
 export interface GetMultiRegionAccessPointRoutesResult {
   Mrap?: string;
   Routes?: MultiRegionAccessPointRoute[];
 }
-const GetMultiRegionAccessPointRoutesResult = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GetMultiRegionAccessPointRoutesResult>;
 export interface GetPublicAccessBlockRequest {
   AccountId: string;
 }
-const GetPublicAccessBlockRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GetPublicAccessBlockRequest>;
 export interface GetPublicAccessBlockOutput {
   PublicAccessBlockConfiguration?: PublicAccessBlockConfiguration;
 }
-const GetPublicAccessBlockOutput = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetPublicAccessBlockOutput>;
 export interface GetStorageLensConfigurationRequest {
   ConfigId: string;
   AccountId: string;
 }
-const GetStorageLensConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GetStorageLensConfigurationRequest>;
 export type IsEnabled = boolean;
 export interface ActivityMetrics {
   IsEnabled?: boolean;
 }
-const ActivityMetrics = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<ActivityMetrics>;
 export type StorageLensPrefixLevelDelimiter = string;
 export type StorageLensPrefixLevelMaxDepth = number;
 export type MinStorageBytesPercentage = number;
@@ -3139,47 +2291,25 @@ export interface SelectionCriteria {
   MaxDepth?: number;
   MinStorageBytesPercentage?: number;
 }
-const SelectionCriteria = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<SelectionCriteria>;
 export interface PrefixLevelStorageMetrics {
   IsEnabled?: boolean;
   SelectionCriteria?: SelectionCriteria;
 }
-const PrefixLevelStorageMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<PrefixLevelStorageMetrics>;
 export interface PrefixLevel {
   StorageMetrics: PrefixLevelStorageMetrics;
 }
-const PrefixLevel = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<PrefixLevel>;
 export interface AdvancedCostOptimizationMetrics {
   IsEnabled?: boolean;
 }
-const AdvancedCostOptimizationMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<AdvancedCostOptimizationMetrics>;
 export interface AdvancedDataProtectionMetrics {
   IsEnabled?: boolean;
 }
-const AdvancedDataProtectionMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<AdvancedDataProtectionMetrics>;
 export interface DetailedStatusCodesMetrics {
   IsEnabled?: boolean;
 }
-const DetailedStatusCodesMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<DetailedStatusCodesMetrics>;
 export interface AdvancedPerformanceMetrics {
   IsEnabled?: boolean;
 }
-const AdvancedPerformanceMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<AdvancedPerformanceMetrics>;
 export interface BucketLevel {
   ActivityMetrics?: ActivityMetrics;
   PrefixLevel?: PrefixLevel;
@@ -3188,26 +2318,15 @@ export interface BucketLevel {
   DetailedStatusCodesMetrics?: DetailedStatusCodesMetrics;
   AdvancedPerformanceMetrics?: AdvancedPerformanceMetrics;
 }
-const BucketLevel = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<BucketLevel>;
 export type StorageLensGroupLevelInclude = string[];
-const StorageLensGroupLevelInclude = /*@__PURE__*/ __L.at(__c32, 7);
 export type StorageLensGroupLevelExclude = string[];
-const StorageLensGroupLevelExclude = /*@__PURE__*/ __L.at(__c33, 0);
 export interface StorageLensGroupLevelSelectionCriteria {
   Include?: string[];
   Exclude?: string[];
 }
-const StorageLensGroupLevelSelectionCriteria = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<StorageLensGroupLevelSelectionCriteria>;
 export interface StorageLensGroupLevel {
   SelectionCriteria?: StorageLensGroupLevelSelectionCriteria;
 }
-const StorageLensGroupLevel = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<StorageLensGroupLevel>;
 export interface AccountLevel {
   ActivityMetrics?: ActivityMetrics;
   BucketLevel?: BucketLevel;
@@ -3217,43 +2336,28 @@ export interface AccountLevel {
   AdvancedPerformanceMetrics?: AdvancedPerformanceMetrics;
   StorageLensGroupLevel?: StorageLensGroupLevel;
 }
-const AccountLevel = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<AccountLevel>;
 export type Buckets = string[];
-const Buckets = /*@__PURE__*/ __L.at(__c33, 4);
 export type S3AWSRegion = string;
 export type Regions = string[];
-const Regions = /*@__PURE__*/ __L.at(__c33, 5);
 export interface Include {
   Buckets?: string[];
   Regions?: string[];
 }
-const Include = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<Include>;
 export interface Exclude {
   Buckets?: string[];
   Regions?: string[];
 }
-const Exclude = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<Exclude>;
 export type Format = "CSV" | "Parquet" | (string & {});
-const Format = S.String;
-
 export type OutputSchemaVersion = "V_1" | (string & {});
-const OutputSchemaVersion = S.String;
-
 export interface SSES3 {}
-const SSES3 = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<SSES3>;
 export type SSEKMSKeyId = string;
 export interface SSEKMS {
   KeyId: string;
 }
-const SSEKMS = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<SSEKMS>;
 export interface StorageLensDataExportEncryption {
   SSES3?: SSES3;
   SSEKMS?: SSEKMS;
 }
-const StorageLensDataExportEncryption = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<StorageLensDataExportEncryption>;
 export interface S3BucketDestination {
   Format: Format;
   OutputSchemaVersion: OutputSchemaVersion;
@@ -3262,41 +2366,26 @@ export interface S3BucketDestination {
   Prefix?: string;
   Encryption?: StorageLensDataExportEncryption;
 }
-const S3BucketDestination = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<S3BucketDestination>;
 export interface CloudWatchMetrics {
   IsEnabled: boolean;
 }
-const CloudWatchMetrics = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<CloudWatchMetrics>;
 export interface StorageLensTableDestination {
   IsEnabled: boolean;
   Encryption?: StorageLensDataExportEncryption;
 }
-const StorageLensTableDestination = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<StorageLensTableDestination>;
 export interface StorageLensDataExport {
   S3BucketDestination?: S3BucketDestination;
   CloudWatchMetrics?: CloudWatchMetrics;
   StorageLensTableDestination?: StorageLensTableDestination;
 }
-const StorageLensDataExport = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<StorageLensDataExport>;
 export interface StorageLensExpandedPrefixesDataExport {
   S3BucketDestination?: S3BucketDestination;
   StorageLensTableDestination?: StorageLensTableDestination;
 }
-const StorageLensExpandedPrefixesDataExport = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<StorageLensExpandedPrefixesDataExport>;
 export type AwsOrgArn = string;
 export interface StorageLensAwsOrg {
   Arn: string;
 }
-const StorageLensAwsOrg = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<StorageLensAwsOrg>;
 export type StorageLensArn = string;
 export interface StorageLensConfiguration {
   Id: string;
@@ -3310,54 +2399,28 @@ export interface StorageLensConfiguration {
   StorageLensArn?: string;
   PrefixDelimiter?: string;
 }
-const StorageLensConfiguration = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<StorageLensConfiguration>;
 export interface GetStorageLensConfigurationResult {
   StorageLensConfiguration?: StorageLensConfiguration;
 }
-const GetStorageLensConfigurationResult = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<GetStorageLensConfigurationResult>;
 export interface GetStorageLensConfigurationTaggingRequest {
   ConfigId: string;
   AccountId: string;
 }
-const GetStorageLensConfigurationTaggingRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<GetStorageLensConfigurationTaggingRequest>;
 export interface StorageLensTag {
   Key: string;
   Value: string;
 }
-const StorageLensTag = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<StorageLensTag>;
 export type StorageLensTags = StorageLensTag[];
-const StorageLensTags = /*@__PURE__*/ __L.at(__c35, 5);
 export interface GetStorageLensConfigurationTaggingResult {
   Tags?: StorageLensTag[];
 }
-const GetStorageLensConfigurationTaggingResult = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<GetStorageLensConfigurationTaggingResult>;
 export interface GetStorageLensGroupRequest {
   Name: string;
   AccountId: string;
 }
-const GetStorageLensGroupRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<GetStorageLensGroupRequest>;
 export interface GetStorageLensGroupResult {
   StorageLensGroup?: StorageLensGroup;
 }
-const GetStorageLensGroupResult = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GetStorageLensGroupResult>;
 export type ContinuationToken = string;
 export type MaxResults = number;
 export interface ListAccessGrantsRequest {
@@ -3370,10 +2433,6 @@ export interface ListAccessGrantsRequest {
   GrantScope?: string;
   ApplicationArn?: string;
 }
-const ListAccessGrantsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<ListAccessGrantsRequest>;
 export interface ListAccessGrantEntry {
   CreatedAt?: Date;
   AccessGrantId?: string;
@@ -3385,29 +2444,16 @@ export interface ListAccessGrantEntry {
   GrantScope?: string;
   ApplicationArn?: string;
 }
-const ListAccessGrantEntry = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<ListAccessGrantEntry>;
 export type AccessGrantsList = ListAccessGrantEntry[];
-const AccessGrantsList = /*@__PURE__*/ __L.at(__c36, 3);
 export interface ListAccessGrantsResult {
   NextToken?: string;
   AccessGrantsList?: ListAccessGrantEntry[];
 }
-const ListAccessGrantsResult = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<ListAccessGrantsResult>;
 export interface ListAccessGrantsInstancesRequest {
   AccountId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAccessGrantsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<ListAccessGrantsInstancesRequest>;
 export interface ListAccessGrantsInstanceEntry {
   AccessGrantsInstanceId?: string;
   AccessGrantsInstanceArn?: string;
@@ -3416,30 +2462,17 @@ export interface ListAccessGrantsInstanceEntry {
   IdentityCenterInstanceArn?: string;
   IdentityCenterApplicationArn?: string;
 }
-const ListAccessGrantsInstanceEntry = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<ListAccessGrantsInstanceEntry>;
 export type AccessGrantsInstancesList = ListAccessGrantsInstanceEntry[];
-const AccessGrantsInstancesList = /*@__PURE__*/ __L.at(__c36, 7);
 export interface ListAccessGrantsInstancesResult {
   NextToken?: string;
   AccessGrantsInstancesList?: ListAccessGrantsInstanceEntry[];
 }
-const ListAccessGrantsInstancesResult = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<ListAccessGrantsInstancesResult>;
 export interface ListAccessGrantsLocationsRequest {
   AccountId: string;
   NextToken?: string;
   MaxResults?: number;
   LocationScope?: string;
 }
-const ListAccessGrantsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<ListAccessGrantsLocationsRequest>;
 export interface ListAccessGrantsLocationsEntry {
   CreatedAt?: Date;
   AccessGrantsLocationId?: string;
@@ -3447,20 +2480,11 @@ export interface ListAccessGrantsLocationsEntry {
   LocationScope?: string;
   IAMRoleArn?: string;
 }
-const ListAccessGrantsLocationsEntry = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<ListAccessGrantsLocationsEntry>;
 export type AccessGrantsLocationsList = ListAccessGrantsLocationsEntry[];
-const AccessGrantsLocationsList = /*@__PURE__*/ __L.at(__c37, 3);
 export interface ListAccessGrantsLocationsResult {
   NextToken?: string;
   AccessGrantsLocationsList?: ListAccessGrantsLocationsEntry[];
 }
-const ListAccessGrantsLocationsResult = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<ListAccessGrantsLocationsResult>;
 export interface ListAccessPointsRequest {
   AccountId: string;
   Bucket?: string;
@@ -3469,10 +2493,6 @@ export interface ListAccessPointsRequest {
   DataSourceId?: string;
   DataSourceType?: string;
 }
-const ListAccessPointsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<ListAccessPointsRequest>;
 export interface AccessPoint {
   Name: string;
   NetworkOrigin: NetworkOrigin;
@@ -3484,63 +2504,36 @@ export interface AccessPoint {
   DataSourceId?: string;
   DataSourceType?: string;
 }
-const AccessPoint = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<AccessPoint>;
 export type AccessPointList = AccessPoint[];
-const AccessPointList = /*@__PURE__*/ __L.at(__c37, 7);
 export interface ListAccessPointsResult {
   AccessPointList?: AccessPoint[];
   NextToken?: string;
 }
-const ListAccessPointsResult = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<ListAccessPointsResult>;
 export interface ListAccessPointsForDirectoryBucketsRequest {
   AccountId: string;
   DirectoryBucket?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAccessPointsForDirectoryBucketsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<ListAccessPointsForDirectoryBucketsRequest>;
 export interface ListAccessPointsForDirectoryBucketsResult {
   AccessPointList?: AccessPoint[];
   NextToken?: string;
 }
-const ListAccessPointsForDirectoryBucketsResult = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<ListAccessPointsForDirectoryBucketsResult>;
 export interface ListAccessPointsForObjectLambdaRequest {
   AccountId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAccessPointsForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<ListAccessPointsForObjectLambdaRequest>;
 export interface ObjectLambdaAccessPoint {
   Name: string;
   ObjectLambdaAccessPointArn?: string;
   Alias?: ObjectLambdaAccessPointAlias;
 }
-const ObjectLambdaAccessPoint = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<ObjectLambdaAccessPoint>;
 export type ObjectLambdaAccessPointList = ObjectLambdaAccessPoint[];
-const ObjectLambdaAccessPointList = /*@__PURE__*/ __L.at(__c38, 5);
 export interface ListAccessPointsForObjectLambdaResult {
   ObjectLambdaAccessPointList?: ObjectLambdaAccessPoint[];
   NextToken?: string;
 }
-const ListAccessPointsForObjectLambdaResult = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<ListAccessPointsForObjectLambdaResult>;
 export interface ListCallerAccessGrantsRequest {
   AccountId: string;
   GrantScope?: string;
@@ -3548,31 +2541,17 @@ export interface ListCallerAccessGrantsRequest {
   MaxResults?: number;
   AllowedByApplication?: boolean;
 }
-const ListCallerAccessGrantsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<ListCallerAccessGrantsRequest>;
 export interface ListCallerAccessGrantsEntry {
   Permission?: Permission;
   GrantScope?: string;
   ApplicationArn?: string;
 }
-const ListCallerAccessGrantsEntry = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<ListCallerAccessGrantsEntry>;
 export type CallerAccessGrantsList = ListCallerAccessGrantsEntry[];
-const CallerAccessGrantsList = /*@__PURE__*/ __L.at(__c39, 1);
 export interface ListCallerAccessGrantsResult {
   NextToken?: string;
   CallerAccessGrantsList?: ListCallerAccessGrantsEntry[];
 }
-const ListCallerAccessGrantsResult = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<ListCallerAccessGrantsResult>;
 export type JobStatusList = JobStatus[];
-const JobStatusList = /*@__PURE__*/ __L.at(__c39, 3);
 export type StringForNextToken = string;
 export interface ListJobsRequest {
   AccountId: string;
@@ -3580,7 +2559,6 @@ export interface ListJobsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListJobsRequest = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<ListJobsRequest>;
 export type OperationName =
   | "LambdaInvoke"
   | "S3PutObjectCopy"
@@ -3594,8 +2572,6 @@ export type OperationName =
   | "S3ComputeObjectChecksum"
   | "S3UpdateObjectEncryption"
   | (string & {});
-const OperationName = S.String;
-
 export interface JobListDescriptor {
   JobId?: string;
   Description?: string;
@@ -3606,43 +2582,27 @@ export interface JobListDescriptor {
   TerminationDate?: Date;
   ProgressSummary?: JobProgressSummary;
 }
-const JobListDescriptor = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<JobListDescriptor>;
 export type JobListDescriptorList = JobListDescriptor[];
-const JobListDescriptorList = /*@__PURE__*/ __L.at(__c39, 6);
 export interface ListJobsResult {
   NextToken?: string;
   Jobs?: JobListDescriptor[];
 }
-const ListJobsResult = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<ListJobsResult>;
 export interface ListMultiRegionAccessPointsRequest {
   AccountId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListMultiRegionAccessPointsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<ListMultiRegionAccessPointsRequest>;
 export type MultiRegionAccessPointReportList = MultiRegionAccessPointReport[];
-const MultiRegionAccessPointReportList = /*@__PURE__*/ __L.at(__c40, 1);
 export interface ListMultiRegionAccessPointsResult {
   AccessPoints?: MultiRegionAccessPointReport[];
   NextToken?: string;
 }
-const ListMultiRegionAccessPointsResult = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<ListMultiRegionAccessPointsResult>;
 export interface ListRegionalBucketsRequest {
   AccountId: string;
   NextToken?: string;
   MaxResults?: number;
   OutpostId?: string;
 }
-const ListRegionalBucketsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<ListRegionalBucketsRequest>;
 export interface RegionalBucket {
   Bucket: string;
   BucketArn?: string;
@@ -3650,183 +2610,91 @@ export interface RegionalBucket {
   CreationDate: Date;
   OutpostId?: string;
 }
-const RegionalBucket = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<RegionalBucket>;
 export type RegionalBucketList = RegionalBucket[];
-const RegionalBucketList = /*@__PURE__*/ __L.at(__c40, 5);
 export interface ListRegionalBucketsResult {
   RegionalBucketList?: RegionalBucket[];
   NextToken?: string;
 }
-const ListRegionalBucketsResult = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<ListRegionalBucketsResult>;
 export interface ListStorageLensConfigurationsRequest {
   AccountId: string;
   NextToken?: string;
 }
-const ListStorageLensConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<ListStorageLensConfigurationsRequest>;
 export interface ListStorageLensConfigurationEntry {
   Id: string;
   StorageLensArn: string;
   HomeRegion: string;
   IsEnabled?: boolean;
 }
-const ListStorageLensConfigurationEntry = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<ListStorageLensConfigurationEntry>;
 export type StorageLensConfigurationList = ListStorageLensConfigurationEntry[];
-const StorageLensConfigurationList = /*@__PURE__*/ __L.at(__c41, 1);
 export interface ListStorageLensConfigurationsResult {
   NextToken?: string;
   StorageLensConfigurationList?: ListStorageLensConfigurationEntry[];
 }
-const ListStorageLensConfigurationsResult = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<ListStorageLensConfigurationsResult>;
 export interface ListStorageLensGroupsRequest {
   AccountId: string;
   NextToken?: string;
 }
-const ListStorageLensGroupsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<ListStorageLensGroupsRequest>;
 export interface ListStorageLensGroupEntry {
   Name: string;
   StorageLensGroupArn: string;
   HomeRegion: string;
 }
-const ListStorageLensGroupEntry = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<ListStorageLensGroupEntry>;
 export type StorageLensGroupList = ListStorageLensGroupEntry[];
-const StorageLensGroupList = /*@__PURE__*/ __L.at(__c41, 5);
 export interface ListStorageLensGroupsResult {
   NextToken?: string;
   StorageLensGroupList?: ListStorageLensGroupEntry[];
 }
-const ListStorageLensGroupsResult = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<ListStorageLensGroupsResult>;
 export type S3ResourceArn = string;
 export interface ListTagsForResourceRequest {
   AccountId: string;
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   Tags?: Tag[];
 }
-const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<ListTagsForResourceResult>;
 export interface PutAccessGrantsInstanceResourcePolicyRequest {
   AccountId: string;
   Policy: string;
   Organization?: string;
 }
-const PutAccessGrantsInstanceResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyRequest>;
 export interface PutAccessGrantsInstanceResourcePolicyResult {
   Policy?: string;
   Organization?: string;
   CreatedAt?: Date;
 }
-const PutAccessGrantsInstanceResourcePolicyResult = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyResult>;
 export interface PutAccessPointConfigurationForObjectLambdaRequest {
   AccountId: string;
   Name: string;
   Configuration: ObjectLambdaConfiguration;
 }
-const PutAccessPointConfigurationForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaRequest>;
 export interface PutAccessPointConfigurationForObjectLambdaResponse {}
-const PutAccessPointConfigurationForObjectLambdaResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaResponse>;
 export interface PutAccessPointPolicyRequest {
   AccountId: string;
   Name: string;
   Policy: string;
 }
-const PutAccessPointPolicyRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<PutAccessPointPolicyRequest>;
 export interface PutAccessPointPolicyResponse {}
-const PutAccessPointPolicyResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<PutAccessPointPolicyResponse>;
 export interface PutAccessPointPolicyForObjectLambdaRequest {
   AccountId: string;
   Name: string;
   Policy: string;
 }
-const PutAccessPointPolicyForObjectLambdaRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<PutAccessPointPolicyForObjectLambdaRequest>;
 export interface PutAccessPointPolicyForObjectLambdaResponse {}
-const PutAccessPointPolicyForObjectLambdaResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<PutAccessPointPolicyForObjectLambdaResponse>;
 export interface PutAccessPointScopeRequest {
   AccountId: string;
   Name: string;
   Scope: Scope;
 }
-const PutAccessPointScopeRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<PutAccessPointScopeRequest>;
 export interface PutAccessPointScopeResponse {}
-const PutAccessPointScopeResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<PutAccessPointScopeResponse>;
 export interface LifecycleConfiguration {
   Rules?: LifecycleRule[];
 }
-const LifecycleConfiguration = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<LifecycleConfiguration>;
 export interface PutBucketLifecycleConfigurationRequest {
   AccountId: string;
   Bucket: string;
   LifecycleConfiguration?: LifecycleConfiguration;
 }
-const PutBucketLifecycleConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<PutBucketLifecycleConfigurationRequest>;
 export interface PutBucketLifecycleConfigurationResponse {}
-const PutBucketLifecycleConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<PutBucketLifecycleConfigurationResponse>;
 export type ConfirmRemoveSelfBucketAccess = boolean;
 export interface PutBucketPolicyRequest {
   AccountId: string;
@@ -3834,187 +2702,91 @@ export interface PutBucketPolicyRequest {
   ConfirmRemoveSelfBucketAccess?: boolean;
   Policy: string;
 }
-const PutBucketPolicyRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<PutBucketPolicyRequest>;
 export interface PutBucketPolicyResponse {}
-const PutBucketPolicyResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<PutBucketPolicyResponse>;
 export interface PutBucketReplicationRequest {
   AccountId: string;
   Bucket: string;
   ReplicationConfiguration: ReplicationConfiguration;
 }
-const PutBucketReplicationRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<PutBucketReplicationRequest>;
 export interface PutBucketReplicationResponse {}
-const PutBucketReplicationResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<PutBucketReplicationResponse>;
 export interface Tagging {
   TagSet: S3Tag[];
 }
-const Tagging = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<Tagging>;
 export interface PutBucketTaggingRequest {
   AccountId: string;
   Bucket: string;
   Tagging: Tagging;
 }
-const PutBucketTaggingRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<PutBucketTaggingRequest>;
 export interface PutBucketTaggingResponse {}
-const PutBucketTaggingResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<PutBucketTaggingResponse>;
 export type MFA = string;
 export type MFADelete = "Enabled" | "Disabled" | (string & {});
-const MFADelete = S.String;
-
 export interface VersioningConfiguration {
   MFADelete?: MFADelete;
   Status?: BucketVersioningStatus;
 }
-const VersioningConfiguration = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<VersioningConfiguration>;
 export interface PutBucketVersioningRequest {
   AccountId: string;
   Bucket: string;
   MFA?: string;
   VersioningConfiguration: VersioningConfiguration;
 }
-const PutBucketVersioningRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<PutBucketVersioningRequest>;
 export interface PutBucketVersioningResponse {}
-const PutBucketVersioningResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<PutBucketVersioningResponse>;
 export interface PutJobTaggingRequest {
   AccountId: string;
   JobId: string;
   Tags: S3Tag[];
 }
-const PutJobTaggingRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<PutJobTaggingRequest>;
 export interface PutJobTaggingResult {}
-const PutJobTaggingResult = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<PutJobTaggingResult>;
 export interface PutMultiRegionAccessPointPolicyRequest {
   AccountId: string;
   ClientToken: string;
   Details: PutMultiRegionAccessPointPolicyInput;
 }
-const PutMultiRegionAccessPointPolicyRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<PutMultiRegionAccessPointPolicyRequest>;
 export interface PutMultiRegionAccessPointPolicyResult {
   RequestTokenARN?: string;
 }
-const PutMultiRegionAccessPointPolicyResult = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<PutMultiRegionAccessPointPolicyResult>;
 export interface PutPublicAccessBlockRequest {
   PublicAccessBlockConfiguration: PublicAccessBlockConfiguration;
   AccountId: string;
 }
-const PutPublicAccessBlockRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<PutPublicAccessBlockRequest>;
 export interface PutPublicAccessBlockResponse {}
-const PutPublicAccessBlockResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<PutPublicAccessBlockResponse>;
 export interface PutStorageLensConfigurationRequest {
   ConfigId: string;
   AccountId: string;
   StorageLensConfiguration: StorageLensConfiguration;
   Tags?: StorageLensTag[];
 }
-const PutStorageLensConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<PutStorageLensConfigurationRequest>;
 export interface PutStorageLensConfigurationResponse {}
-const PutStorageLensConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<PutStorageLensConfigurationResponse>;
 export interface PutStorageLensConfigurationTaggingRequest {
   ConfigId: string;
   AccountId: string;
   Tags: StorageLensTag[];
 }
-const PutStorageLensConfigurationTaggingRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<PutStorageLensConfigurationTaggingRequest>;
 export interface PutStorageLensConfigurationTaggingResult {}
-const PutStorageLensConfigurationTaggingResult = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<PutStorageLensConfigurationTaggingResult>;
 export interface SubmitMultiRegionAccessPointRoutesRequest {
   AccountId: string;
   Mrap: string;
   RouteUpdates: MultiRegionAccessPointRoute[];
 }
-const SubmitMultiRegionAccessPointRoutesRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<SubmitMultiRegionAccessPointRoutesRequest>;
 export interface SubmitMultiRegionAccessPointRoutesResult {}
-const SubmitMultiRegionAccessPointRoutesResult = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<SubmitMultiRegionAccessPointRoutesResult>;
 export interface TagResourceRequest {
   AccountId: string;
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResult {}
-const TagResourceResult = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<TagResourceResult>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ __L.at(__c46, 6);
 export interface UntagResourceRequest {
   AccountId: string;
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
-const UntagResourceResult = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<UntagResourceResult>;
 export interface UpdateAccessGrantsLocationRequest {
   AccountId: string;
   AccessGrantsLocationId: string;
   IAMRoleArn: string;
 }
-const UpdateAccessGrantsLocationRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<UpdateAccessGrantsLocationRequest>;
 export interface UpdateAccessGrantsLocationResult {
   CreatedAt?: Date;
   AccessGrantsLocationId?: string;
@@ -4022,63 +2794,33 @@ export interface UpdateAccessGrantsLocationResult {
   LocationScope?: string;
   IAMRoleArn?: string;
 }
-const UpdateAccessGrantsLocationResult = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<UpdateAccessGrantsLocationResult>;
 export interface UpdateJobPriorityRequest {
   AccountId: string;
   JobId: string;
   Priority: number;
 }
-const UpdateJobPriorityRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<UpdateJobPriorityRequest>;
 export interface UpdateJobPriorityResult {
   JobId: string;
   Priority: number;
 }
-const UpdateJobPriorityResult = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<UpdateJobPriorityResult>;
 export type RequestedJobStatus = "Cancelled" | "Ready" | (string & {});
-const RequestedJobStatus = S.String;
-
 export interface UpdateJobStatusRequest {
   AccountId: string;
   JobId: string;
   RequestedJobStatus: RequestedJobStatus;
   StatusUpdateReason?: string;
 }
-const UpdateJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<UpdateJobStatusRequest>;
 export interface UpdateJobStatusResult {
   JobId?: string;
   Status?: JobStatus;
   StatusUpdateReason?: string;
 }
-const UpdateJobStatusResult = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<UpdateJobStatusResult>;
 export interface UpdateStorageLensGroupRequest {
   Name: string;
   AccountId: string;
   StorageLensGroup: StorageLensGroup;
 }
-const UpdateStorageLensGroupRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<UpdateStorageLensGroupRequest>;
 export interface UpdateStorageLensGroupResponse {}
-const UpdateStorageLensGroupResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<UpdateStorageLensGroupResponse>;
 export type ExceptionMessage = string;
 export type NoSuchPublicAccessBlockConfigurationMessage = string;
 export type AssociateAccessGrantsIdentityCenterError = CommonErrors;
@@ -4099,8 +2841,8 @@ export const associateAccessGrantsIdentityCenter: API.OperationMethod<
   AssociateAccessGrantsIdentityCenterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateAccessGrantsIdentityCenterRequest,
-  output: AssociateAccessGrantsIdentityCenterResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateAccessGrantsIdentityCenterRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateAccessGrantsIdentityCenterResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4130,8 +2872,8 @@ export const createAccessGrant: API.OperationMethod<
   CreateAccessGrantError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessGrantRequest,
-  output: CreateAccessGrantResult,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateAccessGrantRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateAccessGrantResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4157,8 +2899,8 @@ export const createAccessGrantsInstance: API.OperationMethod<
   CreateAccessGrantsInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessGrantsInstanceRequest,
-  output: CreateAccessGrantsInstanceResult,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateAccessGrantsInstanceRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateAccessGrantsInstanceResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4192,8 +2934,8 @@ export const createAccessGrantsLocation: API.OperationMethod<
   CreateAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessGrantsLocationRequest,
-  output: CreateAccessGrantsLocationResult,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateAccessGrantsLocationRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateAccessGrantsLocationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4236,8 +2978,8 @@ export const createAccessPoint: API.OperationMethod<
   CreateAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessPointRequest,
-  output: CreateAccessPointResult,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateAccessPointRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CreateAccessPointResult>,
   errors: [AccessPointAlreadyOwnedByYou, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4272,8 +3014,8 @@ export const createAccessPointForObjectLambda: API.OperationMethod<
   CreateAccessPointForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessPointForObjectLambdaRequest,
-  output: CreateAccessPointForObjectLambdaResult,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateAccessPointForObjectLambdaRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<CreateAccessPointForObjectLambdaResult>,
   errors: [
     AccessPointAlreadyOwnedByYou,
     InvalidRequest,
@@ -4332,8 +3074,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBucketRequest,
-  output: CreateBucketResult,
+  input: __S(30, __c3, 6) as any as S.Schema<CreateBucketRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<CreateBucketResult>,
   errors: [BucketAlreadyExists, BucketAlreadyOwnedByYou],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4377,8 +3119,8 @@ export const createJob: API.OperationMethod<
   CreateJobError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJobRequest,
-  output: CreateJobResult,
+  input: __S(84, __c10, 4) as any as S.Schema<CreateJobRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<CreateJobResult>,
   errors: [
     BadRequestException,
     IdempotencyException,
@@ -4424,8 +3166,8 @@ export const createMultiRegionAccessPoint: API.OperationMethod<
   CreateMultiRegionAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMultiRegionAccessPointRequest,
-  output: CreateMultiRegionAccessPointResult,
+  input: __S(89, __c11, 1) as any as S.Schema<CreateMultiRegionAccessPointRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<CreateMultiRegionAccessPointResult>,
   errors: [InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4457,8 +3199,8 @@ export const createStorageLensGroup: API.OperationMethod<
   CreateStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageLensGroupRequest,
-  output: CreateStorageLensGroupResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<CreateStorageLensGroupRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<CreateStorageLensGroupResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4480,8 +3222,8 @@ export const deleteAccessGrant: API.OperationMethod<
   DeleteAccessGrantError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessGrantRequest,
-  output: DeleteAccessGrantResponse,
+  input: __S(102, __c12, 6) as any as S.Schema<DeleteAccessGrantRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<DeleteAccessGrantResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4503,8 +3245,8 @@ export const deleteAccessGrantsInstance: API.OperationMethod<
   DeleteAccessGrantsInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessGrantsInstanceRequest,
-  output: DeleteAccessGrantsInstanceResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteAccessGrantsInstanceRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<DeleteAccessGrantsInstanceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4526,8 +3268,8 @@ export const deleteAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   DeleteAccessGrantsInstanceResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessGrantsInstanceResourcePolicyRequest,
-  output: DeleteAccessGrantsInstanceResourcePolicyResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4549,8 +3291,8 @@ export const deleteAccessGrantsLocation: API.OperationMethod<
   DeleteAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessGrantsLocationRequest,
-  output: DeleteAccessGrantsLocationResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<DeleteAccessGrantsLocationRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<DeleteAccessGrantsLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4578,8 +3320,8 @@ export const deleteAccessPoint: API.OperationMethod<
   DeleteAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessPointRequest,
-  output: DeleteAccessPointResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<DeleteAccessPointRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<DeleteAccessPointResponse>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4608,8 +3350,8 @@ export const deleteAccessPointForObjectLambda: API.OperationMethod<
   DeleteAccessPointForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessPointForObjectLambdaRequest,
-  output: DeleteAccessPointForObjectLambdaResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteAccessPointForObjectLambdaRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<DeleteAccessPointForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4638,8 +3380,8 @@ export const deleteAccessPointPolicy: API.OperationMethod<
   DeleteAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessPointPolicyRequest,
-  output: DeleteAccessPointPolicyResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<DeleteAccessPointPolicyRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<DeleteAccessPointPolicyResponse>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4669,8 +3411,8 @@ export const deleteAccessPointPolicyForObjectLambda: API.OperationMethod<
   DeleteAccessPointPolicyForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessPointPolicyForObjectLambdaRequest,
-  output: DeleteAccessPointPolicyForObjectLambdaResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4695,8 +3437,8 @@ export const deleteAccessPointScope: API.OperationMethod<
   DeleteAccessPointScopeError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessPointScopeRequest,
-  output: DeleteAccessPointScopeResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<DeleteAccessPointScopeRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<DeleteAccessPointScopeResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4728,8 +3470,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBucketRequest,
-  output: DeleteBucketResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteBucketRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteBucketResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4770,8 +3512,8 @@ export const deleteBucketLifecycleConfiguration: API.OperationMethod<
   DeleteBucketLifecycleConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBucketLifecycleConfigurationRequest,
-  output: DeleteBucketLifecycleConfigurationResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<DeleteBucketLifecycleConfigurationRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<DeleteBucketLifecycleConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4818,8 +3560,8 @@ export const deleteBucketPolicy: API.OperationMethod<
   DeleteBucketPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBucketPolicyRequest,
-  output: DeleteBucketPolicyResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<DeleteBucketPolicyRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<DeleteBucketPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4865,8 +3607,8 @@ export const deleteBucketReplication: API.OperationMethod<
   DeleteBucketReplicationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBucketReplicationRequest,
-  output: DeleteBucketReplicationResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<DeleteBucketReplicationRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<DeleteBucketReplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4900,8 +3642,8 @@ export const deleteBucketTagging: API.OperationMethod<
   DeleteBucketTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBucketTaggingRequest,
-  output: DeleteBucketTaggingResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteBucketTaggingRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteBucketTaggingResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4939,8 +3681,8 @@ export const deleteJobTagging: API.OperationMethod<
   DeleteJobTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJobTaggingRequest,
-  output: DeleteJobTaggingResult,
+  input: __S(130, __c16, 2) as any as S.Schema<DeleteJobTaggingRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<DeleteJobTaggingResult>,
   errors: [InternalServiceException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4983,8 +3725,8 @@ export const deleteMultiRegionAccessPoint: API.OperationMethod<
   DeleteMultiRegionAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMultiRegionAccessPointRequest,
-  output: DeleteMultiRegionAccessPointResult,
+  input: __S(133, __c16, 5) as any as S.Schema<DeleteMultiRegionAccessPointRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteMultiRegionAccessPointResult>,
   errors: [NoSuchMultiRegionAccessPoint, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5016,8 +3758,8 @@ export const deletePublicAccessBlock: API.OperationMethod<
   DeletePublicAccessBlockError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePublicAccessBlockRequest,
-  output: DeletePublicAccessBlockResponse,
+  input: __S(135, __c16, 7) as any as S.Schema<DeletePublicAccessBlockRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeletePublicAccessBlockResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5044,8 +3786,8 @@ export const deleteStorageLensConfiguration: API.OperationMethod<
   DeleteStorageLensConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageLensConfigurationRequest,
-  output: DeleteStorageLensConfigurationResponse,
+  input: __S(137, __c17, 1) as any as S.Schema<DeleteStorageLensConfigurationRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<DeleteStorageLensConfigurationResponse>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5073,8 +3815,8 @@ export const deleteStorageLensConfigurationTagging: API.OperationMethod<
   DeleteStorageLensConfigurationTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageLensConfigurationTaggingRequest,
-  output: DeleteStorageLensConfigurationTaggingResult,
+  input: __S(139, __c17, 3) as any as S.Schema<DeleteStorageLensConfigurationTaggingRequest>,
+  output: __S(140, __c17, 4) as any as S.Schema<DeleteStorageLensConfigurationTaggingResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5099,8 +3841,8 @@ export const deleteStorageLensGroup: API.OperationMethod<
   DeleteStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageLensGroupRequest,
-  output: DeleteStorageLensGroupResponse,
+  input: __S(141, __c17, 5) as any as S.Schema<DeleteStorageLensGroupRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<DeleteStorageLensGroupResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5138,8 +3880,8 @@ export const describeJob: API.OperationMethod<
   DescribeJobError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeJobRequest,
-  output: DescribeJobResult,
+  input: __S(143, __c17, 7) as any as S.Schema<DescribeJobRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<DescribeJobResult>,
   errors: [
     BadRequestException,
     InternalServiceException,
@@ -5175,8 +3917,8 @@ export const describeMultiRegionAccessPointOperation: API.OperationMethod<
   DescribeMultiRegionAccessPointOperationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeMultiRegionAccessPointOperationRequest,
-  output: DescribeMultiRegionAccessPointOperationResult,
+  input: __S(151, __c18, 7) as any as S.Schema<DescribeMultiRegionAccessPointOperationRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DescribeMultiRegionAccessPointOperationResult>,
   errors: [InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5202,8 +3944,8 @@ export const dissociateAccessGrantsIdentityCenter: API.OperationMethod<
   DissociateAccessGrantsIdentityCenterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DissociateAccessGrantsIdentityCenterRequest,
-  output: DissociateAccessGrantsIdentityCenterResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<DissociateAccessGrantsIdentityCenterRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<DissociateAccessGrantsIdentityCenterResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5225,8 +3967,8 @@ export const getAccessGrant: API.OperationMethod<
   GetAccessGrantError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessGrantRequest,
-  output: GetAccessGrantResult,
+  input: __S(163, __c20, 3) as any as S.Schema<GetAccessGrantRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<GetAccessGrantResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5250,8 +3992,8 @@ export const getAccessGrantsInstance: API.OperationMethod<
   GetAccessGrantsInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessGrantsInstanceRequest,
-  output: GetAccessGrantsInstanceResult,
+  input: __S(165, __c20, 5) as any as S.Schema<GetAccessGrantsInstanceRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<GetAccessGrantsInstanceResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5277,8 +4019,8 @@ export const getAccessGrantsInstanceForPrefix: API.OperationMethod<
   GetAccessGrantsInstanceForPrefixError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessGrantsInstanceForPrefixRequest,
-  output: GetAccessGrantsInstanceForPrefixResult,
+  input: __S(167, __c20, 7) as any as S.Schema<GetAccessGrantsInstanceForPrefixRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetAccessGrantsInstanceForPrefixResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5300,8 +4042,8 @@ export const getAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   GetAccessGrantsInstanceResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessGrantsInstanceResourcePolicyRequest,
-  output: GetAccessGrantsInstanceResourcePolicyResult,
+  input: __S(169, __c21, 1) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5323,8 +4065,8 @@ export const getAccessGrantsLocation: API.OperationMethod<
   GetAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessGrantsLocationRequest,
-  output: GetAccessGrantsLocationResult,
+  input: __S(171, __c21, 3) as any as S.Schema<GetAccessGrantsLocationRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<GetAccessGrantsLocationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5352,8 +4094,8 @@ export const getAccessPoint: API.OperationMethod<
   GetAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointRequest,
-  output: GetAccessPointResult,
+  input: __S(173, __c21, 5) as any as S.Schema<GetAccessPointRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<GetAccessPointResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5378,8 +4120,8 @@ export const getAccessPointConfigurationForObjectLambda: API.OperationMethod<
   GetAccessPointConfigurationForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointConfigurationForObjectLambdaRequest,
-  output: GetAccessPointConfigurationForObjectLambdaResult,
+  input: __S(176, __c22, 0) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5407,8 +4149,8 @@ export const getAccessPointForObjectLambda: API.OperationMethod<
   GetAccessPointForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointForObjectLambdaRequest,
-  output: GetAccessPointForObjectLambdaResult,
+  input: __S(178, __c22, 2) as any as S.Schema<GetAccessPointForObjectLambdaRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<GetAccessPointForObjectLambdaResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5432,8 +4174,8 @@ export const getAccessPointPolicy: API.OperationMethod<
   GetAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointPolicyRequest,
-  output: GetAccessPointPolicyResult,
+  input: __S(180, __c22, 4) as any as S.Schema<GetAccessPointPolicyRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<GetAccessPointPolicyResult>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5463,8 +4205,8 @@ export const getAccessPointPolicyForObjectLambda: API.OperationMethod<
   GetAccessPointPolicyForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointPolicyForObjectLambdaRequest,
-  output: GetAccessPointPolicyForObjectLambdaResult,
+  input: __S(182, __c22, 6) as any as S.Schema<GetAccessPointPolicyForObjectLambdaRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<GetAccessPointPolicyForObjectLambdaResult>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5489,8 +4231,8 @@ export const getAccessPointPolicyStatus: API.OperationMethod<
   GetAccessPointPolicyStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointPolicyStatusRequest,
-  output: GetAccessPointPolicyStatusResult,
+  input: __S(184, __c23, 0) as any as S.Schema<GetAccessPointPolicyStatusRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<GetAccessPointPolicyStatusResult>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5510,8 +4252,8 @@ export const getAccessPointPolicyStatusForObjectLambda: API.OperationMethod<
   GetAccessPointPolicyStatusForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointPolicyStatusForObjectLambdaRequest,
-  output: GetAccessPointPolicyStatusForObjectLambdaResult,
+  input: __S(187, __c23, 3) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5534,8 +4276,8 @@ export const getAccessPointScope: API.OperationMethod<
   GetAccessPointScopeError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessPointScopeRequest,
-  output: GetAccessPointScopeResult,
+  input: __S(189, __c23, 5) as any as S.Schema<GetAccessPointScopeRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<GetAccessPointScopeResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5573,8 +4315,8 @@ export const getBucket: API.OperationMethod<
   GetBucketError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBucketRequest,
-  output: GetBucketResult,
+  input: __S(191, __c23, 7) as any as S.Schema<GetBucketRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<GetBucketResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5623,8 +4365,8 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   GetBucketLifecycleConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBucketLifecycleConfigurationRequest,
-  output: GetBucketLifecycleConfigurationResult,
+  input: __S(193, __c24, 1) as any as S.Schema<GetBucketLifecycleConfigurationRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<GetBucketLifecycleConfigurationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5674,8 +4416,8 @@ export const getBucketPolicy: API.OperationMethod<
   GetBucketPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBucketPolicyRequest,
-  output: GetBucketPolicyResult,
+  input: __S(206, __c25, 6) as any as S.Schema<GetBucketPolicyRequest>,
+  output: __S(207, __c25, 7) as any as S.Schema<GetBucketPolicyResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5729,8 +4471,8 @@ export const getBucketReplication: API.OperationMethod<
   GetBucketReplicationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBucketReplicationRequest,
-  output: GetBucketReplicationResult,
+  input: __S(208, __c26, 0) as any as S.Schema<GetBucketReplicationRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetBucketReplicationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5771,8 +4513,8 @@ export const getBucketTagging: API.OperationMethod<
   GetBucketTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBucketTaggingRequest,
-  output: GetBucketTaggingResult,
+  input: __S(226, __c28, 2) as any as S.Schema<GetBucketTaggingRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<GetBucketTaggingResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5819,8 +4561,8 @@ export const getBucketVersioning: API.OperationMethod<
   GetBucketVersioningError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBucketVersioningRequest,
-  output: GetBucketVersioningResult,
+  input: __S(228, __c28, 4) as any as S.Schema<GetBucketVersioningRequest>,
+  output: __S(229, __c28, 5) as any as S.Schema<GetBucketVersioningResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5846,8 +4588,8 @@ export const getDataAccess: API.OperationMethod<
   GetDataAccessError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataAccessRequest,
-  output: GetDataAccessResult,
+  input: __S(230, __c28, 6) as any as S.Schema<GetDataAccessRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetDataAccessResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5885,8 +4627,8 @@ export const getJobTagging: API.OperationMethod<
   GetJobTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobTaggingRequest,
-  output: GetJobTaggingResult,
+  input: __S(233, __c29, 1) as any as S.Schema<GetJobTaggingRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<GetJobTaggingResult>,
   errors: [InternalServiceException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5920,8 +4662,8 @@ export const getMultiRegionAccessPoint: API.OperationMethod<
   GetMultiRegionAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMultiRegionAccessPointRequest,
-  output: GetMultiRegionAccessPointResult,
+  input: __S(235, __c29, 3) as any as S.Schema<GetMultiRegionAccessPointRequest>,
+  output: __S(239, __c29, 7) as any as S.Schema<GetMultiRegionAccessPointResult>,
   errors: [NoSuchMultiRegionAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5952,8 +4694,8 @@ export const getMultiRegionAccessPointPolicy: API.OperationMethod<
   GetMultiRegionAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMultiRegionAccessPointPolicyRequest,
-  output: GetMultiRegionAccessPointPolicyResult,
+  input: __S(240, __c30, 0) as any as S.Schema<GetMultiRegionAccessPointPolicyRequest>,
+  output: __S(244, __c30, 4) as any as S.Schema<GetMultiRegionAccessPointPolicyResult>,
   errors: [NoSuchMultiRegionAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5985,8 +4727,8 @@ export const getMultiRegionAccessPointPolicyStatus: API.OperationMethod<
   GetMultiRegionAccessPointPolicyStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMultiRegionAccessPointPolicyStatusRequest,
-  output: GetMultiRegionAccessPointPolicyStatusResult,
+  input: __S(245, __c30, 5) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6020,8 +4762,8 @@ export const getMultiRegionAccessPointRoutes: API.OperationMethod<
   GetMultiRegionAccessPointRoutesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMultiRegionAccessPointRoutesRequest,
-  output: GetMultiRegionAccessPointRoutesResult,
+  input: __S(247, __c30, 7) as any as S.Schema<GetMultiRegionAccessPointRoutesRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<GetMultiRegionAccessPointRoutesResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6050,8 +4792,8 @@ export const getPublicAccessBlock: API.OperationMethod<
   GetPublicAccessBlockError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicAccessBlockRequest,
-  output: GetPublicAccessBlockOutput,
+  input: __S(251, __c31, 3) as any as S.Schema<GetPublicAccessBlockRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<GetPublicAccessBlockOutput>,
   errors: [NoSuchPublicAccessBlockConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6077,8 +4819,8 @@ export const getStorageLensConfiguration: API.OperationMethod<
   GetStorageLensConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageLensConfigurationRequest,
-  output: GetStorageLensConfigurationResult,
+  input: __S(253, __c31, 5) as any as S.Schema<GetStorageLensConfigurationRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<GetStorageLensConfigurationResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6106,8 +4848,8 @@ export const getStorageLensConfigurationTagging: API.OperationMethod<
   GetStorageLensConfigurationTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageLensConfigurationTaggingRequest,
-  output: GetStorageLensConfigurationTaggingResult,
+  input: __S(283, __c35, 3) as any as S.Schema<GetStorageLensConfigurationTaggingRequest>,
+  output: __S(286, __c35, 6) as any as S.Schema<GetStorageLensConfigurationTaggingResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6132,8 +4874,8 @@ export const getStorageLensGroup: API.OperationMethod<
   GetStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageLensGroupRequest,
-  output: GetStorageLensGroupResult,
+  input: __S(287, __c35, 7) as any as S.Schema<GetStorageLensGroupRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<GetStorageLensGroupResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6156,8 +4898,8 @@ export const listAccessGrants: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessGrantsRequest,
-  output: ListAccessGrantsResult,
+  input: __S(289, __c36, 1) as any as S.Schema<ListAccessGrantsRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<ListAccessGrantsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6185,8 +4927,8 @@ export const listAccessGrantsInstances: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessGrantsInstancesRequest,
-  output: ListAccessGrantsInstancesResult,
+  input: __S(293, __c36, 5) as any as S.Schema<ListAccessGrantsInstancesRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<ListAccessGrantsInstancesResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6214,8 +4956,8 @@ export const listAccessGrantsLocations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessGrantsLocationsRequest,
-  output: ListAccessGrantsLocationsResult,
+  input: __S(297, __c37, 1) as any as S.Schema<ListAccessGrantsLocationsRequest>,
+  output: __S(300, __c37, 4) as any as S.Schema<ListAccessGrantsLocationsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6257,8 +4999,8 @@ export const listAccessPoints: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessPointsRequest,
-  output: ListAccessPointsResult,
+  input: __S(301, __c37, 5) as any as S.Schema<ListAccessPointsRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<ListAccessPointsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6289,8 +5031,8 @@ export const listAccessPointsForDirectoryBuckets: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   AccessPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessPointsForDirectoryBucketsRequest,
-  output: ListAccessPointsForDirectoryBucketsResult,
+  input: __S(305, __c38, 1) as any as S.Schema<ListAccessPointsForDirectoryBucketsRequest>,
+  output: __S(306, __c38, 2) as any as S.Schema<ListAccessPointsForDirectoryBucketsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6327,8 +5069,8 @@ export const listAccessPointsForObjectLambda: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ObjectLambdaAccessPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessPointsForObjectLambdaRequest,
-  output: ListAccessPointsForObjectLambdaResult,
+  input: __S(307, __c38, 3) as any as S.Schema<ListAccessPointsForObjectLambdaRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<ListAccessPointsForObjectLambdaResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6357,8 +5099,8 @@ export const listCallerAccessGrants: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ListCallerAccessGrantsEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCallerAccessGrantsRequest,
-  output: ListCallerAccessGrantsResult,
+  input: __S(311, __c38, 7) as any as S.Schema<ListCallerAccessGrantsRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<ListCallerAccessGrantsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6404,8 +5146,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListJobsRequest,
-  output: ListJobsResult,
+  input: __S(316, __c39, 4) as any as S.Schema<ListJobsRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<ListJobsResult>,
   errors: [InternalServiceException, InvalidNextTokenException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6447,8 +5189,8 @@ export const listMultiRegionAccessPoints: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMultiRegionAccessPointsRequest,
-  output: ListMultiRegionAccessPointsResult,
+  input: __S(320, __c40, 0) as any as S.Schema<ListMultiRegionAccessPointsRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<ListMultiRegionAccessPointsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6479,8 +5221,8 @@ export const listRegionalBuckets: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRegionalBucketsRequest,
-  output: ListRegionalBucketsResult,
+  input: __S(323, __c40, 3) as any as S.Schema<ListRegionalBucketsRequest>,
+  output: __S(326, __c40, 6) as any as S.Schema<ListRegionalBucketsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6514,8 +5256,8 @@ export const listStorageLensConfigurations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStorageLensConfigurationsRequest,
-  output: ListStorageLensConfigurationsResult,
+  input: __S(327, __c40, 7) as any as S.Schema<ListStorageLensConfigurationsRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<ListStorageLensConfigurationsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6542,8 +5284,8 @@ export const listStorageLensGroups: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStorageLensGroupsRequest,
-  output: ListStorageLensGroupsResult,
+  input: __S(331, __c41, 3) as any as S.Schema<ListStorageLensGroupsRequest>,
+  output: __S(334, __c41, 6) as any as S.Schema<ListStorageLensGroupsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6590,8 +5332,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResult,
+  input: __S(335, __c41, 7) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<ListTagsForResourceResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6613,8 +5355,8 @@ export const putAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   PutAccessGrantsInstanceResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccessGrantsInstanceResourcePolicyRequest,
-  output: PutAccessGrantsInstanceResourcePolicyResult,
+  input: __S(337, __c42, 1) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6642,8 +5384,8 @@ export const putAccessPointConfigurationForObjectLambda: API.OperationMethod<
   PutAccessPointConfigurationForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccessPointConfigurationForObjectLambdaRequest,
-  output: PutAccessPointConfigurationForObjectLambdaResponse,
+  input: __S(339, __c42, 3) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaRequest>,
+  output: __S(340, __c42, 4) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6671,8 +5413,8 @@ export const putAccessPointPolicy: API.OperationMethod<
   PutAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccessPointPolicyRequest,
-  output: PutAccessPointPolicyResponse,
+  input: __S(341, __c42, 5) as any as S.Schema<PutAccessPointPolicyRequest>,
+  output: __S(342, __c42, 6) as any as S.Schema<PutAccessPointPolicyResponse>,
   errors: [NoSuchAccessPoint, MalformedPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6702,8 +5444,8 @@ export const putAccessPointPolicyForObjectLambda: API.OperationMethod<
   PutAccessPointPolicyForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccessPointPolicyForObjectLambdaRequest,
-  output: PutAccessPointPolicyForObjectLambdaResponse,
+  input: __S(343, __c42, 7) as any as S.Schema<PutAccessPointPolicyForObjectLambdaRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<PutAccessPointPolicyForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint, MalformedPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6728,8 +5470,8 @@ export const putAccessPointScope: API.OperationMethod<
   PutAccessPointScopeError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccessPointScopeRequest,
-  output: PutAccessPointScopeResponse,
+  input: __S(345, __c43, 1) as any as S.Schema<PutAccessPointScopeRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<PutAccessPointScopeResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6761,8 +5503,8 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   PutBucketLifecycleConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBucketLifecycleConfigurationRequest,
-  output: PutBucketLifecycleConfigurationResponse,
+  input: __S(348, __c43, 4) as any as S.Schema<PutBucketLifecycleConfigurationRequest>,
+  output: __S(349, __c43, 5) as any as S.Schema<PutBucketLifecycleConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6810,8 +5552,8 @@ export const putBucketPolicy: API.OperationMethod<
   PutBucketPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBucketPolicyRequest,
-  output: PutBucketPolicyResponse,
+  input: __S(350, __c43, 6) as any as S.Schema<PutBucketPolicyRequest>,
+  output: __S(351, __c43, 7) as any as S.Schema<PutBucketPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6901,8 +5643,8 @@ export const putBucketReplication: API.OperationMethod<
   PutBucketReplicationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBucketReplicationRequest,
-  output: PutBucketReplicationResponse,
+  input: __S(352, __c44, 0) as any as S.Schema<PutBucketReplicationRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<PutBucketReplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6974,8 +5716,8 @@ export const putBucketTagging: API.OperationMethod<
   PutBucketTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBucketTaggingRequest,
-  output: PutBucketTaggingResponse,
+  input: __S(355, __c44, 3) as any as S.Schema<PutBucketTaggingRequest>,
+  output: __S(356, __c44, 4) as any as S.Schema<PutBucketTaggingResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7042,8 +5784,8 @@ export const putBucketVersioning: API.OperationMethod<
   PutBucketVersioningError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBucketVersioningRequest,
-  output: PutBucketVersioningResponse,
+  input: __S(358, __c44, 6) as any as S.Schema<PutBucketVersioningRequest>,
+  output: __S(359, __c44, 7) as any as S.Schema<PutBucketVersioningResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7109,8 +5851,8 @@ export const putJobTagging: API.OperationMethod<
   PutJobTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutJobTaggingRequest,
-  output: PutJobTaggingResult,
+  input: __S(360, __c45, 0) as any as S.Schema<PutJobTaggingRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<PutJobTaggingResult>,
   errors: [
     InternalServiceException,
     NotFoundException,
@@ -7151,8 +5893,8 @@ export const putMultiRegionAccessPointPolicy: API.OperationMethod<
   PutMultiRegionAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMultiRegionAccessPointPolicyRequest,
-  output: PutMultiRegionAccessPointPolicyResult,
+  input: __S(362, __c45, 2) as any as S.Schema<PutMultiRegionAccessPointPolicyRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<PutMultiRegionAccessPointPolicyResult>,
   errors: [NoSuchMultiRegionAccessPoint, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7185,8 +5927,8 @@ export const putPublicAccessBlock: API.OperationMethod<
   PutPublicAccessBlockError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPublicAccessBlockRequest,
-  output: PutPublicAccessBlockResponse,
+  input: __S(364, __c45, 4) as any as S.Schema<PutPublicAccessBlockRequest>,
+  output: __S(365, __c45, 5) as any as S.Schema<PutPublicAccessBlockResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7214,8 +5956,8 @@ export const putStorageLensConfiguration: API.OperationMethod<
   PutStorageLensConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutStorageLensConfigurationRequest,
-  output: PutStorageLensConfigurationResponse,
+  input: __S(366, __c45, 6) as any as S.Schema<PutStorageLensConfigurationRequest>,
+  output: __S(367, __c45, 7) as any as S.Schema<PutStorageLensConfigurationResponse>,
   errors: [InvalidRequest, MissingBucketLevelActivityMetrics],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7242,8 +5984,8 @@ export const putStorageLensConfigurationTagging: API.OperationMethod<
   PutStorageLensConfigurationTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutStorageLensConfigurationTaggingRequest,
-  output: PutStorageLensConfigurationTaggingResult,
+  input: __S(368, __c46, 0) as any as S.Schema<PutStorageLensConfigurationTaggingRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<PutStorageLensConfigurationTaggingResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7289,8 +6031,8 @@ export const submitMultiRegionAccessPointRoutes: API.OperationMethod<
   SubmitMultiRegionAccessPointRoutesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitMultiRegionAccessPointRoutesRequest,
-  output: SubmitMultiRegionAccessPointRoutesResult,
+  input: __S(370, __c46, 2) as any as S.Schema<SubmitMultiRegionAccessPointRoutesRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<SubmitMultiRegionAccessPointRoutesResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7336,8 +6078,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResult,
+  input: __S(372, __c46, 4) as any as S.Schema<TagResourceRequest>,
+  output: __S(373, __c46, 5) as any as S.Schema<TagResourceResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7384,8 +6126,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResult,
+  input: __S(375, __c46, 7) as any as S.Schema<UntagResourceRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<UntagResourceResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7411,8 +6153,8 @@ export const updateAccessGrantsLocation: API.OperationMethod<
   UpdateAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessGrantsLocationRequest,
-  output: UpdateAccessGrantsLocationResult,
+  input: __S(377, __c47, 1) as any as S.Schema<UpdateAccessGrantsLocationRequest>,
+  output: __S(378, __c47, 2) as any as S.Schema<UpdateAccessGrantsLocationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7453,8 +6195,8 @@ export const updateJobPriority: API.OperationMethod<
   UpdateJobPriorityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJobPriorityRequest,
-  output: UpdateJobPriorityResult,
+  input: __S(379, __c47, 3) as any as S.Schema<UpdateJobPriorityRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<UpdateJobPriorityResult>,
   errors: [
     BadRequestException,
     InternalServiceException,
@@ -7504,8 +6246,8 @@ export const updateJobStatus: API.OperationMethod<
   UpdateJobStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJobStatusRequest,
-  output: UpdateJobStatusResult,
+  input: __S(381, __c47, 5) as any as S.Schema<UpdateJobStatusRequest>,
+  output: __S(382, __c47, 6) as any as S.Schema<UpdateJobStatusResult>,
   errors: [
     BadRequestException,
     InternalServiceException,
@@ -7538,8 +6280,8 @@ export const updateStorageLensGroup: API.OperationMethod<
   UpdateStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStorageLensGroupRequest,
-  output: UpdateStorageLensGroupResponse,
+  input: __S(383, __c47, 7) as any as S.Schema<UpdateStorageLensGroupRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<UpdateStorageLensGroupResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7584,7 +6326,7 @@ function __c0(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ GranteeType: S.optional(GranteeType), GranteeIdentifier: S.optional(S.String) }),
+        S.Struct({ GranteeType: S.optional(S.String), GranteeIdentifier: S.optional(S.String) }),
       ).annotate({ identifier: "Grantee" });
     case 4:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
@@ -7592,7 +6334,9 @@ function __c0(j: number): any {
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+        /*@__PURE__*/ __S(4, __c0, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "Tag" }),
       );
     case 6:
       return S.suspend(() =>
@@ -7603,12 +6347,12 @@ function __c0(j: number): any {
             T.HostLabel(),
           ),
           AccessGrantsLocationId: S.String,
-          AccessGrantsLocationConfiguration: S.optional(AccessGrantsLocationConfiguration),
-          Grantee: Grantee,
-          Permission: Permission,
+          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
+          Grantee: __S(3, __c0, 3),
+          Permission: S.String,
           ApplicationArn: S.optional(S.String),
-          S3PrefixType: S.optional(S3PrefixType),
-          Tags: S.optional(TagList),
+          S3PrefixType: S.optional(S.String),
+          Tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             ns,
@@ -7628,10 +6372,10 @@ function __c0(j: number): any {
           CreatedAt: S.optional(T.DateFromString),
           AccessGrantId: S.optional(S.String),
           AccessGrantArn: S.optional(S.String),
-          Grantee: S.optional(Grantee),
+          Grantee: S.optional(__S(3, __c0, 3)),
           AccessGrantsLocationId: S.optional(S.String),
-          AccessGrantsLocationConfiguration: S.optional(AccessGrantsLocationConfiguration),
-          Permission: S.optional(Permission),
+          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
+          Permission: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
           GrantScope: S.optional(S.String),
         }).pipe(ns),
@@ -7649,7 +6393,7 @@ function __c1(j: number): any {
             T.HostLabel(),
           ),
           IdentityCenterArn: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             ns,
@@ -7688,7 +6432,7 @@ function __c1(j: number): any {
           ),
           LocationScope: S.String,
           IAMRoleArn: S.String,
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             ns,
@@ -7734,7 +6478,7 @@ function __c1(j: number): any {
     case 6:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Prefix")));
     case 7:
-      return S.Array(/*@__PURE__*/ ScopePermission.pipe(/*@__PURE__*/ T.XmlName("Permission")));
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Permission")));
   }
 }
 function __c2(j: number): any {
@@ -7742,8 +6486,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Prefixes: S.optional(PrefixesList).pipe(T.XmlName("Prefixes")),
-          Permissions: S.optional(ScopePermissionList).pipe(T.XmlName("Permissions")),
+          Prefixes: S.optional(__S(14, __c1, 6)).pipe(T.XmlName("Prefixes")),
+          Permissions: S.optional(__S(15, __c1, 7)).pipe(T.XmlName("Permissions")),
         }),
       ).annotate({ identifier: "Scope" });
     case 1:
@@ -7756,11 +6500,11 @@ function __c2(j: number): any {
           ),
           Name: S.String.pipe(T.HttpLabel("Name"), T.ContextParam("AccessPointName")),
           Bucket: S.String.pipe(T.ContextParam("Bucket")),
-          VpcConfiguration: S.optional(VpcConfiguration),
-          PublicAccessBlockConfiguration: S.optional(PublicAccessBlockConfiguration),
+          VpcConfiguration: S.optional(__S(12, __c1, 4)),
+          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5)),
           BucketAccountId: S.optional(S.String),
-          Scope: S.optional(Scope),
-          Tags: S.optional(TagList),
+          Scope: S.optional(__S(16, __c2, 0)),
+          Tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             ns,
@@ -7779,26 +6523,20 @@ function __c2(j: number): any {
         S.Struct({ AccessPointArn: S.optional(S.String), Alias: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "CreateAccessPointResult" });
     case 3:
-      return S.Array(
-        /*@__PURE__*/ ObjectLambdaAllowedFeature.pipe(/*@__PURE__*/ T.XmlName("AllowedFeature")),
-      );
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AllowedFeature")));
     case 4:
-      return S.Array(
-        /*@__PURE__*/ ObjectLambdaTransformationConfigurationAction.pipe(
-          /*@__PURE__*/ T.XmlName("Action"),
-        ),
-      );
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Action")));
     case 5:
       return S.suspend(() =>
         S.Struct({ FunctionArn: S.String, FunctionPayload: S.optional(S.String) }),
       ).annotate({ identifier: "AwsLambdaTransformation" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ AwsLambda: AwsLambdaTransformation })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ AwsLambda: __S(21, __c2, 5) })]);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Actions: ObjectLambdaTransformationConfigurationActionsList,
-          ContentTransformation: ObjectLambdaContentTransformation,
+          Actions: __S(20, __c2, 4),
+          ContentTransformation: __S(22, __c2, 6),
         }),
       ).annotate({
         identifier: "ObjectLambdaTransformationConfiguration",
@@ -7809,19 +6547,19 @@ function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ ObjectLambdaTransformationConfiguration.pipe(
-          /*@__PURE__*/ T.XmlName("TransformationConfiguration"),
-        ).annotate({
-          identifier: "ObjectLambdaTransformationConfiguration",
-        }),
+        /*@__PURE__*/ __S(23, __c2, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("TransformationConfiguration"))
+          .annotate({
+            identifier: "ObjectLambdaTransformationConfiguration",
+          }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
           SupportingAccessPoint: S.String,
           CloudWatchMetricsEnabled: S.optional(S.Boolean),
-          AllowedFeatures: S.optional(ObjectLambdaAllowedFeaturesList),
-          TransformationConfigurations: ObjectLambdaTransformationConfigurationsList,
+          AllowedFeatures: S.optional(__S(19, __c2, 3)),
+          TransformationConfigurations: __S(24, __c3, 0),
         }),
       ).annotate({
         identifier: "ObjectLambdaConfiguration",
@@ -7835,7 +6573,7 @@ function __c3(j: number): any {
             T.HostLabel(),
           ),
           Name: S.String.pipe(T.HttpLabel("Name")),
-          Configuration: ObjectLambdaConfiguration,
+          Configuration: __S(25, __c3, 1),
         }).pipe(
           T.all(
             ns,
@@ -7855,7 +6593,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Value: S.optional(S.String),
-          Status: S.optional(ObjectLambdaAccessPointAliasStatus),
+          Status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ObjectLambdaAccessPointAlias",
@@ -7864,23 +6602,21 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ObjectLambdaAccessPointArn: S.optional(S.String),
-          Alias: S.optional(ObjectLambdaAccessPointAlias),
+          Alias: S.optional(__S(27, __c3, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateAccessPointForObjectLambdaResult",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ LocationConstraint: S.optional(BucketLocationConstraint) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ LocationConstraint: S.optional(S.String) })).annotate({
         identifier: "CreateBucketConfiguration",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ACL: S.optional(BucketCannedACL).pipe(T.HttpHeader("x-amz-acl")),
+          ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          CreateBucketConfiguration: S.optional(CreateBucketConfiguration)
+          CreateBucketConfiguration: S.optional(__S(29, __c3, 5))
             .pipe(T.HttpPayload(), T.XmlName("CreateBucketConfiguration"))
             .annotate({ identifier: "CreateBucketConfiguration" }),
           GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
@@ -7925,23 +6661,23 @@ function __c4(j: number): any {
         S.Struct({
           FunctionArn: S.optional(S.String),
           InvocationSchemaVersion: S.optional(S.String),
-          UserArguments: S.optional(UserArguments),
+          UserArguments: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "LambdaInvokeOperation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TypeIdentifier: S.optional(S3GranteeTypeIdentifier),
+          TypeIdentifier: S.optional(S.String),
           Identifier: S.optional(S.String),
           DisplayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Grantee" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Grantee: S.optional(S3Grantee), Permission: S.optional(S3Permission) }),
+        S.Struct({ Grantee: S.optional(__S(34, __c4, 2)), Permission: S.optional(S.String) }),
       ).annotate({ identifier: "S3Grant" });
     case 4:
-      return S.Array(S3Grant);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
@@ -7951,13 +6687,13 @@ function __c4(j: number): any {
           ContentDisposition: S.optional(S.String),
           ContentEncoding: S.optional(S.String),
           ContentLanguage: S.optional(S.String),
-          UserMetadata: S.optional(S3UserMetadata),
+          UserMetadata: S.optional(__S(37, __c4, 5)),
           ContentLength: S.optional(S.Number),
           ContentMD5: S.optional(S.String),
           ContentType: S.optional(S.String),
           HttpExpiresDate: S.optional(T.DateFromString),
           RequesterCharged: S.optional(S.Boolean),
-          SSEAlgorithm: S.optional(S3SSEAlgorithm),
+          SSEAlgorithm: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3ObjectMetadata" });
     case 7:
@@ -7969,7 +6705,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S3Tag);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
@@ -7980,26 +6716,26 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TargetResource: S.optional(S.String),
-          CannedAccessControlList: S.optional(S3CannedAccessControlList),
-          AccessControlGrants: S.optional(S3GrantList),
-          MetadataDirective: S.optional(S3MetadataDirective),
-          AnnotationDirective: S.optional(S3AnnotationDirective),
+          CannedAccessControlList: S.optional(S.String),
+          AccessControlGrants: S.optional(__S(36, __c4, 4)),
+          MetadataDirective: S.optional(S.String),
+          AnnotationDirective: S.optional(S.String),
           ModifiedSinceConstraint: S.optional(T.DateFromString),
-          NewObjectMetadata: S.optional(S3ObjectMetadata),
-          NewObjectTagging: S.optional(S3TagSet),
+          NewObjectMetadata: S.optional(__S(38, __c4, 6)),
+          NewObjectTagging: S.optional(__S(40, __c5, 0)),
           RedirectLocation: S.optional(S.String),
           RequesterPays: S.optional(S.Boolean),
-          StorageClass: S.optional(S3StorageClass),
+          StorageClass: S.optional(S.String),
           UnModifiedSinceConstraint: S.optional(T.DateFromString),
           SSEAwsKmsKeyId: S.optional(S.String),
           TargetKeyPrefix: S.optional(S.String),
-          ObjectLockLegalHoldStatus: S.optional(S3ObjectLockLegalHoldStatus),
-          ObjectLockMode: S.optional(S3ObjectLockMode),
+          ObjectLockLegalHoldStatus: S.optional(S.String),
+          ObjectLockMode: S.optional(S.String),
           ObjectLockRetainUntilDate: S.optional(T.DateFromString),
           BucketKeyEnabled: S.optional(S.Boolean),
-          ChecksumAlgorithm: S.optional(S3ChecksumAlgorithm),
-          ObjectLockEventHold: S.optional(S3ObjectLockEventHold),
-          ObjectLockEventHoldDuration: S.optional(S3ObjectLockEventHoldDuration),
+          ChecksumAlgorithm: S.optional(S.String),
+          ObjectLockEventHold: S.optional(S.String),
+          ObjectLockEventHoldDuration: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "S3CopyObjectOperation" });
     case 3:
@@ -8008,21 +6744,21 @@ function __c5(j: number): any {
       ).annotate({ identifier: "S3ObjectOwner" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Owner: S3ObjectOwner, Grants: S.optional(S3GrantList) }),
+        S.Struct({ Owner: __S(43, __c5, 3), Grants: S.optional(__S(36, __c4, 4)) }),
       ).annotate({ identifier: "S3AccessControlList" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AccessControlList: S.optional(S3AccessControlList),
-          CannedAccessControlList: S.optional(S3CannedAccessControlList),
+          AccessControlList: S.optional(__S(44, __c5, 4)),
+          CannedAccessControlList: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3AccessControlPolicy" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AccessControlPolicy: S.optional(S3AccessControlPolicy) }),
+        S.Struct({ AccessControlPolicy: S.optional(__S(45, __c5, 5)) }),
       ).annotate({ identifier: "S3SetObjectAclOperation" });
     case 7:
-      return S.suspend(() => S.Struct({ TagSet: S.optional(S3TagSet) })).annotate({
+      return S.suspend(() => S.Struct({ TagSet: S.optional(__S(40, __c5, 0)) })).annotate({
         identifier: "S3SetObjectTaggingOperation",
       });
   }
@@ -8037,17 +6773,17 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ExpirationInDays: S.optional(S.Number),
-          GlacierJobTier: S.optional(S3GlacierJobTier),
+          GlacierJobTier: S.optional(S.String),
         }),
       ).annotate({
         identifier: "S3InitiateRestoreObjectOperation",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Status: S3ObjectLockLegalHoldStatus })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "S3ObjectLockLegalHold",
       });
     case 3:
-      return S.suspend(() => S.Struct({ LegalHold: S3ObjectLockLegalHold })).annotate({
+      return S.suspend(() => S.Struct({ LegalHold: __S(50, __c6, 2) })).annotate({
         identifier: "S3SetObjectLegalHoldOperation",
       });
     case 4:
@@ -8060,14 +6796,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RetainUntilDate: S.optional(T.DateFromString),
-          Mode: S.optional(S3ObjectLockRetentionMode),
-          EventHold: S.optional(S3ObjectLockRetentionEventHold),
-          EventHoldDuration: S.optional(S3ObjectLockRetentionEventHoldDuration),
+          Mode: S.optional(S.String),
+          EventHold: S.optional(S.String),
+          EventHoldDuration: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({ identifier: "S3Retention" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ BypassGovernanceRetention: S.optional(S.Boolean), Retention: S3Retention }),
+        S.Struct({ BypassGovernanceRetention: S.optional(S.Boolean), Retention: __S(53, __c6, 5) }),
       ).annotate({
         identifier: "S3SetObjectRetentionOperation",
       });
@@ -8082,8 +6818,8 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ChecksumAlgorithm: S.optional(ComputeObjectChecksumAlgorithm),
-          ChecksumType: S.optional(ComputeObjectChecksumType),
+          ChecksumAlgorithm: S.optional(S.String),
+          ChecksumType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "S3ComputeObjectChecksumOperation",
@@ -8099,13 +6835,13 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SSEKMS: S.optional(S3UpdateObjectEncryptionSSEKMS)
+          SSEKMS: S.optional(__S(57, __c7, 1))
             .pipe(T.XmlName("SSE-KMS"))
             .annotate({ identifier: "S3UpdateObjectEncryptionSSEKMS" }),
         }),
       ).annotate({ identifier: "ObjectEncryption" });
     case 3:
-      return S.suspend(() => S.Struct({ ObjectEncryption: S.optional(ObjectEncryption) })).annotate(
+      return S.suspend(() => S.Struct({ ObjectEncryption: S.optional(__S(58, __c7, 2)) })).annotate(
         {
           identifier: "S3UpdateObjectEncryptionOperation",
         },
@@ -8113,35 +6849,35 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          LambdaInvoke: S.optional(LambdaInvokeOperation),
-          S3PutObjectCopy: S.optional(S3CopyObjectOperation),
-          S3PutObjectAcl: S.optional(S3SetObjectAclOperation),
-          S3PutObjectTagging: S.optional(S3SetObjectTaggingOperation),
-          S3DeleteObjectTagging: S.optional(S3DeleteObjectTaggingOperation),
-          S3InitiateRestoreObject: S.optional(S3InitiateRestoreObjectOperation),
-          S3PutObjectLegalHold: S.optional(S3SetObjectLegalHoldOperation),
-          S3PutObjectRetention: S.optional(S3SetObjectRetentionOperation),
-          S3ReplicateObject: S.optional(S3ReplicateObjectOperation),
-          S3ComputeObjectChecksum: S.optional(S3ComputeObjectChecksumOperation),
-          S3UpdateObjectEncryption: S.optional(S3UpdateObjectEncryptionOperation),
+          LambdaInvoke: S.optional(__S(33, __c4, 1)),
+          S3PutObjectCopy: S.optional(__S(42, __c5, 2)),
+          S3PutObjectAcl: S.optional(__S(46, __c5, 6)),
+          S3PutObjectTagging: S.optional(__S(47, __c5, 7)),
+          S3DeleteObjectTagging: S.optional(__S(48, __c6, 0)),
+          S3InitiateRestoreObject: S.optional(__S(49, __c6, 1)),
+          S3PutObjectLegalHold: S.optional(__S(51, __c6, 3)),
+          S3PutObjectRetention: S.optional(__S(54, __c6, 6)),
+          S3ReplicateObject: S.optional(__S(55, __c6, 7)),
+          S3ComputeObjectChecksum: S.optional(__S(56, __c7, 0)),
+          S3UpdateObjectEncryption: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "JobOperation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.optional(S.String),
-          Format: S.optional(JobReportFormat),
+          Format: S.optional(S.String),
           Enabled: S.Boolean,
           Prefix: S.optional(S.String),
-          ReportScope: S.optional(JobReportScope),
+          ReportScope: S.optional(S.String),
           ExpectedBucketOwner: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobReport" });
     case 6:
-      return S.Array(JobManifestFieldName);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Format: JobManifestFormat, Fields: S.optional(JobManifestFieldList) }),
+        S.Struct({ Format: S.String, Fields: S.optional(__S(62, __c7, 6)) }),
       ).annotate({ identifier: "JobManifestSpec" });
   }
 }
@@ -8153,7 +6889,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "JobManifestLocation" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Spec: JobManifestSpec, Location: JobManifestLocation }),
+        S.Struct({ Spec: __S(63, __c7, 7), Location: __S(64, __c8, 0) }),
       ).annotate({ identifier: "JobManifest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(T.XmlName("SSE-S3"))).annotate({
@@ -8166,10 +6902,10 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SSES3: S.optional(SSES3Encryption)
+          SSES3: S.optional(__S(66, __c8, 2))
             .pipe(T.XmlName("SSE-S3"))
             .annotate({ identifier: "SSES3Encryption" }),
-          SSEKMS: S.optional(SSEKMSEncryption)
+          SSEKMS: S.optional(__S(67, __c8, 3))
             .pipe(T.XmlName("SSE-KMS"))
             .annotate({ identifier: "SSEKMSEncryption" }),
         }),
@@ -8182,12 +6918,12 @@ function __c8(j: number): any {
           ExpectedManifestBucketOwner: S.optional(S.String),
           Bucket: S.String,
           ManifestPrefix: S.optional(S.String),
-          ManifestEncryption: S.optional(GeneratedManifestEncryption),
-          ManifestFormat: GeneratedManifestFormat,
+          ManifestEncryption: S.optional(__S(68, __c8, 4)),
+          ManifestFormat: S.String,
         }),
       ).annotate({ identifier: "S3ManifestOutputLocation" });
     case 6:
-      return S.Array(ReplicationStatus);
+      return S.Array(S.String);
     case 7:
       return S.Array(S.String);
   }
@@ -8197,13 +6933,13 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          MatchAnyPrefix: S.optional(NonEmptyMaxLength1024StringList),
-          MatchAnySuffix: S.optional(NonEmptyMaxLength1024StringList),
-          MatchAnySubstring: S.optional(NonEmptyMaxLength1024StringList),
+          MatchAnyPrefix: S.optional(__S(71, __c8, 7)),
+          MatchAnySuffix: S.optional(__S(71, __c8, 7)),
+          MatchAnySubstring: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "KeyNameConstraint" });
     case 1:
-      return S.Array(S3StorageClass);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SSES3Filter",
@@ -8227,27 +6963,29 @@ function __c9(j: number): any {
     case 7:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          SSES3: /*@__PURE__*/ SSES3Filter.pipe(/*@__PURE__*/ T.XmlName("SSE-S3")).annotate({
+          SSES3: /*@__PURE__*/ __S(74, __c9, 2).pipe(/*@__PURE__*/ T.XmlName("SSE-S3")).annotate({
             identifier: "SSES3Filter",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          SSEKMS: /*@__PURE__*/ SSEKMSFilter.pipe(/*@__PURE__*/ T.XmlName("SSE-KMS")).annotate({
+          SSEKMS: /*@__PURE__*/ __S(75, __c9, 3).pipe(/*@__PURE__*/ T.XmlName("SSE-KMS")).annotate({
             identifier: "SSEKMSFilter",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          DSSEKMS: /*@__PURE__*/ DSSEKMSFilter.pipe(/*@__PURE__*/ T.XmlName("DSSE-KMS")).annotate({
-            identifier: "DSSEKMSFilter",
-          }),
+          DSSEKMS: /*@__PURE__*/ __S(76, __c9, 4)
+            .pipe(/*@__PURE__*/ T.XmlName("DSSE-KMS"))
+            .annotate({
+              identifier: "DSSEKMSFilter",
+            }),
         }),
         /*@__PURE__*/ S.Struct({
-          SSEC: /*@__PURE__*/ SSECFilter.pipe(/*@__PURE__*/ T.XmlName("SSE-C")).annotate({
+          SSEC: /*@__PURE__*/ __S(77, __c9, 5).pipe(/*@__PURE__*/ T.XmlName("SSE-C")).annotate({
             identifier: "SSECFilter",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          NOTSSE: /*@__PURE__*/ NotSSEFilter.pipe(/*@__PURE__*/ T.XmlName("NOT-SSE")).annotate({
+          NOTSSE: /*@__PURE__*/ __S(78, __c9, 6).pipe(/*@__PURE__*/ T.XmlName("NOT-SSE")).annotate({
             identifier: "NotSSEFilter",
           }),
         }),
@@ -8258,7 +6996,7 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ ObjectEncryptionFilter.pipe(/*@__PURE__*/ T.XmlName("ObjectEncryption")),
+        /*@__PURE__*/ __S(79, __c9, 7).pipe(/*@__PURE__*/ T.XmlName("ObjectEncryption")),
       );
     case 1:
       return S.suspend(() =>
@@ -8266,12 +7004,12 @@ function __c10(j: number): any {
           EligibleForReplication: S.optional(S.Boolean),
           CreatedAfter: S.optional(T.DateFromString),
           CreatedBefore: S.optional(T.DateFromString),
-          ObjectReplicationStatuses: S.optional(ReplicationStatusFilterList),
-          KeyNameConstraint: S.optional(KeyNameConstraint),
+          ObjectReplicationStatuses: S.optional(__S(70, __c8, 6)),
+          KeyNameConstraint: S.optional(__S(72, __c9, 0)),
           ObjectSizeGreaterThanBytes: S.optional(S.Number),
           ObjectSizeLessThanBytes: S.optional(S.Number),
-          MatchAnyStorageClass: S.optional(StorageClassList),
-          MatchAnyObjectEncryption: S.optional(ObjectEncryptionFilterList),
+          MatchAnyStorageClass: S.optional(__S(73, __c9, 1)),
+          MatchAnyObjectEncryption: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "JobManifestGeneratorFilter",
@@ -8281,13 +7019,13 @@ function __c10(j: number): any {
         S.Struct({
           ExpectedBucketOwner: S.optional(S.String),
           SourceBucket: S.String,
-          ManifestOutputLocation: S.optional(S3ManifestOutputLocation),
-          Filter: S.optional(JobManifestGeneratorFilter),
+          ManifestOutputLocation: S.optional(__S(69, __c8, 5)),
+          Filter: S.optional(__S(81, __c10, 1)),
           EnableManifestOutput: S.Boolean,
         }),
       ).annotate({ identifier: "S3JobManifestGenerator" });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ S3JobManifestGenerator: S3JobManifestGenerator })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ S3JobManifestGenerator: __S(82, __c10, 2) })]);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8297,15 +7035,15 @@ function __c10(j: number): any {
             T.HostLabel(),
           ),
           ConfirmationRequired: S.optional(S.Boolean),
-          Operation: JobOperation,
-          Report: JobReport,
+          Operation: __S(60, __c7, 4),
+          Report: __S(61, __c7, 5),
           ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
-          Manifest: S.optional(JobManifest),
+          Manifest: S.optional(__S(65, __c8, 1)),
           Description: S.optional(S.String),
           Priority: S.Number,
           RoleArn: S.String,
-          Tags: S.optional(S3TagSet),
-          ManifestGenerator: S.optional(JobManifestGenerator),
+          Tags: S.optional(__S(40, __c5, 0)),
+          ManifestGenerator: S.optional(__S(83, __c10, 3)),
         }).pipe(
           T.all(
             ns,
@@ -8341,8 +7079,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          PublicAccessBlock: S.optional(PublicAccessBlockConfiguration),
-          Regions: RegionCreationList,
+          PublicAccessBlock: S.optional(__S(13, __c1, 5)),
+          Regions: __S(87, __c10, 7),
         }),
       ).annotate({
         identifier: "CreateMultiRegionAccessPointInput",
@@ -8356,7 +7094,7 @@ function __c11(j: number): any {
             T.HostLabel(),
           ),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Details: CreateMultiRegionAccessPointInput,
+          Details: __S(88, __c11, 0),
         }).pipe(
           T.all(
             ns,
@@ -8384,7 +7122,9 @@ function __c11(j: number): any {
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Suffix")));
     case 5:
       return S.Array(
-        /*@__PURE__*/ S3Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "S3Tag" }),
+        /*@__PURE__*/ __S(39, __c4, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "S3Tag" }),
       );
     case 6:
       return S.suspend(() =>
@@ -8401,11 +7141,11 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          MatchAnyPrefix: S.optional(MatchAnyPrefix),
-          MatchAnySuffix: S.optional(MatchAnySuffix),
-          MatchAnyTag: S.optional(MatchAnyTag),
-          MatchObjectAge: S.optional(MatchObjectAge),
-          MatchObjectSize: S.optional(MatchObjectSize),
+          MatchAnyPrefix: S.optional(__S(91, __c11, 3)),
+          MatchAnySuffix: S.optional(__S(92, __c11, 4)),
+          MatchAnyTag: S.optional(__S(93, __c11, 5)),
+          MatchObjectAge: S.optional(__S(94, __c11, 6)),
+          MatchObjectSize: S.optional(__S(95, __c11, 7)),
         }),
       ).annotate({
         identifier: "StorageLensGroupAndOperator",
@@ -8413,11 +7153,11 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MatchAnyPrefix: S.optional(MatchAnyPrefix),
-          MatchAnySuffix: S.optional(MatchAnySuffix),
-          MatchAnyTag: S.optional(MatchAnyTag),
-          MatchObjectAge: S.optional(MatchObjectAge),
-          MatchObjectSize: S.optional(MatchObjectSize),
+          MatchAnyPrefix: S.optional(__S(91, __c11, 3)),
+          MatchAnySuffix: S.optional(__S(92, __c11, 4)),
+          MatchAnyTag: S.optional(__S(93, __c11, 5)),
+          MatchObjectAge: S.optional(__S(94, __c11, 6)),
+          MatchObjectSize: S.optional(__S(95, __c11, 7)),
         }),
       ).annotate({
         identifier: "StorageLensGroupOrOperator",
@@ -8425,20 +7165,20 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          MatchAnyPrefix: S.optional(MatchAnyPrefix),
-          MatchAnySuffix: S.optional(MatchAnySuffix),
-          MatchAnyTag: S.optional(MatchAnyTag),
-          MatchObjectAge: S.optional(MatchObjectAge),
-          MatchObjectSize: S.optional(MatchObjectSize),
-          And: S.optional(StorageLensGroupAndOperator),
-          Or: S.optional(StorageLensGroupOrOperator),
+          MatchAnyPrefix: S.optional(__S(91, __c11, 3)),
+          MatchAnySuffix: S.optional(__S(92, __c11, 4)),
+          MatchAnyTag: S.optional(__S(93, __c11, 5)),
+          MatchObjectAge: S.optional(__S(94, __c11, 6)),
+          MatchObjectSize: S.optional(__S(95, __c11, 7)),
+          And: S.optional(__S(96, __c12, 0)),
+          Or: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "StorageLensGroupFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Filter: StorageLensGroupFilter,
+          Filter: __S(98, __c12, 2),
           StorageLensGroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageLensGroup" });
@@ -8450,8 +7190,8 @@ function __c12(j: number): any {
             T.ContextParam("AccountId"),
             T.HostLabel(),
           ),
-          StorageLensGroup: StorageLensGroup,
-          Tags: S.optional(TagList),
+          StorageLensGroup: __S(99, __c12, 3),
+          Tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             ns,
@@ -8922,7 +7662,7 @@ function __c16(j: number): any {
             T.HostLabel(),
           ),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Details: DeleteMultiRegionAccessPointInput,
+          Details: __S(132, __c16, 4),
         }).pipe(
           T.all(
             ns,
@@ -9095,7 +7835,7 @@ function __c18(j: number): any {
           TotalNumberOfTasks: S.optional(S.Number),
           NumberOfTasksSucceeded: S.optional(S.Number),
           NumberOfTasksFailed: S.optional(S.Number),
-          Timers: S.optional(JobTimers),
+          Timers: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({ identifier: "JobProgressSummary" });
     case 2:
@@ -9103,12 +7843,12 @@ function __c18(j: number): any {
         S.Struct({ FailureCode: S.optional(S.String), FailureReason: S.optional(S.String) }),
       ).annotate({ identifier: "JobFailure" });
     case 3:
-      return S.Array(JobFailure);
+      return S.Array(__S(146, __c18, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Format: S.optional(GeneratedManifestFormat),
-          Location: S.optional(JobManifestLocation),
+          Format: S.optional(S.String),
+          Location: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "S3GeneratedManifestDescriptor",
@@ -9120,25 +7860,25 @@ function __c18(j: number): any {
           ConfirmationRequired: S.optional(S.Boolean),
           Description: S.optional(S.String),
           JobArn: S.optional(S.String),
-          Status: S.optional(JobStatus),
-          Manifest: S.optional(JobManifest),
-          Operation: S.optional(JobOperation),
+          Status: S.optional(S.String),
+          Manifest: S.optional(__S(65, __c8, 1)),
+          Operation: S.optional(__S(60, __c7, 4)),
           Priority: S.optional(S.Number),
-          ProgressSummary: S.optional(JobProgressSummary),
+          ProgressSummary: S.optional(__S(145, __c18, 1)),
           StatusUpdateReason: S.optional(S.String),
-          FailureReasons: S.optional(JobFailureList),
-          Report: S.optional(JobReport),
+          FailureReasons: S.optional(__S(147, __c18, 3)),
+          Report: S.optional(__S(61, __c7, 5)),
           CreationTime: S.optional(T.DateFromString),
           TerminationDate: S.optional(T.DateFromString),
           RoleArn: S.optional(S.String),
           SuspendedDate: S.optional(T.DateFromString),
           SuspendedCause: S.optional(S.String),
-          ManifestGenerator: S.optional(JobManifestGenerator),
-          GeneratedManifestDescriptor: S.optional(S3GeneratedManifestDescriptor),
+          ManifestGenerator: S.optional(__S(83, __c10, 3)),
+          GeneratedManifestDescriptor: S.optional(__S(148, __c18, 4)),
         }),
       ).annotate({ identifier: "JobDescriptor" });
     case 6:
-      return S.suspend(() => S.Struct({ Job: S.optional(JobDescriptor) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Job: S.optional(__S(149, __c18, 5)) }).pipe(ns)).annotate({
         identifier: "DescribeJobResult",
       });
     case 7:
@@ -9176,9 +7916,9 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CreateMultiRegionAccessPointRequest: S.optional(CreateMultiRegionAccessPointInput),
-          DeleteMultiRegionAccessPointRequest: S.optional(DeleteMultiRegionAccessPointInput),
-          PutMultiRegionAccessPointPolicyRequest: S.optional(PutMultiRegionAccessPointPolicyInput),
+          CreateMultiRegionAccessPointRequest: S.optional(__S(88, __c11, 0)),
+          DeleteMultiRegionAccessPointRequest: S.optional(__S(132, __c16, 4)),
+          PutMultiRegionAccessPointPolicyRequest: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "AsyncRequestParameters" });
     case 2:
@@ -9189,16 +7929,12 @@ function __c19(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ MultiRegionAccessPointRegionalResponse.pipe(
-          /*@__PURE__*/ T.XmlName("Region"),
-        ).annotate({
+        /*@__PURE__*/ __S(154, __c19, 2).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
           identifier: "MultiRegionAccessPointRegionalResponse",
         }),
       );
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Regions: S.optional(MultiRegionAccessPointRegionalResponseList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Regions: S.optional(__S(155, __c19, 3)) })).annotate({
         identifier: "MultiRegionAccessPointsAsyncResponse",
       });
     case 5:
@@ -9213,19 +7949,19 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          MultiRegionAccessPointDetails: S.optional(MultiRegionAccessPointsAsyncResponse),
-          ErrorDetails: S.optional(AsyncErrorDetails),
+          MultiRegionAccessPointDetails: S.optional(__S(156, __c19, 4)),
+          ErrorDetails: S.optional(__S(157, __c19, 5)),
         }),
       ).annotate({ identifier: "AsyncResponseDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           CreationTime: S.optional(T.DateFromString),
-          Operation: S.optional(AsyncOperationName),
+          Operation: S.optional(S.String),
           RequestTokenARN: S.optional(S.String),
-          RequestParameters: S.optional(AsyncRequestParameters),
+          RequestParameters: S.optional(__S(153, __c19, 1)),
           RequestStatus: S.optional(S.String),
-          ResponseDetails: S.optional(AsyncResponseDetails),
+          ResponseDetails: S.optional(__S(158, __c19, 6)),
         }),
       ).annotate({ identifier: "AsyncOperation" });
   }
@@ -9234,7 +7970,7 @@ function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AsyncOperation: S.optional(AsyncOperation) }).pipe(ns),
+        S.Struct({ AsyncOperation: S.optional(__S(159, __c19, 7)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeMultiRegionAccessPointOperationResult",
       });
@@ -9293,10 +8029,10 @@ function __c20(j: number): any {
           CreatedAt: S.optional(T.DateFromString),
           AccessGrantId: S.optional(S.String),
           AccessGrantArn: S.optional(S.String),
-          Grantee: S.optional(Grantee),
-          Permission: S.optional(Permission),
+          Grantee: S.optional(__S(3, __c0, 3)),
+          Permission: S.optional(S.String),
           AccessGrantsLocationId: S.optional(S.String),
-          AccessGrantsLocationConfiguration: S.optional(AccessGrantsLocationConfiguration),
+          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
           GrantScope: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }).pipe(ns),
@@ -9475,13 +8211,13 @@ function __c21(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Bucket: S.optional(S.String),
-          NetworkOrigin: S.optional(NetworkOrigin),
-          VpcConfiguration: S.optional(VpcConfiguration),
-          PublicAccessBlockConfiguration: S.optional(PublicAccessBlockConfiguration),
+          NetworkOrigin: S.optional(S.String),
+          VpcConfiguration: S.optional(__S(12, __c1, 4)),
+          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5)),
           CreationDate: S.optional(T.DateFromString),
           Alias: S.optional(S.String),
           AccessPointArn: S.optional(S.String),
-          Endpoints: S.optional(Endpoints),
+          Endpoints: S.optional(__S(174, __c21, 6)),
           BucketAccountId: S.optional(S.String),
           DataSourceId: S.optional(S.String),
           DataSourceType: S.optional(S.String),
@@ -9520,7 +8256,7 @@ function __c22(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Configuration: S.optional(ObjectLambdaConfiguration) }).pipe(ns),
+        S.Struct({ Configuration: S.optional(__S(25, __c3, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointConfigurationForObjectLambdaResult",
       });
@@ -9552,9 +8288,9 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          PublicAccessBlockConfiguration: S.optional(PublicAccessBlockConfiguration),
+          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5)),
           CreationDate: S.optional(T.DateFromString),
-          Alias: S.optional(ObjectLambdaAccessPointAlias),
+          Alias: S.optional(__S(27, __c3, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointForObjectLambdaResult",
@@ -9649,7 +8385,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "PolicyStatus" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ PolicyStatus: S.optional(PolicyStatus) }).pipe(ns),
+        S.Struct({ PolicyStatus: S.optional(__S(185, __c23, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointPolicyStatusResult",
       });
@@ -9682,7 +8418,7 @@ function __c23(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ PolicyStatus: S.optional(PolicyStatus) }).pipe(ns),
+        S.Struct({ PolicyStatus: S.optional(__S(185, __c23, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointPolicyStatusForObjectLambdaResult",
       });
@@ -9714,7 +8450,7 @@ function __c23(j: number): any {
         identifier: "GetAccessPointScopeRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Scope: S.optional(Scope) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Scope: S.optional(__S(16, __c2, 0)) }).pipe(ns)).annotate({
         identifier: "GetAccessPointScopeResult",
       });
     case 7:
@@ -9787,7 +8523,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tags: S.optional(S3TagSet),
+          Tags: S.optional(__S(40, __c5, 0)),
           ObjectSizeGreaterThan: S.optional(S.Number),
           ObjectSizeLessThan: S.optional(S.Number),
         }),
@@ -9796,8 +8532,8 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tag: S.optional(S3Tag),
-          And: S.optional(LifecycleRuleAndOperator),
+          Tag: S.optional(__S(39, __c4, 7)),
+          And: S.optional(__S(195, __c24, 3)),
           ObjectSizeGreaterThan: S.optional(S.Number),
           ObjectSizeLessThan: S.optional(S.Number),
         }),
@@ -9807,12 +8543,12 @@ function __c24(j: number): any {
         S.Struct({
           Date: S.optional(T.DateFromString),
           Days: S.optional(S.Number),
-          StorageClass: S.optional(TransitionStorageClass),
+          StorageClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "Transition" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ Transition.pipe(/*@__PURE__*/ T.XmlName("Transition")).annotate({
+        /*@__PURE__*/ __S(197, __c24, 5).pipe(/*@__PURE__*/ T.XmlName("Transition")).annotate({
           identifier: "Transition",
         }),
       );
@@ -9820,7 +8556,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NoncurrentDays: S.optional(S.Number),
-          StorageClass: S.optional(TransitionStorageClass),
+          StorageClass: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NoncurrentVersionTransition",
@@ -9831,11 +8567,11 @@ function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ NoncurrentVersionTransition.pipe(
-          /*@__PURE__*/ T.XmlName("NoncurrentVersionTransition"),
-        ).annotate({
-          identifier: "NoncurrentVersionTransition",
-        }),
+        /*@__PURE__*/ __S(199, __c24, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("NoncurrentVersionTransition"))
+          .annotate({
+            identifier: "NoncurrentVersionTransition",
+          }),
       );
     case 1:
       return S.suspend(() =>
@@ -9853,26 +8589,28 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Expiration: S.optional(LifecycleExpiration),
+          Expiration: S.optional(__S(194, __c24, 2)),
           ID: S.optional(S.String),
-          Filter: S.optional(LifecycleRuleFilter),
-          Status: ExpirationStatus,
-          Transitions: S.optional(TransitionList),
-          NoncurrentVersionTransitions: S.optional(NoncurrentVersionTransitionList),
-          NoncurrentVersionExpiration: S.optional(NoncurrentVersionExpiration),
-          AbortIncompleteMultipartUpload: S.optional(AbortIncompleteMultipartUpload),
+          Filter: S.optional(__S(196, __c24, 4)),
+          Status: S.String,
+          Transitions: S.optional(__S(198, __c24, 6)),
+          NoncurrentVersionTransitions: S.optional(__S(200, __c25, 0)),
+          NoncurrentVersionExpiration: S.optional(__S(201, __c25, 1)),
+          AbortIncompleteMultipartUpload: S.optional(__S(202, __c25, 2)),
         }),
       ).annotate({ identifier: "LifecycleRule" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ LifecycleRule.pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
+        /*@__PURE__*/ __S(203, __c25, 3).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
           identifier: "LifecycleRule",
         }),
       );
     case 5:
-      return S.suspend(() => S.Struct({ Rules: S.optional(LifecycleRules) }).pipe(ns)).annotate({
-        identifier: "GetBucketLifecycleConfigurationResult",
-      });
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(204, __c25, 4)) }).pipe(ns)).annotate(
+        {
+          identifier: "GetBucketLifecycleConfigurationResult",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9929,7 +8667,7 @@ function __c26(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Prefix: S.optional(S.String), Tags: S.optional(S3TagSet) }),
+        S.Struct({ Prefix: S.optional(S.String), Tags: S.optional(__S(40, __c5, 0)) }),
       ).annotate({
         identifier: "ReplicationRuleAndOperator",
       });
@@ -9937,27 +8675,27 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tag: S.optional(S3Tag),
-          And: S.optional(ReplicationRuleAndOperator),
+          Tag: S.optional(__S(39, __c4, 7)),
+          And: S.optional(__S(209, __c26, 1)),
         }),
       ).annotate({ identifier: "ReplicationRuleFilter" });
     case 3:
-      return S.suspend(() => S.Struct({ Status: SseKmsEncryptedObjectsStatus })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "SseKmsEncryptedObjects",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Status: ReplicaModificationsStatus })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "ReplicaModifications",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SseKmsEncryptedObjects: S.optional(SseKmsEncryptedObjects),
-          ReplicaModifications: S.optional(ReplicaModifications),
+          SseKmsEncryptedObjects: S.optional(__S(211, __c26, 3)),
+          ReplicaModifications: S.optional(__S(212, __c26, 4)),
         }),
       ).annotate({ identifier: "SourceSelectionCriteria" });
     case 6:
-      return S.suspend(() => S.Struct({ Status: ExistingObjectReplicationStatus })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "ExistingObjectReplication",
       });
     case 7:
@@ -9969,11 +8707,11 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Status: ReplicationTimeStatus, Time: ReplicationTimeValue }),
-      ).annotate({ identifier: "ReplicationTime" });
+      return S.suspend(() => S.Struct({ Status: S.String, Time: __S(215, __c26, 7) })).annotate({
+        identifier: "ReplicationTime",
+      });
     case 1:
-      return S.suspend(() => S.Struct({ Owner: OwnerOverride })).annotate({
+      return S.suspend(() => S.Struct({ Owner: S.String })).annotate({
         identifier: "AccessControlTranslation",
       });
     case 2:
@@ -9982,22 +8720,22 @@ function __c27(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Status: MetricsStatus, EventThreshold: S.optional(ReplicationTimeValue) }),
+        S.Struct({ Status: S.String, EventThreshold: S.optional(__S(215, __c26, 7)) }),
       ).annotate({ identifier: "Metrics" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           Account: S.optional(S.String),
           Bucket: S.String,
-          ReplicationTime: S.optional(ReplicationTime),
-          AccessControlTranslation: S.optional(AccessControlTranslation),
-          EncryptionConfiguration: S.optional(EncryptionConfiguration),
-          Metrics: S.optional(Metrics),
-          StorageClass: S.optional(ReplicationStorageClass),
+          ReplicationTime: S.optional(__S(216, __c27, 0)),
+          AccessControlTranslation: S.optional(__S(217, __c27, 1)),
+          EncryptionConfiguration: S.optional(__S(218, __c27, 2)),
+          Metrics: S.optional(__S(219, __c27, 3)),
+          StorageClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "Destination" });
     case 5:
-      return S.suspend(() => S.Struct({ Status: DeleteMarkerReplicationStatus })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "DeleteMarkerReplication",
       });
     case 6:
@@ -10006,18 +8744,18 @@ function __c27(j: number): any {
           ID: S.optional(S.String),
           Priority: S.optional(S.Number),
           Prefix: S.optional(S.String),
-          Filter: S.optional(ReplicationRuleFilter),
-          Status: ReplicationRuleStatus,
-          SourceSelectionCriteria: S.optional(SourceSelectionCriteria),
-          ExistingObjectReplication: S.optional(ExistingObjectReplication),
-          Destination: Destination,
-          DeleteMarkerReplication: S.optional(DeleteMarkerReplication),
+          Filter: S.optional(__S(210, __c26, 2)),
+          Status: S.String,
+          SourceSelectionCriteria: S.optional(__S(213, __c26, 5)),
+          ExistingObjectReplication: S.optional(__S(214, __c26, 6)),
+          Destination: __S(220, __c27, 4),
+          DeleteMarkerReplication: S.optional(__S(221, __c27, 5)),
           Bucket: S.String,
         }),
       ).annotate({ identifier: "ReplicationRule" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ ReplicationRule.pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
+        /*@__PURE__*/ __S(222, __c27, 6).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
           identifier: "ReplicationRule",
         }),
       );
@@ -10026,12 +8764,12 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Role: S.String, Rules: ReplicationRules })).annotate({
+      return S.suspend(() => S.Struct({ Role: S.String, Rules: __S(223, __c27, 7) })).annotate({
         identifier: "ReplicationConfiguration",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ReplicationConfiguration: S.optional(ReplicationConfiguration) }).pipe(ns),
+        S.Struct({ ReplicationConfiguration: S.optional(__S(224, __c28, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetBucketReplicationResult",
       });
@@ -10058,7 +8796,7 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "GetBucketTaggingRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ TagSet: S3TagSet }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ TagSet: __S(40, __c5, 0) }).pipe(ns)).annotate({
         identifier: "GetBucketTaggingResult",
       });
     case 4:
@@ -10088,8 +8826,8 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(BucketVersioningStatus),
-          MFADelete: S.optional(MFADeleteStatus).pipe(T.XmlName("MfaDelete")),
+          Status: S.optional(S.String),
+          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketVersioningResult",
@@ -10103,10 +8841,10 @@ function __c28(j: number): any {
             T.HostLabel(),
           ),
           Target: S.String.pipe(T.HttpQuery("target")),
-          Permission: Permission.pipe(T.HttpQuery("permission")),
+          Permission: S.String.pipe(T.HttpQuery("permission")),
           DurationSeconds: S.optional(S.Number).pipe(T.HttpQuery("durationSeconds")),
-          Privilege: S.optional(Privilege).pipe(T.HttpQuery("privilege")),
-          TargetType: S.optional(S3PrefixType).pipe(T.HttpQuery("targetType")),
+          Privilege: S.optional(S.String).pipe(T.HttpQuery("privilege")),
+          TargetType: S.optional(S.String).pipe(T.HttpQuery("targetType")),
           AuditContext: S.optional(S.String).pipe(T.HttpQuery("auditContext")),
         }).pipe(
           T.all(
@@ -10137,9 +8875,9 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(Credentials),
+          Credentials: S.optional(__S(231, __c28, 7)),
           MatchedGrantTarget: S.optional(S.String),
-          Grantee: S.optional(Grantee),
+          Grantee: S.optional(__S(3, __c0, 3)),
         }).pipe(ns),
       ).annotate({ identifier: "GetDataAccessResult" });
     case 1:
@@ -10165,7 +8903,7 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "GetJobTaggingRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(S3TagSet) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(40, __c5, 0)) }).pipe(ns)).annotate({
         identifier: "GetJobTaggingResult",
       });
     case 3:
@@ -10202,7 +8940,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "RegionReport" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ RegionReport.pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
+        /*@__PURE__*/ __S(236, __c29, 4).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
           identifier: "RegionReport",
         }),
       );
@@ -10212,16 +8950,16 @@ function __c29(j: number): any {
           Name: S.optional(S.String),
           Alias: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString),
-          PublicAccessBlock: S.optional(PublicAccessBlockConfiguration),
-          Status: S.optional(MultiRegionAccessPointStatus),
-          Regions: S.optional(RegionReportList),
+          PublicAccessBlock: S.optional(__S(13, __c1, 5)),
+          Status: S.optional(S.String),
+          Regions: S.optional(__S(237, __c29, 5)),
         }),
       ).annotate({
         identifier: "MultiRegionAccessPointReport",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ AccessPoint: S.optional(MultiRegionAccessPointReport) }).pipe(ns),
+        S.Struct({ AccessPoint: S.optional(__S(238, __c29, 6)) }).pipe(ns),
       ).annotate({
         identifier: "GetMultiRegionAccessPointResult",
       });
@@ -10264,15 +9002,15 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Established: S.optional(EstablishedMultiRegionAccessPointPolicy),
-          Proposed: S.optional(ProposedMultiRegionAccessPointPolicy),
+          Established: S.optional(__S(241, __c30, 1)),
+          Proposed: S.optional(__S(242, __c30, 2)),
         }),
       ).annotate({
         identifier: "MultiRegionAccessPointPolicyDocument",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Policy: S.optional(MultiRegionAccessPointPolicyDocument) }).pipe(ns),
+        S.Struct({ Policy: S.optional(__S(243, __c30, 3)) }).pipe(ns),
       ).annotate({
         identifier: "GetMultiRegionAccessPointPolicyResult",
       });
@@ -10301,11 +9039,11 @@ function __c30(j: number): any {
         identifier: "GetMultiRegionAccessPointPolicyStatusRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Established: S.optional(PolicyStatus) }).pipe(ns)).annotate(
-        {
-          identifier: "GetMultiRegionAccessPointPolicyStatusResult",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ Established: S.optional(__S(185, __c23, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetMultiRegionAccessPointPolicyStatusResult",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -10346,13 +9084,13 @@ function __c31(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ MultiRegionAccessPointRoute.pipe(/*@__PURE__*/ T.XmlName("Route")).annotate({
+        /*@__PURE__*/ __S(248, __c31, 0).pipe(/*@__PURE__*/ T.XmlName("Route")).annotate({
           identifier: "MultiRegionAccessPointRoute",
         }),
       );
     case 2:
       return S.suspend(() =>
-        S.Struct({ Mrap: S.optional(S.String), Routes: S.optional(RouteList) }).pipe(ns),
+        S.Struct({ Mrap: S.optional(S.String), Routes: S.optional(__S(249, __c31, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetMultiRegionAccessPointRoutesResult",
       });
@@ -10382,7 +9120,7 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PublicAccessBlockConfiguration: S.optional(PublicAccessBlockConfiguration)
+          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PublicAccessBlockConfiguration" }),
         }).pipe(ns),
@@ -10433,13 +9171,13 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IsEnabled: S.optional(S.Boolean),
-          SelectionCriteria: S.optional(SelectionCriteria),
+          SelectionCriteria: S.optional(__S(255, __c31, 7)),
         }),
       ).annotate({
         identifier: "PrefixLevelStorageMetrics",
       });
     case 1:
-      return S.suspend(() => S.Struct({ StorageMetrics: PrefixLevelStorageMetrics })).annotate({
+      return S.suspend(() => S.Struct({ StorageMetrics: __S(256, __c32, 0) })).annotate({
         identifier: "PrefixLevel",
       });
     case 2:
@@ -10461,12 +9199,12 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ActivityMetrics: S.optional(ActivityMetrics),
-          PrefixLevel: S.optional(PrefixLevel),
-          AdvancedCostOptimizationMetrics: S.optional(AdvancedCostOptimizationMetrics),
-          AdvancedDataProtectionMetrics: S.optional(AdvancedDataProtectionMetrics),
-          DetailedStatusCodesMetrics: S.optional(DetailedStatusCodesMetrics),
-          AdvancedPerformanceMetrics: S.optional(AdvancedPerformanceMetrics),
+          ActivityMetrics: S.optional(__S(254, __c31, 6)),
+          PrefixLevel: S.optional(__S(257, __c32, 1)),
+          AdvancedCostOptimizationMetrics: S.optional(__S(258, __c32, 2)),
+          AdvancedDataProtectionMetrics: S.optional(__S(259, __c32, 3)),
+          DetailedStatusCodesMetrics: S.optional(__S(260, __c32, 4)),
+          AdvancedPerformanceMetrics: S.optional(__S(261, __c32, 5)),
         }),
       ).annotate({ identifier: "BucketLevel" });
     case 7:
@@ -10480,26 +9218,26 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Include: S.optional(StorageLensGroupLevelInclude),
-          Exclude: S.optional(StorageLensGroupLevelExclude),
+          Include: S.optional(__S(263, __c32, 7)),
+          Exclude: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({
         identifier: "StorageLensGroupLevelSelectionCriteria",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ SelectionCriteria: S.optional(StorageLensGroupLevelSelectionCriteria) }),
+        S.Struct({ SelectionCriteria: S.optional(__S(265, __c33, 1)) }),
       ).annotate({ identifier: "StorageLensGroupLevel" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ActivityMetrics: S.optional(ActivityMetrics),
-          BucketLevel: S.optional(BucketLevel),
-          AdvancedCostOptimizationMetrics: S.optional(AdvancedCostOptimizationMetrics),
-          AdvancedDataProtectionMetrics: S.optional(AdvancedDataProtectionMetrics),
-          DetailedStatusCodesMetrics: S.optional(DetailedStatusCodesMetrics),
-          AdvancedPerformanceMetrics: S.optional(AdvancedPerformanceMetrics),
-          StorageLensGroupLevel: S.optional(StorageLensGroupLevel),
+          ActivityMetrics: S.optional(__S(254, __c31, 6)),
+          BucketLevel: S.optional(__S(262, __c32, 6)),
+          AdvancedCostOptimizationMetrics: S.optional(__S(258, __c32, 2)),
+          AdvancedDataProtectionMetrics: S.optional(__S(259, __c32, 3)),
+          DetailedStatusCodesMetrics: S.optional(__S(260, __c32, 4)),
+          AdvancedPerformanceMetrics: S.optional(__S(261, __c32, 5)),
+          StorageLensGroupLevel: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "AccountLevel" });
     case 4:
@@ -10508,11 +9246,17 @@ function __c33(j: number): any {
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Region")));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Buckets: S.optional(Buckets), Regions: S.optional(Regions) }),
+        S.Struct({
+          Buckets: S.optional(__S(268, __c33, 4)),
+          Regions: S.optional(__S(269, __c33, 5)),
+        }),
       ).annotate({ identifier: "Include" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Buckets: S.optional(Buckets), Regions: S.optional(Regions) }),
+        S.Struct({
+          Buckets: S.optional(__S(268, __c33, 4)),
+          Regions: S.optional(__S(269, __c33, 5)),
+        }),
       ).annotate({ identifier: "Exclude" });
   }
 }
@@ -10529,8 +9273,12 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SSES3: S.optional(SSES3).pipe(T.XmlName("SSE-S3")).annotate({ identifier: "SSES3" }),
-          SSEKMS: S.optional(SSEKMS).pipe(T.XmlName("SSE-KMS")).annotate({ identifier: "SSEKMS" }),
+          SSES3: S.optional(__S(272, __c34, 0))
+            .pipe(T.XmlName("SSE-S3"))
+            .annotate({ identifier: "SSES3" }),
+          SSEKMS: S.optional(__S(273, __c34, 1))
+            .pipe(T.XmlName("SSE-KMS"))
+            .annotate({ identifier: "SSEKMS" }),
         }),
       ).annotate({
         identifier: "StorageLensDataExportEncryption",
@@ -10538,12 +9286,12 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Format: Format,
-          OutputSchemaVersion: OutputSchemaVersion,
+          Format: S.String,
+          OutputSchemaVersion: S.String,
           AccountId: S.String,
           Arn: S.String,
           Prefix: S.optional(S.String),
-          Encryption: S.optional(StorageLensDataExportEncryption),
+          Encryption: S.optional(__S(274, __c34, 2)),
         }),
       ).annotate({ identifier: "S3BucketDestination" });
     case 4:
@@ -10552,23 +9300,23 @@ function __c34(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ IsEnabled: S.Boolean, Encryption: S.optional(StorageLensDataExportEncryption) }),
+        S.Struct({ IsEnabled: S.Boolean, Encryption: S.optional(__S(274, __c34, 2)) }),
       ).annotate({
         identifier: "StorageLensTableDestination",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          S3BucketDestination: S.optional(S3BucketDestination),
-          CloudWatchMetrics: S.optional(CloudWatchMetrics),
-          StorageLensTableDestination: S.optional(StorageLensTableDestination),
+          S3BucketDestination: S.optional(__S(275, __c34, 3)),
+          CloudWatchMetrics: S.optional(__S(276, __c34, 4)),
+          StorageLensTableDestination: S.optional(__S(277, __c34, 5)),
         }),
       ).annotate({ identifier: "StorageLensDataExport" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          S3BucketDestination: S.optional(S3BucketDestination),
-          StorageLensTableDestination: S.optional(StorageLensTableDestination),
+          S3BucketDestination: S.optional(__S(275, __c34, 3)),
+          StorageLensTableDestination: S.optional(__S(277, __c34, 5)),
         }),
       ).annotate({
         identifier: "StorageLensExpandedPrefixesDataExport",
@@ -10585,13 +9333,13 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
-          AccountLevel: AccountLevel,
-          Include: S.optional(Include),
-          Exclude: S.optional(Exclude),
-          DataExport: S.optional(StorageLensDataExport),
-          ExpandedPrefixesDataExport: S.optional(StorageLensExpandedPrefixesDataExport),
+          AccountLevel: __S(267, __c33, 3),
+          Include: S.optional(__S(270, __c33, 6)),
+          Exclude: S.optional(__S(271, __c33, 7)),
+          DataExport: S.optional(__S(278, __c34, 6)),
+          ExpandedPrefixesDataExport: S.optional(__S(279, __c34, 7)),
           IsEnabled: S.Boolean,
-          AwsOrg: S.optional(StorageLensAwsOrg),
+          AwsOrg: S.optional(__S(280, __c35, 0)),
           StorageLensArn: S.optional(S.String),
           PrefixDelimiter: S.optional(S.String),
         }),
@@ -10599,7 +9347,7 @@ function __c35(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          StorageLensConfiguration: S.optional(StorageLensConfiguration)
+          StorageLensConfiguration: S.optional(__S(281, __c35, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "StorageLensConfiguration" }),
         }).pipe(ns),
@@ -10636,12 +9384,12 @@ function __c35(j: number): any {
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ StorageLensTag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({
+        /*@__PURE__*/ __S(284, __c35, 4).pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({
           identifier: "StorageLensTag",
         }),
       );
     case 6:
-      return S.suspend(() => S.Struct({ Tags: S.optional(StorageLensTags) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(285, __c35, 5)) }).pipe(ns)).annotate({
         identifier: "GetStorageLensConfigurationTaggingResult",
       });
     case 7:
@@ -10675,7 +9423,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          StorageLensGroup: S.optional(StorageLensGroup)
+          StorageLensGroup: S.optional(__S(99, __c12, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "StorageLensGroup" }),
         }).pipe(ns),
@@ -10692,9 +9440,9 @@ function __c36(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          GranteeType: S.optional(GranteeType).pipe(T.HttpQuery("granteetype")),
+          GranteeType: S.optional(S.String).pipe(T.HttpQuery("granteetype")),
           GranteeIdentifier: S.optional(S.String).pipe(T.HttpQuery("granteeidentifier")),
-          Permission: S.optional(Permission).pipe(T.HttpQuery("permission")),
+          Permission: S.optional(S.String).pipe(T.HttpQuery("permission")),
           GrantScope: S.optional(S.String).pipe(T.HttpQuery("grantscope")),
           ApplicationArn: S.optional(S.String).pipe(T.HttpQuery("application_arn")),
         }).pipe(
@@ -10716,17 +9464,17 @@ function __c36(j: number): any {
           CreatedAt: S.optional(T.DateFromString),
           AccessGrantId: S.optional(S.String),
           AccessGrantArn: S.optional(S.String),
-          Grantee: S.optional(Grantee),
-          Permission: S.optional(Permission),
+          Grantee: S.optional(__S(3, __c0, 3)),
+          Permission: S.optional(S.String),
           AccessGrantsLocationId: S.optional(S.String),
-          AccessGrantsLocationConfiguration: S.optional(AccessGrantsLocationConfiguration),
+          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
           GrantScope: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccessGrantEntry" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ ListAccessGrantEntry.pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
+        /*@__PURE__*/ __S(290, __c36, 2).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
           identifier: "ListAccessGrantEntry",
         }),
       );
@@ -10734,7 +9482,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          AccessGrantsList: S.optional(AccessGrantsList),
+          AccessGrantsList: S.optional(__S(291, __c36, 3)),
         }).pipe(ns),
       ).annotate({ identifier: "ListAccessGrantsResult" });
     case 5:
@@ -10777,11 +9525,11 @@ function __c36(j: number): any {
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ ListAccessGrantsInstanceEntry.pipe(
-          /*@__PURE__*/ T.XmlName("AccessGrantsInstance"),
-        ).annotate({
-          identifier: "ListAccessGrantsInstanceEntry",
-        }),
+        /*@__PURE__*/ __S(294, __c36, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("AccessGrantsInstance"))
+          .annotate({
+            identifier: "ListAccessGrantsInstanceEntry",
+          }),
       );
   }
 }
@@ -10791,7 +9539,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          AccessGrantsInstancesList: S.optional(AccessGrantsInstancesList),
+          AccessGrantsInstancesList: S.optional(__S(295, __c36, 7)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAccessGrantsInstancesResult",
@@ -10836,17 +9584,17 @@ function __c37(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ ListAccessGrantsLocationsEntry.pipe(
-          /*@__PURE__*/ T.XmlName("AccessGrantsLocation"),
-        ).annotate({
-          identifier: "ListAccessGrantsLocationsEntry",
-        }),
+        /*@__PURE__*/ __S(298, __c37, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("AccessGrantsLocation"))
+          .annotate({
+            identifier: "ListAccessGrantsLocationsEntry",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          AccessGrantsLocationsList: S.optional(AccessGrantsLocationsList),
+          AccessGrantsLocationsList: S.optional(__S(299, __c37, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAccessGrantsLocationsResult",
@@ -10881,8 +9629,8 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          NetworkOrigin: NetworkOrigin,
-          VpcConfiguration: S.optional(VpcConfiguration),
+          NetworkOrigin: S.String,
+          VpcConfiguration: S.optional(__S(12, __c1, 4)),
           Bucket: S.String,
           AccessPointArn: S.optional(S.String),
           Alias: S.optional(S.String),
@@ -10893,7 +9641,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "AccessPoint" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ AccessPoint.pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
+        /*@__PURE__*/ __S(302, __c37, 6).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
           identifier: "AccessPoint",
         }),
       );
@@ -10904,7 +9652,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AccessPointList: S.optional(AccessPointList),
+          AccessPointList: S.optional(__S(303, __c37, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAccessPointsResult" });
@@ -10940,7 +9688,7 @@ function __c38(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AccessPointList: S.optional(AccessPointList),
+          AccessPointList: S.optional(__S(303, __c37, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -10976,21 +9724,21 @@ function __c38(j: number): any {
         S.Struct({
           Name: S.String,
           ObjectLambdaAccessPointArn: S.optional(S.String),
-          Alias: S.optional(ObjectLambdaAccessPointAlias),
+          Alias: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "ObjectLambdaAccessPoint" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ ObjectLambdaAccessPoint.pipe(
-          /*@__PURE__*/ T.XmlName("ObjectLambdaAccessPoint"),
-        ).annotate({
-          identifier: "ObjectLambdaAccessPoint",
-        }),
+        /*@__PURE__*/ __S(308, __c38, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("ObjectLambdaAccessPoint"))
+          .annotate({
+            identifier: "ObjectLambdaAccessPoint",
+          }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ObjectLambdaAccessPointList: S.optional(ObjectLambdaAccessPointList),
+          ObjectLambdaAccessPointList: S.optional(__S(309, __c38, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11030,7 +9778,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Permission: S.optional(Permission),
+          Permission: S.optional(S.String),
           GrantScope: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }),
@@ -11039,9 +9787,7 @@ function __c39(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ ListCallerAccessGrantsEntry.pipe(
-          /*@__PURE__*/ T.XmlName("AccessGrant"),
-        ).annotate({
+        /*@__PURE__*/ __S(312, __c39, 0).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
           identifier: "ListCallerAccessGrantsEntry",
         }),
       );
@@ -11049,13 +9795,13 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CallerAccessGrantsList: S.optional(CallerAccessGrantsList),
+          CallerAccessGrantsList: S.optional(__S(313, __c39, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListCallerAccessGrantsResult",
       });
     case 3:
-      return S.Array(JobStatus);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11064,7 +9810,7 @@ function __c39(j: number): any {
             T.ContextParam("AccountId"),
             T.HostLabel(),
           ),
-          JobStatuses: S.optional(JobStatusList).pipe(T.HttpQuery("jobStatuses")),
+          JobStatuses: S.optional(__S(315, __c39, 3)).pipe(T.HttpQuery("jobStatuses")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -11085,19 +9831,19 @@ function __c39(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           Description: S.optional(S.String),
-          Operation: S.optional(OperationName),
+          Operation: S.optional(S.String),
           Priority: S.optional(S.Number),
-          Status: S.optional(JobStatus),
+          Status: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString),
           TerminationDate: S.optional(T.DateFromString),
-          ProgressSummary: S.optional(JobProgressSummary),
+          ProgressSummary: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({ identifier: "JobListDescriptor" });
     case 6:
-      return S.Array(JobListDescriptor);
+      return S.Array(__S(317, __c39, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Jobs: S.optional(JobListDescriptorList) }).pipe(
+        S.Struct({ NextToken: S.optional(S.String), Jobs: S.optional(__S(318, __c39, 6)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListJobsResult" });
@@ -11132,16 +9878,14 @@ function __c40(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ MultiRegionAccessPointReport.pipe(
-          /*@__PURE__*/ T.XmlName("AccessPoint"),
-        ).annotate({
+        /*@__PURE__*/ __S(238, __c29, 6).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
           identifier: "MultiRegionAccessPointReport",
         }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AccessPoints: S.optional(MultiRegionAccessPointReportList),
+          AccessPoints: S.optional(__S(321, __c40, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11188,14 +9932,14 @@ function __c40(j: number): any {
       ).annotate({ identifier: "RegionalBucket" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ RegionalBucket.pipe(/*@__PURE__*/ T.XmlName("RegionalBucket")).annotate({
+        /*@__PURE__*/ __S(324, __c40, 4).pipe(/*@__PURE__*/ T.XmlName("RegionalBucket")).annotate({
           identifier: "RegionalBucket",
         }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RegionalBucketList: S.optional(RegionalBucketList),
+          RegionalBucketList: S.optional(__S(325, __c40, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -11242,17 +9986,17 @@ function __c41(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ ListStorageLensConfigurationEntry.pipe(
-          /*@__PURE__*/ T.XmlName("StorageLensConfiguration"),
-        ).annotate({
-          identifier: "ListStorageLensConfigurationEntry",
-        }),
+        /*@__PURE__*/ __S(328, __c41, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("StorageLensConfiguration"))
+          .annotate({
+            identifier: "ListStorageLensConfigurationEntry",
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          StorageLensConfigurationList: S.optional(StorageLensConfigurationList).pipe(
+          StorageLensConfigurationList: S.optional(__S(329, __c41, 1)).pipe(
             T.XmlName("StorageLensConfiguration"),
             T.XmlFlattened(),
           ),
@@ -11292,17 +10036,17 @@ function __c41(j: number): any {
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ ListStorageLensGroupEntry.pipe(
-          /*@__PURE__*/ T.XmlName("StorageLensGroup"),
-        ).annotate({
-          identifier: "ListStorageLensGroupEntry",
-        }),
+        /*@__PURE__*/ __S(332, __c41, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("StorageLensGroup"))
+          .annotate({
+            identifier: "ListStorageLensGroupEntry",
+          }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          StorageLensGroupList: S.optional(StorageLensGroupList).pipe(
+          StorageLensGroupList: S.optional(__S(333, __c41, 5)).pipe(
             T.XmlName("StorageLensGroup"),
             T.XmlFlattened(),
           ),
@@ -11339,7 +10083,7 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(5, __c0, 5)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResult",
       });
     case 1:
@@ -11386,7 +10130,7 @@ function __c42(j: number): any {
             T.HostLabel(),
           ),
           Name: S.String.pipe(T.HttpLabel("Name")),
-          Configuration: ObjectLambdaConfiguration,
+          Configuration: __S(25, __c3, 1),
         }).pipe(
           T.all(
             ns,
@@ -11480,7 +10224,7 @@ function __c43(j: number): any {
             T.HostLabel(),
           ),
           Name: S.String.pipe(T.HttpLabel("Name"), T.ContextParam("AccessPointName")),
-          Scope: Scope,
+          Scope: __S(16, __c2, 0),
         }).pipe(
           T.all(
             ns,
@@ -11504,7 +10248,7 @@ function __c43(j: number): any {
         identifier: "PutAccessPointScopeResponse",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Rules: S.optional(LifecycleRules) })).annotate({
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(204, __c25, 4)) })).annotate({
         identifier: "LifecycleConfiguration",
       });
     case 4:
@@ -11516,7 +10260,7 @@ function __c43(j: number): any {
             T.HostLabel(),
           ),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          LifecycleConfiguration: S.optional(LifecycleConfiguration)
+          LifecycleConfiguration: S.optional(__S(347, __c43, 3))
             .pipe(T.HttpPayload(), T.XmlName("LifecycleConfiguration"))
             .annotate({ identifier: "LifecycleConfiguration" }),
         }).pipe(
@@ -11581,10 +10325,9 @@ function __c44(j: number): any {
             T.HostLabel(),
           ),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ReplicationConfiguration: ReplicationConfiguration.pipe(
-            T.HttpPayload(),
-            T.XmlName("ReplicationConfiguration"),
-          ).annotate({ identifier: "ReplicationConfiguration" }),
+          ReplicationConfiguration: __S(224, __c28, 0)
+            .pipe(T.HttpPayload(), T.XmlName("ReplicationConfiguration"))
+            .annotate({ identifier: "ReplicationConfiguration" }),
         }).pipe(
           T.all(
             ns,
@@ -11605,7 +10348,7 @@ function __c44(j: number): any {
         identifier: "PutBucketReplicationResponse",
       });
     case 2:
-      return S.suspend(() => S.Struct({ TagSet: S3TagSet })).annotate({
+      return S.suspend(() => S.Struct({ TagSet: __S(40, __c5, 0) })).annotate({
         identifier: "Tagging",
       });
     case 3:
@@ -11617,7 +10360,7 @@ function __c44(j: number): any {
             T.HostLabel(),
           ),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Tagging: Tagging.pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
+          Tagging: __S(354, __c44, 2).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
             identifier: "Tagging",
           }),
         }).pipe(
@@ -11640,8 +10383,8 @@ function __c44(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          MFADelete: S.optional(MFADelete).pipe(T.XmlName("MfaDelete")),
-          Status: S.optional(BucketVersioningStatus),
+          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
+          Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "VersioningConfiguration" });
     case 6:
@@ -11654,10 +10397,9 @@ function __c44(j: number): any {
           ),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
           MFA: S.optional(S.String).pipe(T.HttpHeader("x-amz-mfa")),
-          VersioningConfiguration: VersioningConfiguration.pipe(
-            T.HttpPayload(),
-            T.XmlName("VersioningConfiguration"),
-          ).annotate({ identifier: "VersioningConfiguration" }),
+          VersioningConfiguration: __S(357, __c44, 5)
+            .pipe(T.HttpPayload(), T.XmlName("VersioningConfiguration"))
+            .annotate({ identifier: "VersioningConfiguration" }),
         }).pipe(
           T.all(
             ns,
@@ -11690,7 +10432,7 @@ function __c45(j: number): any {
             T.HostLabel(),
           ),
           JobId: S.String.pipe(T.HttpLabel("JobId")),
-          Tags: S3TagSet,
+          Tags: __S(40, __c5, 0),
         }).pipe(
           T.all(
             ns,
@@ -11717,7 +10459,7 @@ function __c45(j: number): any {
             T.HostLabel(),
           ),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Details: PutMultiRegionAccessPointPolicyInput,
+          Details: __S(152, __c19, 0),
         }).pipe(
           T.all(
             ns,
@@ -11742,10 +10484,9 @@ function __c45(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PublicAccessBlockConfiguration: PublicAccessBlockConfiguration.pipe(
-            T.HttpPayload(),
-            T.XmlName("PublicAccessBlockConfiguration"),
-          ).annotate({ identifier: "PublicAccessBlockConfiguration" }),
+          PublicAccessBlockConfiguration: __S(13, __c1, 5)
+            .pipe(T.HttpPayload(), T.XmlName("PublicAccessBlockConfiguration"))
+            .annotate({ identifier: "PublicAccessBlockConfiguration" }),
           AccountId: S.String.pipe(
             T.HttpHeader("x-amz-account-id"),
             T.ContextParam("AccountId"),
@@ -11779,8 +10520,8 @@ function __c45(j: number): any {
             T.ContextParam("AccountId"),
             T.HostLabel(),
           ),
-          StorageLensConfiguration: StorageLensConfiguration,
-          Tags: S.optional(StorageLensTags),
+          StorageLensConfiguration: __S(281, __c35, 1),
+          Tags: S.optional(__S(285, __c35, 5)),
         }).pipe(
           T.all(
             ns,
@@ -11813,7 +10554,7 @@ function __c46(j: number): any {
             T.ContextParam("AccountId"),
             T.HostLabel(),
           ),
-          Tags: StorageLensTags,
+          Tags: __S(285, __c35, 5),
         }).pipe(
           T.all(
             ns,
@@ -11842,7 +10583,7 @@ function __c46(j: number): any {
             T.HostLabel(),
           ),
           Mrap: S.String.pipe(T.HttpLabel("Mrap")),
-          RouteUpdates: RouteList,
+          RouteUpdates: __S(249, __c31, 1),
         }).pipe(
           T.all(
             ns,
@@ -11871,7 +10612,7 @@ function __c46(j: number): any {
             T.HostLabel(),
           ),
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn"), T.ContextParam("ResourceArn")),
-          Tags: TagList,
+          Tags: __S(5, __c0, 5),
         }).pipe(
           T.all(
             ns,
@@ -11900,7 +10641,7 @@ function __c46(j: number): any {
             T.HostLabel(),
           ),
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn"), T.ContextParam("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(374, __c46, 6).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             ns,
@@ -11998,7 +10739,7 @@ function __c47(j: number): any {
             T.HostLabel(),
           ),
           JobId: S.String.pipe(T.HttpLabel("JobId")),
-          RequestedJobStatus: RequestedJobStatus.pipe(T.HttpQuery("requestedJobStatus")),
+          RequestedJobStatus: S.String.pipe(T.HttpQuery("requestedJobStatus")),
           StatusUpdateReason: S.optional(S.String).pipe(T.HttpQuery("statusUpdateReason")),
         }).pipe(
           T.all(
@@ -12017,7 +10758,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
-          Status: S.optional(JobStatus),
+          Status: S.optional(S.String),
           StatusUpdateReason: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "UpdateJobStatusResult" });
@@ -12030,7 +10771,7 @@ function __c47(j: number): any {
             T.ContextParam("AccountId"),
             T.HostLabel(),
           ),
-          StorageLensGroup: StorageLensGroup,
+          StorageLensGroup: __S(99, __c12, 3),
         }).pipe(
           T.all(
             ns,
@@ -12055,4 +10796,9 @@ function __c48(j: number): any {
         identifier: "UpdateStorageLensGroupResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

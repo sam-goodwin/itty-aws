@@ -5,13 +5,13 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `disabled` - Disabled * `dry_run` - Dry Run * `live` - Live */
 export type EventFilterModeEnum = "disabled" | "dry_run" | "live";
-const EventFilterModeEnum = S.String;
-
 export interface CreateEventFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -21,11 +21,6 @@ export interface CreateEventFilterRequest {
   /** Test events to validate the filter. Each: {"event_name": "...", "distinct_id": "...", "expected_result": "drop"|"ingest"} */
   test_cases?: unknown;
 }
-const CreateEventFilterRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateEventFilterRequest>;
-
 export interface EventFilterConfig {
   id?: string;
   mode?: EventFilterModeEnum;
@@ -36,79 +31,33 @@ export interface EventFilterConfig {
   created_at?: string;
   updated_at?: string;
 }
-const EventFilterConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EventFilterConfig>;
-
 export interface GetEventFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEventFilterRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetEventFilterRequest>;
-
 export interface GetEventFilterMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEventFilterMetricsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetEventFilterMetricsRequest>;
-
 export type AppMetricsResponseLabelsList = Array<string>;
-const AppMetricsResponseLabelsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AppMetricsResponseLabelsList>;
-
 export type AppMetricSeriesValuesList = Array<number>;
-const AppMetricSeriesValuesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AppMetricSeriesValuesList>;
-
 export interface AppMetricSeries {
   name?: string;
   values?: AppMetricSeriesValuesList;
 }
-const AppMetricSeries = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AppMetricSeries>;
-
 export type AppMetricsResponseSeriesList = Array<AppMetricSeries>;
-const AppMetricsResponseSeriesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AppMetricsResponseSeriesList>;
-
 export interface AppMetricsResponse {
   labels?: AppMetricsResponseLabelsList;
   series?: AppMetricsResponseSeriesList;
 }
-const AppMetricsResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AppMetricsResponse>;
-
 export interface GetEventFilterMetricsTotalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEventFilterMetricsTotalRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetEventFilterMetricsTotalRequest>;
-
 export type AppMetricsTotalsResponseTotalsMap = { [key: string]: number | undefined };
-const AppMetricsTotalsResponseTotalsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AppMetricsTotalsResponseTotalsMap>;
-
 export interface AppMetricsTotalsResponse {
   totals?: AppMetricsTotalsResponseTotalsMap;
 }
-const AppMetricsTotalsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AppMetricsTotalsResponse>;
-
 export type CreateEventFilterError = PosthogOpError;
 /** Create or update the event filter config. */
 export const createEventFilter: API.OperationMethod<
@@ -117,8 +66,8 @@ export const createEventFilter: API.OperationMethod<
   CreateEventFilterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventFilterRequest,
-  output: EventFilterConfig,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateEventFilterRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EventFilterConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -132,8 +81,8 @@ export const getEventFilter: API.OperationMethod<
   GetEventFilterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventFilterRequest,
-  output: EventFilterConfig,
+  input: __S(2, __c0, 2) as any as S.Schema<GetEventFilterRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EventFilterConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -147,8 +96,8 @@ export const getEventFilterMetrics: API.OperationMethod<
   GetEventFilterMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventFilterMetricsRequest,
-  output: AppMetricsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<GetEventFilterMetricsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AppMetricsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -162,8 +111,8 @@ export const getEventFilterMetricsTotal: API.OperationMethod<
   GetEventFilterMetricsTotalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventFilterMetricsTotalRequest,
-  output: AppMetricsTotalsResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<GetEventFilterMetricsTotalRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AppMetricsTotalsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -176,7 +125,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          mode: S.optional(EventFilterModeEnum),
+          mode: S.optional(S.String),
           filter_tree: S.optional(S.Unknown),
           test_cases: S.optional(S.Unknown),
         }).pipe(
@@ -187,7 +136,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          mode: S.optional(EventFilterModeEnum),
+          mode: S.optional(S.String),
           filter_tree: S.optional(S.Unknown),
           test_cases: S.optional(S.Unknown),
           created_at: S.optional(S.String),
@@ -224,11 +173,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          values: S.optional(AppMetricSeriesValuesList),
+          values: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "AppMetricSeries" });
     case 7:
-      return S.Array(AppMetricSeries);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -236,8 +185,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(AppMetricsResponseLabelsList),
-          series: S.optional(AppMetricsResponseSeriesList),
+          labels: S.optional(__S(4, __c0, 4)),
+          series: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "AppMetricsResponse" });
     case 1:
@@ -259,8 +208,13 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          totals: S.optional(AppMetricsTotalsResponseTotalsMap),
+          totals: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "AppMetricsTotalsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

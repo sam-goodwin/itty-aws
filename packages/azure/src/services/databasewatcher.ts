@@ -7,13 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The properties with which the alert rule resource was created. */
 export type AlertRuleCreationProperties = "CreatedWithActionGroup" | "None";
-const AlertRuleCreationProperties = S.String;
-
 /** The generic properties of the alert rule proxy resource. */
 export interface AlertRuleResourcePropertiesInput {
   /** The resource ID of the alert rule resource. */
@@ -27,11 +27,6 @@ export interface AlertRuleResourcePropertiesInput {
   /** The alert rule template version. */
   alertRuleTemplateVersion: string;
 }
-const AlertRuleResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AlertRuleResourcePropertiesInput>;
-
 export interface AlertRuleResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -44,19 +39,10 @@ export interface AlertRuleResourcesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourcePropertiesInput;
 }
-const AlertRuleResourcesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AlertRuleResourcesCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -72,12 +58,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
-
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const AzureResourceManagerResourceProvisioningState = S.String;
-
 /** The generic properties of the alert rule proxy resource. */
 export interface AlertRuleResourceProperties {
   /** The resource ID of the alert rule resource. */
@@ -93,11 +75,6 @@ export interface AlertRuleResourceProperties {
   /** The alert rule template version. */
   alertRuleTemplateVersion: string;
 }
-const AlertRuleResourceProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AlertRuleResourceProperties>;
-
 export interface AlertRuleResourcesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -110,11 +87,6 @@ export interface AlertRuleResourcesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourceProperties;
 }
-const AlertRuleResourcesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AlertRuleResourcesCreateOrUpdateResponse>;
-
 /** The generic properties of a Shared Private Link resource. */
 export interface SharedPrivateLinkResourcePropertiesInput {
   /** The resource ID of the resource the shared private link resource is for. */
@@ -126,11 +98,6 @@ export interface SharedPrivateLinkResourcePropertiesInput {
   /** The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'. */
   dnsZone?: string;
 }
-const SharedPrivateLinkResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SharedPrivateLinkResourcePropertiesInput>;
-
 export interface CreateSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -143,15 +110,8 @@ export interface CreateSharedPrivateLinkResourceRequest {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourcePropertiesInput;
 }
-const CreateSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateSharedPrivateLinkResourceRequest>;
-
 /** Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected. */
 export type SharedPrivateLinkResourceStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-const SharedPrivateLinkResourceStatus = S.String;
-
 /** The generic properties of a Shared Private Link resource. */
 export interface SharedPrivateLinkResourceProperties {
   /** The resource ID of the resource the shared private link resource is for. */
@@ -167,11 +127,6 @@ export interface SharedPrivateLinkResourceProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-const SharedPrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<SharedPrivateLinkResourceProperties>;
-
 export interface CreateSharedPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -184,11 +139,6 @@ export interface CreateSharedPrivateLinkResourceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-const CreateSharedPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateSharedPrivateLinkResourceResponse>;
-
 export interface DeleteAlertRuleResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -199,17 +149,7 @@ export interface DeleteAlertRuleResourceRequest {
   /** The alert rule proxy resource name. */
   alertRuleResourceName: string;
 }
-const DeleteAlertRuleResourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteAlertRuleResourceRequest>;
-
 export interface DeleteAlertRuleResourceResponse {}
-const DeleteAlertRuleResourceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteAlertRuleResourceResponse>;
-
 export interface DeleteSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -220,17 +160,7 @@ export interface DeleteSharedPrivateLinkResourceRequest {
   /** The Shared Private Link resource name. */
   sharedPrivateLinkResourceName: string;
 }
-const DeleteSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteSharedPrivateLinkResourceRequest>;
-
 export interface DeleteSharedPrivateLinkResourceResponse {}
-const DeleteSharedPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteSharedPrivateLinkResourceResponse>;
-
 export interface DeleteTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -241,11 +171,7 @@ export interface DeleteTargetRequest {
   /** The target resource name. */
   targetName: string;
 }
-const DeleteTargetRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteTargetRequest>;
-
 export interface DeleteTargetResponse {}
-const DeleteTargetResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteTargetResponse>;
-
 export interface DeleteWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -254,11 +180,7 @@ export interface DeleteWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const DeleteWatcherRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteWatcherRequest>;
-
 export interface DeleteWatcherResponse {}
-const DeleteWatcherResponse = DeleteTargetResponse as any as S.Schema<DeleteWatcherResponse>;
-
 export interface GetAlertRuleResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -269,11 +191,6 @@ export interface GetAlertRuleResourceRequest {
   /** The alert rule proxy resource name. */
   alertRuleResourceName: string;
 }
-const GetAlertRuleResourceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetAlertRuleResourceRequest>;
-
 export interface GetAlertRuleResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -286,9 +203,6 @@ export interface GetAlertRuleResourceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourceProperties;
 }
-const GetAlertRuleResourceResponse =
-  AlertRuleResourcesCreateOrUpdateResponse as any as S.Schema<GetAlertRuleResourceResponse>;
-
 export interface GetHealthValidationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -299,11 +213,6 @@ export interface GetHealthValidationRequest {
   /** The health validation resource name. */
   healthValidationName: string;
 }
-const GetHealthValidationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetHealthValidationRequest>;
-
 /** Health validation status. */
 export type ValidationStatus =
   | "NotStarted"
@@ -312,8 +221,6 @@ export type ValidationStatus =
   | "Failed"
   | "Canceled"
   | "TimedOut";
-const ValidationStatus = S.String;
-
 /** The model of a health validation issue. */
 export interface ValidationIssue {
   /** The error code of the issue. */
@@ -331,15 +238,8 @@ export interface ValidationIssue {
   /** The type of the Azure resource related to the issue. */
   relatedResourceType?: string;
 }
-const ValidationIssue = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ValidationIssue>;
-
 /** The list of issues found by health validation. */
 export type HealthValidationPropertiesIssuesList = Array<ValidationIssue>;
-const HealthValidationPropertiesIssuesList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<HealthValidationPropertiesIssuesList>;
-
 /** The generic properties of the health validation resource. */
 export interface HealthValidationProperties {
   /** The start time of health validation, in UTC. */
@@ -353,11 +253,6 @@ export interface HealthValidationProperties {
   /** The provisioning state of the health validation resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-const HealthValidationProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<HealthValidationProperties>;
-
 export interface GetHealthValidationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -370,11 +265,6 @@ export interface GetHealthValidationResponse {
   /** The resource-specific properties for this resource. */
   properties?: HealthValidationProperties;
 }
-const GetHealthValidationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetHealthValidationResponse>;
-
 export interface GetSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -385,11 +275,6 @@ export interface GetSharedPrivateLinkResourceRequest {
   /** The Shared Private Link resource name. */
   sharedPrivateLinkResourceName: string;
 }
-const GetSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetSharedPrivateLinkResourceRequest>;
-
 export interface GetSharedPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -402,9 +287,6 @@ export interface GetSharedPrivateLinkResourceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-const GetSharedPrivateLinkResourceResponse =
-  CreateSharedPrivateLinkResourceResponse as any as S.Schema<GetSharedPrivateLinkResourceResponse>;
-
 export interface GetTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -415,12 +297,8 @@ export interface GetTargetRequest {
   /** The target resource name. */
   targetName: string;
 }
-const GetTargetRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetTargetRequest>;
-
 /** The type of authentication to use when connecting to a target. */
 export type TargetAuthenticationType = "Aad" | "Sql";
-const TargetAuthenticationType = S.String;
-
 /** The vault specific details required if using SQL authentication to connect to a target. */
 export interface VaultSecret {
   /** The Azure resource ID of the Key Vault instance storing database authentication secrets. */
@@ -430,8 +308,6 @@ export interface VaultSecret {
   /** The path to the Key Vault secret storing the password for authentication to a target. */
   akvTargetPassword?: string | Redacted.Redacted<string>;
 }
-const VaultSecret = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<VaultSecret>;
-
 /** The generic properties of a target. */
 export interface TargetProperties {
   /** Discriminator property for TargetProperties. */
@@ -457,8 +333,6 @@ export interface TargetProperties {
   /** Set to true to monitor a high availability replica of the specified target, if any (targetType SqlDb / SqlMi). */
   readIntent?: boolean;
 }
-const TargetProperties = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TargetProperties>;
-
 export interface GetTargetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -471,8 +345,6 @@ export interface GetTargetResponse {
   /** The resource-specific properties for this resource. */
   properties?: TargetProperties;
 }
-const GetTargetResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetTargetResponse>;
-
 export interface GetWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -481,19 +353,10 @@ export interface GetWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const GetWatcherRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetWatcherRequest>;
-
 /** Resource tags. */
 export type GetWatcherResponseTagsMap = { [key: string]: string | undefined };
-const GetWatcherResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetWatcherResponseTagsMap>;
-
 /** The type of Kusto offering. */
 export type KustoOfferingType = "adx" | "free" | "fabric";
-const KustoOfferingType = S.String;
-
 /** The properties of a data store. */
 export interface Datastore {
   /** The Azure resource ID of an Azure Data Explorer cluster. */
@@ -511,16 +374,10 @@ export interface Datastore {
   /** The type of a Kusto offering. */
   kustoOfferingType: KustoOfferingType | (string & {});
 }
-const Datastore = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Datastore>;
-
 /** The monitoring collection status of a watcher. */
 export type WatcherStatus = "Starting" | "Running" | "Stopping" | "Stopped" | "Deleting";
-const WatcherStatus = S.String;
-
 /** The status of the last provisioning operation performed on the resource. */
 export type DatabaseWatcherProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const DatabaseWatcherProvisioningState = S.String;
-
 /** The RP specific properties of the resource. */
 export interface WatcherProperties {
   /** The data store for collected monitoring data. */
@@ -532,16 +389,12 @@ export interface WatcherProperties {
   /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
   defaultAlertRuleIdentityResourceId?: string;
 }
-const WatcherProperties = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<WatcherProperties>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -549,15 +402,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetWatcherResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -567,11 +413,6 @@ export interface GetWatcherResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const GetWatcherResponseIdentity = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetWatcherResponseIdentity>;
-
 export interface GetWatcherResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -590,8 +431,6 @@ export interface GetWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-const GetWatcherResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetWatcherResponse>;
-
 export interface ListAlertRuleResourceByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -600,11 +439,6 @@ export interface ListAlertRuleResourceByParentRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const ListAlertRuleResourceByParentRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListAlertRuleResourceByParentRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface AlertRuleResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -618,15 +452,8 @@ export interface AlertRuleResource {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourceProperties;
 }
-const AlertRuleResource = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AlertRuleResource>;
-
 /** The AlertRuleResource items on this page */
 export type AlertRuleResourceListResultValueList = Array<AlertRuleResource>;
-const AlertRuleResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AlertRuleResourceListResultValueList>;
-
 /** The response of a AlertRuleResource list operation. */
 export interface AlertRuleResourceListResult {
   /** The AlertRuleResource items on this page */
@@ -634,11 +461,6 @@ export interface AlertRuleResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AlertRuleResourceListResult = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AlertRuleResourceListResult>;
-
 export interface ListHealthValidationByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -647,11 +469,6 @@ export interface ListHealthValidationByParentRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const ListHealthValidationByParentRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListHealthValidationByParentRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface HealthValidation {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -665,15 +482,8 @@ export interface HealthValidation {
   /** The resource-specific properties for this resource. */
   properties?: HealthValidationProperties;
 }
-const HealthValidation = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<HealthValidation>;
-
 /** The HealthValidation items on this page */
 export type HealthValidationListResultValueList = Array<HealthValidation>;
-const HealthValidationListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<HealthValidationListResultValueList>;
-
 /** The response of a HealthValidation list operation. */
 export interface HealthValidationListResult {
   /** The HealthValidation items on this page */
@@ -681,17 +491,7 @@ export interface HealthValidationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const HealthValidationListResult = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<HealthValidationListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -703,16 +503,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -726,26 +520,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListSharedPrivateLinkResourceByWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -754,11 +536,6 @@ export interface ListSharedPrivateLinkResourceByWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const ListSharedPrivateLinkResourceByWatcherRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListSharedPrivateLinkResourceByWatcherRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface SharedPrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -772,16 +549,8 @@ export interface SharedPrivateLinkResource {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-const SharedPrivateLinkResource =
-  CreateSharedPrivateLinkResourceResponse as any as S.Schema<SharedPrivateLinkResource>;
-
 /** The SharedPrivateLinkResource items on this page */
 export type SharedPrivateLinkResourceListResultValueList = Array<SharedPrivateLinkResource>;
-const SharedPrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<SharedPrivateLinkResourceListResultValueList>;
-
 /** The response of a SharedPrivateLinkResource list operation. */
 export interface SharedPrivateLinkResourceListResult {
   /** The SharedPrivateLinkResource items on this page */
@@ -789,11 +558,6 @@ export interface SharedPrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SharedPrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SharedPrivateLinkResourceListResult>;
-
 export interface ListTargetByWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -802,11 +566,6 @@ export interface ListTargetByWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const ListTargetByWatcherRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListTargetByWatcherRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface Target {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -820,15 +579,8 @@ export interface Target {
   /** The resource-specific properties for this resource. */
   properties?: TargetProperties;
 }
-const Target = GetTargetResponse as any as S.Schema<Target>;
-
 /** The Target items on this page */
 export type TargetListResultValueList = Array<Target>;
-const TargetListResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<TargetListResultValueList>;
-
 /** The response of a Target list operation. */
 export interface TargetListResult {
   /** The Target items on this page */
@@ -836,19 +588,12 @@ export interface TargetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TargetListResult = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TargetListResult>;
-
 export interface ListWatcherByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListWatcherByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListWatcherByResourceGroupRequest>;
-
 /** Resource tags. */
 export type WatcherTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -872,15 +617,8 @@ export interface Watcher {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-const Watcher = GetWatcherResponse as any as S.Schema<Watcher>;
-
 /** The Watcher items on this page */
 export type WatcherListResultValueList = Array<Watcher>;
-const WatcherListResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<WatcherListResultValueList>;
-
 /** The response of a Watcher list operation. */
 export interface WatcherListResult {
   /** The Watcher items on this page */
@@ -888,17 +626,10 @@ export interface WatcherListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const WatcherListResult = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<WatcherListResult>;
-
 export interface ListWatcherBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListWatcherBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListWatcherBySubscriptionRequest>;
-
 export interface StartHealthValidationValidationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -909,11 +640,6 @@ export interface StartHealthValidationValidationRequest {
   /** The health validation resource name. */
   healthValidationName: string;
 }
-const StartHealthValidationValidationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<StartHealthValidationValidationRequest>;
-
 export interface StartHealthValidationValidationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -926,9 +652,6 @@ export interface StartHealthValidationValidationResponse {
   /** The resource-specific properties for this resource. */
   properties?: HealthValidationProperties;
 }
-const StartHealthValidationValidationResponse =
-  GetHealthValidationResponse as any as S.Schema<StartHealthValidationValidationResponse>;
-
 export interface StartWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -937,8 +660,6 @@ export interface StartWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const StartWatcherRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<StartWatcherRequest>;
-
 /** Resource tags. */
 export type StartWatcherResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -961,8 +682,6 @@ export interface StartWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-const StartWatcherResponse = GetWatcherResponse as any as S.Schema<StartWatcherResponse>;
-
 export interface StopWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -971,8 +690,6 @@ export interface StopWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-const StopWatcherRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<StopWatcherRequest>;
-
 /** Resource tags. */
 export type StopWatcherResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -995,8 +712,6 @@ export interface StopWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-const StopWatcherResponse = GetWatcherResponse as any as S.Schema<StopWatcherResponse>;
-
 /** The generic properties of a target. */
 export interface TargetPropertiesInput {
   /** Discriminator property for TargetProperties. */
@@ -1020,11 +735,6 @@ export interface TargetPropertiesInput {
   /** Set to true to monitor a high availability replica of the specified target, if any (targetType SqlDb / SqlMi). */
   readIntent?: boolean;
 }
-const TargetPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<TargetPropertiesInput>;
-
 export interface TargetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1037,11 +747,6 @@ export interface TargetsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: TargetPropertiesInput;
 }
-const TargetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<TargetsCreateOrUpdateRequest>;
-
 export interface TargetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1054,38 +759,17 @@ export interface TargetsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: TargetProperties;
 }
-const TargetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<TargetsCreateOrUpdateResponse>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput =
-  DeleteTargetResponse as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateWatcherRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const UpdateWatcherRequestIdentity = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<UpdateWatcherRequestIdentity>;
-
 /** Resource tags. */
 export type UpdateWatcherRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWatcherRequestTagsMap =
-  GetWatcherResponseTagsMap as any as S.Schema<UpdateWatcherRequestTagsMap>;
-
 /** The properties of a data store. */
 export interface DatastoreUpdate {
   /** The Azure resource ID of an Azure Data Explorer cluster. */
@@ -1103,8 +787,6 @@ export interface DatastoreUpdate {
   /** The type of a Kusto offering. */
   kustoOfferingType?: KustoOfferingType | (string & {});
 }
-const DatastoreUpdate = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DatastoreUpdate>;
-
 /** The updatable properties of the Watcher. */
 export interface WatcherUpdateProperties {
   /** The data store for collected monitoring data. */
@@ -1112,11 +794,6 @@ export interface WatcherUpdateProperties {
   /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
   defaultAlertRuleIdentityResourceId?: string;
 }
-const WatcherUpdateProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<WatcherUpdateProperties>;
-
 export interface UpdateWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1131,8 +808,6 @@ export interface UpdateWatcherRequest {
   /** The resource-specific properties for this resource. */
   properties?: WatcherUpdateProperties;
 }
-const UpdateWatcherRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<UpdateWatcherRequest>;
-
 /** Resource tags. */
 export type UpdateWatcherResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1155,13 +830,8 @@ export interface UpdateWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-const UpdateWatcherResponse = GetWatcherResponse as any as S.Schema<UpdateWatcherResponse>;
-
 /** Resource tags. */
 export type WatchersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WatchersCreateOrUpdateRequestTagsMap =
-  GetWatcherResponseTagsMap as any as S.Schema<WatchersCreateOrUpdateRequestTagsMap>;
-
 /** The RP specific properties of the resource. */
 export interface WatcherPropertiesInput {
   /** The data store for collected monitoring data. */
@@ -1169,11 +839,6 @@ export interface WatcherPropertiesInput {
   /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
   defaultAlertRuleIdentityResourceId?: string;
 }
-const WatcherPropertiesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<WatcherPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WatchersCreateOrUpdateRequestIdentity = UpdateWatcherRequestIdentity;
 export interface WatchersCreateOrUpdateRequest {
@@ -1192,16 +857,8 @@ export interface WatchersCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateWatcherRequestIdentity;
 }
-const WatchersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<WatchersCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type WatchersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const WatchersCreateOrUpdateResponseTagsMap =
-  GetWatcherResponseTagsMap as any as S.Schema<WatchersCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WatchersCreateOrUpdateResponseIdentity = GetWatcherResponseIdentity;
 export interface WatchersCreateOrUpdateResponse {
@@ -1222,11 +879,6 @@ export interface WatchersCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-const WatchersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<WatchersCreateOrUpdateResponse>;
-
 export type AlertRuleResourcesCreateOrUpdateError = AzureOpError;
 /** Create a AlertRuleResource */
 export const AlertRuleResourcesCreateOrUpdate: API.OperationMethod<
@@ -1235,8 +887,8 @@ export const AlertRuleResourcesCreateOrUpdate: API.OperationMethod<
   AlertRuleResourcesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AlertRuleResourcesCreateOrUpdateRequest,
-  output: AlertRuleResourcesCreateOrUpdateResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<AlertRuleResourcesCreateOrUpdateRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AlertRuleResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1250,8 +902,8 @@ export const CreateSharedPrivateLinkResource: API.OperationMethod<
   CreateSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSharedPrivateLinkResourceRequest,
-  output: CreateSharedPrivateLinkResourceResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateSharedPrivateLinkResourceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1265,8 +917,8 @@ export const DeleteAlertRuleResource: API.OperationMethod<
   DeleteAlertRuleResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAlertRuleResourceRequest,
-  output: DeleteAlertRuleResourceResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteAlertRuleResourceRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeleteAlertRuleResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1280,8 +932,8 @@ export const DeleteSharedPrivateLinkResource: API.OperationMethod<
   DeleteSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSharedPrivateLinkResourceRequest,
-  output: DeleteSharedPrivateLinkResourceResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteSharedPrivateLinkResourceRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DeleteSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1295,8 +947,8 @@ export const DeleteTarget: API.OperationMethod<
   DeleteTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTargetRequest,
-  output: DeleteTargetResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteTargetRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1310,8 +962,8 @@ export const DeleteWatcher: API.OperationMethod<
   DeleteWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWatcherRequest,
-  output: DeleteWatcherResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteWatcherRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1325,8 +977,8 @@ export const GetAlertRuleResource: API.OperationMethod<
   GetAlertRuleResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertRuleResourceRequest,
-  output: GetAlertRuleResourceResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<GetAlertRuleResourceRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetAlertRuleResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1340,8 +992,8 @@ export const GetHealthValidation: API.OperationMethod<
   GetHealthValidationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthValidationRequest,
-  output: GetHealthValidationResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetHealthValidationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetHealthValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1007,8 @@ export const GetSharedPrivateLinkResource: API.OperationMethod<
   GetSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSharedPrivateLinkResourceRequest,
-  output: GetSharedPrivateLinkResourceResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetSharedPrivateLinkResourceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1022,8 @@ export const GetTarget: API.OperationMethod<
   GetTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTargetRequest,
-  output: GetTargetResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<GetTargetRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1037,8 @@ export const GetWatcher: API.OperationMethod<
   GetWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWatcherRequest,
-  output: GetWatcherResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<GetWatcherRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1052,8 @@ export const ListAlertRuleResourceByParent: API.OperationMethod<
   ListAlertRuleResourceByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAlertRuleResourceByParentRequest,
-  output: AlertRuleResourceListResult,
+  input: __S(35, __c4, 3) as any as S.Schema<ListAlertRuleResourceByParentRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<AlertRuleResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1067,8 @@ export const ListHealthValidationByParent: API.OperationMethod<
   ListHealthValidationByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHealthValidationByParentRequest,
-  output: HealthValidationListResult,
+  input: __S(39, __c4, 7) as any as S.Schema<ListHealthValidationByParentRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<HealthValidationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1082,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<ListOperationsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1097,8 @@ export const ListSharedPrivateLinkResourceByWatcher: API.OperationMethod<
   ListSharedPrivateLinkResourceByWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSharedPrivateLinkResourceByWatcherRequest,
-  output: SharedPrivateLinkResourceListResult,
+  input: __S(48, __c6, 0) as any as S.Schema<ListSharedPrivateLinkResourceByWatcherRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<SharedPrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1112,8 @@ export const ListTargetByWatcher: API.OperationMethod<
   ListTargetByWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTargetByWatcherRequest,
-  output: TargetListResult,
+  input: __S(51, __c6, 3) as any as S.Schema<ListTargetByWatcherRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<TargetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1127,8 @@ export const ListWatcherByResourceGroup: API.OperationMethod<
   ListWatcherByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWatcherByResourceGroupRequest,
-  output: WatcherListResult,
+  input: __S(54, __c6, 6) as any as S.Schema<ListWatcherByResourceGroupRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<WatcherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1142,8 @@ export const ListWatcherBySubscription: API.OperationMethod<
   ListWatcherBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWatcherBySubscriptionRequest,
-  output: WatcherListResult,
+  input: __S(57, __c7, 1) as any as S.Schema<ListWatcherBySubscriptionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<WatcherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1505,8 +1157,8 @@ export const StartHealthValidationValidation: API.OperationMethod<
   StartHealthValidationValidationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartHealthValidationValidationRequest,
-  output: StartHealthValidationValidationResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<StartHealthValidationValidationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<StartHealthValidationValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1520,8 +1172,8 @@ export const StartWatcher: API.OperationMethod<
   StartWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartWatcherRequest,
-  output: StartWatcherResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<StartWatcherRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<StartWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1535,8 +1187,8 @@ export const StopWatcher: API.OperationMethod<
   StopWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopWatcherRequest,
-  output: StopWatcherResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<StopWatcherRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<StopWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1550,8 +1202,8 @@ export const TargetsCreateOrUpdate: API.OperationMethod<
   TargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TargetsCreateOrUpdateRequest,
-  output: TargetsCreateOrUpdateResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<TargetsCreateOrUpdateRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<TargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1565,8 +1217,8 @@ export const UpdateWatcher: API.OperationMethod<
   UpdateWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWatcherRequest,
-  output: UpdateWatcherResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<UpdateWatcherRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<UpdateWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1580,8 +1232,8 @@ export const WatchersCreateOrUpdate: API.OperationMethod<
   WatchersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchersCreateOrUpdateRequest,
-  output: WatchersCreateOrUpdateResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<WatchersCreateOrUpdateRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<WatchersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1594,7 +1246,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alertRuleResourceId: S.String,
-          createdWithProperties: AlertRuleCreationProperties,
+          createdWithProperties: S.String,
           creationTime: S.String,
           alertRuleTemplateId: S.String,
           alertRuleTemplateVersion: S.String,
@@ -1609,7 +1261,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
           alertRuleResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(AlertRuleResourcePropertiesInput),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1625,10 +1277,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1636,9 +1288,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alertRuleResourceId: S.String,
-          createdWithProperties: AlertRuleCreationProperties,
+          createdWithProperties: S.String,
           creationTime: S.String,
-          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          provisioningState: S.optional(S.String),
           alertRuleTemplateId: S.String,
           alertRuleTemplateVersion: S.String,
         }),
@@ -1651,8 +1303,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AlertRuleResourceProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "AlertRuleResourcesCreateOrUpdateResponse",
@@ -1675,7 +1327,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
+          properties: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1694,8 +1346,8 @@ function __c0(j: number): any {
           groupId: S.String,
           requestMessage: S.String,
           dnsZone: S.optional(S.String),
-          status: S.optional(SharedPrivateLinkResourceStatus),
-          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResourceProperties",
@@ -1710,8 +1362,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SharedPrivateLinkResourceProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "CreateSharedPrivateLinkResourceResponse",
@@ -1848,15 +1500,15 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ValidationIssue" });
     case 3:
-      return S.Array(ValidationIssue);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           startTime: S.String,
           endTime: S.String,
-          status: ValidationStatus,
-          issues: HealthValidationPropertiesIssuesList,
-          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          status: S.String,
+          issues: __S(19, __c2, 3),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HealthValidationProperties",
@@ -1867,8 +1519,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(HealthValidationProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "GetHealthValidationResponse",
@@ -1923,10 +1575,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetType: S.String,
-          targetAuthenticationType: TargetAuthenticationType,
-          targetVault: S.optional(VaultSecret),
+          targetAuthenticationType: S.String,
+          targetVault: S.optional(__S(24, __c3, 0)),
           connectionServerName: S.String,
-          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          provisioningState: S.optional(S.String),
           sqlDbResourceId: S.optional(S.String),
           sqlEpResourceId: S.optional(S.String),
           anchorDatabaseResourceId: S.optional(S.String),
@@ -1941,8 +1593,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(TargetProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "GetTargetResponse" });
     case 3:
@@ -1971,15 +1623,15 @@ function __c3(j: number): any {
           kustoDataIngestionUri: S.String,
           kustoDatabaseName: S.String,
           kustoManagementUrl: S.String,
-          kustoOfferingType: KustoOfferingType,
+          kustoOfferingType: S.String,
         }),
       ).annotate({ identifier: "Datastore" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          datastore: S.optional(Datastore),
-          status: S.optional(WatcherStatus),
-          provisioningState: S.optional(DatabaseWatcherProvisioningState),
+          datastore: S.optional(__S(29, __c3, 5)),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
           defaultAlertRuleIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherProperties" });
@@ -1995,14 +1647,14 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "GetWatcherResponseIdentity",
@@ -2013,11 +1665,11 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetWatcherResponseTagsMap),
+          systemData: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(28, __c3, 4)),
           location: S.String,
-          properties: S.optional(WatcherProperties),
-          identity: S.optional(GetWatcherResponseIdentity),
+          properties: S.optional(__S(30, __c3, 6)),
+          identity: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "GetWatcherResponse" });
     case 3:
@@ -2043,16 +1695,16 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AlertRuleResourceProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "AlertRuleResource" });
     case 5:
-      return S.Array(AlertRuleResource);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: AlertRuleResourceListResultValueList,
+          value: __S(37, __c4, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2085,16 +1737,16 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(HealthValidationProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "HealthValidation" });
     case 1:
-      return S.Array(HealthValidation);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: HealthValidationListResultValueList,
+          value: __S(41, __c5, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2125,17 +1777,17 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(44, __c5, 4)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(46, __c5, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2161,11 +1813,11 @@ function __c6(j: number): any {
         identifier: "ListSharedPrivateLinkResourceByWatcherRequest",
       });
     case 1:
-      return S.Array(SharedPrivateLinkResource);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: SharedPrivateLinkResourceListResultValueList,
+          value: __S(49, __c6, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2189,11 +1841,11 @@ function __c6(j: number): any {
         identifier: "ListTargetByWatcherRequest",
       });
     case 4:
-      return S.Array(Target);
+      return S.Array(__S(26, __c3, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: TargetListResultValueList,
+          value: __S(52, __c6, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetListResult" });
@@ -2214,7 +1866,7 @@ function __c6(j: number): any {
         identifier: "ListWatcherByResourceGroupRequest",
       });
     case 7:
-      return S.Array(Watcher);
+      return S.Array(__S(34, __c4, 2));
   }
 }
 function __c7(j: number): any {
@@ -2222,7 +1874,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: WatcherListResultValueList,
+          value: __S(55, __c6, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherListResult" });
@@ -2293,8 +1945,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetType: S.String,
-          targetAuthenticationType: TargetAuthenticationType,
-          targetVault: S.optional(VaultSecret),
+          targetAuthenticationType: S.String,
+          targetVault: S.optional(__S(24, __c3, 0)),
           connectionServerName: S.String,
           sqlDbResourceId: S.optional(S.String),
           sqlEpResourceId: S.optional(S.String),
@@ -2311,7 +1963,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          properties: S.optional(TargetPropertiesInput),
+          properties: S.optional(__S(61, __c7, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2329,8 +1981,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(TargetProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "TargetsCreateOrUpdateResponse",
@@ -2340,12 +1992,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(14, __c1, 6));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "UpdateWatcherRequestIdentity",
@@ -2359,13 +2011,13 @@ function __c8(j: number): any {
           kustoDataIngestionUri: S.optional(S.String),
           kustoDatabaseName: S.optional(S.String),
           kustoManagementUrl: S.optional(S.String),
-          kustoOfferingType: S.optional(KustoOfferingType),
+          kustoOfferingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatastoreUpdate" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          datastore: S.optional(DatastoreUpdate),
+          datastore: S.optional(__S(66, __c8, 2)),
           defaultAlertRuleIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherUpdateProperties" });
@@ -2375,9 +2027,9 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
-          identity: S.optional(UpdateWatcherRequestIdentity),
-          tags: S.optional(UpdateWatcherRequestTagsMap),
-          properties: S.optional(WatcherUpdateProperties),
+          identity: S.optional(__S(65, __c8, 1)),
+          tags: S.optional(__S(28, __c3, 4)),
+          properties: S.optional(__S(67, __c8, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2390,7 +2042,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          datastore: S.optional(Datastore),
+          datastore: S.optional(__S(29, __c3, 5)),
           defaultAlertRuleIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherPropertiesInput" });
@@ -2400,10 +2052,10 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
-          tags: S.optional(WatchersCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(28, __c3, 4)),
           location: S.String,
-          properties: S.optional(WatcherPropertiesInput),
-          identity: S.optional(UpdateWatcherRequestIdentity),
+          properties: S.optional(__S(69, __c8, 5)),
+          identity: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2421,14 +2073,19 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(WatchersCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(28, __c3, 4)),
           location: S.String,
-          properties: S.optional(WatcherProperties),
-          identity: S.optional(GetWatcherResponseIdentity),
+          properties: S.optional(__S(30, __c3, 6)),
+          identity: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "WatchersCreateOrUpdateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

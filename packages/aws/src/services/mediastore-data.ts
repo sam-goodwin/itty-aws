@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("https://object.mediastore.amazonaws.com/doc/2017-09-01");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "MediaStore Data",
@@ -101,16 +103,10 @@ export type PathNaming = string;
 export interface DeleteObjectRequest {
   Path: string;
 }
-const DeleteObjectRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteObjectRequest>;
 export interface DeleteObjectResponse {}
-const DeleteObjectResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteObjectResponse>;
 export interface DescribeObjectRequest {
   Path: string;
 }
-const DescribeObjectRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DescribeObjectRequest>;
 export type ETag = string;
 export type ContentType = string;
 export type NonNegativeLong = number;
@@ -122,16 +118,11 @@ export interface DescribeObjectResponse {
   CacheControl?: string;
   LastModified?: Date;
 }
-const DescribeObjectResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DescribeObjectResponse>;
 export type RangePattern = string;
 export interface GetObjectRequest {
   Path: string;
   Range?: string;
 }
-const GetObjectRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetObjectRequest>;
 export type ContentRangePattern = string;
 export type StatusCode = number;
 export interface GetObjectResponse {
@@ -144,7 +135,6 @@ export interface GetObjectResponse {
   LastModified?: Date;
   StatusCode: number;
 }
-const GetObjectResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetObjectResponse>;
 export type ListPathNaming = string;
 export type ListLimit = number;
 export type PaginationToken = string;
@@ -153,11 +143,8 @@ export interface ListItemsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListItemsRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListItemsRequest>;
 export type ItemName = string;
 export type ItemType = "OBJECT" | "FOLDER" | (string & {});
-const ItemType = S.String;
-
 export interface Item {
   Name?: string;
   Type?: ItemType;
@@ -166,20 +153,13 @@ export interface Item {
   ContentType?: string;
   ContentLength?: number;
 }
-const Item = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Item>;
 export type ItemList = Item[];
-const ItemList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ListItemsResponse {
   Items?: Item[];
   NextToken?: string;
 }
-const ListItemsResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListItemsResponse>;
 export type StorageClass = "TEMPORAL" | (string & {});
-const StorageClass = S.String;
-
 export type UploadAvailability = "STANDARD" | "STREAMING" | (string & {});
-const UploadAvailability = S.String;
-
 export interface PutObjectRequest {
   Body: T.StreamingInputBody;
   Path: string;
@@ -188,14 +168,12 @@ export interface PutObjectRequest {
   StorageClass?: StorageClass;
   UploadAvailability?: UploadAvailability;
 }
-const PutObjectRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PutObjectRequest>;
 export type SHA256Hash = string;
 export interface PutObjectResponse {
   ContentSHA256?: string;
   ETag?: string;
   StorageClass?: StorageClass;
 }
-const PutObjectResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PutObjectResponse>;
 export type ErrorMessage = string;
 export type DeleteObjectError =
   | ContainerNotFoundException
@@ -211,8 +189,8 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteObjectRequest,
-  output: DeleteObjectResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteObjectRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteObjectResponse>,
   errors: [ContainerNotFoundException, InternalServerError, ObjectNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -233,8 +211,8 @@ export const describeObject: API.OperationMethod<
   DescribeObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeObjectRequest,
-  output: DescribeObjectResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DescribeObjectRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DescribeObjectResponse>,
   errors: [ContainerNotFoundException, InternalServerError, ObjectNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -256,8 +234,8 @@ export const getObject: API.OperationMethod<
   GetObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectRequest,
-  output: GetObjectResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetObjectRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetObjectResponse>,
   errors: [
     ContainerNotFoundException,
     InternalServerError,
@@ -281,8 +259,8 @@ export const listItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListItemsRequest,
-  output: ListItemsResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<ListItemsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ListItemsResponse>,
   errors: [ContainerNotFoundException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -304,8 +282,8 @@ export const putObject: API.OperationMethod<
   PutObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutObjectRequest,
-  output: PutObjectResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<PutObjectRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<PutObjectResponse>,
   errors: [ContainerNotFoundException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -379,7 +357,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Type: S.optional(ItemType),
+          Type: S.optional(S.String),
           ETag: S.optional(S.String),
           LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ContentType: S.optional(S.String),
@@ -391,10 +369,10 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Item);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(ItemList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Items: S.optional(__S(8, __c1, 0)), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListItemsResponse" });
     case 2:
       return S.suspend(() =>
@@ -403,10 +381,8 @@ function __c1(j: number): any {
           Path: S.String.pipe(T.HttpLabel("Path")),
           ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-          StorageClass: S.optional(StorageClass).pipe(T.HttpHeader("x-amz-storage-class")),
-          UploadAvailability: S.optional(UploadAvailability).pipe(
-            T.HttpHeader("x-amz-upload-availability"),
-          ),
+          StorageClass: S.optional(S.String).pipe(T.HttpHeader("x-amz-storage-class")),
+          UploadAvailability: S.optional(S.String).pipe(T.HttpHeader("x-amz-upload-availability")),
         }).pipe(
           T.all(ns, T.Http({ method: "PUT", uri: "/{Path+}" }), svc, auth, proto, ver, rules),
         ),
@@ -416,8 +392,13 @@ function __c1(j: number): any {
         S.Struct({
           ContentSHA256: S.optional(S.String),
           ETag: S.optional(S.String),
-          StorageClass: S.optional(StorageClass),
+          StorageClass: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "PutObjectResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

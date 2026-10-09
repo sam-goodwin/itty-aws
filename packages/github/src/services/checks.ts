@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -44,8 +46,6 @@ export type CreateRequestStatus =
   | "waiting"
   | "requested"
   | "pending";
-const CreateRequestStatus = S.String;
-
 /** **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this. */
 export type CreateRequestConclusion =
   | "action_required"
@@ -56,12 +56,8 @@ export type CreateRequestConclusion =
   | "skipped"
   | "stale"
   | "timed_out";
-const CreateRequestConclusion = S.String;
-
 /** The level of the annotation. */
 export type CreateRequestOutputAnnotationsItemAnnotationLevel = "notice" | "warning" | "failure";
-const CreateRequestOutputAnnotationsItemAnnotationLevel = S.String;
-
 export interface CreateRequestOutputAnnotationsItem {
   /** The path of the file to add an annotation to. For example, `assets/css/main.css`. */
   path: string;
@@ -82,18 +78,8 @@ export interface CreateRequestOutputAnnotationsItem {
   /** Details about this annotation. The maximum size is 64 KB. */
   raw_details?: string;
 }
-const CreateRequestOutputAnnotationsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRequestOutputAnnotationsItem>;
-
 /** Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)". */
 export type CreateRequestOutputAnnotationsList = Array<CreateRequestOutputAnnotationsItem>;
-const CreateRequestOutputAnnotationsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRequestOutputAnnotationsList>;
-
 export interface CreateRequestOutputImagesItem {
   /** The alternative text for the image. */
   alt: string;
@@ -102,18 +88,8 @@ export interface CreateRequestOutputImagesItem {
   /** A short image description. */
   caption?: string;
 }
-const CreateRequestOutputImagesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateRequestOutputImagesItem>;
-
 /** Adds images to the output displayed in the GitHub pull request UI. */
 export type CreateRequestOutputImagesList = Array<CreateRequestOutputImagesItem>;
-const CreateRequestOutputImagesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateRequestOutputImagesList>;
-
 /** Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. */
 export interface CreateRequestOutput {
   /** The title of the check run. */
@@ -127,8 +103,6 @@ export interface CreateRequestOutput {
   /** Adds images to the output displayed in the GitHub pull request UI. */
   images?: CreateRequestOutputImagesList;
 }
-const CreateRequestOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateRequestOutput>;
-
 export interface CreateRequestActionsItem {
   /** The text to be displayed on a button in the web UI. The maximum size is 20 characters. */
   label: string;
@@ -137,18 +111,8 @@ export interface CreateRequestActionsItem {
   /** A reference for the action on the integrator's system. The maximum size is 20 characters. */
   identifier: string;
 }
-const CreateRequestActionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateRequestActionsItem>;
-
 /** Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)." */
 export type CreateRequestActionsList = Array<CreateRequestActionsItem>;
-const CreateRequestActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateRequestActionsList>;
-
 export interface CreateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -175,8 +139,6 @@ export interface CreateRequest {
   /** Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)." */
   actions?: CreateRequestActionsList;
 }
-const CreateRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateRequest>;
-
 /** The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs. */
 export type CheckRunStatus =
   | "queued"
@@ -185,8 +147,6 @@ export type CheckRunStatus =
   | "waiting"
   | "requested"
   | "pending";
-const CheckRunStatus = S.String;
-
 export type CheckRunConclusion =
   | "success"
   | "failure"
@@ -195,8 +155,6 @@ export type CheckRunConclusion =
   | "skipped"
   | "timed_out"
   | "action_required";
-const CheckRunConclusion = S.String;
-
 export interface CheckRunOutput {
   title: string | null;
   summary: string | null;
@@ -204,13 +162,9 @@ export interface CheckRunOutput {
   annotations_count: number;
   annotations_url: string;
 }
-const CheckRunOutput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CheckRunOutput>;
-
 export interface CheckRunCheckSuite {
   id: number;
 }
-const CheckRunCheckSuite = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CheckRunCheckSuite>;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -236,8 +190,6 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SimpleUser>;
-
 /** An enterprise on GitHub. */
 export interface Enterprise {
   /** A short description of the enterprise. */
@@ -257,8 +209,6 @@ export interface Enterprise {
   avatar_url: string;
 }
 export type NullableIntegrationOwner = SimpleUser | Enterprise;
-const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
-
 /** The set of permissions for the GitHub app */
 export interface NullableIntegrationPermissions {
   issues?: string;
@@ -267,18 +217,8 @@ export interface NullableIntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-const NullableIntegrationPermissions = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<NullableIntegrationPermissions>;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-const NullableIntegrationEventsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<NullableIntegrationEventsList>;
-
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
   /** Unique identifier of the GitHub app */
@@ -302,28 +242,16 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-const NullableIntegration = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<NullableIntegration>;
-
 export interface PullRequestMinimalHeadRepo {
   id: number;
   url: string;
   name: string;
 }
-const PullRequestMinimalHeadRepo = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PullRequestMinimalHeadRepo>;
-
 export interface PullRequestMinimalHead {
   ref: string;
   sha: string;
   repo: PullRequestMinimalHeadRepo;
 }
-const PullRequestMinimalHead = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PullRequestMinimalHead>;
-
 export type PullRequestMinimalBaseRepo = PullRequestMinimalHeadRepo;
 export type PullRequestMinimalBase = PullRequestMinimalHead;
 export interface PullRequestMinimal {
@@ -333,15 +261,8 @@ export interface PullRequestMinimal {
   head: PullRequestMinimalHead;
   base: PullRequestMinimalHead;
 }
-const PullRequestMinimal = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PullRequestMinimal>;
-
 /** Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check. */
 export type CheckRunPullRequestsList = Array<PullRequestMinimal>;
-const CheckRunPullRequestsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CheckRunPullRequestsList>;
-
 /** A deployment created as the result of an Actions check run from a workflow that references an environment */
 export interface DeploymentSimple {
   url: string;
@@ -364,8 +285,6 @@ export interface DeploymentSimple {
   production_environment?: boolean;
   performed_via_github_app?: NullableIntegration | null;
 }
-const DeploymentSimple = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeploymentSimple>;
-
 /** A check performed on the code of a given code change */
 export interface CheckRun {
   /** The id of the check. */
@@ -391,8 +310,6 @@ export interface CheckRun {
   pull_requests: CheckRunPullRequestsList;
   deployment?: DeploymentSimple;
 }
-const CheckRun = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CheckRun>;
-
 export interface CreateSuiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -401,8 +318,6 @@ export interface CreateSuiteRequest {
   /** The sha of the head commit. */
   head_sha: string;
 }
-const CreateSuiteRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateSuiteRequest>;
-
 /** The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites. */
 export type CheckSuiteStatus =
   | "queued"
@@ -411,8 +326,6 @@ export type CheckSuiteStatus =
   | "waiting"
   | "requested"
   | "pending";
-const CheckSuiteStatus = S.String;
-
 export type CheckSuiteConclusion =
   | "success"
   | "failure"
@@ -423,20 +336,10 @@ export type CheckSuiteConclusion =
   | "action_required"
   | "startup_failure"
   | "stale";
-const CheckSuiteConclusion = S.String;
-
 export type CheckSuitePullRequestsList = Array<PullRequestMinimal>;
-const CheckSuitePullRequestsList =
-  CheckRunPullRequestsList as any as S.Schema<CheckSuitePullRequestsList>;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-const MinimalRepositoryTopicsList =
-  NullableIntegrationEventsList as any as S.Schema<MinimalRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const MinimalRepositoryPullRequestCreationPolicy = S.String;
-
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -444,11 +347,6 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<MinimalRepositoryPermissions>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -457,8 +355,6 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CodeOfConduct>;
-
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -466,30 +362,15 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<MinimalRepositoryLicense>;
-
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
-
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
-
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-const SecurityAndAnalysisCodeSecurity =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
-
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -497,67 +378,38 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-const SecurityAndAnalysisDependabotSecurityUpdates =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
-
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-const SecurityAndAnalysisSecretScanning =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
-
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-const SecurityAndAnalysisSecretScanningPushProtection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
-
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-const SecurityAndAnalysisSecretScanningNonProviderPatterns =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
-
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-const SecurityAndAnalysisSecretScanningAiDetection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypass =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
-
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
-
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -566,28 +418,13 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -602,15 +439,8 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SecurityAndAnalysis>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
-
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -707,8 +537,6 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-const MinimalRepository = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<MinimalRepository>;
-
 /** Information about the Git author */
 export interface SimpleCommitAuthor {
   /** Name of the commit's author */
@@ -716,8 +544,6 @@ export interface SimpleCommitAuthor {
   /** Git email address of the commit's author */
   email: string;
 }
-const SimpleCommitAuthor = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SimpleCommitAuthor>;
-
 /** Information about the Git committer */
 export interface SimpleCommitCommitter {
   /** Name of the commit's committer */
@@ -725,8 +551,6 @@ export interface SimpleCommitCommitter {
   /** Git email address of the commit's committer */
   email: string;
 }
-const SimpleCommitCommitter = SimpleCommitAuthor as any as S.Schema<SimpleCommitCommitter>;
-
 /** A commit. */
 export interface SimpleCommit {
   /** SHA for the commit */
@@ -742,8 +566,6 @@ export interface SimpleCommit {
   /** Information about the Git committer */
   committer: SimpleCommitCommitter | null;
 }
-const SimpleCommit = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SimpleCommit>;
-
 /** A suite of checks performed on the code of a given code change */
 export interface CheckSuite {
   id: number;
@@ -768,8 +590,6 @@ export interface CheckSuite {
   rerequestable?: boolean;
   runs_rerequestable?: boolean;
 }
-const CheckSuite = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CheckSuite>;
-
 export interface GetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -778,8 +598,6 @@ export interface GetRequest {
   /** The unique identifier of the check run. */
   check_run_id: number;
 }
-const GetRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetRequest>;
-
 export interface GetSuiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -788,8 +606,6 @@ export interface GetSuiteRequest {
   /** The unique identifier of the check suite. */
   check_suite_id: number;
 }
-const GetSuiteRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetSuiteRequest>;
-
 export interface ListAnnotationsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -802,11 +618,6 @@ export interface ListAnnotationsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListAnnotationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListAnnotationsRequest>;
-
 /** Check Annotation */
 export interface CheckAnnotation {
   path: string;
@@ -820,26 +631,10 @@ export interface CheckAnnotation {
   raw_details: string | null;
   blob_href: string;
 }
-const CheckAnnotation = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CheckAnnotation>;
-
 export type ListAnnotationsResponseBodyList = Array<CheckAnnotation>;
-const ListAnnotationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListAnnotationsResponseBodyList>;
-
 export type ListAnnotationsResponse = ListAnnotationsResponseBodyList;
-const ListAnnotationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListAnnotationsResponse>;
-
 export type ListForRefRequestStatus = "queued" | "in_progress" | "completed";
-const ListForRefRequestStatus = S.String;
-
 export type ListForRefRequestFilter = "latest" | "all";
-const ListForRefRequestFilter = S.String;
-
 export interface ListForRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -859,26 +654,13 @@ export interface ListForRefRequest {
   page?: number;
   app_id?: number;
 }
-const ListForRefRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListForRefRequest>;
-
 export type ListForRefResponseCheckRunsList = Array<CheckRun>;
-const ListForRefResponseCheckRunsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListForRefResponseCheckRunsList>;
-
 export interface ListForRefResponse {
   total_count: number;
   check_runs: ListForRefResponseCheckRunsList;
 }
-const ListForRefResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListForRefResponse>;
-
 export type ListForSuiteRequestStatus = "queued" | "in_progress" | "completed";
-const ListForSuiteRequestStatus = S.String;
-
 export type ListForSuiteRequestFilter = "latest" | "all";
-const ListForSuiteRequestFilter = S.String;
-
 export interface ListForSuiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -897,15 +679,11 @@ export interface ListForSuiteRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForSuiteRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListForSuiteRequest>;
-
 export type ListForSuiteResponseCheckRunsList = Array<CheckRun>;
 export interface ListForSuiteResponse {
   total_count: number;
   check_runs: ListForSuiteResponseCheckRunsList;
 }
-const ListForSuiteResponse = ListForRefResponse as any as S.Schema<ListForSuiteResponse>;
-
 export interface ListSuitesForRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -922,26 +700,11 @@ export interface ListSuitesForRefRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListSuitesForRefRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListSuitesForRefRequest>;
-
 export type ListSuitesForRefResponseCheckSuitesList = Array<CheckSuite>;
-const ListSuitesForRefResponseCheckSuitesList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListSuitesForRefResponseCheckSuitesList>;
-
 export interface ListSuitesForRefResponse {
   total_count: number;
   check_suites: ListSuitesForRefResponseCheckSuitesList;
 }
-const ListSuitesForRefResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListSuitesForRefResponse>;
-
 export interface RerequestSuiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -950,17 +713,7 @@ export interface RerequestSuiteRequest {
   /** The unique identifier of the check suite. */
   check_suite_id: number;
 }
-const RerequestSuiteRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<RerequestSuiteRequest>;
-
 export type RerequestSuiteResponse = unknown;
-const RerequestSuiteResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<RerequestSuiteResponse>;
-
 export interface RunRerequestRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -969,30 +722,16 @@ export interface RunRerequestRequest {
   /** The unique identifier of the check run. */
   check_run_id: number;
 }
-const RunRerequestRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<RunRerequestRequest>;
-
 export type RunRerequestResponse = unknown;
-const RunRerequestResponse = RerequestSuiteResponse as any as S.Schema<RunRerequestResponse>;
-
 export interface SetSuitesPreferencesRequestAutoTriggerChecksItem {
   /** The `id` of the GitHub App. */
   app_id: number;
   /** Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them. */
   setting: boolean;
 }
-const SetSuitesPreferencesRequestAutoTriggerChecksItem = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<SetSuitesPreferencesRequestAutoTriggerChecksItem>;
-
 /** Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. */
 export type SetSuitesPreferencesRequestAutoTriggerChecksList =
   Array<SetSuitesPreferencesRequestAutoTriggerChecksItem>;
-const SetSuitesPreferencesRequestAutoTriggerChecksList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SetSuitesPreferencesRequestAutoTriggerChecksList>;
-
 export interface SetSuitesPreferencesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1001,35 +740,20 @@ export interface SetSuitesPreferencesRequest {
   /** Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. */
   auto_trigger_checks?: SetSuitesPreferencesRequestAutoTriggerChecksList;
 }
-const SetSuitesPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<SetSuitesPreferencesRequest>;
-
 export interface CheckSuitePreferencePreferencesAutoTriggerChecksItem {
   app_id: number;
   setting: boolean;
 }
 export type CheckSuitePreferencePreferencesAutoTriggerChecksList =
   Array<CheckSuitePreferencePreferencesAutoTriggerChecksItem>;
-const CheckSuitePreferencePreferencesAutoTriggerChecksList =
-  SetSuitesPreferencesRequestAutoTriggerChecksList as any as S.Schema<CheckSuitePreferencePreferencesAutoTriggerChecksList>;
-
 export interface CheckSuitePreferencePreferences {
   auto_trigger_checks?: CheckSuitePreferencePreferencesAutoTriggerChecksList;
 }
-const CheckSuitePreferencePreferences = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CheckSuitePreferencePreferences>;
-
 /** Check suite configuration preferences for a repository. */
 export interface CheckSuitePreference {
   preferences: CheckSuitePreferencePreferences;
   repository: MinimalRepository;
 }
-const CheckSuitePreference = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<CheckSuitePreference>;
-
 /** The current status of the check run. Only GitHub Actions can set a status of `waiting`, `pending`, or `requested`. */
 export type UpdateRequestStatus =
   | "queued"
@@ -1038,8 +762,6 @@ export type UpdateRequestStatus =
   | "waiting"
   | "requested"
   | "pending";
-const UpdateRequestStatus = S.String;
-
 /** **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this. */
 export type UpdateRequestConclusion =
   | "action_required"
@@ -1050,8 +772,6 @@ export type UpdateRequestConclusion =
   | "skipped"
   | "stale"
   | "timed_out";
-const UpdateRequestConclusion = S.String;
-
 /** The level of the annotation. */
 export type UpdateRequestOutputAnnotationsItemAnnotationLevel = "notice" | "warning" | "failure";
 export interface UpdateRequestOutputAnnotationsItem {
@@ -1076,15 +796,9 @@ export interface UpdateRequestOutputAnnotationsItem {
 }
 /** Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)". */
 export type UpdateRequestOutputAnnotationsList = Array<UpdateRequestOutputAnnotationsItem>;
-const UpdateRequestOutputAnnotationsList =
-  CreateRequestOutputAnnotationsList as any as S.Schema<UpdateRequestOutputAnnotationsList>;
-
 export type UpdateRequestOutputImagesItem = CreateRequestOutputImagesItem;
 /** Adds images to the output displayed in the GitHub pull request UI. */
 export type UpdateRequestOutputImagesList = Array<CreateRequestOutputImagesItem>;
-const UpdateRequestOutputImagesList =
-  CreateRequestOutputImagesList as any as S.Schema<UpdateRequestOutputImagesList>;
-
 /** Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. */
 export interface UpdateRequestOutput {
   /** **Required**. */
@@ -1098,14 +812,9 @@ export interface UpdateRequestOutput {
   /** Adds images to the output displayed in the GitHub pull request UI. */
   images?: UpdateRequestOutputImagesList;
 }
-const UpdateRequestOutput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UpdateRequestOutput>;
-
 export type UpdateRequestActionsItem = CreateRequestActionsItem;
 /** Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)." */
 export type UpdateRequestActionsList = Array<CreateRequestActionsItem>;
-const UpdateRequestActionsList =
-  CreateRequestActionsList as any as S.Schema<UpdateRequestActionsList>;
-
 export interface UpdateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1132,14 +841,12 @@ export interface UpdateRequest {
   /** Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)." */
   actions?: UpdateRequestActionsList;
 }
-const UpdateRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<UpdateRequest>;
-
 export type CreateError = GithubOpError;
 /** Create a check run Creates a new check run for a specific commit in a repository. To create a check run, you must use a GitHub App. OAuth apps and authenticated users are not able to create a check suite. In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these check runs exceed 1000, GitHub will start to automatically delete older check runs. > [!NOTE] > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array. */
 export const create: API.OperationMethod<CreateRequest, CheckRun, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: CreateRequest,
-    output: CheckRun,
+    input: __S(7, __c0, 7) as any as S.Schema<CreateRequest>,
+    output: __S(19, __c2, 3) as any as S.Schema<CheckRun>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1153,8 +860,8 @@ export const createSuite: API.OperationMethod<
   CreateSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSuiteRequest,
-  output: CheckSuite,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateSuiteRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CheckSuite>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1164,8 +871,8 @@ export type GetError = GithubOpError;
 /** Get a check run Gets a single check run using its `id`. > [!NOTE] > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository. */
 export const get: API.OperationMethod<GetRequest, CheckRun, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: CheckRun,
+    input: __S(35, __c4, 3) as any as S.Schema<GetRequest>,
+    output: __S(19, __c2, 3) as any as S.Schema<CheckRun>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1179,8 +886,8 @@ export const getSuite: API.OperationMethod<
   GetSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSuiteRequest,
-  output: CheckSuite,
+  input: __S(36, __c4, 4) as any as S.Schema<GetSuiteRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CheckSuite>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1194,8 +901,8 @@ export const listAnnotations: API.OperationMethod<
   ListAnnotationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAnnotationsRequest,
-  output: ListAnnotationsResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<ListAnnotationsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ListAnnotationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1209,8 +916,8 @@ export const listForRef: API.OperationMethod<
   ListForRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForRefRequest,
-  output: ListForRefResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<ListForRefRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListForRefResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1224,8 +931,8 @@ export const listForSuite: API.OperationMethod<
   ListForSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForSuiteRequest,
-  output: ListForSuiteResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<ListForSuiteRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListForSuiteResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1239,8 +946,8 @@ export const listSuitesForRef: API.OperationMethod<
   ListSuitesForRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSuitesForRefRequest,
-  output: ListSuitesForRefResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<ListSuitesForRefRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListSuitesForRefResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1254,8 +961,8 @@ export const rerequestSuite: API.OperationMethod<
   RerequestSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RerequestSuiteRequest,
-  output: RerequestSuiteResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<RerequestSuiteRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<RerequestSuiteResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1269,8 +976,8 @@ export const runRerequest: API.OperationMethod<
   RunRerequestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunRerequestRequest,
-  output: RunRerequestResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<RunRerequestRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<RunRerequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1284,8 +991,8 @@ export const setSuitesPreferences: API.OperationMethod<
   SetSuitesPreferencesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetSuitesPreferencesRequest,
-  output: CheckSuitePreference,
+  input: __S(53, __c6, 5) as any as S.Schema<SetSuitesPreferencesRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<CheckSuitePreference>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1002,8 @@ export type UpdateError = GithubOpError;
 /** Update a check run Updates a check run for a specific commit in a repository. > [!NOTE] > The endpoints to manage checks only look for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array. OAuth apps and personal access tokens (classic) cannot use this endpoint. */
 export const update: API.OperationMethod<UpdateRequest, CheckRun, UpdateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: UpdateRequest,
-    output: CheckRun,
+    input: __S(57, __c7, 1) as any as S.Schema<UpdateRequest>,
+    output: __S(19, __c2, 3) as any as S.Schema<CheckRun>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1313,7 +1020,7 @@ function __c0(j: number): any {
           end_line: S.Number,
           start_column: S.optional(S.Number),
           end_column: S.optional(S.Number),
-          annotation_level: CreateRequestOutputAnnotationsItemAnnotationLevel,
+          annotation_level: S.String,
           message: S.String,
           title: S.optional(S.String),
           raw_details: S.optional(S.String),
@@ -1322,7 +1029,7 @@ function __c0(j: number): any {
         identifier: "CreateRequestOutputAnnotationsItem",
       });
     case 1:
-      return S.Array(CreateRequestOutputAnnotationsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1334,15 +1041,15 @@ function __c0(j: number): any {
         identifier: "CreateRequestOutputImagesItem",
       });
     case 3:
-      return S.Array(CreateRequestOutputImagesItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           summary: S.String,
           text: S.optional(S.String),
-          annotations: S.optional(CreateRequestOutputAnnotationsList),
-          images: S.optional(CreateRequestOutputImagesList),
+          annotations: S.optional(__S(1, __c0, 1)),
+          images: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "CreateRequestOutput" });
     case 5:
@@ -1354,7 +1061,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CreateRequestActionsItem" });
     case 6:
-      return S.Array(CreateRequestActionsItem);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1364,12 +1071,12 @@ function __c0(j: number): any {
           head_sha: S.String,
           details_url: S.optional(S.String),
           external_id: S.optional(S.String),
-          status: S.optional(CreateRequestStatus),
+          status: S.optional(S.String),
           started_at: S.optional(S.String),
-          conclusion: S.optional(CreateRequestConclusion),
+          conclusion: S.optional(S.String),
           completed_at: S.optional(S.String),
-          output: S.optional(CreateRequestOutput),
-          actions: S.optional(CreateRequestActionsList),
+          output: S.optional(__S(4, __c0, 4)),
+          actions: S.optional(__S(6, __c0, 6)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/check-runs", code: 200 })),
       ).annotate({ identifier: "CreateRequest" });
   }
@@ -1440,15 +1147,15 @@ function __c1(j: number): any {
           slug: S.optional(S.String),
           node_id: S.String,
           client_id: S.optional(S.String),
-          owner: NullableIntegrationOwner,
+          owner: S.Unknown,
           name: S.String,
           description: S.NullOr(S.String),
           external_url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: NullableIntegrationPermissions,
-          events: NullableIntegrationEventsList,
+          permissions: __S(11, __c1, 3),
+          events: __S(12, __c1, 4),
           installations_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableIntegration" });
@@ -1467,7 +1174,7 @@ function __c1(j: number): any {
         S.Struct({
           ref: S.String,
           sha: S.String,
-          repo: PullRequestMinimalHeadRepo,
+          repo: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "PullRequestMinimalHead" });
   }
@@ -1480,12 +1187,12 @@ function __c2(j: number): any {
           id: S.Number,
           number: S.Number,
           url: S.String,
-          head: PullRequestMinimalHead,
-          base: PullRequestMinimalHead,
+          head: __S(15, __c1, 7),
+          base: __S(15, __c1, 7),
         }),
       ).annotate({ identifier: "PullRequestMinimal" });
     case 1:
-      return S.Array(PullRequestMinimal);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1502,7 +1209,7 @@ function __c2(j: number): any {
           repository_url: S.String,
           transient_environment: S.optional(S.Boolean),
           production_environment: S.optional(S.Boolean),
-          performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
+          performed_via_github_app: S.optional(S.NullOr(__S(13, __c1, 5))),
         }),
       ).annotate({ identifier: "DeploymentSimple" });
     case 3:
@@ -1515,16 +1222,16 @@ function __c2(j: number): any {
           url: S.String,
           html_url: S.NullOr(S.String),
           details_url: S.NullOr(S.String),
-          status: CheckRunStatus,
-          conclusion: S.NullOr(CheckRunConclusion),
+          status: S.String,
+          conclusion: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
-          output: CheckRunOutput,
+          output: __S(8, __c1, 0) as any as S.Schema<CheckRunOutput>,
           name: S.String,
-          check_suite: S.NullOr(CheckRunCheckSuite),
-          app: S.NullOr(NullableIntegration),
-          pull_requests: CheckRunPullRequestsList,
-          deployment: S.optional(DeploymentSimple),
+          check_suite: S.NullOr(__S(9, __c1, 1)),
+          app: S.NullOr(__S(13, __c1, 5)),
+          pull_requests: __S(17, __c2, 1),
+          deployment: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "CheckRun" });
     case 4:
@@ -1574,7 +1281,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -1582,7 +1289,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -1591,23 +1298,18 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 3:
-      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -1615,26 +1317,16 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
-          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
-          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            SecurityAndAnalysisSecretScanningPushProtection,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            SecurityAndAnalysisSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(24, __c3, 0)),
+          code_security: S.optional(__S(24, __c3, 0)),
+          dependabot_security_updates: S.optional(__S(24, __c3, 0)),
+          secret_scanning: S.optional(__S(24, __c3, 0)),
+          secret_scanning_push_protection: S.optional(__S(24, __c3, 0)),
+          secret_scanning_non_provider_patterns: S.optional(__S(24, __c3, 0)),
+          secret_scanning_ai_detection: S.optional(__S(24, __c3, 0)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(25, __c3, 1)),
+          secret_scanning_delegated_bypass: S.optional(__S(24, __c3, 0)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 6:
@@ -1646,7 +1338,7 @@ function __c3(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(10, __c1, 2),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1702,7 +1394,7 @@ function __c3(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(MinimalRepositoryTopicsList),
+          topics: S.optional(__S(12, __c1, 4)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1710,28 +1402,28 @@ function __c3(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(MinimalRepositoryPermissions),
+          permissions: S.optional(__S(21, __c2, 5)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(CodeOfConduct),
-          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
+          code_of_conduct: S.optional(__S(22, __c2, 6)),
+          license: S.optional(S.NullOr(__S(23, __c2, 7))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
+          security_and_analysis: S.optional(S.NullOr(__S(29, __c3, 5))),
+          custom_properties: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
   }
@@ -1752,8 +1444,8 @@ function __c4(j: number): any {
           tree_id: S.String,
           message: S.String,
           timestamp: S.String,
-          author: S.NullOr(SimpleCommitAuthor),
-          committer: S.NullOr(SimpleCommitCommitter),
+          author: S.NullOr(__S(32, __c4, 0)),
+          committer: S.NullOr(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "SimpleCommit" });
     case 2:
@@ -1763,17 +1455,17 @@ function __c4(j: number): any {
           node_id: S.String,
           head_branch: S.NullOr(S.String),
           head_sha: S.String,
-          status: S.NullOr(CheckSuiteStatus),
-          conclusion: S.NullOr(CheckSuiteConclusion),
+          status: S.NullOr(S.String),
+          conclusion: S.NullOr(S.String),
           url: S.NullOr(S.String),
           before: S.NullOr(S.String),
           after: S.NullOr(S.String),
-          pull_requests: S.NullOr(CheckSuitePullRequestsList),
-          app: S.NullOr(NullableIntegration),
-          repository: MinimalRepository,
+          pull_requests: S.NullOr(__S(17, __c2, 1)),
+          app: S.NullOr(__S(13, __c1, 5)),
+          repository: __S(31, __c3, 7),
           created_at: S.NullOr(S.String),
           updated_at: S.NullOr(S.String),
-          head_commit: SimpleCommit,
+          head_commit: __S(33, __c4, 1),
           latest_check_runs_count: S.Number,
           check_runs_url: S.String,
           rerequestable: S.optional(S.Boolean),
@@ -1840,13 +1532,13 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "CheckAnnotation" });
     case 7:
-      return S.Array(CheckAnnotation);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListAnnotationsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAnnotationsResponse",
       });
     case 1:
@@ -1856,8 +1548,8 @@ function __c5(j: number): any {
           repo: S.String.pipe(T.Label()),
           ref: S.String.pipe(T.Label()),
           check_name: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListForRefRequestStatus.pipe(T.Query())),
-          filter: S.optional(ListForRefRequestFilter.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           app_id: S.optional(S.Number.pipe(T.Query())),
@@ -1870,12 +1562,12 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListForRefRequest" });
     case 2:
-      return S.Array(CheckRun);
+      return S.Array(__S(19, __c2, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          check_runs: ListForRefResponseCheckRunsList,
+          check_runs: __S(42, __c5, 2),
         }),
       ).annotate({ identifier: "ListForRefResponse" });
     case 4:
@@ -1885,8 +1577,8 @@ function __c5(j: number): any {
           repo: S.String.pipe(T.Label()),
           check_suite_id: S.Number.pipe(T.Label()),
           check_name: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListForSuiteRequestStatus.pipe(T.Query())),
-          filter: S.optional(ListForSuiteRequestFilter.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1916,12 +1608,12 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListSuitesForRefRequest" });
     case 6:
-      return S.Array(CheckSuite);
+      return S.Array(__S(34, __c4, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          check_suites: ListSuitesForRefResponseCheckSuitesList,
+          check_suites: __S(46, __c5, 6),
         }),
       ).annotate({ identifier: "ListSuitesForRefResponse" });
   }
@@ -1970,13 +1662,13 @@ function __c6(j: number): any {
         identifier: "SetSuitesPreferencesRequestAutoTriggerChecksItem",
       });
     case 4:
-      return S.Array(SetSuitesPreferencesRequestAutoTriggerChecksItem);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          auto_trigger_checks: S.optional(SetSuitesPreferencesRequestAutoTriggerChecksList),
+          auto_trigger_checks: S.optional(__S(52, __c6, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1990,7 +1682,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          auto_trigger_checks: S.optional(CheckSuitePreferencePreferencesAutoTriggerChecksList),
+          auto_trigger_checks: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "CheckSuitePreferencePreferences",
@@ -1998,8 +1690,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          preferences: CheckSuitePreferencePreferences,
-          repository: MinimalRepository,
+          preferences: __S(54, __c6, 6),
+          repository: __S(31, __c3, 7),
         }),
       ).annotate({ identifier: "CheckSuitePreference" });
   }
@@ -2012,8 +1704,8 @@ function __c7(j: number): any {
           title: S.optional(S.String),
           summary: S.String,
           text: S.optional(S.String),
-          annotations: S.optional(UpdateRequestOutputAnnotationsList),
-          images: S.optional(UpdateRequestOutputImagesList),
+          annotations: S.optional(__S(1, __c0, 1)),
+          images: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "UpdateRequestOutput" });
     case 1:
@@ -2026,11 +1718,11 @@ function __c7(j: number): any {
           details_url: S.optional(S.String),
           external_id: S.optional(S.String),
           started_at: S.optional(S.String),
-          status: S.optional(UpdateRequestStatus),
-          conclusion: S.optional(UpdateRequestConclusion),
+          status: S.optional(S.String),
+          conclusion: S.optional(S.String),
           completed_at: S.optional(S.String),
-          output: S.optional(UpdateRequestOutput),
-          actions: S.optional(UpdateRequestActionsList),
+          output: S.optional(__S(56, __c7, 0)),
+          actions: S.optional(__S(6, __c0, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2040,4 +1732,9 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "UpdateRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

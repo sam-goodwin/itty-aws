@@ -8,6 +8,8 @@ import { paginateByTotalPages } from "../pagination.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -61,42 +63,23 @@ export interface CloneZoneRequest {
   /** New Name for the cloned zone. Leave empty to use the same name as the original zone */
   name?: string;
 }
-const CloneZoneRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CloneZoneRequest>;
-
 export type DomainObservabilityExtensionState = "CREATING" | "CREATE_SUCCEEDED" | "ERROR";
-const DomainObservabilityExtensionState = S.String;
-
 export interface DomainObservabilityExtension {
   observabilityInstanceId: string;
   state?: DomainObservabilityExtensionState;
 }
-const DomainObservabilityExtension = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DomainObservabilityExtension>;
-
 export interface DomainExtensions {
   observabilityExtension?: DomainObservabilityExtension;
 }
-const DomainExtensions = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DomainExtensions>;
-
 export interface Label {
   key: string;
   value?: string;
 }
-const Label = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Label>;
-
 export type ZoneLabelsList = Array<Label>;
-const ZoneLabelsList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ZoneLabelsList>;
-
 /** labels for the zone */
 export type ZoneLabelsMapMap = { [key: string]: string | undefined };
-const ZoneLabelsMapMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ZoneLabelsMapMap>;
-
 /** primary name server for secondary zone */
 export type ZonePrimariesList = Array<string>;
-const ZonePrimariesList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ZonePrimariesList>;
-
 /** zone state */
 export type ZoneState =
   | "CREATING"
@@ -108,16 +91,10 @@ export type ZoneState =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-const ZoneState = S.String;
-
 /** zone type */
 export type ZoneType = "primary" | "secondary";
-const ZoneType = S.String;
-
 /** visibility of the zone */
 export type ZoneVisibility = "public";
-const ZoneVisibility = S.String;
-
 /** Zone. */
 export interface Zone {
   /** access control list */
@@ -174,15 +151,11 @@ export interface Zone {
   /** visibility of the zone */
   visibility: ZoneVisibility;
 }
-const Zone = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Zone>;
-
 /** ResponseZone for user info. */
 export interface ZoneResponse {
   message?: string;
   zone: Zone;
 }
-const ZoneResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ZoneResponse>;
-
 export interface CreateMoveCodeRequest {
   /** project id */
   projectId: string;
@@ -191,11 +164,6 @@ export interface CreateMoveCodeRequest {
   /** TTL is the duration for which the move code is valid, represented as seconds. Min: 1, Max: 2592000 (30 days). */
   ttl?: number;
 }
-const CreateMoveCodeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateMoveCodeRequest>;
-
 export interface MoveCodeResponse {
   /** code to move the zone. It is one time shown so better keep it. */
   code: string;
@@ -204,22 +172,13 @@ export interface MoveCodeResponse {
   /** human readable message */
   message?: string;
 }
-const MoveCodeResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MoveCodeResponse>;
-
 /** RecordPost for rr set info. */
 export interface RecordPayload {
   /** content of the record */
   content: string;
 }
-const RecordPayload = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RecordPayload>;
-
 /** records */
 export type CreateRecordSetRequestRecordsList = Array<RecordPayload>;
-const CreateRecordSetRequestRecordsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateRecordSetRequestRecordsList>;
-
 /** record set type */
 export type CreateRecordSetRequestType =
   | "A"
@@ -247,8 +206,6 @@ export type CreateRecordSetRequestType =
   | "CSYNC"
   | "HINFO"
   | "HTTPS";
-const CreateRecordSetRequestType = S.String;
-
 export interface CreateRecordSetRequest {
   /** project id */
   projectId: string;
@@ -265,11 +222,6 @@ export interface CreateRecordSetRequest {
   /** record set type */
   type: CreateRecordSetRequestType | (string & {});
 }
-const CreateRecordSetRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateRecordSetRequest>;
-
 /** Record. */
 export interface Record {
   /** content of the record */
@@ -277,12 +229,8 @@ export interface Record {
   /** rr set id */
   id: string;
 }
-const Record = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Record>;
-
 /** records */
 export type RecordSetRecordsList = Array<Record>;
-const RecordSetRecordsList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<RecordSetRecordsList>;
-
 /** record set state */
 export type RecordSetState =
   | "CREATING"
@@ -294,8 +242,6 @@ export type RecordSetState =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-const RecordSetState = S.String;
-
 /** record set type */
 export type RecordSetType =
   | "A"
@@ -323,8 +269,6 @@ export type RecordSetType =
   | "CSYNC"
   | "HINFO"
   | "HTTPS";
-const RecordSetType = S.String;
-
 /** RRSet. */
 export interface RecordSet {
   /** if the record set is active or not */
@@ -354,42 +298,23 @@ export interface RecordSet {
   /** when record set update/deletion started */
   updateStarted: string;
 }
-const RecordSet = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RecordSet>;
-
 /** ResponseRRSet for rr set info. */
 export interface RecordSetResponse {
   message?: string;
   rrset: RecordSet;
 }
-const RecordSetResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<RecordSetResponse>;
-
 export interface ZoneObservabilityExtension {
   observabilityInstanceId: string;
 }
-const ZoneObservabilityExtension = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ZoneObservabilityExtension>;
-
 export interface ZoneExtensions {
   observabilityExtension?: ZoneObservabilityExtension;
 }
-const ZoneExtensions = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ZoneExtensions>;
-
 /** labels for the zone - max 64 items. Keys: 1-314 chars (up to 250 prefix, 1 for slash, 1-63 the actual key). Values: 0-63 chars. */
 export type CreateZoneRequestLabelsMapMap = { [key: string]: string | undefined };
-const CreateZoneRequestLabelsMapMap =
-  ZoneLabelsMapMap as any as S.Schema<CreateZoneRequestLabelsMapMap>;
-
 /** primary name server for secondary zone */
 export type CreateZoneRequestPrimariesList = Array<string>;
-const CreateZoneRequestPrimariesList =
-  ZonePrimariesList as any as S.Schema<CreateZoneRequestPrimariesList>;
-
 /** zone type */
 export type CreateZoneRequestType = "primary" | "secondary";
-const CreateZoneRequestType = S.String;
-
 export interface CreateZoneRequest {
   /** project id */
   projectId: string;
@@ -424,24 +349,15 @@ export interface CreateZoneRequest {
   /** zone type */
   type?: CreateZoneRequestType | (string & {});
 }
-const CreateZoneRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateZoneRequest>;
-
 export interface DeleteMoveCodeRequest {
   /** project id */
   projectId: string;
   /** zone id */
   zoneId: string;
 }
-const DeleteMoveCodeRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteMoveCodeRequest>;
-
 export interface Message {
   message?: string;
 }
-const Message = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Message>;
-
 export interface DeleteRecordSetRequest {
   /** project id */
   projectId: string;
@@ -450,22 +366,13 @@ export interface DeleteRecordSetRequest {
   /** record set id */
   rrSetId: string;
 }
-const DeleteRecordSetRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteRecordSetRequest>;
-
 export interface DeleteZoneRequest {
   /** project id */
   projectId: string;
   /** zone id */
   zoneId: string;
 }
-const DeleteZoneRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteZoneRequest>;
-
 export type ExportRecordSetsRequestFormat = "csv" | "json" | "bind";
-const ExportRecordSetsRequestFormat = S.String;
-
 export interface ExportRecordSetsRequest {
   /** project id */
   projectId: string;
@@ -474,15 +381,7 @@ export interface ExportRecordSetsRequest {
   exportAsFQDN?: boolean;
   format?: ExportRecordSetsRequestFormat | (string & {});
 }
-const ExportRecordSetsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ExportRecordSetsRequest>;
-
 export type RecordDataExchangeContentList = Array<string>;
-const RecordDataExchangeContentList =
-  ZonePrimariesList as any as S.Schema<RecordDataExchangeContentList>;
-
 export interface RecordDataExchange {
   comment?: string;
   content?: RecordDataExchangeContentList;
@@ -490,19 +389,10 @@ export interface RecordDataExchange {
   ttl?: number;
   type?: string;
 }
-const RecordDataExchange = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RecordDataExchange>;
-
 export type ZoneDataExchangeRrSetsList = Array<RecordDataExchange>;
-const ZoneDataExchangeRrSetsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ZoneDataExchangeRrSetsList>;
-
 export interface ZoneDataExchange {
   rrSets?: ZoneDataExchangeRrSetsList;
 }
-const ZoneDataExchange = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ZoneDataExchange>;
-
 export interface GetRecordSetRequest {
   /** project id */
   projectId: string;
@@ -511,34 +401,21 @@ export interface GetRecordSetRequest {
   /** record set id */
   rrSetId: string;
 }
-const GetRecordSetRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetRecordSetRequest>;
-
 export interface GetZoneRequest {
   /** project id */
   projectId: string;
   /** zone id */
   zoneId: string;
 }
-const GetZoneRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetZoneRequest>;
-
 export interface GetZoneRequest2 {
   /** project id */
   projectId: string;
   /** zone id */
   zoneId: string;
 }
-const GetZoneRequest2 = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetZoneRequest2>;
-
 export type ImportRecordSetsRequestFormat = "json" | "csv" | "bind";
-const ImportRecordSetsRequestFormat = S.String;
-
 export type ImportRecordSetsRequestImportType = "restore" | "delete" | "update" | "upsert";
-const ImportRecordSetsRequestImportType = S.String;
-
 export type ZoneModelsImportRecordModelContentList = Array<string>;
-const ZoneModelsImportRecordModelContentList =
-  ZonePrimariesList as any as S.Schema<ZoneModelsImportRecordModelContentList>;
-
 export interface ZoneModelsImportRecordModel {
   comment?: string;
   content?: ZoneModelsImportRecordModelContentList;
@@ -546,17 +423,7 @@ export interface ZoneModelsImportRecordModel {
   ttl?: number;
   type?: string;
 }
-const ZoneModelsImportRecordModel = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ZoneModelsImportRecordModel>;
-
 export type ImportRecordSetsRequestRrSetsList = Array<ZoneModelsImportRecordModel>;
-const ImportRecordSetsRequestRrSetsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ImportRecordSetsRequestRrSetsList>;
-
 export interface ImportRecordSetsRequest {
   /** project id */
   projectId: string;
@@ -568,11 +435,6 @@ export interface ImportRecordSetsRequest {
   importType?: ImportRecordSetsRequestImportType | (string & {});
   rrSets?: ImportRecordSetsRequestRrSetsList;
 }
-const ImportRecordSetsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ImportRecordSetsRequest>;
-
 /** ImportSummary is the summary of the import. */
 export interface ImportSummary {
   createdRRSets?: number;
@@ -582,18 +444,11 @@ export interface ImportSummary {
   updatedRRSets?: number;
   updatedRecords?: number;
 }
-const ImportSummary = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ImportSummary>;
-
 /** ImportSummaryResponse is the response of the import. */
 export interface ImportRecordSetsResponse {
   message?: string;
   summary: ImportSummary;
 }
-const ImportRecordSetsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ImportRecordSetsResponse>;
-
 export type ListRecordSetsRequestTypeEq =
   | "A"
   | "AAAA"
@@ -620,8 +475,6 @@ export type ListRecordSetsRequestTypeEq =
   | "CSYNC"
   | "HINFO"
   | "HTTPS";
-const ListRecordSetsRequestTypeEq = S.String;
-
 export type ListRecordSetsRequestStateEq =
   | "CREATING"
   | "CREATE_SUCCEEDED"
@@ -632,8 +485,6 @@ export type ListRecordSetsRequestStateEq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-const ListRecordSetsRequestStateEq = S.String;
-
 export type ListRecordSetsRequestStateNeq =
   | "CREATING"
   | "CREATE_SUCCEEDED"
@@ -644,32 +495,14 @@ export type ListRecordSetsRequestStateNeq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-const ListRecordSetsRequestStateNeq = S.String;
-
 export type ListRecordSetsRequestOrderByName = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByName = S.String;
-
 export type ListRecordSetsRequestOrderByCreationStarted = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByCreationStarted = S.String;
-
 export type ListRecordSetsRequestOrderByCreationFinished = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByCreationFinished = S.String;
-
 export type ListRecordSetsRequestOrderByUpdateStarted = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByUpdateStarted = S.String;
-
 export type ListRecordSetsRequestOrderByUpdateFinished = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByUpdateFinished = S.String;
-
 export type ListRecordSetsRequestOrderByType = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByType = S.String;
-
 export type ListRecordSetsRequestOrderByState = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByState = S.String;
-
 export type ListRecordSetsRequestOrderByRecordCount = "ASC" | "DESC";
-const ListRecordSetsRequestOrderByRecordCount = S.String;
-
 export interface ListRecordSetsRequest {
   /** project id */
   projectId: string;
@@ -740,17 +573,7 @@ export interface ListRecordSetsRequest {
   /** order by record count */
   orderBy_recordCount_?: ListRecordSetsRequestOrderByRecordCount | (string & {});
 }
-const ListRecordSetsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListRecordSetsRequest>;
-
 export type ListRecordSetsResponseRrSetsList = Array<RecordSet>;
-const ListRecordSetsResponseRrSetsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListRecordSetsResponseRrSetsList>;
-
 /** ResponseRRSetAll. */
 export interface ListRecordSetsResponse {
   itemsPerPage: number;
@@ -759,14 +582,7 @@ export interface ListRecordSetsResponse {
   totalItems: number;
   totalPages: number;
 }
-const ListRecordSetsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListRecordSetsResponse>;
-
 export type ListZonesRequestTypeEq = "primary" | "secondary";
-const ListZonesRequestTypeEq = S.String;
-
 export type ListZonesRequestStateEq =
   | "CREATING"
   | "CREATE_SUCCEEDED"
@@ -777,8 +593,6 @@ export type ListZonesRequestStateEq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-const ListZonesRequestStateEq = S.String;
-
 export type ListZonesRequestStateNeq =
   | "CREATING"
   | "CREATE_SUCCEEDED"
@@ -789,43 +603,17 @@ export type ListZonesRequestStateNeq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-const ListZonesRequestStateNeq = S.String;
-
 export type ListZonesRequestLabelKeyEqList = Array<string>;
-const ListZonesRequestLabelKeyEqList =
-  ZonePrimariesList as any as S.Schema<ListZonesRequestLabelKeyEqList>;
-
 export type ListZonesRequestLabelValueEqList = Array<string>;
-const ListZonesRequestLabelValueEqList =
-  ZonePrimariesList as any as S.Schema<ListZonesRequestLabelValueEqList>;
-
 export type ListZonesRequestOrderByDnsName = "ASC" | "DESC";
-const ListZonesRequestOrderByDnsName = S.String;
-
 export type ListZonesRequestOrderByName = "ASC" | "DESC";
-const ListZonesRequestOrderByName = S.String;
-
 export type ListZonesRequestOrderByRecordCount = "ASC" | "DESC";
-const ListZonesRequestOrderByRecordCount = S.String;
-
 export type ListZonesRequestOrderByType = "ASC" | "DESC";
-const ListZonesRequestOrderByType = S.String;
-
 export type ListZonesRequestOrderByDescription = "ASC" | "DESC";
-const ListZonesRequestOrderByDescription = S.String;
-
 export type ListZonesRequestOrderByCreationStarted = "ASC" | "DESC";
-const ListZonesRequestOrderByCreationStarted = S.String;
-
 export type ListZonesRequestOrderByCreationFinished = "ASC" | "DESC";
-const ListZonesRequestOrderByCreationFinished = S.String;
-
 export type ListZonesRequestOrderByUpdateStarted = "ASC" | "DESC";
-const ListZonesRequestOrderByUpdateStarted = S.String;
-
 export type ListZonesRequestOrderByUpdateFinished = "ASC" | "DESC";
-const ListZonesRequestOrderByUpdateFinished = S.String;
-
 export interface ListZonesRequest {
   /** project id */
   projectId: string;
@@ -918,14 +706,7 @@ export interface ListZonesRequest {
   /** order by updateFinished */
   orderBy_updateFinished_?: ListZonesRequestOrderByUpdateFinished | (string & {});
 }
-const ListZonesRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListZonesRequest>;
-
 export type ListZonesResponseZonesList = Array<Zone>;
-const ListZonesResponseZonesList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListZonesResponseZonesList>;
-
 /** ResponseZoneAll for filtered zones. */
 export interface ListZonesResponse {
   itemsPerPage: number;
@@ -934,8 +715,6 @@ export interface ListZonesResponse {
   totalPages: number;
   zones: ListZonesResponseZonesList;
 }
-const ListZonesResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListZonesResponse>;
-
 export interface MoveZoneRequest {
   /** project id */
   projectId: string;
@@ -944,16 +723,9 @@ export interface MoveZoneRequest {
   /** ZoneDnsName is the dns name of the zone to move */
   zoneDnsName: string;
 }
-const MoveZoneRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<MoveZoneRequest>;
-
 export type PartialUpdateRecordRequestAction = "add" | "delete";
-const PartialUpdateRecordRequestAction = S.String;
-
 /** records */
 export type PartialUpdateRecordRequestRecordsList = Array<RecordPayload>;
-const PartialUpdateRecordRequestRecordsList =
-  CreateRecordSetRequestRecordsList as any as S.Schema<PartialUpdateRecordRequestRecordsList>;
-
 export interface PartialUpdateRecordRequest {
   /** project id */
   projectId: string;
@@ -965,16 +737,8 @@ export interface PartialUpdateRecordRequest {
   /** records */
   records: PartialUpdateRecordRequestRecordsList;
 }
-const PartialUpdateRecordRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PartialUpdateRecordRequest>;
-
 /** records */
 export type PartialUpdateRecordSetRequestRecordsList = Array<RecordPayload>;
-const PartialUpdateRecordSetRequestRecordsList =
-  CreateRecordSetRequestRecordsList as any as S.Schema<PartialUpdateRecordSetRequestRecordsList>;
-
 export interface PartialUpdateRecordSetRequest {
   /** project id */
   projectId: string;
@@ -991,21 +755,10 @@ export interface PartialUpdateRecordSetRequest {
   /** time to live */
   ttl?: number;
 }
-const PartialUpdateRecordSetRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PartialUpdateRecordSetRequest>;
-
 /** labels for the zone - max 64 items. Keys: 1-314 chars (up to 250 prefix, 1 for slash, 1-63 the actual key). Values: 0-63 chars. */
 export type PartialUpdateZoneRequestLabelsMapMap = { [key: string]: string | undefined };
-const PartialUpdateZoneRequestLabelsMapMap =
-  ZoneLabelsMapMap as any as S.Schema<PartialUpdateZoneRequestLabelsMapMap>;
-
 /** primary name server for secondary zone */
 export type PartialUpdateZoneRequestPrimariesList = Array<string>;
-const PartialUpdateZoneRequestPrimariesList =
-  ZonePrimariesList as any as S.Schema<PartialUpdateZoneRequestPrimariesList>;
-
 export interface PartialUpdateZoneRequest {
   /** project id */
   projectId: string;
@@ -1036,11 +789,6 @@ export interface PartialUpdateZoneRequest {
   /** retry time */
   retryTime?: number;
 }
-const PartialUpdateZoneRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PartialUpdateZoneRequest>;
-
 export interface RestoreRecordSetRequest {
   /** project id */
   projectId: string;
@@ -1049,19 +797,12 @@ export interface RestoreRecordSetRequest {
   /** record set id */
   rrSetId: string;
 }
-const RestoreRecordSetRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<RestoreRecordSetRequest>;
-
 export interface RestoreZoneRequest {
   /** project id */
   projectId: string;
   /** zone id */
   zoneId: string;
 }
-const RestoreZoneRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<RestoreZoneRequest>;
-
 export interface ValidateMoveCodeRequest {
   /** project id */
   projectId: string;
@@ -1070,11 +811,6 @@ export interface ValidateMoveCodeRequest {
   /** code that should be validated. It validates if it is valid, not expired and belongs to the zone. */
   code: string;
 }
-const ValidateMoveCodeRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ValidateMoveCodeRequest>;
-
 export type CloneZoneError = BadRequest | NotFound | Conflict | StackitOpError;
 /** Clone an existing zone with all record sets to a new zone with a different name Clone an existing zone with all record sets to a new zone with a different name */
 export const cloneZone: API.OperationMethod<
@@ -1083,8 +819,8 @@ export const cloneZone: API.OperationMethod<
   CloneZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloneZoneRequest,
-  output: ZoneResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CloneZoneRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1098,8 +834,8 @@ export const createMoveCode: API.OperationMethod<
   CreateMoveCodeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMoveCodeRequest,
-  output: MoveCodeResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateMoveCodeRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<MoveCodeResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1113,8 +849,8 @@ export const createRecordSet: API.OperationMethod<
   CreateRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRecordSetRequest,
-  output: RecordSetResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateRecordSetRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<RecordSetResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1128,8 +864,8 @@ export const createZone: API.OperationMethod<
   CreateZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateZoneRequest,
-  output: ZoneResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateZoneRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1143,8 +879,8 @@ export const deleteMoveCode: API.OperationMethod<
   DeleteMoveCodeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMoveCodeRequest,
-  output: Message,
+  input: __S(21, __c2, 5) as any as S.Schema<DeleteMoveCodeRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1158,8 +894,8 @@ export const deleteRecordSet: API.OperationMethod<
   DeleteRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecordSetRequest,
-  output: Message,
+  input: __S(23, __c2, 7) as any as S.Schema<DeleteRecordSetRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1173,8 +909,8 @@ export const deleteZone: API.OperationMethod<
   DeleteZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteZoneRequest,
-  output: Message,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteZoneRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1188,8 +924,8 @@ export const exportRecordSets: API.OperationMethod<
   ExportRecordSetsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportRecordSetsRequest,
-  output: ZoneDataExchange,
+  input: __S(25, __c3, 1) as any as S.Schema<ExportRecordSetsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ZoneDataExchange>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1203,8 +939,8 @@ export const getRecordSet: API.OperationMethod<
   GetRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecordSetRequest,
-  output: RecordSetResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<GetRecordSetRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<RecordSetResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1218,8 +954,8 @@ export const getZone: API.OperationMethod<
   GetZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetZoneRequest,
-  output: ZoneResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<GetZoneRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1233,8 +969,8 @@ export const getZone2: API.OperationMethod<
   GetZone2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetZoneRequest2,
-  output: Message,
+  input: __S(31, __c3, 7) as any as S.Schema<GetZoneRequest2>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1248,8 +984,8 @@ export const importRecordSets: API.OperationMethod<
   ImportRecordSetsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportRecordSetsRequest,
-  output: ImportRecordSetsResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<ImportRecordSetsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ImportRecordSetsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1265,8 +1001,8 @@ export const listRecordSets: API.PaginatedOperationMethod<
   RecordSet
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRecordSetsRequest,
-    output: ListRecordSetsResponse,
+    input: __S(37, __c4, 5) as any as S.Schema<ListRecordSetsRequest>,
+    output: __S(39, __c4, 7) as any as S.Schema<ListRecordSetsResponse>,
     errors: [BadRequest, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -1291,8 +1027,8 @@ export const listZones: API.PaginatedOperationMethod<
   Zone
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListZonesRequest,
-    output: ListZonesResponse,
+    input: __S(40, __c5, 0) as any as S.Schema<ListZonesRequest>,
+    output: __S(42, __c5, 2) as any as S.Schema<ListZonesResponse>,
     errors: [BadRequest, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -1315,8 +1051,8 @@ export const moveZone: API.OperationMethod<
   MoveZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveZoneRequest,
-  output: Message,
+  input: __S(43, __c5, 3) as any as S.Schema<MoveZoneRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1066,8 @@ export const partialUpdateRecord: API.OperationMethod<
   PartialUpdateRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateRecordRequest,
-  output: Message,
+  input: __S(44, __c5, 4) as any as S.Schema<PartialUpdateRecordRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1081,8 @@ export const partialUpdateRecordSet: API.OperationMethod<
   PartialUpdateRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateRecordSetRequest,
-  output: Message,
+  input: __S(45, __c5, 5) as any as S.Schema<PartialUpdateRecordSetRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1096,8 @@ export const partialUpdateZone: API.OperationMethod<
   PartialUpdateZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateZoneRequest,
-  output: ZoneResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<PartialUpdateZoneRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1111,8 @@ export const restoreRecordSet: API.OperationMethod<
   RestoreRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreRecordSetRequest,
-  output: Message,
+  input: __S(47, __c5, 7) as any as S.Schema<RestoreRecordSetRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1126,8 @@ export const restoreZone: API.OperationMethod<
   RestoreZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreZoneRequest,
-  output: Message,
+  input: __S(48, __c6, 0) as any as S.Schema<RestoreZoneRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1141,8 @@ export const validateMoveCode: API.OperationMethod<
   ValidateMoveCodeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateMoveCodeRequest,
-  output: Message,
+  input: __S(49, __c6, 1) as any as S.Schema<ValidateMoveCodeRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Message>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1437,7 +1173,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           observabilityInstanceId: S.String,
-          state: S.optional(DomainObservabilityExtensionState),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DomainObservabilityExtension",
@@ -1445,7 +1181,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          observabilityExtension: S.optional(DomainObservabilityExtension),
+          observabilityExtension: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "DomainExtensions" });
     case 3:
@@ -1456,7 +1192,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Label" });
     case 4:
-      return S.Array(Label);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.Record(S.String, S.String);
     case 6:
@@ -1474,24 +1210,24 @@ function __c0(j: number): any {
           dnsName: S.String,
           error: S.optional(S.String),
           expireTime: S.Number,
-          extensions: S.optional(DomainExtensions),
+          extensions: S.optional(__S(2, __c0, 2)),
           id: S.String,
           isReverseZone: S.optional(S.Boolean),
-          labels: S.optional(ZoneLabelsList),
-          labelsMap: S.optional(ZoneLabelsMapMap),
+          labels: S.optional(__S(4, __c0, 4)),
+          labelsMap: S.optional(__S(5, __c0, 5)),
           name: S.String,
           negativeCache: S.Number,
-          primaries: S.optional(ZonePrimariesList),
+          primaries: S.optional(__S(6, __c0, 6)),
           primaryNameServer: S.String,
           recordCount: S.optional(S.Number),
           refreshTime: S.Number,
           retryTime: S.Number,
           serialNumber: S.Number,
-          state: ZoneState,
-          type: ZoneType,
+          state: S.String,
+          type: S.String,
           updateFinished: S.String,
           updateStarted: S.String,
-          visibility: ZoneVisibility,
+          visibility: S.String,
         }),
       ).annotate({ identifier: "Zone" });
   }
@@ -1502,7 +1238,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          zone: Zone,
+          zone: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "ZoneResponse" });
     case 1:
@@ -1535,7 +1271,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "RecordPayload" });
     case 4:
-      return S.Array(RecordPayload);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1543,9 +1279,9 @@ function __c1(j: number): any {
           zoneId: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
           name: S.String,
-          records: CreateRecordSetRequestRecordsList,
+          records: __S(12, __c1, 4),
           ttl: S.optional(S.Number),
-          type: CreateRecordSetRequestType,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1563,7 +1299,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Record" });
     case 7:
-      return S.Array(Record);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1578,10 +1314,10 @@ function __c2(j: number): any {
           error: S.optional(S.String),
           id: S.String,
           name: S.String,
-          records: RecordSetRecordsList,
-          state: RecordSetState,
+          records: __S(15, __c1, 7),
+          state: S.String,
           ttl: S.Number,
-          type: RecordSetType,
+          type: S.String,
           updateFinished: S.String,
           updateStarted: S.String,
         }),
@@ -1590,7 +1326,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          rrset: RecordSet,
+          rrset: __S(16, __c2, 0),
         }),
       ).annotate({ identifier: "RecordSetResponse" });
     case 2:
@@ -1604,7 +1340,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          observabilityExtension: S.optional(ZoneObservabilityExtension),
+          observabilityExtension: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ZoneExtensions" });
     case 4:
@@ -1617,15 +1353,15 @@ function __c2(j: number): any {
           description: S.optional(S.String),
           dnsName: S.String,
           expireTime: S.optional(S.Number),
-          extensions: S.optional(ZoneExtensions),
+          extensions: S.optional(__S(19, __c2, 3)),
           isReverseZone: S.optional(S.Boolean),
-          labelsMap: S.optional(CreateZoneRequestLabelsMapMap),
+          labelsMap: S.optional(__S(5, __c0, 5)),
           name: S.String,
           negativeCache: S.optional(S.Number),
-          primaries: S.optional(CreateZoneRequestPrimariesList),
+          primaries: S.optional(__S(6, __c0, 6)),
           refreshTime: S.optional(S.Number),
           retryTime: S.optional(S.Number),
-          type: S.optional(CreateZoneRequestType),
+          type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1694,7 +1430,7 @@ function __c3(j: number): any {
           projectId: S.String.pipe(T.Label()),
           zoneId: S.String.pipe(T.Label()),
           exportAsFQDN: S.optional(S.Boolean),
-          format: S.optional(ExportRecordSetsRequestFormat),
+          format: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1708,18 +1444,18 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          content: S.optional(RecordDataExchangeContentList),
+          content: S.optional(__S(6, __c0, 6)),
           name: S.optional(S.String),
           ttl: S.optional(S.Number),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordDataExchange" });
     case 3:
-      return S.Array(RecordDataExchange);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rrSets: S.optional(ZoneDataExchangeRrSetsList),
+          rrSets: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "ZoneDataExchange" });
     case 5:
@@ -1773,7 +1509,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          content: S.optional(ZoneModelsImportRecordModelContentList),
+          content: S.optional(__S(6, __c0, 6)),
           name: S.optional(S.String),
           ttl: S.optional(S.Number),
           type: S.optional(S.String),
@@ -1782,15 +1518,15 @@ function __c4(j: number): any {
         identifier: "ZoneModelsImportRecordModel",
       });
     case 1:
-      return S.Array(ZoneModelsImportRecordModel);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           zoneId: S.String.pipe(T.Label()),
-          format: S.optional(ImportRecordSetsRequestFormat.pipe(T.Query())),
-          importType: S.optional(ImportRecordSetsRequestImportType.pipe(T.Query())),
-          rrSets: S.optional(ImportRecordSetsRequestRrSetsList),
+          format: S.optional(S.String.pipe(T.Query())),
+          importType: S.optional(S.String.pipe(T.Query())),
+          rrSets: S.optional(__S(33, __c4, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1815,7 +1551,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          summary: ImportSummary,
+          summary: __S(35, __c4, 3),
         }),
       ).annotate({ identifier: "ImportRecordSetsResponse" });
     case 5:
@@ -1827,9 +1563,9 @@ function __c4(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name_eq_: S.optional(S.String.pipe(T.Query("name[eq]"))),
           name_like_: S.optional(S.String.pipe(T.Query("name[like]"))),
-          type_eq_: S.optional(ListRecordSetsRequestTypeEq.pipe(T.Query("type[eq]"))),
-          state_eq_: S.optional(ListRecordSetsRequestStateEq.pipe(T.Query("state[eq]"))),
-          state_neq_: S.optional(ListRecordSetsRequestStateNeq.pipe(T.Query("state[neq]"))),
+          type_eq_: S.optional(S.String.pipe(T.Query("type[eq]"))),
+          state_eq_: S.optional(S.String.pipe(T.Query("state[eq]"))),
+          state_neq_: S.optional(S.String.pipe(T.Query("state[neq]"))),
           active_eq_: S.optional(S.Boolean.pipe(T.Query("active[eq]"))),
           creationStarted_gt_: S.optional(S.String.pipe(T.Query("creationStarted[gt]"))),
           creationStarted_lt_: S.optional(S.String.pipe(T.Query("creationStarted[lt]"))),
@@ -1847,30 +1583,16 @@ function __c4(j: number): any {
           updateFinished_lt_: S.optional(S.String.pipe(T.Query("updateFinished[lt]"))),
           updateFinished_gte_: S.optional(S.String.pipe(T.Query("updateFinished[gte]"))),
           updateFinished_lte_: S.optional(S.String.pipe(T.Query("updateFinished[lte]"))),
-          orderBy_name_: S.optional(
-            ListRecordSetsRequestOrderByName.pipe(T.Query("orderBy[name]")),
-          ),
-          orderBy_creationStarted_: S.optional(
-            ListRecordSetsRequestOrderByCreationStarted.pipe(T.Query("orderBy[creationStarted]")),
-          ),
+          orderBy_name_: S.optional(S.String.pipe(T.Query("orderBy[name]"))),
+          orderBy_creationStarted_: S.optional(S.String.pipe(T.Query("orderBy[creationStarted]"))),
           orderBy_creationFinished_: S.optional(
-            ListRecordSetsRequestOrderByCreationFinished.pipe(T.Query("orderBy[creationFinished]")),
+            S.String.pipe(T.Query("orderBy[creationFinished]")),
           ),
-          orderBy_updateStarted_: S.optional(
-            ListRecordSetsRequestOrderByUpdateStarted.pipe(T.Query("orderBy[updateStarted]")),
-          ),
-          orderBy_updateFinished_: S.optional(
-            ListRecordSetsRequestOrderByUpdateFinished.pipe(T.Query("orderBy[updateFinished]")),
-          ),
-          orderBy_type_: S.optional(
-            ListRecordSetsRequestOrderByType.pipe(T.Query("orderBy[type]")),
-          ),
-          orderBy_state_: S.optional(
-            ListRecordSetsRequestOrderByState.pipe(T.Query("orderBy[state]")),
-          ),
-          orderBy_recordCount_: S.optional(
-            ListRecordSetsRequestOrderByRecordCount.pipe(T.Query("orderBy[recordCount]")),
-          ),
+          orderBy_updateStarted_: S.optional(S.String.pipe(T.Query("orderBy[updateStarted]"))),
+          orderBy_updateFinished_: S.optional(S.String.pipe(T.Query("orderBy[updateFinished]"))),
+          orderBy_type_: S.optional(S.String.pipe(T.Query("orderBy[type]"))),
+          orderBy_state_: S.optional(S.String.pipe(T.Query("orderBy[state]"))),
+          orderBy_recordCount_: S.optional(S.String.pipe(T.Query("orderBy[recordCount]"))),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1881,13 +1603,13 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListRecordSetsRequest" });
     case 6:
-      return S.Array(RecordSet);
+      return S.Array(__S(16, __c2, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
           itemsPerPage: S.Number,
           message: S.optional(S.String),
-          rrSets: ListRecordSetsResponseRrSetsList,
+          rrSets: __S(38, __c4, 6),
           totalItems: S.Number,
           totalPages: S.Number,
         }),
@@ -1904,15 +1626,15 @@ function __c5(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           dnsName_eq_: S.optional(S.String.pipe(T.Query("dnsName[eq]"))),
           dnsName_like_: S.optional(S.String.pipe(T.Query("dnsName[like]"))),
-          type_eq_: S.optional(ListZonesRequestTypeEq.pipe(T.Query("type[eq]"))),
+          type_eq_: S.optional(S.String.pipe(T.Query("type[eq]"))),
           name_eq_: S.optional(S.String.pipe(T.Query("name[eq]"))),
           name_neq_: S.optional(S.String.pipe(T.Query("name[neq]"))),
           name_like_: S.optional(S.String.pipe(T.Query("name[like]"))),
           description_eq_: S.optional(S.String.pipe(T.Query("description[eq]"))),
           description_neq_: S.optional(S.String.pipe(T.Query("description[neq]"))),
           description_like_: S.optional(S.String.pipe(T.Query("description[like]"))),
-          state_eq_: S.optional(ListZonesRequestStateEq.pipe(T.Query("state[eq]"))),
-          state_neq_: S.optional(ListZonesRequestStateNeq.pipe(T.Query("state[neq]"))),
+          state_eq_: S.optional(S.String.pipe(T.Query("state[eq]"))),
+          state_neq_: S.optional(S.String.pipe(T.Query("state[neq]"))),
           primaryNameServer_eq_: S.optional(S.String.pipe(T.Query("primaryNameServer[eq]"))),
           primaryNameServer_like_: S.optional(S.String.pipe(T.Query("primaryNameServer[like]"))),
           isReverseZone_eq_: S.optional(S.Boolean.pipe(T.Query("isReverseZone[eq]"))),
@@ -1933,33 +1655,19 @@ function __c5(j: number): any {
           updateFinished_lt_: S.optional(S.String.pipe(T.Query("updateFinished[lt]"))),
           updateFinished_gte_: S.optional(S.String.pipe(T.Query("updateFinished[gte]"))),
           updateFinished_lte_: S.optional(S.String.pipe(T.Query("updateFinished[lte]"))),
-          labelKey_eq_: S.optional(ListZonesRequestLabelKeyEqList.pipe(T.Query("labelKey[eq]"))),
-          labelValue_eq_: S.optional(
-            ListZonesRequestLabelValueEqList.pipe(T.Query("labelValue[eq]")),
-          ),
-          orderBy_dnsName_: S.optional(
-            ListZonesRequestOrderByDnsName.pipe(T.Query("orderBy[dnsName]")),
-          ),
-          orderBy_name_: S.optional(ListZonesRequestOrderByName.pipe(T.Query("orderBy[name]"))),
-          orderBy_recordCount_: S.optional(
-            ListZonesRequestOrderByRecordCount.pipe(T.Query("orderBy[recordCount]")),
-          ),
-          orderBy_type_: S.optional(ListZonesRequestOrderByType.pipe(T.Query("orderBy[type]"))),
-          orderBy_description_: S.optional(
-            ListZonesRequestOrderByDescription.pipe(T.Query("orderBy[description]")),
-          ),
-          orderBy_creationStarted_: S.optional(
-            ListZonesRequestOrderByCreationStarted.pipe(T.Query("orderBy[creationStarted]")),
-          ),
+          labelKey_eq_: S.optional(__S(6, __c0, 6).pipe(T.Query("labelKey[eq]"))),
+          labelValue_eq_: S.optional(__S(6, __c0, 6).pipe(T.Query("labelValue[eq]"))),
+          orderBy_dnsName_: S.optional(S.String.pipe(T.Query("orderBy[dnsName]"))),
+          orderBy_name_: S.optional(S.String.pipe(T.Query("orderBy[name]"))),
+          orderBy_recordCount_: S.optional(S.String.pipe(T.Query("orderBy[recordCount]"))),
+          orderBy_type_: S.optional(S.String.pipe(T.Query("orderBy[type]"))),
+          orderBy_description_: S.optional(S.String.pipe(T.Query("orderBy[description]"))),
+          orderBy_creationStarted_: S.optional(S.String.pipe(T.Query("orderBy[creationStarted]"))),
           orderBy_creationFinished_: S.optional(
-            ListZonesRequestOrderByCreationFinished.pipe(T.Query("orderBy[creationFinished]")),
+            S.String.pipe(T.Query("orderBy[creationFinished]")),
           ),
-          orderBy_updateStarted_: S.optional(
-            ListZonesRequestOrderByUpdateStarted.pipe(T.Query("orderBy[updateStarted]")),
-          ),
-          orderBy_updateFinished_: S.optional(
-            ListZonesRequestOrderByUpdateFinished.pipe(T.Query("orderBy[updateFinished]")),
-          ),
+          orderBy_updateStarted_: S.optional(S.String.pipe(T.Query("orderBy[updateStarted]"))),
+          orderBy_updateFinished_: S.optional(S.String.pipe(T.Query("orderBy[updateFinished]"))),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1970,7 +1678,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListZonesRequest" });
     case 1:
-      return S.Array(Zone);
+      return S.Array(__S(7, __c0, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1978,7 +1686,7 @@ function __c5(j: number): any {
           message: S.optional(S.String),
           totalItems: S.Number,
           totalPages: S.Number,
-          zones: ListZonesResponseZonesList,
+          zones: __S(41, __c5, 1),
         }),
       ).annotate({ identifier: "ListZonesResponse" });
     case 3:
@@ -2002,8 +1710,8 @@ function __c5(j: number): any {
           projectId: S.String.pipe(T.Label()),
           zoneId: S.String.pipe(T.Label()),
           rrSetId: S.String.pipe(T.Label()),
-          action: PartialUpdateRecordRequestAction,
-          records: PartialUpdateRecordRequestRecordsList,
+          action: S.String,
+          records: __S(12, __c1, 4),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2023,7 +1731,7 @@ function __c5(j: number): any {
           rrSetId: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
           name: S.optional(S.String),
-          records: S.optional(PartialUpdateRecordSetRequestRecordsList),
+          records: S.optional(__S(12, __c1, 4)),
           ttl: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -2046,11 +1754,11 @@ function __c5(j: number): any {
           defaultTTL: S.optional(S.Number),
           description: S.optional(S.String),
           expireTime: S.optional(S.Number),
-          extensions: S.optional(ZoneExtensions),
-          labelsMap: S.optional(PartialUpdateZoneRequestLabelsMapMap),
+          extensions: S.optional(__S(19, __c2, 3)),
+          labelsMap: S.optional(__S(5, __c0, 5)),
           name: S.optional(S.String),
           negativeCache: S.optional(S.Number),
-          primaries: S.optional(PartialUpdateZoneRequestPrimariesList),
+          primaries: S.optional(__S(6, __c0, 6)),
           refreshTime: S.optional(S.Number),
           retryTime: S.optional(S.Number),
         }).pipe(
@@ -2111,4 +1819,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ValidateMoveCodeRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

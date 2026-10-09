@@ -6,6 +6,8 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -13,8 +15,6 @@ export interface GetJobRequest {
   /** ID of the job */
   jobId: string;
 }
-const GetJobRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetJobRequest>;
-
 /** The type of the job */
 export type JobType =
   | "CREATE_SANDBOX"
@@ -33,19 +33,11 @@ export type JobType =
   | "SNAPSHOT_SANDBOX"
   | "FORK_SANDBOX"
   | "PAUSE_SANDBOX";
-const JobType = S.String;
-
 export type JobStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED";
-const JobStatus = S.String;
-
 /** The type of resource this job operates on */
 export type JobResourceType = "SANDBOX" | "SNAPSHOT" | "BACKUP";
-const JobResourceType = S.String;
-
 /** OpenTelemetry trace context for distributed tracing (W3C Trace Context format) */
 export type JobTraceContextMap = { [key: string]: unknown | undefined };
-const JobTraceContextMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<JobTraceContextMap>;
-
 export interface Job {
   /** The ID of the job */
   id: string;
@@ -68,8 +60,6 @@ export interface Job {
   /** The last update timestamp of the job */
   updatedAt?: string;
 }
-const Job = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Job>;
-
 export interface ListJobsRequest {
   /** Page number of the results */
   page?: number;
@@ -80,41 +70,25 @@ export interface ListJobsRequest {
   /** Number of jobs to skip for pagination (default: 0) */
   offset?: number;
 }
-const ListJobsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListJobsRequest>;
-
 export type PaginatedJobsItemsList = Array<Job>;
-const PaginatedJobsItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PaginatedJobsItemsList>;
-
 export interface PaginatedJobs {
   items: PaginatedJobsItemsList;
   total: number;
   page: number;
   totalPages: number;
 }
-const PaginatedJobs = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PaginatedJobs>;
-
 export interface PollJobsRequest {
   /** Timeout in seconds for long polling (default: 30, max: 60) */
   timeout?: number;
   /** Maximum number of jobs to return (default: 10, max: 100) */
   limit?: number;
 }
-const PollJobsRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PollJobsRequest>;
-
 /** List of jobs */
 export type PollJobsResponseJobsList = Array<Job>;
-const PollJobsResponseJobsList =
-  PaginatedJobsItemsList as any as S.Schema<PollJobsResponseJobsList>;
-
 export interface PollJobsResponse {
   /** List of jobs */
   jobs: PollJobsResponseJobsList;
 }
-const PollJobsResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PollJobsResponse>;
-
 export interface UpdateJobStatusRequest {
   /** ID of the job */
   jobId: string;
@@ -125,17 +99,12 @@ export interface UpdateJobStatusRequest {
   /** Result metadata for the job */
   resultMetadata?: string;
 }
-const UpdateJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UpdateJobStatusRequest>;
-
 export type GetJobError = DaytonaOpError;
 /** Get job details */
 export const getJob: API.OperationMethod<GetJobRequest, Job, GetJobError, DaytonaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetJobRequest,
-    output: Job,
+    input: __S(0, __c0, 0) as any as S.Schema<GetJobRequest>,
+    output: __S(2, __c0, 2) as any as S.Schema<Job>,
     errors: [UnknownDaytonaError],
     protocol: DaytonaProtocol,
     retry: Retry.Retry,
@@ -149,8 +118,8 @@ export const listJobs: API.OperationMethod<
   ListJobsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListJobsRequest,
-  output: PaginatedJobs,
+  input: __S(3, __c0, 3) as any as S.Schema<ListJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaginatedJobs>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -164,8 +133,8 @@ export const pollJobs: API.OperationMethod<
   PollJobsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PollJobsRequest,
-  output: PollJobsResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<PollJobsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<PollJobsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -179,8 +148,8 @@ export const updateJobStatus: API.OperationMethod<
   UpdateJobStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJobStatusRequest,
-  output: Job,
+  input: __S(8, __c1, 0) as any as S.Schema<UpdateJobStatusRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Job>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -201,12 +170,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: JobType,
-          status: JobStatus,
-          resourceType: JobResourceType,
+          type: S.String,
+          status: S.String,
+          resourceType: S.String,
           resourceId: S.String,
           payload: S.optional(S.String),
-          traceContext: S.optional(JobTraceContextMap),
+          traceContext: S.optional(__S(1, __c0, 1)),
           errorMessage: S.optional(S.String),
           createdAt: S.String,
           updatedAt: S.optional(S.String),
@@ -217,16 +186,16 @@ function __c0(j: number): any {
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(JobStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/jobs", code: 200 })),
       ).annotate({ identifier: "ListJobsRequest" });
     case 4:
-      return S.Array(Job);
+      return S.Array(__S(2, __c0, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: PaginatedJobsItemsList,
+          items: __S(4, __c0, 4),
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
@@ -242,7 +211,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          jobs: PollJobsResponseJobsList,
+          jobs: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "PollJobsResponse" });
   }
@@ -253,10 +222,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobId: S.String.pipe(T.Label()),
-          status: JobStatus,
+          status: S.String,
           errorMessage: S.optional(S.String),
           resultMetadata: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/jobs/{jobId}/status", code: 200 })),
       ).annotate({ identifier: "UpdateJobStatusRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

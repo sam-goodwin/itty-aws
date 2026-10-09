@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -15,8 +17,6 @@ export interface DndInfoRequest {
   /** Encoded team id where passed in user param belongs, required if org token is used. If no user param is passed, then a team which has access to the app should be passed */
   team_id?: string;
 }
-const DndInfoRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DndInfoRequest>;
-
 export interface DndInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -29,20 +29,12 @@ export interface DndInfoResponse {
   snooze_is_indefinite?: boolean;
   dnd_profile_status?: unknown;
 }
-const DndInfoResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DndInfoResponse>;
-
 export interface EndDndRequest {}
-const EndDndRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<EndDndRequest>;
-
 export interface EndDndResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const EndDndResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EndDndResponse>;
-
 export interface EndSnoozeRequest {}
-const EndSnoozeRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EndSnoozeRequest>;
-
 export interface EndSnoozeResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -54,14 +46,10 @@ export interface EndSnoozeResponse {
   snooze_remaining?: number;
   dnd_profile_status?: unknown;
 }
-const EndSnoozeResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EndSnoozeResponse>;
-
 export interface SetSnoozeRequest {
   /** This argument is required. Number of minutes, from now, to snooze until. */
   num_minutes: string;
 }
-const SetSnoozeRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SetSnoozeRequest>;
-
 export interface SetSnoozeResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -70,29 +58,18 @@ export interface SetSnoozeResponse {
   snooze_remaining?: number;
   snooze_is_indefinite?: boolean;
 }
-const SetSnoozeResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SetSnoozeResponse>;
-
 export interface TeamInfoRequest {
   /** Comma-separated list of users to fetch Do Not Disturb status for */
   users: string;
   /** Encoded team id where passed in users belong, required if org token is used */
   team_id?: string;
 }
-const TeamInfoRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TeamInfoRequest>;
-
 export type TeamInfoResponseUsersMap = { [key: string]: unknown | undefined };
-const TeamInfoResponseUsersMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<TeamInfoResponseUsersMap>;
-
 export interface TeamInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   users: TeamInfoResponseUsersMap;
 }
-const TeamInfoResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TeamInfoResponse>;
-
 export type DndInfoError = SlackOpError;
 /** Retrieves a user's current Do Not Disturb status. Required scopes -- bot: `dnd:read`; user: `dnd:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `user_not_found` -- Value passed for `user` was invalid. - `user_not_visible` -- User is not visible for this request. See https://docs.slack.dev/reference/methods/dnd.info */
 export const dndInfo: API.OperationMethod<
@@ -101,8 +78,8 @@ export const dndInfo: API.OperationMethod<
   DndInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DndInfoRequest,
-  output: DndInfoResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DndInfoRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DndInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -116,8 +93,8 @@ export const endDnd: API.OperationMethod<
   EndDndError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndDndRequest,
-  output: EndDndResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<EndDndRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<EndDndResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -131,8 +108,8 @@ export const endSnooze: API.OperationMethod<
   EndSnoozeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndSnoozeRequest,
-  output: EndSnoozeResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<EndSnoozeRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<EndSnoozeResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -146,8 +123,8 @@ export const setSnooze: API.OperationMethod<
   SetSnoozeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetSnoozeRequest,
-  output: SetSnoozeResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<SetSnoozeRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<SetSnoozeResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -161,8 +138,8 @@ export const teamInfo: API.OperationMethod<
   TeamInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TeamInfoRequest,
-  output: TeamInfoResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<TeamInfoRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<TeamInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -252,8 +229,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          users: TeamInfoResponseUsersMap,
+          users: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "TeamInfoResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

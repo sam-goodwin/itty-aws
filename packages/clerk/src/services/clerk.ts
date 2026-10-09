@@ -8,6 +8,8 @@ import { UnknownClerkError } from "../errors.ts";
 import { ClerkProtocol, type ClerkOpError, type ClerkOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ClerkOpError, ClerkOpContext };
 
@@ -64,35 +66,20 @@ export interface AddDomainRequest {
   /** The full URL of the proxy which will forward requests to the Clerk Frontend API for this domain. Applicable only to production instances. */
   proxy_url?: string | null;
 }
-const AddDomainRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddDomainRequest>;
-
 export type DomainObject = "domain";
-const DomainObject = S.String;
-
 export interface CNameTarget {
   host: string;
   value: string;
   /** Denotes whether this CNAME target is required to be set in order for the domain to be considered deployed. */
   required: boolean;
 }
-const CNameTarget = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CNameTarget>;
-
 /** Legacy CNAME-only DNS targets. Prefer `dns_targets` when present. */
 export type DomainCnameTargetsList = Array<CNameTarget>;
-const DomainCnameTargetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DomainCnameTargetsList>;
-
 export type DNSTargetRecordType = "CNAME" | "TXT";
-const DNSTargetRecordType = S.String;
-
 export type DNSTargetAutomationDisposition =
   | "already_satisfied"
   | "safe_to_create"
   | "manual_resolution_required";
-const DNSTargetAutomationDisposition = S.String;
-
 export interface DNSTarget {
   host: string;
   value: string;
@@ -101,12 +88,8 @@ export interface DNSTarget {
   /** Denotes whether this DNS target is required to be set in order for the domain to be considered deployed. */
   required: boolean;
 }
-const DNSTarget = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DNSTarget>;
-
 /** The complete typed DNS contract. Consumers should use this field instead of merging it with `cname_targets`. */
 export type DomainDnsTargetsList = Array<DNSTarget>;
-const DomainDnsTargetsList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DomainDnsTargetsList>;
-
 export interface Domain {
   object: DomainObject;
   id: string;
@@ -122,15 +105,8 @@ export interface Domain {
   /** The complete typed DNS contract. Consumers should use this field instead of merging it with `cname_targets`. */
   dns_targets?: DomainDnsTargetsList | null;
 }
-const Domain = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Domain>;
-
 /** Array of role keys to add to the role set. Must contain at least one role and no more than 10 roles. */
 export type AddRolesToRoleSetRequestRoleKeysList = Array<string>;
-const AddRolesToRoleSetRequestRoleKeysList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddRolesToRoleSetRequestRoleKeysList>;
-
 export interface AddRolesToRoleSetRequest {
   /** The key or ID of the role set */
   role_set_key_or_id: string;
@@ -141,17 +117,8 @@ export interface AddRolesToRoleSetRequest {
   /** Optionally update the creator role to one of the newly added roles. */
   creator_role_key?: string;
 }
-const AddRolesToRoleSetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddRolesToRoleSetRequest>;
-
 export type RoleSetObject = "role_set";
-const RoleSetObject = S.String;
-
 export type RoleSetItemObject = "role_set_item";
-const RoleSetItemObject = S.String;
-
 /** A role within a role set */
 export interface RoleSetItem {
   object: RoleSetItemObject;
@@ -172,26 +139,13 @@ export interface RoleSetItem {
   /** Unix timestamp of last role update */
   updated_at: number;
 }
-const RoleSetItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RoleSetItem>;
-
 /** The list of roles in this role set */
 export type RoleSetRolesList = Array<RoleSetItem>;
-const RoleSetRolesList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RoleSetRolesList>;
-
 /** The type of the role set ("initial" or "custom") */
 export type RoleSetType = "initial" | "custom";
-const RoleSetType = S.String;
-
 export type RoleSetMigrationObject = "role_set_migration";
-const RoleSetMigrationObject = S.String;
-
 /** Role key mappings from source to destination roles */
 export type RoleSetMigrationMappingsMap = { [key: string]: string | undefined };
-const RoleSetMigrationMappingsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<RoleSetMigrationMappingsMap>;
-
 /** Information about an ongoing role set migration */
 export interface RoleSetMigration {
   object: RoleSetMigrationObject;
@@ -222,8 +176,6 @@ export interface RoleSetMigration {
   /** Unix timestamp of last migration update */
   updated_at: number;
 }
-const RoleSetMigration = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RoleSetMigration>;
-
 /** A role set defines a collection of roles that can be assigned to organization members */
 export interface RoleSet {
   object: RoleSetObject;
@@ -250,12 +202,8 @@ export interface RoleSet {
   /** Unix timestamp of last role set update */
   updated_at: number;
 }
-const RoleSet = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RoleSet>;
-
 /** Whether to increase or decrease the credit balance. */
 export type AdjustOrganizationBillingCreditBalanceRequestAction = "increase" | "decrease";
-const AdjustOrganizationBillingCreditBalanceRequestAction = S.String;
-
 export interface AdjustOrganizationBillingCreditBalanceRequest {
   /** The ID of the organization whose credit balance to adjust */
   organization_id: string;
@@ -270,11 +218,6 @@ export interface AdjustOrganizationBillingCreditBalanceRequest {
   /** An optional note to attach to the ledger entry. */
   note?: string;
 }
-const AdjustOrganizationBillingCreditBalanceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AdjustOrganizationBillingCreditBalanceRequest>;
-
 export interface CommerceMoneyResponse {
   /** The amount in cents. */
   amount: number;
@@ -285,11 +228,6 @@ export interface CommerceMoneyResponse {
   /** The currency symbol (e.g., "$"). */
   currency_symbol: string;
 }
-const CommerceMoneyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CommerceMoneyResponse>;
-
 export interface CommerceCreditLedgerResponse {
   /** String representing the object's type. Always "commerce_credit_ledger". */
   object: string;
@@ -308,15 +246,8 @@ export interface CommerceCreditLedgerResponse {
   /** Timestamp when the ledger entry was created. */
   created_at: string;
 }
-const CommerceCreditLedgerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CommerceCreditLedgerResponse>;
-
 /** Whether to increase or decrease the credit balance. */
 export type AdjustUserBillingCreditBalanceRequestAction = "increase" | "decrease";
-const AdjustUserBillingCreditBalanceRequestAction = S.String;
-
 export interface AdjustUserBillingCreditBalanceRequest {
   /** The ID of the user whose credit balance to adjust */
   user_id: string;
@@ -331,38 +262,20 @@ export interface AdjustUserBillingCreditBalanceRequest {
   /** An optional note to attach to the ledger entry. */
   note?: string;
 }
-const AdjustUserBillingCreditBalanceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AdjustUserBillingCreditBalanceRequest>;
-
 export interface ApplyBillingSubscriptionItemDiscountRequest {
   /** The ID of the subscription item to apply the discount to */
   subscription_item_id: string;
   /** The ID of the discount to apply to the subscription item. */
   discount_id: string;
 }
-const ApplyBillingSubscriptionItemDiscountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ApplyBillingSubscriptionItemDiscountRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceDiscountRedemptionResponseObject = "commerce_discount_redemption";
-const CommerceDiscountRedemptionResponseObject = S.String;
-
 /** How the discount was applied to the subscription item. */
 export type CommerceDiscountRedemptionResponseSource = "promotion" | "manual" | "promo_code";
-const CommerceDiscountRedemptionResponseSource = S.String;
-
 /** The snapshotted discount effect. */
 export type CommerceDiscountRedemptionResponseEffect = "percentage" | "fixed_amount";
-const CommerceDiscountRedemptionResponseEffect = S.String;
-
 /** Current status of the discount redemption. */
 export type CommerceDiscountRedemptionResponseStatus = "active" | "exhausted" | "removed";
-const CommerceDiscountRedemptionResponseStatus = S.String;
-
 export interface CommerceDiscountRedemptionResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommerceDiscountRedemptionResponseObject;
@@ -397,28 +310,14 @@ export interface CommerceDiscountRedemptionResponse {
   /** Identifier of the actor that redeemed the discount, when available. */
   redeemed_by: string | null;
 }
-const CommerceDiscountRedemptionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CommerceDiscountRedemptionResponse>;
-
 export interface AssignPermissionToOrganizationRoleRequest {
   /** The ID of the organization role */
   organization_role_id: string;
   /** The ID of the permission to assign */
   permission_id: string;
 }
-const AssignPermissionToOrganizationRoleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AssignPermissionToOrganizationRoleRequest>;
-
 export type RoleObject = "role";
-const RoleObject = S.String;
-
 export type PermissionObject = "permission";
-const PermissionObject = S.String;
-
 export interface Permission {
   object: PermissionObject;
   id: string;
@@ -431,11 +330,7 @@ export interface Permission {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const Permission = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Permission>;
-
 export type RolePermissionsList = Array<Permission>;
-const RolePermissionsList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RolePermissionsList>;
-
 export interface Role {
   object: RoleObject;
   id: string;
@@ -450,8 +345,6 @@ export interface Role {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const Role = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Role>;
-
 export interface AttemptEmailAddressVerificationRequest {
   /** The ID of the email address whose code is being verified */
   email_address_id: string;
@@ -460,11 +353,6 @@ export interface AttemptEmailAddressVerificationRequest {
   /** The verification code that was sent to the email address */
   code: string;
 }
-const AttemptEmailAddressVerificationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AttemptEmailAddressVerificationRequest>;
-
 export interface AttemptEmailAddressVerificationResponse {
   /** The type of the verification object. */
   object?: string;
@@ -481,11 +369,6 @@ export interface AttemptEmailAddressVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-const AttemptEmailAddressVerificationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AttemptEmailAddressVerificationResponse>;
-
 export interface AttemptPhoneNumberVerificationRequest {
   /** The ID of the phone number whose code is being verified */
   phone_number_id: string;
@@ -494,11 +377,6 @@ export interface AttemptPhoneNumberVerificationRequest {
   /** The verification code that was sent to the phone number */
   code: string;
 }
-const AttemptPhoneNumberVerificationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<AttemptPhoneNumberVerificationRequest>;
-
 export interface AttemptPhoneNumberVerificationResponse {
   /** The type of the verification object. */
   object?: string;
@@ -515,35 +393,17 @@ export interface AttemptPhoneNumberVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-const AttemptPhoneNumberVerificationResponse =
-  AttemptEmailAddressVerificationResponse as any as S.Schema<AttemptPhoneNumberVerificationResponse>;
-
 export interface BanUserRequest {
   /** The ID of the user to ban */
   user_id: string;
 }
-const BanUserRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<BanUserRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type UserObject = "user";
-const UserObject = S.String;
-
 export type UserPublicMetadataMap = { [key: string]: unknown | undefined };
-const UserPublicMetadataMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UserPublicMetadataMap>;
-
 export type UserPrivateMetadataMap = { [key: string]: unknown | undefined };
-const UserPrivateMetadataMap = UserPublicMetadataMap as any as S.Schema<UserPrivateMetadataMap>;
-
 export type UserUnsafeMetadataMap = { [key: string]: unknown | undefined };
-const UserUnsafeMetadataMap = UserPublicMetadataMap as any as S.Schema<UserUnsafeMetadataMap>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type EmailAddressObject = "email_address";
-const EmailAddressObject = S.String;
-
 export type VerificationOtpObject = "verification_otp";
 export type VerificationOtpStatus = "unverified" | "verified" | "failed" | "expired";
 export type VerificationOtpStrategy = "phone_code" | "email_code" | "reset_password_email_code";
@@ -644,20 +504,11 @@ export type EmailAddressVerification =
   | VerificationSaml
   | VerificationEmailLink
   | VerificationScim;
-const EmailAddressVerification = S.Unknown as any as S.Schema<EmailAddressVerification>;
-
 export interface IdentificationLink {
   type: string;
   id: string;
 }
-const IdentificationLink = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<IdentificationLink>;
-
 export type EmailAddressLinkedToList = Array<IdentificationLink>;
-const EmailAddressLinkedToList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<EmailAddressLinkedToList>;
-
 export interface EmailAddress {
   id?: string;
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -673,29 +524,12 @@ export interface EmailAddress {
   /** Unix timestamp of creation */
   updated_at: number;
 }
-const EmailAddress = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<EmailAddress>;
-
 export type UserEmailAddressesList = Array<EmailAddress>;
-const UserEmailAddressesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<UserEmailAddressesList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type PhoneNumberObject = "phone_number";
-const PhoneNumberObject = S.String;
-
 export type PhoneNumberVerification = VerificationOtp | VerificationAdmin;
-const PhoneNumberVerification = S.Unknown as any as S.Schema<PhoneNumberVerification>;
-
 export type PhoneNumberLinkedToList = Array<IdentificationLink>;
-const PhoneNumberLinkedToList =
-  EmailAddressLinkedToList as any as S.Schema<PhoneNumberLinkedToList>;
-
 export type PhoneNumberBackupCodesList = Array<string>;
-const PhoneNumberBackupCodesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<PhoneNumberBackupCodesList>;
-
 export interface PhoneNumber {
   id?: string;
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -712,15 +546,9 @@ export interface PhoneNumber {
   /** Unix timestamp of creation */
   updated_at: number;
 }
-const PhoneNumber = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PhoneNumber>;
-
 export type UserPhoneNumbersList = Array<PhoneNumber>;
-const UserPhoneNumbersList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UserPhoneNumbersList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type Web3WalletObject = "web3_wallet";
-const Web3WalletObject = S.String;
-
 export type VerificationWeb3Object = "verification_web3";
 export type VerificationWeb3Status = "unverified" | "verified" | "failed" | "expired";
 export type VerificationWeb3Strategy =
@@ -740,8 +568,6 @@ export interface VerificationWeb3 {
   verified_at_client?: string | null;
 }
 export type Web3WalletVerification = VerificationWeb3 | VerificationAdmin;
-const Web3WalletVerification = S.Unknown as any as S.Schema<Web3WalletVerification>;
-
 export interface Web3Wallet {
   id?: string;
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -753,27 +579,13 @@ export interface Web3Wallet {
   /** Unix timestamp of creation */
   updated_at: number;
 }
-const Web3Wallet = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Web3Wallet>;
-
 export type UserWeb3WalletsList = Array<Web3Wallet>;
-const UserWeb3WalletsList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<UserWeb3WalletsList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type PasskeyObject = "passkey";
-const PasskeyObject = S.String;
-
 export type VerificationPasskeyObject = "verification_passkey";
-const VerificationPasskeyObject = S.String;
-
 export type VerificationPasskeyStatus = "verified";
-const VerificationPasskeyStatus = S.String;
-
 export type VerificationPasskeyStrategy = "passkey";
-const VerificationPasskeyStrategy = S.String;
-
 export type VerificationPasskeyNonce = "nonce";
-const VerificationPasskeyNonce = S.String;
-
 export interface VerificationPasskey {
   object?: VerificationPasskeyObject;
   status: VerificationPasskeyStatus;
@@ -784,8 +596,6 @@ export interface VerificationPasskey {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-const VerificationPasskey = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<VerificationPasskey>;
-
 export interface Passkey {
   id?: string;
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -795,24 +605,15 @@ export interface Passkey {
   last_used_at: number;
   verification: VerificationPasskey | null;
 }
-const Passkey = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Passkey>;
-
 export type UserPasskeysList = Array<Passkey>;
-const UserPasskeysList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<UserPasskeysList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type ExternalAccountWithVerificationObject =
   | "external_account"
   | "facebook_account"
   | "google_account";
-const ExternalAccountWithVerificationObject = S.String;
-
 export type ExternalAccountWithVerificationPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const ExternalAccountWithVerificationPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<ExternalAccountWithVerificationPublicMetadataMap>;
-
 export type VerificationOauthObject = "verification_oauth";
 export type VerificationOauthStatus =
   | "unverified"
@@ -845,9 +646,6 @@ export interface VerificationGoogleOneTap {
 export type ExternalAccountWithVerificationVerification =
   | VerificationOauth
   | VerificationGoogleOneTap;
-const ExternalAccountWithVerificationVerification =
-  S.Unknown as any as S.Schema<ExternalAccountWithVerificationVerification>;
-
 export interface ExternalAccountWithVerification {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: ExternalAccountWithVerificationObject;
@@ -875,28 +673,11 @@ export interface ExternalAccountWithVerification {
   updated_at: number;
   verification: ExternalAccountWithVerificationVerification | null;
 }
-const ExternalAccountWithVerification = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ExternalAccountWithVerification>;
-
 export type UserExternalAccountsList = Array<ExternalAccountWithVerification>;
-const UserExternalAccountsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UserExternalAccountsList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type SAMLAccountObject = "saml_account";
-const SAMLAccountObject = S.String;
-
 export type SAMLAccountPublicMetadataMap = { [key: string]: unknown | undefined };
-const SAMLAccountPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<SAMLAccountPublicMetadataMap>;
-
 export type SAMLAccountVerification = VerificationSaml | VerificationTicket;
-const SAMLAccountVerification = S.Unknown as any as S.Schema<SAMLAccountVerification>;
-
 export interface SAMLAccount {
   id: string;
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -913,29 +694,16 @@ export interface SAMLAccount {
   verification: SAMLAccountVerification | null;
   saml_connection?: unknown | null;
 }
-const SAMLAccount = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SAMLAccount>;
-
 export type UserSamlAccountsList = Array<SAMLAccount>;
-const UserSamlAccountsList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UserSamlAccountsList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type EnterpriseAccountObject = "enterprise_account";
-const EnterpriseAccountObject = S.String;
-
 /** The authentication protocol used to sign in. */
 export type EnterpriseAccountProtocol = "oauth" | "saml";
-const EnterpriseAccountProtocol = S.String;
-
 export type EnterpriseAccountPublicMetadataMap = { [key: string]: unknown | undefined };
-const EnterpriseAccountPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<EnterpriseAccountPublicMetadataMap>;
-
 export type EnterpriseAccountVerification =
   | VerificationTicket
   | VerificationSaml
   | VerificationOauth;
-const EnterpriseAccountVerification = S.Unknown as any as S.Schema<EnterpriseAccountVerification>;
-
 export interface EnterpriseAccount {
   id: string;
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -956,43 +724,17 @@ export interface EnterpriseAccount {
   /** Unix timestamp of last authentication. */
   last_authenticated_at?: number | null;
 }
-const EnterpriseAccount = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<EnterpriseAccount>;
-
 export type UserEnterpriseAccountsList = Array<EnterpriseAccount>;
-const UserEnterpriseAccountsList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UserEnterpriseAccountsList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationMembershipObject = "organization_membership";
-const OrganizationMembershipObject = S.String;
-
 export type OrganizationMembershipPermissionsList = Array<string>;
-const OrganizationMembershipPermissionsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OrganizationMembershipPermissionsList>;
-
 /** Metadata saved on the organization membership, accessible from both Frontend and Backend APIs */
 export type OrganizationMembershipPublicMetadataMap = { [key: string]: unknown | undefined };
-const OrganizationMembershipPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<OrganizationMembershipPublicMetadataMap>;
-
 /** Metadata saved on the organization membership, accessible only from the Backend API */
 export type OrganizationMembershipPrivateMetadataMap = { [key: string]: unknown | undefined };
-const OrganizationMembershipPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<OrganizationMembershipPrivateMetadataMap>;
-
 export type OrganizationObject = "organization";
-const OrganizationObject = S.String;
-
 export type OrganizationPublicMetadataMap = { [key: string]: unknown | undefined };
-const OrganizationPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<OrganizationPublicMetadataMap>;
-
 export type OrganizationPrivateMetadataMap = { [key: string]: unknown | undefined };
-const OrganizationPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<OrganizationPrivateMetadataMap>;
-
 export interface Organization {
   object: OrganizationObject;
   id: string;
@@ -1019,8 +761,6 @@ export interface Organization {
   /** The key of the [role set](https://clerk.com/docs/guides/organizations/control-access/role-sets) assigned to this organization. */
   role_set_key?: string | null;
 }
-const Organization = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Organization>;
-
 /** An organization membership with public user data populated */
 export interface OrganizationMembershipPublicUserData {
   user_id: string;
@@ -1034,11 +774,6 @@ export interface OrganizationMembershipPublicUserData {
   banned?: boolean;
   deprovisioned?: boolean;
 }
-const OrganizationMembershipPublicUserData = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<OrganizationMembershipPublicUserData>;
-
 /** A user's membership in an organization */
 export interface OrganizationMembership {
   id: string;
@@ -1058,33 +793,13 @@ export interface OrganizationMembership {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const OrganizationMembership = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<OrganizationMembership>;
-
 export type UserOrganizationMembershipsList = Array<OrganizationMembership>;
-const UserOrganizationMembershipsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<UserOrganizationMembershipsList>;
-
 export interface SCIMUserMetadataGroupsItem {
   id: string;
   display_name: string;
 }
-const SCIMUserMetadataGroupsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<SCIMUserMetadataGroupsItem>;
-
 /** Omitted when groups were not loaded; an empty array means no group memberships. */
 export type SCIMUserMetadataGroupsList = Array<SCIMUserMetadataGroupsItem>;
-const SCIMUserMetadataGroupsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SCIMUserMetadataGroupsList>;
-
 /** Metadata describing a user's linkage to a directory. Included in user responses when directory data is requested, and in directory-triggered user webhooks. Its absence does not necessarily mean the user is not managed by a directory. */
 export interface SCIMUserMetadata {
   /** The user's resource ID in this directory. */
@@ -1101,12 +816,8 @@ export interface SCIMUserMetadata {
   /** The user's external ID as reported by the directory, if any. */
   external_id: string | null;
 }
-const SCIMUserMetadata = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SCIMUserMetadata>;
-
 /** All loaded directory links. Omitted when links were not loaded; an empty array means the user has no directory links. */
 export type UserDirectoriesList = Array<SCIMUserMetadata>;
-const UserDirectoriesList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UserDirectoriesList>;
-
 export interface User {
   id: string;
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -1179,43 +890,22 @@ export interface User {
   /** Alias of directory. Use directories for all links. */
   scim?: SCIMUserMetadata | null;
 }
-const User = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<User>;
-
 /** Array of user IDs to ban */
 export type BanUserRequestUserIdsList = Array<string>;
-const BanUserRequestUserIdsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<BanUserRequestUserIdsList>;
-
 export interface BanUserRequest2 {
   /** Array of user IDs to ban */
   user_ids: BanUserRequestUserIdsList;
 }
-const BanUserRequest2 = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<BanUserRequest2>;
-
 export type BanUserResponseBodyList = Array<User>;
-const BanUserResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<BanUserResponseBodyList>;
-
 export type BanUserResponse = BanUserResponseBodyList;
-const BanUserResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<BanUserResponse>;
-
 export interface CancelCommerceSubscriptionItemRequest {
   /** The ID of the subscription item to cancel */
   subscription_item_id: string;
   /** Whether to cancel the subscription immediately (true) or at the end of the current billing period (false, default) */
   end_now?: boolean;
 }
-const CancelCommerceSubscriptionItemRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CancelCommerceSubscriptionItemRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceSubscriptionItemObject = "commerce_subscription_item";
-const CommerceSubscriptionItemObject = S.String;
-
 /** Current status of the subscription item. */
 export type CommerceSubscriptionItemStatus =
   | "active"
@@ -1226,57 +916,31 @@ export type CommerceSubscriptionItemStatus =
   | "upcoming"
   | "incomplete"
   | "abandoned";
-const CommerceSubscriptionItemStatus = S.String;
-
 export interface CommerceSubscriptionCreditResponse {
   /** Credit amount. */
   amount?: CommerceMoneyResponse | null;
   /** Percentage of the billing cycle remaining. */
   cycle_remaining_percent?: number;
 }
-const CommerceSubscriptionCreditResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CommerceSubscriptionCreditResponse>;
-
 export interface CommerceProrationCreditDetailResponse {
   amount: CommerceMoneyResponse;
   cycle_days_remaining: number;
   cycle_days_total: number;
   cycle_remaining_percent: number;
 }
-const CommerceProrationCreditDetailResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CommerceProrationCreditDetailResponse>;
-
 export interface CommercePayerCreditResponse {
   remaining_balance: CommerceMoneyResponse;
   applied_amount: CommerceMoneyResponse;
 }
-const CommercePayerCreditResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CommercePayerCreditResponse>;
-
 export interface CommerceCreditsResponse {
   proration: CommerceProrationCreditDetailResponse | null;
   payer: CommercePayerCreditResponse | null;
   total: CommerceMoneyResponse;
 }
-const CommerceCreditsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CommerceCreditsResponse>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePlanObject = "commerce_plan";
-const CommercePlanObject = S.String;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type FeatureResponseObject = "feature";
-const FeatureResponseObject = S.String;
-
 export interface FeatureResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: FeatureResponseObject;
@@ -1291,15 +955,8 @@ export interface FeatureResponse {
   /** The URL of the feature's avatar image. */
   avatar_url: string | null;
 }
-const FeatureResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FeatureResponse>;
-
 /** The features included in this plan. */
 export type CommercePlanFeaturesList = Array<FeatureResponse>;
-const CommercePlanFeaturesList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CommercePlanFeaturesList>;
-
 export interface CommercePlanUnitPriceTier {
   /** Start block (inclusive) for this tier */
   starts_at_block: number;
@@ -1308,18 +965,8 @@ export interface CommercePlanUnitPriceTier {
   /** Price charged per block in this tier */
   fee_per_block: CommerceMoneyResponse;
 }
-const CommercePlanUnitPriceTier = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CommercePlanUnitPriceTier>;
-
 /** Tiered pricing configuration for this unit */
 export type CommercePlanUnitPriceTiersList = Array<CommercePlanUnitPriceTier>;
-const CommercePlanUnitPriceTiersList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CommercePlanUnitPriceTiersList>;
-
 export interface CommercePlanUnitPrice {
   /** Name of the billable unit (for example, seats) */
   name: string;
@@ -1328,18 +975,8 @@ export interface CommercePlanUnitPrice {
   /** Tiered pricing configuration for this unit */
   tiers: CommercePlanUnitPriceTiersList;
 }
-const CommercePlanUnitPrice = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CommercePlanUnitPrice>;
-
 /** Per-unit pricing tiers for this plan (for example, seats) */
 export type CommercePlanUnitPricesList = Array<CommercePlanUnitPrice>;
-const CommercePlanUnitPricesList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CommercePlanUnitPricesList>;
-
 export interface CommercePlan {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommercePlanObject;
@@ -1377,24 +1014,14 @@ export interface CommercePlan {
   /** Per-unit pricing tiers for this plan (for example, seats) */
   unit_prices?: CommercePlanUnitPricesList;
 }
-const CommercePlan = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<CommercePlan>;
-
 /** The billing period for this subscription item. */
 export type CommerceSubscriptionItemPlanPeriod = "month" | "annual";
-const CommerceSubscriptionItemPlanPeriod = S.String;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePaymentMethodResponseObject = "commerce_payment_method";
-const CommercePaymentMethodResponseObject = S.String;
-
 /** The payment method type. */
 export type CommercePaymentMethodResponsePaymentType = "card" | "link" | "payer-credits";
-const CommercePaymentMethodResponsePaymentType = S.String;
-
 /** Status of the payment method. */
 export type CommercePaymentMethodResponseStatus = "active" | "disconnected";
-const CommercePaymentMethodResponseStatus = S.String;
-
 export interface CommercePaymentMethodResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommercePaymentMethodResponseObject;
@@ -1431,11 +1058,6 @@ export interface CommercePaymentMethodResponse {
   /** Whether this payment method can be removed. */
   is_removable?: boolean;
 }
-const CommercePaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CommercePaymentMethodResponse>;
-
 export interface CommercePerUnitTotalTier {
   /** Units billed in this tier; null means unlimited. */
   quantity?: number | null;
@@ -1444,18 +1066,8 @@ export interface CommercePerUnitTotalTier {
   /** Total charge for this tier. */
   total: CommerceMoneyResponse;
 }
-const CommercePerUnitTotalTier = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CommercePerUnitTotalTier>;
-
 /** Computed totals for each pricing tier. */
 export type CommercePerUnitTotalTiersList = Array<CommercePerUnitTotalTier>;
-const CommercePerUnitTotalTiersList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CommercePerUnitTotalTiersList>;
-
 export interface CommercePerUnitTotal {
   /** Name of the billable unit (for example, `seats`). */
   name: string;
@@ -1464,40 +1076,20 @@ export interface CommercePerUnitTotal {
   /** Computed totals for each pricing tier. */
   tiers: CommercePerUnitTotalTiersList;
 }
-const CommercePerUnitTotal = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<CommercePerUnitTotal>;
-
 /** Per-unit total breakdown (for example, seats) for the next payment. */
 export type CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList =
   Array<CommercePerUnitTotal>;
-const CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList>;
-
 export type CommerceTotalsResponsePerUnitTotalsList = Array<CommercePerUnitTotal>;
-const CommerceTotalsResponsePerUnitTotalsList =
-  CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList as any as S.Schema<CommerceTotalsResponsePerUnitTotalsList>;
-
 export interface CommerceProrationDiscountResponse {
   amount: CommerceMoneyResponse;
   cycle_days_passed: number;
   cycle_days_total: number;
   cycle_passed_percent: number;
 }
-const CommerceProrationDiscountResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CommerceProrationDiscountResponse>;
-
 export interface CommerceDiscountsResponse {
   proration: CommerceProrationDiscountResponse | null;
   total: CommerceMoneyResponse;
 }
-const CommerceDiscountsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CommerceDiscountsResponse>;
-
 export interface CommerceTotalsResponse {
   subtotal: CommerceMoneyResponse;
   base_fee: CommerceMoneyResponse;
@@ -1507,11 +1099,6 @@ export interface CommerceTotalsResponse {
   credits?: CommerceCreditsResponse | null;
   discounts?: CommerceDiscountsResponse | null;
 }
-const CommerceTotalsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CommerceTotalsResponse>;
-
 export interface CommerceSubscriptionItemNextPaymentResponse {
   /** Base plan fee for the next payment. Does not include per-unit (e.g. seat) charges; see `totals.grand_total` for the full amount. */
   amount?: CommerceMoneyResponse | null;
@@ -1522,15 +1109,8 @@ export interface CommerceSubscriptionItemNextPaymentResponse {
   /** Breakdown of the recurring amount that will be billed at renewal (base fee + per-unit charges). Tax and credits are not previewed. */
   totals?: CommerceTotalsResponse | null;
 }
-const CommerceSubscriptionItemNextPaymentResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CommerceSubscriptionItemNextPaymentResponse>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePayerResponseObject = "commerce_payer";
-const CommercePayerResponseObject = S.String;
-
 export interface CommercePayerResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommercePayerResponseObject;
@@ -1559,11 +1139,6 @@ export interface CommercePayerResponse {
   /** Unix timestamp (in milliseconds) when the payer was last updated. */
   updated_at?: number;
 }
-const CommercePayerResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CommercePayerResponse>;
-
 export interface CommercePerUnitTotalTier2 {
   /** Units billed in this tier; null means unlimited */
   quantity?: number | null;
@@ -1572,34 +1147,16 @@ export interface CommercePerUnitTotalTier2 {
   /** Total charge for this tier */
   total: CommerceMoneyResponse;
 }
-const CommercePerUnitTotalTier2 = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CommercePerUnitTotalTier2>;
-
 /** Per-unit cost breakdown by pricing tier */
 export type CommerceSubscriptionItemSeatsResponseTiersList = Array<CommercePerUnitTotalTier2>;
-const CommerceSubscriptionItemSeatsResponseTiersList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CommerceSubscriptionItemSeatsResponseTiersList>;
-
 export interface CommerceSubscriptionItemSeatsResponse {
   /** Seat quantity being billed; null means unlimited */
   quantity: number | null;
   /** Per-unit cost breakdown by pricing tier */
   tiers?: CommerceSubscriptionItemSeatsResponseTiersList;
 }
-const CommerceSubscriptionItemSeatsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CommerceSubscriptionItemSeatsResponse>;
-
 /** Computed totals for each pricing tier */
 export type CommercePerUnitTotal2TiersList = Array<CommercePerUnitTotalTier2>;
-const CommercePerUnitTotal2TiersList =
-  CommerceSubscriptionItemSeatsResponseTiersList as any as S.Schema<CommercePerUnitTotal2TiersList>;
-
 export interface CommercePerUnitTotal2 {
   /** Name of the billable unit (for example, seats) */
   name: string;
@@ -1608,17 +1165,7 @@ export interface CommercePerUnitTotal2 {
   /** Computed totals for each pricing tier */
   tiers: CommercePerUnitTotal2TiersList;
 }
-const CommercePerUnitTotal2 = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CommercePerUnitTotal2>;
-
 export type CommerceTotalsResponse2PerUnitTotalsList = Array<CommercePerUnitTotal2>;
-const CommerceTotalsResponse2PerUnitTotalsList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CommerceTotalsResponse2PerUnitTotalsList>;
-
 export interface BillingProrationDiscountDetail {
   /** Credit amount with formatting */
   amount: CommerceMoneyResponse;
@@ -1629,20 +1176,12 @@ export interface BillingProrationDiscountDetail {
   /** Percentage of the billing cycle that has passed */
   cycle_passed_percent: number;
 }
-const BillingProrationDiscountDetail =
-  CommerceProrationDiscountResponse as any as S.Schema<BillingProrationDiscountDetail>;
-
 export interface BillingDiscountsResponse {
   /** Proration details from passed subscription time */
   proration: BillingProrationDiscountDetail | null;
   /** Total discounts applied */
   total: CommerceMoneyResponse;
 }
-const BillingDiscountsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<BillingDiscountsResponse>;
-
 export interface CommerceTotalsResponse2 {
   subtotal: CommerceMoneyResponse;
   base_fee: CommerceMoneyResponse;
@@ -1653,11 +1192,6 @@ export interface CommerceTotalsResponse2 {
   /** Information about the discounts applied to the payment */
   discounts?: BillingDiscountsResponse | null;
 }
-const CommerceTotalsResponse2 = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CommerceTotalsResponse2>;
-
 export interface CommerceSubscriptionItem {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommerceSubscriptionItemObject;
@@ -1712,38 +1246,18 @@ export interface CommerceSubscriptionItem {
   /** Totals for this subscription item. */
   totals?: CommerceTotalsResponse2 | null;
 }
-const CommerceSubscriptionItem = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CommerceSubscriptionItem>;
-
 export interface ChangeProductionInstanceDomainRequest {
   /** The new home URL of the production instance e.g. https://www.example.com */
   home_url?: string;
   /** Whether this is a domain for a secondary app, meaning that any subdomain provided is significant and will be stored as part of the domain. This is useful for supporting multiple apps (one primary and multiple secondaries) on the same root domain (eTLD+1). */
   is_secondary?: boolean;
 }
-const ChangeProductionInstanceDomainRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ChangeProductionInstanceDomainRequest>;
-
 export interface ChangeProductionInstanceDomainResponse {}
-const ChangeProductionInstanceDomainResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ChangeProductionInstanceDomainResponse>;
-
 /** The actor payload. It needs to include a sub property which should contain the ID of the actor. This whole payload will be also included in the JWT session token. */
 export interface CreateActorTokenRequestActor {
   /** The ID of the actor. */
   sub: string;
 }
-const CreateActorTokenRequestActor = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateActorTokenRequestActor>;
-
 export interface CreateActorTokenRequest {
   /** The ID of the user being impersonated. */
   user_id: string;
@@ -1754,17 +1268,8 @@ export interface CreateActorTokenRequest {
   /** The maximum duration that the session which will be created by the generated actor token should last. By default, the duration of a session created via an actor token, lasts 30 minutes. */
   session_max_duration_in_seconds?: number;
 }
-const CreateActorTokenRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateActorTokenRequest>;
-
 export type ActorTokenObject = "actor_token";
-const ActorTokenObject = S.String;
-
 export type ActorTokenStatus = "pending" | "accepted" | "revoked";
-const ActorTokenStatus = S.String;
-
 export interface ActorToken {
   object: ActorTokenObject;
   id: string;
@@ -1778,31 +1283,16 @@ export interface ActorToken {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const ActorToken = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ActorToken>;
-
 export type CreateAdminPortalLinkTokenRequestScopesList = Array<string>;
-const CreateAdminPortalLinkTokenRequestScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateAdminPortalLinkTokenRequestScopesList>;
-
 export interface CreateAdminPortalLinkTokenRequest {
   organization_id?: string;
   it_contact_id?: string;
   scopes?: CreateAdminPortalLinkTokenRequestScopesList;
   seconds_until_expiration?: number;
 }
-const CreateAdminPortalLinkTokenRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateAdminPortalLinkTokenRequest>;
-
 export type CreateAdminPortalLinkTokenResponseObject = "admin_portal_link_token";
-const CreateAdminPortalLinkTokenResponseObject = S.String;
-
 /** Caller-provided scopes for this token. */
 export type CreateAdminPortalLinkTokenResponseScopesList = Array<string>;
-const CreateAdminPortalLinkTokenResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateAdminPortalLinkTokenResponseScopesList>;
-
 export interface CreateAdminPortalLinkTokenResponse {
   object: CreateAdminPortalLinkTokenResponseObject;
   id: string;
@@ -1827,11 +1317,6 @@ export interface CreateAdminPortalLinkTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds. */
   updated_at: number;
 }
-const CreateAdminPortalLinkTokenResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateAdminPortalLinkTokenResponse>;
-
 /** Identifies the user on whose behalf the agent task is created. Exactly one of user_id or identifier must be provided. */
 export interface CreateAgentTaskRequestOnBehalfOf {
   /** The ID of the user. */
@@ -1839,15 +1324,8 @@ export interface CreateAgentTaskRequestOnBehalfOf {
   /** A verified identifier (e.g. email address) belonging to the user. */
   identifier?: string;
 }
-const CreateAgentTaskRequestOnBehalfOf = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CreateAgentTaskRequestOnBehalfOf>;
-
 /** The permissions granted to the agent task. Must be "*" (all permissions). */
 export type CreateAgentTaskRequestPermissions = "*";
-const CreateAgentTaskRequestPermissions = S.String;
-
 export interface CreateAgentTaskRequest {
   /** Identifies the user on whose behalf the agent task is created. Exactly one of user_id or identifier must be provided. */
   on_behalf_of: CreateAgentTaskRequestOnBehalfOf;
@@ -1862,14 +1340,7 @@ export interface CreateAgentTaskRequest {
   /** The maximum duration that the session which will be created by the generated agent task should last. By default, the duration of a session created via an agent task lasts 30 minutes. */
   session_max_duration_in_seconds?: number;
 }
-const CreateAgentTaskRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CreateAgentTaskRequest>;
-
 export type AgentTaskObject = "agent_task";
-const AgentTaskObject = S.String;
-
 export interface AgentTask {
   object: AgentTaskObject;
   /** A stable identifier for the agent, unique per agent_name within an instance. */
@@ -1881,26 +1352,15 @@ export interface AgentTask {
   /** The URL that, when visited, creates a session for the user. Only present in the response to a create request. */
   url?: string;
 }
-const AgentTask = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<AgentTask>;
-
 export interface CreateAllowlistIdentifierRequest {
   /** The identifier to be added in the allow-list. This can be an email address, a phone number, or a web3 wallet. */
   identifier: string;
   /** This flag denotes whether the given identifier will receive an invitation to join the application. Note that this only works for email address and phone number identifiers. */
   notify?: boolean;
 }
-const CreateAllowlistIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateAllowlistIdentifierRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type AllowlistIdentifierObject = "allowlist_identifier";
-const AllowlistIdentifierObject = S.String;
-
 export type AllowlistIdentifierIdentifierType = "email_address" | "phone_number" | "web3_wallet";
-const AllowlistIdentifierIdentifierType = S.String;
-
 export interface AllowlistIdentifier {
   /** String representing the object's type. Objects of the same type share the same value. */
   object?: AllowlistIdentifierObject;
@@ -1915,12 +1375,7 @@ export interface AllowlistIdentifier {
   /** Unix timestamp of last update. */
   updated_at?: number;
 }
-const AllowlistIdentifier = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<AllowlistIdentifier>;
-
 export type CreateApiKeyRequestScopesList = Array<string>;
-const CreateApiKeyRequestScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateApiKeyRequestScopesList>;
-
 export interface CreateApiKeyRequest {
   type?: string;
   name: string;
@@ -1931,15 +1386,8 @@ export interface CreateApiKeyRequest {
   created_by?: string | null;
   seconds_until_expiration?: number | null;
 }
-const CreateApiKeyRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<CreateApiKeyRequest>;
-
 export type CreateApiKeyResponseObject = "api_key";
-const CreateApiKeyResponseObject = S.String;
-
 export type CreateApiKeyResponseScopesList = Array<string>;
-const CreateApiKeyResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateApiKeyResponseScopesList>;
-
 export interface CreateApiKeyResponse {
   object: CreateApiKeyResponseObject;
   id: string;
@@ -1963,15 +1411,8 @@ export interface CreateApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-const CreateApiKeyResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateApiKeyResponse>;
-
 /** Which billing periods this price supports. Inferred from amounts if omitted. */
 export type CreateBillingPriceRequestSupportedBillingPeriods = "month" | "annual" | "both";
-const CreateBillingPriceRequestSupportedBillingPeriods = S.String;
-
 export interface CreateBillingPriceRequest {
   /** The ID of the plan this price belongs to. */
   plan_id: string;
@@ -1986,19 +1427,10 @@ export interface CreateBillingPriceRequest {
   /** Which billing periods this price supports. Inferred from amounts if omitted. */
   supported_billing_periods?: CreateBillingPriceRequestSupportedBillingPeriods | (string & {});
 }
-const CreateBillingPriceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateBillingPriceRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingPriceResponseObject = "commerce_price";
-const BillingPriceResponseObject = S.String;
-
 /** Which billing periods this price supports. */
 export type BillingPriceResponseSupportedBillingPeriods = "month" | "annual" | "both";
-const BillingPriceResponseSupportedBillingPeriods = S.String;
-
 export interface BillingPriceResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: BillingPriceResponseObject;
@@ -2027,11 +1459,6 @@ export interface BillingPriceResponse {
   /** Which billing periods this price supports. */
   supported_billing_periods: BillingPriceResponseSupportedBillingPeriods;
 }
-const BillingPriceResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<BillingPriceResponse>;
-
 export interface CreateBillingPriceTransitionRequest {
   /** The ID of the subscription item to transition */
   subscription_item_id: string;
@@ -2040,19 +1467,10 @@ export interface CreateBillingPriceTransitionRequest {
   /** The target price ID to transition to. */
   to_price_id: string;
 }
-const CreateBillingPriceTransitionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateBillingPriceTransitionRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePriceTransitionResponseObject = "commerce_price_transition";
-const CommercePriceTransitionResponseObject = S.String;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceSubscriptionItem2Object = "commerce_subscription_item";
-const CommerceSubscriptionItem2Object = S.String;
-
 /** Current status of the subscription item. */
 export type CommerceSubscriptionItem2Status =
   | "active"
@@ -2061,21 +1479,12 @@ export type CommerceSubscriptionItem2Status =
   | "upcoming"
   | "incomplete"
   | "abandoned";
-const CommerceSubscriptionItem2Status = S.String;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePlan2Object = "commerce_plan";
-const CommercePlan2Object = S.String;
-
 /** The types of payers that can use this plan. */
 export type CommercePlan2PayerTypeList = Array<string>;
-const CommercePlan2PayerTypeList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CommercePlan2PayerTypeList>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type FeatureResponse2Object = "feature";
-const FeatureResponse2Object = S.String;
-
 export interface FeatureResponse2 {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: FeatureResponse2Object;
@@ -2090,15 +1499,8 @@ export interface FeatureResponse2 {
   /** The URL of the feature's avatar image. */
   avatar_url: string;
 }
-const FeatureResponse2 = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<FeatureResponse2>;
-
 /** The features included in this plan. */
 export type CommercePlan2FeaturesList = Array<FeatureResponse2>;
-const CommercePlan2FeaturesList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CommercePlan2FeaturesList>;
-
 export interface CommercePlan2 {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommercePlan2Object;
@@ -2156,24 +1558,14 @@ export interface CommercePlan2 {
   /** Number of free trial days for this plan. */
   free_trial_days?: number | null;
 }
-const CommercePlan2 = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<CommercePlan2>;
-
 /** The billing period for this subscription. */
 export type CommerceSubscriptionItem2PlanPeriod = "month" | "annual";
-const CommerceSubscriptionItem2PlanPeriod = S.String;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePaymentSourceResponseObject = "commerce_source";
-const CommercePaymentSourceResponseObject = S.String;
-
 /** The payment method type. */
 export type CommercePaymentSourceResponsePaymentMethod = "card" | "apple_pay" | "google_pay";
-const CommercePaymentSourceResponsePaymentMethod = S.String;
-
 /** Status of the payment source. */
 export type CommercePaymentSourceResponseStatus = "active" | "disconnected";
-const CommercePaymentSourceResponseStatus = S.String;
-
 export interface CommercePaymentSourceResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommercePaymentSourceResponseObject;
@@ -2210,15 +1602,8 @@ export interface CommercePaymentSourceResponse {
   /** Whether this payment source can be removed. */
   is_removable?: boolean | null;
 }
-const CommercePaymentSourceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CommercePaymentSourceResponse>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePayerResponse2Object = "commerce_payer";
-const CommercePayerResponse2Object = S.String;
-
 export interface CommercePayerResponse2 {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommercePayerResponse2Object;
@@ -2247,11 +1632,6 @@ export interface CommercePayerResponse2 {
   /** Unix timestamp (in milliseconds) when the payer was last updated. */
   updated_at: number;
 }
-const CommercePayerResponse2 = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CommercePayerResponse2>;
-
 export interface CommerceSubscriptionItem2 {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommerceSubscriptionItem2Object;
@@ -2306,22 +1686,13 @@ export interface CommerceSubscriptionItem2 {
   /** Unix timestamp (in milliseconds) when the subscription was last updated. */
   updated_at: number;
 }
-const CommerceSubscriptionItem2 = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CommerceSubscriptionItem2>;
-
 /** When the new price takes effect. */
 export type CommercePriceTransitionDetailsEffectiveMode = "immediate" | "end_of_period";
-const CommercePriceTransitionDetailsEffectiveMode = S.String;
-
 /** The status of the previous subscription item after transition. */
 export type CommercePriceTransitionDetailsPreviousSubscriptionItemStatus =
   | "canceled"
   | "ended"
   | "abandoned";
-const CommercePriceTransitionDetailsPreviousSubscriptionItemStatus = S.String;
-
 export interface CommercePriceTransitionDetails {
   previous_plan: CommercePlan2;
   previous_price: BillingPriceResponse;
@@ -2340,38 +1711,19 @@ export interface CommercePriceTransitionDetails {
   /** The ID of the previous subscription item. */
   previous_subscription_item_id: string;
 }
-const CommercePriceTransitionDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CommercePriceTransitionDetails>;
-
 export interface CommercePriceTransitionResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommercePriceTransitionResponseObject;
   subscription_item: CommerceSubscriptionItem2;
   transition: CommercePriceTransitionDetails;
 }
-const CommercePriceTransitionResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CommercePriceTransitionResponse>;
-
 export interface CreateBlocklistIdentifierRequest {
   /** The identifier to be added in the block-list. This can be an email address, a phone number, or a web3 wallet. */
   identifier: string;
 }
-const CreateBlocklistIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<CreateBlocklistIdentifierRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BlocklistIdentifierObject = "blocklist_identifier";
-const BlocklistIdentifierObject = S.String;
-
 export type BlocklistIdentifierIdentifierType = "email_address" | "phone_number" | "web3_wallet";
-const BlocklistIdentifierIdentifierType = S.String;
-
 export interface BlocklistIdentifier {
   /** String representing the object's type. Objects of the same type share the same value. */
   object?: BlocklistIdentifierObject;
@@ -2385,19 +1737,12 @@ export interface BlocklistIdentifier {
   /** Unix timestamp of last update. */
   updated_at?: number;
 }
-const BlocklistIdentifier = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<BlocklistIdentifier>;
-
 /** Metadata that will be attached to the newly created invitation. The value of this property should be a well-formed JSON object. Once the user accepts the invitation and signs up, these metadata will end up in the user's public metadata. */
 export type CreateBulkInvitationsRequestBodyItemPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CreateBulkInvitationsRequestBodyItemPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateBulkInvitationsRequestBodyItemPublicMetadataMap>;
-
 /** The slug of the email template to use for the invitation email. */
 export type CreateBulkInvitationsRequestBodyItemTemplateSlug = "invitation" | "waitlist_invitation";
-const CreateBulkInvitationsRequestBodyItemTemplateSlug = S.String;
-
 export interface CreateBulkInvitationsRequestBodyItem {
   /** The email address the invitation will be sent to */
   email_address: string;
@@ -2414,35 +1759,13 @@ export interface CreateBulkInvitationsRequestBodyItem {
   /** The slug of the email template to use for the invitation email. */
   template_slug?: CreateBulkInvitationsRequestBodyItemTemplateSlug | (string & {});
 }
-const CreateBulkInvitationsRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateBulkInvitationsRequestBodyItem>;
-
 export type CreateBulkInvitationsRequestBodyList = Array<CreateBulkInvitationsRequestBodyItem>;
-const CreateBulkInvitationsRequestBodyList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateBulkInvitationsRequestBodyList>;
-
 export interface CreateBulkInvitationsRequest {
   body?: CreateBulkInvitationsRequestBodyList;
 }
-const CreateBulkInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateBulkInvitationsRequest>;
-
 export type InvitationObject = "invitation";
-const InvitationObject = S.String;
-
 export type InvitationPublicMetadataMap = { [key: string]: unknown | undefined };
-const InvitationPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<InvitationPublicMetadataMap>;
-
 export type InvitationStatus = "pending" | "accepted" | "revoked" | "expired";
-const InvitationStatus = S.String;
-
 export interface Invitation {
   object: InvitationObject;
   id: string;
@@ -2458,52 +1781,21 @@ export interface Invitation {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const Invitation = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<Invitation>;
-
 export type CreateBulkInvitationsResponseBodyList = Array<Invitation>;
-const CreateBulkInvitationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<CreateBulkInvitationsResponseBodyList>;
-
 export type CreateBulkInvitationsResponse = CreateBulkInvitationsResponseBodyList;
-const CreateBulkInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreateBulkInvitationsResponse>;
-
 export interface CreateBulkWaitlistEntriesRequestBodyItem {
   /** The email address to add to the waitlist */
   email_address: string;
   /** Optional flag which denotes whether a confirmation email should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-const CreateBulkWaitlistEntriesRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateBulkWaitlistEntriesRequestBodyItem>;
-
 export type CreateBulkWaitlistEntriesRequestBodyList =
   Array<CreateBulkWaitlistEntriesRequestBodyItem>;
-const CreateBulkWaitlistEntriesRequestBodyList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreateBulkWaitlistEntriesRequestBodyList>;
-
 export interface CreateBulkWaitlistEntriesRequest {
   body?: CreateBulkWaitlistEntriesRequestBodyList;
 }
-const CreateBulkWaitlistEntriesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CreateBulkWaitlistEntriesRequest>;
-
 export type WaitlistEntryObject = "waitlist_entry";
-const WaitlistEntryObject = S.String;
-
 export type WaitlistEntryStatus = "pending" | "invited" | "rejected" | "completed";
-const WaitlistEntryStatus = S.String;
-
 export interface WaitlistEntry {
   object: WaitlistEntryObject;
   id: string;
@@ -2517,20 +1809,8 @@ export interface WaitlistEntry {
   updated_at: number;
   invitation?: Invitation | null;
 }
-const WaitlistEntry = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<WaitlistEntry>;
-
 export type CreateBulkWaitlistEntriesResponseBodyList = Array<WaitlistEntry>;
-const CreateBulkWaitlistEntriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateBulkWaitlistEntriesResponseBodyList>;
-
 export type CreateBulkWaitlistEntriesResponse = CreateBulkWaitlistEntriesResponseBodyList;
-const CreateBulkWaitlistEntriesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<CreateBulkWaitlistEntriesResponse>;
-
 export interface CreateDirectoryRequestGroupRoleMappingsItem {
   /** The group ID from the identity provider. Exactly one of `directory_group_id` or `scim_group_id` is required. */
   directory_group_id?: string;
@@ -2545,19 +1825,9 @@ export interface CreateDirectoryRequestGroupRoleMappingsItem {
   /** The precedence for this mapping. If omitted, precedence is assigned by array order. */
   precedence?: number;
 }
-const CreateDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreateDirectoryRequestGroupRoleMappingsItem>;
-
 /** Optional directory group to organization role mappings to create with the directory. */
 export type CreateDirectoryRequestGroupRoleMappingsList =
   Array<CreateDirectoryRequestGroupRoleMappingsItem>;
-const CreateDirectoryRequestGroupRoleMappingsList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<CreateDirectoryRequestGroupRoleMappingsList>;
-
 export interface CreateDirectoryRequest {
   /** The ID of the enterprise connection to associate with this directory. */
   enterprise_connection_id: string;
@@ -2568,20 +1838,10 @@ export interface CreateDirectoryRequest {
   /** Optional directory group to organization role mappings to create with the directory. */
   group_role_mappings?: CreateDirectoryRequestGroupRoleMappingsList;
 }
-const CreateDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreateDirectoryRequest>;
-
 /** String representing the object's type. Always "directory". */
 export type DirectoryObject = "directory";
-const DirectoryObject = S.String;
-
 /** Mapping of user attributes to the directory attribute paths they are extracted from. */
 export type DirectoryAttributeMappingMap = { [key: string]: string | undefined };
-const DirectoryAttributeMappingMap =
-  RoleSetMigrationMappingsMap as any as S.Schema<DirectoryAttributeMappingMap>;
-
 export interface DirectoryCustomAttributesItem {
   /** Display name for the custom attribute */
   name?: string;
@@ -2596,18 +1856,8 @@ export interface DirectoryCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-const DirectoryCustomAttributesItem = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DirectoryCustomAttributesItem>;
-
 /** Custom attributes to map from the IdP to the user's profile via directory sync. Requires the custom attributes feature to be enabled for the instance. */
 export type DirectoryCustomAttributesList = Array<DirectoryCustomAttributesItem>;
-const DirectoryCustomAttributesList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<DirectoryCustomAttributesList>;
-
 /** A directory configuration for provisioning users from an identity provider. */
 export interface Directory {
   /** String representing the object's type. Always "directory". */
@@ -2637,8 +1887,6 @@ export interface Directory {
   /** Unix timestamp when the directory was last updated. */
   updated_at: number;
 }
-const Directory = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Directory>;
-
 export interface CreateDirectoryGroupRoleMappingRequest {
   /** The ID of the directory. */
   directory_id: string;
@@ -2651,15 +1899,8 @@ export interface CreateDirectoryGroupRoleMappingRequest {
   /** The precedence for this mapping. Lower values take priority when a user belongs to multiple mapped groups. If omitted, the mapping is appended with the next-highest precedence. */
   precedence?: number;
 }
-const CreateDirectoryGroupRoleMappingRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CreateDirectoryGroupRoleMappingRequest>;
-
 /** String representing the object's type. Always "directory_group_role_mapping". */
 export type DirectoryGroupRoleMappingObject = "directory_group_role_mapping";
-const DirectoryGroupRoleMappingObject = S.String;
-
 /** A mapping from a directory group to an organization role. Members of the group are assigned the role; the lowest-precedence match wins when a user belongs to multiple mapped groups. */
 export interface DirectoryGroupRoleMapping {
   /** String representing the object's type. Always "directory_group_role_mapping". */
@@ -2686,11 +1927,6 @@ export interface DirectoryGroupRoleMapping {
   /** Unix timestamp (milliseconds) of when the mapping was last updated. */
   updated_at: number;
 }
-const DirectoryGroupRoleMapping = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<DirectoryGroupRoleMapping>;
-
 export interface CreateEmailAddressRequest {
   /** The ID representing the user */
   user_id: string;
@@ -2703,11 +1939,6 @@ export interface CreateEmailAddressRequest {
   /** If set to `true` and the email address is created as the user's new primary, the previous primary email address is notified of the change. By default, no notification is sent. */
   notify_primary_email_address_changed?: boolean | null;
 }
-const CreateEmailAddressRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<CreateEmailAddressRequest>;
-
 /** The identity provider (e.g. saml_custom, oidc_custom, oidc_github_enterprise, oidc_gitlab) */
 export type CreateEnterpriseConnectionRequestProvider =
   | "saml_custom"
@@ -2717,18 +1948,10 @@ export type CreateEnterpriseConnectionRequestProvider =
   | "oidc_custom"
   | "oidc_github_enterprise"
   | "oidc_gitlab";
-const CreateEnterpriseConnectionRequestProvider = S.String;
-
 /** Domains associated with the enterprise connection (required; at least one). Values are normalized to lowercase. Each domain must be a valid fully qualified domain name. */
 export type CreateEnterpriseConnectionRequestDomainsList = Array<string>;
-const CreateEnterpriseConnectionRequestDomainsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateEnterpriseConnectionRequestDomainsList>;
-
 /** The IdP X.509 signing certificates the connection trusts, one per entry, in PEM or bare base64. Replaces the connection's whole certificate set and takes precedence over idp_certificate */
 export type CreateEnterpriseConnectionRequestSamlIdpCertificatesList = Array<string>;
-const CreateEnterpriseConnectionRequestSamlIdpCertificatesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateEnterpriseConnectionRequestSamlIdpCertificatesList>;
-
 /** Attribute mapping for SAML attributes */
 export interface CreateEnterpriseConnectionRequestSamlAttributeMapping {
   user_id?: string | null;
@@ -2736,18 +1959,11 @@ export interface CreateEnterpriseConnectionRequestSamlAttributeMapping {
   first_name?: string | null;
   last_name?: string | null;
 }
-const CreateEnterpriseConnectionRequestSamlAttributeMapping = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<CreateEnterpriseConnectionRequestSamlAttributeMapping>;
-
 /** Controls the login_hint sent to the IdP on SSO sign-in */
 export type CreateEnterpriseConnectionRequestSamlLoginHintMode =
   | "email_address"
   | "custom_attribute"
   | "off";
-const CreateEnterpriseConnectionRequestSamlLoginHintMode = S.String;
-
 /** Configuration for the login_hint sent to the IdP on SSO sign-in */
 export interface CreateEnterpriseConnectionRequestSamlLoginHint {
   /** Controls the login_hint sent to the IdP on SSO sign-in */
@@ -2755,11 +1971,6 @@ export interface CreateEnterpriseConnectionRequestSamlLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-const CreateEnterpriseConnectionRequestSamlLoginHint = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<CreateEnterpriseConnectionRequestSamlLoginHint>;
-
 /** SAML connection-specific properties. Only applied when the enterprise connection uses SAML (e.g. provider is saml_custom). Use this to set IdP configuration, attribute mapping, and other SAML-specific settings at creation time. */
 export interface CreateEnterpriseConnectionRequestSaml {
   /** IdP entity ID */
@@ -2782,11 +1993,6 @@ export interface CreateEnterpriseConnectionRequestSaml {
   /** Configuration for the login_hint sent to the IdP on SSO sign-in */
   login_hint?: CreateEnterpriseConnectionRequestSamlLoginHint | null;
 }
-const CreateEnterpriseConnectionRequestSaml = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CreateEnterpriseConnectionRequestSaml>;
-
 /** OIDC connection-specific properties. Only applied when the enterprise connection uses OIDC (e.g. provider is oidc_custom, oidc_github_enterprise, or oidc_gitlab). */
 export interface CreateEnterpriseConnectionRequestOidc {
   /** OIDC client ID */
@@ -2804,11 +2010,6 @@ export interface CreateEnterpriseConnectionRequestOidc {
   /** Whether PKCE is required (must be true for public clients with no client secret) */
   requires_pkce?: boolean | null;
 }
-const CreateEnterpriseConnectionRequestOidc = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<CreateEnterpriseConnectionRequestOidc>;
-
 export interface CreateEnterpriseConnectionRequestCustomAttributesItem {
   /** Display name for the custom attribute */
   name: string;
@@ -2823,19 +2024,9 @@ export interface CreateEnterpriseConnectionRequestCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-const CreateEnterpriseConnectionRequestCustomAttributesItem = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CreateEnterpriseConnectionRequestCustomAttributesItem>;
-
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type CreateEnterpriseConnectionRequestCustomAttributesList =
   Array<CreateEnterpriseConnectionRequestCustomAttributesItem>;
-const CreateEnterpriseConnectionRequestCustomAttributesList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<CreateEnterpriseConnectionRequestCustomAttributesList>;
-
 export interface CreateEnterpriseConnectionRequest {
   /** The display name of the connection */
   name: string;
@@ -2856,19 +2047,9 @@ export interface CreateEnterpriseConnectionRequest {
   /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
   custom_attributes?: CreateEnterpriseConnectionRequestCustomAttributesList;
 }
-const CreateEnterpriseConnectionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CreateEnterpriseConnectionRequest>;
-
 export type EnterpriseConnectionObject = "enterprise_connection";
-const EnterpriseConnectionObject = S.String;
-
 /** Domains associated with the enterprise connection */
 export type EnterpriseConnectionDomainsList = Array<string>;
-const EnterpriseConnectionDomainsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<EnterpriseConnectionDomainsList>;
-
 export interface EnterpriseConnectionCustomAttributesItem {
   /** Display name for the custom attribute */
   name: string;
@@ -2886,9 +2067,6 @@ export interface EnterpriseConnectionCustomAttributesItem {
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning */
 export type EnterpriseConnectionCustomAttributesList =
   Array<EnterpriseConnectionCustomAttributesItem>;
-const EnterpriseConnectionCustomAttributesList =
-  CreateEnterpriseConnectionRequestCustomAttributesList as any as S.Schema<EnterpriseConnectionCustomAttributesList>;
-
 export interface EnterpriseConnectionSamlConnectionIdpCertificatesItem {
   /** The X.509 certificate, base64 DER without PEM armor */
   certificate: string;
@@ -2897,19 +2075,9 @@ export interface EnterpriseConnectionSamlConnectionIdpCertificatesItem {
   /** Unix timestamp (milliseconds) of the X.509 NotAfter */
   expires_at: number | null;
 }
-const EnterpriseConnectionSamlConnectionIdpCertificatesItem = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<EnterpriseConnectionSamlConnectionIdpCertificatesItem>;
-
 /** Every IdP signing certificate the connection trusts, primary first. A SAML response verifies against any of them. */
 export type EnterpriseConnectionSamlConnectionIdpCertificatesList =
   Array<EnterpriseConnectionSamlConnectionIdpCertificatesItem>;
-const EnterpriseConnectionSamlConnectionIdpCertificatesList = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<EnterpriseConnectionSamlConnectionIdpCertificatesList>;
-
 /** Controls the login_hint sent to the IdP on SSO sign-in */
 export type EnterpriseConnectionSamlConnectionLoginHintMode =
   | "email_address"
@@ -2922,9 +2090,6 @@ export interface EnterpriseConnectionSamlConnectionLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-const EnterpriseConnectionSamlConnectionLoginHint =
-  CreateEnterpriseConnectionRequestSamlLoginHint as any as S.Schema<EnterpriseConnectionSamlConnectionLoginHint>;
-
 /** Present when the enterprise connection uses SAML */
 export interface EnterpriseConnectionSamlConnection {
   /** SAML connection ID */
@@ -2962,11 +2127,6 @@ export interface EnterpriseConnectionSamlConnection {
   /** Configuration for the login_hint sent to the IdP on SSO sign-in */
   login_hint?: EnterpriseConnectionSamlConnectionLoginHint;
 }
-const EnterpriseConnectionSamlConnection = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<EnterpriseConnectionSamlConnection>;
-
 /** Present when the enterprise connection uses OIDC or EASIE */
 export interface EnterpriseConnectionOauthConfig {
   /** OAuth config ID */
@@ -2994,11 +2154,6 @@ export interface EnterpriseConnectionOauthConfig {
   /** Unix timestamp in milliseconds when the config was last updated */
   updated_at?: number;
 }
-const EnterpriseConnectionOauthConfig = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<EnterpriseConnectionOauthConfig>;
-
 export interface EnterpriseConnection {
   object: EnterpriseConnectionObject;
   /** The enterprise connection ID */
@@ -3030,38 +2185,18 @@ export interface EnterpriseConnection {
   /** Unix timestamp in milliseconds when the connection was last updated */
   updated_at: number;
 }
-const EnterpriseConnection = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<EnterpriseConnection>;
-
 export interface CreateEnterpriseConnectionTestRunRequest {
   /** The ID of the enterprise connection */
   enterprise_connection_id: string;
 }
-const CreateEnterpriseConnectionTestRunRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<CreateEnterpriseConnectionTestRunRequest>;
-
 export interface EnterpriseConnectionTestRunResponse {
   /** A short-lived URL that can be used to initiate the test run flow */
   url: string;
 }
-const EnterpriseConnectionTestRunResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<EnterpriseConnectionTestRunResponse>;
-
 /** Metadata that will be attached to the newly created invitation. The value of this property should be a well-formed JSON object. Once the user accepts the invitation and signs up, these metadata will end up in the user's public metadata. */
 export type CreateInvitationRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-const CreateInvitationRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateInvitationRequestPublicMetadataMap>;
-
 /** The slug of the email template to use for the invitation email. */
 export type CreateInvitationRequestTemplateSlug = "invitation" | "waitlist_invitation";
-const CreateInvitationRequestTemplateSlug = S.String;
-
 export interface CreateInvitationRequest {
   /** The email address the invitation will be sent to */
   email_address: string;
@@ -3078,11 +2213,6 @@ export interface CreateInvitationRequest {
   /** The slug of the email template to use for the invitation email. */
   template_slug?: CreateInvitationRequestTemplateSlug | (string & {});
 }
-const CreateInvitationRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<CreateInvitationRequest>;
-
 export interface CreateJWTTemplateRequest {
   /** JWT template name */
   name: string;
@@ -3099,14 +2229,7 @@ export interface CreateJWTTemplateRequest {
   /** The custom signing private key to use when minting JWTs. Required if `custom_signing_key` is `true`. */
   signing_key?: string | null;
 }
-const CreateJWTTemplateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<CreateJWTTemplateRequest>;
-
 export type JWTTemplateObject = "jwt_template";
-const JWTTemplateObject = S.String;
-
 export interface JWTTemplate {
   object: JWTTemplateObject;
   id: string;
@@ -3121,11 +2244,7 @@ export interface JWTTemplate {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const JWTTemplate = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<JWTTemplate>;
-
 export type CreateM2MTokenRequestTokenFormat = "opaque" | "jwt";
-const CreateM2MTokenRequestTokenFormat = S.String;
-
 export interface CreateM2MTokenRequest {
   token_format?: CreateM2MTokenRequestTokenFormat | (string & {});
   seconds_until_expiration?: number | null;
@@ -3133,18 +2252,8 @@ export interface CreateM2MTokenRequest {
   /** Enables server-side token reuse for opaque-format tokens. When set, if a non-revoked, non-expired M2M token already exists for this machine with identical `claims` and `scopes` and at least this many seconds of remaining lifetime, that existing token is returned and no new token is minted. Use this when caching tokens in application memory across requests is impractical -- for example, in serverless functions, short-lived job workers, or autoscaling containers that churn faster than the token TTL. Pooling at the server collapses many redundant create calls into reuse of a single live token, which is the recommended pattern for high-volume M2M traffic. Must be strictly less than the effective token lifetime -- that is, `seconds_until_expiration` when provided, or the machine's default TTL otherwise. A value greater than or equal to the lifetime is rejected with a 400, since no freshly-minted token would ever satisfy the requirement. Only applies to opaque-format tokens (`token_format` defaults to `opaque`). JWT-format tokens are stateless and are never deduplicated. */
   min_remaining_ttl_seconds?: number;
 }
-const CreateM2MTokenRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<CreateM2MTokenRequest>;
-
 export type CreateM2MTokenResponseObject = "machine_to_machine_token";
-const CreateM2MTokenResponseObject = S.String;
-
 export type CreateM2MTokenResponseScopesList = Array<string>;
-const CreateM2MTokenResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateM2MTokenResponseScopesList>;
-
 export interface CreateM2MTokenResponse {
   object: CreateM2MTokenResponseObject;
   id: string;
@@ -3164,16 +2273,8 @@ export interface CreateM2MTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-const CreateM2MTokenResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateM2MTokenResponse>;
-
 /** Array of machine IDs that this machine will have access to. Maximum of 150 scopes per machine. */
 export type CreateMachineRequestScopedMachinesList = Array<string>;
-const CreateMachineRequestScopedMachinesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateMachineRequestScopedMachinesList>;
-
 export interface CreateMachineRequest {
   /** The name of the machine */
   name: string;
@@ -3182,17 +2283,8 @@ export interface CreateMachineRequest {
   /** The default time-to-live (TTL) in seconds for tokens created by this machine. Must be at least 1 second. */
   default_token_ttl?: number;
 }
-const CreateMachineRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<CreateMachineRequest>;
-
 export type CreateMachineResponseObject = "machine";
-const CreateMachineResponseObject = S.String;
-
 export type MachineWithoutScopedMachinesObject = "machine";
-const MachineWithoutScopedMachinesObject = S.String;
-
 export interface MachineWithoutScopedMachines {
   object: MachineWithoutScopedMachinesObject;
   /** Unique identifier for the machine. */
@@ -3208,18 +2300,8 @@ export interface MachineWithoutScopedMachines {
   /** The default time-to-live (TTL) in seconds for tokens created by this machine. */
   default_token_ttl?: number;
 }
-const MachineWithoutScopedMachines = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<MachineWithoutScopedMachines>;
-
 /** Array of machines this machine has access to. */
 export type CreateMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-const CreateMachineResponseScopedMachinesList = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<CreateMachineResponseScopedMachinesList>;
-
 export interface CreateMachineResponse {
   object: CreateMachineResponseObject;
   /** Unique identifier for the machine. */
@@ -3239,25 +2321,13 @@ export interface CreateMachineResponse {
   /** The secret key for the machine, only returned upon creation. */
   secret_key: string | Redacted.Redacted<string>;
 }
-const CreateMachineResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<CreateMachineResponse>;
-
 export interface CreateMachineScopeRequest {
   /** The ID of the machine that will have access to another machine */
   machine_id: string;
   /** The ID of the machine that will be scoped to the current machine */
   to_machine_id: string;
 }
-const CreateMachineScopeRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<CreateMachineScopeRequest>;
-
 export type MachineScopeObject = "machine_scope";
-const MachineScopeObject = S.String;
-
 export interface MachineScope {
   object: MachineScopeObject;
   /** The ID of the machine that has access to the target machine. */
@@ -3267,13 +2337,8 @@ export interface MachineScope {
   /** Unix timestamp of creation. */
   created_at: number;
 }
-const MachineScope = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<MachineScope>;
-
 /** An array of redirect URIs of the new OAuth application */
 export type CreateOAuthApplicationRequestRedirectUrisList = Array<string>;
-const CreateOAuthApplicationRequestRedirectUrisList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOAuthApplicationRequestRedirectUrisList>;
-
 export interface CreateOAuthApplicationRequest {
   /** The name of the new OAuth application. Max length: 256 */
   name: string;
@@ -3292,18 +2357,8 @@ export interface CreateOAuthApplicationRequest {
   /** If true, this client is public and you can use the Proof Key of Code Exchange (PKCE) flow. */
   public?: boolean | null;
 }
-const CreateOAuthApplicationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<CreateOAuthApplicationRequest>;
-
 export type CreateOAuthApplicationResponseObject = "oauth_application";
-const CreateOAuthApplicationResponseObject = S.String;
-
 export type CreateOAuthApplicationResponseRedirectUrisList = Array<string>;
-const CreateOAuthApplicationResponseRedirectUrisList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOAuthApplicationResponseRedirectUrisList>;
-
 export interface CreateOAuthApplicationResponse {
   object: CreateOAuthApplicationResponseObject;
   id: string;
@@ -3334,21 +2389,10 @@ export interface CreateOAuthApplicationResponse {
   /** Empty if public client. */
   client_secret?: string | Redacted.Redacted<string>;
 }
-const CreateOAuthApplicationResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<CreateOAuthApplicationResponse>;
-
 /** Metadata saved on the organization, accessible only from the Backend API */
 export type CreateOrganizationRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-const CreateOrganizationRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateOrganizationRequestPrivateMetadataMap>;
-
 /** Metadata saved on the organization, read-only from the Frontend API and fully accessible (read/write) from the Backend API */
 export type CreateOrganizationRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-const CreateOrganizationRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateOrganizationRequestPublicMetadataMap>;
-
 export interface CreateOrganizationRequest {
   /** The name of the new organization. May not contain URLs or HTML. Max length: 256 */
   name: string;
@@ -3367,11 +2411,6 @@ export interface CreateOrganizationRequest {
   /** The key of the [role set](https://clerk.com/docs/guides/organizations/control-access/role-sets) to assign to this organization. */
   role_set_key?: string | null;
 }
-const CreateOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<CreateOrganizationRequest>;
-
 export interface CreateOrganizationDomainRequest {
   /** The ID of the organization where the new domain will be created. */
   organization_id: string;
@@ -3382,23 +2421,14 @@ export interface CreateOrganizationDomainRequest {
   /** The status of domain's verification. Defaults to true */
   verified?: boolean | null;
 }
-const CreateOrganizationDomainRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<CreateOrganizationDomainRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. Always `organization_domain` */
 export type OrganizationDomainObject = "organization_domain";
-const OrganizationDomainObject = S.String;
-
 /** Mode of enrollment for the domain */
 export type OrganizationDomainEnrollmentMode =
   | "manual_invitation"
   | "automatic_invitation"
   | "automatic_suggestion"
   | "enterprise_sso";
-const OrganizationDomainEnrollmentMode = S.String;
-
 /** The verification object from an organization domain */
 export interface OrganizationDomainVerification {
   /** Status of the verification. It can be `unverified`, `verified`, `failed`, or `expired`. */
@@ -3412,11 +2442,6 @@ export interface OrganizationDomainVerification {
   /** Unix timestamp of when ownership was verified. Only populated on `ownership_verification`; null on `affiliation_verification`. */
   verified_at: number | null;
 }
-const OrganizationDomainVerification = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<OrganizationDomainVerification>;
-
 export interface OrganizationInvitationPublicOrganizationData {
   id: string;
   name: string;
@@ -3424,11 +2449,6 @@ export interface OrganizationInvitationPublicOrganizationData {
   image_url?: string;
   has_image: boolean;
 }
-const OrganizationInvitationPublicOrganizationData = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<OrganizationInvitationPublicOrganizationData>;
-
 /** An organization domain */
 export interface OrganizationDomain {
   /** String representing the object's type. Objects of the same type share the same value. Always `organization_domain` */
@@ -3460,22 +2480,14 @@ export interface OrganizationDomain {
   /** Unix timestamp of the last update to the domain */
   updated_at: number;
 }
-const OrganizationDomain = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<OrganizationDomain>;
-
 /** Metadata saved on the organization invitation, read-only from the Frontend API and fully accessible (read/write) from the Backend API. When the organization invitation is accepted, the metadata will be transferred to the newly created organization membership. */
 export type CreateOrganizationInvitationRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CreateOrganizationInvitationRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationRequestPublicMetadataMap>;
-
 /** Metadata saved on the organization invitation, fully accessible (read/write) from the Backend API but not visible from the Frontend API. When the organization invitation is accepted, the metadata will be transferred to the newly created organization membership. */
 export type CreateOrganizationInvitationRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CreateOrganizationInvitationRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationRequestPrivateMetadataMap>;
-
 export interface CreateOrganizationInvitationRequest {
   /** The ID of the organization for which to send the invitation */
   organization_id: string;
@@ -3496,15 +2508,8 @@ export interface CreateOrganizationInvitationRequest {
   /** Optional flag which denotes whether an email invitation should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-const CreateOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<CreateOrganizationInvitationRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationInvitationObject = "organization_invitation";
-const OrganizationInvitationObject = S.String;
-
 /** An organization inviter's public user data */
 export interface OrganizationInvitationPublicUserData {
   user_id: string;
@@ -3514,19 +2519,8 @@ export interface OrganizationInvitationPublicUserData {
   has_image: boolean;
   identifier: string;
 }
-const OrganizationInvitationPublicUserData = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<OrganizationInvitationPublicUserData>;
-
 export type OrganizationInvitationPublicMetadataMap = { [key: string]: unknown | undefined };
-const OrganizationInvitationPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<OrganizationInvitationPublicMetadataMap>;
-
 export type OrganizationInvitationPrivateMetadataMap = { [key: string]: unknown | undefined };
-const OrganizationInvitationPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<OrganizationInvitationPrivateMetadataMap>;
-
 /** An organization invitation */
 export interface OrganizationInvitation {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -3549,27 +2543,14 @@ export interface OrganizationInvitation {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const OrganizationInvitation = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<OrganizationInvitation>;
-
 /** Metadata saved on the organization invitation, read-only from the Frontend API and fully accessible (read/write) from the Backend API. When the organization invitation is accepted, the metadata will be transferred to the newly created organization membership. */
 export type CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap>;
-
 /** Metadata saved on the organization invitation, fully accessible (read/write) from the Backend API but not visible from the Frontend API. When the organization invitation is accepted, the metadata will be transferred to the newly created organization membership. */
 export type CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap =
-  CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap>;
-
 export interface CreateOrganizationInvitationBulkRequestBodyItem {
   /** The email address of the new member that is going to be invited to the organization */
   email_address: string;
@@ -3588,58 +2569,27 @@ export interface CreateOrganizationInvitationBulkRequestBodyItem {
   /** Optional flag which denotes whether an email invitation should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-const CreateOrganizationInvitationBulkRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItem>;
-
 export type CreateOrganizationInvitationBulkRequestBodyList =
   Array<CreateOrganizationInvitationBulkRequestBodyItem>;
-const CreateOrganizationInvitationBulkRequestBodyList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyList>;
-
 export interface CreateOrganizationInvitationBulkRequest {
   /** The organization ID. */
   organization_id: string;
   body: CreateOrganizationInvitationBulkRequestBodyList;
 }
-const CreateOrganizationInvitationBulkRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<CreateOrganizationInvitationBulkRequest>;
-
 export type OrganizationInvitationsDataList = Array<OrganizationInvitation>;
-const OrganizationInvitationsDataList = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<OrganizationInvitationsDataList>;
-
 export interface OrganizationInvitations {
   data: OrganizationInvitationsDataList;
   /** Total number of organization invitations */
   total_count: number;
 }
-const OrganizationInvitations = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<OrganizationInvitations>;
-
 /** Metadata saved on the organization membership, that is visible to both your frontend and backend. */
 export type CreateOrganizationMembershipRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CreateOrganizationMembershipRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateOrganizationMembershipRequestPublicMetadataMap>;
-
 /** Metadata saved on the organization membership that is only visible to your backend. */
 export type CreateOrganizationMembershipRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CreateOrganizationMembershipRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateOrganizationMembershipRequestPrivateMetadataMap>;
-
 export interface CreateOrganizationMembershipRequest {
   /** The ID of the organization where the new membership will be created */
   organization_id: string;
@@ -3652,11 +2602,6 @@ export interface CreateOrganizationMembershipRequest {
   /** Metadata saved on the organization membership that is only visible to your backend. */
   private_metadata?: CreateOrganizationMembershipRequestPrivateMetadataMap | null;
 }
-const CreateOrganizationMembershipRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<CreateOrganizationMembershipRequest>;
-
 export interface CreateOrganizationPermissionRequest {
   /** The name of the permission. */
   name: string;
@@ -3665,16 +2610,8 @@ export interface CreateOrganizationPermissionRequest {
   /** A description of the permission. */
   description?: string;
 }
-const CreateOrganizationPermissionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<CreateOrganizationPermissionRequest>;
-
 /** Array of permission IDs to assign to the role */
 export type CreateOrganizationRoleRequestPermissionsList = Array<string>;
-const CreateOrganizationRoleRequestPermissionsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOrganizationRoleRequestPermissionsList>;
-
 export interface CreateOrganizationRoleRequest {
   /** The name of the new organization role */
   name: string;
@@ -3687,11 +2624,6 @@ export interface CreateOrganizationRoleRequest {
   /** Whether this role should be included in the initial role set */
   include_in_initial_role_set?: boolean | null;
 }
-const CreateOrganizationRoleRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<CreateOrganizationRoleRequest>;
-
 export interface CreatePhoneNumberRequest {
   /** The ID representing the user */
   user_id: string;
@@ -3704,23 +2636,11 @@ export interface CreatePhoneNumberRequest {
   /** Create this phone number as reserved for multi-factor authentication. The phone number must also be verified. If there are no other reserved second factors, the phone number will be set as the default second factor. */
   reserved_for_second_factor?: boolean | null;
 }
-const CreatePhoneNumberRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<CreatePhoneNumberRequest>;
-
 export interface CreateRedirectURLRequest {
   /** The full URL value prefixed with `https://` or a custom scheme e.g. `"https://my-app.com/oauth-callback"` or `"my-app://oauth-callback"` */
   url: string;
 }
-const CreateRedirectURLRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<CreateRedirectURLRequest>;
-
 export type RedirectURLObject = "redirect_url";
-const RedirectURLObject = S.String;
-
 export interface RedirectURL {
   object: RedirectURLObject;
   id: string;
@@ -3730,17 +2650,10 @@ export interface RedirectURL {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const RedirectURL = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<RedirectURL>;
-
 /** The type of the role set. "initial" role sets are the default for new organizations. Only one role set can be "initial" per instance. */
 export type CreateRoleSetRequestType = "initial" | "custom";
-const CreateRoleSetRequestType = S.String;
-
 /** Array of role keys to include in the role set. Must contain at least one role and no more than 10 roles. */
 export type CreateRoleSetRequestRolesList = Array<string>;
-const CreateRoleSetRequestRolesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateRoleSetRequestRolesList>;
-
 export interface CreateRoleSetRequest {
   /** The name of the new role set */
   name: string;
@@ -3757,11 +2670,6 @@ export interface CreateRoleSetRequest {
   /** Array of role keys to include in the role set. Must contain at least one role and no more than 10 roles. */
   roles: CreateRoleSetRequestRolesList;
 }
-const CreateRoleSetRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<CreateRoleSetRequest>;
-
 export interface CreateSCIMDirectoryRequestGroupRoleMappingsItem {
   /** The SCIM group ID from the identity provider. */
   scim_group_id: string;
@@ -3772,19 +2680,9 @@ export interface CreateSCIMDirectoryRequestGroupRoleMappingsItem {
   /** The precedence for this mapping. If omitted, precedence is assigned by array order. */
   precedence?: number;
 }
-const CreateSCIMDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<CreateSCIMDirectoryRequestGroupRoleMappingsItem>;
-
 /** Optional SCIM group to organization role mappings to create with the directory. */
 export type CreateSCIMDirectoryRequestGroupRoleMappingsList =
   Array<CreateSCIMDirectoryRequestGroupRoleMappingsItem>;
-const CreateSCIMDirectoryRequestGroupRoleMappingsList = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CreateSCIMDirectoryRequestGroupRoleMappingsList>;
-
 export interface CreateSCIMDirectoryRequest {
   /** The ID of the enterprise connection to associate with this directory. */
   enterprise_connection_id: string;
@@ -3795,20 +2693,10 @@ export interface CreateSCIMDirectoryRequest {
   /** Optional SCIM group to organization role mappings to create with the directory. */
   group_role_mappings?: CreateSCIMDirectoryRequestGroupRoleMappingsList;
 }
-const CreateSCIMDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<CreateSCIMDirectoryRequest>;
-
 /** String representing the object's type. Always "scim_directory". */
 export type SCIMDirectoryObject = "scim_directory";
-const SCIMDirectoryObject = S.String;
-
 /** Mapping of user attributes to the SCIM attribute paths they are extracted from. */
 export type SCIMDirectoryAttributeMappingMap = { [key: string]: string | undefined };
-const SCIMDirectoryAttributeMappingMap =
-  RoleSetMigrationMappingsMap as any as S.Schema<SCIMDirectoryAttributeMappingMap>;
-
 export interface SCIMDirectoryCustomAttributesItem {
   /** Display name for the custom attribute */
   name?: string;
@@ -3825,9 +2713,6 @@ export interface SCIMDirectoryCustomAttributesItem {
 }
 /** Custom attributes to map from the IdP to the user's profile via SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type SCIMDirectoryCustomAttributesList = Array<SCIMDirectoryCustomAttributesItem>;
-const SCIMDirectoryCustomAttributesList =
-  DirectoryCustomAttributesList as any as S.Schema<SCIMDirectoryCustomAttributesList>;
-
 /** A directory configuration for provisioning users via SCIM protocol. */
 export interface SCIMDirectory {
   /** String representing the object's type. Always "scim_directory". */
@@ -3857,8 +2742,6 @@ export interface SCIMDirectory {
   /** Unix timestamp when the directory was last updated. */
   updated_at: number;
 }
-const SCIMDirectory = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<SCIMDirectory>;
-
 export interface CreateSCIMGroupRoleMappingRequest {
   /** The ID of the directory. */
   scim_directory_id: string;
@@ -3869,15 +2752,8 @@ export interface CreateSCIMGroupRoleMappingRequest {
   /** The precedence for this mapping. Lower values take priority when a user belongs to multiple mapped groups. If omitted, the mapping is appended with the next-highest precedence. */
   precedence?: number;
 }
-const CreateSCIMGroupRoleMappingRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<CreateSCIMGroupRoleMappingRequest>;
-
 /** String representing the object's type. Always "scim_group_role_mapping". */
 export type SCIMGroupRoleMappingObject = "scim_group_role_mapping";
-const SCIMGroupRoleMappingObject = S.String;
-
 /** A mapping from a SCIM group to an organization role. Members of the group are assigned the role; the lowest-precedence match wins when a user belongs to multiple mapped groups. */
 export interface SCIMGroupRoleMapping {
   /** String representing the object's type. Always "scim_group_role_mapping". */
@@ -3904,26 +2780,14 @@ export interface SCIMGroupRoleMapping {
   /** Unix timestamp (milliseconds) of when the mapping was last updated. */
   updated_at: number;
 }
-const SCIMGroupRoleMapping = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<SCIMGroupRoleMapping>;
-
 export interface CreateSessionRequest {
   /** The ID representing the user */
   user_id: string;
   /** The ID of the organization to set as active for this session */
   active_organization_id?: string;
 }
-const CreateSessionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<CreateSessionRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type SessionObject = "session";
-const SessionObject = S.String;
-
 export type SessionStatus =
   | "active"
   | "revoked"
@@ -3933,8 +2797,6 @@ export type SessionStatus =
   | "abandoned"
   | "replaced"
   | "pending";
-const SessionStatus = S.String;
-
 export interface SessionActivityResponse {
   object: string;
   id: string;
@@ -3946,19 +2808,10 @@ export interface SessionActivityResponse {
   city?: string;
   country?: string;
 }
-const SessionActivityResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<SessionActivityResponse>;
-
 export interface SessionTask {
   key: string;
 }
-const SessionTask = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<SessionTask>;
-
 export type SessionTasksList = Array<SessionTask>;
-const SessionTasksList = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<SessionTasksList>;
-
 export interface Session {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: SessionObject;
@@ -3980,31 +2833,17 @@ export interface Session {
   created_at: number;
   tasks?: SessionTasksList | null;
 }
-const Session = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<Session>;
-
 export interface CreateSessionTokenRequest {
   /** The ID of the session */
   session_id: string;
   /** Use this parameter to override the default session token lifetime. */
   expires_in_seconds?: number | null;
 }
-const CreateSessionTokenRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<CreateSessionTokenRequest>;
-
 export type CreateSessionTokenResponseObject = "token";
-const CreateSessionTokenResponseObject = S.String;
-
 export interface CreateSessionTokenResponse {
   object?: CreateSessionTokenResponseObject;
   jwt?: string;
 }
-const CreateSessionTokenResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<CreateSessionTokenResponse>;
-
 export interface CreateSessionTokenFromTemplateRequest {
   /** The ID of the session */
   session_id: string;
@@ -4013,19 +2852,11 @@ export interface CreateSessionTokenFromTemplateRequest {
   /** Use this parameter to override the JWT lifetime. */
   expires_in_seconds?: number | null;
 }
-const CreateSessionTokenFromTemplateRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<CreateSessionTokenFromTemplateRequest>;
-
 export type CreateSessionTokenFromTemplateResponseObject = "token";
 export interface CreateSessionTokenFromTemplateResponse {
   object?: CreateSessionTokenFromTemplateResponseObject;
   jwt?: string;
 }
-const CreateSessionTokenFromTemplateResponse =
-  CreateSessionTokenResponse as any as S.Schema<CreateSessionTokenFromTemplateResponse>;
-
 export interface CreateSignInTokenRequest {
   /** The ID of the user that can use the newly created sign in token */
   user_id: string;
@@ -4034,17 +2865,8 @@ export interface CreateSignInTokenRequest {
   /** Optional parameter to specify the life duration of the sign in token in seconds. By default, the duration is 30 days. */
   expires_in_seconds?: number | null;
 }
-const CreateSignInTokenRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<CreateSignInTokenRequest>;
-
 export type SignInTokenObject = "sign_in_token";
-const SignInTokenObject = S.String;
-
 export type SignInTokenStatus = "pending" | "accepted" | "revoked";
-const SignInTokenStatus = S.String;
-
 export interface SignInToken {
   object: SignInTokenObject;
   id: string;
@@ -4057,20 +2879,11 @@ export interface SignInToken {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const SignInToken = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<SignInToken>;
-
 export interface CreateSSOBypassAllowlistUserRequest {
   /** The ID of the user to allowlist. */
   user_id: string;
 }
-const CreateSSOBypassAllowlistUserRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<CreateSSOBypassAllowlistUserRequest>;
-
 export type SSOBypassAllowlistUserObject = "sso_bypass_allowlist_user";
-const SSOBypassAllowlistUserObject = S.String;
-
 /** The allowlisted user's public data. */
 export interface SSOBypassAllowlistPublicUserData {
   first_name: string | null;
@@ -4082,11 +2895,6 @@ export interface SSOBypassAllowlistPublicUserData {
   /** Use `image_url` instead. */
   profile_image_url: string | null;
 }
-const SSOBypassAllowlistPublicUserData = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<SSOBypassAllowlistPublicUserData>;
-
 /** A user who may verify an email code instead of reaching their identity provider when enterprise SSO is unreachable. */
 export interface SSOBypassAllowlistUser {
   object: SSOBypassAllowlistUserObject;
@@ -4098,31 +2906,12 @@ export interface SSOBypassAllowlistUser {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const SSOBypassAllowlistUser = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<SSOBypassAllowlistUser>;
-
 export interface CreateSvixAppRequest {}
-const CreateSvixAppRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<CreateSvixAppRequest>;
-
 export interface SvixURL {
   svix_url: string;
 }
-const SvixURL = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<SvixURL>;
-
 export interface CreateTestingTokenRequest {}
-const CreateTestingTokenRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<CreateTestingTokenRequest>;
-
 export type TestingTokenObject = "testing_token";
-const TestingTokenObject = S.String;
-
 export interface TestingToken {
   object: TestingTokenObject;
   /** The actual token. This value is meant to be passed in the `__clerk_testing_token` query parameter with requests to the Frontend API. */
@@ -4130,63 +2919,30 @@ export interface TestingToken {
   /** Unix timestamp of the token's expiration time. */
   expires_at: number;
 }
-const TestingToken = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<TestingToken>;
-
 /** Email addresses to add to the user. Must be unique across your instance. The first email address will be set as the user's primary email address. Created verified by default; see `email_address_identification_status` to create them reserved. */
 export type CreateUserRequestEmailAddressList = Array<string>;
-const CreateUserRequestEmailAddressList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestEmailAddressList>;
-
 export type CreateUserRequestEmailAddressIdentificationStatusItem = "verified" | "reserved";
-const CreateUserRequestEmailAddressIdentificationStatusItem = S.String;
-
 /** Controls the status each email address is created with. Runs parallel to `email_address`: when provided, it must contain exactly one item per email address, applied by position. When omitted or empty, every email address is created `verified`. Set an item to `reserved` to create the corresponding email address reserved instead (unverified but usable for sign-in and locked so no other user can claim it). */
 export type CreateUserRequestEmailAddressIdentificationStatusList = Array<
   CreateUserRequestEmailAddressIdentificationStatusItem | (string & {})
 >;
-const CreateUserRequestEmailAddressIdentificationStatusList = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<CreateUserRequestEmailAddressIdentificationStatusList>;
-
 /** Phone numbers to add to the user. Must be unique across your instance. The first phone number will be set as the user's primary phone number. Created verified by default; see `phone_number_identification_status` to create them reserved. */
 export type CreateUserRequestPhoneNumberList = Array<string>;
-const CreateUserRequestPhoneNumberList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestPhoneNumberList>;
-
 export type CreateUserRequestPhoneNumberIdentificationStatusItem = "verified" | "reserved";
 /** Controls the status each phone number is created with. Runs parallel to `phone_number`: when provided, it must contain exactly one item per phone number, applied by position. When omitted or empty, every phone number is created `verified`. Set an item to `reserved` to create the corresponding phone number reserved instead (unverified but usable for sign-in and locked so no other user can claim it). */
 export type CreateUserRequestPhoneNumberIdentificationStatusList = Array<
   CreateUserRequestPhoneNumberIdentificationStatusItem | (string & {})
 >;
-const CreateUserRequestPhoneNumberIdentificationStatusList =
-  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<CreateUserRequestPhoneNumberIdentificationStatusList>;
-
 /** Web3 wallets to add to the user. Must be unique across your instance. The first wallet will be set as the user's primary wallet. */
 export type CreateUserRequestWeb3WalletList = Array<string>;
-const CreateUserRequestWeb3WalletList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestWeb3WalletList>;
-
 /** If Backup Codes are configured on the instance, you can provide them to enable it on the newly created user without the need to reset them. You must provide the backup codes in plain format or the corresponding bcrypt digest. */
 export type CreateUserRequestBackupCodesList = Array<string>;
-const CreateUserRequestBackupCodesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestBackupCodesList>;
-
 /** Metadata saved on the user, that is visible to both your Frontend and Backend APIs */
 export type CreateUserRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-const CreateUserRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateUserRequestPublicMetadataMap>;
-
 /** Metadata saved on the user, that is only visible to your Backend API */
 export type CreateUserRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-const CreateUserRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateUserRequestPrivateMetadataMap>;
-
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type CreateUserRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-const CreateUserRequestUnsafeMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<CreateUserRequestUnsafeMetadataMap>;
-
 export interface CreateUserRequest {
   /** The ID of the user as used in your external systems or your previous authentication solution. Must be unique across your instance. */
   external_id?: string | null;
@@ -4252,28 +3008,16 @@ export interface CreateUserRequest {
   /** When set to `true`, the user is created already locked. Requires the user lockout feature to be enabled on the instance. */
   locked?: boolean | null;
 }
-const CreateUserRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<CreateUserRequest>;
-
 export interface CreateWaitlistEntryRequest {
   /** The email address to add to the waitlist */
   email_address: string;
   /** Optional flag which denotes whether a confirmation email should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-const CreateWaitlistEntryRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<CreateWaitlistEntryRequest>;
-
 export interface DeleteAllowlistIdentifierRequest {
   /** The ID of the identifier to delete from the allow-list */
   identifier_id: string;
 }
-const DeleteAllowlistIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DeleteAllowlistIdentifierRequest>;
-
 export interface DeletedObject {
   object: string;
   id?: string;
@@ -4281,76 +3025,38 @@ export interface DeletedObject {
   deleted: boolean;
   external_id?: string;
 }
-const DeletedObject = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<DeletedObject>;
-
 export interface DeleteApiKeyRequest {
   apiKeyID: string;
 }
-const DeleteApiKeyRequest = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<DeleteApiKeyRequest>;
-
 export type DeleteApiKeyResponseObject = "api_key";
-const DeleteApiKeyResponseObject = S.String;
-
 export interface DeleteApiKeyResponse {
   id: string;
   object: DeleteApiKeyResponseObject;
   deleted: boolean;
 }
-const DeleteApiKeyResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DeleteApiKeyResponse>;
-
 export interface DeleteBackupCodeRequest {
   /** The ID of the user whose backup codes are to be deleted. */
   user_id: string;
 }
-const DeleteBackupCodeRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<DeleteBackupCodeRequest>;
-
 export interface DeleteBackupCodeResponse {
   user_id?: string;
 }
-const DeleteBackupCodeResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<DeleteBackupCodeResponse>;
-
 export interface DeleteBlocklistIdentifierRequest {
   /** The ID of the identifier to delete from the block-list */
   identifier_id: string;
 }
-const DeleteBlocklistIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<DeleteBlocklistIdentifierRequest>;
-
 export interface DeleteDirectoryRequest {
   /** The ID of the directory to delete */
   directory_id: string;
 }
-const DeleteDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<DeleteDirectoryRequest>;
-
 export interface DeleteDirectoryGroupRoleMappingRequest {
   /** The ID of the directory. */
   directory_id: string;
   /** The ID of the directory group role mapping to delete. */
   mapping_id: string;
 }
-const DeleteDirectoryGroupRoleMappingRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<DeleteDirectoryGroupRoleMappingRequest>;
-
 /** String representing the object's type. */
 export type DeleteDirectoryGroupRoleMappingResponseObject = "directory_group_role_mapping";
-const DeleteDirectoryGroupRoleMappingResponseObject = S.String;
-
 export interface DeleteDirectoryGroupRoleMappingResponse {
   /** String representing the object's type. */
   object: DeleteDirectoryGroupRoleMappingResponseObject;
@@ -4359,77 +3065,38 @@ export interface DeleteDirectoryGroupRoleMappingResponse {
   /** Whether the directory group role mapping was successfully deleted. */
   deleted: boolean;
 }
-const DeleteDirectoryGroupRoleMappingResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<DeleteDirectoryGroupRoleMappingResponse>;
-
 export interface DeleteDomainRequest {
   /** The ID of the domain that will be deleted. */
   domain_id: string;
 }
-const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<DeleteDomainRequest>;
-
 export interface DeleteEmailAddressRequest {
   /** The ID of the email address to delete */
   email_address_id: string;
 }
-const DeleteEmailAddressRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<DeleteEmailAddressRequest>;
-
 export interface DeleteEnterpriseConnectionRequest {
   /** The ID of the enterprise connection to delete */
   enterprise_connection_id: string;
 }
-const DeleteEnterpriseConnectionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DeleteEnterpriseConnectionRequest>;
-
 export interface DeleteExternalAccountRequest {
   /** The ID of the user's external account */
   user_id: string;
   /** The ID of the external account to delete */
   external_account_id: string;
 }
-const DeleteExternalAccountRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DeleteExternalAccountRequest>;
-
 export interface DeleteInvitationRequest {
   /** The ID of the invitation to delete */
   invitation_id: string;
 }
-const DeleteInvitationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<DeleteInvitationRequest>;
-
 export interface DeleteJWTTemplateRequest {
   /** JWT Template ID */
   template_id: string;
 }
-const DeleteJWTTemplateRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<DeleteJWTTemplateRequest>;
-
 export interface DeleteMachineRequest {
   /** The ID of the machine to delete */
   machine_id: string;
 }
-const DeleteMachineRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<DeleteMachineRequest>;
-
 /** String representing the object's type. */
 export type DeleteMachineResponseObject = "machine";
-const DeleteMachineResponseObject = S.String;
-
 export interface DeleteMachineResponse {
   /** String representing the object's type. */
   object: DeleteMachineResponseObject;
@@ -4438,26 +3105,14 @@ export interface DeleteMachineResponse {
   /** Whether the machine was successfully deleted */
   deleted: boolean;
 }
-const DeleteMachineResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<DeleteMachineResponse>;
-
 export interface DeleteMachineScopeRequest {
   /** The ID of the machine that has access to another machine */
   machine_id: string;
   /** The ID of the machine that is being accessed */
   other_machine_id: string;
 }
-const DeleteMachineScopeRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<DeleteMachineScopeRequest>;
-
 /** String representing the object's type. */
 export type DeleteMachineScopeResponseObject = "machine_scope";
-const DeleteMachineScopeResponseObject = S.String;
-
 export interface DeleteMachineScopeResponse {
   /** String representing the object's type. */
   object: DeleteMachineScopeResponseObject;
@@ -4468,116 +3123,56 @@ export interface DeleteMachineScopeResponse {
   /** Whether the machine scope was successfully deleted */
   deleted: boolean;
 }
-const DeleteMachineScopeResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<DeleteMachineScopeResponse>;
-
 export interface DeleteOAuthApplicationRequest {
   /** The ID of the OAuth application to delete */
   oauth_application_id: string;
 }
-const DeleteOAuthApplicationRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<DeleteOAuthApplicationRequest>;
-
 export interface DeleteOrganizationRequest {
   /** The ID of the organization to delete */
   organization_id: string;
 }
-const DeleteOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<DeleteOrganizationRequest>;
-
 export interface DeleteOrganizationDomainRequest {
   /** The ID of the organization to which the domain belongs */
   organization_id: string;
   /** The ID of the domain */
   domain_id: string;
 }
-const DeleteOrganizationDomainRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<DeleteOrganizationDomainRequest>;
-
 export interface DeleteOrganizationLogoRequest {
   /** The ID of the organization for which the logo will be deleted. */
   organization_id: string;
 }
-const DeleteOrganizationLogoRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<DeleteOrganizationLogoRequest>;
-
 export interface DeleteOrganizationMembershipRequest {
   /** The ID of the organization to which this membership belongs */
   organization_id: string;
   /** The ID of the user to which this membership belongs */
   user_id: string;
 }
-const DeleteOrganizationMembershipRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<DeleteOrganizationMembershipRequest>;
-
 export interface DeleteOrganizationPermissionRequest {
   /** The ID of the permission to delete */
   permission_id: string;
 }
-const DeleteOrganizationPermissionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<DeleteOrganizationPermissionRequest>;
-
 export interface DeleteOrganizationRoleRequest {
   /** The ID of the organization role to delete */
   organization_role_id: string;
 }
-const DeleteOrganizationRoleRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<DeleteOrganizationRoleRequest>;
-
 export interface DeletePhoneNumberRequest {
   /** The ID of the phone number to delete */
   phone_number_id: string;
 }
-const DeletePhoneNumberRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<DeletePhoneNumberRequest>;
-
 export interface DeleteRedirectURLRequest {
   /** The ID of the redirect URL */
   id: string;
 }
-const DeleteRedirectURLRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<DeleteRedirectURLRequest>;
-
 export interface DeleteSCIMDirectoryRequest {
   /** The ID of the directory to delete */
   scim_directory_id: string;
 }
-const DeleteSCIMDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<DeleteSCIMDirectoryRequest>;
-
 export interface DeleteSCIMGroupRoleMappingRequest {
   /** The ID of the directory. */
   scim_directory_id: string;
   /** The ID of the SCIM group role mapping to delete. */
   mapping_id: string;
 }
-const DeleteSCIMGroupRoleMappingRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<DeleteSCIMGroupRoleMappingRequest>;
-
 /** String representing the object's type. */
 export type DeleteSCIMGroupRoleMappingResponseObject = "scim_group_role_mapping";
 export interface DeleteSCIMGroupRoleMappingResponse {
@@ -4588,127 +3183,62 @@ export interface DeleteSCIMGroupRoleMappingResponse {
   /** Whether the SCIM group role mapping was successfully deleted. */
   deleted: boolean;
 }
-const DeleteSCIMGroupRoleMappingResponse =
-  DeleteDirectoryGroupRoleMappingResponse as any as S.Schema<DeleteSCIMGroupRoleMappingResponse>;
-
 export interface DeleteSSOBypassAllowlistUserRequest {
   /** The ID of the allowlisted user */
   userID: string;
 }
-const DeleteSSOBypassAllowlistUserRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<DeleteSSOBypassAllowlistUserRequest>;
-
 export interface DeleteSvixAppRequest {}
-const DeleteSvixAppRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<DeleteSvixAppRequest>;
-
 export interface DeleteSvixAppResponse {}
-const DeleteSvixAppResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<DeleteSvixAppResponse>;
-
 export interface DeleteTOTPRequest {
   /** The ID of the user whose TOTPs are to be deleted */
   user_id: string;
 }
-const DeleteTOTPRequest = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<DeleteTOTPRequest>;
-
 export interface DeleteTOTPResponse {
   user_id?: string;
 }
-const DeleteTOTPResponse = DeleteBackupCodeResponse as any as S.Schema<DeleteTOTPResponse>;
-
 export interface DeleteUserRequest {
   /** The ID of the user to delete */
   user_id: string;
 }
-const DeleteUserRequest = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<DeleteUserRequest>;
-
 export interface DeleteUserPasskeyRequest {
   /** The ID of the user that owns the passkey identity */
   user_id: string;
   /** The ID of the passkey identity to be deleted */
   passkey_identification_id: string;
 }
-const DeleteUserPasskeyRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<DeleteUserPasskeyRequest>;
-
 export interface DeleteUserProfileImageRequest {
   /** The ID of the user to delete the profile image for */
   user_id: string;
 }
-const DeleteUserProfileImageRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<DeleteUserProfileImageRequest>;
-
 export interface DeleteUserWeb3WalletRequest {
   /** The ID of the user that owns the web3 wallet */
   user_id: string;
   /** The ID of the web3 wallet identity to be deleted */
   web3_wallet_identification_id: string;
 }
-const DeleteUserWeb3WalletRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<DeleteUserWeb3WalletRequest>;
-
 export interface DeleteWaitlistEntryRequest {
   /** The ID of the waitlist entry to delete */
   waitlist_entry_id: string;
 }
-const DeleteWaitlistEntryRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<DeleteWaitlistEntryRequest>;
-
 export interface DisableMFARequest {
   /** The ID of the user whose MFA methods are to be disabled */
   user_id: string;
 }
-const DisableMFARequest = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<DisableMFARequest>;
-
 export interface DisableMFAResponse {
   user_id?: string;
 }
-const DisableMFAResponse = DeleteBackupCodeResponse as any as S.Schema<DisableMFAResponse>;
-
 export interface ExtendBillingSubscriptionItemFreeTrialRequest {
   /** The ID of the subscription item to extend the free trial for */
   subscription_item_id: string;
   /** RFC3339 timestamp to extend the free trial to. Must be in the future and not more than 365 days from now. */
   extend_to: string;
 }
-const ExtendBillingSubscriptionItemFreeTrialRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ExtendBillingSubscriptionItemFreeTrialRequest>;
-
 export interface GenerateSvixAuthURLRequest {}
-const GenerateSvixAuthURLRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GenerateSvixAuthURLRequest>;
-
 export interface GetApiKeyRequest {
   apiKeyID: string;
 }
-const GetApiKeyRequest = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<GetApiKeyRequest>;
-
 export type GetApiKeyResponseObject = "api_key";
-const GetApiKeyResponseObject = S.String;
-
 export type GetApiKeyResponseScopesList = Array<string>;
-const GetApiKeyResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetApiKeyResponseScopesList>;
-
 export interface GetApiKeyResponse {
   object: GetApiKeyResponseObject;
   id: string;
@@ -4731,8 +3261,6 @@ export interface GetApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-const GetApiKeyResponse = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<GetApiKeyResponse>;
-
 export interface GetApiKeysRequest {
   type?: string;
   subject: string;
@@ -4741,15 +3269,8 @@ export interface GetApiKeysRequest {
   offset?: number;
   query?: string;
 }
-const GetApiKeysRequest = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<GetApiKeysRequest>;
-
 export type GetApiKeysResponseDataItemObject = "api_key";
-const GetApiKeysResponseDataItemObject = S.String;
-
 export type GetApiKeysResponseDataItemScopesList = Array<string>;
-const GetApiKeysResponseDataItemScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetApiKeysResponseDataItemScopesList>;
-
 export interface GetApiKeysResponseDataItem {
   object: GetApiKeysResponseDataItemObject;
   id: string;
@@ -4772,39 +3293,17 @@ export interface GetApiKeysResponseDataItem {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-const GetApiKeysResponseDataItem = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GetApiKeysResponseDataItem>;
-
 export type GetApiKeysResponseDataList = Array<GetApiKeysResponseDataItem>;
-const GetApiKeysResponseDataList = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<GetApiKeysResponseDataList>;
-
 export interface GetApiKeysResponse {
   data: GetApiKeysResponseDataList;
   total_count: number;
 }
-const GetApiKeysResponse = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<GetApiKeysResponse>;
-
 export interface GetApiKeySecretRequest {
   apiKeyID: string;
 }
-const GetApiKeySecretRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GetApiKeySecretRequest>;
-
 export interface GetApiKeySecretResponse {
   secret: string | Redacted.Redacted<string>;
 }
-const GetApiKeySecretResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GetApiKeySecretResponse>;
-
 export interface GetBillingPriceListRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
   paginated?: boolean;
@@ -4815,46 +3314,22 @@ export interface GetBillingPriceListRequest {
   /** Filter prices by plan ID */
   plan_id?: string;
 }
-const GetBillingPriceListRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GetBillingPriceListRequest>;
-
 /** Array of prices. */
 export type PaginatedBillingPriceResponseDataList = Array<BillingPriceResponse>;
-const PaginatedBillingPriceResponseDataList = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<PaginatedBillingPriceResponseDataList>;
-
 export interface PaginatedBillingPriceResponse {
   /** Array of prices. */
   data: PaginatedBillingPriceResponseDataList;
   /** Total number of prices. */
   total_count: number;
 }
-const PaginatedBillingPriceResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<PaginatedBillingPriceResponse>;
-
 export interface GetBillingStatementRequest {
   /** The ID of the statement to retrieve. */
   statementID: string;
 }
-const GetBillingStatementRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetBillingStatementRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingStatementObject = "commerce_statement";
-const BillingStatementObject = S.String;
-
 /** The current status of the statement. */
 export type BillingStatementStatus = "open" | "closed";
-const BillingStatementStatus = S.String;
-
 /** Totals for the statement. */
 export interface BillingStatementTotals {
   /** The grand total amount for the statement. */
@@ -4866,23 +3341,12 @@ export interface BillingStatementTotals {
   /** The tax total amount for the statement. */
   tax_total: CommerceMoneyResponse;
 }
-const BillingStatementTotals = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<BillingStatementTotals>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingStatementGroupsItemObject = "commerce_statement_group";
-const BillingStatementGroupsItemObject = S.String;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingPaymentAttemptObject = "commerce_payment";
-const BillingPaymentAttemptObject = S.String;
-
 /** The current status of the payment attempt. */
 export type BillingPaymentAttemptStatus = "pending" | "paid" | "failed";
-const BillingPaymentAttemptStatus = S.String;
-
 export interface BillingPaymentAttempt {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: BillingPaymentAttemptObject;
@@ -4931,18 +3395,8 @@ export interface BillingPaymentAttempt {
   /** Unix timestamp (in milliseconds) when the payment attempt was last updated. */
   updated_at: number;
 }
-const BillingPaymentAttempt = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<BillingPaymentAttempt>;
-
 /** The payment attempts included in the group */
 export type BillingStatementGroupsItemItemsList = Array<BillingPaymentAttempt>;
-const BillingStatementGroupsItemItemsList = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<BillingStatementGroupsItemItemsList>;
-
 /** A statement group. */
 export interface BillingStatementGroupsItem {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -4952,18 +3406,8 @@ export interface BillingStatementGroupsItem {
   /** The payment attempts included in the group */
   items: BillingStatementGroupsItemItemsList;
 }
-const BillingStatementGroupsItem = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<BillingStatementGroupsItem>;
-
 /** Array of statement groups. */
 export type BillingStatementGroupsList = Array<BillingStatementGroupsItem>;
-const BillingStatementGroupsList = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<BillingStatementGroupsList>;
-
 export interface BillingStatement {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: BillingStatementObject;
@@ -4982,8 +3426,6 @@ export interface BillingStatement {
   /** Array of statement groups. */
   groups: BillingStatementGroupsList;
 }
-const BillingStatement = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<BillingStatement>;
-
 export interface GetBillingStatementListRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
   paginated?: boolean;
@@ -4992,29 +3434,14 @@ export interface GetBillingStatementListRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const GetBillingStatementListRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GetBillingStatementListRequest>;
-
 /** Array of billing statements. */
 export type PaginatedBillingStatementResponseDataList = Array<BillingStatement>;
-const PaginatedBillingStatementResponseDataList = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<PaginatedBillingStatementResponseDataList>;
-
 export interface PaginatedBillingStatementResponse {
   /** Array of billing statements. */
   data: PaginatedBillingStatementResponseDataList;
   /** Total number of billing statements. */
   total_count: number;
 }
-const PaginatedBillingStatementResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<PaginatedBillingStatementResponse>;
-
 export interface GetBillingStatementPaymentAttemptsRequest {
   /** The ID of the statement to retrieve payment attempts for. */
   statementID: string;
@@ -5025,44 +3452,22 @@ export interface GetBillingStatementPaymentAttemptsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const GetBillingStatementPaymentAttemptsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GetBillingStatementPaymentAttemptsRequest>;
-
 /** Array of billing payment attempts. */
 export type PaginatedBillingPaymentAttemptResponseDataList = Array<BillingPaymentAttempt>;
-const PaginatedBillingPaymentAttemptResponseDataList =
-  BillingStatementGroupsItemItemsList as any as S.Schema<PaginatedBillingPaymentAttemptResponseDataList>;
-
 export interface PaginatedBillingPaymentAttemptResponse {
   /** Array of billing payment attempts. */
   data: PaginatedBillingPaymentAttemptResponseDataList;
   /** Total number of billing payment attempts. */
   total_count: number;
 }
-const PaginatedBillingPaymentAttemptResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<PaginatedBillingPaymentAttemptResponse>;
-
 export interface GetClientRequest {
   /** Client ID. */
   client_id: string;
 }
-const GetClientRequest = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<GetClientRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type ClientObject = "client";
-const ClientObject = S.String;
-
 export type ClientSessionIdsList = Array<string>;
-const ClientSessionIdsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ClientSessionIdsList>;
-
 export type ClientSessionsList = Array<Session>;
-const ClientSessionsList = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<ClientSessionsList>;
-
 export interface Client {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: ClientObject;
@@ -5081,11 +3486,7 @@ export interface Client {
   /** Unix timestamp of creation. */
   created_at: number;
 }
-const Client = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<Client>;
-
 export type GetCommercePlanListRequestPayerType = "user" | "org";
-const GetCommercePlanListRequestPayerType = S.String;
-
 export interface GetCommercePlanListRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
   paginated?: boolean;
@@ -5096,40 +3497,21 @@ export interface GetCommercePlanListRequest {
   /** Filter plans by payer type */
   payer_type?: GetCommercePlanListRequestPayerType | (string & {});
 }
-const GetCommercePlanListRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetCommercePlanListRequest>;
-
 /** Array of plans. */
 export type PaginatedCommercePlanResponseDataList = Array<CommercePlan>;
-const PaginatedCommercePlanResponseDataList = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<PaginatedCommercePlanResponseDataList>;
-
 export interface PaginatedCommercePlanResponse {
   /** Array of plans. */
   data: PaginatedCommercePlanResponseDataList;
   /** Total number of plans. */
   total_count: number;
 }
-const PaginatedCommercePlanResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<PaginatedCommercePlanResponse>;
-
 export type GetCommerceSubscriptionItemListRequestStatus =
   | "active"
   | "ended"
   | "past_due"
   | "upcoming"
   | "free_trial";
-const GetCommerceSubscriptionItemListRequestStatus = S.String;
-
 export type GetCommerceSubscriptionItemListRequestPayerType = "user" | "org";
-const GetCommerceSubscriptionItemListRequestPayerType = S.String;
-
 export interface GetCommerceSubscriptionItemListRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
   paginated?: boolean;
@@ -5148,69 +3530,32 @@ export interface GetCommerceSubscriptionItemListRequest {
   /** Search query to filter subscription items */
   query?: string;
 }
-const GetCommerceSubscriptionItemListRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<GetCommerceSubscriptionItemListRequest>;
-
 /** Array of subscription items. */
 export type PaginatedCommerceSubscriptionItemResponseDataList = Array<CommerceSubscriptionItem>;
-const PaginatedCommerceSubscriptionItemResponseDataList = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<PaginatedCommerceSubscriptionItemResponseDataList>;
-
 export interface PaginatedCommerceSubscriptionItemResponse {
   /** Array of subscription items. */
   data: PaginatedCommerceSubscriptionItemResponseDataList;
   /** Total number of subscription items. */
   total_count: number;
 }
-const PaginatedCommerceSubscriptionItemResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<PaginatedCommerceSubscriptionItemResponse>;
-
 export interface GetDirectoryRequest {
   /** The ID of the directory to retrieve */
   directory_id: string;
 }
-const GetDirectoryRequest = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<GetDirectoryRequest>;
-
 export interface GetEmailAddressRequest {
   /** The ID of the email address to retrieve */
   email_address_id: string;
 }
-const GetEmailAddressRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<GetEmailAddressRequest>;
-
 export interface GetEnterpriseConnectionRequest {
   /** The ID of the enterprise connection */
   enterprise_connection_id: string;
 }
-const GetEnterpriseConnectionRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<GetEnterpriseConnectionRequest>;
-
 export interface GetInstanceRequest {}
-const GetInstanceRequest = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<GetInstanceRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type InstanceObject = "instance";
-const InstanceObject = S.String;
-
 export type InstanceAllowedOriginsList = Array<string>;
-const InstanceAllowedOriginsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceAllowedOriginsList>;
-
 /** Subdomains of the instance's own domains that may originate requests, when the subdomain allowlist is enabled. Production instances only; always empty on a development instance. */
 export type InstanceAllowedSubdomainsList = Array<string>;
-const InstanceAllowedSubdomainsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceAllowedSubdomainsList>;
-
 export interface Instance {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: InstanceObject;
@@ -5224,48 +3569,21 @@ export interface Instance {
   /** The ID of the Clerk workspace that owns the instance's application. It is null when the application has no owner. */
   workspace_id: string | null;
 }
-const Instance = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<Instance>;
-
 export interface GetInstanceCommunicationRequest {}
-const GetInstanceCommunicationRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GetInstanceCommunicationRequest>;
-
 export type InstanceCommunicationObject = "instance_communication";
-const InstanceCommunicationObject = S.String;
-
 /** ISO 3166-1 alpha-2 country codes that are blocked for SMS delivery on this instance. Codes that aren't recognized are silently dropped. */
 export type InstanceCommunicationBlockedCountryCodesList = Array<string>;
-const InstanceCommunicationBlockedCountryCodesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceCommunicationBlockedCountryCodesList>;
-
 /** Per-instance SMS communication settings, including the SMS country blocklist. */
 export interface InstanceCommunication {
   object: InstanceCommunicationObject;
   /** ISO 3166-1 alpha-2 country codes that are blocked for SMS delivery on this instance. Codes that aren't recognized are silently dropped. */
   blocked_country_codes: InstanceCommunicationBlockedCountryCodesList;
 }
-const InstanceCommunication = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<InstanceCommunication>;
-
 export interface GetInstanceOAuthApplicationSettingsRequest {}
-const GetInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GetInstanceOAuthApplicationSettingsRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OAuthApplicationSettingsObject = "oauth_application_settings";
-const OAuthApplicationSettingsObject = S.String;
-
 /** Default scopes assigned when a dynamically registered or first-contact CIMD client omits `scope`. Contains built-in keys and custom catalog keys. Null means Clerk-provided defaults. `advertised` does not affect eligibility. An empty input array is stored and returned as null. */
 export type OAuthApplicationSettingsDefaultScopesList = Array<string>;
-const OAuthApplicationSettingsDefaultScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthApplicationSettingsDefaultScopesList>;
-
 export interface OAuthApplicationSettings {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: OAuthApplicationSettingsObject;
@@ -5286,30 +3604,15 @@ export interface OAuthApplicationSettings {
   /** When true, recorded implicitly allowed CIMD clients are rejected on future client lookups. Explicitly allowed clients remain accepted. This does not revoke previously issued access tokens. */
   client_id_metadata_documents_block_implicitly_allowed_clients: boolean;
 }
-const OAuthApplicationSettings = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<OAuthApplicationSettings>;
-
 export interface GetInstanceOrganizationSettingsRequest {}
-const GetInstanceOrganizationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<GetInstanceOrganizationSettingsRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationSettingsObject = "organization_settings";
-const OrganizationSettingsObject = S.String;
-
 export type OrganizationSettingsDomainsEnrollmentModesItem =
   | "manual_invitation"
   | "automatic_invitation"
   | "automatic_suggestion";
 export type OrganizationSettingsDomainsEnrollmentModesList =
   Array<OrganizationSettingsDomainsEnrollmentModesItem>;
-const OrganizationSettingsDomainsEnrollmentModesList =
-  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<OrganizationSettingsDomainsEnrollmentModesList>;
-
 export interface OrganizationSettings {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: OrganizationSettingsObject;
@@ -5332,20 +3635,8 @@ export interface OrganizationSettings {
   /** The role set key that it will be used to create new organizations. */
   initial_role_set_key?: string | null;
 }
-const OrganizationSettings = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<OrganizationSettings>;
-
 export interface GetInstanceProtectRequest {}
-const GetInstanceProtectRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GetInstanceProtectRequest>;
-
 export type InstanceProtectObject = "instance_protect";
-const InstanceProtectObject = S.String;
-
 export interface InstanceProtect {
   object: InstanceProtectObject;
   /** Whether Protect rules are enforced on this instance. False does not mean the instance is outside Protect -- by default it is still evaluated in shadow, where rules are scored and recorded but never block. */
@@ -5358,8 +3649,6 @@ export interface InstanceProtect {
   /** Whether the instance was created into Protect and so was never subject to the prerequisite checks at all. */
   checks_exempt: boolean;
 }
-const InstanceProtect = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<InstanceProtect>;
-
 export interface GetInterstitialRequest {
   /** Please use `frontend_api` instead */
   frontendApi?: string;
@@ -5376,17 +3665,8 @@ export interface GetInterstitialRequest {
   /** Whether to use the domain for the script URL */
   use_domain_for_script?: boolean;
 }
-const GetInterstitialRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetInterstitialRequest>;
-
 export interface GetInterstitialResponse {}
-const GetInterstitialResponse = DeleteSvixAppResponse as any as S.Schema<GetInterstitialResponse>;
-
 export interface GetJWKSRequest {}
-const GetJWKSRequest = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<GetJWKSRequest>;
-
 export type JWKSEd25519PublicKeyKty = "OKP";
 export type JWKSEd25519PublicKeyCrv = "Ed25519";
 export type JWKSEd25519PublicKeyX5cList = Array<string>;
@@ -5504,25 +3784,14 @@ export type JWKSKeysItem =
   | JWKSEcdsaPrivateKey
   | JWKSRsaPrivateKey
   | JWKSSymmetricKey;
-const JWKSKeysItem = S.Unknown as any as S.Schema<JWKSKeysItem>;
-
 export type JWKSKeysList = Array<JWKSKeysItem>;
-const JWKSKeysList = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<JWKSKeysList>;
-
 export interface JWKS {
   keys?: JWKSKeysList;
 }
-const JWKS = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<JWKS>;
-
 export interface GetJWTTemplateRequest {
   /** JWT Template ID */
   template_id: string;
 }
-const GetJWTTemplateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetJWTTemplateRequest>;
-
 export interface GetM2MTokensRequest {
   subject: string;
   revoked?: boolean;
@@ -5530,15 +3799,8 @@ export interface GetM2MTokensRequest {
   limit?: number;
   offset?: number;
 }
-const GetM2MTokensRequest = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<GetM2MTokensRequest>;
-
 export type GetM2MTokensResponseM2mTokensItemObject = "machine_to_machine_token";
-const GetM2MTokensResponseM2mTokensItemObject = S.String;
-
 export type GetM2MTokensResponseM2mTokensItemScopesList = Array<string>;
-const GetM2MTokensResponseM2mTokensItemScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetM2MTokensResponseM2mTokensItemScopesList>;
-
 export interface GetM2MTokensResponseM2mTokensItem {
   object: GetM2MTokensResponseM2mTokensItemObject;
   id: string;
@@ -5557,40 +3819,18 @@ export interface GetM2MTokensResponseM2mTokensItem {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-const GetM2MTokensResponseM2mTokensItem = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetM2MTokensResponseM2mTokensItem>;
-
 export type GetM2MTokensResponseM2mTokensList = Array<GetM2MTokensResponseM2mTokensItem>;
-const GetM2MTokensResponseM2mTokensList = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetM2MTokensResponseM2mTokensList>;
-
 export interface GetM2MTokensResponse {
   m2m_tokens: GetM2MTokensResponseM2mTokensList;
   total_count: number;
 }
-const GetM2MTokensResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetM2MTokensResponse>;
-
 export interface GetMachineRequest {
   /** The ID of the machine to retrieve */
   machine_id: string;
 }
-const GetMachineRequest = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<GetMachineRequest>;
-
 export type GetMachineResponseObject = "machine";
-const GetMachineResponseObject = S.String;
-
 /** Array of machines this machine has access to. */
 export type GetMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-const GetMachineResponseScopedMachinesList =
-  CreateMachineResponseScopedMachinesList as any as S.Schema<GetMachineResponseScopedMachinesList>;
-
 export interface GetMachineResponse {
   object: GetMachineResponseObject;
   /** Unique identifier for the machine. */
@@ -5608,32 +3848,18 @@ export interface GetMachineResponse {
   /** Array of machines this machine has access to. */
   scoped_machines: GetMachineResponseScopedMachinesList;
 }
-const GetMachineResponse = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<GetMachineResponse>;
-
 export interface GetMachineSecretKeyRequest {
   /** The ID of the machine to retrieve the secret key for */
   machine_id: string;
 }
-const GetMachineSecretKeyRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<GetMachineSecretKeyRequest>;
-
 /** String representing the object's type. */
 export type GetMachineSecretKeyResponseObject = "machine_secret_key";
-const GetMachineSecretKeyResponseObject = S.String;
-
 export interface GetMachineSecretKeyResponse {
   /** String representing the object's type. */
   object: GetMachineSecretKeyResponseObject;
   /** The secret key for the machine. */
   secret: string | Redacted.Redacted<string>;
 }
-const GetMachineSecretKeyResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetMachineSecretKeyResponse>;
-
 export interface GetOAuthAccessTokenRequest {
   /** The ID of the user for which to retrieve the OAuth access token */
   user_id: string;
@@ -5646,23 +3872,10 @@ export interface GetOAuthAccessTokenRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const GetOAuthAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetOAuthAccessTokenRequest>;
-
 export type OAuthAccessTokenItemObject = "oauth_access_token";
-const OAuthAccessTokenItemObject = S.String;
-
 export type OAuthAccessTokenItemPublicMetadataMap = { [key: string]: unknown | undefined };
-const OAuthAccessTokenItemPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<OAuthAccessTokenItemPublicMetadataMap>;
-
 /** The list of scopes that the token is valid for. Only present for OAuth 2.0 tokens. */
 export type OAuthAccessTokenItemScopesList = Array<string>;
-const OAuthAccessTokenItemScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthAccessTokenItemScopesList>;
-
 export interface OAuthAccessTokenItem {
   object: OAuthAccessTokenItemObject;
   /** External account ID */
@@ -5684,36 +3897,14 @@ export interface OAuthAccessTokenItem {
   /** The token secret. Only present for OAuth 1.0 tokens. */
   token_secret?: string | Redacted.Redacted<string>;
 }
-const OAuthAccessTokenItem = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<OAuthAccessTokenItem>;
-
 export type OAuthAccessToken = Array<OAuthAccessTokenItem>;
-const OAuthAccessToken = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<OAuthAccessToken>;
-
 export type GetOAuthAccessTokenResponse = OAuthAccessToken;
-const GetOAuthAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetOAuthAccessTokenResponse>;
-
 export interface GetOAuthApplicationRequest {
   /** The ID of the OAuth application */
   oauth_application_id: string;
 }
-const GetOAuthApplicationRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetOAuthApplicationRequest>;
-
 export type OAuthApplicationObject = "oauth_application";
-const OAuthApplicationObject = S.String;
-
 export type OAuthApplicationRedirectUrisList = Array<string>;
-const OAuthApplicationRedirectUrisList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthApplicationRedirectUrisList>;
-
 export interface OAuthApplication {
   object: OAuthApplicationObject;
   id: string;
@@ -5742,8 +3933,6 @@ export interface OAuthApplication {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const OAuthApplication = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<OAuthApplication>;
-
 export interface GetOrganizationRequest {
   /** The ID or slug of the organization */
   organization_id: string;
@@ -5752,44 +3941,22 @@ export interface GetOrganizationRequest {
   /** Flag to denote whether or not to include a member with elevated permissions who is not currently a member of the organization. */
   include_missing_member_with_elevated_permissions?: boolean;
 }
-const GetOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<GetOrganizationRequest>;
-
 export interface GetOrganizationBillingCreditBalanceRequest {
   /** The ID of the organization whose credit balance to retrieve */
   organization_id: string;
 }
-const GetOrganizationBillingCreditBalanceRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<GetOrganizationBillingCreditBalanceRequest>;
-
 export interface CommerceCreditBalanceResponse {
   /** String representing the object's type. Always "commerce_credit_balance". */
   object: string;
   /** The current credit balance. Null when the payer has never had credits. */
   balance: CommerceMoneyResponse | null;
 }
-const CommerceCreditBalanceResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<CommerceCreditBalanceResponse>;
-
 export interface GetOrganizationBillingSubscriptionRequest {
   /** The ID of the organization whose subscription to retrieve */
   organization_id: string;
 }
-const GetOrganizationBillingSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<GetOrganizationBillingSubscriptionRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceSubscriptionObject = "commerce_subscription";
-const CommerceSubscriptionObject = S.String;
-
 /** The current status of the subscription. */
 export type CommerceSubscriptionStatus =
   | "active"
@@ -5798,18 +3965,10 @@ export type CommerceSubscriptionStatus =
   | "ended"
   | "abandoned"
   | "incomplete";
-const CommerceSubscriptionStatus = S.String;
-
 /** Array of subscription items in this subscription. */
 export type CommerceSubscriptionSubscriptionItemsList = Array<CommerceSubscriptionItem>;
-const CommerceSubscriptionSubscriptionItemsList =
-  PaginatedCommerceSubscriptionItemResponseDataList as any as S.Schema<CommerceSubscriptionSubscriptionItemsList>;
-
 /** Per-unit total breakdown (for example, seats) for the next payment. */
 export type CommerceSubscriptionNextPaymentPerUnitTotalsList = Array<CommercePerUnitTotal2>;
-const CommerceSubscriptionNextPaymentPerUnitTotalsList =
-  CommerceTotalsResponse2PerUnitTotalsList as any as S.Schema<CommerceSubscriptionNextPaymentPerUnitTotalsList>;
-
 export interface CommerceSubscriptionNextPayment {
   /** Unix timestamp (milliseconds) of the next payment date. */
   date: number;
@@ -5820,11 +3979,6 @@ export interface CommerceSubscriptionNextPayment {
   /** Breakdown of the recurring amount that will be billed at renewal (base fee + per-unit charges). Tax and credits are not previewed. */
   totals?: CommerceTotalsResponse2 | null;
 }
-const CommerceSubscriptionNextPayment = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<CommerceSubscriptionNextPayment>;
-
 export interface CommerceSubscription {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CommerceSubscriptionObject;
@@ -5851,80 +4005,39 @@ export interface CommerceSubscription {
   /** Whether the payer is eligible for a free trial. */
   eligible_for_free_trial?: boolean;
 }
-const CommerceSubscription = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<CommerceSubscription>;
-
 export interface GetOrganizationInvitationRequest {
   /** The organization ID. */
   organization_id: string;
   /** The organization invitation ID. */
   invitation_id: string;
 }
-const GetOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetOrganizationInvitationRequest>;
-
 export interface GetOrganizationPermissionRequest {
   /** The ID of the permission to retrieve */
   permission_id: string;
 }
-const GetOrganizationPermissionRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetOrganizationPermissionRequest>;
-
 export interface GetOrganizationRoleRequest {
   /** The ID of the organization role */
   organization_role_id: string;
 }
-const GetOrganizationRoleRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<GetOrganizationRoleRequest>;
-
 export interface GetPhoneNumberRequest {
   /** The ID of the phone number to retrieve */
   phone_number_id: string;
 }
-const GetPhoneNumberRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<GetPhoneNumberRequest>;
-
 export interface GetRedirectURLRequest {
   /** The ID of the redirect URL */
   id: string;
 }
-const GetRedirectURLRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<GetRedirectURLRequest>;
-
 export interface GetReverificationRequest {
   /** The ID of the session the reverification belongs to */
   session_id: string;
   /** The ID of the reverification */
   reverification_id: string;
 }
-const GetReverificationRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetReverificationRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type ReverificationObject = "reverification";
-const ReverificationObject = S.String;
-
 /** The level used for the reverification */
 export type ReverificationLevel = "first_factor" | "second_factor" | "multi_factor";
-const ReverificationLevel = S.String;
-
 export type ReverificationStatus = "needs_first_factor" | "needs_second_factor" | "complete";
-const ReverificationStatus = S.String;
-
 /** A reverification scoped to a session. Returned so a resource server can validate a reverification id received from its client. */
 export interface Reverification {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -5944,29 +4057,18 @@ export interface Reverification {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const Reverification = /*@__PURE__*/ __L.at(__c41, 0) as any as S.Schema<Reverification>;
-
 export interface GetRoleSetRequest {
   /** The key or ID of the role set */
   role_set_key_or_id: string;
 }
-const GetRoleSetRequest = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<GetRoleSetRequest>;
-
 export interface GetSCIMDirectoryRequest {
   /** The ID of the directory to retrieve */
   scim_directory_id: string;
 }
-const GetSCIMDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<GetSCIMDirectoryRequest>;
-
 export interface GetSessionRequest {
   /** The ID of the session */
   session_id: string;
 }
-const GetSessionRequest = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<GetSessionRequest>;
-
 export type GetSessionListRequestStatus =
   | "abandoned"
   | "active"
@@ -5975,8 +4077,6 @@ export type GetSessionListRequestStatus =
   | "removed"
   | "replaced"
   | "revoked";
-const GetSessionListRequestStatus = S.String;
-
 export interface GetSessionListRequest {
   /** List sessions for the given client */
   client_id?: string;
@@ -5991,76 +4091,32 @@ export interface GetSessionListRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const GetSessionListRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<GetSessionListRequest>;
-
 export type GetSessionListResponseBodyList = Array<Session>;
-const GetSessionListResponseBodyList =
-  ClientSessionsList as any as S.Schema<GetSessionListResponseBodyList>;
-
 export type GetSessionListResponse = GetSessionListResponseBodyList;
-const GetSessionListResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<GetSessionListResponse>;
-
 export interface GetSignUpRequest {
   /** The ID of the sign-up to retrieve */
   id: string;
 }
-const GetSignUpRequest = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<GetSignUpRequest>;
-
 export type SignUpObject = "sign_up_attempt";
-const SignUpObject = S.String;
-
 export type SignUpStatus = "missing_requirements" | "complete" | "abandoned";
-const SignUpStatus = S.String;
-
 export type SignUpRequiredFieldsList = Array<string>;
-const SignUpRequiredFieldsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpRequiredFieldsList>;
-
 export type SignUpOptionalFieldsList = Array<string>;
-const SignUpOptionalFieldsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpOptionalFieldsList>;
-
 export type SignUpMissingFieldsList = Array<string>;
-const SignUpMissingFieldsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpMissingFieldsList>;
-
 export type SignUpUnverifiedFieldsList = Array<string>;
-const SignUpUnverifiedFieldsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpUnverifiedFieldsList>;
-
 export type SignUpVerificationNextAction = "needs_prepare" | "needs_attempt" | "";
-const SignUpVerificationNextAction = S.String;
-
 export type SignUpVerificationSupportedStrategiesList = Array<string>;
-const SignUpVerificationSupportedStrategiesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpVerificationSupportedStrategiesList>;
-
 export interface SignUpVerification {
   next_action?: SignUpVerificationNextAction;
   supported_strategies?: SignUpVerificationSupportedStrategiesList;
 }
-const SignUpVerification = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<SignUpVerification>;
-
 export interface SignUpVerifications {
   email_address: SignUpVerification | null;
   phone_number: SignUpVerification | null;
   web3_wallet: SignUpVerification | null;
   external_account: unknown | null;
 }
-const SignUpVerifications = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<SignUpVerifications>;
-
 export type SignUpUnsafeMetadataMap = { [key: string]: unknown | undefined };
-const SignUpUnsafeMetadataMap = UserPublicMetadataMap as any as S.Schema<SignUpUnsafeMetadataMap>;
-
 export type SignUpPublicMetadataMap = { [key: string]: unknown | undefined };
-const SignUpPublicMetadataMap = UserPublicMetadataMap as any as S.Schema<SignUpPublicMetadataMap>;
-
 export interface SignUp {
   object: SignUpObject;
   id: string;
@@ -6093,64 +4149,26 @@ export interface SignUp {
   locale?: string | null;
   external_account?: unknown;
 }
-const SignUp = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<SignUp>;
-
 export interface GetUserRequest {
   /** The ID of the user to retrieve */
   user_id: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<GetUserRequest>;
-
 export interface GetUserBillingCreditBalanceRequest {
   /** The ID of the user whose credit balance to retrieve */
   user_id: string;
 }
-const GetUserBillingCreditBalanceRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<GetUserBillingCreditBalanceRequest>;
-
 export interface GetUserBillingSubscriptionRequest {
   /** The ID of the user whose subscription to retrieve */
   user_id: string;
 }
-const GetUserBillingSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<GetUserBillingSubscriptionRequest>;
-
 export type GetUserListRequestEmailAddressList = Array<string>;
-const GetUserListRequestEmailAddressList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestEmailAddressList>;
-
 export type GetUserListRequestPhoneNumberList = Array<string>;
-const GetUserListRequestPhoneNumberList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestPhoneNumberList>;
-
 export type GetUserListRequestExternalIdList = Array<string>;
-const GetUserListRequestExternalIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestExternalIdList>;
-
 export type GetUserListRequestUsernameList = Array<string>;
-const GetUserListRequestUsernameList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestUsernameList>;
-
 export type GetUserListRequestWeb3WalletList = Array<string>;
-const GetUserListRequestWeb3WalletList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestWeb3WalletList>;
-
 export type GetUserListRequestUserIdList = Array<string>;
-const GetUserListRequestUserIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestUserIdList>;
-
 export type GetUserListRequestOrganizationIdList = Array<string>;
-const GetUserListRequestOrganizationIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestOrganizationIdList>;
-
 export type GetUserListRequestProviderUserIdList = Array<string>;
-const GetUserListRequestProviderUserIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestProviderUserIdList>;
-
 export interface GetUserListRequest {
   /** Returns users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored. */
   email_address?: GetUserListRequestEmailAddressList;
@@ -6205,44 +4223,16 @@ export interface GetUserListRequest {
   /** Allows to return users in a particular order. At the moment, you can order the returned users by their `created_at`,`updated_at`,`email_address`,`web3wallet`,`first_name`,`last_name`,`phone_number`,`username`,`last_active_at`,`last_sign_in_at`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want users to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. We only support one `order_by` parameter, and if multiple `order_by` parameters are provided, we will only keep the first one. For example, if you pass `order_by=username&order_by=created_at`, we will consider only the first `order_by` parameter, which is `username`. The `created_at` parameter will be ignored in this case. Only the `created_at` orderings can be combined with `starting_after` cursor pagination; see that parameter. */
   order_by?: string;
 }
-const GetUserListRequest = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<GetUserListRequest>;
-
 export type GetUserListResponseBodyList = Array<User>;
 export type GetUserListResponse = GetUserListResponseBodyList;
-const GetUserListResponse = BanUserResponse as any as S.Schema<GetUserListResponse>;
-
 export type GetUsersCountRequestEmailAddressList = Array<string>;
-const GetUsersCountRequestEmailAddressList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestEmailAddressList>;
-
 export type GetUsersCountRequestPhoneNumberList = Array<string>;
-const GetUsersCountRequestPhoneNumberList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestPhoneNumberList>;
-
 export type GetUsersCountRequestExternalIdList = Array<string>;
-const GetUsersCountRequestExternalIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestExternalIdList>;
-
 export type GetUsersCountRequestUsernameList = Array<string>;
-const GetUsersCountRequestUsernameList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestUsernameList>;
-
 export type GetUsersCountRequestWeb3WalletList = Array<string>;
-const GetUsersCountRequestWeb3WalletList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestWeb3WalletList>;
-
 export type GetUsersCountRequestUserIdList = Array<string>;
-const GetUsersCountRequestUserIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestUserIdList>;
-
 export type GetUsersCountRequestOrganizationIdList = Array<string>;
-const GetUsersCountRequestOrganizationIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestOrganizationIdList>;
-
 export type GetUsersCountRequestProviderUserIdList = Array<string>;
-const GetUsersCountRequestProviderUserIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestProviderUserIdList>;
-
 export interface GetUsersCountRequest {
   /** Counts users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored. */
   email_address?: GetUsersCountRequestEmailAddressList;
@@ -6289,22 +4279,13 @@ export interface GetUsersCountRequest {
   /** Counts users with the specified provider user IDs for a specific provider. Must be used in combination with the `provider` parameter. For example, use `provider=oauth_google&provider_user_id=12345` to count users with Google provider user ID 12345. Accepts up to 100 provider user IDs. Any provider user IDs not found are ignored. */
   provider_user_id?: GetUsersCountRequestProviderUserIdList;
 }
-const GetUsersCountRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<GetUsersCountRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type TotalCountObject = "total_count";
-const TotalCountObject = S.String;
-
 export interface TotalCount {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: TotalCountObject;
   total_count: number;
 }
-const TotalCount = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<TotalCount>;
-
 export interface InstanceGetOrganizationMembershipsRequest {
   /** Sorts organizations memberships by phone_number, email_address, created_at, first_name, last_name or username. By prepending one of those values with + or -, we can choose to sort in ascending (ASC) or descending (DESC) order. */
   order_by?: string;
@@ -6313,36 +4294,18 @@ export interface InstanceGetOrganizationMembershipsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const InstanceGetOrganizationMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<InstanceGetOrganizationMembershipsRequest>;
-
 export type OrganizationMembershipsDataList = Array<OrganizationMembership>;
-const OrganizationMembershipsDataList =
-  UserOrganizationMembershipsList as any as S.Schema<OrganizationMembershipsDataList>;
-
 export interface OrganizationMemberships {
   data: OrganizationMembershipsDataList;
   /** Total number of organization memberships */
   total_count: number;
 }
-const OrganizationMemberships = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<OrganizationMemberships>;
-
 export interface InviteWaitlistEntryRequest {
   /** The ID of the waitlist entry to invite */
   waitlist_entry_id: string;
   /** Whether an invitation should be created if there is already an existing invitation for this email address, or it's claimed by another user. */
   ignore_existing?: boolean | null;
 }
-const InviteWaitlistEntryRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<InviteWaitlistEntryRequest>;
-
 export type ListAllOrganizationDomainsRequestEnrollmentModeItem =
   | "manual_invitation"
   | "automatic_invitation"
@@ -6355,13 +4318,7 @@ export type ListAllOrganizationDomainsRequestEnrollmentModeItem =
 export type ListAllOrganizationDomainsRequestEnrollmentModeList = Array<
   ListAllOrganizationDomainsRequestEnrollmentModeItem | (string & {})
 >;
-const ListAllOrganizationDomainsRequestEnrollmentModeList =
-  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<ListAllOrganizationDomainsRequestEnrollmentModeList>;
-
 export type ListAllOrganizationDomainsRequestDomainsList = Array<string>;
-const ListAllOrganizationDomainsRequestDomainsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListAllOrganizationDomainsRequestDomainsList>;
-
 export interface ListAllOrganizationDomainsRequest {
   /** The ID of the organization to filter domains by */
   organization_id?: string;
@@ -6380,24 +4337,12 @@ export interface ListAllOrganizationDomainsRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
 }
-const ListAllOrganizationDomainsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<ListAllOrganizationDomainsRequest>;
-
 export type OrganizationDomainsDataList = Array<OrganizationDomain>;
-const OrganizationDomainsDataList = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<OrganizationDomainsDataList>;
-
 export interface OrganizationDomains {
   data: OrganizationDomainsDataList;
   /** Total number of organization domains */
   total_count: number;
 }
-const OrganizationDomains = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<OrganizationDomains>;
-
 export interface ListAllowlistIdentifiersRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
   paginated?: boolean;
@@ -6406,107 +4351,44 @@ export interface ListAllowlistIdentifiersRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListAllowlistIdentifiersRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<ListAllowlistIdentifiersRequest>;
-
 export type ListAllowlistIdentifiersResponseBodyList = Array<AllowlistIdentifier>;
-const ListAllowlistIdentifiersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<ListAllowlistIdentifiersResponseBodyList>;
-
 export type ListAllowlistIdentifiersResponse = ListAllowlistIdentifiersResponseBodyList;
-const ListAllowlistIdentifiersResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<ListAllowlistIdentifiersResponse>;
-
 export interface ListBlocklistIdentifiersRequest {}
-const ListBlocklistIdentifiersRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<ListBlocklistIdentifiersRequest>;
-
 export type BlocklistIdentifiersDataList = Array<BlocklistIdentifier>;
-const BlocklistIdentifiersDataList = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<BlocklistIdentifiersDataList>;
-
 export interface BlocklistIdentifiers {
   data: BlocklistIdentifiersDataList;
   /** Total number of blocklist identifiers */
   total_count: number;
 }
-const BlocklistIdentifiers = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<BlocklistIdentifiers>;
-
 export interface ListDirectoriesRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<ListDirectoriesRequest>;
-
 export type Directories = Array<Directory>;
-const Directories = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<Directories>;
-
 export interface ListDirectoriesResponse {
   data: Directories;
   /** Total number of directories. */
   total_count: number;
 }
-const ListDirectoriesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<ListDirectoriesResponse>;
-
 export interface ListDirectoryGroupRoleMappingsRequest {
   /** The ID of the directory. */
   directory_id: string;
 }
-const ListDirectoryGroupRoleMappingsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<ListDirectoryGroupRoleMappingsRequest>;
-
 export type DirectoryGroupRoleMappings = Array<DirectoryGroupRoleMapping>;
-const DirectoryGroupRoleMappings = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<DirectoryGroupRoleMappings>;
-
 export interface ListDirectoryGroupRoleMappingsResponse {
   data: DirectoryGroupRoleMappings;
   /** Total number of directory group role mappings in the directory. */
   total_count: number;
 }
-const ListDirectoryGroupRoleMappingsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<ListDirectoryGroupRoleMappingsResponse>;
-
 export interface ListDomainsRequest {}
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c45, 2) as any as S.Schema<ListDomainsRequest>;
-
 export type DomainsDataList = Array<Domain>;
-const DomainsDataList = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<DomainsDataList>;
-
 export interface Domains {
   data: DomainsDataList;
   /** Total number of domains */
   total_count: number;
 }
-const Domains = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<Domains>;
-
 export interface ListEnterpriseConnectionsRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
@@ -6517,34 +4399,16 @@ export interface ListEnterpriseConnectionsRequest {
   /** Filter by active status. If true, only active connections are returned. If false, only inactive connections are returned. If omitted, all connections are returned. */
   active?: boolean;
 }
-const ListEnterpriseConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<ListEnterpriseConnectionsRequest>;
-
 export type EnterpriseConnectionsDataList = Array<EnterpriseConnection>;
-const EnterpriseConnectionsDataList = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<EnterpriseConnectionsDataList>;
-
 export interface EnterpriseConnections {
   data: EnterpriseConnectionsDataList;
   /** Total number of enterprise connections */
   total_count: number;
 }
-const EnterpriseConnections = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<EnterpriseConnections>;
-
 export type ListEnterpriseConnectionTestRunsRequestStatusItem = "pending" | "success" | "failed";
 export type ListEnterpriseConnectionTestRunsRequestStatusList = Array<
   ListEnterpriseConnectionTestRunsRequestStatusItem | (string & {})
 >;
-const ListEnterpriseConnectionTestRunsRequestStatusList =
-  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<ListEnterpriseConnectionTestRunsRequestStatusList>;
-
 export interface ListEnterpriseConnectionTestRunsRequest {
   /** The ID of the enterprise connection */
   enterprise_connection_id: string;
@@ -6555,19 +4419,10 @@ export interface ListEnterpriseConnectionTestRunsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListEnterpriseConnectionTestRunsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<ListEnterpriseConnectionTestRunsRequest>;
-
 /** The status of the test run */
 export type EnterpriseConnectionTestRunStatus = "pending" | "success" | "failed";
-const EnterpriseConnectionTestRunStatus = S.String;
-
 /** The type of enterprise connection the test run was performed against */
 export type EnterpriseConnectionTestRunConnectionType = "saml" | "oauth";
-const EnterpriseConnectionTestRunConnectionType = S.String;
-
 /** The user information parsed from the IdP response */
 export interface EnterpriseConnectionTestRunParsedUserInfo {
   email_address?: string;
@@ -6575,51 +4430,26 @@ export interface EnterpriseConnectionTestRunParsedUserInfo {
   last_name?: string;
   user_id?: string;
 }
-const EnterpriseConnectionTestRunParsedUserInfo = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<EnterpriseConnectionTestRunParsedUserInfo>;
-
 export interface EnterpriseConnectionTestRunLogsItem {
   level: string;
   code?: string;
   short_message?: string;
   message: string;
 }
-const EnterpriseConnectionTestRunLogsItem = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<EnterpriseConnectionTestRunLogsItem>;
-
 /** Log entries captured during the test run */
 export type EnterpriseConnectionTestRunLogsList = Array<EnterpriseConnectionTestRunLogsItem>;
-const EnterpriseConnectionTestRunLogsList = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<EnterpriseConnectionTestRunLogsList>;
-
 /** SAML-specific metadata, present for SAML connections */
 export interface EnterpriseConnectionTestRunSaml {
   saml_request?: string;
   saml_response?: string;
   relay_state?: string;
 }
-const EnterpriseConnectionTestRunSaml = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<EnterpriseConnectionTestRunSaml>;
-
 /** OAuth-specific metadata, present for OIDC connections */
 export interface EnterpriseConnectionTestRunOauth {
   id_token?: string;
   access_token?: string | Redacted.Redacted<string>;
   user_info?: string;
 }
-const EnterpriseConnectionTestRunOauth = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<EnterpriseConnectionTestRunOauth>;
-
 export interface EnterpriseConnectionTestRun {
   /** The test run ID */
   id: string;
@@ -6638,34 +4468,17 @@ export interface EnterpriseConnectionTestRun {
   /** Unix timestamp in milliseconds when the test run was created */
   created_at: number;
 }
-const EnterpriseConnectionTestRun = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<EnterpriseConnectionTestRun>;
-
 export type EnterpriseConnectionTestRunsDataList = Array<EnterpriseConnectionTestRun>;
-const EnterpriseConnectionTestRunsDataList = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<EnterpriseConnectionTestRunsDataList>;
-
 export interface EnterpriseConnectionTestRuns {
   data: EnterpriseConnectionTestRunsDataList;
   /** Total number of test runs */
   total_count: number;
 }
-const EnterpriseConnectionTestRuns = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<EnterpriseConnectionTestRuns>;
-
 export type ListInstanceOrganizationInvitationsRequestStatus =
   | "pending"
   | "accepted"
   | "revoked"
   | "expired";
-const ListInstanceOrganizationInvitationsRequestStatus = S.String;
-
 export interface ListInstanceOrganizationInvitationsRequest {
   /** Allows to return organization invitations in a particular order. At the moment, you can order the returned organization invitations either by their `created_at` or `email_address`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want organization invitations to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. Defaults to `-created_at`. */
   order_by?: string;
@@ -6678,27 +4491,14 @@ export interface ListInstanceOrganizationInvitationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListInstanceOrganizationInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<ListInstanceOrganizationInvitationsRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationInvitationWithPublicOrganizationDataObject = "organization_invitation";
-const OrganizationInvitationWithPublicOrganizationDataObject = S.String;
-
 export type OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap =
-  CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap>;
-
 export type OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap =
-  CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap>;
-
 /** An organization invitation with public organization data populated */
 export interface OrganizationInvitationWithPublicOrganizationData {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -6722,31 +4522,14 @@ export interface OrganizationInvitationWithPublicOrganizationData {
   updated_at: number;
   public_organization_data?: OrganizationInvitationPublicOrganizationData;
 }
-const OrganizationInvitationWithPublicOrganizationData = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<OrganizationInvitationWithPublicOrganizationData>;
-
 export type OrganizationInvitationsWithPublicOrganizationDataDataList =
   Array<OrganizationInvitationWithPublicOrganizationData>;
-const OrganizationInvitationsWithPublicOrganizationDataDataList = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationDataDataList>;
-
 export interface OrganizationInvitationsWithPublicOrganizationData {
   data: OrganizationInvitationsWithPublicOrganizationDataDataList;
   /** Total number of organization invitations */
   total_count: number;
 }
-const OrganizationInvitationsWithPublicOrganizationData = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>;
-
 export type ListInvitationsRequestStatus = "pending" | "accepted" | "revoked" | "expired";
-const ListInvitationsRequestStatus = S.String;
-
 export interface ListInvitationsRequest {
   /** Filter invitations based on their status */
   status?: ListInvitationsRequestStatus | (string & {});
@@ -6761,21 +4544,8 @@ export interface ListInvitationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListInvitationsRequest>;
-
 export type ListInvitationsResponseBodyList = Array<Invitation>;
-const ListInvitationsResponseBodyList =
-  CreateBulkInvitationsResponseBodyList as any as S.Schema<ListInvitationsResponseBodyList>;
-
 export type ListInvitationsResponse = ListInvitationsResponseBodyList;
-const ListInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ListInvitationsResponse>;
-
 export interface ListJWTTemplatesRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
   paginated?: boolean;
@@ -6784,23 +4554,8 @@ export interface ListJWTTemplatesRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListJWTTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ListJWTTemplatesRequest>;
-
 export type ListJWTTemplatesResponseBodyList = Array<JWTTemplate>;
-const ListJWTTemplatesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<ListJWTTemplatesResponseBodyList>;
-
 export type ListJWTTemplatesResponse = ListJWTTemplatesResponseBodyList;
-const ListJWTTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<ListJWTTemplatesResponse>;
-
 export interface ListMachinesRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
@@ -6811,16 +4566,9 @@ export interface ListMachinesRequest {
   /** Allows to return machines in a particular order. You can order the returned machines by their `name` or `created_at`. To specify the direction, use the `+` or `-` symbols prepended to the property to order by. For example, to return machines in descending order by `created_at`, use `-created_at`. If you don't use `+` or `-`, then `+` is implied. Defaults to `-created_at`. */
   order_by?: string;
 }
-const ListMachinesRequest = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<ListMachinesRequest>;
-
 export type MachineObject = "machine";
-const MachineObject = S.String;
-
 /** Array of machines this machine has access to. */
 export type MachineScopedMachinesList = Array<MachineWithoutScopedMachines>;
-const MachineScopedMachinesList =
-  CreateMachineResponseScopedMachinesList as any as S.Schema<MachineScopedMachinesList>;
-
 export interface Machine {
   object: MachineObject;
   /** Unique identifier for the machine. */
@@ -6838,24 +4586,12 @@ export interface Machine {
   /** Array of machines this machine has access to. */
   scoped_machines: MachineScopedMachinesList;
 }
-const Machine = /*@__PURE__*/ __L.at(__c48, 3) as any as S.Schema<Machine>;
-
 export type ListMachinesResponseDataList = Array<Machine>;
-const ListMachinesResponseDataList = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<ListMachinesResponseDataList>;
-
 export interface ListMachinesResponse {
   data: ListMachinesResponseDataList;
   /** Total number of machines */
   total_count: number;
 }
-const ListMachinesResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ListMachinesResponse>;
-
 export interface ListOAuthApplicationsRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
@@ -6866,24 +4602,12 @@ export interface ListOAuthApplicationsRequest {
   /** Returns OAuth applications with names that match the given query, via case-insensitive partial match. Also returns the OAuth application whose `client_id` is exactly the given query, which is useful for resolving a `client_id` to the OAuth application `id` required by the read, update and delete endpoints. */
   name_query?: string;
 }
-const ListOAuthApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<ListOAuthApplicationsRequest>;
-
 export type OAuthApplicationsDataList = Array<OAuthApplication>;
-const OAuthApplicationsDataList = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<OAuthApplicationsDataList>;
-
 export interface OAuthApplications {
   data: OAuthApplicationsDataList;
   /** Total number of OAuth applications */
   total_count: number;
 }
-const OAuthApplications = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<OAuthApplications>;
-
 export interface ListOrganizationDomainsRequest {
   /** The organization ID. */
   organization_id: string;
@@ -6896,18 +4620,11 @@ export interface ListOrganizationDomainsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListOrganizationDomainsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<ListOrganizationDomainsRequest>;
-
 export type ListOrganizationInvitationsRequestStatus =
   | "pending"
   | "accepted"
   | "revoked"
   | "expired";
-const ListOrganizationInvitationsRequestStatus = S.String;
-
 export interface ListOrganizationInvitationsRequest {
   /** The organization ID. */
   organization_id: string;
@@ -6922,35 +4639,12 @@ export interface ListOrganizationInvitationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListOrganizationInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<ListOrganizationInvitationsRequest>;
-
 export type ListOrganizationMembershipsRequestUserIdList = Array<string>;
-const ListOrganizationMembershipsRequestUserIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestUserIdList>;
-
 export type ListOrganizationMembershipsRequestEmailAddressList = Array<string>;
-const ListOrganizationMembershipsRequestEmailAddressList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestEmailAddressList>;
-
 export type ListOrganizationMembershipsRequestPhoneNumberList = Array<string>;
-const ListOrganizationMembershipsRequestPhoneNumberList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestPhoneNumberList>;
-
 export type ListOrganizationMembershipsRequestUsernameList = Array<string>;
-const ListOrganizationMembershipsRequestUsernameList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestUsernameList>;
-
 export type ListOrganizationMembershipsRequestWeb3WalletList = Array<string>;
-const ListOrganizationMembershipsRequestWeb3WalletList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestWeb3WalletList>;
-
 export type ListOrganizationMembershipsRequestRoleList = Array<string>;
-const ListOrganizationMembershipsRequestRoleList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestRoleList>;
-
 export interface ListOrganizationMembershipsRequest {
   /** The organization ID. */
   organization_id: string;
@@ -6991,11 +4685,6 @@ export interface ListOrganizationMembershipsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListOrganizationMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<ListOrganizationMembershipsRequest>;
-
 export interface ListOrganizationPermissionsRequest {
   /** Returns organization permissions with ID, name, or key that match the given query. Uses exact match for permission ID and partial match for name and key. */
   query?: string;
@@ -7006,21 +4695,12 @@ export interface ListOrganizationPermissionsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListOrganizationPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<ListOrganizationPermissionsRequest>;
-
 export type PermissionsDataList = Array<Permission>;
-const PermissionsDataList = RolePermissionsList as any as S.Schema<PermissionsDataList>;
-
 export interface Permissions {
   data: PermissionsDataList;
   /** Total number of permissions */
   total_count: number;
 }
-const Permissions = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<Permissions>;
-
 export interface ListOrganizationRolesRequest {
   /** Returns organization roles with ID, name, or key that match the given query. Uses exact match for organization role ID and partial match for name and key. */
   query?: string;
@@ -7031,29 +4711,14 @@ export interface ListOrganizationRolesRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListOrganizationRolesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ListOrganizationRolesRequest>;
-
 export type RolesDataList = Array<Role>;
-const RolesDataList = /*@__PURE__*/ __L.at(__c49, 7) as any as S.Schema<RolesDataList>;
-
 export interface Roles {
   data: RolesDataList;
   /** Total number of roles */
   total_count: number;
 }
-const Roles = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<Roles>;
-
 export type ListOrganizationsRequestUserIdList = Array<string>;
-const ListOrganizationsRequestUserIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationsRequestUserIdList>;
-
 export type ListOrganizationsRequestOrganizationIdList = Array<string>;
-const ListOrganizationsRequestOrganizationIdList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationsRequestOrganizationIdList>;
-
 export interface ListOrganizationsRequest {
   /** Flag to denote whether the member counts of each organization should be included in the response or not. */
   include_members_count?: boolean;
@@ -7072,24 +4737,12 @@ export interface ListOrganizationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<ListOrganizationsRequest>;
-
 export type OrganizationsDataList = Array<Organization>;
-const OrganizationsDataList = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<OrganizationsDataList>;
-
 export interface Organizations {
   data: OrganizationsDataList;
   /** Total number of organizations */
   total_count: number;
 }
-const Organizations = /*@__PURE__*/ __L.at(__c50, 3) as any as S.Schema<Organizations>;
-
 export interface ListRedirectURLsRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
   paginated?: boolean;
@@ -7098,23 +4751,8 @@ export interface ListRedirectURLsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListRedirectURLsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<ListRedirectURLsRequest>;
-
 export type ListRedirectURLsResponseBodyList = Array<RedirectURL>;
-const ListRedirectURLsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<ListRedirectURLsResponseBodyList>;
-
 export type ListRedirectURLsResponse = ListRedirectURLsResponseBodyList;
-const ListRedirectURLsResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListRedirectURLsResponse>;
-
 export interface ListRoleSetsRequest {
   /** Returns role sets with ID, name, or key that match the given query. Uses exact match for role set ID and partial match for name and key. */
   query?: string;
@@ -7125,111 +4763,50 @@ export interface ListRoleSetsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListRoleSetsRequest = /*@__PURE__*/ __L.at(__c50, 7) as any as S.Schema<ListRoleSetsRequest>;
-
 export type RoleSetsDataList = Array<RoleSet>;
-const RoleSetsDataList = /*@__PURE__*/ __L.at(__c51, 0) as any as S.Schema<RoleSetsDataList>;
-
 export interface RoleSets {
   data: RoleSetsDataList;
   /** Total number of role sets */
   total_count: number;
 }
-const RoleSets = /*@__PURE__*/ __L.at(__c51, 1) as any as S.Schema<RoleSets>;
-
 export interface ListSCIMDirectoriesRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const ListSCIMDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<ListSCIMDirectoriesRequest>;
-
 export type SCIMDirectories = Array<SCIMDirectory>;
-const SCIMDirectories = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<SCIMDirectories>;
-
 export interface ListSCIMDirectoriesResponse {
   data: SCIMDirectories;
   /** Total number of directories. */
   total_count: number;
 }
-const ListSCIMDirectoriesResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<ListSCIMDirectoriesResponse>;
-
 export interface ListSCIMGroupRoleMappingsRequest {
   /** The ID of the directory. */
   scim_directory_id: string;
 }
-const ListSCIMGroupRoleMappingsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ListSCIMGroupRoleMappingsRequest>;
-
 export type SCIMGroupRoleMappings = Array<SCIMGroupRoleMapping>;
-const SCIMGroupRoleMappings = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<SCIMGroupRoleMappings>;
-
 export interface ListSCIMGroupRoleMappingsResponse {
   data: SCIMGroupRoleMappings;
   /** Total number of SCIM group role mappings in the directory. */
   total_count: number;
 }
-const ListSCIMGroupRoleMappingsResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<ListSCIMGroupRoleMappingsResponse>;
-
 export interface ListSSOBypassAllowlistUsersRequest {
   /** Restrict the list to the users this enterprise connection serves. */
   enterprise_connection_id?: string;
 }
-const ListSSOBypassAllowlistUsersRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListSSOBypassAllowlistUsersRequest>;
-
 /** The instance's SSO bypass allowlist, deduplicated by user. */
 export type SSOBypassAllowlistUsers = Array<SSOBypassAllowlistUser>;
-const SSOBypassAllowlistUsers = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<SSOBypassAllowlistUsers>;
-
 export type ListSSOBypassAllowlistUsersResponse = SSOBypassAllowlistUsers;
-const ListSSOBypassAllowlistUsersResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<ListSSOBypassAllowlistUsersResponse>;
-
 export interface ListUserBiometricCredentialsRequest {
   /** The ID of the user whose biometric credentials are returned */
   user_id: string;
 }
-const ListUserBiometricCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<ListUserBiometricCredentialsRequest>;
-
 /** String representing the object's type. */
 export type BiometricCredentialObject = "trusted_device";
-const BiometricCredentialObject = S.String;
-
 export type BiometricCredentialPlatform = "ios" | "android";
-const BiometricCredentialPlatform = S.String;
-
 export type BiometricCredentialAlgorithm = "ES256";
-const BiometricCredentialAlgorithm = S.String;
-
 export type BiometricCredentialStatus = "active" | "revoked";
-const BiometricCredentialStatus = S.String;
-
 export interface BiometricCredential {
   /** String representing the object's type. */
   object: BiometricCredentialObject;
@@ -7248,27 +4825,13 @@ export interface BiometricCredential {
   /** Unix timestamp of revocation in milliseconds. */
   revoked_at?: number | null;
 }
-const BiometricCredential = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<BiometricCredential>;
-
 export type ListUserBiometricCredentialsResponseDataList = Array<BiometricCredential>;
-const ListUserBiometricCredentialsResponseDataList = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<ListUserBiometricCredentialsResponseDataList>;
-
 export interface ListUserBiometricCredentialsResponse {
   data: ListUserBiometricCredentialsResponseDataList;
   /** Total number of biometric credentials */
   total_count: number;
 }
-const ListUserBiometricCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ListUserBiometricCredentialsResponse>;
-
 export type ListWaitlistEntriesRequestStatus = "pending" | "invited" | "completed" | "rejected";
-const ListWaitlistEntriesRequestStatus = S.String;
-
 export interface ListWaitlistEntriesRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
@@ -7281,45 +4844,24 @@ export interface ListWaitlistEntriesRequest {
   /** Specify the order of results. Supported values are: - `created_at` - `email_address` - `invited_at` Use `+` for ascending or `-` for descending order. Defaults to `-created_at`. */
   order_by?: string;
 }
-const ListWaitlistEntriesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<ListWaitlistEntriesRequest>;
-
 export type ListWaitlistEntriesResponseDataList = Array<WaitlistEntry>;
-const ListWaitlistEntriesResponseDataList =
-  CreateBulkWaitlistEntriesResponseBodyList as any as S.Schema<ListWaitlistEntriesResponseDataList>;
-
 export interface ListWaitlistEntriesResponse {
   data: ListWaitlistEntriesResponseDataList;
   /** Total number of waitlist entries */
   total_count: number;
 }
-const ListWaitlistEntriesResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<ListWaitlistEntriesResponse>;
-
 export interface LockUserRequest {
   /** The ID of the user to lock */
   user_id: string;
 }
-const LockUserRequest = /*@__PURE__*/ __L.at(__c53, 1) as any as S.Schema<LockUserRequest>;
-
 /** Metadata saved on the organization, that is visible to both your frontend and backend. The new object will be merged with the existing value. */
 export type MergeOrganizationMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const MergeOrganizationMetadataRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<MergeOrganizationMetadataRequestPublicMetadataMap>;
-
 /** Metadata saved on the organization that is only visible to your backend. The new object will be merged with the existing value. */
 export type MergeOrganizationMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const MergeOrganizationMetadataRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<MergeOrganizationMetadataRequestPrivateMetadataMap>;
-
 export interface MergeOrganizationMetadataRequest {
   /** The ID of the organization for which metadata will be merged or updated */
   organization_id: string;
@@ -7328,20 +4870,10 @@ export interface MergeOrganizationMetadataRequest {
   /** Metadata saved on the organization that is only visible to your backend. The new object will be merged with the existing value. */
   private_metadata?: MergeOrganizationMetadataRequestPrivateMetadataMap;
 }
-const MergeOrganizationMetadataRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<MergeOrganizationMetadataRequest>;
-
 export interface PrepareEmailAddressVerificationRequest {
   /** The ID of the email address to send the verification code to */
   email_address_id: string;
 }
-const PrepareEmailAddressVerificationRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<PrepareEmailAddressVerificationRequest>;
-
 export interface PrepareEmailAddressVerificationResponse {
   /** The type of the verification object. */
   object?: string;
@@ -7358,18 +4890,10 @@ export interface PrepareEmailAddressVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-const PrepareEmailAddressVerificationResponse =
-  AttemptEmailAddressVerificationResponse as any as S.Schema<PrepareEmailAddressVerificationResponse>;
-
 export interface PreparePhoneNumberVerificationRequest {
   /** The ID of the phone number to send the verification code to */
   phone_number_id: string;
 }
-const PreparePhoneNumberVerificationRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<PreparePhoneNumberVerificationRequest>;
-
 export interface PreparePhoneNumberVerificationResponse {
   /** The type of the verification object. */
   object?: string;
@@ -7386,18 +4910,10 @@ export interface PreparePhoneNumberVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-const PreparePhoneNumberVerificationResponse =
-  AttemptEmailAddressVerificationResponse as any as S.Schema<PreparePhoneNumberVerificationResponse>;
-
 /** The headers of the request. */
 export type RefreshSessionRequestRequestHeadersMap = { [key: string]: unknown | undefined };
-const RefreshSessionRequestRequestHeadersMap =
-  UserPublicMetadataMap as any as S.Schema<RefreshSessionRequestRequestHeadersMap>;
-
 /** The format of the response. */
 export type RefreshSessionRequestFormat = "token" | "cookie";
-const RefreshSessionRequestFormat = S.String;
-
 export interface RefreshSessionRequest {
   /** The ID of the session */
   session_id: string;
@@ -7414,11 +4930,6 @@ export interface RefreshSessionRequest {
   /** The IP address of the request. */
   request_originating_ip?: string | null;
 }
-const RefreshSessionRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<RefreshSessionRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type TokenObject = "token";
 export interface Token {
@@ -7438,56 +4949,29 @@ export interface Cookies {
   cookies: CookiesCookiesList;
 }
 export type SessionRefresh = Token | Cookies;
-const SessionRefresh = S.Unknown as any as S.Schema<SessionRefresh>;
-
 export type RefreshSessionResponse = SessionRefresh;
-const RefreshSessionResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<RefreshSessionResponse>;
-
 export interface RejectWaitlistEntryRequest {
   /** The ID of the waitlist entry to reject */
   waitlist_entry_id: string;
 }
-const RejectWaitlistEntryRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<RejectWaitlistEntryRequest>;
-
 export interface RemoveBillingSubscriptionItemDiscountRequest {
   /** The ID of the subscription item to remove the discount from */
   subscription_item_id: string;
   /** The ID of the discount to remove */
   discount_id: string;
 }
-const RemoveBillingSubscriptionItemDiscountRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<RemoveBillingSubscriptionItemDiscountRequest>;
-
 export interface RemovePermissionFromOrganizationRoleRequest {
   /** The ID of the organization role */
   organization_role_id: string;
   /** The ID of the permission to remove */
   permission_id: string;
 }
-const RemovePermissionFromOrganizationRoleRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<RemovePermissionFromOrganizationRoleRequest>;
-
 export interface RemoveUserPasswordRequest {
   /** The ID of the user whose password to remove */
   user_id: string;
   /** Set to `true` to revoke all of the user's active sessions after removing the password. */
   sign_out_of_other_sessions?: boolean;
 }
-const RemoveUserPasswordRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<RemoveUserPasswordRequest>;
-
 export interface ReplaceDirectoryGroupRoleMappingsRequestMappingsItem {
   /** The group ID from the identity provider. Exactly one of `directory_group_id` or `scim_group_id` is required. */
   directory_group_id?: string;
@@ -7496,52 +4980,28 @@ export interface ReplaceDirectoryGroupRoleMappingsRequestMappingsItem {
   /** The ID of the organization role to assign to members of the group. */
   role_id: string;
 }
-const ReplaceDirectoryGroupRoleMappingsRequestMappingsItem = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsRequestMappingsItem>;
-
 /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
 export type ReplaceDirectoryGroupRoleMappingsRequestMappingsList =
   Array<ReplaceDirectoryGroupRoleMappingsRequestMappingsItem>;
-const ReplaceDirectoryGroupRoleMappingsRequestMappingsList = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsRequestMappingsList>;
-
 export interface ReplaceDirectoryGroupRoleMappingsRequest {
   /** The ID of the directory. */
   directory_id: string;
   /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
   mappings: ReplaceDirectoryGroupRoleMappingsRequestMappingsList;
 }
-const ReplaceDirectoryGroupRoleMappingsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsRequest>;
-
 export interface ReplaceDirectoryGroupRoleMappingsResponse {
   data: DirectoryGroupRoleMappings;
   /** Total number of directory group role mappings in the directory. */
   total_count: number;
 }
-const ReplaceDirectoryGroupRoleMappingsResponse =
-  ListDirectoryGroupRoleMappingsResponse as any as S.Schema<ReplaceDirectoryGroupRoleMappingsResponse>;
-
 /** Metadata saved on the organization, that is visible to both your frontend and backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceOrganizationMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const ReplaceOrganizationMetadataRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<ReplaceOrganizationMetadataRequestPublicMetadataMap>;
-
 /** Metadata saved on the organization that is only visible to your backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceOrganizationMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const ReplaceOrganizationMetadataRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<ReplaceOrganizationMetadataRequestPrivateMetadataMap>;
-
 export interface ReplaceOrganizationMetadataRequest {
   /** The ID of the organization whose metadata will be replaced */
   organization_id: string;
@@ -7550,11 +5010,6 @@ export interface ReplaceOrganizationMetadataRequest {
   /** Metadata saved on the organization that is only visible to your backend. The existing value will be replaced entirely with the new object. */
   private_metadata?: ReplaceOrganizationMetadataRequestPrivateMetadataMap;
 }
-const ReplaceOrganizationMetadataRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ReplaceOrganizationMetadataRequest>;
-
 export interface ReplaceRoleInRoleSetRequest {
   /** The key or ID of the role set */
   role_set_key_or_id: string;
@@ -7563,15 +5018,8 @@ export interface ReplaceRoleInRoleSetRequest {
   /** The key of the role to reassign members to */
   to_role_key: string;
 }
-const ReplaceRoleInRoleSetRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<ReplaceRoleInRoleSetRequest>;
-
 /** Mappings from source role keys to destination role keys for role reassignment */
 export type ReassignmentMappings = { [key: string]: string | undefined };
-const ReassignmentMappings = RoleSetMigrationMappingsMap as any as S.Schema<ReassignmentMappings>;
-
 export interface ReplaceRoleSetRequest {
   /** The key or ID of the role set to replace */
   role_set_key_or_id: string;
@@ -7580,56 +5028,31 @@ export interface ReplaceRoleSetRequest {
   /** Mappings from source role keys to destination role keys. Required if members have roles that need to be reassigned. */
   reassignment_mappings?: ReassignmentMappings;
 }
-const ReplaceRoleSetRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<ReplaceRoleSetRequest>;
-
 export interface ReplaceSCIMGroupRoleMappingsRequestMappingsItem {
   /** The SCIM group ID from the identity provider. */
   scim_group_id: string;
   /** The ID of the organization role to assign to members of the SCIM group. */
   role_id: string;
 }
-const ReplaceSCIMGroupRoleMappingsRequestMappingsItem = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ReplaceSCIMGroupRoleMappingsRequestMappingsItem>;
-
 /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
 export type ReplaceSCIMGroupRoleMappingsRequestMappingsList =
   Array<ReplaceSCIMGroupRoleMappingsRequestMappingsItem>;
-const ReplaceSCIMGroupRoleMappingsRequestMappingsList = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<ReplaceSCIMGroupRoleMappingsRequestMappingsList>;
-
 export interface ReplaceSCIMGroupRoleMappingsRequest {
   /** The ID of the directory. */
   scim_directory_id: string;
   /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
   mappings: ReplaceSCIMGroupRoleMappingsRequestMappingsList;
 }
-const ReplaceSCIMGroupRoleMappingsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<ReplaceSCIMGroupRoleMappingsRequest>;
-
 export interface ReplaceSCIMGroupRoleMappingsResponse {
   data: SCIMGroupRoleMappings;
   /** Total number of SCIM group role mappings in the directory. */
   total_count: number;
 }
-const ReplaceSCIMGroupRoleMappingsResponse =
-  ListSCIMGroupRoleMappingsResponse as any as S.Schema<ReplaceSCIMGroupRoleMappingsResponse>;
-
 /** Controls the status of the replacement email address. Defaults to `verified`. Set to `reserved` to create it reserved (unverified but usable for sign-in and locked so no other user can claim it), or to `unverified` to create it neither usable for sign-in nor locked. **Warning:** `unverified` can lock the user out of their account. An unverified email address cannot be used to sign in, so if the user has no other verified or reserved identifier, they will be unable to authenticate and unable to verify this address. Prefer `reserved` unless you specifically need the address left unclaimed -- for example so that another user can also hold it until one of them verifies it. */
 export type ReplaceUserEmailAddressRequestIdentificationStatus =
   | "verified"
   | "reserved"
   | "unverified";
-const ReplaceUserEmailAddressRequestIdentificationStatus = S.String;
-
 export interface ReplaceUserEmailAddressRequest {
   /** The ID of the user whose email address to replace */
   user_id: string;
@@ -7640,26 +5063,12 @@ export interface ReplaceUserEmailAddressRequest {
   /** If set to `true`, the user's previous primary email address is notified that the primary email address has changed. No notification is sent when the replacement is the user's current primary email address. By default, no notification is sent. */
   notify_primary_email_address_changed?: boolean | null;
 }
-const ReplaceUserEmailAddressRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<ReplaceUserEmailAddressRequest>;
-
 /** Metadata saved on the user, that is visible to both your frontend and backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceUserMetadataRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-const ReplaceUserMetadataRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestPublicMetadataMap>;
-
 /** Metadata saved on the user that is only visible to your backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceUserMetadataRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-const ReplaceUserMetadataRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestPrivateMetadataMap>;
-
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The existing value will be replaced entirely with the new object. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type ReplaceUserMetadataRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-const ReplaceUserMetadataRequestUnsafeMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestUnsafeMetadataMap>;
-
 export interface ReplaceUserMetadataRequest {
   /** The ID of the user whose metadata will be replaced */
   user_id: string;
@@ -7670,18 +5079,11 @@ export interface ReplaceUserMetadataRequest {
   /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The existing value will be replaced entirely with the new object. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
   unsafe_metadata?: ReplaceUserMetadataRequestUnsafeMetadataMap;
 }
-const ReplaceUserMetadataRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<ReplaceUserMetadataRequest>;
-
 /** Controls the status of the replacement phone number. Defaults to `verified`. Set to `reserved` to create it reserved (unverified but usable for sign-in and locked so no other user can claim it), or to `unverified` to create it neither usable for sign-in nor locked. **Warning:** `unverified` can lock the user out of their account. An unverified phone number cannot be used to sign in, so if the user has no other verified or reserved identifier, they will be unable to authenticate and unable to verify this number. Prefer `reserved` unless you specifically need the number left unclaimed -- for example so that another user can also hold it until one of them verifies it. */
 export type ReplaceUserPhoneNumberRequestIdentificationStatus =
   | "verified"
   | "reserved"
   | "unverified";
-const ReplaceUserPhoneNumberRequestIdentificationStatus = S.String;
-
 export interface ReplaceUserPhoneNumberRequest {
   /** The ID of the user whose phone number to replace */
   user_id: string;
@@ -7690,37 +5092,17 @@ export interface ReplaceUserPhoneNumberRequest {
   /** Controls the status of the replacement phone number. Defaults to `verified`. Set to `reserved` to create it reserved (unverified but usable for sign-in and locked so no other user can claim it), or to `unverified` to create it neither usable for sign-in nor locked. **Warning:** `unverified` can lock the user out of their account. An unverified phone number cannot be used to sign in, so if the user has no other verified or reserved identifier, they will be unable to authenticate and unable to verify this number. Prefer `reserved` unless you specifically need the number left unclaimed -- for example so that another user can also hold it until one of them verifies it. */
   identification_status?: ReplaceUserPhoneNumberRequestIdentificationStatus | (string & {});
 }
-const ReplaceUserPhoneNumberRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<ReplaceUserPhoneNumberRequest>;
-
 export interface RevokeActorTokenRequest {
   /** The ID of the actor token to be revoked. */
   actor_token_id: string;
 }
-const RevokeActorTokenRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<RevokeActorTokenRequest>;
-
 export interface RevokeAdminPortalLinkTokenRequest {
   adminPortalLinkTokenID: string;
   revocation_reason?: string | null;
 }
-const RevokeAdminPortalLinkTokenRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<RevokeAdminPortalLinkTokenRequest>;
-
 export type RevokeAdminPortalLinkTokenResponseObject = "admin_portal_link_token";
-const RevokeAdminPortalLinkTokenResponseObject = S.String;
-
 /** Caller-provided scopes for this token. */
 export type RevokeAdminPortalLinkTokenResponseScopesList = Array<string>;
-const RevokeAdminPortalLinkTokenResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeAdminPortalLinkTokenResponseScopesList>;
-
 export interface RevokeAdminPortalLinkTokenResponse {
   object: RevokeAdminPortalLinkTokenResponseObject;
   id: string;
@@ -7743,33 +5125,16 @@ export interface RevokeAdminPortalLinkTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds. */
   updated_at: number;
 }
-const RevokeAdminPortalLinkTokenResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<RevokeAdminPortalLinkTokenResponse>;
-
 export interface RevokeAgentTaskRequest {
   /** The ID of the agent task to be revoked. */
   agent_task_id: string;
 }
-const RevokeAgentTaskRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<RevokeAgentTaskRequest>;
-
 export interface RevokeApiKeyRequest {
   apiKeyID: string;
   revocation_reason?: string | null;
 }
-const RevokeApiKeyRequest = /*@__PURE__*/ __L.at(__c56, 3) as any as S.Schema<RevokeApiKeyRequest>;
-
 export type RevokeApiKeyResponseObject = "api_key";
-const RevokeApiKeyResponseObject = S.String;
-
 export type RevokeApiKeyResponseScopesList = Array<string>;
-const RevokeApiKeyResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeApiKeyResponseScopesList>;
-
 export interface RevokeApiKeyResponse {
   object: RevokeApiKeyResponseObject;
   id: string;
@@ -7792,30 +5157,13 @@ export interface RevokeApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-const RevokeApiKeyResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<RevokeApiKeyResponse>;
-
 export interface RevokeInvitationRequest {
   /** The ID of the invitation to be revoked */
   invitation_id: string;
 }
-const RevokeInvitationRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<RevokeInvitationRequest>;
-
 export type RevokeInvitationResponseObject = "invitation";
-const RevokeInvitationResponseObject = S.String;
-
 export type RevokeInvitationResponsePublicMetadataMap = { [key: string]: unknown | undefined };
-const RevokeInvitationResponsePublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<RevokeInvitationResponsePublicMetadataMap>;
-
 export type RevokeInvitationResponseStatus = "pending" | "accepted" | "revoked" | "expired";
-const RevokeInvitationResponseStatus = S.String;
-
 export interface RevokeInvitationResponse {
   object: RevokeInvitationResponseObject;
   id: string;
@@ -7831,27 +5179,12 @@ export interface RevokeInvitationResponse {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const RevokeInvitationResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<RevokeInvitationResponse>;
-
 export interface RevokeM2MTokenRequest {
   m2m_token_id: string;
   revocation_reason?: string | null;
 }
-const RevokeM2MTokenRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<RevokeM2MTokenRequest>;
-
 export type RevokeM2MTokenResponseObject = "machine_to_machine_token";
-const RevokeM2MTokenResponseObject = S.String;
-
 export type RevokeM2MTokenResponseScopesList = Array<string>;
-const RevokeM2MTokenResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeM2MTokenResponseScopesList>;
-
 export interface RevokeM2MTokenResponse {
   object: RevokeM2MTokenResponseObject;
   id: string;
@@ -7870,26 +5203,13 @@ export interface RevokeM2MTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-const RevokeM2MTokenResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<RevokeM2MTokenResponse>;
-
 export interface RevokeOAuthApplicationTokenRequest {
   /** The ID of the OAuth application for which to revoke the token */
   oauth_application_id: string;
   /** The opaque OAuth access token or refresh token to revoke. All tokens associated with the same OAuth grant are also revoked. */
   token: string;
 }
-const RevokeOAuthApplicationTokenRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<RevokeOAuthApplicationTokenRequest>;
-
 export interface RevokeOAuthApplicationTokenResponse {}
-const RevokeOAuthApplicationTokenResponse =
-  ChangeProductionInstanceDomainResponse as any as S.Schema<RevokeOAuthApplicationTokenResponse>;
-
 export interface RevokeOrganizationInvitationRequest {
   /** The organization ID. */
   organization_id: string;
@@ -7898,60 +5218,30 @@ export interface RevokeOrganizationInvitationRequest {
   /** The ID of the user that revokes the invitation. Must be an administrator in the organization. */
   requesting_user_id?: string | null;
 }
-const RevokeOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<RevokeOrganizationInvitationRequest>;
-
 export interface RevokeSessionRequest {
   /** The ID of the session */
   session_id: string;
 }
-const RevokeSessionRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<RevokeSessionRequest>;
-
 export interface RevokeSignInTokenRequest {
   /** The ID of the sign-in token to be revoked */
   sign_in_token_id: string;
 }
-const RevokeSignInTokenRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<RevokeSignInTokenRequest>;
-
 export interface RevokeUserBiometricCredentialRequest {
   /** The ID of the user that owns the biometric credential */
   user_id: string;
   /** The ID of the biometric credential to revoke */
   biometric_credential_id: string;
 }
-const RevokeUserBiometricCredentialRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<RevokeUserBiometricCredentialRequest>;
-
 export interface RotateDirectoryAPIKeyRequest {
   /** The ID of the directory whose API key to rotate */
   directory_id: string;
 }
-const RotateDirectoryAPIKeyRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<RotateDirectoryAPIKeyRequest>;
-
 export interface RotateMachineSecretKeyRequest {
   /** The ID of the machine to rotate the secret key for */
   machine_id: string;
   /** The time in seconds that the previous secret key will remain valid after rotation. This ensures a graceful transition period for updating applications with the new secret key. Set to 0 to immediately expire the previous key. Maximum value is 8 hours (28800 seconds). */
   previous_token_ttl: number;
 }
-const RotateMachineSecretKeyRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<RotateMachineSecretKeyRequest>;
-
 /** String representing the object's type. */
 export type RotateMachineSecretKeyResponseObject = "machine_secret_key";
 export interface RotateMachineSecretKeyResponse {
@@ -7960,25 +5250,12 @@ export interface RotateMachineSecretKeyResponse {
   /** The secret key for the machine. */
   secret: string | Redacted.Redacted<string>;
 }
-const RotateMachineSecretKeyResponse =
-  GetMachineSecretKeyResponse as any as S.Schema<RotateMachineSecretKeyResponse>;
-
 export interface RotateOAuthApplicationSecretRequest {
   /** The ID of the OAuth application for which to rotate the client secret */
   oauth_application_id: string;
 }
-const RotateOAuthApplicationSecretRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<RotateOAuthApplicationSecretRequest>;
-
 export type RotateOAuthApplicationSecretResponseObject = "oauth_application";
-const RotateOAuthApplicationSecretResponseObject = S.String;
-
 export type RotateOAuthApplicationSecretResponseRedirectUrisList = Array<string>;
-const RotateOAuthApplicationSecretResponseRedirectUrisList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RotateOAuthApplicationSecretResponseRedirectUrisList>;
-
 export interface RotateOAuthApplicationSecretResponse {
   object: RotateOAuthApplicationSecretResponseObject;
   id: string;
@@ -8009,80 +5286,41 @@ export interface RotateOAuthApplicationSecretResponse {
   /** Empty if public client. */
   client_secret?: string | Redacted.Redacted<string>;
 }
-const RotateOAuthApplicationSecretResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<RotateOAuthApplicationSecretResponse>;
-
 export interface RotateSCIMDirectoryAPIKeyRequest {
   /** The ID of the directory whose API key to rotate */
   scim_directory_id: string;
 }
-const RotateSCIMDirectoryAPIKeyRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<RotateSCIMDirectoryAPIKeyRequest>;
-
 export interface SetUserPasswordCompromisedRequest {
   /** The ID of the user to set the password as compromised */
   user_id: string;
   revoke_all_sessions?: boolean | null;
 }
-const SetUserPasswordCompromisedRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<SetUserPasswordCompromisedRequest>;
-
 export interface SetUserProfileImageRequest {
   /** The ID of the user to update the profile image for */
   user_id: string;
   file?: string;
 }
-const SetUserProfileImageRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<SetUserProfileImageRequest>;
-
 export interface UnbanUserRequest {
   /** The ID of the user to unban */
   user_id: string;
 }
-const UnbanUserRequest = /*@__PURE__*/ __L.at(__c58, 5) as any as S.Schema<UnbanUserRequest>;
-
 /** Array of user IDs to unban */
 export type UnbanUserRequestUserIdsList = Array<string>;
-const UnbanUserRequestUserIdsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UnbanUserRequestUserIdsList>;
-
 export interface UnbanUserRequest2 {
   /** Array of user IDs to unban */
   user_ids: UnbanUserRequestUserIdsList;
 }
-const UnbanUserRequest2 = /*@__PURE__*/ __L.at(__c58, 6) as any as S.Schema<UnbanUserRequest2>;
-
 export type UnbanUserResponseBodyList = Array<User>;
 export type UnbanUserResponse = UnbanUserResponseBodyList;
-const UnbanUserResponse = BanUserResponse as any as S.Schema<UnbanUserResponse>;
-
 export interface UnlockUserRequest {
   /** The ID of the user to unlock */
   user_id: string;
 }
-const UnlockUserRequest = /*@__PURE__*/ __L.at(__c58, 7) as any as S.Schema<UnlockUserRequest>;
-
 export interface UnsetUserPasswordCompromisedRequest {
   /** The ID of the user to unset the compromised status for */
   user_id: string;
 }
-const UnsetUserPasswordCompromisedRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<UnsetUserPasswordCompromisedRequest>;
-
 export type UpdateApiKeyRequestScopesList = Array<string>;
-const UpdateApiKeyRequestScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateApiKeyRequestScopesList>;
-
 export interface UpdateApiKeyRequest {
   apiKeyID: string;
   claims?: unknown | null;
@@ -8091,15 +5329,8 @@ export interface UpdateApiKeyRequest {
   subject?: string;
   seconds_until_expiration?: number | null;
 }
-const UpdateApiKeyRequest = /*@__PURE__*/ __L.at(__c59, 1) as any as S.Schema<UpdateApiKeyRequest>;
-
 export type UpdateApiKeyResponseObject = "api_key";
-const UpdateApiKeyResponseObject = S.String;
-
 export type UpdateApiKeyResponseScopesList = Array<string>;
-const UpdateApiKeyResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateApiKeyResponseScopesList>;
-
 export interface UpdateApiKeyResponse {
   object: UpdateApiKeyResponseObject;
   id: string;
@@ -8122,20 +5353,10 @@ export interface UpdateApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-const UpdateApiKeyResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<UpdateApiKeyResponse>;
-
 /** Attribute-to-directory-path entries to merge into the directory's attribute mapping. Set a key to `null` to remove it from the mapping. */
 export type UpdateDirectoryRequestAttributeMappingMap = {
   [key: string]: string | null | undefined;
 };
-const UpdateDirectoryRequestAttributeMappingMap = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<UpdateDirectoryRequestAttributeMappingMap>;
-
 export interface UpdateDirectoryRequest {
   /** The ID of the directory to update */
   directory_id: string;
@@ -8150,11 +5371,6 @@ export interface UpdateDirectoryRequest {
   /** Whether group-to-role mapping is enabled for this directory. */
   group_role_mapping_enabled?: boolean;
 }
-const UpdateDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<UpdateDirectoryRequest>;
-
 export interface UpdateDomainRequest {
   /** The ID of the domain that will be updated. */
   domain_id: string;
@@ -8165,8 +5381,6 @@ export interface UpdateDomainRequest {
   /** Whether this is a domain for a secondary app, meaning that any subdomain provided is significant and will be stored as part of the domain. This is useful for supporting multiple apps (one primary and multiple secondaries) on the same root domain (eTLD+1). */
   is_secondary?: boolean | null;
 }
-const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c59, 5) as any as S.Schema<UpdateDomainRequest>;
-
 export interface UpdateEmailAddressRequest {
   /** The ID of the email address to update */
   email_address_id: string;
@@ -8177,21 +5391,10 @@ export interface UpdateEmailAddressRequest {
   /** If set to `true` and this update makes the email address the user's new primary, the previous primary email address is notified of the change. By default, no notification is sent. */
   notify_primary_email_address_changed?: boolean | null;
 }
-const UpdateEmailAddressRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<UpdateEmailAddressRequest>;
-
 /** Domains associated with the enterprise connection. Values are normalized to lowercase. Empty array means ignored (no change); non-empty array means set domains to the given list (replaces existing). */
 export type UpdateEnterpriseConnectionRequestDomainsList = Array<string>;
-const UpdateEnterpriseConnectionRequestDomainsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateEnterpriseConnectionRequestDomainsList>;
-
 /** The IdP X.509 signing certificates the connection trusts, one per entry, in PEM or bare base64. Replaces the connection's whole certificate set and takes precedence over idp_certificate */
 export type UpdateEnterpriseConnectionRequestSamlIdpCertificatesList = Array<string>;
-const UpdateEnterpriseConnectionRequestSamlIdpCertificatesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateEnterpriseConnectionRequestSamlIdpCertificatesList>;
-
 /** Attribute mapping for SAML attributes */
 export type UpdateEnterpriseConnectionRequestSamlAttributeMapping =
   CreateEnterpriseConnectionRequestSamlAttributeMapping;
@@ -8207,9 +5410,6 @@ export interface UpdateEnterpriseConnectionRequestSamlLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-const UpdateEnterpriseConnectionRequestSamlLoginHint =
-  CreateEnterpriseConnectionRequestSamlLoginHint as any as S.Schema<UpdateEnterpriseConnectionRequestSamlLoginHint>;
-
 /** SAML connection-specific properties. Only applied when the enterprise connection uses SAML. Use this to update IdP configuration, attribute mapping, and other SAML-specific settings. */
 export interface UpdateEnterpriseConnectionRequestSaml {
   /** Display name of the SAML connection */
@@ -8234,11 +5434,6 @@ export interface UpdateEnterpriseConnectionRequestSaml {
   /** Configuration for the login_hint sent to the IdP on SSO sign-in */
   login_hint?: UpdateEnterpriseConnectionRequestSamlLoginHint | null;
 }
-const UpdateEnterpriseConnectionRequestSaml = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<UpdateEnterpriseConnectionRequestSaml>;
-
 /** OIDC connection-specific properties. Only applied when the enterprise connection uses OIDC (e.g. oidc_custom, oidc_github_enterprise, or oidc_gitlab). */
 export type UpdateEnterpriseConnectionRequestOidc = CreateEnterpriseConnectionRequestOidc;
 export type UpdateEnterpriseConnectionRequestCustomAttributesItem =
@@ -8246,9 +5441,6 @@ export type UpdateEnterpriseConnectionRequestCustomAttributesItem =
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type UpdateEnterpriseConnectionRequestCustomAttributesList =
   Array<CreateEnterpriseConnectionRequestCustomAttributesItem>;
-const UpdateEnterpriseConnectionRequestCustomAttributesList =
-  CreateEnterpriseConnectionRequestCustomAttributesList as any as S.Schema<UpdateEnterpriseConnectionRequestCustomAttributesList>;
-
 export interface UpdateEnterpriseConnectionRequest {
   /** The ID of the enterprise connection to update */
   enterprise_connection_id: string;
@@ -8273,28 +5465,15 @@ export interface UpdateEnterpriseConnectionRequest {
   /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
   custom_attributes?: UpdateEnterpriseConnectionRequestCustomAttributesList | null;
 }
-const UpdateEnterpriseConnectionRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<UpdateEnterpriseConnectionRequest>;
-
 /** For browser-like stacks such as browser extensions, Electron, or Capacitor.js (not officially supported), the instance allowed origins need to be updated with the request origin value. For Chrome extensions popup, background, or service worker pages, the origin is chrome-extension://extension_uuid. For Electron apps using `@clerk/electron`, the origins are the custom renderer scheme registered with `createClerkBridge()`, for example `my-app://renderer`, and, during development, the renderer's dev server origin, for example `http://localhost:5173`. For Capacitor, the origin is capacitor://localhost. Send an empty array to remove all allowed origins. A null value leaves the current list unchanged. */
 export type UpdateInstanceRequestAllowedOriginsList = Array<string>;
-const UpdateInstanceRequestAllowedOriginsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceRequestAllowedOriginsList>;
-
 /** Subdomains of the instance's own domains that may originate requests while `subdomain_allowlist_enabled` is true. Each entry is either an exact host (`app.example.com`) or a wildcard anchored on a host beneath one of the instance's domains (`*.preview.example.com`), which covers every host under that anchor but not the anchor itself. Entries are stored folded to lower case with any trailing dot removed, the form the origin check compares against, so entries differing only in those respects are one entry. Entries already stored are not validated again, so a list read back from the instance can always be written again unchanged. Send an empty array to remove all entries. A null value leaves the current list unchanged. Production instances only. */
 export type UpdateInstanceRequestAllowedSubdomainsList = Array<string>;
-const UpdateInstanceRequestAllowedSubdomainsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceRequestAllowedSubdomainsList>;
-
 /** When password is required at the instance level, sets the preferred sign-in strategy surfaced to Clerk components. Has no effect when password is not required. Defaults to `password`. Set to an empty string to clear the override. */
 export type UpdateInstanceRequestPreferredSignInStrategyWhenPasswordRequired =
   | "password"
   | "otp"
   | "";
-const UpdateInstanceRequestPreferredSignInStrategyWhenPasswordRequired = S.String;
-
 export interface UpdateInstanceRequest {
   /** Toggles test mode for this instance, allowing the use of test email addresses and phone numbers. Defaults to true for development instances. */
   test_mode?: boolean | null;
@@ -8319,14 +5498,7 @@ export interface UpdateInstanceRequest {
     | (string & {})
     | null;
 }
-const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<UpdateInstanceRequest>;
-
 export interface UpdateInstanceResponse {}
-const UpdateInstanceResponse = DeleteSvixAppResponse as any as S.Schema<UpdateInstanceResponse>;
-
 export interface UpdateInstanceAuthConfigRequest {
   /** Whether sign up is restricted to email addresses, phone numbers and usernames that are on the allowlist. */
   restricted_to_allowlist?: boolean | null;
@@ -8337,15 +5509,8 @@ export interface UpdateInstanceAuthConfigRequest {
   /** Toggles test mode for this instance, allowing the use of test email addresses and phone numbers. Defaults to true for development instances. */
   test_mode?: boolean | null;
 }
-const UpdateInstanceAuthConfigRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<UpdateInstanceAuthConfigRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type UpdateInstanceAuthConfigResponseObject = "instance_settings";
-const UpdateInstanceAuthConfigResponseObject = S.String;
-
 export interface UpdateInstanceAuthConfigResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
   object?: UpdateInstanceAuthConfigResponseObject;
@@ -8356,30 +5521,14 @@ export interface UpdateInstanceAuthConfigResponse {
   /** Deprecated. This setting is retired and no longer affects email delivery; all email is sent through the instance's configured email sending domain. The field is preserved for API compatibility only and will be removed in a future version. */
   enhanced_email_deliverability?: boolean;
 }
-const UpdateInstanceAuthConfigResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<UpdateInstanceAuthConfigResponse>;
-
 /** ISO 3166-1 alpha-2 country codes to block for SMS delivery. Whole-list replacement. Codes must be uppercase, 2-letter, and unique within the array. */
 export type UpdateInstanceCommunicationRequestBlockedCountryCodesList = Array<string>;
-const UpdateInstanceCommunicationRequestBlockedCountryCodesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceCommunicationRequestBlockedCountryCodesList>;
-
 export interface UpdateInstanceCommunicationRequest {
   /** ISO 3166-1 alpha-2 country codes to block for SMS delivery. Whole-list replacement. Codes must be uppercase, 2-letter, and unique within the array. */
   blocked_country_codes?: UpdateInstanceCommunicationRequestBlockedCountryCodesList | null;
 }
-const UpdateInstanceCommunicationRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<UpdateInstanceCommunicationRequest>;
-
 /** Default scopes assigned when a dynamically registered or first-contact CIMD client omits `scope`. Accepts built-in keys and current custom catalog keys. `advertised` does not affect eligibility. Duplicate keys, unknown keys, and `offline_access` are rejected. An empty array or null resets to Clerk-provided defaults. */
 export type UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList = Array<string>;
-const UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList>;
-
 export interface UpdateInstanceOAuthApplicationSettingsRequest {
   /** Whether dynamic OAuth client registration is enabled for the instance (RFC 7591). */
   dynamic_oauth_client_registration?: boolean | null;
@@ -8398,18 +5547,8 @@ export interface UpdateInstanceOAuthApplicationSettingsRequest {
   /** When true, recorded implicitly allowed CIMD clients are rejected on future client lookups. Explicitly allowed clients remain accepted. This does not revoke previously issued access tokens. */
   client_id_metadata_documents_block_implicitly_allowed_clients?: boolean | null;
 }
-const UpdateInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequest>;
-
 /** Specify which enrollment modes to enable for your Organization Domains. Supported modes are 'automatic_invitation' & 'automatic_suggestion'. */
 export type UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList = Array<string>;
-const UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList>;
-
 export interface UpdateInstanceOrganizationSettingsRequest {
   enabled?: boolean | null;
   max_allowed_memberships?: number | null;
@@ -8423,21 +5562,11 @@ export interface UpdateInstanceOrganizationSettingsRequest {
   /** Specify what the default organization role is for the organization domains. */
   domains_default_role_id?: string | null;
 }
-const UpdateInstanceOrganizationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<UpdateInstanceOrganizationSettingsRequest>;
-
 export interface UpdateInstanceProtectRequest {
   /** Set true to enforce Protect rules on this instance. Set false to stop enforcing and return the instance to its default posture, where traffic is still evaluated in shadow but nothing is blocked. This does not remove the instance from Protect. */
   rules_enabled?: boolean | null;
   specter_enabled?: boolean | null;
 }
-const UpdateInstanceProtectRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<UpdateInstanceProtectRequest>;
-
 export interface UpdateInstanceRestrictionsRequest {
   allowlist?: boolean | null;
   blocklist?: boolean | null;
@@ -8445,15 +5574,8 @@ export interface UpdateInstanceRestrictionsRequest {
   block_email_subaddresses?: boolean | null;
   block_disposable_email_domains?: boolean | null;
 }
-const UpdateInstanceRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<UpdateInstanceRestrictionsRequest>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type InstanceRestrictionsObject = "instance_restrictions";
-const InstanceRestrictionsObject = S.String;
-
 export interface InstanceRestrictions {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: InstanceRestrictionsObject;
@@ -8463,11 +5585,6 @@ export interface InstanceRestrictions {
   block_email_subaddresses: boolean;
   block_disposable_email_domains: boolean;
 }
-const InstanceRestrictions = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<InstanceRestrictions>;
-
 export interface UpdateJWTTemplateRequest {
   /** The ID of the JWT template to update */
   template_id: string;
@@ -8486,11 +5603,6 @@ export interface UpdateJWTTemplateRequest {
   /** The custom signing private key to use when minting JWTs. Required if `custom_signing_key` is `true`. */
   signing_key?: string | null;
 }
-const UpdateJWTTemplateRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<UpdateJWTTemplateRequest>;
-
 export interface UpdateMachineRequest {
   /** The ID of the machine to update */
   machine_id: string;
@@ -8499,19 +5611,9 @@ export interface UpdateMachineRequest {
   /** The default time-to-live (TTL) in seconds for tokens created by this machine. Must be at least 1 second. */
   default_token_ttl?: number;
 }
-const UpdateMachineRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<UpdateMachineRequest>;
-
 export type UpdateMachineResponseObject = "machine";
-const UpdateMachineResponseObject = S.String;
-
 /** Array of machines this machine has access to. */
 export type UpdateMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-const UpdateMachineResponseScopedMachinesList =
-  CreateMachineResponseScopedMachinesList as any as S.Schema<UpdateMachineResponseScopedMachinesList>;
-
 export interface UpdateMachineResponse {
   object: UpdateMachineResponseObject;
   /** Unique identifier for the machine. */
@@ -8529,16 +5631,8 @@ export interface UpdateMachineResponse {
   /** Array of machines this machine has access to. */
   scoped_machines: UpdateMachineResponseScopedMachinesList;
 }
-const UpdateMachineResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<UpdateMachineResponse>;
-
 /** An array of redirect URIs of the new OAuth application */
 export type UpdateOAuthApplicationRequestRedirectUrisList = Array<string>;
-const UpdateOAuthApplicationRequestRedirectUrisList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateOAuthApplicationRequestRedirectUrisList>;
-
 export interface UpdateOAuthApplicationRequest {
   /** The ID of the OAuth application to update */
   oauth_application_id: string;
@@ -8559,11 +5653,6 @@ export interface UpdateOAuthApplicationRequest {
   /** If true, this client is public and you can use the Proof Key of Code Exchange (PKCE) flow. */
   public?: boolean | null;
 }
-const UpdateOAuthApplicationRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<UpdateOAuthApplicationRequest>;
-
 export interface UpdateOrganizationRequest {
   /** The ID of the organization to update */
   organization_id: string;
@@ -8584,11 +5673,6 @@ export interface UpdateOrganizationRequest {
   /** Maps role keys in the organization's current role set to role keys in the new role set. Only applies when `role_set_key` changes the role set. Every role that a member holds and that the new role set does not include must be mapped, otherwise the request fails with a 422. Mapping a role that both role sets include moves its members to the destination role. Memberships are reassigned asynchronously after the response. */
   reassignment_mappings?: ReassignmentMappings | null;
 }
-const UpdateOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<UpdateOrganizationRequest>;
-
 export interface UpdateOrganizationDomainRequest {
   /** The ID of the organization to which the domain belongs */
   organization_id: string;
@@ -8599,11 +5683,6 @@ export interface UpdateOrganizationDomainRequest {
   /** The status of the domain's verification */
   verified?: boolean | null;
 }
-const UpdateOrganizationDomainRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<UpdateOrganizationDomainRequest>;
-
 export interface UpdateOrganizationMembershipRequest {
   /** The ID of the organization to which this membership belongs */
   organization_id: string;
@@ -8612,25 +5691,14 @@ export interface UpdateOrganizationMembershipRequest {
   /** The new role of the given membership. */
   role: string;
 }
-const UpdateOrganizationMembershipRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<UpdateOrganizationMembershipRequest>;
-
 /** Metadata saved on the organization membership, that is visible to both your frontend and backend. The new object will be merged with the existing value. */
 export type UpdateOrganizationMembershipMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const UpdateOrganizationMembershipMetadataRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPublicMetadataMap>;
-
 /** Metadata saved on the organization membership that is only visible to your backend. The new object will be merged with the existing value. */
 export type UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap>;
-
 export interface UpdateOrganizationMembershipMetadataRequest {
   /** The ID of the organization to which this membership belongs */
   organization_id: string;
@@ -8641,11 +5709,6 @@ export interface UpdateOrganizationMembershipMetadataRequest {
   /** Metadata saved on the organization membership that is only visible to your backend. The new object will be merged with the existing value. */
   private_metadata?: UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap;
 }
-const UpdateOrganizationMembershipMetadataRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<UpdateOrganizationMembershipMetadataRequest>;
-
 export interface UpdateOrganizationPermissionRequest {
   /** The ID of the permission to update */
   permission_id: string;
@@ -8656,16 +5719,8 @@ export interface UpdateOrganizationPermissionRequest {
   /** A description of the permission. */
   description?: string;
 }
-const UpdateOrganizationPermissionRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<UpdateOrganizationPermissionRequest>;
-
 /** Array of permission IDs to assign to the role. If provided, this will replace the existing permissions. */
 export type UpdateOrganizationRoleRequestPermissionsList = Array<string>;
-const UpdateOrganizationRoleRequestPermissionsList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateOrganizationRoleRequestPermissionsList>;
-
 export interface UpdateOrganizationRoleRequest {
   /** The ID of the organization role to update */
   organization_role_id: string;
@@ -8678,11 +5733,6 @@ export interface UpdateOrganizationRoleRequest {
   /** Array of permission IDs to assign to the role. If provided, this will replace the existing permissions. */
   permissions?: UpdateOrganizationRoleRequestPermissionsList | null;
 }
-const UpdateOrganizationRoleRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<UpdateOrganizationRoleRequest>;
-
 export interface UpdatePhoneNumberRequest {
   /** The ID of the phone number to update */
   phone_number_id: string;
@@ -8693,15 +5743,8 @@ export interface UpdatePhoneNumberRequest {
   /** Set this phone number as reserved for multi-factor authentication. The phone number must also be verified. If there are no other reserved second factors, the phone number will be set as the default second factor. */
   reserved_for_second_factor?: boolean | null;
 }
-const UpdatePhoneNumberRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<UpdatePhoneNumberRequest>;
-
 /** Set to "initial" to make this the default role set for new organizations. Only one role set can be "initial" per instance; setting this will change any existing initial role set to "custom". */
 export type UpdateRoleSetRequestType = "initial";
-const UpdateRoleSetRequestType = S.String;
-
 export interface UpdateRoleSetRequest {
   /** The key or ID of the role set to update */
   role_set_key_or_id: string;
@@ -8718,18 +5761,10 @@ export interface UpdateRoleSetRequest {
   /** The key of the role to assign to organization creators. Must be an existing role in the role set. */
   creator_role_key?: string | null;
 }
-const UpdateRoleSetRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<UpdateRoleSetRequest>;
-
 /** Attribute-to-SCIM-path entries to merge into the directory's attribute mapping. Set a key to `null` to remove it from the mapping. */
 export type UpdateSCIMDirectoryRequestAttributeMappingMap = {
   [key: string]: string | null | undefined;
 };
-const UpdateSCIMDirectoryRequestAttributeMappingMap =
-  UpdateDirectoryRequestAttributeMappingMap as any as S.Schema<UpdateSCIMDirectoryRequestAttributeMappingMap>;
-
 export interface UpdateSCIMDirectoryRequest {
   /** The ID of the directory to update */
   scim_directory_id: string;
@@ -8744,11 +5779,6 @@ export interface UpdateSCIMDirectoryRequest {
   /** Whether group-to-role mapping is enabled for this directory. */
   group_role_mapping_enabled?: boolean;
 }
-const UpdateSCIMDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<UpdateSCIMDirectoryRequest>;
-
 export interface UpdateSignUpRequest {
   /** The ID of the sign-up to update */
   id: string;
@@ -8757,13 +5787,8 @@ export interface UpdateSignUpRequest {
   /** If true, the sign-up will be marked as a custom action. */
   custom_action?: boolean | null;
 }
-const UpdateSignUpRequest = /*@__PURE__*/ __L.at(__c63, 0) as any as S.Schema<UpdateSignUpRequest>;
-
 /** If Backup Codes are configured on the instance, you can provide them to enable it on the specific user without the need to reset them. */
 export type UpdateUserRequestBackupCodesList = Array<string>;
-const UpdateUserRequestBackupCodesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateUserRequestBackupCodesList>;
-
 export interface UpdateUserRequest {
   /** The ID of the user to update */
   user_id: string;
@@ -8817,23 +5842,12 @@ export interface UpdateUserRequest {
   /** When set to `true`, the user will bypass Device Trust checks during sign-in. */
   bypass_client_trust?: boolean | null;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c63, 1) as any as S.Schema<UpdateUserRequest>;
-
 /** Metadata saved on the user, that is visible to both your frontend and backend. The new object will be merged with the existing value. */
 export type UpdateUserMetadataRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-const UpdateUserMetadataRequestPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestPublicMetadataMap>;
-
 /** Metadata saved on the user that is only visible to your backend. The new object will be merged with the existing value. */
 export type UpdateUserMetadataRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-const UpdateUserMetadataRequestPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestPrivateMetadataMap>;
-
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The new object will be merged with the existing value. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type UpdateUserMetadataRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-const UpdateUserMetadataRequestUnsafeMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestUnsafeMetadataMap>;
-
 export interface UpdateUserMetadataRequest {
   /** The ID of the user whose metadata will be updated and merged */
   user_id: string;
@@ -8844,11 +5858,6 @@ export interface UpdateUserMetadataRequest {
   /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The new object will be merged with the existing value. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
   unsafe_metadata?: UpdateUserMetadataRequestUnsafeMetadataMap;
 }
-const UpdateUserMetadataRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<UpdateUserMetadataRequest>;
-
 export interface UploadOAuthApplicationLogoRequest {
   /** The ID of the OAuth application for which to upload a logo */
   oauth_application_id: string;
@@ -8856,11 +5865,6 @@ export interface UploadOAuthApplicationLogoRequest {
   uploader_user_id?: string;
   file: string;
 }
-const UploadOAuthApplicationLogoRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  3,
-) as any as S.Schema<UploadOAuthApplicationLogoRequest>;
-
 export interface UploadOrganizationLogoRequest {
   /** The ID of the organization for which to upload a logo */
   organization_id: string;
@@ -8868,26 +5872,13 @@ export interface UploadOrganizationLogoRequest {
   uploader_user_id?: string;
   file: string;
 }
-const UploadOrganizationLogoRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  4,
-) as any as S.Schema<UploadOrganizationLogoRequest>;
-
 export type UploadOrganizationLogoResponseObject = "organization";
-const UploadOrganizationLogoResponseObject = S.String;
-
 export type UploadOrganizationLogoResponsePublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const UploadOrganizationLogoResponsePublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UploadOrganizationLogoResponsePublicMetadataMap>;
-
 export type UploadOrganizationLogoResponsePrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const UploadOrganizationLogoResponsePrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UploadOrganizationLogoResponsePrivateMetadataMap>;
-
 export interface UploadOrganizationLogoResponse {
   object: UploadOrganizationLogoResponseObject;
   id: string;
@@ -8915,18 +5906,11 @@ export interface UploadOrganizationLogoResponse {
   role_set_key?: string | null;
   logo_url?: string;
 }
-const UploadOrganizationLogoResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<UploadOrganizationLogoResponse>;
-
 export type UsersGetOrganizationInvitationsRequestStatus =
   | "pending"
   | "accepted"
   | "revoked"
   | "expired";
-const UsersGetOrganizationInvitationsRequestStatus = S.String;
-
 export interface UsersGetOrganizationInvitationsRequest {
   /** The ID of the user whose organization invitations we want to retrieve */
   user_id: string;
@@ -8937,11 +5921,6 @@ export interface UsersGetOrganizationInvitationsRequest {
   /** Filter organization invitations based on their status */
   status?: UsersGetOrganizationInvitationsRequestStatus | (string & {});
 }
-const UsersGetOrganizationInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<UsersGetOrganizationInvitationsRequest>;
-
 export interface UsersGetOrganizationMembershipsRequest {
   /** The ID of the user whose organization memberships we want to retrieve */
   user_id: string;
@@ -8950,23 +5929,11 @@ export interface UsersGetOrganizationMembershipsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-const UsersGetOrganizationMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<UsersGetOrganizationMembershipsRequest>;
-
 export interface VerifyApiKeyRequest {
   secret: string | Redacted.Redacted<string>;
 }
-const VerifyApiKeyRequest = /*@__PURE__*/ __L.at(__c64, 0) as any as S.Schema<VerifyApiKeyRequest>;
-
 export type VerifyApiKeyResponseObject = "api_key";
-const VerifyApiKeyResponseObject = S.String;
-
 export type VerifyApiKeyResponseScopesList = Array<string>;
-const VerifyApiKeyResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyApiKeyResponseScopesList>;
-
 export interface VerifyApiKeyResponse {
   object: VerifyApiKeyResponseObject;
   id: string;
@@ -8989,31 +5956,17 @@ export interface VerifyApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-const VerifyApiKeyResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<VerifyApiKeyResponse>;
-
 export interface VerifyClientRequest {
   /** A JWT that represents the active client. */
   token: string;
 }
-const VerifyClientRequest = /*@__PURE__*/ __L.at(__c64, 2) as any as S.Schema<VerifyClientRequest>;
-
 export interface VerifyDomainProxyRequest {
   /** The ID of the domain that will be updated. */
   domain_id?: string;
   /** The full URL of the proxy which will forward requests to the Clerk Frontend API for this domain. e.g. https://example.com/__clerk */
   proxy_url?: string;
 }
-const VerifyDomainProxyRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<VerifyDomainProxyRequest>;
-
 export type ProxyCheckObject = "proxy_check";
-const ProxyCheckObject = S.String;
-
 export interface ProxyCheck {
   object: ProxyCheckObject;
   id: string;
@@ -9027,23 +5980,11 @@ export interface ProxyCheck {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-const ProxyCheck = /*@__PURE__*/ __L.at(__c64, 4) as any as S.Schema<ProxyCheck>;
-
 export interface VerifyM2MTokenRequest {
   token: string;
 }
-const VerifyM2MTokenRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<VerifyM2MTokenRequest>;
-
 export type VerifyM2MTokenResponseObject = "machine_to_machine_token";
-const VerifyM2MTokenResponseObject = S.String;
-
 export type VerifyM2MTokenResponseScopesList = Array<string>;
-const VerifyM2MTokenResponseScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyM2MTokenResponseScopesList>;
-
 export interface VerifyM2MTokenResponse {
   object: VerifyM2MTokenResponseObject;
   id: string;
@@ -9062,22 +6003,12 @@ export interface VerifyM2MTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-const VerifyM2MTokenResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<VerifyM2MTokenResponse>;
-
 export interface VerifyOAuthAccessTokenRequest {
   /** The access token to verify. */
   access_token?: string | Redacted.Redacted<string>;
   /** The access token to verify. This is deprecated, use `access_token` instead. */
   secret?: string | Redacted.Redacted<string>;
 }
-const VerifyOAuthAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<VerifyOAuthAccessTokenRequest>;
-
 export type VerifyOAuthAccessTokenResponseBodyCase0Object = "clerk_idp_oauth_access_token";
 export type VerifyOAuthAccessTokenResponseBodyCase0ScopesList = Array<string>;
 /** The audiences of the access token. Omitted when no audience is set. */
@@ -9104,62 +6035,33 @@ export interface VerifyOAuthAccessTokenResponseBodyCase1 {
 export type VerifyOAuthAccessTokenResponseBody =
   | VerifyOAuthAccessTokenResponseBodyCase0
   | VerifyOAuthAccessTokenResponseBodyCase1;
-const VerifyOAuthAccessTokenResponseBody =
-  S.Unknown as any as S.Schema<VerifyOAuthAccessTokenResponseBody>;
-
 export type VerifyOAuthAccessTokenResponse = VerifyOAuthAccessTokenResponseBody;
-const VerifyOAuthAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<VerifyOAuthAccessTokenResponse>;
-
 export interface VerifyOrganizationDomainOwnershipRequest {
   /** The ID of the organization to which the domain belongs */
   organization_id: string;
   /** The ID of the domain */
   domain_id: string;
 }
-const VerifyOrganizationDomainOwnershipRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<VerifyOrganizationDomainOwnershipRequest>;
-
 export interface VerifyPasswordRequest {
   /** The ID of the user for whom to verify the password */
   user_id: string;
   /** The user password to verify */
   password: string | Redacted.Redacted<string>;
 }
-const VerifyPasswordRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<VerifyPasswordRequest>;
-
 export interface VerifyPasswordResponse {
   verified?: boolean;
 }
-const VerifyPasswordResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<VerifyPasswordResponse>;
-
 export interface VerifyTOTPRequest {
   /** The ID of the user for whom to verify the TOTP */
   user_id: string;
   /** The TOTP or backup code to verify */
   code: string;
 }
-const VerifyTOTPRequest = /*@__PURE__*/ __L.at(__c65, 4) as any as S.Schema<VerifyTOTPRequest>;
-
 export type VerifyTOTPResponseCodeType = "totp" | "backup_code";
-const VerifyTOTPResponseCodeType = S.String;
-
 export interface VerifyTOTPResponse {
   verified?: boolean;
   code_type?: VerifyTOTPResponseCodeType;
 }
-const VerifyTOTPResponse = /*@__PURE__*/ __L.at(__c65, 5) as any as S.Schema<VerifyTOTPResponse>;
-
 export type AddDomainError = BadRequest | Forbidden | UnprocessableEntity | ClerkOpError;
 /** Add a domain Add a new domain for your instance. Useful in the case of multi-domain instances, allows adding satellite domains to an instance. The new domain must have a `name`. The domain name can contain the port for development instances, like `localhost:3000`. Set `is_satellite` to `true` to add a satellite domain. To migrate a production instance from an active provider domain to its first custom primary domain, set `is_satellite` to `false`. The custom domain becomes active and the provider domain stays attached. Additional custom primary domains are not supported. If you're planning to configure the new satellite domain to run behind a proxy, pass the `proxy_url` parameter accordingly. Adding a custom primary domain returns 403 `domain_managed_by_integration` for applications in a Vercel-managed workspace; change the domain from the Vercel integration instead. */
 export const addDomain: API.OperationMethod<
@@ -9168,8 +6070,8 @@ export const addDomain: API.OperationMethod<
   AddDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddDomainRequest,
-  output: Domain,
+  input: __S(0, __c0, 0) as any as S.Schema<AddDomainRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Domain>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9188,8 +6090,8 @@ export const addRolesToRoleSet: API.OperationMethod<
   AddRolesToRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddRolesToRoleSetRequest,
-  output: RoleSet,
+  input: __S(7, __c0, 7) as any as S.Schema<AddRolesToRoleSetRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9209,8 +6111,8 @@ export const adjustOrganizationBillingCreditBalance: API.OperationMethod<
   AdjustOrganizationBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdjustOrganizationBillingCreditBalanceRequest,
-  output: CommerceCreditLedgerResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<AdjustOrganizationBillingCreditBalanceRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CommerceCreditLedgerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9230,8 +6132,8 @@ export const adjustUserBillingCreditBalance: API.OperationMethod<
   AdjustUserBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdjustUserBillingCreditBalanceRequest,
-  output: CommerceCreditLedgerResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<AdjustUserBillingCreditBalanceRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CommerceCreditLedgerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9251,8 +6153,8 @@ export const applyBillingSubscriptionItemDiscount: API.OperationMethod<
   ApplyBillingSubscriptionItemDiscountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyBillingSubscriptionItemDiscountRequest,
-  output: CommerceDiscountRedemptionResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<ApplyBillingSubscriptionItemDiscountRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CommerceDiscountRedemptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9270,8 +6172,8 @@ export const assignPermissionToOrganizationRole: API.OperationMethod<
   AssignPermissionToOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssignPermissionToOrganizationRoleRequest,
-  output: Role,
+  input: __S(19, __c2, 3) as any as S.Schema<AssignPermissionToOrganizationRoleRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9285,8 +6187,8 @@ export const attemptEmailAddressVerification: API.OperationMethod<
   AttemptEmailAddressVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttemptEmailAddressVerificationRequest,
-  output: AttemptEmailAddressVerificationResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<AttemptEmailAddressVerificationRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<AttemptEmailAddressVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9305,8 +6207,8 @@ export const attemptPhoneNumberVerification: API.OperationMethod<
   AttemptPhoneNumberVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttemptPhoneNumberVerificationRequest,
-  output: AttemptPhoneNumberVerificationResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<AttemptPhoneNumberVerificationRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<AttemptPhoneNumberVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9316,8 +6218,8 @@ export type BanUserError = ClerkOpError;
 /** Ban a user Marks the given user as banned, which means that all their sessions are revoked and they are not allowed to sign in again. */
 export const banUser: API.OperationMethod<BanUserRequest, User, BanUserError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: BanUserRequest,
-    output: User,
+    input: __S(26, __c3, 2) as any as S.Schema<BanUserRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<User>,
     errors: [UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -9331,8 +6233,8 @@ export const banUser2: API.OperationMethod<
   BanUser2Error,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BanUserRequest2,
-  output: BanUserResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<BanUserRequest2>,
+  output: __S(56, __c7, 0) as any as S.Schema<BanUserResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9351,8 +6253,8 @@ export const cancelCommerceSubscriptionItem: API.OperationMethod<
   CancelCommerceSubscriptionItemError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelCommerceSubscriptionItemRequest,
-  output: CommerceSubscriptionItem,
+  input: __S(57, __c7, 1) as any as S.Schema<CancelCommerceSubscriptionItemRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<CommerceSubscriptionItem>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9370,8 +6272,8 @@ export const changeProductionInstanceDomain: API.OperationMethod<
   ChangeProductionInstanceDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeProductionInstanceDomainRequest,
-  output: ChangeProductionInstanceDomainResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<ChangeProductionInstanceDomainRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ChangeProductionInstanceDomainResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9385,8 +6287,8 @@ export const createActorToken: API.OperationMethod<
   CreateActorTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActorTokenRequest,
-  output: ActorToken,
+  input: __S(90, __c11, 2) as any as S.Schema<CreateActorTokenRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ActorToken>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9400,8 +6302,8 @@ export const createAdminPortalLinkToken: API.OperationMethod<
   CreateAdminPortalLinkTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdminPortalLinkTokenRequest,
-  output: CreateAdminPortalLinkTokenResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<CreateAdminPortalLinkTokenRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<CreateAdminPortalLinkTokenResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9415,8 +6317,8 @@ export const createAgentTask: API.OperationMethod<
   CreateAgentTaskError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentTaskRequest,
-  output: AgentTask,
+  input: __S(95, __c11, 7) as any as S.Schema<CreateAgentTaskRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<AgentTask>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9430,8 +6332,8 @@ export const createAllowlistIdentifier: API.OperationMethod<
   CreateAllowlistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAllowlistIdentifierRequest,
-  output: AllowlistIdentifier,
+  input: __S(97, __c12, 1) as any as S.Schema<CreateAllowlistIdentifierRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<AllowlistIdentifier>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9445,8 +6347,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApiKeyRequest,
-  output: CreateApiKeyResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<CreateApiKeyResponse>,
   errors: [BadRequest, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9460,8 +6362,8 @@ export const createBillingPrice: API.OperationMethod<
   CreateBillingPriceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingPriceRequest,
-  output: BillingPriceResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<CreateBillingPriceRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<BillingPriceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9481,8 +6383,8 @@ export const createBillingPriceTransition: API.OperationMethod<
   CreateBillingPriceTransitionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingPriceTransitionRequest,
-  output: CommercePriceTransitionResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<CreateBillingPriceTransitionRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<CommercePriceTransitionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9496,8 +6398,8 @@ export const createBlocklistIdentifier: API.OperationMethod<
   CreateBlocklistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBlocklistIdentifierRequest,
-  output: BlocklistIdentifier,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateBlocklistIdentifierRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<BlocklistIdentifier>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9511,8 +6413,8 @@ export const createBulkInvitations: API.OperationMethod<
   CreateBulkInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBulkInvitationsRequest,
-  output: CreateBulkInvitationsResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<CreateBulkInvitationsRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<CreateBulkInvitationsResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9526,8 +6428,8 @@ export const createBulkWaitlistEntries: API.OperationMethod<
   CreateBulkWaitlistEntriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBulkWaitlistEntriesRequest,
-  output: CreateBulkWaitlistEntriesResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<CreateBulkWaitlistEntriesRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<CreateBulkWaitlistEntriesResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9541,8 +6443,8 @@ export const createDirectory: API.OperationMethod<
   CreateDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDirectoryRequest,
-  output: Directory,
+  input: __S(128, __c16, 0) as any as S.Schema<CreateDirectoryRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9561,8 +6463,8 @@ export const createDirectoryGroupRoleMapping: API.OperationMethod<
   CreateDirectoryGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDirectoryGroupRoleMappingRequest,
-  output: DirectoryGroupRoleMapping,
+  input: __S(132, __c16, 4) as any as S.Schema<CreateDirectoryGroupRoleMappingRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<DirectoryGroupRoleMapping>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9582,8 +6484,8 @@ export const createEmailAddress: API.OperationMethod<
   CreateEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailAddressRequest,
-  output: EmailAddress,
+  input: __S(134, __c16, 6) as any as S.Schema<CreateEmailAddressRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9602,8 +6504,8 @@ export const createEnterpriseConnection: API.OperationMethod<
   CreateEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnterpriseConnectionRequest,
-  output: EnterpriseConnection,
+  input: __S(141, __c17, 5) as any as S.Schema<CreateEnterpriseConnectionRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<EnterpriseConnection>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9617,8 +6519,8 @@ export const createEnterpriseConnectionTestRun: API.OperationMethod<
   CreateEnterpriseConnectionTestRunError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnterpriseConnectionTestRunRequest,
-  output: EnterpriseConnectionTestRunResponse,
+  input: __S(147, __c18, 3) as any as S.Schema<CreateEnterpriseConnectionTestRunRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<EnterpriseConnectionTestRunResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9632,8 +6534,8 @@ export const createInvitation: API.OperationMethod<
   CreateInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInvitationRequest,
-  output: Invitation,
+  input: __S(149, __c18, 5) as any as S.Schema<CreateInvitationRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<Invitation>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9647,8 +6549,8 @@ export const createJWTTemplate: API.OperationMethod<
   CreateJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJWTTemplateRequest,
-  output: JWTTemplate,
+  input: __S(150, __c18, 6) as any as S.Schema<CreateJWTTemplateRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<JWTTemplate>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9662,8 +6564,8 @@ export const createM2MToken: API.OperationMethod<
   CreateM2MTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateM2MTokenRequest,
-  output: CreateM2MTokenResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateM2MTokenRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<CreateM2MTokenResponse>,
   errors: [BadRequest, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9677,8 +6579,8 @@ export const createMachine: API.OperationMethod<
   CreateMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMachineRequest,
-  output: CreateMachineResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<CreateMachineRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<CreateMachineResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9698,8 +6600,8 @@ export const createMachineScope: API.OperationMethod<
   CreateMachineScopeError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMachineScopeRequest,
-  output: MachineScope,
+  input: __S(158, __c19, 6) as any as S.Schema<CreateMachineScopeRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<MachineScope>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9717,8 +6619,8 @@ export const createOAuthApplication: API.OperationMethod<
   CreateOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOAuthApplicationRequest,
-  output: CreateOAuthApplicationResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<CreateOAuthApplicationRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<CreateOAuthApplicationResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9732,8 +6634,8 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationRequest,
-  output: Organization,
+  input: __S(162, __c20, 2) as any as S.Schema<CreateOrganizationRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9752,8 +6654,8 @@ export const createOrganizationDomain: API.OperationMethod<
   CreateOrganizationDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationDomainRequest,
-  output: OrganizationDomain,
+  input: __S(163, __c20, 3) as any as S.Schema<CreateOrganizationDomainRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<OrganizationDomain>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9772,8 +6674,8 @@ export const createOrganizationInvitation: API.OperationMethod<
   CreateOrganizationInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationInvitationRequest,
-  output: OrganizationInvitation,
+  input: __S(167, __c20, 7) as any as S.Schema<CreateOrganizationInvitationRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<OrganizationInvitation>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9792,8 +6694,8 @@ export const createOrganizationInvitationBulk: API.OperationMethod<
   CreateOrganizationInvitationBulkError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationInvitationBulkRequest,
-  output: OrganizationInvitations,
+  input: __S(173, __c21, 5) as any as S.Schema<CreateOrganizationInvitationBulkRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<OrganizationInvitations>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9812,8 +6714,8 @@ export const createOrganizationMembership: API.OperationMethod<
   CreateOrganizationMembershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationMembershipRequest,
-  output: OrganizationMembership,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateOrganizationMembershipRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9831,8 +6733,8 @@ export const createOrganizationPermission: API.OperationMethod<
   CreateOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationPermissionRequest,
-  output: Permission,
+  input: __S(177, __c22, 1) as any as S.Schema<CreateOrganizationPermissionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Permission>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9851,8 +6753,8 @@ export const createOrganizationRole: API.OperationMethod<
   CreateOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationRoleRequest,
-  output: Role,
+  input: __S(178, __c22, 2) as any as S.Schema<CreateOrganizationRoleRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Role>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9871,8 +6773,8 @@ export const createPhoneNumber: API.OperationMethod<
   CreatePhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePhoneNumberRequest,
-  output: PhoneNumber,
+  input: __S(179, __c22, 3) as any as S.Schema<CreatePhoneNumberRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9886,8 +6788,8 @@ export const createRedirectURL: API.OperationMethod<
   CreateRedirectURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRedirectURLRequest,
-  output: RedirectURL,
+  input: __S(180, __c22, 4) as any as S.Schema<CreateRedirectURLRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<RedirectURL>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9906,8 +6808,8 @@ export const createRoleSet: API.OperationMethod<
   CreateRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRoleSetRequest,
-  output: RoleSet,
+  input: __S(182, __c22, 6) as any as S.Schema<CreateRoleSetRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9921,8 +6823,8 @@ export const createSCIMDirectory: API.OperationMethod<
   CreateSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSCIMDirectoryRequest,
-  output: SCIMDirectory,
+  input: __S(185, __c23, 1) as any as S.Schema<CreateSCIMDirectoryRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9941,8 +6843,8 @@ export const createSCIMGroupRoleMapping: API.OperationMethod<
   CreateSCIMGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSCIMGroupRoleMappingRequest,
-  output: SCIMGroupRoleMapping,
+  input: __S(187, __c23, 3) as any as S.Schema<CreateSCIMGroupRoleMappingRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<SCIMGroupRoleMapping>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9956,8 +6858,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionRequest,
-  output: Session,
+  input: __S(189, __c23, 5) as any as S.Schema<CreateSessionRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<Session>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9971,8 +6873,8 @@ export const createSessionToken: API.OperationMethod<
   CreateSessionTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionTokenRequest,
-  output: CreateSessionTokenResponse,
+  input: __S(194, __c24, 2) as any as S.Schema<CreateSessionTokenRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<CreateSessionTokenResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9986,8 +6888,8 @@ export const createSessionTokenFromTemplate: API.OperationMethod<
   CreateSessionTokenFromTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionTokenFromTemplateRequest,
-  output: CreateSessionTokenFromTemplateResponse,
+  input: __S(196, __c24, 4) as any as S.Schema<CreateSessionTokenFromTemplateRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<CreateSessionTokenFromTemplateResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10001,8 +6903,8 @@ export const createSignInToken: API.OperationMethod<
   CreateSignInTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSignInTokenRequest,
-  output: SignInToken,
+  input: __S(197, __c24, 5) as any as S.Schema<CreateSignInTokenRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<SignInToken>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10020,8 +6922,8 @@ export const createSSOBypassAllowlistUser: API.OperationMethod<
   CreateSSOBypassAllowlistUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSSOBypassAllowlistUserRequest,
-  output: SSOBypassAllowlistUser,
+  input: __S(199, __c24, 7) as any as S.Schema<CreateSSOBypassAllowlistUserRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<SSOBypassAllowlistUser>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10035,8 +6937,8 @@ export const createSvixApp: API.OperationMethod<
   CreateSvixAppError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSvixAppRequest,
-  output: SvixURL,
+  input: __S(202, __c25, 2) as any as S.Schema<CreateSvixAppRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<SvixURL>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10050,8 +6952,8 @@ export const createTestingToken: API.OperationMethod<
   CreateTestingTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTestingTokenRequest,
-  output: TestingToken,
+  input: __S(204, __c25, 4) as any as S.Schema<CreateTestingTokenRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<TestingToken>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10065,8 +6967,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserRequest,
-  output: User,
+  input: __S(207, __c25, 7) as any as S.Schema<CreateUserRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10080,8 +6982,8 @@ export const createWaitlistEntry: API.OperationMethod<
   CreateWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWaitlistEntryRequest,
-  output: WaitlistEntry,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateWaitlistEntryRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<WaitlistEntry>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10095,8 +6997,8 @@ export const deleteAllowlistIdentifier: API.OperationMethod<
   DeleteAllowlistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAllowlistIdentifierRequest,
-  output: DeletedObject,
+  input: __S(209, __c26, 1) as any as S.Schema<DeleteAllowlistIdentifierRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10110,8 +7012,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApiKeyRequest,
-  output: DeleteApiKeyResponse,
+  input: __S(211, __c26, 3) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(212, __c26, 4) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10125,8 +7027,8 @@ export const deleteBackupCode: API.OperationMethod<
   DeleteBackupCodeError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBackupCodeRequest,
-  output: DeleteBackupCodeResponse,
+  input: __S(213, __c26, 5) as any as S.Schema<DeleteBackupCodeRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<DeleteBackupCodeResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10140,8 +7042,8 @@ export const deleteBlocklistIdentifier: API.OperationMethod<
   DeleteBlocklistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBlocklistIdentifierRequest,
-  output: DeletedObject,
+  input: __S(215, __c26, 7) as any as S.Schema<DeleteBlocklistIdentifierRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10155,8 +7057,8 @@ export const deleteDirectory: API.OperationMethod<
   DeleteDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDirectoryRequest,
-  output: DeletedObject,
+  input: __S(216, __c27, 0) as any as S.Schema<DeleteDirectoryRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10170,8 +7072,8 @@ export const deleteDirectoryGroupRoleMapping: API.OperationMethod<
   DeleteDirectoryGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDirectoryGroupRoleMappingRequest,
-  output: DeleteDirectoryGroupRoleMappingResponse,
+  input: __S(217, __c27, 1) as any as S.Schema<DeleteDirectoryGroupRoleMappingRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<DeleteDirectoryGroupRoleMappingResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10185,8 +7087,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainRequest,
-  output: DeletedObject,
+  input: __S(219, __c27, 3) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10200,8 +7102,8 @@ export const deleteEmailAddress: API.OperationMethod<
   DeleteEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailAddressRequest,
-  output: DeletedObject,
+  input: __S(220, __c27, 4) as any as S.Schema<DeleteEmailAddressRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10215,8 +7117,8 @@ export const deleteEnterpriseConnection: API.OperationMethod<
   DeleteEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnterpriseConnectionRequest,
-  output: DeletedObject,
+  input: __S(221, __c27, 5) as any as S.Schema<DeleteEnterpriseConnectionRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10230,8 +7132,8 @@ export const deleteExternalAccount: API.OperationMethod<
   DeleteExternalAccountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExternalAccountRequest,
-  output: DeletedObject,
+  input: __S(222, __c27, 6) as any as S.Schema<DeleteExternalAccountRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10245,8 +7147,8 @@ export const deleteInvitation: API.OperationMethod<
   DeleteInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvitationRequest,
-  output: DeletedObject,
+  input: __S(223, __c27, 7) as any as S.Schema<DeleteInvitationRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10260,8 +7162,8 @@ export const deleteJWTTemplate: API.OperationMethod<
   DeleteJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJWTTemplateRequest,
-  output: DeletedObject,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteJWTTemplateRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10280,8 +7182,8 @@ export const deleteMachine: API.OperationMethod<
   DeleteMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMachineRequest,
-  output: DeleteMachineResponse,
+  input: __S(225, __c28, 1) as any as S.Schema<DeleteMachineRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<DeleteMachineResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10300,8 +7202,8 @@ export const deleteMachineScope: API.OperationMethod<
   DeleteMachineScopeError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMachineScopeRequest,
-  output: DeleteMachineScopeResponse,
+  input: __S(227, __c28, 3) as any as S.Schema<DeleteMachineScopeRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<DeleteMachineScopeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10315,8 +7217,8 @@ export const deleteOAuthApplication: API.OperationMethod<
   DeleteOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOAuthApplicationRequest,
-  output: DeletedObject,
+  input: __S(229, __c28, 5) as any as S.Schema<DeleteOAuthApplicationRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10330,8 +7232,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationRequest,
-  output: DeletedObject,
+  input: __S(230, __c28, 6) as any as S.Schema<DeleteOrganizationRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10345,8 +7247,8 @@ export const deleteOrganizationDomain: API.OperationMethod<
   DeleteOrganizationDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationDomainRequest,
-  output: DeletedObject,
+  input: __S(231, __c28, 7) as any as S.Schema<DeleteOrganizationDomainRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10360,8 +7262,8 @@ export const deleteOrganizationLogo: API.OperationMethod<
   DeleteOrganizationLogoError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationLogoRequest,
-  output: Organization,
+  input: __S(232, __c29, 0) as any as S.Schema<DeleteOrganizationLogoRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10375,8 +7277,8 @@ export const deleteOrganizationMembership: API.OperationMethod<
   DeleteOrganizationMembershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationMembershipRequest,
-  output: OrganizationMembership,
+  input: __S(233, __c29, 1) as any as S.Schema<DeleteOrganizationMembershipRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
   errors: [NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10390,8 +7292,8 @@ export const deleteOrganizationPermission: API.OperationMethod<
   DeleteOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationPermissionRequest,
-  output: DeletedObject,
+  input: __S(234, __c29, 2) as any as S.Schema<DeleteOrganizationPermissionRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10405,8 +7307,8 @@ export const deleteOrganizationRole: API.OperationMethod<
   DeleteOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationRoleRequest,
-  output: DeletedObject,
+  input: __S(235, __c29, 3) as any as S.Schema<DeleteOrganizationRoleRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10420,8 +7322,8 @@ export const deletePhoneNumber: API.OperationMethod<
   DeletePhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePhoneNumberRequest,
-  output: DeletedObject,
+  input: __S(236, __c29, 4) as any as S.Schema<DeletePhoneNumberRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10435,8 +7337,8 @@ export const deleteRedirectURL: API.OperationMethod<
   DeleteRedirectURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRedirectURLRequest,
-  output: DeletedObject,
+  input: __S(237, __c29, 5) as any as S.Schema<DeleteRedirectURLRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10450,8 +7352,8 @@ export const deleteSCIMDirectory: API.OperationMethod<
   DeleteSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSCIMDirectoryRequest,
-  output: DeletedObject,
+  input: __S(238, __c29, 6) as any as S.Schema<DeleteSCIMDirectoryRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10465,8 +7367,8 @@ export const deleteSCIMGroupRoleMapping: API.OperationMethod<
   DeleteSCIMGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSCIMGroupRoleMappingRequest,
-  output: DeleteSCIMGroupRoleMappingResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<DeleteSCIMGroupRoleMappingRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<DeleteSCIMGroupRoleMappingResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10480,8 +7382,8 @@ export const deleteSSOBypassAllowlistUser: API.OperationMethod<
   DeleteSSOBypassAllowlistUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSSOBypassAllowlistUserRequest,
-  output: DeletedObject,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteSSOBypassAllowlistUserRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10495,8 +7397,8 @@ export const deleteSvixApp: API.OperationMethod<
   DeleteSvixAppError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSvixAppRequest,
-  output: DeleteSvixAppResponse,
+  input: __S(241, __c30, 1) as any as S.Schema<DeleteSvixAppRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<DeleteSvixAppResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10510,8 +7412,8 @@ export const deleteTOTP: API.OperationMethod<
   DeleteTOTPError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTOTPRequest,
-  output: DeleteTOTPResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<DeleteTOTPRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<DeleteTOTPResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10525,8 +7427,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: DeletedObject,
+  input: __S(244, __c30, 4) as any as S.Schema<DeleteUserRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10540,8 +7442,8 @@ export const deleteUserPasskey: API.OperationMethod<
   DeleteUserPasskeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserPasskeyRequest,
-  output: DeletedObject,
+  input: __S(245, __c30, 5) as any as S.Schema<DeleteUserPasskeyRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10555,8 +7457,8 @@ export const deleteUserProfileImage: API.OperationMethod<
   DeleteUserProfileImageError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserProfileImageRequest,
-  output: User,
+  input: __S(246, __c30, 6) as any as S.Schema<DeleteUserProfileImageRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10570,8 +7472,8 @@ export const deleteUserWeb3Wallet: API.OperationMethod<
   DeleteUserWeb3WalletError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserWeb3WalletRequest,
-  output: DeletedObject,
+  input: __S(247, __c30, 7) as any as S.Schema<DeleteUserWeb3WalletRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10590,8 +7492,8 @@ export const deleteWaitlistEntry: API.OperationMethod<
   DeleteWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWaitlistEntryRequest,
-  output: DeletedObject,
+  input: __S(248, __c31, 0) as any as S.Schema<DeleteWaitlistEntryRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10605,8 +7507,8 @@ export const disableMFA: API.OperationMethod<
   DisableMFAError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableMFARequest,
-  output: DisableMFAResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<DisableMFARequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<DisableMFAResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10625,8 +7527,8 @@ export const extendBillingSubscriptionItemFreeTrial: API.OperationMethod<
   ExtendBillingSubscriptionItemFreeTrialError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtendBillingSubscriptionItemFreeTrialRequest,
-  output: CommerceSubscriptionItem2,
+  input: __S(250, __c31, 2) as any as S.Schema<ExtendBillingSubscriptionItemFreeTrialRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<CommerceSubscriptionItem2>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10640,8 +7542,8 @@ export const generateSvixAuthURL: API.OperationMethod<
   GenerateSvixAuthURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateSvixAuthURLRequest,
-  output: SvixURL,
+  input: __S(251, __c31, 3) as any as S.Schema<GenerateSvixAuthURLRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<SvixURL>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10655,8 +7557,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiKeyRequest,
-  output: GetApiKeyResponse,
+  input: __S(252, __c31, 4) as any as S.Schema<GetApiKeyRequest>,
+  output: __S(253, __c31, 5) as any as S.Schema<GetApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10670,8 +7572,8 @@ export const getApiKeys: API.OperationMethod<
   GetApiKeysError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiKeysRequest,
-  output: GetApiKeysResponse,
+  input: __S(254, __c31, 6) as any as S.Schema<GetApiKeysRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<GetApiKeysResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10685,8 +7587,8 @@ export const getApiKeySecret: API.OperationMethod<
   GetApiKeySecretError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiKeySecretRequest,
-  output: GetApiKeySecretResponse,
+  input: __S(258, __c32, 2) as any as S.Schema<GetApiKeySecretRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<GetApiKeySecretResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10700,8 +7602,8 @@ export const getBillingPriceList: API.OperationMethod<
   GetBillingPriceListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingPriceListRequest,
-  output: PaginatedBillingPriceResponse,
+  input: __S(260, __c32, 4) as any as S.Schema<GetBillingPriceListRequest>,
+  output: __S(262, __c32, 6) as any as S.Schema<PaginatedBillingPriceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10715,8 +7617,8 @@ export const getBillingStatement: API.OperationMethod<
   GetBillingStatementError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingStatementRequest,
-  output: BillingStatement,
+  input: __S(263, __c32, 7) as any as S.Schema<GetBillingStatementRequest>,
+  output: __S(269, __c33, 5) as any as S.Schema<BillingStatement>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10730,8 +7632,8 @@ export const getBillingStatementList: API.OperationMethod<
   GetBillingStatementListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingStatementListRequest,
-  output: PaginatedBillingStatementResponse,
+  input: __S(270, __c33, 6) as any as S.Schema<GetBillingStatementListRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<PaginatedBillingStatementResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10749,8 +7651,8 @@ export const getBillingStatementPaymentAttempts: API.OperationMethod<
   GetBillingStatementPaymentAttemptsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingStatementPaymentAttemptsRequest,
-  output: PaginatedBillingPaymentAttemptResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<GetBillingStatementPaymentAttemptsRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<PaginatedBillingPaymentAttemptResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10764,8 +7666,8 @@ export const getClient: API.OperationMethod<
   GetClientError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClientRequest,
-  output: Client,
+  input: __S(275, __c34, 3) as any as S.Schema<GetClientRequest>,
+  output: __S(277, __c34, 5) as any as S.Schema<Client>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10779,8 +7681,8 @@ export const getCommercePlanList: API.OperationMethod<
   GetCommercePlanListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommercePlanListRequest,
-  output: PaginatedCommercePlanResponse,
+  input: __S(278, __c34, 6) as any as S.Schema<GetCommercePlanListRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<PaginatedCommercePlanResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10794,8 +7696,8 @@ export const getCommerceSubscriptionItemList: API.OperationMethod<
   GetCommerceSubscriptionItemListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommerceSubscriptionItemListRequest,
-  output: PaginatedCommerceSubscriptionItemResponse,
+  input: __S(281, __c35, 1) as any as S.Schema<GetCommerceSubscriptionItemListRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<PaginatedCommerceSubscriptionItemResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10809,8 +7711,8 @@ export const getDirectory: API.OperationMethod<
   GetDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDirectoryRequest,
-  output: Directory,
+  input: __S(284, __c35, 4) as any as S.Schema<GetDirectoryRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10824,8 +7726,8 @@ export const getEmailAddress: API.OperationMethod<
   GetEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailAddressRequest,
-  output: EmailAddress,
+  input: __S(285, __c35, 5) as any as S.Schema<GetEmailAddressRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10839,8 +7741,8 @@ export const getEnterpriseConnection: API.OperationMethod<
   GetEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnterpriseConnectionRequest,
-  output: EnterpriseConnection,
+  input: __S(286, __c35, 6) as any as S.Schema<GetEnterpriseConnectionRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<EnterpriseConnection>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10854,8 +7756,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceRequest,
-  output: Instance,
+  input: __S(287, __c35, 7) as any as S.Schema<GetInstanceRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<Instance>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10869,8 +7771,8 @@ export const getInstanceCommunication: API.OperationMethod<
   GetInstanceCommunicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceCommunicationRequest,
-  output: InstanceCommunication,
+  input: __S(289, __c36, 1) as any as S.Schema<GetInstanceCommunicationRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<InstanceCommunication>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10884,8 +7786,8 @@ export const getInstanceOAuthApplicationSettings: API.OperationMethod<
   GetInstanceOAuthApplicationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceOAuthApplicationSettingsRequest,
-  output: OAuthApplicationSettings,
+  input: __S(291, __c36, 3) as any as S.Schema<GetInstanceOAuthApplicationSettingsRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<OAuthApplicationSettings>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10899,8 +7801,8 @@ export const getInstanceOrganizationSettings: API.OperationMethod<
   GetInstanceOrganizationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceOrganizationSettingsRequest,
-  output: OrganizationSettings,
+  input: __S(293, __c36, 5) as any as S.Schema<GetInstanceOrganizationSettingsRequest>,
+  output: __S(294, __c36, 6) as any as S.Schema<OrganizationSettings>,
   errors: [NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10914,8 +7816,8 @@ export const getInstanceProtect: API.OperationMethod<
   GetInstanceProtectError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceProtectRequest,
-  output: InstanceProtect,
+  input: __S(295, __c36, 7) as any as S.Schema<GetInstanceProtectRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<InstanceProtect>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10929,8 +7831,8 @@ export const getInterstitial: API.OperationMethod<
   GetInterstitialError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInterstitialRequest,
-  output: GetInterstitialResponse,
+  input: __S(297, __c37, 1) as any as S.Schema<GetInterstitialRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<GetInterstitialResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10940,8 +7842,8 @@ export type GetJWKSError = ClerkOpError;
 /** Retrieve the JSON Web Key Set of the instance Retrieve the JSON Web Key Set of the instance */
 export const getJWKS: API.OperationMethod<GetJWKSRequest, JWKS, GetJWKSError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetJWKSRequest,
-    output: JWKS,
+    input: __S(298, __c37, 2) as any as S.Schema<GetJWKSRequest>,
+    output: __S(300, __c37, 4) as any as S.Schema<JWKS>,
     errors: [UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -10955,8 +7857,8 @@ export const getJWTTemplate: API.OperationMethod<
   GetJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJWTTemplateRequest,
-  output: JWTTemplate,
+  input: __S(301, __c37, 5) as any as S.Schema<GetJWTTemplateRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<JWTTemplate>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10970,8 +7872,8 @@ export const getM2MTokens: API.OperationMethod<
   GetM2MTokensError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetM2MTokensRequest,
-  output: GetM2MTokensResponse,
+  input: __S(302, __c37, 6) as any as S.Schema<GetM2MTokensRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<GetM2MTokensResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -10990,8 +7892,8 @@ export const getMachine: API.OperationMethod<
   GetMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMachineRequest,
-  output: GetMachineResponse,
+  input: __S(306, __c38, 2) as any as S.Schema<GetMachineRequest>,
+  output: __S(307, __c38, 3) as any as S.Schema<GetMachineResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11005,8 +7907,8 @@ export const getMachineSecretKey: API.OperationMethod<
   GetMachineSecretKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMachineSecretKeyRequest,
-  output: GetMachineSecretKeyResponse,
+  input: __S(308, __c38, 4) as any as S.Schema<GetMachineSecretKeyRequest>,
+  output: __S(309, __c38, 5) as any as S.Schema<GetMachineSecretKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11020,8 +7922,8 @@ export const getOAuthAccessToken: API.OperationMethod<
   GetOAuthAccessTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOAuthAccessTokenRequest,
-  output: GetOAuthAccessTokenResponse,
+  input: __S(310, __c38, 6) as any as S.Schema<GetOAuthAccessTokenRequest>,
+  output: __S(313, __c39, 1) as any as S.Schema<GetOAuthAccessTokenResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11035,8 +7937,8 @@ export const getOAuthApplication: API.OperationMethod<
   GetOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOAuthApplicationRequest,
-  output: OAuthApplication,
+  input: __S(314, __c39, 2) as any as S.Schema<GetOAuthApplicationRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<OAuthApplication>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11050,8 +7952,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationRequest,
-  output: Organization,
+  input: __S(316, __c39, 4) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11070,8 +7972,8 @@ export const getOrganizationBillingCreditBalance: API.OperationMethod<
   GetOrganizationBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationBillingCreditBalanceRequest,
-  output: CommerceCreditBalanceResponse,
+  input: __S(317, __c39, 5) as any as S.Schema<GetOrganizationBillingCreditBalanceRequest>,
+  output: __S(318, __c39, 6) as any as S.Schema<CommerceCreditBalanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11090,8 +7992,8 @@ export const getOrganizationBillingSubscription: API.OperationMethod<
   GetOrganizationBillingSubscriptionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationBillingSubscriptionRequest,
-  output: CommerceSubscription,
+  input: __S(319, __c39, 7) as any as S.Schema<GetOrganizationBillingSubscriptionRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<CommerceSubscription>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11105,8 +8007,8 @@ export const getOrganizationInvitation: API.OperationMethod<
   GetOrganizationInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationInvitationRequest,
-  output: OrganizationInvitation,
+  input: __S(322, __c40, 2) as any as S.Schema<GetOrganizationInvitationRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<OrganizationInvitation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11120,8 +8022,8 @@ export const getOrganizationPermission: API.OperationMethod<
   GetOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationPermissionRequest,
-  output: Permission,
+  input: __S(323, __c40, 3) as any as S.Schema<GetOrganizationPermissionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Permission>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11135,8 +8037,8 @@ export const getOrganizationRole: API.OperationMethod<
   GetOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationRoleRequest,
-  output: Role,
+  input: __S(324, __c40, 4) as any as S.Schema<GetOrganizationRoleRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11150,8 +8052,8 @@ export const getPhoneNumber: API.OperationMethod<
   GetPhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPhoneNumberRequest,
-  output: PhoneNumber,
+  input: __S(325, __c40, 5) as any as S.Schema<GetPhoneNumberRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11165,8 +8067,8 @@ export const getRedirectURL: API.OperationMethod<
   GetRedirectURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRedirectURLRequest,
-  output: RedirectURL,
+  input: __S(326, __c40, 6) as any as S.Schema<GetRedirectURLRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<RedirectURL>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11180,8 +8082,8 @@ export const getReverification: API.OperationMethod<
   GetReverificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReverificationRequest,
-  output: Reverification,
+  input: __S(327, __c40, 7) as any as S.Schema<GetReverificationRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<Reverification>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11195,8 +8097,8 @@ export const getRoleSet: API.OperationMethod<
   GetRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleSetRequest,
-  output: RoleSet,
+  input: __S(329, __c41, 1) as any as S.Schema<GetRoleSetRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11210,8 +8112,8 @@ export const getSCIMDirectory: API.OperationMethod<
   GetSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSCIMDirectoryRequest,
-  output: SCIMDirectory,
+  input: __S(330, __c41, 2) as any as S.Schema<GetSCIMDirectoryRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11225,8 +8127,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionRequest,
-  output: Session,
+  input: __S(331, __c41, 3) as any as S.Schema<GetSessionRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<Session>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11240,8 +8142,8 @@ export const getSessionList: API.OperationMethod<
   GetSessionListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionListRequest,
-  output: GetSessionListResponse,
+  input: __S(332, __c41, 4) as any as S.Schema<GetSessionListRequest>,
+  output: __S(333, __c41, 5) as any as S.Schema<GetSessionListResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11255,8 +8157,8 @@ export const getSignUp: API.OperationMethod<
   GetSignUpError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignUpRequest,
-  output: SignUp,
+  input: __S(334, __c41, 6) as any as S.Schema<GetSignUpRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<SignUp>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11266,8 +8168,8 @@ export type GetUserError = BadRequest | NotFound | ClerkOpError;
 /** Retrieve a user Retrieve the details of a user */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetUserRequest,
-    output: User,
+    input: __S(338, __c42, 2) as any as S.Schema<GetUserRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<User>,
     errors: [BadRequest, NotFound, UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -11286,8 +8188,8 @@ export const getUserBillingCreditBalance: API.OperationMethod<
   GetUserBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserBillingCreditBalanceRequest,
-  output: CommerceCreditBalanceResponse,
+  input: __S(339, __c42, 3) as any as S.Schema<GetUserBillingCreditBalanceRequest>,
+  output: __S(318, __c39, 6) as any as S.Schema<CommerceCreditBalanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11306,8 +8208,8 @@ export const getUserBillingSubscription: API.OperationMethod<
   GetUserBillingSubscriptionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserBillingSubscriptionRequest,
-  output: CommerceSubscription,
+  input: __S(340, __c42, 4) as any as S.Schema<GetUserBillingSubscriptionRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<CommerceSubscription>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11321,8 +8223,8 @@ export const getUserList: API.OperationMethod<
   GetUserListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserListRequest,
-  output: GetUserListResponse,
+  input: __S(341, __c42, 5) as any as S.Schema<GetUserListRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetUserListResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11336,8 +8238,8 @@ export const getUsersCount: API.OperationMethod<
   GetUsersCountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersCountRequest,
-  output: TotalCount,
+  input: __S(342, __c42, 6) as any as S.Schema<GetUsersCountRequest>,
+  output: __S(343, __c42, 7) as any as S.Schema<TotalCount>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11354,8 +8256,8 @@ export const instanceGetOrganizationMemberships: API.OperationMethod<
   InstanceGetOrganizationMembershipsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstanceGetOrganizationMembershipsRequest,
-  output: OrganizationMemberships,
+  input: __S(344, __c43, 0) as any as S.Schema<InstanceGetOrganizationMembershipsRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<OrganizationMemberships>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11374,8 +8276,8 @@ export const inviteWaitlistEntry: API.OperationMethod<
   InviteWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InviteWaitlistEntryRequest,
-  output: WaitlistEntry,
+  input: __S(346, __c43, 2) as any as S.Schema<InviteWaitlistEntryRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<WaitlistEntry>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11389,8 +8291,8 @@ export const listAllOrganizationDomains: API.OperationMethod<
   ListAllOrganizationDomainsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAllOrganizationDomainsRequest,
-  output: OrganizationDomains,
+  input: __S(347, __c43, 3) as any as S.Schema<ListAllOrganizationDomainsRequest>,
+  output: __S(349, __c43, 5) as any as S.Schema<OrganizationDomains>,
   errors: [Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11404,8 +8306,8 @@ export const listAllowlistIdentifiers: API.OperationMethod<
   ListAllowlistIdentifiersError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAllowlistIdentifiersRequest,
-  output: ListAllowlistIdentifiersResponse,
+  input: __S(350, __c43, 6) as any as S.Schema<ListAllowlistIdentifiersRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<ListAllowlistIdentifiersResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11419,8 +8321,8 @@ export const listBlocklistIdentifiers: API.OperationMethod<
   ListBlocklistIdentifiersError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBlocklistIdentifiersRequest,
-  output: BlocklistIdentifiers,
+  input: __S(353, __c44, 1) as any as S.Schema<ListBlocklistIdentifiersRequest>,
+  output: __S(355, __c44, 3) as any as S.Schema<BlocklistIdentifiers>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11434,8 +8336,8 @@ export const listDirectories: API.OperationMethod<
   ListDirectoriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDirectoriesRequest,
-  output: ListDirectoriesResponse,
+  input: __S(356, __c44, 4) as any as S.Schema<ListDirectoriesRequest>,
+  output: __S(358, __c44, 6) as any as S.Schema<ListDirectoriesResponse>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11449,8 +8351,8 @@ export const listDirectoryGroupRoleMappings: API.OperationMethod<
   ListDirectoryGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDirectoryGroupRoleMappingsRequest,
-  output: ListDirectoryGroupRoleMappingsResponse,
+  input: __S(359, __c44, 7) as any as S.Schema<ListDirectoryGroupRoleMappingsRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<ListDirectoryGroupRoleMappingsResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11464,8 +8366,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainsRequest,
-  output: Domains,
+  input: __S(362, __c45, 2) as any as S.Schema<ListDomainsRequest>,
+  output: __S(364, __c45, 4) as any as S.Schema<Domains>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11479,8 +8381,8 @@ export const listEnterpriseConnections: API.OperationMethod<
   ListEnterpriseConnectionsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnterpriseConnectionsRequest,
-  output: EnterpriseConnections,
+  input: __S(365, __c45, 5) as any as S.Schema<ListEnterpriseConnectionsRequest>,
+  output: __S(367, __c45, 7) as any as S.Schema<EnterpriseConnections>,
   errors: [Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11498,8 +8400,8 @@ export const listEnterpriseConnectionTestRuns: API.OperationMethod<
   ListEnterpriseConnectionTestRunsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnterpriseConnectionTestRunsRequest,
-  output: EnterpriseConnectionTestRuns,
+  input: __S(368, __c46, 0) as any as S.Schema<ListEnterpriseConnectionTestRunsRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<EnterpriseConnectionTestRuns>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11517,8 +8419,8 @@ export const listInstanceOrganizationInvitations: API.OperationMethod<
   ListInstanceOrganizationInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInstanceOrganizationInvitationsRequest,
-  output: OrganizationInvitationsWithPublicOrganizationData,
+  input: __S(377, __c47, 1) as any as S.Schema<ListInstanceOrganizationInvitationsRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11532,8 +8434,8 @@ export const listInvitations: API.OperationMethod<
   ListInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInvitationsRequest,
-  output: ListInvitationsResponse,
+  input: __S(381, __c47, 5) as any as S.Schema<ListInvitationsRequest>,
+  output: __S(382, __c47, 6) as any as S.Schema<ListInvitationsResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11547,8 +8449,8 @@ export const listJWTTemplates: API.OperationMethod<
   ListJWTTemplatesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListJWTTemplatesRequest,
-  output: ListJWTTemplatesResponse,
+  input: __S(383, __c47, 7) as any as S.Schema<ListJWTTemplatesRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<ListJWTTemplatesResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11562,8 +8464,8 @@ export const listMachines: API.OperationMethod<
   ListMachinesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMachinesRequest,
-  output: ListMachinesResponse,
+  input: __S(386, __c48, 2) as any as S.Schema<ListMachinesRequest>,
+  output: __S(389, __c48, 5) as any as S.Schema<ListMachinesResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11581,8 +8483,8 @@ export const listOAuthApplications: API.OperationMethod<
   ListOAuthApplicationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOAuthApplicationsRequest,
-  output: OAuthApplications,
+  input: __S(390, __c48, 6) as any as S.Schema<ListOAuthApplicationsRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<OAuthApplications>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11596,8 +8498,8 @@ export const listOrganizationDomains: API.OperationMethod<
   ListOrganizationDomainsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationDomainsRequest,
-  output: OrganizationDomains,
+  input: __S(393, __c49, 1) as any as S.Schema<ListOrganizationDomainsRequest>,
+  output: __S(349, __c43, 5) as any as S.Schema<OrganizationDomains>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11615,8 +8517,8 @@ export const listOrganizationInvitations: API.OperationMethod<
   ListOrganizationInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationInvitationsRequest,
-  output: OrganizationInvitations,
+  input: __S(394, __c49, 2) as any as S.Schema<ListOrganizationInvitationsRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<OrganizationInvitations>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11630,8 +8532,8 @@ export const listOrganizationMemberships: API.OperationMethod<
   ListOrganizationMembershipsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationMembershipsRequest,
-  output: OrganizationMemberships,
+  input: __S(395, __c49, 3) as any as S.Schema<ListOrganizationMembershipsRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<OrganizationMemberships>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11645,8 +8547,8 @@ export const listOrganizationPermissions: API.OperationMethod<
   ListOrganizationPermissionsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationPermissionsRequest,
-  output: Permissions,
+  input: __S(396, __c49, 4) as any as S.Schema<ListOrganizationPermissionsRequest>,
+  output: __S(397, __c49, 5) as any as S.Schema<Permissions>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11664,8 +8566,8 @@ export const listOrganizationRoles: API.OperationMethod<
   ListOrganizationRolesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationRolesRequest,
-  output: Roles,
+  input: __S(398, __c49, 6) as any as S.Schema<ListOrganizationRolesRequest>,
+  output: __S(400, __c50, 0) as any as S.Schema<Roles>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11679,8 +8581,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationsRequest,
-  output: Organizations,
+  input: __S(401, __c50, 1) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(403, __c50, 3) as any as S.Schema<Organizations>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11694,8 +8596,8 @@ export const listRedirectURLs: API.OperationMethod<
   ListRedirectURLsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRedirectURLsRequest,
-  output: ListRedirectURLsResponse,
+  input: __S(404, __c50, 4) as any as S.Schema<ListRedirectURLsRequest>,
+  output: __S(406, __c50, 6) as any as S.Schema<ListRedirectURLsResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11709,8 +8611,8 @@ export const listRoleSets: API.OperationMethod<
   ListRoleSetsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleSetsRequest,
-  output: RoleSets,
+  input: __S(407, __c50, 7) as any as S.Schema<ListRoleSetsRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<RoleSets>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11724,8 +8626,8 @@ export const listSCIMDirectories: API.OperationMethod<
   ListSCIMDirectoriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSCIMDirectoriesRequest,
-  output: ListSCIMDirectoriesResponse,
+  input: __S(410, __c51, 2) as any as S.Schema<ListSCIMDirectoriesRequest>,
+  output: __S(412, __c51, 4) as any as S.Schema<ListSCIMDirectoriesResponse>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11739,8 +8641,8 @@ export const listSCIMGroupRoleMappings: API.OperationMethod<
   ListSCIMGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSCIMGroupRoleMappingsRequest,
-  output: ListSCIMGroupRoleMappingsResponse,
+  input: __S(413, __c51, 5) as any as S.Schema<ListSCIMGroupRoleMappingsRequest>,
+  output: __S(415, __c51, 7) as any as S.Schema<ListSCIMGroupRoleMappingsResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11754,8 +8656,8 @@ export const listSSOBypassAllowlistUsers: API.OperationMethod<
   ListSSOBypassAllowlistUsersError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSSOBypassAllowlistUsersRequest,
-  output: ListSSOBypassAllowlistUsersResponse,
+  input: __S(416, __c52, 0) as any as S.Schema<ListSSOBypassAllowlistUsersRequest>,
+  output: __S(418, __c52, 2) as any as S.Schema<ListSSOBypassAllowlistUsersResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11769,8 +8671,8 @@ export const listUserBiometricCredentials: API.OperationMethod<
   ListUserBiometricCredentialsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserBiometricCredentialsRequest,
-  output: ListUserBiometricCredentialsResponse,
+  input: __S(419, __c52, 3) as any as S.Schema<ListUserBiometricCredentialsRequest>,
+  output: __S(422, __c52, 6) as any as S.Schema<ListUserBiometricCredentialsResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11784,8 +8686,8 @@ export const listWaitlistEntries: API.OperationMethod<
   ListWaitlistEntriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWaitlistEntriesRequest,
-  output: ListWaitlistEntriesResponse,
+  input: __S(423, __c52, 7) as any as S.Schema<ListWaitlistEntriesRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListWaitlistEntriesResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11795,8 +8697,8 @@ export type LockUserError = Forbidden | ClerkOpError;
 /** Lock a user Marks the given user as locked, which means they are not allowed to sign in again until the lock expires. Lock duration can be configured in the instance's restrictions settings. */
 export const lockUser: API.OperationMethod<LockUserRequest, User, LockUserError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: LockUserRequest,
-    output: User,
+    input: __S(425, __c53, 1) as any as S.Schema<LockUserRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<User>,
     errors: [Forbidden, UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -11814,8 +8716,8 @@ export const mergeOrganizationMetadata: API.OperationMethod<
   MergeOrganizationMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MergeOrganizationMetadataRequest,
-  output: Organization,
+  input: __S(426, __c53, 2) as any as S.Schema<MergeOrganizationMetadataRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11829,8 +8731,8 @@ export const prepareEmailAddressVerification: API.OperationMethod<
   PrepareEmailAddressVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrepareEmailAddressVerificationRequest,
-  output: PrepareEmailAddressVerificationResponse,
+  input: __S(427, __c53, 3) as any as S.Schema<PrepareEmailAddressVerificationRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<PrepareEmailAddressVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11844,8 +8746,8 @@ export const preparePhoneNumberVerification: API.OperationMethod<
   PreparePhoneNumberVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreparePhoneNumberVerificationRequest,
-  output: PreparePhoneNumberVerificationResponse,
+  input: __S(428, __c53, 4) as any as S.Schema<PreparePhoneNumberVerificationRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<PreparePhoneNumberVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11859,8 +8761,8 @@ export const refreshSession: API.OperationMethod<
   RefreshSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshSessionRequest,
-  output: RefreshSessionResponse,
+  input: __S(429, __c53, 5) as any as S.Schema<RefreshSessionRequest>,
+  output: __S(430, __c53, 6) as any as S.Schema<RefreshSessionResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11879,8 +8781,8 @@ export const rejectWaitlistEntry: API.OperationMethod<
   RejectWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectWaitlistEntryRequest,
-  output: WaitlistEntry,
+  input: __S(431, __c53, 7) as any as S.Schema<RejectWaitlistEntryRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<WaitlistEntry>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11900,8 +8802,8 @@ export const removeBillingSubscriptionItemDiscount: API.OperationMethod<
   RemoveBillingSubscriptionItemDiscountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveBillingSubscriptionItemDiscountRequest,
-  output: CommerceDiscountRedemptionResponse,
+  input: __S(432, __c54, 0) as any as S.Schema<RemoveBillingSubscriptionItemDiscountRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CommerceDiscountRedemptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11919,8 +8821,8 @@ export const removePermissionFromOrganizationRole: API.OperationMethod<
   RemovePermissionFromOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemovePermissionFromOrganizationRoleRequest,
-  output: Role,
+  input: __S(433, __c54, 1) as any as S.Schema<RemovePermissionFromOrganizationRoleRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11934,8 +8836,8 @@ export const removeUserPassword: API.OperationMethod<
   RemoveUserPasswordError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveUserPasswordRequest,
-  output: User,
+  input: __S(434, __c54, 2) as any as S.Schema<RemoveUserPasswordRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11954,8 +8856,8 @@ export const replaceDirectoryGroupRoleMappings: API.OperationMethod<
   ReplaceDirectoryGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceDirectoryGroupRoleMappingsRequest,
-  output: ReplaceDirectoryGroupRoleMappingsResponse,
+  input: __S(437, __c54, 5) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11973,8 +8875,8 @@ export const replaceOrganizationMetadata: API.OperationMethod<
   ReplaceOrganizationMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceOrganizationMetadataRequest,
-  output: Organization,
+  input: __S(438, __c54, 6) as any as S.Schema<ReplaceOrganizationMetadataRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -11993,8 +8895,8 @@ export const replaceRoleInRoleSet: API.OperationMethod<
   ReplaceRoleInRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceRoleInRoleSetRequest,
-  output: RoleSet,
+  input: __S(439, __c54, 7) as any as S.Schema<ReplaceRoleInRoleSetRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12013,8 +8915,8 @@ export const replaceRoleSet: API.OperationMethod<
   ReplaceRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceRoleSetRequest,
-  output: DeletedObject,
+  input: __S(440, __c55, 0) as any as S.Schema<ReplaceRoleSetRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12033,8 +8935,8 @@ export const replaceSCIMGroupRoleMappings: API.OperationMethod<
   ReplaceSCIMGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceSCIMGroupRoleMappingsRequest,
-  output: ReplaceSCIMGroupRoleMappingsResponse,
+  input: __S(443, __c55, 3) as any as S.Schema<ReplaceSCIMGroupRoleMappingsRequest>,
+  output: __S(415, __c51, 7) as any as S.Schema<ReplaceSCIMGroupRoleMappingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12053,8 +8955,8 @@ export const replaceUserEmailAddress: API.OperationMethod<
   ReplaceUserEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceUserEmailAddressRequest,
-  output: EmailAddress,
+  input: __S(444, __c55, 4) as any as S.Schema<ReplaceUserEmailAddressRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12068,8 +8970,8 @@ export const replaceUserMetadata: API.OperationMethod<
   ReplaceUserMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceUserMetadataRequest,
-  output: User,
+  input: __S(445, __c55, 5) as any as S.Schema<ReplaceUserMetadataRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12088,8 +8990,8 @@ export const replaceUserPhoneNumber: API.OperationMethod<
   ReplaceUserPhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceUserPhoneNumberRequest,
-  output: PhoneNumber,
+  input: __S(446, __c55, 6) as any as S.Schema<ReplaceUserPhoneNumberRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12103,8 +9005,8 @@ export const revokeActorToken: API.OperationMethod<
   RevokeActorTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeActorTokenRequest,
-  output: ActorToken,
+  input: __S(447, __c55, 7) as any as S.Schema<RevokeActorTokenRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ActorToken>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12118,8 +9020,8 @@ export const revokeAdminPortalLinkToken: API.OperationMethod<
   RevokeAdminPortalLinkTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAdminPortalLinkTokenRequest,
-  output: RevokeAdminPortalLinkTokenResponse,
+  input: __S(448, __c56, 0) as any as S.Schema<RevokeAdminPortalLinkTokenRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<RevokeAdminPortalLinkTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12133,8 +9035,8 @@ export const revokeAgentTask: API.OperationMethod<
   RevokeAgentTaskError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAgentTaskRequest,
-  output: AgentTask,
+  input: __S(450, __c56, 2) as any as S.Schema<RevokeAgentTaskRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<AgentTask>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12148,8 +9050,8 @@ export const revokeApiKey: API.OperationMethod<
   RevokeApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeApiKeyRequest,
-  output: RevokeApiKeyResponse,
+  input: __S(451, __c56, 3) as any as S.Schema<RevokeApiKeyRequest>,
+  output: __S(452, __c56, 4) as any as S.Schema<RevokeApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12163,8 +9065,8 @@ export const revokeInvitation: API.OperationMethod<
   RevokeInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeInvitationRequest,
-  output: RevokeInvitationResponse,
+  input: __S(453, __c56, 5) as any as S.Schema<RevokeInvitationRequest>,
+  output: __S(454, __c56, 6) as any as S.Schema<RevokeInvitationResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12178,8 +9080,8 @@ export const revokeM2MToken: API.OperationMethod<
   RevokeM2MTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeM2MTokenRequest,
-  output: RevokeM2MTokenResponse,
+  input: __S(455, __c56, 7) as any as S.Schema<RevokeM2MTokenRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<RevokeM2MTokenResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12198,8 +9100,8 @@ export const revokeOAuthApplicationToken: API.OperationMethod<
   RevokeOAuthApplicationTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeOAuthApplicationTokenRequest,
-  output: RevokeOAuthApplicationTokenResponse,
+  input: __S(457, __c57, 1) as any as S.Schema<RevokeOAuthApplicationTokenRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<RevokeOAuthApplicationTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12213,8 +9115,8 @@ export const revokeOrganizationInvitation: API.OperationMethod<
   RevokeOrganizationInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeOrganizationInvitationRequest,
-  output: OrganizationInvitation,
+  input: __S(458, __c57, 2) as any as S.Schema<RevokeOrganizationInvitationRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<OrganizationInvitation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12228,8 +9130,8 @@ export const revokeSession: API.OperationMethod<
   RevokeSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeSessionRequest,
-  output: Session,
+  input: __S(459, __c57, 3) as any as S.Schema<RevokeSessionRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<Session>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12243,8 +9145,8 @@ export const revokeSignInToken: API.OperationMethod<
   RevokeSignInTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeSignInTokenRequest,
-  output: SignInToken,
+  input: __S(460, __c57, 4) as any as S.Schema<RevokeSignInTokenRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<SignInToken>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12258,8 +9160,8 @@ export const revokeUserBiometricCredential: API.OperationMethod<
   RevokeUserBiometricCredentialError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeUserBiometricCredentialRequest,
-  output: BiometricCredential,
+  input: __S(461, __c57, 5) as any as S.Schema<RevokeUserBiometricCredentialRequest>,
+  output: __S(420, __c52, 4) as any as S.Schema<BiometricCredential>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12273,8 +9175,8 @@ export const rotateDirectoryAPIKey: API.OperationMethod<
   RotateDirectoryAPIKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateDirectoryAPIKeyRequest,
-  output: Directory,
+  input: __S(462, __c57, 6) as any as S.Schema<RotateDirectoryAPIKeyRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12293,8 +9195,8 @@ export const rotateMachineSecretKey: API.OperationMethod<
   RotateMachineSecretKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateMachineSecretKeyRequest,
-  output: RotateMachineSecretKeyResponse,
+  input: __S(463, __c57, 7) as any as S.Schema<RotateMachineSecretKeyRequest>,
+  output: __S(309, __c38, 5) as any as S.Schema<RotateMachineSecretKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12308,8 +9210,8 @@ export const rotateOAuthApplicationSecret: API.OperationMethod<
   RotateOAuthApplicationSecretError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateOAuthApplicationSecretRequest,
-  output: RotateOAuthApplicationSecretResponse,
+  input: __S(464, __c58, 0) as any as S.Schema<RotateOAuthApplicationSecretRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<RotateOAuthApplicationSecretResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12327,8 +9229,8 @@ export const rotateSCIMDirectoryAPIKey: API.OperationMethod<
   RotateSCIMDirectoryAPIKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateSCIMDirectoryAPIKeyRequest,
-  output: SCIMDirectory,
+  input: __S(466, __c58, 2) as any as S.Schema<RotateSCIMDirectoryAPIKeyRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12347,8 +9249,8 @@ export const setUserPasswordCompromised: API.OperationMethod<
   SetUserPasswordCompromisedError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetUserPasswordCompromisedRequest,
-  output: User,
+  input: __S(467, __c58, 3) as any as S.Schema<SetUserPasswordCompromisedRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12362,8 +9264,8 @@ export const setUserProfileImage: API.OperationMethod<
   SetUserProfileImageError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetUserProfileImageRequest,
-  output: User,
+  input: __S(468, __c58, 4) as any as S.Schema<SetUserProfileImageRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12377,8 +9279,8 @@ export const unbanUser: API.OperationMethod<
   UnbanUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnbanUserRequest,
-  output: User,
+  input: __S(469, __c58, 5) as any as S.Schema<UnbanUserRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12392,8 +9294,8 @@ export const unbanUser2: API.OperationMethod<
   UnbanUser2Error,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnbanUserRequest2,
-  output: UnbanUserResponse,
+  input: __S(470, __c58, 6) as any as S.Schema<UnbanUserRequest2>,
+  output: __S(56, __c7, 0) as any as S.Schema<UnbanUserResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12407,8 +9309,8 @@ export const unlockUser: API.OperationMethod<
   UnlockUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockUserRequest,
-  output: User,
+  input: __S(471, __c58, 7) as any as S.Schema<UnlockUserRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12427,8 +9329,8 @@ export const unsetUserPasswordCompromised: API.OperationMethod<
   UnsetUserPasswordCompromisedError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnsetUserPasswordCompromisedRequest,
-  output: User,
+  input: __S(472, __c59, 0) as any as S.Schema<UnsetUserPasswordCompromisedRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12442,8 +9344,8 @@ export const updateApiKey: API.OperationMethod<
   UpdateApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApiKeyRequest,
-  output: UpdateApiKeyResponse,
+  input: __S(473, __c59, 1) as any as S.Schema<UpdateApiKeyRequest>,
+  output: __S(474, __c59, 2) as any as S.Schema<UpdateApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12462,8 +9364,8 @@ export const updateDirectory: API.OperationMethod<
   UpdateDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDirectoryRequest,
-  output: Directory,
+  input: __S(476, __c59, 4) as any as S.Schema<UpdateDirectoryRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12482,8 +9384,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainRequest,
-  output: Domain,
+  input: __S(477, __c59, 5) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Domain>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12497,8 +9399,8 @@ export const updateEmailAddress: API.OperationMethod<
   UpdateEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmailAddressRequest,
-  output: EmailAddress,
+  input: __S(478, __c59, 6) as any as S.Schema<UpdateEmailAddressRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12517,8 +9419,8 @@ export const updateEnterpriseConnection: API.OperationMethod<
   UpdateEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnterpriseConnectionRequest,
-  output: EnterpriseConnection,
+  input: __S(480, __c60, 0) as any as S.Schema<UpdateEnterpriseConnectionRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<EnterpriseConnection>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12532,8 +9434,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceRequest,
-  output: UpdateInstanceResponse,
+  input: __S(481, __c60, 1) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<UpdateInstanceResponse>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12547,8 +9449,8 @@ export const updateInstanceAuthConfig: API.OperationMethod<
   UpdateInstanceAuthConfigError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceAuthConfigRequest,
-  output: UpdateInstanceAuthConfigResponse,
+  input: __S(482, __c60, 2) as any as S.Schema<UpdateInstanceAuthConfigRequest>,
+  output: __S(483, __c60, 3) as any as S.Schema<UpdateInstanceAuthConfigResponse>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12562,8 +9464,8 @@ export const updateInstanceCommunication: API.OperationMethod<
   UpdateInstanceCommunicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceCommunicationRequest,
-  output: InstanceCommunication,
+  input: __S(484, __c60, 4) as any as S.Schema<UpdateInstanceCommunicationRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<InstanceCommunication>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12577,8 +9479,8 @@ export const updateInstanceOAuthApplicationSettings: API.OperationMethod<
   UpdateInstanceOAuthApplicationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceOAuthApplicationSettingsRequest,
-  output: OAuthApplicationSettings,
+  input: __S(485, __c60, 5) as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<OAuthApplicationSettings>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12597,8 +9499,8 @@ export const updateInstanceOrganizationSettings: API.OperationMethod<
   UpdateInstanceOrganizationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceOrganizationSettingsRequest,
-  output: OrganizationSettings,
+  input: __S(487, __c60, 7) as any as S.Schema<UpdateInstanceOrganizationSettingsRequest>,
+  output: __S(294, __c36, 6) as any as S.Schema<OrganizationSettings>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12612,8 +9514,8 @@ export const updateInstanceProtect: API.OperationMethod<
   UpdateInstanceProtectError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceProtectRequest,
-  output: InstanceProtect,
+  input: __S(488, __c61, 0) as any as S.Schema<UpdateInstanceProtectRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<InstanceProtect>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12627,8 +9529,8 @@ export const updateInstanceRestrictions: API.OperationMethod<
   UpdateInstanceRestrictionsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceRestrictionsRequest,
-  output: InstanceRestrictions,
+  input: __S(489, __c61, 1) as any as S.Schema<UpdateInstanceRestrictionsRequest>,
+  output: __S(490, __c61, 2) as any as S.Schema<InstanceRestrictions>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12642,8 +9544,8 @@ export const updateJWTTemplate: API.OperationMethod<
   UpdateJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJWTTemplateRequest,
-  output: JWTTemplate,
+  input: __S(491, __c61, 3) as any as S.Schema<UpdateJWTTemplateRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<JWTTemplate>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12662,8 +9564,8 @@ export const updateMachine: API.OperationMethod<
   UpdateMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMachineRequest,
-  output: UpdateMachineResponse,
+  input: __S(492, __c61, 4) as any as S.Schema<UpdateMachineRequest>,
+  output: __S(493, __c61, 5) as any as S.Schema<UpdateMachineResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12682,8 +9584,8 @@ export const updateOAuthApplication: API.OperationMethod<
   UpdateOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOAuthApplicationRequest,
-  output: OAuthApplication,
+  input: __S(494, __c61, 6) as any as S.Schema<UpdateOAuthApplicationRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<OAuthApplication>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12702,8 +9604,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationRequest,
-  output: Organization,
+  input: __S(495, __c61, 7) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12722,8 +9624,8 @@ export const updateOrganizationDomain: API.OperationMethod<
   UpdateOrganizationDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationDomainRequest,
-  output: OrganizationDomain,
+  input: __S(496, __c62, 0) as any as S.Schema<UpdateOrganizationDomainRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<OrganizationDomain>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12737,8 +9639,8 @@ export const updateOrganizationMembership: API.OperationMethod<
   UpdateOrganizationMembershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationMembershipRequest,
-  output: OrganizationMembership,
+  input: __S(497, __c62, 1) as any as S.Schema<UpdateOrganizationMembershipRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
   errors: [NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12756,8 +9658,8 @@ export const updateOrganizationMembershipMetadata: API.OperationMethod<
   UpdateOrganizationMembershipMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationMembershipMetadataRequest,
-  output: OrganizationMembership,
+  input: __S(498, __c62, 2) as any as S.Schema<UpdateOrganizationMembershipMetadataRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12776,8 +9678,8 @@ export const updateOrganizationPermission: API.OperationMethod<
   UpdateOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationPermissionRequest,
-  output: Permission,
+  input: __S(499, __c62, 3) as any as S.Schema<UpdateOrganizationPermissionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Permission>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12796,8 +9698,8 @@ export const updateOrganizationRole: API.OperationMethod<
   UpdateOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationRoleRequest,
-  output: Role,
+  input: __S(500, __c62, 4) as any as S.Schema<UpdateOrganizationRoleRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Role>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12811,8 +9713,8 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePhoneNumberRequest,
-  output: PhoneNumber,
+  input: __S(501, __c62, 5) as any as S.Schema<UpdatePhoneNumberRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12831,8 +9733,8 @@ export const updateRoleSet: API.OperationMethod<
   UpdateRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoleSetRequest,
-  output: RoleSet,
+  input: __S(502, __c62, 6) as any as S.Schema<UpdateRoleSetRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12851,8 +9753,8 @@ export const updateSCIMDirectory: API.OperationMethod<
   UpdateSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSCIMDirectoryRequest,
-  output: SCIMDirectory,
+  input: __S(503, __c62, 7) as any as S.Schema<UpdateSCIMDirectoryRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12866,8 +9768,8 @@ export const updateSignUp: API.OperationMethod<
   UpdateSignUpError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSignUpRequest,
-  output: SignUp,
+  input: __S(504, __c63, 0) as any as S.Schema<UpdateSignUpRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<SignUp>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12881,8 +9783,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: User,
+  input: __S(505, __c63, 1) as any as S.Schema<UpdateUserRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12896,8 +9798,8 @@ export const updateUserMetadata: API.OperationMethod<
   UpdateUserMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserMetadataRequest,
-  output: User,
+  input: __S(506, __c63, 2) as any as S.Schema<UpdateUserMetadataRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12911,8 +9813,8 @@ export const uploadOAuthApplicationLogo: API.OperationMethod<
   UploadOAuthApplicationLogoError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadOAuthApplicationLogoRequest,
-  output: OAuthApplication,
+  input: __S(507, __c63, 3) as any as S.Schema<UploadOAuthApplicationLogoRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<OAuthApplication>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12926,8 +9828,8 @@ export const uploadOrganizationLogo: API.OperationMethod<
   UploadOrganizationLogoError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadOrganizationLogoRequest,
-  output: UploadOrganizationLogoResponse,
+  input: __S(508, __c63, 4) as any as S.Schema<UploadOrganizationLogoRequest>,
+  output: __S(509, __c63, 5) as any as S.Schema<UploadOrganizationLogoResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12941,8 +9843,8 @@ export const usersGetOrganizationInvitations: API.OperationMethod<
   UsersGetOrganizationInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersGetOrganizationInvitationsRequest,
-  output: OrganizationInvitationsWithPublicOrganizationData,
+  input: __S(510, __c63, 6) as any as S.Schema<UsersGetOrganizationInvitationsRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12956,8 +9858,8 @@ export const usersGetOrganizationMemberships: API.OperationMethod<
   UsersGetOrganizationMembershipsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersGetOrganizationMembershipsRequest,
-  output: OrganizationMemberships,
+  input: __S(511, __c63, 7) as any as S.Schema<UsersGetOrganizationMembershipsRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<OrganizationMemberships>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12971,8 +9873,8 @@ export const verifyApiKey: API.OperationMethod<
   VerifyApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyApiKeyRequest,
-  output: VerifyApiKeyResponse,
+  input: __S(512, __c64, 0) as any as S.Schema<VerifyApiKeyRequest>,
+  output: __S(513, __c64, 1) as any as S.Schema<VerifyApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -12986,8 +9888,8 @@ export const verifyClient: API.OperationMethod<
   VerifyClientError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyClientRequest,
-  output: Client,
+  input: __S(514, __c64, 2) as any as S.Schema<VerifyClientRequest>,
+  output: __S(277, __c34, 5) as any as S.Schema<Client>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -13001,8 +9903,8 @@ export const verifyDomainProxy: API.OperationMethod<
   VerifyDomainProxyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyDomainProxyRequest,
-  output: ProxyCheck,
+  input: __S(515, __c64, 3) as any as S.Schema<VerifyDomainProxyRequest>,
+  output: __S(516, __c64, 4) as any as S.Schema<ProxyCheck>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -13016,8 +9918,8 @@ export const verifyM2MToken: API.OperationMethod<
   VerifyM2MTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyM2MTokenRequest,
-  output: VerifyM2MTokenResponse,
+  input: __S(517, __c64, 5) as any as S.Schema<VerifyM2MTokenRequest>,
+  output: __S(518, __c64, 6) as any as S.Schema<VerifyM2MTokenResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -13031,8 +9933,8 @@ export const verifyOAuthAccessToken: API.OperationMethod<
   VerifyOAuthAccessTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyOAuthAccessTokenRequest,
-  output: VerifyOAuthAccessTokenResponse,
+  input: __S(519, __c64, 7) as any as S.Schema<VerifyOAuthAccessTokenRequest>,
+  output: __S(520, __c65, 0) as any as S.Schema<VerifyOAuthAccessTokenResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -13046,8 +9948,8 @@ export const verifyOrganizationDomainOwnership: API.OperationMethod<
   VerifyOrganizationDomainOwnershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyOrganizationDomainOwnershipRequest,
-  output: OrganizationDomain,
+  input: __S(521, __c65, 1) as any as S.Schema<VerifyOrganizationDomainOwnershipRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<OrganizationDomain>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -13061,8 +9963,8 @@ export const verifyPassword: API.OperationMethod<
   VerifyPasswordError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyPasswordRequest,
-  output: VerifyPasswordResponse,
+  input: __S(522, __c65, 2) as any as S.Schema<VerifyPasswordRequest>,
+  output: __S(523, __c65, 3) as any as S.Schema<VerifyPasswordResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -13076,8 +9978,8 @@ export const verifyTOTP: API.OperationMethod<
   VerifyTOTPError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyTOTPRequest,
-  output: VerifyTOTPResponse,
+  input: __S(524, __c65, 4) as any as S.Schema<VerifyTOTPRequest>,
+  output: __S(525, __c65, 5) as any as S.Schema<VerifyTOTPResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -13103,23 +10005,23 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CNameTarget" });
     case 2:
-      return S.Array(CNameTarget);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           host: S.String,
           value: S.String,
-          record_type: DNSTargetRecordType,
-          automation_disposition: S.optional(DNSTargetAutomationDisposition),
+          record_type: S.String,
+          automation_disposition: S.optional(S.String),
           required: S.Boolean,
         }),
       ).annotate({ identifier: "DNSTarget" });
     case 4:
-      return S.Array(DNSTarget);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: DomainObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           is_satellite: S.Boolean,
@@ -13127,8 +10029,8 @@ function __c0(j: number): any {
           accounts_portal_url: S.optional(S.NullOr(S.String)),
           proxy_url: S.optional(S.NullOr(S.String)),
           development_origin: S.String,
-          cname_targets: S.optional(S.NullOr(DomainCnameTargetsList)),
-          dns_targets: S.optional(S.NullOr(DomainDnsTargetsList)),
+          cname_targets: S.optional(S.NullOr(__S(2, __c0, 2))),
+          dns_targets: S.optional(S.NullOr(__S(4, __c0, 4))),
         }),
       ).annotate({ identifier: "Domain" });
     case 6:
@@ -13137,7 +10039,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role_set_key_or_id: S.String.pipe(T.Label()),
-          role_keys: AddRolesToRoleSetRequestRoleKeysList,
+          role_keys: __S(6, __c0, 6),
           default_role_key: S.optional(S.String),
           creator_role_key: S.optional(S.String),
         }).pipe(
@@ -13151,7 +10053,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          object: RoleSetItemObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           key: S.String,
@@ -13163,13 +10065,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "RoleSetItem" });
     case 1:
-      return S.Array(RoleSetItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.Record(S.String, S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: RoleSetMigrationObject,
+          object: S.String,
           id: S.String,
           organization_id: S.optional(S.NullOr(S.String)),
           instance_id: S.String,
@@ -13178,7 +10080,7 @@ function __c1(j: number): any {
           trigger_type: S.String,
           status: S.String,
           migrated_members: S.Number,
-          mappings: S.optional(S.NullOr(RoleSetMigrationMappingsMap)),
+          mappings: S.optional(S.NullOr(__S(10, __c1, 2))),
           started_at: S.optional(S.NullOr(S.Number)),
           completed_at: S.optional(S.NullOr(S.Number)),
           created_at: S.Number,
@@ -13188,16 +10090,16 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: RoleSetObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           key: S.String,
           description: S.NullOr(S.String),
-          roles: RoleSetRolesList,
-          default_role: S.optional(S.NullOr(RoleSetItem)),
-          creator_role: S.optional(S.NullOr(RoleSetItem)),
-          type: RoleSetType,
-          role_set_migration: S.optional(S.NullOr(RoleSetMigration)),
+          roles: __S(9, __c1, 1),
+          default_role: S.optional(S.NullOr(__S(8, __c1, 0))),
+          creator_role: S.optional(S.NullOr(__S(8, __c1, 0))),
+          type: S.String,
+          role_set_migration: S.optional(S.NullOr(__S(11, __c1, 3))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -13207,7 +10109,7 @@ function __c1(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           amount: S.Number,
-          action: AdjustOrganizationBillingCreditBalanceRequestAction,
+          action: S.String,
           currency: S.optional(S.String),
           idempotency_key: S.String,
           note: S.optional(S.String),
@@ -13236,7 +10138,7 @@ function __c1(j: number): any {
           object: S.String,
           id: S.String,
           payer_id: S.String,
-          amount: CommerceMoneyResponse,
+          amount: __S(14, __c1, 6),
           source_type: S.String,
           source_id: S.String,
           note: S.optional(S.NullOr(S.String)),
@@ -13254,7 +10156,7 @@ function __c2(j: number): any {
         S.Struct({
           user_id: S.String.pipe(T.Label()),
           amount: S.Number,
-          action: AdjustUserBillingCreditBalanceRequestAction,
+          action: S.String,
           currency: S.optional(S.String),
           idempotency_key: S.String,
           note: S.optional(S.String),
@@ -13280,20 +10182,20 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: CommerceDiscountRedemptionResponseObject,
+          object: S.String,
           id: S.String,
           subscription_item_id: S.String,
           discount_id: S.String,
           name: S.optional(S.String),
-          source: CommerceDiscountRedemptionResponseSource,
+          source: S.String,
           promo_code: S.optional(S.String),
-          effect: S.optional(CommerceDiscountRedemptionResponseEffect),
+          effect: S.optional(S.String),
           percent_off: S.optional(S.NullOr(S.Number)),
-          amount_off: S.optional(S.NullOr(CommerceMoneyResponse)),
-          amount: S.optional(S.NullOr(CommerceMoneyResponse)),
+          amount_off: S.optional(S.NullOr(__S(14, __c1, 6))),
+          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
           cycles_remaining: S.NullOr(S.Number),
           cycles_applied: S.Number,
-          status: S.optional(CommerceDiscountRedemptionResponseStatus),
+          status: S.optional(S.String),
           redeemed_at: S.Number,
           redeemed_by: S.NullOr(S.String),
         }),
@@ -13318,7 +10220,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: PermissionObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           key: S.String,
@@ -13329,17 +10231,17 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Permission" });
     case 5:
-      return S.Array(Permission);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: RoleObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           key: S.String,
           description: S.NullOr(S.String),
           is_creator_eligible: S.Boolean,
-          permissions: RolePermissionsList,
+          permissions: __S(21, __c2, 5),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -13410,23 +10312,23 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "IdentificationLink" });
     case 5:
-      return S.Array(IdentificationLink);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          object: EmailAddressObject,
+          object: S.String,
           email_address: S.String,
           reserved: S.Boolean,
-          verification: S.NullOr(EmailAddressVerification),
-          linked_to: EmailAddressLinkedToList,
+          verification: S.NullOr(S.Unknown),
+          linked_to: __S(29, __c3, 5),
           matches_sso_connection: S.optional(S.Boolean),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "EmailAddress" });
     case 7:
-      return S.Array(EmailAddress);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -13435,40 +10337,40 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          object: PhoneNumberObject,
+          object: S.String,
           phone_number: S.String,
           reserved_for_second_factor: S.optional(S.Boolean),
           default_second_factor: S.optional(S.Boolean),
           reserved: S.Boolean,
-          verification: S.NullOr(PhoneNumberVerification),
-          linked_to: PhoneNumberLinkedToList,
-          backup_codes: S.optional(S.NullOr(PhoneNumberBackupCodesList)),
+          verification: S.NullOr(S.Unknown),
+          linked_to: __S(29, __c3, 5),
+          backup_codes: S.optional(S.NullOr(__S(6, __c0, 6))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "PhoneNumber" });
     case 1:
-      return S.Array(PhoneNumber);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          object: Web3WalletObject,
+          object: S.String,
           web3_wallet: S.String,
-          verification: S.NullOr(Web3WalletVerification),
+          verification: S.NullOr(S.Unknown),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "Web3Wallet" });
     case 3:
-      return S.Array(Web3Wallet);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(VerificationPasskeyObject),
-          status: VerificationPasskeyStatus,
-          strategy: VerificationPasskeyStrategy,
-          nonce: S.optional(VerificationPasskeyNonce),
+          object: S.optional(S.String),
+          status: S.String,
+          strategy: S.String,
+          nonce: S.optional(S.String),
           message: S.optional(S.NullOr(S.String)),
           attempts: S.NullOr(S.Number),
           expire_at: S.NullOr(S.Number),
@@ -13479,18 +10381,18 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          object: PasskeyObject,
+          object: S.String,
           name: S.String,
           last_used_at: S.Number,
-          verification: S.NullOr(VerificationPasskey),
+          verification: S.NullOr(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "Passkey" });
     case 6:
-      return S.Array(Passkey);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: ExternalAccountWithVerificationObject,
+          object: S.String,
           id: S.String,
           provider: S.String,
           identification_id: S.String,
@@ -13504,11 +10406,11 @@ function __c4(j: number): any {
           image_url: S.optional(S.NullOr(S.String)),
           username: S.optional(S.NullOr(S.String)),
           phone_number: S.optional(S.NullOr(S.String)),
-          public_metadata: ExternalAccountWithVerificationPublicMetadataMap,
+          public_metadata: __S(27, __c3, 3),
           label: S.optional(S.NullOr(S.String)),
           created_at: S.Number,
           updated_at: S.Number,
-          verification: S.NullOr(ExternalAccountWithVerificationVerification),
+          verification: S.NullOr(S.Unknown),
         }),
       ).annotate({
         identifier: "ExternalAccountWithVerification",
@@ -13518,12 +10420,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExternalAccountWithVerification);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          object: SAMLAccountObject,
+          object: S.String,
           provider: S.String,
           active: S.Boolean,
           email_address: S.String,
@@ -13531,19 +10433,19 @@ function __c5(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           provider_user_id: S.optional(S.NullOr(S.String)),
           last_authenticated_at: S.optional(S.NullOr(S.Number)),
-          public_metadata: S.optional(SAMLAccountPublicMetadataMap),
-          verification: S.NullOr(SAMLAccountVerification),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          verification: S.NullOr(S.Unknown),
           saml_connection: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "SAMLAccount" });
     case 2:
-      return S.Array(SAMLAccount);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          object: EnterpriseAccountObject,
-          protocol: S.optional(EnterpriseAccountProtocol),
+          object: S.String,
+          protocol: S.optional(S.String),
           provider: S.String,
           active: S.Boolean,
           email_address: S.String,
@@ -13551,18 +10453,18 @@ function __c5(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           provider_user_id: S.optional(S.NullOr(S.String)),
           enterprise_connection_id: S.optional(S.NullOr(S.String)),
-          public_metadata: S.optional(EnterpriseAccountPublicMetadataMap),
-          verification: S.NullOr(EnterpriseAccountVerification),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          verification: S.NullOr(S.Unknown),
           enterprise_connection: S.optional(S.NullOr(S.Unknown)),
           last_authenticated_at: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "EnterpriseAccount" });
     case 4:
-      return S.Array(EnterpriseAccount);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: OrganizationObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           slug: S.String,
@@ -13574,8 +10476,8 @@ function __c5(j: number): any {
           max_allowed_memberships: S.Number,
           admin_delete_enabled: S.Boolean,
           self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
-          public_metadata: OrganizationPublicMetadataMap,
-          private_metadata: S.optional(OrganizationPrivateMetadataMap),
+          public_metadata: __S(27, __c3, 3),
+          private_metadata: S.optional(__S(27, __c3, 3)),
           created_by: S.optional(S.String),
           created_at: S.Number,
           updated_at: S.Number,
@@ -13604,14 +10506,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          object: OrganizationMembershipObject,
+          object: S.String,
           role: S.String,
           role_name: S.optional(S.String),
-          permissions: OrganizationMembershipPermissionsList,
-          public_metadata: OrganizationMembershipPublicMetadataMap,
-          private_metadata: S.optional(OrganizationMembershipPrivateMetadataMap),
-          organization: Organization,
-          public_user_data: S.optional(OrganizationMembershipPublicUserData),
+          permissions: __S(6, __c0, 6),
+          public_metadata: __S(27, __c3, 3),
+          private_metadata: S.optional(__S(27, __c3, 3)),
+          organization: __S(45, __c5, 5),
+          public_user_data: S.optional(__S(46, __c5, 6)),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -13621,7 +10523,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OrganizationMembership);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13632,7 +10534,7 @@ function __c6(j: number): any {
         identifier: "SCIMUserMetadataGroupsItem",
       });
     case 2:
-      return S.Array(SCIMUserMetadataGroupsItem);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13640,19 +10542,19 @@ function __c6(j: number): any {
           directory_name: S.String,
           provider: S.String,
           enterprise_connection_id: S.NullOr(S.String),
-          groups: S.optional(SCIMUserMetadataGroupsList),
+          groups: S.optional(__S(50, __c6, 2)),
           directory_id: S.String,
           directory_enabled: S.Boolean,
           external_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "SCIMUserMetadata" });
     case 4:
-      return S.Array(SCIMUserMetadata);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          object: UserObject,
+          object: S.String,
           external_id: S.NullOr(S.String),
           primary_email_address_id: S.NullOr(S.String),
           primary_phone_number_id: S.NullOr(S.String),
@@ -13665,13 +10567,13 @@ function __c6(j: number): any {
           profile_image_url: S.optional(S.String),
           image_url: S.optional(S.String),
           has_image: S.Boolean,
-          public_metadata: UserPublicMetadataMap,
-          private_metadata: S.optional(S.NullOr(UserPrivateMetadataMap)),
-          unsafe_metadata: S.optional(UserUnsafeMetadataMap),
-          email_addresses: UserEmailAddressesList,
-          phone_numbers: UserPhoneNumbersList,
-          web3_wallets: UserWeb3WalletsList,
-          passkeys: UserPasskeysList,
+          public_metadata: __S(27, __c3, 3),
+          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          unsafe_metadata: S.optional(__S(27, __c3, 3)),
+          email_addresses: __S(31, __c3, 7),
+          phone_numbers: __S(33, __c4, 1),
+          web3_wallets: __S(35, __c4, 3),
+          passkeys: __S(38, __c4, 6),
           password_enabled: S.Boolean,
           two_factor_enabled: S.Boolean,
           totp_enabled: S.Boolean,
@@ -13679,10 +10581,10 @@ function __c6(j: number): any {
           mfa_enabled_at: S.NullOr(S.Number),
           mfa_disabled_at: S.NullOr(S.Number),
           password_last_updated_at: S.optional(S.NullOr(S.Number)),
-          external_accounts: UserExternalAccountsList,
-          saml_accounts: UserSamlAccountsList,
-          enterprise_accounts: UserEnterpriseAccountsList,
-          organization_memberships: S.optional(UserOrganizationMembershipsList),
+          external_accounts: __S(40, __c5, 0),
+          saml_accounts: __S(42, __c5, 2),
+          enterprise_accounts: __S(44, __c5, 4),
+          organization_memberships: S.optional(__S(48, __c6, 0)),
           last_sign_in_at: S.NullOr(S.Number),
           banned: S.Boolean,
           locked: S.Boolean,
@@ -13697,25 +10599,25 @@ function __c6(j: number): any {
           last_active_at: S.NullOr(S.Number),
           legal_accepted_at: S.NullOr(S.Number),
           bypass_client_trust: S.optional(S.Boolean),
-          directories: S.optional(UserDirectoriesList),
-          directory: S.optional(SCIMUserMetadata),
-          scim: S.optional(S.NullOr(SCIMUserMetadata)),
+          directories: S.optional(__S(52, __c6, 4)),
+          directory: S.optional(__S(51, __c6, 3)),
+          scim: S.optional(S.NullOr(__S(51, __c6, 3))),
         }),
       ).annotate({ identifier: "User" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user_ids: BanUserRequestUserIdsList,
+          user_ids: __S(6, __c0, 6),
         }).pipe(T.Http({ method: "POST", uri: "/users/ban", code: 200 })),
       ).annotate({ identifier: "BanUserRequest2" });
     case 7:
-      return S.Array(User);
+      return S.Array(__S(53, __c6, 5));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => BanUserResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(55, __c6, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "BanUserResponse",
       });
     case 1:
@@ -13736,7 +10638,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(S.NullOr(CommerceMoneyResponse)),
+          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
           cycle_remaining_percent: S.optional(S.Number),
         }),
       ).annotate({
@@ -13745,7 +10647,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          amount: CommerceMoneyResponse,
+          amount: __S(14, __c1, 6),
           cycle_days_remaining: S.Number,
           cycle_days_total: S.Number,
           cycle_remaining_percent: S.Number,
@@ -13756,8 +10658,8 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          remaining_balance: CommerceMoneyResponse,
-          applied_amount: CommerceMoneyResponse,
+          remaining_balance: __S(14, __c1, 6),
+          applied_amount: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "CommercePayerCreditResponse",
@@ -13765,15 +10667,15 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          proration: S.NullOr(CommerceProrationCreditDetailResponse),
-          payer: S.NullOr(CommercePayerCreditResponse),
-          total: CommerceMoneyResponse,
+          proration: S.NullOr(__S(59, __c7, 3)),
+          payer: S.NullOr(__S(60, __c7, 4)),
+          total: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "CommerceCreditsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: FeatureResponseObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
@@ -13782,7 +10684,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "FeatureResponse" });
     case 7:
-      return S.Array(FeatureResponse);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -13792,32 +10694,32 @@ function __c8(j: number): any {
         S.Struct({
           starts_at_block: S.Number,
           ends_after_block: S.optional(S.NullOr(S.Number)),
-          fee_per_block: CommerceMoneyResponse,
+          fee_per_block: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "CommercePlanUnitPriceTier",
       });
     case 1:
-      return S.Array(CommercePlanUnitPriceTier);
+      return S.Array(__S(64, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           block_size: S.Number,
-          tiers: CommercePlanUnitPriceTiersList,
+          tiers: __S(65, __c8, 1),
         }),
       ).annotate({ identifier: "CommercePlanUnitPrice" });
     case 3:
-      return S.Array(CommercePlanUnitPrice);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: CommercePlanObject,
+          object: S.String,
           id: S.String,
           name: S.String,
-          fee: S.NullOr(CommerceMoneyResponse),
-          annual_monthly_fee: S.NullOr(CommerceMoneyResponse),
-          annual_fee: S.NullOr(CommerceMoneyResponse),
+          fee: S.NullOr(__S(14, __c1, 6)),
+          annual_monthly_fee: S.NullOr(__S(14, __c1, 6)),
+          annual_fee: S.NullOr(__S(14, __c1, 6)),
           description: S.NullOr(S.String),
           product_id: S.String,
           is_default: S.Boolean,
@@ -13827,25 +10729,25 @@ function __c8(j: number): any {
           for_payer_type: S.String,
           slug: S.String,
           avatar_url: S.NullOr(S.String),
-          features: S.optional(CommercePlanFeaturesList),
+          features: S.optional(__S(63, __c7, 7)),
           free_trial_enabled: S.Boolean,
           free_trial_days: S.NullOr(S.Number),
-          unit_prices: S.optional(CommercePlanUnitPricesList),
+          unit_prices: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "CommercePlan" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: CommercePaymentMethodResponseObject,
+          object: S.String,
           id: S.String,
           payer_id: S.String,
-          payment_type: CommercePaymentMethodResponsePaymentType,
+          payment_type: S.String,
           is_default: S.optional(S.Boolean),
           gateway: S.String,
           gateway_external_id: S.String,
           gateway_external_account_id: S.NullOr(S.String),
           last4: S.NullOr(S.String),
-          status: CommercePaymentMethodResponseStatus,
+          status: S.String,
           wallet_type: S.optional(S.NullOr(S.String)),
           card_type: S.NullOr(S.String),
           expiry_year: S.optional(S.NullOr(S.Number)),
@@ -13861,12 +10763,12 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           quantity: S.optional(S.NullOr(S.Number)),
-          fee_per_block: CommerceMoneyResponse,
-          total: CommerceMoneyResponse,
+          fee_per_block: __S(14, __c1, 6),
+          total: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "CommercePerUnitTotalTier" });
     case 7:
-      return S.Array(CommercePerUnitTotalTier);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -13876,15 +10778,15 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String,
           block_size: S.Number,
-          tiers: CommercePerUnitTotalTiersList,
+          tiers: __S(71, __c8, 7),
         }),
       ).annotate({ identifier: "CommercePerUnitTotal" });
     case 1:
-      return S.Array(CommercePerUnitTotal);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          amount: CommerceMoneyResponse,
+          amount: __S(14, __c1, 6),
           cycle_days_passed: S.Number,
           cycle_days_total: S.Number,
           cycle_passed_percent: S.Number,
@@ -13895,8 +10797,8 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          proration: S.NullOr(CommerceProrationDiscountResponse),
-          total: CommerceMoneyResponse,
+          proration: S.NullOr(__S(74, __c9, 2)),
+          total: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "CommerceDiscountsResponse",
@@ -13904,22 +10806,22 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subtotal: CommerceMoneyResponse,
-          base_fee: CommerceMoneyResponse,
-          tax_total: CommerceMoneyResponse,
-          grand_total: CommerceMoneyResponse,
-          per_unit_totals: S.optional(CommerceTotalsResponsePerUnitTotalsList),
-          credits: S.optional(S.NullOr(CommerceCreditsResponse)),
-          discounts: S.optional(S.NullOr(CommerceDiscountsResponse)),
+          subtotal: __S(14, __c1, 6),
+          base_fee: __S(14, __c1, 6),
+          tax_total: __S(14, __c1, 6),
+          grand_total: __S(14, __c1, 6),
+          per_unit_totals: S.optional(__S(73, __c9, 1)),
+          credits: S.optional(S.NullOr(__S(61, __c7, 5))),
+          discounts: S.optional(S.NullOr(__S(75, __c9, 3))),
         }),
       ).annotate({ identifier: "CommerceTotalsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(S.NullOr(CommerceMoneyResponse)),
+          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
           date: S.optional(S.NullOr(S.Number)),
-          per_unit_totals: S.optional(CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList),
-          totals: S.optional(S.NullOr(CommerceTotalsResponse)),
+          per_unit_totals: S.optional(__S(73, __c9, 1)),
+          totals: S.optional(S.NullOr(__S(76, __c9, 4))),
         }),
       ).annotate({
         identifier: "CommerceSubscriptionItemNextPaymentResponse",
@@ -13927,7 +10829,7 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: CommercePayerResponseObject,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
           user_id: S.optional(S.NullOr(S.String)),
@@ -13937,7 +10839,7 @@ function __c9(j: number): any {
           organization_id: S.optional(S.NullOr(S.String)),
           organization_name: S.optional(S.NullOr(S.String)),
           image_url: S.optional(S.String),
-          credits_balance: S.optional(CommerceMoneyResponse),
+          credits_balance: S.optional(__S(14, __c1, 6)),
           created_at: S.optional(S.Number),
           updated_at: S.optional(S.Number),
         }),
@@ -13946,8 +10848,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           quantity: S.optional(S.NullOr(S.Number)),
-          fee_per_block: CommerceMoneyResponse,
-          total: CommerceMoneyResponse,
+          fee_per_block: __S(14, __c1, 6),
+          total: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "CommercePerUnitTotalTier2",
@@ -13957,12 +10859,12 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CommercePerUnitTotalTier2);
+      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           quantity: S.NullOr(S.Number),
-          tiers: S.optional(CommerceSubscriptionItemSeatsResponseTiersList),
+          tiers: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "CommerceSubscriptionItemSeatsResponse",
@@ -13972,48 +10874,48 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String,
           block_size: S.Number,
-          tiers: CommercePerUnitTotal2TiersList,
+          tiers: __S(80, __c10, 0),
         }),
       ).annotate({ identifier: "CommercePerUnitTotal2" });
     case 3:
-      return S.Array(CommercePerUnitTotal2);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          proration: S.NullOr(BillingProrationDiscountDetail),
-          total: CommerceMoneyResponse,
+          proration: S.NullOr(__S(74, __c9, 2)),
+          total: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "BillingDiscountsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subtotal: CommerceMoneyResponse,
-          base_fee: CommerceMoneyResponse,
-          tax_total: CommerceMoneyResponse,
-          grand_total: CommerceMoneyResponse,
-          per_unit_totals: S.optional(CommerceTotalsResponse2PerUnitTotalsList),
-          credits: S.optional(S.NullOr(CommerceCreditsResponse)),
-          discounts: S.optional(S.NullOr(BillingDiscountsResponse)),
+          subtotal: __S(14, __c1, 6),
+          base_fee: __S(14, __c1, 6),
+          tax_total: __S(14, __c1, 6),
+          grand_total: __S(14, __c1, 6),
+          per_unit_totals: S.optional(__S(83, __c10, 3)),
+          credits: S.optional(S.NullOr(__S(61, __c7, 5))),
+          discounts: S.optional(S.NullOr(__S(84, __c10, 4))),
         }),
       ).annotate({ identifier: "CommerceTotalsResponse2" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: CommerceSubscriptionItemObject,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
-          status: CommerceSubscriptionItemStatus,
-          credit: S.optional(CommerceSubscriptionCreditResponse),
-          credits: S.optional(S.NullOr(CommerceCreditsResponse)),
+          status: S.String,
+          credit: S.optional(__S(58, __c7, 2)),
+          credits: S.optional(S.NullOr(__S(61, __c7, 5))),
           plan_id: S.NullOr(S.String),
           price_id: S.optional(S.String),
-          plan: S.optional(S.NullOr(CommercePlan)),
-          plan_period: CommerceSubscriptionItemPlanPeriod,
-          payment_method: S.optional(CommercePaymentMethodResponse),
-          lifetime_paid: S.optional(CommerceMoneyResponse),
-          next_payment: S.optional(S.NullOr(CommerceSubscriptionItemNextPaymentResponse)),
+          plan: S.optional(S.NullOr(__S(68, __c8, 4))),
+          plan_period: S.String,
+          payment_method: S.optional(__S(69, __c8, 5)),
+          lifetime_paid: S.optional(__S(14, __c1, 6)),
+          next_payment: S.optional(S.NullOr(__S(77, __c9, 5))),
           payer_id: S.String,
-          payer: S.optional(CommercePayerResponse),
+          payer: S.optional(__S(78, __c9, 6)),
           is_free_trial: S.Boolean,
           period_start: S.Number,
           period_end: S.NullOr(S.Number),
@@ -14023,8 +10925,8 @@ function __c10(j: number): any {
           ended_at: S.NullOr(S.Number),
           created_at: S.optional(S.Number),
           updated_at: S.optional(S.Number),
-          seats: S.optional(S.NullOr(CommerceSubscriptionItemSeatsResponse)),
-          totals: S.optional(S.NullOr(CommerceTotalsResponse2)),
+          seats: S.optional(S.NullOr(__S(81, __c10, 1))),
+          totals: S.optional(S.NullOr(__S(85, __c10, 5))),
         }),
       ).annotate({ identifier: "CommerceSubscriptionItem" });
     case 7:
@@ -14056,7 +10958,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
-          actor: CreateActorTokenRequestActor,
+          actor: __S(89, __c11, 1),
           expires_in_seconds: S.optional(S.Number),
           session_max_duration_in_seconds: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/actor_tokens", code: 200 })),
@@ -14064,9 +10966,9 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: ActorTokenObject,
+          object: S.String,
           id: S.String,
-          status: ActorTokenStatus,
+          status: S.String,
           user_id: S.String,
           actor: S.Unknown,
           token: S.optional(S.String),
@@ -14080,7 +10982,7 @@ function __c11(j: number): any {
         S.Struct({
           organization_id: S.optional(S.String),
           it_contact_id: S.optional(S.String),
-          scopes: S.optional(CreateAdminPortalLinkTokenRequestScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           seconds_until_expiration: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/admin_portal_link_tokens", code: 200 })),
       ).annotate({
@@ -14089,13 +10991,13 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: CreateAdminPortalLinkTokenResponseObject,
+          object: S.String,
           id: S.String,
           admin_portal_link_id: S.String,
           instance_id: S.String,
           organization_id: S.NullOr(S.String),
           it_contact_id: S.NullOr(S.String),
-          scopes: S.NullOr(CreateAdminPortalLinkTokenResponseScopesList),
+          scopes: S.NullOr(__S(6, __c0, 6)),
           token: S.String,
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
@@ -14119,8 +11021,8 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          on_behalf_of: CreateAgentTaskRequestOnBehalfOf,
-          permissions: CreateAgentTaskRequestPermissions,
+          on_behalf_of: __S(94, __c11, 6),
+          permissions: S.String,
           agent_name: S.String,
           task_description: S.String,
           redirect_url: S.String,
@@ -14134,7 +11036,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          object: AgentTaskObject,
+          object: S.String,
           agent_id: S.String,
           agent_task_id: S.String,
           task_id: S.String,
@@ -14153,11 +11055,11 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(AllowlistIdentifierObject),
+          object: S.optional(S.String),
           id: S.optional(S.String),
           invitation_id: S.optional(S.String),
           identifier: S.optional(S.String),
-          identifier_type: S.optional(AllowlistIdentifierIdentifierType),
+          identifier_type: S.optional(S.String),
           instance_id: S.optional(S.String),
           created_at: S.optional(S.Number),
           updated_at: S.optional(S.Number),
@@ -14171,7 +11073,7 @@ function __c12(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           subject: S.String,
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(CreateApiKeyRequestScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           created_by: S.optional(S.NullOr(S.String)),
           seconds_until_expiration: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/api_keys", code: 200 })),
@@ -14179,14 +11081,14 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: CreateApiKeyResponseObject,
+          object: S.String,
           id: S.String,
           type: S.String,
           subject: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: CreateApiKeyResponseScopesList,
+          scopes: __S(6, __c0, 6),
           secret: S.String.pipe(T.SensitiveValue({})),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
@@ -14206,7 +11108,7 @@ function __c12(j: number): any {
           amount: S.NullOr(S.Number),
           annual_monthly_amount: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.String),
-          supported_billing_periods: S.optional(CreateBillingPriceRequestSupportedBillingPeriods),
+          supported_billing_periods: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/billing/prices", code: 200 })),
       ).annotate({
         identifier: "CreateBillingPriceRequest",
@@ -14214,7 +11116,7 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: BillingPriceResponseObject,
+          object: S.String,
           id: S.String,
           plan_id: S.String,
           instance_id: S.String,
@@ -14222,12 +11124,12 @@ function __c12(j: number): any {
           currency_symbol: S.String,
           amount: S.Number,
           annual_monthly_amount: S.Number,
-          fee: S.NullOr(CommerceMoneyResponse),
-          annual_monthly_fee: S.NullOr(CommerceMoneyResponse),
+          fee: S.NullOr(__S(14, __c1, 6)),
+          annual_monthly_fee: S.NullOr(__S(14, __c1, 6)),
           description: S.optional(S.NullOr(S.String)),
           is_default: S.Boolean,
           created_at: S.Number,
-          supported_billing_periods: BillingPriceResponseSupportedBillingPeriods,
+          supported_billing_periods: S.String,
         }),
       ).annotate({ identifier: "BillingPriceResponse" });
     case 7:
@@ -14253,7 +11155,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          object: FeatureResponse2Object,
+          object: S.String,
           id: S.String,
           name: S.String,
           description: S.String,
@@ -14262,16 +11164,16 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "FeatureResponse2" });
     case 1:
-      return S.Array(FeatureResponse2);
+      return S.Array(__S(104, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: CommercePlan2Object,
+          object: S.String,
           id: S.String,
           name: S.String,
-          fee: S.NullOr(CommerceMoneyResponse),
-          annual_monthly_fee: S.NullOr(CommerceMoneyResponse),
-          annual_fee: S.NullOr(CommerceMoneyResponse),
+          fee: S.NullOr(__S(14, __c1, 6)),
+          annual_monthly_fee: S.NullOr(__S(14, __c1, 6)),
+          annual_fee: S.NullOr(__S(14, __c1, 6)),
           amount: S.Number,
           amount_formatted: S.String,
           annual_monthly_amount: S.Number,
@@ -14286,13 +11188,13 @@ function __c13(j: number): any {
           is_recurring: S.Boolean,
           publicly_visible: S.Boolean,
           has_base_fee: S.Boolean,
-          payer_type: CommercePlan2PayerTypeList,
+          payer_type: __S(6, __c0, 6),
           for_payer_type: S.String,
           slug: S.String,
           avatar_url: S.String,
           period: S.optional(S.String),
           interval: S.optional(S.Number),
-          features: CommercePlan2FeaturesList,
+          features: __S(105, __c13, 1),
           free_trial_enabled: S.optional(S.Boolean),
           free_trial_days: S.optional(S.NullOr(S.Number)),
         }),
@@ -14300,16 +11202,16 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: CommercePaymentSourceResponseObject,
+          object: S.String,
           id: S.String,
           payer_id: S.String,
-          payment_method: CommercePaymentSourceResponsePaymentMethod,
+          payment_method: S.String,
           is_default: S.optional(S.NullOr(S.Boolean)),
           gateway: S.String,
           gateway_external_id: S.String,
           gateway_external_account_id: S.optional(S.NullOr(S.String)),
           last4: S.String,
-          status: CommercePaymentSourceResponseStatus,
+          status: S.String,
           wallet_type: S.String,
           card_type: S.String,
           expiry_year: S.optional(S.Number),
@@ -14324,7 +11226,7 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: CommercePayerResponse2Object,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
           user_id: S.optional(S.String),
@@ -14334,7 +11236,7 @@ function __c13(j: number): any {
           organization_id: S.optional(S.String),
           organization_name: S.optional(S.String),
           image_url: S.String,
-          credits_balance: S.optional(CommerceMoneyResponse),
+          credits_balance: S.optional(__S(14, __c1, 6)),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -14342,23 +11244,23 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: CommerceSubscriptionItem2Object,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
-          status: CommerceSubscriptionItem2Status,
-          credit: S.optional(S.NullOr(CommerceSubscriptionCreditResponse)),
+          status: S.String,
+          credit: S.optional(S.NullOr(__S(58, __c7, 2))),
           plan_id: S.String,
           price_id: S.optional(S.String),
-          plan: S.NullOr(CommercePlan2),
-          plan_period: CommerceSubscriptionItem2PlanPeriod,
+          plan: S.NullOr(__S(106, __c13, 2)),
+          plan_period: S.String,
           payment_source_id: S.String,
-          payment_source: S.optional(S.NullOr(CommercePaymentSourceResponse)),
-          lifetime_paid: S.optional(S.NullOr(CommerceMoneyResponse)),
-          amount: S.optional(S.NullOr(CommerceMoneyResponse)),
-          next_invoice: S.optional(S.NullOr(CommerceSubscriptionItemNextPaymentResponse)),
-          next_payment: S.optional(S.NullOr(CommerceSubscriptionItemNextPaymentResponse)),
+          payment_source: S.optional(S.NullOr(__S(107, __c13, 3))),
+          lifetime_paid: S.optional(S.NullOr(__S(14, __c1, 6))),
+          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
+          next_invoice: S.optional(S.NullOr(__S(77, __c9, 5))),
+          next_payment: S.optional(S.NullOr(__S(77, __c9, 5))),
           payer_id: S.String,
-          payer: S.optional(S.NullOr(CommercePayerResponse2)),
+          payer: S.optional(S.NullOr(__S(108, __c13, 4))),
           is_free_trial: S.Boolean,
           period_start: S.optional(S.NullOr(S.Number)),
           period_end: S.optional(S.NullOr(S.Number)),
@@ -14375,15 +11277,14 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          previous_plan: CommercePlan2,
-          previous_price: BillingPriceResponse,
+          previous_plan: __S(106, __c13, 2),
+          previous_price: __S(102, __c12, 6),
           effective_at: S.Number,
-          effective_mode: CommercePriceTransitionDetailsEffectiveMode,
+          effective_mode: S.String,
           next_billing_date: S.optional(S.NullOr(S.Number)),
           charged_immediately: S.Boolean,
-          immediate_charge: S.optional(S.NullOr(CommerceMoneyResponse)),
-          previous_subscription_item_status:
-            CommercePriceTransitionDetailsPreviousSubscriptionItemStatus,
+          immediate_charge: S.optional(S.NullOr(__S(14, __c1, 6))),
+          previous_subscription_item_status: S.String,
           previous_subscription_item_id: S.String,
         }),
       ).annotate({
@@ -14392,9 +11293,9 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: CommercePriceTransitionResponseObject,
-          subscription_item: CommerceSubscriptionItem2,
-          transition: CommercePriceTransitionDetails,
+          object: S.String,
+          subscription_item: __S(109, __c13, 5),
+          transition: __S(110, __c13, 6),
         }),
       ).annotate({
         identifier: "CommercePriceTransitionResponse",
@@ -14414,10 +11315,10 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(BlocklistIdentifierObject),
+          object: S.optional(S.String),
           id: S.optional(S.String),
           identifier: S.optional(S.String),
-          identifier_type: S.optional(BlocklistIdentifierIdentifierType),
+          identifier_type: S.optional(S.String),
           instance_id: S.optional(S.String),
           created_at: S.optional(S.Number),
           updated_at: S.optional(S.Number),
@@ -14427,24 +11328,22 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email_address: S.String,
-          public_metadata: S.optional(
-            S.NullOr(CreateBulkInvitationsRequestBodyItemPublicMetadataMap),
-          ),
+          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
           redirect_url: S.optional(S.NullOr(S.String)),
           notify: S.optional(S.NullOr(S.Boolean)),
           ignore_existing: S.optional(S.NullOr(S.Boolean)),
           expires_in_days: S.optional(S.NullOr(S.Number)),
-          template_slug: S.optional(CreateBulkInvitationsRequestBodyItemTemplateSlug),
+          template_slug: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateBulkInvitationsRequestBodyItem",
       });
     case 3:
-      return S.Array(CreateBulkInvitationsRequestBodyItem);
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CreateBulkInvitationsRequestBodyList.pipe(T.HttpBody())),
+          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/invitations/bulk", code: 200 })),
       ).annotate({
         identifier: "CreateBulkInvitationsRequest",
@@ -14452,12 +11351,12 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: InvitationObject,
+          object: S.String,
           id: S.String,
           email_address: S.String,
-          public_metadata: InvitationPublicMetadataMap,
+          public_metadata: __S(27, __c3, 3),
           revoked: S.optional(S.Boolean),
-          status: InvitationStatus,
+          status: S.String,
           url: S.optional(S.String),
           expires_at: S.optional(S.NullOr(S.Number)),
           created_at: S.Number,
@@ -14465,11 +11364,9 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "Invitation" });
     case 6:
-      return S.Array(Invitation);
+      return S.Array(__S(117, __c14, 5));
     case 7:
-      return S.suspend(() =>
-        CreateBulkInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(118, __c14, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateBulkInvitationsResponse",
       });
   }
@@ -14486,11 +11383,11 @@ function __c15(j: number): any {
         identifier: "CreateBulkWaitlistEntriesRequestBodyItem",
       });
     case 1:
-      return S.Array(CreateBulkWaitlistEntriesRequestBodyItem);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CreateBulkWaitlistEntriesRequestBodyList.pipe(T.HttpBody())),
+          body: S.optional(__S(121, __c15, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/waitlist_entries/bulk", code: 200 })),
       ).annotate({
         identifier: "CreateBulkWaitlistEntriesRequest",
@@ -14498,22 +11395,20 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: WaitlistEntryObject,
+          object: S.String,
           id: S.String,
           email_address: S.String,
-          status: WaitlistEntryStatus,
+          status: S.String,
           is_locked: S.optional(S.Boolean),
           created_at: S.Number,
           updated_at: S.Number,
-          invitation: S.optional(S.NullOr(Invitation)),
+          invitation: S.optional(S.NullOr(__S(117, __c14, 5))),
         }),
       ).annotate({ identifier: "WaitlistEntry" });
     case 4:
-      return S.Array(WaitlistEntry);
+      return S.Array(__S(123, __c15, 3));
     case 5:
-      return S.suspend(() =>
-        CreateBulkWaitlistEntriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(124, __c15, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateBulkWaitlistEntriesResponse",
       });
     case 6:
@@ -14530,7 +11425,7 @@ function __c15(j: number): any {
         identifier: "CreateDirectoryRequestGroupRoleMappingsItem",
       });
     case 7:
-      return S.Array(CreateDirectoryRequestGroupRoleMappingsItem);
+      return S.Array(__S(126, __c15, 6));
   }
 }
 function __c16(j: number): any {
@@ -14541,7 +11436,7 @@ function __c16(j: number): any {
           enterprise_connection_id: S.String,
           name: S.optional(S.String),
           provider: S.String,
-          group_role_mappings: S.optional(CreateDirectoryRequestGroupRoleMappingsList),
+          group_role_mappings: S.optional(__S(127, __c15, 7)),
         }).pipe(T.Http({ method: "POST", uri: "/directories", code: 200 })),
       ).annotate({ identifier: "CreateDirectoryRequest" });
     case 1:
@@ -14558,11 +11453,11 @@ function __c16(j: number): any {
         identifier: "DirectoryCustomAttributesItem",
       });
     case 2:
-      return S.Array(DirectoryCustomAttributesItem);
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: DirectoryObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           enterprise_connection_id: S.optional(S.NullOr(S.String)),
@@ -14570,8 +11465,8 @@ function __c16(j: number): any {
           provider: S.String,
           enabled: S.Boolean,
           group_role_mapping_enabled: S.Boolean,
-          attribute_mapping: DirectoryAttributeMappingMap,
-          custom_attributes: S.optional(DirectoryCustomAttributesList),
+          attribute_mapping: __S(10, __c1, 2),
+          custom_attributes: S.optional(__S(130, __c16, 2)),
           api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           created_at: S.Number,
           updated_at: S.Number,
@@ -14598,7 +11493,7 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: DirectoryGroupRoleMappingObject,
+          object: S.String,
           id: S.String,
           directory_id: S.String,
           scim_directory_id: S.String,
@@ -14606,7 +11501,7 @@ function __c16(j: number): any {
           scim_group_id: S.String,
           directory_group_display_name: S.String,
           scim_group_display_name: S.String,
-          role: S.optional(Role),
+          role: S.optional(__S(22, __c2, 6)),
           precedence: S.Number,
           created_at: S.Number,
           updated_at: S.Number,
@@ -14644,7 +11539,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: CreateEnterpriseConnectionRequestSamlLoginHintMode,
+          mode: S.String,
           source: S.optional(S.String),
         }),
       ).annotate({
@@ -14656,16 +11551,14 @@ function __c17(j: number): any {
           idp_entity_id: S.optional(S.NullOr(S.String)),
           idp_sso_url: S.optional(S.NullOr(S.String)),
           idp_certificate: S.optional(S.NullOr(S.String)),
-          idp_certificates: S.optional(CreateEnterpriseConnectionRequestSamlIdpCertificatesList),
+          idp_certificates: S.optional(__S(6, __c0, 6)),
           idp_metadata_url: S.optional(S.NullOr(S.String)),
           idp_metadata: S.optional(S.NullOr(S.String)),
-          attribute_mapping: S.optional(
-            S.NullOr(CreateEnterpriseConnectionRequestSamlAttributeMapping),
-          ),
+          attribute_mapping: S.optional(S.NullOr(__S(135, __c16, 7))),
           allow_subdomains: S.optional(S.NullOr(S.Boolean)),
           allow_idp_initiated: S.optional(S.NullOr(S.Boolean)),
           force_authn: S.optional(S.NullOr(S.Boolean)),
-          login_hint: S.optional(S.NullOr(CreateEnterpriseConnectionRequestSamlLoginHint)),
+          login_hint: S.optional(S.NullOr(__S(136, __c17, 0))),
         }),
       ).annotate({
         identifier: "CreateEnterpriseConnectionRequestSaml",
@@ -14698,19 +11591,19 @@ function __c17(j: number): any {
         identifier: "CreateEnterpriseConnectionRequestCustomAttributesItem",
       });
     case 4:
-      return S.Array(CreateEnterpriseConnectionRequestCustomAttributesItem);
+      return S.Array(__S(139, __c17, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          provider: CreateEnterpriseConnectionRequestProvider,
-          domains: CreateEnterpriseConnectionRequestDomainsList,
+          provider: S.String,
+          domains: __S(6, __c0, 6),
           organization_id: S.optional(S.NullOr(S.String)),
           allow_organization_account_linking: S.optional(S.NullOr(S.Boolean)),
           active: S.optional(S.NullOr(S.Boolean)),
-          saml: S.optional(S.NullOr(CreateEnterpriseConnectionRequestSaml)),
-          oidc: S.optional(S.NullOr(CreateEnterpriseConnectionRequestOidc)),
-          custom_attributes: S.optional(CreateEnterpriseConnectionRequestCustomAttributesList),
+          saml: S.optional(S.NullOr(__S(137, __c17, 1))),
+          oidc: S.optional(S.NullOr(__S(138, __c17, 2))),
+          custom_attributes: S.optional(__S(140, __c17, 4)),
         }).pipe(T.Http({ method: "POST", uri: "/enterprise_connections", code: 200 })),
       ).annotate({
         identifier: "CreateEnterpriseConnectionRequest",
@@ -14726,7 +11619,7 @@ function __c17(j: number): any {
         identifier: "EnterpriseConnectionSamlConnectionIdpCertificatesItem",
       });
     case 7:
-      return S.Array(EnterpriseConnectionSamlConnectionIdpCertificatesItem);
+      return S.Array(__S(142, __c17, 6));
   }
 }
 function __c18(j: number): any {
@@ -14741,7 +11634,7 @@ function __c18(j: number): any {
           idp_certificate: S.optional(S.NullOr(S.String)),
           idp_certificate_issued_at: S.optional(S.NullOr(S.Number)),
           idp_certificate_expires_at: S.optional(S.NullOr(S.Number)),
-          idp_certificates: S.optional(EnterpriseConnectionSamlConnectionIdpCertificatesList),
+          idp_certificates: S.optional(__S(143, __c17, 7)),
           idp_metadata_url: S.optional(S.NullOr(S.String)),
           acs_url: S.optional(S.NullOr(S.String)),
           sp_entity_id: S.optional(S.NullOr(S.String)),
@@ -14750,7 +11643,7 @@ function __c18(j: number): any {
           allow_idp_initiated: S.optional(S.Boolean),
           allow_subdomains: S.optional(S.Boolean),
           force_authn: S.optional(S.Boolean),
-          login_hint: S.optional(EnterpriseConnectionSamlConnectionLoginHint),
+          login_hint: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({
         identifier: "EnterpriseConnectionSamlConnection",
@@ -14777,20 +11670,20 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: EnterpriseConnectionObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           provider: S.String,
           logo_public_url: S.optional(S.NullOr(S.String)),
           active: S.Boolean,
-          domains: EnterpriseConnectionDomainsList,
+          domains: __S(6, __c0, 6),
           organization_id: S.optional(S.NullOr(S.String)),
           sync_user_attributes: S.optional(S.Boolean),
           disable_additional_identifications: S.optional(S.Boolean),
           allow_organization_account_linking: S.optional(S.Boolean),
-          custom_attributes: S.optional(EnterpriseConnectionCustomAttributesList),
-          saml_connection: S.optional(S.NullOr(EnterpriseConnectionSamlConnection)),
-          oauth_config: S.optional(S.NullOr(EnterpriseConnectionOauthConfig)),
+          custom_attributes: S.optional(__S(140, __c17, 4)),
+          saml_connection: S.optional(S.NullOr(__S(144, __c18, 0))),
+          oauth_config: S.optional(S.NullOr(__S(145, __c18, 1))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -14821,12 +11714,12 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email_address: S.String,
-          public_metadata: S.optional(CreateInvitationRequestPublicMetadataMap),
+          public_metadata: S.optional(__S(27, __c3, 3)),
           redirect_url: S.optional(S.String),
           notify: S.optional(S.NullOr(S.Boolean)),
           ignore_existing: S.optional(S.NullOr(S.Boolean)),
           expires_in_days: S.optional(S.NullOr(S.Number)),
-          template_slug: S.optional(CreateInvitationRequestTemplateSlug),
+          template_slug: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/invitations", code: 200 })),
       ).annotate({ identifier: "CreateInvitationRequest" });
     case 6:
@@ -14844,7 +11737,7 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: JWTTemplateObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           claims: S.Unknown,
@@ -14863,7 +11756,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          token_format: S.optional(CreateM2MTokenRequestTokenFormat),
+          token_format: S.optional(S.String),
           seconds_until_expiration: S.optional(S.NullOr(S.Number)),
           claims: S.optional(S.NullOr(S.Unknown)),
           min_remaining_ttl_seconds: S.optional(S.Number),
@@ -14872,11 +11765,11 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: CreateM2MTokenResponseObject,
+          object: S.String,
           id: S.String,
           subject: S.String,
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(CreateM2MTokenResponseScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           token: S.String,
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
@@ -14891,14 +11784,14 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          scoped_machines: S.optional(CreateMachineRequestScopedMachinesList),
+          scoped_machines: S.optional(__S(6, __c0, 6)),
           default_token_ttl: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/machines", code: 200 })),
       ).annotate({ identifier: "CreateMachineRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: MachineWithoutScopedMachinesObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           instance_id: S.String,
@@ -14910,18 +11803,18 @@ function __c19(j: number): any {
         identifier: "MachineWithoutScopedMachines",
       });
     case 4:
-      return S.Array(MachineWithoutScopedMachines);
+      return S.Array(__S(155, __c19, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: CreateMachineResponseObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           instance_id: S.String,
           created_at: S.Number,
           updated_at: S.Number,
           default_token_ttl: S.optional(S.Number),
-          scoped_machines: CreateMachineResponseScopedMachinesList,
+          scoped_machines: __S(156, __c19, 4),
           secret_key: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "CreateMachineResponse" });
@@ -14937,7 +11830,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: MachineScopeObject,
+          object: S.String,
           from_machine_id: S.String,
           to_machine_id: S.String,
           created_at: S.Number,
@@ -14951,7 +11844,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          redirect_uris: S.optional(S.NullOr(CreateOAuthApplicationRequestRedirectUrisList)),
+          redirect_uris: S.optional(S.NullOr(__S(6, __c0, 6))),
           callback_url: S.optional(S.NullOr(S.String)),
           scopes: S.optional(S.NullOr(S.String)),
           consent_screen_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -14965,7 +11858,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: CreateOAuthApplicationResponseObject,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
           name: S.String,
@@ -14978,7 +11871,7 @@ function __c20(j: number): any {
           device_authorization_grant_enabled: S.Boolean,
           public: S.Boolean,
           scopes: S.String,
-          redirect_uris: CreateOAuthApplicationResponseRedirectUrisList,
+          redirect_uris: __S(6, __c0, 6),
           callback_url: S.String,
           authorize_url: S.String,
           token_fetch_url: S.String,
@@ -14997,8 +11890,8 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String,
           created_by: S.optional(S.NullOr(S.String)),
-          private_metadata: S.optional(S.NullOr(CreateOrganizationRequestPrivateMetadataMap)),
-          public_metadata: S.optional(S.NullOr(CreateOrganizationRequestPublicMetadataMap)),
+          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
           slug: S.optional(S.NullOr(S.String)),
           max_allowed_memberships: S.optional(S.NullOr(S.Number)),
           created_at: S.optional(S.NullOr(S.String)),
@@ -15047,20 +11940,18 @@ function __c20(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: OrganizationDomainObject,
+          object: S.String,
           id: S.String,
           organization_id: S.String,
           name: S.String,
-          enrollment_mode: OrganizationDomainEnrollmentMode,
+          enrollment_mode: S.String,
           affiliation_email_address: S.NullOr(S.String),
-          affiliation_verification: S.NullOr(OrganizationDomainVerification),
-          ownership_verification: S.NullOr(OrganizationDomainVerification),
-          verification: S.NullOr(OrganizationDomainVerification),
+          affiliation_verification: S.NullOr(__S(164, __c20, 4)),
+          ownership_verification: S.NullOr(__S(164, __c20, 4)),
+          verification: S.NullOr(__S(164, __c20, 4)),
           total_pending_invitations: S.Number,
           total_pending_suggestions: S.Number,
-          public_organization_data: S.optional(
-            S.NullOr(OrganizationInvitationPublicOrganizationData),
-          ),
+          public_organization_data: S.optional(S.NullOr(__S(165, __c20, 5))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -15072,12 +11963,8 @@ function __c20(j: number): any {
           email_address: S.String,
           inviter_user_id: S.optional(S.NullOr(S.String)),
           role: S.String,
-          public_metadata: S.optional(
-            S.NullOr(CreateOrganizationInvitationRequestPublicMetadataMap),
-          ),
-          private_metadata: S.optional(
-            S.NullOr(CreateOrganizationInvitationRequestPrivateMetadataMap),
-          ),
+          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
           redirect_url: S.optional(S.NullOr(S.String)),
           expires_in_days: S.optional(S.NullOr(S.Number)),
           notify: S.optional(S.NullOr(S.Boolean)),
@@ -15111,17 +11998,17 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: OrganizationInvitationObject,
+          object: S.String,
           id: S.String,
           email_address: S.String,
           role: S.String,
           role_name: S.String,
           organization_id: S.optional(S.String),
           inviter_id: S.NullOr(S.String),
-          public_inviter_data: S.NullOr(OrganizationInvitationPublicUserData),
+          public_inviter_data: S.NullOr(__S(168, __c21, 0)),
           status: S.optional(S.String),
-          public_metadata: OrganizationInvitationPublicMetadataMap,
-          private_metadata: S.optional(OrganizationInvitationPrivateMetadataMap),
+          public_metadata: __S(27, __c3, 3),
+          private_metadata: S.optional(__S(27, __c3, 3)),
           url: S.NullOr(S.String),
           expires_at: S.NullOr(S.Number),
           created_at: S.Number,
@@ -15136,12 +12023,8 @@ function __c21(j: number): any {
           email_address: S.String,
           inviter_user_id: S.optional(S.NullOr(S.String)),
           role: S.String,
-          public_metadata: S.optional(
-            S.NullOr(CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap),
-          ),
-          private_metadata: S.optional(
-            S.NullOr(CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap),
-          ),
+          public_metadata: S.optional(S.NullOr(__S(170, __c21, 2))),
+          private_metadata: S.optional(S.NullOr(__S(170, __c21, 2))),
           redirect_url: S.optional(S.NullOr(S.String)),
           expires_in_days: S.optional(S.NullOr(S.Number)),
           notify: S.optional(S.NullOr(S.Boolean)),
@@ -15150,12 +12033,12 @@ function __c21(j: number): any {
         identifier: "CreateOrganizationInvitationBulkRequestBodyItem",
       });
     case 4:
-      return S.Array(CreateOrganizationInvitationBulkRequestBodyItem);
+      return S.Array(__S(171, __c21, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
-          body: CreateOrganizationInvitationBulkRequestBodyList.pipe(T.HttpBody()),
+          body: __S(172, __c21, 4).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15167,11 +12050,11 @@ function __c21(j: number): any {
         identifier: "CreateOrganizationInvitationBulkRequest",
       });
     case 6:
-      return S.Array(OrganizationInvitation);
+      return S.Array(__S(169, __c21, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: OrganizationInvitationsDataList,
+          data: __S(174, __c21, 6),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "OrganizationInvitations" });
@@ -15185,12 +12068,8 @@ function __c22(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           user_id: S.String,
           role: S.String,
-          public_metadata: S.optional(
-            S.NullOr(CreateOrganizationMembershipRequestPublicMetadataMap),
-          ),
-          private_metadata: S.optional(
-            S.NullOr(CreateOrganizationMembershipRequestPrivateMetadataMap),
-          ),
+          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15217,7 +12096,7 @@ function __c22(j: number): any {
           name: S.String,
           key: S.String,
           description: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(CreateOrganizationRoleRequestPermissionsList)),
+          permissions: S.optional(S.NullOr(__S(6, __c0, 6))),
           include_in_initial_role_set: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/organization_roles", code: 200 })),
       ).annotate({
@@ -15242,7 +12121,7 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: RedirectURLObject,
+          object: S.String,
           id: S.String,
           url: S.String,
           created_at: S.Number,
@@ -15257,8 +12136,8 @@ function __c22(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           default_role_key: S.String,
           creator_role_key: S.String,
-          type: S.optional(CreateRoleSetRequestType),
-          roles: CreateRoleSetRequestRolesList,
+          type: S.optional(S.String),
+          roles: __S(6, __c0, 6),
         }).pipe(T.Http({ method: "POST", uri: "/role_sets", code: 200 })),
       ).annotate({ identifier: "CreateRoleSetRequest" });
     case 7:
@@ -15277,14 +12156,14 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateSCIMDirectoryRequestGroupRoleMappingsItem);
+      return S.Array(__S(183, __c22, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           enterprise_connection_id: S.String,
           name: S.optional(S.String),
           provider: S.String,
-          group_role_mappings: S.optional(CreateSCIMDirectoryRequestGroupRoleMappingsList),
+          group_role_mappings: S.optional(__S(184, __c23, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/scim_directories", code: 200 })),
       ).annotate({
         identifier: "CreateSCIMDirectoryRequest",
@@ -15292,7 +12171,7 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: SCIMDirectoryObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           enterprise_connection_id: S.optional(S.NullOr(S.String)),
@@ -15300,8 +12179,8 @@ function __c23(j: number): any {
           provider: S.String,
           enabled: S.Boolean,
           group_role_mapping_enabled: S.Boolean,
-          attribute_mapping: SCIMDirectoryAttributeMappingMap,
-          custom_attributes: S.optional(SCIMDirectoryCustomAttributesList),
+          attribute_mapping: __S(10, __c1, 2),
+          custom_attributes: S.optional(__S(130, __c16, 2)),
           api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           created_at: S.Number,
           updated_at: S.Number,
@@ -15327,7 +12206,7 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: SCIMGroupRoleMappingObject,
+          object: S.String,
           id: S.String,
           scim_directory_id: S.String,
           directory_id: S.String,
@@ -15335,7 +12214,7 @@ function __c23(j: number): any {
           directory_group_id: S.String,
           scim_group_display_name: S.String,
           directory_group_display_name: S.String,
-          role: S.optional(Role),
+          role: S.optional(__S(22, __c2, 6)),
           precedence: S.Number,
           created_at: S.Number,
           updated_at: S.Number,
@@ -15373,24 +12252,24 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SessionTask);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: SessionObject,
+          object: S.String,
           id: S.String,
           user_id: S.String,
           client_id: S.String,
           actor: S.optional(S.NullOr(S.Unknown)),
-          status: SessionStatus,
+          status: S.String,
           last_active_organization_id: S.optional(S.NullOr(S.String)),
           last_active_at: S.Number,
-          latest_activity: S.optional(S.NullOr(SessionActivityResponse)),
+          latest_activity: S.optional(S.NullOr(__S(190, __c23, 6))),
           expire_at: S.Number,
           abandon_at: S.Number,
           updated_at: S.Number,
           created_at: S.Number,
-          tasks: S.optional(S.NullOr(SessionTasksList)),
+          tasks: S.optional(S.NullOr(__S(192, __c24, 0))),
         }),
       ).annotate({ identifier: "Session" });
     case 2:
@@ -15405,7 +12284,7 @@ function __c24(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(CreateSessionTokenResponseObject),
+          object: S.optional(S.String),
           jwt: S.optional(S.String),
         }),
       ).annotate({
@@ -15438,9 +12317,9 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: SignInTokenObject,
+          object: S.String,
           id: S.String,
-          status: SignInTokenStatus,
+          status: S.String,
           user_id: S.String,
           token: S.optional(S.String),
           url: S.optional(S.NullOr(S.String)),
@@ -15477,9 +12356,9 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: SSOBypassAllowlistUserObject,
+          object: S.String,
           user_id: S.String,
-          public_user_data: SSOBypassAllowlistPublicUserData,
+          public_user_data: __S(200, __c25, 0),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -15503,13 +12382,13 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: TestingTokenObject,
+          object: S.String,
           token: S.String,
           expires_at: S.Number,
         }),
       ).annotate({ identifier: "TestingToken" });
     case 6:
-      return S.Array(CreateUserRequestEmailAddressIdentificationStatusItem);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -15518,15 +12397,11 @@ function __c25(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.NullOr(S.String)),
-          email_address: S.optional(CreateUserRequestEmailAddressList),
-          email_address_identification_status: S.optional(
-            CreateUserRequestEmailAddressIdentificationStatusList,
-          ),
-          phone_number: S.optional(CreateUserRequestPhoneNumberList),
-          phone_number_identification_status: S.optional(
-            CreateUserRequestPhoneNumberIdentificationStatusList,
-          ),
-          web3_wallet: S.optional(CreateUserRequestWeb3WalletList),
+          email_address: S.optional(__S(6, __c0, 6)),
+          email_address_identification_status: S.optional(__S(206, __c25, 6)),
+          phone_number: S.optional(__S(6, __c0, 6)),
+          phone_number_identification_status: S.optional(__S(206, __c25, 6)),
+          web3_wallet: S.optional(__S(6, __c0, 6)),
           username: S.optional(S.NullOr(S.String)),
           password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           password_digest: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -15535,10 +12410,10 @@ function __c25(j: number): any {
           skip_password_requirement: S.optional(S.NullOr(S.Boolean)),
           skip_restriction_checks: S.optional(S.NullOr(S.Boolean)),
           totp_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          backup_codes: S.optional(CreateUserRequestBackupCodesList),
-          public_metadata: S.optional(CreateUserRequestPublicMetadataMap),
-          private_metadata: S.optional(CreateUserRequestPrivateMetadataMap),
-          unsafe_metadata: S.optional(CreateUserRequestUnsafeMetadataMap),
+          backup_codes: S.optional(__S(6, __c0, 6)),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          private_metadata: S.optional(__S(27, __c3, 3)),
+          unsafe_metadata: S.optional(__S(27, __c3, 3)),
           delete_self_enabled: S.optional(S.NullOr(S.Boolean)),
           legal_accepted_at: S.optional(S.NullOr(S.String)),
           skip_legal_checks: S.optional(S.NullOr(S.Boolean)),
@@ -15594,7 +12469,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          object: DeleteApiKeyResponseObject,
+          object: S.String,
           deleted: S.Boolean,
         }),
       ).annotate({ identifier: "DeleteApiKeyResponse" });
@@ -15648,7 +12523,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: DeleteDirectoryGroupRoleMappingResponseObject,
+          object: S.String,
           id: S.String,
           deleted: S.Boolean,
         }),
@@ -15725,7 +12600,7 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: DeleteMachineResponseObject,
+          object: S.String,
           id: S.String,
           deleted: S.Boolean,
         }),
@@ -15748,7 +12623,7 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: DeleteMachineScopeResponseObject,
+          object: S.String,
           from_machine_id: S.String,
           to_machine_id: S.String,
           deleted: S.Boolean,
@@ -16003,14 +12878,14 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: GetApiKeyResponseObject,
+          object: S.String,
           id: S.String,
           type: S.String,
           subject: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: GetApiKeyResponseScopesList,
+          scopes: __S(6, __c0, 6),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -16035,14 +12910,14 @@ function __c31(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: GetApiKeysResponseDataItemObject,
+          object: S.String,
           id: S.String,
           type: S.String,
           subject: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: GetApiKeysResponseDataItemScopesList,
+          scopes: __S(6, __c0, 6),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -16060,11 +12935,11 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetApiKeysResponseDataItem);
+      return S.Array(__S(255, __c31, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: GetApiKeysResponseDataList,
+          data: __S(256, __c32, 0),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "GetApiKeysResponse" });
@@ -16092,11 +12967,11 @@ function __c32(j: number): any {
         identifier: "GetBillingPriceListRequest",
       });
     case 5:
-      return S.Array(BillingPriceResponse);
+      return S.Array(__S(102, __c12, 6));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: PaginatedBillingPriceResponseDataList,
+          data: __S(261, __c32, 5),
           total_count: S.Number,
         }),
       ).annotate({
@@ -16117,16 +12992,16 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          grand_total: CommerceMoneyResponse,
-          subtotal: CommerceMoneyResponse,
-          base_fee: CommerceMoneyResponse,
-          tax_total: CommerceMoneyResponse,
+          grand_total: __S(14, __c1, 6),
+          subtotal: __S(14, __c1, 6),
+          base_fee: __S(14, __c1, 6),
+          tax_total: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "BillingStatementTotals" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: BillingPaymentAttemptObject,
+          object: S.String,
           id: S.String,
           payment_id: S.String,
           instance_id: S.String,
@@ -16134,17 +13009,17 @@ function __c33(j: number): any {
           payee_id: S.String,
           payee: S.Unknown,
           payer_id: S.String,
-          payer: CommercePayerResponse,
+          payer: __S(78, __c9, 6),
           subscription_item_id: S.optional(S.String),
           subscription_item: S.optional(S.Unknown),
-          amount: CommerceMoneyResponse,
-          totals: S.optional(S.NullOr(CommerceTotalsResponse2)),
+          amount: __S(14, __c1, 6),
+          totals: S.optional(S.NullOr(__S(85, __c10, 5))),
           payment_method_id: S.String,
-          payment_method: CommercePaymentMethodResponse,
+          payment_method: __S(69, __c8, 5),
           statement_id: S.String,
           gateway_external_id: S.NullOr(S.String),
           gateway_external_url: S.NullOr(S.String),
-          status: BillingPaymentAttemptStatus,
+          status: S.String,
           paid_at: S.NullOr(S.Number),
           failed_at: S.NullOr(S.Number),
           created_at: S.Number,
@@ -16152,30 +13027,30 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "BillingPaymentAttempt" });
     case 2:
-      return S.Array(BillingPaymentAttempt);
+      return S.Array(__S(265, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: BillingStatementGroupsItemObject,
+          object: S.String,
           timestamp: S.Number,
-          items: BillingStatementGroupsItemItemsList,
+          items: __S(266, __c33, 2),
         }),
       ).annotate({
         identifier: "BillingStatementGroupsItem",
       });
     case 4:
-      return S.Array(BillingStatementGroupsItem);
+      return S.Array(__S(267, __c33, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: BillingStatementObject,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
           timestamp: S.Number,
-          payer: CommercePayerResponse,
-          status: BillingStatementStatus,
-          totals: BillingStatementTotals,
-          groups: BillingStatementGroupsList,
+          payer: __S(78, __c9, 6),
+          status: S.String,
+          totals: __S(264, __c33, 0),
+          groups: __S(268, __c33, 4),
         }),
       ).annotate({ identifier: "BillingStatement" });
     case 6:
@@ -16189,7 +13064,7 @@ function __c33(j: number): any {
         identifier: "GetBillingStatementListRequest",
       });
     case 7:
-      return S.Array(BillingStatement);
+      return S.Array(__S(269, __c33, 5));
   }
 }
 function __c34(j: number): any {
@@ -16197,7 +13072,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: PaginatedBillingStatementResponseDataList,
+          data: __S(271, __c33, 7),
           total_count: S.Number,
         }),
       ).annotate({
@@ -16223,7 +13098,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: PaginatedBillingPaymentAttemptResponseDataList,
+          data: __S(266, __c33, 2),
           total_count: S.Number,
         }),
       ).annotate({
@@ -16236,14 +13111,14 @@ function __c34(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/clients/{client_id}", code: 200 })),
       ).annotate({ identifier: "GetClientRequest" });
     case 4:
-      return S.Array(Session);
+      return S.Array(__S(193, __c24, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: ClientObject,
+          object: S.String,
           id: S.String,
-          session_ids: ClientSessionIdsList,
-          sessions: ClientSessionsList,
+          session_ids: __S(6, __c0, 6),
+          sessions: __S(276, __c34, 4),
           sign_in_id: S.NullOr(S.String),
           sign_up_id: S.NullOr(S.String),
           last_active_session_id: S.NullOr(S.String),
@@ -16258,13 +13133,13 @@ function __c34(j: number): any {
           paginated: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          payer_type: S.optional(GetCommercePlanListRequestPayerType.pipe(T.Query())),
+          payer_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/billing/plans", code: 200 })),
       ).annotate({
         identifier: "GetCommercePlanListRequest",
       });
     case 7:
-      return S.Array(CommercePlan);
+      return S.Array(__S(68, __c8, 4));
   }
 }
 function __c35(j: number): any {
@@ -16272,7 +13147,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: PaginatedCommercePlanResponseDataList,
+          data: __S(279, __c34, 7),
           total_count: S.Number,
         }),
       ).annotate({
@@ -16284,8 +13159,8 @@ function __c35(j: number): any {
           paginated: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(GetCommerceSubscriptionItemListRequestStatus.pipe(T.Query())),
-          payer_type: S.optional(GetCommerceSubscriptionItemListRequestPayerType.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          payer_type: S.optional(S.String.pipe(T.Query())),
           plan_id: S.optional(S.String.pipe(T.Query())),
           include_free: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
@@ -16294,11 +13169,11 @@ function __c35(j: number): any {
         identifier: "GetCommerceSubscriptionItemListRequest",
       });
     case 2:
-      return S.Array(CommerceSubscriptionItem);
+      return S.Array(__S(86, __c10, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: PaginatedCommerceSubscriptionItemResponseDataList,
+          data: __S(282, __c35, 2),
           total_count: S.Number,
         }),
       ).annotate({
@@ -16341,11 +13216,11 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          object: InstanceObject,
+          object: S.String,
           id: S.String,
           environment_type: S.String,
-          allowed_origins: S.NullOr(InstanceAllowedOriginsList),
-          allowed_subdomains: InstanceAllowedSubdomainsList,
+          allowed_origins: S.NullOr(__S(6, __c0, 6)),
+          allowed_subdomains: __S(6, __c0, 6),
           subdomain_allowlist_enabled: S.Boolean,
           workspace_id: S.NullOr(S.String),
         }),
@@ -16359,8 +13234,8 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: InstanceCommunicationObject,
-          blocked_country_codes: InstanceCommunicationBlockedCountryCodesList,
+          object: S.String,
+          blocked_country_codes: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "InstanceCommunication" });
     case 3:
@@ -16374,9 +13249,9 @@ function __c36(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: OAuthApplicationSettingsObject,
+          object: S.String,
           dynamic_oauth_client_registration: S.Boolean,
-          default_scopes: S.NullOr(OAuthApplicationSettingsDefaultScopesList),
+          default_scopes: S.NullOr(__S(6, __c0, 6)),
           oauth_jwt_access_tokens: S.Boolean,
           aud_claim_enabled: S.Boolean,
           pkce_required: S.Boolean,
@@ -16396,7 +13271,7 @@ function __c36(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: OrganizationSettingsObject,
+          object: S.String,
           enabled: S.Boolean,
           max_allowed_memberships: S.Number,
           max_allowed_roles: S.Number,
@@ -16407,7 +13282,7 @@ function __c36(j: number): any {
           admin_delete_enabled: S.Boolean,
           domains_enabled: S.Boolean,
           slug_disabled: S.optional(S.Boolean),
-          domains_enrollment_modes: OrganizationSettingsDomainsEnrollmentModesList,
+          domains_enrollment_modes: __S(206, __c25, 6),
           domains_default_role: S.String,
           initial_role_set_key: S.optional(S.NullOr(S.String)),
         }),
@@ -16425,7 +13300,7 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          object: InstanceProtectObject,
+          object: S.String,
           rules_enabled: S.Boolean,
           specter_enabled: S.Boolean,
           checks_bypassed: S.Boolean,
@@ -16450,11 +13325,11 @@ function __c37(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/jwks", code: 200 })),
       ).annotate({ identifier: "GetJWKSRequest" });
     case 3:
-      return S.Array(JWKSKeysItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(JWKSKeysList),
+          keys: S.optional(__S(299, __c37, 3)),
         }),
       ).annotate({ identifier: "JWKS" });
     case 5:
@@ -16476,11 +13351,11 @@ function __c37(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: GetM2MTokensResponseM2mTokensItemObject,
+          object: S.String,
           id: S.String,
           subject: S.String,
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(GetM2MTokensResponseM2mTokensItemScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -16497,11 +13372,11 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetM2MTokensResponseM2mTokensItem);
+      return S.Array(__S(303, __c37, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          m2m_tokens: GetM2MTokensResponseM2mTokensList,
+          m2m_tokens: __S(304, __c38, 0),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "GetM2MTokensResponse" });
@@ -16514,14 +13389,14 @@ function __c38(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: GetMachineResponseObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           instance_id: S.String,
           created_at: S.Number,
           updated_at: S.Number,
           default_token_ttl: S.optional(S.Number),
-          scoped_machines: GetMachineResponseScopedMachinesList,
+          scoped_machines: __S(156, __c19, 4),
         }),
       ).annotate({ identifier: "GetMachineResponse" });
     case 4:
@@ -16535,7 +13410,7 @@ function __c38(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: GetMachineSecretKeyResponseObject,
+          object: S.String,
           secret: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({
@@ -16562,15 +13437,15 @@ function __c38(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: OAuthAccessTokenItemObject,
+          object: S.String,
           external_account_id: S.String,
           provider_user_id: S.String,
           token: S.String,
           expires_at: S.NullOr(S.Number),
           provider: S.String,
-          public_metadata: OAuthAccessTokenItemPublicMetadataMap,
+          public_metadata: __S(27, __c3, 3),
           label: S.NullOr(S.String),
-          scopes: S.optional(OAuthAccessTokenItemScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           id_token: S.optional(S.String),
           token_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
@@ -16580,9 +13455,9 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OAuthAccessTokenItem);
+      return S.Array(__S(311, __c38, 7));
     case 1:
-      return S.suspend(() => OAuthAccessToken.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(312, __c39, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOAuthAccessTokenResponse",
       });
     case 2:
@@ -16598,7 +13473,7 @@ function __c39(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: OAuthApplicationObject,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
           name: S.String,
@@ -16611,7 +13486,7 @@ function __c39(j: number): any {
           device_authorization_grant_enabled: S.Boolean,
           public: S.Boolean,
           scopes: S.String,
-          redirect_uris: OAuthApplicationRedirectUrisList,
+          redirect_uris: __S(6, __c0, 6),
           callback_url: S.String,
           authorize_url: S.String,
           token_fetch_url: S.String,
@@ -16648,7 +13523,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          balance: S.NullOr(CommerceMoneyResponse),
+          balance: S.NullOr(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "CommerceCreditBalanceResponse",
@@ -16675,9 +13550,9 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           date: S.Number,
-          amount: CommerceMoneyResponse,
-          per_unit_totals: S.optional(CommerceSubscriptionNextPaymentPerUnitTotalsList),
-          totals: S.optional(S.NullOr(CommerceTotalsResponse2)),
+          amount: __S(14, __c1, 6),
+          per_unit_totals: S.optional(__S(83, __c10, 3)),
+          totals: S.optional(S.NullOr(__S(85, __c10, 5))),
         }),
       ).annotate({
         identifier: "CommerceSubscriptionNextPayment",
@@ -16685,17 +13560,17 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: CommerceSubscriptionObject,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
-          status: CommerceSubscriptionStatus,
+          status: S.String,
           payer_id: S.String,
           created_at: S.Number,
           updated_at: S.Number,
           active_at: S.NullOr(S.Number),
           past_due_at: S.NullOr(S.Number),
-          subscription_items: CommerceSubscriptionSubscriptionItemsList,
-          next_payment: S.optional(CommerceSubscriptionNextPayment),
+          subscription_items: __S(282, __c35, 2),
+          next_payment: S.optional(__S(320, __c40, 0)),
           eligible_for_free_trial: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CommerceSubscription" });
@@ -16766,12 +13641,12 @@ function __c41(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          object: ReverificationObject,
+          object: S.String,
           id: S.String,
           session_id: S.String,
           user_id: S.String,
-          level: ReverificationLevel,
-          status: ReverificationStatus,
+          level: S.String,
+          status: S.String,
           first_factor_verified_at: S.NullOr(S.Number),
           second_factor_verified_at: S.NullOr(S.Number),
           created_at: S.Number,
@@ -16801,14 +13676,14 @@ function __c41(j: number): any {
         S.Struct({
           client_id: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(GetSessionListRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           paginated: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/sessions", code: 200 })),
       ).annotate({ identifier: "GetSessionListRequest" });
     case 5:
-      return S.suspend(() => GetSessionListResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(276, __c34, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSessionListResponse",
       });
     case 6:
@@ -16820,8 +13695,8 @@ function __c41(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          next_action: S.optional(SignUpVerificationNextAction),
-          supported_strategies: S.optional(SignUpVerificationSupportedStrategiesList),
+          next_action: S.optional(S.String),
+          supported_strategies: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "SignUpVerification" });
   }
@@ -16831,23 +13706,23 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          email_address: S.NullOr(SignUpVerification),
-          phone_number: S.NullOr(SignUpVerification),
-          web3_wallet: S.NullOr(SignUpVerification),
+          email_address: S.NullOr(__S(335, __c41, 7)),
+          phone_number: S.NullOr(__S(335, __c41, 7)),
+          web3_wallet: S.NullOr(__S(335, __c41, 7)),
           external_account: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "SignUpVerifications" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: SignUpObject,
+          object: S.String,
           id: S.String,
-          status: SignUpStatus,
-          required_fields: SignUpRequiredFieldsList,
-          optional_fields: SignUpOptionalFieldsList,
-          missing_fields: SignUpMissingFieldsList,
-          unverified_fields: SignUpUnverifiedFieldsList,
-          verifications: SignUpVerifications,
+          status: S.String,
+          required_fields: __S(6, __c0, 6),
+          optional_fields: __S(6, __c0, 6),
+          missing_fields: __S(6, __c0, 6),
+          unverified_fields: __S(6, __c0, 6),
+          verifications: __S(336, __c42, 0),
           username: S.NullOr(S.String),
           email_address: S.NullOr(S.String),
           phone_number: S.NullOr(S.String),
@@ -16855,8 +13730,8 @@ function __c42(j: number): any {
           password_enabled: S.Boolean,
           first_name: S.NullOr(S.String),
           last_name: S.NullOr(S.String),
-          unsafe_metadata: S.optional(SignUpUnsafeMetadataMap),
-          public_metadata: S.optional(SignUpPublicMetadataMap),
+          unsafe_metadata: S.optional(__S(27, __c3, 3)),
+          public_metadata: S.optional(__S(27, __c3, 3)),
           custom_action: S.Boolean,
           external_id: S.NullOr(S.String),
           created_session_id: S.NullOr(S.String),
@@ -16893,13 +13768,13 @@ function __c42(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          email_address: S.optional(GetUserListRequestEmailAddressList.pipe(T.Query())),
-          phone_number: S.optional(GetUserListRequestPhoneNumberList.pipe(T.Query())),
-          external_id: S.optional(GetUserListRequestExternalIdList.pipe(T.Query())),
-          username: S.optional(GetUserListRequestUsernameList.pipe(T.Query())),
-          web3_wallet: S.optional(GetUserListRequestWeb3WalletList.pipe(T.Query())),
-          user_id: S.optional(GetUserListRequestUserIdList.pipe(T.Query())),
-          organization_id: S.optional(GetUserListRequestOrganizationIdList.pipe(T.Query())),
+          email_address: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          phone_number: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          external_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          username: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          web3_wallet: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          organization_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           email_address_query: S.optional(S.String.pipe(T.Query())),
           phone_number_query: S.optional(S.String.pipe(T.Query())),
@@ -16914,7 +13789,7 @@ function __c42(j: number): any {
           last_sign_in_at_before: S.optional(S.Number.pipe(T.Query())),
           last_sign_in_at_after: S.optional(S.Number.pipe(T.Query())),
           provider: S.optional(S.String.pipe(T.Query())),
-          provider_user_id: S.optional(GetUserListRequestProviderUserIdList.pipe(T.Query())),
+          provider_user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           starting_after: S.optional(S.String.pipe(T.Query())),
@@ -16924,13 +13799,13 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          email_address: S.optional(GetUsersCountRequestEmailAddressList.pipe(T.Query())),
-          phone_number: S.optional(GetUsersCountRequestPhoneNumberList.pipe(T.Query())),
-          external_id: S.optional(GetUsersCountRequestExternalIdList.pipe(T.Query())),
-          username: S.optional(GetUsersCountRequestUsernameList.pipe(T.Query())),
-          web3_wallet: S.optional(GetUsersCountRequestWeb3WalletList.pipe(T.Query())),
-          user_id: S.optional(GetUsersCountRequestUserIdList.pipe(T.Query())),
-          organization_id: S.optional(GetUsersCountRequestOrganizationIdList.pipe(T.Query())),
+          email_address: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          phone_number: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          external_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          username: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          web3_wallet: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          organization_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           email_address_query: S.optional(S.String.pipe(T.Query())),
           phone_number_query: S.optional(S.String.pipe(T.Query())),
@@ -16945,13 +13820,13 @@ function __c42(j: number): any {
           last_sign_in_at_before: S.optional(S.Number.pipe(T.Query())),
           last_sign_in_at_after: S.optional(S.Number.pipe(T.Query())),
           provider: S.optional(S.String.pipe(T.Query())),
-          provider_user_id: S.optional(GetUsersCountRequestProviderUserIdList.pipe(T.Query())),
+          provider_user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/count", code: 200 })),
       ).annotate({ identifier: "GetUsersCountRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: TotalCountObject,
+          object: S.String,
           total_count: S.Number,
         }),
       ).annotate({ identifier: "TotalCount" });
@@ -16972,7 +13847,7 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: OrganizationMembershipsDataList,
+          data: __S(48, __c6, 0),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "OrganizationMemberships" });
@@ -16996,11 +13871,9 @@ function __c43(j: number): any {
         S.Struct({
           organization_id: S.optional(S.String.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
-          enrollment_mode: S.optional(
-            ListAllOrganizationDomainsRequestEnrollmentModeList.pipe(T.Query()),
-          ),
+          enrollment_mode: S.optional(__S(206, __c25, 6).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          domains: S.optional(ListAllOrganizationDomainsRequestDomainsList.pipe(T.Query())),
+          domains: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           order_by: S.optional(S.String.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -17009,11 +13882,11 @@ function __c43(j: number): any {
         identifier: "ListAllOrganizationDomainsRequest",
       });
     case 4:
-      return S.Array(OrganizationDomain);
+      return S.Array(__S(166, __c20, 6));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: OrganizationDomainsDataList,
+          data: __S(348, __c43, 4),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "OrganizationDomains" });
@@ -17028,15 +13901,13 @@ function __c43(j: number): any {
         identifier: "ListAllowlistIdentifiersRequest",
       });
     case 7:
-      return S.Array(AllowlistIdentifier);
+      return S.Array(__S(98, __c12, 2));
   }
 }
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListAllowlistIdentifiersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(351, __c43, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAllowlistIdentifiersResponse",
       });
     case 1:
@@ -17046,11 +13917,11 @@ function __c44(j: number): any {
         identifier: "ListBlocklistIdentifiersRequest",
       });
     case 2:
-      return S.Array(BlocklistIdentifier);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: BlocklistIdentifiersDataList,
+          data: __S(354, __c44, 2),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "BlocklistIdentifiers" });
@@ -17062,11 +13933,11 @@ function __c44(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/directories", code: 200 })),
       ).annotate({ identifier: "ListDirectoriesRequest" });
     case 5:
-      return S.Array(Directory);
+      return S.Array(__S(131, __c16, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: Directories,
+          data: __S(357, __c44, 5),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "ListDirectoriesResponse" });
@@ -17089,11 +13960,11 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DirectoryGroupRoleMapping);
+      return S.Array(__S(133, __c16, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: DirectoryGroupRoleMappings,
+          data: __S(360, __c45, 0),
           total_count: S.Number,
         }),
       ).annotate({
@@ -17104,11 +13975,11 @@ function __c45(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domains", code: 200 })),
       ).annotate({ identifier: "ListDomainsRequest" });
     case 3:
-      return S.Array(Domain);
+      return S.Array(__S(5, __c0, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: DomainsDataList,
+          data: __S(363, __c45, 3),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "Domains" });
@@ -17124,11 +13995,11 @@ function __c45(j: number): any {
         identifier: "ListEnterpriseConnectionsRequest",
       });
     case 6:
-      return S.Array(EnterpriseConnection);
+      return S.Array(__S(146, __c18, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: EnterpriseConnectionsDataList,
+          data: __S(366, __c45, 6),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "EnterpriseConnections" });
@@ -17140,7 +14011,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterprise_connection_id: S.String.pipe(T.Label()),
-          status: S.optional(ListEnterpriseConnectionTestRunsRequestStatusList.pipe(T.Query())),
+          status: S.optional(__S(206, __c25, 6).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -17176,7 +14047,7 @@ function __c46(j: number): any {
         identifier: "EnterpriseConnectionTestRunLogsItem",
       });
     case 3:
-      return S.Array(EnterpriseConnectionTestRunLogsItem);
+      return S.Array(__S(370, __c46, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -17201,19 +14072,19 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: EnterpriseConnectionTestRunStatus,
-          connection_type: EnterpriseConnectionTestRunConnectionType,
-          parsed_user_info: S.optional(S.NullOr(EnterpriseConnectionTestRunParsedUserInfo)),
-          logs: S.optional(EnterpriseConnectionTestRunLogsList),
-          saml: S.optional(S.NullOr(EnterpriseConnectionTestRunSaml)),
-          oauth: S.optional(S.NullOr(EnterpriseConnectionTestRunOauth)),
+          status: S.String,
+          connection_type: S.String,
+          parsed_user_info: S.optional(S.NullOr(__S(369, __c46, 1))),
+          logs: S.optional(__S(371, __c46, 3)),
+          saml: S.optional(S.NullOr(__S(372, __c46, 4))),
+          oauth: S.optional(S.NullOr(__S(373, __c46, 5))),
           created_at: S.Number,
         }),
       ).annotate({
         identifier: "EnterpriseConnectionTestRun",
       });
     case 7:
-      return S.Array(EnterpriseConnectionTestRun);
+      return S.Array(__S(374, __c46, 6));
   }
 }
 function __c47(j: number): any {
@@ -17221,7 +14092,7 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: EnterpriseConnectionTestRunsDataList,
+          data: __S(375, __c46, 7),
           total_count: S.Number,
         }),
       ).annotate({
@@ -17231,7 +14102,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           order_by: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListInstanceOrganizationInvitationsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
@@ -17242,34 +14113,32 @@ function __c47(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: OrganizationInvitationWithPublicOrganizationDataObject,
+          object: S.String,
           id: S.String,
           email_address: S.String,
           role: S.String,
           role_name: S.String,
           organization_id: S.optional(S.String),
           inviter_id: S.NullOr(S.String),
-          public_inviter_data: S.NullOr(OrganizationInvitationPublicUserData),
+          public_inviter_data: S.NullOr(__S(168, __c21, 0)),
           status: S.optional(S.String),
-          public_metadata: OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap,
-          private_metadata: S.optional(
-            OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap,
-          ),
+          public_metadata: __S(170, __c21, 2),
+          private_metadata: S.optional(__S(170, __c21, 2)),
           url: S.NullOr(S.String),
           expires_at: S.NullOr(S.Number),
           created_at: S.Number,
           updated_at: S.Number,
-          public_organization_data: S.optional(OrganizationInvitationPublicOrganizationData),
+          public_organization_data: S.optional(__S(165, __c20, 5)),
         }),
       ).annotate({
         identifier: "OrganizationInvitationWithPublicOrganizationData",
       });
     case 3:
-      return S.Array(OrganizationInvitationWithPublicOrganizationData);
+      return S.Array(__S(378, __c47, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: OrganizationInvitationsWithPublicOrganizationDataDataList,
+          data: __S(379, __c47, 3),
           total_count: S.Number,
         }),
       ).annotate({
@@ -17278,7 +14147,7 @@ function __c47(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ListInvitationsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           order_by: S.optional(S.String.pipe(T.Query())),
           paginated: S.optional(S.Boolean.pipe(T.Query())),
@@ -17287,7 +14156,7 @@ function __c47(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/invitations", code: 200 })),
       ).annotate({ identifier: "ListInvitationsRequest" });
     case 6:
-      return S.suspend(() => ListInvitationsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(118, __c14, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListInvitationsResponse",
       });
     case 7:
@@ -17303,9 +14172,9 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(JWTTemplate);
+      return S.Array(__S(151, __c18, 7));
     case 1:
-      return S.suspend(() => ListJWTTemplatesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(384, __c48, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListJWTTemplatesResponse",
       });
     case 2:
@@ -17320,22 +14189,22 @@ function __c48(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: MachineObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           instance_id: S.String,
           created_at: S.Number,
           updated_at: S.Number,
           default_token_ttl: S.optional(S.Number),
-          scoped_machines: MachineScopedMachinesList,
+          scoped_machines: __S(156, __c19, 4),
         }),
       ).annotate({ identifier: "Machine" });
     case 4:
-      return S.Array(Machine);
+      return S.Array(__S(387, __c48, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListMachinesResponseDataList,
+          data: __S(388, __c48, 4),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "ListMachinesResponse" });
@@ -17351,7 +14220,7 @@ function __c48(j: number): any {
         identifier: "ListOAuthApplicationsRequest",
       });
     case 7:
-      return S.Array(OAuthApplication);
+      return S.Array(__S(315, __c39, 3));
   }
 }
 function __c49(j: number): any {
@@ -17359,7 +14228,7 @@ function __c49(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: OAuthApplicationsDataList,
+          data: __S(391, __c48, 7),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "OAuthApplications" });
@@ -17381,7 +14250,7 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
-          status: S.optional(ListOrganizationInvitationsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           email_address: S.optional(S.String.pipe(T.Query())),
           order_by: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -17397,16 +14266,12 @@ function __c49(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           order_by: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(ListOrganizationMembershipsRequestUserIdList.pipe(T.Query())),
-          email_address: S.optional(
-            ListOrganizationMembershipsRequestEmailAddressList.pipe(T.Query()),
-          ),
-          phone_number: S.optional(
-            ListOrganizationMembershipsRequestPhoneNumberList.pipe(T.Query()),
-          ),
-          username: S.optional(ListOrganizationMembershipsRequestUsernameList.pipe(T.Query())),
-          web3_wallet: S.optional(ListOrganizationMembershipsRequestWeb3WalletList.pipe(T.Query())),
-          role: S.optional(ListOrganizationMembershipsRequestRoleList.pipe(T.Query())),
+          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          email_address: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          phone_number: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          username: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          web3_wallet: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          role: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           email_address_query: S.optional(S.String.pipe(T.Query())),
           phone_number_query: S.optional(S.String.pipe(T.Query())),
@@ -17438,7 +14303,7 @@ function __c49(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: PermissionsDataList,
+          data: __S(21, __c2, 5),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "Permissions" });
@@ -17454,7 +14319,7 @@ function __c49(j: number): any {
         identifier: "ListOrganizationRolesRequest",
       });
     case 7:
-      return S.Array(Role);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c50(j: number): any {
@@ -17462,7 +14327,7 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: RolesDataList,
+          data: __S(399, __c49, 7),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "Roles" });
@@ -17472,19 +14337,19 @@ function __c50(j: number): any {
           include_members_count: S.optional(S.Boolean.pipe(T.Query())),
           include_missing_member_with_elevated_permissions: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(ListOrganizationsRequestUserIdList.pipe(T.Query())),
-          organization_id: S.optional(ListOrganizationsRequestOrganizationIdList.pipe(T.Query())),
+          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          organization_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           order_by: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
       ).annotate({ identifier: "ListOrganizationsRequest" });
     case 2:
-      return S.Array(Organization);
+      return S.Array(__S(45, __c5, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: OrganizationsDataList,
+          data: __S(402, __c50, 2),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "Organizations" });
@@ -17497,9 +14362,9 @@ function __c50(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/redirect_urls", code: 200 })),
       ).annotate({ identifier: "ListRedirectURLsRequest" });
     case 5:
-      return S.Array(RedirectURL);
+      return S.Array(__S(181, __c22, 5));
     case 6:
-      return S.suspend(() => ListRedirectURLsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(405, __c50, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRedirectURLsResponse",
       });
     case 7:
@@ -17516,11 +14381,11 @@ function __c50(j: number): any {
 function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RoleSet);
+      return S.Array(__S(12, __c1, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: RoleSetsDataList,
+          data: __S(408, __c51, 0),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "RoleSets" });
@@ -17534,11 +14399,11 @@ function __c51(j: number): any {
         identifier: "ListSCIMDirectoriesRequest",
       });
     case 3:
-      return S.Array(SCIMDirectory);
+      return S.Array(__S(186, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: SCIMDirectories,
+          data: __S(411, __c51, 3),
           total_count: S.Number,
         }),
       ).annotate({
@@ -17559,11 +14424,11 @@ function __c51(j: number): any {
         identifier: "ListSCIMGroupRoleMappingsRequest",
       });
     case 6:
-      return S.Array(SCIMGroupRoleMapping);
+      return S.Array(__S(188, __c23, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: SCIMGroupRoleMappings,
+          data: __S(414, __c51, 6),
           total_count: S.Number,
         }),
       ).annotate({
@@ -17582,9 +14447,9 @@ function __c52(j: number): any {
         identifier: "ListSSOBypassAllowlistUsersRequest",
       });
     case 1:
-      return S.Array(SSOBypassAllowlistUser);
+      return S.Array(__S(201, __c25, 1));
     case 2:
-      return S.suspend(() => SSOBypassAllowlistUsers.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(417, __c52, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSSOBypassAllowlistUsersResponse",
       });
     case 3:
@@ -17600,13 +14465,13 @@ function __c52(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: BiometricCredentialObject,
+          object: S.String,
           id: S.String,
-          platform: BiometricCredentialPlatform,
+          platform: S.String,
           app_identifier: S.String,
           name: S.optional(S.NullOr(S.String)),
-          algorithm: BiometricCredentialAlgorithm,
-          status: BiometricCredentialStatus,
+          algorithm: S.String,
+          status: S.String,
           created_at: S.Number,
           updated_at: S.Number,
           last_used_at: S.optional(S.NullOr(S.Number)),
@@ -17614,11 +14479,11 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "BiometricCredential" });
     case 5:
-      return S.Array(BiometricCredential);
+      return S.Array(__S(420, __c52, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ListUserBiometricCredentialsResponseDataList,
+          data: __S(421, __c52, 5),
           total_count: S.Number,
         }),
       ).annotate({
@@ -17630,7 +14495,7 @@ function __c52(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListWaitlistEntriesRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           order_by: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries", code: 200 })),
       ).annotate({
@@ -17643,7 +14508,7 @@ function __c53(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ListWaitlistEntriesResponseDataList,
+          data: __S(124, __c15, 4),
           total_count: S.Number,
         }),
       ).annotate({
@@ -17659,8 +14524,8 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(MergeOrganizationMetadataRequestPublicMetadataMap),
-          private_metadata: S.optional(MergeOrganizationMetadataRequestPrivateMetadataMap),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          private_metadata: S.optional(__S(27, __c3, 3)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/organizations/{organization_id}/metadata", code: 200 }),
         ),
@@ -17702,13 +14567,13 @@ function __c53(j: number): any {
           expired_token: S.String,
           refresh_token: S.String.pipe(T.SensitiveValue({})),
           request_origin: S.String,
-          request_headers: S.optional(S.NullOr(RefreshSessionRequestRequestHeadersMap)),
-          format: S.optional(S.NullOr(RefreshSessionRequestFormat)),
+          request_headers: S.optional(S.NullOr(__S(27, __c3, 3))),
+          format: S.optional(S.NullOr(S.String)),
           request_originating_ip: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/sessions/{session_id}/refresh", code: 200 })),
       ).annotate({ identifier: "RefreshSessionRequest" });
     case 6:
-      return S.suspend(() => SessionRefresh.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "RefreshSessionResponse",
       });
     case 7:
@@ -17779,12 +14644,12 @@ function __c54(j: number): any {
         identifier: "ReplaceDirectoryGroupRoleMappingsRequestMappingsItem",
       });
     case 4:
-      return S.Array(ReplaceDirectoryGroupRoleMappingsRequestMappingsItem);
+      return S.Array(__S(435, __c54, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           directory_id: S.String.pipe(T.Label()),
-          mappings: ReplaceDirectoryGroupRoleMappingsRequestMappingsList,
+          mappings: __S(436, __c54, 4),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17799,8 +14664,8 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(ReplaceOrganizationMetadataRequestPublicMetadataMap),
-          private_metadata: S.optional(ReplaceOrganizationMetadataRequestPrivateMetadataMap),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          private_metadata: S.optional(__S(27, __c3, 3)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/organizations/{organization_id}/metadata", code: 200 }),
         ),
@@ -17832,7 +14697,7 @@ function __c55(j: number): any {
         S.Struct({
           role_set_key_or_id: S.String.pipe(T.Label()),
           dest_role_set_key: S.String,
-          reassignment_mappings: S.optional(ReassignmentMappings),
+          reassignment_mappings: S.optional(__S(10, __c1, 2)),
         }).pipe(
           T.Http({ method: "POST", uri: "/role_sets/{role_set_key_or_id}/replace", code: 200 }),
         ),
@@ -17847,12 +14712,12 @@ function __c55(j: number): any {
         identifier: "ReplaceSCIMGroupRoleMappingsRequestMappingsItem",
       });
     case 2:
-      return S.Array(ReplaceSCIMGroupRoleMappingsRequestMappingsItem);
+      return S.Array(__S(441, __c55, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           scim_directory_id: S.String.pipe(T.Label()),
-          mappings: ReplaceSCIMGroupRoleMappingsRequestMappingsList,
+          mappings: __S(442, __c55, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17868,7 +14733,7 @@ function __c55(j: number): any {
         S.Struct({
           user_id: S.String.pipe(T.Label()),
           email_address: S.String,
-          identification_status: S.optional(ReplaceUserEmailAddressRequestIdentificationStatus),
+          identification_status: S.optional(S.String),
           notify_primary_email_address_changed: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/email_address", code: 200 })),
       ).annotate({
@@ -17878,9 +14743,9 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(ReplaceUserMetadataRequestPublicMetadataMap),
-          private_metadata: S.optional(ReplaceUserMetadataRequestPrivateMetadataMap),
-          unsafe_metadata: S.optional(ReplaceUserMetadataRequestUnsafeMetadataMap),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          private_metadata: S.optional(__S(27, __c3, 3)),
+          unsafe_metadata: S.optional(__S(27, __c3, 3)),
         }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/metadata", code: 200 })),
       ).annotate({
         identifier: "ReplaceUserMetadataRequest",
@@ -17890,7 +14755,7 @@ function __c55(j: number): any {
         S.Struct({
           user_id: S.String.pipe(T.Label()),
           phone_number: S.String,
-          identification_status: S.optional(ReplaceUserPhoneNumberRequestIdentificationStatus),
+          identification_status: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/phone_number", code: 200 })),
       ).annotate({
         identifier: "ReplaceUserPhoneNumberRequest",
@@ -17925,13 +14790,13 @@ function __c56(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: RevokeAdminPortalLinkTokenResponseObject,
+          object: S.String,
           id: S.String,
           admin_portal_link_id: S.String,
           instance_id: S.String,
           organization_id: S.NullOr(S.String),
           it_contact_id: S.NullOr(S.String),
-          scopes: S.NullOr(RevokeAdminPortalLinkTokenResponseScopesList),
+          scopes: S.NullOr(__S(6, __c0, 6)),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -17958,14 +14823,14 @@ function __c56(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: RevokeApiKeyResponseObject,
+          object: S.String,
           id: S.String,
           type: S.String,
           subject: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: RevokeApiKeyResponseScopesList,
+          scopes: __S(6, __c0, 6),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -17985,12 +14850,12 @@ function __c56(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: RevokeInvitationResponseObject,
+          object: S.String,
           id: S.String,
           email_address: S.String,
-          public_metadata: RevokeInvitationResponsePublicMetadataMap,
+          public_metadata: __S(27, __c3, 3),
           revoked: S.optional(S.Boolean),
-          status: RevokeInvitationResponseStatus,
+          status: S.String,
           url: S.optional(S.String),
           expires_at: S.optional(S.NullOr(S.Number)),
           created_at: S.Number,
@@ -18011,11 +14876,11 @@ function __c57(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          object: RevokeM2MTokenResponseObject,
+          object: S.String,
           id: S.String,
           subject: S.String,
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(RevokeM2MTokenResponseScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -18127,7 +14992,7 @@ function __c58(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: RotateOAuthApplicationSecretResponseObject,
+          object: S.String,
           id: S.String,
           instance_id: S.String,
           name: S.String,
@@ -18140,7 +15005,7 @@ function __c58(j: number): any {
           device_authorization_grant_enabled: S.Boolean,
           public: S.Boolean,
           scopes: S.String,
-          redirect_uris: RotateOAuthApplicationSecretResponseRedirectUrisList,
+          redirect_uris: __S(6, __c0, 6),
           callback_url: S.String,
           authorize_url: S.String,
           token_fetch_url: S.String,
@@ -18204,7 +15069,7 @@ function __c58(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user_ids: UnbanUserRequestUserIdsList,
+          user_ids: __S(6, __c0, 6),
         }).pipe(T.Http({ method: "POST", uri: "/users/unban", code: 200 })),
       ).annotate({ identifier: "UnbanUserRequest2" });
     case 7:
@@ -18232,7 +15097,7 @@ function __c59(j: number): any {
         S.Struct({
           apiKeyID: S.String.pipe(T.Label()),
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(UpdateApiKeyRequestScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           description: S.optional(S.NullOr(S.String)),
           subject: S.optional(S.String),
           seconds_until_expiration: S.optional(S.NullOr(S.Number)),
@@ -18241,14 +15106,14 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: UpdateApiKeyResponseObject,
+          object: S.String,
           id: S.String,
           type: S.String,
           subject: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: UpdateApiKeyResponseScopesList,
+          scopes: __S(6, __c0, 6),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -18268,7 +15133,7 @@ function __c59(j: number): any {
           name: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           provider: S.optional(S.String),
-          attribute_mapping: S.optional(UpdateDirectoryRequestAttributeMappingMap),
+          attribute_mapping: S.optional(__S(475, __c59, 3)),
           group_role_mapping_enabled: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/directories/{directory_id}", code: 200 })),
       ).annotate({ identifier: "UpdateDirectoryRequest" });
@@ -18299,16 +15164,14 @@ function __c59(j: number): any {
           idp_entity_id: S.optional(S.NullOr(S.String)),
           idp_sso_url: S.optional(S.NullOr(S.String)),
           idp_certificate: S.optional(S.NullOr(S.String)),
-          idp_certificates: S.optional(UpdateEnterpriseConnectionRequestSamlIdpCertificatesList),
+          idp_certificates: S.optional(__S(6, __c0, 6)),
           idp_metadata_url: S.optional(S.NullOr(S.String)),
           idp_metadata: S.optional(S.NullOr(S.String)),
-          attribute_mapping: S.optional(
-            S.NullOr(CreateEnterpriseConnectionRequestSamlAttributeMapping),
-          ),
+          attribute_mapping: S.optional(S.NullOr(__S(135, __c16, 7))),
           allow_subdomains: S.optional(S.NullOr(S.Boolean)),
           allow_idp_initiated: S.optional(S.NullOr(S.Boolean)),
           force_authn: S.optional(S.NullOr(S.Boolean)),
-          login_hint: S.optional(S.NullOr(UpdateEnterpriseConnectionRequestSamlLoginHint)),
+          login_hint: S.optional(S.NullOr(__S(136, __c17, 0))),
         }),
       ).annotate({
         identifier: "UpdateEnterpriseConnectionRequestSaml",
@@ -18322,17 +15185,15 @@ function __c60(j: number): any {
         S.Struct({
           enterprise_connection_id: S.String.pipe(T.Label()),
           name: S.optional(S.NullOr(S.String)),
-          domains: S.optional(S.NullOr(UpdateEnterpriseConnectionRequestDomainsList)),
+          domains: S.optional(S.NullOr(__S(6, __c0, 6))),
           active: S.optional(S.NullOr(S.Boolean)),
           sync_user_attributes: S.optional(S.NullOr(S.Boolean)),
           disable_additional_identifications: S.optional(S.NullOr(S.Boolean)),
           allow_organization_account_linking: S.optional(S.NullOr(S.Boolean)),
           organization_id: S.optional(S.NullOr(S.String)),
-          saml: S.optional(S.NullOr(UpdateEnterpriseConnectionRequestSaml)),
-          oidc: S.optional(S.NullOr(CreateEnterpriseConnectionRequestOidc)),
-          custom_attributes: S.optional(
-            S.NullOr(UpdateEnterpriseConnectionRequestCustomAttributesList),
-          ),
+          saml: S.optional(S.NullOr(__S(479, __c59, 7))),
+          oidc: S.optional(S.NullOr(__S(138, __c17, 2))),
+          custom_attributes: S.optional(S.NullOr(__S(140, __c17, 4))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18351,14 +15212,12 @@ function __c60(j: number): any {
           support_email: S.optional(S.NullOr(S.String)),
           clerk_js_version: S.optional(S.NullOr(S.String)),
           development_origin: S.optional(S.NullOr(S.String)),
-          allowed_origins: S.optional(S.NullOr(UpdateInstanceRequestAllowedOriginsList)),
-          allowed_subdomains: S.optional(S.NullOr(UpdateInstanceRequestAllowedSubdomainsList)),
+          allowed_origins: S.optional(S.NullOr(__S(6, __c0, 6))),
+          allowed_subdomains: S.optional(S.NullOr(__S(6, __c0, 6))),
           subdomain_allowlist_enabled: S.optional(S.NullOr(S.Boolean)),
           cookieless_dev: S.optional(S.NullOr(S.Boolean)),
           url_based_session_syncing: S.optional(S.NullOr(S.Boolean)),
-          preferred_sign_in_strategy_when_password_required: S.optional(
-            S.NullOr(UpdateInstanceRequestPreferredSignInStrategyWhenPasswordRequired),
-          ),
+          preferred_sign_in_strategy_when_password_required: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/instance", code: 200 })),
       ).annotate({ identifier: "UpdateInstanceRequest" });
     case 2:
@@ -18375,7 +15234,7 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(UpdateInstanceAuthConfigResponseObject),
+          object: S.optional(S.String),
           id: S.optional(S.String),
           restricted_to_allowlist: S.optional(S.Boolean),
           from_email_address: S.optional(S.String),
@@ -18388,9 +15247,7 @@ function __c60(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          blocked_country_codes: S.optional(
-            S.NullOr(UpdateInstanceCommunicationRequestBlockedCountryCodesList),
-          ),
+          blocked_country_codes: S.optional(S.NullOr(__S(6, __c0, 6))),
         }).pipe(T.Http({ method: "PATCH", uri: "/instance/communication", code: 200 })),
       ).annotate({
         identifier: "UpdateInstanceCommunicationRequest",
@@ -18399,9 +15256,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dynamic_oauth_client_registration: S.optional(S.NullOr(S.Boolean)),
-          default_scopes: S.optional(
-            S.NullOr(UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList),
-          ),
+          default_scopes: S.optional(S.NullOr(__S(6, __c0, 6))),
           oauth_jwt_access_tokens: S.optional(S.NullOr(S.Boolean)),
           aud_claim_enabled: S.optional(S.NullOr(S.Boolean)),
           pkce_required: S.optional(S.NullOr(S.Boolean)),
@@ -18428,9 +15283,7 @@ function __c60(j: number): any {
           admin_delete_enabled: S.optional(S.NullOr(S.Boolean)),
           domains_enabled: S.optional(S.NullOr(S.Boolean)),
           slug_disabled: S.optional(S.NullOr(S.Boolean)),
-          domains_enrollment_modes: S.optional(
-            UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList,
-          ),
+          domains_enrollment_modes: S.optional(__S(486, __c60, 6)),
           creator_role_id: S.optional(S.NullOr(S.String)),
           domains_default_role_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/instance/organization_settings", code: 200 })),
@@ -18465,7 +15318,7 @@ function __c61(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          object: InstanceRestrictionsObject,
+          object: S.String,
           allowlist: S.Boolean,
           blocklist: S.Boolean,
           allowlist_blocklist_disabled_on_sign_in: S.Boolean,
@@ -18497,14 +15350,14 @@ function __c61(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: UpdateMachineResponseObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           instance_id: S.String,
           created_at: S.Number,
           updated_at: S.Number,
           default_token_ttl: S.optional(S.Number),
-          scoped_machines: UpdateMachineResponseScopedMachinesList,
+          scoped_machines: __S(156, __c19, 4),
         }),
       ).annotate({ identifier: "UpdateMachineResponse" });
     case 6:
@@ -18512,7 +15365,7 @@ function __c61(j: number): any {
         S.Struct({
           oauth_application_id: S.String.pipe(T.Label()),
           name: S.optional(S.NullOr(S.String)),
-          redirect_uris: S.optional(S.NullOr(UpdateOAuthApplicationRequestRedirectUrisList)),
+          redirect_uris: S.optional(S.NullOr(__S(6, __c0, 6))),
           callback_url: S.optional(S.NullOr(S.String)),
           scopes: S.optional(S.NullOr(S.String)),
           consent_screen_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -18536,7 +15389,7 @@ function __c61(j: number): any {
           self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
           created_at: S.optional(S.NullOr(S.String)),
           role_set_key: S.optional(S.NullOr(S.String)),
-          reassignment_mappings: S.optional(S.NullOr(ReassignmentMappings)),
+          reassignment_mappings: S.optional(S.NullOr(__S(10, __c1, 2))),
         }).pipe(T.Http({ method: "PATCH", uri: "/organizations/{organization_id}", code: 200 })),
       ).annotate({
         identifier: "UpdateOrganizationRequest",
@@ -18583,10 +15436,8 @@ function __c62(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           user_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(UpdateOrganizationMembershipMetadataRequestPublicMetadataMap),
-          private_metadata: S.optional(
-            UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap,
-          ),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          private_metadata: S.optional(__S(27, __c3, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -18617,7 +15468,7 @@ function __c62(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           key: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(UpdateOrganizationRoleRequestPermissionsList)),
+          permissions: S.optional(S.NullOr(__S(6, __c0, 6))),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/organization_roles/{organization_role_id}", code: 200 }),
         ),
@@ -18640,7 +15491,7 @@ function __c62(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           key: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(UpdateRoleSetRequestType)),
+          type: S.optional(S.NullOr(S.String)),
           default_role_key: S.optional(S.NullOr(S.String)),
           creator_role_key: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/role_sets/{role_set_key_or_id}", code: 200 })),
@@ -18652,7 +15503,7 @@ function __c62(j: number): any {
           name: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           provider: S.optional(S.String),
-          attribute_mapping: S.optional(UpdateSCIMDirectoryRequestAttributeMappingMap),
+          attribute_mapping: S.optional(__S(475, __c59, 3)),
           group_role_mapping_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/scim_directories/{scim_directory_id}", code: 200 }),
@@ -18693,7 +15544,7 @@ function __c63(j: number): any {
           skip_password_checks: S.optional(S.NullOr(S.Boolean)),
           sign_out_of_other_sessions: S.optional(S.NullOr(S.Boolean)),
           totp_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          backup_codes: S.optional(UpdateUserRequestBackupCodesList),
+          backup_codes: S.optional(__S(6, __c0, 6)),
           delete_self_enabled: S.optional(S.NullOr(S.Boolean)),
           create_organization_enabled: S.optional(S.NullOr(S.Boolean)),
           legal_accepted_at: S.optional(S.NullOr(S.String)),
@@ -18707,9 +15558,9 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(UpdateUserMetadataRequestPublicMetadataMap),
-          private_metadata: S.optional(UpdateUserMetadataRequestPrivateMetadataMap),
-          unsafe_metadata: S.optional(UpdateUserMetadataRequestUnsafeMetadataMap),
+          public_metadata: S.optional(__S(27, __c3, 3)),
+          private_metadata: S.optional(__S(27, __c3, 3)),
+          unsafe_metadata: S.optional(__S(27, __c3, 3)),
         }).pipe(T.Http({ method: "PATCH", uri: "/users/{user_id}/metadata", code: 200 })),
       ).annotate({
         identifier: "UpdateUserMetadataRequest",
@@ -18751,7 +15602,7 @@ function __c63(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object: UploadOrganizationLogoResponseObject,
+          object: S.String,
           id: S.String,
           name: S.String,
           slug: S.String,
@@ -18763,8 +15614,8 @@ function __c63(j: number): any {
           max_allowed_memberships: S.Number,
           admin_delete_enabled: S.Boolean,
           self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
-          public_metadata: UploadOrganizationLogoResponsePublicMetadataMap,
-          private_metadata: S.optional(UploadOrganizationLogoResponsePrivateMetadataMap),
+          public_metadata: __S(27, __c3, 3),
+          private_metadata: S.optional(__S(27, __c3, 3)),
           created_by: S.optional(S.String),
           created_at: S.Number,
           updated_at: S.Number,
@@ -18781,7 +15632,7 @@ function __c63(j: number): any {
           user_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(UsersGetOrganizationInvitationsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/users/{user_id}/organization_invitations", code: 200 }),
         ),
@@ -18813,14 +15664,14 @@ function __c64(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: VerifyApiKeyResponseObject,
+          object: S.String,
           id: S.String,
           type: S.String,
           subject: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: VerifyApiKeyResponseScopesList,
+          scopes: __S(6, __c0, 6),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -18847,7 +15698,7 @@ function __c64(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          object: ProxyCheckObject,
+          object: S.String,
           id: S.String,
           domain_id: S.String,
           last_run_at: S.NullOr(S.Number),
@@ -18866,11 +15717,11 @@ function __c64(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: VerifyM2MTokenResponseObject,
+          object: S.String,
           id: S.String,
           subject: S.String,
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(VerifyM2MTokenResponseScopesList),
+          scopes: S.optional(__S(6, __c0, 6)),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -18896,11 +15747,9 @@ function __c64(j: number): any {
 function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => VerifyOAuthAccessTokenResponseBody.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "VerifyOAuthAccessTokenResponse",
-        },
-      );
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "VerifyOAuthAccessTokenResponse",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18940,8 +15789,13 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           verified: S.optional(S.Boolean),
-          code_type: S.optional(VerifyTOTPResponseCodeType),
+          code_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerifyTOTPResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

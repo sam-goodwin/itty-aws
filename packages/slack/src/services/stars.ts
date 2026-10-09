@@ -7,6 +7,8 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -20,14 +22,10 @@ export interface AddStarRequest {
   /** Timestamp of the message to add star to. */
   timestamp?: string;
 }
-const AddStarRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddStarRequest>;
-
 export interface AddStarResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const AddStarResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddStarResponse>;
-
 export interface ListStarsRequest {
   count?: number;
   /** Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/apis/web-api/pagination) for more details. */
@@ -38,8 +36,6 @@ export interface ListStarsRequest {
   /** encoded team id to list stars in, required if org token is used */
   team_id?: string;
 }
-const ListStarsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListStarsRequest>;
-
 export type ListStarsResponseItemsItemCase0Type = "message";
 export interface ListStarsResponseItemsItemCase0 {
   type: ListStarsResponseItemsItemCase0Type;
@@ -85,24 +81,12 @@ export type ListStarsResponseItemsItem =
   | ListStarsResponseItemsItemCase3
   | ListStarsResponseItemsItemCase4
   | ListStarsResponseItemsItemCase5;
-const ListStarsResponseItemsItem = /*@__PURE__*/ __L.at(__c0, 3);
-
 export type ListStarsResponseItemsList = Array<ListStarsResponseItemsItem>;
-const ListStarsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListStarsResponseItemsList>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListStarsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-const ListStarsResponseResponseMetadata = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListStarsResponseResponseMetadata>;
-
 export interface ListStarsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -111,8 +95,6 @@ export interface ListStarsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListStarsResponseResponseMetadata;
 }
-const ListStarsResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListStarsResponse>;
-
 export interface RemoveStarRequest {
   /** Channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`). */
   channel?: string;
@@ -123,14 +105,10 @@ export interface RemoveStarRequest {
   /** Timestamp of the message to remove star from. */
   timestamp?: string;
 }
-const RemoveStarRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RemoveStarRequest>;
-
 export interface RemoveStarResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const RemoveStarResponse = AddStarResponse as any as S.Schema<RemoveStarResponse>;
-
 export type AddStarError = SlackOpError;
 /** Save an item for later. Formerly known as adding a star. Required scopes -- user: `stars:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `already_starred` -- The specified item has already been starred by the authenticated user. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Channel, private group, or DM specified by `channel` does not exist - `external_channel_migrating` -- Channel is undergoing active migration - `file_comment_not_found` -- File comment specified by `file_comment` does not exist. - `file_not_found` -- File specified by `file` does not exist. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- `file`, `file_comment`, `channel` and `timestamp` was not specified. See https://docs.slack.dev/reference/methods/stars.add */
 export const addStar: API.OperationMethod<
@@ -139,8 +117,8 @@ export const addStar: API.OperationMethod<
   AddStarError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddStarRequest,
-  output: AddStarResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddStarRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddStarResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -156,8 +134,8 @@ export const listStars: API.PaginatedOperationMethod<
   ListStarsResponseItemsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListStarsRequest,
-    output: ListStarsResponse,
+    input: __S(2, __c0, 2) as any as S.Schema<ListStarsRequest>,
+    output: __S(6, __c0, 6) as any as S.Schema<ListStarsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -180,8 +158,8 @@ export const removeStar: API.OperationMethod<
   RemoveStarError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveStarRequest,
-  output: RemoveStarResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<RemoveStarRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RemoveStarResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -230,7 +208,7 @@ function __c0(j: number): any {
         ),
       );
     case 4:
-      return S.Array(ListStarsResponseItemsItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -243,9 +221,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: ListStarsResponseItemsList,
+          items: __S(4, __c0, 4),
           paging: S.optional(S.Unknown),
-          response_metadata: S.optional(ListStarsResponseResponseMetadata),
+          response_metadata: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "ListStarsResponse" });
     case 7:
@@ -258,4 +236,9 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/stars.remove", code: 200 })),
       ).annotate({ identifier: "RemoveStarRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

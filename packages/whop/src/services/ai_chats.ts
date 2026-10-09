@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -48,30 +50,16 @@ export class UnprocessableEntity
 
 /** The AI agent that handles an AI chat. */
 export type AiChatAgentIdentifiers = "general" | "support";
-const AiChatAgentIdentifiers = S.String;
-
 /** Input for an attachment */
 export interface CreateAiChatRequestMessageAttachmentsItem {
   /** The ID of an existing file object. */
   id: string;
 }
-const CreateAiChatRequestMessageAttachmentsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateAiChatRequestMessageAttachmentsItem>;
-
 /** A list of previously uploaded file attachments to include with the first message. */
 export type CreateAiChatRequestMessageAttachmentsList =
   Array<CreateAiChatRequestMessageAttachmentsItem>;
-const CreateAiChatRequestMessageAttachmentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateAiChatRequestMessageAttachmentsList>;
-
 /** The source of an AI chat message */
 export type AiChatMessageSourceTypes = "manual" | "suggestion" | "link";
-const AiChatMessageSourceTypes = S.String;
-
 export interface CreateAiChatRequest {
   /** The AI agent that handles the chat. Defaults to `support`. */
   agent_identifier?: AiChatAgentIdentifiers | (string & {}) | null;
@@ -88,19 +76,13 @@ export interface CreateAiChatRequest {
   /** An optional display title for the AI chat thread (e.g., "Help with billing"). */
   title?: string | null;
 }
-const CreateAiChatRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateAiChatRequest>;
-
 /** The notification preference for an AI chat */
 export type AiChatNotificationPreferences = "all" | "none";
-const AiChatNotificationPreferences = S.String;
-
 /** The user who owns this AI chat conversation. */
 export interface AiChatUser {
   /** The unique identifier for the user. */
   id: string;
 }
-const AiChatUser = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AiChatUser>;
-
 /** An AI-powered chat conversation belonging to a user, with optional scheduled automation. */
 export interface AiChat {
   /** The AI agent that handles this chat. Set when the chat is created and fixed for its lifetime. */
@@ -124,23 +106,15 @@ export interface AiChat {
   /** The user who owns this AI chat conversation. */
   user: AiChatUser;
 }
-const AiChat = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AiChat>;
-
 export interface DeleteAiChatRequest {
   /** The unique identifier of the AI chat to delete (e.g., "ai_chat_XXXXX"). */
   id: string;
 }
-const DeleteAiChatRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteAiChatRequest>;
-
 export type DeleteAiChatResponse = boolean;
-const DeleteAiChatResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteAiChatResponse>;
-
 export interface GetAiChatRequest {
   /** The unique identifier of the AI chat to retrieve. */
   id: string;
 }
-const GetAiChatRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetAiChatRequest>;
-
 export interface ListAiChatRequest {
   after?: string;
   before?: string;
@@ -149,8 +123,6 @@ export interface ListAiChatRequest {
   agent_identifier?: AiChatAgentIdentifiers | (string & {});
   only_active_crons?: boolean;
 }
-const ListAiChatRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListAiChatRequest>;
-
 /** The user who owns this AI chat conversation. */
 export type AiChatListItemUser = AiChatUser;
 /** An AI-powered chat conversation belonging to a user, with optional scheduled automation. */
@@ -176,15 +148,8 @@ export interface AiChatListItem {
   /** The user who owns this AI chat conversation. */
   user: AiChatUser;
 }
-const AiChatListItem = AiChat as any as S.Schema<AiChatListItem>;
-
 /** A list of nodes. */
 export type ListAiChatResponseDataList = Array<AiChatListItem>;
-const ListAiChatResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListAiChatResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -196,16 +161,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PageInfo>;
-
 export interface ListAiChatResponse {
   /** A list of nodes. */
   data: ListAiChatResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListAiChatResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListAiChatResponse>;
-
 export interface UpdateAiChatRequest {
   /** The unique identifier of the AI chat to update (e.g., "ai_chat_XXXXX"). */
   id: string;
@@ -216,8 +177,6 @@ export interface UpdateAiChatRequest {
   /** The new display title for the AI chat thread (e.g., "Help with billing"). */
   title?: string | null;
 }
-const UpdateAiChatRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UpdateAiChatRequest>;
-
 export type CreateAiChatError =
   | BadRequest
   | Forbidden
@@ -231,8 +190,8 @@ export const createAiChat: API.OperationMethod<
   CreateAiChatError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAiChatRequest,
-  output: AiChat,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateAiChatRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AiChat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -251,8 +210,8 @@ export const deleteAiChat: API.OperationMethod<
   DeleteAiChatError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAiChatRequest,
-  output: DeleteAiChatResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteAiChatRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteAiChatResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -266,8 +225,8 @@ export const getAiChat: API.OperationMethod<
   GetAiChatError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAiChatRequest,
-  output: AiChat,
+  input: __S(7, __c0, 7) as any as S.Schema<GetAiChatRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AiChat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -283,8 +242,8 @@ export const listAiChat: API.PaginatedOperationMethod<
   AiChatListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAiChatRequest,
-    output: ListAiChatResponse,
+    input: __S(8, __c1, 0) as any as S.Schema<ListAiChatRequest>,
+    output: __S(11, __c1, 3) as any as S.Schema<ListAiChatResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -313,8 +272,8 @@ export const updateAiChat: API.OperationMethod<
   UpdateAiChatError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAiChatRequest,
-  output: AiChat,
+  input: __S(12, __c1, 4) as any as S.Schema<UpdateAiChatRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AiChat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -332,14 +291,14 @@ function __c0(j: number): any {
         identifier: "CreateAiChatRequestMessageAttachmentsItem",
       });
     case 1:
-      return S.Array(CreateAiChatRequestMessageAttachmentsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          agent_identifier: S.optional(S.NullOr(AiChatAgentIdentifiers)),
+          agent_identifier: S.optional(S.NullOr(S.String)),
           current_account_id: S.optional(S.NullOr(S.String)),
-          message_attachments: S.optional(S.NullOr(CreateAiChatRequestMessageAttachmentsList)),
-          message_source: S.optional(S.NullOr(AiChatMessageSourceTypes)),
+          message_attachments: S.optional(S.NullOr(__S(1, __c0, 1))),
+          message_source: S.optional(S.NullOr(S.String)),
           message_text: S.String,
           suggestion_type: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
@@ -354,16 +313,16 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          agent_identifier: AiChatAgentIdentifiers,
+          agent_identifier: S.String,
           blended_token_usage: S.String,
           created_at: S.String,
           id: S.String,
           last_message_at: S.NullOr(S.String),
           message_count: S.Number,
-          notification_preference: AiChatNotificationPreferences,
+          notification_preference: S.String,
           title: S.NullOr(S.String),
           updated_at: S.String,
-          user: AiChatUser,
+          user: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "AiChat" });
     case 5:
@@ -393,12 +352,12 @@ function __c1(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
-          agent_identifier: S.optional(AiChatAgentIdentifiers.pipe(T.Query())),
+          agent_identifier: S.optional(S.String.pipe(T.Query())),
           only_active_crons: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ai_chats", code: 200 })),
       ).annotate({ identifier: "ListAiChatRequest" });
     case 1:
-      return S.Array(AiChatListItem);
+      return S.Array(__S(4, __c0, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -411,8 +370,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: ListAiChatResponseDataList,
-          page_info: PageInfo,
+          data: __S(9, __c1, 1),
+          page_info: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListAiChatResponse" });
     case 4:
@@ -420,9 +379,14 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           current_account_id: S.optional(S.NullOr(S.String)),
-          notification_preference: S.optional(S.NullOr(AiChatNotificationPreferences)),
+          notification_preference: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/ai_chats/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateAiChatRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

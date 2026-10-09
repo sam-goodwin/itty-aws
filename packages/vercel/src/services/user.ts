@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -52,24 +54,12 @@ export interface DeleteRequestRequestReasonsItem {
   /** Description of the reason why the User account is being deleted. */
   description: string;
 }
-const DeleteRequestRequestReasonsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteRequestRequestReasonsItem>;
-
 /** Optional array of objects that describe the reason why the User account is being deleted. */
 export type DeleteRequestRequestReasonsList = Array<DeleteRequestRequestReasonsItem>;
-const DeleteRequestRequestReasonsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteRequestRequestReasonsList>;
-
 export interface DeleteRequestRequest {
   /** Optional array of objects that describe the reason why the User account is being deleted. */
   reasons?: DeleteRequestRequestReasonsList;
 }
-const DeleteRequestRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteRequestRequest>;
-
 export interface DeleteRequestResponse {
   /** Email address of the User who has initiated deletion. */
   email: string;
@@ -78,14 +68,7 @@ export interface DeleteRequestResponse {
   /** User deletion progress status. */
   message: string;
 }
-const DeleteRequestResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteRequestResponse>;
-
 export interface GetAuthUserRequest {}
-const GetAuthUserRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetAuthUserRequest>;
-
 export interface AuthUserAccountUpdateContextManagedTeamsItem {
   avatar: string | null;
   name: string;
@@ -101,11 +84,6 @@ export interface AuthUserAccountUpdateContextOrganization {
   slug: string;
 }
 export type AuthUserAccountUpdateContextVerifiedEmuDomainsList = Array<string>;
-const AuthUserAccountUpdateContextVerifiedEmuDomainsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AuthUserAccountUpdateContextVerifiedEmuDomainsList>;
-
 /** Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team). */
 export interface AuthUserAccountUpdateContext {
   /** Whether this user can cancel their optional Account Update flow. */
@@ -408,24 +386,15 @@ export interface AuthUserLimited {
   username: string;
 }
 export type GetAuthUserResponseUser = AuthUser | AuthUserLimited;
-const GetAuthUserResponseUser = S.Unknown as any as S.Schema<GetAuthUserResponseUser>;
-
 export interface GetAuthUserResponse {
   user: GetAuthUserResponseUser;
 }
-const GetAuthUserResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetAuthUserResponse>;
-
 export interface ListEventTypesRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListEventTypesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListEventTypesRequest>;
-
 export type ListEventTypesResponseCategoriesItemName =
   | "account"
   | "ai"
@@ -450,23 +419,11 @@ export type ListEventTypesResponseCategoriesItemName =
   | "v0"
   | "vercel-app"
   | "workflow";
-const ListEventTypesResponseCategoriesItemName = S.String;
-
 export interface ListEventTypesResponseCategoriesItem {
   label: string;
   name: ListEventTypesResponseCategoriesItemName;
 }
-const ListEventTypesResponseCategoriesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListEventTypesResponseCategoriesItem>;
-
 export type ListEventTypesResponseCategoriesList = Array<ListEventTypesResponseCategoriesItem>;
-const ListEventTypesResponseCategoriesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListEventTypesResponseCategoriesList>;
-
 /** Categories that group this event type with related event types. */
 export type ListEventTypeCategoriesItem =
   | "account"
@@ -492,15 +449,8 @@ export type ListEventTypeCategoriesItem =
   | "v0"
   | "vercel-app"
   | "workflow";
-const ListEventTypeCategoriesItem = S.String;
-
 /** Categories that group this event type with related event types. */
 export type ListEventTypeCategoriesList = Array<ListEventTypeCategoriesItem>;
-const ListEventTypeCategoriesList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListEventTypeCategoriesList>;
-
 /** The name of the event type. */
 export type ListEventTypeName =
   | "access-group-created"
@@ -1210,8 +1160,6 @@ export type ListEventTypeName =
   | "webhook-deleted"
   | "webhook-updated"
   | "workflow-deployment-key-accessed";
-const ListEventTypeName = S.String;
-
 /** Event type names that supersede this deprecated event type. */
 export type ListEventTypeReplacedByItem =
   | "access-group-created"
@@ -1923,9 +1871,6 @@ export type ListEventTypeReplacedByItem =
   | "workflow-deployment-key-accessed";
 /** Event type names that supersede this deprecated event type. */
 export type ListEventTypeReplacedByList = Array<ListEventTypeReplacedByItem>;
-const ListEventTypeReplacedByList =
-  ListEventTypeCategoriesList as any as S.Schema<ListEventTypeReplacedByList>;
-
 /** A user-facing event type. */
 export interface ListEventType {
   /** Categories that group this event type with related event types. */
@@ -1939,24 +1884,12 @@ export interface ListEventType {
   /** Event type names that supersede this deprecated event type. */
   replacedBy?: ListEventTypeReplacedByList;
 }
-const ListEventType = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListEventType>;
-
 export type ListEventTypesResponseTypesList = Array<ListEventType>;
-const ListEventTypesResponseTypesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListEventTypesResponseTypesList>;
-
 /** Response returned by the List Event Types endpoint. */
 export interface ListEventTypesResponse {
   categories: ListEventTypesResponseCategoriesList;
   types: ListEventTypesResponseTypesList;
 }
-const ListEventTypesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListEventTypesResponse>;
-
 export interface ListUserEventsRequest {
   /** Maximum number of items which may be returned. */
   limit?: number;
@@ -1981,11 +1914,6 @@ export interface ListUserEventsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListUserEventsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListUserEventsRequest>;
-
 /** The categories that group this event with related event types. An event can belong to multiple categories (e.g. a firewall event is both Firewall and Security). The first entry is the "primary" category. Use the `/events/types` endpoint to discover the full list of categories. */
 export type UserEventCategoriesItem =
   | "account"
@@ -2013,9 +1941,6 @@ export type UserEventCategoriesItem =
   | "workflow";
 /** The categories that group this event with related event types. An event can belong to multiple categories (e.g. a firewall event is both Firewall and Security). The first entry is the "primary" category. Use the `/events/types` endpoint to discover the full list of categories. */
 export type UserEventCategoriesList = Array<UserEventCategoriesItem>;
-const UserEventCategoriesList =
-  ListEventTypeCategoriesList as any as S.Schema<UserEventCategoriesList>;
-
 /** The type of entity. */
 export type UserEventEntitiesItemType =
   | "app"
@@ -2041,8 +1966,6 @@ export type UserEventEntitiesItemType =
   | "store"
   | "system"
   | "target";
-const UserEventEntitiesItemType = S.String;
-
 /** A list of "entities" within the event `text`. Useful for enhancing the displayed text with additional styling and links. */
 export interface UserEventEntitiesItem {
   /** The index of where the entity ends within the `text` (non-inclusive). */
@@ -2052,18 +1975,8 @@ export interface UserEventEntitiesItem {
   /** The type of entity. */
   type: UserEventEntitiesItemType;
 }
-const UserEventEntitiesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UserEventEntitiesItem>;
-
 /** A list of "entities" within the event `text`. Useful for enhancing the displayed text with additional styling and links. */
 export type UserEventEntitiesList = Array<UserEventEntitiesItem>;
-const UserEventEntitiesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UserEventEntitiesList>;
-
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase1 {
   enabled: boolean;
@@ -9943,8 +9856,6 @@ export type UserEventPayload =
   | UserEventPayloadCase473
   | UserEventPayloadCase474
   | UserEventPayloadCase475;
-const UserEventPayload = S.Unknown as any as S.Schema<UserEventPayload>;
-
 export type UserEventPrincipalCase0Type = "user";
 /** Metadata for {@link principalId}. */
 export interface UserEventPrincipalCase0 {
@@ -9983,8 +9894,6 @@ export type UserEventPrincipal =
   | UserEventPrincipalCase1
   | UserEventPrincipalCase2
   | UserEventPrincipalCase3;
-const UserEventPrincipal = S.Unknown as any as S.Schema<UserEventPrincipal>;
-
 /** The type of the event. */
 export type UserEventType =
   | "access-group-created"
@@ -10694,8 +10603,6 @@ export type UserEventType =
   | "webhook-deleted"
   | "webhook-updated"
   | "workflow-deployment-key-accessed";
-const UserEventType = S.String;
-
 /** Metadata for {@link userId}. */
 export interface UserEventUser {
   avatar: string;
@@ -10704,8 +10611,6 @@ export interface UserEventUser {
   uid: string;
   username: string;
 }
-const UserEventUser = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UserEventUser>;
-
 export type UserEventViaItemCase0Type = "user";
 /** Metadata for {@link viaIds}. */
 export interface UserEventViaItemCase0 {
@@ -10744,17 +10649,10 @@ export type UserEventViaItem =
   | UserEventViaItemCase1
   | UserEventViaItemCase2
   | UserEventViaItemCase3;
-const UserEventViaItem = S.Unknown as any as S.Schema<UserEventViaItem>;
-
 /** Metadata for {@link viaIds}. */
 export type UserEventViaList = Array<UserEventViaItem>;
-const UserEventViaList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<UserEventViaList>;
-
 /** If the principal delegated its authority (for example, a user delegating to an app), then this array contains the ID of the current actor. For example, if `principalId` is "user123" and `viaIds` is `["app456"]`, we can say the event was triggered by - "app456 on behalf of user123", or - "user123 via app4556". Both are equivalent. Arbitrarily long chains of delegation can be represented. For example, if `principalId` is "user123" and `viaIds` is `["service1", "service2"]`, we can say the event was triggered by "user123 via service1 via service2". */
 export type UserEventViaIdsList = Array<string>;
-const UserEventViaIdsList =
-  AuthUserAccountUpdateContextVerifiedEmuDomainsList as any as S.Schema<UserEventViaIdsList>;
-
 /** Array of events generated by the User. */
 export interface UserEvent {
   /** The categories that group this event with related event types. An event can belong to multiple categories (e.g. a firewall event is both Firewall and Security). The first entry is the "primary" category. Use the `/events/types` endpoint to discover the full list of categories. */
@@ -10787,24 +10685,12 @@ export interface UserEvent {
   /** If the principal delegated its authority (for example, a user delegating to an app), then this array contains the ID of the current actor. For example, if `principalId` is "user123" and `viaIds` is `["app456"]`, we can say the event was triggered by - "app456 on behalf of user123", or - "user123 via app4556". Both are equivalent. Arbitrarily long chains of delegation can be represented. For example, if `principalId` is "user123" and `viaIds` is `["service1", "service2"]`, we can say the event was triggered by "user123 via service1 via service2". */
   viaIds?: UserEventViaIdsList;
 }
-const UserEvent = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UserEvent>;
-
 /** Array of events generated by the User. */
 export type ListUserEventsResponseEventsList = Array<UserEvent>;
-const ListUserEventsResponseEventsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListUserEventsResponseEventsList>;
-
 export interface ListUserEventsResponse {
   /** Array of events generated by the User. */
   events: ListUserEventsResponseEventsList;
 }
-const ListUserEventsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListUserEventsResponse>;
-
 export type DeleteRequestError = BadRequest | PaymentRequired | Forbidden | VercelOpError;
 /** Delete User Account Initiates the deletion process for the currently authenticated User, by sending a deletion confirmation email. The email contains a link that the user needs to visit in order to proceed with the deletion process. */
 export const deleteRequest: API.OperationMethod<
@@ -10813,8 +10699,8 @@ export const deleteRequest: API.OperationMethod<
   DeleteRequestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequestRequest,
-  output: DeleteRequestResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteRequestRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteRequestResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10828,8 +10714,8 @@ export const getAuthUser: API.OperationMethod<
   GetAuthUserError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthUserRequest,
-  output: GetAuthUserResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetAuthUserRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetAuthUserResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10843,8 +10729,8 @@ export const listEventTypes: API.OperationMethod<
   ListEventTypesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventTypesRequest,
-  output: ListEventTypesResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<ListEventTypesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ListEventTypesResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10858,8 +10744,8 @@ export const listUserEvents: API.OperationMethod<
   ListUserEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserEventsRequest,
-  output: ListUserEventsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<ListUserEventsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ListUserEventsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10878,11 +10764,11 @@ function __c0(j: number): any {
         identifier: "DeleteRequestRequestReasonsItem",
       });
     case 1:
-      return S.Array(DeleteRequestRequestReasonsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reasons: S.optional(DeleteRequestRequestReasonsList),
+          reasons: S.optional(__S(1, __c0, 1)),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/user", code: 200 })),
       ).annotate({ identifier: "DeleteRequestRequest" });
     case 3:
@@ -10902,7 +10788,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user: GetAuthUserResponseUser,
+          user: S.Unknown,
         }),
       ).annotate({ identifier: "GetAuthUserResponse" });
     case 7:
@@ -10920,32 +10806,32 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           label: S.String,
-          name: ListEventTypesResponseCategoriesItemName,
+          name: S.String,
         }),
       ).annotate({
         identifier: "ListEventTypesResponseCategoriesItem",
       });
     case 1:
-      return S.Array(ListEventTypesResponseCategoriesItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(ListEventTypeCategoriesItem);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: ListEventTypeCategoriesList,
+          categories: __S(10, __c1, 2),
           deprecated: S.optional(S.Boolean),
           description: S.String,
-          name: ListEventTypeName,
-          replacedBy: S.optional(ListEventTypeReplacedByList),
+          name: S.String,
+          replacedBy: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "ListEventType" });
     case 4:
-      return S.Array(ListEventType);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categories: ListEventTypesResponseCategoriesList,
-          types: ListEventTypesResponseTypesList,
+          categories: __S(9, __c1, 1),
+          types: __S(12, __c1, 4),
         }),
       ).annotate({ identifier: "ListEventTypesResponse" });
     case 6:
@@ -10969,7 +10855,7 @@ function __c1(j: number): any {
         S.Struct({
           end: S.Number,
           start: S.Number,
-          type: UserEventEntitiesItemType,
+          type: S.String,
         }),
       ).annotate({ identifier: "UserEventEntitiesItem" });
   }
@@ -10977,7 +10863,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserEventEntitiesItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10989,35 +10875,40 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UserEventUser" });
     case 2:
-      return S.Array(UserEventViaItem);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(UserEventCategoriesList),
+          categories: S.optional(__S(10, __c1, 2)),
           createdAt: S.Number,
-          entities: UserEventEntitiesList,
+          entities: __S(16, __c2, 0),
           id: S.String,
-          payload: S.optional(UserEventPayload),
-          principal: S.optional(UserEventPrincipal),
+          payload: S.optional(S.Unknown),
+          principal: S.optional(S.Unknown),
           principalId: S.String,
           requestId: S.optional(S.String),
           sessionId: S.optional(S.String),
           text: S.String,
           tokenId: S.optional(S.String),
-          type: S.optional(UserEventType),
-          user: S.optional(UserEventUser),
+          type: S.optional(S.String),
+          user: S.optional(__S(17, __c2, 1)),
           userId: S.optional(S.String),
-          via: S.optional(UserEventViaList),
-          viaIds: S.optional(UserEventViaIdsList),
+          via: S.optional(__S(18, __c2, 2)),
+          viaIds: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "UserEvent" });
     case 4:
-      return S.Array(UserEvent);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          events: ListUserEventsResponseEventsList,
+          events: __S(20, __c2, 4),
         }),
       ).annotate({ identifier: "ListUserEventsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

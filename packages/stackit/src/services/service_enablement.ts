@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -42,64 +44,31 @@ export interface DisableServiceRegionalRequest {
   region: string;
   serviceId: string;
 }
-const DisableServiceRegionalRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DisableServiceRegionalRequest>;
-
 export interface DisableServiceRegionalResponse {}
-const DisableServiceRegionalResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DisableServiceRegionalResponse>;
-
 export interface EnableServiceRegionalRequest {
   projectId: string;
   region: string;
   serviceId: string;
 }
-const EnableServiceRegionalRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<EnableServiceRegionalRequest>;
-
 export interface EnableServiceRegionalResponse {}
-const EnableServiceRegionalResponse =
-  DisableServiceRegionalResponse as any as S.Schema<EnableServiceRegionalResponse>;
-
 export interface GetServiceStatusRegionalRequest {
   projectId: string;
   region: string;
   serviceId: string;
 }
-const GetServiceStatusRegionalRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetServiceStatusRegionalRequest>;
-
 /** a list of service IDs which this service depend on. If the service is enabled, those service are enabled as well automatically. */
 export type DependenciesHardList = Array<string>;
-const DependenciesHardList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DependenciesHardList>;
-
 /** a list of service IDs which this service depend on. When they are disabled a notification is sent. */
 export type DependenciesSoftList = Array<string>;
-const DependenciesSoftList = DependenciesHardList as any as S.Schema<DependenciesSoftList>;
-
 export interface Dependencies {
   /** a list of service IDs which this service depend on. If the service is enabled, those service are enabled as well automatically. */
   hard?: DependenciesHardList;
   /** a list of service IDs which this service depend on. When they are disabled a notification is sent. */
   soft?: DependenciesSoftList;
 }
-const Dependencies = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Dependencies>;
-
 export type ServiceStatusEnablement = "REQUEST" | "AUTO";
-const ServiceStatusEnablement = S.String;
-
 /** the last action which was triggered on this service */
 export type ActionErrorAction = "DISABLE" | "ENABLE";
-const ActionErrorAction = S.String;
-
 /** the last error for this service. */
 export interface ActionError {
   /** the last action which was triggered on this service */
@@ -109,40 +78,21 @@ export interface ActionError {
   /** the error reason provided by the service */
   reason?: string;
 }
-const ActionError = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ActionError>;
-
 export type ServiceStatusLabelsMap = { [key: string]: string | undefined };
-const ServiceStatusLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ServiceStatusLabelsMap>;
-
 export type ServiceStatusLifecycle = "FLEX" | "PROJECT";
-const ServiceStatusLifecycle = S.String;
-
 export type ParametersGeneralProjectScope = "SCHWARZ" | "PUBLIC";
-const ParametersGeneralProjectScope = S.String;
-
 export interface ParametersGeneral {
   organizationId?: string;
   projectName?: string;
   projectScope?: ParametersGeneralProjectScope;
 }
-const ParametersGeneral = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ParametersGeneral>;
-
 /** service parameters */
 export interface Parameters {
   general?: ParametersGeneral;
 }
-const Parameters = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Parameters>;
-
 export type ServiceStatusScope = "PRIVATE" | "PUBLIC";
-const ServiceStatusScope = S.String;
-
 /** the state of a service within a project */
 export type ServiceStatusState = "ENABLED" | "ENABLING" | "DISABLED" | "DISABLING";
-const ServiceStatusState = S.String;
-
 export interface ServiceStatus {
   dependencies?: Dependencies;
   enablement?: ServiceStatusEnablement;
@@ -155,33 +105,16 @@ export interface ServiceStatus {
   /** the state of a service within a project */
   state?: ServiceStatusState;
 }
-const ServiceStatus = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ServiceStatus>;
-
 export interface ListServiceStatusRegionalRequest {
   projectId: string;
   region: string;
   cursor?: string;
 }
-const ListServiceStatusRegionalRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListServiceStatusRegionalRequest>;
-
 export type ListServiceStatusRegionalResponseItemsList = Array<ServiceStatus>;
-const ListServiceStatusRegionalResponseItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListServiceStatusRegionalResponseItemsList>;
-
 export interface ListServiceStatusRegionalResponse {
   items?: ListServiceStatusRegionalResponseItemsList;
   nextCursor?: string;
 }
-const ListServiceStatusRegionalResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListServiceStatusRegionalResponse>;
-
 export type DisableServiceRegionalError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** disables the service in a project. */
 export const disableServiceRegional: API.OperationMethod<
@@ -190,8 +123,8 @@ export const disableServiceRegional: API.OperationMethod<
   DisableServiceRegionalError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableServiceRegionalRequest,
-  output: DisableServiceRegionalResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DisableServiceRegionalRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisableServiceRegionalResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -205,8 +138,8 @@ export const enableServiceRegional: API.OperationMethod<
   EnableServiceRegionalError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableServiceRegionalRequest,
-  output: EnableServiceRegionalResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<EnableServiceRegionalRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EnableServiceRegionalResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -220,8 +153,8 @@ export const getServiceStatusRegional: API.OperationMethod<
   GetServiceStatusRegionalError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceStatusRegionalRequest,
-  output: ServiceStatus,
+  input: __S(3, __c0, 3) as any as S.Schema<GetServiceStatusRegionalRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ServiceStatus>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -235,8 +168,8 @@ export const listServiceStatusRegional: API.OperationMethod<
   ListServiceStatusRegionalError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceStatusRegionalRequest,
-  output: ListServiceStatusRegionalResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<ListServiceStatusRegionalRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ListServiceStatusRegionalResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -305,14 +238,14 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          hard: S.optional(DependenciesHardList),
-          soft: S.optional(DependenciesSoftList),
+          hard: S.optional(__S(4, __c0, 4)),
+          soft: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Dependencies" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(ActionErrorAction),
+          action: S.optional(S.String),
           code: S.optional(S.String),
           reason: S.optional(S.String),
         }),
@@ -328,27 +261,27 @@ function __c1(j: number): any {
         S.Struct({
           organizationId: S.optional(S.String),
           projectName: S.optional(S.String),
-          projectScope: S.optional(ParametersGeneralProjectScope),
+          projectScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParametersGeneral" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          general: S.optional(ParametersGeneral),
+          general: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Parameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dependencies: S.optional(Dependencies),
-          enablement: S.optional(ServiceStatusEnablement),
-          error: S.optional(ActionError),
-          labels: S.optional(ServiceStatusLabelsMap),
-          lifecycle: S.optional(ServiceStatusLifecycle),
-          parameters: S.optional(Parameters),
-          scope: S.optional(ServiceStatusScope),
+          dependencies: S.optional(__S(5, __c0, 5)),
+          enablement: S.optional(S.String),
+          error: S.optional(__S(6, __c0, 6)),
+          labels: S.optional(__S(7, __c0, 7)),
+          lifecycle: S.optional(S.String),
+          parameters: S.optional(__S(9, __c1, 1)),
+          scope: S.optional(S.String),
           serviceId: S.optional(S.String),
-          state: S.optional(ServiceStatusState),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceStatus" });
     case 3:
@@ -369,15 +302,20 @@ function __c1(j: number): any {
         identifier: "ListServiceStatusRegionalRequest",
       });
     case 4:
-      return S.Array(ServiceStatus);
+      return S.Array(__S(10, __c1, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListServiceStatusRegionalResponseItemsList),
+          items: S.optional(__S(12, __c1, 4)),
           nextCursor: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListServiceStatusRegionalResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

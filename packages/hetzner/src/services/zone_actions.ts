@@ -7,6 +7,8 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -15,8 +17,6 @@ export type ChangeZonePrimaryNameserversRequestPrimaryNameserversItemTsigAlgorit
   | "hmac-md5"
   | "hmac-sha1"
   | "hmac-sha256";
-const ChangeZonePrimaryNameserversRequestPrimaryNameserversItemTsigAlgorithm = S.String;
-
 /** Primary nameserver that returns [Zones](#tag/zones) via `AXFR`. Must allow queries from and may send `NOTIFY` queries to [Hetzner's secondary nameservers](https://docs.hetzner.com/dns-console/dns/general/authoritative-name-servers#secondary-dns-servers-old-name-servers-for-robot-customers). */
 export interface ChangeZonePrimaryNameserversRequestPrimaryNameserversItem {
   /** Public IPv4 or IPv6 address of the primary nameserver. Must be unique across all primary nameservers of this zone. */
@@ -30,53 +30,26 @@ export interface ChangeZonePrimaryNameserversRequestPrimaryNameserversItem {
     | ChangeZonePrimaryNameserversRequestPrimaryNameserversItemTsigAlgorithm
     | (string & {});
 }
-const ChangeZonePrimaryNameserversRequestPrimaryNameserversItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ChangeZonePrimaryNameserversRequestPrimaryNameserversItem>;
-
 /** Primary nameservers of the [Zone](#tag/zones). */
 export type ChangeZonePrimaryNameserversRequestPrimaryNameserversList =
   Array<ChangeZonePrimaryNameserversRequestPrimaryNameserversItem>;
-const ChangeZonePrimaryNameserversRequestPrimaryNameserversList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ChangeZonePrimaryNameserversRequestPrimaryNameserversList>;
-
 export interface ChangeZonePrimaryNameserversRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
   /** Primary nameservers of the [Zone](#tag/zones). */
   primary_nameservers: ChangeZonePrimaryNameserversRequestPrimaryNameserversList;
 }
-const ChangeZonePrimaryNameserversRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ChangeZonePrimaryNameserversRequest>;
-
 /** Status of the Action. */
 export type ChangeZonePrimaryNameserversResponseActionStatus = "running" | "success" | "error";
-const ChangeZonePrimaryNameserversResponseActionStatus = S.String;
-
 export interface ChangeZonePrimaryNameserversResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const ChangeZonePrimaryNameserversResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type ChangeZonePrimaryNameserversResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-const ChangeZonePrimaryNameserversResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ChangeZonePrimaryNameserversResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface ChangeZonePrimaryNameserversResponseActionError {
   /** Fixed error code for machines. */
@@ -84,11 +57,6 @@ export interface ChangeZonePrimaryNameserversResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const ChangeZonePrimaryNameserversResponseActionError = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ChangeZonePrimaryNameserversResponseActionError>;
-
 export interface ChangeZonePrimaryNameserversResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -107,42 +75,22 @@ export interface ChangeZonePrimaryNameserversResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeZonePrimaryNameserversResponseActionError | null;
 }
-const ChangeZonePrimaryNameserversResponseAction = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ChangeZonePrimaryNameserversResponseAction>;
-
 export interface ChangeZonePrimaryNameserversResponse {
   action: ChangeZonePrimaryNameserversResponseAction;
 }
-const ChangeZonePrimaryNameserversResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ChangeZonePrimaryNameserversResponse>;
-
 export interface ChangeZoneProtectionRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
   /** Prevents the [Zone](#tag/zones) from being deleted. */
   delete?: boolean;
 }
-const ChangeZoneProtectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ChangeZoneProtectionRequest>;
-
 /** Status of the Action. */
 export type ChangeZoneProtectionResponseActionStatus = "running" | "success" | "error";
-const ChangeZoneProtectionResponseActionStatus = S.String;
-
 export type ChangeZoneProtectionResponseActionResourcesItem =
   ChangeZonePrimaryNameserversResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeZoneProtectionResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-const ChangeZoneProtectionResponseActionResourcesList =
-  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ChangeZoneProtectionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneProtectionResponseActionError =
   ChangeZonePrimaryNameserversResponseActionError;
@@ -164,39 +112,22 @@ export interface ChangeZoneProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeZonePrimaryNameserversResponseActionError | null;
 }
-const ChangeZoneProtectionResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ChangeZoneProtectionResponseAction>;
-
 export interface ChangeZoneProtectionResponse {
   action: ChangeZoneProtectionResponseAction;
 }
-const ChangeZoneProtectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ChangeZoneProtectionResponse>;
-
 export interface ChangeZoneTtlRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
   /** Default Time To Live (TTL) of the [Zone](#tag/zones). Must be in between 60s and 2147483647s. This TTL is used for [RRSets](#tag/zone-rrsets) that do not explicitly define a TTL. */
   ttl: number;
 }
-const ChangeZoneTtlRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ChangeZoneTtlRequest>;
-
 /** Status of the Action. */
 export type ChangeZoneTtlResponseActionStatus = "running" | "success" | "error";
-const ChangeZoneTtlResponseActionStatus = S.String;
-
 export type ChangeZoneTtlResponseActionResourcesItem =
   ChangeZonePrimaryNameserversResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeZoneTtlResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-const ChangeZoneTtlResponseActionResourcesList =
-  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ChangeZoneTtlResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneTtlResponseActionError = ChangeZonePrimaryNameserversResponseActionError;
 export interface ChangeZoneTtlResponseAction {
@@ -217,40 +148,20 @@ export interface ChangeZoneTtlResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeZonePrimaryNameserversResponseActionError | null;
 }
-const ChangeZoneTtlResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ChangeZoneTtlResponseAction>;
-
 export interface ChangeZoneTtlResponse {
   action: ChangeZoneTtlResponseAction;
 }
-const ChangeZoneTtlResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ChangeZoneTtlResponse>;
-
 export interface GetZonesActionRequest {
   /** ID of the Action. */
   id: number;
 }
-const GetZonesActionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetZonesActionRequest>;
-
 /** Status of the Action. */
 export type GetZonesActionResponseActionStatus = "running" | "success" | "error";
-const GetZonesActionResponseActionStatus = S.String;
-
 export type GetZonesActionResponseActionResourcesItem =
   ChangeZonePrimaryNameserversResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetZonesActionResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-const GetZonesActionResponseActionResourcesList =
-  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<GetZonesActionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetZonesActionResponseActionError = ChangeZonePrimaryNameserversResponseActionError;
 export interface GetZonesActionResponseAction {
@@ -271,42 +182,22 @@ export interface GetZonesActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeZonePrimaryNameserversResponseActionError | null;
 }
-const GetZonesActionResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetZonesActionResponseAction>;
-
 export interface GetZonesActionResponse {
   action: GetZonesActionResponseAction;
 }
-const GetZonesActionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetZonesActionResponse>;
-
 export interface ImportZoneZonefileRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
   /** Zone file to import. See [Zone file import](#tag/zones/zone-file-import) for more details. */
   zonefile: string;
 }
-const ImportZoneZonefileRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ImportZoneZonefileRequest>;
-
 /** Status of the Action. */
 export type ImportZoneZonefileResponseActionStatus = "running" | "success" | "error";
-const ImportZoneZonefileResponseActionStatus = S.String;
-
 export type ImportZoneZonefileResponseActionResourcesItem =
   ChangeZonePrimaryNameserversResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ImportZoneZonefileResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-const ImportZoneZonefileResponseActionResourcesList =
-  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ImportZoneZonefileResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ImportZoneZonefileResponseActionError = ChangeZonePrimaryNameserversResponseActionError;
 export interface ImportZoneZonefileResponseAction {
@@ -327,19 +218,9 @@ export interface ImportZoneZonefileResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeZonePrimaryNameserversResponseActionError | null;
 }
-const ImportZoneZonefileResponseAction = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ImportZoneZonefileResponseAction>;
-
 export interface ImportZoneZonefileResponse {
   action: ImportZoneZonefileResponseAction;
 }
-const ImportZoneZonefileResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ImportZoneZonefileResponse>;
-
 export type ListZoneActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -356,22 +237,12 @@ export type ListZoneActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-const ListZoneActionsRequestSortItem = S.String;
-
 export type ListZoneActionsRequestSortList = Array<ListZoneActionsRequestSortItem | (string & {})>;
-const ListZoneActionsRequestSortList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListZoneActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListZoneActionsRequestStatusItem = "running" | "success" | "error";
 export type ListZoneActionsRequestStatusList = Array<
   ListZoneActionsRequestStatusItem | (string & {})
 >;
-const ListZoneActionsRequestStatusList =
-  ListZoneActionsRequestSortList as any as S.Schema<ListZoneActionsRequestStatusList>;
-
 export interface ListZoneActionsRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -384,23 +255,13 @@ export interface ListZoneActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListZoneActionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListZoneActionsRequest>;
-
 /** Status of the Action. */
 export type ListZoneActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListZoneActionsResponseActionsItemStatus = S.String;
-
 export type ListZoneActionsResponseActionsItemResourcesItem =
   ChangeZonePrimaryNameserversResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListZoneActionsResponseActionsItemResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-const ListZoneActionsResponseActionsItemResourcesList =
-  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ListZoneActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListZoneActionsResponseActionsItemError =
   ChangeZonePrimaryNameserversResponseActionError;
@@ -422,17 +283,7 @@ export interface ListZoneActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeZonePrimaryNameserversResponseActionError | null;
 }
-const ListZoneActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListZoneActionsResponseActionsItem>;
-
 export type ListZoneActionsResponseActionsList = Array<ListZoneActionsResponseActionsItem>;
-const ListZoneActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListZoneActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListZoneActionsResponseMetaPagination {
   /** Current page number. */
@@ -448,35 +299,15 @@ export interface ListZoneActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListZoneActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListZoneActionsResponseMetaPagination>;
-
 export interface ListZoneActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListZoneActionsResponseMetaPagination;
 }
-const ListZoneActionsResponseMeta = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListZoneActionsResponseMeta>;
-
 export interface ListZoneActionsResponse {
   actions: ListZoneActionsResponseActionsList;
   meta: ListZoneActionsResponseMeta;
 }
-const ListZoneActionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListZoneActionsResponse>;
-
 export type ListZonesActionsRequestIdList = Array<number>;
-const ListZonesActionsRequestIdList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListZonesActionsRequestIdList>;
-
 export type ListZonesActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -496,17 +327,11 @@ export type ListZonesActionsRequestSortItem =
 export type ListZonesActionsRequestSortList = Array<
   ListZonesActionsRequestSortItem | (string & {})
 >;
-const ListZonesActionsRequestSortList =
-  ListZoneActionsRequestSortList as any as S.Schema<ListZonesActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListZonesActionsRequestStatusItem = "running" | "success" | "error";
 export type ListZonesActionsRequestStatusList = Array<
   ListZonesActionsRequestStatusItem | (string & {})
 >;
-const ListZonesActionsRequestStatusList =
-  ListZoneActionsRequestSortList as any as S.Schema<ListZonesActionsRequestStatusList>;
-
 export interface ListZonesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListZonesActionsRequestIdList;
@@ -519,23 +344,13 @@ export interface ListZonesActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListZonesActionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListZonesActionsRequest>;
-
 /** Status of the Action. */
 export type ListZonesActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListZonesActionsResponseActionsItemStatus = S.String;
-
 export type ListZonesActionsResponseActionsItemResourcesItem =
   ChangeZonePrimaryNameserversResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListZonesActionsResponseActionsItemResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-const ListZonesActionsResponseActionsItemResourcesList =
-  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ListZonesActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListZonesActionsResponseActionsItemError =
   ChangeZonePrimaryNameserversResponseActionError;
@@ -557,17 +372,7 @@ export interface ListZonesActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeZonePrimaryNameserversResponseActionError | null;
 }
-const ListZonesActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListZonesActionsResponseActionsItem>;
-
 export type ListZonesActionsResponseActionsList = Array<ListZonesActionsResponseActionsItem>;
-const ListZonesActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListZonesActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListZonesActionsResponseMetaPagination = ListZoneActionsResponseMetaPagination;
 export type ListZonesActionsResponseMeta = ListZoneActionsResponseMeta;
@@ -575,11 +380,6 @@ export interface ListZonesActionsResponse {
   actions: ListZonesActionsResponseActionsList;
   meta: ListZoneActionsResponseMeta;
 }
-const ListZonesActionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListZonesActionsResponse>;
-
 export type ChangeZonePrimaryNameserversError = HetznerOpError;
 /** Change a Zone's Primary Nameservers Overwrites the primary nameservers of a [Zone](#tag/zones). Only applicable for [Zones](#tag/zones) in secondary mode. #### Operation specific errors */
 export const changeZonePrimaryNameservers: API.OperationMethod<
@@ -588,8 +388,8 @@ export const changeZonePrimaryNameservers: API.OperationMethod<
   ChangeZonePrimaryNameserversError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeZonePrimaryNameserversRequest,
-  output: ChangeZonePrimaryNameserversResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ChangeZonePrimaryNameserversRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ChangeZonePrimaryNameserversResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -603,8 +403,8 @@ export const changeZoneProtection: API.OperationMethod<
   ChangeZoneProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeZoneProtectionRequest,
-  output: ChangeZoneProtectionResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ChangeZoneProtectionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ChangeZoneProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -618,8 +418,8 @@ export const changeZoneTtl: API.OperationMethod<
   ChangeZoneTtlError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeZoneTtlRequest,
-  output: ChangeZoneTtlResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<ChangeZoneTtlRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ChangeZoneTtlResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -633,8 +433,8 @@ export const getZonesAction: API.OperationMethod<
   GetZonesActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetZonesActionRequest,
-  output: GetZonesActionResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetZonesActionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetZonesActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -648,8 +448,8 @@ export const importZoneZonefile: API.OperationMethod<
   ImportZoneZonefileError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportZoneZonefileRequest,
-  output: ImportZoneZonefileResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<ImportZoneZonefileRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ImportZoneZonefileResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -665,8 +465,8 @@ export const listZoneActions: API.PaginatedOperationMethod<
   ListZoneActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListZoneActionsRequest,
-    output: ListZoneActionsResponse,
+    input: __S(21, __c2, 5) as any as S.Schema<ListZoneActionsRequest>,
+    output: __S(26, __c3, 2) as any as S.Schema<ListZoneActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -691,8 +491,8 @@ export const listZonesActions: API.PaginatedOperationMethod<
   ListZonesActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListZonesActionsRequest,
-    output: ListZonesActionsResponse,
+    input: __S(28, __c3, 4) as any as S.Schema<ListZonesActionsRequest>,
+    output: __S(31, __c3, 7) as any as S.Schema<ListZonesActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -716,20 +516,18 @@ function __c0(j: number): any {
           address: S.String,
           port: S.optional(S.Number),
           tsig_key: S.optional(S.String),
-          tsig_algorithm: S.optional(
-            ChangeZonePrimaryNameserversRequestPrimaryNameserversItemTsigAlgorithm,
-          ),
+          tsig_algorithm: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChangeZonePrimaryNameserversRequestPrimaryNameserversItem",
       });
     case 1:
-      return S.Array(ChangeZonePrimaryNameserversRequestPrimaryNameserversItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
-          primary_nameservers: ChangeZonePrimaryNameserversRequestPrimaryNameserversList,
+          primary_nameservers: __S(1, __c0, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -750,7 +548,7 @@ function __c0(j: number): any {
         identifier: "ChangeZonePrimaryNameserversResponseActionResourcesItem",
       });
     case 4:
-      return S.Array(ChangeZonePrimaryNameserversResponseActionResourcesItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -765,12 +563,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeZonePrimaryNameserversResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeZonePrimaryNameserversResponseActionResourcesList,
-          error: S.NullOr(ChangeZonePrimaryNameserversResponseActionError),
+          resources: __S(4, __c0, 4),
+          error: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ChangeZonePrimaryNameserversResponseAction",
@@ -778,7 +576,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeZonePrimaryNameserversResponseAction,
+          action: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "ChangeZonePrimaryNameserversResponse",
@@ -807,12 +605,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeZoneProtectionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeZoneProtectionResponseActionResourcesList,
-          error: S.NullOr(ChangeZonePrimaryNameserversResponseActionError),
+          resources: __S(4, __c0, 4),
+          error: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ChangeZoneProtectionResponseAction",
@@ -820,7 +618,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeZoneProtectionResponseAction,
+          action: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "ChangeZoneProtectionResponse",
@@ -839,12 +637,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeZoneTtlResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeZoneTtlResponseActionResourcesList,
-          error: S.NullOr(ChangeZonePrimaryNameserversResponseActionError),
+          resources: __S(4, __c0, 4),
+          error: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ChangeZoneTtlResponseAction",
@@ -852,7 +650,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeZoneTtlResponseAction,
+          action: __S(12, __c1, 4),
         }),
       ).annotate({ identifier: "ChangeZoneTtlResponse" });
     case 6:
@@ -866,12 +664,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: GetZonesActionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: GetZonesActionResponseActionResourcesList,
-          error: S.NullOr(ChangeZonePrimaryNameserversResponseActionError),
+          resources: __S(4, __c0, 4),
+          error: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "GetZonesActionResponseAction",
@@ -883,7 +681,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: GetZonesActionResponseAction,
+          action: __S(15, __c1, 7),
         }),
       ).annotate({ identifier: "GetZonesActionResponse" });
     case 1:
@@ -902,12 +700,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ImportZoneZonefileResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ImportZoneZonefileResponseActionResourcesList,
-          error: S.NullOr(ChangeZonePrimaryNameserversResponseActionError),
+          resources: __S(4, __c0, 4),
+          error: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ImportZoneZonefileResponseAction",
@@ -915,19 +713,19 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: ImportZoneZonefileResponseAction,
+          action: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "ImportZoneZonefileResponse",
       });
     case 4:
-      return S.Array(ListZoneActionsRequestSortItem);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
-          sort: S.optional(ListZoneActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListZoneActionsRequestStatusList.pipe(T.Query())),
+          sort: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          status: S.optional(__S(20, __c2, 4).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/zones/{id_or_name}/actions", code: 200 })),
@@ -937,18 +735,18 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListZoneActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListZoneActionsResponseActionsItemResourcesList,
-          error: S.NullOr(ChangeZonePrimaryNameserversResponseActionError),
+          resources: __S(4, __c0, 4),
+          error: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ListZoneActionsResponseActionsItem",
       });
     case 7:
-      return S.Array(ListZoneActionsResponseActionsItem);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -969,7 +767,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListZoneActionsResponseMetaPagination,
+          pagination: __S(24, __c3, 0),
         }),
       ).annotate({
         identifier: "ListZoneActionsResponseMeta",
@@ -977,8 +775,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: ListZoneActionsResponseActionsList,
-          meta: ListZoneActionsResponseMeta,
+          actions: __S(23, __c2, 7),
+          meta: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "ListZoneActionsResponse" });
     case 3:
@@ -986,9 +784,9 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(ListZonesActionsRequestIdList.pipe(T.Query())),
-          sort: S.optional(ListZonesActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListZonesActionsRequestStatusList.pipe(T.Query())),
+          id: S.optional(__S(27, __c3, 3).pipe(T.Query())),
+          sort: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          status: S.optional(__S(20, __c2, 4).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/zones/actions", code: 200 })),
@@ -998,24 +796,29 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListZonesActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListZonesActionsResponseActionsItemResourcesList,
-          error: S.NullOr(ChangeZonePrimaryNameserversResponseActionError),
+          resources: __S(4, __c0, 4),
+          error: S.NullOr(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ListZonesActionsResponseActionsItem",
       });
     case 6:
-      return S.Array(ListZonesActionsResponseActionsItem);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: ListZonesActionsResponseActionsList,
-          meta: ListZoneActionsResponseMeta,
+          actions: __S(30, __c3, 6),
+          meta: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "ListZonesActionsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

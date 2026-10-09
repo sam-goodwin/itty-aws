@@ -9,6 +9,8 @@ import { paginatePolar } from "../pagination.ts";
 import { PolarProtocol, type PolarOpError, type PolarOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PolarOpError, PolarOpContext };
 
@@ -58,34 +60,20 @@ export class UnprocessableEntity
   ) {}
 
 export type BenefitGrantsListRequestOrganizationIdCase1List = Array<string>;
-const BenefitGrantsListRequestOrganizationIdCase1List = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<BenefitGrantsListRequestOrganizationIdCase1List>;
-
 /** Filter by organization ID. */
 export type BenefitGrantsListRequestOrganizationId =
   | string
   | BenefitGrantsListRequestOrganizationIdCase1List;
-const BenefitGrantsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<BenefitGrantsListRequestOrganizationId>;
-
 export type BenefitGrantsListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type BenefitGrantsListRequestCustomerId =
   | string
   | BenefitGrantsListRequestCustomerIdCase1List;
-const BenefitGrantsListRequestCustomerId =
-  S.Unknown as any as S.Schema<BenefitGrantsListRequestCustomerId>;
-
 export type BenefitGrantsListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by customer external ID. */
 export type BenefitGrantsListRequestExternalCustomerId =
   | string
   | BenefitGrantsListRequestExternalCustomerIdCase1List;
-const BenefitGrantsListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<BenefitGrantsListRequestExternalCustomerId>;
-
 export type BenefitGrantSortProperty =
   | "created_at"
   | "-created_at"
@@ -93,14 +81,7 @@ export type BenefitGrantSortProperty =
   | "-granted_at"
   | "revoked_at"
   | "-revoked_at";
-const BenefitGrantSortProperty = S.String;
-
 export type BenefitGrantsListRequestSortingList = Array<BenefitGrantSortProperty | (string & {})>;
-const BenefitGrantsListRequestSortingList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BenefitGrantsListRequestSortingList>;
-
 export interface BenefitGrantsListRequest {
   /** Filter by organization ID. */
   organization_id?: BenefitGrantsListRequestOrganizationId;
@@ -117,24 +98,13 @@ export interface BenefitGrantsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: BenefitGrantsListRequestSortingList;
 }
-const BenefitGrantsListRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BenefitGrantsListRequest>;
-
 export interface BenefitGrantError {
   message: string;
   type: string;
   timestamp: string;
 }
-const BenefitGrantError = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BenefitGrantError>;
-
 export type MetadataOutputTypeValue = string | number | number | boolean;
-const MetadataOutputTypeValue = S.Unknown as any as S.Schema<MetadataOutputTypeValue>;
-
 export type MetadataOutputType = { [key: string]: MetadataOutputTypeValue | undefined };
-const MetadataOutputType = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MetadataOutputType>;
-
 export type AddressCountry =
   | "AD"
   | "AE"
@@ -385,8 +355,6 @@ export type AddressCountry =
   | "ZA"
   | "ZM"
   | "ZW";
-const AddressCountry = S.String;
-
 export interface Address {
   line1?: string | null;
   line2?: string | null;
@@ -395,14 +363,7 @@ export interface Address {
   state?: string | null;
   country: AddressCountry;
 }
-const Address = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Address>;
-
 export type CustomerIndividualTaxIdList = Array<unknown>;
-const CustomerIndividualTaxIdList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CustomerIndividualTaxIdList>;
-
 /** A customer in an organization. */
 export interface CustomerIndividual {
   /** The ID of the customer. */
@@ -473,11 +434,7 @@ export interface CustomerTeam {
   avatar_url: string | null;
 }
 export type Customer = CustomerIndividual | CustomerTeam;
-const Customer = S.Unknown as any as S.Schema<Customer>;
-
 export type MemberRole = "owner" | "billing_manager" | "member";
-const MemberRole = S.String;
-
 /** A member of a customer. */
 export interface Member {
   /** The ID of the member. */
@@ -497,8 +454,6 @@ export interface Member {
   /** The role of the member within the customer. */
   role: MemberRole;
 }
-const Member = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Member>;
-
 export type BenefitVisibility = "draft" | "private" | "public";
 /** Properties for a benefit of type `custom`. */
 export interface BenefitCustomProperties {
@@ -778,8 +733,6 @@ export type Benefit =
   | BenefitMeterCredit
   | BenefitFeatureFlag
   | BenefitSlackSharedChannel;
-const Benefit = S.Unknown as any as S.Schema<Benefit>;
-
 export interface BenefitGrantDiscordProperties {
   account_id?: string | null;
   guild_id?: string;
@@ -823,8 +776,6 @@ export type BenefitGrantProperties =
   | BenefitGrantLicenseKeysProperties
   | unknown
   | BenefitGrantSlackSharedChannelProperties;
-const BenefitGrantProperties = S.Unknown as any as S.Schema<BenefitGrantProperties>;
-
 export interface BenefitGrant {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -857,29 +808,15 @@ export interface BenefitGrant {
   benefit: Benefit;
   properties: BenefitGrantProperties;
 }
-const BenefitGrant = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<BenefitGrant>;
-
 export type ListResourceBenefitGrantItemsList = Array<BenefitGrant>;
-const ListResourceBenefitGrantItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListResourceBenefitGrantItemsList>;
-
 export interface Pagination {
   total_count: number;
   max_page: number;
 }
-const Pagination = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Pagination>;
-
 export interface ListResourceBenefitGrant {
   items: ListResourceBenefitGrantItemsList;
   pagination: Pagination;
 }
-const ListResourceBenefitGrant = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListResourceBenefitGrant>;
-
 export type BenefitCustomCreateMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type BenefitCustomCreateMetadataMap = {
@@ -1077,36 +1014,14 @@ export type BenefitCreate =
   | BenefitMeterCreditCreate
   | BenefitFeatureFlagCreate
   | BenefitSlackSharedChannelCreate;
-const BenefitCreate = S.Unknown as any as S.Schema<BenefitCreate>;
-
 export interface BenefitsCreateRequest {
   body: BenefitCreate;
 }
-const BenefitsCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BenefitsCreateRequest>;
-
 export type BenefitsCreateResponse = Benefit;
-const BenefitsCreateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BenefitsCreateResponse>;
-
 export interface BenefitsDeleteRequest {
   id: string;
 }
-const BenefitsDeleteRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BenefitsDeleteRequest>;
-
 export interface BenefitsDeleteResponse {}
-const BenefitsDeleteResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BenefitsDeleteResponse>;
-
 export interface BenefitsFilesRequest {
   id: string;
   /** Page number, defaults to 1. */
@@ -1114,8 +1029,6 @@ export interface BenefitsFilesRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const BenefitsFilesRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<BenefitsFilesRequest>;
-
 export interface BenefitDownloadableFile {
   /** The ID of the object. */
   id: string;
@@ -1140,45 +1053,21 @@ export interface BenefitDownloadableFile {
   downloads: number;
   size_readable: string;
 }
-const BenefitDownloadableFile = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BenefitDownloadableFile>;
-
 export type ListResourceBenefitDownloadableFileItemsList = Array<BenefitDownloadableFile>;
-const ListResourceBenefitDownloadableFileItemsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListResourceBenefitDownloadableFileItemsList>;
-
 export interface ListResourceBenefitDownloadableFile {
   items: ListResourceBenefitDownloadableFileItemsList;
   pagination: Pagination;
 }
-const ListResourceBenefitDownloadableFile = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListResourceBenefitDownloadableFile>;
-
 export interface BenefitsGetRequest {
   id: string;
 }
-const BenefitsGetRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<BenefitsGetRequest>;
-
 export type BenefitsGetResponse = Benefit;
-const BenefitsGetResponse = BenefitsCreateResponse as any as S.Schema<BenefitsGetResponse>;
-
 export type BenefitsGrantsRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer. */
 export type BenefitsGrantsRequestCustomerId = string | BenefitsGrantsRequestCustomerIdCase1List;
-const BenefitsGrantsRequestCustomerId =
-  S.Unknown as any as S.Schema<BenefitsGrantsRequestCustomerId>;
-
 export type BenefitsGrantsRequestMemberIdCase1List = Array<string>;
 /** Filter by member. */
 export type BenefitsGrantsRequestMemberId = string | BenefitsGrantsRequestMemberIdCase1List;
-const BenefitsGrantsRequestMemberId = S.Unknown as any as S.Schema<BenefitsGrantsRequestMemberId>;
-
 export interface BenefitsGrantsRequest {
   id: string;
   /** Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned. */
@@ -1192,17 +1081,9 @@ export interface BenefitsGrantsRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const BenefitsGrantsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BenefitsGrantsRequest>;
-
 export type BenefitsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type BenefitsListRequestOrganizationId = string | BenefitsListRequestOrganizationIdCase1List;
-const BenefitsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<BenefitsListRequestOrganizationId>;
-
 export type BenefitType =
   | "custom"
   | "discord"
@@ -1215,18 +1096,12 @@ export type BenefitType =
 export type BenefitsListRequestTypeCase1List = Array<BenefitType | (string & {})>;
 /** Filter by benefit type. */
 export type BenefitsListRequestType = BenefitType | BenefitsListRequestTypeCase1List;
-const BenefitsListRequestType = S.Unknown as any as S.Schema<BenefitsListRequestType>;
-
 export type BenefitsListRequestIdCase1List = Array<string>;
 /** Filter by benefit IDs. */
 export type BenefitsListRequestId = string | BenefitsListRequestIdCase1List;
-const BenefitsListRequestId = S.Unknown as any as S.Schema<BenefitsListRequestId>;
-
 export type BenefitsListRequestExcludeIdCase1List = Array<string>;
 /** Exclude benefits with these IDs. */
 export type BenefitsListRequestExcludeId = string | BenefitsListRequestExcludeIdCase1List;
-const BenefitsListRequestExcludeId = S.Unknown as any as S.Schema<BenefitsListRequestExcludeId>;
-
 export type BenefitSortProperty =
   | "created_at"
   | "-created_at"
@@ -1237,9 +1112,6 @@ export type BenefitSortProperty =
   | "user_order"
   | "-user_order";
 export type BenefitsListRequestSortingList = Array<BenefitSortProperty | (string & {})>;
-const BenefitsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<BenefitsListRequestSortingList>;
-
 export type MetadataQueryValueCase3List = Array<string>;
 export type MetadataQueryValueCase4List = Array<number>;
 export type MetadataQueryValueCase5List = Array<boolean>;
@@ -1250,11 +1122,7 @@ export type MetadataQueryValue =
   | MetadataQueryValueCase3List
   | MetadataQueryValueCase4List
   | MetadataQueryValueCase5List;
-const MetadataQueryValue = S.Unknown as any as S.Schema<MetadataQueryValue>;
-
 export type MetadataQueryMap = { [key: string]: MetadataQueryValue | undefined };
-const MetadataQueryMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<MetadataQueryMap>;
-
 export interface BenefitsListRequest {
   /** Filter by organization ID. */
   organization_id?: BenefitsListRequestOrganizationId;
@@ -1275,20 +1143,11 @@ export interface BenefitsListRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const BenefitsListRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BenefitsListRequest>;
-
 export type ListResourceBenefitItemsList = Array<Benefit>;
-const ListResourceBenefitItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListResourceBenefitItemsList>;
-
 export interface ListResourceBenefit {
   items: ListResourceBenefitItemsList;
   pagination: Pagination;
 }
-const ListResourceBenefit = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListResourceBenefit>;
-
 export type BenefitCustomUpdateMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type BenefitCustomUpdateMetadataMap = {
@@ -1410,28 +1269,17 @@ export type BenefitsUpdateRequestBody =
   | BenefitMeterCreditUpdate
   | BenefitFeatureFlagUpdate
   | BenefitSlackSharedChannelUpdate;
-const BenefitsUpdateRequestBody = S.Unknown as any as S.Schema<BenefitsUpdateRequestBody>;
-
 export interface BenefitsUpdateRequest {
   id: string;
   body: BenefitsUpdateRequestBody;
 }
-const BenefitsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BenefitsUpdateRequest>;
-
 export type BenefitsUpdateResponse = Benefit;
-const BenefitsUpdateResponse = BenefitsCreateResponse as any as S.Schema<BenefitsUpdateResponse>;
-
 export type CheckoutLinkCreateProductPriceMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CheckoutLinkCreateProductPriceMetadataMap = {
   [key: string]: CheckoutLinkCreateProductPriceMetadataValue | undefined;
 };
 export type TrialInterval = "day" | "week" | "month" | "year";
-const TrialInterval = S.String;
-
 /** Schema to create a new checkout link from a a single product price. **Deprecated**: Use `CheckoutLinkCreateProducts` instead. */
 export interface CheckoutLinkCreateProductPrice {
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
@@ -1533,29 +1381,14 @@ export type CheckoutLinkCreate =
   | CheckoutLinkCreateProductPrice
   | CheckoutLinkCreateProduct
   | CheckoutLinkCreateProducts;
-const CheckoutLinkCreate = S.Unknown as any as S.Schema<CheckoutLinkCreate>;
-
 export interface CheckoutLinksCreateRequest {
   body: CheckoutLinkCreate;
 }
-const CheckoutLinksCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CheckoutLinksCreateRequest>;
-
 export type PaymentProcessor = "stripe";
-const PaymentProcessor = S.String;
-
 export type ProductVisibility = "draft" | "private" | "public";
-const ProductVisibility = S.String;
-
 export type RecurringInterval = "day" | "week" | "month" | "year";
-const RecurringInterval = S.String;
-
 export type ProductPriceSource = "catalog" | "ad_hoc";
 export type TaxBehaviorOption = "location" | "inclusive" | "exclusive";
-const TaxBehaviorOption = S.String;
-
 /** A recurring price for a product, i.e. a subscription. **Deprecated**: The recurring interval should be set on the product itself. */
 export interface LegacyRecurringProductPriceFixed {
   /** Creation timestamp of the object. */
@@ -1704,11 +1537,6 @@ export interface ProductPriceSeatBased {
   maximum_units: number | null;
 }
 export type ProductPriceUnitBasedUnitLabelValueMap = { [key: string]: string | undefined };
-const ProductPriceUnitBasedUnitLabelValueMap = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ProductPriceUnitBasedUnitLabelValueMap>;
-
 export type ProductPriceUnitBasedUnitLabelMap = {
   [key: string]: ProductPriceUnitBasedUnitLabelValueMap | undefined;
 };
@@ -1741,8 +1569,6 @@ export interface ProductPriceUnitBased {
   maximum_units: number | null;
 }
 export type MeterUnit = "scalar" | "token" | "custom";
-const MeterUnit = S.String;
-
 /** A meter associated to a metered price. */
 export interface ProductPriceMeter {
   /** The ID of the object. */
@@ -1820,15 +1646,8 @@ export type ProductPrice =
   | ProductPriceMeteredUnit
   | ProductPriceMeteredTiers;
 export type CheckoutLinkProductPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutLinkProductPricesItem = S.Unknown as any as S.Schema<CheckoutLinkProductPricesItem>;
-
 /** List of prices for this product. */
 export type CheckoutLinkProductPricesList = Array<CheckoutLinkProductPricesItem>;
-const CheckoutLinkProductPricesList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CheckoutLinkProductPricesList>;
-
 export interface BenefitCustomPublic {
   /** The ID of the benefit. */
   id: string;
@@ -1889,15 +1708,8 @@ export type BenefitPublic =
   | BenefitCustomPublic
   | BenefitCustomPublic
   | BenefitMeterCreditPublic;
-const BenefitPublic = S.Unknown as any as S.Schema<BenefitPublic>;
-
 /** List of benefits granted by the product. */
 export type CheckoutLinkProductBenefitsList = Array<BenefitPublic>;
-const CheckoutLinkProductBenefitsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CheckoutLinkProductBenefitsList>;
-
 /** File to be used as a product media file. */
 export interface ProductMediaFileRead {
   /** The ID of the object. */
@@ -1919,15 +1731,8 @@ export interface ProductMediaFileRead {
   size_readable: string;
   public_url: string;
 }
-const ProductMediaFileRead = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ProductMediaFileRead>;
-
 /** List of medias associated to the product. */
 export type CheckoutLinkProductMediasList = Array<ProductMediaFileRead>;
-const CheckoutLinkProductMediasList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CheckoutLinkProductMediasList>;
-
 /** Product data for a checkout link. */
 export interface CheckoutLinkProduct {
   metadata: MetadataOutputType;
@@ -1968,27 +1773,11 @@ export interface CheckoutLinkProduct {
   /** List of medias associated to the product. */
   medias: CheckoutLinkProductMediasList;
 }
-const CheckoutLinkProduct = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CheckoutLinkProduct>;
-
 export type CheckoutLinkProductsList = Array<CheckoutLinkProduct>;
-const CheckoutLinkProductsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CheckoutLinkProductsList>;
-
 export type DiscountDuration = "once" | "forever" | "repeating";
-const DiscountDuration = S.String;
-
 export type DiscountType = "fixed" | "percentage";
-const DiscountType = S.String;
-
 /** Map of currency to fixed amount to discount from the total. */
 export type DiscountFixedOnceForeverDurationBaseAmountsMap = { [key: string]: number | undefined };
-const DiscountFixedOnceForeverDurationBaseAmountsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DiscountFixedOnceForeverDurationBaseAmountsMap>;
-
 export interface DiscountFixedOnceForeverDurationBase {
   duration: DiscountDuration;
   type: DiscountType;
@@ -2118,8 +1907,6 @@ export type CheckoutLinkDiscount =
   | DiscountFixedRepeatDurationBase
   | DiscountPercentageOnceForeverDurationBase
   | DiscountPercentageRepeatDurationBase;
-const CheckoutLinkDiscount = S.Unknown as any as S.Schema<CheckoutLinkDiscount>;
-
 /** Checkout link data. */
 export interface CheckoutLink {
   /** The ID of the object. */
@@ -2159,44 +1946,23 @@ export interface CheckoutLink {
   discount: CheckoutLinkDiscount | null;
   url: string;
 }
-const CheckoutLink = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CheckoutLink>;
-
 export interface CheckoutLinksDeleteRequest {
   /** The checkout link ID. */
   id: string;
 }
-const CheckoutLinksDeleteRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CheckoutLinksDeleteRequest>;
-
 export interface CheckoutLinksDeleteResponse {}
-const CheckoutLinksDeleteResponse =
-  BenefitsDeleteResponse as any as S.Schema<CheckoutLinksDeleteResponse>;
-
 export interface CheckoutLinksGetRequest {
   /** The checkout link ID. */
   id: string;
 }
-const CheckoutLinksGetRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CheckoutLinksGetRequest>;
-
 export type CheckoutLinksListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type CheckoutLinksListRequestOrganizationId =
   | string
   | CheckoutLinksListRequestOrganizationIdCase1List;
-const CheckoutLinksListRequestOrganizationId =
-  S.Unknown as any as S.Schema<CheckoutLinksListRequestOrganizationId>;
-
 export type CheckoutLinksListRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type CheckoutLinksListRequestProductId = string | CheckoutLinksListRequestProductIdCase1List;
-const CheckoutLinksListRequestProductId =
-  S.Unknown as any as S.Schema<CheckoutLinksListRequestProductId>;
-
 export type CheckoutLinkSortProperty =
   | "created_at"
   | "-created_at"
@@ -2207,9 +1973,6 @@ export type CheckoutLinkSortProperty =
   | "allow_discount_codes"
   | "-allow_discount_codes";
 export type CheckoutLinksListRequestSortingList = Array<CheckoutLinkSortProperty | (string & {})>;
-const CheckoutLinksListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CheckoutLinksListRequestSortingList>;
-
 export interface CheckoutLinksListRequest {
   /** Filter by organization ID. */
   organization_id?: CheckoutLinksListRequestOrganizationId;
@@ -2222,43 +1985,17 @@ export interface CheckoutLinksListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CheckoutLinksListRequestSortingList;
 }
-const CheckoutLinksListRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CheckoutLinksListRequest>;
-
 export type ListResourceCheckoutLinkItemsList = Array<CheckoutLink>;
-const ListResourceCheckoutLinkItemsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListResourceCheckoutLinkItemsList>;
-
 export interface ListResourceCheckoutLink {
   items: ListResourceCheckoutLinkItemsList;
   pagination: Pagination;
 }
-const ListResourceCheckoutLink = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListResourceCheckoutLink>;
-
 export type CheckoutLinksUpdateRequestMetadataValue = string | number | number | boolean;
-const CheckoutLinksUpdateRequestMetadataValue =
-  S.Unknown as any as S.Schema<CheckoutLinksUpdateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CheckoutLinksUpdateRequestMetadataMap = {
   [key: string]: CheckoutLinksUpdateRequestMetadataValue | undefined;
 };
-const CheckoutLinksUpdateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CheckoutLinksUpdateRequestMetadataMap>;
-
 export type CheckoutLinksUpdateRequestProductsList = Array<string>;
-const CheckoutLinksUpdateRequestProductsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutLinksUpdateRequestProductsList>;
-
 export interface CheckoutLinksUpdateRequest {
   /** The checkout link ID. */
   id: string;
@@ -2286,37 +2023,16 @@ export interface CheckoutLinksUpdateRequest {
   /** When set, a back button will be shown in the checkout to return to this URL. */
   return_url?: string | null;
 }
-const CheckoutLinksUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CheckoutLinksUpdateRequest>;
-
 export type CheckoutsCreateRequestMetadataValue = string | number | number | boolean;
-const CheckoutsCreateRequestMetadataValue =
-  S.Unknown as any as S.Schema<CheckoutsCreateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CheckoutsCreateRequestMetadataMap = {
   [key: string]: CheckoutsCreateRequestMetadataValue | undefined;
 };
-const CheckoutsCreateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CheckoutsCreateRequestMetadataMap>;
-
 export type CheckoutsCreateRequestCustomFieldDataValue = string | number | boolean;
-const CheckoutsCreateRequestCustomFieldDataValue =
-  S.Unknown as any as S.Schema<CheckoutsCreateRequestCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type CheckoutsCreateRequestCustomFieldDataMap = {
   [key: string]: CheckoutsCreateRequestCustomFieldDataValue | null | undefined;
 };
-const CheckoutsCreateRequestCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CheckoutsCreateRequestCustomFieldDataMap>;
-
 export type AddressInputCountry =
   | "AD"
   | "AE"
@@ -2570,21 +2286,11 @@ export interface AddressInput {
   state?: string | null;
   country: AddressInputCountry | (string & {});
 }
-const AddressInput = Address as any as S.Schema<AddressInput>;
-
 export type CheckoutsCreateRequestCustomerMetadataValue = string | number | number | boolean;
-const CheckoutsCreateRequestCustomerMetadataValue =
-  S.Unknown as any as S.Schema<CheckoutsCreateRequestCustomerMetadataValue>;
-
 /** Key-value object allowing you to store additional information that'll be copied to the created customer. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CheckoutsCreateRequestCustomerMetadataMap = {
   [key: string]: CheckoutsCreateRequestCustomerMetadataValue | undefined;
 };
-const CheckoutsCreateRequestCustomerMetadataMap = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CheckoutsCreateRequestCustomerMetadataMap>;
-
 export type PresentmentCurrency =
   | "aed"
   | "all"
@@ -2712,13 +2418,8 @@ export type PresentmentCurrency =
   | "yer"
   | "zar"
   | "zmw";
-const PresentmentCurrency = S.String;
-
 /** List of product IDs available to select at that checkout. The first one will be selected by default. */
 export type CheckoutsCreateRequestProductsList = Array<string>;
-const CheckoutsCreateRequestProductsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<CheckoutsCreateRequestProductsList>;
-
 /** Schema to create a fixed price. */
 export interface ProductPriceFixedCreate {
   amount_type: string;
@@ -2822,24 +2523,11 @@ export type CheckoutsCreateRequestPricesValueItem =
   | ProductPriceUnitBasedCreate
   | ProductPriceMeteredUnitCreate
   | ProductPriceMeteredTiersCreate;
-const CheckoutsCreateRequestPricesValueItem =
-  S.Unknown as any as S.Schema<CheckoutsCreateRequestPricesValueItem>;
-
 /** List of prices for the product. At most one fixed price and one seat-based price may be combined (billed as `fixed + seat_charge`), or a single custom price may stand alone, plus any number of metered prices. A custom price cannot be combined with a fixed or seat-based price. */
 export type CheckoutsCreateRequestPricesValueList = Array<CheckoutsCreateRequestPricesValueItem>;
-const CheckoutsCreateRequestPricesValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CheckoutsCreateRequestPricesValueList>;
-
 export type CheckoutsCreateRequestPricesMap = {
   [key: string]: CheckoutsCreateRequestPricesValueList | undefined;
 };
-const CheckoutsCreateRequestPricesMap = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CheckoutsCreateRequestPricesMap>;
-
 export interface CheckoutsCreateRequest {
   /** The interval unit for the trial period. */
   trial_interval?: TrialInterval | (string & {}) | null;
@@ -2899,36 +2587,15 @@ export interface CheckoutsCreateRequest {
   /** Optional mapping of product IDs to a list of ad-hoc prices to create for that product. If not set, catalog prices of the product will be used. */
   prices?: CheckoutsCreateRequestPricesMap | null;
 }
-const CheckoutsCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CheckoutsCreateRequest>;
-
 export type CheckoutCustomFieldDataValue = string | number | boolean;
-const CheckoutCustomFieldDataValue = S.Unknown as any as S.Schema<CheckoutCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type CheckoutCustomFieldDataMap = {
   [key: string]: CheckoutCustomFieldDataValue | null | undefined;
 };
-const CheckoutCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CheckoutCustomFieldDataMap>;
-
 export type CheckoutStatus = "open" | "expired" | "confirmed" | "succeeded" | "failed";
-const CheckoutStatus = S.String;
-
 export type TaxBehavior = "inclusive" | "exclusive";
-const TaxBehavior = S.String;
-
 export type CheckoutPaymentProcessorMetadataMap = { [key: string]: string | undefined };
-const CheckoutPaymentProcessorMetadataMap =
-  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<CheckoutPaymentProcessorMetadataMap>;
-
 export type BillingAddressFieldMode = "required" | "optional" | "disabled";
-const BillingAddressFieldMode = S.String;
-
 export interface CheckoutBillingAddressFields {
   country: BillingAddressFieldMode;
   state: BillingAddressFieldMode;
@@ -2937,31 +2604,13 @@ export interface CheckoutBillingAddressFields {
   line1: BillingAddressFieldMode;
   line2: BillingAddressFieldMode;
 }
-const CheckoutBillingAddressFields = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CheckoutBillingAddressFields>;
-
 export type CheckoutProductPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutProductPricesItem = S.Unknown as any as S.Schema<CheckoutProductPricesItem>;
-
 /** List of prices for this product. */
 export type CheckoutProductPricesList = Array<CheckoutProductPricesItem>;
-const CheckoutProductPricesList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CheckoutProductPricesList>;
-
 /** List of benefits granted by the product. */
 export type CheckoutProductBenefitsList = Array<BenefitPublic>;
-const CheckoutProductBenefitsList =
-  CheckoutLinkProductBenefitsList as any as S.Schema<CheckoutProductBenefitsList>;
-
 /** List of medias associated to the product. */
 export type CheckoutProductMediasList = Array<ProductMediaFileRead>;
-const CheckoutProductMediasList =
-  CheckoutLinkProductMediasList as any as S.Schema<CheckoutProductMediasList>;
-
 /** Product data for a checkout session. */
 export interface CheckoutProduct {
   /** The ID of the object. */
@@ -3001,28 +2650,13 @@ export interface CheckoutProduct {
   /** List of medias associated to the product. */
   medias: CheckoutProductMediasList;
 }
-const CheckoutProduct = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CheckoutProduct>;
-
 /** List of products available to select. */
 export type CheckoutProductsList = Array<CheckoutProduct>;
-const CheckoutProductsList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CheckoutProductsList>;
-
 export type CheckoutProductPrice = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutProductPrice = S.Unknown as any as S.Schema<CheckoutProductPrice>;
-
 export type CheckoutPricesValueItem = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutPricesValueItem = S.Unknown as any as S.Schema<CheckoutPricesValueItem>;
-
 /** List of prices for this product. */
 export type CheckoutPricesValueList = Array<CheckoutPricesValueItem>;
-const CheckoutPricesValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CheckoutPricesValueList>;
-
 export type CheckoutPricesMap = { [key: string]: CheckoutPricesValueList | undefined };
-const CheckoutPricesMap = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CheckoutPricesMap>;
-
 /** Map of currency to fixed amount to discount from the total. */
 export type CheckoutDiscountFixedOnceForeverDurationAmountsMap = {
   [key: string]: number | undefined;
@@ -3084,8 +2718,6 @@ export type CheckoutDiscount =
   | CheckoutDiscountFixedRepeatDuration
   | CheckoutDiscountPercentageOnceForeverDuration
   | CheckoutDiscountPercentageRepeatDuration;
-const CheckoutDiscount = S.Unknown as any as S.Schema<CheckoutDiscount>;
-
 export interface CustomFieldTextProperties {
   form_label?: string;
   form_help_text?: string;
@@ -3198,8 +2830,6 @@ export type CustomField =
   | CustomFieldNumber
   | CustomFieldCheckbox
   | CustomFieldSelect;
-const CustomField = S.Unknown as any as S.Schema<CustomField>;
-
 /** Schema of a custom field attached to a resource. */
 export interface AttachedCustomField {
   /** ID of the custom field. */
@@ -3210,25 +2840,11 @@ export interface AttachedCustomField {
   /** Whether the value is required for this custom field. */
   required: boolean;
 }
-const AttachedCustomField = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<AttachedCustomField>;
-
 export type CheckoutAttachedCustomFieldsList = Array<AttachedCustomField>;
-const CheckoutAttachedCustomFieldsList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CheckoutAttachedCustomFieldsList>;
-
 export type CheckoutCustomerMetadataValue = string | number | boolean;
-const CheckoutCustomerMetadataValue = S.Unknown as any as S.Schema<CheckoutCustomerMetadataValue>;
-
 export type CheckoutCustomerMetadataMap = {
   [key: string]: CheckoutCustomerMetadataValue | undefined;
 };
-const CheckoutCustomerMetadataMap = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CheckoutCustomerMetadataMap>;
-
 /** Checkout session data retrieved using an access token. */
 export interface Checkout {
   /** The ID of the object. */
@@ -3348,45 +2964,29 @@ export interface Checkout {
   attached_custom_fields: CheckoutAttachedCustomFieldsList | null;
   customer_metadata: CheckoutCustomerMetadataMap;
 }
-const Checkout = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Checkout>;
-
 export interface CheckoutsGetRequest {
   /** The checkout session ID. */
   id: string;
 }
-const CheckoutsGetRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<CheckoutsGetRequest>;
-
 export type CheckoutsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type CheckoutsListRequestOrganizationId =
   | string
   | CheckoutsListRequestOrganizationIdCase1List;
-const CheckoutsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<CheckoutsListRequestOrganizationId>;
-
 export type CheckoutsListRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type CheckoutsListRequestProductId = string | CheckoutsListRequestProductIdCase1List;
-const CheckoutsListRequestProductId = S.Unknown as any as S.Schema<CheckoutsListRequestProductId>;
-
 export type CheckoutsListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type CheckoutsListRequestCustomerId = string | CheckoutsListRequestCustomerIdCase1List;
-const CheckoutsListRequestCustomerId = S.Unknown as any as S.Schema<CheckoutsListRequestCustomerId>;
-
 export type CheckoutsListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by customer external ID. */
 export type CheckoutsListRequestExternalCustomerId =
   | string
   | CheckoutsListRequestExternalCustomerIdCase1List;
-const CheckoutsListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<CheckoutsListRequestExternalCustomerId>;
-
 export type CheckoutsListRequestStatusCase1List = Array<CheckoutStatus | (string & {})>;
 /** Filter by checkout session status. */
 export type CheckoutsListRequestStatus = CheckoutStatus | CheckoutsListRequestStatusCase1List;
-const CheckoutsListRequestStatus = S.Unknown as any as S.Schema<CheckoutsListRequestStatus>;
-
 export type CheckoutSortProperty =
   | "created_at"
   | "-created_at"
@@ -3395,9 +2995,6 @@ export type CheckoutSortProperty =
   | "status"
   | "-status";
 export type CheckoutsListRequestSortingList = Array<CheckoutSortProperty | (string & {})>;
-const CheckoutsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CheckoutsListRequestSortingList>;
-
 export interface CheckoutsListRequest {
   /** Filter by organization ID. */
   organization_id?: CheckoutsListRequestOrganizationId;
@@ -3418,59 +3015,26 @@ export interface CheckoutsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CheckoutsListRequestSortingList;
 }
-const CheckoutsListRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CheckoutsListRequest>;
-
 export type ListResourceCheckoutItemsList = Array<Checkout>;
-const ListResourceCheckoutItemsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListResourceCheckoutItemsList>;
-
 export interface ListResourceCheckout {
   items: ListResourceCheckoutItemsList;
   pagination: Pagination;
 }
-const ListResourceCheckout = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListResourceCheckout>;
-
 export type CheckoutsUpdateRequestCustomFieldDataValue = string | number | boolean;
-const CheckoutsUpdateRequestCustomFieldDataValue =
-  S.Unknown as any as S.Schema<CheckoutsUpdateRequestCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type CheckoutsUpdateRequestCustomFieldDataMap = {
   [key: string]: CheckoutsUpdateRequestCustomFieldDataValue | null | undefined;
 };
-const CheckoutsUpdateRequestCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CheckoutsUpdateRequestCustomFieldDataMap>;
-
 export type CheckoutsUpdateRequestMetadataValue = string | number | number | boolean;
-const CheckoutsUpdateRequestMetadataValue =
-  S.Unknown as any as S.Schema<CheckoutsUpdateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CheckoutsUpdateRequestMetadataMap = {
   [key: string]: CheckoutsUpdateRequestMetadataValue | undefined;
 };
-const CheckoutsUpdateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CheckoutsUpdateRequestMetadataMap>;
-
 export type CheckoutsUpdateRequestCustomerMetadataValue = string | number | number | boolean;
-const CheckoutsUpdateRequestCustomerMetadataValue =
-  S.Unknown as any as S.Schema<CheckoutsUpdateRequestCustomerMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CheckoutsUpdateRequestCustomerMetadataMap = {
   [key: string]: CheckoutsUpdateRequestCustomerMetadataValue | undefined;
 };
-const CheckoutsUpdateRequestCustomerMetadataMap = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CheckoutsUpdateRequestCustomerMetadataMap>;
-
 export interface CheckoutsUpdateRequest {
   /** The checkout session ID. */
   id: string;
@@ -3517,19 +3081,9 @@ export interface CheckoutsUpdateRequest {
   /** If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page. */
   embed_origin?: string | null;
 }
-const CheckoutsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CheckoutsUpdateRequest>;
-
 export interface ClaimCustomerSeatsGetInfoRequest {
   invitation_token: string;
 }
-const ClaimCustomerSeatsGetInfoRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ClaimCustomerSeatsGetInfoRequest>;
-
 /** Read-only information about a seat claim invitation. Safe for email scanners - no side effects when fetched. */
 export interface SeatClaimInfo {
   /** Name of the product */
@@ -3545,21 +3099,11 @@ export interface SeatClaimInfo {
   /** Whether the seat can be claimed */
   can_claim: boolean;
 }
-const SeatClaimInfo = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<SeatClaimInfo>;
-
 export type ConfirmCheckoutsClientRequestCustomFieldDataValue = string | number | boolean;
-const ConfirmCheckoutsClientRequestCustomFieldDataValue =
-  S.Unknown as any as S.Schema<ConfirmCheckoutsClientRequestCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type ConfirmCheckoutsClientRequestCustomFieldDataMap = {
   [key: string]: ConfirmCheckoutsClientRequestCustomFieldDataValue | null | undefined;
 };
-const ConfirmCheckoutsClientRequestCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ConfirmCheckoutsClientRequestCustomFieldDataMap>;
-
 export interface ConfirmCheckoutsClientRequest {
   /** The checkout session client secret. */
   client_secret: string;
@@ -3590,69 +3134,29 @@ export interface ConfirmCheckoutsClientRequest {
   /** ID of the Stripe confirmation token. Required for fixed prices and custom prices. */
   confirmation_token_id?: string | null;
 }
-const ConfirmCheckoutsClientRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ConfirmCheckoutsClientRequest>;
-
 export type CheckoutPublicConfirmedCustomFieldDataValue = string | number | boolean;
-const CheckoutPublicConfirmedCustomFieldDataValue =
-  S.Unknown as any as S.Schema<CheckoutPublicConfirmedCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type CheckoutPublicConfirmedCustomFieldDataMap = {
   [key: string]: CheckoutPublicConfirmedCustomFieldDataValue | null | undefined;
 };
-const CheckoutPublicConfirmedCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CheckoutPublicConfirmedCustomFieldDataMap>;
-
 export type CheckoutPublicConfirmedPaymentProcessorMetadataMap = {
   [key: string]: string | undefined;
 };
-const CheckoutPublicConfirmedPaymentProcessorMetadataMap =
-  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<CheckoutPublicConfirmedPaymentProcessorMetadataMap>;
-
 /** List of products available to select. */
 export type CheckoutPublicConfirmedProductsList = Array<CheckoutProduct>;
-const CheckoutPublicConfirmedProductsList =
-  CheckoutProductsList as any as S.Schema<CheckoutPublicConfirmedProductsList>;
-
 export type CheckoutPublicConfirmedProductPrice = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutPublicConfirmedProductPrice =
-  S.Unknown as any as S.Schema<CheckoutPublicConfirmedProductPrice>;
-
 export type CheckoutPublicConfirmedPricesValueItem = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutPublicConfirmedPricesValueItem =
-  S.Unknown as any as S.Schema<CheckoutPublicConfirmedPricesValueItem>;
-
 /** List of prices for this product. */
 export type CheckoutPublicConfirmedPricesValueList = Array<CheckoutPublicConfirmedPricesValueItem>;
-const CheckoutPublicConfirmedPricesValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CheckoutPublicConfirmedPricesValueList>;
-
 export type CheckoutPublicConfirmedPricesMap = {
   [key: string]: CheckoutPublicConfirmedPricesValueList | undefined;
 };
-const CheckoutPublicConfirmedPricesMap = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CheckoutPublicConfirmedPricesMap>;
-
 export type CheckoutPublicConfirmedDiscount =
   | CheckoutDiscountFixedOnceForeverDuration
   | CheckoutDiscountFixedRepeatDuration
   | CheckoutDiscountPercentageOnceForeverDuration
   | CheckoutDiscountPercentageRepeatDuration;
-const CheckoutPublicConfirmedDiscount =
-  S.Unknown as any as S.Schema<CheckoutPublicConfirmedDiscount>;
-
 export type SubscriptionProrationBehavior = "invoice" | "prorate" | "next_period" | "reset";
-const SubscriptionProrationBehavior = S.String;
-
 export interface CheckoutOrganization {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -3671,12 +3175,7 @@ export interface CheckoutOrganization {
   /** Whether customers can update their subscriptions from the customer portal. */
   allow_customer_updates: boolean;
 }
-const CheckoutOrganization = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<CheckoutOrganization>;
-
 export type CheckoutPublicConfirmedAttachedCustomFieldsList = Array<AttachedCustomField>;
-const CheckoutPublicConfirmedAttachedCustomFieldsList =
-  CheckoutAttachedCustomFieldsList as any as S.Schema<CheckoutPublicConfirmedAttachedCustomFieldsList>;
-
 /** Checkout session data retrieved using the client secret after confirmation. It contains a customer session token to retrieve order information right after the checkout. */
 export interface CheckoutPublicConfirmed {
   /** The ID of the object. */
@@ -3788,23 +3287,11 @@ export interface CheckoutPublicConfirmed {
   attached_custom_fields: CheckoutPublicConfirmedAttachedCustomFieldsList | null;
   customer_session_token: string | null;
 }
-const CheckoutPublicConfirmed = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CheckoutPublicConfirmed>;
-
 export interface CustomerMetersGetRequest {
   /** The customer meter ID. */
   id: string;
 }
-const CustomerMetersGetRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CustomerMetersGetRequest>;
-
 export type FilterConjunction = "and" | "or";
-const FilterConjunction = S.String;
-
 export type FilterOperator = "eq" | "ne" | "gt" | "gte" | "lt" | "lte" | "like" | "not_like";
 export type FilterClauseValue = string | number | boolean;
 export interface FilterClause {
@@ -3813,17 +3300,11 @@ export interface FilterClause {
   value: FilterClauseValue;
 }
 export type FilterClausesItem = FilterClause | Filter;
-const FilterClausesItem = S.Unknown as any as S.Schema<FilterClausesItem>;
-
 export type FilterClausesList = Array<FilterClausesItem>;
-const FilterClausesList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<FilterClausesList>;
-
 export interface Filter {
   conjunction: FilterConjunction | (string & {});
   clauses: FilterClausesList;
 }
-const Filter = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Filter>;
-
 export interface CountAggregation {
   func?: string;
 }
@@ -3838,8 +3319,6 @@ export interface UniqueAggregation {
 }
 /** The aggregation to apply on the filtered events to calculate the meter. */
 export type MeterAggregation = CountAggregation | PropertyAggregation | UniqueAggregation;
-const MeterAggregation = S.Unknown as any as S.Schema<MeterAggregation>;
-
 export interface Meter {
   metadata: MetadataOutputType;
   /** Creation timestamp of the object. */
@@ -3865,8 +3344,6 @@ export interface Meter {
   /** Whether the meter is archived and the time it was archived. */
   archived_at?: string | null;
 }
-const Meter = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Meter>;
-
 /** An active customer meter, with current consumed and credited units. */
 export interface CustomerMeter {
   /** The ID of the object. */
@@ -3890,38 +3367,24 @@ export interface CustomerMeter {
   /** The meter associated with this customer. */
   meter: Meter;
 }
-const CustomerMeter = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<CustomerMeter>;
-
 export type CustomerMetersListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type CustomerMetersListRequestOrganizationId =
   | string
   | CustomerMetersListRequestOrganizationIdCase1List;
-const CustomerMetersListRequestOrganizationId =
-  S.Unknown as any as S.Schema<CustomerMetersListRequestOrganizationId>;
-
 export type CustomerMetersListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type CustomerMetersListRequestCustomerId =
   | string
   | CustomerMetersListRequestCustomerIdCase1List;
-const CustomerMetersListRequestCustomerId =
-  S.Unknown as any as S.Schema<CustomerMetersListRequestCustomerId>;
-
 export type CustomerMetersListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by external customer ID. */
 export type CustomerMetersListRequestExternalCustomerId =
   | string
   | CustomerMetersListRequestExternalCustomerIdCase1List;
-const CustomerMetersListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<CustomerMetersListRequestExternalCustomerId>;
-
 export type CustomerMetersListRequestMeterIdCase1List = Array<string>;
 /** Filter by meter ID. */
 export type CustomerMetersListRequestMeterId = string | CustomerMetersListRequestMeterIdCase1List;
-const CustomerMetersListRequestMeterId =
-  S.Unknown as any as S.Schema<CustomerMetersListRequestMeterId>;
-
 export type CustomerMeterSortProperty =
   | "created_at"
   | "-created_at"
@@ -3942,9 +3405,6 @@ export type CustomerMeterSortProperty =
   | "balance"
   | "-balance";
 export type CustomerMetersListRequestSortingList = Array<CustomerMeterSortProperty | (string & {})>;
-const CustomerMetersListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerMetersListRequestSortingList>;
-
 export interface CustomerMetersListRequest {
   /** Filter by organization ID. */
   organization_id?: CustomerMetersListRequestOrganizationId;
@@ -3961,59 +3421,24 @@ export interface CustomerMetersListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomerMetersListRequestSortingList;
 }
-const CustomerMetersListRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CustomerMetersListRequest>;
-
 export type ListResourceCustomerMeterItemsList = Array<CustomerMeter>;
-const ListResourceCustomerMeterItemsList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListResourceCustomerMeterItemsList>;
-
 export interface ListResourceCustomerMeter {
   items: ListResourceCustomerMeterItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerMeter = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListResourceCustomerMeter>;
-
 export interface CustomerPortalBenefitGrantsGetRequest {
   /** The benefit grant ID. */
   id: string;
 }
-const CustomerPortalBenefitGrantsGetRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CustomerPortalBenefitGrantsGetRequest>;
-
 export type CustomerPortalCustomerTaxIdList = Array<unknown>;
-const CustomerPortalCustomerTaxIdList =
-  CustomerIndividualTaxIdList as any as S.Schema<CustomerPortalCustomerTaxIdList>;
-
 export interface CustomerPortalOAuthAccount {
   account_id: string;
   account_username: string | null;
 }
-const CustomerPortalOAuthAccount = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CustomerPortalOAuthAccount>;
-
 export type CustomerPortalCustomerOauthAccountsMap = {
   [key: string]: CustomerPortalOAuthAccount | undefined;
 };
-const CustomerPortalCustomerOauthAccountsMap = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CustomerPortalCustomerOauthAccountsMap>;
-
 export type CustomerType = "individual" | "team";
-const CustomerType = S.String;
-
 export interface CustomerPortalCustomer {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -4032,11 +3457,6 @@ export interface CustomerPortalCustomer {
   type?: CustomerType | null;
   locale?: string | null;
 }
-const CustomerPortalCustomer = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CustomerPortalCustomer>;
-
 export type CustomerBenefitGrantMemberOauthAccountsMap = {
   [key: string]: CustomerPortalOAuthAccount | undefined;
 };
@@ -4399,14 +3819,7 @@ export type CustomerBenefitGrant =
   | CustomerBenefitGrantMeterCredit
   | CustomerBenefitGrantFeatureFlag
   | CustomerBenefitGrantSlackSharedChannel;
-const CustomerBenefitGrant = S.Unknown as any as S.Schema<CustomerBenefitGrant>;
-
 export type CustomerPortalBenefitGrantsGetResponse = CustomerBenefitGrant;
-const CustomerPortalBenefitGrantsGetResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CustomerPortalBenefitGrantsGetResponse>;
-
 export type CustomerPortalBenefitGrantsListRequestTypeCase1List = Array<
   BenefitType | (string & {})
 >;
@@ -4414,49 +3827,31 @@ export type CustomerPortalBenefitGrantsListRequestTypeCase1List = Array<
 export type CustomerPortalBenefitGrantsListRequestType =
   | BenefitType
   | CustomerPortalBenefitGrantsListRequestTypeCase1List;
-const CustomerPortalBenefitGrantsListRequestType =
-  S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestType>;
-
 export type CustomerPortalBenefitGrantsListRequestBenefitIdCase1List = Array<string>;
 /** Filter by benefit ID. */
 export type CustomerPortalBenefitGrantsListRequestBenefitId =
   | string
   | CustomerPortalBenefitGrantsListRequestBenefitIdCase1List;
-const CustomerPortalBenefitGrantsListRequestBenefitId =
-  S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestBenefitId>;
-
 export type CustomerPortalBenefitGrantsListRequestCheckoutIdCase1List = Array<string>;
 /** Filter by checkout ID. */
 export type CustomerPortalBenefitGrantsListRequestCheckoutId =
   | string
   | CustomerPortalBenefitGrantsListRequestCheckoutIdCase1List;
-const CustomerPortalBenefitGrantsListRequestCheckoutId =
-  S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestCheckoutId>;
-
 export type CustomerPortalBenefitGrantsListRequestOrderIdCase1List = Array<string>;
 /** Filter by order ID. */
 export type CustomerPortalBenefitGrantsListRequestOrderId =
   | string
   | CustomerPortalBenefitGrantsListRequestOrderIdCase1List;
-const CustomerPortalBenefitGrantsListRequestOrderId =
-  S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestOrderId>;
-
 export type CustomerPortalBenefitGrantsListRequestSubscriptionIdCase1List = Array<string>;
 /** Filter by subscription ID. */
 export type CustomerPortalBenefitGrantsListRequestSubscriptionId =
   | string
   | CustomerPortalBenefitGrantsListRequestSubscriptionIdCase1List;
-const CustomerPortalBenefitGrantsListRequestSubscriptionId =
-  S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestSubscriptionId>;
-
 export type CustomerPortalBenefitGrantsListRequestMemberIdCase1List = Array<string>;
 /** Filter by member ID. */
 export type CustomerPortalBenefitGrantsListRequestMemberId =
   | string
   | CustomerPortalBenefitGrantsListRequestMemberIdCase1List;
-const CustomerPortalBenefitGrantsListRequestMemberId =
-  S.Unknown as any as S.Schema<CustomerPortalBenefitGrantsListRequestMemberId>;
-
 export type CustomerBenefitGrantSortProperty =
   | "granted_at"
   | "-granted_at"
@@ -4469,9 +3864,6 @@ export type CustomerBenefitGrantSortProperty =
 export type CustomerPortalBenefitGrantsListRequestSortingList = Array<
   CustomerBenefitGrantSortProperty | (string & {})
 >;
-const CustomerPortalBenefitGrantsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalBenefitGrantsListRequestSortingList>;
-
 export interface CustomerPortalBenefitGrantsListRequest {
   /** Filter by benefit description. */
   query?: string;
@@ -4494,26 +3886,11 @@ export interface CustomerPortalBenefitGrantsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomerPortalBenefitGrantsListRequestSortingList;
 }
-const CustomerPortalBenefitGrantsListRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequest>;
-
 export type ListResourceCustomerBenefitGrantItemsList = Array<CustomerBenefitGrant>;
-const ListResourceCustomerBenefitGrantItemsList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListResourceCustomerBenefitGrantItemsList>;
-
 export interface ListResourceCustomerBenefitGrant {
   items: ListResourceCustomerBenefitGrantItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerBenefitGrant = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListResourceCustomerBenefitGrant>;
-
 export interface CustomerBenefitGrantDiscordPropertiesUpdate {
   account_id: string | null;
 }
@@ -4547,31 +3924,16 @@ export type CustomerBenefitGrantUpdate =
   | CustomerBenefitGrantDownloadablesUpdate
   | CustomerBenefitGrantDownloadablesUpdate
   | CustomerBenefitGrantSlackSharedChannelUpdate;
-const CustomerBenefitGrantUpdate = S.Unknown as any as S.Schema<CustomerBenefitGrantUpdate>;
-
 export interface CustomerPortalBenefitGrantsUpdateRequest {
   /** The benefit grant ID. */
   id: string;
   body: CustomerBenefitGrantUpdate;
 }
-const CustomerPortalBenefitGrantsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CustomerPortalBenefitGrantsUpdateRequest>;
-
 export type CustomerPortalBenefitGrantsUpdateResponse = CustomerBenefitGrant;
-const CustomerPortalBenefitGrantsUpdateResponse =
-  CustomerPortalBenefitGrantsGetResponse as any as S.Schema<CustomerPortalBenefitGrantsUpdateResponse>;
-
 export interface CustomerPortalCustomerMetersGetRequest {
   /** The customer meter ID. */
   id: string;
 }
-const CustomerPortalCustomerMetersGetRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CustomerPortalCustomerMetersGetRequest>;
-
 export interface CustomerCustomerMeterMeter {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -4582,11 +3944,6 @@ export interface CustomerCustomerMeterMeter {
   /** The name of the meter. Will be shown on customer's invoices and usage. */
   name: string;
 }
-const CustomerCustomerMeterMeter = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<CustomerCustomerMeterMeter>;
-
 export interface CustomerCustomerMeter {
   /** The ID of the object. */
   id: string;
@@ -4606,19 +3963,11 @@ export interface CustomerCustomerMeter {
   balance: number;
   meter: CustomerCustomerMeterMeter;
 }
-const CustomerCustomerMeter = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CustomerCustomerMeter>;
-
 export type CustomerPortalCustomerMetersListRequestMeterIdCase1List = Array<string>;
 /** Filter by meter ID. */
 export type CustomerPortalCustomerMetersListRequestMeterId =
   | string
   | CustomerPortalCustomerMetersListRequestMeterIdCase1List;
-const CustomerPortalCustomerMetersListRequestMeterId =
-  S.Unknown as any as S.Schema<CustomerPortalCustomerMetersListRequestMeterId>;
-
 export type CustomerCustomerMeterSortProperty =
   | "created_at"
   | "-created_at"
@@ -4637,9 +3986,6 @@ export type CustomerCustomerMeterSortProperty =
 export type CustomerPortalCustomerMetersListRequestSortingList = Array<
   CustomerCustomerMeterSortProperty | (string & {})
 >;
-const CustomerPortalCustomerMetersListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalCustomerMetersListRequestSortingList>;
-
 export interface CustomerPortalCustomerMetersListRequest {
   /** Filter by meter ID. */
   meter_id?: CustomerPortalCustomerMetersListRequestMeterId;
@@ -4652,36 +3998,16 @@ export interface CustomerPortalCustomerMetersListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomerPortalCustomerMetersListRequestSortingList;
 }
-const CustomerPortalCustomerMetersListRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CustomerPortalCustomerMetersListRequest>;
-
 export type ListResourceCustomerCustomerMeterItemsList = Array<CustomerCustomerMeter>;
-const ListResourceCustomerCustomerMeterItemsList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListResourceCustomerCustomerMeterItemsList>;
-
 export interface ListResourceCustomerCustomerMeter {
   items: ListResourceCustomerCustomerMeterItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerCustomerMeter = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListResourceCustomerCustomerMeter>;
-
 export interface CustomerPortalCustomersAddPaymentMethodRequest {
   confirmation_token_id: string;
   set_default: boolean;
   return_url: string;
 }
-const CustomerPortalCustomersAddPaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodRequest>;
-
 export interface PaymentMethodCardMetadata {
   brand: string;
   last4: string;
@@ -4729,8 +4055,6 @@ export interface PaymentMethodGeneric {
   type: string;
 }
 export type CustomerPaymentMethod = PaymentMethodCard | PaymentMethodKrCard | PaymentMethodGeneric;
-const CustomerPaymentMethod = S.Unknown as any as S.Schema<CustomerPaymentMethod>;
-
 export interface CustomerPaymentMethodCreateSucceededResponse {
   status: string;
   payment_method: CustomerPaymentMethod;
@@ -4742,49 +4066,18 @@ export interface CustomerPaymentMethodCreateRequiresActionResponse {
 export type CustomerPaymentMethodCreateResponse =
   | CustomerPaymentMethodCreateSucceededResponse
   | CustomerPaymentMethodCreateRequiresActionResponse;
-const CustomerPaymentMethodCreateResponse =
-  S.Unknown as any as S.Schema<CustomerPaymentMethodCreateResponse>;
-
 export type CustomerPortalCustomersAddPaymentMethodResponse = CustomerPaymentMethodCreateResponse;
-const CustomerPortalCustomersAddPaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodResponse>;
-
 export interface CustomerPortalCustomersConfirmPaymentMethodRequest {
   setup_intent_id: string;
   set_default: boolean;
 }
-const CustomerPortalCustomersConfirmPaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodRequest>;
-
 export type CustomerPortalCustomersConfirmPaymentMethodResponse =
   CustomerPaymentMethodCreateResponse;
-const CustomerPortalCustomersConfirmPaymentMethodResponse =
-  CustomerPortalCustomersAddPaymentMethodResponse as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodResponse>;
-
 export interface CustomerPortalCustomersDeletePaymentMethodRequest {
   id: string;
 }
-const CustomerPortalCustomersDeletePaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodRequest>;
-
 export interface CustomerPortalCustomersDeletePaymentMethodResponse {}
-const CustomerPortalCustomersDeletePaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodResponse>;
-
 export interface CustomerPortalCustomerSessionGetAuthenticatedUserRequest {}
-const CustomerPortalCustomerSessionGetAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CustomerPortalCustomerSessionGetAuthenticatedUserRequest>;
-
 /** Information about the authenticated portal user. */
 export interface PortalAuthenticatedUser {
   /** Type of authenticated user: 'customer' or 'member' */
@@ -4800,77 +4093,34 @@ export interface PortalAuthenticatedUser {
   /** Member role (owner, billing_manager, member). Only set for members. */
   role?: string | null;
 }
-const PortalAuthenticatedUser = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<PortalAuthenticatedUser>;
-
 export interface CustomerPortalCustomerSessionIntrospectRequest {}
-const CustomerPortalCustomerSessionIntrospectRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CustomerPortalCustomerSessionIntrospectRequest>;
-
 export interface CustomerCustomerSession {
   expires_at: string;
   return_url: string | null;
 }
-const CustomerCustomerSession = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CustomerCustomerSession>;
-
 export interface CustomerPortalCustomersGetRequest {}
-const CustomerPortalCustomersGetRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CustomerPortalCustomersGetRequest>;
-
 export interface CustomerPortalCustomersListPaymentMethodsRequest {
   /** Page number, defaults to 1. */
   page?: number;
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const CustomerPortalCustomersListPaymentMethodsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CustomerPortalCustomersListPaymentMethodsRequest>;
-
 export type ListResourceCustomerPaymentMethodItemsList = Array<CustomerPaymentMethod>;
-const ListResourceCustomerPaymentMethodItemsList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListResourceCustomerPaymentMethodItemsList>;
-
 export interface ListResourceCustomerPaymentMethod {
   items: ListResourceCustomerPaymentMethodItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerPaymentMethod = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListResourceCustomerPaymentMethod>;
-
 export interface CustomerPortalCustomersUpdateRequest {
   billing_name?: string | null;
   billing_address?: AddressInput | null;
   tax_id?: string | null;
   default_payment_method_id?: string | null;
 }
-const CustomerPortalCustomersUpdateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CustomerPortalCustomersUpdateRequest>;
-
 export type CustomerPortalDownloadablesListRequestBenefitIdCase1List = Array<string>;
 /** Filter by benefit ID. */
 export type CustomerPortalDownloadablesListRequestBenefitId =
   | string
   | CustomerPortalDownloadablesListRequestBenefitIdCase1List;
-const CustomerPortalDownloadablesListRequestBenefitId =
-  S.Unknown as any as S.Schema<CustomerPortalDownloadablesListRequestBenefitId>;
-
 export interface CustomerPortalDownloadablesListRequest {
   /** Filter by benefit ID. */
   benefit_id?: CustomerPortalDownloadablesListRequestBenefitId;
@@ -4879,29 +4129,17 @@ export interface CustomerPortalDownloadablesListRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const CustomerPortalDownloadablesListRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CustomerPortalDownloadablesListRequest>;
-
 export type S3DownloadURLHeadersMap = { [key: string]: string | undefined };
-const S3DownloadURLHeadersMap =
-  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<S3DownloadURLHeadersMap>;
-
 export interface S3DownloadURL {
   url: string;
   headers?: S3DownloadURLHeadersMap;
   expires_at: string;
 }
-const S3DownloadURL = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<S3DownloadURL>;
-
 export type FileServiceTypes =
   | "downloadable"
   | "product_media"
   | "organization_avatar"
   | "support_case_attachment";
-const FileServiceTypes = S.String;
-
 export interface FileDownload {
   /** The ID of the object. */
   id: string;
@@ -4921,60 +4159,30 @@ export interface FileDownload {
   service: FileServiceTypes;
   size_readable: string;
 }
-const FileDownload = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<FileDownload>;
-
 export interface DownloadableRead {
   id: string;
   benefit_id: string;
   file: FileDownload;
 }
-const DownloadableRead = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<DownloadableRead>;
-
 export type ListResourceDownloadableReadItemsList = Array<DownloadableRead>;
-const ListResourceDownloadableReadItemsList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListResourceDownloadableReadItemsList>;
-
 export interface ListResourceDownloadableRead {
   items: ListResourceDownloadableReadItemsList;
   pagination: Pagination;
 }
-const ListResourceDownloadableRead = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListResourceDownloadableRead>;
-
 export type CustomerPortalLicenseKeysActivateRequestConditionsValue =
   | string
   | number
   | number
   | boolean;
-const CustomerPortalLicenseKeysActivateRequestConditionsValue =
-  S.Unknown as any as S.Schema<CustomerPortalLicenseKeysActivateRequestConditionsValue>;
-
 /** Key-value object allowing you to set conditions that must match when validating the license key. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomerPortalLicenseKeysActivateRequestConditionsMap = {
   [key: string]: CustomerPortalLicenseKeysActivateRequestConditionsValue | undefined;
 };
-const CustomerPortalLicenseKeysActivateRequestConditionsMap = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CustomerPortalLicenseKeysActivateRequestConditionsMap>;
-
 export type CustomerPortalLicenseKeysActivateRequestMetaValue = string | number | number | boolean;
-const CustomerPortalLicenseKeysActivateRequestMetaValue =
-  S.Unknown as any as S.Schema<CustomerPortalLicenseKeysActivateRequestMetaValue>;
-
 /** Key-value object allowing you to store additional information about the activation The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomerPortalLicenseKeysActivateRequestMetaMap = {
   [key: string]: CustomerPortalLicenseKeysActivateRequestMetaValue | undefined;
 };
-const CustomerPortalLicenseKeysActivateRequestMetaMap = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CustomerPortalLicenseKeysActivateRequestMetaMap>;
-
 export interface CustomerPortalLicenseKeysActivateRequest {
   key: string;
   organization_id: string;
@@ -4984,27 +4192,11 @@ export interface CustomerPortalLicenseKeysActivateRequest {
   /** Key-value object allowing you to store additional information about the activation The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
   meta?: CustomerPortalLicenseKeysActivateRequestMetaMap;
 }
-const CustomerPortalLicenseKeysActivateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<CustomerPortalLicenseKeysActivateRequest>;
-
 export type LicenseKeyActivationCreatedMetaValue = string | number | number | boolean;
-const LicenseKeyActivationCreatedMetaValue =
-  S.Unknown as any as S.Schema<LicenseKeyActivationCreatedMetaValue>;
-
 export type LicenseKeyActivationCreatedMetaMap = {
   [key: string]: LicenseKeyActivationCreatedMetaValue | undefined;
 };
-const LicenseKeyActivationCreatedMetaMap = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<LicenseKeyActivationCreatedMetaMap>;
-
 export type LicenseKeyCustomerTaxIdList = Array<unknown>;
-const LicenseKeyCustomerTaxIdList =
-  CustomerIndividualTaxIdList as any as S.Schema<LicenseKeyCustomerTaxIdList>;
-
 export interface LicenseKeyCustomer {
   /** The ID of the customer. */
   id: string;
@@ -5038,8 +4230,6 @@ export interface LicenseKeyCustomer {
   first_user_event_at: string | null;
   avatar_url: string | null;
 }
-const LicenseKeyCustomer = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<LicenseKeyCustomer>;
-
 export interface LicenseKeyMember {
   /** The ID of the object. */
   id: string;
@@ -5048,8 +4238,6 @@ export interface LicenseKeyMember {
   /** The external ID of the seat member, if set. */
   external_id: string | null;
 }
-const LicenseKeyMember = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<LicenseKeyMember>;
-
 export type SubscriptionStatus =
   | "incomplete"
   | "incomplete_expired"
@@ -5059,8 +4247,6 @@ export type SubscriptionStatus =
   | "canceled"
   | "unpaid"
   | "paused";
-const SubscriptionStatus = S.String;
-
 export interface LicenseKeySubscription {
   /** The ID of the object. */
   id: string;
@@ -5075,14 +4261,7 @@ export interface LicenseKeySubscription {
   /** The timestamp when the subscription will end. */
   ends_at: string | null;
 }
-const LicenseKeySubscription = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<LicenseKeySubscription>;
-
 export type OrderStatus = "draft" | "pending" | "paid" | "refunded" | "partially_refunded" | "void";
-const OrderStatus = S.String;
-
 export interface LicenseKeyOrder {
   /** The ID of the object. */
   id: string;
@@ -5092,8 +4271,6 @@ export interface LicenseKeyOrder {
   /** Whether the order has been paid for. */
   paid: boolean;
 }
-const LicenseKeyOrder = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<LicenseKeyOrder>;
-
 export interface GrantedLicenseKey {
   /** The ID of the object. */
   id: string;
@@ -5128,8 +4305,6 @@ export interface GrantedLicenseKey {
   /** The one-time order granting the license key, if any. */
   order: LicenseKeyOrder | null;
 }
-const GrantedLicenseKey = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GrantedLicenseKey>;
-
 export interface LicenseKeyActivationCreated {
   id: string;
   license_key_id: string;
@@ -5139,48 +4314,20 @@ export interface LicenseKeyActivationCreated {
   modified_at: string | null;
   license_key: GrantedLicenseKey;
 }
-const LicenseKeyActivationCreated = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<LicenseKeyActivationCreated>;
-
 export interface CustomerPortalLicenseKeysDeactivateRequest {
   key: string;
   organization_id: string;
   activation_id: string;
 }
-const CustomerPortalLicenseKeysDeactivateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<CustomerPortalLicenseKeysDeactivateRequest>;
-
 export interface CustomerPortalLicenseKeysDeactivateResponse {}
-const CustomerPortalLicenseKeysDeactivateResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomerPortalLicenseKeysDeactivateResponse>;
-
 export interface CustomerPortalLicenseKeysGetRequest {
   id: string;
 }
-const CustomerPortalLicenseKeysGetRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CustomerPortalLicenseKeysGetRequest>;
-
 export type LicenseKeyStatus = "granted" | "revoked" | "disabled";
-const LicenseKeyStatus = S.String;
-
 export type LicenseKeyActivationBaseMetaValue = string | number | number | boolean;
-const LicenseKeyActivationBaseMetaValue =
-  S.Unknown as any as S.Schema<LicenseKeyActivationBaseMetaValue>;
-
 export type LicenseKeyActivationBaseMetaMap = {
   [key: string]: LicenseKeyActivationBaseMetaValue | undefined;
 };
-const LicenseKeyActivationBaseMetaMap = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<LicenseKeyActivationBaseMetaMap>;
-
 export interface LicenseKeyActivationBase {
   id: string;
   license_key_id: string;
@@ -5189,17 +4336,7 @@ export interface LicenseKeyActivationBase {
   created_at: string;
   modified_at: string | null;
 }
-const LicenseKeyActivationBase = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<LicenseKeyActivationBase>;
-
 export type LicenseKeyWithActivationsActivationsList = Array<LicenseKeyActivationBase>;
-const LicenseKeyWithActivationsActivationsList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<LicenseKeyWithActivationsActivationsList>;
-
 export interface LicenseKeyWithActivations {
   /** The ID of the object. */
   id: string;
@@ -5227,11 +4364,6 @@ export interface LicenseKeyWithActivations {
   expires_at: string | null;
   activations: LicenseKeyWithActivationsActivationsList;
 }
-const LicenseKeyWithActivations = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<LicenseKeyWithActivations>;
-
 export interface CustomerPortalLicenseKeysListRequest {
   /** Filter by a specific benefit */
   benefit_id?: string;
@@ -5240,11 +4372,6 @@ export interface CustomerPortalLicenseKeysListRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const CustomerPortalLicenseKeysListRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CustomerPortalLicenseKeysListRequest>;
-
 export interface LicenseKeyRead {
   /** The ID of the object. */
   id: string;
@@ -5271,31 +4398,14 @@ export interface LicenseKeyRead {
   last_validated_at: string | null;
   expires_at: string | null;
 }
-const LicenseKeyRead = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<LicenseKeyRead>;
-
 export type ListResourceLicenseKeyReadItemsList = Array<LicenseKeyRead>;
-const ListResourceLicenseKeyReadItemsList = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListResourceLicenseKeyReadItemsList>;
-
 export interface ListResourceLicenseKeyRead {
   items: ListResourceLicenseKeyReadItemsList;
   pagination: Pagination;
 }
-const ListResourceLicenseKeyRead = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListResourceLicenseKeyRead>;
-
 export interface CustomerPortalLicenseKeysRotateRequest {
   id: string;
 }
-const CustomerPortalLicenseKeysRotateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CustomerPortalLicenseKeysRotateRequest>;
-
 export type RotatedLicenseKeyStatus = "granted" | "disabled";
 export interface RotatedLicenseKey {
   /** The ID of the object. */
@@ -5323,25 +4433,15 @@ export interface RotatedLicenseKey {
   last_validated_at: string | null;
   expires_at: string | null;
 }
-const RotatedLicenseKey = LicenseKeyRead as any as S.Schema<RotatedLicenseKey>;
-
 export type CustomerPortalLicenseKeysValidateRequestConditionsValue =
   | string
   | number
   | number
   | boolean;
-const CustomerPortalLicenseKeysValidateRequestConditionsValue =
-  S.Unknown as any as S.Schema<CustomerPortalLicenseKeysValidateRequestConditionsValue>;
-
 /** Key-value object allowing you to set conditions that must match when validating the license key. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomerPortalLicenseKeysValidateRequestConditionsMap = {
   [key: string]: CustomerPortalLicenseKeysValidateRequestConditionsValue | undefined;
 };
-const CustomerPortalLicenseKeysValidateRequestConditionsMap = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<CustomerPortalLicenseKeysValidateRequestConditionsMap>;
-
 export interface CustomerPortalLicenseKeysValidateRequest {
   key: string;
   organization_id: string;
@@ -5352,11 +4452,6 @@ export interface CustomerPortalLicenseKeysValidateRequest {
   /** Key-value object allowing you to set conditions that must match when validating the license key. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
   conditions?: CustomerPortalLicenseKeysValidateRequestConditionsMap;
 }
-const CustomerPortalLicenseKeysValidateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<CustomerPortalLicenseKeysValidateRequest>;
-
 export interface ValidatedLicenseKey {
   /** The ID of the object. */
   id: string;
@@ -5392,8 +4487,6 @@ export interface ValidatedLicenseKey {
   order: LicenseKeyOrder | null;
   activation?: LicenseKeyActivationBase | null;
 }
-const ValidatedLicenseKey = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ValidatedLicenseKey>;
-
 export interface CustomerPortalMembersAddMemberRequest {
   /** The email address of the new member. */
   email: string;
@@ -5402,11 +4495,6 @@ export interface CustomerPortalMembersAddMemberRequest {
   /** The role for the new member. Defaults to 'member'. */
   role?: MemberRole | (string & {});
 }
-const CustomerPortalMembersAddMemberRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<CustomerPortalMembersAddMemberRequest>;
-
 /** A member of the customer's team as seen in the customer portal. */
 export interface CustomerPortalMember {
   /** Creation timestamp of the object. */
@@ -5422,49 +4510,21 @@ export interface CustomerPortalMember {
   /** The role of the member within the team. */
   role: MemberRole;
 }
-const CustomerPortalMember = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CustomerPortalMember>;
-
 export interface CustomerPortalMembersListMembersRequest {
   /** Page number, defaults to 1. */
   page?: number;
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const CustomerPortalMembersListMembersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<CustomerPortalMembersListMembersRequest>;
-
 export type ListResourceCustomerPortalMemberItemsList = Array<CustomerPortalMember>;
-const ListResourceCustomerPortalMemberItemsList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListResourceCustomerPortalMemberItemsList>;
-
 export interface ListResourceCustomerPortalMember {
   items: ListResourceCustomerPortalMemberItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerPortalMember = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListResourceCustomerPortalMember>;
-
 export interface CustomerPortalMembersRemoveMemberRequest {
   id: string;
 }
-const CustomerPortalMembersRemoveMemberRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<CustomerPortalMembersRemoveMemberRequest>;
-
 export interface CustomerPortalMembersRemoveMemberResponse {}
-const CustomerPortalMembersRemoveMemberResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomerPortalMembersRemoveMemberResponse>;
-
 export interface CustomerPortalMembersUpdateMemberRequest {
   id: string;
   /** The new name for the member. */
@@ -5472,98 +4532,45 @@ export interface CustomerPortalMembersUpdateMemberRequest {
   /** The new role for the member. */
   role?: MemberRole | (string & {}) | null;
 }
-const CustomerPortalMembersUpdateMemberRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<CustomerPortalMembersUpdateMemberRequest>;
-
 export interface CustomerPortalOrdersGenerateInvoiceRequest {
   /** The order ID. */
   id: string;
 }
-const CustomerPortalOrdersGenerateInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceRequest>;
-
 export interface CustomerPortalOrdersGenerateInvoiceResponse {}
-const CustomerPortalOrdersGenerateInvoiceResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomerPortalOrdersGenerateInvoiceResponse>;
-
 export interface CustomerPortalOrdersGetRequest {
   /** The order ID. */
   id: string;
 }
-const CustomerPortalOrdersGetRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CustomerPortalOrdersGetRequest>;
-
 export type OrderBillingReason =
   | "purchase"
   | "subscription_create"
   | "subscription_cycle"
   | "subscription_update"
   | "subscription_meter_cycle";
-const OrderBillingReason = S.String;
-
 export type CustomerOrderProductPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const CustomerOrderProductPricesItem = S.Unknown as any as S.Schema<CustomerOrderProductPricesItem>;
-
 /** List of prices for this product. */
 export type CustomerOrderProductPricesList = Array<CustomerOrderProductPricesItem>;
-const CustomerOrderProductPricesList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<CustomerOrderProductPricesList>;
-
 /** List of benefits granted by the product. */
 export type CustomerOrderProductBenefitsList = Array<BenefitPublic>;
-const CustomerOrderProductBenefitsList =
-  CheckoutLinkProductBenefitsList as any as S.Schema<CustomerOrderProductBenefitsList>;
-
 /** List of medias associated to the product. */
 export type CustomerOrderProductMediasList = Array<ProductMediaFileRead>;
-const CustomerOrderProductMediasList =
-  CheckoutLinkProductMediasList as any as S.Schema<CustomerOrderProductMediasList>;
-
 export interface CustomerPortalUsageSettings {
   show: boolean;
 }
-const CustomerPortalUsageSettings = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<CustomerPortalUsageSettings>;
-
 export interface CustomerPortalSubscriptionSettings {
   update_seats: boolean;
   update_plan: boolean;
   update_units?: boolean;
   pause?: boolean;
 }
-const CustomerPortalSubscriptionSettings = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<CustomerPortalSubscriptionSettings>;
-
 export interface CustomerPortalCustomerSettings {
   allow_email_change?: boolean;
 }
-const CustomerPortalCustomerSettings = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<CustomerPortalCustomerSettings>;
-
 export interface OrganizationCustomerPortalSettings {
   usage: CustomerPortalUsageSettings;
   subscription: CustomerPortalSubscriptionSettings;
   customer?: CustomerPortalCustomerSettings;
 }
-const OrganizationCustomerPortalSettings = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<OrganizationCustomerPortalSettings>;
-
 /** Feature flags exposed to the customer portal. */
 export interface CustomerOrganizationFeatureSettings {
   /** Whether the member model is enabled for this organization. */
@@ -5571,11 +4578,6 @@ export interface CustomerOrganizationFeatureSettings {
   /** Whether localization is enabled for this organization. */
   checkout_localization_enabled?: boolean;
 }
-const CustomerOrganizationFeatureSettings = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<CustomerOrganizationFeatureSettings>;
-
 export interface CustomerOrganization {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -5598,11 +4600,6 @@ export interface CustomerOrganization {
   /** Feature flags for the customer portal. */
   organization_features?: CustomerOrganizationFeatureSettings;
 }
-const CustomerOrganization = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<CustomerOrganization>;
-
 export interface CustomerOrderProduct {
   /** The ID of the object. */
   id: string;
@@ -5642,11 +4639,6 @@ export interface CustomerOrderProduct {
   medias: CustomerOrderProductMediasList;
   organization: CustomerOrganization;
 }
-const CustomerOrderProduct = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<CustomerOrderProduct>;
-
 export type CustomerCancellationReason =
   | "customer_service"
   | "low_quality"
@@ -5656,8 +4648,6 @@ export type CustomerCancellationReason =
   | "too_expensive"
   | "unused"
   | "other";
-const CustomerCancellationReason = S.String;
-
 export interface CustomerOrderSubscription {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -5719,11 +4709,6 @@ export interface CustomerOrderSubscription {
   customer_cancellation_reason: CustomerCancellationReason | null;
   customer_cancellation_comment: string | null;
 }
-const CustomerOrderSubscription = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<CustomerOrderSubscription>;
-
 /** An order line item. */
 export interface OrderItemSchema {
   /** Creation timestamp of the object. */
@@ -5747,15 +4732,8 @@ export interface OrderItemSchema {
   /** End of the period covered by this line item, if any. */
   end_timestamp: string | null;
 }
-const OrderItemSchema = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<OrderItemSchema>;
-
 /** Line items composing the order. */
 export type CustomerOrderItemsList = Array<OrderItemSchema>;
-const CustomerOrderItemsList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<CustomerOrderItemsList>;
-
 export interface CustomerOrder {
   /** The ID of the object. */
   id: string;
@@ -5817,17 +4795,10 @@ export interface CustomerOrder {
   /** Sales tax in cents that would be refunded if the full refundable amount is refunded. */
   refundable_tax_amount: number;
 }
-const CustomerOrder = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<CustomerOrder>;
-
 export interface CustomerPortalOrdersGetPaymentStatusRequest {
   /** The order ID. */
   id: string;
 }
-const CustomerPortalOrdersGetPaymentStatusRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<CustomerPortalOrdersGetPaymentStatusRequest>;
-
 /** Payment status for an order. */
 export interface CustomerOrderPaymentStatus {
   /** Current payment status. */
@@ -5835,38 +4806,20 @@ export interface CustomerOrderPaymentStatus {
   /** Error message if payment failed. */
   error?: string | null;
 }
-const CustomerOrderPaymentStatus = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<CustomerOrderPaymentStatus>;
-
 export interface CustomerPortalOrdersInvoiceRequest {
   /** The order ID. */
   id: string;
 }
-const CustomerPortalOrdersInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<CustomerPortalOrdersInvoiceRequest>;
-
 /** Order's invoice data. */
 export interface CustomerOrderInvoice {
   /** The URL to the invoice. */
   url: string;
 }
-const CustomerOrderInvoice = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<CustomerOrderInvoice>;
-
 export type CustomerPortalOrdersListRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type CustomerPortalOrdersListRequestProductId =
   | string
   | CustomerPortalOrdersListRequestProductIdCase1List;
-const CustomerPortalOrdersListRequestProductId =
-  S.Unknown as any as S.Schema<CustomerPortalOrdersListRequestProductId>;
-
 export type ProductBillingType = "one_time" | "recurring";
 export type CustomerPortalOrdersListRequestProductBillingTypeCase1List = Array<
   ProductBillingType | (string & {})
@@ -5875,17 +4828,11 @@ export type CustomerPortalOrdersListRequestProductBillingTypeCase1List = Array<
 export type CustomerPortalOrdersListRequestProductBillingType =
   | ProductBillingType
   | CustomerPortalOrdersListRequestProductBillingTypeCase1List;
-const CustomerPortalOrdersListRequestProductBillingType =
-  S.Unknown as any as S.Schema<CustomerPortalOrdersListRequestProductBillingType>;
-
 export type CustomerPortalOrdersListRequestSubscriptionIdCase1List = Array<string>;
 /** Filter by subscription ID. */
 export type CustomerPortalOrdersListRequestSubscriptionId =
   | string
   | CustomerPortalOrdersListRequestSubscriptionIdCase1List;
-const CustomerPortalOrdersListRequestSubscriptionId =
-  S.Unknown as any as S.Schema<CustomerPortalOrdersListRequestSubscriptionId>;
-
 export type CustomerOrderSortProperty =
   | "created_at"
   | "-created_at"
@@ -5900,9 +4847,6 @@ export type CustomerOrderSortProperty =
 export type CustomerPortalOrdersListRequestSortingList = Array<
   CustomerOrderSortProperty | (string & {})
 >;
-const CustomerPortalOrdersListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalOrdersListRequestSortingList>;
-
 export interface CustomerPortalOrdersListRequest {
   /** Filter by product ID. */
   product_id?: CustomerPortalOrdersListRequestProductId;
@@ -5919,42 +4863,20 @@ export interface CustomerPortalOrdersListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomerPortalOrdersListRequestSortingList;
 }
-const CustomerPortalOrdersListRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<CustomerPortalOrdersListRequest>;
-
 export type ListResourceCustomerOrderItemsList = Array<CustomerOrder>;
-const ListResourceCustomerOrderItemsList = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListResourceCustomerOrderItemsList>;
-
 export interface ListResourceCustomerOrder {
   items: ListResourceCustomerOrderItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerOrder = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListResourceCustomerOrder>;
-
 export interface CustomerPortalOrdersReceiptRequest {
   /** The order ID. */
   id: string;
 }
-const CustomerPortalOrdersReceiptRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<CustomerPortalOrdersReceiptRequest>;
-
 /** Order's receipt data. */
 export interface CustomerOrderReceipt {
   /** The URL to the receipt PDF. */
   url: string;
 }
-const CustomerOrderReceipt = CustomerOrderInvoice as any as S.Schema<CustomerOrderReceipt>;
-
 export interface CustomerPortalOrdersUpdateRequest {
   /** The order ID. */
   id: string;
@@ -5963,40 +4885,17 @@ export interface CustomerPortalOrdersUpdateRequest {
   /** The address of the customer that should appear on the invoice. Country and state fields cannot be updated. */
   billing_address?: AddressInput | null;
 }
-const CustomerPortalOrdersUpdateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<CustomerPortalOrdersUpdateRequest>;
-
 export interface CustomerPortalOrganizationsGetRequest {
   /** The organization slug. */
   slug: string;
 }
-const CustomerPortalOrganizationsGetRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<CustomerPortalOrganizationsGetRequest>;
-
 export type CustomerProductPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const CustomerProductPricesItem = S.Unknown as any as S.Schema<CustomerProductPricesItem>;
-
 /** List of available prices for this product. */
 export type CustomerProductPricesList = Array<CustomerProductPricesItem>;
-const CustomerProductPricesList = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<CustomerProductPricesList>;
-
 /** List of benefits granted by the product. */
 export type CustomerProductBenefitsList = Array<BenefitPublic>;
-const CustomerProductBenefitsList =
-  CheckoutLinkProductBenefitsList as any as S.Schema<CustomerProductBenefitsList>;
-
 /** The medias associated to the product. */
 export type CustomerProductMediasList = Array<ProductMediaFileRead>;
-const CustomerProductMediasList =
-  CheckoutLinkProductMediasList as any as S.Schema<CustomerProductMediasList>;
-
 /** Schema of a product for customer portal. */
 export interface CustomerProduct {
   /** The ID of the object. */
@@ -6036,32 +4935,15 @@ export interface CustomerProduct {
   /** The medias associated to the product. */
   medias: CustomerProductMediasList;
 }
-const CustomerProduct = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<CustomerProduct>;
-
 export type CustomerOrganizationDataProductsList = Array<CustomerProduct>;
-const CustomerOrganizationDataProductsList = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<CustomerOrganizationDataProductsList>;
-
 /** Schema of an organization and related data for customer portal. */
 export interface CustomerOrganizationData {
   organization: CustomerOrganization;
   products: CustomerOrganizationDataProductsList;
 }
-const CustomerOrganizationData = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<CustomerOrganizationData>;
-
 export type CustomerPortalSeatsAssignSeatRequestMetadataMap = {
   [key: string]: unknown | undefined;
 };
-const CustomerPortalSeatsAssignSeatRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<CustomerPortalSeatsAssignSeatRequestMetadataMap>;
-
 export interface CustomerPortalSeatsAssignSeatRequest {
   /** Subscription ID. Required if neither order_id nor checkout_id is provided. */
   subscription_id?: string | null;
@@ -6084,18 +4966,8 @@ export interface CustomerPortalSeatsAssignSeatRequest {
   /** Checkout ID. Resolves to the subscription or order produced by the checkout. */
   checkout_id?: string | null;
 }
-const CustomerPortalSeatsAssignSeatRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<CustomerPortalSeatsAssignSeatRequest>;
-
 export type SeatStatus = "pending" | "claimed" | "revoked";
-const SeatStatus = S.String;
-
 export type CustomerSeatSeatMetadataMap = { [key: string]: unknown | undefined };
-const CustomerSeatSeatMetadataMap =
-  CustomerPortalSeatsAssignSeatRequestMetadataMap as any as S.Schema<CustomerSeatSeatMetadataMap>;
-
 export interface CustomerSeat {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -6128,40 +5000,19 @@ export interface CustomerSeat {
   /** Additional metadata for the seat */
   seat_metadata: CustomerSeatSeatMetadataMap | null;
 }
-const CustomerSeat = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<CustomerSeat>;
-
 export interface CustomerPortalSeatsListClaimedSubscriptionsRequest {
   /** Page number, defaults to 1. */
   page?: number;
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const CustomerPortalSeatsListClaimedSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<CustomerPortalSeatsListClaimedSubscriptionsRequest>;
-
 export type CustomerSubscriptionProductPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const CustomerSubscriptionProductPricesItem =
-  S.Unknown as any as S.Schema<CustomerSubscriptionProductPricesItem>;
-
 /** List of prices for this product. */
 export type CustomerSubscriptionProductPricesList = Array<CustomerSubscriptionProductPricesItem>;
-const CustomerSubscriptionProductPricesList = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CustomerSubscriptionProductPricesList>;
-
 /** List of benefits granted by the product. */
 export type CustomerSubscriptionProductBenefitsList = Array<BenefitPublic>;
-const CustomerSubscriptionProductBenefitsList =
-  CheckoutLinkProductBenefitsList as any as S.Schema<CustomerSubscriptionProductBenefitsList>;
-
 /** List of medias associated to the product. */
 export type CustomerSubscriptionProductMediasList = Array<ProductMediaFileRead>;
-const CustomerSubscriptionProductMediasList =
-  CheckoutLinkProductMediasList as any as S.Schema<CustomerSubscriptionProductMediasList>;
-
 export interface CustomerSubscriptionProduct {
   /** The ID of the object. */
   id: string;
@@ -6201,21 +5052,9 @@ export interface CustomerSubscriptionProduct {
   medias: CustomerSubscriptionProductMediasList;
   organization: CustomerOrganization;
 }
-const CustomerSubscriptionProduct = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<CustomerSubscriptionProduct>;
-
 export type CustomerSubscriptionPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const CustomerSubscriptionPricesItem = S.Unknown as any as S.Schema<CustomerSubscriptionPricesItem>;
-
 /** List of enabled prices for the subscription. */
 export type CustomerSubscriptionPricesList = Array<CustomerSubscriptionPricesItem>;
-const CustomerSubscriptionPricesList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<CustomerSubscriptionPricesList>;
-
 export type CustomerSubscriptionMeterMeter = CustomerCustomerMeterMeter;
 export interface CustomerSubscriptionMeter {
   /** Creation timestamp of the object. */
@@ -6234,18 +5073,8 @@ export interface CustomerSubscriptionMeter {
   meter_id: string;
   meter: CustomerCustomerMeterMeter;
 }
-const CustomerSubscriptionMeter = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<CustomerSubscriptionMeter>;
-
 /** List of meters associated with the subscription. */
 export type CustomerSubscriptionMetersList = Array<CustomerSubscriptionMeter>;
-const CustomerSubscriptionMetersList = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<CustomerSubscriptionMetersList>;
-
 /** Pending update to be applied to a subscription at the beginning of the next period. */
 export interface PendingSubscriptionUpdate {
   /** Creation timestamp of the object. */
@@ -6263,11 +5092,6 @@ export interface PendingSubscriptionUpdate {
   /** Number of units to apply to the subscription. If `null`, the number of units won't be changed. */
   units: number | null;
 }
-const PendingSubscriptionUpdate = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<PendingSubscriptionUpdate>;
-
 export interface CustomerSubscription {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -6336,41 +5160,19 @@ export interface CustomerSubscription {
   /** Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update. */
   pending_update: PendingSubscriptionUpdate | null;
 }
-const CustomerSubscription = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<CustomerSubscription>;
-
 export type ListResourceCustomerSubscriptionItemsList = Array<CustomerSubscription>;
-const ListResourceCustomerSubscriptionItemsList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListResourceCustomerSubscriptionItemsList>;
-
 export interface ListResourceCustomerSubscription {
   items: ListResourceCustomerSubscriptionItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerSubscription = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListResourceCustomerSubscription>;
-
 export interface CustomerPortalSeatsListSeatsRequest {
   /** Subscription ID */
   subscription_id?: string;
   /** Order ID */
   order_id?: string;
 }
-const CustomerPortalSeatsListSeatsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<CustomerPortalSeatsListSeatsRequest>;
-
 /** List of seats */
 export type SeatsListSeatsList = Array<CustomerSeat>;
-const SeatsListSeatsList = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<SeatsListSeatsList>;
-
 export interface SeatsList {
   /** List of seats */
   seats: SeatsListSeatsList;
@@ -6379,50 +5181,25 @@ export interface SeatsList {
   /** Total number of seats for the subscription */
   total_seats: number;
 }
-const SeatsList = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<SeatsList>;
-
 export interface CustomerPortalSeatsResendInvitationRequest {
   seat_id: string;
 }
-const CustomerPortalSeatsResendInvitationRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<CustomerPortalSeatsResendInvitationRequest>;
-
 export interface CustomerPortalSeatsRevokeSeatRequest {
   seat_id: string;
 }
-const CustomerPortalSeatsRevokeSeatRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<CustomerPortalSeatsRevokeSeatRequest>;
-
 export interface CustomerPortalSubscriptionsCancelRequest {
   /** The subscription ID. */
   id: string;
 }
-const CustomerPortalSubscriptionsCancelRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<CustomerPortalSubscriptionsCancelRequest>;
-
 export interface CustomerPortalSubscriptionsGetRequest {
   /** The subscription ID. */
   id: string;
 }
-const CustomerPortalSubscriptionsGetRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<CustomerPortalSubscriptionsGetRequest>;
-
 export type CustomerPortalSubscriptionsListRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type CustomerPortalSubscriptionsListRequestProductId =
   | string
   | CustomerPortalSubscriptionsListRequestProductIdCase1List;
-const CustomerPortalSubscriptionsListRequestProductId =
-  S.Unknown as any as S.Schema<CustomerPortalSubscriptionsListRequestProductId>;
-
 export type CustomerSubscriptionSortProperty =
   | "started_at"
   | "-started_at"
@@ -6437,9 +5214,6 @@ export type CustomerSubscriptionSortProperty =
 export type CustomerPortalSubscriptionsListRequestSortingList = Array<
   CustomerSubscriptionSortProperty | (string & {})
 >;
-const CustomerPortalSubscriptionsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalSubscriptionsListRequestSortingList>;
-
 export interface CustomerPortalSubscriptionsListRequest {
   /** Filter by product ID. */
   product_id?: CustomerPortalSubscriptionsListRequestProductId;
@@ -6454,11 +5228,6 @@ export interface CustomerPortalSubscriptionsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomerPortalSubscriptionsListRequestSortingList;
 }
-const CustomerPortalSubscriptionsListRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<CustomerPortalSubscriptionsListRequest>;
-
 export interface CustomerSubscriptionUpdateProduct {
   /** Update subscription to another product. */
   product_id: string;
@@ -6501,27 +5270,15 @@ export type CustomerSubscriptionUpdate =
   | CustomerSubscriptionPause
   | CustomerSubscriptionResume
   | CustomerSubscriptionUpdateClear;
-const CustomerSubscriptionUpdate = S.Unknown as any as S.Schema<CustomerSubscriptionUpdate>;
-
 export interface CustomerPortalSubscriptionsUpdateRequest {
   /** The subscription ID. */
   id: string;
   body: CustomerSubscriptionUpdate;
 }
-const CustomerPortalSubscriptionsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<CustomerPortalSubscriptionsUpdateRequest>;
-
 export interface CustomerPortalWalletsGetRequest {
   /** The wallet ID. */
   id: string;
 }
-const CustomerPortalWalletsGetRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<CustomerPortalWalletsGetRequest>;
-
 /** A wallet represents your balance with an organization. You can top-up your wallet and use the balance to pay for usage. */
 export interface CustomerWallet {
   /** The ID of the object. */
@@ -6537,15 +5294,10 @@ export interface CustomerWallet {
   /** The currency of the wallet. */
   currency: string;
 }
-const CustomerWallet = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<CustomerWallet>;
-
 export type CustomerWalletSortProperty = "created_at" | "-created_at" | "balance" | "-balance";
 export type CustomerPortalWalletsListRequestSortingList = Array<
   CustomerWalletSortProperty | (string & {})
 >;
-const CustomerPortalWalletsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalWalletsListRequestSortingList>;
-
 export interface CustomerPortalWalletsListRequest {
   /** Page number, defaults to 1. */
   page?: number;
@@ -6554,26 +5306,11 @@ export interface CustomerPortalWalletsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomerPortalWalletsListRequestSortingList;
 }
-const CustomerPortalWalletsListRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<CustomerPortalWalletsListRequest>;
-
 export type ListResourceCustomerWalletItemsList = Array<CustomerWallet>;
-const ListResourceCustomerWalletItemsList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListResourceCustomerWalletItemsList>;
-
 export interface ListResourceCustomerWallet {
   items: ListResourceCustomerWalletItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomerWallet = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListResourceCustomerWallet>;
-
 export type CustomerIndividualCreateMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomerIndividualCreateMetadataMap = {
@@ -6627,57 +5364,25 @@ export interface CustomerTeamCreate {
   email?: string | null;
 }
 export type CustomerCreate = CustomerIndividualCreate | CustomerTeamCreate;
-const CustomerCreate = S.Unknown as any as S.Schema<CustomerCreate>;
-
 export interface CustomersCreateRequest {
   body: CustomerCreate;
 }
-const CustomersCreateRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<CustomersCreateRequest>;
-
 export type CustomersCreateResponse = Customer;
-const CustomersCreateResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<CustomersCreateResponse>;
-
 export interface CustomersDeleteRequest {
   /** The customer ID. */
   id: string;
   /** If true, also anonymize the customer's personal data for GDPR compliance. This replaces email with a hashed version, hashes name and billing name (name preserved for businesses with tax_id), clears billing address, and removes OAuth account data. */
   anonymize?: boolean;
 }
-const CustomersDeleteRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<CustomersDeleteRequest>;
-
 export interface CustomersDeleteResponse {}
-const CustomersDeleteResponse = BenefitsDeleteResponse as any as S.Schema<CustomersDeleteResponse>;
-
 export interface CustomersDeleteExternalRequest {
   /** The customer external ID. */
   external_id: string;
   /** If true, also anonymize the customer's personal data for GDPR compliance. */
   anonymize?: boolean;
 }
-const CustomersDeleteExternalRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<CustomersDeleteExternalRequest>;
-
 export interface CustomersDeleteExternalResponse {}
-const CustomersDeleteExternalResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<CustomersDeleteExternalResponse>;
-
 export type CustomerSeatsAssignSeatRequestMetadataMap = { [key: string]: unknown | undefined };
-const CustomerSeatsAssignSeatRequestMetadataMap =
-  CustomerPortalSeatsAssignSeatRequestMetadataMap as any as S.Schema<CustomerSeatsAssignSeatRequestMetadataMap>;
-
 export interface CustomerSeatsAssignSeatRequest {
   /** Subscription ID. Required if neither order_id nor checkout_id is provided. */
   subscription_id?: string | null;
@@ -6698,20 +5403,10 @@ export interface CustomerSeatsAssignSeatRequest {
   /** If true, the seat will be immediately claimed without sending an invitation email. API-only feature. */
   immediate_claim?: boolean;
 }
-const CustomerSeatsAssignSeatRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<CustomerSeatsAssignSeatRequest>;
-
 export interface CustomerSeatsClaimSeatRequest {
   /** Invitation token to claim the seat */
   invitation_token: string;
 }
-const CustomerSeatsClaimSeatRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<CustomerSeatsClaimSeatRequest>;
-
 /** Response after successfully claiming a seat. */
 export interface CustomerSeatClaimResponse {
   /** The claimed seat */
@@ -6719,36 +5414,16 @@ export interface CustomerSeatClaimResponse {
   /** Session token for immediate customer portal access */
   customer_session_token: string;
 }
-const CustomerSeatClaimResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<CustomerSeatClaimResponse>;
-
 export interface CustomerSeatsListSeatsRequest {
   subscription_id?: string;
   order_id?: string;
 }
-const CustomerSeatsListSeatsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<CustomerSeatsListSeatsRequest>;
-
 export interface CustomerSeatsResendInvitationRequest {
   seat_id: string;
 }
-const CustomerSeatsResendInvitationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<CustomerSeatsResendInvitationRequest>;
-
 export interface CustomerSeatsRevokeSeatRequest {
   seat_id: string;
 }
-const CustomerSeatsRevokeSeatRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<CustomerSeatsRevokeSeatRequest>;
-
 /** Schema for creating a customer session using a customer ID. */
 export interface CustomerSessionCustomerIDCreate {
   /** ID of the member to create a session for. When not provided and the organization has `member_model_enabled`, the owner member of the customer will be used for individual customers. */
@@ -6774,17 +5449,9 @@ export interface CustomerSessionCustomerExternalIDCreate {
 export type CustomerSessionsCreateRequestBody =
   | CustomerSessionCustomerIDCreate
   | CustomerSessionCustomerExternalIDCreate;
-const CustomerSessionsCreateRequestBody =
-  S.Unknown as any as S.Schema<CustomerSessionsCreateRequestBody>;
-
 export interface CustomerSessionsCreateRequest {
   body: CustomerSessionsCreateRequestBody;
 }
-const CustomerSessionsCreateRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<CustomerSessionsCreateRequest>;
-
 /** A customer session that can be used to authenticate as a customer. */
 export interface CustomerSession {
   /** Creation timestamp of the object. */
@@ -6800,61 +5467,30 @@ export interface CustomerSession {
   customer_id: string;
   customer: Customer;
 }
-const CustomerSession = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<CustomerSession>;
-
 export type CustomersExportRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type CustomersExportRequestOrganizationId =
   | string
   | CustomersExportRequestOrganizationIdCase1List;
-const CustomersExportRequestOrganizationId =
-  S.Unknown as any as S.Schema<CustomersExportRequestOrganizationId>;
-
 export interface CustomersExportRequest {
   /** Filter by organization ID. */
   organization_id?: CustomersExportRequestOrganizationId;
 }
-const CustomersExportRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<CustomersExportRequest>;
-
 export interface CustomersExportResponse {}
-const CustomersExportResponse = BenefitsDeleteResponse as any as S.Schema<CustomersExportResponse>;
-
 export interface CustomersGetRequest {
   /** The customer ID. */
   id: string;
 }
-const CustomersGetRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<CustomersGetRequest>;
-
 export type CustomersGetResponse = Customer;
-const CustomersGetResponse = CustomersCreateResponse as any as S.Schema<CustomersGetResponse>;
-
 export interface CustomersGetExternalRequest {
   /** The customer external ID. */
   external_id: string;
 }
-const CustomersGetExternalRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<CustomersGetExternalRequest>;
-
 export type CustomersGetExternalResponse = Customer;
-const CustomersGetExternalResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<CustomersGetExternalResponse>;
-
 export interface CustomersGetStateRequest {
   /** The customer ID. */
   id: string;
 }
-const CustomersGetStateRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<CustomersGetStateRequest>;
-
 export type CustomerStateIndividualTaxIdList = Array<unknown>;
 export type CustomerStateSubscriptionCustomFieldDataValue = string | number | boolean;
 /** Key-value object storing custom field values. */
@@ -7062,35 +5698,17 @@ export interface CustomerStateTeam {
   active_meters: CustomerStateTeamActiveMetersList;
 }
 export type CustomerState = CustomerStateIndividual | CustomerStateTeam;
-const CustomerState = S.Unknown as any as S.Schema<CustomerState>;
-
 export type CustomersGetStateResponse = CustomerState;
-const CustomersGetStateResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<CustomersGetStateResponse>;
-
 export interface CustomersGetStateExternalRequest {
   /** The customer external ID. */
   external_id: string;
 }
-const CustomersGetStateExternalRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<CustomersGetStateExternalRequest>;
-
 export type CustomersGetStateExternalResponse = CustomerState;
-const CustomersGetStateExternalResponse =
-  CustomersGetStateResponse as any as S.Schema<CustomersGetStateExternalResponse>;
-
 export type CustomersListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type CustomersListRequestOrganizationId =
   | string
   | CustomersListRequestOrganizationIdCase1List;
-const CustomersListRequestOrganizationId =
-  S.Unknown as any as S.Schema<CustomersListRequestOrganizationId>;
-
 export type CustomerSortProperty =
   | "created_at"
   | "-created_at"
@@ -7099,9 +5717,6 @@ export type CustomerSortProperty =
   | "name"
   | "-name";
 export type CustomersListRequestSortingList = Array<CustomerSortProperty | (string & {})>;
-const CustomersListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomersListRequestSortingList>;
-
 export interface CustomersListRequest {
   /** Filter by organization ID. */
   organization_id?: CustomersListRequestOrganizationId;
@@ -7120,26 +5735,11 @@ export interface CustomersListRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const CustomersListRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<CustomersListRequest>;
-
 export type ListResourceCustomerItemsList = Array<Customer>;
-const ListResourceCustomerItemsList = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ListResourceCustomerItemsList>;
-
 export interface ListResourceCustomer {
   items: ListResourceCustomerItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomer = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<ListResourceCustomer>;
-
 export interface CustomersListPaymentMethodsRequest {
   /** The customer ID. */
   id: string;
@@ -7148,11 +5748,6 @@ export interface CustomersListPaymentMethodsRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const CustomersListPaymentMethodsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<CustomersListPaymentMethodsRequest>;
-
 export interface CustomerPaymentMethodCard {
   /** The ID of the object. */
   id: string;
@@ -7198,23 +5793,11 @@ export type PaymentMethod =
   | CustomerPaymentMethodCard
   | CustomerPaymentMethodKrCard
   | CustomerPaymentMethodGeneric;
-const PaymentMethod = S.Unknown as any as S.Schema<PaymentMethod>;
-
 export type ListResourcePaymentMethodItemsList = Array<PaymentMethod>;
-const ListResourcePaymentMethodItemsList = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ListResourcePaymentMethodItemsList>;
-
 export interface ListResourcePaymentMethod {
   items: ListResourcePaymentMethodItemsList;
   pagination: Pagination;
 }
-const ListResourcePaymentMethod = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ListResourcePaymentMethod>;
-
 export interface CustomersListPaymentMethodsExternalRequest {
   /** The customer external ID. */
   external_id: string;
@@ -7223,15 +5806,8 @@ export interface CustomersListPaymentMethodsExternalRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const CustomersListPaymentMethodsExternalRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<CustomersListPaymentMethodsExternalRequest>;
-
 /** The role of the member within the customer. To assign or transfer ownership, use the member update endpoint. */
 export type CustomersMembersCreateRequestRole = "member" | "billing_manager";
-const CustomersMembersCreateRequestRole = S.String;
-
 export interface CustomersMembersCreateRequest {
   /** The customer ID. */
   id: string;
@@ -7243,15 +5819,8 @@ export interface CustomersMembersCreateRequest {
   /** The role of the member within the customer. To assign or transfer ownership, use the member update endpoint. */
   role?: CustomersMembersCreateRequestRole | (string & {});
 }
-const CustomersMembersCreateRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<CustomersMembersCreateRequest>;
-
 /** The role of the member within the customer. To assign or transfer ownership, use the member update endpoint. */
 export type CustomersMembersCreateExternalRequestRole = "member" | "billing_manager";
-const CustomersMembersCreateExternalRequestRole = S.String;
-
 export interface CustomersMembersCreateExternalRequest {
   /** The customer external ID. */
   external_id: string;
@@ -7261,66 +5830,32 @@ export interface CustomersMembersCreateExternalRequest {
   /** The role of the member within the customer. To assign or transfer ownership, use the member update endpoint. */
   role?: CustomersMembersCreateExternalRequestRole | (string & {});
 }
-const CustomersMembersCreateExternalRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<CustomersMembersCreateExternalRequest>;
-
 export interface CustomersMembersDeleteRequest {
   /** The customer ID. */
   id: string;
   member_id: string;
 }
-const CustomersMembersDeleteRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<CustomersMembersDeleteRequest>;
-
 export interface CustomersMembersDeleteResponse {}
-const CustomersMembersDeleteResponse =
-  BenefitsDeleteResponse as any as S.Schema<CustomersMembersDeleteResponse>;
-
 export interface CustomersMembersDeleteExternalRequest {
   /** The customer external ID. */
   external_id: string;
   /** The member external ID. */
   member_external_id: string;
 }
-const CustomersMembersDeleteExternalRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<CustomersMembersDeleteExternalRequest>;
-
 export interface CustomersMembersDeleteExternalResponse {}
-const CustomersMembersDeleteExternalResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<CustomersMembersDeleteExternalResponse>;
-
 export interface CustomersMembersGetRequest {
   /** The customer ID. */
   id: string;
   member_id: string;
 }
-const CustomersMembersGetRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<CustomersMembersGetRequest>;
-
 export interface CustomersMembersGetExternalRequest {
   /** The customer external ID. */
   external_id: string;
   /** The member external ID. */
   member_external_id: string;
 }
-const CustomersMembersGetExternalRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<CustomersMembersGetExternalRequest>;
-
 export type MemberSortProperty = "created_at" | "-created_at";
 export type CustomersMembersListRequestSortingList = Array<MemberSortProperty | (string & {})>;
-const CustomersMembersListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomersMembersListRequestSortingList>;
-
 export interface CustomersMembersListRequest {
   /** The customer ID. */
   id: string;
@@ -7333,29 +5868,14 @@ export interface CustomersMembersListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomersMembersListRequestSortingList;
 }
-const CustomersMembersListRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<CustomersMembersListRequest>;
-
 export type ListResourceMemberItemsList = Array<Member>;
-const ListResourceMemberItemsList = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ListResourceMemberItemsList>;
-
 export interface ListResourceMember {
   items: ListResourceMemberItemsList;
   pagination: Pagination;
 }
-const ListResourceMember = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<ListResourceMember>;
-
 export type CustomersMembersListExternalRequestSortingList = Array<
   MemberSortProperty | (string & {})
 >;
-const CustomersMembersListExternalRequestSortingList =
-  CustomersMembersListRequestSortingList as any as S.Schema<CustomersMembersListExternalRequestSortingList>;
-
 export interface CustomersMembersListExternalRequest {
   /** The customer external ID. */
   external_id: string;
@@ -7368,11 +5888,6 @@ export interface CustomersMembersListExternalRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomersMembersListExternalRequestSortingList;
 }
-const CustomersMembersListExternalRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<CustomersMembersListExternalRequest>;
-
 export interface CustomersMembersUpdateRequest {
   /** The customer ID. */
   id: string;
@@ -7382,11 +5897,6 @@ export interface CustomersMembersUpdateRequest {
   /** The role of the member within the customer. */
   role?: MemberRole | (string & {}) | null;
 }
-const CustomersMembersUpdateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<CustomersMembersUpdateRequest>;
-
 export interface CustomersMembersUpdateExternalRequest {
   /** The customer external ID. */
   external_id: string;
@@ -7397,24 +5907,11 @@ export interface CustomersMembersUpdateExternalRequest {
   /** The role of the member within the customer. */
   role?: MemberRole | (string & {}) | null;
 }
-const CustomersMembersUpdateExternalRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<CustomersMembersUpdateExternalRequest>;
-
 export type CustomersUpdateRequestMetadataValue = string | number | number | boolean;
-const CustomersUpdateRequestMetadataValue =
-  S.Unknown as any as S.Schema<CustomersUpdateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomersUpdateRequestMetadataMap = {
   [key: string]: CustomersUpdateRequestMetadataValue | undefined;
 };
-const CustomersUpdateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<CustomersUpdateRequestMetadataMap>;
-
 export interface CustomersUpdateRequest {
   /** The customer ID. */
   id: string;
@@ -7431,27 +5928,12 @@ export interface CustomersUpdateRequest {
   /** The customer type. Can only be upgraded from 'individual' to 'team', never downgraded. */
   type?: CustomerType | (string & {}) | null;
 }
-const CustomersUpdateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<CustomersUpdateRequest>;
-
 export type CustomersUpdateResponse = Customer;
-const CustomersUpdateResponse = CustomersCreateResponse as any as S.Schema<CustomersUpdateResponse>;
-
 export type CustomersUpdateExternalRequestMetadataValue = string | number | number | boolean;
-const CustomersUpdateExternalRequestMetadataValue =
-  S.Unknown as any as S.Schema<CustomersUpdateExternalRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomersUpdateExternalRequestMetadataMap = {
   [key: string]: CustomersUpdateExternalRequestMetadataValue | undefined;
 };
-const CustomersUpdateExternalRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<CustomersUpdateExternalRequestMetadataMap>;
-
 export interface CustomersUpdateExternalRequest {
   /** The customer external ID. */
   external_id: string;
@@ -7464,15 +5946,7 @@ export interface CustomersUpdateExternalRequest {
   tax_id?: string | null;
   locale?: string | null;
 }
-const CustomersUpdateExternalRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<CustomersUpdateExternalRequest>;
-
 export type CustomersUpdateExternalResponse = Customer;
-const CustomersUpdateExternalResponse =
-  CustomersGetExternalResponse as any as S.Schema<CustomersUpdateExternalResponse>;
-
 export type CustomFieldCreateTextMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomFieldCreateTextMetadataMap = {
@@ -7569,64 +6043,29 @@ export type CustomFieldCreate =
   | CustomFieldCreateDate
   | CustomFieldCreateCheckbox
   | CustomFieldCreateSelect;
-const CustomFieldCreate = S.Unknown as any as S.Schema<CustomFieldCreate>;
-
 export interface CustomFieldsCreateRequest {
   body: CustomFieldCreate;
 }
-const CustomFieldsCreateRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<CustomFieldsCreateRequest>;
-
 export type CustomFieldsCreateResponse = CustomField;
-const CustomFieldsCreateResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<CustomFieldsCreateResponse>;
-
 export interface CustomFieldsDeleteRequest {
   /** The custom field ID. */
   id: string;
 }
-const CustomFieldsDeleteRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<CustomFieldsDeleteRequest>;
-
 export interface CustomFieldsDeleteResponse {}
-const CustomFieldsDeleteResponse =
-  BenefitsDeleteResponse as any as S.Schema<CustomFieldsDeleteResponse>;
-
 export interface CustomFieldsGetRequest {
   /** The custom field ID. */
   id: string;
 }
-const CustomFieldsGetRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<CustomFieldsGetRequest>;
-
 export type CustomFieldsGetResponse = CustomField;
-const CustomFieldsGetResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<CustomFieldsGetResponse>;
-
 export type CustomFieldsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type CustomFieldsListRequestOrganizationId =
   | string
   | CustomFieldsListRequestOrganizationIdCase1List;
-const CustomFieldsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<CustomFieldsListRequestOrganizationId>;
-
 export type CustomFieldType = "text" | "number" | "date" | "checkbox" | "select";
 export type CustomFieldsListRequestTypeCase1List = Array<CustomFieldType | (string & {})>;
 /** Filter by custom field type. */
 export type CustomFieldsListRequestType = CustomFieldType | CustomFieldsListRequestTypeCase1List;
-const CustomFieldsListRequestType = S.Unknown as any as S.Schema<CustomFieldsListRequestType>;
-
 export type CustomFieldSortProperty =
   | "created_at"
   | "-created_at"
@@ -7637,9 +6076,6 @@ export type CustomFieldSortProperty =
   | "type"
   | "-type";
 export type CustomFieldsListRequestSortingList = Array<CustomFieldSortProperty | (string & {})>;
-const CustomFieldsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<CustomFieldsListRequestSortingList>;
-
 export interface CustomFieldsListRequest {
   /** Filter by organization ID. */
   organization_id?: CustomFieldsListRequestOrganizationId;
@@ -7654,26 +6090,11 @@ export interface CustomFieldsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: CustomFieldsListRequestSortingList;
 }
-const CustomFieldsListRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<CustomFieldsListRequest>;
-
 export type ListResourceCustomFieldItemsList = Array<CustomField>;
-const ListResourceCustomFieldItemsList = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<ListResourceCustomFieldItemsList>;
-
 export interface ListResourceCustomField {
   items: ListResourceCustomFieldItemsList;
   pagination: Pagination;
 }
-const ListResourceCustomField = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ListResourceCustomField>;
-
 export type CustomFieldUpdateTextMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type CustomFieldUpdateTextMetadataMap = {
@@ -7750,22 +6171,12 @@ export type CustomFieldUpdate =
   | CustomFieldUpdateDate
   | CustomFieldUpdateCheckbox
   | CustomFieldUpdateSelect;
-const CustomFieldUpdate = S.Unknown as any as S.Schema<CustomFieldUpdate>;
-
 export interface CustomFieldsUpdateRequest {
   /** The custom field ID. */
   id: string;
   body: CustomFieldUpdate;
 }
-const CustomFieldsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<CustomFieldsUpdateRequest>;
-
 export type CustomFieldsUpdateResponse = CustomField;
-const CustomFieldsUpdateResponse =
-  CustomFieldsCreateResponse as any as S.Schema<CustomFieldsUpdateResponse>;
-
 export type DiscountFixedCreateMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type DiscountFixedCreateMetadataMap = {
@@ -7838,16 +6249,9 @@ export interface DiscountPercentageCreate {
   basis_points: number;
 }
 export type DiscountCreate = DiscountFixedCreate | DiscountPercentageCreate;
-const DiscountCreate = S.Unknown as any as S.Schema<DiscountCreate>;
-
 export interface DiscountsCreateRequest {
   body: DiscountCreate;
 }
-const DiscountsCreateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<DiscountsCreateRequest>;
-
 /** Map of currency to fixed amount to discount from the total. */
 export type DiscountFixedOnceForeverDurationAmountsMap = { [key: string]: number | undefined };
 /** A product that a discount can be applied to. */
@@ -7884,8 +6288,6 @@ export interface DiscountProduct {
   /** The ID of the organization owning the product. */
   organization_id: string;
 }
-const DiscountProduct = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<DiscountProduct>;
-
 export type DiscountFixedOnceForeverDurationProductsList = Array<DiscountProduct>;
 /** Schema for a fixed amount discount that is applied once or forever. */
 export interface DiscountFixedOnceForeverDuration {
@@ -8027,43 +6429,22 @@ export type Discount =
   | DiscountFixedRepeatDuration
   | DiscountPercentageOnceForeverDuration
   | DiscountPercentageRepeatDuration;
-const Discount = S.Unknown as any as S.Schema<Discount>;
-
 export type DiscountsCreateResponse = Discount;
-const DiscountsCreateResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<DiscountsCreateResponse>;
-
 export interface DiscountsDeleteRequest {
   /** The discount ID. */
   id: string;
 }
-const DiscountsDeleteRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<DiscountsDeleteRequest>;
-
 export interface DiscountsDeleteResponse {}
-const DiscountsDeleteResponse = BenefitsDeleteResponse as any as S.Schema<DiscountsDeleteResponse>;
-
 export interface DiscountsGetRequest {
   /** The discount ID. */
   id: string;
 }
-const DiscountsGetRequest = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<DiscountsGetRequest>;
-
 export type DiscountsGetResponse = Discount;
-const DiscountsGetResponse = DiscountsCreateResponse as any as S.Schema<DiscountsGetResponse>;
-
 export type DiscountsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type DiscountsListRequestOrganizationId =
   | string
   | DiscountsListRequestOrganizationIdCase1List;
-const DiscountsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<DiscountsListRequestOrganizationId>;
-
 export type DiscountSortProperty =
   | "created_at"
   | "-created_at"
@@ -8076,9 +6457,6 @@ export type DiscountSortProperty =
   | "ends_at"
   | "-ends_at";
 export type DiscountsListRequestSortingList = Array<DiscountSortProperty | (string & {})>;
-const DiscountsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<DiscountsListRequestSortingList>;
-
 export interface DiscountsListRequest {
   /** Filter by organization ID. */
   organization_id?: DiscountsListRequestOrganizationId;
@@ -8091,49 +6469,20 @@ export interface DiscountsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: DiscountsListRequestSortingList;
 }
-const DiscountsListRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<DiscountsListRequest>;
-
 export type ListResourceDiscountItemsList = Array<Discount>;
-const ListResourceDiscountItemsList = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<ListResourceDiscountItemsList>;
-
 export interface ListResourceDiscount {
   items: ListResourceDiscountItemsList;
   pagination: Pagination;
 }
-const ListResourceDiscount = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<ListResourceDiscount>;
-
 export type DiscountsUpdateRequestMetadataValue = string | number | number | boolean;
-const DiscountsUpdateRequestMetadataValue =
-  S.Unknown as any as S.Schema<DiscountsUpdateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type DiscountsUpdateRequestMetadataMap = {
   [key: string]: DiscountsUpdateRequestMetadataValue | undefined;
 };
-const DiscountsUpdateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<DiscountsUpdateRequestMetadataMap>;
-
 /** Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies. */
 export type DiscountsUpdateRequestAmountsMap = { [key: string]: number | undefined };
-const DiscountsUpdateRequestAmountsMap =
-  DiscountFixedOnceForeverDurationBaseAmountsMap as any as S.Schema<DiscountsUpdateRequestAmountsMap>;
-
 /** List of product IDs the discount can be applied to. */
 export type DiscountsUpdateRequestProductsList = Array<string>;
-const DiscountsUpdateRequestProductsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<DiscountsUpdateRequestProductsList>;
-
 export interface DiscountsUpdateRequest {
   /** The discount ID. */
   id: string;
@@ -8159,23 +6508,11 @@ export interface DiscountsUpdateRequest {
   basis_points?: number | null;
   products?: DiscountsUpdateRequestProductsList | null;
 }
-const DiscountsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<DiscountsUpdateRequest>;
-
 export type DiscountsUpdateResponse = Discount;
-const DiscountsUpdateResponse = DiscountsCreateResponse as any as S.Schema<DiscountsUpdateResponse>;
-
 export interface DisputesAcceptRequest {
   /** The dispute ID. */
   id: string;
 }
-const DisputesAcceptRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<DisputesAcceptRequest>;
-
 export type DisputeStatus =
   | "prevented"
   | "early_warning"
@@ -8183,8 +6520,6 @@ export type DisputeStatus =
   | "under_review"
   | "lost"
   | "won";
-const DisputeStatus = S.String;
-
 export type DisputeCustomerTaxIdList = Array<unknown>;
 export interface DisputeCustomer {
   /** The ID of the customer. */
@@ -8219,8 +6554,6 @@ export interface DisputeCustomer {
   first_user_event_at: string | null;
   avatar_url: string | null;
 }
-const DisputeCustomer = LicenseKeyCustomer as any as S.Schema<DisputeCustomer>;
-
 /** Schema representing a dispute. A dispute is a challenge raised by a customer or their bank regarding a payment. */
 export interface Dispute {
   /** Creation timestamp of the object. */
@@ -8256,35 +6589,21 @@ export interface Dispute {
   /** The ID of the support case for this dispute, if one was opened. */
   case_id: string | null;
 }
-const Dispute = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<Dispute>;
-
 export interface DisputesGetRequest {
   /** The dispute ID. */
   id: string;
 }
-const DisputesGetRequest = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<DisputesGetRequest>;
-
 export type DisputesListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type DisputesListRequestOrganizationId = string | DisputesListRequestOrganizationIdCase1List;
-const DisputesListRequestOrganizationId =
-  S.Unknown as any as S.Schema<DisputesListRequestOrganizationId>;
-
 export type DisputesListRequestOrderIdCase1List = Array<string>;
 /** Filter by order ID. */
 export type DisputesListRequestOrderId = string | DisputesListRequestOrderIdCase1List;
-const DisputesListRequestOrderId = S.Unknown as any as S.Schema<DisputesListRequestOrderId>;
-
 export type DisputesListRequestStatusCase1List = Array<DisputeStatus | (string & {})>;
 /** Filter by dispute status. */
 export type DisputesListRequestStatus = DisputeStatus | DisputesListRequestStatusCase1List;
-const DisputesListRequestStatus = S.Unknown as any as S.Schema<DisputesListRequestStatus>;
-
 export type DisputeSortProperty = "created_at" | "-created_at" | "amount" | "-amount";
 export type DisputesListRequestSortingList = Array<DisputeSortProperty | (string & {})>;
-const DisputesListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<DisputesListRequestSortingList>;
-
 export interface DisputesListRequest {
   /** Filter by organization ID. */
   organization_id?: DisputesListRequestOrganizationId;
@@ -8299,26 +6618,15 @@ export interface DisputesListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: DisputesListRequestSortingList;
 }
-const DisputesListRequest = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<DisputesListRequest>;
-
 export type ListResourceDisputeItemsList = Array<Dispute>;
-const ListResourceDisputeItemsList = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<ListResourceDisputeItemsList>;
-
 export interface ListResourceDispute {
   items: ListResourceDisputeItemsList;
   pagination: Pagination;
 }
-const ListResourceDispute = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<ListResourceDispute>;
-
 export interface EventsGetRequest {
   /** The event ID. */
   id: string;
 }
-const EventsGetRequest = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<EventsGetRequest>;
-
 export interface MeterCreditedMetadata {
   meter_id: string;
   units: number;
@@ -9463,11 +7771,7 @@ export interface UserEvent {
   metadata: EventMetadataOutput;
 }
 export type Event = SystemEvent | UserEvent;
-const Event = S.Unknown as any as S.Schema<Event>;
-
 export type EventsGetResponse = Event;
-const EventsGetResponse = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<EventsGetResponse>;
-
 /** The amount in cents. */
 export type CostMetadataInputAmount = number | string;
 export interface CostMetadataInput {
@@ -9517,69 +7821,38 @@ export interface EventCreateExternalCustomer {
   external_member_id?: string | null;
 }
 export type EventsIngestRequestEventsItem = EventCreateCustomer | EventCreateExternalCustomer;
-const EventsIngestRequestEventsItem = S.Unknown as any as S.Schema<EventsIngestRequestEventsItem>;
-
 /** List of events to ingest. */
 export type EventsIngestRequestEventsList = Array<EventsIngestRequestEventsItem>;
-const EventsIngestRequestEventsList = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<EventsIngestRequestEventsList>;
-
 export interface EventsIngestRequest {
   /** List of events to ingest. */
   events: EventsIngestRequestEventsList;
 }
-const EventsIngestRequest = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<EventsIngestRequest>;
-
 export interface EventsIngestResponse {
   /** Number of events inserted. */
   inserted: number;
   /** Number of duplicate events skipped. */
   duplicates?: number;
 }
-const EventsIngestResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<EventsIngestResponse>;
-
 export type EventsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type EventsListRequestOrganizationId = string | EventsListRequestOrganizationIdCase1List;
-const EventsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<EventsListRequestOrganizationId>;
-
 export type EventsListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type EventsListRequestCustomerId = string | EventsListRequestCustomerIdCase1List;
-const EventsListRequestCustomerId = S.Unknown as any as S.Schema<EventsListRequestCustomerId>;
-
 export type EventsListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by external customer ID. */
 export type EventsListRequestExternalCustomerId =
   | string
   | EventsListRequestExternalCustomerIdCase1List;
-const EventsListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<EventsListRequestExternalCustomerId>;
-
 export type EventsListRequestNameCase1List = Array<string>;
 /** Filter by event name. */
 export type EventsListRequestName = string | EventsListRequestNameCase1List;
-const EventsListRequestName = S.Unknown as any as S.Schema<EventsListRequestName>;
-
 export type EventSource = "system" | "user";
-const EventSource = S.String;
-
 export type EventsListRequestSourceCase1List = Array<EventSource | (string & {})>;
 /** Filter by event source. */
 export type EventsListRequestSource = EventSource | EventsListRequestSourceCase1List;
-const EventsListRequestSource = S.Unknown as any as S.Schema<EventsListRequestSource>;
-
 export type EventSortProperty = "timestamp" | "-timestamp";
 export type EventsListRequestSortingList = Array<EventSortProperty | (string & {})>;
-const EventsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<EventsListRequestSortingList>;
-
 export interface EventsListRequest {
   /** Filter events following filter clauses. JSON string following the same schema a meter filter clause. */
   filter?: string;
@@ -9614,8 +7887,6 @@ export interface EventsListRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const EventsListRequest = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<EventsListRequest>;
-
 export type ListResourceEventItemsList = Array<Event>;
 export interface ListResourceEvent {
   items: ListResourceEventItemsList;
@@ -9630,38 +7901,23 @@ export interface ListResourceWithCursorPaginationEvent {
   pagination: CursorPagination;
 }
 export type EventsListResponseBody = ListResourceEvent | ListResourceWithCursorPaginationEvent;
-const EventsListResponseBody = S.Unknown as any as S.Schema<EventsListResponseBody>;
-
 export type EventsListResponse = EventsListResponseBody;
-const EventsListResponse = /*@__PURE__*/ __L.at(__c35, 1) as any as S.Schema<EventsListResponse>;
-
 export type EventsListNamesRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type EventsListNamesRequestOrganizationId =
   | string
   | EventsListNamesRequestOrganizationIdCase1List;
-const EventsListNamesRequestOrganizationId =
-  S.Unknown as any as S.Schema<EventsListNamesRequestOrganizationId>;
-
 export type EventsListNamesRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type EventsListNamesRequestCustomerId = string | EventsListNamesRequestCustomerIdCase1List;
-const EventsListNamesRequestCustomerId =
-  S.Unknown as any as S.Schema<EventsListNamesRequestCustomerId>;
-
 export type EventsListNamesRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by external customer ID. */
 export type EventsListNamesRequestExternalCustomerId =
   | string
   | EventsListNamesRequestExternalCustomerIdCase1List;
-const EventsListNamesRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<EventsListNamesRequestExternalCustomerId>;
-
 export type EventsListNamesRequestSourceCase1List = Array<EventSource | (string & {})>;
 /** Filter by event source. */
 export type EventsListNamesRequestSource = EventSource | EventsListNamesRequestSourceCase1List;
-const EventsListNamesRequestSource = S.Unknown as any as S.Schema<EventsListNamesRequestSource>;
-
 export type EventNamesSortProperty =
   | "name"
   | "-name"
@@ -9672,9 +7928,6 @@ export type EventNamesSortProperty =
   | "last_seen"
   | "-last_seen";
 export type EventsListNamesRequestSortingList = Array<EventNamesSortProperty | (string & {})>;
-const EventsListNamesRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<EventsListNamesRequestSortingList>;
-
 export interface EventsListNamesRequest {
   /** Filter by organization ID. */
   organization_id?: EventsListNamesRequestOrganizationId;
@@ -9693,11 +7946,6 @@ export interface EventsListNamesRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: EventsListNamesRequestSortingList;
 }
-const EventsListNamesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<EventsListNamesRequest>;
-
 export interface EventName {
   /** The name of the event. */
   name: string;
@@ -9712,45 +7960,24 @@ export interface EventName {
   /** The last time the event occurred. */
   last_seen: string;
 }
-const EventName = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<EventName>;
-
 export type ListResourceEventNameItemsList = Array<EventName>;
-const ListResourceEventNameItemsList = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<ListResourceEventNameItemsList>;
-
 export interface ListResourceEventName {
   items: ListResourceEventNameItemsList;
   pagination: Pagination;
 }
-const ListResourceEventName = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<ListResourceEventName>;
-
 export type EventTypesListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type EventTypesListRequestOrganizationId =
   | string
   | EventTypesListRequestOrganizationIdCase1List;
-const EventTypesListRequestOrganizationId =
-  S.Unknown as any as S.Schema<EventTypesListRequestOrganizationId>;
-
 export type EventTypesListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type EventTypesListRequestCustomerId = string | EventTypesListRequestCustomerIdCase1List;
-const EventTypesListRequestCustomerId =
-  S.Unknown as any as S.Schema<EventTypesListRequestCustomerId>;
-
 export type EventTypesListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by external customer ID. */
 export type EventTypesListRequestExternalCustomerId =
   | string
   | EventTypesListRequestExternalCustomerIdCase1List;
-const EventTypesListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<EventTypesListRequestExternalCustomerId>;
-
 export type EventTypesSortProperty =
   | "name"
   | "-name"
@@ -9763,9 +7990,6 @@ export type EventTypesSortProperty =
   | "last_seen"
   | "-last_seen";
 export type EventTypesListRequestSortingList = Array<EventTypesSortProperty | (string & {})>;
-const EventTypesListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<EventTypesListRequestSortingList>;
-
 export interface EventTypesListRequest {
   /** Filter by organization ID. */
   organization_id?: EventTypesListRequestOrganizationId;
@@ -9788,11 +8012,6 @@ export interface EventTypesListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: EventTypesListRequestSortingList;
 }
-const EventTypesListRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<EventTypesListRequest>;
-
 export interface EventTypeWithStats {
   /** The ID of the event type. Null for system event types. */
   id?: string | null;
@@ -9817,23 +8036,11 @@ export interface EventTypeWithStats {
   /** The last time the event occurred. */
   last_seen: string;
 }
-const EventTypeWithStats = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<EventTypeWithStats>;
-
 export type ListResourceEventTypeWithStatsItemsList = Array<EventTypeWithStats>;
-const ListResourceEventTypeWithStatsItemsList = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<ListResourceEventTypeWithStatsItemsList>;
-
 export interface ListResourceEventTypeWithStats {
   items: ListResourceEventTypeWithStatsItemsList;
   pagination: Pagination;
 }
-const ListResourceEventTypeWithStats = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<ListResourceEventTypeWithStats>;
-
 export interface EventTypesUpdateRequest {
   /** The event type ID. */
   id: string;
@@ -9842,11 +8049,6 @@ export interface EventTypesUpdateRequest {
   /** Property path to extract dynamic label from event metadata (e.g., 'subject' or 'metadata.subject'). */
   label_property_selector?: string | null;
 }
-const EventTypesUpdateRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<EventTypesUpdateRequest>;
-
 export interface EventType {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -9863,8 +8065,6 @@ export interface EventType {
   /** The ID of the organization owning the event type. */
   organization_id: string;
 }
-const EventType = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<EventType>;
-
 export interface S3FileCreatePart {
   number: number;
   chunk_start: number;
@@ -9930,17 +8130,10 @@ export type FileCreate =
   | ProductMediaFileCreate
   | OrganizationAvatarFileCreate
   | SupportCaseAttachmentFileCreate;
-const FileCreate = S.Unknown as any as S.Schema<FileCreate>;
-
 export interface FilesCreateRequest {
   body: FileCreate;
 }
-const FilesCreateRequest = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<FilesCreateRequest>;
-
 export type S3FileUploadPartHeadersMap = { [key: string]: string | undefined };
-const S3FileUploadPartHeadersMap =
-  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<S3FileUploadPartHeadersMap>;
-
 export interface S3FileUploadPart {
   number: number;
   chunk_start: number;
@@ -9950,24 +8143,12 @@ export interface S3FileUploadPart {
   expires_at: string;
   headers?: S3FileUploadPartHeadersMap;
 }
-const S3FileUploadPart = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<S3FileUploadPart>;
-
 export type S3FileUploadMultipartPartsList = Array<S3FileUploadPart>;
-const S3FileUploadMultipartPartsList = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<S3FileUploadMultipartPartsList>;
-
 export interface S3FileUploadMultipart {
   id: string;
   path: string;
   parts: S3FileUploadMultipartPartsList;
 }
-const S3FileUploadMultipart = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<S3FileUploadMultipart>;
-
 export interface FileUpload {
   /** The ID of the object. */
   id: string;
@@ -9987,26 +8168,16 @@ export interface FileUpload {
   service: FileServiceTypes;
   size_readable: string;
 }
-const FileUpload = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<FileUpload>;
-
 export interface FilesDeleteRequest {
   id: string;
 }
-const FilesDeleteRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<FilesDeleteRequest>;
-
 export interface FilesDeleteResponse {}
-const FilesDeleteResponse = BenefitsDeleteResponse as any as S.Schema<FilesDeleteResponse>;
-
 export type FilesListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type FilesListRequestOrganizationId = string | FilesListRequestOrganizationIdCase1List;
-const FilesListRequestOrganizationId = S.Unknown as any as S.Schema<FilesListRequestOrganizationId>;
-
 export type FilesListRequestIdsCase1List = Array<string>;
 /** Filter by file ID. */
 export type FilesListRequestIds = string | FilesListRequestIdsCase1List;
-const FilesListRequestIds = S.Unknown as any as S.Schema<FilesListRequestIds>;
-
 export interface FilesListRequest {
   /** Filter by organization ID. */
   organization_id?: FilesListRequestOrganizationId;
@@ -10017,8 +8188,6 @@ export interface FilesListRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const FilesListRequest = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<FilesListRequest>;
-
 /** File to be associated with the downloadables benefit. */
 export interface DownloadableFileRead {
   /** The ID of the object. */
@@ -10067,125 +8236,54 @@ export type FileRead =
   | ProductMediaFileRead
   | ProductMediaFileRead
   | SupportCaseAttachmentFileRead;
-const FileRead = S.Unknown as any as S.Schema<FileRead>;
-
 export type ListResourceFileReadItemsList = Array<FileRead>;
-const ListResourceFileReadItemsList = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<ListResourceFileReadItemsList>;
-
 export interface ListResourceFileRead {
   items: ListResourceFileReadItemsList;
   pagination: Pagination;
 }
-const ListResourceFileRead = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<ListResourceFileRead>;
-
 export interface FilesUpdateRequest {
   /** The file ID. */
   id: string;
   name?: string | null;
   version?: string | null;
 }
-const FilesUpdateRequest = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<FilesUpdateRequest>;
-
 export type FilesUpdateResponse = FileRead;
-const FilesUpdateResponse = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<FilesUpdateResponse>;
-
 export interface S3FileUploadCompletedPart {
   number: number;
   checksum_etag: string;
   checksum_sha256_base64: string | null;
 }
-const S3FileUploadCompletedPart = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<S3FileUploadCompletedPart>;
-
 export type FilesUploadedRequestPartsList = Array<S3FileUploadCompletedPart>;
-const FilesUploadedRequestPartsList = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<FilesUploadedRequestPartsList>;
-
 export interface FilesUploadedRequest {
   /** The file ID. */
   id: string;
   path: string;
   parts: FilesUploadedRequestPartsList;
 }
-const FilesUploadedRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<FilesUploadedRequest>;
-
 export type FilesUploadedResponse = FileRead;
-const FilesUploadedResponse = FilesUpdateResponse as any as S.Schema<FilesUploadedResponse>;
-
 export interface GetCheckoutsClientRequest {
   /** The checkout session client secret. */
   client_secret: string;
 }
-const GetCheckoutsClientRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetCheckoutsClientRequest>;
-
 export type CheckoutPublicCustomFieldDataValue = string | number | boolean;
-const CheckoutPublicCustomFieldDataValue =
-  S.Unknown as any as S.Schema<CheckoutPublicCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type CheckoutPublicCustomFieldDataMap = {
   [key: string]: CheckoutPublicCustomFieldDataValue | null | undefined;
 };
-const CheckoutPublicCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<CheckoutPublicCustomFieldDataMap>;
-
 export type CheckoutPublicPaymentProcessorMetadataMap = { [key: string]: string | undefined };
-const CheckoutPublicPaymentProcessorMetadataMap =
-  ProductPriceUnitBasedUnitLabelValueMap as any as S.Schema<CheckoutPublicPaymentProcessorMetadataMap>;
-
 /** List of products available to select. */
 export type CheckoutPublicProductsList = Array<CheckoutProduct>;
-const CheckoutPublicProductsList =
-  CheckoutProductsList as any as S.Schema<CheckoutPublicProductsList>;
-
 export type CheckoutPublicProductPrice = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutPublicProductPrice = S.Unknown as any as S.Schema<CheckoutPublicProductPrice>;
-
 export type CheckoutPublicPricesValueItem = LegacyRecurringProductPrice | ProductPrice;
-const CheckoutPublicPricesValueItem = S.Unknown as any as S.Schema<CheckoutPublicPricesValueItem>;
-
 /** List of prices for this product. */
 export type CheckoutPublicPricesValueList = Array<CheckoutPublicPricesValueItem>;
-const CheckoutPublicPricesValueList = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<CheckoutPublicPricesValueList>;
-
 export type CheckoutPublicPricesMap = { [key: string]: CheckoutPublicPricesValueList | undefined };
-const CheckoutPublicPricesMap = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<CheckoutPublicPricesMap>;
-
 export type CheckoutPublicDiscount =
   | CheckoutDiscountFixedOnceForeverDuration
   | CheckoutDiscountFixedRepeatDuration
   | CheckoutDiscountPercentageOnceForeverDuration
   | CheckoutDiscountPercentageRepeatDuration;
-const CheckoutPublicDiscount = S.Unknown as any as S.Schema<CheckoutPublicDiscount>;
-
 export type CheckoutPublicAttachedCustomFieldsList = Array<AttachedCustomField>;
-const CheckoutPublicAttachedCustomFieldsList =
-  CheckoutAttachedCustomFieldsList as any as S.Schema<CheckoutPublicAttachedCustomFieldsList>;
-
 /** Checkout session data retrieved using the client secret. */
 export interface CheckoutPublic {
   /** The ID of the object. */
@@ -10297,34 +8395,16 @@ export interface CheckoutPublic {
   organization: CheckoutOrganization;
   attached_custom_fields: CheckoutPublicAttachedCustomFieldsList | null;
 }
-const CheckoutPublic = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<CheckoutPublic>;
-
 export type LicenseKeysActivateRequestConditionsValue = string | number | number | boolean;
-const LicenseKeysActivateRequestConditionsValue =
-  S.Unknown as any as S.Schema<LicenseKeysActivateRequestConditionsValue>;
-
 /** Key-value object allowing you to set conditions that must match when validating the license key. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type LicenseKeysActivateRequestConditionsMap = {
   [key: string]: LicenseKeysActivateRequestConditionsValue | undefined;
 };
-const LicenseKeysActivateRequestConditionsMap = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<LicenseKeysActivateRequestConditionsMap>;
-
 export type LicenseKeysActivateRequestMetaValue = string | number | number | boolean;
-const LicenseKeysActivateRequestMetaValue =
-  S.Unknown as any as S.Schema<LicenseKeysActivateRequestMetaValue>;
-
 /** Key-value object allowing you to store additional information about the activation The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type LicenseKeysActivateRequestMetaMap = {
   [key: string]: LicenseKeysActivateRequestMetaValue | undefined;
 };
-const LicenseKeysActivateRequestMetaMap = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<LicenseKeysActivateRequestMetaMap>;
-
 export interface LicenseKeysActivateRequest {
   key: string;
   organization_id: string;
@@ -10334,54 +8414,23 @@ export interface LicenseKeysActivateRequest {
   /** Key-value object allowing you to store additional information about the activation The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
   meta?: LicenseKeysActivateRequestMetaMap;
 }
-const LicenseKeysActivateRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<LicenseKeysActivateRequest>;
-
 export interface LicenseKeysDeactivateRequest {
   key: string;
   organization_id: string;
   activation_id: string;
 }
-const LicenseKeysDeactivateRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<LicenseKeysDeactivateRequest>;
-
 export interface LicenseKeysDeactivateResponse {}
-const LicenseKeysDeactivateResponse =
-  BenefitsDeleteResponse as any as S.Schema<LicenseKeysDeactivateResponse>;
-
 export interface LicenseKeysGetRequest {
   id: string;
 }
-const LicenseKeysGetRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<LicenseKeysGetRequest>;
-
 export interface LicenseKeysGetActivationRequest {
   id: string;
   activation_id: string;
 }
-const LicenseKeysGetActivationRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<LicenseKeysGetActivationRequest>;
-
 export type LicenseKeyActivationReadMetaValue = string | number | number | boolean;
-const LicenseKeyActivationReadMetaValue =
-  S.Unknown as any as S.Schema<LicenseKeyActivationReadMetaValue>;
-
 export type LicenseKeyActivationReadMetaMap = {
   [key: string]: LicenseKeyActivationReadMetaValue | undefined;
 };
-const LicenseKeyActivationReadMetaMap = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<LicenseKeyActivationReadMetaMap>;
-
 export interface LicenseKeyActivationRead {
   id: string;
   license_key_id: string;
@@ -10391,30 +8440,17 @@ export interface LicenseKeyActivationRead {
   modified_at: string | null;
   license_key: LicenseKeyRead;
 }
-const LicenseKeyActivationRead = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<LicenseKeyActivationRead>;
-
 export type LicenseKeysListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type LicenseKeysListRequestOrganizationId =
   | string
   | LicenseKeysListRequestOrganizationIdCase1List;
-const LicenseKeysListRequestOrganizationId =
-  S.Unknown as any as S.Schema<LicenseKeysListRequestOrganizationId>;
-
 export type LicenseKeysListRequestBenefitIdCase1List = Array<string>;
 /** Filter by benefit ID. */
 export type LicenseKeysListRequestBenefitId = string | LicenseKeysListRequestBenefitIdCase1List;
-const LicenseKeysListRequestBenefitId =
-  S.Unknown as any as S.Schema<LicenseKeysListRequestBenefitId>;
-
 export type LicenseKeysListRequestStatusCase1List = Array<LicenseKeyStatus | (string & {})>;
 /** Filter by license key status. */
 export type LicenseKeysListRequestStatus = LicenseKeyStatus | LicenseKeysListRequestStatusCase1List;
-const LicenseKeysListRequestStatus = S.Unknown as any as S.Schema<LicenseKeysListRequestStatus>;
-
 export interface LicenseKeysListRequest {
   /** Filter by organization ID. */
   organization_id?: LicenseKeysListRequestOrganizationId;
@@ -10427,19 +8463,9 @@ export interface LicenseKeysListRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const LicenseKeysListRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<LicenseKeysListRequest>;
-
 export interface LicenseKeysRotateRequest {
   id: string;
 }
-const LicenseKeysRotateRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<LicenseKeysRotateRequest>;
-
 export interface LicenseKeysUpdateRequest {
   id: string;
   status?: LicenseKeyStatus | (string & {}) | null;
@@ -10448,24 +8474,11 @@ export interface LicenseKeysUpdateRequest {
   limit_usage?: number | null;
   expires_at?: string | null;
 }
-const LicenseKeysUpdateRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<LicenseKeysUpdateRequest>;
-
 export type LicenseKeysValidateRequestConditionsValue = string | number | number | boolean;
-const LicenseKeysValidateRequestConditionsValue =
-  S.Unknown as any as S.Schema<LicenseKeysValidateRequestConditionsValue>;
-
 /** Key-value object allowing you to set conditions that must match when validating the license key. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type LicenseKeysValidateRequestConditionsMap = {
   [key: string]: LicenseKeysValidateRequestConditionsValue | undefined;
 };
-const LicenseKeysValidateRequestConditionsMap = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<LicenseKeysValidateRequestConditionsMap>;
-
 export interface LicenseKeysValidateRequest {
   key: string;
   organization_id: string;
@@ -10476,31 +8489,16 @@ export interface LicenseKeysValidateRequest {
   /** Key-value object allowing you to set conditions that must match when validating the license key. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
   conditions?: LicenseKeysValidateRequestConditionsMap;
 }
-const LicenseKeysValidateRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<LicenseKeysValidateRequest>;
-
 export type MetersCreateRequestMetadataValue = string | number | number | boolean;
-const MetersCreateRequestMetadataValue =
-  S.Unknown as any as S.Schema<MetersCreateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type MetersCreateRequestMetadataMap = {
   [key: string]: MetersCreateRequestMetadataValue | undefined;
 };
-const MetersCreateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<MetersCreateRequestMetadataMap>;
-
 /** The aggregation to apply on the filtered events to calculate the meter. */
 export type MetersCreateRequestAggregation =
   | CountAggregation
   | PropertyAggregation
   | UniqueAggregation;
-const MetersCreateRequestAggregation = S.Unknown as any as S.Schema<MetersCreateRequestAggregation>;
-
 export interface MetersCreateRequest {
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
   metadata?: MetersCreateRequestMetadataMap;
@@ -10519,25 +8517,15 @@ export interface MetersCreateRequest {
   /** The ID of the organization owning the meter. **Required unless you use an organization token.** */
   organization_id?: string | null;
 }
-const MetersCreateRequest = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<MetersCreateRequest>;
-
 export interface MetersGetRequest {
   /** The meter ID. */
   id: string;
 }
-const MetersGetRequest = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<MetersGetRequest>;
-
 export type MetersListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type MetersListRequestOrganizationId = string | MetersListRequestOrganizationIdCase1List;
-const MetersListRequestOrganizationId =
-  S.Unknown as any as S.Schema<MetersListRequestOrganizationId>;
-
 export type MeterSortProperty = "created_at" | "-created_at" | "name" | "-name";
 export type MetersListRequestSortingList = Array<MeterSortProperty | (string & {})>;
-const MetersListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<MetersListRequestSortingList>;
-
 export interface MetersListRequest {
   /** Filter by organization ID. */
   organization_id?: MetersListRequestOrganizationId;
@@ -10554,23 +8542,12 @@ export interface MetersListRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const MetersListRequest = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<MetersListRequest>;
-
 export type ListResourceMeterItemsList = Array<Meter>;
-const ListResourceMeterItemsList = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<ListResourceMeterItemsList>;
-
 export interface ListResourceMeter {
   items: ListResourceMeterItemsList;
   pagination: Pagination;
 }
-const ListResourceMeter = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<ListResourceMeter>;
-
 export type TimeInterval = "year" | "month" | "week" | "day" | "hour";
-const TimeInterval = S.String;
-
 /** Timezone to use for the timestamps. Default is UTC. */
 export type MetersQuantitiesRequestTimezone =
   | "Africa/Abidjan"
@@ -11171,25 +9148,15 @@ export type MetersQuantitiesRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const MetersQuantitiesRequestTimezone = S.String;
-
 export type MetersQuantitiesRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type MetersQuantitiesRequestCustomerId = string | MetersQuantitiesRequestCustomerIdCase1List;
-const MetersQuantitiesRequestCustomerId =
-  S.Unknown as any as S.Schema<MetersQuantitiesRequestCustomerId>;
-
 export type MetersQuantitiesRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by external customer ID. */
 export type MetersQuantitiesRequestExternalCustomerId =
   | string
   | MetersQuantitiesRequestExternalCustomerIdCase1List;
-const MetersQuantitiesRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<MetersQuantitiesRequestExternalCustomerId>;
-
 export type AggregationFunction = "count" | "sum" | "max" | "min" | "avg" | "unique";
-const AggregationFunction = S.String;
-
 export interface MetersQuantitiesRequest {
   /** The meter ID. */
   id: string;
@@ -11210,51 +9177,27 @@ export interface MetersQuantitiesRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const MetersQuantitiesRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<MetersQuantitiesRequest>;
-
 export interface MeterQuantity {
   /** The timestamp for the current period. */
   timestamp: string;
   /** The quantity for the current period. */
   quantity: number;
 }
-const MeterQuantity = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<MeterQuantity>;
-
 export type MeterQuantitiesQuantitiesList = Array<MeterQuantity>;
-const MeterQuantitiesQuantitiesList = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<MeterQuantitiesQuantitiesList>;
-
 export interface MeterQuantities {
   quantities: MeterQuantitiesQuantitiesList;
   /** The total quantity for the period. */
   total: number;
 }
-const MeterQuantities = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<MeterQuantities>;
-
 export type MetersUpdateRequestMetadataValue = string | number | number | boolean;
-const MetersUpdateRequestMetadataValue =
-  S.Unknown as any as S.Schema<MetersUpdateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type MetersUpdateRequestMetadataMap = {
   [key: string]: MetersUpdateRequestMetadataValue | undefined;
 };
-const MetersUpdateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<MetersUpdateRequestMetadataMap>;
-
 export type MetersUpdateRequestAggregation =
   | CountAggregation
   | PropertyAggregation
   | UniqueAggregation;
-const MetersUpdateRequestAggregation = S.Unknown as any as S.Schema<MetersUpdateRequestAggregation>;
-
 export interface MetersUpdateRequest {
   /** The meter ID. */
   id: string;
@@ -11275,13 +9218,8 @@ export interface MetersUpdateRequest {
   /** Whether the meter is archived. Archived meters are no longer used for billing. */
   is_archived?: boolean | null;
 }
-const MetersUpdateRequest = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<MetersUpdateRequest>;
-
 /** List of metric slugs to display in this dashboard. */
 export type MetricsCreateDashboardRequestMetricsList = Array<string>;
-const MetricsCreateDashboardRequestMetricsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsCreateDashboardRequestMetricsList>;
-
 export interface MetricsCreateDashboardRequest {
   /** Display name for the dashboard. */
   name: string;
@@ -11290,16 +9228,8 @@ export interface MetricsCreateDashboardRequest {
   /** The ID of the organization owning this dashboard. **Required unless you use an organization token.** */
   organization_id?: string | null;
 }
-const MetricsCreateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<MetricsCreateDashboardRequest>;
-
 /** List of metric slugs displayed in this dashboard. */
 export type MetricDashboardSchemaMetricsList = Array<string>;
-const MetricDashboardSchemaMetricsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricDashboardSchemaMetricsList>;
-
 /** A user-defined metrics dashboard. */
 export interface MetricDashboardSchema {
   /** Creation timestamp of the object. */
@@ -11315,24 +9245,11 @@ export interface MetricDashboardSchema {
   /** The ID of the organization owning this dashboard. */
   organization_id: string;
 }
-const MetricDashboardSchema = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<MetricDashboardSchema>;
-
 export interface MetricsDeleteDashboardRequest {
   /** The metric dashboard ID. */
   id: string;
 }
-const MetricsDeleteDashboardRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<MetricsDeleteDashboardRequest>;
-
 export interface MetricsDeleteDashboardResponse {}
-const MetricsDeleteDashboardResponse =
-  BenefitsDeleteResponse as any as S.Schema<MetricsDeleteDashboardResponse>;
-
 /** Timezone to use for the timestamps. Default is UTC. */
 export type MetricsExportRequestTimezone =
   | "Africa/Abidjan"
@@ -11933,38 +9850,23 @@ export type MetricsExportRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const MetricsExportRequestTimezone = S.String;
-
 export type MetricsExportRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type MetricsExportRequestOrganizationId =
   | string
   | MetricsExportRequestOrganizationIdCase1List;
-const MetricsExportRequestOrganizationId =
-  S.Unknown as any as S.Schema<MetricsExportRequestOrganizationId>;
-
 export type MetricsExportRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type MetricsExportRequestProductId = string | MetricsExportRequestProductIdCase1List;
-const MetricsExportRequestProductId = S.Unknown as any as S.Schema<MetricsExportRequestProductId>;
-
 export type MetricsExportRequestBillingTypeCase1List = Array<ProductBillingType | (string & {})>;
 /** Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. */
 export type MetricsExportRequestBillingType =
   | ProductBillingType
   | MetricsExportRequestBillingTypeCase1List;
-const MetricsExportRequestBillingType =
-  S.Unknown as any as S.Schema<MetricsExportRequestBillingType>;
-
 export type MetricsExportRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type MetricsExportRequestCustomerId = string | MetricsExportRequestCustomerIdCase1List;
-const MetricsExportRequestCustomerId = S.Unknown as any as S.Schema<MetricsExportRequestCustomerId>;
-
 export type MetricsExportRequestMetricsList = Array<string>;
-const MetricsExportRequestMetricsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsExportRequestMetricsList>;
-
 export interface MetricsExportRequest {
   /** Start date. */
   start_date: string;
@@ -11985,14 +9887,7 @@ export interface MetricsExportRequest {
   /** List of metric slugs to include in the export. If not provided, all metrics are exported. */
   metrics?: MetricsExportRequestMetricsList;
 }
-const MetricsExportRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<MetricsExportRequest>;
-
 export interface MetricsExportResponse {}
-const MetricsExportResponse = BenefitsDeleteResponse as any as S.Schema<MetricsExportResponse>;
-
 /** Timezone to use for the timestamps. Default is UTC. */
 export type MetricsGetRequestTimezone =
   | "Africa/Abidjan"
@@ -12593,35 +10488,21 @@ export type MetricsGetRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const MetricsGetRequestTimezone = S.String;
-
 export type MetricsGetRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type MetricsGetRequestOrganizationId = string | MetricsGetRequestOrganizationIdCase1List;
-const MetricsGetRequestOrganizationId =
-  S.Unknown as any as S.Schema<MetricsGetRequestOrganizationId>;
-
 export type MetricsGetRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type MetricsGetRequestProductId = string | MetricsGetRequestProductIdCase1List;
-const MetricsGetRequestProductId = S.Unknown as any as S.Schema<MetricsGetRequestProductId>;
-
 export type MetricsGetRequestBillingTypeCase1List = Array<ProductBillingType | (string & {})>;
 /** Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. */
 export type MetricsGetRequestBillingType =
   | ProductBillingType
   | MetricsGetRequestBillingTypeCase1List;
-const MetricsGetRequestBillingType = S.Unknown as any as S.Schema<MetricsGetRequestBillingType>;
-
 export type MetricsGetRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type MetricsGetRequestCustomerId = string | MetricsGetRequestCustomerIdCase1List;
-const MetricsGetRequestCustomerId = S.Unknown as any as S.Schema<MetricsGetRequestCustomerId>;
-
 export type MetricsGetRequestMetricsList = Array<string>;
-const MetricsGetRequestMetricsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsGetRequestMetricsList>;
-
 export interface MetricsGetRequest {
   /** Start date. */
   start_date: string;
@@ -12642,206 +10523,61 @@ export interface MetricsGetRequest {
   /** List of metric slugs to focus on. When provided, only the queries needed for these metrics will be executed, improving performance. If not provided, all metrics are returned. */
   metrics?: MetricsGetRequestMetricsList;
 }
-const MetricsGetRequest = /*@__PURE__*/ __L.at(__c42, 4) as any as S.Schema<MetricsGetRequest>;
-
 export type MetricPeriodActiveSubscriptions = number | number;
-const MetricPeriodActiveSubscriptions =
-  S.Unknown as any as S.Schema<MetricPeriodActiveSubscriptions>;
-
 export type MetricPeriodCommittedSubscriptions = number | number;
-const MetricPeriodCommittedSubscriptions =
-  S.Unknown as any as S.Schema<MetricPeriodCommittedSubscriptions>;
-
 export type MetricPeriodMonthlyRecurringRevenue = number | number;
-const MetricPeriodMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodMonthlyRecurringRevenue>;
-
 export type MetricPeriodTrialMonthlyRecurringRevenue = number | number;
-const MetricPeriodTrialMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodTrialMonthlyRecurringRevenue>;
-
 export type MetricPeriodCommittedMonthlyRecurringRevenue = number | number;
-const MetricPeriodCommittedMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodCommittedMonthlyRecurringRevenue>;
-
 export type MetricPeriodTrialCommittedMonthlyRecurringRevenue = number | number;
-const MetricPeriodTrialCommittedMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodTrialCommittedMonthlyRecurringRevenue>;
-
 export type MetricPeriodAverageRevenuePerUser = number | number;
-const MetricPeriodAverageRevenuePerUser =
-  S.Unknown as any as S.Schema<MetricPeriodAverageRevenuePerUser>;
-
 export type MetricPeriodCheckouts = number | number;
-const MetricPeriodCheckouts = S.Unknown as any as S.Schema<MetricPeriodCheckouts>;
-
 export type MetricPeriodSucceededCheckouts = number | number;
-const MetricPeriodSucceededCheckouts = S.Unknown as any as S.Schema<MetricPeriodSucceededCheckouts>;
-
 export type MetricPeriodChurnedSubscriptions = number | number;
-const MetricPeriodChurnedSubscriptions =
-  S.Unknown as any as S.Schema<MetricPeriodChurnedSubscriptions>;
-
 export type MetricPeriodChurnRate = number | number;
-const MetricPeriodChurnRate = S.Unknown as any as S.Schema<MetricPeriodChurnRate>;
-
 export type MetricPeriodSeatsTotal = number | number;
-const MetricPeriodSeatsTotal = S.Unknown as any as S.Schema<MetricPeriodSeatsTotal>;
-
 export type MetricPeriodSeatsClaimed = number | number;
-const MetricPeriodSeatsClaimed = S.Unknown as any as S.Schema<MetricPeriodSeatsClaimed>;
-
 export type MetricPeriodSeatsPending = number | number;
-const MetricPeriodSeatsPending = S.Unknown as any as S.Schema<MetricPeriodSeatsPending>;
-
 export type MetricPeriodSeatCustomers = number | number;
-const MetricPeriodSeatCustomers = S.Unknown as any as S.Schema<MetricPeriodSeatCustomers>;
-
 export type MetricPeriodNewSeatCustomers = number | number;
-const MetricPeriodNewSeatCustomers = S.Unknown as any as S.Schema<MetricPeriodNewSeatCustomers>;
-
 export type MetricPeriodChurnedSeatCustomers = number | number;
-const MetricPeriodChurnedSeatCustomers =
-  S.Unknown as any as S.Schema<MetricPeriodChurnedSeatCustomers>;
-
 export type MetricPeriodOrders = number | number;
-const MetricPeriodOrders = S.Unknown as any as S.Schema<MetricPeriodOrders>;
-
 export type MetricPeriodRevenue = number | number;
-const MetricPeriodRevenue = S.Unknown as any as S.Schema<MetricPeriodRevenue>;
-
 export type MetricPeriodNetRevenue = number | number;
-const MetricPeriodNetRevenue = S.Unknown as any as S.Schema<MetricPeriodNetRevenue>;
-
 export type MetricPeriodCumulativeRevenue = number | number;
-const MetricPeriodCumulativeRevenue = S.Unknown as any as S.Schema<MetricPeriodCumulativeRevenue>;
-
 export type MetricPeriodNetCumulativeRevenue = number | number;
-const MetricPeriodNetCumulativeRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodNetCumulativeRevenue>;
-
 export type MetricPeriodCosts = number | number;
-const MetricPeriodCosts = S.Unknown as any as S.Schema<MetricPeriodCosts>;
-
 export type MetricPeriodCumulativeCosts = number | number;
-const MetricPeriodCumulativeCosts = S.Unknown as any as S.Schema<MetricPeriodCumulativeCosts>;
-
 export type MetricPeriodAverageOrderValue = number | number;
-const MetricPeriodAverageOrderValue = S.Unknown as any as S.Schema<MetricPeriodAverageOrderValue>;
-
 export type MetricPeriodNetAverageOrderValue = number | number;
-const MetricPeriodNetAverageOrderValue =
-  S.Unknown as any as S.Schema<MetricPeriodNetAverageOrderValue>;
-
 export type MetricPeriodCostPerUser = number | number;
-const MetricPeriodCostPerUser = S.Unknown as any as S.Schema<MetricPeriodCostPerUser>;
-
 export type MetricPeriodActiveUserByEvent = number | number;
-const MetricPeriodActiveUserByEvent = S.Unknown as any as S.Schema<MetricPeriodActiveUserByEvent>;
-
 export type MetricPeriodOneTimeProducts = number | number;
-const MetricPeriodOneTimeProducts = S.Unknown as any as S.Schema<MetricPeriodOneTimeProducts>;
-
 export type MetricPeriodOneTimeProductsRevenue = number | number;
-const MetricPeriodOneTimeProductsRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodOneTimeProductsRevenue>;
-
 export type MetricPeriodOneTimeProductsNetRevenue = number | number;
-const MetricPeriodOneTimeProductsNetRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodOneTimeProductsNetRevenue>;
-
 export type MetricPeriodNewSubscriptions = number | number;
-const MetricPeriodNewSubscriptions = S.Unknown as any as S.Schema<MetricPeriodNewSubscriptions>;
-
 export type MetricPeriodNewSubscriptionsRevenue = number | number;
-const MetricPeriodNewSubscriptionsRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodNewSubscriptionsRevenue>;
-
 export type MetricPeriodNewSubscriptionsNetRevenue = number | number;
-const MetricPeriodNewSubscriptionsNetRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodNewSubscriptionsNetRevenue>;
-
 export type MetricPeriodRenewedSubscriptions = number | number;
-const MetricPeriodRenewedSubscriptions =
-  S.Unknown as any as S.Schema<MetricPeriodRenewedSubscriptions>;
-
 export type MetricPeriodRenewedSubscriptionsRevenue = number | number;
-const MetricPeriodRenewedSubscriptionsRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodRenewedSubscriptionsRevenue>;
-
 export type MetricPeriodRenewedSubscriptionsNetRevenue = number | number;
-const MetricPeriodRenewedSubscriptionsNetRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodRenewedSubscriptionsNetRevenue>;
-
 export type MetricPeriodCanceledSubscriptions = number | number;
-const MetricPeriodCanceledSubscriptions =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptions>;
-
 export type MetricPeriodCanceledSubscriptionsCustomerService = number | number;
-const MetricPeriodCanceledSubscriptionsCustomerService =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsCustomerService>;
-
 export type MetricPeriodCanceledSubscriptionsLowQuality = number | number;
-const MetricPeriodCanceledSubscriptionsLowQuality =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsLowQuality>;
-
 export type MetricPeriodCanceledSubscriptionsMissingFeatures = number | number;
-const MetricPeriodCanceledSubscriptionsMissingFeatures =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsMissingFeatures>;
-
 export type MetricPeriodCanceledSubscriptionsSwitchedService = number | number;
-const MetricPeriodCanceledSubscriptionsSwitchedService =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsSwitchedService>;
-
 export type MetricPeriodCanceledSubscriptionsTooComplex = number | number;
-const MetricPeriodCanceledSubscriptionsTooComplex =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsTooComplex>;
-
 export type MetricPeriodCanceledSubscriptionsTooExpensive = number | number;
-const MetricPeriodCanceledSubscriptionsTooExpensive =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsTooExpensive>;
-
 export type MetricPeriodCanceledSubscriptionsUnused = number | number;
-const MetricPeriodCanceledSubscriptionsUnused =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsUnused>;
-
 export type MetricPeriodCanceledSubscriptionsOther = number | number;
-const MetricPeriodCanceledSubscriptionsOther =
-  S.Unknown as any as S.Schema<MetricPeriodCanceledSubscriptionsOther>;
-
 export type MetricPeriodAnnualRecurringRevenue = number | number;
-const MetricPeriodAnnualRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodAnnualRecurringRevenue>;
-
 export type MetricPeriodCommittedAnnualRecurringRevenue = number | number;
-const MetricPeriodCommittedAnnualRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricPeriodCommittedAnnualRecurringRevenue>;
-
 export type MetricPeriodCheckoutsConversion = number | number;
-const MetricPeriodCheckoutsConversion =
-  S.Unknown as any as S.Schema<MetricPeriodCheckoutsConversion>;
-
 export type MetricPeriodLtv = number | number;
-const MetricPeriodLtv = S.Unknown as any as S.Schema<MetricPeriodLtv>;
-
 export type MetricPeriodGrossMargin = number | number;
-const MetricPeriodGrossMargin = S.Unknown as any as S.Schema<MetricPeriodGrossMargin>;
-
 export type MetricPeriodGrossMarginPercentage = number | number;
-const MetricPeriodGrossMarginPercentage =
-  S.Unknown as any as S.Schema<MetricPeriodGrossMarginPercentage>;
-
 export type MetricPeriodCashflow = number | number;
-const MetricPeriodCashflow = S.Unknown as any as S.Schema<MetricPeriodCashflow>;
-
 export type MetricPeriodAverageSeatsPerCustomer = number | number;
-const MetricPeriodAverageSeatsPerCustomer =
-  S.Unknown as any as S.Schema<MetricPeriodAverageSeatsPerCustomer>;
-
 export type MetricPeriodSeatUtilizationRate = number | number;
-const MetricPeriodSeatUtilizationRate =
-  S.Unknown as any as S.Schema<MetricPeriodSeatUtilizationRate>;
-
 export interface MetricPeriod {
   /** Timestamp of this period data. */
   timestamp: string;
@@ -12901,214 +10637,63 @@ export interface MetricPeriod {
   average_seats_per_customer?: MetricPeriodAverageSeatsPerCustomer | null;
   seat_utilization_rate?: MetricPeriodSeatUtilizationRate | null;
 }
-const MetricPeriod = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<MetricPeriod>;
-
 /** List of data for each timestamp. */
 export type MetricsResponsePeriodsList = Array<MetricPeriod>;
-const MetricsResponsePeriodsList = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<MetricsResponsePeriodsList>;
-
 export type MetricsTotalsActiveSubscriptions = number | number;
-const MetricsTotalsActiveSubscriptions =
-  S.Unknown as any as S.Schema<MetricsTotalsActiveSubscriptions>;
-
 export type MetricsTotalsCommittedSubscriptions = number | number;
-const MetricsTotalsCommittedSubscriptions =
-  S.Unknown as any as S.Schema<MetricsTotalsCommittedSubscriptions>;
-
 export type MetricsTotalsMonthlyRecurringRevenue = number | number;
-const MetricsTotalsMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsMonthlyRecurringRevenue>;
-
 export type MetricsTotalsTrialMonthlyRecurringRevenue = number | number;
-const MetricsTotalsTrialMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsTrialMonthlyRecurringRevenue>;
-
 export type MetricsTotalsCommittedMonthlyRecurringRevenue = number | number;
-const MetricsTotalsCommittedMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsCommittedMonthlyRecurringRevenue>;
-
 export type MetricsTotalsTrialCommittedMonthlyRecurringRevenue = number | number;
-const MetricsTotalsTrialCommittedMonthlyRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsTrialCommittedMonthlyRecurringRevenue>;
-
 export type MetricsTotalsAverageRevenuePerUser = number | number;
-const MetricsTotalsAverageRevenuePerUser =
-  S.Unknown as any as S.Schema<MetricsTotalsAverageRevenuePerUser>;
-
 export type MetricsTotalsCheckouts = number | number;
-const MetricsTotalsCheckouts = S.Unknown as any as S.Schema<MetricsTotalsCheckouts>;
-
 export type MetricsTotalsSucceededCheckouts = number | number;
-const MetricsTotalsSucceededCheckouts =
-  S.Unknown as any as S.Schema<MetricsTotalsSucceededCheckouts>;
-
 export type MetricsTotalsChurnedSubscriptions = number | number;
-const MetricsTotalsChurnedSubscriptions =
-  S.Unknown as any as S.Schema<MetricsTotalsChurnedSubscriptions>;
-
 export type MetricsTotalsChurnRate = number | number;
-const MetricsTotalsChurnRate = S.Unknown as any as S.Schema<MetricsTotalsChurnRate>;
-
 export type MetricsTotalsSeatsTotal = number | number;
-const MetricsTotalsSeatsTotal = S.Unknown as any as S.Schema<MetricsTotalsSeatsTotal>;
-
 export type MetricsTotalsSeatsClaimed = number | number;
-const MetricsTotalsSeatsClaimed = S.Unknown as any as S.Schema<MetricsTotalsSeatsClaimed>;
-
 export type MetricsTotalsSeatsPending = number | number;
-const MetricsTotalsSeatsPending = S.Unknown as any as S.Schema<MetricsTotalsSeatsPending>;
-
 export type MetricsTotalsSeatCustomers = number | number;
-const MetricsTotalsSeatCustomers = S.Unknown as any as S.Schema<MetricsTotalsSeatCustomers>;
-
 export type MetricsTotalsNewSeatCustomers = number | number;
-const MetricsTotalsNewSeatCustomers = S.Unknown as any as S.Schema<MetricsTotalsNewSeatCustomers>;
-
 export type MetricsTotalsChurnedSeatCustomers = number | number;
-const MetricsTotalsChurnedSeatCustomers =
-  S.Unknown as any as S.Schema<MetricsTotalsChurnedSeatCustomers>;
-
 export type MetricsTotalsOrders = number | number;
-const MetricsTotalsOrders = S.Unknown as any as S.Schema<MetricsTotalsOrders>;
-
 export type MetricsTotalsRevenue = number | number;
-const MetricsTotalsRevenue = S.Unknown as any as S.Schema<MetricsTotalsRevenue>;
-
 export type MetricsTotalsNetRevenue = number | number;
-const MetricsTotalsNetRevenue = S.Unknown as any as S.Schema<MetricsTotalsNetRevenue>;
-
 export type MetricsTotalsCumulativeRevenue = number | number;
-const MetricsTotalsCumulativeRevenue = S.Unknown as any as S.Schema<MetricsTotalsCumulativeRevenue>;
-
 export type MetricsTotalsNetCumulativeRevenue = number | number;
-const MetricsTotalsNetCumulativeRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsNetCumulativeRevenue>;
-
 export type MetricsTotalsCosts = number | number;
-const MetricsTotalsCosts = S.Unknown as any as S.Schema<MetricsTotalsCosts>;
-
 export type MetricsTotalsCumulativeCosts = number | number;
-const MetricsTotalsCumulativeCosts = S.Unknown as any as S.Schema<MetricsTotalsCumulativeCosts>;
-
 export type MetricsTotalsAverageOrderValue = number | number;
-const MetricsTotalsAverageOrderValue = S.Unknown as any as S.Schema<MetricsTotalsAverageOrderValue>;
-
 export type MetricsTotalsNetAverageOrderValue = number | number;
-const MetricsTotalsNetAverageOrderValue =
-  S.Unknown as any as S.Schema<MetricsTotalsNetAverageOrderValue>;
-
 export type MetricsTotalsCostPerUser = number | number;
-const MetricsTotalsCostPerUser = S.Unknown as any as S.Schema<MetricsTotalsCostPerUser>;
-
 export type MetricsTotalsActiveUserByEvent = number | number;
-const MetricsTotalsActiveUserByEvent = S.Unknown as any as S.Schema<MetricsTotalsActiveUserByEvent>;
-
 export type MetricsTotalsOneTimeProducts = number | number;
-const MetricsTotalsOneTimeProducts = S.Unknown as any as S.Schema<MetricsTotalsOneTimeProducts>;
-
 export type MetricsTotalsOneTimeProductsRevenue = number | number;
-const MetricsTotalsOneTimeProductsRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsOneTimeProductsRevenue>;
-
 export type MetricsTotalsOneTimeProductsNetRevenue = number | number;
-const MetricsTotalsOneTimeProductsNetRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsOneTimeProductsNetRevenue>;
-
 export type MetricsTotalsNewSubscriptions = number | number;
-const MetricsTotalsNewSubscriptions = S.Unknown as any as S.Schema<MetricsTotalsNewSubscriptions>;
-
 export type MetricsTotalsNewSubscriptionsRevenue = number | number;
-const MetricsTotalsNewSubscriptionsRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsNewSubscriptionsRevenue>;
-
 export type MetricsTotalsNewSubscriptionsNetRevenue = number | number;
-const MetricsTotalsNewSubscriptionsNetRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsNewSubscriptionsNetRevenue>;
-
 export type MetricsTotalsRenewedSubscriptions = number | number;
-const MetricsTotalsRenewedSubscriptions =
-  S.Unknown as any as S.Schema<MetricsTotalsRenewedSubscriptions>;
-
 export type MetricsTotalsRenewedSubscriptionsRevenue = number | number;
-const MetricsTotalsRenewedSubscriptionsRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsRenewedSubscriptionsRevenue>;
-
 export type MetricsTotalsRenewedSubscriptionsNetRevenue = number | number;
-const MetricsTotalsRenewedSubscriptionsNetRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsRenewedSubscriptionsNetRevenue>;
-
 export type MetricsTotalsCanceledSubscriptions = number | number;
-const MetricsTotalsCanceledSubscriptions =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptions>;
-
 export type MetricsTotalsCanceledSubscriptionsCustomerService = number | number;
-const MetricsTotalsCanceledSubscriptionsCustomerService =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsCustomerService>;
-
 export type MetricsTotalsCanceledSubscriptionsLowQuality = number | number;
-const MetricsTotalsCanceledSubscriptionsLowQuality =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsLowQuality>;
-
 export type MetricsTotalsCanceledSubscriptionsMissingFeatures = number | number;
-const MetricsTotalsCanceledSubscriptionsMissingFeatures =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsMissingFeatures>;
-
 export type MetricsTotalsCanceledSubscriptionsSwitchedService = number | number;
-const MetricsTotalsCanceledSubscriptionsSwitchedService =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsSwitchedService>;
-
 export type MetricsTotalsCanceledSubscriptionsTooComplex = number | number;
-const MetricsTotalsCanceledSubscriptionsTooComplex =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsTooComplex>;
-
 export type MetricsTotalsCanceledSubscriptionsTooExpensive = number | number;
-const MetricsTotalsCanceledSubscriptionsTooExpensive =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsTooExpensive>;
-
 export type MetricsTotalsCanceledSubscriptionsUnused = number | number;
-const MetricsTotalsCanceledSubscriptionsUnused =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsUnused>;
-
 export type MetricsTotalsCanceledSubscriptionsOther = number | number;
-const MetricsTotalsCanceledSubscriptionsOther =
-  S.Unknown as any as S.Schema<MetricsTotalsCanceledSubscriptionsOther>;
-
 export type MetricsTotalsAnnualRecurringRevenue = number | number;
-const MetricsTotalsAnnualRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsAnnualRecurringRevenue>;
-
 export type MetricsTotalsCommittedAnnualRecurringRevenue = number | number;
-const MetricsTotalsCommittedAnnualRecurringRevenue =
-  S.Unknown as any as S.Schema<MetricsTotalsCommittedAnnualRecurringRevenue>;
-
 export type MetricsTotalsCheckoutsConversion = number | number;
-const MetricsTotalsCheckoutsConversion =
-  S.Unknown as any as S.Schema<MetricsTotalsCheckoutsConversion>;
-
 export type MetricsTotalsLtv = number | number;
-const MetricsTotalsLtv = S.Unknown as any as S.Schema<MetricsTotalsLtv>;
-
 export type MetricsTotalsGrossMargin = number | number;
-const MetricsTotalsGrossMargin = S.Unknown as any as S.Schema<MetricsTotalsGrossMargin>;
-
 export type MetricsTotalsGrossMarginPercentage = number | number;
-const MetricsTotalsGrossMarginPercentage =
-  S.Unknown as any as S.Schema<MetricsTotalsGrossMarginPercentage>;
-
 export type MetricsTotalsCashflow = number | number;
-const MetricsTotalsCashflow = S.Unknown as any as S.Schema<MetricsTotalsCashflow>;
-
 export type MetricsTotalsAverageSeatsPerCustomer = number | number;
-const MetricsTotalsAverageSeatsPerCustomer =
-  S.Unknown as any as S.Schema<MetricsTotalsAverageSeatsPerCustomer>;
-
 export type MetricsTotalsSeatUtilizationRate = number | number;
-const MetricsTotalsSeatUtilizationRate =
-  S.Unknown as any as S.Schema<MetricsTotalsSeatUtilizationRate>;
-
 export interface MetricsTotals {
   active_subscriptions?: MetricsTotalsActiveSubscriptions | null;
   committed_subscriptions?: MetricsTotalsCommittedSubscriptions | null;
@@ -13166,11 +10751,7 @@ export interface MetricsTotals {
   average_seats_per_customer?: MetricsTotalsAverageSeatsPerCustomer | null;
   seat_utilization_rate?: MetricsTotalsSeatUtilizationRate | null;
 }
-const MetricsTotals = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<MetricsTotals>;
-
 export type MetricType = "scalar" | "currency" | "currency_sub_cent" | "percentage";
-const MetricType = S.String;
-
 /** Information about a metric. */
 export interface Metric {
   /** Unique identifier for the metric. */
@@ -13180,8 +10761,6 @@ export interface Metric {
   /** Type of the metric, useful to know the unit or format of the value. */
   type: MetricType;
 }
-const Metric = /*@__PURE__*/ __L.at(__c43, 0) as any as S.Schema<Metric>;
-
 export interface Metrics {
   active_subscriptions?: Metric | null;
   committed_subscriptions?: Metric | null;
@@ -13239,8 +10818,6 @@ export interface Metrics {
   average_seats_per_customer?: Metric | null;
   seat_utilization_rate?: Metric | null;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c43, 1) as any as S.Schema<Metrics>;
-
 /** Metrics response schema. */
 export interface MetricsResponse {
   /** List of data for each timestamp. */
@@ -13250,23 +10827,11 @@ export interface MetricsResponse {
   /** Information about the returned metrics. */
   metrics: Metrics;
 }
-const MetricsResponse = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<MetricsResponse>;
-
 export interface MetricsGetDashboardRequest {
   /** The metric dashboard ID. */
   id: string;
 }
-const MetricsGetDashboardRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<MetricsGetDashboardRequest>;
-
 export interface MetricsLimits2Request {}
-const MetricsLimits2Request = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<MetricsLimits2Request>;
-
 /** Date interval limit to get metrics for a given interval. */
 export interface MetricsIntervalLimit {
   /** Minimum number of days for this interval. */
@@ -13274,11 +10839,6 @@ export interface MetricsIntervalLimit {
   /** Maximum number of days for this interval. */
   max_days: number;
 }
-const MetricsIntervalLimit = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<MetricsIntervalLimit>;
-
 /** Date interval limits to get metrics for each interval. */
 export interface MetricsIntervalsLimits {
   /** Limits for the hour interval. */
@@ -13292,11 +10852,6 @@ export interface MetricsIntervalsLimits {
   /** Limits for the year interval. */
   year: MetricsIntervalLimit;
 }
-const MetricsIntervalsLimits = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<MetricsIntervalsLimits>;
-
 /** Date limits to get metrics. */
 export interface MetricsLimits {
   /** Minimum date to get metrics. */
@@ -13304,41 +10859,18 @@ export interface MetricsLimits {
   /** Limits for each interval. */
   intervals: MetricsIntervalsLimits;
 }
-const MetricsLimits = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<MetricsLimits>;
-
 export type MetricsListDashboardsRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type MetricsListDashboardsRequestOrganizationId =
   | string
   | MetricsListDashboardsRequestOrganizationIdCase1List;
-const MetricsListDashboardsRequestOrganizationId =
-  S.Unknown as any as S.Schema<MetricsListDashboardsRequestOrganizationId>;
-
 export interface MetricsListDashboardsRequest {
   /** Filter by organization ID. */
   organization_id?: MetricsListDashboardsRequestOrganizationId;
 }
-const MetricsListDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<MetricsListDashboardsRequest>;
-
 export type MetricsListDashboardsResponseBodyList = Array<MetricDashboardSchema>;
-const MetricsListDashboardsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<MetricsListDashboardsResponseBodyList>;
-
 export type MetricsListDashboardsResponse = MetricsListDashboardsResponseBodyList;
-const MetricsListDashboardsResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<MetricsListDashboardsResponse>;
-
 export type MetricsUpdateDashboardRequestMetricsList = Array<string>;
-const MetricsUpdateDashboardRequestMetricsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<MetricsUpdateDashboardRequestMetricsList>;
-
 export interface MetricsUpdateDashboardRequest {
   /** The metric dashboard ID. */
   id: string;
@@ -13347,17 +10879,7 @@ export interface MetricsUpdateDashboardRequest {
   /** List of metric slugs to display in this dashboard. */
   metrics?: MetricsUpdateDashboardRequestMetricsList | null;
 }
-const MetricsUpdateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<MetricsUpdateDashboardRequest>;
-
 export interface Oauth2AuthorizeRequest {}
-const Oauth2AuthorizeRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<Oauth2AuthorizeRequest>;
-
 export interface OAuth2ClientPublic {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -13472,40 +10994,20 @@ export interface AuthorizeResponseOrganization {
   scope_display_names?: AuthorizeResponseOrganizationScopeDisplayNamesMap;
 }
 export type Oauth2AuthorizeResponseBody = AuthorizeResponseUser | AuthorizeResponseOrganization;
-const Oauth2AuthorizeResponseBody = S.Unknown as any as S.Schema<Oauth2AuthorizeResponseBody>;
-
 export type Oauth2AuthorizeResponse = Oauth2AuthorizeResponseBody;
-const Oauth2AuthorizeResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<Oauth2AuthorizeResponse>;
-
 export type Oauth2ClientsOauth2CreateClientRequestRedirectUrisList = Array<string>;
-const Oauth2ClientsOauth2CreateClientRequestRedirectUrisList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestRedirectUrisList>;
-
 export type Oauth2ClientsOauth2CreateClientRequestTokenEndpointAuthMethod =
   | "client_secret_basic"
   | "client_secret_post"
   | "none";
-const Oauth2ClientsOauth2CreateClientRequestTokenEndpointAuthMethod = S.String;
-
 export type Oauth2ClientsOauth2CreateClientRequestGrantTypesItem =
   | "authorization_code"
   | "refresh_token";
 export type Oauth2ClientsOauth2CreateClientRequestGrantTypesList = Array<
   Oauth2ClientsOauth2CreateClientRequestGrantTypesItem | (string & {})
 >;
-const Oauth2ClientsOauth2CreateClientRequestGrantTypesList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestGrantTypesList>;
-
 export type Oauth2ClientsOauth2CreateClientRequestResponseTypesList = Array<string>;
-const Oauth2ClientsOauth2CreateClientRequestResponseTypesList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestResponseTypesList>;
-
 export type SubType = "user" | "organization";
-const SubType = S.String;
-
 export interface Oauth2ClientsOauth2CreateClientRequest {
   redirect_uris: Oauth2ClientsOauth2CreateClientRequestRedirectUrisList;
   token_endpoint_auth_method?:
@@ -13521,64 +11023,27 @@ export interface Oauth2ClientsOauth2CreateClientRequest {
   policy_uri?: string | null;
   default_sub_type?: SubType | (string & {});
 }
-const Oauth2ClientsOauth2CreateClientRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequest>;
-
 export type Oauth2ClientsOauth2CreateClientResponse = unknown;
-const Oauth2ClientsOauth2CreateClientResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<Oauth2ClientsOauth2CreateClientResponse>;
-
 export interface Oauth2ClientsOauth2DeleteClientRequest {
   client_id: string;
 }
-const Oauth2ClientsOauth2DeleteClientRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<Oauth2ClientsOauth2DeleteClientRequest>;
-
 export interface Oauth2ClientsOauth2DeleteClientResponse {}
-const Oauth2ClientsOauth2DeleteClientResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<Oauth2ClientsOauth2DeleteClientResponse>;
-
 export interface Oauth2ClientsOauth2GetClientRequest {
   client_id: string;
 }
-const Oauth2ClientsOauth2GetClientRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<Oauth2ClientsOauth2GetClientRequest>;
-
 export type Oauth2ClientsOauth2GetClientResponse = unknown;
-const Oauth2ClientsOauth2GetClientResponse =
-  Oauth2ClientsOauth2CreateClientResponse as any as S.Schema<Oauth2ClientsOauth2GetClientResponse>;
-
 export type Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList = Array<string>;
-const Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList>;
-
 export type Oauth2ClientsOauth2UpdateClientRequestTokenEndpointAuthMethod =
   | "client_secret_basic"
   | "client_secret_post"
   | "none";
-const Oauth2ClientsOauth2UpdateClientRequestTokenEndpointAuthMethod = S.String;
-
 export type Oauth2ClientsOauth2UpdateClientRequestGrantTypesItem =
   | "authorization_code"
   | "refresh_token";
 export type Oauth2ClientsOauth2UpdateClientRequestGrantTypesList = Array<
   Oauth2ClientsOauth2UpdateClientRequestGrantTypesItem | (string & {})
 >;
-const Oauth2ClientsOauth2UpdateClientRequestGrantTypesList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestGrantTypesList>;
-
 export type Oauth2ClientsOauth2UpdateClientRequestResponseTypesList = Array<string>;
-const Oauth2ClientsOauth2UpdateClientRequestResponseTypesList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestResponseTypesList>;
-
 export interface Oauth2ClientsOauth2UpdateClientRequest {
   client_id: string;
   redirect_uris: Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList;
@@ -13595,36 +11060,16 @@ export interface Oauth2ClientsOauth2UpdateClientRequest {
   policy_uri?: string | null;
   default_sub_type?: SubType | (string & {});
 }
-const Oauth2ClientsOauth2UpdateClientRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequest>;
-
 export type Oauth2ClientsOauth2UpdateClientResponse = unknown;
-const Oauth2ClientsOauth2UpdateClientResponse =
-  Oauth2ClientsOauth2CreateClientResponse as any as S.Schema<Oauth2ClientsOauth2UpdateClientResponse>;
-
 export type Oauth2IntrospectTokenRequestTokenTypeHint = "access_token" | "refresh_token";
-const Oauth2IntrospectTokenRequestTokenTypeHint = S.String;
-
 export interface Oauth2IntrospectTokenRequest {
   token: string;
   token_type_hint?: Oauth2IntrospectTokenRequestTokenTypeHint | (string & {}) | null;
   client_id: string;
   client_secret: string | Redacted.Redacted<string>;
 }
-const Oauth2IntrospectTokenRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<Oauth2IntrospectTokenRequest>;
-
 export type IntrospectTokenResponseTokenType = "access_token" | "refresh_token";
-const IntrospectTokenResponseTokenType = S.String;
-
 export type IntrospectTokenResponseOrganizationsList = Array<string>;
-const IntrospectTokenResponseOrganizationsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<IntrospectTokenResponseOrganizationsList>;
-
 export interface IntrospectTokenResponse {
   active: boolean;
   client_id: string;
@@ -13638,11 +11083,6 @@ export interface IntrospectTokenResponse {
   exp: number;
   iat: number;
 }
-const IntrospectTokenResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<IntrospectTokenResponse>;
-
 export interface AuthorizationCodeTokenRequest {
   grant_type: string;
   client_id: string;
@@ -13670,16 +11110,9 @@ export type Oauth2RequestTokenRequestBody =
   | AuthorizationCodeTokenRequest
   | RefreshTokenRequest
   | WebTokenRequest;
-const Oauth2RequestTokenRequestBody = S.Unknown as any as S.Schema<Oauth2RequestTokenRequestBody>;
-
 export interface Oauth2RequestTokenRequest {
   body: Oauth2RequestTokenRequestBody;
 }
-const Oauth2RequestTokenRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<Oauth2RequestTokenRequest>;
-
 export interface TokenResponse {
   access_token: string | Redacted.Redacted<string>;
   token_type: string;
@@ -13688,32 +11121,15 @@ export interface TokenResponse {
   scope: string;
   id_token?: string | null;
 }
-const TokenResponse = /*@__PURE__*/ __L.at(__c45, 6) as any as S.Schema<TokenResponse>;
-
 export type Oauth2RevokeTokenRequestTokenTypeHint = "access_token" | "refresh_token";
-const Oauth2RevokeTokenRequestTokenTypeHint = S.String;
-
 export interface Oauth2RevokeTokenRequest {
   token: string;
   token_type_hint?: Oauth2RevokeTokenRequestTokenTypeHint | (string & {}) | null;
   client_id: string;
   client_secret: string | Redacted.Redacted<string>;
 }
-const Oauth2RevokeTokenRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<Oauth2RevokeTokenRequest>;
-
 export type Oauth2RevokeTokenResponse = unknown;
-const Oauth2RevokeTokenResponse =
-  Oauth2ClientsOauth2CreateClientResponse as any as S.Schema<Oauth2RevokeTokenResponse>;
-
 export interface Oauth2UserinfoRequest {}
-const Oauth2UserinfoRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<Oauth2UserinfoRequest>;
-
 export interface UserInfoUser {
   sub: string;
   name?: string | null;
@@ -13725,40 +11141,17 @@ export interface UserInfoOrganization {
   name?: string | null;
 }
 export type Oauth2UserinfoResponseBody = UserInfoUser | UserInfoOrganization;
-const Oauth2UserinfoResponseBody = S.Unknown as any as S.Schema<Oauth2UserinfoResponseBody>;
-
 export type Oauth2UserinfoResponse = Oauth2UserinfoResponseBody;
-const Oauth2UserinfoResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<Oauth2UserinfoResponse>;
-
 export type OrdersCreateRequestCustomFieldDataValue = string | number | boolean;
-const OrdersCreateRequestCustomFieldDataValue =
-  S.Unknown as any as S.Schema<OrdersCreateRequestCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type OrdersCreateRequestCustomFieldDataMap = {
   [key: string]: OrdersCreateRequestCustomFieldDataValue | null | undefined;
 };
-const OrdersCreateRequestCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<OrdersCreateRequestCustomFieldDataMap>;
-
 export type OrdersCreateRequestMetadataValue = string | number | number | boolean;
-const OrdersCreateRequestMetadataValue =
-  S.Unknown as any as S.Schema<OrdersCreateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type OrdersCreateRequestMetadataMap = {
   [key: string]: OrdersCreateRequestMetadataValue | undefined;
 };
-const OrdersCreateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<OrdersCreateRequestMetadataMap>;
-
 export interface OrdersCreateRequest {
   /** Key-value object storing custom field values. */
   custom_field_data?: OrdersCreateRequestCustomFieldDataMap;
@@ -13779,20 +11172,11 @@ export interface OrdersCreateRequest {
   /** A custom description for the order's line item, shown on the invoice and receipt (e.g. `5,000 tokens`). Defaults to the product name. */
   description?: string | null;
 }
-const OrdersCreateRequest = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<OrdersCreateRequest>;
-
 export type OrderCustomFieldDataValue = string | number | boolean;
-const OrderCustomFieldDataValue = S.Unknown as any as S.Schema<OrderCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type OrderCustomFieldDataMap = {
   [key: string]: OrderCustomFieldDataValue | null | undefined;
 };
-const OrderCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<OrderCustomFieldDataMap>;
-
 export type OrderCustomerTaxIdList = Array<unknown>;
 export interface OrderCustomer {
   /** The ID of the customer. */
@@ -13827,16 +11211,12 @@ export interface OrderCustomer {
   first_user_event_at: string | null;
   avatar_url: string | null;
 }
-const OrderCustomer = LicenseKeyCustomer as any as S.Schema<OrderCustomer>;
-
 export type OrderProduct = DiscountProduct;
 export type OrderDiscount =
   | DiscountFixedOnceForeverDurationBase
   | DiscountFixedRepeatDurationBase
   | DiscountPercentageOnceForeverDurationBase
   | DiscountPercentageRepeatDurationBase;
-const OrderDiscount = S.Unknown as any as S.Schema<OrderDiscount>;
-
 export interface OrderSubscription {
   metadata: MetadataOutputType;
   /** Creation timestamp of the object. */
@@ -13899,12 +11279,8 @@ export interface OrderSubscription {
   customer_cancellation_reason: CustomerCancellationReason | null;
   customer_cancellation_comment: string | null;
 }
-const OrderSubscription = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<OrderSubscription>;
-
 /** Line items composing the order. */
 export type OrderItemsList = Array<OrderItemSchema>;
-const OrderItemsList = CustomerOrderItemsList as any as S.Schema<OrderItemsList>;
-
 export interface Order {
   /** The ID of the object. */
   id: string;
@@ -13975,24 +11351,15 @@ export interface Order {
   /** Sales tax in cents that would be refunded if the full refundable amount is refunded. */
   refundable_tax_amount: number;
 }
-const Order = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<Order>;
-
 export type OrdersExportRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type OrdersExportRequestOrganizationId = string | OrdersExportRequestOrganizationIdCase1List;
-const OrdersExportRequestOrganizationId =
-  S.Unknown as any as S.Schema<OrdersExportRequestOrganizationId>;
-
 export type OrdersExportRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type OrdersExportRequestProductId = string | OrdersExportRequestProductIdCase1List;
-const OrdersExportRequestProductId = S.Unknown as any as S.Schema<OrdersExportRequestProductId>;
-
 export type OrdersExportRequestStatusCase1List = Array<OrderStatus | (string & {})>;
 /** Filter by order status. */
 export type OrdersExportRequestStatus = OrderStatus | OrdersExportRequestStatusCase1List;
-const OrdersExportRequestStatus = S.Unknown as any as S.Schema<OrdersExportRequestStatus>;
-
 export type OrderExportColumn =
   | "email"
   | "created_at"
@@ -14013,8 +11380,6 @@ export type OrderExportColumn =
 export type OrdersExportRequestColumnsCase1List = Array<OrderExportColumn | (string & {})>;
 /** Columns to include in the CSV, in order. Defaults to email, created_at, product, net_amount, currency, status and invoice_number. */
 export type OrdersExportRequestColumns = OrderExportColumn | OrdersExportRequestColumnsCase1List;
-const OrdersExportRequestColumns = S.Unknown as any as S.Schema<OrdersExportRequestColumns>;
-
 export interface OrdersExportRequest {
   /** Filter by organization ID. */
   organization_id?: OrdersExportRequestOrganizationId;
@@ -14031,68 +11396,37 @@ export interface OrdersExportRequest {
   /** Columns to include in the CSV, in order. Defaults to email, created_at, product, net_amount, currency, status and invoice_number. */
   columns?: OrdersExportRequestColumns;
 }
-const OrdersExportRequest = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<OrdersExportRequest>;
-
 export interface OrdersExportResponse {}
-const OrdersExportResponse = BenefitsDeleteResponse as any as S.Schema<OrdersExportResponse>;
-
 export interface OrdersFinalizeRequest {
   /** The order ID. */
   id: string;
   /** ID of the payment method to charge. Must belong to the order's customer. Falls back to the customer's default payment method when unset. */
   payment_method_id?: string | null;
 }
-const OrdersFinalizeRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<OrdersFinalizeRequest>;
-
 export interface OrdersGenerateInvoiceRequest {
   /** The order ID. */
   id: string;
 }
-const OrdersGenerateInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<OrdersGenerateInvoiceRequest>;
-
 export interface OrdersGenerateInvoiceResponse {}
-const OrdersGenerateInvoiceResponse =
-  BenefitsDeleteResponse as any as S.Schema<OrdersGenerateInvoiceResponse>;
-
 export interface OrdersGetRequest {
   /** The order ID. */
   id: string;
 }
-const OrdersGetRequest = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<OrdersGetRequest>;
-
 export interface OrdersInvoiceRequest {
   /** The order ID. */
   id: string;
 }
-const OrdersInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<OrdersInvoiceRequest>;
-
 /** Order's invoice data. */
 export interface OrderInvoice {
   /** The URL to the invoice. */
   url: string;
 }
-const OrderInvoice = CustomerOrderInvoice as any as S.Schema<OrderInvoice>;
-
 export type OrdersListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type OrdersListRequestOrganizationId = string | OrdersListRequestOrganizationIdCase1List;
-const OrdersListRequestOrganizationId =
-  S.Unknown as any as S.Schema<OrdersListRequestOrganizationId>;
-
 export type OrdersListRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type OrdersListRequestProductId = string | OrdersListRequestProductIdCase1List;
-const OrdersListRequestProductId = S.Unknown as any as S.Schema<OrdersListRequestProductId>;
-
 export type OrdersListRequestProductBillingTypeCase1List = Array<
   ProductBillingType | (string & {})
 >;
@@ -14100,43 +11434,26 @@ export type OrdersListRequestProductBillingTypeCase1List = Array<
 export type OrdersListRequestProductBillingType =
   | ProductBillingType
   | OrdersListRequestProductBillingTypeCase1List;
-const OrdersListRequestProductBillingType =
-  S.Unknown as any as S.Schema<OrdersListRequestProductBillingType>;
-
 export type OrdersListRequestDiscountIdCase1List = Array<string>;
 /** Filter by discount ID. */
 export type OrdersListRequestDiscountId = string | OrdersListRequestDiscountIdCase1List;
-const OrdersListRequestDiscountId = S.Unknown as any as S.Schema<OrdersListRequestDiscountId>;
-
 export type OrdersListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type OrdersListRequestCustomerId = string | OrdersListRequestCustomerIdCase1List;
-const OrdersListRequestCustomerId = S.Unknown as any as S.Schema<OrdersListRequestCustomerId>;
-
 export type OrdersListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by customer external ID. */
 export type OrdersListRequestExternalCustomerId =
   | string
   | OrdersListRequestExternalCustomerIdCase1List;
-const OrdersListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<OrdersListRequestExternalCustomerId>;
-
 export type OrdersListRequestCheckoutIdCase1List = Array<string>;
 /** Filter by checkout ID. */
 export type OrdersListRequestCheckoutId = string | OrdersListRequestCheckoutIdCase1List;
-const OrdersListRequestCheckoutId = S.Unknown as any as S.Schema<OrdersListRequestCheckoutId>;
-
 export type OrdersListRequestSubscriptionIdCase1List = Array<string>;
 /** Filter by subscription ID. */
 export type OrdersListRequestSubscriptionId = string | OrdersListRequestSubscriptionIdCase1List;
-const OrdersListRequestSubscriptionId =
-  S.Unknown as any as S.Schema<OrdersListRequestSubscriptionId>;
-
 export type OrdersListRequestStatusCase1List = Array<OrderStatus | (string & {})>;
 /** Filter by order status. */
 export type OrdersListRequestStatus = OrderStatus | OrdersListRequestStatusCase1List;
-const OrdersListRequestStatus = S.Unknown as any as S.Schema<OrdersListRequestStatus>;
-
 export type OrderSortProperty =
   | "created_at"
   | "-created_at"
@@ -14157,9 +11474,6 @@ export type OrderSortProperty =
   | "subscription"
   | "-subscription";
 export type OrdersListRequestSortingList = Array<OrderSortProperty | (string & {})>;
-const OrdersListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<OrdersListRequestSortingList>;
-
 export interface OrdersListRequest {
   /** Filter by organization ID. */
   organization_id?: OrdersListRequestOrganizationId;
@@ -14192,36 +11506,20 @@ export interface OrdersListRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const OrdersListRequest = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<OrdersListRequest>;
-
 export type ListResourceOrderItemsList = Array<Order>;
-const ListResourceOrderItemsList = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ListResourceOrderItemsList>;
-
 export interface ListResourceOrder {
   items: ListResourceOrderItemsList;
   pagination: Pagination;
 }
-const ListResourceOrder = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<ListResourceOrder>;
-
 export interface OrdersReceiptRequest {
   /** The order ID. */
   id: string;
 }
-const OrdersReceiptRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<OrdersReceiptRequest>;
-
 /** Order's receipt data. */
 export interface OrderReceipt {
   /** The URL to the receipt PDF. */
   url: string;
 }
-const OrderReceipt = CustomerOrderInvoice as any as S.Schema<OrderReceipt>;
-
 export interface OrdersUpdateRequest {
   /** The order ID. */
   id: string;
@@ -14230,8 +11528,6 @@ export interface OrdersUpdateRequest {
   /** The address of the customer that should appear on the invoice. Country and state fields cannot be updated. */
   billing_address?: AddressInput | null;
 }
-const OrdersUpdateRequest = /*@__PURE__*/ __L.at(__c48, 1) as any as S.Schema<OrdersUpdateRequest>;
-
 export interface OrganizationIndividualLegalEntitySchema {
   type: string;
 }
@@ -14242,9 +11538,6 @@ export interface OrganizationCompanyLegalEntitySchema {
 export type OrganizationsCreateRequestLegalEntity =
   | OrganizationIndividualLegalEntitySchema
   | OrganizationCompanyLegalEntitySchema;
-const OrganizationsCreateRequestLegalEntity =
-  S.Unknown as any as S.Schema<OrganizationsCreateRequestLegalEntity>;
-
 export type OrganizationSocialPlatforms =
   | "x"
   | "github"
@@ -14256,48 +11549,25 @@ export type OrganizationSocialPlatforms =
   | "threads"
   | "discord"
   | "other";
-const OrganizationSocialPlatforms = S.String;
-
 export interface OrganizationSocialLink {
   /** The social platform of the URL */
   platform: OrganizationSocialPlatforms | (string & {});
   /** The URL to the organization profile */
   url: string;
 }
-const OrganizationSocialLink = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<OrganizationSocialLink>;
-
 export type OrganizationsCreateRequestSocialsList = Array<OrganizationSocialLink>;
-const OrganizationsCreateRequestSocialsList = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<OrganizationsCreateRequestSocialsList>;
-
 /** Categories of products being sold. */
 export type OrganizationDetailsSellingCategoriesList = Array<string>;
-const OrganizationDetailsSellingCategoriesList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationDetailsSellingCategoriesList>;
-
 /** Pricing models used by the organization. */
 export type OrganizationDetailsPricingModelsList = Array<string>;
-const OrganizationDetailsPricingModelsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationDetailsPricingModelsList>;
-
 /** Main customer acquisition channels. */
 export type OrganizationDetailsCustomerAcquisitionList = Array<string>;
-const OrganizationDetailsCustomerAcquisitionList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationDetailsCustomerAcquisitionList>;
-
 export type OrganizationDetailsSwitchingFrom =
   | "paddle"
   | "lemon_squeezy"
   | "gumroad"
   | "stripe"
   | "other";
-const OrganizationDetailsSwitchingFrom = S.String;
-
 export interface OrganizationDetails {
   /** Brief information about you and your business. */
   about?: string | null;
@@ -14320,8 +11590,6 @@ export interface OrganizationDetails {
   /** Revenue from last year if applicable. */
   previous_annual_revenue?: number | null;
 }
-const OrganizationDetails = /*@__PURE__*/ __L.at(__c48, 4) as any as S.Schema<OrganizationDetails>;
-
 export type OrganizationsCreateRequestCountry =
   | "AD"
   | "AE"
@@ -14567,12 +11835,7 @@ export type OrganizationsCreateRequestCountry =
   | "ZA"
   | "ZM"
   | "ZW";
-const OrganizationsCreateRequestCountry = S.String;
-
 export type OrganizationFeatureSettingsUpdateOverviewMetricsList = Array<string>;
-const OrganizationFeatureSettingsUpdateOverviewMetricsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationFeatureSettingsUpdateOverviewMetricsList>;
-
 /** Feature settings that organizations can update themselves. Other feature settings are managed by Polar staff: they're ignored if provided and keep their current value. */
 export interface OrganizationFeatureSettingsUpdate {
   /** If this organization has the Member model enabled */
@@ -14582,17 +11845,10 @@ export interface OrganizationFeatureSettingsUpdate {
   /** Ordered list of metric slugs shown on the dashboard overview. */
   overview_metrics?: OrganizationFeatureSettingsUpdateOverviewMetricsList | null;
 }
-const OrganizationFeatureSettingsUpdate = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<OrganizationFeatureSettingsUpdate>;
-
 export type OrganizationSubscriptionSettingsProrationBehavior =
   | "invoice"
   | "prorate"
   | "next_period";
-const OrganizationSubscriptionSettingsProrationBehavior = S.String;
-
 export interface OrganizationSubscriptionSettings {
   allow_multiple_subscriptions: boolean;
   proration_behavior: OrganizationSubscriptionSettingsProrationBehavior | (string & {});
@@ -14600,11 +11856,6 @@ export interface OrganizationSubscriptionSettings {
   prevent_trial_abuse: boolean;
   allow_customer_updates: boolean;
 }
-const OrganizationSubscriptionSettings = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<OrganizationSubscriptionSettings>;
-
 export interface OrganizationCustomerEmailSettings {
   order_confirmation: boolean;
   payment_method_expiration_reminder: boolean;
@@ -14621,11 +11872,6 @@ export interface OrganizationCustomerEmailSettings {
   subscription_uncanceled: boolean;
   subscription_updated: boolean;
 }
-const OrganizationCustomerEmailSettings = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<OrganizationCustomerEmailSettings>;
-
 export interface OrganizationsCreateRequest {
   name: string;
   slug: string;
@@ -14650,16 +11896,8 @@ export interface OrganizationsCreateRequest {
   /** Default tax behavior applied on products. */
   default_tax_behavior?: TaxBehaviorOption | (string & {});
 }
-const OrganizationsCreateRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<OrganizationsCreateRequest>;
-
 /** Links to social profiles. */
 export type OrganizationSocialsList = Array<OrganizationSocialLink>;
-const OrganizationSocialsList =
-  OrganizationsCreateRequestSocialsList as any as S.Schema<OrganizationSocialsList>;
-
 export type OrganizationStatus =
   | "created"
   | "review"
@@ -14669,12 +11907,7 @@ export type OrganizationStatus =
   | "blocked"
   | "offboarding"
   | "offboarded";
-const OrganizationStatus = S.String;
-
 export type OrganizationFeatureSettingsOverviewMetricsList = Array<string>;
-const OrganizationFeatureSettingsOverviewMetricsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationFeatureSettingsOverviewMetricsList>;
-
 export interface OrganizationFeatureSettings {
   /** If this organization has issue funding enabled */
   issue_funding_enabled?: boolean;
@@ -14709,25 +11942,12 @@ export interface OrganizationFeatureSettings {
   /** If this organization's checkout tells the browser to refuse framing from any host outside its embed hosts. */
   frame_ancestors_enforced?: boolean;
 }
-const OrganizationFeatureSettings = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<OrganizationFeatureSettings>;
-
 /** `auto_accept_below_amount` is in Polar's settlement currency (USD). */
 export interface OrganizationDisputeSettings {
   auto_accept_below_amount: number | null;
 }
-const OrganizationDisputeSettings = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<OrganizationDisputeSettings>;
-
 /** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts -- `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
 export type OrganizationEmbedHostsList = Array<string>;
-const OrganizationEmbedHostsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationEmbedHostsList>;
-
 export type OrganizationCountry =
   | "AD"
   | "AE"
@@ -14978,8 +12198,6 @@ export type OrganizationCountry =
   | "ZA"
   | "ZM"
   | "ZW";
-const OrganizationCountry = S.String;
-
 export interface OrganizationCapabilities {
   /** Whether the organization can accept new checkout payments. */
   checkout_payments: boolean;
@@ -14994,11 +12212,6 @@ export interface OrganizationCapabilities {
   /** Whether the organization can access the dashboard. */
   dashboard_access: boolean;
 }
-const OrganizationCapabilities = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<OrganizationCapabilities>;
-
 export interface Organization {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -15055,16 +12268,9 @@ export interface Organization {
   /** Capabilities currently granted to the organization. */
   capabilities: OrganizationCapabilities;
 }
-const Organization = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<Organization>;
-
 export interface OrganizationsGetRequest {
   id: string;
 }
-const OrganizationsGetRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<OrganizationsGetRequest>;
-
 export type OrganizationSortProperty =
   | "created_at"
   | "-created_at"
@@ -15077,9 +12283,6 @@ export type OrganizationSortProperty =
   | "days_in_status"
   | "-days_in_status";
 export type OrganizationsListRequestSortingList = Array<OrganizationSortProperty | (string & {})>;
-const OrganizationsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<OrganizationsListRequestSortingList>;
-
 export interface OrganizationsListRequest {
   /** Filter by slug. */
   slug?: string;
@@ -15090,30 +12293,12 @@ export interface OrganizationsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: OrganizationsListRequestSortingList;
 }
-const OrganizationsListRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<OrganizationsListRequest>;
-
 export type ListResourceOrganizationItemsList = Array<Organization>;
-const ListResourceOrganizationItemsList = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<ListResourceOrganizationItemsList>;
-
 export interface ListResourceOrganization {
   items: ListResourceOrganizationItemsList;
   pagination: Pagination;
 }
-const ListResourceOrganization = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<ListResourceOrganization>;
-
 export type OrganizationsUpdateRequestSocialsList = Array<OrganizationSocialLink>;
-const OrganizationsUpdateRequestSocialsList =
-  OrganizationsCreateRequestSocialsList as any as S.Schema<OrganizationsUpdateRequestSocialsList>;
-
 export type OrganizationsUpdateRequestCountry =
   | "AD"
   | "AE"
@@ -15359,22 +12544,12 @@ export type OrganizationsUpdateRequestCountry =
   | "ZA"
   | "ZM"
   | "ZW";
-const OrganizationsUpdateRequestCountry = S.String;
-
 export interface OrganizationDisputeSettingsUpdate {
   /** Concede disputes below this amount, in USD cents, without asking the organization. A dispute charged in another currency converts at the rate its payment settled at. `null` turns it off. The disputed amount and the processor's dispute fee are still deducted. */
   auto_accept_below_amount?: number | null;
 }
-const OrganizationDisputeSettingsUpdate = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<OrganizationDisputeSettingsUpdate>;
-
 /** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts -- `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
 export type OrganizationsUpdateRequestEmbedHostsList = Array<string>;
-const OrganizationsUpdateRequestEmbedHostsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<OrganizationsUpdateRequestEmbedHostsList>;
-
 export interface OrganizationsUpdateRequest {
   id: string;
   name?: string | null;
@@ -15402,17 +12577,10 @@ export interface OrganizationsUpdateRequest {
   /** Whether members must access this organization through its SSO connection. Turning this on requires an active SSO session for this organization and at least one enabled SSO connection. */
   sso_enforced?: boolean | null;
 }
-const OrganizationsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<OrganizationsUpdateRequest>;
-
 export interface PaymentsGetRequest {
   /** The payment ID. */
   id: string;
 }
-const PaymentsGetRequest = /*@__PURE__*/ __L.at(__c50, 3) as any as S.Schema<PaymentsGetRequest>;
-
 export type PaymentStatus = "pending" | "succeeded" | "failed";
 export type PaymentTrigger =
   | "purchase"
@@ -15545,48 +12713,28 @@ export interface GenericPayment {
   processor_metadata?: GenericPaymentProcessorMetadataMap;
 }
 export type Payment = CardPayment | KrCardPayment | GenericPayment;
-const Payment = S.Unknown as any as S.Schema<Payment>;
-
 export type PaymentsGetResponse = Payment;
-const PaymentsGetResponse = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<PaymentsGetResponse>;
-
 export type PaymentsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type PaymentsListRequestOrganizationId = string | PaymentsListRequestOrganizationIdCase1List;
-const PaymentsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<PaymentsListRequestOrganizationId>;
-
 export type PaymentsListRequestCheckoutIdCase1List = Array<string>;
 /** Filter by checkout ID. */
 export type PaymentsListRequestCheckoutId = string | PaymentsListRequestCheckoutIdCase1List;
-const PaymentsListRequestCheckoutId = S.Unknown as any as S.Schema<PaymentsListRequestCheckoutId>;
-
 export type PaymentsListRequestOrderIdCase1List = Array<string>;
 /** Filter by order ID. */
 export type PaymentsListRequestOrderId = string | PaymentsListRequestOrderIdCase1List;
-const PaymentsListRequestOrderId = S.Unknown as any as S.Schema<PaymentsListRequestOrderId>;
-
 export type PaymentsListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type PaymentsListRequestCustomerId = string | PaymentsListRequestCustomerIdCase1List;
-const PaymentsListRequestCustomerId = S.Unknown as any as S.Schema<PaymentsListRequestCustomerId>;
-
 export type PaymentsListRequestStatusCase1List = Array<PaymentStatus | (string & {})>;
 /** Filter by payment status. */
 export type PaymentsListRequestStatus = PaymentStatus | PaymentsListRequestStatusCase1List;
-const PaymentsListRequestStatus = S.Unknown as any as S.Schema<PaymentsListRequestStatus>;
-
 export type PaymentsListRequestMethodCase1List = Array<string>;
 /** Filter by payment method. */
 export type PaymentsListRequestMethod = string | PaymentsListRequestMethodCase1List;
-const PaymentsListRequestMethod = S.Unknown as any as S.Schema<PaymentsListRequestMethod>;
-
 export type PaymentsListRequestCustomerEmailCase1List = Array<string>;
 /** Filter by customer email. */
 export type PaymentsListRequestCustomerEmail = string | PaymentsListRequestCustomerEmailCase1List;
-const PaymentsListRequestCustomerEmail =
-  S.Unknown as any as S.Schema<PaymentsListRequestCustomerEmail>;
-
 export type PaymentSortProperty =
   | "created_at"
   | "-created_at"
@@ -15597,9 +12745,6 @@ export type PaymentSortProperty =
   | "method"
   | "-method";
 export type PaymentsListRequestSortingList = Array<PaymentSortProperty | (string & {})>;
-const PaymentsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<PaymentsListRequestSortingList>;
-
 export interface PaymentsListRequest {
   /** Filter by organization ID. */
   organization_id?: PaymentsListRequestOrganizationId;
@@ -15622,20 +12767,11 @@ export interface PaymentsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: PaymentsListRequestSortingList;
 }
-const PaymentsListRequest = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<PaymentsListRequest>;
-
 export type ListResourcePaymentItemsList = Array<Payment>;
-const ListResourcePaymentItemsList = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListResourcePaymentItemsList>;
-
 export interface ListResourcePayment {
   items: ListResourcePaymentItemsList;
   pagination: Pagination;
 }
-const ListResourcePayment = /*@__PURE__*/ __L.at(__c50, 7) as any as S.Schema<ListResourcePayment>;
-
 export type ProductCreateRecurringMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type ProductCreateRecurringMetadataMap = {
@@ -15658,18 +12794,8 @@ export interface AttachedCustomFieldCreate {
   /** Whether the value is required for this custom field. */
   required: boolean;
 }
-const AttachedCustomFieldCreate = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<AttachedCustomFieldCreate>;
-
 /** List of custom fields to attach. */
 export type ProductCreateRecurringAttachedCustomFieldsList = Array<AttachedCustomFieldCreate>;
-const ProductCreateRecurringAttachedCustomFieldsList = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<ProductCreateRecurringAttachedCustomFieldsList>;
-
 export interface ProductCreateRecurring {
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
   metadata?: ProductCreateRecurringMetadataMap;
@@ -15740,36 +12866,18 @@ export interface ProductCreateOneTime {
   recurring_interval_count?: unknown | null;
 }
 export type ProductCreate = ProductCreateRecurring | ProductCreateOneTime;
-const ProductCreate = S.Unknown as any as S.Schema<ProductCreate>;
-
 export interface ProductsCreateRequest {
   body: ProductCreate;
 }
-const ProductsCreateRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<ProductsCreateRequest>;
-
 export type ProductPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const ProductPricesItem = S.Unknown as any as S.Schema<ProductPricesItem>;
-
 /** List of prices for this product. */
 export type ProductPricesList = Array<ProductPricesItem>;
-const ProductPricesList = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<ProductPricesList>;
-
 /** List of benefits granted by the product. */
 export type ProductBenefitsList = Array<Benefit>;
-const ProductBenefitsList = ListResourceBenefitItemsList as any as S.Schema<ProductBenefitsList>;
-
 /** List of medias associated to the product. */
 export type ProductMediasList = Array<ProductMediaFileRead>;
-const ProductMediasList = CheckoutLinkProductMediasList as any as S.Schema<ProductMediasList>;
-
 /** List of custom fields attached to the product. */
 export type ProductAttachedCustomFieldsList = Array<AttachedCustomField>;
-const ProductAttachedCustomFieldsList =
-  CheckoutAttachedCustomFieldsList as any as S.Schema<ProductAttachedCustomFieldsList>;
-
 /** A product. */
 export interface Product {
   /** The ID of the object. */
@@ -15814,44 +12922,23 @@ export interface Product {
   /** List of custom fields attached to the product. */
   attached_custom_fields: ProductAttachedCustomFieldsList;
 }
-const Product = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<Product>;
-
 export interface ProductsDeleteRequest {
   id: string;
 }
-const ProductsDeleteRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ProductsDeleteRequest>;
-
 export interface ProductsDeleteResponse {}
-const ProductsDeleteResponse = BenefitsDeleteResponse as any as S.Schema<ProductsDeleteResponse>;
-
 export interface ProductsGetRequest {
   id: string;
 }
-const ProductsGetRequest = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<ProductsGetRequest>;
-
 export type ProductsListRequestIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type ProductsListRequestId = string | ProductsListRequestIdCase1List;
-const ProductsListRequestId = S.Unknown as any as S.Schema<ProductsListRequestId>;
-
 export type ProductsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type ProductsListRequestOrganizationId = string | ProductsListRequestOrganizationIdCase1List;
-const ProductsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<ProductsListRequestOrganizationId>;
-
 export type ProductsListRequestBenefitIdCase1List = Array<string>;
 /** Filter products granting specific benefit. */
 export type ProductsListRequestBenefitId = string | ProductsListRequestBenefitIdCase1List;
-const ProductsListRequestBenefitId = S.Unknown as any as S.Schema<ProductsListRequestBenefitId>;
-
 export type ProductsListRequestVisibilityList = Array<ProductVisibility | (string & {})>;
-const ProductsListRequestVisibilityList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<ProductsListRequestVisibilityList>;
-
 export type ProductSortProperty =
   | "created_at"
   | "-created_at"
@@ -15862,9 +12949,6 @@ export type ProductSortProperty =
   | "price_amount"
   | "-price_amount";
 export type ProductsListRequestSortingList = Array<ProductSortProperty | (string & {})>;
-const ProductsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<ProductsListRequestSortingList>;
-
 export interface ProductsListRequest {
   /** Filter by product ID. */
   id?: ProductsListRequestId;
@@ -15889,33 +12973,16 @@ export interface ProductsListRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const ProductsListRequest = /*@__PURE__*/ __L.at(__c51, 7) as any as S.Schema<ProductsListRequest>;
-
 export type ListResourceProductItemsList = Array<Product>;
-const ListResourceProductItemsList = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListResourceProductItemsList>;
-
 export interface ListResourceProduct {
   items: ListResourceProductItemsList;
   pagination: Pagination;
 }
-const ListResourceProduct = /*@__PURE__*/ __L.at(__c52, 1) as any as S.Schema<ListResourceProduct>;
-
 export type ProductsUpdateRequestMetadataValue = string | number | number | boolean;
-const ProductsUpdateRequestMetadataValue =
-  S.Unknown as any as S.Schema<ProductsUpdateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type ProductsUpdateRequestMetadataMap = {
   [key: string]: ProductsUpdateRequestMetadataValue | undefined;
 };
-const ProductsUpdateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<ProductsUpdateRequestMetadataMap>;
-
 /** A price that already exists for this product. Useful when updating a product if you want to keep an existing price. */
 export interface ExistingProductPrice {
   id: string;
@@ -15930,24 +12997,10 @@ export type ProductsUpdateRequestPricesItemCase1 =
 export type ProductsUpdateRequestPricesItem =
   | ExistingProductPrice
   | ProductsUpdateRequestPricesItemCase1;
-const ProductsUpdateRequestPricesItem =
-  S.Unknown as any as S.Schema<ProductsUpdateRequestPricesItem>;
-
 export type ProductsUpdateRequestPricesList = Array<ProductsUpdateRequestPricesItem>;
-const ProductsUpdateRequestPricesList = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<ProductsUpdateRequestPricesList>;
-
 export type ProductsUpdateRequestMediasList = Array<string>;
-const ProductsUpdateRequestMediasList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductsUpdateRequestMediasList>;
-
 /** List of custom fields to attach. */
 export type ProductsUpdateRequestAttachedCustomFieldsList = Array<AttachedCustomFieldCreate>;
-const ProductsUpdateRequestAttachedCustomFieldsList =
-  ProductCreateRecurringAttachedCustomFieldsList as any as S.Schema<ProductsUpdateRequestAttachedCustomFieldsList>;
-
 export interface ProductsUpdateRequest {
   id: string;
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
@@ -15973,39 +13026,18 @@ export interface ProductsUpdateRequest {
   medias?: ProductsUpdateRequestMediasList | null;
   attached_custom_fields?: ProductsUpdateRequestAttachedCustomFieldsList | null;
 }
-const ProductsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<ProductsUpdateRequest>;
-
 /** List of benefit IDs. Each one must be on the same organization as the product. */
 export type ProductsUpdateBenefitsRequestBenefitsList = Array<string>;
-const ProductsUpdateBenefitsRequestBenefitsList =
-  BenefitGrantsListRequestOrganizationIdCase1List as any as S.Schema<ProductsUpdateBenefitsRequestBenefitsList>;
-
 export interface ProductsUpdateBenefitsRequest {
   id: string;
   /** List of benefit IDs. Each one must be on the same organization as the product. */
   benefits: ProductsUpdateBenefitsRequestBenefitsList;
 }
-const ProductsUpdateBenefitsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<ProductsUpdateBenefitsRequest>;
-
 export type RefundsCreateRequestMetadataValue = string | number | number | boolean;
-const RefundsCreateRequestMetadataValue =
-  S.Unknown as any as S.Schema<RefundsCreateRequestMetadataValue>;
-
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type RefundsCreateRequestMetadataMap = {
   [key: string]: RefundsCreateRequestMetadataValue | undefined;
 };
-const RefundsCreateRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<RefundsCreateRequestMetadataMap>;
-
 /** Reason for the refund. */
 export type RefundsCreateRequestReason =
   | "duplicate"
@@ -16014,8 +13046,6 @@ export type RefundsCreateRequestReason =
   | "service_disruption"
   | "satisfaction_guarantee"
   | "other";
-const RefundsCreateRequestReason = S.String;
-
 export interface RefundsCreateRequest {
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
   metadata?: RefundsCreateRequestMetadataMap;
@@ -16029,14 +13059,7 @@ export interface RefundsCreateRequest {
   /** Should this refund trigger the associated customer benefits to be revoked? **Note:** Only allowed in case the `order` is a one-time purchase. Subscriptions automatically revoke customer benefits once the subscription itself is revoked, i.e fully canceled. */
   revoke_benefits?: boolean;
 }
-const RefundsCreateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<RefundsCreateRequest>;
-
 export type RefundStatus = "pending" | "succeeded" | "failed" | "canceled";
-const RefundStatus = S.String;
-
 export type RefundReason =
   | "duplicate"
   | "fraudulent"
@@ -16045,8 +13068,6 @@ export type RefundReason =
   | "satisfaction_guarantee"
   | "dispute_prevention"
   | "other";
-const RefundReason = S.String;
-
 /** Dispute associated with a refund, in case we prevented a dispute by issuing a refund. */
 export interface RefundDispute {
   /** Creation timestamp of the object. */
@@ -16078,8 +13099,6 @@ export interface RefundDispute {
   /** The ID of the payment associated with the dispute. */
   payment_id: string;
 }
-const RefundDispute = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<RefundDispute>;
-
 export interface Refund {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -16100,48 +13119,28 @@ export interface Refund {
   revoke_benefits: boolean;
   dispute: RefundDispute | null;
 }
-const Refund = /*@__PURE__*/ __L.at(__c53, 1) as any as S.Schema<Refund>;
-
 export type RefundsListRequestIdCase1List = Array<string>;
 /** Filter by refund ID. */
 export type RefundsListRequestId = string | RefundsListRequestIdCase1List;
-const RefundsListRequestId = S.Unknown as any as S.Schema<RefundsListRequestId>;
-
 export type RefundsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type RefundsListRequestOrganizationId = string | RefundsListRequestOrganizationIdCase1List;
-const RefundsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<RefundsListRequestOrganizationId>;
-
 export type RefundsListRequestOrderIdCase1List = Array<string>;
 /** Filter by order ID. */
 export type RefundsListRequestOrderId = string | RefundsListRequestOrderIdCase1List;
-const RefundsListRequestOrderId = S.Unknown as any as S.Schema<RefundsListRequestOrderId>;
-
 export type RefundsListRequestSubscriptionIdCase1List = Array<string>;
 /** Filter by subscription ID. */
 export type RefundsListRequestSubscriptionId = string | RefundsListRequestSubscriptionIdCase1List;
-const RefundsListRequestSubscriptionId =
-  S.Unknown as any as S.Schema<RefundsListRequestSubscriptionId>;
-
 export type RefundsListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type RefundsListRequestCustomerId = string | RefundsListRequestCustomerIdCase1List;
-const RefundsListRequestCustomerId = S.Unknown as any as S.Schema<RefundsListRequestCustomerId>;
-
 export type RefundsListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by customer external ID. */
 export type RefundsListRequestExternalCustomerId =
   | string
   | RefundsListRequestExternalCustomerIdCase1List;
-const RefundsListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<RefundsListRequestExternalCustomerId>;
-
 export type RefundSortProperty = "created_at" | "-created_at" | "amount" | "-amount";
 export type RefundsListRequestSortingList = Array<RefundSortProperty | (string & {})>;
-const RefundsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<RefundsListRequestSortingList>;
-
 export interface RefundsListRequest {
   /** Filter by refund ID. */
   id?: RefundsListRequestId;
@@ -16164,20 +13163,11 @@ export interface RefundsListRequest {
   /** Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. */
   sorting?: RefundsListRequestSortingList;
 }
-const RefundsListRequest = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<RefundsListRequest>;
-
 export type ListResourceRefundItemsList = Array<Refund>;
-const ListResourceRefundItemsList = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<ListResourceRefundItemsList>;
-
 export interface ListResourceRefund {
   items: ListResourceRefundItemsList;
   pagination: Pagination;
 }
-const ListResourceRefund = /*@__PURE__*/ __L.at(__c53, 4) as any as S.Schema<ListResourceRefund>;
-
 export interface RetryCustomerPortalOrdersConfirmPaymentRequest {
   /** The order ID. */
   id: string;
@@ -16188,11 +13178,6 @@ export interface RetryCustomerPortalOrdersConfirmPaymentRequest {
   /** Payment processor used. */
   payment_processor?: PaymentProcessor;
 }
-const RetryCustomerPortalOrdersConfirmPaymentRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<RetryCustomerPortalOrdersConfirmPaymentRequest>;
-
 /** Response after confirming a retry payment. */
 export interface CustomerOrderPaymentConfirmation {
   /** Payment status after confirmation. */
@@ -16202,11 +13187,6 @@ export interface CustomerOrderPaymentConfirmation {
   /** Error message if confirmation failed. */
   error?: string | null;
 }
-const CustomerOrderPaymentConfirmation = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<CustomerOrderPaymentConfirmation>;
-
 export type SubscriptionCreateCustomerMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type SubscriptionCreateCustomerMetadataMap = {
@@ -16242,29 +13222,14 @@ export interface SubscriptionCreateExternalCustomer {
 export type SubscriptionsCreateRequestBody =
   | SubscriptionCreateCustomer
   | SubscriptionCreateExternalCustomer;
-const SubscriptionsCreateRequestBody = S.Unknown as any as S.Schema<SubscriptionsCreateRequestBody>;
-
 export interface SubscriptionsCreateRequest {
   body: SubscriptionsCreateRequestBody;
 }
-const SubscriptionsCreateRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<SubscriptionsCreateRequest>;
-
 export type SubscriptionCustomFieldDataValue = string | number | boolean;
-const SubscriptionCustomFieldDataValue =
-  S.Unknown as any as S.Schema<SubscriptionCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type SubscriptionCustomFieldDataMap = {
   [key: string]: SubscriptionCustomFieldDataValue | null | undefined;
 };
-const SubscriptionCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<SubscriptionCustomFieldDataMap>;
-
 export type SubscriptionCustomerTaxIdList = Array<unknown>;
 export interface SubscriptionCustomer {
   /** The ID of the customer. */
@@ -16299,25 +13264,14 @@ export interface SubscriptionCustomer {
   first_user_event_at: string | null;
   avatar_url: string | null;
 }
-const SubscriptionCustomer = LicenseKeyCustomer as any as S.Schema<SubscriptionCustomer>;
-
 export type SubscriptionDiscount =
   | DiscountFixedOnceForeverDurationBase
   | DiscountFixedRepeatDurationBase
   | DiscountPercentageOnceForeverDurationBase
   | DiscountPercentageRepeatDurationBase;
-const SubscriptionDiscount = S.Unknown as any as S.Schema<SubscriptionDiscount>;
-
 export type SubscriptionPricesItem = LegacyRecurringProductPrice | ProductPrice;
-const SubscriptionPricesItem = S.Unknown as any as S.Schema<SubscriptionPricesItem>;
-
 /** List of enabled prices for the subscription. */
 export type SubscriptionPricesList = Array<SubscriptionPricesItem>;
-const SubscriptionPricesList = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<SubscriptionPricesList>;
-
 /** Current consumption and spending for a subscription meter. */
 export interface SubscriptionMeter {
   /** Creation timestamp of the object. */
@@ -16337,15 +13291,8 @@ export interface SubscriptionMeter {
   /** The meter associated with this subscription. */
   meter: Meter;
 }
-const SubscriptionMeter = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<SubscriptionMeter>;
-
 /** List of meters associated with the subscription. */
 export type SubscriptionMetersList = Array<SubscriptionMeter>;
-const SubscriptionMetersList = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<SubscriptionMetersList>;
-
 export interface Subscription {
   /** Creation timestamp of the object. */
   created_at: string;
@@ -16419,32 +13366,21 @@ export interface Subscription {
   /** Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update. */
   pending_update: PendingSubscriptionUpdate | null;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c54, 4) as any as S.Schema<Subscription>;
-
 export type SubscriptionsExportRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type SubscriptionsExportRequestOrganizationId =
   | string
   | SubscriptionsExportRequestOrganizationIdCase1List;
-const SubscriptionsExportRequestOrganizationId =
-  S.Unknown as any as S.Schema<SubscriptionsExportRequestOrganizationId>;
-
 export type SubscriptionsExportRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type SubscriptionsExportRequestProductId =
   | string
   | SubscriptionsExportRequestProductIdCase1List;
-const SubscriptionsExportRequestProductId =
-  S.Unknown as any as S.Schema<SubscriptionsExportRequestProductId>;
-
 export type SubscriptionsExportRequestStatusCase1List = Array<SubscriptionStatus | (string & {})>;
 /** Filter by subscription status. */
 export type SubscriptionsExportRequestStatus =
   | SubscriptionStatus
   | SubscriptionsExportRequestStatusCase1List;
-const SubscriptionsExportRequestStatus =
-  S.Unknown as any as S.Schema<SubscriptionsExportRequestStatus>;
-
 export type SubscriptionExportColumn =
   | "email"
   | "started_at"
@@ -16475,9 +13411,6 @@ export type SubscriptionsExportRequestColumnsCase1List = Array<
 export type SubscriptionsExportRequestColumns =
   | SubscriptionExportColumn
   | SubscriptionsExportRequestColumnsCase1List;
-const SubscriptionsExportRequestColumns =
-  S.Unknown as any as S.Schema<SubscriptionsExportRequestColumns>;
-
 export interface SubscriptionsExportRequest {
   /** Filter by organization ID. */
   organization_id?: SubscriptionsExportRequestOrganizationId;
@@ -16496,69 +13429,39 @@ export interface SubscriptionsExportRequest {
   /** Columns to include in the CSV, in order. Defaults to email, started_at, product, amount, currency, status and recurring_interval. */
   columns?: SubscriptionsExportRequestColumns;
 }
-const SubscriptionsExportRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<SubscriptionsExportRequest>;
-
 export interface SubscriptionsExportResponse {}
-const SubscriptionsExportResponse =
-  BenefitsDeleteResponse as any as S.Schema<SubscriptionsExportResponse>;
-
 export interface SubscriptionsGetRequest {
   /** The subscription ID. */
   id: string;
 }
-const SubscriptionsGetRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<SubscriptionsGetRequest>;
-
 export type SubscriptionsListRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type SubscriptionsListRequestOrganizationId =
   | string
   | SubscriptionsListRequestOrganizationIdCase1List;
-const SubscriptionsListRequestOrganizationId =
-  S.Unknown as any as S.Schema<SubscriptionsListRequestOrganizationId>;
-
 export type SubscriptionsListRequestProductIdCase1List = Array<string>;
 /** Filter by product ID. */
 export type SubscriptionsListRequestProductId = string | SubscriptionsListRequestProductIdCase1List;
-const SubscriptionsListRequestProductId =
-  S.Unknown as any as S.Schema<SubscriptionsListRequestProductId>;
-
 export type SubscriptionsListRequestCustomerIdCase1List = Array<string>;
 /** Filter by customer ID. */
 export type SubscriptionsListRequestCustomerId =
   | string
   | SubscriptionsListRequestCustomerIdCase1List;
-const SubscriptionsListRequestCustomerId =
-  S.Unknown as any as S.Schema<SubscriptionsListRequestCustomerId>;
-
 export type SubscriptionsListRequestExternalCustomerIdCase1List = Array<string>;
 /** Filter by customer external ID. */
 export type SubscriptionsListRequestExternalCustomerId =
   | string
   | SubscriptionsListRequestExternalCustomerIdCase1List;
-const SubscriptionsListRequestExternalCustomerId =
-  S.Unknown as any as S.Schema<SubscriptionsListRequestExternalCustomerId>;
-
 export type SubscriptionsListRequestDiscountIdCase1List = Array<string>;
 /** Filter by discount ID. */
 export type SubscriptionsListRequestDiscountId =
   | string
   | SubscriptionsListRequestDiscountIdCase1List;
-const SubscriptionsListRequestDiscountId =
-  S.Unknown as any as S.Schema<SubscriptionsListRequestDiscountId>;
-
 export type SubscriptionsListRequestStatusCase1List = Array<SubscriptionStatus | (string & {})>;
 /** Filter by subscription status. */
 export type SubscriptionsListRequestStatus =
   | SubscriptionStatus
   | SubscriptionsListRequestStatusCase1List;
-const SubscriptionsListRequestStatus = S.Unknown as any as S.Schema<SubscriptionsListRequestStatus>;
-
 export type SubscriptionsListRequestCustomerCancellationReasonCase1List = Array<
   CustomerCancellationReason | (string & {})
 >;
@@ -16566,9 +13469,6 @@ export type SubscriptionsListRequestCustomerCancellationReasonCase1List = Array<
 export type SubscriptionsListRequestCustomerCancellationReason =
   | CustomerCancellationReason
   | SubscriptionsListRequestCustomerCancellationReasonCase1List;
-const SubscriptionsListRequestCustomerCancellationReason =
-  S.Unknown as any as S.Schema<SubscriptionsListRequestCustomerCancellationReason>;
-
 export type SubscriptionSortProperty =
   | "customer"
   | "-customer"
@@ -16589,9 +13489,6 @@ export type SubscriptionSortProperty =
   | "discount"
   | "-discount";
 export type SubscriptionsListRequestSortingList = Array<SubscriptionSortProperty | (string & {})>;
-const SubscriptionsListRequestSortingList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<SubscriptionsListRequestSortingList>;
-
 export interface SubscriptionsListRequest {
   /** Filter by organization ID. */
   organization_id?: SubscriptionsListRequestOrganizationId;
@@ -16628,35 +13525,15 @@ export interface SubscriptionsListRequest {
   /** Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`. */
   metadata?: MetadataQueryMap;
 }
-const SubscriptionsListRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<SubscriptionsListRequest>;
-
 export type ListResourceSubscriptionItemsList = Array<Subscription>;
-const ListResourceSubscriptionItemsList = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<ListResourceSubscriptionItemsList>;
-
 export interface ListResourceSubscription {
   items: ListResourceSubscriptionItemsList;
   pagination: Pagination;
 }
-const ListResourceSubscription = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ListResourceSubscription>;
-
 export interface SubscriptionsRevokeRequest {
   /** The subscription ID. */
   id: string;
 }
-const SubscriptionsRevokeRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<SubscriptionsRevokeRequest>;
-
 export type SubscriptionUpdateBaseMetadataValue = string | number | number | boolean;
 /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
 export type SubscriptionUpdateBaseMetadataMap = {
@@ -16727,31 +13604,16 @@ export type SubscriptionUpdate =
   | SubscriptionPause
   | CustomerSubscriptionResume
   | SubscriptionUpdateClear;
-const SubscriptionUpdate = S.Unknown as any as S.Schema<SubscriptionUpdate>;
-
 export interface SubscriptionsUpdateRequest {
   /** The subscription ID. */
   id: string;
   body: SubscriptionUpdate;
 }
-const SubscriptionsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<SubscriptionsUpdateRequest>;
-
 export type UpdateCheckoutsClientRequestCustomFieldDataValue = string | number | boolean;
-const UpdateCheckoutsClientRequestCustomFieldDataValue =
-  S.Unknown as any as S.Schema<UpdateCheckoutsClientRequestCustomFieldDataValue>;
-
 /** Key-value object storing custom field values. */
 export type UpdateCheckoutsClientRequestCustomFieldDataMap = {
   [key: string]: UpdateCheckoutsClientRequestCustomFieldDataValue | null | undefined;
 };
-const UpdateCheckoutsClientRequestCustomFieldDataMap = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<UpdateCheckoutsClientRequestCustomFieldDataMap>;
-
 export interface UpdateCheckoutsClientRequest {
   /** The checkout session client secret. */
   client_secret: string;
@@ -16780,58 +13642,23 @@ export interface UpdateCheckoutsClientRequest {
   /** Disable the trial period for the checkout session. It's mainly useful when the trial is blocked because the customer already redeemed one. */
   allow_trial?: boolean | null;
 }
-const UpdateCheckoutsClientRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<UpdateCheckoutsClientRequest>;
-
 export interface UpdateCustomerPortalCustomersCheckEmailRequest {
   token: string;
 }
-const UpdateCustomerPortalCustomersCheckEmailRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailRequest>;
-
 export interface UpdateCustomerPortalCustomersCheckEmailResponse {}
-const UpdateCustomerPortalCustomersCheckEmailResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailResponse>;
-
 export interface UpdateCustomerPortalCustomersRequestEmailRequest {
   email: string;
 }
-const UpdateCustomerPortalCustomersRequestEmailRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailRequest>;
-
 export interface UpdateCustomerPortalCustomersRequestEmailResponse {}
-const UpdateCustomerPortalCustomersRequestEmailResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailResponse>;
-
 export interface UpdateCustomerPortalCustomersVerifyEmailRequest {
   token: string;
 }
-const UpdateCustomerPortalCustomersVerifyEmailRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<UpdateCustomerPortalCustomersVerifyEmailRequest>;
-
 export interface CustomerEmailUpdateVerifyResponse {
   token: string;
 }
-const CustomerEmailUpdateVerifyResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<CustomerEmailUpdateVerifyResponse>;
-
 /** The API version that'll be used in event payloads. */
 export type WebhooksCreateWebhookEndpointRequestApiVersion = "2026-04" | "2026-10" | "2027-01";
-const WebhooksCreateWebhookEndpointRequestApiVersion = S.String;
-
 export type WebhookFormat = "raw" | "discord" | "slack";
-const WebhookFormat = S.String;
-
 export type WebhookEventType =
   | "checkout.created"
   | "checkout.updated"
@@ -16875,15 +13702,10 @@ export type WebhookEventType =
   | "benefit_grant.updated"
   | "benefit_grant.revoked"
   | "organization.updated";
-const WebhookEventType = S.String;
-
 /** The events that will trigger the webhook. */
 export type WebhooksCreateWebhookEndpointRequestEventsList = Array<
   WebhookEventType | (string & {})
 >;
-const WebhooksCreateWebhookEndpointRequestEventsList =
-  BenefitGrantsListRequestSortingList as any as S.Schema<WebhooksCreateWebhookEndpointRequestEventsList>;
-
 export interface WebhooksCreateWebhookEndpointRequest {
   /** The URL where the webhook events will be sent. */
   url: string;
@@ -16898,16 +13720,8 @@ export interface WebhooksCreateWebhookEndpointRequest {
   /** The organization ID associated with the webhook endpoint. **Required unless you use an organization token.** */
   organization_id?: string | null;
 }
-const WebhooksCreateWebhookEndpointRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<WebhooksCreateWebhookEndpointRequest>;
-
 /** The events that will trigger the webhook. */
 export type WebhookEndpointEventsList = Array<WebhookEventType>;
-const WebhookEndpointEventsList =
-  WebhooksCreateWebhookEndpointRequestEventsList as any as S.Schema<WebhookEndpointEventsList>;
-
 /** A webhook endpoint. */
 export interface WebhookEndpoint {
   /** Creation timestamp of the object. */
@@ -16935,41 +13749,21 @@ export interface WebhookEndpoint {
   /** Whether Polar signs deliveries to this endpoint with Standard Webhooks. False means Polar's original HMAC over the UTF-8 bytes of the full secret. */
   uses_standard_webhook_signature: boolean;
 }
-const WebhookEndpoint = /*@__PURE__*/ __L.at(__c56, 3) as any as S.Schema<WebhookEndpoint>;
-
 export interface WebhooksDeleteWebhookEndpointRequest {
   /** The webhook endpoint ID. */
   id: string;
 }
-const WebhooksDeleteWebhookEndpointRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<WebhooksDeleteWebhookEndpointRequest>;
-
 export interface WebhooksDeleteWebhookEndpointResponse {}
-const WebhooksDeleteWebhookEndpointResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<WebhooksDeleteWebhookEndpointResponse>;
-
 export interface WebhooksGetWebhookEndpointRequest {
   /** The webhook endpoint ID. */
   id: string;
 }
-const WebhooksGetWebhookEndpointRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<WebhooksGetWebhookEndpointRequest>;
-
 export type WebhooksListWebhookDeliveriesRequestEndpointIdCase1List = Array<string>;
 /** Filter by webhook endpoint ID. */
 export type WebhooksListWebhookDeliveriesRequestEndpointId =
   | string
   | WebhooksListWebhookDeliveriesRequestEndpointIdCase1List;
-const WebhooksListWebhookDeliveriesRequestEndpointId =
-  S.Unknown as any as S.Schema<WebhooksListWebhookDeliveriesRequestEndpointId>;
-
 export type WebhooksListWebhookDeliveriesRequestHttpCodeClass = "2xx" | "3xx" | "4xx" | "5xx";
-const WebhooksListWebhookDeliveriesRequestHttpCodeClass = S.String;
-
 export type WebhooksListWebhookDeliveriesRequestEventTypeCase1List = Array<
   WebhookEventType | (string & {})
 >;
@@ -16977,9 +13771,6 @@ export type WebhooksListWebhookDeliveriesRequestEventTypeCase1List = Array<
 export type WebhooksListWebhookDeliveriesRequestEventType =
   | WebhookEventType
   | WebhooksListWebhookDeliveriesRequestEventTypeCase1List;
-const WebhooksListWebhookDeliveriesRequestEventType =
-  S.Unknown as any as S.Schema<WebhooksListWebhookDeliveriesRequestEventType>;
-
 export interface WebhooksListWebhookDeliveriesRequest {
   /** Filter by webhook endpoint ID. */
   endpoint_id?: WebhooksListWebhookDeliveriesRequestEndpointId;
@@ -17000,11 +13791,6 @@ export interface WebhooksListWebhookDeliveriesRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const WebhooksListWebhookDeliveriesRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<WebhooksListWebhookDeliveriesRequest>;
-
 /** A webhook event. An event represent something that happened in the system that should be sent to the webhook endpoint. It can be delivered multiple times until it's marked as succeeded, each one creating a new delivery. */
 export interface WebhookEvent {
   /** Creation timestamp of the object. */
@@ -17028,8 +13814,6 @@ export interface WebhookEvent {
   /** Whether this event is archived. Archived events can't be redelivered, and the payload is not accessible anymore. */
   is_archived: boolean;
 }
-const WebhookEvent = /*@__PURE__*/ __L.at(__c56, 7) as any as S.Schema<WebhookEvent>;
-
 /** A webhook delivery for a webhook event. */
 export interface WebhookDelivery {
   /** Creation timestamp of the object. */
@@ -17047,31 +13831,16 @@ export interface WebhookDelivery {
   /** The webhook event sent by this delivery. */
   webhook_event: WebhookEvent;
 }
-const WebhookDelivery = /*@__PURE__*/ __L.at(__c57, 0) as any as S.Schema<WebhookDelivery>;
-
 export type ListResourceWebhookDeliveryItemsList = Array<WebhookDelivery>;
-const ListResourceWebhookDeliveryItemsList = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<ListResourceWebhookDeliveryItemsList>;
-
 export interface ListResourceWebhookDelivery {
   items: ListResourceWebhookDeliveryItemsList;
   pagination: Pagination;
 }
-const ListResourceWebhookDelivery = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<ListResourceWebhookDelivery>;
-
 export type WebhooksListWebhookEndpointsRequestOrganizationIdCase1List = Array<string>;
 /** Filter by organization ID. */
 export type WebhooksListWebhookEndpointsRequestOrganizationId =
   | string
   | WebhooksListWebhookEndpointsRequestOrganizationIdCase1List;
-const WebhooksListWebhookEndpointsRequestOrganizationId =
-  S.Unknown as any as S.Schema<WebhooksListWebhookEndpointsRequestOrganizationId>;
-
 export interface WebhooksListWebhookEndpointsRequest {
   /** Filter by organization ID. */
   organization_id?: WebhooksListWebhookEndpointsRequestOrganizationId;
@@ -17080,58 +13849,25 @@ export interface WebhooksListWebhookEndpointsRequest {
   /** Size of a page, defaults to 10. Maximum is 100. */
   limit?: number;
 }
-const WebhooksListWebhookEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<WebhooksListWebhookEndpointsRequest>;
-
 export type ListResourceWebhookEndpointItemsList = Array<WebhookEndpoint>;
-const ListResourceWebhookEndpointItemsList = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<ListResourceWebhookEndpointItemsList>;
-
 export interface ListResourceWebhookEndpoint {
   items: ListResourceWebhookEndpointItemsList;
   pagination: Pagination;
 }
-const ListResourceWebhookEndpoint = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<ListResourceWebhookEndpoint>;
-
 export interface WebhooksRedeliverWebhookEventRequest {
   /** The webhook event ID. */
   id: string;
 }
-const WebhooksRedeliverWebhookEventRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<WebhooksRedeliverWebhookEventRequest>;
-
 export interface WebhooksRedeliverWebhookEventResponse {}
-const WebhooksRedeliverWebhookEventResponse =
-  CustomerPortalCustomersDeletePaymentMethodResponse as any as S.Schema<WebhooksRedeliverWebhookEventResponse>;
-
 export interface WebhooksResetWebhookEndpointSecretRequest {
   /** The webhook endpoint ID. */
   id: string;
 }
-const WebhooksResetWebhookEndpointSecretRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<WebhooksResetWebhookEndpointSecretRequest>;
-
 export type WebhooksUpdateWebhookEndpointRequestApiVersion = "2026-04" | "2026-10" | "2027-01";
-const WebhooksUpdateWebhookEndpointRequestApiVersion = S.String;
-
 /** The events that will trigger the webhook. */
 export type WebhooksUpdateWebhookEndpointRequestEventsList = Array<
   WebhookEventType | (string & {})
 >;
-const WebhooksUpdateWebhookEndpointRequestEventsList =
-  WebhooksCreateWebhookEndpointRequestEventsList as any as S.Schema<WebhooksUpdateWebhookEndpointRequestEventsList>;
-
 export interface WebhooksUpdateWebhookEndpointRequest {
   /** The webhook endpoint ID. */
   id: string;
@@ -17145,11 +13881,6 @@ export interface WebhooksUpdateWebhookEndpointRequest {
   /** Whether the webhook endpoint is enabled. */
   enabled?: boolean | null;
 }
-const WebhooksUpdateWebhookEndpointRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<WebhooksUpdateWebhookEndpointRequest>;
-
 export type BenefitGrantsListError = UnprocessableEntity | PolarOpError;
 /** List Benefit Grants List benefit grants across all benefits accessible to the authenticated subject. **Scopes**: `benefits:read` `benefits:write` */
 export const benefitGrantsList: API.PaginatedOperationMethod<
@@ -17160,8 +13891,8 @@ export const benefitGrantsList: API.PaginatedOperationMethod<
   BenefitGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BenefitGrantsListRequest,
-    output: ListResourceBenefitGrant,
+    input: __S(2, __c0, 2) as any as S.Schema<BenefitGrantsListRequest>,
+    output: __S(11, __c1, 3) as any as S.Schema<ListResourceBenefitGrant>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17184,8 +13915,8 @@ export const benefitsCreate: API.OperationMethod<
   BenefitsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BenefitsCreateRequest,
-  output: BenefitsCreateResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<BenefitsCreateRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BenefitsCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17199,8 +13930,8 @@ export const benefitsDelete: API.OperationMethod<
   BenefitsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BenefitsDeleteRequest,
-  output: BenefitsDeleteResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<BenefitsDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<BenefitsDeleteResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17216,8 +13947,8 @@ export const benefitsFiles: API.PaginatedOperationMethod<
   BenefitDownloadableFile
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BenefitsFilesRequest,
-    output: ListResourceBenefitDownloadableFile,
+    input: __S(16, __c2, 0) as any as S.Schema<BenefitsFilesRequest>,
+    output: __S(19, __c2, 3) as any as S.Schema<ListResourceBenefitDownloadableFile>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17240,8 +13971,8 @@ export const benefitsGet: API.OperationMethod<
   BenefitsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BenefitsGetRequest,
-  output: BenefitsGetResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<BenefitsGetRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BenefitsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17257,8 +13988,8 @@ export const benefitsGrants: API.PaginatedOperationMethod<
   BenefitGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BenefitsGrantsRequest,
-    output: ListResourceBenefitGrant,
+    input: __S(21, __c2, 5) as any as S.Schema<BenefitsGrantsRequest>,
+    output: __S(11, __c1, 3) as any as S.Schema<ListResourceBenefitGrant>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17283,8 +14014,8 @@ export const benefitsList: API.PaginatedOperationMethod<
   Benefit
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: BenefitsListRequest,
-    output: ListResourceBenefit,
+    input: __S(23, __c2, 7) as any as S.Schema<BenefitsListRequest>,
+    output: __S(25, __c3, 1) as any as S.Schema<ListResourceBenefit>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17307,8 +14038,8 @@ export const benefitsUpdate: API.OperationMethod<
   BenefitsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BenefitsUpdateRequest,
-  output: BenefitsUpdateResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<BenefitsUpdateRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BenefitsUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17322,8 +14053,8 @@ export const checkoutLinksCreate: API.OperationMethod<
   CheckoutLinksCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutLinksCreateRequest,
-  output: CheckoutLink,
+  input: __S(27, __c3, 3) as any as S.Schema<CheckoutLinksCreateRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CheckoutLink>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17337,8 +14068,8 @@ export const checkoutLinksDelete: API.OperationMethod<
   CheckoutLinksDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutLinksDeleteRequest,
-  output: CheckoutLinksDeleteResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<CheckoutLinksDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CheckoutLinksDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17352,8 +14083,8 @@ export const checkoutLinksGet: API.OperationMethod<
   CheckoutLinksGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutLinksGetRequest,
-  output: CheckoutLink,
+  input: __S(38, __c4, 6) as any as S.Schema<CheckoutLinksGetRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CheckoutLink>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17369,8 +14100,8 @@ export const checkoutLinksList: API.PaginatedOperationMethod<
   CheckoutLink
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CheckoutLinksListRequest,
-    output: ListResourceCheckoutLink,
+    input: __S(39, __c4, 7) as any as S.Schema<CheckoutLinksListRequest>,
+    output: __S(41, __c5, 1) as any as S.Schema<ListResourceCheckoutLink>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17393,8 +14124,8 @@ export const checkoutLinksUpdate: API.OperationMethod<
   CheckoutLinksUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutLinksUpdateRequest,
-  output: CheckoutLink,
+  input: __S(43, __c5, 3) as any as S.Schema<CheckoutLinksUpdateRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CheckoutLink>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17408,8 +14139,8 @@ export const checkoutsCreate: API.OperationMethod<
   CheckoutsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutsCreateRequest,
-  output: Checkout,
+  input: __S(49, __c6, 1) as any as S.Schema<CheckoutsCreateRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<Checkout>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17423,8 +14154,8 @@ export const checkoutsGet: API.OperationMethod<
   CheckoutsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutsGetRequest,
-  output: Checkout,
+  input: __S(61, __c7, 5) as any as S.Schema<CheckoutsGetRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<Checkout>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17440,8 +14171,8 @@ export const checkoutsList: API.PaginatedOperationMethod<
   Checkout
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CheckoutsListRequest,
-    output: ListResourceCheckout,
+    input: __S(62, __c7, 6) as any as S.Schema<CheckoutsListRequest>,
+    output: __S(64, __c8, 0) as any as S.Schema<ListResourceCheckout>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17464,8 +14195,8 @@ export const checkoutsUpdate: API.OperationMethod<
   CheckoutsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutsUpdateRequest,
-  output: Checkout,
+  input: __S(68, __c8, 4) as any as S.Schema<CheckoutsUpdateRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<Checkout>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17484,8 +14215,8 @@ export const claimCustomerSeatsGetInfo: API.OperationMethod<
   ClaimCustomerSeatsGetInfoError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimCustomerSeatsGetInfoRequest,
-  output: SeatClaimInfo,
+  input: __S(69, __c8, 5) as any as S.Schema<ClaimCustomerSeatsGetInfoRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<SeatClaimInfo>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17505,8 +14236,8 @@ export const confirmCheckoutsClient: API.OperationMethod<
   ConfirmCheckoutsClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmCheckoutsClientRequest,
-  output: CheckoutPublicConfirmed,
+  input: __S(72, __c9, 0) as any as S.Schema<ConfirmCheckoutsClientRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<CheckoutPublicConfirmed>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17520,8 +14251,8 @@ export const customerMetersGet: API.OperationMethod<
   CustomerMetersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerMetersGetRequest,
-  output: CustomerMeter,
+  input: __S(78, __c9, 6) as any as S.Schema<CustomerMetersGetRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<CustomerMeter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17537,8 +14268,8 @@ export const customerMetersList: API.PaginatedOperationMethod<
   CustomerMeter
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerMetersListRequest,
-    output: ListResourceCustomerMeter,
+    input: __S(83, __c10, 3) as any as S.Schema<CustomerMetersListRequest>,
+    output: __S(85, __c10, 5) as any as S.Schema<ListResourceCustomerMeter>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17561,8 +14292,8 @@ export const customerPortalBenefitGrantsGet: API.OperationMethod<
   CustomerPortalBenefitGrantsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalBenefitGrantsGetRequest,
-  output: CustomerPortalBenefitGrantsGetResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<CustomerPortalBenefitGrantsGetRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<CustomerPortalBenefitGrantsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17578,8 +14309,8 @@ export const customerPortalBenefitGrantsList: API.PaginatedOperationMethod<
   CustomerBenefitGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalBenefitGrantsListRequest,
-    output: ListResourceCustomerBenefitGrant,
+    input: __S(91, __c11, 3) as any as S.Schema<CustomerPortalBenefitGrantsListRequest>,
+    output: __S(93, __c11, 5) as any as S.Schema<ListResourceCustomerBenefitGrant>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17606,8 +14337,8 @@ export const customerPortalBenefitGrantsUpdate: API.OperationMethod<
   CustomerPortalBenefitGrantsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalBenefitGrantsUpdateRequest,
-  output: CustomerPortalBenefitGrantsUpdateResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<CustomerPortalBenefitGrantsUpdateRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<CustomerPortalBenefitGrantsUpdateResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17621,8 +14352,8 @@ export const customerPortalCustomerMetersGet: API.OperationMethod<
   CustomerPortalCustomerMetersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomerMetersGetRequest,
-  output: CustomerCustomerMeter,
+  input: __S(95, __c11, 7) as any as S.Schema<CustomerPortalCustomerMetersGetRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<CustomerCustomerMeter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17638,8 +14369,8 @@ export const customerPortalCustomerMetersList: API.PaginatedOperationMethod<
   CustomerCustomerMeter
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalCustomerMetersListRequest,
-    output: ListResourceCustomerCustomerMeter,
+    input: __S(98, __c12, 2) as any as S.Schema<CustomerPortalCustomerMetersListRequest>,
+    output: __S(100, __c12, 4) as any as S.Schema<ListResourceCustomerCustomerMeter>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17665,8 +14396,8 @@ export const customerPortalCustomersAddPaymentMethod: API.OperationMethod<
   CustomerPortalCustomersAddPaymentMethodError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomersAddPaymentMethodRequest,
-  output: CustomerPortalCustomersAddPaymentMethodResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17683,8 +14414,12 @@ export const customerPortalCustomersConfirmPaymentMethod: API.OperationMethod<
   CustomerPortalCustomersConfirmPaymentMethodError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomersConfirmPaymentMethodRequest,
-  output: CustomerPortalCustomersConfirmPaymentMethodResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodRequest>,
+  output: __S(
+    102,
+    __c12,
+    6,
+  ) as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodResponse>,
   errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17702,8 +14437,8 @@ export const customerPortalCustomersDeletePaymentMethod: API.OperationMethod<
   CustomerPortalCustomersDeletePaymentMethodError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomersDeletePaymentMethodRequest,
-  output: CustomerPortalCustomersDeletePaymentMethodResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17717,8 +14452,12 @@ export const customerPortalCustomerSessionGetAuthenticatedUser: API.OperationMet
   CustomerPortalCustomerSessionGetAuthenticatedUserError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomerSessionGetAuthenticatedUserRequest,
-  output: PortalAuthenticatedUser,
+  input: __S(
+    106,
+    __c13,
+    2,
+  ) as any as S.Schema<CustomerPortalCustomerSessionGetAuthenticatedUserRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<PortalAuthenticatedUser>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17732,8 +14471,8 @@ export const customerPortalCustomerSessionIntrospect: API.OperationMethod<
   CustomerPortalCustomerSessionIntrospectError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomerSessionIntrospectRequest,
-  output: CustomerCustomerSession,
+  input: __S(108, __c13, 4) as any as S.Schema<CustomerPortalCustomerSessionIntrospectRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<CustomerCustomerSession>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17747,8 +14486,8 @@ export const customerPortalCustomersGet: API.OperationMethod<
   CustomerPortalCustomersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomersGetRequest,
-  output: CustomerPortalCustomer,
+  input: __S(110, __c13, 6) as any as S.Schema<CustomerPortalCustomersGetRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<CustomerPortalCustomer>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17764,8 +14503,8 @@ export const customerPortalCustomersListPaymentMethods: API.PaginatedOperationMe
   CustomerPaymentMethod
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalCustomersListPaymentMethodsRequest,
-    output: ListResourceCustomerPaymentMethod,
+    input: __S(111, __c13, 7) as any as S.Schema<CustomerPortalCustomersListPaymentMethodsRequest>,
+    output: __S(113, __c14, 1) as any as S.Schema<ListResourceCustomerPaymentMethod>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17788,8 +14527,8 @@ export const customerPortalCustomersUpdate: API.OperationMethod<
   CustomerPortalCustomersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalCustomersUpdateRequest,
-  output: CustomerPortalCustomer,
+  input: __S(114, __c14, 2) as any as S.Schema<CustomerPortalCustomersUpdateRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<CustomerPortalCustomer>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17805,8 +14544,8 @@ export const customerPortalDownloadablesList: API.PaginatedOperationMethod<
   DownloadableRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalDownloadablesListRequest,
-    output: ListResourceDownloadableRead,
+    input: __S(115, __c14, 3) as any as S.Schema<CustomerPortalDownloadablesListRequest>,
+    output: __S(120, __c15, 0) as any as S.Schema<ListResourceDownloadableRead>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17833,8 +14572,8 @@ export const customerPortalLicenseKeysActivate: API.OperationMethod<
   CustomerPortalLicenseKeysActivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalLicenseKeysActivateRequest,
-  output: LicenseKeyActivationCreated,
+  input: __S(123, __c15, 3) as any as S.Schema<CustomerPortalLicenseKeysActivateRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<LicenseKeyActivationCreated>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17851,8 +14590,8 @@ export const customerPortalLicenseKeysDeactivate: API.OperationMethod<
   CustomerPortalLicenseKeysDeactivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalLicenseKeysDeactivateRequest,
-  output: CustomerPortalLicenseKeysDeactivateResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<CustomerPortalLicenseKeysDeactivateRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalLicenseKeysDeactivateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17866,8 +14605,8 @@ export const customerPortalLicenseKeysGet: API.OperationMethod<
   CustomerPortalLicenseKeysGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalLicenseKeysGetRequest,
-  output: LicenseKeyWithActivations,
+  input: __S(132, __c16, 4) as any as S.Schema<CustomerPortalLicenseKeysGetRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<LicenseKeyWithActivations>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17883,8 +14622,8 @@ export const customerPortalLicenseKeysList: API.PaginatedOperationMethod<
   LicenseKeyRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalLicenseKeysListRequest,
-    output: ListResourceLicenseKeyRead,
+    input: __S(137, __c17, 1) as any as S.Schema<CustomerPortalLicenseKeysListRequest>,
+    output: __S(140, __c17, 4) as any as S.Schema<ListResourceLicenseKeyRead>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17911,8 +14650,8 @@ export const customerPortalLicenseKeysRotate: API.OperationMethod<
   CustomerPortalLicenseKeysRotateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalLicenseKeysRotateRequest,
-  output: RotatedLicenseKey,
+  input: __S(141, __c17, 5) as any as S.Schema<CustomerPortalLicenseKeysRotateRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<RotatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17930,8 +14669,8 @@ export const customerPortalLicenseKeysValidate: API.OperationMethod<
   CustomerPortalLicenseKeysValidateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalLicenseKeysValidateRequest,
-  output: ValidatedLicenseKey,
+  input: __S(143, __c17, 7) as any as S.Schema<CustomerPortalLicenseKeysValidateRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ValidatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17949,8 +14688,8 @@ export const customerPortalMembersAddMember: API.OperationMethod<
   CustomerPortalMembersAddMemberError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalMembersAddMemberRequest,
-  output: CustomerPortalMember,
+  input: __S(145, __c18, 1) as any as S.Schema<CustomerPortalMembersAddMemberRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<CustomerPortalMember>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17966,8 +14705,8 @@ export const customerPortalMembersListMembers: API.PaginatedOperationMethod<
   CustomerPortalMember
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalMembersListMembersRequest,
-    output: ListResourceCustomerPortalMember,
+    input: __S(147, __c18, 3) as any as S.Schema<CustomerPortalMembersListMembersRequest>,
+    output: __S(149, __c18, 5) as any as S.Schema<ListResourceCustomerPortalMember>,
     errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17995,8 +14734,8 @@ export const customerPortalMembersRemoveMember: API.OperationMethod<
   CustomerPortalMembersRemoveMemberError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalMembersRemoveMemberRequest,
-  output: CustomerPortalMembersRemoveMemberResponse,
+  input: __S(150, __c18, 6) as any as S.Schema<CustomerPortalMembersRemoveMemberRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalMembersRemoveMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18015,8 +14754,8 @@ export const customerPortalMembersUpdateMember: API.OperationMethod<
   CustomerPortalMembersUpdateMemberError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalMembersUpdateMemberRequest,
-  output: CustomerPortalMember,
+  input: __S(151, __c18, 7) as any as S.Schema<CustomerPortalMembersUpdateMemberRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<CustomerPortalMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18034,8 +14773,8 @@ export const customerPortalOrdersGenerateInvoice: API.OperationMethod<
   CustomerPortalOrdersGenerateInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalOrdersGenerateInvoiceRequest,
-  output: CustomerPortalOrdersGenerateInvoiceResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18049,8 +14788,8 @@ export const customerPortalOrdersGet: API.OperationMethod<
   CustomerPortalOrdersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalOrdersGetRequest,
-  output: CustomerOrder,
+  input: __S(153, __c19, 1) as any as S.Schema<CustomerPortalOrdersGetRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<CustomerOrder>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18067,8 +14806,8 @@ export const customerPortalOrdersGetPaymentStatus: API.OperationMethod<
   CustomerPortalOrdersGetPaymentStatusError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalOrdersGetPaymentStatusRequest,
-  output: CustomerOrderPaymentStatus,
+  input: __S(166, __c20, 6) as any as S.Schema<CustomerPortalOrdersGetPaymentStatusRequest>,
+  output: __S(167, __c20, 7) as any as S.Schema<CustomerOrderPaymentStatus>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18082,8 +14821,8 @@ export const customerPortalOrdersInvoice: API.OperationMethod<
   CustomerPortalOrdersInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalOrdersInvoiceRequest,
-  output: CustomerOrderInvoice,
+  input: __S(168, __c21, 0) as any as S.Schema<CustomerPortalOrdersInvoiceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<CustomerOrderInvoice>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18099,8 +14838,8 @@ export const customerPortalOrdersList: API.PaginatedOperationMethod<
   CustomerOrder
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalOrdersListRequest,
-    output: ListResourceCustomerOrder,
+    input: __S(170, __c21, 2) as any as S.Schema<CustomerPortalOrdersListRequest>,
+    output: __S(172, __c21, 4) as any as S.Schema<ListResourceCustomerOrder>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18123,8 +14862,8 @@ export const customerPortalOrdersReceipt: API.OperationMethod<
   CustomerPortalOrdersReceiptError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalOrdersReceiptRequest,
-  output: CustomerOrderReceipt,
+  input: __S(173, __c21, 5) as any as S.Schema<CustomerPortalOrdersReceiptRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<CustomerOrderReceipt>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18138,8 +14877,8 @@ export const customerPortalOrdersUpdate: API.OperationMethod<
   CustomerPortalOrdersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalOrdersUpdateRequest,
-  output: CustomerOrder,
+  input: __S(174, __c21, 6) as any as S.Schema<CustomerPortalOrdersUpdateRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<CustomerOrder>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18153,8 +14892,8 @@ export const customerPortalOrganizationsGet: API.OperationMethod<
   CustomerPortalOrganizationsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalOrganizationsGetRequest,
-  output: CustomerOrganizationData,
+  input: __S(175, __c21, 7) as any as S.Schema<CustomerPortalOrganizationsGetRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<CustomerOrganizationData>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18173,8 +14912,8 @@ export const customerPortalSeatsAssignSeat: API.OperationMethod<
   CustomerPortalSeatsAssignSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalSeatsAssignSeatRequest,
-  output: CustomerSeat,
+  input: __S(181, __c22, 5) as any as S.Schema<CustomerPortalSeatsAssignSeatRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18190,8 +14929,12 @@ export const customerPortalSeatsListClaimedSubscriptions: API.PaginatedOperation
   CustomerSubscription
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalSeatsListClaimedSubscriptionsRequest,
-    output: ListResourceCustomerSubscription,
+    input: __S(
+      183,
+      __c22,
+      7,
+    ) as any as S.Schema<CustomerPortalSeatsListClaimedSubscriptionsRequest>,
+    output: __S(192, __c24, 0) as any as S.Schema<ListResourceCustomerSubscription>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18218,8 +14961,8 @@ export const customerPortalSeatsListSeats: API.OperationMethod<
   CustomerPortalSeatsListSeatsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalSeatsListSeatsRequest,
-  output: SeatsList,
+  input: __S(193, __c24, 1) as any as S.Schema<CustomerPortalSeatsListSeatsRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<SeatsList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18238,8 +14981,8 @@ export const customerPortalSeatsResendInvitation: API.OperationMethod<
   CustomerPortalSeatsResendInvitationError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalSeatsResendInvitationRequest,
-  output: CustomerSeat,
+  input: __S(196, __c24, 4) as any as S.Schema<CustomerPortalSeatsResendInvitationRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18257,8 +15000,8 @@ export const customerPortalSeatsRevokeSeat: API.OperationMethod<
   CustomerPortalSeatsRevokeSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalSeatsRevokeSeatRequest,
-  output: CustomerSeat,
+  input: __S(197, __c24, 5) as any as S.Schema<CustomerPortalSeatsRevokeSeatRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18276,8 +15019,8 @@ export const customerPortalSubscriptionsCancel: API.OperationMethod<
   CustomerPortalSubscriptionsCancelError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalSubscriptionsCancelRequest,
-  output: CustomerSubscription,
+  input: __S(198, __c24, 6) as any as S.Schema<CustomerPortalSubscriptionsCancelRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<CustomerSubscription>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18291,8 +15034,8 @@ export const customerPortalSubscriptionsGet: API.OperationMethod<
   CustomerPortalSubscriptionsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalSubscriptionsGetRequest,
-  output: CustomerSubscription,
+  input: __S(199, __c24, 7) as any as S.Schema<CustomerPortalSubscriptionsGetRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<CustomerSubscription>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18308,8 +15051,8 @@ export const customerPortalSubscriptionsList: API.PaginatedOperationMethod<
   CustomerSubscription
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalSubscriptionsListRequest,
-    output: ListResourceCustomerSubscription,
+    input: __S(200, __c25, 0) as any as S.Schema<CustomerPortalSubscriptionsListRequest>,
+    output: __S(192, __c24, 0) as any as S.Schema<ListResourceCustomerSubscription>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18337,8 +15080,8 @@ export const customerPortalSubscriptionsUpdate: API.OperationMethod<
   CustomerPortalSubscriptionsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalSubscriptionsUpdateRequest,
-  output: CustomerSubscription,
+  input: __S(201, __c25, 1) as any as S.Schema<CustomerPortalSubscriptionsUpdateRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<CustomerSubscription>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18352,8 +15095,8 @@ export const customerPortalWalletsGet: API.OperationMethod<
   CustomerPortalWalletsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerPortalWalletsGetRequest,
-  output: CustomerWallet,
+  input: __S(202, __c25, 2) as any as S.Schema<CustomerPortalWalletsGetRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<CustomerWallet>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18369,8 +15112,8 @@ export const customerPortalWalletsList: API.PaginatedOperationMethod<
   CustomerWallet
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomerPortalWalletsListRequest,
-    output: ListResourceCustomerWallet,
+    input: __S(204, __c25, 4) as any as S.Schema<CustomerPortalWalletsListRequest>,
+    output: __S(206, __c25, 6) as any as S.Schema<ListResourceCustomerWallet>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18393,8 +15136,8 @@ export const customersCreate: API.OperationMethod<
   CustomersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersCreateRequest,
-  output: CustomersCreateResponse,
+  input: __S(207, __c25, 7) as any as S.Schema<CustomersCreateRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<CustomersCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18408,8 +15151,8 @@ export const customersDelete: API.OperationMethod<
   CustomersDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersDeleteRequest,
-  output: CustomersDeleteResponse,
+  input: __S(209, __c26, 1) as any as S.Schema<CustomersDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CustomersDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18423,8 +15166,8 @@ export const customersDeleteExternal: API.OperationMethod<
   CustomersDeleteExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersDeleteExternalRequest,
-  output: CustomersDeleteExternalResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<CustomersDeleteExternalRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<CustomersDeleteExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18443,8 +15186,8 @@ export const customerSeatsAssignSeat: API.OperationMethod<
   CustomerSeatsAssignSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerSeatsAssignSeatRequest,
-  output: CustomerSeat,
+  input: __S(212, __c26, 4) as any as S.Schema<CustomerSeatsAssignSeatRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18462,8 +15205,8 @@ export const customerSeatsClaimSeat: API.OperationMethod<
   CustomerSeatsClaimSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerSeatsClaimSeatRequest,
-  output: CustomerSeatClaimResponse,
+  input: __S(213, __c26, 5) as any as S.Schema<CustomerSeatsClaimSeatRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<CustomerSeatClaimResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18477,8 +15220,8 @@ export const customerSeatsListSeats: API.OperationMethod<
   CustomerSeatsListSeatsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerSeatsListSeatsRequest,
-  output: SeatsList,
+  input: __S(215, __c26, 7) as any as S.Schema<CustomerSeatsListSeatsRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<SeatsList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18497,8 +15240,8 @@ export const customerSeatsResendInvitation: API.OperationMethod<
   CustomerSeatsResendInvitationError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerSeatsResendInvitationRequest,
-  output: CustomerSeat,
+  input: __S(216, __c27, 0) as any as S.Schema<CustomerSeatsResendInvitationRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18516,8 +15259,8 @@ export const customerSeatsRevokeSeat: API.OperationMethod<
   CustomerSeatsRevokeSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerSeatsRevokeSeatRequest,
-  output: CustomerSeat,
+  input: __S(217, __c27, 1) as any as S.Schema<CustomerSeatsRevokeSeatRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18531,8 +15274,8 @@ export const customerSessionsCreate: API.OperationMethod<
   CustomerSessionsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerSessionsCreateRequest,
-  output: CustomerSession,
+  input: __S(218, __c27, 2) as any as S.Schema<CustomerSessionsCreateRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<CustomerSession>,
   errors: [Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18546,8 +15289,8 @@ export const customersExport: API.OperationMethod<
   CustomersExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersExportRequest,
-  output: CustomersExportResponse,
+  input: __S(220, __c27, 4) as any as S.Schema<CustomersExportRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CustomersExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18561,8 +15304,8 @@ export const customersGet: API.OperationMethod<
   CustomersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersGetRequest,
-  output: CustomersGetResponse,
+  input: __S(221, __c27, 5) as any as S.Schema<CustomersGetRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<CustomersGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18576,8 +15319,8 @@ export const customersGetExternal: API.OperationMethod<
   CustomersGetExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersGetExternalRequest,
-  output: CustomersGetExternalResponse,
+  input: __S(222, __c27, 6) as any as S.Schema<CustomersGetExternalRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<CustomersGetExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18591,8 +15334,8 @@ export const customersGetState: API.OperationMethod<
   CustomersGetStateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersGetStateRequest,
-  output: CustomersGetStateResponse,
+  input: __S(224, __c28, 0) as any as S.Schema<CustomersGetStateRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<CustomersGetStateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18606,8 +15349,8 @@ export const customersGetStateExternal: API.OperationMethod<
   CustomersGetStateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersGetStateExternalRequest,
-  output: CustomersGetStateExternalResponse,
+  input: __S(226, __c28, 2) as any as S.Schema<CustomersGetStateExternalRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<CustomersGetStateExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18623,8 +15366,8 @@ export const customersList: API.PaginatedOperationMethod<
   Customer
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomersListRequest,
-    output: ListResourceCustomer,
+    input: __S(227, __c28, 3) as any as S.Schema<CustomersListRequest>,
+    output: __S(229, __c28, 5) as any as S.Schema<ListResourceCustomer>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18649,8 +15392,8 @@ export const customersListPaymentMethods: API.PaginatedOperationMethod<
   PaymentMethod
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomersListPaymentMethodsRequest,
-    output: ListResourcePaymentMethod,
+    input: __S(230, __c28, 6) as any as S.Schema<CustomersListPaymentMethodsRequest>,
+    output: __S(232, __c29, 0) as any as S.Schema<ListResourcePaymentMethod>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18678,8 +15421,8 @@ export const customersListPaymentMethodsExternal: API.PaginatedOperationMethod<
   PaymentMethod
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomersListPaymentMethodsExternalRequest,
-    output: ListResourcePaymentMethod,
+    input: __S(233, __c29, 1) as any as S.Schema<CustomersListPaymentMethodsExternalRequest>,
+    output: __S(232, __c29, 0) as any as S.Schema<ListResourcePaymentMethod>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18702,8 +15445,8 @@ export const customersMembersCreate: API.OperationMethod<
   CustomersMembersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersCreateRequest,
-  output: Member,
+  input: __S(234, __c29, 2) as any as S.Schema<CustomersMembersCreateRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Member>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18722,8 +15465,8 @@ export const customersMembersCreateExternal: API.OperationMethod<
   CustomersMembersCreateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersCreateExternalRequest,
-  output: Member,
+  input: __S(235, __c29, 3) as any as S.Schema<CustomersMembersCreateExternalRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Member>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18737,8 +15480,8 @@ export const customersMembersDelete: API.OperationMethod<
   CustomersMembersDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersDeleteRequest,
-  output: CustomersMembersDeleteResponse,
+  input: __S(236, __c29, 4) as any as S.Schema<CustomersMembersDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CustomersMembersDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18756,8 +15499,8 @@ export const customersMembersDeleteExternal: API.OperationMethod<
   CustomersMembersDeleteExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersDeleteExternalRequest,
-  output: CustomersMembersDeleteExternalResponse,
+  input: __S(237, __c29, 5) as any as S.Schema<CustomersMembersDeleteExternalRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CustomersMembersDeleteExternalResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18771,8 +15514,8 @@ export const customersMembersGet: API.OperationMethod<
   CustomersMembersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersGetRequest,
-  output: Member,
+  input: __S(238, __c29, 6) as any as S.Schema<CustomersMembersGetRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Member>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18790,8 +15533,8 @@ export const customersMembersGetExternal: API.OperationMethod<
   CustomersMembersGetExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersGetExternalRequest,
-  output: Member,
+  input: __S(239, __c29, 7) as any as S.Schema<CustomersMembersGetExternalRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Member>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18807,8 +15550,8 @@ export const customersMembersList: API.PaginatedOperationMethod<
   Member
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomersMembersListRequest,
-    output: ListResourceMember,
+    input: __S(240, __c30, 0) as any as S.Schema<CustomersMembersListRequest>,
+    output: __S(242, __c30, 2) as any as S.Schema<ListResourceMember>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18837,8 +15580,8 @@ export const customersMembersListExternal: API.PaginatedOperationMethod<
   Member
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomersMembersListExternalRequest,
-    output: ListResourceMember,
+    input: __S(243, __c30, 3) as any as S.Schema<CustomersMembersListExternalRequest>,
+    output: __S(242, __c30, 2) as any as S.Schema<ListResourceMember>,
     errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18861,8 +15604,8 @@ export const customersMembersUpdate: API.OperationMethod<
   CustomersMembersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersUpdateRequest,
-  output: Member,
+  input: __S(244, __c30, 4) as any as S.Schema<CustomersMembersUpdateRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Member>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18880,8 +15623,8 @@ export const customersMembersUpdateExternal: API.OperationMethod<
   CustomersMembersUpdateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersMembersUpdateExternalRequest,
-  output: Member,
+  input: __S(245, __c30, 5) as any as S.Schema<CustomersMembersUpdateExternalRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Member>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18895,8 +15638,8 @@ export const customersUpdate: API.OperationMethod<
   CustomersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersUpdateRequest,
-  output: CustomersUpdateResponse,
+  input: __S(247, __c30, 7) as any as S.Schema<CustomersUpdateRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<CustomersUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18910,8 +15653,8 @@ export const customersUpdateExternal: API.OperationMethod<
   CustomersUpdateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomersUpdateExternalRequest,
-  output: CustomersUpdateExternalResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<CustomersUpdateExternalRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<CustomersUpdateExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18925,8 +15668,8 @@ export const customFieldsCreate: API.OperationMethod<
   CustomFieldsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomFieldsCreateRequest,
-  output: CustomFieldsCreateResponse,
+  input: __S(250, __c31, 2) as any as S.Schema<CustomFieldsCreateRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<CustomFieldsCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18940,8 +15683,8 @@ export const customFieldsDelete: API.OperationMethod<
   CustomFieldsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomFieldsDeleteRequest,
-  output: CustomFieldsDeleteResponse,
+  input: __S(252, __c31, 4) as any as S.Schema<CustomFieldsDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CustomFieldsDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18955,8 +15698,8 @@ export const customFieldsGet: API.OperationMethod<
   CustomFieldsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomFieldsGetRequest,
-  output: CustomFieldsGetResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<CustomFieldsGetRequest>,
+  output: __S(254, __c31, 6) as any as S.Schema<CustomFieldsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -18972,8 +15715,8 @@ export const customFieldsList: API.PaginatedOperationMethod<
   CustomField
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CustomFieldsListRequest,
-    output: ListResourceCustomField,
+    input: __S(255, __c31, 7) as any as S.Schema<CustomFieldsListRequest>,
+    output: __S(257, __c32, 1) as any as S.Schema<ListResourceCustomField>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -18996,8 +15739,8 @@ export const customFieldsUpdate: API.OperationMethod<
   CustomFieldsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomFieldsUpdateRequest,
-  output: CustomFieldsUpdateResponse,
+  input: __S(258, __c32, 2) as any as S.Schema<CustomFieldsUpdateRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<CustomFieldsUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19011,8 +15754,8 @@ export const discountsCreate: API.OperationMethod<
   DiscountsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsCreateRequest,
-  output: DiscountsCreateResponse,
+  input: __S(259, __c32, 3) as any as S.Schema<DiscountsCreateRequest>,
+  output: __S(261, __c32, 5) as any as S.Schema<DiscountsCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19026,8 +15769,8 @@ export const discountsDelete: API.OperationMethod<
   DiscountsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsDeleteRequest,
-  output: DiscountsDeleteResponse,
+  input: __S(262, __c32, 6) as any as S.Schema<DiscountsDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DiscountsDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19041,8 +15784,8 @@ export const discountsGet: API.OperationMethod<
   DiscountsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsGetRequest,
-  output: DiscountsGetResponse,
+  input: __S(263, __c32, 7) as any as S.Schema<DiscountsGetRequest>,
+  output: __S(261, __c32, 5) as any as S.Schema<DiscountsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19058,8 +15801,8 @@ export const discountsList: API.PaginatedOperationMethod<
   Discount
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: DiscountsListRequest,
-    output: ListResourceDiscount,
+    input: __S(264, __c33, 0) as any as S.Schema<DiscountsListRequest>,
+    output: __S(266, __c33, 2) as any as S.Schema<ListResourceDiscount>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19082,8 +15825,8 @@ export const discountsUpdate: API.OperationMethod<
   DiscountsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsUpdateRequest,
-  output: DiscountsUpdateResponse,
+  input: __S(268, __c33, 4) as any as S.Schema<DiscountsUpdateRequest>,
+  output: __S(261, __c32, 5) as any as S.Schema<DiscountsUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19097,8 +15840,8 @@ export const disputesAccept: API.OperationMethod<
   DisputesAcceptError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisputesAcceptRequest,
-  output: Dispute,
+  input: __S(269, __c33, 5) as any as S.Schema<DisputesAcceptRequest>,
+  output: __S(270, __c33, 6) as any as S.Schema<Dispute>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19112,8 +15855,8 @@ export const disputesGet: API.OperationMethod<
   DisputesGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisputesGetRequest,
-  output: Dispute,
+  input: __S(271, __c33, 7) as any as S.Schema<DisputesGetRequest>,
+  output: __S(270, __c33, 6) as any as S.Schema<Dispute>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19129,8 +15872,8 @@ export const disputesList: API.PaginatedOperationMethod<
   Dispute
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: DisputesListRequest,
-    output: ListResourceDispute,
+    input: __S(272, __c34, 0) as any as S.Schema<DisputesListRequest>,
+    output: __S(274, __c34, 2) as any as S.Schema<ListResourceDispute>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19153,8 +15896,8 @@ export const eventsGet: API.OperationMethod<
   EventsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventsGetRequest,
-  output: EventsGetResponse,
+  input: __S(275, __c34, 3) as any as S.Schema<EventsGetRequest>,
+  output: __S(276, __c34, 4) as any as S.Schema<EventsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19168,8 +15911,8 @@ export const eventsIngest: API.OperationMethod<
   EventsIngestError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventsIngestRequest,
-  output: EventsIngestResponse,
+  input: __S(278, __c34, 6) as any as S.Schema<EventsIngestRequest>,
+  output: __S(279, __c34, 7) as any as S.Schema<EventsIngestResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19183,8 +15926,8 @@ export const eventsList: API.OperationMethod<
   EventsListError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventsListRequest,
-  output: EventsListResponse,
+  input: __S(280, __c35, 0) as any as S.Schema<EventsListRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<EventsListResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19200,8 +15943,8 @@ export const eventsListNames: API.PaginatedOperationMethod<
   EventName
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: EventsListNamesRequest,
-    output: ListResourceEventName,
+    input: __S(282, __c35, 2) as any as S.Schema<EventsListNamesRequest>,
+    output: __S(285, __c35, 5) as any as S.Schema<ListResourceEventName>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19226,8 +15969,8 @@ export const eventTypesList: API.PaginatedOperationMethod<
   EventTypeWithStats
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: EventTypesListRequest,
-    output: ListResourceEventTypeWithStats,
+    input: __S(286, __c35, 6) as any as S.Schema<EventTypesListRequest>,
+    output: __S(289, __c36, 1) as any as S.Schema<ListResourceEventTypeWithStats>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19250,8 +15993,8 @@ export const eventTypesUpdate: API.OperationMethod<
   EventTypesUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventTypesUpdateRequest,
-  output: EventType,
+  input: __S(290, __c36, 2) as any as S.Schema<EventTypesUpdateRequest>,
+  output: __S(291, __c36, 3) as any as S.Schema<EventType>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19265,8 +16008,8 @@ export const filesCreate: API.OperationMethod<
   FilesCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesCreateRequest,
-  output: FileUpload,
+  input: __S(292, __c36, 4) as any as S.Schema<FilesCreateRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<FileUpload>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19280,8 +16023,8 @@ export const filesDelete: API.OperationMethod<
   FilesDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesDeleteRequest,
-  output: FilesDeleteResponse,
+  input: __S(297, __c37, 1) as any as S.Schema<FilesDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<FilesDeleteResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19297,8 +16040,8 @@ export const filesList: API.PaginatedOperationMethod<
   FileRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: FilesListRequest,
-    output: ListResourceFileRead,
+    input: __S(298, __c37, 2) as any as S.Schema<FilesListRequest>,
+    output: __S(300, __c37, 4) as any as S.Schema<ListResourceFileRead>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19321,8 +16064,8 @@ export const filesUpdate: API.OperationMethod<
   FilesUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesUpdateRequest,
-  output: FilesUpdateResponse,
+  input: __S(301, __c37, 5) as any as S.Schema<FilesUpdateRequest>,
+  output: __S(302, __c37, 6) as any as S.Schema<FilesUpdateResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19336,8 +16079,8 @@ export const filesUploaded: API.OperationMethod<
   FilesUploadedError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesUploadedRequest,
-  output: FilesUploadedResponse,
+  input: __S(305, __c38, 1) as any as S.Schema<FilesUploadedRequest>,
+  output: __S(302, __c37, 6) as any as S.Schema<FilesUploadedResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19351,8 +16094,8 @@ export const getCheckoutsClient: API.OperationMethod<
   GetCheckoutsClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCheckoutsClientRequest,
-  output: CheckoutPublic,
+  input: __S(306, __c38, 2) as any as S.Schema<GetCheckoutsClientRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<CheckoutPublic>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19366,8 +16109,8 @@ export const licenseKeysActivate: API.OperationMethod<
   LicenseKeysActivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LicenseKeysActivateRequest,
-  output: LicenseKeyActivationCreated,
+  input: __S(313, __c39, 1) as any as S.Schema<LicenseKeysActivateRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<LicenseKeyActivationCreated>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19381,8 +16124,8 @@ export const licenseKeysDeactivate: API.OperationMethod<
   LicenseKeysDeactivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LicenseKeysDeactivateRequest,
-  output: LicenseKeysDeactivateResponse,
+  input: __S(314, __c39, 2) as any as S.Schema<LicenseKeysDeactivateRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<LicenseKeysDeactivateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19396,8 +16139,8 @@ export const licenseKeysGet: API.OperationMethod<
   LicenseKeysGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LicenseKeysGetRequest,
-  output: LicenseKeyWithActivations,
+  input: __S(315, __c39, 3) as any as S.Schema<LicenseKeysGetRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<LicenseKeyWithActivations>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19411,8 +16154,8 @@ export const licenseKeysGetActivation: API.OperationMethod<
   LicenseKeysGetActivationError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LicenseKeysGetActivationRequest,
-  output: LicenseKeyActivationRead,
+  input: __S(316, __c39, 4) as any as S.Schema<LicenseKeysGetActivationRequest>,
+  output: __S(318, __c39, 6) as any as S.Schema<LicenseKeyActivationRead>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19428,8 +16171,8 @@ export const licenseKeysList: API.PaginatedOperationMethod<
   LicenseKeyRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: LicenseKeysListRequest,
-    output: ListResourceLicenseKeyRead,
+    input: __S(319, __c39, 7) as any as S.Schema<LicenseKeysListRequest>,
+    output: __S(140, __c17, 4) as any as S.Schema<ListResourceLicenseKeyRead>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19452,8 +16195,8 @@ export const licenseKeysRotate: API.OperationMethod<
   LicenseKeysRotateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LicenseKeysRotateRequest,
-  output: RotatedLicenseKey,
+  input: __S(320, __c40, 0) as any as S.Schema<LicenseKeysRotateRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<RotatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19467,8 +16210,8 @@ export const licenseKeysUpdate: API.OperationMethod<
   LicenseKeysUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LicenseKeysUpdateRequest,
-  output: LicenseKeyRead,
+  input: __S(321, __c40, 1) as any as S.Schema<LicenseKeysUpdateRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<LicenseKeyRead>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19482,8 +16225,8 @@ export const licenseKeysValidate: API.OperationMethod<
   LicenseKeysValidateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LicenseKeysValidateRequest,
-  output: ValidatedLicenseKey,
+  input: __S(323, __c40, 3) as any as S.Schema<LicenseKeysValidateRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ValidatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19497,8 +16240,8 @@ export const metersCreate: API.OperationMethod<
   MetersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetersCreateRequest,
-  output: Meter,
+  input: __S(325, __c40, 5) as any as S.Schema<MetersCreateRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<Meter>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19512,8 +16255,8 @@ export const metersGet: API.OperationMethod<
   MetersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetersGetRequest,
-  output: Meter,
+  input: __S(326, __c40, 6) as any as S.Schema<MetersGetRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<Meter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19529,8 +16272,8 @@ export const metersList: API.PaginatedOperationMethod<
   Meter
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: MetersListRequest,
-    output: ListResourceMeter,
+    input: __S(327, __c40, 7) as any as S.Schema<MetersListRequest>,
+    output: __S(329, __c41, 1) as any as S.Schema<ListResourceMeter>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19553,8 +16296,8 @@ export const metersQuantities: API.OperationMethod<
   MetersQuantitiesError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetersQuantitiesRequest,
-  output: MeterQuantities,
+  input: __S(330, __c41, 2) as any as S.Schema<MetersQuantitiesRequest>,
+  output: __S(333, __c41, 5) as any as S.Schema<MeterQuantities>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19568,8 +16311,8 @@ export const metersUpdate: API.OperationMethod<
   MetersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetersUpdateRequest,
-  output: Meter,
+  input: __S(335, __c41, 7) as any as S.Schema<MetersUpdateRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<Meter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19583,8 +16326,8 @@ export const metricsCreateDashboard: API.OperationMethod<
   MetricsCreateDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsCreateDashboardRequest,
-  output: MetricDashboardSchema,
+  input: __S(336, __c42, 0) as any as S.Schema<MetricsCreateDashboardRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<MetricDashboardSchema>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19598,8 +16341,8 @@ export const metricsDeleteDashboard: API.OperationMethod<
   MetricsDeleteDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsDeleteDashboardRequest,
-  output: MetricsDeleteDashboardResponse,
+  input: __S(338, __c42, 2) as any as S.Schema<MetricsDeleteDashboardRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<MetricsDeleteDashboardResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19613,8 +16356,8 @@ export const metricsExport: API.OperationMethod<
   MetricsExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsExportRequest,
-  output: MetricsExportResponse,
+  input: __S(339, __c42, 3) as any as S.Schema<MetricsExportRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<MetricsExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19628,8 +16371,8 @@ export const metricsGet: API.OperationMethod<
   MetricsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsGetRequest,
-  output: MetricsResponse,
+  input: __S(340, __c42, 4) as any as S.Schema<MetricsGetRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<MetricsResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19643,8 +16386,8 @@ export const metricsGetDashboard: API.OperationMethod<
   MetricsGetDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsGetDashboardRequest,
-  output: MetricDashboardSchema,
+  input: __S(347, __c43, 3) as any as S.Schema<MetricsGetDashboardRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<MetricDashboardSchema>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19658,8 +16401,8 @@ export const metricsLimits2: API.OperationMethod<
   MetricsLimits2Error,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsLimits2Request,
-  output: MetricsLimits,
+  input: __S(348, __c43, 4) as any as S.Schema<MetricsLimits2Request>,
+  output: __S(351, __c43, 7) as any as S.Schema<MetricsLimits>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19673,8 +16416,8 @@ export const metricsListDashboards: API.OperationMethod<
   MetricsListDashboardsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsListDashboardsRequest,
-  output: MetricsListDashboardsResponse,
+  input: __S(352, __c44, 0) as any as S.Schema<MetricsListDashboardsRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<MetricsListDashboardsResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19688,8 +16431,8 @@ export const metricsUpdateDashboard: API.OperationMethod<
   MetricsUpdateDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetricsUpdateDashboardRequest,
-  output: MetricDashboardSchema,
+  input: __S(355, __c44, 3) as any as S.Schema<MetricsUpdateDashboardRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<MetricDashboardSchema>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19703,8 +16446,8 @@ export const oauth2Authorize: API.OperationMethod<
   Oauth2AuthorizeError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2AuthorizeRequest,
-  output: Oauth2AuthorizeResponse,
+  input: __S(356, __c44, 4) as any as S.Schema<Oauth2AuthorizeRequest>,
+  output: __S(357, __c44, 5) as any as S.Schema<Oauth2AuthorizeResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19718,8 +16461,8 @@ export const oauth2ClientsOauth2CreateClient: API.OperationMethod<
   Oauth2ClientsOauth2CreateClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2ClientsOauth2CreateClientRequest,
-  output: Oauth2ClientsOauth2CreateClientResponse,
+  input: __S(358, __c44, 6) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequest>,
+  output: __S(359, __c44, 7) as any as S.Schema<Oauth2ClientsOauth2CreateClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19733,8 +16476,8 @@ export const oauth2ClientsOauth2DeleteClient: API.OperationMethod<
   Oauth2ClientsOauth2DeleteClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2ClientsOauth2DeleteClientRequest,
-  output: Oauth2ClientsOauth2DeleteClientResponse,
+  input: __S(360, __c45, 0) as any as S.Schema<Oauth2ClientsOauth2DeleteClientRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<Oauth2ClientsOauth2DeleteClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19748,8 +16491,8 @@ export const oauth2ClientsOauth2GetClient: API.OperationMethod<
   Oauth2ClientsOauth2GetClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2ClientsOauth2GetClientRequest,
-  output: Oauth2ClientsOauth2GetClientResponse,
+  input: __S(361, __c45, 1) as any as S.Schema<Oauth2ClientsOauth2GetClientRequest>,
+  output: __S(359, __c44, 7) as any as S.Schema<Oauth2ClientsOauth2GetClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19763,8 +16506,8 @@ export const oauth2ClientsOauth2UpdateClient: API.OperationMethod<
   Oauth2ClientsOauth2UpdateClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2ClientsOauth2UpdateClientRequest,
-  output: Oauth2ClientsOauth2UpdateClientResponse,
+  input: __S(362, __c45, 2) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequest>,
+  output: __S(359, __c44, 7) as any as S.Schema<Oauth2ClientsOauth2UpdateClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19778,8 +16521,8 @@ export const oauth2IntrospectToken: API.OperationMethod<
   Oauth2IntrospectTokenError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2IntrospectTokenRequest,
-  output: IntrospectTokenResponse,
+  input: __S(363, __c45, 3) as any as S.Schema<Oauth2IntrospectTokenRequest>,
+  output: __S(364, __c45, 4) as any as S.Schema<IntrospectTokenResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19793,8 +16536,8 @@ export const oauth2RequestToken: API.OperationMethod<
   Oauth2RequestTokenError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2RequestTokenRequest,
-  output: TokenResponse,
+  input: __S(365, __c45, 5) as any as S.Schema<Oauth2RequestTokenRequest>,
+  output: __S(366, __c45, 6) as any as S.Schema<TokenResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19808,8 +16551,8 @@ export const oauth2RevokeToken: API.OperationMethod<
   Oauth2RevokeTokenError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2RevokeTokenRequest,
-  output: Oauth2RevokeTokenResponse,
+  input: __S(367, __c45, 7) as any as S.Schema<Oauth2RevokeTokenRequest>,
+  output: __S(359, __c44, 7) as any as S.Schema<Oauth2RevokeTokenResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19823,8 +16566,8 @@ export const oauth2Userinfo: API.OperationMethod<
   Oauth2UserinfoError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Oauth2UserinfoRequest,
-  output: Oauth2UserinfoResponse,
+  input: __S(368, __c46, 0) as any as S.Schema<Oauth2UserinfoRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<Oauth2UserinfoResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19838,8 +16581,8 @@ export const ordersCreate: API.OperationMethod<
   OrdersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersCreateRequest,
-  output: Order,
+  input: __S(372, __c46, 4) as any as S.Schema<OrdersCreateRequest>,
+  output: __S(375, __c46, 7) as any as S.Schema<Order>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19853,8 +16596,8 @@ export const ordersExport: API.OperationMethod<
   OrdersExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersExportRequest,
-  output: OrdersExportResponse,
+  input: __S(376, __c47, 0) as any as S.Schema<OrdersExportRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<OrdersExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19868,8 +16611,8 @@ export const ordersFinalize: API.OperationMethod<
   OrdersFinalizeError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersFinalizeRequest,
-  output: Order,
+  input: __S(377, __c47, 1) as any as S.Schema<OrdersFinalizeRequest>,
+  output: __S(375, __c46, 7) as any as S.Schema<Order>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19883,8 +16626,8 @@ export const ordersGenerateInvoice: API.OperationMethod<
   OrdersGenerateInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersGenerateInvoiceRequest,
-  output: OrdersGenerateInvoiceResponse,
+  input: __S(378, __c47, 2) as any as S.Schema<OrdersGenerateInvoiceRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<OrdersGenerateInvoiceResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19898,8 +16641,8 @@ export const ordersGet: API.OperationMethod<
   OrdersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersGetRequest,
-  output: Order,
+  input: __S(379, __c47, 3) as any as S.Schema<OrdersGetRequest>,
+  output: __S(375, __c46, 7) as any as S.Schema<Order>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19913,8 +16656,8 @@ export const ordersInvoice: API.OperationMethod<
   OrdersInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersInvoiceRequest,
-  output: OrderInvoice,
+  input: __S(380, __c47, 4) as any as S.Schema<OrdersInvoiceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<OrderInvoice>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19930,8 +16673,8 @@ export const ordersList: API.PaginatedOperationMethod<
   Order
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: OrdersListRequest,
-    output: ListResourceOrder,
+    input: __S(381, __c47, 5) as any as S.Schema<OrdersListRequest>,
+    output: __S(383, __c47, 7) as any as S.Schema<ListResourceOrder>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -19954,8 +16697,8 @@ export const ordersReceipt: API.OperationMethod<
   OrdersReceiptError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersReceiptRequest,
-  output: OrderReceipt,
+  input: __S(384, __c48, 0) as any as S.Schema<OrdersReceiptRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<OrderReceipt>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19969,8 +16712,8 @@ export const ordersUpdate: API.OperationMethod<
   OrdersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersUpdateRequest,
-  output: Order,
+  input: __S(385, __c48, 1) as any as S.Schema<OrdersUpdateRequest>,
+  output: __S(375, __c46, 7) as any as S.Schema<Order>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19984,8 +16727,8 @@ export const organizationsCreate: API.OperationMethod<
   OrganizationsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsCreateRequest,
-  output: Organization,
+  input: __S(392, __c49, 0) as any as S.Schema<OrganizationsCreateRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<Organization>,
   errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -19999,8 +16742,8 @@ export const organizationsGet: API.OperationMethod<
   OrganizationsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsGetRequest,
-  output: Organization,
+  input: __S(397, __c49, 5) as any as S.Schema<OrganizationsGetRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<Organization>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20016,8 +16759,8 @@ export const organizationsList: API.PaginatedOperationMethod<
   Organization
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: OrganizationsListRequest,
-    output: ListResourceOrganization,
+    input: __S(398, __c49, 6) as any as S.Schema<OrganizationsListRequest>,
+    output: __S(400, __c50, 0) as any as S.Schema<ListResourceOrganization>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -20045,8 +16788,8 @@ export const organizationsUpdate: API.OperationMethod<
   OrganizationsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsUpdateRequest,
-  output: Organization,
+  input: __S(402, __c50, 2) as any as S.Schema<OrganizationsUpdateRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<Organization>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20060,8 +16803,8 @@ export const paymentsGet: API.OperationMethod<
   PaymentsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PaymentsGetRequest,
-  output: PaymentsGetResponse,
+  input: __S(403, __c50, 3) as any as S.Schema<PaymentsGetRequest>,
+  output: __S(404, __c50, 4) as any as S.Schema<PaymentsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20077,8 +16820,8 @@ export const paymentsList: API.PaginatedOperationMethod<
   Payment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PaymentsListRequest,
-    output: ListResourcePayment,
+    input: __S(405, __c50, 5) as any as S.Schema<PaymentsListRequest>,
+    output: __S(407, __c50, 7) as any as S.Schema<ListResourcePayment>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -20101,8 +16844,8 @@ export const productsCreate: API.OperationMethod<
   ProductsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductsCreateRequest,
-  output: Product,
+  input: __S(410, __c51, 2) as any as S.Schema<ProductsCreateRequest>,
+  output: __S(412, __c51, 4) as any as S.Schema<Product>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20121,8 +16864,8 @@ export const productsDelete: API.OperationMethod<
   ProductsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductsDeleteRequest,
-  output: ProductsDeleteResponse,
+  input: __S(413, __c51, 5) as any as S.Schema<ProductsDeleteRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ProductsDeleteResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20136,8 +16879,8 @@ export const productsGet: API.OperationMethod<
   ProductsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductsGetRequest,
-  output: Product,
+  input: __S(414, __c51, 6) as any as S.Schema<ProductsGetRequest>,
+  output: __S(412, __c51, 4) as any as S.Schema<Product>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20153,8 +16896,8 @@ export const productsList: API.PaginatedOperationMethod<
   Product
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ProductsListRequest,
-    output: ListResourceProduct,
+    input: __S(415, __c51, 7) as any as S.Schema<ProductsListRequest>,
+    output: __S(417, __c52, 1) as any as S.Schema<ListResourceProduct>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -20177,8 +16920,8 @@ export const productsUpdate: API.OperationMethod<
   ProductsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductsUpdateRequest,
-  output: Product,
+  input: __S(420, __c52, 4) as any as S.Schema<ProductsUpdateRequest>,
+  output: __S(412, __c51, 4) as any as S.Schema<Product>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20192,8 +16935,8 @@ export const productsUpdateBenefits: API.OperationMethod<
   ProductsUpdateBenefitsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductsUpdateBenefitsRequest,
-  output: Product,
+  input: __S(421, __c52, 5) as any as S.Schema<ProductsUpdateBenefitsRequest>,
+  output: __S(412, __c51, 4) as any as S.Schema<Product>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20207,8 +16950,8 @@ export const refundsCreate: API.OperationMethod<
   RefundsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefundsCreateRequest,
-  output: Refund,
+  input: __S(423, __c52, 7) as any as S.Schema<RefundsCreateRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<Refund>,
   errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20224,8 +16967,8 @@ export const refundsList: API.PaginatedOperationMethod<
   Refund
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: RefundsListRequest,
-    output: ListResourceRefund,
+    input: __S(426, __c53, 2) as any as S.Schema<RefundsListRequest>,
+    output: __S(428, __c53, 4) as any as S.Schema<ListResourceRefund>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -20252,8 +16995,8 @@ export const retryCustomerPortalOrdersConfirmPayment: API.OperationMethod<
   RetryCustomerPortalOrdersConfirmPaymentError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RetryCustomerPortalOrdersConfirmPaymentRequest,
-  output: CustomerOrderPaymentConfirmation,
+  input: __S(429, __c53, 5) as any as S.Schema<RetryCustomerPortalOrdersConfirmPaymentRequest>,
+  output: __S(430, __c53, 6) as any as S.Schema<CustomerOrderPaymentConfirmation>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20267,8 +17010,8 @@ export const subscriptionsCreate: API.OperationMethod<
   SubscriptionsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsCreateRequest,
-  output: Subscription,
+  input: __S(431, __c53, 7) as any as S.Schema<SubscriptionsCreateRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20282,8 +17025,8 @@ export const subscriptionsExport: API.OperationMethod<
   SubscriptionsExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsExportRequest,
-  output: SubscriptionsExportResponse,
+  input: __S(437, __c54, 5) as any as S.Schema<SubscriptionsExportRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<SubscriptionsExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20297,8 +17040,8 @@ export const subscriptionsGet: API.OperationMethod<
   SubscriptionsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsGetRequest,
-  output: Subscription,
+  input: __S(438, __c54, 6) as any as S.Schema<SubscriptionsGetRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20314,8 +17057,8 @@ export const subscriptionsList: API.PaginatedOperationMethod<
   Subscription
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: SubscriptionsListRequest,
-    output: ListResourceSubscription,
+    input: __S(439, __c54, 7) as any as S.Schema<SubscriptionsListRequest>,
+    output: __S(441, __c55, 1) as any as S.Schema<ListResourceSubscription>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -20343,8 +17086,8 @@ export const subscriptionsRevoke: API.OperationMethod<
   SubscriptionsRevokeError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsRevokeRequest,
-  output: Subscription,
+  input: __S(442, __c55, 2) as any as S.Schema<SubscriptionsRevokeRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20363,8 +17106,8 @@ export const subscriptionsUpdate: API.OperationMethod<
   SubscriptionsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsUpdateRequest,
-  output: Subscription,
+  input: __S(443, __c55, 3) as any as S.Schema<SubscriptionsUpdateRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20383,8 +17126,8 @@ export const updateCheckoutsClient: API.OperationMethod<
   UpdateCheckoutsClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCheckoutsClientRequest,
-  output: CheckoutPublic,
+  input: __S(445, __c55, 5) as any as S.Schema<UpdateCheckoutsClientRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<CheckoutPublic>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20398,8 +17141,8 @@ export const updateCustomerPortalCustomersCheckEmail: API.OperationMethod<
   UpdateCustomerPortalCustomersCheckEmailError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomerPortalCustomersCheckEmailRequest,
-  output: UpdateCustomerPortalCustomersCheckEmailResponse,
+  input: __S(446, __c55, 6) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20413,8 +17156,8 @@ export const updateCustomerPortalCustomersRequestEmail: API.OperationMethod<
   UpdateCustomerPortalCustomersRequestEmailError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomerPortalCustomersRequestEmailRequest,
-  output: UpdateCustomerPortalCustomersRequestEmailResponse,
+  input: __S(447, __c55, 7) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20428,8 +17171,8 @@ export const updateCustomerPortalCustomersVerifyEmail: API.OperationMethod<
   UpdateCustomerPortalCustomersVerifyEmailError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomerPortalCustomersVerifyEmailRequest,
-  output: CustomerEmailUpdateVerifyResponse,
+  input: __S(448, __c56, 0) as any as S.Schema<UpdateCustomerPortalCustomersVerifyEmailRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<CustomerEmailUpdateVerifyResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20443,8 +17186,8 @@ export const webhooksCreateWebhookEndpoint: API.OperationMethod<
   WebhooksCreateWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksCreateWebhookEndpointRequest,
-  output: WebhookEndpoint,
+  input: __S(450, __c56, 2) as any as S.Schema<WebhooksCreateWebhookEndpointRequest>,
+  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20458,8 +17201,8 @@ export const webhooksDeleteWebhookEndpoint: API.OperationMethod<
   WebhooksDeleteWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksDeleteWebhookEndpointRequest,
-  output: WebhooksDeleteWebhookEndpointResponse,
+  input: __S(452, __c56, 4) as any as S.Schema<WebhooksDeleteWebhookEndpointRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<WebhooksDeleteWebhookEndpointResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20473,8 +17216,8 @@ export const webhooksGetWebhookEndpoint: API.OperationMethod<
   WebhooksGetWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksGetWebhookEndpointRequest,
-  output: WebhookEndpoint,
+  input: __S(453, __c56, 5) as any as S.Schema<WebhooksGetWebhookEndpointRequest>,
+  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20490,8 +17233,8 @@ export const webhooksListWebhookDeliveries: API.PaginatedOperationMethod<
   WebhookDelivery
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: WebhooksListWebhookDeliveriesRequest,
-    output: ListResourceWebhookDelivery,
+    input: __S(454, __c56, 6) as any as S.Schema<WebhooksListWebhookDeliveriesRequest>,
+    output: __S(458, __c57, 2) as any as S.Schema<ListResourceWebhookDelivery>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -20516,8 +17259,8 @@ export const webhooksListWebhookEndpoints: API.PaginatedOperationMethod<
   WebhookEndpoint
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: WebhooksListWebhookEndpointsRequest,
-    output: ListResourceWebhookEndpoint,
+    input: __S(459, __c57, 3) as any as S.Schema<WebhooksListWebhookEndpointsRequest>,
+    output: __S(461, __c57, 5) as any as S.Schema<ListResourceWebhookEndpoint>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -20540,8 +17283,8 @@ export const webhooksRedeliverWebhookEvent: API.OperationMethod<
   WebhooksRedeliverWebhookEventError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksRedeliverWebhookEventRequest,
-  output: WebhooksRedeliverWebhookEventResponse,
+  input: __S(462, __c57, 6) as any as S.Schema<WebhooksRedeliverWebhookEventRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<WebhooksRedeliverWebhookEventResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20555,8 +17298,8 @@ export const webhooksResetWebhookEndpointSecret: API.OperationMethod<
   WebhooksResetWebhookEndpointSecretError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksResetWebhookEndpointSecretRequest,
-  output: WebhookEndpoint,
+  input: __S(463, __c57, 7) as any as S.Schema<WebhooksResetWebhookEndpointSecretRequest>,
+  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20570,8 +17313,8 @@ export const webhooksUpdateWebhookEndpoint: API.OperationMethod<
   WebhooksUpdateWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksUpdateWebhookEndpointRequest,
-  output: WebhookEndpoint,
+  input: __S(464, __c58, 0) as any as S.Schema<WebhooksUpdateWebhookEndpointRequest>,
+  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -20583,19 +17326,17 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Array(BenefitGrantSortProperty);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(BenefitGrantsListRequestOrganizationId.pipe(T.Query())),
-          customer_id: S.optional(BenefitGrantsListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(
-            BenefitGrantsListRequestExternalCustomerId.pipe(T.Query()),
-          ),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
           is_granted: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(BenefitGrantsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/benefit-grants/", code: 200 })),
       ).annotate({ identifier: "BenefitGrantsListRequest" });
     case 3:
@@ -20607,7 +17348,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BenefitGrantError" });
     case 4:
-      return S.Record(S.String, MetadataOutputTypeValue);
+      return S.Record(S.String, S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -20616,7 +17357,7 @@ function __c0(j: number): any {
           postal_code: S.optional(S.NullOr(S.String)),
           city: S.optional(S.NullOr(S.String)),
           state: S.optional(S.NullOr(S.String)),
-          country: AddressCountry,
+          country: S.String,
         }),
       ).annotate({ identifier: "Address" });
     case 6:
@@ -20631,7 +17372,7 @@ function __c0(j: number): any {
           email: S.String,
           name: S.NullOr(S.String),
           external_id: S.NullOr(S.String),
-          role: MemberRole,
+          role: S.String,
         }),
       ).annotate({ identifier: "Member" });
   }
@@ -20653,15 +17394,15 @@ function __c1(j: number): any {
           customer_id: S.String,
           member_id: S.optional(S.NullOr(S.String)),
           benefit_id: S.String,
-          error: S.optional(S.NullOr(BenefitGrantError)),
-          customer: Customer,
-          member: S.optional(S.NullOr(Member)),
-          benefit: Benefit,
-          properties: BenefitGrantProperties,
+          error: S.optional(S.NullOr(__S(3, __c0, 3))),
+          customer: S.Unknown,
+          member: S.optional(S.NullOr(__S(7, __c0, 7))),
+          benefit: S.Unknown,
+          properties: S.Unknown,
         }),
       ).annotate({ identifier: "BenefitGrant" });
     case 1:
-      return S.Array(BenefitGrant);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20672,18 +17413,18 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceBenefitGrantItemsList,
-          pagination: Pagination,
+          items: __S(9, __c1, 1),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceBenefitGrant" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: BenefitCreate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/benefits/", code: 200 })),
       ).annotate({ identifier: "BenefitsCreateRequest" });
     case 5:
-      return S.suspend(() => Benefit.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "BenefitsCreateResponse",
       });
     case 6:
@@ -20733,12 +17474,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "BenefitDownloadableFile" });
     case 2:
-      return S.Array(BenefitDownloadableFile);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceBenefitDownloadableFileItemsList,
-          pagination: Pagination,
+          items: __S(18, __c2, 2),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceBenefitDownloadableFile",
@@ -20754,26 +17495,26 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           is_granted: S.optional(S.Boolean.pipe(T.Query())),
-          customer_id: S.optional(BenefitsGrantsRequestCustomerId.pipe(T.Query())),
-          member_id: S.optional(BenefitsGrantsRequestMemberId.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          member_id: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/{id}/grants", code: 200 })),
       ).annotate({ identifier: "BenefitsGrantsRequest" });
     case 6:
-      return S.Record(S.String, MetadataQueryValue);
+      return S.Record(S.String, S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(BenefitsListRequestOrganizationId.pipe(T.Query())),
-          type: S.optional(BenefitsListRequestType.pipe(T.Query())),
-          id: S.optional(BenefitsListRequestId.pipe(T.Query())),
-          exclude_id: S.optional(BenefitsListRequestExcludeId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
+          id: S.optional(S.Unknown.pipe(T.Query())),
+          exclude_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(BenefitsListRequestSortingList.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/", code: 200 })),
       ).annotate({ identifier: "BenefitsListRequest" });
   }
@@ -20781,25 +17522,25 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Benefit);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceBenefitItemsList,
-          pagination: Pagination,
+          items: __S(24, __c3, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceBenefit" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: BenefitsUpdateRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/benefits/{id}", code: 200 })),
       ).annotate({ identifier: "BenefitsUpdateRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: CheckoutLinkCreate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/checkout-links/", code: 200 })),
       ).annotate({
         identifier: "CheckoutLinksCreateRequest",
@@ -20807,9 +17548,9 @@ function __c3(j: number): any {
     case 4:
       return S.Record(S.String, S.String);
     case 5:
-      return S.Array(CheckoutLinkProductPricesItem);
+      return S.Array(S.Unknown);
     case 6:
-      return S.Array(BenefitPublic);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -20837,33 +17578,33 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProductMediaFileRead);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: MetadataOutputType,
+          metadata: __S(4, __c0, 4),
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
           name: S.String,
           description: S.NullOr(S.String),
-          visibility: ProductVisibility,
-          recurring_interval: S.NullOr(RecurringInterval),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
           recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(RecurringInterval),
+          meter_interval: S.NullOr(S.String),
           meter_interval_count: S.NullOr(S.Number),
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
           organization_id: S.String,
-          prices: CheckoutLinkProductPricesList,
-          benefits: CheckoutLinkProductBenefitsList,
-          medias: CheckoutLinkProductMediasList,
+          prices: __S(29, __c3, 5),
+          benefits: __S(30, __c3, 6),
+          medias: __S(32, __c4, 0),
         }),
       ).annotate({ identifier: "CheckoutLinkProduct" });
     case 2:
-      return S.Array(CheckoutLinkProduct);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.Record(S.String, S.Number);
     case 4:
@@ -20872,10 +17613,10 @@ function __c4(j: number): any {
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
-          metadata: MetadataOutputType,
-          payment_processor: PaymentProcessor,
+          metadata: __S(4, __c0, 4),
+          payment_processor: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
           success_url: S.NullOr(S.String),
           return_url: S.NullOr(S.String),
@@ -20886,8 +17627,8 @@ function __c4(j: number): any {
           seats: S.NullOr(S.Number),
           units: S.NullOr(S.Number),
           organization_id: S.String,
-          products: CheckoutLinkProductsList,
-          discount: S.NullOr(CheckoutLinkDiscount),
+          products: __S(34, __c4, 2),
+          discount: S.NullOr(S.Unknown),
           url: S.String,
         }),
       ).annotate({ identifier: "CheckoutLink" });
@@ -20908,11 +17649,11 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(CheckoutLinksListRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(CheckoutLinksListRequestProductId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CheckoutLinksListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/checkout-links/", code: 200 })),
       ).annotate({ identifier: "CheckoutLinksListRequest" });
   }
@@ -20920,24 +17661,24 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CheckoutLink);
+      return S.Array(__S(36, __c4, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCheckoutLinkItemsList,
-          pagination: Pagination,
+          items: __S(40, __c5, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceCheckoutLink" });
     case 2:
-      return S.Record(S.String, CheckoutLinksUpdateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          trial_interval: S.optional(S.NullOr(TrialInterval)),
+          trial_interval: S.optional(S.NullOr(S.String)),
           trial_interval_count: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(CheckoutLinksUpdateRequestMetadataMap),
-          products: S.optional(S.NullOr(CheckoutLinksUpdateRequestProductsList)),
+          metadata: S.optional(__S(42, __c5, 2)),
+          products: S.optional(S.NullOr(__S(0, __c0, 0))),
           label: S.optional(S.NullOr(S.String)),
           allow_discount_codes: S.optional(S.NullOr(S.Boolean)),
           require_billing_address: S.optional(S.NullOr(S.Boolean)),
@@ -20951,26 +17692,26 @@ function __c5(j: number): any {
         identifier: "CheckoutLinksUpdateRequest",
       });
     case 4:
-      return S.Record(S.String, CheckoutsCreateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(CheckoutsCreateRequestCustomFieldDataValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 6:
-      return S.Record(S.String, CheckoutsCreateRequestCustomerMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(CheckoutsCreateRequestPricesValueItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, CheckoutsCreateRequestPricesValueList);
+      return S.Record(S.String, __S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          trial_interval: S.optional(S.NullOr(TrialInterval)),
+          trial_interval: S.optional(S.NullOr(S.String)),
           trial_interval_count: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(CheckoutsCreateRequestMetadataMap),
-          custom_field_data: S.optional(CheckoutsCreateRequestCustomFieldDataMap),
+          metadata: S.optional(__S(44, __c5, 4)),
+          custom_field_data: S.optional(__S(45, __c5, 5)),
           discount_id: S.optional(S.NullOr(S.String)),
           allow_discount_codes: S.optional(S.Boolean),
           require_billing_address: S.optional(S.Boolean),
@@ -20989,91 +17730,91 @@ function __c6(j: number): any {
           customer_email: S.optional(S.NullOr(S.String)),
           customer_ip_address: S.optional(S.NullOr(S.String)),
           customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(AddressInput)),
+          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
           customer_tax_id: S.optional(S.NullOr(S.String)),
-          customer_metadata: S.optional(CheckoutsCreateRequestCustomerMetadataMap),
+          customer_metadata: S.optional(__S(46, __c5, 6)),
           subscription_id: S.optional(S.NullOr(S.String)),
           success_url: S.optional(S.NullOr(S.String)),
           return_url: S.optional(S.NullOr(S.String)),
           embed_origin: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
-          currency: S.optional(S.NullOr(PresentmentCurrency)),
-          products: CheckoutsCreateRequestProductsList,
-          prices: S.optional(S.NullOr(CheckoutsCreateRequestPricesMap)),
+          currency: S.optional(S.NullOr(S.String)),
+          products: __S(0, __c0, 0),
+          prices: S.optional(S.NullOr(__S(48, __c6, 0))),
         }).pipe(T.Http({ method: "POST", uri: "/v1/checkouts/", code: 200 })),
       ).annotate({ identifier: "CheckoutsCreateRequest" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(CheckoutCustomFieldDataValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          country: BillingAddressFieldMode,
-          state: BillingAddressFieldMode,
-          city: BillingAddressFieldMode,
-          postal_code: BillingAddressFieldMode,
-          line1: BillingAddressFieldMode,
-          line2: BillingAddressFieldMode,
+          country: S.String,
+          state: S.String,
+          city: S.String,
+          postal_code: S.String,
+          line1: S.String,
+          line2: S.String,
         }),
       ).annotate({
         identifier: "CheckoutBillingAddressFields",
       });
     case 4:
-      return S.Array(CheckoutProductPricesItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
           name: S.String,
           description: S.NullOr(S.String),
-          visibility: ProductVisibility,
-          recurring_interval: S.NullOr(RecurringInterval),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
           recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(RecurringInterval),
+          meter_interval: S.NullOr(S.String),
           meter_interval_count: S.NullOr(S.Number),
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
           organization_id: S.String,
-          prices: CheckoutProductPricesList,
-          benefits: CheckoutProductBenefitsList,
-          medias: CheckoutProductMediasList,
+          prices: __S(52, __c6, 4),
+          benefits: __S(30, __c3, 6),
+          medias: __S(32, __c4, 0),
         }),
       ).annotate({ identifier: "CheckoutProduct" });
     case 6:
-      return S.Array(CheckoutProduct);
+      return S.Array(__S(53, __c6, 5));
     case 7:
-      return S.Array(CheckoutPricesValueItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, CheckoutPricesValueList);
+      return S.Record(S.String, __S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           custom_field_id: S.String,
-          custom_field: CustomField,
+          custom_field: S.Unknown,
           order: S.Number,
           required: S.Boolean,
         }),
       ).annotate({ identifier: "AttachedCustomField" });
     case 2:
-      return S.Array(AttachedCustomField);
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.Record(S.String, CheckoutCustomerMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          custom_field_data: S.optional(CheckoutCustomFieldDataMap),
-          payment_processor: PaymentProcessor,
-          status: CheckoutStatus,
+          custom_field_data: S.optional(__S(50, __c6, 2)),
+          payment_processor: S.String,
+          status: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
           url: S.String,
           expires_at: S.String,
@@ -21090,11 +17831,11 @@ function __c7(j: number): any {
           discount_amount: S.Number,
           net_amount: S.Number,
           tax_amount: S.NullOr(S.Number),
-          tax_behavior: S.NullOr(TaxBehavior),
+          tax_behavior: S.NullOr(S.String),
           total_amount: S.Number,
           currency: S.String,
           allow_trial: S.NullOr(S.Boolean),
-          active_trial_interval: S.NullOr(TrialInterval),
+          active_trial_interval: S.NullOr(S.String),
           active_trial_interval_count: S.NullOr(S.Number),
           trial_end: S.NullOr(S.String),
           organization_id: S.String,
@@ -21114,24 +17855,24 @@ function __c7(j: number): any {
           customer_email: S.NullOr(S.String),
           customer_ip_address: S.NullOr(S.String),
           customer_billing_name: S.NullOr(S.String),
-          customer_billing_address: S.NullOr(Address),
+          customer_billing_address: S.NullOr(__S(5, __c0, 5)),
           customer_tax_id: S.NullOr(S.String),
           locale: S.optional(S.NullOr(S.String)),
           payment_method_type: S.NullOr(S.String),
-          payment_processor_metadata: CheckoutPaymentProcessorMetadataMap,
-          billing_address_fields: CheckoutBillingAddressFields,
-          trial_interval: S.NullOr(TrialInterval),
+          payment_processor_metadata: __S(28, __c3, 4),
+          billing_address_fields: __S(51, __c6, 3),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
-          metadata: MetadataOutputType,
+          metadata: __S(4, __c0, 4),
           external_customer_id: S.NullOr(S.String),
-          products: CheckoutProductsList,
-          product: S.NullOr(CheckoutProduct),
-          product_price: S.NullOr(CheckoutProductPrice),
-          prices: S.NullOr(CheckoutPricesMap),
-          discount: S.NullOr(CheckoutDiscount),
+          products: __S(54, __c6, 6),
+          product: S.NullOr(__S(53, __c6, 5)),
+          product_price: S.NullOr(S.Unknown),
+          prices: S.NullOr(__S(56, __c7, 0)),
+          discount: S.NullOr(S.Unknown),
           subscription_id: S.NullOr(S.String),
-          attached_custom_fields: S.NullOr(CheckoutAttachedCustomFieldsList),
-          customer_metadata: CheckoutCustomerMetadataMap,
+          attached_custom_fields: S.NullOr(__S(58, __c7, 2)),
+          customer_metadata: __S(59, __c7, 3),
         }),
       ).annotate({ identifier: "Checkout" });
     case 5:
@@ -21143,19 +17884,19 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(CheckoutsListRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(CheckoutsListRequestProductId.pipe(T.Query())),
-          customer_id: S.optional(CheckoutsListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(CheckoutsListRequestExternalCustomerId.pipe(T.Query())),
-          status: S.optional(CheckoutsListRequestStatus.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CheckoutsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/checkouts/", code: 200 })),
       ).annotate({ identifier: "CheckoutsListRequest" });
     case 7:
-      return S.Array(Checkout);
+      return S.Array(__S(60, __c7, 4));
   }
 }
 function __c8(j: number): any {
@@ -21163,21 +17904,21 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCheckoutItemsList,
-          pagination: Pagination,
+          items: __S(63, __c7, 7),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceCheckout" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(CheckoutsUpdateRequestCustomFieldDataValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 2:
-      return S.Record(S.String, CheckoutsUpdateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Record(S.String, CheckoutsUpdateRequestCustomerMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          custom_field_data: S.optional(CheckoutsUpdateRequestCustomFieldDataMap),
+          custom_field_data: S.optional(__S(65, __c8, 1)),
           product_id: S.optional(S.NullOr(S.String)),
           product_price_id: S.optional(S.NullOr(S.String)),
           amount: S.optional(S.NullOr(S.Number)),
@@ -21187,19 +17928,19 @@ function __c8(j: number): any {
           customer_name: S.optional(S.NullOr(S.String)),
           customer_email: S.optional(S.NullOr(S.String)),
           customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(AddressInput)),
+          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
           customer_tax_id: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
-          trial_interval: S.optional(S.NullOr(TrialInterval)),
+          trial_interval: S.optional(S.NullOr(S.String)),
           trial_interval_count: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(CheckoutsUpdateRequestMetadataMap),
-          currency: S.optional(S.NullOr(PresentmentCurrency)),
+          metadata: S.optional(__S(66, __c8, 2)),
+          currency: S.optional(S.NullOr(S.String)),
           discount_id: S.optional(S.NullOr(S.String)),
           allow_discount_codes: S.optional(S.NullOr(S.Boolean)),
           require_billing_address: S.optional(S.NullOr(S.Boolean)),
           allow_trial: S.optional(S.NullOr(S.Boolean)),
           customer_ip_address: S.optional(S.NullOr(S.String)),
-          customer_metadata: S.optional(S.NullOr(CheckoutsUpdateRequestCustomerMetadataMap)),
+          customer_metadata: S.optional(S.NullOr(__S(67, __c8, 3))),
           success_url: S.optional(S.NullOr(S.String)),
           return_url: S.optional(S.NullOr(S.String)),
           embed_origin: S.optional(S.NullOr(S.String)),
@@ -21227,10 +17968,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "SeatClaimInfo" });
     case 7:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(ConfirmCheckoutsClientRequestCustomFieldDataValue),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
   }
 }
 function __c9(j: number): any {
@@ -21239,7 +17977,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           client_secret: S.String.pipe(T.Label()),
-          custom_field_data: S.optional(ConfirmCheckoutsClientRequestCustomFieldDataMap),
+          custom_field_data: S.optional(__S(71, __c8, 7)),
           product_id: S.optional(S.NullOr(S.String)),
           product_price_id: S.optional(S.NullOr(S.String)),
           amount: S.optional(S.NullOr(S.Number)),
@@ -21249,7 +17987,7 @@ function __c9(j: number): any {
           customer_name: S.optional(S.NullOr(S.String)),
           customer_email: S.optional(S.NullOr(S.String)),
           customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(AddressInput)),
+          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
           customer_tax_id: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           payment_method_type: S.optional(S.NullOr(S.String)),
@@ -21267,14 +18005,11 @@ function __c9(j: number): any {
         identifier: "ConfirmCheckoutsClientRequest",
       });
     case 1:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(CheckoutPublicConfirmedCustomFieldDataValue),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 2:
-      return S.Array(CheckoutPublicConfirmedPricesValueItem);
+      return S.Array(S.Unknown);
     case 3:
-      return S.Record(S.String, CheckoutPublicConfirmedPricesValueList);
+      return S.Record(S.String, __S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -21284,7 +18019,7 @@ function __c9(j: number): any {
           name: S.String,
           slug: S.String,
           avatar_url: S.NullOr(S.String),
-          proration_behavior: SubscriptionProrationBehavior,
+          proration_behavior: S.String,
           allow_customer_updates: S.Boolean,
         }),
       ).annotate({ identifier: "CheckoutOrganization" });
@@ -21294,8 +18029,8 @@ function __c9(j: number): any {
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          custom_field_data: S.optional(CheckoutPublicConfirmedCustomFieldDataMap),
-          payment_processor: PaymentProcessor,
+          custom_field_data: S.optional(__S(73, __c9, 1)),
+          payment_processor: S.String,
           status: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
           url: S.String,
@@ -21313,11 +18048,11 @@ function __c9(j: number): any {
           discount_amount: S.Number,
           net_amount: S.Number,
           tax_amount: S.NullOr(S.Number),
-          tax_behavior: S.NullOr(TaxBehavior),
+          tax_behavior: S.NullOr(S.String),
           total_amount: S.Number,
           currency: S.String,
           allow_trial: S.NullOr(S.Boolean),
-          active_trial_interval: S.NullOr(TrialInterval),
+          active_trial_interval: S.NullOr(S.String),
           active_trial_interval_count: S.NullOr(S.Number),
           trial_end: S.NullOr(S.String),
           organization_id: S.String,
@@ -21337,19 +18072,19 @@ function __c9(j: number): any {
           customer_email: S.NullOr(S.String),
           customer_ip_address: S.NullOr(S.String),
           customer_billing_name: S.NullOr(S.String),
-          customer_billing_address: S.NullOr(Address),
+          customer_billing_address: S.NullOr(__S(5, __c0, 5)),
           customer_tax_id: S.NullOr(S.String),
           locale: S.optional(S.NullOr(S.String)),
           payment_method_type: S.NullOr(S.String),
-          payment_processor_metadata: CheckoutPublicConfirmedPaymentProcessorMetadataMap,
-          billing_address_fields: CheckoutBillingAddressFields,
-          products: CheckoutPublicConfirmedProductsList,
-          product: S.NullOr(CheckoutProduct),
-          product_price: S.NullOr(CheckoutPublicConfirmedProductPrice),
-          prices: S.NullOr(CheckoutPublicConfirmedPricesMap),
-          discount: S.NullOr(CheckoutPublicConfirmedDiscount),
-          organization: CheckoutOrganization,
-          attached_custom_fields: S.NullOr(CheckoutPublicConfirmedAttachedCustomFieldsList),
+          payment_processor_metadata: __S(28, __c3, 4),
+          billing_address_fields: __S(51, __c6, 3),
+          products: __S(54, __c6, 6),
+          product: S.NullOr(__S(53, __c6, 5)),
+          product_price: S.NullOr(S.Unknown),
+          prices: S.NullOr(__S(75, __c9, 3)),
+          discount: S.NullOr(S.Unknown),
+          organization: __S(76, __c9, 4),
+          attached_custom_fields: S.NullOr(__S(58, __c7, 2)),
           customer_session_token: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CheckoutPublicConfirmed" });
@@ -21360,7 +18095,7 @@ function __c9(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-meters/{id}", code: 200 })),
       ).annotate({ identifier: "CustomerMetersGetRequest" });
     case 7:
-      return S.Array(FilterClausesItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c10(j: number): any {
@@ -21368,23 +18103,23 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          conjunction: FilterConjunction,
-          clauses: FilterClausesList,
+          conjunction: S.String,
+          clauses: __S(79, __c9, 7),
         }),
       ).annotate({ identifier: "Filter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: MetadataOutputType,
+          metadata: __S(4, __c0, 4),
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
           name: S.String,
-          unit: MeterUnit,
+          unit: S.String,
           custom_label: S.optional(S.NullOr(S.String)),
           custom_multiplier: S.optional(S.NullOr(S.Number)),
-          filter: Filter,
-          aggregation: MeterAggregation,
+          filter: __S(80, __c10, 0),
+          aggregation: S.Unknown,
           organization_id: S.String,
           archived_at: S.optional(S.NullOr(S.String)),
         }),
@@ -21400,33 +18135,31 @@ function __c10(j: number): any {
           consumed_units: S.Number,
           credited_units: S.Number,
           balance: S.Number,
-          customer: Customer,
-          meter: Meter,
+          customer: S.Unknown,
+          meter: __S(81, __c10, 1),
         }),
       ).annotate({ identifier: "CustomerMeter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(CustomerMetersListRequestOrganizationId.pipe(T.Query())),
-          customer_id: S.optional(CustomerMetersListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(
-            CustomerMetersListRequestExternalCustomerId.pipe(T.Query()),
-          ),
-          meter_id: S.optional(CustomerMetersListRequestMeterId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          meter_id: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomerMetersListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-meters/", code: 200 })),
       ).annotate({
         identifier: "CustomerMetersListRequest",
       });
     case 4:
-      return S.Array(CustomerMeter);
+      return S.Array(__S(82, __c10, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerMeterItemsList,
-          pagination: Pagination,
+          items: __S(84, __c10, 4),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerMeter",
@@ -21455,7 +18188,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, CustomerPortalOAuthAccount);
+      return S.Record(S.String, __S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -21466,44 +18199,42 @@ function __c11(j: number): any {
           email_verified: S.Boolean,
           name: S.NullOr(S.String),
           billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(Address),
-          tax_id: S.NullOr(CustomerPortalCustomerTaxIdList),
-          oauth_accounts: CustomerPortalCustomerOauthAccountsMap,
+          billing_address: S.NullOr(__S(5, __c0, 5)),
+          tax_id: S.NullOr(__S(6, __c0, 6)),
+          oauth_accounts: __S(88, __c11, 0),
           default_payment_method_id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(CustomerType)),
+          type: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CustomerPortalCustomer" });
     case 2:
-      return S.suspend(() => CustomerBenefitGrant.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomerPortalBenefitGrantsGetResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(CustomerPortalBenefitGrantsListRequestType.pipe(T.Query())),
-          benefit_id: S.optional(CustomerPortalBenefitGrantsListRequestBenefitId.pipe(T.Query())),
-          checkout_id: S.optional(CustomerPortalBenefitGrantsListRequestCheckoutId.pipe(T.Query())),
-          order_id: S.optional(CustomerPortalBenefitGrantsListRequestOrderId.pipe(T.Query())),
-          subscription_id: S.optional(
-            CustomerPortalBenefitGrantsListRequestSubscriptionId.pipe(T.Query()),
-          ),
-          member_id: S.optional(CustomerPortalBenefitGrantsListRequestMemberId.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
+          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
+          checkout_id: S.optional(S.Unknown.pipe(T.Query())),
+          order_id: S.optional(S.Unknown.pipe(T.Query())),
+          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
+          member_id: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomerPortalBenefitGrantsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/benefit-grants/", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalBenefitGrantsListRequest",
       });
     case 4:
-      return S.Array(CustomerBenefitGrant);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerBenefitGrantItemsList,
-          pagination: Pagination,
+          items: __S(92, __c11, 4),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerBenefitGrant",
@@ -21512,7 +18243,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: CustomerBenefitGrantUpdate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/customer-portal/benefit-grants/{id}", code: 200 }),
         ),
@@ -21553,28 +18284,28 @@ function __c12(j: number): any {
           consumed_units: S.Number,
           credited_units: S.Number,
           balance: S.Number,
-          meter: CustomerCustomerMeterMeter,
+          meter: __S(96, __c12, 0),
         }),
       ).annotate({ identifier: "CustomerCustomerMeter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meter_id: S.optional(CustomerPortalCustomerMetersListRequestMeterId.pipe(T.Query())),
+          meter_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomerPortalCustomerMetersListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/meters/", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalCustomerMetersListRequest",
       });
     case 3:
-      return S.Array(CustomerCustomerMeter);
+      return S.Array(__S(97, __c12, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerCustomerMeterItemsList,
-          pagination: Pagination,
+          items: __S(99, __c12, 3),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerCustomerMeter",
@@ -21596,9 +18327,7 @@ function __c12(j: number): any {
         identifier: "CustomerPortalCustomersAddPaymentMethodRequest",
       });
     case 6:
-      return S.suspend(() =>
-        CustomerPaymentMethodCreateResponse.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomerPortalCustomersAddPaymentMethodResponse",
       });
     case 7:
@@ -21704,12 +18433,12 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomerPaymentMethod);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerPaymentMethodItemsList,
-          pagination: Pagination,
+          items: __S(112, __c14, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerPaymentMethod",
@@ -21718,7 +18447,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billing_name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(AddressInput)),
+          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
           tax_id: S.optional(S.NullOr(S.String)),
           default_payment_method_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/customers/me", code: 200 })),
@@ -21728,7 +18457,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          benefit_id: S.optional(CustomerPortalDownloadablesListRequestBenefitId.pipe(T.Query())),
+          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/downloadables/", code: 200 })),
@@ -21739,7 +18468,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          headers: S.optional(S3DownloadURLHeadersMap),
+          headers: S.optional(__S(28, __c3, 4)),
           expires_at: S.String,
         }),
       ).annotate({ identifier: "S3DownloadURL" });
@@ -21757,10 +18486,10 @@ function __c14(j: number): any {
           checksum_sha256_base64: S.NullOr(S.String),
           checksum_sha256_hex: S.NullOr(S.String),
           last_modified_at: S.NullOr(S.String),
-          download: S3DownloadURL,
+          download: __S(116, __c14, 4),
           version: S.NullOr(S.String),
           is_uploaded: S.Boolean,
-          service: FileServiceTypes,
+          service: S.String,
           size_readable: S.String,
         }),
       ).annotate({ identifier: "FileDownload" });
@@ -21769,11 +18498,11 @@ function __c14(j: number): any {
         S.Struct({
           id: S.String,
           benefit_id: S.String,
-          file: FileDownload,
+          file: __S(117, __c14, 5),
         }),
       ).annotate({ identifier: "DownloadableRead" });
     case 7:
-      return S.Array(DownloadableRead);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -21781,24 +18510,24 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceDownloadableReadItemsList,
-          pagination: Pagination,
+          items: __S(119, __c14, 7),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceDownloadableRead",
       });
     case 1:
-      return S.Record(S.String, CustomerPortalLicenseKeysActivateRequestConditionsValue);
+      return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Record(S.String, CustomerPortalLicenseKeysActivateRequestMetaValue);
+      return S.Record(S.String, S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           organization_id: S.String,
           label: S.String,
-          conditions: S.optional(CustomerPortalLicenseKeysActivateRequestConditionsMap),
-          meta: S.optional(CustomerPortalLicenseKeysActivateRequestMetaMap),
+          conditions: S.optional(__S(121, __c15, 1)),
+          meta: S.optional(__S(122, __c15, 2)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/activate", code: 200 }),
         ),
@@ -21806,22 +18535,22 @@ function __c15(j: number): any {
         identifier: "CustomerPortalLicenseKeysActivateRequest",
       });
     case 4:
-      return S.Record(S.String, LicenseKeyActivationCreatedMetaValue);
+      return S.Record(S.String, S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          metadata: MetadataOutputType,
+          metadata: __S(4, __c0, 4),
           external_id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           email_verified: S.Boolean,
-          type: CustomerType,
+          type: S.String,
           name: S.NullOr(S.String),
           billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(Address),
-          tax_id: S.NullOr(LicenseKeyCustomerTaxIdList),
+          billing_address: S.NullOr(__S(5, __c0, 5)),
+          tax_id: S.NullOr(__S(6, __c0, 6)),
           locale: S.optional(S.NullOr(S.String)),
           organization_id: S.String,
           default_payment_method_id: S.optional(S.NullOr(S.String)),
@@ -21842,7 +18571,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: SubscriptionStatus,
+          status: S.String,
           current_period_start: S.String,
           current_period_end: S.String,
           cancel_at_period_end: S.Boolean,
@@ -21858,7 +18587,7 @@ function __c16(j: number): any {
         S.Struct({
           id: S.String,
           created_at: S.String,
-          status: OrderStatus,
+          status: S.String,
           paid: S.Boolean,
         }),
       ).annotate({ identifier: "LicenseKeyOrder" });
@@ -21870,9 +18599,9 @@ function __c16(j: number): any {
           modified_at: S.NullOr(S.String),
           organization_id: S.String,
           customer_id: S.String,
-          customer: LicenseKeyCustomer,
+          customer: __S(125, __c15, 5),
           member_id: S.NullOr(S.String),
-          member: S.NullOr(LicenseKeyMember),
+          member: S.NullOr(__S(126, __c15, 6)),
           benefit_id: S.String,
           key: S.String,
           display_key: S.String,
@@ -21884,9 +18613,9 @@ function __c16(j: number): any {
           last_validated_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           subscription_id: S.NullOr(S.String),
-          subscription: S.NullOr(LicenseKeySubscription),
+          subscription: S.NullOr(__S(127, __c15, 7)),
           order_id: S.NullOr(S.String),
-          order: S.NullOr(LicenseKeyOrder),
+          order: S.NullOr(__S(128, __c16, 0)),
         }),
       ).annotate({ identifier: "GrantedLicenseKey" });
     case 2:
@@ -21895,10 +18624,10 @@ function __c16(j: number): any {
           id: S.String,
           license_key_id: S.String,
           label: S.String,
-          meta: LicenseKeyActivationCreatedMetaMap,
+          meta: __S(124, __c15, 4),
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          license_key: GrantedLicenseKey,
+          license_key: __S(129, __c16, 1),
         }),
       ).annotate({
         identifier: "LicenseKeyActivationCreated",
@@ -21924,20 +18653,20 @@ function __c16(j: number): any {
         identifier: "CustomerPortalLicenseKeysGetRequest",
       });
     case 5:
-      return S.Record(S.String, LicenseKeyActivationBaseMetaValue);
+      return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           license_key_id: S.String,
           label: S.String,
-          meta: LicenseKeyActivationBaseMetaMap,
+          meta: __S(133, __c16, 5),
           created_at: S.String,
           modified_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LicenseKeyActivationBase" });
     case 7:
-      return S.Array(LicenseKeyActivationBase);
+      return S.Array(__S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
@@ -21950,20 +18679,20 @@ function __c17(j: number): any {
           modified_at: S.NullOr(S.String),
           organization_id: S.String,
           customer_id: S.String,
-          customer: LicenseKeyCustomer,
+          customer: __S(125, __c15, 5),
           member_id: S.NullOr(S.String),
-          member: S.NullOr(LicenseKeyMember),
+          member: S.NullOr(__S(126, __c15, 6)),
           benefit_id: S.String,
           key: S.String,
           display_key: S.String,
-          status: LicenseKeyStatus,
+          status: S.String,
           limit_activations: S.NullOr(S.Number),
           usage: S.Number,
           limit_usage: S.NullOr(S.Number),
           validations: S.Number,
           last_validated_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
-          activations: LicenseKeyWithActivationsActivationsList,
+          activations: __S(135, __c16, 7),
         }),
       ).annotate({
         identifier: "LicenseKeyWithActivations",
@@ -21986,13 +18715,13 @@ function __c17(j: number): any {
           modified_at: S.NullOr(S.String),
           organization_id: S.String,
           customer_id: S.String,
-          customer: LicenseKeyCustomer,
+          customer: __S(125, __c15, 5),
           member_id: S.NullOr(S.String),
-          member: S.NullOr(LicenseKeyMember),
+          member: S.NullOr(__S(126, __c15, 6)),
           benefit_id: S.String,
           key: S.String,
           display_key: S.String,
-          status: LicenseKeyStatus,
+          status: S.String,
           limit_activations: S.NullOr(S.Number),
           usage: S.Number,
           limit_usage: S.NullOr(S.Number),
@@ -22002,12 +18731,12 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "LicenseKeyRead" });
     case 3:
-      return S.Array(LicenseKeyRead);
+      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceLicenseKeyReadItemsList,
-          pagination: Pagination,
+          items: __S(139, __c17, 3),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceLicenseKeyRead",
@@ -22027,7 +18756,7 @@ function __c17(j: number): any {
         identifier: "CustomerPortalLicenseKeysRotateRequest",
       });
     case 6:
-      return S.Record(S.String, CustomerPortalLicenseKeysValidateRequestConditionsValue);
+      return S.Record(S.String, S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -22037,7 +18766,7 @@ function __c17(j: number): any {
           benefit_id: S.optional(S.NullOr(S.String)),
           customer_id: S.optional(S.NullOr(S.String)),
           increment_usage: S.optional(S.NullOr(S.Number)),
-          conditions: S.optional(CustomerPortalLicenseKeysValidateRequestConditionsMap),
+          conditions: S.optional(__S(142, __c17, 6)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/validate", code: 200 }),
         ),
@@ -22056,9 +18785,9 @@ function __c18(j: number): any {
           modified_at: S.NullOr(S.String),
           organization_id: S.String,
           customer_id: S.String,
-          customer: LicenseKeyCustomer,
+          customer: __S(125, __c15, 5),
           member_id: S.NullOr(S.String),
-          member: S.NullOr(LicenseKeyMember),
+          member: S.NullOr(__S(126, __c15, 6)),
           benefit_id: S.String,
           key: S.String,
           display_key: S.String,
@@ -22070,10 +18799,10 @@ function __c18(j: number): any {
           last_validated_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           subscription_id: S.NullOr(S.String),
-          subscription: S.NullOr(LicenseKeySubscription),
+          subscription: S.NullOr(__S(127, __c15, 7)),
           order_id: S.NullOr(S.String),
-          order: S.NullOr(LicenseKeyOrder),
-          activation: S.optional(S.NullOr(LicenseKeyActivationBase)),
+          order: S.NullOr(__S(128, __c16, 0)),
+          activation: S.optional(S.NullOr(__S(134, __c16, 6))),
         }),
       ).annotate({ identifier: "ValidatedLicenseKey" });
     case 1:
@@ -22081,7 +18810,7 @@ function __c18(j: number): any {
         S.Struct({
           email: S.String,
           name: S.optional(S.NullOr(S.String)),
-          role: S.optional(MemberRole),
+          role: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customer-portal/members", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalMembersAddMemberRequest",
@@ -22094,7 +18823,7 @@ function __c18(j: number): any {
           id: S.String,
           email: S.String,
           name: S.NullOr(S.String),
-          role: MemberRole,
+          role: S.String,
         }),
       ).annotate({ identifier: "CustomerPortalMember" });
     case 3:
@@ -22107,12 +18836,12 @@ function __c18(j: number): any {
         identifier: "CustomerPortalMembersListMembersRequest",
       });
     case 4:
-      return S.Array(CustomerPortalMember);
+      return S.Array(__S(146, __c18, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerPortalMemberItemsList,
-          pagination: Pagination,
+          items: __S(148, __c18, 4),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerPortalMember",
@@ -22130,7 +18859,7 @@ function __c18(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           name: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(MemberRole)),
+          role: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/members/{id}", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalMembersUpdateMemberRequest",
@@ -22158,7 +18887,7 @@ function __c19(j: number): any {
         identifier: "CustomerPortalOrdersGetRequest",
       });
     case 2:
-      return S.Array(CustomerOrderProductPricesItem);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -22189,9 +18918,9 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          usage: CustomerPortalUsageSettings,
-          subscription: CustomerPortalSubscriptionSettings,
-          customer: S.optional(CustomerPortalCustomerSettings),
+          usage: __S(155, __c19, 3),
+          subscription: __S(156, __c19, 4),
+          customer: S.optional(__S(157, __c19, 5)),
         }),
       ).annotate({
         identifier: "OrganizationCustomerPortalSettings",
@@ -22218,10 +18947,10 @@ function __c20(j: number): any {
           name: S.String,
           slug: S.String,
           avatar_url: S.NullOr(S.String),
-          proration_behavior: SubscriptionProrationBehavior,
+          proration_behavior: S.String,
           allow_customer_updates: S.Boolean,
-          customer_portal_settings: OrganizationCustomerPortalSettings,
-          organization_features: S.optional(CustomerOrganizationFeatureSettings),
+          customer_portal_settings: __S(158, __c19, 6),
+          organization_features: S.optional(__S(159, __c19, 7)),
         }),
       ).annotate({ identifier: "CustomerOrganization" });
     case 1:
@@ -22230,22 +18959,22 @@ function __c20(j: number): any {
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
           name: S.String,
           description: S.NullOr(S.String),
-          visibility: ProductVisibility,
-          recurring_interval: S.NullOr(RecurringInterval),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
           recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(RecurringInterval),
+          meter_interval: S.NullOr(S.String),
           meter_interval_count: S.NullOr(S.Number),
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
           organization_id: S.String,
-          prices: CustomerOrderProductPricesList,
-          benefits: CustomerOrderProductBenefitsList,
-          medias: CustomerOrderProductMediasList,
-          organization: CustomerOrganization,
+          prices: __S(154, __c19, 2),
+          benefits: __S(30, __c3, 6),
+          medias: __S(32, __c4, 0),
+          organization: __S(160, __c20, 0),
         }),
       ).annotate({ identifier: "CustomerOrderProduct" });
     case 2:
@@ -22256,9 +18985,9 @@ function __c20(j: number): any {
           id: S.String,
           amount: S.Number,
           currency: S.String,
-          recurring_interval: RecurringInterval,
+          recurring_interval: S.String,
           recurring_interval_count: S.Number,
-          status: SubscriptionStatus,
+          status: S.String,
           current_period_start: S.String,
           current_period_end: S.String,
           current_meter_period_start: S.NullOr(S.String),
@@ -22280,7 +19009,7 @@ function __c20(j: number): any {
           checkout_id: S.NullOr(S.String),
           seats: S.optional(S.NullOr(S.Number)),
           units: S.NullOr(S.Number),
-          customer_cancellation_reason: S.NullOr(CustomerCancellationReason),
+          customer_cancellation_reason: S.NullOr(S.String),
           customer_cancellation_comment: S.NullOr(S.String),
         }),
       ).annotate({
@@ -22302,14 +19031,14 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "OrderItemSchema" });
     case 4:
-      return S.Array(OrderItemSchema);
+      return S.Array(__S(163, __c20, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          status: OrderStatus,
+          status: S.String,
           paid: S.Boolean,
           subtotal_amount: S.Number,
           discount_amount: S.Number,
@@ -22321,9 +19050,9 @@ function __c20(j: number): any {
           refunded_amount: S.Number,
           refunded_tax_amount: S.Number,
           currency: S.String,
-          billing_reason: OrderBillingReason,
+          billing_reason: S.String,
           billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(Address),
+          billing_address: S.NullOr(__S(5, __c0, 5)),
           invoice_number: S.NullOr(S.String),
           is_invoice_generated: S.Boolean,
           receipt_number: S.NullOr(S.String),
@@ -22335,9 +19064,9 @@ function __c20(j: number): any {
           subscription_id: S.NullOr(S.String),
           checkout_id: S.NullOr(S.String),
           next_payment_attempt_at: S.optional(S.NullOr(S.String)),
-          product: S.NullOr(CustomerOrderProduct),
-          subscription: S.NullOr(CustomerOrderSubscription),
-          items: CustomerOrderItemsList,
+          product: S.NullOr(__S(161, __c20, 1)),
+          subscription: S.NullOr(__S(162, __c20, 2)),
+          items: __S(164, __c20, 4),
           description: S.String,
           refundable_amount: S.Number,
           refundable_tax_amount: S.Number,
@@ -22389,28 +19118,24 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          product_id: S.optional(CustomerPortalOrdersListRequestProductId.pipe(T.Query())),
-          product_billing_type: S.optional(
-            CustomerPortalOrdersListRequestProductBillingType.pipe(T.Query()),
-          ),
-          subscription_id: S.optional(
-            CustomerPortalOrdersListRequestSubscriptionId.pipe(T.Query()),
-          ),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_billing_type: S.optional(S.Unknown.pipe(T.Query())),
+          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomerPortalOrdersListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/orders/", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalOrdersListRequest",
       });
     case 3:
-      return S.Array(CustomerOrder);
+      return S.Array(__S(165, __c20, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerOrderItemsList,
-          pagination: Pagination,
+          items: __S(171, __c21, 3),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerOrder",
@@ -22430,7 +19155,7 @@ function __c21(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           billing_name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(AddressInput)),
+          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/orders/{id}", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalOrdersUpdateRequest",
@@ -22450,37 +19175,37 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomerProductPricesItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
           name: S.String,
           description: S.NullOr(S.String),
-          visibility: ProductVisibility,
-          recurring_interval: S.NullOr(RecurringInterval),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
           recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(RecurringInterval),
+          meter_interval: S.NullOr(S.String),
           meter_interval_count: S.NullOr(S.Number),
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
           organization_id: S.String,
-          prices: CustomerProductPricesList,
-          benefits: CustomerProductBenefitsList,
-          medias: CustomerProductMediasList,
+          prices: __S(176, __c22, 0),
+          benefits: __S(30, __c3, 6),
+          medias: __S(32, __c4, 0),
         }),
       ).annotate({ identifier: "CustomerProduct" });
     case 2:
-      return S.Array(CustomerProduct);
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          organization: CustomerOrganization,
-          products: CustomerOrganizationDataProductsList,
+          organization: __S(160, __c20, 0),
+          products: __S(178, __c22, 2),
         }),
       ).annotate({ identifier: "CustomerOrganizationData" });
     case 4:
@@ -22495,7 +19220,7 @@ function __c22(j: number): any {
           customer_id: S.optional(S.NullOr(S.String)),
           external_member_id: S.optional(S.NullOr(S.String)),
           member_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(CustomerPortalSeatsAssignSeatRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(180, __c22, 4))),
           immediate_claim: S.optional(S.Boolean),
           checkout_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customer-portal/seats", code: 200 })),
@@ -22510,16 +19235,16 @@ function __c22(j: number): any {
           id: S.String,
           subscription_id: S.NullOr(S.String),
           order_id: S.NullOr(S.String),
-          status: SeatStatus,
+          status: S.String,
           customer_id: S.NullOr(S.String),
           member_id: S.NullOr(S.String),
-          member: S.NullOr(Member),
+          member: S.NullOr(__S(7, __c0, 7)),
           email: S.NullOr(S.String),
           customer_email: S.NullOr(S.String),
           invitation_token_expires_at: S.NullOr(S.String),
           claimed_at: S.NullOr(S.String),
           revoked_at: S.NullOr(S.String),
-          seat_metadata: S.NullOr(CustomerSeatSeatMetadataMap),
+          seat_metadata: S.NullOr(__S(180, __c22, 4)),
         }),
       ).annotate({ identifier: "CustomerSeat" });
     case 7:
@@ -22538,35 +19263,35 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomerSubscriptionProductPricesItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
           name: S.String,
           description: S.NullOr(S.String),
-          visibility: ProductVisibility,
-          recurring_interval: S.NullOr(RecurringInterval),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
           recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(RecurringInterval),
+          meter_interval: S.NullOr(S.String),
           meter_interval_count: S.NullOr(S.Number),
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
           organization_id: S.String,
-          prices: CustomerSubscriptionProductPricesList,
-          benefits: CustomerSubscriptionProductBenefitsList,
-          medias: CustomerSubscriptionProductMediasList,
-          organization: CustomerOrganization,
+          prices: __S(184, __c23, 0),
+          benefits: __S(30, __c3, 6),
+          medias: __S(32, __c4, 0),
+          organization: __S(160, __c20, 0),
         }),
       ).annotate({
         identifier: "CustomerSubscriptionProduct",
       });
     case 2:
-      return S.Array(CustomerSubscriptionPricesItem);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -22577,13 +19302,13 @@ function __c23(j: number): any {
           credited_units: S.Number,
           amount: S.Number,
           meter_id: S.String,
-          meter: CustomerCustomerMeterMeter,
+          meter: __S(96, __c12, 0),
         }),
       ).annotate({
         identifier: "CustomerSubscriptionMeter",
       });
     case 4:
-      return S.Array(CustomerSubscriptionMeter);
+      return S.Array(__S(187, __c23, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -22606,9 +19331,9 @@ function __c23(j: number): any {
           id: S.String,
           amount: S.Number,
           currency: S.String,
-          recurring_interval: RecurringInterval,
+          recurring_interval: S.String,
           recurring_interval_count: S.Number,
-          status: SubscriptionStatus,
+          status: S.String,
           current_period_start: S.String,
           current_period_end: S.String,
           current_meter_period_start: S.NullOr(S.String),
@@ -22630,16 +19355,16 @@ function __c23(j: number): any {
           checkout_id: S.NullOr(S.String),
           seats: S.optional(S.NullOr(S.Number)),
           units: S.NullOr(S.Number),
-          customer_cancellation_reason: S.NullOr(CustomerCancellationReason),
+          customer_cancellation_reason: S.NullOr(S.String),
           customer_cancellation_comment: S.NullOr(S.String),
-          product: CustomerSubscriptionProduct,
-          prices: CustomerSubscriptionPricesList,
-          meters: CustomerSubscriptionMetersList,
-          pending_update: S.NullOr(PendingSubscriptionUpdate),
+          product: __S(185, __c23, 1),
+          prices: __S(186, __c23, 2),
+          meters: __S(188, __c23, 4),
+          pending_update: S.NullOr(__S(189, __c23, 5)),
         }),
       ).annotate({ identifier: "CustomerSubscription" });
     case 7:
-      return S.Array(CustomerSubscription);
+      return S.Array(__S(190, __c23, 6));
   }
 }
 function __c24(j: number): any {
@@ -22647,8 +19372,8 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerSubscriptionItemsList,
-          pagination: Pagination,
+          items: __S(191, __c23, 7),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerSubscription",
@@ -22663,11 +19388,11 @@ function __c24(j: number): any {
         identifier: "CustomerPortalSeatsListSeatsRequest",
       });
     case 2:
-      return S.Array(CustomerSeat);
+      return S.Array(__S(182, __c22, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          seats: SeatsListSeatsList,
+          seats: __S(194, __c24, 2),
           available_seats: S.Number,
           total_seats: S.Number,
         }),
@@ -22719,12 +19444,12 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          product_id: S.optional(CustomerPortalSubscriptionsListRequestProductId.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomerPortalSubscriptionsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/subscriptions/", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalSubscriptionsListRequest",
@@ -22733,7 +19458,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: CustomerSubscriptionUpdate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/customer-portal/subscriptions/{id}", code: 200 }),
         ),
@@ -22764,18 +19489,18 @@ function __c25(j: number): any {
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomerPortalWalletsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/wallets/", code: 200 })),
       ).annotate({
         identifier: "CustomerPortalWalletsListRequest",
       });
     case 5:
-      return S.Array(CustomerWallet);
+      return S.Array(__S(203, __c25, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerWalletItemsList,
-          pagination: Pagination,
+          items: __S(205, __c25, 5),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceCustomerWallet",
@@ -22783,7 +19508,7 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: CustomerCreate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customers/", code: 200 })),
       ).annotate({ identifier: "CustomersCreateRequest" });
   }
@@ -22791,7 +19516,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => Customer.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomersCreateResponse",
       });
     case 1:
@@ -22826,7 +19551,7 @@ function __c26(j: number): any {
           customer_id: S.optional(S.NullOr(S.String)),
           external_member_id: S.optional(S.NullOr(S.String)),
           member_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(CustomerSeatsAssignSeatRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(180, __c22, 4))),
           immediate_claim: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customer-seats", code: 200 })),
       ).annotate({
@@ -22843,7 +19568,7 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          seat: CustomerSeat,
+          seat: __S(182, __c22, 6),
           customer_session_token: S.String,
         }),
       ).annotate({
@@ -22881,7 +19606,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: CustomerSessionsCreateRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customer-sessions/", code: 200 })),
       ).annotate({
         identifier: "CustomerSessionsCreateRequest",
@@ -22897,13 +19622,13 @@ function __c27(j: number): any {
           return_url: S.NullOr(S.String),
           customer_portal_url: S.String,
           customer_id: S.String,
-          customer: Customer,
+          customer: S.Unknown,
         }),
       ).annotate({ identifier: "CustomerSession" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(CustomersExportRequestOrganizationId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/export", code: 200 })),
       ).annotate({ identifier: "CustomersExportRequest" });
     case 5:
@@ -22921,7 +19646,7 @@ function __c27(j: number): any {
         identifier: "CustomersGetExternalRequest",
       });
     case 7:
-      return S.suspend(() => Customer.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomersGetExternalResponse",
       });
   }
@@ -22935,7 +19660,7 @@ function __c28(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/state", code: 200 })),
       ).annotate({ identifier: "CustomersGetStateRequest" });
     case 1:
-      return S.suspend(() => CustomerState.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomersGetStateResponse",
       });
     case 2:
@@ -22951,23 +19676,23 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(CustomersListRequestOrganizationId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomersListRequestSortingList.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/", code: 200 })),
       ).annotate({ identifier: "CustomersListRequest" });
     case 4:
-      return S.Array(Customer);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomerItemsList,
-          pagination: Pagination,
+          items: __S(228, __c28, 4),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceCustomer" });
     case 6:
@@ -22981,7 +19706,7 @@ function __c28(j: number): any {
         identifier: "CustomersListPaymentMethodsRequest",
       });
     case 7:
-      return S.Array(PaymentMethod);
+      return S.Array(S.Unknown);
   }
 }
 function __c29(j: number): any {
@@ -22989,8 +19714,8 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourcePaymentMethodItemsList,
-          pagination: Pagination,
+          items: __S(231, __c28, 7),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourcePaymentMethod",
@@ -23018,7 +19743,7 @@ function __c29(j: number): any {
           email: S.String,
           name: S.optional(S.NullOr(S.String)),
           external_id: S.optional(S.NullOr(S.String)),
-          role: S.optional(CustomersMembersCreateRequestRole),
+          role: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customers/{id}/members", code: 200 })),
       ).annotate({
         identifier: "CustomersMembersCreateRequest",
@@ -23029,7 +19754,7 @@ function __c29(j: number): any {
           external_id: S.String.pipe(T.Label()),
           email: S.String,
           name: S.optional(S.NullOr(S.String)),
-          role: S.optional(CustomersMembersCreateExternalRequestRole),
+          role: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23100,31 +19825,31 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          role: S.optional(MemberRole.pipe(T.Query())),
+          role: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomersMembersListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/members", code: 200 })),
       ).annotate({
         identifier: "CustomersMembersListRequest",
       });
     case 1:
-      return S.Array(Member);
+      return S.Array(__S(7, __c0, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceMemberItemsList,
-          pagination: Pagination,
+          items: __S(241, __c30, 1),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceMember" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           external_id: S.String.pipe(T.Label()),
-          role: S.optional(MemberRole.pipe(T.Query())),
+          role: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomersMembersListExternalRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/customers/external/{external_id}/members", code: 200 }),
         ),
@@ -23138,7 +19863,7 @@ function __c30(j: number): any {
           member_id: S.String.pipe(T.Label()),
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(MemberRole)),
+          role: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/customers/{id}/members/{member_id}", code: 200 }),
         ),
@@ -23152,7 +19877,7 @@ function __c30(j: number): any {
           member_external_id: S.String.pipe(T.Label()),
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(MemberRole)),
+          role: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23164,19 +19889,19 @@ function __c30(j: number): any {
         identifier: "CustomersMembersUpdateExternalRequest",
       });
     case 6:
-      return S.Record(S.String, CustomersUpdateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(CustomersUpdateRequestMetadataMap),
+          metadata: S.optional(__S(246, __c30, 6)),
           email: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(AddressInput)),
+          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
           tax_id: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           external_id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(CustomerType)),
+          type: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/customers/{id}", code: 200 })),
       ).annotate({ identifier: "CustomersUpdateRequest" });
   }
@@ -23184,15 +19909,15 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, CustomersUpdateExternalRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           external_id: S.String.pipe(T.Label()),
-          metadata: S.optional(CustomersUpdateExternalRequestMetadataMap),
+          metadata: S.optional(__S(248, __c31, 0)),
           email: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(AddressInput)),
+          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
           tax_id: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -23204,13 +19929,13 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: CustomFieldCreate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/custom-fields/", code: 200 })),
       ).annotate({
         identifier: "CustomFieldsCreateRequest",
       });
     case 3:
-      return S.suspend(() => CustomField.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomFieldsCreateResponse",
       });
     case 4:
@@ -23228,18 +19953,18 @@ function __c31(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/custom-fields/{id}", code: 200 })),
       ).annotate({ identifier: "CustomFieldsGetRequest" });
     case 6:
-      return S.suspend(() => CustomField.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomFieldsGetResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(CustomFieldsListRequestOrganizationId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(CustomFieldsListRequestType.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(CustomFieldsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/custom-fields/", code: 200 })),
       ).annotate({ identifier: "CustomFieldsListRequest" });
   }
@@ -23247,19 +19972,19 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomField);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceCustomFieldItemsList,
-          pagination: Pagination,
+          items: __S(256, __c32, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceCustomField" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: CustomFieldUpdate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/custom-fields/{id}", code: 200 })),
       ).annotate({
         identifier: "CustomFieldsUpdateRequest",
@@ -23267,24 +19992,24 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: DiscountCreate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/discounts/", code: 200 })),
       ).annotate({ identifier: "DiscountsCreateRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: MetadataOutputType,
+          metadata: __S(4, __c0, 4),
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
           name: S.String,
           description: S.NullOr(S.String),
-          visibility: ProductVisibility,
-          recurring_interval: S.NullOr(RecurringInterval),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
           recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(RecurringInterval),
+          meter_interval: S.NullOr(S.String),
           meter_interval_count: S.NullOr(S.Number),
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
@@ -23292,7 +20017,7 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "DiscountProduct" });
     case 5:
-      return S.suspend(() => Discount.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DiscountsCreateResponse",
       });
     case 6:
@@ -23314,43 +20039,43 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(DiscountsListRequestOrganizationId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(DiscountsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/discounts/", code: 200 })),
       ).annotate({ identifier: "DiscountsListRequest" });
     case 1:
-      return S.Array(Discount);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceDiscountItemsList,
-          pagination: Pagination,
+          items: __S(265, __c33, 1),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceDiscount" });
     case 3:
-      return S.Record(S.String, DiscountsUpdateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(DiscountsUpdateRequestMetadataMap),
+          metadata: S.optional(__S(267, __c33, 3)),
           name: S.optional(S.NullOr(S.String)),
           code: S.optional(S.NullOr(S.String)),
           starts_at: S.optional(S.NullOr(S.String)),
           ends_at: S.optional(S.NullOr(S.String)),
           max_redemptions: S.optional(S.NullOr(S.Number)),
           max_redemptions_per_customer: S.optional(S.NullOr(S.Number)),
-          duration: S.optional(S.NullOr(DiscountDuration)),
+          duration: S.optional(S.NullOr(S.String)),
           duration_in_months: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(DiscountType)),
+          type: S.optional(S.NullOr(S.String)),
           amount: S.optional(S.NullOr(S.Number)),
-          currency: S.optional(S.NullOr(PresentmentCurrency)),
-          amounts: S.optional(S.NullOr(DiscountsUpdateRequestAmountsMap)),
+          currency: S.optional(S.NullOr(S.String)),
+          amounts: S.optional(S.NullOr(__S(35, __c4, 3))),
           basis_points: S.optional(S.NullOr(S.Number)),
-          products: S.optional(S.NullOr(DiscountsUpdateRequestProductsList)),
+          products: S.optional(S.NullOr(__S(0, __c0, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/discounts/{id}", code: 200 })),
       ).annotate({ identifier: "DiscountsUpdateRequest" });
     case 5:
@@ -23365,7 +20090,7 @@ function __c33(j: number): any {
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
-          status: DisputeStatus,
+          status: S.String,
           resolved: S.Boolean,
           closed: S.Boolean,
           amount: S.Number,
@@ -23376,7 +20101,7 @@ function __c33(j: number): any {
           past_due: S.Boolean,
           order_id: S.String,
           payment_id: S.String,
-          customer: DisputeCustomer,
+          customer: __S(125, __c15, 5),
           case_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Dispute" });
@@ -23393,21 +20118,21 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(DisputesListRequestOrganizationId.pipe(T.Query())),
-          order_id: S.optional(DisputesListRequestOrderId.pipe(T.Query())),
-          status: S.optional(DisputesListRequestStatus.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          order_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(DisputesListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/disputes/", code: 200 })),
       ).annotate({ identifier: "DisputesListRequest" });
     case 1:
-      return S.Array(Dispute);
+      return S.Array(__S(270, __c33, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceDisputeItemsList,
-          pagination: Pagination,
+          items: __S(273, __c34, 1),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceDispute" });
     case 3:
@@ -23417,15 +20142,15 @@ function __c34(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/events/{id}", code: 200 })),
       ).annotate({ identifier: "EventsGetRequest" });
     case 4:
-      return S.suspend(() => Event.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "EventsGetResponse",
       });
     case 5:
-      return S.Array(EventsIngestRequestEventsItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          events: EventsIngestRequestEventsList,
+          events: __S(277, __c34, 5),
         }).pipe(T.Http({ method: "POST", uri: "/v1/events/ingest", code: 200 })),
       ).annotate({ identifier: "EventsIngestRequest" });
     case 7:
@@ -23445,38 +20170,36 @@ function __c35(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           start_timestamp: S.optional(S.String.pipe(T.Query())),
           end_timestamp: S.optional(S.String.pipe(T.Query())),
-          organization_id: S.optional(EventsListRequestOrganizationId.pipe(T.Query())),
-          customer_id: S.optional(EventsListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(EventsListRequestExternalCustomerId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
           meter_id: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(EventsListRequestName.pipe(T.Query())),
-          source: S.optional(EventsListRequestSource.pipe(T.Query())),
+          name: S.optional(S.Unknown.pipe(T.Query())),
+          source: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           parent_id: S.optional(S.String.pipe(T.Query())),
           depth: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(EventsListRequestSortingList.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/events/", code: 200 })),
       ).annotate({ identifier: "EventsListRequest" });
     case 1:
-      return S.suspend(() => EventsListResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "EventsListResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(EventsListNamesRequestOrganizationId.pipe(T.Query())),
-          customer_id: S.optional(EventsListNamesRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(
-            EventsListNamesRequestExternalCustomerId.pipe(T.Query()),
-          ),
-          source: S.optional(EventsListNamesRequestSource.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          source: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(EventsListNamesRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/events/names", code: 200 })),
       ).annotate({ identifier: "EventsListNamesRequest" });
     case 3:
@@ -23484,34 +20207,34 @@ function __c35(j: number): any {
         S.Struct({
           name: S.String,
           label: S.String,
-          source: EventSource,
+          source: S.String,
           occurrences: S.Number,
           first_seen: S.String,
           last_seen: S.String,
         }),
       ).annotate({ identifier: "EventName" });
     case 4:
-      return S.Array(EventName);
+      return S.Array(__S(283, __c35, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceEventNameItemsList,
-          pagination: Pagination,
+          items: __S(284, __c35, 4),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceEventName" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(EventTypesListRequestOrganizationId.pipe(T.Query())),
-          customer_id: S.optional(EventTypesListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(EventTypesListRequestExternalCustomerId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           root_events: S.optional(S.Boolean.pipe(T.Query())),
           parent_id: S.optional(S.String.pipe(T.Query())),
-          source: S.optional(EventSource.pipe(T.Query())),
+          source: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(EventTypesListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/event-types/", code: 200 })),
       ).annotate({ identifier: "EventTypesListRequest" });
     case 7:
@@ -23524,7 +20247,7 @@ function __c35(j: number): any {
           label: S.String,
           label_property_selector: S.optional(S.NullOr(S.String)),
           organization_id: S.String,
-          source: EventSource,
+          source: S.String,
           occurrences: S.Number,
           first_seen: S.String,
           last_seen: S.String,
@@ -23535,12 +20258,12 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EventTypeWithStats);
+      return S.Array(__S(287, __c35, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceEventTypeWithStatsItemsList,
-          pagination: Pagination,
+          items: __S(288, __c36, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceEventTypeWithStats",
@@ -23568,7 +20291,7 @@ function __c36(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: FileCreate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/files/", code: 200 })),
       ).annotate({ identifier: "FilesCreateRequest" });
     case 5:
@@ -23580,17 +20303,17 @@ function __c36(j: number): any {
           checksum_sha256_base64: S.optional(S.NullOr(S.String)),
           url: S.String,
           expires_at: S.String,
-          headers: S.optional(S3FileUploadPartHeadersMap),
+          headers: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "S3FileUploadPart" });
     case 6:
-      return S.Array(S3FileUploadPart);
+      return S.Array(__S(293, __c36, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           path: S.String,
-          parts: S3FileUploadMultipartPartsList,
+          parts: __S(294, __c36, 6),
         }),
       ).annotate({ identifier: "S3FileUploadMultipart" });
   }
@@ -23611,10 +20334,10 @@ function __c37(j: number): any {
           checksum_sha256_base64: S.NullOr(S.String),
           checksum_sha256_hex: S.NullOr(S.String),
           last_modified_at: S.NullOr(S.String),
-          upload: S3FileUploadMultipart,
+          upload: __S(295, __c36, 7),
           version: S.NullOr(S.String),
           is_uploaded: S.optional(S.Boolean),
-          service: FileServiceTypes,
+          service: S.String,
           size_readable: S.String,
         }),
       ).annotate({ identifier: "FileUpload" });
@@ -23627,19 +20350,19 @@ function __c37(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(FilesListRequestOrganizationId.pipe(T.Query())),
-          ids: S.optional(FilesListRequestIds.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          ids: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/files/", code: 200 })),
       ).annotate({ identifier: "FilesListRequest" });
     case 3:
-      return S.Array(FileRead);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceFileReadItemsList,
-          pagination: Pagination,
+          items: __S(299, __c37, 3),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceFileRead" });
     case 5:
@@ -23651,7 +20374,7 @@ function __c37(j: number): any {
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/files/{id}", code: 200 })),
       ).annotate({ identifier: "FilesUpdateRequest" });
     case 6:
-      return S.suspend(() => FileRead.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "FilesUpdateResponse",
       });
     case 7:
@@ -23669,13 +20392,13 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S3FileUploadCompletedPart);
+      return S.Array(__S(303, __c37, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           path: S.String,
-          parts: FilesUploadedRequestPartsList,
+          parts: __S(304, __c38, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/files/{id}/uploaded", code: 200 })),
       ).annotate({ identifier: "FilesUploadedRequest" });
     case 2:
@@ -23687,20 +20410,20 @@ function __c38(j: number): any {
         identifier: "GetCheckoutsClientRequest",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(CheckoutPublicCustomFieldDataValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 4:
-      return S.Array(CheckoutPublicPricesValueItem);
+      return S.Array(S.Unknown);
     case 5:
-      return S.Record(S.String, CheckoutPublicPricesValueList);
+      return S.Record(S.String, __S(308, __c38, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          custom_field_data: S.optional(CheckoutPublicCustomFieldDataMap),
-          payment_processor: PaymentProcessor,
-          status: CheckoutStatus,
+          custom_field_data: S.optional(__S(307, __c38, 3)),
+          payment_processor: S.String,
+          status: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
           url: S.String,
           expires_at: S.String,
@@ -23717,11 +20440,11 @@ function __c38(j: number): any {
           discount_amount: S.Number,
           net_amount: S.Number,
           tax_amount: S.NullOr(S.Number),
-          tax_behavior: S.NullOr(TaxBehavior),
+          tax_behavior: S.NullOr(S.String),
           total_amount: S.Number,
           currency: S.String,
           allow_trial: S.NullOr(S.Boolean),
-          active_trial_interval: S.NullOr(TrialInterval),
+          active_trial_interval: S.NullOr(S.String),
           active_trial_interval_count: S.NullOr(S.Number),
           trial_end: S.NullOr(S.String),
           organization_id: S.String,
@@ -23741,37 +20464,37 @@ function __c38(j: number): any {
           customer_email: S.NullOr(S.String),
           customer_ip_address: S.NullOr(S.String),
           customer_billing_name: S.NullOr(S.String),
-          customer_billing_address: S.NullOr(Address),
+          customer_billing_address: S.NullOr(__S(5, __c0, 5)),
           customer_tax_id: S.NullOr(S.String),
           locale: S.optional(S.NullOr(S.String)),
           payment_method_type: S.NullOr(S.String),
-          payment_processor_metadata: CheckoutPublicPaymentProcessorMetadataMap,
-          billing_address_fields: CheckoutBillingAddressFields,
-          products: CheckoutPublicProductsList,
-          product: S.NullOr(CheckoutProduct),
-          product_price: S.NullOr(CheckoutPublicProductPrice),
-          prices: S.NullOr(CheckoutPublicPricesMap),
-          discount: S.NullOr(CheckoutPublicDiscount),
-          organization: CheckoutOrganization,
-          attached_custom_fields: S.NullOr(CheckoutPublicAttachedCustomFieldsList),
+          payment_processor_metadata: __S(28, __c3, 4),
+          billing_address_fields: __S(51, __c6, 3),
+          products: __S(54, __c6, 6),
+          product: S.NullOr(__S(53, __c6, 5)),
+          product_price: S.NullOr(S.Unknown),
+          prices: S.NullOr(__S(309, __c38, 5)),
+          discount: S.NullOr(S.Unknown),
+          organization: __S(76, __c9, 4),
+          attached_custom_fields: S.NullOr(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "CheckoutPublic" });
     case 7:
-      return S.Record(S.String, LicenseKeysActivateRequestConditionsValue);
+      return S.Record(S.String, S.Unknown);
   }
 }
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, LicenseKeysActivateRequestMetaValue);
+      return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           organization_id: S.String,
           label: S.String,
-          conditions: S.optional(LicenseKeysActivateRequestConditionsMap),
-          meta: S.optional(LicenseKeysActivateRequestMetaMap),
+          conditions: S.optional(__S(311, __c38, 7)),
+          meta: S.optional(__S(312, __c39, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/activate", code: 200 })),
       ).annotate({
         identifier: "LicenseKeysActivateRequest",
@@ -23808,25 +20531,25 @@ function __c39(j: number): any {
         identifier: "LicenseKeysGetActivationRequest",
       });
     case 5:
-      return S.Record(S.String, LicenseKeyActivationReadMetaValue);
+      return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           license_key_id: S.String,
           label: S.String,
-          meta: LicenseKeyActivationReadMetaMap,
+          meta: __S(317, __c39, 5),
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          license_key: LicenseKeyRead,
+          license_key: __S(138, __c17, 2),
         }),
       ).annotate({ identifier: "LicenseKeyActivationRead" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(LicenseKeysListRequestOrganizationId.pipe(T.Query())),
-          benefit_id: S.optional(LicenseKeysListRequestBenefitId.pipe(T.Query())),
-          status: S.optional(LicenseKeysListRequestStatus.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/license-keys/", code: 200 })),
@@ -23845,7 +20568,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          status: S.optional(S.NullOr(LicenseKeyStatus)),
+          status: S.optional(S.NullOr(S.String)),
           usage: S.optional(S.Number),
           limit_activations: S.optional(S.NullOr(S.Number)),
           limit_usage: S.optional(S.NullOr(S.Number)),
@@ -23853,7 +20576,7 @@ function __c40(j: number): any {
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/license-keys/{id}", code: 200 })),
       ).annotate({ identifier: "LicenseKeysUpdateRequest" });
     case 2:
-      return S.Record(S.String, LicenseKeysValidateRequestConditionsValue);
+      return S.Record(S.String, S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -23863,23 +20586,23 @@ function __c40(j: number): any {
           benefit_id: S.optional(S.NullOr(S.String)),
           customer_id: S.optional(S.NullOr(S.String)),
           increment_usage: S.optional(S.NullOr(S.Number)),
-          conditions: S.optional(LicenseKeysValidateRequestConditionsMap),
+          conditions: S.optional(__S(322, __c40, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/validate", code: 200 })),
       ).annotate({
         identifier: "LicenseKeysValidateRequest",
       });
     case 4:
-      return S.Record(S.String, MetersCreateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(MetersCreateRequestMetadataMap),
+          metadata: S.optional(__S(324, __c40, 4)),
           name: S.String,
-          unit: S.optional(MeterUnit),
+          unit: S.optional(S.String),
           custom_label: S.optional(S.NullOr(S.String)),
           custom_multiplier: S.optional(S.NullOr(S.Number)),
-          filter: Filter,
-          aggregation: MetersCreateRequestAggregation,
+          filter: __S(80, __c10, 0),
+          aggregation: S.Unknown,
           organization_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/meters/", code: 200 })),
       ).annotate({ identifier: "MetersCreateRequest" });
@@ -23892,13 +20615,13 @@ function __c40(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(MetersListRequestOrganizationId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           is_archived: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(MetersListRequestSortingList.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/meters/", code: 200 })),
       ).annotate({ identifier: "MetersListRequest" });
   }
@@ -23906,12 +20629,12 @@ function __c40(j: number): any {
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Meter);
+      return S.Array(__S(81, __c10, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceMeterItemsList,
-          pagination: Pagination,
+          items: __S(328, __c41, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceMeter" });
     case 2:
@@ -23920,14 +20643,12 @@ function __c41(j: number): any {
           id: S.String.pipe(T.Label()),
           start_timestamp: S.String.pipe(T.Query()),
           end_timestamp: S.String.pipe(T.Query()),
-          interval: TimeInterval.pipe(T.Query()),
-          timezone: S.optional(MetersQuantitiesRequestTimezone.pipe(T.Query())),
-          customer_id: S.optional(MetersQuantitiesRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(
-            MetersQuantitiesRequestExternalCustomerId.pipe(T.Query()),
-          ),
-          customer_aggregation_function: S.optional(AggregationFunction.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          interval: S.String.pipe(T.Query()),
+          timezone: S.optional(S.String.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_aggregation_function: S.optional(S.String.pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/meters/{id}/quantities", code: 200 })),
       ).annotate({ identifier: "MetersQuantitiesRequest" });
     case 3:
@@ -23938,27 +20659,27 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "MeterQuantity" });
     case 4:
-      return S.Array(MeterQuantity);
+      return S.Array(__S(331, __c41, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          quantities: MeterQuantitiesQuantitiesList,
+          quantities: __S(332, __c41, 4),
           total: S.Number,
         }),
       ).annotate({ identifier: "MeterQuantities" });
     case 6:
-      return S.Record(S.String, MetersUpdateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(MetersUpdateRequestMetadataMap),
+          metadata: S.optional(__S(334, __c41, 6)),
           name: S.optional(S.NullOr(S.String)),
-          unit: S.optional(S.NullOr(MeterUnit)),
+          unit: S.optional(S.NullOr(S.String)),
           custom_label: S.optional(S.NullOr(S.String)),
           custom_multiplier: S.optional(S.NullOr(S.Number)),
-          filter: S.optional(S.NullOr(Filter)),
-          aggregation: S.optional(S.NullOr(MetersUpdateRequestAggregation)),
+          filter: S.optional(S.NullOr(__S(80, __c10, 0))),
+          aggregation: S.optional(S.NullOr(S.Unknown)),
           is_archived: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/meters/{id}", code: 200 })),
       ).annotate({ identifier: "MetersUpdateRequest" });
@@ -23970,7 +20691,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          metrics: S.optional(MetricsCreateDashboardRequestMetricsList),
+          metrics: S.optional(__S(0, __c0, 0)),
           organization_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/metrics/dashboards", code: 200 })),
       ).annotate({
@@ -23983,7 +20704,7 @@ function __c42(j: number): any {
           modified_at: S.NullOr(S.String),
           id: S.String,
           name: S.String,
-          metrics: MetricDashboardSchemaMetricsList,
+          metrics: __S(0, __c0, 0),
           organization_id: S.String,
         }),
       ).annotate({ identifier: "MetricDashboardSchema" });
@@ -24000,13 +20721,13 @@ function __c42(j: number): any {
         S.Struct({
           start_date: S.String.pipe(T.Query()),
           end_date: S.String.pipe(T.Query()),
-          timezone: S.optional(MetricsExportRequestTimezone.pipe(T.Query())),
-          interval: TimeInterval.pipe(T.Query()),
-          organization_id: S.optional(MetricsExportRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(MetricsExportRequestProductId.pipe(T.Query())),
-          billing_type: S.optional(MetricsExportRequestBillingType.pipe(T.Query())),
-          customer_id: S.optional(MetricsExportRequestCustomerId.pipe(T.Query())),
-          metrics: S.optional(MetricsExportRequestMetricsList.pipe(T.Query())),
+          timezone: S.optional(S.String.pipe(T.Query())),
+          interval: S.String.pipe(T.Query()),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          billing_type: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          metrics: S.optional(__S(0, __c0, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/metrics/export", code: 200 })),
       ).annotate({ identifier: "MetricsExportRequest" });
     case 4:
@@ -24014,200 +20735,136 @@ function __c42(j: number): any {
         S.Struct({
           start_date: S.String.pipe(T.Query()),
           end_date: S.String.pipe(T.Query()),
-          timezone: S.optional(MetricsGetRequestTimezone.pipe(T.Query())),
-          interval: TimeInterval.pipe(T.Query()),
-          organization_id: S.optional(MetricsGetRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(MetricsGetRequestProductId.pipe(T.Query())),
-          billing_type: S.optional(MetricsGetRequestBillingType.pipe(T.Query())),
-          customer_id: S.optional(MetricsGetRequestCustomerId.pipe(T.Query())),
-          metrics: S.optional(MetricsGetRequestMetricsList.pipe(T.Query())),
+          timezone: S.optional(S.String.pipe(T.Query())),
+          interval: S.String.pipe(T.Query()),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          billing_type: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          metrics: S.optional(__S(0, __c0, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/metrics/", code: 200 })),
       ).annotate({ identifier: "MetricsGetRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.String,
-          active_subscriptions: S.optional(S.NullOr(MetricPeriodActiveSubscriptions)),
-          committed_subscriptions: S.optional(S.NullOr(MetricPeriodCommittedSubscriptions)),
-          monthly_recurring_revenue: S.optional(S.NullOr(MetricPeriodMonthlyRecurringRevenue)),
-          trial_monthly_recurring_revenue: S.optional(
-            S.NullOr(MetricPeriodTrialMonthlyRecurringRevenue),
-          ),
-          committed_monthly_recurring_revenue: S.optional(
-            S.NullOr(MetricPeriodCommittedMonthlyRecurringRevenue),
-          ),
-          trial_committed_monthly_recurring_revenue: S.optional(
-            S.NullOr(MetricPeriodTrialCommittedMonthlyRecurringRevenue),
-          ),
-          average_revenue_per_user: S.optional(S.NullOr(MetricPeriodAverageRevenuePerUser)),
-          checkouts: S.optional(S.NullOr(MetricPeriodCheckouts)),
-          succeeded_checkouts: S.optional(S.NullOr(MetricPeriodSucceededCheckouts)),
-          churned_subscriptions: S.optional(S.NullOr(MetricPeriodChurnedSubscriptions)),
-          churn_rate: S.optional(S.NullOr(MetricPeriodChurnRate)),
-          seats_total: S.optional(S.NullOr(MetricPeriodSeatsTotal)),
-          seats_claimed: S.optional(S.NullOr(MetricPeriodSeatsClaimed)),
-          seats_pending: S.optional(S.NullOr(MetricPeriodSeatsPending)),
-          seat_customers: S.optional(S.NullOr(MetricPeriodSeatCustomers)),
-          new_seat_customers: S.optional(S.NullOr(MetricPeriodNewSeatCustomers)),
-          churned_seat_customers: S.optional(S.NullOr(MetricPeriodChurnedSeatCustomers)),
-          orders: S.optional(S.NullOr(MetricPeriodOrders)),
-          revenue: S.optional(S.NullOr(MetricPeriodRevenue)),
-          net_revenue: S.optional(S.NullOr(MetricPeriodNetRevenue)),
-          cumulative_revenue: S.optional(S.NullOr(MetricPeriodCumulativeRevenue)),
-          net_cumulative_revenue: S.optional(S.NullOr(MetricPeriodNetCumulativeRevenue)),
-          costs: S.optional(S.NullOr(MetricPeriodCosts)),
-          cumulative_costs: S.optional(S.NullOr(MetricPeriodCumulativeCosts)),
-          average_order_value: S.optional(S.NullOr(MetricPeriodAverageOrderValue)),
-          net_average_order_value: S.optional(S.NullOr(MetricPeriodNetAverageOrderValue)),
-          cost_per_user: S.optional(S.NullOr(MetricPeriodCostPerUser)),
-          active_user_by_event: S.optional(S.NullOr(MetricPeriodActiveUserByEvent)),
-          one_time_products: S.optional(S.NullOr(MetricPeriodOneTimeProducts)),
-          one_time_products_revenue: S.optional(S.NullOr(MetricPeriodOneTimeProductsRevenue)),
-          one_time_products_net_revenue: S.optional(
-            S.NullOr(MetricPeriodOneTimeProductsNetRevenue),
-          ),
-          new_subscriptions: S.optional(S.NullOr(MetricPeriodNewSubscriptions)),
-          new_subscriptions_revenue: S.optional(S.NullOr(MetricPeriodNewSubscriptionsRevenue)),
-          new_subscriptions_net_revenue: S.optional(
-            S.NullOr(MetricPeriodNewSubscriptionsNetRevenue),
-          ),
-          renewed_subscriptions: S.optional(S.NullOr(MetricPeriodRenewedSubscriptions)),
-          renewed_subscriptions_revenue: S.optional(
-            S.NullOr(MetricPeriodRenewedSubscriptionsRevenue),
-          ),
-          renewed_subscriptions_net_revenue: S.optional(
-            S.NullOr(MetricPeriodRenewedSubscriptionsNetRevenue),
-          ),
-          canceled_subscriptions: S.optional(S.NullOr(MetricPeriodCanceledSubscriptions)),
-          canceled_subscriptions_customer_service: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsCustomerService),
-          ),
-          canceled_subscriptions_low_quality: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsLowQuality),
-          ),
-          canceled_subscriptions_missing_features: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsMissingFeatures),
-          ),
-          canceled_subscriptions_switched_service: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsSwitchedService),
-          ),
-          canceled_subscriptions_too_complex: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsTooComplex),
-          ),
-          canceled_subscriptions_too_expensive: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsTooExpensive),
-          ),
-          canceled_subscriptions_unused: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsUnused),
-          ),
-          canceled_subscriptions_other: S.optional(
-            S.NullOr(MetricPeriodCanceledSubscriptionsOther),
-          ),
-          annual_recurring_revenue: S.optional(S.NullOr(MetricPeriodAnnualRecurringRevenue)),
-          committed_annual_recurring_revenue: S.optional(
-            S.NullOr(MetricPeriodCommittedAnnualRecurringRevenue),
-          ),
-          checkouts_conversion: S.optional(S.NullOr(MetricPeriodCheckoutsConversion)),
-          ltv: S.optional(S.NullOr(MetricPeriodLtv)),
-          gross_margin: S.optional(S.NullOr(MetricPeriodGrossMargin)),
-          gross_margin_percentage: S.optional(S.NullOr(MetricPeriodGrossMarginPercentage)),
-          cashflow: S.optional(S.NullOr(MetricPeriodCashflow)),
-          average_seats_per_customer: S.optional(S.NullOr(MetricPeriodAverageSeatsPerCustomer)),
-          seat_utilization_rate: S.optional(S.NullOr(MetricPeriodSeatUtilizationRate)),
+          active_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          committed_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          trial_monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          committed_monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          trial_committed_monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          average_revenue_per_user: S.optional(S.NullOr(S.Unknown)),
+          checkouts: S.optional(S.NullOr(S.Unknown)),
+          succeeded_checkouts: S.optional(S.NullOr(S.Unknown)),
+          churned_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          churn_rate: S.optional(S.NullOr(S.Unknown)),
+          seats_total: S.optional(S.NullOr(S.Unknown)),
+          seats_claimed: S.optional(S.NullOr(S.Unknown)),
+          seats_pending: S.optional(S.NullOr(S.Unknown)),
+          seat_customers: S.optional(S.NullOr(S.Unknown)),
+          new_seat_customers: S.optional(S.NullOr(S.Unknown)),
+          churned_seat_customers: S.optional(S.NullOr(S.Unknown)),
+          orders: S.optional(S.NullOr(S.Unknown)),
+          revenue: S.optional(S.NullOr(S.Unknown)),
+          net_revenue: S.optional(S.NullOr(S.Unknown)),
+          cumulative_revenue: S.optional(S.NullOr(S.Unknown)),
+          net_cumulative_revenue: S.optional(S.NullOr(S.Unknown)),
+          costs: S.optional(S.NullOr(S.Unknown)),
+          cumulative_costs: S.optional(S.NullOr(S.Unknown)),
+          average_order_value: S.optional(S.NullOr(S.Unknown)),
+          net_average_order_value: S.optional(S.NullOr(S.Unknown)),
+          cost_per_user: S.optional(S.NullOr(S.Unknown)),
+          active_user_by_event: S.optional(S.NullOr(S.Unknown)),
+          one_time_products: S.optional(S.NullOr(S.Unknown)),
+          one_time_products_revenue: S.optional(S.NullOr(S.Unknown)),
+          one_time_products_net_revenue: S.optional(S.NullOr(S.Unknown)),
+          new_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          new_subscriptions_revenue: S.optional(S.NullOr(S.Unknown)),
+          new_subscriptions_net_revenue: S.optional(S.NullOr(S.Unknown)),
+          renewed_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          renewed_subscriptions_revenue: S.optional(S.NullOr(S.Unknown)),
+          renewed_subscriptions_net_revenue: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_customer_service: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_low_quality: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_missing_features: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_switched_service: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_too_complex: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_too_expensive: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_unused: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_other: S.optional(S.NullOr(S.Unknown)),
+          annual_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          committed_annual_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          checkouts_conversion: S.optional(S.NullOr(S.Unknown)),
+          ltv: S.optional(S.NullOr(S.Unknown)),
+          gross_margin: S.optional(S.NullOr(S.Unknown)),
+          gross_margin_percentage: S.optional(S.NullOr(S.Unknown)),
+          cashflow: S.optional(S.NullOr(S.Unknown)),
+          average_seats_per_customer: S.optional(S.NullOr(S.Unknown)),
+          seat_utilization_rate: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "MetricPeriod" });
     case 6:
-      return S.Array(MetricPeriod);
+      return S.Array(__S(341, __c42, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          active_subscriptions: S.optional(S.NullOr(MetricsTotalsActiveSubscriptions)),
-          committed_subscriptions: S.optional(S.NullOr(MetricsTotalsCommittedSubscriptions)),
-          monthly_recurring_revenue: S.optional(S.NullOr(MetricsTotalsMonthlyRecurringRevenue)),
-          trial_monthly_recurring_revenue: S.optional(
-            S.NullOr(MetricsTotalsTrialMonthlyRecurringRevenue),
-          ),
-          committed_monthly_recurring_revenue: S.optional(
-            S.NullOr(MetricsTotalsCommittedMonthlyRecurringRevenue),
-          ),
-          trial_committed_monthly_recurring_revenue: S.optional(
-            S.NullOr(MetricsTotalsTrialCommittedMonthlyRecurringRevenue),
-          ),
-          average_revenue_per_user: S.optional(S.NullOr(MetricsTotalsAverageRevenuePerUser)),
-          checkouts: S.optional(S.NullOr(MetricsTotalsCheckouts)),
-          succeeded_checkouts: S.optional(S.NullOr(MetricsTotalsSucceededCheckouts)),
-          churned_subscriptions: S.optional(S.NullOr(MetricsTotalsChurnedSubscriptions)),
-          churn_rate: S.optional(S.NullOr(MetricsTotalsChurnRate)),
-          seats_total: S.optional(S.NullOr(MetricsTotalsSeatsTotal)),
-          seats_claimed: S.optional(S.NullOr(MetricsTotalsSeatsClaimed)),
-          seats_pending: S.optional(S.NullOr(MetricsTotalsSeatsPending)),
-          seat_customers: S.optional(S.NullOr(MetricsTotalsSeatCustomers)),
-          new_seat_customers: S.optional(S.NullOr(MetricsTotalsNewSeatCustomers)),
-          churned_seat_customers: S.optional(S.NullOr(MetricsTotalsChurnedSeatCustomers)),
-          orders: S.optional(S.NullOr(MetricsTotalsOrders)),
-          revenue: S.optional(S.NullOr(MetricsTotalsRevenue)),
-          net_revenue: S.optional(S.NullOr(MetricsTotalsNetRevenue)),
-          cumulative_revenue: S.optional(S.NullOr(MetricsTotalsCumulativeRevenue)),
-          net_cumulative_revenue: S.optional(S.NullOr(MetricsTotalsNetCumulativeRevenue)),
-          costs: S.optional(S.NullOr(MetricsTotalsCosts)),
-          cumulative_costs: S.optional(S.NullOr(MetricsTotalsCumulativeCosts)),
-          average_order_value: S.optional(S.NullOr(MetricsTotalsAverageOrderValue)),
-          net_average_order_value: S.optional(S.NullOr(MetricsTotalsNetAverageOrderValue)),
-          cost_per_user: S.optional(S.NullOr(MetricsTotalsCostPerUser)),
-          active_user_by_event: S.optional(S.NullOr(MetricsTotalsActiveUserByEvent)),
-          one_time_products: S.optional(S.NullOr(MetricsTotalsOneTimeProducts)),
-          one_time_products_revenue: S.optional(S.NullOr(MetricsTotalsOneTimeProductsRevenue)),
-          one_time_products_net_revenue: S.optional(
-            S.NullOr(MetricsTotalsOneTimeProductsNetRevenue),
-          ),
-          new_subscriptions: S.optional(S.NullOr(MetricsTotalsNewSubscriptions)),
-          new_subscriptions_revenue: S.optional(S.NullOr(MetricsTotalsNewSubscriptionsRevenue)),
-          new_subscriptions_net_revenue: S.optional(
-            S.NullOr(MetricsTotalsNewSubscriptionsNetRevenue),
-          ),
-          renewed_subscriptions: S.optional(S.NullOr(MetricsTotalsRenewedSubscriptions)),
-          renewed_subscriptions_revenue: S.optional(
-            S.NullOr(MetricsTotalsRenewedSubscriptionsRevenue),
-          ),
-          renewed_subscriptions_net_revenue: S.optional(
-            S.NullOr(MetricsTotalsRenewedSubscriptionsNetRevenue),
-          ),
-          canceled_subscriptions: S.optional(S.NullOr(MetricsTotalsCanceledSubscriptions)),
-          canceled_subscriptions_customer_service: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsCustomerService),
-          ),
-          canceled_subscriptions_low_quality: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsLowQuality),
-          ),
-          canceled_subscriptions_missing_features: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsMissingFeatures),
-          ),
-          canceled_subscriptions_switched_service: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsSwitchedService),
-          ),
-          canceled_subscriptions_too_complex: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsTooComplex),
-          ),
-          canceled_subscriptions_too_expensive: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsTooExpensive),
-          ),
-          canceled_subscriptions_unused: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsUnused),
-          ),
-          canceled_subscriptions_other: S.optional(
-            S.NullOr(MetricsTotalsCanceledSubscriptionsOther),
-          ),
-          annual_recurring_revenue: S.optional(S.NullOr(MetricsTotalsAnnualRecurringRevenue)),
-          committed_annual_recurring_revenue: S.optional(
-            S.NullOr(MetricsTotalsCommittedAnnualRecurringRevenue),
-          ),
-          checkouts_conversion: S.optional(S.NullOr(MetricsTotalsCheckoutsConversion)),
-          ltv: S.optional(S.NullOr(MetricsTotalsLtv)),
-          gross_margin: S.optional(S.NullOr(MetricsTotalsGrossMargin)),
-          gross_margin_percentage: S.optional(S.NullOr(MetricsTotalsGrossMarginPercentage)),
-          cashflow: S.optional(S.NullOr(MetricsTotalsCashflow)),
-          average_seats_per_customer: S.optional(S.NullOr(MetricsTotalsAverageSeatsPerCustomer)),
-          seat_utilization_rate: S.optional(S.NullOr(MetricsTotalsSeatUtilizationRate)),
+          active_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          committed_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          trial_monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          committed_monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          trial_committed_monthly_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          average_revenue_per_user: S.optional(S.NullOr(S.Unknown)),
+          checkouts: S.optional(S.NullOr(S.Unknown)),
+          succeeded_checkouts: S.optional(S.NullOr(S.Unknown)),
+          churned_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          churn_rate: S.optional(S.NullOr(S.Unknown)),
+          seats_total: S.optional(S.NullOr(S.Unknown)),
+          seats_claimed: S.optional(S.NullOr(S.Unknown)),
+          seats_pending: S.optional(S.NullOr(S.Unknown)),
+          seat_customers: S.optional(S.NullOr(S.Unknown)),
+          new_seat_customers: S.optional(S.NullOr(S.Unknown)),
+          churned_seat_customers: S.optional(S.NullOr(S.Unknown)),
+          orders: S.optional(S.NullOr(S.Unknown)),
+          revenue: S.optional(S.NullOr(S.Unknown)),
+          net_revenue: S.optional(S.NullOr(S.Unknown)),
+          cumulative_revenue: S.optional(S.NullOr(S.Unknown)),
+          net_cumulative_revenue: S.optional(S.NullOr(S.Unknown)),
+          costs: S.optional(S.NullOr(S.Unknown)),
+          cumulative_costs: S.optional(S.NullOr(S.Unknown)),
+          average_order_value: S.optional(S.NullOr(S.Unknown)),
+          net_average_order_value: S.optional(S.NullOr(S.Unknown)),
+          cost_per_user: S.optional(S.NullOr(S.Unknown)),
+          active_user_by_event: S.optional(S.NullOr(S.Unknown)),
+          one_time_products: S.optional(S.NullOr(S.Unknown)),
+          one_time_products_revenue: S.optional(S.NullOr(S.Unknown)),
+          one_time_products_net_revenue: S.optional(S.NullOr(S.Unknown)),
+          new_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          new_subscriptions_revenue: S.optional(S.NullOr(S.Unknown)),
+          new_subscriptions_net_revenue: S.optional(S.NullOr(S.Unknown)),
+          renewed_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          renewed_subscriptions_revenue: S.optional(S.NullOr(S.Unknown)),
+          renewed_subscriptions_net_revenue: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_customer_service: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_low_quality: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_missing_features: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_switched_service: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_too_complex: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_too_expensive: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_unused: S.optional(S.NullOr(S.Unknown)),
+          canceled_subscriptions_other: S.optional(S.NullOr(S.Unknown)),
+          annual_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          committed_annual_recurring_revenue: S.optional(S.NullOr(S.Unknown)),
+          checkouts_conversion: S.optional(S.NullOr(S.Unknown)),
+          ltv: S.optional(S.NullOr(S.Unknown)),
+          gross_margin: S.optional(S.NullOr(S.Unknown)),
+          gross_margin_percentage: S.optional(S.NullOr(S.Unknown)),
+          cashflow: S.optional(S.NullOr(S.Unknown)),
+          average_seats_per_customer: S.optional(S.NullOr(S.Unknown)),
+          seat_utilization_rate: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "MetricsTotals" });
   }
@@ -24219,75 +20876,75 @@ function __c43(j: number): any {
         S.Struct({
           slug: S.String,
           display_name: S.String,
-          type: MetricType,
+          type: S.String,
         }),
       ).annotate({ identifier: "Metric" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          active_subscriptions: S.optional(S.NullOr(Metric)),
-          committed_subscriptions: S.optional(S.NullOr(Metric)),
-          monthly_recurring_revenue: S.optional(S.NullOr(Metric)),
-          trial_monthly_recurring_revenue: S.optional(S.NullOr(Metric)),
-          committed_monthly_recurring_revenue: S.optional(S.NullOr(Metric)),
-          trial_committed_monthly_recurring_revenue: S.optional(S.NullOr(Metric)),
-          average_revenue_per_user: S.optional(S.NullOr(Metric)),
-          checkouts: S.optional(S.NullOr(Metric)),
-          succeeded_checkouts: S.optional(S.NullOr(Metric)),
-          churned_subscriptions: S.optional(S.NullOr(Metric)),
-          churn_rate: S.optional(S.NullOr(Metric)),
-          seats_total: S.optional(S.NullOr(Metric)),
-          seats_claimed: S.optional(S.NullOr(Metric)),
-          seats_pending: S.optional(S.NullOr(Metric)),
-          seat_customers: S.optional(S.NullOr(Metric)),
-          new_seat_customers: S.optional(S.NullOr(Metric)),
-          churned_seat_customers: S.optional(S.NullOr(Metric)),
-          orders: S.optional(S.NullOr(Metric)),
-          revenue: S.optional(S.NullOr(Metric)),
-          net_revenue: S.optional(S.NullOr(Metric)),
-          cumulative_revenue: S.optional(S.NullOr(Metric)),
-          net_cumulative_revenue: S.optional(S.NullOr(Metric)),
-          costs: S.optional(S.NullOr(Metric)),
-          cumulative_costs: S.optional(S.NullOr(Metric)),
-          average_order_value: S.optional(S.NullOr(Metric)),
-          net_average_order_value: S.optional(S.NullOr(Metric)),
-          cost_per_user: S.optional(S.NullOr(Metric)),
-          active_user_by_event: S.optional(S.NullOr(Metric)),
-          one_time_products: S.optional(S.NullOr(Metric)),
-          one_time_products_revenue: S.optional(S.NullOr(Metric)),
-          one_time_products_net_revenue: S.optional(S.NullOr(Metric)),
-          new_subscriptions: S.optional(S.NullOr(Metric)),
-          new_subscriptions_revenue: S.optional(S.NullOr(Metric)),
-          new_subscriptions_net_revenue: S.optional(S.NullOr(Metric)),
-          renewed_subscriptions: S.optional(S.NullOr(Metric)),
-          renewed_subscriptions_revenue: S.optional(S.NullOr(Metric)),
-          renewed_subscriptions_net_revenue: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_customer_service: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_low_quality: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_missing_features: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_switched_service: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_too_complex: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_too_expensive: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_unused: S.optional(S.NullOr(Metric)),
-          canceled_subscriptions_other: S.optional(S.NullOr(Metric)),
-          annual_recurring_revenue: S.optional(S.NullOr(Metric)),
-          committed_annual_recurring_revenue: S.optional(S.NullOr(Metric)),
-          checkouts_conversion: S.optional(S.NullOr(Metric)),
-          ltv: S.optional(S.NullOr(Metric)),
-          gross_margin: S.optional(S.NullOr(Metric)),
-          gross_margin_percentage: S.optional(S.NullOr(Metric)),
-          cashflow: S.optional(S.NullOr(Metric)),
-          average_seats_per_customer: S.optional(S.NullOr(Metric)),
-          seat_utilization_rate: S.optional(S.NullOr(Metric)),
+          active_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
+          committed_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
+          monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          trial_monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          committed_monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          trial_committed_monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          average_revenue_per_user: S.optional(S.NullOr(__S(344, __c43, 0))),
+          checkouts: S.optional(S.NullOr(__S(344, __c43, 0))),
+          succeeded_checkouts: S.optional(S.NullOr(__S(344, __c43, 0))),
+          churned_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
+          churn_rate: S.optional(S.NullOr(__S(344, __c43, 0))),
+          seats_total: S.optional(S.NullOr(__S(344, __c43, 0))),
+          seats_claimed: S.optional(S.NullOr(__S(344, __c43, 0))),
+          seats_pending: S.optional(S.NullOr(__S(344, __c43, 0))),
+          seat_customers: S.optional(S.NullOr(__S(344, __c43, 0))),
+          new_seat_customers: S.optional(S.NullOr(__S(344, __c43, 0))),
+          churned_seat_customers: S.optional(S.NullOr(__S(344, __c43, 0))),
+          orders: S.optional(S.NullOr(__S(344, __c43, 0))),
+          revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          cumulative_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          net_cumulative_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          costs: S.optional(S.NullOr(__S(344, __c43, 0))),
+          cumulative_costs: S.optional(S.NullOr(__S(344, __c43, 0))),
+          average_order_value: S.optional(S.NullOr(__S(344, __c43, 0))),
+          net_average_order_value: S.optional(S.NullOr(__S(344, __c43, 0))),
+          cost_per_user: S.optional(S.NullOr(__S(344, __c43, 0))),
+          active_user_by_event: S.optional(S.NullOr(__S(344, __c43, 0))),
+          one_time_products: S.optional(S.NullOr(__S(344, __c43, 0))),
+          one_time_products_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          one_time_products_net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          new_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
+          new_subscriptions_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          new_subscriptions_net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          renewed_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
+          renewed_subscriptions_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          renewed_subscriptions_net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_customer_service: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_low_quality: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_missing_features: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_switched_service: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_too_complex: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_too_expensive: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_unused: S.optional(S.NullOr(__S(344, __c43, 0))),
+          canceled_subscriptions_other: S.optional(S.NullOr(__S(344, __c43, 0))),
+          annual_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          committed_annual_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
+          checkouts_conversion: S.optional(S.NullOr(__S(344, __c43, 0))),
+          ltv: S.optional(S.NullOr(__S(344, __c43, 0))),
+          gross_margin: S.optional(S.NullOr(__S(344, __c43, 0))),
+          gross_margin_percentage: S.optional(S.NullOr(__S(344, __c43, 0))),
+          cashflow: S.optional(S.NullOr(__S(344, __c43, 0))),
+          average_seats_per_customer: S.optional(S.NullOr(__S(344, __c43, 0))),
+          seat_utilization_rate: S.optional(S.NullOr(__S(344, __c43, 0))),
         }),
       ).annotate({ identifier: "Metrics" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          periods: MetricsResponsePeriodsList,
-          totals: MetricsTotals,
-          metrics: Metrics,
+          periods: __S(342, __c42, 6),
+          totals: __S(343, __c42, 7),
+          metrics: __S(345, __c43, 1),
         }),
       ).annotate({ identifier: "MetricsResponse" });
     case 3:
@@ -24312,18 +20969,18 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          hour: MetricsIntervalLimit,
-          day: MetricsIntervalLimit,
-          week: MetricsIntervalLimit,
-          month: MetricsIntervalLimit,
-          year: MetricsIntervalLimit,
+          hour: __S(349, __c43, 5),
+          day: __S(349, __c43, 5),
+          week: __S(349, __c43, 5),
+          month: __S(349, __c43, 5),
+          year: __S(349, __c43, 5),
         }),
       ).annotate({ identifier: "MetricsIntervalsLimits" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           min_date: S.String,
-          intervals: MetricsIntervalsLimits,
+          intervals: __S(350, __c43, 6),
         }),
       ).annotate({ identifier: "MetricsLimits" });
   }
@@ -24333,17 +20990,15 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(MetricsListDashboardsRequestOrganizationId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/metrics/dashboards", code: 200 })),
       ).annotate({
         identifier: "MetricsListDashboardsRequest",
       });
     case 1:
-      return S.Array(MetricDashboardSchema);
+      return S.Array(__S(337, __c42, 1));
     case 2:
-      return S.suspend(() =>
-        MetricsListDashboardsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(353, __c44, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "MetricsListDashboardsResponse",
       });
     case 3:
@@ -24351,7 +21006,7 @@ function __c44(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           name: S.optional(S.NullOr(S.String)),
-          metrics: S.optional(S.NullOr(MetricsUpdateDashboardRequestMetricsList)),
+          metrics: S.optional(S.NullOr(__S(0, __c0, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/metrics/dashboards/{id}", code: 200 })),
       ).annotate({
         identifier: "MetricsUpdateDashboardRequest",
@@ -24361,25 +21016,23 @@ function __c44(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/oauth2/authorize", code: 200 })),
       ).annotate({ identifier: "Oauth2AuthorizeRequest" });
     case 5:
-      return S.suspend(() => Oauth2AuthorizeResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "Oauth2AuthorizeResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          redirect_uris: Oauth2ClientsOauth2CreateClientRequestRedirectUrisList,
-          token_endpoint_auth_method: S.optional(
-            Oauth2ClientsOauth2CreateClientRequestTokenEndpointAuthMethod,
-          ),
-          grant_types: S.optional(Oauth2ClientsOauth2CreateClientRequestGrantTypesList),
-          response_types: S.optional(Oauth2ClientsOauth2CreateClientRequestResponseTypesList),
+          redirect_uris: __S(0, __c0, 0),
+          token_endpoint_auth_method: S.optional(S.String),
+          grant_types: S.optional(__S(1, __c0, 1)),
+          response_types: S.optional(__S(0, __c0, 0)),
           scope: S.optional(S.String),
           client_name: S.String,
           client_uri: S.optional(S.NullOr(S.String)),
           logo_uri: S.optional(S.NullOr(S.String)),
           tos_uri: S.optional(S.NullOr(S.String)),
           policy_uri: S.optional(S.NullOr(S.String)),
-          default_sub_type: S.optional(SubType),
+          default_sub_type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/oauth2/register", code: 200 })),
       ).annotate({
         identifier: "Oauth2ClientsOauth2CreateClientRequest",
@@ -24412,19 +21065,17 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           client_id: S.String.pipe(T.Label()),
-          redirect_uris: Oauth2ClientsOauth2UpdateClientRequestRedirectUrisList,
-          token_endpoint_auth_method: S.optional(
-            Oauth2ClientsOauth2UpdateClientRequestTokenEndpointAuthMethod,
-          ),
-          grant_types: S.optional(Oauth2ClientsOauth2UpdateClientRequestGrantTypesList),
-          response_types: S.optional(Oauth2ClientsOauth2UpdateClientRequestResponseTypesList),
+          redirect_uris: __S(0, __c0, 0),
+          token_endpoint_auth_method: S.optional(S.String),
+          grant_types: S.optional(__S(1, __c0, 1)),
+          response_types: S.optional(__S(0, __c0, 0)),
           scope: S.optional(S.String),
           client_name: S.String,
           client_uri: S.optional(S.NullOr(S.String)),
           logo_uri: S.optional(S.NullOr(S.String)),
           tos_uri: S.optional(S.NullOr(S.String)),
           policy_uri: S.optional(S.NullOr(S.String)),
-          default_sub_type: S.optional(SubType),
+          default_sub_type: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/oauth2/register/{client_id}", code: 200 })),
       ).annotate({
         identifier: "Oauth2ClientsOauth2UpdateClientRequest",
@@ -24433,7 +21084,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String,
-          token_type_hint: S.optional(S.NullOr(Oauth2IntrospectTokenRequestTokenTypeHint)),
+          token_type_hint: S.optional(S.NullOr(S.String)),
           client_id: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
         }).pipe(T.Http({ method: "POST", uri: "/v1/oauth2/introspect", code: 200 })),
@@ -24445,11 +21096,11 @@ function __c45(j: number): any {
         S.Struct({
           active: S.Boolean,
           client_id: S.String,
-          token_type: IntrospectTokenResponseTokenType,
+          token_type: S.String,
           scope: S.String,
-          sub_type: SubType,
+          sub_type: S.String,
           sub: S.String,
-          organizations: IntrospectTokenResponseOrganizationsList,
+          organizations: __S(0, __c0, 0),
           aud: S.String,
           iss: S.String,
           exp: S.Number,
@@ -24459,7 +21110,7 @@ function __c45(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: Oauth2RequestTokenRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/oauth2/token", code: 200 })),
       ).annotate({
         identifier: "Oauth2RequestTokenRequest",
@@ -24479,7 +21130,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String,
-          token_type_hint: S.optional(S.NullOr(Oauth2RevokeTokenRequestTokenTypeHint)),
+          token_type_hint: S.optional(S.NullOr(S.String)),
           client_id: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
         }).pipe(T.Http({ method: "POST", uri: "/v1/oauth2/revoke", code: 200 })),
@@ -24493,18 +21144,18 @@ function __c46(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/oauth2/userinfo", code: 200 })),
       ).annotate({ identifier: "Oauth2UserinfoRequest" });
     case 1:
-      return S.suspend(() => Oauth2UserinfoResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "Oauth2UserinfoResponse",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(OrdersCreateRequestCustomFieldDataValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 3:
-      return S.Record(S.String, OrdersCreateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          custom_field_data: S.optional(OrdersCreateRequestCustomFieldDataMap),
-          metadata: S.optional(OrdersCreateRequestMetadataMap),
+          custom_field_data: S.optional(__S(370, __c46, 2)),
+          metadata: S.optional(__S(371, __c46, 3)),
           organization_id: S.optional(S.NullOr(S.String)),
           customer_id: S.String,
           product_id: S.String,
@@ -24515,19 +21166,19 @@ function __c46(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v1/orders/", code: 200 })),
       ).annotate({ identifier: "OrdersCreateRequest" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(OrderCustomFieldDataValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: MetadataOutputType,
+          metadata: __S(4, __c0, 4),
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
           amount: S.Number,
           currency: S.String,
-          recurring_interval: RecurringInterval,
+          recurring_interval: S.String,
           recurring_interval_count: S.Number,
-          status: SubscriptionStatus,
+          status: S.String,
           current_period_start: S.String,
           current_period_end: S.String,
           current_meter_period_start: S.NullOr(S.String),
@@ -24549,7 +21200,7 @@ function __c46(j: number): any {
           checkout_id: S.NullOr(S.String),
           seats: S.optional(S.NullOr(S.Number)),
           units: S.NullOr(S.Number),
-          customer_cancellation_reason: S.NullOr(CustomerCancellationReason),
+          customer_cancellation_reason: S.NullOr(S.String),
           customer_cancellation_comment: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "OrderSubscription" });
@@ -24559,7 +21210,7 @@ function __c46(j: number): any {
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          status: OrderStatus,
+          status: S.String,
           paid: S.Boolean,
           subtotal_amount: S.Number,
           discount_amount: S.Number,
@@ -24571,9 +21222,9 @@ function __c46(j: number): any {
           refunded_amount: S.Number,
           refunded_tax_amount: S.Number,
           currency: S.String,
-          billing_reason: OrderBillingReason,
+          billing_reason: S.String,
           billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(Address),
+          billing_address: S.NullOr(__S(5, __c0, 5)),
           invoice_number: S.NullOr(S.String),
           is_invoice_generated: S.Boolean,
           receipt_number: S.NullOr(S.String),
@@ -24585,15 +21236,15 @@ function __c46(j: number): any {
           subscription_id: S.NullOr(S.String),
           checkout_id: S.NullOr(S.String),
           next_payment_attempt_at: S.optional(S.NullOr(S.String)),
-          metadata: MetadataOutputType,
-          custom_field_data: S.optional(OrderCustomFieldDataMap),
+          metadata: __S(4, __c0, 4),
+          custom_field_data: S.optional(__S(373, __c46, 5)),
           platform_fee_amount: S.Number,
           platform_fee_currency: S.NullOr(S.String),
-          customer: OrderCustomer,
-          product: S.NullOr(DiscountProduct),
-          discount: S.NullOr(OrderDiscount),
-          subscription: S.NullOr(OrderSubscription),
-          items: OrderItemsList,
+          customer: __S(125, __c15, 5),
+          product: S.NullOr(__S(260, __c32, 4)),
+          discount: S.NullOr(S.Unknown),
+          subscription: S.NullOr(__S(374, __c46, 6)),
+          items: __S(164, __c20, 4),
           description: S.String,
           refundable_amount: S.Number,
           refundable_tax_amount: S.Number,
@@ -24606,13 +21257,13 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(OrdersExportRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(OrdersExportRequestProductId.pipe(T.Query())),
-          status: S.optional(OrdersExportRequestStatus.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           timezone: S.optional(S.String.pipe(T.Query())),
-          columns: S.optional(OrdersExportRequestColumns.pipe(T.Query())),
+          columns: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/orders/export", code: 200 })),
       ).annotate({ identifier: "OrdersExportRequest" });
     case 1:
@@ -24645,30 +21296,30 @@ function __c47(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(OrdersListRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(OrdersListRequestProductId.pipe(T.Query())),
-          product_billing_type: S.optional(OrdersListRequestProductBillingType.pipe(T.Query())),
-          discount_id: S.optional(OrdersListRequestDiscountId.pipe(T.Query())),
-          customer_id: S.optional(OrdersListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(OrdersListRequestExternalCustomerId.pipe(T.Query())),
-          checkout_id: S.optional(OrdersListRequestCheckoutId.pipe(T.Query())),
-          subscription_id: S.optional(OrdersListRequestSubscriptionId.pipe(T.Query())),
-          status: S.optional(OrdersListRequestStatus.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_billing_type: S.optional(S.Unknown.pipe(T.Query())),
+          discount_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          checkout_id: S.optional(S.Unknown.pipe(T.Query())),
+          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(OrdersListRequestSortingList.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/orders/", code: 200 })),
       ).annotate({ identifier: "OrdersListRequest" });
     case 6:
-      return S.Array(Order);
+      return S.Array(__S(375, __c46, 7));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceOrderItemsList,
-          pagination: Pagination,
+          items: __S(382, __c47, 6),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceOrder" });
   }
@@ -24686,30 +21337,30 @@ function __c48(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           billing_name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(AddressInput)),
+          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/orders/{id}", code: 200 })),
       ).annotate({ identifier: "OrdersUpdateRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          platform: OrganizationSocialPlatforms,
+          platform: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "OrganizationSocialLink" });
     case 3:
-      return S.Array(OrganizationSocialLink);
+      return S.Array(__S(386, __c48, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           about: S.optional(S.NullOr(S.String)),
           product_description: S.optional(S.NullOr(S.String)),
-          selling_categories: S.optional(OrganizationDetailsSellingCategoriesList),
-          pricing_models: S.optional(OrganizationDetailsPricingModelsList),
+          selling_categories: S.optional(__S(0, __c0, 0)),
+          pricing_models: S.optional(__S(0, __c0, 0)),
           intended_use: S.optional(S.NullOr(S.String)),
-          customer_acquisition: S.optional(OrganizationDetailsCustomerAcquisitionList),
+          customer_acquisition: S.optional(__S(0, __c0, 0)),
           future_annual_revenue: S.optional(S.NullOr(S.Number)),
           switching: S.optional(S.Boolean),
-          switching_from: S.optional(S.NullOr(OrganizationDetailsSwitchingFrom)),
+          switching_from: S.optional(S.NullOr(S.String)),
           previous_annual_revenue: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "OrganizationDetails" });
@@ -24718,9 +21369,7 @@ function __c48(j: number): any {
         S.Struct({
           member_model_enabled: S.optional(S.Boolean),
           checkout_localization_enabled: S.optional(S.Boolean),
-          overview_metrics: S.optional(
-            S.NullOr(OrganizationFeatureSettingsUpdateOverviewMetricsList),
-          ),
+          overview_metrics: S.optional(S.NullOr(__S(0, __c0, 0))),
         }),
       ).annotate({
         identifier: "OrganizationFeatureSettingsUpdate",
@@ -24729,7 +21378,7 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allow_multiple_subscriptions: S.Boolean,
-          proration_behavior: OrganizationSubscriptionSettingsProrationBehavior,
+          proration_behavior: S.String,
           benefit_revocation_grace_period: S.Number,
           prevent_trial_abuse: S.Boolean,
           allow_customer_updates: S.Boolean,
@@ -24768,18 +21417,18 @@ function __c49(j: number): any {
           name: S.String,
           slug: S.String,
           avatar_url: S.optional(S.NullOr(S.String)),
-          legal_entity: S.optional(S.NullOr(OrganizationsCreateRequestLegalEntity)),
+          legal_entity: S.optional(S.NullOr(S.Unknown)),
           email: S.optional(S.NullOr(S.String)),
           website: S.optional(S.NullOr(S.String)),
-          socials: S.optional(S.NullOr(OrganizationsCreateRequestSocialsList)),
-          details: S.optional(S.NullOr(OrganizationDetails)),
-          country: S.optional(S.NullOr(OrganizationsCreateRequestCountry)),
-          feature_settings: S.optional(S.NullOr(OrganizationFeatureSettingsUpdate)),
-          subscription_settings: S.optional(S.NullOr(OrganizationSubscriptionSettings)),
-          customer_email_settings: S.optional(S.NullOr(OrganizationCustomerEmailSettings)),
-          customer_portal_settings: S.optional(S.NullOr(OrganizationCustomerPortalSettings)),
-          default_presentment_currency: S.optional(PresentmentCurrency),
-          default_tax_behavior: S.optional(TaxBehaviorOption),
+          socials: S.optional(S.NullOr(__S(387, __c48, 3))),
+          details: S.optional(S.NullOr(__S(388, __c48, 4))),
+          country: S.optional(S.NullOr(S.String)),
+          feature_settings: S.optional(S.NullOr(__S(389, __c48, 5))),
+          subscription_settings: S.optional(S.NullOr(__S(390, __c48, 6))),
+          customer_email_settings: S.optional(S.NullOr(__S(391, __c48, 7))),
+          customer_portal_settings: S.optional(S.NullOr(__S(158, __c19, 6))),
+          default_presentment_currency: S.optional(S.String),
+          default_tax_behavior: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/organizations/", code: 200 })),
       ).annotate({
         identifier: "OrganizationsCreateRequest",
@@ -24791,7 +21440,7 @@ function __c49(j: number): any {
           wallets_enabled: S.optional(S.Boolean),
           member_model_enabled: S.optional(S.Boolean),
           checkout_localization_enabled: S.optional(S.Boolean),
-          overview_metrics: S.optional(S.NullOr(OrganizationFeatureSettingsOverviewMetricsList)),
+          overview_metrics: S.optional(S.NullOr(__S(0, __c0, 0))),
           reset_proration_behavior_enabled: S.optional(S.Boolean),
           off_session_charges_enabled: S.optional(S.Boolean),
           meter_cycling_enabled: S.optional(S.Boolean),
@@ -24835,27 +21484,27 @@ function __c49(j: number): any {
           name: S.String,
           slug: S.String,
           avatar_url: S.NullOr(S.String),
-          proration_behavior: SubscriptionProrationBehavior,
+          proration_behavior: S.String,
           allow_customer_updates: S.Boolean,
           email: S.NullOr(S.String),
           website: S.NullOr(S.String),
-          socials: OrganizationSocialsList,
-          status: OrganizationStatus,
+          socials: __S(387, __c48, 3),
+          status: S.String,
           details_submitted_at: S.NullOr(S.String),
           onboarding_resubmission_requested_at: S.NullOr(S.String),
           sso_enforced: S.Boolean,
           default_presentment_currency: S.String,
-          default_tax_behavior: TaxBehaviorOption,
-          feature_settings: S.NullOr(OrganizationFeatureSettings),
-          subscription_settings: OrganizationSubscriptionSettings,
-          customer_email_settings: OrganizationCustomerEmailSettings,
-          customer_portal_settings: OrganizationCustomerPortalSettings,
-          dispute_settings: OrganizationDisputeSettings,
-          embed_hosts: OrganizationEmbedHostsList,
-          country: S.optional(S.NullOr(OrganizationCountry)),
+          default_tax_behavior: S.String,
+          feature_settings: S.NullOr(__S(393, __c49, 1)),
+          subscription_settings: __S(390, __c48, 6),
+          customer_email_settings: __S(391, __c48, 7),
+          customer_portal_settings: __S(158, __c19, 6),
+          dispute_settings: __S(394, __c49, 2),
+          embed_hosts: __S(0, __c0, 0),
+          country: S.optional(S.NullOr(S.String)),
           account_id: S.NullOr(S.String),
           payout_account_id: S.NullOr(S.String),
-          capabilities: OrganizationCapabilities,
+          capabilities: __S(395, __c49, 3),
         }),
       ).annotate({ identifier: "Organization" });
     case 5:
@@ -24870,11 +21519,11 @@ function __c49(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(OrganizationsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/organizations/", code: 200 })),
       ).annotate({ identifier: "OrganizationsListRequest" });
     case 7:
-      return S.Array(Organization);
+      return S.Array(__S(396, __c49, 4));
   }
 }
 function __c50(j: number): any {
@@ -24882,8 +21531,8 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceOrganizationItemsList,
-          pagination: Pagination,
+          items: __S(399, __c49, 7),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceOrganization" });
     case 1:
@@ -24902,17 +21551,17 @@ function __c50(j: number): any {
           avatar_url: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           website: S.optional(S.NullOr(S.String)),
-          socials: S.optional(S.NullOr(OrganizationsUpdateRequestSocialsList)),
-          details: S.optional(S.NullOr(OrganizationDetails)),
-          country: S.optional(S.NullOr(OrganizationsUpdateRequestCountry)),
-          feature_settings: S.optional(S.NullOr(OrganizationFeatureSettingsUpdate)),
-          subscription_settings: S.optional(S.NullOr(OrganizationSubscriptionSettings)),
-          customer_email_settings: S.optional(S.NullOr(OrganizationCustomerEmailSettings)),
-          customer_portal_settings: S.optional(S.NullOr(OrganizationCustomerPortalSettings)),
-          dispute_settings: S.optional(S.NullOr(OrganizationDisputeSettingsUpdate)),
-          embed_hosts: S.optional(S.NullOr(OrganizationsUpdateRequestEmbedHostsList)),
-          default_presentment_currency: S.optional(S.NullOr(PresentmentCurrency)),
-          default_tax_behavior: S.optional(S.NullOr(TaxBehaviorOption)),
+          socials: S.optional(S.NullOr(__S(387, __c48, 3))),
+          details: S.optional(S.NullOr(__S(388, __c48, 4))),
+          country: S.optional(S.NullOr(S.String)),
+          feature_settings: S.optional(S.NullOr(__S(389, __c48, 5))),
+          subscription_settings: S.optional(S.NullOr(__S(390, __c48, 6))),
+          customer_email_settings: S.optional(S.NullOr(__S(391, __c48, 7))),
+          customer_portal_settings: S.optional(S.NullOr(__S(158, __c19, 6))),
+          dispute_settings: S.optional(S.NullOr(__S(401, __c50, 1))),
+          embed_hosts: S.optional(S.NullOr(__S(0, __c0, 0))),
+          default_presentment_currency: S.optional(S.NullOr(S.String)),
+          default_tax_behavior: S.optional(S.NullOr(S.String)),
           sso_enforced: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/organizations/{id}", code: 200 })),
       ).annotate({
@@ -24925,31 +21574,31 @@ function __c50(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/payments/{id}", code: 200 })),
       ).annotate({ identifier: "PaymentsGetRequest" });
     case 4:
-      return S.suspend(() => Payment.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "PaymentsGetResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(PaymentsListRequestOrganizationId.pipe(T.Query())),
-          checkout_id: S.optional(PaymentsListRequestCheckoutId.pipe(T.Query())),
-          order_id: S.optional(PaymentsListRequestOrderId.pipe(T.Query())),
-          customer_id: S.optional(PaymentsListRequestCustomerId.pipe(T.Query())),
-          status: S.optional(PaymentsListRequestStatus.pipe(T.Query())),
-          method: S.optional(PaymentsListRequestMethod.pipe(T.Query())),
-          customer_email: S.optional(PaymentsListRequestCustomerEmail.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          checkout_id: S.optional(S.Unknown.pipe(T.Query())),
+          order_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
+          method: S.optional(S.Unknown.pipe(T.Query())),
+          customer_email: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(PaymentsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/payments/", code: 200 })),
       ).annotate({ identifier: "PaymentsListRequest" });
     case 6:
-      return S.Array(Payment);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourcePaymentItemsList,
-          pagination: Pagination,
+          items: __S(406, __c50, 6),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourcePayment" });
   }
@@ -24966,39 +21615,39 @@ function __c51(j: number): any {
         identifier: "AttachedCustomFieldCreate",
       });
     case 1:
-      return S.Array(AttachedCustomFieldCreate);
+      return S.Array(__S(408, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: ProductCreate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/products/", code: 200 })),
       ).annotate({ identifier: "ProductsCreateRequest" });
     case 3:
-      return S.Array(ProductPricesItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(TrialInterval),
+          trial_interval: S.NullOr(S.String),
           trial_interval_count: S.NullOr(S.Number),
           name: S.String,
           description: S.NullOr(S.String),
-          visibility: ProductVisibility,
-          recurring_interval: S.NullOr(RecurringInterval),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
           recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(RecurringInterval),
+          meter_interval: S.NullOr(S.String),
           meter_interval_count: S.NullOr(S.Number),
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
           organization_id: S.String,
-          metadata: MetadataOutputType,
+          metadata: __S(4, __c0, 4),
           is_deletable: S.Boolean,
-          prices: ProductPricesList,
-          benefits: ProductBenefitsList,
-          medias: ProductMediasList,
-          attached_custom_fields: ProductAttachedCustomFieldsList,
+          prices: __S(411, __c51, 3),
+          benefits: __S(24, __c3, 0),
+          medias: __S(32, __c4, 0),
+          attached_custom_fields: __S(58, __c7, 2),
         }),
       ).annotate({ identifier: "Product" });
     case 5:
@@ -25016,17 +21665,17 @@ function __c51(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(ProductsListRequestId.pipe(T.Query())),
-          organization_id: S.optional(ProductsListRequestOrganizationId.pipe(T.Query())),
+          id: S.optional(S.Unknown.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           is_archived: S.optional(S.Boolean.pipe(T.Query())),
           is_recurring: S.optional(S.Boolean.pipe(T.Query())),
-          benefit_id: S.optional(ProductsListRequestBenefitId.pipe(T.Query())),
-          visibility: S.optional(ProductsListRequestVisibilityList.pipe(T.Query())),
+          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
+          visibility: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(ProductsListRequestSortingList.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/products/", code: 200 })),
       ).annotate({ identifier: "ProductsListRequest" });
   }
@@ -25034,55 +21683,53 @@ function __c51(j: number): any {
 function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Product);
+      return S.Array(__S(412, __c51, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceProductItemsList,
-          pagination: Pagination,
+          items: __S(416, __c52, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceProduct" });
     case 2:
-      return S.Record(S.String, ProductsUpdateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(ProductsUpdateRequestPricesItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(ProductsUpdateRequestMetadataMap),
-          trial_interval: S.optional(S.NullOr(TrialInterval)),
+          metadata: S.optional(__S(418, __c52, 2)),
+          trial_interval: S.optional(S.NullOr(S.String)),
           trial_interval_count: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          recurring_interval: S.optional(S.NullOr(RecurringInterval)),
+          recurring_interval: S.optional(S.NullOr(S.String)),
           recurring_interval_count: S.optional(S.NullOr(S.Number)),
           is_archived: S.optional(S.NullOr(S.Boolean)),
-          visibility: S.optional(S.NullOr(ProductVisibility)),
-          prices: S.optional(S.NullOr(ProductsUpdateRequestPricesList)),
-          medias: S.optional(S.NullOr(ProductsUpdateRequestMediasList)),
-          attached_custom_fields: S.optional(
-            S.NullOr(ProductsUpdateRequestAttachedCustomFieldsList),
-          ),
+          visibility: S.optional(S.NullOr(S.String)),
+          prices: S.optional(S.NullOr(__S(419, __c52, 3))),
+          medias: S.optional(S.NullOr(__S(0, __c0, 0))),
+          attached_custom_fields: S.optional(S.NullOr(__S(409, __c51, 1))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/products/{id}", code: 200 })),
       ).annotate({ identifier: "ProductsUpdateRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          benefits: ProductsUpdateBenefitsRequestBenefitsList,
+          benefits: __S(0, __c0, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/products/{id}/benefits", code: 200 })),
       ).annotate({
         identifier: "ProductsUpdateBenefitsRequest",
       });
     case 6:
-      return S.Record(S.String, RefundsCreateRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(RefundsCreateRequestMetadataMap),
+          metadata: S.optional(__S(422, __c52, 6)),
           order_id: S.String,
-          reason: RefundsCreateRequestReason,
+          reason: S.String,
           amount: S.Number,
           comment: S.optional(S.NullOr(S.String)),
           revoke_benefits: S.optional(S.Boolean),
@@ -25098,7 +21745,7 @@ function __c53(j: number): any {
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
-          status: DisputeStatus,
+          status: S.String,
           resolved: S.Boolean,
           closed: S.Boolean,
           amount: S.Number,
@@ -25117,9 +21764,9 @@ function __c53(j: number): any {
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
-          metadata: MetadataOutputType,
-          status: RefundStatus,
-          reason: RefundReason,
+          metadata: __S(4, __c0, 4),
+          status: S.String,
+          reason: S.String,
           amount: S.Number,
           tax_amount: S.Number,
           currency: S.String,
@@ -25128,31 +21775,31 @@ function __c53(j: number): any {
           subscription_id: S.NullOr(S.String),
           customer_id: S.String,
           revoke_benefits: S.Boolean,
-          dispute: S.NullOr(RefundDispute),
+          dispute: S.NullOr(__S(424, __c53, 0)),
         }),
       ).annotate({ identifier: "Refund" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(RefundsListRequestId.pipe(T.Query())),
-          organization_id: S.optional(RefundsListRequestOrganizationId.pipe(T.Query())),
-          order_id: S.optional(RefundsListRequestOrderId.pipe(T.Query())),
-          subscription_id: S.optional(RefundsListRequestSubscriptionId.pipe(T.Query())),
-          customer_id: S.optional(RefundsListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(RefundsListRequestExternalCustomerId.pipe(T.Query())),
+          id: S.optional(S.Unknown.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          order_id: S.optional(S.Unknown.pipe(T.Query())),
+          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
           succeeded: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(RefundsListRequestSortingList.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/refunds/", code: 200 })),
       ).annotate({ identifier: "RefundsListRequest" });
     case 3:
-      return S.Array(Refund);
+      return S.Array(__S(425, __c53, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceRefundItemsList,
-          pagination: Pagination,
+          items: __S(427, __c53, 3),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceRefund" });
     case 5:
@@ -25161,7 +21808,7 @@ function __c53(j: number): any {
           id: S.String.pipe(T.Label()),
           confirmation_token_id: S.optional(S.NullOr(S.String)),
           payment_method_id: S.optional(S.NullOr(S.String)),
-          payment_processor: S.optional(PaymentProcessor),
+          payment_processor: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25185,7 +21832,7 @@ function __c53(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: SubscriptionsCreateRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/subscriptions/", code: 200 })),
       ).annotate({
         identifier: "SubscriptionsCreateRequest",
@@ -25195,9 +21842,9 @@ function __c53(j: number): any {
 function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(SubscriptionCustomFieldDataValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 1:
-      return S.Array(SubscriptionPricesItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -25208,11 +21855,11 @@ function __c54(j: number): any {
           credited_units: S.Number,
           amount: S.Number,
           meter_id: S.String,
-          meter: Meter,
+          meter: __S(81, __c10, 1),
         }),
       ).annotate({ identifier: "SubscriptionMeter" });
     case 3:
-      return S.Array(SubscriptionMeter);
+      return S.Array(__S(434, __c54, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -25221,9 +21868,9 @@ function __c54(j: number): any {
           id: S.String,
           amount: S.Number,
           currency: S.String,
-          recurring_interval: RecurringInterval,
+          recurring_interval: S.String,
           recurring_interval_count: S.Number,
-          status: SubscriptionStatus,
+          status: S.String,
           current_period_start: S.String,
           current_period_end: S.String,
           current_meter_period_start: S.NullOr(S.String),
@@ -25245,29 +21892,29 @@ function __c54(j: number): any {
           checkout_id: S.NullOr(S.String),
           seats: S.optional(S.NullOr(S.Number)),
           units: S.NullOr(S.Number),
-          customer_cancellation_reason: S.NullOr(CustomerCancellationReason),
+          customer_cancellation_reason: S.NullOr(S.String),
           customer_cancellation_comment: S.NullOr(S.String),
-          metadata: MetadataOutputType,
-          custom_field_data: S.optional(SubscriptionCustomFieldDataMap),
-          customer: SubscriptionCustomer,
-          product: Product,
-          discount: S.NullOr(SubscriptionDiscount),
-          prices: SubscriptionPricesList,
-          meters: SubscriptionMetersList,
-          pending_update: S.NullOr(PendingSubscriptionUpdate),
+          metadata: __S(4, __c0, 4),
+          custom_field_data: S.optional(__S(432, __c54, 0)),
+          customer: __S(125, __c15, 5),
+          product: __S(412, __c51, 4),
+          discount: S.NullOr(S.Unknown),
+          prices: __S(433, __c54, 1),
+          meters: __S(435, __c54, 3),
+          pending_update: S.NullOr(__S(189, __c23, 5)),
         }),
       ).annotate({ identifier: "Subscription" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(SubscriptionsExportRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(SubscriptionsExportRequestProductId.pipe(T.Query())),
-          status: S.optional(SubscriptionsExportRequestStatus.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
           cancel_at_period_end: S.optional(S.Boolean.pipe(T.Query())),
           started_after: S.optional(S.String.pipe(T.Query())),
           started_before: S.optional(S.String.pipe(T.Query())),
           timezone: S.optional(S.String.pipe(T.Query())),
-          columns: S.optional(SubscriptionsExportRequestColumns.pipe(T.Query())),
+          columns: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/export", code: 200 })),
       ).annotate({
         identifier: "SubscriptionsExportRequest",
@@ -25281,27 +21928,23 @@ function __c54(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(SubscriptionsListRequestOrganizationId.pipe(T.Query())),
-          product_id: S.optional(SubscriptionsListRequestProductId.pipe(T.Query())),
-          customer_id: S.optional(SubscriptionsListRequestCustomerId.pipe(T.Query())),
-          external_customer_id: S.optional(
-            SubscriptionsListRequestExternalCustomerId.pipe(T.Query()),
-          ),
-          discount_id: S.optional(SubscriptionsListRequestDiscountId.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          discount_id: S.optional(S.Unknown.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
-          status: S.optional(SubscriptionsListRequestStatus.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
           cancel_at_period_end: S.optional(S.Boolean.pipe(T.Query())),
-          customer_cancellation_reason: S.optional(
-            SubscriptionsListRequestCustomerCancellationReason.pipe(T.Query()),
-          ),
+          customer_cancellation_reason: S.optional(S.Unknown.pipe(T.Query())),
           canceled_at_after: S.optional(S.String.pipe(T.Query())),
           canceled_at_before: S.optional(S.String.pipe(T.Query())),
           started_after: S.optional(S.String.pipe(T.Query())),
           started_before: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(SubscriptionsListRequestSortingList.pipe(T.Query())),
-          metadata: S.optional(MetadataQueryMap.pipe(T.Query())),
+          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/", code: 200 })),
       ).annotate({ identifier: "SubscriptionsListRequest" });
   }
@@ -25309,12 +21952,12 @@ function __c54(j: number): any {
 function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Subscription);
+      return S.Array(__S(436, __c54, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceSubscriptionItemsList,
-          pagination: Pagination,
+          items: __S(440, __c55, 0),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListResourceSubscription" });
     case 2:
@@ -25329,21 +21972,18 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: SubscriptionUpdate.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/subscriptions/{id}", code: 200 })),
       ).annotate({
         identifier: "SubscriptionsUpdateRequest",
       });
     case 4:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(UpdateCheckoutsClientRequestCustomFieldDataValue),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 5:
       return S.suspend(() =>
         S.Struct({
           client_secret: S.String.pipe(T.Label()),
-          custom_field_data: S.optional(UpdateCheckoutsClientRequestCustomFieldDataMap),
+          custom_field_data: S.optional(__S(444, __c55, 4)),
           product_id: S.optional(S.NullOr(S.String)),
           product_price_id: S.optional(S.NullOr(S.String)),
           amount: S.optional(S.NullOr(S.Number)),
@@ -25353,7 +21993,7 @@ function __c55(j: number): any {
           customer_name: S.optional(S.NullOr(S.String)),
           customer_email: S.optional(S.NullOr(S.String)),
           customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(AddressInput)),
+          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
           customer_tax_id: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           payment_method_type: S.optional(S.NullOr(S.String)),
@@ -25424,9 +22064,9 @@ function __c56(j: number): any {
         S.Struct({
           url: S.String,
           name: S.optional(S.NullOr(S.String)),
-          api_version: S.optional(WebhooksCreateWebhookEndpointRequestApiVersion),
-          format: WebhookFormat,
-          events: WebhooksCreateWebhookEndpointRequestEventsList,
+          api_version: S.optional(S.String),
+          format: S.String,
+          events: __S(1, __c0, 1),
           organization_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/webhooks/endpoints", code: 200 })),
       ).annotate({
@@ -25441,10 +22081,10 @@ function __c56(j: number): any {
           url: S.String,
           name: S.optional(S.NullOr(S.String)),
           api_version: S.String,
-          format: WebhookFormat,
+          format: S.String,
           secret: S.String.pipe(T.SensitiveValue({})),
           organization_id: S.String,
-          events: WebhookEndpointEventsList,
+          events: __S(1, __c0, 1),
           enabled: S.Boolean,
           uses_standard_webhook_signature: S.Boolean,
         }),
@@ -25468,15 +22108,13 @@ function __c56(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          endpoint_id: S.optional(WebhooksListWebhookDeliveriesRequestEndpointId.pipe(T.Query())),
+          endpoint_id: S.optional(S.Unknown.pipe(T.Query())),
           start_timestamp: S.optional(S.String.pipe(T.Query())),
           end_timestamp: S.optional(S.String.pipe(T.Query())),
           succeeded: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          http_code_class: S.optional(
-            WebhooksListWebhookDeliveriesRequestHttpCodeClass.pipe(T.Query()),
-          ),
-          event_type: S.optional(WebhooksListWebhookDeliveriesRequestEventType.pipe(T.Query())),
+          http_code_class: S.optional(S.String.pipe(T.Query())),
+          event_type: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/webhooks/deliveries", code: 200 })),
@@ -25494,7 +22132,7 @@ function __c56(j: number): any {
           skipped: S.Boolean,
           api_version: S.String,
           payload: S.NullOr(S.String),
-          type: WebhookEventType,
+          type: S.String,
           is_archived: S.Boolean,
         }),
       ).annotate({ identifier: "WebhookEvent" });
@@ -25511,16 +22149,16 @@ function __c57(j: number): any {
           succeeded: S.Boolean,
           http_code: S.NullOr(S.Number),
           response: S.NullOr(S.String),
-          webhook_event: WebhookEvent,
+          webhook_event: __S(455, __c56, 7),
         }),
       ).annotate({ identifier: "WebhookDelivery" });
     case 1:
-      return S.Array(WebhookDelivery);
+      return S.Array(__S(456, __c57, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceWebhookDeliveryItemsList,
-          pagination: Pagination,
+          items: __S(457, __c57, 1),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceWebhookDelivery",
@@ -25528,9 +22166,7 @@ function __c57(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(
-            WebhooksListWebhookEndpointsRequestOrganizationId.pipe(T.Query()),
-          ),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/webhooks/endpoints", code: 200 })),
@@ -25538,12 +22174,12 @@ function __c57(j: number): any {
         identifier: "WebhooksListWebhookEndpointsRequest",
       });
     case 4:
-      return S.Array(WebhookEndpoint);
+      return S.Array(__S(451, __c56, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: ListResourceWebhookEndpointItemsList,
-          pagination: Pagination,
+          items: __S(460, __c57, 4),
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListResourceWebhookEndpoint",
@@ -25574,13 +22210,18 @@ function __c58(j: number): any {
           id: S.String.pipe(T.Label()),
           url: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          api_version: S.optional(S.NullOr(WebhooksUpdateWebhookEndpointRequestApiVersion)),
-          format: S.optional(S.NullOr(WebhookFormat)),
-          events: S.optional(S.NullOr(WebhooksUpdateWebhookEndpointRequestEventsList)),
+          api_version: S.optional(S.NullOr(S.String)),
+          format: S.optional(S.NullOr(S.String)),
+          events: S.optional(S.NullOr(__S(1, __c0, 1))),
           enabled: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/webhooks/endpoints/{id}", code: 200 })),
       ).annotate({
         identifier: "WebhooksUpdateWebhookEndpointRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

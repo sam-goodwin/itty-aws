@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -35,11 +37,6 @@ export interface EngineeringAnalyticsAttentionPullRequestsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsAttentionPullRequestsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<EngineeringAnalyticsAttentionPullRequestsRequest>;
-
 export interface Author {
   /** Login handle of the pull request author. */
   handle: string;
@@ -50,8 +47,6 @@ export interface Author {
   /** True if the author is a bot (handle ends in [bot] or is a known bot). */
   is_bot: boolean;
 }
-const Author = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Author>;
-
 export interface RepoRef {
   /** Code host provider, e.g. 'github'. */
   provider: string;
@@ -60,15 +55,8 @@ export interface RepoRef {
   /** Repository name. */
   name: string;
 }
-const RepoRef = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RepoRef>;
-
 /** The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count. */
 export type CIStatusRollupFailingWorkflowsList = Array<string>;
-const CIStatusRollupFailingWorkflowsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CIStatusRollupFailingWorkflowsList>;
-
 export interface CIStatusRollup {
   /** Distinct workflows run on the PR's head SHA. */
   runs: number;
@@ -83,8 +71,6 @@ export interface CIStatusRollup {
   /** The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count. */
   failing_workflows?: CIStatusRollupFailingWorkflowsList;
 }
-const CIStatusRollup = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CIStatusRollup>;
-
 export interface PushCISample {
   /** Head commit SHA of this push (CI round). */
   head_sha: string;
@@ -97,24 +83,12 @@ export interface PushCISample {
   /** True when any latest-per-workflow run on this push hasn't completed yet. */
   pending: boolean;
 }
-const PushCISample = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PushCISample>;
-
 /** This PR's CI rounds oldest-first, capped to the most recent pushes - one sample per push for the push-history sparkline. `pushes` stays the uncapped count. */
 export type PullRequestListItemPushHistoryList = Array<PushCISample>;
-const PullRequestListItemPushHistoryList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PullRequestListItemPushHistoryList>;
-
 /** * `open` - OPEN * `closed` - CLOSED * `merged` - MERGED */
 export type EngineeringAnalyticsPRStateEnum = "open" | "closed" | "merged";
-const EngineeringAnalyticsPRStateEnum = S.String;
-
 /** GitHub label names on the pull request. */
 export type PullRequestListItemLabelsList = Array<string>;
-const PullRequestListItemLabelsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<PullRequestListItemLabelsList>;
-
 export interface PullRequestListItem {
   /** The pull request author. */
   author: Author;
@@ -151,15 +125,8 @@ export interface PullRequestListItem {
   /** Billable (self-hosted) minutes summed over this PR's jobs. Null when the job source isn't synced. */
   billable_minutes?: number | null;
 }
-const PullRequestListItem = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PullRequestListItem>;
-
 /** Open pull requests needing attention, failing CI first, then newest, capped at `limit`. */
 export type AttentionPullRequestListItemsList = Array<PullRequestListItem>;
-const AttentionPullRequestListItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AttentionPullRequestListItemsList>;
-
 export interface AttentionPullRequestList {
   /** Open pull requests needing attention, failing CI first, then newest, capped at `limit`. */
   items: AttentionPullRequestListItemsList;
@@ -168,11 +135,6 @@ export interface AttentionPullRequestList {
   /** Maximum number of pull requests returned in `items`. */
   limit: number;
 }
-const AttentionPullRequestList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AttentionPullRequestList>;
-
 export interface EngineeringAnalyticsAuthorFrictionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -183,35 +145,18 @@ export interface EngineeringAnalyticsAuthorFrictionRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsAuthorFrictionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<EngineeringAnalyticsAuthorFrictionRequest>;
-
 /** * `ci` - CI * `review` - REVIEW * `queue` - QUEUE * `rework` - REWORK */
 export type FrictionGroupEnum = "ci" | "review" | "queue" | "rework";
-const FrictionGroupEnum = S.String;
-
 export interface FrictionGroupShare {
   /** ci (red CI and CI waits), review (waiting for the first approval), queue (merge-queue time and kickouts), or rework (own failures and extra pushes). * `ci` - CI * `review` - REVIEW * `queue` - QUEUE * `rework` - REWORK */
   group: FrictionGroupEnum;
   /** This group's part of the score, in the same 'x typical' unit. The parts add up. */
   score: number;
 }
-const FrictionGroupShare = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<FrictionGroupShare>;
-
 /** The score split by the kind of friction. */
 export type AuthorFrictionGroupsList = Array<FrictionGroupShare>;
-const AuthorFrictionGroupsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AuthorFrictionGroupsList>;
-
 /** The author's GitHub teams. Empty when the membership table isn't synced. */
 export type AuthorFrictionTeamsList = Array<string>;
-const AuthorFrictionTeamsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<AuthorFrictionTeamsList>;
-
 export interface AuthorFriction {
   /** The score split by the kind of friction. */
   groups: AuthorFrictionGroupsList;
@@ -232,15 +177,8 @@ export interface AuthorFriction {
   /** The author's GitHub teams. Empty when the membership table isn't synced. */
   teams?: AuthorFrictionTeamsList;
 }
-const AuthorFriction = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AuthorFriction>;
-
 /** Authors by friction, most first. */
 export type AuthorFrictionListItemsList = Array<AuthorFriction>;
-const AuthorFrictionListItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AuthorFrictionListItemsList>;
-
 export interface TeamFriction {
   /** GitHub team slug. */
   github_team: string;
@@ -249,15 +187,8 @@ export interface TeamFriction {
   /** Members with enough merged pull requests to score. A team shows only above a floor, so one or two people never read as a team's figure. */
   scored_author_count: number;
 }
-const TeamFriction = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TeamFriction>;
-
 /** Teams with at least 3 scored members, by median member friction, most first. */
 export type AuthorFrictionListTeamsList = Array<TeamFriction>;
-const AuthorFrictionListTeamsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AuthorFrictionListTeamsList>;
-
 export interface AuthorFrictionList {
   /** Authors by friction, most first. */
   items: AuthorFrictionListItemsList;
@@ -274,8 +205,6 @@ export interface AuthorFrictionList {
   /** False when the team membership table isn't synced, so a team filter matches nobody. */
   has_membership_data: boolean;
 }
-const AuthorFrictionList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AuthorFrictionList>;
-
 export interface EngineeringAnalyticsAuthorFrictionDetailRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -286,21 +215,10 @@ export interface EngineeringAnalyticsAuthorFrictionDetailRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsAuthorFrictionDetailRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<EngineeringAnalyticsAuthorFrictionDetailRequest>;
-
 /** The author's teams without the author, each only with at least 2 other scored members. */
 export type AuthorFrictionDetailTeamsList = Array<TeamFriction>;
-const AuthorFrictionDetailTeamsList =
-  AuthorFrictionListTeamsList as any as S.Schema<AuthorFrictionDetailTeamsList>;
-
 /** The pull request's friction split by kind. */
 export type PullRequestFrictionItemGroupsList = Array<FrictionGroupShare>;
-const PullRequestFrictionItemGroupsList =
-  AuthorFrictionGroupsList as any as S.Schema<PullRequestFrictionItemGroupsList>;
-
 export interface PullRequestFrictionItem {
   /** The pull request's friction split by kind. */
   groups: PullRequestFrictionItemGroupsList;
@@ -315,18 +233,8 @@ export interface PullRequestFrictionItem {
   /** Friction as a multiple of the typical pull request in the repository. */
   score: number;
 }
-const PullRequestFrictionItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PullRequestFrictionItem>;
-
 /** The author's pull requests that added the most friction, most first. */
 export type AuthorFrictionDetailPullRequestsList = Array<PullRequestFrictionItem>;
-const AuthorFrictionDetailPullRequestsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AuthorFrictionDetailPullRequestsList>;
-
 export interface AuthorFrictionDetail {
   /** The author's score and rank. Null below 3 merged pull requests in the window. */
   author: AuthorFriction | null;
@@ -345,8 +253,6 @@ export interface AuthorFrictionDetail {
   /** The author's merged pull requests in the window. */
   pr_count: number;
 }
-const AuthorFrictionDetail = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AuthorFrictionDetail>;
-
 export interface EngineeringAnalyticsAuthorWorkflowCostsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -361,11 +267,6 @@ export interface EngineeringAnalyticsAuthorWorkflowCostsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsAuthorWorkflowCostsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsRequest>;
-
 export interface WorkflowCost {
   /** GitHub Actions workflow name this cost is for. */
   workflow_name: string;
@@ -380,21 +281,9 @@ export interface WorkflowCost {
   /** Provider-hosted/non-Linux jobs for this workflow, outside the estimate. */
   excluded_jobs: number;
 }
-const WorkflowCost = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<WorkflowCost>;
-
 export type EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList = Array<WorkflowCost>;
-const EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList>;
-
 export type EngineeringAnalyticsAuthorWorkflowCostsResponse =
   EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList;
-const EngineeringAnalyticsAuthorWorkflowCostsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsResponse>;
-
 export interface EngineeringAnalyticsBrokenTestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -403,15 +292,8 @@ export interface EngineeringAnalyticsBrokenTestsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsBrokenTestsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<EngineeringAnalyticsBrokenTestsRequest>;
-
 /** * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
 export type CIEngineEnum = "github_actions" | "depot_ci";
-const CIEngineEnum = S.String;
-
 /** * `breaking_master` - BREAKING_MASTER * `blocking_merge_queue` - BLOCKING_MERGE_QUEUE * `novel_burst` - NOVEL_BURST * `potentially_resolved` - POTENTIALLY_RESOLVED * `flaky` - FLAKY * `pr_only` - PR_ONLY */
 export type BrokenTestRowStateEnum =
   | "breaking_master"
@@ -420,15 +302,8 @@ export type BrokenTestRowStateEnum =
   | "potentially_resolved"
   | "flaky"
   | "pr_only";
-const BrokenTestRowStateEnum = S.String;
-
 /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
 export type BrokenTestRowTrend24hList = Array<number>;
-const BrokenTestRowTrend24hList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BrokenTestRowTrend24hList>;
-
 export interface BrokenTestRow {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   latest_ci_engine?: CIEngineEnum | null;
@@ -461,20 +336,10 @@ export interface BrokenTestRow {
   /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
   trend_24h?: BrokenTestRowTrend24hList;
 }
-const BrokenTestRow = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<BrokenTestRow>;
-
 /** Classified failures ranked by triage urgency: breaking trunk first, single-PR failures last. */
 export type BrokenTestsResultRowsList = Array<BrokenTestRow>;
-const BrokenTestsResultRowsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<BrokenTestsResultRowsList>;
-
 /** Default-branch job names whose latest completed run is failing: the 'what's on fire right now' summary. Empty when the job-level source isn't synced or trunk is green. */
 export type BrokenTestsResultBreakingMasterJobsList = Array<string>;
-const BrokenTestsResultBreakingMasterJobsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<BrokenTestsResultBreakingMasterJobsList>;
-
 export interface BrokenTestsResult {
   /** Classified failures ranked by triage urgency: breaking trunk first, single-PR failures last. */
   rows: BrokenTestsResultRowsList;
@@ -487,8 +352,6 @@ export interface BrokenTestsResult {
   /** Maximum number of rows returned. */
   limit: number;
 }
-const BrokenTestsResult = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<BrokenTestsResult>;
-
 export interface EngineeringAnalyticsCiCardsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -497,11 +360,6 @@ export interface EngineeringAnalyticsCiCardsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsCiCardsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<EngineeringAnalyticsCiCardsRequest>;
-
 export interface CICardSummary {
   /** Count of open pull requests. */
   open_prs: number;
@@ -512,8 +370,6 @@ export interface CICardSummary {
   /** Open pull requests with at least one failing latest CI run. May lag until the workflow_run webhook settles late completions. */
   failing_ci: number;
 }
-const CICardSummary = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<CICardSummary>;
-
 export interface EngineeringAnalyticsCiFailureLogsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -524,26 +380,14 @@ export interface EngineeringAnalyticsCiFailureLogsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsCiFailureLogsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<EngineeringAnalyticsCiFailureLogsRequest>;
-
 export interface CIFailureLogLine {
   /** 1-based line number in the full pre-thinning job log, or null for a '... N lines omitted ...' marker. The gap between consecutive values is how many lines were elided. */
   original_line: number | null;
   /** The log line text, or the omission-marker text. */
   text: string;
 }
-const CIFailureLogLine = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CIFailureLogLine>;
-
 /** The thinned failure-log lines in original order, with omission markers. */
 export type CIJobFailureLogLinesList = Array<CIFailureLogLine>;
-const CIJobFailureLogLinesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CIJobFailureLogLinesList>;
-
 export interface CIJobFailureLog {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   ci_engine?: CIEngineEnum | null;
@@ -564,15 +408,8 @@ export interface CIJobFailureLog {
   /** True when the job had more failure lines than the per-job cap. */
   truncated: boolean;
 }
-const CIJobFailureLog = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CIJobFailureLog>;
-
 /** Failed CI jobs with their thinned failure logs, grouped by job. */
 export type CIFailureLogsJobsList = Array<CIJobFailureLog>;
-const CIFailureLogsJobsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CIFailureLogsJobsList>;
-
 export interface CIFailureLogs {
   /** Repository the pull request belongs to. */
   repo: RepoRef;
@@ -587,8 +424,6 @@ export interface CIFailureLogs {
   /** True when the overall line cap across all jobs was hit. */
   truncated: boolean;
 }
-const CIFailureLogs = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CIFailureLogs>;
-
 export interface EngineeringAnalyticsCurrentBranchHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -597,16 +432,8 @@ export interface EngineeringAnalyticsCurrentBranchHealthRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsCurrentBranchHealthRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<EngineeringAnalyticsCurrentBranchHealthRequest>;
-
 /** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
 export type CurrentBranchHealthFailingWorkflowNamesList = Array<string>;
-const CurrentBranchHealthFailingWorkflowNamesList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<CurrentBranchHealthFailingWorkflowNamesList>;
-
 export interface CurrentBranchHealth {
   /** Detected default branch ('master' or 'main') from runs in the same 24-hour window. */
   default_branch: string;
@@ -617,8 +444,6 @@ export interface CurrentBranchHealth {
   /** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
   failing_workflow_names: CurrentBranchHealthFailingWorkflowNamesList;
 }
-const CurrentBranchHealth = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CurrentBranchHealth>;
-
 export interface EngineeringAnalyticsDeliveryComparisonRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -635,11 +460,6 @@ export interface EngineeringAnalyticsDeliveryComparisonRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsDeliveryComparisonRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<EngineeringAnalyticsDeliveryComparisonRequest>;
-
 export interface ReadyToMergeMedians {
   /** Pull requests merged in the window, bots and drafts excluded. */
   merged_pr_count: number;
@@ -654,26 +474,14 @@ export interface ReadyToMergeMedians {
   /** Share (0 to 1) of all ready-to-merge hours spent before the first approval, summed over the pull requests, so long pull requests weigh more. */
   before_first_approval_share: number | null;
 }
-const ReadyToMergeMedians = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ReadyToMergeMedians>;
-
 export interface TeamReadyToMergeMedians {
   /** Over the pull requests by the team's members, the same population as a github_team scope, without the pr_number pull request. Null when fewer than three other authors contribute a ready time, because the author could read a teammate's value back from the median. The approval medians are null on the same terms for approvals. */
   medians: ReadyToMergeMedians | null;
   /** The GitHub team slug. */
   github_team: string;
 }
-const TeamReadyToMergeMedians = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<TeamReadyToMergeMedians>;
-
 /** The author's teams that team_basis picked, sorted by slug. Empty for no_team. */
 export type DeliveryComparisonTeamsList = Array<TeamReadyToMergeMedians>;
-const DeliveryComparisonTeamsList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeliveryComparisonTeamsList>;
-
 export interface PullRequestReadyToMerge {
   /** The pull request number. */
   number: number;
@@ -686,11 +494,6 @@ export interface PullRequestReadyToMerge {
   /** Share (0 to 1) of the ready-to-merge time spent before the first approval. */
   before_first_approval_share: number | null;
 }
-const PullRequestReadyToMerge = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PullRequestReadyToMerge>;
-
 /** * `pull_request` - PULL_REQUEST * `review_requests` - REVIEW_REQUESTS * `only_team` - ONLY_TEAM * `all_teams` - ALL_TEAMS * `no_team` - NO_TEAM */
 export type TeamBasisEnum =
   | "pull_request"
@@ -698,8 +501,6 @@ export type TeamBasisEnum =
   | "only_team"
   | "all_teams"
   | "no_team";
-const TeamBasisEnum = S.String;
-
 export interface DeliveryComparison {
   /** Over the author's pull requests, without the pr_number pull request. */
   author_medians: ReadyToMergeMedians;
@@ -720,8 +521,6 @@ export interface DeliveryComparison {
   /** How the teams were picked from the author's teams that own code: pull_request (the pr_number asked the team to review); review_requests (the team the author's pull requests asked to review most often in the window, with ties kept); only_team (the author is in one team); all_teams (no review request points at one team); no_team (no team, or no membership data). * `pull_request` - PULL_REQUEST * `review_requests` - REVIEW_REQUESTS * `only_team` - ONLY_TEAM * `all_teams` - ALL_TEAMS * `no_team` - NO_TEAM */
   team_basis: TeamBasisEnum;
 }
-const DeliveryComparison = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeliveryComparison>;
-
 export interface EngineeringAnalyticsDeliverySummaryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -738,19 +537,12 @@ export interface EngineeringAnalyticsDeliverySummaryRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsDeliverySummaryRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<EngineeringAnalyticsDeliverySummaryRequest>;
-
 export interface ScopeRepoFigure {
   /** The figure over the pull requests in scope. Null when the scope has nothing to measure. */
   scope: number | null;
   /** The same figure over every non-bot pull request in the repository, the scope included. Null when the repository has nothing to measure. */
   repo: number | null;
 }
-const ScopeRepoFigure = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ScopeRepoFigure>;
-
 export interface DurationDistribution {
   /** Pull requests in the distribution. Every statistic is null when this is 0. */
   pr_count: number;
@@ -771,19 +563,12 @@ export interface DurationDistribution {
   /** Slowest duration, in seconds. */
   max_seconds: number | null;
 }
-const DurationDistribution = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DurationDistribution>;
-
 export interface ScopeRepoDistribution {
   /** The deployed pull requests in scope. */
   scope: DurationDistribution;
   /** Every deployed pull request in the repository. */
   repo: DurationDistribution;
 }
-const ScopeRepoDistribution = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ScopeRepoDistribution>;
-
 export interface DeliveryLeadTime {
   /** Open to the first successful deploy containing the merge, over PRs deployed in the window. */
   open_to_deploy: ScopeRepoDistribution;
@@ -800,12 +585,8 @@ export interface DeliveryLeadTime {
   /** Of merged_pr_count, the PRs whose first successful in-scope deployment was observed by the window end. The rest are still waiting for a deploy or fall outside the scan. */
   deployed_merged_pr_count: number;
 }
-const DeliveryLeadTime = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DeliveryLeadTime>;
-
 /** * `author` - AUTHOR * `github_team` - GITHUB_TEAM * `pull_request` - PULL_REQUEST */
 export type DeliveryScopeKindEnum = "author" | "github_team" | "pull_request";
-const DeliveryScopeKindEnum = S.String;
-
 export interface DeliverySummary {
   /** Median estimated CI cost per merged PR, in USD, over every run linked to the PR (merge-queue gate runs included) that started up to 30 days before the window. Null when the jobs table isn't synced. */
   cost_per_merged_pr_usd: ScopeRepoFigure;
@@ -858,15 +639,8 @@ export interface DeliverySummary {
   /** Pushes summed over the merged PRs in scope. */
   push_count: number;
 }
-const DeliverySummary = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DeliverySummary>;
-
 export type EngineeringAnalyticsDoraRequestEnvironmentList = Array<string>;
-const EngineeringAnalyticsDoraRequestEnvironmentList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<EngineeringAnalyticsDoraRequestEnvironmentList>;
-
 export type EngineeringAnalyticsDoraRequestGranularity = "day" | "hour" | "week";
-const EngineeringAnalyticsDoraRequestGranularity = S.String;
-
 export interface EngineeringAnalyticsDoraRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -885,29 +659,14 @@ export interface EngineeringAnalyticsDoraRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsDoraRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<EngineeringAnalyticsDoraRequest>;
-
 export interface DeploymentFrequencyBucket {
   /** Bucket start, aligned to series_granularity (top of hour, midnight, or Monday). */
   bucket_start: string;
   /** Deployments whose first success status landed in this bucket, within the environment scope. Zero-filled: 0 means nothing shipped. */
   deployment_count: number;
 }
-const DeploymentFrequencyBucket = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeploymentFrequencyBucket>;
-
 /** Successful deployments per bucket across the window, oldest first, zero-filled, bucketed by series_granularity. Empty when the deploy tables aren't synced. */
 export type DoraOverviewDeploymentFrequencySeriesList = Array<DeploymentFrequencyBucket>;
-const DoraOverviewDeploymentFrequencySeriesList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DoraOverviewDeploymentFrequencySeriesList>;
-
 export interface LeadTimeBucket {
   /** Bucket start, aligned to series_granularity (top of hour, midnight, or Monday). Keyed on deploy time: a PR lands in the bucket its first post-merge deploy succeeded in. */
   bucket_start: string;
@@ -930,40 +689,18 @@ export interface LeadTimeBucket {
   /** Slowest duration for this stage in this bucket, in seconds. Null when nothing deployed. */
   max_seconds: number | null;
 }
-const LeadTimeBucket = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<LeadTimeBucket>;
-
 /** Merge-to-deploy distribution per bucket across the window, oldest first: the box-plot series (min/p5/p25/p50/mean/p75/p95/max seconds per bucket). Empty when the deploy tables aren't synced, or when github_team was passed without membership data synced. */
 export type DoraOverviewMergeToDeploySeriesList = Array<LeadTimeBucket>;
-const DoraOverviewMergeToDeploySeriesList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DoraOverviewMergeToDeploySeriesList>;
-
 /** Open-to-merge distribution over the SAME deployed PRs and buckets as merge_to_deploy_series, so the two stages compare bucket by bucket. Not the all-merged-PRs cycle time. Empty in the same cases as merge_to_deploy_series. */
 export type DoraOverviewOpenToMergeSeriesList = Array<LeadTimeBucket>;
-const DoraOverviewOpenToMergeSeriesList =
-  DoraOverviewMergeToDeploySeriesList as any as S.Schema<DoraOverviewOpenToMergeSeriesList>;
-
 /** Open-to-deploy distribution over the same deployed PRs and buckets: the full open to first-successful-deploy span the two stages above compose into. Empty in the same cases as merge_to_deploy_series. */
 export type DoraOverviewOpenToDeploySeriesList = Array<LeadTimeBucket>;
-const DoraOverviewOpenToDeploySeriesList =
-  DoraOverviewMergeToDeploySeriesList as any as S.Schema<DoraOverviewOpenToDeploySeriesList>;
-
 /** Distinct persistent environments from the metric scan window or the 30 days before its end, whichever starts earlier, most-deployed first. Transient environments are omitted. */
 export type DoraOverviewEnvironmentsList = Array<string>;
-const DoraOverviewEnvironmentsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewEnvironmentsList>;
-
 /** Exact environment names used for these metrics. Defaults to all persistent environments marked production or named prod/production (including regional suffixes), falling back to the busiest persistent environment. Explicit filters are trimmed and deduplicated. DRF rejects blank or unknown names; real transient names are allowed. */
 export type DoraOverviewSelectedEnvironmentsList = Array<string>;
-const DoraOverviewSelectedEnvironmentsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewSelectedEnvironmentsList>;
-
 /** Distinct GitHub team slugs from the membership snapshot, sorted: the team picker's options. Empty when membership isn't synced. */
 export type DoraOverviewGithubTeamsList = Array<string>;
-const DoraOverviewGithubTeamsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewGithubTeamsList>;
-
 export interface DoraOverview {
   /** Successful deployments per bucket across the window, oldest first, zero-filled, bucketed by series_granularity. Empty when the deploy tables aren't synced. */
   deployment_frequency_series: DoraOverviewDeploymentFrequencySeriesList;
@@ -1026,11 +763,7 @@ export interface DoraOverview {
   /** Bucket width of every series: the granularity param when given, else chosen to fit the window: 'hour', 'day', or 'week'. */
   series_granularity: string;
 }
-const DoraOverview = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DoraOverview>;
-
 export type EngineeringAnalyticsFlakyTestsRequestRunner = "jest" | "pytest";
-const EngineeringAnalyticsFlakyTestsRequestRunner = S.String;
-
 export interface EngineeringAnalyticsFlakyTestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1049,22 +782,13 @@ export interface EngineeringAnalyticsFlakyTestsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<EngineeringAnalyticsFlakyTestsRequest>;
-
 /** * `pytest` - PYTEST * `jest` - JEST */
 export type CITestRunnerEnum = "pytest" | "jest";
-const CITestRunnerEnum = S.String;
-
 /** * `confirmed_flake` - CONFIRMED_FLAKE * `suspected_regression` - SUSPECTED_REGRESSION * `quarantined` - QUARANTINED */
 export type FlakyTestItemClassificationEnum =
   | "confirmed_flake"
   | "suspected_regression"
   | "quarantined";
-const FlakyTestItemClassificationEnum = S.String;
-
 export interface FlakyTestItem {
   /** Test runner that emitted this signal: 'pytest' or 'jest'. * `pytest` - PYTEST * `jest` - JEST */
   runner: CITestRunnerEnum;
@@ -1087,15 +811,8 @@ export interface FlakyTestItem {
   /** Most recent failure, recovery, or quarantined-failure run for this test in the window. */
   last_signal_at: string;
 }
-const FlakyTestItem = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<FlakyTestItem>;
-
 /** Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs. A CI setup break (a run attempt whose tests errored in 3 or more jobs or for 3 or more owning teams, or a job attempt with 100 or more distinct failed or errored tests) excludes every trial of that attempt, not only its failures. */
 export type FlakyTestListItemsList = Array<FlakyTestItem>;
-const FlakyTestListItemsList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<FlakyTestListItemsList>;
-
 export interface FlakyTestList {
   /** Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs. A CI setup break (a run attempt whose tests errored in 3 or more jobs or for 3 or more owning teams, or a job attempt with 100 or more distinct failed or errored tests) excludes every trial of that attempt, not only its failures. */
   items: FlakyTestListItemsList;
@@ -1104,15 +821,11 @@ export interface FlakyTestList {
   /** Maximum number of tests returned in `items`. */
   limit: number;
 }
-const FlakyTestList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FlakyTestList>;
-
 export type EngineeringAnalyticsJobAggregatesRequestRunScope =
   | "all"
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-const EngineeringAnalyticsJobAggregatesRequestRunScope = S.String;
-
 export interface EngineeringAnalyticsJobAggregatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1131,11 +844,6 @@ export interface EngineeringAnalyticsJobAggregatesRequest {
   /** Workflow name to aggregate jobs for. */
   workflow_name: string;
 }
-const EngineeringAnalyticsJobAggregatesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<EngineeringAnalyticsJobAggregatesRequest>;
-
 export interface WorkflowJobAggregate {
   /** De-sharded job name: the matrix '(G/N)' suffix is stripped and unexpanded '${{ matrix.* }}' templates are collapsed, so shards of one matrix aggregate together. */
   job_name: string;
@@ -1162,21 +870,9 @@ export interface WorkflowJobAggregate {
   /** Estimated cost in USD via the runner-tier rate ladder; null when every instance ran on an unknown tier. */
   estimated_cost_usd: number | null;
 }
-const WorkflowJobAggregate = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<WorkflowJobAggregate>;
-
 export type EngineeringAnalyticsJobAggregatesResponseBodyList = Array<WorkflowJobAggregate>;
-const EngineeringAnalyticsJobAggregatesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<EngineeringAnalyticsJobAggregatesResponseBodyList>;
-
 export type EngineeringAnalyticsJobAggregatesResponse =
   EngineeringAnalyticsJobAggregatesResponseBodyList;
-const EngineeringAnalyticsJobAggregatesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<EngineeringAnalyticsJobAggregatesResponse>;
-
 export interface EngineeringAnalyticsMasterFailuresRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1191,11 +887,6 @@ export interface EngineeringAnalyticsMasterFailuresRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsMasterFailuresRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<EngineeringAnalyticsMasterFailuresRequest>;
-
 export interface MasterFailureGroup {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   latest_ci_engine?: CIEngineEnum | null;
@@ -1214,21 +905,9 @@ export interface MasterFailureGroup {
   /** Run id of the newest failing run: the drill-down anchor. */
   latest_run_id: number;
 }
-const MasterFailureGroup = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<MasterFailureGroup>;
-
 export type EngineeringAnalyticsMasterFailuresResponseBodyList = Array<MasterFailureGroup>;
-const EngineeringAnalyticsMasterFailuresResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<EngineeringAnalyticsMasterFailuresResponseBodyList>;
-
 export type EngineeringAnalyticsMasterFailuresResponse =
   EngineeringAnalyticsMasterFailuresResponseBodyList;
-const EngineeringAnalyticsMasterFailuresResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<EngineeringAnalyticsMasterFailuresResponse>;
-
 export interface EngineeringAnalyticsPrCostRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1239,16 +918,8 @@ export interface EngineeringAnalyticsPrCostRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsPrCostRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<EngineeringAnalyticsPrCostRequest>;
-
 /** Same spend broken down per workflow. */
 export type PRCostSummaryByWorkflowList = Array<WorkflowCost>;
-const PRCostSummaryByWorkflowList =
-  EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList as any as S.Schema<PRCostSummaryByWorkflowList>;
-
 export interface RunCost {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   ci_engine?: CIEngineEnum | null;
@@ -1261,15 +932,8 @@ export interface RunCost {
   /** Estimated dollar cost for this run attempt, or null when nothing was costable. */
   estimated_cost_usd: number | null;
 }
-const RunCost = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RunCost>;
-
 /** Same spend broken down per workflow run, keyed by (run_id, run_attempt). */
 export type PRCostSummaryByRunList = Array<RunCost>;
-const PRCostSummaryByRunList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PRCostSummaryByRunList>;
-
 export interface PRLLMSpend {
   /** Total agent LLM token cost in USD attributed to this PR (sum of $ai_total_cost_usd over the matched $ai_generation events). */
   cost_usd: number;
@@ -1280,8 +944,6 @@ export interface PRLLMSpend {
   /** Number of $ai_generation events attributed to this PR by git branch ($ai_git_branch). */
   generations: number;
 }
-const PRLLMSpend = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<PRLLMSpend>;
-
 export interface PRCostSummary {
   /** Same spend broken down per workflow. */
   by_workflow: PRCostSummaryByWorkflowList;
@@ -1302,8 +964,6 @@ export interface PRCostSummary {
   /** Jobs on provider-hosted (GitHub-hosted, free) or non-Linux runners: outside the estimate. */
   excluded_jobs: number;
 }
-const PRCostSummary = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<PRCostSummary>;
-
 export interface EngineeringAnalyticsPrLifecycleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1314,11 +974,6 @@ export interface EngineeringAnalyticsPrLifecycleRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsPrLifecycleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<EngineeringAnalyticsPrLifecycleRequest>;
-
 export interface PullRequest {
   /** The pull request author. */
   author: Author;
@@ -1341,8 +996,6 @@ export interface PullRequest {
   /** When the pull request was closed, or null. */
   closed_at: string | null;
 }
-const PullRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PullRequest>;
-
 /** * `opened` - OPENED * `ready_for_review` - READY_FOR_REVIEW * `converted_to_draft` - CONVERTED_TO_DRAFT * `ci_started` - CI_STARTED * `ci_finished` - CI_FINISHED * `merged` - MERGED * `closed` - CLOSED */
 export type PRLifecycleEventKindEnum =
   | "opened"
@@ -1352,8 +1005,6 @@ export type PRLifecycleEventKindEnum =
   | "ci_finished"
   | "merged"
   | "closed";
-const PRLifecycleEventKindEnum = S.String;
-
 export interface PRLifecycleEvent {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   ci_engine?: CIEngineEnum | null;
@@ -1366,19 +1017,10 @@ export interface PRLifecycleEvent {
   /** GitHub Actions run id for ci_started/ci_finished events, null otherwise. */
   run_id?: number | null;
 }
-const PRLifecycleEvent = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PRLifecycleEvent>;
-
 /** Lifecycle events ordered by time. */
 export type PRLifecycleEventsList = Array<PRLifecycleEvent>;
-const PRLifecycleEventsList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<PRLifecycleEventsList>;
-
 /** * `precise` - PRECISE * `coarse` - COARSE * `partial` - PARTIAL */
 export type MetricQualityEnum = "precise" | "coarse" | "partial";
-const MetricQualityEnum = S.String;
-
 export interface PRLifecycle {
   /** The pull request header. */
   pull_request: PullRequest;
@@ -1387,8 +1029,6 @@ export interface PRLifecycle {
   /** Always 'partial': CI events only; reviews and comments are not yet available. * `precise` - PRECISE * `coarse` - COARSE * `partial` - PARTIAL */
   metric_quality?: MetricQualityEnum;
 }
-const PRLifecycle = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<PRLifecycle>;
-
 export interface EngineeringAnalyticsPrRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1399,11 +1039,6 @@ export interface EngineeringAnalyticsPrRunsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsPrRunsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<EngineeringAnalyticsPrRunsRequest>;
-
 export interface WorkflowRunDetail {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   ci_engine?: CIEngineEnum | null;
@@ -1440,20 +1075,8 @@ export interface WorkflowRunDetail {
   /** Source-native workflow run id; use with ci_engine for identity. */
   native_workflow_run_id?: string | null;
 }
-const WorkflowRunDetail = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<WorkflowRunDetail>;
-
 export type EngineeringAnalyticsPrRunsResponseBodyList = Array<WorkflowRunDetail>;
-const EngineeringAnalyticsPrRunsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<EngineeringAnalyticsPrRunsResponseBodyList>;
-
 export type EngineeringAnalyticsPrRunsResponse = EngineeringAnalyticsPrRunsResponseBodyList;
-const EngineeringAnalyticsPrRunsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<EngineeringAnalyticsPrRunsResponse>;
-
 export interface EngineeringAnalyticsPullRequestFrictionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1464,21 +1087,10 @@ export interface EngineeringAnalyticsPullRequestFrictionRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsPullRequestFrictionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<EngineeringAnalyticsPullRequestFrictionRequest>;
-
 /** The pull request's friction split by kind. */
 export type PullRequestFrictionBreakdownGroupsList = Array<FrictionGroupShare>;
-const PullRequestFrictionBreakdownGroupsList =
-  AuthorFrictionGroupsList as any as S.Schema<PullRequestFrictionBreakdownGroupsList>;
-
 /** CI running time of each push, oldest first. */
 export type PullRequestFrictionBreakdownCiWaitSecondsList = Array<number>;
-const PullRequestFrictionBreakdownCiWaitSecondsList =
-  BrokenTestRowTrend24hList as any as S.Schema<PullRequestFrictionBreakdownCiWaitSecondsList>;
-
 export interface PullRequestFrictionBreakdown {
   /** The pull request's friction split by kind. */
   groups: PullRequestFrictionBreakdownGroupsList;
@@ -1507,11 +1119,6 @@ export interface PullRequestFrictionBreakdown {
   /** Times the merge queue removed the pull request. Null without queue data. */
   kickout_count: number | null;
 }
-const PullRequestFrictionBreakdown = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<PullRequestFrictionBreakdown>;
-
 export interface PullRequestFrictionDetail {
   /** Null when the pull request did not merge in the window, or a bot authored it. */
   pull_request: PullRequestFrictionBreakdown | null;
@@ -1520,14 +1127,7 @@ export interface PullRequestFrictionDetail {
   /** Pull requests merged in this many days before the view last refreshed. */
   window_days: number;
 }
-const PullRequestFrictionDetail = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PullRequestFrictionDetail>;
-
 export type EngineeringAnalyticsPullRequestsRequestState = "closed" | "merged" | "open";
-const EngineeringAnalyticsPullRequestsRequestState = S.String;
-
 export interface EngineeringAnalyticsPullRequestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1548,16 +1148,8 @@ export interface EngineeringAnalyticsPullRequestsRequest {
   /** Optional state filter. 'merged' lists PRs merged in the window, newest merged_at first. 'closed' lists PRs closed without a merge in the window, newest closed_at first. 'open' lists all open PRs whatever their age, newest first. Omit it to get open PRs plus any merged or closed in the window. */
   state?: EngineeringAnalyticsPullRequestsRequestState | (string & {});
 }
-const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<EngineeringAnalyticsPullRequestsRequest>;
-
 /** This page of pull requests, newest first, capped at `limit`. */
 export type PullRequestListItemsList = Array<PullRequestListItem>;
-const PullRequestListItemsList =
-  AttentionPullRequestListItemsList as any as S.Schema<PullRequestListItemsList>;
-
 export interface PullRequestList {
   /** This page of pull requests, newest first, capped at `limit`. */
   items: PullRequestListItemsList;
@@ -1566,8 +1158,6 @@ export interface PullRequestList {
   /** Maximum number of pull requests returned in `items`. */
   limit: number;
 }
-const PullRequestList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<PullRequestList>;
-
 export interface EngineeringAnalyticsPullRequestTimelinesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1586,26 +1176,14 @@ export interface EngineeringAnalyticsPullRequestTimelinesRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsPullRequestTimelinesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<EngineeringAnalyticsPullRequestTimelinesRequest>;
-
 export interface PRTimelinePush {
   /** The pushed head commit. */
   head_sha: string;
   /** When the commit's first workflow run was created, which is when the commit arrived. */
   pushed_at: string;
 }
-const PRTimelinePush = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<PRTimelinePush>;
-
 /** Distinct head commits that triggered CI, oldest first, merge-queue gate runs excluded. A PR listed for an author or a team misses pushes from more than 30 days before the window. */
 export type PRTimelinePushesList = Array<PRTimelinePush>;
-const PRTimelinePushesList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PRTimelinePushesList>;
-
 /** * `draft` - DRAFT * `waiting_for_review` - WAITING_FOR_REVIEW * `changes_requested` - CHANGES_REQUESTED * `approved_not_enqueued` - APPROVED_NOT_ENQUEUED * `review_state_unknown` - REVIEW_STATE_UNKNOWN * `ci_running` - CI_RUNNING * `red_passed_on_rerun` - RED_PASSED_ON_RERUN * `red_master_broken` - RED_MASTER_BROKEN * `red_fixed_by_push` - RED_FIXED_BY_PUSH * `red_not_provable` - RED_NOT_PROVABLE * `merge_queue` - MERGE_QUEUE * `out_of_merge_queue` - OUT_OF_MERGE_QUEUE */
 export type PRTimelineSegmentKindEnum =
   | "draft"
@@ -1620,8 +1198,6 @@ export type PRTimelineSegmentKindEnum =
   | "red_not_provable"
   | "merge_queue"
   | "out_of_merge_queue";
-const PRTimelineSegmentKindEnum = S.String;
-
 export interface PRTimelineSegment {
   /** What the PR waited on: draft; waiting_for_review (no approval yet, or re-review after a push); changes_requested (no push since); approved_not_enqueued (approved, with no failing or running check); review_state_unknown (reviews not synced); ci_running; red_passed_on_rerun (the failed workflows passed a re-run of the same commit); red_master_broken (the failed jobs also failed on the default branch within 12 hours); red_fixed_by_push (a later commit arrived); red_not_provable; merge_queue (every queue state collapsed); out_of_merge_queue (open PR, Trunk says failed or cancelled). * `draft` - DRAFT * `waiting_for_review` - WAITING_FOR_REVIEW * `changes_requested` - CHANGES_REQUESTED * `approved_not_enqueued` - APPROVED_NOT_ENQUEUED * `review_state_unknown` - REVIEW_STATE_UNKNOWN * `ci_running` - CI_RUNNING * `red_passed_on_rerun` - RED_PASSED_ON_RERUN * `red_master_broken` - RED_MASTER_BROKEN * `red_fixed_by_push` - RED_FIXED_BY_PUSH * `red_not_provable` - RED_NOT_PROVABLE * `merge_queue` - MERGE_QUEUE * `out_of_merge_queue` - OUT_OF_MERGE_QUEUE */
   kind: PRTimelineSegmentKindEnum;
@@ -1630,15 +1206,8 @@ export interface PRTimelineSegment {
   /** Segment end: the next segment's start, the merge or close, or now. */
   ended_at: string;
 }
-const PRTimelineSegment = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<PRTimelineSegment>;
-
 /** Consecutive segments from started_at to the merge, the close, or now, with no gaps. */
 export type PRTimelineSegmentsList = Array<PRTimelineSegment>;
-const PRTimelineSegmentsList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<PRTimelineSegmentsList>;
-
 export interface PRTimeline {
   /** The repository the pull request belongs to. */
   repo: RepoRef;
@@ -1667,30 +1236,16 @@ export interface PRTimeline {
   /** Billable minutes over the PR's runs. Null when the jobs table isn't synced. */
   billable_minutes: number | null;
 }
-const PRTimeline = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<PRTimeline>;
-
 /** The pull requests in scope, newest first: open PRs plus PRs merged in the window, or the one pull request of a pull_request scope. */
 export type PullRequestTimelinesItemsList = Array<PRTimeline>;
-const PullRequestTimelinesItemsList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<PullRequestTimelinesItemsList>;
-
 export interface PRTimelineRedTime {
   /** The red segment cause. * `draft` - DRAFT * `waiting_for_review` - WAITING_FOR_REVIEW * `changes_requested` - CHANGES_REQUESTED * `approved_not_enqueued` - APPROVED_NOT_ENQUEUED * `review_state_unknown` - REVIEW_STATE_UNKNOWN * `ci_running` - CI_RUNNING * `red_passed_on_rerun` - RED_PASSED_ON_RERUN * `red_master_broken` - RED_MASTER_BROKEN * `red_fixed_by_push` - RED_FIXED_BY_PUSH * `red_not_provable` - RED_NOT_PROVABLE * `merge_queue` - MERGE_QUEUE * `out_of_merge_queue` - OUT_OF_MERGE_QUEUE */
   kind: PRTimelineSegmentKindEnum;
   /** Average seconds per merged pull request attributed to this cause. */
   seconds_per_merged_pr: number;
 }
-const PRTimelineRedTime = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<PRTimelineRedTime>;
-
 /** Average red time per merged pull request, grouped by the evidence that classifies each red stretch. */
 export type PullRequestTimelinesRedSecondsPerMergedPrList = Array<PRTimelineRedTime>;
-const PullRequestTimelinesRedSecondsPerMergedPrList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<PullRequestTimelinesRedSecondsPerMergedPrList>;
-
 export interface PullRequestTimelines {
   /** The pull requests in scope, newest first: open PRs plus PRs merged in the window, or the one pull request of a pull_request scope. */
   items: PullRequestTimelinesItemsList;
@@ -1717,11 +1272,6 @@ export interface PullRequestTimelines {
   /** The maximum number of PRs returned. */
   limit: number;
 }
-const PullRequestTimelines = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PullRequestTimelines>;
-
 export interface EngineeringAnalyticsQuarantineRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1730,23 +1280,12 @@ export interface EngineeringAnalyticsQuarantineRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsQuarantineRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<EngineeringAnalyticsQuarantineRequest>;
-
 /** * `run` - RUN * `skip` - SKIP */
 export type QuarantineModeEnum = "run" | "skip";
-const QuarantineModeEnum = S.String;
-
 /** * `active` - ACTIVE * `expiring_soon` - EXPIRING_SOON * `in_grace` - IN_GRACE * `overdue` - OVERDUE */
 export type LifecycleEnum = "active" | "expiring_soon" | "in_grace" | "overdue";
-const LifecycleEnum = S.String;
-
 /** * `product` - PRODUCT * `file` - FILE * `directory` - DIRECTORY * `test` - TEST */
 export type SelectorKindEnum = "product" | "file" | "directory" | "test";
-const SelectorKindEnum = S.String;
-
 export interface QuarantineEntry {
   /** Test selector: an exact test id, a file, a directory, a class prefix, or 'product:<dashed-name>'. */
   id: string;
@@ -1771,25 +1310,12 @@ export interface QuarantineEntry {
   /** What the selector covers: 'test' (contains '::'), 'file', 'directory', or 'product'. * `product` - PRODUCT * `file` - FILE * `directory` - DIRECTORY * `test` - TEST */
   selector_kind: SelectorKindEnum;
 }
-const QuarantineEntry = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<QuarantineEntry>;
-
 /** Quarantined selectors, most urgent first (overdue, in_grace, expiring_soon, active), then by soonest expiry. */
 export type QuarantineFileEntriesList = Array<QuarantineEntry>;
-const QuarantineFileEntriesList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<QuarantineFileEntriesList>;
-
 /** Contract violations (malformed JSON, bad entries) or fetch failures. Malformed entries are dropped; well-formed ones are kept. */
 export type QuarantineFileParseErrorsList = Array<string>;
-const QuarantineFileParseErrorsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<QuarantineFileParseErrorsList>;
-
 /** Forward-compatibility notices, e.g. unknown entry fields. */
 export type QuarantineFileParseWarningsList = Array<string>;
-const QuarantineFileParseWarningsList =
-  CIStatusRollupFailingWorkflowsList as any as S.Schema<QuarantineFileParseWarningsList>;
-
 export interface QuarantineFile {
   /** Quarantined selectors, most urgent first (overdue, in_grace, expiring_soon, active), then by soonest expiry. */
   entries: QuarantineFileEntriesList;
@@ -1806,16 +1332,10 @@ export interface QuarantineFile {
   /** When this snapshot was computed (UTC); expiry math uses this clock. */
   generated_at: string;
 }
-const QuarantineFile = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<QuarantineFile>;
-
 /** * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
 export type QuarantineRequestOperationEnum = "quarantine" | "extend" | "remove";
-const QuarantineRequestOperationEnum = S.String;
-
 /** * `pytest` - PYTEST * `jest` - JEST * `playwright` - PLAYWRIGHT */
 export type QuarantineRequestRunnerEnum = "pytest" | "jest" | "playwright";
-const QuarantineRequestRunnerEnum = S.String;
-
 export interface EngineeringAnalyticsQuarantineRequestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1838,11 +1358,6 @@ export interface EngineeringAnalyticsQuarantineRequestRequest {
   /** 'run' (the test still executes but cannot fail the suite) or 'skip' (not run at all). Defaults to 'run'. * `run` - RUN * `skip` - SKIP */
   mode?: QuarantineModeEnum | (string & {});
 }
-const EngineeringAnalyticsQuarantineRequestRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<EngineeringAnalyticsQuarantineRequestRequest>;
-
 export interface QuarantineRequestResult {
   /** URL of the opened pull request that edits the quarantine file. */
   pr_url: string;
@@ -1851,11 +1366,6 @@ export interface QuarantineRequestResult {
   /** Branch the pull request was opened from. */
   branch: string;
 }
-const QuarantineRequestResult = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<QuarantineRequestResult>;
-
 export interface EngineeringAnalyticsRepoOverviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1870,11 +1380,6 @@ export interface EngineeringAnalyticsRepoOverviewRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsRepoOverviewRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<EngineeringAnalyticsRepoOverviewRequest>;
-
 export interface CostPerMergeBucket {
   /** Bucket start, aligned to cost_series_granularity (top of hour, midnight, or Monday). */
   bucket_start: string;
@@ -1885,45 +1390,24 @@ export interface CostPerMergeBucket {
   /** Rolling ratio: trailing-window CI cost divided by trailing-window merges (24 h / 7 d / 4 w to match the granularity). Null when the trailing window had no merges or no costable cost. */
   cost_per_merge_usd: number | null;
 }
-const CostPerMergeBucket = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<CostPerMergeBucket>;
-
 /** CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn't synced or include_series=false. */
 export type RepoOverviewCostSeriesList = Array<CostPerMergeBucket>;
-const RepoOverviewCostSeriesList = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<RepoOverviewCostSeriesList>;
-
 export interface TimeToGreenBucket {
   /** Bucket start, aligned to time_to_green_series_granularity (top of hour, midnight, or Monday). */
   bucket_start: string;
   /** Median wall-clock seconds from a PR push round's first run start until every workflow on that head SHA first completed benign, over rounds started in this bucket (merge-queue gates and partially-attributed fork rounds excluded). Null when the bucket had no fully green round (a gap, not instant CI). */
   p50_seconds: number | null;
 }
-const TimeToGreenBucket = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<TimeToGreenBucket>;
-
 /** Median time-to-green (p50 wall clock for a PR push round to settle fully green) per bucket across the window, oldest first, bucketed by time_to_green_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
 export type RepoOverviewTimeToGreenSeriesList = Array<TimeToGreenBucket>;
-const RepoOverviewTimeToGreenSeriesList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<RepoOverviewTimeToGreenSeriesList>;
-
 export interface PassRateBucket {
   /** Bucket start, aligned to success_rate_series_granularity (top of hour, midnight, or Monday). */
   bucket_start: string;
   /** Fraction (0-1) of conclusive runs started in this bucket that succeeded. Skipped, cancelled, neutral, and action_required runs are excluded. Null when the bucket had no conclusive run (a gap, not a 0% pass rate). */
   success_rate: number | null;
 }
-const PassRateBucket = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<PassRateBucket>;
-
 /** CI pass rate (conclusive runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Skipped, cancelled, neutral, and action_required runs are excluded. Empty buckets carry null; the whole series is empty when include_series=false. */
 export type RepoOverviewSuccessRateSeriesList = Array<PassRateBucket>;
-const RepoOverviewSuccessRateSeriesList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<RepoOverviewSuccessRateSeriesList>;
-
 export interface OpenToMergeBucket {
   /** Bucket start, aligned to open_to_merge_series_granularity (top of hour, midnight, or Monday). */
   bucket_start: string;
@@ -1932,13 +1416,8 @@ export interface OpenToMergeBucket {
 }
 /** Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
 export type RepoOverviewOpenToMergeSeriesList = Array<OpenToMergeBucket>;
-const RepoOverviewOpenToMergeSeriesList =
-  RepoOverviewTimeToGreenSeriesList as any as S.Schema<RepoOverviewOpenToMergeSeriesList>;
-
 /** * `open_to_gate` - OPEN_TO_GATE * `gate_to_merge` - GATE_TO_MERGE */
 export type DeliveryStageTimingStageEnum = "open_to_gate" | "gate_to_merge";
-const DeliveryStageTimingStageEnum = S.String;
-
 export interface DeliveryStageTiming {
   /** Which leg this is: 'open_to_gate' (created_at to the PR's first merge-queue gate run starting) or 'gate_to_merge' (that gate run to merged_at). The post-merge leg is the DORA endpoint's median_merge_to_deploy_seconds. * `open_to_gate` - OPEN_TO_GATE * `gate_to_merge` - GATE_TO_MERGE */
   stage: DeliveryStageTimingStageEnum;
@@ -1949,23 +1428,14 @@ export interface DeliveryStageTiming {
   /** PRs behind this leg's figures: those with an observed gate run. A PR that skipped the merge queue has no gate legs, so read a median against this count, not merged_pr_count. */
   pr_count: number;
 }
-const DeliveryStageTiming = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<DeliveryStageTiming>;
-
 /** The legs, ordered open to merge. A leg with nothing observed still appears, with a zero pr_count and null timings. The leg medians do not sum to a cycle-time median: a median of sums is not a sum of medians. */
 export type DeliveryPipelineStagesList = Array<DeliveryStageTiming>;
-const DeliveryPipelineStagesList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeliveryPipelineStagesList>;
-
 export interface DeliveryPipeline {
   /** The legs, ordered open to merge. A leg with nothing observed still appears, with a zero pr_count and null timings. The leg medians do not sum to a cycle-time median: a median of sums is not a sum of medians. */
   stages: DeliveryPipelineStagesList;
   /** PRs merged in the window with bots and drafts excluded. A narrower population than RepoOverview.merged_pr_count, which counts all authors. */
   merged_pr_count: number;
 }
-const DeliveryPipeline = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<DeliveryPipeline>;
-
 export interface ReadyToMergeBucket {
   /** Bucket start, aligned to ready_to_merge_series_granularity (top of hour, midnight, or Monday). */
   bucket_start: string;
@@ -1974,9 +1444,6 @@ export interface ReadyToMergeBucket {
 }
 /** Median cycle time (p50 per-PR ready_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by ready_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when the issue-events table isn't synced or include_series=false, so fall back to open_to_merge_series. */
 export type RepoOverviewReadyToMergeSeriesList = Array<ReadyToMergeBucket>;
-const RepoOverviewReadyToMergeSeriesList =
-  RepoOverviewTimeToGreenSeriesList as any as S.Schema<RepoOverviewReadyToMergeSeriesList>;
-
 export interface RepoOverview {
   /** CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn't synced or include_series=false. */
   cost_series: RepoOverviewCostSeriesList;
@@ -2091,8 +1558,6 @@ export interface RepoOverview {
   /** Bucket width of the ready_to_merge_series trend: 'hour', 'day', or 'week'. */
   ready_to_merge_series_granularity: string;
 }
-const RepoOverview = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<RepoOverview>;
-
 export interface EngineeringAnalyticsResolveBranchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2105,11 +1570,6 @@ export interface EngineeringAnalyticsResolveBranchRequest {
   /** Optional ISO8601 timestamp, e.g. the trace's capture time. When a branch name has been reused across PRs over time, the PR whose lifetime window contains this moment is ranked first so the result matches the PR that was active when the trace was captured. A preference only, not a filter; omit to rank purely by open state then recency. */
   timestamp?: string;
 }
-const EngineeringAnalyticsResolveBranchRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<EngineeringAnalyticsResolveBranchRequest>;
-
 export interface BranchPRMatch {
   /** Repository the pull request belongs to, as 'owner/name'. */
   repo: string;
@@ -2120,30 +1580,13 @@ export interface BranchPRMatch {
   /** Derived PR state ('open', 'closed', 'merged'), or null when the snapshot carries no state. */
   state: string | null;
 }
-const BranchPRMatch = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<BranchPRMatch>;
-
 export type EngineeringAnalyticsResolveBranchResponseBodyList = Array<BranchPRMatch>;
-const EngineeringAnalyticsResolveBranchResponseBodyList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<EngineeringAnalyticsResolveBranchResponseBodyList>;
-
 export type EngineeringAnalyticsResolveBranchResponse =
   EngineeringAnalyticsResolveBranchResponseBodyList;
-const EngineeringAnalyticsResolveBranchResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<EngineeringAnalyticsResolveBranchResponse>;
-
 export interface EngineeringAnalyticsSourcesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const EngineeringAnalyticsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<EngineeringAnalyticsSourcesRequest>;
-
 export interface GitHubSource {
   /** Source id: pass back as `source_id` (with `repo`) to read this repository. */
   id: string;
@@ -2154,20 +1597,8 @@ export interface GitHubSource {
   /** Whether this repo has both pull_requests and workflow_runs synced (readable now). Default the picker to the first synced entry so its label matches the resolved repo. */
   synced?: boolean;
 }
-const GitHubSource = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<GitHubSource>;
-
 export type EngineeringAnalyticsSourcesResponseBodyList = Array<GitHubSource>;
-const EngineeringAnalyticsSourcesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<EngineeringAnalyticsSourcesResponseBodyList>;
-
 export type EngineeringAnalyticsSourcesResponse = EngineeringAnalyticsSourcesResponseBodyList;
-const EngineeringAnalyticsSourcesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<EngineeringAnalyticsSourcesResponse>;
-
 export interface EngineeringAnalyticsTeamCiActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2182,11 +1613,6 @@ export interface EngineeringAnalyticsTeamCiActivityRequest {
   /** Maximum number of per-test signal rows to return (1-100). Defaults to 25. */
   test_limit?: number;
 }
-const EngineeringAnalyticsTeamCiActivityRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<EngineeringAnalyticsTeamCiActivityRequest>;
-
 export interface TeamTestSignal {
   /** Test runner that emitted this signal: 'pytest' or 'jest'. * `pytest` - PYTEST * `jest` - JEST */
   runner: CITestRunnerEnum;
@@ -2201,15 +1627,8 @@ export interface TeamTestSignal {
   /** Most recent failure, recovery, or quarantined-failure run for this test, either window. */
   last_seen_at: string;
 }
-const TeamTestSignal = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<TeamTestSignal>;
-
 /** The team's owned tests with signal in either window, ranked by the stronger window's count (the current-vs-prior pairs behind a before/after comparison). */
 export type TeamCIActivityTestsList = Array<TeamTestSignal>;
-const TeamCIActivityTestsList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<TeamCIActivityTestsList>;
-
 export interface TeamCIActivity {
   /** The team's owned tests with signal in either window, ranked by the stronger window's count (the current-vs-prior pairs behind a before/after comparison). */
   tests: TeamCIActivityTestsList;
@@ -2218,8 +1637,6 @@ export interface TeamCIActivity {
   /** True when more owned tests had signal than the test cap. */
   truncated_tests: boolean;
 }
-const TeamCIActivity = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<TeamCIActivity>;
-
 export interface EngineeringAnalyticsTeamCiHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2236,11 +1653,6 @@ export interface EngineeringAnalyticsTeamCiHealthRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsTeamCiHealthRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<EngineeringAnalyticsTeamCiHealthRequest>;
-
 export interface TeamCIHealthItem {
   /** Owning team slug from the repo's owners.yaml map (e.g. 'team-replay'), or the literal 'unowned' for tests whose spans carry no ownership stamp. */
   owner_team: string;
@@ -2275,15 +1687,8 @@ export interface TeamCIHealthItem {
   /** Same count over the prior window. */
   merged_pr_count_prior?: number | null;
 }
-const TeamCIHealthItem = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<TeamCIHealthItem>;
-
 /** Owning teams ranked by current flaky + failure signal, heaviest first, capped at `limit`. Teams are organizational owners of code surfaces; this never aggregates by author. A CI setup break (a run attempt whose tests errored in 3 or more jobs or for 3 or more owning teams, or a job attempt with 100 or more distinct failed or errored tests) excludes every trial of that attempt, not only its failures. */
 export type TeamCIHealthListItemsList = Array<TeamCIHealthItem>;
-const TeamCIHealthListItemsList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<TeamCIHealthListItemsList>;
-
 export interface TeamCIHealthList {
   /** Owning teams ranked by current flaky + failure signal, heaviest first, capped at `limit`. Teams are organizational owners of code surfaces; this never aggregates by author. A CI setup break (a run attempt whose tests errored in 3 or more jobs or for 3 or more owning teams, or a job attempt with 100 or more distinct failed or errored tests) excludes every trial of that attempt, not only its failures. */
   items: TeamCIHealthListItemsList;
@@ -2292,8 +1697,6 @@ export interface TeamCIHealthList {
   /** Maximum number of teams returned in `items`. */
   limit: number;
 }
-const TeamCIHealthList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<TeamCIHealthList>;
-
 export interface EngineeringAnalyticsTrunkQuarantineRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2302,11 +1705,6 @@ export interface EngineeringAnalyticsTrunkQuarantineRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsTrunkQuarantineRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<EngineeringAnalyticsTrunkQuarantineRequest>;
-
 export interface TrunkQuarantineTeamDebt {
   /** Owning team slug, or 'unowned'. */
   owner_team: string;
@@ -2317,18 +1715,8 @@ export interface TrunkQuarantineTeamDebt {
   /** Age in days of the team's oldest standing quarantine. */
   oldest_age_days: number;
 }
-const TrunkQuarantineTeamDebt = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<TrunkQuarantineTeamDebt>;
-
 /** Per-team rollup, most indebted first: overdue count, then test count, then oldest age. */
 export type TrunkQuarantineDebtTeamsList = Array<TrunkQuarantineTeamDebt>;
-const TrunkQuarantineDebtTeamsList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<TrunkQuarantineDebtTeamsList>;
-
 export interface TrunkQuarantinedTest {
   /** Test runner: 'pytest' or 'jest'. */
   runner: string;
@@ -2351,18 +1739,8 @@ export interface TrunkQuarantinedTest {
   /** The Trunk app's page for this test; null when the connected source has no organization slug or the row carries no test case id. */
   trunk_url: string | null;
 }
-const TrunkQuarantinedTest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<TrunkQuarantinedTest>;
-
 /** Every currently quarantined test, oldest first. */
 export type TrunkQuarantineDebtTestsList = Array<TrunkQuarantinedTest>;
-const TrunkQuarantineDebtTestsList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<TrunkQuarantineDebtTestsList>;
-
 export interface TrunkQuarantineDebt {
   /** Per-team rollup, most indebted first: overdue count, then test count, then oldest age. */
   teams: TrunkQuarantineDebtTeamsList;
@@ -2383,15 +1761,11 @@ export interface TrunkQuarantineDebt {
   /** Maximum tests returned, oldest quarantine first. */
   limit: number;
 }
-const TrunkQuarantineDebt = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<TrunkQuarantineDebt>;
-
 export type EngineeringAnalyticsWorkflowHealthRequestRunScope =
   | "all"
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-const EngineeringAnalyticsWorkflowHealthRequestRunScope = S.String;
-
 export interface EngineeringAnalyticsWorkflowHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2410,11 +1784,6 @@ export interface EngineeringAnalyticsWorkflowHealthRequest {
   /** Optional exact workflow name to scope results to, e.g. 'Backend CI'. Omit to rank every workflow. Pass it when you want one workflow's figures over the whole window rather than the top slice. */
   workflow_name?: string;
 }
-const EngineeringAnalyticsWorkflowHealthRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<EngineeringAnalyticsWorkflowHealthRequest>;
-
 export interface WorkflowHealthBucket {
   /** Bucket start, aligned to the item's granularity (top of hour, midnight, or Monday). */
   bucket_start: string;
@@ -2427,18 +1796,8 @@ export interface WorkflowHealthBucket {
   /** Completed runs with conclusion 'failure', 'timed_out', 'startup_failure', or 'stale'. Skipped, cancelled, neutral, and action_required runs are excluded. */
   failures: number;
 }
-const WorkflowHealthBucket = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<WorkflowHealthBucket>;
-
 /** Run history across the whole window, oldest first, zero-filled, bucketed by granularity. */
 export type WorkflowHealthItemBucketsList = Array<WorkflowHealthBucket>;
-const WorkflowHealthItemBucketsList = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<WorkflowHealthItemBucketsList>;
-
 export interface WorkflowHealthItem {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   latest_ci_engine?: CIEngineEnum | null;
@@ -2483,24 +1842,10 @@ export interface WorkflowHealthItem {
   /** Runs on merge-queue gate branches (trunk-merge/**) in the window, counted regardless of branch or run_scope. Non-zero marks a workflow the queue runs before a merge lands, the closest available proxy for a required check. */
   merge_queue_run_count?: number;
 }
-const WorkflowHealthItem = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<WorkflowHealthItem>;
-
 export type EngineeringAnalyticsWorkflowHealthResponseBodyList = Array<WorkflowHealthItem>;
-const EngineeringAnalyticsWorkflowHealthResponseBodyList = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<EngineeringAnalyticsWorkflowHealthResponseBodyList>;
-
 export type EngineeringAnalyticsWorkflowHealthResponse =
   EngineeringAnalyticsWorkflowHealthResponseBodyList;
-const EngineeringAnalyticsWorkflowHealthResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<EngineeringAnalyticsWorkflowHealthResponse>;
-
 export type EngineeringAnalyticsWorkflowJobsRequestCiEngine = "depot_ci" | "github_actions";
-const EngineeringAnalyticsWorkflowJobsRequestCiEngine = S.String;
-
 export interface EngineeringAnalyticsWorkflowJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2515,11 +1860,6 @@ export interface EngineeringAnalyticsWorkflowJobsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const EngineeringAnalyticsWorkflowJobsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<EngineeringAnalyticsWorkflowJobsRequest>;
-
 export interface WorkflowJob {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   ci_engine?: CIEngineEnum | null;
@@ -2554,28 +1894,14 @@ export interface WorkflowJob {
   /** Source-native attempt id; use with ci_engine for identity. */
   native_attempt_id?: string | null;
 }
-const WorkflowJob = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<WorkflowJob>;
-
 export type EngineeringAnalyticsWorkflowJobsResponseBodyList = Array<WorkflowJob>;
-const EngineeringAnalyticsWorkflowJobsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<EngineeringAnalyticsWorkflowJobsResponseBodyList>;
-
 export type EngineeringAnalyticsWorkflowJobsResponse =
   EngineeringAnalyticsWorkflowJobsResponseBodyList;
-const EngineeringAnalyticsWorkflowJobsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<EngineeringAnalyticsWorkflowJobsResponse>;
-
 export type EngineeringAnalyticsWorkflowRunnerCostsRequestRunScope =
   | "all"
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-const EngineeringAnalyticsWorkflowRunnerCostsRequestRunScope = S.String;
-
 export interface EngineeringAnalyticsWorkflowRunnerCostsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2594,11 +1920,6 @@ export interface EngineeringAnalyticsWorkflowRunnerCostsRequest {
   /** Workflow name to break down cost for. */
   workflow_name: string;
 }
-const EngineeringAnalyticsWorkflowRunnerCostsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<EngineeringAnalyticsWorkflowRunnerCostsRequest>;
-
 export interface WorkflowRunnerCost {
   /** 'self_hosted' (billable), 'github_hosted' (free), or 'unknown'. */
   provider: string;
@@ -2611,28 +1932,14 @@ export interface WorkflowRunnerCost {
   /** Estimated cost in USD on this tier; null for non-billable (github-hosted/non-Linux). */
   estimated_cost_usd: number | null;
 }
-const WorkflowRunnerCost = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<WorkflowRunnerCost>;
-
 export type EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList = Array<WorkflowRunnerCost>;
-const EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList>;
-
 export type EngineeringAnalyticsWorkflowRunnerCostsResponse =
   EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList;
-const EngineeringAnalyticsWorkflowRunnerCostsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<EngineeringAnalyticsWorkflowRunnerCostsResponse>;
-
 export type EngineeringAnalyticsWorkflowRunsRequestRunScope =
   | "all"
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-const EngineeringAnalyticsWorkflowRunsRequestRunScope = S.String;
-
 export interface EngineeringAnalyticsWorkflowRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2651,30 +1958,15 @@ export interface EngineeringAnalyticsWorkflowRunsRequest {
   /** Workflow name to list runs for. */
   workflow_name: string;
 }
-const EngineeringAnalyticsWorkflowRunsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<EngineeringAnalyticsWorkflowRunsRequest>;
-
 export type EngineeringAnalyticsWorkflowRunsResponseBodyList = Array<WorkflowRunDetail>;
 export type EngineeringAnalyticsWorkflowRunsResponse =
   EngineeringAnalyticsWorkflowRunsResponseBodyList;
-const EngineeringAnalyticsWorkflowRunsResponse =
-  EngineeringAnalyticsPrRunsResponse as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponse>;
-
 export interface GetEngineeringAnalyticsCiSignalsConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEngineeringAnalyticsCiSignalsConfigRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetEngineeringAnalyticsCiSignalsConfigRequest>;
-
 /** * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
 export type SyncStatusEnum = "running" | "completed" | "failed";
-const SyncStatusEnum = S.String;
-
 export interface CISignalsConfig {
   /** Whether this project has ever configured CI signals. */
   configured: boolean;
@@ -2683,8 +1975,6 @@ export interface CISignalsConfig {
   /** Aggregate sync status for pull requests, workflow runs, and workflow jobs. * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
   sync_status: SyncStatusEnum | null;
 }
-const CISignalsConfig = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<CISignalsConfig>;
-
 export interface MergeEngineeringAnalyticsTeamTrendRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2697,11 +1987,6 @@ export interface MergeEngineeringAnalyticsTeamTrendRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const MergeEngineeringAnalyticsTeamTrendRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<MergeEngineeringAnalyticsTeamTrendRequest>;
-
 export interface TeamMergeTrendPoint {
   /** Start of the day bucket (team timezone), keyed on merged_at. */
   day: string;
@@ -2712,15 +1997,8 @@ export interface TeamMergeTrendPoint {
   /** Merged PRs behind that day's median and average. */
   merged_count: number;
 }
-const TeamMergeTrendPoint = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<TeamMergeTrendPoint>;
-
 /** Daily median and average open->merge over the PRs this team's members merged, ascending by day. Coarse timing (open->merge combines draft and review time); bots excluded. */
 export type TeamMergeTrendPointsList = Array<TeamMergeTrendPoint>;
-const TeamMergeTrendPointsList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<TeamMergeTrendPointsList>;
-
 export interface TeamMergeTrend {
   /** Daily median and average open->merge over the PRs this team's members merged, ascending by day. Coarse timing (open->merge combines draft and review time); bots excluded. */
   points: TeamMergeTrendPointsList;
@@ -2729,11 +2007,7 @@ export interface TeamMergeTrend {
   /** False when the GitHub source has no team_members snapshot synced: the trend then has no honest team attribution and `points` is empty. */
   has_membership_data: boolean;
 }
-const TeamMergeTrend = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<TeamMergeTrend>;
-
 export type RunEngineeringAnalyticsFailureLogsRequestCiEngine = "depot_ci" | "github_actions";
-const RunEngineeringAnalyticsFailureLogsRequestCiEngine = S.String;
-
 export interface RunEngineeringAnalyticsFailureLogsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2746,15 +2020,8 @@ export interface RunEngineeringAnalyticsFailureLogsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const RunEngineeringAnalyticsFailureLogsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<RunEngineeringAnalyticsFailureLogsRequest>;
-
 /** Failed CI jobs of this run with their thinned failure logs, grouped by job. */
 export type RunFailureLogsJobsList = Array<CIJobFailureLog>;
-const RunFailureLogsJobsList = CIFailureLogsJobsList as any as S.Schema<RunFailureLogsJobsList>;
-
 export interface RunFailureLogs {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   ci_engine?: CIEngineEnum | null;
@@ -2767,8 +2034,6 @@ export interface RunFailureLogs {
   /** True when the overall line cap across all jobs was hit. */
   truncated: boolean;
 }
-const RunFailureLogs = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<RunFailureLogs>;
-
 export interface RunEngineeringAnalyticsRepoActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2783,11 +2048,6 @@ export interface RunEngineeringAnalyticsRepoActivityRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const RunEngineeringAnalyticsRepoActivityRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<RunEngineeringAnalyticsRepoActivityRequest>;
-
 export interface WorkflowRunActivityPoint {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
   ci_engine?: CIEngineEnum | null;
@@ -2806,18 +2066,8 @@ export interface WorkflowRunActivityPoint {
   /** Head commit SHA of the run/commit, or '' when unknown. */
   head_sha: string;
 }
-const WorkflowRunActivityPoint = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<WorkflowRunActivityPoint>;
-
 /** Per-run chart points, newest first, capped at `limit`. */
 export type WorkflowRunActivityPointsList = Array<WorkflowRunActivityPoint>;
-const WorkflowRunActivityPointsList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<WorkflowRunActivityPointsList>;
-
 export interface WorkflowRunActivity {
   /** Per-run chart points, newest first, capped at `limit`. */
   points: WorkflowRunActivityPointsList;
@@ -2826,11 +2076,7 @@ export interface WorkflowRunActivity {
   /** Maximum number of run points returned in `points`. */
   limit: number;
 }
-const WorkflowRunActivity = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<WorkflowRunActivity>;
-
 export type RunEngineeringAnalyticsWorkflowRequestCiEngine = "depot_ci" | "github_actions";
-const RunEngineeringAnalyticsWorkflowRequestCiEngine = S.String;
-
 export interface RunEngineeringAnalyticsWorkflowRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2843,18 +2089,11 @@ export interface RunEngineeringAnalyticsWorkflowRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-const RunEngineeringAnalyticsWorkflowRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<RunEngineeringAnalyticsWorkflowRequest>;
-
 export type RunEngineeringAnalyticsWorkflowActivityRequestRunScope =
   | "all"
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-const RunEngineeringAnalyticsWorkflowActivityRequestRunScope = S.String;
-
 export interface RunEngineeringAnalyticsWorkflowActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2873,22 +2112,12 @@ export interface RunEngineeringAnalyticsWorkflowActivityRequest {
   /** Workflow name to load run activity for. */
   workflow_name: string;
 }
-const RunEngineeringAnalyticsWorkflowActivityRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<RunEngineeringAnalyticsWorkflowActivityRequest>;
-
 export interface UpdateEngineeringAnalyticsCiSignalsConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Enable or disable every CI signal detector atomically. */
   enabled: boolean;
 }
-const UpdateEngineeringAnalyticsCiSignalsConfigRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<UpdateEngineeringAnalyticsCiSignalsConfigRequest>;
-
 export type EngineeringAnalyticsAttentionPullRequestsError = BadRequest | PosthogOpError;
 /** Open pull requests that need attention: failing CI, or stuck (open, non-draft, non-bot, older than 7 days), by the same rules as the ci_cards counts. Failing first, then newest, capped; `total` counts every match in the whole open backlog, however old. Cost and billable minutes can lag new CI by up to 5 minutes. */
 export const engineeringAnalyticsAttentionPullRequests: API.OperationMethod<
@@ -2897,8 +2126,8 @@ export const engineeringAnalyticsAttentionPullRequests: API.OperationMethod<
   EngineeringAnalyticsAttentionPullRequestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsAttentionPullRequestsRequest,
-  output: AttentionPullRequestList,
+  input: __S(0, __c0, 0) as any as S.Schema<EngineeringAnalyticsAttentionPullRequestsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<AttentionPullRequestList>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2912,8 +2141,8 @@ export const engineeringAnalyticsAuthorFriction: API.OperationMethod<
   EngineeringAnalyticsAuthorFrictionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsAuthorFrictionRequest,
-  output: AuthorFrictionList,
+  input: __S(10, __c1, 2) as any as S.Schema<EngineeringAnalyticsAuthorFrictionRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<AuthorFrictionList>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2927,8 +2156,8 @@ export const engineeringAnalyticsAuthorFrictionDetail: API.OperationMethod<
   EngineeringAnalyticsAuthorFrictionDetailError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsAuthorFrictionDetailRequest,
-  output: AuthorFrictionDetail,
+  input: __S(18, __c2, 2) as any as S.Schema<EngineeringAnalyticsAuthorFrictionDetailRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<AuthorFrictionDetail>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2942,8 +2171,8 @@ export const engineeringAnalyticsAuthorWorkflowCosts: API.OperationMethod<
   EngineeringAnalyticsAuthorWorkflowCostsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsAuthorWorkflowCostsRequest,
-  output: EngineeringAnalyticsAuthorWorkflowCostsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2957,8 +2186,8 @@ export const engineeringAnalyticsBrokenTests: API.OperationMethod<
   EngineeringAnalyticsBrokenTestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsBrokenTestsRequest,
-  output: BrokenTestsResult,
+  input: __S(26, __c3, 2) as any as S.Schema<EngineeringAnalyticsBrokenTestsRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<BrokenTestsResult>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2972,8 +2201,8 @@ export const engineeringAnalyticsCiCards: API.OperationMethod<
   EngineeringAnalyticsCiCardsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCiCardsRequest,
-  output: CICardSummary,
+  input: __S(31, __c3, 7) as any as S.Schema<EngineeringAnalyticsCiCardsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CICardSummary>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2987,8 +2216,8 @@ export const engineeringAnalyticsCiFailureLogs: API.OperationMethod<
   EngineeringAnalyticsCiFailureLogsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCiFailureLogsRequest,
-  output: CIFailureLogs,
+  input: __S(33, __c4, 1) as any as S.Schema<EngineeringAnalyticsCiFailureLogsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<CIFailureLogs>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3002,8 +2231,8 @@ export const engineeringAnalyticsCurrentBranchHealth: API.OperationMethod<
   EngineeringAnalyticsCurrentBranchHealthError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCurrentBranchHealthRequest,
-  output: CurrentBranchHealth,
+  input: __S(39, __c4, 7) as any as S.Schema<EngineeringAnalyticsCurrentBranchHealthRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CurrentBranchHealth>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3017,8 +2246,8 @@ export const engineeringAnalyticsDeliveryComparison: API.OperationMethod<
   EngineeringAnalyticsDeliveryComparisonError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsDeliveryComparisonRequest,
-  output: DeliveryComparison,
+  input: __S(41, __c5, 1) as any as S.Schema<EngineeringAnalyticsDeliveryComparisonRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<DeliveryComparison>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3032,8 +2261,8 @@ export const engineeringAnalyticsDeliverySummary: API.OperationMethod<
   EngineeringAnalyticsDeliverySummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsDeliverySummaryRequest,
-  output: DeliverySummary,
+  input: __S(47, __c5, 7) as any as S.Schema<EngineeringAnalyticsDeliverySummaryRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<DeliverySummary>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3047,8 +2276,8 @@ export const engineeringAnalyticsDora: API.OperationMethod<
   EngineeringAnalyticsDoraError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsDoraRequest,
-  output: DoraOverview,
+  input: __S(53, __c6, 5) as any as S.Schema<EngineeringAnalyticsDoraRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<DoraOverview>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3062,8 +2291,8 @@ export const engineeringAnalyticsFlakyTests: API.OperationMethod<
   EngineeringAnalyticsFlakyTestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsFlakyTestsRequest,
-  output: FlakyTestList,
+  input: __S(59, __c7, 3) as any as S.Schema<EngineeringAnalyticsFlakyTestsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<FlakyTestList>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3077,8 +2306,8 @@ export const engineeringAnalyticsJobAggregates: API.OperationMethod<
   EngineeringAnalyticsJobAggregatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsJobAggregatesRequest,
-  output: EngineeringAnalyticsJobAggregatesResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<EngineeringAnalyticsJobAggregatesRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<EngineeringAnalyticsJobAggregatesResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3092,8 +2321,8 @@ export const engineeringAnalyticsMasterFailures: API.OperationMethod<
   EngineeringAnalyticsMasterFailuresError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsMasterFailuresRequest,
-  output: EngineeringAnalyticsMasterFailuresResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<EngineeringAnalyticsMasterFailuresRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<EngineeringAnalyticsMasterFailuresResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3107,8 +2336,8 @@ export const engineeringAnalyticsPrCost: API.OperationMethod<
   EngineeringAnalyticsPrCostError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsPrCostRequest,
-  output: PRCostSummary,
+  input: __S(71, __c8, 7) as any as S.Schema<EngineeringAnalyticsPrCostRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<PRCostSummary>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3122,8 +2351,8 @@ export const engineeringAnalyticsPrLifecycle: API.OperationMethod<
   EngineeringAnalyticsPrLifecycleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsPrLifecycleRequest,
-  output: PRLifecycle,
+  input: __S(76, __c9, 4) as any as S.Schema<EngineeringAnalyticsPrLifecycleRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<PRLifecycle>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3137,8 +2366,8 @@ export const engineeringAnalyticsPrRuns: API.OperationMethod<
   EngineeringAnalyticsPrRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsPrRunsRequest,
-  output: EngineeringAnalyticsPrRunsResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<EngineeringAnalyticsPrRunsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<EngineeringAnalyticsPrRunsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3152,8 +2381,8 @@ export const engineeringAnalyticsPullRequestFriction: API.OperationMethod<
   EngineeringAnalyticsPullRequestFrictionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsPullRequestFrictionRequest,
-  output: PullRequestFrictionDetail,
+  input: __S(85, __c10, 5) as any as S.Schema<EngineeringAnalyticsPullRequestFrictionRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<PullRequestFrictionDetail>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3167,8 +2396,8 @@ export const engineeringAnalyticsPullRequests: API.OperationMethod<
   EngineeringAnalyticsPullRequestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsPullRequestsRequest,
-  output: PullRequestList,
+  input: __S(88, __c11, 0) as any as S.Schema<EngineeringAnalyticsPullRequestsRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<PullRequestList>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3182,8 +2411,8 @@ export const engineeringAnalyticsPullRequestTimelines: API.OperationMethod<
   EngineeringAnalyticsPullRequestTimelinesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsPullRequestTimelinesRequest,
-  output: PullRequestTimelines,
+  input: __S(90, __c11, 2) as any as S.Schema<EngineeringAnalyticsPullRequestTimelinesRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<PullRequestTimelines>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3197,8 +2426,8 @@ export const engineeringAnalyticsQuarantine: API.OperationMethod<
   EngineeringAnalyticsQuarantineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsQuarantineRequest,
-  output: QuarantineFile,
+  input: __S(100, __c12, 4) as any as S.Schema<EngineeringAnalyticsQuarantineRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<QuarantineFile>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3212,8 +2441,8 @@ export const engineeringAnalyticsQuarantineRequest2: API.OperationMethod<
   EngineeringAnalyticsQuarantineRequest2Error,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsQuarantineRequestRequest,
-  output: QuarantineRequestResult,
+  input: __S(104, __c13, 0) as any as S.Schema<EngineeringAnalyticsQuarantineRequestRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<QuarantineRequestResult>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3227,8 +2456,8 @@ export const engineeringAnalyticsRepoOverview: API.OperationMethod<
   EngineeringAnalyticsRepoOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsRepoOverviewRequest,
-  output: RepoOverview,
+  input: __S(106, __c13, 2) as any as S.Schema<EngineeringAnalyticsRepoOverviewRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<RepoOverview>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3242,8 +2471,8 @@ export const engineeringAnalyticsResolveBranch: API.OperationMethod<
   EngineeringAnalyticsResolveBranchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsResolveBranchRequest,
-  output: EngineeringAnalyticsResolveBranchResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<EngineeringAnalyticsResolveBranchRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<EngineeringAnalyticsResolveBranchResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3257,8 +2486,8 @@ export const engineeringAnalyticsSources: API.OperationMethod<
   EngineeringAnalyticsSourcesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsSourcesRequest,
-  output: EngineeringAnalyticsSourcesResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<EngineeringAnalyticsSourcesRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<EngineeringAnalyticsSourcesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3272,8 +2501,8 @@ export const engineeringAnalyticsTeamCiActivity: API.OperationMethod<
   EngineeringAnalyticsTeamCiActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsTeamCiActivityRequest,
-  output: TeamCIActivity,
+  input: __S(125, __c15, 5) as any as S.Schema<EngineeringAnalyticsTeamCiActivityRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<TeamCIActivity>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3287,8 +2516,8 @@ export const engineeringAnalyticsTeamCiHealth: API.OperationMethod<
   EngineeringAnalyticsTeamCiHealthError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsTeamCiHealthRequest,
-  output: TeamCIHealthList,
+  input: __S(129, __c16, 1) as any as S.Schema<EngineeringAnalyticsTeamCiHealthRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<TeamCIHealthList>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3302,8 +2531,8 @@ export const engineeringAnalyticsTrunkQuarantine: API.OperationMethod<
   EngineeringAnalyticsTrunkQuarantineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsTrunkQuarantineRequest,
-  output: TrunkQuarantineDebt,
+  input: __S(133, __c16, 5) as any as S.Schema<EngineeringAnalyticsTrunkQuarantineRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<TrunkQuarantineDebt>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3317,8 +2546,8 @@ export const engineeringAnalyticsWorkflowHealth: API.OperationMethod<
   EngineeringAnalyticsWorkflowHealthError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsWorkflowHealthRequest,
-  output: EngineeringAnalyticsWorkflowHealthResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<EngineeringAnalyticsWorkflowHealthRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<EngineeringAnalyticsWorkflowHealthResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3332,8 +2561,8 @@ export const engineeringAnalyticsWorkflowJobs: API.OperationMethod<
   EngineeringAnalyticsWorkflowJobsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsWorkflowJobsRequest,
-  output: EngineeringAnalyticsWorkflowJobsResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<EngineeringAnalyticsWorkflowJobsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<EngineeringAnalyticsWorkflowJobsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3347,8 +2576,8 @@ export const engineeringAnalyticsWorkflowRunnerCosts: API.OperationMethod<
   EngineeringAnalyticsWorkflowRunnerCostsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsWorkflowRunnerCostsRequest,
-  output: EngineeringAnalyticsWorkflowRunnerCostsResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<EngineeringAnalyticsWorkflowRunnerCostsRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<EngineeringAnalyticsWorkflowRunnerCostsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3362,8 +2591,8 @@ export const engineeringAnalyticsWorkflowRuns: API.OperationMethod<
   EngineeringAnalyticsWorkflowRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsWorkflowRunsRequest,
-  output: EngineeringAnalyticsWorkflowRunsResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<EngineeringAnalyticsWorkflowRunsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3377,8 +2606,8 @@ export const getEngineeringAnalyticsCiSignalsConfig: API.OperationMethod<
   GetEngineeringAnalyticsCiSignalsConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEngineeringAnalyticsCiSignalsConfigRequest,
-  output: CISignalsConfig,
+  input: __S(154, __c19, 2) as any as S.Schema<GetEngineeringAnalyticsCiSignalsConfigRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<CISignalsConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3392,8 +2621,8 @@ export const mergeEngineeringAnalyticsTeamTrend: API.OperationMethod<
   MergeEngineeringAnalyticsTeamTrendError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MergeEngineeringAnalyticsTeamTrendRequest,
-  output: TeamMergeTrend,
+  input: __S(156, __c19, 4) as any as S.Schema<MergeEngineeringAnalyticsTeamTrendRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<TeamMergeTrend>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3407,8 +2636,8 @@ export const runEngineeringAnalyticsFailureLogs: API.OperationMethod<
   RunEngineeringAnalyticsFailureLogsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunEngineeringAnalyticsFailureLogsRequest,
-  output: RunFailureLogs,
+  input: __S(160, __c20, 0) as any as S.Schema<RunEngineeringAnalyticsFailureLogsRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<RunFailureLogs>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3422,8 +2651,8 @@ export const runEngineeringAnalyticsRepoActivity: API.OperationMethod<
   RunEngineeringAnalyticsRepoActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunEngineeringAnalyticsRepoActivityRequest,
-  output: WorkflowRunActivity,
+  input: __S(162, __c20, 2) as any as S.Schema<RunEngineeringAnalyticsRepoActivityRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<WorkflowRunActivity>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3437,8 +2666,8 @@ export const runEngineeringAnalyticsWorkflow: API.OperationMethod<
   RunEngineeringAnalyticsWorkflowError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunEngineeringAnalyticsWorkflowRequest,
-  output: WorkflowRunDetail,
+  input: __S(166, __c20, 6) as any as S.Schema<RunEngineeringAnalyticsWorkflowRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<WorkflowRunDetail>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3452,8 +2681,8 @@ export const runEngineeringAnalyticsWorkflowActivity: API.OperationMethod<
   RunEngineeringAnalyticsWorkflowActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunEngineeringAnalyticsWorkflowActivityRequest,
-  output: WorkflowRunActivity,
+  input: __S(167, __c20, 7) as any as S.Schema<RunEngineeringAnalyticsWorkflowActivityRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<WorkflowRunActivity>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3467,8 +2696,8 @@ export const updateEngineeringAnalyticsCiSignalsConfig: API.OperationMethod<
   UpdateEngineeringAnalyticsCiSignalsConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEngineeringAnalyticsCiSignalsConfigRequest,
-  output: CISignalsConfig,
+  input: __S(168, __c21, 0) as any as S.Schema<UpdateEngineeringAnalyticsCiSignalsConfigRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<CISignalsConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3520,7 +2749,7 @@ function __c0(j: number): any {
           failing: S.Number,
           pending: S.Number,
           inconclusive: S.Number,
-          failing_workflows: S.optional(CIStatusRollupFailingWorkflowsList),
+          failing_workflows: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "CIStatusRollup" });
     case 5:
@@ -3534,23 +2763,23 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PushCISample" });
     case 6:
-      return S.Array(PushCISample);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          author: Author,
-          repo: RepoRef,
-          ci: CIStatusRollup,
-          push_history: PullRequestListItemPushHistoryList,
+          author: __S(1, __c0, 1),
+          repo: __S(2, __c0, 2),
+          ci: __S(4, __c0, 4),
+          push_history: __S(6, __c0, 6),
           number: S.Number,
           title: S.String,
-          state: EngineeringAnalyticsPRStateEnum,
+          state: S.String,
           is_draft: S.Boolean,
           created_at: S.String,
           merged_at: S.NullOr(S.String),
           open_to_merge_seconds: S.NullOr(S.Number),
           ready_to_merge_seconds: S.NullOr(S.Number),
-          labels: PullRequestListItemLabelsList,
+          labels: __S(3, __c0, 3),
           pushes: S.Number,
           rerun_cycles: S.Number,
           estimated_cost_usd: S.optional(S.NullOr(S.Number)),
@@ -3562,11 +2791,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PullRequestListItem);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: AttentionPullRequestListItemsList,
+          items: __S(8, __c1, 0),
           total: S.Number,
           limit: S.Number,
         }),
@@ -3591,16 +2820,16 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          group: FrictionGroupEnum,
+          group: S.String,
           score: S.Number,
         }),
       ).annotate({ identifier: "FrictionGroupShare" });
     case 4:
-      return S.Array(FrictionGroupShare);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          groups: AuthorFrictionGroupsList,
+          groups: __S(12, __c1, 4),
           author: S.String,
           avatar_url: S.String,
           score: S.Number,
@@ -3608,11 +2837,11 @@ function __c1(j: number): any {
           rank: S.Number,
           rank_low: S.Number,
           rank_high: S.Number,
-          teams: S.optional(AuthorFrictionTeamsList),
+          teams: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "AuthorFriction" });
     case 6:
-      return S.Array(AuthorFriction);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3626,12 +2855,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TeamFriction);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: AuthorFrictionListItemsList,
-          teams: AuthorFrictionListTeamsList,
+          items: __S(14, __c1, 6),
+          teams: __S(16, __c2, 0),
           available: S.Boolean,
           window_days: S.Number,
           ranked_author_count: S.Number,
@@ -3659,7 +2888,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          groups: PullRequestFrictionItemGroupsList,
+          groups: __S(12, __c1, 4),
           number: S.Number,
           repo_owner: S.String,
           repo_name: S.String,
@@ -3668,13 +2897,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PullRequestFrictionItem" });
     case 4:
-      return S.Array(PullRequestFrictionItem);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          author: S.NullOr(AuthorFriction),
-          teams: AuthorFrictionDetailTeamsList,
-          pull_requests: AuthorFrictionDetailPullRequestsList,
+          author: S.NullOr(__S(13, __c1, 5)),
+          teams: __S(16, __c2, 0),
+          pull_requests: __S(20, __c2, 4),
           available: S.Boolean,
           window_days: S.Number,
           ranked_author_count: S.Number,
@@ -3717,11 +2946,9 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WorkflowCost);
+      return S.Array(__S(23, __c2, 7));
     case 1:
-      return S.suspend(() =>
-        EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsAuthorWorkflowCostsResponse",
       });
     case 2:
@@ -3745,13 +2972,13 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          latest_ci_engine: S.optional(S.NullOr(CIEngineEnum)),
+          latest_ci_engine: S.optional(S.NullOr(S.String)),
           fingerprint: S.String,
           test_id: S.String,
           error_signature: S.String,
           job_name: S.String,
           repo: S.String,
-          state: BrokenTestRowStateEnum,
+          state: S.String,
           first_seen: S.String,
           last_seen: S.String,
           occurrences: S.Number,
@@ -3759,16 +2986,16 @@ function __c3(j: number): any {
           master_hits: S.Number,
           latest_run_id: S.Number,
           latest_branch: S.String,
-          trend_24h: S.optional(BrokenTestRowTrend24hList),
+          trend_24h: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "BrokenTestRow" });
     case 5:
-      return S.Array(BrokenTestRow);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          rows: BrokenTestsResultRowsList,
-          breaking_master_jobs: BrokenTestsResultBreakingMasterJobsList,
+          rows: __S(29, __c3, 5),
+          breaking_master_jobs: __S(3, __c0, 3),
           window_days: S.Number,
           truncated: S.Boolean,
           limit: S.Number,
@@ -3828,12 +3055,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "CIFailureLogLine" });
     case 3:
-      return S.Array(CIFailureLogLine);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ci_engine: S.optional(S.NullOr(CIEngineEnum)),
-          lines: CIJobFailureLogLinesList,
+          ci_engine: S.optional(S.NullOr(S.String)),
+          lines: __S(35, __c4, 3),
           job_id: S.Number,
           run_id: S.Number,
           conclusion: S.String,
@@ -3844,12 +3071,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "CIJobFailureLog" });
     case 5:
-      return S.Array(CIJobFailureLog);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repo: RepoRef,
-          jobs: CIFailureLogsJobsList,
+          repo: __S(2, __c0, 2),
+          jobs: __S(37, __c4, 5),
           pr_number: S.Number,
           runs_attributed: S.Number,
           logs_available: S.Boolean,
@@ -3882,7 +3109,7 @@ function __c5(j: number): any {
           default_branch: S.String,
           settled_workflows: S.Number,
           failing_workflows: S.Number,
-          failing_workflow_names: CurrentBranchHealthFailingWorkflowNamesList,
+          failing_workflow_names: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "CurrentBranchHealth" });
     case 1:
@@ -3919,12 +3146,12 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          medians: S.NullOr(ReadyToMergeMedians),
+          medians: S.NullOr(__S(42, __c5, 2)),
           github_team: S.String,
         }),
       ).annotate({ identifier: "TeamReadyToMergeMedians" });
     case 4:
-      return S.Array(TeamReadyToMergeMedians);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3938,15 +3165,15 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          author_medians: ReadyToMergeMedians,
-          teams: DeliveryComparisonTeamsList,
-          repo_medians: ReadyToMergeMedians,
-          pull_request: S.NullOr(PullRequestReadyToMerge),
+          author_medians: __S(42, __c5, 2),
+          teams: __S(44, __c5, 4),
+          repo_medians: __S(42, __c5, 2),
+          pull_request: S.NullOr(__S(45, __c5, 5)),
           author: S.String,
           has_membership_data: S.Boolean,
           review_data_available: S.Boolean,
           ready_data_available: S.Boolean,
-          team_basis: TeamBasisEnum,
+          team_basis: S.String,
         }),
       ).annotate({ identifier: "DeliveryComparison" });
     case 7:
@@ -3997,16 +3224,16 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scope: DurationDistribution,
-          repo: DurationDistribution,
+          scope: __S(49, __c6, 1),
+          repo: __S(49, __c6, 1),
         }),
       ).annotate({ identifier: "ScopeRepoDistribution" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          open_to_deploy: ScopeRepoDistribution,
-          open_to_merge: ScopeRepoDistribution,
-          merge_to_deploy: ScopeRepoDistribution,
+          open_to_deploy: __S(50, __c6, 2),
+          open_to_merge: __S(50, __c6, 2),
+          merge_to_deploy: __S(50, __c6, 2),
           deploy_data_available: S.Boolean,
           environment_scope: S.String,
           merged_pr_count: S.Number,
@@ -4016,19 +3243,19 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cost_per_merged_pr_usd: ScopeRepoFigure,
-          billable_minutes_per_merged_pr: ScopeRepoFigure,
-          cost_per_push_usd: ScopeRepoFigure,
-          median_ready_to_merge_seconds: ScopeRepoFigure,
-          p90_ready_to_merge_seconds: ScopeRepoFigure,
-          median_ready_to_first_approval_seconds: ScopeRepoFigure,
-          median_first_approval_to_merge_seconds: ScopeRepoFigure,
-          before_first_approval_share: ScopeRepoFigure,
-          pushes_after_approval_per_merged_pr: ScopeRepoFigure,
-          merge_queue_attempts_per_merged_pr: ScopeRepoFigure,
-          failed_merge_queue_share: ScopeRepoFigure,
-          lead_time: DeliveryLeadTime,
-          scope_kind: DeliveryScopeKindEnum,
+          cost_per_merged_pr_usd: __S(48, __c6, 0),
+          billable_minutes_per_merged_pr: __S(48, __c6, 0),
+          cost_per_push_usd: __S(48, __c6, 0),
+          median_ready_to_merge_seconds: __S(48, __c6, 0),
+          p90_ready_to_merge_seconds: __S(48, __c6, 0),
+          median_ready_to_first_approval_seconds: __S(48, __c6, 0),
+          median_first_approval_to_merge_seconds: __S(48, __c6, 0),
+          before_first_approval_share: __S(48, __c6, 0),
+          pushes_after_approval_per_merged_pr: __S(48, __c6, 0),
+          merge_queue_attempts_per_merged_pr: __S(48, __c6, 0),
+          failed_merge_queue_share: __S(48, __c6, 0),
+          lead_time: __S(51, __c6, 3),
+          scope_kind: S.String,
           scope: S.String,
           has_membership_data: S.Boolean,
           jobs_available: S.Boolean,
@@ -4049,9 +3276,9 @@ function __c6(j: number): any {
           project_id: S.String.pipe(T.Label()),
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(EngineeringAnalyticsDoraRequestEnvironmentList.pipe(T.Query())),
+          environment: S.optional(__S(3, __c0, 3).pipe(T.Query())),
           github_team: S.optional(S.String.pipe(T.Query())),
-          granularity: S.optional(EngineeringAnalyticsDoraRequestGranularity.pipe(T.Query())),
+          granularity: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -4074,7 +3301,7 @@ function __c6(j: number): any {
         identifier: "DeploymentFrequencyBucket",
       });
     case 7:
-      return S.Array(DeploymentFrequencyBucket);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -4095,20 +3322,20 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "LeadTimeBucket" });
     case 1:
-      return S.Array(LeadTimeBucket);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deployment_frequency_series: DoraOverviewDeploymentFrequencySeriesList,
-          merge_to_deploy_series: DoraOverviewMergeToDeploySeriesList,
-          open_to_merge_series: DoraOverviewOpenToMergeSeriesList,
-          open_to_deploy_series: DoraOverviewOpenToDeploySeriesList,
+          deployment_frequency_series: __S(55, __c6, 7),
+          merge_to_deploy_series: __S(57, __c7, 1),
+          open_to_merge_series: __S(57, __c7, 1),
+          open_to_deploy_series: __S(57, __c7, 1),
           deploy_data_available: S.Boolean,
           environment_scope: S.String,
-          environments: DoraOverviewEnvironmentsList,
-          selected_environments: DoraOverviewSelectedEnvironmentsList,
+          environments: __S(3, __c0, 3),
+          selected_environments: __S(3, __c0, 3),
           has_membership_data: S.Boolean,
-          github_teams: DoraOverviewGithubTeamsList,
+          github_teams: __S(3, __c0, 3),
           deployment_count: S.Number,
           deployment_count_prev: S.Number,
           deployments_per_day: S.NullOr(S.Number),
@@ -4140,7 +3367,7 @@ function __c7(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           min_failed_prs: S.optional(S.Number.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
-          runner: S.optional(EngineeringAnalyticsFlakyTestsRequestRunner.pipe(T.Query())),
+          runner: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4155,10 +3382,10 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          runner: CITestRunnerEnum,
+          runner: S.String,
           nodeid: S.String,
           selector: S.String,
-          classification: FlakyTestItemClassificationEnum,
+          classification: S.String,
           same_commit_recovery_run_count: S.Number,
           failed_run_count: S.Number,
           failed_pr_count: S.Number,
@@ -4168,11 +3395,11 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "FlakyTestItem" });
     case 5:
-      return S.Array(FlakyTestItem);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: FlakyTestListItemsList,
+          items: __S(61, __c7, 5),
           truncated: S.Boolean,
           limit: S.Number,
         }),
@@ -4185,7 +3412,7 @@ function __c7(j: number): any {
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
-          run_scope: S.optional(EngineeringAnalyticsJobAggregatesRequestRunScope.pipe(T.Query())),
+          run_scope: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
           workflow_name: S.String.pipe(T.Query()),
         }).pipe(
@@ -4220,11 +3447,9 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowJobAggregate" });
     case 1:
-      return S.Array(WorkflowJobAggregate);
+      return S.Array(__S(64, __c8, 0));
     case 2:
-      return S.suspend(() =>
-        EngineeringAnalyticsJobAggregatesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(65, __c8, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsJobAggregatesResponse",
       });
     case 3:
@@ -4249,8 +3474,8 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          latest_ci_engine: S.optional(S.NullOr(CIEngineEnum)),
-          repo: RepoRef,
+          latest_ci_engine: S.optional(S.NullOr(S.String)),
+          repo: __S(2, __c0, 2),
           workflow_name: S.String,
           failed_job: S.String,
           run_count: S.Number,
@@ -4260,11 +3485,9 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "MasterFailureGroup" });
     case 5:
-      return S.Array(MasterFailureGroup);
+      return S.Array(__S(68, __c8, 4));
     case 6:
-      return S.suspend(() =>
-        EngineeringAnalyticsMasterFailuresResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(69, __c8, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsMasterFailuresResponse",
       });
     case 7:
@@ -4291,7 +3514,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ci_engine: S.optional(S.NullOr(CIEngineEnum)),
+          ci_engine: S.optional(S.NullOr(S.String)),
           run_id: S.Number,
           run_attempt: S.Number,
           billable_minutes: S.Number,
@@ -4299,7 +3522,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "RunCost" });
     case 1:
-      return S.Array(RunCost);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4312,9 +3535,9 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          by_workflow: PRCostSummaryByWorkflowList,
-          by_run: PRCostSummaryByRunList,
-          llm_spend: S.optional(S.NullOr(PRLLMSpend)),
+          by_workflow: __S(24, __c3, 0),
+          by_run: __S(73, __c9, 1),
+          llm_spend: S.optional(S.NullOr(__S(74, __c9, 2))),
           jobs_available: S.Boolean,
           billable_minutes: S.Number,
           estimated_cost_usd: S.NullOr(S.Number),
@@ -4343,12 +3566,12 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          author: Author,
-          repo: RepoRef,
+          author: __S(1, __c0, 1),
+          repo: __S(2, __c0, 2),
           id: S.Number,
           number: S.Number,
           title: S.String,
-          state: EngineeringAnalyticsPRStateEnum,
+          state: S.String,
           is_draft: S.Boolean,
           created_at: S.String,
           merged_at: S.NullOr(S.String),
@@ -4358,15 +3581,15 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ci_engine: S.optional(S.NullOr(CIEngineEnum)),
-          kind: PRLifecycleEventKindEnum,
+          ci_engine: S.optional(S.NullOr(S.String)),
+          kind: S.String,
           at: S.String,
           detail: S.optional(S.NullOr(S.String)),
           run_id: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "PRLifecycleEvent" });
     case 7:
-      return S.Array(PRLifecycleEvent);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -4374,9 +3597,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          pull_request: PullRequest,
-          events: PRLifecycleEventsList,
-          metric_quality: S.optional(MetricQualityEnum),
+          pull_request: __S(77, __c9, 5),
+          events: __S(79, __c9, 7),
+          metric_quality: S.optional(S.String),
         }),
       ).annotate({ identifier: "PRLifecycle" });
     case 1:
@@ -4399,8 +3622,8 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ci_engine: S.optional(S.NullOr(CIEngineEnum)),
-          repo: RepoRef,
+          ci_engine: S.optional(S.NullOr(S.String)),
+          repo: __S(2, __c0, 2),
           id: S.Number,
           workflow_name: S.String,
           head_sha: S.String,
@@ -4419,11 +3642,9 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowRunDetail" });
     case 3:
-      return S.Array(WorkflowRunDetail);
+      return S.Array(__S(82, __c10, 2));
     case 4:
-      return S.suspend(() =>
-        EngineeringAnalyticsPrRunsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsPrRunsResponse",
       });
     case 5:
@@ -4446,7 +3667,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          groups: PullRequestFrictionBreakdownGroupsList,
+          groups: __S(12, __c1, 4),
           score: S.Number,
           flake_red_count: S.Number,
           master_red_count: S.Number,
@@ -4454,7 +3675,7 @@ function __c10(j: number): any {
           own_red_count: S.Number,
           futile_rerun_count: S.Number,
           push_count: S.Number,
-          ci_wait_seconds: PullRequestFrictionBreakdownCiWaitSecondsList,
+          ci_wait_seconds: __S(27, __c3, 3),
           first_approval_wait_seconds: S.NullOr(S.Number),
           pushes_after_approval: S.NullOr(S.Number),
           queue_seconds: S.NullOr(S.Number),
@@ -4466,7 +3687,7 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pull_request: S.NullOr(PullRequestFrictionBreakdown),
+          pull_request: S.NullOr(__S(86, __c10, 6)),
           available: S.Boolean,
           window_days: S.Number,
         }),
@@ -4488,7 +3709,7 @@ function __c11(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(EngineeringAnalyticsPullRequestsRequestState.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4502,7 +3723,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: PullRequestListItemsList,
+          items: __S(8, __c1, 0),
           truncated: S.Boolean,
           limit: S.Number,
         }),
@@ -4536,27 +3757,27 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "PRTimelinePush" });
     case 4:
-      return S.Array(PRTimelinePush);
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kind: PRTimelineSegmentKindEnum,
+          kind: S.String,
           started_at: S.String,
           ended_at: S.String,
         }),
       ).annotate({ identifier: "PRTimelineSegment" });
     case 6:
-      return S.Array(PRTimelineSegment);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repo: RepoRef,
-          pushes: PRTimelinePushesList,
-          segments: PRTimelineSegmentsList,
+          repo: __S(2, __c0, 2),
+          pushes: __S(92, __c11, 4),
+          segments: __S(94, __c11, 6),
           number: S.Number,
           title: S.String,
-          author: Author,
-          state: EngineeringAnalyticsPRStateEnum,
+          author: __S(1, __c0, 1),
+          state: S.String,
           is_draft: S.Boolean,
           created_at: S.String,
           started_at: S.String,
@@ -4570,22 +3791,22 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PRTimeline);
+      return S.Array(__S(95, __c11, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: PRTimelineSegmentKindEnum,
+          kind: S.String,
           seconds_per_merged_pr: S.Number,
         }),
       ).annotate({ identifier: "PRTimelineRedTime" });
     case 2:
-      return S.Array(PRTimelineRedTime);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: PullRequestTimelinesItemsList,
-          red_seconds_per_merged_pr: PullRequestTimelinesRedSecondsPerMergedPrList,
-          scope_kind: DeliveryScopeKindEnum,
+          items: __S(96, __c12, 0),
+          red_seconds_per_merged_pr: __S(98, __c12, 2),
+          scope_kind: S.String,
           scope: S.String,
           has_membership_data: S.Boolean,
           review_data_available: S.Boolean,
@@ -4623,22 +3844,22 @@ function __c12(j: number): any {
           issue: S.String,
           added: S.String,
           expires: S.String,
-          mode: QuarantineModeEnum,
-          lifecycle: LifecycleEnum,
+          mode: S.String,
+          lifecycle: S.String,
           days_until_expiry: S.Number,
-          selector_kind: SelectorKindEnum,
+          selector_kind: S.String,
         }),
       ).annotate({ identifier: "QuarantineEntry" });
     case 6:
-      return S.Array(QuarantineEntry);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: QuarantineFileEntriesList,
-          repo: S.NullOr(RepoRef),
+          entries: __S(102, __c12, 6),
+          repo: S.NullOr(__S(2, __c0, 2)),
           available: S.Boolean,
-          parse_errors: QuarantineFileParseErrorsList,
-          parse_warnings: QuarantineFileParseWarningsList,
+          parse_errors: __S(3, __c0, 3),
+          parse_warnings: __S(3, __c0, 3),
           source_url: S.String,
           generated_at: S.String,
         }),
@@ -4651,15 +3872,15 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          operation: QuarantineRequestOperationEnum,
+          operation: S.String,
           selector: S.String,
-          runner: S.optional(S.NullOr(QuarantineRequestRunnerEnum)),
+          runner: S.optional(S.NullOr(S.String)),
           repo: S.optional(S.NullOr(S.String)),
           reason: S.optional(S.String),
           owner: S.optional(S.String),
           issue: S.optional(S.String),
           expires: S.optional(S.NullOr(S.String)),
-          mode: S.optional(QuarantineModeEnum),
+          mode: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4707,7 +3928,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "CostPerMergeBucket" });
     case 4:
-      return S.Array(CostPerMergeBucket);
+      return S.Array(__S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4716,7 +3937,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "TimeToGreenBucket" });
     case 6:
-      return S.Array(TimeToGreenBucket);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4729,34 +3950,34 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PassRateBucket);
+      return S.Array(__S(111, __c13, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          stage: DeliveryStageTimingStageEnum,
+          stage: S.String,
           median_seconds: S.NullOr(S.Number),
           p90_seconds: S.NullOr(S.Number),
           pr_count: S.Number,
         }),
       ).annotate({ identifier: "DeliveryStageTiming" });
     case 2:
-      return S.Array(DeliveryStageTiming);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          stages: DeliveryPipelineStagesList,
+          stages: __S(114, __c14, 2),
           merged_pr_count: S.Number,
         }),
       ).annotate({ identifier: "DeliveryPipeline" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cost_series: RepoOverviewCostSeriesList,
-          time_to_green_series: RepoOverviewTimeToGreenSeriesList,
-          success_rate_series: RepoOverviewSuccessRateSeriesList,
-          open_to_merge_series: RepoOverviewOpenToMergeSeriesList,
-          delivery_pipeline: DeliveryPipeline,
-          ready_to_merge_series: RepoOverviewReadyToMergeSeriesList,
+          cost_series: __S(108, __c13, 4),
+          time_to_green_series: __S(110, __c13, 6),
+          success_rate_series: __S(112, __c14, 0),
+          open_to_merge_series: __S(110, __c13, 6),
+          delivery_pipeline: __S(115, __c14, 3),
+          ready_to_merge_series: __S(110, __c13, 6),
           run_count: S.Number,
           run_count_prev: S.Number,
           success_rate: S.NullOr(S.Number),
@@ -4837,15 +4058,13 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "BranchPRMatch" });
     case 7:
-      return S.Array(BranchPRMatch);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        EngineeringAnalyticsResolveBranchResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(119, __c14, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsResolveBranchResponse",
       });
     case 1:
@@ -4872,11 +4091,9 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "GitHubSource" });
     case 3:
-      return S.Array(GitHubSource);
+      return S.Array(__S(122, __c15, 2));
     case 4:
-      return S.suspend(() =>
-        EngineeringAnalyticsSourcesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(123, __c15, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsSourcesResponse",
       });
     case 5:
@@ -4901,7 +4118,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          runner: CITestRunnerEnum,
+          runner: S.String,
           nodeid: S.String,
           selector: S.String,
           signal_count: S.Number,
@@ -4910,7 +4127,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "TeamTestSignal" });
     case 7:
-      return S.Array(TeamTestSignal);
+      return S.Array(__S(126, __c15, 6));
   }
 }
 function __c16(j: number): any {
@@ -4918,7 +4135,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tests: TeamCIActivityTestsList,
+          tests: __S(127, __c15, 7),
           owner_team: S.String,
           truncated_tests: S.Boolean,
         }),
@@ -4965,11 +4182,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "TeamCIHealthItem" });
     case 3:
-      return S.Array(TeamCIHealthItem);
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: TeamCIHealthListItemsList,
+          items: __S(131, __c16, 3),
           truncated: S.Boolean,
           limit: S.Number,
         }),
@@ -5000,7 +4217,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "TrunkQuarantineTeamDebt" });
     case 7:
-      return S.Array(TrunkQuarantineTeamDebt);
+      return S.Array(__S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
@@ -5021,12 +4238,12 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "TrunkQuarantinedTest" });
     case 1:
-      return S.Array(TrunkQuarantinedTest);
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          teams: TrunkQuarantineDebtTeamsList,
-          tests: TrunkQuarantineDebtTestsList,
+          teams: __S(135, __c16, 7),
+          tests: __S(137, __c17, 1),
           available: S.Boolean,
           owners_resolved: S.Boolean,
           ttl_days: S.Number,
@@ -5044,7 +4261,7 @@ function __c17(j: number): any {
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
-          run_scope: S.optional(EngineeringAnalyticsWorkflowHealthRequestRunScope.pipe(T.Query())),
+          run_scope: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
           workflow_name: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -5068,13 +4285,13 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowHealthBucket" });
     case 5:
-      return S.Array(WorkflowHealthBucket);
+      return S.Array(__S(140, __c17, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          latest_ci_engine: S.optional(S.NullOr(CIEngineEnum)),
-          repo: RepoRef,
-          buckets: WorkflowHealthItemBucketsList,
+          latest_ci_engine: S.optional(S.NullOr(S.String)),
+          repo: __S(2, __c0, 2),
+          buckets: __S(141, __c17, 5),
           workflow_name: S.String,
           run_count: S.Number,
           successful_run_count: S.Number,
@@ -5097,22 +4314,20 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowHealthItem" });
     case 7:
-      return S.Array(WorkflowHealthItem);
+      return S.Array(__S(142, __c17, 6));
   }
 }
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        EngineeringAnalyticsWorkflowHealthResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(143, __c17, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsWorkflowHealthResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ci_engine: S.optional(EngineeringAnalyticsWorkflowJobsRequestCiEngine.pipe(T.Query())),
+          ci_engine: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           run_attempt: S.optional(S.Number.pipe(T.Query())),
           run_id: S.Number.pipe(T.Query()),
@@ -5130,7 +4345,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ci_engine: S.optional(S.NullOr(CIEngineEnum)),
+          ci_engine: S.optional(S.NullOr(S.String)),
           id: S.Number,
           run_id: S.Number,
           name: S.String,
@@ -5149,11 +4364,9 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowJob" });
     case 3:
-      return S.Array(WorkflowJob);
+      return S.Array(__S(146, __c18, 2));
     case 4:
-      return S.suspend(() =>
-        EngineeringAnalyticsWorkflowJobsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(147, __c18, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsWorkflowJobsResponse",
       });
     case 5:
@@ -5164,9 +4377,7 @@ function __c18(j: number): any {
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
           repo: S.String.pipe(T.Query()),
-          run_scope: S.optional(
-            EngineeringAnalyticsWorkflowRunnerCostsRequestRunScope.pipe(T.Query()),
-          ),
+          run_scope: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
           workflow_name: S.String.pipe(T.Query()),
         }).pipe(
@@ -5190,15 +4401,13 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowRunnerCost" });
     case 7:
-      return S.Array(WorkflowRunnerCost);
+      return S.Array(__S(150, __c18, 6));
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(151, __c18, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "EngineeringAnalyticsWorkflowRunnerCostsResponse",
       });
     case 1:
@@ -5209,7 +4418,7 @@ function __c19(j: number): any {
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
           repo: S.String.pipe(T.Query()),
-          run_scope: S.optional(EngineeringAnalyticsWorkflowRunsRequestRunScope.pipe(T.Query())),
+          run_scope: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
           workflow_name: S.String.pipe(T.Query()),
         }).pipe(
@@ -5241,7 +4450,7 @@ function __c19(j: number): any {
         S.Struct({
           configured: S.Boolean,
           enabled: S.Boolean,
-          sync_status: S.NullOr(SyncStatusEnum),
+          sync_status: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CISignalsConfig" });
     case 4:
@@ -5272,11 +4481,11 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "TeamMergeTrendPoint" });
     case 6:
-      return S.Array(TeamMergeTrendPoint);
+      return S.Array(__S(157, __c19, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          points: TeamMergeTrendPointsList,
+          points: __S(158, __c19, 6),
           owner_team: S.String,
           has_membership_data: S.Boolean,
         }),
@@ -5289,7 +4498,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ci_engine: S.optional(RunEngineeringAnalyticsFailureLogsRequestCiEngine.pipe(T.Query())),
+          ci_engine: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           run_id: S.Number.pipe(T.Query()),
           source_id: S.optional(S.String.pipe(T.Query())),
@@ -5306,8 +4515,8 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ci_engine: S.optional(S.NullOr(CIEngineEnum)),
-          jobs: RunFailureLogsJobsList,
+          ci_engine: S.optional(S.NullOr(S.String)),
+          jobs: __S(37, __c4, 5),
           run_id: S.Number,
           logs_available: S.Boolean,
           truncated: S.Boolean,
@@ -5335,7 +4544,7 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ci_engine: S.optional(S.NullOr(CIEngineEnum)),
+          ci_engine: S.optional(S.NullOr(S.String)),
           run_id: S.Number,
           conclusion: S.NullOr(S.String),
           run_started_at: S.String,
@@ -5346,11 +4555,11 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowRunActivityPoint" });
     case 4:
-      return S.Array(WorkflowRunActivityPoint);
+      return S.Array(__S(163, __c20, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          points: WorkflowRunActivityPointsList,
+          points: __S(164, __c20, 4),
           truncated: S.Boolean,
           limit: S.Number,
         }),
@@ -5359,7 +4568,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ci_engine: S.optional(RunEngineeringAnalyticsWorkflowRequestCiEngine.pipe(T.Query())),
+          ci_engine: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           run_id: S.Number.pipe(T.Query()),
           source_id: S.optional(S.String.pipe(T.Query())),
@@ -5381,9 +4590,7 @@ function __c20(j: number): any {
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
           repo: S.String.pipe(T.Query()),
-          run_scope: S.optional(
-            RunEngineeringAnalyticsWorkflowActivityRequestRunScope.pipe(T.Query()),
-          ),
+          run_scope: S.optional(S.String.pipe(T.Query())),
           source_id: S.optional(S.String.pipe(T.Query())),
           workflow_name: S.String.pipe(T.Query()),
         }).pipe(
@@ -5416,4 +4623,9 @@ function __c21(j: number): any {
         identifier: "UpdateEngineeringAnalyticsCiSignalsConfigRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

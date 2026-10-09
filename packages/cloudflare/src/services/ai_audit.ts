@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -18,27 +20,11 @@ export interface GetRobotRequest {
   /** Optional subdomain to fetch robots.txt for. If omitted, fetches robots.txt for the zone apex domain. */
   subdomain?: string;
 }
-const GetRobotRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetRobotRequest>;
-
 export type GetRobotResponseUserAgentsValueAllowList = Array<string>;
-const GetRobotResponseUserAgentsValueAllowList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetRobotResponseUserAgentsValueAllowList>;
-
 export type GetRobotResponseUserAgentsValueDisallowList = Array<string>;
-const GetRobotResponseUserAgentsValueDisallowList =
-  GetRobotResponseUserAgentsValueAllowList as any as S.Schema<GetRobotResponseUserAgentsValueDisallowList>;
-
 export type GetRobotResponseUserAgentsValueContentSignalsAiInput = "yes" | "no";
-const GetRobotResponseUserAgentsValueContentSignalsAiInput = S.String;
-
 export type GetRobotResponseUserAgentsValueContentSignalsAiTrain = "yes" | "no";
-const GetRobotResponseUserAgentsValueContentSignalsAiTrain = S.String;
-
 export type GetRobotResponseUserAgentsValueContentSignalsSearch = "yes" | "no";
-const GetRobotResponseUserAgentsValueContentSignalsSearch = S.String;
-
 export interface GetRobotResponseUserAgentsValueContentSignals {
   /** Whether AI input usage is permitted. */
   aiInput?: GetRobotResponseUserAgentsValueContentSignalsAiInput | null;
@@ -47,11 +33,6 @@ export interface GetRobotResponseUserAgentsValueContentSignals {
   /** Whether search indexing is permitted. */
   search?: GetRobotResponseUserAgentsValueContentSignalsSearch | null;
 }
-const GetRobotResponseUserAgentsValueContentSignals = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetRobotResponseUserAgentsValueContentSignals>;
-
 export interface GetRobotResponseUserAgentsValue {
   /** List of allowed path patterns. */
   allow: GetRobotResponseUserAgentsValueAllowList;
@@ -62,23 +43,10 @@ export interface GetRobotResponseUserAgentsValue {
   /** Crawl delay in seconds. */
   crawlDelay?: number | null;
 }
-const GetRobotResponseUserAgentsValue = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetRobotResponseUserAgentsValue>;
-
 export type GetRobotResponseUserAgentsMap = {
   [key: string]: GetRobotResponseUserAgentsValue | undefined;
 };
-const GetRobotResponseUserAgentsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetRobotResponseUserAgentsMap>;
-
 export type GetRobotResponseSitemapsList = Array<string>;
-const GetRobotResponseSitemapsList =
-  GetRobotResponseUserAgentsValueAllowList as any as S.Schema<GetRobotResponseSitemapsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRobotResponse {
   /** Map of user-agent string to its parsed rules. */
@@ -88,36 +56,17 @@ export interface GetRobotResponse {
   /** HTTP status code from fetching the robots.txt file. */
   status?: number | null;
 }
-const GetRobotResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetRobotResponse>;
-
 export type RobotsBulkGetRequestBodyList = Array<string>;
-const RobotsBulkGetRequestBodyList =
-  GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetRequestBodyList>;
-
 export interface RobotsBulkGetRequest {
   zoneId: string;
   /** Array of domain hostnames to fetch robots.txt for. Each domain must end with the zone name. Maximum 25 domains per request. */
   body: RobotsBulkGetRequestBodyList;
 }
-const RobotsBulkGetRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RobotsBulkGetRequest>;
-
 export type RobotsBulkGetResultValueUserAgentsValueAllowList = Array<string>;
-const RobotsBulkGetResultValueUserAgentsValueAllowList =
-  GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetResultValueUserAgentsValueAllowList>;
-
 export type RobotsBulkGetResultValueUserAgentsValueDisallowList = Array<string>;
-const RobotsBulkGetResultValueUserAgentsValueDisallowList =
-  GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetResultValueUserAgentsValueDisallowList>;
-
 export type RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput = "yes" | "no";
-const RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput = S.String;
-
 export type RobotsBulkGetResultValueUserAgentsValueContentSignalsAiTrain = "yes" | "no";
-const RobotsBulkGetResultValueUserAgentsValueContentSignalsAiTrain = S.String;
-
 export type RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch = "yes" | "no";
-const RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch = S.String;
-
 export interface RobotsBulkGetResultValueUserAgentsValueContentSignals {
   /** Whether AI input usage is permitted. */
   aiInput?: RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput | null;
@@ -126,11 +75,6 @@ export interface RobotsBulkGetResultValueUserAgentsValueContentSignals {
   /** Whether search indexing is permitted. */
   search?: RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch | null;
 }
-const RobotsBulkGetResultValueUserAgentsValueContentSignals = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<RobotsBulkGetResultValueUserAgentsValueContentSignals>;
-
 export interface RobotsBulkGetResultValueUserAgentsValue {
   /** List of allowed path patterns. */
   allow: RobotsBulkGetResultValueUserAgentsValueAllowList;
@@ -141,23 +85,10 @@ export interface RobotsBulkGetResultValueUserAgentsValue {
   /** Crawl delay in seconds. */
   crawlDelay?: number | null;
 }
-const RobotsBulkGetResultValueUserAgentsValue = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<RobotsBulkGetResultValueUserAgentsValue>;
-
 export type RobotsBulkGetResultValueUserAgentsMap = {
   [key: string]: RobotsBulkGetResultValueUserAgentsValue | undefined;
 };
-const RobotsBulkGetResultValueUserAgentsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<RobotsBulkGetResultValueUserAgentsMap>;
-
 export type RobotsBulkGetResultValueSitemapsList = Array<string>;
-const RobotsBulkGetResultValueSitemapsList =
-  GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetResultValueSitemapsList>;
-
 export interface RobotsBulkGetResultValue {
   /** Map of user-agent string to its parsed rules. */
   userAgents: RobotsBulkGetResultValueUserAgentsMap;
@@ -166,23 +97,8 @@ export interface RobotsBulkGetResultValue {
   /** HTTP status code from fetching the robots.txt file. */
   status?: number | null;
 }
-const RobotsBulkGetResultValue = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<RobotsBulkGetResultValue>;
-
 export type RobotsBulkGetResultMap = { [key: string]: RobotsBulkGetResultValue | undefined };
-const RobotsBulkGetResultMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RobotsBulkGetResultMap>;
-
 export type RobotsBulkGetResponse = RobotsBulkGetResultMap;
-const RobotsBulkGetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RobotsBulkGetResponse>;
-
 export type GetRobotError = CloudflareOpError;
 /** Fetches and parses the robots.txt file for a zone or a specific subdomain within the zone. Returns parsed user-agent rules, content signals, and sitemaps. */
 export const getRobot: API.OperationMethod<
@@ -191,8 +107,8 @@ export const getRobot: API.OperationMethod<
   GetRobotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRobotRequest,
-  output: GetRobotResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRobotRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetRobotResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -206,8 +122,8 @@ export const robotsBulkGet: API.OperationMethod<
   RobotsBulkGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RobotsBulkGetRequest,
-  output: RobotsBulkGetResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<RobotsBulkGetRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<RobotsBulkGetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -228,13 +144,9 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          aiInput: S.optional(
-            S.NullOr(GetRobotResponseUserAgentsValueContentSignalsAiInput).pipe(T.Body("ai-input")),
-          ),
-          aiTrain: S.optional(
-            S.NullOr(GetRobotResponseUserAgentsValueContentSignalsAiTrain).pipe(T.Body("ai-train")),
-          ),
-          search: S.optional(S.NullOr(GetRobotResponseUserAgentsValueContentSignalsSearch)),
+          aiInput: S.optional(S.NullOr(S.String).pipe(T.Body("ai-input"))),
+          aiTrain: S.optional(S.NullOr(S.String).pipe(T.Body("ai-train"))),
+          search: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetRobotResponseUserAgentsValueContentSignals",
@@ -242,21 +154,21 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allow: GetRobotResponseUserAgentsValueAllowList,
-          disallow: GetRobotResponseUserAgentsValueDisallowList,
-          contentSignals: S.optional(S.NullOr(GetRobotResponseUserAgentsValueContentSignals)),
+          allow: __S(1, __c0, 1),
+          disallow: __S(1, __c0, 1),
+          contentSignals: S.optional(S.NullOr(__S(2, __c0, 2))),
           crawlDelay: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "GetRobotResponseUserAgentsValue",
       });
     case 4:
-      return S.Record(S.String, GetRobotResponseUserAgentsValue);
+      return S.Record(S.String, __S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          userAgents: GetRobotResponseUserAgentsMap,
-          sitemaps: S.optional(S.NullOr(GetRobotResponseSitemapsList)),
+          userAgents: __S(4, __c0, 4),
+          sitemaps: S.optional(S.NullOr(__S(1, __c0, 1))),
           status: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GetRobotResponse" });
@@ -264,7 +176,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: RobotsBulkGetRequestBodyList.pipe(T.HttpBody()),
+          body: __S(1, __c0, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "POST", uri: "/zones/{zone_id}/ai-audit/robots/bulk", code: 200 }),
         ),
@@ -272,17 +184,9 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aiInput: S.optional(
-            S.NullOr(RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput).pipe(
-              T.Body("ai-input"),
-            ),
-          ),
-          aiTrain: S.optional(
-            S.NullOr(RobotsBulkGetResultValueUserAgentsValueContentSignalsAiTrain).pipe(
-              T.Body("ai-train"),
-            ),
-          ),
-          search: S.optional(S.NullOr(RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch)),
+          aiInput: S.optional(S.NullOr(S.String).pipe(T.Body("ai-input"))),
+          aiTrain: S.optional(S.NullOr(S.String).pipe(T.Body("ai-train"))),
+          search: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "RobotsBulkGetResultValueUserAgentsValueContentSignals",
@@ -294,31 +198,34 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allow: RobotsBulkGetResultValueUserAgentsValueAllowList,
-          disallow: RobotsBulkGetResultValueUserAgentsValueDisallowList,
-          contentSignals: S.optional(
-            S.NullOr(RobotsBulkGetResultValueUserAgentsValueContentSignals),
-          ),
+          allow: __S(1, __c0, 1),
+          disallow: __S(1, __c0, 1),
+          contentSignals: S.optional(S.NullOr(__S(7, __c0, 7))),
           crawlDelay: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "RobotsBulkGetResultValueUserAgentsValue",
       });
     case 1:
-      return S.Record(S.String, RobotsBulkGetResultValueUserAgentsValue);
+      return S.Record(S.String, __S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          userAgents: RobotsBulkGetResultValueUserAgentsMap,
-          sitemaps: S.optional(S.NullOr(RobotsBulkGetResultValueSitemapsList)),
+          userAgents: __S(9, __c1, 1),
+          sitemaps: S.optional(S.NullOr(__S(1, __c0, 1))),
           status: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "RobotsBulkGetResultValue" });
     case 3:
-      return S.Record(S.String, RobotsBulkGetResultValue);
+      return S.Record(S.String, __S(10, __c1, 2));
     case 4:
-      return S.suspend(() => RobotsBulkGetResultMap.pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(11, __c1, 3).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "RobotsBulkGetResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

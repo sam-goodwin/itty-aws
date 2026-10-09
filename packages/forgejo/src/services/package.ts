@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
@@ -28,14 +30,7 @@ export interface DeletePackageRequest {
   /** version of the package */
   version: string;
 }
-const DeletePackageRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeletePackageRequest>;
-
 export interface DeletePackageResponse {}
-const DeletePackageResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeletePackageResponse>;
-
 export interface GetPackageRequest {
   /** owner of the package */
   owner: string;
@@ -46,8 +41,6 @@ export interface GetPackageRequest {
   /** version of the package */
   version: string;
 }
-const GetPackageRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetPackageRequest>;
-
 /** User represents a user */
 export interface User {
   /** Is user active */
@@ -92,8 +85,6 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<User>;
-
 /** ExternalTracker represents settings for external tracker */
 export interface ExternalTracker {
   /** External Issue Tracker URL Format. Use the placeholders {user}, {repo} and {index} for the username, repository name and issue index. */
@@ -105,15 +96,11 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-const ExternalTracker = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ExternalTracker>;
-
 /** ExternalWiki represents setting for external wiki */
 export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-const ExternalWiki = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ExternalWiki>;
-
 /** InternalTracker represents settings for internal tracker */
 export interface InternalTracker {
   /** Let only contributors track time (Built-in issue tracker) */
@@ -123,20 +110,14 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-const InternalTracker = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<InternalTracker>;
-
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-const RepositoryObjectFormatName = S.String;
-
 /** Permission represents a set of permissions */
 export interface Permission {
   admin?: boolean;
   pull?: boolean;
   push?: boolean;
 }
-const Permission = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Permission>;
-
 /** Organization represents an organization */
 export interface Organization {
   avatar_url?: string;
@@ -153,17 +134,9 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-const Organization = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Organization>;
-
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-const TeamPermission = S.String;
-
 export type TeamUnitsList = Array<string>;
-const TeamUnitsList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TeamUnitsList>;
-
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-const TeamUnitsMapMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TeamUnitsMapMap>;
-
 /** Team represents a team in an organization */
 export interface Team {
   can_create_org_repo?: boolean;
@@ -176,25 +149,14 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-const Team = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Team>;
-
 export type RepoTransferTeamsList = Array<Team>;
-const RepoTransferTeamsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RepoTransferTeamsList>;
-
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
   doer?: User;
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-const RepoTransfer = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RepoTransfer>;
-
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RepositoryTopicsList>;
-
 /** Repository represents a repository */
 export interface Repository {
   allow_fast_forward_only_merge?: boolean;
@@ -267,8 +229,6 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-const Repository = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Repository>;
-
 /** Package represents a package */
 export interface Package {
   created_at?: string;
@@ -281,8 +241,6 @@ export interface Package {
   type?: string;
   version?: string;
 }
-const Package = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Package>;
-
 export interface LinkPackageRequest {
   /** owner of the package */
   owner: string;
@@ -293,11 +251,7 @@ export interface LinkPackageRequest {
   /** name of the repository to link. */
   repo_name: string;
 }
-const LinkPackageRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LinkPackageRequest>;
-
 export interface LinkPackageResponse {}
-const LinkPackageResponse = DeletePackageResponse as any as S.Schema<LinkPackageResponse>;
-
 export interface ListPackageFilesRequest {
   /** owner of the package */
   owner: string;
@@ -308,11 +262,6 @@ export interface ListPackageFilesRequest {
   /** version of the package */
   version: string;
 }
-const ListPackageFilesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListPackageFilesRequest>;
-
 /** PackageFile represents a package file */
 export interface PackageFile {
   Size?: number;
@@ -323,20 +272,8 @@ export interface PackageFile {
   sha256?: string;
   sha512?: string;
 }
-const PackageFile = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<PackageFile>;
-
 export type ListPackageFilesResponseBodyList = Array<PackageFile>;
-const ListPackageFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListPackageFilesResponseBodyList>;
-
 export type ListPackageFilesResponse = ListPackageFilesResponseBodyList;
-const ListPackageFilesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListPackageFilesResponse>;
-
 export type ListPackagesRequestType =
   | "alpine"
   | "cargo"
@@ -359,8 +296,6 @@ export type ListPackagesRequestType =
   | "rubygems"
   | "swift"
   | "vagrant";
-const ListPackagesRequestType = S.String;
-
 export interface ListPackagesRequest {
   /** owner of the packages */
   owner: string;
@@ -373,17 +308,8 @@ export interface ListPackagesRequest {
   /** name filter */
   q?: string;
 }
-const ListPackagesRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListPackagesRequest>;
-
 export type ListPackagesResponseBodyList = Array<Package>;
-const ListPackagesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListPackagesResponseBodyList>;
-
 export type ListPackagesResponse = ListPackagesResponseBodyList;
-const ListPackagesResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListPackagesResponse>;
-
 export interface UnlinkPackageRequest {
   /** owner of the package */
   owner: string;
@@ -392,11 +318,7 @@ export interface UnlinkPackageRequest {
   /** name of the package */
   name: string;
 }
-const UnlinkPackageRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UnlinkPackageRequest>;
-
 export interface UnlinkPackageResponse {}
-const UnlinkPackageResponse = DeletePackageResponse as any as S.Schema<UnlinkPackageResponse>;
-
 export type DeletePackageError = NotFound | ForgejoOpError;
 /** Delete a package */
 export const deletePackage: API.OperationMethod<
@@ -405,8 +327,8 @@ export const deletePackage: API.OperationMethod<
   DeletePackageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePackageRequest,
-  output: DeletePackageResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeletePackageRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeletePackageResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -420,8 +342,8 @@ export const getPackage: API.OperationMethod<
   GetPackageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPackageRequest,
-  output: Package,
+  input: __S(2, __c0, 2) as any as S.Schema<GetPackageRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Package>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -435,8 +357,8 @@ export const linkPackage: API.OperationMethod<
   LinkPackageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkPackageRequest,
-  output: LinkPackageResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<LinkPackageRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<LinkPackageResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -450,8 +372,8 @@ export const listPackageFiles: API.OperationMethod<
   ListPackageFilesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPackageFilesRequest,
-  output: ListPackageFilesResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<ListPackageFilesRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ListPackageFilesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -465,8 +387,8 @@ export const listPackages: API.OperationMethod<
   ListPackagesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPackagesRequest,
-  output: ListPackagesResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ListPackagesRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<ListPackagesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -480,8 +402,8 @@ export const unlinkPackage: API.OperationMethod<
   UnlinkPackageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlinkPackageRequest,
-  output: UnlinkPackageResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<UnlinkPackageRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UnlinkPackageResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -608,20 +530,20 @@ function __c1(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(Organization),
-          permission: S.optional(TeamPermission),
-          units: S.optional(TeamUnitsList),
-          units_map: S.optional(TeamUnitsMapMap),
+          organization: S.optional(__S(8, __c1, 0)),
+          permission: S.optional(S.String),
+          units: S.optional(__S(9, __c1, 1)),
+          units_map: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Team" });
     case 4:
-      return S.Array(Team);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(User),
-          recipient: S.optional(User),
-          teams: S.optional(RepoTransferTeamsList),
+          doer: S.optional(__S(3, __c0, 3)),
+          recipient: S.optional(__S(3, __c0, 3)),
+          teams: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "RepoTransfer" });
     case 6:
@@ -647,8 +569,8 @@ function __c1(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(ExternalTracker),
-          external_wiki: S.optional(ExternalWiki),
+          external_tracker: S.optional(__S(4, __c0, 4)),
+          external_wiki: S.optional(__S(5, __c0, 5)),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -665,7 +587,7 @@ function __c1(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(InternalTracker),
+          internal_tracker: S.optional(__S(6, __c0, 6)),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -673,21 +595,21 @@ function __c1(j: number): any {
           mirror_interval: S.optional(S.String),
           mirror_updated: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(RepositoryObjectFormatName),
+          object_format_name: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: User,
-          parent: S.optional(Repository),
-          permissions: S.optional(Permission),
+          owner: __S(3, __c0, 3),
+          parent: S.optional(__S(15, __c1, 7)),
+          permissions: S.optional(__S(7, __c0, 7)),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(RepoTransfer),
+          repo_transfer: S.optional(__S(13, __c1, 5)),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(14, __c1, 6)),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -705,12 +627,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
-          creator: S.optional(User),
+          creator: S.optional(__S(3, __c0, 3)),
           html_url: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          owner: S.optional(User),
-          repository: S.optional(Repository),
+          owner: S.optional(__S(3, __c0, 3)),
+          repository: S.optional(__S(15, __c1, 7)),
           type: S.optional(S.String),
           version: S.optional(S.String),
         }),
@@ -758,9 +680,9 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PackageFile" });
     case 4:
-      return S.Array(PackageFile);
+      return S.Array(__S(19, __c2, 3));
     case 5:
-      return S.suspend(() => ListPackageFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(20, __c2, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackageFilesResponse",
       });
     case 6:
@@ -769,18 +691,18 @@ function __c2(j: number): any {
           owner: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(ListPackagesRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/packages/{owner}", code: 200 })),
       ).annotate({ identifier: "ListPackagesRequest" });
     case 7:
-      return S.Array(Package);
+      return S.Array(__S(16, __c2, 0));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListPackagesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(23, __c2, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackagesResponse",
       });
     case 1:
@@ -794,4 +716,9 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "UnlinkPackageRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

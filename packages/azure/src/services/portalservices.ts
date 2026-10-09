@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -14,28 +16,14 @@ export interface CopilotSettingsPropertiesInput {
   /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
   accessControlEnabled: boolean;
 }
-const CopilotSettingsPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CopilotSettingsPropertiesInput>;
-
 export interface CopilotSettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsPropertiesInput;
 }
-const CopilotSettingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CopilotSettingsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -51,12 +39,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
-
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const AzureResourceManagerResourceProvisioningState = S.String;
-
 /** The Copilot Settings properties. */
 export interface CopilotSettingsProperties {
   /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
@@ -64,11 +48,6 @@ export interface CopilotSettingsProperties {
   /** The status of the last provisioning operation performed on the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-const CopilotSettingsProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CopilotSettingsProperties>;
-
 export interface CopilotSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -81,29 +60,9 @@ export interface CopilotSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-const CopilotSettingsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CopilotSettingsCreateOrUpdateResponse>;
-
 export interface DeleteCopilotSettingsRequest {}
-const DeleteCopilotSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteCopilotSettingsRequest>;
-
 export interface DeleteCopilotSettingsResponse {}
-const DeleteCopilotSettingsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteCopilotSettingsResponse>;
-
 export interface GetCopilotSettingsRequest {}
-const GetCopilotSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetCopilotSettingsRequest>;
-
 export interface GetCopilotSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -116,15 +75,7 @@ export interface GetCopilotSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-const GetCopilotSettingsResponse =
-  CopilotSettingsCreateOrUpdateResponse as any as S.Schema<GetCopilotSettingsResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -136,16 +87,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -159,43 +104,20 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListOperationsResponse>;
-
 /** The contents of the file. */
 export type PortalTenantCompilefileRequestContentsMap = { [key: string]: unknown | undefined };
-const PortalTenantCompilefileRequestContentsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PortalTenantCompilefileRequestContentsMap>;
-
 /** The contents of the string source. */
 export type PortalTenantCompilefileRequestStringSourceMap = { [key: string]: unknown | undefined };
-const PortalTenantCompilefileRequestStringSourceMap =
-  PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompilefileRequestStringSourceMap>;
-
 /** The contents of referenced files. The property name is the relative file path and the value is its contents. */
 export type PortalTenantCompilefileRequestFilesMap = { [key: string]: unknown | undefined };
-const PortalTenantCompilefileRequestFilesMap =
-  PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompilefileRequestFilesMap>;
-
 export interface PortalTenantCompilefileRequest {
   /** The contents of the file. */
   contents: PortalTenantCompilefileRequestContentsMap;
@@ -204,41 +126,18 @@ export interface PortalTenantCompilefileRequest {
   /** The contents of referenced files. The property name is the relative file path and the value is its contents. */
   files?: PortalTenantCompilefileRequestFilesMap;
 }
-const PortalTenantCompilefileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PortalTenantCompilefileRequest>;
-
 /** The contents of the file to compile. */
 export type PortalTenantCompileFileResult = { [key: string]: unknown | undefined };
-const PortalTenantCompileFileResult =
-  PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompileFileResult>;
-
 export type PortalTenantCompilefileResponse = PortalTenantCompileFileResult;
-const PortalTenantCompilefileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PortalTenantCompilefileResponse>;
-
 /** The updatable properties of the CopilotSettingsResource. */
 export interface CopilotSettingsResourceUpdateProperties {
   /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
   accessControlEnabled?: boolean;
 }
-const CopilotSettingsResourceUpdateProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CopilotSettingsResourceUpdateProperties>;
-
 export interface UpdateCopilotSettingsRequest {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsResourceUpdateProperties;
 }
-const UpdateCopilotSettingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<UpdateCopilotSettingsRequest>;
-
 export interface UpdateCopilotSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -251,9 +150,6 @@ export interface UpdateCopilotSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-const UpdateCopilotSettingsResponse =
-  CopilotSettingsCreateOrUpdateResponse as any as S.Schema<UpdateCopilotSettingsResponse>;
-
 export type CopilotSettingsCreateOrUpdateError = AzureOpError;
 /** Create a CopilotSettingsResource */
 export const CopilotSettingsCreateOrUpdate: API.OperationMethod<
@@ -262,8 +158,8 @@ export const CopilotSettingsCreateOrUpdate: API.OperationMethod<
   CopilotSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopilotSettingsCreateOrUpdateRequest,
-  output: CopilotSettingsCreateOrUpdateResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CopilotSettingsCreateOrUpdateRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CopilotSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -277,8 +173,8 @@ export const DeleteCopilotSettings: API.OperationMethod<
   DeleteCopilotSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCopilotSettingsRequest,
-  output: DeleteCopilotSettingsResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteCopilotSettingsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteCopilotSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -292,8 +188,8 @@ export const GetCopilotSettings: API.OperationMethod<
   GetCopilotSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCopilotSettingsRequest,
-  output: GetCopilotSettingsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetCopilotSettingsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetCopilotSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -307,8 +203,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -322,8 +218,8 @@ export const PortalTenantCompilefile: API.OperationMethod<
   PortalTenantCompilefileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PortalTenantCompilefileRequest,
-  output: PortalTenantCompilefileResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<PortalTenantCompilefileRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<PortalTenantCompilefileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -337,8 +233,8 @@ export const UpdateCopilotSettings: API.OperationMethod<
   UpdateCopilotSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCopilotSettingsRequest,
-  output: UpdateCopilotSettingsResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<UpdateCopilotSettingsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<UpdateCopilotSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -358,7 +254,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(CopilotSettingsPropertiesInput),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -374,10 +270,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -385,7 +281,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accessControlEnabled: S.Boolean,
-          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CopilotSettingsProperties",
@@ -396,8 +292,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CopilotSettingsProperties),
+          systemData: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "CopilotSettingsCreateOrUpdateResponse",
@@ -461,17 +357,17 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(9, __c1, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(Operation);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(11, __c1, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -480,9 +376,9 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          contents: PortalTenantCompilefileRequestContentsMap,
-          stringSource: S.optional(PortalTenantCompilefileRequestStringSourceMap),
-          files: S.optional(PortalTenantCompilefileRequestFilesMap),
+          contents: __S(13, __c1, 5),
+          stringSource: S.optional(__S(13, __c1, 5)),
+          files: S.optional(__S(13, __c1, 5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -495,7 +391,7 @@ function __c1(j: number): any {
         identifier: "PortalTenantCompilefileRequest",
       });
     case 7:
-      return S.suspend(() => PortalTenantCompileFileResult.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(13, __c1, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "PortalTenantCompilefileResponse",
       });
   }
@@ -513,7 +409,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(CopilotSettingsResourceUpdateProperties),
+          properties: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -526,4 +422,9 @@ function __c2(j: number): any {
         identifier: "UpdateCopilotSettingsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

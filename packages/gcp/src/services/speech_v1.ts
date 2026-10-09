@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,17 +69,9 @@ export interface ClassItem {
   /** The class item's value. */
   value?: string;
 }
-const ClassItem = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ClassItem>;
-
 export type ClassItemList = Array<ClassItem>;
-const ClassItemList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ClassItemList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
-
 export type CustomClassStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-const CustomClassStateEnum = S.String;
-
 /** A set of words or phrases that represents a common concept likely to appear in your audio, for example a list of passenger ship names. CustomClass items can be substituted into placeholders that you set in PhraseSet phrases. */
 export interface CustomClass {
   /** Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used. */
@@ -107,8 +101,6 @@ export interface CustomClass {
   /** Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. */
   kmsKeyName?: string;
 }
-const CustomClass = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CustomClass>;
-
 /** Message sent by the client for the `CreateCustomClass` method. */
 export interface CreateCustomClassRequest {
   /** Required. The custom class to create. */
@@ -116,22 +108,12 @@ export interface CreateCustomClassRequest {
   /** Required. The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters. */
   customClassId?: string;
 }
-const CreateCustomClassRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateCustomClassRequest>;
-
 export interface CreateProjectsLocationsCustomClassesRequest {
   /** Required. The parent resource where this custom class will be created. Format: `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. */
   parent: string;
   /** Request body */
   body?: CreateCustomClassRequest;
 }
-const CreateProjectsLocationsCustomClassesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateProjectsLocationsCustomClassesRequest>;
-
 /** A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. */
 export interface Phrase {
   /** Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests. */
@@ -139,14 +121,8 @@ export interface Phrase {
   /** The phrase itself. */
   value?: string;
 }
-const Phrase = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Phrase>;
-
 export type PhraseList = Array<Phrase>;
-const PhraseList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PhraseList>;
-
 export type PhraseSetStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-const PhraseSetStateEnum = S.String;
-
 /** Provides "hints" to the speech recognizer to favor specific words and phrases in the results. */
 export interface PhraseSet {
   /** The resource name of the phrase set. */
@@ -176,8 +152,6 @@ export interface PhraseSet {
   /** Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used. */
   etag?: string;
 }
-const PhraseSet = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PhraseSet>;
-
 /** Message sent by the client for the `CreatePhraseSet` method. */
 export interface CreatePhraseSetRequest {
   /** Required. The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters. */
@@ -185,56 +159,28 @@ export interface CreatePhraseSetRequest {
   /** Required. The phrase set to create. */
   phraseSet?: PhraseSet;
 }
-const CreatePhraseSetRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreatePhraseSetRequest>;
-
 export interface CreateProjectsLocationsPhraseSetsRequest {
   /** Required. The parent resource where this phrase set will be created. Format: `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. */
   parent: string;
   /** Request body */
   body?: CreatePhraseSetRequest;
 }
-const CreateProjectsLocationsPhraseSetsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateProjectsLocationsPhraseSetsRequest>;
-
 export interface DeleteProjectsLocationsCustomClassesRequest {
   /** Required. The name of the custom class to delete. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. */
   name: string;
 }
-const DeleteProjectsLocationsCustomClassesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsCustomClassesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Empty>;
-
 export interface DeleteProjectsLocationsPhraseSetsRequest {
   /** Required. The name of the phrase set to delete. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}` */
   name: string;
 }
-const DeleteProjectsLocationsPhraseSetsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsPhraseSetsRequest>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetOperationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -244,8 +190,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -259,26 +203,14 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Operation>;
-
 export interface GetProjectsLocationsCustomClassesRequest {
   /** Required. The name of the custom class to retrieve. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}` */
   name: string;
 }
-const GetProjectsLocationsCustomClassesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetProjectsLocationsCustomClassesRequest>;
-
 export interface GetProjectsLocationsPhraseSetsRequest {
   /** Required. The name of the phrase set to retrieve. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. */
   name: string;
 }
-const GetProjectsLocationsPhraseSetsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetProjectsLocationsPhraseSetsRequest>;
-
 export interface ListOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -291,17 +223,8 @@ export interface ListOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<StringList>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -311,11 +234,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsCustomClassesRequest {
   /** The maximum number of custom classes to return. The service may return fewer than this value. If unspecified, at most 50 custom classes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -324,14 +242,7 @@ export interface ListProjectsLocationsCustomClassesRequest {
   /** A page token, received from a previous `ListCustomClass` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomClass` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsCustomClassesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListProjectsLocationsCustomClassesRequest>;
-
 export type CustomClassList = Array<CustomClass>;
-const CustomClassList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CustomClassList>;
-
 /** Message returned to the client by the `ListCustomClasses` method. */
 export interface ListCustomClassesResponse {
   /** The custom classes. */
@@ -339,11 +250,6 @@ export interface ListCustomClassesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListCustomClassesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListCustomClassesResponse>;
-
 export interface ListProjectsLocationsPhraseSetsRequest {
   /** The maximum number of phrase sets to return. The service may return fewer than this value. If unspecified, at most 50 phrase sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -352,14 +258,7 @@ export interface ListProjectsLocationsPhraseSetsRequest {
   /** Required. The parent, which owns this collection of phrase set. Format: `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. */
   parent: string;
 }
-const ListProjectsLocationsPhraseSetsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListProjectsLocationsPhraseSetsRequest>;
-
 export type PhraseSetList = Array<PhraseSet>;
-const PhraseSetList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PhraseSetList>;
-
 /** Message returned to the client by the `ListPhraseSet` method. */
 export interface ListPhraseSetResponse {
   /** The phrase set. */
@@ -367,11 +266,6 @@ export interface ListPhraseSetResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListPhraseSetResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListPhraseSetResponse>;
-
 /** Contains audio data in the encoding specified in the `RecognitionConfig`. Either `content` or `uri` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [content limits](https://cloud.google.com/speech-to-text/quotas#content). */
 export interface RecognitionAudio {
   /** URI that points to a file that contains audio data bytes as specified in `RecognitionConfig`. The file must not be compressed (for example, gzip). Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format: `gs://bucket_name/object_name` (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request URIs](https://cloud.google.com/storage/docs/reference-uris). */
@@ -379,8 +273,6 @@ export interface RecognitionAudio {
   /** The audio data bytes encoded as specified in `RecognitionConfig`. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64. */
   content?: string;
 }
-const RecognitionAudio = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<RecognitionAudio>;
-
 /** A single replacement configuration. */
 export interface Entry {
   /** What to replace with. Max length is 100 characters. */
@@ -390,21 +282,12 @@ export interface Entry {
   /** Whether the search is case sensitive. */
   caseSensitive?: boolean;
 }
-const Entry = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Entry>;
-
 export type EntryList = Array<Entry>;
-const EntryList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<EntryList>;
-
 /** Transcription normalization configuration. Use transcription normalization to automatically replace parts of the transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability > 0.8) and final transcripts. */
 export interface TranscriptNormalization {
   /** A list of replacement entries. We will perform replacement with one entry at a time. For example, the second entry in ["cat" => "dog", "mountain cat" => "mountain dog"] will never be applied because we will always process the first entry before it. At most 100 entries. */
   entries?: EntryList;
 }
-const TranscriptNormalization = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<TranscriptNormalization>;
-
 export type RecognitionConfigEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "LINEAR16"
@@ -417,14 +300,10 @@ export type RecognitionConfigEncodingEnum =
   | "MP3"
   | "WEBM_OPUS"
   | "ALAW";
-const RecognitionConfigEncodingEnum = S.String;
-
 export interface ABNFGrammar {
   /** All declarations and rules of an ABNF grammar broken up into multiple strings that will end up concatenated. */
   abnfStrings?: StringList;
 }
-const ABNFGrammar = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ABNFGrammar>;
-
 /** Speech adaptation configuration. */
 export interface SpeechAdaptation {
   /** A collection of phrase sets. To specify the hints inline, leave the phrase set's `name` blank and fill in the rest of its fields. Any phrase set can use any custom class. */
@@ -436,8 +315,6 @@ export interface SpeechAdaptation {
   /** A collection of phrase set resource names to use. */
   phraseSetReferences?: StringList;
 }
-const SpeechAdaptation = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SpeechAdaptation>;
-
 /** Provides "hints" to the speech recognizer to favor specific words and phrases in the results. */
 export interface SpeechContext {
   /** Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case. */
@@ -445,11 +322,7 @@ export interface SpeechContext {
   /** A list of strings containing words and phrases "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also be set to classes for groups of words that represent common concepts that occur in natural language. For example, rather than providing phrase hints for every month of the year, using the $MONTH class improves the likelihood of correctly transcribing audio that includes months. */
   phrases?: StringList;
 }
-const SpeechContext = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SpeechContext>;
-
 export type SpeechContextList = Array<SpeechContext>;
-const SpeechContextList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SpeechContextList>;
-
 /** Config to enable speaker diarization. */
 export interface SpeakerDiarizationConfig {
   /** Output only. Unused. */
@@ -461,11 +334,6 @@ export interface SpeakerDiarizationConfig {
   /** Minimum number of speakers in the conversation. This range gives you more flexibility by allowing the system to automatically determine the correct number of speakers. If not set, the default value is 2. */
   minSpeakerCount?: number;
 }
-const SpeakerDiarizationConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SpeakerDiarizationConfig>;
-
 export type RecognitionMetadataInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
   | "DISCUSSION"
@@ -476,21 +344,15 @@ export type RecognitionMetadataInteractionTypeEnum =
   | "VOICE_SEARCH"
   | "VOICE_COMMAND"
   | "DICTATION";
-const RecognitionMetadataInteractionTypeEnum = S.String;
-
 export type RecognitionMetadataMicrophoneDistanceEnum =
   | "MICROPHONE_DISTANCE_UNSPECIFIED"
   | "NEARFIELD"
   | "MIDFIELD"
   | "FARFIELD";
-const RecognitionMetadataMicrophoneDistanceEnum = S.String;
-
 export type RecognitionMetadataOriginalMediaTypeEnum =
   | "ORIGINAL_MEDIA_TYPE_UNSPECIFIED"
   | "AUDIO"
   | "VIDEO";
-const RecognitionMetadataOriginalMediaTypeEnum = S.String;
-
 export type RecognitionMetadataRecordingDeviceTypeEnum =
   | "RECORDING_DEVICE_TYPE_UNSPECIFIED"
   | "SMARTPHONE"
@@ -499,8 +361,6 @@ export type RecognitionMetadataRecordingDeviceTypeEnum =
   | "VEHICLE"
   | "OTHER_OUTDOOR_DEVICE"
   | "OTHER_INDOOR_DEVICE";
-const RecognitionMetadataRecordingDeviceTypeEnum = S.String;
-
 /** Description of audio data to be recognized. */
 export interface RecognitionMetadata {
   /** The use case most closely describing the audio content to be recognized. */
@@ -520,8 +380,6 @@ export interface RecognitionMetadata {
   /** Mime type of the original audio file. For example `audio/m4a`, `audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`. A list of possible audio mime types is maintained at http://www.iana.org/assignments/media-types/media-types.xhtml#audio */
   originalMimeType?: string;
 }
-const RecognitionMetadata = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RecognitionMetadata>;
-
 /** Provides information to the recognizer that specifies how to process the request. */
 export interface RecognitionConfig {
   /** Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to true and the `model` field is not set, then an appropriate enhanced model is chosen if an enhanced model exists for the audio. If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the speech is recognized using the standard version of the specified model. */
@@ -565,18 +423,11 @@ export interface RecognitionConfig {
   /** Metadata regarding this request. */
   metadata?: RecognitionMetadata;
 }
-const RecognitionConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<RecognitionConfig>;
-
 /** Specifies an optional destination for the recognition results. */
 export interface TranscriptOutputConfig {
   /** Specifies a Cloud Storage URI for the recognition results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist. */
   gcsUri?: string;
 }
-const TranscriptOutputConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TranscriptOutputConfig>;
-
 /** The top-level message sent by the client for the `LongRunningRecognize` method. */
 export interface LongRunningRecognizeRequest {
   /** Required. The audio data to be recognized. */
@@ -586,20 +437,10 @@ export interface LongRunningRecognizeRequest {
   /** Optional. Specifies an optional destination for the recognition results. */
   outputConfig?: TranscriptOutputConfig;
 }
-const LongRunningRecognizeRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<LongRunningRecognizeRequest>;
-
 export interface LongrunningrecognizeSpeechRequest {
   /** Request body */
   body?: LongRunningRecognizeRequest;
 }
-const LongrunningrecognizeSpeechRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<LongrunningrecognizeSpeechRequest>;
-
 export interface PatchProjectsLocationsCustomClassesRequest {
   /** The list of fields to be updated. */
   updateMask?: string;
@@ -608,11 +449,6 @@ export interface PatchProjectsLocationsCustomClassesRequest {
   /** Request body */
   body?: CustomClass;
 }
-const PatchProjectsLocationsCustomClassesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PatchProjectsLocationsCustomClassesRequest>;
-
 export interface PatchProjectsLocationsPhraseSetsRequest {
   /** The list of fields to be updated. */
   updateMask?: string;
@@ -621,11 +457,6 @@ export interface PatchProjectsLocationsPhraseSetsRequest {
   /** Request body */
   body?: PhraseSet;
 }
-const PatchProjectsLocationsPhraseSetsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PatchProjectsLocationsPhraseSetsRequest>;
-
 /** The top-level message sent by the client for the `Recognize` method. */
 export interface RecognizeRequest {
   /** Required. The audio data to be recognized. */
@@ -633,17 +464,10 @@ export interface RecognizeRequest {
   /** Required. Provides information to the recognizer that specifies how to process the request. */
   config?: RecognitionConfig;
 }
-const RecognizeRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RecognizeRequest>;
-
 export interface RecognizeSpeechRequest {
   /** Request body */
   body?: RecognizeRequest;
 }
-const RecognizeSpeechRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<RecognizeSpeechRequest>;
-
 /** Information on speech adaptation use in results */
 export interface SpeechAdaptationInfo {
   /** If set, returns a message specifying which part of the speech adaptation request timed out. */
@@ -651,8 +475,6 @@ export interface SpeechAdaptationInfo {
   /** Whether there was a timeout when applying speech adaptation. If true, adaptation had no effect in the response transcript. */
   adaptationTimeout?: boolean;
 }
-const SpeechAdaptationInfo = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SpeechAdaptationInfo>;
-
 /** Word-specific information for recognized words. */
 export interface WordInfo {
   /** Output only. A label value assigned for every unique speaker within the audio. This field specifies which speaker was detected to have spoken this word. For some models, like medical_conversation this can be actual speaker role, for example "patient" or "provider", but generally this would be a number identifying a speaker. This field is only set if enable_speaker_diarization = 'true' and only for the top alternative. */
@@ -668,11 +490,7 @@ export interface WordInfo {
   /** Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only for the top alternative. Note: Use speaker_label instead. */
   speakerTag?: number;
 }
-const WordInfo = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<WordInfo>;
-
 export type WordInfoList = Array<WordInfo>;
-const WordInfoList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<WordInfoList>;
-
 /** Alternative hypotheses (a.k.a. n-best list). */
 export interface SpeechRecognitionAlternative {
   /** The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set. */
@@ -682,17 +500,7 @@ export interface SpeechRecognitionAlternative {
   /** Transcript text representing the words that the user spoke. In languages that use spaces to separate words, the transcript might have a leading space if it isn't the first result. You can concatenate each result to obtain the full transcript without using a separator. */
   transcript?: string;
 }
-const SpeechRecognitionAlternative = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SpeechRecognitionAlternative>;
-
 export type SpeechRecognitionAlternativeList = Array<SpeechRecognitionAlternative>;
-const SpeechRecognitionAlternativeList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<SpeechRecognitionAlternativeList>;
-
 /** A speech recognition result corresponding to a portion of the audio. */
 export interface SpeechRecognitionResult {
   /** Time offset of the end of this result relative to the beginning of the audio. */
@@ -704,17 +512,7 @@ export interface SpeechRecognitionResult {
   /** May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. */
   alternatives?: SpeechRecognitionAlternativeList;
 }
-const SpeechRecognitionResult = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<SpeechRecognitionResult>;
-
 export type SpeechRecognitionResultList = Array<SpeechRecognitionResult>;
-const SpeechRecognitionResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<SpeechRecognitionResultList>;
-
 /** The only message returned to the client by the `Recognize` method. It contains the result as zero or more sequential `SpeechRecognitionResult` messages. */
 export interface RecognizeResponse {
   /** The ID associated with the request. This is a unique ID specific only to the given request. */
@@ -728,8 +526,6 @@ export interface RecognizeResponse {
   /** Whether request used legacy asr models (was not automatically migrated to use conformer models). */
   usingLegacyModels?: boolean;
 }
-const RecognizeResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<RecognizeResponse>;
-
 export type CreateProjectsLocationsCustomClassesError =
   | NotFound
   | Forbidden
@@ -743,8 +539,8 @@ export const createProjectsLocationsCustomClasses: API.OperationMethod<
   CreateProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsCustomClassesRequest,
-  output: CustomClass,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateProjectsLocationsCustomClassesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -763,8 +559,8 @@ export const createProjectsLocationsPhraseSets: API.OperationMethod<
   CreateProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsPhraseSetsRequest,
-  output: PhraseSet,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsLocationsPhraseSetsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PhraseSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -783,8 +579,8 @@ export const deleteProjectsLocationsCustomClasses: API.OperationMethod<
   DeleteProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCustomClassesRequest,
-  output: Empty,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteProjectsLocationsCustomClassesRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -803,8 +599,8 @@ export const deleteProjectsLocationsPhraseSets: API.OperationMethod<
   DeleteProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsPhraseSetsRequest,
-  output: Empty,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteProjectsLocationsPhraseSetsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -818,8 +614,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(14, __c1, 6) as any as S.Schema<GetOperationsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -833,8 +629,8 @@ export const getProjectsLocationsCustomClasses: API.OperationMethod<
   GetProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCustomClassesRequest,
-  output: CustomClass,
+  input: __S(19, __c2, 3) as any as S.Schema<GetProjectsLocationsCustomClassesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -848,8 +644,8 @@ export const getProjectsLocationsPhraseSets: API.OperationMethod<
   GetProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsPhraseSetsRequest,
-  output: PhraseSet,
+  input: __S(20, __c2, 4) as any as S.Schema<GetProjectsLocationsPhraseSetsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PhraseSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -864,8 +660,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<ListOperationsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -881,8 +677,8 @@ export const listProjectsLocationsCustomClasses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomClassesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCustomClassesRequest,
-  output: ListCustomClassesResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<ListProjectsLocationsCustomClassesRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<ListCustomClassesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -898,8 +694,8 @@ export const listProjectsLocationsPhraseSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPhraseSetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsPhraseSetsRequest,
-  output: ListPhraseSetResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<ListProjectsLocationsPhraseSetsRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<ListPhraseSetResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -919,8 +715,8 @@ export const longrunningrecognizeSpeech: API.OperationMethod<
   LongrunningrecognizeSpeechError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LongrunningrecognizeSpeechRequest,
-  output: Operation,
+  input: __S(44, __c5, 4) as any as S.Schema<LongrunningrecognizeSpeechRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -939,8 +735,8 @@ export const patchProjectsLocationsCustomClasses: API.OperationMethod<
   PatchProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsCustomClassesRequest,
-  output: CustomClass,
+  input: __S(45, __c5, 5) as any as S.Schema<PatchProjectsLocationsCustomClassesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -959,8 +755,8 @@ export const patchProjectsLocationsPhraseSets: API.OperationMethod<
   PatchProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsPhraseSetsRequest,
-  output: PhraseSet,
+  input: __S(46, __c5, 6) as any as S.Schema<PatchProjectsLocationsPhraseSetsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PhraseSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -974,8 +770,8 @@ export const recognizeSpeech: API.OperationMethod<
   RecognizeSpeechError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecognizeSpeechRequest,
-  output: RecognizeResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<RecognizeSpeechRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<RecognizeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -991,7 +787,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ClassItem" });
     case 1:
-      return S.Array(ClassItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.Record(S.String, S.String);
     case 3:
@@ -999,15 +795,15 @@ function __c0(j: number): any {
         S.Struct({
           etag: S.optional(S.String),
           expireTime: S.optional(S.String),
-          items: S.optional(ClassItemList),
+          items: S.optional(__S(1, __c0, 1)),
           customClassId: S.optional(S.String),
           uid: S.optional(S.String),
           kmsKeyVersionName: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(2, __c0, 2)),
           name: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           deleteTime: S.optional(S.String),
-          state: S.optional(CustomClassStateEnum),
+          state: S.optional(S.String),
           displayName: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
         }),
@@ -1015,7 +811,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customClass: S.optional(CustomClass),
+          customClass: S.optional(__S(3, __c0, 3)),
           customClassId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateCustomClassRequest" });
@@ -1023,7 +819,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateCustomClassRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1042,7 +838,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Phrase" });
     case 7:
-      return S.Array(Phrase);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -1052,10 +848,10 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           expireTime: S.optional(S.String),
-          phrases: S.optional(PhraseList),
-          annotations: S.optional(StringMap),
+          phrases: S.optional(__S(7, __c0, 7)),
+          annotations: S.optional(__S(2, __c0, 2)),
           reconciling: S.optional(S.Boolean),
-          state: S.optional(PhraseSetStateEnum),
+          state: S.optional(S.String),
           displayName: S.optional(S.String),
           uid: S.optional(S.String),
           deleteTime: S.optional(S.String),
@@ -1069,14 +865,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           phraseSetId: S.optional(S.String),
-          phraseSet: S.optional(PhraseSet),
+          phraseSet: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "CreatePhraseSetRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreatePhraseSetRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1138,11 +934,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DocumentMap);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(16, __c2, 0)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -1150,9 +946,9 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(17, __c2, 1)),
+          metadata: S.optional(__S(15, __c1, 7)),
+          response: S.optional(__S(15, __c1, 7)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
         }),
@@ -1196,7 +992,7 @@ function __c2(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(18, __c2, 2));
   }
 }
 function __c3(j: number): any {
@@ -1204,8 +1000,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(22, __c2, 6)),
+          operations: S.optional(__S(23, __c2, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1226,11 +1022,11 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsCustomClassesRequest",
       });
     case 2:
-      return S.Array(CustomClass);
+      return S.Array(__S(3, __c0, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customClasses: S.optional(CustomClassList),
+          customClasses: S.optional(__S(26, __c3, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1253,11 +1049,11 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsPhraseSetsRequest",
       });
     case 5:
-      return S.Array(PhraseSet);
+      return S.Array(__S(8, __c1, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          phraseSets: S.optional(PhraseSetList),
+          phraseSets: S.optional(__S(29, __c3, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPhraseSetResponse" });
@@ -1281,37 +1077,37 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Entry" });
     case 1:
-      return S.Array(Entry);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(EntryList),
+          entries: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "TranscriptNormalization" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          abnfStrings: S.optional(StringList),
+          abnfStrings: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "ABNFGrammar" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          phraseSets: S.optional(PhraseSetList),
-          abnfGrammar: S.optional(ABNFGrammar),
-          customClasses: S.optional(CustomClassList),
-          phraseSetReferences: S.optional(StringList),
+          phraseSets: S.optional(__S(29, __c3, 5)),
+          abnfGrammar: S.optional(__S(35, __c4, 3)),
+          customClasses: S.optional(__S(26, __c3, 2)),
+          phraseSetReferences: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "SpeechAdaptation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           boost: S.optional(S.Number),
-          phrases: S.optional(StringList),
+          phrases: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "SpeechContext" });
     case 6:
-      return S.Array(SpeechContext);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1328,10 +1124,10 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          interactionType: S.optional(RecognitionMetadataInteractionTypeEnum),
-          microphoneDistance: S.optional(RecognitionMetadataMicrophoneDistanceEnum),
-          originalMediaType: S.optional(RecognitionMetadataOriginalMediaTypeEnum),
-          recordingDeviceType: S.optional(RecognitionMetadataRecordingDeviceTypeEnum),
+          interactionType: S.optional(S.String),
+          microphoneDistance: S.optional(S.String),
+          originalMediaType: S.optional(S.String),
+          recordingDeviceType: S.optional(S.String),
           recordingDeviceName: S.optional(S.String),
           audioTopic: S.optional(S.String),
           industryNaicsCodeOfAudio: S.optional(S.Number),
@@ -1342,25 +1138,25 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           useEnhanced: S.optional(S.Boolean),
-          transcriptNormalization: S.optional(TranscriptNormalization),
+          transcriptNormalization: S.optional(__S(34, __c4, 2)),
           languageCode: S.optional(S.String),
           enableSeparateRecognitionPerChannel: S.optional(S.Boolean),
-          encoding: S.optional(RecognitionConfigEncodingEnum),
+          encoding: S.optional(S.String),
           enableSpokenEmojis: S.optional(S.Boolean),
           enableWordTimeOffsets: S.optional(S.Boolean),
-          adaptation: S.optional(SpeechAdaptation),
+          adaptation: S.optional(__S(36, __c4, 4)),
           enableSpokenPunctuation: S.optional(S.Boolean),
           sampleRateHertz: S.optional(S.Number),
-          speechContexts: S.optional(SpeechContextList),
-          diarizationConfig: S.optional(SpeakerDiarizationConfig),
+          speechContexts: S.optional(__S(38, __c4, 6)),
+          diarizationConfig: S.optional(__S(39, __c4, 7)),
           enableWordConfidence: S.optional(S.Boolean),
-          alternativeLanguageCodes: S.optional(StringList),
+          alternativeLanguageCodes: S.optional(__S(22, __c2, 6)),
           profanityFilter: S.optional(S.Boolean),
           enableAutomaticPunctuation: S.optional(S.Boolean),
           maxAlternatives: S.optional(S.Number),
           model: S.optional(S.String),
           audioChannelCount: S.optional(S.Number),
-          metadata: S.optional(RecognitionMetadata),
+          metadata: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "RecognitionConfig" });
     case 2:
@@ -1372,9 +1168,9 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(RecognitionAudio),
-          config: S.optional(RecognitionConfig),
-          outputConfig: S.optional(TranscriptOutputConfig),
+          audio: S.optional(__S(31, __c3, 7)),
+          config: S.optional(__S(41, __c5, 1)),
+          outputConfig: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
         identifier: "LongRunningRecognizeRequest",
@@ -1382,7 +1178,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(LongRunningRecognizeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1398,7 +1194,7 @@ function __c5(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(CustomClass.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://speech.googleapis.com/" }),
         ),
@@ -1410,7 +1206,7 @@ function __c5(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(PhraseSet.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://speech.googleapis.com/" }),
         ),
@@ -1420,8 +1216,8 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(RecognitionAudio),
-          config: S.optional(RecognitionConfig),
+          audio: S.optional(__S(31, __c3, 7)),
+          config: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "RecognizeRequest" });
   }
@@ -1431,7 +1227,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(RecognizeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1459,30 +1255,30 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "WordInfo" });
     case 3:
-      return S.Array(WordInfo);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           confidence: S.optional(S.Number),
-          words: S.optional(WordInfoList),
+          words: S.optional(__S(51, __c6, 3)),
           transcript: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SpeechRecognitionAlternative",
       });
     case 5:
-      return S.Array(SpeechRecognitionAlternative);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           resultEndTime: S.optional(S.String),
           languageCode: S.optional(S.String),
           channelTag: S.optional(S.Number),
-          alternatives: S.optional(SpeechRecognitionAlternativeList),
+          alternatives: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({ identifier: "SpeechRecognitionResult" });
     case 7:
-      return S.Array(SpeechRecognitionResult);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -1492,10 +1288,15 @@ function __c7(j: number): any {
         S.Struct({
           requestId: S.optional(S.String),
           totalBilledTime: S.optional(S.String),
-          speechAdaptationInfo: S.optional(SpeechAdaptationInfo),
-          results: S.optional(SpeechRecognitionResultList),
+          speechAdaptationInfo: S.optional(__S(49, __c6, 1)),
+          results: S.optional(__S(55, __c6, 7)),
           usingLegacyModels: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RecognizeResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

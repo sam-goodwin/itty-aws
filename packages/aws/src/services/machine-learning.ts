@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://machinelearning.amazonaws.com/doc/2014-12-12/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Machine Learning",
@@ -142,9 +144,7 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export type EntityId = string;
 export type TaggableResourceType =
   | "BatchPrediction"
@@ -152,19 +152,15 @@ export type TaggableResourceType =
   | "Evaluation"
   | "MLModel"
   | (string & {});
-const TaggableResourceType = S.String;
-
 export interface AddTagsInput {
   Tags: Tag[];
   ResourceId: string;
   ResourceType: TaggableResourceType;
 }
-const AddTagsInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddTagsInput>;
 export interface AddTagsOutput {
   ResourceId?: string;
   ResourceType?: TaggableResourceType;
 }
-const AddTagsOutput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AddTagsOutput>;
 export type EntityName = string;
 export type S3Url = string;
 export interface CreateBatchPredictionInput {
@@ -174,24 +170,15 @@ export interface CreateBatchPredictionInput {
   BatchPredictionDataSourceId: string;
   OutputUri: string;
 }
-const CreateBatchPredictionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateBatchPredictionInput>;
 export interface CreateBatchPredictionOutput {
   BatchPredictionId?: string;
 }
-const CreateBatchPredictionOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateBatchPredictionOutput>;
 export type RDSInstanceIdentifier = string;
 export type RDSDatabaseName = string;
 export interface RDSDatabase {
   InstanceIdentifier: string;
   DatabaseName: string;
 }
-const RDSDatabase = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RDSDatabase>;
 export type RDSSelectSqlQuery = string;
 export type RDSDatabaseUsername = string;
 export type RDSDatabasePassword = string | redacted.Redacted<string>;
@@ -199,10 +186,6 @@ export interface RDSDatabaseCredentials {
   Username: string;
   Password: string | redacted.Redacted<string>;
 }
-const RDSDatabaseCredentials = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<RDSDatabaseCredentials>;
 export type DataRearrangement = string;
 export type DataSchema = string;
 export type EDPResourceRole = string;
@@ -210,7 +193,6 @@ export type EDPServiceRole = string;
 export type EDPSubnetId = string;
 export type EDPSecurityGroupId = string;
 export type EDPSecurityGroupIds = string[];
-const EDPSecurityGroupIds = /*@__PURE__*/ __L.at(__c1, 0);
 export interface RDSDataSpec {
   DatabaseInformation: RDSDatabase;
   SelectSqlQuery: string;
@@ -224,7 +206,6 @@ export interface RDSDataSpec {
   SubnetId: string;
   SecurityGroupIds: string[];
 }
-const RDSDataSpec = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RDSDataSpec>;
 export type RoleARN = string;
 export type ComputeStatistics = boolean;
 export interface CreateDataSourceFromRDSInput {
@@ -234,24 +215,15 @@ export interface CreateDataSourceFromRDSInput {
   RoleARN: string;
   ComputeStatistics?: boolean;
 }
-const CreateDataSourceFromRDSInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateDataSourceFromRDSInput>;
 export interface CreateDataSourceFromRDSOutput {
   DataSourceId?: string;
 }
-const CreateDataSourceFromRDSOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateDataSourceFromRDSOutput>;
 export type RedshiftDatabaseName = string;
 export type RedshiftClusterIdentifier = string;
 export interface RedshiftDatabase {
   DatabaseName: string;
   ClusterIdentifier: string;
 }
-const RedshiftDatabase = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RedshiftDatabase>;
 export type RedshiftSelectSqlQuery = string;
 export type RedshiftDatabaseUsername = string;
 export type RedshiftDatabasePassword = string | redacted.Redacted<string>;
@@ -259,10 +231,6 @@ export interface RedshiftDatabaseCredentials {
   Username: string;
   Password: string | redacted.Redacted<string>;
 }
-const RedshiftDatabaseCredentials = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<RedshiftDatabaseCredentials>;
 export interface RedshiftDataSpec {
   DatabaseInformation: RedshiftDatabase;
   SelectSqlQuery: string;
@@ -272,7 +240,6 @@ export interface RedshiftDataSpec {
   DataSchema?: string;
   DataSchemaUri?: string;
 }
-const RedshiftDataSpec = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RedshiftDataSpec>;
 export interface CreateDataSourceFromRedshiftInput {
   DataSourceId: string;
   DataSourceName?: string;
@@ -280,60 +247,36 @@ export interface CreateDataSourceFromRedshiftInput {
   RoleARN: string;
   ComputeStatistics?: boolean;
 }
-const CreateDataSourceFromRedshiftInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateDataSourceFromRedshiftInput>;
 export interface CreateDataSourceFromRedshiftOutput {
   DataSourceId?: string;
 }
-const CreateDataSourceFromRedshiftOutput =
-  CreateDataSourceFromRDSOutput as any as S.Schema<CreateDataSourceFromRedshiftOutput>;
 export interface S3DataSpec {
   DataLocationS3: string;
   DataRearrangement?: string;
   DataSchema?: string;
   DataSchemaLocationS3?: string;
 }
-const S3DataSpec = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<S3DataSpec>;
 export interface CreateDataSourceFromS3Input {
   DataSourceId: string;
   DataSourceName?: string;
   DataSpec: S3DataSpec;
   ComputeStatistics?: boolean;
 }
-const CreateDataSourceFromS3Input = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateDataSourceFromS3Input>;
 export interface CreateDataSourceFromS3Output {
   DataSourceId?: string;
 }
-const CreateDataSourceFromS3Output =
-  CreateDataSourceFromRDSOutput as any as S.Schema<CreateDataSourceFromS3Output>;
 export interface CreateEvaluationInput {
   EvaluationId: string;
   EvaluationName?: string;
   MLModelId: string;
   EvaluationDataSourceId: string;
 }
-const CreateEvaluationInput = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateEvaluationInput>;
 export interface CreateEvaluationOutput {
   EvaluationId?: string;
 }
-const CreateEvaluationOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateEvaluationOutput>;
 export type MLModelType = "REGRESSION" | "BINARY" | "MULTICLASS" | (string & {});
-const MLModelType = S.String;
-
 export type StringType = string;
 export type TrainingParameters = { [key: string]: string | undefined };
-const TrainingParameters = /*@__PURE__*/ __L.at(__c2, 4);
 export type Recipe = string;
 export interface CreateMLModelInput {
   MLModelId: string;
@@ -344,110 +287,67 @@ export interface CreateMLModelInput {
   Recipe?: string;
   RecipeUri?: string;
 }
-const CreateMLModelInput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateMLModelInput>;
 export interface CreateMLModelOutput {
   MLModelId?: string;
 }
-const CreateMLModelOutput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateMLModelOutput>;
 export interface CreateRealtimeEndpointInput {
   MLModelId: string;
 }
-const CreateRealtimeEndpointInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateRealtimeEndpointInput>;
 export type IntegerType = number;
 export type EpochTime = Date;
 export type VipURL = string;
 export type RealtimeEndpointStatus = "NONE" | "READY" | "UPDATING" | "FAILED" | (string & {});
-const RealtimeEndpointStatus = S.String;
-
 export interface RealtimeEndpointInfo {
   PeakRequestsPerSecond?: number;
   CreatedAt?: Date;
   EndpointUrl?: string;
   EndpointStatus?: RealtimeEndpointStatus;
 }
-const RealtimeEndpointInfo = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<RealtimeEndpointInfo>;
 export interface CreateRealtimeEndpointOutput {
   MLModelId?: string;
   RealtimeEndpointInfo?: RealtimeEndpointInfo;
 }
-const CreateRealtimeEndpointOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateRealtimeEndpointOutput>;
 export interface DeleteBatchPredictionInput {
   BatchPredictionId: string;
 }
-const DeleteBatchPredictionInput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteBatchPredictionInput>;
 export interface DeleteBatchPredictionOutput {
   BatchPredictionId?: string;
 }
-const DeleteBatchPredictionOutput =
-  CreateBatchPredictionOutput as any as S.Schema<DeleteBatchPredictionOutput>;
 export interface DeleteDataSourceInput {
   DataSourceId: string;
 }
-const DeleteDataSourceInput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteDataSourceInput>;
 export interface DeleteDataSourceOutput {
   DataSourceId?: string;
 }
-const DeleteDataSourceOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteDataSourceOutput>;
 export interface DeleteEvaluationInput {
   EvaluationId: string;
 }
-const DeleteEvaluationInput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteEvaluationInput>;
 export interface DeleteEvaluationOutput {
   EvaluationId?: string;
 }
-const DeleteEvaluationOutput = CreateEvaluationOutput as any as S.Schema<DeleteEvaluationOutput>;
 export interface DeleteMLModelInput {
   MLModelId: string;
 }
-const DeleteMLModelInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DeleteMLModelInput>;
 export interface DeleteMLModelOutput {
   MLModelId?: string;
 }
-const DeleteMLModelOutput = CreateMLModelOutput as any as S.Schema<DeleteMLModelOutput>;
 export interface DeleteRealtimeEndpointInput {
   MLModelId: string;
 }
-const DeleteRealtimeEndpointInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteRealtimeEndpointInput>;
 export interface DeleteRealtimeEndpointOutput {
   MLModelId?: string;
   RealtimeEndpointInfo?: RealtimeEndpointInfo;
 }
-const DeleteRealtimeEndpointOutput =
-  CreateRealtimeEndpointOutput as any as S.Schema<DeleteRealtimeEndpointOutput>;
 export type TagKeyList = string[];
-const TagKeyList = EDPSecurityGroupIds as any as S.Schema<TagKeyList>;
 export interface DeleteTagsInput {
   TagKeys: string[];
   ResourceId: string;
   ResourceType: TaggableResourceType;
 }
-const DeleteTagsInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteTagsInput>;
 export interface DeleteTagsOutput {
   ResourceId?: string;
   ResourceType?: TaggableResourceType;
 }
-const DeleteTagsOutput = AddTagsOutput as any as S.Schema<DeleteTagsOutput>;
 export type BatchPredictionFilterVariable =
   | "CreatedAt"
   | "LastUpdatedAt"
@@ -458,12 +358,8 @@ export type BatchPredictionFilterVariable =
   | "DataSourceId"
   | "DataURI"
   | (string & {});
-const BatchPredictionFilterVariable = S.String;
-
 export type ComparatorValue = string;
 export type SortOrder = "asc" | "dsc" | (string & {});
-const SortOrder = S.String;
-
 export type PageLimit = number;
 export interface DescribeBatchPredictionsInput {
   FilterVariable?: BatchPredictionFilterVariable;
@@ -478,10 +374,6 @@ export interface DescribeBatchPredictionsInput {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeBatchPredictionsInput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DescribeBatchPredictionsInput>;
 export type AwsUserArn = string;
 export type EntityStatus =
   | "PENDING"
@@ -490,8 +382,6 @@ export type EntityStatus =
   | "COMPLETED"
   | "DELETED"
   | (string & {});
-const EntityStatus = S.String;
-
 export type Message = string;
 export type LongType = number;
 export interface BatchPrediction {
@@ -512,17 +402,11 @@ export interface BatchPrediction {
   TotalRecordCount?: number;
   InvalidRecordCount?: number;
 }
-const BatchPrediction = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<BatchPrediction>;
 export type BatchPredictions = BatchPrediction[];
-const BatchPredictions = /*@__PURE__*/ __L.at(__c4, 3);
 export interface DescribeBatchPredictionsOutput {
   Results?: BatchPrediction[];
   NextToken?: string;
 }
-const DescribeBatchPredictionsOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DescribeBatchPredictionsOutput>;
 export type DataSourceFilterVariable =
   | "CreatedAt"
   | "LastUpdatedAt"
@@ -531,8 +415,6 @@ export type DataSourceFilterVariable =
   | "DataLocationS3"
   | "IAMUser"
   | (string & {});
-const DataSourceFilterVariable = S.String;
-
 export interface DescribeDataSourcesInput {
   FilterVariable?: DataSourceFilterVariable;
   EQ?: string;
@@ -546,16 +428,11 @@ export interface DescribeDataSourcesInput {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeDataSourcesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DescribeDataSourcesInput>;
 export interface RedshiftMetadata {
   RedshiftDatabase?: RedshiftDatabase;
   DatabaseUserName?: string;
   SelectSqlQuery?: string;
 }
-const RedshiftMetadata = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RedshiftMetadata>;
 export type EDPPipelineId = string;
 export interface RDSMetadata {
   Database?: RDSDatabase;
@@ -565,7 +442,6 @@ export interface RDSMetadata {
   ServiceRole?: string;
   DataPipelineId?: string;
 }
-const RDSMetadata = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RDSMetadata>;
 export interface DataSource {
   DataSourceId?: string;
   DataLocationS3?: string;
@@ -586,17 +462,11 @@ export interface DataSource {
   FinishedAt?: Date;
   StartedAt?: Date;
 }
-const DataSource = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DataSource>;
 export type DataSources = DataSource[];
-const DataSources = /*@__PURE__*/ __L.at(__c5, 1);
 export interface DescribeDataSourcesOutput {
   Results?: DataSource[];
   NextToken?: string;
 }
-const DescribeDataSourcesOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DescribeDataSourcesOutput>;
 export type EvaluationFilterVariable =
   | "CreatedAt"
   | "LastUpdatedAt"
@@ -607,8 +477,6 @@ export type EvaluationFilterVariable =
   | "DataSourceId"
   | "DataURI"
   | (string & {});
-const EvaluationFilterVariable = S.String;
-
 export interface DescribeEvaluationsInput {
   FilterVariable?: EvaluationFilterVariable;
   EQ?: string;
@@ -622,19 +490,12 @@ export interface DescribeEvaluationsInput {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeEvaluationsInput = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DescribeEvaluationsInput>;
 export type PerformanceMetricsPropertyKey = string;
 export type PerformanceMetricsPropertyValue = string;
 export type PerformanceMetricsProperties = { [key: string]: string | undefined };
-const PerformanceMetricsProperties =
-  TrainingParameters as any as S.Schema<PerformanceMetricsProperties>;
 export interface PerformanceMetrics {
   Properties?: { [key: string]: string | undefined };
 }
-const PerformanceMetrics = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PerformanceMetrics>;
 export interface Evaluation {
   EvaluationId?: string;
   MLModelId?: string;
@@ -651,17 +512,11 @@ export interface Evaluation {
   FinishedAt?: Date;
   StartedAt?: Date;
 }
-const Evaluation = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Evaluation>;
 export type Evaluations = Evaluation[];
-const Evaluations = /*@__PURE__*/ __L.at(__c5, 6);
 export interface DescribeEvaluationsOutput {
   Results?: Evaluation[];
   NextToken?: string;
 }
-const DescribeEvaluationsOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DescribeEvaluationsOutput>;
 export type MLModelFilterVariable =
   | "CreatedAt"
   | "LastUpdatedAt"
@@ -674,8 +529,6 @@ export type MLModelFilterVariable =
   | "Algorithm"
   | "TrainingDataURI"
   | (string & {});
-const MLModelFilterVariable = S.String;
-
 export interface DescribeMLModelsInput {
   FilterVariable?: MLModelFilterVariable;
   EQ?: string;
@@ -689,14 +542,8 @@ export interface DescribeMLModelsInput {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeMLModelsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DescribeMLModelsInput>;
 export type MLModelName = string;
 export type Algorithm = "sgd" | (string & {});
-const Algorithm = S.String;
-
 export type ScoreThreshold = number;
 export interface MLModel {
   MLModelId?: string;
@@ -719,35 +566,23 @@ export interface MLModel {
   FinishedAt?: Date;
   StartedAt?: Date;
 }
-const MLModel = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<MLModel>;
 export type MLModels = MLModel[];
-const MLModels = /*@__PURE__*/ __L.at(__c6, 2);
 export interface DescribeMLModelsOutput {
   Results?: MLModel[];
   NextToken?: string;
 }
-const DescribeMLModelsOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DescribeMLModelsOutput>;
 export interface DescribeTagsInput {
   ResourceId: string;
   ResourceType: TaggableResourceType;
 }
-const DescribeTagsInput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DescribeTagsInput>;
 export interface DescribeTagsOutput {
   ResourceId?: string;
   ResourceType?: TaggableResourceType;
   Tags?: Tag[];
 }
-const DescribeTagsOutput = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DescribeTagsOutput>;
 export interface GetBatchPredictionInput {
   BatchPredictionId: string;
 }
-const GetBatchPredictionInput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetBatchPredictionInput>;
 export type PresignedS3Url = string;
 export interface GetBatchPredictionOutput {
   BatchPredictionId?: string;
@@ -768,16 +603,11 @@ export interface GetBatchPredictionOutput {
   TotalRecordCount?: number;
   InvalidRecordCount?: number;
 }
-const GetBatchPredictionOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetBatchPredictionOutput>;
 export type Verbose = boolean;
 export interface GetDataSourceInput {
   DataSourceId: string;
   Verbose?: boolean;
 }
-const GetDataSourceInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetDataSourceInput>;
 export interface GetDataSourceOutput {
   DataSourceId?: string;
   DataLocationS3?: string;
@@ -800,11 +630,9 @@ export interface GetDataSourceOutput {
   StartedAt?: Date;
   DataSourceSchema?: string;
 }
-const GetDataSourceOutput = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetDataSourceOutput>;
 export interface GetEvaluationInput {
   EvaluationId: string;
 }
-const GetEvaluationInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetEvaluationInput>;
 export interface GetEvaluationOutput {
   EvaluationId?: string;
   MLModelId?: string;
@@ -822,12 +650,10 @@ export interface GetEvaluationOutput {
   FinishedAt?: Date;
   StartedAt?: Date;
 }
-const GetEvaluationOutput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetEvaluationOutput>;
 export interface GetMLModelInput {
   MLModelId: string;
   Verbose?: boolean;
 }
-const GetMLModelInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetMLModelInput>;
 export interface GetMLModelOutput {
   MLModelId?: string;
   TrainingDataSourceId?: string;
@@ -851,86 +677,59 @@ export interface GetMLModelOutput {
   Recipe?: string;
   Schema?: string;
 }
-const GetMLModelOutput = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetMLModelOutput>;
 export type VariableName = string;
 export type VariableValue = string;
 export type Record = { [key: string]: string | undefined };
-const Record = /*@__PURE__*/ __L.at(__c7, 6);
 export interface PredictInput {
   MLModelId: string;
   Record: { [key: string]: string | undefined };
   PredictEndpoint: string;
 }
-const PredictInput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<PredictInput>;
 export type Label = string;
 export type FloatLabel = number;
 export type ScoreValue = number;
 export type ScoreValuePerLabelMap = { [key: string]: number | undefined };
-const ScoreValuePerLabelMap = /*@__PURE__*/ __L.at(__c8, 0);
 export type DetailsAttributes = "PredictiveModelType" | "Algorithm" | (string & {});
-const DetailsAttributes = S.String;
-
 export type DetailsValue = string;
 export type DetailsMap = { [key in DetailsAttributes]?: string };
-const DetailsMap = /*@__PURE__*/ __L.at(__c8, 1);
 export interface Prediction {
   predictedLabel?: string;
   predictedValue?: number;
   predictedScores?: { [key: string]: number | undefined };
   details?: { [key: string]: string | undefined };
 }
-const Prediction = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Prediction>;
 export interface PredictOutput {
   Prediction?: Prediction;
 }
-const PredictOutput = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<PredictOutput>;
 export interface UpdateBatchPredictionInput {
   BatchPredictionId: string;
   BatchPredictionName: string;
 }
-const UpdateBatchPredictionInput = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<UpdateBatchPredictionInput>;
 export interface UpdateBatchPredictionOutput {
   BatchPredictionId?: string;
 }
-const UpdateBatchPredictionOutput =
-  CreateBatchPredictionOutput as any as S.Schema<UpdateBatchPredictionOutput>;
 export interface UpdateDataSourceInput {
   DataSourceId: string;
   DataSourceName: string;
 }
-const UpdateDataSourceInput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<UpdateDataSourceInput>;
 export interface UpdateDataSourceOutput {
   DataSourceId?: string;
 }
-const UpdateDataSourceOutput = DeleteDataSourceOutput as any as S.Schema<UpdateDataSourceOutput>;
 export interface UpdateEvaluationInput {
   EvaluationId: string;
   EvaluationName: string;
 }
-const UpdateEvaluationInput = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UpdateEvaluationInput>;
 export interface UpdateEvaluationOutput {
   EvaluationId?: string;
 }
-const UpdateEvaluationOutput = CreateEvaluationOutput as any as S.Schema<UpdateEvaluationOutput>;
 export interface UpdateMLModelInput {
   MLModelId: string;
   MLModelName?: string;
   ScoreThreshold?: number;
 }
-const UpdateMLModelInput = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<UpdateMLModelInput>;
 export interface UpdateMLModelOutput {
   MLModelId?: string;
 }
-const UpdateMLModelOutput = CreateMLModelOutput as any as S.Schema<UpdateMLModelOutput>;
 export type ErrorMessage = string;
 export type ErrorCode = number;
 export type AddTagsError =
@@ -951,8 +750,8 @@ export const addTags: API.OperationMethod<
   AddTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddTagsInput,
-  output: AddTagsOutput,
+  input: __S(2, __c0, 2) as any as S.Schema<AddTagsInput>,
+  output: __S(3, __c0, 3) as any as S.Schema<AddTagsOutput>,
   errors: [
     InternalServerException,
     InvalidInputException,
@@ -988,8 +787,8 @@ export const createBatchPrediction: API.OperationMethod<
   CreateBatchPredictionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBatchPredictionInput,
-  output: CreateBatchPredictionOutput,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateBatchPredictionInput>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateBatchPredictionOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1018,8 +817,8 @@ export const createDataSourceFromRDS: API.OperationMethod<
   CreateDataSourceFromRDSError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataSourceFromRDSInput,
-  output: CreateDataSourceFromRDSOutput,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateDataSourceFromRDSInput>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateDataSourceFromRDSOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1069,8 +868,8 @@ export const createDataSourceFromRedshift: API.OperationMethod<
   CreateDataSourceFromRedshiftError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataSourceFromRedshiftInput,
-  output: CreateDataSourceFromRedshiftOutput,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateDataSourceFromRedshiftInput>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateDataSourceFromRedshiftOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1121,8 +920,8 @@ export const createDataSourceFromS3: API.OperationMethod<
   CreateDataSourceFromS3Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataSourceFromS3Input,
-  output: CreateDataSourceFromS3Output,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateDataSourceFromS3Input>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateDataSourceFromS3Output>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1152,8 +951,8 @@ export const createEvaluation: API.OperationMethod<
   CreateEvaluationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEvaluationInput,
-  output: CreateEvaluationOutput,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateEvaluationInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateEvaluationOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1193,8 +992,8 @@ export const createMLModel: API.OperationMethod<
   CreateMLModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMLModelInput,
-  output: CreateMLModelOutput,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateMLModelInput>,
+  output: __S(22, __c2, 6) as any as S.Schema<CreateMLModelOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1215,8 +1014,8 @@ export const createRealtimeEndpoint: API.OperationMethod<
   CreateRealtimeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRealtimeEndpointInput,
-  output: CreateRealtimeEndpointOutput,
+  input: __S(23, __c2, 7) as any as S.Schema<CreateRealtimeEndpointInput>,
+  output: __S(25, __c3, 1) as any as S.Schema<CreateRealtimeEndpointOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1242,8 +1041,8 @@ export const deleteBatchPrediction: API.OperationMethod<
   DeleteBatchPredictionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchPredictionInput,
-  output: DeleteBatchPredictionOutput,
+  input: __S(26, __c3, 2) as any as S.Schema<DeleteBatchPredictionInput>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteBatchPredictionOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1268,8 +1067,8 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataSourceInput,
-  output: DeleteDataSourceOutput,
+  input: __S(27, __c3, 3) as any as S.Schema<DeleteDataSourceInput>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteDataSourceOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1295,8 +1094,8 @@ export const deleteEvaluation: API.OperationMethod<
   DeleteEvaluationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEvaluationInput,
-  output: DeleteEvaluationOutput,
+  input: __S(29, __c3, 5) as any as S.Schema<DeleteEvaluationInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<DeleteEvaluationOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1322,8 +1121,8 @@ export const deleteMLModel: API.OperationMethod<
   DeleteMLModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMLModelInput,
-  output: DeleteMLModelOutput,
+  input: __S(30, __c3, 6) as any as S.Schema<DeleteMLModelInput>,
+  output: __S(22, __c2, 6) as any as S.Schema<DeleteMLModelOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1344,8 +1143,8 @@ export const deleteRealtimeEndpoint: API.OperationMethod<
   DeleteRealtimeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRealtimeEndpointInput,
-  output: DeleteRealtimeEndpointOutput,
+  input: __S(31, __c3, 7) as any as S.Schema<DeleteRealtimeEndpointInput>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteRealtimeEndpointOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1369,8 +1168,8 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagsInput,
-  output: DeleteTagsOutput,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteTagsInput>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteTagsOutput>,
   errors: [
     InternalServerException,
     InvalidInputException,
@@ -1396,8 +1195,8 @@ export const describeBatchPredictions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BatchPrediction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeBatchPredictionsInput,
-  output: DescribeBatchPredictionsOutput,
+  input: __S(33, __c4, 1) as any as S.Schema<DescribeBatchPredictionsInput>,
+  output: __S(36, __c4, 4) as any as S.Schema<DescribeBatchPredictionsOutput>,
   errors: [InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1424,8 +1223,8 @@ export const describeDataSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeDataSourcesInput,
-  output: DescribeDataSourcesOutput,
+  input: __S(37, __c4, 5) as any as S.Schema<DescribeDataSourcesInput>,
+  output: __S(42, __c5, 2) as any as S.Schema<DescribeDataSourcesOutput>,
   errors: [InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1452,8 +1251,8 @@ export const describeEvaluations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Evaluation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeEvaluationsInput,
-  output: DescribeEvaluationsOutput,
+  input: __S(43, __c5, 3) as any as S.Schema<DescribeEvaluationsInput>,
+  output: __S(47, __c5, 7) as any as S.Schema<DescribeEvaluationsOutput>,
   errors: [InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1477,8 +1276,8 @@ export const describeMLModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MLModel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMLModelsInput,
-  output: DescribeMLModelsOutput,
+  input: __S(48, __c6, 0) as any as S.Schema<DescribeMLModelsInput>,
+  output: __S(51, __c6, 3) as any as S.Schema<DescribeMLModelsOutput>,
   errors: [InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1505,8 +1304,8 @@ export const describeTags: API.OperationMethod<
   DescribeTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeTagsInput,
-  output: DescribeTagsOutput,
+  input: __S(52, __c6, 4) as any as S.Schema<DescribeTagsInput>,
+  output: __S(53, __c6, 5) as any as S.Schema<DescribeTagsOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1528,8 +1327,8 @@ export const getBatchPrediction: API.OperationMethod<
   GetBatchPredictionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBatchPredictionInput,
-  output: GetBatchPredictionOutput,
+  input: __S(54, __c6, 6) as any as S.Schema<GetBatchPredictionInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<GetBatchPredictionOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1553,8 +1352,8 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataSourceInput,
-  output: GetDataSourceOutput,
+  input: __S(56, __c7, 0) as any as S.Schema<GetDataSourceInput>,
+  output: __S(57, __c7, 1) as any as S.Schema<GetDataSourceOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1575,8 +1374,8 @@ export const getEvaluation: API.OperationMethod<
   GetEvaluationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEvaluationInput,
-  output: GetEvaluationOutput,
+  input: __S(58, __c7, 2) as any as S.Schema<GetEvaluationInput>,
+  output: __S(59, __c7, 3) as any as S.Schema<GetEvaluationOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1599,8 +1398,8 @@ export const getMLModel: API.OperationMethod<
   GetMLModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMLModelInput,
-  output: GetMLModelOutput,
+  input: __S(60, __c7, 4) as any as S.Schema<GetMLModelInput>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetMLModelOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1626,8 +1425,8 @@ export const predict: API.OperationMethod<
   PredictError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PredictInput,
-  output: PredictOutput,
+  input: __S(63, __c7, 7) as any as S.Schema<PredictInput>,
+  output: __S(67, __c8, 3) as any as S.Schema<PredictOutput>,
   errors: [
     InternalServerException,
     InvalidInputException,
@@ -1656,8 +1455,8 @@ export const updateBatchPrediction: API.OperationMethod<
   UpdateBatchPredictionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBatchPredictionInput,
-  output: UpdateBatchPredictionOutput,
+  input: __S(68, __c8, 4) as any as S.Schema<UpdateBatchPredictionInput>,
+  output: __S(5, __c0, 5) as any as S.Schema<UpdateBatchPredictionOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1680,8 +1479,8 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataSourceInput,
-  output: UpdateDataSourceOutput,
+  input: __S(69, __c8, 5) as any as S.Schema<UpdateDataSourceInput>,
+  output: __S(28, __c3, 4) as any as S.Schema<UpdateDataSourceOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1704,8 +1503,8 @@ export const updateEvaluation: API.OperationMethod<
   UpdateEvaluationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEvaluationInput,
-  output: UpdateEvaluationOutput,
+  input: __S(70, __c8, 6) as any as S.Schema<UpdateEvaluationInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<UpdateEvaluationOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1728,8 +1527,8 @@ export const updateMLModel: API.OperationMethod<
   UpdateMLModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMLModelInput,
-  output: UpdateMLModelOutput,
+  input: __S(71, __c8, 7) as any as S.Schema<UpdateMLModelInput>,
+  output: __S(22, __c2, 6) as any as S.Schema<UpdateMLModelOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1744,10 +1543,10 @@ function __c0(j: number): any {
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Tags: TagList, ResourceId: S.String, ResourceType: TaggableResourceType }).pipe(
+        S.Struct({ Tags: __S(1, __c0, 1), ResourceId: S.String, ResourceType: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AddTagsInput" });
@@ -1755,7 +1554,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
-          ResourceType: S.optional(TaggableResourceType),
+          ResourceType: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "AddTagsOutput" });
     case 4:
@@ -1793,9 +1592,9 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DatabaseInformation: RDSDatabase,
+          DatabaseInformation: __S(6, __c0, 6),
           SelectSqlQuery: S.String,
-          DatabaseCredentials: RDSDatabaseCredentials,
+          DatabaseCredentials: __S(7, __c0, 7),
           S3StagingLocation: S.String,
           DataRearrangement: S.optional(S.String),
           DataSchema: S.optional(S.String),
@@ -1803,7 +1602,7 @@ function __c1(j: number): any {
           ResourceRole: S.String,
           ServiceRole: S.String,
           SubnetId: S.String,
-          SecurityGroupIds: EDPSecurityGroupIds,
+          SecurityGroupIds: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "RDSDataSpec" });
     case 2:
@@ -1811,7 +1610,7 @@ function __c1(j: number): any {
         S.Struct({
           DataSourceId: S.String,
           DataSourceName: S.optional(S.String),
-          RDSData: RDSDataSpec,
+          RDSData: __S(9, __c1, 1),
           RoleARN: S.String,
           ComputeStatistics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1833,9 +1632,9 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DatabaseInformation: RedshiftDatabase,
+          DatabaseInformation: __S(12, __c1, 4),
           SelectSqlQuery: S.String,
-          DatabaseCredentials: RedshiftDatabaseCredentials,
+          DatabaseCredentials: __S(13, __c1, 5),
           S3StagingLocation: S.String,
           DataRearrangement: S.optional(S.String),
           DataSchema: S.optional(S.String),
@@ -1847,7 +1646,7 @@ function __c1(j: number): any {
         S.Struct({
           DataSourceId: S.String,
           DataSourceName: S.optional(S.String),
-          DataSpec: RedshiftDataSpec,
+          DataSpec: __S(14, __c1, 6),
           RoleARN: S.String,
           ComputeStatistics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1872,7 +1671,7 @@ function __c2(j: number): any {
         S.Struct({
           DataSourceId: S.String,
           DataSourceName: S.optional(S.String),
-          DataSpec: S3DataSpec,
+          DataSpec: __S(16, __c2, 0),
           ComputeStatistics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1898,8 +1697,8 @@ function __c2(j: number): any {
         S.Struct({
           MLModelId: S.String,
           MLModelName: S.optional(S.String),
-          MLModelType: MLModelType,
-          Parameters: S.optional(TrainingParameters),
+          MLModelType: S.String,
+          Parameters: S.optional(__S(20, __c2, 4)),
           TrainingDataSourceId: S.String,
           Recipe: S.optional(S.String),
           RecipeUri: S.optional(S.String),
@@ -1927,14 +1726,14 @@ function __c3(j: number): any {
           PeakRequestsPerSecond: S.optional(S.Number),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndpointUrl: S.optional(S.String),
-          EndpointStatus: S.optional(RealtimeEndpointStatus),
+          EndpointStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "RealtimeEndpointInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           MLModelId: S.optional(S.String),
-          RealtimeEndpointInfo: S.optional(RealtimeEndpointInfo),
+          RealtimeEndpointInfo: S.optional(__S(24, __c3, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateRealtimeEndpointOutput",
@@ -1984,15 +1783,15 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TagKeys: TagKeyList,
+          TagKeys: __S(8, __c1, 0),
           ResourceId: S.String,
-          ResourceType: TaggableResourceType,
+          ResourceType: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteTagsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          FilterVariable: S.optional(BatchPredictionFilterVariable),
+          FilterVariable: S.optional(S.String),
           EQ: S.optional(S.String),
           GT: S.optional(S.String),
           LT: S.optional(S.String),
@@ -2000,7 +1799,7 @@ function __c4(j: number): any {
           LE: S.optional(S.String),
           NE: S.optional(S.String),
           Prefix: S.optional(S.String),
-          SortOrder: S.optional(SortOrder),
+          SortOrder: S.optional(S.String),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2018,7 +1817,7 @@ function __c4(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
+          Status: S.optional(S.String),
           OutputUri: S.optional(S.String),
           Message: S.optional(S.String),
           ComputeTime: S.optional(S.Number),
@@ -2029,10 +1828,10 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "BatchPrediction" });
     case 3:
-      return S.Array(BatchPrediction);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Results: S.optional(BatchPredictions), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Results: S.optional(__S(35, __c4, 3)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({
@@ -2041,7 +1840,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          FilterVariable: S.optional(DataSourceFilterVariable),
+          FilterVariable: S.optional(S.String),
           EQ: S.optional(S.String),
           GT: S.optional(S.String),
           LT: S.optional(S.String),
@@ -2049,7 +1848,7 @@ function __c4(j: number): any {
           LE: S.optional(S.String),
           NE: S.optional(S.String),
           Prefix: S.optional(S.String),
-          SortOrder: S.optional(SortOrder),
+          SortOrder: S.optional(S.String),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2057,7 +1856,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RedshiftDatabase: S.optional(RedshiftDatabase),
+          RedshiftDatabase: S.optional(__S(12, __c1, 4)),
           DatabaseUserName: S.optional(S.String),
           SelectSqlQuery: S.optional(S.String),
         }),
@@ -2065,7 +1864,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Database: S.optional(RDSDatabase),
+          Database: S.optional(__S(6, __c0, 6)),
           DatabaseUserName: S.optional(S.String),
           SelectSqlQuery: S.optional(S.String),
           ResourceRole: S.optional(S.String),
@@ -2089,10 +1888,10 @@ function __c5(j: number): any {
           DataSizeInBytes: S.optional(S.Number),
           NumberOfFiles: S.optional(S.Number),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
+          Status: S.optional(S.String),
           Message: S.optional(S.String),
-          RedshiftMetadata: S.optional(RedshiftMetadata),
-          RDSMetadata: S.optional(RDSMetadata),
+          RedshiftMetadata: S.optional(__S(38, __c4, 6)),
+          RDSMetadata: S.optional(__S(39, __c4, 7)),
           RoleARN: S.optional(S.String),
           ComputeStatistics: S.optional(S.Boolean),
           ComputeTime: S.optional(S.Number),
@@ -2101,17 +1900,19 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "DataSource" });
     case 1:
-      return S.Array(DataSource);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Results: S.optional(DataSources), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Results: S.optional(__S(41, __c5, 1)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeDataSourcesOutput",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FilterVariable: S.optional(EvaluationFilterVariable),
+          FilterVariable: S.optional(S.String),
           EQ: S.optional(S.String),
           GT: S.optional(S.String),
           LT: S.optional(S.String),
@@ -2119,15 +1920,15 @@ function __c5(j: number): any {
           LE: S.optional(S.String),
           NE: S.optional(S.String),
           Prefix: S.optional(S.String),
-          SortOrder: S.optional(SortOrder),
+          SortOrder: S.optional(S.String),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeEvaluationsInput" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Properties: S.optional(PerformanceMetricsProperties) }),
-      ).annotate({ identifier: "PerformanceMetrics" });
+      return S.suspend(() => S.Struct({ Properties: S.optional(__S(20, __c2, 4)) })).annotate({
+        identifier: "PerformanceMetrics",
+      });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2139,8 +1940,8 @@ function __c5(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
-          PerformanceMetrics: S.optional(PerformanceMetrics),
+          Status: S.optional(S.String),
+          PerformanceMetrics: S.optional(__S(44, __c5, 4)),
           Message: S.optional(S.String),
           ComputeTime: S.optional(S.Number),
           FinishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2148,10 +1949,12 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Evaluation" });
     case 6:
-      return S.Array(Evaluation);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Results: S.optional(Evaluations), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Results: S.optional(__S(46, __c5, 6)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeEvaluationsOutput",
       });
@@ -2162,7 +1965,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FilterVariable: S.optional(MLModelFilterVariable),
+          FilterVariable: S.optional(S.String),
           EQ: S.optional(S.String),
           GT: S.optional(S.String),
           LT: S.optional(S.String),
@@ -2170,7 +1973,7 @@ function __c6(j: number): any {
           LE: S.optional(S.String),
           NE: S.optional(S.String),
           Prefix: S.optional(S.String),
-          SortOrder: S.optional(SortOrder),
+          SortOrder: S.optional(S.String),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2184,13 +1987,13 @@ function __c6(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
+          Status: S.optional(S.String),
           SizeInBytes: S.optional(S.Number),
-          EndpointInfo: S.optional(RealtimeEndpointInfo),
-          TrainingParameters: S.optional(TrainingParameters),
+          EndpointInfo: S.optional(__S(24, __c3, 0)),
+          TrainingParameters: S.optional(__S(20, __c2, 4)),
           InputDataLocationS3: S.optional(S.String),
-          Algorithm: S.optional(Algorithm),
-          MLModelType: S.optional(MLModelType),
+          Algorithm: S.optional(S.String),
+          MLModelType: S.optional(S.String),
           ScoreThreshold: S.optional(S.Number),
           ScoreThresholdLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Message: S.optional(S.String),
@@ -2200,14 +2003,16 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "MLModel" });
     case 2:
-      return S.Array(MLModel);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Results: S.optional(MLModels), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Results: S.optional(__S(50, __c6, 2)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "DescribeMLModelsOutput" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, ResourceType: TaggableResourceType }).pipe(
+        S.Struct({ ResourceId: S.String, ResourceType: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeTagsInput" });
@@ -2215,8 +2020,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
-          ResourceType: S.optional(TaggableResourceType),
-          Tags: S.optional(TagList),
+          ResourceType: S.optional(S.String),
+          Tags: S.optional(__S(1, __c0, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeTagsOutput" });
     case 6:
@@ -2236,7 +2041,7 @@ function __c6(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
+          Status: S.optional(S.String),
           OutputUri: S.optional(S.String),
           LogUri: S.optional(S.String),
           Message: S.optional(S.String),
@@ -2269,11 +2074,11 @@ function __c7(j: number): any {
           DataSizeInBytes: S.optional(S.Number),
           NumberOfFiles: S.optional(S.Number),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
+          Status: S.optional(S.String),
           LogUri: S.optional(S.String),
           Message: S.optional(S.String),
-          RedshiftMetadata: S.optional(RedshiftMetadata),
-          RDSMetadata: S.optional(RDSMetadata),
+          RedshiftMetadata: S.optional(__S(38, __c4, 6)),
+          RDSMetadata: S.optional(__S(39, __c4, 7)),
           RoleARN: S.optional(S.String),
           ComputeStatistics: S.optional(S.Boolean),
           ComputeTime: S.optional(S.Number),
@@ -2299,8 +2104,8 @@ function __c7(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
-          PerformanceMetrics: S.optional(PerformanceMetrics),
+          Status: S.optional(S.String),
+          PerformanceMetrics: S.optional(__S(44, __c5, 4)),
           LogUri: S.optional(S.String),
           Message: S.optional(S.String),
           ComputeTime: S.optional(S.Number),
@@ -2323,12 +2128,12 @@ function __c7(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          Status: S.optional(EntityStatus),
+          Status: S.optional(S.String),
           SizeInBytes: S.optional(S.Number),
-          EndpointInfo: S.optional(RealtimeEndpointInfo),
-          TrainingParameters: S.optional(TrainingParameters),
+          EndpointInfo: S.optional(__S(24, __c3, 0)),
+          TrainingParameters: S.optional(__S(20, __c2, 4)),
           InputDataLocationS3: S.optional(S.String),
-          MLModelType: S.optional(MLModelType),
+          MLModelType: S.optional(S.String),
           ScoreThreshold: S.optional(S.Number),
           ScoreThresholdLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LogUri: S.optional(S.String),
@@ -2344,7 +2149,7 @@ function __c7(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 7:
       return S.suspend(() =>
-        S.Struct({ MLModelId: S.String, Record: Record, PredictEndpoint: S.String }).pipe(
+        S.Struct({ MLModelId: S.String, Record: __S(62, __c7, 6), PredictEndpoint: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PredictInput" });
@@ -2355,18 +2160,20 @@ function __c8(j: number): any {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 1:
-      return S.Record(DetailsAttributes, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           predictedLabel: S.optional(S.String),
           predictedValue: S.optional(S.Number),
-          predictedScores: S.optional(ScoreValuePerLabelMap),
-          details: S.optional(DetailsMap),
+          predictedScores: S.optional(__S(64, __c8, 0)),
+          details: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "Prediction" });
     case 3:
-      return S.suspend(() => S.Struct({ Prediction: S.optional(Prediction) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Prediction: S.optional(__S(66, __c8, 2)) }).pipe(ns),
+      ).annotate({
         identifier: "PredictOutput",
       });
     case 4:
@@ -2398,4 +2205,9 @@ function __c8(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateMLModelInput" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

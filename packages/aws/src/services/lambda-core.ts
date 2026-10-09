@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Lambda Core",
   serviceShapeName: "LambdaCoreApiService",
@@ -127,7 +129,7 @@ export class TooManyRequestsException
       Type: /*@__PURE__*/ S.optional(S.String),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ThrottleReason).annotate({ identifier: "ThrottleReason" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ThrottleReason" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(429),
@@ -135,39 +137,25 @@ export class TooManyRequestsException
 export type NetworkConnectorName = string;
 export type NetworkConnectorSubnetId = string;
 export type NetworkConnectorSubnetIds = string[];
-const NetworkConnectorSubnetIds = /*@__PURE__*/ __L.at(__c0, 0);
 export type NetworkConnectorSecurityGroupId = string;
 export type NetworkConnectorSecurityGroupIds = string[];
-const NetworkConnectorSecurityGroupIds =
-  NetworkConnectorSubnetIds as any as S.Schema<NetworkConnectorSecurityGroupIds>;
 export type NetworkProtocol = "IPv4" | "DualStack" | (string & {});
-const NetworkProtocol = S.String;
-
 export type ComputeResourceType = "MicroVm" | (string & {});
-const ComputeResourceType = S.String;
-
 export type AssociatedComputeResourceTypesList = ComputeResourceType[];
-const AssociatedComputeResourceTypesList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface NetworkConnectorVpcEgressConfiguration {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
   NetworkProtocol?: NetworkProtocol;
   AssociatedComputeResourceTypes?: ComputeResourceType[];
 }
-const NetworkConnectorVpcEgressConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<NetworkConnectorVpcEgressConfiguration>;
 export type NetworkConnectorConfiguration = {
   VpcEgressConfiguration: NetworkConnectorVpcEgressConfiguration;
 };
-const NetworkConnectorConfiguration = /*@__PURE__*/ __L.at(__c0, 3);
 export type NetworkConnectorRoleArn = string;
 export type ClientTokenString = string;
 export type NetworkConnectorTagKey = string;
 export type NetworkConnectorTagValue = string;
 export type NetworkConnectorTags = { [key: string]: string | undefined };
-const NetworkConnectorTags = /*@__PURE__*/ __L.at(__c0, 4);
 export interface CreateNetworkConnectorRequest {
   Name: string;
   Configuration: NetworkConnectorConfiguration;
@@ -175,10 +163,6 @@ export interface CreateNetworkConnectorRequest {
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateNetworkConnectorRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateNetworkConnectorRequest>;
 export type NetworkConnectorArn = string;
 export type NetworkConnectorId = string;
 export type NetworkConnectorState =
@@ -189,8 +173,6 @@ export type NetworkConnectorState =
   | "DELETING"
   | "DELETE_FAILED"
   | (string & {});
-const NetworkConnectorState = S.String;
-
 export interface CreateNetworkConnectorResponse {
   Arn: string;
   Name: string;
@@ -199,18 +181,10 @@ export interface CreateNetworkConnectorResponse {
   OperatorRole?: string;
   State?: NetworkConnectorState;
 }
-const CreateNetworkConnectorResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateNetworkConnectorResponse>;
 export type NetworkConnectorIdentifier = string;
 export interface DeleteNetworkConnectorRequest {
   Identifier: string;
 }
-const DeleteNetworkConnectorRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteNetworkConnectorRequest>;
 export interface DeleteNetworkConnectorResponse {
   Arn: string;
   Name: string;
@@ -219,15 +193,9 @@ export interface DeleteNetworkConnectorResponse {
   OperatorRole?: string;
   State?: NetworkConnectorState;
 }
-const DeleteNetworkConnectorResponse =
-  CreateNetworkConnectorResponse as any as S.Schema<DeleteNetworkConnectorResponse>;
 export interface GetNetworkConnectorRequest {
   Identifier: string;
 }
-const GetNetworkConnectorRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetNetworkConnectorRequest>;
 export type NetworkConnectorVersion = number;
 export type NetworkConnectorStateReasonCode =
   | "DisallowedByVpcEncryptionControl"
@@ -238,15 +206,11 @@ export type NetworkConnectorStateReasonCode =
   | "InvalidSubnet"
   | "SubnetOutOfIPAddresses"
   | (string & {});
-const NetworkConnectorStateReasonCode = S.String;
-
 export type NetworkConnectorLastUpdateStatus =
   | "Successful"
   | "Failed"
   | "InProgress"
   | (string & {});
-const NetworkConnectorLastUpdateStatus = S.String;
-
 export type NetworkConnectorLastUpdateStatusReason = string;
 export type NetworkConnectorLastUpdateStatusReasonCode =
   | "DisallowedByVpcEncryptionControl"
@@ -257,8 +221,6 @@ export type NetworkConnectorLastUpdateStatusReasonCode =
   | "InvalidSubnet"
   | "SubnetOutOfIPAddresses"
   | (string & {});
-const NetworkConnectorLastUpdateStatusReasonCode = S.String;
-
 export type CoreTimestamp = Date;
 export interface GetNetworkConnectorResponse {
   Arn: string;
@@ -275,23 +237,13 @@ export interface GetNetworkConnectorResponse {
   LastUpdateStatusReasonCode?: NetworkConnectorLastUpdateStatusReasonCode;
   LastModified?: Date;
 }
-const GetNetworkConnectorResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetNetworkConnectorResponse>;
 export type MaxHundredListItems = number;
 export interface ListNetworkConnectorsRequest {
   State?: NetworkConnectorState;
   Marker?: string;
   MaxItems?: number;
 }
-const ListNetworkConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListNetworkConnectorsRequest>;
 export type NetworkConnectorType = "VPC_EGRESS" | (string & {});
-const NetworkConnectorType = S.String;
-
 export interface NetworkConnectorSummary {
   Arn: string;
   Name: string;
@@ -300,30 +252,17 @@ export interface NetworkConnectorSummary {
   State?: NetworkConnectorState;
   LastModified?: Date;
 }
-const NetworkConnectorSummary = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<NetworkConnectorSummary>;
 export type NetworkConnectorsList = NetworkConnectorSummary[];
-const NetworkConnectorsList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface ListNetworkConnectorsResponse {
   NetworkConnectors: NetworkConnectorSummary[];
   NextMarker?: string;
 }
-const ListNetworkConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListNetworkConnectorsResponse>;
 export interface UpdateNetworkConnectorRequest {
   Identifier: string;
   Configuration?: NetworkConnectorConfiguration;
   OperatorRole?: string;
   ClientToken?: string;
 }
-const UpdateNetworkConnectorRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UpdateNetworkConnectorRequest>;
 export interface UpdateNetworkConnectorResponse {
   Arn: string;
   Name: string;
@@ -335,10 +274,6 @@ export interface UpdateNetworkConnectorResponse {
   LastUpdateStatusReason?: string;
   LastModified?: Date;
 }
-const UpdateNetworkConnectorResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UpdateNetworkConnectorResponse>;
 export type ThrottleReason =
   | "ConcurrentInvocationLimitExceeded"
   | "FunctionInvocationRateLimitExceeded"
@@ -347,8 +282,6 @@ export type ThrottleReason =
   | "CallerRateLimitExceeded"
   | "ConcurrentSnapshotCreateLimitExceeded"
   | (string & {});
-const ThrottleReason = S.String;
-
 export type CreateNetworkConnectorError =
   | InvalidParameterValueException
   | NetworkConnectorLimitExceededException
@@ -369,8 +302,8 @@ export const createNetworkConnector: API.OperationMethod<
   CreateNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkConnectorRequest,
-  output: CreateNetworkConnectorResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateNetworkConnectorRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreateNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     NetworkConnectorLimitExceededException,
@@ -401,8 +334,8 @@ export const deleteNetworkConnector: API.OperationMethod<
   DeleteNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkConnectorRequest,
-  output: DeleteNetworkConnectorResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<DeleteNetworkConnectorRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -432,8 +365,8 @@ export const getNetworkConnector: API.OperationMethod<
   GetNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkConnectorRequest,
-  output: GetNetworkConnectorResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<GetNetworkConnectorRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -462,8 +395,8 @@ export const listNetworkConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNetworkConnectorsRequest,
-  output: ListNetworkConnectorsResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<ListNetworkConnectorsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ListNetworkConnectorsResponse>,
   errors: [InvalidParameterValueException, ServiceException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -494,8 +427,8 @@ export const updateNetworkConnector: API.OperationMethod<
   UpdateNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkConnectorRequest,
-  output: UpdateNetworkConnectorResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<UpdateNetworkConnectorRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<UpdateNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -514,32 +447,30 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Array(ComputeResourceType);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(NetworkConnectorSubnetIds),
-          SecurityGroupIds: S.optional(NetworkConnectorSecurityGroupIds),
-          NetworkProtocol: S.optional(NetworkProtocol),
-          AssociatedComputeResourceTypes: S.optional(AssociatedComputeResourceTypesList),
+          SubnetIds: S.optional(__S(0, __c0, 0)),
+          SecurityGroupIds: S.optional(__S(0, __c0, 0)),
+          NetworkProtocol: S.optional(S.String),
+          AssociatedComputeResourceTypes: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "NetworkConnectorVpcEgressConfiguration",
       });
     case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ VpcEgressConfiguration: NetworkConnectorVpcEgressConfiguration }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ VpcEgressConfiguration: __S(2, __c0, 2) })]);
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Configuration: NetworkConnectorConfiguration,
+          Configuration: __S(3, __c0, 3),
           OperatorRole: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(NetworkConnectorTags),
+          Tags: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2026-04-04/network-connectors" }),
@@ -559,9 +490,9 @@ function __c0(j: number): any {
           Arn: S.String,
           Name: S.String,
           Id: S.String,
-          Configuration: S.optional(NetworkConnectorConfiguration),
+          Configuration: S.optional(__S(3, __c0, 3)),
           OperatorRole: S.optional(S.String),
-          State: S.optional(NetworkConnectorState),
+          State: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateNetworkConnectorResponse",
@@ -607,14 +538,14 @@ function __c1(j: number): any {
           Name: S.String,
           Id: S.String,
           Version: S.optional(S.Number),
-          Configuration: S.optional(NetworkConnectorConfiguration),
+          Configuration: S.optional(__S(3, __c0, 3)),
           OperatorRole: S.optional(S.String),
-          State: S.optional(NetworkConnectorState),
+          State: S.optional(S.String),
           StateReason: S.optional(S.String),
-          StateReasonCode: S.optional(NetworkConnectorStateReasonCode),
-          LastUpdateStatus: S.optional(NetworkConnectorLastUpdateStatus),
+          StateReasonCode: S.optional(S.String),
+          LastUpdateStatus: S.optional(S.String),
           LastUpdateStatusReason: S.optional(S.String),
-          LastUpdateStatusReasonCode: S.optional(NetworkConnectorLastUpdateStatusReasonCode),
+          LastUpdateStatusReasonCode: S.optional(S.String),
           LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
@@ -623,7 +554,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(NetworkConnectorState).pipe(T.HttpQuery("State")),
+          State: S.optional(S.String).pipe(T.HttpQuery("State")),
           Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
         }).pipe(
@@ -645,16 +576,16 @@ function __c1(j: number): any {
           Arn: S.String,
           Name: S.String,
           Id: S.String,
-          Type: NetworkConnectorType,
-          State: S.optional(NetworkConnectorState),
+          Type: S.String,
+          State: S.optional(S.String),
           LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "NetworkConnectorSummary" });
     case 4:
-      return S.Array(NetworkConnectorSummary);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ NetworkConnectors: NetworkConnectorsList, NextMarker: S.optional(S.String) }),
+        S.Struct({ NetworkConnectors: __S(12, __c1, 4), NextMarker: S.optional(S.String) }),
       ).annotate({
         identifier: "ListNetworkConnectorsResponse",
       });
@@ -662,7 +593,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          Configuration: S.optional(NetworkConnectorConfiguration),
+          Configuration: S.optional(__S(3, __c0, 3)),
           OperatorRole: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -685,9 +616,9 @@ function __c1(j: number): any {
           Name: S.String,
           Id: S.String,
           OperatorRole: S.optional(S.String),
-          Configuration: S.optional(NetworkConnectorConfiguration),
-          State: S.optional(NetworkConnectorState),
-          LastUpdateStatus: S.optional(NetworkConnectorLastUpdateStatus),
+          Configuration: S.optional(__S(3, __c0, 3)),
+          State: S.optional(S.String),
+          LastUpdateStatus: S.optional(S.String),
           LastUpdateStatusReason: S.optional(S.String),
           LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -695,4 +626,9 @@ function __c1(j: number): any {
         identifier: "UpdateNetworkConnectorResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

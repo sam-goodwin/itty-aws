@@ -8,6 +8,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -53,19 +55,12 @@ export interface CapturePaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CapturePaymentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CapturePaymentRequest>;
-
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
   id: string;
   /** Account display name. */
   title: string;
 }
-const AccountSummary = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccountSummary>;
-
 /** The reason the payment was declined. */
 export type PaymentLastPaymentErrorDeclineCode =
   | "insufficient_funds"
@@ -154,8 +149,6 @@ export type PaymentLastPaymentErrorDeclineCode =
   | "sepa_disputed"
   | "sepa_refused_by_customer"
   | "sepa_generic_decline";
-const PaymentLastPaymentErrorDeclineCode = S.String;
-
 export interface PaymentLastPaymentError {
   /** A machine-readable classification of the failure. */
   code: string | null;
@@ -164,11 +157,6 @@ export interface PaymentLastPaymentError {
   /** A human-readable explanation of the failure. */
   message: string | null;
 }
-const PaymentLastPaymentError = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PaymentLastPaymentError>;
-
 export interface PaymentNextActionRedirectData {
   /** The widest the provider's page lays out usefully, in CSS pixels -- cap a frame or dialog presenting it at this width. `null` when the page fills whatever width it is given. */
   frame_max_width: number | null;
@@ -199,8 +187,6 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Money>;
-
 export interface PaymentVoucher {
   /** Exactly what the buyer must pay, in the charged currency. */
   amount?: Money;
@@ -337,17 +323,10 @@ export type PaymentNextAction =
   | PaymentNextActionRedirect
   | PaymentNextActionDisplayInstructions
   | PaymentNextActionAwaitConfirmation;
-const PaymentNextAction = S.Unknown as any as S.Schema<PaymentNextAction>;
-
 export interface PaymentProcessingDetails {
   /** When the payment is expected to settle, as an ISO 8601 timestamp. */
   expected_by: string | null;
 }
-const PaymentProcessingDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PaymentProcessingDetails>;
-
 /** How far the payment has got. `requires_confirmation` -- nothing attempted yet, or the last attempt failed and can be retried. `requires_action` -- the buyer has a step outstanding; see `next_action`. `requires_capture` -- the card authorization is holding funds and must be captured. `confirming` -- the buyer has done their part and the processor is deciding. `processing` -- with `processing_details`, the money is moving; without them, the charge is still being decided and the status should be read again. `succeeded` -- collected. `canceled` -- voided or written off. */
 export type PaymentStatusStatus =
   | "requires_confirmation"
@@ -357,8 +336,6 @@ export type PaymentStatusStatus =
   | "processing"
   | "succeeded"
   | "canceled";
-const PaymentStatusStatus = S.String;
-
 export interface PaymentStatus {
   /** The account receiving this payment, or `null` when the payment has no associated account. */
   account: AccountSummary | null;
@@ -381,33 +358,16 @@ export interface PaymentStatus {
   /** How far the payment has got. `requires_confirmation` -- nothing attempted yet, or the last attempt failed and can be retried. `requires_action` -- the buyer has a step outstanding; see `next_action`. `requires_capture` -- the card authorization is holding funds and must be captured. `confirming` -- the buyer has done their part and the processor is deciding. `processing` -- with `processing_details`, the money is moving; without them, the charge is still being decided and the status should be read again. `succeeded` -- collected. `canceled` -- voided or written off. */
   status: PaymentStatusStatus;
 }
-const PaymentStatus = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PaymentStatus>;
-
 export interface CreatePaymentRequestLineItemsItem {
   /** An existing plan to charge for, prefixed `plan_`. Each plan may appear once -- use `quantity` for multiple units. */
   plan_id: string;
   /** How many units of the plan to purchase. Defaults to 1; more than 1 requires the plan to allow multiple quantities. */
   quantity?: number | null;
 }
-const CreatePaymentRequestLineItemsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreatePaymentRequestLineItemsItem>;
-
 /** What the buyer is purchasing. One entry charges that plan; several entries form a cart, which requires every plan to be a compatible plan from this account in the same currency. */
 export type CreatePaymentRequestLineItemsList = Array<CreatePaymentRequestLineItemsItem>;
-const CreatePaymentRequestLineItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreatePaymentRequestLineItemsList>;
-
 /** Custom metadata to attach to the payment. */
 export type CreatePaymentRequestMetadataMap = { [key: string]: string | undefined };
-const CreatePaymentRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreatePaymentRequestMetadataMap>;
-
 /** Currency code for the plan prices. */
 export type CreatePaymentRequestPlanCurrency =
   | "usd"
@@ -500,24 +460,16 @@ export type CreatePaymentRequestPlanCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-const CreatePaymentRequestPlanCurrency = S.String;
-
 /** Billing model for the plan. */
 export type CreatePaymentRequestPlanPlanType = "renewal" | "one_time";
-const CreatePaymentRequestPlanPlanType = S.String;
-
 /** Global affiliate program status. */
 export type CreatePaymentRequestPlanProductGlobalAffiliateStatus = "enabled" | "disabled";
-const CreatePaymentRequestPlanProductGlobalAffiliateStatus = S.String;
-
 /** Product visibility. Defaults to hidden. */
 export type CreatePaymentRequestPlanProductVisibility =
   | "visible"
   | "hidden"
   | "archived"
   | "quick_link";
-const CreatePaymentRequestPlanProductVisibility = S.String;
-
 /** Find or create a product by external identifier. Mutually exclusive with product_id. */
 export interface CreatePaymentRequestPlanProduct {
   /** Whether to collect a shipping address at checkout. */
@@ -548,15 +500,8 @@ export interface CreatePaymentRequestPlanProduct {
   /** Product visibility. Defaults to hidden. */
   visibility?: CreatePaymentRequestPlanProductVisibility | (string & {});
 }
-const CreatePaymentRequestPlanProduct = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreatePaymentRequestPlanProduct>;
-
 /** Whether the plan is visible to customers. */
 export type CreatePaymentRequestPlanVisibility = "visible" | "hidden" | "archived" | "quick_link";
-const CreatePaymentRequestPlanVisibility = S.String;
-
 /** Find or create a plan for this payment. Mutually exclusive with `plan_id` and `line_items`. Creating a plan requires plan:create; creating or updating a product requires the corresponding product permission. */
 export interface CreatePaymentRequestPlan {
   /** Application fee collected by the platform in the plan currency (5.00 means $5.00 for USD). Must be positive and below the initial price for one-time plans or renewal price for recurring plans. Paid to the parent account alongside other processing fees; collection is capped to remaining proceeds. Applies to subsequent payments on recurring plans. Only valid for connected accounts with a parent account. */
@@ -590,11 +535,6 @@ export interface CreatePaymentRequestPlan {
   /** Whether the plan is visible to customers. */
   visibility?: CreatePaymentRequestPlanVisibility | (string & {}) | null;
 }
-const CreatePaymentRequestPlan = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreatePaymentRequestPlan>;
-
 /** Where physical goods ship, returned on the payment as `shipping_address`. Only the keys you supply are kept; omit it for digital goods. */
 export interface CreatePaymentRequestShippingAddress {
   /** City name. */
@@ -612,11 +552,6 @@ export interface CreatePaymentRequestShippingAddress {
   /** State, province, or region code, such as `CA`. */
   state?: string | null;
 }
-const CreatePaymentRequestShippingAddress = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreatePaymentRequestShippingAddress>;
-
 export interface CreatePaymentRequest {
   /** The account to charge for, prefixed `biz_`. */
   account_id: string;
@@ -651,8 +586,6 @@ export interface CreatePaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreatePaymentRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreatePaymentRequest>;
-
 export interface PaymentAddress {
   /** The city. */
   city: string | null;
@@ -669,8 +602,6 @@ export interface PaymentAddress {
   /** The state, province or region. */
   state: string | null;
 }
-const PaymentAddress = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PaymentAddress>;
-
 /** The reason why a specific payment was billed */
 export type BillingReasons =
   | "subscription_create"
@@ -679,8 +610,6 @@ export type BillingReasons =
   | "one_time"
   | "manual"
   | "subscription";
-const BillingReasons = S.String;
-
 /** The available currencies on the platform */
 export type Currencies =
   | "usd"
@@ -773,8 +702,6 @@ export type Currencies =
   | "awg"
   | "whop_usd"
   | "xau";
-const Currencies = S.String;
-
 /** The reason a payment was declined. */
 export type PaymentDeclineCodes =
   | "insufficient_funds"
@@ -863,12 +790,8 @@ export type PaymentDeclineCodes =
   | "sepa_disputed"
   | "sepa_refused_by_customer"
   | "sepa_generic_decline";
-const PaymentDeclineCodes = S.String;
-
 /** The reason funds are held: `reserve`, `bnpl`, `sequra`, `fraud_hold`, or `preshipment_hold`. */
 export type PaymentHoldType = "reserve" | "bnpl" | "sequra" | "fraud_hold" | "preshipment_hold";
-const PaymentHoldType = S.String;
-
 export interface PaymentHold {
   /** The amount currently held, in the hold's currency. */
   amount: Money;
@@ -879,11 +802,7 @@ export interface PaymentHold {
   /** The reason funds are held: `reserve`, `bnpl`, `sequra`, `fraud_hold`, or `preshipment_hold`. */
   type: PaymentHoldType;
 }
-const PaymentHold = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PaymentHold>;
-
 export type PaymentHoldsList = Array<PaymentHold>;
-const PaymentHoldsList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PaymentHoldsList>;
-
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
   id: string | null;
@@ -902,11 +821,7 @@ export interface ReceiptLineItem {
   /** The recorded amount for this item's full quantity, before discounts, tax, and fees, in its purchase currency. Returns `null` when no item amount was recorded. */
   subtotal: Money | null;
 }
-const ReceiptLineItem = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ReceiptLineItem>;
-
 export type PaymentLineItemsList = Array<ReceiptLineItem>;
-const PaymentLineItemsList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PaymentLineItemsList>;
-
 export interface PaymentInstrumentCard {
   /** The network identifier (`visa`, `amex`, ...), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
   brand: string | null;
@@ -919,11 +834,6 @@ export interface PaymentInstrumentCard {
   /** The card's last four digits, when captured. */
   last4: string | null;
 }
-const PaymentInstrumentCard = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PaymentInstrumentCard>;
-
 export interface PaymentMethodIconFiles {
   /** Raster fallback at the shape's native size. */
   png_1x: string;
@@ -934,30 +844,18 @@ export interface PaymentMethodIconFiles {
   /** The vector file. Prefer this everywhere SVG renders. */
   svg: string;
 }
-const PaymentMethodIconFiles = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PaymentMethodIconFiles>;
-
 export interface PaymentMethodIconVariants {
   /** The colorway for dark surfaces. */
   dark: PaymentMethodIconFiles;
   /** The colorway for light surfaces. */
   light: PaymentMethodIconFiles;
 }
-const PaymentMethodIconVariants = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<PaymentMethodIconVariants>;
-
 export interface PaymentMethodIcons {
   /** The credit-card-proportioned tile (48x30). */
   card: PaymentMethodIconVariants;
   /** The square tile (32x32). */
   square: PaymentMethodIconVariants;
 }
-const PaymentMethodIcons = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PaymentMethodIcons>;
-
 export interface PaymentInstrument {
   /** Card payments only: the card's network, last four, and issuer identification number. */
   card: PaymentInstrumentCard | null;
@@ -970,8 +868,6 @@ export interface PaymentInstrument {
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
 }
-const PaymentInstrument = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PaymentInstrument>;
-
 /** The different types of payment methods that can be used. */
 export type PaymentMethodTypes =
   | "acss_debit"
@@ -1103,12 +999,8 @@ export type PaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
-const PaymentMethodTypes = S.String;
-
 /** What the rule asked for. */
 export type PaymentRuleMatchAction = "allow" | "block" | "review" | "enforce_3ds";
-const PaymentRuleMatchAction = S.String;
-
 export interface PaymentRuleMatch {
   /** What the rule asked for. */
   action: PaymentRuleMatchAction;
@@ -1117,14 +1009,7 @@ export interface PaymentRuleMatch {
   /** The rule's name when it matched. Renaming the rule afterwards does not rewrite this. */
   name: string | null;
 }
-const PaymentRuleMatch = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PaymentRuleMatch>;
-
 export type PaymentPaymentRuleMatchesList = Array<PaymentRuleMatch>;
-const PaymentPaymentRuleMatchesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PaymentPaymentRuleMatchesList>;
-
 /** The status of a receipt */
 export type ReceiptStatus =
   | "draft"
@@ -1135,8 +1020,6 @@ export type ReceiptStatus =
   | "uncollectible"
   | "unresolved"
   | "void";
-const ReceiptStatus = S.String;
-
 /** The friendly status of a payment. This is a derived status that provides a human-readable summary of the payment state, combining the underlying status and substatus fields. */
 export type FriendlyReceiptStatus =
   | "succeeded"
@@ -1169,18 +1052,12 @@ export type FriendlyReceiptStatus =
   | "unresolved"
   | "open_dispute"
   | "open_resolution";
-const FriendlyReceiptStatus = S.String;
-
 /** The type of tax inclusivity applied to the receipt, for determining whether the tax is included in the final price, or paid on top. */
 export type ReceiptTaxBehaviors = "exclusive" | "inclusive" | "unspecified" | "unable_to_collect";
-const ReceiptTaxBehaviors = S.String;
-
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-const UserProfilePicture = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UserProfilePicture>;
-
 export interface UserSummary {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -1191,8 +1068,6 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-const UserSummary = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UserSummary>;
-
 export interface PaymentVerificationChecks {
   /** The Address Verification Service (AVS) result for the billing street address. */
   address_line1: string | null;
@@ -1205,11 +1080,6 @@ export interface PaymentVerificationChecks {
   /** The Address Verification Service (AVS) result for the billing postal code. */
   zip_code: string | null;
 }
-const PaymentVerificationChecks = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PaymentVerificationChecks>;
-
 export interface Payment {
   /** The account that received the payment, prefixed `biz_`. */
   account_id: string | null;
@@ -1323,32 +1193,18 @@ export interface Payment {
   /** True when the payment can be voided or canceled. The request is rejected if the payment is no longer eligible -- see `POST /payments/{id}/void`. */
   voidable: boolean;
 }
-const Payment = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Payment>;
-
 export interface GetPaymentRequest {
   /** The payment to retrieve, prefixed `pay_`. */
   id: string;
 }
-const GetPaymentRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetPaymentRequest>;
-
 export interface GetStatusPaymentRequest {
   /** The unique identifier of the payment. */
   payment_id: string;
 }
-const GetStatusPaymentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetStatusPaymentRequest>;
-
 export interface ListPaymentFeesRequest {
   /** The payment whose fees to list, prefixed `pay_`. */
   id: string;
 }
-const ListPaymentFeesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListPaymentFeesRequest>;
-
 /** The specific fee this line is, such as `payment_processing_percentage_fee` or `revshare_percentage_fee`. */
 export type PaymentFeeOrigin =
   | "stripe_domestic_processing_fee"
@@ -1385,12 +1241,8 @@ export type PaymentFeeOrigin =
   | "application_fee"
   | "high_risk_merchant_fee"
   | "economic_intelligence_percentage_fee";
-const PaymentFeeOrigin = S.String;
-
 /** The family the fee belongs to: `whop_fee`, `processing_fee`, `affiliate_program_fee`, or `other_fee`. */
 export type PaymentFeeType = "whop_fee" | "processing_fee" | "affiliate_program_fee" | "other_fee";
-const PaymentFeeType = S.String;
-
 export interface PaymentFee {
   /** The fee in the currency it was collected in. */
   amount: Money;
@@ -1407,34 +1259,17 @@ export interface PaymentFee {
   /** The family the fee belongs to: `whop_fee`, `processing_fee`, `affiliate_program_fee`, or `other_fee`. */
   type: PaymentFeeType;
 }
-const PaymentFee = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PaymentFee>;
-
 export type ListPaymentFeesResponseDataList = Array<PaymentFee>;
-const ListPaymentFeesResponseDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListPaymentFeesResponseDataList>;
-
 export interface ListPaymentFeesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListPaymentFeesResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListPaymentFeesResponsePageInfo>;
-
 export interface ListPaymentFeesResponse {
   data: ListPaymentFeesResponseDataList;
   page_info: ListPaymentFeesResponsePageInfo;
 }
-const ListPaymentFeesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListPaymentFeesResponse>;
-
 export type ListPaymentsRequestStatus =
   | "open"
   | "authorized"
@@ -1443,8 +1278,6 @@ export type ListPaymentsRequestStatus =
   | "uncollectible"
   | "unresolved"
   | "void";
-const ListPaymentsRequestStatus = S.String;
-
 export type ListPaymentsRequestBillingReason =
   | "subscription_create"
   | "subscription_cycle"
@@ -1452,14 +1285,8 @@ export type ListPaymentsRequestBillingReason =
   | "one_time"
   | "manual"
   | "subscription";
-const ListPaymentsRequestBillingReason = S.String;
-
 export type ListPaymentsRequestOrder = "created_at" | "paid_at";
-const ListPaymentsRequestOrder = S.String;
-
 export type ListPaymentsRequestDirection = "asc" | "desc";
-const ListPaymentsRequestDirection = S.String;
-
 export interface ListPaymentsRequest {
   /** Only payments charged by this account, prefixed `biz_`. */
   account_id?: string;
@@ -1498,21 +1325,12 @@ export interface ListPaymentsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListPaymentsRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListPaymentsRequest>;
-
 export type ListPaymentsResponseDataList = Array<Payment>;
-const ListPaymentsResponseDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListPaymentsResponseDataList>;
-
 export type ListPaymentsResponsePageInfo = ListPaymentFeesResponsePageInfo;
 export interface ListPaymentsResponse {
   data: ListPaymentsResponseDataList;
   page_info: ListPaymentFeesResponsePageInfo;
 }
-const ListPaymentsResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListPaymentsResponse>;
-
 export interface RefundPaymentRequest {
   /** The payment to refund, prefixed `pay_`. */
   id: string;
@@ -1521,43 +1339,30 @@ export interface RefundPaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const RefundPaymentRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RefundPaymentRequest>;
-
 export interface ResumePaymentRequest {
   /** The unique identifier of the payment. */
   payment_id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ResumePaymentRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ResumePaymentRequest>;
-
 export interface RetryPaymentRequest {
   /** The payment to retry, prefixed `pay_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const RetryPaymentRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<RetryPaymentRequest>;
-
 export interface UpdateReturnUrlPaymentRequest {
   /** The unique identifier of the payment. */
   payment_id: string;
   /** Where the buyer continues after completing an off-site step. Must be an absolute https URL without credentials (http is allowed for localhost), at most 2,048 characters. */
   return_url: string;
 }
-const UpdateReturnUrlPaymentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateReturnUrlPaymentRequest>;
-
 export interface VoidPaymentRequest {
   /** The payment to void, prefixed `pay_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const VoidPaymentRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<VoidPaymentRequest>;
-
 export type CapturePaymentError = Forbidden | NotFound | Conflict | WhopOpError;
 /** Capture payment Captures the full amount of a card payment created with `capture: false`. The payment must still be in `requires_capture` before `capture_expires_at`. Partial capture, multiple captures, capturing more than the authorized amount, and tips are not supported. */
 export const capturePayment: API.OperationMethod<
@@ -1566,8 +1371,8 @@ export const capturePayment: API.OperationMethod<
   CapturePaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CapturePaymentRequest,
-  output: PaymentStatus,
+  input: __S(0, __c0, 0) as any as S.Schema<CapturePaymentRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1581,8 +1386,8 @@ export const createPayment: API.OperationMethod<
   CreatePaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePaymentRequest,
-  output: Payment,
+  input: __S(12, __c1, 4) as any as S.Schema<CreatePaymentRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1596,8 +1401,8 @@ export const getPayment: API.OperationMethod<
   GetPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPaymentRequest,
-  output: Payment,
+  input: __S(29, __c3, 5) as any as S.Schema<GetPaymentRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1611,8 +1416,8 @@ export const getStatusPayment: API.OperationMethod<
   GetStatusPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatusPaymentRequest,
-  output: PaymentStatus,
+  input: __S(30, __c3, 6) as any as S.Schema<GetStatusPaymentRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1626,8 +1431,8 @@ export const listPaymentFees: API.OperationMethod<
   ListPaymentFeesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPaymentFeesRequest,
-  output: ListPaymentFeesResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<ListPaymentFeesRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListPaymentFeesResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1643,8 +1448,8 @@ export const listPayments: API.PaginatedOperationMethod<
   Payment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPaymentsRequest,
-    output: ListPaymentsResponse,
+    input: __S(36, __c4, 4) as any as S.Schema<ListPaymentsRequest>,
+    output: __S(38, __c4, 6) as any as S.Schema<ListPaymentsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1668,8 +1473,8 @@ export const refundPayment: API.OperationMethod<
   RefundPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefundPaymentRequest,
-  output: Payment,
+  input: __S(39, __c4, 7) as any as S.Schema<RefundPaymentRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1488,8 @@ export const resumePayment: API.OperationMethod<
   ResumePaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumePaymentRequest,
-  output: PaymentStatus,
+  input: __S(40, __c5, 0) as any as S.Schema<ResumePaymentRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1503,8 @@ export const retryPayment: API.OperationMethod<
   RetryPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RetryPaymentRequest,
-  output: Payment,
+  input: __S(41, __c5, 1) as any as S.Schema<RetryPaymentRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1518,8 @@ export const updateReturnUrlPayment: API.OperationMethod<
   UpdateReturnUrlPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReturnUrlPaymentRequest,
-  output: PaymentStatus,
+  input: __S(42, __c5, 2) as any as S.Schema<UpdateReturnUrlPaymentRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1533,8 @@ export const voidPayment: API.OperationMethod<
   VoidPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VoidPaymentRequest,
-  output: Payment,
+  input: __S(43, __c5, 3) as any as S.Schema<VoidPaymentRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1756,7 +1561,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.NullOr(S.String),
-          decline_code: S.NullOr(PaymentLastPaymentErrorDeclineCode),
+          decline_code: S.NullOr(S.String),
           message: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PaymentLastPaymentError" });
@@ -1778,16 +1583,16 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(AccountSummary),
+          account: S.NullOr(__S(1, __c0, 1)),
           auto_capture_at: S.NullOr(S.String),
           capture_expires_at: S.NullOr(S.String),
           id: S.String,
-          last_payment_error: S.NullOr(PaymentLastPaymentError),
-          next_action: S.NullOr(PaymentNextAction),
+          last_payment_error: S.NullOr(__S(2, __c0, 2)),
+          next_action: S.NullOr(S.Unknown),
           object: S.String,
-          processing_details: S.NullOr(PaymentProcessingDetails),
+          processing_details: S.NullOr(__S(4, __c0, 4)),
           return_url: S.NullOr(S.String),
-          status: PaymentStatusStatus,
+          status: S.String,
         }),
       ).annotate({ identifier: "PaymentStatus" });
     case 6:
@@ -1800,7 +1605,7 @@ function __c0(j: number): any {
         identifier: "CreatePaymentRequestLineItemsItem",
       });
     case 7:
-      return S.Array(CreatePaymentRequestLineItemsItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -1815,15 +1620,13 @@ function __c1(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           external_identifier: S.String,
           global_affiliate_percentage: S.optional(S.NullOr(S.Number)),
-          global_affiliate_status: S.optional(
-            S.NullOr(CreatePaymentRequestPlanProductGlobalAffiliateStatus),
-          ),
+          global_affiliate_status: S.optional(S.NullOr(S.String)),
           headline: S.optional(S.NullOr(S.String)),
           product_tax_code_id: S.optional(S.NullOr(S.String)),
           redirect_purchase_url: S.optional(S.NullOr(S.String)),
           route: S.optional(S.NullOr(S.String)),
           title: S.String,
-          visibility: S.optional(CreatePaymentRequestPlanProductVisibility),
+          visibility: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreatePaymentRequestPlanProduct",
@@ -1833,19 +1636,19 @@ function __c1(j: number): any {
         S.Struct({
           application_fee_amount: S.optional(S.NullOr(S.Number)),
           billing_period: S.optional(S.NullOr(S.Number)),
-          currency: CreatePaymentRequestPlanCurrency,
+          currency: S.String,
           description: S.optional(S.NullOr(S.String)),
           expiration_days: S.optional(S.NullOr(S.Number)),
           force_create_new_plan: S.optional(S.NullOr(S.Boolean)),
           initial_price: S.optional(S.NullOr(S.Number)),
           internal_notes: S.optional(S.NullOr(S.String)),
-          plan_type: S.optional(S.NullOr(CreatePaymentRequestPlanPlanType)),
-          product: S.optional(S.NullOr(CreatePaymentRequestPlanProduct)),
+          plan_type: S.optional(S.NullOr(S.String)),
+          product: S.optional(S.NullOr(__S(9, __c1, 1))),
           product_id: S.optional(S.NullOr(S.String)),
           renewal_price: S.optional(S.NullOr(S.Number)),
           title: S.optional(S.NullOr(S.String)),
           trial_period_days: S.optional(S.NullOr(S.Number)),
-          visibility: S.optional(S.NullOr(CreatePaymentRequestPlanVisibility)),
+          visibility: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CreatePaymentRequestPlan" });
     case 3:
@@ -1870,15 +1673,15 @@ function __c1(j: number): any {
           capture: S.optional(S.NullOr(S.Boolean)),
           confirmation_token: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          line_items: S.optional(CreatePaymentRequestLineItemsList),
+          line_items: S.optional(__S(7, __c0, 7)),
           member_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(CreatePaymentRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(8, __c1, 0))),
           payment_method_id: S.optional(S.NullOr(S.String)),
-          plan: S.optional(CreatePaymentRequestPlan),
+          plan: S.optional(__S(10, __c1, 2)),
           plan_id: S.optional(S.String),
           promo_code_id: S.optional(S.NullOr(S.String)),
           return_url: S.optional(S.NullOr(S.String)),
-          shipping_address: S.optional(S.NullOr(CreatePaymentRequestShippingAddress)),
+          shipping_address: S.optional(S.NullOr(__S(11, __c1, 3))),
           statement_descriptor: S.optional(S.NullOr(S.String)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/payments", code: 200 })),
@@ -1898,14 +1701,14 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          amount: Money,
+          amount: __S(3, __c0, 3),
           percentage: S.NullOr(S.Number),
           release_at: S.NullOr(S.String),
-          type: PaymentHoldType,
+          type: S.String,
         }),
       ).annotate({ identifier: "PaymentHold" });
     case 7:
-      return S.Array(PaymentHold);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1920,11 +1723,11 @@ function __c2(j: number): any {
           product_id: S.NullOr(S.String),
           product_title: S.NullOr(S.String),
           quantity: S.Number,
-          subtotal: S.NullOr(Money),
+          subtotal: S.NullOr(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ReceiptLineItem" });
     case 1:
-      return S.Array(ReceiptLineItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1947,8 +1750,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dark: PaymentMethodIconFiles,
-          light: PaymentMethodIconFiles,
+          dark: __S(19, __c2, 3),
+          light: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "PaymentMethodIconVariants",
@@ -1956,16 +1759,16 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          card: PaymentMethodIconVariants,
-          square: PaymentMethodIconVariants,
+          card: __S(20, __c2, 4),
+          square: __S(20, __c2, 4),
         }),
       ).annotate({ identifier: "PaymentMethodIcons" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          card: S.NullOr(PaymentInstrumentCard),
+          card: S.NullOr(__S(18, __c2, 2)),
           display_name: S.String,
-          icons: PaymentMethodIcons,
+          icons: __S(21, __c2, 5),
           installment_count: S.NullOr(S.Number),
           payment_method_type: S.String,
         }),
@@ -1973,7 +1776,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: PaymentRuleMatchAction,
+          action: S.String,
           id: S.String,
           name: S.NullOr(S.String),
         }),
@@ -1983,7 +1786,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PaymentRuleMatch);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1995,7 +1798,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: UserProfilePicture,
+          profile_picture: __S(25, __c3, 1),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
@@ -2015,61 +1818,61 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
-          amount_after_fees: Money,
+          amount_after_fees: __S(3, __c0, 3),
           auto_refunded: S.Boolean,
-          billing_address: S.NullOr(PaymentAddress),
-          billing_reason: S.NullOr(BillingReasons),
+          billing_address: S.NullOr(__S(13, __c1, 5)),
+          billing_reason: S.NullOr(S.String),
           checkout_configuration_id: S.NullOr(S.String),
           client_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           created_at: S.String,
-          currency: Currencies,
+          currency: S.String,
           customer_email: S.NullOr(S.String),
           customer_phone: S.NullOr(S.String),
-          decline_code: S.NullOr(PaymentDeclineCodes),
+          decline_code: S.NullOr(S.String),
           dispute_alerted_at: S.NullOr(S.String),
           failure_message: S.NullOr(S.String),
           financing_installments_count: S.NullOr(S.Number),
-          holds: PaymentHoldsList,
+          holds: __S(15, __c1, 7),
           id: S.String,
           last_payment_attempt_at: S.NullOr(S.String),
-          line_items: PaymentLineItemsList,
+          line_items: __S(17, __c2, 1),
           member_id: S.NullOr(S.String),
           membership_id: S.NullOr(S.String),
           metadata: S.NullOr(S.Unknown),
           needs_tracking: S.NullOr(S.Boolean),
           next_payment_attempt_at: S.NullOr(S.String),
           paid_at: S.NullOr(S.String),
-          payment_instrument: S.NullOr(PaymentInstrument),
+          payment_instrument: S.NullOr(__S(22, __c2, 6)),
           payment_method_id: S.NullOr(S.String),
-          payment_method_type: S.NullOr(PaymentMethodTypes),
-          payment_rule_matches: PaymentPaymentRuleMatchesList,
+          payment_method_type: S.NullOr(S.String),
+          payment_rule_matches: __S(24, __c3, 0),
           payments_failed: S.Number,
           plan_id: S.NullOr(S.String),
-          presentment_total: S.NullOr(Money),
+          presentment_total: S.NullOr(__S(3, __c0, 3)),
           product_id: S.NullOr(S.String),
           promo_code_id: S.NullOr(S.String),
           recovery_url: S.NullOr(S.String),
           refundable: S.Boolean,
-          refunded_amount: S.NullOr(Money),
+          refunded_amount: S.NullOr(__S(3, __c0, 3)),
           refunded_at: S.NullOr(S.String),
           retryable: S.Boolean,
           risk_score: S.NullOr(S.Number),
           risk_signals: S.NullOr(S.Unknown),
           settlement_time_at: S.NullOr(S.String),
           shipment_id: S.NullOr(S.String),
-          shipping_address: S.NullOr(PaymentAddress),
-          status: ReceiptStatus,
-          substatus: FriendlyReceiptStatus,
-          subtotal: S.NullOr(Money),
-          tax_amount: S.NullOr(Money),
-          tax_behavior: S.NullOr(ReceiptTaxBehaviors),
-          tax_refunded_amount: Money,
+          shipping_address: S.NullOr(__S(13, __c1, 5)),
+          status: S.String,
+          substatus: S.String,
+          subtotal: S.NullOr(__S(3, __c0, 3)),
+          tax_amount: S.NullOr(__S(3, __c0, 3)),
+          tax_behavior: S.NullOr(S.String),
+          tax_refunded_amount: __S(3, __c0, 3),
           three_ds_verified: S.Boolean,
-          total: S.NullOr(Money),
+          total: S.NullOr(__S(3, __c0, 3)),
           updated_at: S.String,
-          usd_total: S.NullOr(Money),
-          user: S.NullOr(UserSummary),
-          verification_checks: S.NullOr(PaymentVerificationChecks),
+          usd_total: S.NullOr(__S(3, __c0, 3)),
+          user: S.NullOr(__S(26, __c3, 2)),
+          verification_checks: S.NullOr(__S(27, __c3, 3)),
           voidable: S.Boolean,
         }),
       ).annotate({ identifier: "Payment" });
@@ -2098,17 +1901,17 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: Money,
+          amount: __S(3, __c0, 3),
           collected_at: S.NullOr(S.String),
           description: S.NullOr(S.String),
           label: S.String,
-          origin: PaymentFeeOrigin,
-          settlement_amount: Money,
-          type: PaymentFeeType,
+          origin: S.String,
+          settlement_amount: __S(3, __c0, 3),
+          type: S.String,
         }),
       ).annotate({ identifier: "PaymentFee" });
     case 1:
-      return S.Array(PaymentFee);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2123,16 +1926,16 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: ListPaymentFeesResponseDataList,
-          page_info: ListPaymentFeesResponsePageInfo,
+          data: __S(33, __c4, 1),
+          page_info: __S(34, __c4, 2),
         }),
       ).annotate({ identifier: "ListPaymentFeesResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListPaymentsRequestStatus.pipe(T.Query())),
-          billing_reason: S.optional(ListPaymentsRequestBillingReason.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          billing_reason: S.optional(S.String.pipe(T.Query())),
           currency: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
@@ -2142,8 +1945,8 @@ function __c4(j: number): any {
           plan_id: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListPaymentsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListPaymentsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -2151,12 +1954,12 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/payments", code: 200 })),
       ).annotate({ identifier: "ListPaymentsRequest" });
     case 5:
-      return S.Array(Payment);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ListPaymentsResponseDataList,
-          page_info: ListPaymentFeesResponsePageInfo,
+          data: __S(37, __c4, 5),
+          page_info: __S(34, __c4, 2),
         }),
       ).annotate({ identifier: "ListPaymentsResponse" });
     case 7:
@@ -2202,4 +2005,9 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/void", code: 200 })),
       ).annotate({ identifier: "VoidPaymentRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

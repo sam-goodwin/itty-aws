@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -61,19 +63,12 @@ export interface ActivatePromoCodeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ActivatePromoCodeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivatePromoCodeRequest>;
-
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
   id: string;
   /** Account display name. */
   title: string;
 }
-const AccountSummary = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccountSummary>;
-
 /** Currency used for a fixed-amount discount. */
 export type PromoCodeCurrency =
   | "usd"
@@ -166,28 +161,18 @@ export type PromoCodeCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-const PromoCodeCurrency = S.String;
-
 /** How long the discount applies. */
 export type PromoCodeDuration = "forever" | "once" | "repeating";
-const PromoCodeDuration = S.String;
-
 export interface PromoCodeProduct {
   /** Product ID, prefixed `prod_`. */
   id: string;
   /** Product display name. */
   title: string;
 }
-const PromoCodeProduct = AccountSummary as any as S.Schema<PromoCodeProduct>;
-
 /** Whether the discount is percentage-based or a fixed amount. */
 export type PromoCodePromoType = "percentage" | "flat_amount";
-const PromoCodePromoType = S.String;
-
 /** Promo code lifecycle status. */
 export type PromoCodeStatus = "active" | "inactive" | "archived";
-const PromoCodeStatus = S.String;
-
 export interface PromoCode {
   /** Account that owns the promo code. */
   account: AccountSummary;
@@ -232,8 +217,6 @@ export interface PromoCode {
   /** Memberships that used the promo code. */
   uses: number;
 }
-const PromoCode = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PromoCode>;
-
 export type CreatePromoCodeRequestBaseCurrency =
   | "usd"
   | "sgd"
@@ -325,17 +308,8 @@ export type CreatePromoCodeRequestBaseCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-const CreatePromoCodeRequestBaseCurrency = S.String;
-
 export type CreatePromoCodeRequestPlanIdsList = Array<string>;
-const CreatePromoCodeRequestPlanIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreatePromoCodeRequestPlanIdsList>;
-
 export type CreatePromoCodeRequestPromoType = "percentage" | "flat_amount";
-const CreatePromoCodeRequestPromoType = S.String;
-
 export interface CreatePromoCodeRequest {
   account_id: string;
   amount_off: number;
@@ -355,63 +329,29 @@ export interface CreatePromoCodeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreatePromoCodeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreatePromoCodeRequest>;
-
 export interface DeactivatePromoCodeRequest {
   /** Promo code ID (`promo_` tag). */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const DeactivatePromoCodeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeactivatePromoCodeRequest>;
-
 export interface DeletePromoCodeRequest {
   /** Promo code ID (`promo_` tag). */
   id: string;
 }
-const DeletePromoCodeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeletePromoCodeRequest>;
-
 export interface DeletePromoCodeResponse {
   deleted: boolean;
   id: string;
 }
-const DeletePromoCodeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeletePromoCodeResponse>;
-
 export interface GetPromoCodeRequest {
   /** Promo code ID (`promo_` tag). */
   id: string;
 }
-const GetPromoCodeRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetPromoCodeRequest>;
-
 export type ListPromoCodesRequestStatus = "active" | "inactive" | "archived" | "expired";
-const ListPromoCodesRequestStatus = S.String;
-
 export type ListPromoCodesRequestProductIdsList = Array<string>;
-const ListPromoCodesRequestProductIdsList =
-  CreatePromoCodeRequestPlanIdsList as any as S.Schema<ListPromoCodesRequestProductIdsList>;
-
 export type ListPromoCodesRequestPlanIdsList = Array<string>;
-const ListPromoCodesRequestPlanIdsList =
-  CreatePromoCodeRequestPlanIdsList as any as S.Schema<ListPromoCodesRequestPlanIdsList>;
-
 export type ListPromoCodesRequestOrder = "created_at";
-const ListPromoCodesRequestOrder = S.String;
-
 export type ListPromoCodesRequestDirection = "asc" | "desc";
-const ListPromoCodesRequestDirection = S.String;
-
 export interface ListPromoCodesRequest {
   /** Account whose promo codes are listed (`biz_` tag). */
   account_id: string;
@@ -438,11 +378,6 @@ export interface ListPromoCodesRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListPromoCodesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListPromoCodesRequest>;
-
 /** Currency used for a fixed-amount discount. */
 export type PromoCodeListItemCurrency =
   | "usd"
@@ -535,20 +470,12 @@ export type PromoCodeListItemCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-const PromoCodeListItemCurrency = S.String;
-
 /** How long the discount applies. */
 export type PromoCodeListItemDuration = "forever" | "once" | "repeating";
-const PromoCodeListItemDuration = S.String;
-
 /** Whether the discount is percentage-based or a fixed amount. */
 export type PromoCodeListItemPromoType = "percentage" | "flat_amount";
-const PromoCodeListItemPromoType = S.String;
-
 /** Promo code lifecycle status. */
 export type PromoCodeListItemStatus = "active" | "inactive" | "archived";
-const PromoCodeListItemStatus = S.String;
-
 export interface PromoCodeListItem {
   /** Discount amount. Percentage discounts are represented as a decimal fraction. */
   amount_off: number;
@@ -591,49 +518,25 @@ export interface PromoCodeListItem {
   /** Memberships that used the promo code. */
   uses: number;
 }
-const PromoCodeListItem = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PromoCodeListItem>;
-
 export type ListPromoCodesResponseDataList = Array<PromoCodeListItem>;
-const ListPromoCodesResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListPromoCodesResponseDataList>;
-
 export interface ListPromoCodesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListPromoCodesResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListPromoCodesResponsePageInfo>;
-
 export interface ListPromoCodesResponse {
   data: ListPromoCodesResponseDataList;
   page_info: ListPromoCodesResponsePageInfo;
 }
-const ListPromoCodesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListPromoCodesResponse>;
-
 /** Statuses that can be applied to promo codes through update operations. */
 export type PromoCodeUpdateStatus = "active" | "inactive";
-const PromoCodeUpdateStatus = S.String;
-
 export interface UpdatePromoCodeRequest {
   /** The unique identifier of the promo code to update. */
   id: string;
   /** The status to apply to the promo code. */
   status: PromoCodeUpdateStatus | (string & {});
 }
-const UpdatePromoCodeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UpdatePromoCodeRequest>;
-
 /** The company for the promo code. */
 export interface LegacyPromoCodeCompany {
   /** The unique identifier for the company. */
@@ -641,8 +544,6 @@ export interface LegacyPromoCodeCompany {
   /** The written name of the company. */
   title: string;
 }
-const LegacyPromoCodeCompany = AccountSummary as any as S.Schema<LegacyPromoCodeCompany>;
-
 /** The available currencies on the platform */
 export type LegacyCurrencies =
   | "usd"
@@ -735,12 +636,8 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-const LegacyCurrencies = S.String;
-
 /** The duration setting for the promo code */
 export type PromoDurations = "forever" | "once" | "repeating";
-const PromoDurations = S.String;
-
 /** The product this promo code applies to */
 export interface LegacyPromoCodeProduct {
   /** The unique identifier for the product. */
@@ -748,16 +645,10 @@ export interface LegacyPromoCodeProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-const LegacyPromoCodeProduct = AccountSummary as any as S.Schema<LegacyPromoCodeProduct>;
-
 /** The type of promo code used to discount a plan */
 export type PromoTypes = "percentage" | "flat_amount";
-const PromoTypes = S.String;
-
 /** Statuses for promo codes */
 export type PromoCodeStatus2 = "active" | "inactive" | "archived";
-const PromoCodeStatus2 = S.String;
-
 /** A promo code applies a discount to a plan during checkout. Promo codes can be percentage-based or fixed-amount, and can have usage limits and expiration dates. */
 export interface LegacyPromoCode {
   /** The discount amount. Interpretation depends on promo_type: if 'percentage', this is the percentage (e.g., 20 means 20% off); if 'flat_amount', this is dollars off (e.g., 10.00 means $10.00 off). */
@@ -799,8 +690,6 @@ export interface LegacyPromoCode {
   /** The amount of times the promo codes has been used. */
   uses: number;
 }
-const LegacyPromoCode = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LegacyPromoCode>;
-
 export type ActivatePromoCodeError = BadRequest | Conflict | WhopOpError;
 /** Activate Promo Code Turns an inactive promo code back on so it can be redeemed at checkout. */
 export const activatePromoCode: API.OperationMethod<
@@ -809,8 +698,8 @@ export const activatePromoCode: API.OperationMethod<
   ActivatePromoCodeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivatePromoCodeRequest,
-  output: PromoCode,
+  input: __S(0, __c0, 0) as any as S.Schema<ActivatePromoCodeRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<PromoCode>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -824,8 +713,8 @@ export const createPromoCode: API.OperationMethod<
   CreatePromoCodeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePromoCodeRequest,
-  output: PromoCode,
+  input: __S(4, __c0, 4) as any as S.Schema<CreatePromoCodeRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<PromoCode>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -839,8 +728,8 @@ export const deactivatePromoCode: API.OperationMethod<
   DeactivatePromoCodeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivatePromoCodeRequest,
-  output: PromoCode,
+  input: __S(5, __c0, 5) as any as S.Schema<DeactivatePromoCodeRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<PromoCode>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -854,8 +743,8 @@ export const deletePromoCode: API.OperationMethod<
   DeletePromoCodeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePromoCodeRequest,
-  output: DeletePromoCodeResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<DeletePromoCodeRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DeletePromoCodeResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -869,8 +758,8 @@ export const getPromoCode: API.OperationMethod<
   GetPromoCodeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPromoCodeRequest,
-  output: PromoCode,
+  input: __S(8, __c1, 0) as any as S.Schema<GetPromoCodeRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<PromoCode>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -886,8 +775,8 @@ export const listPromoCodes: API.PaginatedOperationMethod<
   PromoCodeListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPromoCodesRequest,
-    output: ListPromoCodesResponse,
+    input: __S(9, __c1, 1) as any as S.Schema<ListPromoCodesRequest>,
+    output: __S(13, __c1, 5) as any as S.Schema<ListPromoCodesResponse>,
     errors: [BadRequest, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -916,8 +805,8 @@ export const updatePromoCode: API.OperationMethod<
   UpdatePromoCodeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePromoCodeRequest,
-  output: LegacyPromoCode,
+  input: __S(14, __c1, 6) as any as S.Schema<UpdatePromoCodeRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<LegacyPromoCode>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -943,23 +832,23 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          account: AccountSummary,
+          account: __S(1, __c0, 1),
           amount_off: S.Number,
           churned_users_only: S.Boolean,
           code: S.NullOr(S.String),
           created_at: S.String,
-          currency: PromoCodeCurrency,
-          duration: PromoCodeDuration,
+          currency: S.String,
+          duration: S.String,
           existing_memberships_only: S.Boolean,
           expires_at: S.NullOr(S.String),
           id: S.String,
           metadata: S.Unknown,
           new_users_only: S.Boolean,
           one_per_customer: S.Boolean,
-          product: S.NullOr(PromoCodeProduct),
+          product: S.NullOr(__S(1, __c0, 1)),
           promo_duration_months: S.NullOr(S.Number),
-          promo_type: PromoCodePromoType,
-          status: PromoCodeStatus,
+          promo_type: S.String,
+          status: S.String,
           stock: S.Number,
           unlimited_stock: S.Boolean,
           updated_at: S.String,
@@ -973,17 +862,17 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.String,
           amount_off: S.Number,
-          base_currency: CreatePromoCodeRequestBaseCurrency,
+          base_currency: S.String,
           churned_users_only: S.optional(S.Boolean),
           code: S.String,
           existing_memberships_only: S.optional(S.Boolean),
           expires_at: S.optional(S.NullOr(S.String)),
           new_users_only: S.Boolean,
           one_per_customer: S.optional(S.Boolean),
-          plan_ids: S.optional(CreatePromoCodeRequestPlanIdsList),
+          plan_ids: S.optional(__S(3, __c0, 3)),
           product_id: S.optional(S.NullOr(S.String)),
           promo_duration_months: S.Number,
-          promo_type: CreatePromoCodeRequestPromoType,
+          promo_type: S.String,
           stock: S.optional(S.NullOr(S.Number)),
           unlimited_stock: S.optional(S.Boolean),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -1025,13 +914,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String.pipe(T.Query()),
-          status: S.optional(ListPromoCodesRequestStatus.pipe(T.Query())),
-          product_ids: S.optional(ListPromoCodesRequestProductIdsList.pipe(T.Query())),
-          plan_ids: S.optional(ListPromoCodesRequestPlanIdsList.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          product_ids: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          plan_ids: S.optional(__S(3, __c0, 3).pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListPromoCodesRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListPromoCodesRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -1045,18 +934,18 @@ function __c1(j: number): any {
           churned_users_only: S.Boolean,
           code: S.NullOr(S.String),
           created_at: S.String,
-          currency: PromoCodeListItemCurrency,
-          duration: PromoCodeListItemDuration,
+          currency: S.String,
+          duration: S.String,
           existing_memberships_only: S.Boolean,
           expires_at: S.NullOr(S.String),
           id: S.String,
           metadata: S.Unknown,
           new_users_only: S.Boolean,
           one_per_customer: S.Boolean,
-          product: S.NullOr(PromoCodeProduct),
+          product: S.NullOr(__S(1, __c0, 1)),
           promo_duration_months: S.NullOr(S.Number),
-          promo_type: PromoCodeListItemPromoType,
-          status: PromoCodeListItemStatus,
+          promo_type: S.String,
+          status: S.String,
           stock: S.Number,
           unlimited_stock: S.Boolean,
           updated_at: S.String,
@@ -1064,7 +953,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PromoCodeListItem" });
     case 3:
-      return S.Array(PromoCodeListItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1079,15 +968,15 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListPromoCodesResponseDataList,
-          page_info: ListPromoCodesResponsePageInfo,
+          data: __S(11, __c1, 3),
+          page_info: __S(12, __c1, 4),
         }),
       ).annotate({ identifier: "ListPromoCodesResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          status: PromoCodeUpdateStatus,
+          status: S.String,
         }).pipe(T.Http({ method: "PATCH", uri: "/promo_codes/{id}", code: 200 })),
       ).annotate({ identifier: "UpdatePromoCodeRequest" });
     case 7:
@@ -1096,23 +985,28 @@ function __c1(j: number): any {
           amount_off: S.Number,
           churned_users_only: S.Boolean,
           code: S.NullOr(S.String),
-          company: LegacyPromoCodeCompany,
+          company: __S(1, __c0, 1),
           created_at: S.String,
-          currency: LegacyCurrencies,
-          duration: S.NullOr(PromoDurations),
+          currency: S.String,
+          duration: S.NullOr(S.String),
           existing_memberships_only: S.Boolean,
           expires_at: S.NullOr(S.String),
           id: S.String,
           new_users_only: S.Boolean,
           one_per_customer: S.Boolean,
-          product: S.NullOr(LegacyPromoCodeProduct),
+          product: S.NullOr(__S(1, __c0, 1)),
           promo_duration_months: S.NullOr(S.Number),
-          promo_type: PromoTypes,
-          status: PromoCodeStatus2,
+          promo_type: S.String,
+          status: S.String,
           stock: S.Number,
           unlimited_stock: S.Boolean,
           uses: S.Number,
         }),
       ).annotate({ identifier: "LegacyPromoCode" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

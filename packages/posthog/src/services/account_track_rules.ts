@@ -5,13 +5,13 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `account_field` - account_field * `custom_property` - custom_property */
 export type AccountTrackRuleFieldKindEnum = "account_field" | "custom_property";
-const AccountTrackRuleFieldKindEnum = S.String;
-
 /** * `name` - name * `external_id` - external_id * `created_at` - created_at * `updated_at` - updated_at * `churned_at` - churned_at * `ignored_at` - ignored_at * `stripe_customer_id` - stripe_customer_id * `hubspot_deal_id` - hubspot_deal_id * `billing_id` - billing_id * `sfdc_id` - sfdc_id * `zendesk_id` - zendesk_id */
 export type AccountTrackRuleFieldFieldEnum =
   | "name"
@@ -25,54 +25,22 @@ export type AccountTrackRuleFieldFieldEnum =
   | "billing_id"
   | "sfdc_id"
   | "zendesk_id";
-const AccountTrackRuleFieldFieldEnum = S.String;
-
 export interface AccountTrackRuleField {
   kind: AccountTrackRuleFieldKindEnum | (string & {});
   field?: AccountTrackRuleFieldFieldEnum | (string & {}) | null;
   definition_id?: string | null;
 }
-const AccountTrackRuleField = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccountTrackRuleField>;
-
 export type AccountTrackRuleConditionValuesList = Array<unknown>;
-const AccountTrackRuleConditionValuesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AccountTrackRuleConditionValuesList>;
-
 export interface AccountTrackRuleCondition {
   field: AccountTrackRuleField;
   operator: string;
   values?: AccountTrackRuleConditionValuesList;
 }
-const AccountTrackRuleCondition = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccountTrackRuleCondition>;
-
 export type AccountTrackRuleGroupConditionsList = Array<AccountTrackRuleCondition>;
-const AccountTrackRuleGroupConditionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccountTrackRuleGroupConditionsList>;
-
 export interface AccountTrackRuleGroup {
   conditions: AccountTrackRuleGroupConditionsList;
 }
-const AccountTrackRuleGroup = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccountTrackRuleGroup>;
-
 export type CreateAccountTrackRulesPreviewRequestGroupsList = Array<AccountTrackRuleGroup>;
-const CreateAccountTrackRulesPreviewRequestGroupsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateAccountTrackRulesPreviewRequestGroupsList>;
-
 export interface CreateAccountTrackRulesPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -81,44 +49,16 @@ export interface CreateAccountTrackRulesPreviewRequest {
   enabled: boolean;
   groups: CreateAccountTrackRulesPreviewRequestGroupsList;
 }
-const CreateAccountTrackRulesPreviewRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAccountTrackRulesPreviewRequest>;
-
 export type AccountTrackRuleSampleRuleValuesMap = { [key: string]: unknown | undefined };
-const AccountTrackRuleSampleRuleValuesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AccountTrackRuleSampleRuleValuesMap>;
-
 export interface AccountTrackRuleSample {
   id: string;
   name: string;
   external_id: string | null;
   rule_values: AccountTrackRuleSampleRuleValuesMap;
 }
-const AccountTrackRuleSample = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AccountTrackRuleSample>;
-
 export type AccountTrackRulePreviewTrackedSamplesList = Array<AccountTrackRuleSample>;
-const AccountTrackRulePreviewTrackedSamplesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AccountTrackRulePreviewTrackedSamplesList>;
-
 export type AccountTrackRulePreviewIgnoredSamplesList = Array<AccountTrackRuleSample>;
-const AccountTrackRulePreviewIgnoredSamplesList =
-  AccountTrackRulePreviewTrackedSamplesList as any as S.Schema<AccountTrackRulePreviewIgnoredSamplesList>;
-
 export type AccountTrackRulePreviewValidationErrorsList = Array<string>;
-const AccountTrackRulePreviewValidationErrorsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AccountTrackRulePreviewValidationErrorsList>;
-
 export interface AccountTrackRulePreview {
   config_version: number;
   eligible_active: number;
@@ -131,52 +71,24 @@ export interface AccountTrackRulePreview {
   ignored_samples: AccountTrackRulePreviewIgnoredSamplesList;
   validation_errors?: AccountTrackRulePreviewValidationErrorsList;
 }
-const AccountTrackRulePreview = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AccountTrackRulePreview>;
-
 export interface CreateAccountTrackRulesRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   idempotency_key: string;
   confirmed: boolean;
 }
-const CreateAccountTrackRulesRunRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateAccountTrackRulesRunRequest>;
-
 export interface CreateAccountTrackRulesRunResponse {}
-const CreateAccountTrackRulesRunResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateAccountTrackRulesRunResponse>;
-
 export interface ListAccountTrackRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListAccountTrackRulesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListAccountTrackRulesRequest>;
-
 export type AccountTrackRulesConfigGroupsList = Array<AccountTrackRuleGroup>;
-const AccountTrackRulesConfigGroupsList =
-  CreateAccountTrackRulesPreviewRequestGroupsList as any as S.Schema<AccountTrackRulesConfigGroupsList>;
-
 export interface AccountTrackRulesConfig {
   schema_version: number;
   version: number;
   enabled: boolean;
   groups: AccountTrackRulesConfigGroupsList;
 }
-const AccountTrackRulesConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AccountTrackRulesConfig>;
-
 export interface ListAccountTrackRulesRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -185,11 +97,6 @@ export interface ListAccountTrackRulesRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListAccountTrackRulesRunsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListAccountTrackRulesRunsRequest>;
-
 export interface AccountTrackRuleRunView {
   id: string;
   config_version: number;
@@ -207,32 +114,14 @@ export interface AccountTrackRuleRunView {
   created_by: number | null;
   created_at: string;
 }
-const AccountTrackRuleRunView = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AccountTrackRuleRunView>;
-
 export type PaginatedAccountTrackRuleRunViewListResultsList = Array<AccountTrackRuleRunView>;
-const PaginatedAccountTrackRuleRunViewListResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PaginatedAccountTrackRuleRunViewListResultsList>;
-
 export interface PaginatedAccountTrackRuleRunViewList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountTrackRuleRunViewListResultsList;
 }
-const PaginatedAccountTrackRuleRunViewList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PaginatedAccountTrackRuleRunViewList>;
-
 export type UpdateAccountTrackRuleRequestGroupsList = Array<AccountTrackRuleGroup>;
-const UpdateAccountTrackRuleRequestGroupsList =
-  CreateAccountTrackRulesPreviewRequestGroupsList as any as S.Schema<UpdateAccountTrackRuleRequestGroupsList>;
-
 export interface UpdateAccountTrackRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -241,11 +130,6 @@ export interface UpdateAccountTrackRuleRequest {
   enabled: boolean;
   groups: UpdateAccountTrackRuleRequestGroupsList;
 }
-const UpdateAccountTrackRuleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<UpdateAccountTrackRuleRequest>;
-
 export type CreateAccountTrackRulesPreviewError = PosthogOpError;
 export const createAccountTrackRulesPreview: API.OperationMethod<
   CreateAccountTrackRulesPreviewRequest,
@@ -253,8 +137,8 @@ export const createAccountTrackRulesPreview: API.OperationMethod<
   CreateAccountTrackRulesPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountTrackRulesPreviewRequest,
-  output: AccountTrackRulePreview,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateAccountTrackRulesPreviewRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AccountTrackRulePreview>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -267,8 +151,8 @@ export const createAccountTrackRulesRun: API.OperationMethod<
   CreateAccountTrackRulesRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountTrackRulesRunRequest,
-  output: CreateAccountTrackRulesRunResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateAccountTrackRulesRunRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreateAccountTrackRulesRunResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -281,8 +165,8 @@ export const listAccountTrackRules: API.OperationMethod<
   ListAccountTrackRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountTrackRulesRequest,
-  output: AccountTrackRulesConfig,
+  input: __S(14, __c1, 6) as any as S.Schema<ListAccountTrackRulesRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<AccountTrackRulesConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -295,8 +179,8 @@ export const listAccountTrackRulesRuns: API.OperationMethod<
   ListAccountTrackRulesRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountTrackRulesRunsRequest,
-  output: PaginatedAccountTrackRuleRunViewList,
+  input: __S(16, __c2, 0) as any as S.Schema<ListAccountTrackRulesRunsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<PaginatedAccountTrackRuleRunViewList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -309,8 +193,8 @@ export const updateAccountTrackRule: API.OperationMethod<
   UpdateAccountTrackRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountTrackRuleRequest,
-  output: AccountTrackRulesConfig,
+  input: __S(20, __c2, 4) as any as S.Schema<UpdateAccountTrackRuleRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<AccountTrackRulesConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -322,8 +206,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          kind: AccountTrackRuleFieldKindEnum,
-          field: S.optional(S.NullOr(AccountTrackRuleFieldFieldEnum)),
+          kind: S.String,
+          field: S.optional(S.NullOr(S.String)),
           definition_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AccountTrackRuleField" });
@@ -332,23 +216,23 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          field: AccountTrackRuleField,
+          field: __S(0, __c0, 0),
           operator: S.String,
-          values: S.optional(AccountTrackRuleConditionValuesList),
+          values: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "AccountTrackRuleCondition",
       });
     case 3:
-      return S.Array(AccountTrackRuleCondition);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conditions: AccountTrackRuleGroupConditionsList,
+          conditions: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "AccountTrackRuleGroup" });
     case 5:
-      return S.Array(AccountTrackRuleGroup);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -356,7 +240,7 @@ function __c0(j: number): any {
           schema_version: S.Number,
           version: S.Number,
           enabled: S.Boolean,
-          groups: CreateAccountTrackRulesPreviewRequestGroupsList,
+          groups: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -379,11 +263,11 @@ function __c1(j: number): any {
           id: S.String,
           name: S.String,
           external_id: S.NullOr(S.String),
-          rule_values: AccountTrackRuleSampleRuleValuesMap,
+          rule_values: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "AccountTrackRuleSample" });
     case 1:
-      return S.Array(AccountTrackRuleSample);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.Array(S.String);
     case 3:
@@ -396,9 +280,9 @@ function __c1(j: number): any {
           ignored: S.Number,
           newly_ignored: S.Number,
           restored: S.Number,
-          tracked_samples: AccountTrackRulePreviewTrackedSamplesList,
-          ignored_samples: AccountTrackRulePreviewIgnoredSamplesList,
-          validation_errors: S.optional(AccountTrackRulePreviewValidationErrorsList),
+          tracked_samples: __S(9, __c1, 1),
+          ignored_samples: __S(9, __c1, 1),
+          validation_errors: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "AccountTrackRulePreview" });
     case 4:
@@ -441,7 +325,7 @@ function __c1(j: number): any {
           schema_version: S.Number,
           version: S.Number,
           enabled: S.Boolean,
-          groups: AccountTrackRulesConfigGroupsList,
+          groups: __S(5, __c0, 5),
         }),
       ).annotate({ identifier: "AccountTrackRulesConfig" });
   }
@@ -485,14 +369,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AccountTrackRuleRunView" });
     case 2:
-      return S.Array(AccountTrackRuleRunView);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedAccountTrackRuleRunViewListResultsList,
+          results: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "PaginatedAccountTrackRuleRunViewList",
@@ -504,7 +388,7 @@ function __c2(j: number): any {
           schema_version: S.Number,
           version: S.Number,
           enabled: S.Boolean,
-          groups: UpdateAccountTrackRuleRequestGroupsList,
+          groups: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -516,4 +400,9 @@ function __c2(j: number): any {
         identifier: "UpdateAccountTrackRuleRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

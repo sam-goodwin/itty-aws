@@ -6,29 +6,19 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Identity Type */
 export type IdentityInputType = "None" | "SystemAssigned" | "UserAssigned";
-const IdentityInputType = S.String;
-
 /** Uses client ID and Principal ID */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** User Assigned Identities */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
-
 /** The Managed Identity of the resource */
 export interface IdentityInput {
   /** Identity Type */
@@ -36,32 +26,19 @@ export interface IdentityInput {
   /** User Assigned Identities */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-const IdentityInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<IdentityInput>;
-
 /** Tags on the azure resource. */
 export type AccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
-
 /** External Cloud Service connectors */
 export type CloudConnectorsInput = UserAssignedIdentityInput;
 /** Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed. */
 export type AccountPropertiesInputManagedEventHubState = "NotSpecified" | "Disabled" | "Enabled";
-const AccountPropertiesInputManagedEventHubState = S.String;
-
 /** Gets or sets the public network access for managed resources. */
 export type AccountPropertiesInputManagedResourcesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
   | "Disabled";
-const AccountPropertiesInputManagedResourcesPublicNetworkAccess = S.String;
-
 /** Gets or sets the public network access. */
 export type AccountPropertiesInputPublicNetworkAccess = "NotSpecified" | "Enabled" | "Disabled";
-const AccountPropertiesInputPublicNetworkAccess = S.String;
-
 /** The account properties */
 export interface AccountPropertiesInput {
   /** Cloud connectors. External cloud identifier used as part of scanning configuration. */
@@ -77,11 +54,6 @@ export interface AccountPropertiesInput {
   /** Gets or sets the public network access. */
   publicNetworkAccess?: AccountPropertiesInputPublicNetworkAccess | (string & {});
 }
-const AccountPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccountPropertiesInput>;
-
 export interface AccountsCreateOrUpdateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -98,15 +70,8 @@ export interface AccountsCreateOrUpdateRequest {
   /** Gets or sets the properties. */
   properties?: AccountPropertiesInput;
 }
-const AccountsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AccountsCreateOrUpdateRequest>;
-
 /** Identity Type */
 export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
-const IdentityType = S.String;
-
 /** Uses client ID and Principal ID */
 export interface UserAssignedIdentity {
   /** Gets or Sets Client ID */
@@ -114,15 +79,8 @@ export interface UserAssignedIdentity {
   /** Gets or Sets Principal ID */
   principalId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UserAssignedIdentity>;
-
 /** User Assigned Identities */
 export type IdentityUserAssignedIdentitiesMap = { [key: string]: UserAssignedIdentity | undefined };
-const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
-
 /** The Managed Identity of the resource */
 export interface Identity {
   /** Service principal object Id */
@@ -134,16 +92,10 @@ export interface Identity {
   /** User Assigned Identities */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-const Identity = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Identity>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The timestamp of resource creation (UTC). */
@@ -159,13 +111,8 @@ export interface SystemData {
   /** The type of identity that last modified the resource. */
   lastModifiedByType?: SystemDataLastModifiedByType;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SystemData>;
-
 /** Tags on the azure resource. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const AccountsCreateOrUpdateResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
-
 /** Gets the account status code. */
 export type AccountStatusAccountProvisioningState =
   | "Unknown"
@@ -178,15 +125,8 @@ export type AccountStatusAccountProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled";
-const AccountStatusAccountProvisioningState = S.String;
-
 /** Gets or sets the details. */
 export type ErrorModelDetailsList = Array<ErrorModel>;
-const ErrorModelDetailsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ErrorModelDetailsList>;
-
 /** Default error model */
 export interface ErrorModel {
   /** Gets or sets the code. */
@@ -198,8 +138,6 @@ export interface ErrorModel {
   /** Gets or sets the target. */
   target?: string;
 }
-const ErrorModel = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ErrorModel>;
-
 /** The account status. */
 export interface AccountStatus {
   /** Gets the account status code. */
@@ -207,15 +145,11 @@ export interface AccountStatus {
   /** Gets the account error details. */
   errorDetails?: ErrorModel;
 }
-const AccountStatus = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AccountStatus>;
-
 /** External Cloud Service connectors */
 export interface CloudConnectors {
   /** AWS external identifier. Configured in AWS to allow use of the role arn used for scanning */
   awsExternalId?: string;
 }
-const CloudConnectors = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CloudConnectors>;
-
 /** The account endpoints */
 export interface AccountEndpoints {
   /** Gets the catalog endpoint. */
@@ -225,12 +159,8 @@ export interface AccountEndpoints {
   /** Gets the scan endpoint. */
   scan?: string;
 }
-const AccountEndpoints = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AccountEndpoints>;
-
 /** Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed. */
 export type AccountPropertiesManagedEventHubState = "NotSpecified" | "Disabled" | "Enabled";
-const AccountPropertiesManagedEventHubState = S.String;
-
 /** The managed resources in customer subscription. */
 export interface ManagedResources {
   /** Gets the managed event hub namespace resource identifier. */
@@ -240,22 +170,16 @@ export interface ManagedResources {
   /** Gets the managed storage account resource identifier. */
   storageAccount?: string;
 }
-const ManagedResources = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ManagedResources>;
-
 /** Gets or sets the public network access for managed resources. */
 export type AccountPropertiesManagedResourcesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
   | "Disabled";
-const AccountPropertiesManagedResourcesPublicNetworkAccess = S.String;
-
 /** A private endpoint class. */
 export interface PrivateEndpoint {
   /** The private endpoint identifier. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PrivateEndpoint>;
-
 /** The status. */
 export type PrivateLinkServiceConnectionStateStatus =
   | "Unknown"
@@ -263,8 +187,6 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Approved"
   | "Rejected"
   | "Disconnected";
-const PrivateLinkServiceConnectionStateStatus = S.String;
-
 /** The private link service connection state. */
 export interface PrivateLinkServiceConnectionState {
   /** The required actions. */
@@ -274,11 +196,6 @@ export interface PrivateLinkServiceConnectionState {
   /** The status. */
   status?: PrivateLinkServiceConnectionStateStatus | (string & {});
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** A private endpoint connection properties class. */
 export interface PrivateEndpointConnectionProperties {
   /** The private endpoint information. */
@@ -288,11 +205,6 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state. */
   provisioningState?: string;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** A private endpoint connection class. */
 export interface PrivateEndpointConnection {
   /** Gets or sets the identifier. */
@@ -306,18 +218,8 @@ export interface PrivateEndpointConnection {
   /** The connection identifier. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** Gets the private endpoint connections information. */
 export type AccountPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const AccountPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AccountPropertiesPrivateEndpointConnectionsList>;
-
 /** Gets or sets the state of the provisioning. */
 export type AccountPropertiesProvisioningState =
   | "Unknown"
@@ -329,12 +231,8 @@ export type AccountPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled";
-const AccountPropertiesProvisioningState = S.String;
-
 /** Gets or sets the public network access. */
 export type AccountPropertiesPublicNetworkAccess = "NotSpecified" | "Enabled" | "Disabled";
-const AccountPropertiesPublicNetworkAccess = S.String;
-
 /** The account properties */
 export interface AccountProperties {
   /** Gets or sets the status of the account. */
@@ -366,12 +264,8 @@ export interface AccountProperties {
   /** Gets or sets the public network access. */
   publicNetworkAccess?: AccountPropertiesPublicNetworkAccess;
 }
-const AccountProperties = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AccountProperties>;
-
 /** Gets or sets the sku name. */
 export type AccountSkuName = "Standard";
-const AccountSkuName = S.String;
-
 /** The Sku */
 export interface AccountSku {
   /** Gets or sets the sku capacity. */
@@ -379,8 +273,6 @@ export interface AccountSku {
   /** Gets or sets the sku name. */
   name?: AccountSkuName;
 }
-const AccountSku = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AccountSku>;
-
 export interface AccountsCreateOrUpdateResponse {
   /** Gets or sets the identifier. */
   id?: string;
@@ -401,11 +293,6 @@ export interface AccountsCreateOrUpdateResponse {
   /** Gets or sets the Sku. */
   sku?: AccountSku;
 }
-const AccountsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AccountsCreateOrUpdateResponse>;
-
 export interface AddAccountRootCollectionAdminRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -416,17 +303,7 @@ export interface AddAccountRootCollectionAdminRequest {
   /** Gets or sets the object identifier of the admin. */
   objectId?: string;
 }
-const AddAccountRootCollectionAdminRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AddAccountRootCollectionAdminRequest>;
-
 export interface AddAccountRootCollectionAdminResponse {}
-const AddAccountRootCollectionAdminResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<AddAccountRootCollectionAdminResponse>;
-
 export interface CheckAccountNameAvailabilityRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -435,15 +312,8 @@ export interface CheckAccountNameAvailabilityRequest {
   /** Fully qualified resource type which includes provider namespace */
   type?: string;
 }
-const CheckAccountNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CheckAccountNameAvailabilityRequest>;
-
 /** The reason the name is not available. */
 export type CheckNameAvailabilityResultReason = "Invalid" | "AlreadyExists";
-const CheckNameAvailabilityResultReason = S.String;
-
 /** The response payload for CheckNameAvailability API */
 export interface CheckNameAvailabilityResult {
   /** Error message */
@@ -453,11 +323,6 @@ export interface CheckNameAvailabilityResult {
   /** The reason the name is not available. */
   reason?: CheckNameAvailabilityResultReason;
 }
-const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CheckNameAvailabilityResult>;
-
 export interface DeleteAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -466,11 +331,7 @@ export interface DeleteAccountRequest {
   /** The name of the account. */
   accountName: string;
 }
-const DeleteAccountRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteAccountRequest>;
-
 export interface DeleteAccountResponse {}
-const DeleteAccountResponse = UserAssignedIdentityInput as any as S.Schema<DeleteAccountResponse>;
-
 export interface DeleteKafkaConfigurationRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -481,15 +342,7 @@ export interface DeleteKafkaConfigurationRequest {
   /** Name of kafka configuration. */
   kafkaConfigurationName: string;
 }
-const DeleteKafkaConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteKafkaConfigurationRequest>;
-
 export interface DeleteKafkaConfigurationResponse {}
-const DeleteKafkaConfigurationResponse =
-  AddAccountRootCollectionAdminResponse as any as S.Schema<DeleteKafkaConfigurationResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -500,15 +353,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** Name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  AddAccountRootCollectionAdminResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface GetAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -517,13 +362,8 @@ export interface GetAccountRequest {
   /** The name of the account. */
   accountName: string;
 }
-const GetAccountRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetAccountRequest>;
-
 /** Tags on the azure resource. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-const GetAccountResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
-
 export interface GetAccountResponse {
   /** Gets or sets the identifier. */
   id?: string;
@@ -544,11 +384,7 @@ export interface GetAccountResponse {
   /** Gets or sets the Sku. */
   sku?: AccountSku;
 }
-const GetAccountResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetAccountResponse>;
-
 export type GetDefaultAccountRequestScopeType = "Tenant" | "Subscription";
-const GetDefaultAccountRequestScopeType = S.String;
-
 export interface GetDefaultAccountRequest {
   /** The tenant ID. */
   scopeTenantId: string;
@@ -557,15 +393,8 @@ export interface GetDefaultAccountRequest {
   /** The Id of the scope object, for example if the scope is "Subscription" then it is the ID of that subscription. */
   scope?: string;
 }
-const GetDefaultAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetDefaultAccountRequest>;
-
 /** The scope where the default account is set. */
 export type DefaultAccountPayloadScopeType = "Tenant" | "Subscription";
-const DefaultAccountPayloadScopeType = S.String;
-
 /** Payload to get and set the default account in the given scope */
 export interface DefaultAccountPayload {
   /** The name of the account that is set as the default. */
@@ -581,18 +410,8 @@ export interface DefaultAccountPayload {
   /** The subscription ID of the account that is set as the default. */
   subscriptionId?: string;
 }
-const DefaultAccountPayload = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DefaultAccountPayload>;
-
 /** Set of features */
 export type GetFeaturesAccountRequestFeaturesList = Array<string>;
-const GetFeaturesAccountRequestFeaturesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetFeaturesAccountRequestFeaturesList>;
-
 export interface GetFeaturesAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -603,30 +422,15 @@ export interface GetFeaturesAccountRequest {
   /** Set of features */
   features?: GetFeaturesAccountRequestFeaturesList;
 }
-const GetFeaturesAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetFeaturesAccountRequest>;
-
 /** Features with enabled status */
 export type BatchFeatureStatusFeaturesMap = { [key: string]: boolean | undefined };
-const BatchFeatureStatusFeaturesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<BatchFeatureStatusFeaturesMap>;
-
 /** List of features with enabled status */
 export interface BatchFeatureStatus {
   /** Features with enabled status */
   features?: BatchFeatureStatusFeaturesMap;
 }
-const BatchFeatureStatus = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<BatchFeatureStatus>;
-
 /** Set of features */
 export type GetFeaturesSubscriptionRequestFeaturesList = Array<string>;
-const GetFeaturesSubscriptionRequestFeaturesList =
-  GetFeaturesAccountRequestFeaturesList as any as S.Schema<GetFeaturesSubscriptionRequestFeaturesList>;
-
 export interface GetFeaturesSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -635,11 +439,6 @@ export interface GetFeaturesSubscriptionRequest {
   /** Set of features */
   features?: GetFeaturesSubscriptionRequestFeaturesList;
 }
-const GetFeaturesSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetFeaturesSubscriptionRequest>;
-
 export interface GetKafkaConfigurationRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -650,15 +449,8 @@ export interface GetKafkaConfigurationRequest {
   /** Name of kafka configuration. */
   kafkaConfigurationName: string;
 }
-const GetKafkaConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetKafkaConfigurationRequest>;
-
 /** Identity Type. */
 export type CredentialsType = "None" | "SystemAssigned" | "UserAssigned";
-const CredentialsType = S.String;
-
 /** Credentials to access the event streaming service attached to the purview account. */
 export interface Credentials {
   /** Identity identifier for UserAssign type. */
@@ -666,20 +458,12 @@ export interface Credentials {
   /** Identity Type. */
   type?: CredentialsType | (string & {});
 }
-const Credentials = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Credentials>;
-
 /** The event hub type. */
 export type KafkaConfigurationPropertiesEventHubType = "Notification" | "Hook";
-const KafkaConfigurationPropertiesEventHubType = S.String;
-
 /** The state of the event streaming service */
 export type KafkaConfigurationPropertiesEventStreamingState = "Disabled" | "Enabled";
-const KafkaConfigurationPropertiesEventStreamingState = S.String;
-
 /** The event streaming service type */
 export type KafkaConfigurationPropertiesEventStreamingType = "None" | "Managed" | "Azure";
-const KafkaConfigurationPropertiesEventStreamingType = S.String;
-
 /** The kafka configuration properties of the event streaming service attached to the Purview account for kafka notifications. */
 export interface KafkaConfigurationProperties {
   /** Consumer group for hook event hub. */
@@ -696,11 +480,6 @@ export interface KafkaConfigurationProperties {
   /** Optional partition Id for notification event hub. If not set, all partitions will be leveraged. */
   eventHubPartitionId?: string;
 }
-const KafkaConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<KafkaConfigurationProperties>;
-
 export interface GetKafkaConfigurationResponse {
   /** Gets or sets the identifier. */
   id?: string;
@@ -713,11 +492,6 @@ export interface GetKafkaConfigurationResponse {
   /** Gets or sets the kafka configuration properties. */
   properties?: KafkaConfigurationProperties;
 }
-const GetKafkaConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetKafkaConfigurationResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -728,11 +502,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** Name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Gets or sets the identifier. */
   id?: string;
@@ -745,9 +514,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The connection identifier. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetPrivateLinkResourceByGroupIdRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -758,21 +524,10 @@ export interface GetPrivateLinkResourceByGroupIdRequest {
   /** The group identifier. */
   groupId: string;
 }
-const GetPrivateLinkResourceByGroupIdRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetPrivateLinkResourceByGroupIdRequest>;
-
 /** This translates to how many Private IPs should be created for each privately linkable resource. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  GetFeaturesAccountRequestFeaturesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The required zone names for private link resource. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  GetFeaturesAccountRequestFeaturesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** A privately linkable resource properties. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group identifier. */
@@ -782,11 +537,6 @@ export interface PrivateLinkResourceProperties {
   /** The required zone names for private link resource. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** A privately linkable resource. */
 export interface PrivateLinkResource {
   /** The private link resource identifier. */
@@ -798,8 +548,6 @@ export interface PrivateLinkResource {
   /** The private link resource type. */
   type?: string;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PrivateLinkResource>;
-
 export interface GetUsageRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -807,8 +555,6 @@ export interface GetUsageRequest {
   location: string;
   _filter?: string;
 }
-const GetUsageRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetUsageRequest>;
-
 /** Quota name */
 export interface QuotaName {
   /** Gets or sets the localized name value. */
@@ -816,8 +562,6 @@ export interface QuotaName {
   /** Gets or sets the name value. */
   value?: string;
 }
-const QuotaName = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<QuotaName>;
-
 /** Response for usage information */
 export interface Usage {
   /** Current usage quota value */
@@ -831,12 +575,8 @@ export interface Usage {
   /** Quota usage unit. */
   unit?: string;
 }
-const Usage = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Usage>;
-
 /** Collection of usage values. */
 export type UsageListValueList = Array<Usage>;
-const UsageListValueList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<UsageListValueList>;
-
 /** Response for usage get request */
 export interface UsageList {
   /** Collection of usage values. */
@@ -844,8 +584,6 @@ export interface UsageList {
   /** The Url of next result page. */
   nextLink?: string;
 }
-const UsageList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UsageList>;
-
 export interface KafkaConfigurationsCreateOrUpdateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -858,11 +596,6 @@ export interface KafkaConfigurationsCreateOrUpdateRequest {
   /** Gets or sets the kafka configuration properties. */
   properties?: KafkaConfigurationProperties;
 }
-const KafkaConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<KafkaConfigurationsCreateOrUpdateRequest>;
-
 export interface KafkaConfigurationsCreateOrUpdateResponse {
   /** Gets or sets the identifier. */
   id?: string;
@@ -875,9 +608,6 @@ export interface KafkaConfigurationsCreateOrUpdateResponse {
   /** Gets or sets the kafka configuration properties. */
   properties?: KafkaConfigurationProperties;
 }
-const KafkaConfigurationsCreateOrUpdateResponse =
-  GetKafkaConfigurationResponse as any as S.Schema<KafkaConfigurationsCreateOrUpdateResponse>;
-
 export interface ListAccountByResourceGroupRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -886,11 +616,6 @@ export interface ListAccountByResourceGroupRequest {
   /** The skip token. */
   _skipToken?: string;
 }
-const ListAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListAccountByResourceGroupRequest>;
-
 /** Tags on the azure resource. */
 export type AccountTagsMap = { [key: string]: string | undefined };
 /** Account resource */
@@ -914,12 +639,8 @@ export interface Account {
   /** Gets or sets the Sku. */
   sku?: AccountSku;
 }
-const Account = GetAccountResponse as any as S.Schema<Account>;
-
 /** Collection of items of type results. */
 export type AccountListValueList = Array<Account>;
-const AccountListValueList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AccountListValueList>;
-
 /** Paged list of Account resources */
 export interface AccountList {
   /** Total item count. */
@@ -929,19 +650,12 @@ export interface AccountList {
   /** Collection of items of type results. */
   value: AccountListValueList;
 }
-const AccountList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<AccountList>;
-
 export interface ListAccountBySubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
   /** The skip token. */
   _skipToken?: string;
 }
-const ListAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListAccountBySubscriptionRequest>;
-
 export interface ListAccountKeysRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -950,11 +664,6 @@ export interface ListAccountKeysRequest {
   /** The name of the account. */
   accountName: string;
 }
-const ListAccountKeysRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListAccountKeysRequest>;
-
 /** The Account access keys. */
 export interface AccessKeys {
   /** Gets or sets the primary connection string. */
@@ -962,8 +671,6 @@ export interface AccessKeys {
   /** Gets or sets the secondary connection string. */
   atlasKafkaSecondaryEndpoint?: string;
 }
-const AccessKeys = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<AccessKeys>;
-
 export interface ListKafkaConfigurationByAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -974,11 +681,6 @@ export interface ListKafkaConfigurationByAccountRequest {
   /** The skip token. */
   _skipToken?: string;
 }
-const ListKafkaConfigurationByAccountRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListKafkaConfigurationByAccountRequest>;
-
 /** The configuration of the event streaming service resource attached to the Purview account for kafka notifications. */
 export interface KafkaConfiguration {
   /** Gets or sets the identifier. */
@@ -992,15 +694,8 @@ export interface KafkaConfiguration {
   /** Gets or sets the kafka configuration properties. */
   properties?: KafkaConfigurationProperties;
 }
-const KafkaConfiguration = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<KafkaConfiguration>;
-
 /** Collection of items of type results. */
 export type KafkaConfigurationListValueList = Array<KafkaConfiguration>;
-const KafkaConfigurationListValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<KafkaConfigurationListValueList>;
-
 /** Paged list of kafka configuration resources */
 export interface KafkaConfigurationList {
   /** The Url of next result page. */
@@ -1008,17 +703,7 @@ export interface KafkaConfigurationList {
   /** Collection of items of type results. */
   value: KafkaConfigurationListValueList;
 }
-const KafkaConfigurationList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<KafkaConfigurationList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The response model for get operation properties */
 export interface OperationDisplay {
   /** Description of the operation for display purposes */
@@ -1030,8 +715,6 @@ export interface OperationDisplay {
   /** Name of the resource type for display purposes */
   resource?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<OperationDisplay>;
-
 /** log specifications for operation api */
 export interface OperationMetaLogSpecification {
   /** blob duration of the log */
@@ -1041,19 +724,9 @@ export interface OperationMetaLogSpecification {
   /** name of the log category */
   name?: string;
 }
-const OperationMetaLogSpecification = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<OperationMetaLogSpecification>;
-
 /** log specifications for the operation */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
   Array<OperationMetaLogSpecification>;
-const OperationMetaServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<OperationMetaServiceSpecificationLogSpecificationsList>;
-
 /** properties for dimension */
 export interface DimensionProperties {
   /** localized display name of the dimension to customer */
@@ -1063,25 +736,12 @@ export interface DimensionProperties {
   /** flag indicating whether this dimension should be included to the customer in Azure Monitor logs (aka Shoebox) */
   toBeExportedForCustomer?: boolean;
 }
-const DimensionProperties = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DimensionProperties>;
-
 /** properties for dimension */
 export type OperationMetaMetricSpecificationDimensionsList = Array<DimensionProperties>;
-const OperationMetaMetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<OperationMetaMetricSpecificationDimensionsList>;
-
 /** supported aggregation types */
 export type OperationMetaMetricSpecificationSupportedAggregationTypesList = Array<string>;
-const OperationMetaMetricSpecificationSupportedAggregationTypesList =
-  GetFeaturesAccountRequestFeaturesList as any as S.Schema<OperationMetaMetricSpecificationSupportedAggregationTypesList>;
-
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
-  GetFeaturesAccountRequestFeaturesList as any as S.Schema<OperationMetaMetricSpecificationSupportedTimeGrainTypesList>;
-
 /** metric specifications for the operation */
 export interface OperationMetaMetricSpecification {
   /** aggregation type of metric */
@@ -1109,19 +769,9 @@ export interface OperationMetaMetricSpecification {
   /** units for the metric */
   unit?: string;
 }
-const OperationMetaMetricSpecification = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<OperationMetaMetricSpecification>;
-
 /** metric specifications for the operation */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
   Array<OperationMetaMetricSpecification>;
-const OperationMetaServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<OperationMetaServiceSpecificationMetricSpecificationsList>;
-
 /** The operation meta service specification */
 export interface OperationMetaServiceSpecification {
   /** log specifications for the operation */
@@ -1129,18 +779,11 @@ export interface OperationMetaServiceSpecification {
   /** metric specifications for the operation */
   metricSpecifications?: OperationMetaServiceSpecificationMetricSpecificationsList;
 }
-const OperationMetaServiceSpecification = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<OperationMetaServiceSpecification>;
-
 /** properties on meta info */
 export interface OperationProperties {
   /** meta service specification */
   serviceSpecification?: OperationMetaServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<OperationProperties>;
-
 /** Operation resource */
 export interface Operation {
   /** Properties on the operation */
@@ -1154,15 +797,8 @@ export interface Operation {
   /** properties for the operation meta info */
   properties?: OperationProperties;
 }
-const Operation = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Operation>;
-
 /** Collection of items of type results. */
 export type OperationListValueList = Array<Operation>;
-const OperationListValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<OperationListValueList>;
-
 /** Paged list of operation resources */
 export interface OperationList {
   /** The Url of next result page. */
@@ -1170,8 +806,6 @@ export interface OperationList {
   /** Collection of items of type results. */
   value: OperationListValueList;
 }
-const OperationList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<OperationList>;
-
 export interface ListPrivateEndpointConnectionByAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1182,16 +816,8 @@ export interface ListPrivateEndpointConnectionByAccountRequest {
   /** The skip token. */
   _skipToken?: string;
 }
-const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListPrivateEndpointConnectionByAccountRequest>;
-
 /** Collection of items of type results. */
 export type PrivateEndpointConnectionListValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListValueList =
-  AccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListValueList>;
-
 /** Paged list of private endpoint connections */
 export interface PrivateEndpointConnectionList {
   /** The Url of next result page. */
@@ -1199,11 +825,6 @@ export interface PrivateEndpointConnectionList {
   /** Collection of items of type results. */
   value: PrivateEndpointConnectionListValueList;
 }
-const PrivateEndpointConnectionList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<PrivateEndpointConnectionList>;
-
 export interface ListPrivateLinkResourceByAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1212,18 +833,8 @@ export interface ListPrivateLinkResourceByAccountRequest {
   /** The name of the account. */
   accountName: string;
 }
-const ListPrivateLinkResourceByAccountRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListPrivateLinkResourceByAccountRequest>;
-
 /** Collection of items of type results. */
 export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PrivateLinkResourceListValueList>;
-
 /** Paged list of private link resources */
 export interface PrivateLinkResourceList {
   /** The Url of next result page. */
@@ -1231,11 +842,6 @@ export interface PrivateLinkResourceList {
   /** Collection of items of type results. */
   value: PrivateLinkResourceListValueList;
 }
-const PrivateLinkResourceList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<PrivateLinkResourceList>;
-
 /** A private endpoint connection properties class. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The private endpoint information. */
@@ -1243,11 +849,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** The private link service connection state. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1260,11 +861,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The connection identifier. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Gets or sets the identifier. */
   id?: string;
@@ -1277,12 +873,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The connection identifier. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnectionsCreateOrUpdateResponse =
-  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
-
 export type RemoveDefaultAccountRequestScopeType = "Tenant" | "Subscription";
-const RemoveDefaultAccountRequestScopeType = S.String;
-
 export interface RemoveDefaultAccountRequest {
   /** The tenant ID. */
   scopeTenantId: string;
@@ -1291,19 +882,9 @@ export interface RemoveDefaultAccountRequest {
   /** The Id of the scope object, for example if the scope is "Subscription" then it is the ID of that subscription. */
   scope?: string;
 }
-const RemoveDefaultAccountRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<RemoveDefaultAccountRequest>;
-
 export interface RemoveDefaultAccountResponse {}
-const RemoveDefaultAccountResponse =
-  UserAssignedIdentityInput as any as S.Schema<RemoveDefaultAccountResponse>;
-
 /** The scope where the default account is set. */
 export type SetDefaultAccountRequestScopeType = "Tenant" | "Subscription";
-const SetDefaultAccountRequestScopeType = S.String;
-
 export interface SetDefaultAccountRequest {
   /** The name of the account that is set as the default. */
   accountName?: string;
@@ -1318,16 +899,8 @@ export interface SetDefaultAccountRequest {
   /** The subscription ID of the account that is set as the default. */
   subscriptionId?: string;
 }
-const SetDefaultAccountRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<SetDefaultAccountRequest>;
-
 /** Tags on the azure resource. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-const UpdateAccountRequestTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
-
 export interface UpdateAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1342,11 +915,6 @@ export interface UpdateAccountRequest {
   /** Tags on the azure resource. */
   tags?: UpdateAccountRequestTagsMap;
 }
-const UpdateAccountRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<UpdateAccountRequest>;
-
 /** Tags on the azure resource. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAccountResponse {
@@ -1369,8 +937,6 @@ export interface UpdateAccountResponse {
   /** Gets or sets the Sku. */
   sku?: AccountSku;
 }
-const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
-
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Create or update an account resource Creates or updates an account */
 export const AccountsCreateOrUpdate: API.OperationMethod<
@@ -1379,8 +945,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountsCreateOrUpdateRequest,
-  output: AccountsCreateOrUpdateResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<AccountsCreateOrUpdateRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<AccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1394,8 +960,8 @@ export const AddAccountRootCollectionAdmin: API.OperationMethod<
   AddAccountRootCollectionAdminError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAccountRootCollectionAdminRequest,
-  output: AddAccountRootCollectionAdminResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<AddAccountRootCollectionAdminRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<AddAccountRootCollectionAdminResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1409,8 +975,8 @@ export const CheckAccountNameAvailability: API.OperationMethod<
   CheckAccountNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAccountNameAvailabilityRequest,
-  output: CheckNameAvailabilityResult,
+  input: __S(26, __c3, 2) as any as S.Schema<CheckAccountNameAvailabilityRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1424,8 +990,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountRequest,
-  output: DeleteAccountResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1005,8 @@ export const DeleteKafkaConfiguration: API.OperationMethod<
   DeleteKafkaConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKafkaConfigurationRequest,
-  output: DeleteKafkaConfigurationResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<DeleteKafkaConfigurationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteKafkaConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1020,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1469,8 +1035,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountRequest,
-  output: GetAccountResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<GetAccountRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1484,8 +1050,8 @@ export const GetDefaultAccount: API.OperationMethod<
   GetDefaultAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultAccountRequest,
-  output: DefaultAccountPayload,
+  input: __S(33, __c4, 1) as any as S.Schema<GetDefaultAccountRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DefaultAccountPayload>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1499,8 +1065,8 @@ export const GetFeaturesAccount: API.OperationMethod<
   GetFeaturesAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFeaturesAccountRequest,
-  output: BatchFeatureStatus,
+  input: __S(36, __c4, 4) as any as S.Schema<GetFeaturesAccountRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<BatchFeatureStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1514,8 +1080,8 @@ export const GetFeaturesSubscription: API.OperationMethod<
   GetFeaturesSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFeaturesSubscriptionRequest,
-  output: BatchFeatureStatus,
+  input: __S(39, __c4, 7) as any as S.Schema<GetFeaturesSubscriptionRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<BatchFeatureStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1529,8 +1095,8 @@ export const GetKafkaConfiguration: API.OperationMethod<
   GetKafkaConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKafkaConfigurationRequest,
-  output: GetKafkaConfigurationResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<GetKafkaConfigurationRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetKafkaConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1544,8 +1110,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1559,8 +1125,8 @@ export const GetPrivateLinkResourceByGroupId: API.OperationMethod<
   GetPrivateLinkResourceByGroupIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkResourceByGroupIdRequest,
-  output: PrivateLinkResource,
+  input: __S(45, __c5, 5) as any as S.Schema<GetPrivateLinkResourceByGroupIdRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<PrivateLinkResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1574,8 +1140,8 @@ export const GetUsage: API.OperationMethod<
   GetUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsageRequest,
-  output: UsageList,
+  input: __S(48, __c6, 0) as any as S.Schema<GetUsageRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<UsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1155,8 @@ export const KafkaConfigurationsCreateOrUpdate: API.OperationMethod<
   KafkaConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KafkaConfigurationsCreateOrUpdateRequest,
-  output: KafkaConfigurationsCreateOrUpdateResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<KafkaConfigurationsCreateOrUpdateRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<KafkaConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1604,8 +1170,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountByResourceGroupRequest,
-  output: AccountList,
+  input: __S(54, __c6, 6) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1619,8 +1185,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountBySubscriptionRequest,
-  output: AccountList,
+  input: __S(57, __c7, 1) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1634,8 +1200,8 @@ export const ListAccountKeys: API.OperationMethod<
   ListAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountKeysRequest,
-  output: AccessKeys,
+  input: __S(58, __c7, 2) as any as S.Schema<ListAccountKeysRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1649,8 +1215,8 @@ export const ListKafkaConfigurationByAccount: API.OperationMethod<
   ListKafkaConfigurationByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListKafkaConfigurationByAccountRequest,
-  output: KafkaConfigurationList,
+  input: __S(60, __c7, 4) as any as S.Schema<ListKafkaConfigurationByAccountRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<KafkaConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1664,8 +1230,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationList,
+  input: __S(64, __c8, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1679,8 +1245,8 @@ export const ListPrivateEndpointConnectionByAccount: API.OperationMethod<
   ListPrivateEndpointConnectionByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionByAccountRequest,
-  output: PrivateEndpointConnectionList,
+  input: __S(77, __c9, 5) as any as S.Schema<ListPrivateEndpointConnectionByAccountRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<PrivateEndpointConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1694,8 +1260,8 @@ export const ListPrivateLinkResourceByAccount: API.OperationMethod<
   ListPrivateLinkResourceByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourceByAccountRequest,
-  output: PrivateLinkResourceList,
+  input: __S(79, __c9, 7) as any as S.Schema<ListPrivateLinkResourceByAccountRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<PrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1709,8 +1275,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
-  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1290,8 @@ export const RemoveDefaultAccount: API.OperationMethod<
   RemoveDefaultAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveDefaultAccountRequest,
-  output: RemoveDefaultAccountResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<RemoveDefaultAccountRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<RemoveDefaultAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1739,8 +1305,8 @@ export const SetDefaultAccount: API.OperationMethod<
   SetDefaultAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetDefaultAccountRequest,
-  output: DefaultAccountPayload,
+  input: __S(85, __c10, 5) as any as S.Schema<SetDefaultAccountRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DefaultAccountPayload>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1320,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountRequest,
-  output: UpdateAccountResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1769,12 +1335,12 @@ function __c0(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 1:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(IdentityInputType),
-          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 3:
@@ -1782,13 +1348,11 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudConnectors: S.optional(UserAssignedIdentityInput),
-          managedEventHubState: S.optional(AccountPropertiesInputManagedEventHubState),
+          cloudConnectors: S.optional(__S(0, __c0, 0)),
+          managedEventHubState: S.optional(S.String),
           managedResourceGroupName: S.optional(S.String),
-          managedResourcesPublicNetworkAccess: S.optional(
-            AccountPropertiesInputManagedResourcesPublicNetworkAccess,
-          ),
-          publicNetworkAccess: S.optional(AccountPropertiesInputPublicNetworkAccess),
+          managedResourcesPublicNetworkAccess: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountPropertiesInput" });
     case 5:
@@ -1797,10 +1361,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          identity: S.optional(IdentityInput),
+          identity: S.optional(__S(2, __c0, 2)),
           location: S.optional(S.String),
-          tags: S.optional(AccountsCreateOrUpdateRequestTagsMap),
-          properties: S.optional(AccountPropertiesInput),
+          tags: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1820,7 +1384,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 7:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -1830,8 +1394,8 @@ function __c1(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(IdentityType),
-          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "Identity" });
     case 1:
@@ -1839,19 +1403,19 @@ function __c1(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorModel));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(11, __c1, 3)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
-          details: S.optional(ErrorModelDetailsList),
+          details: S.optional(__S(10, __c1, 2)),
           message: S.optional(S.String),
           target: S.optional(S.String),
         }),
@@ -1859,8 +1423,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accountProvisioningState: S.optional(AccountStatusAccountProvisioningState),
-          errorDetails: S.optional(ErrorModel),
+          accountProvisioningState: S.optional(S.String),
+          errorDetails: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "AccountStatus" });
     case 5:
@@ -1900,7 +1464,7 @@ function __c2(j: number): any {
         S.Struct({
           actionsRequired: S.optional(S.String),
           description: S.optional(S.String),
-          status: S.optional(PrivateLinkServiceConnectionStateStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceConnectionState",
@@ -1908,8 +1472,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          privateEndpoint: S.optional(__S(16, __c2, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(17, __c2, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
@@ -1920,55 +1484,53 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(9, __c1, 1)),
           type: S.optional(S.String),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 4:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accountStatus: S.optional(AccountStatus),
-          cloudConnectors: S.optional(CloudConnectors),
+          accountStatus: S.optional(__S(12, __c1, 4)),
+          cloudConnectors: S.optional(__S(13, __c1, 5)),
           createdAt: S.optional(S.String),
           createdBy: S.optional(S.String),
           createdByObjectId: S.optional(S.String),
-          endpoints: S.optional(AccountEndpoints),
+          endpoints: S.optional(__S(14, __c1, 6)),
           friendlyName: S.optional(S.String),
-          managedEventHubState: S.optional(AccountPropertiesManagedEventHubState),
+          managedEventHubState: S.optional(S.String),
           managedResourceGroupName: S.optional(S.String),
-          managedResources: S.optional(ManagedResources),
-          managedResourcesPublicNetworkAccess: S.optional(
-            AccountPropertiesManagedResourcesPublicNetworkAccess,
-          ),
-          privateEndpointConnections: S.optional(AccountPropertiesPrivateEndpointConnectionsList),
-          provisioningState: S.optional(AccountPropertiesProvisioningState),
-          publicNetworkAccess: S.optional(AccountPropertiesPublicNetworkAccess),
+          managedResources: S.optional(__S(15, __c1, 7)),
+          managedResourcesPublicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(20, __c2, 4)),
+          provisioningState: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           capacity: S.optional(S.Number),
-          name: S.optional(AccountSkuName),
+          name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountSku" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          identity: S.optional(Identity),
+          identity: S.optional(__S(8, __c1, 0)),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(AccountsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(3, __c0, 3)),
           type: S.optional(S.String),
-          properties: S.optional(AccountProperties),
-          sku: S.optional(AccountSku),
+          properties: S.optional(__S(21, __c2, 5)),
+          sku: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponse",
@@ -2021,7 +1583,7 @@ function __c3(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(CheckNameAvailabilityResultReason),
+          reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
@@ -2100,21 +1662,21 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          identity: S.optional(Identity),
+          identity: S.optional(__S(8, __c1, 0)),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetAccountResponseTagsMap),
+          systemData: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(3, __c0, 3)),
           type: S.optional(S.String),
-          properties: S.optional(AccountProperties),
-          sku: S.optional(AccountSku),
+          properties: S.optional(__S(21, __c2, 5)),
+          sku: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           scopeTenantId: S.String.pipe(T.Query()),
-          scopeType: GetDefaultAccountRequestScopeType.pipe(T.Query()),
+          scopeType: S.String.pipe(T.Query()),
           scope: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2132,7 +1694,7 @@ function __c4(j: number): any {
           resourceGroupName: S.optional(S.String),
           scope: S.optional(S.String),
           scopeTenantId: S.optional(S.String),
-          scopeType: S.optional(DefaultAccountPayloadScopeType),
+          scopeType: S.optional(S.String),
           subscriptionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefaultAccountPayload" });
@@ -2144,7 +1706,7 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          features: S.optional(GetFeaturesAccountRequestFeaturesList),
+          features: S.optional(__S(35, __c4, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2161,7 +1723,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(BatchFeatureStatusFeaturesMap),
+          features: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "BatchFeatureStatus" });
     case 7:
@@ -2169,7 +1731,7 @@ function __c4(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locations: S.String.pipe(T.Label()),
-          features: S.optional(GetFeaturesSubscriptionRequestFeaturesList),
+          features: S.optional(__S(35, __c4, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2207,18 +1769,18 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identityId: S.optional(S.String),
-          type: S.optional(CredentialsType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Credentials" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           consumerGroup: S.optional(S.String),
-          credentials: S.optional(Credentials),
+          credentials: S.optional(__S(41, __c5, 1)),
           eventHubResourceId: S.optional(S.String),
-          eventHubType: S.optional(KafkaConfigurationPropertiesEventHubType),
-          eventStreamingState: S.optional(KafkaConfigurationPropertiesEventStreamingState),
-          eventStreamingType: S.optional(KafkaConfigurationPropertiesEventStreamingType),
+          eventHubType: S.optional(S.String),
+          eventStreamingState: S.optional(S.String),
+          eventStreamingType: S.optional(S.String),
           eventHubPartitionId: S.optional(S.String),
         }),
       ).annotate({
@@ -2229,9 +1791,9 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(9, __c1, 1)),
           type: S.optional(S.String),
-          properties: S.optional(KafkaConfigurationProperties),
+          properties: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
         identifier: "GetKafkaConfigurationResponse",
@@ -2276,8 +1838,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(35, __c4, 3)),
+          requiredZoneNames: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -2287,7 +1849,7 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(PrivateLinkResourceProperties),
+          properties: S.optional(__S(46, __c5, 6)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
@@ -2323,16 +1885,16 @@ function __c6(j: number): any {
           currentValue: S.optional(S.Number),
           id: S.optional(S.String),
           limit: S.optional(S.Number),
-          name: S.optional(QuotaName),
+          name: S.optional(__S(49, __c6, 1)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usage" });
     case 3:
-      return S.Array(Usage);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(UsageListValueList),
+          value: S.optional(__S(51, __c6, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageList" });
@@ -2343,7 +1905,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           kafkaConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(KafkaConfigurationProperties),
+          properties: S.optional(__S(42, __c5, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2373,7 +1935,7 @@ function __c6(j: number): any {
         identifier: "ListAccountByResourceGroupRequest",
       });
     case 7:
-      return S.Array(Account);
+      return S.Array(__S(32, __c4, 0));
   }
 }
 function __c7(j: number): any {
@@ -2383,7 +1945,7 @@ function __c7(j: number): any {
         S.Struct({
           count: S.optional(S.Number),
           nextLink: S.optional(S.String),
-          value: AccountListValueList,
+          value: __S(55, __c6, 7),
         }),
       ).annotate({ identifier: "AccountList" });
     case 1:
@@ -2447,18 +2009,18 @@ function __c7(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(9, __c1, 1)),
           type: S.optional(S.String),
-          properties: S.optional(KafkaConfigurationProperties),
+          properties: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "KafkaConfiguration" });
     case 6:
-      return S.Array(KafkaConfiguration);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: KafkaConfigurationListValueList,
+          value: __S(62, __c7, 6),
         }),
       ).annotate({ identifier: "KafkaConfigurationList" });
   }
@@ -2496,7 +2058,7 @@ function __c8(j: number): any {
         identifier: "OperationMetaLogSpecification",
       });
     case 3:
-      return S.Array(OperationMetaLogSpecification);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2506,12 +2068,12 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "DimensionProperties" });
     case 5:
-      return S.Array(DimensionProperties);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(OperationMetaMetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(69, __c8, 5)),
           displayDescription: S.optional(S.String),
           displayName: S.optional(S.String),
           enableRegionalMdmAccount: S.optional(S.String),
@@ -2519,19 +2081,15 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
           sourceMdmNamespace: S.optional(S.String),
-          supportedAggregationTypes: S.optional(
-            OperationMetaMetricSpecificationSupportedAggregationTypesList,
-          ),
-          supportedTimeGrainTypes: S.optional(
-            OperationMetaMetricSpecificationSupportedTimeGrainTypesList,
-          ),
+          supportedAggregationTypes: S.optional(__S(35, __c4, 3)),
+          supportedTimeGrainTypes: S.optional(__S(35, __c4, 3)),
           unit: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OperationMetaMetricSpecification",
       });
     case 7:
-      return S.Array(OperationMetaMetricSpecification);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -2539,10 +2097,8 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(OperationMetaServiceSpecificationLogSpecificationsList),
-          metricSpecifications: S.optional(
-            OperationMetaServiceSpecificationMetricSpecificationsList,
-          ),
+          logSpecifications: S.optional(__S(67, __c8, 3)),
+          metricSpecifications: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({
         identifier: "OperationMetaServiceSpecification",
@@ -2550,26 +2106,26 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(OperationMetaServiceSpecification),
+          serviceSpecification: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(65, __c8, 1)),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
           origin: S.optional(S.String),
-          properties: S.optional(OperationProperties),
+          properties: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(Operation);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: OperationListValueList,
+          value: __S(75, __c9, 3),
         }),
       ).annotate({ identifier: "OperationList" });
     case 5:
@@ -2594,7 +2150,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: PrivateEndpointConnectionListValueList,
+          value: __S(20, __c2, 4),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionList",
@@ -2621,19 +2177,19 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: PrivateLinkResourceListValueList,
+          value: __S(80, __c10, 0),
         }),
       ).annotate({ identifier: "PrivateLinkResourceList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          privateEndpoint: S.optional(__S(16, __c2, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -2645,7 +2201,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(82, __c10, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2661,7 +2217,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scopeTenantId: S.String.pipe(T.Query()),
-          scopeType: RemoveDefaultAccountRequestScopeType.pipe(T.Query()),
+          scopeType: S.String.pipe(T.Query()),
           scope: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2681,7 +2237,7 @@ function __c10(j: number): any {
           resourceGroupName: S.optional(S.String),
           scope: S.optional(S.String),
           scopeTenantId: S.optional(S.String),
-          scopeType: S.optional(SetDefaultAccountRequestScopeType),
+          scopeType: S.optional(S.String),
           subscriptionId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2698,9 +2254,9 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          identity: S.optional(IdentityInput),
-          properties: S.optional(AccountPropertiesInput),
-          tags: S.optional(UpdateAccountRequestTagsMap),
+          identity: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2711,4 +2267,9 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "UpdateAccountRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

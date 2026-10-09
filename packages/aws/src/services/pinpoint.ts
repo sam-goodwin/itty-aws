@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Pinpoint", serviceShapeName: "Pinpoint" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mobiletargeting" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2016-12-01");
@@ -157,19 +159,13 @@ export class TooManyRequestsException
     /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type MapOf__string = { [key: string]: string | undefined };
-const MapOf__string = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateApplicationRequest {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateApplicationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateApplicationRequest>;
 export interface CreateAppRequest {
   CreateApplicationRequest?: CreateApplicationRequest;
 }
-const CreateAppRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateAppRequest>;
 export interface ApplicationResponse {
   Arn?: string;
   Id?: string;
@@ -177,11 +173,9 @@ export interface ApplicationResponse {
   tags?: { [key: string]: string | undefined };
   CreationDate?: string;
 }
-const ApplicationResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ApplicationResponse>;
 export interface CreateAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
-const CreateAppResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateAppResponse>;
 export type __EndpointTypesElement =
   | "PUSH"
   | "GCM"
@@ -200,18 +194,11 @@ export type __EndpointTypesElement =
 const __EndpointTypesElement = S.String;
 
 export type ListOf__EndpointTypesElement = __EndpointTypesElement[];
-const ListOf__EndpointTypesElement = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CustomDeliveryConfiguration {
   DeliveryUri?: string;
   EndpointTypes?: __EndpointTypesElement[];
 }
-const CustomDeliveryConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CustomDeliveryConfiguration>;
 export type Action = "OPEN_APP" | "DEEP_LINK" | "URL" | (string & {});
-const Action = S.String;
-
 export interface Message {
   Action?: Action;
   Body?: string;
@@ -226,21 +213,14 @@ export interface Message {
   Title?: string;
   Url?: string;
 }
-const Message = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Message>;
 export interface CampaignCustomMessage {
   Data?: string;
 }
-const CampaignCustomMessage = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CampaignCustomMessage>;
 export interface MessageHeader {
   Name?: string;
   Value?: string;
 }
-const MessageHeader = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MessageHeader>;
 export type ListOfMessageHeader = MessageHeader[];
-const ListOfMessageHeader = /*@__PURE__*/ __L.at(__c1, 2);
 export interface CampaignEmailMessage {
   Body?: string;
   FromAddress?: string;
@@ -248,10 +228,7 @@ export interface CampaignEmailMessage {
   HtmlBody?: string;
   Title?: string;
 }
-const CampaignEmailMessage = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CampaignEmailMessage>;
 export type MessageType = "TRANSACTIONAL" | "PROMOTIONAL" | (string & {});
-const MessageType = S.String;
-
 export interface CampaignSmsMessage {
   Body?: string;
   MessageType?: MessageType;
@@ -260,39 +237,22 @@ export interface CampaignSmsMessage {
   EntityId?: string;
   TemplateId?: string;
 }
-const CampaignSmsMessage = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CampaignSmsMessage>;
 export type Alignment = "LEFT" | "CENTER" | "RIGHT" | (string & {});
-const Alignment = S.String;
-
 export interface InAppMessageBodyConfig {
   Alignment?: Alignment;
   Body?: string;
   TextColor?: string;
 }
-const InAppMessageBodyConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<InAppMessageBodyConfig>;
 export interface InAppMessageHeaderConfig {
   Alignment?: Alignment;
   Header?: string;
   TextColor?: string;
 }
-const InAppMessageHeaderConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<InAppMessageHeaderConfig>;
 export type ButtonAction = "LINK" | "DEEP_LINK" | "CLOSE" | (string & {});
-const ButtonAction = S.String;
-
 export interface OverrideButtonConfiguration {
   ButtonAction?: ButtonAction;
   Link?: string;
 }
-const OverrideButtonConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<OverrideButtonConfiguration>;
 export interface DefaultButtonConfiguration {
   BackgroundColor?: string;
   BorderRadius?: number;
@@ -301,17 +261,12 @@ export interface DefaultButtonConfiguration {
   Text?: string;
   TextColor?: string;
 }
-const DefaultButtonConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DefaultButtonConfiguration>;
 export interface InAppMessageButton {
   Android?: OverrideButtonConfiguration;
   DefaultConfig?: DefaultButtonConfiguration;
   IOS?: OverrideButtonConfiguration;
   Web?: OverrideButtonConfiguration;
 }
-const InAppMessageButton = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<InAppMessageButton>;
 export interface InAppMessageContent {
   BackgroundColor?: string;
   BodyConfig?: InAppMessageBodyConfig;
@@ -320,9 +275,7 @@ export interface InAppMessageContent {
   PrimaryBtn?: InAppMessageButton;
   SecondaryBtn?: InAppMessageButton;
 }
-const InAppMessageContent = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<InAppMessageContent>;
 export type ListOfInAppMessageContent = InAppMessageContent[];
-const ListOfInAppMessageContent = /*@__PURE__*/ __L.at(__c2, 3);
 export type Layout =
   | "BOTTOM_BANNER"
   | "TOP_BANNER"
@@ -331,15 +284,12 @@ export type Layout =
   | "MIDDLE_BANNER"
   | "CAROUSEL"
   | (string & {});
-const Layout = S.String;
-
 export interface CampaignInAppMessage {
   Body?: string;
   Content?: InAppMessageContent[];
   CustomConfig?: { [key: string]: string | undefined };
   Layout?: Layout;
 }
-const CampaignInAppMessage = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CampaignInAppMessage>;
 export interface MessageConfiguration {
   ADMMessage?: Message;
   APNSMessage?: Message;
@@ -351,7 +301,6 @@ export interface MessageConfiguration {
   SMSMessage?: CampaignSmsMessage;
   InAppMessage?: CampaignInAppMessage;
 }
-const MessageConfiguration = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<MessageConfiguration>;
 export type AttributeType =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -361,46 +310,32 @@ export type AttributeType =
   | "ON"
   | "BETWEEN"
   | (string & {});
-const AttributeType = S.String;
-
 export type ListOf__string = string[];
-const ListOf__string = /*@__PURE__*/ __L.at(__c2, 6);
 export interface AttributeDimension {
   AttributeType?: AttributeType;
   Values?: string[];
 }
-const AttributeDimension = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AttributeDimension>;
 export type MapOfAttributeDimension = { [key: string]: AttributeDimension | undefined };
-const MapOfAttributeDimension = /*@__PURE__*/ __L.at(__c3, 0);
 export type DimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
-const DimensionType = S.String;
-
 export interface SetDimension {
   DimensionType?: DimensionType;
   Values?: string[];
 }
-const SetDimension = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SetDimension>;
 export interface MetricDimension {
   ComparisonOperator?: string;
   Value?: number;
 }
-const MetricDimension = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MetricDimension>;
 export type MapOfMetricDimension = { [key: string]: MetricDimension | undefined };
-const MapOfMetricDimension = /*@__PURE__*/ __L.at(__c3, 3);
 export interface EventDimensions {
   Attributes?: { [key: string]: AttributeDimension | undefined };
   EventType?: SetDimension;
   Metrics?: { [key: string]: MetricDimension | undefined };
 }
-const EventDimensions = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EventDimensions>;
 export type FilterType = "SYSTEM" | "ENDPOINT" | (string & {});
-const FilterType = S.String;
-
 export interface CampaignEventFilter {
   Dimensions?: EventDimensions;
   FilterType?: FilterType;
 }
-const CampaignEventFilter = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CampaignEventFilter>;
 export type Frequency =
   | "ONCE"
   | "HOURLY"
@@ -410,13 +345,10 @@ export type Frequency =
   | "EVENT"
   | "IN_APP_EVENT"
   | (string & {});
-const Frequency = S.String;
-
 export interface QuietTime {
   End?: string;
   Start?: string;
 }
-const QuietTime = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<QuietTime>;
 export interface Schedule {
   EndTime?: string;
   EventFilter?: CampaignEventFilter;
@@ -426,12 +358,10 @@ export interface Schedule {
   StartTime?: string;
   Timezone?: string;
 }
-const Schedule = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Schedule>;
 export interface Template {
   Name?: string;
   Version?: string;
 }
-const Template = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Template>;
 export interface TemplateConfiguration {
   EmailTemplate?: Template;
   PushTemplate?: Template;
@@ -439,10 +369,6 @@ export interface TemplateConfiguration {
   VoiceTemplate?: Template;
   InAppTemplate?: Template;
 }
-const TemplateConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<TemplateConfiguration>;
 export interface WriteTreatmentResource {
   CustomDeliveryConfiguration?: CustomDeliveryConfiguration;
   MessageConfiguration?: MessageConfiguration;
@@ -452,21 +378,13 @@ export interface WriteTreatmentResource {
   TreatmentDescription?: string;
   TreatmentName?: string;
 }
-const WriteTreatmentResource = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<WriteTreatmentResource>;
 export type ListOfWriteTreatmentResource = WriteTreatmentResource[];
-const ListOfWriteTreatmentResource = /*@__PURE__*/ __L.at(__c4, 3);
 export type Mode = "DELIVERY" | "FILTER" | (string & {});
-const Mode = S.String;
-
 export interface CampaignHook {
   LambdaFunctionName?: string;
   Mode?: Mode;
   WebUrl?: string;
 }
-const CampaignHook = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CampaignHook>;
 export interface CampaignLimits {
   Daily?: number;
   MaximumDuration?: number;
@@ -474,7 +392,6 @@ export interface CampaignLimits {
   Total?: number;
   Session?: number;
 }
-const CampaignLimits = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CampaignLimits>;
 export interface WriteCampaignRequest {
   AdditionalTreatments?: WriteTreatmentResource[];
   CustomDeliveryConfiguration?: CustomDeliveryConfiguration;
@@ -494,15 +411,10 @@ export interface WriteCampaignRequest {
   TreatmentName?: string;
   Priority?: number;
 }
-const WriteCampaignRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<WriteCampaignRequest>;
 export interface CreateCampaignRequest {
   ApplicationId: string;
   WriteCampaignRequest?: WriteCampaignRequest;
 }
-const CreateCampaignRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateCampaignRequest>;
 export type CampaignStatus =
   | "SCHEDULED"
   | "EXECUTING"
@@ -512,12 +424,9 @@ export type CampaignStatus =
   | "DELETED"
   | "INVALID"
   | (string & {});
-const CampaignStatus = S.String;
-
 export interface CampaignState {
   CampaignStatus?: CampaignStatus;
 }
-const CampaignState = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CampaignState>;
 export interface TreatmentResource {
   CustomDeliveryConfiguration?: CustomDeliveryConfiguration;
   Id?: string;
@@ -529,9 +438,7 @@ export interface TreatmentResource {
   TreatmentDescription?: string;
   TreatmentName?: string;
 }
-const TreatmentResource = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TreatmentResource>;
 export type ListOfTreatmentResource = TreatmentResource[];
-const ListOfTreatmentResource = /*@__PURE__*/ __L.at(__c5, 2);
 export interface CampaignResponse {
   AdditionalTreatments?: TreatmentResource[];
   ApplicationId?: string;
@@ -559,7 +466,6 @@ export interface CampaignResponse {
   Version?: number;
   Priority?: number;
 }
-const CampaignResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CampaignResponse>;
 export interface CreateCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -679,10 +585,6 @@ export interface CreateCampaignResponse {
     };
   };
 }
-const CreateCampaignResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateCampaignResponse>;
 export interface EmailTemplateRequest {
   DefaultSubstitutions?: string;
   HtmlPart?: string;
@@ -693,53 +595,34 @@ export interface EmailTemplateRequest {
   TemplateDescription?: string;
   TextPart?: string;
 }
-const EmailTemplateRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<EmailTemplateRequest>;
 export interface CreateEmailTemplateRequest {
   EmailTemplateRequest?: EmailTemplateRequest;
   TemplateName: string;
 }
-const CreateEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateEmailTemplateRequest>;
 export interface CreateTemplateMessageBody {
   Arn?: string;
   Message?: string;
   RequestID?: string;
 }
-const CreateTemplateMessageBody = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateTemplateMessageBody>;
 export interface CreateEmailTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-const CreateEmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateEmailTemplateResponse>;
 export interface ExportJobRequest {
   RoleArn?: string;
   S3UrlPrefix?: string;
   SegmentId?: string;
   SegmentVersion?: number;
 }
-const ExportJobRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ExportJobRequest>;
 export interface CreateExportJobRequest {
   ApplicationId: string;
   ExportJobRequest?: ExportJobRequest;
 }
-const CreateExportJobRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateExportJobRequest>;
 export interface ExportJobResource {
   RoleArn?: string;
   S3UrlPrefix?: string;
   SegmentId?: string;
   SegmentVersion?: number;
 }
-const ExportJobResource = ExportJobRequest as any as S.Schema<ExportJobResource>;
 export type JobStatus =
   | "CREATED"
   | "PREPARING_FOR_INITIALIZATION"
@@ -751,8 +634,6 @@ export type JobStatus =
   | "FAILING"
   | "FAILED"
   | (string & {});
-const JobStatus = S.String;
-
 export interface ExportJobResponse {
   ApplicationId?: string;
   CompletedPieces?: number;
@@ -768,7 +649,6 @@ export interface ExportJobResponse {
   TotalProcessed?: number;
   Type?: string;
 }
-const ExportJobResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ExportJobResponse>;
 export interface CreateExportJobResponse {
   ExportJobResponse: ExportJobResponse & {
     ApplicationId: string;
@@ -779,13 +659,7 @@ export interface CreateExportJobResponse {
     Type: string;
   };
 }
-const CreateExportJobResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateExportJobResponse>;
 export type Format = "CSV" | "JSON" | (string & {});
-const Format = S.String;
-
 export interface ImportJobRequest {
   DefineSegment?: boolean;
   ExternalId?: string;
@@ -796,15 +670,10 @@ export interface ImportJobRequest {
   SegmentId?: string;
   SegmentName?: string;
 }
-const ImportJobRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ImportJobRequest>;
 export interface CreateImportJobRequest {
   ApplicationId: string;
   ImportJobRequest?: ImportJobRequest;
 }
-const CreateImportJobRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateImportJobRequest>;
 export interface ImportJobResource {
   DefineSegment?: boolean;
   ExternalId?: string;
@@ -815,7 +684,6 @@ export interface ImportJobResource {
   SegmentId?: string;
   SegmentName?: string;
 }
-const ImportJobResource = ImportJobRequest as any as S.Schema<ImportJobResource>;
 export interface ImportJobResponse {
   ApplicationId?: string;
   CompletedPieces?: number;
@@ -831,7 +699,6 @@ export interface ImportJobResponse {
   TotalProcessed?: number;
   Type?: string;
 }
-const ImportJobResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ImportJobResponse>;
 export interface CreateImportJobResponse {
   ImportJobResponse: ImportJobResponse & {
     ApplicationId: string;
@@ -842,10 +709,6 @@ export interface CreateImportJobResponse {
     Type: string;
   };
 }
-const CreateImportJobResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateImportJobResponse>;
 export interface InAppTemplateRequest {
   Content?: InAppMessageContent[];
   CustomConfig?: { [key: string]: string | undefined };
@@ -853,33 +716,21 @@ export interface InAppTemplateRequest {
   tags?: { [key: string]: string | undefined };
   TemplateDescription?: string;
 }
-const InAppTemplateRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<InAppTemplateRequest>;
 export interface CreateInAppTemplateRequest {
   InAppTemplateRequest?: InAppTemplateRequest;
   TemplateName: string;
 }
-const CreateInAppTemplateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateInAppTemplateRequest>;
 export interface TemplateCreateMessageBody {
   Arn?: string;
   Message?: string;
   RequestID?: string;
 }
-const TemplateCreateMessageBody =
-  CreateTemplateMessageBody as any as S.Schema<TemplateCreateMessageBody>;
 export interface CreateInAppTemplateResponse {
   TemplateCreateMessageBody: TemplateCreateMessageBody;
 }
-const CreateInAppTemplateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateInAppTemplateResponse>;
 export interface JourneyCustomMessage {
   Data?: string;
 }
-const JourneyCustomMessage = CampaignCustomMessage as any as S.Schema<JourneyCustomMessage>;
 export interface CustomMessageActivity {
   DeliveryUri?: string;
   EndpointTypes?: __EndpointTypesElement[];
@@ -888,34 +739,22 @@ export interface CustomMessageActivity {
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const CustomMessageActivity = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CustomMessageActivity>;
 export interface EventCondition {
   Dimensions?: EventDimensions;
   MessageActivity?: string;
 }
-const EventCondition = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<EventCondition>;
 export interface SegmentCondition {
   SegmentId?: string;
 }
-const SegmentCondition = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SegmentCondition>;
 export type Duration = "HR_24" | "DAY_7" | "DAY_14" | "DAY_30" | (string & {});
-const Duration = S.String;
-
 export type RecencyType = "ACTIVE" | "INACTIVE" | (string & {});
-const RecencyType = S.String;
-
 export interface RecencyDimension {
   Duration?: Duration;
   RecencyType?: RecencyType;
 }
-const RecencyDimension = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<RecencyDimension>;
 export interface SegmentBehaviors {
   Recency?: RecencyDimension;
 }
-const SegmentBehaviors = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SegmentBehaviors>;
 export interface SegmentDemographics {
   AppVersion?: SetDimension;
   Channel?: SetDimension;
@@ -924,22 +763,18 @@ export interface SegmentDemographics {
   Model?: SetDimension;
   Platform?: SetDimension;
 }
-const SegmentDemographics = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SegmentDemographics>;
 export interface GPSCoordinates {
   Latitude?: number;
   Longitude?: number;
 }
-const GPSCoordinates = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GPSCoordinates>;
 export interface GPSPointDimension {
   Coordinates?: GPSCoordinates;
   RangeInKilometers?: number;
 }
-const GPSPointDimension = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GPSPointDimension>;
 export interface SegmentLocation {
   Country?: SetDimension;
   GPSPoint?: GPSPointDimension;
 }
-const SegmentLocation = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<SegmentLocation>;
 export interface SegmentDimensions {
   Attributes?: { [key: string]: AttributeDimension | undefined };
   Behavior?: SegmentBehaviors;
@@ -948,95 +783,67 @@ export interface SegmentDimensions {
   Metrics?: { [key: string]: MetricDimension | undefined };
   UserAttributes?: { [key: string]: AttributeDimension | undefined };
 }
-const SegmentDimensions = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<SegmentDimensions>;
 export interface SimpleCondition {
   EventCondition?: EventCondition;
   SegmentCondition?: SegmentCondition;
   SegmentDimensions?: SegmentDimensions;
 }
-const SimpleCondition = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<SimpleCondition>;
 export type ListOfSimpleCondition = SimpleCondition[];
-const ListOfSimpleCondition = /*@__PURE__*/ __L.at(__c8, 7);
 export type Operator = "ALL" | "ANY" | (string & {});
-const Operator = S.String;
-
 export interface Condition {
   Conditions?: SimpleCondition[];
   Operator?: Operator;
 }
-const Condition = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Condition>;
 export interface WaitTime {
   WaitFor?: string;
   WaitUntil?: string;
 }
-const WaitTime = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<WaitTime>;
 export interface ConditionalSplitActivity {
   Condition?: Condition;
   EvaluationWaitTime?: WaitTime;
   FalseActivity?: string;
   TrueActivity?: string;
 }
-const ConditionalSplitActivity = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ConditionalSplitActivity>;
 export interface JourneyEmailMessage {
   FromAddress?: string;
 }
-const JourneyEmailMessage = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<JourneyEmailMessage>;
 export interface EmailMessageActivity {
   MessageConfig?: JourneyEmailMessage;
   NextActivity?: string;
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const EmailMessageActivity = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<EmailMessageActivity>;
 export interface HoldoutActivity {
   NextActivity?: string;
   Percentage?: number;
 }
-const HoldoutActivity = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<HoldoutActivity>;
 export interface MultiConditionalBranch {
   Condition?: SimpleCondition;
   NextActivity?: string;
 }
-const MultiConditionalBranch = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<MultiConditionalBranch>;
 export type ListOfMultiConditionalBranch = MultiConditionalBranch[];
-const ListOfMultiConditionalBranch = /*@__PURE__*/ __L.at(__c9, 7);
 export interface MultiConditionalSplitActivity {
   Branches?: MultiConditionalBranch[];
   DefaultActivity?: string;
   EvaluationWaitTime?: WaitTime;
 }
-const MultiConditionalSplitActivity = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<MultiConditionalSplitActivity>;
 export interface JourneyPushMessage {
   TimeToLive?: string;
 }
-const JourneyPushMessage = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<JourneyPushMessage>;
 export interface PushMessageActivity {
   MessageConfig?: JourneyPushMessage;
   NextActivity?: string;
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const PushMessageActivity = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<PushMessageActivity>;
 export interface RandomSplitEntry {
   NextActivity?: string;
   Percentage?: number;
 }
-const RandomSplitEntry = HoldoutActivity as any as S.Schema<RandomSplitEntry>;
 export type ListOfRandomSplitEntry = RandomSplitEntry[];
-const ListOfRandomSplitEntry = /*@__PURE__*/ __L.at(__c10, 3);
 export interface RandomSplitActivity {
   Branches?: RandomSplitEntry[];
 }
-const RandomSplitActivity = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<RandomSplitActivity>;
 export interface JourneySMSMessage {
   MessageType?: MessageType;
   OriginationNumber?: string;
@@ -1044,26 +851,19 @@ export interface JourneySMSMessage {
   EntityId?: string;
   TemplateId?: string;
 }
-const JourneySMSMessage = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<JourneySMSMessage>;
 export interface SMSMessageActivity {
   MessageConfig?: JourneySMSMessage;
   NextActivity?: string;
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const SMSMessageActivity = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<SMSMessageActivity>;
 export interface WaitActivity {
   NextActivity?: string;
   WaitTime?: WaitTime;
 }
-const WaitActivity = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<WaitActivity>;
 export interface ContactCenterActivity {
   NextActivity?: string;
 }
-const ContactCenterActivity = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ContactCenterActivity>;
 export interface Activity {
   CUSTOM?: CustomMessageActivity;
   ConditionalSplit?: ConditionalSplitActivity;
@@ -1077,14 +877,11 @@ export interface Activity {
   Wait?: WaitActivity;
   ContactCenter?: ContactCenterActivity;
 }
-const Activity = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Activity>;
 export type MapOfActivity = { [key: string]: Activity | undefined };
-const MapOfActivity = /*@__PURE__*/ __L.at(__c11, 2);
 export interface JourneyTimeframeCap {
   Cap?: number;
   Days?: number;
 }
-const JourneyTimeframeCap = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<JourneyTimeframeCap>;
 export interface JourneyLimits {
   DailyCap?: number;
   EndpointReentryCap?: number;
@@ -1093,30 +890,25 @@ export interface JourneyLimits {
   TimeframeCap?: JourneyTimeframeCap;
   TotalCap?: number;
 }
-const JourneyLimits = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<JourneyLimits>;
 export type __timestampIso8601 = Date;
 export interface JourneySchedule {
   EndTime?: Date;
   StartTime?: Date;
   Timezone?: string;
 }
-const JourneySchedule = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<JourneySchedule>;
 export interface EventFilter {
   Dimensions?: EventDimensions;
   FilterType?: FilterType;
 }
-const EventFilter = CampaignEventFilter as any as S.Schema<EventFilter>;
 export interface EventStartCondition {
   EventFilter?: EventFilter;
   SegmentId?: string;
 }
-const EventStartCondition = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<EventStartCondition>;
 export interface StartCondition {
   Description?: string;
   EventStartCondition?: EventStartCondition;
   SegmentStartCondition?: SegmentCondition;
 }
-const StartCondition = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<StartCondition>;
 export type State =
   | "DRAFT"
   | "ACTIVE"
@@ -1125,16 +917,10 @@ export type State =
   | "CLOSED"
   | "PAUSED"
   | (string & {});
-const State = S.String;
-
 export interface JourneyChannelSettings {
   ConnectCampaignArn?: string;
   ConnectCampaignExecutionRoleArn?: string;
 }
-const JourneyChannelSettings = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<JourneyChannelSettings>;
 export type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
@@ -1144,17 +930,12 @@ export type DayOfWeek =
   | "SATURDAY"
   | "SUNDAY"
   | (string & {});
-const DayOfWeek = S.String;
-
 export interface OpenHoursRule {
   StartTime?: string;
   EndTime?: string;
 }
-const OpenHoursRule = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<OpenHoursRule>;
 export type ListOfOpenHoursRules = OpenHoursRule[];
-const ListOfOpenHoursRules = /*@__PURE__*/ __L.at(__c12, 2);
 export type MapOfListOfOpenHoursRules = { [key in DayOfWeek]?: OpenHoursRule[] };
-const MapOfListOfOpenHoursRules = /*@__PURE__*/ __L.at(__c12, 3);
 export interface OpenHours {
   EMAIL?: { [key: string]: OpenHoursRule[] | undefined };
   SMS?: { [key: string]: OpenHoursRule[] | undefined };
@@ -1162,15 +943,12 @@ export interface OpenHours {
   VOICE?: { [key: string]: OpenHoursRule[] | undefined };
   CUSTOM?: { [key: string]: OpenHoursRule[] | undefined };
 }
-const OpenHours = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<OpenHours>;
 export interface ClosedDaysRule {
   Name?: string;
   StartDateTime?: string;
   EndDateTime?: string;
 }
-const ClosedDaysRule = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ClosedDaysRule>;
 export type ListOfClosedDaysRules = ClosedDaysRule[];
-const ListOfClosedDaysRules = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ClosedDays {
   EMAIL?: ClosedDaysRule[];
   SMS?: ClosedDaysRule[];
@@ -1178,12 +956,10 @@ export interface ClosedDays {
   VOICE?: ClosedDaysRule[];
   CUSTOM?: ClosedDaysRule[];
 }
-const ClosedDays = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ClosedDays>;
 export type __TimezoneEstimationMethodsElement = "PHONE_NUMBER" | "POSTAL_CODE" | (string & {});
 const __TimezoneEstimationMethodsElement = S.String;
 
 export type ListOf__TimezoneEstimationMethodsElement = __TimezoneEstimationMethodsElement[];
-const ListOf__TimezoneEstimationMethodsElement = /*@__PURE__*/ __L.at(__c13, 0);
 export interface WriteJourneyRequest {
   Activities?: { [key: string]: Activity | undefined };
   CreationDate?: string;
@@ -1205,15 +981,10 @@ export interface WriteJourneyRequest {
   ClosedDays?: ClosedDays;
   TimezoneEstimationMethods?: __TimezoneEstimationMethodsElement[];
 }
-const WriteJourneyRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<WriteJourneyRequest>;
 export interface CreateJourneyRequest {
   ApplicationId: string;
   WriteJourneyRequest?: WriteJourneyRequest;
 }
-const CreateJourneyRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateJourneyRequest>;
 export interface JourneyResponse {
   Activities?: { [key: string]: Activity | undefined };
   ApplicationId?: string;
@@ -1238,7 +1009,6 @@ export interface JourneyResponse {
   ClosedDays?: ClosedDays;
   TimezoneEstimationMethods?: __TimezoneEstimationMethodsElement[];
 }
-const JourneyResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<JourneyResponse>;
 export interface CreateJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -1376,10 +1146,6 @@ export interface CreateJourneyResponse {
     };
   };
 }
-const CreateJourneyResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateJourneyResponse>;
 export interface AndroidPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -1391,10 +1157,6 @@ export interface AndroidPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-const AndroidPushNotificationTemplate = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<AndroidPushNotificationTemplate>;
 export interface APNSPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -1404,10 +1166,6 @@ export interface APNSPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-const APNSPushNotificationTemplate = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<APNSPushNotificationTemplate>;
 export interface DefaultPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -1415,10 +1173,6 @@ export interface DefaultPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-const DefaultPushNotificationTemplate = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DefaultPushNotificationTemplate>;
 export interface PushNotificationTemplateRequest {
   ADM?: AndroidPushNotificationTemplate;
   APNS?: APNSPushNotificationTemplate;
@@ -1430,23 +1184,13 @@ export interface PushNotificationTemplateRequest {
   tags?: { [key: string]: string | undefined };
   TemplateDescription?: string;
 }
-const PushNotificationTemplateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<PushNotificationTemplateRequest>;
 export interface CreatePushTemplateRequest {
   PushNotificationTemplateRequest?: PushNotificationTemplateRequest;
   TemplateName: string;
 }
-const CreatePushTemplateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreatePushTemplateRequest>;
 export interface CreatePushTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-const CreatePushTemplateResponse =
-  CreateEmailTemplateResponse as any as S.Schema<CreatePushTemplateResponse>;
 export interface CreateRecommenderConfigurationShape {
   Attributes?: { [key: string]: string | undefined };
   Description?: string;
@@ -1458,17 +1202,9 @@ export interface CreateRecommenderConfigurationShape {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-const CreateRecommenderConfigurationShape = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateRecommenderConfigurationShape>;
 export interface CreateRecommenderConfigurationRequest {
   CreateRecommenderConfiguration?: CreateRecommenderConfigurationShape;
 }
-const CreateRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateRecommenderConfigurationRequest>;
 export interface RecommenderConfigurationResponse {
   Attributes?: { [key: string]: string | undefined };
   CreationDate?: string;
@@ -1483,10 +1219,6 @@ export interface RecommenderConfigurationResponse {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-const RecommenderConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<RecommenderConfigurationResponse>;
 export interface CreateRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -1496,59 +1228,37 @@ export interface CreateRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-const CreateRecommenderConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateRecommenderConfigurationResponse>;
 export type ListOfSegmentDimensions = SegmentDimensions[];
-const ListOfSegmentDimensions = /*@__PURE__*/ __L.at(__c14, 6);
 export interface SegmentReference {
   Id?: string;
   Version?: number;
 }
-const SegmentReference = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SegmentReference>;
 export type ListOfSegmentReference = SegmentReference[];
-const ListOfSegmentReference = /*@__PURE__*/ __L.at(__c15, 0);
 export type SourceType = "ALL" | "ANY" | "NONE" | (string & {});
-const SourceType = S.String;
-
 export type Type = "ALL" | "ANY" | "NONE" | (string & {});
-const Type = S.String;
-
 export interface SegmentGroup {
   Dimensions?: SegmentDimensions[];
   SourceSegments?: SegmentReference[];
   SourceType?: SourceType;
   Type?: Type;
 }
-const SegmentGroup = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<SegmentGroup>;
 export type ListOfSegmentGroup = SegmentGroup[];
-const ListOfSegmentGroup = /*@__PURE__*/ __L.at(__c15, 2);
 export type Include = "ALL" | "ANY" | "NONE" | (string & {});
-const Include = S.String;
-
 export interface SegmentGroupList {
   Groups?: SegmentGroup[];
   Include?: Include;
 }
-const SegmentGroupList = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<SegmentGroupList>;
 export interface WriteSegmentRequest {
   Dimensions?: SegmentDimensions;
   Name?: string;
   SegmentGroups?: SegmentGroupList;
   tags?: { [key: string]: string | undefined };
 }
-const WriteSegmentRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<WriteSegmentRequest>;
 export interface CreateSegmentRequest {
   ApplicationId: string;
   WriteSegmentRequest?: WriteSegmentRequest;
 }
-const CreateSegmentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<CreateSegmentRequest>;
 export type MapOf__integer = { [key: string]: number | undefined };
-const MapOf__integer = /*@__PURE__*/ __L.at(__c15, 6);
 export interface SegmentImportResource {
   ChannelCounts?: { [key: string]: number | undefined };
   ExternalId?: string;
@@ -1557,13 +1267,7 @@ export interface SegmentImportResource {
   S3Url?: string;
   Size?: number;
 }
-const SegmentImportResource = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<SegmentImportResource>;
 export type SegmentType = "DIMENSIONAL" | "IMPORT" | (string & {});
-const SegmentType = S.String;
-
 export interface SegmentResponse {
   ApplicationId?: string;
   Arn?: string;
@@ -1578,7 +1282,6 @@ export interface SegmentResponse {
   tags?: { [key: string]: string | undefined };
   Version?: number;
 }
-const SegmentResponse = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<SegmentResponse>;
 export interface CreateSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -1658,10 +1361,6 @@ export interface CreateSegmentResponse {
     };
   };
 }
-const CreateSegmentResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<CreateSegmentResponse>;
 export interface SMSTemplateRequest {
   Body?: string;
   DefaultSubstitutions?: string;
@@ -1669,20 +1368,13 @@ export interface SMSTemplateRequest {
   tags?: { [key: string]: string | undefined };
   TemplateDescription?: string;
 }
-const SMSTemplateRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<SMSTemplateRequest>;
 export interface CreateSmsTemplateRequest {
   SMSTemplateRequest?: SMSTemplateRequest;
   TemplateName: string;
 }
-const CreateSmsTemplateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<CreateSmsTemplateRequest>;
 export interface CreateSmsTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-const CreateSmsTemplateResponse =
-  CreateEmailTemplateResponse as any as S.Schema<CreateSmsTemplateResponse>;
 export interface VoiceTemplateRequest {
   Body?: string;
   DefaultSubstitutions?: string;
@@ -1691,30 +1383,16 @@ export interface VoiceTemplateRequest {
   TemplateDescription?: string;
   VoiceId?: string;
 }
-const VoiceTemplateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<VoiceTemplateRequest>;
 export interface CreateVoiceTemplateRequest {
   TemplateName: string;
   VoiceTemplateRequest?: VoiceTemplateRequest;
 }
-const CreateVoiceTemplateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CreateVoiceTemplateRequest>;
 export interface CreateVoiceTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-const CreateVoiceTemplateResponse =
-  CreateEmailTemplateResponse as any as S.Schema<CreateVoiceTemplateResponse>;
 export interface DeleteAdmChannelRequest {
   ApplicationId: string;
 }
-const DeleteAdmChannelRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DeleteAdmChannelRequest>;
 export interface ADMChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -1727,21 +1405,12 @@ export interface ADMChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const ADMChannelResponse = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ADMChannelResponse>;
 export interface DeleteAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
-const DeleteAdmChannelResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<DeleteAdmChannelResponse>;
 export interface DeleteApnsChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsChannelRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<DeleteApnsChannelRequest>;
 export interface APNSChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -1756,21 +1425,12 @@ export interface APNSChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const APNSChannelResponse = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<APNSChannelResponse>;
 export interface DeleteApnsChannelResponse {
   APNSChannelResponse: APNSChannelResponse & { Platform: string };
 }
-const DeleteApnsChannelResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<DeleteApnsChannelResponse>;
 export interface DeleteApnsSandboxChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsSandboxChannelRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DeleteApnsSandboxChannelRequest>;
 export interface APNSSandboxChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -1785,24 +1445,12 @@ export interface APNSSandboxChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const APNSSandboxChannelResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<APNSSandboxChannelResponse>;
 export interface DeleteApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-const DeleteApnsSandboxChannelResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<DeleteApnsSandboxChannelResponse>;
 export interface DeleteApnsVoipChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsVoipChannelRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<DeleteApnsVoipChannelRequest>;
 export interface APNSVoipChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -1817,21 +1465,12 @@ export interface APNSVoipChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const APNSVoipChannelResponse = APNSChannelResponse as any as S.Schema<APNSVoipChannelResponse>;
 export interface DeleteApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-const DeleteApnsVoipChannelResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<DeleteApnsVoipChannelResponse>;
 export interface DeleteApnsVoipSandboxChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsVoipSandboxChannelRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>;
 export interface APNSVoipSandboxChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -1846,30 +1485,18 @@ export interface APNSVoipSandboxChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const APNSVoipSandboxChannelResponse =
-  APNSSandboxChannelResponse as any as S.Schema<APNSVoipSandboxChannelResponse>;
 export interface DeleteApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
-const DeleteApnsVoipSandboxChannelResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>;
 export interface DeleteAppRequest {
   ApplicationId: string;
 }
-const DeleteAppRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<DeleteAppRequest>;
 export interface DeleteAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
-const DeleteAppResponse = CreateAppResponse as any as S.Schema<DeleteAppResponse>;
 export interface DeleteBaiduChannelRequest {
   ApplicationId: string;
 }
-const DeleteBaiduChannelRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<DeleteBaiduChannelRequest>;
 export interface BaiduChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -1883,25 +1510,13 @@ export interface BaiduChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const BaiduChannelResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<BaiduChannelResponse>;
 export interface DeleteBaiduChannelResponse {
   BaiduChannelResponse: BaiduChannelResponse & { Credential: string; Platform: string };
 }
-const DeleteBaiduChannelResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<DeleteBaiduChannelResponse>;
 export interface DeleteCampaignRequest {
   ApplicationId: string;
   CampaignId: string;
 }
-const DeleteCampaignRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<DeleteCampaignRequest>;
 export interface DeleteCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -2021,14 +1636,9 @@ export interface DeleteCampaignResponse {
     };
   };
 }
-const DeleteCampaignResponse = CreateCampaignResponse as any as S.Schema<DeleteCampaignResponse>;
 export interface DeleteEmailChannelRequest {
   ApplicationId: string;
 }
-const DeleteEmailChannelRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<DeleteEmailChannelRequest>;
 export interface EmailChannelResponse {
   ApplicationId?: string;
   ConfigurationSet?: string;
@@ -2047,47 +1657,25 @@ export interface EmailChannelResponse {
   OrchestrationSendingRoleArn?: string;
   Version?: number;
 }
-const EmailChannelResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<EmailChannelResponse>;
 export interface DeleteEmailChannelResponse {
   EmailChannelResponse: EmailChannelResponse & { Platform: string };
 }
-const DeleteEmailChannelResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<DeleteEmailChannelResponse>;
 export interface DeleteEmailTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<DeleteEmailTemplateRequest>;
 export interface MessageBody {
   Message?: string;
   RequestID?: string;
 }
-const MessageBody = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<MessageBody>;
 export interface DeleteEmailTemplateResponse {
   MessageBody: MessageBody;
 }
-const DeleteEmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DeleteEmailTemplateResponse>;
 export interface DeleteEndpointRequest {
   ApplicationId: string;
   EndpointId: string;
 }
-const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DeleteEndpointRequest>;
 export type MapOfListOf__string = { [key: string]: string[] | undefined };
-const MapOfListOf__string = /*@__PURE__*/ __L.at(__c19, 7);
 export type ChannelType =
   | "PUSH"
   | "GCM"
@@ -2103,8 +1691,6 @@ export type ChannelType =
   | "CUSTOM"
   | "IN_APP"
   | (string & {});
-const ChannelType = S.String;
-
 export interface EndpointDemographic {
   AppVersion?: string;
   Locale?: string;
@@ -2115,7 +1701,6 @@ export interface EndpointDemographic {
   PlatformVersion?: string;
   Timezone?: string;
 }
-const EndpointDemographic = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<EndpointDemographic>;
 export interface EndpointLocation {
   City?: string;
   Country?: string;
@@ -2124,14 +1709,11 @@ export interface EndpointLocation {
   PostalCode?: string;
   Region?: string;
 }
-const EndpointLocation = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<EndpointLocation>;
 export type MapOf__double = { [key: string]: number | undefined };
-const MapOf__double = MapOf__integer as any as S.Schema<MapOf__double>;
 export interface EndpointUser {
   UserAttributes?: { [key: string]: string[] | undefined };
   UserId?: string;
 }
-const EndpointUser = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<EndpointUser>;
 export interface EndpointResponse {
   Address?: string;
   ApplicationId?: string;
@@ -2149,21 +1731,12 @@ export interface EndpointResponse {
   RequestId?: string;
   User?: EndpointUser;
 }
-const EndpointResponse = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<EndpointResponse>;
 export interface DeleteEndpointResponse {
   EndpointResponse: EndpointResponse;
 }
-const DeleteEndpointResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<DeleteEndpointResponse>;
 export interface DeleteEventStreamRequest {
   ApplicationId: string;
 }
-const DeleteEventStreamRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<DeleteEventStreamRequest>;
 export interface EventStream {
   ApplicationId?: string;
   DestinationStreamArn?: string;
@@ -2172,7 +1745,6 @@ export interface EventStream {
   LastUpdatedBy?: string;
   RoleArn?: string;
 }
-const EventStream = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<EventStream>;
 export interface DeleteEventStreamResponse {
   EventStream: EventStream & {
     ApplicationId: string;
@@ -2180,17 +1752,9 @@ export interface DeleteEventStreamResponse {
     RoleArn: string;
   };
 }
-const DeleteEventStreamResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<DeleteEventStreamResponse>;
 export interface DeleteGcmChannelRequest {
   ApplicationId: string;
 }
-const DeleteGcmChannelRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<DeleteGcmChannelRequest>;
 export interface GCMChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2206,35 +1770,20 @@ export interface GCMChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const GCMChannelResponse = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<GCMChannelResponse>;
 export interface DeleteGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
-const DeleteGcmChannelResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<DeleteGcmChannelResponse>;
 export interface DeleteInAppTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteInAppTemplateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<DeleteInAppTemplateRequest>;
 export interface DeleteInAppTemplateResponse {
   MessageBody: MessageBody;
 }
-const DeleteInAppTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<DeleteInAppTemplateResponse>;
 export interface DeleteJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
 }
-const DeleteJourneyRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DeleteJourneyRequest>;
 export interface DeleteJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -2372,27 +1921,16 @@ export interface DeleteJourneyResponse {
     };
   };
 }
-const DeleteJourneyResponse = CreateJourneyResponse as any as S.Schema<DeleteJourneyResponse>;
 export interface DeletePushTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeletePushTemplateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DeletePushTemplateRequest>;
 export interface DeletePushTemplateResponse {
   MessageBody: MessageBody;
 }
-const DeletePushTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<DeletePushTemplateResponse>;
 export interface DeleteRecommenderConfigurationRequest {
   RecommenderId: string;
 }
-const DeleteRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DeleteRecommenderConfigurationRequest>;
 export interface DeleteRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -2402,16 +1940,10 @@ export interface DeleteRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-const DeleteRecommenderConfigurationResponse =
-  CreateRecommenderConfigurationResponse as any as S.Schema<DeleteRecommenderConfigurationResponse>;
 export interface DeleteSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
 }
-const DeleteSegmentRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<DeleteSegmentRequest>;
 export interface DeleteSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -2491,14 +2023,9 @@ export interface DeleteSegmentResponse {
     };
   };
 }
-const DeleteSegmentResponse = CreateSegmentResponse as any as S.Schema<DeleteSegmentResponse>;
 export interface DeleteSmsChannelRequest {
   ApplicationId: string;
 }
-const DeleteSmsChannelRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DeleteSmsChannelRequest>;
 export interface SMSChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2515,55 +2042,30 @@ export interface SMSChannelResponse {
   TransactionalMessagesPerSecond?: number;
   Version?: number;
 }
-const SMSChannelResponse = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<SMSChannelResponse>;
 export interface DeleteSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
-const DeleteSmsChannelResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<DeleteSmsChannelResponse>;
 export interface DeleteSmsTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteSmsTemplateRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<DeleteSmsTemplateRequest>;
 export interface DeleteSmsTemplateResponse {
   MessageBody: MessageBody;
 }
-const DeleteSmsTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<DeleteSmsTemplateResponse>;
 export interface DeleteUserEndpointsRequest {
   ApplicationId: string;
   UserId: string;
 }
-const DeleteUserEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<DeleteUserEndpointsRequest>;
 export type ListOfEndpointResponse = EndpointResponse[];
-const ListOfEndpointResponse = /*@__PURE__*/ __L.at(__c22, 5);
 export interface EndpointsResponse {
   Item?: EndpointResponse[];
 }
-const EndpointsResponse = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<EndpointsResponse>;
 export interface DeleteUserEndpointsResponse {
   EndpointsResponse: EndpointsResponse & { Item: ListOfEndpointResponse };
 }
-const DeleteUserEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<DeleteUserEndpointsResponse>;
 export interface DeleteVoiceChannelRequest {
   ApplicationId: string;
 }
-const DeleteVoiceChannelRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<DeleteVoiceChannelRequest>;
 export interface VoiceChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2576,96 +2078,52 @@ export interface VoiceChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const VoiceChannelResponse = ADMChannelResponse as any as S.Schema<VoiceChannelResponse>;
 export interface DeleteVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
-const DeleteVoiceChannelResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<DeleteVoiceChannelResponse>;
 export interface DeleteVoiceTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteVoiceTemplateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<DeleteVoiceTemplateRequest>;
 export interface DeleteVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
-const DeleteVoiceTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<DeleteVoiceTemplateResponse>;
 export interface GetAdmChannelRequest {
   ApplicationId: string;
 }
-const GetAdmChannelRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetAdmChannelRequest>;
 export interface GetAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
-const GetAdmChannelResponse = DeleteAdmChannelResponse as any as S.Schema<GetAdmChannelResponse>;
 export interface GetApnsChannelRequest {
   ApplicationId: string;
 }
-const GetApnsChannelRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetApnsChannelRequest>;
 export interface GetApnsChannelResponse {
   APNSChannelResponse: APNSChannelResponse & { Platform: string };
 }
-const GetApnsChannelResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetApnsChannelResponse>;
 export interface GetApnsSandboxChannelRequest {
   ApplicationId: string;
 }
-const GetApnsSandboxChannelRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetApnsSandboxChannelRequest>;
 export interface GetApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-const GetApnsSandboxChannelResponse =
-  DeleteApnsSandboxChannelResponse as any as S.Schema<GetApnsSandboxChannelResponse>;
 export interface GetApnsVoipChannelRequest {
   ApplicationId: string;
 }
-const GetApnsVoipChannelRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GetApnsVoipChannelRequest>;
 export interface GetApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-const GetApnsVoipChannelResponse =
-  DeleteApnsVoipChannelResponse as any as S.Schema<GetApnsVoipChannelResponse>;
 export interface GetApnsVoipSandboxChannelRequest {
   ApplicationId: string;
 }
-const GetApnsVoipSandboxChannelRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GetApnsVoipSandboxChannelRequest>;
 export interface GetApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
-const GetApnsVoipSandboxChannelResponse =
-  DeleteApnsVoipSandboxChannelResponse as any as S.Schema<GetApnsVoipSandboxChannelResponse>;
 export interface GetAppRequest {
   ApplicationId: string;
 }
-const GetAppRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<GetAppRequest>;
 export interface GetAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
-const GetAppResponse = CreateAppResponse as any as S.Schema<GetAppResponse>;
 export interface GetApplicationDateRangeKpiRequest {
   ApplicationId: string;
   EndTime?: Date;
@@ -2674,29 +2132,20 @@ export interface GetApplicationDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-const GetApplicationDateRangeKpiRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetApplicationDateRangeKpiRequest>;
 export interface ResultRowValue {
   Key?: string;
   Type?: string;
   Value?: string;
 }
-const ResultRowValue = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<ResultRowValue>;
 export type ListOfResultRowValue = ResultRowValue[];
-const ListOfResultRowValue = /*@__PURE__*/ __L.at(__c24, 4);
 export interface ResultRow {
   GroupedBys?: ResultRowValue[];
   Values?: ResultRowValue[];
 }
-const ResultRow = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<ResultRow>;
 export type ListOfResultRow = ResultRow[];
-const ListOfResultRow = /*@__PURE__*/ __L.at(__c24, 6);
 export interface BaseKpiResult {
   Rows?: ResultRow[];
 }
-const BaseKpiResult = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<BaseKpiResult>;
 export interface ApplicationDateRangeKpiResponse {
   ApplicationId?: string;
   EndTime?: Date;
@@ -2705,10 +2154,6 @@ export interface ApplicationDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-const ApplicationDateRangeKpiResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ApplicationDateRangeKpiResponse>;
 export interface GetApplicationDateRangeKpiResponse {
   ApplicationDateRangeKpiResponse: ApplicationDateRangeKpiResponse & {
     ApplicationId: string;
@@ -2723,26 +2168,14 @@ export interface GetApplicationDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-const GetApplicationDateRangeKpiResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GetApplicationDateRangeKpiResponse>;
 export interface GetApplicationSettingsRequest {
   ApplicationId: string;
 }
-const GetApplicationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GetApplicationSettingsRequest>;
 export interface ApplicationSettingsJourneyLimits {
   DailyCap?: number;
   TimeframeCap?: JourneyTimeframeCap;
   TotalCap?: number;
 }
-const ApplicationSettingsJourneyLimits = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ApplicationSettingsJourneyLimits>;
 export interface ApplicationSettingsResource {
   ApplicationId?: string;
   CampaignHook?: CampaignHook;
@@ -2751,57 +2184,33 @@ export interface ApplicationSettingsResource {
   QuietTime?: QuietTime;
   JourneyLimits?: ApplicationSettingsJourneyLimits;
 }
-const ApplicationSettingsResource = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ApplicationSettingsResource>;
 export interface GetApplicationSettingsResponse {
   ApplicationSettingsResource: ApplicationSettingsResource & { ApplicationId: string };
 }
-const GetApplicationSettingsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GetApplicationSettingsResponse>;
 export interface GetAppsRequest {
   PageSize?: string;
   Token?: string;
 }
-const GetAppsRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<GetAppsRequest>;
 export type ListOfApplicationResponse = ApplicationResponse[];
-const ListOfApplicationResponse = /*@__PURE__*/ __L.at(__c25, 7);
 export interface ApplicationsResponse {
   Item?: ApplicationResponse[];
   NextToken?: string;
 }
-const ApplicationsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ApplicationsResponse>;
 export interface GetAppsResponse {
   ApplicationsResponse: ApplicationsResponse & {
     Item: (ApplicationResponse & { Arn: string; Id: string; Name: string })[];
   };
 }
-const GetAppsResponse = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<GetAppsResponse>;
 export interface GetBaiduChannelRequest {
   ApplicationId: string;
 }
-const GetBaiduChannelRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetBaiduChannelRequest>;
 export interface GetBaiduChannelResponse {
   BaiduChannelResponse: BaiduChannelResponse & { Credential: string; Platform: string };
 }
-const GetBaiduChannelResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GetBaiduChannelResponse>;
 export interface GetCampaignRequest {
   ApplicationId: string;
   CampaignId: string;
 }
-const GetCampaignRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<GetCampaignRequest>;
 export interface GetCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -2921,17 +2330,12 @@ export interface GetCampaignResponse {
     };
   };
 }
-const GetCampaignResponse = CreateCampaignResponse as any as S.Schema<GetCampaignResponse>;
 export interface GetCampaignActivitiesRequest {
   ApplicationId: string;
   CampaignId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetCampaignActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GetCampaignActivitiesRequest>;
 export interface ActivityResponse {
   ApplicationId?: string;
   CampaignId?: string;
@@ -2948,23 +2352,16 @@ export interface ActivityResponse {
   TreatmentId?: string;
   ExecutionMetrics?: { [key: string]: string | undefined };
 }
-const ActivityResponse = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<ActivityResponse>;
 export type ListOfActivityResponse = ActivityResponse[];
-const ListOfActivityResponse = /*@__PURE__*/ __L.at(__c26, 7);
 export interface ActivitiesResponse {
   Item?: ActivityResponse[];
   NextToken?: string;
 }
-const ActivitiesResponse = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<ActivitiesResponse>;
 export interface GetCampaignActivitiesResponse {
   ActivitiesResponse: ActivitiesResponse & {
     Item: (ActivityResponse & { ApplicationId: string; CampaignId: string; Id: string })[];
   };
 }
-const GetCampaignActivitiesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GetCampaignActivitiesResponse>;
 export interface GetCampaignDateRangeKpiRequest {
   ApplicationId: string;
   CampaignId: string;
@@ -2974,10 +2371,6 @@ export interface GetCampaignDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-const GetCampaignDateRangeKpiRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GetCampaignDateRangeKpiRequest>;
 export interface CampaignDateRangeKpiResponse {
   ApplicationId?: string;
   CampaignId?: string;
@@ -2987,10 +2380,6 @@ export interface CampaignDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-const CampaignDateRangeKpiResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<CampaignDateRangeKpiResponse>;
 export interface GetCampaignDateRangeKpiResponse {
   CampaignDateRangeKpiResponse: CampaignDateRangeKpiResponse & {
     ApplicationId: string;
@@ -3006,23 +2395,16 @@ export interface GetCampaignDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-const GetCampaignDateRangeKpiResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<GetCampaignDateRangeKpiResponse>;
 export interface GetCampaignsRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetCampaignsRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<GetCampaignsRequest>;
 export type ListOfCampaignResponse = CampaignResponse[];
-const ListOfCampaignResponse = /*@__PURE__*/ __L.at(__c27, 6);
 export interface CampaignsResponse {
   Item?: CampaignResponse[];
   NextToken?: string;
 }
-const CampaignsResponse = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<CampaignsResponse>;
 export interface GetCampaignsResponse {
   CampaignsResponse: CampaignsResponse & {
     Item: (CampaignResponse & {
@@ -3144,19 +2526,11 @@ export interface GetCampaignsResponse {
     })[];
   };
 }
-const GetCampaignsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GetCampaignsResponse>;
 export interface GetCampaignVersionRequest {
   ApplicationId: string;
   CampaignId: string;
   Version: string;
 }
-const GetCampaignVersionRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GetCampaignVersionRequest>;
 export interface GetCampaignVersionResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -3276,20 +2650,12 @@ export interface GetCampaignVersionResponse {
     };
   };
 }
-const GetCampaignVersionResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GetCampaignVersionResponse>;
 export interface GetCampaignVersionsRequest {
   ApplicationId: string;
   CampaignId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetCampaignVersionsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<GetCampaignVersionsRequest>;
 export interface GetCampaignVersionsResponse {
   CampaignsResponse: CampaignsResponse & {
     Item: (CampaignResponse & {
@@ -3411,14 +2777,9 @@ export interface GetCampaignVersionsResponse {
     })[];
   };
 }
-const GetCampaignVersionsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<GetCampaignVersionsResponse>;
 export interface GetChannelsRequest {
   ApplicationId: string;
 }
-const GetChannelsRequest = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<GetChannelsRequest>;
 export interface ChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -3430,42 +2791,24 @@ export interface ChannelResponse {
   LastModifiedDate?: string;
   Version?: number;
 }
-const ChannelResponse = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<ChannelResponse>;
 export type MapOfChannelResponse = { [key: string]: ChannelResponse | undefined };
-const MapOfChannelResponse = /*@__PURE__*/ __L.at(__c28, 7);
 export interface ChannelsResponse {
   Channels?: { [key: string]: ChannelResponse | undefined };
 }
-const ChannelsResponse = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<ChannelsResponse>;
 export interface GetChannelsResponse {
   ChannelsResponse: ChannelsResponse & { Channels: MapOfChannelResponse };
 }
-const GetChannelsResponse = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<GetChannelsResponse>;
 export interface GetEmailChannelRequest {
   ApplicationId: string;
 }
-const GetEmailChannelRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<GetEmailChannelRequest>;
 export interface GetEmailChannelResponse {
   EmailChannelResponse: EmailChannelResponse & { Platform: string };
 }
-const GetEmailChannelResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<GetEmailChannelResponse>;
 export interface GetEmailTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GetEmailTemplateRequest>;
 export type TemplateType = "EMAIL" | "SMS" | "VOICE" | "PUSH" | "INAPP" | (string & {});
-const TemplateType = S.String;
-
 export interface EmailTemplateResponse {
   Arn?: string;
   CreationDate?: string;
@@ -3482,10 +2825,6 @@ export interface EmailTemplateResponse {
   TextPart?: string;
   Version?: string;
 }
-const EmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<EmailTemplateResponse>;
 export interface GetEmailTemplateResponse {
   EmailTemplateResponse: EmailTemplateResponse & {
     CreationDate: string;
@@ -3494,26 +2833,16 @@ export interface GetEmailTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetEmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetEmailTemplateResponse>;
 export interface GetEndpointRequest {
   ApplicationId: string;
   EndpointId: string;
 }
-const GetEndpointRequest = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<GetEndpointRequest>;
 export interface GetEndpointResponse {
   EndpointResponse: EndpointResponse;
 }
-const GetEndpointResponse = DeleteEndpointResponse as any as S.Schema<GetEndpointResponse>;
 export interface GetEventStreamRequest {
   ApplicationId: string;
 }
-const GetEventStreamRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GetEventStreamRequest>;
 export interface GetEventStreamResponse {
   EventStream: EventStream & {
     ApplicationId: string;
@@ -3521,15 +2850,10 @@ export interface GetEventStreamResponse {
     RoleArn: string;
   };
 }
-const GetEventStreamResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GetEventStreamResponse>;
 export interface GetExportJobRequest {
   ApplicationId: string;
   JobId: string;
 }
-const GetExportJobRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<GetExportJobRequest>;
 export interface GetExportJobResponse {
   ExportJobResponse: ExportJobResponse & {
     ApplicationId: string;
@@ -3540,23 +2864,16 @@ export interface GetExportJobResponse {
     Type: string;
   };
 }
-const GetExportJobResponse = CreateExportJobResponse as any as S.Schema<GetExportJobResponse>;
 export interface GetExportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetExportJobsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GetExportJobsRequest>;
 export type ListOfExportJobResponse = ExportJobResponse[];
-const ListOfExportJobResponse = /*@__PURE__*/ __L.at(__c30, 4);
 export interface ExportJobsResponse {
   Item?: ExportJobResponse[];
   NextToken?: string;
 }
-const ExportJobsResponse = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<ExportJobsResponse>;
 export interface GetExportJobsResponse {
   ExportJobsResponse: ExportJobsResponse & {
     Item: (ExportJobResponse & {
@@ -3569,26 +2886,16 @@ export interface GetExportJobsResponse {
     })[];
   };
 }
-const GetExportJobsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetExportJobsResponse>;
 export interface GetGcmChannelRequest {
   ApplicationId: string;
 }
-const GetGcmChannelRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetGcmChannelRequest>;
 export interface GetGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
-const GetGcmChannelResponse = DeleteGcmChannelResponse as any as S.Schema<GetGcmChannelResponse>;
 export interface GetImportJobRequest {
   ApplicationId: string;
   JobId: string;
 }
-const GetImportJobRequest = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<GetImportJobRequest>;
 export interface GetImportJobResponse {
   ImportJobResponse: ImportJobResponse & {
     ApplicationId: string;
@@ -3599,23 +2906,16 @@ export interface GetImportJobResponse {
     Type: string;
   };
 }
-const GetImportJobResponse = CreateImportJobResponse as any as S.Schema<GetImportJobResponse>;
 export interface GetImportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetImportJobsRequest>;
 export type ListOfImportJobResponse = ImportJobResponse[];
-const ListOfImportJobResponse = /*@__PURE__*/ __L.at(__c31, 2);
 export interface ImportJobsResponse {
   Item?: ImportJobResponse[];
   NextToken?: string;
 }
-const ImportJobsResponse = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<ImportJobsResponse>;
 export interface GetImportJobsResponse {
   ImportJobsResponse: ImportJobsResponse & {
     Item: (ImportJobResponse & {
@@ -3628,33 +2928,20 @@ export interface GetImportJobsResponse {
     })[];
   };
 }
-const GetImportJobsResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetImportJobsResponse>;
 export interface GetInAppMessagesRequest {
   ApplicationId: string;
   EndpointId: string;
 }
-const GetInAppMessagesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GetInAppMessagesRequest>;
 export interface InAppMessage {
   Content?: InAppMessageContent[];
   CustomConfig?: { [key: string]: string | undefined };
   Layout?: Layout;
 }
-const InAppMessage = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<InAppMessage>;
 export interface InAppCampaignSchedule {
   EndDate?: string;
   EventFilter?: CampaignEventFilter;
   QuietTime?: QuietTime;
 }
-const InAppCampaignSchedule = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<InAppCampaignSchedule>;
 export interface InAppMessageCampaign {
   CampaignId?: string;
   DailyCap?: number;
@@ -3665,19 +2952,10 @@ export interface InAppMessageCampaign {
   TotalCap?: number;
   TreatmentId?: string;
 }
-const InAppMessageCampaign = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<InAppMessageCampaign>;
 export type ListOfInAppMessageCampaign = InAppMessageCampaign[];
-const ListOfInAppMessageCampaign = /*@__PURE__*/ __L.at(__c32, 1);
 export interface InAppMessagesResponse {
   InAppMessageCampaigns?: InAppMessageCampaign[];
 }
-const InAppMessagesResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<InAppMessagesResponse>;
 export interface GetInAppMessagesResponse {
   InAppMessagesResponse: InAppMessagesResponse & {
     InAppMessageCampaigns: (InAppMessageCampaign & {
@@ -3732,18 +3010,10 @@ export interface GetInAppMessagesResponse {
     })[];
   };
 }
-const GetInAppMessagesResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GetInAppMessagesResponse>;
 export interface GetInAppTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetInAppTemplateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GetInAppTemplateRequest>;
 export interface InAppTemplateResponse {
   Arn?: string;
   Content?: InAppMessageContent[];
@@ -3757,10 +3027,6 @@ export interface InAppTemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const InAppTemplateResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<InAppTemplateResponse>;
 export interface GetInAppTemplateResponse {
   InAppTemplateResponse: InAppTemplateResponse & {
     CreationDate: string;
@@ -3793,15 +3059,10 @@ export interface GetInAppTemplateResponse {
     })[];
   };
 }
-const GetInAppTemplateResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetInAppTemplateResponse>;
 export interface GetJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
 }
-const GetJourneyRequest = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<GetJourneyRequest>;
 export interface GetJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -3939,7 +3200,6 @@ export interface GetJourneyResponse {
     };
   };
 }
-const GetJourneyResponse = CreateJourneyResponse as any as S.Schema<GetJourneyResponse>;
 export interface GetJourneyDateRangeKpiRequest {
   ApplicationId: string;
   EndTime?: Date;
@@ -3949,10 +3209,6 @@ export interface GetJourneyDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-const GetJourneyDateRangeKpiRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<GetJourneyDateRangeKpiRequest>;
 export interface JourneyDateRangeKpiResponse {
   ApplicationId?: string;
   EndTime?: Date;
@@ -3962,10 +3218,6 @@ export interface JourneyDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-const JourneyDateRangeKpiResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<JourneyDateRangeKpiResponse>;
 export interface GetJourneyDateRangeKpiResponse {
   JourneyDateRangeKpiResponse: JourneyDateRangeKpiResponse & {
     ApplicationId: string;
@@ -3981,10 +3233,6 @@ export interface GetJourneyDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-const GetJourneyDateRangeKpiResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GetJourneyDateRangeKpiResponse>;
 export interface GetJourneyExecutionActivityMetricsRequest {
   ApplicationId: string;
   JourneyActivityId: string;
@@ -3992,10 +3240,6 @@ export interface GetJourneyExecutionActivityMetricsRequest {
   NextToken?: string;
   PageSize?: string;
 }
-const GetJourneyExecutionActivityMetricsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GetJourneyExecutionActivityMetricsRequest>;
 export interface JourneyExecutionActivityMetricsResponse {
   ActivityType?: string;
   ApplicationId?: string;
@@ -4004,10 +3248,6 @@ export interface JourneyExecutionActivityMetricsResponse {
   LastEvaluatedTime?: string;
   Metrics?: { [key: string]: string | undefined };
 }
-const JourneyExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<JourneyExecutionActivityMetricsResponse>;
 export interface GetJourneyExecutionActivityMetricsResponse {
   JourneyExecutionActivityMetricsResponse: JourneyExecutionActivityMetricsResponse & {
     ActivityType: string;
@@ -4018,30 +3258,18 @@ export interface GetJourneyExecutionActivityMetricsResponse {
     Metrics: MapOf__string;
   };
 }
-const GetJourneyExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GetJourneyExecutionActivityMetricsResponse>;
 export interface GetJourneyExecutionMetricsRequest {
   ApplicationId: string;
   JourneyId: string;
   NextToken?: string;
   PageSize?: string;
 }
-const GetJourneyExecutionMetricsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GetJourneyExecutionMetricsRequest>;
 export interface JourneyExecutionMetricsResponse {
   ApplicationId?: string;
   JourneyId?: string;
   LastEvaluatedTime?: string;
   Metrics?: { [key: string]: string | undefined };
 }
-const JourneyExecutionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<JourneyExecutionMetricsResponse>;
 export interface GetJourneyExecutionMetricsResponse {
   JourneyExecutionMetricsResponse: JourneyExecutionMetricsResponse & {
     ApplicationId: string;
@@ -4050,10 +3278,6 @@ export interface GetJourneyExecutionMetricsResponse {
     Metrics: MapOf__string;
   };
 }
-const GetJourneyExecutionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<GetJourneyExecutionMetricsResponse>;
 export interface GetJourneyRunExecutionActivityMetricsRequest {
   ApplicationId: string;
   JourneyActivityId: string;
@@ -4062,10 +3286,6 @@ export interface GetJourneyRunExecutionActivityMetricsRequest {
   PageSize?: string;
   RunId: string;
 }
-const GetJourneyRunExecutionActivityMetricsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GetJourneyRunExecutionActivityMetricsRequest>;
 export interface JourneyRunExecutionActivityMetricsResponse {
   ActivityType?: string;
   ApplicationId?: string;
@@ -4075,10 +3295,6 @@ export interface JourneyRunExecutionActivityMetricsResponse {
   Metrics?: { [key: string]: string | undefined };
   RunId?: string;
 }
-const JourneyRunExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<JourneyRunExecutionActivityMetricsResponse>;
 export interface GetJourneyRunExecutionActivityMetricsResponse {
   JourneyRunExecutionActivityMetricsResponse: JourneyRunExecutionActivityMetricsResponse & {
     ActivityType: string;
@@ -4090,10 +3306,6 @@ export interface GetJourneyRunExecutionActivityMetricsResponse {
     RunId: string;
   };
 }
-const GetJourneyRunExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<GetJourneyRunExecutionActivityMetricsResponse>;
 export interface GetJourneyRunExecutionMetricsRequest {
   ApplicationId: string;
   JourneyId: string;
@@ -4101,10 +3313,6 @@ export interface GetJourneyRunExecutionMetricsRequest {
   PageSize?: string;
   RunId: string;
 }
-const GetJourneyRunExecutionMetricsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>;
 export interface JourneyRunExecutionMetricsResponse {
   ApplicationId?: string;
   JourneyId?: string;
@@ -4112,10 +3320,6 @@ export interface JourneyRunExecutionMetricsResponse {
   Metrics?: { [key: string]: string | undefined };
   RunId?: string;
 }
-const JourneyRunExecutionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<JourneyRunExecutionMetricsResponse>;
 export interface GetJourneyRunExecutionMetricsResponse {
   JourneyRunExecutionMetricsResponse: JourneyRunExecutionMetricsResponse & {
     ApplicationId: string;
@@ -4125,37 +3329,24 @@ export interface GetJourneyRunExecutionMetricsResponse {
     RunId: string;
   };
 }
-const GetJourneyRunExecutionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>;
 export interface GetJourneyRunsRequest {
   ApplicationId: string;
   JourneyId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetJourneyRunsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<GetJourneyRunsRequest>;
 export type JourneyRunStatus = "SCHEDULED" | "RUNNING" | "COMPLETED" | "CANCELLED" | (string & {});
-const JourneyRunStatus = S.String;
-
 export interface JourneyRunResponse {
   CreationTime?: string;
   LastUpdateTime?: string;
   RunId?: string;
   Status?: JourneyRunStatus;
 }
-const JourneyRunResponse = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<JourneyRunResponse>;
 export type ListOfJourneyRunResponse = JourneyRunResponse[];
-const ListOfJourneyRunResponse = /*@__PURE__*/ __L.at(__c35, 1);
 export interface JourneyRunsResponse {
   Item?: JourneyRunResponse[];
   NextToken?: string;
 }
-const JourneyRunsResponse = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<JourneyRunsResponse>;
 export interface GetJourneyRunsResponse {
   JourneyRunsResponse: JourneyRunsResponse & {
     Item: (JourneyRunResponse & {
@@ -4166,18 +3357,10 @@ export interface GetJourneyRunsResponse {
     })[];
   };
 }
-const GetJourneyRunsResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<GetJourneyRunsResponse>;
 export interface GetPushTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetPushTemplateRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<GetPushTemplateRequest>;
 export interface PushNotificationTemplateResponse {
   ADM?: AndroidPushNotificationTemplate;
   APNS?: APNSPushNotificationTemplate;
@@ -4195,10 +3378,6 @@ export interface PushNotificationTemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const PushNotificationTemplateResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<PushNotificationTemplateResponse>;
 export interface GetPushTemplateResponse {
   PushNotificationTemplateResponse: PushNotificationTemplateResponse & {
     CreationDate: string;
@@ -4207,17 +3386,9 @@ export interface GetPushTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetPushTemplateResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<GetPushTemplateResponse>;
 export interface GetRecommenderConfigurationRequest {
   RecommenderId: string;
 }
-const GetRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<GetRecommenderConfigurationRequest>;
 export interface GetRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -4227,26 +3398,15 @@ export interface GetRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-const GetRecommenderConfigurationResponse =
-  CreateRecommenderConfigurationResponse as any as S.Schema<GetRecommenderConfigurationResponse>;
 export interface GetRecommenderConfigurationsRequest {
   PageSize?: string;
   Token?: string;
 }
-const GetRecommenderConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GetRecommenderConfigurationsRequest>;
 export type ListOfRecommenderConfigurationResponse = RecommenderConfigurationResponse[];
-const ListOfRecommenderConfigurationResponse = /*@__PURE__*/ __L.at(__c36, 1);
 export interface ListRecommenderConfigurationsResponse {
   Item?: RecommenderConfigurationResponse[];
   NextToken?: string;
 }
-const ListRecommenderConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<ListRecommenderConfigurationsResponse>;
 export interface GetRecommenderConfigurationsResponse {
   ListRecommenderConfigurationsResponse: ListRecommenderConfigurationsResponse & {
     Item: (RecommenderConfigurationResponse & {
@@ -4258,15 +3418,10 @@ export interface GetRecommenderConfigurationsResponse {
     })[];
   };
 }
-const GetRecommenderConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GetRecommenderConfigurationsResponse>;
 export interface GetSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
 }
-const GetSegmentRequest = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<GetSegmentRequest>;
 export interface GetSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -4346,17 +3501,12 @@ export interface GetSegmentResponse {
     };
   };
 }
-const GetSegmentResponse = CreateSegmentResponse as any as S.Schema<GetSegmentResponse>;
 export interface GetSegmentExportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
   SegmentId: string;
   Token?: string;
 }
-const GetSegmentExportJobsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<GetSegmentExportJobsRequest>;
 export interface GetSegmentExportJobsResponse {
   ExportJobsResponse: ExportJobsResponse & {
     Item: (ExportJobResponse & {
@@ -4369,20 +3519,12 @@ export interface GetSegmentExportJobsResponse {
     })[];
   };
 }
-const GetSegmentExportJobsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<GetSegmentExportJobsResponse>;
 export interface GetSegmentImportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
   SegmentId: string;
   Token?: string;
 }
-const GetSegmentImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GetSegmentImportJobsRequest>;
 export interface GetSegmentImportJobsResponse {
   ImportJobsResponse: ImportJobsResponse & {
     Item: (ImportJobResponse & {
@@ -4395,23 +3537,16 @@ export interface GetSegmentImportJobsResponse {
     })[];
   };
 }
-const GetSegmentImportJobsResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GetSegmentImportJobsResponse>;
 export interface GetSegmentsRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetSegmentsRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<GetSegmentsRequest>;
 export type ListOfSegmentResponse = SegmentResponse[];
-const ListOfSegmentResponse = /*@__PURE__*/ __L.at(__c37, 2);
 export interface SegmentsResponse {
   Item?: SegmentResponse[];
   NextToken?: string;
 }
-const SegmentsResponse = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<SegmentsResponse>;
 export interface GetSegmentsResponse {
   SegmentsResponse: SegmentsResponse & {
     Item: (SegmentResponse & {
@@ -4495,16 +3630,11 @@ export interface GetSegmentsResponse {
     })[];
   };
 }
-const GetSegmentsResponse = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<GetSegmentsResponse>;
 export interface GetSegmentVersionRequest {
   ApplicationId: string;
   SegmentId: string;
   Version: string;
 }
-const GetSegmentVersionRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetSegmentVersionRequest>;
 export interface GetSegmentVersionResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -4584,20 +3714,12 @@ export interface GetSegmentVersionResponse {
     };
   };
 }
-const GetSegmentVersionResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GetSegmentVersionResponse>;
 export interface GetSegmentVersionsRequest {
   ApplicationId: string;
   PageSize?: string;
   SegmentId: string;
   Token?: string;
 }
-const GetSegmentVersionsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetSegmentVersionsRequest>;
 export interface GetSegmentVersionsResponse {
   SegmentsResponse: SegmentsResponse & {
     Item: (SegmentResponse & {
@@ -4681,29 +3803,16 @@ export interface GetSegmentVersionsResponse {
     })[];
   };
 }
-const GetSegmentVersionsResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetSegmentVersionsResponse>;
 export interface GetSmsChannelRequest {
   ApplicationId: string;
 }
-const GetSmsChannelRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetSmsChannelRequest>;
 export interface GetSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
-const GetSmsChannelResponse = DeleteSmsChannelResponse as any as S.Schema<GetSmsChannelResponse>;
 export interface GetSmsTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetSmsTemplateRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetSmsTemplateRequest>;
 export interface SMSTemplateResponse {
   Arn?: string;
   Body?: string;
@@ -4717,7 +3826,6 @@ export interface SMSTemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const SMSTemplateResponse = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<SMSTemplateResponse>;
 export interface GetSmsTemplateResponse {
   SMSTemplateResponse: SMSTemplateResponse & {
     CreationDate: string;
@@ -4726,47 +3834,23 @@ export interface GetSmsTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetSmsTemplateResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<GetSmsTemplateResponse>;
 export interface GetUserEndpointsRequest {
   ApplicationId: string;
   UserId: string;
 }
-const GetUserEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetUserEndpointsRequest>;
 export interface GetUserEndpointsResponse {
   EndpointsResponse: EndpointsResponse & { Item: ListOfEndpointResponse };
 }
-const GetUserEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetUserEndpointsResponse>;
 export interface GetVoiceChannelRequest {
   ApplicationId: string;
 }
-const GetVoiceChannelRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<GetVoiceChannelRequest>;
 export interface GetVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
-const GetVoiceChannelResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<GetVoiceChannelResponse>;
 export interface GetVoiceTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetVoiceTemplateRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetVoiceTemplateRequest>;
 export interface VoiceTemplateResponse {
   Arn?: string;
   Body?: string;
@@ -4781,10 +3865,6 @@ export interface VoiceTemplateResponse {
   Version?: string;
   VoiceId?: string;
 }
-const VoiceTemplateResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<VoiceTemplateResponse>;
 export interface GetVoiceTemplateResponse {
   VoiceTemplateResponse: VoiceTemplateResponse & {
     CreationDate: string;
@@ -4793,23 +3873,16 @@ export interface GetVoiceTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetVoiceTemplateResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetVoiceTemplateResponse>;
 export interface ListJourneysRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const ListJourneysRequest = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<ListJourneysRequest>;
 export type ListOfJourneyResponse = JourneyResponse[];
-const ListOfJourneyResponse = /*@__PURE__*/ __L.at(__c39, 5);
 export interface JourneysResponse {
   Item?: JourneyResponse[];
   NextToken?: string;
 }
-const JourneysResponse = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<JourneysResponse>;
 export interface ListJourneysResponse {
   JourneysResponse: JourneysResponse & {
     Item: (JourneyResponse & {
@@ -4963,38 +4036,21 @@ export interface ListJourneysResponse {
     })[];
   };
 }
-const ListJourneysResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<ListJourneysResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface TagsModel {
   tags?: { [key: string]: string | undefined };
 }
-const TagsModel = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<TagsModel>;
 export interface ListTagsForResourceResponse {
   TagsModel: TagsModel & { tags: MapOf__string };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTemplatesRequest {
   NextToken?: string;
   PageSize?: string;
   Prefix?: string;
   TemplateType?: string;
 }
-const ListTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<ListTemplatesRequest>;
 export interface TemplateResponse {
   Arn?: string;
   CreationDate?: string;
@@ -5006,14 +4062,11 @@ export interface TemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const TemplateResponse = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<TemplateResponse>;
 export type ListOfTemplateResponse = TemplateResponse[];
-const ListOfTemplateResponse = /*@__PURE__*/ __L.at(__c40, 5);
 export interface TemplatesResponse {
   Item?: TemplateResponse[];
   NextToken?: string;
 }
-const TemplatesResponse = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<TemplatesResponse>;
 export interface ListTemplatesResponse {
   TemplatesResponse: TemplatesResponse & {
     Item: (TemplateResponse & {
@@ -5024,20 +4077,12 @@ export interface ListTemplatesResponse {
     })[];
   };
 }
-const ListTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<ListTemplatesResponse>;
 export interface ListTemplateVersionsRequest {
   NextToken?: string;
   PageSize?: string;
   TemplateName: string;
   TemplateType: string;
 }
-const ListTemplateVersionsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<ListTemplateVersionsRequest>;
 export interface TemplateVersionResponse {
   CreationDate?: string;
   DefaultSubstitutions?: string;
@@ -5047,22 +4092,13 @@ export interface TemplateVersionResponse {
   TemplateType?: string;
   Version?: string;
 }
-const TemplateVersionResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<TemplateVersionResponse>;
 export type ListOfTemplateVersionResponse = TemplateVersionResponse[];
-const ListOfTemplateVersionResponse = /*@__PURE__*/ __L.at(__c41, 2);
 export interface TemplateVersionsResponse {
   Item?: TemplateVersionResponse[];
   Message?: string;
   NextToken?: string;
   RequestID?: string;
 }
-const TemplateVersionsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<TemplateVersionsResponse>;
 export interface ListTemplateVersionsResponse {
   TemplateVersionsResponse: TemplateVersionsResponse & {
     Item: (TemplateVersionResponse & {
@@ -5073,25 +4109,13 @@ export interface ListTemplateVersionsResponse {
     })[];
   };
 }
-const ListTemplateVersionsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<ListTemplateVersionsResponse>;
 export interface NumberValidateRequest {
   IsoCountryCode?: string;
   PhoneNumber?: string;
 }
-const NumberValidateRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<NumberValidateRequest>;
 export interface PhoneNumberValidateRequest {
   NumberValidateRequest?: NumberValidateRequest;
 }
-const PhoneNumberValidateRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<PhoneNumberValidateRequest>;
 export interface NumberValidateResponse {
   Carrier?: string;
   City?: string;
@@ -5108,17 +4132,9 @@ export interface NumberValidateResponse {
   Timezone?: string;
   ZipCode?: string;
 }
-const NumberValidateResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<NumberValidateResponse>;
 export interface PhoneNumberValidateResponse {
   NumberValidateResponse: NumberValidateResponse;
 }
-const PhoneNumberValidateResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<PhoneNumberValidateResponse>;
 export interface PublicEndpoint {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -5132,14 +4148,12 @@ export interface PublicEndpoint {
   RequestId?: string;
   User?: EndpointUser;
 }
-const PublicEndpoint = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<PublicEndpoint>;
 export interface Session {
   Duration?: number;
   Id?: string;
   StartTimestamp?: string;
   StopTimestamp?: string;
 }
-const Session = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<Session>;
 export interface Event {
   AppPackageName?: string;
   AppTitle?: string;
@@ -5152,68 +4166,47 @@ export interface Event {
   Session?: Session;
   Timestamp?: string;
 }
-const Event = /*@__PURE__*/ __L.at(__c42, 3) as any as S.Schema<Event>;
 export type MapOfEvent = { [key: string]: Event | undefined };
-const MapOfEvent = /*@__PURE__*/ __L.at(__c42, 4);
 export interface EventsBatch {
   Endpoint?: PublicEndpoint;
   Events?: { [key: string]: Event | undefined };
 }
-const EventsBatch = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<EventsBatch>;
 export type MapOfEventsBatch = { [key: string]: EventsBatch | undefined };
-const MapOfEventsBatch = /*@__PURE__*/ __L.at(__c42, 6);
 export interface EventsRequest {
   BatchItem?: { [key: string]: EventsBatch | undefined };
 }
-const EventsRequest = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<EventsRequest>;
 export interface PutEventsRequest {
   ApplicationId: string;
   EventsRequest?: EventsRequest;
 }
-const PutEventsRequest = /*@__PURE__*/ __L.at(__c43, 0) as any as S.Schema<PutEventsRequest>;
 export interface EndpointItemResponse {
   Message?: string;
   StatusCode?: number;
 }
-const EndpointItemResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<EndpointItemResponse>;
 export interface EventItemResponse {
   Message?: string;
   StatusCode?: number;
 }
-const EventItemResponse = EndpointItemResponse as any as S.Schema<EventItemResponse>;
 export type MapOfEventItemResponse = { [key: string]: EventItemResponse | undefined };
-const MapOfEventItemResponse = /*@__PURE__*/ __L.at(__c43, 2);
 export interface ItemResponse {
   EndpointItemResponse?: EndpointItemResponse;
   EventsItemResponse?: { [key: string]: EventItemResponse | undefined };
 }
-const ItemResponse = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<ItemResponse>;
 export type MapOfItemResponse = { [key: string]: ItemResponse | undefined };
-const MapOfItemResponse = /*@__PURE__*/ __L.at(__c43, 4);
 export interface EventsResponse {
   Results?: { [key: string]: ItemResponse | undefined };
 }
-const EventsResponse = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<EventsResponse>;
 export interface PutEventsResponse {
   EventsResponse: EventsResponse;
 }
-const PutEventsResponse = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<PutEventsResponse>;
 export interface WriteEventStream {
   DestinationStreamArn?: string;
   RoleArn?: string;
 }
-const WriteEventStream = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<WriteEventStream>;
 export interface PutEventStreamRequest {
   ApplicationId: string;
   WriteEventStream?: WriteEventStream;
 }
-const PutEventStreamRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<PutEventStreamRequest>;
 export interface PutEventStreamResponse {
   EventStream: EventStream & {
     ApplicationId: string;
@@ -5221,36 +4214,22 @@ export interface PutEventStreamResponse {
     RoleArn: string;
   };
 }
-const PutEventStreamResponse = GetEventStreamResponse as any as S.Schema<PutEventStreamResponse>;
 export interface UpdateAttributesRequest {
   Blacklist?: string[];
 }
-const UpdateAttributesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<UpdateAttributesRequest>;
 export interface RemoveAttributesRequest {
   ApplicationId: string;
   AttributeType: string;
   UpdateAttributesRequest?: UpdateAttributesRequest;
 }
-const RemoveAttributesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<RemoveAttributesRequest>;
 export interface AttributesResource {
   ApplicationId?: string;
   AttributeType?: string;
   Attributes?: string[];
 }
-const AttributesResource = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<AttributesResource>;
 export interface RemoveAttributesResponse {
   AttributesResource: AttributesResource & { ApplicationId: string; AttributeType: string };
 }
-const RemoveAttributesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<RemoveAttributesResponse>;
 export interface AddressConfiguration {
   BodyOverride?: string;
   ChannelType?: ChannelType;
@@ -5259,12 +4238,7 @@ export interface AddressConfiguration {
   Substitutions?: { [key: string]: string[] | undefined };
   TitleOverride?: string;
 }
-const AddressConfiguration = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<AddressConfiguration>;
 export type MapOfAddressConfiguration = { [key: string]: AddressConfiguration | undefined };
-const MapOfAddressConfiguration = /*@__PURE__*/ __L.at(__c44, 6);
 export interface EndpointSendConfiguration {
   BodyOverride?: string;
   Context?: { [key: string]: string | undefined };
@@ -5272,14 +4246,9 @@ export interface EndpointSendConfiguration {
   Substitutions?: { [key: string]: string[] | undefined };
   TitleOverride?: string;
 }
-const EndpointSendConfiguration = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<EndpointSendConfiguration>;
 export type MapOfEndpointSendConfiguration = {
   [key: string]: EndpointSendConfiguration | undefined;
 };
-const MapOfEndpointSendConfiguration = /*@__PURE__*/ __L.at(__c45, 0);
 export interface ADMMessage {
   Action?: Action;
   Body?: string;
@@ -5298,7 +4267,6 @@ export interface ADMMessage {
   Title?: string;
   Url?: string;
 }
-const ADMMessage = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<ADMMessage>;
 export interface APNSMessage {
   APNSPushType?: string;
   Action?: Action;
@@ -5319,7 +4287,6 @@ export interface APNSMessage {
   Title?: string;
   Url?: string;
 }
-const APNSMessage = /*@__PURE__*/ __L.at(__c45, 2) as any as S.Schema<APNSMessage>;
 export interface BaiduMessage {
   Action?: Action;
   Body?: string;
@@ -5336,12 +4303,10 @@ export interface BaiduMessage {
   Title?: string;
   Url?: string;
 }
-const BaiduMessage = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<BaiduMessage>;
 export interface DefaultMessage {
   Body?: string;
   Substitutions?: { [key: string]: string[] | undefined };
 }
-const DefaultMessage = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<DefaultMessage>;
 export interface DefaultPushNotificationMessage {
   Action?: Action;
   Body?: string;
@@ -5351,27 +4316,20 @@ export interface DefaultPushNotificationMessage {
   Title?: string;
   Url?: string;
 }
-const DefaultPushNotificationMessage = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<DefaultPushNotificationMessage>;
 export type __blob = Uint8Array;
 export interface RawEmail {
   Data?: Uint8Array;
 }
-const RawEmail = /*@__PURE__*/ __L.at(__c45, 6) as any as S.Schema<RawEmail>;
 export interface SimpleEmailPart {
   Charset?: string;
   Data?: string;
 }
-const SimpleEmailPart = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<SimpleEmailPart>;
 export interface SimpleEmail {
   HtmlPart?: SimpleEmailPart;
   Subject?: SimpleEmailPart;
   TextPart?: SimpleEmailPart;
   Headers?: MessageHeader[];
 }
-const SimpleEmail = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<SimpleEmail>;
 export interface EmailMessage {
   Body?: string;
   FeedbackForwardingAddress?: string;
@@ -5381,7 +4339,6 @@ export interface EmailMessage {
   SimpleEmail?: SimpleEmail;
   Substitutions?: { [key: string]: string[] | undefined };
 }
-const EmailMessage = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<EmailMessage>;
 export interface GCMMessage {
   Action?: Action;
   Body?: string;
@@ -5402,7 +4359,6 @@ export interface GCMMessage {
   Title?: string;
   Url?: string;
 }
-const GCMMessage = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<GCMMessage>;
 export interface SMSMessage {
   Body?: string;
   Keyword?: string;
@@ -5414,7 +4370,6 @@ export interface SMSMessage {
   EntityId?: string;
   TemplateId?: string;
 }
-const SMSMessage = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<SMSMessage>;
 export interface VoiceMessage {
   Body?: string;
   LanguageCode?: string;
@@ -5422,7 +4377,6 @@ export interface VoiceMessage {
   Substitutions?: { [key: string]: string[] | undefined };
   VoiceId?: string;
 }
-const VoiceMessage = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<VoiceMessage>;
 export interface DirectMessageConfiguration {
   ADMMessage?: ADMMessage;
   APNSMessage?: APNSMessage;
@@ -5434,10 +4388,6 @@ export interface DirectMessageConfiguration {
   SMSMessage?: SMSMessage;
   VoiceMessage?: VoiceMessage;
 }
-const DirectMessageConfiguration = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<DirectMessageConfiguration>;
 export interface MessageRequest {
   Addresses?: { [key: string]: AddressConfiguration | undefined };
   Context?: { [key: string]: string | undefined };
@@ -5446,12 +4396,10 @@ export interface MessageRequest {
   TemplateConfiguration?: TemplateConfiguration;
   TraceId?: string;
 }
-const MessageRequest = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<MessageRequest>;
 export interface SendMessagesRequest {
   ApplicationId: string;
   MessageRequest?: MessageRequest;
 }
-const SendMessagesRequest = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<SendMessagesRequest>;
 export type DeliveryStatus =
   | "SUCCESSFUL"
   | "THROTTLED"
@@ -5461,8 +4409,6 @@ export type DeliveryStatus =
   | "OPT_OUT"
   | "DUPLICATE"
   | (string & {});
-const DeliveryStatus = S.String;
-
 export interface EndpointMessageResult {
   Address?: string;
   DeliveryStatus?: DeliveryStatus;
@@ -5471,12 +4417,7 @@ export interface EndpointMessageResult {
   StatusMessage?: string;
   UpdatedToken?: string;
 }
-const EndpointMessageResult = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<EndpointMessageResult>;
 export type MapOfEndpointMessageResult = { [key: string]: EndpointMessageResult | undefined };
-const MapOfEndpointMessageResult = /*@__PURE__*/ __L.at(__c47, 1);
 export interface MessageResult {
   DeliveryStatus?: DeliveryStatus;
   MessageId?: string;
@@ -5484,16 +4425,13 @@ export interface MessageResult {
   StatusMessage?: string;
   UpdatedToken?: string;
 }
-const MessageResult = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<MessageResult>;
 export type MapOfMessageResult = { [key: string]: MessageResult | undefined };
-const MapOfMessageResult = /*@__PURE__*/ __L.at(__c47, 3);
 export interface MessageResponse {
   ApplicationId?: string;
   EndpointResult?: { [key: string]: EndpointMessageResult | undefined };
   RequestId?: string;
   Result?: { [key: string]: MessageResult | undefined };
 }
-const MessageResponse = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<MessageResponse>;
 export interface SendMessagesResponse {
   MessageResponse: MessageResponse & {
     ApplicationId: string;
@@ -5509,10 +4447,6 @@ export interface SendMessagesResponse {
     };
   };
 }
-const SendMessagesResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<SendMessagesResponse>;
 export interface SendOTPMessageRequestParameters {
   AllowedAttempts?: number;
   BrandName?: string;
@@ -5526,18 +4460,10 @@ export interface SendOTPMessageRequestParameters {
   TemplateId?: string;
   ValidityPeriod?: number;
 }
-const SendOTPMessageRequestParameters = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<SendOTPMessageRequestParameters>;
 export interface SendOTPMessageRequest {
   ApplicationId: string;
   SendOTPMessageRequestParameters?: SendOTPMessageRequestParameters;
 }
-const SendOTPMessageRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<SendOTPMessageRequest>;
 export interface SendOTPMessageResponse {
   MessageResponse: MessageResponse & {
     ApplicationId: string;
@@ -5553,7 +4479,6 @@ export interface SendOTPMessageResponse {
     };
   };
 }
-const SendOTPMessageResponse = SendMessagesResponse as any as S.Schema<SendOTPMessageResponse>;
 export interface SendUsersMessageRequest {
   Context?: { [key: string]: string | undefined };
   MessageConfiguration?: DirectMessageConfiguration;
@@ -5561,31 +4486,18 @@ export interface SendUsersMessageRequest {
   TraceId?: string;
   Users?: { [key: string]: EndpointSendConfiguration | undefined };
 }
-const SendUsersMessageRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<SendUsersMessageRequest>;
 export interface SendUsersMessagesRequest {
   ApplicationId: string;
   SendUsersMessageRequest?: SendUsersMessageRequest;
 }
-const SendUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<SendUsersMessagesRequest>;
 export type MapOfMapOfEndpointMessageResult = {
   [key: string]: { [key: string]: EndpointMessageResult | undefined } | undefined;
 };
-const MapOfMapOfEndpointMessageResult = /*@__PURE__*/ __L.at(__c48, 2);
 export interface SendUsersMessageResponse {
   ApplicationId?: string;
   RequestId?: string;
   Result?: { [key: string]: { [key: string]: EndpointMessageResult | undefined } | undefined };
 }
-const SendUsersMessageResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<SendUsersMessageResponse>;
 export interface SendUsersMessagesResponse {
   SendUsersMessageResponse: SendUsersMessageResponse & {
     ApplicationId: string;
@@ -5600,46 +4512,28 @@ export interface SendUsersMessagesResponse {
     };
   };
 }
-const SendUsersMessagesResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<SendUsersMessagesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   TagsModel?: TagsModel;
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface ADMChannelRequest {
   ClientId?: string;
   ClientSecret?: string;
   Enabled?: boolean;
 }
-const ADMChannelRequest = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<ADMChannelRequest>;
 export interface UpdateAdmChannelRequest {
   ADMChannelRequest?: ADMChannelRequest;
   ApplicationId: string;
 }
-const UpdateAdmChannelRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<UpdateAdmChannelRequest>;
 export interface UpdateAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
-const UpdateAdmChannelResponse =
-  DeleteAdmChannelResponse as any as S.Schema<UpdateAdmChannelResponse>;
 export interface APNSChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -5650,20 +4544,13 @@ export interface APNSChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-const APNSChannelRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<APNSChannelRequest>;
 export interface UpdateApnsChannelRequest {
   APNSChannelRequest?: APNSChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsChannelRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<UpdateApnsChannelRequest>;
 export interface UpdateApnsChannelResponse {
   APNSChannelResponse: APNSChannelResponse & { Platform: string };
 }
-const UpdateApnsChannelResponse =
-  DeleteApnsChannelResponse as any as S.Schema<UpdateApnsChannelResponse>;
 export interface APNSSandboxChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -5674,23 +4561,13 @@ export interface APNSSandboxChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-const APNSSandboxChannelRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<APNSSandboxChannelRequest>;
 export interface UpdateApnsSandboxChannelRequest {
   APNSSandboxChannelRequest?: APNSSandboxChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsSandboxChannelRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<UpdateApnsSandboxChannelRequest>;
 export interface UpdateApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-const UpdateApnsSandboxChannelResponse =
-  DeleteApnsSandboxChannelResponse as any as S.Schema<UpdateApnsSandboxChannelResponse>;
 export interface APNSVoipChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -5701,20 +4578,13 @@ export interface APNSVoipChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-const APNSVoipChannelRequest = APNSChannelRequest as any as S.Schema<APNSVoipChannelRequest>;
 export interface UpdateApnsVoipChannelRequest {
   APNSVoipChannelRequest?: APNSVoipChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsVoipChannelRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<UpdateApnsVoipChannelRequest>;
 export interface UpdateApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-const UpdateApnsVoipChannelResponse =
-  DeleteApnsVoipChannelResponse as any as S.Schema<UpdateApnsVoipChannelResponse>;
 export interface APNSVoipSandboxChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -5725,21 +4595,13 @@ export interface APNSVoipSandboxChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-const APNSVoipSandboxChannelRequest =
-  APNSSandboxChannelRequest as any as S.Schema<APNSVoipSandboxChannelRequest>;
 export interface UpdateApnsVoipSandboxChannelRequest {
   APNSVoipSandboxChannelRequest?: APNSVoipSandboxChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsVoipSandboxChannelRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>;
 export interface UpdateApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
-const UpdateApnsVoipSandboxChannelResponse =
-  DeleteApnsVoipSandboxChannelResponse as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>;
 export interface WriteApplicationSettingsRequest {
   CampaignHook?: CampaignHook;
   CloudWatchMetricsEnabled?: boolean;
@@ -5748,51 +4610,30 @@ export interface WriteApplicationSettingsRequest {
   QuietTime?: QuietTime;
   JourneyLimits?: ApplicationSettingsJourneyLimits;
 }
-const WriteApplicationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<WriteApplicationSettingsRequest>;
 export interface UpdateApplicationSettingsRequest {
   ApplicationId: string;
   WriteApplicationSettingsRequest?: WriteApplicationSettingsRequest;
 }
-const UpdateApplicationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<UpdateApplicationSettingsRequest>;
 export interface UpdateApplicationSettingsResponse {
   ApplicationSettingsResource: ApplicationSettingsResource & { ApplicationId: string };
 }
-const UpdateApplicationSettingsResponse =
-  GetApplicationSettingsResponse as any as S.Schema<UpdateApplicationSettingsResponse>;
 export interface BaiduChannelRequest {
   ApiKey?: string;
   Enabled?: boolean;
   SecretKey?: string;
 }
-const BaiduChannelRequest = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<BaiduChannelRequest>;
 export interface UpdateBaiduChannelRequest {
   ApplicationId: string;
   BaiduChannelRequest?: BaiduChannelRequest;
 }
-const UpdateBaiduChannelRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<UpdateBaiduChannelRequest>;
 export interface UpdateBaiduChannelResponse {
   BaiduChannelResponse: BaiduChannelResponse & { Credential: string; Platform: string };
 }
-const UpdateBaiduChannelResponse =
-  DeleteBaiduChannelResponse as any as S.Schema<UpdateBaiduChannelResponse>;
 export interface UpdateCampaignRequest {
   ApplicationId: string;
   CampaignId: string;
   WriteCampaignRequest?: WriteCampaignRequest;
 }
-const UpdateCampaignRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<UpdateCampaignRequest>;
 export interface UpdateCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -5912,7 +4753,6 @@ export interface UpdateCampaignResponse {
     };
   };
 }
-const UpdateCampaignResponse = CreateCampaignResponse as any as S.Schema<UpdateCampaignResponse>;
 export interface EmailChannelRequest {
   ConfigurationSet?: string;
   Enabled?: boolean;
@@ -5921,35 +4761,22 @@ export interface EmailChannelRequest {
   RoleArn?: string;
   OrchestrationSendingRoleArn?: string;
 }
-const EmailChannelRequest = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<EmailChannelRequest>;
 export interface UpdateEmailChannelRequest {
   ApplicationId: string;
   EmailChannelRequest?: EmailChannelRequest;
 }
-const UpdateEmailChannelRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<UpdateEmailChannelRequest>;
 export interface UpdateEmailChannelResponse {
   EmailChannelResponse: EmailChannelResponse & { Platform: string };
 }
-const UpdateEmailChannelResponse =
-  DeleteEmailChannelResponse as any as S.Schema<UpdateEmailChannelResponse>;
 export interface UpdateEmailTemplateRequest {
   CreateNewVersion?: boolean;
   EmailTemplateRequest?: EmailTemplateRequest;
   TemplateName: string;
   Version?: string;
 }
-const UpdateEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<UpdateEmailTemplateRequest>;
 export interface UpdateEmailTemplateResponse {
   MessageBody: MessageBody;
 }
-const UpdateEmailTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<UpdateEmailTemplateResponse>;
 export interface EndpointRequest {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -5963,23 +4790,14 @@ export interface EndpointRequest {
   RequestId?: string;
   User?: EndpointUser;
 }
-const EndpointRequest = PublicEndpoint as any as S.Schema<EndpointRequest>;
 export interface UpdateEndpointRequest {
   ApplicationId: string;
   EndpointId: string;
   EndpointRequest?: EndpointRequest;
 }
-const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<UpdateEndpointRequest>;
 export interface UpdateEndpointResponse {
   MessageBody: MessageBody;
 }
-const UpdateEndpointResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<UpdateEndpointResponse>;
 export interface EndpointBatchItem {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -5994,73 +4812,44 @@ export interface EndpointBatchItem {
   RequestId?: string;
   User?: EndpointUser;
 }
-const EndpointBatchItem = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<EndpointBatchItem>;
 export type ListOfEndpointBatchItem = EndpointBatchItem[];
-const ListOfEndpointBatchItem = /*@__PURE__*/ __L.at(__c51, 3);
 export interface EndpointBatchRequest {
   Item?: EndpointBatchItem[];
 }
-const EndpointBatchRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<EndpointBatchRequest>;
 export interface UpdateEndpointsBatchRequest {
   ApplicationId: string;
   EndpointBatchRequest?: EndpointBatchRequest;
 }
-const UpdateEndpointsBatchRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<UpdateEndpointsBatchRequest>;
 export interface UpdateEndpointsBatchResponse {
   MessageBody: MessageBody;
 }
-const UpdateEndpointsBatchResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<UpdateEndpointsBatchResponse>;
 export interface GCMChannelRequest {
   ApiKey?: string;
   DefaultAuthenticationMethod?: string;
   Enabled?: boolean;
   ServiceJson?: string;
 }
-const GCMChannelRequest = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<GCMChannelRequest>;
 export interface UpdateGcmChannelRequest {
   ApplicationId: string;
   GCMChannelRequest?: GCMChannelRequest;
 }
-const UpdateGcmChannelRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<UpdateGcmChannelRequest>;
 export interface UpdateGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
-const UpdateGcmChannelResponse =
-  DeleteGcmChannelResponse as any as S.Schema<UpdateGcmChannelResponse>;
 export interface UpdateInAppTemplateRequest {
   CreateNewVersion?: boolean;
   InAppTemplateRequest?: InAppTemplateRequest;
   TemplateName: string;
   Version?: string;
 }
-const UpdateInAppTemplateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<UpdateInAppTemplateRequest>;
 export interface UpdateInAppTemplateResponse {
   MessageBody: MessageBody;
 }
-const UpdateInAppTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<UpdateInAppTemplateResponse>;
 export interface UpdateJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
   WriteJourneyRequest?: WriteJourneyRequest;
 }
-const UpdateJourneyRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<UpdateJourneyRequest>;
 export interface UpdateJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -6198,20 +4987,14 @@ export interface UpdateJourneyResponse {
     };
   };
 }
-const UpdateJourneyResponse = CreateJourneyResponse as any as S.Schema<UpdateJourneyResponse>;
 export interface JourneyStateRequest {
   State?: State;
 }
-const JourneyStateRequest = /*@__PURE__*/ __L.at(__c52, 2) as any as S.Schema<JourneyStateRequest>;
 export interface UpdateJourneyStateRequest {
   ApplicationId: string;
   JourneyId: string;
   JourneyStateRequest?: JourneyStateRequest;
 }
-const UpdateJourneyStateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<UpdateJourneyStateRequest>;
 export interface UpdateJourneyStateResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -6349,25 +5132,15 @@ export interface UpdateJourneyStateResponse {
     };
   };
 }
-const UpdateJourneyStateResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<UpdateJourneyStateResponse>;
 export interface UpdatePushTemplateRequest {
   CreateNewVersion?: boolean;
   PushNotificationTemplateRequest?: PushNotificationTemplateRequest;
   TemplateName: string;
   Version?: string;
 }
-const UpdatePushTemplateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<UpdatePushTemplateRequest>;
 export interface UpdatePushTemplateResponse {
   MessageBody: MessageBody;
 }
-const UpdatePushTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<UpdatePushTemplateResponse>;
 export interface UpdateRecommenderConfigurationShape {
   Attributes?: { [key: string]: string | undefined };
   Description?: string;
@@ -6379,16 +5152,10 @@ export interface UpdateRecommenderConfigurationShape {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-const UpdateRecommenderConfigurationShape =
-  CreateRecommenderConfigurationShape as any as S.Schema<UpdateRecommenderConfigurationShape>;
 export interface UpdateRecommenderConfigurationRequest {
   RecommenderId: string;
   UpdateRecommenderConfiguration?: UpdateRecommenderConfigurationShape;
 }
-const UpdateRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<UpdateRecommenderConfigurationRequest>;
 export interface UpdateRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -6398,17 +5165,11 @@ export interface UpdateRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-const UpdateRecommenderConfigurationResponse =
-  CreateRecommenderConfigurationResponse as any as S.Schema<UpdateRecommenderConfigurationResponse>;
 export interface UpdateSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
   WriteSegmentRequest?: WriteSegmentRequest;
 }
-const UpdateSegmentRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<UpdateSegmentRequest>;
 export interface UpdateSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -6488,125 +5249,72 @@ export interface UpdateSegmentResponse {
     };
   };
 }
-const UpdateSegmentResponse = CreateSegmentResponse as any as S.Schema<UpdateSegmentResponse>;
 export interface SMSChannelRequest {
   Enabled?: boolean;
   SenderId?: string;
   ShortCode?: string;
 }
-const SMSChannelRequest = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<SMSChannelRequest>;
 export interface UpdateSmsChannelRequest {
   ApplicationId: string;
   SMSChannelRequest?: SMSChannelRequest;
 }
-const UpdateSmsChannelRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<UpdateSmsChannelRequest>;
 export interface UpdateSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
-const UpdateSmsChannelResponse =
-  DeleteSmsChannelResponse as any as S.Schema<UpdateSmsChannelResponse>;
 export interface UpdateSmsTemplateRequest {
   CreateNewVersion?: boolean;
   SMSTemplateRequest?: SMSTemplateRequest;
   TemplateName: string;
   Version?: string;
 }
-const UpdateSmsTemplateRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<UpdateSmsTemplateRequest>;
 export interface UpdateSmsTemplateResponse {
   MessageBody: MessageBody;
 }
-const UpdateSmsTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<UpdateSmsTemplateResponse>;
 export interface TemplateActiveVersionRequest {
   Version?: string;
 }
-const TemplateActiveVersionRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<TemplateActiveVersionRequest>;
 export interface UpdateTemplateActiveVersionRequest {
   TemplateActiveVersionRequest?: TemplateActiveVersionRequest;
   TemplateName: string;
   TemplateType: string;
 }
-const UpdateTemplateActiveVersionRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<UpdateTemplateActiveVersionRequest>;
 export interface UpdateTemplateActiveVersionResponse {
   MessageBody: MessageBody;
 }
-const UpdateTemplateActiveVersionResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<UpdateTemplateActiveVersionResponse>;
 export interface VoiceChannelRequest {
   Enabled?: boolean;
 }
-const VoiceChannelRequest = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<VoiceChannelRequest>;
 export interface UpdateVoiceChannelRequest {
   ApplicationId: string;
   VoiceChannelRequest?: VoiceChannelRequest;
 }
-const UpdateVoiceChannelRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<UpdateVoiceChannelRequest>;
 export interface UpdateVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
-const UpdateVoiceChannelResponse =
-  DeleteVoiceChannelResponse as any as S.Schema<UpdateVoiceChannelResponse>;
 export interface UpdateVoiceTemplateRequest {
   CreateNewVersion?: boolean;
   TemplateName: string;
   Version?: string;
   VoiceTemplateRequest?: VoiceTemplateRequest;
 }
-const UpdateVoiceTemplateRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<UpdateVoiceTemplateRequest>;
 export interface UpdateVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
-const UpdateVoiceTemplateResponse =
-  DeleteEmailTemplateResponse as any as S.Schema<UpdateVoiceTemplateResponse>;
 export interface VerifyOTPMessageRequestParameters {
   DestinationIdentity?: string;
   Otp?: string;
   ReferenceId?: string;
 }
-const VerifyOTPMessageRequestParameters = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<VerifyOTPMessageRequestParameters>;
 export interface VerifyOTPMessageRequest {
   ApplicationId: string;
   VerifyOTPMessageRequestParameters?: VerifyOTPMessageRequestParameters;
 }
-const VerifyOTPMessageRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<VerifyOTPMessageRequest>;
 export interface VerificationResponse {
   Valid?: boolean;
 }
-const VerificationResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<VerificationResponse>;
 export interface VerifyOTPMessageResponse {
   VerificationResponse: VerificationResponse;
 }
-const VerifyOTPMessageResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<VerifyOTPMessageResponse>;
 export type CreateAppError =
   | BadRequestException
   | ForbiddenException
@@ -6625,8 +5333,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAppRequest,
-  output: CreateAppResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateAppRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateAppResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6659,8 +5367,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCampaignRequest,
-  output: CreateCampaignResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateCampaignRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<CreateCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6691,8 +5399,8 @@ export const createEmailTemplate: API.OperationMethod<
   CreateEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailTemplateRequest,
-  output: CreateEmailTemplateResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<CreateEmailTemplateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6723,8 +5431,8 @@ export const createExportJob: API.OperationMethod<
   CreateExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExportJobRequest,
-  output: CreateExportJobResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateExportJobRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<CreateExportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6757,8 +5465,8 @@ export const createImportJob: API.OperationMethod<
   CreateImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateImportJobRequest,
-  output: CreateImportJobResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<CreateImportJobRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateImportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6789,8 +5497,8 @@ export const createInAppTemplate: API.OperationMethod<
   CreateInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInAppTemplateRequest,
-  output: CreateInAppTemplateResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<CreateInAppTemplateRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CreateInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6821,8 +5529,8 @@ export const createJourney: API.OperationMethod<
   CreateJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJourneyRequest,
-  output: CreateJourneyResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<CreateJourneyRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<CreateJourneyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6853,8 +5561,8 @@ export const createPushTemplate: API.OperationMethod<
   CreatePushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePushTemplateRequest,
-  output: CreatePushTemplateResponse,
+  input: __S(113, __c14, 1) as any as S.Schema<CreatePushTemplateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreatePushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6885,8 +5593,8 @@ export const createRecommenderConfiguration: API.OperationMethod<
   CreateRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRecommenderConfigurationRequest,
-  output: CreateRecommenderConfigurationResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<CreateRecommenderConfigurationRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<CreateRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6919,8 +5627,8 @@ export const createSegment: API.OperationMethod<
   CreateSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSegmentRequest,
-  output: CreateSegmentResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<CreateSegmentRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<CreateSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6951,8 +5659,8 @@ export const createSmsTemplate: API.OperationMethod<
   CreateSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsTemplateRequest,
-  output: CreateSmsTemplateResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<CreateSmsTemplateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6981,8 +5689,8 @@ export const createVoiceTemplate: API.OperationMethod<
   CreateVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVoiceTemplateRequest,
-  output: CreateVoiceTemplateResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<CreateVoiceTemplateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7013,8 +5721,8 @@ export const deleteAdmChannel: API.OperationMethod<
   DeleteAdmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdmChannelRequest,
-  output: DeleteAdmChannelResponse,
+  input: __S(134, __c16, 6) as any as S.Schema<DeleteAdmChannelRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteAdmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7047,8 +5755,8 @@ export const deleteApnsChannel: API.OperationMethod<
   DeleteApnsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApnsChannelRequest,
-  output: DeleteApnsChannelResponse,
+  input: __S(137, __c17, 1) as any as S.Schema<DeleteApnsChannelRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<DeleteApnsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7081,8 +5789,8 @@ export const deleteApnsSandboxChannel: API.OperationMethod<
   DeleteApnsSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApnsSandboxChannelRequest,
-  output: DeleteApnsSandboxChannelResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<DeleteApnsSandboxChannelRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<DeleteApnsSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7115,8 +5823,8 @@ export const deleteApnsVoipChannel: API.OperationMethod<
   DeleteApnsVoipChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApnsVoipChannelRequest,
-  output: DeleteApnsVoipChannelResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<DeleteApnsVoipChannelRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<DeleteApnsVoipChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7149,8 +5857,8 @@ export const deleteApnsVoipSandboxChannel: API.OperationMethod<
   DeleteApnsVoipSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApnsVoipSandboxChannelRequest,
-  output: DeleteApnsVoipSandboxChannelResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7183,8 +5891,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppRequest,
-  output: DeleteAppResponse,
+  input: __S(147, __c18, 3) as any as S.Schema<DeleteAppRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteAppResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7217,8 +5925,8 @@ export const deleteBaiduChannel: API.OperationMethod<
   DeleteBaiduChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBaiduChannelRequest,
-  output: DeleteBaiduChannelResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<DeleteBaiduChannelRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<DeleteBaiduChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7251,8 +5959,8 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCampaignRequest,
-  output: DeleteCampaignResponse,
+  input: __S(151, __c18, 7) as any as S.Schema<DeleteCampaignRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<DeleteCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7285,8 +5993,8 @@ export const deleteEmailChannel: API.OperationMethod<
   DeleteEmailChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailChannelRequest,
-  output: DeleteEmailChannelResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteEmailChannelRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<DeleteEmailChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7319,8 +6027,8 @@ export const deleteEmailTemplate: API.OperationMethod<
   DeleteEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailTemplateRequest,
-  output: DeleteEmailTemplateResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<DeleteEmailTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<DeleteEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7353,8 +6061,8 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEndpointRequest,
-  output: DeleteEndpointResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<DeleteEndpointRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<DeleteEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7387,8 +6095,8 @@ export const deleteEventStream: API.OperationMethod<
   DeleteEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventStreamRequest,
-  output: DeleteEventStreamResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<DeleteEventStreamRequest>,
+  output: __S(167, __c20, 7) as any as S.Schema<DeleteEventStreamResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7421,8 +6129,8 @@ export const deleteGcmChannel: API.OperationMethod<
   DeleteGcmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGcmChannelRequest,
-  output: DeleteGcmChannelResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteGcmChannelRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<DeleteGcmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7455,8 +6163,8 @@ export const deleteInAppTemplate: API.OperationMethod<
   DeleteInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInAppTemplateRequest,
-  output: DeleteInAppTemplateResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<DeleteInAppTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<DeleteInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7489,8 +6197,8 @@ export const deleteJourney: API.OperationMethod<
   DeleteJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJourneyRequest,
-  output: DeleteJourneyResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<DeleteJourneyRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<DeleteJourneyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7523,8 +6231,8 @@ export const deletePushTemplate: API.OperationMethod<
   DeletePushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePushTemplateRequest,
-  output: DeletePushTemplateResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<DeletePushTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<DeletePushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7557,8 +6265,8 @@ export const deleteRecommenderConfiguration: API.OperationMethod<
   DeleteRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecommenderConfigurationRequest,
-  output: DeleteRecommenderConfigurationResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<DeleteRecommenderConfigurationRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<DeleteRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7591,8 +6299,8 @@ export const deleteSegment: API.OperationMethod<
   DeleteSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSegmentRequest,
-  output: DeleteSegmentResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<DeleteSegmentRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7625,8 +6333,8 @@ export const deleteSmsChannel: API.OperationMethod<
   DeleteSmsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsChannelRequest,
-  output: DeleteSmsChannelResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteSmsChannelRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<DeleteSmsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7659,8 +6367,8 @@ export const deleteSmsTemplate: API.OperationMethod<
   DeleteSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsTemplateRequest,
-  output: DeleteSmsTemplateResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<DeleteSmsTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<DeleteSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7693,8 +6401,8 @@ export const deleteUserEndpoints: API.OperationMethod<
   DeleteUserEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserEndpointsRequest,
-  output: DeleteUserEndpointsResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<DeleteUserEndpointsRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<DeleteUserEndpointsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7727,8 +6435,8 @@ export const deleteVoiceChannel: API.OperationMethod<
   DeleteVoiceChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVoiceChannelRequest,
-  output: DeleteVoiceChannelResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteVoiceChannelRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<DeleteVoiceChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7761,8 +6469,8 @@ export const deleteVoiceTemplate: API.OperationMethod<
   DeleteVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVoiceTemplateRequest,
-  output: DeleteVoiceTemplateResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<DeleteVoiceTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<DeleteVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7795,8 +6503,8 @@ export const getAdmChannel: API.OperationMethod<
   GetAdmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdmChannelRequest,
-  output: GetAdmChannelResponse,
+  input: __S(187, __c23, 3) as any as S.Schema<GetAdmChannelRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetAdmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7829,8 +6537,8 @@ export const getApnsChannel: API.OperationMethod<
   GetApnsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApnsChannelRequest,
-  output: GetApnsChannelResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<GetApnsChannelRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<GetApnsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7863,8 +6571,8 @@ export const getApnsSandboxChannel: API.OperationMethod<
   GetApnsSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApnsSandboxChannelRequest,
-  output: GetApnsSandboxChannelResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<GetApnsSandboxChannelRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<GetApnsSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7897,8 +6605,8 @@ export const getApnsVoipChannel: API.OperationMethod<
   GetApnsVoipChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApnsVoipChannelRequest,
-  output: GetApnsVoipChannelResponse,
+  input: __S(191, __c23, 7) as any as S.Schema<GetApnsVoipChannelRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetApnsVoipChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7931,8 +6639,8 @@ export const getApnsVoipSandboxChannel: API.OperationMethod<
   GetApnsVoipSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApnsVoipSandboxChannelRequest,
-  output: GetApnsVoipSandboxChannelResponse,
+  input: __S(192, __c24, 0) as any as S.Schema<GetApnsVoipSandboxChannelRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<GetApnsVoipSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7965,8 +6673,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppRequest,
-  output: GetAppResponse,
+  input: __S(193, __c24, 1) as any as S.Schema<GetAppRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetAppResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7999,8 +6707,8 @@ export const getApplicationDateRangeKpi: API.OperationMethod<
   GetApplicationDateRangeKpiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationDateRangeKpiRequest,
-  output: GetApplicationDateRangeKpiResponse,
+  input: __S(194, __c24, 2) as any as S.Schema<GetApplicationDateRangeKpiRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetApplicationDateRangeKpiResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8033,8 +6741,8 @@ export const getApplicationSettings: API.OperationMethod<
   GetApplicationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationSettingsRequest,
-  output: GetApplicationSettingsResponse,
+  input: __S(202, __c25, 2) as any as S.Schema<GetApplicationSettingsRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<GetApplicationSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8067,8 +6775,8 @@ export const getApps: API.OperationMethod<
   GetAppsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppsRequest,
-  output: GetAppsResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<GetAppsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<GetAppsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8101,8 +6809,8 @@ export const getBaiduChannel: API.OperationMethod<
   GetBaiduChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBaiduChannelRequest,
-  output: GetBaiduChannelResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<GetBaiduChannelRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<GetBaiduChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8135,8 +6843,8 @@ export const getCampaign: API.OperationMethod<
   GetCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignRequest,
-  output: GetCampaignResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<GetCampaignRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8169,8 +6877,8 @@ export const getCampaignActivities: API.OperationMethod<
   GetCampaignActivitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignActivitiesRequest,
-  output: GetCampaignActivitiesResponse,
+  input: __S(213, __c26, 5) as any as S.Schema<GetCampaignActivitiesRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetCampaignActivitiesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8203,8 +6911,8 @@ export const getCampaignDateRangeKpi: API.OperationMethod<
   GetCampaignDateRangeKpiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignDateRangeKpiRequest,
-  output: GetCampaignDateRangeKpiResponse,
+  input: __S(218, __c27, 2) as any as S.Schema<GetCampaignDateRangeKpiRequest>,
+  output: __S(220, __c27, 4) as any as S.Schema<GetCampaignDateRangeKpiResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8237,8 +6945,8 @@ export const getCampaigns: API.OperationMethod<
   GetCampaignsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignsRequest,
-  output: GetCampaignsResponse,
+  input: __S(221, __c27, 5) as any as S.Schema<GetCampaignsRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<GetCampaignsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8271,8 +6979,8 @@ export const getCampaignVersion: API.OperationMethod<
   GetCampaignVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignVersionRequest,
-  output: GetCampaignVersionResponse,
+  input: __S(225, __c28, 1) as any as S.Schema<GetCampaignVersionRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<GetCampaignVersionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8305,8 +7013,8 @@ export const getCampaignVersions: API.OperationMethod<
   GetCampaignVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignVersionsRequest,
-  output: GetCampaignVersionsResponse,
+  input: __S(227, __c28, 3) as any as S.Schema<GetCampaignVersionsRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<GetCampaignVersionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8339,8 +7047,8 @@ export const getChannels: API.OperationMethod<
   GetChannelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelsRequest,
-  output: GetChannelsResponse,
+  input: __S(229, __c28, 5) as any as S.Schema<GetChannelsRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<GetChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8373,8 +7081,8 @@ export const getEmailChannel: API.OperationMethod<
   GetEmailChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailChannelRequest,
-  output: GetEmailChannelResponse,
+  input: __S(234, __c29, 2) as any as S.Schema<GetEmailChannelRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<GetEmailChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8407,8 +7115,8 @@ export const getEmailTemplate: API.OperationMethod<
   GetEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailTemplateRequest,
-  output: GetEmailTemplateResponse,
+  input: __S(236, __c29, 4) as any as S.Schema<GetEmailTemplateRequest>,
+  output: __S(238, __c29, 6) as any as S.Schema<GetEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8441,8 +7149,8 @@ export const getEndpoint: API.OperationMethod<
   GetEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEndpointRequest,
-  output: GetEndpointResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<GetEndpointRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<GetEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8475,8 +7183,8 @@ export const getEventStream: API.OperationMethod<
   GetEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventStreamRequest,
-  output: GetEventStreamResponse,
+  input: __S(240, __c30, 0) as any as S.Schema<GetEventStreamRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<GetEventStreamResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8509,8 +7217,8 @@ export const getExportJob: API.OperationMethod<
   GetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportJobRequest,
-  output: GetExportJobResponse,
+  input: __S(242, __c30, 2) as any as S.Schema<GetExportJobRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GetExportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8543,8 +7251,8 @@ export const getExportJobs: API.OperationMethod<
   GetExportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportJobsRequest,
-  output: GetExportJobsResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<GetExportJobsRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetExportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8577,8 +7285,8 @@ export const getGcmChannel: API.OperationMethod<
   GetGcmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGcmChannelRequest,
-  output: GetGcmChannelResponse,
+  input: __S(247, __c30, 7) as any as S.Schema<GetGcmChannelRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<GetGcmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8611,8 +7319,8 @@ export const getImportJob: API.OperationMethod<
   GetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImportJobRequest,
-  output: GetImportJobResponse,
+  input: __S(248, __c31, 0) as any as S.Schema<GetImportJobRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetImportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8645,8 +7353,8 @@ export const getImportJobs: API.OperationMethod<
   GetImportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImportJobsRequest,
-  output: GetImportJobsResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<GetImportJobsRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<GetImportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8679,8 +7387,8 @@ export const getInAppMessages: API.OperationMethod<
   GetInAppMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInAppMessagesRequest,
-  output: GetInAppMessagesResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<GetInAppMessagesRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<GetInAppMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8713,8 +7421,8 @@ export const getInAppTemplate: API.OperationMethod<
   GetInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInAppTemplateRequest,
-  output: GetInAppTemplateResponse,
+  input: __S(260, __c32, 4) as any as S.Schema<GetInAppTemplateRequest>,
+  output: __S(262, __c32, 6) as any as S.Schema<GetInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8747,8 +7455,8 @@ export const getJourney: API.OperationMethod<
   GetJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJourneyRequest,
-  output: GetJourneyResponse,
+  input: __S(263, __c32, 7) as any as S.Schema<GetJourneyRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<GetJourneyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8781,8 +7489,8 @@ export const getJourneyDateRangeKpi: API.OperationMethod<
   GetJourneyDateRangeKpiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJourneyDateRangeKpiRequest,
-  output: GetJourneyDateRangeKpiResponse,
+  input: __S(264, __c33, 0) as any as S.Schema<GetJourneyDateRangeKpiRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<GetJourneyDateRangeKpiResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8815,8 +7523,8 @@ export const getJourneyExecutionActivityMetrics: API.OperationMethod<
   GetJourneyExecutionActivityMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJourneyExecutionActivityMetricsRequest,
-  output: GetJourneyExecutionActivityMetricsResponse,
+  input: __S(267, __c33, 3) as any as S.Schema<GetJourneyExecutionActivityMetricsRequest>,
+  output: __S(269, __c33, 5) as any as S.Schema<GetJourneyExecutionActivityMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8849,8 +7557,8 @@ export const getJourneyExecutionMetrics: API.OperationMethod<
   GetJourneyExecutionMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJourneyExecutionMetricsRequest,
-  output: GetJourneyExecutionMetricsResponse,
+  input: __S(270, __c33, 6) as any as S.Schema<GetJourneyExecutionMetricsRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<GetJourneyExecutionMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8883,8 +7591,8 @@ export const getJourneyRunExecutionActivityMetrics: API.OperationMethod<
   GetJourneyRunExecutionActivityMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJourneyRunExecutionActivityMetricsRequest,
-  output: GetJourneyRunExecutionActivityMetricsResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<GetJourneyRunExecutionActivityMetricsRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<GetJourneyRunExecutionActivityMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8917,8 +7625,8 @@ export const getJourneyRunExecutionMetrics: API.OperationMethod<
   GetJourneyRunExecutionMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJourneyRunExecutionMetricsRequest,
-  output: GetJourneyRunExecutionMetricsResponse,
+  input: __S(276, __c34, 4) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>,
+  output: __S(278, __c34, 6) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8951,8 +7659,8 @@ export const getJourneyRuns: API.OperationMethod<
   GetJourneyRunsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJourneyRunsRequest,
-  output: GetJourneyRunsResponse,
+  input: __S(279, __c34, 7) as any as S.Schema<GetJourneyRunsRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<GetJourneyRunsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8985,8 +7693,8 @@ export const getPushTemplate: API.OperationMethod<
   GetPushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPushTemplateRequest,
-  output: GetPushTemplateResponse,
+  input: __S(284, __c35, 4) as any as S.Schema<GetPushTemplateRequest>,
+  output: __S(286, __c35, 6) as any as S.Schema<GetPushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9019,8 +7727,8 @@ export const getRecommenderConfiguration: API.OperationMethod<
   GetRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecommenderConfigurationRequest,
-  output: GetRecommenderConfigurationResponse,
+  input: __S(287, __c35, 7) as any as S.Schema<GetRecommenderConfigurationRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<GetRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9053,8 +7761,8 @@ export const getRecommenderConfigurations: API.OperationMethod<
   GetRecommenderConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecommenderConfigurationsRequest,
-  output: GetRecommenderConfigurationsResponse,
+  input: __S(288, __c36, 0) as any as S.Schema<GetRecommenderConfigurationsRequest>,
+  output: __S(291, __c36, 3) as any as S.Schema<GetRecommenderConfigurationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9087,8 +7795,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentRequest,
-  output: GetSegmentResponse,
+  input: __S(292, __c36, 4) as any as S.Schema<GetSegmentRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9121,8 +7829,8 @@ export const getSegmentExportJobs: API.OperationMethod<
   GetSegmentExportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentExportJobsRequest,
-  output: GetSegmentExportJobsResponse,
+  input: __S(293, __c36, 5) as any as S.Schema<GetSegmentExportJobsRequest>,
+  output: __S(294, __c36, 6) as any as S.Schema<GetSegmentExportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9155,8 +7863,8 @@ export const getSegmentImportJobs: API.OperationMethod<
   GetSegmentImportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentImportJobsRequest,
-  output: GetSegmentImportJobsResponse,
+  input: __S(295, __c36, 7) as any as S.Schema<GetSegmentImportJobsRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<GetSegmentImportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9189,8 +7897,8 @@ export const getSegments: API.OperationMethod<
   GetSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentsRequest,
-  output: GetSegmentsResponse,
+  input: __S(297, __c37, 1) as any as S.Schema<GetSegmentsRequest>,
+  output: __S(300, __c37, 4) as any as S.Schema<GetSegmentsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9223,8 +7931,8 @@ export const getSegmentVersion: API.OperationMethod<
   GetSegmentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentVersionRequest,
-  output: GetSegmentVersionResponse,
+  input: __S(301, __c37, 5) as any as S.Schema<GetSegmentVersionRequest>,
+  output: __S(302, __c37, 6) as any as S.Schema<GetSegmentVersionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9257,8 +7965,8 @@ export const getSegmentVersions: API.OperationMethod<
   GetSegmentVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentVersionsRequest,
-  output: GetSegmentVersionsResponse,
+  input: __S(303, __c37, 7) as any as S.Schema<GetSegmentVersionsRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<GetSegmentVersionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9291,8 +7999,8 @@ export const getSmsChannel: API.OperationMethod<
   GetSmsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsChannelRequest,
-  output: GetSmsChannelResponse,
+  input: __S(305, __c38, 1) as any as S.Schema<GetSmsChannelRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<GetSmsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9325,8 +8033,8 @@ export const getSmsTemplate: API.OperationMethod<
   GetSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsTemplateRequest,
-  output: GetSmsTemplateResponse,
+  input: __S(306, __c38, 2) as any as S.Schema<GetSmsTemplateRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<GetSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9359,8 +8067,8 @@ export const getUserEndpoints: API.OperationMethod<
   GetUserEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserEndpointsRequest,
-  output: GetUserEndpointsResponse,
+  input: __S(309, __c38, 5) as any as S.Schema<GetUserEndpointsRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<GetUserEndpointsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9393,8 +8101,8 @@ export const getVoiceChannel: API.OperationMethod<
   GetVoiceChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVoiceChannelRequest,
-  output: GetVoiceChannelResponse,
+  input: __S(311, __c38, 7) as any as S.Schema<GetVoiceChannelRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<GetVoiceChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9427,8 +8135,8 @@ export const getVoiceTemplate: API.OperationMethod<
   GetVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVoiceTemplateRequest,
-  output: GetVoiceTemplateResponse,
+  input: __S(313, __c39, 1) as any as S.Schema<GetVoiceTemplateRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<GetVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9461,8 +8169,8 @@ export const listJourneys: API.OperationMethod<
   ListJourneysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListJourneysRequest,
-  output: ListJourneysResponse,
+  input: __S(316, __c39, 4) as any as S.Schema<ListJourneysRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<ListJourneysResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9487,8 +8195,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(320, __c40, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9511,8 +8219,8 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTemplatesRequest,
-  output: ListTemplatesResponse,
+  input: __S(323, __c40, 3) as any as S.Schema<ListTemplatesRequest>,
+  output: __S(327, __c40, 7) as any as S.Schema<ListTemplatesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9543,8 +8251,8 @@ export const listTemplateVersions: API.OperationMethod<
   ListTemplateVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTemplateVersionsRequest,
-  output: ListTemplateVersionsResponse,
+  input: __S(328, __c41, 0) as any as S.Schema<ListTemplateVersionsRequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<ListTemplateVersionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9577,8 +8285,8 @@ export const phoneNumberValidate: API.OperationMethod<
   PhoneNumberValidateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PhoneNumberValidateRequest,
-  output: PhoneNumberValidateResponse,
+  input: __S(334, __c41, 6) as any as S.Schema<PhoneNumberValidateRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<PhoneNumberValidateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9611,8 +8319,8 @@ export const putEvents: API.OperationMethod<
   PutEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEventsRequest,
-  output: PutEventsResponse,
+  input: __S(344, __c43, 0) as any as S.Schema<PutEventsRequest>,
+  output: __S(350, __c43, 6) as any as S.Schema<PutEventsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9645,8 +8353,8 @@ export const putEventStream: API.OperationMethod<
   PutEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEventStreamRequest,
-  output: PutEventStreamResponse,
+  input: __S(352, __c44, 0) as any as S.Schema<PutEventStreamRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<PutEventStreamResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9679,8 +8387,8 @@ export const removeAttributes: API.OperationMethod<
   RemoveAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAttributesRequest,
-  output: RemoveAttributesResponse,
+  input: __S(354, __c44, 2) as any as S.Schema<RemoveAttributesRequest>,
+  output: __S(356, __c44, 4) as any as S.Schema<RemoveAttributesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9713,8 +8421,8 @@ export const sendMessages: API.OperationMethod<
   SendMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendMessagesRequest,
-  output: SendMessagesResponse,
+  input: __S(375, __c46, 7) as any as S.Schema<SendMessagesRequest>,
+  output: __S(381, __c47, 5) as any as S.Schema<SendMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9747,8 +8455,8 @@ export const sendOTPMessage: API.OperationMethod<
   SendOTPMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendOTPMessageRequest,
-  output: SendOTPMessageResponse,
+  input: __S(383, __c47, 7) as any as S.Schema<SendOTPMessageRequest>,
+  output: __S(381, __c47, 5) as any as S.Schema<SendOTPMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9781,8 +8489,8 @@ export const sendUsersMessages: API.OperationMethod<
   SendUsersMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendUsersMessagesRequest,
-  output: SendUsersMessagesResponse,
+  input: __S(385, __c48, 1) as any as S.Schema<SendUsersMessagesRequest>,
+  output: __S(388, __c48, 4) as any as S.Schema<SendUsersMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9807,8 +8515,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(389, __c48, 5) as any as S.Schema<TagResourceRequest>,
+  output: __S(390, __c48, 6) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9825,8 +8533,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(391, __c48, 7) as any as S.Schema<UntagResourceRequest>,
+  output: __S(390, __c48, 6) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9851,8 +8559,8 @@ export const updateAdmChannel: API.OperationMethod<
   UpdateAdmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAdmChannelRequest,
-  output: UpdateAdmChannelResponse,
+  input: __S(393, __c49, 1) as any as S.Schema<UpdateAdmChannelRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateAdmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9885,8 +8593,8 @@ export const updateApnsChannel: API.OperationMethod<
   UpdateApnsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApnsChannelRequest,
-  output: UpdateApnsChannelResponse,
+  input: __S(395, __c49, 3) as any as S.Schema<UpdateApnsChannelRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<UpdateApnsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9919,8 +8627,8 @@ export const updateApnsSandboxChannel: API.OperationMethod<
   UpdateApnsSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApnsSandboxChannelRequest,
-  output: UpdateApnsSandboxChannelResponse,
+  input: __S(397, __c49, 5) as any as S.Schema<UpdateApnsSandboxChannelRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<UpdateApnsSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9953,8 +8661,8 @@ export const updateApnsVoipChannel: API.OperationMethod<
   UpdateApnsVoipChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApnsVoipChannelRequest,
-  output: UpdateApnsVoipChannelResponse,
+  input: __S(398, __c49, 6) as any as S.Schema<UpdateApnsVoipChannelRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<UpdateApnsVoipChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9987,8 +8695,8 @@ export const updateApnsVoipSandboxChannel: API.OperationMethod<
   UpdateApnsVoipSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApnsVoipSandboxChannelRequest,
-  output: UpdateApnsVoipSandboxChannelResponse,
+  input: __S(399, __c49, 7) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10021,8 +8729,8 @@ export const updateApplicationSettings: API.OperationMethod<
   UpdateApplicationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationSettingsRequest,
-  output: UpdateApplicationSettingsResponse,
+  input: __S(401, __c50, 1) as any as S.Schema<UpdateApplicationSettingsRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<UpdateApplicationSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10055,8 +8763,8 @@ export const updateBaiduChannel: API.OperationMethod<
   UpdateBaiduChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBaiduChannelRequest,
-  output: UpdateBaiduChannelResponse,
+  input: __S(403, __c50, 3) as any as S.Schema<UpdateBaiduChannelRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<UpdateBaiduChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10089,8 +8797,8 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCampaignRequest,
-  output: UpdateCampaignResponse,
+  input: __S(404, __c50, 4) as any as S.Schema<UpdateCampaignRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10123,8 +8831,8 @@ export const updateEmailChannel: API.OperationMethod<
   UpdateEmailChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmailChannelRequest,
-  output: UpdateEmailChannelResponse,
+  input: __S(406, __c50, 6) as any as S.Schema<UpdateEmailChannelRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<UpdateEmailChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10157,8 +8865,8 @@ export const updateEmailTemplate: API.OperationMethod<
   UpdateEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmailTemplateRequest,
-  output: UpdateEmailTemplateResponse,
+  input: __S(407, __c50, 7) as any as S.Schema<UpdateEmailTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdateEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10191,8 +8899,8 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEndpointRequest,
-  output: UpdateEndpointResponse,
+  input: __S(408, __c51, 0) as any as S.Schema<UpdateEndpointRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<UpdateEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10225,8 +8933,8 @@ export const updateEndpointsBatch: API.OperationMethod<
   UpdateEndpointsBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEndpointsBatchRequest,
-  output: UpdateEndpointsBatchResponse,
+  input: __S(413, __c51, 5) as any as S.Schema<UpdateEndpointsBatchRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdateEndpointsBatchResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10259,8 +8967,8 @@ export const updateGcmChannel: API.OperationMethod<
   UpdateGcmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGcmChannelRequest,
-  output: UpdateGcmChannelResponse,
+  input: __S(415, __c51, 7) as any as S.Schema<UpdateGcmChannelRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<UpdateGcmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10293,8 +9001,8 @@ export const updateInAppTemplate: API.OperationMethod<
   UpdateInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInAppTemplateRequest,
-  output: UpdateInAppTemplateResponse,
+  input: __S(416, __c52, 0) as any as S.Schema<UpdateInAppTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdateInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10328,8 +9036,8 @@ export const updateJourney: API.OperationMethod<
   UpdateJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJourneyRequest,
-  output: UpdateJourneyResponse,
+  input: __S(417, __c52, 1) as any as S.Schema<UpdateJourneyRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<UpdateJourneyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -10363,8 +9071,8 @@ export const updateJourneyState: API.OperationMethod<
   UpdateJourneyStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJourneyStateRequest,
-  output: UpdateJourneyStateResponse,
+  input: __S(419, __c52, 3) as any as S.Schema<UpdateJourneyStateRequest>,
+  output: __S(420, __c52, 4) as any as S.Schema<UpdateJourneyStateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10397,8 +9105,8 @@ export const updatePushTemplate: API.OperationMethod<
   UpdatePushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePushTemplateRequest,
-  output: UpdatePushTemplateResponse,
+  input: __S(421, __c52, 5) as any as S.Schema<UpdatePushTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdatePushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10431,8 +9139,8 @@ export const updateRecommenderConfiguration: API.OperationMethod<
   UpdateRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRecommenderConfigurationRequest,
-  output: UpdateRecommenderConfigurationResponse,
+  input: __S(422, __c52, 6) as any as S.Schema<UpdateRecommenderConfigurationRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<UpdateRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10465,8 +9173,8 @@ export const updateSegment: API.OperationMethod<
   UpdateSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSegmentRequest,
-  output: UpdateSegmentResponse,
+  input: __S(423, __c52, 7) as any as S.Schema<UpdateSegmentRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<UpdateSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10499,8 +9207,8 @@ export const updateSmsChannel: API.OperationMethod<
   UpdateSmsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSmsChannelRequest,
-  output: UpdateSmsChannelResponse,
+  input: __S(425, __c53, 1) as any as S.Schema<UpdateSmsChannelRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<UpdateSmsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10533,8 +9241,8 @@ export const updateSmsTemplate: API.OperationMethod<
   UpdateSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSmsTemplateRequest,
-  output: UpdateSmsTemplateResponse,
+  input: __S(426, __c53, 2) as any as S.Schema<UpdateSmsTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdateSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10567,8 +9275,8 @@ export const updateTemplateActiveVersion: API.OperationMethod<
   UpdateTemplateActiveVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTemplateActiveVersionRequest,
-  output: UpdateTemplateActiveVersionResponse,
+  input: __S(428, __c53, 4) as any as S.Schema<UpdateTemplateActiveVersionRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdateTemplateActiveVersionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10601,8 +9309,8 @@ export const updateVoiceChannel: API.OperationMethod<
   UpdateVoiceChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVoiceChannelRequest,
-  output: UpdateVoiceChannelResponse,
+  input: __S(430, __c53, 6) as any as S.Schema<UpdateVoiceChannelRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<UpdateVoiceChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10635,8 +9343,8 @@ export const updateVoiceTemplate: API.OperationMethod<
   UpdateVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVoiceTemplateRequest,
-  output: UpdateVoiceTemplateResponse,
+  input: __S(431, __c53, 7) as any as S.Schema<UpdateVoiceTemplateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<UpdateVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10669,8 +9377,8 @@ export const verifyOTPMessage: API.OperationMethod<
   VerifyOTPMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyOTPMessageRequest,
-  output: VerifyOTPMessageResponse,
+  input: __S(433, __c54, 1) as any as S.Schema<VerifyOTPMessageRequest>,
+  output: __S(435, __c54, 3) as any as S.Schema<VerifyOTPMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10692,12 +9400,12 @@ function __c0(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), tags: S.optional(MapOf__string) }),
+        S.Struct({ Name: S.optional(S.String), tags: S.optional(__S(0, __c0, 0)) }),
       ).annotate({ identifier: "CreateApplicationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CreateApplicationRequest: S.optional(CreateApplicationRequest)
+          CreateApplicationRequest: S.optional(__S(1, __c0, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CreateApplicationRequest" }),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
@@ -10708,14 +9416,14 @@ function __c0(j: number): any {
           Arn: S.optional(S.String),
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           CreationDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ApplicationResponse: S.optional(ApplicationResponse)
+          ApplicationResponse: S.optional(__S(3, __c0, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ApplicationResponse" }),
         }),
@@ -10726,7 +9434,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeliveryUri: S.optional(S.String),
-          EndpointTypes: S.optional(ListOf__EndpointTypesElement),
+          EndpointTypes: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "CustomDeliveryConfiguration",
@@ -10734,7 +9442,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
           ImageIconUrl: S.optional(S.String),
           ImageSmallIconUrl: S.optional(S.String),
@@ -10761,13 +9469,13 @@ function __c1(j: number): any {
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "MessageHeader" });
     case 2:
-      return S.Array(MessageHeader);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String),
           FromAddress: S.optional(S.String),
-          Headers: S.optional(ListOfMessageHeader),
+          Headers: S.optional(__S(10, __c1, 2)),
           HtmlBody: S.optional(S.String),
           Title: S.optional(S.String),
         }),
@@ -10776,7 +9484,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String),
-          MessageType: S.optional(MessageType),
+          MessageType: S.optional(S.String),
           OriginationNumber: S.optional(S.String),
           SenderId: S.optional(S.String),
           EntityId: S.optional(S.String),
@@ -10786,7 +9494,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Alignment: S.optional(Alignment),
+          Alignment: S.optional(S.String),
           Body: S.optional(S.String),
           TextColor: S.optional(S.String),
         }),
@@ -10794,14 +9502,14 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Alignment: S.optional(Alignment),
+          Alignment: S.optional(S.String),
           Header: S.optional(S.String),
           TextColor: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppMessageHeaderConfig" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ButtonAction: S.optional(ButtonAction), Link: S.optional(S.String) }),
+        S.Struct({ ButtonAction: S.optional(S.String), Link: S.optional(S.String) }),
       ).annotate({
         identifier: "OverrideButtonConfiguration",
       });
@@ -10814,7 +9522,7 @@ function __c2(j: number): any {
         S.Struct({
           BackgroundColor: S.optional(S.String),
           BorderRadius: S.optional(S.Number),
-          ButtonAction: S.optional(ButtonAction),
+          ButtonAction: S.optional(S.String),
           Link: S.optional(S.String),
           Text: S.optional(S.String),
           TextColor: S.optional(S.String),
@@ -10825,81 +9533,81 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Android: S.optional(OverrideButtonConfiguration),
-          DefaultConfig: S.optional(DefaultButtonConfiguration),
-          IOS: S.optional(OverrideButtonConfiguration),
-          Web: S.optional(OverrideButtonConfiguration),
+          Android: S.optional(__S(15, __c1, 7)),
+          DefaultConfig: S.optional(__S(16, __c2, 0)),
+          IOS: S.optional(__S(15, __c1, 7)),
+          Web: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "InAppMessageButton" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           BackgroundColor: S.optional(S.String),
-          BodyConfig: S.optional(InAppMessageBodyConfig),
-          HeaderConfig: S.optional(InAppMessageHeaderConfig),
+          BodyConfig: S.optional(__S(13, __c1, 5)),
+          HeaderConfig: S.optional(__S(14, __c1, 6)),
           ImageUrl: S.optional(S.String),
-          PrimaryBtn: S.optional(InAppMessageButton),
-          SecondaryBtn: S.optional(InAppMessageButton),
+          PrimaryBtn: S.optional(__S(17, __c2, 1)),
+          SecondaryBtn: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "InAppMessageContent" });
     case 3:
-      return S.Array(InAppMessageContent);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String),
-          Content: S.optional(ListOfInAppMessageContent),
-          CustomConfig: S.optional(MapOf__string),
-          Layout: S.optional(Layout),
+          Content: S.optional(__S(19, __c2, 3)),
+          CustomConfig: S.optional(__S(0, __c0, 0)),
+          Layout: S.optional(S.String),
         }),
       ).annotate({ identifier: "CampaignInAppMessage" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ADMMessage: S.optional(Message),
-          APNSMessage: S.optional(Message),
-          BaiduMessage: S.optional(Message),
-          CustomMessage: S.optional(CampaignCustomMessage),
-          DefaultMessage: S.optional(Message),
-          EmailMessage: S.optional(CampaignEmailMessage),
-          GCMMessage: S.optional(Message),
-          SMSMessage: S.optional(CampaignSmsMessage),
-          InAppMessage: S.optional(CampaignInAppMessage),
+          ADMMessage: S.optional(__S(7, __c0, 7)),
+          APNSMessage: S.optional(__S(7, __c0, 7)),
+          BaiduMessage: S.optional(__S(7, __c0, 7)),
+          CustomMessage: S.optional(__S(8, __c1, 0)),
+          DefaultMessage: S.optional(__S(7, __c0, 7)),
+          EmailMessage: S.optional(__S(11, __c1, 3)),
+          GCMMessage: S.optional(__S(7, __c0, 7)),
+          SMSMessage: S.optional(__S(12, __c1, 4)),
+          InAppMessage: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "MessageConfiguration" });
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ AttributeType: S.optional(AttributeType), Values: S.optional(ListOf__string) }),
+        S.Struct({ AttributeType: S.optional(S.String), Values: S.optional(__S(22, __c2, 6)) }),
       ).annotate({ identifier: "AttributeDimension" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ AttributeDimension.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(23, __c2, 7).pipe(S.optional));
     case 1:
       return S.suspend(() =>
-        S.Struct({ DimensionType: S.optional(DimensionType), Values: S.optional(ListOf__string) }),
+        S.Struct({ DimensionType: S.optional(S.String), Values: S.optional(__S(22, __c2, 6)) }),
       ).annotate({ identifier: "SetDimension" });
     case 2:
       return S.suspend(() =>
         S.Struct({ ComparisonOperator: S.optional(S.String), Value: S.optional(S.Number) }),
       ).annotate({ identifier: "MetricDimension" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ MetricDimension.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(26, __c3, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(MapOfAttributeDimension),
-          EventType: S.optional(SetDimension),
-          Metrics: S.optional(MapOfMetricDimension),
+          Attributes: S.optional(__S(24, __c3, 0)),
+          EventType: S.optional(__S(25, __c3, 1)),
+          Metrics: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "EventDimensions" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Dimensions: S.optional(EventDimensions), FilterType: S.optional(FilterType) }),
+        S.Struct({ Dimensions: S.optional(__S(28, __c3, 4)), FilterType: S.optional(S.String) }),
       ).annotate({ identifier: "CampaignEventFilter" });
     case 6:
       return S.suspend(() =>
@@ -10909,10 +9617,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EndTime: S.optional(S.String),
-          EventFilter: S.optional(CampaignEventFilter),
-          Frequency: S.optional(Frequency),
+          EventFilter: S.optional(__S(29, __c3, 5)),
+          Frequency: S.optional(S.String),
           IsLocalTime: S.optional(S.Boolean),
-          QuietTime: S.optional(QuietTime),
+          QuietTime: S.optional(__S(30, __c3, 6)),
           StartTime: S.optional(S.String),
           Timezone: S.optional(S.String),
         }),
@@ -10928,32 +9636,32 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EmailTemplate: S.optional(Template),
-          PushTemplate: S.optional(Template),
-          SMSTemplate: S.optional(Template),
-          VoiceTemplate: S.optional(Template),
-          InAppTemplate: S.optional(Template),
+          EmailTemplate: S.optional(__S(32, __c4, 0)),
+          PushTemplate: S.optional(__S(32, __c4, 0)),
+          SMSTemplate: S.optional(__S(32, __c4, 0)),
+          VoiceTemplate: S.optional(__S(32, __c4, 0)),
+          InAppTemplate: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "TemplateConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
-          MessageConfiguration: S.optional(MessageConfiguration),
-          Schedule: S.optional(Schedule),
+          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
+          MessageConfiguration: S.optional(__S(21, __c2, 5)),
+          Schedule: S.optional(__S(31, __c3, 7)),
           SizePercent: S.optional(S.Number),
-          TemplateConfiguration: S.optional(TemplateConfiguration),
+          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
           TreatmentDescription: S.optional(S.String),
           TreatmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "WriteTreatmentResource" });
     case 3:
-      return S.Array(WriteTreatmentResource);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           LambdaFunctionName: S.optional(S.String),
-          Mode: S.optional(Mode),
+          Mode: S.optional(S.String),
           WebUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "CampaignHook" });
@@ -10970,20 +9678,20 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AdditionalTreatments: S.optional(ListOfWriteTreatmentResource),
-          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
+          AdditionalTreatments: S.optional(__S(35, __c4, 3)),
+          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
           Description: S.optional(S.String),
           HoldoutPercent: S.optional(S.Number),
-          Hook: S.optional(CampaignHook),
+          Hook: S.optional(__S(36, __c4, 4)),
           IsPaused: S.optional(S.Boolean),
-          Limits: S.optional(CampaignLimits),
-          MessageConfiguration: S.optional(MessageConfiguration),
+          Limits: S.optional(__S(37, __c4, 5)),
+          MessageConfiguration: S.optional(__S(21, __c2, 5)),
           Name: S.optional(S.String),
-          Schedule: S.optional(Schedule),
+          Schedule: S.optional(__S(31, __c3, 7)),
           SegmentId: S.optional(S.String),
           SegmentVersion: S.optional(S.Number),
-          tags: S.optional(MapOf__string),
-          TemplateConfiguration: S.optional(TemplateConfiguration),
+          tags: S.optional(__S(0, __c0, 0)),
+          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
           TreatmentDescription: S.optional(S.String),
           TreatmentName: S.optional(S.String),
           Priority: S.optional(S.Number),
@@ -10993,7 +9701,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteCampaignRequest: S.optional(WriteCampaignRequest)
+          WriteCampaignRequest: S.optional(__S(38, __c4, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteCampaignRequest" }),
         }).pipe(
@@ -11012,49 +9720,49 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CampaignStatus: S.optional(CampaignStatus) })).annotate({
+      return S.suspend(() => S.Struct({ CampaignStatus: S.optional(S.String) })).annotate({
         identifier: "CampaignState",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
+          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
           Id: S.optional(S.String),
-          MessageConfiguration: S.optional(MessageConfiguration),
-          Schedule: S.optional(Schedule),
+          MessageConfiguration: S.optional(__S(21, __c2, 5)),
+          Schedule: S.optional(__S(31, __c3, 7)),
           SizePercent: S.optional(S.Number),
-          State: S.optional(CampaignState),
-          TemplateConfiguration: S.optional(TemplateConfiguration),
+          State: S.optional(__S(40, __c5, 0)),
+          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
           TreatmentDescription: S.optional(S.String),
           TreatmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TreatmentResource" });
     case 2:
-      return S.Array(TreatmentResource);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AdditionalTreatments: S.optional(ListOfTreatmentResource),
+          AdditionalTreatments: S.optional(__S(42, __c5, 2)),
           ApplicationId: S.optional(S.String),
           Arn: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
-          DefaultState: S.optional(CampaignState),
+          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
+          DefaultState: S.optional(__S(40, __c5, 0)),
           Description: S.optional(S.String),
           HoldoutPercent: S.optional(S.Number),
-          Hook: S.optional(CampaignHook),
+          Hook: S.optional(__S(36, __c4, 4)),
           Id: S.optional(S.String),
           IsPaused: S.optional(S.Boolean),
           LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(CampaignLimits),
-          MessageConfiguration: S.optional(MessageConfiguration),
+          Limits: S.optional(__S(37, __c4, 5)),
+          MessageConfiguration: S.optional(__S(21, __c2, 5)),
           Name: S.optional(S.String),
-          Schedule: S.optional(Schedule),
+          Schedule: S.optional(__S(31, __c3, 7)),
           SegmentId: S.optional(S.String),
           SegmentVersion: S.optional(S.Number),
-          State: S.optional(CampaignState),
-          tags: S.optional(MapOf__string),
-          TemplateConfiguration: S.optional(TemplateConfiguration),
+          State: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(0, __c0, 0)),
+          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
           TreatmentDescription: S.optional(S.String),
           TreatmentName: S.optional(S.String),
           Version: S.optional(S.Number),
@@ -11064,7 +9772,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CampaignResponse: S.optional(CampaignResponse)
+          CampaignResponse: S.optional(__S(43, __c5, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignResponse" }),
         }),
@@ -11076,8 +9784,8 @@ function __c5(j: number): any {
           HtmlPart: S.optional(S.String),
           RecommenderId: S.optional(S.String),
           Subject: S.optional(S.String),
-          Headers: S.optional(ListOfMessageHeader),
-          tags: S.optional(MapOf__string),
+          Headers: S.optional(__S(10, __c1, 2)),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           TextPart: S.optional(S.String),
         }),
@@ -11085,7 +9793,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EmailTemplateRequest: S.optional(EmailTemplateRequest)
+          EmailTemplateRequest: S.optional(__S(45, __c5, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11119,7 +9827,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
+          CreateTemplateMessageBody: S.optional(__S(47, __c5, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CreateTemplateMessageBody" }),
         }),
@@ -11139,7 +9847,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          ExportJobRequest: S.optional(ExportJobRequest)
+          ExportJobRequest: S.optional(__S(49, __c6, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ExportJobRequest" }),
         }).pipe(
@@ -11160,11 +9868,11 @@ function __c6(j: number): any {
           CompletedPieces: S.optional(S.Number),
           CompletionDate: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          Definition: S.optional(ExportJobResource),
+          Definition: S.optional(__S(49, __c6, 1)),
           FailedPieces: S.optional(S.Number),
-          Failures: S.optional(ListOf__string),
+          Failures: S.optional(__S(22, __c2, 6)),
           Id: S.optional(S.String),
-          JobStatus: S.optional(JobStatus),
+          JobStatus: S.optional(S.String),
           TotalFailures: S.optional(S.Number),
           TotalPieces: S.optional(S.Number),
           TotalProcessed: S.optional(S.Number),
@@ -11174,7 +9882,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ExportJobResponse: S.optional(ExportJobResponse)
+          ExportJobResponse: S.optional(__S(51, __c6, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ExportJobResponse" }),
         }),
@@ -11184,7 +9892,7 @@ function __c6(j: number): any {
         S.Struct({
           DefineSegment: S.optional(S.Boolean),
           ExternalId: S.optional(S.String),
-          Format: S.optional(Format),
+          Format: S.optional(S.String),
           RegisterEndpoints: S.optional(S.Boolean),
           RoleArn: S.optional(S.String),
           S3Url: S.optional(S.String),
@@ -11196,7 +9904,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          ImportJobRequest: S.optional(ImportJobRequest)
+          ImportJobRequest: S.optional(__S(53, __c6, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ImportJobRequest" }),
         }).pipe(
@@ -11217,11 +9925,11 @@ function __c6(j: number): any {
           CompletedPieces: S.optional(S.Number),
           CompletionDate: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          Definition: S.optional(ImportJobResource),
+          Definition: S.optional(__S(53, __c6, 5)),
           FailedPieces: S.optional(S.Number),
-          Failures: S.optional(ListOf__string),
+          Failures: S.optional(__S(22, __c2, 6)),
           Id: S.optional(S.String),
-          JobStatus: S.optional(JobStatus),
+          JobStatus: S.optional(S.String),
           TotalFailures: S.optional(S.Number),
           TotalPieces: S.optional(S.Number),
           TotalProcessed: S.optional(S.Number),
@@ -11235,7 +9943,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ImportJobResponse: S.optional(ImportJobResponse)
+          ImportJobResponse: S.optional(__S(55, __c6, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ImportJobResponse" }),
         }),
@@ -11243,17 +9951,17 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Content: S.optional(ListOfInAppMessageContent),
-          CustomConfig: S.optional(MapOf__string),
-          Layout: S.optional(Layout),
-          tags: S.optional(MapOf__string),
+          Content: S.optional(__S(19, __c2, 3)),
+          CustomConfig: S.optional(__S(0, __c0, 0)),
+          Layout: S.optional(S.String),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppTemplateRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          InAppTemplateRequest: S.optional(InAppTemplateRequest)
+          InAppTemplateRequest: S.optional(__S(57, __c7, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InAppTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11273,7 +9981,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TemplateCreateMessageBody: S.optional(TemplateCreateMessageBody)
+          TemplateCreateMessageBody: S.optional(__S(47, __c5, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TemplateCreateMessageBody" }),
         }),
@@ -11284,8 +9992,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeliveryUri: S.optional(S.String),
-          EndpointTypes: S.optional(ListOf__EndpointTypesElement),
-          MessageConfig: S.optional(JourneyCustomMessage),
+          EndpointTypes: S.optional(__S(5, __c0, 5)),
+          MessageConfig: S.optional(__S(8, __c1, 0)),
           NextActivity: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateVersion: S.optional(S.String),
@@ -11294,7 +10002,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(EventDimensions),
+          Dimensions: S.optional(__S(28, __c3, 4)),
           MessageActivity: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventCondition" });
@@ -11304,25 +10012,25 @@ function __c7(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Duration: S.optional(Duration), RecencyType: S.optional(RecencyType) }),
+        S.Struct({ Duration: S.optional(S.String), RecencyType: S.optional(S.String) }),
       ).annotate({ identifier: "RecencyDimension" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Recency: S.optional(RecencyDimension) })).annotate({
+      return S.suspend(() => S.Struct({ Recency: S.optional(__S(63, __c7, 7)) })).annotate({
         identifier: "SegmentBehaviors",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AppVersion: S.optional(SetDimension),
-          Channel: S.optional(SetDimension),
-          DeviceType: S.optional(SetDimension),
-          Make: S.optional(SetDimension),
-          Model: S.optional(SetDimension),
-          Platform: S.optional(SetDimension),
+          AppVersion: S.optional(__S(25, __c3, 1)),
+          Channel: S.optional(__S(25, __c3, 1)),
+          DeviceType: S.optional(__S(25, __c3, 1)),
+          Make: S.optional(__S(25, __c3, 1)),
+          Model: S.optional(__S(25, __c3, 1)),
+          Platform: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "SegmentDemographics" });
     case 2:
@@ -11332,42 +10040,42 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Coordinates: S.optional(GPSCoordinates),
+          Coordinates: S.optional(__S(66, __c8, 2)),
           RangeInKilometers: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GPSPointDimension" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Country: S.optional(SetDimension), GPSPoint: S.optional(GPSPointDimension) }),
+        S.Struct({ Country: S.optional(__S(25, __c3, 1)), GPSPoint: S.optional(__S(67, __c8, 3)) }),
       ).annotate({ identifier: "SegmentLocation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(MapOfAttributeDimension),
-          Behavior: S.optional(SegmentBehaviors),
-          Demographic: S.optional(SegmentDemographics),
-          Location: S.optional(SegmentLocation),
-          Metrics: S.optional(MapOfMetricDimension),
-          UserAttributes: S.optional(MapOfAttributeDimension),
+          Attributes: S.optional(__S(24, __c3, 0)),
+          Behavior: S.optional(__S(64, __c8, 0)),
+          Demographic: S.optional(__S(65, __c8, 1)),
+          Location: S.optional(__S(68, __c8, 4)),
+          Metrics: S.optional(__S(27, __c3, 3)),
+          UserAttributes: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "SegmentDimensions" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EventCondition: S.optional(EventCondition),
-          SegmentCondition: S.optional(SegmentCondition),
-          SegmentDimensions: S.optional(SegmentDimensions),
+          EventCondition: S.optional(__S(61, __c7, 5)),
+          SegmentCondition: S.optional(__S(62, __c7, 6)),
+          SegmentDimensions: S.optional(__S(69, __c8, 5)),
         }).pipe(S.encodeKeys({ SegmentDimensions: "segmentDimensions" })),
       ).annotate({ identifier: "SimpleCondition" });
     case 7:
-      return S.Array(SimpleCondition);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Conditions: S.optional(ListOfSimpleCondition), Operator: S.optional(Operator) }),
+        S.Struct({ Conditions: S.optional(__S(71, __c8, 7)), Operator: S.optional(S.String) }),
       ).annotate({ identifier: "Condition" });
     case 1:
       return S.suspend(() =>
@@ -11376,8 +10084,8 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Condition: S.optional(Condition),
-          EvaluationWaitTime: S.optional(WaitTime),
+          Condition: S.optional(__S(72, __c9, 0)),
+          EvaluationWaitTime: S.optional(__S(73, __c9, 1)),
           FalseActivity: S.optional(S.String),
           TrueActivity: S.optional(S.String),
         }),
@@ -11389,7 +10097,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          MessageConfig: S.optional(JourneyEmailMessage),
+          MessageConfig: S.optional(__S(75, __c9, 3)),
           NextActivity: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateVersion: S.optional(S.String),
@@ -11401,10 +10109,10 @@ function __c9(j: number): any {
       ).annotate({ identifier: "HoldoutActivity" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Condition: S.optional(SimpleCondition), NextActivity: S.optional(S.String) }),
+        S.Struct({ Condition: S.optional(__S(70, __c8, 6)), NextActivity: S.optional(S.String) }),
       ).annotate({ identifier: "MultiConditionalBranch" });
     case 7:
-      return S.Array(MultiConditionalBranch);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -11412,9 +10120,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Branches: S.optional(ListOfMultiConditionalBranch),
+          Branches: S.optional(__S(79, __c9, 7)),
           DefaultActivity: S.optional(S.String),
-          EvaluationWaitTime: S.optional(WaitTime),
+          EvaluationWaitTime: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({
         identifier: "MultiConditionalSplitActivity",
@@ -11426,22 +10134,22 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          MessageConfig: S.optional(JourneyPushMessage),
+          MessageConfig: S.optional(__S(81, __c10, 1)),
           NextActivity: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "PushMessageActivity" });
     case 3:
-      return S.Array(RandomSplitEntry);
+      return S.Array(__S(77, __c9, 5));
     case 4:
-      return S.suspend(() => S.Struct({ Branches: S.optional(ListOfRandomSplitEntry) })).annotate({
+      return S.suspend(() => S.Struct({ Branches: S.optional(__S(83, __c10, 3)) })).annotate({
         identifier: "RandomSplitActivity",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          MessageType: S.optional(MessageType),
+          MessageType: S.optional(S.String),
           OriginationNumber: S.optional(S.String),
           SenderId: S.optional(S.String),
           EntityId: S.optional(S.String),
@@ -11451,7 +10159,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          MessageConfig: S.optional(JourneySMSMessage),
+          MessageConfig: S.optional(__S(85, __c10, 5)),
           NextActivity: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateVersion: S.optional(S.String),
@@ -11459,7 +10167,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "SMSMessageActivity" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextActivity: S.optional(S.String), WaitTime: S.optional(WaitTime) }),
+        S.Struct({ NextActivity: S.optional(S.String), WaitTime: S.optional(__S(73, __c9, 1)) }),
       ).annotate({ identifier: "WaitActivity" });
   }
 }
@@ -11472,21 +10180,21 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CUSTOM: S.optional(CustomMessageActivity),
-          ConditionalSplit: S.optional(ConditionalSplitActivity),
+          CUSTOM: S.optional(__S(60, __c7, 4)),
+          ConditionalSplit: S.optional(__S(74, __c9, 2)),
           Description: S.optional(S.String),
-          EMAIL: S.optional(EmailMessageActivity),
-          Holdout: S.optional(HoldoutActivity),
-          MultiCondition: S.optional(MultiConditionalSplitActivity),
-          PUSH: S.optional(PushMessageActivity),
-          RandomSplit: S.optional(RandomSplitActivity),
-          SMS: S.optional(SMSMessageActivity),
-          Wait: S.optional(WaitActivity),
-          ContactCenter: S.optional(ContactCenterActivity),
+          EMAIL: S.optional(__S(76, __c9, 4)),
+          Holdout: S.optional(__S(77, __c9, 5)),
+          MultiCondition: S.optional(__S(80, __c10, 0)),
+          PUSH: S.optional(__S(82, __c10, 2)),
+          RandomSplit: S.optional(__S(84, __c10, 4)),
+          SMS: S.optional(__S(86, __c10, 6)),
+          Wait: S.optional(__S(87, __c10, 7)),
+          ContactCenter: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "Activity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ Activity.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(89, __c11, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({ Cap: S.optional(S.Number), Days: S.optional(S.Number) }),
@@ -11498,7 +10206,7 @@ function __c11(j: number): any {
           EndpointReentryCap: S.optional(S.Number),
           MessagesPerSecond: S.optional(S.Number),
           EndpointReentryInterval: S.optional(S.String),
-          TimeframeCap: S.optional(JourneyTimeframeCap),
+          TimeframeCap: S.optional(__S(91, __c11, 3)),
           TotalCap: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JourneyLimits" });
@@ -11512,14 +10220,14 @@ function __c11(j: number): any {
       ).annotate({ identifier: "JourneySchedule" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ EventFilter: S.optional(EventFilter), SegmentId: S.optional(S.String) }),
+        S.Struct({ EventFilter: S.optional(__S(29, __c3, 5)), SegmentId: S.optional(S.String) }),
       ).annotate({ identifier: "EventStartCondition" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          EventStartCondition: S.optional(EventStartCondition),
-          SegmentStartCondition: S.optional(SegmentCondition),
+          EventStartCondition: S.optional(__S(94, __c11, 6)),
+          SegmentStartCondition: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({ identifier: "StartCondition" });
   }
@@ -11538,17 +10246,17 @@ function __c12(j: number): any {
         S.Struct({ StartTime: S.optional(S.String), EndTime: S.optional(S.String) }),
       ).annotate({ identifier: "OpenHoursRule" });
     case 2:
-      return S.Array(OpenHoursRule);
+      return S.Array(__S(97, __c12, 1));
     case 3:
-      return S.Record(DayOfWeek, /*@__PURE__*/ ListOfOpenHoursRules.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(98, __c12, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EMAIL: S.optional(MapOfListOfOpenHoursRules),
-          SMS: S.optional(MapOfListOfOpenHoursRules),
-          PUSH: S.optional(MapOfListOfOpenHoursRules),
-          VOICE: S.optional(MapOfListOfOpenHoursRules),
-          CUSTOM: S.optional(MapOfListOfOpenHoursRules),
+          EMAIL: S.optional(__S(99, __c12, 3)),
+          SMS: S.optional(__S(99, __c12, 3)),
+          PUSH: S.optional(__S(99, __c12, 3)),
+          VOICE: S.optional(__S(99, __c12, 3)),
+          CUSTOM: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({ identifier: "OpenHours" });
     case 5:
@@ -11560,15 +10268,15 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ClosedDaysRule" });
     case 6:
-      return S.Array(ClosedDaysRule);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EMAIL: S.optional(ListOfClosedDaysRules),
-          SMS: S.optional(ListOfClosedDaysRules),
-          PUSH: S.optional(ListOfClosedDaysRules),
-          VOICE: S.optional(ListOfClosedDaysRules),
-          CUSTOM: S.optional(ListOfClosedDaysRules),
+          EMAIL: S.optional(__S(102, __c12, 6)),
+          SMS: S.optional(__S(102, __c12, 6)),
+          PUSH: S.optional(__S(102, __c12, 6)),
+          VOICE: S.optional(__S(102, __c12, 6)),
+          CUSTOM: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({ identifier: "ClosedDays" });
   }
@@ -11580,32 +10288,32 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Activities: S.optional(MapOfActivity),
+          Activities: S.optional(__S(90, __c11, 2)),
           CreationDate: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(JourneyLimits),
+          Limits: S.optional(__S(92, __c11, 4)),
           LocalTime: S.optional(S.Boolean),
           Name: S.optional(S.String),
-          QuietTime: S.optional(QuietTime),
+          QuietTime: S.optional(__S(30, __c3, 6)),
           RefreshFrequency: S.optional(S.String),
-          Schedule: S.optional(JourneySchedule),
+          Schedule: S.optional(__S(93, __c11, 5)),
           StartActivity: S.optional(S.String),
-          StartCondition: S.optional(StartCondition),
-          State: S.optional(State),
+          StartCondition: S.optional(__S(95, __c11, 7)),
+          State: S.optional(S.String),
           WaitForQuietTime: S.optional(S.Boolean),
           RefreshOnSegmentUpdate: S.optional(S.Boolean),
-          JourneyChannelSettings: S.optional(JourneyChannelSettings),
+          JourneyChannelSettings: S.optional(__S(96, __c12, 0)),
           SendingSchedule: S.optional(S.Boolean),
-          OpenHours: S.optional(OpenHours),
-          ClosedDays: S.optional(ClosedDays),
-          TimezoneEstimationMethods: S.optional(ListOf__TimezoneEstimationMethodsElement),
+          OpenHours: S.optional(__S(100, __c12, 4)),
+          ClosedDays: S.optional(__S(103, __c12, 7)),
+          TimezoneEstimationMethods: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "WriteJourneyRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteJourneyRequest: S.optional(WriteJourneyRequest)
+          WriteJourneyRequest: S.optional(__S(105, __c13, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteJourneyRequest" }),
         }).pipe(
@@ -11622,34 +10330,34 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Activities: S.optional(MapOfActivity),
+          Activities: S.optional(__S(90, __c11, 2)),
           ApplicationId: S.optional(S.String),
           CreationDate: S.optional(S.String),
           Id: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(JourneyLimits),
+          Limits: S.optional(__S(92, __c11, 4)),
           LocalTime: S.optional(S.Boolean),
           Name: S.optional(S.String),
-          QuietTime: S.optional(QuietTime),
+          QuietTime: S.optional(__S(30, __c3, 6)),
           RefreshFrequency: S.optional(S.String),
-          Schedule: S.optional(JourneySchedule),
+          Schedule: S.optional(__S(93, __c11, 5)),
           StartActivity: S.optional(S.String),
-          StartCondition: S.optional(StartCondition),
-          State: S.optional(State),
-          tags: S.optional(MapOf__string),
+          StartCondition: S.optional(__S(95, __c11, 7)),
+          State: S.optional(S.String),
+          tags: S.optional(__S(0, __c0, 0)),
           WaitForQuietTime: S.optional(S.Boolean),
           RefreshOnSegmentUpdate: S.optional(S.Boolean),
-          JourneyChannelSettings: S.optional(JourneyChannelSettings),
+          JourneyChannelSettings: S.optional(__S(96, __c12, 0)),
           SendingSchedule: S.optional(S.Boolean),
-          OpenHours: S.optional(OpenHours),
-          ClosedDays: S.optional(ClosedDays),
-          TimezoneEstimationMethods: S.optional(ListOf__TimezoneEstimationMethodsElement),
+          OpenHours: S.optional(__S(100, __c12, 4)),
+          ClosedDays: S.optional(__S(103, __c12, 7)),
+          TimezoneEstimationMethods: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "JourneyResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          JourneyResponse: S.optional(JourneyResponse)
+          JourneyResponse: S.optional(__S(107, __c13, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyResponse" }),
         }),
@@ -11657,7 +10365,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
           ImageIconUrl: S.optional(S.String),
           ImageUrl: S.optional(S.String),
@@ -11673,7 +10381,7 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
           MediaUrl: S.optional(S.String),
           RawContent: S.optional(S.String),
@@ -11687,7 +10395,7 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
           Sound: S.optional(S.String),
           Title: S.optional(S.String),
@@ -11703,14 +10411,14 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ADM: S.optional(AndroidPushNotificationTemplate),
-          APNS: S.optional(APNSPushNotificationTemplate),
-          Baidu: S.optional(AndroidPushNotificationTemplate),
-          Default: S.optional(DefaultPushNotificationTemplate),
+          ADM: S.optional(__S(109, __c13, 5)),
+          APNS: S.optional(__S(110, __c13, 6)),
+          Baidu: S.optional(__S(109, __c13, 5)),
+          Default: S.optional(__S(111, __c13, 7)),
           DefaultSubstitutions: S.optional(S.String),
-          GCM: S.optional(AndroidPushNotificationTemplate),
+          GCM: S.optional(__S(109, __c13, 5)),
           RecommenderId: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
         }),
       ).annotate({
@@ -11719,7 +10427,7 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          PushNotificationTemplateRequest: S.optional(PushNotificationTemplateRequest)
+          PushNotificationTemplateRequest: S.optional(__S(112, __c14, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PushNotificationTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11739,7 +10447,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(MapOf__string),
+          Attributes: S.optional(__S(0, __c0, 0)),
           Description: S.optional(S.String),
           Name: S.optional(S.String),
           RecommendationProviderIdType: S.optional(S.String),
@@ -11755,7 +10463,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CreateRecommenderConfiguration: S.optional(CreateRecommenderConfigurationShape)
+          CreateRecommenderConfiguration: S.optional(__S(114, __c14, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CreateRecommenderConfigurationShape" }),
         }).pipe(
@@ -11767,7 +10475,7 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(MapOf__string),
+          Attributes: S.optional(__S(0, __c0, 0)),
           CreationDate: S.optional(S.String),
           Description: S.optional(S.String),
           Id: S.optional(S.String),
@@ -11786,7 +10494,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          RecommenderConfigurationResponse: S.optional(RecommenderConfigurationResponse)
+          RecommenderConfigurationResponse: S.optional(__S(116, __c14, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "RecommenderConfigurationResponse" }),
         }),
@@ -11794,7 +10502,7 @@ function __c14(j: number): any {
         identifier: "CreateRecommenderConfigurationResponse",
       });
     case 6:
-      return S.Array(SegmentDimensions);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String), Version: S.optional(S.Number) }),
@@ -11804,36 +10512,36 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SegmentReference);
+      return S.Array(__S(119, __c14, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(ListOfSegmentDimensions),
-          SourceSegments: S.optional(ListOfSegmentReference),
-          SourceType: S.optional(SourceType),
-          Type: S.optional(Type),
+          Dimensions: S.optional(__S(118, __c14, 6)),
+          SourceSegments: S.optional(__S(120, __c15, 0)),
+          SourceType: S.optional(S.String),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SegmentGroup" });
     case 2:
-      return S.Array(SegmentGroup);
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(ListOfSegmentGroup), Include: S.optional(Include) }),
+        S.Struct({ Groups: S.optional(__S(122, __c15, 2)), Include: S.optional(S.String) }),
       ).annotate({ identifier: "SegmentGroupList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(SegmentDimensions),
+          Dimensions: S.optional(__S(69, __c8, 5)),
           Name: S.optional(S.String),
-          SegmentGroups: S.optional(SegmentGroupList),
-          tags: S.optional(MapOf__string),
+          SegmentGroups: S.optional(__S(123, __c15, 3)),
+          tags: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "WriteSegmentRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteSegmentRequest: S.optional(WriteSegmentRequest)
+          WriteSegmentRequest: S.optional(__S(124, __c15, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteSegmentRequest" }),
         }).pipe(
@@ -11852,9 +10560,9 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ChannelCounts: S.optional(MapOf__integer),
+          ChannelCounts: S.optional(__S(126, __c15, 6)),
           ExternalId: S.optional(S.String),
-          Format: S.optional(Format),
+          Format: S.optional(S.String),
           RoleArn: S.optional(S.String),
           S3Url: S.optional(S.String),
           Size: S.optional(S.Number),
@@ -11870,21 +10578,21 @@ function __c16(j: number): any {
           ApplicationId: S.optional(S.String),
           Arn: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          Dimensions: S.optional(SegmentDimensions),
+          Dimensions: S.optional(__S(69, __c8, 5)),
           Id: S.optional(S.String),
-          ImportDefinition: S.optional(SegmentImportResource),
+          ImportDefinition: S.optional(__S(127, __c15, 7)),
           LastModifiedDate: S.optional(S.String),
           Name: S.optional(S.String),
-          SegmentGroups: S.optional(SegmentGroupList),
-          SegmentType: S.optional(SegmentType),
-          tags: S.optional(MapOf__string),
+          SegmentGroups: S.optional(__S(123, __c15, 3)),
+          SegmentType: S.optional(S.String),
+          tags: S.optional(__S(0, __c0, 0)),
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SegmentResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SegmentResponse: S.optional(SegmentResponse)
+          SegmentResponse: S.optional(__S(128, __c16, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SegmentResponse" }),
         }),
@@ -11895,14 +10603,14 @@ function __c16(j: number): any {
           Body: S.optional(S.String),
           DefaultSubstitutions: S.optional(S.String),
           RecommenderId: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "SMSTemplateRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          SMSTemplateRequest: S.optional(SMSTemplateRequest)
+          SMSTemplateRequest: S.optional(__S(130, __c16, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11923,7 +10631,7 @@ function __c16(j: number): any {
           Body: S.optional(S.String),
           DefaultSubstitutions: S.optional(S.String),
           LanguageCode: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           VoiceId: S.optional(S.String),
         }),
@@ -11932,7 +10640,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          VoiceTemplateRequest: S.optional(VoiceTemplateRequest)
+          VoiceTemplateRequest: S.optional(__S(132, __c16, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceTemplateRequest" }),
         }).pipe(
@@ -11983,7 +10691,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ADMChannelResponse: S.optional(ADMChannelResponse)
+          ADMChannelResponse: S.optional(__S(135, __c16, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ADMChannelResponse" }),
         }),
@@ -12021,7 +10729,7 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          APNSChannelResponse: S.optional(APNSChannelResponse)
+          APNSChannelResponse: S.optional(__S(138, __c17, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSChannelResponse" }),
         }),
@@ -12065,7 +10773,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
+          APNSSandboxChannelResponse: S.optional(__S(141, __c17, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSSandboxChannelResponse" }),
         }),
@@ -12094,7 +10802,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
+          APNSVoipChannelResponse: S.optional(__S(138, __c17, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSVoipChannelResponse" }),
         }),
@@ -12122,7 +10830,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
+          APNSVoipSandboxChannelResponse: S.optional(__S(141, __c17, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
         }),
@@ -12176,7 +10884,7 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          BaiduChannelResponse: S.optional(BaiduChannelResponse)
+          BaiduChannelResponse: S.optional(__S(149, __c18, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "BaiduChannelResponse" }),
         }),
@@ -12242,7 +10950,7 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          EmailChannelResponse: S.optional(EmailChannelResponse)
+          EmailChannelResponse: S.optional(__S(153, __c19, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailChannelResponse" }),
         }),
@@ -12274,7 +10982,7 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          MessageBody: S.optional(MessageBody)
+          MessageBody: S.optional(__S(156, __c19, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MessageBody" }),
         }),
@@ -12298,7 +11006,7 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "DeleteEndpointRequest" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ListOf__string.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(22, __c2, 6).pipe(S.optional));
   }
 }
 function __c20(j: number): any {
@@ -12329,32 +11037,32 @@ function __c20(j: number): any {
       ).annotate({ identifier: "EndpointLocation" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ UserAttributes: S.optional(MapOfListOf__string), UserId: S.optional(S.String) }),
+        S.Struct({ UserAttributes: S.optional(__S(159, __c19, 7)), UserId: S.optional(S.String) }),
       ).annotate({ identifier: "EndpointUser" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
           ApplicationId: S.optional(S.String),
-          Attributes: S.optional(MapOfListOf__string),
-          ChannelType: S.optional(ChannelType),
+          Attributes: S.optional(__S(159, __c19, 7)),
+          ChannelType: S.optional(S.String),
           CohortId: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          Demographic: S.optional(EndpointDemographic),
+          Demographic: S.optional(__S(160, __c20, 0)),
           EffectiveDate: S.optional(S.String),
           EndpointStatus: S.optional(S.String),
           Id: S.optional(S.String),
-          Location: S.optional(EndpointLocation),
-          Metrics: S.optional(MapOf__double),
+          Location: S.optional(__S(161, __c20, 1)),
+          Metrics: S.optional(__S(126, __c15, 6)),
           OptOut: S.optional(S.String),
           RequestId: S.optional(S.String),
-          User: S.optional(EndpointUser),
+          User: S.optional(__S(162, __c20, 2)),
         }),
       ).annotate({ identifier: "EndpointResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EndpointResponse: S.optional(EndpointResponse)
+          EndpointResponse: S.optional(__S(163, __c20, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointResponse" }),
         }),
@@ -12386,7 +11094,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EventStream: S.optional(EventStream)
+          EventStream: S.optional(__S(166, __c20, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EventStream" }),
         }),
@@ -12431,7 +11139,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          GCMChannelResponse: S.optional(GCMChannelResponse)
+          GCMChannelResponse: S.optional(__S(169, __c21, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "GCMChannelResponse" }),
         }),
@@ -12558,7 +11266,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SMSChannelResponse: S.optional(SMSChannelResponse)
+          SMSChannelResponse: S.optional(__S(177, __c22, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSChannelResponse" }),
         }),
@@ -12598,15 +11306,15 @@ function __c22(j: number): any {
         identifier: "DeleteUserEndpointsRequest",
       });
     case 5:
-      return S.Array(EndpointResponse);
+      return S.Array(__S(163, __c20, 3));
     case 6:
-      return S.suspend(() => S.Struct({ Item: S.optional(ListOfEndpointResponse) })).annotate({
+      return S.suspend(() => S.Struct({ Item: S.optional(__S(181, __c22, 5)) })).annotate({
         identifier: "EndpointsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EndpointsResponse: S.optional(EndpointsResponse)
+          EndpointsResponse: S.optional(__S(182, __c22, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointsResponse" }),
         }),
@@ -12635,7 +11343,7 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          VoiceChannelResponse: S.optional(VoiceChannelResponse)
+          VoiceChannelResponse: S.optional(__S(135, __c16, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceChannelResponse" }),
         }),
@@ -12689,7 +11397,7 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          APNSChannelResponse: S.optional(APNSChannelResponse)
+          APNSChannelResponse: S.optional(__S(138, __c17, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSChannelResponse" }),
         }),
@@ -12791,18 +11499,18 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "ResultRowValue" });
     case 4:
-      return S.Array(ResultRowValue);
+      return S.Array(__S(195, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          GroupedBys: S.optional(ListOfResultRowValue),
-          Values: S.optional(ListOfResultRowValue),
+          GroupedBys: S.optional(__S(196, __c24, 4)),
+          Values: S.optional(__S(196, __c24, 4)),
         }),
       ).annotate({ identifier: "ResultRow" });
     case 6:
-      return S.Array(ResultRow);
+      return S.Array(__S(197, __c24, 5));
     case 7:
-      return S.suspend(() => S.Struct({ Rows: S.optional(ListOfResultRow) })).annotate({
+      return S.suspend(() => S.Struct({ Rows: S.optional(__S(198, __c24, 6)) })).annotate({
         identifier: "BaseKpiResult",
       });
   }
@@ -12815,7 +11523,7 @@ function __c25(j: number): any {
           ApplicationId: S.optional(S.String),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           KpiName: S.optional(S.String),
-          KpiResult: S.optional(BaseKpiResult),
+          KpiResult: S.optional(__S(199, __c24, 7)),
           NextToken: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -12825,7 +11533,7 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ApplicationDateRangeKpiResponse: S.optional(ApplicationDateRangeKpiResponse)
+          ApplicationDateRangeKpiResponse: S.optional(__S(200, __c25, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ApplicationDateRangeKpiResponse" }),
         }),
@@ -12851,7 +11559,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DailyCap: S.optional(S.Number),
-          TimeframeCap: S.optional(JourneyTimeframeCap),
+          TimeframeCap: S.optional(__S(91, __c11, 3)),
           TotalCap: S.optional(S.Number),
         }),
       ).annotate({
@@ -12861,11 +11569,11 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
-          CampaignHook: S.optional(CampaignHook),
+          CampaignHook: S.optional(__S(36, __c4, 4)),
           LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(CampaignLimits),
-          QuietTime: S.optional(QuietTime),
-          JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
+          Limits: S.optional(__S(37, __c4, 5)),
+          QuietTime: S.optional(__S(30, __c3, 6)),
+          JourneyLimits: S.optional(__S(203, __c25, 3)),
         }),
       ).annotate({
         identifier: "ApplicationSettingsResource",
@@ -12873,7 +11581,7 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
+          ApplicationSettingsResource: S.optional(__S(204, __c25, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ApplicationSettingsResource" }),
         }),
@@ -12888,19 +11596,19 @@ function __c25(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetAppsRequest" });
     case 7:
-      return S.Array(ApplicationResponse);
+      return S.Array(__S(3, __c0, 3));
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfApplicationResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(207, __c25, 7)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ApplicationsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ApplicationsResponse: S.optional(ApplicationsResponse)
+          ApplicationsResponse: S.optional(__S(208, __c26, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ApplicationsResponse" }),
         }),
@@ -12921,7 +11629,7 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          BaiduChannelResponse: S.optional(BaiduChannelResponse)
+          BaiduChannelResponse: S.optional(__S(149, __c18, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "BaiduChannelResponse" }),
         }),
@@ -12981,23 +11689,23 @@ function __c26(j: number): any {
           TimezonesTotalCount: S.optional(S.Number),
           TotalEndpointCount: S.optional(S.Number),
           TreatmentId: S.optional(S.String),
-          ExecutionMetrics: S.optional(MapOf__string),
+          ExecutionMetrics: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ActivityResponse" });
     case 7:
-      return S.Array(ActivityResponse);
+      return S.Array(__S(214, __c26, 6));
   }
 }
 function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfActivityResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(215, __c26, 7)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ActivitiesResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ActivitiesResponse: S.optional(ActivitiesResponse)
+          ActivitiesResponse: S.optional(__S(216, __c27, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ActivitiesResponse" }),
         }),
@@ -13041,7 +11749,7 @@ function __c27(j: number): any {
           CampaignId: S.optional(S.String),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           KpiName: S.optional(S.String),
-          KpiResult: S.optional(BaseKpiResult),
+          KpiResult: S.optional(__S(199, __c24, 7)),
           NextToken: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -13051,7 +11759,7 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CampaignDateRangeKpiResponse: S.optional(CampaignDateRangeKpiResponse)
+          CampaignDateRangeKpiResponse: S.optional(__S(219, __c27, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignDateRangeKpiResponse" }),
         }),
@@ -13076,10 +11784,10 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "GetCampaignsRequest" });
     case 6:
-      return S.Array(CampaignResponse);
+      return S.Array(__S(43, __c5, 3));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfCampaignResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(222, __c27, 6)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "CampaignsResponse" });
   }
 }
@@ -13088,7 +11796,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CampaignsResponse: S.optional(CampaignsResponse)
+          CampaignsResponse: S.optional(__S(223, __c27, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignsResponse" }),
         }),
@@ -13118,7 +11826,7 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CampaignResponse: S.optional(CampaignResponse)
+          CampaignResponse: S.optional(__S(43, __c5, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignResponse" }),
         }),
@@ -13151,7 +11859,7 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CampaignsResponse: S.optional(CampaignsResponse)
+          CampaignsResponse: S.optional(__S(223, __c27, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignsResponse" }),
         }),
@@ -13186,19 +11894,19 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "ChannelResponse" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ChannelResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(230, __c28, 6).pipe(S.optional));
   }
 }
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Channels: S.optional(MapOfChannelResponse) })).annotate({
+      return S.suspend(() => S.Struct({ Channels: S.optional(__S(231, __c28, 7)) })).annotate({
         identifier: "ChannelsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ChannelsResponse: S.optional(ChannelsResponse)
+          ChannelsResponse: S.optional(__S(232, __c29, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ChannelsResponse" }),
         }),
@@ -13219,7 +11927,7 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EmailChannelResponse: S.optional(EmailChannelResponse)
+          EmailChannelResponse: S.optional(__S(153, __c19, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailChannelResponse" }),
         }),
@@ -13250,11 +11958,11 @@ function __c29(j: number): any {
           LastModifiedDate: S.optional(S.String),
           RecommenderId: S.optional(S.String),
           Subject: S.optional(S.String),
-          Headers: S.optional(ListOfMessageHeader),
-          tags: S.optional(MapOf__string),
+          Headers: S.optional(__S(10, __c1, 2)),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
-          TemplateType: S.optional(TemplateType),
+          TemplateType: S.optional(S.String),
           TextPart: S.optional(S.String),
           Version: S.optional(S.String),
         }),
@@ -13262,7 +11970,7 @@ function __c29(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EmailTemplateResponse: S.optional(EmailTemplateResponse)
+          EmailTemplateResponse: S.optional(__S(237, __c29, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailTemplateResponse" }),
         }),
@@ -13303,7 +12011,7 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EventStream: S.optional(EventStream)
+          EventStream: S.optional(__S(166, __c20, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EventStream" }),
         }),
@@ -13342,15 +12050,15 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "GetExportJobsRequest" });
     case 4:
-      return S.Array(ExportJobResponse);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfExportJobResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(244, __c30, 4)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ExportJobsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ExportJobsResponse: S.optional(ExportJobsResponse)
+          ExportJobsResponse: S.optional(__S(245, __c30, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ExportJobsResponse" }),
         }),
@@ -13406,15 +12114,15 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "GetImportJobsRequest" });
     case 2:
-      return S.Array(ImportJobResponse);
+      return S.Array(__S(55, __c6, 7));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfImportJobResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(250, __c31, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ImportJobsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ImportJobsResponse: S.optional(ImportJobsResponse)
+          ImportJobsResponse: S.optional(__S(251, __c31, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ImportJobsResponse" }),
         }),
@@ -13441,17 +12149,17 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Content: S.optional(ListOfInAppMessageContent),
-          CustomConfig: S.optional(MapOf__string),
-          Layout: S.optional(Layout),
+          Content: S.optional(__S(19, __c2, 3)),
+          CustomConfig: S.optional(__S(0, __c0, 0)),
+          Layout: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppMessage" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           EndDate: S.optional(S.String),
-          EventFilter: S.optional(CampaignEventFilter),
-          QuietTime: S.optional(QuietTime),
+          EventFilter: S.optional(__S(29, __c3, 5)),
+          QuietTime: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "InAppCampaignSchedule" });
   }
@@ -13463,24 +12171,24 @@ function __c32(j: number): any {
         S.Struct({
           CampaignId: S.optional(S.String),
           DailyCap: S.optional(S.Number),
-          InAppMessage: S.optional(InAppMessage),
+          InAppMessage: S.optional(__S(254, __c31, 6)),
           Priority: S.optional(S.Number),
-          Schedule: S.optional(InAppCampaignSchedule),
+          Schedule: S.optional(__S(255, __c31, 7)),
           SessionCap: S.optional(S.Number),
           TotalCap: S.optional(S.Number),
           TreatmentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppMessageCampaign" });
     case 1:
-      return S.Array(InAppMessageCampaign);
+      return S.Array(__S(256, __c32, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ InAppMessageCampaigns: S.optional(ListOfInAppMessageCampaign) }),
+        S.Struct({ InAppMessageCampaigns: S.optional(__S(257, __c32, 1)) }),
       ).annotate({ identifier: "InAppMessagesResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          InAppMessagesResponse: S.optional(InAppMessagesResponse)
+          InAppMessagesResponse: S.optional(__S(258, __c32, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InAppMessagesResponse" }),
         }),
@@ -13505,22 +12213,22 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          Content: S.optional(ListOfInAppMessageContent),
+          Content: S.optional(__S(19, __c2, 3)),
           CreationDate: S.optional(S.String),
-          CustomConfig: S.optional(MapOf__string),
+          CustomConfig: S.optional(__S(0, __c0, 0)),
           LastModifiedDate: S.optional(S.String),
-          Layout: S.optional(Layout),
-          tags: S.optional(MapOf__string),
+          Layout: S.optional(S.String),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
-          TemplateType: S.optional(TemplateType),
+          TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppTemplateResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InAppTemplateResponse: S.optional(InAppTemplateResponse)
+          InAppTemplateResponse: S.optional(__S(261, __c32, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InAppTemplateResponse" }),
         }),
@@ -13582,7 +12290,7 @@ function __c33(j: number): any {
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           JourneyId: S.optional(S.String),
           KpiName: S.optional(S.String),
-          KpiResult: S.optional(BaseKpiResult),
+          KpiResult: S.optional(__S(199, __c24, 7)),
           NextToken: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -13592,7 +12300,7 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          JourneyDateRangeKpiResponse: S.optional(JourneyDateRangeKpiResponse)
+          JourneyDateRangeKpiResponse: S.optional(__S(265, __c33, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyDateRangeKpiResponse" }),
         }),
@@ -13631,7 +12339,7 @@ function __c33(j: number): any {
           JourneyActivityId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(MapOf__string),
+          Metrics: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "JourneyExecutionActivityMetricsResponse",
@@ -13639,9 +12347,7 @@ function __c33(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          JourneyExecutionActivityMetricsResponse: S.optional(
-            JourneyExecutionActivityMetricsResponse,
-          )
+          JourneyExecutionActivityMetricsResponse: S.optional(__S(268, __c33, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyExecutionActivityMetricsResponse" }),
         }),
@@ -13677,7 +12383,7 @@ function __c33(j: number): any {
           ApplicationId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(MapOf__string),
+          Metrics: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "JourneyExecutionMetricsResponse",
@@ -13689,7 +12395,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          JourneyExecutionMetricsResponse: S.optional(JourneyExecutionMetricsResponse)
+          JourneyExecutionMetricsResponse: S.optional(__S(271, __c33, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyExecutionMetricsResponse" }),
         }),
@@ -13729,7 +12435,7 @@ function __c34(j: number): any {
           JourneyActivityId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(MapOf__string),
+          Metrics: S.optional(__S(0, __c0, 0)),
           RunId: S.optional(S.String),
         }),
       ).annotate({
@@ -13738,9 +12444,7 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          JourneyRunExecutionActivityMetricsResponse: S.optional(
-            JourneyRunExecutionActivityMetricsResponse,
-          )
+          JourneyRunExecutionActivityMetricsResponse: S.optional(__S(274, __c34, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyRunExecutionActivityMetricsResponse" }),
         }),
@@ -13777,7 +12481,7 @@ function __c34(j: number): any {
           ApplicationId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(MapOf__string),
+          Metrics: S.optional(__S(0, __c0, 0)),
           RunId: S.optional(S.String),
         }),
       ).annotate({
@@ -13786,7 +12490,7 @@ function __c34(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          JourneyRunExecutionMetricsResponse: S.optional(JourneyRunExecutionMetricsResponse)
+          JourneyRunExecutionMetricsResponse: S.optional(__S(277, __c34, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyRunExecutionMetricsResponse" }),
         }),
@@ -13821,19 +12525,19 @@ function __c35(j: number): any {
           CreationTime: S.optional(S.String),
           LastUpdateTime: S.optional(S.String),
           RunId: S.optional(S.String),
-          Status: S.optional(JourneyRunStatus),
+          Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "JourneyRunResponse" });
     case 1:
-      return S.Array(JourneyRunResponse);
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfJourneyRunResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(281, __c35, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "JourneyRunsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          JourneyRunsResponse: S.optional(JourneyRunsResponse)
+          JourneyRunsResponse: S.optional(__S(282, __c35, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyRunsResponse" }),
         }),
@@ -13857,20 +12561,20 @@ function __c35(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ADM: S.optional(AndroidPushNotificationTemplate),
-          APNS: S.optional(APNSPushNotificationTemplate),
+          ADM: S.optional(__S(109, __c13, 5)),
+          APNS: S.optional(__S(110, __c13, 6)),
           Arn: S.optional(S.String),
-          Baidu: S.optional(AndroidPushNotificationTemplate),
+          Baidu: S.optional(__S(109, __c13, 5)),
           CreationDate: S.optional(S.String),
-          Default: S.optional(DefaultPushNotificationTemplate),
+          Default: S.optional(__S(111, __c13, 7)),
           DefaultSubstitutions: S.optional(S.String),
-          GCM: S.optional(AndroidPushNotificationTemplate),
+          GCM: S.optional(__S(109, __c13, 5)),
           LastModifiedDate: S.optional(S.String),
           RecommenderId: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
-          TemplateType: S.optional(TemplateType),
+          TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({
@@ -13879,7 +12583,7 @@ function __c35(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PushNotificationTemplateResponse: S.optional(PushNotificationTemplateResponse)
+          PushNotificationTemplateResponse: S.optional(__S(285, __c35, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PushNotificationTemplateResponse" }),
         }),
@@ -13915,11 +12619,11 @@ function __c36(j: number): any {
         identifier: "GetRecommenderConfigurationsRequest",
       });
     case 1:
-      return S.Array(RecommenderConfigurationResponse);
+      return S.Array(__S(116, __c14, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Item: S.optional(ListOfRecommenderConfigurationResponse),
+          Item: S.optional(__S(289, __c36, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13928,7 +12632,7 @@ function __c36(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ListRecommenderConfigurationsResponse: S.optional(ListRecommenderConfigurationsResponse)
+          ListRecommenderConfigurationsResponse: S.optional(__S(290, __c36, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ListRecommenderConfigurationsResponse" }),
         }),
@@ -13977,7 +12681,7 @@ function __c36(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ExportJobsResponse: S.optional(ExportJobsResponse)
+          ExportJobsResponse: S.optional(__S(245, __c30, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ExportJobsResponse" }),
         }),
@@ -14014,7 +12718,7 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ImportJobsResponse: S.optional(ImportJobsResponse)
+          ImportJobsResponse: S.optional(__S(251, __c31, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ImportJobsResponse" }),
         }),
@@ -14039,15 +12743,15 @@ function __c37(j: number): any {
         ),
       ).annotate({ identifier: "GetSegmentsRequest" });
     case 2:
-      return S.Array(SegmentResponse);
+      return S.Array(__S(128, __c16, 0));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfSegmentResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(298, __c37, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "SegmentsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SegmentsResponse: S.optional(SegmentsResponse)
+          SegmentsResponse: S.optional(__S(299, __c37, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SegmentsResponse" }),
         }),
@@ -14075,7 +12779,7 @@ function __c37(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          SegmentResponse: S.optional(SegmentResponse)
+          SegmentResponse: S.optional(__S(128, __c16, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SegmentResponse" }),
         }),
@@ -14112,7 +12816,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SegmentsResponse: S.optional(SegmentsResponse)
+          SegmentsResponse: S.optional(__S(299, __c37, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SegmentsResponse" }),
         }),
@@ -14157,17 +12861,17 @@ function __c38(j: number): any {
           DefaultSubstitutions: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
           RecommenderId: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
-          TemplateType: S.optional(TemplateType),
+          TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "SMSTemplateResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SMSTemplateResponse: S.optional(SMSTemplateResponse)
+          SMSTemplateResponse: S.optional(__S(307, __c38, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSTemplateResponse" }),
         }),
@@ -14191,7 +12895,7 @@ function __c38(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EndpointsResponse: S.optional(EndpointsResponse)
+          EndpointsResponse: S.optional(__S(182, __c22, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointsResponse" }),
         }),
@@ -14216,7 +12920,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          VoiceChannelResponse: S.optional(VoiceChannelResponse)
+          VoiceChannelResponse: S.optional(__S(135, __c16, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceChannelResponse" }),
         }),
@@ -14246,10 +12950,10 @@ function __c39(j: number): any {
           DefaultSubstitutions: S.optional(S.String),
           LanguageCode: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
-          TemplateType: S.optional(TemplateType),
+          TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
           VoiceId: S.optional(S.String),
         }),
@@ -14257,7 +12961,7 @@ function __c39(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          VoiceTemplateResponse: S.optional(VoiceTemplateResponse)
+          VoiceTemplateResponse: S.optional(__S(314, __c39, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceTemplateResponse" }),
         }),
@@ -14280,15 +12984,15 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "ListJourneysRequest" });
     case 5:
-      return S.Array(JourneyResponse);
+      return S.Array(__S(107, __c13, 3));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfJourneyResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(317, __c39, 5)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "JourneysResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          JourneysResponse: S.optional(JourneysResponse)
+          JourneysResponse: S.optional(__S(318, __c39, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneysResponse" }),
         }),
@@ -14313,13 +13017,13 @@ function __c40(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(MapOf__string) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(0, __c0, 0)) })).annotate({
         identifier: "TagsModel",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TagsModel: S.optional(TagsModel)
+          TagsModel: S.optional(__S(321, __c40, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TagsModel" }),
         }),
@@ -14344,23 +13048,23 @@ function __c40(j: number): any {
           CreationDate: S.optional(S.String),
           DefaultSubstitutions: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
-          tags: S.optional(MapOf__string),
+          tags: S.optional(__S(0, __c0, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
-          TemplateType: S.optional(TemplateType),
+          TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateResponse" });
     case 5:
-      return S.Array(TemplateResponse);
+      return S.Array(__S(324, __c40, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(ListOfTemplateResponse), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(325, __c40, 5)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "TemplatesResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          TemplatesResponse: S.optional(TemplatesResponse)
+          TemplatesResponse: S.optional(__S(326, __c40, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TemplatesResponse" }),
         }),
@@ -14402,11 +13106,11 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "TemplateVersionResponse" });
     case 2:
-      return S.Array(TemplateVersionResponse);
+      return S.Array(__S(329, __c41, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Item: S.optional(ListOfTemplateVersionResponse),
+          Item: S.optional(__S(330, __c41, 2)),
           Message: S.optional(S.String),
           NextToken: S.optional(S.String),
           RequestID: S.optional(S.String),
@@ -14415,7 +13119,7 @@ function __c41(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TemplateVersionsResponse: S.optional(TemplateVersionsResponse)
+          TemplateVersionsResponse: S.optional(__S(331, __c41, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TemplateVersionsResponse" }),
         }),
@@ -14429,7 +13133,7 @@ function __c41(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          NumberValidateRequest: S.optional(NumberValidateRequest)
+          NumberValidateRequest: S.optional(__S(333, __c41, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "NumberValidateRequest" }),
         }).pipe(
@@ -14471,7 +13175,7 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          NumberValidateResponse: S.optional(NumberValidateResponse)
+          NumberValidateResponse: S.optional(__S(335, __c41, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "NumberValidateResponse" }),
         }),
@@ -14482,16 +13186,16 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
-          Attributes: S.optional(MapOfListOf__string),
-          ChannelType: S.optional(ChannelType),
-          Demographic: S.optional(EndpointDemographic),
+          Attributes: S.optional(__S(159, __c19, 7)),
+          ChannelType: S.optional(S.String),
+          Demographic: S.optional(__S(160, __c20, 0)),
           EffectiveDate: S.optional(S.String),
           EndpointStatus: S.optional(S.String),
-          Location: S.optional(EndpointLocation),
-          Metrics: S.optional(MapOf__double),
+          Location: S.optional(__S(161, __c20, 1)),
+          Metrics: S.optional(__S(126, __c15, 6)),
           OptOut: S.optional(S.String),
           RequestId: S.optional(S.String),
-          User: S.optional(EndpointUser),
+          User: S.optional(__S(162, __c20, 2)),
         }),
       ).annotate({ identifier: "PublicEndpoint" });
     case 2:
@@ -14509,25 +13213,28 @@ function __c42(j: number): any {
           AppPackageName: S.optional(S.String),
           AppTitle: S.optional(S.String),
           AppVersionCode: S.optional(S.String),
-          Attributes: S.optional(MapOf__string),
+          Attributes: S.optional(__S(0, __c0, 0)),
           ClientSdkVersion: S.optional(S.String),
           EventType: S.optional(S.String),
-          Metrics: S.optional(MapOf__double),
+          Metrics: S.optional(__S(126, __c15, 6)),
           SdkName: S.optional(S.String),
-          Session: S.optional(Session),
+          Session: S.optional(__S(338, __c42, 2)),
           Timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ Event.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(339, __c42, 3).pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Endpoint: S.optional(PublicEndpoint), Events: S.optional(MapOfEvent) }),
+        S.Struct({
+          Endpoint: S.optional(__S(337, __c42, 1)),
+          Events: S.optional(__S(340, __c42, 4)),
+        }),
       ).annotate({ identifier: "EventsBatch" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ EventsBatch.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(341, __c42, 5).pipe(S.optional));
     case 7:
-      return S.suspend(() => S.Struct({ BatchItem: S.optional(MapOfEventsBatch) })).annotate({
+      return S.suspend(() => S.Struct({ BatchItem: S.optional(__S(342, __c42, 6)) })).annotate({
         identifier: "EventsRequest",
       });
   }
@@ -14538,7 +13245,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          EventsRequest: S.optional(EventsRequest)
+          EventsRequest: S.optional(__S(343, __c42, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EventsRequest" }),
         }).pipe(
@@ -14557,24 +13264,24 @@ function __c43(j: number): any {
         S.Struct({ Message: S.optional(S.String), StatusCode: S.optional(S.Number) }),
       ).annotate({ identifier: "EndpointItemResponse" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ EventItemResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(345, __c43, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EndpointItemResponse: S.optional(EndpointItemResponse),
-          EventsItemResponse: S.optional(MapOfEventItemResponse),
+          EndpointItemResponse: S.optional(__S(345, __c43, 1)),
+          EventsItemResponse: S.optional(__S(346, __c43, 2)),
         }),
       ).annotate({ identifier: "ItemResponse" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ ItemResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(347, __c43, 3).pipe(S.optional));
     case 5:
-      return S.suspend(() => S.Struct({ Results: S.optional(MapOfItemResponse) })).annotate({
+      return S.suspend(() => S.Struct({ Results: S.optional(__S(348, __c43, 4)) })).annotate({
         identifier: "EventsResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EventsResponse: S.optional(EventsResponse)
+          EventsResponse: S.optional(__S(349, __c43, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EventsResponse" }),
         }),
@@ -14591,7 +13298,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteEventStream: S.optional(WriteEventStream)
+          WriteEventStream: S.optional(__S(351, __c43, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteEventStream" }),
         }).pipe(
@@ -14606,7 +13313,7 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "PutEventStreamRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Blacklist: S.optional(ListOf__string) })).annotate({
+      return S.suspend(() => S.Struct({ Blacklist: S.optional(__S(22, __c2, 6)) })).annotate({
         identifier: "UpdateAttributesRequest",
       });
     case 2:
@@ -14614,7 +13321,7 @@ function __c44(j: number): any {
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           AttributeType: S.String.pipe(T.HttpLabel("AttributeType")),
-          UpdateAttributesRequest: S.optional(UpdateAttributesRequest)
+          UpdateAttributesRequest: S.optional(__S(353, __c44, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "UpdateAttributesRequest" }),
         }).pipe(
@@ -14633,13 +13340,13 @@ function __c44(j: number): any {
         S.Struct({
           ApplicationId: S.optional(S.String),
           AttributeType: S.optional(S.String),
-          Attributes: S.optional(ListOf__string),
+          Attributes: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "AttributesResource" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AttributesResource: S.optional(AttributesResource)
+          AttributesResource: S.optional(__S(355, __c44, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "AttributesResource" }),
         }),
@@ -14648,22 +13355,22 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BodyOverride: S.optional(S.String),
-          ChannelType: S.optional(ChannelType),
-          Context: S.optional(MapOf__string),
+          ChannelType: S.optional(S.String),
+          Context: S.optional(__S(0, __c0, 0)),
           RawContent: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           TitleOverride: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddressConfiguration" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ AddressConfiguration.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(357, __c44, 5).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           BodyOverride: S.optional(S.String),
-          Context: S.optional(MapOf__string),
+          Context: S.optional(__S(0, __c0, 0)),
           RawContent: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           TitleOverride: S.optional(S.String),
         }),
       ).annotate({
@@ -14674,14 +13381,14 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ EndpointSendConfiguration.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(359, __c44, 7).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
           ConsolidationKey: S.optional(S.String),
-          Data: S.optional(MapOf__string),
+          Data: S.optional(__S(0, __c0, 0)),
           ExpiresAfter: S.optional(S.String),
           IconReference: S.optional(S.String),
           ImageIconUrl: S.optional(S.String),
@@ -14691,7 +13398,7 @@ function __c45(j: number): any {
           SilentPush: S.optional(S.Boolean),
           SmallImageIconUrl: S.optional(S.String),
           Sound: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           Title: S.optional(S.String),
           Url: S.optional(S.String),
         }),
@@ -14700,19 +13407,19 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           APNSPushType: S.optional(S.String),
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Badge: S.optional(S.Number),
           Body: S.optional(S.String),
           Category: S.optional(S.String),
           CollapseId: S.optional(S.String),
-          Data: S.optional(MapOf__string),
+          Data: S.optional(__S(0, __c0, 0)),
           MediaUrl: S.optional(S.String),
           PreferredAuthenticationMethod: S.optional(S.String),
           Priority: S.optional(S.String),
           RawContent: S.optional(S.String),
           SilentPush: S.optional(S.Boolean),
           Sound: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           ThreadId: S.optional(S.String),
           TimeToLive: S.optional(S.Number),
           Title: S.optional(S.String),
@@ -14722,9 +13429,9 @@ function __c45(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
-          Data: S.optional(MapOf__string),
+          Data: S.optional(__S(0, __c0, 0)),
           IconReference: S.optional(S.String),
           ImageIconUrl: S.optional(S.String),
           ImageUrl: S.optional(S.String),
@@ -14732,7 +13439,7 @@ function __c45(j: number): any {
           SilentPush: S.optional(S.Boolean),
           SmallImageIconUrl: S.optional(S.String),
           Sound: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           TimeToLive: S.optional(S.Number),
           Title: S.optional(S.String),
           Url: S.optional(S.String),
@@ -14740,16 +13447,16 @@ function __c45(j: number): any {
       ).annotate({ identifier: "BaiduMessage" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Body: S.optional(S.String), Substitutions: S.optional(MapOfListOf__string) }),
+        S.Struct({ Body: S.optional(S.String), Substitutions: S.optional(__S(159, __c19, 7)) }),
       ).annotate({ identifier: "DefaultMessage" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
-          Data: S.optional(MapOf__string),
+          Data: S.optional(__S(0, __c0, 0)),
           SilentPush: S.optional(S.Boolean),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           Title: S.optional(S.String),
           Url: S.optional(S.String),
         }),
@@ -14771,10 +13478,10 @@ function __c46(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          HtmlPart: S.optional(SimpleEmailPart),
-          Subject: S.optional(SimpleEmailPart),
-          TextPart: S.optional(SimpleEmailPart),
-          Headers: S.optional(ListOfMessageHeader),
+          HtmlPart: S.optional(__S(367, __c45, 7)),
+          Subject: S.optional(__S(367, __c45, 7)),
+          TextPart: S.optional(__S(367, __c45, 7)),
+          Headers: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "SimpleEmail" });
     case 1:
@@ -14783,19 +13490,19 @@ function __c46(j: number): any {
           Body: S.optional(S.String),
           FeedbackForwardingAddress: S.optional(S.String),
           FromAddress: S.optional(S.String),
-          RawEmail: S.optional(RawEmail),
-          ReplyToAddresses: S.optional(ListOf__string),
-          SimpleEmail: S.optional(SimpleEmail),
-          Substitutions: S.optional(MapOfListOf__string),
+          RawEmail: S.optional(__S(366, __c45, 6)),
+          ReplyToAddresses: S.optional(__S(22, __c2, 6)),
+          SimpleEmail: S.optional(__S(368, __c46, 0)),
+          Substitutions: S.optional(__S(159, __c19, 7)),
         }),
       ).annotate({ identifier: "EmailMessage" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
+          Action: S.optional(S.String),
           Body: S.optional(S.String),
           CollapseKey: S.optional(S.String),
-          Data: S.optional(MapOf__string),
+          Data: S.optional(__S(0, __c0, 0)),
           IconReference: S.optional(S.String),
           ImageIconUrl: S.optional(S.String),
           ImageUrl: S.optional(S.String),
@@ -14806,7 +13513,7 @@ function __c46(j: number): any {
           SilentPush: S.optional(S.Boolean),
           SmallImageIconUrl: S.optional(S.String),
           Sound: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           TimeToLive: S.optional(S.Number),
           Title: S.optional(S.String),
           Url: S.optional(S.String),
@@ -14818,10 +13525,10 @@ function __c46(j: number): any {
           Body: S.optional(S.String),
           Keyword: S.optional(S.String),
           MediaUrl: S.optional(S.String),
-          MessageType: S.optional(MessageType),
+          MessageType: S.optional(S.String),
           OriginationNumber: S.optional(S.String),
           SenderId: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           EntityId: S.optional(S.String),
           TemplateId: S.optional(S.String),
         }),
@@ -14832,22 +13539,22 @@ function __c46(j: number): any {
           Body: S.optional(S.String),
           LanguageCode: S.optional(S.String),
           OriginationNumber: S.optional(S.String),
-          Substitutions: S.optional(MapOfListOf__string),
+          Substitutions: S.optional(__S(159, __c19, 7)),
           VoiceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VoiceMessage" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ADMMessage: S.optional(ADMMessage),
-          APNSMessage: S.optional(APNSMessage),
-          BaiduMessage: S.optional(BaiduMessage),
-          DefaultMessage: S.optional(DefaultMessage),
-          DefaultPushNotificationMessage: S.optional(DefaultPushNotificationMessage),
-          EmailMessage: S.optional(EmailMessage),
-          GCMMessage: S.optional(GCMMessage),
-          SMSMessage: S.optional(SMSMessage),
-          VoiceMessage: S.optional(VoiceMessage),
+          ADMMessage: S.optional(__S(361, __c45, 1)),
+          APNSMessage: S.optional(__S(362, __c45, 2)),
+          BaiduMessage: S.optional(__S(363, __c45, 3)),
+          DefaultMessage: S.optional(__S(364, __c45, 4)),
+          DefaultPushNotificationMessage: S.optional(__S(365, __c45, 5)),
+          EmailMessage: S.optional(__S(369, __c46, 1)),
+          GCMMessage: S.optional(__S(370, __c46, 2)),
+          SMSMessage: S.optional(__S(371, __c46, 3)),
+          VoiceMessage: S.optional(__S(372, __c46, 4)),
         }),
       ).annotate({
         identifier: "DirectMessageConfiguration",
@@ -14855,11 +13562,11 @@ function __c46(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Addresses: S.optional(MapOfAddressConfiguration),
-          Context: S.optional(MapOf__string),
-          Endpoints: S.optional(MapOfEndpointSendConfiguration),
-          MessageConfiguration: S.optional(DirectMessageConfiguration),
-          TemplateConfiguration: S.optional(TemplateConfiguration),
+          Addresses: S.optional(__S(358, __c44, 6)),
+          Context: S.optional(__S(0, __c0, 0)),
+          Endpoints: S.optional(__S(360, __c45, 0)),
+          MessageConfiguration: S.optional(__S(373, __c46, 5)),
+          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
           TraceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageRequest" });
@@ -14867,7 +13574,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          MessageRequest: S.optional(MessageRequest)
+          MessageRequest: S.optional(__S(374, __c46, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MessageRequest" }),
         }).pipe(
@@ -14889,7 +13596,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
-          DeliveryStatus: S.optional(DeliveryStatus),
+          DeliveryStatus: S.optional(S.String),
           MessageId: S.optional(S.String),
           StatusCode: S.optional(S.Number),
           StatusMessage: S.optional(S.String),
@@ -14897,11 +13604,11 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "EndpointMessageResult" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ EndpointMessageResult.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(376, __c47, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DeliveryStatus: S.optional(DeliveryStatus),
+          DeliveryStatus: S.optional(S.String),
           MessageId: S.optional(S.String),
           StatusCode: S.optional(S.Number),
           StatusMessage: S.optional(S.String),
@@ -14909,20 +13616,20 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "MessageResult" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ MessageResult.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(378, __c47, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
-          EndpointResult: S.optional(MapOfEndpointMessageResult),
+          EndpointResult: S.optional(__S(377, __c47, 1)),
           RequestId: S.optional(S.String),
-          Result: S.optional(MapOfMessageResult),
+          Result: S.optional(__S(379, __c47, 3)),
         }),
       ).annotate({ identifier: "MessageResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          MessageResponse: S.optional(MessageResponse)
+          MessageResponse: S.optional(__S(380, __c47, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MessageResponse" }),
         }),
@@ -14949,7 +13656,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          SendOTPMessageRequestParameters: S.optional(SendOTPMessageRequestParameters)
+          SendOTPMessageRequestParameters: S.optional(__S(382, __c47, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SendOTPMessageRequestParameters" }),
         }).pipe(
@@ -14970,18 +13677,18 @@ function __c48(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Context: S.optional(MapOf__string),
-          MessageConfiguration: S.optional(DirectMessageConfiguration),
-          TemplateConfiguration: S.optional(TemplateConfiguration),
+          Context: S.optional(__S(0, __c0, 0)),
+          MessageConfiguration: S.optional(__S(373, __c46, 5)),
+          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
           TraceId: S.optional(S.String),
-          Users: S.optional(MapOfEndpointSendConfiguration),
+          Users: S.optional(__S(360, __c45, 0)),
         }),
       ).annotate({ identifier: "SendUsersMessageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          SendUsersMessageRequest: S.optional(SendUsersMessageRequest)
+          SendUsersMessageRequest: S.optional(__S(384, __c48, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SendUsersMessageRequest" }),
         }).pipe(
@@ -14996,19 +13703,19 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "SendUsersMessagesRequest" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ MapOfEndpointMessageResult.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(377, __c47, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           RequestId: S.optional(S.String),
-          Result: S.optional(MapOfMapOfEndpointMessageResult),
+          Result: S.optional(__S(386, __c48, 2)),
         }),
       ).annotate({ identifier: "SendUsersMessageResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SendUsersMessageResponse: S.optional(SendUsersMessageResponse)
+          SendUsersMessageResponse: S.optional(__S(387, __c48, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SendUsersMessageResponse" }),
         }),
@@ -15019,7 +13726,7 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagsModel: S.optional(TagsModel)
+          TagsModel: S.optional(__S(321, __c40, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TagsModel" }),
         }).pipe(
@@ -15041,7 +13748,7 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: S.optional(ListOf__string).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: S.optional(__S(22, __c2, 6)).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/v1/tags/{ResourceArn}" }),
@@ -15068,7 +13775,7 @@ function __c49(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ADMChannelRequest: S.optional(ADMChannelRequest)
+          ADMChannelRequest: S.optional(__S(392, __c49, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ADMChannelRequest" }),
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -15099,7 +13806,7 @@ function __c49(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          APNSChannelRequest: S.optional(APNSChannelRequest)
+          APNSChannelRequest: S.optional(__S(394, __c49, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSChannelRequest" }),
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -15132,7 +13839,7 @@ function __c49(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          APNSSandboxChannelRequest: S.optional(APNSSandboxChannelRequest)
+          APNSSandboxChannelRequest: S.optional(__S(396, __c49, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSSandboxChannelRequest" }),
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -15152,7 +13859,7 @@ function __c49(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          APNSVoipChannelRequest: S.optional(APNSVoipChannelRequest)
+          APNSVoipChannelRequest: S.optional(__S(394, __c49, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSVoipChannelRequest" }),
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -15172,7 +13879,7 @@ function __c49(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          APNSVoipSandboxChannelRequest: S.optional(APNSVoipSandboxChannelRequest)
+          APNSVoipSandboxChannelRequest: S.optional(__S(396, __c49, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSVoipSandboxChannelRequest" }),
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -15196,12 +13903,12 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CampaignHook: S.optional(CampaignHook),
+          CampaignHook: S.optional(__S(36, __c4, 4)),
           CloudWatchMetricsEnabled: S.optional(S.Boolean),
           EventTaggingEnabled: S.optional(S.Boolean),
-          Limits: S.optional(CampaignLimits),
-          QuietTime: S.optional(QuietTime),
-          JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
+          Limits: S.optional(__S(37, __c4, 5)),
+          QuietTime: S.optional(__S(30, __c3, 6)),
+          JourneyLimits: S.optional(__S(203, __c25, 3)),
         }),
       ).annotate({
         identifier: "WriteApplicationSettingsRequest",
@@ -15210,7 +13917,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteApplicationSettingsRequest: S.optional(WriteApplicationSettingsRequest)
+          WriteApplicationSettingsRequest: S.optional(__S(400, __c50, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteApplicationSettingsRequest" }),
         }).pipe(
@@ -15238,7 +13945,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          BaiduChannelRequest: S.optional(BaiduChannelRequest)
+          BaiduChannelRequest: S.optional(__S(402, __c50, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "BaiduChannelRequest" }),
         }).pipe(
@@ -15259,7 +13966,7 @@ function __c50(j: number): any {
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-          WriteCampaignRequest: S.optional(WriteCampaignRequest)
+          WriteCampaignRequest: S.optional(__S(38, __c4, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteCampaignRequest" }),
         }).pipe(
@@ -15288,7 +13995,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          EmailChannelRequest: S.optional(EmailChannelRequest)
+          EmailChannelRequest: S.optional(__S(405, __c50, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailChannelRequest" }),
         }).pipe(
@@ -15308,7 +14015,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          EmailTemplateRequest: S.optional(EmailTemplateRequest)
+          EmailTemplateRequest: S.optional(__S(45, __c5, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -15335,7 +14042,7 @@ function __c51(j: number): any {
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
-          EndpointRequest: S.optional(EndpointRequest)
+          EndpointRequest: S.optional(__S(337, __c42, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointRequest" }),
         }).pipe(
@@ -15352,7 +14059,7 @@ function __c51(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MessageBody: S.optional(MessageBody)
+          MessageBody: S.optional(__S(156, __c19, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MessageBody" }),
         }),
@@ -15361,30 +14068,30 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
-          Attributes: S.optional(MapOfListOf__string),
-          ChannelType: S.optional(ChannelType),
-          Demographic: S.optional(EndpointDemographic),
+          Attributes: S.optional(__S(159, __c19, 7)),
+          ChannelType: S.optional(S.String),
+          Demographic: S.optional(__S(160, __c20, 0)),
           EffectiveDate: S.optional(S.String),
           EndpointStatus: S.optional(S.String),
           Id: S.optional(S.String),
-          Location: S.optional(EndpointLocation),
-          Metrics: S.optional(MapOf__double),
+          Location: S.optional(__S(161, __c20, 1)),
+          Metrics: S.optional(__S(126, __c15, 6)),
           OptOut: S.optional(S.String),
           RequestId: S.optional(S.String),
-          User: S.optional(EndpointUser),
+          User: S.optional(__S(162, __c20, 2)),
         }),
       ).annotate({ identifier: "EndpointBatchItem" });
     case 3:
-      return S.Array(EndpointBatchItem);
+      return S.Array(__S(410, __c51, 2));
     case 4:
-      return S.suspend(() => S.Struct({ Item: S.optional(ListOfEndpointBatchItem) })).annotate({
+      return S.suspend(() => S.Struct({ Item: S.optional(__S(411, __c51, 3)) })).annotate({
         identifier: "EndpointBatchRequest",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          EndpointBatchRequest: S.optional(EndpointBatchRequest)
+          EndpointBatchRequest: S.optional(__S(412, __c51, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointBatchRequest" }),
         }).pipe(
@@ -15413,7 +14120,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          GCMChannelRequest: S.optional(GCMChannelRequest)
+          GCMChannelRequest: S.optional(__S(414, __c51, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "GCMChannelRequest" }),
         }).pipe(
@@ -15435,7 +14142,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          InAppTemplateRequest: S.optional(InAppTemplateRequest)
+          InAppTemplateRequest: S.optional(__S(57, __c7, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InAppTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -15458,7 +14165,7 @@ function __c52(j: number): any {
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-          WriteJourneyRequest: S.optional(WriteJourneyRequest)
+          WriteJourneyRequest: S.optional(__S(105, __c13, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteJourneyRequest" }),
         }).pipe(
@@ -15473,7 +14180,7 @@ function __c52(j: number): any {
         ),
       ).annotate({ identifier: "UpdateJourneyRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ State: S.optional(State) })).annotate({
+      return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
         identifier: "JourneyStateRequest",
       });
     case 3:
@@ -15481,7 +14188,7 @@ function __c52(j: number): any {
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-          JourneyStateRequest: S.optional(JourneyStateRequest)
+          JourneyStateRequest: S.optional(__S(418, __c52, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyStateRequest" }),
         }).pipe(
@@ -15500,7 +14207,7 @@ function __c52(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          JourneyResponse: S.optional(JourneyResponse)
+          JourneyResponse: S.optional(__S(107, __c13, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyResponse" }),
         }),
@@ -15511,7 +14218,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          PushNotificationTemplateRequest: S.optional(PushNotificationTemplateRequest)
+          PushNotificationTemplateRequest: S.optional(__S(112, __c14, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PushNotificationTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -15533,7 +14240,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
-          UpdateRecommenderConfiguration: S.optional(UpdateRecommenderConfigurationShape)
+          UpdateRecommenderConfiguration: S.optional(__S(114, __c14, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "UpdateRecommenderConfigurationShape" }),
         }).pipe(
@@ -15554,7 +14261,7 @@ function __c52(j: number): any {
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-          WriteSegmentRequest: S.optional(WriteSegmentRequest)
+          WriteSegmentRequest: S.optional(__S(124, __c15, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteSegmentRequest" }),
         }).pipe(
@@ -15584,7 +14291,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          SMSChannelRequest: S.optional(SMSChannelRequest)
+          SMSChannelRequest: S.optional(__S(424, __c53, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSChannelRequest" }),
         }).pipe(
@@ -15602,7 +14309,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          SMSTemplateRequest: S.optional(SMSTemplateRequest)
+          SMSTemplateRequest: S.optional(__S(130, __c16, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -15625,7 +14332,7 @@ function __c53(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TemplateActiveVersionRequest: S.optional(TemplateActiveVersionRequest)
+          TemplateActiveVersionRequest: S.optional(__S(427, __c53, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TemplateActiveVersionRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -15654,7 +14361,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          VoiceChannelRequest: S.optional(VoiceChannelRequest)
+          VoiceChannelRequest: S.optional(__S(429, __c53, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceChannelRequest" }),
         }).pipe(
@@ -15676,7 +14383,7 @@ function __c53(j: number): any {
           CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
           Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-          VoiceTemplateRequest: S.optional(VoiceTemplateRequest)
+          VoiceTemplateRequest: S.optional(__S(132, __c16, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceTemplateRequest" }),
         }).pipe(
@@ -15710,7 +14417,7 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          VerifyOTPMessageRequestParameters: S.optional(VerifyOTPMessageRequestParameters)
+          VerifyOTPMessageRequestParameters: S.optional(__S(432, __c54, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VerifyOTPMessageRequestParameters" }),
         }).pipe(
@@ -15731,10 +14438,15 @@ function __c54(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          VerificationResponse: S.optional(VerificationResponse)
+          VerificationResponse: S.optional(__S(434, __c54, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VerificationResponse" }),
         }),
       ).annotate({ identifier: "VerifyOTPMessageResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

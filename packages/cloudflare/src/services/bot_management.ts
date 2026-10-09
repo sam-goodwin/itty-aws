@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -52,24 +54,9 @@ export interface CreateFeedbackRequestRequestsByAttribute {
   metric: string;
   requests: number;
 }
-const CreateFeedbackRequestRequestsByAttribute = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFeedbackRequestRequestsByAttribute>;
-
 export type CreateFeedbackRequestRequestsByScoreMap = { [key: string]: number | undefined };
-const CreateFeedbackRequestRequestsByScoreMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateFeedbackRequestRequestsByScoreMap>;
-
 export type CreateFeedbackRequestRequestsByScoreSrcMap = { [key: string]: number | undefined };
-const CreateFeedbackRequestRequestsByScoreSrcMap =
-  CreateFeedbackRequestRequestsByScoreMap as any as S.Schema<CreateFeedbackRequestRequestsByScoreSrcMap>;
-
 export type CreateFeedbackRequestType = "false_positive" | "false_negative";
-const CreateFeedbackRequestType = S.String;
-
 export interface CreateFeedbackRequest {
   /** Identifier. */
   zoneId: string;
@@ -89,26 +76,11 @@ export interface CreateFeedbackRequest {
   type: CreateFeedbackRequestType | (string & {});
   subtype?: string;
 }
-const CreateFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateFeedbackRequest>;
-
 export interface CreateFeedbackResponse {}
-const CreateFeedbackResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateFeedbackResponse>;
-
 export interface GetBotManagementRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetBotManagementRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetBotManagementRequest>;
-
 export type GetResultBotFightModeConfigurationAiBotsProtection =
   | "block"
   | "disabled"
@@ -388,32 +360,15 @@ export type GetResult =
   | GetResultSuperBotFightModeDefinitelyConfiguration
   | GetResultSuperBotFightModeLikelyConfiguration
   | GetResultSubscriptionConfiguration;
-const GetResult = /*@__PURE__*/ __L.at(__c0, 5);
-
 export type GetBotManagementResponse = GetResult;
-const GetBotManagementResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetBotManagementResponse>;
-
 export interface ListFeedbackRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ListFeedbackRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListFeedbackRequest>;
-
 export type ListFeedbackResponseRequestsByAttribute = CreateFeedbackRequestRequestsByAttribute;
 export type ListFeedbackResponseRequestsByScoreMap = { [key: string]: number | undefined };
-const ListFeedbackResponseRequestsByScoreMap =
-  CreateFeedbackRequestRequestsByScoreMap as any as S.Schema<ListFeedbackResponseRequestsByScoreMap>;
-
 export type ListFeedbackResponseRequestsByScoreSrcMap = { [key: string]: number | undefined };
-const ListFeedbackResponseRequestsByScoreSrcMap =
-  CreateFeedbackRequestRequestsByScoreMap as any as S.Schema<ListFeedbackResponseRequestsByScoreSrcMap>;
-
 export type ListFeedbackResponseType = "false_positive" | "false_negative";
-const ListFeedbackResponseType = S.String;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListFeedbackResponse {
   description: string;
@@ -433,29 +388,13 @@ export interface ListFeedbackResponse {
   createdAt?: string | null;
   subtype?: string | null;
 }
-const ListFeedbackResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListFeedbackResponse>;
-
 export type UpdateRequestAiBotsProtection = "block" | "disabled" | "only_on_ad_pages";
-const UpdateRequestAiBotsProtection = S.String;
-
 export type UpdateRequestAiSearch = "disabled" | "block" | "only_on_ad_pages";
-const UpdateRequestAiSearch = S.String;
-
 export type UpdateRequestAiTraining = "disabled" | "disallow" | "block" | "only_on_ad_pages";
-const UpdateRequestAiTraining = S.String;
-
 export type UpdateRequestAiUser = "disabled" | "block" | "only_on_ad_pages";
-const UpdateRequestAiUser = S.String;
-
 export type UpdateRequestCfRobotsVariant = "off" | "policy_only";
-const UpdateRequestCfRobotsVariant = S.String;
-
 export type UpdateRequestContentBotsProtection = "block" | "disabled";
-const UpdateRequestContentBotsProtection = S.String;
-
 export type UpdateRequestCrawlerProtection = "enabled" | "disabled";
-const UpdateRequestCrawlerProtection = S.String;
-
 export interface UpdateRequestStaleZoneConfigurationBotFightModeConfiguration {
   /** Indicates that the zone's wordpress optimization for SBFM is turned on. */
   optimizeWordpress?: boolean;
@@ -499,17 +438,9 @@ export type UpdateRequestStaleZoneConfiguration =
   | UpdateRequestStaleZoneConfigurationSuperBotFightModeDefinitelyConfiguration
   | UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfiguration
   | UpdateRequestStaleZoneConfigurationSubscriptionConfiguration;
-const UpdateRequestStaleZoneConfiguration = /*@__PURE__*/ __L.at(__c1, 1);
-
 export type UpdateRequestSbfmDefinitelyAutomated = "allow" | "block" | "managed_challenge";
-const UpdateRequestSbfmDefinitelyAutomated = S.String;
-
 export type UpdateRequestSbfmVerifiedBots = "allow" | "block";
-const UpdateRequestSbfmVerifiedBots = S.String;
-
 export type UpdateRequestSbfmLikelyAutomated = "allow" | "block" | "managed_challenge";
-const UpdateRequestSbfmLikelyAutomated = S.String;
-
 export interface PutBotManagementRequest {
   /** Identifier. */
   zoneId: string;
@@ -560,11 +491,6 @@ export interface PutBotManagementRequest {
   /** Whether to disable tracking the highest bot score for a session in the Bot Management cookie. */
   suppressSessionScore?: boolean;
 }
-const PutBotManagementRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PutBotManagementRequest>;
-
 export type UpdateResultBotFightModeConfigurationAiBotsProtection =
   | "block"
   | "disabled"
@@ -824,14 +750,7 @@ export type UpdateResult =
   | UpdateResultSuperBotFightModeDefinitelyConfiguration
   | UpdateResultSuperBotFightModeLikelyConfiguration
   | UpdateResultSubscriptionConfiguration;
-const UpdateResult = /*@__PURE__*/ __L.at(__c1, 3);
-
 export type PutBotManagementResponse = UpdateResult;
-const PutBotManagementResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PutBotManagementResponse>;
-
 export type CreateFeedbackError = CloudflareOpError;
 /** Submit a feedback report for the specified zone. Use `type` to indicate whether the report is a false positive (good traffic flagged as bot) or a false negative (bot traffic missed). Furthermore, you can also use `expression` as a wirefilter to identify the affected traffic sample. See more accepted API fields and expression types at https://developers.cloudflare.com/bots/concepts/feedback-loop/#api-fields and https://developers.cloudflare.com/bots/concepts/feedback-loop/#expression-fields, respectively. */
 export const createFeedback: API.OperationMethod<
@@ -840,8 +759,8 @@ export const createFeedback: API.OperationMethod<
   CreateFeedbackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFeedbackRequest,
-  output: CreateFeedbackResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateFeedbackRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateFeedbackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -855,8 +774,8 @@ export const getBotManagement: API.OperationMethod<
   GetBotManagementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotManagementRequest,
-  output: GetBotManagementResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetBotManagementRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetBotManagementResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -870,8 +789,8 @@ export const listFeedback: API.OperationMethod<
   ListFeedbackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeedbackRequest,
-  output: ListFeedbackResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<ListFeedbackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ListFeedbackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -885,8 +804,8 @@ export const putBotManagement: API.OperationMethod<
   PutBotManagementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBotManagementRequest,
-  output: PutBotManagementResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<PutBotManagementRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<PutBotManagementResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -915,16 +834,10 @@ function __c0(j: number): any {
           firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
           lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
           requests: S.Number,
-          requestsByAttribute: CreateFeedbackRequestRequestsByAttribute.pipe(
-            T.Body("requests_by_attribute"),
-          ),
-          requestsByScore: CreateFeedbackRequestRequestsByScoreMap.pipe(
-            T.Body("requests_by_score"),
-          ),
-          requestsByScoreSrc: CreateFeedbackRequestRequestsByScoreSrcMap.pipe(
-            T.Body("requests_by_score_src"),
-          ),
-          type: CreateFeedbackRequestType,
+          requestsByAttribute: __S(0, __c0, 0).pipe(T.Body("requests_by_attribute")),
+          requestsByScore: __S(1, __c0, 1).pipe(T.Body("requests_by_score")),
+          requestsByScoreSrc: __S(1, __c0, 1).pipe(T.Body("requests_by_score_src")),
+          type: S.String,
           subtype: S.optional(S.String),
         })
           .pipe(
@@ -1028,7 +941,7 @@ function __c0(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        GetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(5, __c0, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBotManagementResponse" });
     case 7:
       return S.suspend(() =>
@@ -1052,14 +965,10 @@ function __c1(j: number): any {
           firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
           lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
           requests: S.Number,
-          requestsByAttribute: CreateFeedbackRequestRequestsByAttribute.pipe(
-            T.Body("requests_by_attribute"),
-          ),
-          requestsByScore: ListFeedbackResponseRequestsByScoreMap.pipe(T.Body("requests_by_score")),
-          requestsByScoreSrc: ListFeedbackResponseRequestsByScoreSrcMap.pipe(
-            T.Body("requests_by_score_src"),
-          ),
-          type: ListFeedbackResponseType,
+          requestsByAttribute: __S(0, __c0, 0).pipe(T.Body("requests_by_attribute")),
+          requestsByScore: __S(1, __c0, 1).pipe(T.Body("requests_by_score")),
+          requestsByScoreSrc: __S(1, __c0, 1).pipe(T.Body("requests_by_score_src")),
+          type: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           subtype: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1092,45 +1001,31 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           aiBotsMigrationOptOut: S.optional(S.Boolean.pipe(T.Body("ai_bots_migration_opt_out"))),
-          aiBotsProtection: S.optional(
-            UpdateRequestAiBotsProtection.pipe(T.Body("ai_bots_protection")),
-          ),
-          aiSearch: S.optional(UpdateRequestAiSearch.pipe(T.Body("ai_search"))),
-          aiTraining: S.optional(UpdateRequestAiTraining.pipe(T.Body("ai_training"))),
-          aiUser: S.optional(UpdateRequestAiUser.pipe(T.Body("ai_user"))),
+          aiBotsProtection: S.optional(S.String.pipe(T.Body("ai_bots_protection"))),
+          aiSearch: S.optional(S.String.pipe(T.Body("ai_search"))),
+          aiTraining: S.optional(S.String.pipe(T.Body("ai_training"))),
+          aiUser: S.optional(S.String.pipe(T.Body("ai_user"))),
           botPreferenceSyncEnabled: S.optional(
             S.Boolean.pipe(T.Body("bot_preference_sync_enabled")),
           ),
-          cfRobotsVariant: S.optional(
-            UpdateRequestCfRobotsVariant.pipe(T.Body("cf_robots_variant")),
-          ),
-          contentBotsProtection: S.optional(
-            UpdateRequestContentBotsProtection.pipe(T.Body("content_bots_protection")),
-          ),
-          crawlerProtection: S.optional(
-            UpdateRequestCrawlerProtection.pipe(T.Body("crawler_protection")),
-          ),
+          cfRobotsVariant: S.optional(S.String.pipe(T.Body("cf_robots_variant"))),
+          contentBotsProtection: S.optional(S.String.pipe(T.Body("content_bots_protection"))),
+          crawlerProtection: S.optional(S.String.pipe(T.Body("crawler_protection"))),
           enableJs: S.optional(S.Boolean.pipe(T.Body("enable_js"))),
           fightMode: S.optional(S.Boolean.pipe(T.Body("fight_mode"))),
           isRobotsTxtManaged: S.optional(S.Boolean.pipe(T.Body("is_robots_txt_managed"))),
           jsdApiResultsEnabled: S.optional(S.Boolean.pipe(T.Body("jsd_api_results_enabled"))),
           staleZoneConfiguration: S.optional(
-            UpdateRequestStaleZoneConfiguration.pipe(T.Body("stale_zone_configuration")),
+            __S(9, __c1, 1).pipe(T.Body("stale_zone_configuration")),
           ),
           usingLatestModel: S.optional(S.Boolean.pipe(T.Body("using_latest_model"))),
           optimizeWordpress: S.optional(S.Boolean.pipe(T.Body("optimize_wordpress"))),
-          sbfmDefinitelyAutomated: S.optional(
-            UpdateRequestSbfmDefinitelyAutomated.pipe(T.Body("sbfm_definitely_automated")),
-          ),
+          sbfmDefinitelyAutomated: S.optional(S.String.pipe(T.Body("sbfm_definitely_automated"))),
           sbfmStaticResourceProtection: S.optional(
             S.Boolean.pipe(T.Body("sbfm_static_resource_protection")),
           ),
-          sbfmVerifiedBots: S.optional(
-            UpdateRequestSbfmVerifiedBots.pipe(T.Body("sbfm_verified_bots")),
-          ),
-          sbfmLikelyAutomated: S.optional(
-            UpdateRequestSbfmLikelyAutomated.pipe(T.Body("sbfm_likely_automated")),
-          ),
+          sbfmVerifiedBots: S.optional(S.String.pipe(T.Body("sbfm_verified_bots"))),
+          sbfmLikelyAutomated: S.optional(S.String.pipe(T.Body("sbfm_likely_automated"))),
           autoUpdateModel: S.optional(S.Boolean.pipe(T.Body("auto_update_model"))),
           bmCookieEnabled: S.optional(S.Boolean.pipe(T.Body("bm_cookie_enabled"))),
           suppressSessionScore: S.optional(S.Boolean.pipe(T.Body("suppress_session_score"))),
@@ -1222,7 +1117,12 @@ function __c1(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        UpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(11, __c1, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutBotManagementResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

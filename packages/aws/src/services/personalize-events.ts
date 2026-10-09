@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Personalize Events",
   serviceShapeName: "AmazonPersonalizeEvents",
@@ -99,7 +101,6 @@ export type ActionId = string | redacted.Redacted<string>;
 export type UserId = string | redacted.Redacted<string>;
 export type RecommendationId = string;
 export type ActionImpression = (string | redacted.Redacted<string>)[];
-const ActionImpression = /*@__PURE__*/ __L.at(__c0, 0);
 export type SynthesizedJsonActionInteractionProperties = string | redacted.Redacted<string>;
 export interface ActionInteraction {
   actionId: string | redacted.Redacted<string>;
@@ -112,48 +113,32 @@ export interface ActionInteraction {
   impression?: (string | redacted.Redacted<string>)[];
   properties?: string | redacted.Redacted<string>;
 }
-const ActionInteraction = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ActionInteraction>;
 export type ActionInteractionsList = ActionInteraction[];
-const ActionInteractionsList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface PutActionInteractionsRequest {
   trackingId: string;
   actionInteractions: ActionInteraction[];
 }
-const PutActionInteractionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PutActionInteractionsRequest>;
 export interface PutActionInteractionsResponse {}
-const PutActionInteractionsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PutActionInteractionsResponse>;
 export type Arn = string;
 export type SynthesizedJsonActionProperties = string | redacted.Redacted<string>;
 export interface Action {
   actionId: string;
   properties?: string | redacted.Redacted<string>;
 }
-const Action = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Action>;
 export type ActionList = Action[];
-const ActionList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface PutActionsRequest {
   datasetArn: string;
   actions: Action[];
 }
-const PutActionsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PutActionsRequest>;
 export interface PutActionsResponse {}
-const PutActionsResponse = PutActionInteractionsResponse as any as S.Schema<PutActionsResponse>;
 export type FloatType = number;
 export type ItemId = string | redacted.Redacted<string>;
 export type SynthesizedJsonEventPropertiesJSON = string | redacted.Redacted<string>;
 export type Impression = (string | redacted.Redacted<string>)[];
-const Impression = ActionImpression as any as S.Schema<Impression>;
 export type EventAttributionSource = string;
 export interface MetricAttribution {
   eventAttributionSource: string;
 }
-const MetricAttribution = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MetricAttribution>;
 export interface Event {
   eventId?: string;
   eventType: string;
@@ -165,48 +150,36 @@ export interface Event {
   impression?: (string | redacted.Redacted<string>)[];
   metricAttribution?: MetricAttribution;
 }
-const Event = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Event>;
 export type EventList = Event[];
-const EventList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface PutEventsRequest {
   trackingId: string;
   userId?: string | redacted.Redacted<string>;
   sessionId: string;
   eventList: Event[];
 }
-const PutEventsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PutEventsRequest>;
 export interface PutEventsResponse {}
-const PutEventsResponse = PutActionInteractionsResponse as any as S.Schema<PutEventsResponse>;
 export type SynthesizedJsonItemProperties = string | redacted.Redacted<string>;
 export interface Item {
   itemId: string;
   properties?: string | redacted.Redacted<string>;
 }
-const Item = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Item>;
 export type ItemList = Item[];
-const ItemList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface PutItemsRequest {
   datasetArn: string;
   items: Item[];
 }
-const PutItemsRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PutItemsRequest>;
 export interface PutItemsResponse {}
-const PutItemsResponse = PutActionInteractionsResponse as any as S.Schema<PutItemsResponse>;
 export type SynthesizedJsonUserProperties = string | redacted.Redacted<string>;
 export interface User {
   userId: string;
   properties?: string | redacted.Redacted<string>;
 }
-const User = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<User>;
 export type UserList = User[];
-const UserList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface PutUsersRequest {
   datasetArn: string;
   users: User[];
 }
-const PutUsersRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PutUsersRequest>;
 export interface PutUsersResponse {}
-const PutUsersResponse = PutActionInteractionsResponse as any as S.Schema<PutUsersResponse>;
 export type ErrorMessage = string;
 export type PutActionInteractionsError =
   | InvalidInputException
@@ -226,8 +199,8 @@ export const putActionInteractions: API.OperationMethod<
   PutActionInteractionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutActionInteractionsRequest,
-  output: PutActionInteractionsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<PutActionInteractionsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<PutActionInteractionsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -249,8 +222,8 @@ export const putActions: API.OperationMethod<
   PutActionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutActionsRequest,
-  output: PutActionsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<PutActionsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<PutActionsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -268,8 +241,8 @@ export const putEvents: API.OperationMethod<
   PutEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEventsRequest,
-  output: PutEventsResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<PutEventsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<PutEventsResponse>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -291,8 +264,8 @@ export const putItems: API.OperationMethod<
   PutItemsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutItemsRequest,
-  output: PutItemsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<PutItemsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<PutItemsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -314,8 +287,8 @@ export const putUsers: API.OperationMethod<
   PutUsersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutUsersRequest,
-  output: PutUsersResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<PutUsersRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<PutUsersResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -337,15 +310,15 @@ function __c0(j: number): any {
           eventType: S.String,
           eventId: S.optional(S.String),
           recommendationId: S.optional(S.String),
-          impression: S.optional(ActionImpression),
+          impression: S.optional(__S(0, __c0, 0)),
           properties: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ActionInteraction" });
     case 2:
-      return S.Array(ActionInteraction);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ trackingId: S.String, actionInteractions: ActionInteractionsList }).pipe(
+        S.Struct({ trackingId: S.String, actionInteractions: __S(2, __c0, 2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/action-interactions" }),
             svc,
@@ -367,10 +340,10 @@ function __c0(j: number): any {
         S.Struct({ actionId: S.String, properties: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Action" });
     case 6:
-      return S.Array(Action);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ datasetArn: S.String, actions: ActionList }).pipe(
+        S.Struct({ datasetArn: S.String, actions: __S(6, __c0, 6) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/actions" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutActionsRequest" });
@@ -392,19 +365,19 @@ function __c1(j: number): any {
           properties: S.optional(SensitiveString),
           sentAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           recommendationId: S.optional(S.String),
-          impression: S.optional(Impression),
-          metricAttribution: S.optional(MetricAttribution),
+          impression: S.optional(__S(0, __c0, 0)),
+          metricAttribution: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Event" });
     case 2:
-      return S.Array(Event);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           trackingId: S.String,
           userId: S.optional(SensitiveString),
           sessionId: S.String,
-          eventList: EventList,
+          eventList: __S(10, __c1, 2),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/events" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutEventsRequest" });
     case 4:
@@ -412,10 +385,10 @@ function __c1(j: number): any {
         S.Struct({ itemId: S.String, properties: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Item" });
     case 5:
-      return S.Array(Item);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ datasetArn: S.String, items: ItemList }).pipe(
+        S.Struct({ datasetArn: S.String, items: __S(13, __c1, 5) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/items" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutItemsRequest" });
@@ -428,12 +401,17 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(User);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ datasetArn: S.String, users: UserList }).pipe(
+        S.Struct({ datasetArn: S.String, users: __S(16, __c2, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/users" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutUsersRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

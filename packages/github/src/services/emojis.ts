@@ -5,24 +5,20 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
 export interface GetRequest {}
-const GetRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetRequest>;
-
 export type GetResponseBodyMap = { [key: string]: string | undefined };
-const GetResponseBodyMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetResponseBodyMap>;
-
 export type GetResponse = GetResponseBodyMap;
-const GetResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetResponse>;
-
 export type GetError = GithubOpError;
 /** Get emojis Lists all the emojis available to use on GitHub. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: GetResponse,
+    input: __S(0, __c0, 0) as any as S.Schema<GetRequest>,
+    output: __S(2, __c0, 2) as any as S.Schema<GetResponse>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -38,8 +34,13 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.String);
     case 2:
-      return S.suspend(() => GetResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

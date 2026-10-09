@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,11 +16,6 @@ export interface GetWebAnalyticsContentAutopilotRunRequest {
   /** A UUID string identifying this content autopilot run. */
   id: string;
 }
-const GetWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetWebAnalyticsContentAutopilotRunRequest>;
-
 /** * `pending` - Pending * `generating` - Generating * `ready_for_review` - Ready for review * `completed` - Completed * `canceled` - Canceled * `failed` - Failed */
 export type ContentAutopilotRunRunStatusEnum =
   | "pending"
@@ -27,29 +24,14 @@ export type ContentAutopilotRunRunStatusEnum =
   | "completed"
   | "canceled"
   | "failed";
-const ContentAutopilotRunRunStatusEnum = S.String;
-
 /** * `standard` - Standard * `lower` - Lower */
 export type ContentAutopilotSnapshotConfidenceEnum = "standard" | "lower";
-const ContentAutopilotSnapshotConfidenceEnum = S.String;
-
 /** Public sources authorized for this run. */
 export type ContentAutopilotSnapshotSourceUrlsList = Array<string>;
-const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ContentAutopilotSnapshotSourceUrlsList>;
-
 /** Site paths authorized for this run. */
 export type ContentAutopilotSnapshotContentBoundariesList = Array<string>;
-const ContentAutopilotSnapshotContentBoundariesList =
-  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
-
 /** Editorial rules captured for this run. */
 export type ContentAutopilotSnapshotBrandRulesList = Array<string>;
-const ContentAutopilotSnapshotBrandRulesList =
-  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
-
 export interface ContentAutopilotSnapshot {
   /** Site domain used for the run. */
   domain?: string;
@@ -62,29 +44,14 @@ export interface ContentAutopilotSnapshot {
   /** Editorial rules captured for this run. */
   brand_rules?: ContentAutopilotSnapshotBrandRulesList;
 }
-const ContentAutopilotSnapshot = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ContentAutopilotSnapshot>;
-
 export interface ContentAutopilotError {
   /** Stable machine-readable error code. */
   error_code: string;
   /** Error explanation suitable for the review workspace. */
   message: string;
 }
-const ContentAutopilotError = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ContentAutopilotError>;
-
 /** Inspectable workflow errors from this run. */
 export type ContentAutopilotRunErrorsList = Array<ContentAutopilotError>;
-const ContentAutopilotRunErrorsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ContentAutopilotRunErrorsList>;
-
 export interface ContentAutopilotRun {
   id: string;
   /** Site profile used by this run. */
@@ -99,8 +66,6 @@ export interface ContentAutopilotRun {
   updated_at: string;
   completed_at: string | null;
 }
-const ContentAutopilotRun = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ContentAutopilotRun>;
-
 export interface ListWebAnalyticsContentAutopilotRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -111,28 +76,13 @@ export interface ListWebAnalyticsContentAutopilotRunsRequest {
   /** Only return runs for this site profile. */
   profile_id?: string;
 }
-const ListWebAnalyticsContentAutopilotRunsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListWebAnalyticsContentAutopilotRunsRequest>;
-
 export type PaginatedContentAutopilotRunListResultsList = Array<ContentAutopilotRun>;
-const PaginatedContentAutopilotRunListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PaginatedContentAutopilotRunListResultsList>;
-
 export interface PaginatedContentAutopilotRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedContentAutopilotRunListResultsList;
 }
-const PaginatedContentAutopilotRunList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PaginatedContentAutopilotRunList>;
-
 export type GetWebAnalyticsContentAutopilotRunError = PosthogOpError;
 export const getWebAnalyticsContentAutopilotRun: API.OperationMethod<
   GetWebAnalyticsContentAutopilotRunRequest,
@@ -140,8 +90,8 @@ export const getWebAnalyticsContentAutopilotRun: API.OperationMethod<
   GetWebAnalyticsContentAutopilotRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebAnalyticsContentAutopilotRunRequest,
-  output: ContentAutopilotRun,
+  input: __S(0, __c0, 0) as any as S.Schema<GetWebAnalyticsContentAutopilotRunRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ContentAutopilotRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -154,8 +104,8 @@ export const listWebAnalyticsContentAutopilotRuns: API.OperationMethod<
   ListWebAnalyticsContentAutopilotRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebAnalyticsContentAutopilotRunsRequest,
-  output: PaginatedContentAutopilotRunList,
+  input: __S(6, __c0, 6) as any as S.Schema<ListWebAnalyticsContentAutopilotRunsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PaginatedContentAutopilotRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -185,10 +135,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
-          confidence: S.optional(ContentAutopilotSnapshotConfidenceEnum),
-          source_urls: S.optional(ContentAutopilotSnapshotSourceUrlsList),
-          content_boundaries: S.optional(ContentAutopilotSnapshotContentBoundariesList),
-          brand_rules: S.optional(ContentAutopilotSnapshotBrandRulesList),
+          confidence: S.optional(S.String),
+          source_urls: S.optional(__S(1, __c0, 1)),
+          content_boundaries: S.optional(__S(1, __c0, 1)),
+          brand_rules: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ContentAutopilotSnapshot" });
     case 3:
@@ -199,15 +149,15 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ContentAutopilotError" });
     case 4:
-      return S.Array(ContentAutopilotError);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           profile_id: S.String,
-          run_status: ContentAutopilotRunRunStatusEnum,
-          input_snapshot: ContentAutopilotSnapshot,
-          errors: ContentAutopilotRunErrorsList,
+          run_status: S.String,
+          input_snapshot: __S(2, __c0, 2),
+          errors: __S(4, __c0, 4),
           created_at: S.String,
           updated_at: S.String,
           completed_at: S.NullOr(S.String),
@@ -231,7 +181,7 @@ function __c0(j: number): any {
         identifier: "ListWebAnalyticsContentAutopilotRunsRequest",
       });
     case 7:
-      return S.Array(ContentAutopilotRun);
+      return S.Array(__S(5, __c0, 5));
   }
 }
 function __c1(j: number): any {
@@ -242,10 +192,15 @@ function __c1(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedContentAutopilotRunListResultsList,
+          results: __S(7, __c0, 7),
         }),
       ).annotate({
         identifier: "PaginatedContentAutopilotRunList",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

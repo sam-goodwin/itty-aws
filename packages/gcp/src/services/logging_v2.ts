@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,70 +66,38 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelBillingAccountsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelBillingAccountsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export interface CancelFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelFoldersLocationsOperationsRequest>;
-
 export interface CancelLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelLocationsOperationsRequest>;
-
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** The parameters to CopyLogEntries. */
 export interface CopyLogEntriesRequest {
   /** Optional. A filter specifying which log entries to copy. The filter must be no more than 20k characters. An empty filter matches all log entries. */
@@ -137,23 +107,12 @@ export interface CopyLogEntriesRequest {
   /** Required. Log bucket from which to copy log entries.For example:"projects/my-project/locations/global/buckets/my-source-bucket" */
   name?: string;
 }
-const CopyLogEntriesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CopyLogEntriesRequest>;
-
 export interface CopyEntriesRequest {
   /** Request body */
   body?: CopyLogEntriesRequest;
 }
-const CopyEntriesRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CopyEntriesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DocumentMapList>;
-
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -163,8 +122,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -178,8 +135,6 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Operation>;
-
 /** Describes the customer-managed encryption key (CMEK) settings associated with a project, folder, organization, billing account, or flexible resource.Note: CMEK for the Log Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export interface CmekSettings {
   /** Output only. The service account that will be used by the Log Router to access your Cloud KMS key.Before enabling CMEK for Log Router, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account that the Log Router will use to access your Cloud KMS key. Use GetCmekSettings to obtain the service account ID.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
@@ -191,14 +146,10 @@ export interface CmekSettings {
   /** Output only. The resource name of the CMEK settings. */
   name?: string;
 }
-const CmekSettings = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CmekSettings>;
-
 export type IndexConfigTypeEnum =
   | "INDEX_TYPE_UNSPECIFIED"
   | "INDEX_TYPE_STRING"
   | "INDEX_TYPE_INTEGER";
-const IndexConfigTypeEnum = S.String;
-
 /** Configuration for an indexed field. */
 export interface IndexConfig {
   /** Output only. The timestamp when the index was last modified.This is used to return the timestamp, and will be ignored if supplied during update. */
@@ -208,14 +159,8 @@ export interface IndexConfig {
   /** Required. The type of data in this index. */
   type?: IndexConfigTypeEnum | (string & {});
 }
-const IndexConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<IndexConfig>;
-
 export type IndexConfigList = Array<IndexConfig>;
-const IndexConfigList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<IndexConfigList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StringList>;
-
 export type LogBucketLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -223,8 +168,6 @@ export type LogBucketLifecycleStateEnum =
   | "UPDATING"
   | "CREATING"
   | "FAILED";
-const LogBucketLifecycleStateEnum = S.String;
-
 /** Describes a repository in which log entries are stored. */
 export interface LogBucket {
   /** Output only. The resource name of the bucket.For example:projects/my-project/locations/global/buckets/my-bucketFor a list of supported locations, see Supported Regions (https://docs.cloud.google.com/logging/docs/region-support)For the location of global it is unspecified where log entries are actually stored.After a bucket has been created, the location cannot be changed. */
@@ -250,8 +193,6 @@ export interface LogBucket {
   /** Output only. The bucket lifecycle state. */
   lifecycleState?: LogBucketLifecycleStateEnum | (string & {});
 }
-const LogBucket = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<LogBucket>;
-
 export interface CreateAsyncBillingAccountsLocationsBucketsRequest {
   /** Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character. */
   bucketId?: string;
@@ -260,11 +201,6 @@ export interface CreateAsyncBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateAsyncBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateAsyncBillingAccountsLocationsBucketsRequest>;
-
 export interface CreateAsyncFoldersLocationsBucketsRequest {
   /** Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character. */
   bucketId?: string;
@@ -273,11 +209,6 @@ export interface CreateAsyncFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateAsyncFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateAsyncFoldersLocationsBucketsRequest>;
-
 export interface CreateAsyncLocationsBucketsRequest {
   /** Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character. */
   bucketId?: string;
@@ -286,11 +217,6 @@ export interface CreateAsyncLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateAsyncLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateAsyncLocationsBucketsRequest>;
-
 export interface CreateAsyncOrganizationsLocationsBucketsRequest {
   /** Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -299,11 +225,6 @@ export interface CreateAsyncOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateAsyncOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateAsyncOrganizationsLocationsBucketsRequest>;
-
 export interface CreateAsyncProjectsLocationsBucketsRequest {
   /** Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -312,11 +233,6 @@ export interface CreateAsyncProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateAsyncProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateAsyncProjectsLocationsBucketsRequest>;
-
 /** Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it. */
 export interface LogExclusion {
   /** Optional. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric. */
@@ -332,19 +248,12 @@ export interface LogExclusion {
   /** Optional. A description of this exclusion. */
   description?: string;
 }
-const LogExclusion = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LogExclusion>;
-
 export interface CreateBillingAccountsExclusionsRequest {
   /** Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-project" "organizations/123456789" */
   parent: string;
   /** Request body */
   body?: LogExclusion;
 }
-const CreateBillingAccountsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateBillingAccountsExclusionsRequest>;
-
 export interface CreateBillingAccountsLocationsBucketsRequest {
   /** Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -353,18 +262,11 @@ export interface CreateBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateBillingAccountsLocationsBucketsRequest>;
-
 /** Describes a BigQuery dataset that was created by a link. */
 export interface BigQueryDataset {
   /** Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID of the link, so the link must match the naming restrictions of BigQuery datasets (alphanumeric characters and underscores only).The dataset will have a resource path of "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID" */
   datasetId?: string;
 }
-const BigQueryDataset = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BigQueryDataset>;
-
 export type LinkLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -372,8 +274,6 @@ export type LinkLifecycleStateEnum =
   | "UPDATING"
   | "CREATING"
   | "FAILED";
-const LinkLifecycleStateEnum = S.String;
-
 /** Describes a link connected to an analytics enabled bucket. */
 export interface Link {
   /** Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket. */
@@ -387,8 +287,6 @@ export interface Link {
   /** Output only. The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link */
   name?: string;
 }
-const Link = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Link>;
-
 export interface CreateBillingAccountsLocationsBucketsLinksRequest {
   /** Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it. */
   linkId?: string;
@@ -397,11 +295,6 @@ export interface CreateBillingAccountsLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-const CreateBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateBillingAccountsLocationsBucketsLinksRequest>;
-
 /** Describes a view over log entries in a bucket. */
 export interface LogView {
   /** Optional. Describes this view. */
@@ -415,8 +308,6 @@ export interface LogView {
   /** Output only. The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view */
   name?: string;
 }
-const LogView = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<LogView>;
-
 export interface CreateBillingAccountsLocationsBucketsViewsRequest {
   /** Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, and hyphens. */
   viewId?: string;
@@ -425,21 +316,12 @@ export interface CreateBillingAccountsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const CreateBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateBillingAccountsLocationsBucketsViewsRequest>;
-
 /** A field from the LogEntry that is added to the summary line (https://docs.cloud.google.com/logging/docs/view/logs-explorer-interface#preferences) for a query in the Logs Explorer. */
 export interface SummaryField {
   /** Optional. The field from the LogEntry to include in the summary line, for example resource.type or jsonPayload.name. */
   field?: string;
 }
-const SummaryField = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SummaryField>;
-
 export type SummaryFieldList = Array<SummaryField>;
-const SummaryFieldList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SummaryFieldList>;
-
 /** Describes a Cloud Logging query that can be run in Logs Explorer UI or via the logging API.In addition to the query itself, additional information may be stored to capture the display configuration and other UI state used in association with analysis of query results. */
 export interface LoggingQuery {
   /** Characters will be counted from the start of the string. */
@@ -451,14 +333,8 @@ export interface LoggingQuery {
   /** Characters will be counted from the end of the string. */
   summaryFieldEnd?: number;
 }
-const LoggingQuery = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<LoggingQuery>;
-
 export type SavedQueryVisibilityEnum = "VISIBILITY_UNSPECIFIED" | "PRIVATE" | "SHARED";
-const SavedQueryVisibilityEnum = S.String;
-
 export type VirtualFieldVirtualFieldTypeEnum = "VIRTUAL_FIELD_TYPE_UNSPECIFIED" | "COALESCE";
-const VirtualFieldVirtualFieldTypeEnum = S.String;
-
 /** A virtual field is a field that is not physically present in the underlying data schema, but is created through specific operations within the query builder model based on other fields in the schema. */
 export interface VirtualField {
   /** The field sources that will be used to create the virtual field, based on the semantics of the virtual field type.The field sources must follow these rules, based on the virtual field type: - For VIRTUAL_FIELD_TYPE_UNSPECIFIED, this field must be empty. - For COALESCE, this field must be non-empty and include a minimum of two field sources. The underlying field sources must be actual projected fields that represent actual schema fields and that must not be transformed and aggregated in any way, except for casting. The type of all the underlying field sources must be equivalent so that picking one of them would result in the same value type. */
@@ -466,11 +342,7 @@ export interface VirtualField {
   /** Required. The type of the virtual field. */
   virtualFieldType?: VirtualFieldVirtualFieldTypeEnum | (string & {});
 }
-const VirtualField = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<VirtualField>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DocumentList>;
-
 /** Defines the aggregation function to apply to this field. This message is used only when operation is set to AGGREGATE. */
 export interface FunctionApplication {
   /** Required. Specifies the aggregation function. Use one of the following string identifiers: "average": Computes the average (AVG). Applies only to numeric values. "count": Counts the number of values (COUNT). "count-distinct": Counts the number of distinct values (COUNT DISTINCT). "count-distinct-approx": Approximates the count of distinct values (APPROX_COUNT_DISTINCT). "max": Finds the maximum value (MAX). Applies only to numeric values. "min": Finds the minimum value (MIN). Applies only to numeric values. "sum": Computes the sum (SUM). Applies only to numeric values. */
@@ -478,15 +350,11 @@ export interface FunctionApplication {
   /** Optional. Parameters to be applied to the aggregation. Aggregations that support or require parameters are listed above. */
   parameters?: DocumentList;
 }
-const FunctionApplication = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<FunctionApplication>;
-
 export type ProjectedFieldOperationEnum =
   | "FIELD_OPERATION_UNSPECIFIED"
   | "NO_SETTING"
   | "GROUP_BY"
   | "AGGREGATE";
-const ProjectedFieldOperationEnum = S.String;
-
 /** Represents a field selected in the query, analogous to an item in a SQL SELECT clause. It specifies the source field and optionally applies transformations like aggregation, casting, regex extraction, or assigns an alias. Use ProjectedField when you need more than just the raw source field name (for which you might use FieldSource directly in QueryBuilderConfig's field_sources list if no transformations or specific operation type are needed).A ProjectedField can represent either a field present in the data schema (specified via the field property) or a virtual field that is computed from other fields (specified via the virtual_field property). */
 export interface ProjectedField {
   /** Optional. A virtual field definition, used in place of field to define a field that is computed from other fields rather than being directly present in the data schema.For example, a virtual field can be defined using COALESCE to select the first non-null value from a list of fields.If virtual_field is set, field must not be set. */
@@ -506,8 +374,6 @@ export interface ProjectedField {
   /** Specifies the role of this field (direct selection, grouping, or aggregation). */
   operation?: ProjectedFieldOperationEnum | (string & {});
 }
-const ProjectedField = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ProjectedField>;
-
 /** A source that can be used to represent a "field of data" within various parts of a structured query, such as in SELECT, WHERE, or ORDER BY clauses. The term "field of data" is used here because it is not limited to literal fields in the underlying data schema. */
 export interface FieldSource {
   /** The fully qualified, dot-delimited path to the selected atomic field (the leaf value). This path is used for primary selection and actions like drill-down or projection.The path components should match the exact field names or keys as they appear in the underlying data schema. For JSON fields, this means respecting the original casing (e.g., camelCase or snake_case as present in the JSON).To reference field names containing special characters (e.g., hyphens, spaces), enclose the individual path segment in backticks (`).Examples: * json_payload.labels.message * json_payload.request_id * httpRequest.status * json_payload.\my-custom-field`.value *jsonPayload.`my key with spaces`.data` */
@@ -523,17 +389,9 @@ export interface FieldSource {
   /** Whether the field is a JSON field, or has a parent that is a JSON field. This value is used to determine JSON extractions in generated SQL queries. Note that this is_json flag may be true when the column_type is not JSON if the parent is a JSON field. Ex: - A json_payload.message field might have is_json=true, since the 'json_payload' parent is of type JSON, and columnType='STRING' if the 'message' field is of type STRING. */
   isJson?: boolean;
 }
-const FieldSource = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<FieldSource>;
-
 export type FieldSourceList = Array<FieldSource>;
-const FieldSourceList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<FieldSourceList>;
-
 export type FilterPredicateOperatorTypeEnum = "OPERATOR_TYPE_UNSPECIFIED" | "AND" | "OR" | "LEAF";
-const FilterPredicateOperatorTypeEnum = S.String;
-
 export type FilterPredicateList = Array<FilterPredicate>;
-const FilterPredicateList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<FilterPredicateList>;
-
 export type FilterExpressionComparatorEnum =
   | "COMPARATOR_UNSPECIFIED"
   | "EQUALS"
@@ -545,8 +403,6 @@ export type FilterExpressionComparatorEnum =
   | "IS_NULL"
   | "IN"
   | "LIKE";
-const FilterExpressionComparatorEnum = S.String;
-
 /** This is a leaf of the FilterPredicate. Ex: { field: json_payload.message.error_code, filter_value: {numeric_value: 400}, comparator: EQUAL_TO} The field will be schema field that is selected using the . annotation to display the drill down value. The value will be the user inputted text that the filter is comparing against. */
 export interface FilterExpression {
   /** The Value will be used to hold user defined constants set as the Right Hand Side of the filter. */
@@ -560,8 +416,6 @@ export interface FilterExpression {
   /** The field. This will be the field that is set as the Right Hand Side of the filter. */
   fieldSourceValue?: FieldSource;
 }
-const FilterExpression = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<FilterExpression>;
-
 /** A filter for a query. This equates to the WHERE clause in SQL. */
 export interface FilterPredicate {
   /** The operator type for the filter. Currently there is no support for multiple levels of nesting, so this will be a single value with no joining of different operator types */
@@ -571,15 +425,11 @@ export interface FilterPredicate {
   /** The leaves of the filter predicate. This equates to the last leaves of the filter predicate associated with an operator. */
   leafPredicate?: FilterExpression;
 }
-const FilterPredicate = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<FilterPredicate>;
-
 export type SortOrderParameterSortOrderDirectionEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
   | "SORT_ORDER_DESCENDING";
-const SortOrderParameterSortOrderDirectionEnum = S.String;
-
 /** A sort order for a query based on a column. */
 export interface SortOrderParameter {
   /** The sort order to use for the query. */
@@ -587,14 +437,7 @@ export interface SortOrderParameter {
   /** The field to sort on. Can be one of the FieldSource types: field name, alias ref, variable ref, or a literal value. */
   fieldSource?: FieldSource;
 }
-const SortOrderParameter = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SortOrderParameter>;
-
 export type SortOrderParameterList = Array<SortOrderParameter>;
-const SortOrderParameterList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<SortOrderParameterList>;
-
 /** Defines a structured query configuration that can be used instead of writing raw SQL. This configuration represents the components of a SQL query (FROM, SELECT, WHERE, ORDER BY, LIMIT) and is typically converted into an executable query (e.g., BigQuery SQL) by the backend service to retrieve data for analysis or visualization. */
 export interface QueryBuilderConfig {
   /** The limit to use for the query. This equates to the LIMIT clause in SQL. A limit of 0 will be treated as not enabled. */
@@ -610,8 +453,6 @@ export interface QueryBuilderConfig {
   /** The plain text search to use for the query. There is no support for multiple search terms. This uses the SEARCH functionality in BigQuery. For example, a search_term = 'ERROR' would result in the following SQL:SELECT * FROM resource WHERE SEARCH(resource, 'ERROR') LIMIT 100 */
   searchTerm?: string;
 }
-const QueryBuilderConfig = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<QueryBuilderConfig>;
-
 /** Describes a query that can be run in Log Analytics. */
 export interface OpsAnalyticsQuery {
   /** Optional. A Log Analytics SQL query in text format.If both sql_query_text and query_builder fields are set, then the sql_query_text will be used, if its non-empty. At least one of the two fields must be set. */
@@ -619,8 +460,6 @@ export interface OpsAnalyticsQuery {
   /** Optional. A query builder configuration used in Log Analytics.If both query_builder and sql_query_text fields are set, then the sql_query_text will be used, if its non-empty. At least one of the two fields must be set. */
   queryBuilder?: QueryBuilderConfig;
 }
-const OpsAnalyticsQuery = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OpsAnalyticsQuery>;
-
 /** Describes a query that has been saved by a user. */
 export interface SavedQuery {
   /** Logging query that can be executed in Logs Explorer or via Logging API. */
@@ -640,8 +479,6 @@ export interface SavedQuery {
   /** Output only. Resource name of the saved query.In the format: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported locations, see Supported Regions (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will generate an alphanumeric ID. */
   name?: string;
 }
-const SavedQuery = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SavedQuery>;
-
 export interface CreateBillingAccountsLocationsSavedQueriesRequest {
   /** Optional. The ID to use for the saved query, which will become the final component of the saved query's resource name.If the saved_query_id is not provided, the system will generate an alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric. */
   savedQueryId?: string;
@@ -650,17 +487,8 @@ export interface CreateBillingAccountsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const CreateBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateBillingAccountsLocationsSavedQueriesRequest>;
-
 export type LogSinkOutputVersionFormatEnum = "VERSION_FORMAT_UNSPECIFIED" | "V2" | "V1";
-const LogSinkOutputVersionFormatEnum = S.String;
-
 export type LogExclusionList = Array<LogExclusion>;
-const LogExclusionList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<LogExclusionList>;
-
 /** Options that change functionality of a sink exporting data to BigQuery. */
 export interface BigQueryOptions {
   /** Optional. Whether to use BigQuery's partition tables (https://docs.cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://docs.cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone. */
@@ -668,8 +496,6 @@ export interface BigQueryOptions {
   /** Output only. True if new timestamp column based partitioning is in use, false if legacy ingress-time partitioning is in use.All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false. */
   usesTimestampColumnPartitioning?: boolean;
 }
-const BigQueryOptions = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<BigQueryOptions>;
-
 /** Describes a sink used to export log entries to one of the following destinations: a Cloud Logging log bucket, a Cloud Storage bucket, a BigQuery dataset, a Pub/Sub topic, a Cloud project.A logs filter controls which log entries are exported. The sink must be created within a project, organization, billing account, or folder. */
 export interface LogSink {
   /** Deprecated. This field is unused. */
@@ -701,8 +527,6 @@ export interface LogSink {
   /** Optional. A description of this sink.The maximum length of the description is 8000 characters. */
   description?: string;
 }
-const LogSink = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<LogSink>;
-
 export interface CreateBillingAccountsSinksRequest {
   /** Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink. */
   uniqueWriterIdentity?: boolean;
@@ -713,33 +537,18 @@ export interface CreateBillingAccountsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const CreateBillingAccountsSinksRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateBillingAccountsSinksRequest>;
-
 export interface CreateExclusionsRequest {
   /** Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-project" "organizations/123456789" */
   parent: string;
   /** Request body */
   body?: LogExclusion;
 }
-const CreateExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateExclusionsRequest>;
-
 export interface CreateFoldersExclusionsRequest {
   /** Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-project" "organizations/123456789" */
   parent: string;
   /** Request body */
   body?: LogExclusion;
 }
-const CreateFoldersExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateFoldersExclusionsRequest>;
-
 export interface CreateFoldersLocationsBucketsRequest {
   /** Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -748,11 +557,6 @@ export interface CreateFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateFoldersLocationsBucketsRequest>;
-
 export interface CreateFoldersLocationsBucketsLinksRequest {
   /** Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it. */
   linkId?: string;
@@ -761,11 +565,6 @@ export interface CreateFoldersLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-const CreateFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateFoldersLocationsBucketsLinksRequest>;
-
 export interface CreateFoldersLocationsBucketsViewsRequest {
   /** Required. The bucket in which to create the view `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For example:"projects/my-project/locations/global/buckets/my-bucket" */
   parent: string;
@@ -774,11 +573,6 @@ export interface CreateFoldersLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const CreateFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateFoldersLocationsBucketsViewsRequest>;
-
 /** Describes a group of resources to read log entries from. */
 export interface LogScope {
   /** Optional. Describes this log scope.The maximum length of the description is 8000 characters. */
@@ -792,8 +586,6 @@ export interface LogScope {
   /** Output only. The creation timestamp of the log scope. */
   createTime?: string;
 }
-const LogScope = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<LogScope>;
-
 export interface CreateFoldersLocationsLogScopesRequest {
   /** Required. A client-assigned identifier such as "log-scope". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric. */
   logScopeId?: string;
@@ -802,11 +594,6 @@ export interface CreateFoldersLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-const CreateFoldersLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateFoldersLocationsLogScopesRequest>;
-
 export interface CreateFoldersLocationsSavedQueriesRequest {
   /** Optional. The ID to use for the saved query, which will become the final component of the saved query's resource name.If the saved_query_id is not provided, the system will generate an alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric. */
   savedQueryId?: string;
@@ -815,11 +602,6 @@ export interface CreateFoldersLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const CreateFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateFoldersLocationsSavedQueriesRequest>;
-
 export interface CreateFoldersSinksRequest {
   /** Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/123456789" */
   parent: string;
@@ -830,11 +612,6 @@ export interface CreateFoldersSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const CreateFoldersSinksRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateFoldersSinksRequest>;
-
 export interface CreateLocationsBucketsRequest {
   /** Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -843,11 +620,6 @@ export interface CreateLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateLocationsBucketsRequest>;
-
 export interface CreateLocationsBucketsLinksRequest {
   /** Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it. */
   linkId?: string;
@@ -856,11 +628,6 @@ export interface CreateLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-const CreateLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateLocationsBucketsLinksRequest>;
-
 export interface CreateLocationsBucketsViewsRequest {
   /** Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, and hyphens. */
   viewId?: string;
@@ -869,22 +636,12 @@ export interface CreateLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const CreateLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateLocationsBucketsViewsRequest>;
-
 export interface CreateOrganizationsExclusionsRequest {
   /** Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-project" "organizations/123456789" */
   parent: string;
   /** Request body */
   body?: LogExclusion;
 }
-const CreateOrganizationsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateOrganizationsExclusionsRequest>;
-
 export interface CreateOrganizationsLocationsBucketsRequest {
   /** Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -893,11 +650,6 @@ export interface CreateOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateOrganizationsLocationsBucketsRequest>;
-
 export interface CreateOrganizationsLocationsBucketsLinksRequest {
   /** Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it. */
   linkId?: string;
@@ -906,11 +658,6 @@ export interface CreateOrganizationsLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-const CreateOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateOrganizationsLocationsBucketsLinksRequest>;
-
 export interface CreateOrganizationsLocationsBucketsViewsRequest {
   /** Required. The bucket in which to create the view `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For example:"projects/my-project/locations/global/buckets/my-bucket" */
   parent: string;
@@ -919,11 +666,6 @@ export interface CreateOrganizationsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const CreateOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateOrganizationsLocationsBucketsViewsRequest>;
-
 export interface CreateOrganizationsLocationsLogScopesRequest {
   /** Required. A client-assigned identifier such as "log-scope". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric. */
   logScopeId?: string;
@@ -932,11 +674,6 @@ export interface CreateOrganizationsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-const CreateOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateOrganizationsLocationsLogScopesRequest>;
-
 export interface CreateOrganizationsLocationsSavedQueriesRequest {
   /** Required. The parent resource in which to create the saved query: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/global" "organizations/123456789/locations/us-central1" */
   parent: string;
@@ -945,11 +682,6 @@ export interface CreateOrganizationsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const CreateOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateOrganizationsLocationsSavedQueriesRequest>;
-
 export interface CreateOrganizationsSinksRequest {
   /** Optional. The service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified when you are routing logs to a log bucket that is in a different project than the sink. When not specified, a Logging service account will automatically be generated. */
   customWriterIdentity?: string;
@@ -960,22 +692,12 @@ export interface CreateOrganizationsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const CreateOrganizationsSinksRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateOrganizationsSinksRequest>;
-
 export interface CreateProjectsExclusionsRequest {
   /** Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-project" "organizations/123456789" */
   parent: string;
   /** Request body */
   body?: LogExclusion;
 }
-const CreateProjectsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateProjectsExclusionsRequest>;
-
 export interface CreateProjectsLocationsBucketsRequest {
   /** Required. The resource in which to create the log bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -984,11 +706,6 @@ export interface CreateProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const CreateProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateProjectsLocationsBucketsRequest>;
-
 export interface CreateProjectsLocationsBucketsLinksRequest {
   /** Required. The full resource name of the bucket to create a link for. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
@@ -997,11 +714,6 @@ export interface CreateProjectsLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-const CreateProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateProjectsLocationsBucketsLinksRequest>;
-
 export interface CreateProjectsLocationsBucketsViewsRequest {
   /** Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, and hyphens. */
   viewId?: string;
@@ -1010,11 +722,6 @@ export interface CreateProjectsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const CreateProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateProjectsLocationsBucketsViewsRequest>;
-
 export interface CreateProjectsLocationsLogScopesRequest {
   /** Required. The parent resource in which to create the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global" */
   parent: string;
@@ -1023,11 +730,6 @@ export interface CreateProjectsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-const CreateProjectsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateProjectsLocationsLogScopesRequest>;
-
 export interface CreateProjectsLocationsSavedQueriesRequest {
   /** Required. The parent resource in which to create the saved query: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/global" "organizations/123456789/locations/us-central1" */
   parent: string;
@@ -1036,20 +738,9 @@ export interface CreateProjectsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const CreateProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateProjectsLocationsSavedQueriesRequest>;
-
 export type LogMetricVersionEnum = "V2" | "V1";
-const LogMetricVersionEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<StringMap>;
-
 export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
-const LabelDescriptorValueTypeEnum = S.String;
-
 /** A description of a label. */
 export interface LabelDescriptor {
   /** The type of data that can be assigned to the label. */
@@ -1059,11 +750,7 @@ export interface LabelDescriptor {
   /** A human-readable description for the label. */
   description?: string;
 }
-const LabelDescriptor = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<LabelDescriptor>;
-
 export type LabelDescriptorList = Array<LabelDescriptor>;
-const LabelDescriptorList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<LabelDescriptorList>;
-
 export type MetricDescriptorValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -1072,8 +759,6 @@ export type MetricDescriptorValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
-const MetricDescriptorValueTypeEnum = S.String;
-
 export type MetricDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -1083,8 +768,6 @@ export type MetricDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const MetricDescriptorLaunchStageEnum = S.String;
-
 export type MetricDescriptorMetadataLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -1094,23 +777,14 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const MetricDescriptorMetadataLaunchStageEnum = S.String;
-
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
   | "FOLDER";
-const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum = S.String;
-
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = Array<
   MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum | (string & {})
 >;
-const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList>;
-
 /** Additional annotations that can be used to guide the usage of a metric. */
 export interface MetricDescriptorMetadata {
   /** The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. */
@@ -1122,18 +796,11 @@ export interface MetricDescriptorMetadata {
   /** The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. */
   ingestDelay?: string;
 }
-const MetricDescriptorMetadata = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<MetricDescriptorMetadata>;
-
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
   | "CUMULATIVE";
-const MetricDescriptorMetricKindEnum = S.String;
-
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
 export interface MetricDescriptor {
   /** The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed. */
@@ -1159,8 +826,6 @@ export interface MetricDescriptor {
   /** The resource name of the metric descriptor. */
   name?: string;
 }
-const MetricDescriptor = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<MetricDescriptor>;
-
 /** Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)). */
 export interface Exponential {
   /** Must be greater than 1. */
@@ -1170,18 +835,12 @@ export interface Exponential {
   /** Must be greater than 0. */
   numFiniteBuckets?: number;
 }
-const Exponential = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<Exponential>;
-
 export type DoubleList = Array<number>;
-const DoubleList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<DoubleList>;
-
 /** Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets. */
 export interface Explicit {
   /** The values must be monotonically increasing. */
   bounds?: DoubleList;
 }
-const Explicit = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<Explicit>;
-
 /** Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)). */
 export interface Linear {
   /** Lower bound of the first bucket. */
@@ -1191,8 +850,6 @@ export interface Linear {
   /** Must be greater than 0. */
   numFiniteBuckets?: number;
 }
-const Linear = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Linear>;
-
 /** BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite. */
 export interface BucketOptions {
   /** The exponential buckets. */
@@ -1202,8 +859,6 @@ export interface BucketOptions {
   /** The linear bucket. */
   linearBuckets?: Linear;
 }
-const BucketOptions = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<BucketOptions>;
-
 /** Describes a logs-based metric. The value of the metric is the number of log entries that match a logs filter in a given time interval.Logs-based metrics can also be used to extract values from logs and create a distribution of the values. The distribution records the statistics of the extracted values along with an optional histogram of the values as specified by the bucket options. */
 export interface LogMetric {
   /** Required. The client-assigned metric identifier. Examples: "error_count", "nginx/requests".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.This field is the [METRIC_ID] part of a metric resource name in the format "projects/PROJECT_ID/metrics/METRIC_ID". Example: If the resource name of a metric is "projects/my-project/metrics/nginx%2Frequests", this field's value is "nginx/requests". */
@@ -1233,19 +888,12 @@ export interface LogMetric {
   /** Output only. The creation timestamp of the metric.This field may not be present for older metrics. */
   createTime?: string;
 }
-const LogMetric = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<LogMetric>;
-
 export interface CreateProjectsMetricsRequest {
   /** Required. The resource name of the project in which to create the metric: "projects/[PROJECT_ID]" The new metric must be provided in the request. */
   parent: string;
   /** Request body */
   body?: LogMetric;
 }
-const CreateProjectsMetricsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateProjectsMetricsRequest>;
-
 export interface CreateProjectsSinksRequest {
   /** Optional. The service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified when you are routing logs to a log bucket that is in a different project than the sink. When not specified, a Logging service account will automatically be generated. */
   customWriterIdentity?: string;
@@ -1256,11 +904,6 @@ export interface CreateProjectsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const CreateProjectsSinksRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateProjectsSinksRequest>;
-
 export interface CreateSinksRequest {
   /** Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/123456789" */
   parent: string;
@@ -1271,362 +914,166 @@ export interface CreateSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const CreateSinksRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<CreateSinksRequest>;
-
 export interface DeleteBillingAccountsExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const DeleteBillingAccountsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteBillingAccountsExclusionsRequest>;
-
 export interface DeleteBillingAccountsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const DeleteBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteBillingAccountsLocationsBucketsRequest>;
-
 export interface DeleteBillingAccountsLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const DeleteBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteBillingAccountsLocationsBucketsLinksRequest>;
-
 export interface DeleteBillingAccountsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const DeleteBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteBillingAccountsLocationsBucketsViewsRequest>;
-
 export interface DeleteBillingAccountsLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const DeleteBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DeleteBillingAccountsLocationsSavedQueriesRequest>;
-
 export interface DeleteBillingAccountsLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-const DeleteBillingAccountsLogsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DeleteBillingAccountsLogsRequest>;
-
 export interface DeleteBillingAccountsSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const DeleteBillingAccountsSinksRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<DeleteBillingAccountsSinksRequest>;
-
 export interface DeleteExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const DeleteExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DeleteExclusionsRequest>;
-
 export interface DeleteFoldersExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const DeleteFoldersExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DeleteFoldersExclusionsRequest>;
-
 export interface DeleteFoldersLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const DeleteFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DeleteFoldersLocationsBucketsRequest>;
-
 export interface DeleteFoldersLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const DeleteFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DeleteFoldersLocationsBucketsLinksRequest>;
-
 export interface DeleteFoldersLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const DeleteFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteFoldersLocationsBucketsViewsRequest>;
-
 export interface DeleteFoldersLocationsLogScopesRequest {
   /** Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-const DeleteFoldersLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteFoldersLocationsLogScopesRequest>;
-
 export interface DeleteFoldersLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const DeleteFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteFoldersLocationsSavedQueriesRequest>;
-
 export interface DeleteFoldersLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-const DeleteFoldersLogsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteFoldersLogsRequest>;
-
 export interface DeleteFoldersSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const DeleteFoldersSinksRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteFoldersSinksRequest>;
-
 export interface DeleteLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const DeleteLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteLocationsBucketsRequest>;
-
 export interface DeleteLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const DeleteLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DeleteLocationsBucketsLinksRequest>;
-
 export interface DeleteLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const DeleteLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DeleteLocationsBucketsViewsRequest>;
-
 export interface DeleteLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-const DeleteLogsRequest = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<DeleteLogsRequest>;
-
 export interface DeleteOrganizationsExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const DeleteOrganizationsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeleteOrganizationsExclusionsRequest>;
-
 export interface DeleteOrganizationsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const DeleteOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeleteOrganizationsLocationsBucketsRequest>;
-
 export interface DeleteOrganizationsLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const DeleteOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeleteOrganizationsLocationsBucketsLinksRequest>;
-
 export interface DeleteOrganizationsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const DeleteOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeleteOrganizationsLocationsBucketsViewsRequest>;
-
 export interface DeleteOrganizationsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-const DeleteOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<DeleteOrganizationsLocationsLogScopesRequest>;
-
 export interface DeleteOrganizationsLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const DeleteOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DeleteOrganizationsLocationsSavedQueriesRequest>;
-
 export interface DeleteOrganizationsLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-const DeleteOrganizationsLogsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DeleteOrganizationsLogsRequest>;
-
 export interface DeleteOrganizationsSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const DeleteOrganizationsSinksRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DeleteOrganizationsSinksRequest>;
-
 export interface DeleteProjectsExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const DeleteProjectsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<DeleteProjectsExclusionsRequest>;
-
 export interface DeleteProjectsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const DeleteProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsBucketsRequest>;
-
 export interface DeleteProjectsLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const DeleteProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsBucketsLinksRequest>;
-
 export interface DeleteProjectsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const DeleteProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsBucketsViewsRequest>;
-
 export interface DeleteProjectsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-const DeleteProjectsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsLogScopesRequest>;
-
 export interface DeleteProjectsLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const DeleteProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsSavedQueriesRequest>;
-
 export interface DeleteProjectsLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-const DeleteProjectsLogsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeleteProjectsLogsRequest>;
-
 export interface DeleteProjectsMetricsRequest {
   /** Required. The resource name of the metric to delete: "projects/[PROJECT_ID]/metrics/[METRIC_ID]" */
   metricName: string;
 }
-const DeleteProjectsMetricsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DeleteProjectsMetricsRequest>;
-
 export interface DeleteProjectsSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const DeleteProjectsSinksRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DeleteProjectsSinksRequest>;
-
 export interface DeleteSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const DeleteSinksRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<DeleteSinksRequest>;
-
 export interface GetBillingAccountsExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const GetBillingAccountsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetBillingAccountsExclusionsRequest>;
-
 export interface GetBillingAccountsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetBillingAccountsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetBillingAccountsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: "us-east1". */
@@ -1640,222 +1087,106 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Location>;
-
 export interface GetBillingAccountsLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const GetBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetBillingAccountsLocationsBucketsRequest>;
-
 export interface GetBillingAccountsLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const GetBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetBillingAccountsLocationsBucketsLinksRequest>;
-
 export interface GetBillingAccountsLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const GetBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetBillingAccountsLocationsBucketsViewsRequest>;
-
 export interface GetBillingAccountsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetBillingAccountsLocationsOperationsRequest>;
-
 export interface GetBillingAccountsLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const GetBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetBillingAccountsLocationsSavedQueriesRequest>;
-
 export interface GetBillingAccountsSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const GetBillingAccountsSinksRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetBillingAccountsSinksRequest>;
-
 export interface GetCmekSettingsBillingAccountsRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-const GetCmekSettingsBillingAccountsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetCmekSettingsBillingAccountsRequest>;
-
 export interface GetCmekSettingsFoldersRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-const GetCmekSettingsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetCmekSettingsFoldersRequest>;
-
 export interface GetCmekSettingsOrganizationsRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-const GetCmekSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetCmekSettingsOrganizationsRequest>;
-
 export interface GetCmekSettingsProjectsRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-const GetCmekSettingsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetCmekSettingsProjectsRequest>;
-
 export interface GetCmekSettingsV2Request {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-const GetCmekSettingsV2Request = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetCmekSettingsV2Request>;
-
 export interface GetExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const GetExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetExclusionsRequest>;
-
 export interface GetFoldersExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const GetFoldersExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetFoldersExclusionsRequest>;
-
 export interface GetFoldersLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetFoldersLocationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetFoldersLocationsRequest>;
-
 export interface GetFoldersLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const GetFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetFoldersLocationsBucketsRequest>;
-
 export interface GetFoldersLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const GetFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetFoldersLocationsBucketsLinksRequest>;
-
 export interface GetFoldersLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const GetFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetFoldersLocationsBucketsViewsRequest>;
-
 export interface GetFoldersLocationsLogScopesRequest {
   /** Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-const GetFoldersLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetFoldersLocationsLogScopesRequest>;
-
 export interface GetFoldersLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetFoldersLocationsOperationsRequest>;
-
 export interface GetFoldersLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const GetFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetFoldersLocationsSavedQueriesRequest>;
-
 export interface GetFoldersSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const GetFoldersSinksRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetFoldersSinksRequest>;
-
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-const GetPolicyOptions = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<GetPolicyOptions>;
-
 /** Request message for GetIamPolicy method. */
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A GetPolicyOptions object for specifying options to GetIamPolicy. */
   options?: GetPolicyOptions;
 }
-const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<GetIamPolicyRequest>;
-
 export interface GetIamPolicyFoldersLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetIamPolicyFoldersLocationsBucketsViewsRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -1867,8 +1198,6 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<Expr>;
-
 /** Associates members, or principals, with a role. */
 export interface Binding {
   /** Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1878,11 +1207,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value. */
   members?: StringList;
 }
-const Binding = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A Policy is a collection of bindings. A binding binds one or more members, or principals, to a single role. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions; each role can be an IAM predefined role or a user-created custom role.For some types of Google Cloud resources, a binding can also specify a condition, which is a logical expression that allows access to a resource only if the expression evaluates to true. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).JSON example: { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the IAM documentation (https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations: Getting a policy that includes a conditional role binding Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1892,266 +1217,125 @@ export interface Policy {
   /** Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another 1,450 principals to the bindings in the Policy. */
   bindings?: BindingList;
 }
-const Policy = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<Policy>;
-
 export interface GetIamPolicyLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetIamPolicyLocationsBucketsViewsRequest>;
-
 export interface GetIamPolicyOrganizationsLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetIamPolicyOrganizationsLocationsBucketsViewsRequest>;
-
 export interface GetIamPolicyProjectsLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetIamPolicyProjectsLocationsBucketsViewsRequest>;
-
 export interface GetLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetLocationsRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<GetLocationsRequest>;
-
 export interface GetLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const GetLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetLocationsBucketsRequest>;
-
 export interface GetLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const GetLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GetLocationsBucketsLinksRequest>;
-
 export interface GetLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const GetLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetLocationsBucketsViewsRequest>;
-
 export interface GetLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GetLocationsOperationsRequest>;
-
 export interface GetOrganizationsExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const GetOrganizationsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GetOrganizationsExclusionsRequest>;
-
 export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetOrganizationsLocationsRequest>;
-
 export interface GetOrganizationsLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const GetOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetOrganizationsLocationsBucketsRequest>;
-
 export interface GetOrganizationsLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const GetOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GetOrganizationsLocationsBucketsLinksRequest>;
-
 export interface GetOrganizationsLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const GetOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GetOrganizationsLocationsBucketsViewsRequest>;
-
 export interface GetOrganizationsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-const GetOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GetOrganizationsLocationsLogScopesRequest>;
-
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
-
 export interface GetOrganizationsLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const GetOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetOrganizationsLocationsSavedQueriesRequest>;
-
 export interface GetOrganizationsSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const GetOrganizationsSinksRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetOrganizationsSinksRequest>;
-
 export interface GetProjectsExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-const GetProjectsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetProjectsExclusionsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 export interface GetProjectsLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-const GetProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetProjectsLocationsBucketsRequest>;
-
 export interface GetProjectsLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-const GetProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GetProjectsLocationsBucketsLinksRequest>;
-
 export interface GetProjectsLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-const GetProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetProjectsLocationsBucketsViewsRequest>;
-
 export interface GetProjectsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-const GetProjectsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetProjectsLocationsLogScopesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-const GetProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GetProjectsLocationsSavedQueriesRequest>;
-
 export interface GetProjectsMetricsRequest {
   /** Required. The resource name of the desired metric: "projects/[PROJECT_ID]/metrics/[METRIC_ID]" */
   metricName: string;
 }
-const GetProjectsMetricsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetProjectsMetricsRequest>;
-
 export interface GetProjectsSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const GetProjectsSinksRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetProjectsSinksRequest>;
-
 export interface GetSettingsBillingAccountsRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-const GetSettingsBillingAccountsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetSettingsBillingAccountsRequest>;
-
 export type DefaultSinkConfigModeEnum = "FILTER_WRITE_MODE_UNSPECIFIED" | "APPEND" | "OVERWRITE";
-const DefaultSinkConfigModeEnum = S.String;
-
 /** Describes the custom _Default sink configuration that is used to override the built-in _Default sink configuration in newly created resource containers, such as projects or folders. */
 export interface DefaultSinkConfig {
   /** Optional. An advanced logs filter (https://docs.cloud.google.com/logging/docs/view/building-queries#queries-by-expression). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERRORTo match all logs, don't add exclusions and use the following line as the value of filter:logName:*Cannot be empty or unset when the value of mode is OVERWRITE. */
@@ -2161,8 +1345,6 @@ export interface DefaultSinkConfig {
   /** Required. Determines the behavior to apply to the built-in _Default sink inclusion filter.Exclusions are always appended, as built-in _Default sinks have no exclusions. */
   mode?: DefaultSinkConfigModeEnum | (string & {});
 }
-const DefaultSinkConfig = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<DefaultSinkConfig>;
-
 /** Describes the settings associated with a project, folder, organization, or billing account. */
 export interface Settings {
   /** Optional. The storage location for the _Default and _Required log buckets of newly created projects and folders, unless the storage location is explicitly provided.Example value: europe-west1.Note: this setting does not affect the location of resources where a location is explicitly provided when created, such as custom log buckets. */
@@ -2180,50 +1362,26 @@ export interface Settings {
   /** Output only. The service account for the given resource container, such as project or folder. Log sinks use this service account as their writer_identity if no custom service account is provided in the request when calling the create sink method. */
   loggingServiceAccountId?: string;
 }
-const Settings = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<Settings>;
-
 export interface GetSettingsFoldersRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-const GetSettingsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GetSettingsFoldersRequest>;
-
 export interface GetSettingsOrganizationsRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-const GetSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GetSettingsOrganizationsRequest>;
-
 export interface GetSettingsProjectsRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-const GetSettingsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GetSettingsProjectsRequest>;
-
 export interface GetSettingsV2Request {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-const GetSettingsV2Request = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetSettingsV2Request>;
-
 export interface GetSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-const GetSinksRequest = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<GetSinksRequest>;
-
 export interface ListBillingAccountsExclusionsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -2232,11 +1390,6 @@ export interface ListBillingAccountsExclusionsRequest {
   /** Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
 }
-const ListBillingAccountsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListBillingAccountsExclusionsRequest>;
-
 /** Result returned from ListExclusions. */
 export interface ListExclusionsResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
@@ -2244,11 +1397,6 @@ export interface ListExclusionsResponse {
   /** A list of exclusions. */
   exclusions?: LogExclusionList;
 }
-const ListExclusionsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListExclusionsResponse>;
-
 export interface ListBillingAccountsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -2261,14 +1409,7 @@ export interface ListBillingAccountsLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-const ListBillingAccountsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<ListBillingAccountsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -2276,11 +1417,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListBillingAccountsLocationsBucketsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -2289,14 +1425,7 @@ export interface ListBillingAccountsLocationsBucketsRequest {
   /** Required. The parent resource whose buckets are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all buckets. */
   parent: string;
 }
-const ListBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListBillingAccountsLocationsBucketsRequest>;
-
 export type LogBucketList = Array<LogBucket>;
-const LogBucketList = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<LogBucketList>;
-
 /** The response from ListBuckets. */
 export interface ListBucketsResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
@@ -2304,8 +1433,6 @@ export interface ListBucketsResponse {
   /** A list of buckets. */
   buckets?: LogBucketList;
 }
-const ListBucketsResponse = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ListBucketsResponse>;
-
 export interface ListBillingAccountsLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
@@ -2314,14 +1441,7 @@ export interface ListBillingAccountsLocationsBucketsLinksRequest {
   /** Required. The parent resource whose links are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
 }
-const ListBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListBillingAccountsLocationsBucketsLinksRequest>;
-
 export type LinkList = Array<Link>;
-const LinkList = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<LinkList>;
-
 /** The response from ListLinks. */
 export interface ListLinksResponse {
   /** If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
@@ -2329,8 +1449,6 @@ export interface ListLinksResponse {
   /** A list of links. */
   links?: LinkList;
 }
-const ListLinksResponse = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<ListLinksResponse>;
-
 export interface ListBillingAccountsLocationsBucketsViewsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -2339,14 +1457,7 @@ export interface ListBillingAccountsLocationsBucketsViewsRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListBillingAccountsLocationsBucketsViewsRequest>;
-
 export type LogViewList = Array<LogView>;
-const LogViewList = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<LogViewList>;
-
 /** The response from ListViews. */
 export interface ListViewsResponse {
   /** A list of views. */
@@ -2354,8 +1465,6 @@ export interface ListViewsResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-const ListViewsResponse = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ListViewsResponse>;
-
 export interface ListBillingAccountsLocationsBucketsViewsLogsRequest {
   /** Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID] */
   parent: string;
@@ -2366,11 +1475,6 @@ export interface ListBillingAccountsLocationsBucketsViewsLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
 }
-const ListBillingAccountsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListBillingAccountsLocationsBucketsViewsLogsRequest>;
-
 /** Result returned from ListLogs. */
 export interface ListLogsResponse {
   /** If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken. */
@@ -2378,8 +1482,6 @@ export interface ListLogsResponse {
   /** A list of log names. For example, "projects/my-project/logs/syslog" or "organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity". */
   logNames?: StringList;
 }
-const ListLogsResponse = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<ListLogsResponse>;
-
 export interface ListBillingAccountsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -2392,14 +1494,7 @@ export interface ListBillingAccountsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListBillingAccountsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -2409,11 +1504,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListBillingAccountsLocationsRecentQueriesRequest {
   /** Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent queries to list. The only valid value for this field is one of the two allowable type function calls, which are the following: type("Logging") type("OpsAnalytics") */
   filter?: string;
@@ -2424,11 +1514,6 @@ export interface ListBillingAccountsLocationsRecentQueriesRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListBillingAccountsLocationsRecentQueriesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListBillingAccountsLocationsRecentQueriesRequest>;
-
 /** Describes a recent query executed on the Logs Explorer or Log Analytics page within the last ~ 30 days. */
 export interface RecentQuery {
   /** Analytics query that can be executed in Log Analytics. */
@@ -2440,11 +1525,7 @@ export interface RecentQuery {
   /** Output only. The timestamp when this query was last run. */
   lastRunTime?: string;
 }
-const RecentQuery = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<RecentQuery>;
-
 export type RecentQueryList = Array<RecentQuery>;
-const RecentQueryList = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<RecentQueryList>;
-
 /** The response from ListRecentQueries. */
 export interface ListRecentQueriesResponse {
   /** A list of recent queries. */
@@ -2454,11 +1535,6 @@ export interface ListRecentQueriesResponse {
   /** The unreachable resources. Each resource can be either 1) a saved query if a specific query is unreachable or 2) a location if a specific location is unreachable. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/recentQueries/12345678" "projects/my-project/locations/global"If there are unreachable resources, the response will first return pages that contain recent queries, and then return pages that contain the unreachable resources. */
   unreachable?: StringList;
 }
-const ListRecentQueriesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ListRecentQueriesResponse>;
-
 export interface ListBillingAccountsLocationsSavedQueriesRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -2469,14 +1545,7 @@ export interface ListBillingAccountsLocationsSavedQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID, for example: "projects/my-project/locations/-" */
   parent: string;
 }
-const ListBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListBillingAccountsLocationsSavedQueriesRequest>;
-
 export type SavedQueryList = Array<SavedQuery>;
-const SavedQueryList = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<SavedQueryList>;
-
 /** The response from ListSavedQueries. */
 export interface ListSavedQueriesResponse {
   /** A list of saved queries. */
@@ -2486,11 +1555,6 @@ export interface ListSavedQueriesResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-const ListSavedQueriesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ListSavedQueriesResponse>;
-
 export interface ListBillingAccountsLogsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -2501,11 +1565,6 @@ export interface ListBillingAccountsLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
 }
-const ListBillingAccountsLogsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ListBillingAccountsLogsRequest>;
-
 export interface ListBillingAccountsSinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -2516,14 +1575,7 @@ export interface ListBillingAccountsSinksRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListBillingAccountsSinksRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListBillingAccountsSinksRequest>;
-
 export type LogSinkList = Array<LogSink>;
-const LogSinkList = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<LogSinkList>;
-
 /** Result returned from ListSinks. */
 export interface ListSinksResponse {
   /** A list of sinks. */
@@ -2531,8 +1583,6 @@ export interface ListSinksResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-const ListSinksResponse = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<ListSinksResponse>;
-
 /** The parameters to ListLogEntries. */
 export interface ListLogEntriesRequest {
   /** Optional. The maximum number of results to return from this request. Default is 50. If the value is negative, the request is rejected.The presence of next_page_token in the response indicates that more results might be available. */
@@ -2548,17 +1598,10 @@ export interface ListLogEntriesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. page_token must be the value of next_page_token from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListLogEntriesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ListLogEntriesRequest>;
-
 export interface ListEntriesRequest {
   /** Request body */
   body?: ListLogEntriesRequest;
 }
-const ListEntriesRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<ListEntriesRequest>;
-
 export type LogEntrySeverityEnum =
   | "DEFAULT"
   | "DEBUG"
@@ -2569,8 +1612,6 @@ export type LogEntrySeverityEnum =
   | "CRITICAL"
   | "ALERT"
   | "EMERGENCY";
-const LogEntrySeverityEnum = S.String;
-
 /** Additional information used to correlate multiple log entries. Used when a single LogEntry would exceed the Google Cloud Logging size limit and is split across multiple log entries. */
 export interface LogSplit {
   /** The index of this LogEntry in the sequence of split log entries. Log entries are given |index| values 0, 1, ..., n-1 for a sequence of n log entries. */
@@ -2580,8 +1621,6 @@ export interface LogSplit {
   /** A globally unique identifier for all log entries in a sequence of split log entries. All log entries with the same |LogSplit.uid| are assumed to be part of the same sequence of split log entries. */
   uid?: string;
 }
-const LogSplit = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<LogSplit>;
-
 /** Additional information about a potentially long-running operation with which a log entry is associated. */
 export interface LogEntryOperation {
   /** Optional. An arbitrary operation identifier. Log entries with the same identifier are assumed to be part of the same operation. */
@@ -2593,18 +1632,12 @@ export interface LogEntryOperation {
   /** Optional. An arbitrary producer identifier. The combination of id and producer must be globally unique. Examples for producer: "MyDivision.MyBigCompany.com", "github.com/MyProject/MyApplication". */
   producer?: string;
 }
-const LogEntryOperation = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<LogEntryOperation>;
-
 /** Contains metadata that associates the LogEntry to Error Reporting error groups. */
 export interface LogErrorGroup {
   /** The id is a unique identifier for a particular error group; it is the last part of the error group resource name: /project/[PROJECT_ID]/errors/[ERROR_GROUP_ID]. Example: COShysOX0r_51QE.This field can be used to search for log entries belonging to a specific error group in Logs Explorer (e.g., error_groups.id = "ID") or Observability Analytics.The id is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see Google Cloud Privacy Notice (https://cloud.google.com/terms/cloud-privacy-notice). */
   id?: string;
 }
-const LogErrorGroup = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<LogErrorGroup>;
-
 export type LogErrorGroupList = Array<LogErrorGroup>;
-const LogErrorGroupList = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<LogErrorGroupList>;
-
 /** Additional information about the source code location that produced the log entry. */
 export interface LogEntrySourceLocation {
   /** Optional. Line within the source file. 1-based; 0 indicates no line number available. */
@@ -2614,11 +1647,6 @@ export interface LogEntrySourceLocation {
   /** Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name. */
   file?: string;
 }
-const LogEntrySourceLocation = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<LogEntrySourceLocation>;
-
 /** A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message. */
 export interface HttpRequest {
   /** Whether or not an entity was served from cache (with or without validation). */
@@ -2652,8 +1680,6 @@ export interface HttpRequest {
   /** The request processing latency on the server, from the time the request was received until the response was sent. For WebSocket connections, this field refers to the entire time duration of the connection. */
   latency?: string;
 }
-const HttpRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<HttpRequest>;
-
 /** An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} */
 export interface MonitoredResource {
   /** Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. Some descriptors include the service name in the type; for example, the type of a Datastream stream is datastream.googleapis.com/Stream. */
@@ -2661,8 +1687,6 @@ export interface MonitoredResource {
   /** Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone". */
   labels?: StringMap;
 }
-const MonitoredResource = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<MonitoredResource>;
-
 /** Resource identifiers associated with an AppHub application AppHub resources are of the form projects//locations//applications/ projects//locations//applications//services/ projects//locations//applications//workloads/ These resources can be reconstructed from the components below. */
 export interface AppHubApplication {
   /** Application Id. Example: "my-app" */
@@ -2672,8 +1696,6 @@ export interface AppHubApplication {
   /** Resource container that owns the application. Example: "projects/management_project" */
   container?: string;
 }
-const AppHubApplication = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<AppHubApplication>;
-
 /** Metadata associated with an App Hub service. */
 export interface AppHubService {
   /** Service criticality type Example: "CRITICAL" */
@@ -2683,8 +1705,6 @@ export interface AppHubService {
   /** Service environment type Example: "DEV" */
   environmentType?: string;
 }
-const AppHubService = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<AppHubService>;
-
 /** Metadata associated with an App Hub workload. */
 export interface AppHubWorkload {
   /** Workload Id. Example: "my-workload" */
@@ -2694,8 +1714,6 @@ export interface AppHubWorkload {
   /** Workload criticality type Example: "CRITICAL" */
   criticalityType?: string;
 }
-const AppHubWorkload = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<AppHubWorkload>;
-
 /** Metadata associated with App Hub. */
 export interface AppHub {
   /** Metadata associated with the application. */
@@ -2705,8 +1723,6 @@ export interface AppHub {
   /** Metadata associated with the workload. */
   workload?: AppHubWorkload;
 }
-const AppHub = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<AppHub>;
-
 /** Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata. Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store the metadata in this message. */
 export interface MonitoredResourceMetadata {
   /** Output only. A map of user-defined metadata labels. */
@@ -2714,11 +1730,6 @@ export interface MonitoredResourceMetadata {
   /** Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } */
   systemLabels?: DocumentMap;
 }
-const MonitoredResourceMetadata = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<MonitoredResourceMetadata>;
-
 /** An individual entry in a log. */
 export interface LogEntry {
   /** Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT. */
@@ -2768,11 +1779,7 @@ export interface LogEntry {
   /** Optional. The time the event described by the log entry occurred. This time is used to compute the log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then Logging assigns it the current time. Timestamps have nanosecond accuracy, but trailing zeros in the fractional seconds might be omitted when the timestamp is displayed. */
   timestamp?: string;
 }
-const LogEntry = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<LogEntry>;
-
 export type LogEntryList = Array<LogEntry>;
-const LogEntryList = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<LogEntryList>;
-
 /** Result returned from ListLogEntries. */
 export interface ListLogEntriesResponse {
   /** If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.If a value for next_page_token appears and the entries field is empty, it means that the search found no log entries so far but it did not have time to search all the possible log entries. Retry the method with this value for page_token to continue the search. Alternatively, consider speeding up the search by changing your filter to specify a single log name or resource type, or to narrow the time range of the search. */
@@ -2780,11 +1787,6 @@ export interface ListLogEntriesResponse {
   /** A list of log entries. If entries is empty, nextPageToken may still be returned, indicating that more entries may exist. See nextPageToken for more information. */
   entries?: LogEntryList;
 }
-const ListLogEntriesResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ListLogEntriesResponse>;
-
 export interface ListExclusionsRequest {
   /** Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
@@ -2793,11 +1795,6 @@ export interface ListExclusionsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ListExclusionsRequest>;
-
 export interface ListFoldersExclusionsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -2806,11 +1803,6 @@ export interface ListFoldersExclusionsRequest {
   /** Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
 }
-const ListFoldersExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ListFoldersExclusionsRequest>;
-
 export interface ListFoldersLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -2823,11 +1815,6 @@ export interface ListFoldersLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-const ListFoldersLocationsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ListFoldersLocationsRequest>;
-
 export interface ListFoldersLocationsBucketsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -2836,11 +1823,6 @@ export interface ListFoldersLocationsBucketsRequest {
   /** Required. The parent resource whose buckets are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all buckets. */
   parent: string;
 }
-const ListFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<ListFoldersLocationsBucketsRequest>;
-
 export interface ListFoldersLocationsBucketsLinksRequest {
   /** Required. The parent resource whose links are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
@@ -2849,11 +1831,6 @@ export interface ListFoldersLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
 }
-const ListFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ListFoldersLocationsBucketsLinksRequest>;
-
 export interface ListFoldersLocationsBucketsViewsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -2862,11 +1839,6 @@ export interface ListFoldersLocationsBucketsViewsRequest {
   /** Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
 }
-const ListFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<ListFoldersLocationsBucketsViewsRequest>;
-
 export interface ListFoldersLocationsBucketsViewsLogsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -2877,11 +1849,6 @@ export interface ListFoldersLocationsBucketsViewsLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
 }
-const ListFoldersLocationsBucketsViewsLogsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ListFoldersLocationsBucketsViewsLogsRequest>;
-
 export interface ListFoldersLocationsLogScopesRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -2890,14 +1857,7 @@ export interface ListFoldersLocationsLogScopesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListFoldersLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ListFoldersLocationsLogScopesRequest>;
-
 export type LogScopeList = Array<LogScope>;
-const LogScopeList = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<LogScopeList>;
-
 /** The response from ListLogScopes. Every project has a _Default log scope that cannot be modified or deleted. */
 export interface ListLogScopesResponse {
   /** A list of log scopes. */
@@ -2905,11 +1865,6 @@ export interface ListLogScopesResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-const ListLogScopesResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ListLogScopesResponse>;
-
 export interface ListFoldersLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -2922,11 +1877,6 @@ export interface ListFoldersLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
-
 export interface ListFoldersLocationsRecentQueriesRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -2937,11 +1887,6 @@ export interface ListFoldersLocationsRecentQueriesRequest {
   /** Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent queries to list. The only valid value for this field is one of the two allowable type function calls, which are the following: type("Logging") type("OpsAnalytics") */
   filter?: string;
 }
-const ListFoldersLocationsRecentQueriesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ListFoldersLocationsRecentQueriesRequest>;
-
 export interface ListFoldersLocationsSavedQueriesRequest {
   /** Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (PRIVATE or SHARED) of the saved queries to list. If provided, the filter must contain either the type function or a visibility token, or both. If both are chosen, they can be placed in any order, but they must be joined by the AND operator or the empty character.The two supported type function calls are: type("Logging") type("OpsAnalytics")The two supported visibility tokens are: visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND visibility = PRIVATE visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility = PRIVATE visibility = SHARED */
   filter?: string;
@@ -2952,11 +1897,6 @@ export interface ListFoldersLocationsSavedQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID, for example: "projects/my-project/locations/-" */
   parent: string;
 }
-const ListFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<ListFoldersLocationsSavedQueriesRequest>;
-
 export interface ListFoldersLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
@@ -2967,11 +1907,6 @@ export interface ListFoldersLogsRequest {
   /** Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID] */
   parent: string;
 }
-const ListFoldersLogsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<ListFoldersLogsRequest>;
-
 export interface ListFoldersSinksRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -2982,11 +1917,6 @@ export interface ListFoldersSinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListFoldersSinksRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ListFoldersSinksRequest>;
-
 export interface ListLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
   filter?: string;
@@ -2999,11 +1929,6 @@ export interface ListLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-const ListLocationsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ListLocationsRequest>;
-
 export interface ListLocationsBucketsRequest {
   /** Required. The parent resource whose buckets are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all buckets. */
   parent: string;
@@ -3012,11 +1937,6 @@ export interface ListLocationsBucketsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<ListLocationsBucketsRequest>;
-
 export interface ListLocationsBucketsLinksRequest {
   /** Optional. The maximum number of results to return from this request. */
   pageSize?: number;
@@ -3025,11 +1945,6 @@ export interface ListLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
 }
-const ListLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ListLocationsBucketsLinksRequest>;
-
 export interface ListLocationsBucketsViewsRequest {
   /** Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
@@ -3038,11 +1953,6 @@ export interface ListLocationsBucketsViewsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ListLocationsBucketsViewsRequest>;
-
 export interface ListLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -3055,11 +1965,6 @@ export interface ListLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ListLocationsOperationsRequest>;
-
 export interface ListLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
@@ -3070,19 +1975,12 @@ export interface ListLogsRequest {
   /** Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID] */
   parent: string;
 }
-const ListLogsRequest = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<ListLogsRequest>;
-
 export interface ListMonitoredResourceDescriptorsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListMonitoredResourceDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ListMonitoredResourceDescriptorsRequest>;
-
 export type MonitoredResourceDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -3092,8 +1990,6 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const MonitoredResourceDescriptorLaunchStageEnum = S.String;
-
 /** An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM instances.Different APIs can support different monitored resource types. APIs generally provide a list method that returns the monitored resource descriptors used by the API. */
 export interface MonitoredResourceDescriptor {
   /** Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels "database_id" and "zone". */
@@ -3109,17 +2005,7 @@ export interface MonitoredResourceDescriptor {
   /** Optional. The resource name of the monitored resource descriptor: "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format "monitoredResourceDescriptors/{type}". */
   name?: string;
 }
-const MonitoredResourceDescriptor = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<MonitoredResourceDescriptor>;
-
 export type MonitoredResourceDescriptorList = Array<MonitoredResourceDescriptor>;
-const MonitoredResourceDescriptorList = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<MonitoredResourceDescriptorList>;
-
 /** Result returned from ListMonitoredResourceDescriptors. */
 export interface ListMonitoredResourceDescriptorsResponse {
   /** If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken. */
@@ -3127,11 +2013,6 @@ export interface ListMonitoredResourceDescriptorsResponse {
   /** A list of resource descriptors. */
   resourceDescriptors?: MonitoredResourceDescriptorList;
 }
-const ListMonitoredResourceDescriptorsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<ListMonitoredResourceDescriptorsResponse>;
-
 export interface ListOrganizationsExclusionsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -3140,11 +2021,6 @@ export interface ListOrganizationsExclusionsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListOrganizationsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<ListOrganizationsExclusionsRequest>;
-
 export interface ListOrganizationsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -3157,11 +2033,6 @@ export interface ListOrganizationsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<ListOrganizationsLocationsRequest>;
-
 export interface ListOrganizationsLocationsBucketsRequest {
   /** Required. The parent resource whose buckets are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all buckets. */
   parent: string;
@@ -3170,11 +2041,6 @@ export interface ListOrganizationsLocationsBucketsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ListOrganizationsLocationsBucketsRequest>;
-
 export interface ListOrganizationsLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
@@ -3183,11 +2049,6 @@ export interface ListOrganizationsLocationsBucketsLinksRequest {
   /** Optional. The maximum number of results to return from this request. */
   pageSize?: number;
 }
-const ListOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ListOrganizationsLocationsBucketsLinksRequest>;
-
 export interface ListOrganizationsLocationsBucketsViewsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -3196,11 +2057,6 @@ export interface ListOrganizationsLocationsBucketsViewsRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ListOrganizationsLocationsBucketsViewsRequest>;
-
 export interface ListOrganizationsLocationsBucketsViewsLogsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -3211,11 +2067,6 @@ export interface ListOrganizationsLocationsBucketsViewsLogsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListOrganizationsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<ListOrganizationsLocationsBucketsViewsLogsRequest>;
-
 export interface ListOrganizationsLocationsLogScopesRequest {
   /** Required. The parent resource whose log scopes are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" */
   parent: string;
@@ -3224,11 +2075,6 @@ export interface ListOrganizationsLocationsLogScopesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<ListOrganizationsLocationsLogScopesRequest>;
-
 export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -3241,11 +2087,6 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
-
 export interface ListOrganizationsLocationsRecentQueriesRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -3256,11 +2097,6 @@ export interface ListOrganizationsLocationsRecentQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:projects/my-project/locations/us-central1Note: The location portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all recent queries. */
   parent: string;
 }
-const ListOrganizationsLocationsRecentQueriesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<ListOrganizationsLocationsRecentQueriesRequest>;
-
 export interface ListOrganizationsLocationsSavedQueriesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -3271,11 +2107,6 @@ export interface ListOrganizationsLocationsSavedQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID, for example: "projects/my-project/locations/-" */
   parent: string;
 }
-const ListOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<ListOrganizationsLocationsSavedQueriesRequest>;
-
 export interface ListOrganizationsLogsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -3286,11 +2117,6 @@ export interface ListOrganizationsLogsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListOrganizationsLogsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<ListOrganizationsLogsRequest>;
-
 export interface ListOrganizationsSinksRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -3301,11 +2127,6 @@ export interface ListOrganizationsSinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListOrganizationsSinksRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<ListOrganizationsSinksRequest>;
-
 export interface ListProjectsExclusionsRequest {
   /** Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
@@ -3314,11 +2135,6 @@ export interface ListProjectsExclusionsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListProjectsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<ListProjectsExclusionsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -3331,11 +2147,6 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export interface ListProjectsLocationsBucketsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -3344,11 +2155,6 @@ export interface ListProjectsLocationsBucketsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<ListProjectsLocationsBucketsRequest>;
-
 export interface ListProjectsLocationsBucketsLinksRequest {
   /** Optional. The maximum number of results to return from this request. */
   pageSize?: number;
@@ -3357,11 +2163,6 @@ export interface ListProjectsLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
 }
-const ListProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<ListProjectsLocationsBucketsLinksRequest>;
-
 export interface ListProjectsLocationsBucketsViewsRequest {
   /** Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
@@ -3370,11 +2171,6 @@ export interface ListProjectsLocationsBucketsViewsRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<ListProjectsLocationsBucketsViewsRequest>;
-
 export interface ListProjectsLocationsBucketsViewsLogsRequest {
   /** Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID] */
   parent: string;
@@ -3385,11 +2181,6 @@ export interface ListProjectsLocationsBucketsViewsLogsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListProjectsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<ListProjectsLocationsBucketsViewsLogsRequest>;
-
 export interface ListProjectsLocationsLogScopesRequest {
   /** Required. The parent resource whose log scopes are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" */
   parent: string;
@@ -3398,11 +2189,6 @@ export interface ListProjectsLocationsLogScopesRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListProjectsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<ListProjectsLocationsLogScopesRequest>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -3415,11 +2201,6 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRecentQueriesRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -3430,11 +2211,6 @@ export interface ListProjectsLocationsRecentQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:projects/my-project/locations/us-central1Note: The location portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all recent queries. */
   parent: string;
 }
-const ListProjectsLocationsRecentQueriesRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<ListProjectsLocationsRecentQueriesRequest>;
-
 export interface ListProjectsLocationsSavedQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID, for example: "projects/my-project/locations/-" */
   parent: string;
@@ -3445,11 +2221,6 @@ export interface ListProjectsLocationsSavedQueriesRequest {
   /** Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (PRIVATE or SHARED) of the saved queries to list. If provided, the filter must contain either the type function or a visibility token, or both. If both are chosen, they can be placed in any order, but they must be joined by the AND operator or the empty character.The two supported type function calls are: type("Logging") type("OpsAnalytics")The two supported visibility tokens are: visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND visibility = PRIVATE visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility = PRIVATE visibility = SHARED */
   filter?: string;
 }
-const ListProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<ListProjectsLocationsSavedQueriesRequest>;
-
 export interface ListProjectsLogsRequest {
   /** Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID] */
   parent: string;
@@ -3460,11 +2231,6 @@ export interface ListProjectsLogsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListProjectsLogsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<ListProjectsLogsRequest>;
-
 export interface ListProjectsMetricsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
@@ -3473,14 +2239,7 @@ export interface ListProjectsMetricsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-const ListProjectsMetricsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ListProjectsMetricsRequest>;
-
 export type LogMetricList = Array<LogMetric>;
-const LogMetricList = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<LogMetricList>;
-
 /** Result returned from ListLogMetrics. */
 export interface ListLogMetricsResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken. */
@@ -3488,11 +2247,6 @@ export interface ListLogMetricsResponse {
   /** A list of logs-based metrics. */
   metrics?: LogMetricList;
 }
-const ListLogMetricsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<ListLogMetricsResponse>;
-
 export interface ListProjectsSinksRequest {
   /** Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
@@ -3503,11 +2257,6 @@ export interface ListProjectsSinksRequest {
   /** Optional. A filter expression to constrain the sinks returned. Today, this only supports the following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes below. ALL: Includes all of the sinks which can be returned in any other scope. ANCESTOR: Includes intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned by parent.When the empty string is provided, then the filter 'in_scope("DEFAULT")' is applied. */
   filter?: string;
 }
-const ListProjectsSinksRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<ListProjectsSinksRequest>;
-
 export interface ListSinksRequest {
   /** Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
@@ -3518,8 +2267,6 @@ export interface ListSinksRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const ListSinksRequest = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<ListSinksRequest>;
-
 export interface PatchBillingAccountsExclusionsRequest {
   /** Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
@@ -3528,11 +2275,6 @@ export interface PatchBillingAccountsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-const PatchBillingAccountsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<PatchBillingAccountsExclusionsRequest>;
-
 export interface PatchBillingAccountsLocationsBucketsRequest {
   /** Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=retention_days */
   updateMask?: string;
@@ -3541,11 +2283,6 @@ export interface PatchBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const PatchBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<PatchBillingAccountsLocationsBucketsRequest>;
-
 export interface PatchBillingAccountsLocationsBucketsViewsRequest {
   /** Optional. Field mask that specifies the fields in view that need an update. A field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=filter */
   updateMask?: string;
@@ -3554,11 +2291,6 @@ export interface PatchBillingAccountsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const PatchBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<PatchBillingAccountsLocationsBucketsViewsRequest>;
-
 export interface PatchBillingAccountsLocationsSavedQueriesRequest {
   /** Required. A non-empty list of fields to change in the existing saved query. Fields are relative to the saved_query and new values for the fields are taken from the corresponding fields in the SavedQuery included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.To update all mutable fields, specify an update_mask of *.For example, to change the description and query filter text of a saved query, specify an update_mask of "description, query.filter". */
   updateMask?: string;
@@ -3567,11 +2299,6 @@ export interface PatchBillingAccountsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const PatchBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<PatchBillingAccountsLocationsSavedQueriesRequest>;
-
 export interface PatchBillingAccountsSinksRequest {
   /** Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
@@ -3584,11 +2311,6 @@ export interface PatchBillingAccountsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const PatchBillingAccountsSinksRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<PatchBillingAccountsSinksRequest>;
-
 export interface PatchExclusionsRequest {
   /** Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
@@ -3597,11 +2319,6 @@ export interface PatchExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-const PatchExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<PatchExclusionsRequest>;
-
 export interface PatchFoldersExclusionsRequest {
   /** Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of "filter,description". */
   updateMask?: string;
@@ -3610,11 +2327,6 @@ export interface PatchFoldersExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-const PatchFoldersExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<PatchFoldersExclusionsRequest>;
-
 export interface PatchFoldersLocationsBucketsRequest {
   /** Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=retention_days */
   updateMask?: string;
@@ -3623,11 +2335,6 @@ export interface PatchFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const PatchFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<PatchFoldersLocationsBucketsRequest>;
-
 export interface PatchFoldersLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to update "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
@@ -3636,11 +2343,6 @@ export interface PatchFoldersLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const PatchFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<PatchFoldersLocationsBucketsViewsRequest>;
-
 export interface PatchFoldersLocationsLogScopesRequest {
   /** Optional. Field mask that specifies the fields in log_scope that need an update. A field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=description */
   updateMask?: string;
@@ -3649,11 +2351,6 @@ export interface PatchFoldersLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-const PatchFoldersLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<PatchFoldersLocationsLogScopesRequest>;
-
 export interface PatchFoldersLocationsSavedQueriesRequest {
   /** Output only. Resource name of the saved query.In the format: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported locations, see Supported Regions (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will generate an alphanumeric ID. */
   name: string;
@@ -3662,11 +2359,6 @@ export interface PatchFoldersLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const PatchFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<PatchFoldersLocationsSavedQueriesRequest>;
-
 export interface PatchFoldersSinksRequest {
   /** Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
@@ -3679,11 +2371,6 @@ export interface PatchFoldersSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const PatchFoldersSinksRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<PatchFoldersSinksRequest>;
-
 export interface PatchLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to update. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
@@ -3692,11 +2379,6 @@ export interface PatchLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const PatchLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<PatchLocationsBucketsRequest>;
-
 export interface PatchLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to update "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
@@ -3705,11 +2387,6 @@ export interface PatchLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const PatchLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<PatchLocationsBucketsViewsRequest>;
-
 export interface PatchOrganizationsExclusionsRequest {
   /** Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of "filter,description". */
   updateMask?: string;
@@ -3718,11 +2395,6 @@ export interface PatchOrganizationsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-const PatchOrganizationsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<PatchOrganizationsExclusionsRequest>;
-
 export interface PatchOrganizationsLocationsBucketsRequest {
   /** Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=retention_days */
   updateMask?: string;
@@ -3731,11 +2403,6 @@ export interface PatchOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const PatchOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<PatchOrganizationsLocationsBucketsRequest>;
-
 export interface PatchOrganizationsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to update "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
@@ -3744,11 +2411,6 @@ export interface PatchOrganizationsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const PatchOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<PatchOrganizationsLocationsBucketsViewsRequest>;
-
 export interface PatchOrganizationsLocationsLogScopesRequest {
   /** Optional. Field mask that specifies the fields in log_scope that need an update. A field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=description */
   updateMask?: string;
@@ -3757,11 +2419,6 @@ export interface PatchOrganizationsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-const PatchOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<PatchOrganizationsLocationsLogScopesRequest>;
-
 export interface PatchOrganizationsLocationsSavedQueriesRequest {
   /** Required. A non-empty list of fields to change in the existing saved query. Fields are relative to the saved_query and new values for the fields are taken from the corresponding fields in the SavedQuery included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.To update all mutable fields, specify an update_mask of *.For example, to change the description and query filter text of a saved query, specify an update_mask of "description, query.filter". */
   updateMask?: string;
@@ -3770,11 +2427,6 @@ export interface PatchOrganizationsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const PatchOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<PatchOrganizationsLocationsSavedQueriesRequest>;
-
 export interface PatchOrganizationsSinksRequest {
   /** Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field: If the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity. If the old value is false and the new value is true, then writer_identity is changed to a service agent (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It is an error if the old value is true and the new value is set to false or defaulted to false. */
   uniqueWriterIdentity?: boolean;
@@ -3787,11 +2439,6 @@ export interface PatchOrganizationsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const PatchOrganizationsSinksRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<PatchOrganizationsSinksRequest>;
-
 export interface PatchProjectsExclusionsRequest {
   /** Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of "filter,description". */
   updateMask?: string;
@@ -3800,11 +2447,6 @@ export interface PatchProjectsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-const PatchProjectsExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<PatchProjectsExclusionsRequest>;
-
 export interface PatchProjectsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to update. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
@@ -3813,11 +2455,6 @@ export interface PatchProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const PatchProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<PatchProjectsLocationsBucketsRequest>;
-
 export interface PatchProjectsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to update "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
@@ -3826,11 +2463,6 @@ export interface PatchProjectsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-const PatchProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<PatchProjectsLocationsBucketsViewsRequest>;
-
 export interface PatchProjectsLocationsLogScopesRequest {
   /** Output only. The resource name of the log scope.Log scopes are only available in the global location. For example:projects/my-project/locations/global/logScopes/my-log-scope */
   name: string;
@@ -3839,11 +2471,6 @@ export interface PatchProjectsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-const PatchProjectsLocationsLogScopesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<PatchProjectsLocationsLogScopesRequest>;
-
 export interface PatchProjectsLocationsSavedQueriesRequest {
   /** Required. A non-empty list of fields to change in the existing saved query. Fields are relative to the saved_query and new values for the fields are taken from the corresponding fields in the SavedQuery included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.To update all mutable fields, specify an update_mask of *.For example, to change the description and query filter text of a saved query, specify an update_mask of "description, query.filter". */
   updateMask?: string;
@@ -3852,11 +2479,6 @@ export interface PatchProjectsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-const PatchProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<PatchProjectsLocationsSavedQueriesRequest>;
-
 export interface PatchProjectsSinksRequest {
   /** Optional. The service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified when you are routing logs to a log bucket that is in a different project than the sink. When not specified, a Logging service account will automatically be generated. */
   customWriterIdentity?: string;
@@ -3869,11 +2491,6 @@ export interface PatchProjectsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const PatchProjectsSinksRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<PatchProjectsSinksRequest>;
-
 /** Request message for SetIamPolicy method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -3881,52 +2498,30 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used:paths: "bindings, etag" */
   updateMask?: string;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c40, 2) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyFoldersLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<SetIamPolicyFoldersLocationsBucketsViewsRequest>;
-
 export interface SetIamPolicyLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<SetIamPolicyLocationsBucketsViewsRequest>;
-
 export interface SetIamPolicyOrganizationsLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<SetIamPolicyOrganizationsLocationsBucketsViewsRequest>;
-
 export interface SetIamPolicyProjectsLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<SetIamPolicyProjectsLocationsBucketsViewsRequest>;
-
 /** The parameters to TailLogEntries. */
 export interface TailLogEntriesRequest {
   /** Required. Name of a parent resource from which to retrieve log entries: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]May alternatively be one or more views: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] */
@@ -3936,20 +2531,11 @@ export interface TailLogEntriesRequest {
   /** Optional. A filter that chooses which log entries to return. For more information, see Logging query language (https://docs.cloud.google.com/logging/docs/view/logging-query-language).Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters. */
   filter?: string;
 }
-const TailLogEntriesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<TailLogEntriesRequest>;
-
 export interface TailEntriesRequest {
   /** Request body */
   body?: TailLogEntriesRequest;
 }
-const TailEntriesRequest = /*@__PURE__*/ __L.at(__c41, 0) as any as S.Schema<TailEntriesRequest>;
-
 export type SuppressionInfoReasonEnum = "REASON_UNSPECIFIED" | "RATE_LIMIT" | "NOT_CONSUMED";
-const SuppressionInfoReasonEnum = S.String;
-
 /** Information about entries that were omitted from the session. */
 export interface SuppressionInfo {
   /** The reason that entries were omitted from the session. */
@@ -3957,11 +2543,7 @@ export interface SuppressionInfo {
   /** A lower bound on the count of entries omitted due to reason. */
   suppressedCount?: number;
 }
-const SuppressionInfo = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<SuppressionInfo>;
-
 export type SuppressionInfoList = Array<SuppressionInfo>;
-const SuppressionInfoList = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<SuppressionInfoList>;
-
 /** Result returned from TailLogEntries. */
 export interface TailLogEntriesResponse {
   /** If entries that otherwise would have been included in the session were not sent back to the client, counts of relevant entries omitted from the session with the reason that they were not included. There will be at most one of each reason per response. The counts represent the number of suppressed entries since the last streamed response. */
@@ -3969,73 +2551,40 @@ export interface TailLogEntriesResponse {
   /** A list of log entries. Each response in the stream will order entries with increasing values of LogEntry.timestamp. Ordering is not guaranteed between separate responses. */
   entries?: LogEntryList;
 }
-const TailLogEntriesResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<TailLogEntriesResponse>;
-
 /** Request message for TestIamPermissions method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsFoldersLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<TestIamPermissionsFoldersLocationsBucketsViewsRequest>;
-
 /** Response message for TestIamPermissions method. */
 export interface TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<TestIamPermissionsLocationsBucketsViewsRequest>;
-
 export interface TestIamPermissionsOrganizationsLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<TestIamPermissionsOrganizationsLocationsBucketsViewsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsBucketsViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsBucketsViewsRequest>;
-
 /** The parameters to UndeleteBucket. */
 export type UndeleteBucketRequest = CancelOperationRequest;
 export interface UndeleteBillingAccountsLocationsBucketsRequest {
@@ -4044,55 +2593,30 @@ export interface UndeleteBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const UndeleteBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<UndeleteBillingAccountsLocationsBucketsRequest>;
-
 export interface UndeleteFoldersLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to undelete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const UndeleteFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<UndeleteFoldersLocationsBucketsRequest>;
-
 export interface UndeleteLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to undelete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const UndeleteLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<UndeleteLocationsBucketsRequest>;
-
 export interface UndeleteOrganizationsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to undelete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const UndeleteOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<UndeleteOrganizationsLocationsBucketsRequest>;
-
 export interface UndeleteProjectsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to undelete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const UndeleteProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<UndeleteProjectsLocationsBucketsRequest>;
-
 export interface UpdateAsyncBillingAccountsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to update. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
@@ -4101,11 +2625,6 @@ export interface UpdateAsyncBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const UpdateAsyncBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<UpdateAsyncBillingAccountsLocationsBucketsRequest>;
-
 export interface UpdateAsyncFoldersLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to update. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
@@ -4114,11 +2633,6 @@ export interface UpdateAsyncFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const UpdateAsyncFoldersLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<UpdateAsyncFoldersLocationsBucketsRequest>;
-
 export interface UpdateAsyncLocationsBucketsRequest {
   /** Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=retention_days */
   updateMask?: string;
@@ -4127,11 +2641,6 @@ export interface UpdateAsyncLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const UpdateAsyncLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<UpdateAsyncLocationsBucketsRequest>;
-
 export interface UpdateAsyncOrganizationsLocationsBucketsRequest {
   /** Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.For a detailed FieldMask definition, see: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=retention_days */
   updateMask?: string;
@@ -4140,11 +2649,6 @@ export interface UpdateAsyncOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const UpdateAsyncOrganizationsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<UpdateAsyncOrganizationsLocationsBucketsRequest>;
-
 export interface UpdateAsyncProjectsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to update. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
@@ -4153,11 +2657,6 @@ export interface UpdateAsyncProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-const UpdateAsyncProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<UpdateAsyncProjectsLocationsBucketsRequest>;
-
 export interface UpdateBillingAccountsSinksRequest {
   /** Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field: If the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity. If the old value is false and the new value is true, then writer_identity is changed to a service agent (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It is an error if the old value is true and the new value is set to false or defaulted to false. */
   uniqueWriterIdentity?: boolean;
@@ -4170,11 +2669,6 @@ export interface UpdateBillingAccountsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const UpdateBillingAccountsSinksRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<UpdateBillingAccountsSinksRequest>;
-
 export interface UpdateCmekSettingsOrganizationsRequest {
   /** Optional. Field mask identifying which fields from cmek_settings should be updated. A field will be overwritten if and only if it is in the update mask. Output only fields cannot be updated.See FieldMask for more information.For example: "updateMask=kmsKeyName" */
   updateMask?: string;
@@ -4183,11 +2677,6 @@ export interface UpdateCmekSettingsOrganizationsRequest {
   /** Request body */
   body?: CmekSettings;
 }
-const UpdateCmekSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<UpdateCmekSettingsOrganizationsRequest>;
-
 export interface UpdateCmekSettingsV2Request {
   /** Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
@@ -4196,11 +2685,6 @@ export interface UpdateCmekSettingsV2Request {
   /** Request body */
   body?: CmekSettings;
 }
-const UpdateCmekSettingsV2Request = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<UpdateCmekSettingsV2Request>;
-
 export interface UpdateFoldersSinksRequest {
   /** Optional. Field mask that specifies the fields in sink that need an update. A sink field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.An empty updateMask is temporarily treated as using the following mask for backwards compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=filter */
   updateMask?: string;
@@ -4213,11 +2697,6 @@ export interface UpdateFoldersSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const UpdateFoldersSinksRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<UpdateFoldersSinksRequest>;
-
 export interface UpdateOrganizationsSinksRequest {
   /** Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field: If the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity. If the old value is false and the new value is true, then writer_identity is changed to a service agent (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It is an error if the old value is true and the new value is set to false or defaulted to false. */
   uniqueWriterIdentity?: boolean;
@@ -4230,22 +2709,12 @@ export interface UpdateOrganizationsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const UpdateOrganizationsSinksRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<UpdateOrganizationsSinksRequest>;
-
 export interface UpdateProjectsMetricsRequest {
   /** Required. The resource name of the metric to update: "projects/[PROJECT_ID]/metrics/[METRIC_ID]" The updated metric must be provided in the request and it's name field must be the same as [METRIC_ID] If the metric does not exist in [PROJECT_ID], then a new metric is created. */
   metricName: string;
   /** Request body */
   body?: LogMetric;
 }
-const UpdateProjectsMetricsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<UpdateProjectsMetricsRequest>;
-
 export interface UpdateProjectsSinksRequest {
   /** Optional. Field mask that specifies the fields in sink that need an update. A sink field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.An empty updateMask is temporarily treated as using the following mask for backwards compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=filter */
   updateMask?: string;
@@ -4258,11 +2727,6 @@ export interface UpdateProjectsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const UpdateProjectsSinksRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<UpdateProjectsSinksRequest>;
-
 export interface UpdateSettingsFoldersRequest {
   /** Optional. Field mask identifying which fields from settings should be updated. A field will be overwritten if and only if it is in the update mask. Output only fields cannot be updated.See FieldMask for more information.For example: "updateMask=kmsKeyName" */
   updateMask?: string;
@@ -4271,11 +2735,6 @@ export interface UpdateSettingsFoldersRequest {
   /** Request body */
   body?: Settings;
 }
-const UpdateSettingsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<UpdateSettingsFoldersRequest>;
-
 export interface UpdateSettingsOrganizationsRequest {
   /** Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings" */
   name: string;
@@ -4284,11 +2743,6 @@ export interface UpdateSettingsOrganizationsRequest {
   /** Request body */
   body?: Settings;
 }
-const UpdateSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<UpdateSettingsOrganizationsRequest>;
-
 export interface UpdateSettingsV2Request {
   /** Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings" */
   name: string;
@@ -4297,11 +2751,6 @@ export interface UpdateSettingsV2Request {
   /** Request body */
   body?: Settings;
 }
-const UpdateSettingsV2Request = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<UpdateSettingsV2Request>;
-
 export interface UpdateSinksRequest {
   /** Optional. Field mask that specifies the fields in sink that need an update. A sink field will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.An empty updateMask is temporarily treated as using the following mask for backwards compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=filter */
   updateMask?: string;
@@ -4314,8 +2763,6 @@ export interface UpdateSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-const UpdateSinksRequest = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<UpdateSinksRequest>;
-
 /** The parameters to WriteLogEntries. */
 export interface WriteLogEntriesRequest {
   /** Optional. A default monitored resource object that is assigned to all log entries in entries that do not specify a value for resource. Example: { "type": "gce_instance", "labels": { "zone": "us-central1-a", "instance_id": "00000000000000000000" }} See LogEntry. */
@@ -4331,21 +2778,12 @@ export interface WriteLogEntriesRequest {
   /** Optional. A default log resource name that is assigned to all log entries in entries that do not specify a value for log_name: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example: "projects/my-project-id/logs/syslog" "organizations/123/logs/cloudaudit.googleapis.com%2Factivity" The permission logging.logEntries.create is needed on each project, organization, billing account, or folder that is receiving new log entries, whether the resource is specified in logName or in an individual log entry.Only platform services can write logs to billing accounts. */
   logName?: string;
 }
-const WriteLogEntriesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<WriteLogEntriesRequest>;
-
 export interface WriteEntriesRequest {
   /** Request body */
   body?: WriteLogEntriesRequest;
 }
-const WriteEntriesRequest = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<WriteEntriesRequest>;
-
 /** Result returned from WriteLogEntries. */
 export interface WriteLogEntriesResponse {}
-const WriteLogEntriesResponse = CancelOperationRequest as any as S.Schema<WriteLogEntriesResponse>;
-
 export type CancelBillingAccountsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -4359,8 +2797,8 @@ export const cancelBillingAccountsLocationsOperations: API.OperationMethod<
   CancelBillingAccountsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelBillingAccountsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelBillingAccountsLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4379,8 +2817,8 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
   CancelFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelFoldersLocationsOperationsRequest,
-  output: Empty,
+  input: __S(2, __c0, 2) as any as S.Schema<CancelFoldersLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4399,8 +2837,8 @@ export const cancelLocationsOperations: API.OperationMethod<
   CancelLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelLocationsOperationsRequest,
-  output: Empty,
+  input: __S(3, __c0, 3) as any as S.Schema<CancelLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4419,8 +2857,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOrganizationsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(4, __c0, 4) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4439,8 +2877,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(5, __c0, 5) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4454,8 +2892,8 @@ export const copyEntries: API.OperationMethod<
   CopyEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyEntriesRequest,
-  output: Operation,
+  input: __S(7, __c0, 7) as any as S.Schema<CopyEntriesRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4474,8 +2912,8 @@ export const createAsyncBillingAccountsLocationsBuckets: API.OperationMethod<
   CreateAsyncBillingAccountsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAsyncBillingAccountsLocationsBucketsRequest,
-  output: Operation,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateAsyncBillingAccountsLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4494,8 +2932,8 @@ export const createAsyncFoldersLocationsBuckets: API.OperationMethod<
   CreateAsyncFoldersLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAsyncFoldersLocationsBucketsRequest,
-  output: Operation,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateAsyncFoldersLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4514,8 +2952,8 @@ export const createAsyncLocationsBuckets: API.OperationMethod<
   CreateAsyncLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAsyncLocationsBucketsRequest,
-  output: Operation,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateAsyncLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4534,8 +2972,8 @@ export const createAsyncOrganizationsLocationsBuckets: API.OperationMethod<
   CreateAsyncOrganizationsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAsyncOrganizationsLocationsBucketsRequest,
-  output: Operation,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateAsyncOrganizationsLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4554,8 +2992,8 @@ export const createAsyncProjectsLocationsBuckets: API.OperationMethod<
   CreateAsyncProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAsyncProjectsLocationsBucketsRequest,
-  output: Operation,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateAsyncProjectsLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4574,8 +3012,8 @@ export const createBillingAccountsExclusions: API.OperationMethod<
   CreateBillingAccountsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAccountsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(23, __c2, 7) as any as S.Schema<CreateBillingAccountsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4594,8 +3032,8 @@ export const createBillingAccountsLocationsBuckets: API.OperationMethod<
   CreateBillingAccountsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAccountsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateBillingAccountsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4614,8 +3052,8 @@ export const createBillingAccountsLocationsBucketsLinks: API.OperationMethod<
   CreateBillingAccountsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAccountsLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(27, __c3, 3) as any as S.Schema<CreateBillingAccountsLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4634,8 +3072,8 @@ export const createBillingAccountsLocationsBucketsViews: API.OperationMethod<
   CreateBillingAccountsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAccountsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateBillingAccountsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4654,8 +3092,8 @@ export const createBillingAccountsLocationsSavedQueries: API.OperationMethod<
   CreateBillingAccountsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAccountsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(47, __c5, 7) as any as S.Schema<CreateBillingAccountsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4674,8 +3112,8 @@ export const createBillingAccountsSinks: API.OperationMethod<
   CreateBillingAccountsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingAccountsSinksRequest,
-  output: LogSink,
+  input: __S(51, __c6, 3) as any as S.Schema<CreateBillingAccountsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4689,8 +3127,8 @@ export const createExclusions: API.OperationMethod<
   CreateExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExclusionsRequest,
-  output: LogExclusion,
+  input: __S(52, __c6, 4) as any as S.Schema<CreateExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4709,8 +3147,8 @@ export const createFoldersExclusions: API.OperationMethod<
   CreateFoldersExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFoldersExclusionsRequest,
-  output: LogExclusion,
+  input: __S(53, __c6, 5) as any as S.Schema<CreateFoldersExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4729,8 +3167,8 @@ export const createFoldersLocationsBuckets: API.OperationMethod<
   CreateFoldersLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFoldersLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(54, __c6, 6) as any as S.Schema<CreateFoldersLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4749,8 +3187,8 @@ export const createFoldersLocationsBucketsLinks: API.OperationMethod<
   CreateFoldersLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFoldersLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(55, __c6, 7) as any as S.Schema<CreateFoldersLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4769,8 +3207,8 @@ export const createFoldersLocationsBucketsViews: API.OperationMethod<
   CreateFoldersLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFoldersLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateFoldersLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4789,8 +3227,8 @@ export const createFoldersLocationsLogScopes: API.OperationMethod<
   CreateFoldersLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFoldersLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(58, __c7, 2) as any as S.Schema<CreateFoldersLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4809,8 +3247,8 @@ export const createFoldersLocationsSavedQueries: API.OperationMethod<
   CreateFoldersLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFoldersLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(59, __c7, 3) as any as S.Schema<CreateFoldersLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4824,8 +3262,8 @@ export const createFoldersSinks: API.OperationMethod<
   CreateFoldersSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFoldersSinksRequest,
-  output: LogSink,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateFoldersSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4839,8 +3277,8 @@ export const createLocationsBuckets: API.OperationMethod<
   CreateLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(61, __c7, 5) as any as S.Schema<CreateLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4859,8 +3297,8 @@ export const createLocationsBucketsLinks: API.OperationMethod<
   CreateLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(62, __c7, 6) as any as S.Schema<CreateLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4879,8 +3317,8 @@ export const createLocationsBucketsViews: API.OperationMethod<
   CreateLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(63, __c7, 7) as any as S.Schema<CreateLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4899,8 +3337,8 @@ export const createOrganizationsExclusions: API.OperationMethod<
   CreateOrganizationsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateOrganizationsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4919,8 +3357,8 @@ export const createOrganizationsLocationsBuckets: API.OperationMethod<
   CreateOrganizationsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateOrganizationsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4939,8 +3377,8 @@ export const createOrganizationsLocationsBucketsLinks: API.OperationMethod<
   CreateOrganizationsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(66, __c8, 2) as any as S.Schema<CreateOrganizationsLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4959,8 +3397,8 @@ export const createOrganizationsLocationsBucketsViews: API.OperationMethod<
   CreateOrganizationsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(67, __c8, 3) as any as S.Schema<CreateOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4979,8 +3417,8 @@ export const createOrganizationsLocationsLogScopes: API.OperationMethod<
   CreateOrganizationsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(68, __c8, 4) as any as S.Schema<CreateOrganizationsLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4999,8 +3437,8 @@ export const createOrganizationsLocationsSavedQueries: API.OperationMethod<
   CreateOrganizationsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(69, __c8, 5) as any as S.Schema<CreateOrganizationsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5019,8 +3457,8 @@ export const createOrganizationsSinks: API.OperationMethod<
   CreateOrganizationsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsSinksRequest,
-  output: LogSink,
+  input: __S(70, __c8, 6) as any as S.Schema<CreateOrganizationsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5039,8 +3477,8 @@ export const createProjectsExclusions: API.OperationMethod<
   CreateProjectsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(71, __c8, 7) as any as S.Schema<CreateProjectsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5059,8 +3497,8 @@ export const createProjectsLocationsBuckets: API.OperationMethod<
   CreateProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateProjectsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5079,8 +3517,8 @@ export const createProjectsLocationsBucketsLinks: API.OperationMethod<
   CreateProjectsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(73, __c9, 1) as any as S.Schema<CreateProjectsLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5099,8 +3537,8 @@ export const createProjectsLocationsBucketsViews: API.OperationMethod<
   CreateProjectsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(74, __c9, 2) as any as S.Schema<CreateProjectsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5119,8 +3557,8 @@ export const createProjectsLocationsLogScopes: API.OperationMethod<
   CreateProjectsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(75, __c9, 3) as any as S.Schema<CreateProjectsLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5139,8 +3577,8 @@ export const createProjectsLocationsSavedQueries: API.OperationMethod<
   CreateProjectsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(76, __c9, 4) as any as S.Schema<CreateProjectsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5154,8 +3592,8 @@ export const createProjectsMetrics: API.OperationMethod<
   CreateProjectsMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsMetricsRequest,
-  output: LogMetric,
+  input: __S(89, __c11, 1) as any as S.Schema<CreateProjectsMetricsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<LogMetric>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5169,8 +3607,8 @@ export const createProjectsSinks: API.OperationMethod<
   CreateProjectsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsSinksRequest,
-  output: LogSink,
+  input: __S(90, __c11, 2) as any as S.Schema<CreateProjectsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5184,8 +3622,8 @@ export const createSinks: API.OperationMethod<
   CreateSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSinksRequest,
-  output: LogSink,
+  input: __S(91, __c11, 3) as any as S.Schema<CreateSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5204,8 +3642,8 @@ export const deleteBillingAccountsExclusions: API.OperationMethod<
   DeleteBillingAccountsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingAccountsExclusionsRequest,
-  output: Empty,
+  input: __S(92, __c11, 4) as any as S.Schema<DeleteBillingAccountsExclusionsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5224,8 +3662,8 @@ export const deleteBillingAccountsLocationsBuckets: API.OperationMethod<
   DeleteBillingAccountsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingAccountsLocationsBucketsRequest,
-  output: Empty,
+  input: __S(93, __c11, 5) as any as S.Schema<DeleteBillingAccountsLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5244,8 +3682,8 @@ export const deleteBillingAccountsLocationsBucketsLinks: API.OperationMethod<
   DeleteBillingAccountsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingAccountsLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(94, __c11, 6) as any as S.Schema<DeleteBillingAccountsLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5264,8 +3702,8 @@ export const deleteBillingAccountsLocationsBucketsViews: API.OperationMethod<
   DeleteBillingAccountsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingAccountsLocationsBucketsViewsRequest,
-  output: Empty,
+  input: __S(95, __c11, 7) as any as S.Schema<DeleteBillingAccountsLocationsBucketsViewsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5284,8 +3722,8 @@ export const deleteBillingAccountsLocationsSavedQueries: API.OperationMethod<
   DeleteBillingAccountsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingAccountsLocationsSavedQueriesRequest,
-  output: Empty,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteBillingAccountsLocationsSavedQueriesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5304,8 +3742,8 @@ export const deleteBillingAccountsLogs: API.OperationMethod<
   DeleteBillingAccountsLogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingAccountsLogsRequest,
-  output: Empty,
+  input: __S(97, __c12, 1) as any as S.Schema<DeleteBillingAccountsLogsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5324,8 +3762,8 @@ export const deleteBillingAccountsSinks: API.OperationMethod<
   DeleteBillingAccountsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingAccountsSinksRequest,
-  output: Empty,
+  input: __S(98, __c12, 2) as any as S.Schema<DeleteBillingAccountsSinksRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5339,8 +3777,8 @@ export const deleteExclusions: API.OperationMethod<
   DeleteExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExclusionsRequest,
-  output: Empty,
+  input: __S(99, __c12, 3) as any as S.Schema<DeleteExclusionsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5359,8 +3797,8 @@ export const deleteFoldersExclusions: API.OperationMethod<
   DeleteFoldersExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersExclusionsRequest,
-  output: Empty,
+  input: __S(100, __c12, 4) as any as S.Schema<DeleteFoldersExclusionsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5379,8 +3817,8 @@ export const deleteFoldersLocationsBuckets: API.OperationMethod<
   DeleteFoldersLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersLocationsBucketsRequest,
-  output: Empty,
+  input: __S(101, __c12, 5) as any as S.Schema<DeleteFoldersLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5399,8 +3837,8 @@ export const deleteFoldersLocationsBucketsLinks: API.OperationMethod<
   DeleteFoldersLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(102, __c12, 6) as any as S.Schema<DeleteFoldersLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5419,8 +3857,8 @@ export const deleteFoldersLocationsBucketsViews: API.OperationMethod<
   DeleteFoldersLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersLocationsBucketsViewsRequest,
-  output: Empty,
+  input: __S(103, __c12, 7) as any as S.Schema<DeleteFoldersLocationsBucketsViewsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5439,8 +3877,8 @@ export const deleteFoldersLocationsLogScopes: API.OperationMethod<
   DeleteFoldersLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersLocationsLogScopesRequest,
-  output: Empty,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteFoldersLocationsLogScopesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5459,8 +3897,8 @@ export const deleteFoldersLocationsSavedQueries: API.OperationMethod<
   DeleteFoldersLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersLocationsSavedQueriesRequest,
-  output: Empty,
+  input: __S(105, __c13, 1) as any as S.Schema<DeleteFoldersLocationsSavedQueriesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5474,8 +3912,8 @@ export const deleteFoldersLogs: API.OperationMethod<
   DeleteFoldersLogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersLogsRequest,
-  output: Empty,
+  input: __S(106, __c13, 2) as any as S.Schema<DeleteFoldersLogsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5489,8 +3927,8 @@ export const deleteFoldersSinks: API.OperationMethod<
   DeleteFoldersSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFoldersSinksRequest,
-  output: Empty,
+  input: __S(107, __c13, 3) as any as S.Schema<DeleteFoldersSinksRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5504,8 +3942,8 @@ export const deleteLocationsBuckets: API.OperationMethod<
   DeleteLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLocationsBucketsRequest,
-  output: Empty,
+  input: __S(108, __c13, 4) as any as S.Schema<DeleteLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5524,8 +3962,8 @@ export const deleteLocationsBucketsLinks: API.OperationMethod<
   DeleteLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(109, __c13, 5) as any as S.Schema<DeleteLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5544,8 +3982,8 @@ export const deleteLocationsBucketsViews: API.OperationMethod<
   DeleteLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLocationsBucketsViewsRequest,
-  output: Empty,
+  input: __S(110, __c13, 6) as any as S.Schema<DeleteLocationsBucketsViewsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5559,8 +3997,8 @@ export const deleteLogs: API.OperationMethod<
   DeleteLogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLogsRequest,
-  output: Empty,
+  input: __S(111, __c13, 7) as any as S.Schema<DeleteLogsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5579,8 +4017,8 @@ export const deleteOrganizationsExclusions: API.OperationMethod<
   DeleteOrganizationsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsExclusionsRequest,
-  output: Empty,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteOrganizationsExclusionsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5599,8 +4037,8 @@ export const deleteOrganizationsLocationsBuckets: API.OperationMethod<
   DeleteOrganizationsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsBucketsRequest,
-  output: Empty,
+  input: __S(113, __c14, 1) as any as S.Schema<DeleteOrganizationsLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5619,8 +4057,8 @@ export const deleteOrganizationsLocationsBucketsLinks: API.OperationMethod<
   DeleteOrganizationsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(114, __c14, 2) as any as S.Schema<DeleteOrganizationsLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5639,8 +4077,8 @@ export const deleteOrganizationsLocationsBucketsViews: API.OperationMethod<
   DeleteOrganizationsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsBucketsViewsRequest,
-  output: Empty,
+  input: __S(115, __c14, 3) as any as S.Schema<DeleteOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5659,8 +4097,8 @@ export const deleteOrganizationsLocationsLogScopes: API.OperationMethod<
   DeleteOrganizationsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsLogScopesRequest,
-  output: Empty,
+  input: __S(116, __c14, 4) as any as S.Schema<DeleteOrganizationsLocationsLogScopesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5679,8 +4117,8 @@ export const deleteOrganizationsLocationsSavedQueries: API.OperationMethod<
   DeleteOrganizationsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsSavedQueriesRequest,
-  output: Empty,
+  input: __S(117, __c14, 5) as any as S.Schema<DeleteOrganizationsLocationsSavedQueriesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5699,8 +4137,8 @@ export const deleteOrganizationsLogs: API.OperationMethod<
   DeleteOrganizationsLogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLogsRequest,
-  output: Empty,
+  input: __S(118, __c14, 6) as any as S.Schema<DeleteOrganizationsLogsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5719,8 +4157,8 @@ export const deleteOrganizationsSinks: API.OperationMethod<
   DeleteOrganizationsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsSinksRequest,
-  output: Empty,
+  input: __S(119, __c14, 7) as any as S.Schema<DeleteOrganizationsSinksRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5739,8 +4177,8 @@ export const deleteProjectsExclusions: API.OperationMethod<
   DeleteProjectsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsExclusionsRequest,
-  output: Empty,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteProjectsExclusionsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5759,8 +4197,8 @@ export const deleteProjectsLocationsBuckets: API.OperationMethod<
   DeleteProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBucketsRequest,
-  output: Empty,
+  input: __S(121, __c15, 1) as any as S.Schema<DeleteProjectsLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5779,8 +4217,8 @@ export const deleteProjectsLocationsBucketsLinks: API.OperationMethod<
   DeleteProjectsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBucketsLinksRequest,
-  output: Operation,
+  input: __S(122, __c15, 2) as any as S.Schema<DeleteProjectsLocationsBucketsLinksRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5799,8 +4237,8 @@ export const deleteProjectsLocationsBucketsViews: API.OperationMethod<
   DeleteProjectsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBucketsViewsRequest,
-  output: Empty,
+  input: __S(123, __c15, 3) as any as S.Schema<DeleteProjectsLocationsBucketsViewsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5819,8 +4257,8 @@ export const deleteProjectsLocationsLogScopes: API.OperationMethod<
   DeleteProjectsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsLogScopesRequest,
-  output: Empty,
+  input: __S(124, __c15, 4) as any as S.Schema<DeleteProjectsLocationsLogScopesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5839,8 +4277,8 @@ export const deleteProjectsLocationsSavedQueries: API.OperationMethod<
   DeleteProjectsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSavedQueriesRequest,
-  output: Empty,
+  input: __S(125, __c15, 5) as any as S.Schema<DeleteProjectsLocationsSavedQueriesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5854,8 +4292,8 @@ export const deleteProjectsLogs: API.OperationMethod<
   DeleteProjectsLogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLogsRequest,
-  output: Empty,
+  input: __S(126, __c15, 6) as any as S.Schema<DeleteProjectsLogsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5869,8 +4307,8 @@ export const deleteProjectsMetrics: API.OperationMethod<
   DeleteProjectsMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsMetricsRequest,
-  output: Empty,
+  input: __S(127, __c15, 7) as any as S.Schema<DeleteProjectsMetricsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5884,8 +4322,8 @@ export const deleteProjectsSinks: API.OperationMethod<
   DeleteProjectsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsSinksRequest,
-  output: Empty,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteProjectsSinksRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5899,8 +4337,8 @@ export const deleteSinks: API.OperationMethod<
   DeleteSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSinksRequest,
-  output: Empty,
+  input: __S(129, __c16, 1) as any as S.Schema<DeleteSinksRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5914,8 +4352,8 @@ export const getBillingAccountsExclusions: API.OperationMethod<
   GetBillingAccountsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(130, __c16, 2) as any as S.Schema<GetBillingAccountsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5929,8 +4367,8 @@ export const getBillingAccountsLocations: API.OperationMethod<
   GetBillingAccountsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsLocationsRequest,
-  output: Location,
+  input: __S(131, __c16, 3) as any as S.Schema<GetBillingAccountsLocationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5944,8 +4382,8 @@ export const getBillingAccountsLocationsBuckets: API.OperationMethod<
   GetBillingAccountsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(133, __c16, 5) as any as S.Schema<GetBillingAccountsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5959,8 +4397,8 @@ export const getBillingAccountsLocationsBucketsLinks: API.OperationMethod<
   GetBillingAccountsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsLocationsBucketsLinksRequest,
-  output: Link,
+  input: __S(134, __c16, 6) as any as S.Schema<GetBillingAccountsLocationsBucketsLinksRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Link>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5974,8 +4412,8 @@ export const getBillingAccountsLocationsBucketsViews: API.OperationMethod<
   GetBillingAccountsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(135, __c16, 7) as any as S.Schema<GetBillingAccountsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5989,8 +4427,8 @@ export const getBillingAccountsLocationsOperations: API.OperationMethod<
   GetBillingAccountsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(136, __c17, 0) as any as S.Schema<GetBillingAccountsLocationsOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6004,8 +4442,8 @@ export const getBillingAccountsLocationsSavedQueries: API.OperationMethod<
   GetBillingAccountsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(137, __c17, 1) as any as S.Schema<GetBillingAccountsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6019,8 +4457,8 @@ export const getBillingAccountsSinks: API.OperationMethod<
   GetBillingAccountsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingAccountsSinksRequest,
-  output: LogSink,
+  input: __S(138, __c17, 2) as any as S.Schema<GetBillingAccountsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6034,8 +4472,8 @@ export const getCmekSettingsBillingAccounts: API.OperationMethod<
   GetCmekSettingsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCmekSettingsBillingAccountsRequest,
-  output: CmekSettings,
+  input: __S(139, __c17, 3) as any as S.Schema<GetCmekSettingsBillingAccountsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CmekSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6049,8 +4487,8 @@ export const getCmekSettingsFolders: API.OperationMethod<
   GetCmekSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCmekSettingsFoldersRequest,
-  output: CmekSettings,
+  input: __S(140, __c17, 4) as any as S.Schema<GetCmekSettingsFoldersRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CmekSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6064,8 +4502,8 @@ export const getCmekSettingsOrganizations: API.OperationMethod<
   GetCmekSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCmekSettingsOrganizationsRequest,
-  output: CmekSettings,
+  input: __S(141, __c17, 5) as any as S.Schema<GetCmekSettingsOrganizationsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CmekSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6079,8 +4517,8 @@ export const getCmekSettingsProjects: API.OperationMethod<
   GetCmekSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCmekSettingsProjectsRequest,
-  output: CmekSettings,
+  input: __S(142, __c17, 6) as any as S.Schema<GetCmekSettingsProjectsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CmekSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6094,8 +4532,8 @@ export const getCmekSettingsV2: API.OperationMethod<
   GetCmekSettingsV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCmekSettingsV2Request,
-  output: CmekSettings,
+  input: __S(143, __c17, 7) as any as S.Schema<GetCmekSettingsV2Request>,
+  output: __S(12, __c1, 4) as any as S.Schema<CmekSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6109,8 +4547,8 @@ export const getExclusions: API.OperationMethod<
   GetExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExclusionsRequest,
-  output: LogExclusion,
+  input: __S(144, __c18, 0) as any as S.Schema<GetExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6124,8 +4562,8 @@ export const getFoldersExclusions: API.OperationMethod<
   GetFoldersExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersExclusionsRequest,
-  output: LogExclusion,
+  input: __S(145, __c18, 1) as any as S.Schema<GetFoldersExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6139,8 +4577,8 @@ export const getFoldersLocations: API.OperationMethod<
   GetFoldersLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersLocationsRequest,
-  output: Location,
+  input: __S(146, __c18, 2) as any as S.Schema<GetFoldersLocationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6154,8 +4592,8 @@ export const getFoldersLocationsBuckets: API.OperationMethod<
   GetFoldersLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(147, __c18, 3) as any as S.Schema<GetFoldersLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6169,8 +4607,8 @@ export const getFoldersLocationsBucketsLinks: API.OperationMethod<
   GetFoldersLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersLocationsBucketsLinksRequest,
-  output: Link,
+  input: __S(148, __c18, 4) as any as S.Schema<GetFoldersLocationsBucketsLinksRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Link>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6184,8 +4622,8 @@ export const getFoldersLocationsBucketsViews: API.OperationMethod<
   GetFoldersLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(149, __c18, 5) as any as S.Schema<GetFoldersLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6199,8 +4637,8 @@ export const getFoldersLocationsLogScopes: API.OperationMethod<
   GetFoldersLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(150, __c18, 6) as any as S.Schema<GetFoldersLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6214,8 +4652,8 @@ export const getFoldersLocationsOperations: API.OperationMethod<
   GetFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersLocationsOperationsRequest,
-  output: Operation,
+  input: __S(151, __c18, 7) as any as S.Schema<GetFoldersLocationsOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6229,8 +4667,8 @@ export const getFoldersLocationsSavedQueries: API.OperationMethod<
   GetFoldersLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(152, __c19, 0) as any as S.Schema<GetFoldersLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6244,8 +4682,8 @@ export const getFoldersSinks: API.OperationMethod<
   GetFoldersSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersSinksRequest,
-  output: LogSink,
+  input: __S(153, __c19, 1) as any as S.Schema<GetFoldersSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6264,8 +4702,8 @@ export const getIamPolicyFoldersLocationsBucketsViews: API.OperationMethod<
   GetIamPolicyFoldersLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyFoldersLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(156, __c19, 4) as any as S.Schema<GetIamPolicyFoldersLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6284,8 +4722,8 @@ export const getIamPolicyLocationsBucketsViews: API.OperationMethod<
   GetIamPolicyLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(161, __c20, 1) as any as S.Schema<GetIamPolicyLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6304,8 +4742,12 @@ export const getIamPolicyOrganizationsLocationsBucketsViews: API.OperationMethod
   GetIamPolicyOrganizationsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyOrganizationsLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(
+    162,
+    __c20,
+    2,
+  ) as any as S.Schema<GetIamPolicyOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6324,8 +4766,8 @@ export const getIamPolicyProjectsLocationsBucketsViews: API.OperationMethod<
   GetIamPolicyProjectsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(163, __c20, 3) as any as S.Schema<GetIamPolicyProjectsLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6339,8 +4781,8 @@ export const getLocations: API.OperationMethod<
   GetLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationsRequest,
-  output: Location,
+  input: __S(164, __c20, 4) as any as S.Schema<GetLocationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6354,8 +4796,8 @@ export const getLocationsBuckets: API.OperationMethod<
   GetLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(165, __c20, 5) as any as S.Schema<GetLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6369,8 +4811,8 @@ export const getLocationsBucketsLinks: API.OperationMethod<
   GetLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationsBucketsLinksRequest,
-  output: Link,
+  input: __S(166, __c20, 6) as any as S.Schema<GetLocationsBucketsLinksRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Link>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6384,8 +4826,8 @@ export const getLocationsBucketsViews: API.OperationMethod<
   GetLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(167, __c20, 7) as any as S.Schema<GetLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6399,8 +4841,8 @@ export const getLocationsOperations: API.OperationMethod<
   GetLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationsOperationsRequest,
-  output: Operation,
+  input: __S(168, __c21, 0) as any as S.Schema<GetLocationsOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6414,8 +4856,8 @@ export const getOrganizationsExclusions: API.OperationMethod<
   GetOrganizationsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(169, __c21, 1) as any as S.Schema<GetOrganizationsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6429,8 +4871,8 @@ export const getOrganizationsLocations: API.OperationMethod<
   GetOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsRequest,
-  output: Location,
+  input: __S(170, __c21, 2) as any as S.Schema<GetOrganizationsLocationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6444,8 +4886,8 @@ export const getOrganizationsLocationsBuckets: API.OperationMethod<
   GetOrganizationsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(171, __c21, 3) as any as S.Schema<GetOrganizationsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6459,8 +4901,8 @@ export const getOrganizationsLocationsBucketsLinks: API.OperationMethod<
   GetOrganizationsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsBucketsLinksRequest,
-  output: Link,
+  input: __S(172, __c21, 4) as any as S.Schema<GetOrganizationsLocationsBucketsLinksRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Link>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6474,8 +4916,8 @@ export const getOrganizationsLocationsBucketsViews: API.OperationMethod<
   GetOrganizationsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(173, __c21, 5) as any as S.Schema<GetOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6489,8 +4931,8 @@ export const getOrganizationsLocationsLogScopes: API.OperationMethod<
   GetOrganizationsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(174, __c21, 6) as any as S.Schema<GetOrganizationsLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6504,8 +4946,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(175, __c21, 7) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6519,8 +4961,8 @@ export const getOrganizationsLocationsSavedQueries: API.OperationMethod<
   GetOrganizationsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(176, __c22, 0) as any as S.Schema<GetOrganizationsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6534,8 +4976,8 @@ export const getOrganizationsSinks: API.OperationMethod<
   GetOrganizationsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsSinksRequest,
-  output: LogSink,
+  input: __S(177, __c22, 1) as any as S.Schema<GetOrganizationsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6549,8 +4991,8 @@ export const getProjectsExclusions: API.OperationMethod<
   GetProjectsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(178, __c22, 2) as any as S.Schema<GetProjectsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6564,8 +5006,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(179, __c22, 3) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6579,8 +5021,8 @@ export const getProjectsLocationsBuckets: API.OperationMethod<
   GetProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(180, __c22, 4) as any as S.Schema<GetProjectsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6594,8 +5036,8 @@ export const getProjectsLocationsBucketsLinks: API.OperationMethod<
   GetProjectsLocationsBucketsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBucketsLinksRequest,
-  output: Link,
+  input: __S(181, __c22, 5) as any as S.Schema<GetProjectsLocationsBucketsLinksRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Link>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6609,8 +5051,8 @@ export const getProjectsLocationsBucketsViews: API.OperationMethod<
   GetProjectsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(182, __c22, 6) as any as S.Schema<GetProjectsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6624,8 +5066,8 @@ export const getProjectsLocationsLogScopes: API.OperationMethod<
   GetProjectsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(183, __c22, 7) as any as S.Schema<GetProjectsLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6639,8 +5081,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(184, __c23, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6654,8 +5096,8 @@ export const getProjectsLocationsSavedQueries: API.OperationMethod<
   GetProjectsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(185, __c23, 1) as any as S.Schema<GetProjectsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6669,8 +5111,8 @@ export const getProjectsMetrics: API.OperationMethod<
   GetProjectsMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsMetricsRequest,
-  output: LogMetric,
+  input: __S(186, __c23, 2) as any as S.Schema<GetProjectsMetricsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<LogMetric>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6684,8 +5126,8 @@ export const getProjectsSinks: API.OperationMethod<
   GetProjectsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsSinksRequest,
-  output: LogSink,
+  input: __S(187, __c23, 3) as any as S.Schema<GetProjectsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6699,8 +5141,8 @@ export const getSettingsBillingAccounts: API.OperationMethod<
   GetSettingsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsBillingAccountsRequest,
-  output: Settings,
+  input: __S(188, __c23, 4) as any as S.Schema<GetSettingsBillingAccountsRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6714,8 +5156,8 @@ export const getSettingsFolders: API.OperationMethod<
   GetSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsFoldersRequest,
-  output: Settings,
+  input: __S(191, __c23, 7) as any as S.Schema<GetSettingsFoldersRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6729,8 +5171,8 @@ export const getSettingsOrganizations: API.OperationMethod<
   GetSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsOrganizationsRequest,
-  output: Settings,
+  input: __S(192, __c24, 0) as any as S.Schema<GetSettingsOrganizationsRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6744,8 +5186,8 @@ export const getSettingsProjects: API.OperationMethod<
   GetSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsProjectsRequest,
-  output: Settings,
+  input: __S(193, __c24, 1) as any as S.Schema<GetSettingsProjectsRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6759,8 +5201,8 @@ export const getSettingsV2: API.OperationMethod<
   GetSettingsV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsV2Request,
-  output: Settings,
+  input: __S(194, __c24, 2) as any as S.Schema<GetSettingsV2Request>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6770,8 +5212,8 @@ export type GetSinksError = NotFound | Forbidden | GcpOpError;
 /** Gets a sink. */
 export const getSinks: API.OperationMethod<GetSinksRequest, LogSink, GetSinksError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetSinksRequest,
-    output: LogSink,
+    input: __S(195, __c24, 3) as any as S.Schema<GetSinksRequest>,
+    output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -6786,8 +5228,8 @@ export const listBillingAccountsExclusions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExclusionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsExclusionsRequest,
-  output: ListExclusionsResponse,
+  input: __S(196, __c24, 4) as any as S.Schema<ListBillingAccountsExclusionsRequest>,
+  output: __S(197, __c24, 5) as any as S.Schema<ListExclusionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6803,8 +5245,8 @@ export const listBillingAccountsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(198, __c24, 6) as any as S.Schema<ListBillingAccountsLocationsRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6820,8 +5262,8 @@ export const listBillingAccountsLocationsBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsBucketsRequest,
-  output: ListBucketsResponse,
+  input: __S(201, __c25, 1) as any as S.Schema<ListBillingAccountsLocationsBucketsRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListBucketsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6837,8 +5279,8 @@ export const listBillingAccountsLocationsBucketsLinks: API.PaginatedOperationMet
   GcpOpContext,
   ListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsBucketsLinksRequest,
-  output: ListLinksResponse,
+  input: __S(204, __c25, 4) as any as S.Schema<ListBillingAccountsLocationsBucketsLinksRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<ListLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6854,8 +5296,8 @@ export const listBillingAccountsLocationsBucketsViews: API.PaginatedOperationMet
   GcpOpContext,
   ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsBucketsViewsRequest,
-  output: ListViewsResponse,
+  input: __S(207, __c25, 7) as any as S.Schema<ListBillingAccountsLocationsBucketsViewsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ListViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6871,8 +5313,8 @@ export const listBillingAccountsLocationsBucketsViewsLogs: API.PaginatedOperatio
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsBucketsViewsLogsRequest,
-  output: ListLogsResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<ListBillingAccountsLocationsBucketsViewsLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6888,8 +5330,8 @@ export const listBillingAccountsLocationsOperations: API.PaginatedOperationMetho
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<ListBillingAccountsLocationsOperationsRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6905,8 +5347,8 @@ export const listBillingAccountsLocationsRecentQueries: API.PaginatedOperationMe
   GcpOpContext,
   ListRecentQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsRecentQueriesRequest,
-  output: ListRecentQueriesResponse,
+  input: __S(215, __c26, 7) as any as S.Schema<ListBillingAccountsLocationsRecentQueriesRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListRecentQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6922,8 +5364,8 @@ export const listBillingAccountsLocationsSavedQueries: API.PaginatedOperationMet
   GcpOpContext,
   ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLocationsSavedQueriesRequest,
-  output: ListSavedQueriesResponse,
+  input: __S(219, __c27, 3) as any as S.Schema<ListBillingAccountsLocationsSavedQueriesRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<ListSavedQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6939,8 +5381,8 @@ export const listBillingAccountsLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsLogsRequest,
-  output: ListLogsResponse,
+  input: __S(222, __c27, 6) as any as S.Schema<ListBillingAccountsLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6956,8 +5398,8 @@ export const listBillingAccountsSinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingAccountsSinksRequest,
-  output: ListSinksResponse,
+  input: __S(223, __c27, 7) as any as S.Schema<ListBillingAccountsSinksRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListSinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6972,8 +5414,8 @@ export const listEntries: API.OperationMethod<
   ListEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEntriesRequest,
-  output: ListLogEntriesResponse,
+  input: __S(227, __c28, 3) as any as S.Schema<ListEntriesRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<ListLogEntriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6988,8 +5430,8 @@ export const listExclusions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExclusionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExclusionsRequest,
-  output: ListExclusionsResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<ListExclusionsRequest>,
+  output: __S(197, __c24, 5) as any as S.Schema<ListExclusionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7005,8 +5447,8 @@ export const listFoldersExclusions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExclusionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersExclusionsRequest,
-  output: ListExclusionsResponse,
+  input: __S(244, __c30, 4) as any as S.Schema<ListFoldersExclusionsRequest>,
+  output: __S(197, __c24, 5) as any as S.Schema<ListExclusionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7022,8 +5464,8 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(245, __c30, 5) as any as S.Schema<ListFoldersLocationsRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7039,8 +5481,8 @@ export const listFoldersLocationsBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsBucketsRequest,
-  output: ListBucketsResponse,
+  input: __S(246, __c30, 6) as any as S.Schema<ListFoldersLocationsBucketsRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListBucketsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7056,8 +5498,8 @@ export const listFoldersLocationsBucketsLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsBucketsLinksRequest,
-  output: ListLinksResponse,
+  input: __S(247, __c30, 7) as any as S.Schema<ListFoldersLocationsBucketsLinksRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<ListLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7073,8 +5515,8 @@ export const listFoldersLocationsBucketsViews: API.PaginatedOperationMethod<
   GcpOpContext,
   ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsBucketsViewsRequest,
-  output: ListViewsResponse,
+  input: __S(248, __c31, 0) as any as S.Schema<ListFoldersLocationsBucketsViewsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ListViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7090,8 +5532,8 @@ export const listFoldersLocationsBucketsViewsLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsBucketsViewsLogsRequest,
-  output: ListLogsResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<ListFoldersLocationsBucketsViewsLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7107,8 +5549,8 @@ export const listFoldersLocationsLogScopes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogScopesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsLogScopesRequest,
-  output: ListLogScopesResponse,
+  input: __S(250, __c31, 2) as any as S.Schema<ListFoldersLocationsLogScopesRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<ListLogScopesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7124,8 +5566,8 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<ListFoldersLocationsOperationsRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7141,8 +5583,8 @@ export const listFoldersLocationsRecentQueries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRecentQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsRecentQueriesRequest,
-  output: ListRecentQueriesResponse,
+  input: __S(254, __c31, 6) as any as S.Schema<ListFoldersLocationsRecentQueriesRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListRecentQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7158,8 +5600,8 @@ export const listFoldersLocationsSavedQueries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLocationsSavedQueriesRequest,
-  output: ListSavedQueriesResponse,
+  input: __S(255, __c31, 7) as any as S.Schema<ListFoldersLocationsSavedQueriesRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<ListSavedQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7175,8 +5617,8 @@ export const listFoldersLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersLogsRequest,
-  output: ListLogsResponse,
+  input: __S(256, __c32, 0) as any as S.Schema<ListFoldersLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7192,8 +5634,8 @@ export const listFoldersSinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersSinksRequest,
-  output: ListSinksResponse,
+  input: __S(257, __c32, 1) as any as S.Schema<ListFoldersSinksRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListSinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7209,8 +5651,8 @@ export const listLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(258, __c32, 2) as any as S.Schema<ListLocationsRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7226,8 +5668,8 @@ export const listLocationsBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsBucketsRequest,
-  output: ListBucketsResponse,
+  input: __S(259, __c32, 3) as any as S.Schema<ListLocationsBucketsRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListBucketsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7243,8 +5685,8 @@ export const listLocationsBucketsLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsBucketsLinksRequest,
-  output: ListLinksResponse,
+  input: __S(260, __c32, 4) as any as S.Schema<ListLocationsBucketsLinksRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<ListLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7260,8 +5702,8 @@ export const listLocationsBucketsViews: API.PaginatedOperationMethod<
   GcpOpContext,
   ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsBucketsViewsRequest,
-  output: ListViewsResponse,
+  input: __S(261, __c32, 5) as any as S.Schema<ListLocationsBucketsViewsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ListViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7277,8 +5719,8 @@ export const listLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(262, __c32, 6) as any as S.Schema<ListLocationsOperationsRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7294,8 +5736,8 @@ export const listLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLogsRequest,
-  output: ListLogsResponse,
+  input: __S(263, __c32, 7) as any as S.Schema<ListLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7311,8 +5753,8 @@ export const listMonitoredResourceDescriptors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMonitoredResourceDescriptorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMonitoredResourceDescriptorsRequest,
-  output: ListMonitoredResourceDescriptorsResponse,
+  input: __S(264, __c33, 0) as any as S.Schema<ListMonitoredResourceDescriptorsRequest>,
+  output: __S(267, __c33, 3) as any as S.Schema<ListMonitoredResourceDescriptorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7328,8 +5770,8 @@ export const listOrganizationsExclusions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExclusionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsExclusionsRequest,
-  output: ListExclusionsResponse,
+  input: __S(268, __c33, 4) as any as S.Schema<ListOrganizationsExclusionsRequest>,
+  output: __S(197, __c24, 5) as any as S.Schema<ListExclusionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7345,8 +5787,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(269, __c33, 5) as any as S.Schema<ListOrganizationsLocationsRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7362,8 +5804,8 @@ export const listOrganizationsLocationsBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsBucketsRequest,
-  output: ListBucketsResponse,
+  input: __S(270, __c33, 6) as any as S.Schema<ListOrganizationsLocationsBucketsRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListBucketsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7379,8 +5821,8 @@ export const listOrganizationsLocationsBucketsLinks: API.PaginatedOperationMetho
   GcpOpContext,
   ListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsBucketsLinksRequest,
-  output: ListLinksResponse,
+  input: __S(271, __c33, 7) as any as S.Schema<ListOrganizationsLocationsBucketsLinksRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<ListLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7396,8 +5838,8 @@ export const listOrganizationsLocationsBucketsViews: API.PaginatedOperationMetho
   GcpOpContext,
   ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsBucketsViewsRequest,
-  output: ListViewsResponse,
+  input: __S(272, __c34, 0) as any as S.Schema<ListOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ListViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7413,8 +5855,8 @@ export const listOrganizationsLocationsBucketsViewsLogs: API.PaginatedOperationM
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsBucketsViewsLogsRequest,
-  output: ListLogsResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<ListOrganizationsLocationsBucketsViewsLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7430,8 +5872,8 @@ export const listOrganizationsLocationsLogScopes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogScopesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsLogScopesRequest,
-  output: ListLogScopesResponse,
+  input: __S(274, __c34, 2) as any as S.Schema<ListOrganizationsLocationsLogScopesRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<ListLogScopesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7447,8 +5889,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(275, __c34, 3) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7464,8 +5906,8 @@ export const listOrganizationsLocationsRecentQueries: API.PaginatedOperationMeth
   GcpOpContext,
   ListRecentQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsRecentQueriesRequest,
-  output: ListRecentQueriesResponse,
+  input: __S(276, __c34, 4) as any as S.Schema<ListOrganizationsLocationsRecentQueriesRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListRecentQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7481,8 +5923,8 @@ export const listOrganizationsLocationsSavedQueries: API.PaginatedOperationMetho
   GcpOpContext,
   ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsSavedQueriesRequest,
-  output: ListSavedQueriesResponse,
+  input: __S(277, __c34, 5) as any as S.Schema<ListOrganizationsLocationsSavedQueriesRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<ListSavedQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7498,8 +5940,8 @@ export const listOrganizationsLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLogsRequest,
-  output: ListLogsResponse,
+  input: __S(278, __c34, 6) as any as S.Schema<ListOrganizationsLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7515,8 +5957,8 @@ export const listOrganizationsSinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsSinksRequest,
-  output: ListSinksResponse,
+  input: __S(279, __c34, 7) as any as S.Schema<ListOrganizationsSinksRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListSinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7532,8 +5974,8 @@ export const listProjectsExclusions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExclusionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsExclusionsRequest,
-  output: ListExclusionsResponse,
+  input: __S(280, __c35, 0) as any as S.Schema<ListProjectsExclusionsRequest>,
+  output: __S(197, __c24, 5) as any as S.Schema<ListExclusionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7549,8 +5991,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(281, __c35, 1) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7566,8 +6008,8 @@ export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBucketsRequest,
-  output: ListBucketsResponse,
+  input: __S(282, __c35, 2) as any as S.Schema<ListProjectsLocationsBucketsRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListBucketsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7583,8 +6025,8 @@ export const listProjectsLocationsBucketsLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBucketsLinksRequest,
-  output: ListLinksResponse,
+  input: __S(283, __c35, 3) as any as S.Schema<ListProjectsLocationsBucketsLinksRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<ListLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7600,8 +6042,8 @@ export const listProjectsLocationsBucketsViews: API.PaginatedOperationMethod<
   GcpOpContext,
   ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBucketsViewsRequest,
-  output: ListViewsResponse,
+  input: __S(284, __c35, 4) as any as S.Schema<ListProjectsLocationsBucketsViewsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ListViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7617,8 +6059,8 @@ export const listProjectsLocationsBucketsViewsLogs: API.PaginatedOperationMethod
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBucketsViewsLogsRequest,
-  output: ListLogsResponse,
+  input: __S(285, __c35, 5) as any as S.Schema<ListProjectsLocationsBucketsViewsLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7634,8 +6076,8 @@ export const listProjectsLocationsLogScopes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogScopesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsLogScopesRequest,
-  output: ListLogScopesResponse,
+  input: __S(286, __c35, 6) as any as S.Schema<ListProjectsLocationsLogScopesRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<ListLogScopesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7651,8 +6093,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(287, __c35, 7) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7668,8 +6110,8 @@ export const listProjectsLocationsRecentQueries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRecentQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRecentQueriesRequest,
-  output: ListRecentQueriesResponse,
+  input: __S(288, __c36, 0) as any as S.Schema<ListProjectsLocationsRecentQueriesRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListRecentQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7685,8 +6127,8 @@ export const listProjectsLocationsSavedQueries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSavedQueriesRequest,
-  output: ListSavedQueriesResponse,
+  input: __S(289, __c36, 1) as any as S.Schema<ListProjectsLocationsSavedQueriesRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<ListSavedQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7702,8 +6144,8 @@ export const listProjectsLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLogsRequest,
-  output: ListLogsResponse,
+  input: __S(290, __c36, 2) as any as S.Schema<ListProjectsLogsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListLogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7719,8 +6161,8 @@ export const listProjectsMetrics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsMetricsRequest,
-  output: ListLogMetricsResponse,
+  input: __S(291, __c36, 3) as any as S.Schema<ListProjectsMetricsRequest>,
+  output: __S(293, __c36, 5) as any as S.Schema<ListLogMetricsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7736,8 +6178,8 @@ export const listProjectsSinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsSinksRequest,
-  output: ListSinksResponse,
+  input: __S(294, __c36, 6) as any as S.Schema<ListProjectsSinksRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListSinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7753,8 +6195,8 @@ export const listSinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSinksRequest,
-  output: ListSinksResponse,
+  input: __S(295, __c36, 7) as any as S.Schema<ListSinksRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListSinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7774,8 +6216,8 @@ export const patchBillingAccountsExclusions: API.OperationMethod<
   PatchBillingAccountsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBillingAccountsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(296, __c37, 0) as any as S.Schema<PatchBillingAccountsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7794,8 +6236,8 @@ export const patchBillingAccountsLocationsBuckets: API.OperationMethod<
   PatchBillingAccountsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBillingAccountsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(297, __c37, 1) as any as S.Schema<PatchBillingAccountsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7814,8 +6256,8 @@ export const patchBillingAccountsLocationsBucketsViews: API.OperationMethod<
   PatchBillingAccountsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBillingAccountsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(298, __c37, 2) as any as S.Schema<PatchBillingAccountsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7834,8 +6276,8 @@ export const patchBillingAccountsLocationsSavedQueries: API.OperationMethod<
   PatchBillingAccountsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBillingAccountsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(299, __c37, 3) as any as S.Schema<PatchBillingAccountsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7854,8 +6296,8 @@ export const patchBillingAccountsSinks: API.OperationMethod<
   PatchBillingAccountsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBillingAccountsSinksRequest,
-  output: LogSink,
+  input: __S(300, __c37, 4) as any as S.Schema<PatchBillingAccountsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7869,8 +6311,8 @@ export const patchExclusions: API.OperationMethod<
   PatchExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchExclusionsRequest,
-  output: LogExclusion,
+  input: __S(301, __c37, 5) as any as S.Schema<PatchExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7884,8 +6326,8 @@ export const patchFoldersExclusions: API.OperationMethod<
   PatchFoldersExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFoldersExclusionsRequest,
-  output: LogExclusion,
+  input: __S(302, __c37, 6) as any as S.Schema<PatchFoldersExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7904,8 +6346,8 @@ export const patchFoldersLocationsBuckets: API.OperationMethod<
   PatchFoldersLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFoldersLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(303, __c37, 7) as any as S.Schema<PatchFoldersLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7924,8 +6366,8 @@ export const patchFoldersLocationsBucketsViews: API.OperationMethod<
   PatchFoldersLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFoldersLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(304, __c38, 0) as any as S.Schema<PatchFoldersLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7944,8 +6386,8 @@ export const patchFoldersLocationsLogScopes: API.OperationMethod<
   PatchFoldersLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFoldersLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(305, __c38, 1) as any as S.Schema<PatchFoldersLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7964,8 +6406,8 @@ export const patchFoldersLocationsSavedQueries: API.OperationMethod<
   PatchFoldersLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFoldersLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(306, __c38, 2) as any as S.Schema<PatchFoldersLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7979,8 +6421,8 @@ export const patchFoldersSinks: API.OperationMethod<
   PatchFoldersSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFoldersSinksRequest,
-  output: LogSink,
+  input: __S(307, __c38, 3) as any as S.Schema<PatchFoldersSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7994,8 +6436,8 @@ export const patchLocationsBuckets: API.OperationMethod<
   PatchLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(308, __c38, 4) as any as S.Schema<PatchLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8014,8 +6456,8 @@ export const patchLocationsBucketsViews: API.OperationMethod<
   PatchLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(309, __c38, 5) as any as S.Schema<PatchLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8034,8 +6476,8 @@ export const patchOrganizationsExclusions: API.OperationMethod<
   PatchOrganizationsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(310, __c38, 6) as any as S.Schema<PatchOrganizationsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8054,8 +6496,8 @@ export const patchOrganizationsLocationsBuckets: API.OperationMethod<
   PatchOrganizationsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(311, __c38, 7) as any as S.Schema<PatchOrganizationsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8074,8 +6516,8 @@ export const patchOrganizationsLocationsBucketsViews: API.OperationMethod<
   PatchOrganizationsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(312, __c39, 0) as any as S.Schema<PatchOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8094,8 +6536,8 @@ export const patchOrganizationsLocationsLogScopes: API.OperationMethod<
   PatchOrganizationsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(313, __c39, 1) as any as S.Schema<PatchOrganizationsLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8114,8 +6556,8 @@ export const patchOrganizationsLocationsSavedQueries: API.OperationMethod<
   PatchOrganizationsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(314, __c39, 2) as any as S.Schema<PatchOrganizationsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8134,8 +6576,8 @@ export const patchOrganizationsSinks: API.OperationMethod<
   PatchOrganizationsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsSinksRequest,
-  output: LogSink,
+  input: __S(315, __c39, 3) as any as S.Schema<PatchOrganizationsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8154,8 +6596,8 @@ export const patchProjectsExclusions: API.OperationMethod<
   PatchProjectsExclusionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsExclusionsRequest,
-  output: LogExclusion,
+  input: __S(316, __c39, 4) as any as S.Schema<PatchProjectsExclusionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LogExclusion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8174,8 +6616,8 @@ export const patchProjectsLocationsBuckets: API.OperationMethod<
   PatchProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBucketsRequest,
-  output: LogBucket,
+  input: __S(317, __c39, 5) as any as S.Schema<PatchProjectsLocationsBucketsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<LogBucket>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8194,8 +6636,8 @@ export const patchProjectsLocationsBucketsViews: API.OperationMethod<
   PatchProjectsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBucketsViewsRequest,
-  output: LogView,
+  input: __S(318, __c39, 6) as any as S.Schema<PatchProjectsLocationsBucketsViewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<LogView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8214,8 +6656,8 @@ export const patchProjectsLocationsLogScopes: API.OperationMethod<
   PatchProjectsLocationsLogScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsLogScopesRequest,
-  output: LogScope,
+  input: __S(319, __c39, 7) as any as S.Schema<PatchProjectsLocationsLogScopesRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<LogScope>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8234,8 +6676,8 @@ export const patchProjectsLocationsSavedQueries: API.OperationMethod<
   PatchProjectsLocationsSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSavedQueriesRequest,
-  output: SavedQuery,
+  input: __S(320, __c40, 0) as any as S.Schema<PatchProjectsLocationsSavedQueriesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8249,8 +6691,8 @@ export const patchProjectsSinks: API.OperationMethod<
   PatchProjectsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsSinksRequest,
-  output: LogSink,
+  input: __S(321, __c40, 1) as any as S.Schema<PatchProjectsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8269,8 +6711,8 @@ export const setIamPolicyFoldersLocationsBucketsViews: API.OperationMethod<
   SetIamPolicyFoldersLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyFoldersLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(323, __c40, 3) as any as S.Schema<SetIamPolicyFoldersLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8289,8 +6731,8 @@ export const setIamPolicyLocationsBucketsViews: API.OperationMethod<
   SetIamPolicyLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(324, __c40, 4) as any as S.Schema<SetIamPolicyLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8309,8 +6751,12 @@ export const setIamPolicyOrganizationsLocationsBucketsViews: API.OperationMethod
   SetIamPolicyOrganizationsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyOrganizationsLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(
+    325,
+    __c40,
+    5,
+  ) as any as S.Schema<SetIamPolicyOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8329,8 +6775,8 @@ export const setIamPolicyProjectsLocationsBucketsViews: API.OperationMethod<
   SetIamPolicyProjectsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsBucketsViewsRequest,
-  output: Policy,
+  input: __S(326, __c40, 6) as any as S.Schema<SetIamPolicyProjectsLocationsBucketsViewsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8344,8 +6790,8 @@ export const tailEntries: API.OperationMethod<
   TailEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TailEntriesRequest,
-  output: TailLogEntriesResponse,
+  input: __S(328, __c41, 0) as any as S.Schema<TailEntriesRequest>,
+  output: __S(331, __c41, 3) as any as S.Schema<TailLogEntriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8364,8 +6810,12 @@ export const testIamPermissionsFoldersLocationsBucketsViews: API.OperationMethod
   TestIamPermissionsFoldersLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsFoldersLocationsBucketsViewsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    333,
+    __c41,
+    5,
+  ) as any as S.Schema<TestIamPermissionsFoldersLocationsBucketsViewsRequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8384,8 +6834,8 @@ export const testIamPermissionsLocationsBucketsViews: API.OperationMethod<
   TestIamPermissionsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsLocationsBucketsViewsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(334, __c41, 6) as any as S.Schema<TestIamPermissionsLocationsBucketsViewsRequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8404,8 +6854,12 @@ export const testIamPermissionsOrganizationsLocationsBucketsViews: API.Operation
   TestIamPermissionsOrganizationsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsOrganizationsLocationsBucketsViewsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    335,
+    __c41,
+    7,
+  ) as any as S.Schema<TestIamPermissionsOrganizationsLocationsBucketsViewsRequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8424,8 +6878,12 @@ export const testIamPermissionsProjectsLocationsBucketsViews: API.OperationMetho
   TestIamPermissionsProjectsLocationsBucketsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsBucketsViewsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    336,
+    __c42,
+    0,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsBucketsViewsRequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8444,8 +6902,8 @@ export const undeleteBillingAccountsLocationsBuckets: API.OperationMethod<
   UndeleteBillingAccountsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteBillingAccountsLocationsBucketsRequest,
-  output: Empty,
+  input: __S(337, __c42, 1) as any as S.Schema<UndeleteBillingAccountsLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8464,8 +6922,8 @@ export const undeleteFoldersLocationsBuckets: API.OperationMethod<
   UndeleteFoldersLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteFoldersLocationsBucketsRequest,
-  output: Empty,
+  input: __S(338, __c42, 2) as any as S.Schema<UndeleteFoldersLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8484,8 +6942,8 @@ export const undeleteLocationsBuckets: API.OperationMethod<
   UndeleteLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteLocationsBucketsRequest,
-  output: Empty,
+  input: __S(339, __c42, 3) as any as S.Schema<UndeleteLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8504,8 +6962,8 @@ export const undeleteOrganizationsLocationsBuckets: API.OperationMethod<
   UndeleteOrganizationsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteOrganizationsLocationsBucketsRequest,
-  output: Empty,
+  input: __S(340, __c42, 4) as any as S.Schema<UndeleteOrganizationsLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8524,8 +6982,8 @@ export const undeleteProjectsLocationsBuckets: API.OperationMethod<
   UndeleteProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsLocationsBucketsRequest,
-  output: Empty,
+  input: __S(341, __c42, 5) as any as S.Schema<UndeleteProjectsLocationsBucketsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8544,8 +7002,8 @@ export const updateAsyncBillingAccountsLocationsBuckets: API.OperationMethod<
   UpdateAsyncBillingAccountsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAsyncBillingAccountsLocationsBucketsRequest,
-  output: Operation,
+  input: __S(342, __c42, 6) as any as S.Schema<UpdateAsyncBillingAccountsLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8564,8 +7022,8 @@ export const updateAsyncFoldersLocationsBuckets: API.OperationMethod<
   UpdateAsyncFoldersLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAsyncFoldersLocationsBucketsRequest,
-  output: Operation,
+  input: __S(343, __c42, 7) as any as S.Schema<UpdateAsyncFoldersLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8584,8 +7042,8 @@ export const updateAsyncLocationsBuckets: API.OperationMethod<
   UpdateAsyncLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAsyncLocationsBucketsRequest,
-  output: Operation,
+  input: __S(344, __c43, 0) as any as S.Schema<UpdateAsyncLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8604,8 +7062,8 @@ export const updateAsyncOrganizationsLocationsBuckets: API.OperationMethod<
   UpdateAsyncOrganizationsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAsyncOrganizationsLocationsBucketsRequest,
-  output: Operation,
+  input: __S(345, __c43, 1) as any as S.Schema<UpdateAsyncOrganizationsLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8624,8 +7082,8 @@ export const updateAsyncProjectsLocationsBuckets: API.OperationMethod<
   UpdateAsyncProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAsyncProjectsLocationsBucketsRequest,
-  output: Operation,
+  input: __S(346, __c43, 2) as any as S.Schema<UpdateAsyncProjectsLocationsBucketsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8644,8 +7102,8 @@ export const updateBillingAccountsSinks: API.OperationMethod<
   UpdateBillingAccountsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBillingAccountsSinksRequest,
-  output: LogSink,
+  input: __S(347, __c43, 3) as any as S.Schema<UpdateBillingAccountsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8664,8 +7122,8 @@ export const updateCmekSettingsOrganizations: API.OperationMethod<
   UpdateCmekSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCmekSettingsOrganizationsRequest,
-  output: CmekSettings,
+  input: __S(348, __c43, 4) as any as S.Schema<UpdateCmekSettingsOrganizationsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CmekSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8679,8 +7137,8 @@ export const updateCmekSettingsV2: API.OperationMethod<
   UpdateCmekSettingsV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCmekSettingsV2Request,
-  output: CmekSettings,
+  input: __S(349, __c43, 5) as any as S.Schema<UpdateCmekSettingsV2Request>,
+  output: __S(12, __c1, 4) as any as S.Schema<CmekSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8694,8 +7152,8 @@ export const updateFoldersSinks: API.OperationMethod<
   UpdateFoldersSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFoldersSinksRequest,
-  output: LogSink,
+  input: __S(350, __c43, 6) as any as S.Schema<UpdateFoldersSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8714,8 +7172,8 @@ export const updateOrganizationsSinks: API.OperationMethod<
   UpdateOrganizationsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationsSinksRequest,
-  output: LogSink,
+  input: __S(351, __c43, 7) as any as S.Schema<UpdateOrganizationsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8729,8 +7187,8 @@ export const updateProjectsMetrics: API.OperationMethod<
   UpdateProjectsMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsMetricsRequest,
-  output: LogMetric,
+  input: __S(352, __c44, 0) as any as S.Schema<UpdateProjectsMetricsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<LogMetric>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8744,8 +7202,8 @@ export const updateProjectsSinks: API.OperationMethod<
   UpdateProjectsSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsSinksRequest,
-  output: LogSink,
+  input: __S(353, __c44, 1) as any as S.Schema<UpdateProjectsSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8759,8 +7217,8 @@ export const updateSettingsFolders: API.OperationMethod<
   UpdateSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSettingsFoldersRequest,
-  output: Settings,
+  input: __S(354, __c44, 2) as any as S.Schema<UpdateSettingsFoldersRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8779,8 +7237,8 @@ export const updateSettingsOrganizations: API.OperationMethod<
   UpdateSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSettingsOrganizationsRequest,
-  output: Settings,
+  input: __S(355, __c44, 3) as any as S.Schema<UpdateSettingsOrganizationsRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8794,8 +7252,8 @@ export const updateSettingsV2: API.OperationMethod<
   UpdateSettingsV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSettingsV2Request,
-  output: Settings,
+  input: __S(356, __c44, 4) as any as S.Schema<UpdateSettingsV2Request>,
+  output: __S(190, __c23, 6) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8809,8 +7267,8 @@ export const updateSinks: API.OperationMethod<
   UpdateSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSinksRequest,
-  output: LogSink,
+  input: __S(357, __c44, 5) as any as S.Schema<UpdateSinksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<LogSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8824,8 +7282,8 @@ export const writeEntries: API.OperationMethod<
   WriteEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WriteEntriesRequest,
-  output: WriteLogEntriesResponse,
+  input: __S(359, __c44, 7) as any as S.Schema<WriteEntriesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<WriteLogEntriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8842,7 +7300,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8857,7 +7315,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8872,7 +7330,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8887,7 +7345,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8902,7 +7360,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8924,7 +7382,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CopyLogEntriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8940,23 +7398,23 @@ function __c1(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(DocumentMap);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "Status" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(8, __c1, 0)),
+          response: S.optional(__S(8, __c1, 0)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
+          error: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
@@ -8973,11 +7431,11 @@ function __c1(j: number): any {
         S.Struct({
           createTime: S.optional(S.String),
           fieldPath: S.optional(S.String),
-          type: S.optional(IndexConfigTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndexConfig" });
     case 6:
-      return S.Array(IndexConfig);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.Array(S.String);
   }
@@ -8989,15 +7447,15 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          cmekSettings: S.optional(CmekSettings),
+          cmekSettings: S.optional(__S(12, __c1, 4)),
           analyticsEnabled: S.optional(S.Boolean),
-          indexConfigs: S.optional(IndexConfigList),
+          indexConfigs: S.optional(__S(14, __c1, 6)),
           createTime: S.optional(S.String),
           retentionDays: S.optional(S.Number),
           locked: S.optional(S.Boolean),
           description: S.optional(S.String),
-          restrictedFields: S.optional(StringList),
-          lifecycleState: S.optional(LogBucketLifecycleStateEnum),
+          restrictedFields: S.optional(__S(15, __c1, 7)),
+          lifecycleState: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogBucket" });
     case 1:
@@ -9005,7 +7463,7 @@ function __c2(j: number): any {
         S.Struct({
           bucketId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9021,7 +7479,7 @@ function __c2(j: number): any {
         S.Struct({
           bucketId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9037,7 +7495,7 @@ function __c2(j: number): any {
         S.Struct({
           bucketId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9053,7 +7511,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9069,7 +7527,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9095,7 +7553,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9115,7 +7573,7 @@ function __c3(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9135,9 +7593,9 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bigqueryDataset: S.optional(BigQueryDataset),
+          bigqueryDataset: S.optional(__S(25, __c3, 1)),
           createTime: S.optional(S.String),
-          lifecycleState: S.optional(LinkLifecycleStateEnum),
+          lifecycleState: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -9147,7 +7605,7 @@ function __c3(j: number): any {
         S.Struct({
           linkId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Link.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9173,7 +7631,7 @@ function __c3(j: number): any {
         S.Struct({
           viewId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9191,7 +7649,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "SummaryField" });
     case 7:
-      return S.Array(SummaryField);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -9200,7 +7658,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           summaryFieldStart: S.optional(S.Number),
-          summaryFields: S.optional(SummaryFieldList),
+          summaryFields: S.optional(__S(31, __c3, 7)),
           filter: S.optional(S.String),
           summaryFieldEnd: S.optional(S.Number),
         }),
@@ -9208,8 +7666,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          underlyingFieldSources: S.optional(S.suspend(() => FieldSourceList)),
-          virtualFieldType: S.optional(VirtualFieldVirtualFieldTypeEnum),
+          underlyingFieldSources: S.optional(S.suspend(() => __S(38, __c4, 6))),
+          virtualFieldType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualField" });
     case 2:
@@ -9218,20 +7676,20 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          parameters: S.optional(DocumentList),
+          parameters: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "FunctionApplication" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          virtualField: S.optional(VirtualField),
+          virtualField: S.optional(__S(33, __c4, 1)),
           truncationGranularity: S.optional(S.String),
           cast: S.optional(S.String),
           regexExtraction: S.optional(S.String),
-          sqlAggregationFunction: S.optional(FunctionApplication),
+          sqlAggregationFunction: S.optional(__S(35, __c4, 3)),
           field: S.optional(S.String),
           alias: S.optional(S.String),
-          operation: S.optional(ProjectedFieldOperationEnum),
+          operation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectedField" });
     case 5:
@@ -9240,15 +7698,15 @@ function __c4(j: number): any {
           field: S.optional(S.String),
           parentPath: S.optional(S.String),
           aliasRef: S.optional(S.String),
-          projectedField: S.optional(ProjectedField),
+          projectedField: S.optional(__S(36, __c4, 4)),
           columnType: S.optional(S.String),
           isJson: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FieldSource" });
     case 6:
-      return S.Array(FieldSource);
+      return S.Array(__S(37, __c4, 5));
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => FilterPredicate));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(41, __c5, 1)));
   }
 }
 function __c5(j: number): any {
@@ -9258,36 +7716,36 @@ function __c5(j: number): any {
         S.Struct({
           literalValue: S.optional(S.Unknown),
           isNegation: S.optional(S.Boolean),
-          comparator: S.optional(FilterExpressionComparatorEnum),
-          fieldSource: S.optional(FieldSource),
-          fieldSourceValue: S.optional(FieldSource),
+          comparator: S.optional(S.String),
+          fieldSource: S.optional(__S(37, __c4, 5)),
+          fieldSourceValue: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "FilterExpression" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operatorType: S.optional(FilterPredicateOperatorTypeEnum),
-          childPredicates: S.optional(FilterPredicateList),
-          leafPredicate: S.optional(FilterExpression),
+          operatorType: S.optional(S.String),
+          childPredicates: S.optional(__S(39, __c4, 7)),
+          leafPredicate: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "FilterPredicate" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sortOrderDirection: S.optional(SortOrderParameterSortOrderDirectionEnum),
-          fieldSource: S.optional(FieldSource),
+          sortOrderDirection: S.optional(S.String),
+          fieldSource: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "SortOrderParameter" });
     case 3:
-      return S.Array(SortOrderParameter);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.String),
-          fieldSources: S.optional(FieldSourceList),
-          filter: S.optional(FilterPredicate),
-          resourceNames: S.optional(StringList),
-          orderBys: S.optional(SortOrderParameterList),
+          fieldSources: S.optional(__S(38, __c4, 6)),
+          filter: S.optional(__S(41, __c5, 1)),
+          resourceNames: S.optional(__S(15, __c1, 7)),
+          orderBys: S.optional(__S(43, __c5, 3)),
           searchTerm: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryBuilderConfig" });
@@ -9295,19 +7753,19 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sqlQueryText: S.optional(S.String),
-          queryBuilder: S.optional(QueryBuilderConfig),
+          queryBuilder: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "OpsAnalyticsQuery" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          loggingQuery: S.optional(LoggingQuery),
+          loggingQuery: S.optional(__S(32, __c4, 0)),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          visibility: S.optional(SavedQueryVisibilityEnum),
+          visibility: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          opsAnalyticsQuery: S.optional(OpsAnalyticsQuery),
+          opsAnalyticsQuery: S.optional(__S(45, __c5, 5)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavedQuery" });
@@ -9316,7 +7774,7 @@ function __c5(j: number): any {
         S.Struct({
           savedQueryId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9332,7 +7790,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LogExclusion);
+      return S.Array(__S(22, __c2, 6));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9343,16 +7801,16 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          outputVersionFormat: S.optional(LogSinkOutputVersionFormatEnum),
+          outputVersionFormat: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          exclusions: S.optional(LogExclusionList),
+          exclusions: S.optional(__S(48, __c6, 0)),
           resourceName: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           filter: S.optional(S.String),
           updateTime: S.optional(S.String),
           includeChildren: S.optional(S.Boolean),
-          bigqueryOptions: S.optional(BigQueryOptions),
+          bigqueryOptions: S.optional(__S(49, __c6, 1)),
           writerIdentity: S.optional(S.String),
           destination: S.optional(S.String),
           interceptChildren: S.optional(S.Boolean),
@@ -9365,7 +7823,7 @@ function __c6(j: number): any {
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9380,7 +7838,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9393,7 +7851,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9409,7 +7867,7 @@ function __c6(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9425,7 +7883,7 @@ function __c6(j: number): any {
         S.Struct({
           linkId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Link.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9445,7 +7903,7 @@ function __c7(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           viewId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9461,7 +7919,7 @@ function __c7(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
-          resourceNames: S.optional(StringList),
+          resourceNames: S.optional(__S(15, __c1, 7)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -9471,7 +7929,7 @@ function __c7(j: number): any {
         S.Struct({
           logScopeId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogScope.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9487,7 +7945,7 @@ function __c7(j: number): any {
         S.Struct({
           savedQueryId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9504,7 +7962,7 @@ function __c7(j: number): any {
           parent: S.String.pipe(T.Label()),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9520,7 +7978,7 @@ function __c7(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9536,7 +7994,7 @@ function __c7(j: number): any {
         S.Struct({
           linkId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Link.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9552,7 +8010,7 @@ function __c7(j: number): any {
         S.Struct({
           viewId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9571,7 +8029,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9587,7 +8045,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9603,7 +8061,7 @@ function __c8(j: number): any {
         S.Struct({
           linkId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Link.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9619,7 +8077,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           viewId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9635,7 +8093,7 @@ function __c8(j: number): any {
         S.Struct({
           logScopeId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogScope.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9651,7 +8109,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           savedQueryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9668,7 +8126,7 @@ function __c8(j: number): any {
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9683,7 +8141,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9703,7 +8161,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9719,7 +8177,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           linkId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Link.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9735,7 +8193,7 @@ function __c9(j: number): any {
         S.Struct({
           viewId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9751,7 +8209,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           logScopeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogScope.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9767,7 +8225,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           savedQueryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9783,42 +8241,40 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          valueType: S.optional(LabelDescriptorValueTypeEnum),
+          valueType: S.optional(S.String),
           key: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelDescriptor" });
     case 7:
-      return S.Array(LabelDescriptor);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           samplePeriod: S.optional(S.String),
-          launchStage: S.optional(MetricDescriptorMetadataLaunchStageEnum),
-          timeSeriesResourceHierarchyLevel: S.optional(
-            MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList,
-          ),
+          launchStage: S.optional(S.String),
+          timeSeriesResourceHierarchyLevel: S.optional(__S(80, __c10, 0)),
           ingestDelay: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDescriptorMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(LabelDescriptorList),
+          labels: S.optional(__S(79, __c9, 7)),
           unit: S.optional(S.String),
-          valueType: S.optional(MetricDescriptorValueTypeEnum),
+          valueType: S.optional(S.String),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          launchStage: S.optional(MetricDescriptorLaunchStageEnum),
-          monitoredResourceTypes: S.optional(StringList),
-          metadata: S.optional(MetricDescriptorMetadata),
-          metricKind: S.optional(MetricDescriptorMetricKindEnum),
+          launchStage: S.optional(S.String),
+          monitoredResourceTypes: S.optional(__S(15, __c1, 7)),
+          metadata: S.optional(__S(81, __c10, 1)),
+          metricKind: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -9836,7 +8292,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bounds: S.optional(DoubleList),
+          bounds: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({ identifier: "Explicit" });
     case 6:
@@ -9850,9 +8306,9 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          exponentialBuckets: S.optional(Exponential),
-          explicitBuckets: S.optional(Explicit),
-          linearBuckets: S.optional(Linear),
+          exponentialBuckets: S.optional(__S(83, __c10, 3)),
+          explicitBuckets: S.optional(__S(85, __c10, 5)),
+          linearBuckets: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({ identifier: "BucketOptions" });
   }
@@ -9864,16 +8320,16 @@ function __c11(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           disabled: S.optional(S.Boolean),
-          version: S.optional(LogMetricVersionEnum),
+          version: S.optional(S.String),
           updateTime: S.optional(S.String),
           filter: S.optional(S.String),
-          labelExtractors: S.optional(StringMap),
+          labelExtractors: S.optional(__S(77, __c9, 5)),
           bucketName: S.optional(S.String),
           valueExtractor: S.optional(S.String),
           description: S.optional(S.String),
           resourceName: S.optional(S.String),
-          metricDescriptor: S.optional(MetricDescriptor),
-          bucketOptions: S.optional(BucketOptions),
+          metricDescriptor: S.optional(__S(82, __c10, 2)),
+          bucketOptions: S.optional(__S(87, __c10, 7)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogMetric" });
@@ -9881,7 +8337,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LogMetric.pipe(T.HttpBody())),
+          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9898,7 +8354,7 @@ function __c11(j: number): any {
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9915,7 +8371,7 @@ function __c11(j: number): any {
           parent: S.String.pipe(T.Label()),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10494,8 +8950,8 @@ function __c16(j: number): any {
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
-          metadata: S.optional(DocumentMap),
+          labels: S.optional(__S(77, __c9, 5)),
+          metadata: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Location" });
     case 5:
@@ -10751,14 +9207,14 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(GetPolicyOptions),
+          options: S.optional(__S(154, __c19, 2)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10782,12 +9238,12 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(Expr),
-          members: S.optional(StringList),
+          condition: S.optional(__S(157, __c19, 5)),
+          members: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "Binding" });
     case 7:
-      return S.Array(Binding);
+      return S.Array(__S(158, __c19, 6));
   }
 }
 function __c20(j: number): any {
@@ -10797,14 +9253,14 @@ function __c20(j: number): any {
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(159, __c19, 7)),
         }),
       ).annotate({ identifier: "Policy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10819,7 +9275,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10834,7 +9290,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11123,8 +9579,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          exclusions: S.optional(LogExclusionList),
-          mode: S.optional(DefaultSinkConfigModeEnum),
+          exclusions: S.optional(__S(48, __c6, 0)),
+          mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefaultSinkConfig" });
     case 6:
@@ -11133,7 +9589,7 @@ function __c23(j: number): any {
           storageLocation: S.optional(S.String),
           kmsServiceAccountId: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
-          defaultSinkConfig: S.optional(DefaultSinkConfig),
+          defaultSinkConfig: S.optional(__S(189, __c23, 5)),
           disableDefaultSink: S.optional(S.Boolean),
           name: S.optional(S.String),
           loggingServiceAccountId: S.optional(S.String),
@@ -11229,7 +9685,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          exclusions: S.optional(LogExclusionList),
+          exclusions: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "ListExclusionsResponse" });
     case 6:
@@ -11238,7 +9694,7 @@ function __c24(j: number): any {
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -11251,7 +9707,7 @@ function __c24(j: number): any {
         identifier: "ListBillingAccountsLocationsRequest",
       });
     case 7:
-      return S.Array(Location);
+      return S.Array(__S(132, __c16, 4));
   }
 }
 function __c25(j: number): any {
@@ -11260,7 +9716,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(199, __c24, 7)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 1:
@@ -11280,12 +9736,12 @@ function __c25(j: number): any {
         identifier: "ListBillingAccountsLocationsBucketsRequest",
       });
     case 2:
-      return S.Array(LogBucket);
+      return S.Array(__S(16, __c2, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          buckets: S.optional(LogBucketList),
+          buckets: S.optional(__S(202, __c25, 2)),
         }),
       ).annotate({ identifier: "ListBucketsResponse" });
     case 4:
@@ -11305,12 +9761,12 @@ function __c25(j: number): any {
         identifier: "ListBillingAccountsLocationsBucketsLinksRequest",
       });
     case 5:
-      return S.Array(Link);
+      return S.Array(__S(26, __c3, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          links: S.optional(LinkList),
+          links: S.optional(__S(205, __c25, 5)),
         }),
       ).annotate({ identifier: "ListLinksResponse" });
     case 7:
@@ -11334,11 +9790,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LogView);
+      return S.Array(__S(28, __c3, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          views: S.optional(LogViewList),
+          views: S.optional(__S(208, __c26, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListViewsResponse" });
@@ -11348,7 +9804,7 @@ function __c26(j: number): any {
           parent: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11363,7 +9819,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          logNames: S.optional(StringList),
+          logNames: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "ListLogsResponse" });
     case 4:
@@ -11385,13 +9841,13 @@ function __c26(j: number): any {
         identifier: "ListBillingAccountsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(11, __c1, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(15, __c1, 7)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(213, __c26, 5)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 7:
@@ -11418,20 +9874,20 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          opsAnalyticsQuery: S.optional(OpsAnalyticsQuery),
+          opsAnalyticsQuery: S.optional(__S(45, __c5, 5)),
           name: S.optional(S.String),
-          loggingQuery: S.optional(LoggingQuery),
+          loggingQuery: S.optional(__S(32, __c4, 0)),
           lastRunTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecentQuery" });
     case 1:
-      return S.Array(RecentQuery);
+      return S.Array(__S(216, __c27, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recentQueries: S.optional(RecentQueryList),
+          recentQueries: S.optional(__S(217, __c27, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
         identifier: "ListRecentQueriesResponse",
@@ -11454,12 +9910,12 @@ function __c27(j: number): any {
         identifier: "ListBillingAccountsLocationsSavedQueriesRequest",
       });
     case 4:
-      return S.Array(SavedQuery);
+      return S.Array(__S(46, __c5, 6));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          savedQueries: S.optional(SavedQueryList),
-          unreachable: S.optional(StringList),
+          savedQueries: S.optional(__S(220, __c27, 4)),
+          unreachable: S.optional(__S(15, __c1, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSavedQueriesResponse" });
@@ -11469,7 +9925,7 @@ function __c27(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11502,11 +9958,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LogSink);
+      return S.Array(__S(50, __c6, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sinks: S.optional(LogSinkList),
+          sinks: S.optional(__S(224, __c28, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSinksResponse" });
@@ -11514,8 +9970,8 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number),
-          projectIds: S.optional(StringList),
-          resourceNames: S.optional(StringList),
+          projectIds: S.optional(__S(15, __c1, 7)),
+          resourceNames: S.optional(__S(15, __c1, 7)),
           orderBy: S.optional(S.String),
           filter: S.optional(S.String),
           pageToken: S.optional(S.String),
@@ -11524,7 +9980,7 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ListLogEntriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(226, __c28, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11557,7 +10013,7 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "LogErrorGroup" });
     case 7:
-      return S.Array(LogErrorGroup);
+      return S.Array(__S(230, __c28, 6));
   }
 }
 function __c29(j: number): any {
@@ -11594,7 +10050,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({ identifier: "MonitoredResource" });
     case 3:
@@ -11624,16 +10080,16 @@ function __c29(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          application: S.optional(AppHubApplication),
-          service: S.optional(AppHubService),
-          workload: S.optional(AppHubWorkload),
+          application: S.optional(__S(235, __c29, 3)),
+          service: S.optional(__S(236, __c29, 4)),
+          workload: S.optional(__S(237, __c29, 5)),
         }),
       ).annotate({ identifier: "AppHub" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userLabels: S.optional(StringMap),
-          systemLabels: S.optional(DocumentMap),
+          userLabels: S.optional(__S(77, __c9, 5)),
+          systemLabels: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "MonitoredResourceMetadata",
@@ -11645,38 +10101,38 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(LogEntrySeverityEnum),
-          split: S.optional(LogSplit),
+          severity: S.optional(S.String),
+          split: S.optional(__S(228, __c28, 4)),
           logName: S.optional(S.String),
           receiveTimestamp: S.optional(S.String),
-          operation: S.optional(LogEntryOperation),
-          labels: S.optional(StringMap),
+          operation: S.optional(__S(229, __c28, 5)),
+          labels: S.optional(__S(77, __c9, 5)),
           spanId: S.optional(S.String),
-          jsonPayload: S.optional(DocumentMap),
+          jsonPayload: S.optional(__S(8, __c1, 0)),
           traceSampled: S.optional(S.Boolean),
           insertId: S.optional(S.String),
-          errorGroups: S.optional(LogErrorGroupList),
-          sourceLocation: S.optional(LogEntrySourceLocation),
-          httpRequest: S.optional(HttpRequest),
-          resource: S.optional(MonitoredResource),
-          protoPayload: S.optional(DocumentMap),
+          errorGroups: S.optional(__S(231, __c28, 7)),
+          sourceLocation: S.optional(__S(232, __c29, 0)),
+          httpRequest: S.optional(__S(233, __c29, 1)),
+          resource: S.optional(__S(234, __c29, 2)),
+          protoPayload: S.optional(__S(8, __c1, 0)),
           trace: S.optional(S.String),
-          apphubSource: S.optional(AppHub),
-          apphub: S.optional(AppHub),
-          apphubDestination: S.optional(AppHub),
-          metadata: S.optional(MonitoredResourceMetadata),
-          otel: S.optional(DocumentMap),
+          apphubSource: S.optional(__S(238, __c29, 6)),
+          apphub: S.optional(__S(238, __c29, 6)),
+          apphubDestination: S.optional(__S(238, __c29, 6)),
+          metadata: S.optional(__S(239, __c29, 7)),
+          otel: S.optional(__S(8, __c1, 0)),
           textPayload: S.optional(S.String),
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntry" });
     case 1:
-      return S.Array(LogEntry);
+      return S.Array(__S(240, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entries: S.optional(LogEntryList),
+          entries: S.optional(__S(241, __c30, 1)),
         }),
       ).annotate({ identifier: "ListLogEntriesResponse" });
     case 3:
@@ -11716,7 +10172,7 @@ function __c30(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11785,7 +10241,7 @@ function __c31(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11813,11 +10269,11 @@ function __c31(j: number): any {
         identifier: "ListFoldersLocationsLogScopesRequest",
       });
     case 3:
-      return S.Array(LogScope);
+      return S.Array(__S(57, __c7, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          logScopes: S.optional(LogScopeList),
+          logScopes: S.optional(__S(251, __c31, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLogScopesResponse" });
@@ -11880,7 +10336,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
@@ -11911,7 +10367,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -11992,7 +10448,7 @@ function __c32(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
@@ -12026,23 +10482,23 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(LabelDescriptorList),
+          labels: S.optional(__S(79, __c9, 7)),
           type: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          launchStage: S.optional(MonitoredResourceDescriptorLaunchStageEnum),
+          launchStage: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MonitoredResourceDescriptor",
       });
     case 2:
-      return S.Array(MonitoredResourceDescriptor);
+      return S.Array(__S(265, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          resourceDescriptors: S.optional(MonitoredResourceDescriptorList),
+          resourceDescriptors: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({
         identifier: "ListMonitoredResourceDescriptorsResponse",
@@ -12068,7 +10524,7 @@ function __c33(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -12137,7 +10593,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -12223,7 +10679,7 @@ function __c34(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -12275,7 +10731,7 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -12343,7 +10799,7 @@ function __c35(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -12431,7 +10887,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          resourceNames: S.optional(StringList.pipe(T.Query())),
+          resourceNames: S.optional(__S(15, __c1, 7).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -12459,12 +10915,12 @@ function __c36(j: number): any {
         identifier: "ListProjectsMetricsRequest",
       });
     case 4:
-      return S.Array(LogMetric);
+      return S.Array(__S(88, __c11, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          metrics: S.optional(LogMetricList),
+          metrics: S.optional(__S(292, __c36, 4)),
         }),
       ).annotate({ identifier: "ListLogMetricsResponse" });
     case 6:
@@ -12506,7 +10962,7 @@ function __c37(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12522,7 +10978,7 @@ function __c37(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12538,7 +10994,7 @@ function __c37(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12554,7 +11010,7 @@ function __c37(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12572,7 +11028,7 @@ function __c37(j: number): any {
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12588,7 +11044,7 @@ function __c37(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12602,7 +11058,7 @@ function __c37(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12618,7 +11074,7 @@ function __c37(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12638,7 +11094,7 @@ function __c38(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12654,7 +11110,7 @@ function __c38(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogScope.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12670,7 +11126,7 @@ function __c38(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12688,7 +11144,7 @@ function __c38(j: number): any {
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12702,7 +11158,7 @@ function __c38(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12718,7 +11174,7 @@ function __c38(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12734,7 +11190,7 @@ function __c38(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12750,7 +11206,7 @@ function __c38(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12770,7 +11226,7 @@ function __c39(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12786,7 +11242,7 @@ function __c39(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogScope.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12802,7 +11258,7 @@ function __c39(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12820,7 +11276,7 @@ function __c39(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           sinkName: S.String.pipe(T.Label()),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12836,7 +11292,7 @@ function __c39(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogExclusion.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12852,7 +11308,7 @@ function __c39(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12868,7 +11324,7 @@ function __c39(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogView.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12884,7 +11340,7 @@ function __c39(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogScope.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12904,7 +11360,7 @@ function __c40(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(SavedQuery.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12922,7 +11378,7 @@ function __c40(j: number): any {
           sinkName: S.String.pipe(T.Label()),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12936,7 +11392,7 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(160, __c20, 0)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -12944,7 +11400,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12959,7 +11415,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12974,7 +11430,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12989,7 +11445,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13003,7 +11459,7 @@ function __c40(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resourceNames: S.optional(StringList),
+          resourceNames: S.optional(__S(15, __c1, 7)),
           bufferWindow: S.optional(S.String),
           filter: S.optional(S.String),
         }),
@@ -13015,7 +11471,7 @@ function __c41(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(TailLogEntriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(327, __c40, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13027,23 +11483,23 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(SuppressionInfoReasonEnum),
+          reason: S.optional(S.String),
           suppressedCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SuppressionInfo" });
     case 2:
-      return S.Array(SuppressionInfo);
+      return S.Array(__S(329, __c41, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          suppressionInfo: S.optional(SuppressionInfoList),
-          entries: S.optional(LogEntryList),
+          suppressionInfo: S.optional(__S(330, __c41, 2)),
+          entries: S.optional(__S(241, __c30, 1)),
         }),
       ).annotate({ identifier: "TailLogEntriesResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -13052,7 +11508,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(332, __c41, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13067,7 +11523,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(332, __c41, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13082,7 +11538,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(332, __c41, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13101,7 +11557,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(332, __c41, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13116,7 +11572,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13131,7 +11587,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13146,7 +11602,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13161,7 +11617,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13176,7 +11632,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13192,7 +11648,7 @@ function __c42(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13208,7 +11664,7 @@ function __c42(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13228,7 +11684,7 @@ function __c43(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13244,7 +11700,7 @@ function __c43(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13260,7 +11716,7 @@ function __c43(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogBucket.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13278,7 +11734,7 @@ function __c43(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           sinkName: S.String.pipe(T.Label()),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13294,7 +11750,7 @@ function __c43(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(CmekSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13310,7 +11766,7 @@ function __c43(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(CmekSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13328,7 +11784,7 @@ function __c43(j: number): any {
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           sinkName: S.String.pipe(T.Label()),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13346,7 +11802,7 @@ function __c43(j: number): any {
           sinkName: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13365,7 +11821,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metricName: S.String.pipe(T.Label()),
-          body: S.optional(LogMetric.pipe(T.HttpBody())),
+          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13383,7 +11839,7 @@ function __c44(j: number): any {
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
           sinkName: S.String.pipe(T.Label()),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13399,7 +11855,7 @@ function __c44(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Settings.pipe(T.HttpBody())),
+          body: S.optional(__S(190, __c23, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13415,7 +11871,7 @@ function __c44(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Settings.pipe(T.HttpBody())),
+          body: S.optional(__S(190, __c23, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13431,7 +11887,7 @@ function __c44(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Settings.pipe(T.HttpBody())),
+          body: S.optional(__S(190, __c23, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13447,7 +11903,7 @@ function __c44(j: number): any {
           sinkName: S.String.pipe(T.Label()),
           uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
           customWriterIdentity: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(LogSink.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13459,18 +11915,18 @@ function __c44(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(MonitoredResource),
+          resource: S.optional(__S(234, __c29, 2)),
           dryRun: S.optional(S.Boolean),
           partialSuccess: S.optional(S.Boolean),
-          labels: S.optional(StringMap),
-          entries: S.optional(LogEntryList),
+          labels: S.optional(__S(77, __c9, 5)),
+          entries: S.optional(__S(241, __c30, 1)),
           logName: S.optional(S.String),
         }),
       ).annotate({ identifier: "WriteLogEntriesRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(WriteLogEntriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(358, __c44, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13480,4 +11936,9 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "WriteEntriesRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -20,11 +22,6 @@ export interface CheckLocationNameAvailabilityRequest {
   /** The resource type */
   type?: string;
 }
-const CheckLocationNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckLocationNameAvailabilityRequest>;
-
 /** The response spec of checking name availability. */
 export interface NameAvailabilityCheckResult {
   /** This indicates whether the name is available. */
@@ -34,18 +31,8 @@ export interface NameAvailabilityCheckResult {
   /** The related message. */
   message?: string;
 }
-const NameAvailabilityCheckResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<NameAvailabilityCheckResult>;
-
 /** The tags for the application. */
 export type CreateApplicationRequestTagsMap = { [key: string]: string | undefined };
-const CreateApplicationRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateApplicationRequestTagsMap>;
-
 /** The load-based autoscale request parameters */
 export interface AutoscaleCapacity {
   /** The minimum instance count of the cluster */
@@ -53,8 +40,6 @@ export interface AutoscaleCapacity {
   /** The maximum instance count of the cluster */
   maxInstanceCount?: number;
 }
-const AutoscaleCapacity = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AutoscaleCapacity>;
-
 export type AutoscaleScheduleDaysItem =
   | "Monday"
   | "Tuesday"
@@ -63,15 +48,8 @@ export type AutoscaleScheduleDaysItem =
   | "Friday"
   | "Saturday"
   | "Sunday";
-const AutoscaleScheduleDaysItem = S.String;
-
 /** Days of the week for a schedule-based autoscale rule */
 export type AutoscaleScheduleDaysList = Array<AutoscaleScheduleDaysItem | (string & {})>;
-const AutoscaleScheduleDaysList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AutoscaleScheduleDaysList>;
-
 /** Time and capacity request parameters */
 export interface AutoscaleTimeAndCapacity {
   /** 24-hour time in the form xx:xx */
@@ -81,11 +59,6 @@ export interface AutoscaleTimeAndCapacity {
   /** The maximum instance count of the cluster */
   maxInstanceCount?: number;
 }
-const AutoscaleTimeAndCapacity = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AutoscaleTimeAndCapacity>;
-
 /** Parameters for a schedule-based autoscale rule, consisting of an array of days + a time and capacity */
 export interface AutoscaleSchedule {
   /** Days of the week for a schedule-based autoscale rule */
@@ -93,15 +66,8 @@ export interface AutoscaleSchedule {
   /** Time and capacity for a schedule-based autoscale rule */
   timeAndCapacity?: AutoscaleTimeAndCapacity;
 }
-const AutoscaleSchedule = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AutoscaleSchedule>;
-
 /** Array of schedule-based autoscale rules */
 export type AutoscaleRecurrenceScheduleList = Array<AutoscaleSchedule>;
-const AutoscaleRecurrenceScheduleList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AutoscaleRecurrenceScheduleList>;
-
 /** Schedule-based autoscale request parameters */
 export interface AutoscaleRecurrence {
   /** The time zone for the autoscale schedule times */
@@ -109,8 +75,6 @@ export interface AutoscaleRecurrence {
   /** Array of schedule-based autoscale rules */
   schedule?: AutoscaleRecurrenceScheduleList;
 }
-const AutoscaleRecurrence = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AutoscaleRecurrence>;
-
 /** The autoscale request parameters */
 export interface Autoscale {
   /** Parameters for load-based autoscale */
@@ -118,36 +82,23 @@ export interface Autoscale {
   /** Parameters for schedule-based autoscale */
   recurrence?: AutoscaleRecurrence;
 }
-const Autoscale = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Autoscale>;
-
 /** The hardware profile. */
 export interface HardwareProfile {
   /** The size of the VM */
   vmSize?: string;
 }
-const HardwareProfile = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<HardwareProfile>;
-
 /** The SSH public key for the cluster nodes. */
 export interface SshPublicKey {
   /** The certificate for SSH. */
   certificateData?: string;
 }
-const SshPublicKey = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SshPublicKey>;
-
 /** The list of SSH public keys. */
 export type SshProfilePublicKeysList = Array<SshPublicKey>;
-const SshProfilePublicKeysList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<SshProfilePublicKeysList>;
-
 /** The list of SSH public keys. */
 export interface SshProfile {
   /** The list of SSH public keys. */
   publicKeys?: SshProfilePublicKeysList;
 }
-const SshProfile = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SshProfile>;
-
 /** The ssh username, password, and ssh public key. */
 export interface LinuxOperatingSystemProfile {
   /** The username. */
@@ -157,18 +108,11 @@ export interface LinuxOperatingSystemProfile {
   /** The SSH profile. */
   sshProfile?: SshProfile;
 }
-const LinuxOperatingSystemProfile = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<LinuxOperatingSystemProfile>;
-
 /** The Linux operation systems profile. */
 export interface OsProfile {
   /** The Linux OS profile. */
   linuxOperatingSystemProfile?: LinuxOperatingSystemProfile;
 }
-const OsProfile = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<OsProfile>;
-
 /** The virtual network properties. */
 export interface VirtualNetworkProfile {
   /** The ID of the virtual network. */
@@ -176,25 +120,13 @@ export interface VirtualNetworkProfile {
   /** The name of the subnet. */
   subnet?: string;
 }
-const VirtualNetworkProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<VirtualNetworkProfile>;
-
 /** The data disks groups for the role. */
 export interface DataDisksGroupsInput {
   /** The number of disks per node. */
   disksPerNode?: number;
 }
-const DataDisksGroupsInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DataDisksGroupsInput>;
-
 /** The data disks groups for the role. */
 export type RoleInputDataDisksGroupsList = Array<DataDisksGroupsInput>;
-const RoleInputDataDisksGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RoleInputDataDisksGroupsList>;
-
 /** Describes a script action on role on the cluster. */
 export interface RoleInputScriptActionsItem {
   /** The name of the script action. */
@@ -204,18 +136,8 @@ export interface RoleInputScriptActionsItem {
   /** The parameters for the script provided. */
   parameters: string;
 }
-const RoleInputScriptActionsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<RoleInputScriptActionsItem>;
-
 /** The list of script actions on the role. */
 export type RoleInputScriptActionsList = Array<RoleInputScriptActionsItem>;
-const RoleInputScriptActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RoleInputScriptActionsList>;
-
 /** Describes a role on the cluster. */
 export interface RoleInput {
   /** The name of the role. */
@@ -241,32 +163,15 @@ export interface RoleInput {
   /** Indicates whether encrypt the data disks. */
   encryptDataDisks?: boolean;
 }
-const RoleInput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RoleInput>;
-
 /** The list of roles in the cluster. */
 export type ApplicationPropertiesInputComputeProfileRolesList = Array<RoleInput>;
-const ApplicationPropertiesInputComputeProfileRolesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ApplicationPropertiesInputComputeProfileRolesList>;
-
 /** Describes the compute profile. */
 export interface ApplicationPropertiesInputComputeProfile {
   /** The list of roles in the cluster. */
   roles?: ApplicationPropertiesInputComputeProfileRolesList;
 }
-const ApplicationPropertiesInputComputeProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ApplicationPropertiesInputComputeProfile>;
-
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInputInstallScriptActionsItemRolesList = Array<string>;
-const ApplicationPropertiesInputInstallScriptActionsItemRolesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ApplicationPropertiesInputInstallScriptActionsItemRolesList>;
-
 /** Describes a script action on a running cluster. */
 export interface ApplicationPropertiesInputInstallScriptActionsItem {
   /** The name of the script action. */
@@ -278,19 +183,9 @@ export interface ApplicationPropertiesInputInstallScriptActionsItem {
   /** The list of roles where script will be executed. */
   roles: ApplicationPropertiesInputInstallScriptActionsItemRolesList;
 }
-const ApplicationPropertiesInputInstallScriptActionsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ApplicationPropertiesInputInstallScriptActionsItem>;
-
 /** The list of install script actions. */
 export type ApplicationPropertiesInputInstallScriptActionsList =
   Array<ApplicationPropertiesInputInstallScriptActionsItem>;
-const ApplicationPropertiesInputInstallScriptActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ApplicationPropertiesInputInstallScriptActionsList>;
-
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInputUninstallScriptActionsItemRolesList = Array<string>;
 /** Describes a script action on a running cluster. */
@@ -307,14 +202,8 @@ export interface ApplicationPropertiesInputUninstallScriptActionsItem {
 /** The list of uninstall script actions. */
 export type ApplicationPropertiesInputUninstallScriptActionsList =
   Array<ApplicationPropertiesInputUninstallScriptActionsItem>;
-const ApplicationPropertiesInputUninstallScriptActionsList =
-  ApplicationPropertiesInputInstallScriptActionsList as any as S.Schema<ApplicationPropertiesInputUninstallScriptActionsList>;
-
 /** The list of access modes for the application. */
 export type ApplicationGetHttpsEndpointInputAccessModesList = Array<string>;
-const ApplicationGetHttpsEndpointInputAccessModesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationGetHttpsEndpointInputAccessModesList>;
-
 /** Gets the application HTTP endpoints. */
 export interface ApplicationGetHttpsEndpointInput {
   /** The list of access modes for the application. */
@@ -328,18 +217,8 @@ export interface ApplicationGetHttpsEndpointInput {
   /** The value indicates whether to disable GatewayAuth. */
   disableGatewayAuth?: boolean;
 }
-const ApplicationGetHttpsEndpointInput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ApplicationGetHttpsEndpointInput>;
-
 /** The list of application HTTPS endpoints. */
 export type ApplicationPropertiesInputHttpsEndpointsList = Array<ApplicationGetHttpsEndpointInput>;
-const ApplicationPropertiesInputHttpsEndpointsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ApplicationPropertiesInputHttpsEndpointsList>;
-
 /** Gets the application SSH endpoint */
 export interface ApplicationGetEndpoint {
   /** The location of the endpoint. */
@@ -351,18 +230,8 @@ export interface ApplicationGetEndpoint {
   /** The private ip address of the endpoint. */
   privateIPAddress?: string;
 }
-const ApplicationGetEndpoint = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ApplicationGetEndpoint>;
-
 /** The list of application SSH endpoints. */
 export type ApplicationPropertiesInputSshEndpointsList = Array<ApplicationGetEndpoint>;
-const ApplicationPropertiesInputSshEndpointsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ApplicationPropertiesInputSshEndpointsList>;
-
 /** The error message associated with the cluster creation. */
 export interface ApplicationPropertiesInputErrorsItem {
   /** The error code. */
@@ -370,29 +239,15 @@ export interface ApplicationPropertiesInputErrorsItem {
   /** The error message. */
   message?: string;
 }
-const ApplicationPropertiesInputErrorsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ApplicationPropertiesInputErrorsItem>;
-
 /** The list of errors. */
 export type ApplicationPropertiesInputErrorsList = Array<ApplicationPropertiesInputErrorsItem>;
-const ApplicationPropertiesInputErrorsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ApplicationPropertiesInputErrorsList>;
-
 /** The method that private IP address is allocated. */
 export type IPConfigurationPropertiesInputPrivateIPAllocationMethod = "dynamic" | "static";
-const IPConfigurationPropertiesInputPrivateIPAllocationMethod = S.String;
-
 /** The azure resource id. */
 export interface ResourceId {
   /** The azure resource id. */
   id?: string;
 }
-const ResourceId = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ResourceId>;
-
 /** The private link ip configuration properties. */
 export interface IPConfigurationPropertiesInput {
   /** Indicates whether this IP configuration is primary for the corresponding NIC. */
@@ -406,11 +261,6 @@ export interface IPConfigurationPropertiesInput {
   /** The subnet resource id. */
   subnet?: ResourceId;
 }
-const IPConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IPConfigurationPropertiesInput>;
-
 /** The ip configurations for the private link service. */
 export interface IPConfigurationInput {
   /** The name of private link IP configuration. */
@@ -418,16 +268,9 @@ export interface IPConfigurationInput {
   /** The private link ip configuration properties. */
   properties?: IPConfigurationPropertiesInput;
 }
-const IPConfigurationInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<IPConfigurationInput>;
-
 /** The IP configurations for the private link service. */
 export type PrivateLinkConfigurationPropertiesInputIpConfigurationsList =
   Array<IPConfigurationInput>;
-const PrivateLinkConfigurationPropertiesInputIpConfigurationsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PrivateLinkConfigurationPropertiesInputIpConfigurationsList>;
-
 /** The private link configuration properties. */
 export interface PrivateLinkConfigurationPropertiesInput {
   /** The HDInsight private linkable sub-resource name to apply the private link configuration to. For example, 'headnode', 'gateway', 'edgenode'. */
@@ -435,11 +278,6 @@ export interface PrivateLinkConfigurationPropertiesInput {
   /** The IP configurations for the private link service. */
   ipConfigurations: PrivateLinkConfigurationPropertiesInputIpConfigurationsList;
 }
-const PrivateLinkConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PrivateLinkConfigurationPropertiesInput>;
-
 /** The private link configuration. */
 export interface ApplicationPropertiesInputPrivateLinkConfigurationsItem {
   /** The name of private link configuration. */
@@ -447,19 +285,9 @@ export interface ApplicationPropertiesInputPrivateLinkConfigurationsItem {
   /** The private link configuration properties. */
   properties: PrivateLinkConfigurationPropertiesInput;
 }
-const ApplicationPropertiesInputPrivateLinkConfigurationsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
-
 /** The private link configurations. */
 export type ApplicationPropertiesInputPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
-const ApplicationPropertiesInputPrivateLinkConfigurationsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ApplicationPropertiesInputPrivateLinkConfigurationsList>;
-
 /** The HDInsight cluster application GET response. */
 export interface ApplicationPropertiesInput {
   /** Describes the compute profile. */
@@ -479,11 +307,6 @@ export interface ApplicationPropertiesInput {
   /** The private link configurations. */
   privateLinkConfigurations?: ApplicationPropertiesInputPrivateLinkConfigurationsList;
 }
-const ApplicationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ApplicationPropertiesInput>;
-
 export interface CreateApplicationRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -500,16 +323,8 @@ export interface CreateApplicationRequest {
   /** The properties of the application. */
   properties?: ApplicationPropertiesInput;
 }
-const CreateApplicationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateApplicationRequest>;
-
 /** The tags for the application. */
 export type CreateApplicationResponseTagsMap = { [key: string]: string | undefined };
-const CreateApplicationResponseTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<CreateApplicationResponseTagsMap>;
-
 /** The data disks groups for the role. */
 export interface DataDisksGroups {
   /** The number of disks per node. */
@@ -519,21 +334,12 @@ export interface DataDisksGroups {
   /** ReadOnly. The DiskSize in GB. Do not set this value. */
   diskSizeGB?: number;
 }
-const DataDisksGroups = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DataDisksGroups>;
-
 /** The data disks groups for the role. */
 export type RoleDataDisksGroupsList = Array<DataDisksGroups>;
-const RoleDataDisksGroupsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<RoleDataDisksGroupsList>;
-
 /** Describes a script action on role on the cluster. */
 export type RoleScriptActionsItem = RoleInputScriptActionsItem;
 /** The list of script actions on the role. */
 export type RoleScriptActionsList = Array<RoleInputScriptActionsItem>;
-const RoleScriptActionsList = RoleInputScriptActionsList as any as S.Schema<RoleScriptActionsList>;
-
 /** Describes a role on the cluster. */
 export interface Role {
   /** The name of the role. */
@@ -559,30 +365,15 @@ export interface Role {
   /** Indicates whether encrypt the data disks. */
   encryptDataDisks?: boolean;
 }
-const Role = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Role>;
-
 /** The list of roles in the cluster. */
 export type ApplicationPropertiesComputeProfileRolesList = Array<Role>;
-const ApplicationPropertiesComputeProfileRolesList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ApplicationPropertiesComputeProfileRolesList>;
-
 /** Describes the compute profile. */
 export interface ApplicationPropertiesComputeProfile {
   /** The list of roles in the cluster. */
   roles?: ApplicationPropertiesComputeProfileRolesList;
 }
-const ApplicationPropertiesComputeProfile = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ApplicationPropertiesComputeProfile>;
-
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInstallScriptActionsItemRolesList = Array<string>;
-const ApplicationPropertiesInstallScriptActionsItemRolesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationPropertiesInstallScriptActionsItemRolesList>;
-
 /** Describes a script action on a running cluster. */
 export interface ApplicationPropertiesInstallScriptActionsItem {
   /** The name of the script action. */
@@ -596,19 +387,9 @@ export interface ApplicationPropertiesInstallScriptActionsItem {
   /** The application name of the script action, if any. */
   applicationName?: string;
 }
-const ApplicationPropertiesInstallScriptActionsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ApplicationPropertiesInstallScriptActionsItem>;
-
 /** The list of install script actions. */
 export type ApplicationPropertiesInstallScriptActionsList =
   Array<ApplicationPropertiesInstallScriptActionsItem>;
-const ApplicationPropertiesInstallScriptActionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ApplicationPropertiesInstallScriptActionsList>;
-
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesUninstallScriptActionsItemRolesList = Array<string>;
 /** Describes a script action on a running cluster. */
@@ -627,14 +408,8 @@ export interface ApplicationPropertiesUninstallScriptActionsItem {
 /** The list of uninstall script actions. */
 export type ApplicationPropertiesUninstallScriptActionsList =
   Array<ApplicationPropertiesUninstallScriptActionsItem>;
-const ApplicationPropertiesUninstallScriptActionsList =
-  ApplicationPropertiesInstallScriptActionsList as any as S.Schema<ApplicationPropertiesUninstallScriptActionsList>;
-
 /** The list of access modes for the application. */
 export type ApplicationGetHttpsEndpointAccessModesList = Array<string>;
-const ApplicationGetHttpsEndpointAccessModesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationGetHttpsEndpointAccessModesList>;
-
 /** Gets the application HTTP endpoints. */
 export interface ApplicationGetHttpsEndpoint {
   /** The list of access modes for the application. */
@@ -652,30 +427,14 @@ export interface ApplicationGetHttpsEndpoint {
   /** The value indicates whether to disable GatewayAuth. */
   disableGatewayAuth?: boolean;
 }
-const ApplicationGetHttpsEndpoint = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ApplicationGetHttpsEndpoint>;
-
 /** The list of application HTTPS endpoints. */
 export type ApplicationPropertiesHttpsEndpointsList = Array<ApplicationGetHttpsEndpoint>;
-const ApplicationPropertiesHttpsEndpointsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ApplicationPropertiesHttpsEndpointsList>;
-
 /** The list of application SSH endpoints. */
 export type ApplicationPropertiesSshEndpointsList = Array<ApplicationGetEndpoint>;
-const ApplicationPropertiesSshEndpointsList =
-  ApplicationPropertiesInputSshEndpointsList as any as S.Schema<ApplicationPropertiesSshEndpointsList>;
-
 /** The error message associated with the cluster creation. */
 export type ApplicationPropertiesErrorsItem = ApplicationPropertiesInputErrorsItem;
 /** The list of errors. */
 export type ApplicationPropertiesErrorsList = Array<ApplicationPropertiesInputErrorsItem>;
-const ApplicationPropertiesErrorsList =
-  ApplicationPropertiesInputErrorsList as any as S.Schema<ApplicationPropertiesErrorsList>;
-
 /** The private link configuration provisioning state, which only appears in the response. */
 export type PrivateLinkConfigurationPropertiesProvisioningState =
   | "InProgress"
@@ -683,8 +442,6 @@ export type PrivateLinkConfigurationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-const PrivateLinkConfigurationPropertiesProvisioningState = S.String;
-
 /** The private link configuration provisioning state, which only appears in the response. */
 export type IPConfigurationPropertiesProvisioningState =
   | "InProgress"
@@ -692,12 +449,8 @@ export type IPConfigurationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-const IPConfigurationPropertiesProvisioningState = S.String;
-
 /** The method that private IP address is allocated. */
 export type IPConfigurationPropertiesPrivateIPAllocationMethod = "dynamic" | "static";
-const IPConfigurationPropertiesPrivateIPAllocationMethod = S.String;
-
 /** The private link ip configuration properties. */
 export interface IPConfigurationProperties {
   /** The private link configuration provisioning state, which only appears in the response. */
@@ -711,11 +464,6 @@ export interface IPConfigurationProperties {
   /** The subnet resource id. */
   subnet?: ResourceId;
 }
-const IPConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<IPConfigurationProperties>;
-
 /** The ip configurations for the private link service. */
 export interface IPConfiguration {
   /** The private link IP configuration id. */
@@ -727,15 +475,8 @@ export interface IPConfiguration {
   /** The private link ip configuration properties. */
   properties?: IPConfigurationProperties;
 }
-const IPConfiguration = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<IPConfiguration>;
-
 /** The IP configurations for the private link service. */
 export type PrivateLinkConfigurationPropertiesIpConfigurationsList = Array<IPConfiguration>;
-const PrivateLinkConfigurationPropertiesIpConfigurationsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<PrivateLinkConfigurationPropertiesIpConfigurationsList>;
-
 /** The private link configuration properties. */
 export interface PrivateLinkConfigurationProperties {
   /** The HDInsight private linkable sub-resource name to apply the private link configuration to. For example, 'headnode', 'gateway', 'edgenode'. */
@@ -745,11 +486,6 @@ export interface PrivateLinkConfigurationProperties {
   /** The IP configurations for the private link service. */
   ipConfigurations: PrivateLinkConfigurationPropertiesIpConfigurationsList;
 }
-const PrivateLinkConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<PrivateLinkConfigurationProperties>;
-
 /** The private link configuration. */
 export interface ApplicationPropertiesPrivateLinkConfigurationsItem {
   /** The private link configuration id. */
@@ -761,19 +497,9 @@ export interface ApplicationPropertiesPrivateLinkConfigurationsItem {
   /** The private link configuration properties. */
   properties: PrivateLinkConfigurationProperties;
 }
-const ApplicationPropertiesPrivateLinkConfigurationsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ApplicationPropertiesPrivateLinkConfigurationsItem>;
-
 /** The private link configurations. */
 export type ApplicationPropertiesPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesPrivateLinkConfigurationsItem>;
-const ApplicationPropertiesPrivateLinkConfigurationsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ApplicationPropertiesPrivateLinkConfigurationsList>;
-
 /** The HDInsight cluster application GET response. */
 export interface ApplicationProperties {
   /** Describes the compute profile. */
@@ -801,27 +527,18 @@ export interface ApplicationProperties {
   /** The private link configurations. */
   privateLinkConfigurations?: ApplicationPropertiesPrivateLinkConfigurationsList;
 }
-const ApplicationProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ApplicationProperties>;
-
 /** The type of identity that created the resource. */
 export type CreateApplicationResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const CreateApplicationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type CreateApplicationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const CreateApplicationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreateApplicationResponseSystemData {
   /** The identity that created the resource. */
@@ -837,11 +554,6 @@ export interface CreateApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const CreateApplicationResponseSystemData = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateApplicationResponseSystemData>;
-
 export interface CreateApplicationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -858,34 +570,16 @@ export interface CreateApplicationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreateApplicationResponseSystemData;
 }
-const CreateApplicationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateApplicationResponse>;
-
 /** The resource tags. */
 export type CreateClusterRequestTagsMap = { [key: string]: string | undefined };
-const CreateClusterRequestTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<CreateClusterRequestTagsMap>;
-
 /** The availability zones. */
 export type CreateClusterRequestZonesList = Array<string>;
-const CreateClusterRequestZonesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<CreateClusterRequestZonesList>;
-
 /** The type of operating system. */
 export type ClusterCreatePropertiesInputOsType = "Windows" | "Linux";
-const ClusterCreatePropertiesInputOsType = S.String;
-
 /** The cluster tier. */
 export type ClusterCreatePropertiesInputTier = "Standard" | "Premium";
-const ClusterCreatePropertiesInputTier = S.String;
-
 /** The versions of different services in the cluster. */
 export type ClusterDefinitionComponentVersionMap = { [key: string]: string | undefined };
-const ClusterDefinitionComponentVersionMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<ClusterDefinitionComponentVersionMap>;
-
 /** The cluster definition. */
 export interface ClusterDefinition {
   /** The link to the blueprint. */
@@ -897,8 +591,6 @@ export interface ClusterDefinition {
   /** The cluster configurations. */
   configurations?: unknown;
 }
-const ClusterDefinition = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ClusterDefinition>;
-
 /** The information of AAD security group. */
 export interface ClientGroupInfo {
   /** The AAD security group name. */
@@ -906,13 +598,8 @@ export interface ClientGroupInfo {
   /** The AAD security group id. */
   groupId?: string;
 }
-const ClientGroupInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ClientGroupInfo>;
-
 /** The configurations that need to be overriden. */
 export type KafkaRestPropertiesConfigurationOverrideMap = { [key: string]: string | undefined };
-const KafkaRestPropertiesConfigurationOverrideMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<KafkaRestPropertiesConfigurationOverrideMap>;
-
 /** The kafka rest proxy configuration which contains AAD security group information. */
 export interface KafkaRestProperties {
   /** The information of AAD security group. */
@@ -920,22 +607,12 @@ export interface KafkaRestProperties {
   /** The configurations that need to be overriden. */
   configurationOverride?: KafkaRestPropertiesConfigurationOverrideMap;
 }
-const KafkaRestProperties = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<KafkaRestProperties>;
-
 /** The directory type. */
 export type SecurityProfileDirectoryType = "ActiveDirectory";
-const SecurityProfileDirectoryType = S.String;
-
 /** The LDAPS protocol URLs to communicate with the Active Directory. */
 export type SecurityProfileLdapsUrlsList = Array<string>;
-const SecurityProfileLdapsUrlsList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<SecurityProfileLdapsUrlsList>;
-
 /** Optional. The Distinguished Names for cluster user groups */
 export type SecurityProfileClusterUsersGroupDNsList = Array<string>;
-const SecurityProfileClusterUsersGroupDNsList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<SecurityProfileClusterUsersGroupDNsList>;
-
 /** The security profile which contains Ssh public key for the HDInsight cluster. */
 export interface SecurityProfile {
   /** The directory type. */
@@ -957,20 +634,13 @@ export interface SecurityProfile {
   /** User assigned identity that has permissions to read and create cluster-related artifacts in the user's AADDS. */
   msiResourceId?: string;
 }
-const SecurityProfile = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<SecurityProfile>;
-
 /** The list of roles in the cluster. */
 export type ComputeProfileInputRolesList = Array<RoleInput>;
-const ComputeProfileInputRolesList =
-  ApplicationPropertiesInputComputeProfileRolesList as any as S.Schema<ComputeProfileInputRolesList>;
-
 /** Describes the compute profile. */
 export interface ComputeProfileInput {
   /** The list of roles in the cluster. */
   roles?: ComputeProfileInputRolesList;
 }
-const ComputeProfileInput = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ComputeProfileInput>;
-
 /** The storage Account. */
 export interface StorageAccount {
   /** The name of the storage account. */
@@ -992,26 +662,15 @@ export interface StorageAccount {
   /** The file share name. */
   fileshare?: string;
 }
-const StorageAccount = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<StorageAccount>;
-
 /** The list of storage accounts in the cluster. */
 export type StorageProfileStorageaccountsList = Array<StorageAccount>;
-const StorageProfileStorageaccountsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<StorageProfileStorageaccountsList>;
-
 /** The storage profile. */
 export interface StorageProfile {
   /** The list of storage accounts in the cluster. */
   storageaccounts?: StorageProfileStorageaccountsList;
 }
-const StorageProfile = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<StorageProfile>;
-
 /** Algorithm identifier for encryption, default RSA-OAEP. */
 export type DiskEncryptionPropertiesEncryptionAlgorithm = "RSA-OAEP" | "RSA-OAEP-256" | "RSA1_5";
-const DiskEncryptionPropertiesEncryptionAlgorithm = S.String;
-
 /** The disk encryption properties */
 export interface DiskEncryptionProperties {
   /** Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net */
@@ -1027,29 +686,15 @@ export interface DiskEncryptionProperties {
   /** Indicates whether or not resource disk encryption is enabled. */
   encryptionAtHost?: boolean;
 }
-const DiskEncryptionProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DiskEncryptionProperties>;
-
 /** The encryption-in-transit properties. */
 export interface EncryptionInTransitProperties {
   /** Indicates whether or not inter cluster node communication is encrypted in transit. */
   isEncryptionInTransitEnabled?: boolean;
 }
-const EncryptionInTransitProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<EncryptionInTransitProperties>;
-
 /** The direction for the resource provider connection. */
 export type NetworkPropertiesResourceProviderConnection = "Inbound" | "Outbound";
-const NetworkPropertiesResourceProviderConnection = S.String;
-
 /** Indicates whether or not private link is enabled. */
 export type NetworkPropertiesPrivateLink = "Disabled" | "Enabled";
-const NetworkPropertiesPrivateLink = S.String;
-
 /** The network properties. */
 export interface NetworkProperties {
   /** The direction for the resource provider connection. */
@@ -1057,8 +702,6 @@ export interface NetworkProperties {
   /** Indicates whether or not private link is enabled. */
   privateLink?: NetworkPropertiesPrivateLink | (string & {});
 }
-const NetworkProperties = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<NetworkProperties>;
-
 /** The compute isolation properties. */
 export interface ComputeIsolationProperties {
   /** The flag indicates whether enable compute isolation or not. */
@@ -1066,19 +709,11 @@ export interface ComputeIsolationProperties {
   /** The host sku. */
   hostSku?: string;
 }
-const ComputeIsolationProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ComputeIsolationProperties>;
-
 /** The private link configuration. */
 export type PrivateLinkConfigurationInput = ApplicationPropertiesInputPrivateLinkConfigurationsItem;
 /** The private link configurations. */
 export type ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
-const ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
-  ApplicationPropertiesInputPrivateLinkConfigurationsList as any as S.Schema<ClusterCreatePropertiesInputPrivateLinkConfigurationsList>;
-
 /** The cluster create parameters. */
 export interface ClusterCreatePropertiesInput {
   /** The version of the cluster. */
@@ -1110,38 +745,21 @@ export interface ClusterCreatePropertiesInput {
   /** The private link configurations. */
   privateLinkConfigurations?: ClusterCreatePropertiesInputPrivateLinkConfigurationsList;
 }
-const ClusterCreatePropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ClusterCreatePropertiesInput>;
-
 /** The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. */
 export type ClusterIdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const ClusterIdentityInputType = S.String;
-
 /** The User Assigned Identity */
 export interface UserAssignedIdentityInput {
   /** The tenant id of user assigned identity. */
   tenantId?: string;
 }
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type ClusterIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const ClusterIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ClusterIdentityInputUserAssignedIdentitiesMap>;
-
 /** Identity for the cluster. */
 export interface ClusterIdentityInput {
   /** The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. */
@@ -1149,8 +767,6 @@ export interface ClusterIdentityInput {
   /** The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ClusterIdentityInputUserAssignedIdentitiesMap;
 }
-const ClusterIdentityInput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ClusterIdentityInput>;
-
 export interface CreateClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1169,38 +785,21 @@ export interface CreateClusterRequest {
   /** The identity of the cluster, if configured. */
   identity?: ClusterIdentityInput;
 }
-const CreateClusterRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<CreateClusterRequest>;
-
 /** Resource tags. */
 export type CreateClusterResponseTagsMap = { [key: string]: string | undefined };
-const CreateClusterResponseTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<CreateClusterResponseTagsMap>;
-
 /** The availability zones. */
 export type CreateClusterResponseZonesList = Array<string>;
-const CreateClusterResponseZonesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<CreateClusterResponseZonesList>;
-
 /** The type of operating system. */
 export type ClusterGetPropertiesOsType = "Windows" | "Linux";
-const ClusterGetPropertiesOsType = S.String;
-
 /** The cluster tier. */
 export type ClusterGetPropertiesTier = "Standard" | "Premium";
-const ClusterGetPropertiesTier = S.String;
-
 /** The list of roles in the cluster. */
 export type ComputeProfileRolesList = Array<Role>;
-const ComputeProfileRolesList =
-  ApplicationPropertiesComputeProfileRolesList as any as S.Schema<ComputeProfileRolesList>;
-
 /** Describes the compute profile. */
 export interface ComputeProfile {
   /** The list of roles in the cluster. */
   roles?: ComputeProfileRolesList;
 }
-const ComputeProfile = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ComputeProfile>;
-
 /** The provisioning state, which only appears in the response. */
 export type ClusterGetPropertiesProvisioningState =
   | "InProgress"
@@ -1208,22 +807,15 @@ export type ClusterGetPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-const ClusterGetPropertiesProvisioningState = S.String;
-
 /** The quota properties for the cluster. */
 export interface QuotaInfo {
   /** The cores used by the cluster. */
   coresUsed?: number;
 }
-const QuotaInfo = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<QuotaInfo>;
-
 /** The error message associated with the cluster creation. */
 export type Errors = ApplicationPropertiesInputErrorsItem;
 /** The list of errors. */
 export type ClusterGetPropertiesErrorsList = Array<ApplicationPropertiesInputErrorsItem>;
-const ClusterGetPropertiesErrorsList =
-  ApplicationPropertiesInputErrorsList as any as S.Schema<ClusterGetPropertiesErrorsList>;
-
 /** The connectivity properties */
 export interface ConnectivityEndpoint {
   /** The name of the endpoint. */
@@ -1237,15 +829,8 @@ export interface ConnectivityEndpoint {
   /** The private ip address of the endpoint. */
   privateIPAddress?: string;
 }
-const ConnectivityEndpoint = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ConnectivityEndpoint>;
-
 /** The list of connectivity endpoints. */
 export type ClusterGetPropertiesConnectivityEndpointsList = Array<ConnectivityEndpoint>;
-const ClusterGetPropertiesConnectivityEndpointsList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ClusterGetPropertiesConnectivityEndpointsList>;
-
 /** The configuration that services will be excluded when creating cluster. */
 export interface ExcludedServicesConfig {
   /** The config id of excluded services. */
@@ -1253,34 +838,22 @@ export interface ExcludedServicesConfig {
   /** The list of excluded services. */
   excludedServicesList?: string;
 }
-const ExcludedServicesConfig = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ExcludedServicesConfig>;
-
 /** The private link configuration. */
 export type PrivateLinkConfiguration = ApplicationPropertiesPrivateLinkConfigurationsItem;
 /** The private link configurations. */
 export type ClusterGetPropertiesPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesPrivateLinkConfigurationsItem>;
-const ClusterGetPropertiesPrivateLinkConfigurationsList =
-  ApplicationPropertiesPrivateLinkConfigurationsList as any as S.Schema<ClusterGetPropertiesPrivateLinkConfigurationsList>;
-
 /** The private endpoint. */
 export interface PrivateEndpoint {
   /** The private endpoint id. */
   id?: string;
 }
-const PrivateEndpoint = ResourceId as any as S.Schema<PrivateEndpoint>;
-
 /** The concrete private link service connection. */
 export type PrivateLinkServiceConnectionStateStatus =
   | "Approved"
   | "Rejected"
   | "Pending"
   | "Removed";
-const PrivateLinkServiceConnectionStateStatus = S.String;
-
 /** The private link service connection state. */
 export interface PrivateLinkServiceConnectionState {
   /** The concrete private link service connection. */
@@ -1290,11 +863,6 @@ export interface PrivateLinkServiceConnectionState {
   /** Whether there is further actions. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** The provisioning state, which only appears in the response. */
 export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "InProgress"
@@ -1303,8 +871,6 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
-
 /** The private endpoint connection properties. */
 export interface PrivateEndpointConnectionProperties {
   /** The private endpoint of the private endpoint connection */
@@ -1316,27 +882,18 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state, which only appears in the response. */
   provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** The type of identity that created the resource. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData {
   /** The identity that created the resource. */
@@ -1352,11 +909,6 @@ export interface ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData>;
-
 /** The private endpoint connection. */
 export interface ClusterGetPropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1370,19 +922,9 @@ export interface ClusterGetPropertiesPrivateEndpointConnectionsItem {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData;
 }
-const ClusterGetPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ClusterGetPropertiesPrivateEndpointConnectionsItem>;
-
 /** The list of private endpoint connections. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsList =
   Array<ClusterGetPropertiesPrivateEndpointConnectionsItem>;
-const ClusterGetPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ClusterGetPropertiesPrivateEndpointConnectionsList>;
-
 /** The properties of cluster. */
 export interface ClusterGetProperties {
   /** The version of the cluster. */
@@ -1434,19 +976,12 @@ export interface ClusterGetProperties {
   /** The list of private endpoint connections. */
   privateEndpointConnections?: ClusterGetPropertiesPrivateEndpointConnectionsList;
 }
-const ClusterGetProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ClusterGetProperties>;
-
 /** The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. */
 export type ClusterIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const ClusterIdentityType = S.String;
-
 /** The User Assigned Identity */
 export interface UserAssignedIdentity {
   /** The principal id of user assigned identity. */
@@ -1456,20 +991,10 @@ export interface UserAssignedIdentity {
   /** The tenant id of user assigned identity. */
   tenantId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<UserAssignedIdentity>;
-
 /** The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type ClusterIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const ClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ClusterIdentityUserAssignedIdentitiesMap>;
-
 /** Identity for the cluster. */
 export interface ClusterIdentity {
   /** The principal id of cluster identity. This property will only be provided for a system assigned identity. */
@@ -1481,8 +1006,6 @@ export interface ClusterIdentity {
   /** The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ClusterIdentityUserAssignedIdentitiesMap;
 }
-const ClusterIdentity = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ClusterIdentity>;
-
 /** The type of identity that created the resource. */
 export type CreateClusterResponseSystemDataCreatedByType =
   | "User"
@@ -1510,9 +1033,6 @@ export interface CreateClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const CreateClusterResponseSystemData =
-  CreateApplicationResponseSystemData as any as S.Schema<CreateClusterResponseSystemData>;
-
 export interface CreateClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1535,11 +1055,6 @@ export interface CreateClusterResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreateClusterResponseSystemData;
 }
-const CreateClusterResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CreateClusterResponse>;
-
 export interface CreateExtensionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1554,17 +1069,7 @@ export interface CreateExtensionRequest {
   /** The certificate for the cluster monitoring extensions. */
   primaryKey?: string;
 }
-const CreateExtensionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateExtensionRequest>;
-
 export interface CreateExtensionResponse {}
-const CreateExtensionResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateExtensionResponse>;
-
 export interface DeleteApplicationRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1575,15 +1080,7 @@ export interface DeleteApplicationRequest {
   /** The constant value for the application name. */
   applicationName: string;
 }
-const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteApplicationRequest>;
-
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse =
-  CreateExtensionResponse as any as S.Schema<DeleteApplicationResponse>;
-
 export interface DeleteClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1592,14 +1089,7 @@ export interface DeleteClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const DeleteClusterRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteClusterRequest>;
-
 export interface DeleteClusterResponse {}
-const DeleteClusterResponse = CreateExtensionResponse as any as S.Schema<DeleteClusterResponse>;
-
 export interface DeleteExtensionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1610,14 +1100,7 @@ export interface DeleteExtensionRequest {
   /** The name of the cluster extension. */
   extensionName: string;
 }
-const DeleteExtensionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DeleteExtensionRequest>;
-
 export interface DeleteExtensionResponse {}
-const DeleteExtensionResponse = CreateExtensionResponse as any as S.Schema<DeleteExtensionResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1628,17 +1111,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteScriptActionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1649,15 +1122,7 @@ export interface DeleteScriptActionRequest {
   /** The name of the script. */
   scriptName: string;
 }
-const DeleteScriptActionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DeleteScriptActionRequest>;
-
 export interface DeleteScriptActionResponse {}
-const DeleteScriptActionResponse =
-  CreateExtensionResponse as any as S.Schema<DeleteScriptActionResponse>;
-
 export interface DisableExtensionAzureMonitorRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1666,15 +1131,7 @@ export interface DisableExtensionAzureMonitorRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const DisableExtensionAzureMonitorRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DisableExtensionAzureMonitorRequest>;
-
 export interface DisableExtensionAzureMonitorResponse {}
-const DisableExtensionAzureMonitorResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<DisableExtensionAzureMonitorResponse>;
-
 export interface DisableExtensionMonitoringRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1683,39 +1140,18 @@ export interface DisableExtensionMonitoringRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const DisableExtensionMonitoringRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DisableExtensionMonitoringRequest>;
-
 export interface DisableExtensionMonitoringResponse {}
-const DisableExtensionMonitoringResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<DisableExtensionMonitoringResponse>;
-
 /** The global configurations of selected configurations. */
 export type AzureMonitorSelectedConfigurationsGlobalConfigurationsMap = {
   [key: string]: string | undefined;
 };
-const AzureMonitorSelectedConfigurationsGlobalConfigurationsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<AzureMonitorSelectedConfigurationsGlobalConfigurationsMap>;
-
 /** The table configuration for the Log Analytics integration. */
 export interface AzureMonitorTableConfiguration {
   /** The name. */
   name?: string;
 }
-const AzureMonitorTableConfiguration = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<AzureMonitorTableConfiguration>;
-
 /** The table list. */
 export type AzureMonitorSelectedConfigurationsTableListList = Array<AzureMonitorTableConfiguration>;
-const AzureMonitorSelectedConfigurationsTableListList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<AzureMonitorSelectedConfigurationsTableListList>;
-
 /** The selected configurations for azure monitor. */
 export interface AzureMonitorSelectedConfigurations {
   /** The configuration version. */
@@ -1725,11 +1161,6 @@ export interface AzureMonitorSelectedConfigurations {
   /** The table list. */
   tableList?: AzureMonitorSelectedConfigurationsTableListList;
 }
-const AzureMonitorSelectedConfigurations = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<AzureMonitorSelectedConfigurations>;
-
 export interface EnableExtensionAzureMonitorRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1744,15 +1175,7 @@ export interface EnableExtensionAzureMonitorRequest {
   /** The selected configurations. */
   selectedConfigurations?: AzureMonitorSelectedConfigurations;
 }
-const EnableExtensionAzureMonitorRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<EnableExtensionAzureMonitorRequest>;
-
 export interface EnableExtensionAzureMonitorResponse {}
-const EnableExtensionAzureMonitorResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<EnableExtensionAzureMonitorResponse>;
-
 export interface EnableExtensionMonitoringRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1765,20 +1188,9 @@ export interface EnableExtensionMonitoringRequest {
   /** The cluster monitor workspace key. */
   primaryKey?: string;
 }
-const EnableExtensionMonitoringRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<EnableExtensionMonitoringRequest>;
-
 export interface EnableExtensionMonitoringResponse {}
-const EnableExtensionMonitoringResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<EnableExtensionMonitoringResponse>;
-
 /** The list of roles where script will be executed. */
 export type RuntimeScriptActionInputRolesList = Array<string>;
-const RuntimeScriptActionInputRolesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<RuntimeScriptActionInputRolesList>;
-
 /** Describes a script action on a running cluster. */
 export interface RuntimeScriptActionInput {
   /** The name of the script action. */
@@ -1790,18 +1202,8 @@ export interface RuntimeScriptActionInput {
   /** The list of roles where script will be executed. */
   roles: RuntimeScriptActionInputRolesList;
 }
-const RuntimeScriptActionInput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<RuntimeScriptActionInput>;
-
 /** The list of run time script actions. */
 export type ExecuteClusterScriptActionsRequestScriptActionsList = Array<RuntimeScriptActionInput>;
-const ExecuteClusterScriptActionsRequestScriptActionsList = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ExecuteClusterScriptActionsRequestScriptActionsList>;
-
 export interface ExecuteClusterScriptActionsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1814,15 +1216,7 @@ export interface ExecuteClusterScriptActionsRequest {
   /** Gets or sets if the scripts needs to be persisted. */
   persistOnSuccess: boolean;
 }
-const ExecuteClusterScriptActionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ExecuteClusterScriptActionsRequest>;
-
 export interface ExecuteClusterScriptActionsResponse {}
-const ExecuteClusterScriptActionsResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<ExecuteClusterScriptActionsResponse>;
-
 export interface GetApplicationRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1833,16 +1227,8 @@ export interface GetApplicationRequest {
   /** The constant value for the application name. */
   applicationName: string;
 }
-const GetApplicationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetApplicationRequest>;
-
 /** The tags for the application. */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
-const GetApplicationResponseTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<GetApplicationResponseTagsMap>;
-
 /** The type of identity that created the resource. */
 export type GetApplicationResponseSystemDataCreatedByType =
   | "User"
@@ -1870,9 +1256,6 @@ export interface GetApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetApplicationResponseSystemData =
-  CreateApplicationResponseSystemData as any as S.Schema<GetApplicationResponseSystemData>;
-
 export interface GetApplicationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1889,11 +1272,6 @@ export interface GetApplicationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetApplicationResponseSystemData;
 }
-const GetApplicationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetApplicationResponse>;
-
 export interface GetApplicationAzureAsyncOperationStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1906,29 +1284,17 @@ export interface GetApplicationAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-const GetApplicationAzureAsyncOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetApplicationAzureAsyncOperationStatusRequest>;
-
 /** The async operation state. */
 export type GetApplicationAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed";
-const GetApplicationAzureAsyncOperationStatusResponseStatus = S.String;
-
 export interface GetApplicationAzureAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: GetApplicationAzureAsyncOperationStatusResponseStatus;
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-const GetApplicationAzureAsyncOperationStatusResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetApplicationAzureAsyncOperationStatusResponse>;
-
 export interface GetClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1937,18 +1303,10 @@ export interface GetClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const GetClusterRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<GetClusterRequest>;
-
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-const GetClusterResponseTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
-
 /** The availability zones. */
 export type GetClusterResponseZonesList = Array<string>;
-const GetClusterResponseZonesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetClusterResponseZonesList>;
-
 /** The type of identity that created the resource. */
 export type GetClusterResponseSystemDataCreatedByType =
   | "User"
@@ -1976,9 +1334,6 @@ export interface GetClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetClusterResponseSystemData =
-  CreateApplicationResponseSystemData as any as S.Schema<GetClusterResponseSystemData>;
-
 export interface GetClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2001,8 +1356,6 @@ export interface GetClusterResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetClusterResponseSystemData;
 }
-const GetClusterResponse = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetClusterResponse>;
-
 export interface GetClusterAzureAsyncOperationStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2013,15 +1366,8 @@ export interface GetClusterAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-const GetClusterAzureAsyncOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetClusterAzureAsyncOperationStatusRequest>;
-
 /** The async operation state. */
 export type AsyncOperationResultStatus = "InProgress" | "Succeeded" | "Failed";
-const AsyncOperationResultStatus = S.String;
-
 /** The azure async operation response. */
 export interface AsyncOperationResult {
   /** The async operation state. */
@@ -2029,11 +1375,6 @@ export interface AsyncOperationResult {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-const AsyncOperationResult = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<AsyncOperationResult>;
-
 export interface GetClusterGatewaySettingsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2042,11 +1383,6 @@ export interface GetClusterGatewaySettingsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const GetClusterGatewaySettingsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetClusterGatewaySettingsRequest>;
-
 /** Gateway settings. */
 export interface GatewaySettings {
   /** Indicates whether or not the gateway settings based authorization is enabled. */
@@ -2056,8 +1392,6 @@ export interface GatewaySettings {
   /** The gateway settings user password. */
   restAuthCredential_password?: string | Redacted.Redacted<string>;
 }
-const GatewaySettings = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<GatewaySettings>;
-
 export interface GetConfigurationRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2068,22 +1402,9 @@ export interface GetConfigurationRequest {
   /** The name of the cluster configuration. */
   configurationName: string;
 }
-const GetConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetConfigurationRequest>;
-
 /** The configuration object for the specified configuration for the specified cluster. */
 export type ClusterConfiguration = { [key: string]: string | undefined };
-const ClusterConfiguration =
-  CreateApplicationRequestTagsMap as any as S.Schema<ClusterConfiguration>;
-
 export type GetConfigurationResponse = ClusterConfiguration;
-const GetConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetConfigurationResponse>;
-
 export interface GetExtensionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2094,8 +1415,6 @@ export interface GetExtensionRequest {
   /** The name of the cluster extension. */
   extensionName: string;
 }
-const GetExtensionRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<GetExtensionRequest>;
-
 /** The cluster monitoring status response. */
 export interface ClusterMonitoringResponse {
   /** The status of the monitor on the HDInsight cluster. */
@@ -2103,11 +1422,6 @@ export interface ClusterMonitoringResponse {
   /** The workspace ID of the monitor on the HDInsight cluster. */
   workspaceId?: string;
 }
-const ClusterMonitoringResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ClusterMonitoringResponse>;
-
 export interface GetExtensionAzureAsyncOperationStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2120,11 +1434,6 @@ export interface GetExtensionAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-const GetExtensionAzureAsyncOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetExtensionAzureAsyncOperationStatusRequest>;
-
 /** The async operation state. */
 export type GetExtensionAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
@@ -2136,9 +1445,6 @@ export interface GetExtensionAzureAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-const GetExtensionAzureAsyncOperationStatusResponse =
-  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetExtensionAzureAsyncOperationStatusResponse>;
-
 export interface GetExtensionAzureMonitorStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2147,11 +1453,6 @@ export interface GetExtensionAzureMonitorStatusRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const GetExtensionAzureMonitorStatusRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetExtensionAzureMonitorStatusRequest>;
-
 /** The azure monitor status response. */
 export interface AzureMonitorResponse {
   /** The status of the monitor on the HDInsight cluster. */
@@ -2161,11 +1462,6 @@ export interface AzureMonitorResponse {
   /** The selected configurations. */
   selectedConfigurations?: AzureMonitorSelectedConfigurations;
 }
-const AzureMonitorResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<AzureMonitorResponse>;
-
 export interface GetExtensionMonitoringStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2174,11 +1470,6 @@ export interface GetExtensionMonitoringStatusRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const GetExtensionMonitoringStatusRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetExtensionMonitoringStatusRequest>;
-
 export interface GetLocationAzureAsyncOperationStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2187,11 +1478,6 @@ export interface GetLocationAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-const GetLocationAzureAsyncOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetLocationAzureAsyncOperationStatusRequest>;
-
 /** The async operation state. */
 export type GetLocationAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
@@ -2203,25 +1489,14 @@ export interface GetLocationAzureAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-const GetLocationAzureAsyncOperationStatusResponse =
-  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetLocationAzureAsyncOperationStatusResponse>;
-
 export interface GetLocationCapabilitiesRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The Azure location (region) for which to make the request. */
   location: string;
 }
-const GetLocationCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetLocationCapabilitiesRequest>;
-
 /** The component version property. */
 export type VersionSpecComponentVersionsMap = { [key: string]: string | undefined };
-const VersionSpecComponentVersionsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<VersionSpecComponentVersionsMap>;
-
 /** The version properties. */
 export interface VersionSpec {
   /** The friendly name */
@@ -2233,53 +1508,26 @@ export interface VersionSpec {
   /** The component version property. */
   componentVersions?: VersionSpecComponentVersionsMap;
 }
-const VersionSpec = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<VersionSpec>;
-
 /** The list of version capabilities. */
 export type VersionsCapabilityAvailableList = Array<VersionSpec>;
-const VersionsCapabilityAvailableList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<VersionsCapabilityAvailableList>;
-
 /** The version capability. */
 export interface VersionsCapability {
   /** The list of version capabilities. */
   available?: VersionsCapabilityAvailableList;
 }
-const VersionsCapability = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<VersionsCapability>;
-
 /** The version capability. */
 export type CapabilitiesResultVersionsMap = { [key: string]: VersionsCapability | undefined };
-const CapabilitiesResultVersionsMap = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CapabilitiesResultVersionsMap>;
-
 /** The list of region capabilities. */
 export type RegionsCapabilityAvailableList = Array<string>;
-const RegionsCapabilityAvailableList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<RegionsCapabilityAvailableList>;
-
 /** The regions capability. */
 export interface RegionsCapability {
   /** The list of region capabilities. */
   available?: RegionsCapabilityAvailableList;
 }
-const RegionsCapability = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<RegionsCapability>;
-
 /** The virtual machine size compatibility features. */
 export type CapabilitiesResultRegionsMap = { [key: string]: RegionsCapability | undefined };
-const CapabilitiesResultRegionsMap = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<CapabilitiesResultRegionsMap>;
-
 /** The capability features. */
 export type CapabilitiesResultFeaturesList = Array<string>;
-const CapabilitiesResultFeaturesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<CapabilitiesResultFeaturesList>;
-
 /** The regional quota capacity. */
 export interface RegionalQuotaCapability {
   /** The region name. */
@@ -2289,18 +1537,8 @@ export interface RegionalQuotaCapability {
   /** The number of cores available in the region. */
   coresAvailable?: number;
 }
-const RegionalQuotaCapability = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<RegionalQuotaCapability>;
-
 /** The list of region quota capabilities. */
 export type QuotaCapabilityRegionalQuotasList = Array<RegionalQuotaCapability>;
-const QuotaCapabilityRegionalQuotasList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<QuotaCapabilityRegionalQuotasList>;
-
 /** The regional quota capability. */
 export interface QuotaCapability {
   /** The number of cores used in the subscription. */
@@ -2310,8 +1548,6 @@ export interface QuotaCapability {
   /** The list of region quota capabilities. */
   regionalQuotas?: QuotaCapabilityRegionalQuotasList;
 }
-const QuotaCapability = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<QuotaCapability>;
-
 /** The Get Capabilities operation response. */
 export interface CapabilitiesResult {
   /** The version capability. */
@@ -2323,8 +1559,6 @@ export interface CapabilitiesResult {
   /** The quota capability. */
   quota?: QuotaCapability;
 }
-const CapabilitiesResult = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<CapabilitiesResult>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2335,27 +1569,18 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 /** The type of identity that created the resource. */
 export type GetPrivateEndpointConnectionResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const GetPrivateEndpointConnectionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPrivateEndpointConnectionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const GetPrivateEndpointConnectionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPrivateEndpointConnectionResponseSystemData {
   /** The identity that created the resource. */
@@ -2371,11 +1596,6 @@ export interface GetPrivateEndpointConnectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetPrivateEndpointConnectionResponseSystemData = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetPrivateEndpointConnectionResponseSystemData>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2388,11 +1608,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPrivateEndpointConnectionResponseSystemData;
 }
-const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetPrivateLinkResourceRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2403,21 +1618,10 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   privateLinkResourceName: string;
 }
-const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetPrivateLinkResourceRequest>;
-
 /** The private link resource required member names. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredMembersList = Array<string>;
-const GetPrivateLinkResourceResponsePropertiesRequiredMembersList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList = Array<string>;
-const GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface GetPrivateLinkResourceResponseProperties {
   /** The private link resource group id. */
@@ -2427,11 +1631,6 @@ export interface GetPrivateLinkResourceResponseProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList;
 }
-const GetPrivateLinkResourceResponseProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetPrivateLinkResourceResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type GetPrivateLinkResourceResponseSystemDataCreatedByType =
   | "User"
@@ -2459,9 +1658,6 @@ export interface GetPrivateLinkResourceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetPrivateLinkResourceResponseSystemData =
-  CreateApplicationResponseSystemData as any as S.Schema<GetPrivateLinkResourceResponseSystemData>;
-
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2474,11 +1670,6 @@ export interface GetPrivateLinkResourceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPrivateLinkResourceResponseSystemData;
 }
-const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetPrivateLinkResourceResponse>;
-
 export interface GetScriptActionExecutionAsyncOperationStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2489,11 +1680,6 @@ export interface GetScriptActionExecutionAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-const GetScriptActionExecutionAsyncOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusRequest>;
-
 /** The async operation state. */
 export type GetScriptActionExecutionAsyncOperationStatusResponseStatus =
   | "InProgress"
@@ -2505,9 +1691,6 @@ export interface GetScriptActionExecutionAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-const GetScriptActionExecutionAsyncOperationStatusResponse =
-  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusResponse>;
-
 export interface GetScriptActionExecutionDetailRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2518,16 +1701,8 @@ export interface GetScriptActionExecutionDetailRequest {
   /** The script execution Id */
   scriptExecutionId: string;
 }
-const GetScriptActionExecutionDetailRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetScriptActionExecutionDetailRequest>;
-
 /** The list of roles where script will be executed. */
 export type GetScriptActionExecutionDetailResponseRolesList = Array<string>;
-const GetScriptActionExecutionDetailResponseRolesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetScriptActionExecutionDetailResponseRolesList>;
-
 /** The execution summary of a script action. */
 export interface ScriptActionExecutionSummary {
   /** The status of script action execution. */
@@ -2535,19 +1710,9 @@ export interface ScriptActionExecutionSummary {
   /** The instance count for a given script action execution status. */
   instanceCount?: number;
 }
-const ScriptActionExecutionSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ScriptActionExecutionSummary>;
-
 /** The summary of script action execution result. */
 export type GetScriptActionExecutionDetailResponseExecutionSummaryList =
   Array<ScriptActionExecutionSummary>;
-const GetScriptActionExecutionDetailResponseExecutionSummaryList = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetScriptActionExecutionDetailResponseExecutionSummaryList>;
-
 export interface GetScriptActionExecutionDetailResponse {
   /** The name of the script action. */
   name: string;
@@ -2574,11 +1739,6 @@ export interface GetScriptActionExecutionDetailResponse {
   /** The script action execution debug information. */
   debugInformation?: string;
 }
-const GetScriptActionExecutionDetailResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetScriptActionExecutionDetailResponse>;
-
 export interface GetVirtualMachineAsyncOperationStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2589,11 +1749,6 @@ export interface GetVirtualMachineAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-const GetVirtualMachineAsyncOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetVirtualMachineAsyncOperationStatusRequest>;
-
 /** The async operation state. */
 export type GetVirtualMachineAsyncOperationStatusResponseStatus =
   | "InProgress"
@@ -2605,9 +1760,6 @@ export interface GetVirtualMachineAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-const GetVirtualMachineAsyncOperationStatusResponse =
-  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetVirtualMachineAsyncOperationStatusResponse>;
-
 export interface ListApplicationByClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2616,27 +1768,16 @@ export interface ListApplicationByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const ListApplicationByClusterRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListApplicationByClusterRequest>;
-
 /** The tags for the application. */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
-const ApplicationTagsMap = CreateApplicationRequestTagsMap as any as S.Schema<ApplicationTagsMap>;
-
 /** The type of identity that created the resource. */
 export type ApplicationSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const ApplicationSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ApplicationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ApplicationSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplicationSystemData {
   /** The identity that created the resource. */
@@ -2652,11 +1793,6 @@ export interface ApplicationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ApplicationSystemData = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ApplicationSystemData>;
-
 /** The HDInsight cluster application */
 export interface Application {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2674,15 +1810,8 @@ export interface Application {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ApplicationSystemData;
 }
-const Application = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<Application>;
-
 /** The list of HDInsight applications installed on HDInsight cluster. */
 export type ApplicationListResultValueList = Array<Application>;
-const ApplicationListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ApplicationListResultValueList>;
-
 /** Result of the request to list cluster Applications. It contains a list of operations and a URL link to get the next set of results. */
 export interface ApplicationListResult {
   /** The list of HDInsight applications installed on HDInsight cluster. */
@@ -2690,31 +1819,16 @@ export interface ApplicationListResult {
   /** The URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const ApplicationListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ApplicationListResult>;
-
 export interface ListClusterByResourceGroupRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-const ListClusterByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListClusterByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-const ClusterTagsMap = CreateApplicationRequestTagsMap as any as S.Schema<ClusterTagsMap>;
-
 /** The availability zones. */
 export type ClusterZonesList = Array<string>;
-const ClusterZonesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ClusterZonesList>;
-
 /** The type of identity that created the resource. */
 export type ClusterSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -2738,8 +1852,6 @@ export interface ClusterSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ClusterSystemData = ApplicationSystemData as any as S.Schema<ClusterSystemData>;
-
 /** The HDInsight cluster. */
 export interface Cluster {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2763,15 +1875,8 @@ export interface Cluster {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClusterSystemData;
 }
-const Cluster = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<Cluster>;
-
 /** The list of Clusters. */
 export type ClusterListResultValueList = Array<Cluster>;
-const ClusterListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ClusterListResultValueList>;
-
 /** The List Cluster operation response. */
 export interface ClusterListResult {
   /** The list of Clusters. */
@@ -2779,14 +1884,10 @@ export interface ClusterListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const ClusterListResult = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ClusterListResult>;
-
 export interface ListClustersRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-const ListClustersRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListClustersRequest>;
-
 export interface ListConfigurationsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2795,86 +1896,40 @@ export interface ListConfigurationsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const ListConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListConfigurationsRequest>;
-
 /** The configuration object for the specified configuration for the specified cluster. */
 export type ClusterConfigurationsConfigurationsMap = {
   [key: string]: ClusterConfiguration | undefined;
 };
-const ClusterConfigurationsConfigurationsMap = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ClusterConfigurationsConfigurationsMap>;
-
 /** The configuration object for the specified cluster. */
 export interface ClusterConfigurations {
   /** The configuration object for the specified configuration for the specified cluster. */
   configurations?: ClusterConfigurationsConfigurationsMap;
 }
-const ClusterConfigurations = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ClusterConfigurations>;
-
 export interface ListLocationBillingSpecsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The Azure location (region) for which to make the request. */
   location: string;
 }
-const ListLocationBillingSpecsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListLocationBillingSpecsRequest>;
-
 /** The virtual machine sizes to include or exclude. */
 export type BillingResponseListResultVmSizesList = Array<string>;
-const BillingResponseListResultVmSizesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<BillingResponseListResultVmSizesList>;
-
 /** The vm sizes which enable encryption at host. */
 export type BillingResponseListResultVmSizesWithEncryptionAtHostList = Array<string>;
-const BillingResponseListResultVmSizesWithEncryptionAtHostList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<BillingResponseListResultVmSizesWithEncryptionAtHostList>;
-
 /** The filtering mode. Effectively this can enabling or disabling the VM sizes in a particular set. */
 export type VmSizeCompatibilityFilterV2FilterMode = "Exclude" | "Include" | "Recommend" | "Default";
-const VmSizeCompatibilityFilterV2FilterMode = S.String;
-
 /** The list of regions under the effect of the filter. */
 export type VmSizeCompatibilityFilterV2RegionsList = Array<string>;
-const VmSizeCompatibilityFilterV2RegionsList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2RegionsList>;
-
 /** The list of cluster flavors under the effect of the filter. */
 export type VmSizeCompatibilityFilterV2ClusterFlavorsList = Array<string>;
-const VmSizeCompatibilityFilterV2ClusterFlavorsList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2ClusterFlavorsList>;
-
 /** The list of node types affected by the filter. */
 export type VmSizeCompatibilityFilterV2NodeTypesList = Array<string>;
-const VmSizeCompatibilityFilterV2NodeTypesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2NodeTypesList>;
-
 /** The list of cluster versions affected in Major.Minor format. */
 export type VmSizeCompatibilityFilterV2ClusterVersionsList = Array<string>;
-const VmSizeCompatibilityFilterV2ClusterVersionsList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2ClusterVersionsList>;
-
 export type VmSizeCompatibilityFilterV2OsTypeItem = "Windows" | "Linux";
 /** The OSType affected, Windows or Linux. */
 export type VmSizeCompatibilityFilterV2OsTypeList = Array<VmSizeCompatibilityFilterV2OsTypeItem>;
-const VmSizeCompatibilityFilterV2OsTypeList =
-  AutoscaleScheduleDaysList as any as S.Schema<VmSizeCompatibilityFilterV2OsTypeList>;
-
 /** The list of virtual machine sizes to include or exclude. */
 export type VmSizeCompatibilityFilterV2VmSizesList = Array<string>;
-const VmSizeCompatibilityFilterV2VmSizesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2VmSizesList>;
-
 /** This class represent a single filter object that defines a multidimensional set. The dimensions of this set are Regions, ClusterFlavors, NodeTypes and ClusterVersions. The constraint should be defined based on the following: FilterMode (Exclude vs Include), VMSizes (the vm sizes in affect of exclusion/inclusion) and the ordering of the Filters. Later filters override previous settings if conflicted. */
 export interface VmSizeCompatibilityFilterV2 {
   /** The filtering mode. Effectively this can enabling or disabling the VM sizes in a particular set. */
@@ -2896,18 +1951,8 @@ export interface VmSizeCompatibilityFilterV2 {
   /** Whether support compute isolation. 'true' means only for ComputeIsolationEnabled, 'false' means only for regular cluster. */
   computeIsolationSupported?: string;
 }
-const VmSizeCompatibilityFilterV2 = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<VmSizeCompatibilityFilterV2>;
-
 /** The virtual machine filtering mode. Effectively this can enabling or disabling the virtual machine sizes in a particular set. */
 export type BillingResponseListResultVmSizeFiltersList = Array<VmSizeCompatibilityFilterV2>;
-const BillingResponseListResultVmSizeFiltersList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<BillingResponseListResultVmSizeFiltersList>;
-
 /** The vm size property */
 export interface VmSizeProperty {
   /** The vm size name. */
@@ -2931,15 +1976,8 @@ export interface VmSizeProperty {
   /** The web worker resource disk size whose unit is MB of the vm size. */
   webWorkerResourceDiskSizeInMb?: number;
 }
-const VmSizeProperty = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<VmSizeProperty>;
-
 /** The vm size properties. */
 export type BillingResponseListResultVmSizePropertiesList = Array<VmSizeProperty>;
-const BillingResponseListResultVmSizePropertiesList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<BillingResponseListResultVmSizePropertiesList>;
-
 /** The billing meters. */
 export interface BillingMeters {
   /** The virtual machine sizes. */
@@ -2949,19 +1987,10 @@ export interface BillingMeters {
   /** The unit of meter, VMHours or CoreHours. */
   unit?: string;
 }
-const BillingMeters = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<BillingMeters>;
-
 /** The billing meter information. */
 export type BillingResourcesBillingMetersList = Array<BillingMeters>;
-const BillingResourcesBillingMetersList = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<BillingResourcesBillingMetersList>;
-
 /** The managed disk billing tier, Standard or Premium. */
 export type DiskBillingMetersTier = "Standard" | "Premium";
-const DiskBillingMetersTier = S.String;
-
 /** The disk billing meters. */
 export interface DiskBillingMeters {
   /** The managed disk meter guid. */
@@ -2971,15 +2000,8 @@ export interface DiskBillingMeters {
   /** The managed disk billing tier, Standard or Premium. */
   tier?: DiskBillingMetersTier;
 }
-const DiskBillingMeters = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<DiskBillingMeters>;
-
 /** The managed disk billing information. */
 export type BillingResourcesDiskBillingMetersList = Array<DiskBillingMeters>;
-const BillingResourcesDiskBillingMetersList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<BillingResourcesDiskBillingMetersList>;
-
 /** The billing resources. */
 export interface BillingResources {
   /** The region or location. */
@@ -2989,15 +2011,8 @@ export interface BillingResources {
   /** The managed disk billing information. */
   diskBillingMeters?: BillingResourcesDiskBillingMetersList;
 }
-const BillingResources = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<BillingResources>;
-
 /** The billing and managed disk billing resources for a region. */
 export type BillingResponseListResultBillingResourcesList = Array<BillingResources>;
-const BillingResponseListResultBillingResourcesList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<BillingResponseListResultBillingResourcesList>;
-
 /** The response for the operation to get regional billingSpecs for a subscription. */
 export interface BillingResponseListResult {
   /** The virtual machine sizes to include or exclude. */
@@ -3011,22 +2026,12 @@ export interface BillingResponseListResult {
   /** The billing and managed disk billing resources for a region. */
   billingResources?: BillingResponseListResultBillingResourcesList;
 }
-const BillingResponseListResult = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<BillingResponseListResult>;
-
 export interface ListLocationUsagesRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The Azure location (region) for which to make the request. */
   location: string;
 }
-const ListLocationUsagesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListLocationUsagesRequest>;
-
 /** The details about the localizable name of a type of usage. */
 export interface LocalizedName {
   /** The name of the used resource. */
@@ -3034,8 +2039,6 @@ export interface LocalizedName {
   /** The localized name of the used resource. */
   localizedValue?: string;
 }
-const LocalizedName = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<LocalizedName>;
-
 /** The details about the usage of a particular limited resource. */
 export interface Usage {
   /** The type of measurement for usage. */
@@ -3047,28 +2050,14 @@ export interface Usage {
   /** The details about the localizable name of the used resource. */
   name?: LocalizedName;
 }
-const Usage = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<Usage>;
-
 /** The list of usages. */
 export type UsagesListResultValueList = Array<Usage>;
-const UsagesListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<UsagesListResultValueList>;
-
 /** The response for the operation to get regional usages for a subscription. */
 export interface UsagesListResult {
   /** The list of usages. */
   value?: UsagesListResultValueList;
 }
-const UsagesListResult = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<UsagesListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** The service provider: Microsoft.HDInsight */
@@ -3080,18 +2069,10 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<OperationDisplay>;
-
 /** The supported aggregation types of the metric specification. */
 export type MetricSpecificationsSupportedAggregationTypesList = Array<string>;
-const MetricSpecificationsSupportedAggregationTypesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<MetricSpecificationsSupportedAggregationTypesList>;
-
 /** The supported time grain types of the metric specification. */
 export type MetricSpecificationsSupportedTimeGrainTypesList = Array<string>;
-const MetricSpecificationsSupportedTimeGrainTypesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<MetricSpecificationsSupportedTimeGrainTypesList>;
-
 /** The definition of Dimension. */
 export interface Dimension {
   /** The name of the dimension. */
@@ -3103,15 +2084,8 @@ export interface Dimension {
   /** The flag indicates whether the metric will be exported for shoebox or not. */
   toBeExportedForShoebox?: boolean;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<Dimension>;
-
 /** The dimensions of the metric specification. */
 export type MetricSpecificationsDimensionsList = Array<Dimension>;
-const MetricSpecificationsDimensionsList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<MetricSpecificationsDimensionsList>;
-
 /** The details of metric specifications. */
 export interface MetricSpecifications {
   /** The name of the metric specification. */
@@ -3149,35 +2123,18 @@ export interface MetricSpecifications {
   /** The dimensions of the metric specification. */
   dimensions?: MetricSpecificationsDimensionsList;
 }
-const MetricSpecifications = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<MetricSpecifications>;
-
 /** The metric specifications. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecifications>;
-const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
 /** The specification of the service. */
 export interface ServiceSpecification {
   /** The metric specifications. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-const ServiceSpecification = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ServiceSpecification>;
-
 /** The details of operation. */
 export interface OperationProperties {
   /** The specification of the service. */
   serviceSpecification?: ServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<OperationProperties>;
-
 /** The HDInsight REST API operation. */
 export interface Operation {
   /** The operation name: {provider}/{resource}/{operation} */
@@ -3187,15 +2144,8 @@ export interface Operation {
   /** The operation properties. */
   properties?: OperationProperties;
 }
-const Operation = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<Operation>;
-
 /** The list of HDInsight operations supported by the HDInsight resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Result of the request to list HDInsight operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** The list of HDInsight operations supported by the HDInsight resource provider. */
@@ -3203,8 +2153,6 @@ export interface OperationListResult {
   /** The URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<OperationListResult>;
-
 export interface ListPrivateEndpointConnectionByClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3213,11 +2161,6 @@ export interface ListPrivateEndpointConnectionByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const ListPrivateEndpointConnectionByClusterRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>;
-
 /** The type of identity that created the resource. */
 export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "User"
@@ -3245,9 +2188,6 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const PrivateEndpointConnectionSystemData =
-  CreateApplicationResponseSystemData as any as S.Schema<PrivateEndpointConnectionSystemData>;
-
 /** The private endpoint connection. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3261,18 +2201,8 @@ export interface PrivateEndpointConnection {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionSystemData;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** The list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** The list private endpoint connections response. */
 export interface PrivateEndpointConnectionListResult {
   /** The list of private endpoint connections. */
@@ -3280,11 +2210,6 @@ export interface PrivateEndpointConnectionListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourceByClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3293,11 +2218,6 @@ export interface ListPrivateLinkResourceByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const ListPrivateLinkResourceByClusterRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 /** The private link resource Private link DNS zone name. */
@@ -3311,9 +2231,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties =
-  GetPrivateLinkResourceResponseProperties as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** The type of identity that created the resource. */
 export type PrivateLinkResourceSystemDataCreatedByType =
   | "User"
@@ -3341,9 +2258,6 @@ export interface PrivateLinkResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const PrivateLinkResourceSystemData =
-  CreateApplicationResponseSystemData as any as S.Schema<PrivateLinkResourceSystemData>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3357,25 +2271,13 @@ export interface PrivateLinkResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateLinkResourceSystemData;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<PrivateLinkResource>;
-
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: PrivateLinkResourceListResultValueList;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 export interface ListScriptActionByClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3384,11 +2286,6 @@ export interface ListScriptActionByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const ListScriptActionByClusterRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListScriptActionByClusterRequest>;
-
 /** The list of roles where script will be executed. */
 export type ScriptActionsListValueItemRolesList = Array<string>;
 /** The summary of script action execution result. */
@@ -3420,16 +2317,8 @@ export interface ScriptActionsListValueItem {
   /** The script action execution debug information. */
   debugInformation?: string;
 }
-const ScriptActionsListValueItem =
-  GetScriptActionExecutionDetailResponse as any as S.Schema<ScriptActionsListValueItem>;
-
 /** The list of persisted script action details for the cluster. */
 export type ScriptActionsListValueList = Array<ScriptActionsListValueItem>;
-const ScriptActionsListValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ScriptActionsListValueList>;
-
 /** The persisted script action for the cluster. */
 export interface ScriptActionsList {
   /** The list of persisted script action details for the cluster. */
@@ -3437,8 +2326,6 @@ export interface ScriptActionsList {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const ScriptActionsList = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ScriptActionsList>;
-
 export interface ListScriptExecutionHistoryByClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3447,11 +2334,6 @@ export interface ListScriptExecutionHistoryByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const ListScriptExecutionHistoryByClusterRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListScriptExecutionHistoryByClusterRequest>;
-
 /** The list of roles where script will be executed. */
 export type ScriptActionExecutionHistoryListValueItemRolesList = Array<string>;
 /** The summary of script action execution result. */
@@ -3487,9 +2369,6 @@ export interface ScriptActionExecutionHistoryListValueItem {
 /** The list of persisted script action details for the cluster. */
 export type ScriptActionExecutionHistoryListValueList =
   Array<ScriptActionExecutionHistoryListValueItem>;
-const ScriptActionExecutionHistoryListValueList =
-  ScriptActionsListValueList as any as S.Schema<ScriptActionExecutionHistoryListValueList>;
-
 /** The list script execution history response. */
 export interface ScriptActionExecutionHistoryList {
   /** The list of persisted script action details for the cluster. */
@@ -3497,11 +2376,6 @@ export interface ScriptActionExecutionHistoryList {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const ScriptActionExecutionHistoryList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ScriptActionExecutionHistoryList>;
-
 export interface ListVirtualMachineHostsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3510,11 +2384,6 @@ export interface ListVirtualMachineHostsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-const ListVirtualMachineHostsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListVirtualMachineHostsRequest>;
-
 /** The cluster host information. */
 export interface HostInfo {
   /** The host name */
@@ -3524,30 +2393,15 @@ export interface HostInfo {
   /** The effective disk encryption key URL used by the host */
   effectiveDiskEncryptionKeyUrl?: string;
 }
-const HostInfo = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<HostInfo>;
-
 /** Result of the request to list cluster hosts */
 export type HostInfoListResult = Array<HostInfo>;
-const HostInfoListResult = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<HostInfoListResult>;
-
 export type ListVirtualMachineHostsResponse = HostInfoListResult;
-const ListVirtualMachineHostsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ListVirtualMachineHostsResponse>;
-
 /** The resource tags. */
 export type LocationsValidateClusterCreateRequestRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const LocationsValidateClusterCreateRequestRequestTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<LocationsValidateClusterCreateRequestRequestTagsMap>;
-
 /** The availability zones. */
 export type LocationsValidateClusterCreateRequestRequestZonesList = Array<string>;
-const LocationsValidateClusterCreateRequestRequestZonesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<LocationsValidateClusterCreateRequestRequestZonesList>;
-
 export interface LocationsValidateClusterCreateRequestRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3570,16 +2424,8 @@ export interface LocationsValidateClusterCreateRequestRequest {
   /** This indicates whether fetch Aadds resource or not. */
   fetchAaddsResource?: boolean;
 }
-const LocationsValidateClusterCreateRequestRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<LocationsValidateClusterCreateRequestRequest>;
-
 /** The message arguments */
 export type ValidationErrorInfoMessageArgumentsList = Array<string>;
-const ValidationErrorInfoMessageArgumentsList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ValidationErrorInfoMessageArgumentsList>;
-
 /** The validation error information. */
 export interface ValidationErrorInfo {
   /** The error code. */
@@ -3591,20 +2437,10 @@ export interface ValidationErrorInfo {
   /** The message arguments */
   messageArguments?: ValidationErrorInfoMessageArgumentsList;
 }
-const ValidationErrorInfo = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<ValidationErrorInfo>;
-
 /** The validation errors. */
 export type ClusterCreateValidationResultValidationErrorsList = Array<ValidationErrorInfo>;
-const ClusterCreateValidationResultValidationErrorsList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ClusterCreateValidationResultValidationErrorsList>;
-
 /** The validation warnings. */
 export type ClusterCreateValidationResultValidationWarningsList = Array<ValidationErrorInfo>;
-const ClusterCreateValidationResultValidationWarningsList =
-  ClusterCreateValidationResultValidationErrorsList as any as S.Schema<ClusterCreateValidationResultValidationWarningsList>;
-
 /** The Azure active directory domain service resource details. */
 export interface AaddsResourceDetails {
   /** The Azure active directory domain service name. */
@@ -3622,18 +2458,8 @@ export interface AaddsResourceDetails {
   /** The tenant id of azure active directory domain service . */
   tenantId?: string;
 }
-const AaddsResourceDetails = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<AaddsResourceDetails>;
-
 /** The Azure active directory domain service resource details. */
 export type ClusterCreateValidationResultAaddsResourcesDetailsList = Array<AaddsResourceDetails>;
-const ClusterCreateValidationResultAaddsResourcesDetailsList = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ClusterCreateValidationResultAaddsResourcesDetailsList>;
-
 /** The response of cluster create request validation. */
 export interface ClusterCreateValidationResult {
   /** The validation errors. */
@@ -3645,21 +2471,11 @@ export interface ClusterCreateValidationResult {
   /** The Azure active directory domain service resource details. */
   aaddsResourcesDetails?: ClusterCreateValidationResultAaddsResourcesDetailsList;
 }
-const ClusterCreateValidationResult = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ClusterCreateValidationResult>;
-
 /** The private endpoint connection properties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The private link service connection state. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3672,11 +2488,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
-const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -3716,9 +2527,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionsCreateOrUpdateResponseSystemData;
 }
-const PrivateEndpointConnectionsCreateOrUpdateResponse =
-  ClusterGetPropertiesPrivateEndpointConnectionsItem as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
-
 export interface PromoteScriptExecutionHistoryRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3729,18 +2537,8 @@ export interface PromoteScriptExecutionHistoryRequest {
   /** The script execution Id */
   scriptExecutionId: string;
 }
-const PromoteScriptExecutionHistoryRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<PromoteScriptExecutionHistoryRequest>;
-
 export interface PromoteScriptExecutionHistoryResponse {}
-const PromoteScriptExecutionHistoryResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<PromoteScriptExecutionHistoryResponse>;
-
 export type ResizeClusterRequestRoleName = "workernode";
-const ResizeClusterRequestRoleName = S.String;
-
 export interface ResizeClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3753,19 +2551,9 @@ export interface ResizeClusterRequest {
   /** The target instance count for the operation. */
   targetInstanceCount?: number;
 }
-const ResizeClusterRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ResizeClusterRequest>;
-
 export interface ResizeClusterResponse {}
-const ResizeClusterResponse = CreateExtensionResponse as any as S.Schema<ResizeClusterResponse>;
-
 /** The list of hosts which need to be restarted. */
 export type RestartHostsParameters = Array<string>;
-const RestartHostsParameters =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<RestartHostsParameters>;
-
 export interface RestartVirtualMachineHostsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3775,15 +2563,7 @@ export interface RestartVirtualMachineHostsRequest {
   clusterName: string;
   body: RestartHostsParameters;
 }
-const RestartVirtualMachineHostsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<RestartVirtualMachineHostsRequest>;
-
 export interface RestartVirtualMachineHostsResponse {}
-const RestartVirtualMachineHostsResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<RestartVirtualMachineHostsResponse>;
-
 export interface RotateClusterDiskEncryptionKeyRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3798,20 +2578,9 @@ export interface RotateClusterDiskEncryptionKeyRequest {
   /** Specific key version that is used for enabling disk encryption. */
   keyVersion?: string;
 }
-const RotateClusterDiskEncryptionKeyRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<RotateClusterDiskEncryptionKeyRequest>;
-
 export interface RotateClusterDiskEncryptionKeyResponse {}
-const RotateClusterDiskEncryptionKeyResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<RotateClusterDiskEncryptionKeyResponse>;
-
 /** The resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-const UpdateClusterRequestTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
-
 export interface UpdateClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3822,21 +2591,10 @@ export interface UpdateClusterRequest {
   /** The resource tags. */
   tags?: UpdateClusterRequestTagsMap | null;
 }
-const UpdateClusterRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<UpdateClusterRequest>;
-
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-const UpdateClusterResponseTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
-
 /** The availability zones. */
 export type UpdateClusterResponseZonesList = Array<string>;
-const UpdateClusterResponseZonesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<UpdateClusterResponseZonesList>;
-
 /** The type of identity that created the resource. */
 export type UpdateClusterResponseSystemDataCreatedByType =
   | "User"
@@ -3864,9 +2622,6 @@ export interface UpdateClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const UpdateClusterResponseSystemData =
-  CreateApplicationResponseSystemData as any as S.Schema<UpdateClusterResponseSystemData>;
-
 export interface UpdateClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3889,14 +2644,7 @@ export interface UpdateClusterResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateClusterResponseSystemData;
 }
-const UpdateClusterResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<UpdateClusterResponse>;
-
 export type UpdateClusterAutoScaleConfigurationRequestRoleName = "workernode";
-const UpdateClusterAutoScaleConfigurationRequestRoleName = S.String;
-
 export interface UpdateClusterAutoScaleConfigurationRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3909,15 +2657,7 @@ export interface UpdateClusterAutoScaleConfigurationRequest {
   /** The autoscale configuration. */
   autoscale?: Autoscale;
 }
-const UpdateClusterAutoScaleConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<UpdateClusterAutoScaleConfigurationRequest>;
-
 export interface UpdateClusterAutoScaleConfigurationResponse {}
-const UpdateClusterAutoScaleConfigurationResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<UpdateClusterAutoScaleConfigurationResponse>;
-
 export interface UpdateClusterGatewaySettingsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3932,15 +2672,7 @@ export interface UpdateClusterGatewaySettingsRequest {
   /** The gateway settings user password. */
   restAuthCredential_password?: string | Redacted.Redacted<string>;
 }
-const UpdateClusterGatewaySettingsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<UpdateClusterGatewaySettingsRequest>;
-
 export interface UpdateClusterGatewaySettingsResponse {}
-const UpdateClusterGatewaySettingsResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<UpdateClusterGatewaySettingsResponse>;
-
 export interface UpdateClusterIdentityCertificateRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3955,15 +2687,7 @@ export interface UpdateClusterIdentityCertificateRequest {
   /** The password of the certificate. */
   certificatePassword?: string | Redacted.Redacted<string>;
 }
-const UpdateClusterIdentityCertificateRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<UpdateClusterIdentityCertificateRequest>;
-
 export interface UpdateClusterIdentityCertificateResponse {}
-const UpdateClusterIdentityCertificateResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<UpdateClusterIdentityCertificateResponse>;
-
 export type CheckLocationNameAvailabilityError = AzureOpError;
 /** Check the cluster name is available or not. */
 export const CheckLocationNameAvailability: API.OperationMethod<
@@ -3972,8 +2696,8 @@ export const CheckLocationNameAvailability: API.OperationMethod<
   CheckLocationNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckLocationNameAvailabilityRequest,
-  output: NameAvailabilityCheckResult,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckLocationNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<NameAvailabilityCheckResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3987,8 +2711,8 @@ export const CreateApplication: API.OperationMethod<
   CreateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationRequest,
-  output: CreateApplicationResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CreateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4002,8 +2726,8 @@ export const CreateCluster: API.OperationMethod<
   CreateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterRequest,
-  output: CreateClusterResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<CreateClusterRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<CreateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4017,8 +2741,8 @@ export const CreateExtension: API.OperationMethod<
   CreateExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExtensionRequest,
-  output: CreateExtensionResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<CreateExtensionRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<CreateExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4032,8 +2756,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationRequest,
-  output: DeleteApplicationResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4047,8 +2771,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterRequest,
-  output: DeleteClusterResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4062,8 +2786,8 @@ export const DeleteExtension: API.OperationMethod<
   DeleteExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExtensionRequest,
-  output: DeleteExtensionResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteExtensionRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<DeleteExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4077,8 +2801,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4092,8 +2816,8 @@ export const DeleteScriptAction: API.OperationMethod<
   DeleteScriptActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScriptActionRequest,
-  output: DeleteScriptActionResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<DeleteScriptActionRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<DeleteScriptActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4107,8 +2831,8 @@ export const DisableExtensionAzureMonitor: API.OperationMethod<
   DisableExtensionAzureMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableExtensionAzureMonitorRequest,
-  output: DisableExtensionAzureMonitorResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<DisableExtensionAzureMonitorRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<DisableExtensionAzureMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4122,8 +2846,8 @@ export const DisableExtensionMonitoring: API.OperationMethod<
   DisableExtensionMonitoringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableExtensionMonitoringRequest,
-  output: DisableExtensionMonitoringResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<DisableExtensionMonitoringRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<DisableExtensionMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4137,8 +2861,8 @@ export const EnableExtensionAzureMonitor: API.OperationMethod<
   EnableExtensionAzureMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableExtensionAzureMonitorRequest,
-  output: EnableExtensionAzureMonitorResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<EnableExtensionAzureMonitorRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<EnableExtensionAzureMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4152,8 +2876,8 @@ export const EnableExtensionMonitoring: API.OperationMethod<
   EnableExtensionMonitoringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableExtensionMonitoringRequest,
-  output: EnableExtensionMonitoringResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<EnableExtensionMonitoringRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<EnableExtensionMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4167,8 +2891,8 @@ export const ExecuteClusterScriptActions: API.OperationMethod<
   ExecuteClusterScriptActionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteClusterScriptActionsRequest,
-  output: ExecuteClusterScriptActionsResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<ExecuteClusterScriptActionsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<ExecuteClusterScriptActionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4182,8 +2906,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationRequest,
-  output: GetApplicationResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<GetApplicationRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4197,8 +2921,8 @@ export const GetApplicationAzureAsyncOperationStatus: API.OperationMethod<
   GetApplicationAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationAzureAsyncOperationStatusRequest,
-  output: GetApplicationAzureAsyncOperationStatusResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<GetApplicationAzureAsyncOperationStatusRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetApplicationAzureAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4212,8 +2936,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterRequest,
-  output: GetClusterResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<GetClusterRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4227,8 +2951,8 @@ export const GetClusterAzureAsyncOperationStatus: API.OperationMethod<
   GetClusterAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterAzureAsyncOperationStatusRequest,
-  output: AsyncOperationResult,
+  input: __S(116, __c14, 4) as any as S.Schema<GetClusterAzureAsyncOperationStatusRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<AsyncOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4242,8 +2966,8 @@ export const GetClusterGatewaySettings: API.OperationMethod<
   GetClusterGatewaySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterGatewaySettingsRequest,
-  output: GatewaySettings,
+  input: __S(118, __c14, 6) as any as S.Schema<GetClusterGatewaySettingsRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<GatewaySettings>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4257,8 +2981,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationRequest,
-  output: GetConfigurationResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4272,8 +2996,8 @@ export const GetExtension: API.OperationMethod<
   GetExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExtensionRequest,
-  output: ClusterMonitoringResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<GetExtensionRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<ClusterMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4287,8 +3011,8 @@ export const GetExtensionAzureAsyncOperationStatus: API.OperationMethod<
   GetExtensionAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExtensionAzureAsyncOperationStatusRequest,
-  output: GetExtensionAzureAsyncOperationStatusResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<GetExtensionAzureAsyncOperationStatusRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetExtensionAzureAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4302,8 +3026,8 @@ export const GetExtensionAzureMonitorStatus: API.OperationMethod<
   GetExtensionAzureMonitorStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExtensionAzureMonitorStatusRequest,
-  output: AzureMonitorResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<GetExtensionAzureMonitorStatusRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<AzureMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4317,8 +3041,8 @@ export const GetExtensionMonitoringStatus: API.OperationMethod<
   GetExtensionMonitoringStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExtensionMonitoringStatusRequest,
-  output: ClusterMonitoringResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<GetExtensionMonitoringStatusRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<ClusterMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4332,8 +3056,8 @@ export const GetLocationAzureAsyncOperationStatus: API.OperationMethod<
   GetLocationAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationAzureAsyncOperationStatusRequest,
-  output: GetLocationAzureAsyncOperationStatusResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<GetLocationAzureAsyncOperationStatusRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetLocationAzureAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4347,8 +3071,8 @@ export const GetLocationCapabilities: API.OperationMethod<
   GetLocationCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationCapabilitiesRequest,
-  output: CapabilitiesResult,
+  input: __S(129, __c16, 1) as any as S.Schema<GetLocationCapabilitiesRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<CapabilitiesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4362,8 +3086,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4377,8 +3101,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkResourceRequest,
-  output: GetPrivateLinkResourceResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4392,8 +3116,12 @@ export const GetScriptActionExecutionAsyncOperationStatus: API.OperationMethod<
   GetScriptActionExecutionAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScriptActionExecutionAsyncOperationStatusRequest,
-  output: GetScriptActionExecutionAsyncOperationStatusResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusRequest>,
+  output: __S(
+    113,
+    __c14,
+    1,
+  ) as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4407,8 +3135,8 @@ export const GetScriptActionExecutionDetail: API.OperationMethod<
   GetScriptActionExecutionDetailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScriptActionExecutionDetailRequest,
-  output: GetScriptActionExecutionDetailResponse,
+  input: __S(147, __c18, 3) as any as S.Schema<GetScriptActionExecutionDetailRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<GetScriptActionExecutionDetailResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4422,8 +3150,8 @@ export const GetVirtualMachineAsyncOperationStatus: API.OperationMethod<
   GetVirtualMachineAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualMachineAsyncOperationStatusRequest,
-  output: GetVirtualMachineAsyncOperationStatusResponse,
+  input: __S(151, __c18, 7) as any as S.Schema<GetVirtualMachineAsyncOperationStatusRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetVirtualMachineAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4437,8 +3165,8 @@ export const ListApplicationByCluster: API.OperationMethod<
   ListApplicationByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationByClusterRequest,
-  output: ApplicationListResult,
+  input: __S(152, __c19, 0) as any as S.Schema<ListApplicationByClusterRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<ApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4452,8 +3180,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterByResourceGroupRequest,
-  output: ClusterListResult,
+  input: __S(157, __c19, 5) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4467,8 +3195,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClustersRequest,
-  output: ClusterListResult,
+  input: __S(161, __c20, 1) as any as S.Schema<ListClustersRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4482,8 +3210,8 @@ export const ListConfigurations: API.OperationMethod<
   ListConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigurationsRequest,
-  output: ClusterConfigurations,
+  input: __S(162, __c20, 2) as any as S.Schema<ListConfigurationsRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<ClusterConfigurations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4497,8 +3225,8 @@ export const ListLocationBillingSpecs: API.OperationMethod<
   ListLocationBillingSpecsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationBillingSpecsRequest,
-  output: BillingResponseListResult,
+  input: __S(165, __c20, 5) as any as S.Schema<ListLocationBillingSpecsRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<BillingResponseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4512,8 +3240,8 @@ export const ListLocationUsages: API.OperationMethod<
   ListLocationUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationUsagesRequest,
-  output: UsagesListResult,
+  input: __S(177, __c22, 1) as any as S.Schema<ListLocationUsagesRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4527,8 +3255,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(182, __c22, 6) as any as S.Schema<ListOperationsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4542,8 +3270,8 @@ export const ListPrivateEndpointConnectionByCluster: API.OperationMethod<
   ListPrivateEndpointConnectionByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionByClusterRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(193, __c24, 1) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4557,8 +3285,8 @@ export const ListPrivateLinkResourceByCluster: API.OperationMethod<
   ListPrivateLinkResourceByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourceByClusterRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(197, __c24, 5) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4572,8 +3300,8 @@ export const ListScriptActionByCluster: API.OperationMethod<
   ListScriptActionByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListScriptActionByClusterRequest,
-  output: ScriptActionsList,
+  input: __S(201, __c25, 1) as any as S.Schema<ListScriptActionByClusterRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ScriptActionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4587,8 +3315,8 @@ export const ListScriptExecutionHistoryByCluster: API.OperationMethod<
   ListScriptExecutionHistoryByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListScriptExecutionHistoryByClusterRequest,
-  output: ScriptActionExecutionHistoryList,
+  input: __S(204, __c25, 4) as any as S.Schema<ListScriptExecutionHistoryByClusterRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<ScriptActionExecutionHistoryList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4602,8 +3330,8 @@ export const ListVirtualMachineHosts: API.OperationMethod<
   ListVirtualMachineHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachineHostsRequest,
-  output: ListVirtualMachineHostsResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<ListVirtualMachineHostsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<ListVirtualMachineHostsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4617,8 +3345,8 @@ export const LocationsValidateClusterCreateRequest: API.OperationMethod<
   LocationsValidateClusterCreateRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LocationsValidateClusterCreateRequestRequest,
-  output: ClusterCreateValidationResult,
+  input: __S(210, __c26, 2) as any as S.Schema<LocationsValidateClusterCreateRequestRequest>,
+  output: __S(215, __c26, 7) as any as S.Schema<ClusterCreateValidationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4632,8 +3360,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
-  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
+  input: __S(217, __c27, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4647,8 +3375,8 @@ export const PromoteScriptExecutionHistory: API.OperationMethod<
   PromoteScriptExecutionHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PromoteScriptExecutionHistoryRequest,
-  output: PromoteScriptExecutionHistoryResponse,
+  input: __S(218, __c27, 2) as any as S.Schema<PromoteScriptExecutionHistoryRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<PromoteScriptExecutionHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4662,8 +3390,8 @@ export const ResizeCluster: API.OperationMethod<
   ResizeClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResizeClusterRequest,
-  output: ResizeClusterResponse,
+  input: __S(219, __c27, 3) as any as S.Schema<ResizeClusterRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<ResizeClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4677,8 +3405,8 @@ export const RestartVirtualMachineHosts: API.OperationMethod<
   RestartVirtualMachineHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartVirtualMachineHostsRequest,
-  output: RestartVirtualMachineHostsResponse,
+  input: __S(220, __c27, 4) as any as S.Schema<RestartVirtualMachineHostsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<RestartVirtualMachineHostsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4692,8 +3420,8 @@ export const RotateClusterDiskEncryptionKey: API.OperationMethod<
   RotateClusterDiskEncryptionKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateClusterDiskEncryptionKeyRequest,
-  output: RotateClusterDiskEncryptionKeyResponse,
+  input: __S(221, __c27, 5) as any as S.Schema<RotateClusterDiskEncryptionKeyRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<RotateClusterDiskEncryptionKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4707,8 +3435,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClusterRequest,
-  output: UpdateClusterResponse,
+  input: __S(222, __c27, 6) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4722,8 +3450,8 @@ export const UpdateClusterAutoScaleConfiguration: API.OperationMethod<
   UpdateClusterAutoScaleConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClusterAutoScaleConfigurationRequest,
-  output: UpdateClusterAutoScaleConfigurationResponse,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateClusterAutoScaleConfigurationRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UpdateClusterAutoScaleConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4737,8 +3465,8 @@ export const UpdateClusterGatewaySettings: API.OperationMethod<
   UpdateClusterGatewaySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClusterGatewaySettingsRequest,
-  output: UpdateClusterGatewaySettingsResponse,
+  input: __S(225, __c28, 1) as any as S.Schema<UpdateClusterGatewaySettingsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UpdateClusterGatewaySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4752,8 +3480,8 @@ export const UpdateClusterIdentityCertificate: API.OperationMethod<
   UpdateClusterIdentityCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClusterIdentityCertificateRequest,
-  output: UpdateClusterIdentityCertificateResponse,
+  input: __S(226, __c28, 2) as any as S.Schema<UpdateClusterIdentityCertificateRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UpdateClusterIdentityCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4800,7 +3528,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AutoscaleCapacity" });
     case 4:
-      return S.Array(AutoscaleScheduleDaysItem);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4812,12 +3540,12 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          days: S.optional(AutoscaleScheduleDaysList),
-          timeAndCapacity: S.optional(AutoscaleTimeAndCapacity),
+          days: S.optional(__S(4, __c0, 4)),
+          timeAndCapacity: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "AutoscaleSchedule" });
     case 7:
-      return S.Array(AutoscaleSchedule);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -4826,14 +3554,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timeZone: S.optional(S.String),
-          schedule: S.optional(AutoscaleRecurrenceScheduleList),
+          schedule: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "AutoscaleRecurrence" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(AutoscaleCapacity),
-          recurrence: S.optional(AutoscaleRecurrence),
+          capacity: S.optional(__S(3, __c0, 3)),
+          recurrence: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Autoscale" });
     case 2:
@@ -4849,11 +3577,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SshPublicKey" });
     case 4:
-      return S.Array(SshPublicKey);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: S.optional(SshProfilePublicKeysList),
+          publicKeys: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "SshProfile" });
     case 6:
@@ -4861,7 +3589,7 @@ function __c1(j: number): any {
         S.Struct({
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sshProfile: S.optional(SshProfile),
+          sshProfile: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "LinuxOperatingSystemProfile",
@@ -4869,7 +3597,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          linuxOperatingSystemProfile: S.optional(LinuxOperatingSystemProfile),
+          linuxOperatingSystemProfile: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "OsProfile" });
   }
@@ -4890,7 +3618,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DataDisksGroupsInput" });
     case 2:
-      return S.Array(DataDisksGroupsInput);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4902,7 +3630,7 @@ function __c2(j: number): any {
         identifier: "RoleInputScriptActionsItem",
       });
     case 4:
-      return S.Array(RoleInputScriptActionsItem);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4910,21 +3638,21 @@ function __c2(j: number): any {
           minInstanceCount: S.optional(S.Number),
           targetInstanceCount: S.optional(S.Number),
           VMGroupName: S.optional(S.String),
-          autoscale: S.optional(Autoscale),
-          hardwareProfile: S.optional(HardwareProfile),
-          osProfile: S.optional(OsProfile),
-          virtualNetworkProfile: S.optional(VirtualNetworkProfile),
-          dataDisksGroups: S.optional(RoleInputDataDisksGroupsList),
-          scriptActions: S.optional(RoleInputScriptActionsList),
+          autoscale: S.optional(__S(9, __c1, 1)),
+          hardwareProfile: S.optional(__S(10, __c1, 2)),
+          osProfile: S.optional(__S(15, __c1, 7)),
+          virtualNetworkProfile: S.optional(__S(16, __c2, 0)),
+          dataDisksGroups: S.optional(__S(18, __c2, 2)),
+          scriptActions: S.optional(__S(20, __c2, 4)),
           encryptDataDisks: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RoleInput" });
     case 6:
-      return S.Array(RoleInput);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(ApplicationPropertiesInputComputeProfileRolesList),
+          roles: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInputComputeProfile",
@@ -4941,17 +3669,17 @@ function __c3(j: number): any {
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: ApplicationPropertiesInputInstallScriptActionsItemRolesList,
+          roles: __S(24, __c3, 0),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInputInstallScriptActionsItem",
       });
     case 2:
-      return S.Array(ApplicationPropertiesInputInstallScriptActionsItem);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessModes: S.optional(ApplicationGetHttpsEndpointInputAccessModesList),
+          accessModes: S.optional(__S(24, __c3, 0)),
           destinationPort: S.optional(S.Number),
           privateIPAddress: S.optional(S.String),
           subDomainSuffix: S.optional(S.String),
@@ -4961,7 +3689,7 @@ function __c3(j: number): any {
         identifier: "ApplicationGetHttpsEndpointInput",
       });
     case 4:
-      return S.Array(ApplicationGetHttpsEndpointInput);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4972,7 +3700,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationGetEndpoint" });
     case 6:
-      return S.Array(ApplicationGetEndpoint);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4987,7 +3715,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApplicationPropertiesInputErrorsItem);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4999,10 +3727,8 @@ function __c4(j: number): any {
         S.Struct({
           primary: S.optional(S.Boolean),
           privateIPAddress: S.optional(S.String),
-          privateIPAllocationMethod: S.optional(
-            IPConfigurationPropertiesInputPrivateIPAllocationMethod,
-          ),
-          subnet: S.optional(ResourceId),
+          privateIPAllocationMethod: S.optional(S.String),
+          subnet: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "IPConfigurationPropertiesInput",
@@ -5011,16 +3737,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(IPConfigurationPropertiesInput),
+          properties: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "IPConfigurationInput" });
     case 4:
-      return S.Array(IPConfigurationInput);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String,
-          ipConfigurations: PrivateLinkConfigurationPropertiesInputIpConfigurationsList,
+          ipConfigurations: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "PrivateLinkConfigurationPropertiesInput",
@@ -5029,13 +3755,13 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: PrivateLinkConfigurationPropertiesInput,
+          properties: __S(37, __c4, 5),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInputPrivateLinkConfigurationsItem",
       });
     case 7:
-      return S.Array(ApplicationPropertiesInputPrivateLinkConfigurationsItem);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -5043,16 +3769,14 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          computeProfile: S.optional(ApplicationPropertiesInputComputeProfile),
-          installScriptActions: S.optional(ApplicationPropertiesInputInstallScriptActionsList),
-          uninstallScriptActions: S.optional(ApplicationPropertiesInputUninstallScriptActionsList),
-          httpsEndpoints: S.optional(ApplicationPropertiesInputHttpsEndpointsList),
-          sshEndpoints: S.optional(ApplicationPropertiesInputSshEndpointsList),
+          computeProfile: S.optional(__S(23, __c2, 7)),
+          installScriptActions: S.optional(__S(26, __c3, 2)),
+          uninstallScriptActions: S.optional(__S(26, __c3, 2)),
+          httpsEndpoints: S.optional(__S(28, __c3, 4)),
+          sshEndpoints: S.optional(__S(30, __c3, 6)),
           applicationType: S.optional(S.String),
-          errors: S.optional(ApplicationPropertiesInputErrorsList),
-          privateLinkConfigurations: S.optional(
-            ApplicationPropertiesInputPrivateLinkConfigurationsList,
-          ),
+          errors: S.optional(__S(32, __c4, 0)),
+          privateLinkConfigurations: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInput",
@@ -5065,8 +3789,8 @@ function __c5(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          tags: S.optional(CreateApplicationRequestTagsMap),
-          properties: S.optional(ApplicationPropertiesInput),
+          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5085,7 +3809,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "DataDisksGroups" });
     case 3:
-      return S.Array(DataDisksGroups);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5093,21 +3817,21 @@ function __c5(j: number): any {
           minInstanceCount: S.optional(S.Number),
           targetInstanceCount: S.optional(S.Number),
           VMGroupName: S.optional(S.String),
-          autoscale: S.optional(Autoscale),
-          hardwareProfile: S.optional(HardwareProfile),
-          osProfile: S.optional(OsProfile),
-          virtualNetworkProfile: S.optional(VirtualNetworkProfile),
-          dataDisksGroups: S.optional(RoleDataDisksGroupsList),
-          scriptActions: S.optional(RoleScriptActionsList),
+          autoscale: S.optional(__S(9, __c1, 1)),
+          hardwareProfile: S.optional(__S(10, __c1, 2)),
+          osProfile: S.optional(__S(15, __c1, 7)),
+          virtualNetworkProfile: S.optional(__S(16, __c2, 0)),
+          dataDisksGroups: S.optional(__S(43, __c5, 3)),
+          scriptActions: S.optional(__S(20, __c2, 4)),
           encryptDataDisks: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Role" });
     case 5:
-      return S.Array(Role);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(ApplicationPropertiesComputeProfileRolesList),
+          roles: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesComputeProfile",
@@ -5118,7 +3842,7 @@ function __c5(j: number): any {
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: ApplicationPropertiesInstallScriptActionsItemRolesList,
+          roles: __S(24, __c3, 0),
           applicationName: S.optional(S.String),
         }),
       ).annotate({
@@ -5129,11 +3853,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApplicationPropertiesInstallScriptActionsItem);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accessModes: S.optional(ApplicationGetHttpsEndpointAccessModesList),
+          accessModes: S.optional(__S(24, __c3, 0)),
           location: S.optional(S.String),
           destinationPort: S.optional(S.Number),
           publicPort: S.optional(S.Number),
@@ -5145,15 +3869,15 @@ function __c6(j: number): any {
         identifier: "ApplicationGetHttpsEndpoint",
       });
     case 2:
-      return S.Array(ApplicationGetHttpsEndpoint);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(IPConfigurationPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           primary: S.optional(S.Boolean),
           privateIPAddress: S.optional(S.String),
-          privateIPAllocationMethod: S.optional(IPConfigurationPropertiesPrivateIPAllocationMethod),
-          subnet: S.optional(ResourceId),
+          privateIPAllocationMethod: S.optional(S.String),
+          subnet: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "IPConfigurationProperties",
@@ -5164,17 +3888,17 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           type: S.optional(S.String),
-          properties: S.optional(IPConfigurationProperties),
+          properties: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "IPConfiguration" });
     case 5:
-      return S.Array(IPConfiguration);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String,
-          provisioningState: S.optional(PrivateLinkConfigurationPropertiesProvisioningState),
-          ipConfigurations: PrivateLinkConfigurationPropertiesIpConfigurationsList,
+          provisioningState: S.optional(S.String),
+          ipConfigurations: __S(53, __c6, 5),
         }),
       ).annotate({
         identifier: "PrivateLinkConfigurationProperties",
@@ -5185,7 +3909,7 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           type: S.optional(S.String),
-          properties: PrivateLinkConfigurationProperties,
+          properties: __S(54, __c6, 6),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesPrivateLinkConfigurationsItem",
@@ -5195,32 +3919,32 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApplicationPropertiesPrivateLinkConfigurationsItem);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          computeProfile: S.optional(ApplicationPropertiesComputeProfile),
-          installScriptActions: S.optional(ApplicationPropertiesInstallScriptActionsList),
-          uninstallScriptActions: S.optional(ApplicationPropertiesUninstallScriptActionsList),
-          httpsEndpoints: S.optional(ApplicationPropertiesHttpsEndpointsList),
-          sshEndpoints: S.optional(ApplicationPropertiesSshEndpointsList),
+          computeProfile: S.optional(__S(46, __c5, 6)),
+          installScriptActions: S.optional(__S(48, __c6, 0)),
+          uninstallScriptActions: S.optional(__S(48, __c6, 0)),
+          httpsEndpoints: S.optional(__S(50, __c6, 2)),
+          sshEndpoints: S.optional(__S(30, __c3, 6)),
           provisioningState: S.optional(S.String),
           applicationType: S.optional(S.String),
           applicationState: S.optional(S.String),
-          errors: S.optional(ApplicationPropertiesErrorsList),
+          errors: S.optional(__S(32, __c4, 0)),
           createdDate: S.optional(S.String),
           marketplaceIdentifier: S.optional(S.String),
-          privateLinkConfigurations: S.optional(ApplicationPropertiesPrivateLinkConfigurationsList),
+          privateLinkConfigurations: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "ApplicationProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(CreateApplicationResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(CreateApplicationResponseSystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -5233,9 +3957,9 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(CreateApplicationResponseTagsMap),
-          properties: S.optional(ApplicationProperties),
-          systemData: S.optional(CreateApplicationResponseSystemData),
+          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(57, __c7, 1)),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "CreateApplicationResponse",
@@ -5245,7 +3969,7 @@ function __c7(j: number): any {
         S.Struct({
           blueprint: S.optional(S.String),
           kind: S.optional(S.String),
-          componentVersion: S.optional(ClusterDefinitionComponentVersionMap),
+          componentVersion: S.optional(__S(2, __c0, 2)),
           configurations: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ClusterDefinition" });
@@ -5259,20 +3983,20 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          clientGroupInfo: S.optional(ClientGroupInfo),
-          configurationOverride: S.optional(KafkaRestPropertiesConfigurationOverrideMap),
+          clientGroupInfo: S.optional(__S(61, __c7, 5)),
+          configurationOverride: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "KafkaRestProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          directoryType: S.optional(SecurityProfileDirectoryType),
+          directoryType: S.optional(S.String),
           domain: S.optional(S.String),
           organizationalUnitDN: S.optional(S.String),
-          ldapsUrls: S.optional(SecurityProfileLdapsUrlsList),
+          ldapsUrls: S.optional(__S(24, __c3, 0)),
           domainUsername: S.optional(S.String),
           domainUserPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          clusterUsersGroupDNs: S.optional(SecurityProfileClusterUsersGroupDNsList),
+          clusterUsersGroupDNs: S.optional(__S(24, __c3, 0)),
           aaddsResourceId: S.optional(S.String),
           msiResourceId: S.optional(S.String),
         }),
@@ -5284,7 +4008,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(ComputeProfileInputRolesList),
+          roles: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "ComputeProfileInput" });
     case 1:
@@ -5302,11 +4026,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "StorageAccount" });
     case 2:
-      return S.Array(StorageAccount);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          storageaccounts: S.optional(StorageProfileStorageaccountsList),
+          storageaccounts: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "StorageProfile" });
     case 4:
@@ -5315,7 +4039,7 @@ function __c8(j: number): any {
           vaultUri: S.optional(S.String),
           keyName: S.optional(S.String),
           keyVersion: S.optional(S.String),
-          encryptionAlgorithm: S.optional(DiskEncryptionPropertiesEncryptionAlgorithm),
+          encryptionAlgorithm: S.optional(S.String),
           msiResourceId: S.optional(S.String),
           encryptionAtHost: S.optional(S.Boolean),
         }),
@@ -5331,8 +4055,8 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resourceProviderConnection: S.optional(NetworkPropertiesResourceProviderConnection),
-          privateLink: S.optional(NetworkPropertiesPrivateLink),
+          resourceProviderConnection: S.optional(S.String),
+          privateLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkProperties" });
     case 7:
@@ -5352,21 +4076,19 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clusterVersion: S.optional(S.String),
-          osType: S.optional(ClusterCreatePropertiesInputOsType),
-          tier: S.optional(ClusterCreatePropertiesInputTier),
-          clusterDefinition: S.optional(ClusterDefinition),
-          kafkaRestProperties: S.optional(KafkaRestProperties),
-          securityProfile: S.optional(SecurityProfile),
-          computeProfile: S.optional(ComputeProfileInput),
-          storageProfile: S.optional(StorageProfile),
-          diskEncryptionProperties: S.optional(DiskEncryptionProperties),
-          encryptionInTransitProperties: S.optional(EncryptionInTransitProperties),
+          osType: S.optional(S.String),
+          tier: S.optional(S.String),
+          clusterDefinition: S.optional(__S(60, __c7, 4)),
+          kafkaRestProperties: S.optional(__S(62, __c7, 6)),
+          securityProfile: S.optional(__S(63, __c7, 7)),
+          computeProfile: S.optional(__S(64, __c8, 0)),
+          storageProfile: S.optional(__S(67, __c8, 3)),
+          diskEncryptionProperties: S.optional(__S(68, __c8, 4)),
+          encryptionInTransitProperties: S.optional(__S(69, __c8, 5)),
           minSupportedTlsVersion: S.optional(S.String),
-          networkProperties: S.optional(NetworkProperties),
-          computeIsolationProperties: S.optional(ComputeIsolationProperties),
-          privateLinkConfigurations: S.optional(
-            ClusterCreatePropertiesInputPrivateLinkConfigurationsList,
-          ),
+          networkProperties: S.optional(__S(70, __c8, 6)),
+          computeIsolationProperties: S.optional(__S(71, __c8, 7)),
+          privateLinkConfigurations: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "ClusterCreatePropertiesInput",
@@ -5380,12 +4102,12 @@ function __c9(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ClusterIdentityInputType),
-          userAssignedIdentities: S.optional(ClusterIdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({ identifier: "ClusterIdentityInput" });
     case 4:
@@ -5395,10 +4117,10 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(CreateClusterRequestTagsMap),
-          zones: S.optional(CreateClusterRequestZonesList),
-          properties: S.optional(ClusterCreatePropertiesInput),
-          identity: S.optional(ClusterIdentityInput),
+          tags: S.optional(__S(2, __c0, 2)),
+          zones: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
+          identity: S.optional(__S(75, __c9, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5411,7 +4133,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(ComputeProfileRolesList),
+          roles: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "ComputeProfile" });
     case 6:
@@ -5435,7 +4157,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ConnectivityEndpoint);
+      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5446,7 +4168,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: PrivateLinkServiceConnectionStateStatus,
+          status: S.String,
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -5456,10 +4178,10 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          privateEndpoint: S.optional(__S(33, __c4, 1)),
+          privateLinkServiceConnectionState: __S(82, __c10, 2),
           linkIdentifier: S.optional(S.String),
-          provisioningState: S.optional(PrivateEndpointConnectionPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -5468,14 +4190,10 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(
-            ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType,
-          ),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -5487,43 +4205,41 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: PrivateEndpointConnectionProperties,
-          systemData: S.optional(ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData),
+          properties: __S(83, __c10, 3),
+          systemData: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({
         identifier: "ClusterGetPropertiesPrivateEndpointConnectionsItem",
       });
     case 6:
-      return S.Array(ClusterGetPropertiesPrivateEndpointConnectionsItem);
+      return S.Array(__S(85, __c10, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           clusterVersion: S.optional(S.String),
           clusterHdpVersion: S.optional(S.String),
-          osType: S.optional(ClusterGetPropertiesOsType),
-          tier: S.optional(ClusterGetPropertiesTier),
+          osType: S.optional(S.String),
+          tier: S.optional(S.String),
           clusterId: S.optional(S.String),
-          clusterDefinition: ClusterDefinition,
-          kafkaRestProperties: S.optional(KafkaRestProperties),
-          securityProfile: S.optional(SecurityProfile),
-          computeProfile: S.optional(ComputeProfile),
-          provisioningState: S.optional(ClusterGetPropertiesProvisioningState),
+          clusterDefinition: __S(60, __c7, 4),
+          kafkaRestProperties: S.optional(__S(62, __c7, 6)),
+          securityProfile: S.optional(__S(63, __c7, 7)),
+          computeProfile: S.optional(__S(77, __c9, 5)),
+          provisioningState: S.optional(S.String),
           createdDate: S.optional(S.String),
           clusterState: S.optional(S.String),
-          quotaInfo: S.optional(QuotaInfo),
-          errors: S.optional(ClusterGetPropertiesErrorsList),
-          connectivityEndpoints: S.optional(ClusterGetPropertiesConnectivityEndpointsList),
-          diskEncryptionProperties: S.optional(DiskEncryptionProperties),
-          encryptionInTransitProperties: S.optional(EncryptionInTransitProperties),
-          storageProfile: S.optional(StorageProfile),
+          quotaInfo: S.optional(__S(78, __c9, 6)),
+          errors: S.optional(__S(32, __c4, 0)),
+          connectivityEndpoints: S.optional(__S(80, __c10, 0)),
+          diskEncryptionProperties: S.optional(__S(68, __c8, 4)),
+          encryptionInTransitProperties: S.optional(__S(69, __c8, 5)),
+          storageProfile: S.optional(__S(67, __c8, 3)),
           minSupportedTlsVersion: S.optional(S.String),
-          excludedServicesConfig: S.optional(ExcludedServicesConfig),
-          networkProperties: S.optional(NetworkProperties),
-          computeIsolationProperties: S.optional(ComputeIsolationProperties),
-          privateLinkConfigurations: S.optional(ClusterGetPropertiesPrivateLinkConfigurationsList),
-          privateEndpointConnections: S.optional(
-            ClusterGetPropertiesPrivateEndpointConnectionsList,
-          ),
+          excludedServicesConfig: S.optional(__S(81, __c10, 1)),
+          networkProperties: S.optional(__S(70, __c8, 6)),
+          computeIsolationProperties: S.optional(__S(71, __c8, 7)),
+          privateLinkConfigurations: S.optional(__S(56, __c7, 0)),
+          privateEndpointConnections: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({ identifier: "ClusterGetProperties" });
   }
@@ -5539,14 +4255,14 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(ClusterIdentityType),
-          userAssignedIdentities: S.optional(ClusterIdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "ClusterIdentity" });
     case 3:
@@ -5555,13 +4271,13 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(CreateClusterResponseTagsMap),
+          tags: S.optional(__S(2, __c0, 2)),
           location: S.String,
           etag: S.optional(S.String),
-          zones: S.optional(CreateClusterResponseZonesList),
-          properties: S.optional(ClusterGetProperties),
-          identity: S.optional(ClusterIdentity),
-          systemData: S.optional(CreateClusterResponseSystemData),
+          zones: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(87, __c10, 7)),
+          identity: S.optional(__S(90, __c11, 2)),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "CreateClusterResponse" });
     case 4:
@@ -5720,7 +4436,7 @@ function __c12(j: number): any {
         identifier: "AzureMonitorTableConfiguration",
       });
     case 7:
-      return S.Array(AzureMonitorTableConfiguration);
+      return S.Array(__S(102, __c12, 6));
   }
 }
 function __c13(j: number): any {
@@ -5729,10 +4445,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configurationVersion: S.optional(S.String),
-          globalConfigurations: S.optional(
-            AzureMonitorSelectedConfigurationsGlobalConfigurationsMap,
-          ),
-          tableList: S.optional(AzureMonitorSelectedConfigurationsTableListList),
+          globalConfigurations: S.optional(__S(2, __c0, 2)),
+          tableList: S.optional(__S(103, __c12, 7)),
         }),
       ).annotate({
         identifier: "AzureMonitorSelectedConfigurations",
@@ -5745,7 +4459,7 @@ function __c13(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           workspaceId: S.optional(S.String),
           primaryKey: S.optional(S.String),
-          selectedConfigurations: S.optional(AzureMonitorSelectedConfigurations),
+          selectedConfigurations: S.optional(__S(104, __c13, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5782,18 +4496,18 @@ function __c13(j: number): any {
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: RuntimeScriptActionInputRolesList,
+          roles: __S(24, __c3, 0),
         }),
       ).annotate({ identifier: "RuntimeScriptActionInput" });
     case 4:
-      return S.Array(RuntimeScriptActionInput);
+      return S.Array(__S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          scriptActions: S.optional(ExecuteClusterScriptActionsRequestScriptActionsList),
+          scriptActions: S.optional(__S(108, __c13, 4)),
           persistOnSuccess: S.Boolean,
         }).pipe(
           T.Http({
@@ -5829,9 +4543,9 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(GetApplicationResponseTagsMap),
-          properties: S.optional(ApplicationProperties),
-          systemData: S.optional(GetApplicationResponseSystemData),
+          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(57, __c7, 1)),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
   }
@@ -5860,8 +4574,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GetApplicationAzureAsyncOperationStatusResponseStatus),
-          error: S.optional(ApplicationPropertiesInputErrorsItem),
+          status: S.optional(S.String),
+          error: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier: "GetApplicationAzureAsyncOperationStatusResponse",
@@ -5887,13 +4601,13 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(GetClusterResponseTagsMap),
+          tags: S.optional(__S(2, __c0, 2)),
           location: S.String,
           etag: S.optional(S.String),
-          zones: S.optional(GetClusterResponseZonesList),
-          properties: S.optional(ClusterGetProperties),
-          identity: S.optional(ClusterIdentity),
-          systemData: S.optional(GetClusterResponseSystemData),
+          zones: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(87, __c10, 7)),
+          identity: S.optional(__S(90, __c11, 2)),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "GetClusterResponse" });
     case 4:
@@ -5917,8 +4631,8 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(AsyncOperationResultStatus),
-          error: S.optional(ApplicationPropertiesInputErrorsItem),
+          status: S.optional(S.String),
+          error: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "AsyncOperationResult" });
     case 6:
@@ -5973,7 +4687,7 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "GetConfigurationRequest" });
     case 1:
-      return S.suspend(() => ClusterConfiguration.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetConfigurationResponse",
       });
     case 2:
@@ -6042,7 +4756,7 @@ function __c15(j: number): any {
         S.Struct({
           clusterMonitoringEnabled: S.optional(S.Boolean),
           workspaceId: S.optional(S.String),
-          selectedConfigurations: S.optional(AzureMonitorSelectedConfigurations),
+          selectedConfigurations: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "AzureMonitorResponse" });
     case 7:
@@ -6105,27 +4819,27 @@ function __c16(j: number): any {
           friendlyName: S.optional(S.String),
           displayName: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
-          componentVersions: S.optional(VersionSpecComponentVersionsMap),
+          componentVersions: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "VersionSpec" });
     case 3:
-      return S.Array(VersionSpec);
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          available: S.optional(VersionsCapabilityAvailableList),
+          available: S.optional(__S(131, __c16, 3)),
         }),
       ).annotate({ identifier: "VersionsCapability" });
     case 5:
-      return S.Record(S.String, VersionsCapability);
+      return S.Record(S.String, __S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          available: S.optional(RegionsCapabilityAvailableList),
+          available: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "RegionsCapability" });
     case 7:
-      return S.Record(S.String, RegionsCapability);
+      return S.Record(S.String, __S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
@@ -6139,22 +4853,22 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "RegionalQuotaCapability" });
     case 1:
-      return S.Array(RegionalQuotaCapability);
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           coresUsed: S.optional(S.Number),
           maxCoresAllowed: S.optional(S.Number),
-          regionalQuotas: S.optional(QuotaCapabilityRegionalQuotasList),
+          regionalQuotas: S.optional(__S(137, __c17, 1)),
         }),
       ).annotate({ identifier: "QuotaCapability" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(CapabilitiesResultVersionsMap),
-          regions: S.optional(CapabilitiesResultRegionsMap),
-          features: S.optional(CapabilitiesResultFeaturesList),
-          quota: S.optional(QuotaCapability),
+          versions: S.optional(__S(133, __c16, 5)),
+          regions: S.optional(__S(135, __c16, 7)),
+          features: S.optional(__S(24, __c3, 0)),
+          quota: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({ identifier: "CapabilitiesResult" });
     case 4:
@@ -6179,12 +4893,10 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(GetPrivateEndpointConnectionResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            GetPrivateEndpointConnectionResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -6196,8 +4908,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: PrivateEndpointConnectionProperties,
-          systemData: S.optional(GetPrivateEndpointConnectionResponseSystemData),
+          properties: __S(83, __c10, 3),
+          systemData: S.optional(__S(141, __c17, 5)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponse",
@@ -6228,10 +4940,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(GetPrivateLinkResourceResponsePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(
-            GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList,
-          ),
+          requiredMembers: S.optional(__S(24, __c3, 0)),
+          requiredZoneNames: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponseProperties",
@@ -6242,8 +4952,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(GetPrivateLinkResourceResponseProperties),
-          systemData: S.optional(GetPrivateLinkResourceResponseSystemData),
+          properties: S.optional(__S(144, __c18, 0)),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -6294,21 +5004,21 @@ function __c18(j: number): any {
         identifier: "ScriptActionExecutionSummary",
       });
     case 5:
-      return S.Array(ScriptActionExecutionSummary);
+      return S.Array(__S(148, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: GetScriptActionExecutionDetailResponseRolesList,
+          roles: __S(24, __c3, 0),
           applicationName: S.optional(S.String),
           scriptExecutionId: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           status: S.optional(S.String),
           operation: S.optional(S.String),
-          executionSummary: S.optional(GetScriptActionExecutionDetailResponseExecutionSummaryList),
+          executionSummary: S.optional(__S(149, __c18, 5)),
           debugInformation: S.optional(S.String),
         }),
       ).annotate({
@@ -6357,10 +5067,10 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(ApplicationSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(ApplicationSystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationSystemData" });
@@ -6371,17 +5081,17 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(ApplicationTagsMap),
-          properties: S.optional(ApplicationProperties),
-          systemData: S.optional(ApplicationSystemData),
+          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(57, __c7, 1)),
+          systemData: S.optional(__S(153, __c19, 1)),
         }),
       ).annotate({ identifier: "Application" });
     case 3:
-      return S.Array(Application);
+      return S.Array(__S(154, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ApplicationListResultValueList),
+          value: S.optional(__S(155, __c19, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationListResult" });
@@ -6407,17 +5117,17 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ClusterTagsMap),
+          tags: S.optional(__S(2, __c0, 2)),
           location: S.String,
           etag: S.optional(S.String),
-          zones: S.optional(ClusterZonesList),
-          properties: S.optional(ClusterGetProperties),
-          identity: S.optional(ClusterIdentity),
-          systemData: S.optional(ClusterSystemData),
+          zones: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(87, __c10, 7)),
+          identity: S.optional(__S(90, __c11, 2)),
+          systemData: S.optional(__S(153, __c19, 1)),
         }),
       ).annotate({ identifier: "Cluster" });
     case 7:
-      return S.Array(Cluster);
+      return S.Array(__S(158, __c19, 6));
   }
 }
 function __c20(j: number): any {
@@ -6425,7 +5135,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ClusterListResultValueList),
+          value: S.optional(__S(159, __c19, 7)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
@@ -6460,11 +5170,11 @@ function __c20(j: number): any {
         identifier: "ListConfigurationsRequest",
       });
     case 3:
-      return S.Record(S.String, ClusterConfiguration);
+      return S.Record(S.String, __S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(ClusterConfigurationsConfigurationsMap),
+          configurations: S.optional(__S(163, __c20, 3)),
         }),
       ).annotate({ identifier: "ClusterConfigurations" });
     case 5:
@@ -6486,13 +5196,13 @@ function __c20(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          filterMode: S.optional(VmSizeCompatibilityFilterV2FilterMode),
-          regions: S.optional(VmSizeCompatibilityFilterV2RegionsList),
-          clusterFlavors: S.optional(VmSizeCompatibilityFilterV2ClusterFlavorsList),
-          nodeTypes: S.optional(VmSizeCompatibilityFilterV2NodeTypesList),
-          clusterVersions: S.optional(VmSizeCompatibilityFilterV2ClusterVersionsList),
-          osType: S.optional(VmSizeCompatibilityFilterV2OsTypeList),
-          vmSizes: S.optional(VmSizeCompatibilityFilterV2VmSizesList),
+          filterMode: S.optional(S.String),
+          regions: S.optional(__S(24, __c3, 0)),
+          clusterFlavors: S.optional(__S(24, __c3, 0)),
+          nodeTypes: S.optional(__S(24, __c3, 0)),
+          clusterVersions: S.optional(__S(24, __c3, 0)),
+          osType: S.optional(__S(4, __c0, 4)),
+          vmSizes: S.optional(__S(24, __c3, 0)),
           espApplied: S.optional(S.String),
           computeIsolationSupported: S.optional(S.String),
         }),
@@ -6500,7 +5210,7 @@ function __c20(j: number): any {
         identifier: "VmSizeCompatibilityFilterV2",
       });
     case 7:
-      return S.Array(VmSizeCompatibilityFilterV2);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -6521,7 +5231,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "VmSizeProperty" });
     case 1:
-      return S.Array(VmSizeProperty);
+      return S.Array(__S(168, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6531,27 +5241,27 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "BillingMeters" });
     case 3:
-      return S.Array(BillingMeters);
+      return S.Array(__S(170, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           diskRpMeter: S.optional(S.String),
           sku: S.optional(S.String),
-          tier: S.optional(DiskBillingMetersTier),
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskBillingMeters" });
     case 5:
-      return S.Array(DiskBillingMeters);
+      return S.Array(__S(172, __c21, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          billingMeters: S.optional(BillingResourcesBillingMetersList),
-          diskBillingMeters: S.optional(BillingResourcesDiskBillingMetersList),
+          billingMeters: S.optional(__S(171, __c21, 3)),
+          diskBillingMeters: S.optional(__S(173, __c21, 5)),
         }),
       ).annotate({ identifier: "BillingResources" });
     case 7:
-      return S.Array(BillingResources);
+      return S.Array(__S(174, __c21, 6));
   }
 }
 function __c22(j: number): any {
@@ -6559,13 +5269,11 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vmSizes: S.optional(BillingResponseListResultVmSizesList),
-          vmSizesWithEncryptionAtHost: S.optional(
-            BillingResponseListResultVmSizesWithEncryptionAtHostList,
-          ),
-          vmSizeFilters: S.optional(BillingResponseListResultVmSizeFiltersList),
-          vmSizeProperties: S.optional(BillingResponseListResultVmSizePropertiesList),
-          billingResources: S.optional(BillingResponseListResultBillingResourcesList),
+          vmSizes: S.optional(__S(24, __c3, 0)),
+          vmSizesWithEncryptionAtHost: S.optional(__S(24, __c3, 0)),
+          vmSizeFilters: S.optional(__S(167, __c20, 7)),
+          vmSizeProperties: S.optional(__S(169, __c21, 1)),
+          billingResources: S.optional(__S(175, __c21, 7)),
         }),
       ).annotate({
         identifier: "BillingResponseListResult",
@@ -6599,15 +5307,15 @@ function __c22(j: number): any {
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(LocalizedName),
+          name: S.optional(__S(178, __c22, 2)),
         }),
       ).annotate({ identifier: "Usage" });
     case 4:
-      return S.Array(Usage);
+      return S.Array(__S(179, __c22, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(UsagesListResultValueList),
+          value: S.optional(__S(180, __c22, 4)),
         }),
       ).annotate({ identifier: "UsagesListResult" });
     case 6:
@@ -6644,7 +5352,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 1:
-      return S.Array(Dimension);
+      return S.Array(__S(184, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6653,8 +5361,8 @@ function __c23(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(MetricSpecificationsSupportedAggregationTypesList),
-          supportedTimeGrainTypes: S.optional(MetricSpecificationsSupportedTimeGrainTypesList),
+          supportedAggregationTypes: S.optional(__S(24, __c3, 0)),
+          supportedTimeGrainTypes: S.optional(__S(24, __c3, 0)),
           enableRegionalMdmAccount: S.optional(S.Boolean),
           sourceMdmAccount: S.optional(S.String),
           sourceMdmNamespace: S.optional(S.String),
@@ -6664,33 +5372,33 @@ function __c23(j: number): any {
           resourceIdDimensionNameOverride: S.optional(S.String),
           isInternal: S.optional(S.Boolean),
           delegateMetricNameOverride: S.optional(S.String),
-          dimensions: S.optional(MetricSpecificationsDimensionsList),
+          dimensions: S.optional(__S(185, __c23, 1)),
         }),
       ).annotate({ identifier: "MetricSpecifications" });
     case 3:
-      return S.Array(MetricSpecifications);
+      return S.Array(__S(186, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
+          metricSpecifications: S.optional(__S(187, __c23, 3)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ServiceSpecification),
+          serviceSpecification: S.optional(__S(188, __c23, 4)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
-          properties: S.optional(OperationProperties),
+          display: S.optional(__S(183, __c22, 7)),
+          properties: S.optional(__S(189, __c23, 5)),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(190, __c23, 6));
   }
 }
 function __c24(j: number): any {
@@ -6698,7 +5406,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(191, __c23, 7)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -6725,18 +5433,18 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: PrivateEndpointConnectionProperties,
-          systemData: S.optional(PrivateEndpointConnectionSystemData),
+          properties: __S(83, __c10, 3),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 3:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListResultValueList),
+          value: S.optional(__S(195, __c24, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6765,12 +5473,12 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(PrivateLinkResourceProperties),
-          systemData: S.optional(PrivateLinkResourceSystemData),
+          properties: S.optional(__S(144, __c18, 0)),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 7:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(198, __c24, 6));
   }
 }
 function __c25(j: number): any {
@@ -6778,7 +5486,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourceListResultValueList),
+          value: S.optional(__S(199, __c24, 7)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
@@ -6801,11 +5509,11 @@ function __c25(j: number): any {
         identifier: "ListScriptActionByClusterRequest",
       });
     case 2:
-      return S.Array(ScriptActionsListValueItem);
+      return S.Array(__S(150, __c18, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ScriptActionsListValueList),
+          value: S.optional(__S(202, __c25, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptActionsList" });
@@ -6829,7 +5537,7 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ScriptActionExecutionHistoryListValueList),
+          value: S.optional(__S(202, __c25, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6865,9 +5573,9 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(HostInfo);
+      return S.Array(__S(207, __c25, 7));
     case 1:
-      return S.suspend(() => HostInfoListResult.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(208, __c26, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVirtualMachineHostsResponse",
       });
     case 2:
@@ -6875,10 +5583,10 @@ function __c26(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          tags: S.optional(LocationsValidateClusterCreateRequestRequestTagsMap),
-          zones: S.optional(LocationsValidateClusterCreateRequestRequestZonesList),
-          properties: S.optional(ClusterCreatePropertiesInput),
-          identity: S.optional(ClusterIdentityInput),
+          tags: S.optional(__S(2, __c0, 2)),
+          zones: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
+          identity: S.optional(__S(75, __c9, 3)),
           name: S.optional(S.String),
           type: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -6900,11 +5608,11 @@ function __c26(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           errorResource: S.optional(S.String),
-          messageArguments: S.optional(ValidationErrorInfoMessageArgumentsList),
+          messageArguments: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "ValidationErrorInfo" });
     case 4:
-      return S.Array(ValidationErrorInfo);
+      return S.Array(__S(211, __c26, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6918,14 +5626,14 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "AaddsResourceDetails" });
     case 6:
-      return S.Array(AaddsResourceDetails);
+      return S.Array(__S(213, __c26, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          validationErrors: S.optional(ClusterCreateValidationResultValidationErrorsList),
-          validationWarnings: S.optional(ClusterCreateValidationResultValidationWarningsList),
+          validationErrors: S.optional(__S(212, __c26, 4)),
+          validationWarnings: S.optional(__S(212, __c26, 4)),
           estimatedCreationDuration: S.optional(S.String),
-          aaddsResourcesDetails: S.optional(ClusterCreateValidationResultAaddsResourcesDetailsList),
+          aaddsResourcesDetails: S.optional(__S(214, __c26, 6)),
         }),
       ).annotate({
         identifier: "ClusterCreateValidationResult",
@@ -6937,7 +5645,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          privateLinkServiceConnectionState: __S(82, __c10, 2),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -6949,7 +5657,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: PrivateEndpointConnectionPropertiesInput,
+          properties: __S(216, __c27, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6985,7 +5693,7 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          roleName: ResizeClusterRequestRoleName.pipe(T.Label()),
+          roleName: S.String.pipe(T.Label()),
           targetInstanceCount: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -7002,7 +5710,7 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          body: RestartHostsParameters.pipe(T.HttpBody()),
+          body: __S(24, __c3, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7040,7 +5748,7 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(UpdateClusterRequestTagsMap)),
+          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7056,13 +5764,13 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(UpdateClusterResponseTagsMap),
+          tags: S.optional(__S(2, __c0, 2)),
           location: S.String,
           etag: S.optional(S.String),
-          zones: S.optional(UpdateClusterResponseZonesList),
-          properties: S.optional(ClusterGetProperties),
-          identity: S.optional(ClusterIdentity),
-          systemData: S.optional(UpdateClusterResponseSystemData),
+          zones: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(87, __c10, 7)),
+          identity: S.optional(__S(90, __c11, 2)),
+          systemData: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "UpdateClusterResponse" });
   }
@@ -7075,8 +5783,8 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          roleName: UpdateClusterAutoScaleConfigurationRequestRoleName.pipe(T.Label()),
-          autoscale: S.optional(Autoscale),
+          roleName: S.String.pipe(T.Label()),
+          autoscale: S.optional(__S(9, __c1, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7135,4 +5843,9 @@ function __c28(j: number): any {
         identifier: "UpdateClusterIdentityCertificateRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

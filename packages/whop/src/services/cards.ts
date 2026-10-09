@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -48,8 +50,6 @@ export class NotFound
 
 /** The window the spend limit applies to. */
 export type CreateCardRequestSpendLimitFrequency = "daily" | "weekly" | "monthly" | "one_time";
-const CreateCardRequestSpendLimitFrequency = S.String;
-
 export interface CreateCardRequest {
   /** The owning account ID (a biz_ identifier). Provide this or user_id. */
   account_id?: string;
@@ -68,8 +68,6 @@ export interface CreateCardRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateCardRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateCardRequest>;
-
 /** The billing address. */
 export interface CreateCardResponseBilling {
   /** Billing city. */
@@ -85,11 +83,6 @@ export interface CreateCardResponseBilling {
   /** Billing region or state. */
   region: string | null;
 }
-const CreateCardResponseBilling = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateCardResponseBilling>;
-
 /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
 export type CreateCardResponseLimitFrequency =
   | "daily"
@@ -97,8 +90,6 @@ export type CreateCardResponseLimitFrequency =
   | "monthly"
   | "one_time"
   | "per_transaction";
-const CreateCardResponseLimitFrequency = S.String;
-
 /** The spending limit configuration. */
 export interface CreateCardResponseLimit {
   /** The limit amount in dollars. */
@@ -106,14 +97,7 @@ export interface CreateCardResponseLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: CreateCardResponseLimitFrequency;
 }
-const CreateCardResponseLimit = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateCardResponseLimit>;
-
 export type CreateCardResponseObject = "card";
-const CreateCardResponseObject = S.String;
-
 /** Sensitive card details. Present only on `GET /cards/:id` for active cards; `null` when the card is inactive or details cannot be retrieved. */
 export interface CreateCardResponseSecrets {
   /** Full card number. */
@@ -125,19 +109,10 @@ export interface CreateCardResponseSecrets {
   /** The card PIN. Only returned when the request is authenticated as the user the card is assigned to; `null` for all other callers, including account API keys. */
   pin: string | null;
 }
-const CreateCardResponseSecrets = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateCardResponseSecrets>;
-
 /** The card status. `denied` means the issuer declined the cardholder, so the card will never be issued. */
 export type CreateCardResponseStatus = "active" | "frozen" | "canceled" | "invited" | "denied";
-const CreateCardResponseStatus = S.String;
-
 /** The card type. */
 export type CreateCardResponseType = "virtual" | "physical";
-const CreateCardResponseType = S.String;
-
 export interface CreateCardResponse {
   /** The billing address. */
   billing: CreateCardResponseBilling | null;
@@ -169,8 +144,6 @@ export interface CreateCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-const CreateCardResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateCardResponse>;
-
 export interface GetCardRequest {
   /** Card ID to retrieve, prefixed `icrd_`. */
   id: string;
@@ -179,8 +152,6 @@ export interface GetCardRequest {
   /** The owning user ID (a user_ identifier). Provide this or account_id. */
   user_id?: string;
 }
-const GetCardRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetCardRequest>;
-
 /** The billing address. */
 export type GetCardResponseBilling = CreateCardResponseBilling;
 /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
@@ -235,27 +206,16 @@ export interface GetCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-const GetCardResponse = CreateCardResponse as any as S.Schema<GetCardResponse>;
-
 export interface GetCardTransactionRequest {
   /** The card transaction ID, prefixed `citx_`. */
   id: string;
   /** The account that owns the transaction, prefixed `biz_`. Defaults to the credential's account. */
   account_id?: string;
 }
-const GetCardTransactionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetCardTransactionRequest>;
-
 /** Current status of the transaction. */
 export type CardTransactionStatus = "pending" | "completed" | "reversed" | "declined";
-const CardTransactionStatus = S.String;
-
 /** The kind of card transaction. Always `spend` today. */
 export type CardTransactionTransactionType = "spend";
-const CardTransactionTransactionType = S.String;
-
 export interface CardTransaction {
   /** The card this transaction was charged to, prefixed `icrd_`. */
   card_id: string;
@@ -292,16 +252,12 @@ export interface CardTransaction {
   /** Amount charged in USD. Negative when the merchant refunded the card. */
   usd_amount: number | null;
 }
-const CardTransaction = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CardTransaction>;
-
 export interface ListCardsRequest {
   /** The owning account ID (a biz_ identifier). Provide this or user_id. */
   account_id?: string;
   /** The owning user ID (a user_ identifier). Provide this or account_id. */
   user_id?: string;
 }
-const ListCardsRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListCardsRequest>;
-
 /** The billing address. */
 export type ListCardsResponseDataItemBilling = CreateCardResponseBilling;
 /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
@@ -311,8 +267,6 @@ export type ListCardsResponseDataItemLimitFrequency =
   | "monthly"
   | "one_time"
   | "per_transaction";
-const ListCardsResponseDataItemLimitFrequency = S.String;
-
 /** The spending limit configuration. */
 export interface ListCardsResponseDataItemLimit {
   /** The limit amount in dollars. */
@@ -320,14 +274,7 @@ export interface ListCardsResponseDataItemLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: ListCardsResponseDataItemLimitFrequency;
 }
-const ListCardsResponseDataItemLimit = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListCardsResponseDataItemLimit>;
-
 export type ListCardsResponseDataItemObject = "card";
-const ListCardsResponseDataItemObject = S.String;
-
 /** Sensitive card details. Present only on `GET /cards/:id` for active cards; `null` when the card is inactive or details cannot be retrieved. */
 export type ListCardsResponseDataItemSecrets = CreateCardResponseSecrets;
 /** The card status. `denied` means the issuer declined the cardholder, so the card will never be issued. */
@@ -337,12 +284,8 @@ export type ListCardsResponseDataItemStatus =
   | "canceled"
   | "invited"
   | "denied";
-const ListCardsResponseDataItemStatus = S.String;
-
 /** The card type. */
 export type ListCardsResponseDataItemType = "virtual" | "physical";
-const ListCardsResponseDataItemType = S.String;
-
 export interface ListCardsResponseDataItem {
   /** The billing address. */
   billing: CreateCardResponseBilling | null;
@@ -374,45 +317,16 @@ export interface ListCardsResponseDataItem {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-const ListCardsResponseDataItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListCardsResponseDataItem>;
-
 export type ListCardsResponseDataList = Array<ListCardsResponseDataItem>;
-const ListCardsResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListCardsResponseDataList>;
-
 export interface ListCardsResponse {
   data: ListCardsResponseDataList;
 }
-const ListCardsResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListCardsResponse>;
-
 export type ListCardTransactionsRequestTransactionIdsList = Array<string>;
-const ListCardTransactionsRequestTransactionIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListCardTransactionsRequestTransactionIdsList>;
-
 export type ListCardTransactionsRequestCardIdList = Array<string>;
-const ListCardTransactionsRequestCardIdList =
-  ListCardTransactionsRequestTransactionIdsList as any as S.Schema<ListCardTransactionsRequestCardIdList>;
-
 export type ListCardTransactionsRequestCardholderIdList = Array<string>;
-const ListCardTransactionsRequestCardholderIdList =
-  ListCardTransactionsRequestTransactionIdsList as any as S.Schema<ListCardTransactionsRequestCardholderIdList>;
-
 export type ListCardTransactionsRequestStatus = "pending" | "completed" | "reversed" | "declined";
-const ListCardTransactionsRequestStatus = S.String;
-
 export type ListCardTransactionsRequestOrder = "created_at";
-const ListCardTransactionsRequestOrder = S.String;
-
 export type ListCardTransactionsRequestDirection = "asc" | "desc";
-const ListCardTransactionsRequestDirection = S.String;
-
 export interface ListCardTransactionsRequest {
   /** The account whose card transactions to list, prefixed `biz_`. Defaults to the credential's account. */
   account_id?: string;
@@ -441,37 +355,17 @@ export interface ListCardTransactionsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListCardTransactionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListCardTransactionsRequest>;
-
 export type ListCardTransactionsResponseDataList = Array<CardTransaction>;
-const ListCardTransactionsResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListCardTransactionsResponseDataList>;
-
 export interface ListCardTransactionsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListCardTransactionsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListCardTransactionsResponsePageInfo>;
-
 export interface ListCardTransactionsResponse {
   data: ListCardTransactionsResponseDataList;
   page_info: ListCardTransactionsResponsePageInfo;
 }
-const ListCardTransactionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListCardTransactionsResponse>;
-
 /** The billing address. On an issued card this replaces the card's billing address and region is also required. On an invited card, sending it as the invited user completes onboarding and starts card provisioning. */
 export interface UpdateCardRequestBilling {
   /** Billing city. */
@@ -487,11 +381,6 @@ export interface UpdateCardRequestBilling {
   /** Billing region or state. Required when updating an issued card's billing address. */
   region?: string;
 }
-const UpdateCardRequestBilling = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UpdateCardRequestBilling>;
-
 /** Details for the invited cardholder, accepted only while completing onboarding on an invited card. The legal name comes from an approved identity verification when the invited user has one, and from these fields when they do not. */
 export interface UpdateCardRequestCardholder {
   /** Email address for the invited cardholder. */
@@ -503,15 +392,8 @@ export interface UpdateCardRequestCardholder {
   /** Phone number for the invited cardholder. */
   phone?: string;
 }
-const UpdateCardRequestCardholder = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdateCardRequestCardholder>;
-
 /** The window the spend limit applies to. */
 export type UpdateCardRequestSpendLimitFrequency = "daily" | "weekly" | "monthly" | "one_time";
-const UpdateCardRequestSpendLimitFrequency = S.String;
-
 export interface UpdateCardRequest {
   /** Card ID to retrieve, prefixed `icrd_`. */
   id: string;
@@ -540,8 +422,6 @@ export interface UpdateCardRequest {
   /** The owning user ID (a user_ identifier). Provide this or account_id. */
   user_id?: string;
 }
-const UpdateCardRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UpdateCardRequest>;
-
 /** The billing address. */
 export type UpdateCardResponseBilling = CreateCardResponseBilling;
 /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
@@ -596,8 +476,6 @@ export interface UpdateCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-const UpdateCardResponse = CreateCardResponse as any as S.Schema<UpdateCardResponse>;
-
 export type CreateCardError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create Card Issue a virtual card, or apply for card issuing. An account with no application files one here and gets back a `202`; call again to issue the card once it is approved. */
 export const createCard: API.OperationMethod<
@@ -606,8 +484,8 @@ export const createCard: API.OperationMethod<
   CreateCardError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardRequest,
-  output: CreateCardResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCardRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateCardResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -621,8 +499,8 @@ export const getCard: API.OperationMethod<
   GetCardError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardRequest,
-  output: GetCardResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<GetCardRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetCardResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -636,8 +514,8 @@ export const getCardTransaction: API.OperationMethod<
   GetCardTransactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardTransactionRequest,
-  output: CardTransaction,
+  input: __S(6, __c0, 6) as any as S.Schema<GetCardTransactionRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CardTransaction>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -651,8 +529,8 @@ export const listCards: API.OperationMethod<
   ListCardsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCardsRequest,
-  output: ListCardsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListCardsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ListCardsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -668,8 +546,8 @@ export const listCardTransactions: API.PaginatedOperationMethod<
   CardTransaction
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCardTransactionsRequest,
-    output: ListCardTransactionsResponse,
+    input: __S(14, __c1, 6) as any as S.Schema<ListCardTransactionsRequest>,
+    output: __S(17, __c2, 1) as any as S.Schema<ListCardTransactionsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -693,8 +571,8 @@ export const updateCard: API.OperationMethod<
   UpdateCardError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCardRequest,
-  output: UpdateCardResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<UpdateCardRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<UpdateCardResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -710,7 +588,7 @@ function __c0(j: number): any {
           assigned_user_id: S.optional(S.String),
           name: S.optional(S.String),
           spend_limit: S.optional(S.Number),
-          spend_limit_frequency: S.optional(CreateCardRequestSpendLimitFrequency),
+          spend_limit_frequency: S.optional(S.String),
           transaction_limit: S.optional(S.Number),
           user_id: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -733,7 +611,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
-          frequency: CreateCardResponseLimitFrequency,
+          frequency: S.String,
         }),
       ).annotate({ identifier: "CreateCardResponseLimit" });
     case 3:
@@ -750,20 +628,20 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          billing: S.NullOr(CreateCardResponseBilling),
+          billing: S.NullOr(__S(1, __c0, 1)),
           canceled_at: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
           expiration_month: S.NullOr(S.String),
           expiration_year: S.NullOr(S.String),
           id: S.String,
           last4: S.NullOr(S.String),
-          limit: S.NullOr(CreateCardResponseLimit),
+          limit: S.NullOr(__S(2, __c0, 2)),
           name: S.NullOr(S.String),
-          object: CreateCardResponseObject,
-          secrets: S.optional(S.NullOr(CreateCardResponseSecrets)),
+          object: S.String,
+          secrets: S.optional(S.NullOr(__S(3, __c0, 3))),
           spent_last_month: S.NullOr(S.Number),
-          status: S.NullOr(CreateCardResponseStatus),
-          type: S.NullOr(CreateCardResponseType),
+          status: S.NullOr(S.String),
+          type: S.NullOr(S.String),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CreateCardResponse" });
@@ -801,8 +679,8 @@ function __c0(j: number): any {
           merchant_icon_url: S.NullOr(S.String),
           merchant_name: S.NullOr(S.String),
           posted_at: S.NullOr(S.String),
-          status: CardTransactionStatus,
-          transaction_type: CardTransactionTransactionType,
+          status: S.String,
+          transaction_type: S.String,
           usd_amount: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "CardTransaction" });
@@ -821,7 +699,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
-          frequency: ListCardsResponseDataItemLimitFrequency,
+          frequency: S.String,
         }),
       ).annotate({
         identifier: "ListCardsResponseDataItemLimit",
@@ -829,31 +707,31 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billing: S.NullOr(CreateCardResponseBilling),
+          billing: S.NullOr(__S(1, __c0, 1)),
           canceled_at: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
           expiration_month: S.NullOr(S.String),
           expiration_year: S.NullOr(S.String),
           id: S.String,
           last4: S.NullOr(S.String),
-          limit: S.NullOr(ListCardsResponseDataItemLimit),
+          limit: S.NullOr(__S(9, __c1, 1)),
           name: S.NullOr(S.String),
-          object: ListCardsResponseDataItemObject,
-          secrets: S.optional(S.NullOr(CreateCardResponseSecrets)),
+          object: S.String,
+          secrets: S.optional(S.NullOr(__S(3, __c0, 3))),
           spent_last_month: S.NullOr(S.Number),
-          status: S.NullOr(ListCardsResponseDataItemStatus),
-          type: S.NullOr(ListCardsResponseDataItemType),
+          status: S.NullOr(S.String),
+          type: S.NullOr(S.String),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListCardsResponseDataItem",
       });
     case 3:
-      return S.Array(ListCardsResponseDataItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListCardsResponseDataList,
+          data: __S(11, __c1, 3),
         }),
       ).annotate({ identifier: "ListCardsResponse" });
     case 5:
@@ -862,16 +740,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          transaction_ids: S.optional(
-            ListCardTransactionsRequestTransactionIdsList.pipe(T.Query()),
-          ),
-          card_id: S.optional(ListCardTransactionsRequestCardIdList.pipe(T.Query())),
-          cardholder_id: S.optional(ListCardTransactionsRequestCardholderIdList.pipe(T.Query())),
-          status: S.optional(ListCardTransactionsRequestStatus.pipe(T.Query())),
+          transaction_ids: S.optional(__S(13, __c1, 5).pipe(T.Query())),
+          card_id: S.optional(__S(13, __c1, 5).pipe(T.Query())),
+          cardholder_id: S.optional(__S(13, __c1, 5).pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListCardTransactionsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListCardTransactionsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -881,7 +757,7 @@ function __c1(j: number): any {
         identifier: "ListCardTransactionsRequest",
       });
     case 7:
-      return S.Array(CardTransaction);
+      return S.Array(__S(7, __c0, 7));
   }
 }
 function __c2(j: number): any {
@@ -900,8 +776,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListCardTransactionsResponseDataList,
-          page_info: ListCardTransactionsResponsePageInfo,
+          data: __S(15, __c1, 7),
+          page_info: __S(16, __c2, 0),
         }),
       ).annotate({
         identifier: "ListCardTransactionsResponse",
@@ -933,18 +809,23 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String),
-          billing: S.optional(UpdateCardRequestBilling),
+          billing: S.optional(__S(18, __c2, 2)),
           canceled: S.optional(S.Boolean),
-          cardholder: S.optional(UpdateCardRequestCardholder),
+          cardholder: S.optional(__S(19, __c2, 3)),
           frozen: S.optional(S.Boolean),
           name: S.optional(S.String),
           pin: S.optional(S.String),
           remove_limit: S.optional(S.Boolean),
           spend_limit: S.optional(S.Number),
-          spend_limit_frequency: S.optional(UpdateCardRequestSpendLimitFrequency),
+          spend_limit_frequency: S.optional(S.String),
           transaction_limit: S.optional(S.Number),
           user_id: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/cards/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateCardRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

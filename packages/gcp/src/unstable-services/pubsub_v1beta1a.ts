@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request for the Acknowledge method. */
 export interface AcknowledgeRequest {
   /** The subscription whose message is being acknowledged. */
@@ -72,28 +72,17 @@ export interface AcknowledgeRequest {
   /** The acknowledgment ID for the message being acknowledged. This was returned by the Pub/Sub system in the Pull response. */
   ackId?: StringList;
 }
-const AcknowledgeRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AcknowledgeRequest>;
-
 export interface AcknowledgeSubscriptionsRequest {
   /** Request body */
   body?: AcknowledgeRequest;
 }
-const AcknowledgeSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcknowledgeSubscriptionsRequest>;
-
 /** An empty message that you can re-use to avoid defining duplicated empty messages in your project. A typical example is to use it as argument or the return value of a service API. For instance: service Foo { rpc Bar (proto2.Empty) returns (proto2.Empty) { }; }; BEGIN GOOGLE-INTERNAL The difference between this one and net/rpc/empty-message.proto is that 1) The generated message here is in proto2 C++ API. 2) The proto2.Empty has minimum dependencies (no message_set or net/rpc dependencies) END GOOGLE-INTERNAL */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
-
 /** Configuration for a push delivery endpoint. */
 export interface PushConfig {
   /** A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push". */
   pushEndpoint?: string;
 }
-const PushConfig = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PushConfig>;
-
 /** A subscription resource. */
 export interface Subscription {
   /** The name of the topic from which this subscription is receiving messages. */
@@ -105,60 +94,35 @@ export interface Subscription {
   /** For either push or pull delivery, the value is the maximum time after a subscriber receives a message before the subscriber should acknowledge or Nack the message. If the Ack deadline for a message passes without an Ack or a Nack, the Pub/Sub system will eventually redeliver the message. If a subscriber acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it is possible that the message has been already delivered again. Multiple Acks to the message are allowed and will succeed. For push delivery, this value is used to set the request timeout for the call to the push endpoint. For pull delivery, this value is used as the initial value for the Ack deadline. It may be overridden for each message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system will not deliver that message to another pull subscriber (on a best-effort basis). */
   ackDeadlineSeconds?: number;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Subscription>;
-
 export interface CreateSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const CreateSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateSubscriptionsRequest>;
-
 /** A topic resource. */
 export interface Topic {
   /** Name of the topic. */
   name?: string;
 }
-const Topic = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Topic>;
-
 export interface CreateTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-const CreateTopicsRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateTopicsRequest>;
-
 export interface DeleteSubscriptionsRequest {
   /** The subscription to delete. */
   subscription: string;
 }
-const DeleteSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteSubscriptionsRequest>;
-
 export interface DeleteTopicsRequest {
   /** Name of the topic to delete. */
   topic: string;
 }
-const DeleteTopicsRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteTopicsRequest>;
-
 export interface GetSubscriptionsRequest {
   /** The name of the subscription to get. */
   subscription: string;
 }
-const GetSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetSubscriptionsRequest>;
-
 export interface GetTopicsRequest {
   /** The name of the topic to get. */
   topic: string;
 }
-const GetTopicsRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetTopicsRequest>;
-
 export interface ListSubscriptionsRequest {
   /** A valid label query expression. */
   query?: string;
@@ -167,14 +131,7 @@ export interface ListSubscriptionsRequest {
   /** The value obtained in the last ListSubscriptionsResponse for continuation. */
   pageToken?: string;
 }
-const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListSubscriptionsRequest>;
-
 export type SubscriptionList = Array<Subscription>;
-const SubscriptionList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SubscriptionList>;
-
 /** Response for the ListSubscriptions method. */
 export interface ListSubscriptionsResponse {
   /** The subscriptions that match the request. */
@@ -182,11 +139,6 @@ export interface ListSubscriptionsResponse {
   /** If not empty, indicates that there are more subscriptions that match the request and this value should be passed to the next ListSubscriptionsRequest to continue. */
   nextPageToken?: string;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListSubscriptionsResponse>;
-
 export interface ListTopicsRequest {
   /** The value obtained in the last ListTopicsResponse for continuation. */
   pageToken?: string;
@@ -195,11 +147,7 @@ export interface ListTopicsRequest {
   /** Maximum number of topics to return. */
   maxResults?: number;
 }
-const ListTopicsRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListTopicsRequest>;
-
 export type TopicList = Array<Topic>;
-const TopicList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TopicList>;
-
 /** Response for the ListTopics method. */
 export interface ListTopicsResponse {
   /** The resulting topics. */
@@ -207,8 +155,6 @@ export interface ListTopicsResponse {
   /** If not empty, indicates that there are more topics that match the request, and this value should be passed to the next ListTopicsRequest to continue. */
   nextPageToken?: string;
 }
-const ListTopicsResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListTopicsResponse>;
-
 /** Request for the ModifyAckDeadline method. */
 export interface ModifyAckDeadlineRequest {
   /** The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the ModifyAckDeadline call was made. Specifying zero may immediately make the message available for another pull request. */
@@ -220,20 +166,10 @@ export interface ModifyAckDeadlineRequest {
   /** List of acknowledgment IDs. Either this field or ack_id should be populated, not both. */
   ackIds?: StringList;
 }
-const ModifyAckDeadlineRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ModifyAckDeadlineRequest>;
-
 export interface ModifyAckDeadlineSubscriptionsRequest {
   /** Request body */
   body?: ModifyAckDeadlineRequest;
 }
-const ModifyAckDeadlineSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ModifyAckDeadlineSubscriptionsRequest>;
-
 /** Request for the ModifyPushConfig method. */
 export interface ModifyPushConfigRequest {
   /** An empty push_config indicates that the Pub/Sub system should pause pushing messages from the given subscription. */
@@ -241,20 +177,10 @@ export interface ModifyPushConfigRequest {
   /** The name of the subscription. */
   subscription?: string;
 }
-const ModifyPushConfigRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ModifyPushConfigRequest>;
-
 export interface ModifyPushConfigSubscriptionsRequest {
   /** Request body */
   body?: ModifyPushConfigRequest;
 }
-const ModifyPushConfigSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ModifyPushConfigSubscriptionsRequest>;
-
 /** A key-value pair applied to a given object. */
 export interface Label {
   /** The key of a label is a syntactically valid URL (as per RFC 1738) with the "scheme" and initial slashes omitted and with the additional restrictions noted below. Each key should be globally unique. The "host" portion is called the "namespace" and is not necessarily resolvable to a network endpoint. Instead, the namespace indicates what system or entity defines the semantics of the label. Namespaces do not restrict the set of objects to which a label may be associated. Keys are defined by the following grammar: key = hostname "/" kpath kpath = ksegment *[ "/" ksegment ] ksegment = alphadigit | *[ alphadigit | "-" | "_" | "." ] where "hostname" and "alphadigit" are defined as in RFC 1738. Example key: spanner.google.com/universe */
@@ -264,11 +190,7 @@ export interface Label {
   /** An integer value. */
   numValue?: string;
 }
-const Label = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Label>;
-
 export type LabelList = Array<Label>;
-const LabelList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<LabelList>;
-
 /** A message data and its labels. */
 export interface PubsubMessage {
   /** The message payload. */
@@ -280,11 +202,7 @@ export interface PubsubMessage {
   /** ID of this message assigned by the server at publication time. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a PubsubMessage via a Pull call or a push delivery. It must not be populated by a publisher in a Publish call. */
   messageId?: string;
 }
-const PubsubMessage = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PubsubMessage>;
-
 export type PubsubMessageList = Array<PubsubMessage>;
-const PubsubMessageList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PubsubMessageList>;
-
 /** Request for the PublishBatch method. */
 export interface PublishBatchRequest {
   /** The messages to publish. */
@@ -292,24 +210,15 @@ export interface PublishBatchRequest {
   /** The messages in the request will be published on this topic. */
   topic?: string;
 }
-const PublishBatchRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PublishBatchRequest>;
-
 export interface PublishBatchTopicsRequest {
   /** Request body */
   body?: PublishBatchRequest;
 }
-const PublishBatchTopicsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PublishBatchTopicsRequest>;
-
 /** Response for the PublishBatch method. */
 export interface PublishBatchResponse {
   /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
   messageIds?: StringList;
 }
-const PublishBatchResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PublishBatchResponse>;
-
 /** Request for the Publish method. */
 export interface PublishRequest {
   /** The message to publish. */
@@ -317,14 +226,10 @@ export interface PublishRequest {
   /** The message in the request will be published on this topic. */
   topic?: string;
 }
-const PublishRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<PublishRequest>;
-
 export interface PublishTopicsRequest {
   /** Request body */
   body?: PublishRequest;
 }
-const PublishTopicsRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PublishTopicsRequest>;
-
 /** Request for the PullBatch method. */
 export interface PullBatchRequest {
   /** The maximum number of PubsubEvents returned for this request. The Pub/Sub system may return fewer than the number of events specified. */
@@ -334,17 +239,10 @@ export interface PullBatchRequest {
   /** The subscription from which messages should be pulled. */
   subscription?: string;
 }
-const PullBatchRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PullBatchRequest>;
-
 export interface PullBatchSubscriptionsRequest {
   /** Request body */
   body?: PullBatchRequest;
 }
-const PullBatchSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<PullBatchSubscriptionsRequest>;
-
 /** An event indicating a received message or truncation event. */
 export interface PubsubEvent {
   /** Indicates that this subscription has been truncated. */
@@ -356,8 +254,6 @@ export interface PubsubEvent {
   /** Indicates that this subscription has been deleted. (Note that pull subscribers will always receive NOT_FOUND in response in their pull request on the subscription, rather than seeing this boolean.) */
   deleted?: boolean;
 }
-const PubsubEvent = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PubsubEvent>;
-
 /** Either a PubsubMessage or a truncation event. One of these two must be populated. */
 export interface PullResponse {
   /** This ID must be used to acknowledge the received event or message. */
@@ -365,18 +261,12 @@ export interface PullResponse {
   /** A pubsub message or truncation event. */
   pubsubEvent?: PubsubEvent;
 }
-const PullResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PullResponse>;
-
 export type PullResponseList = Array<PullResponse>;
-const PullResponseList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PullResponseList>;
-
 /** Response for the PullBatch method. */
 export interface PullBatchResponse {
   /** Received Pub/Sub messages or status events. The Pub/Sub system will return zero messages if there are no more messages available in the backlog. The Pub/Sub system may return fewer than the max_events requested even if there are more messages available in the backlog. */
   pullResponses?: PullResponseList;
 }
-const PullBatchResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PullBatchResponse>;
-
 /** Request for the Pull method. */
 export interface PullRequest {
   /** If this is specified as true the system will respond immediately even if it is not able to return a message in the Pull response. Otherwise the system is allowed to wait until at least one message is available rather than returning FAILED_PRECONDITION. The client may cancel the request if it does not wish to wait any longer for the response. */
@@ -384,17 +274,10 @@ export interface PullRequest {
   /** The subscription from which a message should be pulled. */
   subscription?: string;
 }
-const PullRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PullRequest>;
-
 export interface PullSubscriptionsRequest {
   /** Request body */
   body?: PullRequest;
 }
-const PullSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PullSubscriptionsRequest>;
-
 export type AcknowledgeSubscriptionsError =
   | NotFound
   | Forbidden
@@ -408,8 +291,8 @@ export const acknowledgeSubscriptions: API.OperationMethod<
   AcknowledgeSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcknowledgeSubscriptionsRequest,
-  output: Empty,
+  input: __S(2, __c0, 2) as any as S.Schema<AcknowledgeSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -423,8 +306,8 @@ export const createSubscriptions: API.OperationMethod<
   CreateSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionsRequest,
-  output: Subscription,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateSubscriptionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -438,8 +321,8 @@ export const createTopics: API.OperationMethod<
   CreateTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTopicsRequest,
-  output: Topic,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateTopicsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -453,8 +336,8 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionsRequest,
-  output: Empty,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -468,8 +351,8 @@ export const deleteTopics: API.OperationMethod<
   DeleteTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTopicsRequest,
-  output: Empty,
+  input: __S(10, __c1, 2) as any as S.Schema<DeleteTopicsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -483,8 +366,8 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionsRequest,
-  output: Subscription,
+  input: __S(11, __c1, 3) as any as S.Schema<GetSubscriptionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -494,8 +377,8 @@ export type GetTopicsError = NotFound | Forbidden | GcpOpError;
 /** Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here. */
 export const getTopics: API.OperationMethod<GetTopicsRequest, Topic, GetTopicsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetTopicsRequest,
-    output: Topic,
+    input: __S(12, __c1, 4) as any as S.Schema<GetTopicsRequest>,
+    output: __S(7, __c0, 7) as any as S.Schema<Topic>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -510,8 +393,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -527,8 +410,8 @@ export const listTopics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTopicsRequest,
-  output: ListTopicsResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<ListTopicsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListTopicsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -548,8 +431,8 @@ export const modifyAckDeadlineSubscriptions: API.OperationMethod<
   ModifyAckDeadlineSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyAckDeadlineSubscriptionsRequest,
-  output: Empty,
+  input: __S(20, __c2, 4) as any as S.Schema<ModifyAckDeadlineSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -568,8 +451,8 @@ export const modifyPushConfigSubscriptions: API.OperationMethod<
   ModifyPushConfigSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyPushConfigSubscriptionsRequest,
-  output: Empty,
+  input: __S(22, __c2, 6) as any as S.Schema<ModifyPushConfigSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -583,8 +466,8 @@ export const publishBatchTopics: API.OperationMethod<
   PublishBatchTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishBatchTopicsRequest,
-  output: PublishBatchResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<PublishBatchTopicsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<PublishBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -598,8 +481,8 @@ export const publishTopics: API.OperationMethod<
   PublishTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishTopicsRequest,
-  output: Empty,
+  input: __S(31, __c3, 7) as any as S.Schema<PublishTopicsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -613,8 +496,8 @@ export const pullBatchSubscriptions: API.OperationMethod<
   PullBatchSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PullBatchSubscriptionsRequest,
-  output: PullBatchResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<PullBatchSubscriptionsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<PullBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +511,8 @@ export const pullSubscriptions: API.OperationMethod<
   PullSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PullSubscriptionsRequest,
-  output: PullResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<PullSubscriptionsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PullResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -644,13 +527,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscription: S.optional(S.String),
-          ackId: S.optional(StringList),
+          ackId: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "AcknowledgeRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -675,7 +558,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
-          pushConfig: S.optional(PushConfig),
+          pushConfig: S.optional(__S(4, __c0, 4)),
           name: S.optional(S.String),
           ackDeadlineSeconds: S.optional(S.Number),
         }),
@@ -683,7 +566,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -707,7 +590,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -781,11 +664,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
     case 6:
-      return S.Array(Subscription);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          subscription: S.optional(SubscriptionList),
+          subscription: S.optional(__S(14, __c1, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -810,11 +693,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListTopicsRequest" });
     case 1:
-      return S.Array(Topic);
+      return S.Array(__S(7, __c0, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          topic: S.optional(TopicList),
+          topic: S.optional(__S(17, __c2, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTopicsResponse" });
@@ -824,13 +707,13 @@ function __c2(j: number): any {
           ackDeadlineSeconds: S.optional(S.Number),
           ackId: S.optional(S.String),
           subscription: S.optional(S.String),
-          ackIds: S.optional(StringList),
+          ackIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ModifyAckDeadlineRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -844,14 +727,14 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pushConfig: S.optional(PushConfig),
+          pushConfig: S.optional(__S(4, __c0, 4)),
           subscription: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModifyPushConfigRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -875,29 +758,29 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Label);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          label: S.optional(LabelList),
+          label: S.optional(__S(24, __c3, 0)),
           publishTime: S.optional(S.String),
           messageId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PubsubMessage" });
     case 2:
-      return S.Array(PubsubMessage);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(PubsubMessageList),
+          messages: S.optional(__S(26, __c3, 2)),
           topic: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublishBatchRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(PublishBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -911,20 +794,20 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          messageIds: S.optional(StringList),
+          messageIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "PublishBatchResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(PubsubMessage),
+          message: S.optional(__S(25, __c3, 1)),
           topic: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublishRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(PublishRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -948,7 +831,7 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(PullBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -963,7 +846,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           truncated: S.optional(S.Boolean),
-          message: S.optional(PubsubMessage),
+          message: S.optional(__S(25, __c3, 1)),
           subscription: S.optional(S.String),
           deleted: S.optional(S.Boolean),
         }),
@@ -972,15 +855,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ackId: S.optional(S.String),
-          pubsubEvent: S.optional(PubsubEvent),
+          pubsubEvent: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "PullResponse" });
     case 4:
-      return S.Array(PullResponse);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pullResponses: S.optional(PullResponseList),
+          pullResponses: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "PullBatchResponse" });
     case 6:
@@ -993,7 +876,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(PullRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1003,4 +886,9 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "PullSubscriptionsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

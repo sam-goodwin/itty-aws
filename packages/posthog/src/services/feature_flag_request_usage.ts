@@ -5,12 +5,12 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 export type ListFeatureFlagRequestUsageRequestTimeInterval = "hour" | "day";
-const ListFeatureFlagRequestUsageRequestTimeInterval = S.String;
-
 export interface ListFeatureFlagRequestUsageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -21,15 +21,8 @@ export interface ListFeatureFlagRequestUsageRequest {
   /** Time bucket used to group request usage. Hourly queries are limited to 8 days. * `hour` - hour * `day` - day */
   time_interval?: ListFeatureFlagRequestUsageRequestTimeInterval | (string & {});
 }
-const ListFeatureFlagRequestUsageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListFeatureFlagRequestUsageRequest>;
-
 /** * `remote_evaluation` - remote_evaluation * `local_evaluation` - local_evaluation */
 export type FeatureFlagRequestTypeEnum = "remote_evaluation" | "local_evaluation";
-const FeatureFlagRequestTypeEnum = S.String;
-
 export interface FeatureFlagRequestUsageItem {
   /** Remote flag evaluation or local flag-definition request. * `remote_evaluation` - remote_evaluation * `local_evaluation` - local_evaluation */
   request_type: FeatureFlagRequestTypeEnum;
@@ -42,27 +35,12 @@ export interface FeatureFlagRequestUsageItem {
   /** Estimated billing units. Local evaluation requests count as 10 units each. */
   billing_units: number;
 }
-const FeatureFlagRequestUsageItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<FeatureFlagRequestUsageItem>;
-
 /** Feature flag request usage by SDK. */
 export type FeatureFlagRequestUsageResponseResultsList = Array<FeatureFlagRequestUsageItem>;
-const FeatureFlagRequestUsageResponseResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<FeatureFlagRequestUsageResponseResultsList>;
-
 export interface FeatureFlagRequestUsageResponse {
   /** Feature flag request usage by SDK. */
   results: FeatureFlagRequestUsageResponseResultsList;
 }
-const FeatureFlagRequestUsageResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<FeatureFlagRequestUsageResponse>;
-
 export type ListFeatureFlagRequestUsageError = PosthogOpError;
 export const listFeatureFlagRequestUsage: API.OperationMethod<
   ListFeatureFlagRequestUsageRequest,
@@ -70,8 +48,8 @@ export const listFeatureFlagRequestUsage: API.OperationMethod<
   ListFeatureFlagRequestUsageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeatureFlagRequestUsageRequest,
-  output: FeatureFlagRequestUsageResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ListFeatureFlagRequestUsageRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<FeatureFlagRequestUsageResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -86,7 +64,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           date_from: S.String.pipe(T.Query()),
           date_to: S.String.pipe(T.Query()),
-          time_interval: S.optional(ListFeatureFlagRequestUsageRequestTimeInterval.pipe(T.Query())),
+          time_interval: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -100,7 +78,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          request_type: FeatureFlagRequestTypeEnum,
+          request_type: S.String,
           bucket: S.String,
           sdk: S.String,
           request_count: S.Number,
@@ -110,14 +88,19 @@ function __c0(j: number): any {
         identifier: "FeatureFlagRequestUsageItem",
       });
     case 2:
-      return S.Array(FeatureFlagRequestUsageItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: FeatureFlagRequestUsageResponseResultsList,
+          results: __S(2, __c0, 2),
         }),
       ).annotate({
         identifier: "FeatureFlagRequestUsageResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

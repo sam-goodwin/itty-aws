@@ -8,6 +8,8 @@ import { UnknownDatadogError } from "../errors.ts";
 import { DatadogProtocol, type DatadogOpError, type DatadogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DatadogOpError, DatadogOpContext };
 
@@ -65,126 +67,58 @@ export interface AddSecurityMonitoringSignalToIncidentRequest {
   incident_id: number;
   version?: number;
 }
-const AddSecurityMonitoringSignalToIncidentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddSecurityMonitoringSignalToIncidentRequest>;
-
 /** Updated signal data following a successfully performed update. */
 export interface SuccessfulSignalUpdateResponse {
   /** Status of the response. */
   status?: string;
 }
-const SuccessfulSignalUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SuccessfulSignalUpdateResponse>;
-
 export type CheckCanDeleteMonitorRequestMonitorIdsList = Array<number>;
-const CheckCanDeleteMonitorRequestMonitorIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckCanDeleteMonitorRequestMonitorIdsList>;
-
 export interface CheckCanDeleteMonitorRequest {
   /** The IDs of the monitor to check. */
   monitor_ids: CheckCanDeleteMonitorRequestMonitorIdsList;
 }
-const CheckCanDeleteMonitorRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckCanDeleteMonitorRequest>;
-
 /** An array of Monitor IDs that can be safely deleted. */
 export type CheckCanDeleteMonitorResponseDataOkList = Array<number>;
-const CheckCanDeleteMonitorResponseDataOkList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<CheckCanDeleteMonitorResponseDataOkList>;
-
 /** Wrapper object with the list of monitor IDs. */
 export interface CheckCanDeleteMonitorResponseData {
   /** An array of Monitor IDs that can be safely deleted. */
   ok?: CheckCanDeleteMonitorResponseDataOkList;
 }
-const CheckCanDeleteMonitorResponseData = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CheckCanDeleteMonitorResponseData>;
-
 /** Strings denoting where a monitor is used. */
 export type CheckCanDeleteMonitorResponseErrorsValueList = Array<string>;
-const CheckCanDeleteMonitorResponseErrorsValueList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CheckCanDeleteMonitorResponseErrorsValueList>;
-
 /** A mapping of Monitor ID to strings denoting where it's used. */
 export type CheckCanDeleteMonitorResponseErrorsMap = {
   [key: string]: CheckCanDeleteMonitorResponseErrorsValueList | undefined;
 };
-const CheckCanDeleteMonitorResponseErrorsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CheckCanDeleteMonitorResponseErrorsMap>;
-
 /** Response of monitor IDs that can or can't be safely deleted. */
 export interface CheckCanDeleteMonitorResponse {
   data: CheckCanDeleteMonitorResponseData;
   /** A mapping of Monitor ID to strings denoting where it's used. */
   errors?: CheckCanDeleteMonitorResponseErrorsMap | null;
 }
-const CheckCanDeleteMonitorResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CheckCanDeleteMonitorResponse>;
-
 export interface CheckCanDeleteSLORequest {
   /** A comma separated list of the IDs of the service level objectives objects. */
   ids: string;
 }
-const CheckCanDeleteSLORequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CheckCanDeleteSLORequest>;
-
 /** An array of SLO IDs that can be safely deleted. */
 export type CheckCanDeleteSLOResponseDataOkList = Array<string>;
-const CheckCanDeleteSLOResponseDataOkList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CheckCanDeleteSLOResponseDataOkList>;
-
 /** An array of service level objective objects. */
 export interface CheckCanDeleteSLOResponseData {
   /** An array of SLO IDs that can be safely deleted. */
   ok?: CheckCanDeleteSLOResponseDataOkList;
 }
-const CheckCanDeleteSLOResponseData = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CheckCanDeleteSLOResponseData>;
-
 /** A mapping of SLO id to it's current usages. */
 export type CheckCanDeleteSLOResponseErrorsMap = { [key: string]: string | undefined };
-const CheckCanDeleteSLOResponseErrorsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CheckCanDeleteSLOResponseErrorsMap>;
-
 /** A service level objective response containing the requested object. */
 export interface CheckCanDeleteSLOResponse {
   data?: CheckCanDeleteSLOResponseData;
   /** A mapping of SLO id to it's current usages. */
   errors?: CheckCanDeleteSLOResponseErrorsMap;
 }
-const CheckCanDeleteSLOResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CheckCanDeleteSLOResponse>;
-
 export interface CreateAPIKeyRequest {
   /** Name of your API key. */
   name?: string;
 }
-const CreateAPIKeyRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateAPIKeyRequest>;
-
 /** Datadog API key. */
 export interface ApiKey {
   /** Date of creation of the API key. */
@@ -196,23 +130,14 @@ export interface ApiKey {
   /** Name of your API key. */
   name?: string;
 }
-const ApiKey = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ApiKey>;
-
 /** An API key with its associated metadata. */
 export interface ApiKeyResponse {
   api_key?: ApiKey;
 }
-const ApiKeyResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ApiKeyResponse>;
-
 export interface CreateApplicationKeyRequest {
   /** Name of an application key. */
   name?: string;
 }
-const CreateApplicationKeyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateApplicationKeyRequest>;
-
 /** An application key with its associated metadata. */
 export interface ApplicationKey {
   /** Hash of an application key. */
@@ -222,22 +147,12 @@ export interface ApplicationKey {
   /** Owner of an application key. */
   owner?: string;
 }
-const ApplicationKey = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ApplicationKey>;
-
 /** An application key response. */
 export interface ApplicationKeyResponse {
   application_key?: ApplicationKey;
 }
-const ApplicationKeyResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ApplicationKeyResponse>;
-
 /** Errors in your configuration. */
 export type CreateAzureIntegrationRequestErrorsList = Array<string>;
-const CreateAzureIntegrationRequestErrorsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateAzureIntegrationRequestErrorsList>;
-
 /** Configuration settings applied to resources from the specified Azure resource provider. */
 export interface ResourceProviderConfig {
   /** Collect metrics for resources from this provider. */
@@ -245,19 +160,9 @@ export interface ResourceProviderConfig {
   /** The provider namespace to apply this configuration to. */
   namespace?: string;
 }
-const ResourceProviderConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ResourceProviderConfig>;
-
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type CreateAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-const CreateAzureIntegrationRequestResourceProviderConfigsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateAzureIntegrationRequestResourceProviderConfigsList>;
-
 export interface CreateAzureIntegrationRequest {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
   app_service_plan_filters?: string;
@@ -296,61 +201,32 @@ export interface CreateAzureIntegrationRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-const CreateAzureIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateAzureIntegrationRequest>;
-
 export type CreateAzureIntegrationResponse = unknown;
-const CreateAzureIntegrationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateAzureIntegrationResponse>;
-
 /** A JSON array of billing type. */
 export interface OrganizationBilling {
   /** The type of billing. Only `parent_billing` is supported. */
   type?: string;
 }
-const OrganizationBilling = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<OrganizationBilling>;
-
 /** Subscription definition. */
 export interface OrganizationSubscription {
   /** The subscription type. Types available are `trial`, `free`, and `pro`. */
   type?: string;
 }
-const OrganizationSubscription = OrganizationBilling as any as S.Schema<OrganizationSubscription>;
-
 export interface CreateChildOrgRequest {
   billing?: OrganizationBilling;
   /** The name of the new child-organization, limited to 32 characters. */
   name: string;
   subscription?: OrganizationSubscription;
 }
-const CreateChildOrgRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateChildOrgRequest>;
-
 /** Set the boolean property enabled to enable or disable single sign on with SAML. See the SAML documentation for more information about all SAML settings. */
 export interface OrganizationSettingsSaml {
   /** Whether or not SAML is enabled for this organization. */
   enabled?: boolean;
 }
-const OrganizationSettingsSaml = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<OrganizationSettingsSaml>;
-
 /** The access role of the user. Options are **st** (standard user), **adm** (admin user), or **ro** (read-only user). */
 export type AccessRole = "st" | "adm" | "ro" | "ERROR";
-const AccessRole = S.String;
-
 /** List of domains where the SAML automated user creation is enabled. */
 export type OrganizationSettingsSamlAutocreateUsersDomainsDomainsList = Array<string>;
-const OrganizationSettingsSamlAutocreateUsersDomainsDomainsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<OrganizationSettingsSamlAutocreateUsersDomainsDomainsList>;
-
 /** Has two properties, `enabled` (boolean) and `domains`, which is a list of domains without the @ symbol. */
 export interface OrganizationSettingsSamlAutocreateUsersDomains {
   /** List of domains where the SAML automated user creation is enabled. */
@@ -358,29 +234,16 @@ export interface OrganizationSettingsSamlAutocreateUsersDomains {
   /** Whether or not the automated user creation based on SAML domain is enabled. */
   enabled?: boolean;
 }
-const OrganizationSettingsSamlAutocreateUsersDomains = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<OrganizationSettingsSamlAutocreateUsersDomains>;
-
 /** Has one property enabled (boolean). */
 export interface OrganizationSettingsSamlIdpInitiatedLogin {
   /** Whether SAML IdP initiated login is enabled, learn more in the [SAML documentation](https://docs.datadoghq.com/account_management/saml/#idp-initiated-login). */
   enabled?: boolean;
 }
-const OrganizationSettingsSamlIdpInitiatedLogin = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<OrganizationSettingsSamlIdpInitiatedLogin>;
-
 /** Has one property enabled (boolean). */
 export interface OrganizationSettingsSamlStrictMode {
   /** Whether or not the SAML strict mode is enabled. If true, all users must log in with SAML. Learn more on the [SAML Strict documentation](https://docs.datadoghq.com/account_management/saml/#saml-strict). */
   enabled?: boolean;
 }
-const OrganizationSettingsSamlStrictMode =
-  OrganizationSettingsSamlIdpInitiatedLogin as any as S.Schema<OrganizationSettingsSamlStrictMode>;
-
 /** A JSON array of settings. */
 export interface OrganizationSettings {
   /** Whether or not the organization users can share widgets outside of Datadog. */
@@ -399,8 +262,6 @@ export interface OrganizationSettings {
   saml_login_url?: string;
   saml_strict_mode?: OrganizationSettingsSamlStrictMode;
 }
-const OrganizationSettings = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<OrganizationSettings>;
-
 /** Create, edit, and manage organizations. */
 export interface Organization {
   billing?: OrganizationBilling;
@@ -417,8 +278,6 @@ export interface Organization {
   /** Only available for MSP customers. Allows child organizations to be created on a trial plan. */
   trial?: boolean;
 }
-const Organization = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Organization>;
-
 /** Create, edit, and disable users. */
 export interface User {
   access_role?: AccessRole | null;
@@ -435,8 +294,6 @@ export interface User {
   /** Whether or not the user logged in Datadog at least once. */
   verified?: boolean;
 }
-const User = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<User>;
-
 /** Response object for an organization creation. */
 export interface OrganizationCreateResponse {
   api_key?: ApiKey;
@@ -444,11 +301,6 @@ export interface OrganizationCreateResponse {
   org?: Organization;
   user?: User;
 }
-const OrganizationCreateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<OrganizationCreateResponse>;
-
 /** Type of live timeframe. */
 export type DashboardLiveTimeframeType = "live";
 /** Unit of the time span. */
@@ -472,32 +324,16 @@ export interface DashboardFixedTimeframe {
 }
 /** The default timeframe applied when opening the dashboard. Set to `null` to clear the dashboard's default timeframe. */
 export type DashboardDefaultTimeframeSetting = DashboardLiveTimeframe | DashboardFixedTimeframe;
-const DashboardDefaultTimeframeSetting =
-  S.Unknown as any as S.Schema<DashboardDefaultTimeframeSetting>;
-
 /** Layout type of the dashboard. */
 export type DashboardLayoutType = "ordered" | "free";
-const DashboardLayoutType = S.String;
-
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type CreateDashboardRequestNotifyListList = Array<string>;
-const CreateDashboardRequestNotifyListList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestNotifyListList>;
-
 /** Reflow type for a **new dashboard layout** dashboard. Set this only when layout type is 'ordered'. If set to 'fixed', the dashboard expects all widgets to have a layout, and if it's set to 'auto', widgets should not have layouts. */
 export type DashboardReflowType = "auto" | "fixed";
-const DashboardReflowType = S.String;
-
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type CreateDashboardRequestRestrictedRolesList = Array<string>;
-const CreateDashboardRequestRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestRestrictedRolesList>;
-
 /** List of widget IDs belonging to this tab. The backend also accepts positional references in @N format (1-indexed) as a convenience for Terraform and other declarative tools. */
 export type DashboardTabWidgetIdsList = Array<number>;
-const DashboardTabWidgetIdsList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<DashboardTabWidgetIdsList>;
-
 /** Dashboard tab for organizing widgets. */
 export interface DashboardTab {
   /** UUID of the tab. */
@@ -507,25 +343,12 @@ export interface DashboardTab {
   /** List of widget IDs belonging to this tab. The backend also accepts positional references in @N format (1-indexed) as a convenience for Terraform and other declarative tools. */
   widget_ids: DashboardTabWidgetIdsList;
 }
-const DashboardTab = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DashboardTab>;
-
 /** List of tabs for organizing dashboard widgets into groups. */
 export type CreateDashboardRequestTabsList = Array<DashboardTab>;
-const CreateDashboardRequestTabsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateDashboardRequestTabsList>;
-
 /** List of team names representing ownership of a dashboard. */
 export type CreateDashboardRequestTagsList = Array<string>;
-const CreateDashboardRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestTagsList>;
-
 /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. Cannot be used in conjunction with `value`. */
 export type DashboardTemplateVariablePresetValueValuesList = Array<string>;
-const DashboardTemplateVariablePresetValueValuesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariablePresetValueValuesList>;
-
 /** Template variables saved views. */
 export interface DashboardTemplateVariablePresetValue {
   /** The name of the variable. */
@@ -535,19 +358,9 @@ export interface DashboardTemplateVariablePresetValue {
   /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. Cannot be used in conjunction with `value`. */
   values?: DashboardTemplateVariablePresetValueValuesList;
 }
-const DashboardTemplateVariablePresetValue = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DashboardTemplateVariablePresetValue>;
-
 /** List of variables. */
 export type DashboardTemplateVariablePresetTemplateVariablesList =
   Array<DashboardTemplateVariablePresetValue>;
-const DashboardTemplateVariablePresetTemplateVariablesList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DashboardTemplateVariablePresetTemplateVariablesList>;
-
 /** Template variables saved views. */
 export interface DashboardTemplateVariablePreset {
   /** The name of the variable. */
@@ -555,29 +368,13 @@ export interface DashboardTemplateVariablePreset {
   /** List of variables. */
   template_variables?: DashboardTemplateVariablePresetTemplateVariablesList;
 }
-const DashboardTemplateVariablePreset = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DashboardTemplateVariablePreset>;
-
 /** Array of template variables saved views. */
 export type CreateDashboardRequestTemplateVariablePresetsList =
   Array<DashboardTemplateVariablePreset>;
-const CreateDashboardRequestTemplateVariablePresetsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateDashboardRequestTemplateVariablePresetsList>;
-
 /** The list of values that the template variable drop-down is limited to. */
 export type DashboardTemplateVariableAvailableValuesList = Array<string>;
-const DashboardTemplateVariableAvailableValuesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariableAvailableValuesList>;
-
 /** One or many default values for template variables on load. If more than one default is specified, they will be unioned together with `OR`. Cannot be used in conjunction with `default`. */
 export type DashboardTemplateVariableDefaultsList = Array<string>;
-const DashboardTemplateVariableDefaultsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariableDefaultsList>;
-
 /** Template variable. */
 export interface DashboardTemplateVariable {
   /** The list of values that the template variable drop-down is limited to. */
@@ -593,18 +390,8 @@ export interface DashboardTemplateVariable {
   /** The type of variable. This is to differentiate between filter variables (interpolated in query) and group by variables (interpolated into group by). */
   type?: string | null;
 }
-const DashboardTemplateVariable = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DashboardTemplateVariable>;
-
 /** List of template variables for this dashboard. */
 export type CreateDashboardRequestTemplateVariablesList = Array<DashboardTemplateVariable>;
-const CreateDashboardRequestTemplateVariablesList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateDashboardRequestTemplateVariablesList>;
-
 /** The available timeframes depend on the widget you are using. */
 export type WidgetLiveSpan =
   | "1m"
@@ -900,8 +687,6 @@ export type FormulaAndFunctionMetricAggregation =
   | "percentile";
 /** The source organization UUID for cross organization queries. Feature in Private Beta. */
 export type CrossOrgUuids = Array<string>;
-const CrossOrgUuids = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CrossOrgUuids>;
-
 /** Data source for metrics queries. */
 export type FormulaAndFunctionMetricDataSource = "metrics";
 /** Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. */
@@ -2235,15 +2020,8 @@ export interface WidgetFieldSort {
 }
 /** Issue state filter for the `issue_stream` data source. */
 export type ListStreamIssueState = "OPEN" | "IGNORED" | "ACKNOWLEDGED" | "RESOLVED";
-const ListStreamIssueState = S.String;
-
 /** Filter by issue states. Usable only with `issue_stream`. */
 export type ListStreamQueryStatesList = Array<ListStreamIssueState | (string & {})>;
-const ListStreamQueryStatesList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListStreamQueryStatesList>;
-
 /** Filter by suspected causes. Usable only with `issue_stream`. */
 export type ListStreamQuerySuspectedCausesList = Array<string>;
 /** Filter by team handles. Usable only with `issue_stream`. */
@@ -4209,8 +3987,6 @@ export type WidgetDefinition =
   | TopologyMapWidgetDefinition
   | TreeMapWidgetDefinition
   | WildcardWidgetDefinition;
-const WidgetDefinition = S.Unknown as any as S.Schema<WidgetDefinition>;
-
 /** The layout for a widget on a `free` or **new dashboard layout** dashboard. */
 export interface WidgetLayout {
   /** The height of the widget. Should be a non-negative integer. */
@@ -4224,8 +4000,6 @@ export interface WidgetLayout {
   /** The position of the widget on the y (vertical) axis. Should be a non-negative integer. */
   y: number;
 }
-const WidgetLayout = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<WidgetLayout>;
-
 /** Information about widget. **Note**: The `layout` property is required for widgets in dashboards with `free` `layout_type`. For the **new dashboard layout**, the `layout` property depends on the `reflow_type` of the dashboard. - If `reflow_type` is `fixed`, `layout` is required. - If `reflow_type` is `auto`, `layout` should not be set. */
 export interface Widget {
   definition: WidgetDefinition;
@@ -4233,15 +4007,8 @@ export interface Widget {
   id?: number;
   layout?: WidgetLayout;
 }
-const Widget = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Widget>;
-
 /** List of widgets to display on the dashboard. */
 export type CreateDashboardRequestWidgetsList = Array<Widget>;
-const CreateDashboardRequestWidgetsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateDashboardRequestWidgetsList>;
-
 export interface CreateDashboardRequest {
   /** The default timeframe applied when opening the dashboard. Set to `null` to clear. */
   default_timeframe?: DashboardDefaultTimeframeSetting | null;
@@ -4268,49 +4035,22 @@ export interface CreateDashboardRequest {
   /** List of widgets to display on the dashboard. */
   widgets: CreateDashboardRequestWidgetsList;
 }
-const CreateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateDashboardRequest>;
-
 /** The experience type of the dashboard. */
 export type DashboardExperienceType = "default" | "product_analytics";
-const DashboardExperienceType = S.String;
-
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type DashboardNotifyListList = Array<string>;
-const DashboardNotifyListList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardNotifyListList>;
-
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type DashboardRestrictedRolesList = Array<string>;
-const DashboardRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardRestrictedRolesList>;
-
 /** List of tabs for organizing dashboard widgets into groups. */
 export type DashboardTabsList = Array<DashboardTab>;
-const DashboardTabsList = CreateDashboardRequestTabsList as any as S.Schema<DashboardTabsList>;
-
 /** List of team names representing ownership of a dashboard. */
 export type DashboardTagsList = Array<string>;
-const DashboardTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTagsList>;
-
 /** Array of template variables saved views. */
 export type DashboardTemplateVariablePresetsList = Array<DashboardTemplateVariablePreset>;
-const DashboardTemplateVariablePresetsList =
-  CreateDashboardRequestTemplateVariablePresetsList as any as S.Schema<DashboardTemplateVariablePresetsList>;
-
 /** List of template variables for this dashboard. */
 export type DashboardTemplateVariablesList = Array<DashboardTemplateVariable>;
-const DashboardTemplateVariablesList =
-  CreateDashboardRequestTemplateVariablesList as any as S.Schema<DashboardTemplateVariablesList>;
-
 /** List of widgets to display on the dashboard. */
 export type DashboardWidgetsList = Array<Widget>;
-const DashboardWidgetsList =
-  CreateDashboardRequestWidgetsList as any as S.Schema<DashboardWidgetsList>;
-
 /** A dashboard is Datadog's tool for visually tracking, analyzing, and displaying key performance metrics, which enable you to monitor the health of your infrastructure. */
 export interface Dashboard {
   /** Identifier of the dashboard author. */
@@ -4351,17 +4091,10 @@ export interface Dashboard {
   /** List of widgets to display on the dashboard. */
   widgets: DashboardWidgetsList;
 }
-const Dashboard = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Dashboard>;
-
 export interface CreateDashboardListRequest {
   /** The name of the dashboard list. */
   name: string;
 }
-const CreateDashboardListRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateDashboardListRequest>;
-
 /** Object describing the creator of the shared element. */
 export interface Creator {
   /** Email of the creator. */
@@ -4371,8 +4104,6 @@ export interface Creator {
   /** Name of the creator. */
   name?: string | null;
 }
-const Creator = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Creator>;
-
 /** Your Datadog Dashboards. */
 export interface DashboardList {
   author?: Creator;
@@ -4391,8 +4122,6 @@ export interface DashboardList {
   /** The type of dashboard list. */
   type?: string;
 }
-const DashboardList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DashboardList>;
-
 /** If an alert event is enabled, set its type. For example, `error`, `warning`, `info`, `success`, `user_update`, `recommendation`, and `snapshot`. */
 export type EventAlertType =
   | "error"
@@ -4402,17 +4131,10 @@ export type EventAlertType =
   | "user_update"
   | "recommendation"
   | "snapshot";
-const EventAlertType = S.String;
-
 /** The priority of the event. For example, `normal` or `low`. */
 export type EventPriority = "normal" | "low";
-const EventPriority = S.String;
-
 /** A list of tags to apply to the event. */
 export type CreateEventRequestTagsList = Array<string>;
-const CreateEventRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateEventRequestTagsList>;
-
 export interface CreateEventRequest {
   /** An arbitrary string to use for aggregation. Limited to 100 characters. If you specify a key, all events using that key are grouped together in the Event Stream. */
   aggregation_key?: string;
@@ -4435,48 +4157,27 @@ export interface CreateEventRequest {
   /** The event title. */
   title: string;
 }
-const CreateEventRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateEventRequest>;
-
 export interface CreateEventResponse {}
-const CreateEventResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CreateEventResponse>;
-
 /** A list of role identifiers that can be pulled from the Roles API, for restricting read and write access. This field is deprecated. Use the restriction policies API to manage permissions. */
 export type SyntheticsRestrictedRoles = Array<string>;
-const SyntheticsRestrictedRoles =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsRestrictedRoles>;
-
 /** Attributes of the global variable. */
 export interface SyntheticsGlobalVariableAttributes {
   restricted_roles?: SyntheticsRestrictedRoles;
 }
-const SyntheticsGlobalVariableAttributes = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<SyntheticsGlobalVariableAttributes>;
-
 /** Type of parser for a Synthetic global variable from a synthetics test. */
 export type SyntheticsGlobalVariableParserType = "raw" | "json_path" | "regex" | "x_path";
-const SyntheticsGlobalVariableParserType = S.String;
-
 /** Details of the parser to use for the global variable. */
 export interface SyntheticsVariableParser {
   type: SyntheticsGlobalVariableParserType | (string & {});
   /** Regex or JSON path used for the parser. Not used with type `raw`. */
   value?: string;
 }
-const SyntheticsVariableParser = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SyntheticsVariableParser>;
-
 /** Type of value to extract from a test for a Synthetic global variable. */
 export type SyntheticsGlobalVariableParseTestOptionsType =
   | "http_body"
   | "http_header"
   | "http_status_code"
   | "local_variable";
-const SyntheticsGlobalVariableParseTestOptionsType = S.String;
-
 /** Parser options to use for retrieving a Synthetic global variable from a Synthetic test. Used in conjunction with `parse_test_public_id`. */
 export interface SyntheticsGlobalVariableParseTestOptions {
   /** When type is `http_header`, name of the header to use to extract the value. */
@@ -4486,16 +4187,8 @@ export interface SyntheticsGlobalVariableParseTestOptions {
   parser?: SyntheticsVariableParser;
   type: SyntheticsGlobalVariableParseTestOptionsType | (string & {});
 }
-const SyntheticsGlobalVariableParseTestOptions = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<SyntheticsGlobalVariableParseTestOptions>;
-
 /** Tags of the global variable. */
 export type CreateGlobalVariableRequestTagsList = Array<string>;
-const CreateGlobalVariableRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateGlobalVariableRequestTagsList>;
-
 /** Parameters for the TOTP/MFA variable */
 export interface SyntheticsGlobalVariableTOTPParameters {
   /** Number of digits for the OTP code. */
@@ -4503,20 +4196,10 @@ export interface SyntheticsGlobalVariableTOTPParameters {
   /** Interval for which to refresh the token (in seconds). */
   refresh_interval?: number;
 }
-const SyntheticsGlobalVariableTOTPParameters = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<SyntheticsGlobalVariableTOTPParameters>;
-
 /** Options for the Global Variable for MFA. */
 export interface SyntheticsGlobalVariableOptions {
   totp_parameters?: SyntheticsGlobalVariableTOTPParameters;
 }
-const SyntheticsGlobalVariableOptions = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<SyntheticsGlobalVariableOptions>;
-
 /** Value of the global variable. */
 export interface SyntheticsGlobalVariableValue {
   options?: SyntheticsGlobalVariableOptions;
@@ -4525,11 +4208,6 @@ export interface SyntheticsGlobalVariableValue {
   /** Value of the global variable. When reading a global variable, the value will not be present if the variable is hidden with the `secure` property. */
   value?: string;
 }
-const SyntheticsGlobalVariableValue = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<SyntheticsGlobalVariableValue>;
-
 export interface CreateGlobalVariableRequest {
   attributes?: SyntheticsGlobalVariableAttributes;
   /** Description of the global variable. */
@@ -4547,16 +4225,8 @@ export interface CreateGlobalVariableRequest {
   tags: CreateGlobalVariableRequestTagsList;
   value?: SyntheticsGlobalVariableValue;
 }
-const CreateGlobalVariableRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateGlobalVariableRequest>;
-
 /** Tags of the global variable. */
 export type SyntheticsGlobalVariableTagsList = Array<string>;
-const SyntheticsGlobalVariableTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsGlobalVariableTagsList>;
-
 /** Synthetic global variable. */
 export interface SyntheticsGlobalVariable {
   attributes?: SyntheticsGlobalVariableAttributes;
@@ -4577,16 +4247,8 @@ export interface SyntheticsGlobalVariable {
   tags: SyntheticsGlobalVariableTagsList;
   value: SyntheticsGlobalVariableValue;
 }
-const SyntheticsGlobalVariable = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<SyntheticsGlobalVariable>;
-
 /** A list of tags associated with a host. */
 export type CreateHostTagsRequestTagsList = Array<string>;
-const CreateHostTagsRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateHostTagsRequestTagsList>;
-
 export interface CreateHostTagsRequest {
   /** Specified host name to add new tags */
   host_name: string;
@@ -4597,16 +4259,8 @@ export interface CreateHostTagsRequest {
   /** A list of tags associated with a host. */
   tags?: CreateHostTagsRequestTagsList;
 }
-const CreateHostTagsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateHostTagsRequest>;
-
 /** A list of tags associated with a host. */
 export type HostTagsTagsList = Array<string>;
-const HostTagsTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostTagsTagsList>;
-
 /** Host name and an array of its tags */
 export interface HostTags {
   /** Your host name. */
@@ -4614,8 +4268,6 @@ export interface HostTags {
   /** A list of tags associated with a host. */
   tags?: HostTagsTagsList;
 }
-const HostTags = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<HostTags>;
-
 /** Object containing options to override the default daily limit reset time. */
 export interface LogsDailyLimitReset {
   /** String in `HH:00` format representing the time of day the daily limit should be reset. The hours must be between 00 and 23 (inclusive). */
@@ -4623,8 +4275,6 @@ export interface LogsDailyLimitReset {
   /** String in `(-|+)HH:00` format representing the UTC offset to apply to the given reset time. The hours must be between -12 and +14 (inclusive). */
   reset_utc_offset?: string;
 }
-const LogsDailyLimitReset = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<LogsDailyLimitReset>;
-
 /** Exclusion filter is defined by a query, a sampling rule, and a active/inactive toggle. */
 export interface LogsExclusionFilter {
   /** Default query is `*`, meaning all logs flowing in the index would be excluded. Scope down exclusion filter to only a subset of logs with a log query. */
@@ -4634,8 +4284,6 @@ export interface LogsExclusionFilter {
   /** Sample rate to apply to logs going through this exclusion filter, a value of 1.0 excludes all logs matching the query. */
   sample_rate: number;
 }
-const LogsExclusionFilter = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<LogsExclusionFilter>;
-
 /** Represents the index exclusion filter object from configuration API. */
 export interface LogsExclusion {
   filter?: LogsExclusionFilter;
@@ -4644,27 +4292,15 @@ export interface LogsExclusion {
   /** Name of the index exclusion filter. */
   name: string;
 }
-const LogsExclusion = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<LogsExclusion>;
-
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type CreateLogsIndexRequestExclusionFiltersList = Array<LogsExclusion>;
-const CreateLogsIndexRequestExclusionFiltersList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateLogsIndexRequestExclusionFiltersList>;
-
 /** Filter for logs. */
 export interface LogsFilter {
   /** The filter query. */
   query?: string;
 }
-const LogsFilter = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<LogsFilter>;
-
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type CreateLogsIndexRequestTagsList = Array<string>;
-const CreateLogsIndexRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateLogsIndexRequestTagsList>;
-
 export interface CreateLogsIndexRequest {
   /** The number of log events you can send in this index per day before you are rate-limited. */
   daily_limit?: number;
@@ -4683,21 +4319,10 @@ export interface CreateLogsIndexRequest {
   /** A list of tags associated with the index. Tags must be in `key:value` format. */
   tags?: CreateLogsIndexRequestTagsList;
 }
-const CreateLogsIndexRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateLogsIndexRequest>;
-
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type LogsIndexExclusionFiltersList = Array<LogsExclusion>;
-const LogsIndexExclusionFiltersList =
-  CreateLogsIndexRequestExclusionFiltersList as any as S.Schema<LogsIndexExclusionFiltersList>;
-
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type LogsIndexTagsList = Array<string>;
-const LogsIndexTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsIndexTagsList>;
-
 /** Object describing a Datadog Log index. */
 export interface LogsIndex {
   /** The number of log events you can send in this index per day before you are rate-limited. */
@@ -4719,8 +4344,6 @@ export interface LogsIndex {
   /** A list of tags associated with the index. Tags must be in `key:value` format. */
   tags?: LogsIndexTagsList;
 }
-const LogsIndex = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<LogsIndex>;
-
 /** Set of rules for the grok parser. */
 export interface LogsGrokParserRules {
   /** List of match rules for the grok parser, separated by a new line. */
@@ -5315,20 +4938,10 @@ export type LogsProcessor =
   | LogsSchemaProcessor
   | LogsExcludeAttributeProcessor
   | LogsArrayMapProcessor;
-const LogsProcessor = S.Unknown as any as S.Schema<LogsProcessor>;
-
 /** Ordered list of processors in this pipeline. */
 export type CreateLogsPipelineRequestProcessorsList = Array<LogsProcessor>;
-const CreateLogsPipelineRequestProcessorsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateLogsPipelineRequestProcessorsList>;
-
 /** A list of tags associated with the pipeline. */
 export type CreateLogsPipelineRequestTagsList = Array<string>;
-const CreateLogsPipelineRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateLogsPipelineRequestTagsList>;
-
 export interface CreateLogsPipelineRequest {
   /** A description of the pipeline. */
   description?: string;
@@ -5342,21 +4955,10 @@ export interface CreateLogsPipelineRequest {
   /** A list of tags associated with the pipeline. */
   tags?: CreateLogsPipelineRequestTagsList;
 }
-const CreateLogsPipelineRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateLogsPipelineRequest>;
-
 /** Ordered list of processors in this pipeline. */
 export type LogsPipelineProcessorsList = Array<LogsProcessor>;
-const LogsPipelineProcessorsList =
-  CreateLogsPipelineRequestProcessorsList as any as S.Schema<LogsPipelineProcessorsList>;
-
 /** A list of tags associated with the pipeline. */
 export type LogsPipelineTagsList = Array<string>;
-const LogsPipelineTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelineTagsList>;
-
 /** Pipelines and processors operate on incoming logs, parsing and transforming them into structured attributes for easier querying. **Note**: These endpoints are only available for admin users. Make sure to use an application key created by an admin. */
 export interface LogsPipeline {
   /** A description of the pipeline. */
@@ -5377,16 +4979,10 @@ export interface LogsPipeline {
   /** Type of pipeline. */
   type?: string;
 }
-const LogsPipeline = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<LogsPipeline>;
-
 /** Indicates the type of asset this entity represents on a monitor. */
 export type MonitorAssetCategory = "runbook";
-const MonitorAssetCategory = S.String;
-
 /** Type of internal Datadog resource associated with a monitor asset. */
 export type MonitorAssetResourceType = "notebook";
-const MonitorAssetResourceType = S.String;
-
 /** Represents key links tied to a monitor to help users take action on alerts. This feature is in Preview and only available to users with the feature enabled. */
 export interface MonitorAsset {
   category: MonitorAssetCategory | (string & {});
@@ -5398,24 +4994,12 @@ export interface MonitorAsset {
   /** URL link for the asset. For links with an internal resource type set, this should be the relative path to where the Datadog domain is appended internally. For external links, this should be the full URL path. */
   url: string;
 }
-const MonitorAsset = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<MonitorAsset>;
-
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type CreateMonitorRequestAssetsList = Array<MonitorAsset>;
-const CreateMonitorRequestAssetsList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateMonitorRequestAssetsList>;
-
 /** Indicates whether the monitor is in a draft or published state. `draft`: The monitor appears as Draft and does not send notifications. `published`: The monitor is active and evaluates conditions and notify as configured. This field is in preview. The draft value is only available to customers with the feature enabled. */
 export type MonitorDraftStatus = "draft" | "published";
-const MonitorDraftStatus = S.String;
-
 /** The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`. Provide multiple scopes as a comma-separated list like `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`). */
 export type MatchingDowntimeInputScopeList = Array<string>;
-const MatchingDowntimeInputScopeList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MatchingDowntimeInputScopeList>;
-
 /** Object describing a downtime that matches this monitor. */
 export interface MatchingDowntimeInput {
   /** POSIX timestamp to end the downtime. */
@@ -5425,18 +5009,8 @@ export interface MatchingDowntimeInput {
   /** POSIX timestamp to start the downtime. */
   start?: number;
 }
-const MatchingDowntimeInput = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<MatchingDowntimeInput>;
-
 /** A list of active v1 downtimes that match this monitor. */
 export type CreateMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-const CreateMonitorRequestMatchingDowntimesList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateMonitorRequestMatchingDowntimesList>;
-
 /** Toggles the display of additional content sent in the monitor notification. */
 export type MonitorOptionsNotificationPresets =
   | "show_all"
@@ -5446,30 +5020,20 @@ export type MonitorOptionsNotificationPresets =
   | "hide_query_and_handles"
   | "show_only_snapshot"
   | "hide_handles_and_footer";
-const MonitorOptionsNotificationPresets = S.String;
-
 /** Controls what granularity a monitor alerts on. Only available for monitors with groupings. For instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each new `cluster` violating the alert conditions by setting `notify_by` to `["cluster"]`. Tags mentioned in `notify_by` must be a subset of the grouping tags in the query. For example, a query grouped by `cluster` and `namespace` cannot notify on `region`. Setting `notify_by` to `["*"]` configures the monitor to notify as a simple-alert. */
 export type MonitorOptionsInputNotifyByList = Array<string>;
-const MonitorOptionsInputNotifyByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorOptionsInputNotifyByList>;
-
 /** Controls how groups or monitors are treated if an evaluation does not return any data points. The default option results in different behavior depending on the monitor query type. For monitors using Count queries, an empty monitor evaluation is treated as 0 and is compared to the threshold conditions. For monitors using any query type other than Count, for example Gauge, Measure, or Rate, the monitor shows the last known status. This option is available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors. It is also required for metric monitors that use `scheduling_options.custom_schedule`. */
 export type OnMissingDataOption =
   | "default"
   | "show_no_data"
   | "show_and_notify_no_data"
   | "resolve";
-const OnMissingDataOption = S.String;
-
 /** The different statuses for which renotification is supported. */
 export type MonitorRenotifyStatusType = "alert" | "warn" | "no data";
 /** The types of monitor statuses for which re-notification messages are sent. Default: **null** if `renotify_interval` is **null**. If `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`. */
 export type MonitorOptionsInputRenotifyStatusesList = Array<
   MonitorRenotifyStatusType | (string & {})
 >;
-const MonitorOptionsInputRenotifyStatusesList =
-  ListStreamQueryStatesList as any as S.Schema<MonitorOptionsInputRenotifyStatusesList>;
-
 /** Configuration for a recurrence set on the monitor options for custom schedule. */
 export interface MonitorOptionsCustomScheduleRecurrence {
   /** Defines the recurrence rule (RRULE) for a given schedule. */
@@ -5479,29 +5043,14 @@ export interface MonitorOptionsCustomScheduleRecurrence {
   /** Defines the timezone the schedule runs on. */
   timezone?: string;
 }
-const MonitorOptionsCustomScheduleRecurrence = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<MonitorOptionsCustomScheduleRecurrence>;
-
 /** Array of custom schedule recurrences. */
 export type MonitorOptionsCustomScheduleRecurrencesList =
   Array<MonitorOptionsCustomScheduleRecurrence>;
-const MonitorOptionsCustomScheduleRecurrencesList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<MonitorOptionsCustomScheduleRecurrencesList>;
-
 /** Configuration options for the custom schedule. **This feature is in private beta.** */
 export interface MonitorOptionsCustomSchedule {
   /** Array of custom schedule recurrences. */
   recurrences?: MonitorOptionsCustomScheduleRecurrencesList;
 }
-const MonitorOptionsCustomSchedule = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<MonitorOptionsCustomSchedule>;
-
 /** Configuration options for the evaluation window. If `hour_starts` is set, no other fields may be set. Otherwise, `day_starts` and `month_starts` must be set together. */
 export interface MonitorOptionsSchedulingOptionsEvaluationWindow {
   /** The time of the day at which a one day cumulative evaluation window starts. */
@@ -5513,28 +5062,13 @@ export interface MonitorOptionsSchedulingOptionsEvaluationWindow {
   /** The timezone of the time of the day of the cumulative evaluation window start. */
   timezone?: string;
 }
-const MonitorOptionsSchedulingOptionsEvaluationWindow = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<MonitorOptionsSchedulingOptionsEvaluationWindow>;
-
 /** Configuration options for scheduling. */
 export interface MonitorOptionsSchedulingOptions {
   custom_schedule?: MonitorOptionsCustomSchedule;
   evaluation_window?: MonitorOptionsSchedulingOptionsEvaluationWindow;
 }
-const MonitorOptionsSchedulingOptions = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<MonitorOptionsSchedulingOptions>;
-
 /** Information about the downtime applied to the monitor. Only shows v1 downtimes. */
 export type MonitorOptionsInputSilencedMap = { [key: string]: number | null | undefined };
-const MonitorOptionsInputSilencedMap = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<MonitorOptionsInputSilencedMap>;
-
 /** Alerting time window options. */
 export interface MonitorThresholdWindowOptions {
   /** Describes how long an anomalous metric must be normal before the alert recovers. */
@@ -5542,11 +5076,6 @@ export interface MonitorThresholdWindowOptions {
   /** Describes how long a metric must be anomalous before an alert triggers. */
   trigger_window?: string | null;
 }
-const MonitorThresholdWindowOptions = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<MonitorThresholdWindowOptions>;
-
 /** List of the different monitor threshold available. */
 export interface MonitorThresholds {
   /** The monitor `CRITICAL` threshold. */
@@ -5566,8 +5095,6 @@ export interface MonitorThresholds {
   /** The monitor `WARNING` recovery threshold. */
   warning_recovery?: number | null;
 }
-const MonitorThresholds = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<MonitorThresholds>;
-
 /** Aggregation methods for event platform queries. */
 export type MonitorFormulaAndFunctionEventAggregation =
   | "count"
@@ -5895,16 +5422,8 @@ export type MonitorFormulaAndFunctionQueryDefinition =
   | MonitorFormulaAndFunctionDataJobsQueryDefinition
   | MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition
   | MonitorFormulaAndFunctionAggregateFilteredQueryDefinition;
-const MonitorFormulaAndFunctionQueryDefinition =
-  S.Unknown as any as S.Schema<MonitorFormulaAndFunctionQueryDefinition>;
-
 /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
 export type MonitorOptionsInputVariablesList = Array<MonitorFormulaAndFunctionQueryDefinition>;
-const MonitorOptionsInputVariablesList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<MonitorOptionsInputVariablesList>;
-
 /** List of options associated with your monitor. */
 export interface MonitorOptionsInput {
   /** Whether or not to send a log sample when the log monitor triggers. */
@@ -5961,18 +5480,10 @@ export interface MonitorOptionsInput {
   /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
   variables?: MonitorOptionsInputVariablesList;
 }
-const MonitorOptionsInput = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<MonitorOptionsInput>;
-
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type CreateMonitorRequestRestrictedRolesList = Array<string>;
-const CreateMonitorRequestRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateMonitorRequestRestrictedRolesList>;
-
 /** Tags associated to your monitor. */
 export type CreateMonitorRequestTagsList = Array<string>;
-const CreateMonitorRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateMonitorRequestTagsList>;
-
 /** The type of the monitor. For more information about `type`, see the [monitor options](https://docs.datadoghq.com/monitors/guide/monitor_api_options/) docs. */
 export type MonitorType =
   | "composite"
@@ -5998,8 +5509,6 @@ export type MonitorType =
   | "network-path alert"
   | "data-jobs alert"
   | "llm-observability alert";
-const MonitorType = S.String;
-
 export interface CreateMonitorRequest {
   /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
   assets?: CreateMonitorRequestAssetsList;
@@ -6021,20 +5530,10 @@ export interface CreateMonitorRequest {
   tags?: CreateMonitorRequestTagsList;
   type: MonitorType | (string & {});
 }
-const CreateMonitorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateMonitorRequest>;
-
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type MonitorAssetsList = Array<MonitorAsset>;
-const MonitorAssetsList = CreateMonitorRequestAssetsList as any as S.Schema<MonitorAssetsList>;
-
 /** The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`. Provide multiple scopes as a comma-separated list like `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`). */
 export type MatchingDowntimeScopeList = Array<string>;
-const MatchingDowntimeScopeList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MatchingDowntimeScopeList>;
-
 /** Object describing a downtime that matches this monitor. */
 export interface MatchingDowntime {
   /** POSIX timestamp to end the downtime. */
@@ -6046,15 +5545,8 @@ export interface MatchingDowntime {
   /** POSIX timestamp to start the downtime. */
   start?: number;
 }
-const MatchingDowntime = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<MatchingDowntime>;
-
 /** A list of active v1 downtimes that match this monitor. */
 export type MonitorMatchingDowntimesList = Array<MatchingDowntime>;
-const MonitorMatchingDowntimesList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<MonitorMatchingDowntimesList>;
-
 /** Type of aggregation performed in the monitor query. */
 export interface MonitorOptionsAggregation {
   /** Group to break down the monitor on. */
@@ -6064,11 +5556,6 @@ export interface MonitorOptionsAggregation {
   /** Metric type used in the monitor. */
   type?: string;
 }
-const MonitorOptionsAggregation = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<MonitorOptionsAggregation>;
-
 /** ID of the device the Synthetics monitor is running on. Same as `SyntheticsDeviceID`. */
 export type MonitorDeviceID =
   | "laptop_large"
@@ -6082,29 +5569,14 @@ export type MonitorDeviceID =
   | "firefox.mobile_small";
 /** IDs of the device the Synthetics monitor is running on. */
 export type MonitorOptionsDeviceIdsList = Array<MonitorDeviceID>;
-const MonitorOptionsDeviceIdsList =
-  ListStreamQueryStatesList as any as S.Schema<MonitorOptionsDeviceIdsList>;
-
 /** Controls what granularity a monitor alerts on. Only available for monitors with groupings. For instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each new `cluster` violating the alert conditions by setting `notify_by` to `["cluster"]`. Tags mentioned in `notify_by` must be a subset of the grouping tags in the query. For example, a query grouped by `cluster` and `namespace` cannot notify on `region`. Setting `notify_by` to `["*"]` configures the monitor to notify as a simple-alert. */
 export type MonitorOptionsNotifyByList = Array<string>;
-const MonitorOptionsNotifyByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorOptionsNotifyByList>;
-
 /** The types of monitor statuses for which re-notification messages are sent. Default: **null** if `renotify_interval` is **null**. If `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`. */
 export type MonitorOptionsRenotifyStatusesList = Array<MonitorRenotifyStatusType>;
-const MonitorOptionsRenotifyStatusesList =
-  MonitorOptionsInputRenotifyStatusesList as any as S.Schema<MonitorOptionsRenotifyStatusesList>;
-
 /** Information about the downtime applied to the monitor. Only shows v1 downtimes. */
 export type MonitorOptionsSilencedMap = { [key: string]: number | null | undefined };
-const MonitorOptionsSilencedMap =
-  MonitorOptionsInputSilencedMap as any as S.Schema<MonitorOptionsSilencedMap>;
-
 /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
 export type MonitorOptionsVariablesList = Array<MonitorFormulaAndFunctionQueryDefinition>;
-const MonitorOptionsVariablesList =
-  MonitorOptionsInputVariablesList as any as S.Schema<MonitorOptionsVariablesList>;
-
 /** List of options associated with your monitor. */
 export interface MonitorOptions {
   aggregation?: MonitorOptionsAggregation;
@@ -6164,8 +5636,6 @@ export interface MonitorOptions {
   /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
   variables?: MonitorOptionsVariablesList;
 }
-const MonitorOptions = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<MonitorOptions>;
-
 /** The different states your monitor can be in. */
 export type MonitorOverallStates =
   | "Alert"
@@ -6175,13 +5645,8 @@ export type MonitorOverallStates =
   | "Skipped"
   | "Unknown"
   | "Warn";
-const MonitorOverallStates = S.String;
-
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type MonitorRestrictedRolesList = Array<string>;
-const MonitorRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorRestrictedRolesList>;
-
 /** Monitor state for a single group. */
 export interface MonitorStateGroup {
   /** Latest timestamp the monitor was in NO_DATA state. */
@@ -6196,26 +5661,15 @@ export interface MonitorStateGroup {
   name?: string;
   status?: MonitorOverallStates;
 }
-const MonitorStateGroup = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<MonitorStateGroup>;
-
 /** Dictionary where the keys are groups (comma separated lists of tags) and the values are the list of groups your monitor is broken down on. */
 export type MonitorStateGroupsMap = { [key: string]: MonitorStateGroup | undefined };
-const MonitorStateGroupsMap = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<MonitorStateGroupsMap>;
-
 /** Wrapper object with the different monitor states. */
 export interface MonitorState {
   /** Dictionary where the keys are groups (comma separated lists of tags) and the values are the list of groups your monitor is broken down on. */
   groups?: MonitorStateGroupsMap;
 }
-const MonitorState = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<MonitorState>;
-
 /** Tags associated to your monitor. */
 export type MonitorTagsList = Array<string>;
-const MonitorTagsList = CrossOrgUuids as any as S.Schema<MonitorTagsList>;
-
 /** Object describing a monitor. */
 export interface Monitor {
   /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
@@ -6251,8 +5705,6 @@ export interface Monitor {
   tags?: MonitorTagsList;
   type: MonitorType;
 }
-const Monitor = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Monitor>;
-
 /** Type of the markdown cell. */
 export type NotebookMarkdownCellDefinitionType = "markdown";
 /** Text in a notebook is formatted with [Markdown](https://daringfireball.net/projects/markdown/), which enables the use of headings, subheadings, links, images, lists, and code blocks. */
@@ -6335,30 +5787,15 @@ export type NotebookCellCreateRequestAttributes =
   | NotebookHeatMapCellAttributes
   | NotebookDistributionCellAttributes
   | NotebookLogStreamCellAttributes;
-const NotebookCellCreateRequestAttributes =
-  S.Unknown as any as S.Schema<NotebookCellCreateRequestAttributes>;
-
 /** Type of the Notebook Cell resource. */
 export type NotebookCellResourceType = "notebook_cells";
-const NotebookCellResourceType = S.String;
-
 /** The description of a notebook cell create request. */
 export interface NotebookCellCreateRequest {
   attributes: NotebookCellCreateRequestAttributes;
   type: NotebookCellResourceType;
 }
-const NotebookCellCreateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<NotebookCellCreateRequest>;
-
 /** List of cells to display in the notebook. */
 export type NotebookCreateDataAttributesCellsList = Array<NotebookCellCreateRequest>;
-const NotebookCreateDataAttributesCellsList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<NotebookCreateDataAttributesCellsList>;
-
 /** Metadata type of the notebook. */
 export type NotebookMetadataType =
   | "postmortem"
@@ -6366,8 +5803,6 @@ export type NotebookMetadataType =
   | "investigation"
   | "documentation"
   | "report";
-const NotebookMetadataType = S.String;
-
 /** Metadata associated with the notebook. */
 export interface NotebookMetadata {
   /** Whether or not the notebook is a template. */
@@ -6376,17 +5811,10 @@ export interface NotebookMetadata {
   take_snapshots?: boolean;
   type?: NotebookMetadataType | (string & {}) | null;
 }
-const NotebookMetadata = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<NotebookMetadata>;
-
 /** Publication status of the notebook. For now, always "published". */
 export type NotebookStatus = "published";
-const NotebookStatus = S.String;
-
 /** The list of values that the template variable drop-down is limited to. */
 export type NotebookTemplateVariableAvailableValuesList = Array<string>;
-const NotebookTemplateVariableAvailableValuesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookTemplateVariableAvailableValuesList>;
-
 /** A group-by facet for an available values query. */
 export interface NotebookTemplateVariableAvailableValuesQueryGroupBy {
   /** The facet name to group by. */
@@ -6419,19 +5847,10 @@ export interface NotebookTemplateVariableAvailableValuesQueryMetrics {
 export type NotebookTemplateVariableAvailableValuesQuery =
   | NotebookTemplateVariableAvailableValuesQueryLogRumSpans
   | NotebookTemplateVariableAvailableValuesQueryMetrics;
-const NotebookTemplateVariableAvailableValuesQuery =
-  S.Unknown as any as S.Schema<NotebookTemplateVariableAvailableValuesQuery>;
-
 /** Mapping of data source names to template variable values. */
 export type NotebookTemplateVariableDataSourceMappingsMap = { [key: string]: string | undefined };
-const NotebookTemplateVariableDataSourceMappingsMap =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<NotebookTemplateVariableDataSourceMappingsMap>;
-
 /** One or many default values for the template variable. Cannot be used in conjunction with `default`. */
 export type NotebookTemplateVariableDefaultsList = Array<string>;
-const NotebookTemplateVariableDefaultsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookTemplateVariableDefaultsList>;
-
 /** Notebook template variable. */
 export interface NotebookTemplateVariable {
   /** The list of values that the template variable drop-down is limited to. */
@@ -6452,22 +5871,10 @@ export interface NotebookTemplateVariable {
   /** The type of the template variable. */
   type?: string;
 }
-const NotebookTemplateVariable = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<NotebookTemplateVariable>;
-
 /** List of template variables for this notebook. */
 export type NotebookCreateDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-const NotebookCreateDataAttributesTemplateVariablesList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<NotebookCreateDataAttributesTemplateVariablesList>;
-
 /** Notebook global timeframe. */
 export type NotebookGlobalTime = NotebookRelativeTime | NotebookAbsoluteTime;
-const NotebookGlobalTime = S.Unknown as any as S.Schema<NotebookGlobalTime>;
-
 /** The data attributes of a notebook. */
 export interface NotebookCreateDataAttributes {
   /** List of cells to display in the notebook. */
@@ -6480,30 +5887,16 @@ export interface NotebookCreateDataAttributes {
   template_variables?: NotebookCreateDataAttributesTemplateVariablesList | null;
   time: NotebookGlobalTime;
 }
-const NotebookCreateDataAttributes = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<NotebookCreateDataAttributes>;
-
 /** Type of the Notebook resource. */
 export type NotebookResourceType = "notebooks";
-const NotebookResourceType = S.String;
-
 /** The data for a notebook create request. */
 export interface NotebookCreateData {
   attributes: NotebookCreateDataAttributes;
   type: NotebookResourceType | (string & {});
 }
-const NotebookCreateData = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<NotebookCreateData>;
-
 export interface CreateNotebookRequest {
   data: NotebookCreateData;
 }
-const CreateNotebookRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateNotebookRequest>;
-
 /** Attributes of user object returned by the API. */
 export interface NotebookAuthor {
   /** Creation time of the user. */
@@ -6525,8 +5918,6 @@ export interface NotebookAuthor {
   /** Whether the user is verified. */
   verified?: boolean;
 }
-const NotebookAuthor = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<NotebookAuthor>;
-
 /** The attributes of a notebook cell response. Valid cell types are `markdown`, `timeseries`, `toplist`, `heatmap`, `distribution`, `log_stream`. [More information on each graph visualization type.](https://docs.datadoghq.com/dashboards/widgets/) */
 export type NotebookCellResponseAttributes =
   | NotebookMarkdownCellAttributes
@@ -6535,8 +5926,6 @@ export type NotebookCellResponseAttributes =
   | NotebookHeatMapCellAttributes
   | NotebookDistributionCellAttributes
   | NotebookLogStreamCellAttributes;
-const NotebookCellResponseAttributes = S.Unknown as any as S.Schema<NotebookCellResponseAttributes>;
-
 /** The description of a notebook cell response. */
 export interface NotebookCellResponse {
   attributes: NotebookCellResponseAttributes;
@@ -6544,23 +5933,10 @@ export interface NotebookCellResponse {
   id: string;
   type: NotebookCellResourceType;
 }
-const NotebookCellResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<NotebookCellResponse>;
-
 /** List of cells to display in the notebook. */
 export type NotebookResponseDataAttributesCellsList = Array<NotebookCellResponse>;
-const NotebookResponseDataAttributesCellsList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<NotebookResponseDataAttributesCellsList>;
-
 /** List of template variables for this notebook. */
 export type NotebookResponseDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-const NotebookResponseDataAttributesTemplateVariablesList =
-  NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebookResponseDataAttributesTemplateVariablesList>;
-
 /** The attributes of a notebook. */
 export interface NotebookResponseDataAttributes {
   author?: NotebookAuthor;
@@ -6578,11 +5954,6 @@ export interface NotebookResponseDataAttributes {
   template_variables?: NotebookResponseDataAttributesTemplateVariablesList | null;
   time: NotebookGlobalTime;
 }
-const NotebookResponseDataAttributes = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<NotebookResponseDataAttributes>;
-
 /** The data for a notebook. */
 export interface NotebookResponseData {
   attributes: NotebookResponseDataAttributes;
@@ -6590,45 +5961,25 @@ export interface NotebookResponseData {
   id: number;
   type: NotebookResourceType;
 }
-const NotebookResponseData = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<NotebookResponseData>;
-
 /** The description of a notebook response. */
 export interface NotebookResponse {
   data?: NotebookResponseData;
 }
-const NotebookResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<NotebookResponse>;
-
 export interface CreatePagerDutyIntegrationServiceRequest {
   /** Your service key in PagerDuty. */
   service_key: string;
   /** Your service name associated with a service key in PagerDuty. */
   service_name: string;
 }
-const CreatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreatePagerDutyIntegrationServiceRequest>;
-
 /** PagerDuty service object name. */
 export interface PagerDutyServiceName {
   /** Your service name associated service key in PagerDuty. */
   service_name: string;
 }
-const PagerDutyServiceName = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<PagerDutyServiceName>;
-
 /** Object containing metadata about the private location. */
 export type SyntheticsPrivateLocationMetadata = SyntheticsGlobalVariableAttributes;
 /** Array of tags attached to the private location. */
 export type CreatePrivateLocationRequestTagsList = Array<string>;
-const CreatePrivateLocationRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePrivateLocationRequestTagsList>;
-
 export interface CreatePrivateLocationRequest {
   /** Description of the private location. */
   description: string;
@@ -6638,11 +5989,6 @@ export interface CreatePrivateLocationRequest {
   /** Array of tags attached to the private location. */
   tags: CreatePrivateLocationRequestTagsList;
 }
-const CreatePrivateLocationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreatePrivateLocationRequest>;
-
 /** Authentication part of the secrets. */
 export interface SyntheticsPrivateLocationSecretsAuthentication {
   /** Access key for the private location. */
@@ -6650,36 +5996,18 @@ export interface SyntheticsPrivateLocationSecretsAuthentication {
   /** Secret access key for the private location. */
   key?: string;
 }
-const SyntheticsPrivateLocationSecretsAuthentication = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<SyntheticsPrivateLocationSecretsAuthentication>;
-
 /** Private key for the private location. */
 export interface SyntheticsPrivateLocationSecretsConfigDecryption {
   /** Private key for the private location. */
   key?: string;
 }
-const SyntheticsPrivateLocationSecretsConfigDecryption = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<SyntheticsPrivateLocationSecretsConfigDecryption>;
-
 /** Secrets for the private location. Only present in the response when creating the private location. */
 export interface SyntheticsPrivateLocationSecrets {
   authentication?: SyntheticsPrivateLocationSecretsAuthentication;
   config_decryption?: SyntheticsPrivateLocationSecretsConfigDecryption;
 }
-const SyntheticsPrivateLocationSecrets = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<SyntheticsPrivateLocationSecrets>;
-
 /** Array of tags attached to the private location. */
 export type SyntheticsPrivateLocationTagsList = Array<string>;
-const SyntheticsPrivateLocationTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsPrivateLocationTagsList>;
-
 /** Object containing information about the private location to create. */
 export interface SyntheticsPrivateLocation {
   /** Description of the private location. */
@@ -6693,11 +6021,6 @@ export interface SyntheticsPrivateLocation {
   /** Array of tags attached to the private location. */
   tags: SyntheticsPrivateLocationTagsList;
 }
-const SyntheticsPrivateLocation = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<SyntheticsPrivateLocation>;
-
 /** Public key for the result encryption. */
 export interface SyntheticsPrivateLocationCreationResponseResultEncryption {
   /** Fingerprint for the encryption key. */
@@ -6705,11 +6028,6 @@ export interface SyntheticsPrivateLocationCreationResponseResultEncryption {
   /** Public key for result encryption. */
   key?: string;
 }
-const SyntheticsPrivateLocationCreationResponseResultEncryption = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<SyntheticsPrivateLocationCreationResponseResultEncryption>;
-
 /** Object that contains the new private location, the public key for result encryption, and the configuration skeleton. */
 export interface SyntheticsPrivateLocationCreationResponse {
   /** Configuration skeleton for the private location. See installation instructions of the private location on how to use this configuration. */
@@ -6717,30 +6035,16 @@ export interface SyntheticsPrivateLocationCreationResponse {
   private_location?: SyntheticsPrivateLocation;
   result_encryption?: SyntheticsPrivateLocationCreationResponseResultEncryption;
 }
-const SyntheticsPrivateLocationCreationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<SyntheticsPrivateLocationCreationResponse>;
-
 /** The type of the associated private dashboard. */
 export type DashboardType = "custom_timeboard" | "custom_screenboard";
-const DashboardType = S.String;
-
 /** The `SharedDashboard` `embeddable_domains`. */
 export type CreatePublicDashboardRequestEmbeddableDomainsList = Array<string>;
-const CreatePublicDashboardRequestEmbeddableDomainsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePublicDashboardRequestEmbeddableDomainsList>;
-
 /** Dashboard global time live_span selection */
 export type DashboardGlobalTimeLiveSpan = "15m" | "1h" | "4h" | "1d" | "2d" | "1w" | "1mo" | "3mo";
-const DashboardGlobalTimeLiveSpan = S.String;
-
 /** Object containing the live span selection for the dashboard. */
 export interface DashboardGlobalTime {
   live_span?: DashboardGlobalTimeLiveSpan | (string & {});
 }
-const DashboardGlobalTime = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<DashboardGlobalTime>;
-
 /** The allowlisted invitees for an INVITE-only shared dashboard. */
 export interface SharedDashboardInviteesItemsInput {
   /** Time of the invitee expiration. Null means the invite will not expire. */
@@ -6748,23 +6052,10 @@ export interface SharedDashboardInviteesItemsInput {
   /** Email of the invitee. */
   email: string;
 }
-const SharedDashboardInviteesItemsInput = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<SharedDashboardInviteesItemsInput>;
-
 /** The `SharedDashboard` `invitees`. */
 export type CreatePublicDashboardRequestInviteesList = Array<SharedDashboardInviteesItemsInput>;
-const CreatePublicDashboardRequestInviteesList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreatePublicDashboardRequestInviteesList>;
-
 /** List of visible tag values on the shared dashboard. */
 export type SelectableTemplateVariableItemsVisibleTagsList = Array<string>;
-const SelectableTemplateVariableItemsVisibleTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SelectableTemplateVariableItemsVisibleTagsList>;
-
 /** Object containing the template variable's name, associated tag/attribute, default value and selectable values. */
 export interface SelectableTemplateVariableItems {
   /** The default value of the template variable. */
@@ -6778,44 +6069,23 @@ export interface SelectableTemplateVariableItems {
   /** List of visible tag values on the shared dashboard. */
   visible_tags?: SelectableTemplateVariableItemsVisibleTagsList | null;
 }
-const SelectableTemplateVariableItems = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<SelectableTemplateVariableItems>;
-
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type CreatePublicDashboardRequestSelectableTemplateVarsList =
   Array<SelectableTemplateVariableItems>;
-const CreatePublicDashboardRequestSelectableTemplateVarsList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreatePublicDashboardRequestSelectableTemplateVarsList>;
-
 /** List of email addresses that can receive an invitation to access to the shared dashboard. */
 export type CreatePublicDashboardRequestShareListList = Array<string>;
-const CreatePublicDashboardRequestShareListList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePublicDashboardRequestShareListList>;
-
 /** Type of sharing access (either open to anyone who has the public URL or invite-only). */
 export type DashboardShareType = "open" | "invite" | "embed";
-const DashboardShareType = S.String;
-
 /** Active means the dashboard is publicly available. Paused means the dashboard is not publicly available. */
 export type SharedDashboardStatus = "active" | "paused";
-const SharedDashboardStatus = S.String;
-
 /** The theme of the shared dashboard view. "system" follows your system's default viewing theme. */
 export type ViewingPreferencesTheme = "system" | "light" | "dark";
-const ViewingPreferencesTheme = S.String;
-
 /** The viewing preferences for a shared dashboard. */
 export interface ViewingPreferences {
   /** Whether the widgets on the shared dashboard should be displayed with high density. */
   high_density?: boolean;
   theme?: ViewingPreferencesTheme | (string & {});
 }
-const ViewingPreferences = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ViewingPreferences>;
-
 export interface CreatePublicDashboardRequest {
   /** ID of the dashboard to share. */
   dashboard_id: string;
@@ -6839,11 +6109,6 @@ export interface CreatePublicDashboardRequest {
   title?: string;
   viewing_preferences?: ViewingPreferences;
 }
-const CreatePublicDashboardRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<CreatePublicDashboardRequest>;
-
 /** User who shared the dashboard. */
 export interface SharedDashboardAuthor {
   /** Identifier of the user who shared the dashboard. */
@@ -6851,16 +6116,8 @@ export interface SharedDashboardAuthor {
   /** Name of the user who shared the dashboard. */
   name?: string | null;
 }
-const SharedDashboardAuthor = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<SharedDashboardAuthor>;
-
 /** The `SharedDashboard` `embeddable_domains`. */
 export type SharedDashboardEmbeddableDomainsList = Array<string>;
-const SharedDashboardEmbeddableDomainsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SharedDashboardEmbeddableDomainsList>;
-
 /** The allowlisted invitees for an INVITE-only shared dashboard. */
 export interface SharedDashboardInviteesItems {
   /** Time of the invitee expiration. Null means the invite will not expire. */
@@ -6870,28 +6127,12 @@ export interface SharedDashboardInviteesItems {
   /** Email of the invitee. */
   email: string;
 }
-const SharedDashboardInviteesItems = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<SharedDashboardInviteesItems>;
-
 /** The `SharedDashboard` `invitees`. */
 export type SharedDashboardInviteesList = Array<SharedDashboardInviteesItems>;
-const SharedDashboardInviteesList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<SharedDashboardInviteesList>;
-
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type SharedDashboardSelectableTemplateVarsList = Array<SelectableTemplateVariableItems>;
-const SharedDashboardSelectableTemplateVarsList =
-  CreatePublicDashboardRequestSelectableTemplateVarsList as any as S.Schema<SharedDashboardSelectableTemplateVarsList>;
-
 /** List of email addresses that can receive an invitation to access to the shared dashboard. */
 export type SharedDashboardShareListList = Array<string>;
-const SharedDashboardShareListList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SharedDashboardShareListList>;
-
 /** The metadata object associated with how a dashboard has been/will be shared. */
 export interface SharedDashboard {
   author?: SharedDashboardAuthor;
@@ -6925,8 +6166,6 @@ export interface SharedDashboard {
   token?: string;
   viewing_preferences?: ViewingPreferences;
 }
-const SharedDashboard = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<SharedDashboard>;
-
 /** Configuration options for what is shown in an alert event message. */
 export interface SlackIntegrationChannelDisplay {
   /** Show the main body of the alert event. */
@@ -6940,11 +6179,6 @@ export interface SlackIntegrationChannelDisplay {
   /** Show the scopes on which the monitor alerted. */
   tags?: boolean;
 }
-const SlackIntegrationChannelDisplay = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<SlackIntegrationChannelDisplay>;
-
 export interface CreateSlackIntegrationChannelRequest {
   /** Your Slack account name. */
   account_name: string;
@@ -6952,32 +6186,16 @@ export interface CreateSlackIntegrationChannelRequest {
   /** Your channel name. */
   name?: string;
 }
-const CreateSlackIntegrationChannelRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<CreateSlackIntegrationChannelRequest>;
-
 /** The Slack channel configuration. */
 export interface SlackIntegrationChannel {
   display?: SlackIntegrationChannelDisplay;
   /** Your channel name. */
   name?: string;
 }
-const SlackIntegrationChannel = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<SlackIntegrationChannel>;
-
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type CreateSLORequestGroupsList = Array<string>;
-const CreateSLORequestGroupsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSLORequestGroupsList>;
-
 /** A list of monitor IDs that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type CreateSLORequestMonitorIdsList = Array<number>;
-const CreateSLORequestMonitorIdsList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<CreateSLORequestMonitorIdsList>;
-
 /** A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests. */
 export interface ServiceLevelObjectiveQuery {
   /** A Datadog metric query for total (valid) events. */
@@ -6985,11 +6203,6 @@ export interface ServiceLevelObjectiveQuery {
   /** A Datadog metric query for good events. */
   numerator: string;
 }
-const ServiceLevelObjectiveQuery = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ServiceLevelObjectiveQuery>;
-
 /** The comparator used to compare the SLI value to the threshold. */
 export type SLOTimeSliceComparator = ">" | ">=" | "<" | "<=";
 /** A formula that specifies how to combine the results of multiple queries. */
@@ -7050,17 +6263,10 @@ export interface SLOCountSpec {
 }
 /** A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only. */
 export type SLOSliSpec = SLOTimeSliceSpec | SLOCountSpec;
-const SLOSliSpec = S.Unknown as any as S.Schema<SLOSliSpec>;
-
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type CreateSLORequestTagsList = Array<string>;
-const CreateSLORequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSLORequestTagsList>;
-
 /** The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. */
 export type SLOTimeframe = "7d" | "30d" | "90d" | "custom";
-const SLOTimeframe = S.String;
-
 /** SLO thresholds (target and optionally warning) for a single time window. */
 export interface SLOThreshold {
   /** The target value for the service level indicator within the corresponding timeframe. */
@@ -7073,19 +6279,10 @@ export interface SLOThreshold {
   /** A string representation of the warning target (see the description of the `target_display` field for details). Included in service level objective responses if a warning target exists. Ignored in create/update requests. */
   warning_display?: string;
 }
-const SLOThreshold = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<SLOThreshold>;
-
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type CreateSLORequestThresholdsList = Array<SLOThreshold>;
-const CreateSLORequestThresholdsList = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CreateSLORequestThresholdsList>;
-
 /** The type of the service level objective. */
 export type SLOType = "metric" | "monitor" | "time_slice";
-const SLOType = S.String;
-
 export interface CreateSLORequest {
   /** A user-defined description of the service level objective. Always included in service level objective responses (but may be `null`). Optional in create/update requests. */
   description?: string | null;
@@ -7108,33 +6305,16 @@ export interface CreateSLORequest {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-const CreateSLORequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<CreateSLORequest>;
-
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type ServiceLevelObjectiveGroupsList = Array<string>;
-const ServiceLevelObjectiveGroupsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveGroupsList>;
-
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type ServiceLevelObjectiveMonitorIdsList = Array<number>;
-const ServiceLevelObjectiveMonitorIdsList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<ServiceLevelObjectiveMonitorIdsList>;
-
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type ServiceLevelObjectiveMonitorTagsList = Array<string>;
-const ServiceLevelObjectiveMonitorTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveMonitorTagsList>;
-
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type ServiceLevelObjectiveTagsList = Array<string>;
-const ServiceLevelObjectiveTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveTagsList>;
-
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type ServiceLevelObjectiveThresholdsList = Array<SLOThreshold>;
-const ServiceLevelObjectiveThresholdsList =
-  CreateSLORequestThresholdsList as any as S.Schema<ServiceLevelObjectiveThresholdsList>;
-
 /** A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.). */
 export interface ServiceLevelObjective {
   /** Creation timestamp (UNIX time in seconds) Always included in service level objective responses. */
@@ -7167,23 +6347,10 @@ export interface ServiceLevelObjective {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-const ServiceLevelObjective = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ServiceLevelObjective>;
-
 /** An array of service level objective objects. */
 export type SLOListResponseDataList = Array<ServiceLevelObjective>;
-const SLOListResponseDataList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<SLOListResponseDataList>;
-
 /** An array of error messages. Each endpoint documents how/whether this field is used. */
 export type SLOListResponseErrorsList = Array<string>;
-const SLOListResponseErrorsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOListResponseErrorsList>;
-
 /** The object containing information about the pages of the list of SLOs. */
 export interface SLOListResponseMetadataPage {
   /** The total number of resources that could be retrieved ignoring the parameters and filters in the request. */
@@ -7191,20 +6358,10 @@ export interface SLOListResponseMetadataPage {
   /** The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages. */
   total_filtered_count?: number;
 }
-const SLOListResponseMetadataPage = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<SLOListResponseMetadataPage>;
-
 /** The metadata object containing additional information about the list of SLOs. */
 export interface SLOListResponseMetadata {
   page?: SLOListResponseMetadataPage;
 }
-const SLOListResponseMetadata = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<SLOListResponseMetadata>;
-
 /** A response with one or more service level objective. */
 export interface SLOListResponse {
   /** An array of service level objective objects. */
@@ -7213,16 +6370,12 @@ export interface SLOListResponse {
   errors?: SLOListResponseErrorsList;
   metadata?: SLOListResponseMetadata;
 }
-const SLOListResponse = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<SLOListResponse>;
-
 /** Category the SLO correction belongs to. */
 export type SLOCorrectionCategory =
   | "Scheduled Maintenance"
   | "Outside Business Hours"
   | "Deployment"
   | "Other";
-const SLOCorrectionCategory = S.String;
-
 /** The attribute object associated with the SLO correction to be created. Exactly one of `slo_id` or `slo_query` must be provided. */
 export interface SLOCorrectionCreateRequestAttributes {
   category: SLOCorrectionCategory | (string & {});
@@ -7243,33 +6396,16 @@ export interface SLOCorrectionCreateRequestAttributes {
   /** The timezone to display in the UI for the correction times (defaults to "UTC"). */
   timezone?: string;
 }
-const SLOCorrectionCreateRequestAttributes = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<SLOCorrectionCreateRequestAttributes>;
-
 /** SLO correction resource type. */
 export type SLOCorrectionType = "correction";
-const SLOCorrectionType = S.String;
-
 /** The data object associated with the SLO correction to be created. */
 export interface SLOCorrectionCreateData {
   attributes?: SLOCorrectionCreateRequestAttributes;
   type: SLOCorrectionType | (string & {});
 }
-const SLOCorrectionCreateData = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<SLOCorrectionCreateData>;
-
 export interface CreateSLOCorrectionRequest {
   data?: SLOCorrectionCreateData;
 }
-const CreateSLOCorrectionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<CreateSLOCorrectionRequest>;
-
 /** Modifier of the object. */
 export interface SLOCorrectionResponseAttributesModifier {
   /** Email of the Modifier. */
@@ -7279,11 +6415,6 @@ export interface SLOCorrectionResponseAttributesModifier {
   /** Name of the Modifier. */
   name?: string;
 }
-const SLOCorrectionResponseAttributesModifier = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<SLOCorrectionResponseAttributesModifier>;
-
 /** The attribute object associated with the SLO correction. */
 export interface SLOCorrectionResponseAttributes {
   category?: SLOCorrectionCategory;
@@ -7310,11 +6441,6 @@ export interface SLOCorrectionResponseAttributes {
   /** The timezone to display in the UI for the correction times (defaults to "UTC"). */
   timezone?: string;
 }
-const SLOCorrectionResponseAttributes = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<SLOCorrectionResponseAttributes>;
-
 /** The response object of a list of SLO corrections. */
 export interface SLOCorrection {
   attributes?: SLOCorrectionResponseAttributes;
@@ -7322,17 +6448,10 @@ export interface SLOCorrection {
   id?: string;
   type?: SLOCorrectionType;
 }
-const SLOCorrection = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<SLOCorrection>;
-
 /** The response object of an SLO correction. */
 export interface SLOCorrectionResponse {
   data?: SLOCorrection;
 }
-const SLOCorrectionResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<SLOCorrectionResponse>;
-
 /** Assertion operator to apply. */
 export type SyntheticsAssertionOperator =
   | "contains"
@@ -7501,19 +6620,10 @@ export type SyntheticsAssertion =
   | SyntheticsAssertionJavascript
   | SyntheticsAssertionMCPServerCapabilitiesTarget
   | SyntheticsAssertionMCPRespectsSpecification;
-const SyntheticsAssertion = S.Unknown as any as S.Schema<SyntheticsAssertion>;
-
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsAPITestConfigInputAssertionsList = Array<SyntheticsAssertion>;
-const SyntheticsAPITestConfigInputAssertionsList = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<SyntheticsAPITestConfigInputAssertionsList>;
-
 /** Type of the configuration variable. */
 export type SyntheticsConfigVariableType = "global" | "text" | "email";
-const SyntheticsConfigVariableType = S.String;
-
 /** Object defining a variable that can be used in your test configuration. */
 export interface SyntheticsConfigVariable {
   /** Example for the variable. */
@@ -7528,18 +6638,8 @@ export interface SyntheticsConfigVariable {
   secure?: boolean;
   type: SyntheticsConfigVariableType | (string & {});
 }
-const SyntheticsConfigVariable = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<SyntheticsConfigVariable>;
-
 /** Array of variables used for the test. */
 export type SyntheticsAPITestConfigInputConfigVariablesList = Array<SyntheticsConfigVariable>;
-const SyntheticsAPITestConfigInputConfigVariablesList = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<SyntheticsAPITestConfigInputConfigVariablesList>;
-
 /** The type of basic authentication to use when performing the test. */
 export type SyntheticsBasicAuthWebType = "web";
 /** Object to handle basic authentication when performing the test. */
@@ -7670,8 +6770,6 @@ export type SyntheticsBasicAuth =
   | SyntheticsBasicAuthOauthClient
   | SyntheticsBasicAuthOauthROP
   | SyntheticsBasicAuthJWT;
-const SyntheticsBasicAuth = S.Unknown as any as S.Schema<SyntheticsBasicAuth>;
-
 /** Type of the request body. */
 export type SyntheticsTestRequestBodyType =
   | "text/plain"
@@ -7682,12 +6780,8 @@ export type SyntheticsTestRequestBodyType =
   | "graphql"
   | "application/octet-stream"
   | "multipart/form-data";
-const SyntheticsTestRequestBodyType = S.String;
-
 /** The type of call to perform. Used by gRPC steps (`healthcheck`, `unary`) and MCP steps (`init`, `tool_list`, `tool_call`). Valid values depend on the parent step's `subtype`. */
 export type SyntheticsTestCallType = "healthcheck" | "unary" | "init" | "tool_list" | "tool_call";
-const SyntheticsTestCallType = S.String;
-
 /** Define a request certificate. */
 export interface SyntheticsTestRequestCertificateItem {
   /** Content of the certificate or key. */
@@ -7697,31 +6791,15 @@ export interface SyntheticsTestRequestCertificateItem {
   /** Date of update of the certificate or key, ISO format. */
   updatedAt?: string;
 }
-const SyntheticsTestRequestCertificateItem = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<SyntheticsTestRequestCertificateItem>;
-
 /** Client certificate to use when performing the test request. */
 export interface SyntheticsTestRequestCertificate {
   cert?: SyntheticsTestRequestCertificateItem;
   key?: SyntheticsTestRequestCertificateItem;
 }
-const SyntheticsTestRequestCertificate = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<SyntheticsTestRequestCertificate>;
-
 /** By default, the client certificate is applied on the domain of the starting URL for browser tests. If you want your client certificate to be applied on other domains instead, add them in `certificateDomains`. */
 export type SyntheticsTestRequestCertificateDomainsList = Array<string>;
-const SyntheticsTestRequestCertificateDomainsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestRequestCertificateDomainsList>;
-
 /** DNS server port to use for DNS tests. */
 export type SyntheticsTestRequestDNSServerPort = number | string;
-const SyntheticsTestRequestDNSServerPort =
-  S.Unknown as any as S.Schema<SyntheticsTestRequestDNSServerPort>;
-
 /** Object describing a file to be used as part of the request in the test. */
 export interface SyntheticsTestRequestBodyFile {
   /** Bucket key of the file. */
@@ -7739,63 +6817,28 @@ export interface SyntheticsTestRequestBodyFile {
   /** Type of the file. */
   type?: string;
 }
-const SyntheticsTestRequestBodyFile = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<SyntheticsTestRequestBodyFile>;
-
 /** Files to be used as part of the request in the test. Only valid if `bodyType` is `multipart/form-data`. */
 export type SyntheticsTestRequestFilesList = Array<SyntheticsTestRequestBodyFile>;
-const SyntheticsTestRequestFilesList = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<SyntheticsTestRequestFilesList>;
-
 /** Form to be used as part of the request in the test. Only valid if `bodyType` is `multipart/form-data`. */
 export type SyntheticsTestRequestFormMap = { [key: string]: string | undefined };
-const SyntheticsTestRequestFormMap =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestRequestFormMap>;
-
 /** Headers to include when performing the test. */
 export type SyntheticsTestHeaders = { [key: string]: string | undefined };
-const SyntheticsTestHeaders =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestHeaders>;
-
 /** HTTP version to use for a Synthetic test. */
 export type SyntheticsTestOptionsHTTPVersion = "http1" | "http2" | "any";
-const SyntheticsTestOptionsHTTPVersion = S.String;
-
 /** The MCP protocol version used by the step. See https://modelcontextprotocol.io/specification. */
 export type SyntheticsMCPProtocolVersion = "2025-06-18";
-const SyntheticsMCPProtocolVersion = S.String;
-
 /** Metadata to include when performing the gRPC test. */
 export type SyntheticsTestMetadata = { [key: string]: string | undefined };
-const SyntheticsTestMetadata =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestMetadata>;
-
 /** Port to use when performing the test. */
 export type SyntheticsTestRequestPort = number | string;
-const SyntheticsTestRequestPort = S.Unknown as any as S.Schema<SyntheticsTestRequestPort>;
-
 /** The proxy to perform the test. */
 export interface SyntheticsTestRequestProxy {
   headers?: SyntheticsTestHeaders;
   /** URL of the proxy to perform the test. */
   url: string;
 }
-const SyntheticsTestRequestProxy = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<SyntheticsTestRequestProxy>;
-
 /** Arguments to pass to the MCP tool. Free-form object whose shape depends on the tool. Used when `callType` is `tool_call`. */
 export type SyntheticsTestRequestToolArgsMap = { [key: string]: unknown | undefined };
-const SyntheticsTestRequestToolArgsMap = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<SyntheticsTestRequestToolArgsMap>;
-
 /** Object describing the Synthetic test request. */
 export interface SyntheticsTestRequest {
   /** Allows loading insecure content for an HTTP request in a multistep test step. */
@@ -7865,11 +6908,6 @@ export interface SyntheticsTestRequest {
   /** URL to perform the test with. */
   url?: string;
 }
-const SyntheticsTestRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<SyntheticsTestRequest>;
-
 /** Array of assertions used for the test. */
 export type SyntheticsAPITestStepInputAssertionsList = Array<SyntheticsAssertion>;
 /** Property of the Synthetic Test Response to extract into a local variable. */
@@ -7899,11 +6937,6 @@ export interface SyntheticsTestOptionsRetry {
   /** Time interval between retries (in milliseconds). Defaults to 300ms. */
   interval?: number;
 }
-const SyntheticsTestOptionsRetry = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<SyntheticsTestOptionsRetry>;
-
 /** The subtype of the Synthetic multi-step API test step. */
 export type SyntheticsAPITestStepSubtype =
   | "http"
@@ -7971,15 +7004,8 @@ export type SyntheticsAPIStepInput =
   | SyntheticsAPITestStepInput
   | SyntheticsAPIWaitStepInput
   | SyntheticsAPISubtestStepInput;
-const SyntheticsAPIStepInput = S.Unknown as any as S.Schema<SyntheticsAPIStepInput>;
-
 /** When the test subtype is `multi`, the steps of the test. */
 export type SyntheticsAPITestConfigInputStepsList = Array<SyntheticsAPIStepInput>;
-const SyntheticsAPITestConfigInputStepsList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<SyntheticsAPITestConfigInputStepsList>;
-
 /** Configuration object for a Synthetic API test. */
 export interface SyntheticsAPITestConfigInput {
   /** Array of assertions used for the test. Required for single API tests. */
@@ -7992,39 +7018,18 @@ export interface SyntheticsAPITestConfigInput {
   /** Variables defined from JavaScript code. */
   variablesFromScript?: string;
 }
-const SyntheticsAPITestConfigInput = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<SyntheticsAPITestConfigInput>;
-
 /** Array of locations used to run the test. */
 export type CreateSyntheticsAPITestRequestLocationsList = Array<string>;
-const CreateSyntheticsAPITestRequestLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsAPITestRequestLocationsList>;
-
 /** Array of URL patterns to block. */
 export type SyntheticsTestOptionsBlockedRequestPatternsList = Array<string>;
-const SyntheticsTestOptionsBlockedRequestPatternsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestOptionsBlockedRequestPatternsList>;
-
 /** Execution rule for a Synthetic test. */
 export type SyntheticsTestExecutionRule = "blocking" | "non_blocking" | "skipped";
-const SyntheticsTestExecutionRule = S.String;
-
 /** CI/CD options for a Synthetic test. */
 export interface SyntheticsTestCiOptions {
   executionRule: SyntheticsTestExecutionRule | (string & {});
 }
-const SyntheticsTestCiOptions = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<SyntheticsTestCiOptions>;
-
 /** For browser test, array with the different device IDs used to run the test. */
 export type SyntheticsTestOptionsDeviceIdsList = Array<string>;
-const SyntheticsTestOptionsDeviceIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestOptionsDeviceIdsList>;
-
 /** The name of the preset for the notification for the monitor. */
 export type SyntheticsTestOptionsMonitorOptionsNotificationPresetName =
   | "show_all"
@@ -8034,8 +7039,6 @@ export type SyntheticsTestOptionsMonitorOptionsNotificationPresetName =
   | "hide_query_and_handles"
   | "show_only_snapshot"
   | "hide_handles_and_footer";
-const SyntheticsTestOptionsMonitorOptionsNotificationPresetName = S.String;
-
 /** Object containing the options for a Synthetic test as a monitor (for example, renotification). */
 export interface SyntheticsTestOptionsMonitorOptions {
   /** Message to include in the escalation notification. */
@@ -8048,11 +7051,6 @@ export interface SyntheticsTestOptionsMonitorOptions {
   /** The number of times to renotify if the test is still failing. */
   renotify_occurrences?: number;
 }
-const SyntheticsTestOptionsMonitorOptions = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<SyntheticsTestOptionsMonitorOptions>;
-
 /** The RUM data collection settings for the Synthetic browser test. **Note:** There are 3 ways to format RUM settings: `{ isEnabled: false }` RUM data is not collected. `{ isEnabled: true }` RUM data is collected from the Synthetic test's default application. `{ isEnabled: true, applicationId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", clientTokenId: 12345 }` RUM data is collected using the specified application. */
 export interface SyntheticsBrowserTestRumSettings {
   /** RUM application ID used to collect RUM data for the browser test. */
@@ -8062,11 +7060,6 @@ export interface SyntheticsBrowserTestRumSettings {
   /** Determines whether RUM data is collected during test runs. */
   isEnabled: boolean;
 }
-const SyntheticsBrowserTestRumSettings = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<SyntheticsBrowserTestRumSettings>;
-
 /** Object describing a timeframe. */
 export interface SyntheticsTestOptionsSchedulingTimeframe {
   /** Number representing the day of the week. */
@@ -8076,19 +7069,9 @@ export interface SyntheticsTestOptionsSchedulingTimeframe {
   /** The hour of the day on which scheduling ends. */
   to: string;
 }
-const SyntheticsTestOptionsSchedulingTimeframe = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<SyntheticsTestOptionsSchedulingTimeframe>;
-
 /** Array containing objects describing the scheduling pattern to apply to each day. */
 export type SyntheticsTestOptionsSchedulingTimeframesList =
   Array<SyntheticsTestOptionsSchedulingTimeframe>;
-const SyntheticsTestOptionsSchedulingTimeframesList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<SyntheticsTestOptionsSchedulingTimeframesList>;
-
 /** Object containing timeframes and timezone used for advanced scheduling. */
 export interface SyntheticsTestOptionsScheduling {
   /** Array containing objects describing the scheduling pattern to apply to each day. */
@@ -8096,11 +7079,6 @@ export interface SyntheticsTestOptionsScheduling {
   /** Timezone in which the timeframe is based. */
   timezone: string;
 }
-const SyntheticsTestOptionsScheduling = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<SyntheticsTestOptionsScheduling>;
-
 /** Object describing the extra options for a Synthetic test. */
 export interface SyntheticsTestOptions {
   /** For SSL tests, whether or not the test should allow self signed certificates. */
@@ -8155,15 +7133,8 @@ export interface SyntheticsTestOptions {
   /** The frequency at which to run the Synthetic test (in seconds). */
   tick_every?: number;
 }
-const SyntheticsTestOptions = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<SyntheticsTestOptions>;
-
 /** Define whether you want to start (`live`) or pause (`paused`) a Synthetic test. */
 export type SyntheticsTestPauseStatus = "live" | "paused";
-const SyntheticsTestPauseStatus = S.String;
-
 /** The subtype of the Synthetic API test, `http`, `ssl`, `tcp`, `dns`, `icmp`, `udp`, `websocket`, `grpc` or `multi`. */
 export type SyntheticsTestDetailsSubType =
   | "http"
@@ -8175,17 +7146,10 @@ export type SyntheticsTestDetailsSubType =
   | "udp"
   | "websocket"
   | "grpc";
-const SyntheticsTestDetailsSubType = S.String;
-
 /** Array of tags attached to the test. */
 export type CreateSyntheticsAPITestRequestTagsList = Array<string>;
-const CreateSyntheticsAPITestRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsAPITestRequestTagsList>;
-
 /** Type of the Synthetic test, `api`. */
 export type SyntheticsAPITestType = "api";
-const SyntheticsAPITestType = S.String;
-
 export interface CreateSyntheticsAPITestRequest {
   config: SyntheticsAPITestConfigInput;
   /** Array of locations used to run the test. */
@@ -8201,21 +7165,10 @@ export interface CreateSyntheticsAPITestRequest {
   tags?: CreateSyntheticsAPITestRequestTagsList;
   type: SyntheticsAPITestType | (string & {});
 }
-const CreateSyntheticsAPITestRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<CreateSyntheticsAPITestRequest>;
-
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsAPITestConfigAssertionsList = Array<SyntheticsAssertion>;
-const SyntheticsAPITestConfigAssertionsList =
-  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsAPITestConfigAssertionsList>;
-
 /** Array of variables used for the test. */
 export type SyntheticsAPITestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-const SyntheticsAPITestConfigConfigVariablesList =
-  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsAPITestConfigConfigVariablesList>;
-
 /** Array of assertions used for the test. */
 export type SyntheticsAPITestStepAssertionsList = Array<SyntheticsAssertion>;
 /** Array of values to parse and save as variables from the response. */
@@ -8278,15 +7231,8 @@ export type SyntheticsAPIStep =
   | SyntheticsAPITestStep
   | SyntheticsAPIWaitStep
   | SyntheticsAPISubtestStep;
-const SyntheticsAPIStep = S.Unknown as any as S.Schema<SyntheticsAPIStep>;
-
 /** When the test subtype is `multi`, the steps of the test. */
 export type SyntheticsAPITestConfigStepsList = Array<SyntheticsAPIStep>;
-const SyntheticsAPITestConfigStepsList = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<SyntheticsAPITestConfigStepsList>;
-
 /** Configuration object for a Synthetic API test. */
 export interface SyntheticsAPITestConfig {
   /** Array of assertions used for the test. Required for single API tests. */
@@ -8299,21 +7245,10 @@ export interface SyntheticsAPITestConfig {
   /** Variables defined from JavaScript code. */
   variablesFromScript?: string;
 }
-const SyntheticsAPITestConfig = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<SyntheticsAPITestConfig>;
-
 /** Array of locations used to run the test. */
 export type SyntheticsAPITestLocationsList = Array<string>;
-const SyntheticsAPITestLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsAPITestLocationsList>;
-
 /** Array of tags attached to the test. */
 export type SyntheticsAPITestTagsList = Array<string>;
-const SyntheticsAPITestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsAPITestTagsList>;
-
 /** Object containing details about a Synthetic API test. */
 export interface SyntheticsAPITest {
   config: SyntheticsAPITestConfig;
@@ -8334,22 +7269,12 @@ export interface SyntheticsAPITest {
   tags?: SyntheticsAPITestTagsList;
   type: SyntheticsAPITestType;
 }
-const SyntheticsAPITest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<SyntheticsAPITest>;
-
 /** Array of assertions used for the test. */
 export type SyntheticsBrowserTestConfigAssertionsList = Array<SyntheticsAssertion>;
-const SyntheticsBrowserTestConfigAssertionsList =
-  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsBrowserTestConfigAssertionsList>;
-
 /** Array of variables used for the test. */
 export type SyntheticsBrowserTestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-const SyntheticsBrowserTestConfigConfigVariablesList =
-  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsBrowserTestConfigConfigVariablesList>;
-
 /** Type of browser test variable. */
 export type SyntheticsBrowserVariableType = "element" | "email" | "global" | "text";
-const SyntheticsBrowserVariableType = S.String;
-
 /** Object defining a variable that can be used in your browser test. See the [Recording Steps documentation](https://docs.datadoghq.com/synthetics/browser_tests/actions/?tab=testanelementontheactivepage#variables). */
 export interface SyntheticsBrowserVariable {
   /** Example for the variable. */
@@ -8364,18 +7289,8 @@ export interface SyntheticsBrowserVariable {
   secure?: boolean;
   type: SyntheticsBrowserVariableType | (string & {});
 }
-const SyntheticsBrowserVariable = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<SyntheticsBrowserVariable>;
-
 /** Array of variables used for the test steps. */
 export type SyntheticsBrowserTestConfigVariablesList = Array<SyntheticsBrowserVariable>;
-const SyntheticsBrowserTestConfigVariablesList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<SyntheticsBrowserTestConfigVariablesList>;
-
 /** Configuration object for a Synthetic browser test. */
 export interface SyntheticsBrowserTestConfig {
   /** Array of assertions used for the test. */
@@ -8388,16 +7303,8 @@ export interface SyntheticsBrowserTestConfig {
   /** Array of variables used for the test steps. */
   variables?: SyntheticsBrowserTestConfigVariablesList;
 }
-const SyntheticsBrowserTestConfig = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<SyntheticsBrowserTestConfig>;
-
 /** Array of locations used to run the test. */
 export type CreateSyntheticsBrowserTestRequestLocationsList = Array<string>;
-const CreateSyntheticsBrowserTestRequestLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsBrowserTestRequestLocationsList>;
-
 /** Step type used in your Synthetic test. */
 export type SyntheticsStepType =
   | "assertCurrentUrl"
@@ -8429,8 +7336,6 @@ export type SyntheticsStepType =
   | "typeText"
   | "uploadFiles"
   | "wait";
-const SyntheticsStepType = S.String;
-
 /** The steps used in a Synthetic browser test. */
 export interface SyntheticsStep {
   /** A boolean set to allow this step to fail. */
@@ -8453,24 +7358,12 @@ export interface SyntheticsStep {
   timeout?: number;
   type?: SyntheticsStepType | (string & {});
 }
-const SyntheticsStep = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<SyntheticsStep>;
-
 /** Array of steps for the test. */
 export type CreateSyntheticsBrowserTestRequestStepsList = Array<SyntheticsStep>;
-const CreateSyntheticsBrowserTestRequestStepsList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<CreateSyntheticsBrowserTestRequestStepsList>;
-
 /** Array of tags attached to the test. */
 export type CreateSyntheticsBrowserTestRequestTagsList = Array<string>;
-const CreateSyntheticsBrowserTestRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsBrowserTestRequestTagsList>;
-
 /** Type of the Synthetic test, `browser`. */
 export type SyntheticsBrowserTestType = "browser";
-const SyntheticsBrowserTestType = S.String;
-
 export interface CreateSyntheticsBrowserTestRequest {
   config: SyntheticsBrowserTestConfig;
   /** Array of locations used to run the test. */
@@ -8487,26 +7380,12 @@ export interface CreateSyntheticsBrowserTestRequest {
   tags?: CreateSyntheticsBrowserTestRequestTagsList;
   type: SyntheticsBrowserTestType | (string & {});
 }
-const CreateSyntheticsBrowserTestRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<CreateSyntheticsBrowserTestRequest>;
-
 /** Array of locations used to run the test. */
 export type SyntheticsBrowserTestLocationsList = Array<string>;
-const SyntheticsBrowserTestLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsBrowserTestLocationsList>;
-
 /** Array of steps for the test. */
 export type SyntheticsBrowserTestStepsList = Array<SyntheticsStep>;
-const SyntheticsBrowserTestStepsList =
-  CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<SyntheticsBrowserTestStepsList>;
-
 /** Array of tags attached to the test. */
 export type SyntheticsBrowserTestTagsList = Array<string>;
-const SyntheticsBrowserTestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsBrowserTestTagsList>;
-
 /** Object containing details about a Synthetic browser test. */
 export interface SyntheticsBrowserTest {
   config: SyntheticsBrowserTestConfig;
@@ -8528,72 +7407,33 @@ export interface SyntheticsBrowserTest {
   tags?: SyntheticsBrowserTestTagsList;
   type: SyntheticsBrowserTestType;
 }
-const SyntheticsBrowserTest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<SyntheticsBrowserTest>;
-
 /** Initial application arguments for a mobile test. */
 export type SyntheticsMobileTestInitialApplicationArguments = { [key: string]: string | undefined };
-const SyntheticsMobileTestInitialApplicationArguments =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsMobileTestInitialApplicationArguments>;
-
 /** Array of variables used for the test steps. */
 export type SyntheticsMobileTestConfigVariablesList = Array<SyntheticsConfigVariable>;
-const SyntheticsMobileTestConfigVariablesList =
-  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsMobileTestConfigVariablesList>;
-
 /** Configuration object for a Synthetic mobile test. */
 export interface SyntheticsMobileTestConfig {
   initialApplicationArguments?: SyntheticsMobileTestInitialApplicationArguments;
   /** Array of variables used for the test steps. */
   variables?: SyntheticsMobileTestConfigVariablesList;
 }
-const SyntheticsMobileTestConfig = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<SyntheticsMobileTestConfig>;
-
 /** Array with the different device IDs used to run the test. */
 export type CreateSyntheticsMobileTestRequestDeviceIdsList = Array<string>;
-const CreateSyntheticsMobileTestRequestDeviceIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsMobileTestRequestDeviceIdsList>;
-
 /** List of principals for a mobile test binding. */
 export type SyntheticsTestRestrictionPolicyBindingPrincipals = Array<string>;
-const SyntheticsTestRestrictionPolicyBindingPrincipals =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestRestrictionPolicyBindingPrincipals>;
-
 /** The type of relation for the binding. */
 export type SyntheticsTestRestrictionPolicyBindingRelation = "editor" | "viewer";
-const SyntheticsTestRestrictionPolicyBindingRelation = S.String;
-
 /** Objects describing the binding used for a mobile test. */
 export interface SyntheticsTestRestrictionPolicyBinding {
   principals?: SyntheticsTestRestrictionPolicyBindingPrincipals;
   relation?: SyntheticsTestRestrictionPolicyBindingRelation | (string & {});
 }
-const SyntheticsTestRestrictionPolicyBinding = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<SyntheticsTestRestrictionPolicyBinding>;
-
 /** Array of bindings used for the mobile test. */
 export type SyntheticsMobileTestOptionsBindingsList = Array<SyntheticsTestRestrictionPolicyBinding>;
-const SyntheticsMobileTestOptionsBindingsList = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<SyntheticsMobileTestOptionsBindingsList>;
-
 /** For mobile test, array with the different device IDs used to run the test. */
 export type SyntheticsMobileTestOptionsDeviceIdsList = Array<string>;
-const SyntheticsMobileTestOptionsDeviceIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestOptionsDeviceIdsList>;
-
 /** Reference type for the mobile application for a mobile synthetics test. */
 export type SyntheticsMobileTestsMobileApplicationReferenceType = "latest" | "version";
-const SyntheticsMobileTestsMobileApplicationReferenceType = S.String;
-
 /** Mobile application for mobile synthetics test. */
 export interface SyntheticsMobileTestsMobileApplication {
   /** Application ID of the mobile application. */
@@ -8602,11 +7442,6 @@ export interface SyntheticsMobileTestsMobileApplication {
   referenceId: string;
   referenceType: SyntheticsMobileTestsMobileApplicationReferenceType | (string & {});
 }
-const SyntheticsMobileTestsMobileApplication = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<SyntheticsMobileTestsMobileApplication>;
-
 /** Object describing the extra options for a Synthetic test. */
 export interface SyntheticsMobileTestOptions {
   /** A boolean to set if an application crash would mark the test as failed. */
@@ -8640,11 +7475,6 @@ export interface SyntheticsMobileTestOptions {
   /** The level of verbosity for the mobile test. This field can not be set by a user. */
   verbosity?: number;
 }
-const SyntheticsMobileTestOptions = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<SyntheticsMobileTestOptions>;
-
 /** Type of assertion to apply in an API test. */
 export type SyntheticsCheckType =
   | "equals"
@@ -8661,16 +7491,10 @@ export type SyntheticsCheckType =
   | "between"
   | "isEmpty"
   | "notIsEmpty";
-const SyntheticsCheckType = S.String;
-
 /** The direction of the scroll for a `scrollToElement` step type. */
 export type SyntheticsMobileStepParamsDirection = "up" | "down" | "left" | "right";
-const SyntheticsMobileStepParamsDirection = S.String;
-
 /** Type of the context that the element is in. */
 export type SyntheticsMobileStepParamsElementContextType = "native" | "web";
-const SyntheticsMobileStepParamsElementContextType = S.String;
-
 /** Position of the action relative to the element. */
 export interface SyntheticsMobileStepParamsElementRelativePosition {
   /** The `relativePosition` on the `x` axis for the element. */
@@ -8678,11 +7502,6 @@ export interface SyntheticsMobileStepParamsElementRelativePosition {
   /** The `relativePosition` on the `y` axis for the element. */
   y?: number;
 }
-const SyntheticsMobileStepParamsElementRelativePosition = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<SyntheticsMobileStepParamsElementRelativePosition>;
-
 /** Type of a user locator. */
 export type SyntheticsMobileStepParamsElementUserLocatorValuesItemsType =
   | "accessibility-id"
@@ -8690,27 +7509,15 @@ export type SyntheticsMobileStepParamsElementUserLocatorValuesItemsType =
   | "ios-predicate-string"
   | "ios-class-chain"
   | "xpath";
-const SyntheticsMobileStepParamsElementUserLocatorValuesItemsType = S.String;
-
 /** A single user locator object. */
 export interface SyntheticsMobileStepParamsElementUserLocatorValuesItems {
   type?: SyntheticsMobileStepParamsElementUserLocatorValuesItemsType | (string & {});
   /** Value of a user locator. */
   value?: string;
 }
-const SyntheticsMobileStepParamsElementUserLocatorValuesItems = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<SyntheticsMobileStepParamsElementUserLocatorValuesItems>;
-
 /** Values of the user locator. */
 export type SyntheticsMobileStepParamsElementUserLocatorValuesList =
   Array<SyntheticsMobileStepParamsElementUserLocatorValuesItems>;
-const SyntheticsMobileStepParamsElementUserLocatorValuesList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<SyntheticsMobileStepParamsElementUserLocatorValuesList>;
-
 /** User locator to find the element. */
 export interface SyntheticsMobileStepParamsElementUserLocator {
   /** Whether if the test should fail if the element cannot be found. */
@@ -8718,11 +7525,6 @@ export interface SyntheticsMobileStepParamsElementUserLocator {
   /** Values of the user locator. */
   values?: SyntheticsMobileStepParamsElementUserLocatorValuesList;
 }
-const SyntheticsMobileStepParamsElementUserLocator = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<SyntheticsMobileStepParamsElementUserLocator>;
-
 /** Information about the element used for a step. */
 export interface SyntheticsMobileStepParamsElement {
   /** Context of the element. */
@@ -8739,11 +7541,6 @@ export interface SyntheticsMobileStepParamsElement {
   /** Name of the view of the element. */
   viewName?: string;
 }
-const SyntheticsMobileStepParamsElement = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<SyntheticsMobileStepParamsElement>;
-
 /** A description of a single position for a `flick` step type. */
 export interface SyntheticsMobileStepParamsPositionsItems {
   /** The `x` position for the flick. */
@@ -8751,21 +7548,10 @@ export interface SyntheticsMobileStepParamsPositionsItems {
   /** The `y` position for the flick. */
   y?: number;
 }
-const SyntheticsMobileStepParamsPositionsItems =
-  SyntheticsMobileStepParamsElementRelativePosition as any as S.Schema<SyntheticsMobileStepParamsPositionsItems>;
-
 /** List of positions for the `flick` step type. The maximum is 10 flicks per step */
 export type SyntheticsMobileStepParamsPositions = Array<SyntheticsMobileStepParamsPositionsItems>;
-const SyntheticsMobileStepParamsPositions = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<SyntheticsMobileStepParamsPositions>;
-
 /** Values used in the step for in multiple step types. */
 export type SyntheticsMobileStepParamsValue = string | number;
-const SyntheticsMobileStepParamsValue =
-  S.Unknown as any as S.Schema<SyntheticsMobileStepParamsValue>;
-
 /** Variable object for `extractVariable` step type. */
 export interface SyntheticsMobileStepParamsVariable {
   /** An example for the variable. */
@@ -8773,11 +7559,6 @@ export interface SyntheticsMobileStepParamsVariable {
   /** The variable name. */
   name: string;
 }
-const SyntheticsMobileStepParamsVariable = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<SyntheticsMobileStepParamsVariable>;
-
 /** The parameters of a mobile step. */
 export interface SyntheticsMobileStepParams {
   check?: SyntheticsCheckType | (string & {});
@@ -8801,11 +7582,6 @@ export interface SyntheticsMobileStepParams {
   /** Amount to scroll by on the `y` axis for a `scroll` step type. */
   y?: number;
 }
-const SyntheticsMobileStepParams = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<SyntheticsMobileStepParams>;
-
 /** Step type used in your mobile Synthetic test. */
 export type SyntheticsMobileStepType =
   | "assertElementContent"
@@ -8825,8 +7601,6 @@ export type SyntheticsMobileStepType =
   | "toggleWiFi"
   | "typeText"
   | "wait";
-const SyntheticsMobileStepType = S.String;
-
 /** The steps used in a Synthetic mobile test. */
 export interface SyntheticsMobileStep {
   /** A boolean set to allow this step to fail. */
@@ -8846,27 +7620,12 @@ export interface SyntheticsMobileStep {
   timeout?: number;
   type: SyntheticsMobileStepType | (string & {});
 }
-const SyntheticsMobileStep = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<SyntheticsMobileStep>;
-
 /** Array of steps for the test. */
 export type CreateSyntheticsMobileTestRequestStepsList = Array<SyntheticsMobileStep>;
-const CreateSyntheticsMobileTestRequestStepsList = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<CreateSyntheticsMobileTestRequestStepsList>;
-
 /** Array of tags attached to the test. */
 export type CreateSyntheticsMobileTestRequestTagsList = Array<string>;
-const CreateSyntheticsMobileTestRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsMobileTestRequestTagsList>;
-
 /** Type of the Synthetic test, `mobile`. */
 export type SyntheticsMobileTestType = "mobile";
-const SyntheticsMobileTestType = S.String;
-
 export interface CreateSyntheticsMobileTestRequest {
   config: SyntheticsMobileTestConfig;
   /** Array with the different device IDs used to run the test. */
@@ -8883,26 +7642,12 @@ export interface CreateSyntheticsMobileTestRequest {
   tags?: CreateSyntheticsMobileTestRequestTagsList;
   type: SyntheticsMobileTestType | (string & {});
 }
-const CreateSyntheticsMobileTestRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<CreateSyntheticsMobileTestRequest>;
-
 /** Array with the different device IDs used to run the test. */
 export type SyntheticsMobileTestDeviceIdsList = Array<string>;
-const SyntheticsMobileTestDeviceIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestDeviceIdsList>;
-
 /** Array of steps for the test. */
 export type SyntheticsMobileTestStepsList = Array<SyntheticsMobileStep>;
-const SyntheticsMobileTestStepsList =
-  CreateSyntheticsMobileTestRequestStepsList as any as S.Schema<SyntheticsMobileTestStepsList>;
-
 /** Array of tags attached to the test. */
 export type SyntheticsMobileTestTagsList = Array<string>;
-const SyntheticsMobileTestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestTagsList>;
-
 /** Object containing details about a Synthetic mobile test. */
 export interface SyntheticsMobileTest {
   config: SyntheticsMobileTestConfig;
@@ -8924,11 +7669,6 @@ export interface SyntheticsMobileTest {
   tags?: SyntheticsMobileTestTagsList;
   type: SyntheticsMobileTestType;
 }
-const SyntheticsMobileTest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<SyntheticsMobileTest>;
-
 export interface CreateUserRequest {
   access_role?: AccessRole | (string & {}) | null;
   /** The new disabled status of the user. */
@@ -8940,18 +7680,12 @@ export interface CreateUserRequest {
   /** The name of the user. */
   name?: string;
 }
-const CreateUserRequest = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<CreateUserRequest>;
-
 /** A Datadog User. */
 export interface UserResponse {
   user?: User;
 }
-const UserResponse = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<UserResponse>;
-
 /** Encoding type. Can be given either `json` or `form`. */
 export type WebhooksIntegrationEncoding = "json" | "form";
-const WebhooksIntegrationEncoding = S.String;
-
 export interface CreateWebhooksIntegrationRequest {
   /** If `null`, uses no header. If given a JSON payload, these will be headers attached to your webhook. */
   custom_headers?: string | null;
@@ -8963,11 +7697,6 @@ export interface CreateWebhooksIntegrationRequest {
   /** URL of the webhook. */
   url: string;
 }
-const CreateWebhooksIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<CreateWebhooksIntegrationRequest>;
-
 /** Datadog-Webhooks integration. */
 export interface WebhooksIntegration {
   /** If `null`, uses no header. If given a JSON payload, these will be headers attached to your webhook. */
@@ -8980,8 +7709,6 @@ export interface WebhooksIntegration {
   /** URL of the webhook. */
   url: string;
 }
-const WebhooksIntegration = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<WebhooksIntegration>;
-
 export interface CreateWebhooksIntegrationCustomVariableRequest {
   /** Make custom variable is secret or not. If the custom variable is secret, the value is not returned in the response payload. */
   is_secret: boolean;
@@ -8990,11 +7717,6 @@ export interface CreateWebhooksIntegrationCustomVariableRequest {
   /** Value of the custom variable. */
   value: string;
 }
-const CreateWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<CreateWebhooksIntegrationCustomVariableRequest>;
-
 /** Custom variable for Webhook integration. */
 export interface WebhooksIntegrationCustomVariableResponse {
   /** Make custom variable is secret or not. If the custom variable is secret, the value is not returned in the response payload. */
@@ -9004,37 +7726,19 @@ export interface WebhooksIntegrationCustomVariableResponse {
   /** Value of the custom variable. It won't be returned if the variable is secret. */
   value?: string;
 }
-const WebhooksIntegrationCustomVariableResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<WebhooksIntegrationCustomVariableResponse>;
-
 export interface DeleteAPIKeyRequest {
   /** The specific API key you are working with. */
   key: string;
 }
-const DeleteAPIKeyRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<DeleteAPIKeyRequest>;
-
 export interface DeleteApplicationKeyRequest {
   /** The specific APP key you are working with. */
   key: string;
 }
-const DeleteApplicationKeyRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<DeleteApplicationKeyRequest>;
-
 /** Errors in your configuration. */
 export type DeleteAzureIntegrationRequestErrorsList = Array<string>;
-const DeleteAzureIntegrationRequestErrorsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DeleteAzureIntegrationRequestErrorsList>;
-
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type DeleteAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-const DeleteAzureIntegrationRequestResourceProviderConfigsList =
-  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<DeleteAzureIntegrationRequestResourceProviderConfigsList>;
-
 export interface DeleteAzureIntegrationRequest {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
   app_service_plan_filters?: string;
@@ -9073,214 +7777,95 @@ export interface DeleteAzureIntegrationRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-const DeleteAzureIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<DeleteAzureIntegrationRequest>;
-
 export type DeleteAzureIntegrationResponse = unknown;
-const DeleteAzureIntegrationResponse =
-  CreateAzureIntegrationResponse as any as S.Schema<DeleteAzureIntegrationResponse>;
-
 export interface DeleteDashboardRequest {
   /** The ID of the dashboard. */
   dashboard_id: string;
 }
-const DeleteDashboardRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DeleteDashboardRequest>;
-
 /** Response from the delete dashboard call. */
 export interface DashboardDeleteResponse {
   /** ID of the deleted dashboard. */
   deleted_dashboard_id?: string;
 }
-const DashboardDeleteResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<DashboardDeleteResponse>;
-
 export interface DeleteDashboardListRequest {
   /** ID of the dashboard list to delete. */
   list_id: number;
 }
-const DeleteDashboardListRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<DeleteDashboardListRequest>;
-
 /** Deleted dashboard details. */
 export interface DashboardListDeleteResponse {
   /** ID of the deleted dashboard list. */
   deleted_dashboard_list_id?: number;
 }
-const DashboardListDeleteResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<DashboardListDeleteResponse>;
-
 /** Dashboard resource type. */
 export type DashboardResourceType = "dashboard";
-const DashboardResourceType = S.String;
-
 /** Dashboard bulk action request data. */
 export interface DashboardBulkActionData {
   id: string;
   type: DashboardResourceType | (string & {});
 }
-const DashboardBulkActionData = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<DashboardBulkActionData>;
-
 /** List of dashboard bulk action request data objects. */
 export type DashboardBulkActionDataList = Array<DashboardBulkActionData>;
-const DashboardBulkActionDataList = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DashboardBulkActionDataList>;
-
 export interface DeleteDashboardsRequest {
   data: DashboardBulkActionDataList;
 }
-const DeleteDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<DeleteDashboardsRequest>;
-
 export interface DeleteDashboardsResponse {}
-const DeleteDashboardsResponse = CreateEventResponse as any as S.Schema<DeleteDashboardsResponse>;
-
 export interface DeleteGlobalVariableRequest {
   /** The ID of the global variable. */
   variable_id: string;
 }
-const DeleteGlobalVariableRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<DeleteGlobalVariableRequest>;
-
 export interface DeleteGlobalVariableResponse {}
-const DeleteGlobalVariableResponse =
-  CreateEventResponse as any as S.Schema<DeleteGlobalVariableResponse>;
-
 export interface DeleteHostTagsRequest {
   /** Specified host name to delete tags */
   host_name: string;
   /** Source of the tags to be deleted. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. */
   source?: string;
 }
-const DeleteHostTagsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DeleteHostTagsRequest>;
-
 export interface DeleteHostTagsResponse {}
-const DeleteHostTagsResponse = CreateEventResponse as any as S.Schema<DeleteHostTagsResponse>;
-
 export interface DeleteLogsIndexRequest {
   /** Name of the log index. */
   name: string;
 }
-const DeleteLogsIndexRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<DeleteLogsIndexRequest>;
-
 export interface DeleteLogsIndexResponse {}
-const DeleteLogsIndexResponse = CreateEventResponse as any as S.Schema<DeleteLogsIndexResponse>;
-
 export interface DeleteLogsPipelineRequest {
   /** ID of the pipeline to delete. */
   pipeline_id: string;
 }
-const DeleteLogsPipelineRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<DeleteLogsPipelineRequest>;
-
 export interface DeleteLogsPipelineResponse {}
-const DeleteLogsPipelineResponse =
-  CreateEventResponse as any as S.Schema<DeleteLogsPipelineResponse>;
-
 export interface DeleteMonitorRequest {
   /** The ID of the monitor. */
   monitor_id: number;
   /** Delete the monitor even if it's referenced by other resources (for example SLO, composite monitor). */
   force?: string;
 }
-const DeleteMonitorRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<DeleteMonitorRequest>;
-
 /** Response from the delete monitor call. */
 export interface DeletedMonitor {
   /** ID of the deleted monitor. */
   deleted_monitor_id?: number;
 }
-const DeletedMonitor = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<DeletedMonitor>;
-
 export interface DeleteNotebookRequest {
   /** Unique ID, assigned when you create the notebook. */
   notebook_id: number;
 }
-const DeleteNotebookRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<DeleteNotebookRequest>;
-
 export interface DeleteNotebookResponse {}
-const DeleteNotebookResponse = CreateEventResponse as any as S.Schema<DeleteNotebookResponse>;
-
 export interface DeletePagerDutyIntegrationServiceRequest {
   /** The service name */
   service_name: string;
 }
-const DeletePagerDutyIntegrationServiceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<DeletePagerDutyIntegrationServiceRequest>;
-
 export interface DeletePagerDutyIntegrationServiceResponse {}
-const DeletePagerDutyIntegrationServiceResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<DeletePagerDutyIntegrationServiceResponse>;
-
 export interface DeletePrivateLocationRequest {
   /** The ID of the private location. */
   location_id: string;
 }
-const DeletePrivateLocationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<DeletePrivateLocationRequest>;
-
 export interface DeletePrivateLocationResponse {}
-const DeletePrivateLocationResponse =
-  CreateEventResponse as any as S.Schema<DeletePrivateLocationResponse>;
-
 export interface DeletePublicDashboardRequest {
   /** The token of the shared dashboard. */
   token: string;
 }
-const DeletePublicDashboardRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DeletePublicDashboardRequest>;
-
 /** Response containing token of deleted shared dashboard. */
 export interface DeleteSharedDashboardResponse {
   /** Token associated with the shared dashboard that was revoked. */
   deleted_public_dashboard_token?: string;
 }
-const DeleteSharedDashboardResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DeleteSharedDashboardResponse>;
-
 /** Attributes of the shared dashboard invitation */
 export interface SharedDashboardInvitesDataObjectAttributesInput {
   /** An email address that an invitation has been (or if used in invitation request, will be) sent to. */
@@ -9299,41 +7884,22 @@ export type SharedDashboardInvitesDataListInput = Array<SharedDashboardInvitesDa
 export type SharedDashboardInvitesDataInput =
   | SharedDashboardInvitesDataObjectInput
   | SharedDashboardInvitesDataListInput;
-const SharedDashboardInvitesDataInput =
-  S.Unknown as any as S.Schema<SharedDashboardInvitesDataInput>;
-
 export interface DeletePublicDashboardInvitationRequest {
   /** The token of the shared dashboard. */
   token: string;
   data: SharedDashboardInvitesDataInput;
 }
-const DeletePublicDashboardInvitationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<DeletePublicDashboardInvitationRequest>;
-
 export interface DeletePublicDashboardInvitationResponse {}
-const DeletePublicDashboardInvitationResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeletePublicDashboardInvitationResponse>;
-
 export interface DeleteSLORequest {
   /** The ID of the service level objective. */
   slo_id: string;
   /** Delete the monitor even if it's referenced by other resources (for example SLO, composite monitor). */
   force?: string;
 }
-const DeleteSLORequest = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<DeleteSLORequest>;
-
 /** An array containing the ID of the deleted service level objective object. */
 export type SLODeleteResponseDataList = Array<string>;
-const SLODeleteResponseDataList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLODeleteResponseDataList>;
-
 /** An dictionary containing the ID of the SLO as key and a deletion error as value. */
 export type SLODeleteResponseErrorsMap = { [key: string]: string | undefined };
-const SLODeleteResponseErrorsMap =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SLODeleteResponseErrorsMap>;
-
 /** A response list of all service level objective deleted. */
 export interface SLODeleteResponse {
   /** An array containing the ID of the deleted service level objective object. */
@@ -9341,47 +7907,22 @@ export interface SLODeleteResponse {
   /** An dictionary containing the ID of the SLO as key and a deletion error as value. */
   errors?: SLODeleteResponseErrorsMap;
 }
-const SLODeleteResponse = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<SLODeleteResponse>;
-
 export interface DeleteSLOCorrectionRequest {
   /** The ID of the SLO correction object. */
   slo_correction_id: string;
 }
-const DeleteSLOCorrectionRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<DeleteSLOCorrectionRequest>;
-
 export interface DeleteSLOCorrectionResponse {}
-const DeleteSLOCorrectionResponse =
-  CreateEventResponse as any as S.Schema<DeleteSLOCorrectionResponse>;
-
 /** An array of all SLO timeframes. */
 export type SLOBulkDeleteValueList = Array<SLOTimeframe | (string & {})>;
-const SLOBulkDeleteValueList = ListStreamQueryStatesList as any as S.Schema<SLOBulkDeleteValueList>;
-
 /** A map of service level objective object IDs to arrays of timeframes, which indicate the thresholds to delete for each ID. */
 export type SLOBulkDelete = { [key: string]: SLOBulkDeleteValueList | undefined };
-const SLOBulkDelete = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<SLOBulkDelete>;
-
 export interface DeleteSLOTimeframeInBulkRequest {
   body: SLOBulkDelete;
 }
-const DeleteSLOTimeframeInBulkRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<DeleteSLOTimeframeInBulkRequest>;
-
 /** An array of service level objective object IDs that indicates which objects that were completely deleted. */
 export type SLOBulkDeleteResponseDataDeletedList = Array<string>;
-const SLOBulkDeleteResponseDataDeletedList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOBulkDeleteResponseDataDeletedList>;
-
 /** An array of service level objective object IDs that indicates which objects that were modified (objects for which at least one threshold was deleted, but that were not completely deleted). */
 export type SLOBulkDeleteResponseDataUpdatedList = Array<string>;
-const SLOBulkDeleteResponseDataUpdatedList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOBulkDeleteResponseDataUpdatedList>;
-
 /** An array of service level objective objects. */
 export interface SLOBulkDeleteResponseData {
   /** An array of service level objective object IDs that indicates which objects that were completely deleted. */
@@ -9389,15 +7930,8 @@ export interface SLOBulkDeleteResponseData {
   /** An array of service level objective object IDs that indicates which objects that were modified (objects for which at least one threshold was deleted, but that were not completely deleted). */
   updated?: SLOBulkDeleteResponseDataUpdatedList;
 }
-const SLOBulkDeleteResponseData = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<SLOBulkDeleteResponseData>;
-
 /** The timeframe of the threshold associated with this error or "all" if all thresholds are affected. */
 export type SLOErrorTimeframe = "7d" | "30d" | "90d" | "all";
-const SLOErrorTimeframe = S.String;
-
 /** Object describing the error. */
 export interface SLOBulkDeleteError {
   /** The ID of the service level objective object associated with this error. */
@@ -9406,39 +7940,22 @@ export interface SLOBulkDeleteError {
   message: string;
   timeframe: SLOErrorTimeframe;
 }
-const SLOBulkDeleteError = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<SLOBulkDeleteError>;
-
 /** Array of errors object returned. */
 export type SLOBulkDeleteResponseErrorsList = Array<SLOBulkDeleteError>;
-const SLOBulkDeleteResponseErrorsList = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<SLOBulkDeleteResponseErrorsList>;
-
 /** The bulk partial delete service level objective object endpoint response. This endpoint operates on multiple service level objective objects, so it may be partially successful. In such cases, the "data" and "error" fields in this response indicate which deletions succeeded and failed. */
 export interface SLOBulkDeleteResponse {
   data?: SLOBulkDeleteResponseData;
   /** Array of errors object returned. */
   errors?: SLOBulkDeleteResponseErrorsList;
 }
-const SLOBulkDeleteResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<SLOBulkDeleteResponse>;
-
 /** An array of Synthetic test IDs you want to delete. */
 export type DeleteTestsRequestPublicIdsList = Array<string>;
-const DeleteTestsRequestPublicIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DeleteTestsRequestPublicIdsList>;
-
 export interface DeleteTestsRequest {
   /** Delete the Synthetic test even if it's referenced by other resources (for example, SLOs and composite monitors). */
   force_delete_dependencies?: boolean;
   /** An array of Synthetic test IDs you want to delete. */
   public_ids?: DeleteTestsRequestPublicIdsList;
 }
-const DeleteTestsRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<DeleteTestsRequest>;
-
 /** Object containing a deleted Synthetic test ID with the associated deletion timestamp. */
 export interface SyntheticsDeletedTest {
   /** Deletion timestamp of the Synthetic test ID. */
@@ -9446,85 +7963,43 @@ export interface SyntheticsDeletedTest {
   /** The Synthetic test ID deleted. */
   public_id?: string;
 }
-const SyntheticsDeletedTest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<SyntheticsDeletedTest>;
-
 /** Array of objects containing a deleted Synthetic test ID with the associated deletion timestamp. */
 export type SyntheticsDeleteTestsResponseDeletedTestsList = Array<SyntheticsDeletedTest>;
-const SyntheticsDeleteTestsResponseDeletedTestsList = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<SyntheticsDeleteTestsResponseDeletedTestsList>;
-
 /** Response object for deleting Synthetic tests. */
 export interface SyntheticsDeleteTestsResponse {
   /** Array of objects containing a deleted Synthetic test ID with the associated deletion timestamp. */
   deleted_tests?: SyntheticsDeleteTestsResponseDeletedTestsList;
 }
-const SyntheticsDeleteTestsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<SyntheticsDeleteTestsResponse>;
-
 export interface DeleteWebhooksIntegrationRequest {
   /** The name of the webhook. */
   webhook_name: string;
 }
-const DeleteWebhooksIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<DeleteWebhooksIntegrationRequest>;
-
 export interface DeleteWebhooksIntegrationResponse {}
-const DeleteWebhooksIntegrationResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeleteWebhooksIntegrationResponse>;
-
 export interface DeleteWebhooksIntegrationCustomVariableRequest {
   /** The name of the custom variable. */
   custom_variable_name: string;
 }
-const DeleteWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<DeleteWebhooksIntegrationCustomVariableRequest>;
-
 export interface DeleteWebhooksIntegrationCustomVariableResponse {}
-const DeleteWebhooksIntegrationCustomVariableResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeleteWebhooksIntegrationCustomVariableResponse>;
-
 export interface DisableUserRequest {
   /** The handle of the user. */
   user_handle: string;
 }
-const DisableUserRequest = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<DisableUserRequest>;
-
 /** Array of user disabled for a given organization. */
 export interface UserDisableResponse {
   /** Information pertaining to a user disabled for a given organization. */
   message?: string;
 }
-const UserDisableResponse = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<UserDisableResponse>;
-
 export interface DowngradeOrgRequest {
   /** The `public_id` of the organization you are operating within. */
   public_id: string;
 }
-const DowngradeOrgRequest = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<DowngradeOrgRequest>;
-
 /** Status of downgrade */
 export interface OrgDowngradedResponse {
   /** Information pertaining to the downgraded child organization. */
   message?: string;
 }
-const OrgDowngradedResponse = UserDisableResponse as any as S.Schema<OrgDowngradedResponse>;
-
 /** Tags of the global variable. */
 export type EditGlobalVariableRequestTagsList = Array<string>;
-const EditGlobalVariableRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<EditGlobalVariableRequestTagsList>;
-
 export interface EditGlobalVariableRequest {
   /** The ID of the global variable. */
   variable_id: string;
@@ -9544,16 +8019,8 @@ export interface EditGlobalVariableRequest {
   tags: EditGlobalVariableRequestTagsList;
   value?: SyntheticsGlobalVariableValue;
 }
-const EditGlobalVariableRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<EditGlobalVariableRequest>;
-
 /** An array of Synthetic test IDs you want uptimes for. */
 export type FetchUptimesRequestPublicIdsList = Array<string>;
-const FetchUptimesRequestPublicIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FetchUptimesRequestPublicIdsList>;
-
 export interface FetchUptimesRequest {
   /** Timestamp in seconds (Unix epoch) for the start of uptime. */
   from_ts: number;
@@ -9562,8 +8029,6 @@ export interface FetchUptimesRequest {
   /** Timestamp in seconds (Unix epoch) for the end of uptime. */
   to_ts: number;
 }
-const FetchUptimesRequest = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<FetchUptimesRequest>;
-
 /** An object describing the error with error type and error message. */
 export interface SLOHistoryResponseErrorWithType {
   /** A message with more details about the error. */
@@ -9571,30 +8036,12 @@ export interface SLOHistoryResponseErrorWithType {
   /** Type of the error. */
   error_type: string;
 }
-const SLOHistoryResponseErrorWithType = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<SLOHistoryResponseErrorWithType>;
-
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SyntheticsUptimeErrorsList = Array<SLOHistoryResponseErrorWithType>;
-const SyntheticsUptimeErrorsList = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<SyntheticsUptimeErrorsList>;
-
 /** An array of transitions */
 export type SyntheticsUptimeHistoryItemList = Array<number>;
-const SyntheticsUptimeHistoryItemList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SyntheticsUptimeHistoryItemList>;
-
 /** The state transition history for the monitor, represented as an array of pairs. Each pair is an array where the first element is the transition timestamp in Unix epoch format (integer) and the second element is the state (integer). For the state, an integer value of `0` indicates uptime, `1` indicates downtime, and `2` indicates no data. */
 export type SyntheticsUptimeHistoryList = Array<SyntheticsUptimeHistoryItemList>;
-const SyntheticsUptimeHistoryList = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<SyntheticsUptimeHistoryList>;
-
 /** Object containing the uptime information. */
 export interface SyntheticsUptime {
   /** An array of error objects returned while querying the history data for the service level objective. */
@@ -9608,8 +8055,6 @@ export interface SyntheticsUptime {
   /** The overall uptime. */
   uptime?: number;
 }
-const SyntheticsUptime = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<SyntheticsUptime>;
-
 /** Object containing the uptime for a Synthetic test ID. */
 export interface SyntheticsTestUptime {
   /** Timestamp in seconds for the start of uptime. */
@@ -9620,39 +8065,17 @@ export interface SyntheticsTestUptime {
   /** Timestamp in seconds for the end of uptime. */
   to_ts?: number;
 }
-const SyntheticsTestUptime = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<SyntheticsTestUptime>;
-
 export type FetchUptimesResponseBodyList = Array<SyntheticsTestUptime>;
-const FetchUptimesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<FetchUptimesResponseBodyList>;
-
 export type FetchUptimesResponse = FetchUptimesResponseBodyList;
-const FetchUptimesResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<FetchUptimesResponse>;
-
 export interface GetAPIKeyRequest {
   /** The specific API key you are working with. */
   key: string;
 }
-const GetAPIKeyRequest = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<GetAPIKeyRequest>;
-
 export interface GetAPITestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-const GetAPITestRequest = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<GetAPITestRequest>;
-
 export type GetAPITestLatestResultsRequestProbeDcList = Array<string>;
-const GetAPITestLatestResultsRequestProbeDcList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetAPITestLatestResultsRequestProbeDcList>;
-
 export interface GetAPITestLatestResultsRequest {
   /** The public ID of the test for which to search results for. */
   public_id: string;
@@ -9663,11 +8086,6 @@ export interface GetAPITestLatestResultsRequest {
   /** Locations for which to query results. */
   probe_dc?: GetAPITestLatestResultsRequestProbeDcList;
 }
-const GetAPITestLatestResultsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GetAPITestLatestResultsRequest>;
-
 /** Object containing all metrics and their values collected for a Synthetic API test. See the [Synthetic Monitoring Metrics documentation](https://docs.datadoghq.com/synthetics/metrics/). */
 export interface SyntheticsTiming {
   /** The duration in millisecond of the DNS lookup. */
@@ -9689,23 +8107,14 @@ export interface SyntheticsTiming {
   /** Time spent in millisecond waiting for a response. */
   wait?: number;
 }
-const SyntheticsTiming = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<SyntheticsTiming>;
-
 /** Result of the last API test run. */
 export interface SyntheticsAPITestResultShortResult {
   /** Describes if the test run has passed or failed. */
   passed?: boolean;
   timings?: SyntheticsTiming;
 }
-const SyntheticsAPITestResultShortResult = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<SyntheticsAPITestResultShortResult>;
-
 /** The status of your Synthetic monitor. * `O` for not triggered * `1` for triggered * `2` for no data */
 export type SyntheticsTestMonitorStatus = 0 | 1 | 2;
-const SyntheticsTestMonitorStatus = S.Number;
-
 /** Object with the results of a single Synthetic API test. */
 export interface SyntheticsAPITestResultShort {
   /** Last time the API test was performed. */
@@ -9717,19 +8126,9 @@ export interface SyntheticsAPITestResultShort {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-const SyntheticsAPITestResultShort = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<SyntheticsAPITestResultShort>;
-
 /** Result of the latest API test run. */
 export type SyntheticsGetAPITestLatestResultsResponseResultsList =
   Array<SyntheticsAPITestResultShort>;
-const SyntheticsGetAPITestLatestResultsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<SyntheticsGetAPITestLatestResultsResponseResultsList>;
-
 /** Object with the latest Synthetic API test run. */
 export interface SyntheticsGetAPITestLatestResultsResponse {
   /** Timestamp of the latest API test run. */
@@ -9737,37 +8136,18 @@ export interface SyntheticsGetAPITestLatestResultsResponse {
   /** Result of the latest API test run. */
   results?: SyntheticsGetAPITestLatestResultsResponseResultsList;
 }
-const SyntheticsGetAPITestLatestResultsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<SyntheticsGetAPITestLatestResultsResponse>;
-
 export interface GetAPITestResultRequest {
   /** The public ID of the API test to which the target result belongs. */
   public_id: string;
   /** The ID of the result to get. */
   result_id: string;
 }
-const GetAPITestResultRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GetAPITestResultRequest>;
-
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsTestConfigAssertionsList = Array<SyntheticsAssertion>;
-const SyntheticsTestConfigAssertionsList =
-  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsTestConfigAssertionsList>;
-
 /** Array of variables used for the test. */
 export type SyntheticsTestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-const SyntheticsTestConfigConfigVariablesList =
-  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsTestConfigConfigVariablesList>;
-
 /** Browser tests only - array of variables used for the test steps. */
 export type SyntheticsTestConfigVariablesList = Array<SyntheticsBrowserVariable>;
-const SyntheticsTestConfigVariablesList =
-  SyntheticsBrowserTestConfigVariablesList as any as S.Schema<SyntheticsTestConfigVariablesList>;
-
 /** Configuration object for a Synthetic test. */
 export interface SyntheticsTestConfig {
   /** Array of assertions used for the test. Required for single API tests. */
@@ -9778,25 +8158,12 @@ export interface SyntheticsTestConfig {
   /** Browser tests only - array of variables used for the test steps. */
   variables?: SyntheticsTestConfigVariablesList;
 }
-const SyntheticsTestConfig = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<SyntheticsTestConfig>;
-
 /** Object describing the API test configuration. */
 export interface SyntheticsAPITestResultFullCheck {
   config: SyntheticsTestConfig;
 }
-const SyntheticsAPITestResultFullCheck = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<SyntheticsAPITestResultFullCheck>;
-
 /** Array of extensions and details used for the certificate. */
 export type SyntheticsSSLCertificateExtKeyUsageList = Array<string>;
-const SyntheticsSSLCertificateExtKeyUsageList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsSSLCertificateExtKeyUsageList>;
-
 /** Object describing the issuer of a SSL certificate. */
 export interface SyntheticsSSLCertificateIssuer {
   /** Country Name that issued the certificate. */
@@ -9812,11 +8179,6 @@ export interface SyntheticsSSLCertificateIssuer {
   /** State Or Province Name that issued the certificate. */
   ST?: string;
 }
-const SyntheticsSSLCertificateIssuer = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<SyntheticsSSLCertificateIssuer>;
-
 /** Object describing the SSL certificate used for the test. */
 export interface SyntheticsSSLCertificateSubject {
   /** Country Name associated with the certificate. */
@@ -9834,11 +8196,6 @@ export interface SyntheticsSSLCertificateSubject {
   /** Subject Alternative Name associated with the certificate. */
   altName?: string;
 }
-const SyntheticsSSLCertificateSubject = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<SyntheticsSSLCertificateSubject>;
-
 /** Object describing the SSL certificate used for a Synthetic test. */
 export interface SyntheticsSSLCertificate {
   /** Cipher used for the connection. */
@@ -9864,19 +8221,12 @@ export interface SyntheticsSSLCertificate {
   /** Date until which the SSL certificate is valid. */
   validTo?: string;
 }
-const SyntheticsSSLCertificate = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<SyntheticsSSLCertificate>;
-
 /** Status of a Synthetic test. */
 export type SyntheticsTestProcessStatus =
   | "not_scheduled"
   | "scheduled"
   | "finished"
   | "finished_with_error";
-const SyntheticsTestProcessStatus = S.String;
-
 /** Error code that can be returned by a Synthetic test. */
 export type SyntheticsApiTestFailureCode =
   | "BODY_TOO_LARGE"
@@ -9905,29 +8255,16 @@ export type SyntheticsApiTestFailureCode =
   | "WEBSOCKET"
   | "UNKNOWN"
   | "INTERNAL_ERROR";
-const SyntheticsApiTestFailureCode = S.String;
-
 /** The API test failure details. */
 export interface SyntheticsApiTestResultFailure {
   code?: SyntheticsApiTestFailureCode;
   /** The API test error message. */
   message?: string;
 }
-const SyntheticsApiTestResultFailure = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<SyntheticsApiTestResultFailure>;
-
 /** Request header object used for the API test. */
 export type SyntheticsAPITestResultDataRequestHeadersMap = { [key: string]: unknown | undefined };
-const SyntheticsAPITestResultDataRequestHeadersMap =
-  SyntheticsTestRequestToolArgsMap as any as S.Schema<SyntheticsAPITestResultDataRequestHeadersMap>;
-
 /** Response headers returned for the API test. */
 export type SyntheticsAPITestResultDataResponseHeadersMap = { [key: string]: unknown | undefined };
-const SyntheticsAPITestResultDataResponseHeadersMap =
-  SyntheticsTestRequestToolArgsMap as any as S.Schema<SyntheticsAPITestResultDataResponseHeadersMap>;
-
 /** Object containing results for your Synthetic API test. */
 export interface SyntheticsAPITestResultData {
   cert?: SyntheticsSSLCertificate;
@@ -9945,11 +8282,6 @@ export interface SyntheticsAPITestResultData {
   responseSize?: number;
   timings?: SyntheticsTiming;
 }
-const SyntheticsAPITestResultData = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<SyntheticsAPITestResultData>;
-
 /** Object returned describing a API test result. */
 export interface SyntheticsAPITestResultFull {
   check?: SyntheticsAPITestResultFullCheck;
@@ -9964,33 +8296,15 @@ export interface SyntheticsAPITestResultFull {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-const SyntheticsAPITestResultFull = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<SyntheticsAPITestResultFull>;
-
 export interface GetApplicationKeyRequest {
   /** The specific APP key you are working with. */
   key: string;
 }
-const GetApplicationKeyRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<GetApplicationKeyRequest>;
-
 export interface GetBrowserTestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-const GetBrowserTestRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GetBrowserTestRequest>;
-
 export type GetBrowserTestLatestResultsRequestProbeDcList = Array<string>;
-const GetBrowserTestLatestResultsRequestProbeDcList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetBrowserTestLatestResultsRequestProbeDcList>;
-
 export interface GetBrowserTestLatestResultsRequest {
   /** The public ID of the browser test for which to search results for. */
   public_id: string;
@@ -10001,11 +8315,6 @@ export interface GetBrowserTestLatestResultsRequest {
   /** Locations for which to query results. */
   probe_dc?: GetBrowserTestLatestResultsRequestProbeDcList;
 }
-const GetBrowserTestLatestResultsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GetBrowserTestLatestResultsRequest>;
-
 /** Object describing the device used to perform the Synthetic test. */
 export interface SyntheticsDevice {
   /** Screen height of the device. */
@@ -10018,8 +8327,6 @@ export interface SyntheticsDevice {
   /** Screen width of the device. */
   width: number;
 }
-const SyntheticsDevice = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<SyntheticsDevice>;
-
 /** Object with the result of the last browser test run. */
 export interface SyntheticsBrowserTestResultShortResult {
   device?: SyntheticsDevice;
@@ -10032,11 +8339,6 @@ export interface SyntheticsBrowserTestResultShortResult {
   /** Total amount of browser test steps. */
   stepCountTotal?: number;
 }
-const SyntheticsBrowserTestResultShortResult = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<SyntheticsBrowserTestResultShortResult>;
-
 /** Object with the results of a single Synthetic browser test. */
 export interface SyntheticsBrowserTestResultShort {
   /** Last time the browser test was performed. */
@@ -10048,19 +8350,9 @@ export interface SyntheticsBrowserTestResultShort {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-const SyntheticsBrowserTestResultShort = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<SyntheticsBrowserTestResultShort>;
-
 /** Result of the latest browser test run. */
 export type SyntheticsGetBrowserTestLatestResultsResponseResultsList =
   Array<SyntheticsBrowserTestResultShort>;
-const SyntheticsGetBrowserTestLatestResultsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<SyntheticsGetBrowserTestLatestResultsResponseResultsList>;
-
 /** Object with the latest Synthetic browser test run. */
 export interface SyntheticsGetBrowserTestLatestResultsResponse {
   /** Timestamp of the latest browser test run. */
@@ -10068,22 +8360,12 @@ export interface SyntheticsGetBrowserTestLatestResultsResponse {
   /** Result of the latest browser test run. */
   results?: SyntheticsGetBrowserTestLatestResultsResponseResultsList;
 }
-const SyntheticsGetBrowserTestLatestResultsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<SyntheticsGetBrowserTestLatestResultsResponse>;
-
 export interface GetBrowserTestResultRequest {
   /** The public ID of the browser test to which the target result belongs. */
   public_id: string;
   /** The ID of the result to get. */
   result_id: string;
 }
-const GetBrowserTestResultRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetBrowserTestResultRequest>;
-
 /** Object describing the browser test configuration. */
 export type SyntheticsBrowserTestResultFullCheck = SyntheticsAPITestResultFullCheck;
 /** Error code that can be returned by a Synthetic test. */
@@ -10127,13 +8409,8 @@ export interface SyntheticsBrowserTestResultFailure {
   /** The browser test error message. */
   message?: string;
 }
-const SyntheticsBrowserTestResultFailure =
-  SyntheticsApiTestResultFailure as any as S.Schema<SyntheticsBrowserTestResultFailure>;
-
 /** Error type returned by a browser test. */
 export type SyntheticsBrowserErrorType = "network" | "js";
-const SyntheticsBrowserErrorType = S.String;
-
 /** Error response object for a browser test. */
 export interface SyntheticsBrowserError {
   /** Description of the error. */
@@ -10144,29 +8421,12 @@ export interface SyntheticsBrowserError {
   status?: number;
   type: SyntheticsBrowserErrorType;
 }
-const SyntheticsBrowserError = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<SyntheticsBrowserError>;
-
 /** Array of errors collected for a browser test. */
 export type SyntheticsStepDetailBrowserErrorsList = Array<SyntheticsBrowserError>;
-const SyntheticsStepDetailBrowserErrorsList = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<SyntheticsStepDetailBrowserErrorsList>;
-
 /** Navigate between different tabs for your browser test. */
 export type SyntheticsPlayingTab = -1 | 0 | 1 | 2 | 3;
-const SyntheticsPlayingTab = S.Number;
-
 /** If this step includes a sub-test. [Subtests documentation](https://docs.datadoghq.com/synthetics/browser_tests/advanced_options/#subtests). */
 export type SyntheticsStepDetailSubTestStepDetailsList = Array<SyntheticsStepDetail>;
-const SyntheticsStepDetailSubTestStepDetailsList = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<SyntheticsStepDetailSubTestStepDetailsList>;
-
 /** Core Web Vitals attached to a browser test step. */
 export interface SyntheticsCoreWebVitals {
   /** Cumulative Layout Shift. */
@@ -10176,40 +8436,18 @@ export interface SyntheticsCoreWebVitals {
   /** URL attached to the metrics. */
   url?: string;
 }
-const SyntheticsCoreWebVitals = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<SyntheticsCoreWebVitals>;
-
 /** Array of Core Web Vitals metrics for the step. */
 export type SyntheticsStepDetailVitalsMetricsList = Array<SyntheticsCoreWebVitals>;
-const SyntheticsStepDetailVitalsMetricsList = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<SyntheticsStepDetailVitalsMetricsList>;
-
 /** User locator used. */
 export type SyntheticsWarningType = "user_locator";
-const SyntheticsWarningType = S.String;
-
 /** Object collecting warnings for a given step. */
 export interface SyntheticsStepDetailWarning {
   /** Message for the warning. */
   message: string;
   type: SyntheticsWarningType;
 }
-const SyntheticsStepDetailWarning = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<SyntheticsStepDetailWarning>;
-
 /** Warning collected that didn't failed the step. */
 export type SyntheticsStepDetailWarningsList = Array<SyntheticsStepDetailWarning>;
-const SyntheticsStepDetailWarningsList = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<SyntheticsStepDetailWarningsList>;
-
 /** Object describing a step for a Synthetic test. */
 export interface SyntheticsStepDetail {
   /** Whether or not the step was allowed to fail. */
@@ -10247,18 +8485,8 @@ export interface SyntheticsStepDetail {
   /** Warning collected that didn't failed the step. */
   warnings?: SyntheticsStepDetailWarningsList;
 }
-const SyntheticsStepDetail = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<SyntheticsStepDetail>;
-
 /** Array containing the different browser test steps. */
 export type SyntheticsBrowserTestResultDataStepDetailsList = Array<SyntheticsStepDetail>;
-const SyntheticsBrowserTestResultDataStepDetailsList = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<SyntheticsBrowserTestResultDataStepDetailsList>;
-
 /** Object containing results for your Synthetic browser test. */
 export interface SyntheticsBrowserTestResultData {
   /** Type of browser device used for the browser test. */
@@ -10284,11 +8512,6 @@ export interface SyntheticsBrowserTestResultData {
   /** Time in second to wait before the browser test starts after reaching the start URL. */
   timeToInteractive?: number;
 }
-const SyntheticsBrowserTestResultData = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<SyntheticsBrowserTestResultData>;
-
 /** Object returned describing a browser test result. */
 export interface SyntheticsBrowserTestResultFull {
   check?: SyntheticsAPITestResultFullCheck;
@@ -10303,36 +8526,20 @@ export interface SyntheticsBrowserTestResultFull {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-const SyntheticsBrowserTestResultFull = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<SyntheticsBrowserTestResultFull>;
-
 export interface GetDashboardRequest {
   /** The ID of the dashboard. */
   dashboard_id: string;
 }
-const GetDashboardRequest = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<GetDashboardRequest>;
-
 export interface GetDashboardListRequest {
   /** ID of the dashboard list to fetch. */
   list_id: number;
 }
-const GetDashboardListRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GetDashboardListRequest>;
-
 export interface GetEventRequest {
   /** The ID of the event. */
   event_id: number;
 }
-const GetEventRequest = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<GetEventRequest>;
-
 /** A list of tags to apply to the event. */
 export type EventTagsList = Array<string>;
-const EventTagsList = CrossOrgUuids as any as S.Schema<EventTagsList>;
-
 /** Object representing an event. */
 export interface Event {
   alert_type?: EventAlertType;
@@ -10360,25 +8567,16 @@ export interface Event {
   /** URL of the event. */
   url?: string;
 }
-const Event = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<Event>;
-
 /** Object containing an event response. */
 export interface EventResponse {
   event?: Event;
   /** A status. */
   status?: string;
 }
-const EventResponse = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<EventResponse>;
-
 export interface GetGlobalVariableRequest {
   /** The ID of the global variable. */
   variable_id: string;
 }
-const GetGlobalVariableRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<GetGlobalVariableRequest>;
-
 export interface GetGraphSnapshotRequest {
   /** The metric query. */
   metric_query?: string;
@@ -10397,11 +8595,6 @@ export interface GetGraphSnapshotRequest {
   /** The width of the graph. If no width is specified, the graph's original width is used. */
   width?: number;
 }
-const GetGraphSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<GetGraphSnapshotRequest>;
-
 /** Object representing a graph snapshot. */
 export interface GraphSnapshot {
   /** A JSON document defining the graph. `graph_def` can be used instead of `metric_query`. The JSON document uses the [grammar defined here](https://docs.datadoghq.com/graphing/graphing_json/#grammar) and should be formatted to a single line then URL encoded. */
@@ -10411,25 +8604,16 @@ export interface GraphSnapshot {
   /** URL of your [graph snapshot](https://docs.datadoghq.com/metrics/explorer/#snapshot). */
   snapshot_url?: string;
 }
-const GraphSnapshot = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<GraphSnapshot>;
-
 export interface GetHostTagsRequest {
   /** Name of the host to retrieve tags for */
   host_name: string;
   /** Source to filter. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. */
   source?: string;
 }
-const GetHostTagsRequest = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<GetHostTagsRequest>;
-
 export interface GetHostTotalsRequest {
   /** Number of seconds from which you want to get total number of active hosts. */
   from?: number;
 }
-const GetHostTotalsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetHostTotalsRequest>;
-
 /** Total number of host currently monitored by Datadog. */
 export interface HostTotals {
   /** Total number of active host (UP and ???) reporting to Datadog. */
@@ -10437,8 +8621,6 @@ export interface HostTotals {
   /** Number of host that are UP and reporting to Datadog. */
   total_up?: number;
 }
-const HostTotals = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<HostTotals>;
-
 /** Supported products for hourly usage attribution requests. Usage types are in the format `<usage_type>_usage`. To obtain the complete list of valid usage types, make a request to the [Get usage attribution types API](https://docs.datadoghq.com/api/latest/usage-metering/#get-usage-attribution-types). */
 export type HourlyUsageAttributionUsageType =
   | "api_usage"
@@ -10530,8 +8712,6 @@ export type HourlyUsageAttributionUsageType =
   | "universal_service_monitoring_usage"
   | "vuln_management_hosts_usage"
   | "workflow_executions_usage";
-const HourlyUsageAttributionUsageType = S.String;
-
 export interface GetHourlyUsageAttributionRequest {
   /** Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage beginning at this hour. */
   start_hr: string;
@@ -10546,28 +8726,12 @@ export interface GetHourlyUsageAttributionRequest {
   /** Include child org usage in the response. Defaults to `true`. */
   include_descendants?: boolean;
 }
-const GetHourlyUsageAttributionRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<GetHourlyUsageAttributionRequest>;
-
 export interface GetHourlyUsageAttributionResponse {}
-const GetHourlyUsageAttributionResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<GetHourlyUsageAttributionResponse>;
-
 export interface GetIPRangesRequest {}
-const GetIPRangesRequest = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<GetIPRangesRequest>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesAgentsPrefixesIpv4List = Array<string>;
-const IPPrefixesAgentsPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAgentsPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesAgentsPrefixesIpv6List = Array<string>;
-const IPPrefixesAgentsPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAgentsPrefixesIpv6List>;
-
 /** Available prefix information for the Agent endpoints. */
 export interface IPPrefixesAgents {
   /** List of IPv4 prefixes. */
@@ -10575,8 +8739,6 @@ export interface IPPrefixesAgents {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAgentsPrefixesIpv6List;
 }
-const IPPrefixesAgents = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<IPPrefixesAgents>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesAPIPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10588,8 +8750,6 @@ export interface IPPrefixesAPI {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAPIPrefixesIpv6List;
 }
-const IPPrefixesAPI = IPPrefixesAgents as any as S.Schema<IPPrefixesAPI>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesAPMPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10601,8 +8761,6 @@ export interface IPPrefixesAPM {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAPMPrefixesIpv6List;
 }
-const IPPrefixesAPM = IPPrefixesAgents as any as S.Schema<IPPrefixesAPM>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesGlobalPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10614,8 +8772,6 @@ export interface IPPrefixesGlobal {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesGlobalPrefixesIpv6List;
 }
-const IPPrefixesGlobal = IPPrefixesAgents as any as S.Schema<IPPrefixesGlobal>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesLogsPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10627,8 +8783,6 @@ export interface IPPrefixesLogs {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesLogsPrefixesIpv6List;
 }
-const IPPrefixesLogs = IPPrefixesAgents as any as S.Schema<IPPrefixesLogs>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesOrchestratorPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10640,8 +8794,6 @@ export interface IPPrefixesOrchestrator {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesOrchestratorPrefixesIpv6List;
 }
-const IPPrefixesOrchestrator = IPPrefixesAgents as any as S.Schema<IPPrefixesOrchestrator>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesProcessPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10653,18 +8805,10 @@ export interface IPPrefixesProcess {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesProcessPrefixesIpv6List;
 }
-const IPPrefixesProcess = IPPrefixesAgents as any as S.Schema<IPPrefixesProcess>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesRemoteConfigurationPrefixesIpv4List = Array<string>;
-const IPPrefixesRemoteConfigurationPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesRemoteConfigurationPrefixesIpv6List = Array<string>;
-const IPPrefixesRemoteConfigurationPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv6List>;
-
 /** Available prefix information for the Remote Configuration endpoints. */
 export interface IPPrefixesRemoteConfiguration {
   /** List of IPv4 prefixes. */
@@ -10672,39 +8816,22 @@ export interface IPPrefixesRemoteConfiguration {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesRemoteConfigurationPrefixesIpv6List;
 }
-const IPPrefixesRemoteConfiguration = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<IPPrefixesRemoteConfiguration>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv4List = Array<string>;
-const IPPrefixesSyntheticsPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4List>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList = Array<string>;
 /** List of IPv4 prefixes by location. */
 export type IPPrefixesSyntheticsPrefixesIpv4ByLocationMap = {
   [key: string]: IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList | undefined;
 };
-const IPPrefixesSyntheticsPrefixesIpv4ByLocationMap =
-  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4ByLocationMap>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv6List = Array<string>;
-const IPPrefixesSyntheticsPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList = Array<string>;
 /** List of IPv6 prefixes by location. */
 export type IPPrefixesSyntheticsPrefixesIpv6ByLocationMap = {
   [key: string]: IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList | undefined;
 };
-const IPPrefixesSyntheticsPrefixesIpv6ByLocationMap =
-  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6ByLocationMap>;
-
 /** Available prefix information for the Synthetics endpoints. */
 export interface IPPrefixesSynthetics {
   /** List of IPv4 prefixes. */
@@ -10716,11 +8843,6 @@ export interface IPPrefixesSynthetics {
   /** List of IPv6 prefixes by location. */
   prefixes_ipv6_by_location?: IPPrefixesSyntheticsPrefixesIpv6ByLocationMap;
 }
-const IPPrefixesSynthetics = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<IPPrefixesSynthetics>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10732,9 +8854,6 @@ export interface IPPrefixesSyntheticsPrivateLocations {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List;
 }
-const IPPrefixesSyntheticsPrivateLocations =
-  IPPrefixesRemoteConfiguration as any as S.Schema<IPPrefixesSyntheticsPrivateLocations>;
-
 /** List of IPv4 prefixes. */
 export type IPPrefixesWebhooksPrefixesIpv4List = Array<string>;
 /** List of IPv6 prefixes. */
@@ -10746,8 +8865,6 @@ export interface IPPrefixesWebhooks {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesWebhooksPrefixesIpv6List;
 }
-const IPPrefixesWebhooks = IPPrefixesAgents as any as S.Schema<IPPrefixesWebhooks>;
-
 /** IP ranges. */
 export interface IPRanges {
   agents?: IPPrefixesAgents;
@@ -10766,68 +8883,34 @@ export interface IPRanges {
   version?: number;
   webhooks?: IPPrefixesWebhooks;
 }
-const IPRanges = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<IPRanges>;
-
 export interface GetLogsIndexRequest {
   /** Name of the log index. */
   name: string;
 }
-const GetLogsIndexRequest = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<GetLogsIndexRequest>;
-
 export interface GetLogsIndexOrderRequest {}
-const GetLogsIndexOrderRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetLogsIndexOrderRequest>;
-
 /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
 export type LogsIndexesOrderIndexNamesList = Array<string>;
-const LogsIndexesOrderIndexNamesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsIndexesOrderIndexNamesList>;
-
 /** Object containing the ordered list of log index names. */
 export interface LogsIndexesOrder {
   /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
   index_names: LogsIndexesOrderIndexNamesList;
 }
-const LogsIndexesOrder = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<LogsIndexesOrder>;
-
 export interface GetLogsPipelineRequest {
   /** ID of the pipeline to get. */
   pipeline_id: string;
 }
-const GetLogsPipelineRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<GetLogsPipelineRequest>;
-
 export interface GetLogsPipelineOrderRequest {}
-const GetLogsPipelineOrderRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetLogsPipelineOrderRequest>;
-
 /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
 export type LogsPipelinesOrderPipelineIdsList = Array<string>;
-const LogsPipelinesOrderPipelineIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelinesOrderPipelineIdsList>;
-
 /** Object containing the ordered list of pipeline IDs. */
 export interface LogsPipelinesOrder {
   /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
   pipeline_ids: LogsPipelinesOrderPipelineIdsList;
 }
-const LogsPipelinesOrder = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<LogsPipelinesOrder>;
-
 export interface GetMetricMetadataRequest {
   /** Name of the metric for which to get metadata. */
   metric_name: string;
 }
-const GetMetricMetadataRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<GetMetricMetadataRequest>;
-
 /** Object with all metric related metadata. */
 export interface MetricMetadata {
   /** Metric description. */
@@ -10845,17 +8928,10 @@ export interface MetricMetadata {
   /** Primary unit of the metric such as `byte` or `operation`. */
   unit?: string;
 }
-const MetricMetadata = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<MetricMetadata>;
-
 export interface GetMobileTestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-const GetMobileTestRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetMobileTestRequest>;
-
 export interface GetMonitorRequest {
   /** The ID of the monitor */
   monitor_id: number;
@@ -10866,8 +8942,6 @@ export interface GetMonitorRequest {
   /** If this argument is set to `true`, the returned data includes all assets tied to this monitor. */
   with_assets?: boolean;
 }
-const GetMonitorRequest = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<GetMonitorRequest>;
-
 /** Supported metrics for monthly usage attribution requests. Usage types are in the format `<usage_type>_usage`. To obtain the complete list of valid usage types, make a request to the [Get usage attribution types API](https://docs.datadoghq.com/api/latest/usage-metering/#get-usage-attribution-types). */
 export type MonthlyUsageAttributionSupportedMetrics =
   | "api_usage"
@@ -11041,12 +9115,8 @@ export type MonthlyUsageAttributionSupportedMetrics =
   | "sca_fargate_usage"
   | "sca_fargate_percentage"
   | "*";
-const MonthlyUsageAttributionSupportedMetrics = S.String;
-
 /** The direction to sort by. */
 export type UsageSortDirection = "desc" | "asc";
-const UsageSortDirection = S.String;
-
 export interface GetMonthlyUsageAttributionRequest {
   /** Datetime in ISO-8601 format, UTC, precise to month: `[YYYY-MM]` for usage beginning in this month. Maximum of 15 months ago. */
   start_month: string;
@@ -11065,63 +9135,31 @@ export interface GetMonthlyUsageAttributionRequest {
   /** Include child org usage in the response. Defaults to `true`. */
   include_descendants?: boolean;
 }
-const GetMonthlyUsageAttributionRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetMonthlyUsageAttributionRequest>;
-
 export interface GetMonthlyUsageAttributionResponse {}
-const GetMonthlyUsageAttributionResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<GetMonthlyUsageAttributionResponse>;
-
 export interface GetNotebookRequest {
   /** Unique ID, assigned when you create the notebook. */
   notebook_id: number;
 }
-const GetNotebookRequest = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<GetNotebookRequest>;
-
 export interface GetOrgRequest {
   /** The `public_id` of the organization you are operating within. */
   public_id: string;
 }
-const GetOrgRequest = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<GetOrgRequest>;
-
 /** Response with an organization. */
 export interface OrganizationResponse {
   org?: Organization;
 }
-const OrganizationResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<OrganizationResponse>;
-
 export interface GetPagerDutyIntegrationServiceRequest {
   /** The service name. */
   service_name: string;
 }
-const GetPagerDutyIntegrationServiceRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<GetPagerDutyIntegrationServiceRequest>;
-
 export interface GetPrivateLocationRequest {
   /** The ID of the private location. */
   location_id: string;
 }
-const GetPrivateLocationRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<GetPrivateLocationRequest>;
-
 export interface GetPublicDashboardRequest {
   /** The token of the shared dashboard. Generated when a dashboard is shared. */
   token: string;
 }
-const GetPublicDashboardRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<GetPublicDashboardRequest>;
-
 export interface GetPublicDashboardInvitationsRequest {
   /** Token of the shared dashboard for which to fetch invitations. */
   token: string;
@@ -11130,11 +9168,6 @@ export interface GetPublicDashboardInvitationsRequest {
   /** The page to access (base 0). */
   page_number?: number;
 }
-const GetPublicDashboardInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetPublicDashboardInvitationsRequest>;
-
 /** Attributes of the shared dashboard invitation */
 export interface SharedDashboardInvitesDataObjectAttributes {
   /** When the invitation was sent. */
@@ -11161,108 +9194,51 @@ export type SharedDashboardInvitesDataList = Array<SharedDashboardInvitesDataObj
 export type SharedDashboardInvitesData =
   | SharedDashboardInvitesDataObject
   | SharedDashboardInvitesDataList;
-const SharedDashboardInvitesData = S.Unknown as any as S.Schema<SharedDashboardInvitesData>;
-
 /** Object containing the total count of invitations across all pages */
 export interface SharedDashboardInvitesMetaPage {
   /** The total number of invitations on this shared board, across all pages. */
   total_count?: number;
 }
-const SharedDashboardInvitesMetaPage = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<SharedDashboardInvitesMetaPage>;
-
 /** Pagination metadata returned by the API. */
 export interface SharedDashboardInvitesMeta {
   page?: SharedDashboardInvitesMetaPage;
 }
-const SharedDashboardInvitesMeta = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<SharedDashboardInvitesMeta>;
-
 /** Invitations data and metadata that exists for a shared dashboard returned by the API. */
 export interface SharedDashboardInvites {
   data: SharedDashboardInvitesData;
   meta?: SharedDashboardInvitesMeta;
 }
-const SharedDashboardInvites = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<SharedDashboardInvites>;
-
 export interface GetSlackIntegrationChannelRequest {
   /** Your Slack account name. */
   account_name: string;
   /** The name of the Slack channel being operated on. */
   channel_name: string;
 }
-const GetSlackIntegrationChannelRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<GetSlackIntegrationChannelRequest>;
-
 export interface GetSlackIntegrationChannelsRequest {
   /** Your Slack account name. */
   account_name: string;
 }
-const GetSlackIntegrationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetSlackIntegrationChannelsRequest>;
-
 /** A list of configured Slack channels. */
 export type SlackIntegrationChannels = Array<SlackIntegrationChannel>;
-const SlackIntegrationChannels = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<SlackIntegrationChannels>;
-
 export type GetSlackIntegrationChannelsResponse = SlackIntegrationChannels;
-const GetSlackIntegrationChannelsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<GetSlackIntegrationChannelsResponse>;
-
 export interface GetSLORequest {
   /** The ID of the service level objective object. */
   slo_id: string;
   /** Get the IDs of SLO monitors that reference this SLO. */
   with_configured_alert_ids?: boolean;
 }
-const GetSLORequest = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<GetSLORequest>;
-
 /** A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query. */
 export type SLOResponseDataConfiguredAlertIdsList = Array<number>;
-const SLOResponseDataConfiguredAlertIdsList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOResponseDataConfiguredAlertIdsList>;
-
 /** A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type SLOResponseDataGroupsList = Array<string>;
-const SLOResponseDataGroupsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataGroupsList>;
-
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type SLOResponseDataMonitorIdsList = Array<number>;
-const SLOResponseDataMonitorIdsList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOResponseDataMonitorIdsList>;
-
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type SLOResponseDataMonitorTagsList = Array<string>;
-const SLOResponseDataMonitorTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataMonitorTagsList>;
-
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type SLOResponseDataTagsList = Array<string>;
-const SLOResponseDataTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataTagsList>;
-
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type SLOResponseDataThresholdsList = Array<SLOThreshold>;
-const SLOResponseDataThresholdsList =
-  CreateSLORequestThresholdsList as any as S.Schema<SLOResponseDataThresholdsList>;
-
 /** A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.). */
 export interface SLOResponseData {
   /** A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query. */
@@ -11299,46 +9275,24 @@ export interface SLOResponseData {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-const SLOResponseData = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<SLOResponseData>;
-
 /** An array of error messages. Each endpoint documents how/whether this field is used. */
 export type SLOResponseErrorsList = Array<string>;
-const SLOResponseErrorsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseErrorsList>;
-
 /** A service level objective response containing a single service level objective. */
 export interface SLOResponse {
   data?: SLOResponseData;
   /** An array of error messages. Each endpoint documents how/whether this field is used. */
   errors?: SLOResponseErrorsList;
 }
-const SLOResponse = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<SLOResponse>;
-
 export interface GetSLOCorrectionRequest {
   /** The ID of the SLO correction object. */
   slo_correction_id: string;
 }
-const GetSLOCorrectionRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<GetSLOCorrectionRequest>;
-
 export interface GetSLOCorrectionsRequest {
   /** The ID of the service level objective object. */
   slo_id: string;
 }
-const GetSLOCorrectionsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<GetSLOCorrectionsRequest>;
-
 /** The list of SLO corrections objects. */
 export type SLOCorrectionListResponseDataList = Array<SLOCorrection>;
-const SLOCorrectionListResponseDataList = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<SLOCorrectionListResponseDataList>;
-
 /** Pagination object. */
 export interface Pagination {
   /** Total count. */
@@ -11346,28 +9300,16 @@ export interface Pagination {
   /** Total count of elements matched by the filter. */
   total_filtered_count?: number;
 }
-const Pagination = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<Pagination>;
-
 /** Object describing meta attributes of response. */
 export interface ResponseMetaAttributes {
   page?: Pagination;
 }
-const ResponseMetaAttributes = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ResponseMetaAttributes>;
-
 /** A list of SLO correction objects. */
 export interface SLOCorrectionListResponse {
   /** The list of SLO corrections objects. */
   data?: SLOCorrectionListResponseDataList;
   meta?: ResponseMetaAttributes;
 }
-const SLOCorrectionListResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<SLOCorrectionListResponse>;
-
 export interface GetSLOHistoryRequest {
   /** The ID of the service level objective object. */
   slo_id: string;
@@ -11380,35 +9322,16 @@ export interface GetSLOHistoryRequest {
   /** Defaults to `true`. If any SLO corrections are applied and this parameter is set to `false`, then the corrections will not be applied and the SLI values will not be affected. */
   apply_correction?: boolean;
 }
-const GetSLOHistoryRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<GetSLOHistoryRequest>;
-
 /** For `metric` based SLOs where the query includes a group-by clause, this represents the list of grouping parameters. This is not included in responses for `monitor` based SLOs. */
 export type SLOHistoryResponseDataGroupByList = Array<string>;
-const SLOHistoryResponseDataGroupByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOHistoryResponseDataGroupByList>;
-
 /** A mapping of threshold `timeframe` to the remaining error budget. */
 export type SLOErrorBudgetRemainingData = { [key: string]: number | undefined };
-const SLOErrorBudgetRemainingData = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<SLOErrorBudgetRemainingData>;
-
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SLOHistoryMonitorErrorsList = Array<SLOHistoryResponseErrorWithType>;
-const SLOHistoryMonitorErrorsList =
-  SyntheticsUptimeErrorsList as any as S.Schema<SLOHistoryMonitorErrorsList>;
-
 /** Represents an array timeseries data. */
 export type SLOHistoryMonitorHistoryItemList = Array<number>;
 /** The state transition history for the monitor. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data are counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information. */
 export type SLOHistoryMonitorHistoryList = Array<SLOHistoryMonitorHistoryItemList>;
-const SLOHistoryMonitorHistoryList =
-  SyntheticsUptimeHistoryList as any as S.Schema<SLOHistoryMonitorHistoryList>;
-
 /** An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value. This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs. */
 export interface SLOHistoryMonitor {
   error_budget_remaining?: SLOErrorBudgetRemainingData;
@@ -11435,37 +9358,18 @@ export interface SLOHistoryMonitor {
   /** Use `sli_value` instead. */
   uptime?: number;
 }
-const SLOHistoryMonitor = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<SLOHistoryMonitor>;
-
 /** For grouped SLOs, this represents SLI data for specific groups. This is not included in the responses for `metric` based SLOs. */
 export type SLOHistoryResponseDataGroupsList = Array<SLOHistoryMonitor>;
-const SLOHistoryResponseDataGroupsList = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<SLOHistoryResponseDataGroupsList>;
-
 /** For multi-monitor SLOs, this represents SLI data for specific monitors. This is not included in the responses for `metric` based SLOs. */
 export type SLOHistoryResponseDataMonitorsList = Array<SLOHistoryMonitor>;
-const SLOHistoryResponseDataMonitorsList =
-  SLOHistoryResponseDataGroupsList as any as S.Schema<SLOHistoryResponseDataMonitorsList>;
-
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SLOHistorySLIDataErrorsList = Array<SLOHistoryResponseErrorWithType>;
-const SLOHistorySLIDataErrorsList =
-  SyntheticsUptimeErrorsList as any as S.Schema<SLOHistorySLIDataErrorsList>;
-
 /** Represents an array timeseries data. */
 export type SLOHistorySLIDataHistoryItemList = Array<number>;
 /** The state transition history for `monitor` or `time-slice` SLOs. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data count as uptime in time-slice SLOs, while for monitor SLOs, no data is counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information. */
 export type SLOHistorySLIDataHistoryList = Array<SLOHistorySLIDataHistoryItemList>;
-const SLOHistorySLIDataHistoryList =
-  SyntheticsUptimeHistoryList as any as S.Schema<SLOHistorySLIDataHistoryList>;
-
 /** A mapping of threshold `timeframe` to number of accurate decimals, regardless of the from && to timestamp. */
 export type SLOHistorySLIDataPrecisionMap = { [key: string]: number | undefined };
-const SLOHistorySLIDataPrecisionMap =
-  SLOErrorBudgetRemainingData as any as S.Schema<SLOHistorySLIDataPrecisionMap>;
-
 /** An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value. This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs. */
 export interface SLOHistorySLIData {
   error_budget_remaining?: SLOErrorBudgetRemainingData;
@@ -11492,8 +9396,6 @@ export interface SLOHistorySLIData {
   /** Use `sli_value` instead. */
   uptime?: number | null;
 }
-const SLOHistorySLIData = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<SLOHistorySLIData>;
-
 /** An Object of metric units. */
 export interface SLOHistoryMetricsSeriesMetadataUnit {
   /** The family of metric unit, for example `bytes` is the family for `kibibyte`, `byte`, and `bit` units. */
@@ -11509,19 +9411,9 @@ export interface SLOHistoryMetricsSeriesMetadataUnit {
   /** A shorter and abbreviated version of the metric unit, for instance `B`. */
   short_name?: string | null;
 }
-const SLOHistoryMetricsSeriesMetadataUnit = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<SLOHistoryMetricsSeriesMetadataUnit>;
-
 /** An array of metric units that contains up to two unit objects. For example, bytes represents one unit object and bytes per second represents two unit objects. If a metric query only has one unit object, the second array element is null. */
 export type SLOHistoryMetricsSeriesMetadataUnitList =
   Array<SLOHistoryMetricsSeriesMetadataUnit | null>;
-const SLOHistoryMetricsSeriesMetadataUnitList = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<SLOHistoryMetricsSeriesMetadataUnitList>;
-
 /** Query metadata. */
 export interface SLOHistoryMetricsSeriesMetadata {
   /** Query aggregator function. */
@@ -11537,16 +9429,8 @@ export interface SLOHistoryMetricsSeriesMetadata {
   /** An array of metric units that contains up to two unit objects. For example, bytes represents one unit object and bytes per second represents two unit objects. If a metric query only has one unit object, the second array element is null. */
   unit?: SLOHistoryMetricsSeriesMetadataUnitList | null;
 }
-const SLOHistoryMetricsSeriesMetadata = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<SLOHistoryMetricsSeriesMetadata>;
-
 /** The query values for each metric. */
 export type SLOHistoryMetricsSeriesValuesList = Array<number>;
-const SLOHistoryMetricsSeriesValuesList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMetricsSeriesValuesList>;
-
 /** A representation of `metric` based SLO timeseries for the provided queries. This is the same response type from `batch_query` endpoint. */
 export interface SLOHistoryMetricsSeries {
   /** Count of submitted metrics. */
@@ -11557,16 +9441,8 @@ export interface SLOHistoryMetricsSeries {
   /** The query values for each metric. */
   values: SLOHistoryMetricsSeriesValuesList;
 }
-const SLOHistoryMetricsSeries = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<SLOHistoryMetricsSeries>;
-
 /** An array of query timestamps in EPOCH milliseconds. */
 export type SLOHistoryMetricsTimesList = Array<number>;
-const SLOHistoryMetricsTimesList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMetricsTimesList>;
-
 /** A `metric` based SLO history response. This is not included in responses for `monitor` based SLOs. */
 export interface SLOHistoryMetrics {
   denominator: SLOHistoryMetricsSeries;
@@ -11584,19 +9460,10 @@ export interface SLOHistoryMetrics {
   /** An array of query timestamps in EPOCH milliseconds. */
   times: SLOHistoryMetricsTimesList;
 }
-const SLOHistoryMetrics = /*@__PURE__*/ __L.at(__c43, 4) as any as S.Schema<SLOHistoryMetrics>;
-
 /** mapping of string timeframe to the SLO threshold. */
 export type SLOHistoryResponseDataThresholdsMap = { [key: string]: SLOThreshold | undefined };
-const SLOHistoryResponseDataThresholdsMap = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<SLOHistoryResponseDataThresholdsMap>;
-
 /** A numeric representation of the type of the service level objective (`0` for monitor, `1` for metric). Always included in service level objective responses. Ignored in create/update requests. */
 export type SLOTypeNumeric = 0 | 1 | 2;
-const SLOTypeNumeric = S.Number;
-
 /** An array of service level objective objects. */
 export interface SLOHistoryResponseData {
   /** The `from` timestamp in epoch seconds. */
@@ -11616,75 +9483,38 @@ export interface SLOHistoryResponseData {
   type?: SLOType;
   type_id?: SLOTypeNumeric;
 }
-const SLOHistoryResponseData = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<SLOHistoryResponseData>;
-
 /** A list of errors while querying the history data for the service level objective. */
 export interface SLOHistoryResponseError {
   /** Human readable error. */
   error?: string;
 }
-const SLOHistoryResponseError = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<SLOHistoryResponseError>;
-
 /** A list of errors while querying the history data for the service level objective. */
 export type SLOHistoryResponseErrorsList = Array<SLOHistoryResponseError>;
-const SLOHistoryResponseErrorsList = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<SLOHistoryResponseErrorsList>;
-
 /** A service level objective history response. */
 export interface SLOHistoryResponse {
   data?: SLOHistoryResponseData;
   /** A list of errors while querying the history data for the service level objective. */
   errors?: SLOHistoryResponseErrorsList | null;
 }
-const SLOHistoryResponse = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<SLOHistoryResponse>;
-
 export interface GetSyntheticsCIBatchRequest {
   /** The ID of the batch. */
   batch_id: string;
 }
-const GetSyntheticsCIBatchRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<GetSyntheticsCIBatchRequest>;
-
 /** Description of the CI pipeline. */
 export interface SyntheticsCIBatchMetadataPipeline {
   /** URL of the pipeline. */
   url?: string;
 }
-const SyntheticsCIBatchMetadataPipeline = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<SyntheticsCIBatchMetadataPipeline>;
-
 /** Description of the CI provider. */
 export interface SyntheticsCIBatchMetadataProvider {
   /** Name of the CI provider. */
   name?: string;
 }
-const SyntheticsCIBatchMetadataProvider = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<SyntheticsCIBatchMetadataProvider>;
-
 /** Description of the CI provider. */
 export interface SyntheticsCIBatchMetadataCI {
   pipeline?: SyntheticsCIBatchMetadataPipeline;
   provider?: SyntheticsCIBatchMetadataProvider;
 }
-const SyntheticsCIBatchMetadataCI = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<SyntheticsCIBatchMetadataCI>;
-
 /** Git information. */
 export interface SyntheticsCIBatchMetadataGit {
   /** Branch name. */
@@ -11692,29 +9522,15 @@ export interface SyntheticsCIBatchMetadataGit {
   /** The commit SHA. */
   commitSha?: string;
 }
-const SyntheticsCIBatchMetadataGit = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<SyntheticsCIBatchMetadataGit>;
-
 /** Metadata for the Synthetic tests run. */
 export interface SyntheticsCIBatchMetadata {
   ci?: SyntheticsCIBatchMetadataCI;
   git?: SyntheticsCIBatchMetadataGit;
 }
-const SyntheticsCIBatchMetadata = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<SyntheticsCIBatchMetadata>;
-
 /** Determines whether the batch has passed, failed, or is in progress. */
 export type SyntheticsBatchStatus = "passed" | "skipped" | "failed";
-const SyntheticsBatchStatus = S.String;
-
 /** Type of the Synthetic test. */
 export type SyntheticsTestDetailsType = "api" | "browser" | "mobile" | "network";
-const SyntheticsTestDetailsType = S.String;
-
 /** Object with the results of a Synthetic batch. */
 export interface SyntheticsBatchResult {
   device?: string;
@@ -11734,18 +9550,8 @@ export interface SyntheticsBatchResult {
   test_public_id?: string;
   test_type?: SyntheticsTestDetailsType;
 }
-const SyntheticsBatchResult = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<SyntheticsBatchResult>;
-
 /** List of results for the batch. */
 export type SyntheticsBatchDetailsDataResultsList = Array<SyntheticsBatchResult>;
-const SyntheticsBatchDetailsDataResultsList = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<SyntheticsBatchDetailsDataResultsList>;
-
 /** Wrapper object that contains the details of a batch. */
 export interface SyntheticsBatchDetailsData {
   metadata?: SyntheticsCIBatchMetadata;
@@ -11753,53 +9559,22 @@ export interface SyntheticsBatchDetailsData {
   results?: SyntheticsBatchDetailsDataResultsList;
   status?: SyntheticsBatchStatus;
 }
-const SyntheticsBatchDetailsData = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<SyntheticsBatchDetailsData>;
-
 /** Details about a batch response. */
 export interface SyntheticsBatchDetails {
   data?: SyntheticsBatchDetailsData;
 }
-const SyntheticsBatchDetails = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<SyntheticsBatchDetails>;
-
 export interface GetSyntheticsDefaultLocationsRequest {}
-const GetSyntheticsDefaultLocationsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<GetSyntheticsDefaultLocationsRequest>;
-
 /** List of Synthetics default locations settings. */
 export type SyntheticsDefaultLocations = Array<string>;
-const SyntheticsDefaultLocations =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsDefaultLocations>;
-
 export type GetSyntheticsDefaultLocationsResponse = SyntheticsDefaultLocations;
-const GetSyntheticsDefaultLocationsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<GetSyntheticsDefaultLocationsResponse>;
-
 export interface GetTestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-const GetTestRequest = /*@__PURE__*/ __L.at(__c45, 6) as any as S.Schema<GetTestRequest>;
-
 /** Array of locations used to run the test. */
 export type SyntheticsTestDetailsWithoutStepsLocationsList = Array<string>;
-const SyntheticsTestDetailsWithoutStepsLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsWithoutStepsLocationsList>;
-
 /** Array of tags attached to the test. */
 export type SyntheticsTestDetailsWithoutStepsTagsList = Array<string>;
-const SyntheticsTestDetailsWithoutStepsTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsWithoutStepsTagsList>;
-
 /** Object containing details about your Synthetic test, without test steps. */
 export interface SyntheticsTestDetailsWithoutSteps {
   config?: SyntheticsTestConfig;
@@ -11821,32 +9596,14 @@ export interface SyntheticsTestDetailsWithoutSteps {
   tags?: SyntheticsTestDetailsWithoutStepsTagsList;
   type?: SyntheticsTestDetailsType;
 }
-const SyntheticsTestDetailsWithoutSteps = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<SyntheticsTestDetailsWithoutSteps>;
-
 export interface GetUsageBillableSummaryRequest {
   /** Datetime in ISO-8601 format, UTC, precise to month: `[YYYY-MM]` for usage starting this month. */
   month?: string;
   /** Boolean to specify whether to include accounts connected to the current account as partner customers in the Datadog partner network program. Defaults to `false`. */
   include_connected_accounts?: boolean;
 }
-const GetUsageBillableSummaryRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<GetUsageBillableSummaryRequest>;
-
 export interface GetUsageBillableSummaryResponse {}
-const GetUsageBillableSummaryResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<GetUsageBillableSummaryResponse>;
-
 export type GetUsageLogsByIndexRequestIndexNameList = Array<string>;
-const GetUsageLogsByIndexRequestIndexNameList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetUsageLogsByIndexRequestIndexNameList>;
-
 export interface GetUsageLogsByIndexRequest {
   /** Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage beginning at this hour. */
   start_hr: string;
@@ -11855,15 +9612,7 @@ export interface GetUsageLogsByIndexRequest {
   /** Comma-separated list of log index names. */
   index_name?: GetUsageLogsByIndexRequestIndexNameList;
 }
-const GetUsageLogsByIndexRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<GetUsageLogsByIndexRequest>;
-
 export interface GetUsageLogsByIndexResponse {}
-const GetUsageLogsByIndexResponse =
-  CreateEventResponse as any as S.Schema<GetUsageLogsByIndexResponse>;
-
 export interface GetUsageSummaryRequest {
   /** Datetime in ISO-8601 format, UTC, precise to month: `[YYYY-MM]` for usage beginning in this month. Maximum of 15 months ago. */
   start_month: string;
@@ -11874,18 +9623,8 @@ export interface GetUsageSummaryRequest {
   /** Boolean to specify whether to include accounts connected to the current account as partner customers in the Datadog partner network program. Defaults to `false`. */
   include_connected_accounts?: boolean;
 }
-const GetUsageSummaryRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<GetUsageSummaryRequest>;
-
 export interface GetUsageSummaryResponse {}
-const GetUsageSummaryResponse = CreateEventResponse as any as S.Schema<GetUsageSummaryResponse>;
-
 export type GetUsageTopAvgMetricsRequestNamesList = Array<string>;
-const GetUsageTopAvgMetricsRequestNamesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetUsageTopAvgMetricsRequestNamesList>;
-
 export interface GetUsageTopAvgMetricsRequest {
   /** Datetime in ISO-8601 format, UTC, precise to month: [YYYY-MM] for usage beginning at this hour. (Either month or day should be specified, but not both) */
   month?: string;
@@ -11898,39 +9637,19 @@ export interface GetUsageTopAvgMetricsRequest {
   /** List following results with a next_record_id provided in the previous query. */
   next_record_id?: string;
 }
-const GetUsageTopAvgMetricsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<GetUsageTopAvgMetricsRequest>;
-
 export interface GetUsageTopAvgMetricsResponse {}
-const GetUsageTopAvgMetricsResponse =
-  CreateEventResponse as any as S.Schema<GetUsageTopAvgMetricsResponse>;
-
 export interface GetUserRequest {
   /** The ID of the user. */
   user_handle: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<GetUserRequest>;
-
 export interface GetWebhooksIntegrationRequest {
   /** The name of the webhook. */
   webhook_name: string;
 }
-const GetWebhooksIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<GetWebhooksIntegrationRequest>;
-
 export interface GetWebhooksIntegrationCustomVariableRequest {
   /** The name of the custom variable. */
   custom_variable_name: string;
 }
-const GetWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<GetWebhooksIntegrationCustomVariableRequest>;
-
 export interface ListActiveMetricsRequest {
   /** Seconds since the Unix epoch. */
   from: number;
@@ -11939,16 +9658,8 @@ export interface ListActiveMetricsRequest {
   /** Filter metrics that have been submitted with the given tags. Supports boolean and wildcard expressions. Cannot be combined with other filters. */
   tag_filter?: string;
 }
-const ListActiveMetricsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<ListActiveMetricsRequest>;
-
 /** List of metric names. */
 export type MetricsListResponseMetricsList = Array<string>;
-const MetricsListResponseMetricsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsListResponseMetricsList>;
-
 /** Object listing all metric names stored by Datadog since a given time. */
 export interface MetricsListResponse {
   /** Time when the metrics were active, seconds since the Unix epoch. */
@@ -11956,64 +9667,27 @@ export interface MetricsListResponse {
   /** List of metric names. */
   metrics?: MetricsListResponseMetricsList;
 }
-const MetricsListResponse = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<MetricsListResponse>;
-
 export interface ListAPIKeysRequest {}
-const ListAPIKeysRequest = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<ListAPIKeysRequest>;
-
 /** Array of API keys. */
 export type ApiKeyListResponseApiKeysList = Array<ApiKey>;
-const ApiKeyListResponseApiKeysList = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<ApiKeyListResponseApiKeysList>;
-
 /** List of API and application keys available for a given organization. */
 export interface ApiKeyListResponse {
   /** Array of API keys. */
   api_keys?: ApiKeyListResponseApiKeysList;
 }
-const ApiKeyListResponse = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<ApiKeyListResponse>;
-
 export interface ListApplicationKeysRequest {}
-const ListApplicationKeysRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListApplicationKeysRequest>;
-
 /** Array of application keys. */
 export type ApplicationKeyListResponseApplicationKeysList = Array<ApplicationKey>;
-const ApplicationKeyListResponseApplicationKeysList = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ApplicationKeyListResponseApplicationKeysList>;
-
 /** An application key response. */
 export interface ApplicationKeyListResponse {
   /** Array of application keys. */
   application_keys?: ApplicationKeyListResponseApplicationKeysList;
 }
-const ApplicationKeyListResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ApplicationKeyListResponse>;
-
 export interface ListAzureIntegrationRequest {}
-const ListAzureIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<ListAzureIntegrationRequest>;
-
 /** Errors in your configuration. */
 export type AzureAccountErrorsList = Array<string>;
-const AzureAccountErrorsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<AzureAccountErrorsList>;
-
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type AzureAccountResourceProviderConfigsList = Array<ResourceProviderConfig>;
-const AzureAccountResourceProviderConfigsList =
-  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<AzureAccountResourceProviderConfigsList>;
-
 /** Datadog-Azure integrations configured for your organization. */
 export interface AzureAccount {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
@@ -12053,44 +9727,17 @@ export interface AzureAccount {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-const AzureAccount = /*@__PURE__*/ __L.at(__c48, 1) as any as S.Schema<AzureAccount>;
-
 /** Accounts configured for your organization. */
 export type AzureAccountListResponse = Array<AzureAccount>;
-const AzureAccountListResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<AzureAccountListResponse>;
-
 export type ListAzureIntegrationResponse = AzureAccountListResponse;
-const ListAzureIntegrationResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<ListAzureIntegrationResponse>;
-
 export interface ListDashboardListsRequest {}
-const ListDashboardListsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<ListDashboardListsRequest>;
-
 /** List of all your dashboard lists. */
 export type DashboardListListResponseDashboardListsList = Array<DashboardList>;
-const DashboardListListResponseDashboardListsList = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<DashboardListListResponseDashboardListsList>;
-
 /** Information on your dashboard lists. */
 export interface DashboardListListResponse {
   /** List of all your dashboard lists. */
   dashboard_lists?: DashboardListListResponseDashboardListsList;
 }
-const DashboardListListResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<DashboardListListResponse>;
-
 export interface ListDashboardsRequest {
   /** When `true`, this query only returns shared custom created or cloned dashboards. */
   filter_shared_?: boolean;
@@ -12101,11 +9748,6 @@ export interface ListDashboardsRequest {
   /** The specific offset to use as the beginning of the returned response. */
   start?: number;
 }
-const ListDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<ListDashboardsRequest>;
-
 /** Dashboard definition. */
 export interface DashboardSummaryDefinition {
   /** Identifier of the dashboard author. */
@@ -12126,25 +9768,13 @@ export interface DashboardSummaryDefinition {
   /** URL of the dashboard. */
   url?: string;
 }
-const DashboardSummaryDefinition = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<DashboardSummaryDefinition>;
-
 /** List of dashboard definitions. */
 export type DashboardSummaryDashboardsList = Array<DashboardSummaryDefinition>;
-const DashboardSummaryDashboardsList = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<DashboardSummaryDashboardsList>;
-
 /** Dashboard summary response. */
 export interface DashboardSummary {
   /** List of dashboard definitions. */
   dashboards?: DashboardSummaryDashboardsList;
 }
-const DashboardSummary = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<DashboardSummary>;
-
 export interface ListEventsRequest {
   /** POSIX timestamp. */
   start: number;
@@ -12163,15 +9793,8 @@ export interface ListEventsRequest {
   /** By default 1000 results are returned per request. Set page to the number of the page to return with `0` being the first page. The page parameter can only be used when either unaggregated or exclude_aggregate is set to `true.` */
   page?: number;
 }
-const ListEventsRequest = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<ListEventsRequest>;
-
 /** An array of events. */
 export type EventListResponseEventsList = Array<Event>;
-const EventListResponseEventsList = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<EventListResponseEventsList>;
-
 /** An event list response. */
 export interface EventListResponse {
   /** An array of events. */
@@ -12179,31 +9802,14 @@ export interface EventListResponse {
   /** A status. */
   status?: string;
 }
-const EventListResponse = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<EventListResponse>;
-
 export interface ListGlobalVariablesRequest {}
-const ListGlobalVariablesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ListGlobalVariablesRequest>;
-
 /** Array of Synthetic global variables. */
 export type SyntheticsListGlobalVariablesResponseVariablesList = Array<SyntheticsGlobalVariable>;
-const SyntheticsListGlobalVariablesResponseVariablesList = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<SyntheticsListGlobalVariablesResponseVariablesList>;
-
 /** Object containing an array of Synthetic global variables. */
 export interface SyntheticsListGlobalVariablesResponse {
   /** Array of Synthetic global variables. */
   variables?: SyntheticsListGlobalVariablesResponseVariablesList;
 }
-const SyntheticsListGlobalVariablesResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<SyntheticsListGlobalVariablesResponse>;
-
 export interface ListHostsRequest {
   /** String to filter search results. */
   filter?: string;
@@ -12222,31 +9828,16 @@ export interface ListHostsRequest {
   /** Include additional metadata about the hosts (agent_version, machine, platform, processor, etc.). */
   include_hosts_metadata?: boolean;
 }
-const ListHostsRequest = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<ListHostsRequest>;
-
 /** Host aliases collected by Datadog. */
 export type HostAliasesList = Array<string>;
-const HostAliasesList = CrossOrgUuids as any as S.Schema<HostAliasesList>;
-
 /** The Datadog integrations reporting metrics for the host. */
 export type HostAppsList = Array<string>;
-const HostAppsList = CrossOrgUuids as any as S.Schema<HostAppsList>;
-
 /** Array of strings. */
 export type AgentCheck = Array<unknown>;
-const AgentCheck = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<AgentCheck>;
-
 /** A list of Agent checks running on the host. */
 export type HostMetaAgentChecksList = Array<AgentCheck>;
-const HostMetaAgentChecksList = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<HostMetaAgentChecksList>;
-
 /** An array of Mac versions. */
 export type HostMetaFbsdVList = Array<unknown>;
-const HostMetaFbsdVList = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<HostMetaFbsdVList>;
-
 /** Agent install method. */
 export interface HostMetaInstallMethod {
   /** The installer version. */
@@ -12256,23 +9847,12 @@ export interface HostMetaInstallMethod {
   /** The tool version. */
   tool_version?: string;
 }
-const HostMetaInstallMethod = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<HostMetaInstallMethod>;
-
 /** An array of Mac versions. */
 export type HostMetaMacVList = Array<unknown>;
-const HostMetaMacVList = HostMetaFbsdVList as any as S.Schema<HostMetaMacVList>;
-
 /** Array of Unix versions. */
 export type HostMetaNixVList = Array<unknown>;
-const HostMetaNixVList = HostMetaFbsdVList as any as S.Schema<HostMetaNixVList>;
-
 /** An array of Windows versions. */
 export type HostMetaWinVList = Array<unknown>;
-const HostMetaWinVList = HostMetaFbsdVList as any as S.Schema<HostMetaWinVList>;
-
 /** Metadata associated with your host. */
 export interface HostMeta {
   /** A list of Agent checks running on the host. */
@@ -12305,8 +9885,6 @@ export interface HostMeta {
   /** An array of Windows versions. */
   winV?: HostMetaWinVList;
 }
-const HostMeta = /*@__PURE__*/ __L.at(__c50, 6) as any as S.Schema<HostMeta>;
-
 /** Host Metrics collected. */
 export interface HostMetrics {
   /** The percent of CPU used (everything but idle). */
@@ -12316,19 +9894,12 @@ export interface HostMetrics {
   /** The system load over the last 15 minutes. */
   load?: number;
 }
-const HostMetrics = /*@__PURE__*/ __L.at(__c50, 7) as any as S.Schema<HostMetrics>;
-
 /** Source or cloud provider associated with your host. */
 export type HostSourcesList = Array<string>;
-const HostSourcesList = CrossOrgUuids as any as S.Schema<HostSourcesList>;
-
 /** Array of tags for a single source. */
 export type HostTagsBySourceValueList = Array<string>;
 /** List of tags for each source (AWS, Datadog Agent, Chef..). */
 export type HostTagsBySourceMap = { [key: string]: HostTagsBySourceValueList | undefined };
-const HostTagsBySourceMap =
-  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<HostTagsBySourceMap>;
-
 /** Object representing a host. */
 export interface Host {
   /** Host aliases collected by Datadog. */
@@ -12358,15 +9929,8 @@ export interface Host {
   /** Displays UP when the expected metrics are received and displays `???` if no metrics are received. */
   up?: boolean;
 }
-const Host = /*@__PURE__*/ __L.at(__c51, 0) as any as S.Schema<Host>;
-
 /** Array of hosts. */
 export type HostListResponseHostListList = Array<Host>;
-const HostListResponseHostListList = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<HostListResponseHostListList>;
-
 /** Response with Host information from Datadog. */
 export interface HostListResponse {
   /** Array of hosts. */
@@ -12376,34 +9940,20 @@ export interface HostListResponse {
   /** Number of host returned. */
   total_returned?: number;
 }
-const HostListResponse = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<HostListResponse>;
-
 export interface ListHostTagsRequest {
   /** Source to filter. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. */
   source?: string;
 }
-const ListHostTagsRequest = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<ListHostTagsRequest>;
-
 /** A list of host names which contain this tag */
 export type TagToHostsTagsValueList = Array<string>;
 /** A mapping of tags to host names */
 export type TagToHostsTagsMap = { [key: string]: TagToHostsTagsValueList | undefined };
-const TagToHostsTagsMap =
-  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<TagToHostsTagsMap>;
-
 /** In this object, the key is the tag, and the value is a list of host names that are reporting that tag. */
 export interface TagToHosts {
   /** A mapping of tags to host names */
   tags?: TagToHostsTagsMap;
 }
-const TagToHosts = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<TagToHosts>;
-
 export interface ListLocationsRequest {}
-const ListLocationsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ListLocationsRequest>;
-
 /** Synthetic location that can be used when creating or editing a test. */
 export interface SyntheticsLocation {
   /** Unique identifier of the location. */
@@ -12411,49 +9961,23 @@ export interface SyntheticsLocation {
   /** Name of the location. */
   name?: string;
 }
-const SyntheticsLocation = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<SyntheticsLocation>;
-
 /** List of Synthetic locations. */
 export type SyntheticsLocationsLocationsList = Array<SyntheticsLocation>;
-const SyntheticsLocationsLocationsList = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<SyntheticsLocationsLocationsList>;
-
 /** List of Synthetic locations. */
 export interface SyntheticsLocations {
   /** List of Synthetic locations. */
   locations?: SyntheticsLocationsLocationsList;
 }
-const SyntheticsLocations = /*@__PURE__*/ __L.at(__c52, 0) as any as S.Schema<SyntheticsLocations>;
-
 export interface ListLogIndexesRequest {}
-const ListLogIndexesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<ListLogIndexesRequest>;
-
 /** Array of Log index configurations. */
 export type LogsIndexListResponseIndexesList = Array<LogsIndex>;
-const LogsIndexListResponseIndexesList = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<LogsIndexListResponseIndexesList>;
-
 /** Object with all Index configurations for a given organization. */
 export interface LogsIndexListResponse {
   /** Array of Log index configurations. */
   indexes?: LogsIndexListResponseIndexesList;
 }
-const LogsIndexListResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<LogsIndexListResponse>;
-
 /** Time-ascending `asc` or time-descending `desc` results. */
 export type LogsSort = "asc" | "desc";
-const LogsSort = S.String;
-
 /** Timeframe to retrieve the log from. */
 export interface LogsListRequestTime {
   /** Minimum timestamp for requested logs. */
@@ -12463,8 +9987,6 @@ export interface LogsListRequestTime {
   /** Maximum timestamp for requested logs. */
   to: string;
 }
-const LogsListRequestTime = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<LogsListRequestTime>;
-
 export interface ListLogsRequest {
   /** The log index on which the request is performed. For multi-index organizations, the default is all live indexes. Historical indexes of rehydrated logs must be specified. */
   index?: string;
@@ -12477,18 +9999,10 @@ export interface ListLogsRequest {
   startAt?: string;
   time: LogsListRequestTime;
 }
-const ListLogsRequest = /*@__PURE__*/ __L.at(__c52, 5) as any as S.Schema<ListLogsRequest>;
-
 /** JSON object of attributes from your log. */
 export type LogContentAttributesMap = { [key: string]: unknown | undefined };
-const LogContentAttributesMap =
-  SyntheticsTestRequestToolArgsMap as any as S.Schema<LogContentAttributesMap>;
-
 /** Array of tags associated with your log. */
 export type LogContentTagsList = Array<string>;
-const LogContentTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogContentTagsList>;
-
 /** JSON object containing all log attributes and their associated values. */
 export interface LogContent {
   /** JSON object of attributes from your log. */
@@ -12504,23 +10018,14 @@ export interface LogContent {
   /** Timestamp of your log. */
   timestamp?: string;
 }
-const LogContent = /*@__PURE__*/ __L.at(__c52, 6) as any as S.Schema<LogContent>;
-
 /** Object describing a log after being processed and stored by Datadog. */
 export interface Log {
   content?: LogContent;
   /** ID of the Log. */
   id?: string;
 }
-const Log = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<Log>;
-
 /** Array of logs matching the request and the `nextLogId` if sent. */
 export type LogsListResponseLogsList = Array<Log>;
-const LogsListResponseLogsList = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<LogsListResponseLogsList>;
-
 /** Response object with all logs matching the request and pagination information. */
 export interface LogsListResponse {
   /** Array of logs matching the request and the `nextLogId` if sent. */
@@ -12530,24 +10035,10 @@ export interface LogsListResponse {
   /** Status of the response. */
   status?: string;
 }
-const LogsListResponse = /*@__PURE__*/ __L.at(__c53, 1) as any as S.Schema<LogsListResponse>;
-
 export interface ListLogsPipelinesRequest {}
-const ListLogsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<ListLogsPipelinesRequest>;
-
 /** Array of all log pipeline objects configured for the organization. */
 export type LogsPipelineList = Array<LogsPipeline>;
-const LogsPipelineList = /*@__PURE__*/ __L.at(__c53, 3) as any as S.Schema<LogsPipelineList>;
-
 export type ListLogsPipelinesResponse = LogsPipelineList;
-const ListLogsPipelinesResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<ListLogsPipelinesResponse>;
-
 export interface ListMonitorsRequest {
   /** When specified, shows additional information about the group states. Choose one or more from `all`, `alert`, `warn`, and `no data`. */
   group_states?: string;
@@ -12566,21 +10057,9 @@ export interface ListMonitorsRequest {
   /** The number of monitors to return per page. If the page argument is not specified, the default behavior returns all monitors without a `page_size` limit. However, if page is specified and `page_size` is not, the argument defaults to 100. */
   page_size?: number;
 }
-const ListMonitorsRequest = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<ListMonitorsRequest>;
-
 /** An array of monitor objects. */
 export type ListMonitorsResponseBodyList = Array<Monitor>;
-const ListMonitorsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<ListMonitorsResponseBodyList>;
-
 export type ListMonitorsResponse = ListMonitorsResponseBodyList;
-const ListMonitorsResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ListMonitorsResponse>;
-
 export interface ListNotebooksRequest {
   /** Return notebooks created by the given `author_handle`. */
   author_handle?: string;
@@ -12603,21 +10082,10 @@ export interface ListNotebooksRequest {
   /** If type is provided, returns only notebooks with that metadata type. Default does not have type filtering. */
   type?: string;
 }
-const ListNotebooksRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<ListNotebooksRequest>;
-
 /** List of cells to display in the notebook. */
 export type NotebooksResponseDataAttributesCellsList = Array<NotebookCellResponse>;
-const NotebooksResponseDataAttributesCellsList =
-  NotebookResponseDataAttributesCellsList as any as S.Schema<NotebooksResponseDataAttributesCellsList>;
-
 /** List of template variables for this notebook. */
 export type NotebooksResponseDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-const NotebooksResponseDataAttributesTemplateVariablesList =
-  NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebooksResponseDataAttributesTemplateVariablesList>;
-
 /** The attributes of a notebook in get all response. */
 export interface NotebooksResponseDataAttributes {
   author?: NotebookAuthor;
@@ -12635,11 +10103,6 @@ export interface NotebooksResponseDataAttributes {
   template_variables?: NotebooksResponseDataAttributesTemplateVariablesList | null;
   time?: NotebookGlobalTime;
 }
-const NotebooksResponseDataAttributes = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<NotebooksResponseDataAttributes>;
-
 /** The data for a notebook in get all response. */
 export interface NotebooksResponseData {
   attributes: NotebooksResponseDataAttributes;
@@ -12647,18 +10110,8 @@ export interface NotebooksResponseData {
   id: number;
   type: NotebookResourceType;
 }
-const NotebooksResponseData = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<NotebooksResponseData>;
-
 /** List of notebook definitions. */
 export type NotebooksResponseDataList = Array<NotebooksResponseData>;
-const NotebooksResponseDataList = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<NotebooksResponseDataList>;
-
 /** Pagination metadata returned by the API. */
 export interface NotebooksResponsePage {
   /** The total number of notebooks that would be returned if the request was not filtered by `start` and `count` parameters. */
@@ -12670,47 +10123,26 @@ export interface NotebooksResponsePage {
 export interface NotebooksResponseMeta {
   page?: NotebooksResponsePage;
 }
-const NotebooksResponseMeta = ResponseMetaAttributes as any as S.Schema<NotebooksResponseMeta>;
-
 /** Notebooks get all response. */
 export interface NotebooksResponse {
   /** List of notebook definitions. */
   data?: NotebooksResponseDataList;
   meta?: NotebooksResponseMeta;
 }
-const NotebooksResponse = /*@__PURE__*/ __L.at(__c54, 4) as any as S.Schema<NotebooksResponse>;
-
 export interface ListOrgsRequest {}
-const ListOrgsRequest = /*@__PURE__*/ __L.at(__c54, 5) as any as S.Schema<ListOrgsRequest>;
-
 /** Array of organization objects. */
 export type OrganizationListResponseOrgsList = Array<Organization>;
-const OrganizationListResponseOrgsList = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<OrganizationListResponseOrgsList>;
-
 /** Response with the list of organizations. */
 export interface OrganizationListResponse {
   /** Array of organization objects. */
   orgs?: OrganizationListResponseOrgsList;
 }
-const OrganizationListResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<OrganizationListResponse>;
-
 export interface ListSLOCorrectionRequest {
   /** The specific offset to use as the beginning of the returned response. */
   offset?: number;
   /** The number of SLO corrections to return in the response. Default is 25. */
   limit?: number;
 }
-const ListSLOCorrectionRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<ListSLOCorrectionRequest>;
-
 export interface ListSLOsRequest {
   /** A comma separated list of the IDs of the service level objectives objects. */
   ids?: string;
@@ -12727,50 +10159,27 @@ export interface ListSLOsRequest {
   /** Whether to return only deleted service level objective objects. */
   is_deleted?: boolean;
 }
-const ListSLOsRequest = /*@__PURE__*/ __L.at(__c55, 1) as any as S.Schema<ListSLOsRequest>;
-
 export interface ListTestsRequest {
   /** Used for pagination. The number of tests returned in the page. */
   page_size?: number;
   /** Used for pagination. Which page you want to retrieve. Starts at zero. */
   page_number?: number;
 }
-const ListTestsRequest = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<ListTestsRequest>;
-
 /** Array of Synthetic tests configuration. */
 export type SyntheticsListTestsResponseTestsList = Array<SyntheticsTestDetailsWithoutSteps>;
-const SyntheticsListTestsResponseTestsList = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<SyntheticsListTestsResponseTestsList>;
-
 /** Object containing an array of Synthetic tests configuration. */
 export interface SyntheticsListTestsResponse {
   /** Array of Synthetic tests configuration. */
   tests?: SyntheticsListTestsResponseTestsList;
 }
-const SyntheticsListTestsResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<SyntheticsListTestsResponse>;
-
 export interface ListUsersRequest {}
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c55, 5) as any as S.Schema<ListUsersRequest>;
-
 /** Array of users. */
 export type UserListResponseUsersList = Array<User>;
-const UserListResponseUsersList = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<UserListResponseUsersList>;
-
 /** Array of Datadog users for a given organization. */
 export interface UserListResponse {
   /** Array of users. */
   users?: UserListResponseUsersList;
 }
-const UserListResponse = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<UserListResponse>;
-
 export interface MuteHostRequest {
   /** Name of the host to mute. */
   host_name: string;
@@ -12781,8 +10190,6 @@ export interface MuteHostRequest {
   /** If true and the host is already muted, replaces existing host mute settings. */
   override?: boolean;
 }
-const MuteHostRequest = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<MuteHostRequest>;
-
 /** Response with the list of muted host for your organization. */
 export interface HostMuteResponse {
   /** Action applied to the hosts. */
@@ -12794,8 +10201,6 @@ export interface HostMuteResponse {
   /** Message associated with the mute. */
   message?: string;
 }
-const HostMuteResponse = /*@__PURE__*/ __L.at(__c56, 1) as any as S.Schema<HostMuteResponse>;
-
 /** The operation to perform */
 export type SyntheticsPatchTestOperationName =
   | "add"
@@ -12804,8 +10209,6 @@ export type SyntheticsPatchTestOperationName =
   | "move"
   | "copy"
   | "test";
-const SyntheticsPatchTestOperationName = S.String;
-
 /** A single [JSON Patch](https://jsonpatch.com) operation to perform on the test */
 export interface SyntheticsPatchTestOperation {
   op?: SyntheticsPatchTestOperationName | (string & {});
@@ -12814,41 +10217,20 @@ export interface SyntheticsPatchTestOperation {
   /** A value to use in a [JSON Patch](https://jsonpatch.com) operation */
   value?: unknown;
 }
-const SyntheticsPatchTestOperation = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<SyntheticsPatchTestOperation>;
-
 /** Array of [JSON Patch](https://jsonpatch.com) operations to perform on the test */
 export type PatchTestRequestDataList = Array<SyntheticsPatchTestOperation>;
-const PatchTestRequestDataList = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<PatchTestRequestDataList>;
-
 export interface PatchTestRequest {
   /** The public ID of the test to patch. */
   public_id: string;
   /** Array of [JSON Patch](https://jsonpatch.com) operations to perform on the test */
   data?: PatchTestRequestDataList;
 }
-const PatchTestRequest = /*@__PURE__*/ __L.at(__c56, 4) as any as S.Schema<PatchTestRequest>;
-
 /** Array of locations used to run the test. */
 export type SyntheticsTestDetailsLocationsList = Array<string>;
-const SyntheticsTestDetailsLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsLocationsList>;
-
 /** The steps of the test if they exist. */
 export type SyntheticsTestDetailsStepsList = Array<SyntheticsStep>;
-const SyntheticsTestDetailsStepsList =
-  CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<SyntheticsTestDetailsStepsList>;
-
 /** Array of tags attached to the test. */
 export type SyntheticsTestDetailsTagsList = Array<string>;
-const SyntheticsTestDetailsTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsTagsList>;
-
 /** Object containing details about your Synthetic test. */
 export interface SyntheticsTestDetails {
   config?: SyntheticsTestConfig;
@@ -12872,11 +10254,6 @@ export interface SyntheticsTestDetails {
   tags?: SyntheticsTestDetailsTagsList;
   type?: SyntheticsTestDetailsType;
 }
-const SyntheticsTestDetails = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<SyntheticsTestDetails>;
-
 export interface QueryMetricsRequest {
   /** Start of the queried time period, seconds since the Unix epoch. */
   from: number;
@@ -12885,29 +10262,14 @@ export interface QueryMetricsRequest {
   /** Query string. */
   query: string;
 }
-const QueryMetricsRequest = /*@__PURE__*/ __L.at(__c56, 6) as any as S.Schema<QueryMetricsRequest>;
-
 /** List of tag keys on which to group. */
 export type MetricsQueryResponseGroupByList = Array<string>;
-const MetricsQueryResponseGroupByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsQueryResponseGroupByList>;
-
 /** Array of timeseries points. */
 export type Point = Array<number | null>;
-const Point = /*@__PURE__*/ __L.at(__c56, 7) as any as S.Schema<Point>;
-
 /** List of points of the timeseries in milliseconds. */
 export type MetricsQueryMetadataPointlistList = Array<Point>;
-const MetricsQueryMetadataPointlistList = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<MetricsQueryMetadataPointlistList>;
-
 /** Unique tags identifying this series. */
 export type MetricsQueryMetadataTagSetList = Array<string>;
-const MetricsQueryMetadataTagSetList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsQueryMetadataTagSetList>;
-
 /** Object containing the metric unit family, scale factor, name, and short name. */
 export interface MetricsQueryUnit {
   /** Unit family, allows for conversion between units of the same family, for scaling. */
@@ -12921,15 +10283,8 @@ export interface MetricsQueryUnit {
   /** Abbreviation of the unit. */
   short_name?: string;
 }
-const MetricsQueryUnit = /*@__PURE__*/ __L.at(__c57, 1) as any as S.Schema<MetricsQueryUnit>;
-
 /** Detailed information about the metric unit. The first element describes the "primary unit" (for example, `bytes` in `bytes per second`). The second element describes the "per unit" (for example, `second` in `bytes per second`). If the second element is not present, the API returns null. */
 export type MetricsQueryMetadataUnitList = Array<MetricsQueryUnit | null>;
-const MetricsQueryMetadataUnitList = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<MetricsQueryMetadataUnitList>;
-
 /** Object containing all metric names returned and their associated metadata. */
 export interface MetricsQueryMetadata {
   /** Aggregation type. */
@@ -12959,18 +10314,8 @@ export interface MetricsQueryMetadata {
   /** Detailed information about the metric unit. The first element describes the "primary unit" (for example, `bytes` in `bytes per second`). The second element describes the "per unit" (for example, `second` in `bytes per second`). If the second element is not present, the API returns null. */
   unit?: MetricsQueryMetadataUnitList;
 }
-const MetricsQueryMetadata = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<MetricsQueryMetadata>;
-
 /** List of timeseries queried. */
 export type MetricsQueryResponseSeriesList = Array<MetricsQueryMetadata>;
-const MetricsQueryResponseSeriesList = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<MetricsQueryResponseSeriesList>;
-
 /** Response Object that includes your query and the list of metrics retrieved. */
 export interface MetricsQueryResponse {
   /** Message indicating the errors if status is not `ok`. */
@@ -12992,37 +10337,17 @@ export interface MetricsQueryResponse {
   /** End of requested time window, milliseconds since Unix epoch. */
   to_date?: number;
 }
-const MetricsQueryResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<MetricsQueryResponse>;
-
 export interface RemoveSlackIntegrationChannelRequest {
   /** Your Slack account name. */
   account_name: string;
   /** The name of the Slack channel being operated on. */
   channel_name: string;
 }
-const RemoveSlackIntegrationChannelRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<RemoveSlackIntegrationChannelRequest>;
-
 export interface RemoveSlackIntegrationChannelResponse {}
-const RemoveSlackIntegrationChannelResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<RemoveSlackIntegrationChannelResponse>;
-
 export interface RestoreDashboardsRequest {
   data: DashboardBulkActionDataList;
 }
-const RestoreDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<RestoreDashboardsRequest>;
-
 export interface RestoreDashboardsResponse {}
-const RestoreDashboardsResponse = CreateEventResponse as any as S.Schema<RestoreDashboardsResponse>;
-
 export interface SearchMonitorGroupsRequest {
   /** After entering a search query on the [Triggered Monitors page][1], use the query parameter value in the URL of the page as a value for this parameter. For more information, see the [Manage Monitors documentation][2]. The query can contain any number of space-separated monitor attributes, for instance: `query="type:metric group_status:alert"`. [1]: https://app.datadoghq.com/monitors/triggered [2]: /monitors/manage/#triggered-monitors */
   query?: string;
@@ -13033,11 +10358,6 @@ export interface SearchMonitorGroupsRequest {
   /** String for sort order, composed of field and sort order separate by a comma, for example `name,asc`. Supported sort directions: `asc`, `desc`. Supported fields: * `name` * `status` * `tags` */
   sort?: string;
 }
-const SearchMonitorGroupsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<SearchMonitorGroupsRequest>;
-
 /** A facet item. */
 export interface MonitorSearchCountItem {
   /** The number of found monitors with the listed value. */
@@ -13045,30 +10365,15 @@ export interface MonitorSearchCountItem {
   /** The facet value. */
   name?: unknown;
 }
-const MonitorSearchCountItem = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<MonitorSearchCountItem>;
-
 /** Search facets. */
 export type MonitorSearchCount = Array<MonitorSearchCountItem>;
-const MonitorSearchCount = /*@__PURE__*/ __L.at(__c58, 2) as any as S.Schema<MonitorSearchCount>;
-
 /** The counts of monitor groups per different criteria. */
 export interface MonitorGroupSearchResponseCounts {
   status?: MonitorSearchCount;
   type?: MonitorSearchCount;
 }
-const MonitorGroupSearchResponseCounts = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<MonitorGroupSearchResponseCounts>;
-
 /** The list of tags of the monitor group. */
 export type MonitorGroupSearchResultGroupTagsList = Array<string>;
-const MonitorGroupSearchResultGroupTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorGroupSearchResultGroupTagsList>;
-
 /** A single monitor group search result. */
 export interface MonitorGroupSearchResult {
   /** The name of the group. */
@@ -13085,18 +10390,8 @@ export interface MonitorGroupSearchResult {
   monitor_name?: string;
   status?: MonitorOverallStates;
 }
-const MonitorGroupSearchResult = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<MonitorGroupSearchResult>;
-
 /** The list of found monitor groups. */
 export type MonitorGroupSearchResponseGroupsList = Array<MonitorGroupSearchResult>;
-const MonitorGroupSearchResponseGroupsList = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<MonitorGroupSearchResponseGroupsList>;
-
 /** Metadata about the response. */
 export interface MonitorSearchResponseMetadata {
   /** The page to start paginating from. */
@@ -13108,11 +10403,6 @@ export interface MonitorSearchResponseMetadata {
   /** The total number of monitors. */
   total_count?: number;
 }
-const MonitorSearchResponseMetadata = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<MonitorSearchResponseMetadata>;
-
 /** The response of a monitor group search. */
 export interface MonitorGroupSearchResponse {
   counts?: MonitorGroupSearchResponseCounts;
@@ -13120,11 +10410,6 @@ export interface MonitorGroupSearchResponse {
   groups?: MonitorGroupSearchResponseGroupsList;
   metadata?: MonitorSearchResponseMetadata;
 }
-const MonitorGroupSearchResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<MonitorGroupSearchResponse>;
-
 export interface SearchMonitorsRequest {
   /** After entering a search query in your [Manage Monitor page][1] use the query parameter value in the URL of the page as value for this parameter. Consult the dedicated [manage monitor documentation][2] page to learn more. The query can contain any number of space-separated monitor attributes, for instance `query="type:metric status:alert"`. [1]: https://app.datadoghq.com/monitors/manage [2]: /monitors/manage/#find-the-monitors */
   query?: string;
@@ -13135,11 +10420,6 @@ export interface SearchMonitorsRequest {
   /** String for sort order, composed of field and sort order separate by a comma, for example `name,asc`. Supported sort directions: `asc`, `desc`. Supported fields: * `name` * `status` * `tags` */
   sort?: string;
 }
-const SearchMonitorsRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<SearchMonitorsRequest>;
-
 /** The counts of monitors per different criteria. */
 export interface MonitorSearchResponseCounts {
   muted?: MonitorSearchCount;
@@ -13147,16 +10427,8 @@ export interface MonitorSearchResponseCounts {
   tag?: MonitorSearchCount;
   type?: MonitorSearchCount;
 }
-const MonitorSearchResponseCounts = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<MonitorSearchResponseCounts>;
-
 /** Metrics used by the monitor. */
 export type MonitorSearchResultMetricsList = Array<string>;
-const MonitorSearchResultMetricsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultMetricsList>;
-
 /** A notification triggered by the monitor. */
 export interface MonitorSearchResultNotification {
   /** The email address that received the notification. */
@@ -13164,33 +10436,14 @@ export interface MonitorSearchResultNotification {
   /** The username receiving the notification */
   name?: string;
 }
-const MonitorSearchResultNotification = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<MonitorSearchResultNotification>;
-
 /** The notification triggered by the monitor. */
 export type MonitorSearchResultNotificationsList = Array<MonitorSearchResultNotification>;
-const MonitorSearchResultNotificationsList = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<MonitorSearchResultNotificationsList>;
-
 /** Quality issues detected with the monitor. */
 export type MonitorSearchResultQualityIssuesList = Array<string>;
-const MonitorSearchResultQualityIssuesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultQualityIssuesList>;
-
 /** The scope(s) to which the downtime applies, for example `host:app2`. Provide multiple scopes as a comma-separated list, for example `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (that is `env:dev AND env:prod`), NOT any of them. */
 export type MonitorSearchResultScopesList = Array<string>;
-const MonitorSearchResultScopesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultScopesList>;
-
 /** Tags associated with the monitor. */
 export type MonitorSearchResultTagsList = Array<string>;
-const MonitorSearchResultTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultTagsList>;
-
 /** Holds search results. */
 export interface MonitorSearchResult {
   /** Classification of the monitor. */
@@ -13219,15 +10472,8 @@ export interface MonitorSearchResult {
   tags?: MonitorSearchResultTagsList;
   type?: MonitorType;
 }
-const MonitorSearchResult = /*@__PURE__*/ __L.at(__c59, 4) as any as S.Schema<MonitorSearchResult>;
-
 /** The list of found monitors. */
 export type MonitorSearchResponseMonitorsList = Array<MonitorSearchResult>;
-const MonitorSearchResponseMonitorsList = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<MonitorSearchResponseMonitorsList>;
-
 /** The response from a monitor search. */
 export interface MonitorSearchResponse {
   counts?: MonitorSearchResponseCounts;
@@ -13235,11 +10481,6 @@ export interface MonitorSearchResponse {
   /** The list of found monitors. */
   monitors?: MonitorSearchResponseMonitorsList;
 }
-const MonitorSearchResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<MonitorSearchResponse>;
-
 export interface SearchSLORequest {
   /** The query string to filter results based on SLO names. Some examples of queries include `service:<service-name>` and `<slo-name>`. */
   query?: string;
@@ -13250,8 +10491,6 @@ export interface SearchSLORequest {
   /** Whether or not to return facet information in the response `[default=false]`. */
   include_facets?: boolean;
 }
-const SearchSLORequest = /*@__PURE__*/ __L.at(__c59, 7) as any as S.Schema<SearchSLORequest>;
-
 /** Facet */
 export interface SearchSLOResponseDataAttributesFacetsObjectString {
   /** Count */
@@ -13259,37 +10498,18 @@ export interface SearchSLOResponseDataAttributesFacetsObjectString {
   /** Facet */
   name?: string;
 }
-const SearchSLOResponseDataAttributesFacetsObjectString = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsObjectString>;
-
 /** All tags associated with an SLO. */
 export type SearchSLOResponseDataAttributesFacetsAllTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-const SearchSLOResponseDataAttributesFacetsAllTagsList = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsAllTagsList>;
-
 /** Creator of an SLO. */
 export type SearchSLOResponseDataAttributesFacetsCreatorNameList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-const SearchSLOResponseDataAttributesFacetsCreatorNameList =
-  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsCreatorNameList>;
-
 /** Tags with the `env` tag key. */
 export type SearchSLOResponseDataAttributesFacetsEnvTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-const SearchSLOResponseDataAttributesFacetsEnvTagsList =
-  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsEnvTagsList>;
-
 /** Tags with the `service` tag key. */
 export type SearchSLOResponseDataAttributesFacetsServiceTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-const SearchSLOResponseDataAttributesFacetsServiceTagsList =
-  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsServiceTagsList>;
-
 /** Facet */
 export interface SearchSLOResponseDataAttributesFacetsObjectInt {
   /** Count */
@@ -13297,37 +10517,18 @@ export interface SearchSLOResponseDataAttributesFacetsObjectInt {
   /** Facet */
   name?: number;
 }
-const SearchSLOResponseDataAttributesFacetsObjectInt = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsObjectInt>;
-
 /** Type of SLO. */
 export type SearchSLOResponseDataAttributesFacetsSloTypeList =
   Array<SearchSLOResponseDataAttributesFacetsObjectInt>;
-const SearchSLOResponseDataAttributesFacetsSloTypeList = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsSloTypeList>;
-
 /** SLO Target */
 export type SearchSLOResponseDataAttributesFacetsTargetList =
   Array<SearchSLOResponseDataAttributesFacetsObjectInt>;
-const SearchSLOResponseDataAttributesFacetsTargetList =
-  SearchSLOResponseDataAttributesFacetsSloTypeList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTargetList>;
-
 /** Tags with the `team` tag key. */
 export type SearchSLOResponseDataAttributesFacetsTeamTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-const SearchSLOResponseDataAttributesFacetsTeamTagsList =
-  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTeamTagsList>;
-
 /** Timeframes of SLOs. */
 export type SearchSLOResponseDataAttributesFacetsTimeframeList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-const SearchSLOResponseDataAttributesFacetsTimeframeList =
-  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTimeframeList>;
-
 /** Facets */
 export interface SearchSLOResponseDataAttributesFacets {
   /** All tags associated with an SLO. */
@@ -13347,16 +10548,8 @@ export interface SearchSLOResponseDataAttributesFacets {
   /** Timeframes of SLOs. */
   timeframe?: SearchSLOResponseDataAttributesFacetsTimeframeList;
 }
-const SearchSLOResponseDataAttributesFacets = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacets>;
-
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). */
 export type SearchServiceLevelObjectiveAttributesAllTagsList = Array<string>;
-const SearchServiceLevelObjectiveAttributesAllTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesAllTagsList>;
-
 /** The creator of the SLO */
 export interface SLOCreator {
   /** Email of the creator. */
@@ -13366,23 +10559,12 @@ export interface SLOCreator {
   /** Name of the creator. */
   name?: string | null;
 }
-const SLOCreator = /*@__PURE__*/ __L.at(__c60, 5) as any as S.Schema<SLOCreator>;
-
 /** Tags with the `env` tag key. */
 export type SearchServiceLevelObjectiveAttributesEnvTagsList = Array<string>;
-const SearchServiceLevelObjectiveAttributesEnvTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesEnvTagsList>;
-
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. */
 export type SearchServiceLevelObjectiveAttributesGroupsList = Array<string>;
-const SearchServiceLevelObjectiveAttributesGroupsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesGroupsList>;
-
 /** A list of monitor ids that defines the scope of a monitor service level objective. */
 export type SearchServiceLevelObjectiveAttributesMonitorIdsList = Array<number>;
-const SearchServiceLevelObjectiveAttributesMonitorIdsList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SearchServiceLevelObjectiveAttributesMonitorIdsList>;
-
 /** Error budget remaining for an SLO. */
 export interface SLORawErrorBudgetRemaining {
   /** Error budget remaining unit. */
@@ -13390,15 +10572,8 @@ export interface SLORawErrorBudgetRemaining {
   /** Error budget remaining value. */
   value?: number;
 }
-const SLORawErrorBudgetRemaining = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<SLORawErrorBudgetRemaining>;
-
 /** State of the SLO. */
 export type SLOState = "breached" | "warning" | "ok" | "no_data";
-const SLOState = S.String;
-
 /** Overall status of the SLO by timeframes. */
 export interface SLOOverallStatuses {
   /** Error message if SLO status or error budget could not be calculated. */
@@ -13417,20 +10592,10 @@ export interface SLOOverallStatuses {
   target?: number;
   timeframe?: SLOTimeframe;
 }
-const SLOOverallStatuses = /*@__PURE__*/ __L.at(__c60, 7) as any as S.Schema<SLOOverallStatuses>;
-
 /** calculated status and error budget remaining. */
 export type SearchServiceLevelObjectiveAttributesOverallStatusList = Array<SLOOverallStatuses>;
-const SearchServiceLevelObjectiveAttributesOverallStatusList = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesOverallStatusList>;
-
 /** Metric names used in the query's numerator and denominator. This field will return null and will be implemented in the next version of this endpoint. */
 export type SearchSLOQueryMetricsList = Array<string>;
-const SearchSLOQueryMetricsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchSLOQueryMetricsList>;
-
 /** A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests. */
 export interface SearchSLOQuery {
   /** A Datadog metric query for total (valid) events. */
@@ -13440,13 +10605,8 @@ export interface SearchSLOQuery {
   /** A Datadog metric query for good events. */
   numerator?: string;
 }
-const SearchSLOQuery = /*@__PURE__*/ __L.at(__c61, 1) as any as S.Schema<SearchSLOQuery>;
-
 /** Tags with the `service` tag key. */
 export type SearchServiceLevelObjectiveAttributesServiceTagsList = Array<string>;
-const SearchServiceLevelObjectiveAttributesServiceTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesServiceTagsList>;
-
 /** Status of the SLO's primary timeframe. */
 export interface SLOStatus {
   /** Error message if SLO status or error budget could not be calculated. */
@@ -13462,17 +10622,10 @@ export interface SLOStatus {
   span_precision?: number | null;
   state?: SLOState;
 }
-const SLOStatus = /*@__PURE__*/ __L.at(__c61, 2) as any as S.Schema<SLOStatus>;
-
 /** Tags with the `team` tag key. */
 export type SearchServiceLevelObjectiveAttributesTeamTagsList = Array<string>;
-const SearchServiceLevelObjectiveAttributesTeamTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesTeamTagsList>;
-
 /** The SLO time window options. */
 export type SearchSLOTimeframe = "7d" | "30d" | "90d";
-const SearchSLOTimeframe = S.String;
-
 /** SLO thresholds (target and optionally warning) for a single time window. */
 export interface SearchSLOThreshold {
   /** The target value for the service level indicator within the corresponding timeframe. */
@@ -13485,15 +10638,8 @@ export interface SearchSLOThreshold {
   /** A string representation of the warning target (see the description of the `target_display` field for details). Included in service level objective responses if a warning target exists. Ignored in create/update requests. */
   warning_display?: string | null;
 }
-const SearchSLOThreshold = /*@__PURE__*/ __L.at(__c61, 3) as any as S.Schema<SearchSLOThreshold>;
-
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type SearchServiceLevelObjectiveAttributesThresholdsList = Array<SearchSLOThreshold>;
-const SearchServiceLevelObjectiveAttributesThresholdsList = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesThresholdsList>;
-
 /** A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, and `tags`). */
 export interface SearchServiceLevelObjectiveAttributes {
   /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). */
@@ -13525,11 +10671,6 @@ export interface SearchServiceLevelObjectiveAttributes {
   /** The thresholds (timeframes and associated targets) for this service level objective object. */
   thresholds?: SearchServiceLevelObjectiveAttributesThresholdsList;
 }
-const SearchServiceLevelObjectiveAttributes = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributes>;
-
 /** A service level objective ID and attributes. */
 export interface SearchServiceLevelObjectiveData {
   attributes?: SearchServiceLevelObjectiveAttributes;
@@ -13538,49 +10679,24 @@ export interface SearchServiceLevelObjectiveData {
   /** The type of the object, must be `slo`. */
   type?: string;
 }
-const SearchServiceLevelObjectiveData = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<SearchServiceLevelObjectiveData>;
-
 /** A service level objective data container. */
 export interface SearchServiceLevelObjective {
   data?: SearchServiceLevelObjectiveData;
 }
-const SearchServiceLevelObjective = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<SearchServiceLevelObjective>;
-
 /** SLOs */
 export type SearchSLOResponseDataAttributesSlosList = Array<SearchServiceLevelObjective>;
-const SearchSLOResponseDataAttributesSlosList = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<SearchSLOResponseDataAttributesSlosList>;
-
 /** Attributes */
 export interface SearchSLOResponseDataAttributes {
   facets?: SearchSLOResponseDataAttributesFacets;
   /** SLOs */
   slos?: SearchSLOResponseDataAttributesSlosList;
 }
-const SearchSLOResponseDataAttributes = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<SearchSLOResponseDataAttributes>;
-
 /** Data from search SLO response. */
 export interface SearchSLOResponseData {
   attributes?: SearchSLOResponseDataAttributes;
   /** Type of service level objective result. */
   type?: string;
 }
-const SearchSLOResponseData = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<SearchSLOResponseData>;
-
 /** Pagination links. */
 export interface SearchSLOResponseLinks {
   /** Link to last page. */
@@ -13594,11 +10710,6 @@ export interface SearchSLOResponseLinks {
   /** Link to current page. */
   self?: string;
 }
-const SearchSLOResponseLinks = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<SearchSLOResponseLinks>;
-
 /** Pagination metadata returned by the API. */
 export interface SearchSLOResponseMetaPage {
   /** The first number. */
@@ -13618,28 +10729,16 @@ export interface SearchSLOResponseMetaPage {
   /** Type of pagination. */
   type?: string;
 }
-const SearchSLOResponseMetaPage = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<SearchSLOResponseMetaPage>;
-
 /** Searches metadata returned by the API. */
 export interface SearchSLOResponseMeta {
   pagination?: SearchSLOResponseMetaPage;
 }
-const SearchSLOResponseMeta = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<SearchSLOResponseMeta>;
-
 /** A search SLO response containing results from the search query. */
 export interface SearchSLOResponse {
   data?: SearchSLOResponseData;
   links?: SearchSLOResponseLinks;
   meta?: SearchSLOResponseMeta;
 }
-const SearchSLOResponse = /*@__PURE__*/ __L.at(__c62, 6) as any as S.Schema<SearchSLOResponse>;
-
 export interface SearchTestsRequest {
   /** The search query. */
   text?: string;
@@ -13654,46 +10753,19 @@ export interface SearchTestsRequest {
   /** The sort order for the results (e.g., `name,asc` or `name,desc`). */
   sort?: string;
 }
-const SearchTestsRequest = /*@__PURE__*/ __L.at(__c62, 7) as any as S.Schema<SearchTestsRequest>;
-
 export interface SendPublicDashboardInvitationRequest {
   /** The token of the shared dashboard. */
   token: string;
   data: SharedDashboardInvitesDataInput;
 }
-const SendPublicDashboardInvitationRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<SendPublicDashboardInvitationRequest>;
-
 export interface SubmitDistributionPointsRequest {}
-const SubmitDistributionPointsRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<SubmitDistributionPointsRequest>;
-
 export interface SubmitDistributionPointsResponse {}
-const SubmitDistributionPointsResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<SubmitDistributionPointsResponse>;
-
 export interface SubmitMetricsRequest {}
-const SubmitMetricsRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<SubmitMetricsRequest>;
-
 export interface SubmitMetricsResponse {}
-const SubmitMetricsResponse = CreateEventResponse as any as S.Schema<SubmitMetricsResponse>;
-
 /** The status of a service check. Set to `0` for OK, `1` for warning, `2` for critical, and `3` for unknown. */
 export type ServiceCheckStatus = 0 | 1 | 2 | 3;
-const ServiceCheckStatus = S.Number;
-
 /** Tags related to a check. */
 export type ServiceCheckTagsList = Array<string>;
-const ServiceCheckTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceCheckTagsList>;
-
 /** An object containing service check and status. */
 export interface ServiceCheck {
   /** The check. */
@@ -13708,39 +10780,18 @@ export interface ServiceCheck {
   /** Time of check. */
   timestamp?: number;
 }
-const ServiceCheck = /*@__PURE__*/ __L.at(__c63, 3) as any as S.Schema<ServiceCheck>;
-
 /** The service checks. */
 export type ServiceChecks = Array<ServiceCheck>;
-const ServiceChecks = /*@__PURE__*/ __L.at(__c63, 4) as any as S.Schema<ServiceChecks>;
-
 export interface SubmitServiceCheckRequest {
   body: ServiceChecks;
 }
-const SubmitServiceCheckRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<SubmitServiceCheckRequest>;
-
 export interface SubmitServiceCheckResponse {}
-const SubmitServiceCheckResponse =
-  CreateEventResponse as any as S.Schema<SubmitServiceCheckResponse>;
-
 /** For browser test, array with the different device IDs used to run the test. */
 export type SyntheticsCITestDeviceIdsList = Array<string>;
-const SyntheticsCITestDeviceIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsCITestDeviceIdsList>;
-
 /** Array of locations used to run the test. */
 export type SyntheticsCITestLocationsList = Array<string>;
-const SyntheticsCITestLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsCITestLocationsList>;
-
 /** Variables to replace in the test. */
 export type SyntheticsCITestVariablesMap = { [key: string]: string | undefined };
-const SyntheticsCITestVariablesMap =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsCITestVariablesMap>;
-
 /** Configuration for Continuous Testing. */
 export interface SyntheticsCITest {
   /** Disable certificate checks in API tests. */
@@ -13770,24 +10821,12 @@ export interface SyntheticsCITest {
   /** The version number of the Synthetic test version to trigger. */
   version?: number;
 }
-const SyntheticsCITest = /*@__PURE__*/ __L.at(__c63, 6) as any as S.Schema<SyntheticsCITest>;
-
 /** List of Synthetic tests with overrides. */
 export type TriggerCITestsRequestTestsList = Array<SyntheticsCITest>;
-const TriggerCITestsRequestTestsList = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<TriggerCITestsRequestTestsList>;
-
 export interface TriggerCITestsRequest {
   /** List of Synthetic tests with overrides. */
   tests?: TriggerCITestsRequestTestsList;
 }
-const TriggerCITestsRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<TriggerCITestsRequest>;
-
 /** Synthetic location. */
 export interface SyntheticsTriggerCITestLocation {
   /** Unique identifier of the location. */
@@ -13795,18 +10834,8 @@ export interface SyntheticsTriggerCITestLocation {
   /** Name of the location. */
   name?: string;
 }
-const SyntheticsTriggerCITestLocation = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<SyntheticsTriggerCITestLocation>;
-
 /** List of Synthetic locations. */
 export type SyntheticsTriggerCITestsResponseLocationsList = Array<SyntheticsTriggerCITestLocation>;
-const SyntheticsTriggerCITestsResponseLocationsList = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<SyntheticsTriggerCITestsResponseLocationsList>;
-
 /** Information about a single test run. */
 export interface SyntheticsTriggerCITestRunResult {
   device?: string;
@@ -13817,23 +10846,10 @@ export interface SyntheticsTriggerCITestRunResult {
   /** ID of the result. */
   result_id?: string;
 }
-const SyntheticsTriggerCITestRunResult = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<SyntheticsTriggerCITestRunResult>;
-
 /** Information about the tests runs. */
 export type SyntheticsTriggerCITestsResponseResultsList = Array<SyntheticsTriggerCITestRunResult>;
-const SyntheticsTriggerCITestsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<SyntheticsTriggerCITestsResponseResultsList>;
-
 /** The public IDs of the Synthetic test triggered. */
 export type SyntheticsTriggerCITestsResponseTriggeredCheckIdsList = Array<string>;
-const SyntheticsTriggerCITestsResponseTriggeredCheckIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTriggerCITestsResponseTriggeredCheckIdsList>;
-
 /** Object containing information about the tests triggered. */
 export interface SyntheticsTriggerCITestsResponse {
   /** The public ID of the batch triggered. */
@@ -13845,59 +10861,32 @@ export interface SyntheticsTriggerCITestsResponse {
   /** The public IDs of the Synthetic test triggered. */
   triggered_check_ids?: SyntheticsTriggerCITestsResponseTriggeredCheckIdsList;
 }
-const SyntheticsTriggerCITestsResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<SyntheticsTriggerCITestsResponse>;
-
 /** Test configuration for Synthetics */
 export interface SyntheticsTriggerTest {
   metadata?: SyntheticsCIBatchMetadata;
   /** The public ID of the Synthetic test to trigger. */
   public_id: string;
 }
-const SyntheticsTriggerTest = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<SyntheticsTriggerTest>;
-
 /** List of Synthetic tests. */
 export type TriggerTestsRequestTestsList = Array<SyntheticsTriggerTest>;
-const TriggerTestsRequestTestsList = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<TriggerTestsRequestTestsList>;
-
 export interface TriggerTestsRequest {
   /** List of Synthetic tests. */
   tests: TriggerTestsRequestTestsList;
 }
-const TriggerTestsRequest = /*@__PURE__*/ __L.at(__c65, 0) as any as S.Schema<TriggerTestsRequest>;
-
 export interface UnmuteHostRequest {
   /** Name of the host to unmute. */
   host_name: string;
 }
-const UnmuteHostRequest = /*@__PURE__*/ __L.at(__c65, 1) as any as S.Schema<UnmuteHostRequest>;
-
 export interface UpdateAPIKeyRequest {
   /** The specific API key you are working with. */
   key: string;
   /** Name of your API key. */
   name?: string;
 }
-const UpdateAPIKeyRequest = /*@__PURE__*/ __L.at(__c65, 2) as any as S.Schema<UpdateAPIKeyRequest>;
-
 /** Array of locations used to run the test. */
 export type UpdateAPITestRequestLocationsList = Array<string>;
-const UpdateAPITestRequestLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAPITestRequestLocationsList>;
-
 /** Array of tags attached to the test. */
 export type UpdateAPITestRequestTagsList = Array<string>;
-const UpdateAPITestRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAPITestRequestTagsList>;
-
 export interface UpdateAPITestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
@@ -13915,33 +10904,17 @@ export interface UpdateAPITestRequest {
   tags?: UpdateAPITestRequestTagsList;
   type: SyntheticsAPITestType | (string & {});
 }
-const UpdateAPITestRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<UpdateAPITestRequest>;
-
 export interface UpdateApplicationKeyRequest {
   /** The specific APP key you are working with. */
   key: string;
   /** Name of an application key. */
   name?: string;
 }
-const UpdateApplicationKeyRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<UpdateApplicationKeyRequest>;
-
 /** Errors in your configuration. */
 export type UpdateAzureHostFiltersRequestErrorsList = Array<string>;
-const UpdateAzureHostFiltersRequestErrorsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAzureHostFiltersRequestErrorsList>;
-
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type UpdateAzureHostFiltersRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-const UpdateAzureHostFiltersRequestResourceProviderConfigsList =
-  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<UpdateAzureHostFiltersRequestResourceProviderConfigsList>;
-
 export interface UpdateAzureHostFiltersRequest {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
   app_service_plan_filters?: string;
@@ -13980,26 +10953,12 @@ export interface UpdateAzureHostFiltersRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-const UpdateAzureHostFiltersRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<UpdateAzureHostFiltersRequest>;
-
 export type UpdateAzureHostFiltersResponse = unknown;
-const UpdateAzureHostFiltersResponse =
-  CreateAzureIntegrationResponse as any as S.Schema<UpdateAzureHostFiltersResponse>;
-
 /** Errors in your configuration. */
 export type UpdateAzureIntegrationRequestErrorsList = Array<string>;
-const UpdateAzureIntegrationRequestErrorsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAzureIntegrationRequestErrorsList>;
-
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type UpdateAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-const UpdateAzureIntegrationRequestResourceProviderConfigsList =
-  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<UpdateAzureIntegrationRequestResourceProviderConfigsList>;
-
 export interface UpdateAzureIntegrationRequest {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
   app_service_plan_filters?: string;
@@ -14038,30 +10997,13 @@ export interface UpdateAzureIntegrationRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-const UpdateAzureIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<UpdateAzureIntegrationRequest>;
-
 export type UpdateAzureIntegrationResponse = unknown;
-const UpdateAzureIntegrationResponse =
-  CreateAzureIntegrationResponse as any as S.Schema<UpdateAzureIntegrationResponse>;
-
 /** Array of locations used to run the test. */
 export type UpdateBrowserTestRequestLocationsList = Array<string>;
-const UpdateBrowserTestRequestLocationsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateBrowserTestRequestLocationsList>;
-
 /** Array of steps for the test. */
 export type UpdateBrowserTestRequestStepsList = Array<SyntheticsStep>;
-const UpdateBrowserTestRequestStepsList =
-  CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<UpdateBrowserTestRequestStepsList>;
-
 /** Array of tags attached to the test. */
 export type UpdateBrowserTestRequestTagsList = Array<string>;
-const UpdateBrowserTestRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateBrowserTestRequestTagsList>;
-
 export interface UpdateBrowserTestRequest {
   /** The public ID of the test to edit. */
   public_id: string;
@@ -14080,47 +11022,21 @@ export interface UpdateBrowserTestRequest {
   tags?: UpdateBrowserTestRequestTagsList;
   type: SyntheticsBrowserTestType | (string & {});
 }
-const UpdateBrowserTestRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<UpdateBrowserTestRequest>;
-
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type UpdateDashboardRequestNotifyListList = Array<string>;
-const UpdateDashboardRequestNotifyListList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestNotifyListList>;
-
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type UpdateDashboardRequestRestrictedRolesList = Array<string>;
-const UpdateDashboardRequestRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestRestrictedRolesList>;
-
 /** List of tabs for organizing dashboard widgets into groups. */
 export type UpdateDashboardRequestTabsList = Array<DashboardTab>;
-const UpdateDashboardRequestTabsList =
-  CreateDashboardRequestTabsList as any as S.Schema<UpdateDashboardRequestTabsList>;
-
 /** List of team names representing ownership of a dashboard. */
 export type UpdateDashboardRequestTagsList = Array<string>;
-const UpdateDashboardRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestTagsList>;
-
 /** Array of template variables saved views. */
 export type UpdateDashboardRequestTemplateVariablePresetsList =
   Array<DashboardTemplateVariablePreset>;
-const UpdateDashboardRequestTemplateVariablePresetsList =
-  CreateDashboardRequestTemplateVariablePresetsList as any as S.Schema<UpdateDashboardRequestTemplateVariablePresetsList>;
-
 /** List of template variables for this dashboard. */
 export type UpdateDashboardRequestTemplateVariablesList = Array<DashboardTemplateVariable>;
-const UpdateDashboardRequestTemplateVariablesList =
-  CreateDashboardRequestTemplateVariablesList as any as S.Schema<UpdateDashboardRequestTemplateVariablesList>;
-
 /** List of widgets to display on the dashboard. */
 export type UpdateDashboardRequestWidgetsList = Array<Widget>;
-const UpdateDashboardRequestWidgetsList =
-  CreateDashboardRequestWidgetsList as any as S.Schema<UpdateDashboardRequestWidgetsList>;
-
 export interface UpdateDashboardRequest {
   /** The ID of the dashboard. */
   dashboard_id: string;
@@ -14149,27 +11065,14 @@ export interface UpdateDashboardRequest {
   /** List of widgets to display on the dashboard. */
   widgets: UpdateDashboardRequestWidgetsList;
 }
-const UpdateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<UpdateDashboardRequest>;
-
 export interface UpdateDashboardListRequest {
   /** ID of the dashboard list to update. */
   list_id: number;
   /** The name of the dashboard list. */
   name: string;
 }
-const UpdateDashboardListRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<UpdateDashboardListRequest>;
-
 /** A list of tags associated with a host. */
 export type UpdateHostTagsRequestTagsList = Array<string>;
-const UpdateHostTagsRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateHostTagsRequestTagsList>;
-
 export interface UpdateHostTagsRequest {
   /** Specified host name to change tags */
   host_name: string;
@@ -14180,21 +11083,10 @@ export interface UpdateHostTagsRequest {
   /** A list of tags associated with a host. */
   tags?: UpdateHostTagsRequestTagsList;
 }
-const UpdateHostTagsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<UpdateHostTagsRequest>;
-
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type UpdateLogsIndexRequestExclusionFiltersList = Array<LogsExclusion>;
-const UpdateLogsIndexRequestExclusionFiltersList =
-  CreateLogsIndexRequestExclusionFiltersList as any as S.Schema<UpdateLogsIndexRequestExclusionFiltersList>;
-
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type UpdateLogsIndexRequestTagsList = Array<string>;
-const UpdateLogsIndexRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsIndexRequestTagsList>;
-
 export interface UpdateLogsIndexRequest {
   /** Name of the log index. */
   name: string;
@@ -14215,35 +11107,16 @@ export interface UpdateLogsIndexRequest {
   /** A list of tags associated with the index. Tags must be in `key:value` format. */
   tags?: UpdateLogsIndexRequestTagsList;
 }
-const UpdateLogsIndexRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<UpdateLogsIndexRequest>;
-
 /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
 export type UpdateLogsIndexOrderRequestIndexNamesList = Array<string>;
-const UpdateLogsIndexOrderRequestIndexNamesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsIndexOrderRequestIndexNamesList>;
-
 export interface UpdateLogsIndexOrderRequest {
   /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
   index_names: UpdateLogsIndexOrderRequestIndexNamesList;
 }
-const UpdateLogsIndexOrderRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<UpdateLogsIndexOrderRequest>;
-
 /** Ordered list of processors in this pipeline. */
 export type UpdateLogsPipelineRequestProcessorsList = Array<LogsProcessor>;
-const UpdateLogsPipelineRequestProcessorsList =
-  CreateLogsPipelineRequestProcessorsList as any as S.Schema<UpdateLogsPipelineRequestProcessorsList>;
-
 /** A list of tags associated with the pipeline. */
 export type UpdateLogsPipelineRequestTagsList = Array<string>;
-const UpdateLogsPipelineRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsPipelineRequestTagsList>;
-
 export interface UpdateLogsPipelineRequest {
   /** ID of the pipeline to delete. */
   pipeline_id: string;
@@ -14259,25 +11132,12 @@ export interface UpdateLogsPipelineRequest {
   /** A list of tags associated with the pipeline. */
   tags?: UpdateLogsPipelineRequestTagsList;
 }
-const UpdateLogsPipelineRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<UpdateLogsPipelineRequest>;
-
 /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
 export type UpdateLogsPipelineOrderRequestPipelineIdsList = Array<string>;
-const UpdateLogsPipelineOrderRequestPipelineIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsPipelineOrderRequestPipelineIdsList>;
-
 export interface UpdateLogsPipelineOrderRequest {
   /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
   pipeline_ids: UpdateLogsPipelineOrderRequestPipelineIdsList;
 }
-const UpdateLogsPipelineOrderRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<UpdateLogsPipelineOrderRequest>;
-
 export interface UpdateMetricMetadataRequest {
   /** Name of the metric for which to edit metadata. */
   metric_name: string;
@@ -14294,26 +11154,12 @@ export interface UpdateMetricMetadataRequest {
   /** Primary unit of the metric such as `byte` or `operation`. */
   unit?: string;
 }
-const UpdateMetricMetadataRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<UpdateMetricMetadataRequest>;
-
 /** Array with the different device IDs used to run the test. */
 export type UpdateMobileTestRequestDeviceIdsList = Array<string>;
-const UpdateMobileTestRequestDeviceIdsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMobileTestRequestDeviceIdsList>;
-
 /** Array of steps for the test. */
 export type UpdateMobileTestRequestStepsList = Array<SyntheticsMobileStep>;
-const UpdateMobileTestRequestStepsList =
-  CreateSyntheticsMobileTestRequestStepsList as any as S.Schema<UpdateMobileTestRequestStepsList>;
-
 /** Array of tags attached to the test. */
 export type UpdateMobileTestRequestTagsList = Array<string>;
-const UpdateMobileTestRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMobileTestRequestTagsList>;
-
 export interface UpdateMobileTestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
@@ -14332,26 +11178,12 @@ export interface UpdateMobileTestRequest {
   tags?: UpdateMobileTestRequestTagsList;
   type: SyntheticsMobileTestType | (string & {});
 }
-const UpdateMobileTestRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<UpdateMobileTestRequest>;
-
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type UpdateMonitorRequestAssetsList = Array<MonitorAsset>;
-const UpdateMonitorRequestAssetsList =
-  CreateMonitorRequestAssetsList as any as S.Schema<UpdateMonitorRequestAssetsList>;
-
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type UpdateMonitorRequestRestrictedRolesList = Array<string>;
-const UpdateMonitorRequestRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMonitorRequestRestrictedRolesList>;
-
 /** Tags associated to your monitor. */
 export type UpdateMonitorRequestTagsList = Array<string>;
-const UpdateMonitorRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMonitorRequestTagsList>;
-
 export interface UpdateMonitorRequest {
   /** The ID of the monitor. */
   monitor_id: number;
@@ -14373,11 +11205,6 @@ export interface UpdateMonitorRequest {
   tags?: UpdateMonitorRequestTagsList;
   type?: MonitorType | (string & {});
 }
-const UpdateMonitorRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<UpdateMonitorRequest>;
-
 /** The attributes of a notebook cell in update cell request. Valid cell types are `markdown`, `timeseries`, `toplist`, `heatmap`, `distribution`, `log_stream`. [More information on each graph visualization type.](https://docs.datadoghq.com/dashboards/widgets/) */
 export type NotebookCellUpdateRequestAttributes =
   | NotebookMarkdownCellAttributes
@@ -14395,20 +11222,10 @@ export interface NotebookCellUpdateRequest {
 }
 /** Updating a notebook can either insert new cell(s) or update existing cell(s) by including the cell `id`. To delete existing cell(s), simply omit it from the list of cells. */
 export type NotebookUpdateCell = NotebookCellCreateRequest | NotebookCellUpdateRequest;
-const NotebookUpdateCell = S.Unknown as any as S.Schema<NotebookUpdateCell>;
-
 /** List of cells to display in the notebook. */
 export type NotebookUpdateDataAttributesCellsList = Array<NotebookUpdateCell>;
-const NotebookUpdateDataAttributesCellsList = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<NotebookUpdateDataAttributesCellsList>;
-
 /** List of template variables for this notebook. */
 export type NotebookUpdateDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-const NotebookUpdateDataAttributesTemplateVariablesList =
-  NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebookUpdateDataAttributesTemplateVariablesList>;
-
 /** The data attributes of a notebook. */
 export interface NotebookUpdateDataAttributes {
   /** List of cells to display in the notebook. */
@@ -14421,28 +11238,16 @@ export interface NotebookUpdateDataAttributes {
   template_variables?: NotebookUpdateDataAttributesTemplateVariablesList | null;
   time: NotebookGlobalTime;
 }
-const NotebookUpdateDataAttributes = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<NotebookUpdateDataAttributes>;
-
 /** The data for a notebook update request. */
 export interface NotebookUpdateData {
   attributes: NotebookUpdateDataAttributes;
   type: NotebookResourceType | (string & {});
 }
-const NotebookUpdateData = /*@__PURE__*/ __L.at(__c67, 4) as any as S.Schema<NotebookUpdateData>;
-
 export interface UpdateNotebookRequest {
   /** Unique ID, assigned when you create the notebook. */
   notebook_id: number;
   data: NotebookUpdateData;
 }
-const UpdateNotebookRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<UpdateNotebookRequest>;
-
 export interface UpdateOrgRequest {
   /** The `public_id` of the organization you are operating within. */
   public_id: string;
@@ -14456,28 +11261,15 @@ export interface UpdateOrgRequest {
   /** Only available for MSP customers. Allows child organizations to be created on a trial plan. */
   trial?: boolean;
 }
-const UpdateOrgRequest = /*@__PURE__*/ __L.at(__c67, 6) as any as S.Schema<UpdateOrgRequest>;
-
 export interface UpdatePagerDutyIntegrationServiceRequest {
   /** The service name */
   service_name: string;
   /** Your service key in PagerDuty. */
   service_key: string;
 }
-const UpdatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<UpdatePagerDutyIntegrationServiceRequest>;
-
 export interface UpdatePagerDutyIntegrationServiceResponse {}
-const UpdatePagerDutyIntegrationServiceResponse =
-  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<UpdatePagerDutyIntegrationServiceResponse>;
-
 /** Array of tags attached to the private location. */
 export type UpdatePrivateLocationRequestTagsList = Array<string>;
-const UpdatePrivateLocationRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePrivateLocationRequestTagsList>;
-
 export interface UpdatePrivateLocationRequest {
   /** The ID of the private location. */
   location_id: string;
@@ -14489,34 +11281,17 @@ export interface UpdatePrivateLocationRequest {
   /** Array of tags attached to the private location. */
   tags: UpdatePrivateLocationRequestTagsList;
 }
-const UpdatePrivateLocationRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<UpdatePrivateLocationRequest>;
-
 /** The `SharedDashboard` `embeddable_domains`. */
 export type UpdatePublicDashboardRequestEmbeddableDomainsList = Array<string>;
-const UpdatePublicDashboardRequestEmbeddableDomainsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePublicDashboardRequestEmbeddableDomainsList>;
-
 /** Timeframe setting for the shared dashboard. */
 export type SharedDashboardUpdateRequestGlobalTime = DashboardGlobalTime;
 /** The `SharedDashboard` `invitees`. */
 export type UpdatePublicDashboardRequestInviteesList = Array<SharedDashboardInviteesItemsInput>;
-const UpdatePublicDashboardRequestInviteesList =
-  CreatePublicDashboardRequestInviteesList as any as S.Schema<UpdatePublicDashboardRequestInviteesList>;
-
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type UpdatePublicDashboardRequestSelectableTemplateVarsList =
   Array<SelectableTemplateVariableItems>;
-const UpdatePublicDashboardRequestSelectableTemplateVarsList =
-  CreatePublicDashboardRequestSelectableTemplateVarsList as any as S.Schema<UpdatePublicDashboardRequestSelectableTemplateVarsList>;
-
 /** List of email addresses that can be given access to the shared dashboard. */
 export type UpdatePublicDashboardRequestShareListList = Array<string>;
-const UpdatePublicDashboardRequestShareListList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePublicDashboardRequestShareListList>;
-
 export interface UpdatePublicDashboardRequest {
   /** The token of the shared dashboard. */
   token: string;
@@ -14539,11 +11314,6 @@ export interface UpdatePublicDashboardRequest {
   title?: string;
   viewing_preferences?: ViewingPreferences;
 }
-const UpdatePublicDashboardRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<UpdatePublicDashboardRequest>;
-
 export interface UpdateSlackIntegrationChannelRequest {
   /** Your Slack account name. */
   account_name: string;
@@ -14553,36 +11323,16 @@ export interface UpdateSlackIntegrationChannelRequest {
   /** Your channel name. */
   name?: string;
 }
-const UpdateSlackIntegrationChannelRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<UpdateSlackIntegrationChannelRequest>;
-
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type UpdateSLORequestGroupsList = Array<string>;
-const UpdateSLORequestGroupsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestGroupsList>;
-
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type UpdateSLORequestMonitorIdsList = Array<number>;
-const UpdateSLORequestMonitorIdsList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<UpdateSLORequestMonitorIdsList>;
-
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type UpdateSLORequestMonitorTagsList = Array<string>;
-const UpdateSLORequestMonitorTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestMonitorTagsList>;
-
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type UpdateSLORequestTagsList = Array<string>;
-const UpdateSLORequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestTagsList>;
-
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type UpdateSLORequestThresholdsList = Array<SLOThreshold>;
-const UpdateSLORequestThresholdsList =
-  CreateSLORequestThresholdsList as any as S.Schema<UpdateSLORequestThresholdsList>;
-
 export interface UpdateSLORequest {
   /** The ID of the service level objective object. */
   slo_id: string;
@@ -14609,8 +11359,6 @@ export interface UpdateSLORequest {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-const UpdateSLORequest = /*@__PURE__*/ __L.at(__c68, 3) as any as S.Schema<UpdateSLORequest>;
-
 /** The attribute object associated with the SLO correction to be updated. */
 export interface SLOCorrectionUpdateRequestAttributes {
   category?: SLOCorrectionCategory | (string & {});
@@ -14629,47 +11377,22 @@ export interface SLOCorrectionUpdateRequestAttributes {
   /** The timezone to display in the UI for the correction times (defaults to "UTC"). */
   timezone?: string;
 }
-const SLOCorrectionUpdateRequestAttributes = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<SLOCorrectionUpdateRequestAttributes>;
-
 /** The data object associated with the SLO correction to be updated. */
 export interface SLOCorrectionUpdateData {
   attributes?: SLOCorrectionUpdateRequestAttributes;
   type?: SLOCorrectionType | (string & {});
 }
-const SLOCorrectionUpdateData = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<SLOCorrectionUpdateData>;
-
 export interface UpdateSLOCorrectionRequest {
   /** The ID of the SLO correction object. */
   slo_correction_id: string;
   data?: SLOCorrectionUpdateData;
 }
-const UpdateSLOCorrectionRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<UpdateSLOCorrectionRequest>;
-
 export interface UpdateTestPauseStatusRequest {
   /** The public ID of the Synthetic test to update. */
   public_id: string;
   new_status?: SyntheticsTestPauseStatus | (string & {});
 }
-const UpdateTestPauseStatusRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<UpdateTestPauseStatusRequest>;
-
 export type UpdateTestPauseStatusResponse = boolean;
-const UpdateTestPauseStatusResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<UpdateTestPauseStatusResponse>;
-
 export interface UpdateUserRequest {
   /** The ID of the user. */
   user_handle: string;
@@ -14683,8 +11406,6 @@ export interface UpdateUserRequest {
   /** The name of the user. */
   name?: string;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c69, 1) as any as S.Schema<UpdateUserRequest>;
-
 export interface UpdateWebhooksIntegrationRequest {
   /** The name of the webhook. */
   webhook_name: string;
@@ -14698,11 +11419,6 @@ export interface UpdateWebhooksIntegrationRequest {
   /** URL of the webhook. */
   url?: string;
 }
-const UpdateWebhooksIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<UpdateWebhooksIntegrationRequest>;
-
 export interface UpdateWebhooksIntegrationCustomVariableRequest {
   /** The name of the custom variable. */
   custom_variable_name: string;
@@ -14713,62 +11429,31 @@ export interface UpdateWebhooksIntegrationCustomVariableRequest {
   /** Value of the custom variable. */
   value?: string;
 }
-const UpdateWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<UpdateWebhooksIntegrationCustomVariableRequest>;
-
 export interface UploadIdPForOrgRequest {
   /** The `public_id` of the organization you are operating with */
   public_id: string;
   /** The path to the XML metadata file you wish to upload. */
   idp_file: string;
 }
-const UploadIdPForOrgRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<UploadIdPForOrgRequest>;
-
 /** The IdP response object. */
 export interface IdpResponse {
   /** Identity provider response. */
   message: string;
 }
-const IdpResponse = /*@__PURE__*/ __L.at(__c69, 5) as any as S.Schema<IdpResponse>;
-
 export interface ValidateRequest {}
-const ValidateRequest = /*@__PURE__*/ __L.at(__c69, 6) as any as S.Schema<ValidateRequest>;
-
 /** Represent validation endpoint responses. */
 export interface AuthenticationValidationResponse {
   /** Return `true` if the authentication response is valid. */
   valid?: boolean;
 }
-const AuthenticationValidationResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<AuthenticationValidationResponse>;
-
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type ValidateExistingMonitorRequestAssetsList = Array<MonitorAsset>;
-const ValidateExistingMonitorRequestAssetsList =
-  CreateMonitorRequestAssetsList as any as S.Schema<ValidateExistingMonitorRequestAssetsList>;
-
 /** A list of active v1 downtimes that match this monitor. */
 export type ValidateExistingMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-const ValidateExistingMonitorRequestMatchingDowntimesList =
-  CreateMonitorRequestMatchingDowntimesList as any as S.Schema<ValidateExistingMonitorRequestMatchingDowntimesList>;
-
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type ValidateExistingMonitorRequestRestrictedRolesList = Array<string>;
-const ValidateExistingMonitorRequestRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateExistingMonitorRequestRestrictedRolesList>;
-
 /** Tags associated to your monitor. */
 export type ValidateExistingMonitorRequestTagsList = Array<string>;
-const ValidateExistingMonitorRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateExistingMonitorRequestTagsList>;
-
 export interface ValidateExistingMonitorRequest {
   /** The ID of the monitor */
   monitor_id: number;
@@ -14792,35 +11477,15 @@ export interface ValidateExistingMonitorRequest {
   tags?: ValidateExistingMonitorRequestTagsList;
   type: MonitorType | (string & {});
 }
-const ValidateExistingMonitorRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<ValidateExistingMonitorRequest>;
-
 export type ValidateExistingMonitorResponse = unknown;
-const ValidateExistingMonitorResponse =
-  CreateAzureIntegrationResponse as any as S.Schema<ValidateExistingMonitorResponse>;
-
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type ValidateMonitorRequestAssetsList = Array<MonitorAsset>;
-const ValidateMonitorRequestAssetsList =
-  CreateMonitorRequestAssetsList as any as S.Schema<ValidateMonitorRequestAssetsList>;
-
 /** A list of active v1 downtimes that match this monitor. */
 export type ValidateMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-const ValidateMonitorRequestMatchingDowntimesList =
-  CreateMonitorRequestMatchingDowntimesList as any as S.Schema<ValidateMonitorRequestMatchingDowntimesList>;
-
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type ValidateMonitorRequestRestrictedRolesList = Array<string>;
-const ValidateMonitorRequestRestrictedRolesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateMonitorRequestRestrictedRolesList>;
-
 /** Tags associated to your monitor. */
 export type ValidateMonitorRequestTagsList = Array<string>;
-const ValidateMonitorRequestTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateMonitorRequestTagsList>;
-
 export interface ValidateMonitorRequest {
   /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
   assets?: ValidateMonitorRequestAssetsList;
@@ -14842,17 +11507,7 @@ export interface ValidateMonitorRequest {
   tags?: ValidateMonitorRequestTagsList;
   type: MonitorType | (string & {});
 }
-const ValidateMonitorRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<ValidateMonitorRequest>;
-
 export type ValidateMonitorResponse = unknown;
-const ValidateMonitorResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<ValidateMonitorResponse>;
-
 export type AddSecurityMonitoringSignalToIncidentError =
   | BadRequest
   | Forbidden
@@ -14865,8 +11520,8 @@ export const addSecurityMonitoringSignalToIncident: API.OperationMethod<
   AddSecurityMonitoringSignalToIncidentError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSecurityMonitoringSignalToIncidentRequest,
-  output: SuccessfulSignalUpdateResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddSecurityMonitoringSignalToIncidentRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<SuccessfulSignalUpdateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14880,8 +11535,8 @@ export const checkCanDeleteMonitor: API.OperationMethod<
   CheckCanDeleteMonitorError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCanDeleteMonitorRequest,
-  output: CheckCanDeleteMonitorResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CheckCanDeleteMonitorRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CheckCanDeleteMonitorResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14895,8 +11550,8 @@ export const checkCanDeleteSLO: API.OperationMethod<
   CheckCanDeleteSLOError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCanDeleteSLORequest,
-  output: CheckCanDeleteSLOResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CheckCanDeleteSLORequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CheckCanDeleteSLOResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14910,8 +11565,8 @@ export const createAPIKey: API.OperationMethod<
   CreateAPIKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAPIKeyRequest,
-  output: ApiKeyResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateAPIKeyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ApiKeyResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14925,8 +11580,8 @@ export const createApplicationKey: API.OperationMethod<
   CreateApplicationKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationKeyRequest,
-  output: ApplicationKeyResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateApplicationKeyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ApplicationKeyResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14940,8 +11595,8 @@ export const createAzureIntegration: API.OperationMethod<
   CreateAzureIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAzureIntegrationRequest,
-  output: CreateAzureIntegrationResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateAzureIntegrationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<CreateAzureIntegrationResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14955,8 +11610,8 @@ export const createChildOrg: API.OperationMethod<
   CreateChildOrgError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChildOrgRequest,
-  output: OrganizationCreateResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<CreateChildOrgRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<OrganizationCreateResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14970,8 +11625,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardRequest,
-  output: Dashboard,
+  input: __S(44, __c5, 4) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Dashboard>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -14985,8 +11640,8 @@ export const createDashboardList: API.OperationMethod<
   CreateDashboardListError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardListRequest,
-  output: DashboardList,
+  input: __S(46, __c5, 6) as any as S.Schema<CreateDashboardListRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DashboardList>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15000,8 +11655,8 @@ export const createEvent: API.OperationMethod<
   CreateEventError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventRequest,
-  output: CreateEventResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<CreateEventRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<CreateEventResponse>,
   errors: [BadRequest, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15015,8 +11670,8 @@ export const createGlobalVariable: API.OperationMethod<
   CreateGlobalVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGlobalVariableRequest,
-  output: SyntheticsGlobalVariable,
+  input: __S(57, __c7, 1) as any as S.Schema<CreateGlobalVariableRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<SyntheticsGlobalVariable>,
   errors: [BadRequest, Forbidden, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15030,8 +11685,8 @@ export const createHostTags: API.OperationMethod<
   CreateHostTagsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostTagsRequest,
-  output: HostTags,
+  input: __S(59, __c7, 3) as any as S.Schema<CreateHostTagsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<HostTags>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15045,8 +11700,8 @@ export const createLogsIndex: API.OperationMethod<
   CreateLogsIndexError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLogsIndexRequest,
-  output: LogsIndex,
+  input: __S(66, __c8, 2) as any as S.Schema<CreateLogsIndexRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<LogsIndex>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15060,8 +11715,8 @@ export const createLogsPipeline: API.OperationMethod<
   CreateLogsPipelineError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLogsPipelineRequest,
-  output: LogsPipeline,
+  input: __S(69, __c8, 5) as any as S.Schema<CreateLogsPipelineRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<LogsPipeline>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15075,8 +11730,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMonitorRequest,
-  output: Monitor,
+  input: __S(85, __c10, 5) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<Monitor>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15090,8 +11745,8 @@ export const createNotebook: API.OperationMethod<
   CreateNotebookError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotebookRequest,
-  output: NotebookResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<CreateNotebookRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<NotebookResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15105,8 +11760,8 @@ export const createPagerDutyIntegrationService: API.OperationMethod<
   CreatePagerDutyIntegrationServiceError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePagerDutyIntegrationServiceRequest,
-  output: PagerDutyServiceName,
+  input: __S(108, __c13, 4) as any as S.Schema<CreatePagerDutyIntegrationServiceRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<PagerDutyServiceName>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15120,8 +11775,8 @@ export const createPrivateLocation: API.OperationMethod<
   CreatePrivateLocationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateLocationRequest,
-  output: SyntheticsPrivateLocationCreationResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<CreatePrivateLocationRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<SyntheticsPrivateLocationCreationResponse>,
   errors: [NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15135,8 +11790,8 @@ export const createPublicDashboard: API.OperationMethod<
   CreatePublicDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePublicDashboardRequest,
-  output: SharedDashboard,
+  input: __S(123, __c15, 3) as any as S.Schema<CreatePublicDashboardRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<SharedDashboard>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15150,8 +11805,8 @@ export const createSlackIntegrationChannel: API.OperationMethod<
   CreateSlackIntegrationChannelError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSlackIntegrationChannelRequest,
-  output: SlackIntegrationChannel,
+  input: __S(129, __c16, 1) as any as S.Schema<CreateSlackIntegrationChannelRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<SlackIntegrationChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15165,8 +11820,8 @@ export const createSLO: API.OperationMethod<
   CreateSLOError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSLORequest,
-  output: SLOListResponse,
+  input: __S(134, __c16, 6) as any as S.Schema<CreateSLORequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<SLOListResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15180,8 +11835,8 @@ export const createSLOCorrection: API.OperationMethod<
   CreateSLOCorrectionError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSLOCorrectionRequest,
-  output: SLOCorrectionResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<CreateSLOCorrectionRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<SLOCorrectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15195,8 +11850,8 @@ export const createSyntheticsAPITest: API.OperationMethod<
   CreateSyntheticsAPITestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSyntheticsAPITestRequest,
-  output: SyntheticsAPITest,
+  input: __S(167, __c20, 7) as any as S.Schema<CreateSyntheticsAPITestRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<SyntheticsAPITest>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15210,8 +11865,8 @@ export const createSyntheticsBrowserTest: API.OperationMethod<
   CreateSyntheticsBrowserTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSyntheticsBrowserTestRequest,
-  output: SyntheticsBrowserTest,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateSyntheticsBrowserTestRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<SyntheticsBrowserTest>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15225,8 +11880,8 @@ export const createSyntheticsMobileTest: API.OperationMethod<
   CreateSyntheticsMobileTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSyntheticsMobileTestRequest,
-  output: SyntheticsMobileTest,
+  input: __S(193, __c24, 1) as any as S.Schema<CreateSyntheticsMobileTestRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<SyntheticsMobileTest>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15240,8 +11895,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserRequest,
-  output: UserResponse,
+  input: __S(195, __c24, 3) as any as S.Schema<CreateUserRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<UserResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15255,8 +11910,8 @@ export const createWebhooksIntegration: API.OperationMethod<
   CreateWebhooksIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhooksIntegrationRequest,
-  output: WebhooksIntegration,
+  input: __S(197, __c24, 5) as any as S.Schema<CreateWebhooksIntegrationRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<WebhooksIntegration>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15270,8 +11925,8 @@ export const createWebhooksIntegrationCustomVariable: API.OperationMethod<
   CreateWebhooksIntegrationCustomVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhooksIntegrationCustomVariableRequest,
-  output: WebhooksIntegrationCustomVariableResponse,
+  input: __S(199, __c24, 7) as any as S.Schema<CreateWebhooksIntegrationCustomVariableRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<WebhooksIntegrationCustomVariableResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15285,8 +11940,8 @@ export const deleteAPIKey: API.OperationMethod<
   DeleteAPIKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAPIKeyRequest,
-  output: ApiKeyResponse,
+  input: __S(201, __c25, 1) as any as S.Schema<DeleteAPIKeyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15300,8 +11955,8 @@ export const deleteApplicationKey: API.OperationMethod<
   DeleteApplicationKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationKeyRequest,
-  output: ApplicationKeyResponse,
+  input: __S(202, __c25, 2) as any as S.Schema<DeleteApplicationKeyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ApplicationKeyResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15315,8 +11970,8 @@ export const deleteAzureIntegration: API.OperationMethod<
   DeleteAzureIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAzureIntegrationRequest,
-  output: DeleteAzureIntegrationResponse,
+  input: __S(203, __c25, 3) as any as S.Schema<DeleteAzureIntegrationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<DeleteAzureIntegrationResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15330,8 +11985,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardRequest,
-  output: DashboardDeleteResponse,
+  input: __S(204, __c25, 4) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<DashboardDeleteResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15345,8 +12000,8 @@ export const deleteDashboardList: API.OperationMethod<
   DeleteDashboardListError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardListRequest,
-  output: DashboardListDeleteResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<DeleteDashboardListRequest>,
+  output: __S(207, __c25, 7) as any as S.Schema<DashboardListDeleteResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15360,8 +12015,8 @@ export const deleteDashboards: API.OperationMethod<
   DeleteDashboardsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardsRequest,
-  output: DeleteDashboardsResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<DeleteDashboardsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteDashboardsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15375,8 +12030,8 @@ export const deleteGlobalVariable: API.OperationMethod<
   DeleteGlobalVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGlobalVariableRequest,
-  output: DeleteGlobalVariableResponse,
+  input: __S(211, __c26, 3) as any as S.Schema<DeleteGlobalVariableRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteGlobalVariableResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15390,8 +12045,8 @@ export const deleteHostTags: API.OperationMethod<
   DeleteHostTagsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostTagsRequest,
-  output: DeleteHostTagsResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<DeleteHostTagsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteHostTagsResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15405,8 +12060,8 @@ export const deleteLogsIndex: API.OperationMethod<
   DeleteLogsIndexError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLogsIndexRequest,
-  output: DeleteLogsIndexResponse,
+  input: __S(213, __c26, 5) as any as S.Schema<DeleteLogsIndexRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteLogsIndexResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15420,8 +12075,8 @@ export const deleteLogsPipeline: API.OperationMethod<
   DeleteLogsPipelineError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLogsPipelineRequest,
-  output: DeleteLogsPipelineResponse,
+  input: __S(214, __c26, 6) as any as S.Schema<DeleteLogsPipelineRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteLogsPipelineResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15435,8 +12090,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMonitorRequest,
-  output: DeletedMonitor,
+  input: __S(215, __c26, 7) as any as S.Schema<DeleteMonitorRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DeletedMonitor>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15450,8 +12105,8 @@ export const deleteNotebook: API.OperationMethod<
   DeleteNotebookError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNotebookRequest,
-  output: DeleteNotebookResponse,
+  input: __S(217, __c27, 1) as any as S.Schema<DeleteNotebookRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteNotebookResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15465,8 +12120,8 @@ export const deletePagerDutyIntegrationService: API.OperationMethod<
   DeletePagerDutyIntegrationServiceError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePagerDutyIntegrationServiceRequest,
-  output: DeletePagerDutyIntegrationServiceResponse,
+  input: __S(218, __c27, 2) as any as S.Schema<DeletePagerDutyIntegrationServiceRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<DeletePagerDutyIntegrationServiceResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15480,8 +12135,8 @@ export const deletePrivateLocation: API.OperationMethod<
   DeletePrivateLocationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateLocationRequest,
-  output: DeletePrivateLocationResponse,
+  input: __S(220, __c27, 4) as any as S.Schema<DeletePrivateLocationRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeletePrivateLocationResponse>,
   errors: [NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15495,8 +12150,8 @@ export const deletePublicDashboard: API.OperationMethod<
   DeletePublicDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePublicDashboardRequest,
-  output: DeleteSharedDashboardResponse,
+  input: __S(221, __c27, 5) as any as S.Schema<DeletePublicDashboardRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<DeleteSharedDashboardResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15510,8 +12165,8 @@ export const deletePublicDashboardInvitation: API.OperationMethod<
   DeletePublicDashboardInvitationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePublicDashboardInvitationRequest,
-  output: DeletePublicDashboardInvitationResponse,
+  input: __S(223, __c27, 7) as any as S.Schema<DeletePublicDashboardInvitationRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<DeletePublicDashboardInvitationResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15525,8 +12180,8 @@ export const deleteSLO: API.OperationMethod<
   DeleteSLOError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSLORequest,
-  output: SLODeleteResponse,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteSLORequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<SLODeleteResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15540,8 +12195,8 @@ export const deleteSLOCorrection: API.OperationMethod<
   DeleteSLOCorrectionError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSLOCorrectionRequest,
-  output: DeleteSLOCorrectionResponse,
+  input: __S(226, __c28, 2) as any as S.Schema<DeleteSLOCorrectionRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteSLOCorrectionResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15555,8 +12210,8 @@ export const deleteSLOTimeframeInBulk: API.OperationMethod<
   DeleteSLOTimeframeInBulkError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSLOTimeframeInBulkRequest,
-  output: SLOBulkDeleteResponse,
+  input: __S(228, __c28, 4) as any as S.Schema<DeleteSLOTimeframeInBulkRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<SLOBulkDeleteResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15570,8 +12225,8 @@ export const deleteTests: API.OperationMethod<
   DeleteTestsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTestsRequest,
-  output: SyntheticsDeleteTestsResponse,
+  input: __S(233, __c29, 1) as any as S.Schema<DeleteTestsRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<SyntheticsDeleteTestsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15585,8 +12240,8 @@ export const deleteWebhooksIntegration: API.OperationMethod<
   DeleteWebhooksIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhooksIntegrationRequest,
-  output: DeleteWebhooksIntegrationResponse,
+  input: __S(237, __c29, 5) as any as S.Schema<DeleteWebhooksIntegrationRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<DeleteWebhooksIntegrationResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15600,8 +12255,8 @@ export const deleteWebhooksIntegrationCustomVariable: API.OperationMethod<
   DeleteWebhooksIntegrationCustomVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhooksIntegrationCustomVariableRequest,
-  output: DeleteWebhooksIntegrationCustomVariableResponse,
+  input: __S(238, __c29, 6) as any as S.Schema<DeleteWebhooksIntegrationCustomVariableRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<DeleteWebhooksIntegrationCustomVariableResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15615,8 +12270,8 @@ export const disableUser: API.OperationMethod<
   DisableUserError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableUserRequest,
-  output: UserDisableResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<DisableUserRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<UserDisableResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15630,8 +12285,8 @@ export const downgradeOrg: API.OperationMethod<
   DowngradeOrgError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DowngradeOrgRequest,
-  output: OrgDowngradedResponse,
+  input: __S(241, __c30, 1) as any as S.Schema<DowngradeOrgRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<OrgDowngradedResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15645,8 +12300,8 @@ export const editGlobalVariable: API.OperationMethod<
   EditGlobalVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditGlobalVariableRequest,
-  output: SyntheticsGlobalVariable,
+  input: __S(242, __c30, 2) as any as S.Schema<EditGlobalVariableRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<SyntheticsGlobalVariable>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15660,8 +12315,8 @@ export const fetchUptimes: API.OperationMethod<
   FetchUptimesError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchUptimesRequest,
-  output: FetchUptimesResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<FetchUptimesRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<FetchUptimesResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15675,8 +12330,8 @@ export const getAPIKey: API.OperationMethod<
   GetAPIKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAPIKeyRequest,
-  output: ApiKeyResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<GetAPIKeyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ApiKeyResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15690,8 +12345,8 @@ export const getAPITest: API.OperationMethod<
   GetAPITestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAPITestRequest,
-  output: SyntheticsAPITest,
+  input: __S(252, __c31, 4) as any as S.Schema<GetAPITestRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<SyntheticsAPITest>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15705,8 +12360,8 @@ export const getAPITestLatestResults: API.OperationMethod<
   GetAPITestLatestResultsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAPITestLatestResultsRequest,
-  output: SyntheticsGetAPITestLatestResultsResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<GetAPITestLatestResultsRequest>,
+  output: __S(258, __c32, 2) as any as S.Schema<SyntheticsGetAPITestLatestResultsResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15720,8 +12375,8 @@ export const getAPITestResult: API.OperationMethod<
   GetAPITestResultError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAPITestResultRequest,
-  output: SyntheticsAPITestResultFull,
+  input: __S(259, __c32, 3) as any as S.Schema<GetAPITestResultRequest>,
+  output: __S(267, __c33, 3) as any as S.Schema<SyntheticsAPITestResultFull>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15735,8 +12390,8 @@ export const getApplicationKey: API.OperationMethod<
   GetApplicationKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationKeyRequest,
-  output: ApplicationKeyResponse,
+  input: __S(268, __c33, 4) as any as S.Schema<GetApplicationKeyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ApplicationKeyResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15750,8 +12405,8 @@ export const getBrowserTest: API.OperationMethod<
   GetBrowserTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBrowserTestRequest,
-  output: SyntheticsBrowserTest,
+  input: __S(269, __c33, 5) as any as S.Schema<GetBrowserTestRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<SyntheticsBrowserTest>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15765,8 +12420,8 @@ export const getBrowserTestLatestResults: API.OperationMethod<
   GetBrowserTestLatestResultsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBrowserTestLatestResultsRequest,
-  output: SyntheticsGetBrowserTestLatestResultsResponse,
+  input: __S(270, __c33, 6) as any as S.Schema<GetBrowserTestLatestResultsRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<SyntheticsGetBrowserTestLatestResultsResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15780,8 +12435,8 @@ export const getBrowserTestResult: API.OperationMethod<
   GetBrowserTestResultError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBrowserTestResultRequest,
-  output: SyntheticsBrowserTestResultFull,
+  input: __S(276, __c34, 4) as any as S.Schema<GetBrowserTestResultRequest>,
+  output: __S(287, __c35, 7) as any as S.Schema<SyntheticsBrowserTestResultFull>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15795,8 +12450,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardRequest,
-  output: Dashboard,
+  input: __S(288, __c36, 0) as any as S.Schema<GetDashboardRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Dashboard>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15810,8 +12465,8 @@ export const getDashboardList: API.OperationMethod<
   GetDashboardListError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardListRequest,
-  output: DashboardList,
+  input: __S(289, __c36, 1) as any as S.Schema<GetDashboardListRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DashboardList>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15825,8 +12480,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventRequest,
-  output: EventResponse,
+  input: __S(290, __c36, 2) as any as S.Schema<GetEventRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<EventResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15840,8 +12495,8 @@ export const getGlobalVariable: API.OperationMethod<
   GetGlobalVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGlobalVariableRequest,
-  output: SyntheticsGlobalVariable,
+  input: __S(293, __c36, 5) as any as S.Schema<GetGlobalVariableRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<SyntheticsGlobalVariable>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15855,8 +12510,8 @@ export const getGraphSnapshot: API.OperationMethod<
   GetGraphSnapshotError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGraphSnapshotRequest,
-  output: GraphSnapshot,
+  input: __S(294, __c36, 6) as any as S.Schema<GetGraphSnapshotRequest>,
+  output: __S(295, __c36, 7) as any as S.Schema<GraphSnapshot>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15870,8 +12525,8 @@ export const getHostTags: API.OperationMethod<
   GetHostTagsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostTagsRequest,
-  output: HostTags,
+  input: __S(296, __c37, 0) as any as S.Schema<GetHostTagsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<HostTags>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15885,8 +12540,8 @@ export const getHostTotals: API.OperationMethod<
   GetHostTotalsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostTotalsRequest,
-  output: HostTotals,
+  input: __S(297, __c37, 1) as any as S.Schema<GetHostTotalsRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<HostTotals>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15900,8 +12555,8 @@ export const getHourlyUsageAttribution: API.OperationMethod<
   GetHourlyUsageAttributionError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHourlyUsageAttributionRequest,
-  output: GetHourlyUsageAttributionResponse,
+  input: __S(299, __c37, 3) as any as S.Schema<GetHourlyUsageAttributionRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<GetHourlyUsageAttributionResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15915,8 +12570,8 @@ export const getIPRanges: API.OperationMethod<
   GetIPRangesError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIPRangesRequest,
-  output: IPRanges,
+  input: __S(300, __c37, 4) as any as S.Schema<GetIPRangesRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<IPRanges>,
   errors: [UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15930,8 +12585,8 @@ export const getLogsIndex: API.OperationMethod<
   GetLogsIndexError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogsIndexRequest,
-  output: LogsIndex,
+  input: __S(305, __c38, 1) as any as S.Schema<GetLogsIndexRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<LogsIndex>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15945,8 +12600,8 @@ export const getLogsIndexOrder: API.OperationMethod<
   GetLogsIndexOrderError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogsIndexOrderRequest,
-  output: LogsIndexesOrder,
+  input: __S(306, __c38, 2) as any as S.Schema<GetLogsIndexOrderRequest>,
+  output: __S(307, __c38, 3) as any as S.Schema<LogsIndexesOrder>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15960,8 +12615,8 @@ export const getLogsPipeline: API.OperationMethod<
   GetLogsPipelineError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogsPipelineRequest,
-  output: LogsPipeline,
+  input: __S(308, __c38, 4) as any as S.Schema<GetLogsPipelineRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<LogsPipeline>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15975,8 +12630,8 @@ export const getLogsPipelineOrder: API.OperationMethod<
   GetLogsPipelineOrderError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogsPipelineOrderRequest,
-  output: LogsPipelinesOrder,
+  input: __S(309, __c38, 5) as any as S.Schema<GetLogsPipelineOrderRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<LogsPipelinesOrder>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -15990,8 +12645,8 @@ export const getMetricMetadata: API.OperationMethod<
   GetMetricMetadataError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricMetadataRequest,
-  output: MetricMetadata,
+  input: __S(311, __c38, 7) as any as S.Schema<GetMetricMetadataRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<MetricMetadata>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16005,8 +12660,8 @@ export const getMobileTest: API.OperationMethod<
   GetMobileTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMobileTestRequest,
-  output: SyntheticsMobileTest,
+  input: __S(313, __c39, 1) as any as S.Schema<GetMobileTestRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<SyntheticsMobileTest>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16020,8 +12675,8 @@ export const getMonitor: API.OperationMethod<
   GetMonitorError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMonitorRequest,
-  output: Monitor,
+  input: __S(314, __c39, 2) as any as S.Schema<GetMonitorRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<Monitor>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16035,8 +12690,8 @@ export const getMonthlyUsageAttribution: API.OperationMethod<
   GetMonthlyUsageAttributionError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMonthlyUsageAttributionRequest,
-  output: GetMonthlyUsageAttributionResponse,
+  input: __S(315, __c39, 3) as any as S.Schema<GetMonthlyUsageAttributionRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<GetMonthlyUsageAttributionResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16050,8 +12705,8 @@ export const getNotebook: API.OperationMethod<
   GetNotebookError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotebookRequest,
-  output: NotebookResponse,
+  input: __S(316, __c39, 4) as any as S.Schema<GetNotebookRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<NotebookResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16065,8 +12720,8 @@ export const getOrg: API.OperationMethod<
   GetOrgError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRequest,
-  output: OrganizationResponse,
+  input: __S(317, __c39, 5) as any as S.Schema<GetOrgRequest>,
+  output: __S(318, __c39, 6) as any as S.Schema<OrganizationResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16080,8 +12735,8 @@ export const getPagerDutyIntegrationService: API.OperationMethod<
   GetPagerDutyIntegrationServiceError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPagerDutyIntegrationServiceRequest,
-  output: PagerDutyServiceName,
+  input: __S(319, __c39, 7) as any as S.Schema<GetPagerDutyIntegrationServiceRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<PagerDutyServiceName>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16095,8 +12750,8 @@ export const getPrivateLocation: API.OperationMethod<
   GetPrivateLocationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLocationRequest,
-  output: SyntheticsPrivateLocation,
+  input: __S(320, __c40, 0) as any as S.Schema<GetPrivateLocationRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<SyntheticsPrivateLocation>,
   errors: [NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16110,8 +12765,8 @@ export const getPublicDashboard: API.OperationMethod<
   GetPublicDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicDashboardRequest,
-  output: SharedDashboard,
+  input: __S(321, __c40, 1) as any as S.Schema<GetPublicDashboardRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<SharedDashboard>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16125,8 +12780,8 @@ export const getPublicDashboardInvitations: API.OperationMethod<
   GetPublicDashboardInvitationsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicDashboardInvitationsRequest,
-  output: SharedDashboardInvites,
+  input: __S(322, __c40, 2) as any as S.Schema<GetPublicDashboardInvitationsRequest>,
+  output: __S(325, __c40, 5) as any as S.Schema<SharedDashboardInvites>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16140,8 +12795,8 @@ export const getSlackIntegrationChannel: API.OperationMethod<
   GetSlackIntegrationChannelError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSlackIntegrationChannelRequest,
-  output: SlackIntegrationChannel,
+  input: __S(326, __c40, 6) as any as S.Schema<GetSlackIntegrationChannelRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<SlackIntegrationChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16155,8 +12810,8 @@ export const getSlackIntegrationChannels: API.OperationMethod<
   GetSlackIntegrationChannelsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSlackIntegrationChannelsRequest,
-  output: GetSlackIntegrationChannelsResponse,
+  input: __S(327, __c40, 7) as any as S.Schema<GetSlackIntegrationChannelsRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<GetSlackIntegrationChannelsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16170,8 +12825,8 @@ export const getSLO: API.OperationMethod<
   GetSLOError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSLORequest,
-  output: SLOResponse,
+  input: __S(330, __c41, 2) as any as S.Schema<GetSLORequest>,
+  output: __S(332, __c41, 4) as any as S.Schema<SLOResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16185,8 +12840,8 @@ export const getSLOCorrection: API.OperationMethod<
   GetSLOCorrectionError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSLOCorrectionRequest,
-  output: SLOCorrectionResponse,
+  input: __S(333, __c41, 5) as any as S.Schema<GetSLOCorrectionRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<SLOCorrectionResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16200,8 +12855,8 @@ export const getSLOCorrections: API.OperationMethod<
   GetSLOCorrectionsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSLOCorrectionsRequest,
-  output: SLOCorrectionListResponse,
+  input: __S(334, __c41, 6) as any as S.Schema<GetSLOCorrectionsRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<SLOCorrectionListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16215,8 +12870,8 @@ export const getSLOHistory: API.OperationMethod<
   GetSLOHistoryError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSLOHistoryRequest,
-  output: SLOHistoryResponse,
+  input: __S(339, __c42, 3) as any as S.Schema<GetSLOHistoryRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<SLOHistoryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16230,8 +12885,8 @@ export const getSyntheticsCIBatch: API.OperationMethod<
   GetSyntheticsCIBatchError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSyntheticsCIBatchRequest,
-  output: SyntheticsBatchDetails,
+  input: __S(354, __c44, 2) as any as S.Schema<GetSyntheticsCIBatchRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<SyntheticsBatchDetails>,
   errors: [NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16245,8 +12900,8 @@ export const getSyntheticsDefaultLocations: API.OperationMethod<
   GetSyntheticsDefaultLocationsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSyntheticsDefaultLocationsRequest,
-  output: GetSyntheticsDefaultLocationsResponse,
+  input: __S(364, __c45, 4) as any as S.Schema<GetSyntheticsDefaultLocationsRequest>,
+  output: __S(365, __c45, 5) as any as S.Schema<GetSyntheticsDefaultLocationsResponse>,
   errors: [UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16260,8 +12915,8 @@ export const getTest: API.OperationMethod<
   GetTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTestRequest,
-  output: SyntheticsTestDetailsWithoutSteps,
+  input: __S(366, __c45, 6) as any as S.Schema<GetTestRequest>,
+  output: __S(367, __c45, 7) as any as S.Schema<SyntheticsTestDetailsWithoutSteps>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16275,8 +12930,8 @@ export const getUsageBillableSummary: API.OperationMethod<
   GetUsageBillableSummaryError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsageBillableSummaryRequest,
-  output: GetUsageBillableSummaryResponse,
+  input: __S(368, __c46, 0) as any as S.Schema<GetUsageBillableSummaryRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<GetUsageBillableSummaryResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16290,8 +12945,8 @@ export const getUsageLogsByIndex: API.OperationMethod<
   GetUsageLogsByIndexError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsageLogsByIndexRequest,
-  output: GetUsageLogsByIndexResponse,
+  input: __S(370, __c46, 2) as any as S.Schema<GetUsageLogsByIndexRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetUsageLogsByIndexResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16305,8 +12960,8 @@ export const getUsageSummary: API.OperationMethod<
   GetUsageSummaryError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsageSummaryRequest,
-  output: GetUsageSummaryResponse,
+  input: __S(371, __c46, 3) as any as S.Schema<GetUsageSummaryRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetUsageSummaryResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16320,8 +12975,8 @@ export const getUsageTopAvgMetrics: API.OperationMethod<
   GetUsageTopAvgMetricsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsageTopAvgMetricsRequest,
-  output: GetUsageTopAvgMetricsResponse,
+  input: __S(372, __c46, 4) as any as S.Schema<GetUsageTopAvgMetricsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetUsageTopAvgMetricsResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16335,8 +12990,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: UserResponse,
+  input: __S(373, __c46, 5) as any as S.Schema<GetUserRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<UserResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16350,8 +13005,8 @@ export const getWebhooksIntegration: API.OperationMethod<
   GetWebhooksIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhooksIntegrationRequest,
-  output: WebhooksIntegration,
+  input: __S(374, __c46, 6) as any as S.Schema<GetWebhooksIntegrationRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<WebhooksIntegration>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16369,8 +13024,8 @@ export const getWebhooksIntegrationCustomVariable: API.OperationMethod<
   GetWebhooksIntegrationCustomVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhooksIntegrationCustomVariableRequest,
-  output: WebhooksIntegrationCustomVariableResponse,
+  input: __S(375, __c46, 7) as any as S.Schema<GetWebhooksIntegrationCustomVariableRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<WebhooksIntegrationCustomVariableResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16384,8 +13039,8 @@ export const listActiveMetrics: API.OperationMethod<
   ListActiveMetricsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActiveMetricsRequest,
-  output: MetricsListResponse,
+  input: __S(376, __c47, 0) as any as S.Schema<ListActiveMetricsRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<MetricsListResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16399,8 +13054,8 @@ export const listAPIKeys: API.OperationMethod<
   ListAPIKeysError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAPIKeysRequest,
-  output: ApiKeyListResponse,
+  input: __S(378, __c47, 2) as any as S.Schema<ListAPIKeysRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<ApiKeyListResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16414,8 +13069,8 @@ export const listApplicationKeys: API.OperationMethod<
   ListApplicationKeysError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationKeysRequest,
-  output: ApplicationKeyListResponse,
+  input: __S(381, __c47, 5) as any as S.Schema<ListApplicationKeysRequest>,
+  output: __S(383, __c47, 7) as any as S.Schema<ApplicationKeyListResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16429,8 +13084,8 @@ export const listAzureIntegration: API.OperationMethod<
   ListAzureIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAzureIntegrationRequest,
-  output: ListAzureIntegrationResponse,
+  input: __S(384, __c48, 0) as any as S.Schema<ListAzureIntegrationRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<ListAzureIntegrationResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16444,8 +13099,8 @@ export const listDashboardLists: API.OperationMethod<
   ListDashboardListsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardListsRequest,
-  output: DashboardListListResponse,
+  input: __S(388, __c48, 4) as any as S.Schema<ListDashboardListsRequest>,
+  output: __S(390, __c48, 6) as any as S.Schema<DashboardListListResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16459,8 +13114,8 @@ export const listDashboards: API.OperationMethod<
   ListDashboardsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardsRequest,
-  output: DashboardSummary,
+  input: __S(391, __c48, 7) as any as S.Schema<ListDashboardsRequest>,
+  output: __S(394, __c49, 2) as any as S.Schema<DashboardSummary>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16474,8 +13129,8 @@ export const listEvents: API.OperationMethod<
   ListEventsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventsRequest,
-  output: EventListResponse,
+  input: __S(395, __c49, 3) as any as S.Schema<ListEventsRequest>,
+  output: __S(397, __c49, 5) as any as S.Schema<EventListResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16489,8 +13144,8 @@ export const listGlobalVariables: API.OperationMethod<
   ListGlobalVariablesError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGlobalVariablesRequest,
-  output: SyntheticsListGlobalVariablesResponse,
+  input: __S(398, __c49, 6) as any as S.Schema<ListGlobalVariablesRequest>,
+  output: __S(400, __c50, 0) as any as S.Schema<SyntheticsListGlobalVariablesResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16504,8 +13159,8 @@ export const listHosts: API.OperationMethod<
   ListHostsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostsRequest,
-  output: HostListResponse,
+  input: __S(401, __c50, 1) as any as S.Schema<ListHostsRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<HostListResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16519,8 +13174,8 @@ export const listHostTags: API.OperationMethod<
   ListHostTagsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostTagsRequest,
-  output: TagToHosts,
+  input: __S(411, __c51, 3) as any as S.Schema<ListHostTagsRequest>,
+  output: __S(412, __c51, 4) as any as S.Schema<TagToHosts>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16534,8 +13189,8 @@ export const listLocations: API.OperationMethod<
   ListLocationsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationsRequest,
-  output: SyntheticsLocations,
+  input: __S(413, __c51, 5) as any as S.Schema<ListLocationsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<SyntheticsLocations>,
   errors: [UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16549,8 +13204,8 @@ export const listLogIndexes: API.OperationMethod<
   ListLogIndexesError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLogIndexesRequest,
-  output: LogsIndexListResponse,
+  input: __S(417, __c52, 1) as any as S.Schema<ListLogIndexesRequest>,
+  output: __S(419, __c52, 3) as any as S.Schema<LogsIndexListResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16564,8 +13219,8 @@ export const listLogs: API.OperationMethod<
   ListLogsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLogsRequest,
-  output: LogsListResponse,
+  input: __S(421, __c52, 5) as any as S.Schema<ListLogsRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<LogsListResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16579,8 +13234,8 @@ export const listLogsPipelines: API.OperationMethod<
   ListLogsPipelinesError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLogsPipelinesRequest,
-  output: ListLogsPipelinesResponse,
+  input: __S(426, __c53, 2) as any as S.Schema<ListLogsPipelinesRequest>,
+  output: __S(428, __c53, 4) as any as S.Schema<ListLogsPipelinesResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16594,8 +13249,8 @@ export const listMonitors: API.OperationMethod<
   ListMonitorsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMonitorsRequest,
-  output: ListMonitorsResponse,
+  input: __S(429, __c53, 5) as any as S.Schema<ListMonitorsRequest>,
+  output: __S(431, __c53, 7) as any as S.Schema<ListMonitorsResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16609,8 +13264,8 @@ export const listNotebooks: API.OperationMethod<
   ListNotebooksError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNotebooksRequest,
-  output: NotebooksResponse,
+  input: __S(432, __c54, 0) as any as S.Schema<ListNotebooksRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<NotebooksResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16624,8 +13279,8 @@ export const listOrgs: API.OperationMethod<
   ListOrgsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgsRequest,
-  output: OrganizationListResponse,
+  input: __S(437, __c54, 5) as any as S.Schema<ListOrgsRequest>,
+  output: __S(439, __c54, 7) as any as S.Schema<OrganizationListResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16639,8 +13294,8 @@ export const listSLOCorrection: API.OperationMethod<
   ListSLOCorrectionError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSLOCorrectionRequest,
-  output: SLOCorrectionListResponse,
+  input: __S(440, __c55, 0) as any as S.Schema<ListSLOCorrectionRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<SLOCorrectionListResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16654,8 +13309,8 @@ export const listSLOs: API.OperationMethod<
   ListSLOsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSLOsRequest,
-  output: SLOListResponse,
+  input: __S(441, __c55, 1) as any as S.Schema<ListSLOsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<SLOListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16669,8 +13324,8 @@ export const listTests: API.OperationMethod<
   ListTestsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTestsRequest,
-  output: SyntheticsListTestsResponse,
+  input: __S(442, __c55, 2) as any as S.Schema<ListTestsRequest>,
+  output: __S(444, __c55, 4) as any as S.Schema<SyntheticsListTestsResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16684,8 +13339,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: UserListResponse,
+  input: __S(445, __c55, 5) as any as S.Schema<ListUsersRequest>,
+  output: __S(447, __c55, 7) as any as S.Schema<UserListResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16699,8 +13354,8 @@ export const muteHost: API.OperationMethod<
   MuteHostError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MuteHostRequest,
-  output: HostMuteResponse,
+  input: __S(448, __c56, 0) as any as S.Schema<MuteHostRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<HostMuteResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16714,8 +13369,8 @@ export const patchTest: API.OperationMethod<
   PatchTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchTestRequest,
-  output: SyntheticsTestDetails,
+  input: __S(452, __c56, 4) as any as S.Schema<PatchTestRequest>,
+  output: __S(453, __c56, 5) as any as S.Schema<SyntheticsTestDetails>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16729,8 +13384,8 @@ export const queryMetrics: API.OperationMethod<
   QueryMetricsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryMetricsRequest,
-  output: MetricsQueryResponse,
+  input: __S(454, __c56, 6) as any as S.Schema<QueryMetricsRequest>,
+  output: __S(461, __c57, 5) as any as S.Schema<MetricsQueryResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16744,8 +13399,8 @@ export const removeSlackIntegrationChannel: API.OperationMethod<
   RemoveSlackIntegrationChannelError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveSlackIntegrationChannelRequest,
-  output: RemoveSlackIntegrationChannelResponse,
+  input: __S(462, __c57, 6) as any as S.Schema<RemoveSlackIntegrationChannelRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<RemoveSlackIntegrationChannelResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16759,8 +13414,8 @@ export const restoreDashboards: API.OperationMethod<
   RestoreDashboardsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreDashboardsRequest,
-  output: RestoreDashboardsResponse,
+  input: __S(463, __c57, 7) as any as S.Schema<RestoreDashboardsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<RestoreDashboardsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16774,8 +13429,8 @@ export const searchMonitorGroups: API.OperationMethod<
   SearchMonitorGroupsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchMonitorGroupsRequest,
-  output: MonitorGroupSearchResponse,
+  input: __S(464, __c58, 0) as any as S.Schema<SearchMonitorGroupsRequest>,
+  output: __S(471, __c58, 7) as any as S.Schema<MonitorGroupSearchResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16789,8 +13444,8 @@ export const searchMonitors: API.OperationMethod<
   SearchMonitorsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchMonitorsRequest,
-  output: MonitorSearchResponse,
+  input: __S(472, __c59, 0) as any as S.Schema<SearchMonitorsRequest>,
+  output: __S(478, __c59, 6) as any as S.Schema<MonitorSearchResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16804,8 +13459,8 @@ export const searchSLO: API.OperationMethod<
   SearchSLOError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchSLORequest,
-  output: SearchSLOResponse,
+  input: __S(479, __c59, 7) as any as S.Schema<SearchSLORequest>,
+  output: __S(502, __c62, 6) as any as S.Schema<SearchSLOResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16819,8 +13474,8 @@ export const searchTests: API.OperationMethod<
   SearchTestsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchTestsRequest,
-  output: SyntheticsListTestsResponse,
+  input: __S(503, __c62, 7) as any as S.Schema<SearchTestsRequest>,
+  output: __S(444, __c55, 4) as any as S.Schema<SyntheticsListTestsResponse>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16834,8 +13489,8 @@ export const sendPublicDashboardInvitation: API.OperationMethod<
   SendPublicDashboardInvitationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendPublicDashboardInvitationRequest,
-  output: SharedDashboardInvites,
+  input: __S(504, __c63, 0) as any as S.Schema<SendPublicDashboardInvitationRequest>,
+  output: __S(325, __c40, 5) as any as S.Schema<SharedDashboardInvites>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16849,8 +13504,8 @@ export const submitDistributionPoints: API.OperationMethod<
   SubmitDistributionPointsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitDistributionPointsRequest,
-  output: SubmitDistributionPointsResponse,
+  input: __S(505, __c63, 1) as any as S.Schema<SubmitDistributionPointsRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<SubmitDistributionPointsResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16864,8 +13519,8 @@ export const submitMetrics: API.OperationMethod<
   SubmitMetricsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitMetricsRequest,
-  output: SubmitMetricsResponse,
+  input: __S(506, __c63, 2) as any as S.Schema<SubmitMetricsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<SubmitMetricsResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16879,8 +13534,8 @@ export const submitServiceCheck: API.OperationMethod<
   SubmitServiceCheckError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitServiceCheckRequest,
-  output: SubmitServiceCheckResponse,
+  input: __S(509, __c63, 5) as any as S.Schema<SubmitServiceCheckRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<SubmitServiceCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16894,8 +13549,8 @@ export const triggerCITests: API.OperationMethod<
   TriggerCITestsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerCITestsRequest,
-  output: SyntheticsTriggerCITestsResponse,
+  input: __S(512, __c64, 0) as any as S.Schema<TriggerCITestsRequest>,
+  output: __S(517, __c64, 5) as any as S.Schema<SyntheticsTriggerCITestsResponse>,
   errors: [BadRequest, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16909,8 +13564,8 @@ export const triggerTests: API.OperationMethod<
   TriggerTestsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerTestsRequest,
-  output: SyntheticsTriggerCITestsResponse,
+  input: __S(520, __c65, 0) as any as S.Schema<TriggerTestsRequest>,
+  output: __S(517, __c64, 5) as any as S.Schema<SyntheticsTriggerCITestsResponse>,
   errors: [BadRequest, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16924,8 +13579,8 @@ export const unmuteHost: API.OperationMethod<
   UnmuteHostError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnmuteHostRequest,
-  output: HostMuteResponse,
+  input: __S(521, __c65, 1) as any as S.Schema<UnmuteHostRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<HostMuteResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16939,8 +13594,8 @@ export const updateAPIKey: API.OperationMethod<
   UpdateAPIKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAPIKeyRequest,
-  output: ApiKeyResponse,
+  input: __S(522, __c65, 2) as any as S.Schema<UpdateAPIKeyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16954,8 +13609,8 @@ export const updateAPITest: API.OperationMethod<
   UpdateAPITestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAPITestRequest,
-  output: SyntheticsAPITest,
+  input: __S(523, __c65, 3) as any as S.Schema<UpdateAPITestRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<SyntheticsAPITest>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16974,8 +13629,8 @@ export const updateApplicationKey: API.OperationMethod<
   UpdateApplicationKeyError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationKeyRequest,
-  output: ApplicationKeyResponse,
+  input: __S(524, __c65, 4) as any as S.Schema<UpdateApplicationKeyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ApplicationKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -16989,8 +13644,8 @@ export const updateAzureHostFilters: API.OperationMethod<
   UpdateAzureHostFiltersError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAzureHostFiltersRequest,
-  output: UpdateAzureHostFiltersResponse,
+  input: __S(525, __c65, 5) as any as S.Schema<UpdateAzureHostFiltersRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<UpdateAzureHostFiltersResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17004,8 +13659,8 @@ export const updateAzureIntegration: API.OperationMethod<
   UpdateAzureIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAzureIntegrationRequest,
-  output: UpdateAzureIntegrationResponse,
+  input: __S(526, __c65, 6) as any as S.Schema<UpdateAzureIntegrationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<UpdateAzureIntegrationResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17019,8 +13674,8 @@ export const updateBrowserTest: API.OperationMethod<
   UpdateBrowserTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBrowserTestRequest,
-  output: SyntheticsBrowserTest,
+  input: __S(527, __c65, 7) as any as S.Schema<UpdateBrowserTestRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<SyntheticsBrowserTest>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17034,8 +13689,8 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardRequest,
-  output: Dashboard,
+  input: __S(528, __c66, 0) as any as S.Schema<UpdateDashboardRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<Dashboard>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17049,8 +13704,8 @@ export const updateDashboardList: API.OperationMethod<
   UpdateDashboardListError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardListRequest,
-  output: DashboardList,
+  input: __S(529, __c66, 1) as any as S.Schema<UpdateDashboardListRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DashboardList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17064,8 +13719,8 @@ export const updateHostTags: API.OperationMethod<
   UpdateHostTagsError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHostTagsRequest,
-  output: HostTags,
+  input: __S(530, __c66, 2) as any as S.Schema<UpdateHostTagsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<HostTags>,
   errors: [Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17079,8 +13734,8 @@ export const updateLogsIndex: API.OperationMethod<
   UpdateLogsIndexError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLogsIndexRequest,
-  output: LogsIndex,
+  input: __S(531, __c66, 3) as any as S.Schema<UpdateLogsIndexRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<LogsIndex>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17094,8 +13749,8 @@ export const updateLogsIndexOrder: API.OperationMethod<
   UpdateLogsIndexOrderError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLogsIndexOrderRequest,
-  output: LogsIndexesOrder,
+  input: __S(532, __c66, 4) as any as S.Schema<UpdateLogsIndexOrderRequest>,
+  output: __S(307, __c38, 3) as any as S.Schema<LogsIndexesOrder>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17109,8 +13764,8 @@ export const updateLogsPipeline: API.OperationMethod<
   UpdateLogsPipelineError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLogsPipelineRequest,
-  output: LogsPipeline,
+  input: __S(533, __c66, 5) as any as S.Schema<UpdateLogsPipelineRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<LogsPipeline>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17128,8 +13783,8 @@ export const updateLogsPipelineOrder: API.OperationMethod<
   UpdateLogsPipelineOrderError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLogsPipelineOrderRequest,
-  output: LogsPipelinesOrder,
+  input: __S(534, __c66, 6) as any as S.Schema<UpdateLogsPipelineOrderRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<LogsPipelinesOrder>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17143,8 +13798,8 @@ export const updateMetricMetadata: API.OperationMethod<
   UpdateMetricMetadataError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMetricMetadataRequest,
-  output: MetricMetadata,
+  input: __S(535, __c66, 7) as any as S.Schema<UpdateMetricMetadataRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<MetricMetadata>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17158,8 +13813,8 @@ export const updateMobileTest: API.OperationMethod<
   UpdateMobileTestError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMobileTestRequest,
-  output: SyntheticsMobileTest,
+  input: __S(536, __c67, 0) as any as S.Schema<UpdateMobileTestRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<SyntheticsMobileTest>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17173,8 +13828,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMonitorRequest,
-  output: Monitor,
+  input: __S(537, __c67, 1) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<Monitor>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17188,8 +13843,8 @@ export const updateNotebook: API.OperationMethod<
   UpdateNotebookError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNotebookRequest,
-  output: NotebookResponse,
+  input: __S(541, __c67, 5) as any as S.Schema<UpdateNotebookRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<NotebookResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17203,8 +13858,8 @@ export const updateOrg: API.OperationMethod<
   UpdateOrgError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrgRequest,
-  output: OrganizationResponse,
+  input: __S(542, __c67, 6) as any as S.Schema<UpdateOrgRequest>,
+  output: __S(318, __c39, 6) as any as S.Schema<OrganizationResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17222,8 +13877,8 @@ export const updatePagerDutyIntegrationService: API.OperationMethod<
   UpdatePagerDutyIntegrationServiceError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePagerDutyIntegrationServiceRequest,
-  output: UpdatePagerDutyIntegrationServiceResponse,
+  input: __S(543, __c67, 7) as any as S.Schema<UpdatePagerDutyIntegrationServiceRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<UpdatePagerDutyIntegrationServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17237,8 +13892,8 @@ export const updatePrivateLocation: API.OperationMethod<
   UpdatePrivateLocationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePrivateLocationRequest,
-  output: SyntheticsPrivateLocation,
+  input: __S(544, __c68, 0) as any as S.Schema<UpdatePrivateLocationRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<SyntheticsPrivateLocation>,
   errors: [NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17252,8 +13907,8 @@ export const updatePublicDashboard: API.OperationMethod<
   UpdatePublicDashboardError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePublicDashboardRequest,
-  output: SharedDashboard,
+  input: __S(545, __c68, 1) as any as S.Schema<UpdatePublicDashboardRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<SharedDashboard>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17267,8 +13922,8 @@ export const updateSlackIntegrationChannel: API.OperationMethod<
   UpdateSlackIntegrationChannelError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSlackIntegrationChannelRequest,
-  output: SlackIntegrationChannel,
+  input: __S(546, __c68, 2) as any as S.Schema<UpdateSlackIntegrationChannelRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<SlackIntegrationChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17282,8 +13937,8 @@ export const updateSLO: API.OperationMethod<
   UpdateSLOError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSLORequest,
-  output: SLOListResponse,
+  input: __S(547, __c68, 3) as any as S.Schema<UpdateSLORequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<SLOListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17297,8 +13952,8 @@ export const updateSLOCorrection: API.OperationMethod<
   UpdateSLOCorrectionError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSLOCorrectionRequest,
-  output: SLOCorrectionResponse,
+  input: __S(550, __c68, 6) as any as S.Schema<UpdateSLOCorrectionRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<SLOCorrectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17312,8 +13967,8 @@ export const updateTestPauseStatus: API.OperationMethod<
   UpdateTestPauseStatusError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTestPauseStatusRequest,
-  output: UpdateTestPauseStatusResponse,
+  input: __S(551, __c68, 7) as any as S.Schema<UpdateTestPauseStatusRequest>,
+  output: __S(552, __c69, 0) as any as S.Schema<UpdateTestPauseStatusResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17327,8 +13982,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UserResponse,
+  input: __S(553, __c69, 1) as any as S.Schema<UpdateUserRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<UserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17342,8 +13997,8 @@ export const updateWebhooksIntegration: API.OperationMethod<
   UpdateWebhooksIntegrationError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhooksIntegrationRequest,
-  output: WebhooksIntegration,
+  input: __S(554, __c69, 2) as any as S.Schema<UpdateWebhooksIntegrationRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<WebhooksIntegration>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17361,8 +14016,8 @@ export const updateWebhooksIntegrationCustomVariable: API.OperationMethod<
   UpdateWebhooksIntegrationCustomVariableError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhooksIntegrationCustomVariableRequest,
-  output: WebhooksIntegrationCustomVariableResponse,
+  input: __S(555, __c69, 3) as any as S.Schema<UpdateWebhooksIntegrationCustomVariableRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<WebhooksIntegrationCustomVariableResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17376,8 +14031,8 @@ export const uploadIdPForOrg: API.OperationMethod<
   UploadIdPForOrgError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadIdPForOrgRequest,
-  output: IdpResponse,
+  input: __S(556, __c69, 4) as any as S.Schema<UploadIdPForOrgRequest>,
+  output: __S(557, __c69, 5) as any as S.Schema<IdpResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17391,8 +14046,8 @@ export const validate: API.OperationMethod<
   ValidateError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateRequest,
-  output: AuthenticationValidationResponse,
+  input: __S(558, __c69, 6) as any as S.Schema<ValidateRequest>,
+  output: __S(559, __c69, 7) as any as S.Schema<AuthenticationValidationResponse>,
   errors: [Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17406,8 +14061,8 @@ export const validateExistingMonitor: API.OperationMethod<
   ValidateExistingMonitorError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateExistingMonitorRequest,
-  output: ValidateExistingMonitorResponse,
+  input: __S(560, __c70, 0) as any as S.Schema<ValidateExistingMonitorRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ValidateExistingMonitorResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17421,8 +14076,8 @@ export const validateMonitor: API.OperationMethod<
   ValidateMonitorError,
   DatadogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateMonitorRequest,
-  output: ValidateMonitorResponse,
+  input: __S(561, __c70, 1) as any as S.Schema<ValidateMonitorRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<ValidateMonitorResponse>,
   errors: [BadRequest, Forbidden, UnknownDatadogError],
   protocol: DatadogProtocol,
   retry: Retry.Retry,
@@ -17461,7 +14116,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          monitor_ids: CheckCanDeleteMonitorRequestMonitorIdsList.pipe(T.Query()),
+          monitor_ids: __S(2, __c0, 2).pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/monitor/can_delete", code: 200 })),
       ).annotate({
         identifier: "CheckCanDeleteMonitorRequest",
@@ -17469,7 +14124,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ok: S.optional(CheckCanDeleteMonitorResponseDataOkList),
+          ok: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "CheckCanDeleteMonitorResponseData",
@@ -17477,12 +14132,12 @@ function __c0(j: number): any {
     case 5:
       return S.Array(S.String);
     case 6:
-      return S.Record(S.String, CheckCanDeleteMonitorResponseErrorsValueList);
+      return S.Record(S.String, __S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: CheckCanDeleteMonitorResponseData,
-          errors: S.optional(S.NullOr(CheckCanDeleteMonitorResponseErrorsMap)),
+          data: __S(4, __c0, 4),
+          errors: S.optional(S.NullOr(__S(6, __c0, 6))),
         }),
       ).annotate({
         identifier: "CheckCanDeleteMonitorResponse",
@@ -17500,7 +14155,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ok: S.optional(CheckCanDeleteSLOResponseDataOkList),
+          ok: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "CheckCanDeleteSLOResponseData",
@@ -17510,8 +14165,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(CheckCanDeleteSLOResponseData),
-          errors: S.optional(CheckCanDeleteSLOResponseErrorsMap),
+          data: S.optional(__S(9, __c1, 1)),
+          errors: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "CheckCanDeleteSLOResponse",
@@ -17534,7 +14189,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          api_key: S.optional(ApiKey),
+          api_key: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "ApiKeyResponse" });
     case 7:
@@ -17560,7 +14215,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          application_key: S.optional(ApplicationKey),
+          application_key: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ApplicationKeyResponse" });
     case 2:
@@ -17571,7 +14226,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ResourceProviderConfig" });
     case 3:
-      return S.Array(ResourceProviderConfig);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -17582,16 +14237,14 @@ function __c2(j: number): any {
           container_app_filters: S.optional(S.String),
           cspm_enabled: S.optional(S.Boolean),
           custom_metrics_enabled: S.optional(S.Boolean),
-          errors: S.optional(CreateAzureIntegrationRequestErrorsList),
+          errors: S.optional(__S(5, __c0, 5)),
           host_filters: S.optional(S.String),
           metrics_enabled: S.optional(S.Boolean),
           metrics_enabled_default: S.optional(S.Boolean),
           new_client_id: S.optional(S.String),
           new_tenant_name: S.optional(S.String),
           resource_collection_enabled: S.optional(S.Boolean),
-          resource_provider_configs: S.optional(
-            CreateAzureIntegrationRequestResourceProviderConfigsList,
-          ),
+          resource_provider_configs: S.optional(__S(19, __c2, 3)),
           secretless_auth_enabled: S.optional(S.Boolean),
           tenant_name: S.optional(S.String),
           usage_metrics_enabled: S.optional(S.Boolean),
@@ -17612,9 +14265,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          billing: S.optional(OrganizationBilling),
+          billing: S.optional(__S(22, __c2, 6)),
           name: S.String,
-          subscription: S.optional(OrganizationSubscription),
+          subscription: S.optional(__S(22, __c2, 6)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/org", code: 200 })),
       ).annotate({ identifier: "CreateChildOrgRequest" });
   }
@@ -17630,7 +14283,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(OrganizationSettingsSamlAutocreateUsersDomainsDomainsList),
+          domains: S.optional(__S(5, __c0, 5)),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -17648,34 +14301,34 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           private_widget_share: S.optional(S.Boolean),
-          saml: S.optional(OrganizationSettingsSaml),
-          saml_autocreate_access_role: S.optional(S.NullOr(AccessRole)),
-          saml_autocreate_users_domains: S.optional(OrganizationSettingsSamlAutocreateUsersDomains),
+          saml: S.optional(__S(24, __c3, 0)),
+          saml_autocreate_access_role: S.optional(S.NullOr(S.String)),
+          saml_autocreate_users_domains: S.optional(__S(25, __c3, 1)),
           saml_can_be_enabled: S.optional(S.Boolean),
           saml_idp_endpoint: S.optional(S.String),
-          saml_idp_initiated_login: S.optional(OrganizationSettingsSamlIdpInitiatedLogin),
+          saml_idp_initiated_login: S.optional(__S(26, __c3, 2)),
           saml_idp_metadata_uploaded: S.optional(S.Boolean),
           saml_login_url: S.optional(S.String),
-          saml_strict_mode: S.optional(OrganizationSettingsSamlStrictMode),
+          saml_strict_mode: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "OrganizationSettings" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          billing: S.optional(OrganizationBilling),
+          billing: S.optional(__S(22, __c2, 6)),
           created: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
           public_id: S.optional(S.String),
-          settings: S.optional(OrganizationSettings),
-          subscription: S.optional(OrganizationSubscription),
+          settings: S.optional(__S(27, __c3, 3)),
+          subscription: S.optional(__S(22, __c2, 6)),
           trial: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Organization" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          access_role: S.optional(S.NullOr(AccessRole)),
+          access_role: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.Boolean),
           email: S.optional(S.String),
           handle: S.optional(S.String),
@@ -17687,10 +14340,10 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          api_key: S.optional(ApiKey),
-          application_key: S.optional(ApplicationKey),
-          org: S.optional(Organization),
-          user: S.optional(User),
+          api_key: S.optional(__S(13, __c1, 5)),
+          application_key: S.optional(__S(16, __c2, 0)),
+          org: S.optional(__S(28, __c3, 4)),
+          user: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "OrganizationCreateResponse",
@@ -17700,7 +14353,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          widget_ids: DashboardTabWidgetIdsList,
+          widget_ids: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "DashboardTab" });
   }
@@ -17708,36 +14361,36 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DashboardTab);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
-          values: S.optional(DashboardTemplateVariablePresetValueValuesList),
+          values: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "DashboardTemplateVariablePresetValue",
       });
     case 2:
-      return S.Array(DashboardTemplateVariablePresetValue);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          template_variables: S.optional(DashboardTemplateVariablePresetTemplateVariablesList),
+          template_variables: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({
         identifier: "DashboardTemplateVariablePreset",
       });
     case 4:
-      return S.Array(DashboardTemplateVariablePreset);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          available_values: S.optional(S.NullOr(DashboardTemplateVariableAvailableValuesList)),
+          available_values: S.optional(S.NullOr(__S(5, __c0, 5))),
           default: S.optional(S.NullOr(S.String)),
-          defaults: S.optional(DashboardTemplateVariableDefaultsList),
+          defaults: S.optional(__S(5, __c0, 5)),
           name: S.String,
           prefix: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
@@ -17746,7 +14399,7 @@ function __c4(j: number): any {
         identifier: "DashboardTemplateVariable",
       });
     case 6:
-      return S.Array(DashboardTemplateVariable);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.Array(S.String);
   }
@@ -17754,7 +14407,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListStreamIssueState);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -17768,31 +14421,29 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          definition: WidgetDefinition,
+          definition: S.Unknown,
           id: S.optional(S.Number),
-          layout: S.optional(WidgetLayout),
+          layout: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "Widget" });
     case 3:
-      return S.Array(Widget);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          default_timeframe: S.optional(S.NullOr(DashboardDefaultTimeframeSetting)),
+          default_timeframe: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
           is_read_only: S.optional(S.Boolean),
-          layout_type: DashboardLayoutType,
-          notify_list: S.optional(S.NullOr(CreateDashboardRequestNotifyListList)),
-          reflow_type: S.optional(DashboardReflowType),
-          restricted_roles: S.optional(CreateDashboardRequestRestrictedRolesList),
-          tabs: S.optional(S.NullOr(CreateDashboardRequestTabsList)),
-          tags: S.optional(S.NullOr(CreateDashboardRequestTagsList)),
-          template_variable_presets: S.optional(
-            S.NullOr(CreateDashboardRequestTemplateVariablePresetsList),
-          ),
-          template_variables: S.optional(S.NullOr(CreateDashboardRequestTemplateVariablesList)),
+          layout_type: S.String,
+          notify_list: S.optional(S.NullOr(__S(5, __c0, 5))),
+          reflow_type: S.optional(S.String),
+          restricted_roles: S.optional(__S(5, __c0, 5)),
+          tabs: S.optional(S.NullOr(__S(32, __c4, 0))),
+          tags: S.optional(S.NullOr(__S(5, __c0, 5))),
+          template_variable_presets: S.optional(S.NullOr(__S(36, __c4, 4))),
+          template_variables: S.optional(S.NullOr(__S(38, __c4, 6))),
           title: S.String,
-          widgets: CreateDashboardRequestWidgetsList,
+          widgets: __S(43, __c5, 3),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard", code: 200 })),
       ).annotate({ identifier: "CreateDashboardRequest" });
     case 5:
@@ -17801,23 +14452,23 @@ function __c5(j: number): any {
           author_handle: S.optional(S.String),
           author_name: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          default_timeframe: S.optional(S.NullOr(DashboardDefaultTimeframeSetting)),
+          default_timeframe: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
-          experience_type: S.optional(DashboardExperienceType),
+          experience_type: S.optional(S.String),
           id: S.optional(S.String),
           is_read_only: S.optional(S.Boolean),
-          layout_type: DashboardLayoutType,
+          layout_type: S.String,
           modified_at: S.optional(S.String),
-          notify_list: S.optional(S.NullOr(DashboardNotifyListList)),
-          reflow_type: S.optional(DashboardReflowType),
-          restricted_roles: S.optional(DashboardRestrictedRolesList),
-          tabs: S.optional(S.NullOr(DashboardTabsList)),
-          tags: S.optional(S.NullOr(DashboardTagsList)),
-          template_variable_presets: S.optional(S.NullOr(DashboardTemplateVariablePresetsList)),
-          template_variables: S.optional(S.NullOr(DashboardTemplateVariablesList)),
+          notify_list: S.optional(S.NullOr(__S(5, __c0, 5))),
+          reflow_type: S.optional(S.String),
+          restricted_roles: S.optional(__S(5, __c0, 5)),
+          tabs: S.optional(S.NullOr(__S(32, __c4, 0))),
+          tags: S.optional(S.NullOr(__S(5, __c0, 5))),
+          template_variable_presets: S.optional(S.NullOr(__S(36, __c4, 4))),
+          template_variables: S.optional(S.NullOr(__S(38, __c4, 6))),
           title: S.String,
           url: S.optional(S.String),
-          widgets: DashboardWidgetsList,
+          widgets: __S(43, __c5, 3),
         }),
       ).annotate({ identifier: "Dashboard" });
     case 6:
@@ -17843,7 +14494,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(Creator),
+          author: S.optional(__S(47, __c5, 7)),
           created: S.optional(S.String),
           dashboard_count: S.optional(S.Number),
           id: S.optional(S.Number),
@@ -17857,14 +14508,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           aggregation_key: S.optional(S.String),
-          alert_type: S.optional(EventAlertType),
+          alert_type: S.optional(S.String),
           date_happened: S.optional(S.Number),
           device_name: S.optional(S.String),
           host: S.optional(S.String),
-          priority: S.optional(S.NullOr(EventPriority)),
+          priority: S.optional(S.NullOr(S.String)),
           related_event_id: S.optional(S.Number),
           source_type_name: S.optional(S.String),
-          tags: S.optional(CreateEventRequestTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
           text: S.String,
           title: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/events", code: 200 })),
@@ -17876,7 +14527,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          restricted_roles: S.optional(SyntheticsRestrictedRoles),
+          restricted_roles: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "SyntheticsGlobalVariableAttributes",
@@ -17884,7 +14535,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: SyntheticsGlobalVariableParserType,
+          type: S.String,
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyntheticsVariableParser" });
@@ -17893,8 +14544,8 @@ function __c6(j: number): any {
         S.Struct({
           field: S.optional(S.String),
           localVariableName: S.optional(S.String),
-          parser: S.optional(SyntheticsVariableParser),
-          type: SyntheticsGlobalVariableParseTestOptionsType,
+          parser: S.optional(__S(52, __c6, 4)),
+          type: S.String,
         }),
       ).annotate({
         identifier: "SyntheticsGlobalVariableParseTestOptions",
@@ -17911,7 +14562,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          totp_parameters: S.optional(SyntheticsGlobalVariableTOTPParameters),
+          totp_parameters: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({
         identifier: "SyntheticsGlobalVariableOptions",
@@ -17923,7 +14574,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(SyntheticsGlobalVariableOptions),
+          options: S.optional(__S(55, __c6, 7)),
           secure: S.optional(S.Boolean),
           value: S.optional(S.String),
         }),
@@ -17933,15 +14584,15 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(SyntheticsGlobalVariableAttributes),
+          attributes: S.optional(__S(51, __c6, 3)),
           description: S.String,
           is_fido: S.optional(S.Boolean),
           is_totp: S.optional(S.Boolean),
           name: S.String,
-          parse_test_options: S.optional(SyntheticsGlobalVariableParseTestOptions),
+          parse_test_options: S.optional(__S(53, __c6, 5)),
           parse_test_public_id: S.optional(S.String),
-          tags: CreateGlobalVariableRequestTagsList,
-          value: S.optional(SyntheticsGlobalVariableValue),
+          tags: __S(5, __c0, 5),
+          value: S.optional(__S(56, __c7, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/variables", code: 200 })),
       ).annotate({
         identifier: "CreateGlobalVariableRequest",
@@ -17949,16 +14600,16 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(SyntheticsGlobalVariableAttributes),
+          attributes: S.optional(__S(51, __c6, 3)),
           description: S.String,
           id: S.optional(S.String),
           is_fido: S.optional(S.Boolean),
           is_totp: S.optional(S.Boolean),
           name: S.String,
-          parse_test_options: S.optional(SyntheticsGlobalVariableParseTestOptions),
+          parse_test_options: S.optional(__S(53, __c6, 5)),
           parse_test_public_id: S.optional(S.String),
-          tags: SyntheticsGlobalVariableTagsList,
-          value: SyntheticsGlobalVariableValue,
+          tags: __S(5, __c0, 5),
+          value: __S(56, __c7, 0),
         }),
       ).annotate({ identifier: "SyntheticsGlobalVariable" });
     case 3:
@@ -17967,14 +14618,14 @@ function __c7(j: number): any {
           host_name: S.String.pipe(T.Label()),
           source: S.optional(S.String.pipe(T.Query())),
           host: S.optional(S.String),
-          tags: S.optional(CreateHostTagsRequestTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/tags/hosts/{host_name}", code: 200 })),
       ).annotate({ identifier: "CreateHostTagsRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
-          tags: S.optional(HostTagsTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "HostTags" });
     case 5:
@@ -17995,7 +14646,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(LogsExclusionFilter),
+          filter: S.optional(__S(62, __c7, 6)),
           is_enabled: S.optional(S.Boolean),
           name: S.String,
         }),
@@ -18005,7 +14656,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LogsExclusion);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18016,42 +14667,42 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           daily_limit: S.optional(S.Number),
-          daily_limit_reset: S.optional(LogsDailyLimitReset),
+          daily_limit_reset: S.optional(__S(61, __c7, 5)),
           daily_limit_warning_threshold_percentage: S.optional(S.Number),
-          exclusion_filters: S.optional(CreateLogsIndexRequestExclusionFiltersList),
-          filter: LogsFilter,
+          exclusion_filters: S.optional(__S(64, __c8, 0)),
+          filter: __S(65, __c8, 1),
           name: S.String,
           num_flex_logs_retention_days: S.optional(S.Number),
           num_retention_days: S.optional(S.Number),
-          tags: S.optional(CreateLogsIndexRequestTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/logs/config/indexes", code: 200 })),
       ).annotate({ identifier: "CreateLogsIndexRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           daily_limit: S.optional(S.Number),
-          daily_limit_reset: S.optional(LogsDailyLimitReset),
+          daily_limit_reset: S.optional(__S(61, __c7, 5)),
           daily_limit_warning_threshold_percentage: S.optional(S.Number),
-          exclusion_filters: S.optional(LogsIndexExclusionFiltersList),
-          filter: LogsFilter,
+          exclusion_filters: S.optional(__S(64, __c8, 0)),
+          filter: __S(65, __c8, 1),
           is_rate_limited: S.optional(S.Boolean),
           name: S.String,
           num_flex_logs_retention_days: S.optional(S.Number),
           num_retention_days: S.optional(S.Number),
-          tags: S.optional(LogsIndexTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "LogsIndex" });
     case 4:
-      return S.Array(LogsProcessor);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          filter: S.optional(LogsFilter),
+          filter: S.optional(__S(65, __c8, 1)),
           is_enabled: S.optional(S.Boolean),
           name: S.String,
-          processors: S.optional(CreateLogsPipelineRequestProcessorsList),
-          tags: S.optional(CreateLogsPipelineRequestTagsList),
+          processors: S.optional(__S(68, __c8, 4)),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/logs/config/pipelines", code: 200 })),
       ).annotate({
         identifier: "CreateLogsPipelineRequest",
@@ -18060,23 +14711,23 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          filter: S.optional(LogsFilter),
+          filter: S.optional(__S(65, __c8, 1)),
           id: S.optional(S.String),
           is_enabled: S.optional(S.Boolean),
           is_read_only: S.optional(S.Boolean),
           name: S.String,
-          processors: S.optional(LogsPipelineProcessorsList),
-          tags: S.optional(LogsPipelineTagsList),
+          processors: S.optional(__S(68, __c8, 4)),
+          tags: S.optional(__S(5, __c0, 5)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogsPipeline" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          category: MonitorAssetCategory,
+          category: S.String,
           name: S.String,
           resource_key: S.optional(S.String),
-          resource_type: S.optional(MonitorAssetResourceType),
+          resource_type: S.optional(S.String),
           url: S.String,
         }),
       ).annotate({ identifier: "MonitorAsset" });
@@ -18085,17 +14736,17 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MonitorAsset);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.NullOr(S.Number)),
-          scope: S.optional(MatchingDowntimeInputScopeList),
+          scope: S.optional(__S(5, __c0, 5)),
           start: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MatchingDowntimeInput" });
     case 2:
-      return S.Array(MatchingDowntimeInput);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18107,11 +14758,11 @@ function __c9(j: number): any {
         identifier: "MonitorOptionsCustomScheduleRecurrence",
       });
     case 4:
-      return S.Array(MonitorOptionsCustomScheduleRecurrence);
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          recurrences: S.optional(MonitorOptionsCustomScheduleRecurrencesList),
+          recurrences: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "MonitorOptionsCustomSchedule",
@@ -18130,8 +14781,8 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          custom_schedule: S.optional(MonitorOptionsCustomSchedule),
-          evaluation_window: S.optional(MonitorOptionsSchedulingOptionsEvaluationWindow),
+          custom_schedule: S.optional(__S(77, __c9, 5)),
+          evaluation_window: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({
         identifier: "MonitorOptionsSchedulingOptions",
@@ -18165,7 +14816,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "MonitorThresholds" });
     case 3:
-      return S.Array(MonitorFormulaAndFunctionQueryDefinition);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18182,38 +14833,38 @@ function __c10(j: number): any {
           new_group_delay: S.optional(S.NullOr(S.Number)),
           new_host_delay: S.optional(S.NullOr(S.Number)),
           no_data_timeframe: S.optional(S.NullOr(S.Number)),
-          notification_preset_name: S.optional(MonitorOptionsNotificationPresets),
+          notification_preset_name: S.optional(S.String),
           notify_audit: S.optional(S.Boolean),
-          notify_by: S.optional(MonitorOptionsInputNotifyByList),
+          notify_by: S.optional(__S(5, __c0, 5)),
           notify_no_data: S.optional(S.Boolean),
-          on_missing_data: S.optional(OnMissingDataOption),
+          on_missing_data: S.optional(S.String),
           renotify_interval: S.optional(S.NullOr(S.Number)),
           renotify_occurrences: S.optional(S.NullOr(S.Number)),
-          renotify_statuses: S.optional(S.NullOr(MonitorOptionsInputRenotifyStatusesList)),
+          renotify_statuses: S.optional(S.NullOr(__S(40, __c5, 0))),
           require_full_window: S.optional(S.Boolean),
-          scheduling_options: S.optional(MonitorOptionsSchedulingOptions),
-          silenced: S.optional(MonitorOptionsInputSilencedMap),
+          scheduling_options: S.optional(__S(79, __c9, 7)),
+          silenced: S.optional(__S(80, __c10, 0)),
           synthetics_check_id: S.optional(S.NullOr(S.String)),
-          threshold_windows: S.optional(MonitorThresholdWindowOptions),
-          thresholds: S.optional(MonitorThresholds),
+          threshold_windows: S.optional(__S(81, __c10, 1)),
+          thresholds: S.optional(__S(82, __c10, 2)),
           timeout_h: S.optional(S.NullOr(S.Number)),
-          variables: S.optional(MonitorOptionsInputVariablesList),
+          variables: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "MonitorOptionsInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(CreateMonitorRequestAssetsList),
-          draft_status: S.optional(MonitorDraftStatus),
-          matching_downtimes: S.optional(CreateMonitorRequestMatchingDowntimesList),
+          assets: S.optional(__S(72, __c9, 0)),
+          draft_status: S.optional(S.String),
+          matching_downtimes: S.optional(__S(74, __c9, 2)),
           message: S.optional(S.String),
           name: S.optional(S.String),
-          options: S.optional(MonitorOptionsInput),
+          options: S.optional(__S(84, __c10, 4)),
           priority: S.optional(S.NullOr(S.Number)),
           query: S.String,
-          restricted_roles: S.optional(S.NullOr(CreateMonitorRequestRestrictedRolesList)),
-          tags: S.optional(CreateMonitorRequestTagsList),
-          type: MonitorType,
+          restricted_roles: S.optional(S.NullOr(__S(5, __c0, 5))),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/monitor", code: 200 })),
       ).annotate({ identifier: "CreateMonitorRequest" });
     case 6:
@@ -18221,12 +14872,12 @@ function __c10(j: number): any {
         S.Struct({
           end: S.optional(S.NullOr(S.Number)),
           id: S.Number,
-          scope: S.optional(MatchingDowntimeScopeList),
+          scope: S.optional(__S(5, __c0, 5)),
           start: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MatchingDowntime" });
     case 7:
-      return S.Array(MatchingDowntime);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -18244,8 +14895,8 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          aggregation: S.optional(MonitorOptionsAggregation),
-          device_ids: S.optional(MonitorOptionsDeviceIdsList),
+          aggregation: S.optional(__S(88, __c11, 0)),
+          device_ids: S.optional(__S(40, __c5, 0)),
           enable_logs_sample: S.optional(S.Boolean),
           enable_samples: S.optional(S.Boolean),
           escalation_message: S.optional(S.String),
@@ -18259,22 +14910,22 @@ function __c11(j: number): any {
           new_group_delay: S.optional(S.NullOr(S.Number)),
           new_host_delay: S.optional(S.NullOr(S.Number)),
           no_data_timeframe: S.optional(S.NullOr(S.Number)),
-          notification_preset_name: S.optional(MonitorOptionsNotificationPresets),
+          notification_preset_name: S.optional(S.String),
           notify_audit: S.optional(S.Boolean),
-          notify_by: S.optional(MonitorOptionsNotifyByList),
+          notify_by: S.optional(__S(5, __c0, 5)),
           notify_no_data: S.optional(S.Boolean),
-          on_missing_data: S.optional(OnMissingDataOption),
+          on_missing_data: S.optional(S.String),
           renotify_interval: S.optional(S.NullOr(S.Number)),
           renotify_occurrences: S.optional(S.NullOr(S.Number)),
-          renotify_statuses: S.optional(S.NullOr(MonitorOptionsRenotifyStatusesList)),
+          renotify_statuses: S.optional(S.NullOr(__S(40, __c5, 0))),
           require_full_window: S.optional(S.Boolean),
-          scheduling_options: S.optional(MonitorOptionsSchedulingOptions),
-          silenced: S.optional(MonitorOptionsSilencedMap),
+          scheduling_options: S.optional(__S(79, __c9, 7)),
+          silenced: S.optional(__S(80, __c10, 0)),
           synthetics_check_id: S.optional(S.NullOr(S.String)),
-          threshold_windows: S.optional(MonitorThresholdWindowOptions),
-          thresholds: S.optional(MonitorThresholds),
+          threshold_windows: S.optional(__S(81, __c10, 1)),
+          thresholds: S.optional(__S(82, __c10, 2)),
           timeout_h: S.optional(S.NullOr(S.Number)),
-          variables: S.optional(MonitorOptionsVariablesList),
+          variables: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "MonitorOptions" });
     case 2:
@@ -18285,52 +14936,52 @@ function __c11(j: number): any {
           last_resolved_ts: S.optional(S.Number),
           last_triggered_ts: S.optional(S.Number),
           name: S.optional(S.String),
-          status: S.optional(MonitorOverallStates),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorStateGroup" });
     case 3:
-      return S.Record(S.String, MonitorStateGroup);
+      return S.Record(S.String, __S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(MonitorStateGroupsMap),
+          groups: S.optional(__S(91, __c11, 3)),
         }),
       ).annotate({ identifier: "MonitorState" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(MonitorAssetsList),
+          assets: S.optional(__S(72, __c9, 0)),
           created: S.optional(S.String),
-          creator: S.optional(Creator),
+          creator: S.optional(__S(47, __c5, 7)),
           deleted: S.optional(S.NullOr(S.String)),
-          draft_status: S.optional(MonitorDraftStatus),
+          draft_status: S.optional(S.String),
           id: S.optional(S.Number),
-          matching_downtimes: S.optional(MonitorMatchingDowntimesList),
+          matching_downtimes: S.optional(__S(87, __c10, 7)),
           message: S.optional(S.String),
           modified: S.optional(S.String),
           multi: S.optional(S.Boolean),
           name: S.optional(S.String),
-          options: S.optional(MonitorOptions),
-          overall_state: S.optional(MonitorOverallStates),
+          options: S.optional(__S(89, __c11, 1)),
+          overall_state: S.optional(S.String),
           priority: S.optional(S.NullOr(S.Number)),
           query: S.String,
-          restricted_roles: S.optional(S.NullOr(MonitorRestrictedRolesList)),
-          state: S.optional(MonitorState),
-          tags: S.optional(MonitorTagsList),
-          type: MonitorType,
+          restricted_roles: S.optional(S.NullOr(__S(5, __c0, 5))),
+          state: S.optional(__S(92, __c11, 4)),
+          tags: S.optional(__S(39, __c4, 7)),
+          type: S.String,
         }),
       ).annotate({ identifier: "Monitor" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attributes: NotebookCellCreateRequestAttributes,
-          type: NotebookCellResourceType,
+          attributes: S.Unknown,
+          type: S.String,
         }),
       ).annotate({
         identifier: "NotebookCellCreateRequest",
       });
     case 7:
-      return S.Array(NotebookCellCreateRequest);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -18340,17 +14991,17 @@ function __c12(j: number): any {
         S.Struct({
           is_template: S.optional(S.Boolean),
           take_snapshots: S.optional(S.Boolean),
-          type: S.optional(S.NullOr(NotebookMetadataType)),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "NotebookMetadata" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          available_values: S.optional(S.NullOr(NotebookTemplateVariableAvailableValuesList)),
-          available_values_query: S.optional(NotebookTemplateVariableAvailableValuesQuery),
-          data_source_mappings: S.optional(NotebookTemplateVariableDataSourceMappingsMap),
+          available_values: S.optional(S.NullOr(__S(5, __c0, 5))),
+          available_values_query: S.optional(S.Unknown),
+          data_source_mappings: S.optional(__S(10, __c1, 2)),
           default: S.optional(S.NullOr(S.String)),
-          defaults: S.optional(NotebookTemplateVariableDefaultsList),
+          defaults: S.optional(__S(5, __c0, 5)),
           name: S.String,
           placement: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
@@ -18358,18 +15009,16 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "NotebookTemplateVariable" });
     case 2:
-      return S.Array(NotebookTemplateVariable);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cells: NotebookCreateDataAttributesCellsList,
-          metadata: S.optional(NotebookMetadata),
+          cells: __S(95, __c11, 7),
+          metadata: S.optional(__S(96, __c12, 0)),
           name: S.String,
-          status: S.optional(NotebookStatus),
-          template_variables: S.optional(
-            S.NullOr(NotebookCreateDataAttributesTemplateVariablesList),
-          ),
-          time: NotebookGlobalTime,
+          status: S.optional(S.String),
+          template_variables: S.optional(S.NullOr(__S(98, __c12, 2))),
+          time: S.Unknown,
         }),
       ).annotate({
         identifier: "NotebookCreateDataAttributes",
@@ -18377,14 +15026,14 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attributes: NotebookCreateDataAttributes,
-          type: NotebookResourceType,
+          attributes: __S(99, __c12, 3),
+          type: S.String,
         }),
       ).annotate({ identifier: "NotebookCreateData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: NotebookCreateData,
+          data: __S(100, __c12, 4),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/notebooks", code: 200 })),
       ).annotate({ identifier: "CreateNotebookRequest" });
     case 6:
@@ -18404,9 +15053,9 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          attributes: NotebookCellResponseAttributes,
+          attributes: S.Unknown,
           id: S.String,
-          type: NotebookCellResourceType,
+          type: S.String,
         }),
       ).annotate({ identifier: "NotebookCellResponse" });
   }
@@ -18414,21 +15063,19 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NotebookCellResponse);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(NotebookAuthor),
-          cells: NotebookResponseDataAttributesCellsList,
+          author: S.optional(__S(102, __c12, 6)),
+          cells: __S(104, __c13, 0),
           created: S.optional(S.String),
-          metadata: S.optional(NotebookMetadata),
+          metadata: S.optional(__S(96, __c12, 0)),
           modified: S.optional(S.String),
           name: S.String,
-          status: S.optional(NotebookStatus),
-          template_variables: S.optional(
-            S.NullOr(NotebookResponseDataAttributesTemplateVariablesList),
-          ),
-          time: NotebookGlobalTime,
+          status: S.optional(S.String),
+          template_variables: S.optional(S.NullOr(__S(98, __c12, 2))),
+          time: S.Unknown,
         }),
       ).annotate({
         identifier: "NotebookResponseDataAttributes",
@@ -18436,15 +15083,15 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: NotebookResponseDataAttributes,
+          attributes: __S(105, __c13, 1),
           id: S.Number,
-          type: NotebookResourceType,
+          type: S.String,
         }),
       ).annotate({ identifier: "NotebookResponseData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(NotebookResponseData),
+          data: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({ identifier: "NotebookResponse" });
     case 4:
@@ -18472,9 +15119,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          metadata: S.optional(SyntheticsGlobalVariableAttributes),
+          metadata: S.optional(__S(51, __c6, 3)),
           name: S.String,
-          tags: CreatePrivateLocationRequestTagsList,
+          tags: __S(5, __c0, 5),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/private-locations", code: 200 })),
       ).annotate({
         identifier: "CreatePrivateLocationRequest",
@@ -18503,8 +15150,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(SyntheticsPrivateLocationSecretsAuthentication),
-          config_decryption: S.optional(SyntheticsPrivateLocationSecretsConfigDecryption),
+          authentication: S.optional(__S(111, __c13, 7)),
+          config_decryption: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({
         identifier: "SyntheticsPrivateLocationSecrets",
@@ -18514,10 +15161,10 @@ function __c14(j: number): any {
         S.Struct({
           description: S.String,
           id: S.optional(S.String),
-          metadata: S.optional(SyntheticsGlobalVariableAttributes),
+          metadata: S.optional(__S(51, __c6, 3)),
           name: S.String,
-          secrets: S.optional(SyntheticsPrivateLocationSecrets),
-          tags: SyntheticsPrivateLocationTagsList,
+          secrets: S.optional(__S(113, __c14, 1)),
+          tags: __S(5, __c0, 5),
         }),
       ).annotate({
         identifier: "SyntheticsPrivateLocation",
@@ -18535,8 +15182,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           config: S.optional(S.Unknown),
-          private_location: S.optional(SyntheticsPrivateLocation),
-          result_encryption: S.optional(SyntheticsPrivateLocationCreationResponseResultEncryption),
+          private_location: S.optional(__S(114, __c14, 2)),
+          result_encryption: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({
         identifier: "SyntheticsPrivateLocationCreationResponse",
@@ -18544,7 +15191,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          live_span: S.optional(DashboardGlobalTimeLiveSpan),
+          live_span: S.optional(S.String),
         }),
       ).annotate({ identifier: "DashboardGlobalTime" });
     case 6:
@@ -18557,7 +15204,7 @@ function __c14(j: number): any {
         identifier: "SharedDashboardInviteesItemsInput",
       });
     case 7:
-      return S.Array(SharedDashboardInviteesItemsInput);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -18569,38 +15216,36 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           prefix: S.optional(S.String),
           type: S.optional(S.NullOr(S.String)),
-          visible_tags: S.optional(S.NullOr(SelectableTemplateVariableItemsVisibleTagsList)),
+          visible_tags: S.optional(S.NullOr(__S(5, __c0, 5))),
         }),
       ).annotate({
         identifier: "SelectableTemplateVariableItems",
       });
     case 1:
-      return S.Array(SelectableTemplateVariableItems);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           high_density: S.optional(S.Boolean),
-          theme: S.optional(ViewingPreferencesTheme),
+          theme: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewingPreferences" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           dashboard_id: S.String,
-          dashboard_type: DashboardType,
-          embeddable_domains: S.optional(CreatePublicDashboardRequestEmbeddableDomainsList),
+          dashboard_type: S.String,
+          embeddable_domains: S.optional(__S(5, __c0, 5)),
           expiration: S.optional(S.NullOr(S.String)),
-          global_time: S.optional(DashboardGlobalTime),
+          global_time: S.optional(__S(117, __c14, 5)),
           global_time_selectable_enabled: S.optional(S.NullOr(S.Boolean)),
-          invitees: S.optional(CreatePublicDashboardRequestInviteesList),
-          selectable_template_vars: S.optional(
-            S.NullOr(CreatePublicDashboardRequestSelectableTemplateVarsList),
-          ),
-          share_list: S.optional(S.NullOr(CreatePublicDashboardRequestShareListList)),
-          share_type: S.optional(S.NullOr(DashboardShareType)),
-          status: S.optional(SharedDashboardStatus),
+          invitees: S.optional(__S(119, __c14, 7)),
+          selectable_template_vars: S.optional(S.NullOr(__S(121, __c15, 1))),
+          share_list: S.optional(S.NullOr(__S(5, __c0, 5))),
+          share_type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
           title: S.optional(S.String),
-          viewing_preferences: S.optional(ViewingPreferences),
+          viewing_preferences: S.optional(__S(122, __c15, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/public", code: 200 })),
       ).annotate({
         identifier: "CreatePublicDashboardRequest",
@@ -18623,28 +15268,28 @@ function __c15(j: number): any {
         identifier: "SharedDashboardInviteesItems",
       });
     case 6:
-      return S.Array(SharedDashboardInviteesItems);
+      return S.Array(__S(125, __c15, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(SharedDashboardAuthor),
+          author: S.optional(__S(124, __c15, 4)),
           created: S.optional(S.String),
           dashboard_id: S.String,
-          dashboard_type: DashboardType,
-          embeddable_domains: S.optional(SharedDashboardEmbeddableDomainsList),
+          dashboard_type: S.String,
+          embeddable_domains: S.optional(__S(5, __c0, 5)),
           expiration: S.optional(S.NullOr(S.String)),
-          global_time: S.optional(DashboardGlobalTime),
+          global_time: S.optional(__S(117, __c14, 5)),
           global_time_selectable_enabled: S.optional(S.NullOr(S.Boolean)),
-          invitees: S.optional(SharedDashboardInviteesList),
+          invitees: S.optional(__S(126, __c15, 6)),
           last_accessed: S.optional(S.NullOr(S.String)),
           public_url: S.optional(S.String),
-          selectable_template_vars: S.optional(S.NullOr(SharedDashboardSelectableTemplateVarsList)),
-          share_list: S.optional(S.NullOr(SharedDashboardShareListList)),
-          share_type: S.optional(S.NullOr(DashboardShareType)),
-          status: S.optional(SharedDashboardStatus),
+          selectable_template_vars: S.optional(S.NullOr(__S(121, __c15, 1))),
+          share_list: S.optional(S.NullOr(__S(5, __c0, 5))),
+          share_type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
           title: S.optional(S.String),
           token: S.optional(S.String),
-          viewing_preferences: S.optional(ViewingPreferences),
+          viewing_preferences: S.optional(__S(122, __c15, 2)),
         }),
       ).annotate({ identifier: "SharedDashboard" });
   }
@@ -18667,7 +15312,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_name: S.String.pipe(T.Label()),
-          display: S.optional(SlackIntegrationChannelDisplay),
+          display: S.optional(__S(128, __c16, 0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -18682,7 +15327,7 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(SlackIntegrationChannelDisplay),
+          display: S.optional(__S(128, __c16, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SlackIntegrationChannel" });
@@ -18700,27 +15345,27 @@ function __c16(j: number): any {
         S.Struct({
           target: S.Number,
           target_display: S.optional(S.String),
-          timeframe: SLOTimeframe,
+          timeframe: S.String,
           warning: S.optional(S.Number),
           warning_display: S.optional(S.String),
         }),
       ).annotate({ identifier: "SLOThreshold" });
     case 5:
-      return S.Array(SLOThreshold);
+      return S.Array(__S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          groups: S.optional(CreateSLORequestGroupsList),
-          monitor_ids: S.optional(CreateSLORequestMonitorIdsList),
+          groups: S.optional(__S(5, __c0, 5)),
+          monitor_ids: S.optional(__S(2, __c0, 2)),
           name: S.String,
-          query: S.optional(ServiceLevelObjectiveQuery),
-          sli_specification: S.optional(SLOSliSpec),
-          tags: S.optional(CreateSLORequestTagsList),
+          query: S.optional(__S(131, __c16, 3)),
+          sli_specification: S.optional(S.Unknown),
+          tags: S.optional(__S(5, __c0, 5)),
           target_threshold: S.optional(S.Number),
-          thresholds: CreateSLORequestThresholdsList,
-          timeframe: S.optional(SLOTimeframe),
-          type: SLOType,
+          thresholds: __S(133, __c16, 5),
+          timeframe: S.optional(S.String),
+          type: S.String,
           warning_threshold: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/slo", code: 200 })),
       ).annotate({ identifier: "CreateSLORequest" });
@@ -18728,21 +15373,21 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.Number),
-          creator: S.optional(Creator),
+          creator: S.optional(__S(47, __c5, 7)),
           description: S.optional(S.NullOr(S.String)),
-          groups: S.optional(ServiceLevelObjectiveGroupsList),
+          groups: S.optional(__S(5, __c0, 5)),
           id: S.optional(S.String),
           modified_at: S.optional(S.Number),
-          monitor_ids: S.optional(ServiceLevelObjectiveMonitorIdsList),
-          monitor_tags: S.optional(ServiceLevelObjectiveMonitorTagsList),
+          monitor_ids: S.optional(__S(2, __c0, 2)),
+          monitor_tags: S.optional(__S(5, __c0, 5)),
           name: S.String,
-          query: S.optional(ServiceLevelObjectiveQuery),
-          sli_specification: S.optional(SLOSliSpec),
-          tags: S.optional(ServiceLevelObjectiveTagsList),
+          query: S.optional(__S(131, __c16, 3)),
+          sli_specification: S.optional(S.Unknown),
+          tags: S.optional(__S(5, __c0, 5)),
           target_threshold: S.optional(S.Number),
-          thresholds: ServiceLevelObjectiveThresholdsList,
-          timeframe: S.optional(SLOTimeframe),
-          type: SLOType,
+          thresholds: __S(133, __c16, 5),
+          timeframe: S.optional(S.String),
+          type: S.String,
           warning_threshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceLevelObjective" });
@@ -18751,7 +15396,7 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ServiceLevelObjective);
+      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18764,21 +15409,21 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(SLOListResponseMetadataPage),
+          page: S.optional(__S(137, __c17, 1)),
         }),
       ).annotate({ identifier: "SLOListResponseMetadata" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLOListResponseDataList),
-          errors: S.optional(SLOListResponseErrorsList),
-          metadata: S.optional(SLOListResponseMetadata),
+          data: S.optional(__S(136, __c17, 0)),
+          errors: S.optional(__S(5, __c0, 5)),
+          metadata: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({ identifier: "SLOListResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: SLOCorrectionCategory,
+          category: S.String,
           description: S.optional(S.String),
           duration: S.optional(S.Number),
           end: S.optional(S.Number),
@@ -18794,14 +15439,14 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(SLOCorrectionCreateRequestAttributes),
-          type: SLOCorrectionType,
+          attributes: S.optional(__S(140, __c17, 4)),
+          type: S.String,
         }),
       ).annotate({ identifier: "SLOCorrectionCreateData" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLOCorrectionCreateData),
+          data: S.optional(__S(141, __c17, 5)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/slo/correction", code: 200 })),
       ).annotate({
         identifier: "CreateSLOCorrectionRequest",
@@ -18823,14 +15468,14 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(SLOCorrectionCategory),
+          category: S.optional(S.String),
           created_at: S.optional(S.NullOr(S.Number)),
-          creator: S.optional(Creator),
+          creator: S.optional(__S(47, __c5, 7)),
           description: S.optional(S.String),
           duration: S.optional(S.NullOr(S.Number)),
           end: S.optional(S.NullOr(S.Number)),
           modified_at: S.optional(S.NullOr(S.Number)),
-          modifier: S.optional(S.NullOr(SLOCorrectionResponseAttributesModifier)),
+          modifier: S.optional(S.NullOr(__S(143, __c17, 7))),
           rrule: S.optional(S.NullOr(S.String)),
           slo_id: S.optional(S.NullOr(S.String)),
           slo_query: S.optional(S.NullOr(S.String)),
@@ -18843,19 +15488,19 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(SLOCorrectionResponseAttributes),
+          attributes: S.optional(__S(144, __c18, 0)),
           id: S.optional(S.String),
-          type: S.optional(SLOCorrectionType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SLOCorrection" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLOCorrection),
+          data: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({ identifier: "SLOCorrectionResponse" });
     case 3:
-      return S.Array(SyntheticsAssertion);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18864,11 +15509,11 @@ function __c18(j: number): any {
           name: S.String,
           pattern: S.optional(S.String),
           secure: S.optional(S.Boolean),
-          type: SyntheticsConfigVariableType,
+          type: S.String,
         }),
       ).annotate({ identifier: "SyntheticsConfigVariable" });
     case 5:
-      return S.Array(SyntheticsConfigVariable);
+      return S.Array(__S(148, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -18882,8 +15527,8 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cert: S.optional(SyntheticsTestRequestCertificateItem),
-          key: S.optional(SyntheticsTestRequestCertificateItem),
+          cert: S.optional(__S(150, __c18, 6)),
+          key: S.optional(__S(150, __c18, 6)),
         }),
       ).annotate({
         identifier: "SyntheticsTestRequestCertificate",
@@ -18907,11 +15552,11 @@ function __c19(j: number): any {
         identifier: "SyntheticsTestRequestBodyFile",
       });
     case 1:
-      return S.Array(SyntheticsTestRequestBodyFile);
+      return S.Array(__S(152, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(SyntheticsTestHeaders),
+          headers: S.optional(__S(10, __c1, 2)),
           url: S.String,
         }),
       ).annotate({
@@ -18923,41 +15568,41 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allow_insecure: S.optional(S.Boolean),
-          basicAuth: S.optional(SyntheticsBasicAuth),
+          basicAuth: S.optional(S.Unknown),
           body: S.optional(S.String),
-          bodyType: S.optional(SyntheticsTestRequestBodyType),
-          callType: S.optional(SyntheticsTestCallType),
-          certificate: S.optional(SyntheticsTestRequestCertificate),
-          certificateDomains: S.optional(SyntheticsTestRequestCertificateDomainsList),
+          bodyType: S.optional(S.String),
+          callType: S.optional(S.String),
+          certificate: S.optional(__S(151, __c18, 7)),
+          certificateDomains: S.optional(__S(5, __c0, 5)),
           checkCertificateRevocation: S.optional(S.Boolean),
           compressedJsonDescriptor: S.optional(S.String),
           compressedProtoFile: S.optional(S.String),
           disableAiaIntermediateFetching: S.optional(S.Boolean),
           dnsServer: S.optional(S.String),
-          dnsServerPort: S.optional(SyntheticsTestRequestDNSServerPort),
-          files: S.optional(SyntheticsTestRequestFilesList),
+          dnsServerPort: S.optional(S.Unknown),
+          files: S.optional(__S(153, __c19, 1)),
           follow_redirects: S.optional(S.Boolean),
-          form: S.optional(SyntheticsTestRequestFormMap),
-          headers: S.optional(SyntheticsTestHeaders),
+          form: S.optional(__S(10, __c1, 2)),
+          headers: S.optional(__S(10, __c1, 2)),
           host: S.optional(S.String),
-          httpVersion: S.optional(SyntheticsTestOptionsHTTPVersion),
+          httpVersion: S.optional(S.String),
           ignore_certificate_validation: S.optional(S.Boolean),
           isMessageBase64Encoded: S.optional(S.Boolean),
-          mcpProtocolVersion: S.optional(SyntheticsMCPProtocolVersion),
+          mcpProtocolVersion: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(SyntheticsTestMetadata),
+          metadata: S.optional(__S(10, __c1, 2)),
           method: S.optional(S.String),
           noSavingResponseBody: S.optional(S.Boolean),
           numberOfPackets: S.optional(S.Number),
           persistCookies: S.optional(S.Boolean),
-          port: S.optional(SyntheticsTestRequestPort),
-          proxy: S.optional(SyntheticsTestRequestProxy),
+          port: S.optional(S.Unknown),
+          proxy: S.optional(__S(154, __c19, 2)),
           query: S.optional(S.Unknown),
           servername: S.optional(S.String),
           service: S.optional(S.String),
           shouldTrackHops: S.optional(S.Boolean),
           timeout: S.optional(S.Number),
-          toolArgs: S.optional(SyntheticsTestRequestToolArgsMap),
+          toolArgs: S.optional(__S(155, __c19, 3)),
           toolName: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -18972,14 +15617,14 @@ function __c19(j: number): any {
         identifier: "SyntheticsTestOptionsRetry",
       });
     case 6:
-      return S.Array(SyntheticsAPIStepInput);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          assertions: S.optional(SyntheticsAPITestConfigInputAssertionsList),
-          configVariables: S.optional(SyntheticsAPITestConfigInputConfigVariablesList),
-          request: S.optional(SyntheticsTestRequest),
-          steps: S.optional(SyntheticsAPITestConfigInputStepsList),
+          assertions: S.optional(__S(147, __c18, 3)),
+          configVariables: S.optional(__S(149, __c18, 5)),
+          request: S.optional(__S(156, __c19, 4)),
+          steps: S.optional(__S(158, __c19, 6)),
           variablesFromScript: S.optional(S.String),
         }),
       ).annotate({
@@ -18992,16 +15637,14 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          executionRule: SyntheticsTestExecutionRule,
+          executionRule: S.String,
         }),
       ).annotate({ identifier: "SyntheticsTestCiOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           escalation_message: S.optional(S.String),
-          notification_preset_name: S.optional(
-            SyntheticsTestOptionsMonitorOptionsNotificationPresetName,
-          ),
+          notification_preset_name: S.optional(S.String),
           renotify_interval: S.optional(S.Number),
           renotify_occurrences: S.optional(S.Number),
         }),
@@ -19029,11 +15672,11 @@ function __c20(j: number): any {
         identifier: "SyntheticsTestOptionsSchedulingTimeframe",
       });
     case 4:
-      return S.Array(SyntheticsTestOptionsSchedulingTimeframe);
+      return S.Array(__S(163, __c20, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          timeframes: SyntheticsTestOptionsSchedulingTimeframesList,
+          timeframes: __S(164, __c20, 4),
           timezone: S.String,
         }),
       ).annotate({
@@ -19045,46 +15688,46 @@ function __c20(j: number): any {
           accept_self_signed: S.optional(S.Boolean),
           allow_insecure: S.optional(S.Boolean),
           bits_ai_auto_investigate: S.optional(S.Boolean),
-          blockedRequestPatterns: S.optional(SyntheticsTestOptionsBlockedRequestPatternsList),
+          blockedRequestPatterns: S.optional(__S(5, __c0, 5)),
           captureNetworkPayloads: S.optional(S.Boolean),
           checkCertificateRevocation: S.optional(S.Boolean),
-          ci: S.optional(SyntheticsTestCiOptions),
-          device_ids: S.optional(SyntheticsTestOptionsDeviceIdsList),
+          ci: S.optional(__S(160, __c20, 0)),
+          device_ids: S.optional(__S(5, __c0, 5)),
           disableAiaIntermediateFetching: S.optional(S.Boolean),
           disableCors: S.optional(S.Boolean),
           disableCsp: S.optional(S.Boolean),
           enableProfiling: S.optional(S.Boolean),
           enableSecurityTesting: S.optional(S.Boolean),
           follow_redirects: S.optional(S.Boolean),
-          httpVersion: S.optional(SyntheticsTestOptionsHTTPVersion),
+          httpVersion: S.optional(S.String),
           ignoreServerCertificateError: S.optional(S.Boolean),
           ignore_certificate_validation: S.optional(S.Boolean),
           initialNavigationTimeout: S.optional(S.Number),
           min_failure_duration: S.optional(S.Number),
           min_location_failed: S.optional(S.Number),
           monitor_name: S.optional(S.String),
-          monitor_options: S.optional(SyntheticsTestOptionsMonitorOptions),
+          monitor_options: S.optional(__S(161, __c20, 1)),
           monitor_priority: S.optional(S.Number),
           noScreenshot: S.optional(S.Boolean),
-          restricted_roles: S.optional(SyntheticsRestrictedRoles),
-          retry: S.optional(SyntheticsTestOptionsRetry),
-          rumSettings: S.optional(SyntheticsBrowserTestRumSettings),
-          scheduling: S.optional(SyntheticsTestOptionsScheduling),
+          restricted_roles: S.optional(__S(5, __c0, 5)),
+          retry: S.optional(__S(157, __c19, 5)),
+          rumSettings: S.optional(__S(162, __c20, 2)),
+          scheduling: S.optional(__S(165, __c20, 5)),
           tick_every: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SyntheticsTestOptions" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: SyntheticsAPITestConfigInput,
-          locations: CreateSyntheticsAPITestRequestLocationsList,
+          config: __S(159, __c19, 7),
+          locations: __S(5, __c0, 5),
           message: S.String,
           name: S.String,
-          options: SyntheticsTestOptions,
-          status: S.optional(SyntheticsTestPauseStatus),
-          subtype: S.optional(SyntheticsTestDetailsSubType),
-          tags: S.optional(CreateSyntheticsAPITestRequestTagsList),
-          type: SyntheticsAPITestType,
+          options: __S(166, __c20, 6),
+          status: S.optional(S.String),
+          subtype: S.optional(S.String),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/api", code: 200 })),
       ).annotate({
         identifier: "CreateSyntheticsAPITestRequest",
@@ -19094,31 +15737,31 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SyntheticsAPIStep);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          assertions: S.optional(SyntheticsAPITestConfigAssertionsList),
-          configVariables: S.optional(SyntheticsAPITestConfigConfigVariablesList),
-          request: S.optional(SyntheticsTestRequest),
-          steps: S.optional(SyntheticsAPITestConfigStepsList),
+          assertions: S.optional(__S(147, __c18, 3)),
+          configVariables: S.optional(__S(149, __c18, 5)),
+          request: S.optional(__S(156, __c19, 4)),
+          steps: S.optional(__S(168, __c21, 0)),
           variablesFromScript: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyntheticsAPITestConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: SyntheticsAPITestConfig,
-          locations: SyntheticsAPITestLocationsList,
+          config: __S(169, __c21, 1),
+          locations: __S(5, __c0, 5),
           message: S.String,
           monitor_id: S.optional(S.Number),
           name: S.String,
-          options: SyntheticsTestOptions,
+          options: __S(166, __c20, 6),
           public_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestPauseStatus),
-          subtype: S.optional(SyntheticsTestDetailsSubType),
-          tags: S.optional(SyntheticsAPITestTagsList),
-          type: SyntheticsAPITestType,
+          status: S.optional(S.String),
+          subtype: S.optional(S.String),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }),
       ).annotate({ identifier: "SyntheticsAPITest" });
     case 3:
@@ -19129,21 +15772,21 @@ function __c21(j: number): any {
           name: S.String,
           pattern: S.optional(S.String),
           secure: S.optional(S.Boolean),
-          type: SyntheticsBrowserVariableType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "SyntheticsBrowserVariable",
       });
     case 4:
-      return S.Array(SyntheticsBrowserVariable);
+      return S.Array(__S(171, __c21, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assertions: SyntheticsBrowserTestConfigAssertionsList,
-          configVariables: S.optional(SyntheticsBrowserTestConfigConfigVariablesList),
-          request: SyntheticsTestRequest,
+          assertions: __S(147, __c18, 3),
+          configVariables: S.optional(__S(149, __c18, 5)),
+          request: __S(156, __c19, 4),
           setCookie: S.optional(S.String),
-          variables: S.optional(SyntheticsBrowserTestConfigVariablesList),
+          variables: S.optional(__S(172, __c21, 4)),
         }),
       ).annotate({
         identifier: "SyntheticsBrowserTestConfig",
@@ -19160,11 +15803,11 @@ function __c21(j: number): any {
           params: S.optional(S.Unknown),
           public_id: S.optional(S.String),
           timeout: S.optional(S.Number),
-          type: S.optional(SyntheticsStepType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyntheticsStep" });
     case 7:
-      return S.Array(SyntheticsStep);
+      return S.Array(__S(174, __c21, 6));
   }
 }
 function __c22(j: number): any {
@@ -19172,15 +15815,15 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: SyntheticsBrowserTestConfig,
-          locations: CreateSyntheticsBrowserTestRequestLocationsList,
+          config: __S(173, __c21, 5),
+          locations: __S(5, __c0, 5),
           message: S.String,
           name: S.String,
-          options: SyntheticsTestOptions,
-          status: S.optional(SyntheticsTestPauseStatus),
-          steps: S.optional(CreateSyntheticsBrowserTestRequestStepsList),
-          tags: S.optional(CreateSyntheticsBrowserTestRequestTagsList),
-          type: SyntheticsBrowserTestType,
+          options: __S(166, __c20, 6),
+          status: S.optional(S.String),
+          steps: S.optional(__S(175, __c21, 7)),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/browser", code: 200 })),
       ).annotate({
         identifier: "CreateSyntheticsBrowserTestRequest",
@@ -19188,24 +15831,24 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          config: SyntheticsBrowserTestConfig,
-          locations: SyntheticsBrowserTestLocationsList,
+          config: __S(173, __c21, 5),
+          locations: __S(5, __c0, 5),
           message: S.String,
           monitor_id: S.optional(S.Number),
           name: S.String,
-          options: SyntheticsTestOptions,
+          options: __S(166, __c20, 6),
           public_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestPauseStatus),
-          steps: S.optional(SyntheticsBrowserTestStepsList),
-          tags: S.optional(SyntheticsBrowserTestTagsList),
-          type: SyntheticsBrowserTestType,
+          status: S.optional(S.String),
+          steps: S.optional(__S(175, __c21, 7)),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }),
       ).annotate({ identifier: "SyntheticsBrowserTest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          initialApplicationArguments: S.optional(SyntheticsMobileTestInitialApplicationArguments),
-          variables: S.optional(SyntheticsMobileTestConfigVariablesList),
+          initialApplicationArguments: S.optional(__S(10, __c1, 2)),
+          variables: S.optional(__S(149, __c18, 5)),
         }),
       ).annotate({
         identifier: "SyntheticsMobileTestConfig",
@@ -19213,20 +15856,20 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          principals: S.optional(SyntheticsTestRestrictionPolicyBindingPrincipals),
-          relation: S.optional(SyntheticsTestRestrictionPolicyBindingRelation),
+          principals: S.optional(__S(5, __c0, 5)),
+          relation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SyntheticsTestRestrictionPolicyBinding",
       });
     case 4:
-      return S.Array(SyntheticsTestRestrictionPolicyBinding);
+      return S.Array(__S(179, __c22, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String,
           referenceId: S.String,
-          referenceType: SyntheticsMobileTestsMobileApplicationReferenceType,
+          referenceType: S.String,
         }),
       ).annotate({
         identifier: "SyntheticsMobileTestsMobileApplication",
@@ -19235,21 +15878,21 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowApplicationCrash: S.optional(S.Boolean),
-          bindings: S.optional(SyntheticsMobileTestOptionsBindingsList),
+          bindings: S.optional(__S(180, __c22, 4)),
           bits_ai_auto_investigate: S.optional(S.Boolean),
-          ci: S.optional(SyntheticsTestCiOptions),
+          ci: S.optional(__S(160, __c20, 0)),
           defaultStepTimeout: S.optional(S.Number),
-          device_ids: SyntheticsMobileTestOptionsDeviceIdsList,
+          device_ids: __S(5, __c0, 5),
           disableAutoAcceptAlert: S.optional(S.Boolean),
           min_failure_duration: S.optional(S.Number),
-          mobileApplication: SyntheticsMobileTestsMobileApplication,
+          mobileApplication: __S(181, __c22, 5),
           monitor_name: S.optional(S.String),
-          monitor_options: S.optional(SyntheticsTestOptionsMonitorOptions),
+          monitor_options: S.optional(__S(161, __c20, 1)),
           monitor_priority: S.optional(S.Number),
           noScreenshot: S.optional(S.Boolean),
-          restricted_roles: S.optional(SyntheticsRestrictedRoles),
-          retry: S.optional(SyntheticsTestOptionsRetry),
-          scheduling: S.optional(SyntheticsTestOptionsScheduling),
+          restricted_roles: S.optional(__S(5, __c0, 5)),
+          retry: S.optional(__S(157, __c19, 5)),
+          scheduling: S.optional(__S(165, __c20, 5)),
           tick_every: S.Number,
           verbosity: S.optional(S.Number),
         }),
@@ -19272,19 +15915,19 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(SyntheticsMobileStepParamsElementUserLocatorValuesItemsType),
+          type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SyntheticsMobileStepParamsElementUserLocatorValuesItems",
       });
     case 1:
-      return S.Array(SyntheticsMobileStepParamsElementUserLocatorValuesItems);
+      return S.Array(__S(184, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           failTestOnCannotLocate: S.optional(S.Boolean),
-          values: S.optional(SyntheticsMobileStepParamsElementUserLocatorValuesList),
+          values: S.optional(__S(185, __c23, 1)),
         }),
       ).annotate({
         identifier: "SyntheticsMobileStepParamsElementUserLocator",
@@ -19293,19 +15936,19 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
-          contextType: S.optional(SyntheticsMobileStepParamsElementContextType),
+          contextType: S.optional(S.String),
           elementDescription: S.optional(S.String),
           multiLocator: S.optional(S.Unknown),
-          relativePosition: S.optional(SyntheticsMobileStepParamsElementRelativePosition),
+          relativePosition: S.optional(__S(183, __c22, 7)),
           textContent: S.optional(S.String),
-          userLocator: S.optional(SyntheticsMobileStepParamsElementUserLocator),
+          userLocator: S.optional(__S(186, __c23, 2)),
           viewName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SyntheticsMobileStepParamsElement",
       });
     case 4:
-      return S.Array(SyntheticsMobileStepParamsPositionsItems);
+      return S.Array(__S(183, __c22, 7));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -19318,16 +15961,16 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          check: S.optional(SyntheticsCheckType),
+          check: S.optional(S.String),
           delay: S.optional(S.Number),
-          direction: S.optional(SyntheticsMobileStepParamsDirection),
-          element: S.optional(SyntheticsMobileStepParamsElement),
+          direction: S.optional(S.String),
+          element: S.optional(__S(187, __c23, 3)),
           enabled: S.optional(S.Boolean),
           maxScrolls: S.optional(S.Number),
-          positions: S.optional(SyntheticsMobileStepParamsPositions),
+          positions: S.optional(__S(188, __c23, 4)),
           subtestPublicId: S.optional(S.String),
-          value: S.optional(SyntheticsMobileStepParamsValue),
-          variable: S.optional(SyntheticsMobileStepParamsVariable),
+          value: S.optional(S.Unknown),
+          variable: S.optional(__S(189, __c23, 5)),
           withEnter: S.optional(S.Boolean),
           x: S.optional(S.Number),
           y: S.optional(S.Number),
@@ -19343,10 +15986,10 @@ function __c23(j: number): any {
           isCritical: S.optional(S.Boolean),
           name: S.String,
           noScreenshot: S.optional(S.Boolean),
-          params: SyntheticsMobileStepParams,
+          params: __S(190, __c23, 6),
           publicId: S.optional(S.String),
           timeout: S.optional(S.Number),
-          type: SyntheticsMobileStepType,
+          type: S.String,
         }),
       ).annotate({ identifier: "SyntheticsMobileStep" });
   }
@@ -19354,19 +15997,19 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SyntheticsMobileStep);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          config: SyntheticsMobileTestConfig,
-          device_ids: S.optional(CreateSyntheticsMobileTestRequestDeviceIdsList),
+          config: __S(178, __c22, 2),
+          device_ids: S.optional(__S(5, __c0, 5)),
           message: S.String,
           name: S.String,
-          options: SyntheticsMobileTestOptions,
-          status: S.optional(SyntheticsTestPauseStatus),
-          steps: S.optional(CreateSyntheticsMobileTestRequestStepsList),
-          tags: S.optional(CreateSyntheticsMobileTestRequestTagsList),
-          type: SyntheticsMobileTestType,
+          options: __S(182, __c22, 6),
+          status: S.optional(S.String),
+          steps: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/mobile", code: 200 })),
       ).annotate({
         identifier: "CreateSyntheticsMobileTestRequest",
@@ -19374,23 +16017,23 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: SyntheticsMobileTestConfig,
-          device_ids: S.optional(SyntheticsMobileTestDeviceIdsList),
+          config: __S(178, __c22, 2),
+          device_ids: S.optional(__S(5, __c0, 5)),
           message: S.String,
           monitor_id: S.optional(S.Number),
           name: S.String,
-          options: SyntheticsMobileTestOptions,
+          options: __S(182, __c22, 6),
           public_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestPauseStatus),
-          steps: S.optional(SyntheticsMobileTestStepsList),
-          tags: S.optional(SyntheticsMobileTestTagsList),
-          type: SyntheticsMobileTestType,
+          status: S.optional(S.String),
+          steps: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }),
       ).annotate({ identifier: "SyntheticsMobileTest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          access_role: S.optional(S.NullOr(AccessRole)),
+          access_role: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.Boolean),
           email: S.optional(S.String),
           handle: S.optional(S.String),
@@ -19400,14 +16043,14 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(User),
+          user: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "UserResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           custom_headers: S.optional(S.NullOr(S.String)),
-          encode_as: S.optional(WebhooksIntegrationEncoding),
+          encode_as: S.optional(S.String),
           name: S.String,
           payload: S.optional(S.NullOr(S.String)),
           url: S.String,
@@ -19425,7 +16068,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           custom_headers: S.optional(S.NullOr(S.String)),
-          encode_as: S.optional(WebhooksIntegrationEncoding),
+          encode_as: S.optional(S.String),
           name: S.String,
           payload: S.optional(S.NullOr(S.String)),
           url: S.String,
@@ -19485,16 +16128,14 @@ function __c25(j: number): any {
           container_app_filters: S.optional(S.String),
           cspm_enabled: S.optional(S.Boolean),
           custom_metrics_enabled: S.optional(S.Boolean),
-          errors: S.optional(DeleteAzureIntegrationRequestErrorsList),
+          errors: S.optional(__S(5, __c0, 5)),
           host_filters: S.optional(S.String),
           metrics_enabled: S.optional(S.Boolean),
           metrics_enabled_default: S.optional(S.Boolean),
           new_client_id: S.optional(S.String),
           new_tenant_name: S.optional(S.String),
           resource_collection_enabled: S.optional(S.Boolean),
-          resource_provider_configs: S.optional(
-            DeleteAzureIntegrationRequestResourceProviderConfigsList,
-          ),
+          resource_provider_configs: S.optional(__S(19, __c2, 3)),
           secretless_auth_enabled: S.optional(S.Boolean),
           tenant_name: S.optional(S.String),
           usage_metrics_enabled: S.optional(S.Boolean),
@@ -19540,15 +16181,15 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: DashboardResourceType,
+          type: S.String,
         }),
       ).annotate({ identifier: "DashboardBulkActionData" });
     case 1:
-      return S.Array(DashboardBulkActionData);
+      return S.Array(__S(208, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: DashboardBulkActionDataList,
+          data: __S(209, __c26, 1),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard", code: 200 })),
       ).annotate({ identifier: "DeleteDashboardsRequest" });
     case 3:
@@ -19667,7 +16308,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
-          data: SharedDashboardInvitesDataInput,
+          data: S.Unknown,
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -19692,8 +16333,8 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLODeleteResponseDataList),
-          errors: S.optional(SLODeleteResponseErrorsMap),
+          data: S.optional(__S(5, __c0, 5)),
+          errors: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "SLODeleteResponse" });
     case 2:
@@ -19711,11 +16352,11 @@ function __c28(j: number): any {
         identifier: "DeleteSLOCorrectionRequest",
       });
     case 3:
-      return S.Record(S.String, SLOBulkDeleteValueList);
+      return S.Record(S.String, __S(40, __c5, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: SLOBulkDelete.pipe(T.HttpBody()),
+          body: __S(227, __c28, 3).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/slo/bulk_delete", code: 200 })),
       ).annotate({
         identifier: "DeleteSLOTimeframeInBulkRequest",
@@ -19723,8 +16364,8 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deleted: S.optional(SLOBulkDeleteResponseDataDeletedList),
-          updated: S.optional(SLOBulkDeleteResponseDataUpdatedList),
+          deleted: S.optional(__S(5, __c0, 5)),
+          updated: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "SLOBulkDeleteResponseData",
@@ -19734,11 +16375,11 @@ function __c28(j: number): any {
         S.Struct({
           id: S.String,
           message: S.String,
-          timeframe: SLOErrorTimeframe,
+          timeframe: S.String,
         }),
       ).annotate({ identifier: "SLOBulkDeleteError" });
     case 7:
-      return S.Array(SLOBulkDeleteError);
+      return S.Array(__S(230, __c28, 6));
   }
 }
 function __c29(j: number): any {
@@ -19746,15 +16387,15 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLOBulkDeleteResponseData),
-          errors: S.optional(SLOBulkDeleteResponseErrorsList),
+          data: S.optional(__S(229, __c28, 5)),
+          errors: S.optional(__S(231, __c28, 7)),
         }),
       ).annotate({ identifier: "SLOBulkDeleteResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           force_delete_dependencies: S.optional(S.Boolean),
-          public_ids: S.optional(DeleteTestsRequestPublicIdsList),
+          public_ids: S.optional(__S(5, __c0, 5)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/delete", code: 200 })),
       ).annotate({ identifier: "DeleteTestsRequest" });
     case 2:
@@ -19765,11 +16406,11 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "SyntheticsDeletedTest" });
     case 3:
-      return S.Array(SyntheticsDeletedTest);
+      return S.Array(__S(234, __c29, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deleted_tests: S.optional(SyntheticsDeleteTestsResponseDeletedTestsList),
+          deleted_tests: S.optional(__S(235, __c29, 3)),
         }),
       ).annotate({
         identifier: "SyntheticsDeleteTestsResponse",
@@ -19828,15 +16469,15 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           variable_id: S.String.pipe(T.Label()),
-          attributes: S.optional(SyntheticsGlobalVariableAttributes),
+          attributes: S.optional(__S(51, __c6, 3)),
           description: S.String,
           is_fido: S.optional(S.Boolean),
           is_totp: S.optional(S.Boolean),
           name: S.String,
-          parse_test_options: S.optional(SyntheticsGlobalVariableParseTestOptions),
+          parse_test_options: S.optional(__S(53, __c6, 5)),
           parse_test_public_id: S.optional(S.String),
-          tags: EditGlobalVariableRequestTagsList,
-          value: S.optional(SyntheticsGlobalVariableValue),
+          tags: __S(5, __c0, 5),
+          value: S.optional(__S(56, __c7, 0)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/synthetics/variables/{variable_id}", code: 200 }),
         ),
@@ -19847,7 +16488,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           from_ts: S.Number,
-          public_ids: FetchUptimesRequestPublicIdsList,
+          public_ids: __S(5, __c0, 5),
           to_ts: S.Number,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/uptimes", code: 200 })),
       ).annotate({ identifier: "FetchUptimesRequest" });
@@ -19861,15 +16502,15 @@ function __c30(j: number): any {
         identifier: "SLOHistoryResponseErrorWithType",
       });
     case 5:
-      return S.Array(SLOHistoryResponseErrorWithType);
+      return S.Array(__S(244, __c30, 4));
     case 6:
-      return S.Array(SyntheticsUptimeHistoryItemList);
+      return S.Array(__S(2, __c0, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(S.NullOr(SyntheticsUptimeErrorsList)),
+          errors: S.optional(S.NullOr(__S(245, __c30, 5))),
           group: S.optional(S.String),
-          history: S.optional(SyntheticsUptimeHistoryList),
+          history: S.optional(__S(246, __c30, 6)),
           span_precision: S.optional(S.Number),
           uptime: S.optional(S.Number),
         }),
@@ -19882,15 +16523,15 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           from_ts: S.optional(S.Number),
-          overall: S.optional(SyntheticsUptime),
+          overall: S.optional(__S(247, __c30, 7)),
           public_id: S.optional(S.String),
           to_ts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SyntheticsTestUptime" });
     case 1:
-      return S.Array(SyntheticsTestUptime);
+      return S.Array(__S(248, __c31, 0));
     case 2:
-      return S.suspend(() => FetchUptimesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(249, __c31, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "FetchUptimesResponse",
       });
     case 3:
@@ -19913,7 +16554,7 @@ function __c31(j: number): any {
           public_id: S.String.pipe(T.Label()),
           from_ts: S.optional(S.Number.pipe(T.Query())),
           to_ts: S.optional(S.Number.pipe(T.Query())),
-          probe_dc: S.optional(GetAPITestLatestResultsRequestProbeDcList.pipe(T.Query())),
+          probe_dc: S.optional(__S(5, __c0, 5).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/v1/synthetics/tests/{public_id}/results", code: 200 }),
         ),
@@ -19938,7 +16579,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           passed: S.optional(S.Boolean),
-          timings: S.optional(SyntheticsTiming),
+          timings: S.optional(__S(254, __c31, 6)),
         }),
       ).annotate({
         identifier: "SyntheticsAPITestResultShortResult",
@@ -19952,20 +16593,20 @@ function __c32(j: number): any {
         S.Struct({
           check_time: S.optional(S.Number),
           probe_dc: S.optional(S.String),
-          result: S.optional(SyntheticsAPITestResultShortResult),
+          result: S.optional(__S(255, __c31, 7)),
           result_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestMonitorStatus),
+          status: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SyntheticsAPITestResultShort",
       });
     case 1:
-      return S.Array(SyntheticsAPITestResultShort);
+      return S.Array(__S(256, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           last_timestamp_fetched: S.optional(S.Number),
-          results: S.optional(SyntheticsGetAPITestLatestResultsResponseResultsList),
+          results: S.optional(__S(257, __c32, 1)),
         }),
       ).annotate({
         identifier: "SyntheticsGetAPITestLatestResultsResponse",
@@ -19986,16 +16627,16 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assertions: S.optional(SyntheticsTestConfigAssertionsList),
-          configVariables: S.optional(SyntheticsTestConfigConfigVariablesList),
-          request: S.optional(SyntheticsTestRequest),
-          variables: S.optional(SyntheticsTestConfigVariablesList),
+          assertions: S.optional(__S(147, __c18, 3)),
+          configVariables: S.optional(__S(149, __c18, 5)),
+          request: S.optional(__S(156, __c19, 4)),
+          variables: S.optional(__S(172, __c21, 4)),
         }),
       ).annotate({ identifier: "SyntheticsTestConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: SyntheticsTestConfig,
+          config: __S(260, __c32, 4),
         }),
       ).annotate({
         identifier: "SyntheticsAPITestResultFullCheck",
@@ -20036,14 +16677,14 @@ function __c33(j: number): any {
         S.Struct({
           cipher: S.optional(S.String),
           exponent: S.optional(S.Number),
-          extKeyUsage: S.optional(SyntheticsSSLCertificateExtKeyUsageList),
+          extKeyUsage: S.optional(__S(5, __c0, 5)),
           fingerprint: S.optional(S.String),
           fingerprint256: S.optional(S.String),
-          issuer: S.optional(SyntheticsSSLCertificateIssuer),
+          issuer: S.optional(__S(262, __c32, 6)),
           modulus: S.optional(S.String),
           protocol: S.optional(S.String),
           serialNumber: S.optional(S.String),
-          subject: S.optional(SyntheticsSSLCertificateSubject),
+          subject: S.optional(__S(263, __c32, 7)),
           validFrom: S.optional(S.String),
           validTo: S.optional(S.String),
         }),
@@ -20051,7 +16692,7 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(SyntheticsApiTestFailureCode),
+          code: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -20060,15 +16701,15 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cert: S.optional(SyntheticsSSLCertificate),
-          eventType: S.optional(SyntheticsTestProcessStatus),
-          failure: S.optional(SyntheticsApiTestResultFailure),
+          cert: S.optional(__S(264, __c33, 0)),
+          eventType: S.optional(S.String),
+          failure: S.optional(__S(265, __c33, 1)),
           httpStatusCode: S.optional(S.Number),
-          requestHeaders: S.optional(SyntheticsAPITestResultDataRequestHeadersMap),
+          requestHeaders: S.optional(__S(155, __c19, 3)),
           responseBody: S.optional(S.String),
-          responseHeaders: S.optional(SyntheticsAPITestResultDataResponseHeadersMap),
+          responseHeaders: S.optional(__S(155, __c19, 3)),
           responseSize: S.optional(S.Number),
-          timings: S.optional(SyntheticsTiming),
+          timings: S.optional(__S(254, __c31, 6)),
         }),
       ).annotate({
         identifier: "SyntheticsAPITestResultData",
@@ -20076,13 +16717,13 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          check: S.optional(SyntheticsAPITestResultFullCheck),
+          check: S.optional(__S(261, __c32, 5)),
           check_time: S.optional(S.Number),
           check_version: S.optional(S.Number),
           probe_dc: S.optional(S.String),
-          result: S.optional(SyntheticsAPITestResultData),
+          result: S.optional(__S(266, __c33, 2)),
           result_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestMonitorStatus),
+          status: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SyntheticsAPITestResultFull",
@@ -20107,7 +16748,7 @@ function __c33(j: number): any {
           public_id: S.String.pipe(T.Label()),
           from_ts: S.optional(S.Number.pipe(T.Query())),
           to_ts: S.optional(S.Number.pipe(T.Query())),
-          probe_dc: S.optional(GetBrowserTestLatestResultsRequestProbeDcList.pipe(T.Query())),
+          probe_dc: S.optional(__S(5, __c0, 5).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20135,7 +16776,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(SyntheticsDevice),
+          device: S.optional(__S(271, __c33, 7)),
           duration: S.optional(S.Number),
           errorCount: S.optional(S.Number),
           stepCountCompleted: S.optional(S.Number),
@@ -20149,20 +16790,20 @@ function __c34(j: number): any {
         S.Struct({
           check_time: S.optional(S.Number),
           probe_dc: S.optional(S.String),
-          result: S.optional(SyntheticsBrowserTestResultShortResult),
+          result: S.optional(__S(272, __c34, 0)),
           result_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestMonitorStatus),
+          status: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SyntheticsBrowserTestResultShort",
       });
     case 2:
-      return S.Array(SyntheticsBrowserTestResultShort);
+      return S.Array(__S(273, __c34, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           last_timestamp_fetched: S.optional(S.Number),
-          results: S.optional(SyntheticsGetBrowserTestLatestResultsResponseResultsList),
+          results: S.optional(__S(274, __c34, 2)),
         }),
       ).annotate({
         identifier: "SyntheticsGetBrowserTestLatestResultsResponse",
@@ -20188,13 +16829,13 @@ function __c34(j: number): any {
           description: S.String,
           name: S.String,
           status: S.optional(S.Number),
-          type: SyntheticsBrowserErrorType,
+          type: S.String,
         }),
       ).annotate({ identifier: "SyntheticsBrowserError" });
     case 6:
-      return S.Array(SyntheticsBrowserError);
+      return S.Array(__S(277, __c34, 5));
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => SyntheticsStepDetail));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(284, __c35, 4)));
   }
 }
 function __c35(j: number): any {
@@ -20208,57 +16849,57 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "SyntheticsCoreWebVitals" });
     case 1:
-      return S.Array(SyntheticsCoreWebVitals);
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          type: SyntheticsWarningType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "SyntheticsStepDetailWarning",
       });
     case 3:
-      return S.Array(SyntheticsStepDetailWarning);
+      return S.Array(__S(282, __c35, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           allowFailure: S.optional(S.Boolean),
-          browserErrors: S.optional(SyntheticsStepDetailBrowserErrorsList),
-          checkType: S.optional(SyntheticsCheckType),
+          browserErrors: S.optional(__S(278, __c34, 6)),
+          checkType: S.optional(S.String),
           description: S.optional(S.String),
           duration: S.optional(S.Number),
           error: S.optional(S.String),
-          failure: S.optional(SyntheticsBrowserTestResultFailure),
-          playingTab: S.optional(SyntheticsPlayingTab),
+          failure: S.optional(__S(265, __c33, 1)),
+          playingTab: S.optional(S.Number),
           screenshotBucketKey: S.optional(S.Boolean),
           skipped: S.optional(S.Boolean),
           snapshotBucketKey: S.optional(S.Boolean),
           stepId: S.optional(S.Number),
-          subTestStepDetails: S.optional(SyntheticsStepDetailSubTestStepDetailsList),
+          subTestStepDetails: S.optional(__S(279, __c34, 7)),
           timeToInteractive: S.optional(S.Number),
-          type: S.optional(SyntheticsStepType),
+          type: S.optional(S.String),
           url: S.optional(S.String),
           value: S.optional(S.Unknown),
-          vitalsMetrics: S.optional(SyntheticsStepDetailVitalsMetricsList),
-          warnings: S.optional(SyntheticsStepDetailWarningsList),
+          vitalsMetrics: S.optional(__S(281, __c35, 1)),
+          warnings: S.optional(__S(283, __c35, 3)),
         }),
       ).annotate({ identifier: "SyntheticsStepDetail" });
     case 5:
-      return S.Array(SyntheticsStepDetail);
+      return S.Array(__S(284, __c35, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           browserType: S.optional(S.String),
           browserVersion: S.optional(S.String),
-          device: S.optional(SyntheticsDevice),
+          device: S.optional(__S(271, __c33, 7)),
           duration: S.optional(S.Number),
           error: S.optional(S.String),
-          failure: S.optional(SyntheticsBrowserTestResultFailure),
+          failure: S.optional(__S(265, __c33, 1)),
           passed: S.optional(S.Boolean),
           receivedEmailCount: S.optional(S.Number),
           startUrl: S.optional(S.String),
-          stepDetails: S.optional(SyntheticsBrowserTestResultDataStepDetailsList),
+          stepDetails: S.optional(__S(285, __c35, 5)),
           thumbnailsBucketKey: S.optional(S.Boolean),
           timeToInteractive: S.optional(S.Number),
         }),
@@ -20268,13 +16909,13 @@ function __c35(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          check: S.optional(SyntheticsAPITestResultFullCheck),
+          check: S.optional(__S(261, __c32, 5)),
           check_time: S.optional(S.Number),
           check_version: S.optional(S.Number),
           probe_dc: S.optional(S.String),
-          result: S.optional(SyntheticsBrowserTestResultData),
+          result: S.optional(__S(286, __c35, 6)),
           result_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestMonitorStatus),
+          status: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SyntheticsBrowserTestResultFull",
@@ -20306,16 +16947,16 @@ function __c36(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          alert_type: S.optional(EventAlertType),
+          alert_type: S.optional(S.String),
           date_happened: S.optional(S.Number),
           device_name: S.optional(S.String),
           host: S.optional(S.String),
           id: S.optional(S.Number),
           id_str: S.optional(S.String),
           payload: S.optional(S.String),
-          priority: S.optional(S.NullOr(EventPriority)),
+          priority: S.optional(S.NullOr(S.String)),
           source_type_name: S.optional(S.String),
-          tags: S.optional(EventTagsList),
+          tags: S.optional(__S(39, __c4, 7)),
           text: S.optional(S.String),
           title: S.optional(S.String),
           url: S.optional(S.String),
@@ -20324,7 +16965,7 @@ function __c36(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          event: S.optional(Event),
+          event: S.optional(__S(291, __c36, 3)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventResponse" });
@@ -20386,7 +17027,7 @@ function __c37(j: number): any {
         S.Struct({
           start_hr: S.String.pipe(T.Query()),
           end_hr: S.optional(S.String.pipe(T.Query())),
-          usage_type: HourlyUsageAttributionUsageType.pipe(T.Query()),
+          usage_type: S.String.pipe(T.Query()),
           next_record_id: S.optional(S.String.pipe(T.Query())),
           tag_breakdown_keys: S.optional(S.String.pipe(T.Query())),
           include_descendants: S.optional(S.Boolean.pipe(T.Query())),
@@ -20401,15 +17042,15 @@ function __c37(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          prefixes_ipv4: S.optional(IPPrefixesAgentsPrefixesIpv4List),
-          prefixes_ipv6: S.optional(IPPrefixesAgentsPrefixesIpv6List),
+          prefixes_ipv4: S.optional(__S(5, __c0, 5)),
+          prefixes_ipv6: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "IPPrefixesAgents" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          prefixes_ipv4: S.optional(IPPrefixesRemoteConfigurationPrefixesIpv4List),
-          prefixes_ipv6: S.optional(IPPrefixesRemoteConfigurationPrefixesIpv6List),
+          prefixes_ipv4: S.optional(__S(5, __c0, 5)),
+          prefixes_ipv6: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "IPPrefixesRemoteConfiguration",
@@ -20417,10 +17058,10 @@ function __c37(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          prefixes_ipv4: S.optional(IPPrefixesSyntheticsPrefixesIpv4List),
-          prefixes_ipv4_by_location: S.optional(IPPrefixesSyntheticsPrefixesIpv4ByLocationMap),
-          prefixes_ipv6: S.optional(IPPrefixesSyntheticsPrefixesIpv6List),
-          prefixes_ipv6_by_location: S.optional(IPPrefixesSyntheticsPrefixesIpv6ByLocationMap),
+          prefixes_ipv4: S.optional(__S(5, __c0, 5)),
+          prefixes_ipv4_by_location: S.optional(__S(6, __c0, 6)),
+          prefixes_ipv6: S.optional(__S(5, __c0, 5)),
+          prefixes_ipv6_by_location: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "IPPrefixesSynthetics" });
   }
@@ -20430,23 +17071,21 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          agents: S.optional(IPPrefixesAgents),
-          api: S.optional(IPPrefixesAPI),
-          apm: S.optional(IPPrefixesAPM),
-          global: S.optional(IPPrefixesGlobal),
-          logs: S.optional(IPPrefixesLogs),
+          agents: S.optional(__S(301, __c37, 5)),
+          api: S.optional(__S(301, __c37, 5)),
+          apm: S.optional(__S(301, __c37, 5)),
+          global: S.optional(__S(301, __c37, 5)),
+          logs: S.optional(__S(301, __c37, 5)),
           modified: S.optional(S.String),
-          orchestrator: S.optional(IPPrefixesOrchestrator),
-          process: S.optional(IPPrefixesProcess),
-          remote_configuration: S.optional(
-            IPPrefixesRemoteConfiguration.pipe(T.Body("remote-configuration")),
-          ),
-          synthetics: S.optional(IPPrefixesSynthetics),
+          orchestrator: S.optional(__S(301, __c37, 5)),
+          process: S.optional(__S(301, __c37, 5)),
+          remote_configuration: S.optional(__S(302, __c37, 6).pipe(T.Body("remote-configuration"))),
+          synthetics: S.optional(__S(303, __c37, 7)),
           synthetics_private_locations: S.optional(
-            IPPrefixesSyntheticsPrivateLocations.pipe(T.Body("synthetics-private-locations")),
+            __S(302, __c37, 6).pipe(T.Body("synthetics-private-locations")),
           ),
           version: S.optional(S.Number),
-          webhooks: S.optional(IPPrefixesWebhooks),
+          webhooks: S.optional(__S(301, __c37, 5)),
         }),
       ).annotate({ identifier: "IPRanges" });
     case 1:
@@ -20464,7 +17103,7 @@ function __c38(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          index_names: LogsIndexesOrderIndexNamesList,
+          index_names: __S(5, __c0, 5),
         }),
       ).annotate({ identifier: "LogsIndexesOrder" });
     case 4:
@@ -20486,7 +17125,7 @@ function __c38(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pipeline_ids: LogsPipelinesOrderPipelineIdsList,
+          pipeline_ids: __S(5, __c0, 5),
         }),
       ).annotate({ identifier: "LogsPipelinesOrder" });
     case 7:
@@ -20533,9 +17172,9 @@ function __c39(j: number): any {
         S.Struct({
           start_month: S.String.pipe(T.Query()),
           end_month: S.optional(S.String.pipe(T.Query())),
-          fields: MonthlyUsageAttributionSupportedMetrics.pipe(T.Query()),
-          sort_direction: S.optional(UsageSortDirection.pipe(T.Query())),
-          sort_name: S.optional(MonthlyUsageAttributionSupportedMetrics.pipe(T.Query())),
+          fields: S.String.pipe(T.Query()),
+          sort_direction: S.optional(S.String.pipe(T.Query())),
+          sort_name: S.optional(S.String.pipe(T.Query())),
           tag_breakdown_keys: S.optional(S.String.pipe(T.Query())),
           next_record_id: S.optional(S.String.pipe(T.Query())),
           include_descendants: S.optional(S.Boolean.pipe(T.Query())),
@@ -20558,7 +17197,7 @@ function __c39(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          org: S.optional(Organization),
+          org: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "OrganizationResponse" });
     case 7:
@@ -20624,7 +17263,7 @@ function __c40(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(SharedDashboardInvitesMetaPage),
+          page: S.optional(__S(323, __c40, 3)),
         }),
       ).annotate({
         identifier: "SharedDashboardInvitesMeta",
@@ -20632,8 +17271,8 @@ function __c40(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: SharedDashboardInvitesData,
-          meta: S.optional(SharedDashboardInvitesMeta),
+          data: S.Unknown,
+          meta: S.optional(__S(324, __c40, 4)),
         }),
       ).annotate({ identifier: "SharedDashboardInvites" });
     case 6:
@@ -20670,9 +17309,9 @@ function __c40(j: number): any {
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SlackIntegrationChannel);
+      return S.Array(__S(130, __c16, 2));
     case 1:
-      return S.suspend(() => SlackIntegrationChannels.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(328, __c41, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSlackIntegrationChannelsResponse",
       });
     case 2:
@@ -20685,31 +17324,31 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          configured_alert_ids: S.optional(SLOResponseDataConfiguredAlertIdsList),
+          configured_alert_ids: S.optional(__S(2, __c0, 2)),
           created_at: S.optional(S.Number),
-          creator: S.optional(Creator),
+          creator: S.optional(__S(47, __c5, 7)),
           description: S.optional(S.NullOr(S.String)),
-          groups: S.optional(SLOResponseDataGroupsList),
+          groups: S.optional(__S(5, __c0, 5)),
           id: S.optional(S.String),
           modified_at: S.optional(S.Number),
-          monitor_ids: S.optional(SLOResponseDataMonitorIdsList),
-          monitor_tags: S.optional(SLOResponseDataMonitorTagsList),
+          monitor_ids: S.optional(__S(2, __c0, 2)),
+          monitor_tags: S.optional(__S(5, __c0, 5)),
           name: S.optional(S.String),
-          query: S.optional(ServiceLevelObjectiveQuery),
-          sli_specification: S.optional(SLOSliSpec),
-          tags: S.optional(SLOResponseDataTagsList),
+          query: S.optional(__S(131, __c16, 3)),
+          sli_specification: S.optional(S.Unknown),
+          tags: S.optional(__S(5, __c0, 5)),
           target_threshold: S.optional(S.Number),
-          thresholds: S.optional(SLOResponseDataThresholdsList),
-          timeframe: S.optional(SLOTimeframe),
-          type: S.optional(SLOType),
+          thresholds: S.optional(__S(133, __c16, 5)),
+          timeframe: S.optional(S.String),
+          type: S.optional(S.String),
           warning_threshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SLOResponseData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLOResponseData),
-          errors: S.optional(SLOResponseErrorsList),
+          data: S.optional(__S(331, __c41, 3)),
+          errors: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "SLOResponse" });
     case 5:
@@ -20727,7 +17366,7 @@ function __c41(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/slo/{slo_id}/corrections", code: 200 })),
       ).annotate({ identifier: "GetSLOCorrectionsRequest" });
     case 7:
-      return S.Array(SLOCorrection);
+      return S.Array(__S(145, __c18, 1));
   }
 }
 function __c42(j: number): any {
@@ -20742,14 +17381,14 @@ function __c42(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(Pagination),
+          page: S.optional(__S(336, __c42, 0)),
         }),
       ).annotate({ identifier: "ResponseMetaAttributes" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLOCorrectionListResponseDataList),
-          meta: S.optional(ResponseMetaAttributes),
+          data: S.optional(__S(335, __c41, 7)),
+          meta: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({
         identifier: "SLOCorrectionListResponse",
@@ -20769,10 +17408,10 @@ function __c42(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          error_budget_remaining: S.optional(SLOErrorBudgetRemainingData),
-          errors: S.optional(SLOHistoryMonitorErrorsList),
+          error_budget_remaining: S.optional(__S(340, __c42, 4)),
+          errors: S.optional(__S(245, __c30, 5)),
           group: S.optional(S.String),
-          history: S.optional(SLOHistoryMonitorHistoryList),
+          history: S.optional(__S(246, __c30, 6)),
           monitor_modified: S.optional(S.Number),
           monitor_type: S.optional(S.String),
           name: S.optional(S.String),
@@ -20784,18 +17423,18 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "SLOHistoryMonitor" });
     case 6:
-      return S.Array(SLOHistoryMonitor);
+      return S.Array(__S(341, __c42, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          error_budget_remaining: S.optional(SLOErrorBudgetRemainingData),
-          errors: S.optional(SLOHistorySLIDataErrorsList),
+          error_budget_remaining: S.optional(__S(340, __c42, 4)),
+          errors: S.optional(__S(245, __c30, 5)),
           group: S.optional(S.String),
-          history: S.optional(SLOHistorySLIDataHistoryList),
+          history: S.optional(__S(246, __c30, 6)),
           monitor_modified: S.optional(S.Number),
           monitor_type: S.optional(S.String),
           name: S.optional(S.String),
-          precision: S.optional(SLOHistorySLIDataPrecisionMap),
+          precision: S.optional(__S(340, __c42, 4)),
           preview: S.optional(S.Boolean),
           sli_value: S.optional(S.NullOr(S.Number)),
           span_precision: S.optional(S.Number),
@@ -20820,7 +17459,7 @@ function __c43(j: number): any {
         identifier: "SLOHistoryMetricsSeriesMetadataUnit",
       });
     case 1:
-      return S.Array(/*@__PURE__*/ S.NullOr(SLOHistoryMetricsSeriesMetadataUnit));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(344, __c43, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20829,7 +17468,7 @@ function __c43(j: number): any {
           metric: S.optional(S.String),
           query_index: S.optional(S.Number),
           scope: S.optional(S.String),
-          unit: S.optional(S.NullOr(SLOHistoryMetricsSeriesMetadataUnitList)),
+          unit: S.optional(S.NullOr(__S(345, __c43, 1))),
         }),
       ).annotate({
         identifier: "SLOHistoryMetricsSeriesMetadata",
@@ -20838,39 +17477,39 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          metadata: S.optional(SLOHistoryMetricsSeriesMetadata),
+          metadata: S.optional(__S(346, __c43, 2)),
           sum: S.Number,
-          values: SLOHistoryMetricsSeriesValuesList,
+          values: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "SLOHistoryMetricsSeries" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          denominator: SLOHistoryMetricsSeries,
+          denominator: __S(347, __c43, 3),
           interval: S.Number,
           message: S.optional(S.String),
-          numerator: SLOHistoryMetricsSeries,
+          numerator: __S(347, __c43, 3),
           query: S.String,
           res_type: S.String,
           resp_version: S.Number,
-          times: SLOHistoryMetricsTimesList,
+          times: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "SLOHistoryMetrics" });
     case 5:
-      return S.Record(S.String, SLOThreshold);
+      return S.Record(S.String, __S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           from_ts: S.optional(S.Number),
-          group_by: S.optional(SLOHistoryResponseDataGroupByList),
-          groups: S.optional(SLOHistoryResponseDataGroupsList),
-          monitors: S.optional(SLOHistoryResponseDataMonitorsList),
-          overall: S.optional(SLOHistorySLIData),
-          series: S.optional(SLOHistoryMetrics),
-          thresholds: S.optional(SLOHistoryResponseDataThresholdsMap),
+          group_by: S.optional(__S(5, __c0, 5)),
+          groups: S.optional(__S(342, __c42, 6)),
+          monitors: S.optional(__S(342, __c42, 6)),
+          overall: S.optional(__S(343, __c42, 7)),
+          series: S.optional(__S(348, __c43, 4)),
+          thresholds: S.optional(__S(349, __c43, 5)),
           to_ts: S.optional(S.Number),
-          type: S.optional(SLOType),
-          type_id: S.optional(SLOTypeNumeric),
+          type: S.optional(S.String),
+          type_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SLOHistoryResponseData" });
     case 7:
@@ -20884,12 +17523,12 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SLOHistoryResponseError);
+      return S.Array(__S(351, __c43, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SLOHistoryResponseData),
-          errors: S.optional(S.NullOr(SLOHistoryResponseErrorsList)),
+          data: S.optional(__S(350, __c43, 6)),
+          errors: S.optional(S.NullOr(__S(352, __c44, 0))),
         }),
       ).annotate({ identifier: "SLOHistoryResponse" });
     case 2:
@@ -20921,8 +17560,8 @@ function __c44(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pipeline: S.optional(SyntheticsCIBatchMetadataPipeline),
-          provider: S.optional(SyntheticsCIBatchMetadataProvider),
+          pipeline: S.optional(__S(355, __c44, 3)),
+          provider: S.optional(__S(356, __c44, 4)),
         }),
       ).annotate({
         identifier: "SyntheticsCIBatchMetadataCI",
@@ -20939,8 +17578,8 @@ function __c44(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ci: S.optional(SyntheticsCIBatchMetadataCI),
-          git: S.optional(SyntheticsCIBatchMetadataGit),
+          ci: S.optional(__S(357, __c44, 5)),
+          git: S.optional(__S(358, __c44, 6)),
         }),
       ).annotate({
         identifier: "SyntheticsCIBatchMetadata",
@@ -20954,24 +17593,24 @@ function __c45(j: number): any {
         S.Struct({
           device: S.optional(S.String),
           duration: S.optional(S.Number),
-          execution_rule: S.optional(SyntheticsTestExecutionRule),
+          execution_rule: S.optional(S.String),
           location: S.optional(S.String),
           result_id: S.optional(S.String),
           retries: S.optional(S.Number),
-          status: S.optional(SyntheticsBatchStatus),
+          status: S.optional(S.String),
           test_name: S.optional(S.String),
           test_public_id: S.optional(S.String),
-          test_type: S.optional(SyntheticsTestDetailsType),
+          test_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyntheticsBatchResult" });
     case 1:
-      return S.Array(SyntheticsBatchResult);
+      return S.Array(__S(360, __c45, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(SyntheticsCIBatchMetadata),
-          results: S.optional(SyntheticsBatchDetailsDataResultsList),
-          status: S.optional(SyntheticsBatchStatus),
+          metadata: S.optional(__S(359, __c44, 7)),
+          results: S.optional(__S(361, __c45, 1)),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SyntheticsBatchDetailsData",
@@ -20979,7 +17618,7 @@ function __c45(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SyntheticsBatchDetailsData),
+          data: S.optional(__S(362, __c45, 2)),
         }),
       ).annotate({ identifier: "SyntheticsBatchDetails" });
     case 4:
@@ -20995,7 +17634,7 @@ function __c45(j: number): any {
         identifier: "GetSyntheticsDefaultLocationsRequest",
       });
     case 5:
-      return S.suspend(() => SyntheticsDefaultLocations.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(5, __c0, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSyntheticsDefaultLocationsResponse",
       });
     case 6:
@@ -21007,18 +17646,18 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(SyntheticsTestConfig),
-          creator: S.optional(Creator),
-          locations: S.optional(SyntheticsTestDetailsWithoutStepsLocationsList),
+          config: S.optional(__S(260, __c32, 4)),
+          creator: S.optional(__S(47, __c5, 7)),
+          locations: S.optional(__S(5, __c0, 5)),
           message: S.optional(S.String),
           monitor_id: S.optional(S.Number),
           name: S.optional(S.String),
-          options: S.optional(SyntheticsTestOptions),
+          options: S.optional(__S(166, __c20, 6)),
           public_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestPauseStatus),
-          subtype: S.optional(SyntheticsTestDetailsSubType),
-          tags: S.optional(SyntheticsTestDetailsWithoutStepsTagsList),
-          type: S.optional(SyntheticsTestDetailsType),
+          status: S.optional(S.String),
+          subtype: S.optional(S.String),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SyntheticsTestDetailsWithoutSteps",
@@ -21045,7 +17684,7 @@ function __c46(j: number): any {
         S.Struct({
           start_hr: S.String.pipe(T.Query()),
           end_hr: S.optional(S.String.pipe(T.Query())),
-          index_name: S.optional(GetUsageLogsByIndexRequestIndexNameList.pipe(T.Query())),
+          index_name: S.optional(__S(5, __c0, 5).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/usage/logs_by_index", code: 200 })),
       ).annotate({
         identifier: "GetUsageLogsByIndexRequest",
@@ -21064,7 +17703,7 @@ function __c46(j: number): any {
         S.Struct({
           month: S.optional(S.String.pipe(T.Query())),
           day: S.optional(S.String.pipe(T.Query())),
-          names: S.optional(GetUsageTopAvgMetricsRequestNamesList.pipe(T.Query())),
+          names: S.optional(__S(5, __c0, 5).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           next_record_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/usage/top_avg_metrics", code: 200 })),
@@ -21121,7 +17760,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String),
-          metrics: S.optional(MetricsListResponseMetricsList),
+          metrics: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "MetricsListResponse" });
     case 2:
@@ -21129,11 +17768,11 @@ function __c47(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/api_key", code: 200 })),
       ).annotate({ identifier: "ListAPIKeysRequest" });
     case 3:
-      return S.Array(ApiKey);
+      return S.Array(__S(13, __c1, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          api_keys: S.optional(ApiKeyListResponseApiKeysList),
+          api_keys: S.optional(__S(379, __c47, 3)),
         }),
       ).annotate({ identifier: "ApiKeyListResponse" });
     case 5:
@@ -21143,11 +17782,11 @@ function __c47(j: number): any {
         identifier: "ListApplicationKeysRequest",
       });
     case 6:
-      return S.Array(ApplicationKey);
+      return S.Array(__S(16, __c2, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          application_keys: S.optional(ApplicationKeyListResponseApplicationKeysList),
+          application_keys: S.optional(__S(382, __c47, 6)),
         }),
       ).annotate({
         identifier: "ApplicationKeyListResponse",
@@ -21172,23 +17811,23 @@ function __c48(j: number): any {
           container_app_filters: S.optional(S.String),
           cspm_enabled: S.optional(S.Boolean),
           custom_metrics_enabled: S.optional(S.Boolean),
-          errors: S.optional(AzureAccountErrorsList),
+          errors: S.optional(__S(5, __c0, 5)),
           host_filters: S.optional(S.String),
           metrics_enabled: S.optional(S.Boolean),
           metrics_enabled_default: S.optional(S.Boolean),
           new_client_id: S.optional(S.String),
           new_tenant_name: S.optional(S.String),
           resource_collection_enabled: S.optional(S.Boolean),
-          resource_provider_configs: S.optional(AzureAccountResourceProviderConfigsList),
+          resource_provider_configs: S.optional(__S(19, __c2, 3)),
           secretless_auth_enabled: S.optional(S.Boolean),
           tenant_name: S.optional(S.String),
           usage_metrics_enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AzureAccount" });
     case 2:
-      return S.Array(AzureAccount);
+      return S.Array(__S(385, __c48, 1));
     case 3:
-      return S.suspend(() => AzureAccountListResponse.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(386, __c48, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAzureIntegrationResponse",
       });
     case 4:
@@ -21200,11 +17839,11 @@ function __c48(j: number): any {
         identifier: "ListDashboardListsRequest",
       });
     case 5:
-      return S.Array(DashboardList);
+      return S.Array(__S(48, __c6, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dashboard_lists: S.optional(DashboardListListResponseDashboardListsList),
+          dashboard_lists: S.optional(__S(389, __c48, 5)),
         }),
       ).annotate({
         identifier: "DashboardListListResponse",
@@ -21230,7 +17869,7 @@ function __c49(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           is_read_only: S.optional(S.Boolean),
-          layout_type: S.optional(DashboardLayoutType),
+          layout_type: S.optional(S.String),
           modified_at: S.optional(S.String),
           title: S.optional(S.String),
           url: S.optional(S.String),
@@ -21239,11 +17878,11 @@ function __c49(j: number): any {
         identifier: "DashboardSummaryDefinition",
       });
     case 1:
-      return S.Array(DashboardSummaryDefinition);
+      return S.Array(__S(392, __c49, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dashboards: S.optional(DashboardSummaryDashboardsList),
+          dashboards: S.optional(__S(393, __c49, 1)),
         }),
       ).annotate({ identifier: "DashboardSummary" });
     case 3:
@@ -21251,7 +17890,7 @@ function __c49(j: number): any {
         S.Struct({
           start: S.Number.pipe(T.Query()),
           end: S.Number.pipe(T.Query()),
-          priority: S.optional(EventPriority.pipe(T.Query())),
+          priority: S.optional(S.String.pipe(T.Query())),
           sources: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
           unaggregated: S.optional(S.Boolean.pipe(T.Query())),
@@ -21260,11 +17899,11 @@ function __c49(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/events", code: 200 })),
       ).annotate({ identifier: "ListEventsRequest" });
     case 4:
-      return S.Array(Event);
+      return S.Array(__S(291, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(EventListResponseEventsList),
+          events: S.optional(__S(396, __c49, 4)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventListResponse" });
@@ -21277,7 +17916,7 @@ function __c49(j: number): any {
         identifier: "ListGlobalVariablesRequest",
       });
     case 7:
-      return S.Array(SyntheticsGlobalVariable);
+      return S.Array(__S(58, __c7, 2));
   }
 }
 function __c50(j: number): any {
@@ -21285,7 +17924,7 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          variables: S.optional(SyntheticsListGlobalVariablesResponseVariablesList),
+          variables: S.optional(__S(399, __c49, 7)),
         }),
       ).annotate({
         identifier: "SyntheticsListGlobalVariablesResponse",
@@ -21306,7 +17945,7 @@ function __c50(j: number): any {
     case 2:
       return S.Array(S.Unknown);
     case 3:
-      return S.Array(AgentCheck);
+      return S.Array(__S(402, __c50, 2));
     case 4:
       return S.Array(S.Unknown);
     case 5:
@@ -21320,21 +17959,21 @@ function __c50(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          agent_checks: S.optional(HostMetaAgentChecksList),
+          agent_checks: S.optional(__S(403, __c50, 3)),
           agent_version: S.optional(S.String),
           cpuCores: S.optional(S.Number),
-          fbsdV: S.optional(HostMetaFbsdVList),
+          fbsdV: S.optional(__S(404, __c50, 4)),
           gohai: S.optional(S.String),
-          install_method: S.optional(HostMetaInstallMethod),
-          macV: S.optional(HostMetaMacVList),
+          install_method: S.optional(__S(405, __c50, 5)),
+          macV: S.optional(__S(404, __c50, 4)),
           machine: S.optional(S.String),
-          nixV: S.optional(HostMetaNixVList),
+          nixV: S.optional(__S(404, __c50, 4)),
           platform: S.optional(S.String),
           processor: S.optional(S.String),
           pythonV: S.optional(S.String),
           socket_fqdn: S.optional(S.String.pipe(T.Body("socket-fqdn"))),
           socket_hostname: S.optional(S.String.pipe(T.Body("socket-hostname"))),
-          winV: S.optional(HostMetaWinVList),
+          winV: S.optional(__S(404, __c50, 4)),
         }),
       ).annotate({ identifier: "HostMeta" });
     case 7:
@@ -21352,28 +17991,28 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          aliases: S.optional(HostAliasesList),
-          apps: S.optional(HostAppsList),
+          aliases: S.optional(__S(39, __c4, 7)),
+          apps: S.optional(__S(39, __c4, 7)),
           aws_name: S.optional(S.String),
           host_name: S.optional(S.String),
           id: S.optional(S.Number),
           is_muted: S.optional(S.Boolean),
           last_reported_time: S.optional(S.Number),
-          meta: S.optional(HostMeta),
-          metrics: S.optional(HostMetrics),
+          meta: S.optional(__S(406, __c50, 6)),
+          metrics: S.optional(__S(407, __c50, 7)),
           mute_timeout: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.String),
-          sources: S.optional(HostSourcesList),
-          tags_by_source: S.optional(HostTagsBySourceMap),
+          sources: S.optional(__S(39, __c4, 7)),
+          tags_by_source: S.optional(__S(6, __c0, 6)),
           up: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Host" });
     case 1:
-      return S.Array(Host);
+      return S.Array(__S(408, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          host_list: S.optional(HostListResponseHostListList),
+          host_list: S.optional(__S(409, __c51, 1)),
           total_matching: S.optional(S.Number),
           total_returned: S.optional(S.Number),
         }),
@@ -21387,7 +18026,7 @@ function __c51(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(TagToHostsTagsMap),
+          tags: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "TagToHosts" });
     case 5:
@@ -21404,7 +18043,7 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "SyntheticsLocation" });
     case 7:
-      return S.Array(SyntheticsLocation);
+      return S.Array(__S(414, __c51, 6));
   }
 }
 function __c52(j: number): any {
@@ -21412,7 +18051,7 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(SyntheticsLocationsLocationsList),
+          locations: S.optional(__S(415, __c51, 7)),
         }),
       ).annotate({ identifier: "SyntheticsLocations" });
     case 1:
@@ -21420,11 +18059,11 @@ function __c52(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/logs/config/indexes", code: 200 })),
       ).annotate({ identifier: "ListLogIndexesRequest" });
     case 2:
-      return S.Array(LogsIndex);
+      return S.Array(__S(67, __c8, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          indexes: S.optional(LogsIndexListResponseIndexesList),
+          indexes: S.optional(__S(418, __c52, 2)),
         }),
       ).annotate({ identifier: "LogsIndexListResponse" });
     case 4:
@@ -21441,26 +18080,26 @@ function __c52(j: number): any {
           index: S.optional(S.String),
           limit: S.optional(S.Number),
           query: S.optional(S.String),
-          sort: S.optional(LogsSort),
+          sort: S.optional(S.String),
           startAt: S.optional(S.String),
-          time: LogsListRequestTime,
+          time: __S(420, __c52, 4),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/logs-queries/list", code: 200 })),
       ).annotate({ identifier: "ListLogsRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(LogContentAttributesMap),
+          attributes: S.optional(__S(155, __c19, 3)),
           host: S.optional(S.String),
           message: S.optional(S.String),
           service: S.optional(S.String),
-          tags: S.optional(LogContentTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogContent" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(LogContent),
+          content: S.optional(__S(422, __c52, 6)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Log" });
@@ -21469,11 +18108,11 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Log);
+      return S.Array(__S(423, __c52, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(LogsListResponseLogsList),
+          logs: S.optional(__S(424, __c53, 0)),
           nextLogId: S.optional(S.NullOr(S.String)),
           status: S.optional(S.String),
         }),
@@ -21485,9 +18124,9 @@ function __c53(j: number): any {
         ),
       ).annotate({ identifier: "ListLogsPipelinesRequest" });
     case 3:
-      return S.Array(LogsPipeline);
+      return S.Array(__S(70, __c8, 6));
     case 4:
-      return S.suspend(() => LogsPipelineList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(427, __c53, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLogsPipelinesResponse",
       });
     case 5:
@@ -21504,9 +18143,9 @@ function __c53(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/monitor", code: 200 })),
       ).annotate({ identifier: "ListMonitorsRequest" });
     case 6:
-      return S.Array(Monitor);
+      return S.Array(__S(93, __c11, 5));
     case 7:
-      return S.suspend(() => ListMonitorsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(430, __c53, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMonitorsResponse",
       });
   }
@@ -21531,17 +18170,15 @@ function __c54(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(NotebookAuthor),
-          cells: S.optional(NotebooksResponseDataAttributesCellsList),
+          author: S.optional(__S(102, __c12, 6)),
+          cells: S.optional(__S(104, __c13, 0)),
           created: S.optional(S.String),
-          metadata: S.optional(NotebookMetadata),
+          metadata: S.optional(__S(96, __c12, 0)),
           modified: S.optional(S.String),
           name: S.String,
-          status: S.optional(NotebookStatus),
-          template_variables: S.optional(
-            S.NullOr(NotebooksResponseDataAttributesTemplateVariablesList),
-          ),
-          time: S.optional(NotebookGlobalTime),
+          status: S.optional(S.String),
+          template_variables: S.optional(S.NullOr(__S(98, __c12, 2))),
+          time: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "NotebooksResponseDataAttributes",
@@ -21549,18 +18186,18 @@ function __c54(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: NotebooksResponseDataAttributes,
+          attributes: __S(433, __c54, 1),
           id: S.Number,
-          type: NotebookResourceType,
+          type: S.String,
         }),
       ).annotate({ identifier: "NotebooksResponseData" });
     case 3:
-      return S.Array(NotebooksResponseData);
+      return S.Array(__S(434, __c54, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(NotebooksResponseDataList),
-          meta: S.optional(NotebooksResponseMeta),
+          data: S.optional(__S(435, __c54, 3)),
+          meta: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({ identifier: "NotebooksResponse" });
     case 5:
@@ -21568,11 +18205,11 @@ function __c54(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/org", code: 200 })),
       ).annotate({ identifier: "ListOrgsRequest" });
     case 6:
-      return S.Array(Organization);
+      return S.Array(__S(28, __c3, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          orgs: S.optional(OrganizationListResponseOrgsList),
+          orgs: S.optional(__S(438, __c54, 6)),
         }),
       ).annotate({ identifier: "OrganizationListResponse" });
   }
@@ -21606,11 +18243,11 @@ function __c55(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/tests", code: 200 })),
       ).annotate({ identifier: "ListTestsRequest" });
     case 3:
-      return S.Array(SyntheticsTestDetailsWithoutSteps);
+      return S.Array(__S(367, __c45, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tests: S.optional(SyntheticsListTestsResponseTestsList),
+          tests: S.optional(__S(443, __c55, 3)),
         }),
       ).annotate({
         identifier: "SyntheticsListTestsResponse",
@@ -21620,11 +18257,11 @@ function __c55(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/user", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
     case 6:
-      return S.Array(User);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(UserListResponseUsersList),
+          users: S.optional(__S(446, __c55, 6)),
         }),
       ).annotate({ identifier: "UserListResponse" });
   }
@@ -21652,7 +18289,7 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          op: S.optional(SyntheticsPatchTestOperationName),
+          op: S.optional(S.String),
           path: S.optional(S.String),
           value: S.optional(S.Unknown),
         }),
@@ -21660,12 +18297,12 @@ function __c56(j: number): any {
         identifier: "SyntheticsPatchTestOperation",
       });
     case 3:
-      return S.Array(SyntheticsPatchTestOperation);
+      return S.Array(__S(450, __c56, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           public_id: S.String.pipe(T.Label()),
-          data: S.optional(PatchTestRequestDataList),
+          data: S.optional(__S(451, __c56, 3)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v1/synthetics/tests/{public_id}", code: 200 }),
         ),
@@ -21673,19 +18310,19 @@ function __c56(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(SyntheticsTestConfig),
-          creator: S.optional(Creator),
-          locations: S.optional(SyntheticsTestDetailsLocationsList),
+          config: S.optional(__S(260, __c32, 4)),
+          creator: S.optional(__S(47, __c5, 7)),
+          locations: S.optional(__S(5, __c0, 5)),
           message: S.optional(S.String),
           monitor_id: S.optional(S.Number),
           name: S.optional(S.String),
-          options: S.optional(SyntheticsTestOptions),
+          options: S.optional(__S(166, __c20, 6)),
           public_id: S.optional(S.String),
-          status: S.optional(SyntheticsTestPauseStatus),
-          steps: S.optional(SyntheticsTestDetailsStepsList),
-          subtype: S.optional(SyntheticsTestDetailsSubType),
-          tags: S.optional(SyntheticsTestDetailsTagsList),
-          type: S.optional(SyntheticsTestDetailsType),
+          status: S.optional(S.String),
+          steps: S.optional(__S(175, __c21, 7)),
+          subtype: S.optional(S.String),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyntheticsTestDetails" });
     case 6:
@@ -21703,7 +18340,7 @@ function __c56(j: number): any {
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Point);
+      return S.Array(__S(455, __c56, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -21715,7 +18352,7 @@ function __c57(j: number): any {
         }),
       ).annotate({ identifier: "MetricsQueryUnit" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(MetricsQueryUnit));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(457, __c57, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -21726,26 +18363,26 @@ function __c57(j: number): any {
           interval: S.optional(S.Number),
           length: S.optional(S.Number),
           metric: S.optional(S.String),
-          pointlist: S.optional(MetricsQueryMetadataPointlistList),
+          pointlist: S.optional(__S(456, __c57, 0)),
           query_index: S.optional(S.Number),
           scope: S.optional(S.String),
           start: S.optional(S.Number),
-          tag_set: S.optional(MetricsQueryMetadataTagSetList),
-          unit: S.optional(MetricsQueryMetadataUnitList),
+          tag_set: S.optional(__S(5, __c0, 5)),
+          unit: S.optional(__S(458, __c57, 2)),
         }),
       ).annotate({ identifier: "MetricsQueryMetadata" });
     case 4:
-      return S.Array(MetricsQueryMetadata);
+      return S.Array(__S(459, __c57, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
           from_date: S.optional(S.Number),
-          group_by: S.optional(MetricsQueryResponseGroupByList),
+          group_by: S.optional(__S(5, __c0, 5)),
           message: S.optional(S.String),
           query: S.optional(S.String),
           res_type: S.optional(S.String),
-          series: S.optional(MetricsQueryResponseSeriesList),
+          series: S.optional(__S(460, __c57, 4)),
           status: S.optional(S.String),
           to_date: S.optional(S.Number),
         }),
@@ -21768,7 +18405,7 @@ function __c57(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: DashboardBulkActionDataList,
+          data: __S(209, __c26, 1),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v1/dashboard", code: 200 })),
       ).annotate({ identifier: "RestoreDashboardsRequest" });
   }
@@ -21794,12 +18431,12 @@ function __c58(j: number): any {
         }),
       ).annotate({ identifier: "MonitorSearchCountItem" });
     case 2:
-      return S.Array(MonitorSearchCountItem);
+      return S.Array(__S(465, __c58, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(MonitorSearchCount),
-          type: S.optional(MonitorSearchCount),
+          status: S.optional(__S(466, __c58, 2)),
+          type: S.optional(__S(466, __c58, 2)),
         }),
       ).annotate({
         identifier: "MonitorGroupSearchResponseCounts",
@@ -21808,16 +18445,16 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          group_tags: S.optional(MonitorGroupSearchResultGroupTagsList),
+          group_tags: S.optional(__S(5, __c0, 5)),
           last_nodata_ts: S.optional(S.Number),
           last_triggered_ts: S.optional(S.NullOr(S.Number)),
           monitor_id: S.optional(S.Number),
           monitor_name: S.optional(S.String),
-          status: S.optional(MonitorOverallStates),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorGroupSearchResult" });
     case 5:
-      return S.Array(MonitorGroupSearchResult);
+      return S.Array(__S(468, __c58, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -21832,9 +18469,9 @@ function __c58(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          counts: S.optional(MonitorGroupSearchResponseCounts),
-          groups: S.optional(MonitorGroupSearchResponseGroupsList),
-          metadata: S.optional(MonitorSearchResponseMetadata),
+          counts: S.optional(__S(467, __c58, 3)),
+          groups: S.optional(__S(469, __c58, 5)),
+          metadata: S.optional(__S(470, __c58, 6)),
         }),
       ).annotate({
         identifier: "MonitorGroupSearchResponse",
@@ -21855,10 +18492,10 @@ function __c59(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          muted: S.optional(MonitorSearchCount),
-          status: S.optional(MonitorSearchCount),
-          tag: S.optional(MonitorSearchCount),
-          type: S.optional(MonitorSearchCount),
+          muted: S.optional(__S(466, __c58, 2)),
+          status: S.optional(__S(466, __c58, 2)),
+          tag: S.optional(__S(466, __c58, 2)),
+          type: S.optional(__S(466, __c58, 2)),
         }),
       ).annotate({
         identifier: "MonitorSearchResponseCounts",
@@ -21873,34 +18510,34 @@ function __c59(j: number): any {
         identifier: "MonitorSearchResultNotification",
       });
     case 3:
-      return S.Array(MonitorSearchResultNotification);
+      return S.Array(__S(474, __c59, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           classification: S.optional(S.String),
-          creator: S.optional(Creator),
+          creator: S.optional(__S(47, __c5, 7)),
           id: S.optional(S.Number),
           last_triggered_ts: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(MonitorSearchResultMetricsList),
+          metrics: S.optional(__S(5, __c0, 5)),
           name: S.optional(S.String),
-          notifications: S.optional(MonitorSearchResultNotificationsList),
+          notifications: S.optional(__S(475, __c59, 3)),
           org_id: S.optional(S.Number),
-          quality_issues: S.optional(MonitorSearchResultQualityIssuesList),
+          quality_issues: S.optional(__S(5, __c0, 5)),
           query: S.optional(S.String),
-          scopes: S.optional(MonitorSearchResultScopesList),
-          status: S.optional(MonitorOverallStates),
-          tags: S.optional(MonitorSearchResultTagsList),
-          type: S.optional(MonitorType),
+          scopes: S.optional(__S(5, __c0, 5)),
+          status: S.optional(S.String),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorSearchResult" });
     case 5:
-      return S.Array(MonitorSearchResult);
+      return S.Array(__S(476, __c59, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          counts: S.optional(MonitorSearchResponseCounts),
-          metadata: S.optional(MonitorSearchResponseMetadata),
-          monitors: S.optional(MonitorSearchResponseMonitorsList),
+          counts: S.optional(__S(473, __c59, 1)),
+          metadata: S.optional(__S(470, __c58, 6)),
+          monitors: S.optional(__S(477, __c59, 5)),
         }),
       ).annotate({ identifier: "MonitorSearchResponse" });
     case 7:
@@ -21926,7 +18563,7 @@ function __c60(j: number): any {
         identifier: "SearchSLOResponseDataAttributesFacetsObjectString",
       });
     case 1:
-      return S.Array(SearchSLOResponseDataAttributesFacetsObjectString);
+      return S.Array(__S(480, __c60, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -21937,18 +18574,18 @@ function __c60(j: number): any {
         identifier: "SearchSLOResponseDataAttributesFacetsObjectInt",
       });
     case 3:
-      return S.Array(SearchSLOResponseDataAttributesFacetsObjectInt);
+      return S.Array(__S(482, __c60, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          all_tags: S.optional(SearchSLOResponseDataAttributesFacetsAllTagsList),
-          creator_name: S.optional(SearchSLOResponseDataAttributesFacetsCreatorNameList),
-          env_tags: S.optional(SearchSLOResponseDataAttributesFacetsEnvTagsList),
-          service_tags: S.optional(SearchSLOResponseDataAttributesFacetsServiceTagsList),
-          slo_type: S.optional(SearchSLOResponseDataAttributesFacetsSloTypeList),
-          target: S.optional(SearchSLOResponseDataAttributesFacetsTargetList),
-          team_tags: S.optional(SearchSLOResponseDataAttributesFacetsTeamTagsList),
-          timeframe: S.optional(SearchSLOResponseDataAttributesFacetsTimeframeList),
+          all_tags: S.optional(__S(481, __c60, 1)),
+          creator_name: S.optional(__S(481, __c60, 1)),
+          env_tags: S.optional(__S(481, __c60, 1)),
+          service_tags: S.optional(__S(481, __c60, 1)),
+          slo_type: S.optional(__S(483, __c60, 3)),
+          target: S.optional(__S(483, __c60, 3)),
+          team_tags: S.optional(__S(481, __c60, 1)),
+          timeframe: S.optional(__S(481, __c60, 1)),
         }),
       ).annotate({
         identifier: "SearchSLOResponseDataAttributesFacets",
@@ -21976,12 +18613,12 @@ function __c60(j: number): any {
           error: S.optional(S.NullOr(S.String)),
           error_budget_remaining: S.optional(S.NullOr(S.Number)),
           indexed_at: S.optional(S.Number),
-          raw_error_budget_remaining: S.optional(S.NullOr(SLORawErrorBudgetRemaining)),
+          raw_error_budget_remaining: S.optional(S.NullOr(__S(486, __c60, 6))),
           span_precision: S.optional(S.NullOr(S.Number)),
-          state: S.optional(SLOState),
+          state: S.optional(S.String),
           status: S.optional(S.NullOr(S.Number)),
           target: S.optional(S.Number),
-          timeframe: S.optional(SLOTimeframe),
+          timeframe: S.optional(S.String),
         }),
       ).annotate({ identifier: "SLOOverallStatuses" });
   }
@@ -21989,12 +18626,12 @@ function __c60(j: number): any {
 function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SLOOverallStatuses);
+      return S.Array(__S(487, __c60, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           denominator: S.optional(S.String),
-          metrics: S.optional(S.NullOr(SearchSLOQueryMetricsList)),
+          metrics: S.optional(S.NullOr(__S(5, __c0, 5))),
           numerator: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchSLOQuery" });
@@ -22004,10 +18641,10 @@ function __c61(j: number): any {
           calculation_error: S.optional(S.NullOr(S.String)),
           error_budget_remaining: S.optional(S.NullOr(S.Number)),
           indexed_at: S.optional(S.Number),
-          raw_error_budget_remaining: S.optional(S.NullOr(SLORawErrorBudgetRemaining)),
+          raw_error_budget_remaining: S.optional(S.NullOr(__S(486, __c60, 6))),
           sli: S.optional(S.NullOr(S.Number)),
           span_precision: S.optional(S.NullOr(S.Number)),
-          state: S.optional(SLOState),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "SLOStatus" });
     case 3:
@@ -22015,32 +18652,32 @@ function __c61(j: number): any {
         S.Struct({
           target: S.Number,
           target_display: S.optional(S.String),
-          timeframe: SearchSLOTimeframe,
+          timeframe: S.String,
           warning: S.optional(S.NullOr(S.Number)),
           warning_display: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SearchSLOThreshold" });
     case 4:
-      return S.Array(SearchSLOThreshold);
+      return S.Array(__S(491, __c61, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          all_tags: S.optional(SearchServiceLevelObjectiveAttributesAllTagsList),
+          all_tags: S.optional(__S(5, __c0, 5)),
           created_at: S.optional(S.Number),
-          creator: S.optional(S.NullOr(SLOCreator)),
+          creator: S.optional(S.NullOr(__S(485, __c60, 5))),
           description: S.optional(S.NullOr(S.String)),
-          env_tags: S.optional(SearchServiceLevelObjectiveAttributesEnvTagsList),
-          groups: S.optional(S.NullOr(SearchServiceLevelObjectiveAttributesGroupsList)),
+          env_tags: S.optional(__S(5, __c0, 5)),
+          groups: S.optional(S.NullOr(__S(5, __c0, 5))),
           modified_at: S.optional(S.Number),
-          monitor_ids: S.optional(S.NullOr(SearchServiceLevelObjectiveAttributesMonitorIdsList)),
+          monitor_ids: S.optional(S.NullOr(__S(2, __c0, 2))),
           name: S.optional(S.String),
-          overall_status: S.optional(SearchServiceLevelObjectiveAttributesOverallStatusList),
-          query: S.optional(S.NullOr(SearchSLOQuery)),
-          service_tags: S.optional(SearchServiceLevelObjectiveAttributesServiceTagsList),
-          slo_type: S.optional(SLOType),
-          status: S.optional(SLOStatus),
-          team_tags: S.optional(SearchServiceLevelObjectiveAttributesTeamTagsList),
-          thresholds: S.optional(SearchServiceLevelObjectiveAttributesThresholdsList),
+          overall_status: S.optional(__S(488, __c61, 0)),
+          query: S.optional(S.NullOr(__S(489, __c61, 1))),
+          service_tags: S.optional(__S(5, __c0, 5)),
+          slo_type: S.optional(S.String),
+          status: S.optional(__S(490, __c61, 2)),
+          team_tags: S.optional(__S(5, __c0, 5)),
+          thresholds: S.optional(__S(492, __c61, 4)),
         }),
       ).annotate({
         identifier: "SearchServiceLevelObjectiveAttributes",
@@ -22048,7 +18685,7 @@ function __c61(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(SearchServiceLevelObjectiveAttributes),
+          attributes: S.optional(__S(493, __c61, 5)),
           id: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -22058,7 +18695,7 @@ function __c61(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SearchServiceLevelObjectiveData),
+          data: S.optional(__S(494, __c61, 6)),
         }),
       ).annotate({
         identifier: "SearchServiceLevelObjective",
@@ -22068,12 +18705,12 @@ function __c61(j: number): any {
 function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SearchServiceLevelObjective);
+      return S.Array(__S(495, __c61, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          facets: S.optional(SearchSLOResponseDataAttributesFacets),
-          slos: S.optional(SearchSLOResponseDataAttributesSlosList),
+          facets: S.optional(__S(484, __c60, 4)),
+          slos: S.optional(__S(496, __c62, 0)),
         }),
       ).annotate({
         identifier: "SearchSLOResponseDataAttributes",
@@ -22081,7 +18718,7 @@ function __c62(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(SearchSLOResponseDataAttributes),
+          attributes: S.optional(__S(497, __c62, 1)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchSLOResponseData" });
@@ -22113,15 +18750,15 @@ function __c62(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(SearchSLOResponseMetaPage),
+          pagination: S.optional(__S(500, __c62, 4)),
         }),
       ).annotate({ identifier: "SearchSLOResponseMeta" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SearchSLOResponseData),
-          links: S.optional(SearchSLOResponseLinks),
-          meta: S.optional(SearchSLOResponseMeta),
+          data: S.optional(__S(498, __c62, 2)),
+          links: S.optional(__S(499, __c62, 3)),
+          meta: S.optional(__S(501, __c62, 5)),
         }),
       ).annotate({ identifier: "SearchSLOResponse" });
     case 7:
@@ -22143,7 +18780,7 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
-          data: SharedDashboardInvitesDataInput,
+          data: S.Unknown,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/dashboard/public/{token}/invitation", code: 200 }),
         ),
@@ -22168,17 +18805,17 @@ function __c63(j: number): any {
           check: S.String,
           host_name: S.String,
           message: S.optional(S.String),
-          status: ServiceCheckStatus,
-          tags: ServiceCheckTagsList,
+          status: S.Number,
+          tags: __S(5, __c0, 5),
           timestamp: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceCheck" });
     case 4:
-      return S.Array(ServiceCheck);
+      return S.Array(__S(507, __c63, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: ServiceChecks.pipe(T.HttpBody()),
+          body: __S(508, __c63, 4).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/check_run", code: 200 })),
       ).annotate({
         identifier: "SubmitServiceCheckRequest",
@@ -22187,24 +18824,24 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowInsecureCertificates: S.optional(S.Boolean),
-          basicAuth: S.optional(SyntheticsBasicAuth),
+          basicAuth: S.optional(S.Unknown),
           body: S.optional(S.String),
           bodyType: S.optional(S.String),
           cookies: S.optional(S.String),
-          deviceIds: S.optional(SyntheticsCITestDeviceIdsList),
+          deviceIds: S.optional(__S(5, __c0, 5)),
           followRedirects: S.optional(S.Boolean),
-          headers: S.optional(SyntheticsTestHeaders),
-          locations: S.optional(SyntheticsCITestLocationsList),
-          metadata: S.optional(SyntheticsCIBatchMetadata),
+          headers: S.optional(__S(10, __c1, 2)),
+          locations: S.optional(__S(5, __c0, 5)),
+          metadata: S.optional(__S(359, __c44, 7)),
           public_id: S.String,
-          retry: S.optional(SyntheticsTestOptionsRetry),
+          retry: S.optional(__S(157, __c19, 5)),
           startUrl: S.optional(S.String),
-          variables: S.optional(SyntheticsCITestVariablesMap),
+          variables: S.optional(__S(10, __c1, 2)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SyntheticsCITest" });
     case 7:
-      return S.Array(SyntheticsCITest);
+      return S.Array(__S(510, __c63, 6));
   }
 }
 function __c64(j: number): any {
@@ -22212,7 +18849,7 @@ function __c64(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tests: S.optional(TriggerCITestsRequestTestsList),
+          tests: S.optional(__S(511, __c63, 7)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/trigger/ci", code: 200 })),
       ).annotate({ identifier: "TriggerCITestsRequest" });
     case 1:
@@ -22225,7 +18862,7 @@ function __c64(j: number): any {
         identifier: "SyntheticsTriggerCITestLocation",
       });
     case 2:
-      return S.Array(SyntheticsTriggerCITestLocation);
+      return S.Array(__S(513, __c64, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -22238,14 +18875,14 @@ function __c64(j: number): any {
         identifier: "SyntheticsTriggerCITestRunResult",
       });
     case 4:
-      return S.Array(SyntheticsTriggerCITestRunResult);
+      return S.Array(__S(515, __c64, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           batch_id: S.optional(S.NullOr(S.String)),
-          locations: S.optional(SyntheticsTriggerCITestsResponseLocationsList),
-          results: S.optional(SyntheticsTriggerCITestsResponseResultsList),
-          triggered_check_ids: S.optional(SyntheticsTriggerCITestsResponseTriggeredCheckIdsList),
+          locations: S.optional(__S(514, __c64, 2)),
+          results: S.optional(__S(516, __c64, 4)),
+          triggered_check_ids: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "SyntheticsTriggerCITestsResponse",
@@ -22253,12 +18890,12 @@ function __c64(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(SyntheticsCIBatchMetadata),
+          metadata: S.optional(__S(359, __c44, 7)),
           public_id: S.String,
         }),
       ).annotate({ identifier: "SyntheticsTriggerTest" });
     case 7:
-      return S.Array(SyntheticsTriggerTest);
+      return S.Array(__S(518, __c64, 6));
   }
 }
 function __c65(j: number): any {
@@ -22266,7 +18903,7 @@ function __c65(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tests: TriggerTestsRequestTestsList,
+          tests: __S(519, __c64, 7),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/trigger", code: 200 })),
       ).annotate({ identifier: "TriggerTestsRequest" });
     case 1:
@@ -22286,15 +18923,15 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           public_id: S.String.pipe(T.Label()),
-          config: SyntheticsAPITestConfigInput,
-          locations: UpdateAPITestRequestLocationsList,
+          config: __S(159, __c19, 7),
+          locations: __S(5, __c0, 5),
           message: S.String,
           name: S.String,
-          options: SyntheticsTestOptions,
-          status: S.optional(SyntheticsTestPauseStatus),
-          subtype: S.optional(SyntheticsTestDetailsSubType),
-          tags: S.optional(UpdateAPITestRequestTagsList),
-          type: SyntheticsAPITestType,
+          options: __S(166, __c20, 6),
+          status: S.optional(S.String),
+          subtype: S.optional(S.String),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/synthetics/tests/api/{public_id}", code: 200 }),
         ),
@@ -22318,16 +18955,14 @@ function __c65(j: number): any {
           container_app_filters: S.optional(S.String),
           cspm_enabled: S.optional(S.Boolean),
           custom_metrics_enabled: S.optional(S.Boolean),
-          errors: S.optional(UpdateAzureHostFiltersRequestErrorsList),
+          errors: S.optional(__S(5, __c0, 5)),
           host_filters: S.optional(S.String),
           metrics_enabled: S.optional(S.Boolean),
           metrics_enabled_default: S.optional(S.Boolean),
           new_client_id: S.optional(S.String),
           new_tenant_name: S.optional(S.String),
           resource_collection_enabled: S.optional(S.Boolean),
-          resource_provider_configs: S.optional(
-            UpdateAzureHostFiltersRequestResourceProviderConfigsList,
-          ),
+          resource_provider_configs: S.optional(__S(19, __c2, 3)),
           secretless_auth_enabled: S.optional(S.Boolean),
           tenant_name: S.optional(S.String),
           usage_metrics_enabled: S.optional(S.Boolean),
@@ -22347,16 +18982,14 @@ function __c65(j: number): any {
           container_app_filters: S.optional(S.String),
           cspm_enabled: S.optional(S.Boolean),
           custom_metrics_enabled: S.optional(S.Boolean),
-          errors: S.optional(UpdateAzureIntegrationRequestErrorsList),
+          errors: S.optional(__S(5, __c0, 5)),
           host_filters: S.optional(S.String),
           metrics_enabled: S.optional(S.Boolean),
           metrics_enabled_default: S.optional(S.Boolean),
           new_client_id: S.optional(S.String),
           new_tenant_name: S.optional(S.String),
           resource_collection_enabled: S.optional(S.Boolean),
-          resource_provider_configs: S.optional(
-            UpdateAzureIntegrationRequestResourceProviderConfigsList,
-          ),
+          resource_provider_configs: S.optional(__S(19, __c2, 3)),
           secretless_auth_enabled: S.optional(S.Boolean),
           tenant_name: S.optional(S.String),
           usage_metrics_enabled: S.optional(S.Boolean),
@@ -22368,15 +19001,15 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           public_id: S.String.pipe(T.Label()),
-          config: SyntheticsBrowserTestConfig,
-          locations: UpdateBrowserTestRequestLocationsList,
+          config: __S(173, __c21, 5),
+          locations: __S(5, __c0, 5),
           message: S.String,
           name: S.String,
-          options: SyntheticsTestOptions,
-          status: S.optional(SyntheticsTestPauseStatus),
-          steps: S.optional(UpdateBrowserTestRequestStepsList),
-          tags: S.optional(UpdateBrowserTestRequestTagsList),
-          type: SyntheticsBrowserTestType,
+          options: __S(166, __c20, 6),
+          status: S.optional(S.String),
+          steps: S.optional(__S(175, __c21, 7)),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/synthetics/tests/browser/{public_id}", code: 200 }),
         ),
@@ -22389,21 +19022,19 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dashboard_id: S.String.pipe(T.Label()),
-          default_timeframe: S.optional(S.NullOr(DashboardDefaultTimeframeSetting)),
+          default_timeframe: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
           is_read_only: S.optional(S.Boolean),
-          layout_type: DashboardLayoutType,
-          notify_list: S.optional(S.NullOr(UpdateDashboardRequestNotifyListList)),
-          reflow_type: S.optional(DashboardReflowType),
-          restricted_roles: S.optional(UpdateDashboardRequestRestrictedRolesList),
-          tabs: S.optional(S.NullOr(UpdateDashboardRequestTabsList)),
-          tags: S.optional(S.NullOr(UpdateDashboardRequestTagsList)),
-          template_variable_presets: S.optional(
-            S.NullOr(UpdateDashboardRequestTemplateVariablePresetsList),
-          ),
-          template_variables: S.optional(S.NullOr(UpdateDashboardRequestTemplateVariablesList)),
+          layout_type: S.String,
+          notify_list: S.optional(S.NullOr(__S(5, __c0, 5))),
+          reflow_type: S.optional(S.String),
+          restricted_roles: S.optional(__S(5, __c0, 5)),
+          tabs: S.optional(S.NullOr(__S(32, __c4, 0))),
+          tags: S.optional(S.NullOr(__S(5, __c0, 5))),
+          template_variable_presets: S.optional(S.NullOr(__S(36, __c4, 4))),
+          template_variables: S.optional(S.NullOr(__S(38, __c4, 6))),
           title: S.String,
-          widgets: UpdateDashboardRequestWidgetsList,
+          widgets: __S(43, __c5, 3),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/dashboard/{dashboard_id}", code: 200 })),
       ).annotate({ identifier: "UpdateDashboardRequest" });
     case 1:
@@ -22423,7 +19054,7 @@ function __c66(j: number): any {
           host_name: S.String.pipe(T.Label()),
           source: S.optional(S.String.pipe(T.Query())),
           host: S.optional(S.String),
-          tags: S.optional(UpdateHostTagsRequestTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/tags/hosts/{host_name}", code: 200 })),
       ).annotate({ identifier: "UpdateHostTagsRequest" });
     case 3:
@@ -22431,20 +19062,20 @@ function __c66(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           daily_limit: S.optional(S.Number),
-          daily_limit_reset: S.optional(LogsDailyLimitReset),
+          daily_limit_reset: S.optional(__S(61, __c7, 5)),
           daily_limit_warning_threshold_percentage: S.optional(S.Number),
           disable_daily_limit: S.optional(S.Boolean),
-          exclusion_filters: S.optional(UpdateLogsIndexRequestExclusionFiltersList),
-          filter: LogsFilter,
+          exclusion_filters: S.optional(__S(64, __c8, 0)),
+          filter: __S(65, __c8, 1),
           num_flex_logs_retention_days: S.optional(S.Number),
           num_retention_days: S.optional(S.Number),
-          tags: S.optional(UpdateLogsIndexRequestTagsList),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/logs/config/indexes/{name}", code: 200 })),
       ).annotate({ identifier: "UpdateLogsIndexRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          index_names: UpdateLogsIndexOrderRequestIndexNamesList,
+          index_names: __S(5, __c0, 5),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/logs/config/index-order", code: 200 })),
       ).annotate({
         identifier: "UpdateLogsIndexOrderRequest",
@@ -22454,11 +19085,11 @@ function __c66(j: number): any {
         S.Struct({
           pipeline_id: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          filter: S.optional(LogsFilter),
+          filter: S.optional(__S(65, __c8, 1)),
           is_enabled: S.optional(S.Boolean),
           name: S.String,
-          processors: S.optional(UpdateLogsPipelineRequestProcessorsList),
-          tags: S.optional(UpdateLogsPipelineRequestTagsList),
+          processors: S.optional(__S(68, __c8, 4)),
+          tags: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/logs/config/pipelines/{pipeline_id}", code: 200 }),
         ),
@@ -22468,7 +19099,7 @@ function __c66(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pipeline_ids: UpdateLogsPipelineOrderRequestPipelineIdsList,
+          pipeline_ids: __S(5, __c0, 5),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/logs/config/pipeline-order", code: 200 })),
       ).annotate({
         identifier: "UpdateLogsPipelineOrderRequest",
@@ -22495,15 +19126,15 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           public_id: S.String.pipe(T.Label()),
-          config: SyntheticsMobileTestConfig,
-          device_ids: S.optional(UpdateMobileTestRequestDeviceIdsList),
+          config: __S(178, __c22, 2),
+          device_ids: S.optional(__S(5, __c0, 5)),
           message: S.String,
           name: S.String,
-          options: SyntheticsMobileTestOptions,
-          status: S.optional(SyntheticsTestPauseStatus),
-          steps: S.optional(UpdateMobileTestRequestStepsList),
-          tags: S.optional(UpdateMobileTestRequestTagsList),
-          type: SyntheticsMobileTestType,
+          options: __S(182, __c22, 6),
+          status: S.optional(S.String),
+          steps: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/synthetics/tests/mobile/{public_id}", code: 200 }),
         ),
@@ -22512,31 +19143,29 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           monitor_id: S.Number.pipe(T.Label()),
-          assets: S.optional(S.NullOr(UpdateMonitorRequestAssetsList)),
-          draft_status: S.optional(MonitorDraftStatus),
+          assets: S.optional(S.NullOr(__S(72, __c9, 0))),
+          draft_status: S.optional(S.String),
           message: S.optional(S.String),
           name: S.optional(S.String),
-          options: S.optional(MonitorOptionsInput),
+          options: S.optional(__S(84, __c10, 4)),
           priority: S.optional(S.NullOr(S.Number)),
           query: S.optional(S.String),
-          restricted_roles: S.optional(S.NullOr(UpdateMonitorRequestRestrictedRolesList)),
-          tags: S.optional(UpdateMonitorRequestTagsList),
-          type: S.optional(MonitorType),
+          restricted_roles: S.optional(S.NullOr(__S(5, __c0, 5))),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/monitor/{monitor_id}", code: 200 })),
       ).annotate({ identifier: "UpdateMonitorRequest" });
     case 2:
-      return S.Array(NotebookUpdateCell);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cells: NotebookUpdateDataAttributesCellsList,
-          metadata: S.optional(NotebookMetadata),
+          cells: __S(538, __c67, 2),
+          metadata: S.optional(__S(96, __c12, 0)),
           name: S.String,
-          status: S.optional(NotebookStatus),
-          template_variables: S.optional(
-            S.NullOr(NotebookUpdateDataAttributesTemplateVariablesList),
-          ),
-          time: NotebookGlobalTime,
+          status: S.optional(S.String),
+          template_variables: S.optional(S.NullOr(__S(98, __c12, 2))),
+          time: S.Unknown,
         }),
       ).annotate({
         identifier: "NotebookUpdateDataAttributes",
@@ -22544,26 +19173,26 @@ function __c67(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attributes: NotebookUpdateDataAttributes,
-          type: NotebookResourceType,
+          attributes: __S(539, __c67, 3),
+          type: S.String,
         }),
       ).annotate({ identifier: "NotebookUpdateData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           notebook_id: S.Number.pipe(T.Label()),
-          data: NotebookUpdateData,
+          data: __S(540, __c67, 4),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/notebooks/{notebook_id}", code: 200 })),
       ).annotate({ identifier: "UpdateNotebookRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           public_id: S.String.pipe(T.Label()),
-          billing: S.optional(OrganizationBilling),
+          billing: S.optional(__S(22, __c2, 6)),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          settings: S.optional(OrganizationSettings),
-          subscription: S.optional(OrganizationSubscription),
+          settings: S.optional(__S(27, __c3, 3)),
+          subscription: S.optional(__S(22, __c2, 6)),
           trial: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/org/{public_id}", code: 200 })),
       ).annotate({ identifier: "UpdateOrgRequest" });
@@ -22591,9 +19220,9 @@ function __c68(j: number): any {
         S.Struct({
           location_id: S.String.pipe(T.Label()),
           description: S.String,
-          metadata: S.optional(SyntheticsGlobalVariableAttributes),
+          metadata: S.optional(__S(51, __c6, 3)),
           name: S.String,
-          tags: UpdatePrivateLocationRequestTagsList,
+          tags: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22608,19 +19237,17 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
-          embeddable_domains: S.optional(UpdatePublicDashboardRequestEmbeddableDomainsList),
+          embeddable_domains: S.optional(__S(5, __c0, 5)),
           expiration: S.optional(S.NullOr(S.String)),
-          global_time: S.optional(S.NullOr(DashboardGlobalTime)),
+          global_time: S.optional(S.NullOr(__S(117, __c14, 5))),
           global_time_selectable_enabled: S.optional(S.NullOr(S.Boolean)),
-          invitees: S.optional(UpdatePublicDashboardRequestInviteesList),
-          selectable_template_vars: S.optional(
-            S.NullOr(UpdatePublicDashboardRequestSelectableTemplateVarsList),
-          ),
-          share_list: S.optional(S.NullOr(UpdatePublicDashboardRequestShareListList)),
-          share_type: S.optional(S.NullOr(DashboardShareType)),
-          status: S.optional(SharedDashboardStatus),
+          invitees: S.optional(__S(119, __c14, 7)),
+          selectable_template_vars: S.optional(S.NullOr(__S(121, __c15, 1))),
+          share_list: S.optional(S.NullOr(__S(5, __c0, 5))),
+          share_type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
           title: S.optional(S.String),
-          viewing_preferences: S.optional(ViewingPreferences),
+          viewing_preferences: S.optional(__S(122, __c15, 2)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/dashboard/public/{token}", code: 200 })),
       ).annotate({
         identifier: "UpdatePublicDashboardRequest",
@@ -22630,7 +19257,7 @@ function __c68(j: number): any {
         S.Struct({
           account_name: S.String.pipe(T.Label()),
           channel_name: S.String.pipe(T.Label()),
-          display: S.optional(SlackIntegrationChannelDisplay),
+          display: S.optional(__S(128, __c16, 0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -22647,24 +19274,24 @@ function __c68(j: number): any {
         S.Struct({
           slo_id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          groups: S.optional(UpdateSLORequestGroupsList),
-          monitor_ids: S.optional(UpdateSLORequestMonitorIdsList),
-          monitor_tags: S.optional(UpdateSLORequestMonitorTagsList),
+          groups: S.optional(__S(5, __c0, 5)),
+          monitor_ids: S.optional(__S(2, __c0, 2)),
+          monitor_tags: S.optional(__S(5, __c0, 5)),
           name: S.String,
-          query: S.optional(ServiceLevelObjectiveQuery),
-          sli_specification: S.optional(SLOSliSpec),
-          tags: S.optional(UpdateSLORequestTagsList),
+          query: S.optional(__S(131, __c16, 3)),
+          sli_specification: S.optional(S.Unknown),
+          tags: S.optional(__S(5, __c0, 5)),
           target_threshold: S.optional(S.Number),
-          thresholds: UpdateSLORequestThresholdsList,
-          timeframe: S.optional(SLOTimeframe),
-          type: SLOType,
+          thresholds: __S(133, __c16, 5),
+          timeframe: S.optional(S.String),
+          type: S.String,
           warning_threshold: S.optional(S.Number),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/slo/{slo_id}", code: 200 })),
       ).annotate({ identifier: "UpdateSLORequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(SLOCorrectionCategory),
+          category: S.optional(S.String),
           description: S.optional(S.String),
           duration: S.optional(S.Number),
           end: S.optional(S.Number),
@@ -22679,15 +19306,15 @@ function __c68(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(SLOCorrectionUpdateRequestAttributes),
-          type: S.optional(SLOCorrectionType),
+          attributes: S.optional(__S(548, __c68, 4)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SLOCorrectionUpdateData" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           slo_correction_id: S.String.pipe(T.Label()),
-          data: S.optional(SLOCorrectionUpdateData),
+          data: S.optional(__S(549, __c68, 5)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v1/slo/correction/{slo_correction_id}", code: 200 }),
         ),
@@ -22698,7 +19325,7 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           public_id: S.String.pipe(T.Label()),
-          new_status: S.optional(SyntheticsTestPauseStatus),
+          new_status: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/synthetics/tests/{public_id}/status", code: 200 }),
         ),
@@ -22717,7 +19344,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           user_handle: S.String.pipe(T.Label()),
-          access_role: S.optional(S.NullOr(AccessRole)),
+          access_role: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.Boolean),
           email: S.optional(S.String),
           handle: S.optional(S.String),
@@ -22729,7 +19356,7 @@ function __c69(j: number): any {
         S.Struct({
           webhook_name: S.String.pipe(T.Label()),
           custom_headers: S.optional(S.String),
-          encode_as: S.optional(WebhooksIntegrationEncoding),
+          encode_as: S.optional(S.String),
           name: S.optional(S.String),
           payload: S.optional(S.NullOr(S.String)),
           url: S.optional(S.String),
@@ -22800,17 +19427,17 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           monitor_id: S.Number.pipe(T.Label()),
-          assets: S.optional(ValidateExistingMonitorRequestAssetsList),
-          draft_status: S.optional(MonitorDraftStatus),
-          matching_downtimes: S.optional(ValidateExistingMonitorRequestMatchingDowntimesList),
+          assets: S.optional(__S(72, __c9, 0)),
+          draft_status: S.optional(S.String),
+          matching_downtimes: S.optional(__S(74, __c9, 2)),
           message: S.optional(S.String),
           name: S.optional(S.String),
-          options: S.optional(MonitorOptionsInput),
+          options: S.optional(__S(84, __c10, 4)),
           priority: S.optional(S.NullOr(S.Number)),
           query: S.String,
-          restricted_roles: S.optional(S.NullOr(ValidateExistingMonitorRequestRestrictedRolesList)),
-          tags: S.optional(ValidateExistingMonitorRequestTagsList),
-          type: MonitorType,
+          restricted_roles: S.optional(S.NullOr(__S(5, __c0, 5))),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/monitor/{monitor_id}/validate", code: 200 }),
         ),
@@ -22820,17 +19447,17 @@ function __c70(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(ValidateMonitorRequestAssetsList),
-          draft_status: S.optional(MonitorDraftStatus),
-          matching_downtimes: S.optional(ValidateMonitorRequestMatchingDowntimesList),
+          assets: S.optional(__S(72, __c9, 0)),
+          draft_status: S.optional(S.String),
+          matching_downtimes: S.optional(__S(74, __c9, 2)),
           message: S.optional(S.String),
           name: S.optional(S.String),
-          options: S.optional(MonitorOptionsInput),
+          options: S.optional(__S(84, __c10, 4)),
           priority: S.optional(S.NullOr(S.Number)),
           query: S.String,
-          restricted_roles: S.optional(S.NullOr(ValidateMonitorRequestRestrictedRolesList)),
-          tags: S.optional(ValidateMonitorRequestTagsList),
-          type: MonitorType,
+          restricted_roles: S.optional(S.NullOr(__S(5, __c0, 5))),
+          tags: S.optional(__S(5, __c0, 5)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/monitor/validate", code: 200 })),
       ).annotate({ identifier: "ValidateMonitorRequest" });
     case 2:
@@ -22838,4 +19465,9 @@ function __c70(j: number): any {
         identifier: "ValidateMonitorResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

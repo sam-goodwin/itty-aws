@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,28 +69,14 @@ export interface AddGroupMigrationRequest {
   /** The full path name of the MigratingVm to add. */
   migratingVm?: string;
 }
-const AddGroupMigrationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddGroupMigrationRequest>;
-
 export interface AddGroupMigrationProjectsLocationsGroupsRequest {
   /** Required. The full path name of the Group to add to. */
   group: string;
   /** Request body */
   body?: AddGroupMigrationRequest;
 }
-const AddGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -98,8 +86,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -113,26 +99,14 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
-
 /** Request message for 'CancelImageImportJob' request. */
 export interface CancelImageImportJobRequest {}
-const CancelImageImportJobRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelImageImportJobRequest>;
-
 export interface CancelProjectsLocationsImageImportsImageImportJobsRequest {
   /** Required. The image import job id. */
   name: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const CancelProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>;
-
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = CancelImageImportJobRequest;
 export interface CancelProjectsLocationsOperationsRequest {
@@ -141,15 +115,8 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelImageImportJobRequest as any as S.Schema<Empty>;
-
 /** Request message for 'CancelDiskMigrationJob' request. */
 export type CancelDiskMigrationJobRequest = CancelImageImportJobRequest;
 export interface CancelProjectsLocationsSourcesDiskMigrationJobsRequest {
@@ -158,11 +125,6 @@ export interface CancelProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const CancelProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>;
-
 /** Request message for 'CancelCloneJob' request. */
 export type CancelCloneJobRequest = CancelImageImportJobRequest;
 export interface CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
@@ -171,11 +133,6 @@ export interface CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
-
 /** Request message for 'CancelCutoverJob' request. */
 export type CancelCutoverJobRequest = CancelImageImportJobRequest;
 export interface CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
@@ -184,17 +141,10 @@ export interface CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
-
 export type GroupMigrationTargetTypeEnum =
   | "MIGRATION_TARGET_TYPE_UNSPECIFIED"
   | "MIGRATION_TARGET_TYPE_GCE"
   | "MIGRATION_TARGET_TYPE_DISKS";
-const GroupMigrationTargetTypeEnum = S.String;
-
 /** Describes message for 'Group' resource. The Group is a collections of several MigratingVms. */
 export interface Group {
   /** Output only. The create time timestamp. */
@@ -210,8 +160,6 @@ export interface Group {
   /** Output only. The update time timestamp. */
   updateTime?: string;
 }
-const Group = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Group>;
-
 export interface CreateProjectsLocationsGroupsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -222,43 +170,26 @@ export interface CreateProjectsLocationsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateProjectsLocationsGroupsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
-
 /** Used when the image import is not using OS adaptation process. */
 export interface DataDiskImageImport {
   /** Optional. A list of guest OS features to apply to the imported image. These features are flags that are used by Compute Engine to enable certain capabilities for virtual machine instances that are created from the image. This field does not change the OS of the image; it only marks the image with the specified features. The user must ensure that the OS is compatible with the features. For a list of available features, see https://cloud.google.com/compute/docs/images/create-custom#guest-os-features. */
   guestOsFeatures?: StringList;
 }
-const DataDiskImageImport = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DataDiskImageImport>;
-
 /** Encryption message describes the details of the applied encryption. */
 export interface Encryption {
   /** Required. The name of the encryption key that is stored in Google Cloud KMS. */
   kmsKey?: string;
 }
-const Encryption = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Encryption>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<StringMap>;
-
 export type ImageImportOsAdaptationParametersLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
   | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-const ImageImportOsAdaptationParametersLicenseTypeEnum = S.String;
-
 export type ImageImportOsAdaptationParametersBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
   | "BIOS_TO_EFI";
-const ImageImportOsAdaptationParametersBootConversionEnum = S.String;
-
 /** AdaptationModifier a modifier to be used for configuration of the OS adaptation process. */
 export interface AdaptationModifier {
   /** Optional. The modifier name. */
@@ -266,14 +197,7 @@ export interface AdaptationModifier {
   /** Optional. The value of the modifier. The actual value depends on the modifier and can also be empty. */
   value?: string;
 }
-const AdaptationModifier = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AdaptationModifier>;
-
 export type AdaptationModifierList = Array<AdaptationModifier>;
-const AdaptationModifierList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AdaptationModifierList>;
-
 /** Parameters affecting the OS adaptation process. */
 export interface ImageImportOsAdaptationParameters {
   /** Optional. Choose which type of license to apply to the imported image. */
@@ -285,11 +209,6 @@ export interface ImageImportOsAdaptationParameters {
   /** Optional. Modifiers to be used as configuration of the OS adaptation process. */
   adaptationModifiers?: AdaptationModifierList;
 }
-const ImageImportOsAdaptationParameters = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ImageImportOsAdaptationParameters>;
-
 /** The target details of the image resource that will be created by the import job. */
 export interface DiskImageTargetDetails {
   /** Optional. Use to skip OS adaptation process. */
@@ -313,14 +232,7 @@ export interface DiskImageTargetDetails {
   /** Optional. Additional licenses to assign to the image. Format: https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME Or https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME */
   additionalLicenses?: StringList;
 }
-const DiskImageTargetDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DiskImageTargetDetails>;
-
 export type ShieldedInstanceConfigSecureBootEnum = "SECURE_BOOT_UNSPECIFIED" | "TRUE" | "FALSE";
-const ShieldedInstanceConfigSecureBootEnum = S.String;
-
 /** Shielded instance configuration. */
 export interface ShieldedInstanceConfig {
   /** Optional. Defines whether the instance created by the machine image has vTPM enabled. This can be set to true only if the image boot option is EFI. */
@@ -330,11 +242,6 @@ export interface ShieldedInstanceConfig {
   /** Optional. Defines whether the instance created by the machine image has Secure Boot enabled. This can be set to true only if the image boot option is EFI. */
   secureBoot?: ShieldedInstanceConfigSecureBootEnum | (string & {});
 }
-const ShieldedInstanceConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ShieldedInstanceConfig>;
-
 /** Service account to assign to the instance created by the machine image. */
 export interface ServiceAccount {
   /** Optional. The list of scopes to be made available for this service account. */
@@ -342,14 +249,10 @@ export interface ServiceAccount {
   /** Required. The email address of the service account. */
   email?: string;
 }
-const ServiceAccount = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ServiceAccount>;
-
 export type NetworkInterfaceNetworkTierEnum =
   | "COMPUTE_ENGINE_NETWORK_TIER_UNSPECIFIED"
   | "NETWORK_TIER_STANDARD"
   | "NETWORK_TIER_PREMIUM";
-const NetworkInterfaceNetworkTierEnum = S.String;
-
 /** NetworkInterface represents a NIC of a VM. */
 export interface NetworkInterface {
   /** Optional. The networking tier used for optimizing connectivity between instances and systems on the internet. Applies only for external ephemeral IP addresses. If left empty, will default to PREMIUM. */
@@ -363,11 +266,7 @@ export interface NetworkInterface {
   /** Optional. The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path. */
   internalIp?: string;
 }
-const NetworkInterface = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<NetworkInterface>;
-
 export type NetworkInterfaceList = Array<NetworkInterface>;
-const NetworkInterfaceList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<NetworkInterfaceList>;
-
 /** Mentions that the machine image import is not using OS adaptation process. */
 export type SkipOsAdaptation = CancelImageImportJobRequest;
 /** Parameters overriding decisions based on the source machine image configurations. */
@@ -375,11 +274,6 @@ export interface MachineImageParametersOverrides {
   /** Optional. The machine type to create the MachineImage with. If empty, the service will choose a relevant machine type based on the information from the source image. For more information about machine types, please refer to https://cloud.google.com/compute/docs/machine-resource. */
   machineType?: string;
 }
-const MachineImageParametersOverrides = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<MachineImageParametersOverrides>;
-
 /** The target details of the machine image resource that will be created by the image import job. */
 export interface MachineImageTargetDetails {
   /** Optional. The labels to apply to the instance created by the machine image. */
@@ -411,14 +305,7 @@ export interface MachineImageTargetDetails {
   /** Immutable. The encryption to apply to the machine image. If the Image Import resource has an encryption, this field must be set to the same encryption key. */
   encryption?: Encryption;
 }
-const MachineImageTargetDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MachineImageTargetDetails>;
-
 export type StatusList = Array<Status>;
-const StatusList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StatusList>;
-
 export type ImageImportJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -427,8 +314,6 @@ export type ImageImportJobStateEnum =
   | "FAILED"
   | "CANCELLING"
   | "CANCELLED";
-const ImageImportJobStateEnum = S.String;
-
 /** Provides a localized error message that is safe to return to the user which can be attached to an RPC error. */
 export interface LocalizedMessage {
   /** The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX" */
@@ -436,11 +321,7 @@ export interface LocalizedMessage {
   /** The localized error message in the above locale. */
   message?: string;
 }
-const LocalizedMessage = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<LocalizedMessage>;
-
 export type MigrationWarningCodeEnum = "WARNING_CODE_UNSPECIFIED" | "ADAPTATION_WARNING";
-const MigrationWarningCodeEnum = S.String;
-
 /** Describes a URL link. */
 export interface Link {
   /** Describes what the link offers. */
@@ -448,11 +329,7 @@ export interface Link {
   /** The URL of the link. */
   url?: string;
 }
-const Link = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Link>;
-
 export type LinkList = Array<Link>;
-const LinkList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<LinkList>;
-
 /** Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations. */
 export interface MigrationWarning {
   /** Output only. The localized warning message. */
@@ -466,11 +343,7 @@ export interface MigrationWarning {
   /** Output only. Suggested action for solving the warning. */
   actionItem?: LocalizedMessage;
 }
-const MigrationWarning = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MigrationWarning>;
-
 export type MigrationWarningList = Array<MigrationWarning>;
-const MigrationWarningList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MigrationWarningList>;
-
 /** AdaptingOSStep contains specific step details. */
 export type AdaptingOSStep = CancelImageImportJobRequest;
 /** LoadingImageSourceFilesStep contains specific step details. */
@@ -494,11 +367,7 @@ export interface ImageImportStep {
   /** Initializing step. */
   initializing?: CancelImageImportJobRequest;
 }
-const ImageImportStep = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ImageImportStep>;
-
 export type ImageImportStepList = Array<ImageImportStep>;
-const ImageImportStepList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ImageImportStepList>;
-
 /** ImageImportJob describes the progress and result of an image import. */
 export interface ImageImportJob {
   /** Output only. The resource path of the ImageImportJob. */
@@ -524,11 +393,7 @@ export interface ImageImportJob {
   /** Output only. The time the image import was ended. */
   endTime?: string;
 }
-const ImageImportJob = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ImageImportJob>;
-
 export type ImageImportJobList = Array<ImageImportJob>;
-const ImageImportJobList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ImageImportJobList>;
-
 /** ImageImport describes the configuration of the image import to run. */
 export interface ImageImport {
   /** Immutable. Target details for importing a disk image, will be used by ImageImportJob. */
@@ -546,8 +411,6 @@ export interface ImageImport {
   /** Output only. The result of the most recent runs for this ImageImport. All jobs for this ImageImport can be listed via ListImageImportJobs. */
   recentImageImportJobs?: ImageImportJobList;
 }
-const ImageImport = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ImageImport>;
-
 export interface CreateProjectsLocationsImageImportsRequest {
   /** Required. The ImageImport's parent. */
   parent: string;
@@ -558,11 +421,6 @@ export interface CreateProjectsLocationsImageImportsRequest {
   /** Request body */
   body?: ImageImport;
 }
-const CreateProjectsLocationsImageImportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateProjectsLocationsImageImportsRequest>;
-
 /** VmwareSourceDetails message describes a specific source details for the vmware source type. */
 export interface VmwareSourceDetails {
   /** The thumbprint representing the certificate for the vcenter. */
@@ -576,8 +434,6 @@ export interface VmwareSourceDetails {
   /** The credentials username. */
   username?: string;
 }
-const VmwareSourceDetails = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<VmwareSourceDetails>;
-
 /** Tag is an AWS tag representation. */
 export interface Tag {
   /** Required. Key of tag. */
@@ -585,14 +441,8 @@ export interface Tag {
   /** Required. Value of tag. */
   value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Tag>;
-
 export type TagList = Array<Tag>;
-const TagList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TagList>;
-
 export type AwsSourceDetailsStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE";
-const AwsSourceDetailsStateEnum = S.String;
-
 /** Message describing AWS Credentials using access key id and secret. */
 export interface AccessKeyCredentials {
   /** Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials. */
@@ -602,8 +452,6 @@ export interface AccessKeyCredentials {
   /** Input only. AWS secret access key. */
   secretAccessKey?: string;
 }
-const AccessKeyCredentials = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AccessKeyCredentials>;
-
 /** AwsSourceDetails message describes a specific source details for the AWS source type. */
 export interface AwsSourceDetails {
   /** AWS security group names to limit the scope of the source inventory. */
@@ -623,11 +471,7 @@ export interface AwsSourceDetails {
   /** AWS Credentials using access key id and secret. */
   accessKeyCreds?: AccessKeyCredentials;
 }
-const AwsSourceDetails = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AwsSourceDetails>;
-
 export type AzureSourceDetailsStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE";
-const AzureSourceDetailsStateEnum = S.String;
-
 /** Message describing Azure Credentials using tenant ID, client ID and secret. */
 export interface ClientSecretCredentials {
   /** Azure client ID. */
@@ -637,11 +481,6 @@ export interface ClientSecretCredentials {
   /** Azure tenant ID. */
   tenantId?: string;
 }
-const ClientSecretCredentials = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ClientSecretCredentials>;
-
 /** AzureSourceDetails message describes a specific source details for the Azure source type. */
 export interface AzureSourceDetails {
   /** Output only. The ID of the Azure resource group that contains all resources related to the migration process of this source. */
@@ -659,8 +498,6 @@ export interface AzureSourceDetails {
   /** User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`. */
   migrationResourcesUserTags?: StringMap;
 }
-const AzureSourceDetails = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<AzureSourceDetails>;
-
 /** Source message describes a specific vm migration Source resource. It contains the source environment information. */
 export interface Source {
   /** Output only. The Source name. */
@@ -684,8 +521,6 @@ export interface Source {
   /** Azure type source details. */
   azure?: AzureSourceDetails;
 }
-const Source = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Source>;
-
 export interface CreateProjectsLocationsSourcesRequest {
   /** Required. The Source's parent. */
   parent: string;
@@ -696,14 +531,7 @@ export interface CreateProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateProjectsLocationsSourcesRequest>;
-
 export type UpgradeStatusStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "FAILED" | "SUCCEEDED";
-const UpgradeStatusStateEnum = S.String;
-
 /** UpgradeStatus contains information about upgradeAppliance operation. */
 export interface UpgradeStatus {
   /** The state of the upgradeAppliance operation. */
@@ -717,8 +545,6 @@ export interface UpgradeStatus {
   /** The time the operation was started. */
   startTime?: string;
 }
-const UpgradeStatus = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<UpgradeStatus>;
-
 /** Describes an appliance version. */
 export interface ApplianceVersion {
   /** A link for downloading the version. */
@@ -730,8 +556,6 @@ export interface ApplianceVersion {
   /** The appliance version. */
   version?: string;
 }
-const ApplianceVersion = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ApplianceVersion>;
-
 /** Holds information about the available versions for upgrade. */
 export interface AvailableUpdates {
   /** The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI. */
@@ -739,16 +563,12 @@ export interface AvailableUpdates {
   /** The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance. */
   newDeployableAppliance?: ApplianceVersion;
 }
-const AvailableUpdates = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<AvailableUpdates>;
-
 export type DatacenterConnectorStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "OFFLINE"
   | "FAILED"
   | "ACTIVE";
-const DatacenterConnectorStateEnum = S.String;
-
 /** DatacenterConnector message describes a connector between the Source and Google Cloud, which is installed on a vmware datacenter (an OVA vm installed by the user) to connect the Datacenter to Google Cloud and support vm migration data transfer. */
 export interface DatacenterConnector {
   /** Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified. */
@@ -780,8 +600,6 @@ export interface DatacenterConnector {
   /** Output only. Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance. */
   applianceSoftwareVersion?: string;
 }
-const DatacenterConnector = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DatacenterConnector>;
-
 export interface CreateProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -792,11 +610,6 @@ export interface CreateProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Request body */
   body?: DatacenterConnector;
 }
-const CreateProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>;
-
 /** CreatingSourceDiskSnapshotStep contains specific step details. */
 export type CreatingSourceDiskSnapshotStep = CancelImageImportJobRequest;
 /** ProvisioningTargetDiskStep contains specific step details. */
@@ -816,14 +629,7 @@ export interface DiskMigrationStep {
   /** Output only. The time the step has started. */
   startTime?: string;
 }
-const DiskMigrationStep = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DiskMigrationStep>;
-
 export type DiskMigrationStepList = Array<DiskMigrationStep>;
-const DiskMigrationStepList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DiskMigrationStepList>;
-
 export type ComputeEngineDiskDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
   | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
@@ -831,8 +637,6 @@ export type ComputeEngineDiskDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-const ComputeEngineDiskDiskTypeEnum = S.String;
-
 /** Compute Engine disk target details. */
 export interface ComputeEngineDisk {
   /** Required. The Compute Engine zone in which to create the disk. Should be of the form: projects/{target-project}/locations/{zone} */
@@ -844,8 +648,6 @@ export interface ComputeEngineDisk {
   /** Required. The disk type to use. */
   diskType?: ComputeEngineDiskDiskTypeEnum | (string & {});
 }
-const ComputeEngineDisk = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ComputeEngineDisk>;
-
 /** Details of the target disk in Compute Engine. */
 export interface DiskMigrationJobTargetDetails {
   /** Optional. A map of labels to associate with the disk. */
@@ -857,11 +659,6 @@ export interface DiskMigrationJobTargetDetails {
   /** Optional. The encryption to apply to the disk. If the DiskMigrationJob parent Source resource has an encryption, this field must be set to the same encryption key. */
   encryption?: Encryption;
 }
-const DiskMigrationJobTargetDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DiskMigrationJobTargetDetails>;
-
 export type AwsSourceDiskDetailsDiskTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GP2"
@@ -871,8 +668,6 @@ export type AwsSourceDiskDetailsDiskTypeEnum =
   | "ST1"
   | "SC1"
   | "STANDARD";
-const AwsSourceDiskDetailsDiskTypeEnum = S.String;
-
 /** Represents the source AWS Disk details. */
 export interface AwsSourceDiskDetails {
   /** Optional. Output only. A map of AWS volume tags. */
@@ -884,8 +679,6 @@ export interface AwsSourceDiskDetails {
   /** Optional. Output only. Disk type. */
   diskType?: AwsSourceDiskDetailsDiskTypeEnum | (string & {});
 }
-const AwsSourceDiskDetails = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AwsSourceDiskDetails>;
-
 export type DiskMigrationJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
@@ -894,8 +687,6 @@ export type DiskMigrationJobStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "FAILED";
-const DiskMigrationJobStateEnum = S.String;
-
 /** Describes the disk which will be migrated from the source environment. The source disk has to be unattached. */
 export interface DiskMigrationJob {
   /** Output only. The time the DiskMigrationJob resource was created. */
@@ -915,8 +706,6 @@ export interface DiskMigrationJob {
   /** Output only. Identifier. The identifier of the DiskMigrationJob. */
   name?: string;
 }
-const DiskMigrationJob = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DiskMigrationJob>;
-
 export interface CreateProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The DiskMigrationJob identifier. The maximum length of this value is 63 characters. Valid characters are lower case Latin letters, digits and hyphen. It must start with a Latin letter and must not end with a hyphen. */
   diskMigrationJobId?: string;
@@ -927,11 +716,6 @@ export interface CreateProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: DiskMigrationJob;
 }
-const CreateProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateProjectsLocationsSourcesDiskMigrationJobsRequest>;
-
 /** A policy for scheduling replications. */
 export interface SchedulePolicy {
   /** The idle duration between replication stages. */
@@ -939,8 +723,6 @@ export interface SchedulePolicy {
   /** A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine. */
   skipOsAdaptation?: boolean;
 }
-const SchedulePolicy = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SchedulePolicy>;
-
 /** The details of a Vmware VM disk. */
 export interface VmwareDiskDetails {
   /** Output only. The disk label. */
@@ -950,29 +732,15 @@ export interface VmwareDiskDetails {
   /** Output only. Size in GB. */
   sizeGb?: string;
 }
-const VmwareDiskDetails = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<VmwareDiskDetails>;
-
 export type VmwareDiskDetailsList = Array<VmwareDiskDetails>;
-const VmwareDiskDetailsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<VmwareDiskDetailsList>;
-
 export type VmCapabilitiesOsCapabilitiesItemEnum =
   | "OS_CAPABILITY_UNSPECIFIED"
   | "OS_CAPABILITY_NVME_STORAGE_ACCESS"
   | "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE"
   | "OS_CAPABILITY_IDPF_NETWORK_INTERFACE";
-const VmCapabilitiesOsCapabilitiesItemEnum = S.String;
-
 export type VmCapabilitiesOsCapabilitiesItemEnumList = Array<
   VmCapabilitiesOsCapabilitiesItemEnum | (string & {})
 >;
-const VmCapabilitiesOsCapabilitiesItemEnumList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<VmCapabilitiesOsCapabilitiesItemEnumList>;
-
 /** Migrating VM source information about the VM capabilities needed for some Compute Engine features. */
 export interface VmCapabilities {
   /** Output only. The last time OS capabilities list was updated. */
@@ -980,17 +748,11 @@ export interface VmCapabilities {
   /** Output only. Unordered list. List of certain VM OS capabilities needed for some Compute Engine features. */
   osCapabilities?: VmCapabilitiesOsCapabilitiesItemEnumList;
 }
-const VmCapabilities = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<VmCapabilities>;
-
 export type VmwareSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
-const VmwareSourceVmDetailsFirmwareEnum = S.String;
-
 export type VmwareSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-const VmwareSourceVmDetailsArchitectureEnum = S.String;
-
 /** Represent the source Vmware VM details. */
 export interface VmwareSourceVmDetails {
   /** Output only. The disks attached to the source VM. */
@@ -1004,11 +766,6 @@ export interface VmwareSourceVmDetails {
   /** Output only. The VM architecture. */
   architecture?: VmwareSourceVmDetailsArchitectureEnum | (string & {});
 }
-const VmwareSourceVmDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<VmwareSourceVmDetails>;
-
 /** Expiration holds information about the expiration of a MigratingVm. */
 export interface Expiration {
   /** Output only. Describes whether the expiration can be extended. */
@@ -1018,8 +775,6 @@ export interface Expiration {
   /** Output only. The number of times expiration was extended. */
   extensionCount?: number;
 }
-const Expiration = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Expiration>;
-
 /** Details for a disks-only migration. */
 export type DisksMigrationDisksTargetDetails = CancelImageImportJobRequest;
 /** Details of a created Persistent Disk. */
@@ -1029,21 +784,12 @@ export interface PersistentDisk {
   /** Output only. The URI of the Persistent Disk. */
   diskUri?: string;
 }
-const PersistentDisk = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<PersistentDisk>;
-
 export type PersistentDiskList = Array<PersistentDisk>;
-const PersistentDiskList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<PersistentDiskList>;
-
 /** Details for the VM created VM as part of disks migration. */
 export interface DisksMigrationVmTargetDetails {
   /** Output only. The URI of the Compute Engine VM. */
   vmUri?: string;
 }
-const DisksMigrationVmTargetDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DisksMigrationVmTargetDetails>;
-
 /** ComputeEngineDisksTargetDetails is a collection of created Persistent Disks details. */
 export interface ComputeEngineDisksTargetDetails {
   /** Details of the disks-only migration target. */
@@ -1053,14 +799,7 @@ export interface ComputeEngineDisksTargetDetails {
   /** Details for the VM the migrated data disks are attached to. */
   vmTargetDetails?: DisksMigrationVmTargetDetails;
 }
-const ComputeEngineDisksTargetDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ComputeEngineDisksTargetDetails>;
-
 export type SchedulingNodeAffinityOperatorEnum = "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN";
-const SchedulingNodeAffinityOperatorEnum = S.String;
-
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling */
 export interface SchedulingNodeAffinity {
   /** Corresponds to the label values of Node resource. */
@@ -1070,29 +809,15 @@ export interface SchedulingNodeAffinity {
   /** The label key of Node resource to reference. */
   key?: string;
 }
-const SchedulingNodeAffinity = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<SchedulingNodeAffinity>;
-
 export type SchedulingNodeAffinityList = Array<SchedulingNodeAffinity>;
-const SchedulingNodeAffinityList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<SchedulingNodeAffinityList>;
-
 export type ComputeSchedulingOnHostMaintenanceEnum =
   | "ON_HOST_MAINTENANCE_UNSPECIFIED"
   | "TERMINATE"
   | "MIGRATE";
-const ComputeSchedulingOnHostMaintenanceEnum = S.String;
-
 export type ComputeSchedulingRestartTypeEnum =
   | "RESTART_TYPE_UNSPECIFIED"
   | "AUTOMATIC_RESTART"
   | "NO_AUTOMATIC_RESTART";
-const ComputeSchedulingRestartTypeEnum = S.String;
-
 /** Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes. Options for instance behavior when the host machine undergoes maintenance that may temporarily impact instance performance. */
 export interface ComputeScheduling {
   /** The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured. */
@@ -1105,17 +830,11 @@ export interface ComputeScheduling {
   /** Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart. */
   restartType?: ComputeSchedulingRestartTypeEnum | (string & {});
 }
-const ComputeScheduling = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ComputeScheduling>;
-
 export type ComputeEngineTargetDetailsBootOptionEnum =
   | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
   | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
   | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
-const ComputeEngineTargetDetailsBootOptionEnum = S.String;
-
 export type AppliedLicenseTypeEnum = "TYPE_UNSPECIFIED" | "NONE" | "PAYG" | "BYOL";
-const AppliedLicenseTypeEnum = S.String;
-
 /** AppliedLicense holds the license data returned by adaptation module report. */
 export interface AppliedLicense {
   /** The OS license returned from the adaptation module's report. */
@@ -1123,20 +842,14 @@ export interface AppliedLicense {
   /** The license type that was used in OS adaptation. */
   type?: AppliedLicenseTypeEnum | (string & {});
 }
-const AppliedLicense = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AppliedLicense>;
-
 export type ComputeEngineTargetDetailsBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
   | "BIOS_TO_EFI";
-const ComputeEngineTargetDetailsBootConversionEnum = S.String;
-
 export type ComputeEngineTargetDetailsLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
   | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-const ComputeEngineTargetDetailsLicenseTypeEnum = S.String;
-
 export type ComputeEngineTargetDetailsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
   | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
@@ -1144,8 +857,6 @@ export type ComputeEngineTargetDetailsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-const ComputeEngineTargetDetailsDiskTypeEnum = S.String;
-
 /** ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project. */
 export interface ComputeEngineTargetDetails {
   /** Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI. */
@@ -1199,14 +910,7 @@ export interface ComputeEngineTargetDetails {
   /** The disk type to use in the VM. */
   diskType?: ComputeEngineTargetDetailsDiskTypeEnum | (string & {});
 }
-const ComputeEngineTargetDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ComputeEngineTargetDetails>;
-
 export type TargetVMDetailsLicenseTypeEnum = "DEFAULT" | "PAYG" | "BYOL";
-const TargetVMDetailsLicenseTypeEnum = S.String;
-
 export type TargetVMDetailsDiskTypeEnum =
   | "DISK_TYPE_UNSPECIFIED"
   | "STANDARD"
@@ -1214,11 +918,7 @@ export type TargetVMDetailsDiskTypeEnum =
   | "SSD"
   | "HYPERDISK_BALANCED"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-const TargetVMDetailsDiskTypeEnum = S.String;
-
 export type TargetVMDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-const TargetVMDetailsBootOptionEnum = S.String;
-
 /** TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project. */
 export interface TargetVMDetails {
   /** A list of network tags to associate with the VM. */
@@ -1264,8 +964,6 @@ export interface TargetVMDetails {
   /** Output only. The project in which to create the VM. */
   project?: string;
 }
-const TargetVMDetails = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<TargetVMDetails>;
-
 /** ShuttingDownSourceVMStep contains specific step details. */
 export type ShuttingDownSourceVMStep = CancelImageImportJobRequest;
 /** InstantiatingMigratedVMStep contains specific step details. */
@@ -1285,8 +983,6 @@ export interface ReplicatingStep {
   /** The source disks replication rate for the last 30 minutes in bytes per second. */
   lastThirtyMinutesAverageBytesPerSecond?: string;
 }
-const ReplicatingStep = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ReplicatingStep>;
-
 /** CycleStep holds information about a step progress. */
 export interface CycleStep {
   /** Initializing replication step. */
@@ -1300,19 +996,13 @@ export interface CycleStep {
   /** The time the cycle step has started. */
   startTime?: string;
 }
-const CycleStep = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CycleStep>;
-
 export type CycleStepList = Array<CycleStep>;
-const CycleStepList = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<CycleStepList>;
-
 export type ReplicationCycleStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
   | "PAUSED"
   | "FAILED"
   | "SUCCEEDED";
-const ReplicationCycleStateEnum = S.String;
-
 /** ReplicationCycle contains information about the current replication cycle status. */
 export interface ReplicationCycle {
   /** The time the replication cycle has started. */
@@ -1338,8 +1028,6 @@ export interface ReplicationCycle {
   /** Output only. Warnings that occurred during the cycle. */
   warnings?: MigrationWarningList;
 }
-const ReplicationCycle = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ReplicationCycle>;
-
 /** PreparingVMDisksStep contains specific step details. */
 export type PreparingVMDisksStep = CancelImageImportJobRequest;
 /** CutoverStep holds information about the cutover step progress. */
@@ -1359,11 +1047,7 @@ export interface CutoverStep {
   /** Preparing VM disks step. */
   preparingVmDisks?: CancelImageImportJobRequest;
 }
-const CutoverStep = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<CutoverStep>;
-
 export type CutoverStepList = Array<CutoverStep>;
-const CutoverStepList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<CutoverStepList>;
-
 export type CutoverJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -1373,8 +1057,6 @@ export type CutoverJobStateEnum =
   | "CANCELLING"
   | "ACTIVE"
   | "ADAPTING_OS";
-const CutoverJobStateEnum = S.String;
-
 /** CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and cloning the VM using the replicated snapshot. */
 export interface CutoverJob {
   /** Output only. Details of the target Persistent Disks in Compute Engine. */
@@ -1406,18 +1088,12 @@ export interface CutoverJob {
   /** Output only. The time the cutover job had finished. */
   endTime?: string;
 }
-const CutoverJob = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<CutoverJob>;
-
 export type CutoverJobList = Array<CutoverJob>;
-const CutoverJobList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CutoverJobList>;
-
 /** Details for attachment of the disk to a VM. */
 export interface VmAttachmentDetails {
   /** Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks. */
   deviceName?: string;
 }
-const VmAttachmentDetails = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<VmAttachmentDetails>;
-
 export type PersistentDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
   | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
@@ -1425,8 +1101,6 @@ export type PersistentDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-const PersistentDiskDefaultsDiskTypeEnum = S.String;
-
 /** Details for creation of a Persistent Disk. */
 export interface PersistentDiskDefaults {
   /** Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attached to a target VM. */
@@ -1442,29 +1116,15 @@ export interface PersistentDiskDefaults {
   /** Optional. The name of the Persistent Disk to create. */
   diskName?: string;
 }
-const PersistentDiskDefaults = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PersistentDiskDefaults>;
-
 export type PersistentDiskDefaultsList = Array<PersistentDiskDefaults>;
-const PersistentDiskDefaultsList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PersistentDiskDefaultsList>;
-
 export type ComputeEngineTargetDefaultsBootOptionEnum =
   | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
   | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
   | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
-const ComputeEngineTargetDefaultsBootOptionEnum = S.String;
-
 export type ComputeEngineTargetDefaultsBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
   | "BIOS_TO_EFI";
-const ComputeEngineTargetDefaultsBootConversionEnum = S.String;
-
 export type ComputeEngineTargetDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
   | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
@@ -1472,14 +1132,10 @@ export type ComputeEngineTargetDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-const ComputeEngineTargetDefaultsDiskTypeEnum = S.String;
-
 export type ComputeEngineTargetDefaultsLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
   | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-const ComputeEngineTargetDefaultsLicenseTypeEnum = S.String;
-
 /** ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project. */
 export interface ComputeEngineTargetDefaults {
   /** A list of network tags to associate with the VM. */
@@ -1535,25 +1191,16 @@ export interface ComputeEngineTargetDefaults {
   /** Optional. Defines whether the instance has integrity monitoring enabled. This can be set to true only if the VM boot option is EFI, and vTPM is enabled. */
   enableIntegrityMonitoring?: boolean;
 }
-const ComputeEngineTargetDefaults = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ComputeEngineTargetDefaults>;
-
 /** ReplicationSync contain information about the last replica sync to the cloud. */
 export interface ReplicationSync {
   /** The most updated snapshot created time in the source that finished replication. */
   lastSyncTime?: string;
 }
-const ReplicationSync = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ReplicationSync>;
-
 /** CutoverForecast holds information about future CutoverJobs of a MigratingVm. */
 export interface CutoverForecast {
   /** Output only. Estimation of the CutoverJob duration. */
   estimatedCutoverJobDuration?: string;
 }
-const CutoverForecast = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<CutoverForecast>;
-
 export type BootDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
   | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
@@ -1561,15 +1208,11 @@ export type BootDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-const BootDiskDefaultsDiskTypeEnum = S.String;
-
 /** Contains details about the image source used to create the disk. */
 export interface DiskImageDefaults {
   /** Required. The Image resource used when creating the disk. */
   sourceImage?: string;
 }
-const DiskImageDefaults = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<DiskImageDefaults>;
-
 /** BootDiskDefaults hold information about the boot disk of a VM. */
 export interface BootDiskDefaults {
   /** Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks. */
@@ -1583,8 +1226,6 @@ export interface BootDiskDefaults {
   /** Optional. The name of the disk. */
   diskName?: string;
 }
-const BootDiskDefaults = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<BootDiskDefaults>;
-
 /** Details for creation of a VM that migrated data disks will be attached to. */
 export interface DisksMigrationVmTargetDefaults {
   /** Optional. Additional licenses to assign to the VM. */
@@ -1620,11 +1261,6 @@ export interface DisksMigrationVmTargetDefaults {
   /** Optional. A list of network tags to associate with the VM. */
   networkTags?: StringList;
 }
-const DisksMigrationVmTargetDefaults = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DisksMigrationVmTargetDefaults>;
-
 /** Details for a disk only migration. */
 export type DisksMigrationDisksTargetDefaults = CancelImageImportJobRequest;
 /** ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project. */
@@ -1640,11 +1276,6 @@ export interface ComputeEngineDisksTargetDefaults {
   /** The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks. */
   targetProject?: string;
 }
-const ComputeEngineDisksTargetDefaults = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ComputeEngineDisksTargetDefaults>;
-
 export type MigratingVmStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -1660,8 +1291,6 @@ export type MigratingVmStateEnum =
   | "ERROR"
   | "EXPIRED"
   | "FINALIZED_EXPIRED";
-const MigratingVmStateEnum = S.String;
-
 /** CloneStep holds information about the clone step progress. */
 export interface CloneStep {
   /** Instantiating migrated VM step. */
@@ -1675,11 +1304,7 @@ export interface CloneStep {
   /** Adapting OS step. */
   adaptingOs?: CancelImageImportJobRequest;
 }
-const CloneStep = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CloneStep>;
-
 export type CloneStepList = Array<CloneStep>;
-const CloneStepList = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<CloneStepList>;
-
 export type CloneJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -1689,8 +1314,6 @@ export type CloneJobStateEnum =
   | "CANCELLED"
   | "CANCELLING"
   | "ADAPTING_OS";
-const CloneJobStateEnum = S.String;
-
 /** CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone. */
 export interface CloneJob {
   /** Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead. */
@@ -1716,11 +1339,7 @@ export interface CloneJob {
   /** Output only. The time the clone job was ended. */
   endTime?: string;
 }
-const CloneJob = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<CloneJob>;
-
 export type CloneJobList = Array<CloneJob>;
-const CloneJobList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<CloneJobList>;
-
 /** The details of an Azure VM disk. */
 export interface AzureDiskDetails {
   /** Output only. The ordinal number of the disk. */
@@ -1730,23 +1349,12 @@ export interface AzureDiskDetails {
   /** Output only. Size in GB. */
   sizeGb?: string;
 }
-const AzureDiskDetails = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<AzureDiskDetails>;
-
 export type AzureDiskDetailsList = Array<AzureDiskDetails>;
-const AzureDiskDetailsList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<AzureDiskDetailsList>;
-
 export type AzureSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
-const AzureSourceVmDetailsFirmwareEnum = S.String;
-
 export type AzureSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-const AzureSourceVmDetailsArchitectureEnum = S.String;
-
 /** Represent the source Azure VM details. */
 export interface AzureSourceVmDetails {
   /** Output only. The disks attached to the source VM. */
@@ -1760,17 +1368,10 @@ export interface AzureSourceVmDetails {
   /** Output only. The total size of the disks being migrated in bytes. */
   committedStorageBytes?: string;
 }
-const AzureSourceVmDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<AzureSourceVmDetails>;
-
 export type AwsSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-const AwsSourceVmDetailsArchitectureEnum = S.String;
-
 /** The details of an AWS instance disk. */
 export interface AwsDiskDetails {
   /** Output only. AWS volume ID. */
@@ -1780,14 +1381,8 @@ export interface AwsDiskDetails {
   /** Output only. Size in GB. */
   sizeGb?: string;
 }
-const AwsDiskDetails = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AwsDiskDetails>;
-
 export type AwsDiskDetailsList = Array<AwsDiskDetails>;
-const AwsDiskDetailsList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AwsDiskDetailsList>;
-
 export type AwsSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
-const AwsSourceVmDetailsFirmwareEnum = S.String;
-
 /** Represent the source AWS VM details. */
 export interface AwsSourceVmDetails {
   /** Output only. The VM architecture. */
@@ -1801,8 +1396,6 @@ export interface AwsSourceVmDetails {
   /** Output only. The firmware type of the source VM. */
   firmware?: AwsSourceVmDetailsFirmwareEnum | (string & {});
 }
-const AwsSourceVmDetails = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<AwsSourceVmDetails>;
-
 /** MigratingVm describes the VM that will be migrated from a Source environment and its replication state. */
 export interface MigratingVm {
   /** The replication schedule policy. */
@@ -1858,8 +1451,6 @@ export interface MigratingVm {
   /** The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead. */
   targetDefaults?: TargetVMDetails;
 }
-const MigratingVm = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<MigratingVm>;
-
 export interface CreateProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The MigratingVm's parent. */
   parent: string;
@@ -1870,11 +1461,6 @@ export interface CreateProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: MigratingVm;
 }
-const CreateProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>;
-
 export interface CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1885,11 +1471,6 @@ export interface CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Request body */
   body?: CloneJob;
 }
-const CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
-
 export interface CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Required. The Cutover's parent. */
   parent: string;
@@ -1900,14 +1481,7 @@ export interface CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Request body */
   body?: CutoverJob;
 }
-const CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
-
 export type UtilizationReportStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "SUCCEEDED" | "FAILED";
-const UtilizationReportStateEnum = S.String;
-
 /** Utilization metrics values for a single VM. */
 export interface VmUtilizationMetrics {
   /** Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second. */
@@ -1943,23 +1517,12 @@ export interface VmUtilizationMetrics {
   /** Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second. */
   networkThroughputAverageKbps?: string;
 }
-const VmUtilizationMetrics = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<VmUtilizationMetrics>;
-
 export type VmwareVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-const VmwareVmDetailsArchitectureEnum = S.String;
-
 export type VmwareVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-const VmwareVmDetailsBootOptionEnum = S.String;
-
 export type VmwareVmDetailsPowerStateEnum = "POWER_STATE_UNSPECIFIED" | "ON" | "OFF" | "SUSPENDED";
-const VmwareVmDetailsPowerStateEnum = S.String;
-
 /** VmwareVmDetails describes a VM in vCenter. */
 export interface VmwareVmDetails {
   /** The number of cpus in the VM. */
@@ -1991,8 +1554,6 @@ export interface VmwareVmDetails {
   /** The power state of the VM at the moment list was taken. */
   powerState?: VmwareVmDetailsPowerStateEnum | (string & {});
 }
-const VmwareVmDetails = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<VmwareVmDetails>;
-
 /** Utilization information of a single VM. */
 export interface VmUtilizationInfo {
   /** Utilization metrics for this VM. */
@@ -2002,17 +1563,8 @@ export interface VmUtilizationInfo {
   /** The description of the VM in a Source of type Vmware. */
   vmwareVmDetails?: VmwareVmDetails;
 }
-const VmUtilizationInfo = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<VmUtilizationInfo>;
-
 export type VmUtilizationInfoList = Array<VmUtilizationInfo>;
-const VmUtilizationInfoList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<VmUtilizationInfoList>;
-
 export type UtilizationReportTimeFrameEnum = "TIME_FRAME_UNSPECIFIED" | "WEEK" | "MONTH" | "YEAR";
-const UtilizationReportTimeFrameEnum = S.String;
-
 /** Utilization report details the utilization (CPU, memory, etc.) of selected source VMs. */
 export interface UtilizationReport {
   /** Output only. The time the report was created (this refers to the time of the request, not the time the report creation completed). */
@@ -2038,8 +1590,6 @@ export interface UtilizationReport {
   /** Output only. Total number of VMs included in the report. */
   vmCount?: number;
 }
-const UtilizationReport = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<UtilizationReport>;
-
 export interface CreateProjectsLocationsSourcesUtilizationReportsRequest {
   /** Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen. */
   utilizationReportId?: string;
@@ -2050,11 +1600,6 @@ export interface CreateProjectsLocationsSourcesUtilizationReportsRequest {
   /** Request body */
   body?: UtilizationReport;
 }
-const CreateProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateProjectsLocationsSourcesUtilizationReportsRequest>;
-
 /** TargetProject message represents a target Compute Engine project for a migration or a clone. */
 export interface TargetProject {
   /** Output only. The name of the target project. */
@@ -2068,8 +1613,6 @@ export interface TargetProject {
   /** Output only. The last time the target project resource was updated. */
   updateTime?: string;
 }
-const TargetProject = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<TargetProject>;
-
 export interface CreateProjectsLocationsTargetProjectsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -2080,104 +1623,54 @@ export interface CreateProjectsLocationsTargetProjectsRequest {
   /** Request body */
   body?: TargetProject;
 }
-const CreateProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateProjectsLocationsTargetProjectsRequest>;
-
 export interface DeleteProjectsLocationsGroupsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. The Group name. */
   name: string;
 }
-const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>;
-
 export interface DeleteProjectsLocationsImageImportsRequest {
   /** Required. The ImageImport name. */
   name: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsImageImportsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsImageImportsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsSourcesRequest {
   /** Required. The Source name. */
   name: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>;
-
 export interface DeleteProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. The DatacenterConnector name. */
   name: string;
 }
-const DeleteProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>;
-
 export interface DeleteProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
 }
-const DeleteProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>;
-
 export interface DeleteProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   name: string;
 }
-const DeleteProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>;
-
 export interface DeleteProjectsLocationsSourcesUtilizationReportsRequest {
   /** Required. The Utilization Report name. */
   name: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsSourcesUtilizationReportsRequest>;
-
 export interface DeleteProjectsLocationsTargetProjectsRequest {
   /** Required. The TargetProject name. */
   name: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsTargetProjectsRequest>;
-
 /** Request message for 'ExtendMigrationRequest' request. */
 export type ExtendMigrationRequest = CancelImageImportJobRequest;
 export interface ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest {
@@ -2186,11 +1679,6 @@ export interface ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>;
-
 export interface FetchInventoryProjectsLocationsSourcesRequest {
   /** A page token, received from a previous `FetchInventory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchInventory` must match the call that provided the page token. */
   pageToken?: string;
@@ -2201,21 +1689,12 @@ export interface FetchInventoryProjectsLocationsSourcesRequest {
   /** Required. The name of the Source. */
   source: string;
 }
-const FetchInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<FetchInventoryProjectsLocationsSourcesRequest>;
-
 export type VmwareVmDetailsList = Array<VmwareVmDetails>;
-const VmwareVmDetailsList = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<VmwareVmDetailsList>;
-
 /** VmwareVmsDetails describes VMs in vCenter. */
 export interface VmwareVmsDetails {
   /** The details of the vmware VMs. */
   details?: VmwareVmDetailsList;
 }
-const VmwareVmsDetails = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<VmwareVmsDetails>;
-
 /** A message describing the OS disk. */
 export interface OSDisk {
   /** The disk's full name. */
@@ -2225,11 +1704,7 @@ export interface OSDisk {
   /** The disk's size in GB. */
   sizeGb?: number;
 }
-const OSDisk = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<OSDisk>;
-
 export type AzureVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-const AzureVmDetailsBootOptionEnum = S.String;
-
 /** A message describing the VM's OS. Including OS, Publisher, Offer and Plan if applicable. */
 export interface OSDescription {
   /** OS plan. */
@@ -2241,14 +1716,10 @@ export interface OSDescription {
   /** OS publisher. */
   publisher?: string;
 }
-const OSDescription = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<OSDescription>;
-
 export type AzureVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-const AzureVmDetailsArchitectureEnum = S.String;
-
 export type AzureVmDetailsPowerStateEnum =
   | "POWER_STATE_UNSPECIFIED"
   | "STARTING"
@@ -2258,8 +1729,6 @@ export type AzureVmDetailsPowerStateEnum =
   | "DEALLOCATING"
   | "DEALLOCATED"
   | "UNKNOWN";
-const AzureVmDetailsPowerStateEnum = S.String;
-
 /** A message describing a data disk. */
 export interface Disk {
   /** The disk size in GB. */
@@ -2269,11 +1738,7 @@ export interface Disk {
   /** The disk name. */
   name?: string;
 }
-const Disk = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<Disk>;
-
 export type DiskList = Array<Disk>;
-const DiskList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<DiskList>;
-
 /** AzureVmDetails describes a VM in Azure. */
 export interface AzureVmDetails {
   /** The number of cpus the VM has. */
@@ -2305,34 +1770,24 @@ export interface AzureVmDetails {
   /** VM size as configured in Azure. Determines the VM's hardware spec. */
   vmSize?: string;
 }
-const AzureVmDetails = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<AzureVmDetails>;
-
 export type AzureVmDetailsList = Array<AzureVmDetails>;
-const AzureVmDetailsList = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<AzureVmDetailsList>;
-
 /** AzureVmsDetails describes VMs in Azure. */
 export interface AzureVmsDetails {
   /** The details of the Azure VMs. */
   details?: AzureVmDetailsList;
 }
-const AzureVmsDetails = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<AzureVmsDetails>;
-
 export type AwsVmDetailsPowerStateEnum =
   | "POWER_STATE_UNSPECIFIED"
   | "ON"
   | "OFF"
   | "SUSPENDED"
   | "PENDING";
-const AwsVmDetailsPowerStateEnum = S.String;
-
 export type AwsVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "I386"
   | "X86_64"
   | "ARM64"
   | "X86_64_MAC";
-const AwsVmDetailsArchitectureEnum = S.String;
-
 /** AwsSecurityGroup describes a security group of an AWS VM. */
 export interface AwsSecurityGroup {
   /** The AWS security group name. */
@@ -2340,23 +1795,12 @@ export interface AwsSecurityGroup {
   /** The AWS security group id. */
   id?: string;
 }
-const AwsSecurityGroup = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<AwsSecurityGroup>;
-
 export type AwsSecurityGroupList = Array<AwsSecurityGroup>;
-const AwsSecurityGroupList = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<AwsSecurityGroupList>;
-
 export type AwsVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-const AwsVmDetailsBootOptionEnum = S.String;
-
 export type AwsVmDetailsVirtualizationTypeEnum =
   | "VM_VIRTUALIZATION_TYPE_UNSPECIFIED"
   | "HVM"
   | "PARAVIRTUAL";
-const AwsVmDetailsVirtualizationTypeEnum = S.String;
-
 /** AwsVmDetails describes a VM in AWS. */
 export interface AwsVmDetails {
   /** Output only. The power state of the VM at the moment list was taken. */
@@ -2398,18 +1842,12 @@ export interface AwsVmDetails {
   /** The display name of the VM. Note that this value is not necessarily unique. */
   displayName?: string;
 }
-const AwsVmDetails = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<AwsVmDetails>;
-
 export type AwsVmDetailsList = Array<AwsVmDetails>;
-const AwsVmDetailsList = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<AwsVmDetailsList>;
-
 /** AWSVmsDetails describes VMs in AWS. */
 export interface AwsVmsDetails {
   /** The details of the AWS VMs. */
   details?: AwsVmDetailsList;
 }
-const AwsVmsDetails = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<AwsVmsDetails>;
-
 /** Response message for fetchInventory. */
 export interface FetchInventoryResponse {
   /** The description of the VMs in a Source of type Vmware. */
@@ -2423,17 +1861,10 @@ export interface FetchInventoryResponse {
   /** The description of the VMs in a Source of type AWS. */
   awsVms?: AwsVmsDetails;
 }
-const FetchInventoryResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<FetchInventoryResponse>;
-
 export type FetchStorageInventoryProjectsLocationsSourcesTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "DISKS"
   | "SNAPSHOTS";
-const FetchStorageInventoryProjectsLocationsSourcesTypeEnum = S.String;
-
 export interface FetchStorageInventoryProjectsLocationsSourcesRequest {
   /** Optional. If this flag is set to true, the source will be queried instead of using cached results. Using this flag will make the call slower. */
   forceRefresh?: boolean;
@@ -2446,27 +1877,12 @@ export interface FetchStorageInventoryProjectsLocationsSourcesRequest {
   /** Required. The type of the storage inventory to fetch. */
   type?: FetchStorageInventoryProjectsLocationsSourcesTypeEnum | (string & {});
 }
-const FetchStorageInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<FetchStorageInventoryProjectsLocationsSourcesRequest>;
-
 /** SourceStorageResource describes a storage resource in the source. */
 export interface SourceStorageResource {
   /** Source AWS volume details. */
   awsDiskDetails?: AwsSourceDiskDetails;
 }
-const SourceStorageResource = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<SourceStorageResource>;
-
 export type SourceStorageResourceList = Array<SourceStorageResource>;
-const SourceStorageResourceList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<SourceStorageResourceList>;
-
 /** Response message for fetchStorageInventory. */
 export interface FetchStorageInventoryResponse {
   /** The list of storage resources in the source. */
@@ -2476,11 +1892,6 @@ export interface FetchStorageInventoryResponse {
   /** Output only. The timestamp when the source was last queried (if the result is from the cache). */
   updateTime?: string;
 }
-const FetchStorageInventoryResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<FetchStorageInventoryResponse>;
-
 /** Request message for 'FinalizeMigration' request. */
 export type FinalizeMigrationRequest = CancelImageImportJobRequest;
 export interface FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest {
@@ -2489,20 +1900,10 @@ export interface FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -2516,141 +1917,70 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsGroupsRequest {
   /** Required. The group name. */
   name: string;
 }
-const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetProjectsLocationsGroupsRequest>;
-
 export interface GetProjectsLocationsImageImportsRequest {
   /** Required. The ImageImport name. */
   name: string;
 }
-const GetProjectsLocationsImageImportsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetProjectsLocationsImageImportsRequest>;
-
 export interface GetProjectsLocationsImageImportsImageImportJobsRequest {
   /** Required. The ImageImportJob name. */
   name: string;
 }
-const GetProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetProjectsLocationsImageImportsImageImportJobsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsSourcesRequest {
   /** Required. The Source name. */
   name: string;
 }
-const GetProjectsLocationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetProjectsLocationsSourcesRequest>;
-
 export interface GetProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The name of the DatacenterConnector. */
   name: string;
 }
-const GetProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetProjectsLocationsSourcesDatacenterConnectorsRequest>;
-
 export interface GetProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
 }
-const GetProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>;
-
 export type GetProjectsLocationsSourcesMigratingVmsViewEnum =
   | "MIGRATING_VM_VIEW_UNSPECIFIED"
   | "MIGRATING_VM_VIEW_BASIC"
   | "MIGRATING_VM_VIEW_FULL";
-const GetProjectsLocationsSourcesMigratingVmsViewEnum = S.String;
-
 export interface GetProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   name: string;
   /** Optional. The level of details of the migrating VM. */
   view?: GetProjectsLocationsSourcesMigratingVmsViewEnum | (string & {});
 }
-const GetProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>;
-
 export interface GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. The name of the CloneJob. */
   name: string;
 }
-const GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
-
 export interface GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Required. The name of the CutoverJob. */
   name: string;
 }
-const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
-
 export interface GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest {
   /** Required. The name of the ReplicationCycle. */
   name: string;
 }
-const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
-
 export type GetProjectsLocationsSourcesUtilizationReportsViewEnum =
   | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-const GetProjectsLocationsSourcesUtilizationReportsViewEnum = S.String;
-
 export interface GetProjectsLocationsSourcesUtilizationReportsRequest {
   /** Required. The Utilization Report name. */
   name: string;
   /** Optional. The level of details of the report. Defaults to FULL */
   view?: GetProjectsLocationsSourcesUtilizationReportsViewEnum | (string & {});
 }
-const GetProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetProjectsLocationsSourcesUtilizationReportsRequest>;
-
 export interface GetProjectsLocationsTargetProjectsRequest {
   /** Required. The TargetProject name. */
   name: string;
 }
-const GetProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetProjectsLocationsTargetProjectsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -2663,14 +1993,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -2678,11 +2001,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsGroupsRequest {
   /** Required. The parent, which owns this collection of groups. */
   parent: string;
@@ -2695,14 +2013,7 @@ export interface ListProjectsLocationsGroupsRequest {
   /** Optional. The filter request. */
   filter?: string;
 }
-const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
-
 export type GroupList = Array<Group>;
-const GroupList = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<GroupList>;
-
 /** Response message for 'ListGroups' request. */
 export interface ListGroupsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2712,8 +2023,6 @@ export interface ListGroupsResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListGroupsResponse = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<ListGroupsResponse>;
-
 export interface ListProjectsLocationsImageImportsRequest {
   /** Optional. A page token, received from a previous `ListImageImports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImageImports` must match the call that provided the page token. */
   pageToken?: string;
@@ -2726,14 +2035,7 @@ export interface ListProjectsLocationsImageImportsRequest {
   /** Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListProjectsLocationsImageImportsRequest>;
-
 export type ImageImportList = Array<ImageImport>;
-const ImageImportList = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ImageImportList>;
-
 /** Response message for 'ListImageImports' call. */
 export interface ListImageImportsResponse {
   /** Output only. Locations that could not be reached. */
@@ -2743,11 +2045,6 @@ export interface ListImageImportsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListImageImportsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListImageImportsResponse>;
-
 export interface ListProjectsLocationsImageImportsImageImportJobsRequest {
   /** Optional. The order by fields for the result (according to AIP-132). Currently ordering is only possible by "name" field. */
   orderBy?: string;
@@ -2760,11 +2057,6 @@ export interface ListProjectsLocationsImageImportsImageImportJobsRequest {
   /** Optional. A page token, received from a previous `ListImageImportJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImageImportJobs` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListProjectsLocationsImageImportsImageImportJobsRequest>;
-
 /** Response message for 'ListImageImportJobs' call. */
 export interface ListImageImportJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2774,11 +2066,6 @@ export interface ListImageImportJobsResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListImageImportJobsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListImageImportJobsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -2791,14 +2078,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -2808,11 +2088,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsSourcesRequest {
   /** Required. A page token, received from a previous `ListSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSources` must match the call that provided the page token. */
   pageToken?: string;
@@ -2825,14 +2100,7 @@ export interface ListProjectsLocationsSourcesRequest {
   /** Optional. The maximum number of sources to return. The service may return fewer than this value. If unspecified, at most 500 sources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
-
 export type SourceList = Array<Source>;
-const SourceList = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<SourceList>;
-
 /** Response message for 'ListSources' request. */
 export interface ListSourcesResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2842,8 +2110,6 @@ export interface ListSourcesResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListSourcesResponse = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ListSourcesResponse>;
-
 export interface ListProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. A page token, received from a previous `ListDatacenterConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatacenterConnectors` must match the call that provided the page token. */
   pageToken?: string;
@@ -2856,17 +2122,7 @@ export interface ListProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Optional. the order by fields for the result. */
   orderBy?: string;
 }
-const ListProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
-
 export type DatacenterConnectorList = Array<DatacenterConnector>;
-const DatacenterConnectorList = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<DatacenterConnectorList>;
-
 /** Response message for 'ListDatacenterConnectors' request. */
 export interface ListDatacenterConnectorsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2876,11 +2132,6 @@ export interface ListDatacenterConnectorsResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListDatacenterConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListDatacenterConnectorsResponse>;
-
 export interface ListProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Optional. The filter request (according to AIP-160). */
   filter?: string;
@@ -2893,17 +2144,7 @@ export interface ListProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Optional. A page token, received from a previous `ListDiskMigrationJobs` call. Provide this to retrieve the subsequent page. When paginating, all parameters provided to `ListDiskMigrationJobs` except `page_size` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
-
 export type DiskMigrationJobList = Array<DiskMigrationJob>;
-const DiskMigrationJobList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<DiskMigrationJobList>;
-
 /** Response message for 'ListDiskMigrationJobs' request. */
 export interface ListDiskMigrationJobsResponse {
   /** Optional. Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2913,17 +2154,10 @@ export interface ListDiskMigrationJobsResponse {
   /** Output only. The list of the disk migration jobs. */
   diskMigrationJobs?: DiskMigrationJobList;
 }
-const ListDiskMigrationJobsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListDiskMigrationJobsResponse>;
-
 export type ListProjectsLocationsSourcesMigratingVmsViewEnum =
   | "MIGRATING_VM_VIEW_UNSPECIFIED"
   | "MIGRATING_VM_VIEW_BASIC"
   | "MIGRATING_VM_VIEW_FULL";
-const ListProjectsLocationsSourcesMigratingVmsViewEnum = S.String;
-
 export interface ListProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. A page token, received from a previous `ListMigratingVms` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMigratingVms` must match the call that provided the page token. */
   pageToken?: string;
@@ -2938,14 +2172,7 @@ export interface ListProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The parent, which owns this collection of MigratingVms. */
   parent: string;
 }
-const ListProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
-
 export type MigratingVmList = Array<MigratingVm>;
-const MigratingVmList = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<MigratingVmList>;
-
 /** Response message for 'ListMigratingVms' request. */
 export interface ListMigratingVmsResponse {
   /** Output only. Locations that could not be reached. */
@@ -2955,11 +2182,6 @@ export interface ListMigratingVmsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListMigratingVmsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListMigratingVmsResponse>;
-
 export interface ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. The parent, which owns this collection of source VMs. */
   parent: string;
@@ -2972,11 +2194,6 @@ export interface ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. A page token, received from a previous `ListCloneJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCloneJobs` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
-
 /** Response message for 'ListCloneJobs' request. */
 export interface ListCloneJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2986,11 +2203,6 @@ export interface ListCloneJobsResponse {
   /** Output only. The list of clone jobs response. */
   cloneJobs?: CloneJobList;
 }
-const ListCloneJobsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListCloneJobsResponse>;
-
 export interface ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Optional. The maximum number of cutover jobs to return. The service may return fewer than this value. If unspecified, at most 500 cutover jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -3003,11 +2215,6 @@ export interface ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Optional. the order by fields for the result. */
   orderBy?: string;
 }
-const ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
-
 /** Response message for 'ListCutoverJobs' request. */
 export interface ListCutoverJobsResponse {
   /** Output only. Locations that could not be reached. */
@@ -3017,11 +2224,6 @@ export interface ListCutoverJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListCutoverJobsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListCutoverJobsResponse>;
-
 export interface ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest {
   /** Required. The parent, which owns this collection of ReplicationCycles. */
   parent: string;
@@ -3034,17 +2236,7 @@ export interface ListProjectsLocationsSourcesMigratingVmsReplicationCyclesReques
   /** Required. A page token, received from a previous `ListReplicationCycles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReplicationCycles` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
-
 export type ReplicationCycleList = Array<ReplicationCycle>;
-const ReplicationCycleList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ReplicationCycleList>;
-
 /** Response message for 'ListReplicationCycles' request. */
 export interface ListReplicationCyclesResponse {
   /** Output only. Locations that could not be reached. */
@@ -3054,17 +2246,10 @@ export interface ListReplicationCyclesResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListReplicationCyclesResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListReplicationCyclesResponse>;
-
 export type ListProjectsLocationsSourcesUtilizationReportsViewEnum =
   | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-const ListProjectsLocationsSourcesUtilizationReportsViewEnum = S.String;
-
 export interface ListProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. The level of details of each report. Defaults to BASIC. */
   view?: ListProjectsLocationsSourcesUtilizationReportsViewEnum | (string & {});
@@ -3079,17 +2264,7 @@ export interface ListProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. The maximum number of reports to return. The service may return fewer than this value. If unspecified, at most 500 reports will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
-
 export type UtilizationReportList = Array<UtilizationReport>;
-const UtilizationReportList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UtilizationReportList>;
-
 /** Response message for 'ListUtilizationReports' request. */
 export interface ListUtilizationReportsResponse {
   /** Output only. The list of reports. */
@@ -3099,11 +2274,6 @@ export interface ListUtilizationReportsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListUtilizationReportsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListUtilizationReportsResponse>;
-
 export interface ListProjectsLocationsTargetProjectsRequest {
   /** Required. The parent, which owns this collection of targets. */
   parent: string;
@@ -3116,14 +2286,7 @@ export interface ListProjectsLocationsTargetProjectsRequest {
   /** Required. A page token, received from a previous `ListTargets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargets` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>;
-
 export type TargetProjectList = Array<TargetProject>;
-const TargetProjectList = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<TargetProjectList>;
-
 /** Response message for 'ListTargetProjects' call. */
 export interface ListTargetProjectsResponse {
   /** Output only. Locations that could not be reached. */
@@ -3133,11 +2296,6 @@ export interface ListTargetProjectsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListTargetProjectsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListTargetProjectsResponse>;
-
 export interface PatchProjectsLocationsGroupsRequest {
   /** Field mask is used to specify the fields to be overwritten in the Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -3148,11 +2306,6 @@ export interface PatchProjectsLocationsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-const PatchProjectsLocationsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<PatchProjectsLocationsGroupsRequest>;
-
 export interface PatchProjectsLocationsSourcesRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -3163,11 +2316,6 @@ export interface PatchProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<PatchProjectsLocationsSourcesRequest>;
-
 export interface PatchProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Output only. Identifier. The identifier of the DiskMigrationJob. */
   name: string;
@@ -3178,11 +2326,6 @@ export interface PatchProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: DiskMigrationJob;
 }
-const PatchProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>;
-
 export interface PatchProjectsLocationsSourcesMigratingVmsRequest {
   /** Output only. The identifier of the MigratingVm. */
   name: string;
@@ -3193,11 +2336,6 @@ export interface PatchProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: MigratingVm;
 }
-const PatchProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>;
-
 export interface PatchProjectsLocationsTargetProjectsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -3208,11 +2346,6 @@ export interface PatchProjectsLocationsTargetProjectsRequest {
   /** Request body */
   body?: TargetProject;
 }
-const PatchProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<PatchProjectsLocationsTargetProjectsRequest>;
-
 /** Request message for 'PauseMigration' request. */
 export type PauseMigrationRequest = CancelImageImportJobRequest;
 export interface PauseMigrationProjectsLocationsSourcesMigratingVmsRequest {
@@ -3221,32 +2354,17 @@ export interface PauseMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const PauseMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>;
-
 /** Request message for 'RemoveMigration' request. */
 export interface RemoveGroupMigrationRequest {
   /** The MigratingVm to remove. */
   migratingVm?: string;
 }
-const RemoveGroupMigrationRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<RemoveGroupMigrationRequest>;
-
 export interface RemoveGroupMigrationProjectsLocationsGroupsRequest {
   /** Required. The name of the Group. */
   group: string;
   /** Request body */
   body?: RemoveGroupMigrationRequest;
 }
-const RemoveGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<RemoveGroupMigrationProjectsLocationsGroupsRequest>;
-
 /** Request message for 'ResumeMigration' request. */
 export type ResumeMigrationRequest = CancelImageImportJobRequest;
 export interface ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest {
@@ -3255,11 +2373,6 @@ export interface ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
-
 /** Request message for 'RunDiskMigrationJobRequest' request. */
 export type RunDiskMigrationJobRequest = CancelImageImportJobRequest;
 export interface RunProjectsLocationsSourcesDiskMigrationJobsRequest {
@@ -3268,11 +2381,6 @@ export interface RunProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const RunProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>;
-
 /** Request message for 'StartMigrationRequest' request. */
 export type StartMigrationRequest = CancelImageImportJobRequest;
 export interface StartMigrationProjectsLocationsSourcesMigratingVmsRequest {
@@ -3281,32 +2389,17 @@ export interface StartMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-const StartMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>;
-
 /** Request message for 'UpgradeAppliance' request. */
 export interface UpgradeApplianceRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const UpgradeApplianceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<UpgradeApplianceRequest>;
-
 export interface UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The DatacenterConnector name. */
   datacenterConnector: string;
   /** Request body */
   body?: UpgradeApplianceRequest;
 }
-const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>;
-
 export type AddGroupMigrationProjectsLocationsGroupsError =
   | NotFound
   | Forbidden
@@ -3320,8 +2413,8 @@ export const addGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   AddGroupMigrationProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddGroupMigrationProjectsLocationsGroupsRequest,
-  output: Operation,
+  input: __S(1, __c0, 1) as any as S.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3340,8 +2433,12 @@ export const cancelProjectsLocationsImageImportsImageImportJobs: API.OperationMe
   CancelProjectsLocationsImageImportsImageImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsImageImportsImageImportJobsRequest,
-  output: Operation,
+  input: __S(
+    7,
+    __c0,
+    7,
+  ) as any as S.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3360,8 +2457,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(8, __c1, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3380,8 +2477,8 @@ export const cancelProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   CancelProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsSourcesDiskMigrationJobsRequest,
-  output: Operation,
+  input: __S(9, __c1, 1) as any as S.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3400,8 +2497,12 @@ export const cancelProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationM
   CancelProjectsLocationsSourcesMigratingVmsCloneJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
-  output: Operation,
+  input: __S(
+    10,
+    __c1,
+    2,
+  ) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3420,8 +2521,12 @@ export const cancelProjectsLocationsSourcesMigratingVmsCutoverJobs: API.Operatio
   CancelProjectsLocationsSourcesMigratingVmsCutoverJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
-  output: Operation,
+  input: __S(
+    11,
+    __c1,
+    3,
+  ) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3440,8 +2545,8 @@ export const createProjectsLocationsGroups: API.OperationMethod<
   CreateProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGroupsRequest,
-  output: Operation,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateProjectsLocationsGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3460,8 +2565,8 @@ export const createProjectsLocationsImageImports: API.OperationMethod<
   CreateProjectsLocationsImageImportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsImageImportsRequest,
-  output: Operation,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsLocationsImageImportsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3480,8 +2585,8 @@ export const createProjectsLocationsSources: API.OperationMethod<
   CreateProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSourcesRequest,
-  output: Operation,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateProjectsLocationsSourcesRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3500,8 +2605,12 @@ export const createProjectsLocationsSourcesDatacenterConnectors: API.OperationMe
   CreateProjectsLocationsSourcesDatacenterConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSourcesDatacenterConnectorsRequest,
-  output: Operation,
+  input: __S(
+    53,
+    __c6,
+    5,
+  ) as any as S.Schema<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3520,8 +2629,12 @@ export const createProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   CreateProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSourcesDiskMigrationJobsRequest,
-  output: Operation,
+  input: __S(
+    60,
+    __c7,
+    4,
+  ) as any as S.Schema<CreateProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3540,8 +2653,8 @@ export const createProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   CreateProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(107, __c13, 3) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3560,8 +2673,12 @@ export const createProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationM
   CreateProjectsLocationsSourcesMigratingVmsCloneJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
-  output: Operation,
+  input: __S(
+    108,
+    __c13,
+    4,
+  ) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3580,8 +2697,12 @@ export const createProjectsLocationsSourcesMigratingVmsCutoverJobs: API.Operatio
   CreateProjectsLocationsSourcesMigratingVmsCutoverJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
-  output: Operation,
+  input: __S(
+    109,
+    __c13,
+    5,
+  ) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3600,8 +2721,12 @@ export const createProjectsLocationsSourcesUtilizationReports: API.OperationMeth
   CreateProjectsLocationsSourcesUtilizationReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSourcesUtilizationReportsRequest,
-  output: Operation,
+  input: __S(
+    115,
+    __c14,
+    3,
+  ) as any as S.Schema<CreateProjectsLocationsSourcesUtilizationReportsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3620,8 +2745,8 @@ export const createProjectsLocationsTargetProjects: API.OperationMethod<
   CreateProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsTargetProjectsRequest,
-  output: Operation,
+  input: __S(117, __c14, 5) as any as S.Schema<CreateProjectsLocationsTargetProjectsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3640,8 +2765,8 @@ export const deleteProjectsLocationsGroups: API.OperationMethod<
   DeleteProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGroupsRequest,
-  output: Operation,
+  input: __S(118, __c14, 6) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3660,8 +2785,8 @@ export const deleteProjectsLocationsImageImports: API.OperationMethod<
   DeleteProjectsLocationsImageImportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsImageImportsRequest,
-  output: Operation,
+  input: __S(119, __c14, 7) as any as S.Schema<DeleteProjectsLocationsImageImportsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3680,8 +2805,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3700,8 +2825,8 @@ export const deleteProjectsLocationsSources: API.OperationMethod<
   DeleteProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSourcesRequest,
-  output: Operation,
+  input: __S(121, __c15, 1) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3720,8 +2845,12 @@ export const deleteProjectsLocationsSourcesDatacenterConnectors: API.OperationMe
   DeleteProjectsLocationsSourcesDatacenterConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSourcesDatacenterConnectorsRequest,
-  output: Operation,
+  input: __S(
+    122,
+    __c15,
+    2,
+  ) as any as S.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3740,8 +2869,12 @@ export const deleteProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   DeleteProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSourcesDiskMigrationJobsRequest,
-  output: Operation,
+  input: __S(
+    123,
+    __c15,
+    3,
+  ) as any as S.Schema<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3760,8 +2893,8 @@ export const deleteProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   DeleteProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(124, __c15, 4) as any as S.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3780,8 +2913,12 @@ export const deleteProjectsLocationsSourcesUtilizationReports: API.OperationMeth
   DeleteProjectsLocationsSourcesUtilizationReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSourcesUtilizationReportsRequest,
-  output: Operation,
+  input: __S(
+    125,
+    __c15,
+    5,
+  ) as any as S.Schema<DeleteProjectsLocationsSourcesUtilizationReportsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3800,8 +2937,8 @@ export const deleteProjectsLocationsTargetProjects: API.OperationMethod<
   DeleteProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsTargetProjectsRequest,
-  output: Operation,
+  input: __S(126, __c15, 6) as any as S.Schema<DeleteProjectsLocationsTargetProjectsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3820,8 +2957,12 @@ export const extendMigrationProjectsLocationsSourcesMigratingVms: API.OperationM
   ExtendMigrationProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(
+    127,
+    __c15,
+    7,
+  ) as any as S.Schema<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3836,8 +2977,8 @@ export const fetchInventoryProjectsLocationsSources: API.PaginatedOperationMetho
   GcpOpContext,
   FetchInventoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchInventoryProjectsLocationsSourcesRequest,
-  output: FetchInventoryResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<FetchInventoryProjectsLocationsSourcesRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<FetchInventoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3853,8 +2994,12 @@ export const fetchStorageInventoryProjectsLocationsSources: API.PaginatedOperati
   GcpOpContext,
   FetchStorageInventoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchStorageInventoryProjectsLocationsSourcesRequest,
-  output: FetchStorageInventoryResponse,
+  input: __S(
+    144,
+    __c18,
+    0,
+  ) as any as S.Schema<FetchStorageInventoryProjectsLocationsSourcesRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<FetchStorageInventoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3874,8 +3019,12 @@ export const finalizeMigrationProjectsLocationsSourcesMigratingVms: API.Operatio
   FinalizeMigrationProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(
+    148,
+    __c18,
+    4,
+  ) as any as S.Schema<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3889,8 +3038,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(149, __c18, 5) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3904,8 +3053,8 @@ export const getProjectsLocationsGroups: API.OperationMethod<
   GetProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGroupsRequest,
-  output: Group,
+  input: __S(151, __c18, 7) as any as S.Schema<GetProjectsLocationsGroupsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3919,8 +3068,8 @@ export const getProjectsLocationsImageImports: API.OperationMethod<
   GetProjectsLocationsImageImportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsImageImportsRequest,
-  output: ImageImport,
+  input: __S(152, __c19, 0) as any as S.Schema<GetProjectsLocationsImageImportsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<ImageImport>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3937,8 +3086,12 @@ export const getProjectsLocationsImageImportsImageImportJobs: API.OperationMetho
   GetProjectsLocationsImageImportsImageImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsImageImportsImageImportJobsRequest,
-  output: ImageImportJob,
+  input: __S(
+    153,
+    __c19,
+    1,
+  ) as any as S.Schema<GetProjectsLocationsImageImportsImageImportJobsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ImageImportJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3952,8 +3105,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(154, __c19, 2) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3967,8 +3120,8 @@ export const getProjectsLocationsSources: API.OperationMethod<
   GetProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesRequest,
-  output: Source,
+  input: __S(155, __c19, 3) as any as S.Schema<GetProjectsLocationsSourcesRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<Source>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3985,8 +3138,12 @@ export const getProjectsLocationsSourcesDatacenterConnectors: API.OperationMetho
   GetProjectsLocationsSourcesDatacenterConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesDatacenterConnectorsRequest,
-  output: DatacenterConnector,
+  input: __S(
+    156,
+    __c19,
+    4,
+  ) as any as S.Schema<GetProjectsLocationsSourcesDatacenterConnectorsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<DatacenterConnector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4000,8 +3157,8 @@ export const getProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   GetProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesDiskMigrationJobsRequest,
-  output: DiskMigrationJob,
+  input: __S(157, __c19, 5) as any as S.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<DiskMigrationJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4015,8 +3172,8 @@ export const getProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   GetProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesMigratingVmsRequest,
-  output: MigratingVm,
+  input: __S(158, __c19, 6) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<MigratingVm>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4033,8 +3190,12 @@ export const getProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationMeth
   GetProjectsLocationsSourcesMigratingVmsCloneJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
-  output: CloneJob,
+  input: __S(
+    159,
+    __c19,
+    7,
+  ) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<CloneJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4051,8 +3212,12 @@ export const getProjectsLocationsSourcesMigratingVmsCutoverJobs: API.OperationMe
   GetProjectsLocationsSourcesMigratingVmsCutoverJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
-  output: CutoverJob,
+  input: __S(
+    160,
+    __c20,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<CutoverJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4069,8 +3234,12 @@ export const getProjectsLocationsSourcesMigratingVmsReplicationCycles: API.Opera
   GetProjectsLocationsSourcesMigratingVmsReplicationCyclesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest,
-  output: ReplicationCycle,
+  input: __S(
+    161,
+    __c20,
+    1,
+  ) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<ReplicationCycle>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4084,8 +3253,12 @@ export const getProjectsLocationsSourcesUtilizationReports: API.OperationMethod<
   GetProjectsLocationsSourcesUtilizationReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSourcesUtilizationReportsRequest,
-  output: UtilizationReport,
+  input: __S(
+    162,
+    __c20,
+    2,
+  ) as any as S.Schema<GetProjectsLocationsSourcesUtilizationReportsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<UtilizationReport>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4099,8 +3272,8 @@ export const getProjectsLocationsTargetProjects: API.OperationMethod<
   GetProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsTargetProjectsRequest,
-  output: TargetProject,
+  input: __S(163, __c20, 3) as any as S.Schema<GetProjectsLocationsTargetProjectsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<TargetProject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4115,8 +3288,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4132,8 +3305,8 @@ export const listProjectsLocationsGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGroupsRequest,
-  output: ListGroupsResponse,
+  input: __S(167, __c20, 7) as any as S.Schema<ListProjectsLocationsGroupsRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4149,8 +3322,8 @@ export const listProjectsLocationsImageImports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListImageImportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsImageImportsRequest,
-  output: ListImageImportsResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<ListProjectsLocationsImageImportsRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListImageImportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4169,8 +3342,12 @@ export const listProjectsLocationsImageImportsImageImportJobs: API.PaginatedOper
   GcpOpContext,
   ListImageImportJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsImageImportsImageImportJobsRequest,
-  output: ListImageImportJobsResponse,
+  input: __S(
+    173,
+    __c21,
+    5,
+  ) as any as S.Schema<ListProjectsLocationsImageImportsImageImportJobsRequest>,
+  output: __S(174, __c21, 6) as any as S.Schema<ListImageImportJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4186,8 +3363,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4203,8 +3380,8 @@ export const listProjectsLocationsSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesRequest,
-  output: ListSourcesResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<ListProjectsLocationsSourcesRequest>,
+  output: __S(180, __c22, 4) as any as S.Schema<ListSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4223,8 +3400,12 @@ export const listProjectsLocationsSourcesDatacenterConnectors: API.PaginatedOper
   GcpOpContext,
   ListDatacenterConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesDatacenterConnectorsRequest,
-  output: ListDatacenterConnectorsResponse,
+  input: __S(
+    181,
+    __c22,
+    5,
+  ) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<ListDatacenterConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4240,8 +3421,12 @@ export const listProjectsLocationsSourcesDiskMigrationJobs: API.PaginatedOperati
   GcpOpContext,
   ListDiskMigrationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesDiskMigrationJobsRequest,
-  output: ListDiskMigrationJobsResponse,
+  input: __S(
+    184,
+    __c23,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListDiskMigrationJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4257,8 +3442,8 @@ export const listProjectsLocationsSourcesMigratingVms: API.PaginatedOperationMet
   GcpOpContext,
   ListMigratingVmsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesMigratingVmsRequest,
-  output: ListMigratingVmsResponse,
+  input: __S(187, __c23, 3) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<ListMigratingVmsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4277,8 +3462,12 @@ export const listProjectsLocationsSourcesMigratingVmsCloneJobs: API.PaginatedOpe
   GcpOpContext,
   ListCloneJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
-  output: ListCloneJobsResponse,
+  input: __S(
+    190,
+    __c23,
+    6,
+  ) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<ListCloneJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4297,8 +3486,12 @@ export const listProjectsLocationsSourcesMigratingVmsCutoverJobs: API.PaginatedO
   GcpOpContext,
   ListCutoverJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
-  output: ListCutoverJobsResponse,
+  input: __S(
+    192,
+    __c24,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<ListCutoverJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4317,8 +3510,12 @@ export const listProjectsLocationsSourcesMigratingVmsReplicationCycles: API.Pagi
   GcpOpContext,
   ListReplicationCyclesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest,
-  output: ListReplicationCyclesResponse,
+  input: __S(
+    194,
+    __c24,
+    2,
+  ) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<ListReplicationCyclesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4334,8 +3531,12 @@ export const listProjectsLocationsSourcesUtilizationReports: API.PaginatedOperat
   GcpOpContext,
   ListUtilizationReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSourcesUtilizationReportsRequest,
-  output: ListUtilizationReportsResponse,
+  input: __S(
+    197,
+    __c24,
+    5,
+  ) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>,
+  output: __S(199, __c24, 7) as any as S.Schema<ListUtilizationReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4351,8 +3552,8 @@ export const listProjectsLocationsTargetProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTargetProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsTargetProjectsRequest,
-  output: ListTargetProjectsResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<ListTargetProjectsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4372,8 +3573,8 @@ export const patchProjectsLocationsGroups: API.OperationMethod<
   PatchProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGroupsRequest,
-  output: Operation,
+  input: __S(203, __c25, 3) as any as S.Schema<PatchProjectsLocationsGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4392,8 +3593,8 @@ export const patchProjectsLocationsSources: API.OperationMethod<
   PatchProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSourcesRequest,
-  output: Operation,
+  input: __S(204, __c25, 4) as any as S.Schema<PatchProjectsLocationsSourcesRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4412,8 +3613,12 @@ export const patchProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod
   PatchProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSourcesDiskMigrationJobsRequest,
-  output: Operation,
+  input: __S(
+    205,
+    __c25,
+    5,
+  ) as any as S.Schema<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4432,8 +3637,8 @@ export const patchProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   PatchProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(206, __c25, 6) as any as S.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4452,8 +3657,8 @@ export const patchProjectsLocationsTargetProjects: API.OperationMethod<
   PatchProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsTargetProjectsRequest,
-  output: Operation,
+  input: __S(207, __c25, 7) as any as S.Schema<PatchProjectsLocationsTargetProjectsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4472,8 +3677,12 @@ export const pauseMigrationProjectsLocationsSourcesMigratingVms: API.OperationMe
   PauseMigrationProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseMigrationProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(
+    208,
+    __c26,
+    0,
+  ) as any as S.Schema<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4492,8 +3701,8 @@ export const removeGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   RemoveGroupMigrationProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveGroupMigrationProjectsLocationsGroupsRequest,
-  output: Operation,
+  input: __S(210, __c26, 2) as any as S.Schema<RemoveGroupMigrationProjectsLocationsGroupsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4512,8 +3721,12 @@ export const resumeMigrationProjectsLocationsSourcesMigratingVms: API.OperationM
   ResumeMigrationProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(
+    211,
+    __c26,
+    3,
+  ) as any as S.Schema<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4532,8 +3745,8 @@ export const runProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   RunProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunProjectsLocationsSourcesDiskMigrationJobsRequest,
-  output: Operation,
+  input: __S(212, __c26, 4) as any as S.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4552,8 +3765,12 @@ export const startMigrationProjectsLocationsSourcesMigratingVms: API.OperationMe
   StartMigrationProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartMigrationProjectsLocationsSourcesMigratingVmsRequest,
-  output: Operation,
+  input: __S(
+    213,
+    __c26,
+    5,
+  ) as any as S.Schema<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4572,8 +3789,12 @@ export const upgradeApplianceProjectsLocationsSourcesDatacenterConnectors: API.O
   UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest,
-  output: Operation,
+  input: __S(
+    215,
+    __c26,
+    7,
+  ) as any as S.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4592,7 +3813,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.String.pipe(T.Label()),
-          body: S.optional(AddGroupMigrationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4606,12 +3827,12 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3, __c0, 3)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -4620,9 +3841,9 @@ function __c0(j: number): any {
         S.Struct({
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
+          response: S.optional(__S(2, __c0, 2)),
+          error: S.optional(__S(4, __c0, 4)),
+          metadata: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
@@ -4633,7 +3854,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4652,7 +3873,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4667,7 +3888,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4682,7 +3903,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4697,7 +3918,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4714,7 +3935,7 @@ function __c1(j: number): any {
           createTime: S.optional(S.String),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          migrationTargetType: S.optional(GroupMigrationTargetTypeEnum),
+          migrationTargetType: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -4725,7 +3946,7 @@ function __c1(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           groupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Group.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4741,7 +3962,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          guestOsFeatures: S.optional(StringList),
+          guestOsFeatures: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "DataDiskImageImport" });
   }
@@ -4764,14 +3985,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AdaptationModifier" });
     case 3:
-      return S.Array(AdaptationModifier);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          licenseType: S.optional(ImageImportOsAdaptationParametersLicenseTypeEnum),
+          licenseType: S.optional(S.String),
           generalize: S.optional(S.Boolean),
-          bootConversion: S.optional(ImageImportOsAdaptationParametersBootConversionEnum),
-          adaptationModifiers: S.optional(AdaptationModifierList),
+          bootConversion: S.optional(S.String),
+          adaptationModifiers: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "ImageImportOsAdaptationParameters",
@@ -4779,16 +4000,16 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dataDiskImageImport: S.optional(DataDiskImageImport),
+          dataDiskImageImport: S.optional(__S(15, __c1, 7)),
           description: S.optional(S.String),
-          encryption: S.optional(Encryption),
+          encryption: S.optional(__S(16, __c2, 0)),
           familyName: S.optional(S.String),
           imageName: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(17, __c2, 1)),
           targetProject: S.optional(S.String),
           singleRegionStorage: S.optional(S.Boolean),
-          osAdaptationParameters: S.optional(ImageImportOsAdaptationParameters),
-          additionalLicenses: S.optional(StringList),
+          osAdaptationParameters: S.optional(__S(20, __c2, 4)),
+          additionalLicenses: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "DiskImageTargetDetails" });
     case 6:
@@ -4796,13 +4017,13 @@ function __c2(j: number): any {
         S.Struct({
           enableVtpm: S.optional(S.Boolean),
           enableIntegrityMonitoring: S.optional(S.Boolean),
-          secureBoot: S.optional(ShieldedInstanceConfigSecureBootEnum),
+          secureBoot: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShieldedInstanceConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(14, __c1, 6)),
           email: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccount" });
@@ -4813,7 +4034,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          networkTier: S.optional(NetworkInterfaceNetworkTierEnum),
+          networkTier: S.optional(S.String),
           network: S.optional(S.String),
           externalIp: S.optional(S.String),
           subnetwork: S.optional(S.String),
@@ -4821,7 +4042,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 1:
-      return S.Array(NetworkInterface);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4833,26 +4054,26 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(17, __c2, 1)),
           machineImageName: S.optional(S.String),
-          tags: S.optional(StringList),
-          shieldedInstanceConfig: S.optional(ShieldedInstanceConfig),
+          tags: S.optional(__S(14, __c1, 6)),
+          shieldedInstanceConfig: S.optional(__S(22, __c2, 6)),
           singleRegionStorage: S.optional(S.Boolean),
-          serviceAccount: S.optional(ServiceAccount),
-          additionalLicenses: S.optional(StringList),
-          networkInterfaces: S.optional(NetworkInterfaceList),
-          skipOsAdaptation: S.optional(CancelImageImportJobRequest),
-          machineImageParametersOverrides: S.optional(MachineImageParametersOverrides),
-          osAdaptationParameters: S.optional(ImageImportOsAdaptationParameters),
+          serviceAccount: S.optional(__S(23, __c2, 7)),
+          additionalLicenses: S.optional(__S(14, __c1, 6)),
+          networkInterfaces: S.optional(__S(25, __c3, 1)),
+          skipOsAdaptation: S.optional(__S(6, __c0, 6)),
+          machineImageParametersOverrides: S.optional(__S(26, __c3, 2)),
+          osAdaptationParameters: S.optional(__S(20, __c2, 4)),
           description: S.optional(S.String),
           targetProject: S.optional(S.String),
-          encryption: S.optional(Encryption),
+          encryption: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "MachineImageTargetDetails",
       });
     case 4:
-      return S.Array(Status);
+      return S.Array(__S(4, __c0, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4868,7 +4089,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Link" });
     case 7:
-      return S.Array(Link);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -4876,56 +4097,56 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          warningMessage: S.optional(LocalizedMessage),
-          code: S.optional(MigrationWarningCodeEnum),
-          helpLinks: S.optional(LinkList),
+          warningMessage: S.optional(__S(29, __c3, 5)),
+          code: S.optional(S.String),
+          helpLinks: S.optional(__S(31, __c3, 7)),
           warningTime: S.optional(S.String),
-          actionItem: S.optional(LocalizedMessage),
+          actionItem: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "MigrationWarning" });
     case 1:
-      return S.Array(MigrationWarning);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          adaptingOs: S.optional(CancelImageImportJobRequest),
-          loadingSourceFiles: S.optional(CancelImageImportJobRequest),
-          creatingImage: S.optional(CancelImageImportJobRequest),
+          adaptingOs: S.optional(__S(6, __c0, 6)),
+          loadingSourceFiles: S.optional(__S(6, __c0, 6)),
+          creatingImage: S.optional(__S(6, __c0, 6)),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
-          initializing: S.optional(CancelImageImportJobRequest),
+          initializing: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ImageImportStep" });
     case 3:
-      return S.Array(ImageImportStep);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          errors: S.optional(StatusList),
+          errors: S.optional(__S(28, __c3, 4)),
           cloudStorageUri: S.optional(S.String),
-          createdResources: S.optional(StringList),
-          diskImageTargetDetails: S.optional(DiskImageTargetDetails),
+          createdResources: S.optional(__S(14, __c1, 6)),
+          diskImageTargetDetails: S.optional(__S(21, __c2, 5)),
           createTime: S.optional(S.String),
-          state: S.optional(ImageImportJobStateEnum),
-          machineImageTargetDetails: S.optional(MachineImageTargetDetails),
-          warnings: S.optional(MigrationWarningList),
-          steps: S.optional(ImageImportStepList),
+          state: S.optional(S.String),
+          machineImageTargetDetails: S.optional(__S(27, __c3, 3)),
+          warnings: S.optional(__S(33, __c4, 1)),
+          steps: S.optional(__S(35, __c4, 3)),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageImportJob" });
     case 5:
-      return S.Array(ImageImportJob);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          diskImageTargetDefaults: S.optional(DiskImageTargetDetails),
-          encryption: S.optional(Encryption),
+          diskImageTargetDefaults: S.optional(__S(21, __c2, 5)),
+          encryption: S.optional(__S(16, __c2, 0)),
           name: S.optional(S.String),
           cloudStorageUri: S.optional(S.String),
           createTime: S.optional(S.String),
-          machineImageTargetDefaults: S.optional(MachineImageTargetDetails),
-          recentImageImportJobs: S.optional(ImageImportJobList),
+          machineImageTargetDefaults: S.optional(__S(27, __c3, 3)),
+          recentImageImportJobs: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "ImageImport" });
     case 7:
@@ -4934,7 +4155,7 @@ function __c4(j: number): any {
           parent: S.String.pipe(T.Label()),
           imageImportId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ImageImport.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4967,7 +4188,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Tag" });
     case 2:
-      return S.Array(Tag);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4979,14 +4200,14 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inventorySecurityGroupNames: S.optional(StringList),
+          inventorySecurityGroupNames: S.optional(__S(14, __c1, 6)),
           publicIp: S.optional(S.String),
-          inventoryTagList: S.optional(TagList),
+          inventoryTagList: S.optional(__S(42, __c5, 2)),
           awsRegion: S.optional(S.String),
-          error: S.optional(Status),
-          migrationResourcesUserTags: S.optional(StringMap),
-          state: S.optional(AwsSourceDetailsStateEnum),
-          accessKeyCreds: S.optional(AccessKeyCredentials),
+          error: S.optional(__S(4, __c0, 4)),
+          migrationResourcesUserTags: S.optional(__S(17, __c2, 1)),
+          state: S.optional(S.String),
+          accessKeyCreds: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "AwsSourceDetails" });
     case 5:
@@ -5001,12 +4222,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceGroupId: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(4, __c0, 4)),
           subscriptionId: S.optional(S.String),
-          state: S.optional(AzureSourceDetailsStateEnum),
-          clientSecretCreds: S.optional(ClientSecretCredentials),
+          state: S.optional(S.String),
+          clientSecretCreds: S.optional(__S(45, __c5, 5)),
           azureLocation: S.optional(S.String),
-          migrationResourcesUserTags: S.optional(StringMap),
+          migrationResourcesUserTags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "AzureSourceDetails" });
     case 7:
@@ -5014,14 +4235,14 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          vmware: S.optional(VmwareSourceDetails),
-          error: S.optional(Status),
+          vmware: S.optional(__S(40, __c5, 0)),
+          error: S.optional(__S(4, __c0, 4)),
           description: S.optional(S.String),
-          aws: S.optional(AwsSourceDetails),
+          aws: S.optional(__S(44, __c5, 4)),
           createTime: S.optional(S.String),
-          encryption: S.optional(Encryption),
-          labels: S.optional(StringMap),
-          azure: S.optional(AzureSourceDetails),
+          encryption: S.optional(__S(16, __c2, 0)),
+          labels: S.optional(__S(17, __c2, 1)),
+          azure: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "Source" });
   }
@@ -5034,7 +4255,7 @@ function __c6(j: number): any {
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           sourceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Source.pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5048,10 +4269,10 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(UpgradeStatusStateEnum),
+          state: S.optional(S.String),
           version: S.optional(S.String),
           previousVersion: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(4, __c0, 4)),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpgradeStatus" });
@@ -5067,25 +4288,25 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          inPlaceUpdate: S.optional(ApplianceVersion),
-          newDeployableAppliance: S.optional(ApplianceVersion),
+          inPlaceUpdate: S.optional(__S(50, __c6, 2)),
+          newDeployableAppliance: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "AvailableUpdates" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           registrationId: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(4, __c0, 4)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          upgradeStatus: S.optional(UpgradeStatus),
+          upgradeStatus: S.optional(__S(49, __c6, 1)),
           stateTime: S.optional(S.String),
           applianceInfrastructureVersion: S.optional(S.String),
-          availableVersions: S.optional(AvailableUpdates),
+          availableVersions: S.optional(__S(51, __c6, 3)),
           version: S.optional(S.String),
           serviceAccount: S.optional(S.String),
           bucket: S.optional(S.String),
-          state: S.optional(DatacenterConnectorStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           applianceSoftwareVersion: S.optional(S.String),
         }),
@@ -5096,7 +4317,7 @@ function __c6(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           datacenterConnectorId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DatacenterConnector.pipe(T.HttpBody())),
+          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5111,14 +4332,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          creatingSourceDiskSnapshot: S.optional(CancelImageImportJobRequest),
-          provisioningTargetDisk: S.optional(CancelImageImportJobRequest),
-          copyingSourceDiskSnapshot: S.optional(CancelImageImportJobRequest),
+          creatingSourceDiskSnapshot: S.optional(__S(6, __c0, 6)),
+          provisioningTargetDisk: S.optional(__S(6, __c0, 6)),
+          copyingSourceDiskSnapshot: S.optional(__S(6, __c0, 6)),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskMigrationStep" });
     case 7:
-      return S.Array(DiskMigrationStep);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -5127,18 +4348,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zone: S.optional(S.String),
-          replicaZones: S.optional(StringList),
+          replicaZones: S.optional(__S(14, __c1, 6)),
           diskId: S.optional(S.String),
-          diskType: S.optional(ComputeEngineDiskDiskTypeEnum),
+          diskType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComputeEngineDisk" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(17, __c2, 1)),
           targetProject: S.optional(S.String),
-          targetDisk: S.optional(ComputeEngineDisk),
-          encryption: S.optional(Encryption),
+          targetDisk: S.optional(__S(56, __c7, 0)),
+          encryption: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "DiskMigrationJobTargetDetails",
@@ -5146,21 +4367,21 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(StringMap),
+          tags: S.optional(__S(17, __c2, 1)),
           volumeId: S.optional(S.String),
           sizeGib: S.optional(S.String),
-          diskType: S.optional(AwsSourceDiskDetailsDiskTypeEnum),
+          diskType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsSourceDiskDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          steps: S.optional(DiskMigrationStepList),
-          targetDetails: S.optional(DiskMigrationJobTargetDetails),
-          errors: S.optional(StatusList),
-          awsSourceDiskDetails: S.optional(AwsSourceDiskDetails),
-          state: S.optional(DiskMigrationJobStateEnum),
+          steps: S.optional(__S(55, __c6, 7)),
+          targetDetails: S.optional(__S(57, __c7, 1)),
+          errors: S.optional(__S(28, __c3, 4)),
+          awsSourceDiskDetails: S.optional(__S(58, __c7, 2)),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -5171,7 +4392,7 @@ function __c7(j: number): any {
           diskMigrationJobId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DiskMigrationJob.pipe(T.HttpBody())),
+          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5198,28 +4419,28 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "VmwareDiskDetails" });
     case 7:
-      return S.Array(VmwareDiskDetails);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VmCapabilitiesOsCapabilitiesItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           lastOsCapabilitiesUpdateTime: S.optional(S.String),
-          osCapabilities: S.optional(VmCapabilitiesOsCapabilitiesItemEnumList),
+          osCapabilities: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "VmCapabilities" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(VmwareDiskDetailsList),
-          vmCapabilitiesInfo: S.optional(VmCapabilities),
+          disks: S.optional(__S(63, __c7, 7)),
+          vmCapabilitiesInfo: S.optional(__S(65, __c8, 1)),
           committedStorageBytes: S.optional(S.String),
-          firmware: S.optional(VmwareSourceVmDetailsFirmwareEnum),
-          architecture: S.optional(VmwareSourceVmDetailsArchitectureEnum),
+          firmware: S.optional(S.String),
+          architecture: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmwareSourceVmDetails" });
     case 3:
@@ -5238,7 +4459,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "PersistentDisk" });
     case 5:
-      return S.Array(PersistentDisk);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5250,9 +4471,9 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          disksTargetDetails: S.optional(CancelImageImportJobRequest),
-          disks: S.optional(PersistentDiskList),
-          vmTargetDetails: S.optional(DisksMigrationVmTargetDetails),
+          disksTargetDetails: S.optional(__S(6, __c0, 6)),
+          disks: S.optional(__S(69, __c8, 5)),
+          vmTargetDetails: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({
         identifier: "ComputeEngineDisksTargetDetails",
@@ -5264,28 +4485,28 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList),
-          operator: S.optional(SchedulingNodeAffinityOperatorEnum),
+          values: S.optional(__S(14, __c1, 6)),
+          operator: S.optional(S.String),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulingNodeAffinity" });
     case 1:
-      return S.Array(SchedulingNodeAffinity);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           minNodeCpus: S.optional(S.Number),
           automaticRestart: S.optional(S.Boolean),
-          nodeAffinities: S.optional(SchedulingNodeAffinityList),
-          onHostMaintenance: S.optional(ComputeSchedulingOnHostMaintenanceEnum),
-          restartType: S.optional(ComputeSchedulingRestartTypeEnum),
+          nodeAffinities: S.optional(__S(73, __c9, 1)),
+          onHostMaintenance: S.optional(S.String),
+          restartType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComputeScheduling" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           osLicense: S.optional(S.String),
-          type: S.optional(AppliedLicenseTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppliedLicense" });
     case 4:
@@ -5293,29 +4514,29 @@ function __c9(j: number): any {
         S.Struct({
           secureBoot: S.optional(S.Boolean),
           vmName: S.optional(S.String),
-          diskReplicaZones: S.optional(StringList),
+          diskReplicaZones: S.optional(__S(14, __c1, 6)),
           project: S.optional(S.String),
           serviceAccount: S.optional(S.String),
           machineTypeSeries: S.optional(S.String),
-          computeScheduling: S.optional(ComputeScheduling),
-          bootOption: S.optional(ComputeEngineTargetDetailsBootOptionEnum),
-          encryption: S.optional(Encryption),
+          computeScheduling: S.optional(__S(74, __c9, 2)),
+          bootOption: S.optional(S.String),
+          encryption: S.optional(__S(16, __c2, 0)),
           enableIntegrityMonitoring: S.optional(S.Boolean),
           zone: S.optional(S.String),
-          metadata: S.optional(StringMap),
-          appliedLicense: S.optional(AppliedLicense),
-          labels: S.optional(StringMap),
-          additionalLicenses: S.optional(StringList),
-          networkTags: S.optional(StringList),
+          metadata: S.optional(__S(17, __c2, 1)),
+          appliedLicense: S.optional(__S(75, __c9, 3)),
+          labels: S.optional(__S(17, __c2, 1)),
+          additionalLicenses: S.optional(__S(14, __c1, 6)),
+          networkTags: S.optional(__S(14, __c1, 6)),
           storagePool: S.optional(S.String),
           machineType: S.optional(S.String),
-          networkInterfaces: S.optional(NetworkInterfaceList),
-          bootConversion: S.optional(ComputeEngineTargetDetailsBootConversionEnum),
+          networkInterfaces: S.optional(__S(25, __c3, 1)),
+          bootConversion: S.optional(S.String),
           hostname: S.optional(S.String),
-          adaptationModifiers: S.optional(AdaptationModifierList),
-          licenseType: S.optional(ComputeEngineTargetDetailsLicenseTypeEnum),
+          adaptationModifiers: S.optional(__S(19, __c2, 3)),
+          licenseType: S.optional(S.String),
           enableVtpm: S.optional(S.Boolean),
-          diskType: S.optional(ComputeEngineTargetDetailsDiskTypeEnum),
+          diskType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ComputeEngineTargetDetails",
@@ -5323,26 +4544,26 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          networkTags: S.optional(StringList),
+          networkTags: S.optional(__S(14, __c1, 6)),
           machineType: S.optional(S.String),
           subnetwork: S.optional(S.String),
           machineTypeSeries: S.optional(S.String),
-          computeScheduling: S.optional(ComputeScheduling),
+          computeScheduling: S.optional(__S(74, __c9, 2)),
           name: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          licenseType: S.optional(TargetVMDetailsLicenseTypeEnum),
+          licenseType: S.optional(S.String),
           internalIp: S.optional(S.String),
           network: S.optional(S.String),
-          diskType: S.optional(TargetVMDetailsDiskTypeEnum),
-          bootOption: S.optional(TargetVMDetailsBootOptionEnum),
+          diskType: S.optional(S.String),
+          bootOption: S.optional(S.String),
           targetProject: S.optional(S.String),
-          appliedLicense: S.optional(AppliedLicense),
-          metadata: S.optional(StringMap),
+          appliedLicense: S.optional(__S(75, __c9, 3)),
+          metadata: S.optional(__S(17, __c2, 1)),
           zone: S.optional(S.String),
-          networkInterfaces: S.optional(NetworkInterfaceList),
+          networkInterfaces: S.optional(__S(25, __c3, 1)),
           externalIp: S.optional(S.String),
           secureBoot: S.optional(S.Boolean),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(17, __c2, 1)),
           project: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetVMDetails" });
@@ -5358,10 +4579,10 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          initializingReplication: S.optional(CancelImageImportJobRequest),
-          postProcessing: S.optional(CancelImageImportJobRequest),
+          initializingReplication: S.optional(__S(6, __c0, 6)),
+          postProcessing: S.optional(__S(6, __c0, 6)),
           endTime: S.optional(S.String),
-          replicating: S.optional(ReplicatingStep),
+          replicating: S.optional(__S(78, __c9, 6)),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CycleStep" });
@@ -5370,58 +4591,58 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CycleStep);
+      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          steps: S.optional(CycleStepList),
+          steps: S.optional(__S(80, __c10, 0)),
           progress: S.optional(S.Number),
           cycleNumber: S.optional(S.Number),
-          state: S.optional(ReplicationCycleStateEnum),
-          error: S.optional(Status),
+          state: S.optional(S.String),
+          error: S.optional(__S(4, __c0, 4)),
           progressPercent: S.optional(S.Number),
           name: S.optional(S.String),
           endTime: S.optional(S.String),
           totalPauseDuration: S.optional(S.String),
-          warnings: S.optional(MigrationWarningList),
+          warnings: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "ReplicationCycle" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          shuttingDownSourceVm: S.optional(CancelImageImportJobRequest),
-          instantiatingMigratedVm: S.optional(CancelImageImportJobRequest),
-          previousReplicationCycle: S.optional(ReplicationCycle),
-          finalSync: S.optional(ReplicationCycle),
+          shuttingDownSourceVm: S.optional(__S(6, __c0, 6)),
+          instantiatingMigratedVm: S.optional(__S(6, __c0, 6)),
+          previousReplicationCycle: S.optional(__S(81, __c10, 1)),
+          finalSync: S.optional(__S(81, __c10, 1)),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          preparingVmDisks: S.optional(CancelImageImportJobRequest),
+          preparingVmDisks: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CutoverStep" });
     case 3:
-      return S.Array(CutoverStep);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          computeEngineDisksTargetDetails: S.optional(ComputeEngineDisksTargetDetails),
-          computeEngineTargetDetails: S.optional(ComputeEngineTargetDetails),
-          targetDetails: S.optional(TargetVMDetails),
-          steps: S.optional(CutoverStepList),
-          state: S.optional(CutoverJobStateEnum),
-          computeEngineVmDetails: S.optional(TargetVMDetails),
+          computeEngineDisksTargetDetails: S.optional(__S(71, __c8, 7)),
+          computeEngineTargetDetails: S.optional(__S(76, __c9, 4)),
+          targetDetails: S.optional(__S(77, __c9, 5)),
+          steps: S.optional(__S(83, __c10, 3)),
+          state: S.optional(S.String),
+          computeEngineVmDetails: S.optional(__S(77, __c9, 5)),
           name: S.optional(S.String),
           stateMessage: S.optional(S.String),
           progressPercent: S.optional(S.Number),
           stateTime: S.optional(S.String),
           progress: S.optional(S.Number),
-          error: S.optional(Status),
+          error: S.optional(__S(4, __c0, 4)),
           createTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CutoverJob" });
     case 5:
-      return S.Array(CutoverJob);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5431,11 +4652,11 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vmAttachmentDetails: S.optional(VmAttachmentDetails),
-          diskType: S.optional(PersistentDiskDefaultsDiskTypeEnum),
-          encryption: S.optional(Encryption),
+          vmAttachmentDetails: S.optional(__S(86, __c10, 6)),
+          diskType: S.optional(S.String),
+          encryption: S.optional(__S(16, __c2, 0)),
           sourceDiskNumber: S.optional(S.Number),
-          additionalLabels: S.optional(StringMap),
+          additionalLabels: S.optional(__S(17, __c2, 1)),
           diskName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PersistentDiskDefaults" });
@@ -5444,34 +4665,34 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PersistentDiskDefaults);
+      return S.Array(__S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          networkTags: S.optional(StringList),
+          networkTags: S.optional(__S(14, __c1, 6)),
           storagePool: S.optional(S.String),
           machineType: S.optional(S.String),
-          metadata: S.optional(StringMap),
+          metadata: S.optional(__S(17, __c2, 1)),
           zone: S.optional(S.String),
-          additionalLicenses: S.optional(StringList),
+          additionalLicenses: S.optional(__S(14, __c1, 6)),
           serviceAccount: S.optional(S.String),
-          disks: S.optional(PersistentDiskDefaultsList),
-          bootOption: S.optional(ComputeEngineTargetDefaultsBootOptionEnum),
-          encryption: S.optional(Encryption),
-          appliedLicense: S.optional(AppliedLicense),
+          disks: S.optional(__S(88, __c11, 0)),
+          bootOption: S.optional(S.String),
+          encryption: S.optional(__S(16, __c2, 0)),
+          appliedLicense: S.optional(__S(75, __c9, 3)),
           secureBoot: S.optional(S.Boolean),
-          networkInterfaces: S.optional(NetworkInterfaceList),
-          bootConversion: S.optional(ComputeEngineTargetDefaultsBootConversionEnum),
-          adaptationModifiers: S.optional(AdaptationModifierList),
-          diskType: S.optional(ComputeEngineTargetDefaultsDiskTypeEnum),
+          networkInterfaces: S.optional(__S(25, __c3, 1)),
+          bootConversion: S.optional(S.String),
+          adaptationModifiers: S.optional(__S(19, __c2, 3)),
+          diskType: S.optional(S.String),
           targetProject: S.optional(S.String),
           enableVtpm: S.optional(S.Boolean),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(17, __c2, 1)),
           machineTypeSeries: S.optional(S.String),
-          computeScheduling: S.optional(ComputeScheduling),
+          computeScheduling: S.optional(__S(74, __c9, 2)),
           hostname: S.optional(S.String),
-          diskReplicaZones: S.optional(StringList),
-          licenseType: S.optional(ComputeEngineTargetDefaultsLicenseTypeEnum),
+          diskReplicaZones: S.optional(__S(14, __c1, 6)),
+          licenseType: S.optional(S.String),
           vmName: S.optional(S.String),
           enableIntegrityMonitoring: S.optional(S.Boolean),
         }),
@@ -5500,31 +4721,31 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deviceName: S.optional(S.String),
-          diskType: S.optional(BootDiskDefaultsDiskTypeEnum),
-          image: S.optional(DiskImageDefaults),
-          encryption: S.optional(Encryption),
+          diskType: S.optional(S.String),
+          image: S.optional(__S(92, __c11, 4)),
+          encryption: S.optional(__S(16, __c2, 0)),
           diskName: S.optional(S.String),
         }),
       ).annotate({ identifier: "BootDiskDefaults" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          additionalLicenses: S.optional(StringList),
+          additionalLicenses: S.optional(__S(14, __c1, 6)),
           hostname: S.optional(S.String),
           vmName: S.optional(S.String),
           secureBoot: S.optional(S.Boolean),
           machineTypeSeries: S.optional(S.String),
-          computeScheduling: S.optional(ComputeScheduling),
+          computeScheduling: S.optional(__S(74, __c9, 2)),
           serviceAccount: S.optional(S.String),
           enableIntegrityMonitoring: S.optional(S.Boolean),
-          encryption: S.optional(Encryption),
-          bootDiskDefaults: S.optional(BootDiskDefaults),
+          encryption: S.optional(__S(16, __c2, 0)),
+          bootDiskDefaults: S.optional(__S(93, __c11, 5)),
           enableVtpm: S.optional(S.Boolean),
-          networkInterfaces: S.optional(NetworkInterfaceList),
-          labels: S.optional(StringMap),
-          metadata: S.optional(StringMap),
+          networkInterfaces: S.optional(__S(25, __c3, 1)),
+          labels: S.optional(__S(17, __c2, 1)),
+          metadata: S.optional(__S(17, __c2, 1)),
           machineType: S.optional(S.String),
-          networkTags: S.optional(StringList),
+          networkTags: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "DisksMigrationVmTargetDefaults",
@@ -5532,9 +4753,9 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vmTargetDefaults: S.optional(DisksMigrationVmTargetDefaults),
-          disks: S.optional(PersistentDiskDefaultsList),
-          disksTargetDefaults: S.optional(CancelImageImportJobRequest),
+          vmTargetDefaults: S.optional(__S(94, __c11, 6)),
+          disks: S.optional(__S(88, __c11, 0)),
+          disksTargetDefaults: S.optional(__S(6, __c0, 6)),
           zone: S.optional(S.String),
           targetProject: S.optional(S.String),
         }),
@@ -5548,33 +4769,33 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          instantiatingMigratedVm: S.optional(CancelImageImportJobRequest),
-          preparingVmDisks: S.optional(CancelImageImportJobRequest),
+          instantiatingMigratedVm: S.optional(__S(6, __c0, 6)),
+          preparingVmDisks: S.optional(__S(6, __c0, 6)),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
-          adaptingOs: S.optional(CancelImageImportJobRequest),
+          adaptingOs: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CloneStep" });
     case 1:
-      return S.Array(CloneStep);
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          computeEngineVmDetails: S.optional(TargetVMDetails),
+          computeEngineVmDetails: S.optional(__S(77, __c9, 5)),
           stateTime: S.optional(S.String),
-          steps: S.optional(CloneStepList),
-          targetDetails: S.optional(TargetVMDetails),
-          state: S.optional(CloneJobStateEnum),
-          computeEngineDisksTargetDetails: S.optional(ComputeEngineDisksTargetDetails),
-          error: S.optional(Status),
+          steps: S.optional(__S(97, __c12, 1)),
+          targetDetails: S.optional(__S(77, __c9, 5)),
+          state: S.optional(S.String),
+          computeEngineDisksTargetDetails: S.optional(__S(71, __c8, 7)),
+          error: S.optional(__S(4, __c0, 4)),
           name: S.optional(S.String),
-          computeEngineTargetDetails: S.optional(ComputeEngineTargetDetails),
+          computeEngineTargetDetails: S.optional(__S(76, __c9, 4)),
           createTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloneJob" });
     case 3:
-      return S.Array(CloneJob);
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5584,14 +4805,14 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "AzureDiskDetails" });
     case 5:
-      return S.Array(AzureDiskDetails);
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(AzureDiskDetailsList),
-          vmCapabilitiesInfo: S.optional(VmCapabilities),
-          firmware: S.optional(AzureSourceVmDetailsFirmwareEnum),
-          architecture: S.optional(AzureSourceVmDetailsArchitectureEnum),
+          disks: S.optional(__S(101, __c12, 5)),
+          vmCapabilitiesInfo: S.optional(__S(65, __c8, 1)),
+          firmware: S.optional(S.String),
+          architecture: S.optional(S.String),
           committedStorageBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureSourceVmDetails" });
@@ -5608,46 +4829,46 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsDiskDetails);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          architecture: S.optional(AwsSourceVmDetailsArchitectureEnum),
-          vmCapabilitiesInfo: S.optional(VmCapabilities),
-          disks: S.optional(AwsDiskDetailsList),
+          architecture: S.optional(S.String),
+          vmCapabilitiesInfo: S.optional(__S(65, __c8, 1)),
+          disks: S.optional(__S(104, __c13, 0)),
           committedStorageBytes: S.optional(S.String),
-          firmware: S.optional(AwsSourceVmDetailsFirmwareEnum),
+          firmware: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsSourceVmDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(SchedulePolicy),
+          policy: S.optional(__S(61, __c7, 5)),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          vmwareSourceVmDetails: S.optional(VmwareSourceVmDetails),
-          expiration: S.optional(Expiration),
-          labels: S.optional(StringMap),
+          vmwareSourceVmDetails: S.optional(__S(66, __c8, 2)),
+          expiration: S.optional(__S(67, __c8, 3)),
+          labels: S.optional(__S(17, __c2, 1)),
           sourceVmId: S.optional(S.String),
-          recentCutoverJobs: S.optional(CutoverJobList),
-          currentSyncInfo: S.optional(ReplicationCycle),
-          error: S.optional(Status),
-          computeEngineTargetDefaults: S.optional(ComputeEngineTargetDefaults),
+          recentCutoverJobs: S.optional(__S(85, __c10, 5)),
+          currentSyncInfo: S.optional(__S(81, __c10, 1)),
+          error: S.optional(__S(4, __c0, 4)),
+          computeEngineTargetDefaults: S.optional(__S(89, __c11, 1)),
           group: S.optional(S.String),
           stateTime: S.optional(S.String),
-          computeEngineVmDefaults: S.optional(TargetVMDetails),
-          lastSync: S.optional(ReplicationSync),
-          cutoverForecast: S.optional(CutoverForecast),
-          computeEngineDisksTargetDefaults: S.optional(ComputeEngineDisksTargetDefaults),
-          state: S.optional(MigratingVmStateEnum),
+          computeEngineVmDefaults: S.optional(__S(77, __c9, 5)),
+          lastSync: S.optional(__S(90, __c11, 2)),
+          cutoverForecast: S.optional(__S(91, __c11, 3)),
+          computeEngineDisksTargetDefaults: S.optional(__S(95, __c11, 7)),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          lastReplicationCycle: S.optional(ReplicationCycle),
-          recentCloneJobs: S.optional(CloneJobList),
-          azureSourceVmDetails: S.optional(AzureSourceVmDetails),
-          awsSourceVmDetails: S.optional(AwsSourceVmDetails),
+          lastReplicationCycle: S.optional(__S(81, __c10, 1)),
+          recentCloneJobs: S.optional(__S(99, __c12, 3)),
+          azureSourceVmDetails: S.optional(__S(102, __c12, 6)),
+          awsSourceVmDetails: S.optional(__S(105, __c13, 1)),
           displayName: S.optional(S.String),
-          targetDefaults: S.optional(TargetVMDetails),
+          targetDefaults: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({ identifier: "MigratingVm" });
     case 3:
@@ -5656,7 +4877,7 @@ function __c13(j: number): any {
           parent: S.String.pipe(T.Label()),
           migratingVmId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MigratingVm.pipe(T.HttpBody())),
+          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5673,7 +4894,7 @@ function __c13(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           cloneJobId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CloneJob.pipe(T.HttpBody())),
+          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5690,7 +4911,7 @@ function __c13(j: number): any {
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           cutoverJobId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(CutoverJob.pipe(T.HttpBody())),
+          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5729,16 +4950,16 @@ function __c13(j: number): any {
           uuid: S.optional(S.String),
           memoryMb: S.optional(S.Number),
           displayName: S.optional(S.String),
-          architecture: S.optional(VmwareVmDetailsArchitectureEnum),
+          architecture: S.optional(S.String),
           vmId: S.optional(S.String),
           diskCount: S.optional(S.Number),
           datacenterId: S.optional(S.String),
-          bootOption: S.optional(VmwareVmDetailsBootOptionEnum),
+          bootOption: S.optional(S.String),
           committedStorage: S.optional(S.String),
           guestDescription: S.optional(S.String),
           datacenterDescription: S.optional(S.String),
           committedStorageMb: S.optional(S.String),
-          powerState: S.optional(VmwareVmDetailsPowerStateEnum),
+          powerState: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmwareVmDetails" });
   }
@@ -5748,26 +4969,26 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          utilization: S.optional(VmUtilizationMetrics),
+          utilization: S.optional(__S(110, __c13, 6)),
           vmId: S.optional(S.String),
-          vmwareVmDetails: S.optional(VmwareVmDetails),
+          vmwareVmDetails: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({ identifier: "VmUtilizationInfo" });
     case 1:
-      return S.Array(VmUtilizationInfo);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
           stateTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          state: S.optional(UtilizationReportStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           frameEndTime: S.optional(S.String),
           vmsCount: S.optional(S.Number),
-          vms: S.optional(VmUtilizationInfoList),
-          timeFrame: S.optional(UtilizationReportTimeFrameEnum),
-          error: S.optional(Status),
+          vms: S.optional(__S(113, __c14, 1)),
+          timeFrame: S.optional(S.String),
+          error: S.optional(__S(4, __c0, 4)),
           vmCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UtilizationReport" });
@@ -5777,7 +4998,7 @@ function __c14(j: number): any {
           utilizationReportId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UtilizationReport.pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5804,7 +5025,7 @@ function __c14(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           targetProjectId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(TargetProject.pipe(T.HttpBody())),
+          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5955,7 +5176,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5988,11 +5209,11 @@ function __c16(j: number): any {
         identifier: "FetchInventoryProjectsLocationsSourcesRequest",
       });
     case 1:
-      return S.Array(VmwareVmDetails);
+      return S.Array(__S(111, __c13, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(VmwareVmDetailsList),
+          details: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({ identifier: "VmwareVmsDetails" });
     case 3:
@@ -6021,21 +5242,21 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "Disk" });
     case 6:
-      return S.Array(Disk);
+      return S.Array(__S(133, __c16, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           cpuCount: S.optional(S.Number),
-          osDisk: S.optional(OSDisk),
-          bootOption: S.optional(AzureVmDetailsBootOptionEnum),
+          osDisk: S.optional(__S(131, __c16, 3)),
+          bootOption: S.optional(S.String),
           memoryMb: S.optional(S.Number),
-          osDescription: S.optional(OSDescription),
+          osDescription: S.optional(__S(132, __c16, 4)),
           computerName: S.optional(S.String),
           vmId: S.optional(S.String),
-          architecture: S.optional(AzureVmDetailsArchitectureEnum),
-          powerState: S.optional(AzureVmDetailsPowerStateEnum),
-          tags: S.optional(StringMap),
-          disks: S.optional(DiskList),
+          architecture: S.optional(S.String),
+          powerState: S.optional(S.String),
+          tags: S.optional(__S(17, __c2, 1)),
+          disks: S.optional(__S(134, __c16, 6)),
           committedStorageMb: S.optional(S.String),
           diskCount: S.optional(S.Number),
           vmSize: S.optional(S.String),
@@ -6046,11 +5267,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AzureVmDetails);
+      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(AzureVmDetailsList),
+          details: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({ identifier: "AzureVmsDetails" });
     case 2:
@@ -6061,47 +5282,47 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "AwsSecurityGroup" });
     case 3:
-      return S.Array(AwsSecurityGroup);
+      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          powerState: S.optional(AwsVmDetailsPowerStateEnum),
+          powerState: S.optional(S.String),
           vmId: S.optional(S.String),
-          architecture: S.optional(AwsVmDetailsArchitectureEnum),
-          securityGroups: S.optional(AwsSecurityGroupList),
+          architecture: S.optional(S.String),
+          securityGroups: S.optional(__S(139, __c17, 3)),
           cpuCount: S.optional(S.Number),
           sourceDescription: S.optional(S.String),
           committedStorageMb: S.optional(S.String),
           instanceType: S.optional(S.String),
           memoryMb: S.optional(S.Number),
-          bootOption: S.optional(AwsVmDetailsBootOptionEnum),
+          bootOption: S.optional(S.String),
           vpcId: S.optional(S.String),
           vcpuCount: S.optional(S.Number),
           osDescription: S.optional(S.String),
-          virtualizationType: S.optional(AwsVmDetailsVirtualizationTypeEnum),
+          virtualizationType: S.optional(S.String),
           zone: S.optional(S.String),
           diskCount: S.optional(S.Number),
-          tags: S.optional(StringMap),
+          tags: S.optional(__S(17, __c2, 1)),
           sourceId: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsVmDetails" });
     case 5:
-      return S.Array(AwsVmDetails);
+      return S.Array(__S(140, __c17, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(AwsVmDetailsList),
+          details: S.optional(__S(141, __c17, 5)),
         }),
       ).annotate({ identifier: "AwsVmsDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vmwareVms: S.optional(VmwareVmsDetails),
+          vmwareVms: S.optional(__S(130, __c16, 2)),
           updateTime: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          azureVms: S.optional(AzureVmsDetails),
-          awsVms: S.optional(AwsVmsDetails),
+          azureVms: S.optional(__S(137, __c17, 1)),
+          awsVms: S.optional(__S(142, __c17, 6)),
         }),
       ).annotate({ identifier: "FetchInventoryResponse" });
   }
@@ -6115,7 +5336,7 @@ function __c18(j: number): any {
           source: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(FetchStorageInventoryProjectsLocationsSourcesTypeEnum.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6129,15 +5350,15 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          awsDiskDetails: S.optional(AwsSourceDiskDetails),
+          awsDiskDetails: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "SourceStorageResource" });
     case 2:
-      return S.Array(SourceStorageResource);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(SourceStorageResourceList),
+          resources: S.optional(__S(146, __c18, 2)),
           nextPageToken: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -6148,7 +5369,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6176,9 +5397,9 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(2, __c0, 2)),
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(17, __c2, 1)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -6289,7 +5510,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6350,7 +5571,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6382,7 +5603,7 @@ function __c20(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6394,11 +5615,11 @@ function __c20(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 5:
-      return S.Array(Location);
+      return S.Array(__S(150, __c18, 6));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(165, __c20, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -6425,13 +5646,13 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Group);
+      return S.Array(__S(12, __c1, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          groups: S.optional(GroupList),
-          unreachable: S.optional(StringList),
+          groups: S.optional(__S(168, __c21, 0)),
+          unreachable: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
     case 2:
@@ -6453,12 +5674,12 @@ function __c21(j: number): any {
         identifier: "ListProjectsLocationsImageImportsRequest",
       });
     case 3:
-      return S.Array(ImageImport);
+      return S.Array(__S(38, __c4, 6));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          imageImports: S.optional(ImageImportList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          imageImports: S.optional(__S(171, __c21, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListImageImportsResponse" });
@@ -6484,8 +5705,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          imageImportJobs: S.optional(ImageImportJobList),
-          unreachable: S.optional(StringList),
+          imageImportJobs: S.optional(__S(37, __c4, 5)),
+          unreachable: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ListImageImportJobsResponse",
@@ -6513,13 +5734,13 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(5, __c0, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          operations: S.optional(__S(176, __c22, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 2:
@@ -6541,13 +5762,13 @@ function __c22(j: number): any {
         identifier: "ListProjectsLocationsSourcesRequest",
       });
     case 3:
-      return S.Array(Source);
+      return S.Array(__S(47, __c5, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sources: S.optional(SourceList),
-          unreachable: S.optional(StringList),
+          sources: S.optional(__S(179, __c22, 3)),
+          unreachable: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "ListSourcesResponse" });
     case 5:
@@ -6569,13 +5790,13 @@ function __c22(j: number): any {
         identifier: "ListProjectsLocationsSourcesDatacenterConnectorsRequest",
       });
     case 6:
-      return S.Array(DatacenterConnector);
+      return S.Array(__S(52, __c6, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          datacenterConnectors: S.optional(DatacenterConnectorList),
-          unreachable: S.optional(StringList),
+          datacenterConnectors: S.optional(__S(182, __c22, 6)),
+          unreachable: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ListDatacenterConnectorsResponse",
@@ -6603,13 +5824,13 @@ function __c23(j: number): any {
         identifier: "ListProjectsLocationsSourcesDiskMigrationJobsRequest",
       });
     case 1:
-      return S.Array(DiskMigrationJob);
+      return S.Array(__S(59, __c7, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          diskMigrationJobs: S.optional(DiskMigrationJobList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          diskMigrationJobs: S.optional(__S(185, __c23, 1)),
         }),
       ).annotate({
         identifier: "ListDiskMigrationJobsResponse",
@@ -6618,7 +5839,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -6634,12 +5855,12 @@ function __c23(j: number): any {
         identifier: "ListProjectsLocationsSourcesMigratingVmsRequest",
       });
     case 4:
-      return S.Array(MigratingVm);
+      return S.Array(__S(106, __c13, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          migratingVms: S.optional(MigratingVmList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          migratingVms: S.optional(__S(188, __c23, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListMigratingVmsResponse" });
@@ -6665,8 +5886,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          cloneJobs: S.optional(CloneJobList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          cloneJobs: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({ identifier: "ListCloneJobsResponse" });
   }
@@ -6694,8 +5915,8 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          cutoverJobs: S.optional(CutoverJobList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          cutoverJobs: S.optional(__S(85, __c10, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCutoverJobsResponse" });
@@ -6718,12 +5939,12 @@ function __c24(j: number): any {
         identifier: "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
       });
     case 3:
-      return S.Array(ReplicationCycle);
+      return S.Array(__S(81, __c10, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          replicationCycles: S.optional(ReplicationCycleList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          replicationCycles: S.optional(__S(195, __c24, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6732,7 +5953,7 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(ListProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -6749,12 +5970,12 @@ function __c24(j: number): any {
         identifier: "ListProjectsLocationsSourcesUtilizationReportsRequest",
       });
     case 6:
-      return S.Array(UtilizationReport);
+      return S.Array(__S(114, __c14, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          utilizationReports: S.optional(UtilizationReportList),
-          unreachable: S.optional(StringList),
+          utilizationReports: S.optional(__S(198, __c24, 6)),
+          unreachable: S.optional(__S(14, __c1, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6783,12 +6004,12 @@ function __c25(j: number): any {
         identifier: "ListProjectsLocationsTargetProjectsRequest",
       });
     case 1:
-      return S.Array(TargetProject);
+      return S.Array(__S(116, __c14, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          targetProjects: S.optional(TargetProjectList),
+          unreachable: S.optional(__S(14, __c1, 6)),
+          targetProjects: S.optional(__S(201, __c25, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6800,7 +6021,7 @@ function __c25(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Group.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6817,7 +6038,7 @@ function __c25(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Source.pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6834,7 +6055,7 @@ function __c25(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(DiskMigrationJob.pipe(T.HttpBody())),
+          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6851,7 +6072,7 @@ function __c25(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MigratingVm.pipe(T.HttpBody())),
+          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6868,7 +6089,7 @@ function __c25(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(TargetProject.pipe(T.HttpBody())),
+          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6887,7 +6108,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6910,7 +6131,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.String.pipe(T.Label()),
-          body: S.optional(RemoveGroupMigrationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(209, __c26, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6925,7 +6146,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6940,7 +6161,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6955,7 +6176,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6976,7 +6197,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datacenterConnector: S.String.pipe(T.Label()),
-          body: S.optional(UpgradeApplianceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(214, __c26, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6988,4 +6209,9 @@ function __c26(j: number): any {
         identifier: "UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -13,35 +15,13 @@ export interface ListEmojiRequest {
   /** Include a list of categories for Unicode emoji and the emoji in each category */
   include_categories?: boolean;
 }
-const ListEmojiRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListEmojiRequest>;
-
 export type ListEmojiResponseEmojiMap = { [key: string]: unknown | undefined };
-const ListEmojiResponseEmojiMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ListEmojiResponseEmojiMap>;
-
 export type ListEmojiResponseCategoriesItemEmojiNamesList = Array<string>;
-const ListEmojiResponseCategoriesItemEmojiNamesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListEmojiResponseCategoriesItemEmojiNamesList>;
-
 export interface ListEmojiResponseCategoriesItem {
   name?: string;
   emoji_names?: ListEmojiResponseCategoriesItemEmojiNamesList;
 }
-const ListEmojiResponseCategoriesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListEmojiResponseCategoriesItem>;
-
 export type ListEmojiResponseCategoriesList = Array<ListEmojiResponseCategoriesItem>;
-const ListEmojiResponseCategoriesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListEmojiResponseCategoriesList>;
-
 export interface ListEmojiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -50,8 +30,6 @@ export interface ListEmojiResponse {
   categories_version?: string;
   categories?: ListEmojiResponseCategoriesList;
 }
-const ListEmojiResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListEmojiResponse>;
-
 export type ListEmojiError = SlackOpError;
 /** Lists custom emoji for a team. Required scopes -- bot: `emoji:read`; user: `emoji:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_arguments` -- Invalid API arguments provided - `unable_to_fetch_custom_emojis` -- Unable to fetch custom emojis for team. See https://docs.slack.dev/reference/methods/emoji.list */
 export const listEmoji: API.OperationMethod<
@@ -60,8 +38,8 @@ export const listEmoji: API.OperationMethod<
   ListEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmojiRequest,
-  output: ListEmojiResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ListEmojiRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ListEmojiResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -84,22 +62,27 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          emoji_names: S.optional(ListEmojiResponseCategoriesItemEmojiNamesList),
+          emoji_names: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "ListEmojiResponseCategoriesItem",
       });
     case 4:
-      return S.Array(ListEmojiResponseCategoriesItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           cache_ts: S.optional(S.String),
-          emoji: ListEmojiResponseEmojiMap,
+          emoji: __S(1, __c0, 1),
           categories_version: S.optional(S.String),
-          categories: S.optional(ListEmojiResponseCategoriesList),
+          categories: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ListEmojiResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
@@ -61,62 +63,24 @@ export interface AdminAddRuleToQuotaGroupRequest {
   /** the name of the quota rule to add to the group */
   quotarule: string;
 }
-const AdminAddRuleToQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AdminAddRuleToQuotaGroupRequest>;
-
 export interface AdminAddRuleToQuotaGroupResponse {}
-const AdminAddRuleToQuotaGroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AdminAddRuleToQuotaGroupResponse>;
-
 export interface AdminAddUserToQuotaGroupRequest {
   /** quota group to add the user to */
   quotagroup: string;
   /** username of the user to add to the quota group */
   username: string;
 }
-const AdminAddUserToQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AdminAddUserToQuotaGroupRequest>;
-
 export interface AdminAddUserToQuotaGroupResponse {}
-const AdminAddUserToQuotaGroupResponse =
-  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminAddUserToQuotaGroupResponse>;
-
 export interface AdminAdoptRepositoryRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const AdminAdoptRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AdminAdoptRepositoryRequest>;
-
 export interface AdminAdoptRepositoryResponse {}
-const AdminAdoptRepositoryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AdminAdoptRepositoryResponse>;
-
 /** CreateHookOptionConfig has all config options in it required are "content_type" and "url" Required */
 export type CreateHookOptionConfig = { [key: string]: string | undefined };
-const CreateHookOptionConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateHookOptionConfig>;
-
 export type AdminCreateHookRequestEventsList = Array<string>;
-const AdminCreateHookRequestEventsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AdminCreateHookRequestEventsList>;
-
 export type AdminCreateHookRequestType =
   | "forgejo"
   | "dingtalk"
@@ -129,8 +93,6 @@ export type AdminCreateHookRequestType =
   | "feishu"
   | "wechatwork"
   | "packagist";
-const AdminCreateHookRequestType = S.String;
-
 export interface AdminCreateHookRequest {
   active?: boolean;
   authorization_header?: string;
@@ -139,18 +101,9 @@ export interface AdminCreateHookRequest {
   events?: AdminCreateHookRequestEventsList;
   type: AdminCreateHookRequestType | (string & {});
 }
-const AdminCreateHookRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AdminCreateHookRequest>;
-
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-const HookConfigMap = CreateHookOptionConfig as any as S.Schema<HookConfigMap>;
-
 export type HookEventsList = Array<string>;
-const HookEventsList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<HookEventsList>;
-
 /** Hook a hook is a web hook when one repository changed */
 export interface Hook {
   active: boolean;
@@ -167,12 +120,8 @@ export interface Hook {
   updated_at: string;
   url: string;
 }
-const Hook = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Hook>;
-
 /** possible values are `public` (default), `limited` or `private` */
 export type AdminCreateOrgRequestVisibility = "public" | "limited" | "private";
-const AdminCreateOrgRequestVisibility = S.String;
-
 export interface AdminCreateOrgRequest {
   /** username of the user that will own the created organization */
   owner: string;
@@ -186,11 +135,6 @@ export interface AdminCreateOrgRequest {
   visibility?: AdminCreateOrgRequestVisibility | (string & {});
   website?: string;
 }
-const AdminCreateOrgRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AdminCreateOrgRequest>;
-
 /** Organization represents an organization */
 export interface Organization {
   avatar_url?: string;
@@ -207,8 +151,6 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-const Organization = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Organization>;
-
 export interface AdminCreatePublicKeyRequest {
   /** username of the user */
   username: string;
@@ -219,11 +161,6 @@ export interface AdminCreatePublicKeyRequest {
   /** Title of the key to add */
   title: string;
 }
-const AdminCreatePublicKeyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AdminCreatePublicKeyRequest>;
-
 /** User represents a user */
 export interface User {
   /** Is user active */
@@ -268,8 +205,6 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<User>;
-
 /** PublicKey publickey is a user key to push code to repository */
 export interface PublicKey {
   created_at?: string;
@@ -284,13 +219,8 @@ export interface PublicKey {
   user?: User;
   verified?: boolean;
 }
-const PublicKey = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PublicKey>;
-
 /** The subjects affected by the rule */
 export type CreateQuotaRuleOptionsSubjectsList = Array<string>;
-const CreateQuotaRuleOptionsSubjectsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<CreateQuotaRuleOptionsSubjectsList>;
-
 /** CreateQuotaRuleOptions represents the options for creating a quota rule */
 export interface CreateQuotaRuleOptions {
   /** The limit set by the rule */
@@ -300,29 +230,14 @@ export interface CreateQuotaRuleOptions {
   /** The subjects affected by the rule */
   subjects?: CreateQuotaRuleOptionsSubjectsList;
 }
-const CreateQuotaRuleOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateQuotaRuleOptions>;
-
 /** Rules to add to the newly created group. If a rule does not exist, it will be created. */
 export type AdminCreateQuotaGroupRequestRulesList = Array<CreateQuotaRuleOptions>;
-const AdminCreateQuotaGroupRequestRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AdminCreateQuotaGroupRequestRulesList>;
-
 export interface AdminCreateQuotaGroupRequest {
   /** Name of the quota group to create */
   name?: string;
   /** Rules to add to the newly created group. If a rule does not exist, it will be created. */
   rules?: AdminCreateQuotaGroupRequestRulesList;
 }
-const AdminCreateQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AdminCreateQuotaGroupRequest>;
-
 /** Subjects the rule affects */
 export type QuotaRuleInfoSubjectsList = Array<string>;
 /** QuotaRuleInfo contains information about a quota rule */
@@ -334,13 +249,8 @@ export interface QuotaRuleInfo {
   /** Subjects the rule affects */
   subjects?: QuotaRuleInfoSubjectsList;
 }
-const QuotaRuleInfo = CreateQuotaRuleOptions as any as S.Schema<QuotaRuleInfo>;
-
 /** Rules associated with the group */
 export type QuotaGroupRulesList = Array<QuotaRuleInfo>;
-const QuotaGroupRulesList =
-  AdminCreateQuotaGroupRequestRulesList as any as S.Schema<QuotaGroupRulesList>;
-
 /** QuotaGroup represents a quota group */
 export interface QuotaGroup {
   /** Name of the group */
@@ -348,13 +258,8 @@ export interface QuotaGroup {
   /** Rules associated with the group */
   rules?: QuotaGroupRulesList;
 }
-const QuotaGroup = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<QuotaGroup>;
-
 /** The subjects affected by the rule */
 export type AdminCreateQuotaRuleRequestSubjectsList = Array<string>;
-const AdminCreateQuotaRuleRequestSubjectsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<AdminCreateQuotaRuleRequestSubjectsList>;
-
 export interface AdminCreateQuotaRuleRequest {
   /** The limit set by the rule */
   limit?: number;
@@ -363,23 +268,14 @@ export interface AdminCreateQuotaRuleRequest {
   /** The subjects affected by the rule */
   subjects?: AdminCreateQuotaRuleRequestSubjectsList;
 }
-const AdminCreateQuotaRuleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AdminCreateQuotaRuleRequest>;
-
 /** ObjectFormatName of the underlying git repository */
 export type AdminCreateRepoRequestObjectFormatName = "sha1" | "sha256";
-const AdminCreateRepoRequestObjectFormatName = S.String;
-
 /** TrustModel of the repository */
 export type AdminCreateRepoRequestTrustModel =
   | "default"
   | "collaborator"
   | "committer"
   | "collaboratorcommitter";
-const AdminCreateRepoRequestTrustModel = S.String;
-
 export interface AdminCreateRepoRequest {
   /** username of the user. This user will own the created repository */
   username: string;
@@ -408,11 +304,6 @@ export interface AdminCreateRepoRequest {
   /** TrustModel of the repository */
   trust_model?: AdminCreateRepoRequestTrustModel | (string & {});
 }
-const AdminCreateRepoRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AdminCreateRepoRequest>;
-
 /** ExternalTracker represents settings for external tracker */
 export interface ExternalTracker {
   /** External Issue Tracker URL Format. Use the placeholders {user}, {repo} and {index} for the username, repository name and issue index. */
@@ -424,15 +315,11 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-const ExternalTracker = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ExternalTracker>;
-
 /** ExternalWiki represents setting for external wiki */
 export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-const ExternalWiki = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ExternalWiki>;
-
 /** InternalTracker represents settings for internal tracker */
 export interface InternalTracker {
   /** Let only contributors track time (Built-in issue tracker) */
@@ -442,29 +329,17 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-const InternalTracker = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<InternalTracker>;
-
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-const RepositoryObjectFormatName = S.String;
-
 /** Permission represents a set of permissions */
 export interface Permission {
   admin?: boolean;
   pull?: boolean;
   push?: boolean;
 }
-const Permission = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Permission>;
-
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-const TeamPermission = S.String;
-
 export type TeamUnitsList = Array<string>;
-const TeamUnitsList = HookEventsList as any as S.Schema<TeamUnitsList>;
-
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-const TeamUnitsMapMap = CreateHookOptionConfig as any as S.Schema<TeamUnitsMapMap>;
-
 /** Team represents a team in an organization */
 export interface Team {
   can_create_org_repo?: boolean;
@@ -477,26 +352,14 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-const Team = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Team>;
-
 export type RepoTransferTeamsList = Array<Team>;
-const RepoTransferTeamsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<RepoTransferTeamsList>;
-
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
   doer?: User;
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-const RepoTransfer = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RepoTransfer>;
-
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<RepositoryTopicsList>;
-
 /** Repository represents a repository */
 export interface Repository {
   allow_fast_forward_only_merge?: boolean;
@@ -569,8 +432,6 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-const Repository = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Repository>;
-
 export interface AdminCreateUserRequest {
   /** For explicitly setting the user creation timestamp. Useful when users are migrated from other systems. When omitted, the user's creation timestamp will be set to "now". */
   created_at?: string;
@@ -585,30 +446,15 @@ export interface AdminCreateUserRequest {
   username: string;
   visibility?: string;
 }
-const AdminCreateUserRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AdminCreateUserRequest>;
-
 export interface RepoTargetOption {
   /** Name of repository */
   name: string;
   /** Name of user or organisation that owns the repository */
   owner: string;
 }
-const RepoTargetOption = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<RepoTargetOption>;
-
 /** If provided and not-empty, creates an access token with access only to specified repositories. */
 export type AdminCreateUserAccessTokenRequestRepositoriesList = Array<RepoTargetOption>;
-const AdminCreateUserAccessTokenRequestRepositoriesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AdminCreateUserAccessTokenRequestRepositoriesList>;
-
 export type AdminCreateUserAccessTokenRequestScopesList = Array<string>;
-const AdminCreateUserAccessTokenRequestScopesList =
-  AdminCreateHookRequestEventsList as any as S.Schema<AdminCreateUserAccessTokenRequestScopesList>;
-
 export interface AdminCreateUserAccessTokenRequest {
   /** username of user */
   username: string;
@@ -617,11 +463,6 @@ export interface AdminCreateUserAccessTokenRequest {
   repositories?: AdminCreateUserAccessTokenRequestRepositoriesList;
   scopes?: AdminCreateUserAccessTokenRequestScopesList;
 }
-const AdminCreateUserAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AdminCreateUserAccessTokenRequest>;
-
 /** RepositoryMeta basic repository information */
 export interface RepositoryMeta {
   full_name?: string;
@@ -629,19 +470,9 @@ export interface RepositoryMeta {
   name?: string;
   owner?: string;
 }
-const RepositoryMeta = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<RepositoryMeta>;
-
 /** Indicates that an access token only has access to the specified repositories. Will be null if the access token is not limited to a set of specified repositories. */
 export type AccessTokenRepositoriesList = Array<RepositoryMeta>;
-const AccessTokenRepositoriesList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<AccessTokenRepositoriesList>;
-
 export type AccessTokenScopesList = Array<string>;
-const AccessTokenScopesList =
-  AdminCreateHookRequestEventsList as any as S.Schema<AccessTokenScopesList>;
-
 export interface AccessToken {
   created_at: string;
   id: number;
@@ -652,135 +483,60 @@ export interface AccessToken {
   sha1?: string | Redacted.Redacted<string>;
   token_last_eight: string;
 }
-const AccessToken = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AccessToken>;
-
 export interface AdminDeleteHookRequest {
   /** id of the hook to delete */
   id: number;
 }
-const AdminDeleteHookRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<AdminDeleteHookRequest>;
-
 export interface AdminDeleteHookResponse {}
-const AdminDeleteHookResponse =
-  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteHookResponse>;
-
 export interface AdminDeleteQuotaGroupRequest {
   /** quota group to delete */
   quotagroup: string;
 }
-const AdminDeleteQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AdminDeleteQuotaGroupRequest>;
-
 export interface AdminDeleteQuotaGroupResponse {}
-const AdminDeleteQuotaGroupResponse =
-  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteQuotaGroupResponse>;
-
 export interface AdminDeleteQuotaRuleRequest {
   /** quota rule to delete */
   quotarule: string;
 }
-const AdminDeleteQuotaRuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AdminDeleteQuotaRuleRequest>;
-
 export interface AdminDeleteQuotaRuleResponse {}
-const AdminDeleteQuotaRuleResponse =
-  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteQuotaRuleResponse>;
-
 export interface AdminDeleteUnadoptedRepositoryRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const AdminDeleteUnadoptedRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AdminDeleteUnadoptedRepositoryRequest>;
-
 export interface AdminDeleteUnadoptedRepositoryResponse {}
-const AdminDeleteUnadoptedRepositoryResponse =
-  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminDeleteUnadoptedRepositoryResponse>;
-
 export interface AdminDeleteUserRequest {
   /** username of user to delete */
   username: string;
   /** purge the user from the system completely */
   purge?: boolean;
 }
-const AdminDeleteUserRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AdminDeleteUserRequest>;
-
 export interface AdminDeleteUserResponse {}
-const AdminDeleteUserResponse =
-  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteUserResponse>;
-
 export interface AdminDeleteUserAccessTokenRequest {
   /** username of user */
   username: string;
   /** token to be deleted, identified by ID and if not available by name */
   token: string;
 }
-const AdminDeleteUserAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AdminDeleteUserAccessTokenRequest>;
-
 export interface AdminDeleteUserAccessTokenResponse {}
-const AdminDeleteUserAccessTokenResponse =
-  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminDeleteUserAccessTokenResponse>;
-
 /** email addresses to delete */
 export type AdminDeleteUserEmailsRequestEmailsList = Array<string>;
-const AdminDeleteUserEmailsRequestEmailsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<AdminDeleteUserEmailsRequestEmailsList>;
-
 export interface AdminDeleteUserEmailsRequest {
   /** username of user to delete email addresses from */
   username: string;
   /** email addresses to delete */
   emails?: AdminDeleteUserEmailsRequestEmailsList;
 }
-const AdminDeleteUserEmailsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<AdminDeleteUserEmailsRequest>;
-
 export interface AdminDeleteUserEmailsResponse {}
-const AdminDeleteUserEmailsResponse =
-  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteUserEmailsResponse>;
-
 export interface AdminDeleteUserPublicKeyRequest {
   /** username of user */
   username: string;
   /** id of the key to delete */
   id: number;
 }
-const AdminDeleteUserPublicKeyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<AdminDeleteUserPublicKeyRequest>;
-
 export interface AdminDeleteUserPublicKeyResponse {}
-const AdminDeleteUserPublicKeyResponse =
-  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminDeleteUserPublicKeyResponse>;
-
 export type AdminEditHookRequestConfigMap = { [key: string]: string | undefined };
-const AdminEditHookRequestConfigMap =
-  CreateHookOptionConfig as any as S.Schema<AdminEditHookRequestConfigMap>;
-
 export type AdminEditHookRequestEventsList = Array<string>;
-const AdminEditHookRequestEventsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<AdminEditHookRequestEventsList>;
-
 export interface AdminEditHookRequest {
   /** id of the hook to update */
   id: number;
@@ -790,13 +546,8 @@ export interface AdminEditHookRequest {
   config?: AdminEditHookRequestConfigMap;
   events?: AdminEditHookRequestEventsList;
 }
-const AdminEditHookRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AdminEditHookRequest>;
-
 /** The subjects affected by the rule */
 export type AdminEditQuotaRuleRequestSubjectsList = Array<string>;
-const AdminEditQuotaRuleRequestSubjectsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<AdminEditQuotaRuleRequestSubjectsList>;
-
 export interface AdminEditQuotaRuleRequest {
   /** Quota rule to change */
   quotarule: string;
@@ -805,11 +556,6 @@ export interface AdminEditQuotaRuleRequest {
   /** The subjects affected by the rule */
   subjects?: AdminEditQuotaRuleRequestSubjectsList;
 }
-const AdminEditQuotaRuleRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<AdminEditQuotaRuleRequest>;
-
 export interface AdminEditUserRequest {
   /** username of user to edit */
   username: string;
@@ -834,27 +580,14 @@ export interface AdminEditUserRequest {
   visibility?: string;
   website?: string;
 }
-const AdminEditUserRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<AdminEditUserRequest>;
-
 export interface AdminGetActionRunJobsRequest {
   /** a comma separated list of labels to search for */
   labels?: string;
 }
-const AdminGetActionRunJobsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<AdminGetActionRunJobsRequest>;
-
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-const ActionRunJobNeedsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<ActionRunJobNeedsList>;
-
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-const ActionRunJobRunsOnList =
-  AdminCreateHookRequestEventsList as any as S.Schema<ActionRunJobRunsOnList>;
-
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
   /** How many times the job has been attempted including the current attempt. */
@@ -880,31 +613,14 @@ export interface ActionRunJob {
   /** the action run job latest task id */
   task_id?: number;
 }
-const ActionRunJob = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ActionRunJob>;
-
 export type AdminGetActionRunJobsResponseBodyList = Array<ActionRunJob>;
-const AdminGetActionRunJobsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AdminGetActionRunJobsResponseBodyList>;
-
 export type AdminGetActionRunJobsResponse = AdminGetActionRunJobsResponseBodyList;
-const AdminGetActionRunJobsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<AdminGetActionRunJobsResponse>;
-
 export interface AdminGetAllEmailsRequest {
   /** page number of results to return (1-based) */
   page?: number;
   /** page size of results */
   limit?: number;
 }
-const AdminGetAllEmailsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<AdminGetAllEmailsRequest>;
-
 /** Email an email address belonging to a user */
 export interface Email {
   email?: string;
@@ -913,80 +629,34 @@ export interface Email {
   username?: string;
   verified?: boolean;
 }
-const Email = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Email>;
-
 export type AdminGetAllEmailsResponseBodyList = Array<Email>;
-const AdminGetAllEmailsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<AdminGetAllEmailsResponseBodyList>;
-
 export type AdminGetAllEmailsResponse = AdminGetAllEmailsResponseBodyList;
-const AdminGetAllEmailsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AdminGetAllEmailsResponse>;
-
 export interface AdminGetAllOrgsRequest {
   /** page number of results to return (1-based) */
   page?: number;
   /** page size of results */
   limit?: number;
 }
-const AdminGetAllOrgsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<AdminGetAllOrgsRequest>;
-
 export type AdminGetAllOrgsResponseBodyList = Array<Organization>;
-const AdminGetAllOrgsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<AdminGetAllOrgsResponseBodyList>;
-
 export type AdminGetAllOrgsResponse = AdminGetAllOrgsResponseBodyList;
-const AdminGetAllOrgsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<AdminGetAllOrgsResponse>;
-
 export interface AdminGetHookRequest {
   /** id of the hook to get */
   id: number;
 }
-const AdminGetHookRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AdminGetHookRequest>;
-
 export interface AdminGetQuotaGroupRequest {
   /** quota group to query */
   quotagroup: string;
 }
-const AdminGetQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<AdminGetQuotaGroupRequest>;
-
 export interface AdminGetQuotaRuleRequest {
   /** quota rule to query */
   quotarule: string;
 }
-const AdminGetQuotaRuleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AdminGetQuotaRuleRequest>;
-
 export interface AdminGetUserQuotaRequest {
   /** username of user to query */
   username: string;
 }
-const AdminGetUserQuotaRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<AdminGetUserQuotaRequest>;
-
 /** QuotaGroupList represents a list of quota groups */
 export type QuotaGroupList = Array<QuotaGroup>;
-const QuotaGroupList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<QuotaGroupList>;
-
 /** QuotaUsedSizeAssetsAttachments represents the size-based attachment quota usage of a user */
 export interface QuotaUsedSizeAssetsAttachments {
   /** Storage size used for the user's issue & comment attachments */
@@ -994,21 +664,11 @@ export interface QuotaUsedSizeAssetsAttachments {
   /** Storage size used for the user's release attachments */
   releases?: number;
 }
-const QuotaUsedSizeAssetsAttachments = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<QuotaUsedSizeAssetsAttachments>;
-
 /** QuotaUsedSizeAssetsPackages represents the size-based package quota usage of a user */
 export interface QuotaUsedSizeAssetsPackages {
   /** Storage suze used for the user's packages */
   all?: number;
 }
-const QuotaUsedSizeAssetsPackages = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<QuotaUsedSizeAssetsPackages>;
-
 /** QuotaUsedSizeAssets represents the size-based asset usage of a user */
 export interface QuotaUsedSizeAssets {
   /** Storage size used for the user's artifacts */
@@ -1016,15 +676,11 @@ export interface QuotaUsedSizeAssets {
   attachments?: QuotaUsedSizeAssetsAttachments;
   packages?: QuotaUsedSizeAssetsPackages;
 }
-const QuotaUsedSizeAssets = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<QuotaUsedSizeAssets>;
-
 /** QuotaUsedSizeGit represents the size-based git (lfs) quota usage of a user */
 export interface QuotaUsedSizeGit {
   /** Storage size of the user's Git LFS objects */
   LFS?: number;
 }
-const QuotaUsedSizeGit = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<QuotaUsedSizeGit>;
-
 /** QuotaUsedSizeRepos represents the size-based repository quota usage of a user */
 export interface QuotaUsedSizeRepos {
   /** Storage size of the user's private repositories */
@@ -1032,80 +688,34 @@ export interface QuotaUsedSizeRepos {
   /** Storage size of the user's public repositories */
   public?: number;
 }
-const QuotaUsedSizeRepos = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<QuotaUsedSizeRepos>;
-
 /** QuotaUsedSize represents the size-based quota usage of a user */
 export interface QuotaUsedSize {
   assets?: QuotaUsedSizeAssets;
   git?: QuotaUsedSizeGit;
   repos?: QuotaUsedSizeRepos;
 }
-const QuotaUsedSize = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<QuotaUsedSize>;
-
 /** QuotaUsed represents the quota usage of a user */
 export interface QuotaUsed {
   size?: QuotaUsedSize;
 }
-const QuotaUsed = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<QuotaUsed>;
-
 /** QuotaInfo represents information about a user's quota */
 export interface QuotaInfo {
   groups?: QuotaGroupList;
   used?: QuotaUsed;
 }
-const QuotaInfo = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<QuotaInfo>;
-
 export interface AdminListHooksRequest {
   /** page number of results to return (1-based) */
   page?: number;
   /** page size of results */
   limit?: number;
 }
-const AdminListHooksRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<AdminListHooksRequest>;
-
 export type AdminListHooksResponseBodyList = Array<Hook>;
-const AdminListHooksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<AdminListHooksResponseBodyList>;
-
 export type AdminListHooksResponse = AdminListHooksResponseBodyList;
-const AdminListHooksResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<AdminListHooksResponse>;
-
 export interface AdminListQuotaGroupsRequest {}
-const AdminListQuotaGroupsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<AdminListQuotaGroupsRequest>;
-
 export type AdminListQuotaGroupsResponse = QuotaGroupList;
-const AdminListQuotaGroupsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<AdminListQuotaGroupsResponse>;
-
 export interface AdminListQuotaRulesRequest {}
-const AdminListQuotaRulesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<AdminListQuotaRulesRequest>;
-
 export type AdminListQuotaRulesResponseBodyList = Array<QuotaRuleInfo>;
-const AdminListQuotaRulesResponseBodyList =
-  AdminCreateQuotaGroupRequestRulesList as any as S.Schema<AdminListQuotaRulesResponseBodyList>;
-
 export type AdminListQuotaRulesResponse = AdminListQuotaRulesResponseBodyList;
-const AdminListQuotaRulesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<AdminListQuotaRulesResponse>;
-
 export interface AdminListUserAccessTokensRequest {
   /** username of user */
   username: string;
@@ -1114,103 +724,41 @@ export interface AdminListUserAccessTokensRequest {
   /** page size of results */
   limit?: number;
 }
-const AdminListUserAccessTokensRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<AdminListUserAccessTokensRequest>;
-
 export type AdminListUserAccessTokensResponseBodyList = Array<AccessToken>;
-const AdminListUserAccessTokensResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<AdminListUserAccessTokensResponseBodyList>;
-
 export type AdminListUserAccessTokensResponse = AdminListUserAccessTokensResponseBodyList;
-const AdminListUserAccessTokensResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<AdminListUserAccessTokensResponse>;
-
 export interface AdminListUserEmailsRequest {
   /** username of user to get email addresses of */
   username: string;
 }
-const AdminListUserEmailsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<AdminListUserEmailsRequest>;
-
 export type AdminListUserEmailsResponseBodyList = Array<Email>;
 export type AdminListUserEmailsResponse = AdminListUserEmailsResponseBodyList;
-const AdminListUserEmailsResponse =
-  AdminGetAllEmailsResponse as any as S.Schema<AdminListUserEmailsResponse>;
-
 export interface AdminListUsersInQuotaGroupRequest {
   /** quota group to list members of */
   quotagroup: string;
 }
-const AdminListUsersInQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<AdminListUsersInQuotaGroupRequest>;
-
 export type AdminListUsersInQuotaGroupResponseBodyList = Array<User>;
-const AdminListUsersInQuotaGroupResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<AdminListUsersInQuotaGroupResponseBodyList>;
-
 export type AdminListUsersInQuotaGroupResponse = AdminListUsersInQuotaGroupResponseBodyList;
-const AdminListUsersInQuotaGroupResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<AdminListUsersInQuotaGroupResponse>;
-
 export interface AdminRemoveRuleFromQuotaGroupRequest {
   /** quota group to remove a rule from */
   quotagroup: string;
   /** the name of the quota rule to remove from the group */
   quotarule: string;
 }
-const AdminRemoveRuleFromQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<AdminRemoveRuleFromQuotaGroupRequest>;
-
 export interface AdminRemoveRuleFromQuotaGroupResponse {}
-const AdminRemoveRuleFromQuotaGroupResponse =
-  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminRemoveRuleFromQuotaGroupResponse>;
-
 export interface AdminRemoveUserFromQuotaGroupRequest {
   /** quota group to remove a user from */
   quotagroup: string;
   /** username of the user to remove from the quota group */
   username: string;
 }
-const AdminRemoveUserFromQuotaGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<AdminRemoveUserFromQuotaGroupRequest>;
-
 export interface AdminRemoveUserFromQuotaGroupResponse {}
-const AdminRemoveUserFromQuotaGroupResponse =
-  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminRemoveUserFromQuotaGroupResponse>;
-
 export interface AdminRenameUserRequest {
   /** existing username of user */
   username: string;
   /** New username for this user. This name cannot be in use yet by any other user. */
   new_username: string;
 }
-const AdminRenameUserRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<AdminRenameUserRequest>;
-
 export interface AdminRenameUserResponse {}
-const AdminRenameUserResponse =
-  AdminAdoptRepositoryResponse as any as S.Schema<AdminRenameUserResponse>;
-
 export interface AdminSearchEmailsRequest {
   /** keyword */
   q?: string;
@@ -1219,16 +767,8 @@ export interface AdminSearchEmailsRequest {
   /** page size of results */
   limit?: number;
 }
-const AdminSearchEmailsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<AdminSearchEmailsRequest>;
-
 export type AdminSearchEmailsResponseBodyList = Array<Email>;
 export type AdminSearchEmailsResponse = AdminSearchEmailsResponseBodyList;
-const AdminSearchEmailsResponse =
-  AdminGetAllEmailsResponse as any as S.Schema<AdminSearchEmailsResponse>;
-
 export type AdminSearchUsersRequestSort =
   | "oldest"
   | "newest"
@@ -1236,8 +776,6 @@ export type AdminSearchUsersRequestSort =
   | "reversealphabetically"
   | "recentupdate"
   | "leastupdate";
-const AdminSearchUsersRequestSort = S.String;
-
 export interface AdminSearchUsersRequest {
   /** ID of the user's login source to search for */
   source_id?: number;
@@ -1252,74 +790,30 @@ export interface AdminSearchUsersRequest {
   /** page size of results */
   limit?: number;
 }
-const AdminSearchUsersRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<AdminSearchUsersRequest>;
-
 export type AdminSearchUsersResponseBodyList = Array<User>;
-const AdminSearchUsersResponseBodyList =
-  AdminListUsersInQuotaGroupResponseBodyList as any as S.Schema<AdminSearchUsersResponseBodyList>;
-
 export type AdminSearchUsersResponse = AdminSearchUsersResponseBodyList;
-const AdminSearchUsersResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<AdminSearchUsersResponse>;
-
 /** Quota groups the user shall have */
 export type AdminSetUserQuotaGroupsRequestGroupsList = Array<string>;
-const AdminSetUserQuotaGroupsRequestGroupsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<AdminSetUserQuotaGroupsRequestGroupsList>;
-
 export interface AdminSetUserQuotaGroupsRequest {
   /** username of the user to modify the quota groups from */
   username: string;
   /** Quota groups the user shall have */
   groups: AdminSetUserQuotaGroupsRequestGroupsList;
 }
-const AdminSetUserQuotaGroupsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<AdminSetUserQuotaGroupsRequest>;
-
 export interface AdminSetUserQuotaGroupsResponse {}
-const AdminSetUserQuotaGroupsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<AdminSetUserQuotaGroupsResponse>;
-
 export interface DeleteAdminRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-const DeleteAdminRunnerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteAdminRunnerRequest>;
-
 export interface DeleteAdminRunnerResponse {}
-const DeleteAdminRunnerResponse =
-  AdminAdoptRepositoryResponse as any as S.Schema<DeleteAdminRunnerResponse>;
-
 export interface GetAdminRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-const GetAdminRunnerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetAdminRunnerRequest>;
-
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
-const ActionRunnerLabelsList =
-  AdminCreateHookRequestEventsList as any as S.Schema<ActionRunnerLabelsList>;
-
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
-const ActionRunnerStatus = S.String;
-
 /** ActionRunner represents a runner */
 export interface ActionRunner {
   /** Description provides optional details about this runner. */
@@ -1343,8 +837,6 @@ export interface ActionRunner {
   /** Version is the self-reported version string of Forgejo Runner. */
   version?: string;
 }
-const ActionRunner = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ActionRunner>;
-
 export interface GetAdminRunnersRequest {
   /** whether to include all visible runners (true) or only those that are directly owned by the instance (false) */
   visible?: boolean;
@@ -1353,34 +845,14 @@ export interface GetAdminRunnersRequest {
   /** page size of results */
   limit?: number;
 }
-const GetAdminRunnersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetAdminRunnersRequest>;
-
 export type GetAdminRunnersResponseBodyList = Array<ActionRunner>;
-const GetAdminRunnersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetAdminRunnersResponseBodyList>;
-
 export type GetAdminRunnersResponse = GetAdminRunnersResponseBodyList;
-const GetAdminRunnersResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetAdminRunnersResponse>;
-
 export interface ListAdminCronRequest {
   /** page number of results to return (1-based) */
   page?: number;
   /** page size of results */
   limit?: number;
 }
-const ListAdminCronRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListAdminCronRequest>;
-
 /** Cron represents a Cron task */
 export interface Cron {
   exec_times?: number;
@@ -1389,20 +861,8 @@ export interface Cron {
   prev?: string;
   schedule?: string;
 }
-const Cron = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Cron>;
-
 export type ListAdminCronResponseBodyList = Array<Cron>;
-const ListAdminCronResponseBodyList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListAdminCronResponseBodyList>;
-
 export type ListAdminCronResponse = ListAdminCronResponseBodyList;
-const ListAdminCronResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListAdminCronResponse>;
-
 export interface ListAdminUnadoptedRequest {
   /** page number of results to return (1-based) */
   page?: number;
@@ -1411,21 +871,8 @@ export interface ListAdminUnadoptedRequest {
   /** pattern of repositories to search for */
   pattern?: string;
 }
-const ListAdminUnadoptedRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListAdminUnadoptedRequest>;
-
 export type ListAdminUnadoptedResponseBodyList = Array<string>;
-const ListAdminUnadoptedResponseBodyList =
-  AdminCreateHookRequestEventsList as any as S.Schema<ListAdminUnadoptedResponseBodyList>;
-
 export type ListAdminUnadoptedResponse = ListAdminUnadoptedResponseBodyList;
-const ListAdminUnadoptedResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListAdminUnadoptedResponse>;
-
 export interface RegisterAdminRunnerRequest {
   /** Description of the runner to register. */
   description?: string;
@@ -1434,30 +881,16 @@ export interface RegisterAdminRunnerRequest {
   /** Name of the runner to register. The name of the runner does not have to be unique. */
   name: string;
 }
-const RegisterAdminRunnerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<RegisterAdminRunnerRequest>;
-
 export interface RegisterRunnerResponse {
   id?: number;
   token?: string;
   uuid?: string;
 }
-const RegisterRunnerResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<RegisterRunnerResponse>;
-
 export interface RunAdminCronRequest {
   /** task to run */
   task: string;
 }
-const RunAdminCronRequest = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<RunAdminCronRequest>;
-
 export interface RunAdminCronResponse {}
-const RunAdminCronResponse = AdminAdoptRepositoryResponse as any as S.Schema<RunAdminCronResponse>;
-
 export type AdminAddRuleToQuotaGroupError =
   | BadRequest
   | Forbidden
@@ -1472,8 +905,8 @@ export const adminAddRuleToQuotaGroup: API.OperationMethod<
   AdminAddRuleToQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminAddRuleToQuotaGroupRequest,
-  output: AdminAddRuleToQuotaGroupResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AdminAddRuleToQuotaGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminAddRuleToQuotaGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1493,8 +926,8 @@ export const adminAddUserToQuotaGroup: API.OperationMethod<
   AdminAddUserToQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminAddUserToQuotaGroupRequest,
-  output: AdminAddUserToQuotaGroupResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AdminAddUserToQuotaGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminAddUserToQuotaGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1508,8 +941,8 @@ export const adminAdoptRepository: API.OperationMethod<
   AdminAdoptRepositoryError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminAdoptRepositoryRequest,
-  output: AdminAdoptRepositoryResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<AdminAdoptRepositoryRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AdminAdoptRepositoryResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1523,8 +956,8 @@ export const adminCreateHook: API.OperationMethod<
   AdminCreateHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreateHookRequest,
-  output: Hook,
+  input: __S(7, __c0, 7) as any as S.Schema<AdminCreateHookRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Hook>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1538,8 +971,8 @@ export const adminCreateOrg: API.OperationMethod<
   AdminCreateOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreateOrgRequest,
-  output: Organization,
+  input: __S(10, __c1, 2) as any as S.Schema<AdminCreateOrgRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Organization>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1553,8 +986,8 @@ export const adminCreatePublicKey: API.OperationMethod<
   AdminCreatePublicKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreatePublicKeyRequest,
-  output: PublicKey,
+  input: __S(12, __c1, 4) as any as S.Schema<AdminCreatePublicKeyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<PublicKey>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1573,8 +1006,8 @@ export const adminCreateQuotaGroup: API.OperationMethod<
   AdminCreateQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreateQuotaGroupRequest,
-  output: QuotaGroup,
+  input: __S(17, __c2, 1) as any as S.Schema<AdminCreateQuotaGroupRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<QuotaGroup>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1026,8 @@ export const adminCreateQuotaRule: API.OperationMethod<
   AdminCreateQuotaRuleError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreateQuotaRuleRequest,
-  output: QuotaRuleInfo,
+  input: __S(19, __c2, 3) as any as S.Schema<AdminCreateQuotaRuleRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<QuotaRuleInfo>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1614,8 +1047,8 @@ export const adminCreateRepo: API.OperationMethod<
   AdminCreateRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreateRepoRequest,
-  output: Repository,
+  input: __S(20, __c2, 4) as any as S.Schema<AdminCreateRepoRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Repository>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1629,8 +1062,8 @@ export const adminCreateUser: API.OperationMethod<
   AdminCreateUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreateUserRequest,
-  output: User,
+  input: __S(29, __c3, 5) as any as S.Schema<AdminCreateUserRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1644,8 +1077,8 @@ export const adminCreateUserAccessToken: API.OperationMethod<
   AdminCreateUserAccessTokenError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminCreateUserAccessTokenRequest,
-  output: AccessToken,
+  input: __S(32, __c4, 0) as any as S.Schema<AdminCreateUserAccessTokenRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<AccessToken>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1659,8 +1092,8 @@ export const adminDeleteHook: API.OperationMethod<
   AdminDeleteHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteHookRequest,
-  output: AdminDeleteHookResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<AdminDeleteHookRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AdminDeleteHookResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1674,8 +1107,8 @@ export const adminDeleteQuotaGroup: API.OperationMethod<
   AdminDeleteQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteQuotaGroupRequest,
-  output: AdminDeleteQuotaGroupResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<AdminDeleteQuotaGroupRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AdminDeleteQuotaGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1689,8 +1122,8 @@ export const adminDeleteQuotaRule: API.OperationMethod<
   AdminDeleteQuotaRuleError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteQuotaRuleRequest,
-  output: AdminDeleteQuotaRuleResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<AdminDeleteQuotaRuleRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AdminDeleteQuotaRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1704,8 +1137,8 @@ export const adminDeleteUnadoptedRepository: API.OperationMethod<
   AdminDeleteUnadoptedRepositoryError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteUnadoptedRepositoryRequest,
-  output: AdminDeleteUnadoptedRepositoryResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<AdminDeleteUnadoptedRepositoryRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminDeleteUnadoptedRepositoryResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1719,8 +1152,8 @@ export const adminDeleteUser: API.OperationMethod<
   AdminDeleteUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteUserRequest,
-  output: AdminDeleteUserResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<AdminDeleteUserRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AdminDeleteUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1171,8 @@ export const adminDeleteUserAccessToken: API.OperationMethod<
   AdminDeleteUserAccessTokenError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteUserAccessTokenRequest,
-  output: AdminDeleteUserAccessTokenResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<AdminDeleteUserAccessTokenRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminDeleteUserAccessTokenResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1186,8 @@ export const adminDeleteUserEmails: API.OperationMethod<
   AdminDeleteUserEmailsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteUserEmailsRequest,
-  output: AdminDeleteUserEmailsResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<AdminDeleteUserEmailsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AdminDeleteUserEmailsResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1768,8 +1201,8 @@ export const adminDeleteUserPublicKey: API.OperationMethod<
   AdminDeleteUserPublicKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminDeleteUserPublicKeyRequest,
-  output: AdminDeleteUserPublicKeyResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<AdminDeleteUserPublicKeyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminDeleteUserPublicKeyResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1216,8 @@ export const adminEditHook: API.OperationMethod<
   AdminEditHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminEditHookRequest,
-  output: Hook,
+  input: __S(44, __c5, 4) as any as S.Schema<AdminEditHookRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Hook>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1803,8 +1236,8 @@ export const adminEditQuotaRule: API.OperationMethod<
   AdminEditQuotaRuleError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminEditQuotaRuleRequest,
-  output: QuotaRuleInfo,
+  input: __S(45, __c5, 5) as any as S.Schema<AdminEditQuotaRuleRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<QuotaRuleInfo>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1251,8 @@ export const adminEditUser: API.OperationMethod<
   AdminEditUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminEditUserRequest,
-  output: User,
+  input: __S(46, __c5, 6) as any as S.Schema<AdminEditUserRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1266,8 @@ export const adminGetActionRunJobs: API.OperationMethod<
   AdminGetActionRunJobsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminGetActionRunJobsRequest,
-  output: AdminGetActionRunJobsResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<AdminGetActionRunJobsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<AdminGetActionRunJobsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1281,8 @@ export const adminGetAllEmails: API.OperationMethod<
   AdminGetAllEmailsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminGetAllEmailsRequest,
-  output: AdminGetAllEmailsResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<AdminGetAllEmailsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<AdminGetAllEmailsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1863,8 +1296,8 @@ export const adminGetAllOrgs: API.OperationMethod<
   AdminGetAllOrgsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminGetAllOrgsRequest,
-  output: AdminGetAllOrgsResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<AdminGetAllOrgsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<AdminGetAllOrgsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1311,8 @@ export const adminGetHook: API.OperationMethod<
   AdminGetHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminGetHookRequest,
-  output: Hook,
+  input: __S(58, __c7, 2) as any as S.Schema<AdminGetHookRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Hook>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1893,8 +1326,8 @@ export const adminGetQuotaGroup: API.OperationMethod<
   AdminGetQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminGetQuotaGroupRequest,
-  output: QuotaGroup,
+  input: __S(59, __c7, 3) as any as S.Schema<AdminGetQuotaGroupRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<QuotaGroup>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1908,8 +1341,8 @@ export const adminGetQuotaRule: API.OperationMethod<
   AdminGetQuotaRuleError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminGetQuotaRuleRequest,
-  output: QuotaRuleInfo,
+  input: __S(60, __c7, 4) as any as S.Schema<AdminGetQuotaRuleRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<QuotaRuleInfo>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1928,8 +1361,8 @@ export const adminGetUserQuota: API.OperationMethod<
   AdminGetUserQuotaError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminGetUserQuotaRequest,
-  output: QuotaInfo,
+  input: __S(61, __c7, 5) as any as S.Schema<AdminGetUserQuotaRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<QuotaInfo>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1943,8 +1376,8 @@ export const adminListHooks: API.OperationMethod<
   AdminListHooksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminListHooksRequest,
-  output: AdminListHooksResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<AdminListHooksRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<AdminListHooksResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1958,8 +1391,8 @@ export const adminListQuotaGroups: API.OperationMethod<
   AdminListQuotaGroupsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminListQuotaGroupsRequest,
-  output: AdminListQuotaGroupsResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<AdminListQuotaGroupsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<AdminListQuotaGroupsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1973,8 +1406,8 @@ export const adminListQuotaRules: API.OperationMethod<
   AdminListQuotaRulesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminListQuotaRulesRequest,
-  output: AdminListQuotaRulesResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<AdminListQuotaRulesRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<AdminListQuotaRulesResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1988,8 +1421,8 @@ export const adminListUserAccessTokens: API.OperationMethod<
   AdminListUserAccessTokensError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminListUserAccessTokensRequest,
-  output: AdminListUserAccessTokensResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<AdminListUserAccessTokensRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<AdminListUserAccessTokensResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2003,8 +1436,8 @@ export const adminListUserEmails: API.OperationMethod<
   AdminListUserEmailsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminListUserEmailsRequest,
-  output: AdminListUserEmailsResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<AdminListUserEmailsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<AdminListUserEmailsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2018,8 +1451,8 @@ export const adminListUsersInQuotaGroup: API.OperationMethod<
   AdminListUsersInQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminListUsersInQuotaGroupRequest,
-  output: AdminListUsersInQuotaGroupResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<AdminListUsersInQuotaGroupRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<AdminListUsersInQuotaGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2033,8 +1466,8 @@ export const adminRemoveRuleFromQuotaGroup: API.OperationMethod<
   AdminRemoveRuleFromQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminRemoveRuleFromQuotaGroupRequest,
-  output: AdminRemoveRuleFromQuotaGroupResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<AdminRemoveRuleFromQuotaGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminRemoveRuleFromQuotaGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2048,8 +1481,8 @@ export const adminRemoveUserFromQuotaGroup: API.OperationMethod<
   AdminRemoveUserFromQuotaGroupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminRemoveUserFromQuotaGroupRequest,
-  output: AdminRemoveUserFromQuotaGroupResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<AdminRemoveUserFromQuotaGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AdminRemoveUserFromQuotaGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2063,8 +1496,8 @@ export const adminRenameUser: API.OperationMethod<
   AdminRenameUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminRenameUserRequest,
-  output: AdminRenameUserResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<AdminRenameUserRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AdminRenameUserResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2078,8 +1511,8 @@ export const adminSearchEmails: API.OperationMethod<
   AdminSearchEmailsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminSearchEmailsRequest,
-  output: AdminSearchEmailsResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<AdminSearchEmailsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<AdminSearchEmailsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2093,8 +1526,8 @@ export const adminSearchUsers: API.OperationMethod<
   AdminSearchUsersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminSearchUsersRequest,
-  output: AdminSearchUsersResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<AdminSearchUsersRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<AdminSearchUsersResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2113,8 +1546,8 @@ export const adminSetUserQuotaGroups: API.OperationMethod<
   AdminSetUserQuotaGroupsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdminSetUserQuotaGroupsRequest,
-  output: AdminSetUserQuotaGroupsResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<AdminSetUserQuotaGroupsRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<AdminSetUserQuotaGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2128,8 +1561,8 @@ export const deleteAdminRunner: API.OperationMethod<
   DeleteAdminRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdminRunnerRequest,
-  output: DeleteAdminRunnerResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<DeleteAdminRunnerRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteAdminRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2143,8 +1576,8 @@ export const getAdminRunner: API.OperationMethod<
   GetAdminRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminRunnerRequest,
-  output: ActionRunner,
+  input: __S(94, __c11, 6) as any as S.Schema<GetAdminRunnerRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<ActionRunner>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2158,8 +1591,8 @@ export const getAdminRunners: API.OperationMethod<
   GetAdminRunnersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminRunnersRequest,
-  output: GetAdminRunnersResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<GetAdminRunnersRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<GetAdminRunnersResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2173,8 +1606,8 @@ export const listAdminCron: API.OperationMethod<
   ListAdminCronError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAdminCronRequest,
-  output: ListAdminCronResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<ListAdminCronRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<ListAdminCronResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2188,8 +1621,8 @@ export const listAdminUnadopted: API.OperationMethod<
   ListAdminUnadoptedError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAdminUnadoptedRequest,
-  output: ListAdminUnadoptedResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<ListAdminUnadoptedRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<ListAdminUnadoptedResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2203,8 +1636,8 @@ export const registerAdminRunner: API.OperationMethod<
   RegisterAdminRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterAdminRunnerRequest,
-  output: RegisterRunnerResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<RegisterAdminRunnerRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<RegisterRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2218,8 +1651,8 @@ export const runAdminCron: API.OperationMethod<
   RunAdminCronError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunAdminCronRequest,
-  output: RunAdminCronResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<RunAdminCronRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<RunAdminCronResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2285,9 +1718,9 @@ function __c0(j: number): any {
           active: S.optional(S.Boolean),
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: CreateHookOptionConfig,
-          events: S.optional(AdminCreateHookRequestEventsList),
-          type: AdminCreateHookRequestType,
+          config: __S(5, __c0, 5),
+          events: S.optional(__S(6, __c0, 6)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/admin/hooks", code: 200 })),
       ).annotate({ identifier: "AdminCreateHookRequest" });
   }
@@ -2302,10 +1735,10 @@ function __c1(j: number): any {
           active: S.Boolean,
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: S.optional(HookConfigMap),
+          config: S.optional(__S(5, __c0, 5)),
           content_type: S.optional(S.String),
           created_at: S.String,
-          events: S.optional(HookEventsList),
+          events: S.optional(__S(8, __c1, 0)),
           id: S.Number,
           metadata: S.optional(S.Unknown),
           type: S.String,
@@ -2323,7 +1756,7 @@ function __c1(j: number): any {
           location: S.optional(S.String),
           repo_admin_change_team_access: S.optional(S.Boolean),
           username: S.String,
-          visibility: S.optional(AdminCreateOrgRequestVisibility),
+          visibility: S.optional(S.String),
           website: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users/{owner}/orgs", code: 200 })),
       ).annotate({ identifier: "AdminCreateOrgRequest" });
@@ -2395,7 +1828,7 @@ function __c1(j: number): any {
           title: S.optional(S.String),
           updated_at: S.optional(S.String),
           url: S.optional(S.String),
-          user: S.optional(User),
+          user: S.optional(__S(13, __c1, 5)),
           verified: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PublicKey" });
@@ -2404,7 +1837,7 @@ function __c1(j: number): any {
         S.Struct({
           limit: S.optional(S.Number),
           name: S.optional(S.String),
-          subjects: S.optional(CreateQuotaRuleOptionsSubjectsList),
+          subjects: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CreateQuotaRuleOptions" });
   }
@@ -2412,12 +1845,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateQuotaRuleOptions);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          rules: S.optional(AdminCreateQuotaGroupRequestRulesList),
+          rules: S.optional(__S(16, __c2, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/admin/quota/groups", code: 200 })),
       ).annotate({
         identifier: "AdminCreateQuotaGroupRequest",
@@ -2426,7 +1859,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          rules: S.optional(QuotaGroupRulesList),
+          rules: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "QuotaGroup" });
     case 3:
@@ -2434,7 +1867,7 @@ function __c2(j: number): any {
         S.Struct({
           limit: S.optional(S.Number),
           name: S.optional(S.String),
-          subjects: S.optional(AdminCreateQuotaRuleRequestSubjectsList),
+          subjects: S.optional(__S(6, __c0, 6)),
         }).pipe(T.Http({ method: "POST", uri: "/admin/quota/rules", code: 200 })),
       ).annotate({
         identifier: "AdminCreateQuotaRuleRequest",
@@ -2450,11 +1883,11 @@ function __c2(j: number): any {
           issue_labels: S.optional(S.String),
           license: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(AdminCreateRepoRequestObjectFormatName),
+          object_format_name: S.optional(S.String),
           private: S.optional(S.Boolean),
           readme: S.optional(S.String),
           template: S.optional(S.Boolean),
-          trust_model: S.optional(AdminCreateRepoRequestTrustModel),
+          trust_model: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users/{username}/repos", code: 200 })),
       ).annotate({ identifier: "AdminCreateRepoRequest" });
     case 5:
@@ -2500,20 +1933,20 @@ function __c3(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(Organization),
-          permission: S.optional(TeamPermission),
-          units: S.optional(TeamUnitsList),
-          units_map: S.optional(TeamUnitsMapMap),
+          organization: S.optional(__S(11, __c1, 3)),
+          permission: S.optional(S.String),
+          units: S.optional(__S(8, __c1, 0)),
+          units_map: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "Team" });
     case 2:
-      return S.Array(Team);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(User),
-          recipient: S.optional(User),
-          teams: S.optional(RepoTransferTeamsList),
+          doer: S.optional(__S(13, __c1, 5)),
+          recipient: S.optional(__S(13, __c1, 5)),
+          teams: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "RepoTransfer" });
     case 4:
@@ -2537,8 +1970,8 @@ function __c3(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(ExternalTracker),
-          external_wiki: S.optional(ExternalWiki),
+          external_tracker: S.optional(__S(21, __c2, 5)),
+          external_wiki: S.optional(__S(22, __c2, 6)),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -2555,7 +1988,7 @@ function __c3(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(InternalTracker),
+          internal_tracker: S.optional(__S(23, __c2, 7)),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -2563,21 +1996,21 @@ function __c3(j: number): any {
           mirror_interval: S.optional(S.String),
           mirror_updated: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(RepositoryObjectFormatName),
+          object_format_name: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: User,
-          parent: S.optional(Repository),
-          permissions: S.optional(Permission),
+          owner: __S(13, __c1, 5),
+          parent: S.optional(__S(28, __c3, 4)),
+          permissions: S.optional(__S(24, __c3, 0)),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(RepoTransfer),
+          repo_transfer: S.optional(__S(27, __c3, 3)),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(6, __c0, 6)),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -2611,7 +2044,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "RepoTargetOption" });
     case 7:
-      return S.Array(RepoTargetOption);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -2621,8 +2054,8 @@ function __c4(j: number): any {
         S.Struct({
           username: S.String.pipe(T.Label()),
           name: S.String,
-          repositories: S.optional(AdminCreateUserAccessTokenRequestRepositoriesList),
-          scopes: S.optional(AdminCreateUserAccessTokenRequestScopesList),
+          repositories: S.optional(__S(31, __c3, 7)),
+          scopes: S.optional(__S(6, __c0, 6)),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users/{username}/tokens", code: 200 })),
       ).annotate({
         identifier: "AdminCreateUserAccessTokenRequest",
@@ -2637,15 +2070,15 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "RepositoryMeta" });
     case 2:
-      return S.Array(RepositoryMeta);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
           id: S.Number,
           name: S.String,
-          repositories: S.optional(AccessTokenRepositoriesList),
-          scopes: S.optional(AccessTokenScopesList),
+          repositories: S.optional(__S(34, __c4, 2)),
+          scopes: S.optional(__S(6, __c0, 6)),
           sha1: S.optional(S.String.pipe(T.SensitiveValue({}))),
           token_last_eight: S.String,
         }),
@@ -2707,7 +2140,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          emails: S.optional(AdminDeleteUserEmailsRequestEmailsList),
+          emails: S.optional(__S(6, __c0, 6)),
         }).pipe(T.Http({ method: "DELETE", uri: "/admin/users/{username}/emails", code: 200 })),
       ).annotate({
         identifier: "AdminDeleteUserEmailsRequest",
@@ -2728,8 +2161,8 @@ function __c5(j: number): any {
           active: S.optional(S.Boolean),
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: S.optional(AdminEditHookRequestConfigMap),
-          events: S.optional(AdminEditHookRequestEventsList),
+          config: S.optional(__S(5, __c0, 5)),
+          events: S.optional(__S(6, __c0, 6)),
         }).pipe(T.Http({ method: "PATCH", uri: "/admin/hooks/{id}", code: 200 })),
       ).annotate({ identifier: "AdminEditHookRequest" });
     case 5:
@@ -2737,7 +2170,7 @@ function __c5(j: number): any {
         S.Struct({
           quotarule: S.String.pipe(T.Label()),
           limit: S.optional(S.Number),
-          subjects: S.optional(AdminEditQuotaRuleRequestSubjectsList),
+          subjects: S.optional(__S(6, __c0, 6)),
         }).pipe(T.Http({ method: "PATCH", uri: "/admin/quota/rules/{quotarule}", code: 200 })),
       ).annotate({
         identifier: "AdminEditQuotaRuleRequest",
@@ -2787,21 +2220,19 @@ function __c6(j: number): any {
           handle: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          needs: S.optional(ActionRunJobNeedsList),
+          needs: S.optional(__S(6, __c0, 6)),
           owner_id: S.optional(S.Number),
           repo_id: S.optional(S.Number),
           run_id: S.optional(S.Number),
-          runs_on: S.optional(ActionRunJobRunsOnList),
+          runs_on: S.optional(__S(6, __c0, 6)),
           status: S.optional(S.String),
           task_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ActionRunJob" });
     case 1:
-      return S.Array(ActionRunJob);
+      return S.Array(__S(48, __c6, 0));
     case 2:
-      return S.suspend(() =>
-        AdminGetActionRunJobsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminGetActionRunJobsResponse",
       });
     case 3:
@@ -2822,9 +2253,9 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Email" });
     case 5:
-      return S.Array(Email);
+      return S.Array(__S(52, __c6, 4));
     case 6:
-      return S.suspend(() => AdminGetAllEmailsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminGetAllEmailsResponse",
       });
     case 7:
@@ -2839,9 +2270,9 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Organization);
+      return S.Array(__S(11, __c1, 3));
     case 1:
-      return S.suspend(() => AdminGetAllOrgsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(56, __c7, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminGetAllOrgsResponse",
       });
     case 2:
@@ -2871,7 +2302,7 @@ function __c7(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/admin/users/{username}/quota", code: 200 })),
       ).annotate({ identifier: "AdminGetUserQuotaRequest" });
     case 6:
-      return S.Array(QuotaGroup);
+      return S.Array(__S(18, __c2, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2897,8 +2328,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           artifacts: S.optional(S.Number),
-          attachments: S.optional(QuotaUsedSizeAssetsAttachments),
-          packages: S.optional(QuotaUsedSizeAssetsPackages),
+          attachments: S.optional(__S(63, __c7, 7)),
+          packages: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "QuotaUsedSizeAssets" });
     case 2:
@@ -2917,22 +2348,22 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(QuotaUsedSizeAssets),
-          git: S.optional(QuotaUsedSizeGit),
-          repos: S.optional(QuotaUsedSizeRepos),
+          assets: S.optional(__S(65, __c8, 1)),
+          git: S.optional(__S(66, __c8, 2)),
+          repos: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "QuotaUsedSize" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          size: S.optional(QuotaUsedSize),
+          size: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "QuotaUsed" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(QuotaGroupList),
-          used: S.optional(QuotaUsed),
+          groups: S.optional(__S(62, __c7, 6)),
+          used: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "QuotaInfo" });
     case 7:
@@ -2947,9 +2378,9 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Hook);
+      return S.Array(__S(9, __c1, 1));
     case 1:
-      return S.suspend(() => AdminListHooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(72, __c9, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminListHooksResponse",
       });
     case 2:
@@ -2959,7 +2390,7 @@ function __c9(j: number): any {
         identifier: "AdminListQuotaGroupsRequest",
       });
     case 3:
-      return S.suspend(() => QuotaGroupList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(62, __c7, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminListQuotaGroupsResponse",
       });
     case 4:
@@ -2969,9 +2400,7 @@ function __c9(j: number): any {
         identifier: "AdminListQuotaRulesRequest",
       });
     case 5:
-      return S.suspend(() =>
-        AdminListQuotaRulesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminListQuotaRulesResponse",
       });
     case 6:
@@ -2985,15 +2414,13 @@ function __c9(j: number): any {
         identifier: "AdminListUserAccessTokensRequest",
       });
     case 7:
-      return S.Array(AccessToken);
+      return S.Array(__S(35, __c4, 3));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        AdminListUserAccessTokensResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(79, __c9, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminListUserAccessTokensResponse",
       });
     case 1:
@@ -3015,11 +2442,9 @@ function __c10(j: number): any {
         identifier: "AdminListUsersInQuotaGroupRequest",
       });
     case 3:
-      return S.Array(User);
+      return S.Array(__S(13, __c1, 5));
     case 4:
-      return S.suspend(() =>
-        AdminListUsersInQuotaGroupResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminListUsersInQuotaGroupResponse",
       });
     case 5:
@@ -3077,20 +2502,20 @@ function __c11(j: number): any {
           source_id: S.optional(S.Number.pipe(T.Query())),
           login_name: S.optional(S.String.pipe(T.Query())),
           is_2fa_enabled: S.optional(S.Boolean.pipe(T.Query())),
-          sort: S.optional(AdminSearchUsersRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/admin/users", code: 200 })),
       ).annotate({ identifier: "AdminSearchUsersRequest" });
     case 2:
-      return S.suspend(() => AdminSearchUsersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminSearchUsersResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          groups: AdminSetUserQuotaGroupsRequestGroupsList,
+          groups: __S(6, __c0, 6),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users/{username}/quota/groups", code: 200 })),
       ).annotate({
         identifier: "AdminSetUserQuotaGroupsRequest",
@@ -3117,11 +2542,11 @@ function __c11(j: number): any {
           description: S.optional(S.String),
           ephemeral: S.optional(S.Boolean),
           id: S.optional(S.Number),
-          labels: S.optional(ActionRunnerLabelsList),
+          labels: S.optional(__S(6, __c0, 6)),
           name: S.optional(S.String),
           owner_id: S.optional(S.Number),
           repo_id: S.optional(S.Number),
-          status: S.optional(ActionRunnerStatus),
+          status: S.optional(S.String),
           uuid: S.optional(S.String),
           version: S.optional(S.String),
         }),
@@ -3139,9 +2564,9 @@ function __c12(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/admin/actions/runners", code: 200 })),
       ).annotate({ identifier: "GetAdminRunnersRequest" });
     case 1:
-      return S.Array(ActionRunner);
+      return S.Array(__S(95, __c11, 7));
     case 2:
-      return S.suspend(() => GetAdminRunnersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(97, __c12, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAdminRunnersResponse",
       });
     case 3:
@@ -3162,9 +2587,9 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Cron" });
     case 5:
-      return S.Array(Cron);
+      return S.Array(__S(100, __c12, 4));
     case 6:
-      return S.suspend(() => ListAdminCronResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(101, __c12, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAdminCronResponse",
       });
     case 7:
@@ -3182,11 +2607,9 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListAdminUnadoptedResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListAdminUnadoptedResponse",
-        },
-      );
+      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAdminUnadoptedResponse",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3212,4 +2635,9 @@ function __c13(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/admin/cron/{task}", code: 200 })),
       ).annotate({ identifier: "RunAdminCronRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

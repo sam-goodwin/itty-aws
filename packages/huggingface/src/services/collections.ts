@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -29,14 +31,10 @@ export type AddItemRequestItemType =
   | "model"
   | "dataset"
   | "bucket";
-const AddItemRequestItemType = S.String;
-
 export interface AddItemRequestItem {
   type: AddItemRequestItemType | (string & {});
   id: string;
 }
-const AddItemRequestItem = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddItemRequestItem>;
-
 export interface AddItemRequest {
   namespace: string;
   slug: string;
@@ -44,8 +42,6 @@ export interface AddItemRequest {
   item: AddItemRequestItem;
   note?: string;
 }
-const AddItemRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddItemRequest>;
-
 export interface AddItemResponseGatingCase1Case1 {
   mode: string;
 }
@@ -63,8 +59,6 @@ export type AddItemResponseGatingCase1 =
   | AddItemResponseGatingCase1Case1
   | AddItemResponseGatingCase1Case2;
 export type AddItemResponseGating = boolean | AddItemResponseGatingCase1;
-const AddItemResponseGating = S.Unknown as any as S.Schema<AddItemResponseGating>;
-
 export type AddItemResponseOwnerCase0Plan = "team" | "enterprise" | "plus" | "academia";
 export interface AddItemResponseOwnerCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -116,32 +110,18 @@ export interface AddItemResponseOwnerCase1 {
   primaryOrg?: AddItemResponseOwnerCase1PrimaryOrg;
 }
 export type AddItemResponseOwner = AddItemResponseOwnerCase0 | AddItemResponseOwnerCase1;
-const AddItemResponseOwner = S.Unknown as any as S.Schema<AddItemResponseOwner>;
-
 export type AddItemResponseTheme = "orange" | "blue" | "green" | "purple" | "pink" | "indigo";
-const AddItemResponseTheme = S.String;
-
 export interface AddItemResponseResourceGroup {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
-const AddItemResponseResourceGroup = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddItemResponseResourceGroup>;
-
 export interface AddItemResponseItemsItemCase0Note {
   html: string;
   text: string;
 }
 export type AddItemResponseItemsItemCase0GalleryList = Array<string>;
-const AddItemResponseItemsItemCase0GalleryList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddItemResponseItemsItemCase0GalleryList>;
-
 export type AddItemResponseItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
   | "viewer-partial"
@@ -851,14 +831,7 @@ export type AddItemResponseItemsItem =
   | AddItemResponseItemsItemCase3
   | AddItemResponseItemsItemCase4
   | AddItemResponseItemsItemCase5;
-const AddItemResponseItemsItem = S.Unknown as any as S.Schema<AddItemResponseItemsItem>;
-
 export type AddItemResponseItemsList = Array<AddItemResponseItemsItem>;
-const AddItemResponseItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AddItemResponseItemsList>;
-
 export interface AddItemResponse {
   slug: string;
   title: string;
@@ -875,8 +848,6 @@ export interface AddItemResponse {
   resourceGroup?: AddItemResponseResourceGroup;
   items: AddItemResponseItemsList;
 }
-const AddItemResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AddItemResponse>;
-
 export type AddItemBySlugRequestItemType =
   | "paper"
   | "collection"
@@ -888,16 +859,12 @@ export interface AddItemBySlugRequestItem {
   type: AddItemBySlugRequestItemType | (string & {});
   id: string;
 }
-const AddItemBySlugRequestItem = AddItemRequestItem as any as S.Schema<AddItemBySlugRequestItem>;
-
 export interface AddItemBySlugRequest {
   namespace: string;
   slug: string;
   item: AddItemBySlugRequestItem;
   note?: string;
 }
-const AddItemBySlugRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AddItemBySlugRequest>;
-
 export type AddItemBySlugResponseGatingCase1Case1 = AddItemResponseGatingCase1Case1;
 export type AddItemBySlugResponseGatingCase1Case2NotificationsMode = "bulk" | "real-time";
 export interface AddItemBySlugResponseGatingCase1Case2Notifications {
@@ -913,8 +880,6 @@ export type AddItemBySlugResponseGatingCase1 =
   | AddItemResponseGatingCase1Case1
   | AddItemBySlugResponseGatingCase1Case2;
 export type AddItemBySlugResponseGating = boolean | AddItemBySlugResponseGatingCase1;
-const AddItemBySlugResponseGating = S.Unknown as any as S.Schema<AddItemBySlugResponseGating>;
-
 export type AddItemBySlugResponseOwnerCase0Plan = "team" | "enterprise" | "plus" | "academia";
 export interface AddItemBySlugResponseOwnerCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -972,11 +937,7 @@ export interface AddItemBySlugResponseOwnerCase1 {
 export type AddItemBySlugResponseOwner =
   | AddItemBySlugResponseOwnerCase0
   | AddItemBySlugResponseOwnerCase1;
-const AddItemBySlugResponseOwner = S.Unknown as any as S.Schema<AddItemBySlugResponseOwner>;
-
 export type AddItemBySlugResponseTheme = "orange" | "blue" | "green" | "purple" | "pink" | "indigo";
-const AddItemBySlugResponseTheme = S.String;
-
 export type AddItemBySlugResponseResourceGroup = AddItemResponseResourceGroup;
 export type AddItemBySlugResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 export type AddItemBySlugResponseItemsItemCase0GalleryList = Array<string>;
@@ -1689,14 +1650,7 @@ export type AddItemBySlugResponseItemsItem =
   | AddItemBySlugResponseItemsItemCase3
   | AddItemBySlugResponseItemsItemCase4
   | AddItemBySlugResponseItemsItemCase5;
-const AddItemBySlugResponseItemsItem = S.Unknown as any as S.Schema<AddItemBySlugResponseItemsItem>;
-
 export type AddItemBySlugResponseItemsList = Array<AddItemBySlugResponseItemsItem>;
-const AddItemBySlugResponseItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddItemBySlugResponseItemsList>;
-
 export interface AddItemBySlugResponse {
   slug: string;
   title: string;
@@ -1713,103 +1667,45 @@ export interface AddItemBySlugResponse {
   resourceGroup?: AddItemResponseResourceGroup;
   items: AddItemBySlugResponseItemsList;
 }
-const AddItemBySlugResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddItemBySlugResponse>;
-
 export type BatchUpdateItemsRequestBodyItemAction = "update";
-const BatchUpdateItemsRequestBodyItemAction = S.String;
-
 export type BatchUpdateItemsRequestBodyItemDataGalleryList = Array<string>;
-const BatchUpdateItemsRequestBodyItemDataGalleryList =
-  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<BatchUpdateItemsRequestBodyItemDataGalleryList>;
-
 export interface BatchUpdateItemsRequestBodyItemData {
   gallery?: BatchUpdateItemsRequestBodyItemDataGalleryList;
   note?: string;
   position?: number;
 }
-const BatchUpdateItemsRequestBodyItemData = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchUpdateItemsRequestBodyItemData>;
-
 export interface BatchUpdateItemsRequestBodyItem {
   action: BatchUpdateItemsRequestBodyItemAction | (string & {});
   _id: string;
   data: BatchUpdateItemsRequestBodyItemData;
 }
-const BatchUpdateItemsRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BatchUpdateItemsRequestBodyItem>;
-
 export type BatchUpdateItemsRequestBodyList = Array<BatchUpdateItemsRequestBodyItem>;
-const BatchUpdateItemsRequestBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BatchUpdateItemsRequestBodyList>;
-
 export interface BatchUpdateItemsRequest {
   namespace: string;
   slug: string;
   id: string;
   body?: BatchUpdateItemsRequestBodyList;
 }
-const BatchUpdateItemsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BatchUpdateItemsRequest>;
-
 export interface BatchUpdateItemsResponse {}
-const BatchUpdateItemsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchUpdateItemsResponse>;
-
 export type BatchUpdateItemsBySlugRequestBodyItemAction = "update";
-const BatchUpdateItemsBySlugRequestBodyItemAction = S.String;
-
 export type BatchUpdateItemsBySlugRequestBodyItemDataGalleryList = Array<string>;
 export interface BatchUpdateItemsBySlugRequestBodyItemData {
   gallery?: BatchUpdateItemsBySlugRequestBodyItemDataGalleryList;
   note?: string;
   position?: number;
 }
-const BatchUpdateItemsBySlugRequestBodyItemData =
-  BatchUpdateItemsRequestBodyItemData as any as S.Schema<BatchUpdateItemsBySlugRequestBodyItemData>;
-
 export interface BatchUpdateItemsBySlugRequestBodyItem {
   action: BatchUpdateItemsBySlugRequestBodyItemAction | (string & {});
   _id: string;
   data: BatchUpdateItemsBySlugRequestBodyItemData;
 }
-const BatchUpdateItemsBySlugRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BatchUpdateItemsBySlugRequestBodyItem>;
-
 export type BatchUpdateItemsBySlugRequestBodyList = Array<BatchUpdateItemsBySlugRequestBodyItem>;
-const BatchUpdateItemsBySlugRequestBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BatchUpdateItemsBySlugRequestBodyList>;
-
 export interface BatchUpdateItemsBySlugRequest {
   namespace: string;
   slug: string;
   body?: BatchUpdateItemsBySlugRequestBodyList;
 }
-const BatchUpdateItemsBySlugRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BatchUpdateItemsBySlugRequest>;
-
 export interface BatchUpdateItemsBySlugResponse {}
-const BatchUpdateItemsBySlugResponse =
-  BatchUpdateItemsResponse as any as S.Schema<BatchUpdateItemsBySlugResponse>;
-
 export type CreateCollectionRequestItemType =
   | "paper"
   | "collection"
@@ -1817,17 +1713,10 @@ export type CreateCollectionRequestItemType =
   | "model"
   | "dataset"
   | "bucket";
-const CreateCollectionRequestItemType = S.String;
-
 export interface CreateCollectionRequestItem {
   type: CreateCollectionRequestItemType | (string & {});
   id: string;
 }
-const CreateCollectionRequestItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateCollectionRequestItem>;
-
 export interface CreateCollectionRequest {
   title: string;
   description?: string;
@@ -1838,11 +1727,6 @@ export interface CreateCollectionRequest {
   /** Assign the collection to a resource group of the owning organization. Only valid for organization-owned collections. */
   resourceGroupId?: string;
 }
-const CreateCollectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateCollectionRequest>;
-
 export type CreateCollectionResponseGatingCase1Case1 = AddItemResponseGatingCase1Case1;
 export type CreateCollectionResponseGatingCase1Case2NotificationsMode = "bulk" | "real-time";
 export interface CreateCollectionResponseGatingCase1Case2Notifications {
@@ -1858,8 +1742,6 @@ export type CreateCollectionResponseGatingCase1 =
   | AddItemResponseGatingCase1Case1
   | CreateCollectionResponseGatingCase1Case2;
 export type CreateCollectionResponseGating = boolean | CreateCollectionResponseGatingCase1;
-const CreateCollectionResponseGating = S.Unknown as any as S.Schema<CreateCollectionResponseGating>;
-
 export type CreateCollectionResponseOwnerCase0Plan = "team" | "enterprise" | "plus" | "academia";
 export interface CreateCollectionResponseOwnerCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1917,8 +1799,6 @@ export interface CreateCollectionResponseOwnerCase1 {
 export type CreateCollectionResponseOwner =
   | CreateCollectionResponseOwnerCase0
   | CreateCollectionResponseOwnerCase1;
-const CreateCollectionResponseOwner = S.Unknown as any as S.Schema<CreateCollectionResponseOwner>;
-
 export type CreateCollectionResponseTheme =
   | "orange"
   | "blue"
@@ -1926,8 +1806,6 @@ export type CreateCollectionResponseTheme =
   | "purple"
   | "pink"
   | "indigo";
-const CreateCollectionResponseTheme = S.String;
-
 export type CreateCollectionResponseResourceGroup = AddItemResponseResourceGroup;
 export type CreateCollectionResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 export type CreateCollectionResponseItemsItemCase0GalleryList = Array<string>;
@@ -2644,15 +2522,7 @@ export type CreateCollectionResponseItemsItem =
   | CreateCollectionResponseItemsItemCase3
   | CreateCollectionResponseItemsItemCase4
   | CreateCollectionResponseItemsItemCase5;
-const CreateCollectionResponseItemsItem =
-  S.Unknown as any as S.Schema<CreateCollectionResponseItemsItem>;
-
 export type CreateCollectionResponseItemsList = Array<CreateCollectionResponseItemsItem>;
-const CreateCollectionResponseItemsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateCollectionResponseItemsList>;
-
 export interface CreateCollectionResponse {
   slug: string;
   title: string;
@@ -2669,69 +2539,34 @@ export interface CreateCollectionResponse {
   resourceGroup?: AddItemResponseResourceGroup;
   items: CreateCollectionResponseItemsList;
 }
-const CreateCollectionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateCollectionResponse>;
-
 export interface DeleteCollectionRequest {
   namespace: string;
   slug: string;
   id: string;
 }
-const DeleteCollectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteCollectionRequest>;
-
 export interface DeleteCollectionResponse {}
-const DeleteCollectionResponse =
-  BatchUpdateItemsResponse as any as S.Schema<DeleteCollectionResponse>;
-
 export interface DeleteCollectionBySlugRequest {
   namespace: string;
   slug: string;
 }
-const DeleteCollectionBySlugRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteCollectionBySlugRequest>;
-
 export interface DeleteCollectionBySlugResponse {}
-const DeleteCollectionBySlugResponse =
-  BatchUpdateItemsResponse as any as S.Schema<DeleteCollectionBySlugResponse>;
-
 export interface DeleteItemRequest {
   namespace: string;
   slug: string;
   id: string;
   itemId: string;
 }
-const DeleteItemRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeleteItemRequest>;
-
 export interface DeleteItemResponse {}
-const DeleteItemResponse = BatchUpdateItemsResponse as any as S.Schema<DeleteItemResponse>;
-
 export interface DeleteItemBySlugRequest {
   namespace: string;
   slug: string;
 }
-const DeleteItemBySlugRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteItemBySlugRequest>;
-
 export interface DeleteItemBySlugResponse {}
-const DeleteItemBySlugResponse =
-  BatchUpdateItemsResponse as any as S.Schema<DeleteItemBySlugResponse>;
-
 export interface GetCollectionRequest {
   namespace: string;
   slug: string;
   id: string;
 }
-const GetCollectionRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetCollectionRequest>;
-
 export type GetCollectionResponseGatingCase1Case1 = AddItemResponseGatingCase1Case1;
 export type GetCollectionResponseGatingCase1Case2NotificationsMode = "bulk" | "real-time";
 export interface GetCollectionResponseGatingCase1Case2Notifications {
@@ -2747,8 +2582,6 @@ export type GetCollectionResponseGatingCase1 =
   | AddItemResponseGatingCase1Case1
   | GetCollectionResponseGatingCase1Case2;
 export type GetCollectionResponseGating = boolean | GetCollectionResponseGatingCase1;
-const GetCollectionResponseGating = S.Unknown as any as S.Schema<GetCollectionResponseGating>;
-
 export type GetCollectionResponseOwnerCase0Plan = "team" | "enterprise" | "plus" | "academia";
 export interface GetCollectionResponseOwnerCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -2806,11 +2639,7 @@ export interface GetCollectionResponseOwnerCase1 {
 export type GetCollectionResponseOwner =
   | GetCollectionResponseOwnerCase0
   | GetCollectionResponseOwnerCase1;
-const GetCollectionResponseOwner = S.Unknown as any as S.Schema<GetCollectionResponseOwner>;
-
 export type GetCollectionResponseTheme = "orange" | "blue" | "green" | "purple" | "pink" | "indigo";
-const GetCollectionResponseTheme = S.String;
-
 export type GetCollectionResponseResourceGroup = AddItemResponseResourceGroup;
 export type GetCollectionResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 export type GetCollectionResponseItemsItemCase0GalleryList = Array<string>;
@@ -3523,14 +3352,7 @@ export type GetCollectionResponseItemsItem =
   | GetCollectionResponseItemsItemCase3
   | GetCollectionResponseItemsItemCase4
   | GetCollectionResponseItemsItemCase5;
-const GetCollectionResponseItemsItem = S.Unknown as any as S.Schema<GetCollectionResponseItemsItem>;
-
 export type GetCollectionResponseItemsList = Array<GetCollectionResponseItemsItem>;
-const GetCollectionResponseItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetCollectionResponseItemsList>;
-
 export interface GetCollectionResponse {
   slug: string;
   title: string;
@@ -3547,20 +3369,10 @@ export interface GetCollectionResponse {
   resourceGroup?: AddItemResponseResourceGroup;
   items: GetCollectionResponseItemsList;
 }
-const GetCollectionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetCollectionResponse>;
-
 export interface GetCollectionBySlugRequest {
   namespace: string;
   slug: string;
 }
-const GetCollectionBySlugRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetCollectionBySlugRequest>;
-
 export type GetCollectionBySlugResponseGatingCase1Case1 = AddItemResponseGatingCase1Case1;
 export type GetCollectionBySlugResponseGatingCase1Case2NotificationsMode = "bulk" | "real-time";
 export interface GetCollectionBySlugResponseGatingCase1Case2Notifications {
@@ -3576,9 +3388,6 @@ export type GetCollectionBySlugResponseGatingCase1 =
   | AddItemResponseGatingCase1Case1
   | GetCollectionBySlugResponseGatingCase1Case2;
 export type GetCollectionBySlugResponseGating = boolean | GetCollectionBySlugResponseGatingCase1;
-const GetCollectionBySlugResponseGating =
-  S.Unknown as any as S.Schema<GetCollectionBySlugResponseGating>;
-
 export type GetCollectionBySlugResponseOwnerCase0Plan = "team" | "enterprise" | "plus" | "academia";
 export interface GetCollectionBySlugResponseOwnerCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -3636,9 +3445,6 @@ export interface GetCollectionBySlugResponseOwnerCase1 {
 export type GetCollectionBySlugResponseOwner =
   | GetCollectionBySlugResponseOwnerCase0
   | GetCollectionBySlugResponseOwnerCase1;
-const GetCollectionBySlugResponseOwner =
-  S.Unknown as any as S.Schema<GetCollectionBySlugResponseOwner>;
-
 export type GetCollectionBySlugResponseTheme =
   | "orange"
   | "blue"
@@ -3646,8 +3452,6 @@ export type GetCollectionBySlugResponseTheme =
   | "purple"
   | "pink"
   | "indigo";
-const GetCollectionBySlugResponseTheme = S.String;
-
 export type GetCollectionBySlugResponseResourceGroup = AddItemResponseResourceGroup;
 export type GetCollectionBySlugResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 export type GetCollectionBySlugResponseItemsItemCase0GalleryList = Array<string>;
@@ -4368,15 +4172,7 @@ export type GetCollectionBySlugResponseItemsItem =
   | GetCollectionBySlugResponseItemsItemCase3
   | GetCollectionBySlugResponseItemsItemCase4
   | GetCollectionBySlugResponseItemsItemCase5;
-const GetCollectionBySlugResponseItemsItem =
-  S.Unknown as any as S.Schema<GetCollectionBySlugResponseItemsItem>;
-
 export type GetCollectionBySlugResponseItemsList = Array<GetCollectionBySlugResponseItemsItem>;
-const GetCollectionBySlugResponseItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetCollectionBySlugResponseItemsList>;
-
 export interface GetCollectionBySlugResponse {
   slug: string;
   title: string;
@@ -4393,63 +4189,36 @@ export interface GetCollectionBySlugResponse {
   resourceGroup?: AddItemResponseResourceGroup;
   items: GetCollectionBySlugResponseItemsList;
 }
-const GetCollectionBySlugResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetCollectionBySlugResponse>;
-
 export interface GetCollectionResourceGroupRequest {
   namespace: string;
   slug: string;
   id: string;
 }
-const GetCollectionResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetCollectionResourceGroupRequest>;
-
 export interface GetCollectionResourceGroupResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
-const GetCollectionResourceGroupResponse =
-  AddItemResponseResourceGroup as any as S.Schema<GetCollectionResourceGroupResponse>;
-
 export interface GetCollectionResourceGroupBySlugRequest {
   namespace: string;
   slug: string;
 }
-const GetCollectionResourceGroupBySlugRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetCollectionResourceGroupBySlugRequest>;
-
 export interface GetCollectionResourceGroupBySlugResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
-const GetCollectionResourceGroupBySlugResponse =
-  AddItemResponseResourceGroup as any as S.Schema<GetCollectionResourceGroupBySlugResponse>;
-
 export type GetCollectionsRequestItemCase0List = Array<string>;
 export type GetCollectionsRequestItem = GetCollectionsRequestItemCase0List | string;
-const GetCollectionsRequestItem = S.Unknown as any as S.Schema<GetCollectionsRequestItem>;
-
 export type GetCollectionsRequestOwnerCase0List = Array<string>;
 export type GetCollectionsRequestOwnerCase2Map = { [key: string]: string | undefined };
 export type GetCollectionsRequestOwner =
   | GetCollectionsRequestOwnerCase0List
   | string
   | GetCollectionsRequestOwnerCase2Map;
-const GetCollectionsRequestOwner = S.Unknown as any as S.Schema<GetCollectionsRequestOwner>;
-
 export type GetCollectionsRequestSort = "upvotes" | "lastModified" | "trending";
-const GetCollectionsRequestSort = S.String;
-
 export interface GetCollectionsRequest {
   item?: GetCollectionsRequestItem;
   owner?: GetCollectionsRequestOwner;
@@ -4459,11 +4228,6 @@ export interface GetCollectionsRequest {
   expand?: string;
   limit?: number;
 }
-const GetCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetCollectionsRequest>;
-
 export type GetCollectionsResponseBodyCase0ItemGatingCase1Case1 = AddItemResponseGatingCase1Case1;
 export type GetCollectionsResponseBodyCase0ItemGatingCase1Case2NotificationsMode =
   | "bulk"
@@ -5312,14 +5076,7 @@ export type GetCollectionsResponseBodyCase1List = Array<GetCollectionsResponseBo
 export type GetCollectionsResponseBody =
   | GetCollectionsResponseBodyCase0List
   | GetCollectionsResponseBodyCase1List;
-const GetCollectionsResponseBody = S.Unknown as any as S.Schema<GetCollectionsResponseBody>;
-
 export type GetCollectionsResponse = GetCollectionsResponseBody;
-const GetCollectionsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetCollectionsResponse>;
-
 export interface SetCollectionResourceGroupRequest {
   namespace: string;
   slug: string;
@@ -5327,11 +5084,6 @@ export interface SetCollectionResourceGroupRequest {
   /** The resource group to assign the collection to. If null, the collection is removed from any resource group. */
   resourceGroupId: string | null;
 }
-const SetCollectionResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<SetCollectionResourceGroupRequest>;
-
 export interface SetCollectionResourceGroupResponse {
   id: string;
   slug: string;
@@ -5339,22 +5091,12 @@ export interface SetCollectionResourceGroupResponse {
   private: boolean;
   addedBy: string;
 }
-const SetCollectionResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SetCollectionResourceGroupResponse>;
-
 export interface SetCollectionResourceGroupBySlugRequest {
   namespace: string;
   slug: string;
   /** The resource group to assign the collection to. If null, the collection is removed from any resource group. */
   resourceGroupId: string | null;
 }
-const SetCollectionResourceGroupBySlugRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SetCollectionResourceGroupBySlugRequest>;
-
 export interface SetCollectionResourceGroupBySlugResponse {
   id: string;
   slug: string;
@@ -5362,9 +5104,6 @@ export interface SetCollectionResourceGroupBySlugResponse {
   private: boolean;
   addedBy: string;
 }
-const SetCollectionResourceGroupBySlugResponse =
-  SetCollectionResourceGroupResponse as any as S.Schema<SetCollectionResourceGroupBySlugResponse>;
-
 export type UpdateCollectionRequestTheme =
   | "orange"
   | "blue"
@@ -5372,8 +5111,6 @@ export type UpdateCollectionRequestTheme =
   | "purple"
   | "pink"
   | "indigo";
-const UpdateCollectionRequestTheme = S.String;
-
 export type UpdateCollectionRequestGatingCase1 = AddItemResponseGatingCase1Case1;
 export type UpdateCollectionRequestGatingCase2NotificationsMode = "bulk" | "real-time";
 export interface UpdateCollectionRequestGatingCase2Notifications {
@@ -5388,8 +5125,6 @@ export type UpdateCollectionRequestGating =
   | boolean
   | AddItemResponseGatingCase1Case1
   | UpdateCollectionRequestGatingCase2;
-const UpdateCollectionRequestGating = S.Unknown as any as S.Schema<UpdateCollectionRequestGating>;
-
 export interface UpdateCollectionRequest {
   namespace: string;
   slug: string;
@@ -5401,11 +5136,6 @@ export interface UpdateCollectionRequest {
   description?: string;
   gating?: UpdateCollectionRequestGating;
 }
-const UpdateCollectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateCollectionRequest>;
-
 export type UpdateCollectionResponseDataGatingCase1Case1 = AddItemResponseGatingCase1Case1;
 export type UpdateCollectionResponseDataGatingCase1Case2NotificationsMode = "bulk" | "real-time";
 export interface UpdateCollectionResponseDataGatingCase1Case2Notifications {
@@ -5421,9 +5151,6 @@ export type UpdateCollectionResponseDataGatingCase1 =
   | AddItemResponseGatingCase1Case1
   | UpdateCollectionResponseDataGatingCase1Case2;
 export type UpdateCollectionResponseDataGating = boolean | UpdateCollectionResponseDataGatingCase1;
-const UpdateCollectionResponseDataGating =
-  S.Unknown as any as S.Schema<UpdateCollectionResponseDataGating>;
-
 export type UpdateCollectionResponseDataOwnerCase0Plan =
   | "team"
   | "enterprise"
@@ -5485,9 +5212,6 @@ export interface UpdateCollectionResponseDataOwnerCase1 {
 export type UpdateCollectionResponseDataOwner =
   | UpdateCollectionResponseDataOwnerCase0
   | UpdateCollectionResponseDataOwnerCase1;
-const UpdateCollectionResponseDataOwner =
-  S.Unknown as any as S.Schema<UpdateCollectionResponseDataOwner>;
-
 export type UpdateCollectionResponseDataTheme =
   | "orange"
   | "blue"
@@ -5495,8 +5219,6 @@ export type UpdateCollectionResponseDataTheme =
   | "purple"
   | "pink"
   | "indigo";
-const UpdateCollectionResponseDataTheme = S.String;
-
 export type UpdateCollectionResponseDataResourceGroup = AddItemResponseResourceGroup;
 export type UpdateCollectionResponseDataItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 export type UpdateCollectionResponseDataItemsItemCase0GalleryList = Array<string>;
@@ -6217,15 +5939,7 @@ export type UpdateCollectionResponseDataItemsItem =
   | UpdateCollectionResponseDataItemsItemCase3
   | UpdateCollectionResponseDataItemsItemCase4
   | UpdateCollectionResponseDataItemsItemCase5;
-const UpdateCollectionResponseDataItemsItem =
-  S.Unknown as any as S.Schema<UpdateCollectionResponseDataItemsItem>;
-
 export type UpdateCollectionResponseDataItemsList = Array<UpdateCollectionResponseDataItemsItem>;
-const UpdateCollectionResponseDataItemsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UpdateCollectionResponseDataItemsList>;
-
 export interface UpdateCollectionResponseData {
   slug: string;
   title: string;
@@ -6242,19 +5956,9 @@ export interface UpdateCollectionResponseData {
   resourceGroup?: AddItemResponseResourceGroup;
   items: UpdateCollectionResponseDataItemsList;
 }
-const UpdateCollectionResponseData = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UpdateCollectionResponseData>;
-
 export interface UpdateCollectionResponse {
   data: UpdateCollectionResponseData;
 }
-const UpdateCollectionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UpdateCollectionResponse>;
-
 export type UpdateCollectionBySlugRequestTheme =
   | "orange"
   | "blue"
@@ -6262,8 +5966,6 @@ export type UpdateCollectionBySlugRequestTheme =
   | "purple"
   | "pink"
   | "indigo";
-const UpdateCollectionBySlugRequestTheme = S.String;
-
 export type UpdateCollectionBySlugRequestGatingCase1 = AddItemResponseGatingCase1Case1;
 export type UpdateCollectionBySlugRequestGatingCase2NotificationsMode = "bulk" | "real-time";
 export interface UpdateCollectionBySlugRequestGatingCase2Notifications {
@@ -6278,9 +5980,6 @@ export type UpdateCollectionBySlugRequestGating =
   | boolean
   | AddItemResponseGatingCase1Case1
   | UpdateCollectionBySlugRequestGatingCase2;
-const UpdateCollectionBySlugRequestGating =
-  S.Unknown as any as S.Schema<UpdateCollectionBySlugRequestGating>;
-
 export interface UpdateCollectionBySlugRequest {
   namespace: string;
   slug: string;
@@ -6291,11 +5990,6 @@ export interface UpdateCollectionBySlugRequest {
   description?: string;
   gating?: UpdateCollectionBySlugRequestGating;
 }
-const UpdateCollectionBySlugRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateCollectionBySlugRequest>;
-
 export type UpdateCollectionBySlugResponseDataGatingCase1Case1 = AddItemResponseGatingCase1Case1;
 export type UpdateCollectionBySlugResponseDataGatingCase1Case2NotificationsMode =
   | "bulk"
@@ -6315,9 +6009,6 @@ export type UpdateCollectionBySlugResponseDataGatingCase1 =
 export type UpdateCollectionBySlugResponseDataGating =
   | boolean
   | UpdateCollectionBySlugResponseDataGatingCase1;
-const UpdateCollectionBySlugResponseDataGating =
-  S.Unknown as any as S.Schema<UpdateCollectionBySlugResponseDataGating>;
-
 export type UpdateCollectionBySlugResponseDataOwnerCase0Plan =
   | "team"
   | "enterprise"
@@ -6379,9 +6070,6 @@ export interface UpdateCollectionBySlugResponseDataOwnerCase1 {
 export type UpdateCollectionBySlugResponseDataOwner =
   | UpdateCollectionBySlugResponseDataOwnerCase0
   | UpdateCollectionBySlugResponseDataOwnerCase1;
-const UpdateCollectionBySlugResponseDataOwner =
-  S.Unknown as any as S.Schema<UpdateCollectionBySlugResponseDataOwner>;
-
 export type UpdateCollectionBySlugResponseDataTheme =
   | "orange"
   | "blue"
@@ -6389,8 +6077,6 @@ export type UpdateCollectionBySlugResponseDataTheme =
   | "purple"
   | "pink"
   | "indigo";
-const UpdateCollectionBySlugResponseDataTheme = S.String;
-
 export type UpdateCollectionBySlugResponseDataResourceGroup = AddItemResponseResourceGroup;
 export type UpdateCollectionBySlugResponseDataItemsItemCase0Note =
   AddItemResponseItemsItemCase0Note;
@@ -7123,16 +6809,8 @@ export type UpdateCollectionBySlugResponseDataItemsItem =
   | UpdateCollectionBySlugResponseDataItemsItemCase3
   | UpdateCollectionBySlugResponseDataItemsItemCase4
   | UpdateCollectionBySlugResponseDataItemsItemCase5;
-const UpdateCollectionBySlugResponseDataItemsItem =
-  S.Unknown as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItem>;
-
 export type UpdateCollectionBySlugResponseDataItemsList =
   Array<UpdateCollectionBySlugResponseDataItemsItem>;
-const UpdateCollectionBySlugResponseDataItemsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsList>;
-
 export interface UpdateCollectionBySlugResponseData {
   slug: string;
   title: string;
@@ -7149,23 +6827,10 @@ export interface UpdateCollectionBySlugResponseData {
   resourceGroup?: AddItemResponseResourceGroup;
   items: UpdateCollectionBySlugResponseDataItemsList;
 }
-const UpdateCollectionBySlugResponseData = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UpdateCollectionBySlugResponseData>;
-
 export interface UpdateCollectionBySlugResponse {
   data: UpdateCollectionBySlugResponseData;
 }
-const UpdateCollectionBySlugResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UpdateCollectionBySlugResponse>;
-
 export type UpdateItemRequestGalleryList = Array<string>;
-const UpdateItemRequestGalleryList =
-  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateItemRequestGalleryList>;
-
 export interface UpdateItemRequest {
   namespace: string;
   slug: string;
@@ -7175,15 +6840,8 @@ export interface UpdateItemRequest {
   note?: string;
   position?: number;
 }
-const UpdateItemRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<UpdateItemRequest>;
-
 export interface UpdateItemResponse {}
-const UpdateItemResponse = BatchUpdateItemsResponse as any as S.Schema<UpdateItemResponse>;
-
 export type UpdateItemBySlugRequestGalleryList = Array<string>;
-const UpdateItemBySlugRequestGalleryList =
-  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateItemBySlugRequestGalleryList>;
-
 export interface UpdateItemBySlugRequest {
   namespace: string;
   slug: string;
@@ -7191,15 +6849,7 @@ export interface UpdateItemBySlugRequest {
   note?: string;
   position?: number;
 }
-const UpdateItemBySlugRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UpdateItemBySlugRequest>;
-
 export interface UpdateItemBySlugResponse {}
-const UpdateItemBySlugResponse =
-  BatchUpdateItemsResponse as any as S.Schema<UpdateItemBySlugResponse>;
-
 export type AddItemError = HuggingFaceOpError;
 /** Add item Add an item to a collection */
 export const addItem: API.OperationMethod<
@@ -7208,8 +6858,8 @@ export const addItem: API.OperationMethod<
   AddItemError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddItemRequest,
-  output: AddItemResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<AddItemRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AddItemResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7223,8 +6873,8 @@ export const addItemBySlug: API.OperationMethod<
   AddItemBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddItemBySlugRequest,
-  output: AddItemBySlugResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<AddItemBySlugRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddItemBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7238,8 +6888,8 @@ export const batchUpdateItems: API.OperationMethod<
   BatchUpdateItemsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateItemsRequest,
-  output: BatchUpdateItemsResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<BatchUpdateItemsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BatchUpdateItemsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7253,8 +6903,8 @@ export const batchUpdateItemsBySlug: API.OperationMethod<
   BatchUpdateItemsBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateItemsBySlugRequest,
-  output: BatchUpdateItemsBySlugResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<BatchUpdateItemsBySlugRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BatchUpdateItemsBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7268,8 +6918,8 @@ export const createCollection: API.OperationMethod<
   CreateCollectionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCollectionRequest,
-  output: CreateCollectionResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateCollectionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateCollectionResponse>,
   errors: [Conflict],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7283,8 +6933,8 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCollectionRequest,
-  output: DeleteCollectionResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<DeleteCollectionRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteCollectionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7298,8 +6948,8 @@ export const deleteCollectionBySlug: API.OperationMethod<
   DeleteCollectionBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCollectionBySlugRequest,
-  output: DeleteCollectionBySlugResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<DeleteCollectionBySlugRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteCollectionBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7313,8 +6963,8 @@ export const deleteItem: API.OperationMethod<
   DeleteItemError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteItemRequest,
-  output: DeleteItemResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<DeleteItemRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteItemResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7328,8 +6978,8 @@ export const deleteItemBySlug: API.OperationMethod<
   DeleteItemBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteItemBySlugRequest,
-  output: DeleteItemBySlugResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteItemBySlugRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteItemBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7343,8 +6993,8 @@ export const getCollection: API.OperationMethod<
   GetCollectionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionRequest,
-  output: GetCollectionResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<GetCollectionRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetCollectionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7358,8 +7008,8 @@ export const getCollectionBySlug: API.OperationMethod<
   GetCollectionBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionBySlugRequest,
-  output: GetCollectionBySlugResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<GetCollectionBySlugRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetCollectionBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7373,8 +7023,8 @@ export const getCollectionResourceGroup: API.OperationMethod<
   GetCollectionResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionResourceGroupRequest,
-  output: GetCollectionResourceGroupResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<GetCollectionResourceGroupRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetCollectionResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7388,8 +7038,8 @@ export const getCollectionResourceGroupBySlug: API.OperationMethod<
   GetCollectionResourceGroupBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionResourceGroupBySlugRequest,
-  output: GetCollectionResourceGroupBySlugResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetCollectionResourceGroupBySlugRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetCollectionResourceGroupBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7403,8 +7053,8 @@ export const getCollections: API.OperationMethod<
   GetCollectionsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionsRequest,
-  output: GetCollectionsResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetCollectionsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetCollectionsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7418,8 +7068,8 @@ export const setCollectionResourceGroup: API.OperationMethod<
   SetCollectionResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetCollectionResourceGroupRequest,
-  output: SetCollectionResourceGroupResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<SetCollectionResourceGroupRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<SetCollectionResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7433,8 +7083,8 @@ export const setCollectionResourceGroupBySlug: API.OperationMethod<
   SetCollectionResourceGroupBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetCollectionResourceGroupBySlugRequest,
-  output: SetCollectionResourceGroupBySlugResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<SetCollectionResourceGroupBySlugRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<SetCollectionResourceGroupBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7448,8 +7098,8 @@ export const updateCollection: API.OperationMethod<
   UpdateCollectionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCollectionRequest,
-  output: UpdateCollectionResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<UpdateCollectionRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<UpdateCollectionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7463,8 +7113,8 @@ export const updateCollectionBySlug: API.OperationMethod<
   UpdateCollectionBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCollectionBySlugRequest,
-  output: UpdateCollectionBySlugResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<UpdateCollectionBySlugRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<UpdateCollectionBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7478,8 +7128,8 @@ export const updateItem: API.OperationMethod<
   UpdateItemError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateItemRequest,
-  output: UpdateItemResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<UpdateItemRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<UpdateItemResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7493,8 +7143,8 @@ export const updateItemBySlug: API.OperationMethod<
   UpdateItemBySlugError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateItemBySlugRequest,
-  output: UpdateItemBySlugResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<UpdateItemBySlugRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<UpdateItemBySlugResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -7506,7 +7156,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: AddItemRequestItemType,
+          type: S.String,
           id: S.String,
         }),
       ).annotate({ identifier: "AddItemRequestItem" });
@@ -7516,7 +7166,7 @@ function __c0(j: number): any {
           namespace: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          item: AddItemRequestItem,
+          item: __S(0, __c0, 0),
           note: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7539,7 +7189,7 @@ function __c0(j: number): any {
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.Array(AddItemResponseItemsItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7547,16 +7197,16 @@ function __c0(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           lastUpdated: S.String,
-          gating: AddItemResponseGating,
-          owner: AddItemResponseOwner,
+          gating: S.Unknown,
+          owner: S.Unknown,
           position: S.Number,
-          theme: AddItemResponseTheme,
+          theme: S.String,
           private: S.Boolean,
           upvotes: S.Number,
           shareUrl: S.String,
           isUpvotedByUser: S.Boolean,
-          resourceGroup: S.optional(AddItemResponseResourceGroup),
-          items: AddItemResponseItemsList,
+          resourceGroup: S.optional(__S(2, __c0, 2)),
+          items: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "AddItemResponse" });
     case 6:
@@ -7564,14 +7214,14 @@ function __c0(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
-          item: AddItemBySlugRequestItem,
+          item: __S(0, __c0, 0),
           note: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/collections/{namespace}/{slug}/items", code: 200 }),
         ),
       ).annotate({ identifier: "AddItemBySlugRequest" });
     case 7:
-      return S.Array(AddItemBySlugResponseItemsItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c1(j: number): any {
@@ -7583,22 +7233,22 @@ function __c1(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           lastUpdated: S.String,
-          gating: AddItemBySlugResponseGating,
-          owner: AddItemBySlugResponseOwner,
+          gating: S.Unknown,
+          owner: S.Unknown,
           position: S.Number,
-          theme: AddItemBySlugResponseTheme,
+          theme: S.String,
           private: S.Boolean,
           upvotes: S.Number,
           shareUrl: S.String,
           isUpvotedByUser: S.Boolean,
-          resourceGroup: S.optional(AddItemResponseResourceGroup),
-          items: AddItemBySlugResponseItemsList,
+          resourceGroup: S.optional(__S(2, __c0, 2)),
+          items: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "AddItemBySlugResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gallery: S.optional(BatchUpdateItemsRequestBodyItemDataGalleryList),
+          gallery: S.optional(__S(3, __c0, 3)),
           note: S.optional(S.String),
           position: S.optional(S.Number),
         }),
@@ -7608,22 +7258,22 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: BatchUpdateItemsRequestBodyItemAction,
+          action: S.String,
           _id: S.String,
-          data: BatchUpdateItemsRequestBodyItemData,
+          data: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "BatchUpdateItemsRequestBodyItem",
       });
     case 3:
-      return S.Array(BatchUpdateItemsRequestBodyItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(BatchUpdateItemsRequestBodyList.pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7639,15 +7289,15 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: BatchUpdateItemsBySlugRequestBodyItemAction,
+          action: S.String,
           _id: S.String,
-          data: BatchUpdateItemsBySlugRequestBodyItemData,
+          data: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "BatchUpdateItemsBySlugRequestBodyItem",
       });
     case 7:
-      return S.Array(BatchUpdateItemsBySlugRequestBodyItem);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -7657,7 +7307,7 @@ function __c2(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
-          body: S.optional(BatchUpdateItemsBySlugRequestBodyList.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7671,7 +7321,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: CreateCollectionRequestItemType,
+          type: S.String,
           id: S.String,
         }),
       ).annotate({
@@ -7683,13 +7333,13 @@ function __c2(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           namespace: S.String,
-          item: S.optional(CreateCollectionRequestItem),
+          item: S.optional(__S(17, __c2, 1)),
           private: S.optional(S.Boolean),
           resourceGroupId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/collections", code: 200 })),
       ).annotate({ identifier: "CreateCollectionRequest" });
     case 3:
-      return S.Array(CreateCollectionResponseItemsItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7697,16 +7347,16 @@ function __c2(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           lastUpdated: S.String,
-          gating: CreateCollectionResponseGating,
-          owner: CreateCollectionResponseOwner,
+          gating: S.Unknown,
+          owner: S.Unknown,
           position: S.Number,
-          theme: CreateCollectionResponseTheme,
+          theme: S.String,
           private: S.Boolean,
           upvotes: S.Number,
           shareUrl: S.String,
           isUpvotedByUser: S.Boolean,
-          resourceGroup: S.optional(AddItemResponseResourceGroup),
-          items: CreateCollectionResponseItemsList,
+          resourceGroup: S.optional(__S(2, __c0, 2)),
+          items: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "CreateCollectionResponse" });
     case 5:
@@ -7773,7 +7423,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "GetCollectionRequest" });
     case 2:
-      return S.Array(GetCollectionResponseItemsItem);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7781,16 +7431,16 @@ function __c3(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           lastUpdated: S.String,
-          gating: GetCollectionResponseGating,
-          owner: GetCollectionResponseOwner,
+          gating: S.Unknown,
+          owner: S.Unknown,
           position: S.Number,
-          theme: GetCollectionResponseTheme,
+          theme: S.String,
           private: S.Boolean,
           upvotes: S.Number,
           shareUrl: S.String,
           isUpvotedByUser: S.Boolean,
-          resourceGroup: S.optional(AddItemResponseResourceGroup),
-          items: GetCollectionResponseItemsList,
+          resourceGroup: S.optional(__S(2, __c0, 2)),
+          items: __S(26, __c3, 2),
         }),
       ).annotate({ identifier: "GetCollectionResponse" });
     case 4:
@@ -7803,7 +7453,7 @@ function __c3(j: number): any {
         identifier: "GetCollectionBySlugRequest",
       });
     case 5:
-      return S.Array(GetCollectionBySlugResponseItemsItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7811,16 +7461,16 @@ function __c3(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           lastUpdated: S.String,
-          gating: GetCollectionBySlugResponseGating,
-          owner: GetCollectionBySlugResponseOwner,
+          gating: S.Unknown,
+          owner: S.Unknown,
           position: S.Number,
-          theme: GetCollectionBySlugResponseTheme,
+          theme: S.String,
           private: S.Boolean,
           upvotes: S.Number,
           shareUrl: S.String,
           isUpvotedByUser: S.Boolean,
-          resourceGroup: S.optional(AddItemResponseResourceGroup),
-          items: GetCollectionBySlugResponseItemsList,
+          resourceGroup: S.optional(__S(2, __c0, 2)),
+          items: __S(29, __c3, 5),
         }),
       ).annotate({
         identifier: "GetCollectionBySlugResponse",
@@ -7863,17 +7513,17 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          item: S.optional(GetCollectionsRequestItem.pipe(T.Query())),
-          owner: S.optional(GetCollectionsRequestOwner.pipe(T.Query())),
+          item: S.optional(S.Unknown.pipe(T.Query())),
+          owner: S.optional(S.Unknown.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(GetCollectionsRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           expand: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/collections", code: 200 })),
       ).annotate({ identifier: "GetCollectionsRequest" });
     case 2:
-      return S.suspend(() => GetCollectionsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCollectionsResponse",
       });
     case 3:
@@ -7929,16 +7579,16 @@ function __c4(j: number): any {
           id: S.String.pipe(T.Label()),
           position: S.optional(S.Number),
           private: S.optional(S.Boolean),
-          theme: S.optional(UpdateCollectionRequestTheme),
+          theme: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
-          gating: S.optional(UpdateCollectionRequestGating),
+          gating: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/collections/{namespace}/{slug}-{id}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateCollectionRequest" });
     case 7:
-      return S.Array(UpdateCollectionResponseDataItemsItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c5(j: number): any {
@@ -7950,16 +7600,16 @@ function __c5(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           lastUpdated: S.String,
-          gating: UpdateCollectionResponseDataGating,
-          owner: UpdateCollectionResponseDataOwner,
+          gating: S.Unknown,
+          owner: S.Unknown,
           position: S.Number,
-          theme: UpdateCollectionResponseDataTheme,
+          theme: S.String,
           private: S.Boolean,
           upvotes: S.Number,
           shareUrl: S.String,
           isUpvotedByUser: S.Boolean,
-          resourceGroup: S.optional(AddItemResponseResourceGroup),
-          items: UpdateCollectionResponseDataItemsList,
+          resourceGroup: S.optional(__S(2, __c0, 2)),
+          items: __S(39, __c4, 7),
         }),
       ).annotate({
         identifier: "UpdateCollectionResponseData",
@@ -7967,7 +7617,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: UpdateCollectionResponseData,
+          data: __S(40, __c5, 0),
         }),
       ).annotate({ identifier: "UpdateCollectionResponse" });
     case 2:
@@ -7977,16 +7627,16 @@ function __c5(j: number): any {
           slug: S.String.pipe(T.Label()),
           position: S.optional(S.Number),
           private: S.optional(S.Boolean),
-          theme: S.optional(UpdateCollectionBySlugRequestTheme),
+          theme: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
-          gating: S.optional(UpdateCollectionBySlugRequestGating),
+          gating: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/collections/{namespace}/{slug}", code: 200 })),
       ).annotate({
         identifier: "UpdateCollectionBySlugRequest",
       });
     case 3:
-      return S.Array(UpdateCollectionBySlugResponseDataItemsItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7994,16 +7644,16 @@ function __c5(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           lastUpdated: S.String,
-          gating: UpdateCollectionBySlugResponseDataGating,
-          owner: UpdateCollectionBySlugResponseDataOwner,
+          gating: S.Unknown,
+          owner: S.Unknown,
           position: S.Number,
-          theme: UpdateCollectionBySlugResponseDataTheme,
+          theme: S.String,
           private: S.Boolean,
           upvotes: S.Number,
           shareUrl: S.String,
           isUpvotedByUser: S.Boolean,
-          resourceGroup: S.optional(AddItemResponseResourceGroup),
-          items: UpdateCollectionBySlugResponseDataItemsList,
+          resourceGroup: S.optional(__S(2, __c0, 2)),
+          items: __S(43, __c5, 3),
         }),
       ).annotate({
         identifier: "UpdateCollectionBySlugResponseData",
@@ -8011,7 +7661,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: UpdateCollectionBySlugResponseData,
+          data: __S(44, __c5, 4),
         }),
       ).annotate({
         identifier: "UpdateCollectionBySlugResponse",
@@ -8023,7 +7673,7 @@ function __c5(j: number): any {
           slug: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label()),
-          gallery: S.optional(UpdateItemRequestGalleryList),
+          gallery: S.optional(__S(3, __c0, 3)),
           note: S.optional(S.String),
           position: S.optional(S.Number),
         }).pipe(
@@ -8039,7 +7689,7 @@ function __c5(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
-          gallery: S.optional(UpdateItemBySlugRequestGalleryList),
+          gallery: S.optional(__S(3, __c0, 3)),
           note: S.optional(S.String),
           position: S.optional(S.Number),
         }).pipe(
@@ -8051,4 +7701,9 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "UpdateItemBySlugRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

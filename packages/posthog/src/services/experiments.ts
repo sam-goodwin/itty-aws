@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -38,11 +40,6 @@ export class NotFound
 
 /** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
 export type ExperimentFlagRolloutGroupPropertiesList = Array<unknown>;
-const ExperimentFlagRolloutGroupPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ExperimentFlagRolloutGroupPropertiesList>;
-
 /** A single release-condition group carrying only the overall rollout percentage, the one groups entry the experiment input applies. */
 export interface ExperimentFlagRolloutGroup {
   /** Percentage of users who enter the experiment (0-100). */
@@ -50,18 +47,8 @@ export interface ExperimentFlagRolloutGroup {
   /** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
   properties?: ExperimentFlagRolloutGroupPropertiesList;
 }
-const ExperimentFlagRolloutGroup = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ExperimentFlagRolloutGroup>;
-
 /** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
 export type ExperimentFeatureFlagFiltersGroupsList = Array<ExperimentFlagRolloutGroup>;
-const ExperimentFeatureFlagFiltersGroupsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ExperimentFeatureFlagFiltersGroupsList>;
-
 /** A single multivariate variant. Extra per-variant keys are dropped. */
 export interface ExperimentFlagVariant {
   /** Unique variant key. The baseline defaults to the variant keyed 'control' when present, else the first variant. */
@@ -71,35 +58,15 @@ export interface ExperimentFlagVariant {
   /** Variant rollout percentage (0-100). Across variants these must sum to 100. */
   rollout_percentage: number;
 }
-const ExperimentFlagVariant = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ExperimentFlagVariant>;
-
 /** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
 export type ExperimentFlagMultivariateVariantsList = Array<ExperimentFlagVariant>;
-const ExperimentFlagMultivariateVariantsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ExperimentFlagMultivariateVariantsList>;
-
 /** Multivariate config for the experiment's feature flag. */
 export interface ExperimentFlagMultivariate {
   /** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
   variants: ExperimentFlagMultivariateVariantsList;
 }
-const ExperimentFlagMultivariate = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ExperimentFlagMultivariate>;
-
 /** Optional payload values keyed by variant key. */
 export type ExperimentFeatureFlagFiltersPayloadsMap = { [key: string]: string | undefined };
-const ExperimentFeatureFlagFiltersPayloadsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ExperimentFeatureFlagFiltersPayloadsMap>;
-
 /** Feature-flag filters accepted by the experiment endpoints: the flag's own filters shape, minus the keys experiments don't apply. */
 export interface ExperimentFeatureFlagFilters {
   /** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
@@ -111,11 +78,6 @@ export interface ExperimentFeatureFlagFilters {
   /** Optional payload values keyed by variant key. */
   payloads?: ExperimentFeatureFlagFiltersPayloadsMap;
 }
-const ExperimentFeatureFlagFilters = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ExperimentFeatureFlagFilters>;
-
 /** Flag config for experiment create/update, sent through the linked feature flag's own shape. Validated both as the OpenAPI request field (via ``ExperimentWriteSerializer``) and at runtime (``ExperimentSerializer._normalize_feature_flag_input`` runs it against the raw feature_flag object). Echoed read-only flag objects (carrying a non-null id) are handled upstream and never reach this validation. */
 export interface ExperimentFeatureFlagInput {
   /** Flag config to apply: `multivariate.variants` (2 to 20 variants; the baseline defaults to the variant keyed 'control' when present, else the first variant), `groups` (a single group with `rollout_percentage` only; release conditions are not supported here, edit the feature flag directly), `aggregation_group_type_index`, and `payloads` (JSON-encoded strings keyed by variant key). On update, config this object omits is preserved from the linked flag's current state. */
@@ -123,29 +85,15 @@ export interface ExperimentFeatureFlagInput {
   /** Whether the flag persists variant assignment across authentication steps. */
   ensure_experience_continuity?: boolean | null;
 }
-const ExperimentFeatureFlagInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ExperimentFeatureFlagInput>;
-
 export type ExperimentParametersVariantNotesMap = { [key: string]: string | undefined };
-const ExperimentParametersVariantNotesMap =
-  ExperimentFeatureFlagFiltersPayloadsMap as any as S.Schema<ExperimentParametersVariantNotesMap>;
-
 export interface ExperimentParameters {
   /** Minimum detectable effect as a percentage. Lower values need more users but catch smaller changes. Suggest 20-30% for most experiments. */
   minimum_detectable_effect?: number | null;
   /** Free-text notes per variant, keyed by variant key. Use to document what each variant does or its reroute URL. */
   variant_notes?: ExperimentParametersVariantNotesMap | null;
 }
-const ExperimentParameters = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ExperimentParameters>;
-
 export type ConversionRateInputType = "manual" | "automatic";
-const ConversionRateInputType = S.String;
-
 export type ManualMetricType = "funnel" | "mean_count" | "mean_sum_or_avg";
-const ManualMetricType = S.String;
-
 export interface ExperimentExposureEstimateConfig {
   /** 'manual' when the baseline value and exposure rate were entered by hand, 'automatic' when derived from live experiment data. */
   conversionRateInputType: ConversionRateInputType | (string & {});
@@ -156,11 +104,6 @@ export interface ExperimentExposureEstimateConfig {
   /** Metric type the manual baseline value refers to. Only used in manual mode. */
   manualMetricType?: ManualMetricType | (string & {}) | null;
 }
-const ExperimentExposureEstimateConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ExperimentExposureEstimateConfig>;
-
 export interface ExperimentRunningTimeCalculation {
   /** How the exposure estimate is configured: manual user-entered values or automatic from live experiment data. */
   exposure_estimate_config?: ExperimentExposureEstimateConfig | null;
@@ -171,30 +114,13 @@ export interface ExperimentRunningTimeCalculation {
   /** Recommended number of exposed users needed for statistical significance. */
   recommended_sample_size?: number | null;
 }
-const ExperimentRunningTimeCalculation = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ExperimentRunningTimeCalculation>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type CreateExperimentRequestExcludedVariantsList = Array<string>;
-const CreateExperimentRequestExcludedVariantsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateExperimentRequestExcludedVariantsList>;
-
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type CreateExperimentRequestSavedMetricsIdsList = Array<unknown>;
-const CreateExperimentRequestSavedMetricsIdsList =
-  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<CreateExperimentRequestSavedMetricsIdsList>;
-
 /** * `web` - web * `product` - product */
 export type ExperimentTypeEnum = "web" | "product";
-const ExperimentTypeEnum = S.String;
-
 export type Kind2 = "ExperimentEventExposureConfig" | "ActionsNode";
-const Kind2 = S.String;
-
 export type PropertyOperator =
   | "exact"
   | "is_not"
@@ -234,8 +160,6 @@ export type PropertyOperator =
   | "semver_wildcard"
   | "icontains_multi"
   | "not_icontains_multi";
-const PropertyOperator = S.String;
-
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
 export type EventPropertyFilterValueCase0List = Array<EventPropertyFilterValueCase0Item>;
 export type EventPropertyFilterValue =
@@ -243,8 +167,6 @@ export type EventPropertyFilterValue =
   | string
   | number
   | boolean;
-const EventPropertyFilterValue = S.Unknown as any as S.Schema<EventPropertyFilterValue>;
-
 export interface EventPropertyFilter {
   key?: string;
   label?: string | null;
@@ -253,8 +175,6 @@ export interface EventPropertyFilter {
   type?: string;
   value?: EventPropertyFilterValue | null;
 }
-const EventPropertyFilter = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EventPropertyFilter>;
-
 export type PersonPropertyFilterValueCase0Item = string | number | boolean;
 export type PersonPropertyFilterValueCase0List = Array<PersonPropertyFilterValueCase0Item>;
 export type PersonPropertyFilterValue =
@@ -614,17 +534,9 @@ export type ExperimentApiExposureConfigPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-const ExperimentApiExposureConfigPropertiesItem =
-  S.Unknown as any as S.Schema<ExperimentApiExposureConfigPropertiesItem>;
-
 /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
 export type ExperimentApiExposureConfigPropertiesList =
   Array<ExperimentApiExposureConfigPropertiesItem>;
-const ExperimentApiExposureConfigPropertiesList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ExperimentApiExposureConfigPropertiesList>;
-
 export interface ExperimentApiExposureConfig {
   /** Custom exposure event name. Required when kind is 'ExperimentEventExposureConfig'. */
   event?: string | null;
@@ -635,14 +547,7 @@ export interface ExperimentApiExposureConfig {
   /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
   properties?: ExperimentApiExposureConfigPropertiesList;
 }
-const ExperimentApiExposureConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ExperimentApiExposureConfig>;
-
 export type MultipleVariantHandling = "exclude" | "first_seen";
-const MultipleVariantHandling = S.String;
-
 export interface ExperimentApiExposureCriteria {
   /** Additional event (or action) an entity must emit at/after their first default exposure event before they count as exposed; exposure time becomes this event's timestamp. Only valid with the default exposure event, not a custom `exposure_config`. */
   activation_config?: ExperimentApiExposureConfig | null;
@@ -651,14 +556,7 @@ export interface ExperimentApiExposureCriteria {
   /** How to handle entities exposed to multiple variants. 'exclude' (default) drops them from the analysis; 'first_seen' assigns them to the variant from their earliest exposure. */
   multiple_variant_handling?: MultipleVariantHandling | (string & {}) | null;
 }
-const ExperimentApiExposureCriteria = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ExperimentApiExposureCriteria>;
-
 export type Kind1 = "EventsNode" | "ActionsNode";
-const Kind1 = S.String;
-
 export type ExperimentMetricMathType =
   | "total"
   | "sum"
@@ -669,17 +567,8 @@ export type ExperimentMetricMathType =
   | "dau"
   | "unique_group"
   | "hogql";
-const ExperimentMetricMathType = S.String;
-
 export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
-const MathGroupTypeIndex = S.Number;
-
 export type ExperimentApiEventSourcePropertiesList = Array<EventPropertyFilter>;
-const ExperimentApiEventSourcePropertiesList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ExperimentApiEventSourcePropertiesList>;
-
 export interface ExperimentApiEventSource {
   /** Event name, e.g. '$pageview'. Required for EventsNode. */
   event?: string | null;
@@ -697,11 +586,6 @@ export interface ExperimentApiEventSource {
   /** Event property filters to narrow which events are counted. */
   properties?: ExperimentApiEventSourcePropertiesList | null;
 }
-const ExperimentApiEventSource = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ExperimentApiEventSource>;
-
 export type FunnelConversionWindowTimeUnit =
   | "second"
   | "minute"
@@ -709,8 +593,6 @@ export type FunnelConversionWindowTimeUnit =
   | "day"
   | "week"
   | "month";
-const FunnelConversionWindowTimeUnit = S.String;
-
 export interface ExperimentMetricOutlierHandling {
   ignore_zeros?: boolean | null;
   /** Winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile). */
@@ -718,33 +600,12 @@ export interface ExperimentMetricOutlierHandling {
   /** Winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). */
   upper_bound_percentile?: number | null;
 }
-const ExperimentMetricOutlierHandling = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ExperimentMetricOutlierHandling>;
-
 export type StepOrderValue = "strict" | "unordered" | "ordered";
-const StepOrderValue = S.String;
-
 export type ExperimentMetricGoal = "increase" | "decrease";
-const ExperimentMetricGoal = S.String;
-
 export type ExperimentMetricType = "funnel" | "mean" | "ratio" | "retention";
-const ExperimentMetricType = S.String;
-
 export type ExperimentApiMetricSeriesList = Array<ExperimentApiEventSource>;
-const ExperimentApiMetricSeriesList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ExperimentApiMetricSeriesList>;
-
 export type Kind3 = "EventsNode" | "ActionsNode" | "ExperimentExposureNode";
-const Kind3 = S.String;
-
 export type ExperimentApiRetentionStartPropertiesList = Array<EventPropertyFilter>;
-const ExperimentApiRetentionStartPropertiesList =
-  ExperimentApiEventSourcePropertiesList as any as S.Schema<ExperimentApiRetentionStartPropertiesList>;
-
 export interface ExperimentApiRetentionStart {
   /** Event name, e.g. '$pageview'. Required for EventsNode. */
   event?: string | null;
@@ -763,14 +624,7 @@ export interface ExperimentApiRetentionStart {
   /** Event property filters to narrow which events are counted. */
   properties?: ExperimentApiRetentionStartPropertiesList | null;
 }
-const ExperimentApiRetentionStart = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ExperimentApiRetentionStart>;
-
 export type StartHandling = "first_seen" | "last_seen";
-const StartHandling = S.String;
-
 export interface ExperimentApiMetric {
   /** For retention metrics: completion event. */
   completion_event?: ExperimentApiEventSource | null;
@@ -815,41 +669,18 @@ export interface ExperimentApiMetric {
   /** Unique identifier. Auto-generated if omitted. */
   uuid?: string | null;
 }
-const ExperimentApiMetric = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ExperimentApiMetric>;
-
 /** List wrapper for OpenAPI schema generation -- the field stores an array of metrics. */
 export type ExperimentApiMetricsList = Array<ExperimentApiMetric>;
-const ExperimentApiMetricsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ExperimentApiMetricsList>;
-
 /** * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
 export type ConclusionEnum = "won" | "lost" | "inconclusive" | "stopped_early" | "invalid";
-const ConclusionEnum = S.String;
-
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-const CreateExperimentRequestPrimaryMetricsOrderedUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestPrimaryMetricsOrderedUuidsList>;
-
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-const CreateExperimentRequestSecondaryMetricsOrderedUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestSecondaryMetricsOrderedUuidsList>;
-
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
-const CreateExperimentRequestOriginalExperimentMap = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateExperimentRequestOriginalExperimentMap>;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type CreateExperimentRequestTagsList = Array<string>;
-const CreateExperimentRequestTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestTagsList>;
-
 export interface CreateExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -911,34 +742,17 @@ export interface CreateExperimentRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: CreateExperimentRequestTagsList;
 }
-const CreateExperimentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateExperimentRequest>;
-
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-const MinimalFeatureFlagFiltersMap =
-  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
-
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export type BlankEnum = "";
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-const MinimalFeatureFlagEvaluationRuntime =
-  S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
-
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-const MinimalFeatureFlagBucketingIdentifier =
-  S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
-
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-const MinimalFeatureFlagEvaluationContextsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
-
 export interface MinimalFeatureFlag {
   id?: number;
   team_id?: number;
@@ -955,8 +769,6 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
-const MinimalFeatureFlag = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MinimalFeatureFlag>;
-
 /** * `cohort` - cohort * `person` - person * `group` - group */
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
@@ -1110,16 +922,8 @@ export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyMultiContainsSchema
   | FeatureFlagFilterPropertyCohortInSchema
   | FeatureFlagFilterPropertyFlagEvaluatesSchema;
-const FeatureFlagFilterPropertySchema =
-  S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
-
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList = Array<FeatureFlagFilterPropertySchema>;
-const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<FeatureFlagConditionGroupSchemaPropertiesList>;
-
 export interface FeatureFlagConditionGroupSchema {
   /** Property conditions for this release condition group. */
   properties?: FeatureFlagConditionGroupSchemaPropertiesList;
@@ -1130,22 +934,9 @@ export interface FeatureFlagConditionGroupSchema {
   /** Group type index for this condition set. None means person-level aggregation. */
   aggregation_group_type_index?: number | null;
 }
-const FeatureFlagConditionGroupSchema = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<FeatureFlagConditionGroupSchema>;
-
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type ExperimentHoldoutFiltersList = Array<FeatureFlagConditionGroupSchema>;
-const ExperimentHoldoutFiltersList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ExperimentHoldoutFiltersList>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap =
-  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -1158,8 +949,6 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -1171,8 +960,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<UserBasic>;
-
 /** A holdout group -- a stable slice of users excluded from experiment exposure. */
 export interface ExperimentHoldout {
   id?: number;
@@ -1188,13 +975,8 @@ export interface ExperimentHoldout {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-const ExperimentHoldout = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ExperimentHoldout>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentOutputExcludedVariantsList = Array<string>;
-const ExperimentOutputExcludedVariantsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputExcludedVariantsList>;
-
 export interface ExperimentToSavedMetric {
   id?: number;
   experiment?: number;
@@ -1204,40 +986,16 @@ export interface ExperimentToSavedMetric {
   query?: unknown;
   name?: string;
 }
-const ExperimentToSavedMetric = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ExperimentToSavedMetric>;
-
 export type ExperimentOutputSavedMetricsList = Array<ExperimentToSavedMetric>;
-const ExperimentOutputSavedMetricsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ExperimentOutputSavedMetricsList>;
-
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentOutputSavedMetricsIdsList = Array<unknown>;
-const ExperimentOutputSavedMetricsIdsList =
-  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
-
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentOutputPrimaryMetricsOrderedUuidsList = Array<string>;
-const ExperimentOutputPrimaryMetricsOrderedUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputPrimaryMetricsOrderedUuidsList>;
-
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentOutputSecondaryMetricsOrderedUuidsList = Array<string>;
-const ExperimentOutputSecondaryMetricsOrderedUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputSecondaryMetricsOrderedUuidsList>;
-
 export type ExperimentStatusEnum = "draft" | "running" | "paused" | "exposure_frozen" | "stopped";
-const ExperimentStatusEnum = S.String;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentOutputTagsList = Array<string>;
-const ExperimentOutputTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputTagsList>;
-
 /** Full experiment representation for the detail, create, and update endpoints. Extends the shared read-side fields in ``ExperimentBaseSerializer`` with the metric definitions (``metrics``/``metrics_secondary``/``saved_metrics``) and the write-side fields, and refreshes stale action names while serializing. The list endpoint uses the leaner ``ExperimentBasicSerializer`` instead. */
 export interface ExperimentOutput {
   id?: number;
@@ -1309,19 +1067,10 @@ export interface ExperimentOutput {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentOutputTagsList;
 }
-const ExperimentOutput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ExperimentOutput>;
-
 /** * `funnel` - funnel * `mean_count` - mean_count * `mean_sum_or_avg` - mean_sum_or_avg * `ratio` - ratio * `retention` - retention */
 export type MetricTypeEnum = "funnel" | "mean_count" | "mean_sum_or_avg" | "ratio" | "retention";
-const MetricTypeEnum = S.String;
-
 /** Per-step counts for funnel metrics; the last entry is the final-step count. */
 export type RunningTimeBaselineStatsStepCountsList = Array<number>;
-const RunningTimeBaselineStatsStepCountsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<RunningTimeBaselineStatsStepCountsList>;
-
 /** Raw control-group statistics the calculator uses to derive a baseline value and variance. Supply this when you want the server to compute the baseline value and (for ratio/retention) the delta-method variance, instead of passing `baseline_value`/`variance` directly. */
 export interface RunningTimeBaselineStats {
   /** Number of control-group samples (users/units) observed. */
@@ -1339,11 +1088,6 @@ export interface RunningTimeBaselineStats {
   /** Per-step counts for funnel metrics; the last entry is the final-step count. */
   step_counts?: RunningTimeBaselineStatsStepCountsList;
 }
-const RunningTimeBaselineStats = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<RunningTimeBaselineStats>;
-
 export interface CreateExperimentsCalculateRunningTimeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1362,11 +1106,6 @@ export interface CreateExperimentsCalculateRunningTimeRequest {
   /** Raw control-group statistics. When provided, the server derives baseline_value and variance. */
   baseline_stats?: RunningTimeBaselineStats | null;
 }
-const CreateExperimentsCalculateRunningTimeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateExperimentsCalculateRunningTimeRequest>;
-
 /** Estimated sample size and running time for the given inputs. */
 export interface RunningTimeCalculationResult {
   /** Baseline metric value used in the calculation (echoed or derived from stats). */
@@ -1378,11 +1117,6 @@ export interface RunningTimeCalculationResult {
   /** Estimated days to reach the recommended sample size. Null when exposure_rate_per_day is omitted. */
   recommended_running_time_days: number | null;
 }
-const RunningTimeCalculationResult = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<RunningTimeCalculationResult>;
-
 export interface CreateExperimentsEndRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1399,33 +1133,18 @@ export interface CreateExperimentsEndRequest {
   /** When true, also save `repository` as this environment's default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team's GitHub installation. Requires project admin access (403 otherwise). */
   set_repository_as_team_default?: boolean;
 }
-const CreateExperimentsEndRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateExperimentsEndRequest>;
-
 export interface CreateExperimentsFreezeExposureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const CreateExperimentsFreezeExposureRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateExperimentsFreezeExposureRequest>;
-
 export interface CreateExperimentsLaunchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const CreateExperimentsLaunchRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateExperimentsLaunchRequest>;
-
 /** * `manual` - Manual * `manual_retry` - Manual Retry * `cold_run` - Cold Run * `heal_latest_run` - Heal Latest Run * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change */
 export type ExperimentMetricsRecalculationRequestTriggerEnum =
   | "manual"
@@ -1434,8 +1153,6 @@ export type ExperimentMetricsRecalculationRequestTriggerEnum =
   | "heal_latest_run"
   | "experiment_config_change"
   | "metric_config_change";
-const ExperimentMetricsRecalculationRequestTriggerEnum = S.String;
-
 export interface CreateExperimentsMetricsRecalculationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1444,15 +1161,8 @@ export interface CreateExperimentsMetricsRecalculationRequest {
   /** What triggered this recalculation (manual is the default for user-initiated runs). Only client triggers are accepted; agent_mcp, timeseries_sync and scheduled are set by the server. * `manual` - Manual * `manual_retry` - Manual Retry * `cold_run` - Cold Run * `heal_latest_run` - Heal Latest Run * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change */
   trigger?: ExperimentMetricsRecalculationRequestTriggerEnum | (string & {});
 }
-const CreateExperimentsMetricsRecalculationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateExperimentsMetricsRecalculationRequest>;
-
 /** * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
 export type MetricsRecalculationStatusEnum = "pending" | "in_progress" | "completed" | "failed";
-const MetricsRecalculationStatusEnum = S.String;
-
 /** POST response: the job just queued, or the one already active. It carries no results or live progress yet. */
 export interface ExperimentMetricsRecalculationJob {
   /** Unique identifier for this recalculation job */
@@ -1480,62 +1190,28 @@ export interface ExperimentMetricsRecalculationJob {
   /** True if returning an existing job rather than a newly created one */
   is_existing: boolean;
 }
-const ExperimentMetricsRecalculationJob = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ExperimentMetricsRecalculationJob>;
-
 export interface CreateExperimentsPauseRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const CreateExperimentsPauseRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateExperimentsPauseRequest>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList = Array<string>;
-const CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList>;
-
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList = Array<unknown>;
-const CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList>;
-
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList =
   Array<string>;
-const CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList>;
-
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList =
   Array<string>;
-const CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList>;
-
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-const CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap>;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type CreateExperimentsRecalculateTimeseriesRequestTagsList = Array<string>;
-const CreateExperimentsRecalculateTimeseriesRequestTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestTagsList>;
-
 export interface CreateExperimentsRecalculateTimeseriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1597,26 +1273,11 @@ export interface CreateExperimentsRecalculateTimeseriesRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: CreateExperimentsRecalculateTimeseriesRequestTagsList;
 }
-const CreateExperimentsRecalculateTimeseriesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequest>;
-
 export interface CreateExperimentsRecalculateTimeseriesResponse {}
-const CreateExperimentsRecalculateTimeseriesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateExperimentsRecalculateTimeseriesResponse>;
-
 /** * `fired_any` - fired_any * `no_metric_activity` - no_metric_activity * `funnel_dropoff` - funnel_dropoff */
 export type ExperimentSessionBucketEnum = "fired_any" | "no_metric_activity" | "funnel_dropoff";
-const ExperimentSessionBucketEnum = S.String;
-
 /** Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings. */
 export type CreateExperimentsSessionBucketRequestMetricUuidsList = Array<string>;
-const CreateExperimentsSessionBucketRequestMetricUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsSessionBucketRequestMetricUuidsList>;
-
 export interface CreateExperimentsSessionBucketRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1631,16 +1292,8 @@ export interface CreateExperimentsSessionBucketRequest {
   /** Maximum session IDs to return, at most 100. The most recently active matching sessions win. */
   limit?: number;
 }
-const CreateExperimentsSessionBucketRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateExperimentsSessionBucketRequest>;
-
 /** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
 export type ExperimentSessionBucketResponseSessionIdsList = Array<string>;
-const ExperimentSessionBucketResponseSessionIdsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionBucketResponseSessionIdsList>;
-
 /** One metric the bucket was computed over. */
 export interface ExperimentSessionBucketMetric {
   /** UUID of the experiment metric. */
@@ -1648,19 +1301,9 @@ export interface ExperimentSessionBucketMetric {
   /** Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed. */
   metric_name: string;
 }
-const ExperimentSessionBucketMetric = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ExperimentSessionBucketMetric>;
-
 /** The metrics the bucket was actually computed over. Load-bearing for 'no_metric_activity': 'fired nothing' only means something next to the list of metrics it was evaluated against. */
 export type ExperimentSessionBucketResponseConsideredMetricsList =
   Array<ExperimentSessionBucketMetric>;
-const ExperimentSessionBucketResponseConsideredMetricsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ExperimentSessionBucketResponseConsideredMetricsList>;
-
 /** One requested metric the bucket could not be computed over. */
 export interface ExperimentSessionBucketExcludedMetric {
   /** UUID of the experiment metric. */
@@ -1670,19 +1313,9 @@ export interface ExperimentSessionBucketExcludedMetric {
   /** Why the metric can't be matched to recordings: a data-warehouse-only source, a retention window, or events only ever captured server-side. */
   reason: string;
 }
-const ExperimentSessionBucketExcludedMetric = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ExperimentSessionBucketExcludedMetric>;
-
 /** Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result. */
 export type ExperimentSessionBucketResponseExcludedMetricsList =
   Array<ExperimentSessionBucketExcludedMetric>;
-const ExperimentSessionBucketResponseExcludedMetricsList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ExperimentSessionBucketResponseExcludedMetricsList>;
-
 /** Session recordings of an experiment matching a bucket. */
 export interface ExperimentSessionBucketResponse {
   /** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
@@ -1702,37 +1335,18 @@ export interface ExperimentSessionBucketResponse {
   /** True when the exposed population was matched on the stamped $feature/<flag key> event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean 'the flag was active in this session', not 'the exposure moment was captured'. The variant comes from the flag's value on each event, so a returning user can appear under a variant they were re-bucketed into later. */
   used_exposure_fallback: boolean;
 }
-const ExperimentSessionBucketResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ExperimentSessionBucketResponse>;
-
 /** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
 export type CreateExperimentsSessionContextRequestSessionIdsList = Array<string>;
-const CreateExperimentsSessionContextRequestSessionIdsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsSessionContextRequestSessionIdsList>;
-
 export interface CreateExperimentsSessionContextRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
   session_ids: CreateExperimentsSessionContextRequestSessionIdsList;
 }
-const CreateExperimentsSessionContextRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateExperimentsSessionContextRequest>;
-
 /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants -- a signal of multi-exposure bias. */
 export type ExperimentSessionContextItemVariantsSeenList = Array<string>;
-const ExperimentSessionContextItemVariantsSeenList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
-
 /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricHitTimestampsList = Array<string>;
-const ExperimentSessionMetricHitTimestampsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionMetricHitTimestampsList>;
-
 /** * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
 export type SourceRoleEnum =
   | "source"
@@ -1741,13 +1355,8 @@ export type SourceRoleEnum =
   | "denominator"
   | "retention_start"
   | "retention_completion";
-const SourceRoleEnum = S.String;
-
 /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricSourceHitTimestampsList = Array<string>;
-const ExperimentSessionMetricSourceHitTimestampsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionMetricSourceHitTimestampsList>;
-
 /** One event/action source of a metric with at least one matching event in a session recording. */
 export interface ExperimentSessionMetricSourceHit {
   /** What this source means to its metric: 'source' (a mean metric's single event), 'step' (a funnel step, numbered by source_index), 'numerator'/'denominator' (a ratio metric's two sides), or 'retention_start'/'retention_completion' (a retention metric's start event and return visit). A hit on one source is not a hit on the metric as the analysis counts it. * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
@@ -1765,18 +1374,8 @@ export interface ExperimentSessionMetricSourceHit {
   /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
   timestamps: ExperimentSessionMetricSourceHitTimestampsList;
 }
-const ExperimentSessionMetricSourceHit = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ExperimentSessionMetricSourceHit>;
-
 /** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
 export type ExperimentSessionMetricHitSourcesList = Array<ExperimentSessionMetricSourceHit>;
-const ExperimentSessionMetricHitSourcesList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ExperimentSessionMetricHitSourcesList>;
-
 /** One experiment metric with at least one matching event in a session recording. */
 export interface ExperimentSessionMetricHit {
   /** UUID of the experiment metric (inline primary/secondary or saved) whose events fired. */
@@ -1792,18 +1391,8 @@ export interface ExperimentSessionMetricHit {
   /** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
   sources: ExperimentSessionMetricHitSourcesList;
 }
-const ExperimentSessionMetricHit = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ExperimentSessionMetricHit>;
-
 /** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
 export type ExperimentSessionContextItemMetricsInSessionList = Array<ExperimentSessionMetricHit>;
-const ExperimentSessionContextItemMetricsInSessionList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ExperimentSessionContextItemMetricsInSessionList>;
-
 /** One experiment whose feature flag a session recording saw. */
 export interface ExperimentSessionContextItem {
   /** ID of the experiment whose feature flag the session saw. */
@@ -1827,18 +1416,8 @@ export interface ExperimentSessionContextItem {
   /** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
   metrics_in_session: ExperimentSessionContextItemMetricsInSessionList;
 }
-const ExperimentSessionContextItem = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ExperimentSessionContextItem>;
-
 /** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
 export type ExperimentSessionContextResponseResultsList = Array<ExperimentSessionContextItem>;
-const ExperimentSessionContextResponseResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ExperimentSessionContextResponseResultsList>;
-
 /** Experiment/variant context for a session recording. */
 export interface ExperimentSessionContextResponse {
   /** ID of the session recording the context was resolved for. */
@@ -1846,52 +1425,25 @@ export interface ExperimentSessionContextResponse {
   /** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
   results: ExperimentSessionContextResponseResultsList;
 }
-const ExperimentSessionContextResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ExperimentSessionContextResponse>;
-
 /** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
 export type ExperimentSessionContextsResponseResultsList = Array<ExperimentSessionContextResponse>;
-const ExperimentSessionContextsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ExperimentSessionContextsResponseResultsList>;
-
 /** Experiment/variant context for a batch of session recordings. */
 export interface ExperimentSessionContextsResponse {
   /** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
   results: ExperimentSessionContextsResponseResultsList;
 }
-const ExperimentSessionContextsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ExperimentSessionContextsResponse>;
-
 export interface CreateExperimentsSessionEventDeltasRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const CreateExperimentsSessionEventDeltasRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateExperimentsSessionEventDeltasRequest>;
-
 /** * `behavior` - behavior * `friction` - friction * `variant_only` - variant_only * `metric` - metric */
 export type ExperimentWatchCardKindEnum = "behavior" | "friction" | "variant_only" | "metric";
-const ExperimentWatchCardKindEnum = S.String;
-
 /** * `only` - only * `far_more` - far_more * `more` - more * `slightly_more` - slightly_more */
 export type ExperimentWatchCardStrengthEnum = "only" | "far_more" | "more" | "slightly_more";
-const ExperimentWatchCardStrengthEnum = S.String;
-
 /** The recordings themselves, most recent first, ready to hand to the recordings list as-is. */
 export type ExperimentWatchCardSessionIdsList = Array<string>;
-const ExperimentWatchCardSessionIdsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentWatchCardSessionIdsList>;
-
 /** One recording a card names first, and the phrase that says why. */
 export interface ExperimentWatchHighlight {
   /** The recording to open. Always one of the card's own session_ids. */
@@ -1899,18 +1451,8 @@ export interface ExperimentWatchHighlight {
   /** Everything this recording carries that earned it the place, ready to render as-is, for example '6 rage clicks, 6 errors' or '1 error, did this 4 times'. Every signal the session shows is listed, so the phrase is the whole picture rather than the single strongest part of it. Friction counts run from the moment the person was exposed to the end of the session, so friction before they met the variant is left out; 'did this N times' counts the card's own event. Not a comparison and not a reason the card exists. */
   reason: string;
 }
-const ExperimentWatchHighlight = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ExperimentWatchHighlight>;
-
 /** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
 export type ExperimentWatchCardHighlightsList = Array<ExperimentWatchHighlight>;
-const ExperimentWatchCardHighlightsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ExperimentWatchCardHighlightsList>;
-
 /** One group of recordings worth opening, and the sentence that justifies it. Deliberately no rate, no ratio and no person count: a precise number next to an event name is an effect size, and the experiment's results publish those for everything it measures, computed over a different window and a different unit. The only number here is how many recordings the card can actually show. */
 export interface ExperimentWatchCard {
   /** What the card is: 'behavior' for an event this variant did clearly more than the other variants together, 'friction' for the same finding on an error or rage signal, 'variant_only' for an event no other variant fired at all, and 'metric' for a shortcut to recordings around one of the experiment's own metric events. A 'variant_only' card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results' answer. * `behavior` - behavior * `friction` - friction * `variant_only` - variant_only * `metric` - metric */
@@ -1930,15 +1472,8 @@ export interface ExperimentWatchCard {
   /** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
   highlights: ExperimentWatchCardHighlightsList;
 }
-const ExperimentWatchCard = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ExperimentWatchCard>;
-
 /** The shelf, strongest comparison first, then the variant's own rendering, then metric shortcuts. Events the variants can't be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Empty also takes the metric shortcuts with it: a shelf of shortcuts and no finding restates what the experiment's results already answer while reading as a finding, so it is withheld. Read empty_reason and say what it reports instead of presenting an empty shelf. Group by kind before presenting: a 'variant_only' card outranks every real difference by construction, and reading the shelf in order would report it as the headline. */
 export type ExperimentSessionEventDeltaResponseCardsList = Array<ExperimentWatchCard>;
-const ExperimentSessionEventDeltaResponseCardsList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ExperimentSessionEventDeltaResponseCardsList>;
-
 /** One variant's compared population. */
 export interface ExperimentWatchVariant {
   /** The variant key. */
@@ -1948,35 +1483,18 @@ export interface ExperimentWatchVariant {
   /** Sessions those people had within 24 hours of being exposed, and before the experiment ended or this request was made, which is more than the comparison reads: it says how much recorded material sits behind the variant. */
   sessions: number;
 }
-const ExperimentWatchVariant = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ExperimentWatchVariant>;
-
 /** Every variant the analysis compares, with its population, in the flag's variant order. A variant the experiment excludes never appears here, because the analysis does not count it either, so read a missing key as excluded rather than as zero people. */
 export type ExperimentSessionEventDeltaResponseVariantsList = Array<ExperimentWatchVariant>;
-const ExperimentSessionEventDeltaResponseVariantsList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ExperimentSessionEventDeltaResponseVariantsList>;
-
 /** * `exclude` - exclude * `first_seen` - first_seen */
 export type ExperimentWatchMultipleVariantHandlingEnum = "exclude" | "first_seen";
-const ExperimentWatchMultipleVariantHandlingEnum = S.String;
-
 /** The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved. */
 export type ExperimentSessionEventDeltaResponseMetricEventsList = Array<string>;
-const ExperimentSessionEventDeltaResponseMetricEventsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionEventDeltaResponseMetricEventsList>;
-
 /** * `too_early` - too_early * `no_separation` - no_separation * `no_recordings` - no_recordings * `no_session_linked_exposures` - no_session_linked_exposures */
 export type ExperimentWatchEmptyReasonEnum =
   | "too_early"
   | "no_separation"
   | "no_recordings"
   | "no_session_linked_exposures";
-const ExperimentWatchEmptyReasonEnum = S.String;
-
 /** The recordings worth watching for this experiment, grouped into cards. Descriptive, never a result: cards say where behavior visibly differed and hand over the recordings, while the experiment's results measure its metrics over the whole run window and state the magnitudes. Nothing here says a variant is winning. */
 export interface ExperimentSessionEventDeltaResponse {
   /** The shelf, strongest comparison first, then the variant's own rendering, then metric shortcuts. Events the variants can't be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Empty also takes the metric shortcuts with it: a shelf of shortcuts and no finding restates what the experiment's results already answer while reading as a finding, so it is withheld. Read empty_reason and say what it reports instead of presenting an empty shelf. Group by kind before presenting: a 'variant_only' card outranks every real difference by construction, and reading the shelf in order would report it as the headline. */
@@ -2012,22 +1530,9 @@ export interface ExperimentSessionEventDeltaResponse {
   /** Why cards is empty, and null whenever cards is not empty. Report which of the four happened rather than reporting an empty shelf, because they ask different things of the reader. 'too_early': fewer than two variants have min_variant_persons exposed people, so nothing was compared yet. The answer can still change unless sessions_truncated is true, in which case only the people exposed between date_from and date_to were compared and more time helps only if more people are exposed within a stretch that long; a rollout split that changed during the run lands here too, and the experiment's exposure chart is where that shows. 'no_separation': the variants were compared and no event told them apart, which is a result rather than a failure. 'no_recordings': events did tell the variants apart, but no recording behind them can be opened, so the project's session replay sampling and retention are what decide whether this surface can ever show anything. 'no_session_linked_exposures': the people exposed between date_from and date_to had no session we can see since being exposed, looking up to 24 hours after each exposure, so there was nothing to compare. Two things reach this state, and they ask for different answers: no browser or mobile SDK is capturing events, because sessions exist nowhere else, or the exposed people have not come back. While the experiment runs the read stops at the time of the request, so people exposed less than a day ago are judged on less than a day and can still return. Check which one before telling anyone to check back, because more exposures captured the same way yield more of the same. Never fill an empty shelf with the experiment's metrics: shortcut cards to those metrics' events are withheld here for exactly that reason. * `too_early` - too_early * `no_separation` - no_separation * `no_recordings` - no_recordings * `no_session_linked_exposures` - no_session_linked_exposures */
   empty_reason: ExperimentWatchEmptyReasonEnum | null;
 }
-const ExperimentSessionEventDeltaResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ExperimentSessionEventDeltaResponse>;
-
 export type ExperimentSetupPropertyFilterListItem = EventPropertyFilter | PersonPropertyFilter;
-const ExperimentSetupPropertyFilterListItem =
-  S.Unknown as any as S.Schema<ExperimentSetupPropertyFilterListItem>;
-
 /** Event or person property filters that narrow which events are counted. */
 export type ExperimentSetupPropertyFilterList = Array<ExperimentSetupPropertyFilterListItem>;
-const ExperimentSetupPropertyFilterList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ExperimentSetupPropertyFilterList>;
-
 export interface CreateExperimentsSetupContextRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2046,15 +1551,8 @@ export interface CreateExperimentsSetupContextRequest {
   /** How many shared metrics to return, most reused first, 1 to 25. */
   shared_metrics_limit?: number;
 }
-const CreateExperimentsSetupContextRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateExperimentsSetupContextRequest>;
-
 /** * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
 export type SetupContextSectionStatusEnum = "ok" | "skipped" | "timed_out" | "error";
-const SetupContextSectionStatusEnum = S.String;
-
 export interface ExperimentSetupTeamDefaults {
   /** Default statistical method for new experiments: 'bayesian' or 'frequentist'. */
   stats_method: string | null;
@@ -2083,26 +1581,14 @@ export interface ExperimentSetupTeamDefaults {
   /** The exposure event a new experiment launched now counts by default: '$experiment_exposure' or '$feature_flag_called'. */
   default_exposure_event: string;
 }
-const ExperimentSetupTeamDefaults = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ExperimentSetupTeamDefaults>;
-
 export interface ExperimentSetupTeamDefaultsSection {
   /** 'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid. * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
   status: SetupContextSectionStatusEnum;
   /** The team's experiment defaults. */
   data: ExperimentSetupTeamDefaults | null;
 }
-const ExperimentSetupTeamDefaultsSection = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ExperimentSetupTeamDefaultsSection>;
-
 /** * `web` - Web * `mobile` - Mobile * `server` - Server * `other` - Other */
 export type SdkLibCategoryEnum = "web" | "mobile" | "server" | "other";
-const SdkLibCategoryEnum = S.String;
-
 export interface ExperimentSetupSdkLib {
   /** The $lib value of the SDK, for example 'web'. */
   lib: string | null;
@@ -2119,18 +1605,8 @@ export interface ExperimentSetupSdkLib {
   /** Share of distinct ids that were anonymous, among those that report whether they are identified. Null when no call from this SDK reported it. */
   anonymous_share: number | null;
 }
-const ExperimentSetupSdkLib = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ExperimentSetupSdkLib>;
-
 /** One row per SDK, most calls first. */
 export type ExperimentSetupSdkProfileLibsList = Array<ExperimentSetupSdkLib>;
-const ExperimentSetupSdkProfileLibsList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ExperimentSetupSdkProfileLibsList>;
-
 export interface ExperimentSetupLibActivity {
   /** The $lib value of the SDK, for example 'web'. */
   lib: string | null;
@@ -2141,18 +1617,8 @@ export interface ExperimentSetupLibActivity {
   /** Distinct ids that sent those events. */
   distinct_ids: number;
 }
-const ExperimentSetupLibActivity = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ExperimentSetupLibActivity>;
-
 /** Up to 10 SDKs seen on any event over the last day, most events first. Set only when libs is empty, so a project creating its first experiment still says which platforms it sends from. Null when flag calls exist, and null when this extra read timed out. */
 export type ExperimentSetupSdkProfileLibsOnAnyEventList = Array<ExperimentSetupLibActivity>;
-const ExperimentSetupSdkProfileLibsOnAnyEventList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ExperimentSetupSdkProfileLibsOnAnyEventList>;
-
 export interface ExperimentSetupSdkProfile {
   /** Days of flag calls read, ending now. */
   window_days: number;
@@ -2175,22 +1641,12 @@ export interface ExperimentSetupSdkProfile {
   /** True when more SDKs sent events than libs_on_any_event lists. False when it is null. */
   libs_on_any_event_truncated: boolean;
 }
-const ExperimentSetupSdkProfile = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ExperimentSetupSdkProfile>;
-
 export interface ExperimentSetupSdkProfileSection {
   /** 'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid. * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
   status: SetupContextSectionStatusEnum;
   /** Which SDKs send multivariate flag calls, across the whole project. */
   data: ExperimentSetupSdkProfile | null;
 }
-const ExperimentSetupSdkProfileSection = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ExperimentSetupSdkProfileSection>;
-
 export interface ExperimentSetupLibReach {
   /** The $lib value that sent the target events. */
   lib: string | null;
@@ -2203,18 +1659,8 @@ export interface ExperimentSetupLibReach {
   /** Share of this SDK's target events that carry a $device_id. 0 when it never sends one. */
   device_id_share: number;
 }
-const ExperimentSetupLibReach = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ExperimentSetupLibReach>;
-
 /** Up to 5 SDKs, most persons reached first. */
 export type ExperimentSetupTargetSurfaceLibsList = Array<ExperimentSetupLibReach>;
-const ExperimentSetupTargetSurfaceLibsList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ExperimentSetupTargetSurfaceLibsList>;
-
 export interface ExperimentSetupTargetSurface {
   /** Days of target events read, ending now. */
   window_days: number;
@@ -2241,27 +1687,14 @@ export interface ExperimentSetupTargetSurface {
   /** Share of all target events that carry a $device_id. Null when there were no target events. */
   device_id_share: number | null;
 }
-const ExperimentSetupTargetSurface = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ExperimentSetupTargetSurface>;
-
 export interface ExperimentSetupTargetSurfaceSection {
   /** 'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid. * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
   status: SetupContextSectionStatusEnum;
   /** Traffic on the target surface. Skipped without target_event. */
   data: ExperimentSetupTargetSurface | null;
 }
-const ExperimentSetupTargetSurfaceSection = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ExperimentSetupTargetSurfaceSection>;
-
 /** One entry: the persons who converted. */
 export type ExperimentSetupFunnelBaselineStepCountsList = Array<number>;
-const ExperimentSetupFunnelBaselineStepCountsList =
-  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupFunnelBaselineStepCountsList>;
-
 export interface ExperimentSetupFunnelBaseline {
   /** Persons who reached the target. */
   number_of_samples: number;
@@ -2270,11 +1703,6 @@ export interface ExperimentSetupFunnelBaseline {
   /** One entry: the persons who converted. */
   step_counts: ExperimentSetupFunnelBaselineStepCountsList;
 }
-const ExperimentSetupFunnelBaseline = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ExperimentSetupFunnelBaseline>;
-
 export interface ExperimentSetupMeanCountBaseline {
   /** Persons who reached the target. */
   number_of_samples: number;
@@ -2283,11 +1711,6 @@ export interface ExperimentSetupMeanCountBaseline {
   /** Sum over persons of their metric event count squared. */
   sum_squares: number;
 }
-const ExperimentSetupMeanCountBaseline = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ExperimentSetupMeanCountBaseline>;
-
 export interface ExperimentSetupCandidateMetric {
   /** Days of events read, ending now. */
   window_days: number;
@@ -2318,22 +1741,12 @@ export interface ExperimentSetupCandidateMetric {
   /** Persons who sent the metric event, with metric_properties applied. */
   unique_persons: number | null;
 }
-const ExperimentSetupCandidateMetric = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ExperimentSetupCandidateMetric>;
-
 export interface ExperimentSetupCandidateMetricSection {
   /** 'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid. * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
   status: SetupContextSectionStatusEnum;
   /** Baseline of the candidate metric. Skipped without metric_event. */
   data: ExperimentSetupCandidateMetric | null;
 }
-const ExperimentSetupCandidateMetricSection = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ExperimentSetupCandidateMetricSection>;
-
 /** * `draft` - Draft * `running` - Running * `paused` - Paused * `exposure_frozen` - Exposure Frozen * `stopped` - Stopped */
 export type PreviousExperimentStateEnum =
   | "draft"
@@ -2341,8 +1754,6 @@ export type PreviousExperimentStateEnum =
   | "paused"
   | "exposure_frozen"
   | "stopped";
-const PreviousExperimentStateEnum = S.String;
-
 export type ExperimentSetupStoredPropertyFilterListItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -2368,32 +1779,15 @@ export type ExperimentSetupStoredPropertyFilterListItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-const ExperimentSetupStoredPropertyFilterListItem =
-  S.Unknown as any as S.Schema<ExperimentSetupStoredPropertyFilterListItem>;
-
 /** Property filters as an experiment stored them. Any filter type can appear, cohorts included. */
 export type ExperimentSetupStoredPropertyFilterList =
   Array<ExperimentSetupStoredPropertyFilterListItem>;
-const ExperimentSetupStoredPropertyFilterList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ExperimentSetupStoredPropertyFilterList>;
-
 /** metric_type of each primary metric, for example 'mean', 'funnel', 'ratio' or 'retention'. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricTypesList = Array<string>;
-const ExperimentSetupPreviousExperimentPrimaryMetricTypesList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricTypesList>;
-
 /** Event names the primary metrics count. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricEventsList = Array<string>;
-const ExperimentSetupPreviousExperimentPrimaryMetricEventsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricEventsList>;
-
 /** Actions the primary metrics count. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList = Array<number>;
-const ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList =
-  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList>;
-
 export interface ExperimentSetupOutcome {
   /** metric_type of the metric this outcome describes: 'funnel', 'mean', 'ratio' or 'retention'. */
   metric_type: string;
@@ -2410,11 +1804,6 @@ export interface ExperimentSetupOutcome {
   /** The last moment the result covers. A backfill writes an older day with a recent completed_at, so this says how current the numbers are. */
   result_data_through: string | null;
 }
-const ExperimentSetupOutcome = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ExperimentSetupOutcome>;
-
 export interface ExperimentSetupPreviousExperiment {
   /** Experiment id. */
   id: number;
@@ -2485,19 +1874,9 @@ export interface ExperimentSetupPreviousExperiment {
   /** From the completed result that covers the latest data in the experiment's current run. A funnel or a mean primary metric is chosen over a retention or a ratio one, because only its samples are the analyzed population. Null when no result exists for that run, which is also the case for older metric definitions that results are never stored for. */
   outcome: ExperimentSetupOutcome | null;
 }
-const ExperimentSetupPreviousExperiment = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ExperimentSetupPreviousExperiment>;
-
 /** Most recently launched first, then drafts. Archived experiments are included, deleted ones are not. */
 export type ExperimentSetupPreviousExperimentsExperimentsList =
   Array<ExperimentSetupPreviousExperiment>;
-const ExperimentSetupPreviousExperimentsExperimentsList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ExperimentSetupPreviousExperimentsExperimentsList>;
-
 export interface ExperimentSetupPreviousExperimentsSummary {
   /** Experiments listed. */
   total: number;
@@ -2526,48 +1905,24 @@ export interface ExperimentSetupPreviousExperimentsSummary {
   /** Launched experiments whose flag now serves one variant to everyone it matches, usually after shipping. */
   serving_single_variant: number;
 }
-const ExperimentSetupPreviousExperimentsSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ExperimentSetupPreviousExperimentsSummary>;
-
 export interface ExperimentSetupPreviousExperiments {
   /** Most recently launched first, then drafts. Archived experiments are included, deleted ones are not. */
   experiments: ExperimentSetupPreviousExperimentsExperimentsList;
   /** Counts over the listed experiments. */
   summary: ExperimentSetupPreviousExperimentsSummary;
 }
-const ExperimentSetupPreviousExperiments = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ExperimentSetupPreviousExperiments>;
-
 export interface ExperimentSetupPreviousExperimentsSection {
   /** 'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid. * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
   status: SetupContextSectionStatusEnum;
   /** How the project's recent experiments were set up and how they went. */
   data: ExperimentSetupPreviousExperiments | null;
 }
-const ExperimentSetupPreviousExperimentsSection = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ExperimentSetupPreviousExperimentsSection>;
-
 /** Event names the metric counts. */
 export type ExperimentSetupSharedMetricEventsList = Array<string>;
-const ExperimentSetupSharedMetricEventsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupSharedMetricEventsList>;
-
 /** Actions the metric counts. */
 export type ExperimentSetupSharedMetricActionIdsList = Array<number>;
-const ExperimentSetupSharedMetricActionIdsList =
-  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupSharedMetricActionIdsList>;
-
 /** Where metric_event sits in the metric: 'funnel_step' and 'funnel_final_step' for a funnel, 'mean_source', 'ratio_numerator', 'ratio_denominator', 'retention_start' or 'retention_completion'. A metric that only starts from the event is a different precedent from one that converts on it. Empty when the metric does not count it, and null when no metric_event was passed. */
 export type ExperimentSetupSharedMetricMetricEventRolesList = Array<string>;
-const ExperimentSetupSharedMetricMetricEventRolesList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupSharedMetricMetricEventRolesList>;
-
 export interface ExperimentSetupSharedMetric {
   /** Shared metric id, to attach it instead of creating an inline metric. */
   id: number;
@@ -2590,18 +1945,8 @@ export interface ExperimentSetupSharedMetric {
   /** Where metric_event sits in the metric: 'funnel_step' and 'funnel_final_step' for a funnel, 'mean_source', 'ratio_numerator', 'ratio_denominator', 'retention_start' or 'retention_completion'. A metric that only starts from the event is a different precedent from one that converts on it. Empty when the metric does not count it, and null when no metric_event was passed. */
   metric_event_roles: ExperimentSetupSharedMetricMetricEventRolesList | null;
 }
-const ExperimentSetupSharedMetric = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ExperimentSetupSharedMetric>;
-
 /** Metrics that match metric_event first, then most reused. A use counts when it is on an experiment you can open and that is not deleted, so the counts follow your access. */
 export type ExperimentSetupSharedMetricsMetricsList = Array<ExperimentSetupSharedMetric>;
-const ExperimentSetupSharedMetricsMetricsList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ExperimentSetupSharedMetricsMetricsList>;
-
 export interface ExperimentSetupSharedMetrics {
   /** The metric_event that was matched, or null. */
   metric_event: string | null;
@@ -2610,22 +1955,12 @@ export interface ExperimentSetupSharedMetrics {
   /** Metrics that match metric_event first, then most reused. A use counts when it is on an experiment you can open and that is not deleted, so the counts follow your access. */
   metrics: ExperimentSetupSharedMetricsMetricsList;
 }
-const ExperimentSetupSharedMetrics = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ExperimentSetupSharedMetrics>;
-
 export interface ExperimentSetupSharedMetricsSection {
   /** 'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid. * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
   status: SetupContextSectionStatusEnum;
   /** Shared metrics the project reuses. */
   data: ExperimentSetupSharedMetrics | null;
 }
-const ExperimentSetupSharedMetricsSection = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ExperimentSetupSharedMetricsSection>;
-
 /** Facts about the project that decide how to configure a new experiment. Facts only, no recommendations. */
 export interface ExperimentSetupContextResponse {
   /** The project's experiment defaults. */
@@ -2641,11 +1976,6 @@ export interface ExperimentSetupContextResponse {
   /** Most reused shared metrics. */
   shared_metrics: ExperimentSetupSharedMetricsSection;
 }
-const ExperimentSetupContextResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ExperimentSetupContextResponse>;
-
 export interface CreateExperimentsShipVariantRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2666,22 +1996,12 @@ export interface CreateExperimentsShipVariantRequest {
   /** If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution -- existing release conditions are preserved and the variant is served only to users who already match them. */
   release_to_everyone?: boolean;
 }
-const CreateExperimentsShipVariantRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CreateExperimentsShipVariantRequest>;
-
 export interface CreateExperimentsUnfreezeExposureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const CreateExperimentsUnfreezeExposureRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateExperimentsUnfreezeExposureRequest>;
-
 export interface ExperimentsArchiveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2690,25 +2010,12 @@ export interface ExperimentsArchiveCreateRequest {
   /** When the linked feature flag is still enabled, also disable and archive it along with the experiment. Has no effect if the flag is already disabled (it is archived either way). */
   disable_feature_flag?: boolean;
 }
-const ExperimentsArchiveCreateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ExperimentsArchiveCreateRequest>;
-
 /** List of object IDs to update tags on. */
 export type ExperimentsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-const ExperimentsBulkUpdateTagsCreateRequestIdsList =
-  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestIdsList>;
-
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-const BulkUpdateTagsActionEnum = S.String;
-
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type ExperimentsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-const ExperimentsBulkUpdateTagsCreateRequestTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestTagsList>;
-
 export interface ExperimentsBulkUpdateTagsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2719,48 +2026,21 @@ export interface ExperimentsBulkUpdateTagsCreateRequest {
   /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
   tags?: ExperimentsBulkUpdateTagsCreateRequestTagsList;
 }
-const ExperimentsBulkUpdateTagsCreateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequest>;
-
 export type BulkUpdateTagsItemTagsList = Array<string>;
-const BulkUpdateTagsItemTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<BulkUpdateTagsItemTagsList>;
-
 export interface BulkUpdateTagsItem {
   id?: number;
   tags?: BulkUpdateTagsItemTagsList;
 }
-const BulkUpdateTagsItem = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<BulkUpdateTagsItem>;
-
 export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
-const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
-
 export interface BulkUpdateTagsError {
   id?: number;
   reason?: string;
 }
-const BulkUpdateTagsError = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<BulkUpdateTagsError>;
-
 export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
-const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
-
 export interface BulkUpdateTagsResponse {
   updated?: BulkUpdateTagsResponseUpdatedList;
   skipped?: BulkUpdateTagsResponseSkippedList;
 }
-const BulkUpdateTagsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<BulkUpdateTagsResponse>;
-
 export interface ExperimentsCopyToProjectCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2773,47 +2053,24 @@ export interface ExperimentsCopyToProjectCreateRequest {
   /** Optional name for the copied experiment. */
   name?: string;
 }
-const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ExperimentsCopyToProjectCreateRequest>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
   Array<string>;
-const ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList>;
-
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
   Array<unknown>;
-const ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
-  CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList>;
-
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList =
   Array<string>;
-const ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList>;
-
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList =
   Array<string>;
-const ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList>;
-
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-const ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap =
-  CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap>;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList = Array<string>;
-const ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList>;
-
 export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2875,35 +2132,15 @@ export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList;
 }
-const ExperimentsCreateExposureCohortForExperimentCreateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequest>;
-
 export interface ExperimentsCreateExposureCohortForExperimentCreateResponse {}
-const ExperimentsCreateExposureCohortForExperimentCreateResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateResponse>;
-
 /** Ordered list of prompt version numbers to assign to experiment variants. The first entry is the control variant. Must contain between 2 and 10 distinct versions. */
 export type ExperimentsCreateFromPromptCreateRequestVersionsList = Array<number>;
-const ExperimentsCreateFromPromptCreateRequestVersionsList =
-  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentsCreateFromPromptCreateRequestVersionsList>;
-
 /** * `cost` - cost * `latency` - latency * `eval_pass_rate` - eval_pass_rate */
 export type TemplatesEnum = "cost" | "latency" | "eval_pass_rate";
-const TemplatesEnum = S.String;
-
 /** One or more metric templates to attach as primary metrics. Each template becomes one metric on the experiment. Allowed values: cost, latency, eval_pass_rate. */
 export type ExperimentsCreateFromPromptCreateRequestTemplatesList = Array<
   TemplatesEnum | (string & {})
 >;
-const ExperimentsCreateFromPromptCreateRequestTemplatesList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ExperimentsCreateFromPromptCreateRequestTemplatesList>;
-
 export interface ExperimentsCreateFromPromptCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2920,60 +2157,27 @@ export interface ExperimentsCreateFromPromptCreateRequest {
   /** Optional experiment description. */
   description?: string;
 }
-const ExperimentsCreateFromPromptCreateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ExperimentsCreateFromPromptCreateRequest>;
-
 export interface ExperimentsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const ExperimentsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ExperimentsDestroyRequest>;
-
 export interface ExperimentsDestroyResponse {}
-const ExperimentsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ExperimentsDestroyResponse>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsDuplicateCreateRequestExcludedVariantsList = Array<string>;
-const ExperimentsDuplicateCreateRequestExcludedVariantsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestExcludedVariantsList>;
-
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsDuplicateCreateRequestSavedMetricsIdsList = Array<unknown>;
-const ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
-  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<ExperimentsDuplicateCreateRequestSavedMetricsIdsList>;
-
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-const ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList>;
-
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-const ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList>;
-
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsDuplicateCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-const ExperimentsDuplicateCreateRequestOriginalExperimentMap =
-  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<ExperimentsDuplicateCreateRequestOriginalExperimentMap>;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentsDuplicateCreateRequestTagsList = Array<string>;
-const ExperimentsDuplicateCreateRequestTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestTagsList>;
-
 export interface ExperimentsDuplicateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3035,70 +2239,37 @@ export interface ExperimentsDuplicateCreateRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentsDuplicateCreateRequestTagsList;
 }
-const ExperimentsDuplicateCreateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ExperimentsDuplicateCreateRequest>;
-
 export interface ExperimentsDuplicateCreateResponse {}
-const ExperimentsDuplicateCreateResponse =
-  CreateExperimentsRecalculateTimeseriesResponse as any as S.Schema<ExperimentsDuplicateCreateResponse>;
-
 export interface ExperimentsMigrateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const ExperimentsMigrateCreateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ExperimentsMigrateCreateRequest>;
-
 export interface ExperimentsResetCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const ExperimentsResetCreateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ExperimentsResetCreateRequest>;
-
 export interface ExperimentsResumeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const ExperimentsResumeCreateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ExperimentsResumeCreateRequest>;
-
 export interface ExperimentsUnarchiveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const ExperimentsUnarchiveCreateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ExperimentsUnarchiveCreateRequest>;
-
 export interface GetExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const GetExperimentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetExperimentRequest>;
-
 export interface GetExperimentsActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3109,11 +2280,6 @@ export interface GetExperimentsActivityRequest {
   /** Page number */
   page?: number;
 }
-const GetExperimentsActivityRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetExperimentsActivityRequest>;
-
 export interface Change {
   type?: string;
   action?: string;
@@ -3121,25 +2287,17 @@ export interface Change {
   before?: unknown;
   after?: unknown;
 }
-const Change = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<Change>;
-
 export type DetailChangesList = Array<Change>;
-const DetailChangesList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<DetailChangesList>;
-
 export interface Merge {
   type?: string;
   source?: unknown;
   target?: unknown;
 }
-const Merge = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Merge>;
-
 export interface Trigger {
   job_type?: string;
   job_id?: string;
   payload?: unknown;
 }
-const Trigger = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<Trigger>;
-
 export interface Detail {
   id?: string;
   changes?: DetailChangesList;
@@ -3149,8 +2307,6 @@ export interface Detail {
   short_id?: string;
   type?: string;
 }
-const Detail = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Detail>;
-
 export interface ActivityLogEntry {
   id?: string;
   user?: unknown | null;
@@ -3166,14 +2322,7 @@ export interface ActivityLogEntry {
   /** API client that triggered the activity. Self-reported through the x-posthog-client request header (e.g. 'mcp'), or 'scout:<skill_name>' when a scout run made the change, which the server derives from the run's own token. Null for requests that did neither. */
   client?: string | null;
 }
-const ActivityLogEntry = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ActivityLogEntry>;
-
 export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
-const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
-
 /** Response shape for paginated activity log endpoints. */
 export interface ActivityLogPaginatedResponse {
   results?: ActivityLogPaginatedResponseResultsList;
@@ -3181,22 +2330,12 @@ export interface ActivityLogPaginatedResponse {
   previous?: string | null;
   total_count?: number;
 }
-const ActivityLogPaginatedResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ActivityLogPaginatedResponse>;
-
 export interface GetExperimentsFlagCleanupTargetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const GetExperimentsFlagCleanupTargetRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetExperimentsFlagCleanupTargetRequest>;
-
 /** * `explicit` - explicit * `team_default` - team_default * `single_repo` - single_repo * `ambiguous` - ambiguous * `no_integration` - no_integration */
 export type ExperimentFlagCleanupTargetSourceEnum =
   | "explicit"
@@ -3204,13 +2343,8 @@ export type ExperimentFlagCleanupTargetSourceEnum =
   | "single_repo"
   | "ambiguous"
   | "no_integration";
-const ExperimentFlagCleanupTargetSourceEnum = S.String;
-
 /** Repositories connected to the team's GitHub integration, to choose a target from. */
 export type ExperimentFlagCleanupTargetCandidatesList = Array<string>;
-const ExperimentFlagCleanupTargetCandidatesList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentFlagCleanupTargetCandidatesList>;
-
 export interface ExperimentFlagCleanupTarget {
   /** Repository a flag-cleanup pull request would be opened in, or null when none can be determined. */
   repository: string | null;
@@ -3219,22 +2353,12 @@ export interface ExperimentFlagCleanupTarget {
   /** Repositories connected to the team's GitHub integration, to choose a target from. */
   candidates: ExperimentFlagCleanupTargetCandidatesList;
 }
-const ExperimentFlagCleanupTarget = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ExperimentFlagCleanupTarget>;
-
 export interface GetExperimentsFlagCleanupTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const GetExperimentsFlagCleanupTaskRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetExperimentsFlagCleanupTaskRequest>;
-
 /** * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
 export type RunStatusEnum =
   | "not_started"
@@ -3243,8 +2367,6 @@ export type RunStatusEnum =
   | "completed"
   | "failed"
   | "cancelled";
-const RunStatusEnum = S.String;
-
 export interface ExperimentFlagCleanupTask {
   /** ID of the flag-cleanup Desktop task. */
   task_id: string;
@@ -3257,22 +2379,12 @@ export interface ExperimentFlagCleanupTask {
   /** Whether the requesting user can open the task in PostHog Desktop. Cleanup tasks are visible to their creator only, so other viewers should not be shown a task link. */
   can_view_task: boolean;
 }
-const ExperimentFlagCleanupTask = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ExperimentFlagCleanupTask>;
-
 export interface GetExperimentsInSessionExposureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const GetExperimentsInSessionExposureRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetExperimentsInSessionExposureRequest>;
-
 /** How the recordings tab's in-session exposure scope reads on this experiment. */
 export interface ExperimentInSessionExposure {
   /** Whether the in-session exposure scope can answer for this experiment. Mirrors the recordings query, which refuses `experiment_exposure.in_session` exactly when this is false. */
@@ -3282,11 +2394,6 @@ export interface ExperimentInSessionExposure {
   /** True when in-session evidence is the stamped `$feature/<flag_key>` property, which means the flag was active in the session, rather than the exposure event itself being captured there. Copy must not claim the exposure was captured in the session when this is set. */
   uses_stamped_fallback: boolean;
 }
-const ExperimentInSessionExposure = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ExperimentInSessionExposure>;
-
 export type GetExperimentsMatchingIdsRequestStatus =
   | "all"
   | "complete"
@@ -3295,8 +2402,6 @@ export type GetExperimentsMatchingIdsRequestStatus =
   | "paused"
   | "running"
   | "stopped";
-const GetExperimentsMatchingIdsRequestStatus = S.String;
-
 export interface GetExperimentsMatchingIdsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3321,27 +2426,14 @@ export interface GetExperimentsMatchingIdsRequest {
   /** JSON-encoded list of tag names. Returns experiments carrying at least one of the given tags, e.g. `["growth", "checkout"]`. */
   tags?: string;
 }
-const GetExperimentsMatchingIdsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetExperimentsMatchingIdsRequest>;
-
 /** IDs of all experiments matching the current list filters that the user can edit. */
 export type ExperimentMatchingIdsResponseIdsList = Array<number>;
-const ExperimentMatchingIdsResponseIdsList =
-  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentMatchingIdsResponseIdsList>;
-
 export interface ExperimentMatchingIdsResponse {
   /** IDs of all experiments matching the current list filters that the user can edit. */
   ids: ExperimentMatchingIdsResponseIdsList;
   /** Number of matching editable experiments. */
   total: number;
 }
-const ExperimentMatchingIdsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ExperimentMatchingIdsResponse>;
-
 export interface GetExperimentsMetricsRecalculationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3350,15 +2442,8 @@ export interface GetExperimentsMetricsRecalculationRequest {
   /** UUID of the recalculation run to fetch. This is the run's own id, not the experiment id. */
   recalculation_id: string;
 }
-const GetExperimentsMetricsRecalculationRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetExperimentsMetricsRecalculationRequest>;
-
 /** * `pending` - pending * `completed` - completed * `failed` - failed */
 export type MetricRecalculationResultStatusEnum = "pending" | "completed" | "failed";
-const MetricRecalculationResultStatusEnum = S.String;
-
 /** One metric's recalculated result row, read back from ExperimentMetricResult. */
 export interface MetricRecalculationResult {
   /** UUID of the metric this result belongs to */
@@ -3370,18 +2455,8 @@ export interface MetricRecalculationResult {
   /** Error message when status is failed; otherwise null */
   error_message: string | null;
 }
-const MetricRecalculationResult = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<MetricRecalculationResult>;
-
 /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
 export type ExperimentMetricsRecalculationRunResultsList = Array<MetricRecalculationResult>;
-const ExperimentMetricsRecalculationRunResultsList = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ExperimentMetricsRecalculationRunResultsList>;
-
 /** GET by id: one run with its per-metric results, retry state and live query progress. */
 export interface ExperimentMetricsRecalculationRun {
   /** Unique identifier for this recalculation job */
@@ -3415,27 +2490,14 @@ export interface ExperimentMetricsRecalculationRun {
   /** ClickHouse's total_rows_approx across running queries plus the final read_rows of finished ones. A soft ceiling revised mid-scan, so it can exceed or trail rows_read; treat rows_read as the reliable signal */
   estimated_rows_total?: number | null;
 }
-const ExperimentMetricsRecalculationRun = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ExperimentMetricsRecalculationRun>;
-
 export interface GetExperimentsMetricsRecalculationLatestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-const GetExperimentsMetricsRecalculationLatestRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetExperimentsMetricsRecalculationLatestRequest>;
-
 /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
 export type ExperimentMetricsRecalculationLatestResultsList = Array<MetricRecalculationResult>;
-const ExperimentMetricsRecalculationLatestResultsList =
-  ExperimentMetricsRecalculationRunResultsList as any as S.Schema<ExperimentMetricsRecalculationLatestResultsList>;
-
 /** Pointer to a recalculation run that is still executing, surfaced alongside the latest terminal results. */
 export interface ActiveRecalculationRun {
   /** Identifier of the run that is still executing */
@@ -3443,15 +2505,8 @@ export interface ActiveRecalculationRun {
   /** Status of the executing run (pending or in_progress) * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
   status: MetricsRecalculationStatusEnum;
 }
-const ActiveRecalculationRun = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ActiveRecalculationRun>;
-
 /** * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
 export type ResultSourceEnum = "recalculation" | "timeseries_fallback";
-const ResultSourceEnum = S.String;
-
 /** GET latest: the newest terminal run, or the timeseries fallback, plus a pointer to any active run. */
 export interface ExperimentMetricsRecalculationLatest {
   /** Unique identifier for this recalculation job */
@@ -3489,67 +2544,29 @@ export interface ExperimentMetricsRecalculationLatest {
   /** Where these results came from: 'recalculation' for a real metrics-recalculation run, 'timeseries_fallback' for a cold-start placeholder built from the latest daily timeseries data. * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
   result_source: ResultSourceEnum;
 }
-const ExperimentMetricsRecalculationLatest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ExperimentMetricsRecalculationLatest>;
-
 export interface GetExperimentsPromptTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetExperimentsPromptTemplateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetExperimentsPromptTemplateRequest>;
-
 export interface GetExperimentsPromptTemplateResponseBodyItem {
   key: string;
   label: string;
   description: string;
 }
-const GetExperimentsPromptTemplateResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetExperimentsPromptTemplateResponseBodyItem>;
-
 export type GetExperimentsPromptTemplateResponseBodyList =
   Array<GetExperimentsPromptTemplateResponseBodyItem>;
-const GetExperimentsPromptTemplateResponseBodyList = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetExperimentsPromptTemplateResponseBodyList>;
-
 export type GetExperimentsPromptTemplateResponse = GetExperimentsPromptTemplateResponseBodyList;
-const GetExperimentsPromptTemplateResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetExperimentsPromptTemplateResponse>;
-
 export interface GetExperimentsSessionContextRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** ID of the session recording to resolve experiment context for. */
   session_id: string;
 }
-const GetExperimentsSessionContextRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetExperimentsSessionContextRequest>;
-
 export interface GetExperimentsStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetExperimentsStatRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetExperimentsStatRequest>;
-
 export interface GetExperimentsStatResponse {}
-const GetExperimentsStatResponse =
-  ExperimentsDestroyResponse as any as S.Schema<GetExperimentsStatResponse>;
-
 export interface GetExperimentsTimeseriesResultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3560,15 +2577,7 @@ export interface GetExperimentsTimeseriesResultRequest {
   /** UUID of the metric to fetch timeseries for. Available on each metric in the experiment's metrics array. */
   metric_uuid: string;
 }
-const GetExperimentsTimeseriesResultRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetExperimentsTimeseriesResultRequest>;
-
 export interface GetExperimentsTimeseriesResultResponse {}
-const GetExperimentsTimeseriesResultResponse =
-  CreateExperimentsRecalculateTimeseriesResponse as any as S.Schema<GetExperimentsTimeseriesResultResponse>;
-
 export type ListExperimentsRequestStatus =
   | "all"
   | "complete"
@@ -3577,8 +2586,6 @@ export type ListExperimentsRequestStatus =
   | "paused"
   | "running"
   | "stopped";
-const ListExperimentsRequestStatus = S.String;
-
 export interface ListExperimentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3607,21 +2614,10 @@ export interface ListExperimentsRequest {
   /** JSON-encoded list of tag names. Returns experiments carrying at least one of the given tags, e.g. `["growth", "checkout"]`. */
   tags?: string;
 }
-const ListExperimentsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListExperimentsRequest>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentBasicExcludedVariantsList = Array<string>;
-const ExperimentBasicExcludedVariantsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentBasicExcludedVariantsList>;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentBasicTagsList = Array<string>;
-const ExperimentBasicTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentBasicTagsList>;
-
 /** Lightweight, read-only serializer for the experiment list endpoint. The list view (and the MCP list tool) render only the scalar and feature-flag fields shared via ``ExperimentBaseSerializer`` -- never the metric definitions. Omitting ``metrics``/``metrics_secondary``/``saved_metrics`` lets the list query defer the large JSON columns and skip the saved-metric prefetch plus per-row fingerprinting; that work belongs to the detail response served by ``ExperimentSerializer``. Because the metric fields, the write-side machinery, and the action-name-refreshing ``to_representation`` all live on ``ExperimentSerializer`` rather than the shared base, this serializer needs no overrides: it gets DRF's default ``get_fields`` (no write-only ``holdout_id`` to configure), default ``to_representation`` (no metrics to normalize), and a plain ``ListSerializer`` that never touches the deferred columns. See ``EnterpriseExperimentsViewSet.safely_get_queryset``. */
 export interface ExperimentBasic {
   id: number;
@@ -3663,55 +2659,25 @@ export interface ExperimentBasic {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentBasicTagsList;
 }
-const ExperimentBasic = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<ExperimentBasic>;
-
 export type PaginatedExperimentBasicListResultsList = Array<ExperimentBasic>;
-const PaginatedExperimentBasicListResultsList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<PaginatedExperimentBasicListResultsList>;
-
 export interface PaginatedExperimentBasicList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedExperimentBasicListResultsList;
 }
-const PaginatedExperimentBasicList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<PaginatedExperimentBasicList>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type UpdateExperimentRequestExcludedVariantsList = Array<string>;
-const UpdateExperimentRequestExcludedVariantsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestExcludedVariantsList>;
-
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type UpdateExperimentRequestSavedMetricsIdsList = Array<unknown>;
-const UpdateExperimentRequestSavedMetricsIdsList =
-  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<UpdateExperimentRequestSavedMetricsIdsList>;
-
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-const UpdateExperimentRequestPrimaryMetricsOrderedUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestPrimaryMetricsOrderedUuidsList>;
-
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-const UpdateExperimentRequestSecondaryMetricsOrderedUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestSecondaryMetricsOrderedUuidsList>;
-
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
-const UpdateExperimentRequestOriginalExperimentMap =
-  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UpdateExperimentRequestOriginalExperimentMap>;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type UpdateExperimentRequestTagsList = Array<string>;
-const UpdateExperimentRequestTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestTagsList>;
-
 export interface UpdateExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3775,43 +2741,20 @@ export interface UpdateExperimentRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: UpdateExperimentRequestTagsList;
 }
-const UpdateExperimentRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<UpdateExperimentRequest>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type UpdateExperimentsPartialRequestExcludedVariantsList = Array<string>;
-const UpdateExperimentsPartialRequestExcludedVariantsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestExcludedVariantsList>;
-
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type UpdateExperimentsPartialRequestSavedMetricsIdsList = Array<unknown>;
-const UpdateExperimentsPartialRequestSavedMetricsIdsList =
-  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<UpdateExperimentsPartialRequestSavedMetricsIdsList>;
-
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-const UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList>;
-
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-const UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList =
-  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList>;
-
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentsPartialRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-const UpdateExperimentsPartialRequestOriginalExperimentMap =
-  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UpdateExperimentsPartialRequestOriginalExperimentMap>;
-
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type UpdateExperimentsPartialRequestTagsList = Array<string>;
-const UpdateExperimentsPartialRequestTagsList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestTagsList>;
-
 export interface UpdateExperimentsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3875,11 +2818,6 @@ export interface UpdateExperimentsPartialRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: UpdateExperimentsPartialRequestTagsList;
 }
-const UpdateExperimentsPartialRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<UpdateExperimentsPartialRequest>;
-
 export type CreateExperimentError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create a new experiment in draft status with optional metrics. */
 export const createExperiment: API.OperationMethod<
@@ -3888,8 +2826,8 @@ export const createExperiment: API.OperationMethod<
   CreateExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentRequest,
-  output: ExperimentOutput,
+  input: __S(25, __c3, 1) as any as S.Schema<CreateExperimentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3903,8 +2841,8 @@ export const createExperimentsCalculateRunningTime: API.OperationMethod<
   CreateExperimentsCalculateRunningTimeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsCalculateRunningTimeRequest,
-  output: RunningTimeCalculationResult,
+  input: __S(37, __c4, 5) as any as S.Schema<CreateExperimentsCalculateRunningTimeRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<RunningTimeCalculationResult>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3918,8 +2856,8 @@ export const createExperimentsEnd: API.OperationMethod<
   CreateExperimentsEndError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsEndRequest,
-  output: ExperimentOutput,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateExperimentsEndRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3933,8 +2871,8 @@ export const createExperimentsFreezeExposure: API.OperationMethod<
   CreateExperimentsFreezeExposureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsFreezeExposureRequest,
-  output: ExperimentOutput,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateExperimentsFreezeExposureRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3948,8 +2886,8 @@ export const createExperimentsLaunch: API.OperationMethod<
   CreateExperimentsLaunchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsLaunchRequest,
-  output: ExperimentOutput,
+  input: __S(41, __c5, 1) as any as S.Schema<CreateExperimentsLaunchRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3963,8 +2901,8 @@ export const createExperimentsMetricsRecalculation: API.OperationMethod<
   CreateExperimentsMetricsRecalculationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsMetricsRecalculationRequest,
-  output: ExperimentMetricsRecalculationJob,
+  input: __S(42, __c5, 2) as any as S.Schema<CreateExperimentsMetricsRecalculationRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ExperimentMetricsRecalculationJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3978,8 +2916,8 @@ export const createExperimentsPause: API.OperationMethod<
   CreateExperimentsPauseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsPauseRequest,
-  output: ExperimentOutput,
+  input: __S(44, __c5, 4) as any as S.Schema<CreateExperimentsPauseRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3997,8 +2935,8 @@ export const createExperimentsRecalculateTimeseries: API.OperationMethod<
   CreateExperimentsRecalculateTimeseriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsRecalculateTimeseriesRequest,
-  output: CreateExperimentsRecalculateTimeseriesResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreateExperimentsRecalculateTimeseriesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4012,8 +2950,8 @@ export const createExperimentsSessionBucket: API.OperationMethod<
   CreateExperimentsSessionBucketError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsSessionBucketRequest,
-  output: ExperimentSessionBucketResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateExperimentsSessionBucketRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<ExperimentSessionBucketResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4027,8 +2965,8 @@ export const createExperimentsSessionContext: API.OperationMethod<
   CreateExperimentsSessionContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsSessionContextRequest,
-  output: ExperimentSessionContextsResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateExperimentsSessionContextRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ExperimentSessionContextsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4042,8 +2980,8 @@ export const createExperimentsSessionEventDeltas: API.OperationMethod<
   CreateExperimentsSessionEventDeltasError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsSessionEventDeltasRequest,
-  output: ExperimentSessionEventDeltaResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<CreateExperimentsSessionEventDeltasRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ExperimentSessionEventDeltaResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4057,8 +2995,8 @@ export const createExperimentsSetupContext: API.OperationMethod<
   CreateExperimentsSetupContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsSetupContextRequest,
-  output: ExperimentSetupContextResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<CreateExperimentsSetupContextRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<ExperimentSetupContextResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4072,8 +3010,8 @@ export const createExperimentsShipVariant: API.OperationMethod<
   CreateExperimentsShipVariantError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsShipVariantRequest,
-  output: ExperimentOutput,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateExperimentsShipVariantRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4087,8 +3025,8 @@ export const createExperimentsUnfreezeExposure: API.OperationMethod<
   CreateExperimentsUnfreezeExposureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentsUnfreezeExposureRequest,
-  output: ExperimentOutput,
+  input: __S(105, __c13, 1) as any as S.Schema<CreateExperimentsUnfreezeExposureRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4102,8 +3040,8 @@ export const experimentsArchiveCreate: API.OperationMethod<
   ExperimentsArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsArchiveCreateRequest,
-  output: ExperimentOutput,
+  input: __S(106, __c13, 2) as any as S.Schema<ExperimentsArchiveCreateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4117,8 +3055,8 @@ export const experimentsBulkUpdateTagsCreate: API.OperationMethod<
   ExperimentsBulkUpdateTagsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsBulkUpdateTagsCreateRequest,
-  output: BulkUpdateTagsResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<BulkUpdateTagsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4136,8 +3074,8 @@ export const experimentsCopyToProjectCreate: API.OperationMethod<
   ExperimentsCopyToProjectCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsCopyToProjectCreateRequest,
-  output: ExperimentOutput,
+  input: __S(113, __c14, 1) as any as S.Schema<ExperimentsCopyToProjectCreateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4155,8 +3093,16 @@ export const experimentsCreateExposureCohortForExperimentCreate: API.OperationMe
   ExperimentsCreateExposureCohortForExperimentCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsCreateExposureCohortForExperimentCreateRequest,
-  output: ExperimentsCreateExposureCohortForExperimentCreateResponse,
+  input: __S(
+    114,
+    __c14,
+    2,
+  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequest>,
+  output: __S(
+    115,
+    __c14,
+    3,
+  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4170,8 +3116,8 @@ export const experimentsCreateFromPromptCreate: API.OperationMethod<
   ExperimentsCreateFromPromptCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsCreateFromPromptCreateRequest,
-  output: ExperimentOutput,
+  input: __S(117, __c14, 5) as any as S.Schema<ExperimentsCreateFromPromptCreateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4185,8 +3131,8 @@ export const experimentsDestroy: API.OperationMethod<
   ExperimentsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsDestroyRequest,
-  output: ExperimentsDestroyResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<ExperimentsDestroyRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<ExperimentsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4200,8 +3146,8 @@ export const experimentsDuplicateCreate: API.OperationMethod<
   ExperimentsDuplicateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsDuplicateCreateRequest,
-  output: ExperimentsDuplicateCreateResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<ExperimentsDuplicateCreateRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ExperimentsDuplicateCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4215,8 +3161,8 @@ export const experimentsMigrateCreate: API.OperationMethod<
   ExperimentsMigrateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsMigrateCreateRequest,
-  output: ExperimentOutput,
+  input: __S(121, __c15, 1) as any as S.Schema<ExperimentsMigrateCreateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4230,8 +3176,8 @@ export const experimentsResetCreate: API.OperationMethod<
   ExperimentsResetCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsResetCreateRequest,
-  output: ExperimentOutput,
+  input: __S(122, __c15, 2) as any as S.Schema<ExperimentsResetCreateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4245,8 +3191,8 @@ export const experimentsResumeCreate: API.OperationMethod<
   ExperimentsResumeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsResumeCreateRequest,
-  output: ExperimentOutput,
+  input: __S(123, __c15, 3) as any as S.Schema<ExperimentsResumeCreateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4260,8 +3206,8 @@ export const experimentsUnarchiveCreate: API.OperationMethod<
   ExperimentsUnarchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsUnarchiveCreateRequest,
-  output: ExperimentOutput,
+  input: __S(124, __c15, 4) as any as S.Schema<ExperimentsUnarchiveCreateRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4275,8 +3221,8 @@ export const getExperiment: API.OperationMethod<
   GetExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentRequest,
-  output: ExperimentOutput,
+  input: __S(125, __c15, 5) as any as S.Schema<GetExperimentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4290,8 +3236,8 @@ export const getExperimentsActivity: API.OperationMethod<
   GetExperimentsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsActivityRequest,
-  output: ActivityLogPaginatedResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<GetExperimentsActivityRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ActivityLogPaginatedResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4305,8 +3251,8 @@ export const getExperimentsFlagCleanupTarget: API.OperationMethod<
   GetExperimentsFlagCleanupTargetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsFlagCleanupTargetRequest,
-  output: ExperimentFlagCleanupTarget,
+  input: __S(135, __c16, 7) as any as S.Schema<GetExperimentsFlagCleanupTargetRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<ExperimentFlagCleanupTarget>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4320,8 +3266,8 @@ export const getExperimentsFlagCleanupTask: API.OperationMethod<
   GetExperimentsFlagCleanupTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsFlagCleanupTaskRequest,
-  output: ExperimentFlagCleanupTask,
+  input: __S(137, __c17, 1) as any as S.Schema<GetExperimentsFlagCleanupTaskRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ExperimentFlagCleanupTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4335,8 +3281,8 @@ export const getExperimentsInSessionExposure: API.OperationMethod<
   GetExperimentsInSessionExposureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsInSessionExposureRequest,
-  output: ExperimentInSessionExposure,
+  input: __S(139, __c17, 3) as any as S.Schema<GetExperimentsInSessionExposureRequest>,
+  output: __S(140, __c17, 4) as any as S.Schema<ExperimentInSessionExposure>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4350,8 +3296,8 @@ export const getExperimentsMatchingIds: API.OperationMethod<
   GetExperimentsMatchingIdsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsMatchingIdsRequest,
-  output: ExperimentMatchingIdsResponse,
+  input: __S(141, __c17, 5) as any as S.Schema<GetExperimentsMatchingIdsRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<ExperimentMatchingIdsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4365,8 +3311,8 @@ export const getExperimentsMetricsRecalculation: API.OperationMethod<
   GetExperimentsMetricsRecalculationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsMetricsRecalculationRequest,
-  output: ExperimentMetricsRecalculationRun,
+  input: __S(143, __c17, 7) as any as S.Schema<GetExperimentsMetricsRecalculationRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<ExperimentMetricsRecalculationRun>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4380,8 +3326,8 @@ export const getExperimentsMetricsRecalculationLatest: API.OperationMethod<
   GetExperimentsMetricsRecalculationLatestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsMetricsRecalculationLatestRequest,
-  output: ExperimentMetricsRecalculationLatest,
+  input: __S(147, __c18, 3) as any as S.Schema<GetExperimentsMetricsRecalculationLatestRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<ExperimentMetricsRecalculationLatest>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4395,8 +3341,8 @@ export const getExperimentsPromptTemplate: API.OperationMethod<
   GetExperimentsPromptTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsPromptTemplateRequest,
-  output: GetExperimentsPromptTemplateResponse,
+  input: __S(150, __c18, 6) as any as S.Schema<GetExperimentsPromptTemplateRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetExperimentsPromptTemplateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4410,8 +3356,8 @@ export const getExperimentsSessionContext: API.OperationMethod<
   GetExperimentsSessionContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsSessionContextRequest,
-  output: ExperimentSessionContextResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<GetExperimentsSessionContextRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<ExperimentSessionContextResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4425,8 +3371,8 @@ export const getExperimentsStat: API.OperationMethod<
   GetExperimentsStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsStatRequest,
-  output: GetExperimentsStatResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<GetExperimentsStatRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<GetExperimentsStatResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4444,8 +3390,8 @@ export const getExperimentsTimeseriesResult: API.OperationMethod<
   GetExperimentsTimeseriesResultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentsTimeseriesResultRequest,
-  output: GetExperimentsTimeseriesResultResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<GetExperimentsTimeseriesResultRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetExperimentsTimeseriesResultResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4459,8 +3405,8 @@ export const listExperiments: API.OperationMethod<
   ListExperimentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExperimentsRequest,
-  output: PaginatedExperimentBasicList,
+  input: __S(157, __c19, 5) as any as S.Schema<ListExperimentsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<PaginatedExperimentBasicList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4474,8 +3420,8 @@ export const updateExperiment: API.OperationMethod<
   UpdateExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExperimentRequest,
-  output: ExperimentOutput,
+  input: __S(161, __c20, 1) as any as S.Schema<UpdateExperimentRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4489,8 +3435,8 @@ export const updateExperimentsPartial: API.OperationMethod<
   UpdateExperimentsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExperimentsPartialRequest,
-  output: ExperimentOutput,
+  input: __S(162, __c20, 2) as any as S.Schema<UpdateExperimentsPartialRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4505,13 +3451,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rollout_percentage: S.optional(S.NullOr(S.Number)),
-          properties: S.optional(ExperimentFlagRolloutGroupPropertiesList),
+          properties: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "ExperimentFlagRolloutGroup",
       });
     case 2:
-      return S.Array(ExperimentFlagRolloutGroup);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4521,11 +3467,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ExperimentFlagVariant" });
     case 4:
-      return S.Array(ExperimentFlagVariant);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          variants: ExperimentFlagMultivariateVariantsList,
+          variants: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "ExperimentFlagMultivariate",
@@ -4535,10 +3481,10 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(ExperimentFeatureFlagFiltersGroupsList),
-          multivariate: S.optional(S.NullOr(ExperimentFlagMultivariate)),
+          groups: S.optional(__S(2, __c0, 2)),
+          multivariate: S.optional(S.NullOr(__S(5, __c0, 5))),
           aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-          payloads: S.optional(ExperimentFeatureFlagFiltersPayloadsMap),
+          payloads: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "ExperimentFeatureFlagFilters",
@@ -4550,7 +3496,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(ExperimentFeatureFlagFilters),
+          filters: S.optional(__S(7, __c0, 7)),
           ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -4560,16 +3506,16 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
-          variant_notes: S.optional(S.NullOr(ExperimentParametersVariantNotesMap)),
+          variant_notes: S.optional(S.NullOr(__S(6, __c0, 6))),
         }),
       ).annotate({ identifier: "ExperimentParameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conversionRateInputType: ConversionRateInputType,
+          conversionRateInputType: S.String,
           manualBaselineValue: S.optional(S.NullOr(S.Number)),
           manualExposureRate: S.optional(S.NullOr(S.Number)),
-          manualMetricType: S.optional(S.NullOr(ManualMetricType)),
+          manualMetricType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ExperimentExposureEstimateConfig",
@@ -4577,7 +3523,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exposure_estimate_config: S.optional(S.NullOr(ExperimentExposureEstimateConfig)),
+          exposure_estimate_config: S.optional(S.NullOr(__S(10, __c1, 2))),
           minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
           recommended_running_time: S.optional(S.NullOr(S.Number)),
           recommended_sample_size: S.optional(S.NullOr(S.Number)),
@@ -4592,20 +3538,20 @@ function __c1(j: number): any {
         S.Struct({
           key: S.optional(S.String),
           label: S.optional(S.NullOr(S.String)),
-          operator: S.optional(S.NullOr(PropertyOperator)),
+          operator: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
-          value: S.optional(S.NullOr(EventPropertyFilterValue)),
+          value: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "EventPropertyFilter" });
     case 6:
-      return S.Array(ExperimentApiExposureConfigPropertiesItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           event: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.Number)),
-          kind: S.optional(S.NullOr(Kind2)),
-          properties: S.optional(ExperimentApiExposureConfigPropertiesList),
+          kind: S.optional(S.NullOr(S.String)),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ExperimentApiExposureConfig",
@@ -4617,27 +3563,27 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          activation_config: S.optional(S.NullOr(ExperimentApiExposureConfig)),
-          exposure_config: S.optional(S.NullOr(ExperimentApiExposureConfig)),
+          activation_config: S.optional(S.NullOr(__S(15, __c1, 7))),
+          exposure_config: S.optional(S.NullOr(__S(15, __c1, 7))),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          multiple_variant_handling: S.optional(S.NullOr(MultipleVariantHandling)),
+          multiple_variant_handling: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ExperimentApiExposureCriteria",
       });
     case 1:
-      return S.Array(EventPropertyFilter);
+      return S.Array(__S(13, __c1, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
           event: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.Number)),
-          kind: S.optional(Kind1),
-          math: S.optional(S.NullOr(ExperimentMetricMathType)),
-          math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+          kind: S.optional(S.String),
+          math: S.optional(S.NullOr(S.String)),
+          math_group_type_index: S.optional(S.NullOr(S.Number)),
           math_hogql: S.optional(S.NullOr(S.String)),
           math_property: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(ExperimentApiEventSourcePropertiesList)),
+          properties: S.optional(S.NullOr(__S(17, __c2, 1))),
         }),
       ).annotate({ identifier: "ExperimentApiEventSource" });
     case 3:
@@ -4651,18 +3597,18 @@ function __c2(j: number): any {
         identifier: "ExperimentMetricOutlierHandling",
       });
     case 4:
-      return S.Array(ExperimentApiEventSource);
+      return S.Array(__S(18, __c2, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
           event: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.Number)),
-          kind: Kind3,
-          math: S.optional(S.NullOr(ExperimentMetricMathType)),
-          math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+          kind: S.String,
+          math: S.optional(S.NullOr(S.String)),
+          math_group_type_index: S.optional(S.NullOr(S.Number)),
           math_hogql: S.optional(S.NullOr(S.String)),
           math_property: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(ExperimentApiRetentionStartPropertiesList)),
+          properties: S.optional(S.NullOr(__S(17, __c2, 1))),
         }),
       ).annotate({
         identifier: "ExperimentApiRetentionStart",
@@ -4670,34 +3616,34 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          completion_event: S.optional(S.NullOr(ExperimentApiEventSource)),
+          completion_event: S.optional(S.NullOr(__S(18, __c2, 2))),
           conversion_window: S.optional(S.NullOr(S.Number)),
-          conversion_window_unit: S.optional(S.NullOr(FunnelConversionWindowTimeUnit)),
-          denominator: S.optional(S.NullOr(ExperimentApiEventSource)),
-          denominator_outlier_handling: S.optional(S.NullOr(ExperimentMetricOutlierHandling)),
-          funnel_order_type: S.optional(S.NullOr(StepOrderValue)),
-          goal: S.optional(S.NullOr(ExperimentMetricGoal)),
+          conversion_window_unit: S.optional(S.NullOr(S.String)),
+          denominator: S.optional(S.NullOr(__S(18, __c2, 2))),
+          denominator_outlier_handling: S.optional(S.NullOr(__S(19, __c2, 3))),
+          funnel_order_type: S.optional(S.NullOr(S.String)),
+          goal: S.optional(S.NullOr(S.String)),
           ignore_zeros: S.optional(S.NullOr(S.Boolean)),
           kind: S.optional(S.String),
           lower_bound_percentile: S.optional(S.NullOr(S.Number)),
-          metric_type: S.optional(ExperimentMetricType),
+          metric_type: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
-          numerator: S.optional(S.NullOr(ExperimentApiEventSource)),
-          numerator_outlier_handling: S.optional(S.NullOr(ExperimentMetricOutlierHandling)),
+          numerator: S.optional(S.NullOr(__S(18, __c2, 2))),
+          numerator_outlier_handling: S.optional(S.NullOr(__S(19, __c2, 3))),
           retention_window_end: S.optional(S.NullOr(S.Number)),
           retention_window_start: S.optional(S.NullOr(S.Number)),
-          retention_window_unit: S.optional(S.NullOr(FunnelConversionWindowTimeUnit)),
-          series: S.optional(S.NullOr(ExperimentApiMetricSeriesList)),
-          source: S.optional(S.NullOr(ExperimentApiEventSource)),
-          start_event: S.optional(S.NullOr(ExperimentApiRetentionStart)),
-          start_handling: S.optional(S.NullOr(StartHandling)),
+          retention_window_unit: S.optional(S.NullOr(S.String)),
+          series: S.optional(S.NullOr(__S(20, __c2, 4))),
+          source: S.optional(S.NullOr(__S(18, __c2, 2))),
+          start_event: S.optional(S.NullOr(__S(21, __c2, 5))),
+          start_handling: S.optional(S.NullOr(S.String)),
           threshold: S.optional(S.NullOr(S.Number)),
           upper_bound_percentile: S.optional(S.NullOr(S.Number)),
           uuid: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ExperimentApiMetric" });
     case 7:
-      return S.Array(ExperimentApiMetric);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -4713,38 +3659,34 @@ function __c3(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.String,
-          feature_flag: S.optional(ExperimentFeatureFlagInput),
+          feature_flag: S.optional(__S(8, __c1, 0)),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(S.NullOr(CreateExperimentRequestExcludedVariantsList)),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(CreateExperimentRequestSavedMetricsIdsList)),
+          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-          metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-          metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
+          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
+          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(
-            S.NullOr(CreateExperimentRequestPrimaryMetricsOrderedUuidsList),
-          ),
-          secondary_metrics_ordered_uuids: S.optional(
-            S.NullOr(CreateExperimentRequestSecondaryMetricsOrderedUuidsList),
-          ),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(CreateExperimentRequestOriginalExperimentMap)),
-          tags: S.optional(CreateExperimentRequestTagsList),
+          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tags: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/experiments/", code: 200 }),
         ),
@@ -4756,22 +3698,22 @@ function __c3(j: number): any {
           team_id: S.optional(S.Number),
           name: S.optional(S.String),
           key: S.optional(S.String),
-          filters: S.optional(MinimalFeatureFlagFiltersMap),
+          filters: S.optional(__S(24, __c3, 0)),
           deleted: S.optional(S.Boolean),
           active: S.optional(S.Boolean),
           ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
           version: S.optional(S.NullOr(S.Number)),
-          evaluation_runtime: S.optional(S.NullOr(MinimalFeatureFlagEvaluationRuntime)),
-          bucketing_identifier: S.optional(S.NullOr(MinimalFeatureFlagBucketingIdentifier)),
-          evaluation_contexts: S.optional(MinimalFeatureFlagEvaluationContextsList),
+          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
+          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
+          evaluation_contexts: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "MinimalFeatureFlag" });
     case 3:
-      return S.Array(FeatureFlagFilterPropertySchema);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(FeatureFlagConditionGroupSchemaPropertiesList),
+          properties: S.optional(__S(27, __c3, 3)),
           rollout_percentage: S.optional(S.Number),
           variant: S.optional(S.NullOr(S.String)),
           aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
@@ -4780,7 +3722,7 @@ function __c3(j: number): any {
         identifier: "FeatureFlagConditionGroupSchema",
       });
     case 5:
-      return S.Array(FeatureFlagConditionGroupSchema);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4791,8 +3733,8 @@ function __c3(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(24, __c3, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 7:
@@ -4801,8 +3743,8 @@ function __c3(j: number): any {
           id: S.optional(S.Number),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          filters: S.optional(ExperimentHoldoutFiltersList),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          filters: S.optional(__S(29, __c3, 5)),
+          created_by: S.optional(S.NullOr(__S(30, __c3, 6))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           user_access_level: S.optional(S.NullOr(S.String)),
@@ -4825,7 +3767,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ExperimentToSavedMetric" });
     case 1:
-      return S.Array(ExperimentToSavedMetric);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4835,46 +3777,42 @@ function __c4(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
-          feature_flag: S.optional(MinimalFeatureFlag),
-          holdout: S.optional(ExperimentHoldout),
+          feature_flag: S.optional(__S(26, __c3, 2)),
+          holdout: S.optional(__S(31, __c3, 7)),
           holdout_id: S.optional(S.NullOr(S.Number)),
           exposure_cohort: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(S.NullOr(ExperimentOutputExcludedVariantsList)),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics: S.optional(ExperimentOutputSavedMetricsList),
-          saved_metrics_ids: S.optional(S.NullOr(ExperimentOutputSavedMetricsIdsList)),
+          saved_metrics: S.optional(__S(33, __c4, 1)),
+          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(30, __c3, 6))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-          metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-          metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
+          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
+          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           flag_cleanup_task_id: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(
-            S.NullOr(ExperimentOutputPrimaryMetricsOrderedUuidsList),
-          ),
-          secondary_metrics_ordered_uuids: S.optional(
-            S.NullOr(ExperimentOutputSecondaryMetricsOrderedUuidsList),
-          ),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
           only_count_matured_users: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          status: S.optional(ExperimentStatusEnum),
+          status: S.optional(S.String),
           is_legacy: S.optional(S.Boolean),
           can_freeze_exposure: S.optional(S.Boolean),
           resolved_exposure_event: S.optional(S.String),
           user_access_level: S.optional(S.NullOr(S.String)),
-          tags: S.optional(ExperimentOutputTagsList),
+          tags: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "ExperimentOutput" });
     case 3:
@@ -4888,20 +3826,20 @@ function __c4(j: number): any {
           denominator_sum: S.optional(S.NullOr(S.Number)),
           denominator_sum_squares: S.optional(S.NullOr(S.Number)),
           numerator_denominator_sum_product: S.optional(S.NullOr(S.Number)),
-          step_counts: S.optional(RunningTimeBaselineStatsStepCountsList),
+          step_counts: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "RunningTimeBaselineStats" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          metric_type: MetricTypeEnum,
+          metric_type: S.String,
           minimum_detectable_effect: S.Number,
           number_of_variants: S.optional(S.Number),
           exposure_rate_per_day: S.optional(S.NullOr(S.Number)),
           baseline_value: S.optional(S.NullOr(S.Number)),
           variance: S.optional(S.NullOr(S.Number)),
-          baseline_stats: S.optional(S.NullOr(RunningTimeBaselineStats)),
+          baseline_stats: S.optional(S.NullOr(__S(36, __c4, 4))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4928,7 +3866,7 @@ function __c4(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           open_cleanup_pr: S.optional(S.Boolean),
           repository: S.optional(S.NullOr(S.String)),
@@ -4982,7 +3920,7 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          trigger: S.optional(ExperimentMetricsRecalculationRequestTriggerEnum),
+          trigger: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4998,7 +3936,7 @@ function __c5(j: number): any {
         S.Struct({
           id: S.String,
           experiment_id: S.Number,
-          status: MetricsRecalculationStatusEnum,
+          status: S.String,
           total_metrics: S.Number,
           completed_metrics: S.Number,
           failed_metrics: S.Number,
@@ -5048,42 +3986,32 @@ function __c6(j: number): any {
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(
-            S.NullOr(CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList),
-          ),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(45, __c5, 5))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(
-            S.NullOr(CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList),
-          ),
+          saved_metrics_ids: S.optional(S.NullOr(__S(46, __c5, 6))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-          metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-          metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
+          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
+          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(
-            S.NullOr(CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList),
-          ),
-          secondary_metrics_ordered_uuids: S.optional(
-            S.NullOr(CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList),
-          ),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(
-            S.NullOr(CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap),
-          ),
-          tags: S.optional(CreateExperimentsRecalculateTimeseriesRequestTagsList),
+          original_experiment: S.optional(S.NullOr(__S(47, __c5, 7))),
+          tags: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5103,8 +4031,8 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          bucket: ExperimentSessionBucketEnum,
-          metric_uuids: S.optional(CreateExperimentsSessionBucketRequestMetricUuidsList),
+          bucket: S.String,
+          metric_uuids: S.optional(__S(12, __c1, 4)),
           variant: S.optional(S.NullOr(S.String)),
           limit: S.optional(S.Number),
         }).pipe(
@@ -5127,7 +4055,7 @@ function __c6(j: number): any {
         identifier: "ExperimentSessionBucketMetric",
       });
     case 4:
-      return S.Array(ExperimentSessionBucketMetric);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5139,14 +4067,14 @@ function __c6(j: number): any {
         identifier: "ExperimentSessionBucketExcludedMetric",
       });
     case 6:
-      return S.Array(ExperimentSessionBucketExcludedMetric);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          session_ids: ExperimentSessionBucketResponseSessionIdsList,
+          session_ids: __S(12, __c1, 4),
           truncated: S.Boolean,
-          considered_metrics: ExperimentSessionBucketResponseConsideredMetricsList,
-          excluded_metrics: ExperimentSessionBucketResponseExcludedMetricsList,
+          considered_metrics: __S(52, __c6, 4),
+          excluded_metrics: __S(54, __c6, 6),
           date_from: S.String,
           date_to: S.String,
           filter_test_accounts: S.Boolean,
@@ -5163,7 +4091,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          session_ids: CreateExperimentsSessionContextRequestSessionIdsList,
+          session_ids: __S(12, __c1, 4),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5177,19 +4105,19 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          source_role: SourceRoleEnum,
+          source_role: S.String,
           source_name: S.String,
           source_index: S.Number,
           source_total: S.Number,
           event_count: S.Number,
           first_timestamp: S.String,
-          timestamps: ExperimentSessionMetricSourceHitTimestampsList,
+          timestamps: __S(12, __c1, 4),
         }),
       ).annotate({
         identifier: "ExperimentSessionMetricSourceHit",
       });
     case 2:
-      return S.Array(ExperimentSessionMetricSourceHit);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5197,14 +4125,14 @@ function __c7(j: number): any {
           metric_name: S.String,
           event_count: S.Number,
           first_timestamp: S.String,
-          timestamps: ExperimentSessionMetricHitTimestampsList,
-          sources: ExperimentSessionMetricHitSourcesList,
+          timestamps: __S(12, __c1, 4),
+          sources: __S(58, __c7, 2),
         }),
       ).annotate({
         identifier: "ExperimentSessionMetricHit",
       });
     case 4:
-      return S.Array(ExperimentSessionMetricHit);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5212,23 +4140,23 @@ function __c7(j: number): any {
           experiment_name: S.String,
           flag_key: S.String,
           variant: S.String,
-          variants_seen: ExperimentSessionContextItemVariantsSeenList,
+          variants_seen: __S(12, __c1, 4),
           multiple_variants: S.Boolean,
           first_exposure_timestamp: S.NullOr(S.String),
           experiment_start_date: S.NullOr(S.String),
           experiment_end_date: S.NullOr(S.String),
-          metrics_in_session: ExperimentSessionContextItemMetricsInSessionList,
+          metrics_in_session: __S(60, __c7, 4),
         }),
       ).annotate({
         identifier: "ExperimentSessionContextItem",
       });
     case 6:
-      return S.Array(ExperimentSessionContextItem);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String,
-          results: ExperimentSessionContextResponseResultsList,
+          results: __S(62, __c7, 6),
         }),
       ).annotate({
         identifier: "ExperimentSessionContextResponse",
@@ -5238,11 +4166,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExperimentSessionContextResponse);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: ExperimentSessionContextsResponseResultsList,
+          results: __S(64, __c8, 0),
         }),
       ).annotate({
         identifier: "ExperimentSessionContextsResponse",
@@ -5270,22 +4198,22 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ExperimentWatchHighlight" });
     case 4:
-      return S.Array(ExperimentWatchHighlight);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kind: ExperimentWatchCardKindEnum,
+          kind: S.String,
           event: S.String,
           variant: S.String,
-          strength: S.NullOr(ExperimentWatchCardStrengthEnum),
+          strength: S.NullOr(S.String),
           metric_name: S.NullOr(S.String),
           recording_count: S.Number,
-          session_ids: ExperimentWatchCardSessionIdsList,
-          highlights: ExperimentWatchCardHighlightsList,
+          session_ids: __S(12, __c1, 4),
+          highlights: __S(68, __c8, 4),
         }),
       ).annotate({ identifier: "ExperimentWatchCard" });
     case 6:
-      return S.Array(ExperimentWatchCard);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5299,15 +4227,15 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExperimentWatchVariant);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cards: ExperimentSessionEventDeltaResponseCardsList,
-          variants: ExperimentSessionEventDeltaResponseVariantsList,
+          cards: __S(70, __c8, 6),
+          variants: __S(72, __c9, 0),
           multiple_variant_persons: S.Number,
-          multiple_variant_handling: ExperimentWatchMultipleVariantHandlingEnum,
-          metric_events: ExperimentSessionEventDeltaResponseMetricEventsList,
+          multiple_variant_handling: S.String,
+          metric_events: __S(12, __c1, 4),
           date_from: S.String,
           date_to: S.String,
           filter_test_accounts: S.Boolean,
@@ -5318,22 +4246,22 @@ function __c9(j: number): any {
           max_card_recordings: S.Number,
           dropped_duplicate_cards: S.Number,
           too_early: S.Boolean,
-          empty_reason: S.NullOr(ExperimentWatchEmptyReasonEnum),
+          empty_reason: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ExperimentSessionEventDeltaResponse",
       });
     case 2:
-      return S.Array(ExperimentSetupPropertyFilterListItem);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           target_event: S.optional(S.NullOr(S.String)),
           target_url_contains: S.optional(S.NullOr(S.String)),
-          target_properties: S.optional(S.NullOr(ExperimentSetupPropertyFilterList)),
+          target_properties: S.optional(S.NullOr(__S(74, __c9, 2))),
           metric_event: S.optional(S.NullOr(S.String)),
-          metric_properties: S.optional(S.NullOr(ExperimentSetupPropertyFilterList)),
+          metric_properties: S.optional(S.NullOr(__S(74, __c9, 2))),
           previous_experiments_limit: S.optional(S.Number),
           shared_metrics_limit: S.optional(S.Number),
         }).pipe(
@@ -5369,8 +4297,8 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: SetupContextSectionStatusEnum,
-          data: S.NullOr(ExperimentSetupTeamDefaults),
+          status: S.String,
+          data: S.NullOr(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "ExperimentSetupTeamDefaultsSection",
@@ -5379,7 +4307,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lib: S.NullOr(S.String),
-          category: SdkLibCategoryEnum,
+          category: S.String,
           calls: S.Number,
           distinct_ids: S.Number,
           device_id_share: S.Number,
@@ -5388,7 +4316,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ExperimentSetupSdkLib" });
     case 7:
-      return S.Array(ExperimentSetupSdkLib);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -5397,7 +4325,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lib: S.NullOr(S.String),
-          category: SdkLibCategoryEnum,
+          category: S.String,
           events: S.Number,
           distinct_ids: S.Number,
         }),
@@ -5405,19 +4333,19 @@ function __c10(j: number): any {
         identifier: "ExperimentSetupLibActivity",
       });
     case 1:
-      return S.Array(ExperimentSetupLibActivity);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           window_days: S.Number,
           source_event: S.String,
           computed_at: S.String,
-          libs: ExperimentSetupSdkProfileLibsList,
+          libs: __S(79, __c9, 7),
           libs_truncated: S.Boolean,
           flags_seen: S.Number,
           flags_evaluated_on_server_and_web: S.Number,
           evaluated_on_server_and_web: S.Boolean,
-          libs_on_any_event: S.NullOr(ExperimentSetupSdkProfileLibsOnAnyEventList),
+          libs_on_any_event: S.NullOr(__S(81, __c10, 1)),
           libs_on_any_event_truncated: S.Boolean,
         }),
       ).annotate({
@@ -5426,8 +4354,8 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: SetupContextSectionStatusEnum,
-          data: S.NullOr(ExperimentSetupSdkProfile),
+          status: S.String,
+          data: S.NullOr(__S(82, __c10, 2)),
         }),
       ).annotate({
         identifier: "ExperimentSetupSdkProfileSection",
@@ -5436,26 +4364,26 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lib: S.NullOr(S.String),
-          category: SdkLibCategoryEnum,
+          category: S.String,
           unique_persons: S.Number,
           anonymous_share: S.NullOr(S.Number),
           device_id_share: S.Number,
         }),
       ).annotate({ identifier: "ExperimentSetupLibReach" });
     case 5:
-      return S.Array(ExperimentSetupLibReach);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           window_days: S.Number,
           source_event: S.String,
           target_url_contains: S.NullOr(S.String),
-          target_properties: ExperimentSetupPropertyFilterList,
+          target_properties: __S(74, __c9, 2),
           computed_at: S.String,
           test_accounts_filtered: S.Boolean,
           unique_persons: S.Number,
           exposures_per_day_estimate: S.Number,
-          libs: ExperimentSetupTargetSurfaceLibsList,
+          libs: __S(85, __c10, 5),
           libs_truncated: S.Boolean,
           anonymous_share: S.NullOr(S.Number),
           device_id_share: S.NullOr(S.Number),
@@ -5466,8 +4394,8 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: SetupContextSectionStatusEnum,
-          data: S.NullOr(ExperimentSetupTargetSurface),
+          status: S.String,
+          data: S.NullOr(__S(86, __c10, 6)),
         }),
       ).annotate({
         identifier: "ExperimentSetupTargetSurfaceSection",
@@ -5481,7 +4409,7 @@ function __c11(j: number): any {
         S.Struct({
           number_of_samples: S.Number,
           sum: S.Number,
-          step_counts: ExperimentSetupFunnelBaselineStepCountsList,
+          step_counts: __S(35, __c4, 3),
         }),
       ).annotate({
         identifier: "ExperimentSetupFunnelBaseline",
@@ -5501,15 +4429,15 @@ function __c11(j: number): any {
         S.Struct({
           window_days: S.Number,
           source_event: S.String,
-          metric_properties: ExperimentSetupPropertyFilterList,
+          metric_properties: __S(74, __c9, 2),
           target_event: S.NullOr(S.String),
           computed_at: S.String,
           test_accounts_filtered: S.Boolean,
           persons_reached: S.NullOr(S.Number),
           persons_converted: S.NullOr(S.Number),
           conversion_rate: S.NullOr(S.Number),
-          funnel_baseline_stats: S.NullOr(ExperimentSetupFunnelBaseline),
-          mean_count_baseline_stats: S.NullOr(ExperimentSetupMeanCountBaseline),
+          funnel_baseline_stats: S.NullOr(__S(88, __c11, 0)),
+          mean_count_baseline_stats: S.NullOr(__S(89, __c11, 1)),
           note: S.NullOr(S.String),
           event_volume: S.NullOr(S.Number),
           unique_persons: S.NullOr(S.Number),
@@ -5520,14 +4448,14 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: SetupContextSectionStatusEnum,
-          data: S.NullOr(ExperimentSetupCandidateMetric),
+          status: S.String,
+          data: S.NullOr(__S(90, __c11, 2)),
         }),
       ).annotate({
         identifier: "ExperimentSetupCandidateMetricSection",
       });
     case 4:
-      return S.Array(ExperimentSetupStoredPropertyFilterListItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5545,7 +4473,7 @@ function __c11(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          state: PreviousExperimentStateEnum,
+          state: S.String,
           created_at: S.String,
           start_date: S.NullOr(S.String),
           end_date: S.NullOr(S.String),
@@ -5555,7 +4483,7 @@ function __c11(j: number): any {
           split_even: S.NullOr(S.Boolean),
           serving_single_variant: S.NullOr(S.String),
           rollout_percentage: S.NullOr(S.Number),
-          multiple_variant_handling: ExperimentWatchMultipleVariantHandlingEnum,
+          multiple_variant_handling: S.String,
           multiple_variant_handling_set: S.Boolean,
           ensure_experience_continuity: S.Boolean,
           bucketing_identifier: S.String,
@@ -5563,26 +4491,26 @@ function __c11(j: number): any {
           group_aggregation: S.Boolean,
           custom_exposure_event: S.NullOr(S.String),
           custom_exposure_action_id: S.NullOr(S.Number),
-          exposure_property_filters: ExperimentSetupStoredPropertyFilterList,
+          exposure_property_filters: __S(92, __c11, 4),
           activation_event: S.NullOr(S.String),
           activation_action_id: S.NullOr(S.Number),
           filter_test_accounts: S.Boolean,
           primary_metric_count: S.Number,
           secondary_metric_count: S.Number,
           shared_metric_count: S.Number,
-          primary_metric_types: ExperimentSetupPreviousExperimentPrimaryMetricTypesList,
-          primary_metric_events: ExperimentSetupPreviousExperimentPrimaryMetricEventsList,
-          primary_metric_action_ids: ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList,
+          primary_metric_types: __S(12, __c1, 4),
+          primary_metric_events: __S(12, __c1, 4),
+          primary_metric_action_ids: __S(35, __c4, 3),
           minimum_detectable_effect: S.NullOr(S.Number),
           stats_method: S.String,
           has_holdout: S.Boolean,
-          outcome: S.NullOr(ExperimentSetupOutcome),
+          outcome: S.NullOr(__S(93, __c11, 5)),
         }),
       ).annotate({
         identifier: "ExperimentSetupPreviousExperiment",
       });
     case 7:
-      return S.Array(ExperimentSetupPreviousExperiment);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -5610,8 +4538,8 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          experiments: ExperimentSetupPreviousExperimentsExperimentsList,
-          summary: ExperimentSetupPreviousExperimentsSummary,
+          experiments: __S(95, __c11, 7),
+          summary: __S(96, __c12, 0),
         }),
       ).annotate({
         identifier: "ExperimentSetupPreviousExperiments",
@@ -5619,8 +4547,8 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: SetupContextSectionStatusEnum,
-          data: S.NullOr(ExperimentSetupPreviousExperiments),
+          status: S.String,
+          data: S.NullOr(__S(97, __c12, 1)),
         }),
       ).annotate({
         identifier: "ExperimentSetupPreviousExperimentsSection",
@@ -5631,25 +4559,25 @@ function __c12(j: number): any {
           id: S.Number,
           name: S.String,
           metric_type: S.NullOr(S.String),
-          events: ExperimentSetupSharedMetricEventsList,
-          action_ids: ExperimentSetupSharedMetricActionIdsList,
+          events: __S(12, __c1, 4),
+          action_ids: __S(35, __c4, 3),
           used_as_primary: S.Number,
           used_as_secondary: S.Number,
           last_used_at: S.NullOr(S.String),
           matches_metric_event: S.NullOr(S.Boolean),
-          metric_event_roles: S.NullOr(ExperimentSetupSharedMetricMetricEventRolesList),
+          metric_event_roles: S.NullOr(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "ExperimentSetupSharedMetric",
       });
     case 4:
-      return S.Array(ExperimentSetupSharedMetric);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           metric_event: S.NullOr(S.String),
           metric_event_match_truncated: S.Boolean,
-          metrics: ExperimentSetupSharedMetricsMetricsList,
+          metrics: __S(100, __c12, 4),
         }),
       ).annotate({
         identifier: "ExperimentSetupSharedMetrics",
@@ -5657,8 +4585,8 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: SetupContextSectionStatusEnum,
-          data: S.NullOr(ExperimentSetupSharedMetrics),
+          status: S.String,
+          data: S.NullOr(__S(101, __c12, 5)),
         }),
       ).annotate({
         identifier: "ExperimentSetupSharedMetricsSection",
@@ -5666,12 +4594,12 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          team_defaults: ExperimentSetupTeamDefaultsSection,
-          sdk_profile: ExperimentSetupSdkProfileSection,
-          target_surface: ExperimentSetupTargetSurfaceSection,
-          candidate_metric: ExperimentSetupCandidateMetricSection,
-          previous_experiments: ExperimentSetupPreviousExperimentsSection,
-          shared_metrics: ExperimentSetupSharedMetricsSection,
+          team_defaults: __S(77, __c9, 5),
+          sdk_profile: __S(83, __c10, 3),
+          target_surface: __S(87, __c10, 7),
+          candidate_metric: __S(91, __c11, 3),
+          previous_experiments: __S(98, __c12, 2),
+          shared_metrics: __S(102, __c12, 6),
         }),
       ).annotate({
         identifier: "ExperimentSetupContextResponse",
@@ -5685,7 +4613,7 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           open_cleanup_pr: S.optional(S.Boolean),
           repository: S.optional(S.NullOr(S.String)),
@@ -5737,9 +4665,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ids: S.optional(ExperimentsBulkUpdateTagsCreateRequestIdsList),
-          action: S.optional(BulkUpdateTagsActionEnum),
-          tags: S.optional(ExperimentsBulkUpdateTagsCreateRequestTagsList),
+          ids: S.optional(__S(35, __c4, 3)),
+          action: S.optional(S.String),
+          tags: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5754,11 +4682,11 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          tags: S.optional(BulkUpdateTagsItemTagsList),
+          tags: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsItem" });
     case 5:
-      return S.Array(BulkUpdateTagsItem);
+      return S.Array(__S(108, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5767,7 +4695,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "BulkUpdateTagsError" });
     case 7:
-      return S.Array(BulkUpdateTagsError);
+      return S.Array(__S(110, __c13, 6));
   }
 }
 function __c14(j: number): any {
@@ -5775,8 +4703,8 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          updated: S.optional(BulkUpdateTagsResponseUpdatedList),
-          skipped: S.optional(BulkUpdateTagsResponseSkippedList),
+          updated: S.optional(__S(109, __c13, 5)),
+          skipped: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsResponse" });
     case 1:
@@ -5808,48 +4736,32 @@ function __c14(j: number): any {
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(
-            S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList),
-          ),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(45, __c5, 5))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(
-            S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList),
-          ),
+          saved_metrics_ids: S.optional(S.NullOr(__S(46, __c5, 6))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-          metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-          metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
+          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
+          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(
-            S.NullOr(
-              ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList,
-            ),
-          ),
-          secondary_metrics_ordered_uuids: S.optional(
-            S.NullOr(
-              ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList,
-            ),
-          ),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(
-            S.NullOr(
-              ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap,
-            ),
-          ),
-          tags: S.optional(ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList),
+          original_experiment: S.optional(S.NullOr(__S(47, __c5, 7))),
+          tags: S.optional(__S(45, __c5, 5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5865,14 +4777,14 @@ function __c14(j: number): any {
         identifier: "ExperimentsCreateExposureCohortForExperimentCreateResponse",
       });
     case 4:
-      return S.Array(TemplatesEnum);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           prompt_name: S.String,
-          versions: ExperimentsCreateFromPromptCreateRequestVersionsList,
-          templates: ExperimentsCreateFromPromptCreateRequestTemplatesList,
+          versions: __S(35, __c4, 3),
+          templates: __S(116, __c14, 4),
           name: S.optional(S.String),
           feature_flag_key: S.optional(S.String),
           description: S.optional(S.String),
@@ -5920,42 +4832,32 @@ function __c15(j: number): any {
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(
-            S.NullOr(ExperimentsDuplicateCreateRequestExcludedVariantsList),
-          ),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(
-            S.NullOr(ExperimentsDuplicateCreateRequestSavedMetricsIdsList),
-          ),
+          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-          metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-          metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
+          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
+          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(
-            S.NullOr(ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList),
-          ),
-          secondary_metrics_ordered_uuids: S.optional(
-            S.NullOr(ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList),
-          ),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(
-            S.NullOr(ExperimentsDuplicateCreateRequestOriginalExperimentMap),
-          ),
-          tags: S.optional(ExperimentsDuplicateCreateRequestTagsList),
+          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tags: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6067,7 +4969,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Change);
+      return S.Array(__S(127, __c15, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6088,9 +4990,9 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          changes: S.optional(DetailChangesList),
-          merge: S.optional(Merge),
-          trigger: S.optional(Trigger),
+          changes: S.optional(__S(128, __c16, 0)),
+          merge: S.optional(__S(129, __c16, 1)),
+          trigger: S.optional(__S(130, __c16, 2)),
           name: S.optional(S.String),
           short_id: S.optional(S.String),
           type: S.optional(S.String),
@@ -6104,7 +5006,7 @@ function __c16(j: number): any {
           activity: S.optional(S.String),
           scope: S.optional(S.String),
           item_id: S.optional(S.String),
-          detail: S.optional(Detail),
+          detail: S.optional(__S(131, __c16, 3)),
           created_at: S.optional(S.String),
           is_system: S.optional(S.Boolean),
           was_impersonated: S.optional(S.Boolean),
@@ -6112,11 +5014,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "ActivityLogEntry" });
     case 5:
-      return S.Array(ActivityLogEntry);
+      return S.Array(__S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(ActivityLogPaginatedResponseResultsList),
+          results: S.optional(__S(133, __c16, 5)),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
           total_count: S.optional(S.Number),
@@ -6147,8 +5049,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository: S.NullOr(S.String),
-          source: ExperimentFlagCleanupTargetSourceEnum,
-          candidates: ExperimentFlagCleanupTargetCandidatesList,
+          source: S.String,
+          candidates: __S(12, __c1, 4),
         }),
       ).annotate({
         identifier: "ExperimentFlagCleanupTarget",
@@ -6172,7 +5074,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           task_id: S.String,
-          run_status: RunStatusEnum,
+          run_status: S.String,
           is_terminal: S.Boolean,
           pr_url: S.NullOr(S.String),
           can_view_task: S.Boolean,
@@ -6217,7 +5119,7 @@ function __c17(j: number): any {
           order: S.optional(S.String.pipe(T.Query())),
           prompt_name: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(GetExperimentsMatchingIdsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6232,7 +5134,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ids: ExperimentMatchingIdsResponseIdsList,
+          ids: __S(35, __c4, 3),
           total: S.Number,
         }),
       ).annotate({
@@ -6262,7 +5164,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metric_uuid: S.String,
-          status: MetricRecalculationResultStatusEnum,
+          status: S.String,
           result: S.Unknown,
           error_message: S.NullOr(S.String),
         }),
@@ -6270,13 +5172,13 @@ function __c18(j: number): any {
         identifier: "MetricRecalculationResult",
       });
     case 1:
-      return S.Array(MetricRecalculationResult);
+      return S.Array(__S(144, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           experiment_id: S.Number,
-          status: MetricsRecalculationStatusEnum,
+          status: S.String,
           total_metrics: S.Number,
           completed_metrics: S.Number,
           failed_metrics: S.Number,
@@ -6286,7 +5188,7 @@ function __c18(j: number): any {
           completed_at: S.NullOr(S.String),
           query_to: S.NullOr(S.String),
           metric_retries: S.Unknown,
-          results: ExperimentMetricsRecalculationRunResultsList,
+          results: __S(145, __c18, 1),
           rows_read: S.optional(S.NullOr(S.Number)),
           estimated_rows_total: S.optional(S.NullOr(S.Number)),
         }),
@@ -6312,7 +5214,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: MetricsRecalculationStatusEnum,
+          status: S.String,
         }),
       ).annotate({ identifier: "ActiveRecalculationRun" });
     case 5:
@@ -6320,7 +5222,7 @@ function __c18(j: number): any {
         S.Struct({
           id: S.String,
           experiment_id: S.Number,
-          status: MetricsRecalculationStatusEnum,
+          status: S.String,
           total_metrics: S.Number,
           completed_metrics: S.Number,
           failed_metrics: S.Number,
@@ -6330,11 +5232,11 @@ function __c18(j: number): any {
           completed_at: S.NullOr(S.String),
           query_to: S.NullOr(S.String),
           metric_retries: S.Unknown,
-          results: ExperimentMetricsRecalculationLatestResultsList,
+          results: __S(145, __c18, 1),
           rows_read: S.optional(S.NullOr(S.Number)),
           estimated_rows_total: S.optional(S.NullOr(S.Number)),
-          active_run: S.NullOr(ActiveRecalculationRun),
-          result_source: ResultSourceEnum,
+          active_run: S.NullOr(__S(148, __c18, 4)),
+          result_source: S.String,
         }),
       ).annotate({
         identifier: "ExperimentMetricsRecalculationLatest",
@@ -6368,11 +5270,9 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetExperimentsPromptTemplateResponseBodyItem);
+      return S.Array(__S(151, __c18, 7));
     case 1:
-      return S.suspend(() =>
-        GetExperimentsPromptTemplateResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(152, __c19, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetExperimentsPromptTemplateResponse",
       });
     case 2:
@@ -6435,7 +5335,7 @@ function __c19(j: number): any {
           order: S.optional(S.String.pipe(T.Query())),
           prompt_name: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListExperimentsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/experiments/", code: 200 }),
@@ -6450,28 +5350,28 @@ function __c19(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.String,
-          feature_flag: MinimalFeatureFlag,
-          holdout: ExperimentHoldout,
+          feature_flag: __S(26, __c3, 2),
+          holdout: __S(31, __c3, 7),
           exposure_cohort: S.NullOr(S.Number),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(S.NullOr(ExperimentBasicExcludedVariantsList)),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: UserBasic,
+          created_by: __S(30, __c3, 6),
           created_at: S.String,
           updated_at: S.String,
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          type: S.optional(S.NullOr(S.String)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
-          status: ExperimentStatusEnum,
+          status: S.String,
           is_legacy: S.Boolean,
           user_access_level: S.NullOr(S.String),
-          tags: S.optional(ExperimentBasicTagsList),
+          tags: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "ExperimentBasic" });
     case 7:
-      return S.Array(ExperimentBasic);
+      return S.Array(__S(158, __c19, 6));
   }
 }
 function __c20(j: number): any {
@@ -6482,7 +5382,7 @@ function __c20(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedExperimentBasicListResultsList,
+          results: __S(159, __c19, 7),
         }),
       ).annotate({
         identifier: "PaginatedExperimentBasicList",
@@ -6497,38 +5397,34 @@ function __c20(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.String,
-          feature_flag: S.optional(ExperimentFeatureFlagInput),
+          feature_flag: S.optional(__S(8, __c1, 0)),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(S.NullOr(UpdateExperimentRequestExcludedVariantsList)),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(UpdateExperimentRequestSavedMetricsIdsList)),
+          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-          metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-          metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
+          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
+          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(
-            S.NullOr(UpdateExperimentRequestPrimaryMetricsOrderedUuidsList),
-          ),
-          secondary_metrics_ordered_uuids: S.optional(
-            S.NullOr(UpdateExperimentRequestSecondaryMetricsOrderedUuidsList),
-          ),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(UpdateExperimentRequestOriginalExperimentMap)),
-          tags: S.optional(UpdateExperimentRequestTagsList),
+          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tags: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/experiments/{id}/", code: 200 }),
         ),
@@ -6543,44 +5439,34 @@ function __c20(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
-          feature_flag: S.optional(ExperimentFeatureFlagInput),
+          feature_flag: S.optional(__S(8, __c1, 0)),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(ExperimentParameters)),
-          running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-          excluded_variants: S.optional(
-            S.NullOr(UpdateExperimentsPartialRequestExcludedVariantsList),
-          ),
+          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(
-            S.NullOr(UpdateExperimentsPartialRequestSavedMetricsIdsList),
-          ),
+          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(ExperimentTypeEnum)),
-          exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-          metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-          metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
+          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
+          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
-          conclusion: S.optional(S.NullOr(ConclusionEnum)),
+          conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(
-            S.NullOr(UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList),
-          ),
-          secondary_metrics_ordered_uuids: S.optional(
-            S.NullOr(UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList),
-          ),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(
-            S.NullOr(UpdateExperimentsPartialRequestOriginalExperimentMap),
-          ),
-          tags: S.optional(UpdateExperimentsPartialRequestTagsList),
+          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tags: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6592,4 +5478,9 @@ function __c20(j: number): any {
         identifier: "UpdateExperimentsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

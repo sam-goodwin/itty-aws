@@ -6,6 +6,8 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -14,8 +16,6 @@ export interface CreateProxyRequest {
   environmentName?: string;
   region?: string;
 }
-const CreateProxyRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateProxyRequest>;
-
 /** TODO(erikbern): needs_prefix */
 export type ProxyIpStatus =
   | "PROXY_IP_STATUS_UNSPECIFIED"
@@ -23,19 +23,13 @@ export type ProxyIpStatus =
   | "PROXY_IP_STATUS_ONLINE"
   | "PROXY_IP_STATUS_TERMINATED"
   | "PROXY_IP_STATUS_UNHEALTHY";
-const ProxyIpStatus = S.String;
-
 export interface ProxyIp {
   proxyIp?: string;
   status?: ProxyIpStatus;
   createdAt?: number;
   environmentName?: string;
 }
-const ProxyIp = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ProxyIp>;
-
 export type ProxyIpList = Array<ProxyIp>;
-const ProxyIpList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ProxyIpList>;
-
 export interface Proxy {
   name?: string;
   createdAt?: number;
@@ -44,53 +38,31 @@ export interface Proxy {
   proxyId?: string;
   region?: string;
 }
-const Proxy = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Proxy>;
-
 export interface CreateProxyResponse {
   proxy?: Proxy;
 }
-const CreateProxyResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateProxyResponse>;
-
 export interface DeleteProxyRequest {
   proxyId?: string;
 }
-const DeleteProxyRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteProxyRequest>;
-
 export interface DeleteProxyResponse {}
-const DeleteProxyResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteProxyResponse>;
-
 export interface GetProxyRequest {
   name?: string;
   environmentName?: string;
 }
-const GetProxyRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetProxyRequest>;
-
 export interface GetProxyResponse {
   proxy?: Proxy;
 }
-const GetProxyResponse = CreateProxyResponse as any as S.Schema<GetProxyResponse>;
-
 export interface ListProxyRequest {}
-const ListProxyRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListProxyRequest>;
-
 export type ProxyList2 = Array<Proxy>;
-const ProxyList2 = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ProxyList2>;
-
 export interface ListProxyResponse {
   proxies?: ProxyList2;
 }
-const ListProxyResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListProxyResponse>;
-
 export interface ProxyAddIpRequest {
   proxyId?: string;
 }
-const ProxyAddIpRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ProxyAddIpRequest>;
-
 export interface ProxyAddIpResponse {
   proxyIp?: ProxyIp;
 }
-const ProxyAddIpResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ProxyAddIpResponse>;
-
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
   | "OBJECT_CREATION_TYPE_CREATE_IF_MISSING"
@@ -98,35 +70,19 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-const ObjectCreationType = S.String;
-
 export interface ProxyGetOrCreateRequest {
   deploymentName?: string;
   /** namespace */
   environmentName?: string;
   objectCreationType?: ObjectCreationType | (string & {});
 }
-const ProxyGetOrCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ProxyGetOrCreateRequest>;
-
 export interface ProxyGetOrCreateResponse {
   proxyId?: string;
 }
-const ProxyGetOrCreateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ProxyGetOrCreateResponse>;
-
 export interface ProxyRemoveIpRequest {
   proxyIp?: string;
 }
-const ProxyRemoveIpRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ProxyRemoveIpRequest>;
-
 export interface ProxyRemoveIpResponse {}
-const ProxyRemoveIpResponse = DeleteProxyResponse as any as S.Schema<ProxyRemoveIpResponse>;
-
 export type CreateProxyError = ModalOpError;
 export const createProxy: API.OperationMethod<
   CreateProxyRequest,
@@ -134,8 +90,8 @@ export const createProxy: API.OperationMethod<
   CreateProxyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProxyRequest,
-  output: CreateProxyResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProxyRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -148,8 +104,8 @@ export const deleteProxy: API.OperationMethod<
   DeleteProxyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProxyRequest,
-  output: DeleteProxyResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteProxyRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -162,8 +118,8 @@ export const getProxy: API.OperationMethod<
   GetProxyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProxyRequest,
-  output: GetProxyResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetProxyRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -176,8 +132,8 @@ export const listProxy: API.OperationMethod<
   ListProxyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProxyRequest,
-  output: ListProxyResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListProxyRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -191,8 +147,8 @@ export const proxyAddIp: API.OperationMethod<
   ProxyAddIpError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyAddIpRequest,
-  output: ProxyAddIpResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<ProxyAddIpRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ProxyAddIpResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -205,8 +161,8 @@ export const proxyGetOrCreate: API.OperationMethod<
   ProxyGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyGetOrCreateRequest,
-  output: ProxyGetOrCreateResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<ProxyGetOrCreateRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ProxyGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -219,8 +175,8 @@ export const proxyRemoveIp: API.OperationMethod<
   ProxyRemoveIpError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyRemoveIpRequest,
-  output: ProxyRemoveIpResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<ProxyRemoveIpRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ProxyRemoveIpResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -243,20 +199,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           proxyIp: S.optional(S.String),
-          status: S.optional(ProxyIpStatus),
+          status: S.optional(S.String),
           createdAt: S.optional(S.Number),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProxyIp" });
     case 2:
-      return S.Array(ProxyIp);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           createdAt: S.optional(S.Number),
           environmentName: S.optional(S.String),
-          proxyIps: S.optional(ProxyIpList),
+          proxyIps: S.optional(__S(2, __c0, 2)),
           proxyId: S.optional(S.String),
           region: S.optional(S.String),
         }),
@@ -264,7 +220,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          proxy: S.optional(Proxy),
+          proxy: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "CreateProxyResponse" });
     case 5:
@@ -297,11 +253,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListProxyRequest" });
     case 1:
-      return S.Array(Proxy);
+      return S.Array(__S(3, __c0, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          proxies: S.optional(ProxyList2),
+          proxies: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "ListProxyResponse" });
     case 3:
@@ -313,7 +269,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          proxyIp: S.optional(ProxyIp),
+          proxyIp: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ProxyAddIpResponse" });
     case 5:
@@ -321,7 +277,7 @@ function __c1(j: number): any {
         S.Struct({
           deploymentName: S.optional(S.String),
           environmentName: S.optional(S.String),
-          objectCreationType: S.optional(ObjectCreationType),
+          objectCreationType: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ProxyGetOrCreate", code: 200 }),
         ),
@@ -341,4 +297,9 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ProxyRemoveIpRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export interface GetUserinfoRequest {}
-const GetUserinfoRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetUserinfoRequest>;
-
 export interface Userinfo {
   /** The user's email address. */
   email?: string;
@@ -89,19 +89,10 @@ export interface Userinfo {
   /** Boolean flag which is true if the email address is verified. Always verified because we only return the user's primary email address. */
   verified_email?: boolean;
 }
-const Userinfo = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Userinfo>;
-
 export interface GetUserinfoV2MeRequest {}
-const GetUserinfoV2MeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetUserinfoV2MeRequest>;
-
 export interface TokeninfoRequest {
   id_token?: string;
 }
-const TokeninfoRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TokeninfoRequest>;
-
 export interface Tokeninfo {
   /** Who is the intended audience for this token. In general the same as issued_to. */
   audience?: string;
@@ -118,8 +109,6 @@ export interface Tokeninfo {
   /** Boolean flag which is true if the email address is verified. Present only if the email scope is present in the request. */
   verified_email?: boolean;
 }
-const Tokeninfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Tokeninfo>;
-
 export type GetUserinfoError = NotFound | Forbidden | GcpOpError;
 export const getUserinfo: API.OperationMethod<
   GetUserinfoRequest,
@@ -127,8 +116,8 @@ export const getUserinfo: API.OperationMethod<
   GetUserinfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserinfoRequest,
-  output: Userinfo,
+  input: __S(0, __c0, 0) as any as S.Schema<GetUserinfoRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Userinfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -141,8 +130,8 @@ export const getUserinfoV2Me: API.OperationMethod<
   GetUserinfoV2MeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserinfoV2MeRequest,
-  output: Userinfo,
+  input: __S(2, __c0, 2) as any as S.Schema<GetUserinfoV2MeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Userinfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -155,8 +144,8 @@ export const tokeninfo: API.OperationMethod<
   Tokeninfo_Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokeninfoRequest,
-  output: Tokeninfo,
+  input: __S(3, __c0, 3) as any as S.Schema<TokeninfoRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<Tokeninfo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -222,4 +211,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Tokeninfo" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

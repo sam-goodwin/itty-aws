@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -72,22 +74,12 @@ export interface ActivateSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-const ActivateSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateSubscriptionsRequest>;
-
 export interface SubscriptionTrialSettings {
   /** Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example Epoch converter. */
   trialEndTime?: string;
   /** Determines if a subscription's plan is in a 30-day free trial or not: - `true` -- The plan is in trial. - `false` -- The plan is not in trial. */
   isInTrial?: boolean;
 }
-const SubscriptionTrialSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SubscriptionTrialSettings>;
-
 /** JSON template for a subscription renewal settings. */
 export interface RenewalSettings {
   /** Identifies the resource as a subscription renewal setting. Value: `subscriptions#renewalSettings` */
@@ -95,8 +87,6 @@ export interface RenewalSettings {
   /** Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. When renewing a subscription, the `renewalType` is a required property. */
   renewalType?: string;
 }
-const RenewalSettings = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RenewalSettings>;
-
 /** JSON template for subscription seats. */
 export interface Seats {
   /** This is a required property and is exclusive to subscriptions with `FLEXIBLE` or `TRIAL` plans. This property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of users in the customer account. *Note: *G Suite subscriptions automatically assign a license to every user. */
@@ -108,8 +98,6 @@ export interface Seats {
   /** This is a required property and is exclusive to subscriptions with `ANNUAL_MONTHLY_PAY` and `ANNUAL_YEARLY_PAY` plans. This property sets the maximum number of licenses assignable to users on a subscription. The reseller can add more licenses, but once set, the `numberOfSeats` cannot be reduced until renewal. The reseller is invoiced based on the `numberOfSeats` value regardless of how many of these user licenses are assigned. *Note: *Google Workspace subscriptions automatically assign a license to every user. */
   numberOfSeats?: number;
 }
-const Seats = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Seats>;
-
 export interface SubscriptionTransferInfo {
   /** The `skuId` of the current resold subscription. This is populated only when the customer has a subscription with a legacy SKU and the subscription resource is populated with the `skuId` of the SKU recommended for the transfer. */
   currentLegacySkuId?: string;
@@ -118,25 +106,13 @@ export interface SubscriptionTransferInfo {
   /** The time when transfer token or intent to transfer will expire. The time is in milliseconds using UNIX Epoch format. */
   transferabilityExpirationTime?: string;
 }
-const SubscriptionTransferInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<SubscriptionTransferInfo>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
-
 export interface SubscriptionPlanCommitmentInterval {
   /** An annual commitment plan's interval's `endTime` in milliseconds using the UNIX Epoch format. See an example Epoch converter. */
   endTime?: string;
   /** An annual commitment plan's interval's `startTime` in milliseconds using UNIX Epoch format. See an example Epoch converter. */
   startTime?: string;
 }
-const SubscriptionPlanCommitmentInterval = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<SubscriptionPlanCommitmentInterval>;
-
 export interface SubscriptionPlan {
   /** In this version of the API, annual commitment plan's interval is one year. *Note: *When `billingMethod` value is `OFFLINE`, the subscription property object `plan.commitmentInterval` is omitted in all API responses. */
   commitmentInterval?: SubscriptionPlanCommitmentInterval;
@@ -145,8 +121,6 @@ export interface SubscriptionPlan {
   /** The `planName` property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts. Possible values are: - `ANNUAL_MONTHLY_PAY` -- The annual commitment plan with monthly payments. *Caution: *`ANNUAL_MONTHLY_PAY` is returned as `ANNUAL` in all API responses. - `ANNUAL_YEARLY_PAY` -- The annual commitment plan with yearly payments - `FLEXIBLE` -- The flexible plan - `TRIAL` -- The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling `changePlan` will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling `startPaidService`. - `FREE` -- The free plan is exclusive to the Cloud Identity SKU and does not incur any billing. */
   planName?: string;
 }
-const SubscriptionPlan = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SubscriptionPlan>;
-
 /** JSON template for a subscription. */
 export interface Subscription {
   /** Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU names are subject to change at Google's discretion. For products and SKUs available in this version of the API, see Product and SKU IDs. */
@@ -186,8 +160,6 @@ export interface Subscription {
   /** The `creationTime` property is the date when subscription was created. It is in milliseconds using the Epoch format. See an example Epoch converter. */
   creationTime?: string;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Subscription>;
-
 /** JSON template for the ChangePlan rpc request. */
 export interface ChangePlanRequest {
   /** Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in `changePlan` request in order to receive discounted rate. This property is optional. If a deal code has already been added to a subscription, this property may be left empty and the existing discounted rate will still apply (if not empty, only provide the deal code that is already present on the subscription). If a deal code has never been added to a subscription and this property is left blank, regular pricing will apply. */
@@ -201,8 +173,6 @@ export interface ChangePlanRequest {
   /** This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a `purchaseOrderId` value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. */
   purchaseOrderId?: string;
 }
-const ChangePlanRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ChangePlanRequest>;
-
 export interface ChangePlanSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
@@ -211,11 +181,6 @@ export interface ChangePlanSubscriptionsRequest {
   /** Request body */
   body?: ChangePlanRequest;
 }
-const ChangePlanSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ChangePlanSubscriptionsRequest>;
-
 export interface ChangeRenewalSettingsSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
@@ -224,11 +189,6 @@ export interface ChangeRenewalSettingsSubscriptionsRequest {
   /** Request body */
   body?: RenewalSettings;
 }
-const ChangeRenewalSettingsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>;
-
 export interface ChangeSeatsSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
@@ -237,17 +197,10 @@ export interface ChangeSeatsSubscriptionsRequest {
   /** Request body */
   body?: Seats;
 }
-const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ChangeSeatsSubscriptionsRequest>;
-
 export type DeleteSubscriptionsDeletionTypeEnum =
   | "deletion_type_undefined"
   | "cancel"
   | "transfer_to_direct";
-const DeleteSubscriptionsDeletionTypeEnum = S.String;
-
 export interface DeleteSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
@@ -256,23 +209,11 @@ export interface DeleteSubscriptionsRequest {
   /** The `deletionType` query string enables the cancellation, downgrade, or suspension of a subscription. */
   deletionType: DeleteSubscriptionsDeletionTypeEnum | (string & {});
 }
-const DeleteSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteSubscriptionsRequest>;
-
 export interface DeleteSubscriptionsResponse {}
-const DeleteSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteSubscriptionsResponse>;
-
 export interface GetCustomersRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
 }
-const GetCustomersRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetCustomersRequest>;
-
 /** JSON template for address of a customer. */
 export interface Address {
   /** For `countryCode` information, see the ISO 3166 country code elements. Verify that country is approved for resale of Google products. This property is required when creating a new customer. */
@@ -296,18 +237,12 @@ export interface Address {
   /** A customer's physical address. An address can be composed of one to three lines. The `addressline2` and `addressLine3` are optional. */
   addressLine1?: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Address>;
-
 export type CustomerCustomerTypeEnum = "customerTypeUnspecified" | "domain" | "team";
-const CustomerCustomerTypeEnum = S.String;
-
 /** JSON template for primary admin in case of TEAM customers */
 export interface PrimaryAdmin {
   /** The business email of the primary administrator of the customer. The email verification link is sent to this email address at the time of customer creation. Primary administrators have access to the customer's Admin Console, including the ability to invite and evict users and manage the administrative needs of the customer. */
   primaryEmail?: string;
 }
-const PrimaryAdmin = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PrimaryAdmin>;
-
 /** When a Google customer's account is registered with a reseller, the customer's subscriptions for Google services are managed by this reseller. A customer is described by a primary domain name and a physical address. */
 export interface Customer {
   /** Like the "Customer email" in the reseller tools, this email is the secondary contact used if something happens to the customer's service such as service outage or a security issue. This property is required when creating a new "domain" customer and should not use the same domain as `customerDomain`. The `alternateEmail` field is not necessary to create a "team" customer. */
@@ -331,25 +266,13 @@ export interface Customer {
   /** URL to customer's Admin console dashboard. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task in the Admin console. */
   resourceUiUrl?: string;
 }
-const Customer = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Customer>;
-
 export interface GetSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-const GetSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetSubscriptionsRequest>;
-
 export interface GetwatchdetailsResellernotifyRequest {}
-const GetwatchdetailsResellernotifyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetwatchdetailsResellernotifyRequest>;
-
 /** JSON template for resellernotify getwatchdetails response. */
 export interface ResellernotifyGetwatchdetailsResponse {
   /** Topic name of the PubSub */
@@ -357,25 +280,13 @@ export interface ResellernotifyGetwatchdetailsResponse {
   /** List of registered service accounts. */
   serviceAccountEmailAddresses?: StringList;
 }
-const ResellernotifyGetwatchdetailsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>;
-
 export interface InsertCustomersRequest {
   /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
   customerAuthToken?: string;
   /** Request body */
   body?: Customer;
 }
-const InsertCustomersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<InsertCustomersRequest>;
-
 export type InsertSubscriptionsActionEnum = "actionUnspecified" | "buy" | "switch";
-const InsertSubscriptionsActionEnum = S.String;
-
 export interface InsertSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
@@ -388,11 +299,6 @@ export interface InsertSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const InsertSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<InsertSubscriptionsRequest>;
-
 export interface ListSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId?: string;
@@ -405,14 +311,7 @@ export interface ListSubscriptionsRequest {
   /** When retrieving a large list, the `maxResults` is the maximum number of results per page. The `nextPageToken` value takes you to the next page. The default is 20. */
   maxResults?: number;
 }
-const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListSubscriptionsRequest>;
-
 export type SubscriptionList = Array<Subscription>;
-const SubscriptionList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SubscriptionList>;
-
 /** A subscription manages the relationship of a Google customer's payment plan with a product's SKU, user licenses, 30-day free trial status, and renewal options. A primary role of a reseller is to manage the Google customer's subscriptions. */
 export interface Subscriptions {
   /** The subscriptions in this page of results. */
@@ -422,80 +321,43 @@ export interface Subscriptions {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
-const Subscriptions = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Subscriptions>;
-
 export interface PatchCustomersRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
   /** Request body */
   body?: Customer;
 }
-const PatchCustomersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PatchCustomersRequest>;
-
 export interface RegisterResellernotifyRequest {
   /** The service account which will own the created Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
-const RegisterResellernotifyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<RegisterResellernotifyRequest>;
-
 /** JSON template for resellernotify response. */
 export interface ResellernotifyResource {
   /** Topic name of the PubSub */
   topicName?: string;
 }
-const ResellernotifyResource = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ResellernotifyResource>;
-
 export interface StartPaidServiceSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-const StartPaidServiceSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<StartPaidServiceSubscriptionsRequest>;
-
 export interface SuspendSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-const SuspendSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<SuspendSubscriptionsRequest>;
-
 export interface UnregisterResellernotifyRequest {
   /** The service account which owns the Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
-const UnregisterResellernotifyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UnregisterResellernotifyRequest>;
-
 export interface UpdateCustomersRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
   /** Request body */
   body?: Customer;
 }
-const UpdateCustomersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UpdateCustomersRequest>;
-
 export type ActivateSubscriptionsError =
   | NotFound
   | Forbidden
@@ -509,8 +371,8 @@ export const activateSubscriptions: API.OperationMethod<
   ActivateSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateSubscriptionsRequest,
-  output: Subscription,
+  input: __S(0, __c0, 0) as any as S.Schema<ActivateSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -529,8 +391,8 @@ export const changePlanSubscriptions: API.OperationMethod<
   ChangePlanSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangePlanSubscriptionsRequest,
-  output: Subscription,
+  input: __S(10, __c1, 2) as any as S.Schema<ChangePlanSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -549,8 +411,8 @@ export const changeRenewalSettingsSubscriptions: API.OperationMethod<
   ChangeRenewalSettingsSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeRenewalSettingsSubscriptionsRequest,
-  output: Subscription,
+  input: __S(11, __c1, 3) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -569,8 +431,8 @@ export const changeSeatsSubscriptions: API.OperationMethod<
   ChangeSeatsSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeSeatsSubscriptionsRequest,
-  output: Subscription,
+  input: __S(12, __c1, 4) as any as S.Schema<ChangeSeatsSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -589,8 +451,8 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionsRequest,
-  output: DeleteSubscriptionsResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteSubscriptionsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -604,8 +466,8 @@ export const getCustomers: API.OperationMethod<
   GetCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersRequest,
-  output: Customer,
+  input: __S(15, __c1, 7) as any as S.Schema<GetCustomersRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -619,8 +481,8 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionsRequest,
-  output: Subscription,
+  input: __S(19, __c2, 3) as any as S.Schema<GetSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -634,8 +496,8 @@ export const getwatchdetailsResellernotify: API.OperationMethod<
   GetwatchdetailsResellernotifyError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetwatchdetailsResellernotifyRequest,
-  output: ResellernotifyGetwatchdetailsResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<GetwatchdetailsResellernotifyRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -654,8 +516,8 @@ export const insertCustomers: API.OperationMethod<
   InsertCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertCustomersRequest,
-  output: Customer,
+  input: __S(22, __c2, 6) as any as S.Schema<InsertCustomersRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -674,8 +536,8 @@ export const insertSubscriptions: API.OperationMethod<
   InsertSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertSubscriptionsRequest,
-  output: Subscription,
+  input: __S(23, __c2, 7) as any as S.Schema<InsertSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -690,8 +552,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Subscriptions
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSubscriptionsRequest,
-  output: Subscriptions,
+  input: __S(24, __c3, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Subscriptions>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -711,8 +573,8 @@ export const patchCustomers: API.OperationMethod<
   PatchCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCustomersRequest,
-  output: Customer,
+  input: __S(27, __c3, 3) as any as S.Schema<PatchCustomersRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -731,8 +593,8 @@ export const registerResellernotify: API.OperationMethod<
   RegisterResellernotifyError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterResellernotifyRequest,
-  output: ResellernotifyResource,
+  input: __S(28, __c3, 4) as any as S.Schema<RegisterResellernotifyRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ResellernotifyResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -751,8 +613,8 @@ export const startPaidServiceSubscriptions: API.OperationMethod<
   StartPaidServiceSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartPaidServiceSubscriptionsRequest,
-  output: Subscription,
+  input: __S(30, __c3, 6) as any as S.Schema<StartPaidServiceSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -771,8 +633,8 @@ export const suspendSubscriptions: API.OperationMethod<
   SuspendSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SuspendSubscriptionsRequest,
-  output: Subscription,
+  input: __S(31, __c3, 7) as any as S.Schema<SuspendSubscriptionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -791,8 +653,8 @@ export const unregisterResellernotify: API.OperationMethod<
   UnregisterResellernotifyError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnregisterResellernotifyRequest,
-  output: ResellernotifyResource,
+  input: __S(32, __c4, 0) as any as S.Schema<UnregisterResellernotifyRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ResellernotifyResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -811,8 +673,8 @@ export const updateCustomers: API.OperationMethod<
   UpdateCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomersRequest,
-  output: Customer,
+  input: __S(33, __c4, 1) as any as S.Schema<UpdateCustomersRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -883,7 +745,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          commitmentInterval: S.optional(SubscriptionPlanCommitmentInterval),
+          commitmentInterval: S.optional(__S(6, __c0, 6)),
           isCommitmentPlan: S.optional(S.Boolean),
           planName: S.optional(S.String),
         }),
@@ -896,22 +758,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           skuName: S.optional(S.String),
-          trialSettings: S.optional(SubscriptionTrialSettings),
+          trialSettings: S.optional(__S(1, __c0, 1)),
           customerDomain: S.optional(S.String),
           billingMethod: S.optional(S.String),
           purchaseOrderId: S.optional(S.String),
           dealCode: S.optional(S.String),
           customerId: S.optional(S.String),
-          renewalSettings: S.optional(RenewalSettings),
+          renewalSettings: S.optional(__S(2, __c0, 2)),
           status: S.optional(S.String),
-          seats: S.optional(Seats),
-          transferInfo: S.optional(SubscriptionTransferInfo),
+          seats: S.optional(__S(3, __c0, 3)),
+          transferInfo: S.optional(__S(4, __c0, 4)),
           resourceUiUrl: S.optional(S.String),
           kind: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           skuId: S.optional(S.String),
-          suspensionReasons: S.optional(StringList),
-          plan: S.optional(SubscriptionPlan),
+          suspensionReasons: S.optional(__S(5, __c0, 5)),
+          plan: S.optional(__S(7, __c0, 7)),
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subscription" });
@@ -920,7 +782,7 @@ function __c1(j: number): any {
         S.Struct({
           dealCode: S.optional(S.String),
           kind: S.optional(S.String),
-          seats: S.optional(Seats),
+          seats: S.optional(__S(3, __c0, 3)),
           planName: S.optional(S.String),
           purchaseOrderId: S.optional(S.String),
         }),
@@ -930,7 +792,7 @@ function __c1(j: number): any {
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
-          body: S.optional(ChangePlanRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -946,7 +808,7 @@ function __c1(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(RenewalSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -962,7 +824,7 @@ function __c1(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(Seats.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -978,7 +840,7 @@ function __c1(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          deletionType: DeleteSubscriptionsDeletionTypeEnum.pipe(T.Query()),
+          deletionType: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1034,13 +896,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alternateEmail: S.optional(S.String),
-          postalAddress: S.optional(Address),
+          postalAddress: S.optional(__S(16, __c2, 0)),
           customerDomainVerified: S.optional(S.Boolean),
           customerDomain: S.optional(S.String),
-          customerType: S.optional(CustomerCustomerTypeEnum),
+          customerType: S.optional(S.String),
           customerId: S.optional(S.String),
           kind: S.optional(S.String),
-          primaryAdmin: S.optional(PrimaryAdmin),
+          primaryAdmin: S.optional(__S(17, __c2, 1)),
           phoneNumber: S.optional(S.String),
           resourceUiUrl: S.optional(S.String),
         }),
@@ -1074,7 +936,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           topicName: S.optional(S.String),
-          serviceAccountEmailAddresses: S.optional(StringList),
+          serviceAccountEmailAddresses: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ResellernotifyGetwatchdetailsResponse",
@@ -1083,7 +945,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerAuthToken: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Customer.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1098,8 +960,8 @@ function __c2(j: number): any {
           customerId: S.String.pipe(T.Label()),
           customerAuthToken: S.optional(S.String.pipe(T.Query())),
           sourceSkuId: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(InsertSubscriptionsActionEnum.pipe(T.Query())),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          action: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1131,11 +993,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
     case 1:
-      return S.Array(Subscription);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(SubscriptionList),
+          subscriptions: S.optional(__S(25, __c3, 1)),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -1144,7 +1006,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(Customer.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1225,7 +1087,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(Customer.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1235,4 +1097,9 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "UpdateCustomersRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

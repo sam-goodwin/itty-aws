@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,17 +21,7 @@ export interface DeleteFederatedIdentityCredentialsRequest {
   /** The name of the federated identity credential resource. */
   federatedIdentityCredentialResourceName: string;
 }
-const DeleteFederatedIdentityCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteFederatedIdentityCredentialsRequest>;
-
 export interface DeleteFederatedIdentityCredentialsResponse {}
-const DeleteFederatedIdentityCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteFederatedIdentityCredentialsResponse>;
-
 export interface DeleteUserAssignedIdentityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -38,22 +30,9 @@ export interface DeleteUserAssignedIdentityRequest {
   /** The name of the identity resource. */
   resourceName: string;
 }
-const DeleteUserAssignedIdentityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteUserAssignedIdentityRequest>;
-
 export interface DeleteUserAssignedIdentityResponse {}
-const DeleteUserAssignedIdentityResponse =
-  DeleteFederatedIdentityCredentialsResponse as any as S.Schema<DeleteUserAssignedIdentityResponse>;
-
 /** The list of audiences that can appear in the issued token. */
 export type FederatedIdentityCredentialPropertiesAudiencesList = Array<string>;
-const FederatedIdentityCredentialPropertiesAudiencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<FederatedIdentityCredentialPropertiesAudiencesList>;
-
 /** The properties associated with a federated identity credential. */
 export interface FederatedIdentityCredentialProperties {
   /** The URL of the issuer to be trusted. */
@@ -63,11 +42,6 @@ export interface FederatedIdentityCredentialProperties {
   /** The list of audiences that can appear in the issued token. */
   audiences: FederatedIdentityCredentialPropertiesAudiencesList;
 }
-const FederatedIdentityCredentialProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<FederatedIdentityCredentialProperties>;
-
 export interface FederatedIdentityCredentialsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -80,19 +54,10 @@ export interface FederatedIdentityCredentialsCreateOrUpdateRequest {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-const FederatedIdentityCredentialsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -108,8 +73,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SystemData>;
-
 export interface FederatedIdentityCredentialsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -122,11 +85,6 @@ export interface FederatedIdentityCredentialsCreateOrUpdateResponse {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-const FederatedIdentityCredentialsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateResponse>;
-
 export interface GetFederatedIdentityCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -137,11 +95,6 @@ export interface GetFederatedIdentityCredentialsRequest {
   /** The name of the federated identity credential resource. */
   federatedIdentityCredentialResourceName: string;
 }
-const GetFederatedIdentityCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetFederatedIdentityCredentialsRequest>;
-
 export interface GetFederatedIdentityCredentialsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -154,18 +107,10 @@ export interface GetFederatedIdentityCredentialsResponse {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-const GetFederatedIdentityCredentialsResponse =
-  FederatedIdentityCredentialsCreateOrUpdateResponse as any as S.Schema<GetFederatedIdentityCredentialsResponse>;
-
 export interface GetSystemAssignedIdentityByScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-const GetSystemAssignedIdentityByScopeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetSystemAssignedIdentityByScopeRequest>;
-
 /** The properties associated with the system assigned identity. */
 export interface SystemAssignedIdentityProperties {
   /** The id of the tenant which the identity belongs to. */
@@ -177,17 +122,7 @@ export interface SystemAssignedIdentityProperties {
   /** The ManagedServiceIdentity DataPlane URL that can be queried to obtain the identity credentials. */
   clientSecretUrl?: string;
 }
-const SystemAssignedIdentityProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<SystemAssignedIdentityProperties>;
-
 export type GetSystemAssignedIdentityByScopeResponseTagsMap = { [key: string]: string | undefined };
-const GetSystemAssignedIdentityByScopeResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetSystemAssignedIdentityByScopeResponseTagsMap>;
-
 export interface GetSystemAssignedIdentityByScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -202,11 +137,6 @@ export interface GetSystemAssignedIdentityByScopeResponse {
   location: string;
   tags?: GetSystemAssignedIdentityByScopeResponseTagsMap;
 }
-const GetSystemAssignedIdentityByScopeResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetSystemAssignedIdentityByScopeResponse>;
-
 export interface GetUserAssignedIdentityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -215,20 +145,10 @@ export interface GetUserAssignedIdentityRequest {
   /** The name of the identity resource. */
   resourceName: string;
 }
-const GetUserAssignedIdentityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetUserAssignedIdentityRequest>;
-
 /** Resource tags. */
 export type GetUserAssignedIdentityResponseTagsMap = { [key: string]: string | undefined };
-const GetUserAssignedIdentityResponseTagsMap =
-  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<GetUserAssignedIdentityResponseTagsMap>;
-
 /** Enum to configure regional restrictions on identity assignment, as necessary. */
 export type IsolationScope = "None" | "Regional";
-const IsolationScope = S.String;
-
 /** The properties associated with the user assigned identity. */
 export interface UserAssignedIdentityProperties {
   /** The id of the tenant which the identity belongs to. */
@@ -240,11 +160,6 @@ export interface UserAssignedIdentityProperties {
   /** Enum to configure regional restrictions on identity assignment, as necessary. */
   isolationScope?: IsolationScope | (string & {});
 }
-const UserAssignedIdentityProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UserAssignedIdentityProperties>;
-
 export interface GetUserAssignedIdentityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -261,11 +176,6 @@ export interface GetUserAssignedIdentityResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-const GetUserAssignedIdentityResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetUserAssignedIdentityResponse>;
-
 export interface ListFederatedIdentityCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -278,11 +188,6 @@ export interface ListFederatedIdentityCredentialsRequest {
   /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-const ListFederatedIdentityCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListFederatedIdentityCredentialsRequest>;
-
 /** Describes a federated identity credential. */
 export interface FederatedIdentityCredential {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -296,16 +201,8 @@ export interface FederatedIdentityCredential {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-const FederatedIdentityCredential =
-  FederatedIdentityCredentialsCreateOrUpdateResponse as any as S.Schema<FederatedIdentityCredential>;
-
 /** The FederatedIdentityCredential items on this page */
 export type FederatedIdentityCredentialsListResultValueList = Array<FederatedIdentityCredential>;
-const FederatedIdentityCredentialsListResultValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<FederatedIdentityCredentialsListResultValueList>;
-
 /** Values returned by the List operation for federated identity credentials. */
 export interface FederatedIdentityCredentialsListResult {
   /** The FederatedIdentityCredential items on this page */
@@ -313,17 +210,7 @@ export interface FederatedIdentityCredentialsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FederatedIdentityCredentialsListResult = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<FederatedIdentityCredentialsListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for and operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -335,8 +222,6 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<OperationDisplay>;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -344,15 +229,8 @@ export interface Operation {
   /** Localized display information for this particular operation. */
   display?: OperationDisplay;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Operation>;
-
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of results. */
 export interface OperationListResult {
   /** The Operation items on this page */
@@ -360,24 +238,14 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<OperationListResult>;
-
 export interface ListUserAssignedIdentityByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListUserAssignedIdentityByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListUserAssignedIdentityByResourceGroupRequest>;
-
 /** Resource tags. */
 export type IdentityTagsMap = { [key: string]: string | undefined };
-const IdentityTagsMap =
-  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<IdentityTagsMap>;
-
 /** Describes an identity resource. */
 export interface Identity {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -395,15 +263,8 @@ export interface Identity {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-const Identity = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Identity>;
-
 /** The Identity items on this page */
 export type UserAssignedIdentitiesListResultValueList = Array<Identity>;
-const UserAssignedIdentitiesListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<UserAssignedIdentitiesListResultValueList>;
-
 /** Values returned by the List operation. */
 export interface UserAssignedIdentitiesListResult {
   /** The Identity items on this page */
@@ -411,25 +272,12 @@ export interface UserAssignedIdentitiesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const UserAssignedIdentitiesListResult = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UserAssignedIdentitiesListResult>;
-
 export interface ListUserAssignedIdentityBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListUserAssignedIdentityBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListUserAssignedIdentityBySubscriptionRequest>;
-
 /** Resource tags */
 export type UpdateUserAssignedIdentityRequestTagsMap = { [key: string]: string | undefined };
-const UpdateUserAssignedIdentityRequestTagsMap =
-  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UpdateUserAssignedIdentityRequestTagsMap>;
-
 export interface UpdateUserAssignedIdentityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -444,11 +292,6 @@ export interface UpdateUserAssignedIdentityRequest {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-const UpdateUserAssignedIdentityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateUserAssignedIdentityRequest>;
-
 /** Resource tags. */
 export type UpdateUserAssignedIdentityResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateUserAssignedIdentityResponse {
@@ -467,16 +310,10 @@ export interface UpdateUserAssignedIdentityResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-const UpdateUserAssignedIdentityResponse =
-  GetUserAssignedIdentityResponse as any as S.Schema<UpdateUserAssignedIdentityResponse>;
-
 /** Resource tags. */
 export type UserAssignedIdentitiesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const UserAssignedIdentitiesCreateOrUpdateRequestTagsMap =
-  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequestTagsMap>;
-
 export interface UserAssignedIdentitiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -491,11 +328,6 @@ export interface UserAssignedIdentitiesCreateOrUpdateRequest {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-const UserAssignedIdentitiesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type UserAssignedIdentitiesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -516,9 +348,6 @@ export interface UserAssignedIdentitiesCreateOrUpdateResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-const UserAssignedIdentitiesCreateOrUpdateResponse =
-  GetUserAssignedIdentityResponse as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponse>;
-
 export type DeleteFederatedIdentityCredentialsError = AzureOpError;
 /** Deletes the federated identity credential. */
 export const DeleteFederatedIdentityCredentials: API.OperationMethod<
@@ -527,8 +356,8 @@ export const DeleteFederatedIdentityCredentials: API.OperationMethod<
   DeleteFederatedIdentityCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFederatedIdentityCredentialsRequest,
-  output: DeleteFederatedIdentityCredentialsResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteFederatedIdentityCredentialsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteFederatedIdentityCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -542,8 +371,8 @@ export const DeleteUserAssignedIdentity: API.OperationMethod<
   DeleteUserAssignedIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserAssignedIdentityRequest,
-  output: DeleteUserAssignedIdentityResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteUserAssignedIdentityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserAssignedIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -557,8 +386,8 @@ export const FederatedIdentityCredentialsCreateOrUpdate: API.OperationMethod<
   FederatedIdentityCredentialsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FederatedIdentityCredentialsCreateOrUpdateRequest,
-  output: FederatedIdentityCredentialsCreateOrUpdateResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -572,8 +401,8 @@ export const GetFederatedIdentityCredentials: API.OperationMethod<
   GetFederatedIdentityCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFederatedIdentityCredentialsRequest,
-  output: GetFederatedIdentityCredentialsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<GetFederatedIdentityCredentialsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<GetFederatedIdentityCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -587,8 +416,8 @@ export const GetSystemAssignedIdentityByScope: API.OperationMethod<
   GetSystemAssignedIdentityByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSystemAssignedIdentityByScopeRequest,
-  output: GetSystemAssignedIdentityByScopeResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<GetSystemAssignedIdentityByScopeRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<GetSystemAssignedIdentityByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -602,8 +431,8 @@ export const GetUserAssignedIdentity: API.OperationMethod<
   GetUserAssignedIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserAssignedIdentityRequest,
-  output: GetUserAssignedIdentityResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetUserAssignedIdentityRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetUserAssignedIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -617,8 +446,8 @@ export const ListFederatedIdentityCredentials: API.OperationMethod<
   ListFederatedIdentityCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFederatedIdentityCredentialsRequest,
-  output: FederatedIdentityCredentialsListResult,
+  input: __S(16, __c2, 0) as any as S.Schema<ListFederatedIdentityCredentialsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<FederatedIdentityCredentialsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -632,8 +461,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(19, __c2, 3) as any as S.Schema<ListOperationsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -647,8 +476,8 @@ export const ListUserAssignedIdentityByResourceGroup: API.OperationMethod<
   ListUserAssignedIdentityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserAssignedIdentityByResourceGroupRequest,
-  output: UserAssignedIdentitiesListResult,
+  input: __S(24, __c3, 0) as any as S.Schema<ListUserAssignedIdentityByResourceGroupRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<UserAssignedIdentitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -662,8 +491,8 @@ export const ListUserAssignedIdentityBySubscription: API.OperationMethod<
   ListUserAssignedIdentityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserAssignedIdentityBySubscriptionRequest,
-  output: UserAssignedIdentitiesListResult,
+  input: __S(28, __c3, 4) as any as S.Schema<ListUserAssignedIdentityBySubscriptionRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<UserAssignedIdentitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -677,8 +506,8 @@ export const UpdateUserAssignedIdentity: API.OperationMethod<
   UpdateUserAssignedIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserAssignedIdentityRequest,
-  output: UpdateUserAssignedIdentityResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<UpdateUserAssignedIdentityRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<UpdateUserAssignedIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -692,8 +521,8 @@ export const UserAssignedIdentitiesCreateOrUpdate: API.OperationMethod<
   UserAssignedIdentitiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserAssignedIdentitiesCreateOrUpdateRequest,
-  output: UserAssignedIdentitiesCreateOrUpdateResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -748,7 +577,7 @@ function __c0(j: number): any {
         S.Struct({
           issuer: S.String,
           subject: S.String,
-          audiences: FederatedIdentityCredentialPropertiesAudiencesList,
+          audiences: __S(3, __c0, 3),
         }),
       ).annotate({
         identifier: "FederatedIdentityCredentialProperties",
@@ -760,7 +589,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           federatedIdentityCredentialResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(FederatedIdentityCredentialProperties),
+          properties: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -776,10 +605,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -789,8 +618,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FederatedIdentityCredentialProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "FederatedIdentityCredentialsCreateOrUpdateResponse",
@@ -851,10 +680,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SystemAssignedIdentityProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(10, __c1, 2)),
           location: S.String,
-          tags: S.optional(GetSystemAssignedIdentityByScopeResponseTagsMap),
+          tags: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "GetSystemAssignedIdentityByScopeResponse",
@@ -882,7 +711,7 @@ function __c1(j: number): any {
           tenantId: S.optional(S.String),
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
-          isolationScope: S.optional(IsolationScope),
+          isolationScope: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UserAssignedIdentityProperties",
@@ -893,10 +722,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetUserAssignedIdentityResponseTagsMap),
+          systemData: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.String,
-          properties: S.optional(UserAssignedIdentityProperties),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "GetUserAssignedIdentityResponse",
@@ -925,11 +754,11 @@ function __c2(j: number): any {
         identifier: "ListFederatedIdentityCredentialsRequest",
       });
     case 1:
-      return S.Array(FederatedIdentityCredential);
+      return S.Array(__S(7, __c0, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: FederatedIdentityCredentialsListResultValueList,
+          value: __S(17, __c2, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -959,15 +788,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(22, __c2, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -997,18 +826,18 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(IdentityTagsMap),
+          systemData: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.String,
-          properties: S.optional(UserAssignedIdentityProperties),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "Identity" });
     case 2:
-      return S.Array(Identity);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: UserAssignedIdentitiesListResultValueList,
+          value: __S(26, __c3, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1036,8 +865,8 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateUserAssignedIdentityRequestTagsMap),
-          properties: S.optional(UserAssignedIdentityProperties),
+          tags: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(14, __c1, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1055,9 +884,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UserAssignedIdentitiesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.String,
-          properties: S.optional(UserAssignedIdentityProperties),
+          properties: S.optional(__S(14, __c1, 6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1070,4 +899,9 @@ function __c3(j: number): any {
         identifier: "UserAssignedIdentitiesCreateOrUpdateRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

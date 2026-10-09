@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,11 +22,6 @@ export interface CreateTracingRetentionRuleRequest {
   /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
-const CreateTracingRetentionRuleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateTracingRetentionRuleRequest>;
-
 export interface TracesRetentionRule {
   /** Unique identifier for this retention rule. */
   id: string;
@@ -42,15 +39,8 @@ export interface TracesRetentionRule {
   created_at: string;
   updated_at: string | null;
 }
-const TracesRetentionRule = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TracesRetentionRule>;
-
 /** Rule IDs in the desired evaluation order (first element is highest priority / lowest order index). */
 export type CreateTracingRetentionRulesReorderRequestOrderedIdsList = Array<string>;
-const CreateTracingRetentionRulesReorderRequestOrderedIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateTracingRetentionRulesReorderRequestOrderedIdsList>;
-
 export interface CreateTracingRetentionRulesReorderRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -61,28 +51,13 @@ export interface CreateTracingRetentionRulesReorderRequest {
   /** Rule IDs in the desired evaluation order (first element is highest priority / lowest order index). */
   ordered_ids: CreateTracingRetentionRulesReorderRequestOrderedIdsList;
 }
-const CreateTracingRetentionRulesReorderRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateTracingRetentionRulesReorderRequest>;
-
 export type PaginatedTracesRetentionRuleListResultsList = Array<TracesRetentionRule>;
-const PaginatedTracesRetentionRuleListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PaginatedTracesRetentionRuleListResultsList>;
-
 export interface PaginatedTracesRetentionRuleList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTracesRetentionRuleListResultsList;
 }
-const PaginatedTracesRetentionRuleList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PaginatedTracesRetentionRuleList>;
-
 export interface CreateTracingRetentionRulesSuggestNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -91,45 +66,26 @@ export interface CreateTracingRetentionRulesSuggestNameRequest {
   /** PropertyGroupFilter tree the rule would match on. */
   filter_group: unknown;
 }
-const CreateTracingRetentionRulesSuggestNameRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateTracingRetentionRulesSuggestNameRequest>;
-
 export interface LogsRetentionRuleNameSuggestion {
   /** Suggested rule name. Empty when no suggestion could be generated -- clients hide the hint. */
   name: string;
 }
-const LogsRetentionRuleNameSuggestion = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<LogsRetentionRuleNameSuggestion>;
-
 export interface TracingDateRange {
   /** Start of the date range. Accepts ISO 8601 timestamps or relative formats: -1h, -6h, -1d, -7d, etc. */
   date_from?: string | null;
   /** End of the date range. Same format as date_from. Omit or null for "now". */
   date_to?: string | null;
 }
-const TracingDateRange = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TracingDateRange>;
-
 export interface CompareFilter {
   /** When true, also fetch results for a comparison window and return them under `compare`. */
   compare?: boolean;
   /** Relative date offset for the comparison window (e.g. '-1h', '-1d', '-7d'). Defaults to the immediately previous period of equal length. */
   compare_to?: string | null;
 }
-const CompareFilter = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CompareFilter>;
-
 /** Filter by service names. */
 export type TracingAggregationQueryBodyServiceNamesList = Array<string>;
-const TracingAggregationQueryBodyServiceNamesList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingAggregationQueryBodyServiceNamesList>;
-
 /** * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute */
 export type SpanPropertyTypeEnum = "span" | "span_attribute" | "span_resource_attribute";
-const SpanPropertyTypeEnum = S.String;
-
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `is_set` - is_set * `is_not_set` - is_not_set */
 export type SpanPropertyFilterOperatorEnum =
   | "exact"
@@ -146,8 +102,6 @@ export type SpanPropertyFilterOperatorEnum =
   | "lt"
   | "is_set"
   | "is_not_set";
-const SpanPropertyFilterOperatorEnum = S.String;
-
 export interface SpanPropertyFilter {
   /** Attribute key. For type "span", use built-in fields (trace_id, span_id, duration, name, kind, status_code, is_root_span). For "span_attribute"/"span_resource_attribute", use the attribute key (e.g. "http.method"). */
   key: string;
@@ -158,15 +112,8 @@ export interface SpanPropertyFilter {
   /** Value to compare against. String, number, or array of strings. Omit for is_set/is_not_set operators. */
   value?: unknown;
 }
-const SpanPropertyFilter = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SpanPropertyFilter>;
-
 /** Property filters applied to spans in both windows. */
 export type TracingAggregationQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-const TracingAggregationQueryBodyFilterGroupList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<TracingAggregationQueryBodyFilterGroupList>;
-
 export interface TracingAggregationQueryBody {
   /** Date range for the primary window. Defaults to last hour. */
   dateRange?: TracingDateRange;
@@ -183,22 +130,12 @@ export interface TracingAggregationQueryBody {
   /** Also return the sessions and people behind each operation. Off by default because it reads the span and resource attribute maps, which the rest of the aggregation never touches. */
   includeImpact?: boolean;
 }
-const TracingAggregationQueryBody = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TracingAggregationQueryBody>;
-
 export interface CreateTracingSpansAggregateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The span aggregation query to execute. */
   query: TracingAggregationQueryBody;
 }
-const CreateTracingSpansAggregateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateTracingSpansAggregateRequest>;
-
 export interface AggregatedSpanRow {
   /** Service that emitted the spans in this group. */
   service_name: string;
@@ -229,20 +166,10 @@ export interface AggregatedSpanRow {
   /** How many of this group's spans carry a person distinct ID under the team's configured or conventional attribute keys. Null unless the query set `includeImpact`. */
   spans_with_distinct_id: number | null;
 }
-const AggregatedSpanRow = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AggregatedSpanRow>;
-
 /** One row per (service_name, name) group, ordered by total_duration_nano descending. */
 export type TracingAggregationResponseResultsList = Array<AggregatedSpanRow>;
-const TracingAggregationResponseResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<TracingAggregationResponseResultsList>;
-
 /** Rows for the comparison window when compareFilter.compare is true, else null. */
 export type TracingAggregationResponseCompareList = Array<AggregatedSpanRow>;
-const TracingAggregationResponseCompareList =
-  TracingAggregationResponseResultsList as any as S.Schema<TracingAggregationResponseCompareList>;
-
 export interface TracingAggregationResponse {
   /** One row per (service_name, name) group, ordered by total_duration_nano descending. */
   results: TracingAggregationResponseResultsList;
@@ -253,25 +180,12 @@ export interface TracingAggregationResponse {
   /** Offset to request the next page, or null when this is the last page. */
   next_offset: number | null;
 }
-const TracingAggregationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<TracingAggregationResponse>;
-
 /** * `count` - count * `error_count` - error_count */
 export type TracingAttributeBreakdownQueryBodyOrderByEnum = "count" | "error_count";
-const TracingAttributeBreakdownQueryBodyOrderByEnum = S.String;
-
 /** Filter by service names. */
 export type TracingAttributeBreakdownQueryBodyServiceNamesList = Array<string>;
-const TracingAttributeBreakdownQueryBodyServiceNamesList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingAttributeBreakdownQueryBodyServiceNamesList>;
-
 /** Property filters scoping the spans the breakdown runs over (e.g. only error spans). */
 export type TracingAttributeBreakdownQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-const TracingAttributeBreakdownQueryBodyFilterGroupList =
-  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingAttributeBreakdownQueryBodyFilterGroupList>;
-
 export interface TracingAttributeBreakdownQueryBody {
   /** Attribute key to group by (e.g. "server.address", "http.response.status_code"). Discover keys with apm-attributes-list. For the "span" breakdown type, must be one of the allowlisted top-level columns: "service_name", "status_code". */
   breakdownKey: string;
@@ -292,22 +206,12 @@ export interface TracingAttributeBreakdownQueryBody {
   /** Property filters scoping the spans the breakdown runs over (e.g. only error spans). */
   filterGroup?: TracingAttributeBreakdownQueryBodyFilterGroupList;
 }
-const TracingAttributeBreakdownQueryBody = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<TracingAttributeBreakdownQueryBody>;
-
 export interface CreateTracingSpansAttributeBreakdownRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The attribute breakdown query to execute. */
   query: TracingAttributeBreakdownQueryBody;
 }
-const CreateTracingSpansAttributeBreakdownRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateTracingSpansAttributeBreakdownRequest>;
-
 export interface TracingAttributeBreakdownRow {
   /** The attribute's value for this group. Spans without the attribute group under ''. */
   value: string;
@@ -320,46 +224,20 @@ export interface TracingAttributeBreakdownRow {
   /** 95th percentile span duration in nanoseconds. */
   p95_duration_nano: number;
 }
-const TracingAttributeBreakdownRow = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<TracingAttributeBreakdownRow>;
-
 /** One row per distinct attribute value, ordered by the requested column descending. */
 export type TracingAttributeBreakdownResponseResultsList = Array<TracingAttributeBreakdownRow>;
-const TracingAttributeBreakdownResponseResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<TracingAttributeBreakdownResponseResultsList>;
-
 /** Rows for the comparison window when compareFilter.compare is true, else null. */
 export type TracingAttributeBreakdownResponseCompareList = Array<TracingAttributeBreakdownRow>;
-const TracingAttributeBreakdownResponseCompareList =
-  TracingAttributeBreakdownResponseResultsList as any as S.Schema<TracingAttributeBreakdownResponseCompareList>;
-
 export interface TracingAttributeBreakdownResponse {
   /** One row per distinct attribute value, ordered by the requested column descending. */
   results: TracingAttributeBreakdownResponseResultsList;
   /** Rows for the comparison window when compareFilter.compare is true, else null. */
   compare: TracingAttributeBreakdownResponseCompareList | null;
 }
-const TracingAttributeBreakdownResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<TracingAttributeBreakdownResponse>;
-
 /** Filter by service names. */
 export type TracingCountBodyServiceNamesList = Array<string>;
-const TracingCountBodyServiceNamesList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingCountBodyServiceNamesList>;
-
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingCountBodyStatusCodesList = Array<number>;
-const TracingCountBodyStatusCodesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<TracingCountBodyStatusCodesList>;
-
 /** A flat list of filters, combined with AND. */
 export type TracingCountBodyFilterGroupCase0List = Array<SpanPropertyFilter>;
 /** How the inner groups combine. */
@@ -388,8 +266,6 @@ export interface TracingCountBodyFilterGroupCase1 {
 export type TracingCountBodyFilterGroup =
   | TracingCountBodyFilterGroupCase0List
   | TracingCountBodyFilterGroupCase1;
-const TracingCountBodyFilterGroup = S.Unknown as any as S.Schema<TracingCountBodyFilterGroup>;
-
 export interface TracingCountBody {
   /** Date range for the count. Defaults to last hour. */
   dateRange?: TracingDateRange;
@@ -400,42 +276,24 @@ export interface TracingCountBody {
   /** Property filters for the count. Either a flat list of filters or a nested filter group. */
   filterGroup?: TracingCountBodyFilterGroup;
 }
-const TracingCountBody = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TracingCountBody>;
-
 export interface CreateTracingSpansCountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The span count query to execute. */
   query: TracingCountBody;
 }
-const CreateTracingSpansCountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateTracingSpansCountRequest>;
-
 export interface TracingCountResponse {
   /** Number of spans matching the filters. */
   count: number;
   /** Number of distinct traces whose root span matches the filters -- the trace count shown in the Traces view. */
   traceCount: number;
 }
-const TracingCountResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TracingCountResponse>;
-
 /** Filter by service names. */
 export type TracingDurationHistogramQueryBodyServiceNamesList = Array<string>;
-const TracingDurationHistogramQueryBodyServiceNamesList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingDurationHistogramQueryBodyServiceNamesList>;
-
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingDurationHistogramQueryBodyStatusCodesList = Array<number>;
-const TracingDurationHistogramQueryBodyStatusCodesList =
-  TracingCountBodyStatusCodesList as any as S.Schema<TracingDurationHistogramQueryBodyStatusCodesList>;
-
 /** Property filters for the query. */
 export type TracingDurationHistogramQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-const TracingDurationHistogramQueryBodyFilterGroupList =
-  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingDurationHistogramQueryBodyFilterGroupList>;
-
 export interface TracingDurationHistogramQueryBody {
   /** Date range for the query. Defaults to last hour. */
   dateRange?: TracingDateRange;
@@ -448,22 +306,12 @@ export interface TracingDurationHistogramQueryBody {
   /** When true (default), bucket root-span durations only -- a distribution of traces. When false, bucket every matching span -- used with a span name filter for operation-scoped distributions. */
   rootSpans?: boolean;
 }
-const TracingDurationHistogramQueryBody = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<TracingDurationHistogramQueryBody>;
-
 export interface CreateTracingSpansDurationHistogramRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The duration-histogram query to execute. */
   query: TracingDurationHistogramQueryBody;
 }
-const CreateTracingSpansDurationHistogramRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateTracingSpansDurationHistogramRequest>;
-
 export interface TracingDurationHistogramRow {
   /** Lower bound of the duration bucket in nanoseconds. */
   bucket_ns: number;
@@ -472,42 +320,18 @@ export interface TracingDurationHistogramRow {
   /** Spans in this bucket for this service. */
   count: number;
 }
-const TracingDurationHistogramRow = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<TracingDurationHistogramRow>;
-
 /** One row per duration bucket and service. */
 export type TracingDurationHistogramResponseResultsList = Array<TracingDurationHistogramRow>;
-const TracingDurationHistogramResponseResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<TracingDurationHistogramResponseResultsList>;
-
 export interface TracingDurationHistogramResponse {
   /** One row per duration bucket and service. */
   results: TracingDurationHistogramResponseResultsList;
 }
-const TracingDurationHistogramResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<TracingDurationHistogramResponse>;
-
 /** Hex trace IDs to count exceptions for, matched against the exception's `$trace_id` property. Case insensitive. At most 200 per request. */
 export type CreateTracingSpansErrorCountRequestTraceIdsList = Array<string>;
-const CreateTracingSpansErrorCountRequestTraceIdsList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<CreateTracingSpansErrorCountRequestTraceIdsList>;
-
 /** Hex span IDs to count exceptions for, matched against the exception's `$span_id` property. Only counted within the requested traces, so `traceIds` is required alongside. At most 200 per request. */
 export type CreateTracingSpansErrorCountRequestSpanIdsList = Array<string>;
-const CreateTracingSpansErrorCountRequestSpanIdsList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<CreateTracingSpansErrorCountRequestSpanIdsList>;
-
 /** Session IDs to count exceptions for. The fallback for exceptions that carry no trace ID. At most 200 per request. */
 export type CreateTracingSpansErrorCountRequestSessionIdsList = Array<string>;
-const CreateTracingSpansErrorCountRequestSessionIdsList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<CreateTracingSpansErrorCountRequestSessionIdsList>;
-
 export interface CreateTracingSpansErrorCountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -522,65 +346,30 @@ export interface CreateTracingSpansErrorCountRequest {
   /** End of the window the exceptions must fall in. ISO 8601. */
   dateTo: string;
 }
-const CreateTracingSpansErrorCountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateTracingSpansErrorCountRequest>;
-
 export interface TracingTraceErrorCount {
   /** Exception events in the window that error tracking linked to an issue. */
   exceptions: number;
   /** The trace the exceptions belong to, lowercase hex. */
   trace_id: string;
 }
-const TracingTraceErrorCount = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<TracingTraceErrorCount>;
-
 /** One entry per requested trace that had exceptions. Traces with none are omitted. */
 export type TracingErrorCountsResponseTraceResultsList = Array<TracingTraceErrorCount>;
-const TracingErrorCountsResponseTraceResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<TracingErrorCountsResponseTraceResultsList>;
-
 export interface TracingSpanErrorCount {
   /** Exception events in the window that error tracking linked to an issue. */
   exceptions: number;
   /** The span the exceptions belong to, lowercase hex. */
   span_id: string;
 }
-const TracingSpanErrorCount = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<TracingSpanErrorCount>;
-
 /** One entry per requested span that had exceptions. Spans with none are omitted. */
 export type TracingErrorCountsResponseSpanResultsList = Array<TracingSpanErrorCount>;
-const TracingErrorCountsResponseSpanResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<TracingErrorCountsResponseSpanResultsList>;
-
 export interface TracingSessionErrorCount {
   /** Exception events in the window that error tracking linked to an issue. */
   exceptions: number;
   /** The session the exceptions belong to. */
   session_id: string;
 }
-const TracingSessionErrorCount = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<TracingSessionErrorCount>;
-
 /** One entry per requested session that had exceptions. Sessions with none are omitted. */
 export type TracingErrorCountsResponseSessionResultsList = Array<TracingSessionErrorCount>;
-const TracingErrorCountsResponseSessionResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<TracingErrorCountsResponseSessionResultsList>;
-
 export interface TracingErrorCountsResponse {
   /** One entry per requested trace that had exceptions. Traces with none are omitted. */
   traceResults: TracingErrorCountsResponseTraceResultsList;
@@ -589,45 +378,22 @@ export interface TracingErrorCountsResponse {
   /** One entry per requested session that had exceptions. Sessions with none are omitted. */
   sessionResults: TracingErrorCountsResponseSessionResultsList;
 }
-const TracingErrorCountsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<TracingErrorCountsResponse>;
-
 export interface CreateTracingSpansImpactRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The impact query to execute. Takes the same filters as the count query. */
   query: TracingCountBody;
 }
-const CreateTracingSpansImpactRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateTracingSpansImpactRequest>;
-
 export interface TracingImpactTopValue {
   /** The session ID or person distinct ID. */
   value: string;
   /** Approximate number of matching spans that carry this value (topK estimate). */
   count: number;
 }
-const TracingImpactTopValue = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<TracingImpactTopValue>;
-
 /** Top session IDs on the matching spans, ordered by span count descending (topK, at most 5). */
 export type TracingImpactResponseTopSessionsList = Array<TracingImpactTopValue>;
-const TracingImpactResponseTopSessionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<TracingImpactResponseTopSessionsList>;
-
 /** Top person distinct IDs on the matching spans, ordered by span count descending (topK, at most 5). */
 export type TracingImpactResponseTopUsersList = Array<TracingImpactTopValue>;
-const TracingImpactResponseTopUsersList =
-  TracingImpactResponseTopSessionsList as any as S.Schema<TracingImpactResponseTopUsersList>;
-
 export interface TracingImpactResponse {
   /** Number of spans matching the filters. */
   total: number;
@@ -644,22 +410,12 @@ export interface TracingImpactResponse {
   /** Top person distinct IDs on the matching spans, ordered by span count descending (topK, at most 5). */
   topUsers: TracingImpactResponseTopUsersList;
 }
-const TracingImpactResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TracingImpactResponse>;
-
 export interface CreateTracingSpansLatencyHeatmapRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The latency-heatmap query to execute. */
   query: TracingDurationHistogramQueryBody;
 }
-const CreateTracingSpansLatencyHeatmapRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateTracingSpansLatencyHeatmapRequest>;
-
 export interface TracingLatencyHeatmapCell {
   /** ISO 8601 UTC start of the time bucket. */
   time: string;
@@ -668,50 +424,22 @@ export interface TracingLatencyHeatmapCell {
   /** Traces in this cell, bucketed by root-span duration (the default, rootSpans=true). When rootSpans is false, every matching span is counted instead. 0 only on sentinel rows. */
   count: number;
 }
-const TracingLatencyHeatmapCell = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<TracingLatencyHeatmapCell>;
-
 /** Sparse heatmap cells ordered by time then duration bucket. Every time bucket in the window appears in at least one row, so the full x axis can be derived from the response. */
 export type TracingLatencyHeatmapResponseResultsList = Array<TracingLatencyHeatmapCell>;
-const TracingLatencyHeatmapResponseResultsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<TracingLatencyHeatmapResponseResultsList>;
-
 export interface TracingLatencyHeatmapResponse {
   /** Sparse heatmap cells ordered by time then duration bucket. Every time bucket in the window appears in at least one row, so the full x axis can be derived from the response. */
   results: TracingLatencyHeatmapResponseResultsList;
 }
-const TracingLatencyHeatmapResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<TracingLatencyHeatmapResponse>;
-
 /** Filter by service names. */
 export type TracingQueryBodyServiceNamesList = Array<string>;
-const TracingQueryBodyServiceNamesList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingQueryBodyServiceNamesList>;
-
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingQueryBodyStatusCodesList = Array<number>;
-const TracingQueryBodyStatusCodesList =
-  TracingCountBodyStatusCodesList as any as S.Schema<TracingQueryBodyStatusCodesList>;
-
 /** * `timestamp` - timestamp * `duration` - duration */
 export type TracingQueryBodyOrderByEnum = "timestamp" | "duration";
-const TracingQueryBodyOrderByEnum = S.String;
-
 /** * `ASC` - ASC * `DESC` - DESC */
 export type OrderDirectionEnum = "ASC" | "DESC";
-const OrderDirectionEnum = S.String;
-
 /** Property filters for the query. */
 export type TracingQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-const TracingQueryBodyFilterGroupList =
-  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingQueryBodyFilterGroupList>;
-
 export interface TracingQueryBody {
   /** Date range for the query. Defaults to last hour. */
   dateRange?: TracingDateRange;
@@ -742,27 +470,16 @@ export interface TracingQueryBody {
   /** Omit the per-span attributes and resource attributes maps from results to keep payloads compact. Defaults to false. */
   excludeAttributes?: boolean;
 }
-const TracingQueryBody = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TracingQueryBody>;
-
 export interface CreateTracingSpansQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The tracing spans query to execute. */
   query: TracingQueryBody;
 }
-const CreateTracingSpansQueryRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateTracingSpansQueryRequest>;
-
 /** Span attributes. Keys are whatever the instrumentation set. */
 export type SpanAttributesMap = { [key: string]: string | undefined };
-const SpanAttributesMap = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SpanAttributesMap>;
-
 /** Resource attributes of the emitting service. Keys are whatever the instrumentation set. */
 export type SpanResourceAttributesMap = { [key: string]: string | undefined };
-const SpanResourceAttributesMap = SpanAttributesMap as any as S.Schema<SpanResourceAttributesMap>;
-
 /** One span row as the query and trace actions return it. The runner assembles these from HogQL result columns by position, so the key set is fixed even though the values come from a query. `trace_start` and `trace_duration` are the sort keys the trace list orders on, carried in the row rather than recomputed by the caller. */
 export interface Span {
   /** Span's own UUID. */
@@ -800,15 +517,8 @@ export interface Span {
   /** Resource attributes of the emitting service. Keys are whatever the instrumentation set. */
   resource_attributes: SpanResourceAttributesMap;
 }
-const Span = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Span>;
-
 /** Matching spans, ordered by the requested column. */
 export type TracingQueryResponseResultsList = Array<Span>;
-const TracingQueryResponseResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TracingQueryResponseResultsList>;
-
 export interface TracingQueryResponse {
   /** Matching spans, ordered by the requested column. */
   results: TracingQueryResponseResultsList;
@@ -817,8 +527,6 @@ export interface TracingQueryResponse {
   /** Cursor for the next page, or null on the last page. Pass it back as the query's `after`. Always null when ordering by duration, which pages by offset instead. */
   nextCursor: string | null;
 }
-const TracingQueryResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TracingQueryResponse>;
-
 /** Filter by service names. */
 export type TracingSparklineQueryBodyServiceNamesList = Array<string>;
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
@@ -837,20 +545,12 @@ export interface TracingSparklineQueryBody {
   /** When true, count only root spans (one per trace) so the bars reflect the Traces view. When false (default), count every matching span -- the Spans view's volume. */
   rootSpans?: boolean;
 }
-const TracingSparklineQueryBody =
-  TracingDurationHistogramQueryBody as any as S.Schema<TracingSparklineQueryBody>;
-
 export interface CreateTracingSpansSparklineRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The sparkline query to execute. */
   query: TracingSparklineQueryBody;
 }
-const CreateTracingSpansSparklineRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateTracingSpansSparklineRequest>;
-
 export interface TracingSparklineRow {
   /** Start of the time bucket. */
   time: string;
@@ -859,24 +559,12 @@ export interface TracingSparklineRow {
   /** Spans in this bucket for this service. */
   count: number;
 }
-const TracingSparklineRow = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<TracingSparklineRow>;
-
 /** One row per time bucket and service, ordered by time. */
 export type TracingSparklineResponseResultsList = Array<TracingSparklineRow>;
-const TracingSparklineResponseResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<TracingSparklineResponseResultsList>;
-
 export interface TracingSparklineResponse {
   /** One row per time bucket and service, ordered by time. */
   results: TracingSparklineResponseResultsList;
 }
-const TracingSparklineResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<TracingSparklineResponse>;
-
 export interface SymbolStatsSymbol {
   /** Opaque identifier (e.g. the function name) echoed back on the matching result row. */
   name?: string | null;
@@ -885,15 +573,8 @@ export interface SymbolStatsSymbol {
   /** Last line of the symbol's range, inclusive. */
   endLine: number;
 }
-const SymbolStatsSymbol = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<SymbolStatsSymbol>;
-
 /** Optional symbol (function) line ranges, supplied by the client from its own AST/LSP. When given, each span is attributed to the smallest enclosing range (one row per symbol). When omitted (or an empty list), spans are aggregated per source line (one row per line); pass a single whole-file range for a file-level total. */
 export type SymbolStatsQueryBodySymbolsList = Array<SymbolStatsSymbol>;
-const SymbolStatsQueryBodySymbolsList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<SymbolStatsQueryBodySymbolsList>;
-
 export interface SymbolStatsQueryBody {
   /** Repo-relative path of the source file to aggregate (e.g. 'src/flags/flag_matching.rs'). Matched as a path suffix against the recorded OTel code.file.path / code.filepath, so a recorded path carrying an extra crate/workspace prefix still matches. Separators are normalized. */
   filePath: string;
@@ -902,19 +583,12 @@ export interface SymbolStatsQueryBody {
   /** Optional symbol (function) line ranges, supplied by the client from its own AST/LSP. When given, each span is attributed to the smallest enclosing range (one row per symbol). When omitted (or an empty list), spans are aggregated per source line (one row per line); pass a single whole-file range for a file-level total. */
   symbols?: SymbolStatsQueryBodySymbolsList;
 }
-const SymbolStatsQueryBody = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SymbolStatsQueryBody>;
-
 export interface CreateTracingSpansSymbolStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The symbol-stats per-symbol aggregation query to execute. */
   query: SymbolStatsQueryBody;
 }
-const CreateTracingSpansSymbolStatRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateTracingSpansSymbolStatRequest>;
-
 export interface SymbolStatsPeriod {
   /** Number of spans attributed to this symbol in the period. */
   count: number;
@@ -937,8 +611,6 @@ export interface SymbolStatsPeriod {
   /** 99th-percentile active (busy) time, in nanoseconds. */
   p99_busy_nano: number;
 }
-const SymbolStatsPeriod = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SymbolStatsPeriod>;
-
 export interface SymbolStatsRow {
   /** Number of spans attributed to this symbol in the period. */
   count: number;
@@ -973,27 +645,16 @@ export interface SymbolStatsRow {
   /** Percentage change in p95 duration vs the previous period (180 = +180%). Null when the previous p95 is 0 (no comparable baseline), which can occur even when previous.count > 0 -- do not read null as 'new symbol'. */
   p95_duration_pct_change: number | null;
 }
-const SymbolStatsRow = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SymbolStatsRow>;
-
 /** One row per bucket, ordered by line ascending. */
 export type SymbolStatsResponseResultsList = Array<SymbolStatsRow>;
-const SymbolStatsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<SymbolStatsResponseResultsList>;
-
 /** * `line` - line * `symbol` - symbol */
 export type GranularityEnum = "line" | "symbol";
-const GranularityEnum = S.String;
-
 export interface SymbolStatsResponse {
   /** One row per bucket, ordered by line ascending. */
   results: SymbolStatsResponseResultsList;
   /** Bucketing applied: 'line' when no symbols were supplied, 'symbol' otherwise. * `line` - line * `symbol` - symbol */
   granularity: GranularityEnum;
 }
-const SymbolStatsResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SymbolStatsResponse>;
-
 export interface CreateTracingSpansTraceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1005,20 +666,10 @@ export interface CreateTracingSpansTraceRequest {
   /** Pagination offset into the trace's spans (ordered by start time ascending). Each page returns up to 2000 spans; pass the response's `nextOffset` to load the next page. Defaults to 0. */
   offset?: number;
 }
-const CreateTracingSpansTraceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateTracingSpansTraceRequest>;
-
 /** Span attributes. Keys are whatever the instrumentation set. */
 export type TraceSpanAttributesMap = { [key: string]: string | undefined };
-const TraceSpanAttributesMap = SpanAttributesMap as any as S.Schema<TraceSpanAttributesMap>;
-
 /** Resource attributes of the emitting service. Keys are whatever the instrumentation set. */
 export type TraceSpanResourceAttributesMap = { [key: string]: string | undefined };
-const TraceSpanResourceAttributesMap =
-  SpanAttributesMap as any as S.Schema<TraceSpanResourceAttributesMap>;
-
 /** A span in a single trace. The trace action adds self time, which the list does not compute. */
 export interface TraceSpan {
   /** Span's own UUID. */
@@ -1058,15 +709,8 @@ export interface TraceSpan {
   /** Span duration minus the time spent in its children, in nanoseconds. */
   self_time_nano: number;
 }
-const TraceSpan = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<TraceSpan>;
-
 /** Spans in the trace, earliest first. */
 export type TracingTraceResponseResultsList = Array<TraceSpan>;
-const TracingTraceResponseResultsList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<TracingTraceResponseResultsList>;
-
 export interface TracingTraceResponse {
   /** Spans in the trace, earliest first. */
   results: TracingTraceResponseResultsList;
@@ -1075,18 +719,10 @@ export interface TracingTraceResponse {
   /** Offset for the next page, or null on the last page. */
   nextOffset: number | null;
 }
-const TracingTraceResponse = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<TracingTraceResponse>;
-
 /** Filter by service names. */
 export type TracingTreeQueryBodyServiceNamesList = Array<string>;
-const TracingTreeQueryBodyServiceNamesList =
-  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingTreeQueryBodyServiceNamesList>;
-
 /** Additional property filters applied to spans in both windows. */
 export type TracingTreeQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-const TracingTreeQueryBodyFilterGroupList =
-  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingTreeQueryBodyFilterGroupList>;
-
 export interface TracingTreeQueryBody {
   /** Span name to scope the matched trace set. Required because the (trace_id, parent_span_id) self-join is unsafe without bounding the matched traces. */
   spanName: string;
@@ -1101,19 +737,12 @@ export interface TracingTreeQueryBody {
   /** Additional property filters applied to spans in both windows. */
   filterGroup?: TracingTreeQueryBodyFilterGroupList;
 }
-const TracingTreeQueryBody = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<TracingTreeQueryBody>;
-
 export interface CreateTracingSpansTreeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The span call-tree aggregation query to execute. */
   query: TracingTreeQueryBody;
 }
-const CreateTracingSpansTreeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateTracingSpansTreeRequest>;
-
 /** One node of the aggregated call tree. Mirrors `SpanTreeNode` in posthog.schema. */
 export interface SpanTreeNode {
   /** Span name for this node. */
@@ -1145,35 +774,18 @@ export interface SpanTreeNode {
   /** Mean calls per parent invocation. Null at the root. */
   calls_per_parent_invocation: number | null;
 }
-const SpanTreeNode = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<SpanTreeNode>;
-
 /** Call tree nodes for the requested window. */
 export type TracingTreeResponseResultsList = Array<SpanTreeNode>;
-const TracingTreeResponseResultsList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<TracingTreeResponseResultsList>;
-
 /** Nodes for the comparison window when compareFilter.compare is true. Null when no comparison was requested, and an empty list when one was requested and matched no spans. */
 export type TracingTreeResponseCompareList = Array<SpanTreeNode>;
-const TracingTreeResponseCompareList =
-  TracingTreeResponseResultsList as any as S.Schema<TracingTreeResponseCompareList>;
-
 export interface TracingTreeResponse {
   /** Call tree nodes for the requested window. */
   results: TracingTreeResponseResultsList;
   /** Nodes for the comparison window when compareFilter.compare is true. Null when no comparison was requested, and an empty list when one was requested and matched no spans. */
   compare: TracingTreeResponseCompareList | null;
 }
-const TracingTreeResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<TracingTreeResponse>;
-
 /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type CreateTracingViewRequestFiltersMap = { [key: string]: unknown | undefined };
-const CreateTracingViewRequestFiltersMap = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateTracingViewRequestFiltersMap>;
-
 export interface CreateTracingViewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1184,20 +796,9 @@ export interface CreateTracingViewRequest {
   /** Whether the view is pinned for quick access. */
   pinned?: boolean;
 }
-const CreateTracingViewRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateTracingViewRequest>;
-
 /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type TracingViewFiltersMap = { [key: string]: unknown | undefined };
-const TracingViewFiltersMap =
-  CreateTracingViewRequestFiltersMap as any as S.Schema<TracingViewFiltersMap>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap =
-  CreateTracingViewRequestFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -1211,8 +812,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -1224,8 +823,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UserBasic>;
-
 export interface TracingView {
   id: string;
   short_id: string;
@@ -1240,24 +837,15 @@ export interface TracingView {
   created_by: UserBasic | null;
   updated_at: string | null;
 }
-const TracingView = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<TracingView>;
-
 export interface GetTracingRetentionRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this traces retention rule. */
   id: string;
 }
-const GetTracingRetentionRuleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetTracingRetentionRuleRequest>;
-
 export type GetTracingSpansAttributeRequestAttributeType =
   | "span_attribute"
   | "span_resource_attribute";
-const GetTracingSpansAttributeRequestAttributeType = S.String;
-
 export interface GetTracingSpansAttributeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1272,15 +860,8 @@ export interface GetTracingSpansAttributeRequest {
   /** When true, the search query also matches attribute values (not just keys), so a value such as a trace_id finds the key holding it. */
   search_values?: boolean;
 }
-const GetTracingSpansAttributeRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetTracingSpansAttributeRequest>;
-
 /** * `key` - key * `value` - value */
 export type MatchedOnEnum = "key" | "value";
-const MatchedOnEnum = S.String;
-
 export interface TracingAttributeEntry {
   /** Attribute key name. */
   name: string;
@@ -1291,44 +872,22 @@ export interface TracingAttributeEntry {
   /** Sample matching value -- only set when matchedOn is "value". */
   matchedValue?: string | null;
 }
-const TracingAttributeEntry = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<TracingAttributeEntry>;
-
 /** Available attribute keys matching the filters. */
 export type TracingAttributesResponseResultsList = Array<TracingAttributeEntry>;
-const TracingAttributesResponseResultsList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<TracingAttributesResponseResultsList>;
-
 export interface TracingAttributesResponse {
   /** Available attribute keys matching the filters. */
   results: TracingAttributesResponseResultsList;
   /** Total attribute keys matched (lower bound when searching values). */
   count: number;
 }
-const TracingAttributesResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<TracingAttributesResponse>;
-
 export interface GetTracingSpansHasSpanRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetTracingSpansHasSpanRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetTracingSpansHasSpanRequest>;
-
 export interface HasSpansResponse {
   /** Whether the team has ingested any tracing spans yet. Used to gate the onboarding empty state. */
   hasSpans: boolean;
 }
-const HasSpansResponse = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<HasSpansResponse>;
-
 export interface GetTracingSpansServiceNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1337,43 +896,21 @@ export interface GetTracingSpansServiceNameRequest {
   /** Search filter for service names. */
   search?: string;
 }
-const GetTracingSpansServiceNameRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetTracingSpansServiceNameRequest>;
-
 export interface TracingServiceName {
   /** Service name. */
   name: string;
 }
-const TracingServiceName = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<TracingServiceName>;
-
 /** Services that emitted spans in the window. */
 export type TracingServiceNamesResponseResultsList = Array<TracingServiceName>;
-const TracingServiceNamesResponseResultsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<TracingServiceNamesResponseResultsList>;
-
 export interface TracingServiceNamesResponse {
   /** Services that emitted spans in the window. */
   results: TracingServiceNamesResponseResultsList;
 }
-const TracingServiceNamesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<TracingServiceNamesResponse>;
-
 export interface GetTracingSpansTraceAiEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   trace_id: string;
 }
-const GetTracingSpansTraceAiEventRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetTracingSpansTraceAiEventRequest>;
-
 export interface TracingTraceAiEvent {
   /** Event UUID. */
   uuid: string;
@@ -1404,15 +941,8 @@ export interface TracingTraceAiEvent {
   /** Whether the call failed. */
   is_error: boolean;
 }
-const TracingTraceAiEvent = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<TracingTraceAiEvent>;
-
 /** AI events in the trace, earliest start first, up to `limit` of them. */
 export type TracingTraceAiEventsResponseResultsList = Array<TracingTraceAiEvent>;
-const TracingTraceAiEventsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<TracingTraceAiEventsResponseResultsList>;
-
 export interface TracingTraceAiEventsResponse {
   /** AI events in the trace, earliest start first, up to `limit` of them. */
   results: TracingTraceAiEventsResponseResultsList;
@@ -1421,17 +951,10 @@ export interface TracingTraceAiEventsResponse {
   /** Whether the trace has more AI events than `results` holds. The full list is in AI observability under the events' `ai_trace_id`. */
   has_more: boolean;
 }
-const TracingTraceAiEventsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<TracingTraceAiEventsResponse>;
-
 export type GetTracingSpansValueRequestAttributeType =
   | "span"
   | "span_attribute"
   | "span_resource_attribute";
-const GetTracingSpansValueRequestAttributeType = S.String;
-
 export interface GetTracingSpansValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1446,27 +969,12 @@ export interface GetTracingSpansValueRequest {
   /** Search filter for attribute values. */
   value?: string;
 }
-const GetTracingSpansValueRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetTracingSpansValueRequest>;
-
 export interface GetTracingSpansValueResponse {}
-const GetTracingSpansValueResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetTracingSpansValueResponse>;
-
 export interface GetTracingViewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const GetTracingViewRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetTracingViewRequest>;
-
 export interface ListTracingRetentionRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1475,11 +983,6 @@ export interface ListTracingRetentionRulesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListTracingRetentionRulesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListTracingRetentionRulesRequest>;
-
 export interface ListTracingViewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1488,59 +991,26 @@ export interface ListTracingViewsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListTracingViewsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListTracingViewsRequest>;
-
 export type PaginatedTracingViewListResultsList = Array<TracingView>;
-const PaginatedTracingViewListResultsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<PaginatedTracingViewListResultsList>;
-
 export interface PaginatedTracingViewList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTracingViewListResultsList;
 }
-const PaginatedTracingViewList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PaginatedTracingViewList>;
-
 export interface TracingRetentionRulesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this traces retention rule. */
   id: string;
 }
-const TracingRetentionRulesDestroyRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<TracingRetentionRulesDestroyRequest>;
-
 export interface TracingRetentionRulesDestroyResponse {}
-const TracingRetentionRulesDestroyResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<TracingRetentionRulesDestroyResponse>;
-
 export interface TracingViewsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-const TracingViewsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<TracingViewsDestroyRequest>;
-
 export interface TracingViewsDestroyResponse {}
-const TracingViewsDestroyResponse =
-  GetTracingSpansValueResponse as any as S.Schema<TracingViewsDestroyResponse>;
-
 export interface UpdateTracingRetentionRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1555,11 +1025,6 @@ export interface UpdateTracingRetentionRuleRequest {
   /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
-const UpdateTracingRetentionRuleRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<UpdateTracingRetentionRuleRequest>;
-
 export interface UpdateTracingRetentionRulesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1574,16 +1039,8 @@ export interface UpdateTracingRetentionRulesPartialRequest {
   /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config?: unknown;
 }
-const UpdateTracingRetentionRulesPartialRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<UpdateTracingRetentionRulesPartialRequest>;
-
 /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type UpdateTracingViewRequestFiltersMap = { [key: string]: unknown | undefined };
-const UpdateTracingViewRequestFiltersMap =
-  CreateTracingViewRequestFiltersMap as any as S.Schema<UpdateTracingViewRequestFiltersMap>;
-
 export interface UpdateTracingViewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1595,16 +1052,8 @@ export interface UpdateTracingViewRequest {
   /** Whether the view is pinned for quick access. */
   pinned?: boolean;
 }
-const UpdateTracingViewRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<UpdateTracingViewRequest>;
-
 /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type UpdateTracingViewsPartialRequestFiltersMap = { [key: string]: unknown | undefined };
-const UpdateTracingViewsPartialRequestFiltersMap =
-  CreateTracingViewRequestFiltersMap as any as S.Schema<UpdateTracingViewsPartialRequestFiltersMap>;
-
 export interface UpdateTracingViewsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1616,11 +1065,6 @@ export interface UpdateTracingViewsPartialRequest {
   /** Whether the view is pinned for quick access. */
   pinned?: boolean;
 }
-const UpdateTracingViewsPartialRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<UpdateTracingViewsPartialRequest>;
-
 export type CreateTracingRetentionRuleError = PosthogOpError;
 /** Span retention rules. Shares the logs implementation over its own model. Only the model, the access-control scope and the feature flag differ. */
 export const createTracingRetentionRule: API.OperationMethod<
@@ -1629,8 +1073,8 @@ export const createTracingRetentionRule: API.OperationMethod<
   CreateTracingRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingRetentionRuleRequest,
-  output: TracesRetentionRule,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateTracingRetentionRuleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1644,8 +1088,8 @@ export const createTracingRetentionRulesReorder: API.OperationMethod<
   CreateTracingRetentionRulesReorderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingRetentionRulesReorderRequest,
-  output: PaginatedTracesRetentionRuleList,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateTracingRetentionRulesReorderRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaginatedTracesRetentionRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1659,8 +1103,8 @@ export const createTracingRetentionRulesSuggestName: API.OperationMethod<
   CreateTracingRetentionRulesSuggestNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingRetentionRulesSuggestNameRequest,
-  output: LogsRetentionRuleNameSuggestion,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateTracingRetentionRulesSuggestNameRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<LogsRetentionRuleNameSuggestion>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1673,8 +1117,8 @@ export const createTracingSpansAggregate: API.OperationMethod<
   CreateTracingSpansAggregateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansAggregateRequest,
-  output: TracingAggregationResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateTracingSpansAggregateRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<TracingAggregationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1131,8 @@ export const createTracingSpansAttributeBreakdown: API.OperationMethod<
   CreateTracingSpansAttributeBreakdownError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansAttributeBreakdownRequest,
-  output: TracingAttributeBreakdownResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateTracingSpansAttributeBreakdownRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<TracingAttributeBreakdownResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1145,8 @@ export const createTracingSpansCount: API.OperationMethod<
   CreateTracingSpansCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansCountRequest,
-  output: TracingCountResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateTracingSpansCountRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<TracingCountResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1715,8 +1159,8 @@ export const createTracingSpansDurationHistogram: API.OperationMethod<
   CreateTracingSpansDurationHistogramError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansDurationHistogramRequest,
-  output: TracingDurationHistogramResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<CreateTracingSpansDurationHistogramRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<TracingDurationHistogramResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1730,8 +1174,8 @@ export const createTracingSpansErrorCount: API.OperationMethod<
   CreateTracingSpansErrorCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansErrorCountRequest,
-  output: TracingErrorCountsResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<CreateTracingSpansErrorCountRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<TracingErrorCountsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1744,8 +1188,8 @@ export const createTracingSpansImpact: API.OperationMethod<
   CreateTracingSpansImpactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansImpactRequest,
-  output: TracingImpactResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateTracingSpansImpactRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<TracingImpactResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1758,8 +1202,8 @@ export const createTracingSpansLatencyHeatmap: API.OperationMethod<
   CreateTracingSpansLatencyHeatmapError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansLatencyHeatmapRequest,
-  output: TracingLatencyHeatmapResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<CreateTracingSpansLatencyHeatmapRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<TracingLatencyHeatmapResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1216,8 @@ export const createTracingSpansQuery: API.OperationMethod<
   CreateTracingSpansQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansQueryRequest,
-  output: TracingQueryResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateTracingSpansQueryRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<TracingQueryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1230,8 @@ export const createTracingSpansSparkline: API.OperationMethod<
   CreateTracingSpansSparklineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansSparklineRequest,
-  output: TracingSparklineResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<CreateTracingSpansSparklineRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<TracingSparklineResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1800,8 +1244,8 @@ export const createTracingSpansSymbolStat: API.OperationMethod<
   CreateTracingSpansSymbolStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansSymbolStatRequest,
-  output: SymbolStatsResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateTracingSpansSymbolStatRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<SymbolStatsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1814,8 +1258,8 @@ export const createTracingSpansTrace: API.OperationMethod<
   CreateTracingSpansTraceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansTraceRequest,
-  output: TracingTraceResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateTracingSpansTraceRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<TracingTraceResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1272,8 @@ export const createTracingSpansTree: API.OperationMethod<
   CreateTracingSpansTreeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingSpansTreeRequest,
-  output: TracingTreeResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<CreateTracingSpansTreeRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<TracingTreeResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1842,8 +1286,8 @@ export const createTracingView: API.OperationMethod<
   CreateTracingViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTracingViewRequest,
-  output: TracingView,
+  input: __S(75, __c9, 3) as any as S.Schema<CreateTracingViewRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1857,8 +1301,8 @@ export const getTracingRetentionRule: API.OperationMethod<
   GetTracingRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTracingRetentionRuleRequest,
-  output: TracesRetentionRule,
+  input: __S(78, __c9, 6) as any as S.Schema<GetTracingRetentionRuleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1315,8 @@ export const getTracingSpansAttribute: API.OperationMethod<
   GetTracingSpansAttributeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTracingSpansAttributeRequest,
-  output: TracingAttributesResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<GetTracingSpansAttributeRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<TracingAttributesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1885,8 +1329,8 @@ export const getTracingSpansHasSpan: API.OperationMethod<
   GetTracingSpansHasSpanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTracingSpansHasSpanRequest,
-  output: HasSpansResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<GetTracingSpansHasSpanRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<HasSpansResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1899,8 +1343,8 @@ export const getTracingSpansServiceName: API.OperationMethod<
   GetTracingSpansServiceNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTracingSpansServiceNameRequest,
-  output: TracingServiceNamesResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<GetTracingSpansServiceNameRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<TracingServiceNamesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1914,8 +1358,8 @@ export const getTracingSpansTraceAiEvent: API.OperationMethod<
   GetTracingSpansTraceAiEventError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTracingSpansTraceAiEventRequest,
-  output: TracingTraceAiEventsResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<GetTracingSpansTraceAiEventRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<TracingTraceAiEventsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1928,8 +1372,8 @@ export const getTracingSpansValue: API.OperationMethod<
   GetTracingSpansValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTracingSpansValueRequest,
-  output: GetTracingSpansValueResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<GetTracingSpansValueRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetTracingSpansValueResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1942,8 +1386,8 @@ export const getTracingView: API.OperationMethod<
   GetTracingViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTracingViewRequest,
-  output: TracingView,
+  input: __S(95, __c11, 7) as any as S.Schema<GetTracingViewRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1957,8 +1401,8 @@ export const listTracingRetentionRules: API.OperationMethod<
   ListTracingRetentionRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTracingRetentionRulesRequest,
-  output: PaginatedTracesRetentionRuleList,
+  input: __S(96, __c12, 0) as any as S.Schema<ListTracingRetentionRulesRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<PaginatedTracesRetentionRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1971,8 +1415,8 @@ export const listTracingViews: API.OperationMethod<
   ListTracingViewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTracingViewsRequest,
-  output: PaginatedTracingViewList,
+  input: __S(97, __c12, 1) as any as S.Schema<ListTracingViewsRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<PaginatedTracingViewList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1986,8 +1430,8 @@ export const tracingRetentionRulesDestroy: API.OperationMethod<
   TracingRetentionRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TracingRetentionRulesDestroyRequest,
-  output: TracingRetentionRulesDestroyResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<TracingRetentionRulesDestroyRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<TracingRetentionRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2000,8 +1444,8 @@ export const tracingViewsDestroy: API.OperationMethod<
   TracingViewsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TracingViewsDestroyRequest,
-  output: TracingViewsDestroyResponse,
+  input: __S(102, __c12, 6) as any as S.Schema<TracingViewsDestroyRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<TracingViewsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2015,8 +1459,8 @@ export const updateTracingRetentionRule: API.OperationMethod<
   UpdateTracingRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTracingRetentionRuleRequest,
-  output: TracesRetentionRule,
+  input: __S(103, __c12, 7) as any as S.Schema<UpdateTracingRetentionRuleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2030,8 +1474,8 @@ export const updateTracingRetentionRulesPartial: API.OperationMethod<
   UpdateTracingRetentionRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTracingRetentionRulesPartialRequest,
-  output: TracesRetentionRule,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateTracingRetentionRulesPartialRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2044,8 +1488,8 @@ export const updateTracingView: API.OperationMethod<
   UpdateTracingViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTracingViewRequest,
-  output: TracingView,
+  input: __S(105, __c13, 1) as any as S.Schema<UpdateTracingViewRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2058,8 +1502,8 @@ export const updateTracingViewsPartial: API.OperationMethod<
   UpdateTracingViewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTracingViewsPartialRequest,
-  output: TracingView,
+  input: __S(106, __c13, 2) as any as S.Schema<UpdateTracingViewsPartialRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2108,7 +1552,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordered_ids: CreateTracingRetentionRulesReorderRequestOrderedIdsList,
+          ordered_ids: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2120,14 +1564,14 @@ function __c0(j: number): any {
         identifier: "CreateTracingRetentionRulesReorderRequest",
       });
     case 4:
-      return S.Array(TracesRetentionRule);
+      return S.Array(__S(1, __c0, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedTracesRetentionRuleListResultsList,
+          results: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "PaginatedTracesRetentionRuleList",
@@ -2178,20 +1622,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          type: SpanPropertyTypeEnum,
-          operator: SpanPropertyFilterOperatorEnum,
+          type: S.String,
+          operator: S.String,
           value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "SpanPropertyFilter" });
     case 3:
-      return S.Array(SpanPropertyFilter);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(TracingDateRange),
-          compareFilter: S.optional(CompareFilter),
-          serviceNames: S.optional(TracingAggregationQueryBodyServiceNamesList),
-          filterGroup: S.optional(TracingAggregationQueryBodyFilterGroupList),
+          dateRange: S.optional(__S(8, __c1, 0)),
+          compareFilter: S.optional(__S(9, __c1, 1)),
+          serviceNames: S.optional(__S(2, __c0, 2)),
+          filterGroup: S.optional(__S(11, __c1, 3)),
           limit: S.optional(S.Number),
           offset: S.optional(S.Number),
           includeImpact: S.optional(S.Boolean),
@@ -2203,7 +1647,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingAggregationQueryBody,
+          query: __S(12, __c1, 4),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2234,7 +1678,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AggregatedSpanRow" });
     case 7:
-      return S.Array(AggregatedSpanRow);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -2242,8 +1686,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: TracingAggregationResponseResultsList,
-          compare: S.NullOr(TracingAggregationResponseCompareList),
+          results: __S(15, __c1, 7),
+          compare: S.NullOr(__S(15, __c1, 7)),
           has_more: S.Boolean,
           next_offset: S.NullOr(S.Number),
         }),
@@ -2254,14 +1698,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           breakdownKey: S.String,
-          breakdownType: SpanPropertyTypeEnum,
+          breakdownType: S.String,
           excludeBreakdownFilter: S.optional(S.Boolean),
           facetSearch: S.optional(S.String),
-          orderBy: S.optional(TracingAttributeBreakdownQueryBodyOrderByEnum),
-          dateRange: S.optional(TracingDateRange),
-          compareFilter: S.optional(CompareFilter),
-          serviceNames: S.optional(TracingAttributeBreakdownQueryBodyServiceNamesList),
-          filterGroup: S.optional(TracingAttributeBreakdownQueryBodyFilterGroupList),
+          orderBy: S.optional(S.String),
+          dateRange: S.optional(__S(8, __c1, 0)),
+          compareFilter: S.optional(__S(9, __c1, 1)),
+          serviceNames: S.optional(__S(2, __c0, 2)),
+          filterGroup: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "TracingAttributeBreakdownQueryBody",
@@ -2270,7 +1714,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingAttributeBreakdownQueryBody,
+          query: __S(17, __c2, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2294,12 +1738,12 @@ function __c2(j: number): any {
         identifier: "TracingAttributeBreakdownRow",
       });
     case 4:
-      return S.Array(TracingAttributeBreakdownRow);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: TracingAttributeBreakdownResponseResultsList,
-          compare: S.NullOr(TracingAttributeBreakdownResponseCompareList),
+          results: __S(20, __c2, 4),
+          compare: S.NullOr(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "TracingAttributeBreakdownResponse",
@@ -2309,10 +1753,10 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(TracingDateRange),
-          serviceNames: S.optional(TracingCountBodyServiceNamesList),
-          statusCodes: S.optional(TracingCountBodyStatusCodesList),
-          filterGroup: S.optional(TracingCountBodyFilterGroup),
+          dateRange: S.optional(__S(8, __c1, 0)),
+          serviceNames: S.optional(__S(2, __c0, 2)),
+          statusCodes: S.optional(__S(22, __c2, 6)),
+          filterGroup: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "TracingCountBody" });
   }
@@ -2323,7 +1767,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingCountBody,
+          query: __S(23, __c2, 7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2344,10 +1788,10 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(TracingDateRange),
-          serviceNames: S.optional(TracingDurationHistogramQueryBodyServiceNamesList),
-          statusCodes: S.optional(TracingDurationHistogramQueryBodyStatusCodesList),
-          filterGroup: S.optional(TracingDurationHistogramQueryBodyFilterGroupList),
+          dateRange: S.optional(__S(8, __c1, 0)),
+          serviceNames: S.optional(__S(2, __c0, 2)),
+          statusCodes: S.optional(__S(22, __c2, 6)),
+          filterGroup: S.optional(__S(11, __c1, 3)),
           rootSpans: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2357,7 +1801,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingDurationHistogramQueryBody,
+          query: __S(26, __c3, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2379,11 +1823,11 @@ function __c3(j: number): any {
         identifier: "TracingDurationHistogramRow",
       });
     case 5:
-      return S.Array(TracingDurationHistogramRow);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          results: TracingDurationHistogramResponseResultsList,
+          results: __S(29, __c3, 5),
         }),
       ).annotate({
         identifier: "TracingDurationHistogramResponse",
@@ -2392,9 +1836,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          traceIds: S.optional(CreateTracingSpansErrorCountRequestTraceIdsList),
-          spanIds: S.optional(CreateTracingSpansErrorCountRequestSpanIdsList),
-          sessionIds: S.optional(CreateTracingSpansErrorCountRequestSessionIdsList),
+          traceIds: S.optional(__S(2, __c0, 2)),
+          spanIds: S.optional(__S(2, __c0, 2)),
+          sessionIds: S.optional(__S(2, __c0, 2)),
           dateFrom: S.String,
           dateTo: S.String,
         }).pipe(
@@ -2419,7 +1863,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "TracingTraceErrorCount" });
     case 1:
-      return S.Array(TracingTraceErrorCount);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2428,7 +1872,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "TracingSpanErrorCount" });
     case 3:
-      return S.Array(TracingSpanErrorCount);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2437,13 +1881,13 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "TracingSessionErrorCount" });
     case 5:
-      return S.Array(TracingSessionErrorCount);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          traceResults: TracingErrorCountsResponseTraceResultsList,
-          spanResults: TracingErrorCountsResponseSpanResultsList,
-          sessionResults: TracingErrorCountsResponseSessionResultsList,
+          traceResults: __S(33, __c4, 1),
+          spanResults: __S(35, __c4, 3),
+          sessionResults: __S(37, __c4, 5),
         }),
       ).annotate({
         identifier: "TracingErrorCountsResponse",
@@ -2452,7 +1896,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingCountBody,
+          query: __S(23, __c2, 7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2475,7 +1919,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "TracingImpactTopValue" });
     case 1:
-      return S.Array(TracingImpactTopValue);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2484,15 +1928,15 @@ function __c5(j: number): any {
           sessions: S.Number,
           spansWithDistinctId: S.Number,
           users: S.Number,
-          topSessions: TracingImpactResponseTopSessionsList,
-          topUsers: TracingImpactResponseTopUsersList,
+          topSessions: __S(41, __c5, 1),
+          topUsers: __S(41, __c5, 1),
         }),
       ).annotate({ identifier: "TracingImpactResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingDurationHistogramQueryBody,
+          query: __S(26, __c3, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2514,11 +1958,11 @@ function __c5(j: number): any {
         identifier: "TracingLatencyHeatmapCell",
       });
     case 5:
-      return S.Array(TracingLatencyHeatmapCell);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          results: TracingLatencyHeatmapResponseResultsList,
+          results: __S(45, __c5, 5),
         }),
       ).annotate({
         identifier: "TracingLatencyHeatmapResponse",
@@ -2526,12 +1970,12 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(TracingDateRange),
-          serviceNames: S.optional(TracingQueryBodyServiceNamesList),
-          statusCodes: S.optional(TracingQueryBodyStatusCodesList),
-          orderBy: S.optional(TracingQueryBodyOrderByEnum),
-          orderDirection: S.optional(OrderDirectionEnum),
-          filterGroup: S.optional(TracingQueryBodyFilterGroupList),
+          dateRange: S.optional(__S(8, __c1, 0)),
+          serviceNames: S.optional(__S(2, __c0, 2)),
+          statusCodes: S.optional(__S(22, __c2, 6)),
+          orderBy: S.optional(S.String),
+          orderDirection: S.optional(S.String),
+          filterGroup: S.optional(__S(11, __c1, 3)),
           traceId: S.optional(S.String),
           limit: S.optional(S.Number),
           after: S.optional(S.String),
@@ -2550,7 +1994,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingQueryBody,
+          query: __S(47, __c5, 7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2581,16 +2025,16 @@ function __c6(j: number): any {
           matched_filter: S.Number,
           trace_start: S.String,
           trace_duration: S.Number,
-          attributes: SpanAttributesMap,
-          resource_attributes: SpanResourceAttributesMap,
+          attributes: __S(49, __c6, 1),
+          resource_attributes: __S(49, __c6, 1),
         }),
       ).annotate({ identifier: "Span" });
     case 3:
-      return S.Array(Span);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: TracingQueryResponseResultsList,
+          results: __S(51, __c6, 3),
           hasMore: S.Boolean,
           nextCursor: S.NullOr(S.String),
         }),
@@ -2599,7 +2043,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingSparklineQueryBody,
+          query: __S(26, __c3, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2619,7 +2063,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "TracingSparklineRow" });
     case 7:
-      return S.Array(TracingSparklineRow);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -2627,7 +2071,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: TracingSparklineResponseResultsList,
+          results: __S(55, __c6, 7),
         }),
       ).annotate({ identifier: "TracingSparklineResponse" });
     case 1:
@@ -2639,20 +2083,20 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "SymbolStatsSymbol" });
     case 2:
-      return S.Array(SymbolStatsSymbol);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           filePath: S.String,
-          dateRange: S.optional(TracingDateRange),
-          symbols: S.optional(SymbolStatsQueryBodySymbolsList),
+          dateRange: S.optional(__S(8, __c1, 0)),
+          symbols: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "SymbolStatsQueryBody" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: SymbolStatsQueryBody,
+          query: __S(59, __c7, 3),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2694,13 +2138,13 @@ function __c7(j: number): any {
           line: S.Number,
           name: S.optional(S.NullOr(S.String)),
           end_line: S.optional(S.NullOr(S.Number)),
-          previous: SymbolStatsPeriod,
+          previous: __S(61, __c7, 5),
           count_pct_change: S.NullOr(S.Number),
           p95_duration_pct_change: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "SymbolStatsRow" });
     case 7:
-      return S.Array(SymbolStatsRow);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -2708,8 +2152,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: SymbolStatsResponseResultsList,
-          granularity: GranularityEnum,
+          results: __S(63, __c7, 7),
+          granularity: S.String,
         }),
       ).annotate({ identifier: "SymbolStatsResponse" });
     case 1:
@@ -2717,7 +2161,7 @@ function __c8(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           trace_id: S.String.pipe(T.Label()),
-          dateRange: S.optional(TracingDateRange),
+          dateRange: S.optional(__S(8, __c1, 0)),
           excludeAttributes: S.optional(S.Boolean),
           offset: S.optional(S.Number),
         }).pipe(
@@ -2748,17 +2192,17 @@ function __c8(j: number): any {
           matched_filter: S.Number,
           trace_start: S.String,
           trace_duration: S.Number,
-          attributes: TraceSpanAttributesMap,
-          resource_attributes: TraceSpanResourceAttributesMap,
+          attributes: __S(49, __c6, 1),
+          resource_attributes: __S(49, __c6, 1),
           self_time_nano: S.Number,
         }),
       ).annotate({ identifier: "TraceSpan" });
     case 3:
-      return S.Array(TraceSpan);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: TracingTraceResponseResultsList,
+          results: __S(67, __c8, 3),
           hasMore: S.Boolean,
           nextOffset: S.NullOr(S.Number),
         }),
@@ -2768,17 +2212,17 @@ function __c8(j: number): any {
         S.Struct({
           spanName: S.String,
           serviceName: S.String,
-          dateRange: S.optional(TracingDateRange),
-          compareFilter: S.optional(CompareFilter),
-          serviceNames: S.optional(TracingTreeQueryBodyServiceNamesList),
-          filterGroup: S.optional(TracingTreeQueryBodyFilterGroupList),
+          dateRange: S.optional(__S(8, __c1, 0)),
+          compareFilter: S.optional(__S(9, __c1, 1)),
+          serviceNames: S.optional(__S(2, __c0, 2)),
+          filterGroup: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "TracingTreeQueryBody" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: TracingTreeQueryBody,
+          query: __S(69, __c8, 5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2813,12 +2257,12 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SpanTreeNode);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: TracingTreeResponseResultsList,
-          compare: S.NullOr(TracingTreeResponseCompareList),
+          results: __S(72, __c9, 0),
+          compare: S.NullOr(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "TracingTreeResponse" });
     case 2:
@@ -2828,7 +2272,7 @@ function __c9(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
-          filters: S.optional(CreateTracingViewRequestFiltersMap),
+          filters: S.optional(__S(74, __c9, 2)),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/tracing/views/", code: 200 }),
@@ -2844,8 +2288,8 @@ function __c9(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(74, __c9, 2))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 5:
@@ -2854,10 +2298,10 @@ function __c9(j: number): any {
           id: S.String,
           short_id: S.String,
           name: S.String,
-          filters: S.optional(TracingViewFiltersMap),
+          filters: S.optional(__S(74, __c9, 2)),
           pinned: S.optional(S.Boolean),
           created_at: S.String,
-          created_by: S.NullOr(UserBasic),
+          created_by: S.NullOr(__S(76, __c9, 4)),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TracingView" });
@@ -2880,7 +2324,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          attribute_type: S.optional(GetTracingSpansAttributeRequestAttributeType.pipe(T.Query())),
+          attribute_type: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
@@ -2904,16 +2348,16 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String,
           propertyFilterType: S.String,
-          matchedOn: MatchedOnEnum,
+          matchedOn: S.String,
           matchedValue: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TracingAttributeEntry" });
     case 1:
-      return S.Array(TracingAttributeEntry);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: TracingAttributesResponseResultsList,
+          results: __S(81, __c10, 1),
           count: S.Number,
         }),
       ).annotate({
@@ -2962,7 +2406,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "TracingServiceName" });
     case 7:
-      return S.Array(TracingServiceName);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -2970,7 +2414,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: TracingServiceNamesResponseResultsList,
+          results: __S(87, __c10, 7),
         }),
       ).annotate({
         identifier: "TracingServiceNamesResponse",
@@ -3010,11 +2454,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "TracingTraceAiEvent" });
     case 3:
-      return S.Array(TracingTraceAiEvent);
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: TracingTraceAiEventsResponseResultsList,
+          results: __S(91, __c11, 3),
           limit: S.Number,
           has_more: S.Boolean,
         }),
@@ -3025,7 +2469,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          attribute_type: S.optional(GetTracingSpansValueRequestAttributeType.pipe(T.Query())),
+          attribute_type: S.optional(S.String.pipe(T.Query())),
           key: S.String.pipe(T.Query()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
@@ -3088,14 +2532,14 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListTracingViewsRequest" });
     case 2:
-      return S.Array(TracingView);
+      return S.Array(__S(77, __c9, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedTracingViewListResultsList,
+          results: __S(98, __c12, 2),
         }),
       ).annotate({ identifier: "PaginatedTracingViewList" });
     case 4:
@@ -3180,7 +2624,7 @@ function __c13(j: number): any {
           project_id: S.String.pipe(T.Label()),
           short_id: S.String.pipe(T.Label()),
           name: S.String,
-          filters: S.optional(UpdateTracingViewRequestFiltersMap),
+          filters: S.optional(__S(74, __c9, 2)),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -3196,7 +2640,7 @@ function __c13(j: number): any {
           project_id: S.String.pipe(T.Label()),
           short_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          filters: S.optional(UpdateTracingViewsPartialRequestFiltersMap),
+          filters: S.optional(__S(74, __c9, 2)),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -3209,4 +2653,9 @@ function __c13(j: number): any {
         identifier: "UpdateTracingViewsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

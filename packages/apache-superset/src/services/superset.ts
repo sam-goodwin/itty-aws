@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ApacheSupersetOpError, ApacheSupersetOpContext };
 
@@ -62,59 +64,29 @@ export class UnprocessableEntity
 
 /** Objects to tag */
 export type TagObjectObjectsToTagList = Array<unknown>;
-const TagObjectObjectsToTagList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<TagObjectObjectsToTagList>;
-
 export interface TagObject {
   description?: string | null;
   name?: string;
   /** Objects to tag */
   objects_to_tag?: TagObjectObjectsToTagList;
 }
-const TagObject = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TagObject>;
-
 export type BulkTagCreateRequestTagsList = Array<TagObject>;
-const BulkTagCreateRequestTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BulkTagCreateRequestTagsList>;
-
 export interface BulkTagCreateRequest {
   tags?: BulkTagCreateRequestTagsList;
 }
-const BulkTagCreateRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BulkTagCreateRequest>;
-
 /** Objects to tag */
 export type TagPostBulkResponseObjectObjectsSkippedList = Array<unknown>;
-const TagPostBulkResponseObjectObjectsSkippedList =
-  TagObjectObjectsToTagList as any as S.Schema<TagPostBulkResponseObjectObjectsSkippedList>;
-
 /** Objects to tag */
 export type TagPostBulkResponseObjectObjectsTaggedList = Array<unknown>;
-const TagPostBulkResponseObjectObjectsTaggedList =
-  TagObjectObjectsToTagList as any as S.Schema<TagPostBulkResponseObjectObjectsTaggedList>;
-
 export interface TagPostBulkResponseObject {
   /** Objects to tag */
   objects_skipped?: TagPostBulkResponseObjectObjectsSkippedList;
   /** Objects to tag */
   objects_tagged?: TagPostBulkResponseObjectObjectsTaggedList;
 }
-const TagPostBulkResponseObject = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<TagPostBulkResponseObject>;
-
 export interface TagPostBulkResponseSchema {
   result?: TagPostBulkResponseObject;
 }
-const TagPostBulkResponseSchema = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<TagPostBulkResponseSchema>;
-
 export interface CopyDashboardRequest {
   /** The dashboard id or slug */
   id_or_slug: string;
@@ -127,48 +99,26 @@ export interface CopyDashboardRequest {
   /** This JSON object is generated dynamically when clicking the save or overwrite button in the dashboard view. It is exposed here for reference and for power users who may want to alter specific parameters. */
   json_metadata: string;
 }
-const CopyDashboardRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CopyDashboardRequest>;
-
 export interface CopyDashboardResponse {
   id?: number;
   last_modified_time?: number;
 }
-const CopyDashboardResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CopyDashboardResponse>;
-
 export interface CreateAnnotationLayerRequest {
   /** Give a description for this annotation layer */
   descr?: string | null;
   /** The annotation layer name */
   name: string;
 }
-const CreateAnnotationLayerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateAnnotationLayerRequest>;
-
 export interface AnnotationLayerRestApiPost {
   /** Give a description for this annotation layer */
   descr?: string | null;
   /** The annotation layer name */
   name: string;
 }
-const AnnotationLayerRestApiPost = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AnnotationLayerRestApiPost>;
-
 export interface CreateAnnotationLayerResponse {
   id?: number;
   result?: AnnotationLayerRestApiPost;
 }
-const CreateAnnotationLayerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateAnnotationLayerResponse>;
-
 export interface CreateAnnotationLayerAnnotationRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
@@ -183,11 +133,6 @@ export interface CreateAnnotationLayerAnnotationRequest {
   /** The annotation start date time */
   start_dttm: string;
 }
-const CreateAnnotationLayerAnnotationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateAnnotationLayerAnnotationRequest>;
-
 export interface AnnotationRestApiPost {
   /** The annotation end date time */
   end_dttm: string;
@@ -200,26 +145,11 @@ export interface AnnotationRestApiPost {
   /** The annotation start date time */
   start_dttm: string;
 }
-const AnnotationRestApiPost = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AnnotationRestApiPost>;
-
 export interface CreateAnnotationLayerAnnotationResponse {
   id?: number;
   result?: AnnotationRestApiPost;
 }
-const CreateAnnotationLayerAnnotationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateAnnotationLayerAnnotationResponse>;
-
 export type CreateChartRequestDashboardsList = Array<number>;
-const CreateChartRequestDashboardsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateChartRequestDashboardsList>;
-
 /** The type of dataset/datasource identified on `datasource_id`. */
 export type CreateChartRequestDatasourceType =
   | "table"
@@ -228,16 +158,8 @@ export type CreateChartRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const CreateChartRequestDatasourceType = S.String;
-
 export type CreateChartRequestEditorsList = Array<number>;
-const CreateChartRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateChartRequestEditorsList>;
-
 export type CreateChartRequestViewersList = Array<number>;
-const CreateChartRequestViewersList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateChartRequestViewersList>;
-
 export interface CreateChartRequest {
   /** Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined. */
   cache_timeout?: number | null;
@@ -270,12 +192,7 @@ export interface CreateChartRequest {
   /** The type of chart visualization used. */
   viz_type?: string;
 }
-const CreateChartRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateChartRequest>;
-
 export type ChartRestApiPostDashboardsList = Array<number>;
-const ChartRestApiPostDashboardsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPostDashboardsList>;
-
 /** The type of dataset/datasource identified on `datasource_id`. */
 export type ChartRestApiPostDatasourceType =
   | "table"
@@ -284,16 +201,8 @@ export type ChartRestApiPostDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const ChartRestApiPostDatasourceType = S.String;
-
 export type ChartRestApiPostEditorsList = Array<number>;
-const ChartRestApiPostEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPostEditorsList>;
-
 export type ChartRestApiPostViewersList = Array<number>;
-const ChartRestApiPostViewersList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPostViewersList>;
-
 export interface ChartRestApiPost {
   /** Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined. */
   cache_timeout?: number | null;
@@ -326,14 +235,10 @@ export interface ChartRestApiPost {
   /** The type of chart visualization used. */
   viz_type?: string;
 }
-const ChartRestApiPost = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ChartRestApiPost>;
-
 export interface CreateChartResponse {
   id?: number;
   result?: ChartRestApiPost;
 }
-const CreateChartResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateChartResponse>;
-
 /** Datasource type */
 export type ChartDataDatasourceType =
   | "table"
@@ -342,46 +247,24 @@ export type ChartDataDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const ChartDataDatasourceType = S.String;
-
 export interface ChartDataDatasource {
   /** Datasource id or uuid */
   id: unknown;
   /** Datasource type */
   type?: ChartDataDatasourceType | (string & {});
 }
-const ChartDataDatasource = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ChartDataDatasource>;
-
 /** Type of annotation layer */
 export type AnnotationLayerAnnotationType = "FORMULA" | "INTERVAL" | "EVENT" | "TIME_SERIES";
-const AnnotationLayerAnnotationType = S.String;
-
 /** Columns to use as the description. If none are provided, all will be shown. */
 export type AnnotationLayerDescriptionColumnsList = Array<string>;
-const AnnotationLayerDescriptionColumnsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AnnotationLayerDescriptionColumnsList>;
-
 /** Opacity of layer */
 export type AnnotationLayerOpacity = "" | "opacityLow" | "opacityMedium" | "opacityHigh";
-const AnnotationLayerOpacity = S.String;
-
 /** which properties should be overridable */
 export type AnnotationLayerOverridesMap = { [key: string]: unknown | null | undefined };
-const AnnotationLayerOverridesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AnnotationLayerOverridesMap>;
-
 /** Type of source for annotation data */
 export type AnnotationLayerSourceType = "" | "line" | "NATIVE" | "table";
-const AnnotationLayerSourceType = S.String;
-
 /** Line style. Only applies to time-series annotations */
 export type AnnotationLayerStyle = "dashed" | "dotted" | "solid" | "longDashed";
-const AnnotationLayerStyle = S.String;
-
 export interface AnnotationLayer {
   /** Type of annotation layer */
   annotationType?: AnnotationLayerAnnotationType | (string & {});
@@ -418,33 +301,16 @@ export interface AnnotationLayer {
   /** Width of annotation line */
   width?: number;
 }
-const AnnotationLayer = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AnnotationLayer>;
-
 /** Annotation layers to apply to chart */
 export type ChartDataQueryObjectAnnotationLayersList = Array<AnnotationLayer>;
-const ChartDataQueryObjectAnnotationLayersList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ChartDataQueryObjectAnnotationLayersList>;
-
 /** Columns which to select in the query. */
 export type ChartDataQueryObjectColumnsList = Array<unknown>;
-const ChartDataQueryObjectColumnsList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectColumnsList>;
-
 /** Ordered list of column names for result ordering. Used to preserve user's column reordering (including mixed dimension columns and metrics) */
 export type ChartDataExtrasColumnOrderList = Array<string>;
-const ChartDataExtrasColumnOrderList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataExtrasColumnOrderList>;
-
 /** End time for relative time deltas. Default: `config["DEFAULT_RELATIVE_START_TIME"]` */
 export type ChartDataExtrasRelativeEnd = "today" | "now";
-const ChartDataExtrasRelativeEnd = S.String;
-
 /** Start time for relative time deltas. Default: `config["DEFAULT_RELATIVE_START_TIME"]` */
 export type ChartDataExtrasRelativeStart = "today" | "now";
-const ChartDataExtrasRelativeStart = S.String;
-
 export interface ChartDataExtras {
   /** Ordered list of column names for result ordering. Used to preserve user's column reordering (including mixed dimension columns and metrics) */
   column_order?: ChartDataExtrasColumnOrderList | null;
@@ -465,8 +331,6 @@ export interface ChartDataExtras {
   /** WHERE clause to be added to queries using AND operator. */
   where?: string;
 }
-const ChartDataExtras = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ChartDataExtras>;
-
 /** The comparison operator. */
 export type ChartDataFilterOp =
   | "=="
@@ -495,8 +359,6 @@ export type ChartDataFilterOp =
   | "LENGTH_LESS_THAN"
   | "LENGTH_GREATER_THAN_OR_EQUALS"
   | "LENGTH_LESS_THAN_OR_EQUALS";
-const ChartDataFilterOp = S.String;
-
 export interface ChartDataFilter {
   /** The column to filter by. Can be either a string (physical or saved expression) or an object (adhoc column) */
   col: unknown;
@@ -509,58 +371,24 @@ export interface ChartDataFilter {
   /** The value or values to compare against. Can be a string, integer, decimal, None or list, depending on the operator. */
   val?: unknown | null;
 }
-const ChartDataFilter = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ChartDataFilter>;
-
 export type ChartDataQueryObjectFiltersList = Array<ChartDataFilter>;
-const ChartDataQueryObjectFiltersList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ChartDataQueryObjectFiltersList>;
-
 /** Columns by which to group the query. This field is deprecated, use `columns` instead. */
 export type ChartDataQueryObjectGroupbyList = Array<unknown>;
-const ChartDataQueryObjectGroupbyList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectGroupbyList>;
-
 export type ChartDataQueryObjectGroupingSetsItemList = Array<string>;
-const ChartDataQueryObjectGroupingSetsItemList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataQueryObjectGroupingSetsItemList>;
-
 /** Rollup levels for non-additive totals: each entry is the list of groupby columns to group at that level (e.g. the empty list is the grand total). When set and the engine supports it, the levels are computed in a single GROUPING SETS query. */
 export type ChartDataQueryObjectGroupingSetsList = Array<ChartDataQueryObjectGroupingSetsItemList>;
-const ChartDataQueryObjectGroupingSetsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ChartDataQueryObjectGroupingSetsList>;
-
 /** Aggregate expressions. Metrics can be passed as both references to datasource metrics (strings), or ad-hoc metricswhich are defined only within the query object. See `ChartDataAdhocMetricSchema` for the structure of ad-hoc metrics. */
 export type ChartDataQueryObjectMetricsList = Array<unknown>;
-const ChartDataQueryObjectMetricsList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectMetricsList>;
-
 /** Expects a list of lists where the first element is the column name which to sort by, and the second element is a boolean. */
 export type ChartDataQueryObjectOrderbyList = Array<unknown>;
-const ChartDataQueryObjectOrderbyList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectOrderbyList>;
-
 export interface ChartDataPostProcessingOperation {
   /** Post processing operation type */
   operation: string;
   /** Options specifying how to perform the operation. Please refer to the respective post processing operation option schemas. For example, `ChartDataPostProcessingOperationOptions` specifies the required options for the pivot operation. */
   options?: unknown;
 }
-const ChartDataPostProcessingOperation = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ChartDataPostProcessingOperation>;
-
 /** Post processing operations to be applied to the result set. Operations are applied to the result set in sequential order. */
 export type ChartDataQueryObjectPostProcessingList = Array<ChartDataPostProcessingOperation | null>;
-const ChartDataQueryObjectPostProcessingList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ChartDataQueryObjectPostProcessingList>;
-
 export type ChartDataQueryObjectResultType =
   | "columns"
   | "full"
@@ -570,24 +398,11 @@ export type ChartDataQueryObjectResultType =
   | "timegrains"
   | "post_processed"
   | "drill_detail";
-const ChartDataQueryObjectResultType = S.String;
-
 /** Columns to use when limiting series count. All columns must be present in the `columns` property. Requires `series_limit` and `series_limit_metric` to be set. */
 export type ChartDataQueryObjectSeriesColumnsList = Array<unknown>;
-const ChartDataQueryObjectSeriesColumnsList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectSeriesColumnsList>;
-
 export type ChartDataQueryObjectTimeOffsetsList = Array<string>;
-const ChartDataQueryObjectTimeOffsetsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataQueryObjectTimeOffsetsList>;
-
 /** Optional query parameters passed to a dashboard or Explore view */
 export type ChartDataQueryObjectUrlParamsMap = { [key: string]: string | undefined };
-const ChartDataQueryObjectUrlParamsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ChartDataQueryObjectUrlParamsMap>;
-
 export interface ChartDataQueryObject {
   /** Annotation layers to apply to chart */
   annotation_layers?: ChartDataQueryObjectAnnotationLayersList | null;
@@ -654,17 +469,8 @@ export interface ChartDataQueryObject {
   /** WHERE clause to be added to queries using AND operator.This field is deprecated and should be passed to `extras`. */
   where?: string | null;
 }
-const ChartDataQueryObject = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ChartDataQueryObject>;
-
 export type CreateChartDataRequestQueriesList = Array<ChartDataQueryObject>;
-const CreateChartDataRequestQueriesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateChartDataRequestQueriesList>;
-
 export type CreateChartDataRequestResultFormat = "csv" | "json" | "xlsx" | "arrow";
-const CreateChartDataRequestResultFormat = S.String;
-
 export type CreateChartDataRequestResultType =
   | "columns"
   | "full"
@@ -674,8 +480,6 @@ export type CreateChartDataRequestResultType =
   | "timegrains"
   | "post_processed"
   | "drill_detail";
-const CreateChartDataRequestResultType = S.String;
-
 export interface CreateChartDataRequest {
   /** Opt this request into asynchronous execution on the Global Task Framework (requires the GLOBAL_ASYNC_QUERIES feature flag). When true the response is HTTP 202 with the query task ids to poll; when absent or false the query runs synchronously (HTTP 200). Default: `false`. */
   async_mode?: boolean | null;
@@ -693,11 +497,6 @@ export interface CreateChartDataRequest {
   /** Opaque per-browser-tab id (see the frontend `getTabId`). On an async request it ref-counts this tab as a consumer of the shared chart-data task so a cancel/navigate-away from one tab doesn't abort a task another tab still awaits. Read by the API as a request-level routing hint; not part of the query context. */
   tab_id?: string | null;
 }
-const CreateChartDataRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateChartDataRequest>;
-
 export interface DashboardFilterInfo {
   /** Target column name for the filter */
   column?: string | null;
@@ -708,61 +507,26 @@ export interface DashboardFilterInfo {
   /** Filter status: 'applied' (default value was included in the query), 'not_applied' (filter had no default value and was omitted, matching dashboard initial-load behavior), or 'not_applied_uses_default_to_first_item_prequery' (filter uses defaultToFirstItem which requires a pre-query to resolve and cannot be applied server-side) */
   status: string;
 }
-const DashboardFilterInfo = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DashboardFilterInfo>;
-
 /** Metadata about each in-scope dashboard native filter and whether its default value was applied to the query */
 export type DashboardFiltersResponseSchemaFiltersList = Array<DashboardFilterInfo>;
-const DashboardFiltersResponseSchemaFiltersList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DashboardFiltersResponseSchemaFiltersList>;
-
 export interface DashboardFiltersResponseSchema {
   /** Metadata about each in-scope dashboard native filter and whether its default value was applied to the query */
   filters?: DashboardFiltersResponseSchemaFiltersList;
 }
-const DashboardFiltersResponseSchema = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DashboardFiltersResponseSchema>;
-
 export type ChartDataResponseResultAnnotationDataItemMap = { [key: string]: string | undefined };
-const ChartDataResponseResultAnnotationDataItemMap =
-  ChartDataQueryObjectUrlParamsMap as any as S.Schema<ChartDataResponseResultAnnotationDataItemMap>;
-
 /** All requested annotation data */
 export type ChartDataResponseResultAnnotationDataList =
   Array<ChartDataResponseResultAnnotationDataItemMap>;
-const ChartDataResponseResultAnnotationDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ChartDataResponseResultAnnotationDataList>;
-
 /** A list with applied filters */
 export type ChartDataResponseResultAppliedFiltersList = Array<unknown>;
-const ChartDataResponseResultAppliedFiltersList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataResponseResultAppliedFiltersList>;
-
 /** A list of column names */
 export type ChartDataResponseResultColnamesList = Array<string>;
-const ChartDataResponseResultColnamesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataResponseResultColnamesList>;
-
 /** A list of generic data types of each column */
 export type ChartDataResponseResultColtypesList = Array<number>;
-const ChartDataResponseResultColtypesList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartDataResponseResultColtypesList>;
-
 /** A list with results */
 export type ChartDataResponseResultDataList = Array<unknown>;
-const ChartDataResponseResultDataList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataResponseResultDataList>;
-
 /** A list with rejected filters */
 export type ChartDataResponseResultRejectedFiltersList = Array<unknown>;
-const ChartDataResponseResultRejectedFiltersList =
-  TagObjectObjectsToTagList as any as S.Schema<ChartDataResponseResultRejectedFiltersList>;
-
 /** Status of the query */
 export type ChartDataResponseResultStatus =
   | "stopped"
@@ -772,8 +536,6 @@ export type ChartDataResponseResultStatus =
   | "scheduled"
   | "success"
   | "timed_out";
-const ChartDataResponseResultStatus = S.String;
-
 export interface ChartDataQueryTiming {
   cache_resolution_ms: number | null;
   data_acquisition_ms: number | null;
@@ -781,17 +543,11 @@ export interface ChartDataQueryTiming {
   query_planning_ms: number | null;
   total_ms: number;
 }
-const ChartDataQueryTiming = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ChartDataQueryTiming>;
-
 export type ChartDataTimingVersion = 1;
-const ChartDataTimingVersion = S.Number;
-
 export interface ChartDataTiming {
   query: ChartDataQueryTiming;
   version: ChartDataTimingVersion;
 }
-const ChartDataTiming = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ChartDataTiming>;
-
 export interface ChartDataResponseResult {
   /** All requested annotation data */
   annotation_data?: ChartDataResponseResultAnnotationDataList | null;
@@ -836,80 +592,34 @@ export interface ChartDataResponseResult {
   /** Warning message when results were truncated */
   warning?: string | null;
 }
-const ChartDataResponseResult = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ChartDataResponseResult>;
-
 /** A list of results for each corresponding query in the request. */
 export type ChartDataResponseSchemaResultList = Array<ChartDataResponseResult>;
-const ChartDataResponseSchemaResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ChartDataResponseSchemaResultList>;
-
 export interface ChartDataResponseSchema {
   /** Metadata about dashboard native filters applied to the query. Only present when filters_dashboard_id is provided. */
   dashboard_filters?: DashboardFiltersResponseSchema;
   /** A list of results for each corresponding query in the request. */
   result?: ChartDataResponseSchemaResultList;
 }
-const ChartDataResponseSchema = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ChartDataResponseSchema>;
-
 export interface CreateChartFavoriteRequest {
   pk: number;
 }
-const CreateChartFavoriteRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateChartFavoriteRequest>;
-
 export interface CreateChartFavoriteResponse {
   result?: unknown;
 }
-const CreateChartFavoriteResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateChartFavoriteResponse>;
-
 export interface CreateCssTemplateRequest {
   css?: string | null;
   template_name?: string | null;
 }
-const CreateCssTemplateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateCssTemplateRequest>;
-
 export interface CssTemplateRestApiPost {
   css?: string | null;
   template_name?: string | null;
 }
-const CssTemplateRestApiPost = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CssTemplateRestApiPost>;
-
 export interface CreateCssTemplateResponse {
   id?: string;
   result?: CssTemplateRestApiPost;
 }
-const CreateCssTemplateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateCssTemplateResponse>;
-
 export type CreateDashboardRequestEditorsList = Array<number>;
-const CreateDashboardRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateDashboardRequestEditorsList>;
-
 export type CreateDashboardRequestViewersList = Array<number>;
-const CreateDashboardRequestViewersList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateDashboardRequestViewersList>;
-
 export interface CreateDashboardRequest {
   /** Details of the certification */
   certification_details?: string | null;
@@ -937,19 +647,8 @@ export interface CreateDashboardRequest {
   uuid?: string | null;
   viewers?: CreateDashboardRequestViewersList;
 }
-const CreateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateDashboardRequest>;
-
 export type DashboardRestApiPostEditorsList = Array<number>;
-const DashboardRestApiPostEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<DashboardRestApiPostEditorsList>;
-
 export type DashboardRestApiPostViewersList = Array<number>;
-const DashboardRestApiPostViewersList =
-  CreateChartRequestDashboardsList as any as S.Schema<DashboardRestApiPostViewersList>;
-
 export interface DashboardRestApiPost {
   /** Details of the certification */
   certification_details?: string | null;
@@ -977,36 +676,18 @@ export interface DashboardRestApiPost {
   uuid?: string | null;
   viewers?: DashboardRestApiPostViewersList;
 }
-const DashboardRestApiPost = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DashboardRestApiPost>;
-
 export interface CreateDashboardResponse {
   id?: number;
   result?: DashboardRestApiPost;
 }
-const CreateDashboardResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateDashboardResponse>;
-
 /** A list representing active tabs. */
 export type CreateDashboardCacheDashboardScreenshotRequestActiveTabsList = Array<string>;
-const CreateDashboardCacheDashboardScreenshotRequestActiveTabsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequestActiveTabsList>;
-
 /** An object representing the data mask. */
 export type CreateDashboardCacheDashboardScreenshotRequestDataMaskMap = {
   [key: string]: unknown | undefined;
 };
-const CreateDashboardCacheDashboardScreenshotRequestDataMaskMap = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequestDataMaskMap>;
-
 /** A list of tuples, each containing two strings. */
 export type CreateDashboardCacheDashboardScreenshotRequestUrlParamsList = Array<unknown>;
-const CreateDashboardCacheDashboardScreenshotRequestUrlParamsList =
-  TagObjectObjectsToTagList as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequestUrlParamsList>;
-
 export interface CreateDashboardCacheDashboardScreenshotRequest {
   pk: number;
   /** A list representing active tabs. */
@@ -1018,11 +699,6 @@ export interface CreateDashboardCacheDashboardScreenshotRequest {
   /** A list of tuples, each containing two strings. */
   urlParams?: CreateDashboardCacheDashboardScreenshotRequestUrlParamsList;
 }
-const CreateDashboardCacheDashboardScreenshotRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequest>;
-
 export interface DashboardCacheScreenshotResponseSchema {
   /** The cache key */
   cache_key?: string;
@@ -1037,37 +713,19 @@ export interface DashboardCacheScreenshotResponseSchema {
   /** The timestamp of the last change in status */
   task_updated_at?: string;
 }
-const DashboardCacheScreenshotResponseSchema = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DashboardCacheScreenshotResponseSchema>;
-
 export type CreateDashboardEmbeddedRequestAllowedDomainsList = Array<string>;
-const CreateDashboardEmbeddedRequestAllowedDomainsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDashboardEmbeddedRequestAllowedDomainsList>;
-
 export interface CreateDashboardEmbeddedRequest {
   /** The dashboard id or slug */
   id_or_slug: string;
   allowed_domains: CreateDashboardEmbeddedRequestAllowedDomainsList;
 }
-const CreateDashboardEmbeddedRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateDashboardEmbeddedRequest>;
-
 export type EmbeddedDashboardResponseSchemaAllowedDomainsList = Array<string>;
-const EmbeddedDashboardResponseSchemaAllowedDomainsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<EmbeddedDashboardResponseSchemaAllowedDomainsList>;
-
 export interface User1 {
   first_name?: string;
   id?: number;
   last_name?: string;
   username?: string;
 }
-const User1 = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<User1>;
-
 export interface EmbeddedDashboardResponseSchema {
   allowed_domains?: EmbeddedDashboardResponseSchemaAllowedDomainsList;
   changed_by?: User1;
@@ -1075,67 +733,29 @@ export interface EmbeddedDashboardResponseSchema {
   dashboard_id?: string;
   uuid?: string;
 }
-const EmbeddedDashboardResponseSchema = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<EmbeddedDashboardResponseSchema>;
-
 export interface CreateDashboardEmbeddedResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-const CreateDashboardEmbeddedResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateDashboardEmbeddedResponse>;
-
 export interface CreateDashboardFavoriteRequest {
   pk: number;
 }
-const CreateDashboardFavoriteRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateDashboardFavoriteRequest>;
-
 export interface CreateDashboardFavoriteResponse {
   result?: unknown;
 }
-const CreateDashboardFavoriteResponse =
-  CreateChartFavoriteResponse as any as S.Schema<CreateDashboardFavoriteResponse>;
-
 export interface CreateDashboardFilterStateRequest {
   pk: number;
   tab_id?: number;
   /** Any type of JSON supported text. */
   value: string;
 }
-const CreateDashboardFilterStateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateDashboardFilterStateRequest>;
-
 export interface CreateDashboardFilterStateResponse {
   /** The key to retrieve the value. */
   key?: string;
 }
-const CreateDashboardFilterStateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateDashboardFilterStateResponse>;
-
 /** Current active dashboard tabs */
 export type CreateDashboardPermalinkRequestActiveTabsList = Array<string | null>;
-const CreateDashboardPermalinkRequestActiveTabsList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateDashboardPermalinkRequestActiveTabsList>;
-
 /** URL Parameters */
 export type CreateDashboardPermalinkRequestUrlParamsList = Array<unknown | null>;
-const CreateDashboardPermalinkRequestUrlParamsList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateDashboardPermalinkRequestUrlParamsList>;
-
 export interface CreateDashboardPermalinkRequest {
   pk: string;
   /** Current active dashboard tabs */
@@ -1149,31 +769,16 @@ export interface CreateDashboardPermalinkRequest {
   /** URL Parameters */
   urlParams?: CreateDashboardPermalinkRequestUrlParamsList | null;
 }
-const CreateDashboardPermalinkRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateDashboardPermalinkRequest>;
-
 export interface CreateDashboardPermalinkResponse {
   /** The key to retrieve the permanent link data. */
   key?: string;
   /** permanent link. */
   url?: string;
 }
-const CreateDashboardPermalinkResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateDashboardPermalinkResponse>;
-
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type CreateDatabaseRequestConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-const CreateDatabaseRequestConfigurationMethod = S.String;
-
 /** DB-specific parameters for configuration */
 export type CreateDatabaseRequestParametersMap = { [key: string]: unknown | undefined };
-const CreateDatabaseRequestParametersMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<CreateDatabaseRequestParametersMap>;
-
 export interface DatabaseSSHTunnel {
   /** SSH Tunnel ID (for updates) */
   id?: number | null;
@@ -1186,8 +791,6 @@ export interface DatabaseSSHTunnel {
   server_port?: number;
   username?: string;
 }
-const DatabaseSSHTunnel = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DatabaseSSHTunnel>;
-
 export interface CreateDatabaseRequest {
   /** Allow CREATE TABLE AS option in SQL Lab */
   allow_ctas?: boolean;
@@ -1230,20 +833,10 @@ export interface CreateDatabaseRequest {
   ssh_tunnel?: DatabaseSSHTunnel | null;
   uuid?: string;
 }
-const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateDatabaseRequest>;
-
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type DatabaseRestApiPostOutputConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-const DatabaseRestApiPostOutputConfigurationMethod = S.String;
-
 /** DB-specific parameters for configuration */
 export type DatabaseRestApiPostOutputParametersMap = { [key: string]: unknown | undefined };
-const DatabaseRestApiPostOutputParametersMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseRestApiPostOutputParametersMap>;
-
 export interface DatabaseSSHTunnelOutput {
   /** SSH Tunnel ID (for updates) */
   id?: number | null;
@@ -1253,11 +846,6 @@ export interface DatabaseSSHTunnelOutput {
   server_port?: number;
   username?: string;
 }
-const DatabaseSSHTunnelOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DatabaseSSHTunnelOutput>;
-
 export interface DatabaseRestApiPostOutput {
   /** Allow CREATE TABLE AS option in SQL Lab */
   allow_ctas?: boolean;
@@ -1300,24 +888,11 @@ export interface DatabaseRestApiPostOutput {
   ssh_tunnel?: DatabaseSSHTunnelOutput | null;
   uuid?: string;
 }
-const DatabaseRestApiPostOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DatabaseRestApiPostOutput>;
-
 export interface CreateDatabaseResponse {
   id?: number;
   result?: DatabaseRestApiPostOutput;
 }
-const CreateDatabaseResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateDatabaseResponse>;
-
 export type CreateDatasetRequestEditorsList = Array<number>;
-const CreateDatasetRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateDatasetRequestEditorsList>;
-
 export interface CreateDatasetRequest {
   always_filter_main_dttm?: boolean;
   catalog?: string | null;
@@ -1333,12 +908,7 @@ export interface CreateDatasetRequest {
   template_params?: string | null;
   uuid?: string | null;
 }
-const CreateDatasetRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<CreateDatasetRequest>;
-
 export type DatasetRestApiPostEditorsList = Array<number>;
-const DatasetRestApiPostEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<DatasetRestApiPostEditorsList>;
-
 export interface DatasetRestApiPost {
   always_filter_main_dttm?: boolean;
   catalog?: string | null;
@@ -1354,97 +924,43 @@ export interface DatasetRestApiPost {
   template_params?: string | null;
   uuid?: string | null;
 }
-const DatasetRestApiPost = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<DatasetRestApiPost>;
-
 export interface CreateDatasetResponse {
   id?: number;
   result?: DatasetRestApiPost;
 }
-const CreateDatasetResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateDatasetResponse>;
-
 export type CreateDatasourceCompatibleRequestSelectedDimensionsList = Array<string>;
-const CreateDatasourceCompatibleRequestSelectedDimensionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDatasourceCompatibleRequestSelectedDimensionsList>;
-
 export type CreateDatasourceCompatibleRequestSelectedMetricsList = Array<string>;
-const CreateDatasourceCompatibleRequestSelectedMetricsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDatasourceCompatibleRequestSelectedMetricsList>;
-
 export interface CreateDatasourceCompatibleRequest {
   datasource_type: string;
   datasource_id: number;
   selected_dimensions?: CreateDatasourceCompatibleRequestSelectedDimensionsList;
   selected_metrics?: CreateDatasourceCompatibleRequestSelectedMetricsList;
 }
-const CreateDatasourceCompatibleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateDatasourceCompatibleRequest>;
-
 export type CreateDatasourceCompatibleResponseResultCompatibleDimensionsList = Array<string>;
-const CreateDatasourceCompatibleResponseResultCompatibleDimensionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateDatasourceCompatibleResponseResultCompatibleDimensionsList>;
-
 export type CreateDatasourceCompatibleResponseResultCompatibleMetricsList = Array<string>;
-const CreateDatasourceCompatibleResponseResultCompatibleMetricsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDatasourceCompatibleResponseResultCompatibleMetricsList>;
-
 export interface CreateDatasourceCompatibleResponseResult {
   compatible_dimensions?: CreateDatasourceCompatibleResponseResultCompatibleDimensionsList;
   compatible_metrics?: CreateDatasourceCompatibleResponseResultCompatibleMetricsList;
 }
-const CreateDatasourceCompatibleResponseResult = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateDatasourceCompatibleResponseResult>;
-
 export interface CreateDatasourceCompatibleResponse {
   result?: CreateDatasourceCompatibleResponseResult;
 }
-const CreateDatasourceCompatibleResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateDatasourceCompatibleResponse>;
-
 /** Dimension/column names to group by. */
 export type CreateDatasourceQueryRequestDimensionsList = Array<unknown>;
-const CreateDatasourceQueryRequestDimensionsList =
-  TagObjectObjectsToTagList as any as S.Schema<CreateDatasourceQueryRequestDimensionsList>;
-
 /** Filters to apply, AND-ed together. */
 export type CreateDatasourceQueryRequestFiltersList = Array<ChartDataFilter>;
-const CreateDatasourceQueryRequestFiltersList =
-  ChartDataQueryObjectFiltersList as any as S.Schema<CreateDatasourceQueryRequestFiltersList>;
-
 /** Saved metric names, or ad-hoc metric objects (datasets only). See ChartDataAdhocMetricSchema. */
 export type CreateDatasourceQueryRequestMetricsList = Array<unknown>;
-const CreateDatasourceQueryRequestMetricsList =
-  TagObjectObjectsToTagList as any as S.Schema<CreateDatasourceQueryRequestMetricsList>;
-
 export interface DatasourceQueryOrder {
   /** Metric or dimension name to sort by. */
   column: string;
   /** Sort this column descending. */
   descending?: boolean;
 }
-const DatasourceQueryOrder = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<DatasourceQueryOrder>;
-
 /** Ordering terms, applied in sequence. Each carries its own direction. */
 export type CreateDatasourceQueryRequestOrderList = Array<DatasourceQueryOrder>;
-const CreateDatasourceQueryRequestOrderList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CreateDatasourceQueryRequestOrderList>;
-
 /** 'json' (default) or 'arrow' for an Arrow IPC stream. */
 export type CreateDatasourceQueryRequestResultFormat = "csv" | "json" | "xlsx" | "arrow";
-const CreateDatasourceQueryRequestResultFormat = S.String;
-
 export interface CreateDatasourceQueryRequest {
   datasource_type: string;
   datasource_id: number;
@@ -1475,23 +991,10 @@ export interface CreateDatasourceQueryRequest {
   time_range?: string | null;
   use_cache?: boolean;
 }
-const CreateDatasourceQueryRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateDatasourceQueryRequest>;
-
 export type CreateDatasourceQueryResponseResultList = Array<unknown>;
-const CreateDatasourceQueryResponseResultList =
-  TagObjectObjectsToTagList as any as S.Schema<CreateDatasourceQueryResponseResultList>;
-
 export interface CreateDatasourceQueryResponse {
   result?: CreateDatasourceQueryResponseResultList;
 }
-const CreateDatasourceQueryResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateDatasourceQueryResponse>;
-
 /** The datasource type */
 export type CreateExploreFormDataRequestDatasourceType =
   | "table"
@@ -1500,8 +1003,6 @@ export type CreateExploreFormDataRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const CreateExploreFormDataRequestDatasourceType = S.String;
-
 export interface CreateExploreFormDataRequest {
   tab_id?: number;
   /** The chart ID */
@@ -1513,23 +1014,12 @@ export interface CreateExploreFormDataRequest {
   /** Any type of JSON supported text. */
   form_data: string;
 }
-const CreateExploreFormDataRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateExploreFormDataRequest>;
-
 export interface CreateExploreFormDataResponse {
   /** The key to retrieve the form_data. */
   key?: string;
 }
-const CreateExploreFormDataResponse =
-  CreateDashboardFilterStateResponse as any as S.Schema<CreateExploreFormDataResponse>;
-
 /** URL Parameters */
 export type CreateExplorePermalinkRequestUrlParamsList = Array<unknown | null>;
-const CreateExplorePermalinkRequestUrlParamsList =
-  CreateDashboardPermalinkRequestUrlParamsList as any as S.Schema<CreateExplorePermalinkRequestUrlParamsList>;
-
 export interface CreateExplorePermalinkRequest {
   /** Chart-level state for stateful tables (column filters, sorting, column order) */
   chartState?: unknown | null;
@@ -1538,74 +1028,39 @@ export interface CreateExplorePermalinkRequest {
   /** URL Parameters */
   urlParams?: CreateExplorePermalinkRequestUrlParamsList | null;
 }
-const CreateExplorePermalinkRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateExplorePermalinkRequest>;
-
 export interface CreateExplorePermalinkResponse {
   /** The key to retrieve the permanent link data. */
   key?: string;
   /** permanent link. */
   url?: string;
 }
-const CreateExplorePermalinkResponse =
-  CreateDashboardPermalinkResponse as any as S.Schema<CreateExplorePermalinkResponse>;
-
 export interface CreateLogRequest {
   id?: number;
 }
-const CreateLogRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<CreateLogRequest>;
-
 export interface LogRestApiPost {
   id?: number;
 }
-const LogRestApiPost = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<LogRestApiPost>;
-
 export interface CreateLogResponse {
   id?: string;
   result?: LogRestApiPost;
 }
-const CreateLogResponse = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<CreateLogResponse>;
-
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type CreateReportRequestCreationMethod = "charts" | "dashboards" | "alerts_reports";
-const CreateReportRequestCreationMethod = S.String;
-
 export type CreateReportRequestEditorsList = Array<number>;
-const CreateReportRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateReportRequestEditorsList>;
-
 export interface ReportRecipientConfigJSON {
   bccTarget?: string;
   ccTarget?: string;
   target?: string;
 }
-const ReportRecipientConfigJSON = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ReportRecipientConfigJSON>;
-
 /** The recipient type, check spec for valid options */
 export type ReportRecipientType = "Email" | "Slack" | "SlackV2" | "Webhook";
-const ReportRecipientType = S.String;
-
 export interface ReportRecipient {
   recipient_config_json?: ReportRecipientConfigJSON;
   /** The recipient type, check spec for valid options */
   type: ReportRecipientType | (string & {});
 }
-const ReportRecipient = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ReportRecipient>;
-
 export type CreateReportRequestRecipientsList = Array<ReportRecipient>;
-const CreateReportRequestRecipientsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CreateReportRequestRecipientsList>;
-
 export type CreateReportRequestReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-const CreateReportRequestReportFormat = S.String;
-
 /** A timezone string that represents the location of the timezone. */
 export type CreateReportRequestTimezone =
   | "Africa/Abidjan"
@@ -2205,27 +1660,17 @@ export type CreateReportRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const CreateReportRequestTimezone = S.String;
-
 /** The report schedule type */
 export type CreateReportRequestType = "Alert" | "Report";
-const CreateReportRequestType = S.String;
-
 /** The operation to compare with a threshold to apply to the SQL output */
 export type ValidatorConfigJSONOp = "<" | "<=" | ">" | ">=" | "==" | "!=";
-const ValidatorConfigJSONOp = S.String;
-
 export interface ValidatorConfigJSON {
   /** The operation to compare with a threshold to apply to the SQL output */
   op?: ValidatorConfigJSONOp | (string & {});
   threshold?: number;
 }
-const ValidatorConfigJSON = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ValidatorConfigJSON>;
-
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type CreateReportRequestValidatorType = "not null" | "operator";
-const CreateReportRequestValidatorType = S.String;
-
 export interface CreateReportRequest {
   active?: boolean;
   chart?: number | null;
@@ -2278,23 +1723,11 @@ export interface CreateReportRequest {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number;
 }
-const CreateReportRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<CreateReportRequest>;
-
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type ReportScheduleRestApiPostCreationMethod = "charts" | "dashboards" | "alerts_reports";
-const ReportScheduleRestApiPostCreationMethod = S.String;
-
 export type ReportScheduleRestApiPostEditorsList = Array<number>;
-const ReportScheduleRestApiPostEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ReportScheduleRestApiPostEditorsList>;
-
 export type ReportScheduleRestApiPostRecipientsList = Array<ReportRecipient>;
-const ReportScheduleRestApiPostRecipientsList =
-  CreateReportRequestRecipientsList as any as S.Schema<ReportScheduleRestApiPostRecipientsList>;
-
 export type ReportScheduleRestApiPostReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-const ReportScheduleRestApiPostReportFormat = S.String;
-
 /** A timezone string that represents the location of the timezone. */
 export type ReportScheduleRestApiPostTimezone =
   | "Africa/Abidjan"
@@ -2894,16 +2327,10 @@ export type ReportScheduleRestApiPostTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const ReportScheduleRestApiPostTimezone = S.String;
-
 /** The report schedule type */
 export type ReportScheduleRestApiPostType = "Alert" | "Report";
-const ReportScheduleRestApiPostType = S.String;
-
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type ReportScheduleRestApiPostValidatorType = "not null" | "operator";
-const ReportScheduleRestApiPostValidatorType = S.String;
-
 export interface ReportScheduleRestApiPost {
   active?: boolean;
   chart?: number | null;
@@ -2956,34 +2383,16 @@ export interface ReportScheduleRestApiPost {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number;
 }
-const ReportScheduleRestApiPost = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ReportScheduleRestApiPost>;
-
 export interface CreateReportResponse {
   id?: number;
   result?: ReportScheduleRestApiPost;
 }
-const CreateReportResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CreateReportResponse>;
-
 /** filter_type_description */
 export type CreateRowlevelsecurityRequestFilterType = "Regular" | "Base";
-const CreateRowlevelsecurityRequestFilterType = S.String;
-
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type CreateRowlevelsecurityRequestSubjectsList = Array<number>;
-const CreateRowlevelsecurityRequestSubjectsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateRowlevelsecurityRequestSubjectsList>;
-
 /** tables_description */
 export type CreateRowlevelsecurityRequestTablesList = Array<number>;
-const CreateRowlevelsecurityRequestTablesList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateRowlevelsecurityRequestTablesList>;
-
 export interface CreateRowlevelsecurityRequest {
   /** clause_description */
   clause: string;
@@ -3000,25 +2409,12 @@ export interface CreateRowlevelsecurityRequest {
   /** tables_description */
   tables: CreateRowlevelsecurityRequestTablesList;
 }
-const CreateRowlevelsecurityRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateRowlevelsecurityRequest>;
-
 /** filter_type_description */
 export type RLSRestApiPostFilterType = "Regular" | "Base";
-const RLSRestApiPostFilterType = S.String;
-
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type RLSRestApiPostSubjectsList = Array<number>;
-const RLSRestApiPostSubjectsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPostSubjectsList>;
-
 /** tables_description */
 export type RLSRestApiPostTablesList = Array<number>;
-const RLSRestApiPostTablesList =
-  CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPostTablesList>;
-
 export interface RLSRestApiPost {
   /** clause_description */
   clause: string;
@@ -3035,17 +2431,10 @@ export interface RLSRestApiPost {
   /** tables_description */
   tables: RLSRestApiPostTablesList;
 }
-const RLSRestApiPost = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<RLSRestApiPost>;
-
 export interface CreateRowlevelsecurityResponse {
   id?: number;
   result?: RLSRestApiPost;
 }
-const CreateRowlevelsecurityResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CreateRowlevelsecurityResponse>;
-
 export interface CreateSavedQueryRequest {
   catalog?: string | null;
   db_id?: unknown | null;
@@ -3056,11 +2445,6 @@ export interface CreateSavedQueryRequest {
   sql?: string | null;
   template_parameters?: string | null;
 }
-const CreateSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CreateSavedQueryRequest>;
-
 export interface SavedQueryRestApiPost {
   catalog?: string | null;
   db_id?: unknown | null;
@@ -3071,75 +2455,32 @@ export interface SavedQueryRestApiPost {
   sql?: string | null;
   template_parameters?: string | null;
 }
-const SavedQueryRestApiPost = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<SavedQueryRestApiPost>;
-
 export interface CreateSavedQueryResponse {
   id?: string;
   result?: SavedQueryRestApiPost;
 }
-const CreateSavedQueryResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateSavedQueryResponse>;
-
 export interface CreateSecurityGroupRequest {}
-const CreateSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateSecurityGroupRequest>;
-
 export interface CreateSecurityGroupResponse {}
-const CreateSecurityGroupResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateSecurityGroupResponse>;
-
 /** Optional allowlist of dataset IDs the guest may access. When omitted all datasets linked to the embedded dashboard are accessible, preserving the default behaviour. */
 export type CreateSecurityGuestTokenRequestDatasetsList = Array<number>;
-const CreateSecurityGuestTokenRequestDatasetsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateSecurityGuestTokenRequestDatasetsList>;
-
 export type ResourceType = "dashboard";
-const ResourceType = S.String;
-
 export interface Resource {
   id: string;
   type: ResourceType | (string & {});
 }
-const Resource = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Resource>;
-
 export type CreateSecurityGuestTokenRequestResourcesList = Array<Resource>;
-const CreateSecurityGuestTokenRequestResourcesList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateSecurityGuestTokenRequestResourcesList>;
-
 export interface RlsRule {
   clause: string;
   dataset?: number;
 }
-const RlsRule = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<RlsRule>;
-
 export type CreateSecurityGuestTokenRequestRlsList = Array<RlsRule>;
-const CreateSecurityGuestTokenRequestRlsList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateSecurityGuestTokenRequestRlsList>;
-
 export type User2AttributesMap = { [key: string]: unknown | null | undefined };
-const User2AttributesMap = AnnotationLayerOverridesMap as any as S.Schema<User2AttributesMap>;
-
 export interface User2 {
   attributes?: User2AttributesMap | null;
   first_name?: string;
   last_name?: string;
   username?: string;
 }
-const User2 = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<User2>;
-
 export interface CreateSecurityGuestTokenRequest {
   /** Optional allowlist of dataset IDs the guest may access. When omitted all datasets linked to the embedded dashboard are accessible, preserving the default behaviour. */
   datasets?: CreateSecurityGuestTokenRequestDatasetsList | null;
@@ -3147,131 +2488,57 @@ export interface CreateSecurityGuestTokenRequest {
   rls: CreateSecurityGuestTokenRequestRlsList;
   user?: User2;
 }
-const CreateSecurityGuestTokenRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateSecurityGuestTokenRequest>;
-
 export interface CreateSecurityGuestTokenResponse {
   token?: string;
 }
-const CreateSecurityGuestTokenResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateSecurityGuestTokenResponse>;
-
 export interface CreateSecurityPermissionsResourceRequest {
   permission_id?: unknown | null;
   view_menu_id?: unknown | null;
 }
-const CreateSecurityPermissionsResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateSecurityPermissionsResourceRequest>;
-
 export interface SupersetPermissionViewMenuApiPost {
   permission_id?: unknown | null;
   view_menu_id?: unknown | null;
 }
-const SupersetPermissionViewMenuApiPost = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<SupersetPermissionViewMenuApiPost>;
-
 export interface CreateSecurityPermissionsResourceResponse {
   id?: string;
   result?: SupersetPermissionViewMenuApiPost;
 }
-const CreateSecurityPermissionsResourceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateSecurityPermissionsResourceResponse>;
-
 export interface CreateSecurityResourceRequest {
   name: string;
 }
-const CreateSecurityResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateSecurityResourceRequest>;
-
 export interface ViewMenuApiPost {
   name: string;
 }
-const ViewMenuApiPost = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ViewMenuApiPost>;
-
 export interface CreateSecurityResourceResponse {
   id?: string;
   result?: ViewMenuApiPost;
 }
-const CreateSecurityResourceResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<CreateSecurityResourceResponse>;
-
 export interface CreateSecurityRoleRequest {
   name: string;
 }
-const CreateSecurityRoleRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreateSecurityRoleRequest>;
-
 export type SupersetRoleApiPost = ViewMenuApiPost;
 export interface CreateSecurityRoleResponse {
   id?: string;
   result?: ViewMenuApiPost;
 }
-const CreateSecurityRoleResponse =
-  CreateSecurityResourceResponse as any as S.Schema<CreateSecurityRoleResponse>;
-
 /** List of permission view menu id */
 export type CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList = Array<number>;
-const CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList>;
-
 export interface CreateSecurityRolePermissionsRequest {
   role_id: number;
   /** List of permission view menu id */
   permission_view_menu_ids: CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList;
 }
-const CreateSecurityRolePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateSecurityRolePermissionsRequest>;
-
 /** List of permission view menu id */
 export type RolePermissionPostSchemaPermissionViewMenuIdsList = Array<number>;
-const RolePermissionPostSchemaPermissionViewMenuIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RolePermissionPostSchemaPermissionViewMenuIdsList>;
-
 export interface RolePermissionPostSchema {
   /** List of permission view menu id */
   permission_view_menu_ids: RolePermissionPostSchemaPermissionViewMenuIdsList;
 }
-const RolePermissionPostSchema = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<RolePermissionPostSchema>;
-
 export interface CreateSecurityRolePermissionsResponse {
   result?: RolePermissionPostSchema;
 }
-const CreateSecurityRolePermissionsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateSecurityRolePermissionsResponse>;
-
 export interface CreateSecurityUserRequest {}
-const CreateSecurityUserRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateSecurityUserRequest>;
-
 export interface CreateSecurityUserResponse {}
-const CreateSecurityUserResponse =
-  CreateSecurityGroupResponse as any as S.Schema<CreateSecurityUserResponse>;
-
 export interface CreateSqllabEstimateRequest {
   /** The database catalog */
   catalog?: string | null;
@@ -3284,17 +2551,9 @@ export interface CreateSqllabEstimateRequest {
   /** The SQL query template params */
   template_params?: unknown;
 }
-const CreateSqllabEstimateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<CreateSqllabEstimateRequest>;
-
 export interface CreateSqllabEstimateResponse {
   result?: unknown;
 }
-const CreateSqllabEstimateResponse =
-  CreateChartFavoriteResponse as any as S.Schema<CreateSqllabEstimateResponse>;
-
 export interface CreateSqllabFormatSqlRequest {
   /** The database id */
   database_id?: number | null;
@@ -3303,24 +2562,11 @@ export interface CreateSqllabFormatSqlRequest {
   /** The SQL query template params as JSON string */
   template_params?: string | null;
 }
-const CreateSqllabFormatSqlRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreateSqllabFormatSqlRequest>;
-
 export interface CreateSqllabFormatSqlResponse {
   result?: string;
 }
-const CreateSqllabFormatSqlResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateSqllabFormatSqlResponse>;
-
 /** URL Parameters */
 export type CreateSqllabPermalinkRequestUrlParamsList = Array<unknown | null>;
-const CreateSqllabPermalinkRequestUrlParamsList =
-  CreateDashboardPermalinkRequestUrlParamsList as any as S.Schema<CreateSqllabPermalinkRequestUrlParamsList>;
-
 export interface CreateSqllabPermalinkRequest {
   /** Chart-level state for stateful tables (column filters, sorting, column order) */
   chartState?: unknown | null;
@@ -3329,33 +2575,20 @@ export interface CreateSqllabPermalinkRequest {
   /** URL Parameters */
   urlParams?: CreateSqllabPermalinkRequestUrlParamsList | null;
 }
-const CreateSqllabPermalinkRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreateSqllabPermalinkRequest>;
-
 export interface CreateSqllabPermalinkResponse {
   /** The key to retrieve the permanent link data. */
   key?: string;
   /** permanent link. */
   url?: string;
 }
-const CreateSqllabPermalinkResponse =
-  CreateDashboardPermalinkResponse as any as S.Schema<CreateSqllabPermalinkResponse>;
-
 /** Objects to tag */
 export type CreateTagRequestObjectsToTagList = Array<unknown>;
-const CreateTagRequestObjectsToTagList =
-  TagObjectObjectsToTagList as any as S.Schema<CreateTagRequestObjectsToTagList>;
-
 export interface CreateTagRequest {
   description?: string | null;
   name?: string;
   /** Objects to tag */
   objects_to_tag?: CreateTagRequestObjectsToTagList;
 }
-const CreateTagRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<CreateTagRequest>;
-
 /** Objects to tag */
 export type TagRestApiPostObjectsToTagList = Array<unknown>;
 export interface TagRestApiPost {
@@ -3364,670 +2597,317 @@ export interface TagRestApiPost {
   /** Objects to tag */
   objects_to_tag?: TagRestApiPostObjectsToTagList;
 }
-const TagRestApiPost = TagObject as any as S.Schema<TagRestApiPost>;
-
 export interface CreateTagResponse {
   id?: number;
   result?: TagRestApiPost;
 }
-const CreateTagResponse = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<CreateTagResponse>;
-
 export interface CreateTagFavoriteRequest {
   pk: number;
 }
-const CreateTagFavoriteRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateTagFavoriteRequest>;
-
 export interface CreateTagFavoriteResponse {
   result?: unknown;
 }
-const CreateTagFavoriteResponse =
-  CreateChartFavoriteResponse as any as S.Schema<CreateTagFavoriteResponse>;
-
 export type CreateThemeRequestEditorsList = Array<number>;
-const CreateThemeRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<CreateThemeRequestEditorsList>;
-
 export interface CreateThemeRequest {
   editors?: CreateThemeRequestEditorsList;
   json_data: string;
   theme_name: string;
 }
-const CreateThemeRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<CreateThemeRequest>;
-
 export type ThemeRestApiPostEditorsList = Array<number>;
-const ThemeRestApiPostEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ThemeRestApiPostEditorsList>;
-
 export interface ThemeRestApiPost {
   editors?: ThemeRestApiPostEditorsList;
   json_data: string;
   theme_name: string;
 }
-const ThemeRestApiPost = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ThemeRestApiPost>;
-
 export interface CreateThemeResponse {
   id?: number;
   result?: ThemeRestApiPost;
 }
-const CreateThemeResponse = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<CreateThemeResponse>;
-
 export interface DeleteAnnotationLayerRequest {
   q?: string;
 }
-const DeleteAnnotationLayerRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DeleteAnnotationLayerRequest>;
-
 export interface DeleteAnnotationLayerResponse {
   message?: string;
 }
-const DeleteAnnotationLayerResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DeleteAnnotationLayerResponse>;
-
 export interface DeleteAnnotationLayerAnnotationRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
   q?: string;
 }
-const DeleteAnnotationLayerAnnotationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<DeleteAnnotationLayerAnnotationRequest>;
-
 export interface DeleteAnnotationLayerAnnotationResponse {
   message?: string;
 }
-const DeleteAnnotationLayerAnnotationResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteAnnotationLayerAnnotationResponse>;
-
 export interface DeleteAnnotationLayerAnnotationByAnnotationIdRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
   /** The annotation pk for this annotation */
   annotation_id: number;
 }
-const DeleteAnnotationLayerAnnotationByAnnotationIdRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DeleteAnnotationLayerAnnotationByAnnotationIdRequest>;
-
 export interface DeleteAnnotationLayerAnnotationByAnnotationIdResponse {
   message?: string;
 }
-const DeleteAnnotationLayerAnnotationByAnnotationIdResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteAnnotationLayerAnnotationByAnnotationIdResponse>;
-
 export interface DeleteAnnotationLayerByPkRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
 }
-const DeleteAnnotationLayerByPkRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<DeleteAnnotationLayerByPkRequest>;
-
 export interface DeleteAnnotationLayerByPkResponse {
   message?: string;
 }
-const DeleteAnnotationLayerByPkResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteAnnotationLayerByPkResponse>;
-
 export interface DeleteChartRequest {
   q?: string;
 }
-const DeleteChartRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<DeleteChartRequest>;
-
 export interface DeleteChartResponse {
   message?: string;
 }
-const DeleteChartResponse = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<DeleteChartResponse>;
-
 export interface DeleteChartByPkRequest {
   pk: number;
 }
-const DeleteChartByPkRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DeleteChartByPkRequest>;
-
 export interface DeleteChartByPkResponse {
   message?: string;
 }
-const DeleteChartByPkResponse = DeleteChartResponse as any as S.Schema<DeleteChartByPkResponse>;
-
 export interface DeleteChartFavoritesRequest {
   pk: number;
 }
-const DeleteChartFavoritesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<DeleteChartFavoritesRequest>;
-
 export interface DeleteChartFavoritesResponse {
   result?: unknown;
 }
-const DeleteChartFavoritesResponse =
-  CreateChartFavoriteResponse as any as S.Schema<DeleteChartFavoritesResponse>;
-
 export interface DeleteCssTemplateRequest {
   q?: string;
 }
-const DeleteCssTemplateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<DeleteCssTemplateRequest>;
-
 export interface DeleteCssTemplateResponse {
   message?: string;
 }
-const DeleteCssTemplateResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteCssTemplateResponse>;
-
 export interface DeleteCssTemplateByPkRequest {
   pk: number;
 }
-const DeleteCssTemplateByPkRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DeleteCssTemplateByPkRequest>;
-
 export interface DeleteCssTemplateByPkResponse {
   message?: string;
 }
-const DeleteCssTemplateByPkResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteCssTemplateByPkResponse>;
-
 export interface DeleteDashboardRequest {
   q?: string;
 }
-const DeleteDashboardRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<DeleteDashboardRequest>;
-
 export interface DeleteDashboardResponse {
   message?: string;
 }
-const DeleteDashboardResponse = DeleteChartResponse as any as S.Schema<DeleteDashboardResponse>;
-
 export interface DeleteDashboardByPkRequest {
   pk: number;
 }
-const DeleteDashboardByPkRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DeleteDashboardByPkRequest>;
-
 export interface DeleteDashboardByPkResponse {
   message?: string;
 }
-const DeleteDashboardByPkResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteDashboardByPkResponse>;
-
 export interface DeleteDashboardEmbeddedRequest {
   /** The dashboard id or slug */
   id_or_slug: string;
 }
-const DeleteDashboardEmbeddedRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<DeleteDashboardEmbeddedRequest>;
-
 export interface DeleteDashboardEmbeddedResponse {
   message?: string;
 }
-const DeleteDashboardEmbeddedResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteDashboardEmbeddedResponse>;
-
 export interface DeleteDashboardFavoritesRequest {
   pk: number;
 }
-const DeleteDashboardFavoritesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<DeleteDashboardFavoritesRequest>;
-
 export interface DeleteDashboardFavoritesResponse {
   result?: unknown;
 }
-const DeleteDashboardFavoritesResponse =
-  CreateChartFavoriteResponse as any as S.Schema<DeleteDashboardFavoritesResponse>;
-
 export interface DeleteDashboardFilterStateRequest {
   pk: number;
   /** The value key. */
   key: string;
   tab_id?: number;
 }
-const DeleteDashboardFilterStateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<DeleteDashboardFilterStateRequest>;
-
 export interface DeleteDashboardFilterStateResponse {
   /** The result of the operation */
   message?: string;
 }
-const DeleteDashboardFilterStateResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteDashboardFilterStateResponse>;
-
 export interface DeleteDatabaseRequest {
   pk: number;
 }
-const DeleteDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<DeleteDatabaseRequest>;
-
 export interface DeleteDatabaseResponse {
   message?: string;
 }
-const DeleteDatabaseResponse = DeleteChartResponse as any as S.Schema<DeleteDatabaseResponse>;
-
 export interface DeleteDatasetRequest {
   q?: string;
 }
-const DeleteDatasetRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<DeleteDatasetRequest>;
-
 export interface DeleteDatasetResponse {
   message?: string;
 }
-const DeleteDatasetResponse = DeleteChartResponse as any as S.Schema<DeleteDatasetResponse>;
-
 export interface DeleteDatasetByPkRequest {
   pk: number;
 }
-const DeleteDatasetByPkRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DeleteDatasetByPkRequest>;
-
 export interface DeleteDatasetByPkResponse {
   message?: string;
 }
-const DeleteDatasetByPkResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteDatasetByPkResponse>;
-
 export interface DeleteDatasetColumnRequest {
   /** The dataset pk for this column */
   pk: number;
   /** The column id for this dataset */
   column_id: number;
 }
-const DeleteDatasetColumnRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<DeleteDatasetColumnRequest>;
-
 export interface DeleteDatasetColumnResponse {
   message?: string;
 }
-const DeleteDatasetColumnResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteDatasetColumnResponse>;
-
 export interface DeleteDatasetMetricRequest {
   /** The dataset pk for this column */
   pk: number;
   /** The metric id for this dataset */
   metric_id: number;
 }
-const DeleteDatasetMetricRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<DeleteDatasetMetricRequest>;
-
 export interface DeleteDatasetMetricResponse {
   message?: string;
 }
-const DeleteDatasetMetricResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteDatasetMetricResponse>;
-
 export interface DeleteExploreFormDataRequest {
   /** The form_data key. */
   key: string;
   tab_id?: number;
 }
-const DeleteExploreFormDataRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<DeleteExploreFormDataRequest>;
-
 export interface DeleteExploreFormDataResponse {
   /** The result of the operation */
   message?: string;
 }
-const DeleteExploreFormDataResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteExploreFormDataResponse>;
-
 export interface DeleteReportRequest {
   q?: string;
 }
-const DeleteReportRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<DeleteReportRequest>;
-
 export interface DeleteReportResponse {
   message?: string;
 }
-const DeleteReportResponse = DeleteChartResponse as any as S.Schema<DeleteReportResponse>;
-
 export interface DeleteReportByPkRequest {
   /** The report schedule pk */
   pk: number;
 }
-const DeleteReportByPkRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<DeleteReportByPkRequest>;
-
 export interface DeleteReportByPkResponse {
   message?: string;
 }
-const DeleteReportByPkResponse = DeleteChartResponse as any as S.Schema<DeleteReportByPkResponse>;
-
 export interface DeleteRowlevelsecurityRequest {
   q?: string;
 }
-const DeleteRowlevelsecurityRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<DeleteRowlevelsecurityRequest>;
-
 export interface DeleteRowlevelsecurityResponse {
   message?: string;
 }
-const DeleteRowlevelsecurityResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteRowlevelsecurityResponse>;
-
 export interface DeleteRowlevelsecurityByPkRequest {
   pk: number;
 }
-const DeleteRowlevelsecurityByPkRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<DeleteRowlevelsecurityByPkRequest>;
-
 export interface DeleteRowlevelsecurityByPkResponse {
   message?: string;
 }
-const DeleteRowlevelsecurityByPkResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteRowlevelsecurityByPkResponse>;
-
 export interface DeleteSavedQueryRequest {
   q?: string;
 }
-const DeleteSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<DeleteSavedQueryRequest>;
-
 export interface DeleteSavedQueryResponse {
   message?: string;
 }
-const DeleteSavedQueryResponse = DeleteChartResponse as any as S.Schema<DeleteSavedQueryResponse>;
-
 export interface DeleteSavedQueryByPkRequest {
   pk: number;
 }
-const DeleteSavedQueryByPkRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<DeleteSavedQueryByPkRequest>;
-
 export interface DeleteSavedQueryByPkResponse {
   message?: string;
 }
-const DeleteSavedQueryByPkResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteSavedQueryByPkResponse>;
-
 export interface DeleteSecurityGroupRequest {
   pk: number;
 }
-const DeleteSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DeleteSecurityGroupRequest>;
-
 export interface DeleteSecurityGroupResponse {
   message?: string;
 }
-const DeleteSecurityGroupResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityGroupResponse>;
-
 export interface DeleteSecurityPermissionsResourceRequest {
   pk: number;
 }
-const DeleteSecurityPermissionsResourceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DeleteSecurityPermissionsResourceRequest>;
-
 export interface DeleteSecurityPermissionsResourceResponse {
   message?: string;
 }
-const DeleteSecurityPermissionsResourceResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityPermissionsResourceResponse>;
-
 export interface DeleteSecurityResourceRequest {
   pk: number;
 }
-const DeleteSecurityResourceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DeleteSecurityResourceRequest>;
-
 export interface DeleteSecurityResourceResponse {
   message?: string;
 }
-const DeleteSecurityResourceResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityResourceResponse>;
-
 export interface DeleteSecurityRoleRequest {
   pk: number;
 }
-const DeleteSecurityRoleRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<DeleteSecurityRoleRequest>;
-
 export interface DeleteSecurityRoleResponse {
   message?: string;
 }
-const DeleteSecurityRoleResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityRoleResponse>;
-
 export interface DeleteSecurityUserRequest {
   pk: number;
 }
-const DeleteSecurityUserRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DeleteSecurityUserRequest>;
-
 export interface DeleteSecurityUserResponse {
   message?: string;
 }
-const DeleteSecurityUserResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityUserResponse>;
-
 export interface DeleteSecurityUserRegistrationRequest {
   pk: number;
 }
-const DeleteSecurityUserRegistrationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DeleteSecurityUserRegistrationRequest>;
-
 export interface DeleteSecurityUserRegistrationResponse {
   message?: string;
 }
-const DeleteSecurityUserRegistrationResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityUserRegistrationResponse>;
-
 export interface DeleteSecurityUserSessionsRequest {
   pk: number;
 }
-const DeleteSecurityUserSessionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DeleteSecurityUserSessionsRequest>;
-
 export interface DeleteSecurityUserSessionsResponse {}
-const DeleteSecurityUserSessionsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DeleteSecurityUserSessionsResponse>;
-
 export interface DeleteTagRequest {
   q?: string;
 }
-const DeleteTagRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<DeleteTagRequest>;
-
 export interface DeleteTagResponse {
   message?: string;
 }
-const DeleteTagResponse = DeleteChartResponse as any as S.Schema<DeleteTagResponse>;
-
 export interface DeleteTagRequest2 {
   object_type: number;
   object_id: number;
   tag: string;
 }
-const DeleteTagRequest2 = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<DeleteTagRequest2>;
-
 export interface DeleteTagResponse2 {
   message?: string;
 }
-const DeleteTagResponse2 = DeleteChartResponse as any as S.Schema<DeleteTagResponse2>;
-
 export interface DeleteTagByPkRequest {
   pk: number;
 }
-const DeleteTagByPkRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<DeleteTagByPkRequest>;
-
 export interface DeleteTagByPkResponse {
   message?: string;
 }
-const DeleteTagByPkResponse = DeleteChartResponse as any as S.Schema<DeleteTagByPkResponse>;
-
 export interface DeleteTagFavoritesRequest {
   pk: number;
 }
-const DeleteTagFavoritesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<DeleteTagFavoritesRequest>;
-
 export interface DeleteTagFavoritesResponse {
   result?: unknown;
 }
-const DeleteTagFavoritesResponse =
-  CreateChartFavoriteResponse as any as S.Schema<DeleteTagFavoritesResponse>;
-
 export interface DeleteThemeRequest {
   q?: string;
 }
-const DeleteThemeRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<DeleteThemeRequest>;
-
 export interface DeleteThemeResponse {
   message?: string;
 }
-const DeleteThemeResponse = DeleteChartResponse as any as S.Schema<DeleteThemeResponse>;
-
 export interface DeleteThemeByPkRequest {
   pk: number;
 }
-const DeleteThemeByPkRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<DeleteThemeByPkRequest>;
-
 export interface DeleteThemeByPkResponse {
   message?: string;
 }
-const DeleteThemeByPkResponse = DeleteChartResponse as any as S.Schema<DeleteThemeByPkResponse>;
-
 export interface DeleteThemeUnsetSystemDarkRequest {}
-const DeleteThemeUnsetSystemDarkRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<DeleteThemeUnsetSystemDarkRequest>;
-
 export interface DeleteThemeUnsetSystemDarkResponse {
   result?: string;
 }
-const DeleteThemeUnsetSystemDarkResponse =
-  CreateSqllabFormatSqlResponse as any as S.Schema<DeleteThemeUnsetSystemDarkResponse>;
-
 export interface DeleteThemeUnsetSystemDefaultRequest {}
-const DeleteThemeUnsetSystemDefaultRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<DeleteThemeUnsetSystemDefaultRequest>;
-
 export interface DeleteThemeUnsetSystemDefaultResponse {
   result?: string;
 }
-const DeleteThemeUnsetSystemDefaultResponse =
-  CreateSqllabFormatSqlResponse as any as S.Schema<DeleteThemeUnsetSystemDefaultResponse>;
-
 export interface DuplicateDatasetRequest {
   base_model_id: number;
   table_name: string;
 }
-const DuplicateDatasetRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DuplicateDatasetRequest>;
-
 export interface DatasetDuplicateSchema {
   base_model_id: number;
   table_name: string;
 }
-const DatasetDuplicateSchema = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DatasetDuplicateSchema>;
-
 export interface DuplicateDatasetResponse {
   id?: number;
   result?: DatasetDuplicateSchema;
 }
-const DuplicateDatasetResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DuplicateDatasetResponse>;
-
 export interface ExecuteReportRequest {
   /** The report schedule pk */
   pk: number;
 }
-const ExecuteReportRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ExecuteReportRequest>;
-
 export interface ExecuteReportResponse {
   /** UUID to track the execution status */
   execution_id?: string;
   /** Success message */
   message?: string;
 }
-const ExecuteReportResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ExecuteReportResponse>;
-
 export interface ExecuteSqllabRequest {
   catalog?: string | null;
   client_id?: string | null;
@@ -4044,23 +2924,9 @@ export interface ExecuteSqllabRequest {
   templateParams?: string | null;
   tmp_table_name?: string | null;
 }
-const ExecuteSqllabRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ExecuteSqllabRequest>;
-
 export type QueryExecutionResponseSchemaColumnsList = Array<unknown>;
-const QueryExecutionResponseSchemaColumnsList =
-  TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaColumnsList>;
-
 export type QueryExecutionResponseSchemaDataList = Array<unknown>;
-const QueryExecutionResponseSchemaDataList =
-  TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaDataList>;
-
 export type QueryExecutionResponseSchemaExpandedColumnsList = Array<unknown>;
-const QueryExecutionResponseSchemaExpandedColumnsList =
-  TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaExpandedColumnsList>;
-
 export interface QueryResult {
   changed_on?: string;
   ctas?: boolean;
@@ -4090,12 +2956,7 @@ export interface QueryResult {
   user?: string;
   userId?: number;
 }
-const QueryResult = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<QueryResult>;
-
 export type QueryExecutionResponseSchemaSelectedColumnsList = Array<unknown>;
-const QueryExecutionResponseSchemaSelectedColumnsList =
-  TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaSelectedColumnsList>;
-
 export interface QueryExecutionResponseSchema {
   columns?: QueryExecutionResponseSchemaColumnsList;
   data?: QueryExecutionResponseSchemaDataList;
@@ -4105,20 +2966,10 @@ export interface QueryExecutionResponseSchema {
   selected_columns?: QueryExecutionResponseSchemaSelectedColumnsList;
   status?: string;
 }
-const QueryExecutionResponseSchema = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<QueryExecutionResponseSchema>;
-
 /** Live dashboard filter state keyed by native filter id, each carrying an extraFormData object. */
 export type ExportDashboardXlsxRequestActiveDataMaskMap = { [key: string]: unknown | undefined };
-const ExportDashboardXlsxRequestActiveDataMaskMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<ExportDashboardXlsxRequestActiveDataMaskMap>;
-
 /** Export mode: 'data' streams each chart's tabular result (default); 'images' embeds non-table charts as rendered images and keeps table charts tabular. */
 export type ExportDashboardXlsxRequestMode = "data" | "images";
-const ExportDashboardXlsxRequestMode = S.String;
-
 export interface ExportDashboardXlsxRequest {
   /** The dashboard id */
   pk: number;
@@ -4127,15 +2978,7 @@ export interface ExportDashboardXlsxRequest {
   /** Export mode: 'data' streams each chart's tabular result (default); 'images' embeds non-table charts as rendered images and keeps table charts tabular. */
   mode?: ExportDashboardXlsxRequestMode | (string & {});
 }
-const ExportDashboardXlsxRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<ExportDashboardXlsxRequest>;
-
 export interface ExportDashboardXlsxResponse {}
-const ExportDashboardXlsxResponse =
-  CreateSecurityGroupResponse as any as S.Schema<ExportDashboardXlsxResponse>;
-
 export interface ExportSqllabStreamingRequest {
   /** The SQL query result identifier */
   client_id?: string;
@@ -4144,63 +2987,28 @@ export interface ExportSqllabStreamingRequest {
   /** Optional filename for the export */
   filename?: string;
 }
-const ExportSqllabStreamingRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ExportSqllabStreamingRequest>;
-
 export interface ExportSqllabStreamingResponse {}
-const ExportSqllabStreamingResponse =
-  CreateSecurityGroupResponse as any as S.Schema<ExportSqllabStreamingResponse>;
-
 export interface GetAnnotationLayerRequest {
   q?: string;
 }
-const GetAnnotationLayerRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetAnnotationLayerRequest>;
-
 export interface GetAnnotationLayerResponseDescriptionColumns {
   /** The description for the column name. Will be translated by babel */
   column_name?: string;
 }
-const GetAnnotationLayerResponseDescriptionColumns = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetAnnotationLayerResponseDescriptionColumns>;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetAnnotationLayerResponseIdsList = Array<string>;
-const GetAnnotationLayerResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerResponseIdsList>;
-
 export interface GetAnnotationLayerResponseLabelColumns {
   /** The label for the column name. Will be translated by babel */
   column_name?: string;
 }
-const GetAnnotationLayerResponseLabelColumns =
-  GetAnnotationLayerResponseDescriptionColumns as any as S.Schema<GetAnnotationLayerResponseLabelColumns>;
-
 /** A list of columns */
 export type GetAnnotationLayerResponseListColumnsList = Array<string>;
-const GetAnnotationLayerResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetAnnotationLayerResponseOrderColumnsList = Array<string>;
-const GetAnnotationLayerResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerResponseOrderColumnsList>;
-
 export interface AnnotationLayerRestApiGetListUser1 {
   first_name: string;
   last_name: string;
 }
-const AnnotationLayerRestApiGetListUser1 = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<AnnotationLayerRestApiGetListUser1>;
-
 export type AnnotationLayerRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
 export interface AnnotationLayerRestApiGetList {
   changed_by?: AnnotationLayerRestApiGetListUser1;
@@ -4212,18 +3020,8 @@ export interface AnnotationLayerRestApiGetList {
   id?: number;
   name?: string | null;
 }
-const AnnotationLayerRestApiGetList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<AnnotationLayerRestApiGetList>;
-
 /** The result from the get list query */
 export type GetAnnotationLayerResponseResultList = Array<AnnotationLayerRestApiGetList>;
-const GetAnnotationLayerResponseResultList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetAnnotationLayerResponseResultList>;
-
 export interface GetAnnotationLayerResponse {
   /** The total record count on the backend */
   count?: number;
@@ -4240,11 +3038,6 @@ export interface GetAnnotationLayerResponse {
   /** The result from the get list query */
   result?: GetAnnotationLayerResponseResultList;
 }
-const GetAnnotationLayerResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetAnnotationLayerResponse>;
-
 export interface GetAnnotationLayerAnnotationRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
@@ -4252,20 +3045,10 @@ export interface GetAnnotationLayerAnnotationRequest {
   annotation_id: number;
   q?: string;
 }
-const GetAnnotationLayerAnnotationRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetAnnotationLayerAnnotationRequest>;
-
 export interface AnnotationRestApiGetAnnotationLayer {
   id?: number;
   name?: string | null;
 }
-const AnnotationRestApiGetAnnotationLayer = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<AnnotationRestApiGetAnnotationLayer>;
-
 export interface AnnotationRestApiGet {
   end_dttm?: string | null;
   id?: number;
@@ -4275,30 +3058,15 @@ export interface AnnotationRestApiGet {
   short_descr?: string | null;
   start_dttm?: string | null;
 }
-const AnnotationRestApiGet = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<AnnotationRestApiGet>;
-
 export interface GetAnnotationLayerAnnotationResponse {
   /** The item id */
   id?: string;
   result?: AnnotationRestApiGet;
 }
-const GetAnnotationLayerAnnotationResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GetAnnotationLayerAnnotationResponse>;
-
 export interface GetAnnotationLayerByPkRequest {
   pk: number;
   q?: string;
 }
-const GetAnnotationLayerByPkRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GetAnnotationLayerByPkRequest>;
-
 export type GetAnnotationLayerByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetAnnotationLayerByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
@@ -4307,16 +3075,8 @@ export interface AnnotationLayerRestApiGet {
   id?: number;
   name?: string | null;
 }
-const AnnotationLayerRestApiGet = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<AnnotationLayerRestApiGet>;
-
 /** A list of columns */
 export type GetAnnotationLayerByPkResponseShowColumnsList = Array<string>;
-const GetAnnotationLayerByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerByPkResponseShowColumnsList>;
-
 export interface GetAnnotationLayerByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -4328,20 +3088,10 @@ export interface GetAnnotationLayerByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetAnnotationLayerByPkResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetAnnotationLayerByPkResponse>;
-
 export interface GetAnnotationLayerRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetAnnotationLayerRelatedRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GetAnnotationLayerRelatedRequest>;
-
 export interface RelatedResultResponse {
   /** The extra metadata for related item */
   extra?: unknown;
@@ -4350,82 +3100,32 @@ export interface RelatedResultResponse {
   /** The related item identifier */
   value?: number;
 }
-const RelatedResultResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<RelatedResultResponse>;
-
 export type RelatedResponseSchemaResultList = Array<RelatedResultResponse>;
-const RelatedResponseSchemaResultList = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<RelatedResponseSchemaResultList>;
-
 export interface RelatedResponseSchema {
   /** The total number of related values */
   count?: number;
   result?: RelatedResponseSchemaResultList;
 }
-const RelatedResponseSchema = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<RelatedResponseSchema>;
-
 export interface GetAssetExportRequest {}
-const GetAssetExportRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<GetAssetExportRequest>;
-
 export interface GetAssetExportResponse {}
-const GetAssetExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetAssetExportResponse>;
-
 export interface GetAvailableDomainsRequest {}
-const GetAvailableDomainsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<GetAvailableDomainsRequest>;
-
 export type AvailableDomainsSchemaDomainsList = Array<string>;
-const AvailableDomainsSchemaDomainsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<AvailableDomainsSchemaDomainsList>;
-
 export interface AvailableDomainsSchema {
   domains?: AvailableDomainsSchemaDomainsList;
 }
-const AvailableDomainsSchema = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<AvailableDomainsSchema>;
-
 export interface GetAvailableDomainsResponse {
   result?: AvailableDomainsSchema;
 }
-const GetAvailableDomainsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GetAvailableDomainsResponse>;
-
 export interface GetChartRequest {
   /** Either the id of the chart, or its uuid */
   id_or_uuid: string;
 }
-const GetChartRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<GetChartRequest>;
-
 export interface Dashboard {
   dashboard_title?: string;
   id?: number;
   json_metadata?: string;
 }
-const Dashboard = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<Dashboard>;
-
 export type ChartGetResponseSchemaDashboardsList = Array<Dashboard>;
-const ChartGetResponseSchemaDashboardsList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ChartGetResponseSchemaDashboardsList>;
-
 export interface SubjectResponse {
   id?: number;
   img?: string;
@@ -4433,34 +3133,15 @@ export interface SubjectResponse {
   secondary_label?: string;
   type?: number;
 }
-const SubjectResponse = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<SubjectResponse>;
-
 export type ChartGetResponseSchemaEditorsList = Array<SubjectResponse>;
-const ChartGetResponseSchemaEditorsList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ChartGetResponseSchemaEditorsList>;
-
 export type TagType = 1 | 2 | 3 | 4;
-const TagType = S.Number;
-
 export interface Tag {
   id?: number;
   name?: string;
   type?: TagType;
 }
-const Tag = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<Tag>;
-
 export type ChartGetResponseSchemaTagsList = Array<Tag>;
-const ChartGetResponseSchemaTagsList = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ChartGetResponseSchemaTagsList>;
-
 export type ChartGetResponseSchemaViewersList = Array<SubjectResponse>;
-const ChartGetResponseSchemaViewersList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<ChartGetResponseSchemaViewersList>;
-
 export interface ChartGetResponseSchema {
   cache_timeout?: string;
   certification_details?: string;
@@ -4487,25 +3168,13 @@ export interface ChartGetResponseSchema {
   viewers?: ChartGetResponseSchemaViewersList;
   viz_type?: string;
 }
-const ChartGetResponseSchema = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ChartGetResponseSchema>;
-
 export interface GetChartResponse {
   result?: ChartGetResponseSchema;
 }
-const GetChartResponse = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<GetChartResponse>;
-
 export interface GetChartCacheScreenshotRequest {
   pk: number;
   q?: string;
 }
-const GetChartCacheScreenshotRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<GetChartCacheScreenshotRequest>;
-
 export interface ChartCacheScreenshotResponseSchema {
   /** The cache key */
   cache_key?: string;
@@ -4518,77 +3187,36 @@ export interface ChartCacheScreenshotResponseSchema {
   /** The timestamp of the last change in status */
   task_updated_at?: string;
 }
-const ChartCacheScreenshotResponseSchema = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ChartCacheScreenshotResponseSchema>;
-
 export interface GetChartExportRequest {
   q?: string;
 }
-const GetChartExportRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<GetChartExportRequest>;
-
 export interface GetChartExportResponse {}
-const GetChartExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetChartExportResponse>;
-
 export interface GetChartRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetChartRelatedRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<GetChartRelatedRequest>;
-
 export interface GetChartScreenshotRequest {
   pk: number;
   digest: string;
 }
-const GetChartScreenshotRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<GetChartScreenshotRequest>;
-
 export interface GetChartScreenshotResponse {}
-const GetChartScreenshotResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetChartScreenshotResponse>;
-
 export interface GetChartThumbnailRequest {
   pk: number;
   /** A hex digest that makes this chart unique */
   digest: string;
 }
-const GetChartThumbnailRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GetChartThumbnailRequest>;
-
 export interface GetChartThumbnailResponse {}
-const GetChartThumbnailResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetChartThumbnailResponse>;
-
 export interface GetChartVersionRequest {
   /** Chart UUID */
   uuid_str: string;
   /** Version UUID as returned by the list endpoint */
   version_uuid_str: string;
 }
-const GetChartVersionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GetChartVersionRequest>;
-
 export interface VersionChangedBy {
   first_name?: string;
   id?: number;
   last_name?: string;
 }
-const VersionChangedBy = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<VersionChangedBy>;
-
 export interface VersionChangeRecord {
   /** Value at path before the save; null when the field did not exist. */
   from_value?: unknown | null;
@@ -4601,15 +3229,8 @@ export interface VersionChangeRecord {
   /** Value at path after the save; null when the field was removed. */
   to_value?: unknown | null;
 }
-const VersionChangeRecord = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<VersionChangeRecord>;
-
 /** Structured diff records describing the atomic field-level changes at this version, ordered by emission sequence. Empty for baseline (op=0) transactions per spec M4. */
 export type VersionListItemSchemaChangesList = Array<VersionChangeRecord>;
-const VersionListItemSchemaChangesList = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<VersionListItemSchemaChangesList>;
-
 export interface VersionListItemSchema {
   /** User who produced the version, or null when the commit had no authenticated Flask user (CLI, Celery, import). */
   changed_by?: VersionChangedBy | null;
@@ -4626,64 +3247,30 @@ export interface VersionListItemSchema {
   /** Deterministic UUIDv5 derived from the entity UUID and the Continuum transaction id -- stable across replicas and retention pruning. The handle accepted by the get/restore version endpoints. */
   version_uuid?: string;
 }
-const VersionListItemSchema = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<VersionListItemSchema>;
-
 /** The chart's scalar fields at the target version (entity-specific keys), plus a `_version` block with the version-level metadata. */
 export interface GetChartVersionResponseResult {
   _version?: VersionListItemSchema;
 }
-const GetChartVersionResponseResult = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<GetChartVersionResponseResult>;
-
 export interface GetChartVersionResponse {
   /** The chart's scalar fields at the target version (entity-specific keys), plus a `_version` block with the version-level metadata. */
   result?: GetChartVersionResponseResult;
 }
-const GetChartVersionResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GetChartVersionResponse>;
-
 export interface GetCssTemplateRequest {
   q?: string;
 }
-const GetCssTemplateRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GetCssTemplateRequest>;
-
 export type GetCssTemplateResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetCssTemplateResponseIdsList = Array<string>;
-const GetCssTemplateResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateResponseIdsList>;
-
 export type GetCssTemplateResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetCssTemplateResponseListColumnsList = Array<string>;
-const GetCssTemplateResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetCssTemplateResponseOrderColumnsList = Array<string>;
-const GetCssTemplateResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateResponseOrderColumnsList>;
-
 export interface CssTemplateRestApiGetListUser {
   first_name: string;
   id?: number;
   last_name: string;
 }
-const CssTemplateRestApiGetListUser = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<CssTemplateRestApiGetListUser>;
-
 export type CssTemplateRestApiGetListUser1 = CssTemplateRestApiGetListUser;
 export interface CssTemplateRestApiGetList {
   changed_by?: CssTemplateRestApiGetListUser;
@@ -4694,18 +3281,8 @@ export interface CssTemplateRestApiGetList {
   id?: number;
   template_name?: string | null;
 }
-const CssTemplateRestApiGetList = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<CssTemplateRestApiGetList>;
-
 /** The result from the get list query */
 export type GetCssTemplateResponseResultList = Array<CssTemplateRestApiGetList>;
-const GetCssTemplateResponseResultList = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<GetCssTemplateResponseResultList>;
-
 export interface GetCssTemplateResponse {
   /** The total record count on the backend */
   count?: number;
@@ -4722,20 +3299,10 @@ export interface GetCssTemplateResponse {
   /** The result from the get list query */
   result?: GetCssTemplateResponseResultList;
 }
-const GetCssTemplateResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<GetCssTemplateResponse>;
-
 export interface GetCssTemplateByPkRequest {
   pk: number;
   q?: string;
 }
-const GetCssTemplateByPkRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<GetCssTemplateByPkRequest>;
-
 export type GetCssTemplateByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetCssTemplateByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
@@ -4749,16 +3316,8 @@ export interface CssTemplateRestApiGet {
   id?: number;
   template_name?: string | null;
 }
-const CssTemplateRestApiGet = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<CssTemplateRestApiGet>;
-
 /** A list of columns */
 export type GetCssTemplateByPkResponseShowColumnsList = Array<string>;
-const GetCssTemplateByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateByPkResponseShowColumnsList>;
-
 export interface GetCssTemplateByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -4770,32 +3329,17 @@ export interface GetCssTemplateByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetCssTemplateByPkResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<GetCssTemplateByPkResponse>;
-
 export interface GetCssTemplateRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetCssTemplateRelatedRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GetCssTemplateRelatedRequest>;
-
 export interface GetDashboardRequest {
   /** Either the id of the dashboard, or its slug */
   id_or_slug: string;
   q?: string;
 }
-const GetDashboardRequest = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<GetDashboardRequest>;
-
 export type User = VersionChangedBy;
 export type DashboardGetResponseSchemaChartsList = Array<string>;
-const DashboardGetResponseSchemaChartsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardGetResponseSchemaChartsList>;
-
 export type Tag1Type = 1 | 2 | 3 | 4;
 export interface Tag1 {
   id?: number;
@@ -4803,28 +3347,14 @@ export interface Tag1 {
   type?: Tag1Type;
 }
 export type DashboardGetResponseSchemaCustomTagsList = Array<Tag1>;
-const DashboardGetResponseSchemaCustomTagsList =
-  ChartGetResponseSchemaTagsList as any as S.Schema<DashboardGetResponseSchemaCustomTagsList>;
-
 export type DashboardGetResponseSchemaEditorsList = Array<SubjectResponse>;
-const DashboardGetResponseSchemaEditorsList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<DashboardGetResponseSchemaEditorsList>;
-
 export type DashboardGetResponseSchemaTagsList = Array<Tag1>;
-const DashboardGetResponseSchemaTagsList =
-  DashboardGetResponseSchemaCustomTagsList as any as S.Schema<DashboardGetResponseSchemaTagsList>;
-
 export interface Theme {
   id?: number;
   json_data?: string;
   theme_name?: string;
 }
-const Theme = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<Theme>;
-
 export type DashboardGetResponseSchemaViewersList = Array<SubjectResponse>;
-const DashboardGetResponseSchemaViewersList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<DashboardGetResponseSchemaViewersList>;
-
 export interface DashboardGetResponseSchema {
   /** Details of the certification */
   certification_details?: string;
@@ -4859,46 +3389,20 @@ export interface DashboardGetResponseSchema {
   uuid?: string | null;
   viewers?: DashboardGetResponseSchemaViewersList;
 }
-const DashboardGetResponseSchema = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<DashboardGetResponseSchema>;
-
 export interface GetDashboardResponse {
   result?: DashboardGetResponseSchema;
 }
-const GetDashboardResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<GetDashboardResponse>;
-
 export interface GetDashboardEmbeddedRequest {
   /** The dashboard id or slug */
   id_or_slug: string;
 }
-const GetDashboardEmbeddedRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetDashboardEmbeddedRequest>;
-
 export interface GetDashboardEmbeddedResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-const GetDashboardEmbeddedResponse =
-  CreateDashboardEmbeddedResponse as any as S.Schema<GetDashboardEmbeddedResponse>;
-
 export interface GetDashboardExportRequest {
   q?: string;
 }
-const GetDashboardExportRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<GetDashboardExportRequest>;
-
 export interface GetDashboardExportResponse {}
-const GetDashboardExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetDashboardExportResponse>;
-
 export interface GetDashboardExportAsExampleRequest {
   /** The dashboard id */
   pk: number;
@@ -4907,162 +3411,74 @@ export interface GetDashboardExportAsExampleRequest {
   /** Limit data export to this many rows per dataset */
   sample_rows?: number;
 }
-const GetDashboardExportAsExampleRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GetDashboardExportAsExampleRequest>;
-
 export interface GetDashboardExportAsExampleResponse {}
-const GetDashboardExportAsExampleResponse =
-  DeleteSecurityUserSessionsResponse as any as S.Schema<GetDashboardExportAsExampleResponse>;
-
 export interface GetDashboardExportXlsxDownloadRequest {
   /** The job_id from the export_xlsx response */
   job_id: string;
 }
-const GetDashboardExportXlsxDownloadRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GetDashboardExportXlsxDownloadRequest>;
-
 export interface GetDashboardExportXlsxDownloadResponse {}
-const GetDashboardExportXlsxDownloadResponse =
-  DeleteSecurityUserSessionsResponse as any as S.Schema<GetDashboardExportXlsxDownloadResponse>;
-
 export interface GetDashboardExportXlsxStatusRequest {
   /** The job_id from the export_xlsx response */
   job_id: string;
 }
-const GetDashboardExportXlsxStatusRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<GetDashboardExportXlsxStatusRequest>;
-
 export interface GetDashboardExportXlsxStatusResponse {}
-const GetDashboardExportXlsxStatusResponse =
-  DeleteSecurityUserSessionsResponse as any as S.Schema<GetDashboardExportXlsxStatusResponse>;
-
 export interface GetDashboardFilterStateRequest {
   pk: number;
   key: string;
 }
-const GetDashboardFilterStateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GetDashboardFilterStateRequest>;
-
 export interface GetDashboardFilterStateResponse {
   /** A map of native filter id to that filter's human-readable label, for the filter ids present in `value`. Cross-referenced from the dashboard's native filter configuration, since the cached `value` itself has no notion of a filter's label. */
   names?: unknown;
   /** The stored value */
   value?: string;
 }
-const GetDashboardFilterStateResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<GetDashboardFilterStateResponse>;
-
 export interface GetDashboardPermalinkRequest {
   key: string;
 }
-const GetDashboardPermalinkRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<GetDashboardPermalinkRequest>;
-
 export interface GetDashboardPermalinkResponse {
   /** The stored state */
   state?: unknown;
 }
-const GetDashboardPermalinkResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetDashboardPermalinkResponse>;
-
 export interface GetDashboardRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetDashboardRelatedRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetDashboardRelatedRequest>;
-
 export type GetDashboardScreenshotRequestDownloadFormat = "png" | "pdf";
-const GetDashboardScreenshotRequestDownloadFormat = S.String;
-
 export interface GetDashboardScreenshotRequest {
   pk: number;
   digest: string;
   download_format?: GetDashboardScreenshotRequestDownloadFormat | (string & {});
 }
-const GetDashboardScreenshotRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GetDashboardScreenshotRequest>;
-
 export interface GetDashboardScreenshotResponse {}
-const GetDashboardScreenshotResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetDashboardScreenshotResponse>;
-
 export interface GetDashboardThumbnailRequest {
   pk: number;
   /** A hex digest that makes this dashboard unique */
   digest: string;
 }
-const GetDashboardThumbnailRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetDashboardThumbnailRequest>;
-
 export interface GetDashboardThumbnailResponse {}
-const GetDashboardThumbnailResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetDashboardThumbnailResponse>;
-
 export interface GetDashboardVersionRequest {
   /** Dashboard UUID */
   uuid_str: string;
   /** Version UUID as returned by the list endpoint */
   version_uuid_str: string;
 }
-const GetDashboardVersionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GetDashboardVersionRequest>;
-
 /** The dashboard's scalar fields at the target version (entity-specific keys), plus a `_version` block with the version-level metadata. */
 export type GetDashboardVersionResponseResult = GetChartVersionResponseResult;
 export interface GetDashboardVersionResponse {
   /** The dashboard's scalar fields at the target version (entity-specific keys), plus a `_version` block with the version-level metadata. */
   result?: GetChartVersionResponseResult;
 }
-const GetDashboardVersionResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GetDashboardVersionResponse>;
-
 export interface GetDatabaseRequest {
   q?: string;
 }
-const GetDatabaseRequest = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<GetDatabaseRequest>;
-
 export type GetDatabaseResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetDatabaseResponseIdsList = Array<string>;
-const GetDatabaseResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatabaseResponseIdsList>;
-
 export type GetDatabaseResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetDatabaseResponseListColumnsList = Array<string>;
-const GetDatabaseResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatabaseResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetDatabaseResponseOrderColumnsList = Array<string>;
-const GetDatabaseResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatabaseResponseOrderColumnsList>;
-
 export type DatabaseRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
 export type DatabaseRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
 export interface DatabaseRestApiGetList {
@@ -5092,18 +3508,8 @@ export interface DatabaseRestApiGetList {
   id?: number;
   uuid?: string | null;
 }
-const DatabaseRestApiGetList = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<DatabaseRestApiGetList>;
-
 /** The result from the get list query */
 export type GetDatabaseResponseResultList = Array<DatabaseRestApiGetList>;
-const GetDatabaseResponseResultList = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GetDatabaseResponseResultList>;
-
 export interface GetDatabaseResponse {
   /** The total record count on the backend */
   count?: number;
@@ -5120,32 +3526,15 @@ export interface GetDatabaseResponse {
   /** The result from the get list query */
   result?: GetDatabaseResponseResultList;
 }
-const GetDatabaseResponse = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<GetDatabaseResponse>;
-
 export interface GetDatabaseByPkRequest {
   /** The database id */
   pk: number;
 }
-const GetDatabaseByPkRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<GetDatabaseByPkRequest>;
-
 export type GetDatabaseByPkResponse = unknown;
-const GetDatabaseByPkResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GetDatabaseByPkResponse>;
-
 export interface GetDatabaseConnectionRequest {
   /** The database id */
   pk: number;
 }
-const GetDatabaseConnectionRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GetDatabaseConnectionRequest>;
-
 export interface IdentifierQuote {
   /** Character that closes a quoted identifier */
   end?: string;
@@ -5154,8 +3543,6 @@ export interface IdentifierQuote {
   /** Character that opens a quoted identifier */
   start?: string;
 }
-const IdentifierQuote = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<IdentifierQuote>;
-
 export interface EngineInformation {
   /** SSH tunnel is not available to the database */
   disable_ssh_tunneling?: boolean;
@@ -5172,20 +3559,12 @@ export interface EngineInformation {
   /** The database uses schemas to organize tables */
   supports_schemas?: boolean;
 }
-const EngineInformation = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<EngineInformation>;
-
 /** DB-specific parameters for configuration */
 export type DatabaseConnectionSchemaOutputParametersMap = { [key: string]: unknown | undefined };
-const DatabaseConnectionSchemaOutputParametersMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseConnectionSchemaOutputParametersMap>;
-
 /** JSONSchema for configuring the database by parameters instead of SQLAlchemy URI */
 export type DatabaseConnectionSchemaOutputParametersSchemaMap = {
   [key: string]: unknown | undefined;
 };
-const DatabaseConnectionSchemaOutputParametersSchemaMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseConnectionSchemaOutputParametersSchemaMap>;
-
 export interface DatabaseConnectionSchemaOutput {
   /** Allow CREATE TABLE AS option in SQL Lab */
   allow_ctas?: boolean;
@@ -5232,170 +3611,79 @@ export interface DatabaseConnectionSchemaOutput {
   ssh_tunnel?: DatabaseSSHTunnelOutput | null;
   uuid?: string;
 }
-const DatabaseConnectionSchemaOutput = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<DatabaseConnectionSchemaOutput>;
-
 export interface GetDatabaseExportRequest {
   q?: string;
 }
-const GetDatabaseExportRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetDatabaseExportRequest>;
-
 export interface GetDatabaseExportResponse {}
-const GetDatabaseExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetDatabaseExportResponse>;
-
 export interface GetDatabaseOauth2Request {
   state?: string;
   code?: string;
   scope?: string;
   error?: string;
 }
-const GetDatabaseOauth2Request = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetDatabaseOauth2Request>;
-
 export interface GetDatabaseOauth2Response {}
-const GetDatabaseOauth2Response =
-  CreateSecurityGroupResponse as any as S.Schema<GetDatabaseOauth2Response>;
-
 export interface GetDatabaseRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetDatabaseRelatedRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<GetDatabaseRelatedRequest>;
-
 export interface GetDatabaseRelatedObjectsRequest {
   pk: number;
 }
-const GetDatabaseRelatedObjectsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GetDatabaseRelatedObjectsRequest>;
-
 export interface DatabaseRelatedChart {
   id?: number;
   slice_name?: string;
   viz_type?: string;
 }
-const DatabaseRelatedChart = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<DatabaseRelatedChart>;
-
 /** A list of dashboards */
 export type DatabaseRelatedChartsResultList = Array<DatabaseRelatedChart>;
-const DatabaseRelatedChartsResultList = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<DatabaseRelatedChartsResultList>;
-
 export interface DatabaseRelatedCharts {
   /** Chart count */
   count?: number;
   /** A list of dashboards */
   result?: DatabaseRelatedChartsResultList;
 }
-const DatabaseRelatedCharts = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<DatabaseRelatedCharts>;
-
 export interface DatabaseRelatedDashboard {
   id?: number;
   json_metadata?: unknown;
   slug?: string;
   title?: string;
 }
-const DatabaseRelatedDashboard = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<DatabaseRelatedDashboard>;
-
 /** A list of dashboards */
 export type DatabaseRelatedDashboardsResultList = Array<DatabaseRelatedDashboard>;
-const DatabaseRelatedDashboardsResultList = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<DatabaseRelatedDashboardsResultList>;
-
 export interface DatabaseRelatedDashboards {
   /** Dashboard count */
   count?: number;
   /** A list of dashboards */
   result?: DatabaseRelatedDashboardsResultList;
 }
-const DatabaseRelatedDashboards = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<DatabaseRelatedDashboards>;
-
 export interface DatabaseRelatedDataset {
   id?: number;
   schema?: string;
   table_name?: string;
 }
-const DatabaseRelatedDataset = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<DatabaseRelatedDataset>;
-
 /** A list of datasets */
 export type DatabaseRelatedDatasetsResultList = Array<DatabaseRelatedDataset>;
-const DatabaseRelatedDatasetsResultList = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<DatabaseRelatedDatasetsResultList>;
-
 export interface DatabaseRelatedDatasets {
   /** Dataset count */
   count?: number;
   /** A list of datasets */
   result?: DatabaseRelatedDatasetsResultList;
 }
-const DatabaseRelatedDatasets = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<DatabaseRelatedDatasets>;
-
 export interface DatabaseRelatedObjectsResponse {
   charts?: DatabaseRelatedCharts;
   dashboards?: DatabaseRelatedDashboards;
   datasets?: DatabaseRelatedDatasets;
 }
-const DatabaseRelatedObjectsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<DatabaseRelatedObjectsResponse>;
-
 export interface GetDatabaseSelectStarRequest {
   /** The database id */
   pk: number;
   /** Table name */
   table_name: string;
 }
-const GetDatabaseSelectStarRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetDatabaseSelectStarRequest>;
-
 export interface SelectStarResponseSchema {
   /** SQL select star */
   result?: string;
 }
-const SelectStarResponseSchema = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<SelectStarResponseSchema>;
-
 export interface GetDatabaseSelectStarRequest2 {
   /** The database id */
   pk: number;
@@ -5404,11 +3692,6 @@ export interface GetDatabaseSelectStarRequest2 {
   /** Table schema */
   schema_name: string;
 }
-const GetDatabaseSelectStarRequest2 = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetDatabaseSelectStarRequest2>;
-
 export interface GetDatabaseTableRequest {
   /** The database id */
   pk: number;
@@ -5417,15 +3700,7 @@ export interface GetDatabaseTableRequest {
   /** Table schema */
   schema_name: string;
 }
-const GetDatabaseTableRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<GetDatabaseTableRequest>;
-
 export type TableMetadataColumnsResponseKeysList = Array<string>;
-const TableMetadataColumnsResponseKeysList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataColumnsResponseKeysList>;
-
 export interface TableMetadataColumnsResponse {
   duplicates_constraint?: string;
   keys?: TableMetadataColumnsResponseKeysList;
@@ -5436,22 +3711,9 @@ export interface TableMetadataColumnsResponse {
   /** The column type */
   type?: string;
 }
-const TableMetadataColumnsResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<TableMetadataColumnsResponse>;
-
 /** A list of columns and their metadata */
 export type TableMetadataResponseSchemaColumnsList = Array<TableMetadataColumnsResponse>;
-const TableMetadataResponseSchemaColumnsList = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<TableMetadataResponseSchemaColumnsList>;
-
 export type TableMetadataForeignKeysIndexesResponseColumnNamesList = Array<string>;
-const TableMetadataForeignKeysIndexesResponseColumnNamesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataForeignKeysIndexesResponseColumnNamesList>;
-
 export interface TableMetadataOptionsResponse {
   deferrable?: boolean;
   initially?: boolean;
@@ -5459,15 +3721,7 @@ export interface TableMetadataOptionsResponse {
   ondelete?: boolean;
   onupdate?: boolean;
 }
-const TableMetadataOptionsResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<TableMetadataOptionsResponse>;
-
 export type TableMetadataForeignKeysIndexesResponseReferredColumnsList = Array<string>;
-const TableMetadataForeignKeysIndexesResponseReferredColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataForeignKeysIndexesResponseReferredColumnsList>;
-
 export interface TableMetadataForeignKeysIndexesResponse {
   column_names?: TableMetadataForeignKeysIndexesResponseColumnNamesList;
   /** The name of the foreign key or index */
@@ -5478,39 +3732,18 @@ export interface TableMetadataForeignKeysIndexesResponse {
   referred_table?: string;
   type?: string;
 }
-const TableMetadataForeignKeysIndexesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<TableMetadataForeignKeysIndexesResponse>;
-
 /** A list of foreign keys and their metadata */
 export type TableMetadataResponseSchemaForeignKeysList =
   Array<TableMetadataForeignKeysIndexesResponse>;
-const TableMetadataResponseSchemaForeignKeysList = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<TableMetadataResponseSchemaForeignKeysList>;
-
 /** A list of indexes and their metadata */
 export type TableMetadataResponseSchemaIndexesList = Array<TableMetadataForeignKeysIndexesResponse>;
-const TableMetadataResponseSchemaIndexesList =
-  TableMetadataResponseSchemaForeignKeysList as any as S.Schema<TableMetadataResponseSchemaIndexesList>;
-
 export type TableMetadataPrimaryKeyResponseColumnNamesList = Array<string>;
-const TableMetadataPrimaryKeyResponseColumnNamesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataPrimaryKeyResponseColumnNamesList>;
-
 export interface TableMetadataPrimaryKeyResponse {
   column_names?: TableMetadataPrimaryKeyResponseColumnNamesList;
   /** The primary key index name */
   name?: string;
   type?: string;
 }
-const TableMetadataPrimaryKeyResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<TableMetadataPrimaryKeyResponse>;
-
 export interface TableMetadataResponseSchema {
   /** A list of columns and their metadata */
   columns?: TableMetadataResponseSchemaColumnsList;
@@ -5525,11 +3758,6 @@ export interface TableMetadataResponseSchema {
   /** SQL select star */
   selectStar?: string;
 }
-const TableMetadataResponseSchema = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<TableMetadataResponseSchema>;
-
 export interface GetDatabaseTableExtraRequest {
   /** The database id */
   pk: number;
@@ -5538,21 +3766,11 @@ export interface GetDatabaseTableExtraRequest {
   /** Table schema */
   schema_name: string;
 }
-const GetDatabaseTableExtraRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<GetDatabaseTableExtraRequest>;
-
 export interface TableExtraMetadataResponseSchema {
   clustering?: unknown;
   metadata?: unknown;
   partitions?: unknown;
 }
-const TableExtraMetadataResponseSchema = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<TableExtraMetadataResponseSchema>;
-
 export interface GetDatabaseTableMetadataRequest {
   /** The database id */
   pk: number;
@@ -5563,11 +3781,6 @@ export interface GetDatabaseTableMetadataRequest {
   /** Optional table catalog, if not passed default catalog will be used */
   catalog?: string;
 }
-const GetDatabaseTableMetadataRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GetDatabaseTableMetadataRequest>;
-
 export interface GetDatabaseTableMetadataExtraRequest {
   /** The database id */
   pk: number;
@@ -5578,60 +3791,29 @@ export interface GetDatabaseTableMetadataExtraRequest {
   /** Optional table catalog, if not passed the catalog configured in the database will be used */
   catalog?: string;
 }
-const GetDatabaseTableMetadataExtraRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<GetDatabaseTableMetadataExtraRequest>;
-
 export interface GetDatasetRequest {
   q?: string;
 }
-const GetDatasetRequest = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<GetDatasetRequest>;
-
 export type GetDatasetResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetDatasetResponseIdsList = Array<string>;
-const GetDatasetResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatasetResponseIdsList>;
-
 export type GetDatasetResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetDatasetResponseListColumnsList = Array<string>;
-const GetDatasetResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatasetResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetDatasetResponseOrderColumnsList = Array<string>;
-const GetDatasetResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatasetResponseOrderColumnsList>;
-
 export type DatasetRestApiGetListUser = CssTemplateRestApiGetListUser;
 export interface DatasetRestApiGetListDatabase {
   database_name: string;
   id?: number;
   uuid?: string | null;
 }
-const DatasetRestApiGetListDatabase = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<DatasetRestApiGetListDatabase>;
-
 export interface DatasetRestApiGetListSubject {
   id?: number;
   label: string;
   type: number;
 }
-const DatasetRestApiGetListSubject = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<DatasetRestApiGetListSubject>;
-
 export type DatasetRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-const DatasetRestApiGetListEditorsList = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<DatasetRestApiGetListEditorsList>;
-
 export interface DatasetRestApiGetList {
   catalog?: string | null;
   changed_by?: CssTemplateRestApiGetListUser;
@@ -5652,18 +3834,8 @@ export interface DatasetRestApiGetList {
   table_name: string;
   uuid?: string | null;
 }
-const DatasetRestApiGetList = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<DatasetRestApiGetList>;
-
 /** The result from the get list query */
 export type GetDatasetResponseResultList = Array<DatasetRestApiGetList>;
-const GetDatasetResponseResultList = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GetDatasetResponseResultList>;
-
 export interface GetDatasetResponse {
   /** The total record count on the backend */
   count?: number;
@@ -5680,8 +3852,6 @@ export interface GetDatasetResponse {
   /** The result from the get list query */
   result?: GetDatasetResponseResultList;
 }
-const GetDatasetResponse = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<GetDatasetResponse>;
-
 export interface GetDatasetByIdOrUuidRequest {
   /** Either the id of the dataset, or its uuid */
   id_or_uuid: string;
@@ -5689,11 +3859,6 @@ export interface GetDatasetByIdOrUuidRequest {
   /** Should Jinja macros from sql, metrics and columns be rendered and included in the response */
   include_rendered_sql?: boolean;
 }
-const GetDatasetByIdOrUuidRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetDatasetByIdOrUuidRequest>;
-
 export type DatasetRestApiGetUser1 = AnnotationLayerRestApiGetListUser1;
 export interface DatasetRestApiGetTableColumn {
   advanced_data_type?: string | null;
@@ -5718,17 +3883,7 @@ export interface DatasetRestApiGetTableColumn {
   verbose_name?: string | null;
   warning_markdown?: unknown;
 }
-const DatasetRestApiGetTableColumn = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<DatasetRestApiGetTableColumn>;
-
 export type DatasetRestApiGetColumnsList = Array<DatasetRestApiGetTableColumn>;
-const DatasetRestApiGetColumnsList = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<DatasetRestApiGetColumnsList>;
-
 export type DatasetRestApiGetUser = AnnotationLayerRestApiGetListUser1;
 export interface DatasetRestApiGetDatabase {
   allow_multi_catalog?: unknown;
@@ -5737,16 +3892,8 @@ export interface DatasetRestApiGetDatabase {
   id?: number;
   uuid?: string | null;
 }
-const DatasetRestApiGetDatabase = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<DatasetRestApiGetDatabase>;
-
 export type DatasetRestApiGetSubject = DatasetRestApiGetListSubject;
 export type DatasetRestApiGetEditorsList = Array<DatasetRestApiGetListSubject>;
-const DatasetRestApiGetEditorsList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<DatasetRestApiGetEditorsList>;
-
 export interface DatasetRestApiGetSqlMetric {
   certification_details?: unknown;
   certified_by?: unknown;
@@ -5766,17 +3913,7 @@ export interface DatasetRestApiGetSqlMetric {
   warning_markdown?: unknown;
   warning_text?: string | null;
 }
-const DatasetRestApiGetSqlMetric = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<DatasetRestApiGetSqlMetric>;
-
 export type DatasetRestApiGetMetricsList = Array<DatasetRestApiGetSqlMetric>;
-const DatasetRestApiGetMetricsList = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<DatasetRestApiGetMetricsList>;
-
 export interface DatasetRestApiGet {
   always_filter_main_dttm?: boolean | null;
   cache_timeout?: unknown;
@@ -5822,79 +3959,36 @@ export interface DatasetRestApiGet {
   uuid?: string | null;
   verbose_map?: unknown;
 }
-const DatasetRestApiGet = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<DatasetRestApiGet>;
-
 export interface GetDatasetByIdOrUuidResponse {
   /** The item id */
   id?: string;
   result?: DatasetRestApiGet;
 }
-const GetDatasetByIdOrUuidResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetDatasetByIdOrUuidResponse>;
-
 export interface GetDatasetDistinctRequest {
   column_name: string;
   q?: string;
 }
-const GetDatasetDistinctRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetDatasetDistinctRequest>;
-
 export interface DistinctResultResponse {
   /** The distinct item */
   text?: string;
 }
-const DistinctResultResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<DistinctResultResponse>;
-
 export type DistincResponseSchemaResultList = Array<DistinctResultResponse>;
-const DistincResponseSchemaResultList = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<DistincResponseSchemaResultList>;
-
 export interface DistincResponseSchema {
   /** The total number of distinct values */
   count?: number;
   result?: DistincResponseSchemaResultList;
 }
-const DistincResponseSchema = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<DistincResponseSchema>;
-
 export interface GetDatasetDrillInfoRequest {
   /** The dataset ID */
   pk: number;
 }
-const GetDatasetDrillInfoRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetDatasetDrillInfoRequest>;
-
 export interface GetDatasetDrillInfoResponse {
   result?: unknown;
 }
-const GetDatasetDrillInfoResponse =
-  CreateChartFavoriteResponse as any as S.Schema<GetDatasetDrillInfoResponse>;
-
 export interface GetDatasetExportRequest {
   q?: string;
 }
-const GetDatasetExportRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<GetDatasetExportRequest>;
-
 export interface GetDatasetExportResponse {}
-const GetDatasetExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetDatasetExportResponse>;
-
 export interface GetDatasetOrCreateRequest {
   always_filter_main_dttm?: boolean;
   /** The catalog the table belongs to */
@@ -5909,95 +4003,42 @@ export interface GetDatasetOrCreateRequest {
   /** Template params for the table */
   template_params?: string;
 }
-const GetDatasetOrCreateRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<GetDatasetOrCreateRequest>;
-
 export interface GetDatasetOrCreateResponseResult {
   table_id?: number;
 }
-const GetDatasetOrCreateResponseResult = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetDatasetOrCreateResponseResult>;
-
 export interface GetDatasetOrCreateResponse {
   result?: GetDatasetOrCreateResponseResult;
 }
-const GetDatasetOrCreateResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetDatasetOrCreateResponse>;
-
 export interface GetDatasetPurgeImpactRequest {
   uuid: string;
 }
-const GetDatasetPurgeImpactRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetDatasetPurgeImpactRequest>;
-
 export interface DatasetPurgeImpactObject {
   archived: boolean;
   name: string;
   url: string | null;
   uuid: string;
 }
-const DatasetPurgeImpactObject = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<DatasetPurgeImpactObject>;
-
 export type DatasetPurgeImpactCollectionResultList = Array<DatasetPurgeImpactObject>;
-const DatasetPurgeImpactCollectionResultList = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<DatasetPurgeImpactCollectionResultList>;
-
 export interface DatasetPurgeImpactCollection {
   count: number;
   restricted_count: number;
   result: DatasetPurgeImpactCollectionResultList;
 }
-const DatasetPurgeImpactCollection = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<DatasetPurgeImpactCollection>;
-
 export interface DatasetPurgeImpactSchema {
   charts: DatasetPurgeImpactCollection;
   dashboards: DatasetPurgeImpactCollection;
   impact_token: string;
 }
-const DatasetPurgeImpactSchema = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<DatasetPurgeImpactSchema>;
-
 export interface GetDatasetRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetDatasetRelatedRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<GetDatasetRelatedRequest>;
-
 export interface GetDatasetRelatedObjectsRequest {
   q?: string;
 }
-const GetDatasetRelatedObjectsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<GetDatasetRelatedObjectsRequest>;
-
 export type DatasetRelatedChart = DatabaseRelatedChart;
 /** A list of dashboards */
 export type DatasetRelatedChartsResultList = Array<DatabaseRelatedChart>;
-const DatasetRelatedChartsResultList =
-  DatabaseRelatedChartsResultList as any as S.Schema<DatasetRelatedChartsResultList>;
-
 export interface DatasetRelatedCharts {
   /** Chart count */
   count?: number;
@@ -6006,17 +4047,9 @@ export interface DatasetRelatedCharts {
   /** A list of dashboards */
   result?: DatasetRelatedChartsResultList;
 }
-const DatasetRelatedCharts = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<DatasetRelatedCharts>;
-
 export type DatasetRelatedDashboard = DatabaseRelatedDashboard;
 /** A list of dashboards */
 export type DatasetRelatedDashboardsResultList = Array<DatabaseRelatedDashboard>;
-const DatasetRelatedDashboardsResultList =
-  DatabaseRelatedDashboardsResultList as any as S.Schema<DatasetRelatedDashboardsResultList>;
-
 export interface DatasetRelatedDashboards {
   /** Dashboard count */
   count?: number;
@@ -6025,74 +4058,36 @@ export interface DatasetRelatedDashboards {
   /** A list of dashboards */
   result?: DatasetRelatedDashboardsResultList;
 }
-const DatasetRelatedDashboards = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<DatasetRelatedDashboards>;
-
 export interface DatasetRelatedObjectsResponse {
   charts?: DatasetRelatedCharts;
   dashboards?: DatasetRelatedDashboards;
 }
-const DatasetRelatedObjectsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<DatasetRelatedObjectsResponse>;
-
 export interface GetDatasetRelatedObjectsRequest2 {
   id_or_uuid: string;
 }
-const GetDatasetRelatedObjectsRequest2 = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<GetDatasetRelatedObjectsRequest2>;
-
 export interface GetDatasetVersionRequest {
   /** Dataset UUID */
   uuid_str: string;
   /** Version UUID as returned by the list endpoint */
   version_uuid_str: string;
 }
-const GetDatasetVersionRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<GetDatasetVersionRequest>;
-
 /** The dataset's scalar fields at the target version (entity-specific keys), plus `columns` / `metrics` as they were at that version, plus a `_version` block with the version-level metadata. */
 export type GetDatasetVersionResponseResult = GetChartVersionResponseResult;
 export interface GetDatasetVersionResponse {
   /** The dataset's scalar fields at the target version (entity-specific keys), plus `columns` / `metrics` as they were at that version, plus a `_version` block with the version-level metadata. */
   result?: GetChartVersionResponseResult;
 }
-const GetDatasetVersionResponse =
-  GetDashboardVersionResponse as any as S.Schema<GetDatasetVersionResponse>;
-
 export interface GetDatasourceRequest {
   q?: string;
 }
-const GetDatasourceRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetDatasourceRequest>;
-
 export interface GetDatasourceResponse {}
-const GetDatasourceResponse = CreateSecurityGroupResponse as any as S.Schema<GetDatasourceResponse>;
-
 export interface GetDatasourceByDatasourceIdRequest {
   datasource_type: string;
   datasource_id: number;
 }
-const GetDatasourceByDatasourceIdRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<GetDatasourceByDatasourceIdRequest>;
-
 export interface GetDatasourceByDatasourceIdResponse {
   result?: unknown;
 }
-const GetDatasourceByDatasourceIdResponse =
-  CreateChartFavoriteResponse as any as S.Schema<GetDatasourceByDatasourceIdResponse>;
-
 export interface GetEmbeddedDashboardRequest {
   /** The embedded configuration uuid */
   uuid: string;
@@ -6107,17 +4102,9 @@ export interface GetEmbeddedDashboardRequest {
   /** Permalink key to apply filters. (optional). */
   permalink_key?: string;
 }
-const GetEmbeddedDashboardRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<GetEmbeddedDashboardRequest>;
-
 export interface GetEmbeddedDashboardResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-const GetEmbeddedDashboardResponse =
-  CreateDashboardEmbeddedResponse as any as S.Schema<GetEmbeddedDashboardResponse>;
-
 export interface GetExploreRequest {
   form_data_key?: string;
   permalink_key?: string;
@@ -6125,49 +4112,26 @@ export interface GetExploreRequest {
   datasource_id?: number;
   datasource_type?: string;
 }
-const GetExploreRequest = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<GetExploreRequest>;
-
 /** Columns metadata. */
 export type DatasetColumnsList = Array<unknown>;
-const DatasetColumnsList = TagObjectObjectsToTagList as any as S.Schema<DatasetColumnsList>;
-
 /** List of editors */
 export type DatasetEditorsList = Array<SubjectResponse>;
-const DatasetEditorsList = ChartGetResponseSchemaEditorsList as any as S.Schema<DatasetEditorsList>;
-
 export type DatasetGranularitySqlaItemList = Array<unknown>;
-const DatasetGranularitySqlaItemList =
-  TagObjectObjectsToTagList as any as S.Schema<DatasetGranularitySqlaItemList>;
-
 /** Name of temporal column used for time filtering for SQL datasources. This field is deprecated, use `granularity` instead. */
 export type DatasetGranularitySqlaList = Array<DatasetGranularitySqlaItemList>;
-const DatasetGranularitySqlaList = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<DatasetGranularitySqlaList>;
-
 /** Dataset metrics. */
 export type DatasetMetricsList = Array<unknown>;
-const DatasetMetricsList = TagObjectObjectsToTagList as any as S.Schema<DatasetMetricsList>;
-
 export type DatasetOrderByChoicesItemList = Array<string>;
 /** List of order by columns. */
 export type DatasetOrderByChoicesList = Array<DatasetOrderByChoicesItemList>;
-const DatasetOrderByChoicesList =
-  ChartDataQueryObjectGroupingSetsList as any as S.Schema<DatasetOrderByChoicesList>;
-
 export interface RlsRole {
   /** Role ID. */
   id?: number;
   /** Role name. */
   name?: string;
 }
-const RlsRole = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<RlsRole>;
-
 /** Roles associated with the RLS filter. */
 export type RlsFilterRolesList = Array<RlsRole>;
-const RlsFilterRolesList = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<RlsFilterRolesList>;
-
 export interface RlsFilter {
   /** RLS filter clause. */
   clause?: string | null;
@@ -6184,21 +4148,11 @@ export interface RlsFilter {
   /** Roles associated with the RLS filter. */
   roles?: RlsFilterRolesList;
 }
-const RlsFilter = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<RlsFilter>;
-
 /** Row-level security filters applied to this dataset. */
 export type DatasetRlsFiltersList = Array<RlsFilter>;
-const DatasetRlsFiltersList = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<DatasetRlsFiltersList>;
-
 export type DatasetTimeGrainSqlaItemList = Array<string>;
 /** List of temporal granularities supported by the dataset. */
 export type DatasetTimeGrainSqlaList = Array<DatasetTimeGrainSqlaItemList>;
-const DatasetTimeGrainSqlaList =
-  ChartDataQueryObjectGroupingSetsList as any as S.Schema<DatasetTimeGrainSqlaList>;
-
 export interface Dataset {
   /** Duration (in seconds) of the caching timeout for this dataset. */
   cache_timeout?: number;
@@ -6269,12 +4223,8 @@ export interface Dataset {
   /** Mapping from raw name to verbose name. */
   verbose_map?: unknown;
 }
-const Dataset = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<Dataset>;
-
 /** List of editors */
 export type SliceEditorsList = Array<SubjectResponse>;
-const SliceEditorsList = ChartGetResponseSchemaEditorsList as any as S.Schema<SliceEditorsList>;
-
 export interface Slice {
   /** Duration (in seconds) of the caching timeout for this chart. */
   cache_timeout?: number;
@@ -6311,8 +4261,6 @@ export interface Slice {
   /** The slice URL. */
   slice_url?: string;
 }
-const Slice = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<Slice>;
-
 export interface ExploreContextSchema {
   dataset?: Dataset;
   /** Form data from the Explore controls used to form the chart's data query. */
@@ -6321,75 +4269,36 @@ export interface ExploreContextSchema {
   message?: string;
   slice?: Slice;
 }
-const ExploreContextSchema = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<ExploreContextSchema>;
-
 export interface GetExploreFormDataRequest {
   key: string;
 }
-const GetExploreFormDataRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<GetExploreFormDataRequest>;
-
 export interface GetExploreFormDataResponse {
   /** The stored form_data */
   form_data?: string;
 }
-const GetExploreFormDataResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<GetExploreFormDataResponse>;
-
 export interface GetExplorePermalinkRequest {
   key: string;
 }
-const GetExplorePermalinkRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<GetExplorePermalinkRequest>;
-
 export interface GetExplorePermalinkResponse {
   /** The stored state */
   state?: unknown;
 }
-const GetExplorePermalinkResponse =
-  GetDashboardPermalinkResponse as any as S.Schema<GetExplorePermalinkResponse>;
-
 export interface GetLogRequest {
   q?: string;
 }
-const GetLogRequest = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<GetLogRequest>;
-
 export type GetLogResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetLogResponseIdsList = Array<string>;
-const GetLogResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogResponseIdsList>;
-
 export type GetLogResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetLogResponseListColumnsList = Array<string>;
-const GetLogResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetLogResponseOrderColumnsList = Array<string>;
-const GetLogResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogResponseOrderColumnsList>;
-
 export interface LogRestApiGetListUser {
   first_name: string;
   last_name: string;
   username: string;
 }
-const LogRestApiGetListUser = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<LogRestApiGetListUser>;
-
 export interface LogRestApiGetList {
   action?: string | null;
   dashboard_id?: number | null;
@@ -6401,15 +4310,8 @@ export interface LogRestApiGetList {
   user?: LogRestApiGetListUser;
   user_id?: unknown | null;
 }
-const LogRestApiGetList = /*@__PURE__*/ __L.at(__c43, 0) as any as S.Schema<LogRestApiGetList>;
-
 /** The result from the get list query */
 export type GetLogResponseResultList = Array<LogRestApiGetList>;
-const GetLogResponseResultList = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<GetLogResponseResultList>;
-
 export interface GetLogResponse {
   /** The total record count on the backend */
   count?: number;
@@ -6426,23 +4328,16 @@ export interface GetLogResponse {
   /** The result from the get list query */
   result?: GetLogResponseResultList;
 }
-const GetLogResponse = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<GetLogResponse>;
-
 export interface GetLogByPkRequest {
   pk: number;
   q?: string;
 }
-const GetLogByPkRequest = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<GetLogByPkRequest>;
-
 export type GetLogByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 export type GetLogByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 export type LogRestApiGetUser = LogRestApiGetListUser;
 export type LogRestApiGet = LogRestApiGetList;
 /** A list of columns */
 export type GetLogByPkResponseShowColumnsList = Array<string>;
-const GetLogByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogByPkResponseShowColumnsList>;
-
 export interface GetLogByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -6454,19 +4349,12 @@ export interface GetLogByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetLogByPkResponse = /*@__PURE__*/ __L.at(__c43, 4) as any as S.Schema<GetLogByPkResponse>;
-
 export interface GetMeRequest {}
-const GetMeRequest = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<GetMeRequest>;
-
 export interface UserGroup {
   id?: number;
   name?: string;
 }
 export type UserResponseSchemaGroupsList = Array<UserGroup>;
-const UserResponseSchemaGroupsList =
-  RlsFilterRolesList as any as S.Schema<UserResponseSchemaGroupsList>;
-
 export interface UserResponseSchema {
   email?: string;
   first_name?: string;
@@ -6478,48 +4366,27 @@ export interface UserResponseSchema {
   login_count?: number;
   username?: string;
 }
-const UserResponseSchema = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<UserResponseSchema>;
-
 export interface GetMeResponse {
   result?: UserResponseSchema;
 }
-const GetMeResponse = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<GetMeResponse>;
-
 export interface GetMeRolesRequest {}
-const GetMeRolesRequest = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<GetMeRolesRequest>;
-
 export interface GetMeRolesResponse {
   result?: UserResponseSchema;
 }
-const GetMeRolesResponse = GetMeResponse as any as S.Schema<GetMeRolesResponse>;
-
 export interface GetQueryRequest {
   q?: string;
 }
-const GetQueryRequest = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<GetQueryRequest>;
-
 export type GetQueryResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetQueryResponseIdsList = Array<string>;
-const GetQueryResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryResponseIdsList>;
-
 export type GetQueryResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetQueryResponseListColumnsList = Array<string>;
-const GetQueryResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetQueryResponseOrderColumnsList = Array<string>;
-const GetQueryResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryResponseOrderColumnsList>;
-
 export interface Database1 {
   database_name?: string;
 }
-const Database1 = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<Database1>;
-
 export interface QueryRestApiGetList {
   changed_on?: string;
   database?: Database1;
@@ -6538,15 +4405,8 @@ export interface QueryRestApiGetList {
   tracking_url?: string;
   user?: VersionChangedBy;
 }
-const QueryRestApiGetList = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<QueryRestApiGetList>;
-
 /** The result from the get list query */
 export type GetQueryResponseResultList = Array<QueryRestApiGetList>;
-const GetQueryResponseResultList = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<GetQueryResponseResultList>;
-
 export interface GetQueryResponse {
   /** The total record count on the backend */
   count?: number;
@@ -6563,14 +4423,10 @@ export interface GetQueryResponse {
   /** The result from the get list query */
   result?: GetQueryResponseResultList;
 }
-const GetQueryResponse = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<GetQueryResponse>;
-
 export interface GetQueryByPkRequest {
   pk: number;
   q?: string;
 }
-const GetQueryByPkRequest = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<GetQueryByPkRequest>;
-
 export type GetQueryByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 export type GetQueryByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 export type QueryRestApiGetDatabase = LogRestApiPost;
@@ -6601,13 +4457,8 @@ export interface QueryRestApiGet {
   tmp_table_name?: string | null;
   tracking_url?: unknown;
 }
-const QueryRestApiGet = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<QueryRestApiGet>;
-
 /** A list of columns */
 export type GetQueryByPkResponseShowColumnsList = Array<string>;
-const GetQueryByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryByPkResponseShowColumnsList>;
-
 export interface GetQueryByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -6619,74 +4470,35 @@ export interface GetQueryByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetQueryByPkResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<GetQueryByPkResponse>;
-
 export interface GetQueryDistinctRequest {
   column_name: string;
   q?: string;
 }
-const GetQueryDistinctRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<GetQueryDistinctRequest>;
-
 export interface GetQueryRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetQueryRelatedRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<GetQueryRelatedRequest>;
-
 export interface GetReportRequest {
   q?: string;
 }
-const GetReportRequest = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<GetReportRequest>;
-
 export type GetReportResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetReportResponseIdsList = Array<string>;
-const GetReportResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportResponseIdsList>;
-
 export type GetReportResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetReportResponseListColumnsList = Array<string>;
-const GetReportResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetReportResponseOrderColumnsList = Array<string>;
-const GetReportResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportResponseOrderColumnsList>;
-
 export type ReportScheduleRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
 export type ReportScheduleRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
 export type ReportScheduleRestApiGetListSubject = DatasetRestApiGetListSubject;
 export type ReportScheduleRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-const ReportScheduleRestApiGetListEditorsList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<ReportScheduleRestApiGetListEditorsList>;
-
 export interface ReportScheduleRestApiGetListReportRecipients {
   id?: number;
   type: string;
 }
-const ReportScheduleRestApiGetListReportRecipients = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<ReportScheduleRestApiGetListReportRecipients>;
-
 export type ReportScheduleRestApiGetListRecipientsList =
   Array<ReportScheduleRestApiGetListReportRecipients>;
-const ReportScheduleRestApiGetListRecipientsList = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<ReportScheduleRestApiGetListRecipientsList>;
-
 export interface ReportScheduleRestApiGetList {
   active?: boolean | null;
   changed_by?: AnnotationLayerRestApiGetListUser1;
@@ -6716,18 +4528,8 @@ export interface ReportScheduleRestApiGetList {
   timezone?: string;
   type: string;
 }
-const ReportScheduleRestApiGetList = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<ReportScheduleRestApiGetList>;
-
 /** The result from the get list query */
 export type GetReportResponseResultList = Array<ReportScheduleRestApiGetList>;
-const GetReportResponseResultList = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<GetReportResponseResultList>;
-
 export interface GetReportResponse {
   /** The total record count on the backend */
   count?: number;
@@ -6744,17 +4546,10 @@ export interface GetReportResponse {
   /** The result from the get list query */
   result?: GetReportResponseResultList;
 }
-const GetReportResponse = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<GetReportResponse>;
-
 export interface GetReportByPkRequest {
   pk: number;
   q?: string;
 }
-const GetReportByPkRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<GetReportByPkRequest>;
-
 export type GetReportByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 export type GetReportByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 export interface ReportScheduleRestApiGetSlice {
@@ -6762,51 +4557,23 @@ export interface ReportScheduleRestApiGetSlice {
   slice_name?: string | null;
   viz_type?: string | null;
 }
-const ReportScheduleRestApiGetSlice = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<ReportScheduleRestApiGetSlice>;
-
 export interface ReportScheduleRestApiGetDashboard {
   dashboard_title?: string | null;
   id?: number;
 }
-const ReportScheduleRestApiGetDashboard = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<ReportScheduleRestApiGetDashboard>;
-
 export interface ReportScheduleRestApiGetDatabase {
   database_name: string;
   id?: number;
 }
-const ReportScheduleRestApiGetDatabase = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<ReportScheduleRestApiGetDatabase>;
-
 export type ReportScheduleRestApiGetSubject = DatasetRestApiGetListSubject;
 export type ReportScheduleRestApiGetEditorsList = Array<DatasetRestApiGetListSubject>;
-const ReportScheduleRestApiGetEditorsList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<ReportScheduleRestApiGetEditorsList>;
-
 export interface ReportScheduleRestApiGetReportRecipients {
   id?: number;
   recipient_config_json?: string | null;
   type: string;
 }
-const ReportScheduleRestApiGetReportRecipients = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<ReportScheduleRestApiGetReportRecipients>;
-
 export type ReportScheduleRestApiGetRecipientsList =
   Array<ReportScheduleRestApiGetReportRecipients>;
-const ReportScheduleRestApiGetRecipientsList = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<ReportScheduleRestApiGetRecipientsList>;
-
 export interface ReportScheduleRestApiGet {
   active?: boolean | null;
   chart?: ReportScheduleRestApiGetSlice;
@@ -6844,16 +4611,8 @@ export interface ReportScheduleRestApiGet {
   validator_type?: string | null;
   working_timeout?: number | null;
 }
-const ReportScheduleRestApiGet = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<ReportScheduleRestApiGet>;
-
 /** A list of columns */
 export type GetReportByPkResponseShowColumnsList = Array<string>;
-const GetReportByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportByPkResponseShowColumnsList>;
-
 export interface GetReportByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -6865,11 +4624,6 @@ export interface GetReportByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetReportByPkResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<GetReportByPkResponse>;
-
 export interface GetReportLogRequest {
   /** The report schedule pk for log */
   pk: number;
@@ -6877,8 +4631,6 @@ export interface GetReportLogRequest {
   log_id: number;
   q?: string;
 }
-const GetReportLogRequest = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<GetReportLogRequest>;
-
 export interface ReportExecutionLogRestApiGet {
   end_dttm?: string | null;
   error_message?: string | null;
@@ -6890,69 +4642,32 @@ export interface ReportExecutionLogRestApiGet {
   value?: number | null;
   value_row_json?: string | null;
 }
-const ReportExecutionLogRestApiGet = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<ReportExecutionLogRestApiGet>;
-
 export interface GetReportLogResponse {
   /** The log id */
   id?: string;
   result?: ReportExecutionLogRestApiGet;
 }
-const GetReportLogResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<GetReportLogResponse>;
-
 export interface GetReportRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetReportRelatedRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<GetReportRelatedRequest>;
-
 export interface GetRowlevelsecurityRequest {
   q?: string;
 }
-const GetRowlevelsecurityRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<GetRowlevelsecurityRequest>;
-
 export type GetRowlevelsecurityResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetRowlevelsecurityResponseIdsList = Array<string>;
-const GetRowlevelsecurityResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityResponseIdsList>;
-
 export type GetRowlevelsecurityResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetRowlevelsecurityResponseListColumnsList = Array<string>;
-const GetRowlevelsecurityResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetRowlevelsecurityResponseOrderColumnsList = Array<string>;
-const GetRowlevelsecurityResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityResponseOrderColumnsList>;
-
 /** filter_type_description */
 export type RLSRestApiGetListFilterType = "Regular" | "Base";
-const RLSRestApiGetListFilterType = S.String;
-
 export type RLSRestApiGetListSubjectsList = Array<SubjectResponse>;
-const RLSRestApiGetListSubjectsList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<RLSRestApiGetListSubjectsList>;
-
 export type Tables = DatabaseRelatedDataset;
 export type RLSRestApiGetListTablesList = Array<DatabaseRelatedDataset>;
-const RLSRestApiGetListTablesList =
-  DatabaseRelatedDatasetsResultList as any as S.Schema<RLSRestApiGetListTablesList>;
-
 export interface RLSRestApiGetList {
   changed_by?: VersionChangedBy;
   changed_on_delta_humanized?: unknown;
@@ -6971,15 +4686,8 @@ export interface RLSRestApiGetList {
   subjects?: RLSRestApiGetListSubjectsList;
   tables?: RLSRestApiGetListTablesList;
 }
-const RLSRestApiGetList = /*@__PURE__*/ __L.at(__c47, 6) as any as S.Schema<RLSRestApiGetList>;
-
 /** The result from the get list query */
 export type GetRowlevelsecurityResponseResultList = Array<RLSRestApiGetList>;
-const GetRowlevelsecurityResponseResultList = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<GetRowlevelsecurityResponseResultList>;
-
 export interface GetRowlevelsecurityResponse {
   /** The total record count on the backend */
   count?: number;
@@ -6996,35 +4704,17 @@ export interface GetRowlevelsecurityResponse {
   /** The result from the get list query */
   result?: GetRowlevelsecurityResponseResultList;
 }
-const GetRowlevelsecurityResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<GetRowlevelsecurityResponse>;
-
 export interface GetRowlevelsecurityByPkRequest {
   pk: number;
   q?: string;
 }
-const GetRowlevelsecurityByPkRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<GetRowlevelsecurityByPkRequest>;
-
 export type GetRowlevelsecurityByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetRowlevelsecurityByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** filter_type_description */
 export type RLSRestApiGetFilterType = "Regular" | "Base";
-const RLSRestApiGetFilterType = S.String;
-
 export type RLSRestApiGetSubjectsList = Array<SubjectResponse>;
-const RLSRestApiGetSubjectsList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<RLSRestApiGetSubjectsList>;
-
 export type RLSRestApiGetTablesList = Array<DatabaseRelatedDataset>;
-const RLSRestApiGetTablesList =
-  DatabaseRelatedDatasetsResultList as any as S.Schema<RLSRestApiGetTablesList>;
-
 export interface RLSRestApiGet {
   /** clause_description */
   clause?: string;
@@ -7041,13 +4731,8 @@ export interface RLSRestApiGet {
   subjects?: RLSRestApiGetSubjectsList;
   tables?: RLSRestApiGetTablesList;
 }
-const RLSRestApiGet = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<RLSRestApiGet>;
-
 /** A list of columns */
 export type GetRowlevelsecurityByPkResponseShowColumnsList = Array<string>;
-const GetRowlevelsecurityByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityByPkResponseShowColumnsList>;
-
 export interface GetRowlevelsecurityByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7059,67 +4744,31 @@ export interface GetRowlevelsecurityByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetRowlevelsecurityByPkResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<GetRowlevelsecurityByPkResponse>;
-
 export interface GetRowlevelsecurityRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetRowlevelsecurityRelatedRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<GetRowlevelsecurityRelatedRequest>;
-
 export interface GetSavedQueryRequest {
   q?: string;
 }
-const GetSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<GetSavedQueryRequest>;
-
 export type GetSavedQueryResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSavedQueryResponseIdsList = Array<string>;
-const GetSavedQueryResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryResponseIdsList>;
-
 export type GetSavedQueryResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSavedQueryResponseListColumnsList = Array<string>;
-const GetSavedQueryResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSavedQueryResponseOrderColumnsList = Array<string>;
-const GetSavedQueryResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryResponseOrderColumnsList>;
-
 export type SavedQueryRestApiGetListUser = CssTemplateRestApiGetListUser;
 export type SavedQueryRestApiGetListUser1 = CssTemplateRestApiGetListUser;
 export type SavedQueryRestApiGetListDatabase = ReportScheduleRestApiGetDatabase;
 export type SavedQueryRestApiGetListTagType = 1 | 2 | 3 | 4;
-const SavedQueryRestApiGetListTagType = S.Number;
-
 export interface SavedQueryRestApiGetListTag {
   id?: number;
   name?: string | null;
   type?: SavedQueryRestApiGetListTagType;
 }
-const SavedQueryRestApiGetListTag = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<SavedQueryRestApiGetListTag>;
-
 export type SavedQueryRestApiGetListTagsList = Array<SavedQueryRestApiGetListTag>;
-const SavedQueryRestApiGetListTagsList = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<SavedQueryRestApiGetListTagsList>;
-
 export interface SavedQueryRestApiGetList {
   catalog?: string | null;
   changed_by?: CssTemplateRestApiGetListUser;
@@ -7140,18 +4789,8 @@ export interface SavedQueryRestApiGetList {
   sql_tables?: unknown;
   tags?: SavedQueryRestApiGetListTagsList;
 }
-const SavedQueryRestApiGetList = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<SavedQueryRestApiGetList>;
-
 /** The result from the get list query */
 export type GetSavedQueryResponseResultList = Array<SavedQueryRestApiGetList>;
-const GetSavedQueryResponseResultList = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<GetSavedQueryResponseResultList>;
-
 export interface GetSavedQueryResponse {
   /** The total record count on the backend */
   count?: number;
@@ -7168,20 +4807,10 @@ export interface GetSavedQueryResponse {
   /** The result from the get list query */
   result?: GetSavedQueryResponseResultList;
 }
-const GetSavedQueryResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<GetSavedQueryResponse>;
-
 export interface GetSavedQueryByPkRequest {
   pk: number;
   q?: string;
 }
-const GetSavedQueryByPkRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<GetSavedQueryByPkRequest>;
-
 export type GetSavedQueryByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSavedQueryByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
@@ -7203,16 +4832,8 @@ export interface SavedQueryRestApiGet {
   sql_tables?: unknown;
   template_parameters?: string | null;
 }
-const SavedQueryRestApiGet = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<SavedQueryRestApiGet>;
-
 /** A list of columns */
 export type GetSavedQueryByPkResponseShowColumnsList = Array<string>;
-const GetSavedQueryByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryByPkResponseShowColumnsList>;
-
 export interface GetSavedQueryByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7224,62 +4845,26 @@ export interface GetSavedQueryByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSavedQueryByPkResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<GetSavedQueryByPkResponse>;
-
 export interface GetSavedQueryDistinctRequest {
   column_name: string;
   q?: string;
 }
-const GetSavedQueryDistinctRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<GetSavedQueryDistinctRequest>;
-
 export interface GetSavedQueryExportRequest {
   q?: string;
 }
-const GetSavedQueryExportRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<GetSavedQueryExportRequest>;
-
 export interface GetSavedQueryExportResponse {}
-const GetSavedQueryExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetSavedQueryExportResponse>;
-
 export interface GetSavedQueryRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetSavedQueryRelatedRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<GetSavedQueryRelatedRequest>;
-
 export interface GetSecurityCsrfTokenRequest {}
-const GetSecurityCsrfTokenRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<GetSecurityCsrfTokenRequest>;
-
 export interface GetSecurityCsrfTokenResponse {
   result?: string;
 }
-const GetSecurityCsrfTokenResponse =
-  CreateSqllabFormatSqlResponse as any as S.Schema<GetSecurityCsrfTokenResponse>;
-
 export interface GetSecurityGroupRequest {
   pk: number;
   q?: string;
 }
-const GetSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<GetSecurityGroupRequest>;
-
 export type GetSecurityGroupResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecurityGroupResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
@@ -7287,32 +4872,12 @@ export interface SupersetGroupApiGetRole {
   id?: number;
   name: string;
 }
-const SupersetGroupApiGetRole = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<SupersetGroupApiGetRole>;
-
 export type SupersetGroupApiGetRolesList = Array<SupersetGroupApiGetRole>;
-const SupersetGroupApiGetRolesList = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<SupersetGroupApiGetRolesList>;
-
 export interface SupersetGroupApiGetUser {
   id?: number;
   username: string;
 }
-const SupersetGroupApiGetUser = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<SupersetGroupApiGetUser>;
-
 export type SupersetGroupApiGetUsersList = Array<SupersetGroupApiGetUser>;
-const SupersetGroupApiGetUsersList = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<SupersetGroupApiGetUsersList>;
-
 export interface SupersetGroupApiGet {
   description?: string | null;
   id?: number;
@@ -7321,13 +4886,8 @@ export interface SupersetGroupApiGet {
   roles?: SupersetGroupApiGetRolesList;
   users?: SupersetGroupApiGetUsersList;
 }
-const SupersetGroupApiGet = /*@__PURE__*/ __L.at(__c50, 7) as any as S.Schema<SupersetGroupApiGet>;
-
 /** A list of columns */
 export type GetSecurityGroupResponseShowColumnsList = Array<string>;
-const GetSecurityGroupResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupResponseShowColumnsList>;
-
 export interface GetSecurityGroupResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7339,37 +4899,18 @@ export interface GetSecurityGroupResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecurityGroupResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<GetSecurityGroupResponse>;
-
 export interface GetSecurityGroupsRequest {
   q?: string;
 }
-const GetSecurityGroupsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<GetSecurityGroupsRequest>;
-
 export type GetSecurityGroupsResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityGroupsResponseIdsList = Array<string>;
-const GetSecurityGroupsResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupsResponseIdsList>;
-
 export type GetSecurityGroupsResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSecurityGroupsResponseListColumnsList = Array<string>;
-const GetSecurityGroupsResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupsResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecurityGroupsResponseOrderColumnsList = Array<string>;
-const GetSecurityGroupsResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupsResponseOrderColumnsList>;
-
 export type SupersetGroupApiGetListRole = SupersetGroupApiGetRole;
 export type SupersetGroupApiGetListRolesList = Array<SupersetGroupApiGetRole>;
 export type SupersetGroupApiGetListUser = SupersetGroupApiGetUser;
@@ -7382,15 +4923,8 @@ export interface SupersetGroupApiGetList {
   roles?: SupersetGroupApiGetListRolesList;
   users?: SupersetGroupApiGetListUsersList;
 }
-const SupersetGroupApiGetList = SupersetGroupApiGet as any as S.Schema<SupersetGroupApiGetList>;
-
 /** The result from the get list query */
 export type GetSecurityGroupsResponseResultList = Array<SupersetGroupApiGetList>;
-const GetSecurityGroupsResponseResultList = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<GetSecurityGroupsResponseResultList>;
-
 export interface GetSecurityGroupsResponse {
   /** The total record count on the backend */
   count?: number;
@@ -7407,43 +4941,21 @@ export interface GetSecurityGroupsResponse {
   /** The result from the get list query */
   result?: GetSecurityGroupsResponseResultList;
 }
-const GetSecurityGroupsResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<GetSecurityGroupsResponse>;
-
 export interface GetSecurityPermissionsRequest {
   q?: string;
 }
-const GetSecurityPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<GetSecurityPermissionsRequest>;
-
 export type GetSecurityPermissionsResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityPermissionsResponseIdsList = Array<string>;
-const GetSecurityPermissionsResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResponseIdsList>;
-
 export type GetSecurityPermissionsResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSecurityPermissionsResponseListColumnsList = Array<string>;
-const GetSecurityPermissionsResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecurityPermissionsResponseOrderColumnsList = Array<string>;
-const GetSecurityPermissionsResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResponseOrderColumnsList>;
-
 export type PermissionApiGetList = SupersetGroupApiGetRole;
 /** The result from the get list query */
 export type GetSecurityPermissionsResponseResultList = Array<SupersetGroupApiGetRole>;
-const GetSecurityPermissionsResponseResultList =
-  SupersetGroupApiGetRolesList as any as S.Schema<GetSecurityPermissionsResponseResultList>;
-
 export interface GetSecurityPermissionsResponse {
   /** The total record count on the backend */
   count?: number;
@@ -7460,29 +4972,16 @@ export interface GetSecurityPermissionsResponse {
   /** The result from the get list query */
   result?: GetSecurityPermissionsResponseResultList;
 }
-const GetSecurityPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<GetSecurityPermissionsResponse>;
-
 export interface GetSecurityPermissionsByPkRequest {
   pk: number;
   q?: string;
 }
-const GetSecurityPermissionsByPkRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<GetSecurityPermissionsByPkRequest>;
-
 export type GetSecurityPermissionsByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecurityPermissionsByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 export type PermissionApiGet = SupersetGroupApiGetRole;
 /** A list of columns */
 export type GetSecurityPermissionsByPkResponseShowColumnsList = Array<string>;
-const GetSecurityPermissionsByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsByPkResponseShowColumnsList>;
-
 export interface GetSecurityPermissionsByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7494,20 +4993,10 @@ export interface GetSecurityPermissionsByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecurityPermissionsByPkResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<GetSecurityPermissionsByPkResponse>;
-
 export interface GetSecurityPermissionsResourceRequest {
   pk: number;
   q?: string;
 }
-const GetSecurityPermissionsResourceRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<GetSecurityPermissionsResourceRequest>;
-
 export type GetSecurityPermissionsResourceResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecurityPermissionsResourceResponseLabelColumns =
@@ -7519,16 +5008,8 @@ export interface SupersetPermissionViewMenuApiGet {
   permission: ViewMenuApiPost;
   view_menu: ViewMenuApiPost;
 }
-const SupersetPermissionViewMenuApiGet = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<SupersetPermissionViewMenuApiGet>;
-
 /** A list of columns */
 export type GetSecurityPermissionsResourceResponseShowColumnsList = Array<string>;
-const GetSecurityPermissionsResourceResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourceResponseShowColumnsList>;
-
 export interface GetSecurityPermissionsResourceResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7540,49 +5021,25 @@ export interface GetSecurityPermissionsResourceResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecurityPermissionsResourceResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<GetSecurityPermissionsResourceResponse>;
-
 export interface GetSecurityPermissionsResourcesRequest {
   q?: string;
 }
-const GetSecurityPermissionsResourcesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<GetSecurityPermissionsResourcesRequest>;
-
 export type GetSecurityPermissionsResourcesResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityPermissionsResourcesResponseIdsList = Array<string>;
-const GetSecurityPermissionsResourcesResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourcesResponseIdsList>;
-
 export type GetSecurityPermissionsResourcesResponseLabelColumns =
   GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSecurityPermissionsResourcesResponseListColumnsList = Array<string>;
-const GetSecurityPermissionsResourcesResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourcesResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecurityPermissionsResourcesResponseOrderColumnsList = Array<string>;
-const GetSecurityPermissionsResourcesResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourcesResponseOrderColumnsList>;
-
 export type SupersetPermissionViewMenuApiGetListPermission = ViewMenuApiPost;
 export type SupersetPermissionViewMenuApiGetListViewMenu = ViewMenuApiPost;
 export type SupersetPermissionViewMenuApiGetList = SupersetPermissionViewMenuApiGet;
 /** The result from the get list query */
 export type GetSecurityPermissionsResourcesResponseResultList =
   Array<SupersetPermissionViewMenuApiGet>;
-const GetSecurityPermissionsResourcesResponseResultList = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<GetSecurityPermissionsResourcesResponseResultList>;
-
 export interface GetSecurityPermissionsResourcesResponse {
   /** The total record count on the backend */
   count?: number;
@@ -7599,20 +5056,10 @@ export interface GetSecurityPermissionsResourcesResponse {
   /** The result from the get list query */
   result?: GetSecurityPermissionsResourcesResponseResultList;
 }
-const GetSecurityPermissionsResourcesResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<GetSecurityPermissionsResourcesResponse>;
-
 export interface GetSecurityResourceRequest {
   pk: number;
   q?: string;
 }
-const GetSecurityResourceRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<GetSecurityResourceRequest>;
-
 export type GetSecurityResourceResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecurityResourceResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
@@ -7630,17 +5077,9 @@ export interface GetSecurityResourceResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecurityResourceResponse =
-  GetSecurityPermissionsByPkResponse as any as S.Schema<GetSecurityResourceResponse>;
-
 export interface GetSecurityResourcesRequest {
   q?: string;
 }
-const GetSecurityResourcesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<GetSecurityResourcesRequest>;
-
 export type GetSecurityResourcesResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
@@ -7669,27 +5108,16 @@ export interface GetSecurityResourcesResponse {
   /** The result from the get list query */
   result?: GetSecurityResourcesResponseResultList;
 }
-const GetSecurityResourcesResponse =
-  GetSecurityPermissionsResponse as any as S.Schema<GetSecurityResourcesResponse>;
-
 export interface GetSecurityRoleRequest {
   pk: number;
   q?: string;
 }
-const GetSecurityRoleRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<GetSecurityRoleRequest>;
-
 export type GetSecurityRoleResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecurityRoleResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 export type SupersetRoleApiGet = SupersetGroupApiGetRole;
 /** A list of columns */
 export type GetSecurityRoleResponseShowColumnsList = Array<string>;
-const GetSecurityRoleResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRoleResponseShowColumnsList>;
-
 export interface GetSecurityRoleResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7701,43 +5129,21 @@ export interface GetSecurityRoleResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecurityRoleResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<GetSecurityRoleResponse>;
-
 export interface GetSecurityRolesRequest {
   q?: string;
 }
-const GetSecurityRolesRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<GetSecurityRolesRequest>;
-
 export type GetSecurityRolesResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityRolesResponseIdsList = Array<string>;
-const GetSecurityRolesResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRolesResponseIdsList>;
-
 export type GetSecurityRolesResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSecurityRolesResponseListColumnsList = Array<string>;
-const GetSecurityRolesResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRolesResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecurityRolesResponseOrderColumnsList = Array<string>;
-const GetSecurityRolesResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRolesResponseOrderColumnsList>;
-
 export type SupersetRoleApiGetList = SupersetGroupApiGetRole;
 /** The result from the get list query */
 export type GetSecurityRolesResponseResultList = Array<SupersetGroupApiGetRole>;
-const GetSecurityRolesResponseResultList =
-  SupersetGroupApiGetRolesList as any as S.Schema<GetSecurityRolesResponseResultList>;
-
 export interface GetSecurityRolesResponse {
   /** The total record count on the backend */
   count?: number;
@@ -7754,37 +5160,18 @@ export interface GetSecurityRolesResponse {
   /** The result from the get list query */
   result?: GetSecurityRolesResponseResultList;
 }
-const GetSecurityRolesResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<GetSecurityRolesResponse>;
-
 export interface GetSecuritySubjectRequest {
   q?: string;
 }
-const GetSecuritySubjectRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<GetSecuritySubjectRequest>;
-
 export type GetSecuritySubjectResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecuritySubjectResponseIdsList = Array<string>;
-const GetSecuritySubjectResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectResponseIdsList>;
-
 export type GetSecuritySubjectResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSecuritySubjectResponseListColumnsList = Array<string>;
-const GetSecuritySubjectResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecuritySubjectResponseOrderColumnsList = Array<string>;
-const GetSecuritySubjectResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectResponseOrderColumnsList>;
-
 export type SubjectRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
 export interface SubjectRestApiGetList {
   active?: boolean | null;
@@ -7802,18 +5189,8 @@ export interface SubjectRestApiGetList {
   user_id?: unknown | null;
   uuid?: string | null;
 }
-const SubjectRestApiGetList = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<SubjectRestApiGetList>;
-
 /** The result from the get list query */
 export type GetSecuritySubjectResponseResultList = Array<SubjectRestApiGetList>;
-const GetSecuritySubjectResponseResultList = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<GetSecuritySubjectResponseResultList>;
-
 export interface GetSecuritySubjectResponse {
   /** The total record count on the backend */
   count?: number;
@@ -7830,20 +5207,10 @@ export interface GetSecuritySubjectResponse {
   /** The result from the get list query */
   result?: GetSecuritySubjectResponseResultList;
 }
-const GetSecuritySubjectResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<GetSecuritySubjectResponse>;
-
 export interface GetSecuritySubjectByPkRequest {
   pk: number;
   q?: string;
 }
-const GetSecuritySubjectByPkRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<GetSecuritySubjectByPkRequest>;
-
 export type GetSecuritySubjectByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecuritySubjectByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
@@ -7854,11 +5221,6 @@ export interface SubjectRestApiGetGroup {
   label?: string | null;
   name: string;
 }
-const SubjectRestApiGetGroup = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<SubjectRestApiGetGroup>;
-
 export type SubjectRestApiGetRole = SupersetGroupApiGetRole;
 export interface SubjectRestApiGetUser {
   active?: boolean | null;
@@ -7868,11 +5230,6 @@ export interface SubjectRestApiGetUser {
   last_name: string;
   username: string;
 }
-const SubjectRestApiGetUser = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<SubjectRestApiGetUser>;
-
 export interface SubjectRestApiGet {
   active?: boolean | null;
   changed_by?: AnnotationLayerRestApiGetListUser1;
@@ -7892,13 +5249,8 @@ export interface SubjectRestApiGet {
   user_id?: unknown | null;
   uuid?: string | null;
 }
-const SubjectRestApiGet = /*@__PURE__*/ __L.at(__c54, 3) as any as S.Schema<SubjectRestApiGet>;
-
 /** A list of columns */
 export type GetSecuritySubjectByPkResponseShowColumnsList = Array<string>;
-const GetSecuritySubjectByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectByPkResponseShowColumnsList>;
-
 export interface GetSecuritySubjectByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7910,20 +5262,10 @@ export interface GetSecuritySubjectByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecuritySubjectByPkResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<GetSecuritySubjectByPkResponse>;
-
 export interface GetSecurityUserRequest {
   pk: number;
   q?: string;
 }
-const GetSecurityUserRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<GetSecurityUserRequest>;
-
 export type GetSecurityUserResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecurityUserResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
@@ -7931,16 +5273,8 @@ export type SupersetUserApiGetUser1 = LogRestApiPost;
 export type SupersetUserApiGetUser = LogRestApiPost;
 export type SupersetUserApiGetGroup = SubjectRestApiGetGroup;
 export type SupersetUserApiGetGroupsList = Array<SubjectRestApiGetGroup>;
-const SupersetUserApiGetGroupsList = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<SupersetUserApiGetGroupsList>;
-
 export type SupersetUserApiGetRole = SupersetGroupApiGetRole;
 export type SupersetUserApiGetRolesList = Array<SupersetGroupApiGetRole>;
-const SupersetUserApiGetRolesList =
-  SupersetGroupApiGetRolesList as any as S.Schema<SupersetUserApiGetRolesList>;
-
 export interface SupersetUserApiGet {
   active?: boolean | null;
   changed_by?: LogRestApiPost;
@@ -7958,13 +5292,8 @@ export interface SupersetUserApiGet {
   roles?: SupersetUserApiGetRolesList;
   username: string;
 }
-const SupersetUserApiGet = /*@__PURE__*/ __L.at(__c54, 7) as any as S.Schema<SupersetUserApiGet>;
-
 /** A list of columns */
 export type GetSecurityUserResponseShowColumnsList = Array<string>;
-const GetSecurityUserResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserResponseShowColumnsList>;
-
 export interface GetSecurityUserResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -7976,20 +5305,10 @@ export interface GetSecurityUserResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecurityUserResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<GetSecurityUserResponse>;
-
 export interface GetSecurityUserRegistrationRequest {
   pk: number;
   q?: string;
 }
-const GetSecurityUserRegistrationRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<GetSecurityUserRegistrationRequest>;
-
 export type GetSecurityUserRegistrationResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 export type GetSecurityUserRegistrationResponseLabelColumns =
@@ -7997,9 +5316,6 @@ export type GetSecurityUserRegistrationResponseLabelColumns =
 export type UserRegistrationsRestAPIGet = LogRestApiPost;
 /** A list of columns */
 export type GetSecurityUserRegistrationResponseShowColumnsList = Array<string>;
-const GetSecurityUserRegistrationResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationResponseShowColumnsList>;
-
 export interface GetSecurityUserRegistrationResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -8011,38 +5327,19 @@ export interface GetSecurityUserRegistrationResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetSecurityUserRegistrationResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<GetSecurityUserRegistrationResponse>;
-
 export interface GetSecurityUserRegistrationsRequest {
   q?: string;
 }
-const GetSecurityUserRegistrationsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<GetSecurityUserRegistrationsRequest>;
-
 export type GetSecurityUserRegistrationsResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityUserRegistrationsResponseIdsList = Array<string>;
-const GetSecurityUserRegistrationsResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationsResponseIdsList>;
-
 export type GetSecurityUserRegistrationsResponseLabelColumns =
   GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSecurityUserRegistrationsResponseListColumnsList = Array<string>;
-const GetSecurityUserRegistrationsResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationsResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecurityUserRegistrationsResponseOrderColumnsList = Array<string>;
-const GetSecurityUserRegistrationsResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationsResponseOrderColumnsList>;
-
 export interface UserRegistrationsRestAPIGetList {
   email: string;
   first_name: string;
@@ -8051,18 +5348,8 @@ export interface UserRegistrationsRestAPIGetList {
   registration_date?: string | null;
   username: string;
 }
-const UserRegistrationsRestAPIGetList = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<UserRegistrationsRestAPIGetList>;
-
 /** The result from the get list query */
 export type GetSecurityUserRegistrationsResponseResultList = Array<UserRegistrationsRestAPIGetList>;
-const GetSecurityUserRegistrationsResponseResultList = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<GetSecurityUserRegistrationsResponseResultList>;
-
 export interface GetSecurityUserRegistrationsResponse {
   /** The total record count on the backend */
   count?: number;
@@ -8079,37 +5366,18 @@ export interface GetSecurityUserRegistrationsResponse {
   /** The result from the get list query */
   result?: GetSecurityUserRegistrationsResponseResultList;
 }
-const GetSecurityUserRegistrationsResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<GetSecurityUserRegistrationsResponse>;
-
 export interface GetSecurityUsersRequest {
   q?: string;
 }
-const GetSecurityUsersRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<GetSecurityUsersRequest>;
-
 export type GetSecurityUsersResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityUsersResponseIdsList = Array<string>;
-const GetSecurityUsersResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUsersResponseIdsList>;
-
 export type GetSecurityUsersResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetSecurityUsersResponseListColumnsList = Array<string>;
-const GetSecurityUsersResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUsersResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecurityUsersResponseOrderColumnsList = Array<string>;
-const GetSecurityUsersResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUsersResponseOrderColumnsList>;
-
 export type SupersetUserApiGetListUser1 = LogRestApiPost;
 export type SupersetUserApiGetListUser = LogRestApiPost;
 export type SupersetUserApiGetListGroup = SubjectRestApiGetGroup;
@@ -8133,15 +5401,8 @@ export interface SupersetUserApiGetList {
   roles?: SupersetUserApiGetListRolesList;
   username: string;
 }
-const SupersetUserApiGetList = SupersetUserApiGet as any as S.Schema<SupersetUserApiGetList>;
-
 /** The result from the get list query */
 export type GetSecurityUsersResponseResultList = Array<SupersetUserApiGetList>;
-const GetSecurityUsersResponseResultList = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<GetSecurityUsersResponseResultList>;
-
 export interface GetSecurityUsersResponse {
   /** The total record count on the backend */
   count?: number;
@@ -8158,66 +5419,32 @@ export interface GetSecurityUsersResponse {
   /** The result from the get list query */
   result?: GetSecurityUsersResponseResultList;
 }
-const GetSecurityUsersResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<GetSecurityUsersResponse>;
-
 export interface GetSqllabExportRequest {
   /** The SQL query result identifier */
   client_id: number;
 }
-const GetSqllabExportRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<GetSqllabExportRequest>;
-
 export interface GetSqllabExportResponse {}
-const GetSqllabExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetSqllabExportResponse>;
-
 export interface GetSqllabPermalinkRequest {
   key: string;
 }
-const GetSqllabPermalinkRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<GetSqllabPermalinkRequest>;
-
 export interface GetSqllabPermalinkResponse {
   /** The stored state */
   state?: unknown;
 }
-const GetSqllabPermalinkResponse =
-  GetDashboardPermalinkResponse as any as S.Schema<GetSqllabPermalinkResponse>;
-
 export interface GetTagRequest {
   q?: string;
 }
-const GetTagRequest = /*@__PURE__*/ __L.at(__c56, 4) as any as S.Schema<GetTagRequest>;
-
 export type GetTagResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetTagResponseIdsList = Array<string>;
-const GetTagResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagResponseIdsList>;
-
 export type GetTagResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetTagResponseListColumnsList = Array<string>;
-const GetTagResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetTagResponseOrderColumnsList = Array<string>;
-const GetTagResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagResponseOrderColumnsList>;
-
 export type TagRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
 export type TagRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
 export type TagRestApiGetListType = 1 | 2 | 3 | 4;
-const TagRestApiGetListType = S.Number;
-
 export interface TagRestApiGetList {
   changed_by?: AnnotationLayerRestApiGetListUser1;
   changed_on_delta_humanized?: unknown;
@@ -8228,15 +5455,8 @@ export interface TagRestApiGetList {
   name?: string | null;
   type?: TagRestApiGetListType;
 }
-const TagRestApiGetList = /*@__PURE__*/ __L.at(__c56, 5) as any as S.Schema<TagRestApiGetList>;
-
 /** The result from the get list query */
 export type GetTagResponseResultList = Array<TagRestApiGetList>;
-const GetTagResponseResultList = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<GetTagResponseResultList>;
-
 export interface GetTagResponse {
   /** The total record count on the backend */
   count?: number;
@@ -8253,14 +5473,10 @@ export interface GetTagResponse {
   /** The result from the get list query */
   result?: GetTagResponseResultList;
 }
-const GetTagResponse = /*@__PURE__*/ __L.at(__c56, 7) as any as S.Schema<GetTagResponse>;
-
 export interface GetTagByPkRequest {
   pk: number;
   q?: string;
 }
-const GetTagByPkRequest = /*@__PURE__*/ __L.at(__c57, 0) as any as S.Schema<GetTagByPkRequest>;
-
 export type GetTagByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 export type GetTagByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 export type TagRestApiGetUser = AnnotationLayerRestApiGetListUser1;
@@ -8276,13 +5492,8 @@ export interface TagRestApiGet {
   name?: string | null;
   type?: TagRestApiGetType;
 }
-const TagRestApiGet = TagRestApiGetList as any as S.Schema<TagRestApiGet>;
-
 /** A list of columns */
 export type GetTagByPkResponseShowColumnsList = Array<string>;
-const GetTagByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagByPkResponseShowColumnsList>;
-
 export interface GetTagByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -8294,46 +5505,25 @@ export interface GetTagByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetTagByPkResponse = /*@__PURE__*/ __L.at(__c57, 1) as any as S.Schema<GetTagByPkResponse>;
-
 export interface GetTagRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetTagRelatedRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<GetTagRelatedRequest>;
-
 export interface GetThemeRequest {
   q?: string;
 }
-const GetThemeRequest = /*@__PURE__*/ __L.at(__c57, 3) as any as S.Schema<GetThemeRequest>;
-
 export type GetThemeResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 /** A list of item ids, useful when you don't know the column id */
 export type GetThemeResponseIdsList = Array<string>;
-const GetThemeResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeResponseIdsList>;
-
 export type GetThemeResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 /** A list of columns */
 export type GetThemeResponseListColumnsList = Array<string>;
-const GetThemeResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetThemeResponseOrderColumnsList = Array<string>;
-const GetThemeResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeResponseOrderColumnsList>;
-
 export type ThemeRestApiGetListUser = CssTemplateRestApiGetListUser;
 export type ThemeRestApiGetListUser1 = CssTemplateRestApiGetListUser;
 export type ThemeRestApiGetListSubject = DatasetRestApiGetListSubject;
 export type ThemeRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-const ThemeRestApiGetListEditorsList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<ThemeRestApiGetListEditorsList>;
-
 export interface ThemeRestApiGetList {
   changed_by?: CssTemplateRestApiGetListUser;
   changed_by_name?: unknown;
@@ -8349,15 +5539,8 @@ export interface ThemeRestApiGetList {
   theme_name?: string | null;
   uuid?: string | null;
 }
-const ThemeRestApiGetList = /*@__PURE__*/ __L.at(__c57, 4) as any as S.Schema<ThemeRestApiGetList>;
-
 /** The result from the get list query */
 export type GetThemeResponseResultList = Array<ThemeRestApiGetList>;
-const GetThemeResponseResultList = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<GetThemeResponseResultList>;
-
 export interface GetThemeResponse {
   /** The total record count on the backend */
   count?: number;
@@ -8374,23 +5557,16 @@ export interface GetThemeResponse {
   /** The result from the get list query */
   result?: GetThemeResponseResultList;
 }
-const GetThemeResponse = /*@__PURE__*/ __L.at(__c57, 6) as any as S.Schema<GetThemeResponse>;
-
 export interface GetThemeByPkRequest {
   pk: number;
   q?: string;
 }
-const GetThemeByPkRequest = /*@__PURE__*/ __L.at(__c57, 7) as any as S.Schema<GetThemeByPkRequest>;
-
 export type GetThemeByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
 export type GetThemeByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
 export type ThemeRestApiGetUser = CssTemplateRestApiGetListUser;
 export type ThemeRestApiGetUser1 = CssTemplateRestApiGetListUser;
 export type ThemeRestApiGetSubject = DatasetRestApiGetListSubject;
 export type ThemeRestApiGetEditorsList = Array<DatasetRestApiGetListSubject>;
-const ThemeRestApiGetEditorsList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<ThemeRestApiGetEditorsList>;
-
 export interface ThemeRestApiGet {
   changed_by?: CssTemplateRestApiGetListUser;
   changed_on_delta_humanized?: unknown;
@@ -8404,13 +5580,8 @@ export interface ThemeRestApiGet {
   theme_name?: string | null;
   uuid?: string | null;
 }
-const ThemeRestApiGet = /*@__PURE__*/ __L.at(__c58, 0) as any as S.Schema<ThemeRestApiGet>;
-
 /** A list of columns */
 export type GetThemeByPkResponseShowColumnsList = Array<string>;
-const GetThemeByPkResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeByPkResponseShowColumnsList>;
-
 export interface GetThemeByPkResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -8422,70 +5593,29 @@ export interface GetThemeByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-const GetThemeByPkResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<GetThemeByPkResponse>;
-
 export interface GetThemeExportRequest {
   q?: string;
 }
-const GetThemeExportRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<GetThemeExportRequest>;
-
 export interface GetThemeExportResponse {}
-const GetThemeExportResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetThemeExportResponse>;
-
 export interface GetThemeRelatedRequest {
   column_name: string;
   q?: string;
 }
-const GetThemeRelatedRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<GetThemeRelatedRequest>;
-
 export interface GetThemeSystemRequest {}
-const GetThemeSystemRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<GetThemeSystemRequest>;
-
 export interface GetThemeSystemResponseResult {
   dark?: unknown;
   default?: unknown;
   defaultMode?: string;
   enableUiThemeAdministration?: boolean;
 }
-const GetThemeSystemResponseResult = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<GetThemeSystemResponseResult>;
-
 export interface GetThemeSystemResponse {
   result?: GetThemeSystemResponseResult;
 }
-const GetThemeSystemResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<GetThemeSystemResponse>;
-
 export interface GetUserAvatarPngRequest {
   /** The ID of the user */
   user_id: string;
 }
-const GetUserAvatarPngRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<GetUserAvatarPngRequest>;
-
 export interface GetUserAvatarPngResponse {}
-const GetUserAvatarPngResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetUserAvatarPngResponse>;
-
 export interface ImportAssetRequest {
   /** upload file (ZIP or JSON) */
   bundle?: string;
@@ -8504,13 +5634,9 @@ export interface ImportAssetRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-const ImportAssetRequest = /*@__PURE__*/ __L.at(__c59, 0) as any as S.Schema<ImportAssetRequest>;
-
 export interface ImportAssetResponse {
   message?: string;
 }
-const ImportAssetResponse = DeleteChartResponse as any as S.Schema<ImportAssetResponse>;
-
 export interface ImportChartRequest {
   /** upload file (ZIP) */
   formData?: string;
@@ -8525,13 +5651,9 @@ export interface ImportChartRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-const ImportChartRequest = /*@__PURE__*/ __L.at(__c59, 1) as any as S.Schema<ImportChartRequest>;
-
 export interface ImportChartResponse {
   message?: string;
 }
-const ImportChartResponse = DeleteChartResponse as any as S.Schema<ImportChartResponse>;
-
 export interface ImportDashboardRequest {
   /** upload file (ZIP or JSON) */
   formData?: string;
@@ -8548,16 +5670,9 @@ export interface ImportDashboardRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-const ImportDashboardRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<ImportDashboardRequest>;
-
 export interface ImportDashboardResponse {
   message?: string;
 }
-const ImportDashboardResponse = DeleteChartResponse as any as S.Schema<ImportDashboardResponse>;
-
 export interface ImportDatabaseRequest {
   /** JSON map of sensitive values for masked_encrypted_extra fields. Keys are file paths (e.g., "databases/db.yaml") and values are JSON objects mapping JSONPath expressions to secrets. (e.g., `{"databases/MyDatabase.yaml": {"$.credentials_info.private_key": "actual_key"}}`). */
   encrypted_extra_secrets?: string;
@@ -8574,16 +5689,9 @@ export interface ImportDatabaseRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-const ImportDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<ImportDatabaseRequest>;
-
 export interface ImportDatabaseResponse {
   message?: string;
 }
-const ImportDatabaseResponse = DeleteChartResponse as any as S.Schema<ImportDatabaseResponse>;
-
 export interface ImportDatasetRequest {
   /** upload file (ZIP or YAML) */
   formData?: string;
@@ -8602,16 +5710,9 @@ export interface ImportDatasetRequest {
   /** sync metrics? */
   sync_metrics?: boolean;
 }
-const ImportDatasetRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<ImportDatasetRequest>;
-
 export interface ImportDatasetResponse {
   message?: string;
 }
-const ImportDatasetResponse = DeleteChartResponse as any as S.Schema<ImportDatasetResponse>;
-
 export interface ImportSavedQueryRequest {
   /** upload file (ZIP) */
   formData?: string;
@@ -8626,32 +5727,18 @@ export interface ImportSavedQueryRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-const ImportSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<ImportSavedQueryRequest>;
-
 export interface ImportSavedQueryResponse {
   message?: string;
 }
-const ImportSavedQueryResponse = DeleteChartResponse as any as S.Schema<ImportSavedQueryResponse>;
-
 export interface ImportThemeRequest {
   formData?: string;
   overwrite?: string;
 }
-const ImportThemeRequest = /*@__PURE__*/ __L.at(__c59, 6) as any as S.Schema<ImportThemeRequest>;
-
 export interface ImportThemeResponse {
   message?: string;
 }
-const ImportThemeResponse = DeleteChartResponse as any as S.Schema<ImportThemeResponse>;
-
 /** The uid of the dataset/datasource this new chart will use. A complete datasource identification needs `datasource_uid` */
 export type InvalidateCachekeyRequestDatasourceUidsList = Array<string>;
-const InvalidateCachekeyRequestDatasourceUidsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<InvalidateCachekeyRequestDatasourceUidsList>;
-
 /** The type of dataset/datasource identified on `datasource_id`. */
 export type DatasourceDatasourceType =
   | "table"
@@ -8660,8 +5747,6 @@ export type DatasourceDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const DatasourceDatasourceType = S.String;
-
 export interface Datasource {
   /** Datasource catalog */
   catalog?: string | null;
@@ -8674,46 +5759,20 @@ export interface Datasource {
   /** Datasource schema */
   schema?: string;
 }
-const Datasource = /*@__PURE__*/ __L.at(__c59, 7) as any as S.Schema<Datasource>;
-
 /** A list of the data source and database names */
 export type InvalidateCachekeyRequestDatasourcesList = Array<Datasource>;
-const InvalidateCachekeyRequestDatasourcesList = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<InvalidateCachekeyRequestDatasourcesList>;
-
 export interface InvalidateCachekeyRequest {
   /** The uid of the dataset/datasource this new chart will use. A complete datasource identification needs `datasource_uid` */
   datasource_uids?: InvalidateCachekeyRequestDatasourceUidsList;
   /** A list of the data source and database names */
   datasources?: InvalidateCachekeyRequestDatasourcesList;
 }
-const InvalidateCachekeyRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<InvalidateCachekeyRequest>;
-
 export interface InvalidateCachekeyResponse {}
-const InvalidateCachekeyResponse =
-  CreateSecurityGroupResponse as any as S.Schema<InvalidateCachekeyResponse>;
-
 export interface ListAdvancedDataTypeConvertRequest {
   q?: string;
 }
-const ListAdvancedDataTypeConvertRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<ListAdvancedDataTypeConvertRequest>;
-
 export type AdvancedDataTypeSchemaValidFilterOperatorsList = Array<string>;
-const AdvancedDataTypeSchemaValidFilterOperatorsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<AdvancedDataTypeSchemaValidFilterOperatorsList>;
-
 export type AdvancedDataTypeSchemaValuesList = Array<string>;
-const AdvancedDataTypeSchemaValuesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<AdvancedDataTypeSchemaValuesList>;
-
 export interface AdvancedDataTypeSchema {
   /** The string representation of the parsed values */
   display_value?: string;
@@ -8721,53 +5780,22 @@ export interface AdvancedDataTypeSchema {
   valid_filter_operators?: AdvancedDataTypeSchemaValidFilterOperatorsList;
   values?: AdvancedDataTypeSchemaValuesList;
 }
-const AdvancedDataTypeSchema = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<AdvancedDataTypeSchema>;
-
 export interface ListAdvancedDataTypeTypesRequest {}
-const ListAdvancedDataTypeTypesRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<ListAdvancedDataTypeTypesRequest>;
-
 export type ListAdvancedDataTypeTypesResponseResultList = Array<string>;
-const ListAdvancedDataTypeTypesResponseResultList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListAdvancedDataTypeTypesResponseResultList>;
-
 export interface ListAdvancedDataTypeTypesResponse {
   result?: ListAdvancedDataTypeTypesResponseResultList;
 }
-const ListAdvancedDataTypeTypesResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<ListAdvancedDataTypeTypesResponse>;
-
 export interface ListAnnotationLayerAnnotationRequest {
   /** The annotation layer id for this annotation */
   pk: number;
   q?: string;
 }
-const ListAnnotationLayerAnnotationRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<ListAnnotationLayerAnnotationRequest>;
-
 /** A list of annotation ids */
 export type ListAnnotationLayerAnnotationResponseIdsList = Array<string>;
-const ListAnnotationLayerAnnotationResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListAnnotationLayerAnnotationResponseIdsList>;
-
 export interface AnnotationRestApiGetListUser {
   first_name: string;
   id?: number;
 }
-const AnnotationRestApiGetListUser = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<AnnotationRestApiGetListUser>;
-
 export type AnnotationRestApiGetListUser1 = AnnotationRestApiGetListUser;
 export interface AnnotationRestApiGetList {
   changed_by?: AnnotationRestApiGetListUser;
@@ -8779,18 +5807,8 @@ export interface AnnotationRestApiGetList {
   short_descr?: string | null;
   start_dttm?: string | null;
 }
-const AnnotationRestApiGetList = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<AnnotationRestApiGetList>;
-
 /** The result from the get list query */
 export type ListAnnotationLayerAnnotationResponseResultList = Array<AnnotationRestApiGetList>;
-const ListAnnotationLayerAnnotationResponseResultList = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<ListAnnotationLayerAnnotationResponseResultList>;
-
 export interface ListAnnotationLayerAnnotationResponse {
   /** The total record count on the backend */
   count?: number;
@@ -8799,50 +5817,22 @@ export interface ListAnnotationLayerAnnotationResponse {
   /** The result from the get list query */
   result?: ListAnnotationLayerAnnotationResponseResultList;
 }
-const ListAnnotationLayerAnnotationResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<ListAnnotationLayerAnnotationResponse>;
-
 export interface ListAnnotationLayerInfoRequest {
   q?: string;
 }
-const ListAnnotationLayerInfoRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<ListAnnotationLayerInfoRequest>;
-
 export interface ListAnnotationLayerInfoResponseFiltersColumnNameItem {
   /** The filter name. Will be translated by babel */
   name?: string;
   /** The filter operation key to use on list filters */
   operator?: string;
 }
-const ListAnnotationLayerInfoResponseFiltersColumnNameItem = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-
 export type ListAnnotationLayerInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-const ListAnnotationLayerInfoResponseFiltersColumnNameList = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<ListAnnotationLayerInfoResponseFiltersColumnNameList>;
-
 export interface ListAnnotationLayerInfoResponseFilters {
   column_name?: ListAnnotationLayerInfoResponseFiltersColumnNameList;
 }
-const ListAnnotationLayerInfoResponseFilters = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<ListAnnotationLayerInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListAnnotationLayerInfoResponsePermissionsList = Array<string>;
-const ListAnnotationLayerInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListAnnotationLayerInfoResponsePermissionsList>;
-
 export interface ListAnnotationLayerInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -8850,69 +5840,31 @@ export interface ListAnnotationLayerInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListAnnotationLayerInfoResponsePermissionsList;
 }
-const ListAnnotationLayerInfoResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<ListAnnotationLayerInfoResponse>;
-
 export interface ListChartRequest {
   /** Rison-encoded list query. viz_type_order may contain up to 256 unique visualization type slugs, each at most 250 characters, in the display-name order to use when sorting by viz_type. */
   q?: string;
 }
-const ListChartRequest = /*@__PURE__*/ __L.at(__c62, 0) as any as S.Schema<ListChartRequest>;
-
 export type ListChartResponseIdsList = Array<number>;
-const ListChartResponseIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ListChartResponseIdsList>;
-
 export type ChartRestApiGetListUser = CssTemplateRestApiGetListUser;
 export type ChartRestApiGetListUser1 = CssTemplateRestApiGetListUser;
 export type ChartRestApiGetListDashboard = ReportScheduleRestApiGetDashboard;
 export type ChartRestApiGetListDashboardsList = Array<ReportScheduleRestApiGetDashboard>;
-const ChartRestApiGetListDashboardsList = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<ChartRestApiGetListDashboardsList>;
-
 export type ChartRestApiGetListSubject = DatasetRestApiGetListSubject;
 export type ChartRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-const ChartRestApiGetListEditorsList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<ChartRestApiGetListEditorsList>;
-
 export type ChartRestApiGetListUser2 = CssTemplateRestApiGetListUser;
 export interface ChartRestApiGetListSqlaTable {
   default_endpoint?: string | null;
   table_name: string;
 }
-const ChartRestApiGetListSqlaTable = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<ChartRestApiGetListSqlaTable>;
-
 export type ChartRestApiGetListTagType = 1 | 2 | 3 | 4;
-const ChartRestApiGetListTagType = S.Number;
-
 export interface ChartRestApiGetListTag {
   id?: number;
   name?: string | null;
   type?: ChartRestApiGetListTagType;
 }
-const ChartRestApiGetListTag = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<ChartRestApiGetListTag>;
-
 export type ChartRestApiGetListTagsList = Array<ChartRestApiGetListTag>;
-const ChartRestApiGetListTagsList = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<ChartRestApiGetListTagsList>;
-
 export type ChartRestApiGetListSubject1 = DatasetRestApiGetListSubject;
 export type ChartRestApiGetListViewersList = Array<DatasetRestApiGetListSubject>;
-const ChartRestApiGetListViewersList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<ChartRestApiGetListViewersList>;
-
 export interface ChartRestApiGetList {
   cache_timeout?: number | null;
   certification_details?: string | null;
@@ -8950,24 +5902,13 @@ export interface ChartRestApiGetList {
   viewers?: ChartRestApiGetListViewersList;
   viz_type?: string | null;
 }
-const ChartRestApiGetList = /*@__PURE__*/ __L.at(__c62, 5) as any as S.Schema<ChartRestApiGetList>;
-
 export type ListChartResponseResultList = Array<ChartRestApiGetList>;
-const ListChartResponseResultList = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<ListChartResponseResultList>;
-
 export interface ListChartResponse {
   count?: number;
   ids?: ListChartResponseIdsList;
   result?: ListChartResponseResultList;
 }
-const ListChartResponse = /*@__PURE__*/ __L.at(__c62, 7) as any as S.Schema<ListChartResponse>;
-
 export type ListChartActivityRequestInclude = "self" | "related" | "all";
-const ListChartActivityRequestInclude = S.String;
-
 export interface ListChartActivityRequest {
   /** Chart UUID */
   uuid_str: string;
@@ -8979,28 +5920,15 @@ export interface ListChartActivityRequest {
   page?: number;
   page_size?: number;
 }
-const ListChartActivityRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<ListChartActivityRequest>;
-
 /** Transaction-level avenue that produced this record's batch: ``restore`` / ``import`` / ``clone``. ``null`` for ordinary saves. All records sharing a ``transaction_id`` share the same action_kind. The schema's third ``*_kind`` column (entity_kind / kind / action_kind), at transaction scope. */
 export type ActivityRecordActionKind = "clone" | "import" | "restore";
-const ActivityRecordActionKind = S.String;
-
 export type ActivityChangedBy = VersionChangedBy;
 /** Set only on the synthetic starting-version record (``kind == "__creation__"``): how the entity came to exist. ``"pre_tracking"`` -- a retroactive baseline for an entity that predates versioning; ``"created"`` -- a creation with tracking on; ``"imported"`` -- an import, attributed to the importing user; ``"unknown"`` -- an unstamped starting version whose creation provenance cannot be established. Machine values: display copy is owned by the client. */
 export type ActivityRecordCreationKind = "pre_tracking" | "created" | "imported" | "unknown";
-const ActivityRecordCreationKind = S.String;
-
 /** Present when the source entity has non-null ``deleted_at`` Absent or ``null`` otherwise. */
 export type ActivityRecordEntityDeletionState = "soft_deleted";
-const ActivityRecordEntityDeletionState = S.String;
-
 /** User-facing kind of the source entity: one of ``"dashboard"`` / ``"chart"`` / ``"dataset"``. */
 export type ActivityRecordEntityKind = "dashboard" | "chart" | "dataset";
-const ActivityRecordEntityKind = S.String;
-
 export interface ActivityImpactChart {
   /** Chart id. */
   id?: number;
@@ -9009,17 +5937,12 @@ export interface ActivityImpactChart {
 }
 /** The affected sibling charts (id + name), sorted by name -- the detail behind the ``charts`` count, rendered as the rollup entry's hover tooltip. Capped at 50 entries per record; ``charts`` always carries the full count. */
 export type ActivityImpactAffectedChartsList = Array<ActivityImpactChart>;
-const ActivityImpactAffectedChartsList =
-  RlsFilterRolesList as any as S.Schema<ActivityImpactAffectedChartsList>;
-
 export interface ActivityImpact {
   /** The affected sibling charts (id + name), sorted by name -- the detail behind the ``charts`` count, rendered as the rollup entry's hover tooltip. Capped at 50 entries per record; ``charts`` always carries the full count. */
   affected_charts?: ActivityImpactAffectedChartsList;
   /** Number of sibling charts on the path entity affected by the same related-record change at this transaction. */
   charts?: number;
 }
-const ActivityImpact = /*@__PURE__*/ __L.at(__c63, 1) as any as S.Schema<ActivityImpact>;
-
 /** Content category -- what kind of thing changed. ``field`` is the fallback for scalar changes without a more specific category. Per-record. */
 export type ActivityRecordKind =
   | "filter"
@@ -9038,21 +5961,12 @@ export type ActivityRecordKind =
   | "field"
   | "__meta__"
   | "__creation__";
-const ActivityRecordKind = S.String;
-
 /** Per-record verb: ``add`` / ``remove`` / ``move`` / ``edit``. Explicit instead of inferred from ``from_value`` / ``to_value`` null-tests. ``move`` only fires for layout records. */
 export type ActivityRecordOperation = "add" | "remove" | "move" | "edit" | "update" | "announce";
-const ActivityRecordOperation = S.String;
-
 /** Pure navigation address -- no verb or kind embedded. Examples: ``['slice_name']``, ``['params', 'adhoc_filters', 'country']``, ``['CHART-x']`` for a layout add/remove/move, ``['HEADER-y', 'text']`` for a layout edit leaf. The verb lives in ``operation``, the element type in ``kind``. */
 export type ActivityRecordPathList = Array<string>;
-const ActivityRecordPathList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ActivityRecordPathList>;
-
 /** ``"self"`` if ``(entity_kind, entity_id)`` matches the path entity; else ``"related"``. Drives the frontend's no-group-under-save rendering rule. */
 export type ActivityRecordSource = "self" | "related";
-const ActivityRecordSource = S.String;
-
 export interface ActivityRecord {
   /** Transaction-level avenue that produced this record's batch: ``restore`` / ``import`` / ``clone``. ``null`` for ordinary saves. All records sharing a ``transaction_id`` share the same action_kind. The schema's third ``*_kind`` column (entity_kind / kind / action_kind), at transaction scope. */
   action_kind?: ActivityRecordActionKind | null;
@@ -9095,14 +6009,7 @@ export interface ActivityRecord {
   /** Stable UUIDv5 identifier for the source version (``derive_version_uuid(entity_uuid, transaction_id)``). Identical to what ``/versions/<version_uuid>/`` would return for the same change. */
   version_uuid?: string;
 }
-const ActivityRecord = /*@__PURE__*/ __L.at(__c63, 2) as any as S.Schema<ActivityRecord>;
-
 export type ActivityResponseResultList = Array<ActivityRecord>;
-const ActivityResponseResultList = /*@__PURE__*/ __L.at(
-  __c63,
-  3,
-) as any as S.Schema<ActivityResponseResultList>;
-
 export interface ActivityResponse {
   /** Total record count across all pages (the filtered + denormalized stream), not just the current page. When ``truncated`` is true this is a floor (the count within the fetched window), not the absolute total. */
   count?: number;
@@ -9110,8 +6017,6 @@ export interface ActivityResponse {
   /** True when the request hit the per-request fetch ceiling and older records exist beyond the returned window. Narrow the time range (``since``/``until``) to see them. */
   truncated?: boolean;
 }
-const ActivityResponse = /*@__PURE__*/ __L.at(__c63, 4) as any as S.Schema<ActivityResponse>;
-
 export interface ListChartDataRequest {
   /** The chart ID */
   pk: number;
@@ -9124,20 +6029,10 @@ export interface ListChartDataRequest {
   /** Dashboard ID whose filter defaults should be applied to the chart's query context. The chart must belong to the specified dashboard. Only in scope filters with static default values are applied; filters that require a database query (I.E. defaultToFirstItem) or have no default are reported in the dashboard_filters response metadata. */
   filters_dashboard_id?: number;
 }
-const ListChartDataRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<ListChartDataRequest>;
-
 export interface ListChartDeckLayersRequest {
   /** The id of the Multiple Layers container chart */
   pk: number;
 }
-const ListChartDeckLayersRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<ListChartDeckLayersRequest>;
-
 export interface ListChartDeckLayersResponseResultItem {
   datasource_id?: number;
   datasource_type?: string;
@@ -9145,65 +6040,28 @@ export interface ListChartDeckLayersResponseResultItem {
   slice_id?: number;
   viz_type?: string;
 }
-const ListChartDeckLayersResponseResultItem = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<ListChartDeckLayersResponseResultItem>;
-
 export type ListChartDeckLayersResponseResultList = Array<ListChartDeckLayersResponseResultItem>;
-const ListChartDeckLayersResponseResultList = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<ListChartDeckLayersResponseResultList>;
-
 export interface ListChartDeckLayersResponse {
   result?: ListChartDeckLayersResponseResultList;
 }
-const ListChartDeckLayersResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<ListChartDeckLayersResponse>;
-
 export interface ListChartFavoriteStatusRequest {
   q?: string;
 }
-const ListChartFavoriteStatusRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<ListChartFavoriteStatusRequest>;
-
 export interface ChartFavStarResponseResult {
   /** The Chart id */
   id?: number;
   /** The FaveStar value */
   value?: boolean;
 }
-const ChartFavStarResponseResult = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<ChartFavStarResponseResult>;
-
 /** A list of results for each corresponding chart in the request */
 export type GetFavStarIdsSchemaResultList = Array<ChartFavStarResponseResult>;
-const GetFavStarIdsSchemaResultList = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<GetFavStarIdsSchemaResultList>;
-
 export interface GetFavStarIdsSchema {
   /** A list of results for each corresponding chart in the request */
   result?: GetFavStarIdsSchemaResultList;
 }
-const GetFavStarIdsSchema = /*@__PURE__*/ __L.at(__c64, 5) as any as S.Schema<GetFavStarIdsSchema>;
-
 export interface ListChartInfoRequest {
   q?: string;
 }
-const ListChartInfoRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<ListChartInfoRequest>;
-
 export type ListChartInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListChartInfoResponseFiltersColumnNameList =
@@ -9211,14 +6069,8 @@ export type ListChartInfoResponseFiltersColumnNameList =
 export interface ListChartInfoResponseFilters {
   column_name?: ListChartInfoResponseFiltersColumnNameList;
 }
-const ListChartInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListChartInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListChartInfoResponsePermissionsList = Array<string>;
-const ListChartInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListChartInfoResponsePermissionsList>;
-
 export interface ListChartInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -9226,43 +6078,18 @@ export interface ListChartInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListChartInfoResponsePermissionsList;
 }
-const ListChartInfoResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<ListChartInfoResponse>;
-
 export interface ListChartVersionsRequest {
   /** Chart UUID */
   uuid_str: string;
 }
-const ListChartVersionsRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<ListChartVersionsRequest>;
-
 export type ListChartVersionsResponseResultList = Array<VersionListItemSchema>;
-const ListChartVersionsResponseResultList = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<ListChartVersionsResponseResultList>;
-
 export interface ListChartVersionsResponse {
   count?: number;
   result?: ListChartVersionsResponseResultList;
 }
-const ListChartVersionsResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<ListChartVersionsResponse>;
-
 export interface ListCssTemplateInfoRequest {
   q?: string;
 }
-const ListCssTemplateInfoRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<ListCssTemplateInfoRequest>;
-
 export type ListCssTemplateInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListCssTemplateInfoResponseFiltersColumnNameList =
@@ -9279,28 +6106,14 @@ export interface ListCssTemplateInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListCssTemplateInfoResponsePermissionsList;
 }
-const ListCssTemplateInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListCssTemplateInfoResponse>;
-
 export interface ListDashboardRequest {
   q?: string;
 }
-const ListDashboardRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<ListDashboardRequest>;
-
 export type ListDashboardResponseIdsList = Array<number>;
-const ListDashboardResponseIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ListDashboardResponseIdsList>;
-
 export type DashboardRestApiGetListUser = CssTemplateRestApiGetListUser;
 export type DashboardRestApiGetListUser1 = CssTemplateRestApiGetListUser;
 export type DashboardRestApiGetListSubject = DatasetRestApiGetListSubject;
 export type DashboardRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-const DashboardRestApiGetListEditorsList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<DashboardRestApiGetListEditorsList>;
-
 export type DashboardRestApiGetListTagType = 1 | 2 | 3 | 4;
 export interface DashboardRestApiGetListTag {
   id?: number;
@@ -9308,14 +6121,8 @@ export interface DashboardRestApiGetListTag {
   type?: DashboardRestApiGetListTagType;
 }
 export type DashboardRestApiGetListTagsList = Array<DashboardRestApiGetListTag>;
-const DashboardRestApiGetListTagsList =
-  SavedQueryRestApiGetListTagsList as any as S.Schema<DashboardRestApiGetListTagsList>;
-
 export type DashboardRestApiGetListSubject1 = DatasetRestApiGetListSubject;
 export type DashboardRestApiGetListViewersList = Array<DatasetRestApiGetListSubject>;
-const DashboardRestApiGetListViewersList =
-  DatasetRestApiGetListEditorsList as any as S.Schema<DashboardRestApiGetListViewersList>;
-
 export interface DashboardRestApiGetList {
   certification_details?: string | null;
   certified_by?: string | null;
@@ -9338,30 +6145,13 @@ export interface DashboardRestApiGetList {
   uuid?: string | null;
   viewers?: DashboardRestApiGetListViewersList;
 }
-const DashboardRestApiGetList = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<DashboardRestApiGetList>;
-
 export type ListDashboardResponseResultList = Array<DashboardRestApiGetList>;
-const ListDashboardResponseResultList = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<ListDashboardResponseResultList>;
-
 export interface ListDashboardResponse {
   count?: number;
   ids?: ListDashboardResponseIdsList;
   result?: ListDashboardResponseResultList;
 }
-const ListDashboardResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<ListDashboardResponse>;
-
 export type ListDashboardActivityRequestInclude = "self" | "related" | "all";
-const ListDashboardActivityRequestInclude = S.String;
-
 export interface ListDashboardActivityRequest {
   /** Dashboard UUID */
   uuid_str: string;
@@ -9375,19 +6165,9 @@ export interface ListDashboardActivityRequest {
   page?: number;
   page_size?: number;
 }
-const ListDashboardActivityRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<ListDashboardActivityRequest>;
-
 export interface ListDashboardChartsRequest {
   id_or_slug: string;
 }
-const ListDashboardChartsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<ListDashboardChartsRequest>;
-
 export interface ChartEntityResponseSchema {
   /** Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined. */
   cache_timeout?: number;
@@ -9410,46 +6190,17 @@ export interface ChartEntityResponseSchema {
   /** The URL of the chart. */
   slice_url?: string;
 }
-const ChartEntityResponseSchema = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<ChartEntityResponseSchema>;
-
 export type ListDashboardChartsResponseResultList = Array<ChartEntityResponseSchema>;
-const ListDashboardChartsResponseResultList = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<ListDashboardChartsResponseResultList>;
-
 export interface ListDashboardChartsResponse {
   result?: ListDashboardChartsResponseResultList;
 }
-const ListDashboardChartsResponse = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<ListDashboardChartsResponse>;
-
 export interface ListDashboardDatasetsRequest {
   /** Either the id of the dashboard, or its slug */
   id_or_slug: string;
 }
-const ListDashboardDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<ListDashboardDatasetsRequest>;
-
 export type DashboardDatasetSchemaColumnNamesList = Array<string>;
-const DashboardDatasetSchemaColumnNamesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardDatasetSchemaColumnNamesList>;
-
 export type DashboardDatasetSchemaColumnTypesList = Array<number>;
-const DashboardDatasetSchemaColumnTypesList =
-  CreateChartRequestDashboardsList as any as S.Schema<DashboardDatasetSchemaColumnTypesList>;
-
 export type DashboardDatasetSchemaColumnsList = Array<unknown>;
-const DashboardDatasetSchemaColumnsList =
-  TagObjectObjectsToTagList as any as S.Schema<DashboardDatasetSchemaColumnsList>;
-
 export interface Database {
   allow_multi_catalog?: boolean;
   allows_cost_estimate?: boolean;
@@ -9462,42 +6213,19 @@ export interface Database {
   id?: number;
   name?: string;
 }
-const Database = /*@__PURE__*/ __L.at(__c66, 6) as any as S.Schema<Database>;
-
 export type DashboardDatasetSchemaEditorsList = Array<SubjectResponse>;
-const DashboardDatasetSchemaEditorsList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<DashboardDatasetSchemaEditorsList>;
-
 export type DashboardDatasetSchemaGranularitySqlaItemList = Array<string>;
 export type DashboardDatasetSchemaGranularitySqlaList =
   Array<DashboardDatasetSchemaGranularitySqlaItemList>;
-const DashboardDatasetSchemaGranularitySqlaList =
-  ChartDataQueryObjectGroupingSetsList as any as S.Schema<DashboardDatasetSchemaGranularitySqlaList>;
-
 export type DashboardDatasetSchemaMetricsList = Array<unknown>;
-const DashboardDatasetSchemaMetricsList =
-  TagObjectObjectsToTagList as any as S.Schema<DashboardDatasetSchemaMetricsList>;
-
 export type DashboardDatasetSchemaOrderByChoicesItemList = Array<string>;
 export type DashboardDatasetSchemaOrderByChoicesList =
   Array<DashboardDatasetSchemaOrderByChoicesItemList>;
-const DashboardDatasetSchemaOrderByChoicesList =
-  ChartDataQueryObjectGroupingSetsList as any as S.Schema<DashboardDatasetSchemaOrderByChoicesList>;
-
 export type DashboardDatasetSchemaSemanticViewFeaturesList = Array<string>;
-const DashboardDatasetSchemaSemanticViewFeaturesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardDatasetSchemaSemanticViewFeaturesList>;
-
 export type DashboardDatasetSchemaTimeGrainSqlaItemList = Array<string>;
 export type DashboardDatasetSchemaTimeGrainSqlaList =
   Array<DashboardDatasetSchemaTimeGrainSqlaItemList>;
-const DashboardDatasetSchemaTimeGrainSqlaList =
-  ChartDataQueryObjectGroupingSetsList as any as S.Schema<DashboardDatasetSchemaTimeGrainSqlaList>;
-
 export type DashboardDatasetSchemaVerboseMapMap = { [key: string]: string | undefined };
-const DashboardDatasetSchemaVerboseMapMap =
-  ChartDataQueryObjectUrlParamsMap as any as S.Schema<DashboardDatasetSchemaVerboseMapMap>;
-
 export interface DashboardDatasetSchema {
   always_filter_main_dttm?: boolean;
   cache_timeout?: number;
@@ -9540,41 +6268,16 @@ export interface DashboardDatasetSchema {
   uid?: string;
   verbose_map?: DashboardDatasetSchemaVerboseMapMap;
 }
-const DashboardDatasetSchema = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<DashboardDatasetSchema>;
-
 export type ListDashboardDatasetsResponseResultList = Array<DashboardDatasetSchema>;
-const ListDashboardDatasetsResponseResultList = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<ListDashboardDatasetsResponseResultList>;
-
 export interface ListDashboardDatasetsResponse {
   result?: ListDashboardDatasetsResponseResultList;
 }
-const ListDashboardDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<ListDashboardDatasetsResponse>;
-
 export interface ListDashboardFavoriteStatusRequest {
   q?: string;
 }
-const ListDashboardFavoriteStatusRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<ListDashboardFavoriteStatusRequest>;
-
 export interface ListDashboardInfoRequest {
   q?: string;
 }
-const ListDashboardInfoRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<ListDashboardInfoRequest>;
-
 export type ListDashboardInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListDashboardInfoResponseFiltersColumnNameList =
@@ -9591,52 +6294,25 @@ export interface ListDashboardInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListDashboardInfoResponsePermissionsList;
 }
-const ListDashboardInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListDashboardInfoResponse>;
-
 export interface ListDashboardTabsRequest {
   /** Either the id of the dashboard, or its slug */
   id_or_slug: string;
 }
-const ListDashboardTabsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<ListDashboardTabsRequest>;
-
 export interface ListDashboardTabsResponse {
   result?: unknown;
 }
-const ListDashboardTabsResponse =
-  CreateChartFavoriteResponse as any as S.Schema<ListDashboardTabsResponse>;
-
 export interface ListDashboardVersionsRequest {
   /** Dashboard UUID */
   uuid_str: string;
 }
-const ListDashboardVersionsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<ListDashboardVersionsRequest>;
-
 export type ListDashboardVersionsResponseResultList = Array<VersionListItemSchema>;
 export interface ListDashboardVersionsResponse {
   count?: number;
   result?: ListDashboardVersionsResponseResultList;
 }
-const ListDashboardVersionsResponse =
-  ListChartVersionsResponse as any as S.Schema<ListDashboardVersionsResponse>;
-
 export interface ListDatabaseAvailableRequest {}
-const ListDatabaseAvailableRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<ListDatabaseAvailableRequest>;
-
 /** Installed drivers for the engine */
 export type ListDatabaseAvailableResponseBodyItemAvailableDriversList = Array<string>;
-const ListDatabaseAvailableResponseBodyItemAvailableDriversList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListDatabaseAvailableResponseBodyItemAvailableDriversList>;
-
 /** Dict with public properties form the DB Engine */
 export interface ListDatabaseAvailableResponseBodyItemEngineInformation {
   /** Whether the engine supports SSH Tunnels */
@@ -9644,11 +6320,6 @@ export interface ListDatabaseAvailableResponseBodyItemEngineInformation {
   /** Whether the engine supports file uploads */
   supports_file_upload?: boolean;
 }
-const ListDatabaseAvailableResponseBodyItemEngineInformation = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<ListDatabaseAvailableResponseBodyItemEngineInformation>;
-
 export interface ListDatabaseAvailableResponseBodyItem {
   /** Installed drivers for the engine */
   available_drivers?: ListDatabaseAvailableResponseBodyItemAvailableDriversList;
@@ -9667,73 +6338,27 @@ export interface ListDatabaseAvailableResponseBodyItem {
   /** Example placeholder for the SQLAlchemy URI */
   sqlalchemy_uri_placeholder?: string;
 }
-const ListDatabaseAvailableResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<ListDatabaseAvailableResponseBodyItem>;
-
 export type ListDatabaseAvailableResponseBodyList = Array<ListDatabaseAvailableResponseBodyItem>;
-const ListDatabaseAvailableResponseBodyList = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<ListDatabaseAvailableResponseBodyList>;
-
 export type ListDatabaseAvailableResponse = ListDatabaseAvailableResponseBodyList;
-const ListDatabaseAvailableResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<ListDatabaseAvailableResponse>;
-
 export interface ListDatabaseCatalogsRequest {
   /** The database id */
   pk: number;
   q?: string;
 }
-const ListDatabaseCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<ListDatabaseCatalogsRequest>;
-
 export type CatalogsResponseSchemaResultList = Array<string>;
-const CatalogsResponseSchemaResultList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<CatalogsResponseSchemaResultList>;
-
 export interface CatalogsResponseSchema {
   result?: CatalogsResponseSchemaResultList;
 }
-const CatalogsResponseSchema = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<CatalogsResponseSchema>;
-
 export interface ListDatabaseFunctionNamesRequest {
   pk: number;
 }
-const ListDatabaseFunctionNamesRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<ListDatabaseFunctionNamesRequest>;
-
 export type DatabaseFunctionNamesResponseFunctionNamesList = Array<string>;
-const DatabaseFunctionNamesResponseFunctionNamesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DatabaseFunctionNamesResponseFunctionNamesList>;
-
 export interface DatabaseFunctionNamesResponse {
   function_names?: DatabaseFunctionNamesResponseFunctionNamesList;
 }
-const DatabaseFunctionNamesResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<DatabaseFunctionNamesResponse>;
-
 export interface ListDatabaseInfoRequest {
   q?: string;
 }
-const ListDatabaseInfoRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<ListDatabaseInfoRequest>;
-
 export type ListDatabaseInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListDatabaseInfoResponseFiltersColumnNameList =
@@ -9750,56 +6375,29 @@ export interface ListDatabaseInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListDatabaseInfoResponsePermissionsList;
 }
-const ListDatabaseInfoResponse = ListChartInfoResponse as any as S.Schema<ListDatabaseInfoResponse>;
-
 export interface ListDatabaseSchemasRequest {
   /** The database id */
   pk: number;
   q?: string;
 }
-const ListDatabaseSchemasRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<ListDatabaseSchemasRequest>;
-
 export type SchemasResponseSchemaResultList = Array<string>;
 export interface SchemasResponseSchema {
   result?: SchemasResponseSchemaResultList;
 }
-const SchemasResponseSchema = CatalogsResponseSchema as any as S.Schema<SchemasResponseSchema>;
-
 export interface ListDatabaseSchemasAccessForFileUploadRequest {
   pk: number;
 }
-const ListDatabaseSchemasAccessForFileUploadRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<ListDatabaseSchemasAccessForFileUploadRequest>;
-
 /** The list of schemas allowed for the database to upload information */
 export type DatabaseSchemaAccessForFileUploadResponseSchemasList = Array<string>;
-const DatabaseSchemaAccessForFileUploadResponseSchemasList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DatabaseSchemaAccessForFileUploadResponseSchemasList>;
-
 export interface DatabaseSchemaAccessForFileUploadResponse {
   /** The list of schemas allowed for the database to upload information */
   schemas?: DatabaseSchemaAccessForFileUploadResponseSchemasList;
 }
-const DatabaseSchemaAccessForFileUploadResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<DatabaseSchemaAccessForFileUploadResponse>;
-
 export interface ListDatabaseTablesRequest {
   /** The database id */
   pk: number;
   q?: string;
 }
-const ListDatabaseTablesRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<ListDatabaseTablesRequest>;
-
 export interface DatabaseTablesResponse {
   /** Extra data used to specify column metadata */
   extra?: unknown;
@@ -9808,31 +6406,14 @@ export interface DatabaseTablesResponse {
   /** The table or view name */
   value?: string;
 }
-const DatabaseTablesResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<DatabaseTablesResponse>;
-
 /** A List of tables for given database */
 export type ListDatabaseTablesResponseResultList = Array<DatabaseTablesResponse>;
-const ListDatabaseTablesResponseResultList = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<ListDatabaseTablesResponseResultList>;
-
 export interface ListDatabaseTablesResponse {
   count?: number;
   /** A List of tables for given database */
   result?: ListDatabaseTablesResponseResultList;
 }
-const ListDatabaseTablesResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  6,
-) as any as S.Schema<ListDatabaseTablesResponse>;
-
 export type ListDatasetActivityRequestInclude = "self" | "related" | "all";
-const ListDatasetActivityRequestInclude = S.String;
-
 export interface ListDatasetActivityRequest {
   /** Dataset UUID */
   uuid_str: string;
@@ -9844,19 +6425,9 @@ export interface ListDatasetActivityRequest {
   page?: number;
   page_size?: number;
 }
-const ListDatasetActivityRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<ListDatasetActivityRequest>;
-
 export interface ListDatasetInfoRequest {
   q?: string;
 }
-const ListDatasetInfoRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<ListDatasetInfoRequest>;
-
 export type ListDatasetInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListDatasetInfoResponseFiltersColumnNameList =
@@ -9873,25 +6444,15 @@ export interface ListDatasetInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListDatasetInfoResponsePermissionsList;
 }
-const ListDatasetInfoResponse = ListChartInfoResponse as any as S.Schema<ListDatasetInfoResponse>;
-
 export interface ListDatasetVersionsRequest {
   /** Dataset UUID */
   uuid_str: string;
 }
-const ListDatasetVersionsRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<ListDatasetVersionsRequest>;
-
 export type ListDatasetVersionsResponseResultList = Array<VersionListItemSchema>;
 export interface ListDatasetVersionsResponse {
   count?: number;
   result?: ListDatasetVersionsResponseResultList;
 }
-const ListDatasetVersionsResponse =
-  ListChartVersionsResponse as any as S.Schema<ListDatasetVersionsResponse>;
-
 export interface ListDatasourceColumnValuesRequest {
   /** The type of datasource */
   datasource_type: string;
@@ -9902,49 +6463,24 @@ export interface ListDatasourceColumnValuesRequest {
   /** Optional case-insensitive substring; only values containing it are returned. Lets the client search the full column rather than the truncated first page. */
   q?: string;
 }
-const ListDatasourceColumnValuesRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<ListDatasourceColumnValuesRequest>;
-
 export type ListDatasourceColumnValuesResponseResultItem =
   | string
   | number
   | number
   | boolean
   | unknown;
-const ListDatasourceColumnValuesResponseResultItem =
-  S.Unknown as any as S.Schema<ListDatasourceColumnValuesResponseResultItem>;
-
 export type ListDatasourceColumnValuesResponseResultList =
   Array<ListDatasourceColumnValuesResponseResultItem>;
-const ListDatasourceColumnValuesResponseResultList = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<ListDatasourceColumnValuesResponseResultList>;
-
 /** Suggestions are disabled for versioned semantic views; enter values manually. */
 export type ListDatasourceColumnValuesResponseSuggestionsStatus = "unavailable_versioned_view";
-const ListDatasourceColumnValuesResponseSuggestionsStatus = S.String;
-
 export interface ListDatasourceColumnValuesResponse {
   result?: ListDatasourceColumnValuesResponseResultList;
   /** Suggestions are disabled for versioned semantic views; enter values manually. */
   suggestions_status?: ListDatasourceColumnValuesResponseSuggestionsStatus;
 }
-const ListDatasourceColumnValuesResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<ListDatasourceColumnValuesResponse>;
-
 export interface ListLogRecentActivityRequest {
   q?: string;
 }
-const ListLogRecentActivityRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<ListLogRecentActivityRequest>;
-
 export interface RecentActivity {
   /** Action taken describing type of activity */
   action?: string;
@@ -9959,31 +6495,14 @@ export interface RecentActivity {
   /** Human-readable description of how long ago activity took place. */
   time_delta_humanized?: string;
 }
-const RecentActivity = /*@__PURE__*/ __L.at(__c70, 6) as any as S.Schema<RecentActivity>;
-
 /** A list of recent activity objects */
 export type RecentActivityResponseSchemaResultList = Array<RecentActivity>;
-const RecentActivityResponseSchemaResultList = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<RecentActivityResponseSchemaResultList>;
-
 export interface RecentActivityResponseSchema {
   /** A list of recent activity objects */
   result?: RecentActivityResponseSchemaResultList;
 }
-const RecentActivityResponseSchema = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<RecentActivityResponseSchema>;
-
 export interface ListMenuRequest {}
-const ListMenuRequest = /*@__PURE__*/ __L.at(__c71, 1) as any as S.Schema<ListMenuRequest>;
-
 export type ListMenuResponseResultItemChildsList = Array<unknown>;
-const ListMenuResponseResultItemChildsList =
-  TagObjectObjectsToTagList as any as S.Schema<ListMenuResponseResultItemChildsList>;
-
 export interface ListMenuResponseResultItem {
   childs?: ListMenuResponseResultItemChildsList;
   /** Icon name to show for this menu item */
@@ -9995,56 +6514,24 @@ export interface ListMenuResponseResultItem {
   /** The URL for the menu item */
   url?: string;
 }
-const ListMenuResponseResultItem = /*@__PURE__*/ __L.at(
-  __c71,
-  2,
-) as any as S.Schema<ListMenuResponseResultItem>;
-
 /** Menu items in a forest like data structure */
 export type ListMenuResponseResultList = Array<ListMenuResponseResultItem>;
-const ListMenuResponseResultList = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<ListMenuResponseResultList>;
-
 export interface ListMenuResponse {
   /** Menu items in a forest like data structure */
   result?: ListMenuResponseResultList;
 }
-const ListMenuResponse = /*@__PURE__*/ __L.at(__c71, 4) as any as S.Schema<ListMenuResponse>;
-
 export interface ListQueryUpdatedSinceRequest {
   q?: string;
 }
-const ListQueryUpdatedSinceRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<ListQueryUpdatedSinceRequest>;
-
 /** A List of queries that changed after last_updated_ms */
 export type ListQueryUpdatedSinceResponseResultList = Array<QueryRestApiGet>;
-const ListQueryUpdatedSinceResponseResultList = /*@__PURE__*/ __L.at(
-  __c71,
-  6,
-) as any as S.Schema<ListQueryUpdatedSinceResponseResultList>;
-
 export interface ListQueryUpdatedSinceResponse {
   /** A List of queries that changed after last_updated_ms */
   result?: ListQueryUpdatedSinceResponseResultList;
 }
-const ListQueryUpdatedSinceResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<ListQueryUpdatedSinceResponse>;
-
 export interface ListReportInfoRequest {
   q?: string;
 }
-const ListReportInfoRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  0,
-) as any as S.Schema<ListReportInfoRequest>;
-
 export type ListReportInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListReportInfoResponseFiltersColumnNameList =
@@ -10061,31 +6548,16 @@ export interface ListReportInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListReportInfoResponsePermissionsList;
 }
-const ListReportInfoResponse = ListChartInfoResponse as any as S.Schema<ListReportInfoResponse>;
-
 export interface ListReportLogRequest {
   /** The report schedule id for these logs */
   pk: number;
   q?: string;
 }
-const ListReportLogRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  1,
-) as any as S.Schema<ListReportLogRequest>;
-
 /** A list of log ids */
 export type ListReportLogResponseIdsList = Array<string>;
-const ListReportLogResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListReportLogResponseIdsList>;
-
 export type ReportExecutionLogRestApiGetList = ReportExecutionLogRestApiGet;
 /** The result from the get list query */
 export type ListReportLogResponseResultList = Array<ReportExecutionLogRestApiGet>;
-const ListReportLogResponseResultList = /*@__PURE__*/ __L.at(
-  __c72,
-  2,
-) as any as S.Schema<ListReportLogResponseResultList>;
-
 export interface ListReportLogResponse {
   /** The total record count on the backend */
   count?: number;
@@ -10094,51 +6566,21 @@ export interface ListReportLogResponse {
   /** The result from the get list query */
   result?: ListReportLogResponseResultList;
 }
-const ListReportLogResponse = /*@__PURE__*/ __L.at(
-  __c72,
-  3,
-) as any as S.Schema<ListReportLogResponse>;
-
 export interface ListReportSlackChannelsRequest {
   q?: string;
 }
-const ListReportSlackChannelsRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  4,
-) as any as S.Schema<ListReportSlackChannelsRequest>;
-
 export interface ListReportSlackChannelsResponseResultItem {
   id?: string;
   name?: string;
 }
-const ListReportSlackChannelsResponseResultItem = /*@__PURE__*/ __L.at(
-  __c72,
-  5,
-) as any as S.Schema<ListReportSlackChannelsResponseResultItem>;
-
 export type ListReportSlackChannelsResponseResultList =
   Array<ListReportSlackChannelsResponseResultItem>;
-const ListReportSlackChannelsResponseResultList = /*@__PURE__*/ __L.at(
-  __c72,
-  6,
-) as any as S.Schema<ListReportSlackChannelsResponseResultList>;
-
 export interface ListReportSlackChannelsResponse {
   result?: ListReportSlackChannelsResponseResultList;
 }
-const ListReportSlackChannelsResponse = /*@__PURE__*/ __L.at(
-  __c72,
-  7,
-) as any as S.Schema<ListReportSlackChannelsResponse>;
-
 export interface ListRowlevelsecurityInfoRequest {
   q?: string;
 }
-const ListRowlevelsecurityInfoRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  0,
-) as any as S.Schema<ListRowlevelsecurityInfoRequest>;
-
 export type ListRowlevelsecurityInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListRowlevelsecurityInfoResponseFiltersColumnNameList =
@@ -10155,17 +6597,9 @@ export interface ListRowlevelsecurityInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListRowlevelsecurityInfoResponsePermissionsList;
 }
-const ListRowlevelsecurityInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListRowlevelsecurityInfoResponse>;
-
 export interface ListSavedQueryInfoRequest {
   q?: string;
 }
-const ListSavedQueryInfoRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  1,
-) as any as S.Schema<ListSavedQueryInfoRequest>;
-
 export type ListSavedQueryInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSavedQueryInfoResponseFiltersColumnNameList =
@@ -10182,17 +6616,9 @@ export interface ListSavedQueryInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSavedQueryInfoResponsePermissionsList;
 }
-const ListSavedQueryInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSavedQueryInfoResponse>;
-
 export interface ListSecurityGroupInfoRequest {
   q?: string;
 }
-const ListSecurityGroupInfoRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  2,
-) as any as S.Schema<ListSecurityGroupInfoRequest>;
-
 export type ListSecurityGroupInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecurityGroupInfoResponseFiltersColumnNameList =
@@ -10209,17 +6635,9 @@ export interface ListSecurityGroupInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityGroupInfoResponsePermissionsList;
 }
-const ListSecurityGroupInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityGroupInfoResponse>;
-
 export interface ListSecurityPermissionsInfoRequest {
   q?: string;
 }
-const ListSecurityPermissionsInfoRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  3,
-) as any as S.Schema<ListSecurityPermissionsInfoRequest>;
-
 export type ListSecurityPermissionsInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecurityPermissionsInfoResponseFiltersColumnNameList =
@@ -10236,39 +6654,18 @@ export interface ListSecurityPermissionsInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityPermissionsInfoResponsePermissionsList;
 }
-const ListSecurityPermissionsInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityPermissionsInfoResponse>;
-
 export interface ListSecurityPermissionsResourceInfoRequest {
   q?: string;
 }
-const ListSecurityPermissionsResourceInfoRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  4,
-) as any as S.Schema<ListSecurityPermissionsResourceInfoRequest>;
-
 export type ListSecurityPermissionsResourceInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-const ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList = /*@__PURE__*/ __L.at(
-  __c73,
-  5,
-) as any as S.Schema<ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList>;
-
 export interface ListSecurityPermissionsResourceInfoResponseFilters {
   column_name?: ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList;
 }
-const ListSecurityPermissionsResourceInfoResponseFilters = /*@__PURE__*/ __L.at(
-  __c73,
-  6,
-) as any as S.Schema<ListSecurityPermissionsResourceInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecurityPermissionsResourceInfoResponsePermissionsList = Array<string>;
-const ListSecurityPermissionsResourceInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityPermissionsResourceInfoResponsePermissionsList>;
-
 export interface ListSecurityPermissionsResourceInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -10276,19 +6673,9 @@ export interface ListSecurityPermissionsResourceInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityPermissionsResourceInfoResponsePermissionsList;
 }
-const ListSecurityPermissionsResourceInfoResponse = /*@__PURE__*/ __L.at(
-  __c73,
-  7,
-) as any as S.Schema<ListSecurityPermissionsResourceInfoResponse>;
-
 export interface ListSecurityResourceInfoRequest {
   q?: string;
 }
-const ListSecurityResourceInfoRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  0,
-) as any as S.Schema<ListSecurityResourceInfoRequest>;
-
 export type ListSecurityResourceInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecurityResourceInfoResponseFiltersColumnNameList =
@@ -10305,17 +6692,9 @@ export interface ListSecurityResourceInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityResourceInfoResponsePermissionsList;
 }
-const ListSecurityResourceInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityResourceInfoResponse>;
-
 export interface ListSecurityRoleInfoRequest {
   q?: string;
 }
-const ListSecurityRoleInfoRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  1,
-) as any as S.Schema<ListSecurityRoleInfoRequest>;
-
 export type ListSecurityRoleInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecurityRoleInfoResponseFiltersColumnNameList =
@@ -10332,66 +6711,27 @@ export interface ListSecurityRoleInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityRoleInfoResponsePermissionsList;
 }
-const ListSecurityRoleInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityRoleInfoResponse>;
-
 export interface ListSecurityRolePermissionsRequest {
   role_id: number;
 }
-const ListSecurityRolePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  2,
-) as any as S.Schema<ListSecurityRolePermissionsRequest>;
-
 export interface RolePermissionListSchema {
   id?: number;
   permission_name?: string;
   view_menu_name?: string;
 }
-const RolePermissionListSchema = /*@__PURE__*/ __L.at(
-  __c74,
-  3,
-) as any as S.Schema<RolePermissionListSchema>;
-
 export type ListSecurityRolePermissionsResponseResultList = Array<RolePermissionListSchema>;
-const ListSecurityRolePermissionsResponseResultList = /*@__PURE__*/ __L.at(
-  __c74,
-  4,
-) as any as S.Schema<ListSecurityRolePermissionsResponseResultList>;
-
 export interface ListSecurityRolePermissionsResponse {
   result?: ListSecurityRolePermissionsResponseResultList;
 }
-const ListSecurityRolePermissionsResponse = /*@__PURE__*/ __L.at(
-  __c74,
-  5,
-) as any as S.Schema<ListSecurityRolePermissionsResponse>;
-
 export type ListSecurityRoleSearchRequestQFiltersItemCol = "user_ids" | "permission_ids" | "name";
-const ListSecurityRoleSearchRequestQFiltersItemCol = S.String;
-
 export interface ListSecurityRoleSearchRequestQFiltersItem {
   col?: ListSecurityRoleSearchRequestQFiltersItemCol | (string & {});
   value?: string;
 }
-const ListSecurityRoleSearchRequestQFiltersItem = /*@__PURE__*/ __L.at(
-  __c74,
-  6,
-) as any as S.Schema<ListSecurityRoleSearchRequestQFiltersItem>;
-
 export type ListSecurityRoleSearchRequestQFiltersList =
   Array<ListSecurityRoleSearchRequestQFiltersItem>;
-const ListSecurityRoleSearchRequestQFiltersList = /*@__PURE__*/ __L.at(
-  __c74,
-  7,
-) as any as S.Schema<ListSecurityRoleSearchRequestQFiltersList>;
-
 export type ListSecurityRoleSearchRequestQOrderColumn = "id" | "name";
-const ListSecurityRoleSearchRequestQOrderColumn = S.String;
-
 export type ListSecurityRoleSearchRequestQOrderDirection = "asc" | "desc";
-const ListSecurityRoleSearchRequestQOrderDirection = S.String;
-
 export interface ListSecurityRoleSearchRequestQ {
   filters?: ListSecurityRoleSearchRequestQFiltersList;
   order_column?: ListSecurityRoleSearchRequestQOrderColumn | (string & {});
@@ -10399,60 +6739,27 @@ export interface ListSecurityRoleSearchRequestQ {
   page?: number;
   page_size?: number;
 }
-const ListSecurityRoleSearchRequestQ = /*@__PURE__*/ __L.at(
-  __c75,
-  0,
-) as any as S.Schema<ListSecurityRoleSearchRequestQ>;
-
 export interface ListSecurityRoleSearchRequest {
   q?: ListSecurityRoleSearchRequestQ;
 }
-const ListSecurityRoleSearchRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  1,
-) as any as S.Schema<ListSecurityRoleSearchRequest>;
-
 export type RolesResponseSchemaIdsList = Array<number>;
-const RolesResponseSchemaIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RolesResponseSchemaIdsList>;
-
 export type RoleResponseSchemaPermissionIdsList = Array<number>;
-const RoleResponseSchemaPermissionIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RoleResponseSchemaPermissionIdsList>;
-
 export type RoleResponseSchemaUserIdsList = Array<number>;
-const RoleResponseSchemaUserIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RoleResponseSchemaUserIdsList>;
-
 export interface RoleResponseSchema {
   id?: number;
   name?: string;
   permission_ids?: RoleResponseSchemaPermissionIdsList;
   user_ids?: RoleResponseSchemaUserIdsList;
 }
-const RoleResponseSchema = /*@__PURE__*/ __L.at(__c75, 2) as any as S.Schema<RoleResponseSchema>;
-
 export type RolesResponseSchemaResultList = Array<RoleResponseSchema>;
-const RolesResponseSchemaResultList = /*@__PURE__*/ __L.at(
-  __c75,
-  3,
-) as any as S.Schema<RolesResponseSchemaResultList>;
-
 export interface RolesResponseSchema {
   count?: number;
   ids?: RolesResponseSchemaIdsList;
   result?: RolesResponseSchemaResultList;
 }
-const RolesResponseSchema = /*@__PURE__*/ __L.at(__c75, 4) as any as S.Schema<RolesResponseSchema>;
-
 export interface ListSecuritySubjectInfoRequest {
   q?: string;
 }
-const ListSecuritySubjectInfoRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  5,
-) as any as S.Schema<ListSecuritySubjectInfoRequest>;
-
 export type ListSecuritySubjectInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecuritySubjectInfoResponseFiltersColumnNameList =
@@ -10469,17 +6776,9 @@ export interface ListSecuritySubjectInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecuritySubjectInfoResponsePermissionsList;
 }
-const ListSecuritySubjectInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSecuritySubjectInfoResponse>;
-
 export interface ListSecurityUserInfoRequest {
   q?: string;
 }
-const ListSecurityUserInfoRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  6,
-) as any as S.Schema<ListSecurityUserInfoRequest>;
-
 export type ListSecurityUserInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecurityUserInfoResponseFiltersColumnNameList =
@@ -10496,17 +6795,9 @@ export interface ListSecurityUserInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityUserInfoResponsePermissionsList;
 }
-const ListSecurityUserInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityUserInfoResponse>;
-
 export interface ListSecurityUserRegistrationInfoRequest {
   q?: string;
 }
-const ListSecurityUserRegistrationInfoRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  7,
-) as any as S.Schema<ListSecurityUserRegistrationInfoRequest>;
-
 export type ListSecurityUserRegistrationInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListSecurityUserRegistrationInfoResponseFiltersColumnNameList =
@@ -10523,12 +6814,7 @@ export interface ListSecurityUserRegistrationInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityUserRegistrationInfoResponsePermissionsList;
 }
-const ListSecurityUserRegistrationInfoResponse =
-  ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityUserRegistrationInfoResponse>;
-
 export interface ListSqllabRequest {}
-const ListSqllabRequest = /*@__PURE__*/ __L.at(__c76, 0) as any as S.Schema<ListSqllabRequest>;
-
 export interface Table {
   database_id?: number;
   description?: string;
@@ -10538,14 +6824,7 @@ export interface Table {
   tab_state_id?: number;
   table?: string;
 }
-const Table = /*@__PURE__*/ __L.at(__c76, 1) as any as S.Schema<Table>;
-
 export type TabStateTableSchemasList = Array<Table>;
-const TabStateTableSchemasList = /*@__PURE__*/ __L.at(
-  __c76,
-  2,
-) as any as S.Schema<TabStateTableSchemasList>;
-
 export interface TabState {
   active?: boolean;
   autorun?: boolean;
@@ -10562,8 +6841,6 @@ export interface TabState {
   table_schemas?: TabStateTableSchemasList;
   user_id?: number;
 }
-const TabState = /*@__PURE__*/ __L.at(__c76, 3) as any as S.Schema<TabState>;
-
 export interface SQLLabBootstrapDatabase {
   allow_ctas?: boolean;
   allow_cvas?: boolean;
@@ -10587,98 +6864,38 @@ export interface SQLLabBootstrapDatabase {
   /** The database id */
   id?: number;
 }
-const SQLLabBootstrapDatabase = /*@__PURE__*/ __L.at(
-  __c76,
-  4,
-) as any as S.Schema<SQLLabBootstrapDatabase>;
-
 export type SQLLabBootstrapSchemaDatabasesMap = {
   [key: string]: SQLLabBootstrapDatabase | undefined;
 };
-const SQLLabBootstrapSchemaDatabasesMap = /*@__PURE__*/ __L.at(
-  __c76,
-  5,
-) as any as S.Schema<SQLLabBootstrapSchemaDatabasesMap>;
-
 export type SQLLabBootstrapSchemaQueriesMap = { [key: string]: QueryResult | undefined };
-const SQLLabBootstrapSchemaQueriesMap = /*@__PURE__*/ __L.at(
-  __c76,
-  6,
-) as any as S.Schema<SQLLabBootstrapSchemaQueriesMap>;
-
 export type SQLLabBootstrapSchemaTabStateIdsList = Array<string>;
-const SQLLabBootstrapSchemaTabStateIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<SQLLabBootstrapSchemaTabStateIdsList>;
-
 export interface SQLLabBootstrapSchema {
   active_tab?: TabState;
   databases?: SQLLabBootstrapSchemaDatabasesMap;
   queries?: SQLLabBootstrapSchemaQueriesMap;
   tab_state_ids?: SQLLabBootstrapSchemaTabStateIdsList;
 }
-const SQLLabBootstrapSchema = /*@__PURE__*/ __L.at(
-  __c76,
-  7,
-) as any as S.Schema<SQLLabBootstrapSchema>;
-
 export interface ListSqllabResultsRequest {
   q?: string;
 }
-const ListSqllabResultsRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  0,
-) as any as S.Schema<ListSqllabResultsRequest>;
-
 export interface ListTagFavoriteStatusRequest {
   q?: string;
 }
-const ListTagFavoriteStatusRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  1,
-) as any as S.Schema<ListTagFavoriteStatusRequest>;
-
 export type ListTagGetObjectsRequestTagIdsList = Array<number>;
-const ListTagGetObjectsRequestTagIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ListTagGetObjectsRequestTagIdsList>;
-
 export type ListTagGetObjectsRequestTagsList = Array<string>;
-const ListTagGetObjectsRequestTagsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListTagGetObjectsRequestTagsList>;
-
 export type ListTagGetObjectsRequestTypesList = Array<string>;
-const ListTagGetObjectsRequestTypesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListTagGetObjectsRequestTypesList>;
-
 export interface ListTagGetObjectsRequest {
   tagIds?: ListTagGetObjectsRequestTagIdsList;
   tags?: ListTagGetObjectsRequestTagsList;
   types?: ListTagGetObjectsRequestTypesList;
 }
-const ListTagGetObjectsRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  2,
-) as any as S.Schema<ListTagGetObjectsRequest>;
-
 export type TaggedObjectEntityResponseSchemaEditorsList = Array<SubjectResponse>;
-const TaggedObjectEntityResponseSchemaEditorsList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<TaggedObjectEntityResponseSchemaEditorsList>;
-
 export interface TagGetResponseSchema {
   id?: number;
   name?: string;
   type?: string;
 }
-const TagGetResponseSchema = /*@__PURE__*/ __L.at(
-  __c77,
-  3,
-) as any as S.Schema<TagGetResponseSchema>;
-
 export type TaggedObjectEntityResponseSchemaTagsList = Array<TagGetResponseSchema>;
-const TaggedObjectEntityResponseSchemaTagsList = /*@__PURE__*/ __L.at(
-  __c77,
-  4,
-) as any as S.Schema<TaggedObjectEntityResponseSchemaTagsList>;
-
 export interface TaggedObjectEntityResponseSchema {
   changed_on?: string;
   created_by?: VersionChangedBy;
@@ -10690,30 +6907,13 @@ export interface TaggedObjectEntityResponseSchema {
   type?: string;
   url?: string;
 }
-const TaggedObjectEntityResponseSchema = /*@__PURE__*/ __L.at(
-  __c77,
-  5,
-) as any as S.Schema<TaggedObjectEntityResponseSchema>;
-
 export type ListTagGetObjectsResponseResultList = Array<TaggedObjectEntityResponseSchema>;
-const ListTagGetObjectsResponseResultList = /*@__PURE__*/ __L.at(
-  __c77,
-  6,
-) as any as S.Schema<ListTagGetObjectsResponseResultList>;
-
 export interface ListTagGetObjectsResponse {
   result?: ListTagGetObjectsResponseResultList;
 }
-const ListTagGetObjectsResponse = /*@__PURE__*/ __L.at(
-  __c77,
-  7,
-) as any as S.Schema<ListTagGetObjectsResponse>;
-
 export interface ListTagInfoRequest {
   q?: string;
 }
-const ListTagInfoRequest = /*@__PURE__*/ __L.at(__c78, 0) as any as S.Schema<ListTagInfoRequest>;
-
 export type ListTagInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListTagInfoResponseFiltersColumnNameList =
@@ -10730,16 +6930,9 @@ export interface ListTagInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListTagInfoResponsePermissionsList;
 }
-const ListTagInfoResponse = ListChartInfoResponse as any as S.Schema<ListTagInfoResponse>;
-
 export interface ListThemeInfoRequest {
   q?: string;
 }
-const ListThemeInfoRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  1,
-) as any as S.Schema<ListThemeInfoRequest>;
-
 export type ListThemeInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
 export type ListThemeInfoResponseFiltersColumnNameList =
@@ -10756,12 +6949,8 @@ export interface ListThemeInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListThemeInfoResponsePermissionsList;
 }
-const ListThemeInfoResponse = ListChartInfoResponse as any as S.Schema<ListThemeInfoResponse>;
-
 /** Choose an authentication provider */
 export type LoginSecurityRequestProvider = "db" | "ldap";
-const LoginSecurityRequestProvider = S.String;
-
 export interface LoginSecurityRequest {
   /** The password for authentication */
   password?: string | Redacted.Redacted<string>;
@@ -10772,54 +6961,29 @@ export interface LoginSecurityRequest {
   /** The username for authentication */
   username?: string;
 }
-const LoginSecurityRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  2,
-) as any as S.Schema<LoginSecurityRequest>;
-
 export interface LoginSecurityResponse {
   access_token?: string | Redacted.Redacted<string>;
   refresh_token?: string | Redacted.Redacted<string>;
 }
-const LoginSecurityResponse = /*@__PURE__*/ __L.at(
-  __c78,
-  3,
-) as any as S.Schema<LoginSecurityResponse>;
-
 export interface PurgeChartRequest {
   uuid: string;
 }
-const PurgeChartRequest = /*@__PURE__*/ __L.at(__c78, 4) as any as S.Schema<PurgeChartRequest>;
-
 export interface PurgeChartResponse {
   message?: string;
 }
-const PurgeChartResponse = DeleteChartResponse as any as S.Schema<PurgeChartResponse>;
-
 export interface PurgeDashboardRequest {
   uuid: string;
 }
-const PurgeDashboardRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  5,
-) as any as S.Schema<PurgeDashboardRequest>;
-
 export interface PurgeDashboardResponse {
   message?: string;
 }
-const PurgeDashboardResponse = DeleteChartResponse as any as S.Schema<PurgeDashboardResponse>;
-
 export interface PurgeDatasetRequest {
   uuid: string;
   confirmed_impact_token: string;
 }
-const PurgeDatasetRequest = /*@__PURE__*/ __L.at(__c78, 6) as any as S.Schema<PurgeDatasetRequest>;
-
 export interface PurgeDatasetResponse {
   message?: string;
 }
-const PurgeDatasetResponse = DeleteChartResponse as any as S.Schema<PurgeDatasetResponse>;
-
 export interface PutAnnotationLayerRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
@@ -10828,31 +6992,16 @@ export interface PutAnnotationLayerRequest {
   /** The annotation layer name */
   name?: string;
 }
-const PutAnnotationLayerRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  7,
-) as any as S.Schema<PutAnnotationLayerRequest>;
-
 export interface AnnotationLayerRestApiPut {
   /** Give a description for this annotation layer */
   descr?: string;
   /** The annotation layer name */
   name?: string;
 }
-const AnnotationLayerRestApiPut = /*@__PURE__*/ __L.at(
-  __c79,
-  0,
-) as any as S.Schema<AnnotationLayerRestApiPut>;
-
 export interface PutAnnotationLayerResponse {
   id?: number;
   result?: AnnotationLayerRestApiPut;
 }
-const PutAnnotationLayerResponse = /*@__PURE__*/ __L.at(
-  __c79,
-  1,
-) as any as S.Schema<PutAnnotationLayerResponse>;
-
 export interface PutAnnotationLayerAnnotationRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
@@ -10869,11 +7018,6 @@ export interface PutAnnotationLayerAnnotationRequest {
   /** The annotation start date time */
   start_dttm?: string;
 }
-const PutAnnotationLayerAnnotationRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  2,
-) as any as S.Schema<PutAnnotationLayerAnnotationRequest>;
-
 export interface AnnotationRestApiPut {
   /** The annotation end date time */
   end_dttm?: string;
@@ -10886,24 +7030,11 @@ export interface AnnotationRestApiPut {
   /** The annotation start date time */
   start_dttm?: string;
 }
-const AnnotationRestApiPut = /*@__PURE__*/ __L.at(
-  __c79,
-  3,
-) as any as S.Schema<AnnotationRestApiPut>;
-
 export interface PutAnnotationLayerAnnotationResponse {
   id?: number;
   result?: AnnotationRestApiPut;
 }
-const PutAnnotationLayerAnnotationResponse = /*@__PURE__*/ __L.at(
-  __c79,
-  4,
-) as any as S.Schema<PutAnnotationLayerAnnotationResponse>;
-
 export type PutChartRequestDashboardsList = Array<number>;
-const PutChartRequestDashboardsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestDashboardsList>;
-
 /** The type of dataset/datasource identified on `datasource_id`. */
 export type PutChartRequestDatasourceType =
   | "table"
@@ -10912,12 +7043,7 @@ export type PutChartRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const PutChartRequestDatasourceType = S.String;
-
 export type PutChartRequestEditorsList = Array<number>;
-const PutChartRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestEditorsList>;
-
 export interface PutChartRequestNormalizationChangesItem {
   control: string;
   from_present: boolean;
@@ -10925,27 +7051,11 @@ export interface PutChartRequestNormalizationChangesItem {
   to_present: boolean;
   to_value?: unknown;
 }
-const PutChartRequestNormalizationChangesItem = /*@__PURE__*/ __L.at(
-  __c79,
-  5,
-) as any as S.Schema<PutChartRequestNormalizationChangesItem>;
-
 /** Optional advisory Explore hydration transitions used only to remove exact automatic normalization changes from human-readable version history. Invalid metadata is ignored. */
 export type PutChartRequestNormalizationChangesList =
   Array<PutChartRequestNormalizationChangesItem>;
-const PutChartRequestNormalizationChangesList = /*@__PURE__*/ __L.at(
-  __c79,
-  6,
-) as any as S.Schema<PutChartRequestNormalizationChangesList>;
-
 export type PutChartRequestTagsList = Array<number>;
-const PutChartRequestTagsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestTagsList>;
-
 export type PutChartRequestViewersList = Array<number>;
-const PutChartRequestViewersList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestViewersList>;
-
 export interface PutChartRequest {
   pk: number;
   /** Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined. */
@@ -10980,12 +7090,7 @@ export interface PutChartRequest {
   /** The type of chart visualization used. */
   viz_type?: string | null;
 }
-const PutChartRequest = /*@__PURE__*/ __L.at(__c79, 7) as any as S.Schema<PutChartRequest>;
-
 export type ChartRestApiPutOutputDashboardsList = Array<number>;
-const ChartRestApiPutOutputDashboardsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputDashboardsList>;
-
 /** The type of dataset/datasource identified on `datasource_id`. */
 export type ChartRestApiPutOutputDatasourceType =
   | "table"
@@ -10994,20 +7099,9 @@ export type ChartRestApiPutOutputDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const ChartRestApiPutOutputDatasourceType = S.String;
-
 export type ChartRestApiPutOutputEditorsList = Array<number>;
-const ChartRestApiPutOutputEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputEditorsList>;
-
 export type ChartRestApiPutOutputTagsList = Array<number>;
-const ChartRestApiPutOutputTagsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputTagsList>;
-
 export type ChartRestApiPutOutputViewersList = Array<number>;
-const ChartRestApiPutOutputViewersList =
-  CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputViewersList>;
-
 export interface ChartRestApiPutOutput {
   /** Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined. */
   cache_timeout?: number | null;
@@ -11039,11 +7133,6 @@ export interface ChartRestApiPutOutput {
   /** The type of chart visualization used. */
   viz_type?: string | null;
 }
-const ChartRestApiPutOutput = /*@__PURE__*/ __L.at(
-  __c80,
-  0,
-) as any as S.Schema<ChartRestApiPutOutput>;
-
 export interface PutChartResponse {
   id?: number;
   /** Continuum transaction_id of the live row after this update. Differs from old_transaction_id when the update produced a new version row. */
@@ -11060,8 +7149,6 @@ export interface PutChartResponse {
   old_version_uuid?: string | null;
   result?: ChartRestApiPutOutput;
 }
-const PutChartResponse = /*@__PURE__*/ __L.at(__c80, 1) as any as S.Schema<PutChartResponse>;
-
 export interface PutChartWarmUpCacheRequest {
   /** The ID of the chart to warm up cache for */
   chart_id: number;
@@ -11070,11 +7157,6 @@ export interface PutChartWarmUpCacheRequest {
   /** Extra filters to apply when warming up cache */
   extra_filters?: string;
 }
-const PutChartWarmUpCacheRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  2,
-) as any as S.Schema<PutChartWarmUpCacheRequest>;
-
 export interface ChartCacheWarmUpResponseSingle {
   /** The ID of the chart the status belongs to */
   chart_id?: number;
@@ -11083,60 +7165,24 @@ export interface ChartCacheWarmUpResponseSingle {
   /** Status of the underlying query for the viz */
   viz_status?: string;
 }
-const ChartCacheWarmUpResponseSingle = /*@__PURE__*/ __L.at(
-  __c80,
-  3,
-) as any as S.Schema<ChartCacheWarmUpResponseSingle>;
-
 /** A list of each chart's warmup status and errors if any */
 export type ChartCacheWarmUpResponseSchemaResultList = Array<ChartCacheWarmUpResponseSingle>;
-const ChartCacheWarmUpResponseSchemaResultList = /*@__PURE__*/ __L.at(
-  __c80,
-  4,
-) as any as S.Schema<ChartCacheWarmUpResponseSchemaResultList>;
-
 export interface ChartCacheWarmUpResponseSchema {
   /** A list of each chart's warmup status and errors if any */
   result?: ChartCacheWarmUpResponseSchemaResultList;
 }
-const ChartCacheWarmUpResponseSchema = /*@__PURE__*/ __L.at(
-  __c80,
-  5,
-) as any as S.Schema<ChartCacheWarmUpResponseSchema>;
-
 export interface PutCssTemplateRequest {
   pk: number;
   css?: string | null;
   template_name?: string | null;
 }
-const PutCssTemplateRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  6,
-) as any as S.Schema<PutCssTemplateRequest>;
-
 export type CssTemplateRestApiPut = CssTemplateRestApiPost;
 export interface PutCssTemplateResponse {
   result?: CssTemplateRestApiPost;
 }
-const PutCssTemplateResponse = /*@__PURE__*/ __L.at(
-  __c80,
-  7,
-) as any as S.Schema<PutCssTemplateResponse>;
-
 export type PutDashboardRequestEditorsList = Array<number | null>;
-const PutDashboardRequestEditorsList = /*@__PURE__*/ __L.at(
-  __c81,
-  0,
-) as any as S.Schema<PutDashboardRequestEditorsList>;
-
 export type PutDashboardRequestTagsList = Array<number | null>;
-const PutDashboardRequestTagsList =
-  PutDashboardRequestEditorsList as any as S.Schema<PutDashboardRequestTagsList>;
-
 export type PutDashboardRequestViewersList = Array<number | null>;
-const PutDashboardRequestViewersList =
-  PutDashboardRequestEditorsList as any as S.Schema<PutDashboardRequestViewersList>;
-
 export interface PutDashboardRequest {
   pk: number;
   /** Details of the certification */
@@ -11166,20 +7212,9 @@ export interface PutDashboardRequest {
   uuid?: string | null;
   viewers?: PutDashboardRequestViewersList;
 }
-const PutDashboardRequest = /*@__PURE__*/ __L.at(__c81, 1) as any as S.Schema<PutDashboardRequest>;
-
 export type DashboardRestApiPutEditorsList = Array<number | null>;
-const DashboardRestApiPutEditorsList =
-  PutDashboardRequestEditorsList as any as S.Schema<DashboardRestApiPutEditorsList>;
-
 export type DashboardRestApiPutTagsList = Array<number | null>;
-const DashboardRestApiPutTagsList =
-  PutDashboardRequestEditorsList as any as S.Schema<DashboardRestApiPutTagsList>;
-
 export type DashboardRestApiPutViewersList = Array<number | null>;
-const DashboardRestApiPutViewersList =
-  PutDashboardRequestEditorsList as any as S.Schema<DashboardRestApiPutViewersList>;
-
 export interface DashboardRestApiPut {
   /** Details of the certification */
   certification_details?: string | null;
@@ -11208,8 +7243,6 @@ export interface DashboardRestApiPut {
   uuid?: string | null;
   viewers?: DashboardRestApiPutViewersList;
 }
-const DashboardRestApiPut = /*@__PURE__*/ __L.at(__c81, 2) as any as S.Schema<DashboardRestApiPut>;
-
 export interface PutDashboardResponse {
   id?: number;
   last_modified_time?: number;
@@ -11227,49 +7260,21 @@ export interface PutDashboardResponse {
   old_version_uuid?: string | null;
   result?: DashboardRestApiPut;
 }
-const PutDashboardResponse = /*@__PURE__*/ __L.at(
-  __c81,
-  3,
-) as any as S.Schema<PutDashboardResponse>;
-
 export type PutDashboardChartCustomizationsRequestDeletedList = Array<string>;
-const PutDashboardChartCustomizationsRequestDeletedList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardChartCustomizationsRequestDeletedList>;
-
 export type PutDashboardChartCustomizationsRequestModifiedList = Array<unknown>;
-const PutDashboardChartCustomizationsRequestModifiedList =
-  TagObjectObjectsToTagList as any as S.Schema<PutDashboardChartCustomizationsRequestModifiedList>;
-
 export type PutDashboardChartCustomizationsRequestReorderedList = Array<string>;
-const PutDashboardChartCustomizationsRequestReorderedList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardChartCustomizationsRequestReorderedList>;
-
 export interface PutDashboardChartCustomizationsRequest {
   pk: number;
   deleted?: PutDashboardChartCustomizationsRequestDeletedList;
   modified?: PutDashboardChartCustomizationsRequestModifiedList;
   reordered?: PutDashboardChartCustomizationsRequestReorderedList;
 }
-const PutDashboardChartCustomizationsRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  4,
-) as any as S.Schema<PutDashboardChartCustomizationsRequest>;
-
 export type PutDashboardChartCustomizationsResponseResultList = Array<unknown>;
 export interface PutDashboardChartCustomizationsResponse {
   result?: PutDashboardChartCustomizationsResponseResultList;
 }
-const PutDashboardChartCustomizationsResponse =
-  CreateDatasourceQueryResponse as any as S.Schema<PutDashboardChartCustomizationsResponse>;
-
 export type PutDashboardColorsRequestColorSchemeDomainList = Array<string>;
-const PutDashboardColorsRequestColorSchemeDomainList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardColorsRequestColorSchemeDomainList>;
-
 export type PutDashboardColorsRequestSharedLabelColorsList = Array<string>;
-const PutDashboardColorsRequestSharedLabelColorsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardColorsRequestSharedLabelColorsList>;
-
 export interface PutDashboardColorsRequest {
   pk: number;
   mark_updated?: boolean;
@@ -11280,68 +7285,32 @@ export interface PutDashboardColorsRequest {
   map_label_colors?: unknown;
   shared_label_colors?: PutDashboardColorsRequestSharedLabelColorsList;
 }
-const PutDashboardColorsRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  5,
-) as any as S.Schema<PutDashboardColorsRequest>;
-
 export type PutDashboardColorsResponseResultList = Array<unknown>;
 export interface PutDashboardColorsResponse {
   result?: PutDashboardColorsResponseResultList;
 }
-const PutDashboardColorsResponse =
-  CreateDatasourceQueryResponse as any as S.Schema<PutDashboardColorsResponse>;
-
 export type PutDashboardEmbeddedRequestAllowedDomainsList = Array<string>;
-const PutDashboardEmbeddedRequestAllowedDomainsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardEmbeddedRequestAllowedDomainsList>;
-
 export interface PutDashboardEmbeddedRequest {
   /** The dashboard id or slug */
   id_or_slug: string;
   allowed_domains: PutDashboardEmbeddedRequestAllowedDomainsList;
 }
-const PutDashboardEmbeddedRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  6,
-) as any as S.Schema<PutDashboardEmbeddedRequest>;
-
 export interface PutDashboardEmbeddedResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-const PutDashboardEmbeddedResponse =
-  CreateDashboardEmbeddedResponse as any as S.Schema<PutDashboardEmbeddedResponse>;
-
 export type PutDashboardFiltersRequestDeletedList = Array<string>;
-const PutDashboardFiltersRequestDeletedList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardFiltersRequestDeletedList>;
-
 export type PutDashboardFiltersRequestModifiedList = Array<unknown>;
-const PutDashboardFiltersRequestModifiedList =
-  TagObjectObjectsToTagList as any as S.Schema<PutDashboardFiltersRequestModifiedList>;
-
 export type PutDashboardFiltersRequestReorderedList = Array<string>;
-const PutDashboardFiltersRequestReorderedList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardFiltersRequestReorderedList>;
-
 export interface PutDashboardFiltersRequest {
   pk: number;
   deleted?: PutDashboardFiltersRequestDeletedList;
   modified?: PutDashboardFiltersRequestModifiedList;
   reordered?: PutDashboardFiltersRequestReorderedList;
 }
-const PutDashboardFiltersRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  7,
-) as any as S.Schema<PutDashboardFiltersRequest>;
-
 export type PutDashboardFiltersResponseResultList = Array<unknown>;
 export interface PutDashboardFiltersResponse {
   result?: PutDashboardFiltersResponseResultList;
 }
-const PutDashboardFiltersResponse =
-  CreateDatasourceQueryResponse as any as S.Schema<PutDashboardFiltersResponse>;
-
 export interface PutDashboardFilterStateRequest {
   pk: number;
   key: string;
@@ -11349,27 +7318,14 @@ export interface PutDashboardFilterStateRequest {
   /** Any type of JSON supported text. */
   value: string;
 }
-const PutDashboardFilterStateRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  0,
-) as any as S.Schema<PutDashboardFilterStateRequest>;
-
 export interface PutDashboardFilterStateResponse {
   /** The key to retrieve the value. */
   key?: string;
 }
-const PutDashboardFilterStateResponse =
-  CreateDashboardFilterStateResponse as any as S.Schema<PutDashboardFilterStateResponse>;
-
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type PutDatabaseRequestConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-const PutDatabaseRequestConfigurationMethod = S.String;
-
 /** DB-specific parameters for configuration */
 export type PutDatabaseRequestParametersMap = { [key: string]: unknown | undefined };
-const PutDatabaseRequestParametersMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<PutDatabaseRequestParametersMap>;
-
 export interface PutDatabaseRequest {
   pk: number;
   /** Allow CREATE TABLE AS option in SQL Lab */
@@ -11413,17 +7369,10 @@ export interface PutDatabaseRequest {
   ssh_tunnel?: DatabaseSSHTunnel | null;
   uuid?: string;
 }
-const PutDatabaseRequest = /*@__PURE__*/ __L.at(__c82, 1) as any as S.Schema<PutDatabaseRequest>;
-
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type DatabaseRestApiPutOutputConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-const DatabaseRestApiPutOutputConfigurationMethod = S.String;
-
 /** DB-specific parameters for configuration */
 export type DatabaseRestApiPutOutputParametersMap = { [key: string]: unknown | undefined };
-const DatabaseRestApiPutOutputParametersMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseRestApiPutOutputParametersMap>;
-
 export interface DatabaseRestApiPutOutput {
   /** Allow CREATE TABLE AS option in SQL Lab */
   allow_ctas?: boolean;
@@ -11466,17 +7415,10 @@ export interface DatabaseRestApiPutOutput {
   ssh_tunnel?: DatabaseSSHTunnelOutput | null;
   uuid?: string;
 }
-const DatabaseRestApiPutOutput = /*@__PURE__*/ __L.at(
-  __c82,
-  2,
-) as any as S.Schema<DatabaseRestApiPutOutput>;
-
 export interface PutDatabaseResponse {
   id?: number;
   result?: DatabaseRestApiPutOutput;
 }
-const PutDatabaseResponse = /*@__PURE__*/ __L.at(__c82, 3) as any as S.Schema<PutDatabaseResponse>;
-
 export interface DatasetColumnsPut {
   advanced_data_type?: string | null;
   column_name: string;
@@ -11494,24 +7436,10 @@ export interface DatasetColumnsPut {
   uuid?: string | null;
   verbose_name?: string | null;
 }
-const DatasetColumnsPut = /*@__PURE__*/ __L.at(__c82, 4) as any as S.Schema<DatasetColumnsPut>;
-
 export type PutDatasetRequestColumnsList = Array<DatasetColumnsPut>;
-const PutDatasetRequestColumnsList = /*@__PURE__*/ __L.at(
-  __c82,
-  5,
-) as any as S.Schema<PutDatasetRequestColumnsList>;
-
 export type PutDatasetRequestEditorsList = Array<number>;
-const PutDatasetRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutDatasetRequestEditorsList>;
-
 export type FolderChildrenList = Array<Folder>;
-const FolderChildrenList = /*@__PURE__*/ __L.at(__c82, 6) as any as S.Schema<FolderChildrenList>;
-
 export type FolderType = "metric" | "column" | "folder";
-const FolderType = S.String;
-
 export interface Folder {
   children?: FolderChildrenList | null;
   description?: string | null;
@@ -11519,23 +7447,11 @@ export interface Folder {
   type?: FolderType | (string & {});
   uuid: string;
 }
-const Folder = /*@__PURE__*/ __L.at(__c82, 7) as any as S.Schema<Folder>;
-
 export type PutDatasetRequestFoldersList = Array<Folder>;
-const PutDatasetRequestFoldersList = /*@__PURE__*/ __L.at(
-  __c83,
-  0,
-) as any as S.Schema<PutDatasetRequestFoldersList>;
-
 export interface DatasetMetricCurrencyPut {
   symbol?: string;
   symbolPosition?: string;
 }
-const DatasetMetricCurrencyPut = /*@__PURE__*/ __L.at(
-  __c83,
-  1,
-) as any as S.Schema<DatasetMetricCurrencyPut>;
-
 export interface DatasetMetricsPut {
   currency?: DatasetMetricCurrencyPut | null;
   d3format?: string | null;
@@ -11549,14 +7465,7 @@ export interface DatasetMetricsPut {
   verbose_name?: string | null;
   warning_text?: string | null;
 }
-const DatasetMetricsPut = /*@__PURE__*/ __L.at(__c83, 2) as any as S.Schema<DatasetMetricsPut>;
-
 export type PutDatasetRequestMetricsList = Array<DatasetMetricsPut>;
-const PutDatasetRequestMetricsList = /*@__PURE__*/ __L.at(
-  __c83,
-  3,
-) as any as S.Schema<PutDatasetRequestMetricsList>;
-
 export interface PutDatasetRequest {
   pk: number;
   override_columns?: boolean;
@@ -11586,24 +7495,10 @@ export interface PutDatasetRequest {
   template_params?: string | null;
   uuid?: string | null;
 }
-const PutDatasetRequest = /*@__PURE__*/ __L.at(__c83, 4) as any as S.Schema<PutDatasetRequest>;
-
 export type DatasetRestApiPutColumnsList = Array<DatasetColumnsPut>;
-const DatasetRestApiPutColumnsList =
-  PutDatasetRequestColumnsList as any as S.Schema<DatasetRestApiPutColumnsList>;
-
 export type DatasetRestApiPutEditorsList = Array<number>;
-const DatasetRestApiPutEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<DatasetRestApiPutEditorsList>;
-
 export type DatasetRestApiPutFoldersList = Array<Folder>;
-const DatasetRestApiPutFoldersList =
-  PutDatasetRequestFoldersList as any as S.Schema<DatasetRestApiPutFoldersList>;
-
 export type DatasetRestApiPutMetricsList = Array<DatasetMetricsPut>;
-const DatasetRestApiPutMetricsList =
-  PutDatasetRequestMetricsList as any as S.Schema<DatasetRestApiPutMetricsList>;
-
 export interface DatasetRestApiPut {
   always_filter_main_dttm?: boolean;
   cache_timeout?: number | null;
@@ -11631,8 +7526,6 @@ export interface DatasetRestApiPut {
   template_params?: string | null;
   uuid?: string | null;
 }
-const DatasetRestApiPut = /*@__PURE__*/ __L.at(__c83, 5) as any as S.Schema<DatasetRestApiPut>;
-
 export interface PutDatasetResponse {
   id?: number;
   /** Continuum transaction_id of the live row after this update. When this differs from ``old_transaction_id`` the update produced a new version row (regardless of whether ``new_version`` changed). */
@@ -11649,22 +7542,12 @@ export interface PutDatasetResponse {
   old_version_uuid?: string | null;
   result?: DatasetRestApiPut;
 }
-const PutDatasetResponse = /*@__PURE__*/ __L.at(__c83, 6) as any as S.Schema<PutDatasetResponse>;
-
 export interface PutDatasetRefreshRequest {
   pk: number;
 }
-const PutDatasetRefreshRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  7,
-) as any as S.Schema<PutDatasetRefreshRequest>;
-
 export interface PutDatasetRefreshResponse {
   message?: string;
 }
-const PutDatasetRefreshResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<PutDatasetRefreshResponse>;
-
 export interface PutDatasetWarmUpCacheRequest {
   /** The ID of the dashboard to get filters for when warming cache */
   dashboard_id?: number;
@@ -11675,11 +7558,6 @@ export interface PutDatasetWarmUpCacheRequest {
   /** The name of the table to warm up cache for */
   table_name: string;
 }
-const PutDatasetWarmUpCacheRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  0,
-) as any as S.Schema<PutDatasetWarmUpCacheRequest>;
-
 export type DatasetCacheWarmUpResponseSingle = ChartCacheWarmUpResponseSingle;
 /** A list of each chart's warmup status and errors if any */
 export type DatasetCacheWarmUpResponseSchemaResultList = Array<ChartCacheWarmUpResponseSingle>;
@@ -11687,9 +7565,6 @@ export interface DatasetCacheWarmUpResponseSchema {
   /** A list of each chart's warmup status and errors if any */
   result?: DatasetCacheWarmUpResponseSchemaResultList;
 }
-const DatasetCacheWarmUpResponseSchema =
-  ChartCacheWarmUpResponseSchema as any as S.Schema<DatasetCacheWarmUpResponseSchema>;
-
 /** The datasource type */
 export type PutExploreFormDataRequestDatasourceType =
   | "table"
@@ -11698,8 +7573,6 @@ export type PutExploreFormDataRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-const PutExploreFormDataRequestDatasourceType = S.String;
-
 export interface PutExploreFormDataRequest {
   key: string;
   tab_id?: number;
@@ -11712,18 +7585,10 @@ export interface PutExploreFormDataRequest {
   /** Any type of JSON supported text. */
   form_data: string;
 }
-const PutExploreFormDataRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  1,
-) as any as S.Schema<PutExploreFormDataRequest>;
-
 export interface PutExploreFormDataResponse {
   /** The key to retrieve the form_data. */
   key?: string;
 }
-const PutExploreFormDataResponse =
-  CreateDashboardFilterStateResponse as any as S.Schema<PutExploreFormDataResponse>;
-
 export interface PutMeRequest {
   /** The current user's existing password; required when the account has one */
   current_password?: string | Redacted.Redacted<string>;
@@ -11734,28 +7599,14 @@ export interface PutMeRequest {
   /** The current user's new password; requires current_password when the account already has one */
   password?: string | Redacted.Redacted<string>;
 }
-const PutMeRequest = /*@__PURE__*/ __L.at(__c84, 2) as any as S.Schema<PutMeRequest>;
-
 export interface PutMeResponse {
   result?: UserResponseSchema;
 }
-const PutMeResponse = GetMeResponse as any as S.Schema<PutMeResponse>;
-
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type PutReportRequestCreationMethod = "charts" | "dashboards" | "alerts_reports";
-const PutReportRequestCreationMethod = S.String;
-
 export type PutReportRequestEditorsList = Array<number>;
-const PutReportRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutReportRequestEditorsList>;
-
 export type PutReportRequestRecipientsList = Array<ReportRecipient>;
-const PutReportRequestRecipientsList =
-  CreateReportRequestRecipientsList as any as S.Schema<PutReportRequestRecipientsList>;
-
 export type PutReportRequestReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-const PutReportRequestReportFormat = S.String;
-
 /** A timezone string that represents the location of the timezone. */
 export type PutReportRequestTimezone =
   | "Africa/Abidjan"
@@ -12355,16 +8206,10 @@ export type PutReportRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const PutReportRequestTimezone = S.String;
-
 /** The report schedule type */
 export type PutReportRequestType = "Alert" | "Report";
-const PutReportRequestType = S.String;
-
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type PutReportRequestValidatorType = "not null" | "operator";
-const PutReportRequestValidatorType = S.String;
-
 export interface PutReportRequest {
   /** The Report Schedule pk */
   pk: number;
@@ -12419,23 +8264,11 @@ export interface PutReportRequest {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number | null;
 }
-const PutReportRequest = /*@__PURE__*/ __L.at(__c84, 3) as any as S.Schema<PutReportRequest>;
-
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type ReportScheduleRestApiPutCreationMethod = "charts" | "dashboards" | "alerts_reports";
-const ReportScheduleRestApiPutCreationMethod = S.String;
-
 export type ReportScheduleRestApiPutEditorsList = Array<number>;
-const ReportScheduleRestApiPutEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ReportScheduleRestApiPutEditorsList>;
-
 export type ReportScheduleRestApiPutRecipientsList = Array<ReportRecipient>;
-const ReportScheduleRestApiPutRecipientsList =
-  CreateReportRequestRecipientsList as any as S.Schema<ReportScheduleRestApiPutRecipientsList>;
-
 export type ReportScheduleRestApiPutReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-const ReportScheduleRestApiPutReportFormat = S.String;
-
 /** A timezone string that represents the location of the timezone. */
 export type ReportScheduleRestApiPutTimezone =
   | "Africa/Abidjan"
@@ -13035,16 +8868,10 @@ export type ReportScheduleRestApiPutTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const ReportScheduleRestApiPutTimezone = S.String;
-
 /** The report schedule type */
 export type ReportScheduleRestApiPutType = "Alert" | "Report";
-const ReportScheduleRestApiPutType = S.String;
-
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type ReportScheduleRestApiPutValidatorType = "not null" | "operator";
-const ReportScheduleRestApiPutValidatorType = S.String;
-
 export interface ReportScheduleRestApiPut {
   active?: boolean;
   chart?: number | null;
@@ -13097,31 +8924,16 @@ export interface ReportScheduleRestApiPut {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number | null;
 }
-const ReportScheduleRestApiPut = /*@__PURE__*/ __L.at(
-  __c84,
-  4,
-) as any as S.Schema<ReportScheduleRestApiPut>;
-
 export interface PutReportResponse {
   id?: number;
   result?: ReportScheduleRestApiPut;
 }
-const PutReportResponse = /*@__PURE__*/ __L.at(__c84, 5) as any as S.Schema<PutReportResponse>;
-
 /** filter_type_description */
 export type PutRowlevelsecurityRequestFilterType = "Regular" | "Base";
-const PutRowlevelsecurityRequestFilterType = S.String;
-
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type PutRowlevelsecurityRequestSubjectsList = Array<number>;
-const PutRowlevelsecurityRequestSubjectsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutRowlevelsecurityRequestSubjectsList>;
-
 /** tables_description */
 export type PutRowlevelsecurityRequestTablesList = Array<number>;
-const PutRowlevelsecurityRequestTablesList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutRowlevelsecurityRequestTablesList>;
-
 export interface PutRowlevelsecurityRequest {
   /** The Rule pk */
   pk: number;
@@ -13140,25 +8952,12 @@ export interface PutRowlevelsecurityRequest {
   /** tables_description */
   tables?: PutRowlevelsecurityRequestTablesList;
 }
-const PutRowlevelsecurityRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  6,
-) as any as S.Schema<PutRowlevelsecurityRequest>;
-
 /** filter_type_description */
 export type RLSRestApiPutFilterType = "Regular" | "Base";
-const RLSRestApiPutFilterType = S.String;
-
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type RLSRestApiPutSubjectsList = Array<number>;
-const RLSRestApiPutSubjectsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPutSubjectsList>;
-
 /** tables_description */
 export type RLSRestApiPutTablesList = Array<number>;
-const RLSRestApiPutTablesList =
-  CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPutTablesList>;
-
 export interface RLSRestApiPut {
   /** clause_description */
   clause?: string;
@@ -13175,17 +8974,10 @@ export interface RLSRestApiPut {
   /** tables_description */
   tables?: RLSRestApiPutTablesList;
 }
-const RLSRestApiPut = /*@__PURE__*/ __L.at(__c84, 7) as any as S.Schema<RLSRestApiPut>;
-
 export interface PutRowlevelsecurityResponse {
   id?: number;
   result?: RLSRestApiPut;
 }
-const PutRowlevelsecurityResponse = /*@__PURE__*/ __L.at(
-  __c85,
-  0,
-) as any as S.Schema<PutRowlevelsecurityResponse>;
-
 export interface PutSavedQueryRequest {
   pk: number;
   catalog?: string | null;
@@ -13197,172 +8989,77 @@ export interface PutSavedQueryRequest {
   sql?: string | null;
   template_parameters?: string | null;
 }
-const PutSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  1,
-) as any as S.Schema<PutSavedQueryRequest>;
-
 export type SavedQueryRestApiPut = SavedQueryRestApiPost;
 export interface PutSavedQueryResponse {
   result?: SavedQueryRestApiPost;
 }
-const PutSavedQueryResponse = /*@__PURE__*/ __L.at(
-  __c85,
-  2,
-) as any as S.Schema<PutSavedQueryResponse>;
-
 export interface PutSecurityGroupRequest {
   pk: number;
 }
-const PutSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  3,
-) as any as S.Schema<PutSecurityGroupRequest>;
-
 export interface PutSecurityGroupResponse {}
-const PutSecurityGroupResponse =
-  CreateSecurityGroupResponse as any as S.Schema<PutSecurityGroupResponse>;
-
 export interface PutSecurityPermissionsResourceRequest {
   pk: number;
   permission_id?: unknown | null;
   view_menu_id?: unknown | null;
 }
-const PutSecurityPermissionsResourceRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  4,
-) as any as S.Schema<PutSecurityPermissionsResourceRequest>;
-
 export type SupersetPermissionViewMenuApiPut = SupersetPermissionViewMenuApiPost;
 export interface PutSecurityPermissionsResourceResponse {
   result?: SupersetPermissionViewMenuApiPost;
 }
-const PutSecurityPermissionsResourceResponse = /*@__PURE__*/ __L.at(
-  __c85,
-  5,
-) as any as S.Schema<PutSecurityPermissionsResourceResponse>;
-
 export interface PutSecurityResourceRequest {
   pk: number;
   name: string;
 }
-const PutSecurityResourceRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  6,
-) as any as S.Schema<PutSecurityResourceRequest>;
-
 export type ViewMenuApiPut = ViewMenuApiPost;
 export interface PutSecurityResourceResponse {
   result?: ViewMenuApiPost;
 }
-const PutSecurityResourceResponse = /*@__PURE__*/ __L.at(
-  __c85,
-  7,
-) as any as S.Schema<PutSecurityResourceResponse>;
-
 export interface PutSecurityRoleRequest {
   pk: number;
   name: string;
 }
-const PutSecurityRoleRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  0,
-) as any as S.Schema<PutSecurityRoleRequest>;
-
 export type SupersetRoleApiPut = ViewMenuApiPost;
 export interface PutSecurityRoleResponse {
   result?: ViewMenuApiPost;
 }
-const PutSecurityRoleResponse = /*@__PURE__*/ __L.at(
-  __c86,
-  1,
-) as any as S.Schema<PutSecurityRoleResponse>;
-
 /** List of group ids */
 export type PutSecurityRoleGroupsRequestGroupIdsList = Array<number>;
-const PutSecurityRoleGroupsRequestGroupIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutSecurityRoleGroupsRequestGroupIdsList>;
-
 export interface PutSecurityRoleGroupsRequest {
   role_id: number;
   /** List of group ids */
   group_ids: PutSecurityRoleGroupsRequestGroupIdsList;
 }
-const PutSecurityRoleGroupsRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  2,
-) as any as S.Schema<PutSecurityRoleGroupsRequest>;
-
 /** List of group ids */
 export type RoleGroupPutSchemaGroupIdsList = Array<number>;
-const RoleGroupPutSchemaGroupIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RoleGroupPutSchemaGroupIdsList>;
-
 export interface RoleGroupPutSchema {
   /** List of group ids */
   group_ids: RoleGroupPutSchemaGroupIdsList;
 }
-const RoleGroupPutSchema = /*@__PURE__*/ __L.at(__c86, 3) as any as S.Schema<RoleGroupPutSchema>;
-
 export interface PutSecurityRoleGroupsResponse {
   result?: RoleGroupPutSchema;
 }
-const PutSecurityRoleGroupsResponse = /*@__PURE__*/ __L.at(
-  __c86,
-  4,
-) as any as S.Schema<PutSecurityRoleGroupsResponse>;
-
 /** List of user ids */
 export type PutSecurityRoleUsersRequestUserIdsList = Array<number>;
-const PutSecurityRoleUsersRequestUserIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutSecurityRoleUsersRequestUserIdsList>;
-
 export interface PutSecurityRoleUsersRequest {
   role_id: number;
   /** List of user ids */
   user_ids: PutSecurityRoleUsersRequestUserIdsList;
 }
-const PutSecurityRoleUsersRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  5,
-) as any as S.Schema<PutSecurityRoleUsersRequest>;
-
 /** List of user ids */
 export type RoleUserPutSchemaUserIdsList = Array<number>;
-const RoleUserPutSchemaUserIdsList =
-  CreateChartRequestDashboardsList as any as S.Schema<RoleUserPutSchemaUserIdsList>;
-
 export interface RoleUserPutSchema {
   /** List of user ids */
   user_ids: RoleUserPutSchemaUserIdsList;
 }
-const RoleUserPutSchema = /*@__PURE__*/ __L.at(__c86, 6) as any as S.Schema<RoleUserPutSchema>;
-
 export interface PutSecurityRoleUsersResponse {
   result?: RoleUserPutSchema;
 }
-const PutSecurityRoleUsersResponse = /*@__PURE__*/ __L.at(
-  __c86,
-  7,
-) as any as S.Schema<PutSecurityRoleUsersResponse>;
-
 export interface PutSecurityUserRequest {
   pk: number;
 }
-const PutSecurityUserRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  0,
-) as any as S.Schema<PutSecurityUserRequest>;
-
 export interface PutSecurityUserResponse {}
-const PutSecurityUserResponse =
-  CreateSecurityGroupResponse as any as S.Schema<PutSecurityUserResponse>;
-
 /** Objects to tag */
 export type PutTagRequestObjectsToTagList = Array<unknown>;
-const PutTagRequestObjectsToTagList =
-  TagObjectObjectsToTagList as any as S.Schema<PutTagRequestObjectsToTagList>;
-
 export interface PutTagRequest {
   pk: number;
   description?: string | null;
@@ -13370,8 +9067,6 @@ export interface PutTagRequest {
   /** Objects to tag */
   objects_to_tag?: PutTagRequestObjectsToTagList;
 }
-const PutTagRequest = /*@__PURE__*/ __L.at(__c87, 1) as any as S.Schema<PutTagRequest>;
-
 /** Objects to tag */
 export type TagRestApiPutObjectsToTagList = Array<unknown>;
 export interface TagRestApiPut {
@@ -13384,20 +9079,13 @@ export interface PutTagResponse {
   id?: number;
   result?: TagRestApiPut;
 }
-const PutTagResponse = CreateTagResponse as any as S.Schema<PutTagResponse>;
-
 export type PutThemeRequestEditorsList = Array<number>;
-const PutThemeRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<PutThemeRequestEditorsList>;
-
 export interface PutThemeRequest {
   pk: number;
   editors?: PutThemeRequestEditorsList;
   json_data: string;
   theme_name: string;
 }
-const PutThemeRequest = /*@__PURE__*/ __L.at(__c87, 2) as any as S.Schema<PutThemeRequest>;
-
 export type ThemeRestApiPutEditorsList = Array<number>;
 export interface ThemeRestApiPut {
   editors?: ThemeRestApiPutEditorsList;
@@ -13408,169 +9096,83 @@ export interface PutThemeResponse {
   id?: number;
   result?: ThemeRestApiPut;
 }
-const PutThemeResponse = CreateThemeResponse as any as S.Schema<PutThemeResponse>;
-
 export interface PutThemeSetSystemDarkRequest {
   /** The theme id */
   pk: number;
 }
-const PutThemeSetSystemDarkRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  3,
-) as any as S.Schema<PutThemeSetSystemDarkRequest>;
-
 export interface PutThemeSetSystemDarkResponse {
   id?: number;
   result?: string;
 }
-const PutThemeSetSystemDarkResponse = /*@__PURE__*/ __L.at(
-  __c87,
-  4,
-) as any as S.Schema<PutThemeSetSystemDarkResponse>;
-
 export interface PutThemeSetSystemDefaultRequest {
   /** The theme id */
   pk: number;
 }
-const PutThemeSetSystemDefaultRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  5,
-) as any as S.Schema<PutThemeSetSystemDefaultRequest>;
-
 export interface PutThemeSetSystemDefaultResponse {
   id?: number;
   result?: string;
 }
-const PutThemeSetSystemDefaultResponse =
-  PutThemeSetSystemDarkResponse as any as S.Schema<PutThemeSetSystemDefaultResponse>;
-
 export interface RefreshSecurityRequest {}
-const RefreshSecurityRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  6,
-) as any as S.Schema<RefreshSecurityRequest>;
-
 export interface RefreshSecurityResponse {
   /** A new refreshed access token */
   access_token?: string | Redacted.Redacted<string>;
 }
-const RefreshSecurityResponse = /*@__PURE__*/ __L.at(
-  __c87,
-  7,
-) as any as S.Schema<RefreshSecurityResponse>;
-
 export interface RestoreChartRequest {
   uuid: string;
 }
-const RestoreChartRequest = /*@__PURE__*/ __L.at(__c88, 0) as any as S.Schema<RestoreChartRequest>;
-
 export interface RestoreChartResponse {
   message?: string;
 }
-const RestoreChartResponse = DeleteChartResponse as any as S.Schema<RestoreChartResponse>;
-
 export interface RestoreChartVersionRequest {
   /** Chart UUID */
   uuid_str: string;
   /** Version UUID as returned by the list-versions endpoint. Stable across retention pruning. */
   version_uuid_str: string;
 }
-const RestoreChartVersionRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  1,
-) as any as S.Schema<RestoreChartVersionRequest>;
-
 export interface RestoreChartVersionResponse {
   message?: string;
 }
-const RestoreChartVersionResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<RestoreChartVersionResponse>;
-
 export interface RestoreDashboardRequest {
   uuid: string;
 }
-const RestoreDashboardRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  2,
-) as any as S.Schema<RestoreDashboardRequest>;
-
 export interface RestoreDashboardResponse {
   message?: string;
 }
-const RestoreDashboardResponse = DeleteChartResponse as any as S.Schema<RestoreDashboardResponse>;
-
 export interface RestoreDashboardVersionRequest {
   /** Dashboard UUID */
   uuid_str: string;
   /** Version UUID as returned by the list-versions endpoint. Stable across retention pruning. */
   version_uuid_str: string;
 }
-const RestoreDashboardVersionRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  3,
-) as any as S.Schema<RestoreDashboardVersionRequest>;
-
 export interface RestoreDashboardVersionResponse {
   message?: string;
 }
-const RestoreDashboardVersionResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<RestoreDashboardVersionResponse>;
-
 export interface RestoreDatasetRequest {
   uuid: string;
 }
-const RestoreDatasetRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  4,
-) as any as S.Schema<RestoreDatasetRequest>;
-
 export interface RestoreDatasetResponse {
   message?: string;
 }
-const RestoreDatasetResponse = DeleteChartResponse as any as S.Schema<RestoreDatasetResponse>;
-
 export interface RestoreDatasetVersionRequest {
   /** Dataset UUID */
   uuid_str: string;
   /** Version UUID as returned by the list-versions endpoint. Stable across retention pruning. */
   version_uuid_str: string;
 }
-const RestoreDatasetVersionRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  5,
-) as any as S.Schema<RestoreDatasetVersionRequest>;
-
 export interface RestoreDatasetVersionResponse {
   message?: string;
 }
-const RestoreDatasetVersionResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<RestoreDatasetVersionResponse>;
-
 export interface StopQueryRequest {
   client_id?: string;
 }
-const StopQueryRequest = /*@__PURE__*/ __L.at(__c88, 6) as any as S.Schema<StopQueryRequest>;
-
 export interface StopQueryResponse {
   result?: string;
 }
-const StopQueryResponse = SelectStarResponseSchema as any as S.Schema<StopQueryResponse>;
-
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type SubscribeReportRequestCreationMethod = "charts" | "dashboards" | "alerts_reports";
-const SubscribeReportRequestCreationMethod = S.String;
-
 export type SubscribeReportRequestEditorsList = Array<number>;
-const SubscribeReportRequestEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<SubscribeReportRequestEditorsList>;
-
 export type SubscribeReportRequestRecipientsList = Array<ReportRecipient>;
-const SubscribeReportRequestRecipientsList =
-  CreateReportRequestRecipientsList as any as S.Schema<SubscribeReportRequestRecipientsList>;
-
 export type SubscribeReportRequestReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-const SubscribeReportRequestReportFormat = S.String;
-
 /** A timezone string that represents the location of the timezone. */
 export type SubscribeReportRequestTimezone =
   | "Africa/Abidjan"
@@ -14170,16 +9772,10 @@ export type SubscribeReportRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-const SubscribeReportRequestTimezone = S.String;
-
 /** The report schedule type */
 export type SubscribeReportRequestType = "Alert" | "Report";
-const SubscribeReportRequestType = S.String;
-
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type SubscribeReportRequestValidatorType = "not null" | "operator";
-const SubscribeReportRequestValidatorType = S.String;
-
 export interface SubscribeReportRequest {
   active?: boolean;
   chart?: number | null;
@@ -14232,41 +9828,21 @@ export interface SubscribeReportRequest {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number;
 }
-const SubscribeReportRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  7,
-) as any as S.Schema<SubscribeReportRequest>;
-
 export interface SubscribeReportResponse {
   id?: number;
   result?: ReportScheduleRestApiPost;
 }
-const SubscribeReportResponse = CreateReportResponse as any as S.Schema<SubscribeReportResponse>;
-
 export interface SyncDatabasePermissionsRequest {
   /** The database connection ID */
   pk: number;
 }
-const SyncDatabasePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  0,
-) as any as S.Schema<SyncDatabasePermissionsRequest>;
-
 export interface SyncDatabasePermissionsResponse {
   message?: string;
 }
-const SyncDatabasePermissionsResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<SyncDatabasePermissionsResponse>;
-
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type TestDatabaseConnectionRequestConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-const TestDatabaseConnectionRequestConfigurationMethod = S.String;
-
 /** DB-specific parameters for configuration */
 export type TestDatabaseConnectionRequestParametersMap = { [key: string]: unknown | undefined };
-const TestDatabaseConnectionRequestParametersMap =
-  CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<TestDatabaseConnectionRequestParametersMap>;
-
 export interface TestDatabaseConnectionRequest {
   /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
   configuration_method?: TestDatabaseConnectionRequestConfigurationMethod | (string & {});
@@ -14290,56 +9866,28 @@ export interface TestDatabaseConnectionRequest {
   sqlalchemy_uri?: string;
   ssh_tunnel?: DatabaseSSHTunnel | null;
 }
-const TestDatabaseConnectionRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  1,
-) as any as S.Schema<TestDatabaseConnectionRequest>;
-
 export interface TestDatabaseConnectionResponse {
   message?: string;
 }
-const TestDatabaseConnectionResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<TestDatabaseConnectionResponse>;
-
 /** list of tag names to add to object */
 export type UpdateTagRequestTagsList = Array<string>;
-const UpdateTagRequestTagsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<UpdateTagRequestTagsList>;
-
 export interface UpdateTagRequest {
   object_type: number;
   object_id: number;
   /** list of tag names to add to object */
   tags?: UpdateTagRequestTagsList;
 }
-const UpdateTagRequest = /*@__PURE__*/ __L.at(__c89, 2) as any as S.Schema<UpdateTagRequest>;
-
 export interface UpdateTagResponse {}
-const UpdateTagResponse = CreateSecurityGroupResponse as any as S.Schema<UpdateTagResponse>;
-
 /** What to do if the table already exists accepts: fail, replace, append */
 export type UploadDatabaseRequestAlreadyExists = "fail" | "replace" | "append";
-const UploadDatabaseRequestAlreadyExists = S.String;
-
 /** [CSV and Excel only] A list of column names that should be parsed as dates. Example: date,timestamp */
 export type UploadDatabaseRequestColumnDatesList = Array<string>;
-const UploadDatabaseRequestColumnDatesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadDatabaseRequestColumnDatesList>;
-
 /** A List of the column names that should be read */
 export type UploadDatabaseRequestColumnsReadList = Array<string>;
-const UploadDatabaseRequestColumnsReadList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadDatabaseRequestColumnsReadList>;
-
 /** [CSV and Excel only] A list of strings that should be treated as null. Examples: '' for empty strings, 'None', 'N/A', Warning: Hive database supports only a single value */
 export type UploadDatabaseRequestNullValuesList = Array<string>;
-const UploadDatabaseRequestNullValuesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadDatabaseRequestNullValuesList>;
-
 /** File type to upload */
 export type UploadDatabaseRequestType = "csv" | "excel" | "columnar";
-const UploadDatabaseRequestType = S.String;
-
 export interface UploadDatabaseRequest {
   pk: number;
   /** What to do if the table already exists accepts: fail, replace, append */
@@ -14385,20 +9933,11 @@ export interface UploadDatabaseRequest {
   /** File type to upload */
   type: UploadDatabaseRequestType | (string & {});
 }
-const UploadDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  3,
-) as any as S.Schema<UploadDatabaseRequest>;
-
 export interface UploadDatabaseResponse {
   message?: string;
 }
-const UploadDatabaseResponse = DeleteChartResponse as any as S.Schema<UploadDatabaseResponse>;
-
 /** File type to upload */
 export type UploadDatabaseMetadataRequestType = "csv" | "excel" | "columnar";
-const UploadDatabaseMetadataRequestType = S.String;
-
 export interface UploadDatabaseMetadataRequest {
   /** The character used to separate values in the CSV file (e.g., a comma, semicolon, or tab). */
   delimiter?: string;
@@ -14409,66 +9948,33 @@ export interface UploadDatabaseMetadataRequest {
   /** File type to upload */
   type: UploadDatabaseMetadataRequestType | (string & {});
 }
-const UploadDatabaseMetadataRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  4,
-) as any as S.Schema<UploadDatabaseMetadataRequest>;
-
 /** A list of columns names in the sheet */
 export type UploadFileMetadataItemColumnNamesList = Array<string>;
-const UploadFileMetadataItemColumnNamesList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadFileMetadataItemColumnNamesList>;
-
 export interface UploadFileMetadataItem {
   /** A list of columns names in the sheet */
   column_names?: UploadFileMetadataItemColumnNamesList;
   /** The name of the sheet */
   sheet_name?: string;
 }
-const UploadFileMetadataItem = /*@__PURE__*/ __L.at(
-  __c89,
-  5,
-) as any as S.Schema<UploadFileMetadataItem>;
-
 export type UploadFileMetadataItemsList = Array<UploadFileMetadataItem>;
-const UploadFileMetadataItemsList = /*@__PURE__*/ __L.at(
-  __c89,
-  6,
-) as any as S.Schema<UploadFileMetadataItemsList>;
-
 export interface UploadFileMetadata {
   items?: UploadFileMetadataItemsList;
 }
-const UploadFileMetadata = /*@__PURE__*/ __L.at(__c89, 7) as any as S.Schema<UploadFileMetadata>;
-
 export interface UploadDatabaseMetadataResponse {
   result?: UploadFileMetadata;
 }
-const UploadDatabaseMetadataResponse = /*@__PURE__*/ __L.at(
-  __c90,
-  0,
-) as any as S.Schema<UploadDatabaseMetadataResponse>;
-
 /** Gsheets specific column for managing label to sheet urls */
 export type ValidateDatabaseParametersRequestCatalogMap = {
   [key: string]: unknown | null | undefined;
 };
-const ValidateDatabaseParametersRequestCatalogMap =
-  AnnotationLayerOverridesMap as any as S.Schema<ValidateDatabaseParametersRequestCatalogMap>;
-
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type ValidateDatabaseParametersRequestConfigurationMethod =
   | "sqlalchemy_form"
   | "dynamic_form";
-const ValidateDatabaseParametersRequestConfigurationMethod = S.String;
-
 /** DB-specific parameters for configuration */
 export type ValidateDatabaseParametersRequestParametersMap = {
   [key: string]: unknown | null | undefined;
 };
-const ValidateDatabaseParametersRequestParametersMap =
-  AnnotationLayerOverridesMap as any as S.Schema<ValidateDatabaseParametersRequestParametersMap>;
-
 export interface DatabaseSSHTunnelValidation {
   /** SSH Tunnel ID (for updates) */
   id?: number | null;
@@ -14480,11 +9986,6 @@ export interface DatabaseSSHTunnelValidation {
   server_port?: number | null;
   username?: string | null;
 }
-const DatabaseSSHTunnelValidation = /*@__PURE__*/ __L.at(
-  __c90,
-  1,
-) as any as S.Schema<DatabaseSSHTunnelValidation>;
-
 export interface ValidateDatabaseParametersRequest {
   /** Gsheets specific column for managing label to sheet urls */
   catalog?: ValidateDatabaseParametersRequestCatalogMap;
@@ -14510,17 +10011,9 @@ export interface ValidateDatabaseParametersRequest {
   server_cert?: string | null;
   ssh_tunnel?: DatabaseSSHTunnelValidation | null;
 }
-const ValidateDatabaseParametersRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  2,
-) as any as S.Schema<ValidateDatabaseParametersRequest>;
-
 export interface ValidateDatabaseParametersResponse {
   message?: string;
 }
-const ValidateDatabaseParametersResponse =
-  DeleteAnnotationLayerResponse as any as S.Schema<ValidateDatabaseParametersResponse>;
-
 export interface ValidateDatabaseSqlRequest {
   pk: number;
   catalog?: string | null;
@@ -14529,47 +10022,26 @@ export interface ValidateDatabaseSqlRequest {
   sql: string;
   template_params?: unknown | null;
 }
-const ValidateDatabaseSqlRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  3,
-) as any as S.Schema<ValidateDatabaseSqlRequest>;
-
 export interface ValidateSQLResponse {
   end_column?: number;
   line_number?: number;
   message?: string;
   start_column?: number;
 }
-const ValidateSQLResponse = /*@__PURE__*/ __L.at(__c90, 4) as any as S.Schema<ValidateSQLResponse>;
-
 /** A List of SQL errors found on the statement */
 export type ValidateDatabaseSqlResponseResultList = Array<ValidateSQLResponse>;
-const ValidateDatabaseSqlResponseResultList = /*@__PURE__*/ __L.at(
-  __c90,
-  5,
-) as any as S.Schema<ValidateDatabaseSqlResponseResultList>;
-
 export interface ValidateDatabaseSqlResponse {
   /** A List of SQL errors found on the statement */
   result?: ValidateDatabaseSqlResponseResultList;
 }
-const ValidateDatabaseSqlResponse = /*@__PURE__*/ __L.at(
-  __c90,
-  6,
-) as any as S.Schema<ValidateDatabaseSqlResponse>;
-
 /** SQL clause type for filter expressions */
 export type ValidateDatasourceExpressionRequestClause = "WHERE" | "HAVING";
-const ValidateDatasourceExpressionRequestClause = S.String;
-
 /** The type of SQL expression */
 export type ValidateDatasourceExpressionRequestExpressionType =
   | "column"
   | "metric"
   | "where"
   | "having";
-const ValidateDatasourceExpressionRequestExpressionType = S.String;
-
 export interface ValidateDatasourceExpressionRequest {
   /** The type of datasource */
   datasource_type: string;
@@ -14582,11 +10054,6 @@ export interface ValidateDatasourceExpressionRequest {
   /** The type of SQL expression */
   expression_type?: ValidateDatasourceExpressionRequestExpressionType | (string & {});
 }
-const ValidateDatasourceExpressionRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  7,
-) as any as S.Schema<ValidateDatasourceExpressionRequest>;
-
 export type ValidateDatasourceExpressionResponseResultItem = ValidateSQLResponse;
 /** Empty array for success, errors for failure */
 export type ValidateDatasourceExpressionResponseResultList = Array<ValidateSQLResponse>;
@@ -14594,9 +10061,6 @@ export interface ValidateDatasourceExpressionResponse {
   /** Empty array for success, errors for failure */
   result?: ValidateDatasourceExpressionResponseResultList;
 }
-const ValidateDatasourceExpressionResponse =
-  ValidateDatabaseSqlResponse as any as S.Schema<ValidateDatasourceExpressionResponse>;
-
 export type BulkTagCreateError = BadRequest | NotFound | ApacheSupersetOpError;
 /** Bulk create tags and tagged objects */
 export const bulkTagCreate: API.OperationMethod<
@@ -14605,8 +10069,8 @@ export const bulkTagCreate: API.OperationMethod<
   BulkTagCreateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkTagCreateRequest,
-  output: TagPostBulkResponseSchema,
+  input: __S(3, __c0, 3) as any as S.Schema<BulkTagCreateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<TagPostBulkResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14620,8 +10084,8 @@ export const copyDashboard: API.OperationMethod<
   CopyDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyDashboardRequest,
-  output: CopyDashboardResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CopyDashboardRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CopyDashboardResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14635,8 +10099,8 @@ export const createAnnotationLayer: API.OperationMethod<
   CreateAnnotationLayerError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAnnotationLayerRequest,
-  output: CreateAnnotationLayerResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateAnnotationLayerRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateAnnotationLayerResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14650,8 +10114,8 @@ export const createAnnotationLayerAnnotation: API.OperationMethod<
   CreateAnnotationLayerAnnotationError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAnnotationLayerAnnotationRequest,
-  output: CreateAnnotationLayerAnnotationResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateAnnotationLayerAnnotationRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreateAnnotationLayerAnnotationResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14665,8 +10129,8 @@ export const createChart: API.OperationMethod<
   CreateChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChartRequest,
-  output: CreateChartResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateChartRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateChartResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14680,8 +10144,8 @@ export const createChartData: API.OperationMethod<
   CreateChartDataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChartDataRequest,
-  output: ChartDataResponseSchema,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateChartDataRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ChartDataResponseSchema>,
   errors: [BadRequest, Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14695,8 +10159,8 @@ export const createChartFavorite: API.OperationMethod<
   CreateChartFavoriteError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChartFavoriteRequest,
-  output: CreateChartFavoriteResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<CreateChartFavoriteRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreateChartFavoriteResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14710,8 +10174,8 @@ export const createCssTemplate: API.OperationMethod<
   CreateCssTemplateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCssTemplateRequest,
-  output: CreateCssTemplateResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<CreateCssTemplateRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<CreateCssTemplateResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14725,8 +10189,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardRequest,
-  output: CreateDashboardResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreateDashboardResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14743,8 +10207,8 @@ export const createDashboardCacheDashboardScreenshot: API.OperationMethod<
   CreateDashboardCacheDashboardScreenshotError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardCacheDashboardScreenshotRequest,
-  output: DashboardCacheScreenshotResponseSchema,
+  input: __S(51, __c6, 3) as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<DashboardCacheScreenshotResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14758,8 +10222,8 @@ export const createDashboardEmbedded: API.OperationMethod<
   CreateDashboardEmbeddedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardEmbeddedRequest,
-  output: CreateDashboardEmbeddedResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<CreateDashboardEmbeddedRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateDashboardEmbeddedResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14773,8 +10237,8 @@ export const createDashboardFavorite: API.OperationMethod<
   CreateDashboardFavoriteError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardFavoriteRequest,
-  output: CreateDashboardFavoriteResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<CreateDashboardFavoriteRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreateDashboardFavoriteResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14791,8 +10255,8 @@ export const createDashboardFilterState: API.OperationMethod<
   CreateDashboardFilterStateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardFilterStateRequest,
-  output: CreateDashboardFilterStateResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<CreateDashboardFilterStateRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CreateDashboardFilterStateResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14809,8 +10273,8 @@ export const createDashboardPermalink: API.OperationMethod<
   CreateDashboardPermalinkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardPermalinkRequest,
-  output: CreateDashboardPermalinkResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<CreateDashboardPermalinkRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<CreateDashboardPermalinkResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14824,8 +10288,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseRequest,
-  output: CreateDatabaseResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<CreateDatabaseResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14839,8 +10303,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetRequest,
-  output: CreateDatasetResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<CreateDatasetResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14858,8 +10322,8 @@ export const createDatasourceCompatible: API.OperationMethod<
   CreateDatasourceCompatibleError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasourceCompatibleRequest,
-  output: CreateDatasourceCompatibleResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateDatasourceCompatibleRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<CreateDatasourceCompatibleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14873,8 +10337,8 @@ export const createDatasourceQuery: API.OperationMethod<
   CreateDatasourceQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasourceQueryRequest,
-  output: CreateDatasourceQueryResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<CreateDatasourceQueryRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<CreateDatasourceQueryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14888,8 +10352,8 @@ export const createExploreFormData: API.OperationMethod<
   CreateExploreFormDataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExploreFormDataRequest,
-  output: CreateExploreFormDataResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateExploreFormDataRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CreateExploreFormDataResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14903,8 +10367,8 @@ export const createExplorePermalink: API.OperationMethod<
   CreateExplorePermalinkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExplorePermalinkRequest,
-  output: CreateExplorePermalinkResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<CreateExplorePermalinkRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<CreateExplorePermalinkResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14917,8 +10381,8 @@ export const createLog: API.OperationMethod<
   CreateLogError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLogRequest,
-  output: CreateLogResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<CreateLogRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<CreateLogResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14932,8 +10396,8 @@ export const createReport: API.OperationMethod<
   CreateReportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReportRequest,
-  output: CreateReportResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<CreateReportRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<CreateReportResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14952,8 +10416,8 @@ export const createRowlevelsecurity: API.OperationMethod<
   CreateRowlevelsecurityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRowlevelsecurityRequest,
-  output: CreateRowlevelsecurityResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<CreateRowlevelsecurityRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<CreateRowlevelsecurityResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14967,8 +10431,8 @@ export const createSavedQuery: API.OperationMethod<
   CreateSavedQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSavedQueryRequest,
-  output: CreateSavedQueryResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<CreateSavedQueryRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<CreateSavedQueryResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14981,8 +10445,8 @@ export const createSecurityGroup: API.OperationMethod<
   CreateSecurityGroupError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityGroupRequest,
-  output: CreateSecurityGroupResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<CreateSecurityGroupRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<CreateSecurityGroupResponse>,
   errors: [BadRequest, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -14996,8 +10460,8 @@ export const createSecurityGuestToken: API.OperationMethod<
   CreateSecurityGuestTokenError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityGuestTokenRequest,
-  output: CreateSecurityGuestTokenResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<CreateSecurityGuestTokenRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<CreateSecurityGuestTokenResponse>,
   errors: [BadRequest, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15013,8 +10477,8 @@ export const createSecurityPermissionsResource: API.OperationMethod<
   CreateSecurityPermissionsResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityPermissionsResourceRequest,
-  output: CreateSecurityPermissionsResourceResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<CreateSecurityPermissionsResourceRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<CreateSecurityPermissionsResourceResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15027,8 +10491,8 @@ export const createSecurityResource: API.OperationMethod<
   CreateSecurityResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityResourceRequest,
-  output: CreateSecurityResourceResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<CreateSecurityResourceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreateSecurityResourceResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15041,8 +10505,8 @@ export const createSecurityRole: API.OperationMethod<
   CreateSecurityRoleError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityRoleRequest,
-  output: CreateSecurityRoleResponse,
+  input: __S(113, __c14, 1) as any as S.Schema<CreateSecurityRoleRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreateSecurityRoleResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15059,8 +10523,8 @@ export const createSecurityRolePermissions: API.OperationMethod<
   CreateSecurityRolePermissionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityRolePermissionsRequest,
-  output: CreateSecurityRolePermissionsResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<CreateSecurityRolePermissionsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<CreateSecurityRolePermissionsResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15073,8 +10537,8 @@ export const createSecurityUser: API.OperationMethod<
   CreateSecurityUserError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityUserRequest,
-  output: CreateSecurityUserResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<CreateSecurityUserRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<CreateSecurityUserResponse>,
   errors: [BadRequest, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15088,8 +10552,8 @@ export const createSqllabEstimate: API.OperationMethod<
   CreateSqllabEstimateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqllabEstimateRequest,
-  output: CreateSqllabEstimateResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<CreateSqllabEstimateRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreateSqllabEstimateResponse>,
   errors: [BadRequest, Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15103,8 +10567,8 @@ export const createSqllabFormatSql: API.OperationMethod<
   CreateSqllabFormatSqlError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqllabFormatSqlRequest,
-  output: CreateSqllabFormatSqlResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<CreateSqllabFormatSqlRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<CreateSqllabFormatSqlResponse>,
   errors: [BadRequest, Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15118,8 +10582,8 @@ export const createSqllabPermalink: API.OperationMethod<
   CreateSqllabPermalinkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqllabPermalinkRequest,
-  output: CreateSqllabPermalinkResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<CreateSqllabPermalinkRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<CreateSqllabPermalinkResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15133,8 +10597,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTagRequest,
-  output: CreateTagResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<CreateTagRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<CreateTagResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15148,8 +10612,8 @@ export const createTagFavorite: API.OperationMethod<
   CreateTagFavoriteError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTagFavoriteRequest,
-  output: CreateTagFavoriteResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<CreateTagFavoriteRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreateTagFavoriteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15163,8 +10627,8 @@ export const createTheme: API.OperationMethod<
   CreateThemeError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateThemeRequest,
-  output: CreateThemeResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<CreateThemeRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<CreateThemeResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15178,8 +10642,8 @@ export const deleteAnnotationLayer: API.OperationMethod<
   DeleteAnnotationLayerError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAnnotationLayerRequest,
-  output: DeleteAnnotationLayerResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteAnnotationLayerRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteAnnotationLayerResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15196,8 +10660,8 @@ export const deleteAnnotationLayerAnnotation: API.OperationMethod<
   DeleteAnnotationLayerAnnotationError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAnnotationLayerAnnotationRequest,
-  output: DeleteAnnotationLayerAnnotationResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<DeleteAnnotationLayerAnnotationRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteAnnotationLayerAnnotationResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15214,8 +10678,16 @@ export const deleteAnnotationLayerAnnotationByAnnotationId: API.OperationMethod<
   DeleteAnnotationLayerAnnotationByAnnotationIdError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAnnotationLayerAnnotationByAnnotationIdRequest,
-  output: DeleteAnnotationLayerAnnotationByAnnotationIdResponse,
+  input: __S(
+    131,
+    __c16,
+    3,
+  ) as any as S.Schema<DeleteAnnotationLayerAnnotationByAnnotationIdRequest>,
+  output: __S(
+    129,
+    __c16,
+    1,
+  ) as any as S.Schema<DeleteAnnotationLayerAnnotationByAnnotationIdResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15229,8 +10701,8 @@ export const deleteAnnotationLayerByPk: API.OperationMethod<
   DeleteAnnotationLayerByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAnnotationLayerByPkRequest,
-  output: DeleteAnnotationLayerByPkResponse,
+  input: __S(132, __c16, 4) as any as S.Schema<DeleteAnnotationLayerByPkRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteAnnotationLayerByPkResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15244,8 +10716,8 @@ export const deleteChart: API.OperationMethod<
   DeleteChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChartRequest,
-  output: DeleteChartResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<DeleteChartRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteChartResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15263,8 +10735,8 @@ export const deleteChartByPk: API.OperationMethod<
   DeleteChartByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChartByPkRequest,
-  output: DeleteChartByPkResponse,
+  input: __S(135, __c16, 7) as any as S.Schema<DeleteChartByPkRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteChartByPkResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15278,8 +10750,8 @@ export const deleteChartFavorites: API.OperationMethod<
   DeleteChartFavoritesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChartFavoritesRequest,
-  output: DeleteChartFavoritesResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteChartFavoritesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<DeleteChartFavoritesResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15293,8 +10765,8 @@ export const deleteCssTemplate: API.OperationMethod<
   DeleteCssTemplateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCssTemplateRequest,
-  output: DeleteCssTemplateResponse,
+  input: __S(137, __c17, 1) as any as S.Schema<DeleteCssTemplateRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteCssTemplateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15308,8 +10780,8 @@ export const deleteCssTemplateByPk: API.OperationMethod<
   DeleteCssTemplateByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCssTemplateByPkRequest,
-  output: DeleteCssTemplateByPkResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<DeleteCssTemplateByPkRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteCssTemplateByPkResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15327,8 +10799,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardRequest,
-  output: DeleteDashboardResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteDashboardResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15346,8 +10818,8 @@ export const deleteDashboardByPk: API.OperationMethod<
   DeleteDashboardByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardByPkRequest,
-  output: DeleteDashboardByPkResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<DeleteDashboardByPkRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteDashboardByPkResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15361,8 +10833,8 @@ export const deleteDashboardEmbedded: API.OperationMethod<
   DeleteDashboardEmbeddedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardEmbeddedRequest,
-  output: DeleteDashboardEmbeddedResponse,
+  input: __S(141, __c17, 5) as any as S.Schema<DeleteDashboardEmbeddedRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteDashboardEmbeddedResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15376,8 +10848,8 @@ export const deleteDashboardFavorites: API.OperationMethod<
   DeleteDashboardFavoritesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardFavoritesRequest,
-  output: DeleteDashboardFavoritesResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<DeleteDashboardFavoritesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<DeleteDashboardFavoritesResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15395,8 +10867,8 @@ export const deleteDashboardFilterState: API.OperationMethod<
   DeleteDashboardFilterStateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardFilterStateRequest,
-  output: DeleteDashboardFilterStateResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<DeleteDashboardFilterStateRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteDashboardFilterStateResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15414,8 +10886,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatabaseRequest,
-  output: DeleteDatabaseResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15434,8 +10906,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetRequest,
-  output: DeleteDatasetResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteDatasetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15453,8 +10925,8 @@ export const deleteDatasetByPk: API.OperationMethod<
   DeleteDatasetByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetByPkRequest,
-  output: DeleteDatasetByPkResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<DeleteDatasetByPkRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteDatasetByPkResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15472,8 +10944,8 @@ export const deleteDatasetColumn: API.OperationMethod<
   DeleteDatasetColumnError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetColumnRequest,
-  output: DeleteDatasetColumnResponse,
+  input: __S(147, __c18, 3) as any as S.Schema<DeleteDatasetColumnRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteDatasetColumnResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15491,8 +10963,8 @@ export const deleteDatasetMetric: API.OperationMethod<
   DeleteDatasetMetricError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetMetricRequest,
-  output: DeleteDatasetMetricResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<DeleteDatasetMetricRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteDatasetMetricResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15510,8 +10982,8 @@ export const deleteExploreFormData: API.OperationMethod<
   DeleteExploreFormDataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExploreFormDataRequest,
-  output: DeleteExploreFormDataResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<DeleteExploreFormDataRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteExploreFormDataResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15525,8 +10997,8 @@ export const deleteReport: API.OperationMethod<
   DeleteReportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReportRequest,
-  output: DeleteReportResponse,
+  input: __S(150, __c18, 6) as any as S.Schema<DeleteReportRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteReportResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15544,8 +11016,8 @@ export const deleteReportByPk: API.OperationMethod<
   DeleteReportByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReportByPkRequest,
-  output: DeleteReportByPkResponse,
+  input: __S(151, __c18, 7) as any as S.Schema<DeleteReportByPkRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteReportByPkResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15563,8 +11035,8 @@ export const deleteRowlevelsecurity: API.OperationMethod<
   DeleteRowlevelsecurityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRowlevelsecurityRequest,
-  output: DeleteRowlevelsecurityResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteRowlevelsecurityRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteRowlevelsecurityResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15581,8 +11053,8 @@ export const deleteRowlevelsecurityByPk: API.OperationMethod<
   DeleteRowlevelsecurityByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRowlevelsecurityByPkRequest,
-  output: DeleteRowlevelsecurityByPkResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<DeleteRowlevelsecurityByPkRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteRowlevelsecurityByPkResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15596,8 +11068,8 @@ export const deleteSavedQuery: API.OperationMethod<
   DeleteSavedQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSavedQueryRequest,
-  output: DeleteSavedQueryResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<DeleteSavedQueryRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteSavedQueryResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15611,8 +11083,8 @@ export const deleteSavedQueryByPk: API.OperationMethod<
   DeleteSavedQueryByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSavedQueryByPkRequest,
-  output: DeleteSavedQueryByPkResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<DeleteSavedQueryByPkRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSavedQueryByPkResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15625,8 +11097,8 @@ export const deleteSecurityGroup: API.OperationMethod<
   DeleteSecurityGroupError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityGroupRequest,
-  output: DeleteSecurityGroupResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<DeleteSecurityGroupRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSecurityGroupResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15642,8 +11114,8 @@ export const deleteSecurityPermissionsResource: API.OperationMethod<
   DeleteSecurityPermissionsResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityPermissionsResourceRequest,
-  output: DeleteSecurityPermissionsResourceResponse,
+  input: __S(157, __c19, 5) as any as S.Schema<DeleteSecurityPermissionsResourceRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSecurityPermissionsResourceResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15656,8 +11128,8 @@ export const deleteSecurityResource: API.OperationMethod<
   DeleteSecurityResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityResourceRequest,
-  output: DeleteSecurityResourceResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<DeleteSecurityResourceRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSecurityResourceResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15670,8 +11142,8 @@ export const deleteSecurityRole: API.OperationMethod<
   DeleteSecurityRoleError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityRoleRequest,
-  output: DeleteSecurityRoleResponse,
+  input: __S(159, __c19, 7) as any as S.Schema<DeleteSecurityRoleRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSecurityRoleResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15684,8 +11156,8 @@ export const deleteSecurityUser: API.OperationMethod<
   DeleteSecurityUserError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityUserRequest,
-  output: DeleteSecurityUserResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteSecurityUserRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSecurityUserResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15701,8 +11173,8 @@ export const deleteSecurityUserRegistration: API.OperationMethod<
   DeleteSecurityUserRegistrationError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityUserRegistrationRequest,
-  output: DeleteSecurityUserRegistrationResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<DeleteSecurityUserRegistrationRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSecurityUserRegistrationResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15715,8 +11187,8 @@ export const deleteSecurityUserSessions: API.OperationMethod<
   DeleteSecurityUserSessionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityUserSessionsRequest,
-  output: DeleteSecurityUserSessionsResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<DeleteSecurityUserSessionsRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<DeleteSecurityUserSessionsResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15730,8 +11202,8 @@ export const deleteTag: API.OperationMethod<
   DeleteTagError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagRequest,
-  output: DeleteTagResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<DeleteTagRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteTagResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15745,8 +11217,8 @@ export const deleteTag2: API.OperationMethod<
   DeleteTag2Error,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagRequest2,
-  output: DeleteTagResponse2,
+  input: __S(165, __c20, 5) as any as S.Schema<DeleteTagRequest2>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteTagResponse2>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15760,8 +11232,8 @@ export const deleteTagByPk: API.OperationMethod<
   DeleteTagByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagByPkRequest,
-  output: DeleteTagByPkResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<DeleteTagByPkRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteTagByPkResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15775,8 +11247,8 @@ export const deleteTagFavorites: API.OperationMethod<
   DeleteTagFavoritesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagFavoritesRequest,
-  output: DeleteTagFavoritesResponse,
+  input: __S(167, __c20, 7) as any as S.Schema<DeleteTagFavoritesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<DeleteTagFavoritesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15790,8 +11262,8 @@ export const deleteTheme: API.OperationMethod<
   DeleteThemeError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteThemeRequest,
-  output: DeleteThemeResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteThemeRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteThemeResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15809,8 +11281,8 @@ export const deleteThemeByPk: API.OperationMethod<
   DeleteThemeByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteThemeByPkRequest,
-  output: DeleteThemeByPkResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<DeleteThemeByPkRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<DeleteThemeByPkResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15824,8 +11296,8 @@ export const deleteThemeUnsetSystemDark: API.OperationMethod<
   DeleteThemeUnsetSystemDarkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteThemeUnsetSystemDarkRequest,
-  output: DeleteThemeUnsetSystemDarkResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<DeleteThemeUnsetSystemDarkRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteThemeUnsetSystemDarkResponse>,
   errors: [Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15839,8 +11311,8 @@ export const deleteThemeUnsetSystemDefault: API.OperationMethod<
   DeleteThemeUnsetSystemDefaultError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteThemeUnsetSystemDefaultRequest,
-  output: DeleteThemeUnsetSystemDefaultResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<DeleteThemeUnsetSystemDefaultRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteThemeUnsetSystemDefaultResponse>,
   errors: [Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15859,8 +11331,8 @@ export const duplicateDataset: API.OperationMethod<
   DuplicateDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DuplicateDatasetRequest,
-  output: DuplicateDatasetResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<DuplicateDatasetRequest>,
+  output: __S(174, __c21, 6) as any as S.Schema<DuplicateDatasetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15874,8 +11346,8 @@ export const executeReport: API.OperationMethod<
   ExecuteReportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteReportRequest,
-  output: ExecuteReportResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<ExecuteReportRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<ExecuteReportResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15889,8 +11361,8 @@ export const executeSqllab: API.OperationMethod<
   ExecuteSqllabError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteSqllabRequest,
-  output: QueryExecutionResponseSchema,
+  input: __S(177, __c22, 1) as any as S.Schema<ExecuteSqllabRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<QueryExecutionResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15904,8 +11376,8 @@ export const exportDashboardXlsx: API.OperationMethod<
   ExportDashboardXlsxError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportDashboardXlsxRequest,
-  output: ExportDashboardXlsxResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<ExportDashboardXlsxRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ExportDashboardXlsxResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15919,8 +11391,8 @@ export const exportSqllabStreaming: API.OperationMethod<
   ExportSqllabStreamingError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportSqllabStreamingRequest,
-  output: ExportSqllabStreamingResponse,
+  input: __S(181, __c22, 5) as any as S.Schema<ExportSqllabStreamingRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ExportSqllabStreamingResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15934,8 +11406,8 @@ export const getAnnotationLayer: API.OperationMethod<
   GetAnnotationLayerError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnnotationLayerRequest,
-  output: GetAnnotationLayerResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<GetAnnotationLayerRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<GetAnnotationLayerResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15953,8 +11425,8 @@ export const getAnnotationLayerAnnotation: API.OperationMethod<
   GetAnnotationLayerAnnotationError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnnotationLayerAnnotationRequest,
-  output: GetAnnotationLayerAnnotationResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<GetAnnotationLayerAnnotationRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<GetAnnotationLayerAnnotationResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15972,8 +11444,8 @@ export const getAnnotationLayerByPk: API.OperationMethod<
   GetAnnotationLayerByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnnotationLayerByPkRequest,
-  output: GetAnnotationLayerByPkResponse,
+  input: __S(192, __c24, 0) as any as S.Schema<GetAnnotationLayerByPkRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<GetAnnotationLayerByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -15991,8 +11463,8 @@ export const getAnnotationLayerRelated: API.OperationMethod<
   GetAnnotationLayerRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnnotationLayerRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(195, __c24, 3) as any as S.Schema<GetAnnotationLayerRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16006,8 +11478,8 @@ export const getAssetExport: API.OperationMethod<
   GetAssetExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssetExportRequest,
-  output: GetAssetExportResponse,
+  input: __S(199, __c24, 7) as any as S.Schema<GetAssetExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetAssetExportResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16021,8 +11493,8 @@ export const getAvailableDomains: API.OperationMethod<
   GetAvailableDomainsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAvailableDomainsRequest,
-  output: GetAvailableDomainsResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<GetAvailableDomainsRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<GetAvailableDomainsResponse>,
   errors: [Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16036,8 +11508,8 @@ export const getChart: API.OperationMethod<
   GetChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChartRequest,
-  output: GetChartResponse,
+  input: __S(203, __c25, 3) as any as S.Schema<GetChartRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<GetChartResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16051,8 +11523,8 @@ export const getChartCacheScreenshot: API.OperationMethod<
   GetChartCacheScreenshotError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChartCacheScreenshotRequest,
-  output: ChartCacheScreenshotResponseSchema,
+  input: __S(212, __c26, 4) as any as S.Schema<GetChartCacheScreenshotRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<ChartCacheScreenshotResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16066,8 +11538,8 @@ export const getChartExport: API.OperationMethod<
   GetChartExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChartExportRequest,
-  output: GetChartExportResponse,
+  input: __S(214, __c26, 6) as any as S.Schema<GetChartExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetChartExportResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16081,8 +11553,8 @@ export const getChartRelated: API.OperationMethod<
   GetChartRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChartRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(215, __c26, 7) as any as S.Schema<GetChartRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16096,8 +11568,8 @@ export const getChartScreenshot: API.OperationMethod<
   GetChartScreenshotError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChartScreenshotRequest,
-  output: GetChartScreenshotResponse,
+  input: __S(216, __c27, 0) as any as S.Schema<GetChartScreenshotRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetChartScreenshotResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16111,8 +11583,8 @@ export const getChartThumbnail: API.OperationMethod<
   GetChartThumbnailError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChartThumbnailRequest,
-  output: GetChartThumbnailResponse,
+  input: __S(217, __c27, 1) as any as S.Schema<GetChartThumbnailRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetChartThumbnailResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16126,8 +11598,8 @@ export const getChartVersion: API.OperationMethod<
   GetChartVersionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChartVersionRequest,
-  output: GetChartVersionResponse,
+  input: __S(218, __c27, 2) as any as S.Schema<GetChartVersionRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<GetChartVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16141,8 +11613,8 @@ export const getCssTemplate: API.OperationMethod<
   GetCssTemplateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCssTemplateRequest,
-  output: GetCssTemplateResponse,
+  input: __S(225, __c28, 1) as any as S.Schema<GetCssTemplateRequest>,
+  output: __S(229, __c28, 5) as any as S.Schema<GetCssTemplateResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16160,8 +11632,8 @@ export const getCssTemplateByPk: API.OperationMethod<
   GetCssTemplateByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCssTemplateByPkRequest,
-  output: GetCssTemplateByPkResponse,
+  input: __S(230, __c28, 6) as any as S.Schema<GetCssTemplateByPkRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetCssTemplateByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16175,8 +11647,8 @@ export const getCssTemplateRelated: API.OperationMethod<
   GetCssTemplateRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCssTemplateRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(233, __c29, 1) as any as S.Schema<GetCssTemplateRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16190,8 +11662,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardRequest,
-  output: GetDashboardResponse,
+  input: __S(234, __c29, 2) as any as S.Schema<GetDashboardRequest>,
+  output: __S(237, __c29, 5) as any as S.Schema<GetDashboardResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16205,8 +11677,8 @@ export const getDashboardEmbedded: API.OperationMethod<
   GetDashboardEmbeddedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardEmbeddedRequest,
-  output: GetDashboardEmbeddedResponse,
+  input: __S(238, __c29, 6) as any as S.Schema<GetDashboardEmbeddedRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetDashboardEmbeddedResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16225,8 +11697,8 @@ export const getDashboardExport: API.OperationMethod<
   GetDashboardExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardExportRequest,
-  output: GetDashboardExportResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<GetDashboardExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDashboardExportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16244,8 +11716,8 @@ export const getDashboardExportAsExample: API.OperationMethod<
   GetDashboardExportAsExampleError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardExportAsExampleRequest,
-  output: GetDashboardExportAsExampleResponse,
+  input: __S(240, __c30, 0) as any as S.Schema<GetDashboardExportAsExampleRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<GetDashboardExportAsExampleResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16259,8 +11731,8 @@ export const getDashboardExportXlsxDownload: API.OperationMethod<
   GetDashboardExportXlsxDownloadError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardExportXlsxDownloadRequest,
-  output: GetDashboardExportXlsxDownloadResponse,
+  input: __S(241, __c30, 1) as any as S.Schema<GetDashboardExportXlsxDownloadRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<GetDashboardExportXlsxDownloadResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16274,8 +11746,8 @@ export const getDashboardExportXlsxStatus: API.OperationMethod<
   GetDashboardExportXlsxStatusError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardExportXlsxStatusRequest,
-  output: GetDashboardExportXlsxStatusResponse,
+  input: __S(242, __c30, 2) as any as S.Schema<GetDashboardExportXlsxStatusRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<GetDashboardExportXlsxStatusResponse>,
   errors: [Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16293,8 +11765,8 @@ export const getDashboardFilterState: API.OperationMethod<
   GetDashboardFilterStateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardFilterStateRequest,
-  output: GetDashboardFilterStateResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<GetDashboardFilterStateRequest>,
+  output: __S(244, __c30, 4) as any as S.Schema<GetDashboardFilterStateResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16312,8 +11784,8 @@ export const getDashboardPermalink: API.OperationMethod<
   GetDashboardPermalinkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardPermalinkRequest,
-  output: GetDashboardPermalinkResponse,
+  input: __S(245, __c30, 5) as any as S.Schema<GetDashboardPermalinkRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetDashboardPermalinkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16327,8 +11799,8 @@ export const getDashboardRelated: API.OperationMethod<
   GetDashboardRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(247, __c30, 7) as any as S.Schema<GetDashboardRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16342,8 +11814,8 @@ export const getDashboardScreenshot: API.OperationMethod<
   GetDashboardScreenshotError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardScreenshotRequest,
-  output: GetDashboardScreenshotResponse,
+  input: __S(248, __c31, 0) as any as S.Schema<GetDashboardScreenshotRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDashboardScreenshotResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16357,8 +11829,8 @@ export const getDashboardThumbnail: API.OperationMethod<
   GetDashboardThumbnailError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardThumbnailRequest,
-  output: GetDashboardThumbnailResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<GetDashboardThumbnailRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDashboardThumbnailResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16372,8 +11844,8 @@ export const getDashboardVersion: API.OperationMethod<
   GetDashboardVersionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardVersionRequest,
-  output: GetDashboardVersionResponse,
+  input: __S(250, __c31, 2) as any as S.Schema<GetDashboardVersionRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<GetDashboardVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16387,8 +11859,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseRequest,
-  output: GetDatabaseResponse,
+  input: __S(252, __c31, 4) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(255, __c31, 7) as any as S.Schema<GetDatabaseResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16402,8 +11874,8 @@ export const getDatabaseByPk: API.OperationMethod<
   GetDatabaseByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseByPkRequest,
-  output: GetDatabaseByPkResponse,
+  input: __S(256, __c32, 0) as any as S.Schema<GetDatabaseByPkRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<GetDatabaseByPkResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16417,8 +11889,8 @@ export const getDatabaseConnection: API.OperationMethod<
   GetDatabaseConnectionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseConnectionRequest,
-  output: DatabaseConnectionSchemaOutput,
+  input: __S(258, __c32, 2) as any as S.Schema<GetDatabaseConnectionRequest>,
+  output: __S(261, __c32, 5) as any as S.Schema<DatabaseConnectionSchemaOutput>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16432,8 +11904,8 @@ export const getDatabaseExport: API.OperationMethod<
   GetDatabaseExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseExportRequest,
-  output: GetDatabaseExportResponse,
+  input: __S(262, __c32, 6) as any as S.Schema<GetDatabaseExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDatabaseExportResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16447,8 +11919,8 @@ export const getDatabaseOauth2: API.OperationMethod<
   GetDatabaseOauth2Error,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseOauth2Request,
-  output: GetDatabaseOauth2Response,
+  input: __S(263, __c32, 7) as any as S.Schema<GetDatabaseOauth2Request>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDatabaseOauth2Response>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16462,8 +11934,8 @@ export const getDatabaseRelated: API.OperationMethod<
   GetDatabaseRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(264, __c33, 0) as any as S.Schema<GetDatabaseRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16477,8 +11949,8 @@ export const getDatabaseRelatedObjects: API.OperationMethod<
   GetDatabaseRelatedObjectsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseRelatedObjectsRequest,
-  output: DatabaseRelatedObjectsResponse,
+  input: __S(265, __c33, 1) as any as S.Schema<GetDatabaseRelatedObjectsRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<DatabaseRelatedObjectsResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16496,8 +11968,8 @@ export const getDatabaseSelectStar: API.OperationMethod<
   GetDatabaseSelectStarError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSelectStarRequest,
-  output: SelectStarResponseSchema,
+  input: __S(276, __c34, 4) as any as S.Schema<GetDatabaseSelectStarRequest>,
+  output: __S(277, __c34, 5) as any as S.Schema<SelectStarResponseSchema>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16515,8 +11987,8 @@ export const getDatabaseSelectStar2: API.OperationMethod<
   GetDatabaseSelectStar2Error,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSelectStarRequest2,
-  output: SelectStarResponseSchema,
+  input: __S(278, __c34, 6) as any as S.Schema<GetDatabaseSelectStarRequest2>,
+  output: __S(277, __c34, 5) as any as S.Schema<SelectStarResponseSchema>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16534,8 +12006,8 @@ export const getDatabaseTable: API.OperationMethod<
   GetDatabaseTableError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseTableRequest,
-  output: TableMetadataResponseSchema,
+  input: __S(279, __c34, 7) as any as S.Schema<GetDatabaseTableRequest>,
+  output: __S(286, __c35, 6) as any as S.Schema<TableMetadataResponseSchema>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16553,8 +12025,8 @@ export const getDatabaseTableExtra: API.OperationMethod<
   GetDatabaseTableExtraError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseTableExtraRequest,
-  output: TableExtraMetadataResponseSchema,
+  input: __S(287, __c35, 7) as any as S.Schema<GetDatabaseTableExtraRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<TableExtraMetadataResponseSchema>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16568,8 +12040,8 @@ export const getDatabaseTableMetadata: API.OperationMethod<
   GetDatabaseTableMetadataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseTableMetadataRequest,
-  output: TableExtraMetadataResponseSchema,
+  input: __S(289, __c36, 1) as any as S.Schema<GetDatabaseTableMetadataRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<TableExtraMetadataResponseSchema>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16583,8 +12055,8 @@ export const getDatabaseTableMetadataExtra: API.OperationMethod<
   GetDatabaseTableMetadataExtraError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseTableMetadataExtraRequest,
-  output: TableExtraMetadataResponseSchema,
+  input: __S(290, __c36, 2) as any as S.Schema<GetDatabaseTableMetadataExtraRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<TableExtraMetadataResponseSchema>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16598,8 +12070,8 @@ export const getDataset: API.OperationMethod<
   GetDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetRequest,
-  output: GetDatasetResponse,
+  input: __S(291, __c36, 3) as any as S.Schema<GetDatasetRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<GetDatasetResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16613,8 +12085,8 @@ export const getDatasetByIdOrUuid: API.OperationMethod<
   GetDatasetByIdOrUuidError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetByIdOrUuidRequest,
-  output: GetDatasetByIdOrUuidResponse,
+  input: __S(298, __c37, 2) as any as S.Schema<GetDatasetByIdOrUuidRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<GetDatasetByIdOrUuidResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16628,8 +12100,8 @@ export const getDatasetDistinct: API.OperationMethod<
   GetDatasetDistinctError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetDistinctRequest,
-  output: DistincResponseSchema,
+  input: __S(306, __c38, 2) as any as S.Schema<GetDatasetDistinctRequest>,
+  output: __S(309, __c38, 5) as any as S.Schema<DistincResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16647,8 +12119,8 @@ export const getDatasetDrillInfo: API.OperationMethod<
   GetDatasetDrillInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetDrillInfoRequest,
-  output: GetDatasetDrillInfoResponse,
+  input: __S(310, __c38, 6) as any as S.Schema<GetDatasetDrillInfoRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetDatasetDrillInfoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16662,8 +12134,8 @@ export const getDatasetExport: API.OperationMethod<
   GetDatasetExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetExportRequest,
-  output: GetDatasetExportResponse,
+  input: __S(311, __c38, 7) as any as S.Schema<GetDatasetExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDatasetExportResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16677,8 +12149,8 @@ export const getDatasetOrCreate: API.OperationMethod<
   GetDatasetOrCreateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetOrCreateRequest,
-  output: GetDatasetOrCreateResponse,
+  input: __S(312, __c39, 0) as any as S.Schema<GetDatasetOrCreateRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<GetDatasetOrCreateResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16692,8 +12164,8 @@ export const getDatasetPurgeImpact: API.OperationMethod<
   GetDatasetPurgeImpactError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetPurgeImpactRequest,
-  output: DatasetPurgeImpactSchema,
+  input: __S(315, __c39, 3) as any as S.Schema<GetDatasetPurgeImpactRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<DatasetPurgeImpactSchema>,
   errors: [Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16707,8 +12179,8 @@ export const getDatasetRelated: API.OperationMethod<
   GetDatasetRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(320, __c40, 0) as any as S.Schema<GetDatasetRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16722,8 +12194,8 @@ export const getDatasetRelatedObjects: API.OperationMethod<
   GetDatasetRelatedObjectsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetRelatedObjectsRequest,
-  output: DatasetRelatedObjectsResponse,
+  input: __S(321, __c40, 1) as any as S.Schema<GetDatasetRelatedObjectsRequest>,
+  output: __S(324, __c40, 4) as any as S.Schema<DatasetRelatedObjectsResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16737,8 +12209,8 @@ export const getDatasetRelatedObjects2: API.OperationMethod<
   GetDatasetRelatedObjects2Error,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetRelatedObjectsRequest2,
-  output: DatasetRelatedObjectsResponse,
+  input: __S(325, __c40, 5) as any as S.Schema<GetDatasetRelatedObjectsRequest2>,
+  output: __S(324, __c40, 4) as any as S.Schema<DatasetRelatedObjectsResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16752,8 +12224,8 @@ export const getDatasetVersion: API.OperationMethod<
   GetDatasetVersionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetVersionRequest,
-  output: GetDatasetVersionResponse,
+  input: __S(326, __c40, 6) as any as S.Schema<GetDatasetVersionRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<GetDatasetVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16767,8 +12239,8 @@ export const getDatasource: API.OperationMethod<
   GetDatasourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasourceRequest,
-  output: GetDatasourceResponse,
+  input: __S(327, __c40, 7) as any as S.Schema<GetDatasourceRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDatasourceResponse>,
   errors: [Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16786,8 +12258,8 @@ export const getDatasourceByDatasourceId: API.OperationMethod<
   GetDatasourceByDatasourceIdError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasourceByDatasourceIdRequest,
-  output: GetDatasourceByDatasourceIdResponse,
+  input: __S(328, __c41, 0) as any as S.Schema<GetDatasourceByDatasourceIdRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetDatasourceByDatasourceIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16801,8 +12273,8 @@ export const getEmbeddedDashboard: API.OperationMethod<
   GetEmbeddedDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbeddedDashboardRequest,
-  output: GetEmbeddedDashboardResponse,
+  input: __S(329, __c41, 1) as any as S.Schema<GetEmbeddedDashboardRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetEmbeddedDashboardResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16816,8 +12288,8 @@ export const getExplore: API.OperationMethod<
   GetExploreError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExploreRequest,
-  output: ExploreContextSchema,
+  input: __S(330, __c41, 2) as any as S.Schema<GetExploreRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<ExploreContextSchema>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16835,8 +12307,8 @@ export const getExploreFormData: API.OperationMethod<
   GetExploreFormDataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExploreFormDataRequest,
-  output: GetExploreFormDataResponse,
+  input: __S(339, __c42, 3) as any as S.Schema<GetExploreFormDataRequest>,
+  output: __S(340, __c42, 4) as any as S.Schema<GetExploreFormDataResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16854,8 +12326,8 @@ export const getExplorePermalink: API.OperationMethod<
   GetExplorePermalinkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExplorePermalinkRequest,
-  output: GetExplorePermalinkResponse,
+  input: __S(341, __c42, 5) as any as S.Schema<GetExplorePermalinkRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetExplorePermalinkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16869,8 +12341,8 @@ export const getLog: API.OperationMethod<
   GetLogError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogRequest,
-  output: GetLogResponse,
+  input: __S(342, __c42, 6) as any as S.Schema<GetLogRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<GetLogResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16884,8 +12356,8 @@ export const getLogByPk: API.OperationMethod<
   GetLogByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogByPkRequest,
-  output: GetLogByPkResponse,
+  input: __S(347, __c43, 3) as any as S.Schema<GetLogByPkRequest>,
+  output: __S(348, __c43, 4) as any as S.Schema<GetLogByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16899,8 +12371,8 @@ export const getMe: API.OperationMethod<
   GetMeError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeRequest,
-  output: GetMeResponse,
+  input: __S(349, __c43, 5) as any as S.Schema<GetMeRequest>,
+  output: __S(351, __c43, 7) as any as S.Schema<GetMeResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16914,8 +12386,8 @@ export const getMeRoles: API.OperationMethod<
   GetMeRolesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeRolesRequest,
-  output: GetMeRolesResponse,
+  input: __S(352, __c44, 0) as any as S.Schema<GetMeRolesRequest>,
+  output: __S(351, __c43, 7) as any as S.Schema<GetMeRolesResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16929,8 +12401,8 @@ export const getQuery: API.OperationMethod<
   GetQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryRequest,
-  output: GetQueryResponse,
+  input: __S(353, __c44, 1) as any as S.Schema<GetQueryRequest>,
+  output: __S(357, __c44, 5) as any as S.Schema<GetQueryResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16944,8 +12416,8 @@ export const getQueryByPk: API.OperationMethod<
   GetQueryByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryByPkRequest,
-  output: GetQueryByPkResponse,
+  input: __S(358, __c44, 6) as any as S.Schema<GetQueryByPkRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<GetQueryByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16959,8 +12431,8 @@ export const getQueryDistinct: API.OperationMethod<
   GetQueryDistinctError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryDistinctRequest,
-  output: DistincResponseSchema,
+  input: __S(361, __c45, 1) as any as S.Schema<GetQueryDistinctRequest>,
+  output: __S(309, __c38, 5) as any as S.Schema<DistincResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16974,8 +12446,8 @@ export const getQueryRelated: API.OperationMethod<
   GetQueryRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(362, __c45, 2) as any as S.Schema<GetQueryRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -16989,8 +12461,8 @@ export const getReport: API.OperationMethod<
   GetReportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportRequest,
-  output: GetReportResponse,
+  input: __S(363, __c45, 3) as any as S.Schema<GetReportRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<GetReportResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17008,8 +12480,8 @@ export const getReportByPk: API.OperationMethod<
   GetReportByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportByPkRequest,
-  output: GetReportByPkResponse,
+  input: __S(369, __c46, 1) as any as S.Schema<GetReportByPkRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<GetReportByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17023,8 +12495,8 @@ export const getReportLog: API.OperationMethod<
   GetReportLogError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportLogRequest,
-  output: GetReportLogResponse,
+  input: __S(377, __c47, 1) as any as S.Schema<GetReportLogRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<GetReportLogResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17038,8 +12510,8 @@ export const getReportRelated: API.OperationMethod<
   GetReportRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(380, __c47, 4) as any as S.Schema<GetReportRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17053,8 +12525,8 @@ export const getRowlevelsecurity: API.OperationMethod<
   GetRowlevelsecurityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRowlevelsecurityRequest,
-  output: GetRowlevelsecurityResponse,
+  input: __S(381, __c47, 5) as any as S.Schema<GetRowlevelsecurityRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<GetRowlevelsecurityResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17072,8 +12544,8 @@ export const getRowlevelsecurityByPk: API.OperationMethod<
   GetRowlevelsecurityByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRowlevelsecurityByPkRequest,
-  output: GetRowlevelsecurityByPkResponse,
+  input: __S(385, __c48, 1) as any as S.Schema<GetRowlevelsecurityByPkRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<GetRowlevelsecurityByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17091,8 +12563,8 @@ export const getRowlevelsecurityRelated: API.OperationMethod<
   GetRowlevelsecurityRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRowlevelsecurityRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(388, __c48, 4) as any as S.Schema<GetRowlevelsecurityRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17106,8 +12578,8 @@ export const getSavedQuery: API.OperationMethod<
   GetSavedQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSavedQueryRequest,
-  output: GetSavedQueryResponse,
+  input: __S(389, __c48, 5) as any as S.Schema<GetSavedQueryRequest>,
+  output: __S(394, __c49, 2) as any as S.Schema<GetSavedQueryResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17125,8 +12597,8 @@ export const getSavedQueryByPk: API.OperationMethod<
   GetSavedQueryByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSavedQueryByPkRequest,
-  output: GetSavedQueryByPkResponse,
+  input: __S(395, __c49, 3) as any as S.Schema<GetSavedQueryByPkRequest>,
+  output: __S(397, __c49, 5) as any as S.Schema<GetSavedQueryByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17140,8 +12612,8 @@ export const getSavedQueryDistinct: API.OperationMethod<
   GetSavedQueryDistinctError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSavedQueryDistinctRequest,
-  output: DistincResponseSchema,
+  input: __S(398, __c49, 6) as any as S.Schema<GetSavedQueryDistinctRequest>,
+  output: __S(309, __c38, 5) as any as S.Schema<DistincResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17155,8 +12627,8 @@ export const getSavedQueryExport: API.OperationMethod<
   GetSavedQueryExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSavedQueryExportRequest,
-  output: GetSavedQueryExportResponse,
+  input: __S(399, __c49, 7) as any as S.Schema<GetSavedQueryExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetSavedQueryExportResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17170,8 +12642,8 @@ export const getSavedQueryRelated: API.OperationMethod<
   GetSavedQueryRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSavedQueryRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(400, __c50, 0) as any as S.Schema<GetSavedQueryRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17185,8 +12657,8 @@ export const getSecurityCsrfToken: API.OperationMethod<
   GetSecurityCsrfTokenError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityCsrfTokenRequest,
-  output: GetSecurityCsrfTokenResponse,
+  input: __S(401, __c50, 1) as any as S.Schema<GetSecurityCsrfTokenRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GetSecurityCsrfTokenResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17204,8 +12676,8 @@ export const getSecurityGroup: API.OperationMethod<
   GetSecurityGroupError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityGroupRequest,
-  output: GetSecurityGroupResponse,
+  input: __S(402, __c50, 2) as any as S.Schema<GetSecurityGroupRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<GetSecurityGroupResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17219,8 +12691,8 @@ export const getSecurityGroups: API.OperationMethod<
   GetSecurityGroupsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityGroupsRequest,
-  output: GetSecurityGroupsResponse,
+  input: __S(409, __c51, 1) as any as S.Schema<GetSecurityGroupsRequest>,
+  output: __S(411, __c51, 3) as any as S.Schema<GetSecurityGroupsResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17234,8 +12706,8 @@ export const getSecurityPermissions: API.OperationMethod<
   GetSecurityPermissionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityPermissionsRequest,
-  output: GetSecurityPermissionsResponse,
+  input: __S(412, __c51, 4) as any as S.Schema<GetSecurityPermissionsRequest>,
+  output: __S(413, __c51, 5) as any as S.Schema<GetSecurityPermissionsResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17253,8 +12725,8 @@ export const getSecurityPermissionsByPk: API.OperationMethod<
   GetSecurityPermissionsByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityPermissionsByPkRequest,
-  output: GetSecurityPermissionsByPkResponse,
+  input: __S(414, __c51, 6) as any as S.Schema<GetSecurityPermissionsByPkRequest>,
+  output: __S(415, __c51, 7) as any as S.Schema<GetSecurityPermissionsByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17272,8 +12744,8 @@ export const getSecurityPermissionsResource: API.OperationMethod<
   GetSecurityPermissionsResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityPermissionsResourceRequest,
-  output: GetSecurityPermissionsResourceResponse,
+  input: __S(416, __c52, 0) as any as S.Schema<GetSecurityPermissionsResourceRequest>,
+  output: __S(418, __c52, 2) as any as S.Schema<GetSecurityPermissionsResourceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17290,8 +12762,8 @@ export const getSecurityPermissionsResources: API.OperationMethod<
   GetSecurityPermissionsResourcesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityPermissionsResourcesRequest,
-  output: GetSecurityPermissionsResourcesResponse,
+  input: __S(419, __c52, 3) as any as S.Schema<GetSecurityPermissionsResourcesRequest>,
+  output: __S(421, __c52, 5) as any as S.Schema<GetSecurityPermissionsResourcesResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17309,8 +12781,8 @@ export const getSecurityResource: API.OperationMethod<
   GetSecurityResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityResourceRequest,
-  output: GetSecurityResourceResponse,
+  input: __S(422, __c52, 6) as any as S.Schema<GetSecurityResourceRequest>,
+  output: __S(415, __c51, 7) as any as S.Schema<GetSecurityResourceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17324,8 +12796,8 @@ export const getSecurityResources: API.OperationMethod<
   GetSecurityResourcesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityResourcesRequest,
-  output: GetSecurityResourcesResponse,
+  input: __S(423, __c52, 7) as any as S.Schema<GetSecurityResourcesRequest>,
+  output: __S(413, __c51, 5) as any as S.Schema<GetSecurityResourcesResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17343,8 +12815,8 @@ export const getSecurityRole: API.OperationMethod<
   GetSecurityRoleError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityRoleRequest,
-  output: GetSecurityRoleResponse,
+  input: __S(424, __c53, 0) as any as S.Schema<GetSecurityRoleRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<GetSecurityRoleResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17358,8 +12830,8 @@ export const getSecurityRoles: API.OperationMethod<
   GetSecurityRolesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityRolesRequest,
-  output: GetSecurityRolesResponse,
+  input: __S(426, __c53, 2) as any as S.Schema<GetSecurityRolesRequest>,
+  output: __S(427, __c53, 3) as any as S.Schema<GetSecurityRolesResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17373,8 +12845,8 @@ export const getSecuritySubject: API.OperationMethod<
   GetSecuritySubjectError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecuritySubjectRequest,
-  output: GetSecuritySubjectResponse,
+  input: __S(428, __c53, 4) as any as S.Schema<GetSecuritySubjectRequest>,
+  output: __S(431, __c53, 7) as any as S.Schema<GetSecuritySubjectResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17392,8 +12864,8 @@ export const getSecuritySubjectByPk: API.OperationMethod<
   GetSecuritySubjectByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecuritySubjectByPkRequest,
-  output: GetSecuritySubjectByPkResponse,
+  input: __S(432, __c54, 0) as any as S.Schema<GetSecuritySubjectByPkRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<GetSecuritySubjectByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17411,8 +12883,8 @@ export const getSecurityUser: API.OperationMethod<
   GetSecurityUserError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityUserRequest,
-  output: GetSecurityUserResponse,
+  input: __S(437, __c54, 5) as any as S.Schema<GetSecurityUserRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<GetSecurityUserResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17430,8 +12902,8 @@ export const getSecurityUserRegistration: API.OperationMethod<
   GetSecurityUserRegistrationError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityUserRegistrationRequest,
-  output: GetSecurityUserRegistrationResponse,
+  input: __S(441, __c55, 1) as any as S.Schema<GetSecurityUserRegistrationRequest>,
+  output: __S(442, __c55, 2) as any as S.Schema<GetSecurityUserRegistrationResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17448,8 +12920,8 @@ export const getSecurityUserRegistrations: API.OperationMethod<
   GetSecurityUserRegistrationsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityUserRegistrationsRequest,
-  output: GetSecurityUserRegistrationsResponse,
+  input: __S(443, __c55, 3) as any as S.Schema<GetSecurityUserRegistrationsRequest>,
+  output: __S(446, __c55, 6) as any as S.Schema<GetSecurityUserRegistrationsResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17463,8 +12935,8 @@ export const getSecurityUsers: API.OperationMethod<
   GetSecurityUsersError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityUsersRequest,
-  output: GetSecurityUsersResponse,
+  input: __S(447, __c55, 7) as any as S.Schema<GetSecurityUsersRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<GetSecurityUsersResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17478,8 +12950,8 @@ export const getSqllabExport: API.OperationMethod<
   GetSqllabExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqllabExportRequest,
-  output: GetSqllabExportResponse,
+  input: __S(450, __c56, 2) as any as S.Schema<GetSqllabExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetSqllabExportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17497,8 +12969,8 @@ export const getSqllabPermalink: API.OperationMethod<
   GetSqllabPermalinkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqllabPermalinkRequest,
-  output: GetSqllabPermalinkResponse,
+  input: __S(451, __c56, 3) as any as S.Schema<GetSqllabPermalinkRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetSqllabPermalinkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17512,8 +12984,8 @@ export const getTag: API.OperationMethod<
   GetTagError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagRequest,
-  output: GetTagResponse,
+  input: __S(452, __c56, 4) as any as S.Schema<GetTagRequest>,
+  output: __S(455, __c56, 7) as any as S.Schema<GetTagResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17527,8 +12999,8 @@ export const getTagByPk: API.OperationMethod<
   GetTagByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagByPkRequest,
-  output: GetTagByPkResponse,
+  input: __S(456, __c57, 0) as any as S.Schema<GetTagByPkRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<GetTagByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17542,8 +13014,8 @@ export const getTagRelated: API.OperationMethod<
   GetTagRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(458, __c57, 2) as any as S.Schema<GetTagRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17557,8 +13029,8 @@ export const getTheme: API.OperationMethod<
   GetThemeError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThemeRequest,
-  output: GetThemeResponse,
+  input: __S(459, __c57, 3) as any as S.Schema<GetThemeRequest>,
+  output: __S(462, __c57, 6) as any as S.Schema<GetThemeResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17572,8 +13044,8 @@ export const getThemeByPk: API.OperationMethod<
   GetThemeByPkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThemeByPkRequest,
-  output: GetThemeByPkResponse,
+  input: __S(463, __c57, 7) as any as S.Schema<GetThemeByPkRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<GetThemeByPkResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17591,8 +13063,8 @@ export const getThemeExport: API.OperationMethod<
   GetThemeExportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThemeExportRequest,
-  output: GetThemeExportResponse,
+  input: __S(466, __c58, 2) as any as S.Schema<GetThemeExportRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetThemeExportResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17606,8 +13078,8 @@ export const getThemeRelated: API.OperationMethod<
   GetThemeRelatedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThemeRelatedRequest,
-  output: RelatedResponseSchema,
+  input: __S(467, __c58, 3) as any as S.Schema<GetThemeRelatedRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<RelatedResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17621,8 +13093,8 @@ export const getThemeSystem: API.OperationMethod<
   GetThemeSystemError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThemeSystemRequest,
-  output: GetThemeSystemResponse,
+  input: __S(468, __c58, 4) as any as S.Schema<GetThemeSystemRequest>,
+  output: __S(470, __c58, 6) as any as S.Schema<GetThemeSystemResponse>,
   errors: [Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17636,8 +13108,8 @@ export const getUserAvatarPng: API.OperationMethod<
   GetUserAvatarPngError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserAvatarPngRequest,
-  output: GetUserAvatarPngResponse,
+  input: __S(471, __c58, 7) as any as S.Schema<GetUserAvatarPngRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetUserAvatarPngResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17651,8 +13123,8 @@ export const importAsset: API.OperationMethod<
   ImportAssetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportAssetRequest,
-  output: ImportAssetResponse,
+  input: __S(472, __c59, 0) as any as S.Schema<ImportAssetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ImportAssetResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17666,8 +13138,8 @@ export const importChart: API.OperationMethod<
   ImportChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportChartRequest,
-  output: ImportChartResponse,
+  input: __S(473, __c59, 1) as any as S.Schema<ImportChartRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ImportChartResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17681,8 +13153,8 @@ export const importDashboard: API.OperationMethod<
   ImportDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDashboardRequest,
-  output: ImportDashboardResponse,
+  input: __S(474, __c59, 2) as any as S.Schema<ImportDashboardRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ImportDashboardResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17696,8 +13168,8 @@ export const importDatabase: API.OperationMethod<
   ImportDatabaseError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDatabaseRequest,
-  output: ImportDatabaseResponse,
+  input: __S(475, __c59, 3) as any as S.Schema<ImportDatabaseRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ImportDatabaseResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17711,8 +13183,8 @@ export const importDataset: API.OperationMethod<
   ImportDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDatasetRequest,
-  output: ImportDatasetResponse,
+  input: __S(476, __c59, 4) as any as S.Schema<ImportDatasetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ImportDatasetResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17726,8 +13198,8 @@ export const importSavedQuery: API.OperationMethod<
   ImportSavedQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportSavedQueryRequest,
-  output: ImportSavedQueryResponse,
+  input: __S(477, __c59, 5) as any as S.Schema<ImportSavedQueryRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ImportSavedQueryResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17741,8 +13213,8 @@ export const importTheme: API.OperationMethod<
   ImportThemeError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportThemeRequest,
-  output: ImportThemeResponse,
+  input: __S(478, __c59, 6) as any as S.Schema<ImportThemeRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<ImportThemeResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17756,8 +13228,8 @@ export const invalidateCachekey: API.OperationMethod<
   InvalidateCachekeyError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateCachekeyRequest,
-  output: InvalidateCachekeyResponse,
+  input: __S(481, __c60, 1) as any as S.Schema<InvalidateCachekeyRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<InvalidateCachekeyResponse>,
   errors: [BadRequest, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17775,8 +13247,8 @@ export const listAdvancedDataTypeConvert: API.OperationMethod<
   ListAdvancedDataTypeConvertError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedDataTypeConvertRequest,
-  output: AdvancedDataTypeSchema,
+  input: __S(482, __c60, 2) as any as S.Schema<ListAdvancedDataTypeConvertRequest>,
+  output: __S(483, __c60, 3) as any as S.Schema<AdvancedDataTypeSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17790,8 +13262,8 @@ export const listAdvancedDataTypeTypes: API.OperationMethod<
   ListAdvancedDataTypeTypesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedDataTypeTypesRequest,
-  output: ListAdvancedDataTypeTypesResponse,
+  input: __S(484, __c60, 4) as any as S.Schema<ListAdvancedDataTypeTypesRequest>,
+  output: __S(485, __c60, 5) as any as S.Schema<ListAdvancedDataTypeTypesResponse>,
   errors: [Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17808,8 +13280,8 @@ export const listAnnotationLayerAnnotation: API.OperationMethod<
   ListAnnotationLayerAnnotationError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAnnotationLayerAnnotationRequest,
-  output: ListAnnotationLayerAnnotationResponse,
+  input: __S(486, __c60, 6) as any as S.Schema<ListAnnotationLayerAnnotationRequest>,
+  output: __S(490, __c61, 2) as any as S.Schema<ListAnnotationLayerAnnotationResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17823,8 +13295,8 @@ export const listAnnotationLayerInfo: API.OperationMethod<
   ListAnnotationLayerInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAnnotationLayerInfoRequest,
-  output: ListAnnotationLayerInfoResponse,
+  input: __S(491, __c61, 3) as any as S.Schema<ListAnnotationLayerInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListAnnotationLayerInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17838,8 +13310,8 @@ export const listChart: API.OperationMethod<
   ListChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChartRequest,
-  output: ListChartResponse,
+  input: __S(496, __c62, 0) as any as S.Schema<ListChartRequest>,
+  output: __S(503, __c62, 7) as any as S.Schema<ListChartResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17853,8 +13325,8 @@ export const listChartActivity: API.OperationMethod<
   ListChartActivityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChartActivityRequest,
-  output: ActivityResponse,
+  input: __S(504, __c63, 0) as any as S.Schema<ListChartActivityRequest>,
+  output: __S(508, __c63, 4) as any as S.Schema<ActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17868,8 +13340,8 @@ export const listChartData: API.OperationMethod<
   ListChartDataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChartDataRequest,
-  output: ChartDataResponseSchema,
+  input: __S(509, __c63, 5) as any as S.Schema<ListChartDataRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ChartDataResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17883,8 +13355,8 @@ export const listChartDeckLayers: API.OperationMethod<
   ListChartDeckLayersError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChartDeckLayersRequest,
-  output: ListChartDeckLayersResponse,
+  input: __S(510, __c63, 6) as any as S.Schema<ListChartDeckLayersRequest>,
+  output: __S(513, __c64, 1) as any as S.Schema<ListChartDeckLayersResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17898,8 +13370,8 @@ export const listChartFavoriteStatus: API.OperationMethod<
   ListChartFavoriteStatusError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChartFavoriteStatusRequest,
-  output: GetFavStarIdsSchema,
+  input: __S(514, __c64, 2) as any as S.Schema<ListChartFavoriteStatusRequest>,
+  output: __S(517, __c64, 5) as any as S.Schema<GetFavStarIdsSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17913,8 +13385,8 @@ export const listChartInfo: API.OperationMethod<
   ListChartInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChartInfoRequest,
-  output: ListChartInfoResponse,
+  input: __S(518, __c64, 6) as any as S.Schema<ListChartInfoRequest>,
+  output: __S(519, __c64, 7) as any as S.Schema<ListChartInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17928,8 +13400,8 @@ export const listChartVersions: API.OperationMethod<
   ListChartVersionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChartVersionsRequest,
-  output: ListChartVersionsResponse,
+  input: __S(520, __c65, 0) as any as S.Schema<ListChartVersionsRequest>,
+  output: __S(522, __c65, 2) as any as S.Schema<ListChartVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17943,8 +13415,8 @@ export const listCssTemplateInfo: API.OperationMethod<
   ListCssTemplateInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCssTemplateInfoRequest,
-  output: ListCssTemplateInfoResponse,
+  input: __S(523, __c65, 3) as any as S.Schema<ListCssTemplateInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListCssTemplateInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17958,8 +13430,8 @@ export const listDashboard: API.OperationMethod<
   ListDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardRequest,
-  output: ListDashboardResponse,
+  input: __S(524, __c65, 4) as any as S.Schema<ListDashboardRequest>,
+  output: __S(527, __c65, 7) as any as S.Schema<ListDashboardResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17973,8 +13445,8 @@ export const listDashboardActivity: API.OperationMethod<
   ListDashboardActivityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardActivityRequest,
-  output: ActivityResponse,
+  input: __S(528, __c66, 0) as any as S.Schema<ListDashboardActivityRequest>,
+  output: __S(508, __c63, 4) as any as S.Schema<ActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -17988,8 +13460,8 @@ export const listDashboardCharts: API.OperationMethod<
   ListDashboardChartsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardChartsRequest,
-  output: ListDashboardChartsResponse,
+  input: __S(529, __c66, 1) as any as S.Schema<ListDashboardChartsRequest>,
+  output: __S(532, __c66, 4) as any as S.Schema<ListDashboardChartsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18003,8 +13475,8 @@ export const listDashboardDatasets: API.OperationMethod<
   ListDashboardDatasetsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardDatasetsRequest,
-  output: ListDashboardDatasetsResponse,
+  input: __S(533, __c66, 5) as any as S.Schema<ListDashboardDatasetsRequest>,
+  output: __S(537, __c67, 1) as any as S.Schema<ListDashboardDatasetsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18018,8 +13490,8 @@ export const listDashboardFavoriteStatus: API.OperationMethod<
   ListDashboardFavoriteStatusError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardFavoriteStatusRequest,
-  output: GetFavStarIdsSchema,
+  input: __S(538, __c67, 2) as any as S.Schema<ListDashboardFavoriteStatusRequest>,
+  output: __S(517, __c64, 5) as any as S.Schema<GetFavStarIdsSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18033,8 +13505,8 @@ export const listDashboardInfo: API.OperationMethod<
   ListDashboardInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardInfoRequest,
-  output: ListDashboardInfoResponse,
+  input: __S(539, __c67, 3) as any as S.Schema<ListDashboardInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListDashboardInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18048,8 +13520,8 @@ export const listDashboardTabs: API.OperationMethod<
   ListDashboardTabsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardTabsRequest,
-  output: ListDashboardTabsResponse,
+  input: __S(540, __c67, 4) as any as S.Schema<ListDashboardTabsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListDashboardTabsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18063,8 +13535,8 @@ export const listDashboardVersions: API.OperationMethod<
   ListDashboardVersionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDashboardVersionsRequest,
-  output: ListDashboardVersionsResponse,
+  input: __S(541, __c67, 5) as any as S.Schema<ListDashboardVersionsRequest>,
+  output: __S(522, __c65, 2) as any as S.Schema<ListDashboardVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18078,8 +13550,8 @@ export const listDatabaseAvailable: API.OperationMethod<
   ListDatabaseAvailableError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabaseAvailableRequest,
-  output: ListDatabaseAvailableResponse,
+  input: __S(542, __c67, 6) as any as S.Schema<ListDatabaseAvailableRequest>,
+  output: __S(546, __c68, 2) as any as S.Schema<ListDatabaseAvailableResponse>,
   errors: [BadRequest, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18093,8 +13565,8 @@ export const listDatabaseCatalogs: API.OperationMethod<
   ListDatabaseCatalogsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabaseCatalogsRequest,
-  output: CatalogsResponseSchema,
+  input: __S(547, __c68, 3) as any as S.Schema<ListDatabaseCatalogsRequest>,
+  output: __S(548, __c68, 4) as any as S.Schema<CatalogsResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18108,8 +13580,8 @@ export const listDatabaseFunctionNames: API.OperationMethod<
   ListDatabaseFunctionNamesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabaseFunctionNamesRequest,
-  output: DatabaseFunctionNamesResponse,
+  input: __S(549, __c68, 5) as any as S.Schema<ListDatabaseFunctionNamesRequest>,
+  output: __S(550, __c68, 6) as any as S.Schema<DatabaseFunctionNamesResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18123,8 +13595,8 @@ export const listDatabaseInfo: API.OperationMethod<
   ListDatabaseInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabaseInfoRequest,
-  output: ListDatabaseInfoResponse,
+  input: __S(551, __c68, 7) as any as S.Schema<ListDatabaseInfoRequest>,
+  output: __S(519, __c64, 7) as any as S.Schema<ListDatabaseInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18138,8 +13610,8 @@ export const listDatabaseSchemas: API.OperationMethod<
   ListDatabaseSchemasError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabaseSchemasRequest,
-  output: SchemasResponseSchema,
+  input: __S(552, __c69, 0) as any as S.Schema<ListDatabaseSchemasRequest>,
+  output: __S(548, __c68, 4) as any as S.Schema<SchemasResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18153,8 +13625,8 @@ export const listDatabaseSchemasAccessForFileUpload: API.OperationMethod<
   ListDatabaseSchemasAccessForFileUploadError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabaseSchemasAccessForFileUploadRequest,
-  output: DatabaseSchemaAccessForFileUploadResponse,
+  input: __S(553, __c69, 1) as any as S.Schema<ListDatabaseSchemasAccessForFileUploadRequest>,
+  output: __S(554, __c69, 2) as any as S.Schema<DatabaseSchemaAccessForFileUploadResponse>,
   errors: [NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18172,8 +13644,8 @@ export const listDatabaseTables: API.OperationMethod<
   ListDatabaseTablesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabaseTablesRequest,
-  output: ListDatabaseTablesResponse,
+  input: __S(555, __c69, 3) as any as S.Schema<ListDatabaseTablesRequest>,
+  output: __S(558, __c69, 6) as any as S.Schema<ListDatabaseTablesResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18187,8 +13659,8 @@ export const listDatasetActivity: API.OperationMethod<
   ListDatasetActivityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatasetActivityRequest,
-  output: ActivityResponse,
+  input: __S(559, __c69, 7) as any as S.Schema<ListDatasetActivityRequest>,
+  output: __S(508, __c63, 4) as any as S.Schema<ActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18202,8 +13674,8 @@ export const listDatasetInfo: API.OperationMethod<
   ListDatasetInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatasetInfoRequest,
-  output: ListDatasetInfoResponse,
+  input: __S(560, __c70, 0) as any as S.Schema<ListDatasetInfoRequest>,
+  output: __S(519, __c64, 7) as any as S.Schema<ListDatasetInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18217,8 +13689,8 @@ export const listDatasetVersions: API.OperationMethod<
   ListDatasetVersionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatasetVersionsRequest,
-  output: ListDatasetVersionsResponse,
+  input: __S(561, __c70, 1) as any as S.Schema<ListDatasetVersionsRequest>,
+  output: __S(522, __c65, 2) as any as S.Schema<ListDatasetVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18236,8 +13708,8 @@ export const listDatasourceColumnValues: API.OperationMethod<
   ListDatasourceColumnValuesError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatasourceColumnValuesRequest,
-  output: ListDatasourceColumnValuesResponse,
+  input: __S(562, __c70, 2) as any as S.Schema<ListDatasourceColumnValuesRequest>,
+  output: __S(564, __c70, 4) as any as S.Schema<ListDatasourceColumnValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18251,8 +13723,8 @@ export const listLogRecentActivity: API.OperationMethod<
   ListLogRecentActivityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLogRecentActivityRequest,
-  output: RecentActivityResponseSchema,
+  input: __S(565, __c70, 5) as any as S.Schema<ListLogRecentActivityRequest>,
+  output: __S(568, __c71, 0) as any as S.Schema<RecentActivityResponseSchema>,
   errors: [BadRequest, Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18266,8 +13738,8 @@ export const listMenu: API.OperationMethod<
   ListMenuError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMenuRequest,
-  output: ListMenuResponse,
+  input: __S(569, __c71, 1) as any as S.Schema<ListMenuRequest>,
+  output: __S(572, __c71, 4) as any as S.Schema<ListMenuResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18281,8 +13753,8 @@ export const listQueryUpdatedSince: API.OperationMethod<
   ListQueryUpdatedSinceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQueryUpdatedSinceRequest,
-  output: ListQueryUpdatedSinceResponse,
+  input: __S(573, __c71, 5) as any as S.Schema<ListQueryUpdatedSinceRequest>,
+  output: __S(575, __c71, 7) as any as S.Schema<ListQueryUpdatedSinceResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18296,8 +13768,8 @@ export const listReportInfo: API.OperationMethod<
   ListReportInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReportInfoRequest,
-  output: ListReportInfoResponse,
+  input: __S(576, __c72, 0) as any as S.Schema<ListReportInfoRequest>,
+  output: __S(519, __c64, 7) as any as S.Schema<ListReportInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18311,8 +13783,8 @@ export const listReportLog: API.OperationMethod<
   ListReportLogError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReportLogRequest,
-  output: ListReportLogResponse,
+  input: __S(577, __c72, 1) as any as S.Schema<ListReportLogRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<ListReportLogResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18330,8 +13802,8 @@ export const listReportSlackChannels: API.OperationMethod<
   ListReportSlackChannelsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReportSlackChannelsRequest,
-  output: ListReportSlackChannelsResponse,
+  input: __S(580, __c72, 4) as any as S.Schema<ListReportSlackChannelsRequest>,
+  output: __S(583, __c72, 7) as any as S.Schema<ListReportSlackChannelsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18348,8 +13820,8 @@ export const listRowlevelsecurityInfo: API.OperationMethod<
   ListRowlevelsecurityInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRowlevelsecurityInfoRequest,
-  output: ListRowlevelsecurityInfoResponse,
+  input: __S(584, __c73, 0) as any as S.Schema<ListRowlevelsecurityInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListRowlevelsecurityInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18363,8 +13835,8 @@ export const listSavedQueryInfo: API.OperationMethod<
   ListSavedQueryInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSavedQueryInfoRequest,
-  output: ListSavedQueryInfoResponse,
+  input: __S(585, __c73, 1) as any as S.Schema<ListSavedQueryInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSavedQueryInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18378,8 +13850,8 @@ export const listSecurityGroupInfo: API.OperationMethod<
   ListSecurityGroupInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityGroupInfoRequest,
-  output: ListSecurityGroupInfoResponse,
+  input: __S(586, __c73, 2) as any as S.Schema<ListSecurityGroupInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSecurityGroupInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18396,8 +13868,8 @@ export const listSecurityPermissionsInfo: API.OperationMethod<
   ListSecurityPermissionsInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityPermissionsInfoRequest,
-  output: ListSecurityPermissionsInfoResponse,
+  input: __S(587, __c73, 3) as any as S.Schema<ListSecurityPermissionsInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSecurityPermissionsInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18414,8 +13886,8 @@ export const listSecurityPermissionsResourceInfo: API.OperationMethod<
   ListSecurityPermissionsResourceInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityPermissionsResourceInfoRequest,
-  output: ListSecurityPermissionsResourceInfoResponse,
+  input: __S(588, __c73, 4) as any as S.Schema<ListSecurityPermissionsResourceInfoRequest>,
+  output: __S(591, __c73, 7) as any as S.Schema<ListSecurityPermissionsResourceInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18432,8 +13904,8 @@ export const listSecurityResourceInfo: API.OperationMethod<
   ListSecurityResourceInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityResourceInfoRequest,
-  output: ListSecurityResourceInfoResponse,
+  input: __S(592, __c74, 0) as any as S.Schema<ListSecurityResourceInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSecurityResourceInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18447,8 +13919,8 @@ export const listSecurityRoleInfo: API.OperationMethod<
   ListSecurityRoleInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityRoleInfoRequest,
-  output: ListSecurityRoleInfoResponse,
+  input: __S(593, __c74, 1) as any as S.Schema<ListSecurityRoleInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSecurityRoleInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18465,8 +13937,8 @@ export const listSecurityRolePermissions: API.OperationMethod<
   ListSecurityRolePermissionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityRolePermissionsRequest,
-  output: ListSecurityRolePermissionsResponse,
+  input: __S(594, __c74, 2) as any as S.Schema<ListSecurityRolePermissionsRequest>,
+  output: __S(597, __c74, 5) as any as S.Schema<ListSecurityRolePermissionsResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18480,8 +13952,8 @@ export const listSecurityRoleSearch: API.OperationMethod<
   ListSecurityRoleSearchError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityRoleSearchRequest,
-  output: RolesResponseSchema,
+  input: __S(601, __c75, 1) as any as S.Schema<ListSecurityRoleSearchRequest>,
+  output: __S(604, __c75, 4) as any as S.Schema<RolesResponseSchema>,
   errors: [BadRequest, Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18495,8 +13967,8 @@ export const listSecuritySubjectInfo: API.OperationMethod<
   ListSecuritySubjectInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecuritySubjectInfoRequest,
-  output: ListSecuritySubjectInfoResponse,
+  input: __S(605, __c75, 5) as any as S.Schema<ListSecuritySubjectInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSecuritySubjectInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18510,8 +13982,8 @@ export const listSecurityUserInfo: API.OperationMethod<
   ListSecurityUserInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityUserInfoRequest,
-  output: ListSecurityUserInfoResponse,
+  input: __S(606, __c75, 6) as any as S.Schema<ListSecurityUserInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSecurityUserInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18528,8 +14000,8 @@ export const listSecurityUserRegistrationInfo: API.OperationMethod<
   ListSecurityUserRegistrationInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecurityUserRegistrationInfoRequest,
-  output: ListSecurityUserRegistrationInfoResponse,
+  input: __S(607, __c75, 7) as any as S.Schema<ListSecurityUserRegistrationInfoRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListSecurityUserRegistrationInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18543,8 +14015,8 @@ export const listSqllab: API.OperationMethod<
   ListSqllabError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqllabRequest,
-  output: SQLLabBootstrapSchema,
+  input: __S(608, __c76, 0) as any as S.Schema<ListSqllabRequest>,
+  output: __S(615, __c76, 7) as any as S.Schema<SQLLabBootstrapSchema>,
   errors: [BadRequest, Forbidden, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18558,8 +14030,8 @@ export const listSqllabResults: API.OperationMethod<
   ListSqllabResultsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqllabResultsRequest,
-  output: QueryExecutionResponseSchema,
+  input: __S(616, __c77, 0) as any as S.Schema<ListSqllabResultsRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<QueryExecutionResponseSchema>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18573,8 +14045,8 @@ export const listTagFavoriteStatus: API.OperationMethod<
   ListTagFavoriteStatusError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagFavoriteStatusRequest,
-  output: GetFavStarIdsSchema,
+  input: __S(617, __c77, 1) as any as S.Schema<ListTagFavoriteStatusRequest>,
+  output: __S(517, __c64, 5) as any as S.Schema<GetFavStarIdsSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18588,8 +14060,8 @@ export const listTagGetObjects: API.OperationMethod<
   ListTagGetObjectsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagGetObjectsRequest,
-  output: ListTagGetObjectsResponse,
+  input: __S(618, __c77, 2) as any as S.Schema<ListTagGetObjectsRequest>,
+  output: __S(623, __c77, 7) as any as S.Schema<ListTagGetObjectsResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18603,8 +14075,8 @@ export const listTagInfo: API.OperationMethod<
   ListTagInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagInfoRequest,
-  output: ListTagInfoResponse,
+  input: __S(624, __c78, 0) as any as S.Schema<ListTagInfoRequest>,
+  output: __S(519, __c64, 7) as any as S.Schema<ListTagInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18618,8 +14090,8 @@ export const listThemeInfo: API.OperationMethod<
   ListThemeInfoError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListThemeInfoRequest,
-  output: ListThemeInfoResponse,
+  input: __S(625, __c78, 1) as any as S.Schema<ListThemeInfoRequest>,
+  output: __S(519, __c64, 7) as any as S.Schema<ListThemeInfoResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18633,8 +14105,8 @@ export const loginSecurity: API.OperationMethod<
   LoginSecurityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LoginSecurityRequest,
-  output: LoginSecurityResponse,
+  input: __S(626, __c78, 2) as any as S.Schema<LoginSecurityRequest>,
+  output: __S(627, __c78, 3) as any as S.Schema<LoginSecurityResponse>,
   errors: [BadRequest, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18648,8 +14120,8 @@ export const purgeChart: API.OperationMethod<
   PurgeChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeChartRequest,
-  output: PurgeChartResponse,
+  input: __S(628, __c78, 4) as any as S.Schema<PurgeChartRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<PurgeChartResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18667,8 +14139,8 @@ export const purgeDashboard: API.OperationMethod<
   PurgeDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeDashboardRequest,
-  output: PurgeDashboardResponse,
+  input: __S(629, __c78, 5) as any as S.Schema<PurgeDashboardRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<PurgeDashboardResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18688,8 +14160,8 @@ export const purgeDataset: API.OperationMethod<
   PurgeDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeDatasetRequest,
-  output: PurgeDatasetResponse,
+  input: __S(630, __c78, 6) as any as S.Schema<PurgeDatasetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<PurgeDatasetResponse>,
   errors: [
     BadRequest,
     Forbidden,
@@ -18710,8 +14182,8 @@ export const putAnnotationLayer: API.OperationMethod<
   PutAnnotationLayerError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAnnotationLayerRequest,
-  output: PutAnnotationLayerResponse,
+  input: __S(631, __c78, 7) as any as S.Schema<PutAnnotationLayerRequest>,
+  output: __S(633, __c79, 1) as any as S.Schema<PutAnnotationLayerResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18725,8 +14197,8 @@ export const putAnnotationLayerAnnotation: API.OperationMethod<
   PutAnnotationLayerAnnotationError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAnnotationLayerAnnotationRequest,
-  output: PutAnnotationLayerAnnotationResponse,
+  input: __S(634, __c79, 2) as any as S.Schema<PutAnnotationLayerAnnotationRequest>,
+  output: __S(636, __c79, 4) as any as S.Schema<PutAnnotationLayerAnnotationResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18745,8 +14217,8 @@ export const putChart: API.OperationMethod<
   PutChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutChartRequest,
-  output: PutChartResponse,
+  input: __S(639, __c79, 7) as any as S.Schema<PutChartRequest>,
+  output: __S(641, __c80, 1) as any as S.Schema<PutChartResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18760,8 +14232,8 @@ export const putChartWarmUpCache: API.OperationMethod<
   PutChartWarmUpCacheError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutChartWarmUpCacheRequest,
-  output: ChartCacheWarmUpResponseSchema,
+  input: __S(642, __c80, 2) as any as S.Schema<PutChartWarmUpCacheRequest>,
+  output: __S(645, __c80, 5) as any as S.Schema<ChartCacheWarmUpResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18779,8 +14251,8 @@ export const putCssTemplate: API.OperationMethod<
   PutCssTemplateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCssTemplateRequest,
-  output: PutCssTemplateResponse,
+  input: __S(646, __c80, 6) as any as S.Schema<PutCssTemplateRequest>,
+  output: __S(647, __c80, 7) as any as S.Schema<PutCssTemplateResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18799,8 +14271,8 @@ export const putDashboard: API.OperationMethod<
   PutDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardRequest,
-  output: PutDashboardResponse,
+  input: __S(649, __c81, 1) as any as S.Schema<PutDashboardRequest>,
+  output: __S(651, __c81, 3) as any as S.Schema<PutDashboardResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18819,8 +14291,8 @@ export const putDashboardChartCustomizations: API.OperationMethod<
   PutDashboardChartCustomizationsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardChartCustomizationsRequest,
-  output: PutDashboardChartCustomizationsResponse,
+  input: __S(652, __c81, 4) as any as S.Schema<PutDashboardChartCustomizationsRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<PutDashboardChartCustomizationsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18839,8 +14311,8 @@ export const putDashboardColors: API.OperationMethod<
   PutDashboardColorsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardColorsRequest,
-  output: PutDashboardColorsResponse,
+  input: __S(653, __c81, 5) as any as S.Schema<PutDashboardColorsRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<PutDashboardColorsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18854,8 +14326,8 @@ export const putDashboardEmbedded: API.OperationMethod<
   PutDashboardEmbeddedError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardEmbeddedRequest,
-  output: PutDashboardEmbeddedResponse,
+  input: __S(654, __c81, 6) as any as S.Schema<PutDashboardEmbeddedRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PutDashboardEmbeddedResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18874,8 +14346,8 @@ export const putDashboardFilters: API.OperationMethod<
   PutDashboardFiltersError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardFiltersRequest,
-  output: PutDashboardFiltersResponse,
+  input: __S(655, __c81, 7) as any as S.Schema<PutDashboardFiltersRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<PutDashboardFiltersResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18893,8 +14365,8 @@ export const putDashboardFilterState: API.OperationMethod<
   PutDashboardFilterStateError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardFilterStateRequest,
-  output: PutDashboardFilterStateResponse,
+  input: __S(656, __c82, 0) as any as S.Schema<PutDashboardFilterStateRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<PutDashboardFilterStateResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18913,8 +14385,8 @@ export const putDatabase: API.OperationMethod<
   PutDatabaseError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDatabaseRequest,
-  output: PutDatabaseResponse,
+  input: __S(657, __c82, 1) as any as S.Schema<PutDatabaseRequest>,
+  output: __S(659, __c82, 3) as any as S.Schema<PutDatabaseResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18934,8 +14406,8 @@ export const putDataset: API.OperationMethod<
   PutDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDatasetRequest,
-  output: PutDatasetResponse,
+  input: __S(668, __c83, 4) as any as S.Schema<PutDatasetRequest>,
+  output: __S(670, __c83, 6) as any as S.Schema<PutDatasetResponse>,
   errors: [
     BadRequest,
     Forbidden,
@@ -18960,8 +14432,8 @@ export const putDatasetRefresh: API.OperationMethod<
   PutDatasetRefreshError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDatasetRefreshRequest,
-  output: PutDatasetRefreshResponse,
+  input: __S(671, __c83, 7) as any as S.Schema<PutDatasetRefreshRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<PutDatasetRefreshResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18975,8 +14447,8 @@ export const putDatasetWarmUpCache: API.OperationMethod<
   PutDatasetWarmUpCacheError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDatasetWarmUpCacheRequest,
-  output: DatasetCacheWarmUpResponseSchema,
+  input: __S(672, __c84, 0) as any as S.Schema<PutDatasetWarmUpCacheRequest>,
+  output: __S(645, __c80, 5) as any as S.Schema<DatasetCacheWarmUpResponseSchema>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -18994,8 +14466,8 @@ export const putExploreFormData: API.OperationMethod<
   PutExploreFormDataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutExploreFormDataRequest,
-  output: PutExploreFormDataResponse,
+  input: __S(673, __c84, 1) as any as S.Schema<PutExploreFormDataRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<PutExploreFormDataResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19009,8 +14481,8 @@ export const putMe: API.OperationMethod<
   PutMeError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMeRequest,
-  output: PutMeResponse,
+  input: __S(674, __c84, 2) as any as S.Schema<PutMeRequest>,
+  output: __S(351, __c43, 7) as any as S.Schema<PutMeResponse>,
   errors: [BadRequest, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19029,8 +14501,8 @@ export const putReport: API.OperationMethod<
   PutReportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutReportRequest,
-  output: PutReportResponse,
+  input: __S(675, __c84, 3) as any as S.Schema<PutReportRequest>,
+  output: __S(677, __c84, 5) as any as S.Schema<PutReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19049,8 +14521,8 @@ export const putRowlevelsecurity: API.OperationMethod<
   PutRowlevelsecurityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutRowlevelsecurityRequest,
-  output: PutRowlevelsecurityResponse,
+  input: __S(678, __c84, 6) as any as S.Schema<PutRowlevelsecurityRequest>,
+  output: __S(680, __c85, 0) as any as S.Schema<PutRowlevelsecurityResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19068,8 +14540,8 @@ export const putSavedQuery: API.OperationMethod<
   PutSavedQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSavedQueryRequest,
-  output: PutSavedQueryResponse,
+  input: __S(681, __c85, 1) as any as S.Schema<PutSavedQueryRequest>,
+  output: __S(682, __c85, 2) as any as S.Schema<PutSavedQueryResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19082,8 +14554,8 @@ export const putSecurityGroup: API.OperationMethod<
   PutSecurityGroupError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSecurityGroupRequest,
-  output: PutSecurityGroupResponse,
+  input: __S(683, __c85, 3) as any as S.Schema<PutSecurityGroupRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<PutSecurityGroupResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19100,8 +14572,8 @@ export const putSecurityPermissionsResource: API.OperationMethod<
   PutSecurityPermissionsResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSecurityPermissionsResourceRequest,
-  output: PutSecurityPermissionsResourceResponse,
+  input: __S(684, __c85, 4) as any as S.Schema<PutSecurityPermissionsResourceRequest>,
+  output: __S(685, __c85, 5) as any as S.Schema<PutSecurityPermissionsResourceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19118,8 +14590,8 @@ export const putSecurityResource: API.OperationMethod<
   PutSecurityResourceError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSecurityResourceRequest,
-  output: PutSecurityResourceResponse,
+  input: __S(686, __c85, 6) as any as S.Schema<PutSecurityResourceRequest>,
+  output: __S(687, __c85, 7) as any as S.Schema<PutSecurityResourceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19136,8 +14608,8 @@ export const putSecurityRole: API.OperationMethod<
   PutSecurityRoleError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSecurityRoleRequest,
-  output: PutSecurityRoleResponse,
+  input: __S(688, __c86, 0) as any as S.Schema<PutSecurityRoleRequest>,
+  output: __S(689, __c86, 1) as any as S.Schema<PutSecurityRoleResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19154,8 +14626,8 @@ export const putSecurityRoleGroups: API.OperationMethod<
   PutSecurityRoleGroupsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSecurityRoleGroupsRequest,
-  output: PutSecurityRoleGroupsResponse,
+  input: __S(690, __c86, 2) as any as S.Schema<PutSecurityRoleGroupsRequest>,
+  output: __S(692, __c86, 4) as any as S.Schema<PutSecurityRoleGroupsResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19172,8 +14644,8 @@ export const putSecurityRoleUsers: API.OperationMethod<
   PutSecurityRoleUsersError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSecurityRoleUsersRequest,
-  output: PutSecurityRoleUsersResponse,
+  input: __S(693, __c86, 5) as any as S.Schema<PutSecurityRoleUsersRequest>,
+  output: __S(695, __c86, 7) as any as S.Schema<PutSecurityRoleUsersResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19186,8 +14658,8 @@ export const putSecurityUser: API.OperationMethod<
   PutSecurityUserError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSecurityUserRequest,
-  output: PutSecurityUserResponse,
+  input: __S(696, __c87, 0) as any as S.Schema<PutSecurityUserRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<PutSecurityUserResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19206,8 +14678,8 @@ export const putTag: API.OperationMethod<
   PutTagError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTagRequest,
-  output: PutTagResponse,
+  input: __S(697, __c87, 1) as any as S.Schema<PutTagRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<PutTagResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19226,8 +14698,8 @@ export const putTheme: API.OperationMethod<
   PutThemeError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutThemeRequest,
-  output: PutThemeResponse,
+  input: __S(698, __c87, 2) as any as S.Schema<PutThemeRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<PutThemeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19246,8 +14718,8 @@ export const putThemeSetSystemDark: API.OperationMethod<
   PutThemeSetSystemDarkError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutThemeSetSystemDarkRequest,
-  output: PutThemeSetSystemDarkResponse,
+  input: __S(699, __c87, 3) as any as S.Schema<PutThemeSetSystemDarkRequest>,
+  output: __S(700, __c87, 4) as any as S.Schema<PutThemeSetSystemDarkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19266,8 +14738,8 @@ export const putThemeSetSystemDefault: API.OperationMethod<
   PutThemeSetSystemDefaultError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutThemeSetSystemDefaultRequest,
-  output: PutThemeSetSystemDefaultResponse,
+  input: __S(701, __c87, 5) as any as S.Schema<PutThemeSetSystemDefaultRequest>,
+  output: __S(700, __c87, 4) as any as S.Schema<PutThemeSetSystemDefaultResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19281,8 +14753,8 @@ export const refreshSecurity: API.OperationMethod<
   RefreshSecurityError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshSecurityRequest,
-  output: RefreshSecurityResponse,
+  input: __S(702, __c87, 6) as any as S.Schema<RefreshSecurityRequest>,
+  output: __S(703, __c87, 7) as any as S.Schema<RefreshSecurityResponse>,
   errors: [UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19296,8 +14768,8 @@ export const restoreChart: API.OperationMethod<
   RestoreChartError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreChartRequest,
-  output: RestoreChartResponse,
+  input: __S(704, __c88, 0) as any as S.Schema<RestoreChartRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<RestoreChartResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19316,8 +14788,8 @@ export const restoreChartVersion: API.OperationMethod<
   RestoreChartVersionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreChartVersionRequest,
-  output: RestoreChartVersionResponse,
+  input: __S(705, __c88, 1) as any as S.Schema<RestoreChartVersionRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<RestoreChartVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19335,8 +14807,8 @@ export const restoreDashboard: API.OperationMethod<
   RestoreDashboardError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreDashboardRequest,
-  output: RestoreDashboardResponse,
+  input: __S(706, __c88, 2) as any as S.Schema<RestoreDashboardRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<RestoreDashboardResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19355,8 +14827,8 @@ export const restoreDashboardVersion: API.OperationMethod<
   RestoreDashboardVersionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreDashboardVersionRequest,
-  output: RestoreDashboardVersionResponse,
+  input: __S(707, __c88, 3) as any as S.Schema<RestoreDashboardVersionRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<RestoreDashboardVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19374,8 +14846,8 @@ export const restoreDataset: API.OperationMethod<
   RestoreDatasetError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreDatasetRequest,
-  output: RestoreDatasetResponse,
+  input: __S(708, __c88, 4) as any as S.Schema<RestoreDatasetRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<RestoreDatasetResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19394,8 +14866,8 @@ export const restoreDatasetVersion: API.OperationMethod<
   RestoreDatasetVersionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreDatasetVersionRequest,
-  output: RestoreDatasetVersionResponse,
+  input: __S(709, __c88, 5) as any as S.Schema<RestoreDatasetVersionRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<RestoreDatasetVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19409,8 +14881,8 @@ export const stopQuery: API.OperationMethod<
   StopQueryError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopQueryRequest,
-  output: StopQueryResponse,
+  input: __S(710, __c88, 6) as any as S.Schema<StopQueryRequest>,
+  output: __S(277, __c34, 5) as any as S.Schema<StopQueryResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19424,8 +14896,8 @@ export const subscribeReport: API.OperationMethod<
   SubscribeReportError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscribeReportRequest,
-  output: SubscribeReportResponse,
+  input: __S(711, __c88, 7) as any as S.Schema<SubscribeReportRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<SubscribeReportResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19439,8 +14911,8 @@ export const syncDatabasePermissions: API.OperationMethod<
   SyncDatabasePermissionsError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncDatabasePermissionsRequest,
-  output: SyncDatabasePermissionsResponse,
+  input: __S(712, __c89, 0) as any as S.Schema<SyncDatabasePermissionsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<SyncDatabasePermissionsResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19454,8 +14926,8 @@ export const testDatabaseConnection: API.OperationMethod<
   TestDatabaseConnectionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestDatabaseConnectionRequest,
-  output: TestDatabaseConnectionResponse,
+  input: __S(713, __c89, 1) as any as S.Schema<TestDatabaseConnectionRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<TestDatabaseConnectionResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19469,8 +14941,8 @@ export const updateTag: API.OperationMethod<
   UpdateTagError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTagRequest,
-  output: UpdateTagResponse,
+  input: __S(714, __c89, 2) as any as S.Schema<UpdateTagRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<UpdateTagResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19488,8 +14960,8 @@ export const uploadDatabase: API.OperationMethod<
   UploadDatabaseError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadDatabaseRequest,
-  output: UploadDatabaseResponse,
+  input: __S(715, __c89, 3) as any as S.Schema<UploadDatabaseRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<UploadDatabaseResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19503,8 +14975,8 @@ export const uploadDatabaseMetadata: API.OperationMethod<
   UploadDatabaseMetadataError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadDatabaseMetadataRequest,
-  output: UploadDatabaseMetadataResponse,
+  input: __S(716, __c89, 4) as any as S.Schema<UploadDatabaseMetadataRequest>,
+  output: __S(720, __c90, 0) as any as S.Schema<UploadDatabaseMetadataResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19521,8 +14993,8 @@ export const validateDatabaseParameters: API.OperationMethod<
   ValidateDatabaseParametersError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateDatabaseParametersRequest,
-  output: ValidateDatabaseParametersResponse,
+  input: __S(722, __c90, 2) as any as S.Schema<ValidateDatabaseParametersRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<ValidateDatabaseParametersResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19536,8 +15008,8 @@ export const validateDatabaseSql: API.OperationMethod<
   ValidateDatabaseSqlError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateDatabaseSqlRequest,
-  output: ValidateDatabaseSqlResponse,
+  input: __S(723, __c90, 3) as any as S.Schema<ValidateDatabaseSqlRequest>,
+  output: __S(726, __c90, 6) as any as S.Schema<ValidateDatabaseSqlResponse>,
   errors: [BadRequest, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19555,8 +15027,8 @@ export const validateDatasourceExpression: API.OperationMethod<
   ValidateDatasourceExpressionError,
   ApacheSupersetOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateDatasourceExpressionRequest,
-  output: ValidateDatasourceExpressionResponse,
+  input: __S(727, __c90, 7) as any as S.Schema<ValidateDatasourceExpressionRequest>,
+  output: __S(726, __c90, 6) as any as S.Schema<ValidateDatasourceExpressionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownApacheSupersetError],
   protocol: ApacheSupersetProtocol,
   retry: Retry.Retry,
@@ -19572,22 +15044,22 @@ function __c0(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          objects_to_tag: S.optional(TagObjectObjectsToTagList),
+          objects_to_tag: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "TagObject" });
     case 2:
-      return S.Array(TagObject);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(BulkTagCreateRequestTagsList),
+          tags: S.optional(__S(2, __c0, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/tag/bulk_create", code: 200 })),
       ).annotate({ identifier: "BulkTagCreateRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          objects_skipped: S.optional(TagPostBulkResponseObjectObjectsSkippedList),
-          objects_tagged: S.optional(TagPostBulkResponseObjectObjectsTaggedList),
+          objects_skipped: S.optional(__S(0, __c0, 0)),
+          objects_tagged: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "TagPostBulkResponseObject",
@@ -19595,7 +15067,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(TagPostBulkResponseObject),
+          result: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "TagPostBulkResponseSchema",
@@ -19643,7 +15115,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(AnnotationLayerRestApiPost),
+          result: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "CreateAnnotationLayerResponse",
@@ -19677,7 +15149,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(AnnotationRestApiPost),
+          result: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "CreateAnnotationLayerAnnotationResponse",
@@ -19690,12 +15162,12 @@ function __c1(j: number): any {
           cache_timeout: S.optional(S.NullOr(S.Number)),
           certification_details: S.optional(S.NullOr(S.String)),
           certified_by: S.optional(S.NullOr(S.String)),
-          dashboards: S.optional(CreateChartRequestDashboardsList),
+          dashboards: S.optional(__S(14, __c1, 6)),
           datasource_id: S.Number,
           datasource_name: S.optional(S.NullOr(S.String)),
-          datasource_type: CreateChartRequestDatasourceType,
+          datasource_type: S.String,
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(CreateChartRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           params: S.optional(S.NullOr(S.String)),
@@ -19703,7 +15175,7 @@ function __c1(j: number): any {
           query_context_generation: S.optional(S.NullOr(S.Boolean)),
           slice_name: S.String,
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(CreateChartRequestViewersList),
+          viewers: S.optional(__S(14, __c1, 6)),
           viz_type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/chart/", code: 200 })),
       ).annotate({ identifier: "CreateChartRequest" });
@@ -19717,12 +15189,12 @@ function __c2(j: number): any {
           cache_timeout: S.optional(S.NullOr(S.Number)),
           certification_details: S.optional(S.NullOr(S.String)),
           certified_by: S.optional(S.NullOr(S.String)),
-          dashboards: S.optional(ChartRestApiPostDashboardsList),
+          dashboards: S.optional(__S(14, __c1, 6)),
           datasource_id: S.Number,
           datasource_name: S.optional(S.NullOr(S.String)),
-          datasource_type: ChartRestApiPostDatasourceType,
+          datasource_type: S.String,
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(ChartRestApiPostEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           params: S.optional(S.NullOr(S.String)),
@@ -19730,7 +15202,7 @@ function __c2(j: number): any {
           query_context_generation: S.optional(S.NullOr(S.Boolean)),
           slice_name: S.String,
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(ChartRestApiPostViewersList),
+          viewers: S.optional(__S(14, __c1, 6)),
           viz_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChartRestApiPost" });
@@ -19738,14 +15210,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(ChartRestApiPost),
+          result: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "CreateChartResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Unknown,
-          type: S.optional(ChartDataDatasourceType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChartDataDatasource" });
     case 3:
@@ -19755,19 +15227,19 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotationType: S.optional(AnnotationLayerAnnotationType),
+          annotationType: S.optional(S.String),
           color: S.optional(S.NullOr(S.String)),
-          descriptionColumns: S.optional(AnnotationLayerDescriptionColumnsList),
+          descriptionColumns: S.optional(__S(19, __c2, 3)),
           hideLine: S.optional(S.NullOr(S.Boolean)),
           intervalEndColumn: S.optional(S.NullOr(S.String)),
           name: S.String,
-          opacity: S.optional(S.NullOr(AnnotationLayerOpacity)),
-          overrides: S.optional(S.NullOr(AnnotationLayerOverridesMap)),
+          opacity: S.optional(S.NullOr(S.String)),
+          overrides: S.optional(S.NullOr(__S(20, __c2, 4))),
           show: S.Boolean,
           showLabel: S.optional(S.NullOr(S.Boolean)),
           showMarkers: S.Boolean,
-          sourceType: S.optional(AnnotationLayerSourceType),
-          style: S.optional(AnnotationLayerStyle),
+          sourceType: S.optional(S.String),
+          style: S.optional(S.String),
           timeColumn: S.optional(S.NullOr(S.String)),
           titleColumn: S.optional(S.NullOr(S.String)),
           value: S.Unknown,
@@ -19775,15 +15247,15 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AnnotationLayer" });
     case 6:
-      return S.Array(AnnotationLayer);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          column_order: S.optional(S.NullOr(ChartDataExtrasColumnOrderList)),
+          column_order: S.optional(S.NullOr(__S(19, __c2, 3))),
           having: S.optional(S.String),
           instant_time_comparison_range: S.optional(S.NullOr(S.String)),
-          relative_end: S.optional(ChartDataExtrasRelativeEnd),
-          relative_start: S.optional(ChartDataExtrasRelativeStart),
+          relative_end: S.optional(S.String),
+          relative_start: S.optional(S.String),
           semantic_selection_version: S.optional(S.NullOr(S.String)),
           time_grain_sqla: S.optional(S.NullOr(S.String)),
           transpile_to_dialect: S.optional(S.NullOr(S.Boolean)),
@@ -19800,14 +15272,14 @@ function __c3(j: number): any {
           col: S.Unknown,
           grain: S.optional(S.String),
           isExtra: S.optional(S.Boolean),
-          op: ChartDataFilterOp,
+          op: S.String,
           val: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "ChartDataFilter" });
     case 1:
-      return S.Array(ChartDataFilter);
+      return S.Array(__S(24, __c3, 0));
     case 2:
-      return S.Array(ChartDataQueryObjectGroupingSetsItemList);
+      return S.Array(__S(19, __c2, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19818,50 +15290,50 @@ function __c3(j: number): any {
         identifier: "ChartDataPostProcessingOperation",
       });
     case 4:
-      return S.Array(/*@__PURE__*/ S.NullOr(ChartDataPostProcessingOperation));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(27, __c3, 3)));
     case 5:
       return S.Record(S.String, S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotation_layers: S.optional(S.NullOr(ChartDataQueryObjectAnnotationLayersList)),
+          annotation_layers: S.optional(S.NullOr(__S(22, __c2, 6))),
           applied_time_extras: S.optional(S.NullOr(S.Unknown)),
           apply_fetch_values_predicate: S.optional(S.NullOr(S.Boolean)),
-          columns: S.optional(S.NullOr(ChartDataQueryObjectColumnsList)),
-          datasource: S.optional(S.NullOr(ChartDataDatasource)),
-          extras: S.optional(S.NullOr(ChartDataExtras)),
-          filters: S.optional(S.NullOr(ChartDataQueryObjectFiltersList)),
+          columns: S.optional(S.NullOr(__S(0, __c0, 0))),
+          datasource: S.optional(S.NullOr(__S(18, __c2, 2))),
+          extras: S.optional(S.NullOr(__S(23, __c2, 7))),
+          filters: S.optional(S.NullOr(__S(25, __c3, 1))),
           force_nonce: S.optional(S.NullOr(S.String)),
           granularity: S.optional(S.NullOr(S.String)),
           granularity_sqla: S.optional(S.NullOr(S.String)),
           group_others_when_limit_reached: S.optional(S.NullOr(S.Boolean)),
-          groupby: S.optional(S.NullOr(ChartDataQueryObjectGroupbyList)),
-          grouping_sets: S.optional(S.NullOr(ChartDataQueryObjectGroupingSetsList)),
+          groupby: S.optional(S.NullOr(__S(0, __c0, 0))),
+          grouping_sets: S.optional(S.NullOr(__S(26, __c3, 2))),
           having: S.optional(S.NullOr(S.String)),
           is_rowcount: S.optional(S.NullOr(S.Boolean)),
           is_timeseries: S.optional(S.NullOr(S.Boolean)),
-          metrics: S.optional(S.NullOr(ChartDataQueryObjectMetricsList)),
+          metrics: S.optional(S.NullOr(__S(0, __c0, 0))),
           order_desc: S.optional(S.NullOr(S.Boolean)),
-          orderby: S.optional(S.NullOr(ChartDataQueryObjectOrderbyList)),
-          post_processing: S.optional(S.NullOr(ChartDataQueryObjectPostProcessingList)),
-          result_type: S.optional(S.NullOr(ChartDataQueryObjectResultType)),
+          orderby: S.optional(S.NullOr(__S(0, __c0, 0))),
+          post_processing: S.optional(S.NullOr(__S(28, __c3, 4))),
+          result_type: S.optional(S.NullOr(S.String)),
           row_limit: S.optional(S.NullOr(S.Number)),
           row_offset: S.optional(S.NullOr(S.Number)),
-          series_columns: S.optional(S.NullOr(ChartDataQueryObjectSeriesColumnsList)),
+          series_columns: S.optional(S.NullOr(__S(0, __c0, 0))),
           series_limit: S.optional(S.NullOr(S.Number)),
           series_limit_metric: S.optional(S.NullOr(S.Unknown)),
           time_compare_full_range: S.optional(S.NullOr(S.Boolean)),
-          time_offsets: S.optional(S.NullOr(ChartDataQueryObjectTimeOffsetsList)),
+          time_offsets: S.optional(S.NullOr(__S(19, __c2, 3))),
           time_range: S.optional(S.NullOr(S.String)),
           time_shift: S.optional(S.NullOr(S.String)),
           timeseries_limit: S.optional(S.NullOr(S.Number)),
           timeseries_limit_metric: S.optional(S.NullOr(S.Unknown)),
-          url_params: S.optional(S.NullOr(ChartDataQueryObjectUrlParamsMap)),
+          url_params: S.optional(S.NullOr(__S(29, __c3, 5))),
           where: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ChartDataQueryObject" });
     case 7:
-      return S.Array(ChartDataQueryObject);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -19871,13 +15343,13 @@ function __c4(j: number): any {
         S.Struct({
           async_mode: S.optional(S.NullOr(S.Boolean)),
           custom_cache_timeout: S.optional(S.NullOr(S.Number)),
-          datasource: S.optional(ChartDataDatasource),
+          datasource: S.optional(__S(18, __c2, 2)),
           force: S.optional(S.NullOr(S.Boolean)),
           force_nonce: S.optional(S.NullOr(S.String)),
           form_data: S.optional(S.NullOr(S.Unknown)),
-          queries: S.optional(CreateChartDataRequestQueriesList),
-          result_format: S.optional(CreateChartDataRequestResultFormat),
-          result_type: S.optional(CreateChartDataRequestResultType),
+          queries: S.optional(__S(31, __c3, 7)),
+          result_format: S.optional(S.String),
+          result_type: S.optional(S.String),
           tab_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/chart/data", code: 200 })),
       ).annotate({ identifier: "CreateChartDataRequest" });
@@ -19891,17 +15363,17 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DashboardFilterInfo" });
     case 2:
-      return S.Array(DashboardFilterInfo);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(DashboardFiltersResponseSchemaFiltersList),
+          filters: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({
         identifier: "DashboardFiltersResponseSchema",
       });
     case 4:
-      return S.Array(ChartDataResponseResultAnnotationDataItemMap);
+      return S.Array(__S(29, __c3, 5));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -19915,32 +15387,32 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          query: ChartDataQueryTiming,
-          version: ChartDataTimingVersion,
+          query: __S(37, __c4, 5),
+          version: S.Number,
         }),
       ).annotate({ identifier: "ChartDataTiming" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          annotation_data: S.optional(S.NullOr(ChartDataResponseResultAnnotationDataList)),
-          applied_filters: S.optional(ChartDataResponseResultAppliedFiltersList),
+          annotation_data: S.optional(S.NullOr(__S(36, __c4, 4))),
+          applied_filters: S.optional(__S(0, __c0, 0)),
           cache_key: S.NullOr(S.String),
           cache_timeout: S.NullOr(S.Number),
           cached_dttm: S.NullOr(S.String),
-          colnames: S.optional(ChartDataResponseResultColnamesList),
-          coltypes: S.optional(ChartDataResponseResultColtypesList),
-          data: S.optional(ChartDataResponseResultDataList),
+          colnames: S.optional(__S(19, __c2, 3)),
+          coltypes: S.optional(__S(14, __c1, 6)),
+          data: S.optional(__S(0, __c0, 0)),
           detected_currency: S.optional(S.NullOr(S.String)),
           error: S.optional(S.NullOr(S.String)),
           from_dttm: S.optional(S.NullOr(S.Number)),
           is_cached: S.Boolean,
           queried_dttm: S.NullOr(S.String),
           query: S.optional(S.NullOr(S.String)),
-          rejected_filters: S.optional(ChartDataResponseResultRejectedFiltersList),
+          rejected_filters: S.optional(__S(0, __c0, 0)),
           rowcount: S.optional(S.Number),
           stacktrace: S.optional(S.NullOr(S.String)),
-          status: S.optional(ChartDataResponseResultStatus),
-          timing: S.optional(ChartDataTiming),
+          status: S.optional(S.String),
+          timing: S.optional(__S(38, __c4, 6)),
           to_dttm: S.optional(S.NullOr(S.Number)),
           warning: S.optional(S.NullOr(S.String)),
         }),
@@ -19950,12 +15422,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ChartDataResponseResult);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dashboard_filters: S.optional(DashboardFiltersResponseSchema),
-          result: S.optional(ChartDataResponseSchemaResultList),
+          dashboard_filters: S.optional(__S(35, __c4, 3)),
+          result: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "ChartDataResponseSchema" });
     case 2:
@@ -19992,7 +15464,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(CssTemplateRestApiPost),
+          result: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({
         identifier: "CreateCssTemplateResponse",
@@ -20005,7 +15477,7 @@ function __c5(j: number): any {
           css: S.optional(S.String),
           dashboard_title: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(CreateDashboardRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           json_metadata: S.optional(S.String),
@@ -20014,7 +15486,7 @@ function __c5(j: number): any {
           slug: S.optional(S.NullOr(S.String)),
           theme_id: S.optional(S.NullOr(S.Number)),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(CreateDashboardRequestViewersList),
+          viewers: S.optional(__S(14, __c1, 6)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/", code: 200 })),
       ).annotate({ identifier: "CreateDashboardRequest" });
   }
@@ -20029,7 +15501,7 @@ function __c6(j: number): any {
           css: S.optional(S.String),
           dashboard_title: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(DashboardRestApiPostEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           json_metadata: S.optional(S.String),
@@ -20038,14 +15510,14 @@ function __c6(j: number): any {
           slug: S.optional(S.NullOr(S.String)),
           theme_id: S.optional(S.NullOr(S.Number)),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(DashboardRestApiPostViewersList),
+          viewers: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "DashboardRestApiPost" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(DashboardRestApiPost),
+          result: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "CreateDashboardResponse" });
     case 2:
@@ -20054,10 +15526,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pk: S.Number.pipe(T.Label()),
-          activeTabs: S.optional(CreateDashboardCacheDashboardScreenshotRequestActiveTabsList),
+          activeTabs: S.optional(__S(19, __c2, 3)),
           anchor: S.optional(S.String),
-          dataMask: S.optional(CreateDashboardCacheDashboardScreenshotRequestDataMaskMap),
-          urlParams: S.optional(CreateDashboardCacheDashboardScreenshotRequestUrlParamsList),
+          dataMask: S.optional(__S(50, __c6, 2)),
+          urlParams: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20085,7 +15557,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id_or_slug: S.String.pipe(T.Label()),
-          allowed_domains: CreateDashboardEmbeddedRequestAllowedDomainsList,
+          allowed_domains: __S(19, __c2, 3),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/dashboard/{id_or_slug}/embedded", code: 200 }),
         ),
@@ -20104,8 +15576,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowed_domains: S.optional(EmbeddedDashboardResponseSchemaAllowedDomainsList),
-          changed_by: S.optional(User1),
+          allowed_domains: S.optional(__S(19, __c2, 3)),
+          changed_by: S.optional(__S(54, __c6, 6)),
           changed_on: S.optional(S.String),
           dashboard_id: S.optional(S.String),
           uuid: S.optional(S.String),
@@ -20120,7 +15592,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(EmbeddedDashboardResponseSchema),
+          result: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({
         identifier: "CreateDashboardEmbeddedResponse",
@@ -20159,11 +15631,11 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pk: S.String.pipe(T.Label()),
-          activeTabs: S.optional(S.NullOr(CreateDashboardPermalinkRequestActiveTabsList)),
+          activeTabs: S.optional(S.NullOr(__S(60, __c7, 4))),
           anchor: S.optional(S.NullOr(S.String)),
           chartStates: S.optional(S.NullOr(S.Unknown)),
           dataMask: S.optional(S.NullOr(S.Unknown)),
-          urlParams: S.optional(S.NullOr(CreateDashboardPermalinkRequestUrlParamsList)),
+          urlParams: S.optional(S.NullOr(__S(61, __c7, 5))),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/{pk}/permalink", code: 200 })),
       ).annotate({
         identifier: "CreateDashboardPermalinkRequest",
@@ -20203,7 +15675,7 @@ function __c8(j: number): any {
           allow_file_upload: S.optional(S.Boolean),
           allow_run_async: S.optional(S.Boolean),
           cache_timeout: S.optional(S.NullOr(S.Number)),
-          configuration_method: S.optional(CreateDatabaseRequestConfigurationMethod),
+          configuration_method: S.optional(S.String),
           database_name: S.String,
           driver: S.optional(S.NullOr(S.String)),
           engine: S.optional(S.NullOr(S.String)),
@@ -20214,10 +15686,10 @@ function __c8(j: number): any {
           impersonate_user: S.optional(S.Boolean),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           masked_encrypted_extra: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(CreateDatabaseRequestParametersMap),
+          parameters: S.optional(__S(50, __c6, 2)),
           server_cert: S.optional(S.NullOr(S.String)),
           sqlalchemy_uri: S.optional(S.String),
-          ssh_tunnel: S.optional(S.NullOr(DatabaseSSHTunnel)),
+          ssh_tunnel: S.optional(S.NullOr(__S(64, __c8, 0))),
           uuid: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/database/", code: 200 })),
       ).annotate({ identifier: "CreateDatabaseRequest" });
@@ -20240,7 +15712,7 @@ function __c8(j: number): any {
           allow_file_upload: S.optional(S.Boolean),
           allow_run_async: S.optional(S.Boolean),
           cache_timeout: S.optional(S.NullOr(S.Number)),
-          configuration_method: S.optional(DatabaseRestApiPostOutputConfigurationMethod),
+          configuration_method: S.optional(S.String),
           database_name: S.String,
           driver: S.optional(S.NullOr(S.String)),
           engine: S.optional(S.NullOr(S.String)),
@@ -20251,10 +15723,10 @@ function __c8(j: number): any {
           impersonate_user: S.optional(S.Boolean),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           masked_encrypted_extra: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(DatabaseRestApiPostOutputParametersMap),
+          parameters: S.optional(__S(50, __c6, 2)),
           server_cert: S.optional(S.NullOr(S.String)),
           sqlalchemy_uri: S.optional(S.String),
-          ssh_tunnel: S.optional(S.NullOr(DatabaseSSHTunnelOutput)),
+          ssh_tunnel: S.optional(S.NullOr(__S(66, __c8, 2))),
           uuid: S.optional(S.String),
         }),
       ).annotate({
@@ -20264,7 +15736,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(DatabaseRestApiPostOutput),
+          result: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "CreateDatabaseResponse" });
     case 5:
@@ -20274,7 +15746,7 @@ function __c8(j: number): any {
           catalog: S.optional(S.NullOr(S.String)),
           currency_code_column: S.optional(S.NullOr(S.String)),
           database: S.Number,
-          editors: S.optional(CreateDatasetRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           normalize_columns: S.optional(S.Boolean),
@@ -20292,7 +15764,7 @@ function __c8(j: number): any {
           catalog: S.optional(S.NullOr(S.String)),
           currency_code_column: S.optional(S.NullOr(S.String)),
           database: S.Number,
-          editors: S.optional(DatasetRestApiPostEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           normalize_columns: S.optional(S.Boolean),
@@ -20307,7 +15779,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(DatasetRestApiPost),
+          result: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({ identifier: "CreateDatasetResponse" });
   }
@@ -20319,8 +15791,8 @@ function __c9(j: number): any {
         S.Struct({
           datasource_type: S.String.pipe(T.Label()),
           datasource_id: S.Number.pipe(T.Label()),
-          selected_dimensions: S.optional(CreateDatasourceCompatibleRequestSelectedDimensionsList),
-          selected_metrics: S.optional(CreateDatasourceCompatibleRequestSelectedMetricsList),
+          selected_dimensions: S.optional(__S(19, __c2, 3)),
+          selected_metrics: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20336,12 +15808,8 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          compatible_dimensions: S.optional(
-            CreateDatasourceCompatibleResponseResultCompatibleDimensionsList,
-          ),
-          compatible_metrics: S.optional(
-            CreateDatasourceCompatibleResponseResultCompatibleMetricsList,
-          ),
+          compatible_dimensions: S.optional(__S(73, __c9, 1)),
+          compatible_metrics: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "CreateDatasourceCompatibleResponseResult",
@@ -20349,7 +15817,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(CreateDatasourceCompatibleResponseResult),
+          result: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({
         identifier: "CreateDatasourceCompatibleResponse",
@@ -20362,21 +15830,21 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "DatasourceQueryOrder" });
     case 5:
-      return S.Array(DatasourceQueryOrder);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           datasource_type: S.String.pipe(T.Label()),
           datasource_id: S.Number.pipe(T.Label()),
           cache_timeout: S.optional(S.NullOr(S.Number)),
-          dimensions: S.optional(CreateDatasourceQueryRequestDimensionsList),
-          filters: S.optional(CreateDatasourceQueryRequestFiltersList),
+          dimensions: S.optional(__S(0, __c0, 0)),
+          filters: S.optional(__S(25, __c3, 1)),
           force: S.optional(S.Boolean),
           limit: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(CreateDatasourceQueryRequestMetricsList),
+          metrics: S.optional(__S(0, __c0, 0)),
           offset: S.optional(S.Number),
-          order: S.optional(CreateDatasourceQueryRequestOrderList),
-          result_format: S.optional(CreateDatasourceQueryRequestResultFormat),
+          order: S.optional(__S(77, __c9, 5)),
+          result_format: S.optional(S.String),
           semantic_selection_version: S.optional(S.NullOr(S.String)),
           time_column: S.optional(S.NullOr(S.String)),
           time_grain: S.optional(S.NullOr(S.String)),
@@ -20395,7 +15863,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(CreateDatasourceQueryResponseResultList),
+          result: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "CreateDatasourceQueryResponse",
@@ -20410,7 +15878,7 @@ function __c10(j: number): any {
           tab_id: S.optional(S.Number.pipe(T.Query())),
           chart_id: S.optional(S.Number),
           datasource_id: S.Number,
-          datasource_type: CreateExploreFormDataRequestDatasourceType,
+          datasource_type: S.String,
           form_data: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/explore/form_data", code: 200 })),
       ).annotate({
@@ -20421,7 +15889,7 @@ function __c10(j: number): any {
         S.Struct({
           chartState: S.optional(S.NullOr(S.Unknown)),
           formData: S.Unknown,
-          urlParams: S.optional(S.NullOr(CreateExplorePermalinkRequestUrlParamsList)),
+          urlParams: S.optional(S.NullOr(__S(61, __c7, 5))),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/explore/permalink", code: 200 })),
       ).annotate({
         identifier: "CreateExplorePermalinkRequest",
@@ -20442,7 +15910,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(LogRestApiPost),
+          result: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "CreateLogResponse" });
     case 5:
@@ -20458,12 +15926,12 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          recipient_config_json: S.optional(ReportRecipientConfigJSON),
-          type: ReportRecipientType,
+          recipient_config_json: S.optional(__S(85, __c10, 5)),
+          type: S.String,
         }),
       ).annotate({ identifier: "ReportRecipient" });
     case 7:
-      return S.Array(ReportRecipient);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -20471,7 +15939,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          op: S.optional(ValidatorConfigJSONOp),
+          op: S.optional(S.String),
           threshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ValidatorConfigJSON" });
@@ -20481,13 +15949,13 @@ function __c11(j: number): any {
           active: S.optional(S.Boolean),
           chart: S.optional(S.NullOr(S.Number)),
           context_markdown: S.optional(S.NullOr(S.String)),
-          creation_method: S.optional(CreateReportRequestCreationMethod),
+          creation_method: S.optional(S.String),
           crontab: S.String,
           custom_width: S.optional(S.NullOr(S.Number)),
           dashboard: S.optional(S.NullOr(S.Number)),
           database: S.optional(S.Number),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(CreateReportRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           email_subject: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.Unknown),
           force_screenshot: S.optional(S.Boolean),
@@ -20495,18 +15963,18 @@ function __c11(j: number): any {
           include_cta: S.optional(S.NullOr(S.Boolean)),
           log_retention: S.optional(S.Number),
           name: S.String,
-          recipients: S.optional(CreateReportRequestRecipientsList),
-          report_format: S.optional(CreateReportRequestReportFormat),
+          recipients: S.optional(__S(87, __c10, 7)),
+          report_format: S.optional(S.String),
           retry_max_attempts: S.optional(S.Number),
           retry_notify_owners: S.optional(S.Boolean),
           retry_notify_recipients: S.optional(S.Boolean),
           retry_on_failure: S.optional(S.Boolean),
           send_failed_reports: S.optional(S.Boolean),
           sql: S.optional(S.String),
-          timezone: S.optional(CreateReportRequestTimezone),
-          type: CreateReportRequestType,
-          validator_config_json: S.optional(ValidatorConfigJSON),
-          validator_type: S.optional(CreateReportRequestValidatorType),
+          timezone: S.optional(S.String),
+          type: S.String,
+          validator_config_json: S.optional(__S(88, __c11, 0)),
+          validator_type: S.optional(S.String),
           working_timeout: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/report/", code: 200 })),
       ).annotate({ identifier: "CreateReportRequest" });
@@ -20516,13 +15984,13 @@ function __c11(j: number): any {
           active: S.optional(S.Boolean),
           chart: S.optional(S.NullOr(S.Number)),
           context_markdown: S.optional(S.NullOr(S.String)),
-          creation_method: S.optional(ReportScheduleRestApiPostCreationMethod),
+          creation_method: S.optional(S.String),
           crontab: S.String,
           custom_width: S.optional(S.NullOr(S.Number)),
           dashboard: S.optional(S.NullOr(S.Number)),
           database: S.optional(S.Number),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(ReportScheduleRestApiPostEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           email_subject: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.Unknown),
           force_screenshot: S.optional(S.Boolean),
@@ -20530,18 +15998,18 @@ function __c11(j: number): any {
           include_cta: S.optional(S.NullOr(S.Boolean)),
           log_retention: S.optional(S.Number),
           name: S.String,
-          recipients: S.optional(ReportScheduleRestApiPostRecipientsList),
-          report_format: S.optional(ReportScheduleRestApiPostReportFormat),
+          recipients: S.optional(__S(87, __c10, 7)),
+          report_format: S.optional(S.String),
           retry_max_attempts: S.optional(S.Number),
           retry_notify_owners: S.optional(S.Boolean),
           retry_notify_recipients: S.optional(S.Boolean),
           retry_on_failure: S.optional(S.Boolean),
           send_failed_reports: S.optional(S.Boolean),
           sql: S.optional(S.String),
-          timezone: S.optional(ReportScheduleRestApiPostTimezone),
-          type: ReportScheduleRestApiPostType,
-          validator_config_json: S.optional(ValidatorConfigJSON),
-          validator_type: S.optional(ReportScheduleRestApiPostValidatorType),
+          timezone: S.optional(S.String),
+          type: S.String,
+          validator_config_json: S.optional(__S(88, __c11, 0)),
+          validator_type: S.optional(S.String),
           working_timeout: S.optional(S.Number),
         }),
       ).annotate({
@@ -20551,7 +16019,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(ReportScheduleRestApiPost),
+          result: S.optional(__S(90, __c11, 2)),
         }),
       ).annotate({ identifier: "CreateReportResponse" });
     case 4:
@@ -20559,11 +16027,11 @@ function __c11(j: number): any {
         S.Struct({
           clause: S.String,
           description: S.optional(S.NullOr(S.String)),
-          filter_type: CreateRowlevelsecurityRequestFilterType,
+          filter_type: S.String,
           group_key: S.optional(S.NullOr(S.String)),
           name: S.String,
-          subjects: S.optional(CreateRowlevelsecurityRequestSubjectsList),
-          tables: CreateRowlevelsecurityRequestTablesList,
+          subjects: S.optional(__S(14, __c1, 6)),
+          tables: __S(14, __c1, 6),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/rowlevelsecurity/", code: 200 })),
       ).annotate({
         identifier: "CreateRowlevelsecurityRequest",
@@ -20573,18 +16041,18 @@ function __c11(j: number): any {
         S.Struct({
           clause: S.String,
           description: S.optional(S.NullOr(S.String)),
-          filter_type: RLSRestApiPostFilterType,
+          filter_type: S.String,
           group_key: S.optional(S.NullOr(S.String)),
           name: S.String,
-          subjects: S.optional(RLSRestApiPostSubjectsList),
-          tables: RLSRestApiPostTablesList,
+          subjects: S.optional(__S(14, __c1, 6)),
+          tables: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "RLSRestApiPost" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(RLSRestApiPost),
+          result: S.optional(__S(93, __c11, 5)),
         }),
       ).annotate({
         identifier: "CreateRowlevelsecurityResponse",
@@ -20623,7 +16091,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(SavedQueryRestApiPost),
+          result: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "CreateSavedQueryResponse" });
     case 2:
@@ -20640,11 +16108,11 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ResourceType,
+          type: S.String,
         }),
       ).annotate({ identifier: "Resource" });
     case 5:
-      return S.Array(Resource);
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -20653,7 +16121,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "RlsRule" });
     case 7:
-      return S.Array(RlsRule);
+      return S.Array(__S(102, __c12, 6));
   }
 }
 function __c13(j: number): any {
@@ -20661,7 +16129,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(S.NullOr(User2AttributesMap)),
+          attributes: S.optional(S.NullOr(__S(20, __c2, 4))),
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           username: S.optional(S.String),
@@ -20670,10 +16138,10 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          datasets: S.optional(S.NullOr(CreateSecurityGuestTokenRequestDatasetsList)),
-          resources: CreateSecurityGuestTokenRequestResourcesList,
-          rls: CreateSecurityGuestTokenRequestRlsList,
-          user: S.optional(User2),
+          datasets: S.optional(S.NullOr(__S(14, __c1, 6))),
+          resources: __S(101, __c12, 5),
+          rls: __S(103, __c12, 7),
+          user: S.optional(__S(104, __c13, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/security/guest_token/", code: 200 })),
       ).annotate({
         identifier: "CreateSecurityGuestTokenRequest",
@@ -20710,7 +16178,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(SupersetPermissionViewMenuApiPost),
+          result: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({
         identifier: "CreateSecurityPermissionsResourceResponse",
@@ -20737,7 +16205,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(ViewMenuApiPost),
+          result: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({
         identifier: "CreateSecurityResourceResponse",
@@ -20754,7 +16222,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role_id: S.Number.pipe(T.Label()),
-          permission_view_menu_ids: CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList,
+          permission_view_menu_ids: __S(14, __c1, 6),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20768,13 +16236,13 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permission_view_menu_ids: RolePermissionPostSchemaPermissionViewMenuIdsList,
+          permission_view_menu_ids: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "RolePermissionPostSchema" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(RolePermissionPostSchema),
+          result: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({
         identifier: "CreateSecurityRolePermissionsResponse",
@@ -20825,7 +16293,7 @@ function __c15(j: number): any {
         S.Struct({
           chartState: S.optional(S.NullOr(S.Unknown)),
           formData: S.Unknown,
-          urlParams: S.optional(S.NullOr(CreateSqllabPermalinkRequestUrlParamsList)),
+          urlParams: S.optional(S.NullOr(__S(61, __c7, 5))),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/sqllab/permalink", code: 200 })),
       ).annotate({
         identifier: "CreateSqllabPermalinkRequest",
@@ -20835,14 +16303,14 @@ function __c15(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          objects_to_tag: S.optional(CreateTagRequestObjectsToTagList),
+          objects_to_tag: S.optional(__S(0, __c0, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/tag/", code: 200 })),
       ).annotate({ identifier: "CreateTagRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(TagRestApiPost),
+          result: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "CreateTagResponse" });
     case 4:
@@ -20854,7 +16322,7 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          editors: S.optional(CreateThemeRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           json_data: S.String,
           theme_name: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/theme/", code: 200 })),
@@ -20862,7 +16330,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          editors: S.optional(ThemeRestApiPostEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           json_data: S.String,
           theme_name: S.String,
         }),
@@ -20871,7 +16339,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(ThemeRestApiPost),
+          result: S.optional(__S(126, __c15, 6)),
         }),
       ).annotate({ identifier: "CreateThemeResponse" });
   }
@@ -21273,7 +16741,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(DatasetDuplicateSchema),
+          result: S.optional(__S(173, __c21, 5)),
         }),
       ).annotate({ identifier: "DuplicateDatasetResponse" });
     case 7:
@@ -21347,12 +16815,12 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(QueryExecutionResponseSchemaColumnsList),
-          data: S.optional(QueryExecutionResponseSchemaDataList),
-          expanded_columns: S.optional(QueryExecutionResponseSchemaExpandedColumnsList),
-          query: S.optional(QueryResult),
+          columns: S.optional(__S(0, __c0, 0)),
+          data: S.optional(__S(0, __c0, 0)),
+          expanded_columns: S.optional(__S(0, __c0, 0)),
+          query: S.optional(__S(178, __c22, 2)),
           query_id: S.optional(S.Number),
-          selected_columns: S.optional(QueryExecutionResponseSchemaSelectedColumnsList),
+          selected_columns: S.optional(__S(0, __c0, 0)),
           status: S.optional(S.String),
         }),
       ).annotate({
@@ -21362,8 +16830,8 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pk: S.Number.pipe(T.Label()),
-          active_data_mask: S.optional(ExportDashboardXlsxRequestActiveDataMaskMap),
-          mode: S.optional(ExportDashboardXlsxRequestMode),
+          active_data_mask: S.optional(__S(50, __c6, 2)),
+          mode: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/{pk}/export_xlsx/", code: 200 })),
       ).annotate({
         identifier: "ExportDashboardXlsxRequest",
@@ -21410,10 +16878,10 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          changed_by: S.optional(__S(184, __c23, 0)),
           changed_on: S.optional(S.NullOr(S.String)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          created_by: S.optional(__S(184, __c23, 0)),
           created_on: S.optional(S.NullOr(S.String)),
           descr: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
@@ -21423,18 +16891,18 @@ function __c23(j: number): any {
         identifier: "AnnotationLayerRestApiGetList",
       });
     case 2:
-      return S.Array(AnnotationLayerRestApiGetList);
+      return S.Array(__S(185, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetAnnotationLayerResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetAnnotationLayerResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetAnnotationLayerResponseOrderColumnsList),
-          result: S.optional(GetAnnotationLayerResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(186, __c23, 2)),
         }),
       ).annotate({
         identifier: "GetAnnotationLayerResponse",
@@ -21470,7 +16938,7 @@ function __c23(j: number): any {
           end_dttm: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
           json_metadata: S.optional(S.NullOr(S.String)),
-          layer: AnnotationRestApiGetAnnotationLayer,
+          layer: __S(189, __c23, 5),
           long_descr: S.optional(S.NullOr(S.String)),
           short_descr: S.optional(S.NullOr(S.String)),
           start_dttm: S.optional(S.NullOr(S.String)),
@@ -21480,7 +16948,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(AnnotationRestApiGet),
+          result: S.optional(__S(190, __c23, 6)),
         }),
       ).annotate({
         identifier: "GetAnnotationLayerAnnotationResponse",
@@ -21511,11 +16979,11 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(AnnotationLayerRestApiGet),
-          show_columns: S.optional(GetAnnotationLayerByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(193, __c24, 1)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -21545,12 +17013,12 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "RelatedResultResponse" });
     case 5:
-      return S.Array(RelatedResultResponse);
+      return S.Array(__S(196, __c24, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(RelatedResponseSchemaResultList),
+          result: S.optional(__S(197, __c24, 5)),
         }),
       ).annotate({ identifier: "RelatedResponseSchema" });
     case 7:
@@ -21570,13 +17038,13 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(AvailableDomainsSchemaDomainsList),
+          domains: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "AvailableDomainsSchema" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(AvailableDomainsSchema),
+          result: S.optional(__S(201, __c25, 1)),
         }),
       ).annotate({
         identifier: "GetAvailableDomainsResponse",
@@ -21596,7 +17064,7 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "Dashboard" });
     case 5:
-      return S.Array(Dashboard);
+      return S.Array(__S(204, __c25, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -21608,7 +17076,7 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "SubjectResponse" });
     case 7:
-      return S.Array(SubjectResponse);
+      return S.Array(__S(206, __c25, 6));
   }
 }
 function __c26(j: number): any {
@@ -21618,11 +17086,11 @@ function __c26(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          type: S.optional(TagType),
+          type: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(208, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -21630,31 +17098,31 @@ function __c26(j: number): any {
           certification_details: S.optional(S.String),
           certified_by: S.optional(S.String),
           changed_on_delta_humanized: S.optional(S.String),
-          dashboards: S.optional(ChartGetResponseSchemaDashboardsList),
+          dashboards: S.optional(__S(205, __c25, 5)),
           datasource_id: S.optional(S.Number),
           datasource_name_text: S.optional(S.Unknown),
           datasource_type: S.optional(S.String),
           datasource_url: S.optional(S.Unknown),
           datasource_uuid: S.optional(S.String),
           description: S.optional(S.String),
-          editors: S.optional(ChartGetResponseSchemaEditorsList),
+          editors: S.optional(__S(207, __c25, 7)),
           id: S.optional(S.Number),
           is_managed_externally: S.optional(S.Boolean),
           params: S.optional(S.String),
           query_context: S.optional(S.String),
           slice_name: S.optional(S.String),
-          tags: S.optional(ChartGetResponseSchemaTagsList),
+          tags: S.optional(__S(209, __c26, 1)),
           thumbnail_url: S.optional(S.String),
           url: S.optional(S.String),
           uuid: S.optional(S.String),
-          viewers: S.optional(ChartGetResponseSchemaViewersList),
+          viewers: S.optional(__S(207, __c25, 7)),
           viz_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChartGetResponseSchema" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ChartGetResponseSchema),
+          result: S.optional(__S(210, __c26, 2)),
         }),
       ).annotate({ identifier: "GetChartResponse" });
     case 4:
@@ -21747,12 +17215,12 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "VersionChangeRecord" });
     case 5:
-      return S.Array(VersionChangeRecord);
+      return S.Array(__S(220, __c27, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(S.NullOr(VersionChangedBy)),
-          changes: S.optional(VersionListItemSchemaChangesList),
+          changed_by: S.optional(S.NullOr(__S(219, __c27, 3))),
+          changes: S.optional(__S(221, __c27, 5)),
           issued_at: S.optional(S.String),
           operation_type: S.optional(S.String),
           transaction_id: S.optional(S.Number),
@@ -21763,7 +17231,7 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          _version: S.optional(VersionListItemSchema),
+          _version: S.optional(__S(222, __c27, 6)),
         }),
       ).annotate({
         identifier: "GetChartVersionResponseResult",
@@ -21775,7 +17243,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GetChartVersionResponseResult),
+          result: S.optional(__S(223, __c27, 7)),
         }),
       ).annotate({ identifier: "GetChartVersionResponse" });
     case 1:
@@ -21797,9 +17265,9 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
+          created_by: S.optional(__S(226, __c28, 2)),
           created_on: S.optional(S.NullOr(S.String)),
           css: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
@@ -21809,18 +17277,18 @@ function __c28(j: number): any {
         identifier: "CssTemplateRestApiGetList",
       });
     case 4:
-      return S.Array(CssTemplateRestApiGetList);
+      return S.Array(__S(227, __c28, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetCssTemplateResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetCssTemplateResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetCssTemplateResponseOrderColumnsList),
-          result: S.optional(GetCssTemplateResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(228, __c28, 4)),
         }),
       ).annotate({ identifier: "GetCssTemplateResponse" });
     case 6:
@@ -21835,9 +17303,9 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
+          created_by: S.optional(__S(226, __c28, 2)),
           css: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
           template_name: S.optional(S.NullOr(S.String)),
@@ -21850,11 +17318,11 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(CssTemplateRestApiGet),
-          show_columns: S.optional(GetCssTemplateByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(231, __c28, 7)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -21891,30 +17359,30 @@ function __c29(j: number): any {
         S.Struct({
           certification_details: S.optional(S.String),
           certified_by: S.optional(S.String),
-          changed_by: S.optional(VersionChangedBy),
+          changed_by: S.optional(__S(219, __c27, 3)),
           changed_by_name: S.optional(S.String),
           changed_on: S.optional(S.String),
           changed_on_delta_humanized: S.optional(S.String),
-          charts: S.optional(DashboardGetResponseSchemaChartsList),
-          created_by: S.optional(VersionChangedBy),
+          charts: S.optional(__S(19, __c2, 3)),
+          created_by: S.optional(__S(219, __c27, 3)),
           created_on_delta_humanized: S.optional(S.String),
           css: S.optional(S.String),
-          custom_tags: S.optional(DashboardGetResponseSchemaCustomTagsList),
+          custom_tags: S.optional(__S(209, __c26, 1)),
           dashboard_title: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(DashboardGetResponseSchemaEditorsList),
+          editors: S.optional(__S(207, __c25, 7)),
           id: S.optional(S.Number),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           json_metadata: S.optional(S.String),
           position_json: S.optional(S.String),
           published: S.optional(S.Boolean),
           slug: S.optional(S.String),
-          tags: S.optional(DashboardGetResponseSchemaTagsList),
-          theme: S.optional(S.NullOr(Theme)),
+          tags: S.optional(__S(209, __c26, 1)),
+          theme: S.optional(S.NullOr(__S(235, __c29, 3))),
           thumbnail_url: S.optional(S.NullOr(S.String)),
           url: S.optional(S.String),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(DashboardGetResponseSchemaViewersList),
+          viewers: S.optional(__S(207, __c25, 7)),
         }),
       ).annotate({
         identifier: "DashboardGetResponseSchema",
@@ -21922,7 +17390,7 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(DashboardGetResponseSchema),
+          result: S.optional(__S(236, __c29, 4)),
         }),
       ).annotate({ identifier: "GetDashboardResponse" });
     case 6:
@@ -22043,7 +17511,7 @@ function __c31(j: number): any {
         S.Struct({
           pk: S.Number.pipe(T.Label()),
           digest: S.String.pipe(T.Label()),
-          download_format: S.optional(GetDashboardScreenshotRequestDownloadFormat.pipe(T.Query())),
+          download_format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/v1/dashboard/{pk}/screenshot/{digest}/", code: 200 }),
         ),
@@ -22079,7 +17547,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GetChartVersionResponseResult),
+          result: S.optional(__S(223, __c27, 7)),
         }),
       ).annotate({
         identifier: "GetDashboardVersionResponse",
@@ -22103,11 +17571,11 @@ function __c31(j: number): any {
           allows_subquery: S.optional(S.Unknown),
           allows_virtual_table_explore: S.optional(S.Unknown),
           backend: S.optional(S.Unknown),
-          changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          changed_by: S.optional(__S(184, __c23, 0)),
           changed_on: S.optional(S.NullOr(S.String)),
           changed_on_delta_humanized: S.optional(S.Unknown),
           configuration_method: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          created_by: S.optional(__S(184, __c23, 0)),
           database_name: S.String,
           disable_data_preview: S.optional(S.Unknown),
           disable_drill_to_detail: S.optional(S.Unknown),
@@ -22121,18 +17589,18 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseRestApiGetList" });
     case 6:
-      return S.Array(DatabaseRestApiGetList);
+      return S.Array(__S(253, __c31, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetDatabaseResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetDatabaseResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetDatabaseResponseOrderColumnsList),
-          result: S.optional(GetDatabaseResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(254, __c31, 6)),
         }),
       ).annotate({ identifier: "GetDatabaseResponse" });
   }
@@ -22169,7 +17637,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           disable_ssh_tunneling: S.optional(S.Boolean),
-          identifier_quote: S.optional(IdentifierQuote),
+          identifier_quote: S.optional(__S(259, __c32, 3)),
           supports_dynamic_catalog: S.optional(S.Boolean),
           supports_file_upload: S.optional(S.Boolean),
           supports_oauth2: S.optional(S.Boolean),
@@ -22190,7 +17658,7 @@ function __c32(j: number): any {
           configuration_method: S.optional(S.String),
           database_name: S.optional(S.NullOr(S.String)),
           driver: S.optional(S.NullOr(S.String)),
-          engine_information: S.optional(EngineInformation),
+          engine_information: S.optional(__S(260, __c32, 4)),
           expose_in_sqllab: S.optional(S.Boolean),
           extra: S.optional(S.String),
           force_ctas_schema: S.optional(S.NullOr(S.String)),
@@ -22198,11 +17666,11 @@ function __c32(j: number): any {
           impersonate_user: S.optional(S.Boolean),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           masked_encrypted_extra: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(DatabaseConnectionSchemaOutputParametersMap),
-          parameters_schema: S.optional(DatabaseConnectionSchemaOutputParametersSchemaMap),
+          parameters: S.optional(__S(50, __c6, 2)),
+          parameters_schema: S.optional(__S(50, __c6, 2)),
           server_cert: S.optional(S.NullOr(S.String)),
           sqlalchemy_uri: S.optional(S.String),
-          ssh_tunnel: S.optional(S.NullOr(DatabaseSSHTunnelOutput)),
+          ssh_tunnel: S.optional(S.NullOr(__S(66, __c8, 2))),
           uuid: S.optional(S.String),
         }),
       ).annotate({
@@ -22257,12 +17725,12 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseRelatedChart" });
     case 3:
-      return S.Array(DatabaseRelatedChart);
+      return S.Array(__S(266, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(DatabaseRelatedChartsResultList),
+          result: S.optional(__S(267, __c33, 3)),
         }),
       ).annotate({ identifier: "DatabaseRelatedCharts" });
     case 5:
@@ -22275,12 +17743,12 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseRelatedDashboard" });
     case 6:
-      return S.Array(DatabaseRelatedDashboard);
+      return S.Array(__S(269, __c33, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(DatabaseRelatedDashboardsResultList),
+          result: S.optional(__S(270, __c33, 6)),
         }),
       ).annotate({
         identifier: "DatabaseRelatedDashboards",
@@ -22298,20 +17766,20 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseRelatedDataset" });
     case 1:
-      return S.Array(DatabaseRelatedDataset);
+      return S.Array(__S(272, __c34, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(DatabaseRelatedDatasetsResultList),
+          result: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({ identifier: "DatabaseRelatedDatasets" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          charts: S.optional(DatabaseRelatedCharts),
-          dashboards: S.optional(DatabaseRelatedDashboards),
-          datasets: S.optional(DatabaseRelatedDatasets),
+          charts: S.optional(__S(268, __c33, 4)),
+          dashboards: S.optional(__S(271, __c33, 7)),
+          datasets: S.optional(__S(274, __c34, 2)),
         }),
       ).annotate({
         identifier: "DatabaseRelatedObjectsResponse",
@@ -22375,7 +17843,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           duplicates_constraint: S.optional(S.String),
-          keys: S.optional(TableMetadataColumnsResponseKeysList),
+          keys: S.optional(__S(19, __c2, 3)),
           longType: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -22384,7 +17852,7 @@ function __c35(j: number): any {
         identifier: "TableMetadataColumnsResponse",
       });
     case 1:
-      return S.Array(TableMetadataColumnsResponse);
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -22400,10 +17868,10 @@ function __c35(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          column_names: S.optional(TableMetadataForeignKeysIndexesResponseColumnNamesList),
+          column_names: S.optional(__S(19, __c2, 3)),
           name: S.optional(S.String),
-          options: S.optional(TableMetadataOptionsResponse),
-          referred_columns: S.optional(TableMetadataForeignKeysIndexesResponseReferredColumnsList),
+          options: S.optional(__S(282, __c35, 2)),
+          referred_columns: S.optional(__S(19, __c2, 3)),
           referred_schema: S.optional(S.String),
           referred_table: S.optional(S.String),
           type: S.optional(S.String),
@@ -22412,11 +17880,11 @@ function __c35(j: number): any {
         identifier: "TableMetadataForeignKeysIndexesResponse",
       });
     case 4:
-      return S.Array(TableMetadataForeignKeysIndexesResponse);
+      return S.Array(__S(283, __c35, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          column_names: S.optional(TableMetadataPrimaryKeyResponseColumnNamesList),
+          column_names: S.optional(__S(19, __c2, 3)),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -22426,11 +17894,11 @@ function __c35(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(TableMetadataResponseSchemaColumnsList),
-          foreignKeys: S.optional(TableMetadataResponseSchemaForeignKeysList),
-          indexes: S.optional(TableMetadataResponseSchemaIndexesList),
+          columns: S.optional(__S(281, __c35, 1)),
+          foreignKeys: S.optional(__S(284, __c35, 4)),
+          indexes: S.optional(__S(284, __c35, 4)),
           name: S.optional(S.String),
-          primaryKey: S.optional(TableMetadataPrimaryKeyResponse),
+          primaryKey: S.optional(__S(285, __c35, 5)),
           selectStar: S.optional(S.String),
         }),
       ).annotate({
@@ -22517,20 +17985,20 @@ function __c36(j: number): any {
         identifier: "DatasetRestApiGetListSubject",
       });
     case 6:
-      return S.Array(DatasetRestApiGetListSubject);
+      return S.Array(__S(293, __c36, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           catalog: S.optional(S.NullOr(S.String)),
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_by_name: S.optional(S.Unknown),
           changed_on_delta_humanized: S.optional(S.Unknown),
           changed_on_utc: S.optional(S.Unknown),
-          database: DatasetRestApiGetListDatabase,
+          database: __S(292, __c36, 4),
           datasource_type: S.optional(S.Unknown),
           default_endpoint: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(DatasetRestApiGetListEditorsList),
+          editors: S.optional(__S(294, __c36, 6)),
           explore_url: S.optional(S.Unknown),
           extra: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
@@ -22546,18 +18014,18 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DatasetRestApiGetList);
+      return S.Array(__S(295, __c36, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetDatasetResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetDatasetResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetDatasetResponseOrderColumnsList),
-          result: S.optional(GetDatasetResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(296, __c37, 0)),
         }),
       ).annotate({ identifier: "GetDatasetResponse" });
     case 2:
@@ -22599,7 +18067,7 @@ function __c37(j: number): any {
         identifier: "DatasetRestApiGetTableColumn",
       });
     case 4:
-      return S.Array(DatasetRestApiGetTableColumn);
+      return S.Array(__S(299, __c37, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -22637,7 +18105,7 @@ function __c37(j: number): any {
         identifier: "DatasetRestApiGetSqlMetric",
       });
     case 7:
-      return S.Array(DatasetRestApiGetSqlMetric);
+      return S.Array(__S(302, __c37, 6));
   }
 }
 function __c38(j: number): any {
@@ -22648,21 +18116,21 @@ function __c38(j: number): any {
           always_filter_main_dttm: S.optional(S.NullOr(S.Boolean)),
           cache_timeout: S.optional(S.Unknown),
           catalog: S.optional(S.NullOr(S.String)),
-          changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          changed_by: S.optional(__S(184, __c23, 0)),
           changed_on: S.optional(S.NullOr(S.String)),
           changed_on_humanized: S.optional(S.Unknown),
           column_formats: S.optional(S.Unknown),
-          columns: DatasetRestApiGetColumnsList,
-          created_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          columns: __S(300, __c37, 4),
+          created_by: S.optional(__S(184, __c23, 0)),
           created_on: S.optional(S.NullOr(S.String)),
           created_on_humanized: S.optional(S.Unknown),
           currency_code_column: S.optional(S.NullOr(S.String)),
-          database: DatasetRestApiGetDatabase,
+          database: __S(301, __c37, 5),
           datasource_name: S.optional(S.Unknown),
           datasource_type: S.optional(S.Unknown),
           default_endpoint: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(DatasetRestApiGetEditorsList),
+          editors: S.optional(__S(294, __c36, 6)),
           extra: S.optional(S.NullOr(S.String)),
           fetch_values_predicate: S.optional(S.NullOr(S.String)),
           filter_select_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -22673,7 +18141,7 @@ function __c38(j: number): any {
           is_sqllab_view: S.optional(S.NullOr(S.Boolean)),
           kind: S.optional(S.Unknown),
           main_dttm_col: S.optional(S.NullOr(S.String)),
-          metrics: DatasetRestApiGetMetricsList,
+          metrics: __S(303, __c37, 7),
           name: S.optional(S.Unknown),
           normalize_columns: S.optional(S.NullOr(S.Boolean)),
           offset: S.optional(S.NullOr(S.Number)),
@@ -22694,7 +18162,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(DatasetRestApiGet),
+          result: S.optional(__S(304, __c38, 0)),
         }),
       ).annotate({
         identifier: "GetDatasetByIdOrUuidResponse",
@@ -22717,12 +18185,12 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "DistinctResultResponse" });
     case 4:
-      return S.Array(DistinctResultResponse);
+      return S.Array(__S(307, __c38, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(DistincResponseSchemaResultList),
+          result: S.optional(__S(308, __c38, 4)),
         }),
       ).annotate({ identifier: "DistincResponseSchema" });
     case 6:
@@ -22768,7 +18236,7 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GetDatasetOrCreateResponseResult),
+          result: S.optional(__S(313, __c39, 1)),
         }),
       ).annotate({
         identifier: "GetDatasetOrCreateResponse",
@@ -22791,13 +18259,13 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "DatasetPurgeImpactObject" });
     case 5:
-      return S.Array(DatasetPurgeImpactObject);
+      return S.Array(__S(316, __c39, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           restricted_count: S.Number,
-          result: DatasetPurgeImpactCollectionResultList,
+          result: __S(317, __c39, 5),
         }),
       ).annotate({
         identifier: "DatasetPurgeImpactCollection",
@@ -22805,8 +18273,8 @@ function __c39(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          charts: DatasetPurgeImpactCollection,
-          dashboards: DatasetPurgeImpactCollection,
+          charts: __S(318, __c39, 6),
+          dashboards: __S(318, __c39, 6),
           impact_token: S.String,
         }),
       ).annotate({ identifier: "DatasetPurgeImpactSchema" });
@@ -22834,7 +18302,7 @@ function __c40(j: number): any {
         S.Struct({
           count: S.optional(S.Number),
           restricted_count: S.optional(S.Number),
-          result: S.optional(DatasetRelatedChartsResultList),
+          result: S.optional(__S(267, __c33, 3)),
         }),
       ).annotate({ identifier: "DatasetRelatedCharts" });
     case 3:
@@ -22842,14 +18310,14 @@ function __c40(j: number): any {
         S.Struct({
           count: S.optional(S.Number),
           restricted_count: S.optional(S.Number),
-          result: S.optional(DatasetRelatedDashboardsResultList),
+          result: S.optional(__S(270, __c33, 6)),
         }),
       ).annotate({ identifier: "DatasetRelatedDashboards" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          charts: S.optional(DatasetRelatedCharts),
-          dashboards: S.optional(DatasetRelatedDashboards),
+          charts: S.optional(__S(322, __c40, 2)),
+          dashboards: S.optional(__S(323, __c40, 3)),
         }),
       ).annotate({
         identifier: "DatasetRelatedObjectsResponse",
@@ -22926,7 +18394,7 @@ function __c41(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/explore/", code: 200 })),
       ).annotate({ identifier: "GetExploreRequest" });
     case 3:
-      return S.Array(DatasetGranularitySqlaItemList);
+      return S.Array(__S(0, __c0, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -22935,7 +18403,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "RlsRole" });
     case 5:
-      return S.Array(RlsRole);
+      return S.Array(__S(332, __c41, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -22945,11 +18413,11 @@ function __c41(j: number): any {
           id: S.optional(S.Number),
           inherited: S.optional(S.Boolean),
           name: S.optional(S.String),
-          roles: S.optional(RlsFilterRolesList),
+          roles: S.optional(__S(333, __c41, 5)),
         }),
       ).annotate({ identifier: "RlsFilter" });
     case 7:
-      return S.Array(RlsFilter);
+      return S.Array(__S(334, __c41, 6));
   }
 }
 function __c42(j: number): any {
@@ -22959,35 +18427,35 @@ function __c42(j: number): any {
         S.Struct({
           cache_timeout: S.optional(S.Number),
           column_formats: S.optional(S.Unknown),
-          columns: S.optional(DatasetColumnsList),
+          columns: S.optional(__S(0, __c0, 0)),
           database: S.optional(S.Unknown),
           datasource_name: S.optional(S.String),
           default_endpoint: S.optional(S.String),
           description: S.optional(S.String),
           edit_url: S.optional(S.String),
-          editors: S.optional(DatasetEditorsList),
+          editors: S.optional(__S(207, __c25, 7)),
           extra: S.optional(S.Unknown),
           fetch_values_predicate: S.optional(S.String),
           filter_select: S.optional(S.Boolean),
           filter_select_enabled: S.optional(S.Boolean),
-          granularity_sqla: S.optional(DatasetGranularitySqlaList),
+          granularity_sqla: S.optional(__S(331, __c41, 3)),
           health_check_message: S.optional(S.String),
           id: S.optional(S.Number),
           is_sqllab_view: S.optional(S.Boolean),
           main_dttm_col: S.optional(S.String),
-          metrics: S.optional(DatasetMetricsList),
+          metrics: S.optional(__S(0, __c0, 0)),
           name: S.optional(S.String),
           offset: S.optional(S.Number),
-          order_by_choices: S.optional(DatasetOrderByChoicesList),
+          order_by_choices: S.optional(__S(26, __c3, 2)),
           params: S.optional(S.Unknown),
           perm: S.optional(S.String),
-          rls_filters: S.optional(DatasetRlsFiltersList),
+          rls_filters: S.optional(__S(335, __c41, 7)),
           schema: S.optional(S.String),
           select_star: S.optional(S.String),
           sql: S.optional(S.String),
           table_name: S.optional(S.String),
           template_params: S.optional(S.Unknown),
-          time_grain_sqla: S.optional(DatasetTimeGrainSqlaList),
+          time_grain_sqla: S.optional(__S(26, __c3, 2)),
           type: S.optional(S.String),
           uid: S.optional(S.String),
           verbose_map: S.optional(S.Unknown),
@@ -23005,7 +18473,7 @@ function __c42(j: number): any {
           description: S.optional(S.String),
           description_markeddown: S.optional(S.String),
           edit_url: S.optional(S.String),
-          editors: S.optional(SliceEditorsList),
+          editors: S.optional(__S(207, __c25, 7)),
           form_data: S.optional(S.Unknown),
           is_managed_externally: S.optional(S.Boolean),
           modified: S.optional(S.String),
@@ -23018,10 +18486,10 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataset: S.optional(Dataset),
+          dataset: S.optional(__S(336, __c42, 0)),
           form_data: S.optional(S.Unknown),
           message: S.optional(S.String),
-          slice: S.optional(Slice),
+          slice: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({ identifier: "ExploreContextSchema" });
     case 3:
@@ -23076,23 +18544,23 @@ function __c43(j: number): any {
           json: S.optional(S.NullOr(S.String)),
           referrer: S.optional(S.NullOr(S.String)),
           slice_id: S.optional(S.NullOr(S.Number)),
-          user: S.optional(LogRestApiGetListUser),
+          user: S.optional(__S(343, __c42, 7)),
           user_id: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "LogRestApiGetList" });
     case 1:
-      return S.Array(LogRestApiGetList);
+      return S.Array(__S(344, __c43, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetLogResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetLogResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetLogResponseOrderColumnsList),
-          result: S.optional(GetLogResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(345, __c43, 1)),
         }),
       ).annotate({ identifier: "GetLogResponse" });
     case 3:
@@ -23105,11 +18573,11 @@ function __c43(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(LogRestApiGetList),
-          show_columns: S.optional(GetLogByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(344, __c43, 0)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetLogByPkResponse" });
@@ -23122,7 +18590,7 @@ function __c43(j: number): any {
         S.Struct({
           email: S.optional(S.String),
           first_name: S.optional(S.String),
-          groups: S.optional(UserResponseSchemaGroupsList),
+          groups: S.optional(__S(333, __c41, 5)),
           id: S.optional(S.Number),
           is_active: S.optional(S.Boolean),
           is_anonymous: S.optional(S.Boolean),
@@ -23134,7 +18602,7 @@ function __c43(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(UserResponseSchema),
+          result: S.optional(__S(350, __c43, 6)),
         }),
       ).annotate({ identifier: "GetMeResponse" });
   }
@@ -23161,7 +18629,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           changed_on: S.optional(S.String),
-          database: S.optional(Database1),
+          database: S.optional(__S(354, __c44, 2)),
           end_time: S.optional(S.Number),
           executed_sql: S.optional(S.String),
           id: S.optional(S.Number),
@@ -23175,22 +18643,22 @@ function __c44(j: number): any {
           tab_name: S.optional(S.String),
           tmp_table_name: S.optional(S.String),
           tracking_url: S.optional(S.String),
-          user: S.optional(VersionChangedBy),
+          user: S.optional(__S(219, __c27, 3)),
         }),
       ).annotate({ identifier: "QueryRestApiGetList" });
     case 4:
-      return S.Array(QueryRestApiGetList);
+      return S.Array(__S(355, __c44, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetQueryResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetQueryResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetQueryResponseOrderColumnsList),
-          result: S.optional(GetQueryResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(356, __c44, 4)),
         }),
       ).annotate({ identifier: "GetQueryResponse" });
     case 6:
@@ -23205,7 +18673,7 @@ function __c44(j: number): any {
         S.Struct({
           changed_on: S.optional(S.NullOr(S.String)),
           client_id: S.String,
-          database: LogRestApiPost,
+          database: __S(83, __c10, 3),
           end_result_backend_time: S.optional(S.NullOr(S.Number)),
           end_time: S.optional(S.NullOr(S.Number)),
           error_message: S.optional(S.NullOr(S.String)),
@@ -23237,11 +18705,11 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(QueryRestApiGet),
-          show_columns: S.optional(GetQueryByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(359, __c44, 7)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueryByPkResponse" });
@@ -23275,29 +18743,29 @@ function __c45(j: number): any {
         identifier: "ReportScheduleRestApiGetListReportRecipients",
       });
     case 5:
-      return S.Array(ReportScheduleRestApiGetListReportRecipients);
+      return S.Array(__S(364, __c45, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.NullOr(S.Boolean)),
-          changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          changed_by: S.optional(__S(184, __c23, 0)),
           changed_on: S.optional(S.NullOr(S.String)),
           changed_on_delta_humanized: S.optional(S.Unknown),
           chart_id: S.optional(S.NullOr(S.Unknown)),
-          created_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          created_by: S.optional(__S(184, __c23, 0)),
           created_on: S.optional(S.NullOr(S.String)),
           creation_method: S.optional(S.NullOr(S.String)),
           crontab: S.String,
           crontab_humanized: S.optional(S.Unknown),
           dashboard_id: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(ReportScheduleRestApiGetListEditorsList),
+          editors: S.optional(__S(294, __c36, 6)),
           extra: S.optional(S.Unknown),
           id: S.optional(S.Number),
           last_eval_dttm: S.optional(S.NullOr(S.String)),
           last_state: S.optional(S.NullOr(S.String)),
           name: S.String,
-          recipients: ReportScheduleRestApiGetListRecipientsList,
+          recipients: __S(365, __c45, 5),
           report_format: S.optional(S.NullOr(S.String)),
           retry_max_attempts: S.optional(S.Number),
           retry_notify_owners: S.optional(S.Boolean),
@@ -23311,7 +18779,7 @@ function __c45(j: number): any {
         identifier: "ReportScheduleRestApiGetList",
       });
     case 7:
-      return S.Array(ReportScheduleRestApiGetList);
+      return S.Array(__S(366, __c45, 6));
   }
 }
 function __c46(j: number): any {
@@ -23320,13 +18788,13 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetReportResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetReportResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetReportResponseOrderColumnsList),
-          result: S.optional(GetReportResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(367, __c45, 7)),
         }),
       ).annotate({ identifier: "GetReportResponse" });
     case 1:
@@ -23375,20 +18843,20 @@ function __c46(j: number): any {
         identifier: "ReportScheduleRestApiGetReportRecipients",
       });
     case 6:
-      return S.Array(ReportScheduleRestApiGetReportRecipients);
+      return S.Array(__S(373, __c46, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.NullOr(S.Boolean)),
-          chart: S.optional(ReportScheduleRestApiGetSlice),
+          chart: S.optional(__S(370, __c46, 2)),
           context_markdown: S.optional(S.NullOr(S.String)),
           creation_method: S.optional(S.NullOr(S.String)),
           crontab: S.String,
           custom_width: S.optional(S.NullOr(S.Number)),
-          dashboard: S.optional(ReportScheduleRestApiGetDashboard),
-          database: S.optional(ReportScheduleRestApiGetDatabase),
+          dashboard: S.optional(__S(371, __c46, 3)),
+          database: S.optional(__S(372, __c46, 4)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(ReportScheduleRestApiGetEditorsList),
+          editors: S.optional(__S(294, __c36, 6)),
           email_subject: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.Unknown),
           force_screenshot: S.optional(S.NullOr(S.Boolean)),
@@ -23401,7 +18869,7 @@ function __c46(j: number): any {
           last_value_row_json: S.optional(S.NullOr(S.String)),
           log_retention: S.optional(S.NullOr(S.Number)),
           name: S.String,
-          recipients: ReportScheduleRestApiGetRecipientsList,
+          recipients: __S(374, __c46, 6),
           report_format: S.optional(S.NullOr(S.String)),
           retry_max_attempts: S.optional(S.Number),
           retry_notify_owners: S.optional(S.Boolean),
@@ -23423,11 +18891,11 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(ReportScheduleRestApiGet),
-          show_columns: S.optional(GetReportByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(375, __c46, 7)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetReportByPkResponse" });
@@ -23459,7 +18927,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          result: S.optional(ReportExecutionLogRestApiGet),
+          result: S.optional(__S(378, __c47, 2)),
         }),
       ).annotate({ identifier: "GetReportLogResponse" });
     case 4:
@@ -23480,20 +18948,20 @@ function __c47(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(VersionChangedBy),
+          changed_by: S.optional(__S(219, __c27, 3)),
           changed_on_delta_humanized: S.optional(S.Unknown),
           clause: S.optional(S.String),
           description: S.optional(S.String),
-          filter_type: S.optional(RLSRestApiGetListFilterType),
+          filter_type: S.optional(S.String),
           group_key: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          subjects: S.optional(RLSRestApiGetListSubjectsList),
-          tables: S.optional(RLSRestApiGetListTablesList),
+          subjects: S.optional(__S(207, __c25, 7)),
+          tables: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({ identifier: "RLSRestApiGetList" });
     case 7:
-      return S.Array(RLSRestApiGetList);
+      return S.Array(__S(382, __c47, 6));
   }
 }
 function __c48(j: number): any {
@@ -23502,13 +18970,13 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetRowlevelsecurityResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetRowlevelsecurityResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetRowlevelsecurityResponseOrderColumnsList),
-          result: S.optional(GetRowlevelsecurityResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(383, __c47, 7)),
         }),
       ).annotate({
         identifier: "GetRowlevelsecurityResponse",
@@ -23527,22 +18995,22 @@ function __c48(j: number): any {
         S.Struct({
           clause: S.optional(S.String),
           description: S.optional(S.String),
-          filter_type: S.optional(RLSRestApiGetFilterType),
+          filter_type: S.optional(S.String),
           group_key: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          subjects: S.optional(RLSRestApiGetSubjectsList),
-          tables: S.optional(RLSRestApiGetTablesList),
+          subjects: S.optional(__S(207, __c25, 7)),
+          tables: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({ identifier: "RLSRestApiGet" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(RLSRestApiGet),
-          show_columns: S.optional(GetRowlevelsecurityByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(386, __c48, 2)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -23574,13 +19042,13 @@ function __c48(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.NullOr(S.String)),
-          type: S.optional(SavedQueryRestApiGetListTagType),
+          type: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SavedQueryRestApiGetListTag",
       });
     case 7:
-      return S.Array(SavedQueryRestApiGetListTag);
+      return S.Array(__S(390, __c48, 6));
   }
 }
 function __c49(j: number): any {
@@ -23589,12 +19057,12 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           catalog: S.optional(S.NullOr(S.String)),
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_on: S.optional(S.NullOr(S.String)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
+          created_by: S.optional(__S(226, __c28, 2)),
           created_on: S.optional(S.NullOr(S.String)),
-          database: S.optional(ReportScheduleRestApiGetDatabase),
+          database: S.optional(__S(372, __c46, 4)),
           db_id: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.Unknown),
@@ -23605,22 +19073,22 @@ function __c49(j: number): any {
           schema: S.optional(S.NullOr(S.String)),
           sql: S.optional(S.NullOr(S.String)),
           sql_tables: S.optional(S.Unknown),
-          tags: S.optional(SavedQueryRestApiGetListTagsList),
+          tags: S.optional(__S(391, __c48, 7)),
         }),
       ).annotate({ identifier: "SavedQueryRestApiGetList" });
     case 1:
-      return S.Array(SavedQueryRestApiGetList);
+      return S.Array(__S(392, __c49, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSavedQueryResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSavedQueryResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSavedQueryResponseOrderColumnsList),
-          result: S.optional(GetSavedQueryResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(393, __c49, 1)),
         }),
       ).annotate({ identifier: "GetSavedQueryResponse" });
     case 3:
@@ -23634,11 +19102,11 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           catalog: S.optional(S.NullOr(S.String)),
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_on: S.optional(S.NullOr(S.String)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
-          database: S.optional(ReportScheduleRestApiGetDatabase),
+          created_by: S.optional(__S(226, __c28, 2)),
+          database: S.optional(__S(372, __c46, 4)),
           description: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
           label: S.optional(S.NullOr(S.String)),
@@ -23651,11 +19119,11 @@ function __c49(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(SavedQueryRestApiGet),
-          show_columns: S.optional(GetSavedQueryByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(396, __c49, 4)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -23718,7 +19186,7 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "SupersetGroupApiGetRole" });
     case 4:
-      return S.Array(SupersetGroupApiGetRole);
+      return S.Array(__S(403, __c50, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -23727,7 +19195,7 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "SupersetGroupApiGetUser" });
     case 6:
-      return S.Array(SupersetGroupApiGetUser);
+      return S.Array(__S(405, __c50, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -23735,8 +19203,8 @@ function __c50(j: number): any {
           id: S.optional(S.Number),
           label: S.optional(S.NullOr(S.String)),
           name: S.String,
-          roles: S.optional(SupersetGroupApiGetRolesList),
-          users: S.optional(SupersetGroupApiGetUsersList),
+          roles: S.optional(__S(404, __c50, 4)),
+          users: S.optional(__S(406, __c50, 6)),
         }),
       ).annotate({ identifier: "SupersetGroupApiGet" });
   }
@@ -23746,11 +19214,11 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(SupersetGroupApiGet),
-          show_columns: S.optional(GetSecurityGroupResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(407, __c50, 7)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSecurityGroupResponse" });
@@ -23761,18 +19229,18 @@ function __c51(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/groups/", code: 200 })),
       ).annotate({ identifier: "GetSecurityGroupsRequest" });
     case 2:
-      return S.Array(SupersetGroupApiGetList);
+      return S.Array(__S(407, __c50, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSecurityGroupsResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSecurityGroupsResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSecurityGroupsResponseOrderColumnsList),
-          result: S.optional(GetSecurityGroupsResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(410, __c51, 2)),
         }),
       ).annotate({
         identifier: "GetSecurityGroupsResponse",
@@ -23789,13 +19257,13 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSecurityPermissionsResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSecurityPermissionsResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSecurityPermissionsResponseOrderColumnsList),
-          result: S.optional(GetSecurityPermissionsResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(404, __c50, 4)),
         }),
       ).annotate({
         identifier: "GetSecurityPermissionsResponse",
@@ -23812,11 +19280,11 @@ function __c51(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(SupersetGroupApiGetRole),
-          show_columns: S.optional(GetSecurityPermissionsByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(403, __c50, 3)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -23841,8 +19309,8 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          permission: ViewMenuApiPost,
-          view_menu: ViewMenuApiPost,
+          permission: __S(111, __c13, 7),
+          view_menu: __S(111, __c13, 7),
         }),
       ).annotate({
         identifier: "SupersetPermissionViewMenuApiGet",
@@ -23850,11 +19318,11 @@ function __c52(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(SupersetPermissionViewMenuApiGet),
-          show_columns: S.optional(GetSecurityPermissionsResourceResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(417, __c52, 1)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -23871,18 +19339,18 @@ function __c52(j: number): any {
         identifier: "GetSecurityPermissionsResourcesRequest",
       });
     case 4:
-      return S.Array(SupersetPermissionViewMenuApiGet);
+      return S.Array(__S(417, __c52, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSecurityPermissionsResourcesResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSecurityPermissionsResourcesResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSecurityPermissionsResourcesResponseOrderColumnsList),
-          result: S.optional(GetSecurityPermissionsResourcesResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(420, __c52, 4)),
         }),
       ).annotate({
         identifier: "GetSecurityPermissionsResourcesResponse",
@@ -23918,11 +19386,11 @@ function __c53(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(SupersetGroupApiGetRole),
-          show_columns: S.optional(GetSecurityRoleResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(403, __c50, 3)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSecurityRoleResponse" });
@@ -23936,13 +19404,13 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSecurityRolesResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSecurityRolesResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSecurityRolesResponseOrderColumnsList),
-          result: S.optional(GetSecurityRolesResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(404, __c50, 4)),
         }),
       ).annotate({ identifier: "GetSecurityRolesResponse" });
     case 4:
@@ -23957,7 +19425,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.NullOr(S.Boolean)),
-          changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          changed_by: S.optional(__S(184, __c23, 0)),
           changed_on: S.optional(S.NullOr(S.String)),
           created_on: S.optional(S.NullOr(S.String)),
           extra_search: S.optional(S.NullOr(S.String)),
@@ -23973,18 +19441,18 @@ function __c53(j: number): any {
         }),
       ).annotate({ identifier: "SubjectRestApiGetList" });
     case 6:
-      return S.Array(SubjectRestApiGetList);
+      return S.Array(__S(429, __c53, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSecuritySubjectResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSecuritySubjectResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSecuritySubjectResponseOrderColumnsList),
-          result: S.optional(GetSecuritySubjectResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(430, __c53, 6)),
         }),
       ).annotate({
         identifier: "GetSecuritySubjectResponse",
@@ -24026,20 +19494,20 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.NullOr(S.Boolean)),
-          changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          changed_by: S.optional(__S(184, __c23, 0)),
           changed_on: S.optional(S.NullOr(S.String)),
           created_on: S.optional(S.NullOr(S.String)),
           extra_search: S.optional(S.NullOr(S.String)),
-          group: S.optional(SubjectRestApiGetGroup),
+          group: S.optional(__S(433, __c54, 1)),
           group_id: S.optional(S.NullOr(S.Unknown)),
           id: S.optional(S.Number),
           img: S.optional(S.Unknown),
           label: S.String,
-          role: S.optional(SupersetGroupApiGetRole),
+          role: S.optional(__S(403, __c50, 3)),
           role_id: S.optional(S.NullOr(S.Unknown)),
           secondary_label: S.optional(S.NullOr(S.String)),
           type: S.Number,
-          user: S.optional(SubjectRestApiGetUser),
+          user: S.optional(__S(434, __c54, 2)),
           user_id: S.optional(S.NullOr(S.Unknown)),
           uuid: S.optional(S.NullOr(S.String)),
         }),
@@ -24047,11 +19515,11 @@ function __c54(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(SubjectRestApiGet),
-          show_columns: S.optional(GetSecuritySubjectByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(435, __c54, 3)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -24065,24 +19533,24 @@ function __c54(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/users/{pk}", code: 200 })),
       ).annotate({ identifier: "GetSecurityUserRequest" });
     case 6:
-      return S.Array(SubjectRestApiGetGroup);
+      return S.Array(__S(433, __c54, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.NullOr(S.Boolean)),
-          changed_by: S.optional(LogRestApiPost),
+          changed_by: S.optional(__S(83, __c10, 3)),
           changed_on: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(LogRestApiPost),
+          created_by: S.optional(__S(83, __c10, 3)),
           created_on: S.optional(S.NullOr(S.String)),
           email: S.String,
           fail_login_count: S.optional(S.NullOr(S.Number)),
           first_name: S.String,
-          groups: S.optional(SupersetUserApiGetGroupsList),
+          groups: S.optional(__S(438, __c54, 6)),
           id: S.optional(S.Number),
           last_login: S.optional(S.NullOr(S.String)),
           last_name: S.String,
           login_count: S.optional(S.NullOr(S.Number)),
-          roles: S.optional(SupersetUserApiGetRolesList),
+          roles: S.optional(__S(404, __c50, 4)),
           username: S.String,
         }),
       ).annotate({ identifier: "SupersetUserApiGet" });
@@ -24093,11 +19561,11 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(SupersetUserApiGet),
-          show_columns: S.optional(GetSecurityUserResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(439, __c54, 7)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSecurityUserResponse" });
@@ -24115,11 +19583,11 @@ function __c55(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(LogRestApiPost),
-          show_columns: S.optional(GetSecurityUserRegistrationResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(83, __c10, 3)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({
@@ -24147,18 +19615,18 @@ function __c55(j: number): any {
         identifier: "UserRegistrationsRestAPIGetList",
       });
     case 5:
-      return S.Array(UserRegistrationsRestAPIGetList);
+      return S.Array(__S(444, __c55, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSecurityUserRegistrationsResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSecurityUserRegistrationsResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSecurityUserRegistrationsResponseOrderColumnsList),
-          result: S.optional(GetSecurityUserRegistrationsResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(445, __c55, 5)),
         }),
       ).annotate({
         identifier: "GetSecurityUserRegistrationsResponse",
@@ -24174,18 +19642,18 @@ function __c55(j: number): any {
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SupersetUserApiGetList);
+      return S.Array(__S(439, __c54, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetSecurityUsersResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetSecurityUsersResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetSecurityUsersResponseOrderColumnsList),
-          result: S.optional(GetSecurityUsersResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(448, __c56, 0)),
         }),
       ).annotate({ identifier: "GetSecurityUsersResponse" });
     case 2:
@@ -24211,29 +19679,29 @@ function __c56(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          changed_by: S.optional(__S(184, __c23, 0)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(AnnotationLayerRestApiGetListUser1),
+          created_by: S.optional(__S(184, __c23, 0)),
           created_on_delta_humanized: S.optional(S.Unknown),
           description: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
           name: S.optional(S.NullOr(S.String)),
-          type: S.optional(TagRestApiGetListType),
+          type: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TagRestApiGetList" });
     case 6:
-      return S.Array(TagRestApiGetList);
+      return S.Array(__S(453, __c56, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetTagResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetTagResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetTagResponseOrderColumnsList),
-          result: S.optional(GetTagResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(454, __c56, 6)),
         }),
       ).annotate({ identifier: "GetTagResponse" });
   }
@@ -24250,11 +19718,11 @@ function __c57(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(TagRestApiGet),
-          show_columns: S.optional(GetTagByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(453, __c56, 5)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTagByPkResponse" });
@@ -24274,12 +19742,12 @@ function __c57(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_by_name: S.optional(S.Unknown),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
+          created_by: S.optional(__S(226, __c28, 2)),
           created_on: S.optional(S.NullOr(S.String)),
-          editors: S.optional(ThemeRestApiGetListEditorsList),
+          editors: S.optional(__S(294, __c36, 6)),
           id: S.optional(S.Number),
           is_system: S.optional(S.Boolean),
           is_system_dark: S.optional(S.Boolean),
@@ -24290,18 +19758,18 @@ function __c57(j: number): any {
         }),
       ).annotate({ identifier: "ThemeRestApiGetList" });
     case 5:
-      return S.Array(ThemeRestApiGetList);
+      return S.Array(__S(460, __c57, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
-          ids: S.optional(GetThemeResponseIdsList),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          list_columns: S.optional(GetThemeResponseListColumnsList),
+          description_columns: S.optional(__S(183, __c22, 7)),
+          ids: S.optional(__S(19, __c2, 3)),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          list_columns: S.optional(__S(19, __c2, 3)),
           list_title: S.optional(S.String),
-          order_columns: S.optional(GetThemeResponseOrderColumnsList),
-          result: S.optional(GetThemeResponseResultList),
+          order_columns: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(461, __c57, 5)),
         }),
       ).annotate({ identifier: "GetThemeResponse" });
     case 7:
@@ -24318,10 +19786,10 @@ function __c58(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
-          editors: S.optional(ThemeRestApiGetEditorsList),
+          created_by: S.optional(__S(226, __c28, 2)),
+          editors: S.optional(__S(294, __c36, 6)),
           id: S.optional(S.Number),
           is_system: S.optional(S.Boolean),
           is_system_dark: S.optional(S.Boolean),
@@ -24334,11 +19802,11 @@ function __c58(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
+          description_columns: S.optional(__S(183, __c22, 7)),
           id: S.optional(S.String),
-          label_columns: S.optional(GetAnnotationLayerResponseLabelColumns),
-          result: S.optional(ThemeRestApiGet),
-          show_columns: S.optional(GetThemeByPkResponseShowColumnsList),
+          label_columns: S.optional(__S(183, __c22, 7)),
+          result: S.optional(__S(464, __c58, 0)),
+          show_columns: S.optional(__S(19, __c2, 3)),
           show_title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetThemeByPkResponse" });
@@ -24373,7 +19841,7 @@ function __c58(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GetThemeSystemResponseResult),
+          result: S.optional(__S(469, __c58, 5)),
         }),
       ).annotate({ identifier: "GetThemeSystemResponse" });
     case 7:
@@ -24520,7 +19988,7 @@ function __c59(j: number): any {
           catalog: S.optional(S.NullOr(S.String)),
           database_name: S.optional(S.String),
           datasource_name: S.optional(S.String),
-          datasource_type: DatasourceDatasourceType,
+          datasource_type: S.String,
           schema: S.optional(S.String),
         }),
       ).annotate({ identifier: "Datasource" });
@@ -24529,12 +19997,12 @@ function __c59(j: number): any {
 function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Datasource);
+      return S.Array(__S(479, __c59, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          datasource_uids: S.optional(InvalidateCachekeyRequestDatasourceUidsList),
-          datasources: S.optional(InvalidateCachekeyRequestDatasourcesList),
+          datasource_uids: S.optional(__S(19, __c2, 3)),
+          datasources: S.optional(__S(480, __c60, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/cachekey/invalidate", code: 200 })),
       ).annotate({
         identifier: "InvalidateCachekeyRequest",
@@ -24552,8 +20020,8 @@ function __c60(j: number): any {
         S.Struct({
           display_value: S.optional(S.String),
           error_message: S.optional(S.String),
-          valid_filter_operators: S.optional(AdvancedDataTypeSchemaValidFilterOperatorsList),
-          values: S.optional(AdvancedDataTypeSchemaValuesList),
+          valid_filter_operators: S.optional(__S(19, __c2, 3)),
+          values: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "AdvancedDataTypeSchema" });
     case 4:
@@ -24567,7 +20035,7 @@ function __c60(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListAdvancedDataTypeTypesResponseResultList),
+          result: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "ListAdvancedDataTypeTypesResponse",
@@ -24599,9 +20067,9 @@ function __c61(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          changed_by: S.optional(AnnotationRestApiGetListUser),
+          changed_by: S.optional(__S(487, __c60, 7)),
           changed_on_delta_humanized: S.optional(S.Unknown),
-          created_by: S.optional(AnnotationRestApiGetListUser),
+          created_by: S.optional(__S(487, __c60, 7)),
           end_dttm: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
           long_descr: S.optional(S.NullOr(S.String)),
@@ -24610,13 +20078,13 @@ function __c61(j: number): any {
         }),
       ).annotate({ identifier: "AnnotationRestApiGetList" });
     case 1:
-      return S.Array(AnnotationRestApiGetList);
+      return S.Array(__S(488, __c61, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          ids: S.optional(ListAnnotationLayerAnnotationResponseIdsList),
-          result: S.optional(ListAnnotationLayerAnnotationResponseResultList),
+          ids: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(489, __c61, 1)),
         }),
       ).annotate({
         identifier: "ListAnnotationLayerAnnotationResponse",
@@ -24639,11 +20107,11 @@ function __c61(j: number): any {
         identifier: "ListAnnotationLayerInfoResponseFiltersColumnNameItem",
       });
     case 5:
-      return S.Array(ListAnnotationLayerInfoResponseFiltersColumnNameItem);
+      return S.Array(__S(492, __c61, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          column_name: S.optional(ListAnnotationLayerInfoResponseFiltersColumnNameList),
+          column_name: S.optional(__S(493, __c61, 5)),
         }),
       ).annotate({
         identifier: "ListAnnotationLayerInfoResponseFilters",
@@ -24653,8 +20121,8 @@ function __c61(j: number): any {
         S.Struct({
           add_columns: S.optional(S.Unknown),
           edit_columns: S.optional(S.Unknown),
-          filters: S.optional(ListAnnotationLayerInfoResponseFilters),
-          permissions: S.optional(ListAnnotationLayerInfoResponsePermissionsList),
+          filters: S.optional(__S(494, __c61, 6)),
+          permissions: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "ListAnnotationLayerInfoResponse",
@@ -24670,7 +20138,7 @@ function __c62(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/", code: 200 })),
       ).annotate({ identifier: "ListChartRequest" });
     case 1:
-      return S.Array(ReportScheduleRestApiGetDashboard);
+      return S.Array(__S(371, __c46, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -24685,26 +20153,26 @@ function __c62(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.NullOr(S.String)),
-          type: S.optional(ChartRestApiGetListTagType),
+          type: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ChartRestApiGetListTag" });
     case 4:
-      return S.Array(ChartRestApiGetListTag);
+      return S.Array(__S(499, __c62, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           cache_timeout: S.optional(S.NullOr(S.Number)),
           certification_details: S.optional(S.NullOr(S.String)),
           certified_by: S.optional(S.NullOr(S.String)),
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_by_name: S.optional(S.Unknown),
           changed_on_delta_humanized: S.optional(S.Unknown),
           changed_on_dttm: S.optional(S.Unknown),
           changed_on_utc: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
+          created_by: S.optional(__S(226, __c28, 2)),
           created_by_name: S.optional(S.Unknown),
           created_on_delta_humanized: S.optional(S.Unknown),
-          dashboards: S.optional(ChartRestApiGetListDashboardsList),
+          dashboards: S.optional(__S(497, __c62, 1)),
           datasource_id: S.optional(S.NullOr(S.Number)),
           datasource_name_text: S.optional(S.Unknown),
           datasource_type: S.optional(S.NullOr(S.String)),
@@ -24712,32 +20180,32 @@ function __c62(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           description_markeddown: S.optional(S.Unknown),
           edit_url: S.optional(S.Unknown),
-          editors: S.optional(ChartRestApiGetListEditorsList),
+          editors: S.optional(__S(294, __c36, 6)),
           form_data: S.optional(S.Unknown),
           id: S.optional(S.Number),
           is_managed_externally: S.optional(S.Boolean),
           last_saved_at: S.optional(S.NullOr(S.String)),
-          last_saved_by: S.optional(CssTemplateRestApiGetListUser),
+          last_saved_by: S.optional(__S(226, __c28, 2)),
           params: S.optional(S.NullOr(S.String)),
           slice_name: S.optional(S.NullOr(S.String)),
           slice_url: S.optional(S.Unknown),
-          table: S.optional(ChartRestApiGetListSqlaTable),
-          tags: S.optional(ChartRestApiGetListTagsList),
+          table: S.optional(__S(498, __c62, 2)),
+          tags: S.optional(__S(500, __c62, 4)),
           thumbnail_url: S.optional(S.Unknown),
           url: S.optional(S.Unknown),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(ChartRestApiGetListViewersList),
+          viewers: S.optional(__S(294, __c36, 6)),
           viz_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ChartRestApiGetList" });
     case 6:
-      return S.Array(ChartRestApiGetList);
+      return S.Array(__S(501, __c62, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          ids: S.optional(ListChartResponseIdsList),
-          result: S.optional(ListChartResponseResultList),
+          ids: S.optional(__S(14, __c1, 6)),
+          result: S.optional(__S(502, __c62, 6)),
         }),
       ).annotate({ identifier: "ListChartResponse" });
   }
@@ -24750,7 +20218,7 @@ function __c63(j: number): any {
           uuid_str: S.String.pipe(T.Label()),
           since: S.optional(S.String.pipe(T.Query())),
           until: S.optional(S.String.pipe(T.Query())),
-          include: S.optional(ListChartActivityRequestInclude.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
@@ -24759,29 +20227,29 @@ function __c63(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          affected_charts: S.optional(ActivityImpactAffectedChartsList),
+          affected_charts: S.optional(__S(333, __c41, 5)),
           charts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ActivityImpact" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action_kind: S.optional(S.NullOr(ActivityRecordActionKind)),
-          changed_by: S.optional(S.NullOr(VersionChangedBy)),
-          creation_kind: S.optional(S.NullOr(ActivityRecordCreationKind)),
+          action_kind: S.optional(S.NullOr(S.String)),
+          changed_by: S.optional(S.NullOr(__S(219, __c27, 3))),
+          creation_kind: S.optional(S.NullOr(S.String)),
           entity_deleted: S.optional(S.Boolean),
-          entity_deletion_state: S.optional(S.NullOr(ActivityRecordEntityDeletionState)),
-          entity_kind: S.optional(ActivityRecordEntityKind),
+          entity_deletion_state: S.optional(S.NullOr(S.String)),
+          entity_kind: S.optional(S.String),
           entity_name: S.optional(S.String),
           entity_uuid: S.optional(S.NullOr(S.String)),
           first_tracked_save: S.optional(S.Boolean),
           from_value: S.optional(S.NullOr(S.Unknown)),
-          impact: S.optional(S.NullOr(ActivityImpact)),
+          impact: S.optional(S.NullOr(__S(505, __c63, 1))),
           issued_at: S.optional(S.String),
-          kind: S.optional(ActivityRecordKind),
-          operation: S.optional(ActivityRecordOperation),
-          path: S.optional(S.NullOr(ActivityRecordPathList)),
-          source: S.optional(ActivityRecordSource),
+          kind: S.optional(S.String),
+          operation: S.optional(S.String),
+          path: S.optional(S.NullOr(__S(19, __c2, 3))),
+          source: S.optional(S.String),
           summary: S.optional(S.String),
           to_value: S.optional(S.NullOr(S.Unknown)),
           transaction_id: S.optional(S.Number),
@@ -24789,12 +20257,12 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "ActivityRecord" });
     case 3:
-      return S.Array(ActivityRecord);
+      return S.Array(__S(506, __c63, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(ActivityResponseResultList),
+          result: S.optional(__S(507, __c63, 3)),
           truncated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ActivityResponse" });
@@ -24833,11 +20301,11 @@ function __c63(j: number): any {
 function __c64(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListChartDeckLayersResponseResultItem);
+      return S.Array(__S(511, __c63, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListChartDeckLayersResponseResultList),
+          result: S.optional(__S(512, __c64, 0)),
         }),
       ).annotate({
         identifier: "ListChartDeckLayersResponse",
@@ -24860,11 +20328,11 @@ function __c64(j: number): any {
         identifier: "ChartFavStarResponseResult",
       });
     case 4:
-      return S.Array(ChartFavStarResponseResult);
+      return S.Array(__S(515, __c64, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GetFavStarIdsSchemaResultList),
+          result: S.optional(__S(516, __c64, 4)),
         }),
       ).annotate({ identifier: "GetFavStarIdsSchema" });
     case 6:
@@ -24878,8 +20346,8 @@ function __c64(j: number): any {
         S.Struct({
           add_columns: S.optional(S.Unknown),
           edit_columns: S.optional(S.Unknown),
-          filters: S.optional(ListChartInfoResponseFilters),
-          permissions: S.optional(ListChartInfoResponsePermissionsList),
+          filters: S.optional(__S(494, __c61, 6)),
+          permissions: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "ListChartInfoResponse" });
   }
@@ -24893,12 +20361,12 @@ function __c65(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/{uuid_str}/versions/", code: 200 })),
       ).annotate({ identifier: "ListChartVersionsRequest" });
     case 1:
-      return S.Array(VersionListItemSchema);
+      return S.Array(__S(222, __c27, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(ListChartVersionsResponseResultList),
+          result: S.optional(__S(521, __c65, 1)),
         }),
       ).annotate({
         identifier: "ListChartVersionsResponse",
@@ -24922,34 +20390,34 @@ function __c65(j: number): any {
         S.Struct({
           certification_details: S.optional(S.NullOr(S.String)),
           certified_by: S.optional(S.NullOr(S.String)),
-          changed_by: S.optional(CssTemplateRestApiGetListUser),
+          changed_by: S.optional(__S(226, __c28, 2)),
           changed_by_name: S.optional(S.Unknown),
           changed_on_delta_humanized: S.optional(S.Unknown),
           changed_on_utc: S.optional(S.Unknown),
-          created_by: S.optional(CssTemplateRestApiGetListUser),
+          created_by: S.optional(__S(226, __c28, 2)),
           created_on_delta_humanized: S.optional(S.Unknown),
           dashboard_title: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(DashboardRestApiGetListEditorsList),
+          editors: S.optional(__S(294, __c36, 6)),
           id: S.optional(S.Number),
           is_managed_externally: S.optional(S.Boolean),
           published: S.optional(S.NullOr(S.Boolean)),
           slug: S.optional(S.NullOr(S.String)),
           status: S.optional(S.Unknown),
-          tags: S.optional(DashboardRestApiGetListTagsList),
+          tags: S.optional(__S(391, __c48, 7)),
           url: S.optional(S.Unknown),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(DashboardRestApiGetListViewersList),
+          viewers: S.optional(__S(294, __c36, 6)),
         }),
       ).annotate({ identifier: "DashboardRestApiGetList" });
     case 6:
-      return S.Array(DashboardRestApiGetList);
+      return S.Array(__S(525, __c65, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          ids: S.optional(ListDashboardResponseIdsList),
-          result: S.optional(ListDashboardResponseResultList),
+          ids: S.optional(__S(14, __c1, 6)),
+          result: S.optional(__S(526, __c65, 6)),
         }),
       ).annotate({ identifier: "ListDashboardResponse" });
   }
@@ -24962,7 +20430,7 @@ function __c66(j: number): any {
           uuid_str: S.String.pipe(T.Label()),
           since: S.optional(S.String.pipe(T.Query())),
           until: S.optional(S.String.pipe(T.Query())),
-          include: S.optional(ListDashboardActivityRequestInclude.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
@@ -24998,11 +20466,11 @@ function __c66(j: number): any {
         identifier: "ChartEntityResponseSchema",
       });
     case 3:
-      return S.Array(ChartEntityResponseSchema);
+      return S.Array(__S(530, __c66, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListDashboardChartsResponseResultList),
+          result: S.optional(__S(531, __c66, 3)),
         }),
       ).annotate({
         identifier: "ListDashboardChartsResponse",
@@ -25038,43 +20506,43 @@ function __c66(j: number): any {
           always_filter_main_dttm: S.optional(S.Boolean),
           cache_timeout: S.optional(S.Number),
           column_formats: S.optional(S.Unknown),
-          column_names: S.optional(DashboardDatasetSchemaColumnNamesList),
-          column_types: S.optional(DashboardDatasetSchemaColumnTypesList),
-          columns: S.optional(DashboardDatasetSchemaColumnsList),
+          column_names: S.optional(__S(19, __c2, 3)),
+          column_types: S.optional(__S(14, __c1, 6)),
+          columns: S.optional(__S(0, __c0, 0)),
           currency_code_column: S.optional(S.String),
-          database: S.optional(Database),
+          database: S.optional(__S(534, __c66, 6)),
           datasource_name: S.optional(S.String),
           default_endpoint: S.optional(S.String),
           edit_url: S.optional(S.String),
-          editors: S.optional(DashboardDatasetSchemaEditorsList),
+          editors: S.optional(__S(207, __c25, 7)),
           fetch_values_predicate: S.optional(S.String),
           filter_select: S.optional(S.Boolean),
           filter_select_enabled: S.optional(S.Boolean),
-          granularity_sqla: S.optional(DashboardDatasetSchemaGranularitySqlaList),
+          granularity_sqla: S.optional(__S(26, __c3, 2)),
           health_check_message: S.optional(S.String),
           id: S.optional(S.Number),
           is_sqllab_view: S.optional(S.Boolean),
           main_dttm_col: S.optional(S.String),
-          metrics: S.optional(DashboardDatasetSchemaMetricsList),
+          metrics: S.optional(__S(0, __c0, 0)),
           name: S.optional(S.String),
           normalize_columns: S.optional(S.Boolean),
           offset: S.optional(S.Number),
-          order_by_choices: S.optional(DashboardDatasetSchemaOrderByChoicesList),
+          order_by_choices: S.optional(__S(26, __c3, 2)),
           params: S.optional(S.String),
           parent: S.optional(S.Unknown),
           perm: S.optional(S.String),
           schema: S.optional(S.String),
           select_star: S.optional(S.String),
-          semantic_view_features: S.optional(DashboardDatasetSchemaSemanticViewFeaturesList),
+          semantic_view_features: S.optional(__S(19, __c2, 3)),
           sql: S.optional(S.String),
           supports_drill_to_detail: S.optional(S.Boolean),
           supports_samples: S.optional(S.Boolean),
           table_name: S.optional(S.String),
           template_params: S.optional(S.String),
-          time_grain_sqla: S.optional(DashboardDatasetSchemaTimeGrainSqlaList),
+          time_grain_sqla: S.optional(__S(26, __c3, 2)),
           type: S.optional(S.String),
           uid: S.optional(S.String),
-          verbose_map: S.optional(DashboardDatasetSchemaVerboseMapMap),
+          verbose_map: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "DashboardDatasetSchema" });
   }
@@ -25082,11 +20550,11 @@ function __c66(j: number): any {
 function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DashboardDatasetSchema);
+      return S.Array(__S(535, __c66, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListDashboardDatasetsResponseResultList),
+          result: S.optional(__S(536, __c67, 0)),
         }),
       ).annotate({
         identifier: "ListDashboardDatasetsResponse",
@@ -25143,10 +20611,10 @@ function __c68(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          available_drivers: S.optional(ListDatabaseAvailableResponseBodyItemAvailableDriversList),
+          available_drivers: S.optional(__S(19, __c2, 3)),
           default_driver: S.optional(S.String),
           engine: S.optional(S.String),
-          engine_information: S.optional(ListDatabaseAvailableResponseBodyItemEngineInformation),
+          engine_information: S.optional(__S(543, __c67, 7)),
           name: S.optional(S.String),
           parameters: S.optional(S.Unknown),
           preferred: S.optional(S.Boolean),
@@ -25156,11 +20624,9 @@ function __c68(j: number): any {
         identifier: "ListDatabaseAvailableResponseBodyItem",
       });
     case 1:
-      return S.Array(ListDatabaseAvailableResponseBodyItem);
+      return S.Array(__S(544, __c68, 0));
     case 2:
-      return S.suspend(() =>
-        ListDatabaseAvailableResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(545, __c68, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDatabaseAvailableResponse",
       });
     case 3:
@@ -25175,7 +20641,7 @@ function __c68(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(CatalogsResponseSchemaResultList),
+          result: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "CatalogsResponseSchema" });
     case 5:
@@ -25189,7 +20655,7 @@ function __c68(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          function_names: S.optional(DatabaseFunctionNamesResponseFunctionNamesList),
+          function_names: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "DatabaseFunctionNamesResponse",
@@ -25230,7 +20696,7 @@ function __c69(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schemas: S.optional(DatabaseSchemaAccessForFileUploadResponseSchemasList),
+          schemas: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "DatabaseSchemaAccessForFileUploadResponse",
@@ -25253,12 +20719,12 @@ function __c69(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseTablesResponse" });
     case 5:
-      return S.Array(DatabaseTablesResponse);
+      return S.Array(__S(556, __c69, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          result: S.optional(ListDatabaseTablesResponseResultList),
+          result: S.optional(__S(557, __c69, 5)),
         }),
       ).annotate({
         identifier: "ListDatabaseTablesResponse",
@@ -25269,7 +20735,7 @@ function __c69(j: number): any {
           uuid_str: S.String.pipe(T.Label()),
           since: S.optional(S.String.pipe(T.Query())),
           until: S.optional(S.String.pipe(T.Query())),
-          include: S.optional(ListDatasetActivityRequestInclude.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
@@ -25313,12 +20779,12 @@ function __c70(j: number): any {
         identifier: "ListDatasourceColumnValuesRequest",
       });
     case 3:
-      return S.Array(ListDatasourceColumnValuesResponseResultItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListDatasourceColumnValuesResponseResultList),
-          suggestions_status: S.optional(ListDatasourceColumnValuesResponseSuggestionsStatus),
+          result: S.optional(__S(563, __c70, 3)),
+          suggestions_status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDatasourceColumnValuesResponse",
@@ -25343,7 +20809,7 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "RecentActivity" });
     case 7:
-      return S.Array(RecentActivity);
+      return S.Array(__S(566, __c70, 6));
   }
 }
 function __c71(j: number): any {
@@ -25351,7 +20817,7 @@ function __c71(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(RecentActivityResponseSchemaResultList),
+          result: S.optional(__S(567, __c70, 7)),
         }),
       ).annotate({
         identifier: "RecentActivityResponseSchema",
@@ -25363,7 +20829,7 @@ function __c71(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          childs: S.optional(ListMenuResponseResultItemChildsList),
+          childs: S.optional(__S(0, __c0, 0)),
           icon: S.optional(S.String),
           label: S.optional(S.String),
           name: S.optional(S.String),
@@ -25373,11 +20839,11 @@ function __c71(j: number): any {
         identifier: "ListMenuResponseResultItem",
       });
     case 3:
-      return S.Array(ListMenuResponseResultItem);
+      return S.Array(__S(570, __c71, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListMenuResponseResultList),
+          result: S.optional(__S(571, __c71, 3)),
         }),
       ).annotate({ identifier: "ListMenuResponse" });
     case 5:
@@ -25389,11 +20855,11 @@ function __c71(j: number): any {
         identifier: "ListQueryUpdatedSinceRequest",
       });
     case 6:
-      return S.Array(QueryRestApiGet);
+      return S.Array(__S(359, __c44, 7));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListQueryUpdatedSinceResponseResultList),
+          result: S.optional(__S(574, __c71, 6)),
         }),
       ).annotate({
         identifier: "ListQueryUpdatedSinceResponse",
@@ -25416,13 +20882,13 @@ function __c72(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/report/{pk}/log/", code: 200 })),
       ).annotate({ identifier: "ListReportLogRequest" });
     case 2:
-      return S.Array(ReportExecutionLogRestApiGet);
+      return S.Array(__S(378, __c47, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          ids: S.optional(ListReportLogResponseIdsList),
-          result: S.optional(ListReportLogResponseResultList),
+          ids: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(578, __c72, 2)),
         }),
       ).annotate({ identifier: "ListReportLogResponse" });
     case 4:
@@ -25443,11 +20909,11 @@ function __c72(j: number): any {
         identifier: "ListReportSlackChannelsResponseResultItem",
       });
     case 6:
-      return S.Array(ListReportSlackChannelsResponseResultItem);
+      return S.Array(__S(581, __c72, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListReportSlackChannelsResponseResultList),
+          result: S.optional(__S(582, __c72, 6)),
         }),
       ).annotate({
         identifier: "ListReportSlackChannelsResponse",
@@ -25499,11 +20965,11 @@ function __c73(j: number): any {
         identifier: "ListSecurityPermissionsResourceInfoRequest",
       });
     case 5:
-      return S.Array(ListAnnotationLayerInfoResponseFiltersColumnNameItem);
+      return S.Array(__S(492, __c61, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          column_name: S.optional(ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList),
+          column_name: S.optional(__S(589, __c73, 5)),
         }),
       ).annotate({
         identifier: "ListSecurityPermissionsResourceInfoResponseFilters",
@@ -25513,8 +20979,8 @@ function __c73(j: number): any {
         S.Struct({
           add_columns: S.optional(S.Unknown),
           edit_columns: S.optional(S.Unknown),
-          filters: S.optional(ListSecurityPermissionsResourceInfoResponseFilters),
-          permissions: S.optional(ListSecurityPermissionsResourceInfoResponsePermissionsList),
+          filters: S.optional(__S(590, __c73, 6)),
+          permissions: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "ListSecurityPermissionsResourceInfoResponse",
@@ -25562,11 +21028,11 @@ function __c74(j: number): any {
         }),
       ).annotate({ identifier: "RolePermissionListSchema" });
     case 4:
-      return S.Array(RolePermissionListSchema);
+      return S.Array(__S(595, __c74, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListSecurityRolePermissionsResponseResultList),
+          result: S.optional(__S(596, __c74, 4)),
         }),
       ).annotate({
         identifier: "ListSecurityRolePermissionsResponse",
@@ -25574,14 +21040,14 @@ function __c74(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          col: S.optional(ListSecurityRoleSearchRequestQFiltersItemCol),
+          col: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSecurityRoleSearchRequestQFiltersItem",
       });
     case 7:
-      return S.Array(ListSecurityRoleSearchRequestQFiltersItem);
+      return S.Array(__S(598, __c74, 6));
   }
 }
 function __c75(j: number): any {
@@ -25589,9 +21055,9 @@ function __c75(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(ListSecurityRoleSearchRequestQFiltersList),
-          order_column: S.optional(ListSecurityRoleSearchRequestQOrderColumn),
-          order_direction: S.optional(ListSecurityRoleSearchRequestQOrderDirection),
+          filters: S.optional(__S(599, __c74, 7)),
+          order_column: S.optional(S.String),
+          order_direction: S.optional(S.String),
           page: S.optional(S.Number),
           page_size: S.optional(S.Number),
         }),
@@ -25601,7 +21067,7 @@ function __c75(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          q: S.optional(ListSecurityRoleSearchRequestQ.pipe(T.Query())),
+          q: S.optional(__S(600, __c75, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/roles/search/", code: 200 })),
       ).annotate({
         identifier: "ListSecurityRoleSearchRequest",
@@ -25611,18 +21077,18 @@ function __c75(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          permission_ids: S.optional(RoleResponseSchemaPermissionIdsList),
-          user_ids: S.optional(RoleResponseSchemaUserIdsList),
+          permission_ids: S.optional(__S(14, __c1, 6)),
+          user_ids: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "RoleResponseSchema" });
     case 3:
-      return S.Array(RoleResponseSchema);
+      return S.Array(__S(602, __c75, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          ids: S.optional(RolesResponseSchemaIdsList),
-          result: S.optional(RolesResponseSchemaResultList),
+          ids: S.optional(__S(14, __c1, 6)),
+          result: S.optional(__S(603, __c75, 3)),
         }),
       ).annotate({ identifier: "RolesResponseSchema" });
     case 5:
@@ -25672,7 +21138,7 @@ function __c76(j: number): any {
         }),
       ).annotate({ identifier: "Table" });
     case 2:
-      return S.Array(Table);
+      return S.Array(__S(609, __c76, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -25683,12 +21149,12 @@ function __c76(j: number): any {
           hide_left_bar: S.optional(S.Boolean),
           id: S.optional(S.String),
           label: S.optional(S.String),
-          latest_query: S.optional(QueryResult),
+          latest_query: S.optional(__S(178, __c22, 2)),
           query_limit: S.optional(S.Number),
           saved_query: S.optional(S.NullOr(S.Unknown)),
           schema: S.optional(S.String),
           sql: S.optional(S.String),
-          table_schemas: S.optional(TabStateTableSchemasList),
+          table_schemas: S.optional(__S(610, __c76, 2)),
           user_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TabState" });
@@ -25708,23 +21174,23 @@ function __c76(j: number): any {
           database_name: S.optional(S.String),
           disable_data_preview: S.optional(S.Boolean),
           disable_drill_to_detail: S.optional(S.Boolean),
-          engine_information: S.optional(EngineInformation),
+          engine_information: S.optional(__S(260, __c32, 4)),
           expose_in_sqllab: S.optional(S.Boolean),
           force_ctas_schema: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SQLLabBootstrapDatabase" });
     case 5:
-      return S.Record(S.String, SQLLabBootstrapDatabase);
+      return S.Record(S.String, __S(612, __c76, 4));
     case 6:
-      return S.Record(S.String, QueryResult);
+      return S.Record(S.String, __S(178, __c22, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          active_tab: S.optional(TabState),
-          databases: S.optional(SQLLabBootstrapSchemaDatabasesMap),
-          queries: S.optional(SQLLabBootstrapSchemaQueriesMap),
-          tab_state_ids: S.optional(SQLLabBootstrapSchemaTabStateIdsList),
+          active_tab: S.optional(__S(611, __c76, 3)),
+          databases: S.optional(__S(613, __c76, 5)),
+          queries: S.optional(__S(614, __c76, 6)),
+          tab_state_ids: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "SQLLabBootstrapSchema" });
   }
@@ -25748,9 +21214,9 @@ function __c77(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tagIds: S.optional(ListTagGetObjectsRequestTagIdsList.pipe(T.Query())),
-          tags: S.optional(ListTagGetObjectsRequestTagsList.pipe(T.Query())),
-          types: S.optional(ListTagGetObjectsRequestTypesList.pipe(T.Query())),
+          tagIds: S.optional(__S(14, __c1, 6).pipe(T.Query())),
+          tags: S.optional(__S(19, __c2, 3).pipe(T.Query())),
+          types: S.optional(__S(19, __c2, 3).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/tag/get_objects/", code: 200 })),
       ).annotate({ identifier: "ListTagGetObjectsRequest" });
     case 3:
@@ -25762,17 +21228,17 @@ function __c77(j: number): any {
         }),
       ).annotate({ identifier: "TagGetResponseSchema" });
     case 4:
-      return S.Array(TagGetResponseSchema);
+      return S.Array(__S(619, __c77, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           changed_on: S.optional(S.String),
-          created_by: S.optional(VersionChangedBy),
+          created_by: S.optional(__S(219, __c27, 3)),
           creator: S.optional(S.String),
-          editors: S.optional(TaggedObjectEntityResponseSchemaEditorsList),
+          editors: S.optional(__S(207, __c25, 7)),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          tags: S.optional(TaggedObjectEntityResponseSchemaTagsList),
+          tags: S.optional(__S(620, __c77, 4)),
           type: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -25780,11 +21246,11 @@ function __c77(j: number): any {
         identifier: "TaggedObjectEntityResponseSchema",
       });
     case 6:
-      return S.Array(TaggedObjectEntityResponseSchema);
+      return S.Array(__S(621, __c77, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ListTagGetObjectsResponseResultList),
+          result: S.optional(__S(622, __c77, 6)),
         }),
       ).annotate({
         identifier: "ListTagGetObjectsResponse",
@@ -25809,7 +21275,7 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          provider: S.optional(LoginSecurityRequestProvider),
+          provider: S.optional(S.String),
           refresh: S.optional(S.Boolean),
           username: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/security/login", code: 200 })),
@@ -25867,7 +21333,7 @@ function __c79(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(AnnotationLayerRestApiPut),
+          result: S.optional(__S(632, __c79, 0)),
         }),
       ).annotate({
         identifier: "PutAnnotationLayerResponse",
@@ -25906,7 +21372,7 @@ function __c79(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(AnnotationRestApiPut),
+          result: S.optional(__S(635, __c79, 3)),
         }),
       ).annotate({
         identifier: "PutAnnotationLayerAnnotationResponse",
@@ -25924,7 +21390,7 @@ function __c79(j: number): any {
         identifier: "PutChartRequestNormalizationChangesItem",
       });
     case 6:
-      return S.Array(PutChartRequestNormalizationChangesItem);
+      return S.Array(__S(637, __c79, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -25932,21 +21398,21 @@ function __c79(j: number): any {
           cache_timeout: S.optional(S.NullOr(S.Number)),
           certification_details: S.optional(S.NullOr(S.String)),
           certified_by: S.optional(S.NullOr(S.String)),
-          dashboards: S.optional(PutChartRequestDashboardsList),
+          dashboards: S.optional(__S(14, __c1, 6)),
           datasource_id: S.optional(S.NullOr(S.Number)),
-          datasource_type: S.optional(S.NullOr(PutChartRequestDatasourceType)),
+          datasource_type: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(PutChartRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
-          normalization_changes: S.optional(S.NullOr(PutChartRequestNormalizationChangesList)),
+          normalization_changes: S.optional(S.NullOr(__S(638, __c79, 6))),
           params: S.optional(S.NullOr(S.String)),
           query_context: S.optional(S.NullOr(S.String)),
           query_context_generation: S.optional(S.NullOr(S.Boolean)),
           slice_name: S.optional(S.NullOr(S.String)),
-          tags: S.optional(PutChartRequestTagsList),
+          tags: S.optional(__S(14, __c1, 6)),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(PutChartRequestViewersList),
+          viewers: S.optional(__S(14, __c1, 6)),
           viz_type: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/chart/{pk}", code: 200 })),
       ).annotate({ identifier: "PutChartRequest" });
@@ -25960,20 +21426,20 @@ function __c80(j: number): any {
           cache_timeout: S.optional(S.NullOr(S.Number)),
           certification_details: S.optional(S.NullOr(S.String)),
           certified_by: S.optional(S.NullOr(S.String)),
-          dashboards: S.optional(ChartRestApiPutOutputDashboardsList),
+          dashboards: S.optional(__S(14, __c1, 6)),
           datasource_id: S.optional(S.NullOr(S.Number)),
-          datasource_type: S.optional(S.NullOr(ChartRestApiPutOutputDatasourceType)),
+          datasource_type: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(ChartRestApiPutOutputEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           params: S.optional(S.NullOr(S.String)),
           query_context: S.optional(S.NullOr(S.String)),
           query_context_generation: S.optional(S.NullOr(S.Boolean)),
           slice_name: S.optional(S.NullOr(S.String)),
-          tags: S.optional(ChartRestApiPutOutputTagsList),
+          tags: S.optional(__S(14, __c1, 6)),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(ChartRestApiPutOutputViewersList),
+          viewers: S.optional(__S(14, __c1, 6)),
           viz_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ChartRestApiPutOutput" });
@@ -25987,7 +21453,7 @@ function __c80(j: number): any {
           old_transaction_id: S.optional(S.NullOr(S.Number)),
           old_version: S.optional(S.NullOr(S.Number)),
           old_version_uuid: S.optional(S.NullOr(S.String)),
-          result: S.optional(ChartRestApiPutOutput),
+          result: S.optional(__S(640, __c80, 0)),
         }),
       ).annotate({ identifier: "PutChartResponse" });
     case 2:
@@ -26011,11 +21477,11 @@ function __c80(j: number): any {
         identifier: "ChartCacheWarmUpResponseSingle",
       });
     case 4:
-      return S.Array(ChartCacheWarmUpResponseSingle);
+      return S.Array(__S(643, __c80, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ChartCacheWarmUpResponseSchemaResultList),
+          result: S.optional(__S(644, __c80, 4)),
         }),
       ).annotate({
         identifier: "ChartCacheWarmUpResponseSchema",
@@ -26031,7 +21497,7 @@ function __c80(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(CssTemplateRestApiPost),
+          result: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "PutCssTemplateResponse" });
   }
@@ -26049,17 +21515,17 @@ function __c81(j: number): any {
           css: S.optional(S.NullOr(S.String)),
           dashboard_title: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(PutDashboardRequestEditorsList),
+          editors: S.optional(__S(648, __c81, 0)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           json_metadata: S.optional(S.NullOr(S.String)),
           position_json: S.optional(S.NullOr(S.String)),
           published: S.optional(S.NullOr(S.Boolean)),
           slug: S.optional(S.NullOr(S.String)),
-          tags: S.optional(PutDashboardRequestTagsList),
+          tags: S.optional(__S(648, __c81, 0)),
           theme_id: S.optional(S.NullOr(S.Number)),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(PutDashboardRequestViewersList),
+          viewers: S.optional(__S(648, __c81, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/dashboard/{pk}", code: 200 })),
       ).annotate({ identifier: "PutDashboardRequest" });
     case 2:
@@ -26070,17 +21536,17 @@ function __c81(j: number): any {
           css: S.optional(S.NullOr(S.String)),
           dashboard_title: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(DashboardRestApiPutEditorsList),
+          editors: S.optional(__S(648, __c81, 0)),
           external_url: S.optional(S.NullOr(S.String)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           json_metadata: S.optional(S.NullOr(S.String)),
           position_json: S.optional(S.NullOr(S.String)),
           published: S.optional(S.NullOr(S.Boolean)),
           slug: S.optional(S.NullOr(S.String)),
-          tags: S.optional(DashboardRestApiPutTagsList),
+          tags: S.optional(__S(648, __c81, 0)),
           theme_id: S.optional(S.NullOr(S.Number)),
           uuid: S.optional(S.NullOr(S.String)),
-          viewers: S.optional(DashboardRestApiPutViewersList),
+          viewers: S.optional(__S(648, __c81, 0)),
         }),
       ).annotate({ identifier: "DashboardRestApiPut" });
     case 3:
@@ -26094,16 +21560,16 @@ function __c81(j: number): any {
           old_transaction_id: S.optional(S.NullOr(S.Number)),
           old_version: S.optional(S.NullOr(S.Number)),
           old_version_uuid: S.optional(S.NullOr(S.String)),
-          result: S.optional(DashboardRestApiPut),
+          result: S.optional(__S(650, __c81, 2)),
         }),
       ).annotate({ identifier: "PutDashboardResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           pk: S.Number.pipe(T.Label()),
-          deleted: S.optional(PutDashboardChartCustomizationsRequestDeletedList),
-          modified: S.optional(PutDashboardChartCustomizationsRequestModifiedList),
-          reordered: S.optional(PutDashboardChartCustomizationsRequestReorderedList),
+          deleted: S.optional(__S(19, __c2, 3)),
+          modified: S.optional(__S(0, __c0, 0)),
+          reordered: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/dashboard/{pk}/chart_customizations", code: 200 }),
         ),
@@ -26117,10 +21583,10 @@ function __c81(j: number): any {
           mark_updated: S.optional(S.Boolean.pipe(T.Query())),
           color_namespace: S.optional(S.NullOr(S.String)),
           color_scheme: S.optional(S.NullOr(S.String)),
-          color_scheme_domain: S.optional(PutDashboardColorsRequestColorSchemeDomainList),
+          color_scheme_domain: S.optional(__S(19, __c2, 3)),
           label_colors: S.optional(S.Unknown),
           map_label_colors: S.optional(S.Unknown),
-          shared_label_colors: S.optional(PutDashboardColorsRequestSharedLabelColorsList),
+          shared_label_colors: S.optional(__S(19, __c2, 3)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/dashboard/{pk}/colors", code: 200 })),
       ).annotate({
         identifier: "PutDashboardColorsRequest",
@@ -26129,7 +21595,7 @@ function __c81(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id_or_slug: S.String.pipe(T.Label()),
-          allowed_domains: PutDashboardEmbeddedRequestAllowedDomainsList,
+          allowed_domains: __S(19, __c2, 3),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/dashboard/{id_or_slug}/embedded", code: 200 }),
         ),
@@ -26140,9 +21606,9 @@ function __c81(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pk: S.Number.pipe(T.Label()),
-          deleted: S.optional(PutDashboardFiltersRequestDeletedList),
-          modified: S.optional(PutDashboardFiltersRequestModifiedList),
-          reordered: S.optional(PutDashboardFiltersRequestReorderedList),
+          deleted: S.optional(__S(19, __c2, 3)),
+          modified: S.optional(__S(0, __c0, 0)),
+          reordered: S.optional(__S(19, __c2, 3)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/dashboard/{pk}/filters", code: 200 })),
       ).annotate({
         identifier: "PutDashboardFiltersRequest",
@@ -26174,7 +21640,7 @@ function __c82(j: number): any {
           allow_file_upload: S.optional(S.Boolean),
           allow_run_async: S.optional(S.Boolean),
           cache_timeout: S.optional(S.NullOr(S.Number)),
-          configuration_method: S.optional(PutDatabaseRequestConfigurationMethod),
+          configuration_method: S.optional(S.String),
           database_name: S.optional(S.NullOr(S.String)),
           driver: S.optional(S.NullOr(S.String)),
           engine: S.optional(S.NullOr(S.String)),
@@ -26185,10 +21651,10 @@ function __c82(j: number): any {
           impersonate_user: S.optional(S.Boolean),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           masked_encrypted_extra: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(PutDatabaseRequestParametersMap),
+          parameters: S.optional(__S(50, __c6, 2)),
           server_cert: S.optional(S.NullOr(S.String)),
           sqlalchemy_uri: S.optional(S.String),
-          ssh_tunnel: S.optional(S.NullOr(DatabaseSSHTunnel)),
+          ssh_tunnel: S.optional(S.NullOr(__S(64, __c8, 0))),
           uuid: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/database/{pk}", code: 200 })),
       ).annotate({ identifier: "PutDatabaseRequest" });
@@ -26201,7 +21667,7 @@ function __c82(j: number): any {
           allow_file_upload: S.optional(S.Boolean),
           allow_run_async: S.optional(S.Boolean),
           cache_timeout: S.optional(S.NullOr(S.Number)),
-          configuration_method: S.optional(DatabaseRestApiPutOutputConfigurationMethod),
+          configuration_method: S.optional(S.String),
           database_name: S.optional(S.NullOr(S.String)),
           driver: S.optional(S.NullOr(S.String)),
           engine: S.optional(S.NullOr(S.String)),
@@ -26212,10 +21678,10 @@ function __c82(j: number): any {
           impersonate_user: S.optional(S.Boolean),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           masked_encrypted_extra: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(DatabaseRestApiPutOutputParametersMap),
+          parameters: S.optional(__S(50, __c6, 2)),
           server_cert: S.optional(S.NullOr(S.String)),
           sqlalchemy_uri: S.optional(S.String),
-          ssh_tunnel: S.optional(S.NullOr(DatabaseSSHTunnelOutput)),
+          ssh_tunnel: S.optional(S.NullOr(__S(66, __c8, 2))),
           uuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseRestApiPutOutput" });
@@ -26223,7 +21689,7 @@ function __c82(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(DatabaseRestApiPutOutput),
+          result: S.optional(__S(658, __c82, 2)),
         }),
       ).annotate({ identifier: "PutDatabaseResponse" });
     case 4:
@@ -26247,16 +21713,16 @@ function __c82(j: number): any {
         }),
       ).annotate({ identifier: "DatasetColumnsPut" });
     case 5:
-      return S.Array(DatasetColumnsPut);
+      return S.Array(__S(660, __c82, 4));
     case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => Folder));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(663, __c82, 7)));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          children: S.optional(S.NullOr(FolderChildrenList)),
+          children: S.optional(S.NullOr(__S(662, __c82, 6))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          type: S.optional(FolderType),
+          type: S.optional(S.String),
           uuid: S.String,
         }),
       ).annotate({ identifier: "Folder" });
@@ -26265,7 +21731,7 @@ function __c82(j: number): any {
 function __c83(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Folder);
+      return S.Array(__S(663, __c82, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -26276,7 +21742,7 @@ function __c83(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          currency: S.optional(S.NullOr(DatasetMetricCurrencyPut)),
+          currency: S.optional(S.NullOr(__S(665, __c83, 1))),
           d3format: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           expression: S.String,
@@ -26290,7 +21756,7 @@ function __c83(j: number): any {
         }),
       ).annotate({ identifier: "DatasetMetricsPut" });
     case 3:
-      return S.Array(DatasetMetricsPut);
+      return S.Array(__S(666, __c83, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -26299,21 +21765,21 @@ function __c83(j: number): any {
           always_filter_main_dttm: S.optional(S.Boolean),
           cache_timeout: S.optional(S.NullOr(S.Number)),
           catalog: S.optional(S.NullOr(S.String)),
-          columns: S.optional(PutDatasetRequestColumnsList),
+          columns: S.optional(__S(661, __c82, 5)),
           currency_code_column: S.optional(S.NullOr(S.String)),
           database_id: S.optional(S.Number),
           default_endpoint: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(PutDatasetRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.NullOr(S.String)),
           fetch_values_predicate: S.optional(S.NullOr(S.String)),
           filter_select_enabled: S.optional(S.NullOr(S.Boolean)),
-          folders: S.optional(PutDatasetRequestFoldersList),
+          folders: S.optional(__S(664, __c83, 0)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           is_sqllab_view: S.optional(S.NullOr(S.Boolean)),
           main_dttm_col: S.optional(S.NullOr(S.String)),
-          metrics: S.optional(PutDatasetRequestMetricsList),
+          metrics: S.optional(__S(667, __c83, 3)),
           normalize_columns: S.optional(S.NullOr(S.Boolean)),
           offset: S.optional(S.NullOr(S.Number)),
           schema: S.optional(S.NullOr(S.String)),
@@ -26329,21 +21795,21 @@ function __c83(j: number): any {
           always_filter_main_dttm: S.optional(S.Boolean),
           cache_timeout: S.optional(S.NullOr(S.Number)),
           catalog: S.optional(S.NullOr(S.String)),
-          columns: S.optional(DatasetRestApiPutColumnsList),
+          columns: S.optional(__S(661, __c82, 5)),
           currency_code_column: S.optional(S.NullOr(S.String)),
           database_id: S.optional(S.Number),
           default_endpoint: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(DatasetRestApiPutEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           external_url: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.NullOr(S.String)),
           fetch_values_predicate: S.optional(S.NullOr(S.String)),
           filter_select_enabled: S.optional(S.NullOr(S.Boolean)),
-          folders: S.optional(DatasetRestApiPutFoldersList),
+          folders: S.optional(__S(664, __c83, 0)),
           is_managed_externally: S.optional(S.NullOr(S.Boolean)),
           is_sqllab_view: S.optional(S.NullOr(S.Boolean)),
           main_dttm_col: S.optional(S.NullOr(S.String)),
-          metrics: S.optional(DatasetRestApiPutMetricsList),
+          metrics: S.optional(__S(667, __c83, 3)),
           normalize_columns: S.optional(S.NullOr(S.Boolean)),
           offset: S.optional(S.NullOr(S.Number)),
           schema: S.optional(S.NullOr(S.String)),
@@ -26363,7 +21829,7 @@ function __c83(j: number): any {
           old_transaction_id: S.optional(S.NullOr(S.Number)),
           old_version: S.optional(S.NullOr(S.Number)),
           old_version_uuid: S.optional(S.NullOr(S.String)),
-          result: S.optional(DatasetRestApiPut),
+          result: S.optional(__S(669, __c83, 5)),
         }),
       ).annotate({ identifier: "PutDatasetResponse" });
     case 7:
@@ -26394,7 +21860,7 @@ function __c84(j: number): any {
           tab_id: S.optional(S.Number.pipe(T.Query())),
           chart_id: S.optional(S.Number),
           datasource_id: S.Number,
-          datasource_type: PutExploreFormDataRequestDatasourceType,
+          datasource_type: S.String,
           form_data: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/explore/form_data/{key}", code: 200 })),
       ).annotate({
@@ -26416,13 +21882,13 @@ function __c84(j: number): any {
           active: S.optional(S.Boolean),
           chart: S.optional(S.NullOr(S.Number)),
           context_markdown: S.optional(S.NullOr(S.String)),
-          creation_method: S.optional(S.NullOr(PutReportRequestCreationMethod)),
+          creation_method: S.optional(S.NullOr(S.String)),
           crontab: S.optional(S.String),
           custom_width: S.optional(S.NullOr(S.Number)),
           dashboard: S.optional(S.NullOr(S.Number)),
           database: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(PutReportRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           email_subject: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.Unknown),
           force_screenshot: S.optional(S.Boolean),
@@ -26430,18 +21896,18 @@ function __c84(j: number): any {
           include_cta: S.optional(S.NullOr(S.Boolean)),
           log_retention: S.optional(S.Number),
           name: S.optional(S.String),
-          recipients: S.optional(PutReportRequestRecipientsList),
-          report_format: S.optional(PutReportRequestReportFormat),
+          recipients: S.optional(__S(87, __c10, 7)),
+          report_format: S.optional(S.String),
           retry_max_attempts: S.optional(S.Number),
           retry_notify_owners: S.optional(S.Boolean),
           retry_notify_recipients: S.optional(S.Boolean),
           retry_on_failure: S.optional(S.Boolean),
           send_failed_reports: S.optional(S.Boolean),
           sql: S.optional(S.NullOr(S.String)),
-          timezone: S.optional(PutReportRequestTimezone),
-          type: S.optional(PutReportRequestType),
-          validator_config_json: S.optional(ValidatorConfigJSON),
-          validator_type: S.optional(S.NullOr(PutReportRequestValidatorType)),
+          timezone: S.optional(S.String),
+          type: S.optional(S.String),
+          validator_config_json: S.optional(__S(88, __c11, 0)),
+          validator_type: S.optional(S.NullOr(S.String)),
           working_timeout: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/report/{pk}", code: 200 })),
       ).annotate({ identifier: "PutReportRequest" });
@@ -26451,13 +21917,13 @@ function __c84(j: number): any {
           active: S.optional(S.Boolean),
           chart: S.optional(S.NullOr(S.Number)),
           context_markdown: S.optional(S.NullOr(S.String)),
-          creation_method: S.optional(S.NullOr(ReportScheduleRestApiPutCreationMethod)),
+          creation_method: S.optional(S.NullOr(S.String)),
           crontab: S.optional(S.String),
           custom_width: S.optional(S.NullOr(S.Number)),
           dashboard: S.optional(S.NullOr(S.Number)),
           database: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(ReportScheduleRestApiPutEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           email_subject: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.Unknown),
           force_screenshot: S.optional(S.Boolean),
@@ -26465,18 +21931,18 @@ function __c84(j: number): any {
           include_cta: S.optional(S.NullOr(S.Boolean)),
           log_retention: S.optional(S.Number),
           name: S.optional(S.String),
-          recipients: S.optional(ReportScheduleRestApiPutRecipientsList),
-          report_format: S.optional(ReportScheduleRestApiPutReportFormat),
+          recipients: S.optional(__S(87, __c10, 7)),
+          report_format: S.optional(S.String),
           retry_max_attempts: S.optional(S.Number),
           retry_notify_owners: S.optional(S.Boolean),
           retry_notify_recipients: S.optional(S.Boolean),
           retry_on_failure: S.optional(S.Boolean),
           send_failed_reports: S.optional(S.Boolean),
           sql: S.optional(S.NullOr(S.String)),
-          timezone: S.optional(ReportScheduleRestApiPutTimezone),
-          type: S.optional(ReportScheduleRestApiPutType),
-          validator_config_json: S.optional(ValidatorConfigJSON),
-          validator_type: S.optional(S.NullOr(ReportScheduleRestApiPutValidatorType)),
+          timezone: S.optional(S.String),
+          type: S.optional(S.String),
+          validator_config_json: S.optional(__S(88, __c11, 0)),
+          validator_type: S.optional(S.NullOr(S.String)),
           working_timeout: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ReportScheduleRestApiPut" });
@@ -26484,7 +21950,7 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(ReportScheduleRestApiPut),
+          result: S.optional(__S(676, __c84, 4)),
         }),
       ).annotate({ identifier: "PutReportResponse" });
     case 6:
@@ -26493,11 +21959,11 @@ function __c84(j: number): any {
           pk: S.Number.pipe(T.Label()),
           clause: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          filter_type: S.optional(PutRowlevelsecurityRequestFilterType),
+          filter_type: S.optional(S.String),
           group_key: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          subjects: S.optional(PutRowlevelsecurityRequestSubjectsList),
-          tables: S.optional(PutRowlevelsecurityRequestTablesList),
+          subjects: S.optional(__S(14, __c1, 6)),
+          tables: S.optional(__S(14, __c1, 6)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/rowlevelsecurity/{pk}", code: 200 })),
       ).annotate({
         identifier: "PutRowlevelsecurityRequest",
@@ -26507,11 +21973,11 @@ function __c84(j: number): any {
         S.Struct({
           clause: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          filter_type: S.optional(RLSRestApiPutFilterType),
+          filter_type: S.optional(S.String),
           group_key: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          subjects: S.optional(RLSRestApiPutSubjectsList),
-          tables: S.optional(RLSRestApiPutTablesList),
+          subjects: S.optional(__S(14, __c1, 6)),
+          tables: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "RLSRestApiPut" });
   }
@@ -26522,7 +21988,7 @@ function __c85(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          result: S.optional(RLSRestApiPut),
+          result: S.optional(__S(679, __c84, 7)),
         }),
       ).annotate({
         identifier: "PutRowlevelsecurityResponse",
@@ -26544,7 +22010,7 @@ function __c85(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(SavedQueryRestApiPost),
+          result: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "PutSavedQueryResponse" });
     case 3:
@@ -26568,7 +22034,7 @@ function __c85(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(SupersetPermissionViewMenuApiPost),
+          result: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({
         identifier: "PutSecurityPermissionsResourceResponse",
@@ -26585,7 +22051,7 @@ function __c85(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ViewMenuApiPost),
+          result: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({
         identifier: "PutSecurityResourceResponse",
@@ -26604,14 +22070,14 @@ function __c86(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ViewMenuApiPost),
+          result: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({ identifier: "PutSecurityRoleResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           role_id: S.Number.pipe(T.Label()),
-          group_ids: PutSecurityRoleGroupsRequestGroupIdsList,
+          group_ids: __S(14, __c1, 6),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/security/roles/{role_id}/groups", code: 200 }),
         ),
@@ -26621,13 +22087,13 @@ function __c86(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          group_ids: RoleGroupPutSchemaGroupIdsList,
+          group_ids: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "RoleGroupPutSchema" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(RoleGroupPutSchema),
+          result: S.optional(__S(691, __c86, 3)),
         }),
       ).annotate({
         identifier: "PutSecurityRoleGroupsResponse",
@@ -26636,7 +22102,7 @@ function __c86(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role_id: S.Number.pipe(T.Label()),
-          user_ids: PutSecurityRoleUsersRequestUserIdsList,
+          user_ids: __S(14, __c1, 6),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/security/roles/{role_id}/users", code: 200 }),
         ),
@@ -26646,13 +22112,13 @@ function __c86(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user_ids: RoleUserPutSchemaUserIdsList,
+          user_ids: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "RoleUserPutSchema" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(RoleUserPutSchema),
+          result: S.optional(__S(694, __c86, 6)),
         }),
       ).annotate({
         identifier: "PutSecurityRoleUsersResponse",
@@ -26673,14 +22139,14 @@ function __c87(j: number): any {
           pk: S.Number.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          objects_to_tag: S.optional(PutTagRequestObjectsToTagList),
+          objects_to_tag: S.optional(__S(0, __c0, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/tag/{pk}", code: 200 })),
       ).annotate({ identifier: "PutTagRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           pk: S.Number.pipe(T.Label()),
-          editors: S.optional(PutThemeRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           json_data: S.String,
           theme_name: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/theme/{pk}", code: 200 })),
@@ -26799,13 +22265,13 @@ function __c88(j: number): any {
           active: S.optional(S.Boolean),
           chart: S.optional(S.NullOr(S.Number)),
           context_markdown: S.optional(S.NullOr(S.String)),
-          creation_method: S.optional(SubscribeReportRequestCreationMethod),
+          creation_method: S.optional(S.String),
           crontab: S.String,
           custom_width: S.optional(S.NullOr(S.Number)),
           dashboard: S.optional(S.NullOr(S.Number)),
           database: S.optional(S.Number),
           description: S.optional(S.NullOr(S.String)),
-          editors: S.optional(SubscribeReportRequestEditorsList),
+          editors: S.optional(__S(14, __c1, 6)),
           email_subject: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.Unknown),
           force_screenshot: S.optional(S.Boolean),
@@ -26813,18 +22279,18 @@ function __c88(j: number): any {
           include_cta: S.optional(S.NullOr(S.Boolean)),
           log_retention: S.optional(S.Number),
           name: S.String,
-          recipients: S.optional(SubscribeReportRequestRecipientsList),
-          report_format: S.optional(SubscribeReportRequestReportFormat),
+          recipients: S.optional(__S(87, __c10, 7)),
+          report_format: S.optional(S.String),
           retry_max_attempts: S.optional(S.Number),
           retry_notify_owners: S.optional(S.Boolean),
           retry_notify_recipients: S.optional(S.Boolean),
           retry_on_failure: S.optional(S.Boolean),
           send_failed_reports: S.optional(S.Boolean),
           sql: S.optional(S.String),
-          timezone: S.optional(SubscribeReportRequestTimezone),
-          type: SubscribeReportRequestType,
-          validator_config_json: S.optional(ValidatorConfigJSON),
-          validator_type: S.optional(SubscribeReportRequestValidatorType),
+          timezone: S.optional(S.String),
+          type: S.String,
+          validator_config_json: S.optional(__S(88, __c11, 0)),
+          validator_type: S.optional(S.String),
           working_timeout: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/report/subscribe", code: 200 })),
       ).annotate({ identifier: "SubscribeReportRequest" });
@@ -26845,17 +22311,17 @@ function __c89(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          configuration_method: S.optional(TestDatabaseConnectionRequestConfigurationMethod),
+          configuration_method: S.optional(S.String),
           database_name: S.optional(S.NullOr(S.String)),
           driver: S.optional(S.NullOr(S.String)),
           engine: S.optional(S.NullOr(S.String)),
           extra: S.optional(S.String),
           impersonate_user: S.optional(S.Boolean),
           masked_encrypted_extra: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(TestDatabaseConnectionRequestParametersMap),
+          parameters: S.optional(__S(50, __c6, 2)),
           server_cert: S.optional(S.NullOr(S.String)),
           sqlalchemy_uri: S.optional(S.String),
-          ssh_tunnel: S.optional(S.NullOr(DatabaseSSHTunnel)),
+          ssh_tunnel: S.optional(S.NullOr(__S(64, __c8, 0))),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/database/test_connection/", code: 200 })),
       ).annotate({
         identifier: "TestDatabaseConnectionRequest",
@@ -26865,7 +22331,7 @@ function __c89(j: number): any {
         S.Struct({
           object_type: S.Number.pipe(T.Label()),
           object_id: S.Number.pipe(T.Label()),
-          tags: S.optional(UpdateTagRequestTagsList),
+          tags: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/tag/{object_type}/{object_id}/", code: 200 }),
         ),
@@ -26874,10 +22340,10 @@ function __c89(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pk: S.Number.pipe(T.Label()),
-          already_exists: S.optional(UploadDatabaseRequestAlreadyExists),
+          already_exists: S.optional(S.String),
           column_data_types: S.optional(S.String),
-          column_dates: S.optional(UploadDatabaseRequestColumnDatesList),
-          columns_read: S.optional(UploadDatabaseRequestColumnsReadList),
+          column_dates: S.optional(__S(19, __c2, 3)),
+          columns_read: S.optional(__S(19, __c2, 3)),
           dataframe_index: S.optional(S.Boolean),
           day_first: S.optional(S.Boolean),
           decimal_character: S.optional(S.String),
@@ -26886,7 +22352,7 @@ function __c89(j: number): any {
           header_row: S.optional(S.Number),
           index_column: S.optional(S.String),
           index_label: S.optional(S.String),
-          null_values: S.optional(UploadDatabaseRequestNullValuesList),
+          null_values: S.optional(__S(19, __c2, 3)),
           rows_to_read: S.optional(S.NullOr(S.Number)),
           schema: S.optional(S.String),
           sheet_name: S.optional(S.String),
@@ -26894,7 +22360,7 @@ function __c89(j: number): any {
           skip_initial_space: S.optional(S.Boolean),
           skip_rows: S.optional(S.Number),
           table_name: S.String,
-          type: UploadDatabaseRequestType,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -26910,7 +22376,7 @@ function __c89(j: number): any {
           delimiter: S.optional(S.String),
           file: S.String,
           header_row: S.optional(S.Number),
-          type: UploadDatabaseMetadataRequestType,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -26925,16 +22391,16 @@ function __c89(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          column_names: S.optional(UploadFileMetadataItemColumnNamesList),
+          column_names: S.optional(__S(19, __c2, 3)),
           sheet_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "UploadFileMetadataItem" });
     case 6:
-      return S.Array(UploadFileMetadataItem);
+      return S.Array(__S(717, __c89, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(UploadFileMetadataItemsList),
+          items: S.optional(__S(718, __c89, 6)),
         }),
       ).annotate({ identifier: "UploadFileMetadata" });
   }
@@ -26944,7 +22410,7 @@ function __c90(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(UploadFileMetadata),
+          result: S.optional(__S(719, __c89, 7)),
         }),
       ).annotate({
         identifier: "UploadDatabaseMetadataResponse",
@@ -26967,8 +22433,8 @@ function __c90(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          catalog: S.optional(ValidateDatabaseParametersRequestCatalogMap),
-          configuration_method: ValidateDatabaseParametersRequestConfigurationMethod,
+          catalog: S.optional(__S(20, __c2, 4)),
+          configuration_method: S.String,
           database_name: S.optional(S.NullOr(S.String)),
           driver: S.optional(S.NullOr(S.String)),
           engine: S.String,
@@ -26976,9 +22442,9 @@ function __c90(j: number): any {
           id: S.optional(S.NullOr(S.Number)),
           impersonate_user: S.optional(S.Boolean),
           masked_encrypted_extra: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(ValidateDatabaseParametersRequestParametersMap),
+          parameters: S.optional(__S(20, __c2, 4)),
           server_cert: S.optional(S.NullOr(S.String)),
-          ssh_tunnel: S.optional(S.NullOr(DatabaseSSHTunnelValidation)),
+          ssh_tunnel: S.optional(S.NullOr(__S(721, __c90, 1))),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/database/validate_parameters/", code: 200 }),
         ),
@@ -27007,11 +22473,11 @@ function __c90(j: number): any {
         }),
       ).annotate({ identifier: "ValidateSQLResponse" });
     case 5:
-      return S.Array(ValidateSQLResponse);
+      return S.Array(__S(724, __c90, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(ValidateDatabaseSqlResponseResultList),
+          result: S.optional(__S(725, __c90, 5)),
         }),
       ).annotate({
         identifier: "ValidateDatabaseSqlResponse",
@@ -27021,9 +22487,9 @@ function __c90(j: number): any {
         S.Struct({
           datasource_type: S.String.pipe(T.Label()),
           datasource_id: S.Number.pipe(T.Label()),
-          clause: S.optional(ValidateDatasourceExpressionRequestClause),
+          clause: S.optional(S.String),
           expression: S.String,
-          expression_type: S.optional(ValidateDatasourceExpressionRequestExpressionType),
+          expression_type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -27035,4 +22501,9 @@ function __c90(j: number): any {
         identifier: "ValidateDatasourceExpressionRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

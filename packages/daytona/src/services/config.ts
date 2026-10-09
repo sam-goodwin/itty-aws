@@ -7,35 +7,26 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetConfigControllerConfigRequest {}
-const GetConfigControllerConfigRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetConfigControllerConfigRequest>;
-
 export interface PosthogConfig {
   /** PostHog API key */
   apiKey: string | Redacted.Redacted<string>;
   /** PostHog host URL */
   host: string;
 }
-const PosthogConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PosthogConfig>;
-
 /** Which identity provider the advertised issuer above belongs to. The dashboard needs this because provider-specific logout URLs are not discoverable from the issuer alone: ending an Auth0 session uses its proprietary /v2/logout, which does not exist on WorkOS AuthKit. Anything that branches on provider behaviour must read this rather than pattern-matching the issuer hostname. */
 export type OidcConfigProvider = "auth0" | "workos";
-const OidcConfigProvider = S.String;
-
 export interface CliOidcConfig {
   /** WorkOS issuer of the Daytona CLI application */
   issuer: string;
   /** WorkOS client ID of the Daytona CLI application */
   clientId: string;
 }
-const CliOidcConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CliOidcConfig>;
-
 export interface OidcConfig {
   /** OIDC issuer */
   issuer: string;
@@ -50,56 +41,32 @@ export interface OidcConfig {
   /** WorkOS application the Daytona CLI logs in through, configured apart from the dashboard's so CLI sessions can have their own lifetime. Present only when the provider is workos and a CLI application is configured; absent means the CLI uses the issuer and client ID above. */
   cli?: CliOidcConfig;
 }
-const OidcConfig = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<OidcConfig>;
-
 export interface SsoOidcConfig {
   /** OIDC issuer for org-SSO logins (Daytona Auth) */
   issuer: string;
   /** OIDC client ID for org-SSO logins */
   clientId: string;
 }
-const SsoOidcConfig = CliOidcConfig as any as S.Schema<SsoOidcConfig>;
-
 /** Feature flags forced on for this deployment regardless of PostHog targeting. Lets environments without PostHog (previews, local dev) enable flag-gated dashboard features. */
 export type DaytonaConfigurationForcedFeatureFlagsList = Array<string>;
-const DaytonaConfigurationForcedFeatureFlagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DaytonaConfigurationForcedFeatureFlagsList>;
-
 export interface Announcement {
   /** The announcement text */
   text: string;
   /** URL to learn more about the announcement */
   learnMoreUrl?: string;
 }
-const Announcement = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Announcement>;
-
 /** System announcements */
 export type DaytonaConfigurationAnnouncementsMap = { [key: string]: Announcement | undefined };
-const DaytonaConfigurationAnnouncementsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DaytonaConfigurationAnnouncementsMap>;
-
 /** SSH host public keys presented by the SSH Gateway, as OpenSSH public key lines (`<type> <base64>`). To build a known_hosts entry, prefix each with `sshGatewayHost` when `sshGatewayPort` is 22, or with `[sshGatewayHost]:sshGatewayPort` otherwise. */
 export type DaytonaConfigurationSshGatewayHostKeysList = Array<string>;
-const DaytonaConfigurationSshGatewayHostKeysList =
-  DaytonaConfigurationForcedFeatureFlagsList as any as S.Schema<DaytonaConfigurationSshGatewayHostKeysList>;
-
 /** SHA256 fingerprints of sshGatewayHostKeys, in the same order, in `ssh-keygen -lf` format. Compare against the fingerprint published at https://github.com/daytona/.github/blob/main/SECURITY.md#ssh-host-key-verification */
 export type DaytonaConfigurationSshGatewayHostKeyFingerprintsList = Array<string>;
-const DaytonaConfigurationSshGatewayHostKeyFingerprintsList =
-  DaytonaConfigurationForcedFeatureFlagsList as any as S.Schema<DaytonaConfigurationSshGatewayHostKeyFingerprintsList>;
-
 export interface RateLimitEntry {
   /** Rate limit TTL in seconds */
   ttl?: number;
   /** Rate limit max requests */
   limit?: number;
 }
-const RateLimitEntry = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RateLimitEntry>;
-
 export interface RateLimitConfig {
   /** Failed authentication rate limit */
   failedAuth?: RateLimitEntry;
@@ -112,8 +79,6 @@ export interface RateLimitConfig {
   /** Sandbox list rate limit */
   sandboxList?: RateLimitEntry;
 }
-const RateLimitConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RateLimitConfig>;
-
 export interface DaytonaConfiguration {
   /** Daytona version */
   version: string;
@@ -168,8 +133,6 @@ export interface DaytonaConfiguration {
   /** Rate limit configuration */
   rateLimit?: RateLimitConfig;
 }
-const DaytonaConfiguration = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DaytonaConfiguration>;
-
 export type GetConfigControllerConfigError = DaytonaOpError;
 /** Get config */
 export const getConfigControllerConfig: API.OperationMethod<
@@ -178,8 +141,8 @@ export const getConfigControllerConfig: API.OperationMethod<
   GetConfigControllerConfigError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigControllerConfigRequest,
-  output: DaytonaConfiguration,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConfigControllerConfigRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DaytonaConfiguration>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -214,9 +177,9 @@ function __c0(j: number): any {
           issuer: S.String,
           clientId: S.String,
           audience: S.String,
-          provider: OidcConfigProvider,
+          provider: S.String,
           authApiHostname: S.optional(S.String),
-          cli: S.optional(CliOidcConfig),
+          cli: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "OidcConfig" });
     case 4:
@@ -229,7 +192,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Announcement" });
     case 6:
-      return S.Record(S.String, Announcement);
+      return S.Record(S.String, __S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -244,11 +207,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          failedAuth: S.optional(RateLimitEntry),
-          authenticated: S.optional(RateLimitEntry),
-          sandboxCreate: S.optional(RateLimitEntry),
-          sandboxLifecycle: S.optional(RateLimitEntry),
-          sandboxList: S.optional(RateLimitEntry),
+          failedAuth: S.optional(__S(7, __c0, 7)),
+          authenticated: S.optional(__S(7, __c0, 7)),
+          sandboxCreate: S.optional(__S(7, __c0, 7)),
+          sandboxLifecycle: S.optional(__S(7, __c0, 7)),
+          sandboxList: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "RateLimitConfig" });
     case 1:
@@ -256,12 +219,12 @@ function __c1(j: number): any {
         S.Struct({
           version: S.String,
           buildSha: S.optional(S.String),
-          posthog: S.optional(PosthogConfig),
-          oidc: OidcConfig,
-          ssoOidc: S.optional(SsoOidcConfig),
-          forcedFeatureFlags: S.optional(DaytonaConfigurationForcedFeatureFlagsList),
+          posthog: S.optional(__S(1, __c0, 1)),
+          oidc: __S(3, __c0, 3),
+          ssoOidc: S.optional(__S(2, __c0, 2)),
+          forcedFeatureFlags: S.optional(__S(4, __c0, 4)),
           linkedAccountsEnabled: S.Boolean,
-          announcements: DaytonaConfigurationAnnouncementsMap,
+          announcements: __S(6, __c0, 6),
           pylonAppId: S.optional(S.String),
           proxyTemplateUrl: S.String,
           proxyToolboxUrl: S.String,
@@ -277,12 +240,15 @@ function __c1(j: number): any {
           sshGatewayPublicKey: S.optional(S.String),
           sshGatewayHost: S.optional(S.String),
           sshGatewayPort: S.optional(S.Number),
-          sshGatewayHostKeys: S.optional(DaytonaConfigurationSshGatewayHostKeysList),
-          sshGatewayHostKeyFingerprints: S.optional(
-            DaytonaConfigurationSshGatewayHostKeyFingerprintsList,
-          ),
-          rateLimit: S.optional(RateLimitConfig),
+          sshGatewayHostKeys: S.optional(__S(4, __c0, 4)),
+          sshGatewayHostKeyFingerprints: S.optional(__S(4, __c0, 4)),
+          rateLimit: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "DaytonaConfiguration" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

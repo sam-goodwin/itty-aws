@@ -6,64 +6,37 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateDeidServiceRequestTagsMap = { [key: string]: string | undefined };
-const CreateDeidServiceRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDeidServiceRequestTagsMap>;
-
 /** State of the public network access. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** Details of the HealthDataAIServices DeidService. */
 export interface DeidServicePropertiesInput {
   /** Gets or sets allow or disallow public network access to resource */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-const DeidServicePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeidServicePropertiesInput>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateDeidServiceRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const CreateDeidServiceRequestIdentity = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDeidServiceRequestIdentity>;
-
 export interface CreateDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -80,19 +53,10 @@ export interface CreateDeidServiceRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceRequestIdentity;
 }
-const CreateDeidServiceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateDeidServiceRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -108,13 +72,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type CreateDeidServiceResponseTagsMap = { [key: string]: string | undefined };
-const CreateDeidServiceResponseTagsMap =
-  CreateDeidServiceRequestTagsMap as any as S.Schema<CreateDeidServiceResponseTagsMap>;
-
 /** The status of the current operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -124,26 +83,15 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-const ProvisioningState = S.String;
-
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PrivateEndpoint>;
-
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-const PrivateEndpointServiceConnectionStatus = S.String;
-
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -153,19 +101,12 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
-const PrivateEndpointConnectionProvisioningState = S.String;
-
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -177,11 +118,6 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** The private endpoint connection resource. */
 export interface DeidServicePropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -195,19 +131,9 @@ export interface DeidServicePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const DeidServicePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeidServicePropertiesPrivateEndpointConnectionsItem>;
-
 /** List of private endpoint connections. */
 export type DeidServicePropertiesPrivateEndpointConnectionsList =
   Array<DeidServicePropertiesPrivateEndpointConnectionsItem>;
-const DeidServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeidServicePropertiesPrivateEndpointConnectionsList>;
-
 /** Details of the HealthDataAIServices DeidService. */
 export interface DeidServiceProperties {
   /** The status of the last operation. */
@@ -219,11 +145,6 @@ export interface DeidServiceProperties {
   /** Gets or sets allow or disallow public network access to resource */
   publicNetworkAccess?: PublicNetworkAccess;
 }
-const DeidServiceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeidServiceProperties>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -231,15 +152,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateDeidServiceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -249,11 +163,6 @@ export interface CreateDeidServiceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const CreateDeidServiceResponseIdentity = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateDeidServiceResponseIdentity>;
-
 export interface CreateDeidServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -272,11 +181,6 @@ export interface CreateDeidServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-const CreateDeidServiceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateDeidServiceResponse>;
-
 /** The private endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
 /** Properties of the private endpoint connection. */
@@ -286,11 +190,6 @@ export interface CreatePrivateEndpointConnectionRequestProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-const CreatePrivateEndpointConnectionRequestProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreatePrivateEndpointConnectionRequestProperties>;
-
 export interface CreatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -303,11 +202,6 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Properties of the private endpoint connection. */
   properties?: CreatePrivateEndpointConnectionRequestProperties;
 }
-const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
-
 /** The group ids for the private endpoint resource. */
 export type CreatePrivateEndpointConnectionResponsePropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -333,9 +227,6 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Properties of the private endpoint connection. */
   properties?: CreatePrivateEndpointConnectionResponseProperties;
 }
-const CreatePrivateEndpointConnectionResponse =
-  DeidServicePropertiesPrivateEndpointConnectionsItem as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
-
 export interface DeleteDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -344,15 +235,7 @@ export interface DeleteDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-const DeleteDeidServiceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteDeidServiceRequest>;
-
 export interface DeleteDeidServiceResponse {}
-const DeleteDeidServiceResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteDeidServiceResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -363,17 +246,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface GetDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -382,16 +255,8 @@ export interface GetDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-const GetDeidServiceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetDeidServiceRequest>;
-
 /** Resource tags. */
 export type GetDeidServiceResponseTagsMap = { [key: string]: string | undefined };
-const GetDeidServiceResponseTagsMap =
-  CreateDeidServiceRequestTagsMap as any as S.Schema<GetDeidServiceResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetDeidServiceResponseIdentity = CreateDeidServiceResponseIdentity;
 export interface GetDeidServiceResponse {
@@ -412,11 +277,6 @@ export interface GetDeidServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-const GetDeidServiceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetDeidServiceResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -427,11 +287,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 /** The group ids for the private endpoint resource. */
 export type GetPrivateEndpointConnectionResponsePropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -457,20 +312,12 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Properties of the private endpoint connection. */
   properties?: GetPrivateEndpointConnectionResponseProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  DeidServicePropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface ListDeidServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListDeidServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListDeidServiceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type DeidServiceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -494,15 +341,8 @@ export interface DeidService {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-const DeidService = GetDeidServiceResponse as any as S.Schema<DeidService>;
-
 /** The DeidService items on this page */
 export type DeidServiceListResultValueList = Array<DeidService>;
-const DeidServiceListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeidServiceListResultValueList>;
-
 /** The response of a DeidService list operation. */
 export interface DeidServiceListResult {
   /** The DeidService items on this page */
@@ -510,26 +350,11 @@ export interface DeidServiceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeidServiceListResult = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeidServiceListResult>;
-
 export interface ListDeidServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListDeidServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListDeidServiceBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -541,16 +366,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -564,26 +383,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListPrivateEndpointConnectionByDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -592,11 +399,6 @@ export interface ListPrivateEndpointConnectionByDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-const ListPrivateEndpointConnectionByDeidServiceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListPrivateEndpointConnectionByDeidServiceRequest>;
-
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionResourcePropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -626,9 +428,6 @@ export interface PrivateEndpointConnectionResource {
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionResourceListResultValueList =
   Array<PrivateEndpointConnectionResource>;
-const PrivateEndpointConnectionResourceListResultValueList =
-  DeidServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionResourceListResultValueList>;
-
 /** The response of a PrivateEndpointConnectionResource list operation. */
 export interface PrivateEndpointConnectionResourceListResult {
   /** The PrivateEndpointConnectionResource items on this page */
@@ -636,11 +435,6 @@ export interface PrivateEndpointConnectionResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateEndpointConnectionResourceListResult = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionResourceListResult>;
-
 export interface ListPrivateLinkByDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -649,21 +443,10 @@ export interface ListPrivateLinkByDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-const ListPrivateLinkByDeidServiceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListPrivateLinkByDeidServiceRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -673,11 +456,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** Private Links for DeidService resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -691,15 +469,8 @@ export interface PrivateLinkResource {
   /** Properties of a private link resource. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<PrivateLinkResource>;
-
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** The response of a PrivateLinkResource list operation. */
 export interface PrivateLinkResourceListResult {
   /** The PrivateLinkResource items on this page */
@@ -707,24 +478,14 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 /** Resource tags. */
 export type UpdateDeidServiceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateDeidServiceRequestTagsMap =
-  CreateDeidServiceRequestTagsMap as any as S.Schema<UpdateDeidServiceRequestTagsMap>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityUpdateInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityUpdateInputType = S.String;
-
 /** User assigned identity properties */
 export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
   UserAssignedIdentityInput;
@@ -732,11 +493,6 @@ export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
 export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
-
 /** The template for adding optional properties. */
 export interface ManagedServiceIdentityUpdateInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -744,11 +500,6 @@ export interface ManagedServiceIdentityUpdateInput {
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
-const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ManagedServiceIdentityUpdateInput>;
-
 /** The template for adding optional properties. */
 export type DeidPropertiesUpdate = DeidServicePropertiesInput;
 export interface UpdateDeidServiceRequest {
@@ -765,11 +516,6 @@ export interface UpdateDeidServiceRequest {
   /** RP-specific properties */
   properties?: DeidServicePropertiesInput;
 }
-const UpdateDeidServiceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UpdateDeidServiceRequest>;
-
 /** Resource tags. */
 export type UpdateDeidServiceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -792,9 +538,6 @@ export interface UpdateDeidServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-const UpdateDeidServiceResponse =
-  CreateDeidServiceResponse as any as S.Schema<UpdateDeidServiceResponse>;
-
 export type CreateDeidServiceError = AzureOpError;
 /** Create a DeidService */
 export const CreateDeidService: API.OperationMethod<
@@ -803,8 +546,8 @@ export const CreateDeidService: API.OperationMethod<
   CreateDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeidServiceRequest,
-  output: CreateDeidServiceResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateDeidServiceRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -818,8 +561,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateEndpointConnectionRequest,
-  output: CreatePrivateEndpointConnectionResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -833,8 +576,8 @@ export const DeleteDeidService: API.OperationMethod<
   DeleteDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeidServiceRequest,
-  output: DeleteDeidServiceResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteDeidServiceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DeleteDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -848,8 +591,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -863,8 +606,8 @@ export const GetDeidService: API.OperationMethod<
   GetDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeidServiceRequest,
-  output: GetDeidServiceResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<GetDeidServiceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -878,8 +621,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -893,8 +636,8 @@ export const ListDeidServiceByResourceGroup: API.OperationMethod<
   ListDeidServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeidServiceByResourceGroupRequest,
-  output: DeidServiceListResult,
+  input: __S(26, __c3, 2) as any as S.Schema<ListDeidServiceByResourceGroupRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeidServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -908,8 +651,8 @@ export const ListDeidServiceBySubscription: API.OperationMethod<
   ListDeidServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeidServiceBySubscriptionRequest,
-  output: DeidServiceListResult,
+  input: __S(29, __c3, 5) as any as S.Schema<ListDeidServiceBySubscriptionRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeidServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -923,8 +666,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<ListOperationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -938,8 +681,8 @@ export const ListPrivateEndpointConnectionByDeidService: API.OperationMethod<
   ListPrivateEndpointConnectionByDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionByDeidServiceRequest,
-  output: PrivateEndpointConnectionResourceListResult,
+  input: __S(35, __c4, 3) as any as S.Schema<ListPrivateEndpointConnectionByDeidServiceRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -953,8 +696,8 @@ export const ListPrivateLinkByDeidService: API.OperationMethod<
   ListPrivateLinkByDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkByDeidServiceRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(37, __c4, 5) as any as S.Schema<ListPrivateLinkByDeidServiceRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -968,8 +711,8 @@ export const UpdateDeidService: API.OperationMethod<
   UpdateDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeidServiceRequest,
-  output: UpdateDeidServiceResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<UpdateDeidServiceRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdateDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -983,7 +726,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeidServicePropertiesInput",
@@ -993,12 +736,12 @@ function __c0(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2, __c0, 2)));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "CreateDeidServiceRequestIdentity",
@@ -1009,10 +752,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deidServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateDeidServiceRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(DeidServicePropertiesInput),
-          identity: S.optional(CreateDeidServiceRequestIdentity),
+          properties: S.optional(__S(1, __c0, 1)),
+          identity: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1026,10 +769,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1048,7 +791,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -1058,10 +801,10 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+          groupIds: S.optional(__S(7, __c0, 7)),
+          privateEndpoint: S.optional(__S(8, __c1, 0)),
+          privateLinkServiceConnectionState: __S(9, __c1, 1),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -1072,23 +815,21 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "DeidServicePropertiesPrivateEndpointConnectionsItem",
       });
     case 4:
-      return S.Array(DeidServicePropertiesPrivateEndpointConnectionsItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           serviceUrl: S.optional(S.String),
-          privateEndpointConnections: S.optional(
-            DeidServicePropertiesPrivateEndpointConnectionsList,
-          ),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          privateEndpointConnections: S.optional(__S(12, __c1, 4)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeidServiceProperties" });
     case 6:
@@ -1099,7 +840,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(14, __c1, 6)));
   }
 }
 function __c2(j: number): any {
@@ -1109,8 +850,8 @@ function __c2(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
         identifier: "CreateDeidServiceResponseIdentity",
@@ -1121,11 +862,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateDeidServiceResponseTagsMap),
+          systemData: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(DeidServiceProperties),
-          identity: S.optional(CreateDeidServiceResponseIdentity),
+          properties: S.optional(__S(13, __c1, 5)),
+          identity: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "CreateDeidServiceResponse",
@@ -1133,8 +874,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(UserAssignedIdentityInput),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          privateEndpoint: S.optional(__S(2, __c0, 2)),
+          privateLinkServiceConnectionState: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionRequestProperties",
@@ -1146,7 +887,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deidServiceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(CreatePrivateEndpointConnectionRequestProperties),
+          properties: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1220,11 +961,11 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetDeidServiceResponseTagsMap),
+          systemData: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(DeidServiceProperties),
-          identity: S.optional(CreateDeidServiceResponseIdentity),
+          properties: S.optional(__S(13, __c1, 5)),
+          identity: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "GetDeidServiceResponse" });
     case 1:
@@ -1262,11 +1003,11 @@ function __c3(j: number): any {
         identifier: "ListDeidServiceByResourceGroupRequest",
       });
     case 3:
-      return S.Array(DeidService);
+      return S.Array(__S(24, __c3, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: DeidServiceListResultValueList,
+          value: __S(27, __c3, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeidServiceListResult" });
@@ -1314,17 +1055,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(31, __c3, 7)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(33, __c4, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1348,7 +1089,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateEndpointConnectionResourceListResultValueList,
+          value: __S(12, __c1, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1375,8 +1116,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(7, __c0, 7)),
+          requiredZoneNames: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -1387,8 +1128,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
   }
@@ -1396,25 +1137,23 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateLinkResourceListResultValueList,
+          value: __S(40, __c5, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(2, __c0, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedServiceIdentityUpdateInputType),
-          userAssignedIdentities: S.optional(
-            ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap,
-          ),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
         identifier: "ManagedServiceIdentityUpdateInput",
@@ -1425,9 +1164,9 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deidServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateDeidServiceRequestTagsMap),
-          identity: S.optional(ManagedServiceIdentityUpdateInput),
-          properties: S.optional(DeidServicePropertiesInput),
+          tags: S.optional(__S(0, __c0, 0)),
+          identity: S.optional(__S(43, __c5, 3)),
+          properties: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1438,4 +1177,9 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "UpdateDeidServiceRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

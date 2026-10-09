@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://hawksnest.amazonaws.com/doc/2019-11-15");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "FraudDetector",
@@ -127,60 +129,34 @@ export interface VariableEntry {
   description?: string;
   variableType?: string;
 }
-const VariableEntry = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<VariableEntry>;
 export type VariableEntryList = VariableEntry[];
-const VariableEntryList = /*@__PURE__*/ __L.at(__c0, 1);
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface BatchCreateVariableRequest {
   variableEntries: VariableEntry[];
   tags?: Tag[];
 }
-const BatchCreateVariableRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BatchCreateVariableRequest>;
 export type Integer2 = number;
 export interface BatchCreateVariableError_ {
   name?: string;
   code?: number;
   message?: string;
 }
-const BatchCreateVariableError_ = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BatchCreateVariableError_>;
 export type BatchCreateVariableErrorList = BatchCreateVariableError_[];
-const BatchCreateVariableErrorList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface BatchCreateVariableResult {
   errors?: BatchCreateVariableError_[];
 }
-const BatchCreateVariableResult = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchCreateVariableResult>;
 export type NameList = string[];
-const NameList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchGetVariableRequest {
   names: string[];
 }
-const BatchGetVariableRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchGetVariableRequest>;
 export type DataType = "STRING" | "INTEGER" | "FLOAT" | "BOOLEAN" | "DATETIME" | (string & {});
-const DataType = S.String;
-
 export type DataSource = "EVENT" | "MODEL_SCORE" | "EXTERNAL_MODEL_SCORE" | (string & {});
-const DataSource = S.String;
-
 export type FraudDetectorArn = string;
 export interface Variable {
   name?: string;
@@ -193,51 +169,26 @@ export interface Variable {
   createdTime?: string;
   arn?: string;
 }
-const Variable = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Variable>;
 export type VariableList = Variable[];
-const VariableList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchGetVariableError_ {
   name?: string;
   code?: number;
   message?: string;
 }
-const BatchGetVariableError_ = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BatchGetVariableError_>;
 export type BatchGetVariableErrorList = BatchGetVariableError_[];
-const BatchGetVariableErrorList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface BatchGetVariableResult {
   variables?: Variable[];
   errors?: BatchGetVariableError_[];
 }
-const BatchGetVariableResult = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BatchGetVariableResult>;
 export type Identifier = string;
 export interface CancelBatchImportJobRequest {
   jobId: string;
 }
-const CancelBatchImportJobRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CancelBatchImportJobRequest>;
 export interface CancelBatchImportJobResult {}
-const CancelBatchImportJobResult = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CancelBatchImportJobResult>;
 export interface CancelBatchPredictionJobRequest {
   jobId: string;
 }
-const CancelBatchPredictionJobRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CancelBatchPredictionJobRequest>;
 export interface CancelBatchPredictionJobResult {}
-const CancelBatchPredictionJobResult =
-  CancelBatchImportJobResult as any as S.Schema<CancelBatchPredictionJobResult>;
 export type S3BucketLocation = string;
 export type IamRoleArn = string;
 export interface CreateBatchImportJobRequest {
@@ -248,13 +199,7 @@ export interface CreateBatchImportJobRequest {
   iamRoleArn: string;
   tags?: Tag[];
 }
-const CreateBatchImportJobRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateBatchImportJobRequest>;
 export interface CreateBatchImportJobResult {}
-const CreateBatchImportJobResult =
-  CancelBatchImportJobResult as any as S.Schema<CreateBatchImportJobResult>;
 export type WholeNumberVersionString = string;
 export interface CreateBatchPredictionJobRequest {
   jobId: string;
@@ -266,32 +211,21 @@ export interface CreateBatchPredictionJobRequest {
   iamRoleArn: string;
   tags?: Tag[];
 }
-const CreateBatchPredictionJobRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateBatchPredictionJobRequest>;
 export interface CreateBatchPredictionJobResult {}
-const CreateBatchPredictionJobResult =
-  CancelBatchImportJobResult as any as S.Schema<CreateBatchPredictionJobResult>;
 export type Description = string;
 export type ListOfStrings = string[];
-const ListOfStrings = NameList as any as S.Schema<ListOfStrings>;
 export interface Rule {
   detectorId: string;
   ruleId: string;
   ruleVersion: string;
 }
-const Rule = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Rule>;
 export type RuleList = Rule[];
-const RuleList = /*@__PURE__*/ __L.at(__c2, 5);
 export type ModelIdentifier = string;
 export type ModelTypeEnum =
   | "ONLINE_FRAUD_INSIGHTS"
   | "TRANSACTION_FRAUD_INSIGHTS"
   | "ACCOUNT_TAKEOVER_INSIGHTS"
   | (string & {});
-const ModelTypeEnum = S.String;
-
 export type FloatVersionString = string;
 export interface ModelVersion {
   modelId: string;
@@ -299,12 +233,8 @@ export interface ModelVersion {
   modelVersionNumber: string;
   arn?: string;
 }
-const ModelVersion = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ModelVersion>;
 export type ListOfModelVersions = ModelVersion[];
-const ListOfModelVersions = /*@__PURE__*/ __L.at(__c2, 7);
 export type RuleExecutionMode = "ALL_MATCHED" | "FIRST_MATCHED" | (string & {});
-const RuleExecutionMode = S.String;
-
 export interface CreateDetectorVersionRequest {
   detectorId: string;
   description?: string;
@@ -314,26 +244,15 @@ export interface CreateDetectorVersionRequest {
   ruleExecutionMode?: RuleExecutionMode;
   tags?: Tag[];
 }
-const CreateDetectorVersionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateDetectorVersionRequest>;
 export type DetectorVersionStatus = "DRAFT" | "ACTIVE" | "INACTIVE" | (string & {});
-const DetectorVersionStatus = S.String;
-
 export interface CreateDetectorVersionResult {
   detectorId?: string;
   detectorVersionId?: string;
   status?: DetectorVersionStatus;
 }
-const CreateDetectorVersionResult = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateDetectorVersionResult>;
 export type NoDashIdentifier = string;
 export type Elements = string | redacted.Redacted<string>;
 export type ElementsList = (string | redacted.Redacted<string>)[];
-const ElementsList = /*@__PURE__*/ __L.at(__c3, 2);
 export type VariableType = string;
 export interface CreateListRequest {
   name: string;
@@ -342,9 +261,7 @@ export interface CreateListRequest {
   description?: string;
   tags?: Tag[];
 }
-const CreateListRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateListRequest>;
 export interface CreateListResult {}
-const CreateListResult = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateListResult>;
 export interface CreateModelRequest {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -352,44 +269,29 @@ export interface CreateModelRequest {
   eventTypeName: string;
   tags?: Tag[];
 }
-const CreateModelRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateModelRequest>;
 export interface CreateModelResult {}
-const CreateModelResult = CreateListResult as any as S.Schema<CreateModelResult>;
 export type TrainingDataSourceEnum = "EXTERNAL_EVENTS" | "INGESTED_EVENTS" | (string & {});
-const TrainingDataSourceEnum = S.String;
-
 export type LabelMapper = { [key: string]: string[] | undefined };
-const LabelMapper = /*@__PURE__*/ __L.at(__c3, 6);
 export type UnlabeledEventsTreatment = "IGNORE" | "FRAUD" | "LEGIT" | "AUTO" | (string & {});
-const UnlabeledEventsTreatment = S.String;
-
 export interface LabelSchema {
   labelMapper?: { [key: string]: string[] | undefined };
   unlabeledEventsTreatment?: UnlabeledEventsTreatment;
 }
-const LabelSchema = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<LabelSchema>;
 export interface TrainingDataSchema {
   modelVariables: string[];
   labelSchema?: LabelSchema;
 }
-const TrainingDataSchema = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TrainingDataSchema>;
 export interface ExternalEventsDetail {
   dataLocation: string;
   dataAccessRoleArn: string;
 }
-const ExternalEventsDetail = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ExternalEventsDetail>;
 export interface IngestedEventsTimeWindow {
   startTime: string;
   endTime: string;
 }
-const IngestedEventsTimeWindow = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IngestedEventsTimeWindow>;
 export interface IngestedEventsDetail {
   ingestedEventsTimeWindow: IngestedEventsTimeWindow;
 }
-const IngestedEventsDetail = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<IngestedEventsDetail>;
 export interface CreateModelVersionRequest {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -399,26 +301,15 @@ export interface CreateModelVersionRequest {
   ingestedEventsDetail?: IngestedEventsDetail;
   tags?: Tag[];
 }
-const CreateModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateModelVersionRequest>;
 export interface CreateModelVersionResult {
   modelId?: string;
   modelType?: ModelTypeEnum;
   modelVersionNumber?: string;
   status?: string;
 }
-const CreateModelVersionResult = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateModelVersionResult>;
 export type RuleExpression = string | redacted.Redacted<string>;
 export type Language = "DETECTORPL" | (string & {});
-const Language = S.String;
-
 export type NonEmptyListOfStrings = string[];
-const NonEmptyListOfStrings = NameList as any as S.Schema<NonEmptyListOfStrings>;
 export interface CreateRuleRequest {
   ruleId: string;
   detectorId: string;
@@ -428,11 +319,9 @@ export interface CreateRuleRequest {
   outcomes: string[];
   tags?: Tag[];
 }
-const CreateRuleRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CreateRuleRequest>;
 export interface CreateRuleResult {
   rule?: Rule;
 }
-const CreateRuleResult = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CreateRuleResult>;
 export interface CreateVariableRequest {
   name: string;
   dataType: DataType;
@@ -442,194 +331,101 @@ export interface CreateVariableRequest {
   variableType?: string;
   tags?: Tag[];
 }
-const CreateVariableRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateVariableRequest>;
 export interface CreateVariableResult {}
-const CreateVariableResult = CreateListResult as any as S.Schema<CreateVariableResult>;
 export interface DeleteBatchImportJobRequest {
   jobId: string;
 }
-const DeleteBatchImportJobRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteBatchImportJobRequest>;
 export interface DeleteBatchImportJobResult {}
-const DeleteBatchImportJobResult =
-  CancelBatchImportJobResult as any as S.Schema<DeleteBatchImportJobResult>;
 export interface DeleteBatchPredictionJobRequest {
   jobId: string;
 }
-const DeleteBatchPredictionJobRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteBatchPredictionJobRequest>;
 export interface DeleteBatchPredictionJobResult {}
-const DeleteBatchPredictionJobResult =
-  CancelBatchImportJobResult as any as S.Schema<DeleteBatchPredictionJobResult>;
 export interface DeleteDetectorRequest {
   detectorId: string;
 }
-const DeleteDetectorRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteDetectorRequest>;
 export interface DeleteDetectorResult {}
-const DeleteDetectorResult = CreateListResult as any as S.Schema<DeleteDetectorResult>;
 export interface DeleteDetectorVersionRequest {
   detectorId: string;
   detectorVersionId: string;
 }
-const DeleteDetectorVersionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteDetectorVersionRequest>;
 export interface DeleteDetectorVersionResult {}
-const DeleteDetectorVersionResult =
-  CancelBatchImportJobResult as any as S.Schema<DeleteDetectorVersionResult>;
 export interface DeleteEntityTypeRequest {
   name: string;
 }
-const DeleteEntityTypeRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteEntityTypeRequest>;
 export interface DeleteEntityTypeResult {}
-const DeleteEntityTypeResult = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DeleteEntityTypeResult>;
 export type DeleteAuditHistory = boolean;
 export interface DeleteEventRequest {
   eventId: string;
   eventTypeName: string;
   deleteAuditHistory?: boolean;
 }
-const DeleteEventRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DeleteEventRequest>;
 export interface DeleteEventResult {}
-const DeleteEventResult = CreateListResult as any as S.Schema<DeleteEventResult>;
 export interface DeleteEventsByEventTypeRequest {
   eventTypeName: string;
 }
-const DeleteEventsByEventTypeRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteEventsByEventTypeRequest>;
 export interface DeleteEventsByEventTypeResult {
   eventTypeName?: string;
   eventsDeletionStatus?: string;
 }
-const DeleteEventsByEventTypeResult = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteEventsByEventTypeResult>;
 export interface DeleteEventTypeRequest {
   name: string;
 }
-const DeleteEventTypeRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteEventTypeRequest>;
 export interface DeleteEventTypeResult {}
-const DeleteEventTypeResult = CreateListResult as any as S.Schema<DeleteEventTypeResult>;
 export type SageMakerEndpointIdentifier = string;
 export interface DeleteExternalModelRequest {
   modelEndpoint: string;
 }
-const DeleteExternalModelRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteExternalModelRequest>;
 export interface DeleteExternalModelResult {}
-const DeleteExternalModelResult =
-  CancelBatchImportJobResult as any as S.Schema<DeleteExternalModelResult>;
 export interface DeleteLabelRequest {
   name: string;
 }
-const DeleteLabelRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DeleteLabelRequest>;
 export interface DeleteLabelResult {}
-const DeleteLabelResult = CreateListResult as any as S.Schema<DeleteLabelResult>;
 export interface DeleteListRequest {
   name: string;
 }
-const DeleteListRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DeleteListRequest>;
 export interface DeleteListResult {}
-const DeleteListResult = CreateListResult as any as S.Schema<DeleteListResult>;
 export interface DeleteModelRequest {
   modelId: string;
   modelType: ModelTypeEnum;
 }
-const DeleteModelRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DeleteModelRequest>;
 export interface DeleteModelResult {}
-const DeleteModelResult = CreateListResult as any as S.Schema<DeleteModelResult>;
 export interface DeleteModelVersionRequest {
   modelId: string;
   modelType: ModelTypeEnum;
   modelVersionNumber: string;
 }
-const DeleteModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DeleteModelVersionRequest>;
 export interface DeleteModelVersionResult {}
-const DeleteModelVersionResult = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteModelVersionResult>;
 export interface DeleteOutcomeRequest {
   name: string;
 }
-const DeleteOutcomeRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<DeleteOutcomeRequest>;
 export interface DeleteOutcomeResult {}
-const DeleteOutcomeResult = CreateListResult as any as S.Schema<DeleteOutcomeResult>;
 export interface DeleteRuleRequest {
   rule: Rule;
 }
-const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResult {}
-const DeleteRuleResult = CreateListResult as any as S.Schema<DeleteRuleResult>;
 export interface DeleteVariableRequest {
   name: string;
 }
-const DeleteVariableRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteVariableRequest>;
 export interface DeleteVariableResult {}
-const DeleteVariableResult = CreateListResult as any as S.Schema<DeleteVariableResult>;
 export type DetectorVersionMaxResults = number;
 export interface DescribeDetectorRequest {
   detectorId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const DescribeDetectorRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DescribeDetectorRequest>;
 export interface DetectorVersionSummary {
   detectorVersionId?: string;
   status?: DetectorVersionStatus;
   description?: string;
   lastUpdatedTime?: string;
 }
-const DetectorVersionSummary = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DetectorVersionSummary>;
 export type DetectorVersionSummaryList = DetectorVersionSummary[];
-const DetectorVersionSummaryList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface DescribeDetectorResult {
   detectorId?: string;
   detectorVersionSummaries?: DetectorVersionSummary[];
   nextToken?: string;
   arn?: string;
 }
-const DescribeDetectorResult = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DescribeDetectorResult>;
 export type ModelsMaxPageSize = number;
 export interface DescribeModelVersionsRequest {
   modelId?: string;
@@ -638,21 +434,12 @@ export interface DescribeModelVersionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const DescribeModelVersionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DescribeModelVersionsRequest>;
 export interface FileValidationMessage {
   title?: string;
   content?: string;
   type?: string;
 }
-const FileValidationMessage = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<FileValidationMessage>;
 export type FileValidationMessageList = FileValidationMessage[];
-const FileValidationMessageList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface FieldValidationMessage {
   fieldName?: string;
   identifier?: string;
@@ -660,55 +447,36 @@ export interface FieldValidationMessage {
   content?: string;
   type?: string;
 }
-const FieldValidationMessage = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<FieldValidationMessage>;
 export type FieldValidationMessageList = FieldValidationMessage[];
-const FieldValidationMessageList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface DataValidationMetrics {
   fileLevelMessages?: FileValidationMessage[];
   fieldLevelMessages?: FieldValidationMessage[];
 }
-const DataValidationMetrics = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DataValidationMetrics>;
 export interface MetricDataPoint {
   fpr?: number;
   precision?: number;
   tpr?: number;
   threshold?: number;
 }
-const MetricDataPoint = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MetricDataPoint>;
 export type MetricDataPointsList = MetricDataPoint[];
-const MetricDataPointsList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface TrainingMetrics {
   auc?: number;
   metricDataPoints?: MetricDataPoint[];
 }
-const TrainingMetrics = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<TrainingMetrics>;
 export interface LogOddsMetric {
   variableName: string;
   variableType: string;
   variableImportance: number;
 }
-const LogOddsMetric = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<LogOddsMetric>;
 export type ListOfLogOddsMetrics = LogOddsMetric[];
-const ListOfLogOddsMetrics = /*@__PURE__*/ __L.at(__c9, 2);
 export interface VariableImportanceMetrics {
   logOddsMetrics?: LogOddsMetric[];
 }
-const VariableImportanceMetrics = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<VariableImportanceMetrics>;
 export interface TrainingResult {
   dataValidationMetrics?: DataValidationMetrics;
   trainingMetrics?: TrainingMetrics;
   variableImportanceMetrics?: VariableImportanceMetrics;
 }
-const TrainingResult = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<TrainingResult>;
 export interface OFIMetricDataPoint {
   fpr?: number;
   precision?: number;
@@ -716,25 +484,18 @@ export interface OFIMetricDataPoint {
   threshold?: number;
 }
 export type OFIMetricDataPointsList = OFIMetricDataPoint[];
-const OFIMetricDataPointsList = MetricDataPointsList as any as S.Schema<OFIMetricDataPointsList>;
 export interface UncertaintyRange {
   lowerBoundValue: number;
   upperBoundValue: number;
 }
-const UncertaintyRange = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<UncertaintyRange>;
 export interface OFIModelPerformance {
   auc?: number;
   uncertaintyRange?: UncertaintyRange;
 }
-const OFIModelPerformance = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<OFIModelPerformance>;
 export interface OFITrainingMetricsValue {
   metricDataPoints?: OFIMetricDataPoint[];
   modelPerformance?: OFIModelPerformance;
 }
-const OFITrainingMetricsValue = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<OFITrainingMetricsValue>;
 export interface TFIMetricDataPoint {
   fpr?: number;
   precision?: number;
@@ -750,58 +511,39 @@ export interface TFITrainingMetricsValue {
   metricDataPoints?: TFIMetricDataPoint[];
   modelPerformance?: TFIModelPerformance;
 }
-const TFITrainingMetricsValue = OFITrainingMetricsValue as any as S.Schema<TFITrainingMetricsValue>;
 export interface ATIMetricDataPoint {
   cr?: number;
   adr?: number;
   threshold?: number;
   atodr?: number;
 }
-const ATIMetricDataPoint = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ATIMetricDataPoint>;
 export type ATIMetricDataPointsList = ATIMetricDataPoint[];
-const ATIMetricDataPointsList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface ATIModelPerformance {
   asi?: number;
 }
-const ATIModelPerformance = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ATIModelPerformance>;
 export interface ATITrainingMetricsValue {
   metricDataPoints?: ATIMetricDataPoint[];
   modelPerformance?: ATIModelPerformance;
 }
-const ATITrainingMetricsValue = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ATITrainingMetricsValue>;
 export interface TrainingMetricsV2 {
   ofi?: OFITrainingMetricsValue;
   tfi?: TFITrainingMetricsValue;
   ati?: ATITrainingMetricsValue;
 }
-const TrainingMetricsV2 = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<TrainingMetricsV2>;
 export interface AggregatedLogOddsMetric {
   variableNames: string[];
   aggregatedVariablesImportance: number;
 }
-const AggregatedLogOddsMetric = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<AggregatedLogOddsMetric>;
 export type ListOfAggregatedLogOddsMetrics = AggregatedLogOddsMetric[];
-const ListOfAggregatedLogOddsMetrics = /*@__PURE__*/ __L.at(__c10, 6);
 export interface AggregatedVariablesImportanceMetrics {
   logOddsMetrics?: AggregatedLogOddsMetric[];
 }
-const AggregatedVariablesImportanceMetrics = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<AggregatedVariablesImportanceMetrics>;
 export interface TrainingResultV2 {
   dataValidationMetrics?: DataValidationMetrics;
   trainingMetricsV2?: TrainingMetricsV2;
   variableImportanceMetrics?: VariableImportanceMetrics;
   aggregatedVariablesImportanceMetrics?: AggregatedVariablesImportanceMetrics;
 }
-const TrainingResultV2 = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<TrainingResultV2>;
 export interface ModelVersionDetail {
   modelId?: string;
   modelType?: ModelTypeEnum;
@@ -817,27 +559,17 @@ export interface ModelVersionDetail {
   arn?: string;
   trainingResultV2?: TrainingResultV2;
 }
-const ModelVersionDetail = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ModelVersionDetail>;
 export type ModelVersionDetailList = ModelVersionDetail[];
-const ModelVersionDetailList = /*@__PURE__*/ __L.at(__c11, 2);
 export interface DescribeModelVersionsResult {
   modelVersionDetails?: ModelVersionDetail[];
   nextToken?: string;
 }
-const DescribeModelVersionsResult = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DescribeModelVersionsResult>;
 export type BatchImportsMaxPageSize = number;
 export interface GetBatchImportJobsRequest {
   jobId?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const GetBatchImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetBatchImportJobsRequest>;
 export type AsyncJobStatus =
   | "IN_PROGRESS_INITIALIZING"
   | "IN_PROGRESS"
@@ -846,8 +578,6 @@ export type AsyncJobStatus =
   | "COMPLETE"
   | "FAILED"
   | (string & {});
-const AsyncJobStatus = S.String;
-
 export interface BatchImport {
   jobId?: string;
   status?: AsyncJobStatus;
@@ -863,27 +593,17 @@ export interface BatchImport {
   failedRecordsCount?: number;
   totalRecordsCount?: number;
 }
-const BatchImport = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<BatchImport>;
 export type BatchImportList = BatchImport[];
-const BatchImportList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface GetBatchImportJobsResult {
   batchImports?: BatchImport[];
   nextToken?: string;
 }
-const GetBatchImportJobsResult = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetBatchImportJobsResult>;
 export type BatchPredictionsMaxPageSize = number;
 export interface GetBatchPredictionJobsRequest {
   jobId?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const GetBatchPredictionJobsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetBatchPredictionJobsRequest>;
 export interface BatchPrediction {
   jobId?: string;
   status?: AsyncJobStatus;
@@ -901,39 +621,24 @@ export interface BatchPrediction {
   processedRecordsCount?: number;
   totalRecordsCount?: number;
 }
-const BatchPrediction = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<BatchPrediction>;
 export type BatchPredictionList = BatchPrediction[];
-const BatchPredictionList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface GetBatchPredictionJobsResult {
   batchPredictions?: BatchPrediction[];
   nextToken?: string;
 }
-const GetBatchPredictionJobsResult = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetBatchPredictionJobsResult>;
 export interface GetDeleteEventsByEventTypeStatusRequest {
   eventTypeName: string;
 }
-const GetDeleteEventsByEventTypeStatusRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetDeleteEventsByEventTypeStatusRequest>;
 export interface GetDeleteEventsByEventTypeStatusResult {
   eventTypeName?: string;
   eventsDeletionStatus?: AsyncJobStatus;
 }
-const GetDeleteEventsByEventTypeStatusResult = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetDeleteEventsByEventTypeStatusResult>;
 export type DetectorsMaxResults = number;
 export interface GetDetectorsRequest {
   detectorId?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetDetectorsRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetDetectorsRequest>;
 export interface Detector {
   detectorId?: string;
   description?: string;
@@ -942,22 +647,15 @@ export interface Detector {
   createdTime?: string;
   arn?: string;
 }
-const Detector = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<Detector>;
 export type DetectorList = Detector[];
-const DetectorList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface GetDetectorsResult {
   detectors?: Detector[];
   nextToken?: string;
 }
-const GetDetectorsResult = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GetDetectorsResult>;
 export interface GetDetectorVersionRequest {
   detectorId: string;
   detectorVersionId: string;
 }
-const GetDetectorVersionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetDetectorVersionRequest>;
 export interface GetDetectorVersionResult {
   detectorId?: string;
   detectorVersionId?: string;
@@ -971,20 +669,12 @@ export interface GetDetectorVersionResult {
   ruleExecutionMode?: RuleExecutionMode;
   arn?: string;
 }
-const GetDetectorVersionResult = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetDetectorVersionResult>;
 export type EntityTypesMaxResults = number;
 export interface GetEntityTypesRequest {
   name?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetEntityTypesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetEntityTypesRequest>;
 export interface EntityType {
   name?: string;
   description?: string;
@@ -992,34 +682,24 @@ export interface EntityType {
   createdTime?: string;
   arn?: string;
 }
-const EntityType = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<EntityType>;
 export type EntityTypeList = EntityType[];
-const EntityTypeList = /*@__PURE__*/ __L.at(__c13, 6);
 export interface GetEntityTypesResult {
   entityTypes?: EntityType[];
   nextToken?: string;
 }
-const GetEntityTypesResult = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetEntityTypesResult>;
 export interface GetEventRequest {
   eventId: string;
   eventTypeName: string;
 }
-const GetEventRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<GetEventRequest>;
 export type AttributeKey = string;
 export type AttributeValue = string | redacted.Redacted<string>;
 export type EventAttributeMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-const EventAttributeMap = /*@__PURE__*/ __L.at(__c14, 1);
 export type EntityRestrictedString = string;
 export interface Entity {
   entityType: string;
   entityId: string;
 }
-const Entity = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Entity>;
 export type ListOfEntities = Entity[];
-const ListOfEntities = /*@__PURE__*/ __L.at(__c14, 3);
 export interface Event {
   eventId?: string;
   eventTypeName?: string;
@@ -1029,27 +709,19 @@ export interface Event {
   labelTimestamp?: string;
   entities?: Entity[];
 }
-const Event = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Event>;
 export interface GetEventResult {
   event?: Event;
 }
-const GetEventResult = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetEventResult>;
 export type UtcTimestampISO8601 = string;
 export type VariableName = string;
 export type VariableValue = string | redacted.Redacted<string>;
 export type EventVariableMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-const EventVariableMap = EventAttributeMap as any as S.Schema<EventVariableMap>;
 export type ContentType = string;
 export interface ModelEndpointDataBlob {
   byteBuffer?: Uint8Array;
   contentType?: string;
 }
-const ModelEndpointDataBlob = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ModelEndpointDataBlob>;
 export type ExternalModelEndpointDataBlobMap = { [key: string]: ModelEndpointDataBlob | undefined };
-const ExternalModelEndpointDataBlobMap = /*@__PURE__*/ __L.at(__c14, 7);
 export interface GetEventPredictionRequest {
   detectorId: string;
   detectorVersionId?: string;
@@ -1060,58 +732,33 @@ export interface GetEventPredictionRequest {
   eventVariables: { [key: string]: string | redacted.Redacted<string> | undefined };
   externalModelEndpointDataBlobs?: { [key: string]: ModelEndpointDataBlob | undefined };
 }
-const GetEventPredictionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetEventPredictionRequest>;
 export type ModelPredictionMap = { [key: string]: number | undefined };
-const ModelPredictionMap = /*@__PURE__*/ __L.at(__c15, 1);
 export interface ModelScores {
   modelVersion?: ModelVersion;
   scores?: { [key: string]: number | undefined };
 }
-const ModelScores = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ModelScores>;
 export type ListOfModelScores = ModelScores[];
-const ListOfModelScores = /*@__PURE__*/ __L.at(__c15, 3);
 export interface RuleResult {
   ruleId?: string;
   outcomes?: string[];
 }
-const RuleResult = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<RuleResult>;
 export type ListOfRuleResults = RuleResult[];
-const ListOfRuleResults = /*@__PURE__*/ __L.at(__c15, 5);
 export type ModelSource = "SAGEMAKER" | (string & {});
-const ModelSource = S.String;
-
 export interface ExternalModelSummary {
   modelEndpoint?: string;
   modelSource?: ModelSource;
 }
-const ExternalModelSummary = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ExternalModelSummary>;
 export type ExternalModelPredictionMap = { [key: string]: string | undefined };
-const ExternalModelPredictionMap = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ExternalModelOutputs {
   externalModel?: ExternalModelSummary;
   outputs?: { [key: string]: string | undefined };
 }
-const ExternalModelOutputs = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ExternalModelOutputs>;
 export type ListOfExternalModelOutputs = ExternalModelOutputs[];
-const ListOfExternalModelOutputs = /*@__PURE__*/ __L.at(__c16, 1);
 export interface GetEventPredictionResult {
   modelScores?: ModelScores[];
   ruleResults?: RuleResult[];
   externalModelOutputs?: ExternalModelOutputs[];
 }
-const GetEventPredictionResult = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetEventPredictionResult>;
 export interface GetEventPredictionMetadataRequest {
   eventId: string;
   eventTypeName: string;
@@ -1119,22 +766,13 @@ export interface GetEventPredictionMetadataRequest {
   detectorVersionId: string;
   predictionTimestamp: string;
 }
-const GetEventPredictionMetadataRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetEventPredictionMetadataRequest>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface EventVariableSummary {
   name?: string | redacted.Redacted<string>;
   value?: string | redacted.Redacted<string>;
   source?: string | redacted.Redacted<string>;
 }
-const EventVariableSummary = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<EventVariableSummary>;
 export type ListOfEventVariableSummaries = EventVariableSummary[];
-const ListOfEventVariableSummaries = /*@__PURE__*/ __L.at(__c16, 5);
 export interface EvaluatedRule {
   ruleId?: string;
   ruleVersion?: string;
@@ -1144,76 +782,44 @@ export interface EvaluatedRule {
   evaluated?: boolean;
   matched?: boolean;
 }
-const EvaluatedRule = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<EvaluatedRule>;
 export type EvaluatedRuleList = EvaluatedRule[];
-const EvaluatedRuleList = /*@__PURE__*/ __L.at(__c16, 7);
 export interface VariableImpactExplanation {
   eventVariableName?: string;
   relativeImpact?: string;
   logOddsImpact?: number;
 }
-const VariableImpactExplanation = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<VariableImpactExplanation>;
 export type ListOfVariableImpactExplanations = VariableImpactExplanation[];
-const ListOfVariableImpactExplanations = /*@__PURE__*/ __L.at(__c17, 1);
 export interface AggregatedVariablesImpactExplanation {
   eventVariableNames?: string[];
   relativeImpact?: string;
   logOddsImpact?: number;
 }
-const AggregatedVariablesImpactExplanation = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<AggregatedVariablesImpactExplanation>;
 export type ListOfAggregatedVariablesImpactExplanations = AggregatedVariablesImpactExplanation[];
-const ListOfAggregatedVariablesImpactExplanations = /*@__PURE__*/ __L.at(__c17, 3);
 export interface PredictionExplanations {
   variableImpactExplanations?: VariableImpactExplanation[];
   aggregatedVariablesImpactExplanations?: AggregatedVariablesImpactExplanation[];
 }
-const PredictionExplanations = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<PredictionExplanations>;
 export interface ModelVersionEvaluation {
   outputVariableName?: string;
   evaluationScore?: string;
   predictionExplanations?: PredictionExplanations;
 }
-const ModelVersionEvaluation = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ModelVersionEvaluation>;
 export type ListOfModelVersionEvaluations = ModelVersionEvaluation[];
-const ListOfModelVersionEvaluations = /*@__PURE__*/ __L.at(__c17, 6);
 export interface EvaluatedModelVersion {
   modelId?: string;
   modelVersion?: string;
   modelType?: string;
   evaluations?: ModelVersionEvaluation[];
 }
-const EvaluatedModelVersion = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<EvaluatedModelVersion>;
 export type ListOfEvaluatedModelVersions = EvaluatedModelVersion[];
-const ListOfEvaluatedModelVersions = /*@__PURE__*/ __L.at(__c18, 0);
 export type MapOfStrings = { [key: string]: string | undefined };
-const MapOfStrings = ExternalModelPredictionMap as any as S.Schema<MapOfStrings>;
 export interface EvaluatedExternalModel {
   modelEndpoint?: string;
   useEventVariables?: boolean;
   inputVariables?: { [key: string]: string | undefined };
   outputVariables?: { [key: string]: string | undefined };
 }
-const EvaluatedExternalModel = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<EvaluatedExternalModel>;
 export type ListOfEvaluatedExternalModels = EvaluatedExternalModel[];
-const ListOfEvaluatedExternalModels = /*@__PURE__*/ __L.at(__c18, 2);
 export interface GetEventPredictionMetadataResult {
   eventId?: string;
   eventTypeName?: string;
@@ -1231,23 +837,13 @@ export interface GetEventPredictionMetadataResult {
   evaluatedExternalModels?: EvaluatedExternalModel[];
   predictionTimestamp?: string;
 }
-const GetEventPredictionMetadataResult = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetEventPredictionMetadataResult>;
 export type EventTypesMaxResults = number;
 export interface GetEventTypesRequest {
   name?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetEventTypesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetEventTypesRequest>;
 export type EventIngestion = "ENABLED" | "DISABLED" | (string & {});
-const EventIngestion = S.String;
-
 export interface IngestedEventStatistics {
   numberOfEvents?: number;
   eventDataSizeInBytes?: number;
@@ -1255,14 +851,9 @@ export interface IngestedEventStatistics {
   mostRecentEvent?: string;
   lastUpdatedTime?: string;
 }
-const IngestedEventStatistics = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<IngestedEventStatistics>;
 export interface EventOrchestration {
   eventBridgeEnabled: boolean;
 }
-const EventOrchestration = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<EventOrchestration>;
 export interface EventType {
   name?: string;
   description?: string;
@@ -1276,27 +867,18 @@ export interface EventType {
   arn?: string;
   eventOrchestration?: EventOrchestration;
 }
-const EventType = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<EventType>;
 export type EventTypeList = EventType[];
-const EventTypeList = /*@__PURE__*/ __L.at(__c19, 0);
 export interface GetEventTypesResult {
   eventTypes?: EventType[];
   nextToken?: string;
 }
-const GetEventTypesResult = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GetEventTypesResult>;
 export type ExternalModelsMaxResults = number;
 export interface GetExternalModelsRequest {
   modelEndpoint?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetExternalModelsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetExternalModelsRequest>;
 export type ModelInputDataFormat = "TEXT_CSV" | "APPLICATION_JSON" | (string & {});
-const ModelInputDataFormat = S.String;
-
 export type UseEventVariables = boolean;
 export type ModelInputTemplate = string;
 export interface ModelInputConfiguration {
@@ -1306,29 +888,15 @@ export interface ModelInputConfiguration {
   jsonInputTemplate?: string;
   csvInputTemplate?: string;
 }
-const ModelInputConfiguration = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ModelInputConfiguration>;
 export type ModelOutputDataFormat = "TEXT_CSV" | "APPLICATION_JSONLINES" | (string & {});
-const ModelOutputDataFormat = S.String;
-
 export type JsonKeyToVariableMap = { [key: string]: string | undefined };
-const JsonKeyToVariableMap = ExternalModelPredictionMap as any as S.Schema<JsonKeyToVariableMap>;
 export type CsvIndexToVariableMap = { [key: string]: string | undefined };
-const CsvIndexToVariableMap = ExternalModelPredictionMap as any as S.Schema<CsvIndexToVariableMap>;
 export interface ModelOutputConfiguration {
   format: ModelOutputDataFormat;
   jsonKeyToVariableMap?: { [key: string]: string | undefined };
   csvIndexToVariableMap?: { [key: string]: string | undefined };
 }
-const ModelOutputConfiguration = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ModelOutputConfiguration>;
 export type ModelEndpointStatus = "ASSOCIATED" | "DISSOCIATED" | (string & {});
-const ModelEndpointStatus = S.String;
-
 export interface ExternalModel {
   modelEndpoint?: string;
   modelSource?: ModelSource;
@@ -1340,41 +908,25 @@ export interface ExternalModel {
   createdTime?: string;
   arn?: string;
 }
-const ExternalModel = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ExternalModel>;
 export type ExternalModelList = ExternalModel[];
-const ExternalModelList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface GetExternalModelsResult {
   externalModels?: ExternalModel[];
   nextToken?: string;
 }
-const GetExternalModelsResult = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetExternalModelsResult>;
 export interface GetKMSEncryptionKeyRequest {}
-const GetKMSEncryptionKeyRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<GetKMSEncryptionKeyRequest>;
 export type KmsEncryptionKeyArn = string;
 export interface KMSKey {
   kmsEncryptionKeyArn?: string;
 }
-const KMSKey = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<KMSKey>;
 export interface GetKMSEncryptionKeyResult {
   kmsKey?: KMSKey;
 }
-const GetKMSEncryptionKeyResult = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetKMSEncryptionKeyResult>;
 export type LabelsMaxResults = number;
 export interface GetLabelsRequest {
   name?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetLabelsRequest = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<GetLabelsRequest>;
 export interface Label {
   name?: string;
   description?: string;
@@ -1383,12 +935,10 @@ export interface Label {
   arn?: string;
 }
 export type LabelList = Label[];
-const LabelList = EntityTypeList as any as S.Schema<LabelList>;
 export interface GetLabelsResult {
   labels?: Label[];
   nextToken?: string;
 }
-const GetLabelsResult = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<GetLabelsResult>;
 export type NextToken = string;
 export type ListsElementsMaxResults = number;
 export interface GetListElementsRequest {
@@ -1396,28 +946,16 @@ export interface GetListElementsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const GetListElementsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetListElementsRequest>;
 export interface GetListElementsResult {
   elements?: (string | redacted.Redacted<string>)[];
   nextToken?: string;
 }
-const GetListElementsResult = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GetListElementsResult>;
 export type ListsMetadataMaxResults = number;
 export interface GetListsMetadataRequest {
   name?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetListsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetListsMetadataRequest>;
 export interface AllowDenyList {
   name: string;
   description?: string;
@@ -1426,24 +964,17 @@ export interface AllowDenyList {
   updatedTime?: string;
   arn?: string;
 }
-const AllowDenyList = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<AllowDenyList>;
 export type AllowDenyLists = AllowDenyList[];
-const AllowDenyLists = /*@__PURE__*/ __L.at(__c21, 1);
 export interface GetListsMetadataResult {
   lists?: AllowDenyList[];
   nextToken?: string;
 }
-const GetListsMetadataResult = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetListsMetadataResult>;
 export interface GetModelsRequest {
   modelId?: string;
   modelType?: ModelTypeEnum;
   nextToken?: string;
   maxResults?: number;
 }
-const GetModelsRequest = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<GetModelsRequest>;
 export interface Model {
   modelId?: string;
   modelType?: ModelTypeEnum;
@@ -1453,23 +984,16 @@ export interface Model {
   lastUpdatedTime?: string;
   arn?: string;
 }
-const Model = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<Model>;
 export type ModelList = Model[];
-const ModelList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface GetModelsResult {
   nextToken?: string;
   models?: Model[];
 }
-const GetModelsResult = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<GetModelsResult>;
 export interface GetModelVersionRequest {
   modelId: string;
   modelType: ModelTypeEnum;
   modelVersionNumber: string;
 }
-const GetModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetModelVersionRequest>;
 export interface GetModelVersionResult {
   modelId?: string;
   modelType?: ModelTypeEnum;
@@ -1481,17 +1005,12 @@ export interface GetModelVersionResult {
   status?: string;
   arn?: string;
 }
-const GetModelVersionResult = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetModelVersionResult>;
 export type OutcomesMaxResults = number;
 export interface GetOutcomesRequest {
   name?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetOutcomesRequest = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<GetOutcomesRequest>;
 export interface Outcome {
   name?: string;
   description?: string;
@@ -1500,12 +1019,10 @@ export interface Outcome {
   arn?: string;
 }
 export type OutcomeList = Outcome[];
-const OutcomeList = EntityTypeList as any as S.Schema<OutcomeList>;
 export interface GetOutcomesResult {
   outcomes?: Outcome[];
   nextToken?: string;
 }
-const GetOutcomesResult = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<GetOutcomesResult>;
 export type RulesMaxResults = number;
 export interface GetRulesRequest {
   ruleId?: string;
@@ -1514,7 +1031,6 @@ export interface GetRulesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const GetRulesRequest = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<GetRulesRequest>;
 export interface RuleDetail {
   ruleId?: string;
   description?: string;
@@ -1527,36 +1043,29 @@ export interface RuleDetail {
   createdTime?: string;
   arn?: string;
 }
-const RuleDetail = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<RuleDetail>;
 export type RuleDetailList = RuleDetail[];
-const RuleDetailList = /*@__PURE__*/ __L.at(__c22, 5);
 export interface GetRulesResult {
   ruleDetails?: RuleDetail[];
   nextToken?: string;
 }
-const GetRulesResult = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<GetRulesResult>;
 export type VariablesMaxResults = number;
 export interface GetVariablesRequest {
   name?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetVariablesRequest = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<GetVariablesRequest>;
 export interface GetVariablesResult {
   variables?: Variable[];
   nextToken?: string;
 }
-const GetVariablesResult = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<GetVariablesResult>;
 export type FilterString = string;
 export interface FilterCondition {
   value?: string;
 }
-const FilterCondition = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<FilterCondition>;
 export interface PredictionTimeRange {
   startTime: string;
   endTime: string;
 }
-const PredictionTimeRange = IngestedEventsTimeWindow as any as S.Schema<PredictionTimeRange>;
 export type EventPredictionsMaxResults = number;
 export interface ListEventPredictionsRequest {
   eventId?: FilterCondition;
@@ -1567,10 +1076,6 @@ export interface ListEventPredictionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEventPredictionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListEventPredictionsRequest>;
 export interface EventPredictionSummary {
   eventId?: string;
   eventTypeName?: string;
@@ -1579,58 +1084,34 @@ export interface EventPredictionSummary {
   detectorId?: string;
   detectorVersionId?: string;
 }
-const EventPredictionSummary = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<EventPredictionSummary>;
 export type ListOfEventPredictionSummaries = EventPredictionSummary[];
-const ListOfEventPredictionSummaries = /*@__PURE__*/ __L.at(__c23, 4);
 export interface ListEventPredictionsResult {
   eventPredictionSummaries?: EventPredictionSummary[];
   nextToken?: string;
 }
-const ListEventPredictionsResult = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListEventPredictionsResult>;
 export type TagsMaxResults = number;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   tags?: Tag[];
   nextToken?: string;
 }
-const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListTagsForResourceResult>;
 export interface PutDetectorRequest {
   detectorId: string;
   description?: string;
   eventTypeName: string;
   tags?: Tag[];
 }
-const PutDetectorRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<PutDetectorRequest>;
 export interface PutDetectorResult {}
-const PutDetectorResult = CreateListResult as any as S.Schema<PutDetectorResult>;
 export interface PutEntityTypeRequest {
   name: string;
   description?: string;
   tags?: Tag[];
 }
-const PutEntityTypeRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<PutEntityTypeRequest>;
 export interface PutEntityTypeResult {}
-const PutEntityTypeResult = CreateListResult as any as S.Schema<PutEntityTypeResult>;
 export interface PutEventTypeRequest {
   name: string;
   description?: string;
@@ -1641,9 +1122,7 @@ export interface PutEventTypeRequest {
   tags?: Tag[];
   eventOrchestration?: EventOrchestration;
 }
-const PutEventTypeRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<PutEventTypeRequest>;
 export interface PutEventTypeResult {}
-const PutEventTypeResult = CreateListResult as any as S.Schema<PutEventTypeResult>;
 export interface PutExternalModelRequest {
   modelEndpoint: string;
   modelSource: ModelSource;
@@ -1653,38 +1132,23 @@ export interface PutExternalModelRequest {
   modelEndpointStatus: ModelEndpointStatus;
   tags?: Tag[];
 }
-const PutExternalModelRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<PutExternalModelRequest>;
 export interface PutExternalModelResult {}
-const PutExternalModelResult = DeleteEntityTypeResult as any as S.Schema<PutExternalModelResult>;
 export interface PutKMSEncryptionKeyRequest {
   kmsEncryptionKeyArn: string;
 }
-const PutKMSEncryptionKeyRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<PutKMSEncryptionKeyRequest>;
 export interface PutKMSEncryptionKeyResult {}
-const PutKMSEncryptionKeyResult =
-  CancelBatchImportJobResult as any as S.Schema<PutKMSEncryptionKeyResult>;
 export interface PutLabelRequest {
   name: string;
   description?: string;
   tags?: Tag[];
 }
-const PutLabelRequest = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<PutLabelRequest>;
 export interface PutLabelResult {}
-const PutLabelResult = CreateListResult as any as S.Schema<PutLabelResult>;
 export interface PutOutcomeRequest {
   name: string;
   description?: string;
   tags?: Tag[];
 }
-const PutOutcomeRequest = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<PutOutcomeRequest>;
 export interface PutOutcomeResult {}
-const PutOutcomeResult = CreateListResult as any as S.Schema<PutOutcomeResult>;
 export interface SendEventRequest {
   eventId: string;
   eventTypeName: string;
@@ -1694,28 +1158,18 @@ export interface SendEventRequest {
   labelTimestamp?: string;
   entities: Entity[];
 }
-const SendEventRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<SendEventRequest>;
 export interface SendEventResult {}
-const SendEventResult = CreateListResult as any as S.Schema<SendEventResult>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResult {}
-const TagResourceResult = CreateListResult as any as S.Schema<TagResourceResult>;
 export type TagKeyList = string[];
-const TagKeyList = NameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
-const UntagResourceResult = CreateListResult as any as S.Schema<UntagResourceResult>;
 export interface UpdateDetectorVersionRequest {
   detectorId: string;
   detectorVersionId: string;
@@ -1725,52 +1179,27 @@ export interface UpdateDetectorVersionRequest {
   modelVersions?: ModelVersion[];
   ruleExecutionMode?: RuleExecutionMode;
 }
-const UpdateDetectorVersionRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<UpdateDetectorVersionRequest>;
 export interface UpdateDetectorVersionResult {}
-const UpdateDetectorVersionResult =
-  CancelBatchImportJobResult as any as S.Schema<UpdateDetectorVersionResult>;
 export interface UpdateDetectorVersionMetadataRequest {
   detectorId: string;
   detectorVersionId: string;
   description: string;
 }
-const UpdateDetectorVersionMetadataRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<UpdateDetectorVersionMetadataRequest>;
 export interface UpdateDetectorVersionMetadataResult {}
-const UpdateDetectorVersionMetadataResult =
-  CancelBatchImportJobResult as any as S.Schema<UpdateDetectorVersionMetadataResult>;
 export interface UpdateDetectorVersionStatusRequest {
   detectorId: string;
   detectorVersionId: string;
   status: DetectorVersionStatus;
 }
-const UpdateDetectorVersionStatusRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<UpdateDetectorVersionStatusRequest>;
 export interface UpdateDetectorVersionStatusResult {}
-const UpdateDetectorVersionStatusResult =
-  CancelBatchImportJobResult as any as S.Schema<UpdateDetectorVersionStatusResult>;
 export interface UpdateEventLabelRequest {
   eventId: string;
   eventTypeName: string;
   assignedLabel: string;
   labelTimestamp: string;
 }
-const UpdateEventLabelRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<UpdateEventLabelRequest>;
 export interface UpdateEventLabelResult {}
-const UpdateEventLabelResult = DeleteEntityTypeResult as any as S.Schema<UpdateEventLabelResult>;
 export type ListUpdateMode = "REPLACE" | "APPEND" | "REMOVE" | (string & {});
-const ListUpdateMode = S.String;
-
 export interface UpdateListRequest {
   name: string;
   elements?: (string | redacted.Redacted<string>)[];
@@ -1778,17 +1207,13 @@ export interface UpdateListRequest {
   updateMode?: ListUpdateMode;
   variableType?: string;
 }
-const UpdateListRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<UpdateListRequest>;
 export interface UpdateListResult {}
-const UpdateListResult = CreateListResult as any as S.Schema<UpdateListResult>;
 export interface UpdateModelRequest {
   modelId: string;
   modelType: ModelTypeEnum;
   description?: string;
 }
-const UpdateModelRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<UpdateModelRequest>;
 export interface UpdateModelResult {}
-const UpdateModelResult = CreateListResult as any as S.Schema<UpdateModelResult>;
 export interface UpdateModelVersionRequest {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -1797,45 +1222,25 @@ export interface UpdateModelVersionRequest {
   ingestedEventsDetail?: IngestedEventsDetail;
   tags?: Tag[];
 }
-const UpdateModelVersionRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<UpdateModelVersionRequest>;
 export interface UpdateModelVersionResult {
   modelId?: string;
   modelType?: ModelTypeEnum;
   modelVersionNumber?: string;
   status?: string;
 }
-const UpdateModelVersionResult =
-  CreateModelVersionResult as any as S.Schema<UpdateModelVersionResult>;
 export type ModelVersionStatus = "ACTIVE" | "INACTIVE" | "TRAINING_CANCELLED" | (string & {});
-const ModelVersionStatus = S.String;
-
 export interface UpdateModelVersionStatusRequest {
   modelId: string;
   modelType: ModelTypeEnum;
   modelVersionNumber: string;
   status: ModelVersionStatus;
 }
-const UpdateModelVersionStatusRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<UpdateModelVersionStatusRequest>;
 export interface UpdateModelVersionStatusResult {}
-const UpdateModelVersionStatusResult =
-  CancelBatchImportJobResult as any as S.Schema<UpdateModelVersionStatusResult>;
 export interface UpdateRuleMetadataRequest {
   rule: Rule;
   description: string;
 }
-const UpdateRuleMetadataRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<UpdateRuleMetadataRequest>;
 export interface UpdateRuleMetadataResult {}
-const UpdateRuleMetadataResult =
-  DeleteModelVersionResult as any as S.Schema<UpdateRuleMetadataResult>;
 export interface UpdateRuleVersionRequest {
   rule: Rule;
   description?: string;
@@ -1844,26 +1249,16 @@ export interface UpdateRuleVersionRequest {
   outcomes: string[];
   tags?: Tag[];
 }
-const UpdateRuleVersionRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<UpdateRuleVersionRequest>;
 export interface UpdateRuleVersionResult {
   rule?: Rule;
 }
-const UpdateRuleVersionResult = CreateRuleResult as any as S.Schema<UpdateRuleVersionResult>;
 export interface UpdateVariableRequest {
   name: string;
   defaultValue?: string;
   description?: string;
   variableType?: string;
 }
-const UpdateVariableRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<UpdateVariableRequest>;
 export interface UpdateVariableResult {}
-const UpdateVariableResult = CreateListResult as any as S.Schema<UpdateVariableResult>;
 export type BatchCreateVariableError =
   | AccessDeniedException
   | InternalServerException
@@ -1879,8 +1274,8 @@ export const batchCreateVariable: API.OperationMethod<
   BatchCreateVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateVariableRequest,
-  output: BatchCreateVariableResult,
+  input: __S(4, __c0, 4) as any as S.Schema<BatchCreateVariableRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<BatchCreateVariableResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1907,8 +1302,8 @@ export const batchGetVariable: API.OperationMethod<
   BatchGetVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetVariableRequest,
-  output: BatchGetVariableResult,
+  input: __S(9, __c1, 1) as any as S.Schema<BatchGetVariableRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<BatchGetVariableResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1936,8 +1331,8 @@ export const cancelBatchImportJob: API.OperationMethod<
   CancelBatchImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelBatchImportJobRequest,
-  output: CancelBatchImportJobResult,
+  input: __S(15, __c1, 7) as any as S.Schema<CancelBatchImportJobRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CancelBatchImportJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1966,8 +1361,8 @@ export const cancelBatchPredictionJob: API.OperationMethod<
   CancelBatchPredictionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelBatchPredictionJobRequest,
-  output: CancelBatchPredictionJobResult,
+  input: __S(17, __c2, 1) as any as S.Schema<CancelBatchPredictionJobRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CancelBatchPredictionJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1996,8 +1391,8 @@ export const createBatchImportJob: API.OperationMethod<
   CreateBatchImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBatchImportJobRequest,
-  output: CreateBatchImportJobResult,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateBatchImportJobRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateBatchImportJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2026,8 +1421,8 @@ export const createBatchPredictionJob: API.OperationMethod<
   CreateBatchPredictionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBatchPredictionJobRequest,
-  output: CreateBatchPredictionJobResult,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateBatchPredictionJobRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateBatchPredictionJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2056,8 +1451,8 @@ export const createDetectorVersion: API.OperationMethod<
   CreateDetectorVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDetectorVersionRequest,
-  output: CreateDetectorVersionResult,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateDetectorVersionRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CreateDetectorVersionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2088,8 +1483,8 @@ export const createList: API.OperationMethod<
   CreateListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateListRequest,
-  output: CreateListResult,
+  input: __S(27, __c3, 3) as any as S.Schema<CreateListRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<CreateListResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2116,8 +1511,8 @@ export const createModel: API.OperationMethod<
   CreateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateModelRequest,
-  output: CreateModelResult,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateModelRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<CreateModelResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2145,8 +1540,8 @@ export const createModelVersion: API.OperationMethod<
   CreateModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateModelVersionRequest,
-  output: CreateModelVersionResult,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateModelVersionRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<CreateModelVersionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2174,8 +1569,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleRequest,
-  output: CreateRuleResult,
+  input: __S(38, __c4, 6) as any as S.Schema<CreateRuleRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<CreateRuleResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2202,8 +1597,8 @@ export const createVariable: API.OperationMethod<
   CreateVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVariableRequest,
-  output: CreateVariableResult,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateVariableRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<CreateVariableResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2230,8 +1625,8 @@ export const deleteBatchImportJob: API.OperationMethod<
   DeleteBatchImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchImportJobRequest,
-  output: DeleteBatchImportJobResult,
+  input: __S(41, __c5, 1) as any as S.Schema<DeleteBatchImportJobRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteBatchImportJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2258,8 +1653,8 @@ export const deleteBatchPredictionJob: API.OperationMethod<
   DeleteBatchPredictionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchPredictionJobRequest,
-  output: DeleteBatchPredictionJobResult,
+  input: __S(42, __c5, 2) as any as S.Schema<DeleteBatchPredictionJobRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteBatchPredictionJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2289,8 +1684,8 @@ export const deleteDetector: API.OperationMethod<
   DeleteDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDetectorRequest,
-  output: DeleteDetectorResult,
+  input: __S(43, __c5, 3) as any as S.Schema<DeleteDetectorRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteDetectorResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2322,8 +1717,8 @@ export const deleteDetectorVersion: API.OperationMethod<
   DeleteDetectorVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDetectorVersionRequest,
-  output: DeleteDetectorVersionResult,
+  input: __S(44, __c5, 4) as any as S.Schema<DeleteDetectorVersionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDetectorVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2357,8 +1752,8 @@ export const deleteEntityType: API.OperationMethod<
   DeleteEntityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEntityTypeRequest,
-  output: DeleteEntityTypeResult,
+  input: __S(45, __c5, 5) as any as S.Schema<DeleteEntityTypeRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<DeleteEntityTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2389,8 +1784,8 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventRequest,
-  output: DeleteEventResult,
+  input: __S(47, __c5, 7) as any as S.Schema<DeleteEventRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteEventResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2419,8 +1814,8 @@ export const deleteEventsByEventType: API.OperationMethod<
   DeleteEventsByEventTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventsByEventTypeRequest,
-  output: DeleteEventsByEventTypeResult,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteEventsByEventTypeRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteEventsByEventTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2454,8 +1849,8 @@ export const deleteEventType: API.OperationMethod<
   DeleteEventTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventTypeRequest,
-  output: DeleteEventTypeResult,
+  input: __S(50, __c6, 2) as any as S.Schema<DeleteEventTypeRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteEventTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2486,8 +1881,8 @@ export const deleteExternalModel: API.OperationMethod<
   DeleteExternalModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExternalModelRequest,
-  output: DeleteExternalModelResult,
+  input: __S(51, __c6, 3) as any as S.Schema<DeleteExternalModelRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteExternalModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2521,8 +1916,8 @@ export const deleteLabel: API.OperationMethod<
   DeleteLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLabelRequest,
-  output: DeleteLabelResult,
+  input: __S(52, __c6, 4) as any as S.Schema<DeleteLabelRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteLabelResult>,
   errors: [ConflictException, InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2547,8 +1942,8 @@ export const deleteList: API.OperationMethod<
   DeleteListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteListRequest,
-  output: DeleteListResult,
+  input: __S(53, __c6, 5) as any as S.Schema<DeleteListRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteListResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2581,8 +1976,8 @@ export const deleteModel: API.OperationMethod<
   DeleteModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelRequest,
-  output: DeleteModelResult,
+  input: __S(54, __c6, 6) as any as S.Schema<DeleteModelRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2615,8 +2010,8 @@ export const deleteModelVersion: API.OperationMethod<
   DeleteModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelVersionRequest,
-  output: DeleteModelVersionResult,
+  input: __S(55, __c6, 7) as any as S.Schema<DeleteModelVersionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteModelVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2649,8 +2044,8 @@ export const deleteOutcome: API.OperationMethod<
   DeleteOutcomeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOutcomeRequest,
-  output: DeleteOutcomeResult,
+  input: __S(57, __c7, 1) as any as S.Schema<DeleteOutcomeRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteOutcomeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2681,8 +2076,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleRequest,
-  output: DeleteRuleResult,
+  input: __S(58, __c7, 2) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteRuleResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2717,8 +2112,8 @@ export const deleteVariable: API.OperationMethod<
   DeleteVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVariableRequest,
-  output: DeleteVariableResult,
+  input: __S(59, __c7, 3) as any as S.Schema<DeleteVariableRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteVariableResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2747,8 +2142,8 @@ export const describeDetector: API.OperationMethod<
   DescribeDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDetectorRequest,
-  output: DescribeDetectorResult,
+  input: __S(60, __c7, 4) as any as S.Schema<DescribeDetectorRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DescribeDetectorResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2778,8 +2173,8 @@ export const describeModelVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeModelVersionsRequest,
-  output: DescribeModelVersionsResult,
+  input: __S(64, __c8, 0) as any as S.Schema<DescribeModelVersionsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<DescribeModelVersionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2817,8 +2212,8 @@ export const getBatchImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBatchImportJobsRequest,
-  output: GetBatchImportJobsResult,
+  input: __S(92, __c11, 4) as any as S.Schema<GetBatchImportJobsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GetBatchImportJobsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2853,8 +2248,8 @@ export const getBatchPredictionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBatchPredictionJobsRequest,
-  output: GetBatchPredictionJobsResult,
+  input: __S(96, __c12, 0) as any as S.Schema<GetBatchPredictionJobsRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetBatchPredictionJobsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2888,8 +2283,8 @@ export const getDeleteEventsByEventTypeStatus: API.OperationMethod<
   GetDeleteEventsByEventTypeStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeleteEventsByEventTypeStatusRequest,
-  output: GetDeleteEventsByEventTypeStatusResult,
+  input: __S(100, __c12, 4) as any as S.Schema<GetDeleteEventsByEventTypeStatusRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<GetDeleteEventsByEventTypeStatusResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2924,8 +2319,8 @@ export const getDetectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetDetectorsRequest,
-  output: GetDetectorsResult,
+  input: __S(102, __c12, 6) as any as S.Schema<GetDetectorsRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetDetectorsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2959,8 +2354,8 @@ export const getDetectorVersion: API.OperationMethod<
   GetDetectorVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDetectorVersionRequest,
-  output: GetDetectorVersionResult,
+  input: __S(106, __c13, 2) as any as S.Schema<GetDetectorVersionRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<GetDetectorVersionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2995,8 +2390,8 @@ export const getEntityTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetEntityTypesRequest,
-  output: GetEntityTypesResult,
+  input: __S(108, __c13, 4) as any as S.Schema<GetEntityTypesRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetEntityTypesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3030,8 +2425,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventRequest,
-  output: GetEventResult,
+  input: __S(112, __c14, 0) as any as S.Schema<GetEventRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<GetEventResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3062,8 +2457,8 @@ export const getEventPrediction: API.OperationMethod<
   GetEventPredictionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventPredictionRequest,
-  output: GetEventPredictionResult,
+  input: __S(120, __c15, 0) as any as S.Schema<GetEventPredictionRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<GetEventPredictionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3094,8 +2489,8 @@ export const getEventPredictionMetadata: API.OperationMethod<
   GetEventPredictionMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventPredictionMetadataRequest,
-  output: GetEventPredictionMetadataResult,
+  input: __S(131, __c16, 3) as any as S.Schema<GetEventPredictionMetadataRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<GetEventPredictionMetadataResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3130,8 +2525,8 @@ export const getEventTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetEventTypesRequest,
-  output: GetEventTypesResult,
+  input: __S(148, __c18, 4) as any as S.Schema<GetEventTypesRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetEventTypesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3171,8 +2566,8 @@ export const getExternalModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetExternalModelsRequest,
-  output: GetExternalModelsResult,
+  input: __S(154, __c19, 2) as any as S.Schema<GetExternalModelsRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<GetExternalModelsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3205,8 +2600,8 @@ export const getKMSEncryptionKey: API.OperationMethod<
   GetKMSEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKMSEncryptionKeyRequest,
-  output: GetKMSEncryptionKeyResult,
+  input: __S(160, __c20, 0) as any as S.Schema<GetKMSEncryptionKeyRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<GetKMSEncryptionKeyResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3240,8 +2635,8 @@ export const getLabels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetLabelsRequest,
-  output: GetLabelsResult,
+  input: __S(163, __c20, 3) as any as S.Schema<GetLabelsRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<GetLabelsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3276,8 +2671,8 @@ export const getListElements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetListElementsRequest,
-  output: GetListElementsResult,
+  input: __S(165, __c20, 5) as any as S.Schema<GetListElementsRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<GetListElementsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3312,8 +2707,8 @@ export const getListsMetadata: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetListsMetadataRequest,
-  output: GetListsMetadataResult,
+  input: __S(167, __c20, 7) as any as S.Schema<GetListsMetadataRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<GetListsMetadataResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3355,8 +2750,8 @@ export const getModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetModelsRequest,
-  output: GetModelsResult,
+  input: __S(171, __c21, 3) as any as S.Schema<GetModelsRequest>,
+  output: __S(174, __c21, 6) as any as S.Schema<GetModelsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3390,8 +2785,8 @@ export const getModelVersion: API.OperationMethod<
   GetModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelVersionRequest,
-  output: GetModelVersionResult,
+  input: __S(175, __c21, 7) as any as S.Schema<GetModelVersionRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetModelVersionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3426,8 +2821,8 @@ export const getOutcomes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetOutcomesRequest,
-  output: GetOutcomesResult,
+  input: __S(177, __c22, 1) as any as S.Schema<GetOutcomesRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<GetOutcomesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3464,8 +2859,8 @@ export const getRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetRulesRequest,
-  output: GetRulesResult,
+  input: __S(179, __c22, 3) as any as S.Schema<GetRulesRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<GetRulesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3505,8 +2900,8 @@ export const getVariables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetVariablesRequest,
-  output: GetVariablesResult,
+  input: __S(183, __c22, 7) as any as S.Schema<GetVariablesRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<GetVariablesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3551,8 +2946,8 @@ export const listEventPredictions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEventPredictionsRequest,
-  output: ListEventPredictionsResult,
+  input: __S(186, __c23, 2) as any as S.Schema<ListEventPredictionsRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<ListEventPredictionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3587,8 +2982,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResult,
+  input: __S(190, __c23, 6) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<ListTagsForResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3621,8 +3016,8 @@ export const putDetector: API.OperationMethod<
   PutDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDetectorRequest,
-  output: PutDetectorResult,
+  input: __S(192, __c24, 0) as any as S.Schema<PutDetectorRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<PutDetectorResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3651,8 +3046,8 @@ export const putEntityType: API.OperationMethod<
   PutEntityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEntityTypeRequest,
-  output: PutEntityTypeResult,
+  input: __S(193, __c24, 1) as any as S.Schema<PutEntityTypeRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<PutEntityTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3681,8 +3076,8 @@ export const putEventType: API.OperationMethod<
   PutEventTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEventTypeRequest,
-  output: PutEventTypeResult,
+  input: __S(194, __c24, 2) as any as S.Schema<PutEventTypeRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<PutEventTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3711,8 +3106,8 @@ export const putExternalModel: API.OperationMethod<
   PutExternalModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutExternalModelRequest,
-  output: PutExternalModelResult,
+  input: __S(195, __c24, 3) as any as S.Schema<PutExternalModelRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<PutExternalModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3742,8 +3137,8 @@ export const putKMSEncryptionKey: API.OperationMethod<
   PutKMSEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutKMSEncryptionKeyRequest,
-  output: PutKMSEncryptionKeyResult,
+  input: __S(196, __c24, 4) as any as S.Schema<PutKMSEncryptionKeyRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PutKMSEncryptionKeyResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3773,8 +3168,8 @@ export const putLabel: API.OperationMethod<
   PutLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutLabelRequest,
-  output: PutLabelResult,
+  input: __S(197, __c24, 5) as any as S.Schema<PutLabelRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<PutLabelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3803,8 +3198,8 @@ export const putOutcome: API.OperationMethod<
   PutOutcomeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOutcomeRequest,
-  output: PutOutcomeResult,
+  input: __S(198, __c24, 6) as any as S.Schema<PutOutcomeRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<PutOutcomeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3834,8 +3229,8 @@ export const sendEvent: API.OperationMethod<
   SendEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendEventRequest,
-  output: SendEventResult,
+  input: __S(199, __c24, 7) as any as S.Schema<SendEventRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<SendEventResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3864,8 +3259,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResult,
+  input: __S(200, __c25, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<TagResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3892,8 +3287,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResult,
+  input: __S(201, __c25, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<UntagResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3922,8 +3317,8 @@ export const updateDetectorVersion: API.OperationMethod<
   UpdateDetectorVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDetectorVersionRequest,
-  output: UpdateDetectorVersionResult,
+  input: __S(202, __c25, 2) as any as S.Schema<UpdateDetectorVersionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateDetectorVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3954,8 +3349,8 @@ export const updateDetectorVersionMetadata: API.OperationMethod<
   UpdateDetectorVersionMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDetectorVersionMetadataRequest,
-  output: UpdateDetectorVersionMetadataResult,
+  input: __S(203, __c25, 3) as any as S.Schema<UpdateDetectorVersionMetadataRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateDetectorVersionMetadataResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3986,8 +3381,8 @@ export const updateDetectorVersionStatus: API.OperationMethod<
   UpdateDetectorVersionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDetectorVersionStatusRequest,
-  output: UpdateDetectorVersionStatusResult,
+  input: __S(204, __c25, 4) as any as S.Schema<UpdateDetectorVersionStatusRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateDetectorVersionStatusResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4018,8 +3413,8 @@ export const updateEventLabel: API.OperationMethod<
   UpdateEventLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventLabelRequest,
-  output: UpdateEventLabelResult,
+  input: __S(205, __c25, 5) as any as S.Schema<UpdateEventLabelRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<UpdateEventLabelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4050,8 +3445,8 @@ export const updateList: API.OperationMethod<
   UpdateListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateListRequest,
-  output: UpdateListResult,
+  input: __S(206, __c25, 6) as any as S.Schema<UpdateListRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<UpdateListResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4082,8 +3477,8 @@ export const updateModel: API.OperationMethod<
   UpdateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateModelRequest,
-  output: UpdateModelResult,
+  input: __S(207, __c25, 7) as any as S.Schema<UpdateModelRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<UpdateModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4114,8 +3509,8 @@ export const updateModelVersion: API.OperationMethod<
   UpdateModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateModelVersionRequest,
-  output: UpdateModelVersionResult,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateModelVersionRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<UpdateModelVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4154,8 +3549,8 @@ export const updateModelVersionStatus: API.OperationMethod<
   UpdateModelVersionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateModelVersionStatusRequest,
-  output: UpdateModelVersionStatusResult,
+  input: __S(209, __c26, 1) as any as S.Schema<UpdateModelVersionStatusRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateModelVersionStatusResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4186,8 +3581,8 @@ export const updateRuleMetadata: API.OperationMethod<
   UpdateRuleMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRuleMetadataRequest,
-  output: UpdateRuleMetadataResult,
+  input: __S(210, __c26, 2) as any as S.Schema<UpdateRuleMetadataRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<UpdateRuleMetadataResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4218,8 +3613,8 @@ export const updateRuleVersion: API.OperationMethod<
   UpdateRuleVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRuleVersionRequest,
-  output: UpdateRuleVersionResult,
+  input: __S(211, __c26, 3) as any as S.Schema<UpdateRuleVersionRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<UpdateRuleVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4250,8 +3645,8 @@ export const updateVariable: API.OperationMethod<
   UpdateVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVariableRequest,
-  output: UpdateVariableResult,
+  input: __S(212, __c26, 4) as any as S.Schema<UpdateVariableRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<UpdateVariableResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4280,16 +3675,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "VariableEntry" });
     case 1:
-      return S.Array(VariableEntry);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "Tag",
       });
     case 3:
-      return S.Array(Tag);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ variableEntries: VariableEntryList, tags: S.optional(TagList) }).pipe(
+        S.Struct({ variableEntries: __S(1, __c0, 1), tags: S.optional(__S(3, __c0, 3)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4306,11 +3701,9 @@ function __c0(j: number): any {
         identifier: "BatchCreateVariableError",
       });
     case 6:
-      return S.Array(BatchCreateVariableError_);
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ errors: S.optional(BatchCreateVariableErrorList) }).pipe(ns),
-      ).annotate({
+      return S.suspend(() => S.Struct({ errors: S.optional(__S(6, __c0, 6)) }).pipe(ns)).annotate({
         identifier: "BatchCreateVariableResult",
       });
   }
@@ -4321,7 +3714,7 @@ function __c1(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ names: NameList }).pipe(
+        S.Struct({ names: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetVariableRequest" });
@@ -4329,8 +3722,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          dataType: S.optional(DataType),
-          dataSource: S.optional(DataSource),
+          dataType: S.optional(S.String),
+          dataSource: S.optional(S.String),
           defaultValue: S.optional(S.String),
           description: S.optional(S.String),
           variableType: S.optional(S.String),
@@ -4340,7 +3733,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Variable" });
     case 3:
-      return S.Array(Variable);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4350,12 +3743,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "BatchGetVariableError" });
     case 5:
-      return S.Array(BatchGetVariableError_);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          variables: S.optional(VariableList),
-          errors: S.optional(BatchGetVariableErrorList),
+          variables: S.optional(__S(11, __c1, 3)),
+          errors: S.optional(__S(13, __c1, 5)),
         }).pipe(ns),
       ).annotate({ identifier: "BatchGetVariableResult" });
     case 7:
@@ -4390,7 +3783,7 @@ function __c2(j: number): any {
           outputPath: S.String,
           eventTypeName: S.String,
           iamRoleArn: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateBatchImportJobRequest",
@@ -4405,7 +3798,7 @@ function __c2(j: number): any {
           detectorName: S.String,
           detectorVersion: S.optional(S.String),
           iamRoleArn: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateBatchPredictionJobRequest",
@@ -4415,18 +3808,18 @@ function __c2(j: number): any {
         S.Struct({ detectorId: S.String, ruleId: S.String, ruleVersion: S.String }),
       ).annotate({ identifier: "Rule" });
     case 5:
-      return S.Array(Rule);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
+          modelType: S.String,
           modelVersionNumber: S.String,
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModelVersion" });
     case 7:
-      return S.Array(ModelVersion);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -4436,11 +3829,11 @@ function __c3(j: number): any {
         S.Struct({
           detectorId: S.String,
           description: S.optional(S.String),
-          externalModelEndpoints: S.optional(ListOfStrings),
-          rules: RuleList,
-          modelVersions: S.optional(ListOfModelVersions),
-          ruleExecutionMode: S.optional(RuleExecutionMode),
-          tags: S.optional(TagList),
+          externalModelEndpoints: S.optional(__S(8, __c1, 0)),
+          rules: __S(21, __c2, 5),
+          modelVersions: S.optional(__S(23, __c2, 7)),
+          ruleExecutionMode: S.optional(S.String),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDetectorVersionRequest",
@@ -4450,7 +3843,7 @@ function __c3(j: number): any {
         S.Struct({
           detectorId: S.optional(S.String),
           detectorVersionId: S.optional(S.String),
-          status: S.optional(DetectorVersionStatus),
+          status: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateDetectorVersionResult",
@@ -4461,10 +3854,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          elements: S.optional(ElementsList),
+          elements: S.optional(__S(26, __c3, 2)),
           variableType: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateListRequest" });
     case 4:
@@ -4475,19 +3868,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
+          modelType: S.String,
           description: S.optional(S.String),
           eventTypeName: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateModelRequest" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ ListOfStrings.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(8, __c1, 0).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labelMapper: S.optional(LabelMapper),
-          unlabeledEventsTreatment: S.optional(UnlabeledEventsTreatment),
+          labelMapper: S.optional(__S(30, __c3, 6)),
+          unlabeledEventsTreatment: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelSchema" });
   }
@@ -4496,7 +3889,7 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ modelVariables: ListOfStrings, labelSchema: S.optional(LabelSchema) }),
+        S.Struct({ modelVariables: __S(8, __c1, 0), labelSchema: S.optional(__S(31, __c3, 7)) }),
       ).annotate({ identifier: "TrainingDataSchema" });
     case 1:
       return S.suspend(() =>
@@ -4507,19 +3900,19 @@ function __c4(j: number): any {
         identifier: "IngestedEventsTimeWindow",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ingestedEventsTimeWindow: IngestedEventsTimeWindow }),
-      ).annotate({ identifier: "IngestedEventsDetail" });
+      return S.suspend(() => S.Struct({ ingestedEventsTimeWindow: __S(34, __c4, 2) })).annotate({
+        identifier: "IngestedEventsDetail",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
-          trainingDataSource: TrainingDataSourceEnum,
-          trainingDataSchema: TrainingDataSchema,
-          externalEventsDetail: S.optional(ExternalEventsDetail),
-          ingestedEventsDetail: S.optional(IngestedEventsDetail),
-          tags: S.optional(TagList),
+          modelType: S.String,
+          trainingDataSource: S.String,
+          trainingDataSchema: __S(32, __c4, 0),
+          externalEventsDetail: S.optional(__S(33, __c4, 1)),
+          ingestedEventsDetail: S.optional(__S(35, __c4, 3)),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateModelVersionRequest",
@@ -4528,7 +3921,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
-          modelType: S.optional(ModelTypeEnum),
+          modelType: S.optional(S.String),
           modelVersionNumber: S.optional(S.String),
           status: S.optional(S.String),
         }).pipe(ns),
@@ -4540,13 +3933,13 @@ function __c4(j: number): any {
           detectorId: S.String,
           description: S.optional(S.String),
           expression: SensitiveString,
-          language: Language,
-          outcomes: NonEmptyListOfStrings,
-          tags: S.optional(TagList),
+          language: S.String,
+          outcomes: __S(8, __c1, 0),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ rule: S.optional(Rule) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ rule: S.optional(__S(20, __c2, 4)) }).pipe(ns)).annotate({
         identifier: "CreateRuleResult",
       });
   }
@@ -4557,12 +3950,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          dataType: DataType,
-          dataSource: DataSource,
+          dataType: S.String,
+          dataSource: S.String,
           defaultValue: S.String,
           description: S.optional(S.String),
           variableType: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateVariableRequest" });
     case 1:
@@ -4662,7 +4055,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DeleteListRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ modelId: S.String, modelType: ModelTypeEnum }).pipe(
+        S.Struct({ modelId: S.String, modelType: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteModelRequest" });
@@ -4670,7 +4063,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
+          modelType: S.String,
           modelVersionNumber: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4692,7 +4085,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DeleteOutcomeRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ rule: Rule }).pipe(
+        S.Struct({ rule: __S(20, __c2, 4) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteRuleRequest" });
@@ -4714,18 +4107,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           detectorVersionId: S.optional(S.String),
-          status: S.optional(DetectorVersionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           lastUpdatedTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DetectorVersionSummary" });
     case 6:
-      return S.Array(DetectorVersionSummary);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           detectorId: S.optional(S.String),
-          detectorVersionSummaries: S.optional(DetectorVersionSummaryList),
+          detectorVersionSummaries: S.optional(__S(62, __c7, 6)),
           nextToken: S.optional(S.String),
           arn: S.optional(S.String),
         }).pipe(ns),
@@ -4739,7 +4132,7 @@ function __c8(j: number): any {
         S.Struct({
           modelId: S.optional(S.String),
           modelVersionNumber: S.optional(S.String),
-          modelType: S.optional(ModelTypeEnum),
+          modelType: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4755,7 +4148,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "FileValidationMessage" });
     case 2:
-      return S.Array(FileValidationMessage);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4767,12 +4160,12 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "FieldValidationMessage" });
     case 4:
-      return S.Array(FieldValidationMessage);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fileLevelMessages: S.optional(FileValidationMessageList),
-          fieldLevelMessages: S.optional(FieldValidationMessageList),
+          fileLevelMessages: S.optional(__S(66, __c8, 2)),
+          fieldLevelMessages: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "DataValidationMetrics" });
     case 6:
@@ -4785,33 +4178,31 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "MetricDataPoint" });
     case 7:
-      return S.Array(MetricDataPoint);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ auc: S.optional(S.Number), metricDataPoints: S.optional(MetricDataPointsList) }),
+        S.Struct({ auc: S.optional(S.Number), metricDataPoints: S.optional(__S(71, __c8, 7)) }),
       ).annotate({ identifier: "TrainingMetrics" });
     case 1:
       return S.suspend(() =>
         S.Struct({ variableName: S.String, variableType: S.String, variableImportance: S.Number }),
       ).annotate({ identifier: "LogOddsMetric" });
     case 2:
-      return S.Array(LogOddsMetric);
+      return S.Array(__S(73, __c9, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({ logOddsMetrics: S.optional(ListOfLogOddsMetrics) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ logOddsMetrics: S.optional(__S(74, __c9, 2)) })).annotate({
         identifier: "VariableImportanceMetrics",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataValidationMetrics: S.optional(DataValidationMetrics),
-          trainingMetrics: S.optional(TrainingMetrics),
-          variableImportanceMetrics: S.optional(VariableImportanceMetrics),
+          dataValidationMetrics: S.optional(__S(69, __c8, 5)),
+          trainingMetrics: S.optional(__S(72, __c9, 0)),
+          variableImportanceMetrics: S.optional(__S(75, __c9, 3)),
         }),
       ).annotate({ identifier: "TrainingResult" });
     case 5:
@@ -4820,13 +4211,13 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UncertaintyRange" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ auc: S.optional(S.Number), uncertaintyRange: S.optional(UncertaintyRange) }),
+        S.Struct({ auc: S.optional(S.Number), uncertaintyRange: S.optional(__S(77, __c9, 5)) }),
       ).annotate({ identifier: "OFIModelPerformance" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metricDataPoints: S.optional(OFIMetricDataPointsList),
-          modelPerformance: S.optional(OFIModelPerformance),
+          metricDataPoints: S.optional(__S(71, __c8, 7)),
+          modelPerformance: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({ identifier: "OFITrainingMetricsValue" });
   }
@@ -4843,7 +4234,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ATIMetricDataPoint" });
     case 1:
-      return S.Array(ATIMetricDataPoint);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() => S.Struct({ asi: S.optional(S.Number) })).annotate({
         identifier: "ATIModelPerformance",
@@ -4851,28 +4242,26 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metricDataPoints: S.optional(ATIMetricDataPointsList),
-          modelPerformance: S.optional(ATIModelPerformance),
+          metricDataPoints: S.optional(__S(81, __c10, 1)),
+          modelPerformance: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "ATITrainingMetricsValue" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ofi: S.optional(OFITrainingMetricsValue),
-          tfi: S.optional(TFITrainingMetricsValue),
-          ati: S.optional(ATITrainingMetricsValue),
+          ofi: S.optional(__S(79, __c9, 7)),
+          tfi: S.optional(__S(79, __c9, 7)),
+          ati: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "TrainingMetricsV2" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ variableNames: ListOfStrings, aggregatedVariablesImportance: S.Number }),
+        S.Struct({ variableNames: __S(8, __c1, 0), aggregatedVariablesImportance: S.Number }),
       ).annotate({ identifier: "AggregatedLogOddsMetric" });
     case 6:
-      return S.Array(AggregatedLogOddsMetric);
+      return S.Array(__S(85, __c10, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ logOddsMetrics: S.optional(ListOfAggregatedLogOddsMetrics) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ logOddsMetrics: S.optional(__S(86, __c10, 6)) })).annotate({
         identifier: "AggregatedVariablesImportanceMetrics",
       });
   }
@@ -4882,36 +4271,36 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataValidationMetrics: S.optional(DataValidationMetrics),
-          trainingMetricsV2: S.optional(TrainingMetricsV2),
-          variableImportanceMetrics: S.optional(VariableImportanceMetrics),
-          aggregatedVariablesImportanceMetrics: S.optional(AggregatedVariablesImportanceMetrics),
+          dataValidationMetrics: S.optional(__S(69, __c8, 5)),
+          trainingMetricsV2: S.optional(__S(84, __c10, 4)),
+          variableImportanceMetrics: S.optional(__S(75, __c9, 3)),
+          aggregatedVariablesImportanceMetrics: S.optional(__S(87, __c10, 7)),
         }),
       ).annotate({ identifier: "TrainingResultV2" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
-          modelType: S.optional(ModelTypeEnum),
+          modelType: S.optional(S.String),
           modelVersionNumber: S.optional(S.String),
           status: S.optional(S.String),
-          trainingDataSource: S.optional(TrainingDataSourceEnum),
-          trainingDataSchema: S.optional(TrainingDataSchema),
-          externalEventsDetail: S.optional(ExternalEventsDetail),
-          ingestedEventsDetail: S.optional(IngestedEventsDetail),
-          trainingResult: S.optional(TrainingResult),
+          trainingDataSource: S.optional(S.String),
+          trainingDataSchema: S.optional(__S(32, __c4, 0)),
+          externalEventsDetail: S.optional(__S(33, __c4, 1)),
+          ingestedEventsDetail: S.optional(__S(35, __c4, 3)),
+          trainingResult: S.optional(__S(76, __c9, 4)),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
           arn: S.optional(S.String),
-          trainingResultV2: S.optional(TrainingResultV2),
+          trainingResultV2: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "ModelVersionDetail" });
     case 2:
-      return S.Array(ModelVersionDetail);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          modelVersionDetails: S.optional(ModelVersionDetailList),
+          modelVersionDetails: S.optional(__S(90, __c11, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -4931,7 +4320,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
-          status: S.optional(AsyncJobStatus),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
           startTime: S.optional(S.String),
           completionTime: S.optional(S.String),
@@ -4946,11 +4335,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "BatchImport" });
     case 6:
-      return S.Array(BatchImport);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          batchImports: S.optional(BatchImportList),
+          batchImports: S.optional(__S(94, __c11, 6)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetBatchImportJobsResult" });
@@ -4972,7 +4361,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
-          status: S.optional(AsyncJobStatus),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
           startTime: S.optional(S.String),
           completionTime: S.optional(S.String),
@@ -4989,11 +4378,11 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "BatchPrediction" });
     case 2:
-      return S.Array(BatchPrediction);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          batchPredictions: S.optional(BatchPredictionList),
+          batchPredictions: S.optional(__S(98, __c12, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5011,7 +4400,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventTypeName: S.optional(S.String),
-          eventsDeletionStatus: S.optional(AsyncJobStatus),
+          eventsDeletionStatus: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetDeleteEventsByEventTypeStatusResult",
@@ -5040,10 +4429,13 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Detector);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ detectors: S.optional(DetectorList), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          detectors: S.optional(__S(104, __c13, 0)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "GetDetectorsResult" });
     case 2:
       return S.suspend(() =>
@@ -5059,13 +4451,13 @@ function __c13(j: number): any {
           detectorId: S.optional(S.String),
           detectorVersionId: S.optional(S.String),
           description: S.optional(S.String),
-          externalModelEndpoints: S.optional(ListOfStrings),
-          modelVersions: S.optional(ListOfModelVersions),
-          rules: S.optional(RuleList),
-          status: S.optional(DetectorVersionStatus),
+          externalModelEndpoints: S.optional(__S(8, __c1, 0)),
+          modelVersions: S.optional(__S(23, __c2, 7)),
+          rules: S.optional(__S(21, __c2, 5)),
+          status: S.optional(S.String),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
-          ruleExecutionMode: S.optional(RuleExecutionMode),
+          ruleExecutionMode: S.optional(S.String),
           arn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetDetectorVersionResult" });
@@ -5088,12 +4480,13 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "EntityType" });
     case 6:
-      return S.Array(EntityType);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ entityTypes: S.optional(EntityTypeList), nextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          entityTypes: S.optional(__S(110, __c13, 6)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "GetEntityTypesResult" });
   }
 }
@@ -5112,29 +4505,31 @@ function __c14(j: number): any {
         identifier: "Entity",
       });
     case 3:
-      return S.Array(Entity);
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
           eventTypeName: S.optional(S.String),
           eventTimestamp: S.optional(S.String),
-          eventVariables: S.optional(EventAttributeMap),
+          eventVariables: S.optional(__S(113, __c14, 1)),
           currentLabel: S.optional(S.String),
           labelTimestamp: S.optional(S.String),
-          entities: S.optional(ListOfEntities),
+          entities: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({ identifier: "Event" });
     case 5:
-      return S.suspend(() => S.Struct({ event: S.optional(Event) }).pipe(ns)).annotate({
-        identifier: "GetEventResult",
-      });
+      return S.suspend(() => S.Struct({ event: S.optional(__S(116, __c14, 4)) }).pipe(ns)).annotate(
+        {
+          identifier: "GetEventResult",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({ byteBuffer: S.optional(T.Blob), contentType: S.optional(S.String) }),
       ).annotate({ identifier: "ModelEndpointDataBlob" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ModelEndpointDataBlob.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(118, __c14, 6).pipe(S.optional));
   }
 }
 function __c15(j: number): any {
@@ -5146,10 +4541,10 @@ function __c15(j: number): any {
           detectorVersionId: S.optional(S.String),
           eventId: S.String,
           eventTypeName: S.String,
-          entities: ListOfEntities,
+          entities: __S(115, __c14, 3),
           eventTimestamp: S.String,
-          eventVariables: EventVariableMap,
-          externalModelEndpointDataBlobs: S.optional(ExternalModelEndpointDataBlobMap),
+          eventVariables: __S(113, __c14, 1),
+          externalModelEndpointDataBlobs: S.optional(__S(119, __c14, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEventPredictionRequest",
@@ -5159,21 +4554,21 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          modelVersion: S.optional(ModelVersion),
-          scores: S.optional(ModelPredictionMap),
+          modelVersion: S.optional(__S(22, __c2, 6)),
+          scores: S.optional(__S(121, __c15, 1)),
         }),
       ).annotate({ identifier: "ModelScores" });
     case 3:
-      return S.Array(ModelScores);
+      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ ruleId: S.optional(S.String), outcomes: S.optional(ListOfStrings) }),
+        S.Struct({ ruleId: S.optional(S.String), outcomes: S.optional(__S(8, __c1, 0)) }),
       ).annotate({ identifier: "RuleResult" });
     case 5:
-      return S.Array(RuleResult);
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ modelEndpoint: S.optional(S.String), modelSource: S.optional(ModelSource) }),
+        S.Struct({ modelEndpoint: S.optional(S.String), modelSource: S.optional(S.String) }),
       ).annotate({ identifier: "ExternalModelSummary" });
     case 7:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
@@ -5184,18 +4579,18 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          externalModel: S.optional(ExternalModelSummary),
-          outputs: S.optional(ExternalModelPredictionMap),
+          externalModel: S.optional(__S(126, __c15, 6)),
+          outputs: S.optional(__S(127, __c15, 7)),
         }),
       ).annotate({ identifier: "ExternalModelOutputs" });
     case 1:
-      return S.Array(ExternalModelOutputs);
+      return S.Array(__S(128, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          modelScores: S.optional(ListOfModelScores),
-          ruleResults: S.optional(ListOfRuleResults),
-          externalModelOutputs: S.optional(ListOfExternalModelOutputs),
+          modelScores: S.optional(__S(123, __c15, 3)),
+          ruleResults: S.optional(__S(125, __c15, 5)),
+          externalModelOutputs: S.optional(__S(129, __c16, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "GetEventPredictionResult" });
     case 3:
@@ -5219,7 +4614,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "EventVariableSummary" });
     case 5:
-      return S.Array(EventVariableSummary);
+      return S.Array(__S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5227,13 +4622,13 @@ function __c16(j: number): any {
           ruleVersion: S.optional(S.String),
           expression: S.optional(SensitiveString),
           expressionWithValues: S.optional(SensitiveString),
-          outcomes: S.optional(ListOfStrings),
+          outcomes: S.optional(__S(8, __c1, 0)),
           evaluated: S.optional(S.Boolean),
           matched: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EvaluatedRule" });
     case 7:
-      return S.Array(EvaluatedRule);
+      return S.Array(__S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
@@ -5249,11 +4644,11 @@ function __c17(j: number): any {
         identifier: "VariableImpactExplanation",
       });
     case 1:
-      return S.Array(VariableImpactExplanation);
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          eventVariableNames: S.optional(ListOfStrings),
+          eventVariableNames: S.optional(__S(8, __c1, 0)),
           relativeImpact: S.optional(S.String),
           logOddsImpact: S.optional(S.Number),
         }),
@@ -5261,14 +4656,12 @@ function __c17(j: number): any {
         identifier: "AggregatedVariablesImpactExplanation",
       });
     case 3:
-      return S.Array(AggregatedVariablesImpactExplanation);
+      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          variableImpactExplanations: S.optional(ListOfVariableImpactExplanations),
-          aggregatedVariablesImpactExplanations: S.optional(
-            ListOfAggregatedVariablesImpactExplanations,
-          ),
+          variableImpactExplanations: S.optional(__S(137, __c17, 1)),
+          aggregatedVariablesImpactExplanations: S.optional(__S(139, __c17, 3)),
         }),
       ).annotate({ identifier: "PredictionExplanations" });
     case 5:
@@ -5276,18 +4669,18 @@ function __c17(j: number): any {
         S.Struct({
           outputVariableName: S.optional(S.String),
           evaluationScore: S.optional(S.String),
-          predictionExplanations: S.optional(PredictionExplanations),
+          predictionExplanations: S.optional(__S(140, __c17, 4)),
         }),
       ).annotate({ identifier: "ModelVersionEvaluation" });
     case 6:
-      return S.Array(ModelVersionEvaluation);
+      return S.Array(__S(141, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
           modelVersion: S.optional(S.String),
           modelType: S.optional(S.String),
-          evaluations: S.optional(ListOfModelVersionEvaluations),
+          evaluations: S.optional(__S(142, __c17, 6)),
         }),
       ).annotate({ identifier: "EvaluatedModelVersion" });
   }
@@ -5295,18 +4688,18 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EvaluatedModelVersion);
+      return S.Array(__S(143, __c17, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           modelEndpoint: S.optional(S.String),
           useEventVariables: S.optional(S.Boolean),
-          inputVariables: S.optional(MapOfStrings),
-          outputVariables: S.optional(MapOfStrings),
+          inputVariables: S.optional(__S(127, __c15, 7)),
+          outputVariables: S.optional(__S(127, __c15, 7)),
         }),
       ).annotate({ identifier: "EvaluatedExternalModel" });
     case 2:
-      return S.Array(EvaluatedExternalModel);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5318,12 +4711,12 @@ function __c18(j: number): any {
           detectorId: S.optional(S.String),
           detectorVersionId: S.optional(S.String),
           detectorVersionStatus: S.optional(S.String),
-          eventVariables: S.optional(ListOfEventVariableSummaries),
-          rules: S.optional(EvaluatedRuleList),
-          ruleExecutionMode: S.optional(RuleExecutionMode),
-          outcomes: S.optional(ListOfStrings),
-          evaluatedModelVersions: S.optional(ListOfEvaluatedModelVersions),
-          evaluatedExternalModels: S.optional(ListOfEvaluatedExternalModels),
+          eventVariables: S.optional(__S(133, __c16, 5)),
+          rules: S.optional(__S(135, __c16, 7)),
+          ruleExecutionMode: S.optional(S.String),
+          outcomes: S.optional(__S(8, __c1, 0)),
+          evaluatedModelVersions: S.optional(__S(144, __c18, 0)),
+          evaluatedExternalModels: S.optional(__S(146, __c18, 2)),
           predictionTimestamp: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5356,15 +4749,15 @@ function __c18(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          eventVariables: S.optional(ListOfStrings),
-          labels: S.optional(ListOfStrings),
-          entityTypes: S.optional(NonEmptyListOfStrings),
-          eventIngestion: S.optional(EventIngestion),
-          ingestedEventStatistics: S.optional(IngestedEventStatistics),
+          eventVariables: S.optional(__S(8, __c1, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
+          entityTypes: S.optional(__S(8, __c1, 0)),
+          eventIngestion: S.optional(S.String),
+          ingestedEventStatistics: S.optional(__S(149, __c18, 5)),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
           arn: S.optional(S.String),
-          eventOrchestration: S.optional(EventOrchestration),
+          eventOrchestration: S.optional(__S(150, __c18, 6)),
         }),
       ).annotate({ identifier: "EventType" });
   }
@@ -5372,12 +4765,13 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EventType);
+      return S.Array(__S(151, __c18, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ eventTypes: S.optional(EventTypeList), nextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          eventTypes: S.optional(__S(152, __c19, 0)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "GetEventTypesResult" });
     case 2:
       return S.suspend(() =>
@@ -5391,7 +4785,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventTypeName: S.optional(S.String),
-          format: S.optional(ModelInputDataFormat),
+          format: S.optional(S.String),
           useEventVariables: S.Boolean,
           jsonInputTemplate: S.optional(S.String),
           csvInputTemplate: S.optional(S.String),
@@ -5400,31 +4794,31 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          format: ModelOutputDataFormat,
-          jsonKeyToVariableMap: S.optional(JsonKeyToVariableMap),
-          csvIndexToVariableMap: S.optional(CsvIndexToVariableMap),
+          format: S.String,
+          jsonKeyToVariableMap: S.optional(__S(127, __c15, 7)),
+          csvIndexToVariableMap: S.optional(__S(127, __c15, 7)),
         }),
       ).annotate({ identifier: "ModelOutputConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           modelEndpoint: S.optional(S.String),
-          modelSource: S.optional(ModelSource),
+          modelSource: S.optional(S.String),
           invokeModelEndpointRoleArn: S.optional(S.String),
-          inputConfiguration: S.optional(ModelInputConfiguration),
-          outputConfiguration: S.optional(ModelOutputConfiguration),
-          modelEndpointStatus: S.optional(ModelEndpointStatus),
+          inputConfiguration: S.optional(__S(155, __c19, 3)),
+          outputConfiguration: S.optional(__S(156, __c19, 4)),
+          modelEndpointStatus: S.optional(S.String),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalModel" });
     case 6:
-      return S.Array(ExternalModel);
+      return S.Array(__S(157, __c19, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          externalModels: S.optional(ExternalModelList),
+          externalModels: S.optional(__S(158, __c19, 6)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetExternalModelsResult" });
@@ -5445,7 +4839,9 @@ function __c20(j: number): any {
         identifier: "KMSKey",
       });
     case 2:
-      return S.suspend(() => S.Struct({ kmsKey: S.optional(KMSKey) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ kmsKey: S.optional(__S(161, __c20, 1)) }).pipe(ns),
+      ).annotate({
         identifier: "GetKMSEncryptionKeyResult",
       });
     case 3:
@@ -5458,7 +4854,9 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetLabelsRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ labels: S.optional(LabelList), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ labels: S.optional(__S(110, __c13, 6)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "GetLabelsResult" });
     case 5:
       return S.suspend(() =>
@@ -5470,7 +4868,9 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetListElementsRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ elements: S.optional(ElementsList), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ elements: S.optional(__S(26, __c3, 2)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "GetListElementsResult" });
     case 7:
       return S.suspend(() =>
@@ -5496,16 +4896,18 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "AllowDenyList" });
     case 1:
-      return S.Array(AllowDenyList);
+      return S.Array(__S(168, __c21, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ lists: S.optional(AllowDenyLists), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ lists: S.optional(__S(169, __c21, 1)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "GetListsMetadataResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
-          modelType: S.optional(ModelTypeEnum),
+          modelType: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5514,7 +4916,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
-          modelType: S.optional(ModelTypeEnum),
+          modelType: S.optional(S.String),
           description: S.optional(S.String),
           eventTypeName: S.optional(S.String),
           createdTime: S.optional(S.String),
@@ -5523,16 +4925,18 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "Model" });
     case 5:
-      return S.Array(Model);
+      return S.Array(__S(172, __c21, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), models: S.optional(ModelList) }).pipe(ns),
+        S.Struct({ nextToken: S.optional(S.String), models: S.optional(__S(173, __c21, 5)) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "GetModelsResult" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
+          modelType: S.String,
           modelVersionNumber: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetModelVersionRequest" });
@@ -5544,12 +4948,12 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
-          modelType: S.optional(ModelTypeEnum),
+          modelType: S.optional(S.String),
           modelVersionNumber: S.optional(S.String),
-          trainingDataSource: S.optional(TrainingDataSourceEnum),
-          trainingDataSchema: S.optional(TrainingDataSchema),
-          externalEventsDetail: S.optional(ExternalEventsDetail),
-          ingestedEventsDetail: S.optional(IngestedEventsDetail),
+          trainingDataSource: S.optional(S.String),
+          trainingDataSchema: S.optional(__S(32, __c4, 0)),
+          externalEventsDetail: S.optional(__S(33, __c4, 1)),
+          ingestedEventsDetail: S.optional(__S(35, __c4, 3)),
           status: S.optional(S.String),
           arn: S.optional(S.String),
         }).pipe(ns),
@@ -5564,7 +4968,10 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetOutcomesRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ outcomes: S.optional(OutcomeList), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          outcomes: S.optional(__S(110, __c13, 6)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "GetOutcomesResult" });
     case 3:
       return S.suspend(() =>
@@ -5584,20 +4991,21 @@ function __c22(j: number): any {
           detectorId: S.optional(S.String),
           ruleVersion: S.optional(S.String),
           expression: S.optional(SensitiveString),
-          language: S.optional(Language),
-          outcomes: S.optional(NonEmptyListOfStrings),
+          language: S.optional(S.String),
+          outcomes: S.optional(__S(8, __c1, 0)),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleDetail" });
     case 5:
-      return S.Array(RuleDetail);
+      return S.Array(__S(180, __c22, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ ruleDetails: S.optional(RuleDetailList), nextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          ruleDetails: S.optional(__S(181, __c22, 5)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "GetRulesResult" });
     case 7:
       return S.suspend(() =>
@@ -5613,7 +5021,9 @@ function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ variables: S.optional(VariableList), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ variables: S.optional(__S(11, __c1, 3)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "GetVariablesResult" });
     case 1:
       return S.suspend(() => S.Struct({ value: S.optional(S.String) })).annotate({
@@ -5622,11 +5032,11 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          eventId: S.optional(FilterCondition),
-          eventType: S.optional(FilterCondition),
-          detectorId: S.optional(FilterCondition),
-          detectorVersionId: S.optional(FilterCondition),
-          predictionTimeRange: S.optional(PredictionTimeRange),
+          eventId: S.optional(__S(185, __c23, 1)),
+          eventType: S.optional(__S(185, __c23, 1)),
+          detectorId: S.optional(__S(185, __c23, 1)),
+          detectorVersionId: S.optional(__S(185, __c23, 1)),
+          predictionTimeRange: S.optional(__S(34, __c4, 2)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5645,11 +5055,11 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "EventPredictionSummary" });
     case 4:
-      return S.Array(EventPredictionSummary);
+      return S.Array(__S(187, __c23, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          eventPredictionSummaries: S.optional(ListOfEventPredictionSummaries),
+          eventPredictionSummaries: S.optional(__S(188, __c23, 4)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5667,7 +5077,7 @@ function __c23(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ tags: S.optional(__S(3, __c0, 3)), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListTagsForResourceResult",
       });
@@ -5681,7 +5091,7 @@ function __c24(j: number): any {
           detectorId: S.String,
           description: S.optional(S.String),
           eventTypeName: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutDetectorRequest" });
     case 1:
@@ -5689,7 +5099,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutEntityTypeRequest" });
     case 2:
@@ -5697,24 +5107,24 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          eventVariables: NonEmptyListOfStrings,
-          labels: S.optional(ListOfStrings),
-          entityTypes: NonEmptyListOfStrings,
-          eventIngestion: S.optional(EventIngestion),
-          tags: S.optional(TagList),
-          eventOrchestration: S.optional(EventOrchestration),
+          eventVariables: __S(8, __c1, 0),
+          labels: S.optional(__S(8, __c1, 0)),
+          entityTypes: __S(8, __c1, 0),
+          eventIngestion: S.optional(S.String),
+          tags: S.optional(__S(3, __c0, 3)),
+          eventOrchestration: S.optional(__S(150, __c18, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutEventTypeRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           modelEndpoint: S.String,
-          modelSource: ModelSource,
+          modelSource: S.String,
           invokeModelEndpointRoleArn: S.String,
-          inputConfiguration: ModelInputConfiguration,
-          outputConfiguration: ModelOutputConfiguration,
-          modelEndpointStatus: ModelEndpointStatus,
-          tags: S.optional(TagList),
+          inputConfiguration: __S(155, __c19, 3),
+          outputConfiguration: __S(156, __c19, 4),
+          modelEndpointStatus: S.String,
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutExternalModelRequest" });
     case 4:
@@ -5730,7 +5140,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutLabelRequest" });
     case 6:
@@ -5738,7 +5148,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutOutcomeRequest" });
     case 7:
@@ -5747,10 +5157,10 @@ function __c24(j: number): any {
           eventId: S.String,
           eventTypeName: S.String,
           eventTimestamp: S.String,
-          eventVariables: EventVariableMap,
+          eventVariables: __S(113, __c14, 1),
           assignedLabel: S.optional(S.String),
           labelTimestamp: S.optional(S.String),
-          entities: ListOfEntities,
+          entities: __S(115, __c14, 3),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendEventRequest" });
   }
@@ -5759,13 +5169,13 @@ function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tags: TagList }).pipe(
+        S.Struct({ resourceARN: S.String, tags: __S(3, __c0, 3) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tagKeys: TagKeyList }).pipe(
+        S.Struct({ resourceARN: S.String, tagKeys: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -5774,11 +5184,11 @@ function __c25(j: number): any {
         S.Struct({
           detectorId: S.String,
           detectorVersionId: S.String,
-          externalModelEndpoints: ListOfStrings,
-          rules: RuleList,
+          externalModelEndpoints: __S(8, __c1, 0),
+          rules: __S(21, __c2, 5),
           description: S.optional(S.String),
-          modelVersions: S.optional(ListOfModelVersions),
-          ruleExecutionMode: S.optional(RuleExecutionMode),
+          modelVersions: S.optional(__S(23, __c2, 7)),
+          ruleExecutionMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateDetectorVersionRequest",
@@ -5796,7 +5206,7 @@ function __c25(j: number): any {
         S.Struct({
           detectorId: S.String,
           detectorVersionId: S.String,
-          status: DetectorVersionStatus,
+          status: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateDetectorVersionStatusRequest",
@@ -5814,9 +5224,9 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          elements: S.optional(ElementsList),
+          elements: S.optional(__S(26, __c3, 2)),
           description: S.optional(S.String),
-          updateMode: S.optional(ListUpdateMode),
+          updateMode: S.optional(S.String),
           variableType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateListRequest" });
@@ -5824,7 +5234,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
+          modelType: S.String,
           description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateModelRequest" });
@@ -5836,11 +5246,11 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
+          modelType: S.String,
           majorVersionNumber: S.String,
-          externalEventsDetail: S.optional(ExternalEventsDetail),
-          ingestedEventsDetail: S.optional(IngestedEventsDetail),
-          tags: S.optional(TagList),
+          externalEventsDetail: S.optional(__S(33, __c4, 1)),
+          ingestedEventsDetail: S.optional(__S(35, __c4, 3)),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateModelVersionRequest",
@@ -5849,16 +5259,16 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelType: ModelTypeEnum,
+          modelType: S.String,
           modelVersionNumber: S.String,
-          status: ModelVersionStatus,
+          status: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateModelVersionStatusRequest",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ rule: Rule, description: S.String }).pipe(
+        S.Struct({ rule: __S(20, __c2, 4), description: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5867,12 +5277,12 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rule: Rule,
+          rule: __S(20, __c2, 4),
           description: S.optional(S.String),
           expression: SensitiveString,
-          language: Language,
-          outcomes: NonEmptyListOfStrings,
-          tags: S.optional(TagList),
+          language: S.String,
+          outcomes: __S(8, __c1, 0),
+          tags: S.optional(__S(3, __c0, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateRuleVersionRequest" });
     case 4:
@@ -5885,4 +5295,9 @@ function __c26(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateVariableRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

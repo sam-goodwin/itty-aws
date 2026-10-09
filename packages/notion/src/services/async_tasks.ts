@@ -6,14 +6,14 @@ import { UnknownNotionError } from "../errors.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
 export interface GetAsyncTaskRequest {
   task_id: string;
 }
-const GetAsyncTaskRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetAsyncTaskRequest>;
-
 export type GetAsyncTaskResponseBodyCase0OperationSurface = "rest" | "mcp";
 export interface GetAsyncTaskResponseBodyCase0Operation {
   surface: GetAsyncTaskResponseBodyCase0OperationSurface;
@@ -421,12 +421,7 @@ export type GetAsyncTaskResponseBody =
   | GetAsyncTaskResponseBodyCase0
   | GetAsyncTaskResponseBodyCase1
   | GetAsyncTaskResponseBodyCase2;
-const GetAsyncTaskResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetAsyncTaskResponseBody>;
-
 export type GetAsyncTaskResponse = GetAsyncTaskResponseBody;
-const GetAsyncTaskResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetAsyncTaskResponse>;
-
 export type GetAsyncTaskError = NotionOpError;
 /** Retrieve an async task */
 export const getAsyncTask: API.OperationMethod<
@@ -435,8 +430,8 @@ export const getAsyncTask: API.OperationMethod<
   GetAsyncTaskError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAsyncTaskRequest,
-  output: GetAsyncTaskResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAsyncTaskRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetAsyncTaskResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -452,8 +447,13 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/async_tasks/{task_id}", code: 200 })),
       ).annotate({ identifier: "GetAsyncTaskRequest" });
     case 1:
-      return S.suspend(() => GetAsyncTaskResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAsyncTaskResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

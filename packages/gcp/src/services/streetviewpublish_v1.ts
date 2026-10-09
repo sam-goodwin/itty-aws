@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,33 +65,17 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request to delete multiple Photos. */
 export interface BatchDeletePhotosRequest {
   /** Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query parameter: `photoIds=&photoIds=&...`. */
   photoIds?: StringList;
 }
-const BatchDeletePhotosRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchDeletePhotosRequest>;
-
 export interface BatchDeletePhotosRequest_ {
   /** Request body */
   body?: BatchDeletePhotosRequest;
 }
-const BatchDeletePhotosRequest_ = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchDeletePhotosRequest_>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -99,24 +85,13 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
-
 export type StatusList = Array<Status>;
-const StatusList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StatusList>;
-
 /** Response to batch delete of one or more Photos. */
 export interface BatchDeletePhotosResponse {
   /** The status for the operation to delete a single Photo in the batch request. */
   status?: StatusList;
 }
-const BatchDeletePhotosResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchDeletePhotosResponse>;
-
 export type BatchGetPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-const BatchGetPhotosViewEnum = S.String;
-
 export interface BatchGetPhotosRequest {
   /** Required. Specifies if a download URL for the photo bytes should be returned in the Photo response. */
   view?: BatchGetPhotosViewEnum | (string & {});
@@ -125,18 +100,11 @@ export interface BatchGetPhotosRequest {
   /** Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be `photoIds=&photoIds=&...`. */
   photoIds?: StringList;
 }
-const BatchGetPhotosRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchGetPhotosRequest>;
-
 /** Identifier for a Photo. */
 export interface PhotoId {
   /** A unique identifier for a photo. */
   id?: string;
 }
-const PhotoId = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PhotoId>;
-
 /** Place metadata for an entity. */
 export interface Place {
   /** Place identifier, as described in https://developers.google.com/places/place-id. */
@@ -146,17 +114,11 @@ export interface Place {
   /** Output only. The name of the place, localized to the language_code. */
   name?: string;
 }
-const Place = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Place>;
-
 export type PlaceList = Array<Place>;
-const PlaceList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PlaceList>;
-
 export type PhotoMapsPublishStatusEnum =
   | "UNSPECIFIED_MAPS_PUBLISH_STATUS"
   | "PUBLISHED"
   | "REJECTED_UNKNOWN";
-const PhotoMapsPublishStatusEnum = S.String;
-
 /** Level information containing level number and its corresponding name. */
 export interface Level {
   /** Required. A name assigned to this Level, restricted to 3 characters. Consider how the elevator buttons would be labeled for this level if there was an elevator. */
@@ -164,8 +126,6 @@ export interface Level {
   /** Optional. Floor number, used for ordering. 0 indicates the ground level, 1 indicates the first level above ground level, -1 indicates the first level under ground level. Non-integer values are OK. */
   number?: number;
 }
-const Level = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Level>;
-
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -173,8 +133,6 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-const LatLng = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<LatLng>;
-
 /** Raw pose measurement for an entity. */
 export interface Pose {
   /** Roll, measured in degrees. Value must be >= 0 and <360. A value of 0 means level with the horizon. NaN indicates an unmeasured quantity. */
@@ -194,18 +152,12 @@ export interface Pose {
   /** Altitude of the pose in meters above WGS84 ellipsoid. NaN indicates an unmeasured quantity. */
   altitude?: number;
 }
-const Pose = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Pose>;
-
 /** A connection is the link from a source photo to a destination photo. */
 export interface Connection {
   /** Required. The destination of the connection from the containing photo to another photo. */
   target?: PhotoId;
 }
-const Connection = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Connection>;
-
 export type ConnectionList = Array<Connection>;
-const ConnectionList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ConnectionList>;
-
 export type PhotoTransferStatusEnum =
   | "TRANSFER_STATUS_UNKNOWN"
   | "NEVER_TRANSFERRED"
@@ -215,15 +167,11 @@ export type PhotoTransferStatusEnum =
   | "EXPIRED"
   | "CANCELLED"
   | "RECEIVED_VIA_TRANSFER";
-const PhotoTransferStatusEnum = S.String;
-
 /** Upload reference for media files. */
 export interface UploadRef {
   /** An upload reference should be unique for each user. It follows the form: "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}" */
   uploadUrl?: string;
 }
-const UploadRef = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UploadRef>;
-
 /** Photo is used to store 360 photos along with photo metadata. */
 export interface Photo {
   /** Required. Output only. Required when updating a photo. Output only when creating a photo. Identifier for the photo, which is unique among all photos in Google. */
@@ -253,8 +201,6 @@ export interface Photo {
   /** Output only. The share link for the photo. */
   shareLink?: string;
 }
-const Photo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Photo>;
-
 /** Response payload for a single Photo in batch operations including BatchGetPhotos and BatchUpdatePhotos. */
 export interface PhotoResponse {
   /** The Photo resource, if the request was successful. */
@@ -262,21 +208,12 @@ export interface PhotoResponse {
   /** The status for the operation to get or update a single photo in the batch request. */
   status?: Status;
 }
-const PhotoResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<PhotoResponse>;
-
 export type PhotoResponseList = Array<PhotoResponse>;
-const PhotoResponseList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PhotoResponseList>;
-
 /** Response to batch get of Photos. */
 export interface BatchGetPhotosResponse {
   /** List of results for each individual Photo requested, in the same order as the requests in BatchGetPhotos. */
   results?: PhotoResponseList;
 }
-const BatchGetPhotosResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BatchGetPhotosResponse>;
-
 /** Request to update the metadata of a Photo. Updating the pixels of a photo is not supported. */
 export interface UpdatePhotoRequest {
   /** Required. Photo object containing the new metadata. */
@@ -284,52 +221,26 @@ export interface UpdatePhotoRequest {
   /** Required. Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are valid: * `pose.heading` * `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed. */
   updateMask?: string;
 }
-const UpdatePhotoRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UpdatePhotoRequest>;
-
 export type UpdatePhotoRequestList = Array<UpdatePhotoRequest>;
-const UpdatePhotoRequestList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UpdatePhotoRequestList>;
-
 /** Request to update the metadata of photos. Updating the pixels of photos is not supported. */
 export interface BatchUpdatePhotosRequest {
   /** Required. List of UpdatePhotoRequests. */
   updatePhotoRequests?: UpdatePhotoRequestList;
 }
-const BatchUpdatePhotosRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BatchUpdatePhotosRequest>;
-
 export interface BatchUpdatePhotosRequest_ {
   /** Request body */
   body?: BatchUpdatePhotosRequest;
 }
-const BatchUpdatePhotosRequest_ = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BatchUpdatePhotosRequest_>;
-
 /** Response to batch update of metadata of one or more Photos. */
 export interface BatchUpdatePhotosResponse {
   /** List of results for each individual Photo updated, in the same order as the request. */
   results?: PhotoResponseList;
 }
-const BatchUpdatePhotosResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BatchUpdatePhotosResponse>;
-
 export interface CreatePhotoRequest {
   /** Request body */
   body?: Photo;
 }
-const CreatePhotoRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreatePhotoRequest>;
-
 export type CreatePhotoSequenceInputTypeEnum = "INPUT_TYPE_UNSPECIFIED" | "VIDEO" | "XDM";
-const CreatePhotoSequenceInputTypeEnum = S.String;
-
 export type PhotoSequenceFailureReasonEnum =
   | "PROCESSING_FAILURE_REASON_UNSPECIFIED"
   | "LOW_RESOLUTION"
@@ -356,25 +267,15 @@ export type PhotoSequenceFailureReasonEnum =
   | "INSUFFICIENT_MOVEMENT"
   | "MAST_DOWN"
   | "CAMERA_COVERED";
-const PhotoSequenceFailureReasonEnum = S.String;
-
 export type PhotoSequenceGpsSourceEnum = "PHOTO_SEQUENCE" | "CAMERA_MOTION_METADATA_TRACK";
-const PhotoSequenceGpsSourceEnum = S.String;
-
 export type PoseList = Array<Pose>;
-const PoseList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<PoseList>;
-
 export type PhotoSequenceProcessingStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
   | "PENDING"
   | "PROCESSING"
   | "PROCESSED"
   | "FAILED";
-const PhotoSequenceProcessingStateEnum = S.String;
-
 export type PhotoList = Array<Photo>;
-const PhotoList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PhotoList>;
-
 /** Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS. */
 export interface NoOverlapGpsFailureDetails {
   /** Time of first recorded GPS point. */
@@ -386,31 +287,16 @@ export interface NoOverlapGpsFailureDetails {
   /** Start time of video. */
   videoStartTime?: string;
 }
-const NoOverlapGpsFailureDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<NoOverlapGpsFailureDetails>;
-
 /** Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple indoor frames found, the first frame is recorded here. */
 export interface NotOutdoorsFailureDetails {
   /** Relative time (from the start of the video stream) when an indoor frame was found. */
   startTime?: string;
 }
-const NotOutdoorsFailureDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<NotOutdoorsFailureDetails>;
-
 /** Details related to ProcessingFailureReason#INSUFFICIENT_GPS. */
 export interface InsufficientGpsFailureDetails {
   /** The number of GPS points that were found in the video. */
   gpsPointsFound?: number;
 }
-const InsufficientGpsFailureDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<InsufficientGpsFailureDetails>;
-
 /** Details related to ProcessingFailureReason#GPS_DATA_GAP. If there are multiple GPS data gaps, only the one with the largest duration is reported here. */
 export interface GpsDataGapFailureDetails {
   /** The duration of the gap in GPS data that was found. */
@@ -418,11 +304,6 @@ export interface GpsDataGapFailureDetails {
   /** Relative time (from the start of the video stream) when the gap started. */
   gapStartTime?: string;
 }
-const GpsDataGapFailureDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GpsDataGapFailureDetails>;
-
 /** Details related to ProcessingFailureReason#IMU_DATA_GAP. If there are multiple IMU data gaps, only the one with the largest duration is reported here. */
 export interface ImuDataGapFailureDetails {
   /** Relative time (from the start of the video stream) when the gap started. */
@@ -430,11 +311,6 @@ export interface ImuDataGapFailureDetails {
   /** The duration of the gap in IMU data that was found. */
   gapDuration?: string;
 }
-const ImuDataGapFailureDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ImuDataGapFailureDetails>;
-
 /** Additional details to accompany the ProcessingFailureReason enum. This message is always expected to be used in conjunction with ProcessingFailureReason, and the oneof value set in this message should match the FailureReason. */
 export interface ProcessingFailureDetails {
   /** See NoOverlapGpsFailureDetails. */
@@ -448,11 +324,6 @@ export interface ProcessingFailureDetails {
   /** See ImuDataGapFailureDetails. */
   imuDataGapDetails?: ImuDataGapFailureDetails;
 }
-const ProcessingFailureDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ProcessingFailureDetails>;
-
 /** A rectangle in geographical coordinates. */
 export interface LatLngBounds {
   /** The southwest corner of these bounds. */
@@ -460,8 +331,6 @@ export interface LatLngBounds {
   /** The northeast corner of these bounds. */
   northeast?: LatLng;
 }
-const LatLngBounds = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<LatLngBounds>;
-
 /** A Generic 3d measurement sample. */
 export interface Measurement3d {
   /** The sensor measurement in the x axis. */
@@ -473,11 +342,7 @@ export interface Measurement3d {
   /** The timestamp of the IMU measurement. */
   captureTime?: string;
 }
-const Measurement3d = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Measurement3d>;
-
 export type Measurement3dList = Array<Measurement3d>;
-const Measurement3dList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Measurement3dList>;
-
 /** IMU data from the device sensors. */
 export interface Imu {
   /** The accelerometer measurements in meters/sec^2 with increasing timestamps from devices. */
@@ -487,8 +352,6 @@ export interface Imu {
   /** The gyroscope measurements in radians/sec with increasing timestamps from devices. */
   gyroRps?: Measurement3dList;
 }
-const Imu = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Imu>;
-
 /** A sequence of 360 photos along with metadata. */
 export interface PhotoSequence {
   /** Output only. If this sequence has processing_state = FAILED, this will contain the reason why it failed. If the processing_state is any other value, this field will be unset. */
@@ -522,19 +385,12 @@ export interface PhotoSequence {
   /** Output only. The total number of views that all the published images in this PhotoSequence have received. */
   viewCount?: string;
 }
-const PhotoSequence = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<PhotoSequence>;
-
 export interface CreatePhotoSequenceRequest {
   /** Required. The input form of PhotoSequence. */
   inputType?: CreatePhotoSequenceInputTypeEnum | (string & {});
   /** Request body */
   body?: PhotoSequence;
 }
-const CreatePhotoSequenceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreatePhotoSequenceRequest>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -548,30 +404,17 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Operation>;
-
 export interface DeletePhotoRequest {
   /** Required. ID of the Photo. */
   photoId: string;
 }
-const DeletePhotoRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DeletePhotoRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Empty>;
-
 export interface DeletePhotoSequenceRequest {
   /** Required. ID of the PhotoSequence. */
   sequenceId: string;
 }
-const DeletePhotoSequenceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeletePhotoSequenceRequest>;
-
 export type GetPhotoViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-const GetPhotoViewEnum = S.String;
-
 export interface GetPhotoRequest {
   /** Required. Specifies if a download URL for the photo bytes should be returned in the Photo response. */
   view?: GetPhotoViewEnum | (string & {});
@@ -580,11 +423,7 @@ export interface GetPhotoRequest {
   /** The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the user's language preference for Google services is used. */
   languageCode?: string;
 }
-const GetPhotoRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetPhotoRequest>;
-
 export type GetPhotoSequenceViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-const GetPhotoSequenceViewEnum = S.String;
-
 export interface GetPhotoSequenceRequest {
   /** Specifies if a download URL for the photo sequence should be returned in `download_url` of individual photos in the PhotoSequence response. > Note: Currently not implemented. */
   view?: GetPhotoSequenceViewEnum | (string & {});
@@ -593,14 +432,7 @@ export interface GetPhotoSequenceRequest {
   /** Optional. The filter expression. For example: `published_status=PUBLISHED`. The filters supported are: `published_status`. See https://google.aip.dev/160 for more information. */
   filter?: string;
 }
-const GetPhotoSequenceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetPhotoSequenceRequest>;
-
 export type ListPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-const ListPhotosViewEnum = S.String;
-
 export interface ListPhotosRequest {
   /** Optional. The nextPageToken value returned from a previous ListPhotos request, if any. */
   pageToken?: string;
@@ -613,8 +445,6 @@ export interface ListPhotosRequest {
   /** Optional. The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero or is not provided, the default page size of 100 is used. The number of photos returned in the response may be less than `pageSize` if the number of photos that belong to the user is less than `pageSize`. */
   pageSize?: number;
 }
-const ListPhotosRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ListPhotosRequest>;
-
 /** Response to list all photos that belong to a user. */
 export interface ListPhotosResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -622,8 +452,6 @@ export interface ListPhotosResponse {
   /** List of photos. The pageSize field in the request determines the number of items returned. */
   photos?: PhotoList;
 }
-const ListPhotosResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ListPhotosResponse>;
-
 export interface ListPhotoSequencesRequest {
   /** Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The filters supported are: `imagery_type`, `processing_state`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`, `filename_query`, `min_capture_time_seconds`, `max_capture_time_seconds. See https://google.aip.dev/160 for more information. Filename queries should sent as a Phrase in order to support multiple words and special characters by adding escaped quotes. Ex: filename_query="example of a phrase.mp4" */
   filter?: string;
@@ -632,14 +460,7 @@ export interface ListPhotoSequencesRequest {
   /** Optional. The maximum number of photo sequences to return. `pageSize` must be non-negative. If `pageSize` is zero or is not provided, the default page size of 100 is used. The number of photo sequences returned in the response may be less than `pageSize` if the number of matches is less than `pageSize`. This is currently unimplemented but is in process. */
   pageSize?: number;
 }
-const ListPhotoSequencesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListPhotoSequencesRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<OperationList>;
-
 /** Response to list all photo sequences that belong to a user. */
 export interface ListPhotoSequencesResponse {
   /** List of photo sequences via Operation interface. The maximum number of items returned is based on the pageSize field in the request. Each item in the list can have three possible states, * `Operation.done` = false, if the processing of PhotoSequence is not finished yet. * `Operation.done` = true and `Operation.error` is populated, if there was an error in processing. * `Operation.done` = true and `Operation.response` contains a PhotoSequence message, In each sequence, only Id is populated. */
@@ -647,29 +468,14 @@ export interface ListPhotoSequencesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-const ListPhotoSequencesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListPhotoSequencesResponse>;
-
 export interface StartUploadPhotoRequest {
   /** Request body */
   body?: Empty;
 }
-const StartUploadPhotoRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<StartUploadPhotoRequest>;
-
 export interface StartUploadPhotoSequenceRequest {
   /** Request body */
   body?: Empty;
 }
-const StartUploadPhotoSequenceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<StartUploadPhotoSequenceRequest>;
-
 export interface UpdatePhotoRequest_ {
   /** A unique identifier for a photo. */
   id: string;
@@ -678,8 +484,6 @@ export interface UpdatePhotoRequest_ {
   /** Request body */
   body?: Photo;
 }
-const UpdatePhotoRequest_ = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<UpdatePhotoRequest_>;
-
 export type BatchDeletePhotosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for specific failures that can occur per photo. */
 export const batchDeletePhotos: API.OperationMethod<
@@ -688,8 +492,8 @@ export const batchDeletePhotos: API.OperationMethod<
   BatchDeletePhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeletePhotosRequest_,
-  output: BatchDeletePhotosResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<BatchDeletePhotosRequest_>,
+  output: __S(7, __c0, 7) as any as S.Schema<BatchDeletePhotosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -703,8 +507,8 @@ export const batchGetPhotos: API.OperationMethod<
   BatchGetPhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetPhotosRequest,
-  output: BatchGetPhotosResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<BatchGetPhotosRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<BatchGetPhotosResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -718,8 +522,8 @@ export const batchUpdatePhotos: API.OperationMethod<
   BatchUpdatePhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdatePhotosRequest_,
-  output: BatchUpdatePhotosResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<BatchUpdatePhotosRequest_>,
+  output: __S(26, __c3, 2) as any as S.Schema<BatchUpdatePhotosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -733,8 +537,8 @@ export const createPhoto: API.OperationMethod<
   CreatePhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePhotoRequest,
-  output: Photo,
+  input: __S(27, __c3, 3) as any as S.Schema<CreatePhotoRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Photo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -748,8 +552,8 @@ export const createPhotoSequence: API.OperationMethod<
   CreatePhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePhotoSequenceRequest,
-  output: Operation,
+  input: __S(41, __c5, 1) as any as S.Schema<CreatePhotoSequenceRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -763,8 +567,8 @@ export const deletePhoto: API.OperationMethod<
   DeletePhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePhotoRequest,
-  output: Empty,
+  input: __S(43, __c5, 3) as any as S.Schema<DeletePhotoRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -778,8 +582,8 @@ export const deletePhotoSequence: API.OperationMethod<
   DeletePhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePhotoSequenceRequest,
-  output: Empty,
+  input: __S(45, __c5, 5) as any as S.Schema<DeletePhotoSequenceRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -789,8 +593,8 @@ export type GetPhotoError = NotFound | Forbidden | GcpOpError;
 /** Gets the metadata of the specified Photo. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. * google.rpc.Code.NOT_FOUND if the requested Photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed. */
 export const getPhoto: API.OperationMethod<GetPhotoRequest, Photo, GetPhotoError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetPhotoRequest,
-    output: Photo,
+    input: __S(46, __c5, 6) as any as S.Schema<GetPhotoRequest>,
+    output: __S(18, __c2, 2) as any as S.Schema<Photo>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -804,8 +608,8 @@ export const getPhotoSequence: API.OperationMethod<
   GetPhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPhotoSequenceRequest,
-  output: Operation,
+  input: __S(47, __c5, 7) as any as S.Schema<GetPhotoSequenceRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -820,8 +624,8 @@ export const listPhotos: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPhotosResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPhotosRequest,
-  output: ListPhotosResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<ListPhotosRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ListPhotosResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -837,8 +641,8 @@ export const listPhotoSequences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPhotoSequencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPhotoSequencesRequest,
-  output: ListPhotoSequencesResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<ListPhotoSequencesRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListPhotoSequencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -853,8 +657,8 @@ export const startUploadPhoto: API.OperationMethod<
   StartUploadPhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartUploadPhotoRequest,
-  output: UploadRef,
+  input: __S(53, __c6, 5) as any as S.Schema<StartUploadPhotoRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<UploadRef>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -873,8 +677,8 @@ export const startUploadPhotoSequence: API.OperationMethod<
   StartUploadPhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartUploadPhotoSequenceRequest,
-  output: UploadRef,
+  input: __S(54, __c6, 6) as any as S.Schema<StartUploadPhotoSequenceRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<UploadRef>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -888,8 +692,8 @@ export const updatePhoto: API.OperationMethod<
   UpdatePhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePhotoRequest_,
-  output: Photo,
+  input: __S(55, __c6, 7) as any as S.Schema<UpdatePhotoRequest_>,
+  output: __S(18, __c2, 2) as any as S.Schema<Photo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -903,13 +707,13 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          photoIds: S.optional(StringList),
+          photoIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "BatchDeletePhotosRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(BatchDeletePhotosRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -923,21 +727,21 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
-      return S.Array(Status);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(StatusList),
+          status: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "BatchDeletePhotosResponse",
@@ -949,9 +753,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(BatchGetPhotosViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          photoIds: S.optional(StringList.pipe(T.Query())),
+          photoIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -975,7 +779,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Place" });
     case 3:
-      return S.Array(Place);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -995,8 +799,8 @@ function __c1(j: number): any {
         S.Struct({
           roll: S.optional(S.Number),
           gpsRecordTimestampUnixEpoch: S.optional(S.String),
-          level: S.optional(Level),
-          latLngPair: S.optional(LatLng),
+          level: S.optional(__S(12, __c1, 4)),
+          latLngPair: S.optional(__S(13, __c1, 5)),
           heading: S.optional(S.Number),
           accuracyMeters: S.optional(S.Number),
           pitch: S.optional(S.Number),
@@ -1006,7 +810,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          target: S.optional(PhotoId),
+          target: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "Connection" });
   }
@@ -1014,7 +818,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Connection);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1024,17 +828,17 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          photoId: S.optional(PhotoId),
+          photoId: S.optional(__S(9, __c1, 1)),
           viewCount: S.optional(S.String),
-          places: S.optional(PlaceList),
-          mapsPublishStatus: S.optional(PhotoMapsPublishStatusEnum),
-          pose: S.optional(Pose),
-          connections: S.optional(ConnectionList),
-          transferStatus: S.optional(PhotoTransferStatusEnum),
+          places: S.optional(__S(11, __c1, 3)),
+          mapsPublishStatus: S.optional(S.String),
+          pose: S.optional(__S(14, __c1, 6)),
+          connections: S.optional(__S(16, __c2, 0)),
+          transferStatus: S.optional(S.String),
           thumbnailUrl: S.optional(S.String),
           captureTime: S.optional(S.String),
           downloadUrl: S.optional(S.String),
-          uploadReference: S.optional(UploadRef),
+          uploadReference: S.optional(__S(17, __c2, 1)),
           uploadTime: S.optional(S.String),
           shareLink: S.optional(S.String),
         }),
@@ -1042,27 +846,27 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          photo: S.optional(Photo),
-          status: S.optional(Status),
+          photo: S.optional(__S(18, __c2, 2)),
+          status: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "PhotoResponse" });
     case 4:
-      return S.Array(PhotoResponse);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(PhotoResponseList),
+          results: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "BatchGetPhotosResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          photo: S.optional(Photo),
+          photo: S.optional(__S(18, __c2, 2)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdatePhotoRequest" });
     case 7:
-      return S.Array(UpdatePhotoRequest);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1070,13 +874,13 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          updatePhotoRequests: S.optional(UpdatePhotoRequestList),
+          updatePhotoRequests: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "BatchUpdatePhotosRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(BatchUpdatePhotosRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1090,7 +894,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(PhotoResponseList),
+          results: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "BatchUpdatePhotosResponse",
@@ -1098,7 +902,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Photo.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1108,9 +912,9 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "CreatePhotoRequest" });
     case 4:
-      return S.Array(Pose);
+      return S.Array(__S(14, __c1, 6));
     case 5:
-      return S.Array(Photo);
+      return S.Array(__S(18, __c2, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1159,18 +963,18 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          noOverlapGpsDetails: S.optional(NoOverlapGpsFailureDetails),
-          notOutdoorsDetails: S.optional(NotOutdoorsFailureDetails),
-          insufficientGpsDetails: S.optional(InsufficientGpsFailureDetails),
-          gpsDataGapDetails: S.optional(GpsDataGapFailureDetails),
-          imuDataGapDetails: S.optional(ImuDataGapFailureDetails),
+          noOverlapGpsDetails: S.optional(__S(30, __c3, 6)),
+          notOutdoorsDetails: S.optional(__S(31, __c3, 7)),
+          insufficientGpsDetails: S.optional(__S(32, __c4, 0)),
+          gpsDataGapDetails: S.optional(__S(33, __c4, 1)),
+          imuDataGapDetails: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "ProcessingFailureDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          southwest: S.optional(LatLng),
-          northeast: S.optional(LatLng),
+          southwest: S.optional(__S(13, __c1, 5)),
+          northeast: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "LatLngBounds" });
     case 5:
@@ -1183,13 +987,13 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Measurement3d" });
     case 6:
-      return S.Array(Measurement3d);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accelMpsps: S.optional(Measurement3dList),
-          magUt: S.optional(Measurement3dList),
-          gyroRps: S.optional(Measurement3dList),
+          accelMpsps: S.optional(__S(38, __c4, 6)),
+          magUt: S.optional(__S(38, __c4, 6)),
+          gyroRps: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "Imu" });
   }
@@ -1199,28 +1003,28 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          failureReason: S.optional(PhotoSequenceFailureReasonEnum),
-          gpsSource: S.optional(PhotoSequenceGpsSourceEnum),
-          rawGpsTimeline: S.optional(PoseList),
+          failureReason: S.optional(S.String),
+          gpsSource: S.optional(S.String),
+          rawGpsTimeline: S.optional(__S(28, __c3, 4)),
           captureTimeOverride: S.optional(S.String),
-          uploadReference: S.optional(UploadRef),
+          uploadReference: S.optional(__S(17, __c2, 1)),
           filename: S.optional(S.String),
-          processingState: S.optional(PhotoSequenceProcessingStateEnum),
-          photos: S.optional(PhotoList),
+          processingState: S.optional(S.String),
+          photos: S.optional(__S(29, __c3, 5)),
           id: S.optional(S.String),
-          failureDetails: S.optional(ProcessingFailureDetails),
+          failureDetails: S.optional(__S(35, __c4, 3)),
           distanceMeters: S.optional(S.Number),
-          sequenceBounds: S.optional(LatLngBounds),
+          sequenceBounds: S.optional(__S(36, __c4, 4)),
           uploadTime: S.optional(S.String),
-          imu: S.optional(Imu),
+          imu: S.optional(__S(39, __c4, 7)),
           viewCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhotoSequence" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputType: S.optional(CreatePhotoSequenceInputTypeEnum.pipe(T.Query())),
-          body: S.optional(PhotoSequence.pipe(T.HttpBody())),
+          inputType: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1235,10 +1039,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(3, __c0, 3)),
           name: S.optional(S.String),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(5, __c0, 5)),
+          response: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
@@ -1274,7 +1078,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(GetPhotoViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           photoId: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1288,7 +1092,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(GetPhotoSequenceViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           sequenceId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1309,7 +1113,7 @@ function __c6(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListPhotosViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1323,7 +1127,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          photos: S.optional(PhotoList),
+          photos: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "ListPhotosResponse" });
     case 2:
@@ -1343,11 +1147,11 @@ function __c6(j: number): any {
         identifier: "ListPhotoSequencesRequest",
       });
     case 3:
-      return S.Array(Operation);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          photoSequences: S.optional(OperationList),
+          photoSequences: S.optional(__S(51, __c6, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1356,7 +1160,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Empty.pipe(T.HttpBody())),
+          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1368,7 +1172,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Empty.pipe(T.HttpBody())),
+          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1384,7 +1188,7 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Photo.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1394,4 +1198,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "UpdatePhotoRequest_" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

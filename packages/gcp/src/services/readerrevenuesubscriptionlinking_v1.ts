@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,24 +70,12 @@ export interface DeletePublicationsReadersRequest {
   /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
   name: string;
 }
-const DeletePublicationsReadersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeletePublicationsReadersRequest>;
-
 /** Response to deleting a reader of a publication. */
 export interface DeleteReaderResponse {}
-const DeleteReaderResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteReaderResponse>;
-
 export interface GetEntitlementsPublicationsReadersRequest {
   /** Required. The name of the reader entitlements to retrieve. Format: publications/{publication_id}/readers/{reader_id}/entitlements */
   name: string;
 }
-const GetEntitlementsPublicationsReadersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetEntitlementsPublicationsReadersRequest>;
-
 /** A single entitlement for a publication reader */
 export interface Entitlement {
   /** A source-specific subscription token. This is an opaque string that the publisher provides to Google. This token is opaque and has no meaning to Google. */
@@ -97,11 +87,7 @@ export interface Entitlement {
   /** Optional. Expiration time of the entitlement. If unset, the entitlement does not expire (indefinite entitlement). We need to support indefinite entitlements for platform publishers. dd: go/rrm-sl-notedotcom Entitlements that have expired over 30 days will be purged. */
   expireTime?: string;
 }
-const Entitlement = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Entitlement>;
-
 export type EntitlementList = Array<Entitlement>;
-const EntitlementList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EntitlementList>;
-
 /** A singleton containing all of a reader's entitlements for a publication. */
 export interface ReaderEntitlements {
   /** Output only. The resource name of the singleton. */
@@ -109,17 +95,10 @@ export interface ReaderEntitlements {
   /** All of the entitlements for a publication reader. */
   entitlements?: EntitlementList;
 }
-const ReaderEntitlements = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ReaderEntitlements>;
-
 export interface GetPublicationsReadersRequest {
   /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
   name: string;
 }
-const GetPublicationsReadersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetPublicationsReadersRequest>;
-
 /** A reader of a publication. */
 export interface Reader {
   /** Output only. The resource name of the reader. The last part of ppid in the resource name is the publisher provided id. */
@@ -133,8 +112,6 @@ export interface Reader {
   /** Output only. The publisher provided id of the reader. */
   ppid?: string;
 }
-const Reader = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Reader>;
-
 export interface ListPublications_ReadersEntitlementsRequest {
   /** Optional. A page token, received from a previous `ListReaderEntitlements` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReaderEntitlements` must match the call that provided the page token. */
   pageToken?: string;
@@ -143,17 +120,7 @@ export interface ListPublications_ReadersEntitlementsRequest {
   /** Required. The parent reader scope. Format: "publications/-/readers/{reader_id}" */
   parent: string;
 }
-const ListPublications_ReadersEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListPublications_ReadersEntitlementsRequest>;
-
 export type ReaderEntitlementsList = Array<ReaderEntitlements>;
-const ReaderEntitlementsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ReaderEntitlementsList>;
-
 /** Response containing the aggregated collection of matching ReaderEntitlements objects. */
 export interface ListReaderEntitlementsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -161,11 +128,6 @@ export interface ListReaderEntitlementsResponse {
   /** The collection of ReaderEntitlements found across the scoped child publications. Every element's `name` field will contain the canonical sub-publication path, never the wildcard dash. */
   readerEntitlements?: ReaderEntitlementsList;
 }
-const ListReaderEntitlementsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListReaderEntitlementsResponse>;
-
 export interface UpdateEntitlementsPublicationsReadersRequest {
   /** Optional. The list of fields to update. Defaults to all fields. */
   updateMask?: string;
@@ -174,11 +136,6 @@ export interface UpdateEntitlementsPublicationsReadersRequest {
   /** Request body */
   body?: ReaderEntitlements;
 }
-const UpdateEntitlementsPublicationsReadersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateEntitlementsPublicationsReadersRequest>;
-
 export type DeletePublicationsReadersError =
   | NotFound
   | Forbidden
@@ -192,8 +149,8 @@ export const deletePublicationsReaders: API.OperationMethod<
   DeletePublicationsReadersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePublicationsReadersRequest,
-  output: DeleteReaderResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeletePublicationsReadersRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteReaderResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -207,8 +164,8 @@ export const getEntitlementsPublicationsReaders: API.OperationMethod<
   GetEntitlementsPublicationsReadersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntitlementsPublicationsReadersRequest,
-  output: ReaderEntitlements,
+  input: __S(2, __c0, 2) as any as S.Schema<GetEntitlementsPublicationsReadersRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ReaderEntitlements>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -222,8 +179,8 @@ export const getPublicationsReaders: API.OperationMethod<
   GetPublicationsReadersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicationsReadersRequest,
-  output: Reader,
+  input: __S(6, __c0, 6) as any as S.Schema<GetPublicationsReadersRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Reader>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -238,8 +195,8 @@ export const listPublications_ReadersEntitlements: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReaderEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPublications_ReadersEntitlementsRequest,
-  output: ListReaderEntitlementsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListPublications_ReadersEntitlementsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListReaderEntitlementsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -259,8 +216,8 @@ export const updateEntitlementsPublicationsReaders: API.OperationMethod<
   UpdateEntitlementsPublicationsReadersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEntitlementsPublicationsReadersRequest,
-  output: ReaderEntitlements,
+  input: __S(11, __c1, 3) as any as S.Schema<UpdateEntitlementsPublicationsReadersRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ReaderEntitlements>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -312,12 +269,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Entitlement" });
     case 4:
-      return S.Array(Entitlement);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          entitlements: S.optional(EntitlementList),
+          entitlements: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ReaderEntitlements" });
     case 6:
@@ -365,12 +322,12 @@ function __c1(j: number): any {
         identifier: "ListPublications_ReadersEntitlementsRequest",
       });
     case 1:
-      return S.Array(ReaderEntitlements);
+      return S.Array(__S(5, __c0, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          readerEntitlements: S.optional(ReaderEntitlementsList),
+          readerEntitlements: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "ListReaderEntitlementsResponse",
@@ -380,7 +337,7 @@ function __c1(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(ReaderEntitlements.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -392,4 +349,9 @@ function __c1(j: number): any {
         identifier: "UpdateEntitlementsPublicationsReadersRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

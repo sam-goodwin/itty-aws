@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,28 +66,14 @@ export class NotFound
 
 /** Request for the `AbortFunctionUpgrade` method. */
 export interface AbortFunctionUpgradeRequest {}
-const AbortFunctionUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AbortFunctionUpgradeRequest>;
-
 export interface AbortFunctionUpgradeProjectsLocationsFunctionsRequest {
   /** Required. The name of the function for which upgrade should be aborted. */
   name: string;
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-const AbortFunctionUpgradeProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AbortFunctionUpgradeProjectsLocationsFunctionsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -95,8 +83,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -110,8 +96,6 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
-
 /** Request for the `CommitFunctionUpgradeAsGen2` method. */
 export type CommitFunctionUpgradeAsGen2Request = AbortFunctionUpgradeRequest;
 export interface CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest {
@@ -120,11 +104,6 @@ export interface CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-const CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest>;
-
 /** Request for the `CommitFunctionUpgrade` method. */
 export type CommitFunctionUpgradeRequest = AbortFunctionUpgradeRequest;
 export interface CommitFunctionUpgradeProjectsLocationsFunctionsRequest {
@@ -133,17 +112,10 @@ export interface CommitFunctionUpgradeProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-const CommitFunctionUpgradeProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CommitFunctionUpgradeProjectsLocationsFunctionsRequest>;
-
 export type EventTriggerRetryPolicyEnum =
   | "RETRY_POLICY_UNSPECIFIED"
   | "RETRY_POLICY_DO_NOT_RETRY"
   | "RETRY_POLICY_RETRY";
-const EventTriggerRetryPolicyEnum = S.String;
-
 /** Filters events based on exact matches on the CloudEvents attributes. */
 export interface EventFilter {
   /** Required. The name of a CloudEvents attribute. */
@@ -153,11 +125,7 @@ export interface EventFilter {
   /** Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`. */
   operator?: string;
 }
-const EventFilter = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EventFilter>;
-
 export type EventFilterList = Array<EventFilter>;
-const EventFilterList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<EventFilterList>;
-
 /** Describes EventTrigger, used to request events to be sent from another service. */
 export interface EventTrigger {
   /** Optional. If unset, then defaults to ignoring failures (i.e. not retrying them). */
@@ -179,17 +147,11 @@ export interface EventTrigger {
   /** Required. The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`. */
   eventType?: string;
 }
-const EventTrigger = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<EventTrigger>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StringMap>;
-
 export type ServiceConfigVpcConnectorEgressSettingsEnum =
   | "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
   | "PRIVATE_RANGES_ONLY"
   | "ALL_TRAFFIC";
-const ServiceConfigVpcConnectorEgressSettingsEnum = S.String;
-
 /** Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. */
 export interface SecretEnvVar {
   /** Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start. */
@@ -201,33 +163,21 @@ export interface SecretEnvVar {
   /** Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function. */
   projectId?: string;
 }
-const SecretEnvVar = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SecretEnvVar>;
-
 export type SecretEnvVarList = Array<SecretEnvVar>;
-const SecretEnvVarList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SecretEnvVarList>;
-
 export type ServiceConfigIngressSettingsEnum =
   | "INGRESS_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL"
   | "ALLOW_INTERNAL_ONLY"
   | "ALLOW_INTERNAL_AND_GCLB";
-const ServiceConfigIngressSettingsEnum = S.String;
-
 export type ServiceConfigDirectVpcEgressEnum =
   | "DIRECT_VPC_EGRESS_UNSPECIFIED"
   | "VPC_EGRESS_PRIVATE_RANGES_ONLY"
   | "VPC_EGRESS_ALL_TRAFFIC";
-const ServiceConfigDirectVpcEgressEnum = S.String;
-
 export type ServiceConfigSecurityLevelEnum =
   | "SECURITY_LEVEL_UNSPECIFIED"
   | "SECURE_ALWAYS"
   | "SECURE_OPTIONAL";
-const ServiceConfigSecurityLevelEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
-
 /** The Direct VPC network interface. This is mutually exclusive with VPC Connector. */
 export interface DirectVpcNetworkInterface {
   /** Optional. The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network. */
@@ -237,17 +187,7 @@ export interface DirectVpcNetworkInterface {
   /** Optional. The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. */
   subnetwork?: string;
 }
-const DirectVpcNetworkInterface = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DirectVpcNetworkInterface>;
-
 export type DirectVpcNetworkInterfaceList = Array<DirectVpcNetworkInterface>;
-const DirectVpcNetworkInterfaceList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DirectVpcNetworkInterfaceList>;
-
 /** Configuration for a single version. */
 export interface SecretVersion {
   /** Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately. */
@@ -255,11 +195,7 @@ export interface SecretVersion {
   /** Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`. */
   path?: string;
 }
-const SecretVersion = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SecretVersion>;
-
 export type SecretVersionList = Array<SecretVersion>;
-const SecretVersionList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SecretVersionList>;
-
 /** Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. */
 export interface SecretVolume {
   /** List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point. */
@@ -271,11 +207,7 @@ export interface SecretVolume {
   /** Name of the secret in secret manager (not the full resource name). */
   secret?: string;
 }
-const SecretVolume = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SecretVolume>;
-
 export type SecretVolumeList = Array<SecretVolume>;
-const SecretVolumeList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SecretVolumeList>;
-
 /** Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). */
 export interface ServiceConfig {
   /** The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*\/locations/*\/connectors/*`. */
@@ -321,8 +253,6 @@ export interface ServiceConfig {
   /** Secret volumes configuration. */
   secretVolumes?: SecretVolumeList;
 }
-const ServiceConfig = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ServiceConfig>;
-
 export type UpgradeInfoUpgradeStateEnum =
   | "UPGRADE_STATE_UNSPECIFIED"
   | "ELIGIBLE_FOR_2ND_GEN_UPGRADE"
@@ -338,8 +268,6 @@ export type UpgradeInfoUpgradeStateEnum =
   | "COMMIT_FUNCTION_UPGRADE_ERROR_ROLLBACK_SAFE"
   | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL"
   | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR";
-const UpgradeInfoUpgradeStateEnum = S.String;
-
 /** Location of the source in a Google Cloud Source Repository. */
 export interface RepoSource {
   /** ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed. */
@@ -355,8 +283,6 @@ export interface RepoSource {
   /** Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
   tagName?: string;
 }
-const RepoSource = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<RepoSource>;
-
 /** Location of the source in an archive file in Google Cloud Storage. */
 export interface StorageSource {
   /** Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
@@ -368,8 +294,6 @@ export interface StorageSource {
   /** Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build. */
   object?: string;
 }
-const StorageSource = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<StorageSource>;
-
 /** Provenance of the source. Ways to find the original source, or verify that some source was used for this build. */
 export interface SourceProvenance {
   /** A copy of the build's `source.git_uri`, if exists, with any commits resolved. */
@@ -379,21 +303,15 @@ export interface SourceProvenance {
   /** A copy of the build's `source.storage_source`, if exists, with any generations resolved. */
   resolvedStorageSource?: StorageSource;
 }
-const SourceProvenance = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SourceProvenance>;
-
 export type BuildConfigDockerRegistryEnum =
   | "DOCKER_REGISTRY_UNSPECIFIED"
   | "CONTAINER_REGISTRY"
   | "ARTIFACT_REGISTRY";
-const BuildConfigDockerRegistryEnum = S.String;
-
 /** Security patches are only applied when a function is redeployed. */
 export interface OnDeployUpdatePolicy {
   /** Output only. contains the runtime version which was used during latest function deployment. */
   runtimeVersion?: string;
 }
-const OnDeployUpdatePolicy = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<OnDeployUpdatePolicy>;
-
 /** Security patches are applied automatically to the runtime without requiring the function to be redeployed. */
 export type AutomaticUpdatePolicy = AbortFunctionUpgradeRequest;
 /** The location of the function source code. */
@@ -405,8 +323,6 @@ export interface Source {
   /** If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob// */
   gitUri?: string;
 }
-const Source = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Source>;
-
 /** Describes the Build step of the function that builds a container from the given source. */
 export interface BuildConfig {
   /** Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project. */
@@ -434,8 +350,6 @@ export interface BuildConfig {
   /** Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`. */
   serviceAccount?: string;
 }
-const BuildConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<BuildConfig>;
-
 /** Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration. * Current state of migration for function undergoing migration. */
 export interface UpgradeInfo {
   /** UpgradeState of the function */
@@ -447,8 +361,6 @@ export interface UpgradeInfo {
   /** Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade. */
   buildConfig?: BuildConfig;
 }
-const UpgradeInfo = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UpgradeInfo>;
-
 export type Cloudfunctions_FunctionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -458,18 +370,12 @@ export type Cloudfunctions_FunctionStateEnum =
   | "UNKNOWN"
   | "DETACHING"
   | "DETACH_FAILED";
-const Cloudfunctions_FunctionStateEnum = S.String;
-
 export type Cloudfunctions_FunctionEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2";
-const Cloudfunctions_FunctionEnvironmentEnum = S.String;
-
 export type GoogleCloudFunctionsV2betaStateMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
   | "INFO";
-const GoogleCloudFunctionsV2betaStateMessageSeverityEnum = S.String;
-
 /** Informational messages about the state of the Cloud Function or Operation. */
 export interface GoogleCloudFunctionsV2betaStateMessage {
   /** Severity of the state message. */
@@ -479,18 +385,8 @@ export interface GoogleCloudFunctionsV2betaStateMessage {
   /** The message. */
   message?: string;
 }
-const GoogleCloudFunctionsV2betaStateMessage = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleCloudFunctionsV2betaStateMessage>;
-
 export type GoogleCloudFunctionsV2betaStateMessageList =
   Array<GoogleCloudFunctionsV2betaStateMessage>;
-const GoogleCloudFunctionsV2betaStateMessageList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleCloudFunctionsV2betaStateMessageList>;
-
 /** Describes a Cloud Function that contains user computation executed in response to an event. It encapsulates function and trigger configurations. */
 export interface Cloudfunctions_Function {
   /** An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service. */
@@ -526,11 +422,6 @@ export interface Cloudfunctions_Function {
   /** Describes the Build step of the function that builds a container from the given source. */
   buildConfig?: BuildConfig;
 }
-const Cloudfunctions_Function = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<Cloudfunctions_Function>;
-
 export interface CreateProjectsLocationsFunctionsRequest {
   /** Required. The project and location in which the function should be created, specified in the format `projects/*\/locations/*` */
   parent: string;
@@ -539,20 +430,10 @@ export interface CreateProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: Cloudfunctions_Function;
 }
-const CreateProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateProjectsLocationsFunctionsRequest>;
-
 export interface DeleteProjectsLocationsFunctionsRequest {
   /** Required. The name of the function which should be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsFunctionsRequest>;
-
 /** Request for the `DetachFunction` method. */
 export type DetachFunctionRequest = AbortFunctionUpgradeRequest;
 export interface DetachFunctionProjectsLocationsFunctionsRequest {
@@ -561,11 +442,6 @@ export interface DetachFunctionProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-const DetachFunctionProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DetachFunctionProjectsLocationsFunctionsRequest>;
-
 /** Request of `GenerateDownloadUrl` method. */
 export type GenerateDownloadUrlRequest = AbortFunctionUpgradeRequest;
 export interface GenerateDownloadUrlProjectsLocationsFunctionsRequest {
@@ -574,24 +450,12 @@ export interface GenerateDownloadUrlProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-const GenerateDownloadUrlProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GenerateDownloadUrlProjectsLocationsFunctionsRequest>;
-
 /** Response of `GenerateDownloadUrl` method. */
 export interface GenerateDownloadUrlResponse {
   /** The generated Google Cloud Storage signed URL that should be used for function source code download. */
   downloadUrl?: string;
 }
-const GenerateDownloadUrlResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GenerateDownloadUrlResponse>;
-
 export type GenerateUploadUrlRequestEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2";
-const GenerateUploadUrlRequestEnvironmentEnum = S.String;
-
 /** Request of `GenerateSourceUploadUrl` method. */
 export interface GenerateUploadUrlRequest {
   /** The function environment the generated upload url will be used for. The upload url for 2nd Gen functions can also be used for 1st gen functions, but not vice versa. If not specified, 2nd generation-style upload URLs are generated. */
@@ -599,22 +463,12 @@ export interface GenerateUploadUrlRequest {
   /** Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function source code objects in intermediate Cloud Storage buckets. When you generate an upload url and upload your source code, it gets copied to an intermediate Cloud Storage bucket. The source code is then copied to a versioned directory in the sources bucket in the consumer project during the function deployment. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. The Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). */
   kmsKeyName?: string;
 }
-const GenerateUploadUrlRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GenerateUploadUrlRequest>;
-
 export interface GenerateUploadUrlProjectsLocationsFunctionsRequest {
   /** Required. The project and location in which the Google Cloud Storage signed URL should be generated, specified in the format `projects/*\/locations/*`. */
   parent: string;
   /** Request body */
   body?: GenerateUploadUrlRequest;
 }
-const GenerateUploadUrlProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GenerateUploadUrlProjectsLocationsFunctionsRequest>;
-
 /** Response of `GenerateSourceUploadUrl` method. */
 export interface GenerateUploadUrlResponse {
   /** The location of the source code in the upload bucket. Once the archive is uploaded using the `upload_url` use this field to set the `function.build_config.source.storage_source` during CreateFunction and UpdateFunction. Generation defaults to 0, as Cloud Storage provides a new generation only upon uploading a new object or version of an object. */
@@ -622,29 +476,17 @@ export interface GenerateUploadUrlResponse {
   /** The generated Google Cloud Storage signed URL that should be used for a function source code upload. The uploaded file should be a zip archive which contains a function. */
   uploadUrl?: string;
 }
-const GenerateUploadUrlResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GenerateUploadUrlResponse>;
-
 export interface GetIamPolicyProjectsLocationsFunctionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsLocationsFunctionsRequest>;
-
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -652,11 +494,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-const AuditLogConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AuditLogConfig>;
-
 export type AuditLogConfigList = Array<AuditLogConfig>;
-const AuditLogConfigList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -664,11 +502,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-const AuditConfig = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AuditConfig>;
-
 export type AuditConfigList = Array<AuditConfig>;
-const AuditConfigList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AuditConfigList>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -680,8 +514,6 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -691,11 +523,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-const Binding = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -707,28 +535,16 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-const Policy = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Policy>;
-
 export interface GetProjectsLocationsFunctionsRequest {
   /** Optional. The optional version of the 1st gen function whose details should be obtained. The version of a 1st gen function is an integer that starts from 1 and gets incremented on redeployments. GCF may keep historical configs for old versions of 1st gen function. This field can be specified to fetch the historical configs. This field is valid only for GCF 1st gen function. */
   revision?: string;
   /** Required. The name of the function which details should be obtained. */
   name: string;
 }
-const GetProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetProjectsLocationsFunctionsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -741,11 +557,6 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -759,11 +570,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Location>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -771,11 +578,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsFunctionsRequest {
   /** The sorting order of the resources returned. Value should be a comma separated list of fields. The default sorting order is ascending. See https://google.aip.dev/132#ordering. */
   orderBy?: string;
@@ -788,17 +590,7 @@ export interface ListProjectsLocationsFunctionsRequest {
   /** Maximum number of functions to return per call. The largest allowed page_size is 1,000, if the page_size is omitted or specified as greater than 1,000 then it will be replaced as 1,000. The size of the list response can be less than specified when used with filters. */
   pageSize?: number;
 }
-const ListProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListProjectsLocationsFunctionsRequest>;
-
 export type Cloudfunctions_FunctionList = Array<Cloudfunctions_Function>;
-const Cloudfunctions_FunctionList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<Cloudfunctions_FunctionList>;
-
 /** Response for the `ListFunctions` method. */
 export interface ListFunctionsResponse {
   /** The functions that match the request. */
@@ -808,11 +600,6 @@ export interface ListFunctionsResponse {
   /** Locations that could not be reached. The response does not include any functions from these locations. */
   unreachable?: StringList;
 }
-const ListFunctionsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListFunctionsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -825,14 +612,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -842,22 +622,12 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsRuntimesRequest {
   /** Required. The project and location from which the runtimes should be listed, specified in the format `projects/*\/locations/*` */
   parent: string;
   /** The filter for Runtimes that match the filter expression, following the syntax outlined in https://google.aip.dev/160. */
   filter?: string;
 }
-const ListProjectsLocationsRuntimesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListProjectsLocationsRuntimesRequest>;
-
 export type RuntimeStageEnum =
   | "RUNTIME_STAGE_UNSPECIFIED"
   | "DEVELOPMENT"
@@ -866,8 +636,6 @@ export type RuntimeStageEnum =
   | "GA"
   | "DEPRECATED"
   | "DECOMMISSIONED";
-const RuntimeStageEnum = S.String;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Cloudfunctions_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -877,11 +645,7 @@ export interface Cloudfunctions_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-const Cloudfunctions_Date = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Cloudfunctions_Date>;
-
 export type RuntimeEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2";
-const RuntimeEnvironmentEnum = S.String;
-
 /** Describes a runtime and any special information (e.g., deprecation status) related to it. */
 export interface Runtime {
   /** The stage of life this runtime is in, e.g., BETA, GA, etc. */
@@ -899,18 +663,12 @@ export interface Runtime {
   /** Warning messages, e.g., a deprecation warning. */
   warnings?: StringList;
 }
-const Runtime = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Runtime>;
-
 export type RuntimeList = Array<Runtime>;
-const RuntimeList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RuntimeList>;
-
 /** Response for the `ListRuntimes` method. */
 export interface ListRuntimesResponse {
   /** The runtimes that match the request. */
   runtimes?: RuntimeList;
 }
-const ListRuntimesResponse = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ListRuntimesResponse>;
-
 export interface PatchProjectsLocationsFunctionsRequest {
   /** A user-defined name of the function. Function names must be unique globally and match pattern `projects/*\/locations/*\/functions/*` */
   name: string;
@@ -919,11 +677,6 @@ export interface PatchProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: Cloudfunctions_Function;
 }
-const PatchProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<PatchProjectsLocationsFunctionsRequest>;
-
 /** Request for the `RedirectFunctionUpgradeTraffic` method. */
 export type RedirectFunctionUpgradeTrafficRequest = AbortFunctionUpgradeRequest;
 export interface RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest {
@@ -932,11 +685,6 @@ export interface RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-const RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>;
-
 /** Request for the `RollbackFunctionUpgradeTraffic` method. */
 export type RollbackFunctionUpgradeTrafficRequest = AbortFunctionUpgradeRequest;
 export interface RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest {
@@ -945,11 +693,6 @@ export interface RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-const RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -957,36 +700,22 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsFunctionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<SetIamPolicyProjectsLocationsFunctionsRequest>;
-
 /** Contains overrides related to the function's build configuration. */
 export interface BuildConfigOverrides {
   /** Optional. Specifies the desired runtime for the new Cloud Run function. (e.g., `"nodejs20"`, `"python312"`). Constraints: 1. This field CANNOT be used to change the runtime language (e.g., from `NODEJS` to `PYTHON`). The backend will enforce this. 2. This field can ONLY be used to upgrade the runtime version (e.g., `nodejs18` to `nodejs20`). Downgrading the version is not permitted. The backend will validate the version change. If provided and valid, this overrides the runtime of the Gen1 function. */
   runtime?: string;
 }
-const BuildConfigOverrides = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<BuildConfigOverrides>;
-
 /** Contains overrides related to the function's service configuration. */
 export interface ServiceConfigOverrides {
   /** Optional. Specifies the maximum number of instances for the new Cloud Run function. If provided, this overrides the max_instance_count setting of the Gen1 function. */
   maxInstanceCount?: number;
 }
-const ServiceConfigOverrides = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ServiceConfigOverrides>;
-
 /** Request for the `SetupFunctionUpgradeConfig` method. */
 export interface SetupFunctionUpgradeConfigRequest {
   /** Optional. Specifies overrides for the build process. */
@@ -996,51 +725,28 @@ export interface SetupFunctionUpgradeConfigRequest {
   /** Optional. Specifies overrides for the service configuration. */
   serviceConfigOverrides?: ServiceConfigOverrides;
 }
-const SetupFunctionUpgradeConfigRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<SetupFunctionUpgradeConfigRequest>;
-
 export interface SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest {
   /** Required. The name of the function which should have configuration copied for upgrade. */
   name: string;
   /** Request body */
   body?: SetupFunctionUpgradeConfigRequest;
 }
-const SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsFunctionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsFunctionsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export type AbortFunctionUpgradeProjectsLocationsFunctionsError =
   | NotFound
   | Forbidden
@@ -1054,8 +760,8 @@ export const abortFunctionUpgradeProjectsLocationsFunctions: API.OperationMethod
   AbortFunctionUpgradeProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AbortFunctionUpgradeProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(1, __c0, 1) as any as S.Schema<AbortFunctionUpgradeProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1074,8 +780,12 @@ export const commitFunctionUpgradeAsGen2ProjectsLocationsFunctions: API.Operatio
   CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(
+    6,
+    __c0,
+    6,
+  ) as any as S.Schema<CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1094,8 +804,8 @@ export const commitFunctionUpgradeProjectsLocationsFunctions: API.OperationMetho
   CommitFunctionUpgradeProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitFunctionUpgradeProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(7, __c0, 7) as any as S.Schema<CommitFunctionUpgradeProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1114,8 +824,8 @@ export const createProjectsLocationsFunctions: API.OperationMethod<
   CreateProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1134,8 +844,8 @@ export const deleteProjectsLocationsFunctions: API.OperationMethod<
   DeleteProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(33, __c4, 1) as any as S.Schema<DeleteProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1154,8 +864,8 @@ export const detachFunctionProjectsLocationsFunctions: API.OperationMethod<
   DetachFunctionProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachFunctionProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(34, __c4, 2) as any as S.Schema<DetachFunctionProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1174,8 +884,8 @@ export const generateDownloadUrlProjectsLocationsFunctions: API.OperationMethod<
   GenerateDownloadUrlProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateDownloadUrlProjectsLocationsFunctionsRequest,
-  output: GenerateDownloadUrlResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<GenerateDownloadUrlProjectsLocationsFunctionsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GenerateDownloadUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1194,8 +904,8 @@ export const generateUploadUrlProjectsLocationsFunctions: API.OperationMethod<
   GenerateUploadUrlProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateUploadUrlProjectsLocationsFunctionsRequest,
-  output: GenerateUploadUrlResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<GenerateUploadUrlProjectsLocationsFunctionsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<GenerateUploadUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1209,8 +919,8 @@ export const getIamPolicyProjectsLocationsFunctions: API.OperationMethod<
   GetIamPolicyProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsFunctionsRequest,
-  output: Policy,
+  input: __S(40, __c5, 0) as any as S.Schema<GetIamPolicyProjectsLocationsFunctionsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1224,8 +934,8 @@ export const getProjectsLocationsFunctions: API.OperationMethod<
   GetProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsFunctionsRequest,
-  output: Cloudfunctions_Function,
+  input: __S(49, __c6, 1) as any as S.Schema<GetProjectsLocationsFunctionsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<Cloudfunctions_Function>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1239,8 +949,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(50, __c6, 2) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1255,8 +965,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1272,8 +982,8 @@ export const listProjectsLocationsFunctions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFunctionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsFunctionsRequest,
-  output: ListFunctionsResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<ListProjectsLocationsFunctionsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ListFunctionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1289,8 +999,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1015,8 @@ export const listProjectsLocationsRuntimes: API.OperationMethod<
   ListProjectsLocationsRuntimesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsRuntimesRequest,
-  output: ListRuntimesResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<ListProjectsLocationsRuntimesRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListRuntimesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1035,8 @@ export const patchProjectsLocationsFunctions: API.OperationMethod<
   PatchProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(66, __c8, 2) as any as S.Schema<PatchProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1055,12 @@ export const redirectFunctionUpgradeTrafficProjectsLocationsFunctions: API.Opera
   RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(
+    67,
+    __c8,
+    3,
+  ) as any as S.Schema<RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1365,8 +1079,12 @@ export const rollbackFunctionUpgradeTrafficProjectsLocationsFunctions: API.Opera
   RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(
+    68,
+    __c8,
+    4,
+  ) as any as S.Schema<RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1103,8 @@ export const setIamPolicyProjectsLocationsFunctions: API.OperationMethod<
   SetIamPolicyProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsFunctionsRequest,
-  output: Policy,
+  input: __S(70, __c8, 6) as any as S.Schema<SetIamPolicyProjectsLocationsFunctionsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1123,12 @@ export const setupFunctionUpgradeConfigProjectsLocationsFunctions: API.Operation
   SetupFunctionUpgradeConfigProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest,
-  output: Operation,
+  input: __S(
+    74,
+    __c9,
+    2,
+  ) as any as S.Schema<SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1147,8 @@ export const testIamPermissionsProjectsLocationsFunctions: API.OperationMethod<
   TestIamPermissionsProjectsLocationsFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsFunctionsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<TestIamPermissionsProjectsLocationsFunctionsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1443,7 +1165,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1457,30 +1179,30 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(2, __c0, 2)),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(2, __c0, 2)),
           name: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1495,7 +1217,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1519,14 +1241,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "EventFilter" });
     case 1:
-      return S.Array(EventFilter);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          retryPolicy: S.optional(EventTriggerRetryPolicyEnum),
+          retryPolicy: S.optional(S.String),
           trigger: S.optional(S.String),
           pubsubTopic: S.optional(S.String),
-          eventFilters: S.optional(EventFilterList),
+          eventFilters: S.optional(__S(9, __c1, 1)),
           channel: S.optional(S.String),
           triggerRegion: S.optional(S.String),
           service: S.optional(S.String),
@@ -1546,14 +1268,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SecretEnvVar" });
     case 5:
-      return S.Array(SecretEnvVar);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           network: S.optional(S.String),
-          tags: S.optional(StringList),
+          tags: S.optional(__S(14, __c1, 6)),
           subnetwork: S.optional(S.String),
         }),
       ).annotate({
@@ -1564,7 +1286,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DirectVpcNetworkInterface);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1573,18 +1295,18 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SecretVersion" });
     case 2:
-      return S.Array(SecretVersion);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(SecretVersionList),
+          versions: S.optional(__S(18, __c2, 2)),
           projectId: S.optional(S.String),
           mountPath: S.optional(S.String),
           secret: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretVolume" });
     case 4:
-      return S.Array(SecretVolume);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1592,23 +1314,23 @@ function __c2(j: number): any {
           maxInstanceCount: S.optional(S.Number),
           maxInstanceRequestConcurrency: S.optional(S.Number),
           availableMemory: S.optional(S.String),
-          environmentVariables: S.optional(StringMap),
+          environmentVariables: S.optional(__S(11, __c1, 3)),
           availableCpu: S.optional(S.String),
-          vpcConnectorEgressSettings: S.optional(ServiceConfigVpcConnectorEgressSettingsEnum),
+          vpcConnectorEgressSettings: S.optional(S.String),
           allTrafficOnLatestRevision: S.optional(S.Boolean),
           serviceAccountEmail: S.optional(S.String),
           uri: S.optional(S.String),
           minInstanceCount: S.optional(S.Number),
           binaryAuthorizationPolicy: S.optional(S.String),
-          secretEnvironmentVariables: S.optional(SecretEnvVarList),
-          ingressSettings: S.optional(ServiceConfigIngressSettingsEnum),
-          directVpcEgress: S.optional(ServiceConfigDirectVpcEgressEnum),
+          secretEnvironmentVariables: S.optional(__S(13, __c1, 5)),
+          ingressSettings: S.optional(S.String),
+          directVpcEgress: S.optional(S.String),
           revision: S.optional(S.String),
           timeoutSeconds: S.optional(S.Number),
           service: S.optional(S.String),
-          securityLevel: S.optional(ServiceConfigSecurityLevelEnum),
-          directVpcNetworkInterface: S.optional(DirectVpcNetworkInterfaceList),
-          secretVolumes: S.optional(SecretVolumeList),
+          securityLevel: S.optional(S.String),
+          directVpcNetworkInterface: S.optional(__S(16, __c2, 0)),
+          secretVolumes: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "ServiceConfig" });
     case 6:
@@ -1639,8 +1361,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gitUri: S.optional(S.String),
-          resolvedRepoSource: S.optional(RepoSource),
-          resolvedStorageSource: S.optional(StorageSource),
+          resolvedRepoSource: S.optional(__S(22, __c2, 6)),
+          resolvedStorageSource: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "SourceProvenance" });
     case 1:
@@ -1652,8 +1374,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          storageSource: S.optional(StorageSource),
-          repoSource: S.optional(RepoSource),
+          storageSource: S.optional(__S(23, __c2, 7)),
+          repoSource: S.optional(__S(22, __c2, 6)),
           gitUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "Source" });
@@ -1661,33 +1383,33 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workerPool: S.optional(S.String),
-          sourceProvenance: S.optional(SourceProvenance),
+          sourceProvenance: S.optional(__S(24, __c3, 0)),
           runtime: S.optional(S.String),
           dockerRepository: S.optional(S.String),
           sourceToken: S.optional(S.String),
           build: S.optional(S.String),
           entryPoint: S.optional(S.String),
-          environmentVariables: S.optional(StringMap),
-          dockerRegistry: S.optional(BuildConfigDockerRegistryEnum),
-          onDeployUpdatePolicy: S.optional(OnDeployUpdatePolicy),
-          automaticUpdatePolicy: S.optional(AbortFunctionUpgradeRequest),
-          source: S.optional(Source),
+          environmentVariables: S.optional(__S(11, __c1, 3)),
+          dockerRegistry: S.optional(S.String),
+          onDeployUpdatePolicy: S.optional(__S(25, __c3, 1)),
+          automaticUpdatePolicy: S.optional(__S(0, __c0, 0)),
+          source: S.optional(__S(26, __c3, 2)),
           serviceAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          upgradeState: S.optional(UpgradeInfoUpgradeStateEnum),
-          serviceConfig: S.optional(ServiceConfig),
-          eventTrigger: S.optional(EventTrigger),
-          buildConfig: S.optional(BuildConfig),
+          upgradeState: S.optional(S.String),
+          serviceConfig: S.optional(__S(21, __c2, 5)),
+          eventTrigger: S.optional(__S(10, __c1, 2)),
+          buildConfig: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "UpgradeInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(GoogleCloudFunctionsV2betaStateMessageSeverityEnum),
+          severity: S.optional(S.String),
           type: S.optional(S.String),
           message: S.optional(S.String),
         }),
@@ -1695,11 +1417,11 @@ function __c3(j: number): any {
         identifier: "GoogleCloudFunctionsV2betaStateMessage",
       });
     case 6:
-      return S.Array(GoogleCloudFunctionsV2betaStateMessage);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          eventTrigger: S.optional(EventTrigger),
+          eventTrigger: S.optional(__S(10, __c1, 2)),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
@@ -1707,14 +1429,14 @@ function __c3(j: number): any {
           satisfiesPzs: S.optional(S.Boolean),
           url: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
-          serviceConfig: S.optional(ServiceConfig),
-          upgradeInfo: S.optional(UpgradeInfo),
-          state: S.optional(Cloudfunctions_FunctionStateEnum),
-          labels: S.optional(StringMap),
+          serviceConfig: S.optional(__S(21, __c2, 5)),
+          upgradeInfo: S.optional(__S(28, __c3, 4)),
+          state: S.optional(S.String),
+          labels: S.optional(__S(11, __c1, 3)),
           description: S.optional(S.String),
-          environment: S.optional(Cloudfunctions_FunctionEnvironmentEnum),
-          stateMessages: S.optional(GoogleCloudFunctionsV2betaStateMessageList),
-          buildConfig: S.optional(BuildConfig),
+          environment: S.optional(S.String),
+          stateMessages: S.optional(__S(30, __c3, 6)),
+          buildConfig: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "Cloudfunctions_Function" });
   }
@@ -1726,7 +1448,7 @@ function __c4(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           functionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Cloudfunctions_Function.pipe(T.HttpBody())),
+          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1755,7 +1477,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1770,7 +1492,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1792,7 +1514,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(GenerateUploadUrlRequestEnvironmentEnum),
+          environment: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenerateUploadUrlRequest" });
@@ -1800,7 +1522,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GenerateUploadUrlRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1814,7 +1536,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          storageSource: S.optional(StorageSource),
+          storageSource: S.optional(__S(23, __c2, 7)),
           uploadUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -1842,21 +1564,21 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(StringList),
-          logType: S.optional(AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(__S(14, __c1, 6)),
+          logType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 2:
-      return S.Array(AuditLogConfig);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 4:
-      return S.Array(AuditConfig);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1870,12 +1592,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(StringList),
-          condition: S.optional(Expr),
+          members: S.optional(__S(14, __c1, 6)),
+          condition: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "Binding" });
     case 7:
-      return S.Array(Binding);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -1883,10 +1605,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(AuditConfigList),
+          auditConfigs: S.optional(__S(44, __c5, 4)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "Policy" });
     case 1:
@@ -1922,7 +1644,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1941,18 +1663,18 @@ function __c6(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(11, __c1, 3)),
           locationId: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "Location" });
     case 5:
-      return S.Array(Location);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 7:
@@ -1978,13 +1700,13 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Cloudfunctions_Function);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          functions: S.optional(Cloudfunctions_FunctionList),
+          functions: S.optional(__S(56, __c7, 0)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "ListFunctionsResponse" });
     case 2:
@@ -2006,13 +1728,13 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 3:
-      return S.Array(Operation);
+      return S.Array(__S(5, __c0, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(59, __c7, 3)),
+          unreachable: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 5:
@@ -2041,13 +1763,13 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          stage: S.optional(RuntimeStageEnum),
+          stage: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          deprecationDate: S.optional(Cloudfunctions_Date),
-          decommissionDate: S.optional(Cloudfunctions_Date),
-          environment: S.optional(RuntimeEnvironmentEnum),
-          warnings: S.optional(StringList),
+          deprecationDate: S.optional(__S(62, __c7, 6)),
+          decommissionDate: S.optional(__S(62, __c7, 6)),
+          environment: S.optional(S.String),
+          warnings: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "Runtime" });
   }
@@ -2055,11 +1777,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Runtime);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          runtimes: S.optional(RuntimeList),
+          runtimes: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "ListRuntimesResponse" });
     case 2:
@@ -2067,7 +1789,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Cloudfunctions_Function.pipe(T.HttpBody())),
+          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2082,7 +1804,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2097,7 +1819,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2111,7 +1833,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(48, __c6, 0)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -2119,7 +1841,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2149,9 +1871,9 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          buildConfigOverrides: S.optional(BuildConfigOverrides),
+          buildConfigOverrides: S.optional(__S(71, __c8, 7)),
           triggerServiceAccount: S.optional(S.String),
-          serviceConfigOverrides: S.optional(ServiceConfigOverrides),
+          serviceConfigOverrides: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "SetupFunctionUpgradeConfigRequest",
@@ -2160,7 +1882,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SetupFunctionUpgradeConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2174,7 +1896,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -2183,7 +1905,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2195,4 +1917,9 @@ function __c9(j: number): any {
         identifier: "TestIamPermissionsProjectsLocationsFunctionsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

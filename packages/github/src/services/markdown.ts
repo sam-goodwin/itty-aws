@@ -5,13 +5,13 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
 /** The rendering mode. */
 export type RenderRequestMode = "markdown" | "gfm";
-const RenderRequestMode = S.String;
-
 export interface RenderRequest {
   /** The Markdown text to render in HTML. */
   text: string;
@@ -20,17 +20,9 @@ export interface RenderRequest {
   /** The repository context to use when creating references in `gfm` mode. For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository. */
   context?: string;
 }
-const RenderRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<RenderRequest>;
-
 export interface RenderResponse {}
-const RenderResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RenderResponse>;
-
 export interface RenderRawRequest {}
-const RenderRawRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RenderRawRequest>;
-
 export interface RenderRawResponse {}
-const RenderRawResponse = RenderResponse as any as S.Schema<RenderRawResponse>;
-
 export type RenderError = GithubOpError;
 /** Render a Markdown document Depending on what is rendered in the Markdown, you may need to provide additional token scopes for labels, such as `issues:read` or `pull_requests:read`. */
 export const render: API.OperationMethod<
@@ -39,8 +31,8 @@ export const render: API.OperationMethod<
   RenderError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenderRequest,
-  output: RenderResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<RenderRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RenderResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -54,8 +46,8 @@ export const renderRaw: API.OperationMethod<
   RenderRawError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenderRawRequest,
-  output: RenderRawResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<RenderRawRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RenderRawResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -68,7 +60,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           text: S.String,
-          mode: S.optional(RenderRequestMode),
+          mode: S.optional(S.String),
           context: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/markdown", code: 200 })),
       ).annotate({ identifier: "RenderRequest" });
@@ -81,4 +73,9 @@ function __c0(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/markdown/raw", code: 200 })),
       ).annotate({ identifier: "RenderRawRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

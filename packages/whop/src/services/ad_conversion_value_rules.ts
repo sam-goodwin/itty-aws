@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -29,8 +31,6 @@ export class Forbidden
   ) {}
 
 export type CreateAdConversionValueRuleRequestAdjustmentType = "fixed" | "percentage";
-const CreateAdConversionValueRuleRequestAdjustmentType = S.String;
-
 export type CreateAdConversionValueRuleRequestEventsItemEventName =
   | "purchase"
   | "subscribe"
@@ -43,82 +43,39 @@ export type CreateAdConversionValueRuleRequestEventsItemEventName =
   | "view_content"
   | "add_to_cart"
   | "custom";
-const CreateAdConversionValueRuleRequestEventsItemEventName = S.String;
-
 export interface CreateAdConversionValueRuleRequestEventsItem {
   /** Exact custom event name. Required for custom events; null for standard events. */
   custom_name?: string | null;
   event_name: CreateAdConversionValueRuleRequestEventsItemEventName | (string & {});
 }
-const CreateAdConversionValueRuleRequestEventsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateAdConversionValueRuleRequestEventsItem>;
-
 /** Events adjusted on every selected target. Every platform must support every selected event. */
 export type CreateAdConversionValueRuleRequestEventsList =
   Array<CreateAdConversionValueRuleRequestEventsItem>;
-const CreateAdConversionValueRuleRequestEventsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateAdConversionValueRuleRequestEventsList>;
-
 export interface CreateAdConversionValueRuleRequestFixedValue {
   /** Decimal amount with at most 2 decimal places. Fixed values must be greater than 0 and at most 99999999.99. */
   amount: string;
   currency: string;
 }
-const CreateAdConversionValueRuleRequestFixedValue = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateAdConversionValueRuleRequestFixedValue>;
-
 export type CreateAdConversionValueRuleRequestMetadataMap = { [key: string]: string | undefined };
-const CreateAdConversionValueRuleRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateAdConversionValueRuleRequestMetadataMap>;
-
 /** Exact IDs of active rules whose overlapping selections will be replaced. Other selections keep their values; remaining selections may split into separate rules. Broader rules remain as fallbacks for other items. Stale or incomplete conflict selections fail. */
 export type CreateAdConversionValueRuleRequestReplaceRuleIdsList = Array<string>;
-const CreateAdConversionValueRuleRequestReplaceRuleIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateAdConversionValueRuleRequestReplaceRuleIdsList>;
-
 /** Initial rule status. Defaults to active. */
 export type CreateAdConversionValueRuleRequestStatus = "active" | "paused";
-const CreateAdConversionValueRuleRequestStatus = S.String;
-
 export type CreateAdConversionValueRuleRequestTargetsItemPlatform = "tiktok" | "meta" | "google";
-const CreateAdConversionValueRuleRequestTargetsItemPlatform = S.String;
-
 export type CreateAdConversionValueRuleRequestTargetsItemScope =
   | "business"
   | "campaign"
   | "ad_group"
   | "ad";
-const CreateAdConversionValueRuleRequestTargetsItemScope = S.String;
-
 export interface CreateAdConversionValueRuleRequestTargetsItem {
   platform: CreateAdConversionValueRuleRequestTargetsItemPlatform | (string & {});
   /** Campaign, ad group, or ad ID. Null for a business target. */
   resource_id?: string | null;
   scope: CreateAdConversionValueRuleRequestTargetsItemScope | (string & {});
 }
-const CreateAdConversionValueRuleRequestTargetsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateAdConversionValueRuleRequestTargetsItem>;
-
 /** Targets sharing one scope. Every selected event applies to every target. At most 500 target and event combinations. */
 export type CreateAdConversionValueRuleRequestTargetsList =
   Array<CreateAdConversionValueRuleRequestTargetsItem>;
-const CreateAdConversionValueRuleRequestTargetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAdConversionValueRuleRequestTargetsList>;
-
 export interface CreateAdConversionValueRuleRequest {
   /** Business that owns the rule. */
   account_id: string;
@@ -138,15 +95,8 @@ export interface CreateAdConversionValueRuleRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateAdConversionValueRuleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateAdConversionValueRuleRequest>;
-
 /** Set a fixed amount or change the original value by a signed percentage. */
 export type AdConversionValueRuleAdjustmentType = "fixed" | "percentage";
-const AdConversionValueRuleAdjustmentType = S.String;
-
 /** Event to adjust. Purchase includes Whop purchases and external purchase events. */
 export type AdConversionValueRuleEventEventName =
   | "purchase"
@@ -160,25 +110,13 @@ export type AdConversionValueRuleEventEventName =
   | "view_content"
   | "add_to_cart"
   | "custom";
-const AdConversionValueRuleEventEventName = S.String;
-
 export interface AdConversionValueRuleEvent {
   /** Exact custom event name. Null for standard events. */
   custom_name: string | null;
   /** Event to adjust. Purchase includes Whop purchases and external purchase events. */
   event_name: AdConversionValueRuleEventEventName;
 }
-const AdConversionValueRuleEvent = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AdConversionValueRuleEvent>;
-
 export type AdConversionValueRuleEventsList = Array<AdConversionValueRuleEvent>;
-const AdConversionValueRuleEventsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AdConversionValueRuleEventsList>;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -189,20 +127,12 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Money>;
-
 /** Whether this rule is active or paused. */
 export type AdConversionValueRuleStatus = "active" | "paused";
-const AdConversionValueRuleStatus = S.String;
-
 /** Ad platform that receives the adjusted value. */
 export type AdConversionValueRuleTargetPlatform = "tiktok" | "meta" | "google";
-const AdConversionValueRuleTargetPlatform = S.String;
-
 /** Business, campaign, ad group, or ad covered by this target. */
 export type AdConversionValueRuleTargetScope = "business" | "campaign" | "ad_group" | "ad";
-const AdConversionValueRuleTargetScope = S.String;
-
 export interface AdConversionValueRuleTarget {
   /** Ad platform that receives the adjusted value. */
   platform: AdConversionValueRuleTargetPlatform;
@@ -213,17 +143,7 @@ export interface AdConversionValueRuleTarget {
   /** Business, campaign, ad group, or ad covered by this target. */
   scope: AdConversionValueRuleTargetScope;
 }
-const AdConversionValueRuleTarget = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AdConversionValueRuleTarget>;
-
 export type AdConversionValueRuleTargetsList = Array<AdConversionValueRuleTarget>;
-const AdConversionValueRuleTargetsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AdConversionValueRuleTargetsList>;
-
 export interface AdConversionValueRule {
   /** Business that owns this shared, editable rule. */
   account_id: string;
@@ -246,50 +166,22 @@ export interface AdConversionValueRule {
   /** When the rule was edited, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-const AdConversionValueRule = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AdConversionValueRule>;
-
 export interface DeleteAdConversionValueRuleRequest {
   /** Conversion value rule ID. */
   id: string;
 }
-const DeleteAdConversionValueRuleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteAdConversionValueRuleRequest>;
-
 export interface DeleteAdConversionValueRuleResponse {
   deleted: boolean;
   id: string;
 }
-const DeleteAdConversionValueRuleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteAdConversionValueRuleResponse>;
-
 export interface GetAdConversionValueRuleRequest {
   /** Conversion value rule ID. */
   id: string;
 }
-const GetAdConversionValueRuleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetAdConversionValueRuleRequest>;
-
 export type ListAdConversionValueRulesRequestStatus = "active" | "paused";
-const ListAdConversionValueRulesRequestStatus = S.String;
-
 export type ListAdConversionValueRulesRequestPlatform = "tiktok" | "meta" | "google";
-const ListAdConversionValueRulesRequestPlatform = S.String;
-
 export type ListAdConversionValueRulesRequestOrder = "created_at";
-const ListAdConversionValueRulesRequestOrder = S.String;
-
 export type ListAdConversionValueRulesRequestDirection = "asc" | "desc";
-const ListAdConversionValueRulesRequestDirection = S.String;
-
 export interface ListAdConversionValueRulesRequest {
   account_id?: string;
   status?: ListAdConversionValueRulesRequestStatus | (string & {});
@@ -307,62 +199,30 @@ export interface ListAdConversionValueRulesRequest {
   order?: ListAdConversionValueRulesRequestOrder | (string & {});
   direction?: ListAdConversionValueRulesRequestDirection | (string & {});
 }
-const ListAdConversionValueRulesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListAdConversionValueRulesRequest>;
-
 export type ListAdConversionValueRulesResponseDataList = Array<AdConversionValueRule>;
-const ListAdConversionValueRulesResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListAdConversionValueRulesResponseDataList>;
-
 export interface ListAdConversionValueRulesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListAdConversionValueRulesResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListAdConversionValueRulesResponsePageInfo>;
-
 export interface ListAdConversionValueRulesResponse {
   data: ListAdConversionValueRulesResponseDataList;
   page_info: ListAdConversionValueRulesResponsePageInfo;
 }
-const ListAdConversionValueRulesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListAdConversionValueRulesResponse>;
-
 export interface PauseAdConversionValueRuleRequest {
   /** Conversion value rule ID. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const PauseAdConversionValueRuleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<PauseAdConversionValueRuleRequest>;
-
 export interface UnpauseAdConversionValueRuleRequest {
   /** Conversion value rule ID. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const UnpauseAdConversionValueRuleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<UnpauseAdConversionValueRuleRequest>;
-
 export type UpdateAdConversionValueRuleRequestAdjustmentType = "fixed" | "percentage";
-const UpdateAdConversionValueRuleRequestAdjustmentType = S.String;
-
 export type UpdateAdConversionValueRuleRequestEventsItemEventName =
   | "purchase"
   | "subscribe"
@@ -383,20 +243,11 @@ export interface UpdateAdConversionValueRuleRequestEventsItem {
 /** Events adjusted on every selected target. Every platform must support every selected event. */
 export type UpdateAdConversionValueRuleRequestEventsList =
   Array<UpdateAdConversionValueRuleRequestEventsItem>;
-const UpdateAdConversionValueRuleRequestEventsList =
-  CreateAdConversionValueRuleRequestEventsList as any as S.Schema<UpdateAdConversionValueRuleRequestEventsList>;
-
 export type UpdateAdConversionValueRuleRequestFixedValue =
   CreateAdConversionValueRuleRequestFixedValue;
 export type UpdateAdConversionValueRuleRequestMetadataMap = { [key: string]: string | undefined };
-const UpdateAdConversionValueRuleRequestMetadataMap =
-  CreateAdConversionValueRuleRequestMetadataMap as any as S.Schema<UpdateAdConversionValueRuleRequestMetadataMap>;
-
 /** Exact IDs of active rules whose overlapping selections will be replaced. Other selections keep their values; remaining selections may split into separate rules. Broader rules remain as fallbacks for other items. Stale or incomplete conflict selections fail. */
 export type UpdateAdConversionValueRuleRequestReplaceRuleIdsList = Array<string>;
-const UpdateAdConversionValueRuleRequestReplaceRuleIdsList =
-  CreateAdConversionValueRuleRequestReplaceRuleIdsList as any as S.Schema<UpdateAdConversionValueRuleRequestReplaceRuleIdsList>;
-
 export type UpdateAdConversionValueRuleRequestTargetsItemPlatform = "tiktok" | "meta" | "google";
 export type UpdateAdConversionValueRuleRequestTargetsItemScope =
   | "business"
@@ -412,9 +263,6 @@ export interface UpdateAdConversionValueRuleRequestTargetsItem {
 /** Targets sharing one scope. Every selected event applies to every target. At most 500 target and event combinations. */
 export type UpdateAdConversionValueRuleRequestTargetsList =
   Array<UpdateAdConversionValueRuleRequestTargetsItem>;
-const UpdateAdConversionValueRuleRequestTargetsList =
-  CreateAdConversionValueRuleRequestTargetsList as any as S.Schema<UpdateAdConversionValueRuleRequestTargetsList>;
-
 export interface UpdateAdConversionValueRuleRequest {
   /** Conversion value rule ID. */
   id: string;
@@ -430,11 +278,6 @@ export interface UpdateAdConversionValueRuleRequest {
   /** Targets sharing one scope. Every selected event applies to every target. At most 500 target and event combinations. */
   targets?: UpdateAdConversionValueRuleRequestTargetsList;
 }
-const UpdateAdConversionValueRuleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UpdateAdConversionValueRuleRequest>;
-
 export type CreateAdConversionValueRuleError = Forbidden | Conflict | WhopOpError;
 /** Create a conversion value rule Create one rule covering every selected target and event combination. Active rules cannot overlap for the same platform and event. Customer prices and Whop revenue stay unchanged. */
 export const createAdConversionValueRule: API.OperationMethod<
@@ -443,8 +286,8 @@ export const createAdConversionValueRule: API.OperationMethod<
   CreateAdConversionValueRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdConversionValueRuleRequest,
-  output: AdConversionValueRule,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateAdConversionValueRuleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AdConversionValueRule>,
   errors: [Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -458,8 +301,8 @@ export const deleteAdConversionValueRule: API.OperationMethod<
   DeleteAdConversionValueRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdConversionValueRuleRequest,
-  output: DeleteAdConversionValueRuleResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<DeleteAdConversionValueRuleRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DeleteAdConversionValueRuleResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -473,8 +316,8 @@ export const getAdConversionValueRule: API.OperationMethod<
   GetAdConversionValueRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdConversionValueRuleRequest,
-  output: AdConversionValueRule,
+  input: __S(16, __c2, 0) as any as S.Schema<GetAdConversionValueRuleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AdConversionValueRule>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -490,8 +333,8 @@ export const listAdConversionValueRules: API.PaginatedOperationMethod<
   AdConversionValueRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAdConversionValueRulesRequest,
-    output: ListAdConversionValueRulesResponse,
+    input: __S(17, __c2, 1) as any as S.Schema<ListAdConversionValueRulesRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListAdConversionValueRulesResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -515,8 +358,8 @@ export const pauseAdConversionValueRule: API.OperationMethod<
   PauseAdConversionValueRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseAdConversionValueRuleRequest,
-  output: AdConversionValueRule,
+  input: __S(21, __c2, 5) as any as S.Schema<PauseAdConversionValueRuleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AdConversionValueRule>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -530,8 +373,8 @@ export const unpauseAdConversionValueRule: API.OperationMethod<
   UnpauseAdConversionValueRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnpauseAdConversionValueRuleRequest,
-  output: AdConversionValueRule,
+  input: __S(22, __c2, 6) as any as S.Schema<UnpauseAdConversionValueRuleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AdConversionValueRule>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -545,8 +388,8 @@ export const updateAdConversionValueRule: API.OperationMethod<
   UpdateAdConversionValueRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAdConversionValueRuleRequest,
-  output: AdConversionValueRule,
+  input: __S(23, __c2, 7) as any as S.Schema<UpdateAdConversionValueRuleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AdConversionValueRule>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -559,13 +402,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           custom_name: S.optional(S.NullOr(S.String)),
-          event_name: CreateAdConversionValueRuleRequestEventsItemEventName,
+          event_name: S.String,
         }),
       ).annotate({
         identifier: "CreateAdConversionValueRuleRequestEventsItem",
       });
     case 1:
-      return S.Array(CreateAdConversionValueRuleRequestEventsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -582,27 +425,27 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          platform: CreateAdConversionValueRuleRequestTargetsItemPlatform,
+          platform: S.String,
           resource_id: S.optional(S.NullOr(S.String)),
-          scope: CreateAdConversionValueRuleRequestTargetsItemScope,
+          scope: S.String,
         }),
       ).annotate({
         identifier: "CreateAdConversionValueRuleRequestTargetsItem",
       });
     case 6:
-      return S.Array(CreateAdConversionValueRuleRequestTargetsItem);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          adjustment_type: CreateAdConversionValueRuleRequestAdjustmentType,
-          events: CreateAdConversionValueRuleRequestEventsList,
-          fixed_value: S.optional(S.NullOr(CreateAdConversionValueRuleRequestFixedValue)),
-          metadata: S.optional(CreateAdConversionValueRuleRequestMetadataMap),
+          adjustment_type: S.String,
+          events: __S(1, __c0, 1),
+          fixed_value: S.optional(S.NullOr(__S(2, __c0, 2))),
+          metadata: S.optional(__S(3, __c0, 3)),
           percentage_change: S.optional(S.NullOr(S.Number)),
-          replace_rule_ids: S.optional(CreateAdConversionValueRuleRequestReplaceRuleIdsList),
-          status: S.optional(CreateAdConversionValueRuleRequestStatus),
-          targets: CreateAdConversionValueRuleRequestTargetsList,
+          replace_rule_ids: S.optional(__S(4, __c0, 4)),
+          status: S.optional(S.String),
+          targets: __S(6, __c0, 6),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ad_conversion_value_rules", code: 200 })),
       ).annotate({
@@ -616,13 +459,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           custom_name: S.NullOr(S.String),
-          event_name: AdConversionValueRuleEventEventName,
+          event_name: S.String,
         }),
       ).annotate({
         identifier: "AdConversionValueRuleEvent",
       });
     case 1:
-      return S.Array(AdConversionValueRuleEvent);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -635,29 +478,29 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          platform: AdConversionValueRuleTargetPlatform,
+          platform: S.String,
           resource_id: S.NullOr(S.String),
           resource_title: S.NullOr(S.String),
-          scope: AdConversionValueRuleTargetScope,
+          scope: S.String,
         }),
       ).annotate({
         identifier: "AdConversionValueRuleTarget",
       });
     case 4:
-      return S.Array(AdConversionValueRuleTarget);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          adjustment_type: AdConversionValueRuleAdjustmentType,
+          adjustment_type: S.String,
           created_at: S.String,
-          events: AdConversionValueRuleEventsList,
-          fixed_value: S.NullOr(Money),
+          events: __S(9, __c1, 1),
+          fixed_value: S.NullOr(__S(10, __c1, 2)),
           id: S.String,
           metadata: S.Unknown,
           percentage_change: S.NullOr(S.Number),
-          status: AdConversionValueRuleStatus,
-          targets: AdConversionValueRuleTargetsList,
+          status: S.String,
+          targets: __S(12, __c1, 4),
           updated_at: S.String,
         }),
       ).annotate({ identifier: "AdConversionValueRule" });
@@ -694,21 +537,21 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListAdConversionValueRulesRequestStatus.pipe(T.Query())),
-          platform: S.optional(ListAdConversionValueRulesRequestPlatform.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          platform: S.optional(S.String.pipe(T.Query())),
           resource_id: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListAdConversionValueRulesRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListAdConversionValueRulesRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ad_conversion_value_rules", code: 200 })),
       ).annotate({
         identifier: "ListAdConversionValueRulesRequest",
       });
     case 2:
-      return S.Array(AdConversionValueRule);
+      return S.Array(__S(13, __c1, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -723,8 +566,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListAdConversionValueRulesResponseDataList,
-          page_info: ListAdConversionValueRulesResponsePageInfo,
+          data: __S(18, __c2, 2),
+          page_info: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ListAdConversionValueRulesResponse",
@@ -755,16 +598,21 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          adjustment_type: S.optional(UpdateAdConversionValueRuleRequestAdjustmentType),
-          events: S.optional(UpdateAdConversionValueRuleRequestEventsList),
-          fixed_value: S.optional(S.NullOr(CreateAdConversionValueRuleRequestFixedValue)),
-          metadata: S.optional(UpdateAdConversionValueRuleRequestMetadataMap),
+          adjustment_type: S.optional(S.String),
+          events: S.optional(__S(1, __c0, 1)),
+          fixed_value: S.optional(S.NullOr(__S(2, __c0, 2))),
+          metadata: S.optional(__S(3, __c0, 3)),
           percentage_change: S.optional(S.NullOr(S.Number)),
-          replace_rule_ids: S.optional(UpdateAdConversionValueRuleRequestReplaceRuleIdsList),
-          targets: S.optional(UpdateAdConversionValueRuleRequestTargetsList),
+          replace_rule_ids: S.optional(__S(4, __c0, 4)),
+          targets: S.optional(__S(6, __c0, 6)),
         }).pipe(T.Http({ method: "PATCH", uri: "/ad_conversion_value_rules/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateAdConversionValueRuleRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

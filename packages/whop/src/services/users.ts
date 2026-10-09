@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,38 +54,17 @@ export interface CheckUserAccessRequest {
   /** An account (biz_), product (prod_), or experience (exp_) ID. */
   resource_id: string;
 }
-const CheckUserAccessRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckUserAccessRequest>;
-
 export type CheckUserAccessResponseAccessLevel = "no_access" | "admin" | "customer";
-const CheckUserAccessResponseAccessLevel = S.String;
-
 export interface CheckUserAccessResponse {
   access_level: CheckUserAccessResponseAccessLevel;
   has_access: boolean;
 }
-const CheckUserAccessResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckUserAccessResponse>;
-
 /** How `code_challenge` was derived. Only `S256` is accepted. */
 export type CreateOauthGrantRequestCodeChallengeMethod = "S256";
-const CreateOauthGrantRequestCodeChallengeMethod = S.String;
-
 /** The permissions the app is asking for, for example `member:basic:read`. `GET /api_keys/permissions` names and describes each one. Granting adds to whatever the user already granted this app rather than replacing it. */
 export type CreateOauthGrantRequestRequestedScopesList = Array<string>;
-const CreateOauthGrantRequestRequestedScopesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateOauthGrantRequestRequestedScopesList>;
-
 /** The OAuth response type. Only `code` is accepted; defaults to `code`. */
 export type CreateOauthGrantRequestResponseType = "code";
-const CreateOauthGrantRequestResponseType = S.String;
-
 export interface CreateOauthGrantRequest {
   /** Authorize the app for one of the user's accounts rather than for the user alone, prefixed `biz_`. The user must have access to it. */
   account_id?: string;
@@ -108,15 +89,7 @@ export interface CreateOauthGrantRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateOauthGrantRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateOauthGrantRequest>;
-
 export type OauthGrantScopesList = Array<string>;
-const OauthGrantScopesList =
-  CreateOauthGrantRequestRequestedScopesList as any as S.Schema<OauthGrantScopesList>;
-
 export interface OauthGrant {
   /** The account the grant is scoped to, prefixed `biz_`. `null` when the user authorized the app for themselves rather than for one of their accounts. */
   account_id: string | null;
@@ -134,8 +107,6 @@ export interface OauthGrant {
   revoked_at: string | null;
   scopes: OauthGrantScopesList;
 }
-const OauthGrant = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<OauthGrant>;
-
 export interface CreatePasskeyRequest {
   /** The `attestationObject` from the WebAuthn attestation response, base64url-encoded. */
   attestation_object: string;
@@ -148,8 +119,6 @@ export interface CreatePasskeyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreatePasskeyRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreatePasskeyRequest>;
-
 export interface Passkey {
   /** When the user registered this passkey, as an ISO 8601 timestamp. */
   created_at: string;
@@ -162,12 +131,8 @@ export interface Passkey {
   /** The name the user gave this passkey, usually the device it lives on. */
   nickname: string;
 }
-const Passkey = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Passkey>;
-
 /** The ceremony this challenge is for. */
 export type CreatePasskeyChallengeRequestChallengeType = "registration" | "deletion";
-const CreatePasskeyChallengeRequestChallengeType = S.String;
-
 export interface CreatePasskeyChallengeRequest {
   /** The ceremony this challenge is for. */
   challenge_type: CreatePasskeyChallengeRequestChallengeType | (string & {});
@@ -176,20 +141,10 @@ export interface CreatePasskeyChallengeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreatePasskeyChallengeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreatePasskeyChallengeRequest>;
-
 export interface CreatePasskeyChallengeResponse {
   /** The challenge to pass to the WebAuthn ceremony, base64url-encoded without padding. */
   challenge: string;
 }
-const CreatePasskeyChallengeResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreatePasskeyChallengeResponse>;
-
 export interface DeletePasskeyRequest {
   /** Passkey ID, prefixed `wcred_`. */
   id: string;
@@ -200,22 +155,13 @@ export interface DeletePasskeyRequest {
   /** The `signature` from the WebAuthn assertion, base64url-encoded. */
   signature: string;
 }
-const DeletePasskeyRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeletePasskeyRequest>;
-
 export interface DeletePasskeyResponse {
   /** Always `true`: the passkey was removed. */
   deleted: boolean;
   /** The ID of the deleted passkey. */
   id: string;
 }
-const DeletePasskeyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeletePasskeyResponse>;
-
 export type GetUserRequestInterval = "hour" | "day" | "week" | "month";
-const GetUserRequestInterval = S.String;
-
 export interface GetUserRequest {
   /** User ID (prefixed `user_`), username, or `me` for the authenticated user. */
   id: string;
@@ -236,8 +182,6 @@ export interface GetUserRequest {
   /** IANA time zone the balance-history points are bucketed in. Defaults to `UTC`. Only used with `include_balance_history`. */
   time_zone?: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetUserRequest>;
-
 export interface UserBalanceBusiness {
   /** The account's total balance in USD. */
   balance_usd: string;
@@ -248,14 +192,7 @@ export interface UserBalanceBusiness {
   /** The account's display name. */
   name: string | null;
 }
-const UserBalanceBusiness = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UserBalanceBusiness>;
-
 export type UserBalanceBusinessesList = Array<UserBalanceBusiness>;
-const UserBalanceBusinessesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UserBalanceBusinessesList>;
-
 export interface UserBalanceCash {
   /** Available balance in the native currency. */
   balance: number;
@@ -274,28 +211,14 @@ export interface UserBalanceCash {
   /** Withdrawable amount in the native currency. */
   total_withdrawable_balance: number;
 }
-const UserBalanceCash = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UserBalanceCash>;
-
 export type UserBalanceCashList = Array<UserBalanceCash>;
-const UserBalanceCashList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UserBalanceCashList>;
-
 export interface AccountBalanceSettlement {
   /** Amount expected that day, in native units, as a decimal string. */
   amount: string;
   /** The day this money is expected to finish settling, as an ISO 8601 date. */
   date: string;
 }
-const AccountBalanceSettlement = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AccountBalanceSettlement>;
-
 export type AccountBalanceBreakdownPendingSettlementsList = Array<AccountBalanceSettlement>;
-const AccountBalanceBreakdownPendingSettlementsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AccountBalanceBreakdownPendingSettlementsList>;
-
 export interface AccountBalanceBreakdown {
   /** Amount you can spend, send, or withdraw now, in native units, as a decimal string. */
   available: string;
@@ -307,11 +230,6 @@ export interface AccountBalanceBreakdown {
   /** Amount held back, in native units, as a decimal string. Retrieve the account's reserves for why it is held and when it unlocks. */
   reserve: string;
 }
-const AccountBalanceBreakdown = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AccountBalanceBreakdown>;
-
 export interface UserBalanceToken {
   /** Amount held in native token units, as a decimal string. */
   balance: string;
@@ -328,14 +246,7 @@ export interface UserBalanceToken {
   /** Holding USD value. */
   value_usd: number;
 }
-const UserBalanceToken = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UserBalanceToken>;
-
 export type UserBalanceCryptoList = Array<UserBalanceToken>;
-const UserBalanceCryptoList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<UserBalanceCryptoList>;
-
 export interface UserBalance {
   businesses: UserBalanceBusinessesList;
   /** Combined USD balance across every account the user owns. */
@@ -353,25 +264,13 @@ export interface UserBalance {
   /** Balance-to-wallet USDT0 payouts still in flight, in USD. */
   treasury_pending_usd: string;
 }
-const UserBalance = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<UserBalance>;
-
 export interface UserBalanceHistoryPoint {
   /** Point timestamp, in Unix seconds. */
   t: number;
   /** Cumulative wallet balance at this point, in USD. */
   v: number;
 }
-const UserBalanceHistoryPoint = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<UserBalanceHistoryPoint>;
-
 export type UserBalanceHistoryDataList = Array<UserBalanceHistoryPoint>;
-const UserBalanceHistoryDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UserBalanceHistoryDataList>;
-
 export interface UserBalanceHistory {
   data: UserBalanceHistoryDataList;
   /** Value of the most recent point, in USD. */
@@ -381,14 +280,10 @@ export interface UserBalanceHistory {
   /** Minimum value across the window, in USD. */
   min: number;
 }
-const UserBalanceHistory = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UserBalanceHistory>;
-
 export interface UserBanner {
   /** Profile banner image URL. */
   url: string;
 }
-const UserBanner = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UserBanner>;
-
 export interface UserEarningsAmount {
   /** Gross income in USD over the last 24 hours. */
   last_24_hours: string;
@@ -399,8 +294,6 @@ export interface UserEarningsAmount {
   /** All-time gross income in USD. */
   lifetime: string;
 }
-const UserEarningsAmount = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UserEarningsAmount>;
-
 export interface UserEarnings {
   /** The first time the user earned gross income, as an ISO 8601 timestamp. */
   first_earned_at: string | null;
@@ -413,14 +306,10 @@ export interface UserEarnings {
   /** Gross income from the user's personal wallet plus accounts they own or are owner-authorized on. */
   total: UserEarningsAmount;
 }
-const UserEarnings = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UserEarnings>;
-
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-const UserProfilePicture = UserBanner as any as S.Schema<UserProfilePicture>;
-
 /** The platform the parent social account exists on. */
 export type SocialAccountParentPlatform =
   | "x"
@@ -432,8 +321,6 @@ export type SocialAccountParentPlatform =
   | "telegram"
   | "linkedin"
   | "snapchat";
-const SocialAccountParentPlatform = S.String;
-
 export interface SocialAccountParent {
   /** The platform-specific ID for the parent social account. */
   external_id: string | null;
@@ -450,8 +337,6 @@ export interface SocialAccountParent {
   /** Whether the parent social account is verified on the platform. */
   verified: boolean;
 }
-const SocialAccountParent = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SocialAccountParent>;
-
 /** The platform the social account exists on. */
 export type SocialAccountPlatform =
   | "x"
@@ -463,12 +348,7 @@ export type SocialAccountPlatform =
   | "telegram"
   | "linkedin"
   | "snapchat";
-const SocialAccountPlatform = S.String;
-
 export type SocialAccountScopesList = Array<string>;
-const SocialAccountScopesList =
-  CreateOauthGrantRequestRequestedScopesList as any as S.Schema<SocialAccountScopesList>;
-
 export interface SocialAccount {
   /** Why this social account currently can't be used for advertising -- a failed share or a Meta-side restriction. Null when the account is healthy. */
   error: string | null;
@@ -492,14 +372,7 @@ export interface SocialAccount {
   /** Whether the social account is verified on the platform. */
   verified: boolean;
 }
-const SocialAccount = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SocialAccount>;
-
 export type UserSocialAccountsList = Array<SocialAccount>;
-const UserSocialAccountsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UserSocialAccountsList>;
-
 export interface UserStaffAccess {
   /** Whether the user holds the admin staff role with a valid second factor. */
   admin: boolean;
@@ -510,8 +383,6 @@ export interface UserStaffAccess {
   /** Whether the user holds the support staff role with a valid second factor. */
   support: boolean;
 }
-const UserStaffAccess = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<UserStaffAccess>;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -522,8 +393,6 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Money>;
-
 export interface TradingMarginSummary {
   /** Total account value in USD, including unrealized profit and loss. */
   account_value: Money;
@@ -536,8 +405,6 @@ export interface TradingMarginSummary {
   /** USD that can be withdrawn now without closing positions. */
   withdrawable: Money;
 }
-const TradingMarginSummary = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TradingMarginSummary>;
-
 /** The live update stream this subscription opens. */
 export type TradingWebsocketSubscriptionChannel =
   | "clearinghouse_state"
@@ -545,26 +412,14 @@ export type TradingWebsocketSubscriptionChannel =
   | "order_updates"
   | "user_fills"
   | "user_events";
-const TradingWebsocketSubscriptionChannel = S.String;
-
 export interface TradingWebsocketSubscription {
   /** The live update stream this subscription opens. */
   channel: TradingWebsocketSubscriptionChannel;
   /** JSON subscription message to send unchanged over the Hyperliquid WebSocket. */
   message: string;
 }
-const TradingWebsocketSubscription = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<TradingWebsocketSubscription>;
-
 export type TradingHyperliquidAccountWebsocketSubscriptionsList =
   Array<TradingWebsocketSubscription>;
-const TradingHyperliquidAccountWebsocketSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<TradingHyperliquidAccountWebsocketSubscriptionsList>;
-
 export interface TradingHyperliquidAccount {
   /** Lowercase wallet address that holds the Hyperliquid account. */
   address: string;
@@ -576,44 +431,22 @@ export interface TradingHyperliquidAccount {
   /** Hyperliquid WebSocket URL to connect to directly for live updates. */
   websocket_url: string;
 }
-const TradingHyperliquidAccount = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<TradingHyperliquidAccount>;
-
 export type TradingAccountObject = "trading_account";
-const TradingAccountObject = S.String;
-
 export interface TradingHyperliquidOrder {
   /** Whether the order can only reduce an existing position, or `null` when Hyperliquid omits it. */
   reduce_only: boolean | null;
   /** Trigger price in USD for take-profit and stop-loss orders, or `null` for orders without a trigger. */
   trigger_price: Money | null;
 }
-const TradingHyperliquidOrder = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<TradingHyperliquidOrder>;
-
 export type TradingOrderObject = "trading_order";
-const TradingOrderObject = S.String;
-
 export type TradingOrderOrderType = "limit" | "market" | "take_profit" | "stop_loss";
-const TradingOrderOrderType = S.String;
-
 export type TradingOrderSide = "buy" | "sell";
-const TradingOrderSide = S.String;
-
 export type TradingOrderStatus = "open" | "filled" | "canceled" | "triggered" | "rejected";
-const TradingOrderStatus = S.String;
-
 /** How long the order stays active. `null` when the provider omits it or reports a policy outside the supported values. */
 export type TradingOrderTimeInForce =
   | "add_liquidity_only"
   | "good_til_canceled"
   | "immediate_or_cancel";
-const TradingOrderTimeInForce = S.String;
-
 export interface TradingOrder {
   /** Client order ID, prefixed `trdcloid_`, or `null` when the order was placed without one. */
   client_order_id: string | null;
@@ -642,14 +475,7 @@ export interface TradingOrder {
   /** How long the order stays active. `null` when the provider omits it or reports a policy outside the supported values. */
   time_in_force: TradingOrderTimeInForce | null;
 }
-const TradingOrder = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<TradingOrder>;
-
 export type TradingAccountOpenOrdersList = Array<TradingOrder>;
-const TradingAccountOpenOrdersList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<TradingAccountOpenOrdersList>;
-
 export interface TradingCumulativeFunding {
   /** Funding paid on this market across the account's history, in USD, or `null` when unavailable. */
   all_time: Money | null;
@@ -658,26 +484,14 @@ export interface TradingCumulativeFunding {
   /** Funding paid since the position opened, in USD, or `null` when unavailable. */
   since_open: Money | null;
 }
-const TradingCumulativeFunding = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<TradingCumulativeFunding>;
-
 /** `cross` shares margin across positions; `isolated` limits margin to this position. */
 export type TradingPositionLeverageType = "cross" | "isolated";
-const TradingPositionLeverageType = S.String;
-
 export interface TradingPositionLeverage {
   /** `cross` shares margin across positions; `isolated` limits margin to this position. */
   type: TradingPositionLeverageType;
   /** Multiplier applied to the position's margin, such as `10` for 10x. */
   value: number;
 }
-const TradingPositionLeverage = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<TradingPositionLeverage>;
-
 export interface TradingHyperliquidPosition {
   /** Funding paid on the position over several windows, in USD. */
   cumulative_funding: TradingCumulativeFunding;
@@ -690,17 +504,8 @@ export interface TradingHyperliquidPosition {
   /** Return on equity as a decimal ratio string, such as `0.1` for 10%. */
   return_on_equity: string;
 }
-const TradingHyperliquidPosition = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TradingHyperliquidPosition>;
-
 export type TradingPositionObject = "trading_position";
-const TradingPositionObject = S.String;
-
 export type TradingPositionSide = "long" | "short";
-const TradingPositionSide = S.String;
-
 export interface TradingPosition {
   /** Average entry price in USD, or `null` when the provider omits it. */
   entry_price: Money | null;
@@ -719,18 +524,9 @@ export interface TradingPosition {
   /** Unrealized profit or loss in USD. Negative for a loss. */
   unrealized_pnl: Money;
 }
-const TradingPosition = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<TradingPosition>;
-
 export type TradingAccountPositionsList = Array<TradingPosition>;
-const TradingAccountPositionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<TradingAccountPositionsList>;
-
 /** Trading venue that holds the positions and orders. */
 export type TradingAccountProvider = "hyperliquid";
-const TradingAccountProvider = S.String;
-
 export interface TradingAccount {
   /** The account that owns this trading account, prefixed `biz_`. `null` when a user owns it. */
   account_id: string | null;
@@ -746,8 +542,6 @@ export interface TradingAccount {
   /** The user who owns this trading account, prefixed `user_`. `null` when an account owns it. */
   user_id: string | null;
 }
-const TradingAccount = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TradingAccount>;
-
 export interface User {
   /** The user's balance: personal cash + crypto + in-flight treasury deposits, plus account balances for accounts they own. Computed only on the self view (retrieved with the reserved id `me`) for callers with balance-read scope; `null` otherwise, or when `include_balance=false`. */
   balance: UserBalance | null;
@@ -781,14 +575,7 @@ export interface User {
   /** When the user became an enrolled Whop Partner, as an ISO 8601 timestamp. `null` if never enrolled. */
   whop_partner_enabled_at: string | null;
 }
-const User = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<User>;
-
 export interface GetUserPreferencesRequest {}
-const GetUserPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetUserPreferencesRequest>;
-
 export interface UserPreferences {
   /** Whether the user has dismissed the first-time bounty worker onboarding. Set to `false` to show it again. */
   bounty_worker_onboarding_dismissed: boolean;
@@ -799,14 +586,8 @@ export interface UserPreferences {
   /** When the user most recently accepted Whop's terms and policies, as an ISO 8601 timestamp. `null` until accepted. */
   terms_accepted_at: string | null;
 }
-const UserPreferences = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<UserPreferences>;
-
 export type ListOauthGrantsRequestOrder = "created_at";
-const ListOauthGrantsRequestOrder = S.String;
-
 export type ListOauthGrantsRequestDirection = "asc" | "desc";
-const ListOauthGrantsRequestDirection = S.String;
-
 export interface ListOauthGrantsRequest {
   /** Only return grants for this app, prefixed `app_`. An app the user has never authorized returns an empty list. */
   app_id?: string;
@@ -823,43 +604,19 @@ export interface ListOauthGrantsRequest {
   /** Sort direction. */
   direction?: ListOauthGrantsRequestDirection | (string & {});
 }
-const ListOauthGrantsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListOauthGrantsRequest>;
-
 export type ListOauthGrantsResponseDataList = Array<OauthGrant>;
-const ListOauthGrantsResponseDataList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListOauthGrantsResponseDataList>;
-
 export interface ListOauthGrantsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListOauthGrantsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListOauthGrantsResponsePageInfo>;
-
 export interface ListOauthGrantsResponse {
   data: ListOauthGrantsResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-const ListOauthGrantsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListOauthGrantsResponse>;
-
 export type ListPasskeysRequestOrder = "created_at";
-const ListPasskeysRequestOrder = S.String;
-
 export type ListPasskeysRequestDirection = "asc" | "desc";
-const ListPasskeysRequestDirection = S.String;
-
 export interface ListPasskeysRequest {
   /** Number of results to return from the start of the range. */
   first?: number;
@@ -874,44 +631,24 @@ export interface ListPasskeysRequest {
   /** Sort direction. */
   direction?: ListPasskeysRequestDirection | (string & {});
 }
-const ListPasskeysRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListPasskeysRequest>;
-
 export type ListPasskeysResponseDataList = Array<Passkey>;
-const ListPasskeysResponseDataList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListPasskeysResponseDataList>;
-
 export type ListPasskeysResponsePageInfo = ListOauthGrantsResponsePageInfo;
 export interface ListPasskeysResponse {
   data: ListPasskeysResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-const ListPasskeysResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListPasskeysResponse>;
-
 export interface ListUserNotificationExperiencePreferencesRequest {
   /** Number of results to return from the start of the range. */
   first?: number;
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-const ListUserNotificationExperiencePreferencesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListUserNotificationExperiencePreferencesRequest>;
-
 /** What the user is notified about in the experience: `all` notifications, only `mentions`, or `nothing`. */
 export type ExperienceNotificationPreferenceLevel = "all" | "mentions" | "nothing";
-const ExperienceNotificationPreferenceLevel = S.String;
-
 /** The type of object. Always `experience_notification_preference`. */
 export type ExperienceNotificationPreferenceObject = "experience_notification_preference";
-const ExperienceNotificationPreferenceObject = S.String;
-
 /** Delivery channel the preference applies to. `null` applies to every channel. */
 export type NotificationPreferenceScopeChannel = "in_app" | "mobile";
-const NotificationPreferenceScopeChannel = S.String;
-
 export interface NotificationPreferenceScope {
   /** Account the preference is scoped to (member notifications), prefixed `biz_`. */
   account_id: string | null;
@@ -924,11 +661,6 @@ export interface NotificationPreferenceScope {
   /** Notification topic the preference is scoped to, prefixed `topic_`. */
   topic_id: string | null;
 }
-const NotificationPreferenceScope = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<NotificationPreferenceScope>;
-
 export interface ExperienceNotificationPreference {
   /** What the user is notified about in the experience: `all` notifications, only `mentions`, or `nothing`. */
   level: ExperienceNotificationPreferenceLevel;
@@ -937,32 +669,15 @@ export interface ExperienceNotificationPreference {
   /** What the preference applies to. Echo it back to `PATCH /users/me/preferences/notifications` to change this preference. */
   scope: NotificationPreferenceScope;
 }
-const ExperienceNotificationPreference = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ExperienceNotificationPreference>;
-
 export type ListUserNotificationExperiencePreferencesResponseDataList =
   Array<ExperienceNotificationPreference>;
-const ListUserNotificationExperiencePreferencesResponseDataList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListUserNotificationExperiencePreferencesResponseDataList>;
-
 export type ListUserNotificationExperiencePreferencesResponsePageInfo =
   ListOauthGrantsResponsePageInfo;
 export interface ListUserNotificationExperiencePreferencesResponse {
   data: ListUserNotificationExperiencePreferencesResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-const ListUserNotificationExperiencePreferencesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListUserNotificationExperiencePreferencesResponse>;
-
 export type ListUserNotificationTopicPreferencesRequestChannel = "in_app" | "mobile";
-const ListUserNotificationTopicPreferencesRequestChannel = S.String;
-
 export interface ListUserNotificationTopicPreferencesRequest {
   /** Only return preferences for this delivery channel (or not narrowed to a channel). */
   channel?: ListUserNotificationTopicPreferencesRequestChannel | (string & {});
@@ -979,19 +694,10 @@ export interface ListUserNotificationTopicPreferencesRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-const ListUserNotificationTopicPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListUserNotificationTopicPreferencesRequest>;
-
 /** What the user is notified about in this scope: `all` or `nothing`. */
 export type UserNotificationPreferenceLevel = "all" | "nothing";
-const UserNotificationPreferenceLevel = S.String;
-
 /** The type of object. Always `notification_preference`. */
 export type UserNotificationPreferenceObject = "notification_preference";
-const UserNotificationPreferenceObject = S.String;
-
 export interface UserNotificationPreference {
   /** When the preference was created, as an ISO 8601 timestamp. */
   created_at: string;
@@ -1006,37 +712,17 @@ export interface UserNotificationPreference {
   /** When the preference was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-const UserNotificationPreference = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UserNotificationPreference>;
-
 export type ListUserNotificationTopicPreferencesResponseDataList =
   Array<UserNotificationPreference>;
-const ListUserNotificationTopicPreferencesResponseDataList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListUserNotificationTopicPreferencesResponseDataList>;
-
 export type ListUserNotificationTopicPreferencesResponsePageInfo = ListOauthGrantsResponsePageInfo;
 export interface ListUserNotificationTopicPreferencesResponse {
   data: ListUserNotificationTopicPreferencesResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-const ListUserNotificationTopicPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListUserNotificationTopicPreferencesResponse>;
-
 export interface ListUserRecommendedActionsRequest {
   /** `me`, or the authenticated user's own `user_` tag or username. */
   id: string;
 }
-const ListUserRecommendedActionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListUserRecommendedActionsRequest>;
-
 /** The recommendation; new values may be added, so handle unknown actions gracefully */
 export type UserRecommendedActionAction =
   | "create_business"
@@ -1062,16 +748,9 @@ export type UserRecommendedActionAction =
   | "enable_tax_collection"
   | "create_card"
   | "apply_for_financing";
-const UserRecommendedActionAction = S.String;
-
 export type UserRecommendedActionBlockedCapabilitiesList = Array<string>;
-const UserRecommendedActionBlockedCapabilitiesList =
-  CreateOauthGrantRequestRequestedScopesList as any as S.Schema<UserRecommendedActionBlockedCapabilitiesList>;
-
 /** Always optional -- never blocking */
 export type UserRecommendedActionStatus = "optional";
-const UserRecommendedActionStatus = S.String;
-
 export interface UserRecommendedAction {
   /** The account (`biz_`) a business recommendation is for, or `null` for personal recommendations */
   account_id: string | null;
@@ -1097,25 +776,10 @@ export interface UserRecommendedAction {
   /** Headline for the recommendation */
   title: string;
 }
-const UserRecommendedAction = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<UserRecommendedAction>;
-
 export type ListUserRecommendedActionsResponseDataList = Array<UserRecommendedAction>;
-const ListUserRecommendedActionsResponseDataList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListUserRecommendedActionsResponseDataList>;
-
 export interface ListUserRecommendedActionsResponse {
   data: ListUserRecommendedActionsResponseDataList;
 }
-const ListUserRecommendedActionsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListUserRecommendedActionsResponse>;
-
 export interface ListUsersRequest {
   /** A search term to filter users by name or username. */
   query?: string;
@@ -1128,32 +792,19 @@ export interface ListUsersRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListUsersRequest>;
-
 export type ListUsersResponseDataList = Array<User>;
-const ListUsersResponseDataList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListUsersResponseDataList>;
-
 export type ListUsersResponsePageInfo = ListOauthGrantsResponsePageInfo;
 export interface ListUsersResponse {
   data: ListUsersResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-const ListUsersResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ListUsersResponse>;
-
 /** What the user is notified about in this scope. `mentions` is only valid for an experience level. `null` clears the preference. */
 export type SetUserNotificationPreferencesRequestPreferencesItemLevel =
   | "all"
   | "mentions"
   | "nothing";
-const SetUserNotificationPreferencesRequestPreferencesItemLevel = S.String;
-
 /** Delivery channel the preference applies to. Omit it (or pass `null`) to apply the preference to every channel. */
 export type SetUserNotificationPreferencesRequestPreferencesItemScopeChannel = "in_app" | "mobile";
-const SetUserNotificationPreferencesRequestPreferencesItemScopeChannel = S.String;
-
 /** What the preference applies to. `null` on a dimension means the preference is not narrowed there. */
 export interface SetUserNotificationPreferencesRequestPreferencesItemScope {
   /** Account to scope the preference to (member notifications), `biz_` tag. */
@@ -1167,49 +818,25 @@ export interface SetUserNotificationPreferencesRequestPreferencesItemScope {
   /** Notification topic to scope the preference to, `topic_` tag. */
   topic_id?: string | null;
 }
-const SetUserNotificationPreferencesRequestPreferencesItemScope = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<SetUserNotificationPreferencesRequestPreferencesItemScope>;
-
 export interface SetUserNotificationPreferencesRequestPreferencesItem {
   /** What the user is notified about in this scope. `mentions` is only valid for an experience level. `null` clears the preference. */
   level: SetUserNotificationPreferencesRequestPreferencesItemLevel | (string & {}) | null;
   /** What the preference applies to. `null` on a dimension means the preference is not narrowed there. */
   scope: SetUserNotificationPreferencesRequestPreferencesItemScope;
 }
-const SetUserNotificationPreferencesRequestPreferencesItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<SetUserNotificationPreferencesRequestPreferencesItem>;
-
 /** The preferences to set, at most 100 per request. */
 export type SetUserNotificationPreferencesRequestPreferencesList =
   Array<SetUserNotificationPreferencesRequestPreferencesItem>;
-const SetUserNotificationPreferencesRequestPreferencesList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<SetUserNotificationPreferencesRequestPreferencesList>;
-
 export interface SetUserNotificationPreferencesRequest {
   /** The preferences to set, at most 100 per request. */
   preferences: SetUserNotificationPreferencesRequestPreferencesList;
 }
-const SetUserNotificationPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<SetUserNotificationPreferencesRequest>;
-
 /** What the user is now notified about in this scope, or `null` if the preference was cleared and the scope inherits its default again. */
 export type NotificationPreferenceStateLevel = "all" | "mentions" | "nothing";
-const NotificationPreferenceStateLevel = S.String;
-
 /** Which kind of preference was written: `experience_notification_preference` for an experience level, `notification_preference` for a topic override. */
 export type NotificationPreferenceStateObject =
   | "notification_preference"
   | "experience_notification_preference";
-const NotificationPreferenceStateObject = S.String;
-
 export interface NotificationPreferenceState {
   /** What the user is now notified about in this scope, or `null` if the preference was cleared and the scope inherits its default again. */
   level: NotificationPreferenceStateLevel | null;
@@ -1218,34 +845,14 @@ export interface NotificationPreferenceState {
   /** The scope that was written, resolved. `null` on a dimension means the preference is not narrowed there. */
   scope: NotificationPreferenceScope;
 }
-const NotificationPreferenceState = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<NotificationPreferenceState>;
-
 export type SetUserNotificationPreferencesResponseDataList = Array<NotificationPreferenceState>;
-const SetUserNotificationPreferencesResponseDataList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<SetUserNotificationPreferencesResponseDataList>;
-
 export interface SetUserNotificationPreferencesResponse {
   data: SetUserNotificationPreferencesResponseDataList;
 }
-const SetUserNotificationPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<SetUserNotificationPreferencesResponse>;
-
 export interface UpdateUserRequestBanner {
   direct_upload_id?: string;
   id?: string;
 }
-const UpdateUserRequestBanner = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<UpdateUserRequestBanner>;
-
 export type UpdateUserRequestProfilePicture = UpdateUserRequestBanner;
 export interface UpdateUserRequest {
   /** User ID (prefixed `user_`), username, or `me` for the authenticated user. */
@@ -1258,8 +865,6 @@ export interface UpdateUserRequest {
   profile_picture?: UpdateUserRequestBanner;
   username?: string;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<UpdateUserRequest>;
-
 export interface UpdateUserPreferencesRequest {
   /** Whether the user has dismissed the first-time bounty worker onboarding. Set to `false` to show it again. */
   bounty_worker_onboarding_dismissed?: boolean;
@@ -1268,11 +873,6 @@ export interface UpdateUserPreferencesRequest {
   /** Records the user's acceptance of Whop's terms and policies. Only `true` is accepted -- the server stamps `terms_accepted_at` and acceptance cannot be withdrawn here. */
   terms_accepted?: boolean;
 }
-const UpdateUserPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<UpdateUserPreferencesRequest>;
-
 export type CheckUserAccessError = WhopOpError;
 /** Check User Access Checks whether a user has access to an account, product, or experience the caller can reach. */
 export const checkUserAccess: API.OperationMethod<
@@ -1281,8 +881,8 @@ export const checkUserAccess: API.OperationMethod<
   CheckUserAccessError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckUserAccessRequest,
-  output: CheckUserAccessResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckUserAccessRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckUserAccessResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1296,8 +896,8 @@ export const createOauthGrant: API.OperationMethod<
   CreateOauthGrantError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOauthGrantRequest,
-  output: OauthGrant,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateOauthGrantRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<OauthGrant>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1311,8 +911,8 @@ export const createPasskey: API.OperationMethod<
   CreatePasskeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePasskeyRequest,
-  output: Passkey,
+  input: __S(5, __c0, 5) as any as S.Schema<CreatePasskeyRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Passkey>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1331,8 +931,8 @@ export const createPasskeyChallenge: API.OperationMethod<
   CreatePasskeyChallengeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePasskeyChallengeRequest,
-  output: CreatePasskeyChallengeResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreatePasskeyChallengeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePasskeyChallengeResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1346,8 +946,8 @@ export const deletePasskey: API.OperationMethod<
   DeletePasskeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePasskeyRequest,
-  output: DeletePasskeyResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeletePasskeyRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeletePasskeyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1357,8 +957,8 @@ export type GetUserError = NotFound | WhopOpError;
 /** Retrieve User Retrieves a user by `user_` tag or username, or the authenticated user with the reserved id `me`. Profiles include linked social accounts -- reading your own profile returns every linked account, other profiles only what is public on Whop (the primary Discord and the X account). The self-only fields are populated only when the id is `me`: `email` (email-read scope), `staff` (Whop staff only, staff-read scope), `balance` and `earnings_usd` (balance-read scope), and the opt-in `balance_history`. They are always `null` when addressing a user by tag or username. */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetUserRequest,
-    output: User,
+    input: __S(11, __c1, 3) as any as S.Schema<GetUserRequest>,
+    output: __S(46, __c5, 6) as any as S.Schema<User>,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1372,8 +972,8 @@ export const getUserPreferences: API.OperationMethod<
   GetUserPreferencesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserPreferencesRequest,
-  output: UserPreferences,
+  input: __S(47, __c5, 7) as any as S.Schema<GetUserPreferencesRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UserPreferences>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1389,8 +989,8 @@ export const listOauthGrants: API.PaginatedOperationMethod<
   OauthGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListOauthGrantsRequest,
-    output: ListOauthGrantsResponse,
+    input: __S(49, __c6, 1) as any as S.Schema<ListOauthGrantsRequest>,
+    output: __S(52, __c6, 4) as any as S.Schema<ListOauthGrantsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1416,8 +1016,8 @@ export const listPasskeys: API.PaginatedOperationMethod<
   Passkey
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPasskeysRequest,
-    output: ListPasskeysResponse,
+    input: __S(53, __c6, 5) as any as S.Schema<ListPasskeysRequest>,
+    output: __S(55, __c6, 7) as any as S.Schema<ListPasskeysResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1443,8 +1043,8 @@ export const listUserNotificationExperiencePreferences: API.PaginatedOperationMe
   ExperienceNotificationPreference
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListUserNotificationExperiencePreferencesRequest,
-    output: ListUserNotificationExperiencePreferencesResponse,
+    input: __S(56, __c7, 0) as any as S.Schema<ListUserNotificationExperiencePreferencesRequest>,
+    output: __S(60, __c7, 4) as any as S.Schema<ListUserNotificationExperiencePreferencesResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1470,8 +1070,8 @@ export const listUserNotificationTopicPreferences: API.PaginatedOperationMethod<
   UserNotificationPreference
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListUserNotificationTopicPreferencesRequest,
-    output: ListUserNotificationTopicPreferencesResponse,
+    input: __S(61, __c7, 5) as any as S.Schema<ListUserNotificationTopicPreferencesRequest>,
+    output: __S(64, __c8, 0) as any as S.Schema<ListUserNotificationTopicPreferencesResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1495,8 +1095,8 @@ export const listUserRecommendedActions: API.OperationMethod<
   ListUserRecommendedActionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserRecommendedActionsRequest,
-  output: ListUserRecommendedActionsResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<ListUserRecommendedActionsRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<ListUserRecommendedActionsResponse>,
   errors: [Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1512,8 +1112,8 @@ export const listUsers: API.PaginatedOperationMethod<
   User
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListUsersRequest,
-    output: ListUsersResponse,
+    input: __S(69, __c8, 5) as any as S.Schema<ListUsersRequest>,
+    output: __S(71, __c8, 7) as any as S.Schema<ListUsersResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1537,8 +1137,8 @@ export const setUserNotificationPreferences: API.OperationMethod<
   SetUserNotificationPreferencesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetUserNotificationPreferencesRequest,
-  output: SetUserNotificationPreferencesResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<SetUserNotificationPreferencesRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<SetUserNotificationPreferencesResponse>,
   errors: [BadRequest, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1152,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: User,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<User>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1167,8 @@ export const updateUserPreferences: API.OperationMethod<
   UpdateUserPreferencesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserPreferencesRequest,
-  output: UserPreferences,
+  input: __S(81, __c10, 1) as any as S.Schema<UpdateUserPreferencesRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UserPreferences>,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1587,7 +1187,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          access_level: CheckUserAccessResponseAccessLevel,
+          access_level: S.String,
           has_access: S.Boolean,
         }),
       ).annotate({ identifier: "CheckUserAccessResponse" });
@@ -1599,12 +1199,12 @@ function __c0(j: number): any {
           account_id: S.optional(S.String),
           client_id: S.String,
           code_challenge: S.String,
-          code_challenge_method: CreateOauthGrantRequestCodeChallengeMethod,
+          code_challenge_method: S.String,
           consent_shown: S.optional(S.Boolean),
           nonce: S.optional(S.String),
           redirect_uri: S.String,
-          requested_scopes: CreateOauthGrantRequestRequestedScopesList,
-          response_type: S.optional(CreateOauthGrantRequestResponseType),
+          requested_scopes: __S(2, __c0, 2),
+          response_type: S.optional(S.String),
           state: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/users/me/oauth_grants", code: 200 })),
@@ -1619,7 +1219,7 @@ function __c0(j: number): any {
           id: S.String,
           redirect_url: S.optional(S.String),
           revoked_at: S.NullOr(S.String),
-          scopes: OauthGrantScopesList,
+          scopes: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "OauthGrant" });
     case 5:
@@ -1645,7 +1245,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          challenge_type: CreatePasskeyChallengeRequestChallengeType,
+          challenge_type: S.String,
           passkey_id: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/users/me/passkeys/challenge", code: 200 })),
@@ -1690,7 +1290,7 @@ function __c1(j: number): any {
           include_balance_history: S.optional(S.Boolean.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          interval: S.optional(GetUserRequestInterval.pipe(T.Query())),
+          interval: S.optional(S.String.pipe(T.Query())),
           time_zone: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/{id}", code: 200 })),
       ).annotate({ identifier: "GetUserRequest" });
@@ -1704,7 +1304,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserBalanceBusiness" });
     case 5:
-      return S.Array(UserBalanceBusiness);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1719,7 +1319,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserBalanceCash" });
     case 7:
-      return S.Array(UserBalanceCash);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1732,14 +1332,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AccountBalanceSettlement" });
     case 1:
-      return S.Array(AccountBalanceSettlement);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           available: S.String,
           in_transit: S.String,
           pending: S.String,
-          pending_settlements: AccountBalanceBreakdownPendingSettlementsList,
+          pending_settlements: __S(17, __c2, 1),
           reserve: S.String,
         }),
       ).annotate({ identifier: "AccountBalanceBreakdown" });
@@ -1747,7 +1347,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           balance: S.String,
-          breakdown: AccountBalanceBreakdown,
+          breakdown: __S(18, __c2, 2),
           icon_url: S.NullOr(S.String),
           name: S.NullOr(S.String),
           price_usd: S.NullOr(S.Number),
@@ -1756,15 +1356,15 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UserBalanceToken" });
     case 4:
-      return S.Array(UserBalanceToken);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          businesses: UserBalanceBusinessesList,
+          businesses: __S(13, __c1, 5),
           businesses_total_usd: S.String,
-          cash: UserBalanceCashList,
+          cash: __S(15, __c1, 7),
           cash_usd: S.String,
-          crypto: UserBalanceCryptoList,
+          crypto: __S(20, __c2, 4),
           crypto_usd: S.String,
           pending_usd: S.String,
           total_usd: S.String,
@@ -1779,7 +1379,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UserBalanceHistoryPoint" });
     case 7:
-      return S.Array(UserBalanceHistoryPoint);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1787,7 +1387,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: UserBalanceHistoryDataList,
+          data: __S(23, __c2, 7),
           last: S.Number,
           max: S.Number,
           min: S.Number,
@@ -1812,10 +1412,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           first_earned_at: S.NullOr(S.String),
-          owned_accounts: UserEarningsAmount,
-          partners: UserEarningsAmount,
-          personal: UserEarningsAmount,
-          total: UserEarningsAmount,
+          owned_accounts: __S(26, __c3, 2),
+          partners: __S(26, __c3, 2),
+          personal: __S(26, __c3, 2),
+          total: __S(26, __c3, 2),
         }),
       ).annotate({ identifier: "UserEarnings" });
     case 4:
@@ -1824,7 +1424,7 @@ function __c3(j: number): any {
           external_id: S.NullOr(S.String),
           id: S.String,
           name: S.NullOr(S.String),
-          platform: SocialAccountParentPlatform,
+          platform: S.String,
           profile_picture_url: S.NullOr(S.String),
           username: S.NullOr(S.String),
           verified: S.Boolean,
@@ -1837,17 +1437,17 @@ function __c3(j: number): any {
           external_id: S.NullOr(S.String),
           id: S.String,
           name: S.NullOr(S.String),
-          parent_social_account: S.NullOr(SocialAccountParent),
-          platform: SocialAccountPlatform,
+          parent_social_account: S.NullOr(__S(28, __c3, 4)),
+          platform: S.String,
           profile_picture_url: S.NullOr(S.String),
-          scopes: SocialAccountScopesList,
+          scopes: __S(2, __c0, 2),
           url: S.NullOr(S.String),
           username: S.NullOr(S.String),
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "SocialAccount" });
     case 6:
-      return S.Array(SocialAccount);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1873,31 +1473,31 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          account_value: Money,
-          total_margin_used: Money,
-          total_position_notional: Money,
-          total_raw_usd: Money,
-          withdrawable: Money,
+          account_value: __S(32, __c4, 0),
+          total_margin_used: __S(32, __c4, 0),
+          total_position_notional: __S(32, __c4, 0),
+          total_raw_usd: __S(32, __c4, 0),
+          withdrawable: __S(32, __c4, 0),
         }),
       ).annotate({ identifier: "TradingMarginSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channel: TradingWebsocketSubscriptionChannel,
+          channel: S.String,
           message: S.String,
         }),
       ).annotate({
         identifier: "TradingWebsocketSubscription",
       });
     case 3:
-      return S.Array(TradingWebsocketSubscription);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           address: S.String,
           builder_fee_bps: S.NullOr(S.String),
-          margin_summary: TradingMarginSummary,
-          websocket_subscriptions: TradingHyperliquidAccountWebsocketSubscriptionsList,
+          margin_summary: __S(33, __c4, 1),
+          websocket_subscriptions: __S(35, __c4, 3),
           websocket_url: S.String,
         }),
       ).annotate({
@@ -1907,7 +1507,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reduce_only: S.NullOr(S.Boolean),
-          trigger_price: S.NullOr(Money),
+          trigger_price: S.NullOr(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "TradingHyperliquidOrder" });
     case 6:
@@ -1915,23 +1515,23 @@ function __c4(j: number): any {
         S.Struct({
           client_order_id: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
-          hyperliquid: S.NullOr(TradingHyperliquidOrder),
+          hyperliquid: S.NullOr(__S(37, __c4, 5)),
           id: S.String,
           market: S.String,
-          object: TradingOrderObject,
-          order_type: TradingOrderOrderType,
+          object: S.String,
+          order_type: S.String,
           original_size: S.NullOr(S.String),
-          price: Money,
+          price: __S(32, __c4, 0),
           provider_order_id: S.NullOr(S.String),
-          side: TradingOrderSide,
+          side: S.String,
           size: S.String,
-          status: TradingOrderStatus,
+          status: S.String,
           status_updated_at: S.NullOr(S.String),
-          time_in_force: S.NullOr(TradingOrderTimeInForce),
+          time_in_force: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TradingOrder" });
     case 7:
-      return S.Array(TradingOrder);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1939,25 +1539,25 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          all_time: S.NullOr(Money),
-          since_change: S.NullOr(Money),
-          since_open: S.NullOr(Money),
+          all_time: S.NullOr(__S(32, __c4, 0)),
+          since_change: S.NullOr(__S(32, __c4, 0)),
+          since_open: S.NullOr(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "TradingCumulativeFunding" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: TradingPositionLeverageType,
+          type: S.String,
           value: S.Number,
         }),
       ).annotate({ identifier: "TradingPositionLeverage" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cumulative_funding: TradingCumulativeFunding,
-          leverage: TradingPositionLeverage,
-          liquidation_price: S.NullOr(Money),
-          margin_used: Money,
+          cumulative_funding: __S(40, __c5, 0),
+          leverage: __S(41, __c5, 1),
+          liquidation_price: S.NullOr(__S(32, __c4, 0)),
+          margin_used: __S(32, __c4, 0),
           return_on_equity: S.String,
         }),
       ).annotate({
@@ -1966,48 +1566,48 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entry_price: S.NullOr(Money),
-          hyperliquid: S.NullOr(TradingHyperliquidPosition),
+          entry_price: S.NullOr(__S(32, __c4, 0)),
+          hyperliquid: S.NullOr(__S(42, __c5, 2)),
           id: S.String,
           market: S.String,
-          object: TradingPositionObject,
-          position_value: Money,
-          side: TradingPositionSide,
+          object: S.String,
+          position_value: __S(32, __c4, 0),
+          side: S.String,
           size: S.String,
-          unrealized_pnl: Money,
+          unrealized_pnl: __S(32, __c4, 0),
         }),
       ).annotate({ identifier: "TradingPosition" });
     case 4:
-      return S.Array(TradingPosition);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
-          hyperliquid: S.NullOr(TradingHyperliquidAccount),
+          hyperliquid: S.NullOr(__S(36, __c4, 4)),
           id: S.String,
-          object: TradingAccountObject,
-          open_orders: TradingAccountOpenOrdersList,
-          positions: TradingAccountPositionsList,
-          provider: TradingAccountProvider,
+          object: S.String,
+          open_orders: __S(39, __c4, 7),
+          positions: __S(44, __c5, 4),
+          provider: S.String,
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TradingAccount" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          balance: S.NullOr(UserBalance),
-          balance_history: S.NullOr(UserBalanceHistory),
-          banner: S.NullOr(UserBanner),
+          balance: S.NullOr(__S(21, __c2, 5)),
+          balance_history: S.NullOr(__S(24, __c3, 0)),
+          banner: S.NullOr(__S(25, __c3, 1)),
           bio: S.NullOr(S.String),
           created_at: S.String,
-          earnings_usd: S.NullOr(UserEarnings),
+          earnings_usd: S.NullOr(__S(27, __c3, 3)),
           email: S.NullOr(S.String),
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: UserProfilePicture,
-          social_accounts: UserSocialAccountsList,
-          staff: S.NullOr(UserStaffAccess),
-          trading: S.NullOr(TradingAccount),
+          profile_picture: __S(25, __c3, 1),
+          social_accounts: __S(30, __c3, 6),
+          staff: S.NullOr(__S(31, __c3, 7)),
+          trading: S.NullOr(__S(45, __c5, 5)),
           username: S.String,
           verification: S.Unknown,
           whop_partner_enabled_at: S.NullOr(S.String),
@@ -2040,12 +1640,12 @@ function __c6(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListOauthGrantsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListOauthGrantsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/me/oauth_grants", code: 200 })),
       ).annotate({ identifier: "ListOauthGrantsRequest" });
     case 2:
-      return S.Array(OauthGrant);
+      return S.Array(__S(4, __c0, 4));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2060,8 +1660,8 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListOauthGrantsResponseDataList,
-          page_info: ListOauthGrantsResponsePageInfo,
+          data: __S(50, __c6, 2),
+          page_info: __S(51, __c6, 3),
         }),
       ).annotate({ identifier: "ListOauthGrantsResponse" });
     case 5:
@@ -2071,17 +1671,17 @@ function __c6(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListPasskeysRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListPasskeysRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/me/passkeys", code: 200 })),
       ).annotate({ identifier: "ListPasskeysRequest" });
     case 6:
-      return S.Array(Passkey);
+      return S.Array(__S(6, __c0, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ListPasskeysResponseDataList,
-          page_info: ListOauthGrantsResponsePageInfo,
+          data: __S(54, __c6, 6),
+          page_info: __S(51, __c6, 3),
         }),
       ).annotate({ identifier: "ListPasskeysResponse" });
   }
@@ -2107,7 +1707,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
-          channel: S.NullOr(NotificationPreferenceScopeChannel),
+          channel: S.NullOr(S.String),
           experience_id: S.NullOr(S.String),
           team_account_id: S.NullOr(S.String),
           topic_id: S.NullOr(S.String),
@@ -2118,20 +1718,20 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          level: ExperienceNotificationPreferenceLevel,
-          object: ExperienceNotificationPreferenceObject,
-          scope: NotificationPreferenceScope,
+          level: S.String,
+          object: S.String,
+          scope: __S(57, __c7, 1),
         }),
       ).annotate({
         identifier: "ExperienceNotificationPreference",
       });
     case 3:
-      return S.Array(ExperienceNotificationPreference);
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListUserNotificationExperiencePreferencesResponseDataList,
-          page_info: ListOauthGrantsResponsePageInfo,
+          data: __S(59, __c7, 3),
+          page_info: __S(51, __c6, 3),
         }),
       ).annotate({
         identifier: "ListUserNotificationExperiencePreferencesResponse",
@@ -2139,7 +1739,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          channel: S.optional(ListUserNotificationTopicPreferencesRequestChannel.pipe(T.Query())),
+          channel: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
           team_account_id: S.optional(S.String.pipe(T.Query())),
           experience_id: S.optional(S.String.pipe(T.Query())),
@@ -2157,16 +1757,16 @@ function __c7(j: number): any {
         S.Struct({
           created_at: S.String,
           id: S.String,
-          level: UserNotificationPreferenceLevel,
-          object: UserNotificationPreferenceObject,
-          scope: NotificationPreferenceScope,
+          level: S.String,
+          object: S.String,
+          scope: __S(57, __c7, 1),
           updated_at: S.String,
         }),
       ).annotate({
         identifier: "UserNotificationPreference",
       });
     case 7:
-      return S.Array(UserNotificationPreference);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -2174,8 +1774,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ListUserNotificationTopicPreferencesResponseDataList,
-          page_info: ListOauthGrantsResponsePageInfo,
+          data: __S(63, __c7, 7),
+          page_info: __S(51, __c6, 3),
         }),
       ).annotate({
         identifier: "ListUserNotificationTopicPreferencesResponse",
@@ -2193,24 +1793,24 @@ function __c8(j: number): any {
         S.Struct({
           account_id: S.NullOr(S.String),
           account_name: S.NullOr(S.String),
-          action: UserRecommendedActionAction,
-          blocked_capabilities: UserRecommendedActionBlockedCapabilitiesList,
+          action: S.String,
+          blocked_capabilities: __S(2, __c0, 2),
           cta: S.String,
           cta_label: S.String,
           description: S.String,
           icon_url: S.NullOr(S.String),
           impact_score: S.NullOr(S.Number),
           reasoning: S.NullOr(S.String),
-          status: UserRecommendedActionStatus,
+          status: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "UserRecommendedAction" });
     case 3:
-      return S.Array(UserRecommendedAction);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListUserRecommendedActionsResponseDataList,
+          data: __S(67, __c8, 3),
         }),
       ).annotate({
         identifier: "ListUserRecommendedActionsResponse",
@@ -2226,12 +1826,12 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
     case 6:
-      return S.Array(User);
+      return S.Array(__S(46, __c5, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ListUsersResponseDataList,
-          page_info: ListOauthGrantsResponsePageInfo,
+          data: __S(70, __c8, 6),
+          page_info: __S(51, __c6, 3),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
   }
@@ -2242,9 +1842,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.NullOr(S.String)),
-          channel: S.optional(
-            S.NullOr(SetUserNotificationPreferencesRequestPreferencesItemScopeChannel),
-          ),
+          channel: S.optional(S.NullOr(S.String)),
           experience_id: S.optional(S.NullOr(S.String)),
           team_account_id: S.optional(S.NullOr(S.String)),
           topic_id: S.optional(S.NullOr(S.String)),
@@ -2255,18 +1853,18 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          level: S.NullOr(SetUserNotificationPreferencesRequestPreferencesItemLevel),
-          scope: SetUserNotificationPreferencesRequestPreferencesItemScope,
+          level: S.NullOr(S.String),
+          scope: __S(72, __c9, 0),
         }),
       ).annotate({
         identifier: "SetUserNotificationPreferencesRequestPreferencesItem",
       });
     case 2:
-      return S.Array(SetUserNotificationPreferencesRequestPreferencesItem);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          preferences: SetUserNotificationPreferencesRequestPreferencesList,
+          preferences: __S(74, __c9, 2),
         }).pipe(T.Http({ method: "PATCH", uri: "/users/me/preferences/notifications", code: 200 })),
       ).annotate({
         identifier: "SetUserNotificationPreferencesRequest",
@@ -2274,19 +1872,19 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          level: S.NullOr(NotificationPreferenceStateLevel),
-          object: NotificationPreferenceStateObject,
-          scope: NotificationPreferenceScope,
+          level: S.NullOr(S.String),
+          object: S.String,
+          scope: __S(57, __c7, 1),
         }),
       ).annotate({
         identifier: "NotificationPreferenceState",
       });
     case 5:
-      return S.Array(NotificationPreferenceState);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: SetUserNotificationPreferencesResponseDataList,
+          data: __S(77, __c9, 5),
         }),
       ).annotate({
         identifier: "SetUserNotificationPreferencesResponse",
@@ -2307,10 +1905,10 @@ function __c10(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
-          banner: S.optional(S.NullOr(UpdateUserRequestBanner)),
+          banner: S.optional(S.NullOr(__S(79, __c9, 7))),
           bio: S.optional(S.String),
           name: S.optional(S.String),
-          profile_picture: S.optional(UpdateUserRequestBanner),
+          profile_picture: S.optional(__S(79, __c9, 7)),
           username: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/users/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateUserRequest" });
@@ -2325,4 +1923,9 @@ function __c10(j: number): any {
         identifier: "UpdateUserPreferencesRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

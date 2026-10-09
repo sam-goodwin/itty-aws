@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://redshift.amazonaws.com/doc/2012-12-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Redshift",
@@ -1609,20 +1611,12 @@ export interface AcceptReservedNodeExchangeInputMessage {
   ReservedNodeId?: string;
   TargetReservedNodeOfferingId?: string;
 }
-const AcceptReservedNodeExchangeInputMessage = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptReservedNodeExchangeInputMessage>;
 export interface RecurringCharge {
   RecurringChargeAmount?: number;
   RecurringChargeFrequency?: string;
 }
-const RecurringCharge = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RecurringCharge>;
 export type RecurringChargeList = RecurringCharge[];
-const RecurringChargeList = /*@__PURE__*/ __L.at(__c0, 2);
 export type ReservedNodeOfferingType = "Regular" | "Upgradable" | (string & {});
-const ReservedNodeOfferingType = S.String;
-
 export interface ReservedNode {
   ReservedNodeId?: string;
   ReservedNodeOfferingId?: string;
@@ -1638,14 +1632,9 @@ export interface ReservedNode {
   RecurringCharges?: RecurringCharge[];
   ReservedNodeOfferingType?: ReservedNodeOfferingType;
 }
-const ReservedNode = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ReservedNode>;
 export interface AcceptReservedNodeExchangeOutputMessage {
   ExchangedReservedNode?: ReservedNode;
 }
-const AcceptReservedNodeExchangeOutputMessage = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AcceptReservedNodeExchangeOutputMessage>;
 export type PartnerIntegrationAccountId = string;
 export type PartnerIntegrationClusterIdentifier = string;
 export type PartnerIntegrationDatabaseName = string;
@@ -1656,18 +1645,10 @@ export interface PartnerIntegrationInputMessage {
   DatabaseName?: string;
   PartnerName?: string;
 }
-const PartnerIntegrationInputMessage = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PartnerIntegrationInputMessage>;
 export interface PartnerIntegrationOutputMessage {
   DatabaseName?: string;
   PartnerName?: string;
 }
-const PartnerIntegrationOutputMessage = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PartnerIntegrationOutputMessage>;
 export interface AssociateDataShareConsumerMessage {
   DataShareArn?: string;
   AssociateEntireAccount?: boolean;
@@ -1675,10 +1656,6 @@ export interface AssociateDataShareConsumerMessage {
   ConsumerRegion?: string;
   AllowWrites?: boolean;
 }
-const AssociateDataShareConsumerMessage = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AssociateDataShareConsumerMessage>;
 export type DataShareStatus =
   | "ACTIVE"
   | "PENDING_AUTHORIZATION"
@@ -1687,8 +1664,6 @@ export type DataShareStatus =
   | "REJECTED"
   | "AVAILABLE"
   | (string & {});
-const DataShareStatus = S.String;
-
 export interface DataShareAssociation {
   ConsumerIdentifier?: string;
   Status?: DataShareStatus;
@@ -1698,12 +1673,8 @@ export interface DataShareAssociation {
   ProducerAllowedWrites?: boolean;
   ConsumerAcceptedWrites?: boolean;
 }
-const DataShareAssociation = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DataShareAssociation>;
 export type DataShareAssociationList = DataShareAssociation[];
-const DataShareAssociationList = /*@__PURE__*/ __L.at(__c1, 1);
 export type DataShareType = "INTERNAL" | (string & {});
-const DataShareType = S.String;
-
 export interface DataShare {
   DataShareArn?: string;
   ProducerArn?: string;
@@ -1712,41 +1683,30 @@ export interface DataShare {
   ManagedBy?: string;
   DataShareType?: DataShareType;
 }
-const DataShare = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DataShare>;
 export interface AuthorizeClusterSecurityGroupIngressMessage {
   ClusterSecurityGroupName?: string;
   CIDRIP?: string;
   EC2SecurityGroupName?: string;
   EC2SecurityGroupOwnerId?: string;
 }
-const AuthorizeClusterSecurityGroupIngressMessage = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AuthorizeClusterSecurityGroupIngressMessage>;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface EC2SecurityGroup {
   Status?: string;
   EC2SecurityGroupName?: string;
   EC2SecurityGroupOwnerId?: string;
   Tags?: Tag[];
 }
-const EC2SecurityGroup = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<EC2SecurityGroup>;
 export type EC2SecurityGroupList = EC2SecurityGroup[];
-const EC2SecurityGroupList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface IPRange {
   Status?: string;
   CIDRIP?: string;
   Tags?: Tag[];
 }
-const IPRange = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<IPRange>;
 export type IPRangeList = IPRange[];
-const IPRangeList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface ClusterSecurityGroup {
   ClusterSecurityGroupName?: string;
   Description?: string;
@@ -1754,37 +1714,21 @@ export interface ClusterSecurityGroup {
   IPRanges?: IPRange[];
   Tags?: Tag[];
 }
-const ClusterSecurityGroup = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ClusterSecurityGroup>;
 export interface AuthorizeClusterSecurityGroupIngressResult {
   ClusterSecurityGroup?: ClusterSecurityGroup;
 }
-const AuthorizeClusterSecurityGroupIngressResult = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AuthorizeClusterSecurityGroupIngressResult>;
 export interface AuthorizeDataShareMessage {
   DataShareArn?: string;
   ConsumerIdentifier?: string;
   AllowWrites?: boolean;
 }
-const AuthorizeDataShareMessage = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AuthorizeDataShareMessage>;
 export type VpcIdentifierList = string[];
-const VpcIdentifierList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface AuthorizeEndpointAccessMessage {
   ClusterIdentifier?: string;
   Account?: string;
   VpcIds?: string[];
 }
-const AuthorizeEndpointAccessMessage = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AuthorizeEndpointAccessMessage>;
 export type AuthorizationStatus = "Authorized" | "Revoking" | (string & {});
-const AuthorizationStatus = S.String;
-
 export interface EndpointAuthorization {
   Grantor?: string;
   Grantee?: string;
@@ -1796,32 +1740,18 @@ export interface EndpointAuthorization {
   AllowedVPCs?: string[];
   EndpointCount?: number;
 }
-const EndpointAuthorization = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<EndpointAuthorization>;
 export interface AuthorizeSnapshotAccessMessage {
   SnapshotIdentifier?: string;
   SnapshotArn?: string;
   SnapshotClusterIdentifier?: string;
   AccountWithRestoreAccess?: string;
 }
-const AuthorizeSnapshotAccessMessage = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AuthorizeSnapshotAccessMessage>;
 export interface AccountWithRestoreAccess {
   AccountId?: string;
   AccountAlias?: string;
 }
-const AccountWithRestoreAccess = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<AccountWithRestoreAccess>;
 export type AccountsWithRestoreAccessList = AccountWithRestoreAccess[];
-const AccountsWithRestoreAccessList = /*@__PURE__*/ __L.at(__c3, 2);
 export type RestorableNodeTypeList = string[];
-const RestorableNodeTypeList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface Snapshot {
   SnapshotIdentifier?: string;
   ClusterIdentifier?: string;
@@ -1861,79 +1791,45 @@ export interface Snapshot {
   MasterPasswordSecretKmsKeyId?: string;
   SnapshotArn?: string;
 }
-const Snapshot = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Snapshot>;
 export interface AuthorizeSnapshotAccessResult {
   Snapshot?: Snapshot;
 }
-const AuthorizeSnapshotAccessResult = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AuthorizeSnapshotAccessResult>;
 export interface DeleteClusterSnapshotMessage {
   SnapshotIdentifier?: string;
   SnapshotClusterIdentifier?: string;
 }
-const DeleteClusterSnapshotMessage = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteClusterSnapshotMessage>;
 export type DeleteClusterSnapshotMessageList = DeleteClusterSnapshotMessage[];
-const DeleteClusterSnapshotMessageList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface BatchDeleteClusterSnapshotsRequest {
   Identifiers?: DeleteClusterSnapshotMessage[];
 }
-const BatchDeleteClusterSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<BatchDeleteClusterSnapshotsRequest>;
 export type SnapshotIdentifierList = string[];
-const SnapshotIdentifierList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface SnapshotErrorMessage {
   SnapshotIdentifier?: string;
   SnapshotClusterIdentifier?: string;
   FailureCode?: string;
   FailureReason?: string;
 }
-const SnapshotErrorMessage = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SnapshotErrorMessage>;
 export type BatchSnapshotOperationErrorList = SnapshotErrorMessage[];
-const BatchSnapshotOperationErrorList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface BatchDeleteClusterSnapshotsResult {
   Resources?: string[];
   Errors?: SnapshotErrorMessage[];
 }
-const BatchDeleteClusterSnapshotsResult = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<BatchDeleteClusterSnapshotsResult>;
 export interface BatchModifyClusterSnapshotsMessage {
   SnapshotIdentifierList?: string[];
   ManualSnapshotRetentionPeriod?: number;
   Force?: boolean;
 }
-const BatchModifyClusterSnapshotsMessage = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<BatchModifyClusterSnapshotsMessage>;
 export type BatchSnapshotOperationErrors = SnapshotErrorMessage[];
-const BatchSnapshotOperationErrors = /*@__PURE__*/ __L.at(__c4, 6);
 export interface BatchModifyClusterSnapshotsOutputMessage {
   Resources?: string[];
   Errors?: SnapshotErrorMessage[];
 }
-const BatchModifyClusterSnapshotsOutputMessage = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<BatchModifyClusterSnapshotsOutputMessage>;
 export interface CancelResizeMessage {
   ClusterIdentifier?: string;
 }
-const CancelResizeMessage = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CancelResizeMessage>;
 export type ImportTablesCompleted = string[];
-const ImportTablesCompleted = /*@__PURE__*/ __L.at(__c5, 1);
 export type ImportTablesInProgress = string[];
-const ImportTablesInProgress = /*@__PURE__*/ __L.at(__c5, 2);
 export type ImportTablesNotStarted = string[];
-const ImportTablesNotStarted = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ResizeProgressMessage {
   TargetNodeType?: string;
   TargetNumberOfNodes?: number;
@@ -1952,54 +1848,29 @@ export interface ResizeProgressMessage {
   TargetEncryptionType?: string;
   DataTransferProgressPercent?: number;
 }
-const ResizeProgressMessage = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ResizeProgressMessage>;
 export interface CopyClusterSnapshotMessage {
   SourceSnapshotIdentifier?: string;
   SourceSnapshotClusterIdentifier?: string;
   TargetSnapshotIdentifier?: string;
   ManualSnapshotRetentionPeriod?: number;
 }
-const CopyClusterSnapshotMessage = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CopyClusterSnapshotMessage>;
 export interface CopyClusterSnapshotResult {
   Snapshot?: Snapshot;
 }
-const CopyClusterSnapshotResult = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CopyClusterSnapshotResult>;
 export type AuthenticationProfileNameString = string;
 export interface CreateAuthenticationProfileMessage {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-const CreateAuthenticationProfileMessage = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateAuthenticationProfileMessage>;
 export interface CreateAuthenticationProfileResult {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-const CreateAuthenticationProfileResult = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateAuthenticationProfileResult>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type ClusterSecurityGroupNameList = string[];
-const ClusterSecurityGroupNameList = /*@__PURE__*/ __L.at(__c6, 1);
 export type VpcSecurityGroupIdList = string[];
-const VpcSecurityGroupIdList = /*@__PURE__*/ __L.at(__c6, 2);
 export type IamRoleArnList = string[];
-const IamRoleArnList = /*@__PURE__*/ __L.at(__c6, 3);
 export type AquaConfigurationStatus = "enabled" | "disabled" | "auto" | (string & {});
-const AquaConfigurationStatus = S.String;
-
 export type CatalogNameString = string;
 export interface CreateClusterMessage {
   DBName?: string;
@@ -2044,7 +1915,6 @@ export interface CreateClusterMessage {
   CatalogName?: string;
   ExtraComputeForAutomaticOptimization?: boolean;
 }
-const CreateClusterMessage = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CreateClusterMessage>;
 export interface NetworkInterface {
   NetworkInterfaceId?: string;
   SubnetId?: string;
@@ -2052,17 +1922,13 @@ export interface NetworkInterface {
   AvailabilityZone?: string;
   Ipv6Address?: string;
 }
-const NetworkInterface = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaceList = NetworkInterface[];
-const NetworkInterfaceList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface VpcEndpoint {
   VpcEndpointId?: string;
   VpcId?: string;
   NetworkInterfaces?: NetworkInterface[];
 }
-const VpcEndpoint = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<VpcEndpoint>;
 export type VpcEndpointsList = VpcEndpoint[];
-const VpcEndpointsList = /*@__PURE__*/ __L.at(__c7, 0);
 export interface Endpoint {
   Address?: string;
   Port?: number;
@@ -2073,44 +1939,24 @@ export interface ClusterSecurityGroupMembership {
   ClusterSecurityGroupName?: string;
   Status?: string;
 }
-const ClusterSecurityGroupMembership = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ClusterSecurityGroupMembership>;
 export type ClusterSecurityGroupMembershipList = ClusterSecurityGroupMembership[];
-const ClusterSecurityGroupMembershipList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface VpcSecurityGroupMembership {
   VpcSecurityGroupId?: string;
   Status?: string;
 }
-const VpcSecurityGroupMembership = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<VpcSecurityGroupMembership>;
 export type VpcSecurityGroupMembershipList = VpcSecurityGroupMembership[];
-const VpcSecurityGroupMembershipList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface ClusterParameterStatus {
   ParameterName?: string;
   ParameterApplyStatus?: string;
   ParameterApplyErrorDescription?: string;
 }
-const ClusterParameterStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ClusterParameterStatus>;
 export type ClusterParameterStatusList = ClusterParameterStatus[];
-const ClusterParameterStatusList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ClusterParameterGroupStatus {
   ParameterGroupName?: string;
   ParameterApplyStatus?: string;
   ClusterParameterStatusList?: ClusterParameterStatus[];
 }
-const ClusterParameterGroupStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ClusterParameterGroupStatus>;
 export type ClusterParameterGroupStatusList = ClusterParameterGroupStatus[];
-const ClusterParameterGroupStatusList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface PendingModifiedValues {
   MasterUserPassword?: string | redacted.Redacted<string>;
   NodeType?: string;
@@ -2124,10 +1970,6 @@ export interface PendingModifiedValues {
   MaintenanceTrackName?: string;
   EncryptionType?: string;
 }
-const PendingModifiedValues = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<PendingModifiedValues>;
 export interface RestoreStatus {
   Status?: string;
   CurrentRestoreRateInMegaBytesPerSecond?: number;
@@ -2136,7 +1978,6 @@ export interface RestoreStatus {
   ElapsedTimeInSeconds?: number;
   EstimatedTimeToCompletionInSeconds?: number;
 }
-const RestoreStatus = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<RestoreStatus>;
 export interface DataTransferProgress {
   Status?: string;
   CurrentRateInMegaBytesPerSecond?: number;
@@ -2145,72 +1986,49 @@ export interface DataTransferProgress {
   EstimatedTimeToCompletionInSeconds?: number;
   ElapsedTimeInSeconds?: number;
 }
-const DataTransferProgress = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DataTransferProgress>;
 export interface HsmStatus {
   HsmClientCertificateIdentifier?: string;
   HsmConfigurationIdentifier?: string;
   Status?: string;
 }
-const HsmStatus = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<HsmStatus>;
 export interface ClusterSnapshotCopyStatus {
   DestinationRegion?: string;
   RetentionPeriod?: number;
   ManualSnapshotRetentionPeriod?: number;
   SnapshotCopyGrantName?: string;
 }
-const ClusterSnapshotCopyStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ClusterSnapshotCopyStatus>;
 export interface ClusterNode {
   NodeRole?: string;
   PrivateIPAddress?: string;
   PublicIPAddress?: string;
 }
-const ClusterNode = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ClusterNode>;
 export type ClusterNodesList = ClusterNode[];
-const ClusterNodesList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface ElasticIpStatus {
   ElasticIp?: string;
   Status?: string;
 }
-const ElasticIpStatus = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ElasticIpStatus>;
 export interface ClusterIamRole {
   IamRoleArn?: string;
   ApplyStatus?: string;
 }
-const ClusterIamRole = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ClusterIamRole>;
 export type ClusterIamRoleList = ClusterIamRole[];
-const ClusterIamRoleList = /*@__PURE__*/ __L.at(__c9, 3);
 export type PendingActionsList = string[];
-const PendingActionsList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface DeferredMaintenanceWindow {
   DeferMaintenanceIdentifier?: string;
   DeferMaintenanceStartTime?: Date;
   DeferMaintenanceEndTime?: Date;
 }
-const DeferredMaintenanceWindow = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeferredMaintenanceWindow>;
 export type DeferredMaintenanceWindowsList = DeferredMaintenanceWindow[];
-const DeferredMaintenanceWindowsList = /*@__PURE__*/ __L.at(__c9, 6);
 export type ScheduleState = "MODIFYING" | "ACTIVE" | "FAILED" | (string & {});
-const ScheduleState = S.String;
-
 export interface ResizeInfo {
   ResizeType?: string;
   AllowCancelResize?: boolean;
 }
-const ResizeInfo = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ResizeInfo>;
 export type AquaStatus = "enabled" | "disabled" | "applying" | (string & {});
-const AquaStatus = S.String;
-
 export interface AquaConfiguration {
   AquaStatus?: AquaStatus;
   AquaConfigurationStatus?: AquaConfigurationStatus;
 }
-const AquaConfiguration = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<AquaConfiguration>;
 export type ReservedNodeExchangeStatusType =
   | "REQUESTED"
   | "PENDING"
@@ -2219,8 +2037,6 @@ export type ReservedNodeExchangeStatusType =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-const ReservedNodeExchangeStatusType = S.String;
-
 export interface ReservedNodeExchangeStatus {
   ReservedNodeExchangeRequestId?: string;
   Status?: ReservedNodeExchangeStatusType;
@@ -2232,22 +2048,12 @@ export interface ReservedNodeExchangeStatus {
   TargetReservedNodeType?: string;
   TargetReservedNodeCount?: number;
 }
-const ReservedNodeExchangeStatus = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ReservedNodeExchangeStatus>;
 export interface SecondaryClusterInfo {
   AvailabilityZone?: string;
   ClusterNodes?: ClusterNode[];
 }
-const SecondaryClusterInfo = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<SecondaryClusterInfo>;
 export type LogTypeList = string[];
-const LogTypeList = /*@__PURE__*/ __L.at(__c10, 3);
 export type S3TableLastIngestionTimeMap = { [key: string]: string | undefined };
-const S3TableLastIngestionTimeMap = /*@__PURE__*/ __L.at(__c10, 4);
 export interface S3TablePublishStatus {
   S3Tables?: string[];
   S3TableNamespace?: string;
@@ -2255,17 +2061,9 @@ export interface S3TablePublishStatus {
   EnabledAll?: boolean;
   LastIngestionTimes?: { [key: string]: string | undefined };
 }
-const S3TablePublishStatus = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<S3TablePublishStatus>;
 export interface LoggingPublishStatus {
   S3Tables?: S3TablePublishStatus;
 }
-const LoggingPublishStatus = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<LoggingPublishStatus>;
 export interface Cluster {
   ClusterIdentifier?: string;
   NodeType?: string;
@@ -2332,104 +2130,63 @@ export interface Cluster {
   ExtraComputeForAutomaticOptimization?: string;
   LoggingPublishStatus?: LoggingPublishStatus;
 }
-const Cluster = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Cluster>;
 export interface CreateClusterResult {
   Cluster?: Cluster;
 }
-const CreateClusterResult = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<CreateClusterResult>;
 export interface CreateClusterParameterGroupMessage {
   ParameterGroupName?: string;
   ParameterGroupFamily?: string;
   Description?: string;
   Tags?: Tag[];
 }
-const CreateClusterParameterGroupMessage = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateClusterParameterGroupMessage>;
 export interface ClusterParameterGroup {
   ParameterGroupName?: string;
   ParameterGroupFamily?: string;
   Description?: string;
   Tags?: Tag[];
 }
-const ClusterParameterGroup = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ClusterParameterGroup>;
 export interface CreateClusterParameterGroupResult {
   ClusterParameterGroup?: ClusterParameterGroup;
 }
-const CreateClusterParameterGroupResult = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CreateClusterParameterGroupResult>;
 export interface CreateClusterSecurityGroupMessage {
   ClusterSecurityGroupName?: string;
   Description?: string;
   Tags?: Tag[];
 }
-const CreateClusterSecurityGroupMessage = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateClusterSecurityGroupMessage>;
 export interface CreateClusterSecurityGroupResult {
   ClusterSecurityGroup?: ClusterSecurityGroup;
 }
-const CreateClusterSecurityGroupResult = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateClusterSecurityGroupResult>;
 export interface CreateClusterSnapshotMessage {
   SnapshotIdentifier?: string;
   ClusterIdentifier?: string;
   ManualSnapshotRetentionPeriod?: number;
   Tags?: Tag[];
 }
-const CreateClusterSnapshotMessage = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CreateClusterSnapshotMessage>;
 export interface CreateClusterSnapshotResult {
   Snapshot?: Snapshot;
 }
-const CreateClusterSnapshotResult = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CreateClusterSnapshotResult>;
 export type SubnetIdentifierList = string[];
-const SubnetIdentifierList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface CreateClusterSubnetGroupMessage {
   ClusterSubnetGroupName?: string;
   Description?: string;
   SubnetIds?: string[];
   Tags?: Tag[];
 }
-const CreateClusterSubnetGroupMessage = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateClusterSubnetGroupMessage>;
 export interface SupportedPlatform {
   Name?: string;
 }
-const SupportedPlatform = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<SupportedPlatform>;
 export type SupportedPlatformsList = SupportedPlatform[];
-const SupportedPlatformsList = /*@__PURE__*/ __L.at(__c12, 3);
 export interface AvailabilityZone {
   Name?: string;
   SupportedPlatforms?: SupportedPlatform[];
 }
-const AvailabilityZone = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<AvailabilityZone>;
 export interface Subnet {
   SubnetIdentifier?: string;
   SubnetAvailabilityZone?: AvailabilityZone;
   SubnetStatus?: string;
 }
-const Subnet = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<Subnet>;
 export type SubnetList = Subnet[];
-const SubnetList = /*@__PURE__*/ __L.at(__c12, 6);
 export type ValueStringList = string[];
-const ValueStringList = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ClusterSubnetGroup {
   ClusterSubnetGroupName?: string;
   Description?: string;
@@ -2439,14 +2196,9 @@ export interface ClusterSubnetGroup {
   Tags?: Tag[];
   SupportedClusterIpAddressTypes?: string[];
 }
-const ClusterSubnetGroup = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ClusterSubnetGroup>;
 export interface CreateClusterSubnetGroupResult {
   ClusterSubnetGroup?: ClusterSubnetGroup;
 }
-const CreateClusterSubnetGroupResult = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateClusterSubnetGroupResult>;
 export type CustomDomainNameString = string;
 export type CustomDomainCertificateArnString = string;
 export interface CreateCustomDomainAssociationMessage {
@@ -2454,20 +2206,12 @@ export interface CreateCustomDomainAssociationMessage {
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
 }
-const CreateCustomDomainAssociationMessage = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateCustomDomainAssociationMessage>;
 export interface CreateCustomDomainAssociationResult {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
   CustomDomainCertExpiryTime?: string;
 }
-const CreateCustomDomainAssociationResult = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateCustomDomainAssociationResult>;
 export interface CreateEndpointAccessMessage {
   ClusterIdentifier?: string;
   ResourceOwner?: string;
@@ -2475,10 +2219,6 @@ export interface CreateEndpointAccessMessage {
   SubnetGroupName?: string;
   VpcSecurityGroupIds?: string[];
 }
-const CreateEndpointAccessMessage = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateEndpointAccessMessage>;
 export interface EndpointAccess {
   ClusterIdentifier?: string;
   ResourceOwner?: string;
@@ -2491,11 +2231,8 @@ export interface EndpointAccess {
   VpcSecurityGroups?: VpcSecurityGroupMembership[];
   VpcEndpoint?: VpcEndpoint;
 }
-const EndpointAccess = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<EndpointAccess>;
 export type SourceIdsList = string[];
-const SourceIdsList = /*@__PURE__*/ __L.at(__c13, 6);
 export type EventCategoriesList = string[];
-const EventCategoriesList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface CreateEventSubscriptionMessage {
   SubscriptionName?: string;
   SnsTopicArn?: string;
@@ -2506,10 +2243,6 @@ export interface CreateEventSubscriptionMessage {
   Enabled?: boolean;
   Tags?: Tag[];
 }
-const CreateEventSubscriptionMessage = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<CreateEventSubscriptionMessage>;
 export interface EventSubscription {
   CustomerAwsId?: string;
   CustSubscriptionId?: string;
@@ -2523,38 +2256,21 @@ export interface EventSubscription {
   Enabled?: boolean;
   Tags?: Tag[];
 }
-const EventSubscription = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<EventSubscription>;
 export interface CreateEventSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-const CreateEventSubscriptionResult = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateEventSubscriptionResult>;
 export interface CreateHsmClientCertificateMessage {
   HsmClientCertificateIdentifier?: string;
   Tags?: Tag[];
 }
-const CreateHsmClientCertificateMessage = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateHsmClientCertificateMessage>;
 export interface HsmClientCertificate {
   HsmClientCertificateIdentifier?: string;
   HsmClientCertificatePublicKey?: string;
   Tags?: Tag[];
 }
-const HsmClientCertificate = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<HsmClientCertificate>;
 export interface CreateHsmClientCertificateResult {
   HsmClientCertificate?: HsmClientCertificate;
 }
-const CreateHsmClientCertificateResult = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateHsmClientCertificateResult>;
 export interface CreateHsmConfigurationMessage {
   HsmConfigurationIdentifier?: string;
   Description?: string;
@@ -2564,10 +2280,6 @@ export interface CreateHsmConfigurationMessage {
   HsmServerPublicCertificate?: string;
   Tags?: Tag[];
 }
-const CreateHsmConfigurationMessage = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<CreateHsmConfigurationMessage>;
 export interface HsmConfiguration {
   HsmConfigurationIdentifier?: string;
   Description?: string;
@@ -2575,19 +2287,13 @@ export interface HsmConfiguration {
   HsmPartitionName?: string;
   Tags?: Tag[];
 }
-const HsmConfiguration = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<HsmConfiguration>;
 export interface CreateHsmConfigurationResult {
   HsmConfiguration?: HsmConfiguration;
 }
-const CreateHsmConfigurationResult = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateHsmConfigurationResult>;
 export type SourceArn = string;
 export type TargetArn = string;
 export type IntegrationName = string;
 export type EncryptionContextMap = { [key: string]: string | undefined };
-const EncryptionContextMap = /*@__PURE__*/ __L.at(__c15, 1);
 export type IntegrationDescription = string;
 export interface CreateIntegrationMessage {
   SourceArn?: string;
@@ -2598,10 +2304,6 @@ export interface CreateIntegrationMessage {
   AdditionalEncryptionContext?: { [key: string]: string | undefined };
   Description?: string;
 }
-const CreateIntegrationMessage = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CreateIntegrationMessage>;
 export type IntegrationArn = string;
 export type ZeroETLIntegrationStatus =
   | "creating"
@@ -2612,15 +2314,11 @@ export type ZeroETLIntegrationStatus =
   | "syncing"
   | "needs_attention"
   | (string & {});
-const ZeroETLIntegrationStatus = S.String;
-
 export interface IntegrationError {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const IntegrationError = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<IntegrationError>;
 export type IntegrationErrorList = IntegrationError[];
-const IntegrationErrorList = /*@__PURE__*/ __L.at(__c15, 4);
 export type Description = string;
 export interface Integration {
   IntegrationArn?: string;
@@ -2635,7 +2333,6 @@ export interface Integration {
   AdditionalEncryptionContext?: { [key: string]: string | undefined };
   Tags?: Tag[];
 }
-const Integration = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<Integration>;
 export type Qev2IdcApplicationName = string;
 export type IdcDisplayNameString = string;
 export interface CreateQev2IdcApplicationMessage {
@@ -2644,10 +2341,6 @@ export interface CreateQev2IdcApplicationMessage {
   IdcDisplayName?: string;
   Tags?: Tag[];
 }
-const CreateQev2IdcApplicationMessage = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreateQev2IdcApplicationMessage>;
 export interface Qev2IdcApplication {
   IdcInstanceArn?: string;
   Qev2IdcApplicationName?: string;
@@ -2657,67 +2350,40 @@ export interface Qev2IdcApplication {
   IdcDisplayName?: string;
   Tags?: Tag[];
 }
-const Qev2IdcApplication = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<Qev2IdcApplication>;
 export interface CreateQev2IdcApplicationResult {
   Qev2IdcApplication?: Qev2IdcApplication;
 }
-const CreateQev2IdcApplicationResult = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreateQev2IdcApplicationResult>;
 export type RedshiftIdcApplicationName = string;
 export type IdentityNamespaceString = string;
 export type AuthorizedAudienceList = string[];
-const AuthorizedAudienceList = /*@__PURE__*/ __L.at(__c16, 1);
 export interface AuthorizedTokenIssuer {
   TrustedTokenIssuerArn?: string;
   AuthorizedAudiencesList?: string[];
 }
-const AuthorizedTokenIssuer = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<AuthorizedTokenIssuer>;
 export type AuthorizedTokenIssuerList = AuthorizedTokenIssuer[];
-const AuthorizedTokenIssuerList = /*@__PURE__*/ __L.at(__c16, 3);
 export type ServiceAuthorization = "Enabled" | "Disabled" | (string & {});
-const ServiceAuthorization = S.String;
-
 export interface LakeFormationQuery {
   Authorization?: ServiceAuthorization;
 }
-const LakeFormationQuery = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<LakeFormationQuery>;
 export type LakeFormationScopeUnion = { LakeFormationQuery: LakeFormationQuery };
-const LakeFormationScopeUnion = /*@__PURE__*/ __L.at(__c16, 5);
 export type LakeFormationServiceIntegrations = LakeFormationScopeUnion[];
-const LakeFormationServiceIntegrations = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ReadWriteAccess {
   Authorization?: ServiceAuthorization;
 }
-const ReadWriteAccess = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ReadWriteAccess>;
 export type S3AccessGrantsScopeUnion = { ReadWriteAccess: ReadWriteAccess };
-const S3AccessGrantsScopeUnion = /*@__PURE__*/ __L.at(__c17, 0);
 export type S3AccessGrantsServiceIntegrations = S3AccessGrantsScopeUnion[];
-const S3AccessGrantsServiceIntegrations = /*@__PURE__*/ __L.at(__c17, 1);
 export interface Connect {
   Authorization?: ServiceAuthorization;
 }
-const Connect = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<Connect>;
 export type RedshiftScopeUnion = { Connect: Connect };
-const RedshiftScopeUnion = /*@__PURE__*/ __L.at(__c17, 3);
 export type RedshiftServiceIntegrations = RedshiftScopeUnion[];
-const RedshiftServiceIntegrations = /*@__PURE__*/ __L.at(__c17, 4);
 export type ServiceIntegrationsUnion =
   | { LakeFormation: LakeFormationScopeUnion[]; S3AccessGrants?: never; Redshift?: never }
   | { LakeFormation?: never; S3AccessGrants: S3AccessGrantsScopeUnion[]; Redshift?: never }
   | { LakeFormation?: never; S3AccessGrants?: never; Redshift: RedshiftScopeUnion[] };
-const ServiceIntegrationsUnion = /*@__PURE__*/ __L.at(__c17, 5);
 export type ServiceIntegrationList = ServiceIntegrationsUnion[];
-const ServiceIntegrationList = /*@__PURE__*/ __L.at(__c17, 6);
 export type ApplicationType = "None" | "Lakehouse" | (string & {});
-const ApplicationType = S.String;
-
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ __L.at(__c17, 7);
 export interface CreateRedshiftIdcApplicationMessage {
   IdcInstanceArn?: string;
   RedshiftIdcApplicationName?: string;
@@ -2730,10 +2396,6 @@ export interface CreateRedshiftIdcApplicationMessage {
   Tags?: Tag[];
   SsoTagKeys?: string[];
 }
-const CreateRedshiftIdcApplicationMessage = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<CreateRedshiftIdcApplicationMessage>;
 export interface RedshiftIdcApplication {
   IdcInstanceArn?: string;
   RedshiftIdcApplicationName?: string;
@@ -2749,17 +2411,9 @@ export interface RedshiftIdcApplication {
   Tags?: Tag[];
   SsoTagKeys?: string[];
 }
-const RedshiftIdcApplication = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<RedshiftIdcApplication>;
 export interface CreateRedshiftIdcApplicationResult {
   RedshiftIdcApplication?: RedshiftIdcApplication;
 }
-const CreateRedshiftIdcApplicationResult = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CreateRedshiftIdcApplicationResult>;
 export interface ResizeClusterMessage {
   ClusterIdentifier?: string;
   ClusterType?: string;
@@ -2769,27 +2423,17 @@ export interface ResizeClusterMessage {
   ReservedNodeId?: string;
   TargetReservedNodeOfferingId?: string;
 }
-const ResizeClusterMessage = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ResizeClusterMessage>;
 export interface PauseClusterMessage {
   ClusterIdentifier?: string;
 }
-const PauseClusterMessage = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<PauseClusterMessage>;
 export interface ResumeClusterMessage {
   ClusterIdentifier?: string;
 }
-const ResumeClusterMessage = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ResumeClusterMessage>;
 export interface ScheduledActionType {
   ResizeCluster?: ResizeClusterMessage;
   PauseCluster?: PauseClusterMessage;
   ResumeCluster?: ResumeClusterMessage;
 }
-const ScheduledActionType = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ScheduledActionType>;
 export interface CreateScheduledActionMessage {
   ScheduledActionName?: string;
   TargetAction?: ScheduledActionType;
@@ -2800,15 +2444,8 @@ export interface CreateScheduledActionMessage {
   EndTime?: Date;
   Enable?: boolean;
 }
-const CreateScheduledActionMessage = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<CreateScheduledActionMessage>;
 export type ScheduledActionState = "ACTIVE" | "DISABLED" | (string & {});
-const ScheduledActionState = S.String;
-
 export type ScheduledActionTimeList = Date[];
-const ScheduledActionTimeList = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ScheduledAction {
   ScheduledActionName?: string;
   TargetAction?: ScheduledActionType & {
@@ -2824,31 +2461,20 @@ export interface ScheduledAction {
   StartTime?: Date;
   EndTime?: Date;
 }
-const ScheduledAction = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ScheduledAction>;
 export interface CreateSnapshotCopyGrantMessage {
   SnapshotCopyGrantName?: string;
   KmsKeyId?: string;
   Tags?: Tag[];
 }
-const CreateSnapshotCopyGrantMessage = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<CreateSnapshotCopyGrantMessage>;
 export interface SnapshotCopyGrant {
   SnapshotCopyGrantName?: string;
   KmsKeyId?: string;
   Tags?: Tag[];
 }
-const SnapshotCopyGrant = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<SnapshotCopyGrant>;
 export interface CreateSnapshotCopyGrantResult {
   SnapshotCopyGrant?: SnapshotCopyGrant;
 }
-const CreateSnapshotCopyGrantResult = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<CreateSnapshotCopyGrantResult>;
 export type ScheduleDefinitionList = string[];
-const ScheduleDefinitionList = /*@__PURE__*/ __L.at(__c19, 5);
 export interface CreateSnapshotScheduleMessage {
   ScheduleDefinitions?: string[];
   ScheduleIdentifier?: string;
@@ -2857,22 +2483,12 @@ export interface CreateSnapshotScheduleMessage {
   DryRun?: boolean;
   NextInvocations?: number;
 }
-const CreateSnapshotScheduleMessage = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<CreateSnapshotScheduleMessage>;
 export type ScheduledSnapshotTimeList = Date[];
-const ScheduledSnapshotTimeList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ClusterAssociatedToSchedule {
   ClusterIdentifier?: string;
   ScheduleAssociationState?: ScheduleState;
 }
-const ClusterAssociatedToSchedule = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ClusterAssociatedToSchedule>;
 export type AssociatedClusterList = ClusterAssociatedToSchedule[];
-const AssociatedClusterList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface SnapshotSchedule {
   ScheduleDefinitions?: string[];
   ScheduleIdentifier?: string;
@@ -2882,31 +2498,20 @@ export interface SnapshotSchedule {
   AssociatedClusterCount?: number;
   AssociatedClusters?: ClusterAssociatedToSchedule[];
 }
-const SnapshotSchedule = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<SnapshotSchedule>;
 export interface CreateTagsMessage {
   ResourceName?: string;
   Tags?: Tag[];
 }
-const CreateTagsMessage = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<CreateTagsMessage>;
 export interface CreateTagsResponse {}
-const CreateTagsResponse = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<CreateTagsResponse>;
 export type UsageLimitFeatureType =
   | "spectrum"
   | "concurrency-scaling"
   | "cross-region-datasharing"
   | "extra-compute-for-automatic-optimization"
   | (string & {});
-const UsageLimitFeatureType = S.String;
-
 export type UsageLimitLimitType = "time" | "data-scanned" | (string & {});
-const UsageLimitLimitType = S.String;
-
 export type UsageLimitPeriod = "daily" | "weekly" | "monthly" | (string & {});
-const UsageLimitPeriod = S.String;
-
 export type UsageLimitBreachAction = "log" | "emit-metric" | "disable" | (string & {});
-const UsageLimitBreachAction = S.String;
-
 export interface CreateUsageLimitMessage {
   ClusterIdentifier?: string;
   FeatureType?: UsageLimitFeatureType;
@@ -2916,10 +2521,6 @@ export interface CreateUsageLimitMessage {
   BreachAction?: UsageLimitBreachAction;
   Tags?: Tag[];
 }
-const CreateUsageLimitMessage = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<CreateUsageLimitMessage>;
 export interface UsageLimit {
   UsageLimitId?: string;
   ClusterIdentifier?: string;
@@ -2930,371 +2531,165 @@ export interface UsageLimit {
   BreachAction?: UsageLimitBreachAction;
   Tags?: Tag[];
 }
-const UsageLimit = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<UsageLimit>;
 export interface DeauthorizeDataShareMessage {
   DataShareArn?: string;
   ConsumerIdentifier?: string;
 }
-const DeauthorizeDataShareMessage = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<DeauthorizeDataShareMessage>;
 export interface DeleteAuthenticationProfileMessage {
   AuthenticationProfileName?: string;
 }
-const DeleteAuthenticationProfileMessage = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<DeleteAuthenticationProfileMessage>;
 export interface DeleteAuthenticationProfileResult {
   AuthenticationProfileName?: string;
 }
-const DeleteAuthenticationProfileResult = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<DeleteAuthenticationProfileResult>;
 export interface DeleteClusterMessage {
   ClusterIdentifier?: string;
   SkipFinalClusterSnapshot?: boolean;
   FinalClusterSnapshotIdentifier?: string;
   FinalClusterSnapshotRetentionPeriod?: number;
 }
-const DeleteClusterMessage = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<DeleteClusterMessage>;
 export interface DeleteClusterResult {
   Cluster?: Cluster;
 }
-const DeleteClusterResult = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<DeleteClusterResult>;
 export interface DeleteClusterParameterGroupMessage {
   ParameterGroupName?: string;
 }
-const DeleteClusterParameterGroupMessage = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DeleteClusterParameterGroupMessage>;
 export interface DeleteClusterParameterGroupResponse {}
-const DeleteClusterParameterGroupResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DeleteClusterParameterGroupResponse>;
 export interface DeleteClusterSecurityGroupMessage {
   ClusterSecurityGroupName?: string;
 }
-const DeleteClusterSecurityGroupMessage = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DeleteClusterSecurityGroupMessage>;
 export interface DeleteClusterSecurityGroupResponse {}
-const DeleteClusterSecurityGroupResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<DeleteClusterSecurityGroupResponse>;
 export interface DeleteClusterSnapshotResult {
   Snapshot?: Snapshot;
 }
-const DeleteClusterSnapshotResult = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DeleteClusterSnapshotResult>;
 export interface DeleteClusterSubnetGroupMessage {
   ClusterSubnetGroupName?: string;
 }
-const DeleteClusterSubnetGroupMessage = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<DeleteClusterSubnetGroupMessage>;
 export interface DeleteClusterSubnetGroupResponse {}
-const DeleteClusterSubnetGroupResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<DeleteClusterSubnetGroupResponse>;
 export interface DeleteCustomDomainAssociationMessage {
   ClusterIdentifier?: string;
   CustomDomainName?: string;
 }
-const DeleteCustomDomainAssociationMessage = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<DeleteCustomDomainAssociationMessage>;
 export interface DeleteCustomDomainAssociationResponse {}
-const DeleteCustomDomainAssociationResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<DeleteCustomDomainAssociationResponse>;
 export interface DeleteEndpointAccessMessage {
   EndpointName?: string;
 }
-const DeleteEndpointAccessMessage = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<DeleteEndpointAccessMessage>;
 export interface DeleteEventSubscriptionMessage {
   SubscriptionName?: string;
 }
-const DeleteEventSubscriptionMessage = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<DeleteEventSubscriptionMessage>;
 export interface DeleteEventSubscriptionResponse {}
-const DeleteEventSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<DeleteEventSubscriptionResponse>;
 export interface DeleteHsmClientCertificateMessage {
   HsmClientCertificateIdentifier?: string;
 }
-const DeleteHsmClientCertificateMessage = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<DeleteHsmClientCertificateMessage>;
 export interface DeleteHsmClientCertificateResponse {}
-const DeleteHsmClientCertificateResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<DeleteHsmClientCertificateResponse>;
 export interface DeleteHsmConfigurationMessage {
   HsmConfigurationIdentifier?: string;
 }
-const DeleteHsmConfigurationMessage = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<DeleteHsmConfigurationMessage>;
 export interface DeleteHsmConfigurationResponse {}
-const DeleteHsmConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<DeleteHsmConfigurationResponse>;
 export interface DeleteIntegrationMessage {
   IntegrationArn?: string;
 }
-const DeleteIntegrationMessage = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<DeleteIntegrationMessage>;
 export interface DeleteQev2IdcApplicationMessage {
   Qev2IdcApplicationArn?: string;
 }
-const DeleteQev2IdcApplicationMessage = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<DeleteQev2IdcApplicationMessage>;
 export interface DeleteQev2IdcApplicationResponse {}
-const DeleteQev2IdcApplicationResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<DeleteQev2IdcApplicationResponse>;
 export interface DeleteRedshiftIdcApplicationMessage {
   RedshiftIdcApplicationArn?: string;
 }
-const DeleteRedshiftIdcApplicationMessage = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DeleteRedshiftIdcApplicationMessage>;
 export interface DeleteRedshiftIdcApplicationResponse {}
-const DeleteRedshiftIdcApplicationResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<DeleteRedshiftIdcApplicationResponse>;
 export interface DeleteResourcePolicyMessage {
   ResourceArn?: string;
 }
-const DeleteResourcePolicyMessage = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<DeleteResourcePolicyMessage>;
 export interface DeleteResourcePolicyResponse {}
-const DeleteResourcePolicyResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteScheduledActionMessage {
   ScheduledActionName?: string;
 }
-const DeleteScheduledActionMessage = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<DeleteScheduledActionMessage>;
 export interface DeleteScheduledActionResponse {}
-const DeleteScheduledActionResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<DeleteScheduledActionResponse>;
 export interface DeleteSnapshotCopyGrantMessage {
   SnapshotCopyGrantName?: string;
 }
-const DeleteSnapshotCopyGrantMessage = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<DeleteSnapshotCopyGrantMessage>;
 export interface DeleteSnapshotCopyGrantResponse {}
-const DeleteSnapshotCopyGrantResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<DeleteSnapshotCopyGrantResponse>;
 export interface DeleteSnapshotScheduleMessage {
   ScheduleIdentifier?: string;
 }
-const DeleteSnapshotScheduleMessage = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<DeleteSnapshotScheduleMessage>;
 export interface DeleteSnapshotScheduleResponse {}
-const DeleteSnapshotScheduleResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<DeleteSnapshotScheduleResponse>;
 export interface DeleteTagsMessage {
   ResourceName?: string;
   TagKeys?: string[];
 }
-const DeleteTagsMessage = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<DeleteTagsMessage>;
 export interface DeleteTagsResponse {}
-const DeleteTagsResponse = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<DeleteTagsResponse>;
 export interface DeleteUsageLimitMessage {
   UsageLimitId?: string;
 }
-const DeleteUsageLimitMessage = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<DeleteUsageLimitMessage>;
 export interface DeleteUsageLimitResponse {}
-const DeleteUsageLimitResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DeleteUsageLimitResponse>;
 export interface ServerlessIdentifier {
   NamespaceIdentifier?: string;
   WorkgroupIdentifier?: string;
 }
-const ServerlessIdentifier = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ServerlessIdentifier>;
 export interface ProvisionedIdentifier {
   ClusterIdentifier?: string;
 }
-const ProvisionedIdentifier = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ProvisionedIdentifier>;
 export type NamespaceIdentifierUnion =
   | { ServerlessIdentifier: ServerlessIdentifier; ProvisionedIdentifier?: never }
   | { ServerlessIdentifier?: never; ProvisionedIdentifier: ProvisionedIdentifier };
-const NamespaceIdentifierUnion = /*@__PURE__*/ __L.at(__c25, 7);
 export type ConsumerIdentifierList = string[];
-const ConsumerIdentifierList = /*@__PURE__*/ __L.at(__c26, 0);
 export interface DeregisterNamespaceInputMessage {
   NamespaceIdentifier?: NamespaceIdentifierUnion;
   ConsumerIdentifiers?: string[];
 }
-const DeregisterNamespaceInputMessage = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DeregisterNamespaceInputMessage>;
 export type NamespaceRegistrationStatus = "Registering" | "Deregistering" | (string & {});
-const NamespaceRegistrationStatus = S.String;
-
 export interface DeregisterNamespaceOutputMessage {
   Status?: NamespaceRegistrationStatus;
 }
-const DeregisterNamespaceOutputMessage = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<DeregisterNamespaceOutputMessage>;
 export type AttributeNameList = string[];
-const AttributeNameList = /*@__PURE__*/ __L.at(__c26, 3);
 export interface DescribeAccountAttributesMessage {
   AttributeNames?: string[];
 }
-const DescribeAccountAttributesMessage = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DescribeAccountAttributesMessage>;
 export interface AttributeValueTarget {
   AttributeValue?: string;
 }
-const AttributeValueTarget = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<AttributeValueTarget>;
 export type AttributeValueList = AttributeValueTarget[];
-const AttributeValueList = /*@__PURE__*/ __L.at(__c26, 6);
 export interface AccountAttribute {
   AttributeName?: string;
   AttributeValues?: AttributeValueTarget[];
 }
-const AccountAttribute = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<AccountAttribute>;
 export type AttributeList = AccountAttribute[];
-const AttributeList = /*@__PURE__*/ __L.at(__c27, 0);
 export interface AccountAttributeList {
   AccountAttributes?: AccountAttribute[];
 }
-const AccountAttributeList = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<AccountAttributeList>;
 export interface DescribeAuthenticationProfilesMessage {
   AuthenticationProfileName?: string;
 }
-const DescribeAuthenticationProfilesMessage = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<DescribeAuthenticationProfilesMessage>;
 export interface AuthenticationProfile {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-const AuthenticationProfile = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<AuthenticationProfile>;
 export type AuthenticationProfileList = AuthenticationProfile[];
-const AuthenticationProfileList = /*@__PURE__*/ __L.at(__c27, 4);
 export interface DescribeAuthenticationProfilesResult {
   AuthenticationProfiles?: AuthenticationProfile[];
 }
-const DescribeAuthenticationProfilesResult = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DescribeAuthenticationProfilesResult>;
 export interface DescribeClusterDbRevisionsMessage {
   ClusterIdentifier?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeClusterDbRevisionsMessage = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DescribeClusterDbRevisionsMessage>;
 export interface RevisionTarget {
   DatabaseRevision?: string;
   Description?: string;
   DatabaseRevisionReleaseDate?: Date;
 }
-const RevisionTarget = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<RevisionTarget>;
 export type RevisionTargetsList = RevisionTarget[];
-const RevisionTargetsList = /*@__PURE__*/ __L.at(__c28, 0);
 export interface ClusterDbRevision {
   ClusterIdentifier?: string;
   CurrentDatabaseRevision?: string;
   DatabaseRevisionReleaseDate?: Date;
   RevisionTargets?: RevisionTarget[];
 }
-const ClusterDbRevision = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<ClusterDbRevision>;
 export type ClusterDbRevisionsList = ClusterDbRevision[];
-const ClusterDbRevisionsList = /*@__PURE__*/ __L.at(__c28, 2);
 export interface ClusterDbRevisionsMessage {
   Marker?: string;
   ClusterDbRevisions?: ClusterDbRevision[];
 }
-const ClusterDbRevisionsMessage = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ClusterDbRevisionsMessage>;
 export type TagValueList = string[];
-const TagValueList = /*@__PURE__*/ __L.at(__c28, 4);
 export interface DescribeClusterParameterGroupsMessage {
   ParameterGroupName?: string;
   MaxRecords?: number;
@@ -3302,33 +2697,18 @@ export interface DescribeClusterParameterGroupsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeClusterParameterGroupsMessage = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<DescribeClusterParameterGroupsMessage>;
 export type ParameterGroupList = ClusterParameterGroup[];
-const ParameterGroupList = /*@__PURE__*/ __L.at(__c28, 6);
 export interface ClusterParameterGroupsMessage {
   Marker?: string;
   ParameterGroups?: ClusterParameterGroup[];
 }
-const ClusterParameterGroupsMessage = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ClusterParameterGroupsMessage>;
 export interface DescribeClusterParametersMessage {
   ParameterGroupName?: string;
   Source?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeClusterParametersMessage = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<DescribeClusterParametersMessage>;
 export type ParameterApplyType = "static" | "dynamic" | (string & {});
-const ParameterApplyType = S.String;
-
 export interface Parameter {
   ParameterName?: string;
   ParameterValue?: string;
@@ -3340,17 +2720,11 @@ export interface Parameter {
   IsModifiable?: boolean;
   MinimumEngineVersion?: string;
 }
-const Parameter = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<Parameter>;
 export type ParametersList = Parameter[];
-const ParametersList = /*@__PURE__*/ __L.at(__c29, 2);
 export interface ClusterParameterGroupDetails {
   Parameters?: Parameter[];
   Marker?: string;
 }
-const ClusterParameterGroupDetails = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ClusterParameterGroupDetails>;
 export interface DescribeClustersMessage {
   ClusterIdentifier?: string;
   MaxRecords?: number;
@@ -3358,17 +2732,11 @@ export interface DescribeClustersMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeClustersMessage = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<DescribeClustersMessage>;
 export type ClusterList = Cluster[];
-const ClusterList = /*@__PURE__*/ __L.at(__c29, 5);
 export interface ClustersMessage {
   Marker?: string;
   Clusters?: Cluster[];
 }
-const ClustersMessage = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<ClustersMessage>;
 export interface DescribeClusterSecurityGroupsMessage {
   ClusterSecurityGroupName?: string;
   MaxRecords?: number;
@@ -3376,40 +2744,22 @@ export interface DescribeClusterSecurityGroupsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeClusterSecurityGroupsMessage = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<DescribeClusterSecurityGroupsMessage>;
 export type ClusterSecurityGroups = ClusterSecurityGroup[];
-const ClusterSecurityGroups = /*@__PURE__*/ __L.at(__c30, 0);
 export interface ClusterSecurityGroupMessage {
   Marker?: string;
   ClusterSecurityGroups?: ClusterSecurityGroup[];
 }
-const ClusterSecurityGroupMessage = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ClusterSecurityGroupMessage>;
 export type SnapshotAttributeToSortBy =
   | "SOURCE_TYPE"
   | "TOTAL_SIZE"
   | "CREATE_TIME"
   | (string & {});
-const SnapshotAttributeToSortBy = S.String;
-
 export type SortByOrder = "ASC" | "DESC" | (string & {});
-const SortByOrder = S.String;
-
 export interface SnapshotSortingEntity {
   Attribute?: SnapshotAttributeToSortBy;
   SortOrder?: SortByOrder;
 }
-const SnapshotSortingEntity = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<SnapshotSortingEntity>;
 export type SnapshotSortingEntityList = SnapshotSortingEntity[];
-const SnapshotSortingEntityList = /*@__PURE__*/ __L.at(__c30, 3);
 export interface DescribeClusterSnapshotsMessage {
   ClusterIdentifier?: string;
   SnapshotIdentifier?: string;
@@ -3425,17 +2775,11 @@ export interface DescribeClusterSnapshotsMessage {
   ClusterExists?: boolean;
   SortingEntities?: SnapshotSortingEntity[];
 }
-const DescribeClusterSnapshotsMessage = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<DescribeClusterSnapshotsMessage>;
 export type SnapshotList = Snapshot[];
-const SnapshotList = /*@__PURE__*/ __L.at(__c30, 5);
 export interface SnapshotMessage {
   Marker?: string;
   Snapshots?: Snapshot[];
 }
-const SnapshotMessage = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<SnapshotMessage>;
 export interface DescribeClusterSubnetGroupsMessage {
   ClusterSubnetGroupName?: string;
   MaxRecords?: number;
@@ -3443,158 +2787,94 @@ export interface DescribeClusterSubnetGroupsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeClusterSubnetGroupsMessage = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<DescribeClusterSubnetGroupsMessage>;
 export type ClusterSubnetGroups = ClusterSubnetGroup[];
-const ClusterSubnetGroups = /*@__PURE__*/ __L.at(__c31, 0);
 export interface ClusterSubnetGroupMessage {
   Marker?: string;
   ClusterSubnetGroups?: ClusterSubnetGroup[];
 }
-const ClusterSubnetGroupMessage = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ClusterSubnetGroupMessage>;
 export interface DescribeClusterTracksMessage {
   MaintenanceTrackName?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeClusterTracksMessage = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<DescribeClusterTracksMessage>;
 export interface SupportedOperation {
   OperationName?: string;
 }
-const SupportedOperation = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<SupportedOperation>;
 export type SupportedOperationList = SupportedOperation[];
-const SupportedOperationList = /*@__PURE__*/ __L.at(__c31, 4);
 export interface UpdateTarget {
   MaintenanceTrackName?: string;
   DatabaseVersion?: string;
   SupportedOperations?: SupportedOperation[];
 }
-const UpdateTarget = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<UpdateTarget>;
 export type EligibleTracksToUpdateList = UpdateTarget[];
-const EligibleTracksToUpdateList = /*@__PURE__*/ __L.at(__c31, 6);
 export interface MaintenanceTrack {
   MaintenanceTrackName?: string;
   DatabaseVersion?: string;
   UpdateTargets?: UpdateTarget[];
 }
-const MaintenanceTrack = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<MaintenanceTrack>;
 export type TrackList = MaintenanceTrack[];
-const TrackList = /*@__PURE__*/ __L.at(__c32, 0);
 export interface TrackListMessage {
   MaintenanceTracks?: MaintenanceTrack[];
   Marker?: string;
 }
-const TrackListMessage = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<TrackListMessage>;
 export interface DescribeClusterVersionsMessage {
   ClusterVersion?: string;
   ClusterParameterGroupFamily?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeClusterVersionsMessage = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<DescribeClusterVersionsMessage>;
 export interface ClusterVersion {
   ClusterVersion?: string;
   ClusterParameterGroupFamily?: string;
   Description?: string;
 }
-const ClusterVersion = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<ClusterVersion>;
 export type ClusterVersionList = ClusterVersion[];
-const ClusterVersionList = /*@__PURE__*/ __L.at(__c32, 4);
 export interface ClusterVersionsMessage {
   Marker?: string;
   ClusterVersions?: ClusterVersion[];
 }
-const ClusterVersionsMessage = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ClusterVersionsMessage>;
 export interface DescribeCustomDomainAssociationsMessage {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeCustomDomainAssociationsMessage = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<DescribeCustomDomainAssociationsMessage>;
 export interface CertificateAssociation {
   CustomDomainName?: string;
   ClusterIdentifier?: string;
 }
-const CertificateAssociation = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<CertificateAssociation>;
 export type CertificateAssociationList = CertificateAssociation[];
-const CertificateAssociationList = /*@__PURE__*/ __L.at(__c33, 0);
 export interface Association {
   CustomDomainCertificateArn?: string;
   CustomDomainCertificateExpiryDate?: Date;
   CertificateAssociations?: CertificateAssociation[];
 }
-const Association = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<Association>;
 export type AssociationList = Association[];
-const AssociationList = /*@__PURE__*/ __L.at(__c33, 2);
 export interface CustomDomainAssociationsMessage {
   Marker?: string;
   Associations?: Association[];
 }
-const CustomDomainAssociationsMessage = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<CustomDomainAssociationsMessage>;
 export interface DescribeDataSharesMessage {
   DataShareArn?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeDataSharesMessage = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<DescribeDataSharesMessage>;
 export type DataShareList = DataShare[];
-const DataShareList = /*@__PURE__*/ __L.at(__c33, 5);
 export interface DescribeDataSharesResult {
   DataShares?: DataShare[];
   Marker?: string;
 }
-const DescribeDataSharesResult = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<DescribeDataSharesResult>;
 export type DataShareStatusForConsumer = "ACTIVE" | "AVAILABLE" | (string & {});
-const DataShareStatusForConsumer = S.String;
-
 export interface DescribeDataSharesForConsumerMessage {
   ConsumerArn?: string;
   Status?: DataShareStatusForConsumer;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeDataSharesForConsumerMessage = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<DescribeDataSharesForConsumerMessage>;
 export interface DescribeDataSharesForConsumerResult {
   DataShares?: DataShare[];
   Marker?: string;
 }
-const DescribeDataSharesForConsumerResult = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<DescribeDataSharesForConsumerResult>;
 export type DataShareStatusForProducer =
   | "ACTIVE"
   | "AUTHORIZED"
@@ -3602,51 +2882,29 @@ export type DataShareStatusForProducer =
   | "DEAUTHORIZED"
   | "REJECTED"
   | (string & {});
-const DataShareStatusForProducer = S.String;
-
 export interface DescribeDataSharesForProducerMessage {
   ProducerArn?: string;
   Status?: DataShareStatusForProducer;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeDataSharesForProducerMessage = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<DescribeDataSharesForProducerMessage>;
 export interface DescribeDataSharesForProducerResult {
   DataShares?: DataShare[];
   Marker?: string;
 }
-const DescribeDataSharesForProducerResult = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<DescribeDataSharesForProducerResult>;
 export interface DescribeDefaultClusterParametersMessage {
   ParameterGroupFamily?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeDefaultClusterParametersMessage = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<DescribeDefaultClusterParametersMessage>;
 export interface DefaultClusterParameters {
   ParameterGroupFamily?: string;
   Marker?: string;
   Parameters?: Parameter[];
 }
-const DefaultClusterParameters = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<DefaultClusterParameters>;
 export interface DescribeDefaultClusterParametersResult {
   DefaultClusterParameters?: DefaultClusterParameters;
 }
-const DescribeDefaultClusterParametersResult = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<DescribeDefaultClusterParametersResult>;
 export interface DescribeEndpointAccessMessage {
   ClusterIdentifier?: string;
   ResourceOwner?: string;
@@ -3655,17 +2913,11 @@ export interface DescribeEndpointAccessMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeEndpointAccessMessage = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<DescribeEndpointAccessMessage>;
 export type EndpointAccesses = EndpointAccess[];
-const EndpointAccesses = /*@__PURE__*/ __L.at(__c34, 7);
 export interface EndpointAccessList {
   EndpointAccessList?: EndpointAccess[];
   Marker?: string;
 }
-const EndpointAccessList = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<EndpointAccessList>;
 export interface DescribeEndpointAuthorizationMessage {
   ClusterIdentifier?: string;
   Account?: string;
@@ -3673,50 +2925,29 @@ export interface DescribeEndpointAuthorizationMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeEndpointAuthorizationMessage = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<DescribeEndpointAuthorizationMessage>;
 export type EndpointAuthorizations = EndpointAuthorization[];
-const EndpointAuthorizations = /*@__PURE__*/ __L.at(__c35, 2);
 export interface EndpointAuthorizationList {
   EndpointAuthorizationList?: EndpointAuthorization[];
   Marker?: string;
 }
-const EndpointAuthorizationList = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<EndpointAuthorizationList>;
 export interface DescribeEventCategoriesMessage {
   SourceType?: string;
 }
-const DescribeEventCategoriesMessage = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<DescribeEventCategoriesMessage>;
 export interface EventInfoMap {
   EventId?: string;
   EventCategories?: string[];
   EventDescription?: string;
   Severity?: string;
 }
-const EventInfoMap = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<EventInfoMap>;
 export type EventInfoMapList = EventInfoMap[];
-const EventInfoMapList = /*@__PURE__*/ __L.at(__c35, 6);
 export interface EventCategoriesMap {
   SourceType?: string;
   Events?: EventInfoMap[];
 }
-const EventCategoriesMap = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<EventCategoriesMap>;
 export type EventCategoriesMapList = EventCategoriesMap[];
-const EventCategoriesMapList = /*@__PURE__*/ __L.at(__c36, 0);
 export interface EventCategoriesMessage {
   EventCategoriesMapList?: EventCategoriesMap[];
 }
-const EventCategoriesMessage = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<EventCategoriesMessage>;
 export type SourceType =
   | "cluster"
   | "cluster-parameter-group"
@@ -3724,8 +2955,6 @@ export type SourceType =
   | "cluster-snapshot"
   | "scheduled-action"
   | (string & {});
-const SourceType = S.String;
-
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -3735,10 +2964,6 @@ export interface DescribeEventsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeEventsMessage = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<DescribeEventsMessage>;
 export interface Event {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -3748,14 +2973,11 @@ export interface Event {
   Date?: Date;
   EventId?: string;
 }
-const Event = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<Event>;
 export type EventList = Event[];
-const EventList = /*@__PURE__*/ __L.at(__c36, 4);
 export interface EventsMessage {
   Marker?: string;
   Events?: Event[];
 }
-const EventsMessage = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<EventsMessage>;
 export interface DescribeEventSubscriptionsMessage {
   SubscriptionName?: string;
   MaxRecords?: number;
@@ -3763,20 +2985,11 @@ export interface DescribeEventSubscriptionsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeEventSubscriptionsMessage = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<DescribeEventSubscriptionsMessage>;
 export type EventSubscriptionsList = EventSubscription[];
-const EventSubscriptionsList = /*@__PURE__*/ __L.at(__c36, 7);
 export interface EventSubscriptionsMessage {
   Marker?: string;
   EventSubscriptionsList?: EventSubscription[];
 }
-const EventSubscriptionsMessage = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<EventSubscriptionsMessage>;
 export interface DescribeHsmClientCertificatesMessage {
   HsmClientCertificateIdentifier?: string;
   MaxRecords?: number;
@@ -3784,20 +2997,11 @@ export interface DescribeHsmClientCertificatesMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeHsmClientCertificatesMessage = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<DescribeHsmClientCertificatesMessage>;
 export type HsmClientCertificateList = HsmClientCertificate[];
-const HsmClientCertificateList = /*@__PURE__*/ __L.at(__c37, 2);
 export interface HsmClientCertificateMessage {
   Marker?: string;
   HsmClientCertificates?: HsmClientCertificate[];
 }
-const HsmClientCertificateMessage = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<HsmClientCertificateMessage>;
 export interface DescribeHsmConfigurationsMessage {
   HsmConfigurationIdentifier?: string;
   MaxRecords?: number;
@@ -3805,20 +3009,11 @@ export interface DescribeHsmConfigurationsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeHsmConfigurationsMessage = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<DescribeHsmConfigurationsMessage>;
 export type HsmConfigurationList = HsmConfiguration[];
-const HsmConfigurationList = /*@__PURE__*/ __L.at(__c37, 5);
 export interface HsmConfigurationMessage {
   Marker?: string;
   HsmConfigurations?: HsmConfiguration[];
 }
-const HsmConfigurationMessage = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<HsmConfigurationMessage>;
 export type InboundIntegrationArn = string;
 export interface DescribeInboundIntegrationsMessage {
   IntegrationArn?: string;
@@ -3826,10 +3021,6 @@ export interface DescribeInboundIntegrationsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeInboundIntegrationsMessage = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<DescribeInboundIntegrationsMessage>;
 export interface InboundIntegration {
   IntegrationArn?: string;
   SourceArn?: string;
@@ -3838,67 +3029,41 @@ export interface InboundIntegration {
   Errors?: IntegrationError[];
   CreateTime?: Date;
 }
-const InboundIntegration = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<InboundIntegration>;
 export type InboundIntegrationList = InboundIntegration[];
-const InboundIntegrationList = /*@__PURE__*/ __L.at(__c38, 1);
 export interface InboundIntegrationsMessage {
   Marker?: string;
   InboundIntegrations?: (InboundIntegration & {
     Errors: (IntegrationError & { ErrorCode: string })[];
   })[];
 }
-const InboundIntegrationsMessage = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<InboundIntegrationsMessage>;
 export type DescribeIntegrationsFilterName =
   | "integration-arn"
   | "source-arn"
   | "source-types"
   | "status"
   | (string & {});
-const DescribeIntegrationsFilterName = S.String;
-
 export type DescribeIntegrationsFilterValueList = string[];
-const DescribeIntegrationsFilterValueList = /*@__PURE__*/ __L.at(__c38, 3);
 export interface DescribeIntegrationsFilter {
   Name?: DescribeIntegrationsFilterName;
   Values?: string[];
 }
-const DescribeIntegrationsFilter = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<DescribeIntegrationsFilter>;
 export type DescribeIntegrationsFilterList = DescribeIntegrationsFilter[];
-const DescribeIntegrationsFilterList = /*@__PURE__*/ __L.at(__c38, 5);
 export interface DescribeIntegrationsMessage {
   IntegrationArn?: string;
   MaxRecords?: number;
   Marker?: string;
   Filters?: DescribeIntegrationsFilter[];
 }
-const DescribeIntegrationsMessage = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<DescribeIntegrationsMessage>;
 export type IntegrationList = Integration[];
-const IntegrationList = /*@__PURE__*/ __L.at(__c38, 7);
 export interface IntegrationsMessage {
   Marker?: string;
   Integrations?: (Integration & { Errors: (IntegrationError & { ErrorCode: string })[] })[];
 }
-const IntegrationsMessage = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<IntegrationsMessage>;
 export interface DescribeLoggingStatusMessage {
   ClusterIdentifier?: string;
 }
-const DescribeLoggingStatusMessage = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<DescribeLoggingStatusMessage>;
 export type S3KeyPrefixValue = string;
 export type LogDestinationType = "s3" | "cloudwatch" | "s3table" | (string & {});
-const LogDestinationType = S.String;
-
 export interface LoggingStatus {
   LoggingEnabled?: boolean;
   BucketName?: string;
@@ -3910,36 +3075,24 @@ export interface LoggingStatus {
   LogExports?: string[];
   S3Tables?: S3TablePublishStatus;
 }
-const LoggingStatus = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<LoggingStatus>;
 export type ActionType =
   | "restore-cluster"
   | "recommend-node-config"
   | "resize-cluster"
   | (string & {});
-const ActionType = S.String;
-
 export type NodeConfigurationOptionsFilterName =
   | "NodeType"
   | "NumberOfNodes"
   | "EstimatedDiskUtilizationPercent"
   | "Mode"
   | (string & {});
-const NodeConfigurationOptionsFilterName = S.String;
-
 export type OperatorType = "eq" | "lt" | "gt" | "le" | "ge" | "in" | "between" | (string & {});
-const OperatorType = S.String;
-
 export interface NodeConfigurationOptionsFilter {
   Name?: NodeConfigurationOptionsFilterName;
   Operator?: OperatorType;
   Values?: string[];
 }
-const NodeConfigurationOptionsFilter = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<NodeConfigurationOptionsFilter>;
 export type NodeConfigurationOptionsFilterList = NodeConfigurationOptionsFilter[];
-const NodeConfigurationOptionsFilterList = /*@__PURE__*/ __L.at(__c39, 4);
 export interface DescribeNodeConfigurationOptionsMessage {
   ActionType?: ActionType;
   ClusterIdentifier?: string;
@@ -3950,83 +3103,48 @@ export interface DescribeNodeConfigurationOptionsMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-const DescribeNodeConfigurationOptionsMessage = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>;
 export type Mode = "standard" | "high-performance" | (string & {});
-const Mode = S.String;
-
 export interface NodeConfigurationOption {
   NodeType?: string;
   NumberOfNodes?: number;
   EstimatedDiskUtilizationPercent?: number;
   Mode?: Mode;
 }
-const NodeConfigurationOption = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<NodeConfigurationOption>;
 export type NodeConfigurationOptionList = NodeConfigurationOption[];
-const NodeConfigurationOptionList = /*@__PURE__*/ __L.at(__c39, 7);
 export interface NodeConfigurationOptionsMessage {
   NodeConfigurationOptionList?: NodeConfigurationOption[];
   Marker?: string;
 }
-const NodeConfigurationOptionsMessage = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<NodeConfigurationOptionsMessage>;
 export interface DescribeOrderableClusterOptionsMessage {
   ClusterVersion?: string;
   NodeType?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeOrderableClusterOptionsMessage = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<DescribeOrderableClusterOptionsMessage>;
 export type AvailabilityZoneList = AvailabilityZone[];
-const AvailabilityZoneList = /*@__PURE__*/ __L.at(__c40, 2);
 export interface OrderableClusterOption {
   ClusterVersion?: string;
   ClusterType?: string;
   NodeType?: string;
   AvailabilityZones?: AvailabilityZone[];
 }
-const OrderableClusterOption = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<OrderableClusterOption>;
 export type OrderableClusterOptionsList = OrderableClusterOption[];
-const OrderableClusterOptionsList = /*@__PURE__*/ __L.at(__c40, 4);
 export interface OrderableClusterOptionsMessage {
   OrderableClusterOptions?: OrderableClusterOption[];
   Marker?: string;
 }
-const OrderableClusterOptionsMessage = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<OrderableClusterOptionsMessage>;
 export interface DescribePartnersInputMessage {
   AccountId?: string;
   ClusterIdentifier?: string;
   DatabaseName?: string;
   PartnerName?: string;
 }
-const DescribePartnersInputMessage = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<DescribePartnersInputMessage>;
 export type PartnerIntegrationStatus =
   | "Active"
   | "Inactive"
   | "RuntimeFailure"
   | "ConnectionFailure"
   | (string & {});
-const PartnerIntegrationStatus = S.String;
-
 export type PartnerIntegrationStatusMessage = string;
 export interface PartnerIntegrationInfo {
   DatabaseName?: string;
@@ -4036,86 +3154,46 @@ export interface PartnerIntegrationInfo {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const PartnerIntegrationInfo = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<PartnerIntegrationInfo>;
 export type PartnerIntegrationInfoList = PartnerIntegrationInfo[];
-const PartnerIntegrationInfoList = /*@__PURE__*/ __L.at(__c41, 0);
 export interface DescribePartnersOutputMessage {
   PartnerIntegrationInfoList?: PartnerIntegrationInfo[];
 }
-const DescribePartnersOutputMessage = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<DescribePartnersOutputMessage>;
 export interface DescribeQev2IdcApplicationsMessage {
   Qev2IdcApplicationArn?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeQev2IdcApplicationsMessage = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<DescribeQev2IdcApplicationsMessage>;
 export type Qev2IdcApplicationList = Qev2IdcApplication[];
-const Qev2IdcApplicationList = /*@__PURE__*/ __L.at(__c41, 3);
 export interface DescribeQev2IdcApplicationsResult {
   Qev2IdcApplications?: Qev2IdcApplication[];
   Marker?: string;
 }
-const DescribeQev2IdcApplicationsResult = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<DescribeQev2IdcApplicationsResult>;
 export interface DescribeRedshiftIdcApplicationsMessage {
   RedshiftIdcApplicationArn?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeRedshiftIdcApplicationsMessage = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<DescribeRedshiftIdcApplicationsMessage>;
 export type RedshiftIdcApplicationList = RedshiftIdcApplication[];
-const RedshiftIdcApplicationList = /*@__PURE__*/ __L.at(__c41, 6);
 export interface DescribeRedshiftIdcApplicationsResult {
   RedshiftIdcApplications?: RedshiftIdcApplication[];
   Marker?: string;
 }
-const DescribeRedshiftIdcApplicationsResult = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<DescribeRedshiftIdcApplicationsResult>;
 export interface DescribeReservedNodeExchangeStatusInputMessage {
   ReservedNodeId?: string;
   ReservedNodeExchangeRequestId?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeReservedNodeExchangeStatusInputMessage = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<DescribeReservedNodeExchangeStatusInputMessage>;
 export type ReservedNodeExchangeStatusList = ReservedNodeExchangeStatus[];
-const ReservedNodeExchangeStatusList = /*@__PURE__*/ __L.at(__c42, 1);
 export interface DescribeReservedNodeExchangeStatusOutputMessage {
   ReservedNodeExchangeStatusDetails?: ReservedNodeExchangeStatus[];
   Marker?: string;
 }
-const DescribeReservedNodeExchangeStatusOutputMessage = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<DescribeReservedNodeExchangeStatusOutputMessage>;
 export interface DescribeReservedNodeOfferingsMessage {
   ReservedNodeOfferingId?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeReservedNodeOfferingsMessage = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<DescribeReservedNodeOfferingsMessage>;
 export interface ReservedNodeOffering {
   ReservedNodeOfferingId?: string;
   NodeType?: string;
@@ -4127,66 +3205,35 @@ export interface ReservedNodeOffering {
   RecurringCharges?: RecurringCharge[];
   ReservedNodeOfferingType?: ReservedNodeOfferingType;
 }
-const ReservedNodeOffering = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<ReservedNodeOffering>;
 export type ReservedNodeOfferingList = ReservedNodeOffering[];
-const ReservedNodeOfferingList = /*@__PURE__*/ __L.at(__c42, 5);
 export interface ReservedNodeOfferingsMessage {
   Marker?: string;
   ReservedNodeOfferings?: ReservedNodeOffering[];
 }
-const ReservedNodeOfferingsMessage = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ReservedNodeOfferingsMessage>;
 export interface DescribeReservedNodesMessage {
   ReservedNodeId?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeReservedNodesMessage = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<DescribeReservedNodesMessage>;
 export type ReservedNodeList = ReservedNode[];
-const ReservedNodeList = /*@__PURE__*/ __L.at(__c43, 0);
 export interface ReservedNodesMessage {
   Marker?: string;
   ReservedNodes?: ReservedNode[];
 }
-const ReservedNodesMessage = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<ReservedNodesMessage>;
 export interface DescribeResizeMessage {
   ClusterIdentifier?: string;
 }
-const DescribeResizeMessage = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<DescribeResizeMessage>;
 export type ScheduledActionTypeValues =
   | "ResizeCluster"
   | "PauseCluster"
   | "ResumeCluster"
   | (string & {});
-const ScheduledActionTypeValues = S.String;
-
 export type ScheduledActionFilterName = "cluster-identifier" | "iam-role" | (string & {});
-const ScheduledActionFilterName = S.String;
-
 export interface ScheduledActionFilter {
   Name?: ScheduledActionFilterName;
   Values?: string[];
 }
-const ScheduledActionFilter = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<ScheduledActionFilter>;
 export type ScheduledActionFilterList = ScheduledActionFilter[];
-const ScheduledActionFilterList = /*@__PURE__*/ __L.at(__c43, 4);
 export interface DescribeScheduledActionsMessage {
   ScheduledActionName?: string;
   TargetActionType?: ScheduledActionTypeValues;
@@ -4197,12 +3244,7 @@ export interface DescribeScheduledActionsMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-const DescribeScheduledActionsMessage = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<DescribeScheduledActionsMessage>;
 export type ScheduledActionList = ScheduledAction[];
-const ScheduledActionList = /*@__PURE__*/ __L.at(__c43, 6);
 export interface ScheduledActionsMessage {
   Marker?: string;
   ScheduledActions?: (ScheduledAction & {
@@ -4213,10 +3255,6 @@ export interface ScheduledActionsMessage {
     };
   })[];
 }
-const ScheduledActionsMessage = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<ScheduledActionsMessage>;
 export interface DescribeSnapshotCopyGrantsMessage {
   SnapshotCopyGrantName?: string;
   MaxRecords?: number;
@@ -4224,20 +3262,11 @@ export interface DescribeSnapshotCopyGrantsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeSnapshotCopyGrantsMessage = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<DescribeSnapshotCopyGrantsMessage>;
 export type SnapshotCopyGrantList = SnapshotCopyGrant[];
-const SnapshotCopyGrantList = /*@__PURE__*/ __L.at(__c44, 1);
 export interface SnapshotCopyGrantMessage {
   Marker?: string;
   SnapshotCopyGrants?: SnapshotCopyGrant[];
 }
-const SnapshotCopyGrantMessage = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<SnapshotCopyGrantMessage>;
 export interface DescribeSnapshotSchedulesMessage {
   ClusterIdentifier?: string;
   ScheduleIdentifier?: string;
@@ -4246,43 +3275,22 @@ export interface DescribeSnapshotSchedulesMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-const DescribeSnapshotSchedulesMessage = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<DescribeSnapshotSchedulesMessage>;
 export type SnapshotScheduleList = SnapshotSchedule[];
-const SnapshotScheduleList = /*@__PURE__*/ __L.at(__c44, 4);
 export interface DescribeSnapshotSchedulesOutputMessage {
   SnapshotSchedules?: SnapshotSchedule[];
   Marker?: string;
 }
-const DescribeSnapshotSchedulesOutputMessage = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<DescribeSnapshotSchedulesOutputMessage>;
 export interface DescribeStorageRequest {}
-const DescribeStorageRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<DescribeStorageRequest>;
 export interface CustomerStorageMessage {
   TotalBackupSizeInMegaBytes?: number;
   TotalProvisionedStorageInMegaBytes?: number;
 }
-const CustomerStorageMessage = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<CustomerStorageMessage>;
 export interface DescribeTableRestoreStatusMessage {
   ClusterIdentifier?: string;
   TableRestoreRequestId?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const DescribeTableRestoreStatusMessage = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<DescribeTableRestoreStatusMessage>;
 export type TableRestoreStatusType =
   | "PENDING"
   | "IN_PROGRESS"
@@ -4290,8 +3298,6 @@ export type TableRestoreStatusType =
   | "FAILED"
   | "CANCELED"
   | (string & {});
-const TableRestoreStatusType = S.String;
-
 export interface TableRestoreStatus {
   TableRestoreRequestId?: string;
   Status?: TableRestoreStatusType;
@@ -4308,17 +3314,11 @@ export interface TableRestoreStatus {
   TargetSchemaName?: string;
   NewTableName?: string;
 }
-const TableRestoreStatus = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<TableRestoreStatus>;
 export type TableRestoreStatusList = TableRestoreStatus[];
-const TableRestoreStatusList = /*@__PURE__*/ __L.at(__c45, 2);
 export interface TableRestoreStatusMessage {
   TableRestoreStatusDetails?: TableRestoreStatus[];
   Marker?: string;
 }
-const TableRestoreStatusMessage = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<TableRestoreStatusMessage>;
 export interface DescribeTagsMessage {
   ResourceName?: string;
   ResourceType?: string;
@@ -4327,23 +3327,16 @@ export interface DescribeTagsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeTagsMessage = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<DescribeTagsMessage>;
 export interface TaggedResource {
   Tag?: Tag;
   ResourceName?: string;
   ResourceType?: string;
 }
-const TaggedResource = /*@__PURE__*/ __L.at(__c45, 5) as any as S.Schema<TaggedResource>;
 export type TaggedResourceList = TaggedResource[];
-const TaggedResourceList = /*@__PURE__*/ __L.at(__c45, 6);
 export interface TaggedResourceListMessage {
   TaggedResources?: TaggedResource[];
   Marker?: string;
 }
-const TaggedResourceListMessage = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<TaggedResourceListMessage>;
 export interface DescribeUsageLimitsMessage {
   UsageLimitId?: string;
   ClusterIdentifier?: string;
@@ -4353,50 +3346,28 @@ export interface DescribeUsageLimitsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-const DescribeUsageLimitsMessage = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<DescribeUsageLimitsMessage>;
 export type UsageLimits = UsageLimit[];
-const UsageLimits = /*@__PURE__*/ __L.at(__c46, 1);
 export interface UsageLimitList {
   UsageLimits?: UsageLimit[];
   Marker?: string;
 }
-const UsageLimitList = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<UsageLimitList>;
 export interface DisableLoggingMessage {
   ClusterIdentifier?: string;
   LogDestinationType?: LogDestinationType;
   LogExports?: string[];
 }
-const DisableLoggingMessage = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<DisableLoggingMessage>;
 export interface DisableSnapshotCopyMessage {
   ClusterIdentifier?: string;
 }
-const DisableSnapshotCopyMessage = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<DisableSnapshotCopyMessage>;
 export interface DisableSnapshotCopyResult {
   Cluster?: Cluster;
 }
-const DisableSnapshotCopyResult = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<DisableSnapshotCopyResult>;
 export interface DisassociateDataShareConsumerMessage {
   DataShareArn?: string;
   DisassociateEntireAccount?: boolean;
   ConsumerArn?: string;
   ConsumerRegion?: string;
 }
-const DisassociateDataShareConsumerMessage = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<DisassociateDataShareConsumerMessage>;
 export interface EnableLoggingMessage {
   ClusterIdentifier?: string;
   BucketName?: string;
@@ -4406,10 +3377,6 @@ export interface EnableLoggingMessage {
   S3TableKmsKeyId?: string;
   S3TableGranularity?: string;
 }
-const EnableLoggingMessage = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<EnableLoggingMessage>;
 export interface EnableSnapshotCopyMessage {
   ClusterIdentifier?: string;
   DestinationRegion?: string;
@@ -4417,33 +3384,16 @@ export interface EnableSnapshotCopyMessage {
   SnapshotCopyGrantName?: string;
   ManualSnapshotRetentionPeriod?: number;
 }
-const EnableSnapshotCopyMessage = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<EnableSnapshotCopyMessage>;
 export interface EnableSnapshotCopyResult {
   Cluster?: Cluster;
 }
-const EnableSnapshotCopyResult = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<EnableSnapshotCopyResult>;
 export interface FailoverPrimaryComputeInputMessage {
   ClusterIdentifier?: string;
 }
-const FailoverPrimaryComputeInputMessage = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<FailoverPrimaryComputeInputMessage>;
 export interface FailoverPrimaryComputeResult {
   Cluster?: Cluster;
 }
-const FailoverPrimaryComputeResult = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<FailoverPrimaryComputeResult>;
 export type DbGroupList = string[];
-const DbGroupList = /*@__PURE__*/ __L.at(__c47, 4);
 export interface GetClusterCredentialsMessage {
   DbUser?: string;
   DbName?: string;
@@ -4453,56 +3403,32 @@ export interface GetClusterCredentialsMessage {
   DbGroups?: string[];
   CustomDomainName?: string;
 }
-const GetClusterCredentialsMessage = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<GetClusterCredentialsMessage>;
 export interface ClusterCredentials {
   DbUser?: string;
   DbPassword?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
-const ClusterCredentials = /*@__PURE__*/ __L.at(__c47, 6) as any as S.Schema<ClusterCredentials>;
 export interface GetClusterCredentialsWithIAMMessage {
   DbName?: string;
   ClusterIdentifier?: string;
   DurationSeconds?: number;
   CustomDomainName?: string;
 }
-const GetClusterCredentialsWithIAMMessage = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<GetClusterCredentialsWithIAMMessage>;
 export interface ClusterExtendedCredentials {
   DbUser?: string;
   DbPassword?: string | redacted.Redacted<string>;
   Expiration?: Date;
   NextRefreshTime?: Date;
 }
-const ClusterExtendedCredentials = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<ClusterExtendedCredentials>;
 export type ClusterIdentifierList = string[];
-const ClusterIdentifierList = /*@__PURE__*/ __L.at(__c48, 1);
 export interface GetIdentityCenterAuthTokenRequest {
   ClusterIds?: string[];
 }
-const GetIdentityCenterAuthTokenRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<GetIdentityCenterAuthTokenRequest>;
 export interface GetIdentityCenterAuthTokenResponse {
   Token?: string | redacted.Redacted<string>;
   ExpirationTime?: Date;
 }
-const GetIdentityCenterAuthTokenResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<GetIdentityCenterAuthTokenResponse>;
 export type ReservedNodeExchangeActionType = "restore-cluster" | "resize-cluster" | (string & {});
-const ReservedNodeExchangeActionType = S.String;
-
 export interface GetReservedNodeExchangeConfigurationOptionsInputMessage {
   ActionType?: ReservedNodeExchangeActionType;
   ClusterIdentifier?: string;
@@ -4510,97 +3436,55 @@ export interface GetReservedNodeExchangeConfigurationOptionsInputMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-const GetReservedNodeExchangeConfigurationOptionsInputMessage = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<GetReservedNodeExchangeConfigurationOptionsInputMessage>;
 export interface ReservedNodeConfigurationOption {
   SourceReservedNode?: ReservedNode;
   TargetReservedNodeCount?: number;
   TargetReservedNodeOffering?: ReservedNodeOffering;
 }
-const ReservedNodeConfigurationOption = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ReservedNodeConfigurationOption>;
 export type ReservedNodeConfigurationOptionList = ReservedNodeConfigurationOption[];
-const ReservedNodeConfigurationOptionList = /*@__PURE__*/ __L.at(__c48, 6);
 export interface GetReservedNodeExchangeConfigurationOptionsOutputMessage {
   Marker?: string;
   ReservedNodeConfigurationOptionList?: ReservedNodeConfigurationOption[];
 }
-const GetReservedNodeExchangeConfigurationOptionsOutputMessage = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<GetReservedNodeExchangeConfigurationOptionsOutputMessage>;
 export interface GetReservedNodeExchangeOfferingsInputMessage {
   ReservedNodeId?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const GetReservedNodeExchangeOfferingsInputMessage = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<GetReservedNodeExchangeOfferingsInputMessage>;
 export interface GetReservedNodeExchangeOfferingsOutputMessage {
   Marker?: string;
   ReservedNodeOfferings?: ReservedNodeOffering[];
 }
-const GetReservedNodeExchangeOfferingsOutputMessage = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<GetReservedNodeExchangeOfferingsOutputMessage>;
 export interface GetResourcePolicyMessage {
   ResourceArn?: string;
 }
-const GetResourcePolicyMessage = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<GetResourcePolicyMessage>;
 export interface ResourcePolicy {
   ResourceArn?: string;
   Policy?: string;
 }
-const ResourcePolicy = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<ResourcePolicy>;
 export interface GetResourcePolicyResult {
   ResourcePolicy?: ResourcePolicy;
 }
-const GetResourcePolicyResult = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<GetResourcePolicyResult>;
 export interface ListRecommendationsMessage {
   ClusterIdentifier?: string;
   NamespaceArn?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-const ListRecommendationsMessage = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<ListRecommendationsMessage>;
 export type ImpactRankingType = "HIGH" | "MEDIUM" | "LOW" | (string & {});
-const ImpactRankingType = S.String;
-
 export type RecommendedActionType = "SQL" | "CLI" | (string & {});
-const RecommendedActionType = S.String;
-
 export interface RecommendedAction {
   Text?: string;
   Database?: string;
   Command?: string;
   Type?: RecommendedActionType;
 }
-const RecommendedAction = /*@__PURE__*/ __L.at(__c49, 6) as any as S.Schema<RecommendedAction>;
 export type RecommendedActionList = RecommendedAction[];
-const RecommendedActionList = /*@__PURE__*/ __L.at(__c49, 7);
 export interface ReferenceLink {
   Text?: string;
   Link?: string;
 }
-const ReferenceLink = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<ReferenceLink>;
 export type ReferenceLinkList = ReferenceLink[];
-const ReferenceLinkList = /*@__PURE__*/ __L.at(__c50, 1);
 export interface Recommendation {
   Id?: string;
   ClusterIdentifier?: string;
@@ -4615,48 +3499,26 @@ export interface Recommendation {
   RecommendedActions?: RecommendedAction[];
   ReferenceLinks?: ReferenceLink[];
 }
-const Recommendation = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<Recommendation>;
 export type RecommendationList = Recommendation[];
-const RecommendationList = /*@__PURE__*/ __L.at(__c50, 3);
 export interface ListRecommendationsResult {
   Recommendations?: Recommendation[];
   Marker?: string;
 }
-const ListRecommendationsResult = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<ListRecommendationsResult>;
 export interface ModifyAquaInputMessage {
   ClusterIdentifier?: string;
   AquaConfigurationStatus?: AquaConfigurationStatus;
 }
-const ModifyAquaInputMessage = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<ModifyAquaInputMessage>;
 export interface ModifyAquaOutputMessage {
   AquaConfiguration?: AquaConfiguration;
 }
-const ModifyAquaOutputMessage = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ModifyAquaOutputMessage>;
 export interface ModifyAuthenticationProfileMessage {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-const ModifyAuthenticationProfileMessage = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ModifyAuthenticationProfileMessage>;
 export interface ModifyAuthenticationProfileResult {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-const ModifyAuthenticationProfileResult = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<ModifyAuthenticationProfileResult>;
 export interface ModifyClusterMessage {
   ClusterIdentifier?: string;
   ClusterType?: string;
@@ -4689,46 +3551,25 @@ export interface ModifyClusterMessage {
   MultiAZ?: boolean;
   ExtraComputeForAutomaticOptimization?: boolean;
 }
-const ModifyClusterMessage = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<ModifyClusterMessage>;
 export interface ModifyClusterResult {
   Cluster?: Cluster;
 }
-const ModifyClusterResult = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<ModifyClusterResult>;
 export interface ModifyClusterDbRevisionMessage {
   ClusterIdentifier?: string;
   RevisionTarget?: string;
 }
-const ModifyClusterDbRevisionMessage = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<ModifyClusterDbRevisionMessage>;
 export interface ModifyClusterDbRevisionResult {
   Cluster?: Cluster;
 }
-const ModifyClusterDbRevisionResult = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<ModifyClusterDbRevisionResult>;
 export interface ModifyClusterIamRolesMessage {
   ClusterIdentifier?: string;
   AddIamRoles?: string[];
   RemoveIamRoles?: string[];
   DefaultIamRoleArn?: string;
 }
-const ModifyClusterIamRolesMessage = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ModifyClusterIamRolesMessage>;
 export interface ModifyClusterIamRolesResult {
   Cluster?: Cluster;
 }
-const ModifyClusterIamRolesResult = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<ModifyClusterIamRolesResult>;
 export interface ModifyClusterMaintenanceMessage {
   ClusterIdentifier?: string;
   DeferMaintenance?: boolean;
@@ -4737,106 +3578,54 @@ export interface ModifyClusterMaintenanceMessage {
   DeferMaintenanceEndTime?: Date;
   DeferMaintenanceDuration?: number;
 }
-const ModifyClusterMaintenanceMessage = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<ModifyClusterMaintenanceMessage>;
 export interface ModifyClusterMaintenanceResult {
   Cluster?: Cluster;
 }
-const ModifyClusterMaintenanceResult = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ModifyClusterMaintenanceResult>;
 export interface ModifyClusterParameterGroupMessage {
   ParameterGroupName?: string;
   Parameters?: Parameter[];
 }
-const ModifyClusterParameterGroupMessage = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<ModifyClusterParameterGroupMessage>;
 export interface ClusterParameterGroupNameMessage {
   ParameterGroupName?: string;
   ParameterGroupStatus?: string;
 }
-const ClusterParameterGroupNameMessage = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<ClusterParameterGroupNameMessage>;
 export interface ModifyClusterSnapshotMessage {
   SnapshotIdentifier?: string;
   ManualSnapshotRetentionPeriod?: number;
   Force?: boolean;
 }
-const ModifyClusterSnapshotMessage = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<ModifyClusterSnapshotMessage>;
 export interface ModifyClusterSnapshotResult {
   Snapshot?: Snapshot;
 }
-const ModifyClusterSnapshotResult = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<ModifyClusterSnapshotResult>;
 export interface ModifyClusterSnapshotScheduleMessage {
   ClusterIdentifier?: string;
   ScheduleIdentifier?: string;
   DisassociateSchedule?: boolean;
 }
-const ModifyClusterSnapshotScheduleMessage = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<ModifyClusterSnapshotScheduleMessage>;
 export interface ModifyClusterSnapshotScheduleResponse {}
-const ModifyClusterSnapshotScheduleResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ModifyClusterSnapshotScheduleResponse>;
 export interface ModifyClusterSubnetGroupMessage {
   ClusterSubnetGroupName?: string;
   Description?: string;
   SubnetIds?: string[];
 }
-const ModifyClusterSubnetGroupMessage = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<ModifyClusterSubnetGroupMessage>;
 export interface ModifyClusterSubnetGroupResult {
   ClusterSubnetGroup?: ClusterSubnetGroup;
 }
-const ModifyClusterSubnetGroupResult = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<ModifyClusterSubnetGroupResult>;
 export interface ModifyCustomDomainAssociationMessage {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
 }
-const ModifyCustomDomainAssociationMessage = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<ModifyCustomDomainAssociationMessage>;
 export interface ModifyCustomDomainAssociationResult {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
   CustomDomainCertExpiryTime?: string;
 }
-const ModifyCustomDomainAssociationResult = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<ModifyCustomDomainAssociationResult>;
 export interface ModifyEndpointAccessMessage {
   EndpointName?: string;
   VpcSecurityGroupIds?: string[];
 }
-const ModifyEndpointAccessMessage = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<ModifyEndpointAccessMessage>;
 export interface ModifyEventSubscriptionMessage {
   SubscriptionName?: string;
   SnsTopicArn?: string;
@@ -4846,32 +3635,16 @@ export interface ModifyEventSubscriptionMessage {
   Severity?: string;
   Enabled?: boolean;
 }
-const ModifyEventSubscriptionMessage = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<ModifyEventSubscriptionMessage>;
 export interface ModifyEventSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-const ModifyEventSubscriptionResult = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<ModifyEventSubscriptionResult>;
 export interface ModifyIntegrationMessage {
   IntegrationArn?: string;
   Description?: string;
   IntegrationName?: string;
 }
-const ModifyIntegrationMessage = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<ModifyIntegrationMessage>;
 export type LakehouseRegistration = "Register" | "Deregister" | (string & {});
-const LakehouseRegistration = S.String;
-
 export type LakehouseIdcRegistration = "Associate" | "Disassociate" | (string & {});
-const LakehouseIdcRegistration = S.String;
-
 export interface ModifyLakehouseConfigurationMessage {
   ClusterIdentifier?: string;
   LakehouseRegistration?: LakehouseRegistration;
@@ -4880,35 +3653,19 @@ export interface ModifyLakehouseConfigurationMessage {
   LakehouseIdcApplicationArn?: string;
   DryRun?: boolean;
 }
-const ModifyLakehouseConfigurationMessage = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ModifyLakehouseConfigurationMessage>;
 export interface LakehouseConfiguration {
   ClusterIdentifier?: string;
   LakehouseIdcApplicationArn?: string;
   LakehouseRegistrationStatus?: string;
   CatalogArn?: string;
 }
-const LakehouseConfiguration = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<LakehouseConfiguration>;
 export interface ModifyQev2IdcApplicationMessage {
   Qev2IdcApplicationArn?: string;
   IdcDisplayName?: string;
 }
-const ModifyQev2IdcApplicationMessage = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<ModifyQev2IdcApplicationMessage>;
 export interface ModifyQev2IdcApplicationResult {
   Qev2IdcApplication?: Qev2IdcApplication;
 }
-const ModifyQev2IdcApplicationResult = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<ModifyQev2IdcApplicationResult>;
 export interface ModifyRedshiftIdcApplicationMessage {
   RedshiftIdcApplicationArn?: string;
   IdentityNamespace?: string;
@@ -4917,17 +3674,9 @@ export interface ModifyRedshiftIdcApplicationMessage {
   AuthorizedTokenIssuerList?: AuthorizedTokenIssuer[];
   ServiceIntegrations?: ServiceIntegrationsUnion[];
 }
-const ModifyRedshiftIdcApplicationMessage = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<ModifyRedshiftIdcApplicationMessage>;
 export interface ModifyRedshiftIdcApplicationResult {
   RedshiftIdcApplication?: RedshiftIdcApplication;
 }
-const ModifyRedshiftIdcApplicationResult = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<ModifyRedshiftIdcApplicationResult>;
 export interface ModifyScheduledActionMessage {
   ScheduledActionName?: string;
   TargetAction?: ScheduledActionType;
@@ -4938,123 +3687,64 @@ export interface ModifyScheduledActionMessage {
   EndTime?: Date;
   Enable?: boolean;
 }
-const ModifyScheduledActionMessage = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<ModifyScheduledActionMessage>;
 export interface ModifySnapshotCopyRetentionPeriodMessage {
   ClusterIdentifier?: string;
   RetentionPeriod?: number;
   Manual?: boolean;
 }
-const ModifySnapshotCopyRetentionPeriodMessage = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ModifySnapshotCopyRetentionPeriodMessage>;
 export interface ModifySnapshotCopyRetentionPeriodResult {
   Cluster?: Cluster;
 }
-const ModifySnapshotCopyRetentionPeriodResult = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<ModifySnapshotCopyRetentionPeriodResult>;
 export interface ModifySnapshotScheduleMessage {
   ScheduleIdentifier?: string;
   ScheduleDefinitions?: string[];
 }
-const ModifySnapshotScheduleMessage = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<ModifySnapshotScheduleMessage>;
 export interface ModifyUsageLimitMessage {
   UsageLimitId?: string;
   Amount?: number;
   BreachAction?: UsageLimitBreachAction;
 }
-const ModifyUsageLimitMessage = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ModifyUsageLimitMessage>;
 export interface PauseClusterResult {
   Cluster?: Cluster;
 }
-const PauseClusterResult = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<PauseClusterResult>;
 export interface PurchaseReservedNodeOfferingMessage {
   ReservedNodeOfferingId?: string;
   NodeCount?: number;
 }
-const PurchaseReservedNodeOfferingMessage = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<PurchaseReservedNodeOfferingMessage>;
 export interface PurchaseReservedNodeOfferingResult {
   ReservedNode?: ReservedNode;
 }
-const PurchaseReservedNodeOfferingResult = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<PurchaseReservedNodeOfferingResult>;
 export interface PutResourcePolicyMessage {
   ResourceArn?: string;
   Policy?: string;
 }
-const PutResourcePolicyMessage = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<PutResourcePolicyMessage>;
 export interface PutResourcePolicyResult {
   ResourcePolicy?: ResourcePolicy;
 }
-const PutResourcePolicyResult = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<PutResourcePolicyResult>;
 export interface RebootClusterMessage {
   ClusterIdentifier?: string;
 }
-const RebootClusterMessage = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<RebootClusterMessage>;
 export interface RebootClusterResult {
   Cluster?: Cluster;
 }
-const RebootClusterResult = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<RebootClusterResult>;
 export interface RegisterNamespaceInputMessage {
   NamespaceIdentifier?: NamespaceIdentifierUnion;
   ConsumerIdentifiers?: string[];
 }
-const RegisterNamespaceInputMessage = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<RegisterNamespaceInputMessage>;
 export interface RegisterNamespaceOutputMessage {
   Status?: NamespaceRegistrationStatus;
 }
-const RegisterNamespaceOutputMessage = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<RegisterNamespaceOutputMessage>;
 export interface RejectDataShareMessage {
   DataShareArn?: string;
 }
-const RejectDataShareMessage = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<RejectDataShareMessage>;
 export interface ResetClusterParameterGroupMessage {
   ParameterGroupName?: string;
   ResetAllParameters?: boolean;
   Parameters?: Parameter[];
 }
-const ResetClusterParameterGroupMessage = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<ResetClusterParameterGroupMessage>;
 export interface ResizeClusterResult {
   Cluster?: Cluster;
 }
-const ResizeClusterResult = /*@__PURE__*/ __L.at(__c56, 5) as any as S.Schema<ResizeClusterResult>;
 export interface RestoreFromClusterSnapshotMessage {
   ClusterIdentifier?: string;
   SnapshotIdentifier?: string;
@@ -5096,17 +3786,9 @@ export interface RestoreFromClusterSnapshotMessage {
   CatalogName?: string;
   RedshiftIdcApplicationArn?: string;
 }
-const RestoreFromClusterSnapshotMessage = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<RestoreFromClusterSnapshotMessage>;
 export interface RestoreFromClusterSnapshotResult {
   Cluster?: Cluster;
 }
-const RestoreFromClusterSnapshotResult = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<RestoreFromClusterSnapshotResult>;
 export interface RestoreTableFromClusterSnapshotMessage {
   ClusterIdentifier?: string;
   SnapshotIdentifier?: string;
@@ -5118,79 +3800,42 @@ export interface RestoreTableFromClusterSnapshotMessage {
   NewTableName?: string;
   EnableCaseSensitiveIdentifier?: boolean;
 }
-const RestoreTableFromClusterSnapshotMessage = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<RestoreTableFromClusterSnapshotMessage>;
 export interface RestoreTableFromClusterSnapshotResult {
   TableRestoreStatus?: TableRestoreStatus;
 }
-const RestoreTableFromClusterSnapshotResult = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<RestoreTableFromClusterSnapshotResult>;
 export interface ResumeClusterResult {
   Cluster?: Cluster;
 }
-const ResumeClusterResult = /*@__PURE__*/ __L.at(__c57, 2) as any as S.Schema<ResumeClusterResult>;
 export interface RevokeClusterSecurityGroupIngressMessage {
   ClusterSecurityGroupName?: string;
   CIDRIP?: string;
   EC2SecurityGroupName?: string;
   EC2SecurityGroupOwnerId?: string;
 }
-const RevokeClusterSecurityGroupIngressMessage = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<RevokeClusterSecurityGroupIngressMessage>;
 export interface RevokeClusterSecurityGroupIngressResult {
   ClusterSecurityGroup?: ClusterSecurityGroup;
 }
-const RevokeClusterSecurityGroupIngressResult = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<RevokeClusterSecurityGroupIngressResult>;
 export interface RevokeEndpointAccessMessage {
   ClusterIdentifier?: string;
   Account?: string;
   VpcIds?: string[];
   Force?: boolean;
 }
-const RevokeEndpointAccessMessage = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<RevokeEndpointAccessMessage>;
 export interface RevokeSnapshotAccessMessage {
   SnapshotIdentifier?: string;
   SnapshotArn?: string;
   SnapshotClusterIdentifier?: string;
   AccountWithRestoreAccess?: string;
 }
-const RevokeSnapshotAccessMessage = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<RevokeSnapshotAccessMessage>;
 export interface RevokeSnapshotAccessResult {
   Snapshot?: Snapshot;
 }
-const RevokeSnapshotAccessResult = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<RevokeSnapshotAccessResult>;
 export interface RotateEncryptionKeyMessage {
   ClusterIdentifier?: string;
 }
-const RotateEncryptionKeyMessage = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<RotateEncryptionKeyMessage>;
 export interface RotateEncryptionKeyResult {
   Cluster?: Cluster;
 }
-const RotateEncryptionKeyResult = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<RotateEncryptionKeyResult>;
 export interface UpdatePartnerStatusInputMessage {
   AccountId?: string;
   ClusterIdentifier?: string;
@@ -5199,10 +3844,6 @@ export interface UpdatePartnerStatusInputMessage {
   Status?: PartnerIntegrationStatus;
   StatusMessage?: string;
 }
-const UpdatePartnerStatusInputMessage = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<UpdatePartnerStatusInputMessage>;
 export type ExceptionMessage = string;
 export type AcceptReservedNodeExchangeError =
   | DependentServiceUnavailableFault
@@ -5223,8 +3864,8 @@ export const acceptReservedNodeExchange: API.OperationMethod<
   AcceptReservedNodeExchangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptReservedNodeExchangeInputMessage,
-  output: AcceptReservedNodeExchangeOutputMessage,
+  input: __S(0, __c0, 0) as any as S.Schema<AcceptReservedNodeExchangeInputMessage>,
+  output: __S(4, __c0, 4) as any as S.Schema<AcceptReservedNodeExchangeOutputMessage>,
   errors: [
     DependentServiceUnavailableFault,
     InvalidReservedNodeStateFault,
@@ -5256,8 +3897,8 @@ export const addPartner: API.OperationMethod<
   AddPartnerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartnerIntegrationInputMessage,
-  output: PartnerIntegrationOutputMessage,
+  input: __S(5, __c0, 5) as any as S.Schema<PartnerIntegrationInputMessage>,
+  output: __S(6, __c0, 6) as any as S.Schema<PartnerIntegrationOutputMessage>,
   errors: [
     ClusterNotFoundFault,
     PartnerNotFoundFault,
@@ -5284,8 +3925,8 @@ export const associateDataShareConsumer: API.OperationMethod<
   AssociateDataShareConsumerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateDataShareConsumerMessage,
-  output: DataShare,
+  input: __S(7, __c0, 7) as any as S.Schema<AssociateDataShareConsumerMessage>,
+  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5325,8 +3966,8 @@ export const authorizeClusterSecurityGroupIngress: API.OperationMethod<
   AuthorizeClusterSecurityGroupIngressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeClusterSecurityGroupIngressMessage,
-  output: AuthorizeClusterSecurityGroupIngressResult,
+  input: __S(11, __c1, 3) as any as S.Schema<AuthorizeClusterSecurityGroupIngressMessage>,
+  output: __S(19, __c2, 3) as any as S.Schema<AuthorizeClusterSecurityGroupIngressResult>,
   errors: [
     AuthorizationAlreadyExistsFault,
     AuthorizationQuotaExceededFault,
@@ -5350,8 +3991,8 @@ export const authorizeDataShare: API.OperationMethod<
   AuthorizeDataShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeDataShareMessage,
-  output: DataShare,
+  input: __S(20, __c2, 4) as any as S.Schema<AuthorizeDataShareMessage>,
+  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5375,8 +4016,8 @@ export const authorizeEndpointAccess: API.OperationMethod<
   AuthorizeEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeEndpointAccessMessage,
-  output: EndpointAuthorization,
+  input: __S(22, __c2, 6) as any as S.Schema<AuthorizeEndpointAccessMessage>,
+  output: __S(23, __c2, 7) as any as S.Schema<EndpointAuthorization>,
   errors: [
     ClusterNotFoundFault,
     EndpointAuthorizationAlreadyExistsFault,
@@ -5413,8 +4054,8 @@ export const authorizeSnapshotAccess: API.OperationMethod<
   AuthorizeSnapshotAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeSnapshotAccessMessage,
-  output: AuthorizeSnapshotAccessResult,
+  input: __S(24, __c3, 0) as any as S.Schema<AuthorizeSnapshotAccessMessage>,
+  output: __S(29, __c3, 5) as any as S.Schema<AuthorizeSnapshotAccessResult>,
   errors: [
     AuthorizationAlreadyExistsFault,
     AuthorizationQuotaExceededFault,
@@ -5439,8 +4080,8 @@ export const batchDeleteClusterSnapshots: API.OperationMethod<
   BatchDeleteClusterSnapshotsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteClusterSnapshotsRequest,
-  output: BatchDeleteClusterSnapshotsResult,
+  input: __S(32, __c4, 0) as any as S.Schema<BatchDeleteClusterSnapshotsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<BatchDeleteClusterSnapshotsResult>,
   errors: [BatchDeleteRequestSizeExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5460,8 +4101,8 @@ export const batchModifyClusterSnapshots: API.OperationMethod<
   BatchModifyClusterSnapshotsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchModifyClusterSnapshotsMessage,
-  output: BatchModifyClusterSnapshotsOutputMessage,
+  input: __S(37, __c4, 5) as any as S.Schema<BatchModifyClusterSnapshotsMessage>,
+  output: __S(39, __c4, 7) as any as S.Schema<BatchModifyClusterSnapshotsOutputMessage>,
   errors: [BatchModifyClusterSnapshotsLimitExceededFault, InvalidRetentionPeriodFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5483,8 +4124,8 @@ export const cancelResize: API.OperationMethod<
   CancelResizeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelResizeMessage,
-  output: ResizeProgressMessage,
+  input: __S(40, __c5, 0) as any as S.Schema<CancelResizeMessage>,
+  output: __S(44, __c5, 4) as any as S.Schema<ResizeProgressMessage>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -5525,8 +4166,8 @@ export const copyClusterSnapshot: API.OperationMethod<
   CopyClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyClusterSnapshotMessage,
-  output: CopyClusterSnapshotResult,
+  input: __S(45, __c5, 5) as any as S.Schema<CopyClusterSnapshotMessage>,
+  output: __S(46, __c5, 6) as any as S.Schema<CopyClusterSnapshotResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotAlreadyExistsFault,
@@ -5554,8 +4195,8 @@ export const createAuthenticationProfile: API.OperationMethod<
   CreateAuthenticationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthenticationProfileMessage,
-  output: CreateAuthenticationProfileResult,
+  input: __S(47, __c5, 7) as any as S.Schema<CreateAuthenticationProfileMessage>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateAuthenticationProfileResult>,
   errors: [
     AuthenticationProfileAlreadyExistsFault,
     AuthenticationProfileQuotaExceededFault,
@@ -5629,8 +4270,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterMessage,
-  output: CreateClusterResult,
+  input: __S(52, __c6, 4) as any as S.Schema<CreateClusterMessage>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateClusterResult>,
   errors: [
     ClusterAlreadyExistsFault,
     ClusterParameterGroupNotFoundFault,
@@ -5690,8 +4331,8 @@ export const createClusterParameterGroup: API.OperationMethod<
   CreateClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterParameterGroupMessage,
-  output: CreateClusterParameterGroupResult,
+  input: __S(89, __c11, 1) as any as S.Schema<CreateClusterParameterGroupMessage>,
+  output: __S(91, __c11, 3) as any as S.Schema<CreateClusterParameterGroupResult>,
   errors: [
     ClusterParameterGroupAlreadyExistsFault,
     ClusterParameterGroupQuotaExceededFault,
@@ -5723,8 +4364,8 @@ export const createClusterSecurityGroup: API.OperationMethod<
   CreateClusterSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterSecurityGroupMessage,
-  output: CreateClusterSecurityGroupResult,
+  input: __S(92, __c11, 4) as any as S.Schema<CreateClusterSecurityGroupMessage>,
+  output: __S(93, __c11, 5) as any as S.Schema<CreateClusterSecurityGroupResult>,
   errors: [
     ClusterSecurityGroupAlreadyExistsFault,
     ClusterSecurityGroupQuotaExceededFault,
@@ -5759,8 +4400,8 @@ export const createClusterSnapshot: API.OperationMethod<
   CreateClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterSnapshotMessage,
-  output: CreateClusterSnapshotResult,
+  input: __S(94, __c11, 6) as any as S.Schema<CreateClusterSnapshotMessage>,
+  output: __S(95, __c11, 7) as any as S.Schema<CreateClusterSnapshotResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotAlreadyExistsFault,
@@ -5800,8 +4441,8 @@ export const createClusterSubnetGroup: API.OperationMethod<
   CreateClusterSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterSubnetGroupMessage,
-  output: CreateClusterSubnetGroupResult,
+  input: __S(97, __c12, 1) as any as S.Schema<CreateClusterSubnetGroupMessage>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateClusterSubnetGroupResult>,
   errors: [
     ClusterSubnetGroupAlreadyExistsFault,
     ClusterSubnetGroupQuotaExceededFault,
@@ -5832,8 +4473,8 @@ export const createCustomDomainAssociation: API.OperationMethod<
   CreateCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomDomainAssociationMessage,
-  output: CreateCustomDomainAssociationResult,
+  input: __S(106, __c13, 2) as any as S.Schema<CreateCustomDomainAssociationMessage>,
+  output: __S(107, __c13, 3) as any as S.Schema<CreateCustomDomainAssociationResult>,
   errors: [ClusterNotFoundFault, CustomCnameAssociationFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5861,8 +4502,8 @@ export const createEndpointAccess: API.OperationMethod<
   CreateEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEndpointAccessMessage,
-  output: EndpointAccess,
+  input: __S(108, __c13, 4) as any as S.Schema<CreateEndpointAccessMessage>,
+  output: __S(109, __c13, 5) as any as S.Schema<EndpointAccess>,
   errors: [
     AccessToClusterDeniedFault,
     ClusterNotFoundFault,
@@ -5920,8 +4561,8 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventSubscriptionMessage,
-  output: CreateEventSubscriptionResult,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateEventSubscriptionMessage>,
+  output: __S(114, __c14, 2) as any as S.Schema<CreateEventSubscriptionResult>,
   errors: [
     EventSubscriptionQuotaExceededFault,
     InvalidTagFault,
@@ -5963,8 +4604,8 @@ export const createHsmClientCertificate: API.OperationMethod<
   CreateHsmClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHsmClientCertificateMessage,
-  output: CreateHsmClientCertificateResult,
+  input: __S(115, __c14, 3) as any as S.Schema<CreateHsmClientCertificateMessage>,
+  output: __S(117, __c14, 5) as any as S.Schema<CreateHsmClientCertificateResult>,
   errors: [
     HsmClientCertificateAlreadyExistsFault,
     HsmClientCertificateQuotaExceededFault,
@@ -5998,8 +4639,8 @@ export const createHsmConfiguration: API.OperationMethod<
   CreateHsmConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHsmConfigurationMessage,
-  output: CreateHsmConfigurationResult,
+  input: __S(118, __c14, 6) as any as S.Schema<CreateHsmConfigurationMessage>,
+  output: __S(120, __c15, 0) as any as S.Schema<CreateHsmConfigurationResult>,
   errors: [
     HsmConfigurationAlreadyExistsFault,
     HsmConfigurationQuotaExceededFault,
@@ -6031,8 +4672,8 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationMessage,
-  output: Integration,
+  input: __S(122, __c15, 2) as any as S.Schema<CreateIntegrationMessage>,
+  output: __S(125, __c15, 5) as any as S.Schema<Integration>,
   errors: [
     IntegrationAlreadyExistsFault,
     IntegrationConflictOperationFault,
@@ -6064,8 +4705,8 @@ export const createQev2IdcApplication: API.OperationMethod<
   CreateQev2IdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQev2IdcApplicationMessage,
-  output: CreateQev2IdcApplicationResult,
+  input: __S(126, __c15, 6) as any as S.Schema<CreateQev2IdcApplicationMessage>,
+  output: __S(128, __c16, 0) as any as S.Schema<CreateQev2IdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -6095,8 +4736,8 @@ export const createRedshiftIdcApplication: API.OperationMethod<
   CreateRedshiftIdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRedshiftIdcApplicationMessage,
-  output: CreateRedshiftIdcApplicationResult,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateRedshiftIdcApplicationMessage>,
+  output: __S(146, __c18, 2) as any as S.Schema<CreateRedshiftIdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -6131,8 +4772,8 @@ export const createScheduledAction: API.OperationMethod<
   CreateScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateScheduledActionMessage,
-  output: ScheduledAction,
+  input: __S(151, __c18, 7) as any as S.Schema<CreateScheduledActionMessage>,
+  output: __S(153, __c19, 1) as any as S.Schema<ScheduledAction>,
   errors: [
     ClusterNotFoundFault,
     InvalidScheduledActionFault,
@@ -6171,8 +4812,8 @@ export const createSnapshotCopyGrant: API.OperationMethod<
   CreateSnapshotCopyGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSnapshotCopyGrantMessage,
-  output: CreateSnapshotCopyGrantResult,
+  input: __S(154, __c19, 2) as any as S.Schema<CreateSnapshotCopyGrantMessage>,
+  output: __S(156, __c19, 4) as any as S.Schema<CreateSnapshotCopyGrantResult>,
   errors: [
     DependentServiceRequestThrottlingFault,
     InvalidTagFault,
@@ -6203,8 +4844,8 @@ export const createSnapshotSchedule: API.OperationMethod<
   CreateSnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSnapshotScheduleMessage,
-  output: SnapshotSchedule,
+  input: __S(158, __c19, 6) as any as S.Schema<CreateSnapshotScheduleMessage>,
+  output: __S(162, __c20, 2) as any as S.Schema<SnapshotSchedule>,
   errors: [
     InvalidScheduleFault,
     InvalidTagFault,
@@ -6239,8 +4880,8 @@ export const createTags: API.OperationMethod<
   CreateTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTagsMessage,
-  output: CreateTagsResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<CreateTagsMessage>,
+  output: __S(164, __c20, 4) as any as S.Schema<CreateTagsResponse>,
   errors: [InvalidClusterStateFault, InvalidTagFault, ResourceNotFoundFault, TagLimitExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6266,8 +4907,8 @@ export const createUsageLimit: API.OperationMethod<
   CreateUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsageLimitMessage,
-  output: UsageLimit,
+  input: __S(165, __c20, 5) as any as S.Schema<CreateUsageLimitMessage>,
+  output: __S(166, __c20, 6) as any as S.Schema<UsageLimit>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -6292,8 +4933,8 @@ export const deauthorizeDataShare: API.OperationMethod<
   DeauthorizeDataShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeauthorizeDataShareMessage,
-  output: DataShare,
+  input: __S(167, __c20, 7) as any as S.Schema<DeauthorizeDataShareMessage>,
+  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6313,8 +4954,8 @@ export const deleteAuthenticationProfile: API.OperationMethod<
   DeleteAuthenticationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthenticationProfileMessage,
-  output: DeleteAuthenticationProfileResult,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteAuthenticationProfileMessage>,
+  output: __S(169, __c21, 1) as any as S.Schema<DeleteAuthenticationProfileResult>,
   errors: [AuthenticationProfileNotFoundFault, InvalidAuthenticationProfileRequestFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6353,8 +4994,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterMessage,
-  output: DeleteClusterResult,
+  input: __S(170, __c21, 2) as any as S.Schema<DeleteClusterMessage>,
+  output: __S(171, __c21, 3) as any as S.Schema<DeleteClusterResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotAlreadyExistsFault,
@@ -6383,8 +5024,8 @@ export const deleteClusterParameterGroup: API.OperationMethod<
   DeleteClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterParameterGroupMessage,
-  output: DeleteClusterParameterGroupResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<DeleteClusterParameterGroupMessage>,
+  output: __S(173, __c21, 5) as any as S.Schema<DeleteClusterParameterGroupResponse>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidClusterParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6411,8 +5052,8 @@ export const deleteClusterSecurityGroup: API.OperationMethod<
   DeleteClusterSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterSecurityGroupMessage,
-  output: DeleteClusterSecurityGroupResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<DeleteClusterSecurityGroupMessage>,
+  output: __S(175, __c21, 7) as any as S.Schema<DeleteClusterSecurityGroupResponse>,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidClusterSecurityGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6439,8 +5080,8 @@ export const deleteClusterSnapshot: API.OperationMethod<
   DeleteClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterSnapshotMessage,
-  output: DeleteClusterSnapshotResult,
+  input: __S(30, __c3, 6) as any as S.Schema<DeleteClusterSnapshotMessage>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteClusterSnapshotResult>,
   errors: [ClusterSnapshotNotFoundFault, InvalidClusterSnapshotStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6461,8 +5102,8 @@ export const deleteClusterSubnetGroup: API.OperationMethod<
   DeleteClusterSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterSubnetGroupMessage,
-  output: DeleteClusterSubnetGroupResponse,
+  input: __S(177, __c22, 1) as any as S.Schema<DeleteClusterSubnetGroupMessage>,
+  output: __S(178, __c22, 2) as any as S.Schema<DeleteClusterSubnetGroupResponse>,
   errors: [
     ClusterSubnetGroupNotFoundFault,
     InvalidClusterSubnetGroupStateFault,
@@ -6488,8 +5129,8 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
   DeleteCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomDomainAssociationMessage,
-  output: DeleteCustomDomainAssociationResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<DeleteCustomDomainAssociationMessage>,
+  output: __S(180, __c22, 4) as any as S.Schema<DeleteCustomDomainAssociationResponse>,
   errors: [
     ClusterNotFoundFault,
     CustomCnameAssociationFault,
@@ -6517,8 +5158,8 @@ export const deleteEndpointAccess: API.OperationMethod<
   DeleteEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEndpointAccessMessage,
-  output: EndpointAccess,
+  input: __S(181, __c22, 5) as any as S.Schema<DeleteEndpointAccessMessage>,
+  output: __S(109, __c13, 5) as any as S.Schema<EndpointAccess>,
   errors: [
     ClusterNotFoundFault,
     EndpointNotFoundFault,
@@ -6544,8 +5185,8 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventSubscriptionMessage,
-  output: DeleteEventSubscriptionResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<DeleteEventSubscriptionMessage>,
+  output: __S(183, __c22, 7) as any as S.Schema<DeleteEventSubscriptionResponse>,
   errors: [InvalidSubscriptionStateFault, SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6565,8 +5206,8 @@ export const deleteHsmClientCertificate: API.OperationMethod<
   DeleteHsmClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHsmClientCertificateMessage,
-  output: DeleteHsmClientCertificateResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteHsmClientCertificateMessage>,
+  output: __S(185, __c23, 1) as any as S.Schema<DeleteHsmClientCertificateResponse>,
   errors: [HsmClientCertificateNotFoundFault, InvalidHsmClientCertificateStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6586,8 +5227,8 @@ export const deleteHsmConfiguration: API.OperationMethod<
   DeleteHsmConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHsmConfigurationMessage,
-  output: DeleteHsmConfigurationResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<DeleteHsmConfigurationMessage>,
+  output: __S(187, __c23, 3) as any as S.Schema<DeleteHsmConfigurationResponse>,
   errors: [HsmConfigurationNotFoundFault, InvalidHsmConfigurationStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6609,8 +5250,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationMessage,
-  output: Integration,
+  input: __S(188, __c23, 4) as any as S.Schema<DeleteIntegrationMessage>,
+  output: __S(125, __c15, 5) as any as S.Schema<Integration>,
   errors: [
     IntegrationConflictOperationFault,
     IntegrationConflictStateFault,
@@ -6637,8 +5278,8 @@ export const deletePartner: API.OperationMethod<
   DeletePartnerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartnerIntegrationInputMessage,
-  output: PartnerIntegrationOutputMessage,
+  input: __S(5, __c0, 5) as any as S.Schema<PartnerIntegrationInputMessage>,
+  output: __S(6, __c0, 6) as any as S.Schema<PartnerIntegrationOutputMessage>,
   errors: [
     ClusterNotFoundFault,
     PartnerNotFoundFault,
@@ -6665,8 +5306,8 @@ export const deleteQev2IdcApplication: API.OperationMethod<
   DeleteQev2IdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteQev2IdcApplicationMessage,
-  output: DeleteQev2IdcApplicationResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<DeleteQev2IdcApplicationMessage>,
+  output: __S(190, __c23, 6) as any as S.Schema<DeleteQev2IdcApplicationResponse>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -6693,8 +5334,8 @@ export const deleteRedshiftIdcApplication: API.OperationMethod<
   DeleteRedshiftIdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRedshiftIdcApplicationMessage,
-  output: DeleteRedshiftIdcApplicationResponse,
+  input: __S(191, __c23, 7) as any as S.Schema<DeleteRedshiftIdcApplicationMessage>,
+  output: __S(192, __c24, 0) as any as S.Schema<DeleteRedshiftIdcApplicationResponse>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -6719,8 +5360,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePolicyMessage,
-  output: DeleteResourcePolicyResponse,
+  input: __S(193, __c24, 1) as any as S.Schema<DeleteResourcePolicyMessage>,
+  output: __S(194, __c24, 2) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [ResourceNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6740,8 +5381,8 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScheduledActionMessage,
-  output: DeleteScheduledActionResponse,
+  input: __S(195, __c24, 3) as any as S.Schema<DeleteScheduledActionMessage>,
+  output: __S(196, __c24, 4) as any as S.Schema<DeleteScheduledActionResponse>,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6761,8 +5402,8 @@ export const deleteSnapshotCopyGrant: API.OperationMethod<
   DeleteSnapshotCopyGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSnapshotCopyGrantMessage,
-  output: DeleteSnapshotCopyGrantResponse,
+  input: __S(197, __c24, 5) as any as S.Schema<DeleteSnapshotCopyGrantMessage>,
+  output: __S(198, __c24, 6) as any as S.Schema<DeleteSnapshotCopyGrantResponse>,
   errors: [InvalidSnapshotCopyGrantStateFault, SnapshotCopyGrantNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6782,8 +5423,8 @@ export const deleteSnapshotSchedule: API.OperationMethod<
   DeleteSnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSnapshotScheduleMessage,
-  output: DeleteSnapshotScheduleResponse,
+  input: __S(199, __c24, 7) as any as S.Schema<DeleteSnapshotScheduleMessage>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeleteSnapshotScheduleResponse>,
   errors: [InvalidClusterSnapshotScheduleStateFault, SnapshotScheduleNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6801,8 +5442,8 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagsMessage,
-  output: DeleteTagsResponse,
+  input: __S(201, __c25, 1) as any as S.Schema<DeleteTagsMessage>,
+  output: __S(202, __c25, 2) as any as S.Schema<DeleteTagsResponse>,
   errors: [InvalidTagFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6822,8 +5463,8 @@ export const deleteUsageLimit: API.OperationMethod<
   DeleteUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsageLimitMessage,
-  output: DeleteUsageLimitResponse,
+  input: __S(203, __c25, 3) as any as S.Schema<DeleteUsageLimitMessage>,
+  output: __S(204, __c25, 4) as any as S.Schema<DeleteUsageLimitResponse>,
   errors: [UnsupportedOperationFault, UsageLimitNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6844,8 +5485,8 @@ export const deregisterNamespace: API.OperationMethod<
   DeregisterNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterNamespaceInputMessage,
-  output: DeregisterNamespaceOutputMessage,
+  input: __S(209, __c26, 1) as any as S.Schema<DeregisterNamespaceInputMessage>,
+  output: __S(210, __c26, 2) as any as S.Schema<DeregisterNamespaceOutputMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6862,8 +5503,8 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAccountAttributesMessage,
-  output: AccountAttributeList,
+  input: __S(212, __c26, 4) as any as S.Schema<DescribeAccountAttributesMessage>,
+  output: __S(217, __c27, 1) as any as S.Schema<AccountAttributeList>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6883,8 +5524,8 @@ export const describeAuthenticationProfiles: API.OperationMethod<
   DescribeAuthenticationProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAuthenticationProfilesMessage,
-  output: DescribeAuthenticationProfilesResult,
+  input: __S(218, __c27, 2) as any as S.Schema<DescribeAuthenticationProfilesMessage>,
+  output: __S(221, __c27, 5) as any as S.Schema<DescribeAuthenticationProfilesResult>,
   errors: [AuthenticationProfileNotFoundFault, InvalidAuthenticationProfileRequestFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6905,8 +5546,8 @@ export const describeClusterDbRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterDbRevision
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterDbRevisionsMessage,
-  output: ClusterDbRevisionsMessage,
+  input: __S(222, __c27, 6) as any as S.Schema<DescribeClusterDbRevisionsMessage>,
+  output: __S(227, __c28, 3) as any as S.Schema<ClusterDbRevisionsMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6951,8 +5592,8 @@ export const describeClusterParameterGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterParameterGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterParameterGroupsMessage,
-  output: ClusterParameterGroupsMessage,
+  input: __S(229, __c28, 5) as any as S.Schema<DescribeClusterParameterGroupsMessage>,
+  output: __S(231, __c28, 7) as any as S.Schema<ClusterParameterGroupsMessage>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6988,8 +5629,8 @@ export const describeClusterParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Parameter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterParametersMessage,
-  output: ClusterParameterGroupDetails,
+  input: __S(232, __c29, 0) as any as S.Schema<DescribeClusterParametersMessage>,
+  output: __S(235, __c29, 3) as any as S.Schema<ClusterParameterGroupDetails>,
   errors: [ClusterParameterGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7027,8 +5668,8 @@ export const describeClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Cluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClustersMessage,
-  output: ClustersMessage,
+  input: __S(236, __c29, 4) as any as S.Schema<DescribeClustersMessage>,
+  output: __S(238, __c29, 6) as any as S.Schema<ClustersMessage>,
   errors: [ClusterNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7071,8 +5712,8 @@ export const describeClusterSecurityGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterSecurityGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterSecurityGroupsMessage,
-  output: ClusterSecurityGroupMessage,
+  input: __S(239, __c29, 7) as any as S.Schema<DescribeClusterSecurityGroupsMessage>,
+  output: __S(241, __c30, 1) as any as S.Schema<ClusterSecurityGroupMessage>,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7115,8 +5756,8 @@ export const describeClusterSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterSnapshotsMessage,
-  output: SnapshotMessage,
+  input: __S(244, __c30, 4) as any as S.Schema<DescribeClusterSnapshotsMessage>,
+  output: __S(246, __c30, 6) as any as S.Schema<SnapshotMessage>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotNotFoundFault,
@@ -7160,8 +5801,8 @@ export const describeClusterSubnetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterSubnetGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterSubnetGroupsMessage,
-  output: ClusterSubnetGroupMessage,
+  input: __S(247, __c30, 7) as any as S.Schema<DescribeClusterSubnetGroupsMessage>,
+  output: __S(249, __c31, 1) as any as S.Schema<ClusterSubnetGroupMessage>,
   errors: [ClusterSubnetGroupNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7188,8 +5829,8 @@ export const describeClusterTracks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MaintenanceTrack
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterTracksMessage,
-  output: TrackListMessage,
+  input: __S(250, __c31, 2) as any as S.Schema<DescribeClusterTracksMessage>,
+  output: __S(257, __c32, 1) as any as S.Schema<TrackListMessage>,
   errors: [InvalidClusterTrackFault, UnauthorizedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7218,8 +5859,8 @@ export const describeClusterVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeClusterVersionsMessage,
-  output: ClusterVersionsMessage,
+  input: __S(258, __c32, 2) as any as S.Schema<DescribeClusterVersionsMessage>,
+  output: __S(261, __c32, 5) as any as S.Schema<ClusterVersionsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7246,8 +5887,8 @@ export const describeCustomDomainAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeCustomDomainAssociationsMessage,
-  output: CustomDomainAssociationsMessage,
+  input: __S(262, __c32, 6) as any as S.Schema<DescribeCustomDomainAssociationsMessage>,
+  output: __S(267, __c33, 3) as any as S.Schema<CustomDomainAssociationsMessage>,
   errors: [CustomDomainAssociationNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7272,8 +5913,8 @@ export const describeDataShares: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataShare
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeDataSharesMessage,
-  output: DescribeDataSharesResult,
+  input: __S(268, __c33, 4) as any as S.Schema<DescribeDataSharesMessage>,
+  output: __S(270, __c33, 6) as any as S.Schema<DescribeDataSharesResult>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7297,8 +5938,8 @@ export const describeDataSharesForConsumer: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataShare
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeDataSharesForConsumerMessage,
-  output: DescribeDataSharesForConsumerResult,
+  input: __S(271, __c33, 7) as any as S.Schema<DescribeDataSharesForConsumerMessage>,
+  output: __S(272, __c34, 0) as any as S.Schema<DescribeDataSharesForConsumerResult>,
   errors: [InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7322,8 +5963,8 @@ export const describeDataSharesForProducer: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataShare
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeDataSharesForProducerMessage,
-  output: DescribeDataSharesForProducerResult,
+  input: __S(273, __c34, 1) as any as S.Schema<DescribeDataSharesForProducerMessage>,
+  output: __S(274, __c34, 2) as any as S.Schema<DescribeDataSharesForProducerResult>,
   errors: [InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7352,8 +5993,8 @@ export const describeDefaultClusterParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeDefaultClusterParametersMessage,
-  output: DescribeDefaultClusterParametersResult,
+  input: __S(275, __c34, 3) as any as S.Schema<DescribeDefaultClusterParametersMessage>,
+  output: __S(277, __c34, 5) as any as S.Schema<DescribeDefaultClusterParametersResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7381,8 +6022,8 @@ export const describeEndpointAccess: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EndpointAccess
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeEndpointAccessMessage,
-  output: EndpointAccessList,
+  input: __S(278, __c34, 6) as any as S.Schema<DescribeEndpointAccessMessage>,
+  output: __S(280, __c35, 0) as any as S.Schema<EndpointAccessList>,
   errors: [ClusterNotFoundFault, EndpointNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7409,8 +6050,8 @@ export const describeEndpointAuthorization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EndpointAuthorization
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeEndpointAuthorizationMessage,
-  output: EndpointAuthorizationList,
+  input: __S(281, __c35, 1) as any as S.Schema<DescribeEndpointAuthorizationMessage>,
+  output: __S(283, __c35, 3) as any as S.Schema<EndpointAuthorizationList>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7435,8 +6076,8 @@ export const describeEventCategories: API.OperationMethod<
   DescribeEventCategoriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeEventCategoriesMessage,
-  output: EventCategoriesMessage,
+  input: __S(284, __c35, 4) as any as S.Schema<DescribeEventCategoriesMessage>,
+  output: __S(289, __c36, 1) as any as S.Schema<EventCategoriesMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7457,8 +6098,8 @@ export const describeEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeEventsMessage,
-  output: EventsMessage,
+  input: __S(290, __c36, 2) as any as S.Schema<DescribeEventsMessage>,
+  output: __S(293, __c36, 5) as any as S.Schema<EventsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7497,8 +6138,8 @@ export const describeEventSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventSubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeEventSubscriptionsMessage,
-  output: EventSubscriptionsMessage,
+  input: __S(294, __c36, 6) as any as S.Schema<DescribeEventSubscriptionsMessage>,
+  output: __S(296, __c37, 0) as any as S.Schema<EventSubscriptionsMessage>,
   errors: [InvalidTagFault, SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7536,8 +6177,8 @@ export const describeHsmClientCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HsmClientCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeHsmClientCertificatesMessage,
-  output: HsmClientCertificateMessage,
+  input: __S(297, __c37, 1) as any as S.Schema<DescribeHsmClientCertificatesMessage>,
+  output: __S(299, __c37, 3) as any as S.Schema<HsmClientCertificateMessage>,
   errors: [HsmClientCertificateNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7576,8 +6217,8 @@ export const describeHsmConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HsmConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeHsmConfigurationsMessage,
-  output: HsmConfigurationMessage,
+  input: __S(300, __c37, 4) as any as S.Schema<DescribeHsmConfigurationsMessage>,
+  output: __S(302, __c37, 6) as any as S.Schema<HsmConfigurationMessage>,
   errors: [HsmConfigurationNotFoundFault, InvalidTagFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7605,8 +6246,8 @@ export const describeInboundIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InboundIntegration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInboundIntegrationsMessage,
-  output: InboundIntegrationsMessage,
+  input: __S(303, __c37, 7) as any as S.Schema<DescribeInboundIntegrationsMessage>,
+  output: __S(306, __c38, 2) as any as S.Schema<InboundIntegrationsMessage>,
   errors: [IntegrationNotFoundFault, InvalidNamespaceFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7633,8 +6274,8 @@ export const describeIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Integration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeIntegrationsMessage,
-  output: IntegrationsMessage,
+  input: __S(310, __c38, 6) as any as S.Schema<DescribeIntegrationsMessage>,
+  output: __S(312, __c39, 0) as any as S.Schema<IntegrationsMessage>,
   errors: [IntegrationNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7661,8 +6302,8 @@ export const describeLoggingStatus: API.OperationMethod<
   DescribeLoggingStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeLoggingStatusMessage,
-  output: LoggingStatus,
+  input: __S(313, __c39, 1) as any as S.Schema<DescribeLoggingStatusMessage>,
+  output: __S(314, __c39, 2) as any as S.Schema<LoggingStatus>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7687,8 +6328,8 @@ export const describeNodeConfigurationOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NodeConfigurationOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeNodeConfigurationOptionsMessage,
-  output: NodeConfigurationOptionsMessage,
+  input: __S(317, __c39, 5) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>,
+  output: __S(320, __c40, 0) as any as S.Schema<NodeConfigurationOptionsMessage>,
   errors: [
     AccessToSnapshotDeniedFault,
     ClusterNotFoundFault,
@@ -7726,8 +6367,8 @@ export const describeOrderableClusterOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OrderableClusterOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeOrderableClusterOptionsMessage,
-  output: OrderableClusterOptionsMessage,
+  input: __S(321, __c40, 1) as any as S.Schema<DescribeOrderableClusterOptionsMessage>,
+  output: __S(325, __c40, 5) as any as S.Schema<OrderableClusterOptionsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7754,8 +6395,8 @@ export const describePartners: API.OperationMethod<
   DescribePartnersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePartnersInputMessage,
-  output: DescribePartnersOutputMessage,
+  input: __S(326, __c40, 6) as any as S.Schema<DescribePartnersInputMessage>,
+  output: __S(329, __c41, 1) as any as S.Schema<DescribePartnersOutputMessage>,
   errors: [ClusterNotFoundFault, UnauthorizedPartnerIntegrationFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7778,8 +6419,8 @@ export const describeQev2IdcApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Qev2IdcApplication
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeQev2IdcApplicationsMessage,
-  output: DescribeQev2IdcApplicationsResult,
+  input: __S(330, __c41, 2) as any as S.Schema<DescribeQev2IdcApplicationsMessage>,
+  output: __S(332, __c41, 4) as any as S.Schema<DescribeQev2IdcApplicationsResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -7813,8 +6454,8 @@ export const describeRedshiftIdcApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RedshiftIdcApplication
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeRedshiftIdcApplicationsMessage,
-  output: DescribeRedshiftIdcApplicationsResult,
+  input: __S(333, __c41, 5) as any as S.Schema<DescribeRedshiftIdcApplicationsMessage>,
+  output: __S(335, __c41, 7) as any as S.Schema<DescribeRedshiftIdcApplicationsResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -7848,8 +6489,8 @@ export const describeReservedNodeExchangeStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNodeExchangeStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeReservedNodeExchangeStatusInputMessage,
-  output: DescribeReservedNodeExchangeStatusOutputMessage,
+  input: __S(336, __c42, 0) as any as S.Schema<DescribeReservedNodeExchangeStatusInputMessage>,
+  output: __S(338, __c42, 2) as any as S.Schema<DescribeReservedNodeExchangeStatusOutputMessage>,
   errors: [ReservedNodeExchangeNotFoundFault, ReservedNodeNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7886,8 +6527,8 @@ export const describeReservedNodeOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNodeOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeReservedNodeOfferingsMessage,
-  output: ReservedNodeOfferingsMessage,
+  input: __S(339, __c42, 3) as any as S.Schema<DescribeReservedNodeOfferingsMessage>,
+  output: __S(342, __c42, 6) as any as S.Schema<ReservedNodeOfferingsMessage>,
   errors: [
     DependentServiceUnavailableFault,
     ReservedNodeOfferingNotFoundFault,
@@ -7918,8 +6559,8 @@ export const describeReservedNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNode
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeReservedNodesMessage,
-  output: ReservedNodesMessage,
+  input: __S(343, __c42, 7) as any as S.Schema<DescribeReservedNodesMessage>,
+  output: __S(345, __c43, 1) as any as S.Schema<ReservedNodesMessage>,
   errors: [DependentServiceUnavailableFault, ReservedNodeNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7952,8 +6593,8 @@ export const describeResize: API.OperationMethod<
   DescribeResizeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeResizeMessage,
-  output: ResizeProgressMessage,
+  input: __S(346, __c43, 2) as any as S.Schema<DescribeResizeMessage>,
+  output: __S(44, __c5, 4) as any as S.Schema<ResizeProgressMessage>,
   errors: [ClusterNotFoundFault, ResizeNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7974,8 +6615,8 @@ export const describeScheduledActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduledAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeScheduledActionsMessage,
-  output: ScheduledActionsMessage,
+  input: __S(349, __c43, 5) as any as S.Schema<DescribeScheduledActionsMessage>,
+  output: __S(351, __c43, 7) as any as S.Schema<ScheduledActionsMessage>,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8007,8 +6648,8 @@ export const describeSnapshotCopyGrants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SnapshotCopyGrant
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeSnapshotCopyGrantsMessage,
-  output: SnapshotCopyGrantMessage,
+  input: __S(352, __c44, 0) as any as S.Schema<DescribeSnapshotCopyGrantsMessage>,
+  output: __S(354, __c44, 2) as any as S.Schema<SnapshotCopyGrantMessage>,
   errors: [InvalidTagFault, SnapshotCopyGrantNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8032,8 +6673,8 @@ export const describeSnapshotSchedules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SnapshotSchedule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeSnapshotSchedulesMessage,
-  output: DescribeSnapshotSchedulesOutputMessage,
+  input: __S(355, __c44, 3) as any as S.Schema<DescribeSnapshotSchedulesMessage>,
+  output: __S(357, __c44, 5) as any as S.Schema<DescribeSnapshotSchedulesOutputMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8056,8 +6697,8 @@ export const describeStorage: API.OperationMethod<
   DescribeStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeStorageRequest,
-  output: CustomerStorageMessage,
+  input: __S(358, __c44, 6) as any as S.Schema<DescribeStorageRequest>,
+  output: __S(359, __c44, 7) as any as S.Schema<CustomerStorageMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8083,8 +6724,8 @@ export const describeTableRestoreStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableRestoreStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeTableRestoreStatusMessage,
-  output: TableRestoreStatusMessage,
+  input: __S(360, __c45, 0) as any as S.Schema<DescribeTableRestoreStatusMessage>,
+  output: __S(363, __c45, 3) as any as S.Schema<TableRestoreStatusMessage>,
   errors: [ClusterNotFoundFault, TableRestoreNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8130,8 +6771,8 @@ export const describeTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaggedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeTagsMessage,
-  output: TaggedResourceListMessage,
+  input: __S(364, __c45, 4) as any as S.Schema<DescribeTagsMessage>,
+  output: __S(367, __c45, 7) as any as S.Schema<TaggedResourceListMessage>,
   errors: [InvalidTagFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8171,8 +6812,8 @@ export const describeUsageLimits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsageLimit
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeUsageLimitsMessage,
-  output: UsageLimitList,
+  input: __S(368, __c46, 0) as any as S.Schema<DescribeUsageLimitsMessage>,
+  output: __S(370, __c46, 2) as any as S.Schema<UsageLimitList>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8200,8 +6841,8 @@ export const disableLogging: API.OperationMethod<
   DisableLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableLoggingMessage,
-  output: LoggingStatus,
+  input: __S(371, __c46, 3) as any as S.Schema<DisableLoggingMessage>,
+  output: __S(314, __c39, 2) as any as S.Schema<LoggingStatus>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8229,8 +6870,8 @@ export const disableSnapshotCopy: API.OperationMethod<
   DisableSnapshotCopyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableSnapshotCopyMessage,
-  output: DisableSnapshotCopyResult,
+  input: __S(372, __c46, 4) as any as S.Schema<DisableSnapshotCopyMessage>,
+  output: __S(373, __c46, 5) as any as S.Schema<DisableSnapshotCopyResult>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -8256,8 +6897,8 @@ export const disassociateDataShareConsumer: API.OperationMethod<
   DisassociateDataShareConsumerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateDataShareConsumerMessage,
-  output: DataShare,
+  input: __S(374, __c46, 6) as any as S.Schema<DisassociateDataShareConsumerMessage>,
+  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8283,8 +6924,8 @@ export const enableLogging: API.OperationMethod<
   EnableLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableLoggingMessage,
-  output: LoggingStatus,
+  input: __S(375, __c46, 7) as any as S.Schema<EnableLoggingMessage>,
+  output: __S(314, __c39, 2) as any as S.Schema<LoggingStatus>,
   errors: [
     BucketNotFoundFault,
     ClusterNotFoundFault,
@@ -8322,8 +6963,8 @@ export const enableSnapshotCopy: API.OperationMethod<
   EnableSnapshotCopyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableSnapshotCopyMessage,
-  output: EnableSnapshotCopyResult,
+  input: __S(376, __c47, 0) as any as S.Schema<EnableSnapshotCopyMessage>,
+  output: __S(377, __c47, 1) as any as S.Schema<EnableSnapshotCopyResult>,
   errors: [
     ClusterNotFoundFault,
     CopyToRegionDisabledFault,
@@ -8357,8 +6998,8 @@ export const failoverPrimaryCompute: API.OperationMethod<
   FailoverPrimaryComputeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: FailoverPrimaryComputeInputMessage,
-  output: FailoverPrimaryComputeResult,
+  input: __S(378, __c47, 2) as any as S.Schema<FailoverPrimaryComputeInputMessage>,
+  output: __S(379, __c47, 3) as any as S.Schema<FailoverPrimaryComputeResult>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -8407,8 +7048,8 @@ export const getClusterCredentials: API.OperationMethod<
   GetClusterCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterCredentialsMessage,
-  output: ClusterCredentials,
+  input: __S(381, __c47, 5) as any as S.Schema<GetClusterCredentialsMessage>,
+  output: __S(382, __c47, 6) as any as S.Schema<ClusterCredentials>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8438,8 +7079,8 @@ export const getClusterCredentialsWithIAM: API.OperationMethod<
   GetClusterCredentialsWithIAMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterCredentialsWithIAMMessage,
-  output: ClusterExtendedCredentials,
+  input: __S(383, __c47, 7) as any as S.Schema<GetClusterCredentialsWithIAMMessage>,
+  output: __S(384, __c48, 0) as any as S.Schema<ClusterExtendedCredentials>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8472,8 +7113,8 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
   GetIdentityCenterAuthTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityCenterAuthTokenRequest,
-  output: GetIdentityCenterAuthTokenResponse,
+  input: __S(386, __c48, 2) as any as S.Schema<GetIdentityCenterAuthTokenRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<GetIdentityCenterAuthTokenResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -8507,8 +7148,16 @@ export const getReservedNodeExchangeConfigurationOptions: API.PaginatedOperation
   Credentials | HttpClient.HttpClient,
   ReservedNodeConfigurationOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetReservedNodeExchangeConfigurationOptionsInputMessage,
-  output: GetReservedNodeExchangeConfigurationOptionsOutputMessage,
+  input: __S(
+    388,
+    __c48,
+    4,
+  ) as any as S.Schema<GetReservedNodeExchangeConfigurationOptionsInputMessage>,
+  output: __S(
+    391,
+    __c48,
+    7,
+  ) as any as S.Schema<GetReservedNodeExchangeConfigurationOptionsOutputMessage>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotNotFoundFault,
@@ -8549,8 +7198,8 @@ export const getReservedNodeExchangeOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNodeOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetReservedNodeExchangeOfferingsInputMessage,
-  output: GetReservedNodeExchangeOfferingsOutputMessage,
+  input: __S(392, __c49, 0) as any as S.Schema<GetReservedNodeExchangeOfferingsInputMessage>,
+  output: __S(393, __c49, 1) as any as S.Schema<GetReservedNodeExchangeOfferingsOutputMessage>,
   errors: [
     DependentServiceUnavailableFault,
     InvalidReservedNodeStateFault,
@@ -8584,8 +7233,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePolicyMessage,
-  output: GetResourcePolicyResult,
+  input: __S(394, __c49, 2) as any as S.Schema<GetResourcePolicyMessage>,
+  output: __S(396, __c49, 4) as any as S.Schema<GetResourcePolicyResult>,
   errors: [InvalidPolicyFault, ResourceNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8606,8 +7255,8 @@ export const listRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommendationsMessage,
-  output: ListRecommendationsResult,
+  input: __S(397, __c49, 5) as any as S.Schema<ListRecommendationsMessage>,
+  output: __S(404, __c50, 4) as any as S.Schema<ListRecommendationsResult>,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8634,8 +7283,8 @@ export const modifyAquaConfiguration: API.OperationMethod<
   ModifyAquaConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyAquaInputMessage,
-  output: ModifyAquaOutputMessage,
+  input: __S(405, __c50, 5) as any as S.Schema<ModifyAquaInputMessage>,
+  output: __S(406, __c50, 6) as any as S.Schema<ModifyAquaOutputMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8656,8 +7305,8 @@ export const modifyAuthenticationProfile: API.OperationMethod<
   ModifyAuthenticationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyAuthenticationProfileMessage,
-  output: ModifyAuthenticationProfileResult,
+  input: __S(407, __c50, 7) as any as S.Schema<ModifyAuthenticationProfileMessage>,
+  output: __S(408, __c51, 0) as any as S.Schema<ModifyAuthenticationProfileResult>,
   errors: [
     AuthenticationProfileNotFoundFault,
     AuthenticationProfileQuotaExceededFault,
@@ -8729,8 +7378,8 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterMessage,
-  output: ModifyClusterResult,
+  input: __S(409, __c51, 1) as any as S.Schema<ModifyClusterMessage>,
+  output: __S(410, __c51, 2) as any as S.Schema<ModifyClusterResult>,
   errors: [
     ClusterAlreadyExistsFault,
     ClusterNotFoundFault,
@@ -8776,8 +7425,8 @@ export const modifyClusterDbRevision: API.OperationMethod<
   ModifyClusterDbRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterDbRevisionMessage,
-  output: ModifyClusterDbRevisionResult,
+  input: __S(411, __c51, 3) as any as S.Schema<ModifyClusterDbRevisionMessage>,
+  output: __S(412, __c51, 4) as any as S.Schema<ModifyClusterDbRevisionResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterOnLatestRevisionFault,
@@ -8807,8 +7456,8 @@ export const modifyClusterIamRoles: API.OperationMethod<
   ModifyClusterIamRolesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterIamRolesMessage,
-  output: ModifyClusterIamRolesResult,
+  input: __S(413, __c51, 5) as any as S.Schema<ModifyClusterIamRolesMessage>,
+  output: __S(414, __c51, 6) as any as S.Schema<ModifyClusterIamRolesResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8828,8 +7477,8 @@ export const modifyClusterMaintenance: API.OperationMethod<
   ModifyClusterMaintenanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterMaintenanceMessage,
-  output: ModifyClusterMaintenanceResult,
+  input: __S(415, __c51, 7) as any as S.Schema<ModifyClusterMaintenanceMessage>,
+  output: __S(416, __c52, 0) as any as S.Schema<ModifyClusterMaintenanceResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8853,8 +7502,8 @@ export const modifyClusterParameterGroup: API.OperationMethod<
   ModifyClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterParameterGroupMessage,
-  output: ClusterParameterGroupNameMessage,
+  input: __S(417, __c52, 1) as any as S.Schema<ModifyClusterParameterGroupMessage>,
+  output: __S(418, __c52, 2) as any as S.Schema<ClusterParameterGroupNameMessage>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidClusterParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8877,8 +7526,8 @@ export const modifyClusterSnapshot: API.OperationMethod<
   ModifyClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterSnapshotMessage,
-  output: ModifyClusterSnapshotResult,
+  input: __S(419, __c52, 3) as any as S.Schema<ModifyClusterSnapshotMessage>,
+  output: __S(420, __c52, 4) as any as S.Schema<ModifyClusterSnapshotResult>,
   errors: [
     ClusterSnapshotNotFoundFault,
     InvalidClusterSnapshotStateFault,
@@ -8903,8 +7552,8 @@ export const modifyClusterSnapshotSchedule: API.OperationMethod<
   ModifyClusterSnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterSnapshotScheduleMessage,
-  output: ModifyClusterSnapshotScheduleResponse,
+  input: __S(421, __c52, 5) as any as S.Schema<ModifyClusterSnapshotScheduleMessage>,
+  output: __S(422, __c52, 6) as any as S.Schema<ModifyClusterSnapshotScheduleResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterSnapshotScheduleStateFault,
@@ -8951,8 +7600,8 @@ export const modifyClusterSubnetGroup: API.OperationMethod<
   ModifyClusterSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterSubnetGroupMessage,
-  output: ModifyClusterSubnetGroupResult,
+  input: __S(423, __c52, 7) as any as S.Schema<ModifyClusterSubnetGroupMessage>,
+  output: __S(424, __c53, 0) as any as S.Schema<ModifyClusterSubnetGroupResult>,
   errors: [
     ClusterSubnetGroupNotFoundFault,
     ClusterSubnetQuotaExceededFault,
@@ -8981,8 +7630,8 @@ export const modifyCustomDomainAssociation: API.OperationMethod<
   ModifyCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyCustomDomainAssociationMessage,
-  output: ModifyCustomDomainAssociationResult,
+  input: __S(425, __c53, 1) as any as S.Schema<ModifyCustomDomainAssociationMessage>,
+  output: __S(426, __c53, 2) as any as S.Schema<ModifyCustomDomainAssociationResult>,
   errors: [
     ClusterNotFoundFault,
     CustomCnameAssociationFault,
@@ -9011,8 +7660,8 @@ export const modifyEndpointAccess: API.OperationMethod<
   ModifyEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyEndpointAccessMessage,
-  output: EndpointAccess,
+  input: __S(427, __c53, 3) as any as S.Schema<ModifyEndpointAccessMessage>,
+  output: __S(109, __c13, 5) as any as S.Schema<EndpointAccess>,
   errors: [
     ClusterNotFoundFault,
     EndpointNotFoundFault,
@@ -9046,8 +7695,8 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyEventSubscriptionMessage,
-  output: ModifyEventSubscriptionResult,
+  input: __S(428, __c53, 4) as any as S.Schema<ModifyEventSubscriptionMessage>,
+  output: __S(429, __c53, 5) as any as S.Schema<ModifyEventSubscriptionResult>,
   errors: [
     InvalidSubscriptionStateFault,
     SNSInvalidTopicFault,
@@ -9080,8 +7729,8 @@ export const modifyIntegration: API.OperationMethod<
   ModifyIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyIntegrationMessage,
-  output: Integration,
+  input: __S(430, __c53, 6) as any as S.Schema<ModifyIntegrationMessage>,
+  output: __S(125, __c15, 5) as any as S.Schema<Integration>,
   errors: [
     IntegrationAlreadyExistsFault,
     IntegrationConflictOperationFault,
@@ -9112,8 +7761,8 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
   ModifyLakehouseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyLakehouseConfigurationMessage,
-  output: LakehouseConfiguration,
+  input: __S(431, __c53, 7) as any as S.Schema<ModifyLakehouseConfigurationMessage>,
+  output: __S(432, __c54, 0) as any as S.Schema<LakehouseConfiguration>,
   errors: [
     ClusterNotFoundFault,
     DependentServiceAccessDeniedFault,
@@ -9143,8 +7792,8 @@ export const modifyQev2IdcApplication: API.OperationMethod<
   ModifyQev2IdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyQev2IdcApplicationMessage,
-  output: ModifyQev2IdcApplicationResult,
+  input: __S(433, __c54, 1) as any as S.Schema<ModifyQev2IdcApplicationMessage>,
+  output: __S(434, __c54, 2) as any as S.Schema<ModifyQev2IdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -9171,8 +7820,8 @@ export const modifyRedshiftIdcApplication: API.OperationMethod<
   ModifyRedshiftIdcApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyRedshiftIdcApplicationMessage,
-  output: ModifyRedshiftIdcApplicationResult,
+  input: __S(435, __c54, 3) as any as S.Schema<ModifyRedshiftIdcApplicationMessage>,
+  output: __S(436, __c54, 4) as any as S.Schema<ModifyRedshiftIdcApplicationResult>,
   errors: [
     DependentServiceAccessDeniedFault,
     DependentServiceUnavailableFault,
@@ -9202,8 +7851,8 @@ export const modifyScheduledAction: API.OperationMethod<
   ModifyScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyScheduledActionMessage,
-  output: ScheduledAction,
+  input: __S(437, __c54, 5) as any as S.Schema<ModifyScheduledActionMessage>,
+  output: __S(153, __c19, 1) as any as S.Schema<ScheduledAction>,
   errors: [
     ClusterNotFoundFault,
     InvalidScheduledActionFault,
@@ -9240,8 +7889,8 @@ export const modifySnapshotCopyRetentionPeriod: API.OperationMethod<
   ModifySnapshotCopyRetentionPeriodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifySnapshotCopyRetentionPeriodMessage,
-  output: ModifySnapshotCopyRetentionPeriodResult,
+  input: __S(438, __c54, 6) as any as S.Schema<ModifySnapshotCopyRetentionPeriodMessage>,
+  output: __S(439, __c54, 7) as any as S.Schema<ModifySnapshotCopyRetentionPeriodResult>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -9269,8 +7918,8 @@ export const modifySnapshotSchedule: API.OperationMethod<
   ModifySnapshotScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifySnapshotScheduleMessage,
-  output: SnapshotSchedule,
+  input: __S(440, __c55, 0) as any as S.Schema<ModifySnapshotScheduleMessage>,
+  output: __S(162, __c20, 2) as any as S.Schema<SnapshotSchedule>,
   errors: [
     InvalidScheduleFault,
     SnapshotScheduleNotFoundFault,
@@ -9296,8 +7945,8 @@ export const modifyUsageLimit: API.OperationMethod<
   ModifyUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyUsageLimitMessage,
-  output: UsageLimit,
+  input: __S(441, __c55, 1) as any as S.Schema<ModifyUsageLimitMessage>,
+  output: __S(166, __c20, 6) as any as S.Schema<UsageLimit>,
   errors: [InvalidUsageLimitFault, UnsupportedOperationFault, UsageLimitNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9318,8 +7967,8 @@ export const pauseCluster: API.OperationMethod<
   PauseClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseClusterMessage,
-  output: PauseClusterResult,
+  input: __S(148, __c18, 4) as any as S.Schema<PauseClusterMessage>,
+  output: __S(442, __c55, 2) as any as S.Schema<PauseClusterResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, UnsupportedOperationFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9349,8 +7998,8 @@ export const purchaseReservedNodeOffering: API.OperationMethod<
   PurchaseReservedNodeOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurchaseReservedNodeOfferingMessage,
-  output: PurchaseReservedNodeOfferingResult,
+  input: __S(443, __c55, 3) as any as S.Schema<PurchaseReservedNodeOfferingMessage>,
+  output: __S(444, __c55, 4) as any as S.Schema<PurchaseReservedNodeOfferingResult>,
   errors: [
     ReservedNodeAlreadyExistsFault,
     ReservedNodeOfferingNotFoundFault,
@@ -9377,8 +8026,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutResourcePolicyMessage,
-  output: PutResourcePolicyResult,
+  input: __S(445, __c55, 5) as any as S.Schema<PutResourcePolicyMessage>,
+  output: __S(446, __c55, 6) as any as S.Schema<PutResourcePolicyResult>,
   errors: [
     ConflictPolicyUpdateFault,
     InvalidPolicyFault,
@@ -9407,8 +8056,8 @@ export const rebootCluster: API.OperationMethod<
   RebootClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootClusterMessage,
-  output: RebootClusterResult,
+  input: __S(447, __c55, 7) as any as S.Schema<RebootClusterMessage>,
+  output: __S(448, __c56, 0) as any as S.Schema<RebootClusterResult>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9429,8 +8078,8 @@ export const registerNamespace: API.OperationMethod<
   RegisterNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterNamespaceInputMessage,
-  output: RegisterNamespaceOutputMessage,
+  input: __S(449, __c56, 1) as any as S.Schema<RegisterNamespaceInputMessage>,
+  output: __S(450, __c56, 2) as any as S.Schema<RegisterNamespaceOutputMessage>,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault, InvalidNamespaceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9447,8 +8096,8 @@ export const rejectDataShare: API.OperationMethod<
   RejectDataShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectDataShareMessage,
-  output: DataShare,
+  input: __S(451, __c56, 3) as any as S.Schema<RejectDataShareMessage>,
+  output: __S(10, __c1, 2) as any as S.Schema<DataShare>,
   errors: [InvalidDataShareFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9471,8 +8120,8 @@ export const resetClusterParameterGroup: API.OperationMethod<
   ResetClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetClusterParameterGroupMessage,
-  output: ClusterParameterGroupNameMessage,
+  input: __S(452, __c56, 4) as any as S.Schema<ResetClusterParameterGroupMessage>,
+  output: __S(418, __c52, 2) as any as S.Schema<ClusterParameterGroupNameMessage>,
   errors: [ClusterParameterGroupNotFoundFault, InvalidClusterParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9535,8 +8184,8 @@ export const resizeCluster: API.OperationMethod<
   ResizeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResizeClusterMessage,
-  output: ResizeClusterResult,
+  input: __S(147, __c18, 3) as any as S.Schema<ResizeClusterMessage>,
+  output: __S(453, __c56, 5) as any as S.Schema<ResizeClusterResult>,
   errors: [
     ClusterNotFoundFault,
     DependentServiceUnavailableFault,
@@ -9635,8 +8284,8 @@ export const restoreFromClusterSnapshot: API.OperationMethod<
   RestoreFromClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreFromClusterSnapshotMessage,
-  output: RestoreFromClusterSnapshotResult,
+  input: __S(454, __c56, 6) as any as S.Schema<RestoreFromClusterSnapshotMessage>,
+  output: __S(455, __c56, 7) as any as S.Schema<RestoreFromClusterSnapshotResult>,
   errors: [
     AccessToSnapshotDeniedFault,
     ClusterAlreadyExistsFault,
@@ -9712,8 +8361,8 @@ export const restoreTableFromClusterSnapshot: API.OperationMethod<
   RestoreTableFromClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreTableFromClusterSnapshotMessage,
-  output: RestoreTableFromClusterSnapshotResult,
+  input: __S(456, __c57, 0) as any as S.Schema<RestoreTableFromClusterSnapshotMessage>,
+  output: __S(457, __c57, 1) as any as S.Schema<RestoreTableFromClusterSnapshotResult>,
   errors: [
     ClusterNotFoundFault,
     ClusterSnapshotNotFoundFault,
@@ -9743,8 +8392,8 @@ export const resumeCluster: API.OperationMethod<
   ResumeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeClusterMessage,
-  output: ResumeClusterResult,
+  input: __S(149, __c18, 5) as any as S.Schema<ResumeClusterMessage>,
+  output: __S(458, __c57, 2) as any as S.Schema<ResumeClusterResult>,
   errors: [
     ClusterNotFoundFault,
     InsufficientClusterCapacityFault,
@@ -9774,8 +8423,8 @@ export const revokeClusterSecurityGroupIngress: API.OperationMethod<
   RevokeClusterSecurityGroupIngressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeClusterSecurityGroupIngressMessage,
-  output: RevokeClusterSecurityGroupIngressResult,
+  input: __S(459, __c57, 3) as any as S.Schema<RevokeClusterSecurityGroupIngressMessage>,
+  output: __S(460, __c57, 4) as any as S.Schema<RevokeClusterSecurityGroupIngressResult>,
   errors: [
     AuthorizationNotFoundFault,
     ClusterSecurityGroupNotFoundFault,
@@ -9804,8 +8453,8 @@ export const revokeEndpointAccess: API.OperationMethod<
   RevokeEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeEndpointAccessMessage,
-  output: EndpointAuthorization,
+  input: __S(461, __c57, 5) as any as S.Schema<RevokeEndpointAccessMessage>,
+  output: __S(23, __c2, 7) as any as S.Schema<EndpointAuthorization>,
   errors: [
     ClusterNotFoundFault,
     EndpointAuthorizationNotFoundFault,
@@ -9841,8 +8490,8 @@ export const revokeSnapshotAccess: API.OperationMethod<
   RevokeSnapshotAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeSnapshotAccessMessage,
-  output: RevokeSnapshotAccessResult,
+  input: __S(462, __c57, 6) as any as S.Schema<RevokeSnapshotAccessMessage>,
+  output: __S(463, __c57, 7) as any as S.Schema<RevokeSnapshotAccessResult>,
   errors: [
     AccessToSnapshotDeniedFault,
     AuthorizationNotFoundFault,
@@ -9869,8 +8518,8 @@ export const rotateEncryptionKey: API.OperationMethod<
   RotateEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateEncryptionKeyMessage,
-  output: RotateEncryptionKeyResult,
+  input: __S(464, __c58, 0) as any as S.Schema<RotateEncryptionKeyMessage>,
+  output: __S(465, __c58, 1) as any as S.Schema<RotateEncryptionKeyResult>,
   errors: [
     ClusterNotFoundFault,
     DependentServiceRequestThrottlingFault,
@@ -9897,8 +8546,8 @@ export const updatePartnerStatus: API.OperationMethod<
   UpdatePartnerStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePartnerStatusInputMessage,
-  output: PartnerIntegrationOutputMessage,
+  input: __S(466, __c58, 2) as any as S.Schema<UpdatePartnerStatusInputMessage>,
+  output: __S(6, __c0, 6) as any as S.Schema<PartnerIntegrationOutputMessage>,
   errors: [
     ClusterNotFoundFault,
     PartnerNotFoundFault,
@@ -9931,7 +8580,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "RecurringCharge" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ RecurringCharge.pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
+        /*@__PURE__*/ __S(1, __c0, 1).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
           identifier: "RecurringCharge",
         }),
       );
@@ -9949,13 +8598,13 @@ function __c0(j: number): any {
           NodeCount: S.optional(S.Number),
           State: S.optional(S.String),
           OfferingType: S.optional(S.String),
-          RecurringCharges: S.optional(RecurringChargeList),
-          ReservedNodeOfferingType: S.optional(ReservedNodeOfferingType),
+          RecurringCharges: S.optional(__S(2, __c0, 2)),
+          ReservedNodeOfferingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservedNode" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ExchangedReservedNode: S.optional(ReservedNode) }).pipe(ns),
+        S.Struct({ ExchangedReservedNode: S.optional(__S(3, __c0, 3)) }).pipe(ns),
       ).annotate({
         identifier: "AcceptReservedNodeExchangeOutputMessage",
       });
@@ -9998,7 +8647,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConsumerIdentifier: S.optional(S.String),
-          Status: S.optional(DataShareStatus),
+          Status: S.optional(S.String),
           ConsumerRegion: S.optional(S.String),
           CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           StatusChangeDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -10007,16 +8656,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "DataShareAssociation" });
     case 1:
-      return S.Array(DataShareAssociation);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DataShareArn: S.optional(S.String),
           ProducerArn: S.optional(S.String),
           AllowPubliclyAccessibleConsumers: S.optional(S.Boolean),
-          DataShareAssociations: S.optional(DataShareAssociationList),
+          DataShareAssociations: S.optional(__S(9, __c1, 1)),
           ManagedBy: S.optional(S.String),
-          DataShareType: S.optional(DataShareType),
+          DataShareType: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DataShare" });
     case 3:
@@ -10036,7 +8685,9 @@ function __c1(j: number): any {
       ).annotate({ identifier: "Tag" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+        /*@__PURE__*/ __S(12, __c1, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "Tag" }),
       );
     case 6:
       return S.suspend(() =>
@@ -10044,12 +8695,12 @@ function __c1(j: number): any {
           Status: S.optional(S.String),
           EC2SecurityGroupName: S.optional(S.String),
           EC2SecurityGroupOwnerId: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "EC2SecurityGroup" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ EC2SecurityGroup.pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup")).annotate({
+        /*@__PURE__*/ __S(14, __c1, 6).pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup")).annotate({
           identifier: "EC2SecurityGroup",
         }),
       );
@@ -10062,12 +8713,12 @@ function __c2(j: number): any {
         S.Struct({
           Status: S.optional(S.String),
           CIDRIP: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "IPRange" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ IPRange.pipe(/*@__PURE__*/ T.XmlName("IPRange")).annotate({
+        /*@__PURE__*/ __S(16, __c2, 0).pipe(/*@__PURE__*/ T.XmlName("IPRange")).annotate({
           identifier: "IPRange",
         }),
       );
@@ -10076,14 +8727,14 @@ function __c2(j: number): any {
         S.Struct({
           ClusterSecurityGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          EC2SecurityGroups: S.optional(EC2SecurityGroupList),
-          IPRanges: S.optional(IPRangeList),
-          Tags: S.optional(TagList),
+          EC2SecurityGroups: S.optional(__S(15, __c1, 7)),
+          IPRanges: S.optional(__S(17, __c2, 1)),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "ClusterSecurityGroup" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ClusterSecurityGroup: S.optional(ClusterSecurityGroup) }).pipe(ns),
+        S.Struct({ ClusterSecurityGroup: S.optional(__S(18, __c2, 2)) }).pipe(ns),
       ).annotate({
         identifier: "AuthorizeClusterSecurityGroupIngressResult",
       });
@@ -10104,7 +8755,7 @@ function __c2(j: number): any {
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           Account: S.optional(S.String),
-          VpcIds: S.optional(VpcIdentifierList),
+          VpcIds: S.optional(__S(21, __c2, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AuthorizeEndpointAccessMessage",
@@ -10117,9 +8768,9 @@ function __c2(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           AuthorizeTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           ClusterStatus: S.optional(S.String),
-          Status: S.optional(AuthorizationStatus),
+          Status: S.optional(S.String),
           AllowedAllVPCs: S.optional(S.Boolean),
-          AllowedVPCs: S.optional(VpcIdentifierList),
+          AllowedVPCs: S.optional(__S(21, __c2, 5)),
           EndpointCount: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({ identifier: "EndpointAuthorization" });
@@ -10144,11 +8795,11 @@ function __c3(j: number): any {
       ).annotate({ identifier: "AccountWithRestoreAccess" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ AccountWithRestoreAccess.pipe(
-          /*@__PURE__*/ T.XmlName("AccountWithRestoreAccess"),
-        ).annotate({
-          identifier: "AccountWithRestoreAccess",
-        }),
+        /*@__PURE__*/ __S(25, __c3, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("AccountWithRestoreAccess"))
+          .annotate({
+            identifier: "AccountWithRestoreAccess",
+          }),
       );
     case 3:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NodeType")));
@@ -10173,7 +8824,7 @@ function __c3(j: number): any {
           Encrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
           EncryptedWithHSM: S.optional(S.Boolean),
-          AccountsWithRestoreAccess: S.optional(AccountsWithRestoreAccessList),
+          AccountsWithRestoreAccess: S.optional(__S(26, __c3, 2)),
           OwnerAccount: S.optional(S.String),
           TotalBackupSizeInMegaBytes: S.optional(S.Number),
           ActualIncrementalBackupSizeInMegaBytes: S.optional(S.Number),
@@ -10182,8 +8833,8 @@ function __c3(j: number): any {
           EstimatedSecondsToCompletion: S.optional(S.Number),
           ElapsedTimeInSeconds: S.optional(S.Number),
           SourceRegion: S.optional(S.String),
-          Tags: S.optional(TagList),
-          RestorableNodeTypes: S.optional(RestorableNodeTypeList),
+          Tags: S.optional(__S(13, __c1, 5)),
+          RestorableNodeTypes: S.optional(__S(27, __c3, 3)),
           EnhancedVpcRouting: S.optional(S.Boolean),
           MaintenanceTrackName: S.optional(S.String),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
@@ -10197,7 +8848,9 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Snapshot" });
     case 5:
-      return S.suspend(() => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+      ).annotate({
         identifier: "AuthorizeSnapshotAccessResult",
       });
     case 6:
@@ -10211,11 +8864,11 @@ function __c3(j: number): any {
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ DeleteClusterSnapshotMessage.pipe(
-          /*@__PURE__*/ T.XmlName("DeleteClusterSnapshotMessage"),
-        ).annotate({
-          identifier: "DeleteClusterSnapshotMessage",
-        }),
+        /*@__PURE__*/ __S(30, __c3, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("DeleteClusterSnapshotMessage"))
+          .annotate({
+            identifier: "DeleteClusterSnapshotMessage",
+          }),
       );
   }
 }
@@ -10223,7 +8876,7 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Identifiers: S.optional(DeleteClusterSnapshotMessageList) }).pipe(
+        S.Struct({ Identifiers: S.optional(__S(31, __c3, 7)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -10242,17 +8895,17 @@ function __c4(j: number): any {
       ).annotate({ identifier: "SnapshotErrorMessage" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ SnapshotErrorMessage.pipe(
-          /*@__PURE__*/ T.XmlName("SnapshotErrorMessage"),
-        ).annotate({
-          identifier: "SnapshotErrorMessage",
-        }),
+        /*@__PURE__*/ __S(34, __c4, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("SnapshotErrorMessage"))
+          .annotate({
+            identifier: "SnapshotErrorMessage",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(SnapshotIdentifierList),
-          Errors: S.optional(BatchSnapshotOperationErrorList),
+          Resources: S.optional(__S(33, __c4, 1)),
+          Errors: S.optional(__S(35, __c4, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "BatchDeleteClusterSnapshotsResult",
@@ -10260,7 +8913,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SnapshotIdentifierList: S.optional(SnapshotIdentifierList),
+          SnapshotIdentifierList: S.optional(__S(33, __c4, 1)),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -10269,17 +8922,17 @@ function __c4(j: number): any {
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ SnapshotErrorMessage.pipe(
-          /*@__PURE__*/ T.XmlName("SnapshotErrorMessage"),
-        ).annotate({
-          identifier: "SnapshotErrorMessage",
-        }),
+        /*@__PURE__*/ __S(34, __c4, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("SnapshotErrorMessage"))
+          .annotate({
+            identifier: "SnapshotErrorMessage",
+          }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(SnapshotIdentifierList),
-          Errors: S.optional(BatchSnapshotOperationErrors),
+          Resources: S.optional(__S(33, __c4, 1)),
+          Errors: S.optional(__S(38, __c4, 6)),
         }).pipe(ns),
       ).annotate({
         identifier: "BatchModifyClusterSnapshotsOutputMessage",
@@ -10307,9 +8960,9 @@ function __c5(j: number): any {
           TargetNumberOfNodes: S.optional(S.Number),
           TargetClusterType: S.optional(S.String),
           Status: S.optional(S.String),
-          ImportTablesCompleted: S.optional(ImportTablesCompleted),
-          ImportTablesInProgress: S.optional(ImportTablesInProgress),
-          ImportTablesNotStarted: S.optional(ImportTablesNotStarted),
+          ImportTablesCompleted: S.optional(__S(41, __c5, 1)),
+          ImportTablesInProgress: S.optional(__S(42, __c5, 2)),
+          ImportTablesNotStarted: S.optional(__S(43, __c5, 3)),
           AvgResizeRateInMegaBytesPerSecond: S.optional(S.Number),
           TotalResizeDataInMegaBytes: S.optional(S.Number),
           ProgressInMegaBytes: S.optional(S.Number),
@@ -10333,7 +8986,9 @@ function __c5(j: number): any {
         identifier: "CopyClusterSnapshotMessage",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+      ).annotate({
         identifier: "CopyClusterSnapshotResult",
       });
     case 7:
@@ -10375,8 +9030,8 @@ function __c6(j: number): any {
           NodeType: S.optional(S.String),
           MasterUsername: S.optional(S.String),
           MasterUserPassword: S.optional(SensitiveString),
-          ClusterSecurityGroups: S.optional(ClusterSecurityGroupNameList),
-          VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          ClusterSecurityGroups: S.optional(__S(49, __c6, 1)),
+          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
           ClusterSubnetGroupName: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
@@ -10392,15 +9047,15 @@ function __c6(j: number): any {
           HsmClientCertificateIdentifier: S.optional(S.String),
           HsmConfigurationIdentifier: S.optional(S.String),
           ElasticIp: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
           KmsKeyId: S.optional(S.String),
           EnhancedVpcRouting: S.optional(S.Boolean),
           AdditionalInfo: S.optional(S.String),
-          IamRoles: S.optional(IamRoleArnList),
+          IamRoles: S.optional(__S(51, __c6, 3)),
           MaintenanceTrackName: S.optional(S.String),
           SnapshotScheduleIdentifier: S.optional(S.String),
           AvailabilityZoneRelocation: S.optional(S.Boolean),
-          AquaConfigurationStatus: S.optional(AquaConfigurationStatus),
+          AquaConfigurationStatus: S.optional(S.String),
           DefaultIamRoleArn: S.optional(S.String),
           LoadSampleData: S.optional(S.String),
           ManageMasterPassword: S.optional(S.Boolean),
@@ -10424,7 +9079,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "NetworkInterface" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ NetworkInterface.pipe(/*@__PURE__*/ T.XmlName("NetworkInterface")).annotate({
+        /*@__PURE__*/ __S(53, __c6, 5).pipe(/*@__PURE__*/ T.XmlName("NetworkInterface")).annotate({
           identifier: "NetworkInterface",
         }),
       );
@@ -10433,7 +9088,7 @@ function __c6(j: number): any {
         S.Struct({
           VpcEndpointId: S.optional(S.String),
           VpcId: S.optional(S.String),
-          NetworkInterfaces: S.optional(NetworkInterfaceList),
+          NetworkInterfaces: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({ identifier: "VpcEndpoint" });
   }
@@ -10442,7 +9097,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ VpcEndpoint.pipe(/*@__PURE__*/ T.XmlName("VpcEndpoint")).annotate({
+        /*@__PURE__*/ __S(55, __c6, 7).pipe(/*@__PURE__*/ T.XmlName("VpcEndpoint")).annotate({
           identifier: "VpcEndpoint",
         }),
       );
@@ -10451,7 +9106,7 @@ function __c7(j: number): any {
         S.Struct({
           Address: S.optional(S.String),
           Port: S.optional(S.Number),
-          VpcEndpoints: S.optional(VpcEndpointsList),
+          VpcEndpoints: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "Endpoint" });
     case 2:
@@ -10462,11 +9117,11 @@ function __c7(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ ClusterSecurityGroupMembership.pipe(
-          /*@__PURE__*/ T.XmlName("ClusterSecurityGroup"),
-        ).annotate({
-          identifier: "ClusterSecurityGroupMembership",
-        }),
+        /*@__PURE__*/ __S(58, __c7, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroup"))
+          .annotate({
+            identifier: "ClusterSecurityGroupMembership",
+          }),
       );
     case 4:
       return S.suspend(() =>
@@ -10476,9 +9131,7 @@ function __c7(j: number): any {
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ VpcSecurityGroupMembership.pipe(
-          /*@__PURE__*/ T.XmlName("VpcSecurityGroup"),
-        ).annotate({
+        /*@__PURE__*/ __S(60, __c7, 4).pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroup")).annotate({
           identifier: "VpcSecurityGroupMembership",
         }),
       );
@@ -10491,7 +9144,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ClusterParameterStatus" });
     case 7:
-      return S.Array(ClusterParameterStatus);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -10501,18 +9154,18 @@ function __c8(j: number): any {
         S.Struct({
           ParameterGroupName: S.optional(S.String),
           ParameterApplyStatus: S.optional(S.String),
-          ClusterParameterStatusList: S.optional(ClusterParameterStatusList),
+          ClusterParameterStatusList: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "ClusterParameterGroupStatus",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ ClusterParameterGroupStatus.pipe(
-          /*@__PURE__*/ T.XmlName("ClusterParameterGroup"),
-        ).annotate({
-          identifier: "ClusterParameterGroupStatus",
-        }),
+        /*@__PURE__*/ __S(64, __c8, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterParameterGroup"))
+          .annotate({
+            identifier: "ClusterParameterGroupStatus",
+          }),
       );
     case 2:
       return S.suspend(() =>
@@ -10584,7 +9237,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ClusterNode);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({ ElasticIp: S.optional(S.String), Status: S.optional(S.String) }),
@@ -10595,7 +9248,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ClusterIamRole" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ ClusterIamRole.pipe(/*@__PURE__*/ T.XmlName("ClusterIamRole")).annotate({
+        /*@__PURE__*/ __S(74, __c9, 2).pipe(/*@__PURE__*/ T.XmlName("ClusterIamRole")).annotate({
           identifier: "ClusterIamRole",
         }),
       );
@@ -10617,11 +9270,11 @@ function __c9(j: number): any {
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ DeferredMaintenanceWindow.pipe(
-          /*@__PURE__*/ T.XmlName("DeferredMaintenanceWindow"),
-        ).annotate({
-          identifier: "DeferredMaintenanceWindow",
-        }),
+        /*@__PURE__*/ __S(77, __c9, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("DeferredMaintenanceWindow"))
+          .annotate({
+            identifier: "DeferredMaintenanceWindow",
+          }),
       );
     case 7:
       return S.suspend(() =>
@@ -10634,15 +9287,15 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AquaStatus: S.optional(AquaStatus),
-          AquaConfigurationStatus: S.optional(AquaConfigurationStatus),
+          AquaStatus: S.optional(S.String),
+          AquaConfigurationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "AquaConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReservedNodeExchangeRequestId: S.optional(S.String),
-          Status: S.optional(ReservedNodeExchangeStatusType),
+          Status: S.optional(S.String),
           RequestTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           SourceReservedNodeId: S.optional(S.String),
           SourceReservedNodeType: S.optional(S.String),
@@ -10658,7 +9311,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AvailabilityZone: S.optional(S.String),
-          ClusterNodes: S.optional(ClusterNodesList),
+          ClusterNodes: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "SecondaryClusterInfo" });
     case 3:
@@ -10668,15 +9321,15 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          S3Tables: S.optional(LogTypeList),
+          S3Tables: S.optional(__S(83, __c10, 3)),
           S3TableNamespace: S.optional(S.String),
           S3TableGranularity: S.optional(S.String),
           EnabledAll: S.optional(S.Boolean),
-          LastIngestionTimes: S.optional(S3TableLastIngestionTimeMap),
+          LastIngestionTimes: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({ identifier: "S3TablePublishStatus" });
     case 6:
-      return S.suspend(() => S.Struct({ S3Tables: S.optional(S3TablePublishStatus) })).annotate({
+      return S.suspend(() => S.Struct({ S3Tables: S.optional(__S(85, __c10, 5)) })).annotate({
         identifier: "LoggingPublishStatus",
       });
     case 7:
@@ -10693,37 +9346,37 @@ function __c10(j: number): any {
           ClusterCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
-          ClusterSecurityGroups: S.optional(ClusterSecurityGroupMembershipList),
-          VpcSecurityGroups: S.optional(VpcSecurityGroupMembershipList),
-          ClusterParameterGroups: S.optional(ClusterParameterGroupStatusList),
+          ClusterSecurityGroups: S.optional(__S(59, __c7, 3)),
+          VpcSecurityGroups: S.optional(__S(61, __c7, 5)),
+          ClusterParameterGroups: S.optional(__S(65, __c8, 1)),
           ClusterSubnetGroupName: S.optional(S.String),
           VpcId: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
-          PendingModifiedValues: S.optional(PendingModifiedValues),
+          PendingModifiedValues: S.optional(__S(66, __c8, 2)),
           ClusterVersion: S.optional(S.String),
           AllowVersionUpgrade: S.optional(S.Boolean),
           NumberOfNodes: S.optional(S.Number),
           PubliclyAccessible: S.optional(S.Boolean),
           Encrypted: S.optional(S.Boolean),
-          RestoreStatus: S.optional(RestoreStatus),
-          DataTransferProgress: S.optional(DataTransferProgress),
-          HsmStatus: S.optional(HsmStatus),
-          ClusterSnapshotCopyStatus: S.optional(ClusterSnapshotCopyStatus),
+          RestoreStatus: S.optional(__S(67, __c8, 3)),
+          DataTransferProgress: S.optional(__S(68, __c8, 4)),
+          HsmStatus: S.optional(__S(69, __c8, 5)),
+          ClusterSnapshotCopyStatus: S.optional(__S(70, __c8, 6)),
           ClusterPublicKey: S.optional(S.String),
-          ClusterNodes: S.optional(ClusterNodesList),
-          ElasticIpStatus: S.optional(ElasticIpStatus),
+          ClusterNodes: S.optional(__S(72, __c9, 0)),
+          ElasticIpStatus: S.optional(__S(73, __c9, 1)),
           ClusterRevisionNumber: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
           KmsKeyId: S.optional(S.String),
           EnhancedVpcRouting: S.optional(S.Boolean),
-          IamRoles: S.optional(ClusterIamRoleList),
-          PendingActions: S.optional(PendingActionsList),
+          IamRoles: S.optional(__S(75, __c9, 3)),
+          PendingActions: S.optional(__S(76, __c9, 4)),
           MaintenanceTrackName: S.optional(S.String),
           ElasticResizeNumberOfNodeOptions: S.optional(S.String),
-          DeferredMaintenanceWindows: S.optional(DeferredMaintenanceWindowsList),
+          DeferredMaintenanceWindows: S.optional(__S(78, __c9, 6)),
           SnapshotScheduleIdentifier: S.optional(S.String),
-          SnapshotScheduleState: S.optional(ScheduleState),
+          SnapshotScheduleState: S.optional(S.String),
           ExpectedNextSnapshotScheduleTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
@@ -10731,13 +9384,13 @@ function __c10(j: number): any {
           NextMaintenanceWindowStartTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          ResizeInfo: S.optional(ResizeInfo),
+          ResizeInfo: S.optional(__S(79, __c9, 7)),
           AvailabilityZoneRelocationStatus: S.optional(S.String),
           ClusterNamespaceArn: S.optional(S.String),
           TotalStorageCapacityInMegaBytes: S.optional(S.Number),
-          AquaConfiguration: S.optional(AquaConfiguration),
+          AquaConfiguration: S.optional(__S(80, __c10, 0)),
           DefaultIamRoleArn: S.optional(S.String),
-          ReservedNodeExchangeStatus: S.optional(ReservedNodeExchangeStatus),
+          ReservedNodeExchangeStatus: S.optional(__S(81, __c10, 1)),
           CustomDomainName: S.optional(S.String),
           CustomDomainCertificateArn: S.optional(S.String),
           CustomDomainCertificateExpiryDate: S.optional(
@@ -10747,11 +9400,11 @@ function __c10(j: number): any {
           MasterPasswordSecretKmsKeyId: S.optional(S.String),
           IpAddressType: S.optional(S.String),
           MultiAZ: S.optional(S.String),
-          MultiAZSecondary: S.optional(SecondaryClusterInfo),
+          MultiAZSecondary: S.optional(__S(82, __c10, 2)),
           LakehouseRegistrationStatus: S.optional(S.String),
           CatalogArn: S.optional(S.String),
           ExtraComputeForAutomaticOptimization: S.optional(S.String),
-          LoggingPublishStatus: S.optional(LoggingPublishStatus),
+          LoggingPublishStatus: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({ identifier: "Cluster" });
   }
@@ -10759,7 +9412,9 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "CreateClusterResult",
       });
     case 1:
@@ -10768,7 +9423,7 @@ function __c11(j: number): any {
           ParameterGroupName: S.optional(S.String),
           ParameterGroupFamily: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterParameterGroupMessage",
@@ -10779,12 +9434,12 @@ function __c11(j: number): any {
           ParameterGroupName: S.optional(S.String),
           ParameterGroupFamily: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "ClusterParameterGroup" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ClusterParameterGroup: S.optional(ClusterParameterGroup) }).pipe(ns),
+        S.Struct({ ClusterParameterGroup: S.optional(__S(90, __c11, 2)) }).pipe(ns),
       ).annotate({
         identifier: "CreateClusterParameterGroupResult",
       });
@@ -10793,14 +9448,14 @@ function __c11(j: number): any {
         S.Struct({
           ClusterSecurityGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterSecurityGroupMessage",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ClusterSecurityGroup: S.optional(ClusterSecurityGroup) }).pipe(ns),
+        S.Struct({ ClusterSecurityGroup: S.optional(__S(18, __c2, 2)) }).pipe(ns),
       ).annotate({
         identifier: "CreateClusterSecurityGroupResult",
       });
@@ -10810,13 +9465,15 @@ function __c11(j: number): any {
           SnapshotIdentifier: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterSnapshotMessage",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+      ).annotate({
         identifier: "CreateClusterSnapshotResult",
       });
   }
@@ -10830,8 +9487,8 @@ function __c12(j: number): any {
         S.Struct({
           ClusterSubnetGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          SubnetIds: S.optional(SubnetIdentifierList),
-          Tags: S.optional(TagList),
+          SubnetIds: S.optional(__S(96, __c12, 0)),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateClusterSubnetGroupMessage",
@@ -10842,30 +9499,30 @@ function __c12(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ SupportedPlatform.pipe(/*@__PURE__*/ T.XmlName("SupportedPlatform")).annotate(
-          {
+        /*@__PURE__*/ __S(98, __c12, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("SupportedPlatform"))
+          .annotate({
             identifier: "SupportedPlatform",
-          },
-        ),
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          SupportedPlatforms: S.optional(SupportedPlatformsList),
+          SupportedPlatforms: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({ identifier: "AvailabilityZone" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           SubnetIdentifier: S.optional(S.String),
-          SubnetAvailabilityZone: S.optional(AvailabilityZone),
+          SubnetAvailabilityZone: S.optional(__S(100, __c12, 4)),
           SubnetStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnet" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ Subnet.pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({
+        /*@__PURE__*/ __S(101, __c12, 5).pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({
           identifier: "Subnet",
         }),
       );
@@ -10882,14 +9539,14 @@ function __c13(j: number): any {
           Description: S.optional(S.String),
           VpcId: S.optional(S.String),
           SubnetGroupStatus: S.optional(S.String),
-          Subnets: S.optional(SubnetList),
-          Tags: S.optional(TagList),
-          SupportedClusterIpAddressTypes: S.optional(ValueStringList),
+          Subnets: S.optional(__S(102, __c12, 6)),
+          Tags: S.optional(__S(13, __c1, 5)),
+          SupportedClusterIpAddressTypes: S.optional(__S(103, __c12, 7)),
         }),
       ).annotate({ identifier: "ClusterSubnetGroup" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ClusterSubnetGroup: S.optional(ClusterSubnetGroup) }).pipe(ns),
+        S.Struct({ ClusterSubnetGroup: S.optional(__S(104, __c13, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateClusterSubnetGroupResult",
       });
@@ -10921,7 +9578,7 @@ function __c13(j: number): any {
           ResourceOwner: S.optional(S.String),
           EndpointName: S.optional(S.String),
           SubnetGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEndpointAccessMessage",
@@ -10937,8 +9594,8 @@ function __c13(j: number): any {
           EndpointCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Port: S.optional(S.Number),
           Address: S.optional(S.String),
-          VpcSecurityGroups: S.optional(VpcSecurityGroupMembershipList),
-          VpcEndpoint: S.optional(VpcEndpoint),
+          VpcSecurityGroups: S.optional(__S(61, __c7, 5)),
+          VpcEndpoint: S.optional(__S(55, __c6, 7)),
         }).pipe(ns),
       ).annotate({ identifier: "EndpointAccess" });
     case 6:
@@ -10955,11 +9612,11 @@ function __c14(j: number): any {
           SubscriptionName: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           SourceType: S.optional(S.String),
-          SourceIds: S.optional(SourceIdsList),
-          EventCategories: S.optional(EventCategoriesList),
+          SourceIds: S.optional(__S(110, __c13, 6)),
+          EventCategories: S.optional(__S(111, __c13, 7)),
           Severity: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEventSubscriptionMessage",
@@ -10975,16 +9632,16 @@ function __c14(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
           SourceType: S.optional(S.String),
-          SourceIdsList: S.optional(SourceIdsList),
-          EventCategoriesList: S.optional(EventCategoriesList),
+          SourceIdsList: S.optional(__S(110, __c13, 6)),
+          EventCategoriesList: S.optional(__S(111, __c13, 7)),
           Severity: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "EventSubscription" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
+        S.Struct({ EventSubscription: S.optional(__S(113, __c14, 1)) }).pipe(ns),
       ).annotate({
         identifier: "CreateEventSubscriptionResult",
       });
@@ -10992,7 +9649,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HsmClientCertificateIdentifier: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateHsmClientCertificateMessage",
@@ -11002,12 +9659,12 @@ function __c14(j: number): any {
         S.Struct({
           HsmClientCertificateIdentifier: S.optional(S.String),
           HsmClientCertificatePublicKey: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "HsmClientCertificate" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ HsmClientCertificate: S.optional(HsmClientCertificate) }).pipe(ns),
+        S.Struct({ HsmClientCertificate: S.optional(__S(116, __c14, 4)) }).pipe(ns),
       ).annotate({
         identifier: "CreateHsmClientCertificateResult",
       });
@@ -11020,7 +9677,7 @@ function __c14(j: number): any {
           HsmPartitionName: S.optional(S.String),
           HsmPartitionPassword: S.optional(S.String),
           HsmServerPublicCertificate: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateHsmConfigurationMessage",
@@ -11032,7 +9689,7 @@ function __c14(j: number): any {
           Description: S.optional(S.String),
           HsmIpAddress: S.optional(S.String),
           HsmPartitionName: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "HsmConfiguration" });
   }
@@ -11041,7 +9698,7 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ HsmConfiguration: S.optional(HsmConfiguration) }).pipe(ns),
+        S.Struct({ HsmConfiguration: S.optional(__S(119, __c14, 7)) }).pipe(ns),
       ).annotate({
         identifier: "CreateHsmConfigurationResult",
       });
@@ -11054,8 +9711,8 @@ function __c15(j: number): any {
           TargetArn: S.optional(S.String),
           IntegrationName: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
-          TagList: S.optional(TagList),
-          AdditionalEncryptionContext: S.optional(EncryptionContextMap),
+          TagList: S.optional(__S(13, __c1, 5)),
+          AdditionalEncryptionContext: S.optional(__S(121, __c15, 1)),
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateIntegrationMessage" });
@@ -11065,9 +9722,11 @@ function __c15(j: number): any {
       ).annotate({ identifier: "IntegrationError" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ IntegrationError.pipe(/*@__PURE__*/ T.XmlName("IntegrationError")).annotate({
-          identifier: "IntegrationError",
-        }),
+        /*@__PURE__*/ __S(123, __c15, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("IntegrationError"))
+          .annotate({
+            identifier: "IntegrationError",
+          }),
       );
     case 5:
       return S.suspend(() =>
@@ -11076,13 +9735,13 @@ function __c15(j: number): any {
           IntegrationName: S.optional(S.String),
           SourceArn: S.optional(S.String),
           TargetArn: S.optional(S.String),
-          Status: S.optional(ZeroETLIntegrationStatus),
-          Errors: S.optional(IntegrationErrorList),
+          Status: S.optional(S.String),
+          Errors: S.optional(__S(124, __c15, 4)),
           CreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Description: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
-          AdditionalEncryptionContext: S.optional(EncryptionContextMap),
-          Tags: S.optional(TagList),
+          AdditionalEncryptionContext: S.optional(__S(121, __c15, 1)),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(ns),
       ).annotate({ identifier: "Integration" });
     case 6:
@@ -11091,7 +9750,7 @@ function __c15(j: number): any {
           IdcInstanceArn: S.optional(S.String),
           Qev2IdcApplicationName: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateQev2IdcApplicationMessage",
@@ -11105,7 +9764,7 @@ function __c15(j: number): any {
           IdcManagedApplicationArn: S.optional(S.String),
           IdcOnboardStatus: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "Qev2IdcApplication" });
   }
@@ -11114,7 +9773,7 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Qev2IdcApplication: S.optional(Qev2IdcApplication) }).pipe(ns),
+        S.Struct({ Qev2IdcApplication: S.optional(__S(127, __c15, 7)) }).pipe(ns),
       ).annotate({
         identifier: "CreateQev2IdcApplicationResult",
       });
@@ -11124,47 +9783,47 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TrustedTokenIssuerArn: S.optional(S.String),
-          AuthorizedAudiencesList: S.optional(AuthorizedAudienceList),
+          AuthorizedAudiencesList: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({ identifier: "AuthorizedTokenIssuer" });
     case 3:
-      return S.Array(AuthorizedTokenIssuer);
+      return S.Array(__S(130, __c16, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Authorization: S.optional(ServiceAuthorization) }),
-      ).annotate({ identifier: "LakeFormationQuery" });
+      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
+        identifier: "LakeFormationQuery",
+      });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ LakeFormationQuery: LakeFormationQuery })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ LakeFormationQuery: __S(132, __c16, 4) })]);
     case 6:
-      return S.Array(LakeFormationScopeUnion);
+      return S.Array(__S(133, __c16, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Authorization: S.optional(ServiceAuthorization) }),
-      ).annotate({ identifier: "ReadWriteAccess" });
+      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
+        identifier: "ReadWriteAccess",
+      });
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ ReadWriteAccess: ReadWriteAccess })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ ReadWriteAccess: __S(135, __c16, 7) })]);
     case 1:
-      return S.Array(S3AccessGrantsScopeUnion);
+      return S.Array(__S(136, __c17, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Authorization: S.optional(ServiceAuthorization) }),
-      ).annotate({ identifier: "Connect" });
+      return S.suspend(() => S.Struct({ Authorization: S.optional(S.String) })).annotate({
+        identifier: "Connect",
+      });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ Connect: Connect })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Connect: __S(138, __c17, 2) })]);
     case 4:
-      return S.Array(RedshiftScopeUnion);
+      return S.Array(__S(139, __c17, 3));
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ LakeFormation: LakeFormationServiceIntegrations }),
-        /*@__PURE__*/ S.Struct({ S3AccessGrants: S3AccessGrantsServiceIntegrations }),
-        /*@__PURE__*/ S.Struct({ Redshift: RedshiftServiceIntegrations }),
+        /*@__PURE__*/ S.Struct({ LakeFormation: __S(134, __c16, 6) }),
+        /*@__PURE__*/ S.Struct({ S3AccessGrants: __S(137, __c17, 1) }),
+        /*@__PURE__*/ S.Struct({ Redshift: __S(140, __c17, 4) }),
       ]);
     case 6:
-      return S.Array(ServiceIntegrationsUnion);
+      return S.Array(__S(141, __c17, 5));
     case 7:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("TagKey")));
   }
@@ -11179,11 +9838,11 @@ function __c18(j: number): any {
           IdentityNamespace: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
           IamRoleArn: S.optional(S.String),
-          AuthorizedTokenIssuerList: S.optional(AuthorizedTokenIssuerList),
-          ServiceIntegrations: S.optional(ServiceIntegrationList),
-          ApplicationType: S.optional(ApplicationType),
-          Tags: S.optional(TagList),
-          SsoTagKeys: S.optional(TagKeyList),
+          AuthorizedTokenIssuerList: S.optional(__S(131, __c16, 3)),
+          ServiceIntegrations: S.optional(__S(142, __c17, 6)),
+          ApplicationType: S.optional(S.String),
+          Tags: S.optional(__S(13, __c1, 5)),
+          SsoTagKeys: S.optional(__S(143, __c17, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateRedshiftIdcApplicationMessage",
@@ -11199,16 +9858,16 @@ function __c18(j: number): any {
           IamRoleArn: S.optional(S.String),
           IdcManagedApplicationArn: S.optional(S.String),
           IdcOnboardStatus: S.optional(S.String),
-          AuthorizedTokenIssuerList: S.optional(AuthorizedTokenIssuerList),
-          ServiceIntegrations: S.optional(ServiceIntegrationList),
-          ApplicationType: S.optional(ApplicationType),
-          Tags: S.optional(TagList),
-          SsoTagKeys: S.optional(TagKeyList),
+          AuthorizedTokenIssuerList: S.optional(__S(131, __c16, 3)),
+          ServiceIntegrations: S.optional(__S(142, __c17, 6)),
+          ApplicationType: S.optional(S.String),
+          Tags: S.optional(__S(13, __c1, 5)),
+          SsoTagKeys: S.optional(__S(143, __c17, 7)),
         }),
       ).annotate({ identifier: "RedshiftIdcApplication" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ RedshiftIdcApplication: S.optional(RedshiftIdcApplication) }).pipe(ns),
+        S.Struct({ RedshiftIdcApplication: S.optional(__S(145, __c18, 1)) }).pipe(ns),
       ).annotate({
         identifier: "CreateRedshiftIdcApplicationResult",
       });
@@ -11239,16 +9898,16 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ResizeCluster: S.optional(ResizeClusterMessage),
-          PauseCluster: S.optional(PauseClusterMessage),
-          ResumeCluster: S.optional(ResumeClusterMessage),
+          ResizeCluster: S.optional(__S(147, __c18, 3)),
+          PauseCluster: S.optional(__S(148, __c18, 4)),
+          ResumeCluster: S.optional(__S(149, __c18, 5)),
         }),
       ).annotate({ identifier: "ScheduledActionType" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
-          TargetAction: S.optional(ScheduledActionType),
+          TargetAction: S.optional(__S(150, __c18, 6)),
           Schedule: S.optional(S.String),
           IamRole: S.optional(S.String),
           ScheduledActionDescription: S.optional(S.String),
@@ -11273,12 +9932,12 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
-          TargetAction: S.optional(ScheduledActionType),
+          TargetAction: S.optional(__S(150, __c18, 6)),
           Schedule: S.optional(S.String),
           IamRole: S.optional(S.String),
           ScheduledActionDescription: S.optional(S.String),
-          State: S.optional(ScheduledActionState),
-          NextInvocations: S.optional(ScheduledActionTimeList),
+          State: S.optional(S.String),
+          NextInvocations: S.optional(__S(152, __c19, 0)),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
@@ -11288,7 +9947,7 @@ function __c19(j: number): any {
         S.Struct({
           SnapshotCopyGrantName: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateSnapshotCopyGrantMessage",
@@ -11298,12 +9957,12 @@ function __c19(j: number): any {
         S.Struct({
           SnapshotCopyGrantName: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "SnapshotCopyGrant" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ SnapshotCopyGrant: S.optional(SnapshotCopyGrant) }).pipe(ns),
+        S.Struct({ SnapshotCopyGrant: S.optional(__S(155, __c19, 3)) }).pipe(ns),
       ).annotate({
         identifier: "CreateSnapshotCopyGrantResult",
       });
@@ -11312,10 +9971,10 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ScheduleDefinitions: S.optional(ScheduleDefinitionList),
+          ScheduleDefinitions: S.optional(__S(157, __c19, 5)),
           ScheduleIdentifier: S.optional(S.String),
           ScheduleDescription: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(13, __c1, 5)),
           DryRun: S.optional(S.Boolean),
           NextInvocations: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -11336,34 +9995,34 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
-          ScheduleAssociationState: S.optional(ScheduleState),
+          ScheduleAssociationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClusterAssociatedToSchedule",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ ClusterAssociatedToSchedule.pipe(
-          /*@__PURE__*/ T.XmlName("ClusterAssociatedToSchedule"),
-        ).annotate({
-          identifier: "ClusterAssociatedToSchedule",
-        }),
+        /*@__PURE__*/ __S(160, __c20, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterAssociatedToSchedule"))
+          .annotate({
+            identifier: "ClusterAssociatedToSchedule",
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ScheduleDefinitions: S.optional(ScheduleDefinitionList),
+          ScheduleDefinitions: S.optional(__S(157, __c19, 5)),
           ScheduleIdentifier: S.optional(S.String),
           ScheduleDescription: S.optional(S.String),
-          Tags: S.optional(TagList),
-          NextInvocations: S.optional(ScheduledSnapshotTimeList),
+          Tags: S.optional(__S(13, __c1, 5)),
+          NextInvocations: S.optional(__S(159, __c19, 7)),
           AssociatedClusterCount: S.optional(S.Number),
-          AssociatedClusters: S.optional(AssociatedClusterList),
+          AssociatedClusters: S.optional(__S(161, __c20, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "SnapshotSchedule" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceName: S.optional(S.String), Tags: S.optional(TagList) }).pipe(
+        S.Struct({ ResourceName: S.optional(S.String), Tags: S.optional(__S(13, __c1, 5)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateTagsMessage" });
@@ -11375,12 +10034,12 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
-          FeatureType: S.optional(UsageLimitFeatureType),
-          LimitType: S.optional(UsageLimitLimitType),
+          FeatureType: S.optional(S.String),
+          LimitType: S.optional(S.String),
           Amount: S.optional(S.Number),
-          Period: S.optional(UsageLimitPeriod),
-          BreachAction: S.optional(UsageLimitBreachAction),
-          Tags: S.optional(TagList),
+          Period: S.optional(S.String),
+          BreachAction: S.optional(S.String),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUsageLimitMessage" });
     case 6:
@@ -11388,12 +10047,12 @@ function __c20(j: number): any {
         S.Struct({
           UsageLimitId: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
-          FeatureType: S.optional(UsageLimitFeatureType),
-          LimitType: S.optional(UsageLimitLimitType),
+          FeatureType: S.optional(S.String),
+          LimitType: S.optional(S.String),
           Amount: S.optional(S.Number),
-          Period: S.optional(UsageLimitPeriod),
-          BreachAction: S.optional(UsageLimitBreachAction),
-          Tags: S.optional(TagList),
+          Period: S.optional(S.String),
+          BreachAction: S.optional(S.String),
+          Tags: S.optional(__S(13, __c1, 5)),
         }).pipe(ns),
       ).annotate({ identifier: "UsageLimit" });
     case 7:
@@ -11433,7 +10092,9 @@ function __c21(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteClusterMessage" });
     case 3:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "DeleteClusterResult",
       });
     case 4:
@@ -11465,7 +10126,9 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+      ).annotate({
         identifier: "DeleteClusterSnapshotResult",
       });
     case 1:
@@ -11629,9 +10292,10 @@ function __c25(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceName: S.optional(S.String), TagKeys: S.optional(TagKeyList) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
+        S.Struct({
+          ResourceName: S.optional(S.String),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteTagsMessage" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
@@ -11660,8 +10324,8 @@ function __c25(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ServerlessIdentifier: ServerlessIdentifier }),
-        /*@__PURE__*/ S.Struct({ ProvisionedIdentifier: ProvisionedIdentifier }),
+        /*@__PURE__*/ S.Struct({ ServerlessIdentifier: __S(205, __c25, 5) }),
+        /*@__PURE__*/ S.Struct({ ProvisionedIdentifier: __S(206, __c25, 6) }),
       ]);
   }
 }
@@ -11672,23 +10336,21 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          NamespaceIdentifier: S.optional(NamespaceIdentifierUnion),
-          ConsumerIdentifiers: S.optional(ConsumerIdentifierList),
+          NamespaceIdentifier: S.optional(__S(207, __c25, 7)),
+          ConsumerIdentifiers: S.optional(__S(208, __c26, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DeregisterNamespaceInputMessage",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Status: S.optional(NamespaceRegistrationStatus) }).pipe(ns),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DeregisterNamespaceOutputMessage",
       });
     case 3:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AttributeName")));
     case 4:
       return S.suspend(() =>
-        S.Struct({ AttributeNames: S.optional(AttributeNameList) }).pipe(
+        S.Struct({ AttributeNames: S.optional(__S(211, __c26, 3)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -11700,17 +10362,17 @@ function __c26(j: number): any {
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ AttributeValueTarget.pipe(
-          /*@__PURE__*/ T.XmlName("AttributeValueTarget"),
-        ).annotate({
-          identifier: "AttributeValueTarget",
-        }),
+        /*@__PURE__*/ __S(213, __c26, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("AttributeValueTarget"))
+          .annotate({
+            identifier: "AttributeValueTarget",
+          }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
           AttributeName: S.optional(S.String),
-          AttributeValues: S.optional(AttributeValueList),
+          AttributeValues: S.optional(__S(214, __c26, 6)),
         }),
       ).annotate({ identifier: "AccountAttribute" });
   }
@@ -11719,13 +10381,15 @@ function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ AccountAttribute.pipe(/*@__PURE__*/ T.XmlName("AccountAttribute")).annotate({
-          identifier: "AccountAttribute",
-        }),
+        /*@__PURE__*/ __S(215, __c26, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("AccountAttribute"))
+          .annotate({
+            identifier: "AccountAttribute",
+          }),
       );
     case 1:
       return S.suspend(() =>
-        S.Struct({ AccountAttributes: S.optional(AttributeList) }).pipe(ns),
+        S.Struct({ AccountAttributes: S.optional(__S(216, __c27, 0)) }).pipe(ns),
       ).annotate({ identifier: "AccountAttributeList" });
     case 2:
       return S.suspend(() =>
@@ -11743,10 +10407,10 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "AuthenticationProfile" });
     case 4:
-      return S.Array(AuthenticationProfile);
+      return S.Array(__S(219, __c27, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ AuthenticationProfiles: S.optional(AuthenticationProfileList) }).pipe(ns),
+        S.Struct({ AuthenticationProfiles: S.optional(__S(220, __c27, 4)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeAuthenticationProfilesResult",
       });
@@ -11776,7 +10440,7 @@ function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ RevisionTarget.pipe(/*@__PURE__*/ T.XmlName("RevisionTarget")).annotate({
+        /*@__PURE__*/ __S(223, __c27, 7).pipe(/*@__PURE__*/ T.XmlName("RevisionTarget")).annotate({
           identifier: "RevisionTarget",
         }),
       );
@@ -11788,22 +10452,22 @@ function __c28(j: number): any {
           DatabaseRevisionReleaseDate: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          RevisionTargets: S.optional(RevisionTargetsList),
+          RevisionTargets: S.optional(__S(224, __c28, 0)),
         }),
       ).annotate({ identifier: "ClusterDbRevision" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ ClusterDbRevision.pipe(/*@__PURE__*/ T.XmlName("ClusterDbRevision")).annotate(
-          {
+        /*@__PURE__*/ __S(225, __c28, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterDbRevision"))
+          .annotate({
             identifier: "ClusterDbRevision",
-          },
-        ),
+          }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterDbRevisions: S.optional(ClusterDbRevisionsList),
+          ClusterDbRevisions: S.optional(__S(226, __c28, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterDbRevisionsMessage",
@@ -11816,25 +10480,25 @@ function __c28(j: number): any {
           ParameterGroupName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterParameterGroupsMessage",
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ ClusterParameterGroup.pipe(
-          /*@__PURE__*/ T.XmlName("ClusterParameterGroup"),
-        ).annotate({
-          identifier: "ClusterParameterGroup",
-        }),
+        /*@__PURE__*/ __S(90, __c11, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterParameterGroup"))
+          .annotate({
+            identifier: "ClusterParameterGroup",
+          }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ParameterGroups: S.optional(ParameterGroupList),
+          ParameterGroups: S.optional(__S(230, __c28, 6)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterParameterGroupsMessage",
@@ -11863,20 +10527,22 @@ function __c29(j: number): any {
           Source: S.optional(S.String),
           DataType: S.optional(S.String),
           AllowedValues: S.optional(S.String),
-          ApplyType: S.optional(ParameterApplyType),
+          ApplyType: S.optional(S.String),
           IsModifiable: S.optional(S.Boolean),
           MinimumEngineVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Parameter" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ Parameter.pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
+        /*@__PURE__*/ __S(233, __c29, 1).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
           identifier: "Parameter",
         }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ Parameters: S.optional(ParametersList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Parameters: S.optional(__S(234, __c29, 2)), Marker: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "ClusterParameterGroupDetails",
       });
@@ -11886,19 +10552,21 @@ function __c29(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeClustersMessage" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ Cluster.pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
+        /*@__PURE__*/ __S(87, __c10, 7).pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
           identifier: "Cluster",
         }),
       );
     case 6:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Clusters: S.optional(ClusterList) }).pipe(ns),
+        S.Struct({ Marker: S.optional(S.String), Clusters: S.optional(__S(237, __c29, 5)) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ClustersMessage" });
     case 7:
       return S.suspend(() =>
@@ -11906,8 +10574,8 @@ function __c29(j: number): any {
           ClusterSecurityGroupName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterSecurityGroupsMessage",
@@ -11918,17 +10586,17 @@ function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ ClusterSecurityGroup.pipe(
-          /*@__PURE__*/ T.XmlName("ClusterSecurityGroup"),
-        ).annotate({
-          identifier: "ClusterSecurityGroup",
-        }),
+        /*@__PURE__*/ __S(18, __c2, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroup"))
+          .annotate({
+            identifier: "ClusterSecurityGroup",
+          }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterSecurityGroups: S.optional(ClusterSecurityGroups),
+          ClusterSecurityGroups: S.optional(__S(240, __c30, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterSecurityGroupMessage",
@@ -11936,17 +10604,17 @@ function __c30(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Attribute: S.optional(SnapshotAttributeToSortBy),
-          SortOrder: S.optional(SortByOrder),
+          Attribute: S.optional(S.String),
+          SortOrder: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotSortingEntity" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ SnapshotSortingEntity.pipe(
-          /*@__PURE__*/ T.XmlName("SnapshotSortingEntity"),
-        ).annotate({
-          identifier: "SnapshotSortingEntity",
-        }),
+        /*@__PURE__*/ __S(242, __c30, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("SnapshotSortingEntity"))
+          .annotate({
+            identifier: "SnapshotSortingEntity",
+          }),
       );
     case 4:
       return S.suspend(() =>
@@ -11960,23 +10628,25 @@ function __c30(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           OwnerAccount: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
           ClusterExists: S.optional(S.Boolean),
-          SortingEntities: S.optional(SnapshotSortingEntityList),
+          SortingEntities: S.optional(__S(243, __c30, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterSnapshotsMessage",
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ Snapshot.pipe(/*@__PURE__*/ T.XmlName("Snapshot")).annotate({
+        /*@__PURE__*/ __S(28, __c3, 4).pipe(/*@__PURE__*/ T.XmlName("Snapshot")).annotate({
           identifier: "Snapshot",
         }),
       );
     case 6:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Snapshots: S.optional(SnapshotList) }).pipe(ns),
+        S.Struct({ Marker: S.optional(S.String), Snapshots: S.optional(__S(245, __c30, 5)) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "SnapshotMessage" });
     case 7:
       return S.suspend(() =>
@@ -11984,8 +10654,8 @@ function __c30(j: number): any {
           ClusterSubnetGroupName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeClusterSubnetGroupsMessage",
@@ -11996,17 +10666,17 @@ function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ ClusterSubnetGroup.pipe(
-          /*@__PURE__*/ T.XmlName("ClusterSubnetGroup"),
-        ).annotate({
-          identifier: "ClusterSubnetGroup",
-        }),
+        /*@__PURE__*/ __S(104, __c13, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ClusterSubnetGroup"))
+          .annotate({
+            identifier: "ClusterSubnetGroup",
+          }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterSubnetGroups: S.optional(ClusterSubnetGroups),
+          ClusterSubnetGroups: S.optional(__S(248, __c31, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "ClusterSubnetGroupMessage",
@@ -12027,23 +10697,23 @@ function __c31(j: number): any {
       });
     case 4:
       return S.Array(
-        /*@__PURE__*/ SupportedOperation.pipe(
-          /*@__PURE__*/ T.XmlName("SupportedOperation"),
-        ).annotate({
-          identifier: "SupportedOperation",
-        }),
+        /*@__PURE__*/ __S(251, __c31, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("SupportedOperation"))
+          .annotate({
+            identifier: "SupportedOperation",
+          }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
           MaintenanceTrackName: S.optional(S.String),
           DatabaseVersion: S.optional(S.String),
-          SupportedOperations: S.optional(SupportedOperationList),
+          SupportedOperations: S.optional(__S(252, __c31, 4)),
         }),
       ).annotate({ identifier: "UpdateTarget" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ UpdateTarget.pipe(/*@__PURE__*/ T.XmlName("UpdateTarget")).annotate({
+        /*@__PURE__*/ __S(253, __c31, 5).pipe(/*@__PURE__*/ T.XmlName("UpdateTarget")).annotate({
           identifier: "UpdateTarget",
         }),
       );
@@ -12052,7 +10722,7 @@ function __c31(j: number): any {
         S.Struct({
           MaintenanceTrackName: S.optional(S.String),
           DatabaseVersion: S.optional(S.String),
-          UpdateTargets: S.optional(EligibleTracksToUpdateList),
+          UpdateTargets: S.optional(__S(254, __c31, 6)),
         }),
       ).annotate({ identifier: "MaintenanceTrack" });
   }
@@ -12061,15 +10731,18 @@ function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ MaintenanceTrack.pipe(/*@__PURE__*/ T.XmlName("MaintenanceTrack")).annotate({
-          identifier: "MaintenanceTrack",
-        }),
+        /*@__PURE__*/ __S(255, __c31, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("MaintenanceTrack"))
+          .annotate({
+            identifier: "MaintenanceTrack",
+          }),
       );
     case 1:
       return S.suspend(() =>
-        S.Struct({ MaintenanceTracks: S.optional(TrackList), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          MaintenanceTracks: S.optional(__S(256, __c32, 0)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "TrackListMessage" });
     case 2:
       return S.suspend(() =>
@@ -12092,7 +10765,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ClusterVersion" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ ClusterVersion.pipe(/*@__PURE__*/ T.XmlName("ClusterVersion")).annotate({
+        /*@__PURE__*/ __S(259, __c32, 3).pipe(/*@__PURE__*/ T.XmlName("ClusterVersion")).annotate({
           identifier: "ClusterVersion",
         }),
       );
@@ -12100,7 +10773,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ClusterVersions: S.optional(ClusterVersionList),
+          ClusterVersions: S.optional(__S(260, __c32, 4)),
         }).pipe(ns),
       ).annotate({ identifier: "ClusterVersionsMessage" });
     case 6:
@@ -12127,11 +10800,11 @@ function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ CertificateAssociation.pipe(
-          /*@__PURE__*/ T.XmlName("CertificateAssociation"),
-        ).annotate({
-          identifier: "CertificateAssociation",
-        }),
+        /*@__PURE__*/ __S(263, __c32, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("CertificateAssociation"))
+          .annotate({
+            identifier: "CertificateAssociation",
+          }),
       );
     case 1:
       return S.suspend(() =>
@@ -12140,20 +10813,21 @@ function __c33(j: number): any {
           CustomDomainCertificateExpiryDate: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          CertificateAssociations: S.optional(CertificateAssociationList),
+          CertificateAssociations: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "Association" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ Association.pipe(/*@__PURE__*/ T.XmlName("Association")).annotate({
+        /*@__PURE__*/ __S(265, __c33, 1).pipe(/*@__PURE__*/ T.XmlName("Association")).annotate({
           identifier: "Association",
         }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Associations: S.optional(AssociationList) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Marker: S.optional(S.String),
+          Associations: S.optional(__S(266, __c33, 2)),
+        }).pipe(ns),
       ).annotate({
         identifier: "CustomDomainAssociationsMessage",
       });
@@ -12168,16 +10842,18 @@ function __c33(j: number): any {
         identifier: "DescribeDataSharesMessage",
       });
     case 5:
-      return S.Array(DataShare);
+      return S.Array(__S(10, __c1, 2));
     case 6:
       return S.suspend(() =>
-        S.Struct({ DataShares: S.optional(DataShareList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ DataShares: S.optional(__S(269, __c33, 5)), Marker: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "DescribeDataSharesResult" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ConsumerArn: S.optional(S.String),
-          Status: S.optional(DataShareStatusForConsumer),
+          Status: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -12190,7 +10866,9 @@ function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DataShares: S.optional(DataShareList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ DataShares: S.optional(__S(269, __c33, 5)), Marker: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeDataSharesForConsumerResult",
       });
@@ -12198,7 +10876,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ProducerArn: S.optional(S.String),
-          Status: S.optional(DataShareStatusForProducer),
+          Status: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -12207,7 +10885,9 @@ function __c34(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DataShares: S.optional(DataShareList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ DataShares: S.optional(__S(269, __c33, 5)), Marker: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeDataSharesForProducerResult",
       });
@@ -12226,12 +10906,12 @@ function __c34(j: number): any {
         S.Struct({
           ParameterGroupFamily: S.optional(S.String),
           Marker: S.optional(S.String),
-          Parameters: S.optional(ParametersList),
+          Parameters: S.optional(__S(234, __c29, 2)),
         }),
       ).annotate({ identifier: "DefaultClusterParameters" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ DefaultClusterParameters: S.optional(DefaultClusterParameters) }).pipe(ns),
+        S.Struct({ DefaultClusterParameters: S.optional(__S(276, __c34, 4)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeDefaultClusterParametersResult",
       });
@@ -12249,7 +10929,7 @@ function __c34(j: number): any {
         identifier: "DescribeEndpointAccessMessage",
       });
     case 7:
-      return S.Array(EndpointAccess);
+      return S.Array(__S(109, __c13, 5));
   }
 }
 function __c35(j: number): any {
@@ -12257,7 +10937,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          EndpointAccessList: S.optional(EndpointAccesses),
+          EndpointAccessList: S.optional(__S(279, __c34, 7)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "EndpointAccessList" });
@@ -12274,11 +10954,11 @@ function __c35(j: number): any {
         identifier: "DescribeEndpointAuthorizationMessage",
       });
     case 2:
-      return S.Array(EndpointAuthorization);
+      return S.Array(__S(23, __c2, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EndpointAuthorizationList: S.optional(EndpointAuthorizations),
+          EndpointAuthorizationList: S.optional(__S(282, __c35, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12296,20 +10976,20 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EventId: S.optional(S.String),
-          EventCategories: S.optional(EventCategoriesList),
+          EventCategories: S.optional(__S(111, __c13, 7)),
           EventDescription: S.optional(S.String),
           Severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventInfoMap" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ EventInfoMap.pipe(/*@__PURE__*/ T.XmlName("EventInfoMap")).annotate({
+        /*@__PURE__*/ __S(285, __c35, 5).pipe(/*@__PURE__*/ T.XmlName("EventInfoMap")).annotate({
           identifier: "EventInfoMap",
         }),
       );
     case 7:
       return S.suspend(() =>
-        S.Struct({ SourceType: S.optional(S.String), Events: S.optional(EventInfoMapList) }),
+        S.Struct({ SourceType: S.optional(S.String), Events: S.optional(__S(286, __c35, 6)) }),
       ).annotate({ identifier: "EventCategoriesMap" });
   }
 }
@@ -12317,21 +10997,21 @@ function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ EventCategoriesMap.pipe(
-          /*@__PURE__*/ T.XmlName("EventCategoriesMap"),
-        ).annotate({
-          identifier: "EventCategoriesMap",
-        }),
+        /*@__PURE__*/ __S(287, __c35, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("EventCategoriesMap"))
+          .annotate({
+            identifier: "EventCategoriesMap",
+          }),
       );
     case 1:
       return S.suspend(() =>
-        S.Struct({ EventCategoriesMapList: S.optional(EventCategoriesMapList) }).pipe(ns),
+        S.Struct({ EventCategoriesMapList: S.optional(__S(288, __c36, 0)) }).pipe(ns),
       ).annotate({ identifier: "EventCategoriesMessage" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           SourceIdentifier: S.optional(S.String),
-          SourceType: S.optional(SourceType),
+          SourceType: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Duration: S.optional(S.Number),
@@ -12343,9 +11023,9 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SourceIdentifier: S.optional(S.String),
-          SourceType: S.optional(SourceType),
+          SourceType: S.optional(S.String),
           Message: S.optional(S.String),
-          EventCategories: S.optional(EventCategoriesList),
+          EventCategories: S.optional(__S(111, __c13, 7)),
           Severity: S.optional(S.String),
           Date: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EventId: S.optional(S.String),
@@ -12353,13 +11033,13 @@ function __c36(j: number): any {
       ).annotate({ identifier: "Event" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ Event.pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({
+        /*@__PURE__*/ __S(291, __c36, 3).pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({
           identifier: "Event",
         }),
       );
     case 5:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Events: S.optional(EventList) }).pipe(ns),
+        S.Struct({ Marker: S.optional(S.String), Events: S.optional(__S(292, __c36, 4)) }).pipe(ns),
       ).annotate({ identifier: "EventsMessage" });
     case 6:
       return S.suspend(() =>
@@ -12367,19 +11047,19 @@ function __c36(j: number): any {
           SubscriptionName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEventSubscriptionsMessage",
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ EventSubscription.pipe(/*@__PURE__*/ T.XmlName("EventSubscription")).annotate(
-          {
+        /*@__PURE__*/ __S(113, __c14, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("EventSubscription"))
+          .annotate({
             identifier: "EventSubscription",
-          },
-        ),
+          }),
       );
   }
 }
@@ -12389,7 +11069,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          EventSubscriptionsList: S.optional(EventSubscriptionsList),
+          EventSubscriptionsList: S.optional(__S(295, __c36, 7)),
         }).pipe(ns),
       ).annotate({
         identifier: "EventSubscriptionsMessage",
@@ -12400,25 +11080,25 @@ function __c37(j: number): any {
           HsmClientCertificateIdentifier: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeHsmClientCertificatesMessage",
       });
     case 2:
       return S.Array(
-        /*@__PURE__*/ HsmClientCertificate.pipe(
-          /*@__PURE__*/ T.XmlName("HsmClientCertificate"),
-        ).annotate({
-          identifier: "HsmClientCertificate",
-        }),
+        /*@__PURE__*/ __S(116, __c14, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("HsmClientCertificate"))
+          .annotate({
+            identifier: "HsmClientCertificate",
+          }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          HsmClientCertificates: S.optional(HsmClientCertificateList),
+          HsmClientCertificates: S.optional(__S(298, __c37, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "HsmClientCertificateMessage",
@@ -12429,23 +11109,25 @@ function __c37(j: number): any {
           HsmConfigurationIdentifier: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeHsmConfigurationsMessage",
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ HsmConfiguration.pipe(/*@__PURE__*/ T.XmlName("HsmConfiguration")).annotate({
-          identifier: "HsmConfiguration",
-        }),
+        /*@__PURE__*/ __S(119, __c14, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("HsmConfiguration"))
+          .annotate({
+            identifier: "HsmConfiguration",
+          }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          HsmConfigurations: S.optional(HsmConfigurationList),
+          HsmConfigurations: S.optional(__S(301, __c37, 5)),
         }).pipe(ns),
       ).annotate({ identifier: "HsmConfigurationMessage" });
     case 7:
@@ -12469,24 +11151,24 @@ function __c38(j: number): any {
           IntegrationArn: S.optional(S.String),
           SourceArn: S.optional(S.String),
           TargetArn: S.optional(S.String),
-          Status: S.optional(ZeroETLIntegrationStatus),
-          Errors: S.optional(IntegrationErrorList),
+          Status: S.optional(S.String),
+          Errors: S.optional(__S(124, __c15, 4)),
           CreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "InboundIntegration" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ InboundIntegration.pipe(
-          /*@__PURE__*/ T.XmlName("InboundIntegration"),
-        ).annotate({
-          identifier: "InboundIntegration",
-        }),
+        /*@__PURE__*/ __S(304, __c38, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("InboundIntegration"))
+          .annotate({
+            identifier: "InboundIntegration",
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          InboundIntegrations: S.optional(InboundIntegrationList),
+          InboundIntegrations: S.optional(__S(305, __c38, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "InboundIntegrationsMessage",
@@ -12496,19 +11178,19 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Name: S.optional(DescribeIntegrationsFilterName),
-          Values: S.optional(DescribeIntegrationsFilterValueList),
+          Name: S.optional(S.String),
+          Values: S.optional(__S(307, __c38, 3)),
         }),
       ).annotate({
         identifier: "DescribeIntegrationsFilter",
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ DescribeIntegrationsFilter.pipe(
-          /*@__PURE__*/ T.XmlName("DescribeIntegrationsFilter"),
-        ).annotate({
-          identifier: "DescribeIntegrationsFilter",
-        }),
+        /*@__PURE__*/ __S(308, __c38, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("DescribeIntegrationsFilter"))
+          .annotate({
+            identifier: "DescribeIntegrationsFilter",
+          }),
       );
     case 6:
       return S.suspend(() =>
@@ -12516,14 +11198,14 @@ function __c38(j: number): any {
           IntegrationArn: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          Filters: S.optional(DescribeIntegrationsFilterList),
+          Filters: S.optional(__S(309, __c38, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeIntegrationsMessage",
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ Integration.pipe(/*@__PURE__*/ T.XmlName("Integration")).annotate({
+        /*@__PURE__*/ __S(125, __c15, 5).pipe(/*@__PURE__*/ T.XmlName("Integration")).annotate({
           identifier: "Integration",
         }),
       );
@@ -12533,9 +11215,10 @@ function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Integrations: S.optional(IntegrationList) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Marker: S.optional(S.String),
+          Integrations: S.optional(__S(311, __c38, 7)),
+        }).pipe(ns),
       ).annotate({ identifier: "IntegrationsMessage" });
     case 1:
       return S.suspend(() =>
@@ -12556,38 +11239,38 @@ function __c39(j: number): any {
           ),
           LastFailureTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastFailureMessage: S.optional(S.String),
-          LogDestinationType: S.optional(LogDestinationType),
-          LogExports: S.optional(LogTypeList),
-          S3Tables: S.optional(S3TablePublishStatus),
+          LogDestinationType: S.optional(S.String),
+          LogExports: S.optional(__S(83, __c10, 3)),
+          S3Tables: S.optional(__S(85, __c10, 5)),
         }).pipe(ns),
       ).annotate({ identifier: "LoggingStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Name: S.optional(NodeConfigurationOptionsFilterName),
-          Operator: S.optional(OperatorType),
-          Values: S.optional(ValueStringList).pipe(T.XmlName("Value")),
+          Name: S.optional(S.String),
+          Operator: S.optional(S.String),
+          Values: S.optional(__S(103, __c12, 7)).pipe(T.XmlName("Value")),
         }),
       ).annotate({
         identifier: "NodeConfigurationOptionsFilter",
       });
     case 4:
       return S.Array(
-        /*@__PURE__*/ NodeConfigurationOptionsFilter.pipe(
-          /*@__PURE__*/ T.XmlName("NodeConfigurationOptionsFilter"),
-        ).annotate({
-          identifier: "NodeConfigurationOptionsFilter",
-        }),
+        /*@__PURE__*/ __S(315, __c39, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("NodeConfigurationOptionsFilter"))
+          .annotate({
+            identifier: "NodeConfigurationOptionsFilter",
+          }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ActionType: S.optional(ActionType),
+          ActionType: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
           SnapshotIdentifier: S.optional(S.String),
           SnapshotArn: S.optional(S.String),
           OwnerAccount: S.optional(S.String),
-          Filters: S.optional(NodeConfigurationOptionsFilterList).pipe(T.XmlName("Filter")),
+          Filters: S.optional(__S(316, __c39, 4)).pipe(T.XmlName("Filter")),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -12600,16 +11283,16 @@ function __c39(j: number): any {
           NodeType: S.optional(S.String),
           NumberOfNodes: S.optional(S.Number),
           EstimatedDiskUtilizationPercent: S.optional(S.Number),
-          Mode: S.optional(Mode),
+          Mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeConfigurationOption" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ NodeConfigurationOption.pipe(
-          /*@__PURE__*/ T.XmlName("NodeConfigurationOption"),
-        ).annotate({
-          identifier: "NodeConfigurationOption",
-        }),
+        /*@__PURE__*/ __S(318, __c39, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("NodeConfigurationOption"))
+          .annotate({
+            identifier: "NodeConfigurationOption",
+          }),
       );
   }
 }
@@ -12618,7 +11301,7 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          NodeConfigurationOptionList: S.optional(NodeConfigurationOptionList),
+          NodeConfigurationOptionList: S.optional(__S(319, __c39, 7)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12637,9 +11320,11 @@ function __c40(j: number): any {
       });
     case 2:
       return S.Array(
-        /*@__PURE__*/ AvailabilityZone.pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone")).annotate({
-          identifier: "AvailabilityZone",
-        }),
+        /*@__PURE__*/ __S(100, __c12, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone"))
+          .annotate({
+            identifier: "AvailabilityZone",
+          }),
       );
     case 3:
       return S.suspend(() =>
@@ -12647,21 +11332,21 @@ function __c40(j: number): any {
           ClusterVersion: S.optional(S.String),
           ClusterType: S.optional(S.String),
           NodeType: S.optional(S.String),
-          AvailabilityZones: S.optional(AvailabilityZoneList),
+          AvailabilityZones: S.optional(__S(322, __c40, 2)),
         }),
       ).annotate({ identifier: "OrderableClusterOption" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ OrderableClusterOption.pipe(
-          /*@__PURE__*/ T.XmlName("OrderableClusterOption"),
-        ).annotate({
-          identifier: "OrderableClusterOption",
-        }),
+        /*@__PURE__*/ __S(323, __c40, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("OrderableClusterOption"))
+          .annotate({
+            identifier: "OrderableClusterOption",
+          }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          OrderableClusterOptions: S.optional(OrderableClusterOptionsList),
+          OrderableClusterOptions: S.optional(__S(324, __c40, 4)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12683,7 +11368,7 @@ function __c40(j: number): any {
         S.Struct({
           DatabaseName: S.optional(S.String),
           PartnerName: S.optional(S.String),
-          Status: S.optional(PartnerIntegrationStatus),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -12695,15 +11380,15 @@ function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ PartnerIntegrationInfo.pipe(
-          /*@__PURE__*/ T.XmlName("PartnerIntegrationInfo"),
-        ).annotate({
-          identifier: "PartnerIntegrationInfo",
-        }),
+        /*@__PURE__*/ __S(327, __c40, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("PartnerIntegrationInfo"))
+          .annotate({
+            identifier: "PartnerIntegrationInfo",
+          }),
       );
     case 1:
       return S.suspend(() =>
-        S.Struct({ PartnerIntegrationInfoList: S.optional(PartnerIntegrationInfoList) }).pipe(ns),
+        S.Struct({ PartnerIntegrationInfoList: S.optional(__S(328, __c41, 0)) }).pipe(ns),
       ).annotate({
         identifier: "DescribePartnersOutputMessage",
       });
@@ -12718,11 +11403,11 @@ function __c41(j: number): any {
         identifier: "DescribeQev2IdcApplicationsMessage",
       });
     case 3:
-      return S.Array(Qev2IdcApplication);
+      return S.Array(__S(127, __c15, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Qev2IdcApplications: S.optional(Qev2IdcApplicationList),
+          Qev2IdcApplications: S.optional(__S(331, __c41, 3)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12739,11 +11424,11 @@ function __c41(j: number): any {
         identifier: "DescribeRedshiftIdcApplicationsMessage",
       });
     case 6:
-      return S.Array(RedshiftIdcApplication);
+      return S.Array(__S(145, __c18, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          RedshiftIdcApplications: S.optional(RedshiftIdcApplicationList),
+          RedshiftIdcApplications: S.optional(__S(334, __c41, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12766,16 +11451,16 @@ function __c42(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ ReservedNodeExchangeStatus.pipe(
-          /*@__PURE__*/ T.XmlName("ReservedNodeExchangeStatus"),
-        ).annotate({
-          identifier: "ReservedNodeExchangeStatus",
-        }),
+        /*@__PURE__*/ __S(81, __c10, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeExchangeStatus"))
+          .annotate({
+            identifier: "ReservedNodeExchangeStatus",
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ReservedNodeExchangeStatusDetails: S.optional(ReservedNodeExchangeStatusList),
+          ReservedNodeExchangeStatusDetails: S.optional(__S(337, __c42, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12801,23 +11486,23 @@ function __c42(j: number): any {
           UsagePrice: S.optional(S.Number),
           CurrencyCode: S.optional(S.String),
           OfferingType: S.optional(S.String),
-          RecurringCharges: S.optional(RecurringChargeList),
-          ReservedNodeOfferingType: S.optional(ReservedNodeOfferingType),
+          RecurringCharges: S.optional(__S(2, __c0, 2)),
+          ReservedNodeOfferingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservedNodeOffering" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ ReservedNodeOffering.pipe(
-          /*@__PURE__*/ T.XmlName("ReservedNodeOffering"),
-        ).annotate({
-          identifier: "ReservedNodeOffering",
-        }),
+        /*@__PURE__*/ __S(340, __c42, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeOffering"))
+          .annotate({
+            identifier: "ReservedNodeOffering",
+          }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedNodeOfferings: S.optional(ReservedNodeOfferingList),
+          ReservedNodeOfferings: S.optional(__S(341, __c42, 5)),
         }).pipe(ns),
       ).annotate({
         identifier: "ReservedNodeOfferingsMessage",
@@ -12838,7 +11523,7 @@ function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ ReservedNode.pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
+        /*@__PURE__*/ __S(3, __c0, 3).pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
           identifier: "ReservedNode",
         }),
       );
@@ -12846,7 +11531,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedNodes: S.optional(ReservedNodeList),
+          ReservedNodes: S.optional(__S(344, __c43, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "ReservedNodesMessage" });
     case 2:
@@ -12858,27 +11543,27 @@ function __c43(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Name: S.optional(ScheduledActionFilterName),
-          Values: S.optional(ValueStringList),
+          Name: S.optional(S.String),
+          Values: S.optional(__S(103, __c12, 7)),
         }),
       ).annotate({ identifier: "ScheduledActionFilter" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ ScheduledActionFilter.pipe(
-          /*@__PURE__*/ T.XmlName("ScheduledActionFilter"),
-        ).annotate({
-          identifier: "ScheduledActionFilter",
-        }),
+        /*@__PURE__*/ __S(347, __c43, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("ScheduledActionFilter"))
+          .annotate({
+            identifier: "ScheduledActionFilter",
+          }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
-          TargetActionType: S.optional(ScheduledActionTypeValues),
+          TargetActionType: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Active: S.optional(S.Boolean),
-          Filters: S.optional(ScheduledActionFilterList),
+          Filters: S.optional(__S(348, __c43, 4)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -12887,7 +11572,7 @@ function __c43(j: number): any {
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ ScheduledAction.pipe(/*@__PURE__*/ T.XmlName("ScheduledAction")).annotate({
+        /*@__PURE__*/ __S(153, __c19, 1).pipe(/*@__PURE__*/ T.XmlName("ScheduledAction")).annotate({
           identifier: "ScheduledAction",
         }),
       );
@@ -12895,7 +11580,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ScheduledActions: S.optional(ScheduledActionList),
+          ScheduledActions: S.optional(__S(350, __c43, 6)),
         }).pipe(ns),
       ).annotate({ identifier: "ScheduledActionsMessage" });
   }
@@ -12908,25 +11593,25 @@ function __c44(j: number): any {
           SnapshotCopyGrantName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeSnapshotCopyGrantsMessage",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ SnapshotCopyGrant.pipe(/*@__PURE__*/ T.XmlName("SnapshotCopyGrant")).annotate(
-          {
+        /*@__PURE__*/ __S(155, __c19, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("SnapshotCopyGrant"))
+          .annotate({
             identifier: "SnapshotCopyGrant",
-          },
-        ),
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          SnapshotCopyGrants: S.optional(SnapshotCopyGrantList),
+          SnapshotCopyGrants: S.optional(__S(353, __c44, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "SnapshotCopyGrantMessage" });
     case 3:
@@ -12934,8 +11619,8 @@ function __c44(j: number): any {
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           ScheduleIdentifier: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -12944,14 +11629,16 @@ function __c44(j: number): any {
       });
     case 4:
       return S.Array(
-        /*@__PURE__*/ SnapshotSchedule.pipe(/*@__PURE__*/ T.XmlName("SnapshotSchedule")).annotate({
-          identifier: "SnapshotSchedule",
-        }),
+        /*@__PURE__*/ __S(162, __c20, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("SnapshotSchedule"))
+          .annotate({
+            identifier: "SnapshotSchedule",
+          }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SnapshotSchedules: S.optional(SnapshotScheduleList),
+          SnapshotSchedules: S.optional(__S(356, __c44, 4)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12989,7 +11676,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TableRestoreRequestId: S.optional(S.String),
-          Status: S.optional(TableRestoreStatusType),
+          Status: S.optional(S.String),
           Message: S.optional(S.String),
           RequestTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           ProgressInMegaBytes: S.optional(S.Number),
@@ -13006,16 +11693,16 @@ function __c45(j: number): any {
       ).annotate({ identifier: "TableRestoreStatus" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ TableRestoreStatus.pipe(
-          /*@__PURE__*/ T.XmlName("TableRestoreStatus"),
-        ).annotate({
-          identifier: "TableRestoreStatus",
-        }),
+        /*@__PURE__*/ __S(361, __c45, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("TableRestoreStatus"))
+          .annotate({
+            identifier: "TableRestoreStatus",
+          }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TableRestoreStatusDetails: S.optional(TableRestoreStatusList),
+          TableRestoreStatusDetails: S.optional(__S(362, __c45, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13028,28 +11715,28 @@ function __c45(j: number): any {
           ResourceType: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeTagsMessage" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Tag: S.optional(Tag),
+          Tag: S.optional(__S(12, __c1, 4)),
           ResourceName: S.optional(S.String),
           ResourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaggedResource" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ TaggedResource.pipe(/*@__PURE__*/ T.XmlName("TaggedResource")).annotate({
+        /*@__PURE__*/ __S(365, __c45, 5).pipe(/*@__PURE__*/ T.XmlName("TaggedResource")).annotate({
           identifier: "TaggedResource",
         }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          TaggedResources: S.optional(TaggedResourceList),
+          TaggedResources: S.optional(__S(366, __c45, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13064,27 +11751,30 @@ function __c46(j: number): any {
         S.Struct({
           UsageLimitId: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
-          FeatureType: S.optional(UsageLimitFeatureType),
+          FeatureType: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          TagKeys: S.optional(TagKeyList),
-          TagValues: S.optional(TagValueList),
+          TagKeys: S.optional(__S(143, __c17, 7)),
+          TagValues: S.optional(__S(228, __c28, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeUsageLimitsMessage",
       });
     case 1:
-      return S.Array(UsageLimit);
+      return S.Array(__S(166, __c20, 6));
     case 2:
       return S.suspend(() =>
-        S.Struct({ UsageLimits: S.optional(UsageLimits), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          UsageLimits: S.optional(__S(369, __c46, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "UsageLimitList" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
-          LogDestinationType: S.optional(LogDestinationType),
-          LogExports: S.optional(LogTypeList),
+          LogDestinationType: S.optional(S.String),
+          LogExports: S.optional(__S(83, __c10, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DisableLoggingMessage" });
     case 4:
@@ -13096,7 +11786,9 @@ function __c46(j: number): any {
         identifier: "DisableSnapshotCopyMessage",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "DisableSnapshotCopyResult",
       });
     case 6:
@@ -13116,8 +11808,8 @@ function __c46(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           BucketName: S.optional(S.String),
           S3KeyPrefix: S.optional(S.String),
-          LogDestinationType: S.optional(LogDestinationType),
-          LogExports: S.optional(LogTypeList),
+          LogDestinationType: S.optional(S.String),
+          LogExports: S.optional(__S(83, __c10, 3)),
           S3TableKmsKeyId: S.optional(S.String),
           S3TableGranularity: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13139,7 +11831,9 @@ function __c47(j: number): any {
         identifier: "EnableSnapshotCopyMessage",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "EnableSnapshotCopyResult",
       });
     case 2:
@@ -13151,7 +11845,9 @@ function __c47(j: number): any {
         identifier: "FailoverPrimaryComputeInputMessage",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "FailoverPrimaryComputeResult",
       });
     case 4:
@@ -13164,7 +11860,7 @@ function __c47(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           DurationSeconds: S.optional(S.Number),
           AutoCreate: S.optional(S.Boolean),
-          DbGroups: S.optional(DbGroupList),
+          DbGroups: S.optional(__S(380, __c47, 4)),
           CustomDomainName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -13208,7 +11904,7 @@ function __c48(j: number): any {
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ClusterIdentifier")));
     case 2:
       return S.suspend(() =>
-        S.Struct({ ClusterIds: S.optional(ClusterIdentifierList) }).pipe(
+        S.Struct({ ClusterIds: S.optional(__S(385, __c48, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -13226,7 +11922,7 @@ function __c48(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ActionType: S.optional(ReservedNodeExchangeActionType),
+          ActionType: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
           SnapshotIdentifier: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
@@ -13238,26 +11934,26 @@ function __c48(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SourceReservedNode: S.optional(ReservedNode),
+          SourceReservedNode: S.optional(__S(3, __c0, 3)),
           TargetReservedNodeCount: S.optional(S.Number),
-          TargetReservedNodeOffering: S.optional(ReservedNodeOffering),
+          TargetReservedNodeOffering: S.optional(__S(340, __c42, 4)),
         }),
       ).annotate({
         identifier: "ReservedNodeConfigurationOption",
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ ReservedNodeConfigurationOption.pipe(
-          /*@__PURE__*/ T.XmlName("ReservedNodeConfigurationOption"),
-        ).annotate({
-          identifier: "ReservedNodeConfigurationOption",
-        }),
+        /*@__PURE__*/ __S(389, __c48, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeConfigurationOption"))
+          .annotate({
+            identifier: "ReservedNodeConfigurationOption",
+          }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedNodeConfigurationOptionList: S.optional(ReservedNodeConfigurationOptionList),
+          ReservedNodeConfigurationOptionList: S.optional(__S(390, __c48, 6)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetReservedNodeExchangeConfigurationOptionsOutputMessage",
@@ -13280,7 +11976,7 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedNodeOfferings: S.optional(ReservedNodeOfferingList),
+          ReservedNodeOfferings: S.optional(__S(341, __c42, 5)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetReservedNodeExchangeOfferingsOutputMessage",
@@ -13297,7 +11993,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ResourcePolicy" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourcePolicy: S.optional(ResourcePolicy) }).pipe(ns),
+        S.Struct({ ResourcePolicy: S.optional(__S(395, __c49, 3)) }).pipe(ns),
       ).annotate({ identifier: "GetResourcePolicyResult" });
     case 5:
       return S.suspend(() =>
@@ -13316,16 +12012,16 @@ function __c49(j: number): any {
           Text: S.optional(S.String),
           Database: S.optional(S.String),
           Command: S.optional(S.String),
-          Type: S.optional(RecommendedActionType),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendedAction" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ RecommendedAction.pipe(/*@__PURE__*/ T.XmlName("RecommendedAction")).annotate(
-          {
+        /*@__PURE__*/ __S(398, __c49, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("RecommendedAction"))
+          .annotate({
             identifier: "RecommendedAction",
-          },
-        ),
+          }),
       );
   }
 }
@@ -13337,7 +12033,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "ReferenceLink" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ ReferenceLink.pipe(/*@__PURE__*/ T.XmlName("ReferenceLink")).annotate({
+        /*@__PURE__*/ __S(400, __c50, 0).pipe(/*@__PURE__*/ T.XmlName("ReferenceLink")).annotate({
           identifier: "ReferenceLink",
         }),
       );
@@ -13352,22 +12048,22 @@ function __c50(j: number): any {
           Title: S.optional(S.String),
           Description: S.optional(S.String),
           Observation: S.optional(S.String),
-          ImpactRanking: S.optional(ImpactRankingType),
+          ImpactRanking: S.optional(S.String),
           RecommendationText: S.optional(S.String),
-          RecommendedActions: S.optional(RecommendedActionList),
-          ReferenceLinks: S.optional(ReferenceLinkList),
+          RecommendedActions: S.optional(__S(399, __c49, 7)),
+          ReferenceLinks: S.optional(__S(401, __c50, 1)),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ Recommendation.pipe(/*@__PURE__*/ T.XmlName("Recommendation")).annotate({
+        /*@__PURE__*/ __S(402, __c50, 2).pipe(/*@__PURE__*/ T.XmlName("Recommendation")).annotate({
           identifier: "Recommendation",
         }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Recommendations: S.optional(RecommendationList),
+          Recommendations: S.optional(__S(403, __c50, 3)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13377,12 +12073,12 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
-          AquaConfigurationStatus: S.optional(AquaConfigurationStatus),
+          AquaConfigurationStatus: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyAquaInputMessage" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AquaConfiguration: S.optional(AquaConfiguration) }).pipe(ns),
+        S.Struct({ AquaConfiguration: S.optional(__S(80, __c10, 0)) }).pipe(ns),
       ).annotate({ identifier: "ModifyAquaOutputMessage" });
     case 7:
       return S.suspend(() =>
@@ -13413,8 +12109,8 @@ function __c51(j: number): any {
           ClusterType: S.optional(S.String),
           NodeType: S.optional(S.String),
           NumberOfNodes: S.optional(S.Number),
-          ClusterSecurityGroups: S.optional(ClusterSecurityGroupNameList),
-          VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          ClusterSecurityGroups: S.optional(__S(49, __c6, 1)),
+          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
           MasterUserPassword: S.optional(SensitiveString),
           ClusterParameterGroupName: S.optional(S.String),
           AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
@@ -13442,7 +12138,9 @@ function __c51(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyClusterMessage" });
     case 2:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "ModifyClusterResult",
       });
     case 3:
@@ -13455,22 +12153,26 @@ function __c51(j: number): any {
         identifier: "ModifyClusterDbRevisionMessage",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "ModifyClusterDbRevisionResult",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
-          AddIamRoles: S.optional(IamRoleArnList),
-          RemoveIamRoles: S.optional(IamRoleArnList),
+          AddIamRoles: S.optional(__S(51, __c6, 3)),
+          RemoveIamRoles: S.optional(__S(51, __c6, 3)),
           DefaultIamRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyClusterIamRolesMessage",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "ModifyClusterIamRolesResult",
       });
     case 7:
@@ -13495,14 +12197,16 @@ function __c51(j: number): any {
 function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "ModifyClusterMaintenanceResult",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.optional(S.String),
-          Parameters: S.optional(ParametersList),
+          Parameters: S.optional(__S(234, __c29, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyClusterParameterGroupMessage",
@@ -13527,7 +12231,9 @@ function __c52(j: number): any {
         identifier: "ModifyClusterSnapshotMessage",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+      ).annotate({
         identifier: "ModifyClusterSnapshotResult",
       });
     case 5:
@@ -13549,7 +12255,7 @@ function __c52(j: number): any {
         S.Struct({
           ClusterSubnetGroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          SubnetIds: S.optional(SubnetIdentifierList),
+          SubnetIds: S.optional(__S(96, __c12, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyClusterSubnetGroupMessage",
@@ -13560,7 +12266,7 @@ function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ClusterSubnetGroup: S.optional(ClusterSubnetGroup) }).pipe(ns),
+        S.Struct({ ClusterSubnetGroup: S.optional(__S(104, __c13, 0)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyClusterSubnetGroupResult",
       });
@@ -13589,7 +12295,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EndpointName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyEndpointAccessMessage",
@@ -13600,8 +12306,8 @@ function __c53(j: number): any {
           SubscriptionName: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           SourceType: S.optional(S.String),
-          SourceIds: S.optional(SourceIdsList),
-          EventCategories: S.optional(EventCategoriesList),
+          SourceIds: S.optional(__S(110, __c13, 6)),
+          EventCategories: S.optional(__S(111, __c13, 7)),
           Severity: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13610,7 +12316,7 @@ function __c53(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
+        S.Struct({ EventSubscription: S.optional(__S(113, __c14, 1)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyEventSubscriptionResult",
       });
@@ -13626,9 +12332,9 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
-          LakehouseRegistration: S.optional(LakehouseRegistration),
+          LakehouseRegistration: S.optional(S.String),
           CatalogName: S.optional(S.String),
-          LakehouseIdcRegistration: S.optional(LakehouseIdcRegistration),
+          LakehouseIdcRegistration: S.optional(S.String),
           LakehouseIdcApplicationArn: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13659,7 +12365,7 @@ function __c54(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Qev2IdcApplication: S.optional(Qev2IdcApplication) }).pipe(ns),
+        S.Struct({ Qev2IdcApplication: S.optional(__S(127, __c15, 7)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyQev2IdcApplicationResult",
       });
@@ -13670,15 +12376,15 @@ function __c54(j: number): any {
           IdentityNamespace: S.optional(S.String),
           IamRoleArn: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
-          AuthorizedTokenIssuerList: S.optional(AuthorizedTokenIssuerList),
-          ServiceIntegrations: S.optional(ServiceIntegrationList),
+          AuthorizedTokenIssuerList: S.optional(__S(131, __c16, 3)),
+          ServiceIntegrations: S.optional(__S(142, __c17, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyRedshiftIdcApplicationMessage",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ RedshiftIdcApplication: S.optional(RedshiftIdcApplication) }).pipe(ns),
+        S.Struct({ RedshiftIdcApplication: S.optional(__S(145, __c18, 1)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyRedshiftIdcApplicationResult",
       });
@@ -13686,7 +12392,7 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ScheduledActionName: S.optional(S.String),
-          TargetAction: S.optional(ScheduledActionType),
+          TargetAction: S.optional(__S(150, __c18, 6)),
           Schedule: S.optional(S.String),
           IamRole: S.optional(S.String),
           ScheduledActionDescription: S.optional(S.String),
@@ -13708,7 +12414,9 @@ function __c54(j: number): any {
         identifier: "ModifySnapshotCopyRetentionPeriodMessage",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "ModifySnapshotCopyRetentionPeriodResult",
       });
   }
@@ -13719,7 +12427,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ScheduleIdentifier: S.optional(S.String),
-          ScheduleDefinitions: S.optional(ScheduleDefinitionList),
+          ScheduleDefinitions: S.optional(__S(157, __c19, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifySnapshotScheduleMessage",
@@ -13729,11 +12437,13 @@ function __c55(j: number): any {
         S.Struct({
           UsageLimitId: S.optional(S.String),
           Amount: S.optional(S.Number),
-          BreachAction: S.optional(UsageLimitBreachAction),
+          BreachAction: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyUsageLimitMessage" });
     case 2:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "PauseClusterResult",
       });
     case 3:
@@ -13747,7 +12457,7 @@ function __c55(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ReservedNode: S.optional(ReservedNode) }).pipe(ns),
+        S.Struct({ ReservedNode: S.optional(__S(3, __c0, 3)) }).pipe(ns),
       ).annotate({
         identifier: "PurchaseReservedNodeOfferingResult",
       });
@@ -13759,7 +12469,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "PutResourcePolicyMessage" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourcePolicy: S.optional(ResourcePolicy) }).pipe(ns),
+        S.Struct({ ResourcePolicy: S.optional(__S(395, __c49, 3)) }).pipe(ns),
       ).annotate({ identifier: "PutResourcePolicyResult" });
     case 7:
       return S.suspend(() =>
@@ -13772,22 +12482,22 @@ function __c55(j: number): any {
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "RebootClusterResult",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          NamespaceIdentifier: S.optional(NamespaceIdentifierUnion),
-          ConsumerIdentifiers: S.optional(ConsumerIdentifierList),
+          NamespaceIdentifier: S.optional(__S(207, __c25, 7)),
+          ConsumerIdentifiers: S.optional(__S(208, __c26, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RegisterNamespaceInputMessage",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Status: S.optional(NamespaceRegistrationStatus) }).pipe(ns),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "RegisterNamespaceOutputMessage",
       });
     case 3:
@@ -13801,13 +12511,15 @@ function __c56(j: number): any {
         S.Struct({
           ParameterGroupName: S.optional(S.String),
           ResetAllParameters: S.optional(S.Boolean),
-          Parameters: S.optional(ParametersList),
+          Parameters: S.optional(__S(234, __c29, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ResetClusterParameterGroupMessage",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "ResizeClusterResult",
       });
     case 6:
@@ -13827,8 +12539,8 @@ function __c56(j: number): any {
           HsmConfigurationIdentifier: S.optional(S.String),
           ElasticIp: S.optional(S.String),
           ClusterParameterGroupName: S.optional(S.String),
-          ClusterSecurityGroups: S.optional(ClusterSecurityGroupNameList),
-          VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          ClusterSecurityGroups: S.optional(__S(49, __c6, 1)),
+          VpcSecurityGroupIds: S.optional(__S(50, __c6, 2)),
           PreferredMaintenanceWindow: S.optional(S.String),
           AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
@@ -13836,12 +12548,12 @@ function __c56(j: number): any {
           NodeType: S.optional(S.String),
           EnhancedVpcRouting: S.optional(S.Boolean),
           AdditionalInfo: S.optional(S.String),
-          IamRoles: S.optional(IamRoleArnList),
+          IamRoles: S.optional(__S(51, __c6, 3)),
           MaintenanceTrackName: S.optional(S.String),
           SnapshotScheduleIdentifier: S.optional(S.String),
           NumberOfNodes: S.optional(S.Number),
           AvailabilityZoneRelocation: S.optional(S.Boolean),
-          AquaConfigurationStatus: S.optional(AquaConfigurationStatus),
+          AquaConfigurationStatus: S.optional(S.String),
           DefaultIamRoleArn: S.optional(S.String),
           ReservedNodeId: S.optional(S.String),
           TargetReservedNodeOfferingId: S.optional(S.String),
@@ -13857,7 +12569,9 @@ function __c56(j: number): any {
         identifier: "RestoreFromClusterSnapshotMessage",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "RestoreFromClusterSnapshotResult",
       });
   }
@@ -13882,12 +12596,14 @@ function __c57(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ TableRestoreStatus: S.optional(TableRestoreStatus) }).pipe(ns),
+        S.Struct({ TableRestoreStatus: S.optional(__S(361, __c45, 1)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreTableFromClusterSnapshotResult",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "ResumeClusterResult",
       });
     case 3:
@@ -13903,7 +12619,7 @@ function __c57(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ClusterSecurityGroup: S.optional(ClusterSecurityGroup) }).pipe(ns),
+        S.Struct({ ClusterSecurityGroup: S.optional(__S(18, __c2, 2)) }).pipe(ns),
       ).annotate({
         identifier: "RevokeClusterSecurityGroupIngressResult",
       });
@@ -13912,7 +12628,7 @@ function __c57(j: number): any {
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
           Account: S.optional(S.String),
-          VpcIds: S.optional(VpcIdentifierList),
+          VpcIds: S.optional(__S(21, __c2, 5)),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -13930,7 +12646,9 @@ function __c57(j: number): any {
         identifier: "RevokeSnapshotAccessMessage",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Snapshot: S.optional(__S(28, __c3, 4)) }).pipe(ns),
+      ).annotate({
         identifier: "RevokeSnapshotAccessResult",
       });
   }
@@ -13946,7 +12664,9 @@ function __c58(j: number): any {
         identifier: "RotateEncryptionKeyMessage",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Cluster: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "RotateEncryptionKeyResult",
       });
     case 2:
@@ -13956,11 +12676,16 @@ function __c58(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           DatabaseName: S.optional(S.String),
           PartnerName: S.optional(S.String),
-          Status: S.optional(PartnerIntegrationStatus),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdatePartnerStatusInputMessage",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,20 +52,14 @@ export interface ApproveEntryRequest {
   /** The unique identifier of the waitlist entry to approve. */
   id: string;
 }
-const ApproveEntryRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ApproveEntryRequest>;
-
 export interface ApproveEntryResponse {
   /** The ID of the job. */
   job_id: string;
 }
-const ApproveEntryResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ApproveEntryResponse>;
-
 export interface DenyEntryRequest {
   /** The unique identifier of the waitlist entry to deny. */
   id: string;
 }
-const DenyEntryRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DenyEntryRequest>;
-
 /** The response from a custom field on checkout */
 export interface EntryCustomFieldResponsesItem {
   /** The response a user gave to the specific question or field. */
@@ -73,25 +69,13 @@ export interface EntryCustomFieldResponsesItem {
   /** The question asked by the custom field */
   question: string;
 }
-const EntryCustomFieldResponsesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<EntryCustomFieldResponsesItem>;
-
 /** The list of responses collected from the user when submitting their waitlist entry. */
 export type EntryCustomFieldResponsesList = Array<EntryCustomFieldResponsesItem>;
-const EntryCustomFieldResponsesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EntryCustomFieldResponsesList>;
-
 /** The waitlisted plan that this entry is a signup for. */
 export interface EntryPlan {
   /** The unique identifier for the plan. */
   id: string;
 }
-const EntryPlan = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EntryPlan>;
-
 /** The product associated with this entry's waitlisted plan. Null if the plan is not tied to a product. */
 export interface EntryProduct {
   /** The unique identifier for the product. */
@@ -99,12 +83,8 @@ export interface EntryProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-const EntryProduct = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EntryProduct>;
-
 /** The status of an entry to a waitlist. */
 export type EntryStatus = "drafted" | "pending" | "approved" | "denied" | "any";
-const EntryStatus = S.String;
-
 /** The user who submitted this waitlist entry. */
 export interface EntryUser {
   /** The user's email address. Requires the member:email:read permission to access. Null if not authorized. */
@@ -116,8 +96,6 @@ export interface EntryUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const EntryUser = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EntryUser>;
-
 /** An entry represents a user's signup for a waitlisted plan. */
 export interface Entry {
   /** The datetime the entry was created. */
@@ -135,41 +113,20 @@ export interface Entry {
   /** The user who submitted this waitlist entry. */
   user: EntryUser;
 }
-const Entry = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Entry>;
-
 export interface GetEntryRequest {
   /** The unique identifier of the waitlist entry to retrieve. */
   id: string;
 }
-const GetEntryRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetEntryRequest>;
-
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
-const Direction = S.String;
-
 /** Which columns can be used to sort. */
 export type EntriesSortableColumns = "id" | "created_at";
-const EntriesSortableColumns = S.String;
-
 /** Filter entries to only those for specific products. */
 export type ListEntryRequestProductIdsList = Array<string>;
-const ListEntryRequestProductIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListEntryRequestProductIdsList>;
-
 /** Filter entries to only those for specific plans. */
 export type ListEntryRequestPlanIdsList = Array<string>;
-const ListEntryRequestPlanIdsList =
-  ListEntryRequestProductIdsList as any as S.Schema<ListEntryRequestPlanIdsList>;
-
 /** Filter entries by their current status. */
 export type ListEntryRequestStatusesList = Array<EntryStatus | (string & {})>;
-const ListEntryRequestStatusesList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListEntryRequestStatusesList>;
-
 export interface ListEntryRequest {
   after?: string;
   before?: string;
@@ -184,8 +141,6 @@ export interface ListEntryRequest {
   created_before?: string;
   created_after?: string;
 }
-const ListEntryRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListEntryRequest>;
-
 /** The waitlisted plan that this entry is a signup for. */
 export type EntryListItemPlan = EntryPlan;
 /** The product associated with this entry's waitlisted plan. Null if the plan is not tied to a product. */
@@ -207,15 +162,8 @@ export interface EntryListItem {
   /** The user who submitted this waitlist entry. */
   user: EntryUser;
 }
-const EntryListItem = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EntryListItem>;
-
 /** A list of nodes. */
 export type ListEntryResponseDataList = Array<EntryListItem>;
-const ListEntryResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListEntryResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -227,16 +175,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PageInfo>;
-
 export interface ListEntryResponse {
   /** A list of nodes. */
   data: ListEntryResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListEntryResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListEntryResponse>;
-
 export type ApproveEntryError =
   | BadRequest
   | Forbidden
@@ -250,8 +194,8 @@ export const approveEntry: API.OperationMethod<
   ApproveEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveEntryRequest,
-  output: ApproveEntryResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ApproveEntryRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ApproveEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -265,8 +209,8 @@ export const denyEntry: API.OperationMethod<
   DenyEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DenyEntryRequest,
-  output: Entry,
+  input: __S(2, __c0, 2) as any as S.Schema<DenyEntryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Entry>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -276,8 +220,8 @@ export type GetEntryError = BadRequest | Forbidden | NotFound | UnprocessableEnt
 /** Retrieve entry [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing waitlist entry. Required permissions: - `plan:waitlist:read` - `member:email:read` */
 export const getEntry: API.OperationMethod<GetEntryRequest, Entry, GetEntryError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetEntryRequest,
-    output: Entry,
+    input: __S(9, __c1, 1) as any as S.Schema<GetEntryRequest>,
+    output: __S(8, __c1, 0) as any as S.Schema<Entry>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -293,8 +237,8 @@ export const listEntry: API.PaginatedOperationMethod<
   EntryListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListEntryRequest,
-    output: ListEntryResponse,
+    input: __S(12, __c1, 4) as any as S.Schema<ListEntryRequest>,
+    output: __S(16, __c2, 0) as any as S.Schema<ListEntryResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -342,7 +286,7 @@ function __c0(j: number): any {
         identifier: "EntryCustomFieldResponsesItem",
       });
     case 4:
-      return S.Array(EntryCustomFieldResponsesItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -373,12 +317,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created_at: S.NullOr(S.String),
-          custom_field_responses: S.NullOr(EntryCustomFieldResponsesList),
+          custom_field_responses: S.NullOr(__S(4, __c0, 4)),
           id: S.String,
-          plan: S.NullOr(EntryPlan),
-          product: S.NullOr(EntryProduct),
-          status: EntryStatus,
-          user: EntryUser,
+          plan: S.NullOr(__S(5, __c0, 5)),
+          product: S.NullOr(__S(6, __c0, 6)),
+          status: S.String,
+          user: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "Entry" });
     case 1:
@@ -390,7 +334,7 @@ function __c1(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Array(EntryStatus);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -399,11 +343,11 @@ function __c1(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           company_id: S.String.pipe(T.Query()),
-          direction: S.optional(Direction.pipe(T.Query())),
-          order: S.optional(EntriesSortableColumns.pipe(T.Query())),
-          product_ids: S.optional(ListEntryRequestProductIdsList.pipe(T.Query())),
-          plan_ids: S.optional(ListEntryRequestPlanIdsList.pipe(T.Query())),
-          statuses: S.optional(ListEntryRequestStatusesList.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          product_ids: S.optional(__S(10, __c1, 2).pipe(T.Query())),
+          plan_ids: S.optional(__S(10, __c1, 2).pipe(T.Query())),
+          statuses: S.optional(__S(11, __c1, 3).pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/entries", code: 200 })),
@@ -413,14 +357,14 @@ function __c1(j: number): any {
         S.Struct({
           created_at: S.NullOr(S.String),
           id: S.String,
-          plan: S.NullOr(EntryPlan),
-          product: S.NullOr(EntryProduct),
-          status: EntryStatus,
-          user: EntryUser,
+          plan: S.NullOr(__S(5, __c0, 5)),
+          product: S.NullOr(__S(6, __c0, 6)),
+          status: S.String,
+          user: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "EntryListItem" });
     case 6:
-      return S.Array(EntryListItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -437,9 +381,14 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ListEntryResponseDataList,
-          page_info: PageInfo,
+          data: __S(14, __c1, 6),
+          page_info: __S(15, __c1, 7),
         }),
       ).annotate({ identifier: "ListEntryResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,27 +42,12 @@ export interface CreateMarketingAnalyticsTestMappingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const CreateMarketingAnalyticsTestMappingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateMarketingAnalyticsTestMappingRequest>;
-
 export interface CreateMarketingAnalyticsTestMappingResponse {}
-const CreateMarketingAnalyticsTestMappingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateMarketingAnalyticsTestMappingResponse>;
-
 export interface DeleteMarketingAnalyticsConversionGoalDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   conversion_goal_id: string;
 }
-const DeleteMarketingAnalyticsConversionGoalDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteMarketingAnalyticsConversionGoalDestroyRequest>;
-
 export type PropertyOperator =
   | "exact"
   | "is_not"
@@ -687,11 +674,6 @@ export interface RevenueCurrencyPropertyConfig {
   static?: CurrencyCode | (string & {}) | null;
 }
 export type ConversionGoalFilter1OrderByList = Array<string>;
-const ConversionGoalFilter1OrderByList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ConversionGoalFilter1OrderByList>;
-
 export type ConversionGoalFilter1PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -952,45 +934,24 @@ export interface ConversionGoalFilter3 {
 }
 /** Wrapper for OpenAPI schema generation - one goal, in any of the three node shapes. */
 export type ConversionGoal = ConversionGoalFilter1 | ConversionGoalFilter2 | ConversionGoalFilter3;
-const ConversionGoal = S.Unknown as any as S.Schema<ConversionGoal>;
-
 export type ConversionGoalWrittenListItem =
   | ConversionGoalFilter1
   | ConversionGoalFilter2
   | ConversionGoalFilter3;
-const ConversionGoalWrittenListItem = S.Unknown as any as S.Schema<ConversionGoalWrittenListItem>;
-
 /** List wrapper for OpenAPI schema generation - the response carries every configured goal. */
 export type ConversionGoalWrittenList = Array<ConversionGoalWrittenListItem>;
-const ConversionGoalWrittenList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ConversionGoalWrittenList>;
-
 export interface ConversionGoalWriteResponse {
   /** The goal as stored after the write */
   goal: ConversionGoal;
   /** Every configured goal after the write, in display order */
   conversion_goals: ConversionGoalWrittenList;
 }
-const ConversionGoalWriteResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ConversionGoalWriteResponse>;
-
 export interface GetMarketingAnalyticsConversionGoalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetMarketingAnalyticsConversionGoalRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetMarketingAnalyticsConversionGoalRequest>;
-
 /** * `EventsNode` - EventsNode * `ActionsNode` - ActionsNode * `DataWarehouseNode` - DataWarehouseNode */
 export type ConversionGoalKindEnum = "EventsNode" | "ActionsNode" | "DataWarehouseNode";
-const ConversionGoalKindEnum = S.String;
-
 export interface ConversionGoalSummary {
   /** Id of the goal. Pass this to the explain, update and delete endpoints. */
   conversion_goal_id: string;
@@ -1021,18 +982,8 @@ export interface ConversionGoalSummary {
   /** Explanation when is_approximate is true */
   approximation_reason: string | null;
 }
-const ConversionGoalSummary = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ConversionGoalSummary>;
-
 /** One summary entry per configured conversion goal */
 export type ConversionGoalsListResponseGoalsList = Array<ConversionGoalSummary>;
-const ConversionGoalsListResponseGoalsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ConversionGoalsListResponseGoalsList>;
-
 export interface ConversionGoalsListResponse {
   /** One summary entry per configured conversion goal */
   goals: ConversionGoalsListResponseGoalsList;
@@ -1043,32 +994,16 @@ export interface ConversionGoalsListResponse {
   /** True if any goal is misconfigured */
   has_misconfigured: boolean;
 }
-const ConversionGoalsListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ConversionGoalsListResponse>;
-
 export interface GetMarketingAnalyticsDataSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Optional. Restrict to one integration (e.g. 'GoogleAds'). */
   source_type?: string;
 }
-const GetMarketingAnalyticsDataSourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetMarketingAnalyticsDataSourceRequest>;
-
 /** Schema columns currently mapped for this source */
 export type DataSourceHealthEntrySchemaColumnsMappedList = Array<string>;
-const DataSourceHealthEntrySchemaColumnsMappedList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthEntrySchemaColumnsMappedList>;
-
 /** Required schema columns that are not yet mapped */
 export type DataSourceHealthEntrySchemaColumnsRequiredMissingList = Array<string>;
-const DataSourceHealthEntrySchemaColumnsRequiredMissingList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthEntrySchemaColumnsRequiredMissingList>;
-
 export interface RequiredTableStatus {
   /** Name of the required source table (e.g. 'campaign', 'campaign_stats') */
   table_name: string;
@@ -1081,15 +1016,8 @@ export interface RequiredTableStatus {
   /** When this table last completed a sync */
   last_synced_at: string | null;
 }
-const RequiredTableStatus = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RequiredTableStatus>;
-
 /** Per-required-table sync status for this integration */
 export type DataSourceHealthEntryRequiredTablesList = Array<RequiredTableStatus>;
-const DataSourceHealthEntryRequiredTablesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DataSourceHealthEntryRequiredTablesList>;
-
 export interface DataSourceHealthEntry {
   /** External data source type key (e.g. 'GoogleAds', 'MetaAds') */
   source_type: string;
@@ -1126,23 +1054,10 @@ export interface DataSourceHealthEntry {
   /** Suggested fix when the source is unhealthy */
   fix_suggestion: string | null;
 }
-const DataSourceHealthEntry = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DataSourceHealthEntry>;
-
 /** One health entry per native integration */
 export type DataSourceHealthResponseIntegrationsList = Array<DataSourceHealthEntry>;
-const DataSourceHealthResponseIntegrationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DataSourceHealthResponseIntegrationsList>;
-
 /** Short human-readable summary of detected issues */
 export type DataSourceHealthResponseIssuesSummaryList = Array<string>;
-const DataSourceHealthResponseIssuesSummaryList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthResponseIssuesSummaryList>;
-
 export interface DataSourceHealthResponse {
   /** One health entry per native integration */
   integrations: DataSourceHealthResponseIntegrationsList;
@@ -1153,11 +1068,6 @@ export interface DataSourceHealthResponse {
   /** Short human-readable summary of detected issues */
   issues_summary: DataSourceHealthResponseIssuesSummaryList;
 }
-const DataSourceHealthResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DataSourceHealthResponse>;
-
 export interface GetMarketingAnalyticsDiagnoseRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1168,11 +1078,6 @@ export interface GetMarketingAnalyticsDiagnoseRequest {
   /** Optional integration filter */
   source_type?: string;
 }
-const GetMarketingAnalyticsDiagnoseRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetMarketingAnalyticsDiagnoseRequest>;
-
 export interface UnmatchedUtmSample {
   /** A raw utm_source value that doesn't match the integration exactly */
   raw_value: string;
@@ -1181,15 +1086,8 @@ export interface UnmatchedUtmSample {
   /** Integration suggested by token match, if any */
   suggested_integration: string | null;
 }
-const UnmatchedUtmSample = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UnmatchedUtmSample>;
-
 /** Sample of likely-yours unmatched utm_source values */
 export type AttributionHealthEntrySampleUnmatchedUtmSourcesList = Array<UnmatchedUtmSample>;
-const AttributionHealthEntrySampleUnmatchedUtmSourcesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AttributionHealthEntrySampleUnmatchedUtmSourcesList>;
-
 export interface AttributionHealthEntry {
   /** Integration key (e.g. 'google', 'meta') */
   integration_key: string;
@@ -1212,11 +1110,6 @@ export interface AttributionHealthEntry {
   /** Matched events carrying any utm_medium in the lookback window. Zero means no matched event carried a medium, including when no events matched. Missing paid signals do not prove organic traffic. */
   events_matched_tagged_medium_last_7d: number;
 }
-const AttributionHealthEntry = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AttributionHealthEntry>;
-
 export interface RecommendedAction {
   /** Short title of the recommended action */
   title: string;
@@ -1227,15 +1120,8 @@ export interface RecommendedAction {
   /** Follow-up tool to call next, if any */
   target_tool: string | null;
 }
-const RecommendedAction = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RecommendedAction>;
-
 /** Recommended next steps for this integration */
 export type IntegrationDiagnosticRecommendedActionsList = Array<RecommendedAction>;
-const IntegrationDiagnosticRecommendedActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IntegrationDiagnosticRecommendedActionsList>;
-
 export interface IntegrationDiagnostic {
   /** Integration key (e.g. 'google', 'meta') */
   integration_key: string;
@@ -1254,23 +1140,10 @@ export interface IntegrationDiagnostic {
   /** Recommended next steps for this integration */
   recommended_actions: IntegrationDiagnosticRecommendedActionsList;
 }
-const IntegrationDiagnostic = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IntegrationDiagnostic>;
-
 /** Per-integration cross-domain diagnostics */
 export type MarketingDiagnosticResponseIntegrationsList = Array<IntegrationDiagnostic>;
-const MarketingDiagnosticResponseIntegrationsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<MarketingDiagnosticResponseIntegrationsList>;
-
 /** Top global recommended actions across all integrations */
 export type MarketingDiagnosticResponseRecommendedActionsList = Array<RecommendedAction>;
-const MarketingDiagnosticResponseRecommendedActionsList =
-  IntegrationDiagnosticRecommendedActionsList as any as S.Schema<MarketingDiagnosticResponseRecommendedActionsList>;
-
 export interface MarketingDiagnosticResponse {
   /** Per-integration cross-domain diagnostics */
   integrations: MarketingDiagnosticResponseIntegrationsList;
@@ -1283,11 +1156,6 @@ export interface MarketingDiagnosticResponse {
   /** Top global recommended actions across all integrations */
   recommended_actions: MarketingDiagnosticResponseRecommendedActionsList;
 }
-const MarketingDiagnosticResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<MarketingDiagnosticResponse>;
-
 export interface GetMarketingAnalyticsExplainConversionGoalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1298,48 +1166,22 @@ export interface GetMarketingAnalyticsExplainConversionGoalRequest {
   /** ISO end; defaults to now */
   date_to?: string;
 }
-const GetMarketingAnalyticsExplainConversionGoalRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetMarketingAnalyticsExplainConversionGoalRequest>;
-
 export interface GoalExplanationPeriod {
   /** Start of the analyzed period (ISO) */
   date_from: string | null;
   /** End of the analyzed period (ISO) */
   date_to: string | null;
 }
-const GoalExplanationPeriod = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoalExplanationPeriod>;
-
 export type GoalExplanationByEventItemList = Array<unknown>;
-const GoalExplanationByEventItemList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GoalExplanationByEventItemList>;
-
 /** List of [event_name, count] pairs */
 export type GoalExplanationByEventList = Array<GoalExplanationByEventItemList>;
-const GoalExplanationByEventList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GoalExplanationByEventList>;
-
 export type GoalExplanationByUtmSourceItemList = Array<unknown>;
 /** List of [utm_source, count] pairs */
 export type GoalExplanationByUtmSourceList = Array<GoalExplanationByUtmSourceItemList>;
-const GoalExplanationByUtmSourceList =
-  GoalExplanationByEventList as any as S.Schema<GoalExplanationByUtmSourceList>;
-
 export type GoalExplanationByMatchedIntegrationItemList = Array<unknown>;
 /** List of [integration, count] pairs */
 export type GoalExplanationByMatchedIntegrationList =
   Array<GoalExplanationByMatchedIntegrationItemList>;
-const GoalExplanationByMatchedIntegrationList =
-  GoalExplanationByEventList as any as S.Schema<GoalExplanationByMatchedIntegrationList>;
-
 export interface GoalEventSample {
   /** UUID of the sampled conversion event */
   event_uuid: string;
@@ -1354,20 +1196,10 @@ export interface GoalEventSample {
   /** Integration the utm_source matched, if any */
   matched_integration: string | null;
 }
-const GoalEventSample = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GoalEventSample>;
-
 /** A small sample of matching events */
 export type GoalExplanationSamplesList = Array<GoalEventSample>;
-const GoalExplanationSamplesList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoalExplanationSamplesList>;
-
 /** Caveats about the breakdown (sampling, attribution, etc.) */
 export type GoalExplanationNotesList = Array<string>;
-const GoalExplanationNotesList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<GoalExplanationNotesList>;
-
 export interface GoalExplanation {
   /** conversion_goal_id of the explained goal */
   conversion_goal_id: string;
@@ -1398,8 +1230,6 @@ export interface GoalExplanation {
   /** Caveats about the breakdown (sampling, attribution, etc.) */
   notes: GoalExplanationNotesList;
 }
-const GoalExplanation = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GoalExplanation>;
-
 export interface GetMarketingAnalyticsSetupPlanRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1408,21 +1238,10 @@ export interface GetMarketingAnalyticsSetupPlanRequest {
   /** Re-run every check instead of serving a recent result. Use right after changing something. */
   refresh?: boolean;
 }
-const GetMarketingAnalyticsSetupPlanRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetMarketingAnalyticsSetupPlanRequest>;
-
 /** Capabilities this unblocks: cost, attribution, roas, cac */
 export type SuggestionUnlocksList = Array<string>;
-const SuggestionUnlocksList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<SuggestionUnlocksList>;
-
 /** Advice shown alongside the action. Mapping suggestions always carry a 'fix_platform_urls' entry, because a mapping is a workaround and correcting the ad platform's tracking template is the real fix. */
 export type SuggestionAlsoRecommendedList = Array<unknown>;
-const SuggestionAlsoRecommendedList =
-  GoalExplanationByEventItemList as any as S.Schema<SuggestionAlsoRecommendedList>;
-
 export interface Suggestion {
   /** Stable identifier for this finding. Deterministic across scans, so clients can dedupe and remember dismissals by it. */
   id: string;
@@ -1459,20 +1278,10 @@ export interface Suggestion {
   /** Events affected in the window */
   event_volume: number;
 }
-const Suggestion = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Suggestion>;
-
 /** Ranked suggestions, most important first */
 export type SetupPlanResponseSuggestionsList = Array<Suggestion>;
-const SetupPlanResponseSuggestionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<SetupPlanResponseSuggestionsList>;
-
 /** Suggestion ids that unblock this capability -- the link from a blocked metric to its fixes */
 export type CapabilityReadinessBlockedByList = Array<string>;
-const CapabilityReadinessBlockedByList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<CapabilityReadinessBlockedByList>;
-
 export interface CapabilityReadiness {
   /** cost/attribution/roas/cac */
   capability: string;
@@ -1483,20 +1292,10 @@ export interface CapabilityReadiness {
   /** Suggestion ids that unblock this capability -- the link from a blocked metric to its fixes */
   blocked_by: CapabilityReadinessBlockedByList;
 }
-const CapabilityReadiness = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CapabilityReadiness>;
-
 /** Per-capability readiness, with the suggestions blocking each */
 export type SetupPlanResponseReadinessList = Array<CapabilityReadiness>;
-const SetupPlanResponseReadinessList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SetupPlanResponseReadinessList>;
-
 /** Sub-services that failed. Their suggestions are missing, so do NOT present the plan as a complete clean bill of health when this is non-empty. */
 export type SetupPlanResponseDegradedList = Array<string>;
-const SetupPlanResponseDegradedList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<SetupPlanResponseDegradedList>;
-
 export interface SetupPlanResponse {
   /** Ranked suggestions, most important first */
   suggestions: SetupPlanResponseSuggestionsList;
@@ -1509,36 +1308,19 @@ export interface SetupPlanResponse {
   /** One-line summary of the plan */
   summary: string;
 }
-const SetupPlanResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SetupPlanResponse>;
-
 export interface GetMarketingAnalyticsSourceValidationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetMarketingAnalyticsSourceValidationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetMarketingAnalyticsSourceValidationRequest>;
-
 export type SourceValidationErrorsBySourceValueList = Array<string>;
-const SourceValidationErrorsBySourceValueList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<SourceValidationErrorsBySourceValueList>;
-
 /** Validation errors keyed by the source or mapped table ID. Valid sources are omitted. */
 export type SourceValidationErrorsBySourceMap = {
   [key: string]: SourceValidationErrorsBySourceValueList | undefined;
 };
-const SourceValidationErrorsBySourceMap = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SourceValidationErrorsBySourceMap>;
-
 export interface SourceValidation {
   /** Validation errors keyed by the source or mapped table ID. Valid sources are omitted. */
   errors_by_source: SourceValidationErrorsBySourceMap;
 }
-const SourceValidation = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SourceValidation>;
-
 export interface GetMarketingAnalyticsSuggestConversionGoalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1547,17 +1329,9 @@ export interface GetMarketingAnalyticsSuggestConversionGoalRequest {
   /** Max candidates to return */
   top_n?: number;
 }
-const GetMarketingAnalyticsSuggestConversionGoalRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetMarketingAnalyticsSuggestConversionGoalRequest>;
-
 export type CandidateEventTopUtmSourcesItemList = Array<unknown>;
 /** List of [utm_source, count] pairs */
 export type CandidateEventTopUtmSourcesList = Array<CandidateEventTopUtmSourcesItemList>;
-const CandidateEventTopUtmSourcesList =
-  GoalExplanationByEventList as any as S.Schema<CandidateEventTopUtmSourcesList>;
-
 export interface CandidateEvent {
   /** Name of the candidate event */
   event_name: string;
@@ -1578,15 +1352,8 @@ export interface CandidateEvent {
   /** Human-readable rationale for the suggestion */
   suggestion_reason: string;
 }
-const CandidateEvent = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CandidateEvent>;
-
 /** Ranked candidate events for conversion goals */
 export type EventSuggestionsResponseCandidatesList = Array<CandidateEvent>;
-const EventSuggestionsResponseCandidatesList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<EventSuggestionsResponseCandidatesList>;
-
 export interface EventSuggestionsResponse {
   /** Ranked candidate events for conversion goals */
   candidates: EventSuggestionsResponseCandidatesList;
@@ -1595,11 +1362,6 @@ export interface EventSuggestionsResponse {
   /** Number of system/autocaptured events excluded */
   excluded_events_count: number;
 }
-const EventSuggestionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<EventSuggestionsResponse>;
-
 export interface GetMarketingAnalyticsSuggestUtmMappingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1608,11 +1370,6 @@ export interface GetMarketingAnalyticsSuggestUtmMappingRequest {
   /** Only suggest for raw values with >= this many events */
   min_event_count?: number;
 }
-const GetMarketingAnalyticsSuggestUtmMappingRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetMarketingAnalyticsSuggestUtmMappingRequest>;
-
 export interface SourceMappingSuggestion {
   /** The raw utm_source value seen on events */
   raw_utm_source: string;
@@ -1625,23 +1382,10 @@ export interface SourceMappingSuggestion {
   /** Events carrying this raw utm_source in the window. Suggestions are ordered by it. */
   event_count_30d: number;
 }
-const SourceMappingSuggestion = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<SourceMappingSuggestion>;
-
 /** Suggested custom_source_mappings entries */
 export type UtmMappingSuggestionsResponseSourceSuggestionsList = Array<SourceMappingSuggestion>;
-const UtmMappingSuggestionsResponseSourceSuggestionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UtmMappingSuggestionsResponseSourceSuggestionsList>;
-
 /** Raw campaign values clustered under this clean name */
 export type CampaignMappingSuggestionRawCampaignValuesList = Array<string>;
-const CampaignMappingSuggestionRawCampaignValuesList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<CampaignMappingSuggestionRawCampaignValuesList>;
-
 export interface CampaignMappingSuggestion {
   /** Integration key the campaign values belong to */
   integration: string;
@@ -1660,18 +1404,8 @@ export interface CampaignMappingSuggestion {
   /** Events across every raw value folded into this suggestion. Suggestions are ordered by it. */
   event_count_30d: number;
 }
-const CampaignMappingSuggestion = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CampaignMappingSuggestion>;
-
 /** campaign_name_mappings entries for orphaned utm_campaign values that fuzzy-match a real campaign. Near-ties are withheld, so an absent campaign may still be mappable by hand. */
 export type UtmMappingSuggestionsResponseCampaignSuggestionsList = Array<CampaignMappingSuggestion>;
-const UtmMappingSuggestionsResponseCampaignSuggestionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<UtmMappingSuggestionsResponseCampaignSuggestionsList>;
-
 export interface RawUnmatchedSample {
   /** A raw utm_source value matching no integration */
   raw_utm_source: string;
@@ -1680,15 +1414,8 @@ export interface RawUnmatchedSample {
   /** Integration suggested by token match, if any */
   suggested_integration: string | null;
 }
-const RawUnmatchedSample = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<RawUnmatchedSample>;
-
 /** All unmatched raw utm_source values worth reviewing */
 export type UtmMappingSuggestionsResponseRawUnmatchedSamplesList = Array<RawUnmatchedSample>;
-const UtmMappingSuggestionsResponseRawUnmatchedSamplesList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<UtmMappingSuggestionsResponseRawUnmatchedSamplesList>;
-
 export interface CatalogueEntry {
   /** A raw utm_source value seen in the window */
   raw_utm_source: string;
@@ -1701,15 +1428,8 @@ export interface CatalogueEntry {
   /** Integration suggested by token match, if any */
   suggested_integration: string | null;
 }
-const CatalogueEntry = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CatalogueEntry>;
-
 /** Every utm_source value seen in the window, matched or not */
 export type UtmMappingSuggestionsResponseFullUtmSourceCatalogueList = Array<CatalogueEntry>;
-const UtmMappingSuggestionsResponseFullUtmSourceCatalogueList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<UtmMappingSuggestionsResponseFullUtmSourceCatalogueList>;
-
 export interface CurrentMapping {
   /** A utm_source value already mapped to an integration */
   raw_utm_source: string;
@@ -1720,20 +1440,10 @@ export interface CurrentMapping {
   /** canonical or team_custom */
   source: string;
 }
-const CurrentMapping = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CurrentMapping>;
-
 /** Mappings already in effect (canonical + team_custom) */
 export type UtmMappingSuggestionsResponseCurrentMappingsList = Array<CurrentMapping>;
-const UtmMappingSuggestionsResponseCurrentMappingsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<UtmMappingSuggestionsResponseCurrentMappingsList>;
-
 /** Caveats and guidance about the suggestions */
 export type UtmMappingSuggestionsResponseNotesList = Array<string>;
-const UtmMappingSuggestionsResponseNotesList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<UtmMappingSuggestionsResponseNotesList>;
-
 export interface UtmMappingSuggestionsResponse {
   /** Suggested custom_source_mappings entries */
   source_suggestions: UtmMappingSuggestionsResponseSourceSuggestionsList;
@@ -1754,11 +1464,6 @@ export interface UtmMappingSuggestionsResponse {
   /** Caveats and guidance about the suggestions */
   notes: UtmMappingSuggestionsResponseNotesList;
 }
-const UtmMappingSuggestionsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UtmMappingSuggestionsResponse>;
-
 export interface GetMarketingAnalyticsUtmAuditRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1767,15 +1472,8 @@ export interface GetMarketingAnalyticsUtmAuditRequest {
   /** End date for the audit period */
   date_to?: string;
 }
-const GetMarketingAnalyticsUtmAuditRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetMarketingAnalyticsUtmAuditRequest>;
-
 /** * `error` - error * `warning` - warning */
 export type DiagnosticSeverityEnum = "error" | "warning";
-const DiagnosticSeverityEnum = S.String;
-
 /** * `not_linked` - not_linked * `name_collision` - name_collision * `no_tagged_events` - no_tagged_events * `unknown_source` - unknown_source * `missing_source` - missing_source */
 export type UtmIssueKindEnum =
   | "not_linked"
@@ -1783,43 +1481,24 @@ export type UtmIssueKindEnum =
   | "no_tagged_events"
   | "unknown_source"
   | "missing_source";
-const UtmIssueKindEnum = S.String;
-
 export interface UtmAlternativeSource {
   /** A utm_source value found on this campaign's pageviews */
   utm_source: string;
   /** Number of pageview events with this utm_source */
   event_count: number;
 }
-const UtmAlternativeSource = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<UtmAlternativeSource>;
-
 /** utm_source values actually found on this campaign's pageviews, ordered by event count */
 export type UtmIssueAlternativeSourcesList = Array<UtmAlternativeSource>;
-const UtmIssueAlternativeSourcesList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<UtmIssueAlternativeSourcesList>;
-
 /** Other integrations whose campaigns share this campaign's name (name_collision only) */
 export type UtmIssueSharedWithIntegrationsList = Array<string>;
-const UtmIssueSharedWithIntegrationsList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<UtmIssueSharedWithIntegrationsList>;
-
 /** * `fix_platform_urls` - fix_platform_urls * `add_source_mapping` - add_source_mapping * `switch_to_id_match` - switch_to_id_match * `add_campaign_name_mapping` - add_campaign_name_mapping */
 export type SuggestedActionsEnum =
   | "fix_platform_urls"
   | "add_source_mapping"
   | "switch_to_id_match"
   | "add_campaign_name_mapping";
-const SuggestedActionsEnum = S.String;
-
 /** Recommended remediations, most-recommended first. fix_platform_urls cures the tagging bug itself; the others are workarounds that leave the bad URLs in place. */
 export type UtmIssueSuggestedActionsList = Array<SuggestedActionsEnum>;
-const UtmIssueSuggestedActionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<UtmIssueSuggestedActionsList>;
-
 export interface UtmIssue {
   /** The UTM field with the issue (e.g. utm_campaign, utm_source) */
   field: string;
@@ -1840,15 +1519,8 @@ export interface UtmIssue {
   /** The orphaned utm_campaign value that looks like a typo of this campaign, when one was found confidently. Set only alongside add_campaign_name_mapping; empty otherwise, including when several candidates tie and picking one could misattribute spend. */
   mapping_candidate: string;
 }
-const UtmIssue = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<UtmIssue>;
-
 /** List of detected UTM configuration issues */
 export type CampaignAuditResultIssuesList = Array<UtmIssue>;
-const CampaignAuditResultIssuesList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CampaignAuditResultIssuesList>;
-
 export interface CampaignAuditResult {
   /** Campaign name from the ad platform */
   campaign_name: string;
@@ -1869,19 +1541,10 @@ export interface CampaignAuditResult {
   /** List of detected UTM configuration issues */
   issues: CampaignAuditResultIssuesList;
 }
-const CampaignAuditResult = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CampaignAuditResult>;
-
 /** Audit results per campaign */
 export type UtmAuditResponseResultsList = Array<CampaignAuditResult>;
-const UtmAuditResponseResultsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<UtmAuditResponseResultsList>;
-
 /** * `none` - none * `auto` - auto * `mapped` - mapped */
 export type SourceMatchEnum = "none" | "auto" | "mapped";
-const SourceMatchEnum = S.String;
-
 export interface UtmEvent {
   /** UTM campaign value from pageview events */
   utm_campaign: string;
@@ -1896,15 +1559,8 @@ export interface UtmEvent {
   /** Name of the matched campaign, if any */
   matched_campaign: string | null;
 }
-const UtmEvent = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<UtmEvent>;
-
 /** All UTM events with match status */
 export type UtmAuditResponseAllUtmEventsList = Array<UtmEvent>;
-const UtmAuditResponseAllUtmEventsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<UtmAuditResponseAllUtmEventsList>;
-
 export interface UtmAuditResponse {
   /** Total number of campaigns with spend */
   total_campaigns: number;
@@ -1919,16 +1575,12 @@ export interface UtmAuditResponse {
   /** All UTM events with match status */
   all_utm_events: UtmAuditResponseAllUtmEventsList;
 }
-const UtmAuditResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<UtmAuditResponse>;
-
 export interface CompareFilter {
   /** Whether to compare the current date range to a previous date range. */
   compare?: boolean | null;
   /** The date range to compare to. The value is a relative date. Examples of relative dates are: `-1y` for 1 year ago, `-14m` for 14 months ago, `-100w` for 100 weeks ago, `-14d` for 14 days ago, `-30h` for 30 hours ago. */
   compare_to?: string | null;
 }
-const CompareFilter = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<CompareFilter>;
-
 export type ActionConversionGoalPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -1953,18 +1605,8 @@ export interface CustomEventConversionGoal {
 export type MarketingAnalyticsTableQueryConversionGoal =
   | ActionConversionGoal
   | CustomEventConversionGoal;
-const MarketingAnalyticsTableQueryConversionGoal =
-  S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryConversionGoal>;
-
 export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7;
-const DaysOfWeekEnum = S.Number;
-
 export type DateRangeDaysOfWeekList = Array<DaysOfWeekEnum | (number & {})>;
-const DateRangeDaysOfWeekList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DateRangeDaysOfWeekList>;
-
 export interface DateRange {
   /** Start of the date range. Accepts ISO 8601 timestamps (e.g., 2024-01-15T00:00:00Z) or relative formats: -7d (7 days ago), -2w (2 weeks ago), -1m (1 month ago), -1h (1 hour ago), -1mStart (start of last month), -1yStart (start of last year). */
   date_from?: string | null;
@@ -1977,16 +1619,11 @@ export interface DateRange {
   /** Whether the date_from and date_to should be used verbatim. Disables rounding to the start and end of period. */
   explicitDate?: boolean | null;
 }
-const DateRange = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<DateRange>;
-
 /** Draft conversion goal that can be set in the UI without saving */
 export type MarketingAnalyticsTableQueryDraftConversionGoal =
   | ConversionGoalFilter1
   | ConversionGoalFilter2
   | ConversionGoalFilter3;
-const MarketingAnalyticsTableQueryDraftConversionGoal =
-  S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryDraftConversionGoal>;
-
 export type MarketingAnalyticsDrillDownLevel =
   | "channel"
   | "channel_source"
@@ -1997,20 +1634,13 @@ export type MarketingAnalyticsDrillDownLevel =
   | "medium"
   | "content"
   | "term";
-const MarketingAnalyticsDrillDownLevel = S.String;
-
 export type IntegrationFilterIntegrationSourceIdsList = Array<string>;
-const IntegrationFilterIntegrationSourceIdsList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<IntegrationFilterIntegrationSourceIdsList>;
-
 export interface IntegrationFilter {
   /** Keep rows that no integration reports cost for, such as organic, email or an unmapped source. Defaults to true. */
   includeNonIntegrated?: boolean | null;
   /** Selected integration source IDs to filter by (e.g., table IDs or source map IDs) */
   integrationSourceIds?: IntegrationFilterIntegrationSourceIdsList | null;
 }
-const IntegrationFilter = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<IntegrationFilter>;
-
 export type IntervalType =
   | "second"
   | "minute"
@@ -2020,17 +1650,11 @@ export type IntervalType =
   | "month"
   | "quarter"
   | "year";
-const IntervalType = S.String;
-
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
   | "uniq_page_screen_autocaptures";
-const BounceRatePageViewMode = S.String;
-
 export type FilterLogicalOperator = "AND" | "OR";
-const FilterLogicalOperator = S.String;
-
 export type CustomBotField =
   | "$raw_user_agent"
   | "$ip"
@@ -2046,11 +1670,7 @@ export type CustomBotField =
   | "$geoip_country_code"
   | "$referrer"
   | "$referring_domain";
-const CustomBotField = S.String;
-
 export type CustomBotMatcher = "contains" | "regex" | "exact" | "cidr";
-const CustomBotMatcher = S.String;
-
 export interface CustomBotCondition {
   id: string;
   /** The event property this condition reads. */
@@ -2059,14 +1679,7 @@ export interface CustomBotCondition {
   /** Matched against the property named by `key`. */
   pattern: string;
 }
-const CustomBotCondition = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<CustomBotCondition>;
-
 export type CustomBotRuleItemsList = Array<CustomBotCondition>;
-const CustomBotRuleItemsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CustomBotRuleItemsList>;
-
 export interface CustomBotRule {
   /** Reported by `$virt_traffic_category`. Defaults to `custom`. */
   category?: string | null;
@@ -2077,14 +1690,7 @@ export interface CustomBotRule {
   /** Reported by `$virt_bot_name` and `$virt_bot_operator` when the rule matches. */
   name: string;
 }
-const CustomBotRule = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<CustomBotRule>;
-
 export type HogQLQueryModifiersCustomBotDefinitionsList = Array<CustomBotRule>;
-const HogQLQueryModifiersCustomBotDefinitionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<HogQLQueryModifiersCustomBotDefinitionsList>;
-
 export type CustomChannelField =
   | "utm_source"
   | "utm_medium"
@@ -2093,8 +1699,6 @@ export type CustomChannelField =
   | "url"
   | "pathname"
   | "hostname";
-const CustomChannelField = S.String;
-
 export type CustomChannelOperator =
   | "exact"
   | "is_not"
@@ -2104,81 +1708,39 @@ export type CustomChannelOperator =
   | "not_icontains"
   | "regex"
   | "not_regex";
-const CustomChannelOperator = S.String;
-
 export type CustomChannelConditionValueCase1List = Array<string>;
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
-const CustomChannelConditionValue = S.Unknown as any as S.Schema<CustomChannelConditionValue>;
-
 export interface CustomChannelCondition {
   id?: string;
   key?: CustomChannelField | (string & {});
   op?: CustomChannelOperator | (string & {});
   value?: CustomChannelConditionValue | null;
 }
-const CustomChannelCondition = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CustomChannelCondition>;
-
 export type CustomChannelRuleItemsList = Array<CustomChannelCondition>;
-const CustomChannelRuleItemsList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CustomChannelRuleItemsList>;
-
 export interface CustomChannelRule {
   channel_type?: string;
   combiner?: FilterLogicalOperator | (string & {});
   id?: string;
   items?: CustomChannelRuleItemsList;
 }
-const CustomChannelRule = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<CustomChannelRule>;
-
 export type HogQLQueryModifiersCustomChannelTypeRulesList = Array<CustomChannelRule>;
-const HogQLQueryModifiersCustomChannelTypeRulesList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<HogQLQueryModifiersCustomChannelTypeRulesList>;
-
 export interface DataWarehouseEventsModifier {
   distinct_id_field?: string;
   id_field?: string;
   table_name?: string;
   timestamp_field?: string;
 }
-const DataWarehouseEventsModifier = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DataWarehouseEventsModifier>;
-
 export type HogQLQueryModifiersDataWarehouseEventsModifiersList =
   Array<DataWarehouseEventsModifier>;
-const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
-
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
-const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
-
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
-const InCohortVia = S.String;
-
 export type InlineCohortCalculation = "off" | "auto" | "always";
-const InlineCohortCalculation = S.String;
-
 export type MaterializationMode =
   | "auto"
   | "legacy_null_as_string"
   | "legacy_null_as_null"
   | "disabled";
-const MaterializationMode = S.String;
-
 export type MaterializedColumnsOptimizationMode = "disabled" | "optimized";
-const MaterializedColumnsOptimizationMode = S.String;
-
 export type ParserMode =
   | "cpp_only"
   | "cpp_with_rust_shadow"
@@ -2187,30 +1749,16 @@ export type ParserMode =
   | "rust_only"
   | "rust_py_only"
   | "rust_py_with_cpp_shadow";
-const ParserMode = S.String;
-
 export type PersonsArgMaxVersion = "auto" | "v1" | "v2";
-const PersonsArgMaxVersion = S.String;
-
 export type PersonsJoinMode = "inner" | "left";
-const PersonsJoinMode = S.String;
-
 export type PersonsOnEventsMode =
   | "disabled"
   | "person_id_no_override_properties_on_events"
   | "person_id_override_properties_on_events"
   | "person_id_override_properties_joined";
-const PersonsOnEventsMode = S.String;
-
 export type PropertyGroupsMode = "enabled" | "disabled" | "optimized";
-const PropertyGroupsMode = S.String;
-
 export type SessionTableVersion = "auto" | "v1" | "v2" | "v3";
-const SessionTableVersion = S.String;
-
 export type SessionsV2JoinMode = "string" | "uuid";
-const SessionsV2JoinMode = S.String;
-
 export interface HogQLQueryModifiers {
   bounceRateDurationSeconds?: number | null;
   bounceRatePageViewMode?: BounceRatePageViewMode | (string & {}) | null;
@@ -2261,50 +1809,21 @@ export interface HogQLQueryModifiers {
   /** Serve filters on the stored session-entry attribution properties (`$channel_type`, `$entry_utm_*`, `$entry_referring_domain`) by recomputing the value from the session's first pageview. Resolved server-side; not intended to be set by clients. */
   webAnalyticsFirstPageviewFilters?: boolean | null;
 }
-const HogQLQueryModifiers = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<HogQLQueryModifiers>;
-
 export type MarketingAnalyticsOrderByEnum = "ASC" | "DESC";
 export type MarketingAnalyticsTableQueryOrderByItemItem = string | MarketingAnalyticsOrderByEnum;
-const MarketingAnalyticsTableQueryOrderByItemItem =
-  S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemItem>;
-
 export type MarketingAnalyticsTableQueryOrderByItemList =
   Array<MarketingAnalyticsTableQueryOrderByItemItem>;
-const MarketingAnalyticsTableQueryOrderByItemList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemList>;
-
 export type MarketingAnalyticsTableQueryOrderByList =
   Array<MarketingAnalyticsTableQueryOrderByItemList>;
-const MarketingAnalyticsTableQueryOrderByList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<MarketingAnalyticsTableQueryOrderByList>;
-
 export type MarketingAnalyticsTableQueryPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
   | SessionPropertyFilter
   | CohortPropertyFilter;
-const MarketingAnalyticsTableQueryPropertiesItem =
-  S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryPropertiesItem>;
-
 export type MarketingAnalyticsTableQueryPropertiesList =
   Array<MarketingAnalyticsTableQueryPropertiesItem>;
-const MarketingAnalyticsTableQueryPropertiesList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<MarketingAnalyticsTableQueryPropertiesList>;
-
 export type MarketingAnalyticsTableQueryResponseColumnsList = Array<unknown>;
-const MarketingAnalyticsTableQueryResponseColumnsList =
-  GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsTableQueryResponseColumnsList>;
-
 export type QueryStatusLabelsList = Array<string>;
-const QueryStatusLabelsList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<QueryStatusLabelsList>;
-
 export interface ClickhouseQueryProgress {
   active_cpu_time?: number;
   bytes_read?: number;
@@ -2312,22 +1831,13 @@ export interface ClickhouseQueryProgress {
   rows_read?: number;
   time_elapsed?: number;
 }
-const ClickhouseQueryProgress = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ClickhouseQueryProgress>;
-
 export type QueryScanFixLocation =
   | "query"
   | "subquery"
   | "view"
   | "insight_date_range"
   | "dashboard_date_filter";
-const QueryScanFixLocation = S.String;
-
 export type QueryScanFindingKind = "no_event_filter" | "no_start_date" | "persons_join";
-const QueryScanFindingKind = S.String;
-
 export interface QueryScanWarning {
   /** Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and "Fix with AI" only when a finding is actionable. */
   actionable: boolean;
@@ -2345,15 +1855,8 @@ export interface QueryScanWarning {
   /** Shown to the person: what happened and what to do. */
   message: string;
 }
-const QueryScanWarning = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<QueryScanWarning>;
-
 /** Every finding, fixable or not. Empty when the analysis found none. */
 export type QueryScanAnalysisFindingsList = Array<QueryScanWarning>;
-const QueryScanAnalysisFindingsList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<QueryScanAnalysisFindingsList>;
-
 export interface QueryScanAnalysis {
   /** The message the Fix with AI button sends to the assistant. Absent when no finding can be fixed in the query. */
   assistant_prompt?: string | null;
@@ -2364,8 +1867,6 @@ export interface QueryScanAnalysis {
   /** How much of the project's events in the query's date range the query read, 0 to 1. */
   range_share?: number | null;
 }
-const QueryScanAnalysis = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<QueryScanAnalysis>;
-
 export interface QueryScanSummary {
   /** The stored analysis, put on the response when it is served. Absent while the analysis runs, and when none was requested. */
   analysis?: QueryScanAnalysis | null;
@@ -2378,8 +1879,6 @@ export interface QueryScanSummary {
   /** Rows ClickHouse read for the last fresh run, all tables included. */
   rows_read: number;
 }
-const QueryScanSummary = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<QueryScanSummary>;
-
 export interface QueryStatus {
   budget_remaining_bytes?: number | null;
   bytes_read?: number | null;
@@ -2411,26 +1910,13 @@ export interface QueryStatus {
   task_id?: string | null;
   team_id?: number;
 }
-const QueryStatus = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<QueryStatus>;
-
 export interface ResolvedDateRangeResponse {
   date_from?: string;
   date_to?: string;
 }
-const ResolvedDateRangeResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ResolvedDateRangeResponse>;
-
 export type WebAnalyticsItemKind = "unit" | "duration_s" | "percentage" | "currency";
-const WebAnalyticsItemKind = S.String;
-
 export type MarketingAnalyticsItemPrevious = number | string;
-const MarketingAnalyticsItemPrevious = S.Unknown as any as S.Schema<MarketingAnalyticsItemPrevious>;
-
 export type MarketingAnalyticsItemValue = number | string;
-const MarketingAnalyticsItemValue = S.Unknown as any as S.Schema<MarketingAnalyticsItemValue>;
-
 export interface MarketingAnalyticsItem {
   changeFromPreviousPct?: number | null;
   hasComparison?: boolean | null;
@@ -2440,48 +1926,21 @@ export interface MarketingAnalyticsItem {
   previous?: MarketingAnalyticsItemPrevious | null;
   value?: MarketingAnalyticsItemValue | null;
 }
-const MarketingAnalyticsItem = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<MarketingAnalyticsItem>;
-
 export type MarketingAnalyticsTableQueryResponseResultsItemList = Array<MarketingAnalyticsItem>;
-const MarketingAnalyticsTableQueryResponseResultsItemList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsItemList>;
-
 export type MarketingAnalyticsTableQueryResponseResultsList =
   Array<MarketingAnalyticsTableQueryResponseResultsItemList>;
-const MarketingAnalyticsTableQueryResponseResultsList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsList>;
-
 export interface SamplingRate {
   denominator?: number | null;
   numerator?: number;
 }
-const SamplingRate = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<SamplingRate>;
-
 export interface QueryTiming {
   /** Key. Shortened to 'k' to save on data. */
   k?: string;
   /** Time in seconds. Shortened to 't' to save on data. */
   t?: number;
 }
-const QueryTiming = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<QueryTiming>;
-
 export type MarketingAnalyticsTableQueryResponseTimingsList = Array<QueryTiming>;
-const MarketingAnalyticsTableQueryResponseTimingsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponseTimingsList>;
-
 export type MarketingAnalyticsTableQueryResponseTypesList = Array<unknown>;
-const MarketingAnalyticsTableQueryResponseTypesList =
-  GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsTableQueryResponseTypesList>;
-
 export interface DataWarehouseSourceUsage {
   /** ExternalDataSource id */
   id: string;
@@ -2490,18 +1949,8 @@ export interface DataWarehouseSourceUsage {
   /** Warehouse table name that was referenced */
   table_name: string;
 }
-const DataWarehouseSourceUsage = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DataWarehouseSourceUsage>;
-
 export type MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
   Array<DataWarehouseSourceUsage>;
-const MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList>;
-
 export interface DataWarehouseSyncWarning {
   /** Human-readable warning shown to the user */
   message: string;
@@ -2531,16 +1980,8 @@ export interface AccessControlFilterWarning {
 export type MarketingAnalyticsTableQueryResponseWarningsItem =
   | DataWarehouseSyncWarning
   | AccessControlFilterWarning;
-const MarketingAnalyticsTableQueryResponseWarningsItem =
-  S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsItem>;
-
 export type MarketingAnalyticsTableQueryResponseWarningsList =
   Array<MarketingAnalyticsTableQueryResponseWarningsItem>;
-const MarketingAnalyticsTableQueryResponseWarningsList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsList>;
-
 export interface MarketingAnalyticsTableQueryResponse {
   columns?: MarketingAnalyticsTableQueryResponseColumnsList | null;
   /** ISO timestamp of the oldest precompute window backing this result -- surfaced as "data as of X". */
@@ -2572,24 +2013,11 @@ export interface MarketingAnalyticsTableQueryResponse {
   /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response -- so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
   warnings?: MarketingAnalyticsTableQueryResponseWarningsList | null;
 }
-const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponse>;
-
 export interface WebAnalyticsSampling {
   enabled?: boolean | null;
   forceSamplingRate?: SamplingRate | null;
 }
-const WebAnalyticsSampling = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<WebAnalyticsSampling>;
-
 export type MarketingAnalyticsTableQuerySelectList = Array<string>;
-const MarketingAnalyticsTableQuerySelectList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<MarketingAnalyticsTableQuerySelectList>;
-
 export interface QueryLogTags {
   /** Name of the query, preferably unique. For example web_analytics_vitals */
   name?: string | null;
@@ -2600,8 +2028,6 @@ export interface QueryLogTags {
   /** Scene where this query is shown in the UI. Use string, there's no need to churn the Schema when we add a new Scene * */
   scene?: string | null;
 }
-const QueryLogTags = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<QueryLogTags>;
-
 export interface MarketingAnalyticsTableQuery {
   /** Groups aggregation - not used in Web Analytics but required for type compatibility */
   aggregation_group_type_index?: number | null;
@@ -2644,11 +2070,6 @@ export interface MarketingAnalyticsTableQuery {
   /** version of the node, used for schema migrations */
   version?: number | null;
 }
-const MarketingAnalyticsTableQuery = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<MarketingAnalyticsTableQuery>;
-
 export interface ListMarketingAnalyticsConversionRecordingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2669,16 +2090,8 @@ export interface ListMarketingAnalyticsConversionRecordingsRequest {
   /** The maximum number of conversion session IDs to return. */
   limit?: number;
 }
-const ListMarketingAnalyticsConversionRecordingsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListMarketingAnalyticsConversionRecordingsRequest>;
-
 /** Sessions in which the attributed conversions occurred. A session might not have a recording. */
 export type ConversionRecordingsResponseSessionIdsList = Array<string>;
-const ConversionRecordingsResponseSessionIdsList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<ConversionRecordingsResponseSessionIdsList>;
-
 export interface ConversionRecordingsResponse {
   /** Sessions in which the attributed conversions occurred. A session might not have a recording. */
   session_ids: ConversionRecordingsResponseSessionIdsList;
@@ -2687,20 +2100,10 @@ export interface ConversionRecordingsResponse {
   /** Whether the conversion data is still being prepared. */
   preparing: boolean;
 }
-const ConversionRecordingsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ConversionRecordingsResponse>;
-
 /** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan -- never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
 export type MarketingAnalyticsApplySetupOpsCreateRequestOpsList = Array<unknown>;
-const MarketingAnalyticsApplySetupOpsCreateRequestOpsList =
-  GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequestOpsList>;
-
 /** * `setup_tab` - setup_tab * `apply_all_safe` - apply_all_safe * `mcp` - mcp */
 export type ApplySetupOpsSourceEnum = "setup_tab" | "apply_all_safe" | "mcp";
-const ApplySetupOpsSourceEnum = S.String;
-
 export interface MarketingAnalyticsApplySetupOpsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2709,21 +2112,10 @@ export interface MarketingAnalyticsApplySetupOpsCreateRequest {
   /** Where the request came from, recorded in the activity log * `setup_tab` - setup_tab * `apply_all_safe` - apply_all_safe * `mcp` - mcp */
   source?: ApplySetupOpsSourceEnum | (string & {});
 }
-const MarketingAnalyticsApplySetupOpsCreateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequest>;
-
 /** The operations that were applied */
 export type ApplySetupOpsResponseAppliedList = Array<unknown>;
-const ApplySetupOpsResponseAppliedList =
-  GoalExplanationByEventItemList as any as S.Schema<ApplySetupOpsResponseAppliedList>;
-
 /** Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state -- POST them back to undo. */
 export type ApplySetupOpsResponseUndoOpsList = Array<unknown>;
-const ApplySetupOpsResponseUndoOpsList =
-  GoalExplanationByEventItemList as any as S.Schema<ApplySetupOpsResponseUndoOpsList>;
-
 export interface ApplySetupOpsResponse {
   /** The operations that were applied */
   applied: ApplySetupOpsResponseAppliedList;
@@ -2732,22 +2124,12 @@ export interface ApplySetupOpsResponse {
   /** The config as it now stands */
   marketing_analytics_config: unknown;
 }
-const ApplySetupOpsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ApplySetupOpsResponse>;
-
 export interface MarketingAnalyticsConversionGoalsCreateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The conversion goal. Must match one of the ConversionGoalFilter shapes: an events node, an actions node or a data warehouse node. conversion_goal_id is assigned by the server and any value sent is ignored. */
   goal: ConversionGoal;
 }
-const MarketingAnalyticsConversionGoalsCreateCreateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<MarketingAnalyticsConversionGoalsCreateCreateRequest>;
-
 export type PartialConversionGoalFilter1FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -3036,8 +2418,6 @@ export type ConversionGoalPatch =
   | PartialConversionGoalFilter1
   | PartialConversionGoalFilter2
   | PartialConversionGoalFilter3;
-const ConversionGoalPatch = S.Unknown as any as S.Schema<ConversionGoalPatch>;
-
 export interface MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3045,11 +2425,6 @@ export interface MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest {
   /** The fields to change, merged into the stored goal -- anything you leave out is kept, and the goal keeps its position in the list. schema_map is merged key by key. The merged result must still match one of the ConversionGoalFilter shapes. Send `kind` only to change the goal's shape, in which case the goal is replaced rather than merged and the whole new shape is required. conversion_goal_id comes from the URL and any value sent is ignored. */
   goal?: ConversionGoalPatch;
 }
-const MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest>;
-
 export type CreateMarketingAnalyticsTestMappingError = PosthogOpError;
 export const createMarketingAnalyticsTestMapping: API.OperationMethod<
   CreateMarketingAnalyticsTestMappingRequest,
@@ -3057,8 +2432,8 @@ export const createMarketingAnalyticsTestMapping: API.OperationMethod<
   CreateMarketingAnalyticsTestMappingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMarketingAnalyticsTestMappingRequest,
-  output: CreateMarketingAnalyticsTestMappingResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateMarketingAnalyticsTestMappingRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateMarketingAnalyticsTestMappingResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3075,8 +2450,8 @@ export const deleteMarketingAnalyticsConversionGoalDestroy: API.OperationMethod<
   DeleteMarketingAnalyticsConversionGoalDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMarketingAnalyticsConversionGoalDestroyRequest,
-  output: ConversionGoalWriteResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteMarketingAnalyticsConversionGoalDestroyRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ConversionGoalWriteResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3090,8 +2465,8 @@ export const getMarketingAnalyticsConversionGoal: API.OperationMethod<
   GetMarketingAnalyticsConversionGoalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsConversionGoalRequest,
-  output: ConversionGoalsListResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<GetMarketingAnalyticsConversionGoalRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ConversionGoalsListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3105,8 +2480,8 @@ export const getMarketingAnalyticsDataSource: API.OperationMethod<
   GetMarketingAnalyticsDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsDataSourceRequest,
-  output: DataSourceHealthResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<GetMarketingAnalyticsDataSourceRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DataSourceHealthResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3120,8 +2495,8 @@ export const getMarketingAnalyticsDiagnose: API.OperationMethod<
   GetMarketingAnalyticsDiagnoseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsDiagnoseRequest,
-  output: MarketingDiagnosticResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<GetMarketingAnalyticsDiagnoseRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<MarketingDiagnosticResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3135,8 +2510,8 @@ export const getMarketingAnalyticsExplainConversionGoal: API.OperationMethod<
   GetMarketingAnalyticsExplainConversionGoalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsExplainConversionGoalRequest,
-  output: GoalExplanation,
+  input: __S(25, __c3, 1) as any as S.Schema<GetMarketingAnalyticsExplainConversionGoalRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GoalExplanation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3150,8 +2525,8 @@ export const getMarketingAnalyticsSetupPlan: API.OperationMethod<
   GetMarketingAnalyticsSetupPlanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsSetupPlanRequest,
-  output: SetupPlanResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetMarketingAnalyticsSetupPlanRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<SetupPlanResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3165,8 +2540,8 @@ export const getMarketingAnalyticsSourceValidation: API.OperationMethod<
   GetMarketingAnalyticsSourceValidationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsSourceValidationRequest,
-  output: SourceValidation,
+  input: __S(38, __c4, 6) as any as S.Schema<GetMarketingAnalyticsSourceValidationRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<SourceValidation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3180,8 +2555,8 @@ export const getMarketingAnalyticsSuggestConversionGoal: API.OperationMethod<
   GetMarketingAnalyticsSuggestConversionGoalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsSuggestConversionGoalRequest,
-  output: EventSuggestionsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<GetMarketingAnalyticsSuggestConversionGoalRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<EventSuggestionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3195,8 +2570,8 @@ export const getMarketingAnalyticsSuggestUtmMapping: API.OperationMethod<
   GetMarketingAnalyticsSuggestUtmMappingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsSuggestUtmMappingRequest,
-  output: UtmMappingSuggestionsResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<GetMarketingAnalyticsSuggestUtmMappingRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<UtmMappingSuggestionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3210,8 +2585,8 @@ export const getMarketingAnalyticsUtmAudit: API.OperationMethod<
   GetMarketingAnalyticsUtmAuditError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMarketingAnalyticsUtmAuditRequest,
-  output: UtmAuditResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<GetMarketingAnalyticsUtmAuditRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<UtmAuditResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3224,8 +2599,8 @@ export const listMarketingAnalyticsConversionRecordings: API.OperationMethod<
   ListMarketingAnalyticsConversionRecordingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMarketingAnalyticsConversionRecordingsRequest,
-  output: ConversionRecordingsResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<ListMarketingAnalyticsConversionRecordingsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<ConversionRecordingsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3239,8 +2614,8 @@ export const marketingAnalyticsApplySetupOpsCreate: API.OperationMethod<
   MarketingAnalyticsApplySetupOpsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarketingAnalyticsApplySetupOpsCreateRequest,
-  output: ApplySetupOpsResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<ApplySetupOpsResponse>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3257,8 +2632,12 @@ export const marketingAnalyticsConversionGoalsCreateCreate: API.OperationMethod<
   MarketingAnalyticsConversionGoalsCreateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarketingAnalyticsConversionGoalsCreateCreateRequest,
-  output: ConversionGoalWriteResponse,
+  input: __S(
+    110,
+    __c13,
+    6,
+  ) as any as S.Schema<MarketingAnalyticsConversionGoalsCreateCreateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ConversionGoalWriteResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3276,8 +2655,12 @@ export const marketingAnalyticsConversionGoalsUpdatePartialUpdate: API.Operation
   MarketingAnalyticsConversionGoalsUpdatePartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest,
-  output: ConversionGoalWriteResponse,
+  input: __S(
+    111,
+    __c13,
+    7,
+  ) as any as S.Schema<MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ConversionGoalWriteResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3322,12 +2705,12 @@ function __c0(j: number): any {
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.Array(ConversionGoalWrittenListItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          goal: ConversionGoal,
-          conversion_goals: ConversionGoalWrittenList,
+          goal: S.Unknown,
+          conversion_goals: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "ConversionGoalWriteResponse",
@@ -3351,7 +2734,7 @@ function __c0(j: number): any {
         S.Struct({
           conversion_goal_id: S.String,
           name: S.String,
-          kind: ConversionGoalKindEnum,
+          kind: S.String,
           target_label: S.String,
           last_30d_count: S.Number,
           integrated_count: S.NullOr(S.Number),
@@ -3370,11 +2753,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ConversionGoalSummary);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          goals: ConversionGoalsListResponseGoalsList,
+          goals: __S(8, __c1, 0),
           attribution_window_days: S.Number,
           attribution_mode: S.String,
           has_misconfigured: S.Boolean,
@@ -3408,7 +2791,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "RequiredTableStatus" });
     case 4:
-      return S.Array(RequiredTableStatus);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3422,9 +2805,9 @@ function __c1(j: number): any {
           rows_last_24h: S.Number,
           rows_last_7d: S.Number,
           sources_map_present: S.Boolean,
-          schema_columns_mapped: DataSourceHealthEntrySchemaColumnsMappedList,
-          schema_columns_required_missing: DataSourceHealthEntrySchemaColumnsRequiredMissingList,
-          required_tables: DataSourceHealthEntryRequiredTablesList,
+          schema_columns_mapped: __S(3, __c0, 3),
+          schema_columns_required_missing: __S(3, __c0, 3),
+          required_tables: __S(12, __c1, 4),
           settings_url: S.String,
           schemas_url: S.NullOr(S.String),
           diagnosis: S.String,
@@ -3432,14 +2815,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "DataSourceHealthEntry" });
     case 6:
-      return S.Array(DataSourceHealthEntry);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          integrations: DataSourceHealthResponseIntegrationsList,
+          integrations: __S(14, __c1, 6),
           has_any_data: S.Boolean,
           overall_status: S.String,
-          issues_summary: DataSourceHealthResponseIssuesSummaryList,
+          issues_summary: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "DataSourceHealthResponse" });
   }
@@ -3472,7 +2855,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UnmatchedUtmSample" });
     case 2:
-      return S.Array(UnmatchedUtmSample);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3483,7 +2866,7 @@ function __c2(j: number): any {
           events_unmatched_likely_yours_last_7d: S.Number,
           last_event_with_matching_utm_at: S.NullOr(S.String),
           matched_pct: S.Number,
-          sample_unmatched_utm_sources: AttributionHealthEntrySampleUnmatchedUtmSourcesList,
+          sample_unmatched_utm_sources: __S(18, __c2, 2),
           events_matched_paid_last_7d: S.Number,
           events_matched_tagged_medium_last_7d: S.Number,
         }),
@@ -3498,7 +2881,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RecommendedAction" });
     case 5:
-      return S.Array(RecommendedAction);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3507,13 +2890,13 @@ function __c2(j: number): any {
           display_name: S.String,
           overall_status: S.String,
           diagnosis: S.String,
-          data_source: S.optional(S.NullOr(DataSourceHealthEntry)),
-          attribution: S.optional(S.NullOr(AttributionHealthEntry)),
-          recommended_actions: IntegrationDiagnosticRecommendedActionsList,
+          data_source: S.optional(S.NullOr(__S(13, __c1, 5))),
+          attribution: S.optional(S.NullOr(__S(19, __c2, 3))),
+          recommended_actions: __S(21, __c2, 5),
         }),
       ).annotate({ identifier: "IntegrationDiagnostic" });
     case 7:
-      return S.Array(IntegrationDiagnostic);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -3521,11 +2904,11 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          integrations: MarketingDiagnosticResponseIntegrationsList,
+          integrations: __S(23, __c2, 7),
           overall_status: S.String,
           summary: S.String,
-          conversion_goals: S.optional(S.NullOr(ConversionGoalsListResponse)),
-          recommended_actions: MarketingDiagnosticResponseRecommendedActionsList,
+          conversion_goals: S.optional(S.NullOr(__S(9, __c1, 1))),
+          recommended_actions: __S(21, __c2, 5),
         }),
       ).annotate({
         identifier: "MarketingDiagnosticResponse",
@@ -3557,7 +2940,7 @@ function __c3(j: number): any {
     case 3:
       return S.Array(S.Unknown);
     case 4:
-      return S.Array(GoalExplanationByEventItemList);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3570,24 +2953,24 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "GoalEventSample" });
     case 6:
-      return S.Array(GoalEventSample);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           conversion_goal_id: S.String,
           goal_name: S.String,
-          kind: ConversionGoalKindEnum,
-          period: GoalExplanationPeriod,
+          kind: S.String,
+          period: __S(26, __c3, 2),
           total_count: S.Number,
           integrated_count: S.NullOr(S.Number),
           events_without_utm_source: S.NullOr(S.Number),
           events_with_unmatched_utm_source: S.NullOr(S.Number),
           non_integrated_count: S.NullOr(S.Number),
-          by_event: GoalExplanationByEventList,
-          by_utm_source: GoalExplanationByUtmSourceList,
-          by_matched_integration: GoalExplanationByMatchedIntegrationList,
-          samples: GoalExplanationSamplesList,
-          notes: GoalExplanationNotesList,
+          by_event: __S(28, __c3, 4),
+          by_utm_source: __S(28, __c3, 4),
+          by_matched_integration: __S(28, __c3, 4),
+          samples: __S(30, __c3, 6),
+          notes: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "GoalExplanation" });
   }
@@ -3620,9 +3003,9 @@ function __c4(j: number): any {
           confidence: S.Number,
           title: S.String,
           evidence: S.String,
-          unlocks: SuggestionUnlocksList,
+          unlocks: __S(3, __c0, 3),
           apply: S.Unknown,
-          also_recommended: SuggestionAlsoRecommendedList,
+          also_recommended: __S(27, __c3, 3),
           safe_to_batch: S.Boolean,
           rank_score: S.Number,
           integration: S.NullOr(S.String),
@@ -3633,24 +3016,24 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Suggestion" });
     case 2:
-      return S.Array(Suggestion);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           capability: S.String,
           status: S.String,
           explanation: S.String,
-          blocked_by: CapabilityReadinessBlockedByList,
+          blocked_by: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "CapabilityReadiness" });
     case 4:
-      return S.Array(CapabilityReadiness);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          suggestions: SetupPlanResponseSuggestionsList,
-          readiness: SetupPlanResponseReadinessList,
-          degraded: SetupPlanResponseDegradedList,
+          suggestions: __S(34, __c4, 2),
+          readiness: __S(36, __c4, 4),
+          degraded: __S(3, __c0, 3),
           truncated: S.Boolean,
           summary: S.String,
         }),
@@ -3670,7 +3053,7 @@ function __c4(j: number): any {
         identifier: "GetMarketingAnalyticsSourceValidationRequest",
       });
     case 7:
-      return S.Record(S.String, SourceValidationErrorsBySourceValueList);
+      return S.Record(S.String, __S(3, __c0, 3));
   }
 }
 function __c5(j: number): any {
@@ -3678,7 +3061,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errors_by_source: SourceValidationErrorsBySourceMap,
+          errors_by_source: __S(39, __c4, 7),
         }),
       ).annotate({ identifier: "SourceValidation" });
     case 1:
@@ -3705,18 +3088,18 @@ function __c5(j: number): any {
           distinct_users_30d: S.Number,
           pct_with_utm_source: S.Number,
           pct_with_utm_campaign: S.Number,
-          top_utm_sources: CandidateEventTopUtmSourcesList,
+          top_utm_sources: __S(28, __c3, 4),
           is_already_a_goal: S.Boolean,
           suggestion_score: S.Number,
           suggestion_reason: S.String,
         }),
       ).annotate({ identifier: "CandidateEvent" });
     case 3:
-      return S.Array(CandidateEvent);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          candidates: EventSuggestionsResponseCandidatesList,
+          candidates: __S(43, __c5, 3),
           lookback_days: S.Number,
           excluded_events_count: S.Number,
         }),
@@ -3748,7 +3131,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SourceMappingSuggestion" });
     case 7:
-      return S.Array(SourceMappingSuggestion);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -3759,7 +3142,7 @@ function __c6(j: number): any {
           integration: S.String,
           integration_display_name: S.String,
           suggested_clean_name: S.String,
-          raw_campaign_values: CampaignMappingSuggestionRawCampaignValuesList,
+          raw_campaign_values: __S(3, __c0, 3),
           confidence: S.Number,
           method: S.String,
           reason: S.String,
@@ -3769,7 +3152,7 @@ function __c6(j: number): any {
         identifier: "CampaignMappingSuggestion",
       });
     case 1:
-      return S.Array(CampaignMappingSuggestion);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3779,7 +3162,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "RawUnmatchedSample" });
     case 3:
-      return S.Array(RawUnmatchedSample);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3791,7 +3174,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "CatalogueEntry" });
     case 5:
-      return S.Array(CatalogueEntry);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3802,7 +3185,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "CurrentMapping" });
     case 7:
-      return S.Array(CurrentMapping);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -3810,15 +3193,15 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          source_suggestions: UtmMappingSuggestionsResponseSourceSuggestionsList,
-          campaign_suggestions: UtmMappingSuggestionsResponseCampaignSuggestionsList,
-          raw_unmatched_samples: UtmMappingSuggestionsResponseRawUnmatchedSamplesList,
-          full_utm_source_catalogue: UtmMappingSuggestionsResponseFullUtmSourceCatalogueList,
-          current_mappings: UtmMappingSuggestionsResponseCurrentMappingsList,
+          source_suggestions: __S(47, __c5, 7),
+          campaign_suggestions: __S(49, __c6, 1),
+          raw_unmatched_samples: __S(51, __c6, 3),
+          full_utm_source_catalogue: __S(53, __c6, 5),
+          current_mappings: __S(55, __c6, 7),
           total_unmatched_events_in_window: S.Number,
           total_events_with_utm_in_window: S.Number,
           lookback_days_used: S.Number,
-          notes: UtmMappingSuggestionsResponseNotesList,
+          notes: __S(3, __c0, 3),
         }),
       ).annotate({
         identifier: "UtmMappingSuggestionsResponse",
@@ -3847,25 +3230,25 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "UtmAlternativeSource" });
     case 3:
-      return S.Array(UtmAlternativeSource);
+      return S.Array(__S(58, __c7, 2));
     case 4:
-      return S.Array(SuggestedActionsEnum);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           field: S.String,
-          severity: DiagnosticSeverityEnum,
-          kind: UtmIssueKindEnum,
+          severity: S.String,
+          kind: S.String,
           message: S.String,
-          alternative_sources: UtmIssueAlternativeSourcesList,
-          shared_with_integrations: UtmIssueSharedWithIntegrationsList,
+          alternative_sources: __S(59, __c7, 3),
+          shared_with_integrations: __S(3, __c0, 3),
           missing_source_count: S.Number,
-          suggested_actions: UtmIssueSuggestedActionsList,
+          suggested_actions: __S(60, __c7, 4),
           mapping_candidate: S.String,
         }),
       ).annotate({ identifier: "UtmIssue" });
     case 6:
-      return S.Array(UtmIssue);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3877,7 +3260,7 @@ function __c7(j: number): any {
           impressions: S.Number,
           has_utm_events: S.Boolean,
           event_count: S.Number,
-          issues: CampaignAuditResultIssuesList,
+          issues: __S(62, __c7, 6),
         }),
       ).annotate({ identifier: "CampaignAuditResult" });
   }
@@ -3885,20 +3268,20 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CampaignAuditResult);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           utm_campaign: S.String,
           utm_source: S.String,
           event_count: S.Number,
-          campaign_match: SourceMatchEnum,
-          source_match: SourceMatchEnum,
+          campaign_match: S.String,
+          source_match: S.String,
           matched_campaign: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "UtmEvent" });
     case 2:
-      return S.Array(UtmEvent);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3906,8 +3289,8 @@ function __c8(j: number): any {
           campaigns_with_issues: S.Number,
           campaigns_without_issues: S.Number,
           total_spend_at_risk: S.Number,
-          results: UtmAuditResponseResultsList,
-          all_utm_events: UtmAuditResponseAllUtmEventsList,
+          results: __S(64, __c8, 0),
+          all_utm_events: __S(66, __c8, 2),
         }),
       ).annotate({ identifier: "UtmAuditResponse" });
     case 4:
@@ -3918,13 +3301,13 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "CompareFilter" });
     case 5:
-      return S.Array(DaysOfWeekEnum);
+      return S.Array(S.Number);
     case 6:
       return S.suspend(() =>
         S.Struct({
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
-          daysOfWeek: S.optional(S.NullOr(DateRangeDaysOfWeekList)),
+          daysOfWeek: S.optional(S.NullOr(__S(69, __c8, 5))),
           excludeIncompletePeriods: S.optional(S.NullOr(S.Boolean)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -3933,7 +3316,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           includeNonIntegrated: S.optional(S.NullOr(S.Boolean)),
-          integrationSourceIds: S.optional(S.NullOr(IntegrationFilterIntegrationSourceIdsList)),
+          integrationSourceIds: S.optional(S.NullOr(__S(3, __c0, 3))),
         }),
       ).annotate({ identifier: "IntegrationFilter" });
   }
@@ -3944,47 +3327,47 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          key: CustomBotField,
-          matcher: CustomBotMatcher,
+          key: S.String,
+          matcher: S.String,
           pattern: S.String,
         }),
       ).annotate({ identifier: "CustomBotCondition" });
     case 1:
-      return S.Array(CustomBotCondition);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.NullOr(S.String)),
-          combiner: FilterLogicalOperator,
+          combiner: S.String,
           id: S.String,
-          items: CustomBotRuleItemsList,
+          items: __S(73, __c9, 1),
           name: S.String,
         }),
       ).annotate({ identifier: "CustomBotRule" });
     case 3:
-      return S.Array(CustomBotRule);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          key: S.optional(CustomChannelField),
-          op: S.optional(CustomChannelOperator),
-          value: S.optional(S.NullOr(CustomChannelConditionValue)),
+          key: S.optional(S.String),
+          op: S.optional(S.String),
+          value: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "CustomChannelCondition" });
     case 5:
-      return S.Array(CustomChannelCondition);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           channel_type: S.optional(S.String),
-          combiner: S.optional(FilterLogicalOperator),
+          combiner: S.optional(S.String),
           id: S.optional(S.String),
-          items: S.optional(CustomChannelRuleItemsList),
+          items: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({ identifier: "CustomChannelRule" });
     case 7:
-      return S.Array(CustomChannelRule);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -4001,47 +3384,39 @@ function __c10(j: number): any {
         identifier: "DataWarehouseEventsModifier",
       });
     case 1:
-      return S.Array(DataWarehouseEventsModifier);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
-          bounceRatePageViewMode: S.optional(S.NullOr(BounceRatePageViewMode)),
+          bounceRatePageViewMode: S.optional(S.NullOr(S.String)),
           convertToProjectTimezone: S.optional(S.NullOr(S.Boolean)),
           cookielessTrafficIsRegular: S.optional(S.NullOr(S.Boolean)),
-          customBotDefinitions: S.optional(S.NullOr(HogQLQueryModifiersCustomBotDefinitionsList)),
-          customChannelTypeRules: S.optional(
-            S.NullOr(HogQLQueryModifiersCustomChannelTypeRulesList),
-          ),
-          dataWarehouseEventsModifiers: S.optional(
-            S.NullOr(HogQLQueryModifiersDataWarehouseEventsModifiersList),
-          ),
+          customBotDefinitions: S.optional(S.NullOr(__S(75, __c9, 3))),
+          customChannelTypeRules: S.optional(S.NullOr(__S(79, __c9, 7))),
+          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(81, __c10, 1))),
           debug: S.optional(S.NullOr(S.Boolean)),
-          forceClickhouseDataSkippingIndexes: S.optional(
-            S.NullOr(HogQLQueryModifiersForceClickhouseDataSkippingIndexesList),
-          ),
+          forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(3, __c0, 3))),
           formatCsvAllowDoubleQuotes: S.optional(S.NullOr(S.Boolean)),
-          inCohortVia: S.optional(S.NullOr(InCohortVia)),
-          inlineCohortCalculation: S.optional(S.NullOr(InlineCohortCalculation)),
-          materializationMode: S.optional(S.NullOr(MaterializationMode)),
-          materializedColumnsOptimizationMode: S.optional(
-            S.NullOr(MaterializedColumnsOptimizationMode),
-          ),
+          inCohortVia: S.optional(S.NullOr(S.String)),
+          inlineCohortCalculation: S.optional(S.NullOr(S.String)),
+          materializationMode: S.optional(S.NullOr(S.String)),
+          materializedColumnsOptimizationMode: S.optional(S.NullOr(S.String)),
           mergeFederatedAggregateJoins: S.optional(S.NullOr(S.Boolean)),
           optimizeJoinedFilters: S.optional(S.NullOr(S.Boolean)),
           optimizeProjections: S.optional(S.NullOr(S.Boolean)),
-          parserMode: S.optional(S.NullOr(ParserMode)),
+          parserMode: S.optional(S.NullOr(S.String)),
           personIdPushdown: S.optional(S.NullOr(S.Boolean)),
-          personsArgMaxVersion: S.optional(S.NullOr(PersonsArgMaxVersion)),
-          personsJoinMode: S.optional(S.NullOr(PersonsJoinMode)),
-          personsOnEventsMode: S.optional(S.NullOr(PersonsOnEventsMode)),
-          propertyGroupsMode: S.optional(S.NullOr(PropertyGroupsMode)),
+          personsArgMaxVersion: S.optional(S.NullOr(S.String)),
+          personsJoinMode: S.optional(S.NullOr(S.String)),
+          personsOnEventsMode: S.optional(S.NullOr(S.String)),
+          propertyGroupsMode: S.optional(S.NullOr(S.String)),
           pushDownPredicates: S.optional(S.NullOr(S.Boolean)),
           s3TableUseInvalidColumns: S.optional(S.NullOr(S.Boolean)),
           sessionIdPushdown: S.optional(S.NullOr(S.Boolean)),
           sessionPropertyPreAggregation: S.optional(S.NullOr(S.Boolean)),
-          sessionTableVersion: S.optional(S.NullOr(SessionTableVersion)),
-          sessionsV2JoinMode: S.optional(S.NullOr(SessionsV2JoinMode)),
+          sessionTableVersion: S.optional(S.NullOr(S.String)),
+          sessionsV2JoinMode: S.optional(S.NullOr(S.String)),
           timings: S.optional(S.NullOr(S.Boolean)),
           typeAwareCastSimplification: S.optional(S.NullOr(S.Boolean)),
           useMaterializedViews: S.optional(S.NullOr(S.Boolean)),
@@ -4053,11 +3428,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "HogQLQueryModifiers" });
     case 3:
-      return S.Array(MarketingAnalyticsTableQueryOrderByItemItem);
+      return S.Array(S.Unknown);
     case 4:
-      return S.Array(MarketingAnalyticsTableQueryOrderByItemList);
+      return S.Array(__S(83, __c10, 3));
     case 5:
-      return S.Array(MarketingAnalyticsTableQueryPropertiesItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4076,8 +3451,8 @@ function __c10(j: number): any {
           cause: S.optional(S.NullOr(S.String)),
           evidence: S.optional(S.NullOr(S.String)),
           fix: S.String,
-          fix_location: S.optional(S.NullOr(QueryScanFixLocation)),
-          kind: QueryScanFindingKind,
+          fix_location: S.optional(S.NullOr(S.String)),
+          kind: S.String,
           message: S.String,
         }),
       ).annotate({ identifier: "QueryScanWarning" });
@@ -4086,12 +3461,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(QueryScanWarning);
+      return S.Array(__S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           assistant_prompt: S.optional(S.NullOr(S.String)),
-          findings: QueryScanAnalysisFindingsList,
+          findings: __S(88, __c11, 0),
           project_share: S.optional(S.NullOr(S.Number)),
           range_share: S.optional(S.NullOr(S.Number)),
         }),
@@ -4099,7 +3474,7 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          analysis: S.optional(S.NullOr(QueryScanAnalysis)),
+          analysis: S.optional(S.NullOr(__S(89, __c11, 1))),
           analysis_requested: S.optional(S.NullOr(S.Boolean)),
           duration_ms: S.Number,
           killed: S.optional(S.NullOr(S.Boolean)),
@@ -4121,11 +3496,11 @@ function __c11(j: number): any {
           expiration_time: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           insight_id: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(QueryStatusLabelsList)),
+          labels: S.optional(S.NullOr(__S(3, __c0, 3))),
           pickup_time: S.optional(S.NullOr(S.String)),
           query_async: S.optional(S.Boolean),
-          query_progress: S.optional(S.NullOr(ClickhouseQueryProgress)),
-          query_scan: S.optional(S.NullOr(QueryScanSummary)),
+          query_progress: S.optional(S.NullOr(__S(86, __c10, 6))),
+          query_scan: S.optional(S.NullOr(__S(90, __c11, 2))),
           results: S.optional(S.Unknown),
           start_time: S.optional(S.NullOr(S.String)),
           task_id: S.optional(S.NullOr(S.String)),
@@ -4148,15 +3523,15 @@ function __c11(j: number): any {
           hasComparison: S.optional(S.NullOr(S.Boolean)),
           isIncreaseBad: S.optional(S.NullOr(S.Boolean)),
           key: S.optional(S.String),
-          kind: S.optional(WebAnalyticsItemKind),
-          previous: S.optional(S.NullOr(MarketingAnalyticsItemPrevious)),
-          value: S.optional(S.NullOr(MarketingAnalyticsItemValue)),
+          kind: S.optional(S.String),
+          previous: S.optional(S.NullOr(S.Unknown)),
+          value: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "MarketingAnalyticsItem" });
     case 6:
-      return S.Array(MarketingAnalyticsItem);
+      return S.Array(__S(93, __c11, 5));
     case 7:
-      return S.Array(MarketingAnalyticsTableQueryResponseResultsItemList);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -4176,7 +3551,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "QueryTiming" });
     case 2:
-      return S.Array(QueryTiming);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4186,32 +3561,30 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "DataWarehouseSourceUsage" });
     case 4:
-      return S.Array(DataWarehouseSourceUsage);
+      return S.Array(__S(99, __c12, 3));
     case 5:
-      return S.Array(MarketingAnalyticsTableQueryResponseWarningsItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(S.NullOr(MarketingAnalyticsTableQueryResponseColumnsList)),
+          columns: S.optional(S.NullOr(__S(27, __c3, 3))),
           dataComputedAt: S.optional(S.NullOr(S.String)),
           error: S.optional(S.NullOr(S.String)),
           hasMore: S.optional(S.NullOr(S.Boolean)),
           hogql: S.optional(S.NullOr(S.String)),
           limit: S.optional(S.NullOr(S.Number)),
-          modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
+          modifiers: S.optional(S.NullOr(__S(82, __c10, 2))),
           offset: S.optional(S.NullOr(S.Number)),
           precomputeNotReady: S.optional(S.NullOr(S.Boolean)),
-          query_status: S.optional(S.NullOr(QueryStatus)),
-          resolved_compare_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
-          resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
-          results: S.optional(MarketingAnalyticsTableQueryResponseResultsList),
-          samplingRate: S.optional(S.NullOr(SamplingRate)),
-          timings: S.optional(S.NullOr(MarketingAnalyticsTableQueryResponseTimingsList)),
-          types: S.optional(S.NullOr(MarketingAnalyticsTableQueryResponseTypesList)),
-          used_data_warehouse_sources: S.optional(
-            S.NullOr(MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList),
-          ),
-          warnings: S.optional(S.NullOr(MarketingAnalyticsTableQueryResponseWarningsList)),
+          query_status: S.optional(S.NullOr(__S(91, __c11, 3))),
+          resolved_compare_date_range: S.optional(S.NullOr(__S(92, __c11, 4))),
+          resolved_date_range: S.optional(S.NullOr(__S(92, __c11, 4))),
+          results: S.optional(__S(95, __c11, 7)),
+          samplingRate: S.optional(S.NullOr(__S(96, __c12, 0))),
+          timings: S.optional(S.NullOr(__S(98, __c12, 2))),
+          types: S.optional(S.NullOr(__S(27, __c3, 3))),
+          used_data_warehouse_sources: S.optional(S.NullOr(__S(100, __c12, 4))),
+          warnings: S.optional(S.NullOr(__S(101, __c12, 5))),
         }),
       ).annotate({
         identifier: "MarketingAnalyticsTableQueryResponse",
@@ -4220,7 +3593,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          forceSamplingRate: S.optional(S.NullOr(SamplingRate)),
+          forceSamplingRate: S.optional(S.NullOr(__S(96, __c12, 0))),
         }),
       ).annotate({ identifier: "WebAnalyticsSampling" });
   }
@@ -4240,30 +3613,28 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-          compareFilter: S.optional(S.NullOr(CompareFilter)),
-          conversionGoal: S.optional(S.NullOr(MarketingAnalyticsTableQueryConversionGoal)),
+          compareFilter: S.optional(S.NullOr(__S(68, __c8, 4))),
+          conversionGoal: S.optional(S.NullOr(S.Unknown)),
           dataColorTheme: S.optional(S.NullOr(S.Number)),
-          dateRange: S.optional(S.NullOr(DateRange)),
+          dateRange: S.optional(S.NullOr(__S(70, __c8, 6))),
           doPathCleaning: S.optional(S.NullOr(S.Boolean)),
-          draftConversionGoal: S.optional(
-            S.NullOr(MarketingAnalyticsTableQueryDraftConversionGoal),
-          ),
-          drillDownLevel: S.optional(S.NullOr(MarketingAnalyticsDrillDownLevel)),
+          draftConversionGoal: S.optional(S.NullOr(S.Unknown)),
+          drillDownLevel: S.optional(S.NullOr(S.String)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
           includeRevenue: S.optional(S.NullOr(S.Boolean)),
-          integrationFilter: S.optional(S.NullOr(IntegrationFilter)),
-          interval: S.optional(S.NullOr(IntervalType)),
+          integrationFilter: S.optional(S.NullOr(__S(71, __c8, 7))),
+          interval: S.optional(S.NullOr(S.String)),
           kind: S.optional(S.String),
           limit: S.optional(S.NullOr(S.Number)),
-          modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
+          modifiers: S.optional(S.NullOr(__S(82, __c10, 2))),
           offset: S.optional(S.NullOr(S.Number)),
-          orderBy: S.optional(S.NullOr(MarketingAnalyticsTableQueryOrderByList)),
-          properties: S.optional(MarketingAnalyticsTableQueryPropertiesList),
-          response: S.optional(S.NullOr(MarketingAnalyticsTableQueryResponse)),
-          sampling: S.optional(S.NullOr(WebAnalyticsSampling)),
+          orderBy: S.optional(S.NullOr(__S(84, __c10, 4))),
+          properties: S.optional(__S(85, __c10, 5)),
+          response: S.optional(S.NullOr(__S(102, __c12, 6))),
+          sampling: S.optional(S.NullOr(__S(103, __c12, 7))),
           samplingFactor: S.optional(S.NullOr(S.Number)),
-          select: S.optional(S.NullOr(MarketingAnalyticsTableQuerySelectList)),
-          tags: S.optional(S.NullOr(QueryLogTags)),
+          select: S.optional(S.NullOr(__S(3, __c0, 3))),
+          tags: S.optional(S.NullOr(__S(104, __c13, 0))),
           useSessionsTable: S.optional(S.NullOr(S.Boolean)),
           version: S.optional(S.NullOr(S.Number)),
         }),
@@ -4275,7 +3646,7 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           client_query_id: S.optional(S.String),
-          source: MarketingAnalyticsTableQuery,
+          source: __S(105, __c13, 1),
           goal_id: S.String,
           group: S.String,
           source_name: S.optional(S.String),
@@ -4295,7 +3666,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          session_ids: ConversionRecordingsResponseSessionIdsList,
+          session_ids: __S(3, __c0, 3),
           has_more: S.Boolean,
           preparing: S.Boolean,
         }),
@@ -4306,8 +3677,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ops: MarketingAnalyticsApplySetupOpsCreateRequestOpsList,
-          source: S.optional(ApplySetupOpsSourceEnum),
+          ops: __S(27, __c3, 3),
+          source: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4321,8 +3692,8 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          applied: ApplySetupOpsResponseAppliedList,
-          undo_ops: ApplySetupOpsResponseUndoOpsList,
+          applied: __S(27, __c3, 3),
+          undo_ops: __S(27, __c3, 3),
           marketing_analytics_config: S.Unknown,
         }),
       ).annotate({ identifier: "ApplySetupOpsResponse" });
@@ -4330,7 +3701,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          goal: ConversionGoal,
+          goal: S.Unknown,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4346,7 +3717,7 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           conversion_goal_id: S.String.pipe(T.Label()),
-          goal: S.optional(ConversionGoalPatch),
+          goal: S.optional(S.Unknown),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4358,4 +3729,9 @@ function __c13(j: number): any {
         identifier: "MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

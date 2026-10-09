@@ -6,6 +6,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -16,8 +18,6 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-const ServiceTerminationFutureUseEnum = S.String;
-
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
   | "FEATURES_DONT_SUIT_ME"
@@ -34,8 +34,6 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-const ServiceTerminationReasonEnum = S.String;
-
 export interface ConfirmOvhCloudConnectTerminationRequest {
   /** Service name */
   serviceName: string;
@@ -48,17 +46,7 @@ export interface ConfirmOvhCloudConnectTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-const ConfirmOvhCloudConnectTerminationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConfirmOvhCloudConnectTerminationRequest>;
-
 export type ConfirmOvhCloudConnectTerminationResponse = string;
-const ConfirmOvhCloudConnectTerminationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConfirmOvhCloudConnectTerminationResponse>;
-
 export interface CreateOvhCloudConnectChangeContactRequest {
   /** Service name */
   serviceName: string;
@@ -69,28 +57,11 @@ export interface CreateOvhCloudConnectChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateOvhCloudConnectChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateOvhCloudConnectChangeContactRequest>;
-
 export type CreateOvhCloudConnectChangeContactResponseBodyList = Array<number>;
-const CreateOvhCloudConnectChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateOvhCloudConnectChangeContactResponseBodyList>;
-
 export type CreateOvhCloudConnectChangeContactResponse =
   CreateOvhCloudConnectChangeContactResponseBodyList;
-const CreateOvhCloudConnectChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateOvhCloudConnectChangeContactResponse>;
-
 /** Enum values for Pop Configuration Type */
 export type OvhcloudconnectPopConfigTypeEnum = "l2" | "l3";
-const OvhcloudconnectPopConfigTypeEnum = S.String;
-
 export interface CreateOvhCloudConnectConfigPopRequest {
   /** Service name */
   serviceName: string;
@@ -105,11 +76,6 @@ export interface CreateOvhCloudConnectConfigPopRequest {
   /** Type of the pop configuration */
   type: OvhcloudconnectPopConfigTypeEnum | (string & {});
 }
-const CreateOvhCloudConnectConfigPopRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateOvhCloudConnectConfigPopRequest>;
-
 /** Enum values for Task function */
 export type OvhcloudconnectTaskFunctionEnum =
   | "addDatacenterConfiguration"
@@ -122,8 +88,6 @@ export type OvhcloudconnectTaskFunctionEnum =
   | "lockInterface"
   | "removeVrack"
   | "unlockInterface";
-const OvhcloudconnectTaskFunctionEnum = S.String;
-
 /** Enum values for Task status */
 export type OvhcloudconnectTaskStatusEnum =
   | "denied"
@@ -132,8 +96,6 @@ export type OvhcloudconnectTaskStatusEnum =
   | "error"
   | "pause"
   | "todo";
-const OvhcloudconnectTaskStatusEnum = S.String;
-
 /** OVHcloud Connect Task */
 export interface OvhcloudconnectTask {
   /** Task function */
@@ -145,8 +107,6 @@ export interface OvhcloudconnectTask {
   /** Task status */
   status?: OvhcloudconnectTaskStatusEnum;
 }
-const OvhcloudconnectTask = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<OvhcloudconnectTask>;
-
 export interface CreateOvhCloudConnectConfigPopDatacenterRequest {
   /** Service name */
   serviceName: string;
@@ -159,15 +119,8 @@ export interface CreateOvhCloudConnectConfigPopDatacenterRequest {
   /** Subnet should be a /28 min */
   subnet?: string | null;
 }
-const CreateOvhCloudConnectConfigPopDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterRequest>;
-
 /** Enum values for Datacenter Extra Configuration Type */
 export type OvhcloudconnectDatacenterExtraConfigTypeEnum = "bgp" | "network";
-const OvhcloudconnectDatacenterExtraConfigTypeEnum = S.String;
-
 export interface CreateOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Service name */
   serviceName: string;
@@ -186,23 +139,14 @@ export interface CreateOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Type of the configuration */
   type: OvhcloudconnectDatacenterExtraConfigTypeEnum | (string & {});
 }
-const CreateOvhCloudConnectConfigPopDatacenterExtraRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterExtraRequest>;
-
 /** Enum values for Diagnostic function */
 export type OvhcloudconnectDiagnosticFunctionEnum =
   | "diagMacs"
   | "diagPeering"
   | "diagPeeringExtra"
   | "diagRoutes";
-const OvhcloudconnectDiagnosticFunctionEnum = S.String;
-
 /** Enum values for Diagnostic type */
 export type OvhcloudconnectDiagnosticTypeEnum = "advertised-routes" | "default" | "routes";
-const OvhcloudconnectDiagnosticTypeEnum = S.String;
-
 export interface CreateOvhCloudConnectDiagnosticRequest {
   /** Service name */
   serviceName: string;
@@ -217,11 +161,6 @@ export interface CreateOvhCloudConnectDiagnosticRequest {
   /** ID of the Pop Configuration */
   popConfigId: number;
 }
-const CreateOvhCloudConnectDiagnosticRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateOvhCloudConnectDiagnosticRequest>;
-
 /** OVHcloud Connect Diagnostic Result */
 export interface OvhcloudconnectDiagnosticResult {
   /** As-path for routes */
@@ -243,18 +182,8 @@ export interface OvhcloudconnectDiagnosticResult {
   /** Local date when route/mac was declared */
   timestamp?: string | null;
 }
-const OvhcloudconnectDiagnosticResult = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<OvhcloudconnectDiagnosticResult>;
-
 /** Diagnostic result */
 export type OvhcloudconnectDiagnosticResultList = Array<OvhcloudconnectDiagnosticResult>;
-const OvhcloudconnectDiagnosticResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<OvhcloudconnectDiagnosticResultList>;
-
 /** OVHcloud Connect Diagnostic */
 export interface OvhcloudconnectDiagnostic {
   /** Date of the diagnostic */
@@ -272,24 +201,11 @@ export interface OvhcloudconnectDiagnostic {
   /** Diagnostic status */
   status?: OvhcloudconnectTaskStatusEnum;
 }
-const OvhcloudconnectDiagnostic = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<OvhcloudconnectDiagnostic>;
-
 export interface CreateOvhCloudConnectLoaRequest {
   /** Service name */
   serviceName: string;
 }
-const CreateOvhCloudConnectLoaRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateOvhCloudConnectLoaRequest>;
-
 export type CreateOvhCloudConnectLoaResponse = string;
-const CreateOvhCloudConnectLoaResponse =
-  ConfirmOvhCloudConnectTerminationResponse as any as S.Schema<CreateOvhCloudConnectLoaResponse>;
-
 export interface CreateOvhCloudConnectLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
@@ -298,11 +214,6 @@ export interface CreateOvhCloudConnectLogSubscriptionRequest {
   /** Customer log stream ID */
   streamId: string;
 }
-const CreateOvhCloudConnectLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateOvhCloudConnectLogSubscriptionRequest>;
-
 /** Asynchronous operation after subscribing or unsubscribing to a resource logs */
 export interface DbaasLogsLogSubscriptionResponse {
   /** Identifier of the operation */
@@ -310,22 +221,12 @@ export interface DbaasLogsLogSubscriptionResponse {
   /** Operation owner's service name */
   serviceName?: string;
 }
-const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DbaasLogsLogSubscriptionResponse>;
-
 export interface CreateOvhCloudConnectLogUrlRequest {
   /** Service name */
   serviceName: string;
   /** Log kind name */
   kind: string;
 }
-const CreateOvhCloudConnectLogUrlRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateOvhCloudConnectLogUrlRequest>;
-
 /** Temporary url information */
 export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url expiration date */
@@ -333,46 +234,21 @@ export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
-const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DbaasLogsTemporaryLogsLink>;
-
 /** List of subscriptions alerts. */
 export type CreateOvhCloudConnectMonitoringRequestSubscriptionsList = Array<string>;
-const CreateOvhCloudConnectMonitoringRequestSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateOvhCloudConnectMonitoringRequestSubscriptionsList>;
-
 export interface CreateOvhCloudConnectMonitoringRequest {
   /** Service name */
   serviceName: string;
   /** List of subscriptions alerts. */
   subscriptions?: CreateOvhCloudConnectMonitoringRequestSubscriptionsList;
 }
-const CreateOvhCloudConnectMonitoringRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateOvhCloudConnectMonitoringRequest>;
-
 export interface CreateOvhCloudConnectMonitoringResponse {}
-const CreateOvhCloudConnectMonitoringResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateOvhCloudConnectMonitoringResponse>;
-
 export interface DeleteOvhCloudConnectConfigPopRequest {
   /** Service name */
   serviceName: string;
   /** Pop ID */
   popId: number;
 }
-const DeleteOvhCloudConnectConfigPopRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteOvhCloudConnectConfigPopRequest>;
-
 export interface DeleteOvhCloudConnectConfigPopDatacenterRequest {
   /** Service name */
   serviceName: string;
@@ -381,11 +257,6 @@ export interface DeleteOvhCloudConnectConfigPopDatacenterRequest {
   /** Datacenter ID */
   datacenterId: number;
 }
-const DeleteOvhCloudConnectConfigPopDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterRequest>;
-
 export interface DeleteOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Service name */
   serviceName: string;
@@ -396,44 +267,21 @@ export interface DeleteOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Extra ID */
   extraId: number;
 }
-const DeleteOvhCloudConnectConfigPopDatacenterExtraRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterExtraRequest>;
-
 export interface DeleteOvhCloudConnectLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
   /** Subscription ID */
   subscriptionId: string;
 }
-const DeleteOvhCloudConnectLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteOvhCloudConnectLogSubscriptionRequest>;
-
 export interface DeleteOvhCloudConnectMonitoringRequest {
   /** Service name */
   serviceName: string;
 }
-const DeleteOvhCloudConnectMonitoringRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteOvhCloudConnectMonitoringRequest>;
-
 export interface DeleteOvhCloudConnectMonitoringResponse {}
-const DeleteOvhCloudConnectMonitoringResponse =
-  CreateOvhCloudConnectMonitoringResponse as any as S.Schema<DeleteOvhCloudConnectMonitoringResponse>;
-
 export interface GetOvhCloudConnectRequest {
   /** Service name */
   serviceName: string;
 }
-const GetOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetOvhCloudConnectRequest>;
-
 /** Enum values for bandwidth */
 export type OvhcloudconnectServiceBandwidthEnum =
   | "100g"
@@ -445,15 +293,8 @@ export type OvhcloudconnectServiceBandwidthEnum =
   | "2g"
   | "500m"
   | "5g";
-const OvhcloudconnectServiceBandwidthEnum = S.String;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -465,17 +306,10 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<IamResourceMetadata>;
-
 /** List of interfaces linked to a service */
 export type OvhcloudconnectServiceWithIAMInterfaceListList = Array<number>;
-const OvhcloudconnectServiceWithIAMInterfaceListList =
-  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<OvhcloudconnectServiceWithIAMInterfaceListList>;
-
 /** Enum values for port quantity */
 export type OvhcloudconnectServicePortEnum = "1" | "2";
-const OvhcloudconnectServicePortEnum = S.String;
-
 /** Enum values for service provider */
 export type OvhcloudconnectServiceProviderEnum =
   | "OVHcloud"
@@ -489,12 +323,8 @@ export type OvhcloudconnectServiceProviderEnum =
   | "interxion"
   | "megaport"
   | "orange";
-const OvhcloudconnectServiceProviderEnum = S.String;
-
 /** Enum values for the Service */
 export type OvhcloudconnectServiceStatusEnum = "active" | "closed";
-const OvhcloudconnectServiceStatusEnum = S.String;
-
 /** OVHcloud Connect Service */
 export interface OvhcloudconnectServiceWithIAM {
   /** Service bandwidth */
@@ -520,26 +350,14 @@ export interface OvhcloudconnectServiceWithIAM {
   /** vrack linked to the service */
   vrack?: string | null;
 }
-const OvhcloudconnectServiceWithIAM = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<OvhcloudconnectServiceWithIAM>;
-
 export interface GetOvhCloudConnectConfigPopRequest {
   /** Service name */
   serviceName: string;
   /** Pop ID */
   popId: number;
 }
-const GetOvhCloudConnectConfigPopRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetOvhCloudConnectConfigPopRequest>;
-
 /** Enum values for Pop Configuration Status */
 export type OvhcloudconnectPopConfigStatusEnum = "active" | "init" | "toDelete";
-const OvhcloudconnectPopConfigStatusEnum = S.String;
-
 /** OVHcloud Connect Service Pop Configuration */
 export interface OvhcloudconnectPopConfig {
   /** Customer Private AS */
@@ -557,11 +375,6 @@ export interface OvhcloudconnectPopConfig {
   /** Type of the pop configuration */
   type: OvhcloudconnectPopConfigTypeEnum;
 }
-const OvhcloudconnectPopConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<OvhcloudconnectPopConfig>;
-
 export interface GetOvhCloudConnectConfigPopDatacenterRequest {
   /** Service name */
   serviceName: string;
@@ -570,11 +383,6 @@ export interface GetOvhCloudConnectConfigPopDatacenterRequest {
   /** Datacenter ID */
   datacenterId: number;
 }
-const GetOvhCloudConnectConfigPopDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterRequest>;
-
 /** OVHcloud Connect Service Datacenter Configuration */
 export interface OvhcloudconnectDatacenterConfig {
   /** ID of the datacenter linked */
@@ -588,11 +396,6 @@ export interface OvhcloudconnectDatacenterConfig {
   /** Subnet should be a /28 min */
   subnet?: string | null;
 }
-const OvhcloudconnectDatacenterConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<OvhcloudconnectDatacenterConfig>;
-
 export interface GetOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Service name */
   serviceName: string;
@@ -603,11 +406,6 @@ export interface GetOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Extra ID */
   extraId: number;
 }
-const GetOvhCloudConnectConfigPopDatacenterExtraRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterExtraRequest>;
-
 /** OVHcloud Connect Service Datacenter Extra Configuration */
 export interface OvhcloudconnectDatacenterExtraConfig {
   /** BGP AS number */
@@ -625,26 +423,14 @@ export interface OvhcloudconnectDatacenterExtraConfig {
   /** Type of the configuration */
   type: OvhcloudconnectDatacenterExtraConfigTypeEnum;
 }
-const OvhcloudconnectDatacenterExtraConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<OvhcloudconnectDatacenterExtraConfig>;
-
 export interface GetOvhCloudConnectConfigPopStatusRequest {
   /** Service name */
   serviceName: string;
   /** Pop ID */
   popId: number;
 }
-const GetOvhCloudConnectConfigPopStatusRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetOvhCloudConnectConfigPopStatusRequest>;
-
 /** Enum values for status */
 export type OvhcloudconnectStatusStatusEnum = "down" | "up";
-const OvhcloudconnectStatusStatusEnum = S.String;
-
 /** OVHcloud Connect L3 peering current status */
 export interface OvhcloudconnectPopConfStatus {
   /** Number of flap since last UP */
@@ -660,22 +446,12 @@ export interface OvhcloudconnectPopConfStatus {
   /** Status of the peering */
   status?: OvhcloudconnectStatusStatusEnum;
 }
-const OvhcloudconnectPopConfStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<OvhcloudconnectPopConfStatus>;
-
 export interface GetOvhCloudConnectDatacenterRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetOvhCloudConnectDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetOvhCloudConnectDatacenterRequest>;
-
 /** RegionEnum */
 export type CommonRegionEnum =
   | "af-north-lz-rba"
@@ -715,12 +491,8 @@ export type CommonRegionEnum =
   | "us-west-lz-den"
   | "us-west-lz-lax"
   | "us-west-lz-pao";
-const CommonRegionEnum = S.String;
-
 /** Enum values for datacenter region type */
 export type OvhcloudconnectDatacenterRegionTypeEnum = "1-AZ" | "3-AZ";
-const OvhcloudconnectDatacenterRegionTypeEnum = S.String;
-
 /** OVHcloud Connect Datacenter */
 export interface OvhcloudconnectDatacenter {
   /** Get availability to add new configuration on it */
@@ -734,37 +506,20 @@ export interface OvhcloudconnectDatacenter {
   /** region type of the datacenter */
   regionType?: OvhcloudconnectDatacenterRegionTypeEnum;
 }
-const OvhcloudconnectDatacenter = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<OvhcloudconnectDatacenter>;
-
 export interface GetOvhCloudConnectDiagnosticRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetOvhCloudConnectDiagnosticRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetOvhCloudConnectDiagnosticRequest>;
-
 export interface GetOvhCloudConnectIncidentRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetOvhCloudConnectIncidentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetOvhCloudConnectIncidentRequest>;
-
 /** Enum values for incident type status */
 export type OvhcloudconnectIncidentTypeEnum = "incident" | "maintenance";
-const OvhcloudconnectIncidentTypeEnum = S.String;
-
 /** OVHcloud Connect Incident */
 export interface OvhcloudconnectIncident {
   /** Ending date of the incident */
@@ -776,34 +531,18 @@ export interface OvhcloudconnectIncident {
   /** Type of incident */
   type?: OvhcloudconnectIncidentTypeEnum;
 }
-const OvhcloudconnectIncident = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<OvhcloudconnectIncident>;
-
 export interface GetOvhCloudConnectInterfaceRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetOvhCloudConnectInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetOvhCloudConnectInterfaceRequest>;
-
 /** Enum values for the light status */
 export type OvhcloudconnectInterfaceLightStatusEnum = "down" | "unknown" | "up";
-const OvhcloudconnectInterfaceLightStatusEnum = S.String;
-
 /** Enum values for the termination type */
 export type OvhcloudconnectInterfaceTerminationTypeEnum = "LC/PC" | "SC/PC";
-const OvhcloudconnectInterfaceTerminationTypeEnum = S.String;
-
 /** Enum values for interface status */
 export type OvhcloudconnectInterfaceStatusEnum = "disabled" | "enabled" | "reserved";
-const OvhcloudconnectInterfaceStatusEnum = S.String;
-
 /** OVHcloud Connect Interface */
 export interface OvhcloudconnectInterface {
   /** Patch panel name */
@@ -833,22 +572,12 @@ export interface OvhcloudconnectInterface {
   /** Status of the port */
   status?: OvhcloudconnectInterfaceStatusEnum;
 }
-const OvhcloudconnectInterface = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<OvhcloudconnectInterface>;
-
 export interface GetOvhCloudConnectInterfaceStatusRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetOvhCloudConnectInterfaceStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetOvhCloudConnectInterfaceStatusRequest>;
-
 /** OVHcloud Connect Interface status */
 export interface OvhcloudconnectInterfaceStatus {
   /** Last time the interface changed status */
@@ -862,27 +591,14 @@ export interface OvhcloudconnectInterfaceStatus {
   /** Status of the interface */
   status?: OvhcloudconnectStatusStatusEnum;
 }
-const OvhcloudconnectInterfaceStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<OvhcloudconnectInterfaceStatus>;
-
 export interface GetOvhCloudConnectLogKindRequest {
   /** Service name */
   serviceName: string;
   /** Name */
   name: string;
 }
-const GetOvhCloudConnectLogKindRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetOvhCloudConnectLogKindRequest>;
-
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-const DbaasLogsLogKindAdditionalReturnedFieldsList =
-  CreateOvhCloudConnectMonitoringRequestSubscriptionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
-
 /** Log kind */
 export interface DbaasLogsLogKind {
   /** List of additional log fields managed in this log kind */
@@ -898,19 +614,12 @@ export interface DbaasLogsLogKind {
   /** Last update date of the log kind */
   updatedAt?: string;
 }
-const DbaasLogsLogKind = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DbaasLogsLogKind>;
-
 export interface GetOvhCloudConnectLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
   /** Subscription ID */
   subscriptionId: string;
 }
-const GetOvhCloudConnectLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetOvhCloudConnectLogSubscriptionRequest>;
-
 /** Log subscription resource */
 export interface DbaasLogsLogSubscriptionResource {
   /** Name of subscribed resource */
@@ -918,11 +627,6 @@ export interface DbaasLogsLogSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
-const DbaasLogsLogSubscriptionResource = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DbaasLogsLogSubscriptionResource>;
-
 /** Log subscription */
 export interface DbaasLogsLogSubscription {
   /** Creation date of the subscription */
@@ -940,25 +644,12 @@ export interface DbaasLogsLogSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
-const DbaasLogsLogSubscription = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DbaasLogsLogSubscription>;
-
 export interface GetOvhCloudConnectServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-const GetOvhCloudConnectServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetOvhCloudConnectServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -972,8 +663,6 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ServiceRenewType>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -983,8 +672,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 /** service.StateEnum */
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -993,8 +680,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -1014,19 +699,12 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ServicesService>;
-
 export interface GetOvhCloudConnectServiceKeyRequest {
   /** Service name */
   serviceName: string;
   /** Service key ID */
   serviceKeyId: number;
 }
-const GetOvhCloudConnectServiceKeyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetOvhCloudConnectServiceKeyRequest>;
-
 /** Enum values for service key status */
 export type OvhcloudconnectKeyStatusEnum =
   | "active"
@@ -1034,8 +712,6 @@ export type OvhcloudconnectKeyStatusEnum =
   | "doing"
   | "terminated"
   | "toCheck";
-const OvhcloudconnectKeyStatusEnum = S.String;
-
 /** OVHcloud Connect Service Key */
 export interface OvhcloudconnectKey {
   /** Service Key id */
@@ -1047,90 +723,39 @@ export interface OvhcloudconnectKey {
   /** Service Key status */
   status?: OvhcloudconnectKeyStatusEnum;
 }
-const OvhcloudconnectKey = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<OvhcloudconnectKey>;
-
 export interface GetOvhCloudConnectTaskRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetOvhCloudConnectTaskRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetOvhCloudConnectTaskRequest>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListOvhCloudConnectRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListOvhCloudConnectRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListOvhCloudConnectRequestIamTagsValueList>;
-
 export type ListOvhCloudConnectRequestIamTagsMap = {
   [key: string]: ListOvhCloudConnectRequestIamTagsValueList | undefined;
 };
-const ListOvhCloudConnectRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListOvhCloudConnectRequestIamTagsMap>;
-
 export interface ListOvhCloudConnectRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListOvhCloudConnectRequestIamTagsMap;
 }
-const ListOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListOvhCloudConnectRequest>;
-
 export type ListOvhCloudConnectResponseBodyList = Array<string>;
-const ListOvhCloudConnectResponseBodyList =
-  CreateOvhCloudConnectMonitoringRequestSubscriptionsList as any as S.Schema<ListOvhCloudConnectResponseBodyList>;
-
 export type ListOvhCloudConnectResponse = ListOvhCloudConnectResponseBodyList;
-const ListOvhCloudConnectResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListOvhCloudConnectResponse>;
-
 export interface ListOvhCloudConnectConfigPopRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectConfigPopRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListOvhCloudConnectConfigPopRequest>;
-
 export type ListOvhCloudConnectConfigPopResponseBodyList = Array<number>;
 export type ListOvhCloudConnectConfigPopResponse = ListOvhCloudConnectConfigPopResponseBodyList;
-const ListOvhCloudConnectConfigPopResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectConfigPopResponse>;
-
 export interface ListOvhCloudConnectConfigPopDatacenterRequest {
   /** Service name */
   serviceName: string;
   /** Pop ID */
   popId: number;
 }
-const ListOvhCloudConnectConfigPopDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterRequest>;
-
 export type ListOvhCloudConnectConfigPopDatacenterResponseBodyList = Array<number>;
 export type ListOvhCloudConnectConfigPopDatacenterResponse =
   ListOvhCloudConnectConfigPopDatacenterResponseBodyList;
-const ListOvhCloudConnectConfigPopDatacenterResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponse>;
-
 export interface ListOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Service name */
   serviceName: string;
@@ -1139,25 +764,13 @@ export interface ListOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Datacenter ID */
   datacenterId: number;
 }
-const ListOvhCloudConnectConfigPopDatacenterExtraRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraRequest>;
-
 export type ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList = Array<number>;
 export type ListOvhCloudConnectConfigPopDatacenterExtraResponse =
   ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList;
-const ListOvhCloudConnectConfigPopDatacenterExtraResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponse>;
-
 /** Enum values for the period of the statistics */
 export type OvhcloudconnectInterfaceMetricsPeriodEnum = "daily" | "hourly" | "weekly";
-const OvhcloudconnectInterfaceMetricsPeriodEnum = S.String;
-
 /** Enum values for the type of the statistics */
 export type OvhcloudconnectPopConfigMetricsTypeEnum = "prefix:accepted" | "prefix:limit";
-const OvhcloudconnectPopConfigMetricsTypeEnum = S.String;
-
 export interface ListOvhCloudConnectConfigPopStatisticsRequest {
   /** Service name */
   serviceName: string;
@@ -1168,11 +781,6 @@ export interface ListOvhCloudConnectConfigPopStatisticsRequest {
   /** The type of statistic to be fetched */
   type: OvhcloudconnectPopConfigMetricsTypeEnum | (string & {});
 }
-const ListOvhCloudConnectConfigPopStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsRequest>;
-
 /** Enum values for the unit of the statistics */
 export type OvhcloudconnectInterfaceMetricsUnitEnum =
   | "bytes/s"
@@ -1180,99 +788,45 @@ export type OvhcloudconnectInterfaceMetricsUnitEnum =
   | "error/s"
   | "prefix_accepted"
   | "prefix_limit";
-const OvhcloudconnectInterfaceMetricsUnitEnum = S.String;
-
 /** OVHcloud Connect Metrics value */
 export interface OvhcloudconnectMetricsValue {
   /** Unit in which the value is expressed */
   unit?: OvhcloudconnectInterfaceMetricsUnitEnum;
   value?: number;
 }
-const OvhcloudconnectMetricsValue = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<OvhcloudconnectMetricsValue>;
-
 /** OVHcloud Connect Metrics */
 export interface OvhcloudconnectMetrics {
   /** timestamp corresponding to the value */
   timestamp?: number;
   value?: OvhcloudconnectMetricsValue;
 }
-const OvhcloudconnectMetrics = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<OvhcloudconnectMetrics>;
-
 export type ListOvhCloudConnectConfigPopStatisticsResponseBodyList = Array<OvhcloudconnectMetrics>;
-const ListOvhCloudConnectConfigPopStatisticsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsResponseBodyList>;
-
 export type ListOvhCloudConnectConfigPopStatisticsResponse =
   ListOvhCloudConnectConfigPopStatisticsResponseBodyList;
-const ListOvhCloudConnectConfigPopStatisticsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsResponse>;
-
 export interface ListOvhCloudConnectDatacenterRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListOvhCloudConnectDatacenterRequest>;
-
 export type ListOvhCloudConnectDatacenterResponseBodyList = Array<number>;
 export type ListOvhCloudConnectDatacenterResponse = ListOvhCloudConnectDatacenterResponseBodyList;
-const ListOvhCloudConnectDatacenterResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectDatacenterResponse>;
-
 export interface ListOvhCloudConnectDiagnosticRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectDiagnosticRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListOvhCloudConnectDiagnosticRequest>;
-
 export type ListOvhCloudConnectDiagnosticResponseBodyList = Array<number>;
 export type ListOvhCloudConnectDiagnosticResponse = ListOvhCloudConnectDiagnosticResponseBodyList;
-const ListOvhCloudConnectDiagnosticResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectDiagnosticResponse>;
-
 export interface ListOvhCloudConnectIncidentRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectIncidentRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListOvhCloudConnectIncidentRequest>;
-
 export type ListOvhCloudConnectIncidentResponseBodyList = Array<number>;
 export type ListOvhCloudConnectIncidentResponse = ListOvhCloudConnectIncidentResponseBodyList;
-const ListOvhCloudConnectIncidentResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectIncidentResponse>;
-
 export interface ListOvhCloudConnectInterfaceRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListOvhCloudConnectInterfaceRequest>;
-
 export type ListOvhCloudConnectInterfaceResponseBodyList = Array<number>;
 export type ListOvhCloudConnectInterfaceResponse = ListOvhCloudConnectInterfaceResponseBodyList;
-const ListOvhCloudConnectInterfaceResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectInterfaceResponse>;
-
 /** Enum values for the type of the statistics */
 export type OvhcloudconnectInterfaceMetricsTypeEnum =
   | "error:download"
@@ -1281,8 +835,6 @@ export type OvhcloudconnectInterfaceMetricsTypeEnum =
   | "light:out"
   | "traffic:download"
   | "traffic:upload";
-const OvhcloudconnectInterfaceMetricsTypeEnum = S.String;
-
 export interface ListOvhCloudConnectInterfaceStatisticsRequest {
   /** Service name */
   serviceName: string;
@@ -1293,57 +845,28 @@ export interface ListOvhCloudConnectInterfaceStatisticsRequest {
   /** The type of statistic to be fetched */
   type: OvhcloudconnectInterfaceMetricsTypeEnum | (string & {});
 }
-const ListOvhCloudConnectInterfaceStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsRequest>;
-
 export type ListOvhCloudConnectInterfaceStatisticsResponseBodyList = Array<OvhcloudconnectMetrics>;
 export type ListOvhCloudConnectInterfaceStatisticsResponse =
   ListOvhCloudConnectInterfaceStatisticsResponseBodyList;
-const ListOvhCloudConnectInterfaceStatisticsResponse =
-  ListOvhCloudConnectConfigPopStatisticsResponse as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponse>;
-
 export interface ListOvhCloudConnectLogKindRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectLogKindRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListOvhCloudConnectLogKindRequest>;
-
 export type ListOvhCloudConnectLogKindResponseBodyList = Array<string>;
 export type ListOvhCloudConnectLogKindResponse = ListOvhCloudConnectLogKindResponseBodyList;
-const ListOvhCloudConnectLogKindResponse =
-  ListOvhCloudConnectResponse as any as S.Schema<ListOvhCloudConnectLogKindResponse>;
-
 export interface ListOvhCloudConnectLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
   /** Filter on a specific kind (e.g., audit) */
   kind?: string;
 }
-const ListOvhCloudConnectLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListOvhCloudConnectLogSubscriptionRequest>;
-
 export type ListOvhCloudConnectLogSubscriptionResponseBodyList = Array<string>;
 export type ListOvhCloudConnectLogSubscriptionResponse =
   ListOvhCloudConnectLogSubscriptionResponseBodyList;
-const ListOvhCloudConnectLogSubscriptionResponse =
-  ListOvhCloudConnectResponse as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponse>;
-
 export interface ListOvhCloudConnectMonitoringRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectMonitoringRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListOvhCloudConnectMonitoringRequest>;
-
 /** OVHcloud Connect Monitoring */
 export interface OvhcloudconnectMonitoring {
   /** Whether alert is activated */
@@ -1355,103 +878,46 @@ export interface OvhcloudconnectMonitoring {
   /** Type of the monitoring alert */
   type?: string;
 }
-const OvhcloudconnectMonitoring = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<OvhcloudconnectMonitoring>;
-
 export type ListOvhCloudConnectMonitoringResponseBodyList = Array<OvhcloudconnectMonitoring>;
-const ListOvhCloudConnectMonitoringResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListOvhCloudConnectMonitoringResponseBodyList>;
-
 export type ListOvhCloudConnectMonitoringResponse = ListOvhCloudConnectMonitoringResponseBodyList;
-const ListOvhCloudConnectMonitoringResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListOvhCloudConnectMonitoringResponse>;
-
 export interface ListOvhCloudConnectServiceKeyRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectServiceKeyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListOvhCloudConnectServiceKeyRequest>;
-
 export type ListOvhCloudConnectServiceKeyResponseBodyList = Array<number>;
 export type ListOvhCloudConnectServiceKeyResponse = ListOvhCloudConnectServiceKeyResponseBodyList;
-const ListOvhCloudConnectServiceKeyResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectServiceKeyResponse>;
-
 export interface ListOvhCloudConnectTaskRequest {
   /** Service name */
   serviceName: string;
 }
-const ListOvhCloudConnectTaskRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListOvhCloudConnectTaskRequest>;
-
 export type ListOvhCloudConnectTaskResponseBodyList = Array<number>;
 export type ListOvhCloudConnectTaskResponse = ListOvhCloudConnectTaskResponseBodyList;
-const ListOvhCloudConnectTaskResponse =
-  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectTaskResponse>;
-
 export interface LockOvhCloudConnectInterfaceRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const LockOvhCloudConnectInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<LockOvhCloudConnectInterfaceRequest>;
-
 export interface PutOvhCloudConnectRequest {
   /** Service name */
   serviceName: string;
   /** New description for your service */
   description?: string | null;
 }
-const PutOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<PutOvhCloudConnectRequest>;
-
 export interface PutOvhCloudConnectResponse {}
-const PutOvhCloudConnectResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutOvhCloudConnectResponse>;
-
 export interface PutOvhCloudConnectServiceInfosRequest {
   /** Service name */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutOvhCloudConnectServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<PutOvhCloudConnectServiceInfosRequest>;
-
 export interface PutOvhCloudConnectServiceInfosResponse {}
-const PutOvhCloudConnectServiceInfosResponse =
-  CreateOvhCloudConnectMonitoringResponse as any as S.Schema<PutOvhCloudConnectServiceInfosResponse>;
-
 export interface RegenerateOvhCloudConnectServiceKeyRequest {
   /** Service name */
   serviceName: string;
   /** Service key ID */
   serviceKeyId: number;
 }
-const RegenerateOvhCloudConnectServiceKeyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<RegenerateOvhCloudConnectServiceKeyRequest>;
-
 export interface SendOvhCloudConnectServiceKeyRequest {
   /** Service name */
   serviceName: string;
@@ -1460,49 +926,24 @@ export interface SendOvhCloudConnectServiceKeyRequest {
   /** Email address to send the key */
   email: string;
 }
-const SendOvhCloudConnectServiceKeyRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<SendOvhCloudConnectServiceKeyRequest>;
-
 /** Enum values for messageCode */
 export type OvhcloudconnectMessageCodeEnum = "mailSent";
-const OvhcloudconnectMessageCodeEnum = S.String;
-
 /** OVHcloud Connect send key answer */
 export interface OvhcloudconnectSendKeyAnswer {
   /** message code for UX to display appropriate text */
   messageCode?: OvhcloudconnectMessageCodeEnum;
 }
-const OvhcloudconnectSendKeyAnswer = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<OvhcloudconnectSendKeyAnswer>;
-
 export interface TerminateOvhCloudConnectRequest {
   /** Service name */
   serviceName: string;
 }
-const TerminateOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<TerminateOvhCloudConnectRequest>;
-
 export type TerminateOvhCloudConnectResponse = string;
-const TerminateOvhCloudConnectResponse =
-  ConfirmOvhCloudConnectTerminationResponse as any as S.Schema<TerminateOvhCloudConnectResponse>;
-
 export interface UnlockOvhCloudConnectInterfaceRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const UnlockOvhCloudConnectInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UnlockOvhCloudConnectInterfaceRequest>;
-
 export type ConfirmOvhCloudConnectTerminationError = OvhOpError;
 /** Confirm service termination */
 export const confirmOvhCloudConnectTermination: API.OperationMethod<
@@ -1511,8 +952,8 @@ export const confirmOvhCloudConnectTermination: API.OperationMethod<
   ConfirmOvhCloudConnectTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmOvhCloudConnectTerminationRequest,
-  output: ConfirmOvhCloudConnectTerminationResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ConfirmOvhCloudConnectTerminationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ConfirmOvhCloudConnectTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1526,8 +967,8 @@ export const createOvhCloudConnectChangeContact: API.OperationMethod<
   CreateOvhCloudConnectChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectChangeContactRequest,
-  output: CreateOvhCloudConnectChangeContactResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateOvhCloudConnectChangeContactRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateOvhCloudConnectChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1541,8 +982,8 @@ export const createOvhCloudConnectConfigPop: API.OperationMethod<
   CreateOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectConfigPopRequest,
-  output: OvhcloudconnectTask,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateOvhCloudConnectConfigPopRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1556,8 +997,8 @@ export const createOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   CreateOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectConfigPopDatacenterRequest,
-  output: OvhcloudconnectTask,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1012,8 @@ export const createOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   CreateOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectConfigPopDatacenterExtraRequest,
-  output: OvhcloudconnectTask,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1027,8 @@ export const createOvhCloudConnectDiagnostic: API.OperationMethod<
   CreateOvhCloudConnectDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectDiagnosticRequest,
-  output: OvhcloudconnectDiagnostic,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateOvhCloudConnectDiagnosticRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<OvhcloudconnectDiagnostic>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1601,8 +1042,8 @@ export const createOvhCloudConnectLoa: API.OperationMethod<
   CreateOvhCloudConnectLoaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectLoaRequest,
-  output: CreateOvhCloudConnectLoaResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateOvhCloudConnectLoaRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateOvhCloudConnectLoaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1057,8 @@ export const createOvhCloudConnectLogSubscription: API.OperationMethod<
   CreateOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectLogSubscriptionRequest,
-  output: DbaasLogsLogSubscriptionResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1631,8 +1072,8 @@ export const createOvhCloudConnectLogUrl: API.OperationMethod<
   CreateOvhCloudConnectLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectLogUrlRequest,
-  output: DbaasLogsTemporaryLogsLink,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateOvhCloudConnectLogUrlRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1646,8 +1087,8 @@ export const createOvhCloudConnectMonitoring: API.OperationMethod<
   CreateOvhCloudConnectMonitoringError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOvhCloudConnectMonitoringRequest,
-  output: CreateOvhCloudConnectMonitoringResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateOvhCloudConnectMonitoringRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateOvhCloudConnectMonitoringResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1102,8 @@ export const deleteOvhCloudConnectConfigPop: API.OperationMethod<
   DeleteOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOvhCloudConnectConfigPopRequest,
-  output: OvhcloudconnectTask,
+  input: __S(21, __c2, 5) as any as S.Schema<DeleteOvhCloudConnectConfigPopRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1676,8 +1117,8 @@ export const deleteOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   DeleteOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOvhCloudConnectConfigPopDatacenterRequest,
-  output: OvhcloudconnectTask,
+  input: __S(22, __c2, 6) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1132,8 @@ export const deleteOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   DeleteOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOvhCloudConnectConfigPopDatacenterExtraRequest,
-  output: OvhcloudconnectTask,
+  input: __S(23, __c2, 7) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1147,8 @@ export const deleteOvhCloudConnectLogSubscription: API.OperationMethod<
   DeleteOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOvhCloudConnectLogSubscriptionRequest,
-  output: DbaasLogsLogSubscriptionResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1162,8 @@ export const deleteOvhCloudConnectMonitoring: API.OperationMethod<
   DeleteOvhCloudConnectMonitoringError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOvhCloudConnectMonitoringRequest,
-  output: DeleteOvhCloudConnectMonitoringResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<DeleteOvhCloudConnectMonitoringRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DeleteOvhCloudConnectMonitoringResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1177,8 @@ export const getOvhCloudConnect: API.OperationMethod<
   GetOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectRequest,
-  output: OvhcloudconnectServiceWithIAM,
+  input: __S(26, __c3, 2) as any as S.Schema<GetOvhCloudConnectRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<OvhcloudconnectServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1192,8 @@ export const getOvhCloudConnectConfigPop: API.OperationMethod<
   GetOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectConfigPopRequest,
-  output: OvhcloudconnectPopConfig,
+  input: __S(30, __c3, 6) as any as S.Schema<GetOvhCloudConnectConfigPopRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<OvhcloudconnectPopConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1766,8 +1207,8 @@ export const getOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   GetOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectConfigPopDatacenterRequest,
-  output: OvhcloudconnectDatacenterConfig,
+  input: __S(32, __c4, 0) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<OvhcloudconnectDatacenterConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1222,8 @@ export const getOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   GetOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectConfigPopDatacenterExtraRequest,
-  output: OvhcloudconnectDatacenterExtraConfig,
+  input: __S(34, __c4, 2) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<OvhcloudconnectDatacenterExtraConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1796,8 +1237,8 @@ export const getOvhCloudConnectConfigPopStatus: API.OperationMethod<
   GetOvhCloudConnectConfigPopStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectConfigPopStatusRequest,
-  output: OvhcloudconnectPopConfStatus,
+  input: __S(36, __c4, 4) as any as S.Schema<GetOvhCloudConnectConfigPopStatusRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<OvhcloudconnectPopConfStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1811,8 +1252,8 @@ export const getOvhCloudConnectDatacenter: API.OperationMethod<
   GetOvhCloudConnectDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectDatacenterRequest,
-  output: OvhcloudconnectDatacenter,
+  input: __S(38, __c4, 6) as any as S.Schema<GetOvhCloudConnectDatacenterRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<OvhcloudconnectDatacenter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1826,8 +1267,8 @@ export const getOvhCloudConnectDiagnostic: API.OperationMethod<
   GetOvhCloudConnectDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectDiagnosticRequest,
-  output: OvhcloudconnectDiagnostic,
+  input: __S(40, __c5, 0) as any as S.Schema<GetOvhCloudConnectDiagnosticRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<OvhcloudconnectDiagnostic>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1282,8 @@ export const getOvhCloudConnectIncident: API.OperationMethod<
   GetOvhCloudConnectIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectIncidentRequest,
-  output: OvhcloudconnectIncident,
+  input: __S(41, __c5, 1) as any as S.Schema<GetOvhCloudConnectIncidentRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<OvhcloudconnectIncident>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1297,8 @@ export const getOvhCloudConnectInterface: API.OperationMethod<
   GetOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectInterfaceRequest,
-  output: OvhcloudconnectInterface,
+  input: __S(43, __c5, 3) as any as S.Schema<GetOvhCloudConnectInterfaceRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<OvhcloudconnectInterface>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1312,8 @@ export const getOvhCloudConnectInterfaceStatus: API.OperationMethod<
   GetOvhCloudConnectInterfaceStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectInterfaceStatusRequest,
-  output: OvhcloudconnectInterfaceStatus,
+  input: __S(45, __c5, 5) as any as S.Schema<GetOvhCloudConnectInterfaceStatusRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<OvhcloudconnectInterfaceStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1886,8 +1327,8 @@ export const getOvhCloudConnectLogKind: API.OperationMethod<
   GetOvhCloudConnectLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectLogKindRequest,
-  output: DbaasLogsLogKind,
+  input: __S(47, __c5, 7) as any as S.Schema<GetOvhCloudConnectLogKindRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DbaasLogsLogKind>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1342,8 @@ export const getOvhCloudConnectLogSubscription: API.OperationMethod<
   GetOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectLogSubscriptionRequest,
-  output: DbaasLogsLogSubscription,
+  input: __S(49, __c6, 1) as any as S.Schema<GetOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<DbaasLogsLogSubscription>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1357,8 @@ export const getOvhCloudConnectServiceInfos: API.OperationMethod<
   GetOvhCloudConnectServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectServiceInfosRequest,
-  output: ServicesService,
+  input: __S(52, __c6, 4) as any as S.Schema<GetOvhCloudConnectServiceInfosRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1931,8 +1372,8 @@ export const getOvhCloudConnectServiceKey: API.OperationMethod<
   GetOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectServiceKeyRequest,
-  output: OvhcloudconnectKey,
+  input: __S(55, __c6, 7) as any as S.Schema<GetOvhCloudConnectServiceKeyRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<OvhcloudconnectKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1387,8 @@ export const getOvhCloudConnectTask: API.OperationMethod<
   GetOvhCloudConnectTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOvhCloudConnectTaskRequest,
-  output: OvhcloudconnectTask,
+  input: __S(57, __c7, 1) as any as S.Schema<GetOvhCloudConnectTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1402,8 @@ export const listOvhCloudConnect: API.OperationMethod<
   ListOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectRequest,
-  output: ListOvhCloudConnectResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<ListOvhCloudConnectRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<ListOvhCloudConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1417,8 @@ export const listOvhCloudConnectConfigPop: API.OperationMethod<
   ListOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectConfigPopRequest,
-  output: ListOvhCloudConnectConfigPopResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<ListOvhCloudConnectConfigPopRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectConfigPopResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1991,8 +1432,8 @@ export const listOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   ListOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectConfigPopDatacenterRequest,
-  output: ListOvhCloudConnectConfigPopDatacenterResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2006,8 +1447,8 @@ export const listOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   ListOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectConfigPopDatacenterExtraRequest,
-  output: ListOvhCloudConnectConfigPopDatacenterExtraResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2021,8 +1462,8 @@ export const listOvhCloudConnectConfigPopStatistics: API.OperationMethod<
   ListOvhCloudConnectConfigPopStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectConfigPopStatisticsRequest,
-  output: ListOvhCloudConnectConfigPopStatisticsResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2036,8 +1477,8 @@ export const listOvhCloudConnectDatacenter: API.OperationMethod<
   ListOvhCloudConnectDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectDatacenterRequest,
-  output: ListOvhCloudConnectDatacenterResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<ListOvhCloudConnectDatacenterRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectDatacenterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2051,8 +1492,8 @@ export const listOvhCloudConnectDiagnostic: API.OperationMethod<
   ListOvhCloudConnectDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectDiagnosticRequest,
-  output: ListOvhCloudConnectDiagnosticResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<ListOvhCloudConnectDiagnosticRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectDiagnosticResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2066,8 +1507,8 @@ export const listOvhCloudConnectIncident: API.OperationMethod<
   ListOvhCloudConnectIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectIncidentRequest,
-  output: ListOvhCloudConnectIncidentResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<ListOvhCloudConnectIncidentRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectIncidentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2081,8 +1522,8 @@ export const listOvhCloudConnectInterface: API.OperationMethod<
   ListOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectInterfaceRequest,
-  output: ListOvhCloudConnectInterfaceResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<ListOvhCloudConnectInterfaceRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectInterfaceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2096,8 +1537,8 @@ export const listOvhCloudConnectInterfaceStatistics: API.OperationMethod<
   ListOvhCloudConnectInterfaceStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectInterfaceStatisticsRequest,
-  output: ListOvhCloudConnectInterfaceStatisticsResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2111,8 +1552,8 @@ export const listOvhCloudConnectLogKind: API.OperationMethod<
   ListOvhCloudConnectLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectLogKindRequest,
-  output: ListOvhCloudConnectLogKindResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<ListOvhCloudConnectLogKindRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<ListOvhCloudConnectLogKindResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2126,8 +1567,8 @@ export const listOvhCloudConnectLogSubscription: API.OperationMethod<
   ListOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectLogSubscriptionRequest,
-  output: ListOvhCloudConnectLogSubscriptionResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<ListOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2141,8 +1582,8 @@ export const listOvhCloudConnectMonitoring: API.OperationMethod<
   ListOvhCloudConnectMonitoringError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectMonitoringRequest,
-  output: ListOvhCloudConnectMonitoringResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<ListOvhCloudConnectMonitoringRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<ListOvhCloudConnectMonitoringResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2156,8 +1597,8 @@ export const listOvhCloudConnectServiceKey: API.OperationMethod<
   ListOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectServiceKeyRequest,
-  output: ListOvhCloudConnectServiceKeyResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<ListOvhCloudConnectServiceKeyRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectServiceKeyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2171,8 +1612,8 @@ export const listOvhCloudConnectTask: API.OperationMethod<
   ListOvhCloudConnectTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOvhCloudConnectTaskRequest,
-  output: ListOvhCloudConnectTaskResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<ListOvhCloudConnectTaskRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2186,8 +1627,8 @@ export const lockOvhCloudConnectInterface: API.OperationMethod<
   LockOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LockOvhCloudConnectInterfaceRequest,
-  output: OvhcloudconnectTask,
+  input: __S(84, __c10, 4) as any as S.Schema<LockOvhCloudConnectInterfaceRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2201,8 +1642,8 @@ export const putOvhCloudConnect: API.OperationMethod<
   PutOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOvhCloudConnectRequest,
-  output: PutOvhCloudConnectResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<PutOvhCloudConnectRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<PutOvhCloudConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2216,8 +1657,8 @@ export const putOvhCloudConnectServiceInfos: API.OperationMethod<
   PutOvhCloudConnectServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOvhCloudConnectServiceInfosRequest,
-  output: PutOvhCloudConnectServiceInfosResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<PutOvhCloudConnectServiceInfosRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<PutOvhCloudConnectServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2231,8 +1672,8 @@ export const regenerateOvhCloudConnectServiceKey: API.OperationMethod<
   RegenerateOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateOvhCloudConnectServiceKeyRequest,
-  output: OvhcloudconnectKey,
+  input: __S(87, __c10, 7) as any as S.Schema<RegenerateOvhCloudConnectServiceKeyRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<OvhcloudconnectKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2246,8 +1687,8 @@ export const sendOvhCloudConnectServiceKey: API.OperationMethod<
   SendOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendOvhCloudConnectServiceKeyRequest,
-  output: OvhcloudconnectSendKeyAnswer,
+  input: __S(88, __c11, 0) as any as S.Schema<SendOvhCloudConnectServiceKeyRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<OvhcloudconnectSendKeyAnswer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2261,8 +1702,8 @@ export const terminateOvhCloudConnect: API.OperationMethod<
   TerminateOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateOvhCloudConnectRequest,
-  output: TerminateOvhCloudConnectResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<TerminateOvhCloudConnectRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TerminateOvhCloudConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2276,8 +1717,8 @@ export const unlockOvhCloudConnectInterface: API.OperationMethod<
   UnlockOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockOvhCloudConnectInterfaceRequest,
-  output: OvhcloudconnectTask,
+  input: __S(91, __c11, 3) as any as S.Schema<UnlockOvhCloudConnectInterfaceRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2291,8 +1732,8 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          futureUse: S.optional(ServiceTerminationFutureUseEnum),
-          reason: S.optional(ServiceTerminationReasonEnum),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
           token: S.String,
         }).pipe(
           T.Http({
@@ -2328,9 +1769,7 @@ function __c0(j: number): any {
     case 3:
       return S.Array(S.Number);
     case 4:
-      return S.suspend(() =>
-        CreateOvhCloudConnectChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateOvhCloudConnectChangeContactResponse",
       });
     case 5:
@@ -2341,7 +1780,7 @@ function __c0(j: number): any {
           interfaceId: S.Number,
           ovhBgpArea: S.optional(S.NullOr(S.Number)),
           subnet: S.optional(S.NullOr(S.String)),
-          type: OvhcloudconnectPopConfigTypeEnum,
+          type: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/config/pop", code: 200 }),
         ),
@@ -2351,10 +1790,10 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          function: S.optional(OvhcloudconnectTaskFunctionEnum),
+          function: S.optional(S.String),
           id: S.optional(S.Number),
           resourceId: S.optional(S.Number),
-          status: S.optional(OvhcloudconnectTaskStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvhcloudconnectTask" });
     case 7:
@@ -2389,7 +1828,7 @@ function __c1(j: number): any {
           bgpNeighborIp: S.optional(S.NullOr(S.String)),
           nextHop: S.optional(S.NullOr(S.String)),
           subnet: S.optional(S.NullOr(S.String)),
-          type: OvhcloudconnectDatacenterExtraConfigTypeEnum,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2405,8 +1844,8 @@ function __c1(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           dcConfigId: S.optional(S.Number),
-          diagnosticName: OvhcloudconnectDiagnosticFunctionEnum,
-          diagnosticType: S.optional(OvhcloudconnectDiagnosticTypeEnum),
+          diagnosticName: S.String,
+          diagnosticType: S.optional(S.String),
           extraConfigId: S.optional(S.Number),
           popConfigId: S.Number,
         }).pipe(
@@ -2432,17 +1871,17 @@ function __c1(j: number): any {
         identifier: "OvhcloudconnectDiagnosticResult",
       });
     case 3:
-      return S.Array(OvhcloudconnectDiagnosticResult);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          function: S.optional(OvhcloudconnectDiagnosticFunctionEnum),
+          function: S.optional(S.String),
           id: S.optional(S.Number),
-          result: S.optional(S.NullOr(OvhcloudconnectDiagnosticResultList)),
+          result: S.optional(S.NullOr(__S(11, __c1, 3))),
           source: S.optional(S.NullOr(S.String)),
-          status: S.optional(OvhcloudconnectTaskStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OvhcloudconnectDiagnostic",
@@ -2510,7 +1949,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          subscriptions: S.optional(CreateOvhCloudConnectMonitoringRequestSubscriptionsList),
+          subscriptions: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/monitoring", code: 200 }),
         ),
@@ -2613,22 +2052,22 @@ function __c3(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(27, __c3, 3))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bandwidth: S.optional(OvhcloudconnectServiceBandwidthEnum),
+          bandwidth: S.optional(S.String),
           description: S.optional(S.String),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
-          interfaceList: S.optional(OvhcloudconnectServiceWithIAMInterfaceListList),
+          iam: S.optional(S.NullOr(__S(28, __c3, 4))),
+          interfaceList: S.optional(__S(3, __c0, 3)),
           pop: S.optional(S.String),
-          portQuantity: S.optional(OvhcloudconnectServicePortEnum),
+          portQuantity: S.optional(S.String),
           product: S.optional(S.String),
-          provider: S.optional(OvhcloudconnectServiceProviderEnum),
-          status: S.optional(OvhcloudconnectServiceStatusEnum),
+          provider: S.optional(S.String),
+          status: S.optional(S.String),
           uuid: S.optional(S.String),
           vrack: S.optional(S.NullOr(S.String)),
         }),
@@ -2657,9 +2096,9 @@ function __c3(j: number): any {
           id: S.optional(S.Number),
           interfaceId: S.Number,
           ovhBgpArea: S.optional(S.NullOr(S.Number)),
-          status: S.optional(OvhcloudconnectPopConfigStatusEnum),
+          status: S.optional(S.String),
           subnet: S.optional(S.NullOr(S.String)),
-          type: OvhcloudconnectPopConfigTypeEnum,
+          type: S.String,
         }),
       ).annotate({ identifier: "OvhcloudconnectPopConfig" });
   }
@@ -2688,7 +2127,7 @@ function __c4(j: number): any {
           datacenterId: S.Number,
           id: S.optional(S.Number),
           ovhBgpArea: S.optional(S.NullOr(S.Number)),
-          status: S.optional(OvhcloudconnectPopConfigStatusEnum),
+          status: S.optional(S.String),
           subnet: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -2718,9 +2157,9 @@ function __c4(j: number): any {
           bgpNeighborIp: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
           nextHop: S.optional(S.NullOr(S.String)),
-          status: S.optional(OvhcloudconnectPopConfigStatusEnum),
+          status: S.optional(S.String),
           subnet: S.optional(S.NullOr(S.String)),
-          type: OvhcloudconnectDatacenterExtraConfigTypeEnum,
+          type: S.String,
         }),
       ).annotate({
         identifier: "OvhcloudconnectDatacenterExtraConfig",
@@ -2748,7 +2187,7 @@ function __c4(j: number): any {
           lastDown: S.optional(S.NullOr(S.String)),
           lastUp: S.optional(S.NullOr(S.String)),
           lastUpdate: S.optional(S.String),
-          status: S.optional(OvhcloudconnectStatusStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OvhcloudconnectPopConfStatus",
@@ -2774,8 +2213,8 @@ function __c4(j: number): any {
           available: S.optional(S.Boolean),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          region: S.optional(CommonRegionEnum),
-          regionType: S.optional(OvhcloudconnectDatacenterRegionTypeEnum),
+          region: S.optional(S.String),
+          regionType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OvhcloudconnectDatacenter",
@@ -2816,7 +2255,7 @@ function __c5(j: number): any {
           endDate: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
           startDate: S.optional(S.String),
-          type: S.optional(OvhcloudconnectIncidentTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvhcloudconnectIncident" });
     case 3:
@@ -2840,18 +2279,16 @@ function __c5(j: number): any {
           deviceDisplayName: S.optional(S.NullOr(S.String)),
           deviceRackDisplayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
-          incomingLightStatus: S.optional(OvhcloudconnectInterfaceLightStatusEnum),
+          incomingLightStatus: S.optional(S.String),
           incomingLightValue: S.optional(S.NullOr(S.Number)),
           interfaceName: S.optional(S.NullOr(S.String)),
-          interfaceStatus: S.optional(OvhcloudconnectInterfaceLightStatusEnum),
+          interfaceStatus: S.optional(S.String),
           interfaceStatusLastUpdate: S.optional(S.String),
-          interfaceTerminationType: S.optional(
-            S.NullOr(OvhcloudconnectInterfaceTerminationTypeEnum),
-          ),
+          interfaceTerminationType: S.optional(S.NullOr(S.String)),
           lightLastUpdate: S.optional(S.String),
-          outgoingLightStatus: S.optional(OvhcloudconnectInterfaceLightStatusEnum),
+          outgoingLightStatus: S.optional(S.String),
           outgoingLightValue: S.optional(S.NullOr(S.Number)),
-          status: S.optional(OvhcloudconnectInterfaceStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvhcloudconnectInterface" });
     case 5:
@@ -2876,7 +2313,7 @@ function __c5(j: number): any {
           lastDown: S.optional(S.NullOr(S.String)),
           lastUp: S.optional(S.NullOr(S.String)),
           lastUpdate: S.optional(S.String),
-          status: S.optional(OvhcloudconnectStatusStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OvhcloudconnectInterfaceStatus",
@@ -2903,7 +2340,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          additionalReturnedFields: S.optional(DbaasLogsLogKindAdditionalReturnedFieldsList),
+          additionalReturnedFields: S.optional(__S(18, __c2, 2)),
           createdAt: S.optional(S.String),
           displayName: S.optional(S.String),
           kindId: S.optional(S.String),
@@ -2940,7 +2377,7 @@ function __c6(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           kind: S.optional(S.String),
-          resource: S.optional(DbaasLogsLogSubscriptionResource),
+          resource: S.optional(__S(50, __c6, 2)),
           serviceName: S.optional(S.String),
           streamId: S.optional(S.String),
           subscriptionId: S.optional(S.String),
@@ -2978,11 +2415,11 @@ function __c6(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(3, __c0, 3))),
+          renew: S.optional(S.NullOr(__S(53, __c6, 5))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 7:
@@ -3009,8 +2446,8 @@ function __c7(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           key: S.optional(S.String),
-          provider: S.optional(OvhcloudconnectServiceProviderEnum),
-          status: S.optional(OvhcloudconnectKeyStatusEnum),
+          provider: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvhcloudconnectKey" });
     case 1:
@@ -3029,21 +2466,19 @@ function __c7(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 3:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(58, __c7, 2));
     case 4:
-      return S.Record(S.String, ListOvhCloudConnectRequestIamTagsValueList);
+      return S.Record(S.String, __S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListOvhCloudConnectRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(60, __c7, 4).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ovhCloudConnect", code: 200 })),
       ).annotate({
         identifier: "ListOvhCloudConnectRequest",
       });
     case 6:
-      return S.suspend(() =>
-        ListOvhCloudConnectResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOvhCloudConnectResponse",
       });
     case 7:
@@ -3096,8 +2531,8 @@ function __c8(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           popId: S.Number.pipe(T.Label()),
-          period: OvhcloudconnectInterfaceMetricsPeriodEnum.pipe(T.Query()),
-          type: OvhcloudconnectPopConfigMetricsTypeEnum.pipe(T.Query()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3111,7 +2546,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(OvhcloudconnectInterfaceMetricsUnitEnum),
+          unit: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({
@@ -3121,15 +2556,13 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Number),
-          value: S.optional(OvhcloudconnectMetricsValue),
+          value: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "OvhcloudconnectMetrics" });
     case 5:
-      return S.Array(OvhcloudconnectMetrics);
+      return S.Array(__S(68, __c8, 4));
     case 6:
-      return S.suspend(() =>
-        ListOvhCloudConnectConfigPopStatisticsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(69, __c8, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOvhCloudConnectConfigPopStatisticsResponse",
       });
     case 7:
@@ -3181,8 +2614,8 @@ function __c9(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          period: OvhcloudconnectInterfaceMetricsPeriodEnum.pipe(T.Query()),
-          type: OvhcloudconnectInterfaceMetricsTypeEnum.pipe(T.Query()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3244,11 +2677,9 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OvhcloudconnectMonitoring);
+      return S.Array(__S(79, __c9, 7));
     case 1:
-      return S.suspend(() =>
-        ListOvhCloudConnectMonitoringResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(80, __c10, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOvhCloudConnectMonitoringResponse",
       });
     case 2:
@@ -3297,7 +2728,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(53, __c6, 5))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/ovhCloudConnect/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -3342,7 +2773,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          messageCode: S.optional(OvhcloudconnectMessageCodeEnum),
+          messageCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OvhcloudconnectSendKeyAnswer",
@@ -3373,4 +2804,9 @@ function __c11(j: number): any {
         identifier: "UnlockOvhCloudConnectInterfaceRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

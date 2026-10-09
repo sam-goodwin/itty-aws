@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
-
 /** This message defines attributes for a node that handles a network request. The node can be either a service or an application that sends, forwards, or receives the request. Service peers should fill in `principal` and `labels` as appropriate. */
 export interface Peer {
   /** The CLDR country/region code associated with the above IP address. If the IP address is private, the `region_code` should reflect the physical location where this peer is running. */
@@ -78,14 +78,8 @@ export interface Peer {
   /** The identity of this peer. Similar to `Request.auth.principal`, but relative to the peer instead of the request. For example, the identity associated with a load balancer that forwarded the request. */
   principal?: string;
 }
-const Peer = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Peer>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** This message defines attributes for a typical network response. It generally models semantics of an HTTP response. */
 export interface Response {
   /** The amount of time it takes the backend service to fully respond to a request. Measured from when the destination service starts to send the request to the backend until when the destination service receives the complete response from the backend. */
@@ -99,8 +93,6 @@ export interface Response {
   /** The HTTP response status code, such as `200` and `404`. */
   code?: string;
 }
-const Response = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Response>;
-
 /** This message defines core attributes for a resource. A resource is an addressable (named) entity provided by the destination service. For example, a file stored on a network storage service. */
 export interface Resource {
   /** Immutable. The location of the resource. The location encoding is specific to the service provider, and new encoding may be introduced as the service evolves. For Google Cloud products, the encoding is what is used by Google Cloud APIs, such as `us-east1`, `aws-us-east-1`, and `azure-eastus2`. The semantics of `location` is identical to the `cloud.googleapis.com/location` label used by some Google Cloud APIs. */
@@ -128,18 +120,12 @@ export interface Resource {
   /** The type of the resource. The syntax is platform-specific because different platforms define their resources differently. For Google APIs, the type format must be "{service}/{kind}", such as "pubsub.googleapis.com/Topic". */
   type?: string;
 }
-const Resource = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Resource>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
-
 /** This message defines attributes associated with OAuth credentials. */
 export interface Oauth {
   /** The optional OAuth client ID. This is the unique public identifier issued by an authorization server to a registered client application. Empty string is equivalent to no oauth client id. WARNING: This is for MCP tools/call and tools/list authorization and not for general use. */
   clientId?: string;
 }
-const Oauth = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Oauth>;
-
 /** This message defines request authentication attributes. Terminology is based on the JSON Web Token (JWT) standard, but the terms also correlate to concepts in other standards. */
 export interface Auth {
   /** Identifies the client credential id used for authentication. credential_id is in the format of AUTH_METHOD:IDENTIFIER, e.g. "serviceaccount:XXXXX, apikey:XXXXX" where the format of the IDENTIFIER can vary for different AUTH_METHODs. */
@@ -157,8 +143,6 @@ export interface Auth {
   /** The authenticated principal. Reflects the issuer (`iss`) and subject (`sub`) claims within a JWT. The issuer and subject should be `/` delimited, with `/` percent-encoded within the subject fragment. For Google accounts, the principal format is: "https://accounts.google.com/{id}" */
   principal?: string;
 }
-const Auth = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Auth>;
-
 /** This message defines attributes for an HTTP request. If the actual request is not an HTTP request, the runtime system should try to map the actual request to an equivalent HTTP request. */
 export interface Request {
   /** The unique ID for a request, which can be propagated to downstream systems. The ID should have low probability of collision within a single day for a specific service. */
@@ -188,8 +172,6 @@ export interface Request {
   /** The HTTP request method, such as `GET`, `POST`. */
   method?: string;
 }
-const Request = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Request>;
-
 /** This message defines attributes associated with API operations, such as a network API request. The terminology is based on the conventions used by Google APIs, Istio, and OpenAPI. */
 export interface Api {
   /** The API service name. It is a logical identifier for a networked API, such as "pubsub.googleapis.com". The naming syntax depends on the API management system being used for handling the request. */
@@ -201,8 +183,6 @@ export interface Api {
   /** The API protocol used for sending the request, such as "http", "https", "grpc", or "internal". */
   protocol?: string;
 }
-const Api = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Api>;
-
 /** This message defines the standard attribute vocabulary for Google APIs. An attribute is a piece of metadata that describes an activity on a network service. For example, the size of an HTTP request, or the status code of an HTTP response. Each attribute has a type and a name, which is logically defined as a proto message field in `AttributeContext`. The field type becomes the attribute type, and the field path becomes the attribute name. For example, the attribute `source.ip` maps to field `AttributeContext.source.ip`. This message definition is guaranteed not to have any wire breaking change. So you can use it directly for passing attributes across different systems. NOTE: Different system may generate different subset of attributes. Please verify the system specification before relying on an attribute generated a system. */
 export interface AttributeContext {
   /** The origin of a network activity. In a multi hop network activity, the origin represents the sender of the first hop. For the first hop, the `source` and the `origin` must have the same content. */
@@ -222,8 +202,6 @@ export interface AttributeContext {
   /** Represents an API operation that is involved to a network activity. */
   api?: Api;
 }
-const AttributeContext = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AttributeContext>;
-
 /** Describes a resource referenced in the request. */
 export interface ResourceInfo {
   /** Optional. The location of the resource, it must be a valid zone, region or multiregion, for example: "europe-west4", "northamerica-northeast1-a". Required for location policy check. */
@@ -237,11 +215,7 @@ export interface ResourceInfo {
   /** The resource permission needed for this request. The format must be "{service}/{plural}.{verb}". */
   permission?: string;
 }
-const ResourceInfo = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ResourceInfo>;
-
 export type ResourceInfoList = Array<ResourceInfo>;
-const ResourceInfoList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ResourceInfoList>;
-
 /** Request message for the Check method. */
 export interface CheckRequest {
   /** Describes attributes about the operation being executed by the service. */
@@ -253,16 +227,12 @@ export interface CheckRequest {
   /** Describes the resources and the policies applied to each resource. */
   resources?: ResourceInfoList;
 }
-const CheckRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CheckRequest>;
-
 export interface CheckServicesRequest {
   /** The service name as specified in its service configuration. For example, `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name. */
   serviceName: string;
   /** Request body */
   body?: CheckRequest;
 }
-const CheckServicesRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CheckServicesRequest>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -272,8 +242,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Status>;
-
 /** Response message for the Check method. */
 export interface CheckResponse {
   /** Operation is allowed when this field is not set. Any non-'OK' status indicates a denial; google.rpc.Status.details would contain additional details about the denial. */
@@ -283,11 +251,7 @@ export interface CheckResponse {
   /** Returns a set of request contexts generated from the `CheckRequest`. */
   headers?: StringMap;
 }
-const CheckResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CheckResponse>;
-
 export type AttributeContextList = Array<AttributeContext>;
-const AttributeContextList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AttributeContextList>;
-
 /** Request message for the Report method. */
 export interface ReportRequest {
   /** Describes the list of operations to be reported. Each operation is represented as an AttributeContext, and contains all attributes around an API access. */
@@ -295,26 +259,17 @@ export interface ReportRequest {
   /** Specifies the version of the service configuration that should be used to process the request. Must not be empty. Set this field to 'latest' to specify using the latest configuration. */
   serviceConfigId?: string;
 }
-const ReportRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ReportRequest>;
-
 export interface ReportServicesRequest {
   /** The service name as specified in its service configuration. For example, `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name. */
   serviceName: string;
   /** Request body */
   body?: ReportRequest;
 }
-const ReportServicesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ReportServicesRequest>;
-
 /** Response message for the Report method. */
 export interface ReportResponse {
   /** The extension field to store serialized OTel responses. e.g. ExportLogsServiceResponse, ExportMetricsServiceResponse. */
   extensions?: DocumentMap;
 }
-const ReportResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ReportResponse>;
-
 export type CheckServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** This method provides admission control for services that are integrated with [Service Infrastructure](https://cloud.google.com/service-infrastructure). It checks whether an operation should be allowed based on the service configuration and relevant policies. It must be called before the operation is executed. For more information, see [Admission Control](https://cloud.google.com/service-infrastructure/docs/admission-control). NOTE: The admission control has an expected policy propagation delay of 60s. The caller **must** not depend on the most recent policy changes. NOTE: The admission control has a hard limit of 1 referenced resources per call. If an operation refers to more than 1 resources, the caller must call the Check method multiple times. This method requires the `servicemanagement.services.check` permission on the specified service. For more information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control). */
 export const checkServices: API.OperationMethod<
@@ -323,8 +278,8 @@ export const checkServices: API.OperationMethod<
   CheckServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckServicesRequest,
-  output: CheckResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<CheckServicesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CheckResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -338,8 +293,8 @@ export const reportServices: API.OperationMethod<
   ReportServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportServicesRequest,
-  output: ReportResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<ReportServicesRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -354,7 +309,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(0, __c0, 0)),
           port: S.optional(S.String),
           ip: S.optional(S.String),
           principal: S.optional(S.String),
@@ -363,14 +318,14 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           backendLatency: S.optional(S.String),
           size: S.optional(S.String),
           time: S.optional(S.String),
-          headers: S.optional(StringMap),
+          headers: S.optional(__S(0, __c0, 0)),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "Response" });
@@ -380,14 +335,14 @@ function __c0(j: number): any {
           location: S.optional(S.String),
           service: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(0, __c0, 0)),
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
           uid: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(0, __c0, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
@@ -407,11 +362,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           credentialId: S.optional(S.String),
-          audiences: S.optional(StringList),
+          audiences: S.optional(__S(6, __c0, 6)),
           presenter: S.optional(S.String),
-          claims: S.optional(DocumentMap),
-          oauth: S.optional(Oauth),
-          accessLevels: S.optional(StringList),
+          claims: S.optional(__S(2, __c0, 2)),
+          oauth: S.optional(__S(7, __c0, 7)),
+          accessLevels: S.optional(__S(6, __c0, 6)),
           principal: S.optional(S.String),
         }),
       ).annotate({ identifier: "Auth" });
@@ -420,9 +375,9 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           scheme: S.optional(S.String),
-          headers: S.optional(StringMap),
+          headers: S.optional(__S(0, __c0, 0)),
           origin: S.optional(S.String),
-          auth: S.optional(Auth),
+          auth: S.optional(__S(8, __c1, 0)),
           size: S.optional(S.String),
           path: S.optional(S.String),
           reason: S.optional(S.String),
@@ -445,14 +400,14 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          origin: S.optional(Peer),
-          destination: S.optional(Peer),
-          extensions: S.optional(DocumentMapList),
-          response: S.optional(Response),
-          resource: S.optional(Resource),
-          request: S.optional(Request),
-          source: S.optional(Peer),
-          api: S.optional(Api),
+          origin: S.optional(__S(1, __c0, 1)),
+          destination: S.optional(__S(1, __c0, 1)),
+          extensions: S.optional(__S(3, __c0, 3)),
+          response: S.optional(__S(4, __c0, 4)),
+          resource: S.optional(__S(5, __c0, 5)),
+          request: S.optional(__S(9, __c1, 1)),
+          source: S.optional(__S(1, __c0, 1)),
+          api: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "AttributeContext" });
     case 4:
@@ -466,21 +421,21 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ResourceInfo" });
     case 5:
-      return S.Array(ResourceInfo);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(AttributeContext),
+          attributes: S.optional(__S(11, __c1, 3)),
           serviceConfigId: S.optional(S.String),
           flags: S.optional(S.String),
-          resources: S.optional(ResourceInfoList),
+          resources: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "CheckRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(CheckRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -497,24 +452,24 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3, __c0, 3)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(Status),
-          dynamicMetadata: S.optional(DocumentMap),
-          headers: S.optional(StringMap),
+          status: S.optional(__S(16, __c2, 0)),
+          dynamicMetadata: S.optional(__S(2, __c0, 2)),
+          headers: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "CheckResponse" });
     case 2:
-      return S.Array(AttributeContext);
+      return S.Array(__S(11, __c1, 3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(AttributeContextList),
+          operations: S.optional(__S(18, __c2, 2)),
           serviceConfigId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportRequest" });
@@ -522,7 +477,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(ReportRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -534,8 +489,13 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(DocumentMap),
+          extensions: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "ReportResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

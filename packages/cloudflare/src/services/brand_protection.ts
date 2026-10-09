@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -47,26 +49,12 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export type QueriesBulkRequestQueriesItemMap = { [key: string]: unknown | undefined };
-const QueriesBulkRequestQueriesItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<QueriesBulkRequestQueriesItemMap>;
-
 export type QueriesBulkRequestQueriesList = Array<QueriesBulkRequestQueriesItemMap>;
-const QueriesBulkRequestQueriesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<QueriesBulkRequestQueriesList>;
-
 export interface BulkQueryRequest {
   accountId: string;
   queries?: QueriesBulkRequestQueriesList;
 }
-const BulkQueryRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BulkQueryRequest>;
-
 export interface BulkQueryResponse {}
-const BulkQueryResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BulkQueryResponse>;
-
 export interface CreateLogoRequest {
   accountId: string;
   matchType?: string;
@@ -74,16 +62,12 @@ export interface CreateLogoRequest {
   threshold?: number;
   image?: unknown;
 }
-const CreateLogoRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateLogoRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateLogoResponse {
   id?: number | null;
   tag?: string | null;
   uploadPath?: string | null;
 }
-const CreateLogoResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateLogoResponse>;
-
 export interface CreateQueryRequest {
   accountId: string;
   id?: string;
@@ -95,11 +79,7 @@ export interface CreateQueryRequest {
   bodyScan?: boolean;
   bodyTag?: string;
 }
-const CreateQueryRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateQueryRequest>;
-
 export interface CreateQueryResponse {}
-const CreateQueryResponse = BulkQueryResponse as any as S.Schema<CreateQueryResponse>;
-
 export interface CreateV2LogoRequest {
   accountId: string;
   /** Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string. */
@@ -111,80 +91,46 @@ export interface CreateV2LogoRequest {
   /** If true, search historic scanned images for matches above the similarity threshold */
   searchLookback?: boolean;
 }
-const CreateV2LogoRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateV2LogoRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateV2LogoResponse {
   message: string;
   queryId?: number | null;
 }
-const CreateV2LogoResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateV2LogoResponse>;
-
 export interface DeleteLogoRequest {
   accountId: string;
   logoId: string;
 }
-const DeleteLogoRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteLogoRequest>;
-
 export interface DeleteLogoResponse {}
-const DeleteLogoResponse = BulkQueryResponse as any as S.Schema<DeleteLogoResponse>;
-
 export interface DeleteQueryRequest {
   accountId: string;
   id?: string;
   scan?: boolean;
   tag?: string;
 }
-const DeleteQueryRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteQueryRequest>;
-
 export interface DeleteQueryResponse {}
-const DeleteQueryResponse = BulkQueryResponse as any as S.Schema<DeleteQueryResponse>;
-
 export interface DeleteV2LogoRequest {
   accountId: string;
   queryId: string;
 }
-const DeleteV2LogoRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteV2LogoRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteV2LogoResponse {
   message: string;
 }
-const DeleteV2LogoResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteV2LogoResponse>;
-
 export type LogoMatchesDownloadRequestLogoIdList = Array<string>;
-const LogoMatchesDownloadRequestLogoIdList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<LogoMatchesDownloadRequestLogoIdList>;
-
 export interface DownloadLogoMatchRequest {
   accountId: string;
   limit?: string;
   logoId?: LogoMatchesDownloadRequestLogoIdList;
   offset?: string;
 }
-const DownloadLogoMatchRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DownloadLogoMatchRequest>;
-
 export type LogoMatchesDownloadResponseMatchesItemMap = { [key: string]: unknown | undefined };
 export type LogoMatchesDownloadResponseMatchesList =
   Array<LogoMatchesDownloadResponseMatchesItemMap>;
-const LogoMatchesDownloadResponseMatchesList =
-  QueriesBulkRequestQueriesList as any as S.Schema<LogoMatchesDownloadResponseMatchesList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DownloadLogoMatchResponse {
   matches?: LogoMatchesDownloadResponseMatchesList | null;
   total?: number | null;
 }
-const DownloadLogoMatchResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DownloadLogoMatchResponse>;
-
 export interface DownloadMatchRequest {
   accountId: string;
   id?: string;
@@ -193,35 +139,20 @@ export interface DownloadMatchRequest {
   limit?: number;
   offset?: number;
 }
-const DownloadMatchRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DownloadMatchRequest>;
-
 export type MatchesDownloadResponseMatchesItemMap = { [key: string]: unknown | undefined };
 export type MatchesDownloadResponseMatchesList = Array<MatchesDownloadResponseMatchesItemMap>;
-const MatchesDownloadResponseMatchesList =
-  QueriesBulkRequestQueriesList as any as S.Schema<MatchesDownloadResponseMatchesList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DownloadMatchResponse {
   matches?: MatchesDownloadResponseMatchesList | null;
   total?: number | null;
 }
-const DownloadMatchResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DownloadMatchResponse>;
-
 export type LogoMatchesGetRequestLogoIdList = Array<string>;
-const LogoMatchesGetRequestLogoIdList =
-  LogoMatchesDownloadRequestLogoIdList as any as S.Schema<LogoMatchesGetRequestLogoIdList>;
-
 export interface GetLogoMatchRequest {
   accountId: string;
   limit?: string;
   logoId?: LogoMatchesGetRequestLogoIdList;
   offset?: string;
 }
-const GetLogoMatchRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetLogoMatchRequest>;
-
 export type LogoMatchesGetResponseMatchesItemMap = { [key: string]: unknown | undefined };
 export type LogoMatchesGetResponseMatchesList = Array<LogoMatchesGetResponseMatchesItemMap>;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -229,8 +160,6 @@ export interface GetLogoMatchResponse {
   matches?: LogoMatchesGetResponseMatchesList | null;
   total?: number | null;
 }
-const GetLogoMatchResponse = DownloadMatchResponse as any as S.Schema<GetLogoMatchResponse>;
-
 export interface GetMatchRequest {
   accountId: string;
   id?: string;
@@ -239,8 +168,6 @@ export interface GetMatchRequest {
   limit?: number;
   offset?: number;
 }
-const GetMatchRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetMatchRequest>;
-
 export type MatchesGetResponseMatchesItemMap = { [key: string]: unknown | undefined };
 export type MatchesGetResponseMatchesList = Array<MatchesGetResponseMatchesItemMap>;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -248,8 +175,6 @@ export interface GetMatchResponse {
   matches?: MatchesGetResponseMatchesList | null;
   total?: number | null;
 }
-const GetMatchResponse = DownloadMatchResponse as any as S.Schema<GetMatchResponse>;
-
 export interface GetV2LogoRequest {
   accountId: string;
   /** Optional query ID to retrieve a specific logo query */
@@ -257,8 +182,6 @@ export interface GetV2LogoRequest {
   /** If true, include base64-encoded image data in the response */
   download?: string;
 }
-const GetV2LogoRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetV2LogoRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetV2LogoResponse {
   id: number;
@@ -271,18 +194,12 @@ export interface GetV2LogoResponse {
   /** Base64-encoded image data (only present when download=true) */
   imageData?: string | null;
 }
-const GetV2LogoResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetV2LogoResponse>;
-
 export type V2LogoMatchesGetRequestOrder = "asc" | "desc";
-const V2LogoMatchesGetRequestOrder = S.String;
-
 export type V2LogoMatchesGetRequestOrderBy =
   | "matchedAt"
   | "domain"
   | "similarityScore"
   | "registrar";
-const V2LogoMatchesGetRequestOrderBy = S.String;
-
 export interface GetV2LogoMatchRequest {
   accountId: string;
   queryId: string;
@@ -294,11 +211,6 @@ export interface GetV2LogoMatchRequest {
   /** Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar' */
   orderBy?: V2LogoMatchesGetRequestOrderBy | (string & {});
 }
-const GetV2LogoMatchRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetV2LogoMatchRequest>;
-
 export interface V2LogoMatchesGetResponseMatchesItem {
   id: number;
   domain: string;
@@ -310,37 +222,15 @@ export interface V2LogoMatchesGetResponseMatchesItem {
   contentType?: string | null;
   imageData?: string | null;
 }
-const V2LogoMatchesGetResponseMatchesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<V2LogoMatchesGetResponseMatchesItem>;
-
 export type V2LogoMatchesGetResponseMatchesList = Array<V2LogoMatchesGetResponseMatchesItem>;
-const V2LogoMatchesGetResponseMatchesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<V2LogoMatchesGetResponseMatchesList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetV2LogoMatchResponse {
   matches: V2LogoMatchesGetResponseMatchesList;
   total: number;
 }
-const GetV2LogoMatchResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetV2LogoMatchResponse>;
-
 export type V2MatchesGetRequestQueryIdList = Array<string>;
-const V2MatchesGetRequestQueryIdList =
-  LogoMatchesDownloadRequestLogoIdList as any as S.Schema<V2MatchesGetRequestQueryIdList>;
-
 export type V2MatchesGetRequestOrder = "asc" | "desc";
-const V2MatchesGetRequestOrder = S.String;
-
 export type V2MatchesGetRequestOrderBy = "domain" | "first_seen" | "registrar";
-const V2MatchesGetRequestOrderBy = S.String;
-
 export interface GetV2MatchRequest {
   accountId: string;
   /** Query ID or comma-separated list of Query IDs. When multiple IDs are provided, matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and dismissed state. */
@@ -356,16 +246,9 @@ export interface GetV2MatchRequest {
   /** Column to sort by. Options: 'domain', 'first_seen', or 'registrar' */
   orderBy?: V2MatchesGetRequestOrderBy | (string & {});
 }
-const GetV2MatchRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetV2MatchRequest>;
-
 export interface V2MatchesGetResponseMatchesItemPublicScans {
   submissionId: string;
 }
-const V2MatchesGetResponseMatchesItemPublicScans = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<V2MatchesGetResponseMatchesItemPublicScans>;
-
 export interface V2MatchesGetResponseMatchesItemMatchDetailsItem {
   /** Individual dismissed state for this specific match. */
   dismissed: boolean;
@@ -374,18 +257,8 @@ export interface V2MatchesGetResponseMatchesItemMatchDetailsItem {
   /** Tag associated with the query, if one exists. */
   queryTag: string;
 }
-const V2MatchesGetResponseMatchesItemMatchDetailsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<V2MatchesGetResponseMatchesItemMatchDetailsItem>;
-
 export type V2MatchesGetResponseMatchesItemMatchDetailsList =
   Array<V2MatchesGetResponseMatchesItemMatchDetailsItem>;
-const V2MatchesGetResponseMatchesItemMatchDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<V2MatchesGetResponseMatchesItemMatchDetailsList>;
-
 export interface V2MatchesGetResponseMatchesItem {
   domain: string;
   firstSeen: string;
@@ -399,24 +272,12 @@ export interface V2MatchesGetResponseMatchesItem {
   /** Per-match detail objects with query metadata and individual dismissed state. Only present when multiple query_ids are requested. */
   matchDetails?: V2MatchesGetResponseMatchesItemMatchDetailsList | null;
 }
-const V2MatchesGetResponseMatchesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<V2MatchesGetResponseMatchesItem>;
-
 export type V2MatchesGetResponseMatchesList = Array<V2MatchesGetResponseMatchesItem>;
-const V2MatchesGetResponseMatchesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<V2MatchesGetResponseMatchesList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetV2MatchResponse {
   matches: V2MatchesGetResponseMatchesList;
   total: number;
 }
-const GetV2MatchResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetV2MatchResponse>;
-
 export interface GetV2QueryRequest {
   accountId: string;
   id?: string;
@@ -425,8 +286,6 @@ export interface GetV2QueryRequest {
   /** Optional number of queries per page for paginated list requests. Defaults to 100 when only page is supplied. Maximum 100. Omit page and per_page to preserve the legacy full-list response. */
   perPage?: number;
 }
-const GetV2QueryRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetV2QueryRequest>;
-
 export interface V2QueriesGetResultCase0ItemParametersStringMatchesItem {
   pattern: string;
 }
@@ -464,62 +323,30 @@ export interface V2QueriesGetResultCase1 {
   updated: string;
 }
 export type V2QueriesGetResult = V2QueriesGetResultCase0List | V2QueriesGetResultCase1;
-const V2QueriesGetResult = /*@__PURE__*/ __L.at(__c4, 2);
-
 export type GetV2QueryResponse = V2QueriesGetResult;
-const GetV2QueryResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetV2QueryResponse>;
-
 export interface SubmitBrandProtectionRequest {
   accountId: string;
 }
-const SubmitBrandProtectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SubmitBrandProtectionRequest>;
-
 export type SubmitResponseSkippedUrlsItemMap = { [key: string]: unknown | undefined };
 export type SubmitResponseSkippedUrlsList = Array<SubmitResponseSkippedUrlsItemMap>;
-const SubmitResponseSkippedUrlsList =
-  QueriesBulkRequestQueriesList as any as S.Schema<SubmitResponseSkippedUrlsList>;
-
 export type SubmitResponseSubmittedUrlsItemMap = { [key: string]: unknown | undefined };
 export type SubmitResponseSubmittedUrlsList = Array<SubmitResponseSubmittedUrlsItemMap>;
-const SubmitResponseSubmittedUrlsList =
-  QueriesBulkRequestQueriesList as any as S.Schema<SubmitResponseSubmittedUrlsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface SubmitBrandProtectionResponse {
   skippedUrls?: SubmitResponseSkippedUrlsList | null;
   submittedUrls?: SubmitResponseSubmittedUrlsList | null;
 }
-const SubmitBrandProtectionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SubmitBrandProtectionResponse>;
-
 export interface UrlInfoBrandProtectionRequest {
   accountId: string;
 }
-const UrlInfoBrandProtectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UrlInfoBrandProtectionRequest>;
-
 export type UrlInfoResultItemMap = { [key: string]: unknown | undefined };
 export type UrlInfoResultList = Array<UrlInfoResultItemMap>;
-const UrlInfoResultList = QueriesBulkRequestQueriesList as any as S.Schema<UrlInfoResultList>;
-
 export interface UrlInfoBrandProtectionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: UrlInfoResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const UrlInfoBrandProtectionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UrlInfoBrandProtectionResponse>;
-
 export type BulkQueryError = CloudflareOpError;
 /** Return a success message after creating new saved string queries in bulk */
 export const bulkQuery: API.OperationMethod<
@@ -528,8 +355,8 @@ export const bulkQuery: API.OperationMethod<
   BulkQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkQueryRequest,
-  output: BulkQueryResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<BulkQueryRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<BulkQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -543,8 +370,8 @@ export const createLogo: API.OperationMethod<
   CreateLogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLogoRequest,
-  output: CreateLogoResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateLogoRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateLogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -558,8 +385,8 @@ export const createQuery: API.OperationMethod<
   CreateQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQueryRequest,
-  output: CreateQueryResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateQueryRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -573,8 +400,8 @@ export const createV2Logo: API.OperationMethod<
   CreateV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateV2LogoRequest,
-  output: CreateV2LogoResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateV2LogoRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateV2LogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -588,8 +415,8 @@ export const deleteLogo: API.OperationMethod<
   DeleteLogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLogoRequest,
-  output: DeleteLogoResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteLogoRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteLogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -603,8 +430,8 @@ export const deleteQuery: API.OperationMethod<
   DeleteQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteQueryRequest,
-  output: DeleteQueryResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<DeleteQueryRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -618,8 +445,8 @@ export const deleteV2Logo: API.OperationMethod<
   DeleteV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteV2LogoRequest,
-  output: DeleteV2LogoResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteV2LogoRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DeleteV2LogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -633,8 +460,8 @@ export const downloadLogoMatch: API.OperationMethod<
   DownloadLogoMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadLogoMatchRequest,
-  output: DownloadLogoMatchResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<DownloadLogoMatchRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<DownloadLogoMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -648,8 +475,8 @@ export const downloadMatch: API.OperationMethod<
   DownloadMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadMatchRequest,
-  output: DownloadMatchResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<DownloadMatchRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DownloadMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -663,8 +490,8 @@ export const getLogoMatch: API.OperationMethod<
   GetLogoMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogoMatchRequest,
-  output: GetLogoMatchResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<GetLogoMatchRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetLogoMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -678,8 +505,8 @@ export const getMatch: API.OperationMethod<
   GetMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMatchRequest,
-  output: GetMatchResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<GetMatchRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -693,8 +520,8 @@ export const getV2Logo: API.OperationMethod<
   GetV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV2LogoRequest,
-  output: GetV2LogoResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<GetV2LogoRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetV2LogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -708,8 +535,8 @@ export const getV2LogoMatch: API.OperationMethod<
   GetV2LogoMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV2LogoMatchRequest,
-  output: GetV2LogoMatchResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetV2LogoMatchRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetV2LogoMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -723,8 +550,8 @@ export const getV2Match: API.OperationMethod<
   GetV2MatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV2MatchRequest,
-  output: GetV2MatchResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<GetV2MatchRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetV2MatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -738,8 +565,8 @@ export const getV2Query: API.OperationMethod<
   GetV2QueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV2QueryRequest,
-  output: GetV2QueryResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetV2QueryRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetV2QueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -753,8 +580,8 @@ export const submitBrandProtection: API.OperationMethod<
   SubmitBrandProtectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitBrandProtectionRequest,
-  output: SubmitBrandProtectionResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<SubmitBrandProtectionRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<SubmitBrandProtectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -770,8 +597,8 @@ export const urlInfoBrandProtection: API.PaginatedOperationMethod<
   UrlInfoResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: UrlInfoBrandProtectionRequest,
-    output: UrlInfoBrandProtectionResponse,
+    input: __S(38, __c4, 6) as any as S.Schema<UrlInfoBrandProtectionRequest>,
+    output: __S(39, __c4, 7) as any as S.Schema<UrlInfoBrandProtectionResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -786,12 +613,12 @@ function __c0(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(QueriesBulkRequestQueriesItemMap);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          queries: S.optional(QueriesBulkRequestQueriesList),
+          queries: S.optional(__S(1, __c0, 1)),
         })
           .pipe(
             T.Http({
@@ -943,7 +770,7 @@ function __c1(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           limit: S.optional(S.String.pipe(T.Query())),
-          logoId: S.optional(LogoMatchesDownloadRequestLogoIdList.pipe(T.Query("logo_id"))),
+          logoId: S.optional(__S(13, __c1, 5).pipe(T.Query("logo_id"))),
           offset: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -958,7 +785,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(S.NullOr(LogoMatchesDownloadResponseMatchesList)),
+          matches: S.optional(S.NullOr(__S(1, __c0, 1))),
           total: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -990,7 +817,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(S.NullOr(MatchesDownloadResponseMatchesList)),
+          matches: S.optional(S.NullOr(__S(1, __c0, 1))),
           total: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DownloadMatchResponse" });
@@ -999,7 +826,7 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           limit: S.optional(S.String.pipe(T.Query())),
-          logoId: S.optional(LogoMatchesGetRequestLogoIdList.pipe(T.Query("logo_id"))),
+          logoId: S.optional(__S(13, __c1, 5).pipe(T.Query("logo_id"))),
           offset: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -1066,8 +893,8 @@ function __c2(j: number): any {
           download: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.String.pipe(T.Query())),
           offset: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(V2LogoMatchesGetRequestOrder.pipe(T.Query())),
-          orderBy: S.optional(V2LogoMatchesGetRequestOrderBy.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -1099,11 +926,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(V2LogoMatchesGetResponseMatchesItem);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          matches: V2LogoMatchesGetResponseMatchesList,
+          matches: __S(24, __c3, 0),
           total: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV2LogoMatchResponse" });
@@ -1111,14 +938,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          queryId: V2MatchesGetRequestQueryIdList.pipe(T.Query("query_id")),
+          queryId: __S(13, __c1, 5).pipe(T.Query("query_id")),
           domainSearch: S.optional(S.String.pipe(T.Query("domain_search"))),
           includeDismissed: S.optional(S.String.pipe(T.Query("include_dismissed"))),
           includeDomainId: S.optional(S.String.pipe(T.Query("include_domain_id"))),
           limit: S.optional(S.String.pipe(T.Query())),
           offset: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(V2MatchesGetRequestOrder.pipe(T.Query())),
-          orderBy: S.optional(V2MatchesGetRequestOrderBy.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -1149,27 +976,25 @@ function __c3(j: number): any {
         identifier: "V2MatchesGetResponseMatchesItemMatchDetailsItem",
       });
     case 5:
-      return S.Array(V2MatchesGetResponseMatchesItemMatchDetailsItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
           firstSeen: S.String.pipe(T.Body("first_seen")),
-          publicScans: V2MatchesGetResponseMatchesItemPublicScans.pipe(T.Body("public_scans")),
+          publicScans: __S(27, __c3, 3).pipe(T.Body("public_scans")),
           registrar: S.String,
           scanStatus: S.String.pipe(T.Body("scan_status")),
           scanSubmissionId: S.Number.pipe(T.Body("scan_submission_id")),
           source: S.String,
           dismissed: S.optional(S.NullOr(S.Boolean)),
-          matchDetails: S.optional(
-            S.NullOr(V2MatchesGetResponseMatchesItemMatchDetailsList).pipe(T.Body("match_details")),
-          ),
+          matchDetails: S.optional(S.NullOr(__S(29, __c3, 5)).pipe(T.Body("match_details"))),
         }),
       ).annotate({
         identifier: "V2MatchesGetResponseMatchesItem",
       });
     case 7:
-      return S.Array(V2MatchesGetResponseMatchesItem);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1177,7 +1002,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          matches: V2MatchesGetResponseMatchesList,
+          matches: __S(31, __c3, 7),
           total: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV2MatchResponse" });
@@ -1207,7 +1032,7 @@ function __c4(j: number): any {
       );
     case 3:
       return S.suspend(() =>
-        V2QueriesGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(34, __c4, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV2QueryResponse" });
     case 4:
       return S.suspend(() =>
@@ -1228,12 +1053,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          skippedUrls: S.optional(
-            S.NullOr(SubmitResponseSkippedUrlsList).pipe(T.Body("skipped_urls")),
-          ),
-          submittedUrls: S.optional(
-            S.NullOr(SubmitResponseSubmittedUrlsList).pipe(T.Body("submitted_urls")),
-          ),
+          skippedUrls: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("skipped_urls"))),
+          submittedUrls: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("submitted_urls"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SubmitBrandProtectionResponse",
@@ -1257,11 +1078,16 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: UrlInfoResultList.pipe(T.EnvelopePayload()),
+          result: __S(1, __c0, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UrlInfoBrandProtectionResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

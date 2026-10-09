@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,14 +68,7 @@ export interface FetchReleaseFilterOptionsAppsRequest {
   /** Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app} */
   name: string;
 }
-const FetchReleaseFilterOptionsAppsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<FetchReleaseFilterOptionsAppsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** A representation of an app release. */
 export interface GooglePlayDeveloperReportingV1beta1Release {
   /** The version codes contained in this release. */
@@ -81,18 +76,8 @@ export interface GooglePlayDeveloperReportingV1beta1Release {
   /** Readable identifier of the release. */
   displayName?: string;
 }
-const GooglePlayDeveloperReportingV1beta1Release = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Release>;
-
 export type GooglePlayDeveloperReportingV1beta1ReleaseList =
   Array<GooglePlayDeveloperReportingV1beta1Release>;
-const GooglePlayDeveloperReportingV1beta1ReleaseList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseList>;
-
 /** A representation of a Play release track. */
 export interface GooglePlayDeveloperReportingV1beta1Track {
   /** The type of the track. */
@@ -102,44 +87,22 @@ export interface GooglePlayDeveloperReportingV1beta1Track {
   /** Represents all active releases in the track. */
   servingReleases?: GooglePlayDeveloperReportingV1beta1ReleaseList;
 }
-const GooglePlayDeveloperReportingV1beta1Track = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Track>;
-
 export type GooglePlayDeveloperReportingV1beta1TrackList =
   Array<GooglePlayDeveloperReportingV1beta1Track>;
-const GooglePlayDeveloperReportingV1beta1TrackList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1TrackList>;
-
 /** A set of filtering options for releases and version codes specific to an app. */
 export interface GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions {
   /** List of tracks to filter releases over. Provides the grouping of version codes under releases and tracks. */
   tracks?: GooglePlayDeveloperReportingV1beta1TrackList;
 }
-const GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions>;
-
 export interface GetVitalsAnonrssandswapmemoryusageRequest {
   /** Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet */
   name: string;
 }
-const GetVitalsAnonrssandswapmemoryusageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetVitalsAnonrssandswapmemoryusageRequest>;
-
 export type GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum =
   | "AGGREGATION_PERIOD_UNSPECIFIED"
   | "HOURLY"
   | "DAILY"
   | "FULL_RANGE";
-const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum = S.String;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface GoogleTypeTimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
@@ -147,8 +110,6 @@ export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
-const GoogleTypeTimeZone = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GoogleTypeTimeZone>;
-
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface GoogleTypeDateTime {
   /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
@@ -170,8 +131,6 @@ export interface GoogleTypeDateTime {
   /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
   day?: number;
 }
-const GoogleTypeDateTime = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GoogleTypeDateTime>;
-
 /** Information about data freshness for a single aggregation period. */
 export interface GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness {
   /** Aggregation period for which data is available. */
@@ -179,28 +138,13 @@ export interface GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness {
   /** Latest end time for which data is available, for the aggregation period. The time is specified in the metric set's default timezone. *Note:* time ranges in TimelineSpec are represented as `start_time, end_time)`. For example, if the latest available timeline data point for a `DAILY` aggregation period is `2021-06-23 00:00:00 America/Los_Angeles`, the value of this field would be `2021-06-24 00:00:00 America/Los_Angeles` so it can be easily reused in [TimelineSpec.end_time. */
   latestEndTime?: GoogleTypeDateTime;
 }
-const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness>;
-
 export type GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList =
   Array<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness>;
-const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList>;
-
 /** Represents the latest available time that can be requested in a TimelineSpec. Different aggregation periods have different freshness. For example, `DAILY` aggregation may lag behind `HOURLY` in cases where such aggregation is computed only once at the end of the day. */
 export interface GooglePlayDeveloperReportingV1beta1FreshnessInfo {
   /** Information about data freshness for every supported aggregation period. This field has set semantics, keyed by the `aggregation_period` field. */
   freshnesses?: GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList;
 }
-const GooglePlayDeveloperReportingV1beta1FreshnessInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfo>;
-
 /** Singleton resource representing the set of Anon RSS and Swap Memory Usage metrics. This metric set contains anon RSS and swap memory usage data combined with usage data. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `anonRssAndSwapMemoryUsageP50` (`google.type.Decimal`): 50th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP75` (`google.type.Decimal`): 75th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP90` (`google.type.Decimal`): 90th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP95` (`google.type.Decimal`): 95th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP99` (`google.type.Decimal`): 99th percentile of anon RSS and swap memory usage. * `distinctUsers` (`google.type.Decimal`): Count of distinct users for which memory metrics were reported during the aggregation period. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. * `processName` (string): the name of the process that was running, e.g., com.example.app. * `appState` (string): the state of the app when memory was collected, e.g., FOREGROUND. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet {
   /** Identifier. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet */
@@ -208,20 +152,10 @@ export interface GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMet
   /** Output only. * Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-const GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet>;
-
 export interface GetVitalsAnrrateRequest {
   /** Required. The resource name. Format: apps/{app}/anrRateMetricSet */
   name: string;
 }
-const GetVitalsAnrrateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetVitalsAnrrateRequest>;
-
 /** Singleton resource representing the set of ANR (Application not responding) metrics. This metric set contains ANRs data combined with usage data to produce a normalized metric independent of user counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The default and only supported timezone is `UTC`. **Supported metrics:** * `anrRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one ANR. * `anrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `anrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedAnrRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one user-perceived ANR. User-perceived ANRs are currently those of 'Input dispatching' type. * `userPerceivedAnrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedAnrRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedAnrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedAnrRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `anrRate` and `userPerceivedAnrRate` metrics. A user is counted in this metric if they used the app in the foreground during the aggregation period. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. **Related metric sets:** * vitals.errors contains unnormalized version (absolute counts) of crashes. * vitals.errors contains normalized metrics about crashes, another stability metric. */
 export interface GooglePlayDeveloperReportingV1beta1AnrRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/anrRateMetricSet */
@@ -229,20 +163,10 @@ export interface GooglePlayDeveloperReportingV1beta1AnrRateMetricSet {
   /** Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-const GooglePlayDeveloperReportingV1beta1AnrRateMetricSet = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AnrRateMetricSet>;
-
 export interface GetVitalsBitmapmemoryusageRequest {
   /** Required. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet */
   name: string;
 }
-const GetVitalsBitmapmemoryusageRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetVitalsBitmapmemoryusageRequest>;
-
 /** Singleton resource representing the set of Bitmap Memory Usage metrics. This metric set contains bitmap memory usage data combined with usage data. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `bitmapMemoryUsageP50` (`google.type.Decimal`): 50th percentile of bitmap memory usage. * `bitmapMemoryUsageP75` (`google.type.Decimal`): 75th percentile of bitmap memory usage. * `bitmapMemoryUsageP90` (`google.type.Decimal`): 90th percentile of bitmap memory usage. * `bitmapMemoryUsageP95` (`google.type.Decimal`): 95th percentile of bitmap memory usage. * `bitmapMemoryUsageP99` (`google.type.Decimal`): 99th percentile of bitmap memory usage. * `distinctUsers` (`google.type.Decimal`): Count of distinct users for which memory metrics were reported during the aggregation period. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. * `processName` (string): the name of the process that was running, e.g., com.example.app. * `appState` (string): the state of the app when memory was collected, e.g., FOREGROUND. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet {
   /** Output only. Summary about data freshness in this resource. */
@@ -250,20 +174,10 @@ export interface GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet */
   name?: string;
 }
-const GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet>;
-
 export interface GetVitalsCrashrateRequest {
   /** Required. The resource name. Format: apps/{app}/crashRateMetricSet */
   name: string;
 }
-const GetVitalsCrashrateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetVitalsCrashrateRequest>;
-
 /** Singleton resource representing the set of crashrate metrics. This metric set contains crashes data combined with usage data to produce a normalized metric independent of user counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The default and only supported timezone is `UTC`. **Supported metrics:** * `crashRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one crash. * `crashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `crashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedCrashRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one crash while they were actively using your app (a user-perceived crash). An app is considered to be in active use if it is displaying any activity or executing any foreground service. * `userPerceivedCrashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedCrashRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedCrashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedCrashRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `crashRate` and `userPerceivedCrashRate` metrics. A user is counted in this metric if they used the app actively during the aggregation period. An app is considered to be in active use if it is displaying any activity or executing any foreground service. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. **Related metric sets:** * vitals.errors contains unnormalized version (absolute counts) of crashes. * vitals.errors contains normalized metrics about ANRs, another stability metric. */
 export interface GooglePlayDeveloperReportingV1beta1CrashRateMetricSet {
   /** Summary about data freshness in this resource. */
@@ -271,20 +185,10 @@ export interface GooglePlayDeveloperReportingV1beta1CrashRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/crashRateMetricSet */
   name?: string;
 }
-const GooglePlayDeveloperReportingV1beta1CrashRateMetricSet = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1CrashRateMetricSet>;
-
 export interface GetVitalsErrorsCountsRequest {
   /** Required. Name of the errors metric set. Format: apps/{app}/errorCountMetricSet */
   name: string;
 }
-const GetVitalsErrorsCountsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetVitalsErrorsCountsRequest>;
-
 /** Singleton resource representing the set of error report metrics. This metric set contains un-normalized error report counts. **Supported aggregation periods:** * HOURLY: metrics are aggregated in hourly intervals. The default and only supported timezone is `UTC`. * DAILY: metrics are aggregated in calendar date intervals. The default and only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `errorReportCount` (`google.type.Decimal`): Absolute count of individual error reports that have been received for an app. * `distinctUsers` (`google.type.Decimal`): Count of distinct users for which reports have been received. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. This value is not rounded, however it may be an approximation. **Required dimension:** This dimension must be always specified in all requests in the `dimensions` field in query requests. * `reportType` (string): the type of error. The value should correspond to one of the possible values in ErrorType. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `issueId` (string): the id an error was assigned to. The value should correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. **Related metric sets:** * vitals.errors.counts contains normalized metrics about Crashes, another stability metric. * vitals.errors.counts contains normalized metrics about ANRs, another stability metric. */
 export interface GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/errorCountMetricSet */
@@ -292,18 +196,10 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet {
   /** Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-const GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet =
-  GooglePlayDeveloperReportingV1beta1AnrRateMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet>;
-
 export interface GetVitalsExcessivewakeuprateRequest {
   /** Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet */
   name: string;
 }
-const GetVitalsExcessivewakeuprateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetVitalsExcessivewakeuprateRequest>;
-
 /** Singleton resource representing the set of Excessive Weakeups metrics. This metric set contains AlarmManager wakeup counts data combined with process state data to produce a normalized metric independent of user counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had more than 10 wakeups per hour. * `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was doing any work on the device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet {
   /** Summary about data freshness in this resource. */
@@ -311,18 +207,10 @@ export interface GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet
   /** Identifier. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet */
   name?: string;
 }
-const GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet =
-  GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet>;
-
 export interface GetVitalsLmkrateRequest {
   /** Required. The resource name. Format: apps/{app}/lmkRateMetricSet */
   name: string;
 }
-const GetVitalsLmkrateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetVitalsLmkrateRequest>;
-
 /** Singleton resource representing the set of LMK (Low Memory Kill) metrics. This metric set contains LMKs data combined with usage data to produce a normalized metric independent of user counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `userPerceivedLmkRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one LMK while they were actively using your app (a user-perceived LMK). An app is considered to be in active use if it is displaying any activity or executing any foreground service. * `userPerceivedLmkRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `userPerceivedLmkRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `userPerceivedLmkRate` metrics. A user is counted in this metric if they used the app in the foreground during the aggregation period. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. **Related metric sets:** * vitals.errors contains normalized metrics about crashes, another stability metric. * vitals.errors contains normalized metrics about ANRs, another stability metric. */
 export interface GooglePlayDeveloperReportingV1beta1LmkRateMetricSet {
   /** Summary about data freshness in this resource. */
@@ -330,18 +218,10 @@ export interface GooglePlayDeveloperReportingV1beta1LmkRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/lmkRateMetricSet */
   name?: string;
 }
-const GooglePlayDeveloperReportingV1beta1LmkRateMetricSet =
-  GooglePlayDeveloperReportingV1beta1CrashRateMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1LmkRateMetricSet>;
-
 export interface GetVitalsSlowrenderingrateRequest {
   /** Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet */
   name: string;
 }
-const GetVitalsSlowrenderingrateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetVitalsSlowrenderingrateRequest>;
-
 /** Singleton resource representing the set of Slow Rendering metrics. This metric set contains low-level rendering data captured by SurafeFlinger. Sessions are evaluated based on the present-to-present histogram of frames handled by any SurfaceFlinger layer owned by the app. A slow session is a session where more than 25% of frames for the session did not meet the metric's target frame rate (either 20fps, or 30fps). *NOTE:* This metric set is only available for games. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had slow rendering. * `slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app rendered any frames. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet {
   /** Summary about data freshness in this resource. */
@@ -349,18 +229,10 @@ export interface GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/slowRenderingRateMetricSet */
   name?: string;
 }
-const GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet =
-  GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet>;
-
 export interface GetVitalsSlowstartrateRequest {
   /** Required. The resource name. Format: apps/{app}/slowStartRateMetricSet */
   name: string;
 }
-const GetVitalsSlowstartrateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetVitalsSlowstartrateRequest>;
-
 /** Singleton resource representing the set of Slow Start metrics. This metric set contains Activity start duration data. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowStartRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `slowStartRate` metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Required dimension:** This dimension must be specified with each request for the request to be valid. * `startType` (string): the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/slowStartRateMetricSet */
@@ -368,20 +240,10 @@ export interface GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet {
   /** Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-const GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet>;
-
 export interface GetVitalsStuckbackgroundwakelockrateRequest {
   /** Required. The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet */
   name: string;
 }
-const GetVitalsStuckbackgroundwakelockrateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetVitalsStuckbackgroundwakelockrateRequest>;
-
 /** Singleton resource representing the set of Stuck Background Wakelocks metrics. This metric set contains PowerManager wakelock duration data combined with process state data to produce a normalized metric independent of user counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `stuckBgWakelockRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a wakelock held in the background for longer than 1 hour. * `stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `stuckBgWakelockRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `stuckBgWakelockRate` metric. A user is counted in this metric if their app was doing any work on the device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet {
   /** Summary about data freshness in this resource. */
@@ -389,9 +251,6 @@ export interface GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateM
   /** Identifier. The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet */
   name?: string;
 }
-const GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet =
-  GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet>;
-
 export interface ListAnomaliesRequest {
   /** Required. Parent app for which anomalies were detected. Format: apps/{app} */
   parent: string;
@@ -402,15 +261,11 @@ export interface ListAnomaliesRequest {
   /** Optional. Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-const ListAnomaliesRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListAnomaliesRequest>;
-
 /** A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html). */
 export interface GoogleTypeDecimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
-const GoogleTypeDecimal = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GoogleTypeDecimal>;
-
 /** Represents the confidence interval of a metric. */
 export interface GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval {
   /** The confidence interval's lower bound. */
@@ -418,11 +273,6 @@ export interface GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval {
   /** The confidence interval's upper bound. */
   upperBound?: GoogleTypeDecimal;
 }
-const GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval>;
-
 /** Represents the value of a metric. */
 export interface GooglePlayDeveloperReportingV1beta1MetricValue {
   /** Name of the metric. */
@@ -432,18 +282,11 @@ export interface GooglePlayDeveloperReportingV1beta1MetricValue {
   /** Confidence interval of a value that is of type `type.Decimal`. */
   decimalValueConfidenceInterval?: GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval;
 }
-const GooglePlayDeveloperReportingV1beta1MetricValue = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricValue>;
-
 export type GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum =
   | "AGGREGATION_PERIOD_UNSPECIFIED"
   | "HOURLY"
   | "DAILY"
   | "FULL_RANGE";
-const GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum = S.String;
-
 /** Specification of the time-related aggregation parameters of a timeline. Timelines have an aggregation period (`DAILY`, `HOURLY`, etc) which defines how events are aggregated in metrics. The points in a timeline are defined by the starting DateTime of the aggregation period. The duration is implicit in the AggregationPeriod. Hourly aggregation periods, when supported by a metric set, are always specified in UTC to avoid ambiguities around daylight saving time transitions, where an hour is skipped when adopting DST, and repeated when abandoning DST. For example, the timestamp '2021-11-07 01:00:00 America/Los_Angeles' is ambiguous since it can correspond to '2021-11-07 08:00:00 UTC' or '2021-11-07 09:00:00 UTC'. Daily aggregation periods require specifying a timezone which will determine the precise instants of the start and the end of the day. Not all metric sets support all timezones, so make sure to check which timezones are supported by the metric set you want to query. */
 export interface GooglePlayDeveloperReportingV1beta1TimelineSpec {
   /** Optional. Starting datapoint of the timeline (inclusive). Must be aligned to the aggregation period as follows: * HOURLY: the 'minutes', 'seconds' and 'nanos' fields must be unset. The time_zone can be left unset (defaults to UTC) or set explicitly to "UTC". Setting any other utc_offset or timezone id will result in a validation error. * DAILY: the 'hours', 'minutes', 'seconds' and 'nanos' fields must be unset. Different metric sets support different timezones. It can be left unset to use the default timezone specified by the metric set. The timezone of the end point must match the timezone of the start point. */
@@ -455,11 +298,6 @@ export interface GooglePlayDeveloperReportingV1beta1TimelineSpec {
     | GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum
     | (string & {});
 }
-const GooglePlayDeveloperReportingV1beta1TimelineSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1TimelineSpec>;
-
 /** Represents the value of a single dimension. */
 export interface GooglePlayDeveloperReportingV1beta1DimensionValue {
   /** Actual value, represented as a string. */
@@ -471,18 +309,8 @@ export interface GooglePlayDeveloperReportingV1beta1DimensionValue {
   /** Optional. Human-friendly label for the value, always in English. For example, 'Spain' for the 'ES' country code. Whereas the dimension value is stable, this value label is subject to change. Do not assume that the (value, value_label) relationship is stable. For example, the ISO country code 'MK' changed its name recently to 'North Macedonia'. */
   valueLabel?: string;
 }
-const GooglePlayDeveloperReportingV1beta1DimensionValue = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DimensionValue>;
-
 export type GooglePlayDeveloperReportingV1beta1DimensionValueList =
   Array<GooglePlayDeveloperReportingV1beta1DimensionValue>;
-const GooglePlayDeveloperReportingV1beta1DimensionValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DimensionValueList>;
-
 /** Represents an anomaly detected in a dataset. Our anomaly detection systems flag datapoints in a time series that fall outside of and expected range derived from historical data. Although those expected ranges have an upper and a lower bound, we only flag anomalies when the data has become unexpectedly _worse_, which usually corresponds to the case where the metric crosses the upper bound. Multiple contiguous datapoints in a timeline outside of the expected range will be grouped into a single anomaly. Therefore, an anomaly represents effectively a segment of a metric's timeline. The information stored in the `timeline_spec`, `dimensions` and `metric` can be used to fetch a full timeline with extended ragne for context. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1Anomaly {
   /** Metric where the anomaly was detected, together with the anomalous value. */
@@ -496,18 +324,8 @@ export interface GooglePlayDeveloperReportingV1beta1Anomaly {
   /** Combination of dimensions in which the anomaly was detected. */
   dimensions?: GooglePlayDeveloperReportingV1beta1DimensionValueList;
 }
-const GooglePlayDeveloperReportingV1beta1Anomaly = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Anomaly>;
-
 export type GooglePlayDeveloperReportingV1beta1AnomalyList =
   Array<GooglePlayDeveloperReportingV1beta1Anomaly>;
-const GooglePlayDeveloperReportingV1beta1AnomalyList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AnomalyList>;
-
 /** Response with a list of anomalies in datasets. */
 export interface GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse {
   /** Anomalies that were found. */
@@ -515,19 +333,11 @@ export interface GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse {
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequestUserCohortEnum =
-  S.String;
-
 /** Request message for QueryAnonRssAndSwapMemoryUsageMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest {
   /** Optional. * Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only supported timezone is `America/Los_Angeles`. */
@@ -547,37 +357,19 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsa
   /** Optional. * Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
   pageSize?: number;
 }
-const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    5,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest>;
-
 export interface QueryVitalsAnonrssandswapmemoryusageRequest {
   /** Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest;
 }
-const QueryVitalsAnonrssandswapmemoryusageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<QueryVitalsAnonrssandswapmemoryusageRequest>;
-
 export type GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum =
   | "AGGREGATION_PERIOD_UNSPECIFIED"
   | "HOURLY"
   | "DAILY"
   | "FULL_RANGE";
-const GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum = S.String;
-
 export type GooglePlayDeveloperReportingV1beta1MetricValueList =
   Array<GooglePlayDeveloperReportingV1beta1MetricValue>;
-const GooglePlayDeveloperReportingV1beta1MetricValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricValueList>;
-
 /** Represents a row of dimensions and metrics. */
 export interface GooglePlayDeveloperReportingV1beta1MetricsRow {
   /** Optional. Starting date (and time for hourly aggregation) of the period covered by this row. */
@@ -589,18 +381,8 @@ export interface GooglePlayDeveloperReportingV1beta1MetricsRow {
   /** Optional. Metric columns in the row. */
   metrics?: GooglePlayDeveloperReportingV1beta1MetricValueList;
 }
-const GooglePlayDeveloperReportingV1beta1MetricsRow = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricsRow>;
-
 export type GooglePlayDeveloperReportingV1beta1MetricsRowList =
   Array<GooglePlayDeveloperReportingV1beta1MetricsRow>;
-const GooglePlayDeveloperReportingV1beta1MetricsRowList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricsRowList>;
-
 /** Response message for QueryAnonRssAndSwapMemoryUsageMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse {
   /** * Continuation token to fetch the next page of data. */
@@ -608,19 +390,11 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsa
   /** * Returned rows of data. */
   rows?: GooglePlayDeveloperReportingV1beta1MetricsRowList;
 }
-const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    2,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserCohortEnum = S.String;
-
 /** Request message for QueryAnrRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest {
   /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
@@ -640,22 +414,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest>;
-
 export interface QueryVitalsAnrrateRequest {
   /** Required. The resource name. Format: apps/{app}/anrRateMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest;
 }
-const QueryVitalsAnrrateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<QueryVitalsAnrrateRequest>;
-
 /** Response message for QueryAnrRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse {
   /** Returned rows of data. */
@@ -663,19 +427,11 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRespons
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequestUserCohortEnum =
-  S.String;
-
 /** Request message for QueryBitmapMemoryUsageMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest {
   /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. * `processName` (string): the name of the process that was running, e.g., com.example.app. * `appState` (string): the state of the app when memory was collected, e.g., FOREGROUND. */
@@ -695,23 +451,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetric
   /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
   pageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    6,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest>;
-
 export interface QueryVitalsBitmapmemoryusageRequest {
   /** Required. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest;
 }
-const QueryVitalsBitmapmemoryusageRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<QueryVitalsBitmapmemoryusageRequest>;
-
 /** Response message for QueryBitmapMemoryUsageMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse {
   /** Returned rows of data. */
@@ -719,16 +464,11 @@ export interface GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetric
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse =
-  GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum = S.String;
-
 /** Request message for QueryCrashRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest {
   /** Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
@@ -748,22 +488,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetReque
     | GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum
     | (string & {});
 }
-const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest>;
-
 export interface QueryVitalsCrashrateRequest {
   /** Required. The resource name. Format: apps/{app}/crashRateMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest;
 }
-const QueryVitalsCrashrateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<QueryVitalsCrashrateRequest>;
-
 /** Response message for QueryCrashRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse {
   /** Returned rows of data. */
@@ -771,9 +501,6 @@ export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRespo
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse =
-  GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse>;
-
 /** Request message for QueryErrorCountMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest {
   /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `reportType` (string): the type of error. The value should correspond to one of the possible values in ErrorType. * `issueId` (string): the id an error was assigned to. The value should correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
@@ -789,22 +516,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequ
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions and: * `isUserPerceived` (string): denotes whether error is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED. */
   filter?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest>;
-
 export interface QueryVitalsErrorsCountsRequest {
   /** Required. The resource name. Format: apps/{app}/errorCountMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest;
 }
-const QueryVitalsErrorsCountsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<QueryVitalsErrorsCountsRequest>;
-
 /** Error counts query response. */
 export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse {
   /** Continuation token to fetch the next page of data. */
@@ -812,19 +529,11 @@ export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResp
   /** Returned rows. */
   rows?: GooglePlayDeveloperReportingV1beta1MetricsRowList;
 }
-const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
-  S.String;
-
 /** Request message for QueryExcessiveWakeupRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest {
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
@@ -844,23 +553,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetr
   /** Optional. Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had more than 10 wakeups per hour. * `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was doing any work on the device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
   metrics?: StringList;
 }
-const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest =
-  /*@__PURE__*/ __L.at(
-    __c6,
-    5,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest>;
-
 export interface QueryVitalsExcessivewakeuprateRequest {
   /** Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest;
 }
-const QueryVitalsExcessivewakeuprateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<QueryVitalsExcessivewakeuprateRequest>;
-
 /** Response message for QueryExcessiveWakeupRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse {
   /** Returned rows of data. */
@@ -868,16 +566,11 @@ export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetr
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse =
-  GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum = S.String;
-
 /** Request message for QueryLmkRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest {
   /** Optional. User view to select. The output data will correspond to the selected view. **Supported values:** * `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g., "T1B2.220916.004". */
@@ -897,22 +590,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest
   /** Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
   dimensions?: StringList;
 }
-const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest>;
-
 export interface QueryVitalsLmkrateRequest {
   /** Required. The resource name. Format: apps/{app}/lmkRateMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest;
 }
-const QueryVitalsLmkrateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<QueryVitalsLmkrateRequest>;
-
 /** Response message for QueryLmkRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse {
   /** Continuation token to fetch the next page of data. */
@@ -920,17 +603,11 @@ export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRespons
   /** Returned rows of data. */
   rows?: GooglePlayDeveloperReportingV1beta1MetricsRowList;
 }
-const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse =
-  GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
-  S.String;
-
 /** Request message for QuerySlowRenderingRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest {
   /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
@@ -950,23 +627,12 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetric
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    1,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest>;
-
 export interface QueryVitalsSlowrenderingrateRequest {
   /** Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest;
 }
-const QueryVitalsSlowrenderingrateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<QueryVitalsSlowrenderingrateRequest>;
-
 /** Response message for QuerySlowRenderingRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse {
   /** Returned rows of data. */
@@ -974,17 +640,11 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetric
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse =
-  GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum =
-  S.String;
-
 /** Request message for QuerySlowStartRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest {
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
@@ -1004,22 +664,12 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetR
   /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
   pageSize?: number;
 }
-const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest>;
-
 export interface QueryVitalsSlowstartrateRequest {
   /** Required. The resource name. Format: apps/{app}/slowStartRateMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest;
 }
-const QueryVitalsSlowstartrateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<QueryVitalsSlowstartrateRequest>;
-
 /** Response message for QuerySlowStartRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse {
   /** Returned rows of data. */
@@ -1027,17 +677,11 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetR
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse =
-  GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse>;
-
 export type GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
-  S.String;
-
 /** Request message for QueryStuckBackgroundWakelockRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest {
   /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
@@ -1057,23 +701,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelock
   /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
   timelineSpec?: GooglePlayDeveloperReportingV1beta1TimelineSpec;
 }
-const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    5,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest>;
-
 export interface QueryVitalsStuckbackgroundwakelockrateRequest {
   /** Required. The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet */
   name: string;
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest;
 }
-const QueryVitalsStuckbackgroundwakelockrateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<QueryVitalsStuckbackgroundwakelockrateRequest>;
-
 /** Response message for QueryStuckBackgroundWakelockRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse {
   /** Returned rows of data. */
@@ -1081,20 +714,12 @@ export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelock
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    7,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse>;
-
 export interface SearchAppsRequest {
   /** Optional. The maximum number of apps to return. The service may return fewer than this value. If unspecified, at most 50 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
   /** Optional. A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the call that provided the page token. */
   pageToken?: string;
 }
-const SearchAppsRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SearchAppsRequest>;
-
 /** A representation of an app in the Play Store. */
 export interface GooglePlayDeveloperReportingV1beta1App {
   /** Package name of the app. Example: `com.example.app123`. */
@@ -1104,18 +729,8 @@ export interface GooglePlayDeveloperReportingV1beta1App {
   /** Identifier. The resource name. Format: apps/{app} */
   name?: string;
 }
-const GooglePlayDeveloperReportingV1beta1App = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1App>;
-
 export type GooglePlayDeveloperReportingV1beta1AppList =
   Array<GooglePlayDeveloperReportingV1beta1App>;
-const GooglePlayDeveloperReportingV1beta1AppList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AppList>;
-
 /** Response message for SearchAccessibleApps. */
 export interface GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse {
   /** The apps accessible to the user calling the endpoint. */
@@ -1123,11 +738,6 @@ export interface GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse>;
-
 export interface SearchVitalsErrorsIssuesRequest {
   /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
   "interval.startTime.nanos"?: number;
@@ -1182,11 +792,6 @@ export interface SearchVitalsErrorsIssuesRequest {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   "interval.startTime.timeZone.id"?: string;
 }
-const SearchVitalsErrorsIssuesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<SearchVitalsErrorsIssuesRequest>;
-
 /** Representation of an annotation message for an issue. */
 export interface GooglePlayDeveloperReportingV1beta1IssueAnnotation {
   /** Category that the annotation belongs to. An annotation will belong to a single category. Example categories: "Potential fix", "Insight". */
@@ -1196,45 +801,23 @@ export interface GooglePlayDeveloperReportingV1beta1IssueAnnotation {
   /** Contains the contents of the annotation message. */
   body?: string;
 }
-const GooglePlayDeveloperReportingV1beta1IssueAnnotation = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1IssueAnnotation>;
-
 export type GooglePlayDeveloperReportingV1beta1IssueAnnotationList =
   Array<GooglePlayDeveloperReportingV1beta1IssueAnnotation>;
-const GooglePlayDeveloperReportingV1beta1IssueAnnotationList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1IssueAnnotationList>;
-
 /** Representations of an app version. */
 export interface GooglePlayDeveloperReportingV1beta1AppVersion {
   /** Optional. Numeric version code of the app version (set by the app's developer). */
   versionCode?: string;
 }
-const GooglePlayDeveloperReportingV1beta1AppVersion = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AppVersion>;
-
 /** Representation of an OS version. */
 export interface GooglePlayDeveloperReportingV1beta1OsVersion {
   /** Optional. Numeric version code of the OS - API level */
   apiLevel?: string;
 }
-const GooglePlayDeveloperReportingV1beta1OsVersion = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1OsVersion>;
-
 export type GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
   | "NON_FATAL";
-const GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum = S.String;
-
 /** A group of related ErrorReports received for an app. Similar error reports are grouped together into issues with a likely identical root cause. **Please note:** this resource is currently in Alpha. There could be changes to the issue grouping that would result in similar but more recent error reports being assigned to different issues. This could also cause some issues disappearing entirely and being replaced by new ones. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1ErrorIssue {
   /** Cause of the issue. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the type of ANR that occurred, e.g., 'Input dispatching timed out'. * CRASH: for Java unhandled exception errors, the type of the innermost exception that was thrown, e.g., IllegalArgumentException. For signals in native code, the signal that was raised, e.g. SIGSEGV. */
@@ -1268,18 +851,8 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorIssue {
   /** Location where the issue happened. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the name of the activity or service that stopped responding. * CRASH: the likely method name that caused the error. */
   location?: string;
 }
-const GooglePlayDeveloperReportingV1beta1ErrorIssue = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorIssue>;
-
 export type GooglePlayDeveloperReportingV1beta1ErrorIssueList =
   Array<GooglePlayDeveloperReportingV1beta1ErrorIssue>;
-const GooglePlayDeveloperReportingV1beta1ErrorIssueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorIssueList>;
-
 /** Response with a paginated list of issues that matched the request. */
 export interface GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse {
   /** Continuation token to fetch the next page of data. */
@@ -1287,11 +860,6 @@ export interface GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse {
   /** ErrorIssues that were found. */
   errorIssues?: GooglePlayDeveloperReportingV1beta1ErrorIssueList;
 }
-const GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse>;
-
 export interface SearchVitalsErrorsReportsRequest {
   /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
   "interval.startTime.day"?: number;
@@ -1342,18 +910,11 @@ export interface SearchVitalsErrorsReportsRequest {
   /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
   "interval.startTime.month"?: number;
 }
-const SearchVitalsErrorsReportsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<SearchVitalsErrorsReportsRequest>;
-
 export type GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
   | "NON_FATAL";
-const GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum = S.String;
-
 /** Identifier of a device. */
 export interface GooglePlayDeveloperReportingV1beta1DeviceId {
   /** Value of Build.BRAND. */
@@ -1361,11 +922,6 @@ export interface GooglePlayDeveloperReportingV1beta1DeviceId {
   /** Value of Build.DEVICE. */
   buildDevice?: string;
 }
-const GooglePlayDeveloperReportingV1beta1DeviceId = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DeviceId>;
-
 /** Summary of a device */
 export interface GooglePlayDeveloperReportingV1beta1DeviceModelSummary {
   /** Display name of the device. */
@@ -1375,11 +931,6 @@ export interface GooglePlayDeveloperReportingV1beta1DeviceModelSummary {
   /** Identifier of the device. */
   deviceId?: GooglePlayDeveloperReportingV1beta1DeviceId;
 }
-const GooglePlayDeveloperReportingV1beta1DeviceModelSummary = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DeviceModelSummary>;
-
 /** An error report received for an app. There reports are produced by the Android platform code when a (potentially fatal) error condition is detected. Identical reports from many users will be deduplicated and coalesced into a single ErrorReport. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1ErrorReport {
   /** Type of the error for which this report was generated. */
@@ -1401,18 +952,8 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorReport {
   /** A device model on which an event in this error report occurred on. */
   deviceModel?: GooglePlayDeveloperReportingV1beta1DeviceModelSummary;
 }
-const GooglePlayDeveloperReportingV1beta1ErrorReport = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorReport>;
-
 export type GooglePlayDeveloperReportingV1beta1ErrorReportList =
   Array<GooglePlayDeveloperReportingV1beta1ErrorReport>;
-const GooglePlayDeveloperReportingV1beta1ErrorReportList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorReportList>;
-
 /** Response with a paginated list of error reports matching the search query. */
 export interface GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse {
   /** Page token to fetch the next page of reports. */
@@ -1420,11 +961,6 @@ export interface GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse {
   /** Error reports that were found. */
   errorReports?: GooglePlayDeveloperReportingV1beta1ErrorReportList;
 }
-const GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse>;
-
 export type FetchReleaseFilterOptionsAppsError = NotFound | Forbidden | GcpOpError;
 /** Describes filtering options for releases. */
 export const fetchReleaseFilterOptionsApps: API.OperationMethod<
@@ -1433,8 +969,12 @@ export const fetchReleaseFilterOptionsApps: API.OperationMethod<
   FetchReleaseFilterOptionsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchReleaseFilterOptionsAppsRequest,
-  output: GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions,
+  input: __S(0, __c0, 0) as any as S.Schema<FetchReleaseFilterOptionsAppsRequest>,
+  output: __S(
+    6,
+    __c0,
+    6,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1448,8 +988,12 @@ export const getVitalsAnonrssandswapmemoryusage: API.OperationMethod<
   GetVitalsAnonrssandswapmemoryusageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsAnonrssandswapmemoryusageRequest,
-  output: GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet,
+  input: __S(7, __c0, 7) as any as S.Schema<GetVitalsAnonrssandswapmemoryusageRequest>,
+  output: __S(
+    13,
+    __c1,
+    5,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1007,8 @@ export const getVitalsAnrrate: API.OperationMethod<
   GetVitalsAnrrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsAnrrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1AnrRateMetricSet,
+  input: __S(14, __c1, 6) as any as S.Schema<GetVitalsAnrrateRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AnrRateMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1022,12 @@ export const getVitalsBitmapmemoryusage: API.OperationMethod<
   GetVitalsBitmapmemoryusageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsBitmapmemoryusageRequest,
-  output: GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet,
+  input: __S(16, __c2, 0) as any as S.Schema<GetVitalsBitmapmemoryusageRequest>,
+  output: __S(
+    17,
+    __c2,
+    1,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1493,8 +1041,12 @@ export const getVitalsCrashrate: API.OperationMethod<
   GetVitalsCrashrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsCrashrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1CrashRateMetricSet,
+  input: __S(18, __c2, 2) as any as S.Schema<GetVitalsCrashrateRequest>,
+  output: __S(
+    19,
+    __c2,
+    3,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1CrashRateMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1060,12 @@ export const getVitalsErrorsCounts: API.OperationMethod<
   GetVitalsErrorsCountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsErrorsCountsRequest,
-  output: GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet,
+  input: __S(20, __c2, 4) as any as S.Schema<GetVitalsErrorsCountsRequest>,
+  output: __S(
+    15,
+    __c1,
+    7,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1079,12 @@ export const getVitalsExcessivewakeuprate: API.OperationMethod<
   GetVitalsExcessivewakeuprateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsExcessivewakeuprateRequest,
-  output: GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet,
+  input: __S(21, __c2, 5) as any as S.Schema<GetVitalsExcessivewakeuprateRequest>,
+  output: __S(
+    17,
+    __c2,
+    1,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1538,8 +1098,8 @@ export const getVitalsLmkrate: API.OperationMethod<
   GetVitalsLmkrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsLmkrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1LmkRateMetricSet,
+  input: __S(22, __c2, 6) as any as S.Schema<GetVitalsLmkrateRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GooglePlayDeveloperReportingV1beta1LmkRateMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1553,8 +1113,12 @@ export const getVitalsSlowrenderingrate: API.OperationMethod<
   GetVitalsSlowrenderingrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsSlowrenderingrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet,
+  input: __S(23, __c2, 7) as any as S.Schema<GetVitalsSlowrenderingrateRequest>,
+  output: __S(
+    17,
+    __c2,
+    1,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1568,8 +1132,12 @@ export const getVitalsSlowstartrate: API.OperationMethod<
   GetVitalsSlowstartrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsSlowstartrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet,
+  input: __S(24, __c3, 0) as any as S.Schema<GetVitalsSlowstartrateRequest>,
+  output: __S(
+    25,
+    __c3,
+    1,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1583,8 +1151,12 @@ export const getVitalsStuckbackgroundwakelockrate: API.OperationMethod<
   GetVitalsStuckbackgroundwakelockrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVitalsStuckbackgroundwakelockrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet,
+  input: __S(26, __c3, 2) as any as S.Schema<GetVitalsStuckbackgroundwakelockrateRequest>,
+  output: __S(
+    17,
+    __c2,
+    1,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1599,8 +1171,12 @@ export const listAnomalies: API.PaginatedOperationMethod<
   GcpOpContext,
   GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAnomaliesRequest,
-  output: GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<ListAnomaliesRequest>,
+  output: __S(
+    36,
+    __c4,
+    4,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1620,8 +1196,12 @@ export const queryVitalsAnonrssandswapmemoryusage: API.OperationMethod<
   QueryVitalsAnonrssandswapmemoryusageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsAnonrssandswapmemoryusageRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<QueryVitalsAnonrssandswapmemoryusageRequest>,
+  output: __S(
+    42,
+    __c5,
+    2,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1635,8 +1215,12 @@ export const queryVitalsAnrrate: API.OperationMethod<
   QueryVitalsAnrrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsAnrrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<QueryVitalsAnrrateRequest>,
+  output: __S(
+    45,
+    __c5,
+    5,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1655,8 +1239,12 @@ export const queryVitalsBitmapmemoryusage: API.OperationMethod<
   QueryVitalsBitmapmemoryusageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsBitmapmemoryusageRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<QueryVitalsBitmapmemoryusageRequest>,
+  output: __S(
+    45,
+    __c5,
+    5,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1670,8 +1258,12 @@ export const queryVitalsCrashrate: API.OperationMethod<
   QueryVitalsCrashrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsCrashrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<QueryVitalsCrashrateRequest>,
+  output: __S(
+    45,
+    __c5,
+    5,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1690,8 +1282,12 @@ export const queryVitalsErrorsCounts: API.OperationMethod<
   QueryVitalsErrorsCountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsErrorsCountsRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<QueryVitalsErrorsCountsRequest>,
+  output: __S(
+    52,
+    __c6,
+    4,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1710,8 +1306,12 @@ export const queryVitalsExcessivewakeuprate: API.OperationMethod<
   QueryVitalsExcessivewakeuprateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsExcessivewakeuprateRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<QueryVitalsExcessivewakeuprateRequest>,
+  output: __S(
+    45,
+    __c5,
+    5,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1325,12 @@ export const queryVitalsLmkrate: API.OperationMethod<
   QueryVitalsLmkrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsLmkrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<QueryVitalsLmkrateRequest>,
+  output: __S(
+    52,
+    __c6,
+    4,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1745,8 +1349,12 @@ export const queryVitalsSlowrenderingrate: API.OperationMethod<
   QueryVitalsSlowrenderingrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsSlowrenderingrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<QueryVitalsSlowrenderingrateRequest>,
+  output: __S(
+    45,
+    __c5,
+    5,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1765,8 +1373,12 @@ export const queryVitalsSlowstartrate: API.OperationMethod<
   QueryVitalsSlowstartrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsSlowstartrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<QueryVitalsSlowstartrateRequest>,
+  output: __S(
+    45,
+    __c5,
+    5,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1785,8 +1397,12 @@ export const queryVitalsStuckbackgroundwakelockrate: API.OperationMethod<
   QueryVitalsStuckbackgroundwakelockrateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryVitalsStuckbackgroundwakelockrateRequest,
-  output: GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<QueryVitalsStuckbackgroundwakelockrateRequest>,
+  output: __S(
+    63,
+    __c7,
+    7,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1417,12 @@ export const searchApps: API.PaginatedOperationMethod<
   GcpOpContext,
   GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchAppsRequest,
-  output: GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<SearchAppsRequest>,
+  output: __S(
+    67,
+    __c8,
+    3,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1438,12 @@ export const searchVitalsErrorsIssues: API.PaginatedOperationMethod<
   GcpOpContext,
   GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchVitalsErrorsIssuesRequest,
-  output: GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<SearchVitalsErrorsIssuesRequest>,
+  output: __S(
+    75,
+    __c9,
+    3,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1835,8 +1459,12 @@ export const searchVitalsErrorsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchVitalsErrorsReportsRequest,
-  output: GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<SearchVitalsErrorsReportsRequest>,
+  output: __S(
+    81,
+    __c10,
+    1,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1865,30 +1493,30 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          versionCodes: S.optional(StringList),
+          versionCodes: S.optional(__S(1, __c0, 1)),
           displayName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1Release",
       });
     case 3:
-      return S.Array(GooglePlayDeveloperReportingV1beta1Release);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           displayName: S.optional(S.String),
-          servingReleases: S.optional(GooglePlayDeveloperReportingV1beta1ReleaseList),
+          servingReleases: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1Track",
       });
     case 5:
-      return S.Array(GooglePlayDeveloperReportingV1beta1Track);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tracks: S.optional(GooglePlayDeveloperReportingV1beta1TrackList),
+          tracks: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions",
@@ -1928,27 +1556,25 @@ function __c1(j: number): any {
           month: S.optional(S.Number),
           hours: S.optional(S.Number),
           year: S.optional(S.Number),
-          timeZone: S.optional(GoogleTypeTimeZone),
+          timeZone: S.optional(__S(8, __c1, 0)),
           day: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleTypeDateTime" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          aggregationPeriod: S.optional(
-            GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum,
-          ),
-          latestEndTime: S.optional(GoogleTypeDateTime),
+          aggregationPeriod: S.optional(S.String),
+          latestEndTime: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness",
       });
     case 3:
-      return S.Array(GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          freshnesses: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList),
+          freshnesses: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1FreshnessInfo",
@@ -1957,7 +1583,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
+          freshnessInfo: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet",
@@ -1978,7 +1604,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
+          freshnessInfo: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1AnrRateMetricSet",
@@ -2004,7 +1630,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
+          freshnessInfo: S.optional(__S(12, __c1, 4)),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -2027,7 +1653,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
+          freshnessInfo: S.optional(__S(12, __c1, 4)),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -2109,7 +1735,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
+          freshnessInfo: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet",
@@ -2152,8 +1778,8 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          lowerBound: S.optional(GoogleTypeDecimal),
-          upperBound: S.optional(GoogleTypeDecimal),
+          lowerBound: S.optional(__S(28, __c3, 4)),
+          upperBound: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval",
@@ -2162,10 +1788,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metric: S.optional(S.String),
-          decimalValue: S.optional(GoogleTypeDecimal),
-          decimalValueConfidenceInterval: S.optional(
-            GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval,
-          ),
+          decimalValue: S.optional(__S(28, __c3, 4)),
+          decimalValueConfidenceInterval: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1MetricValue",
@@ -2173,11 +1797,9 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(GoogleTypeDateTime),
-          endTime: S.optional(GoogleTypeDateTime),
-          aggregationPeriod: S.optional(
-            GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum,
-          ),
+          startTime: S.optional(__S(9, __c1, 1)),
+          endTime: S.optional(__S(9, __c1, 1)),
+          aggregationPeriod: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1TimelineSpec",
@@ -2198,25 +1820,25 @@ function __c4(j: number): any {
         identifier: "GooglePlayDeveloperReportingV1beta1DimensionValue",
       });
     case 1:
-      return S.Array(GooglePlayDeveloperReportingV1beta1DimensionValue);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(GooglePlayDeveloperReportingV1beta1MetricValue),
+          metric: S.optional(__S(30, __c3, 6)),
           name: S.optional(S.String),
           metricSet: S.optional(S.String),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
-          dimensions: S.optional(GooglePlayDeveloperReportingV1beta1DimensionValueList),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
+          dimensions: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1Anomaly",
       });
     case 3:
-      return S.Array(GooglePlayDeveloperReportingV1beta1Anomaly);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          anomalies: S.optional(GooglePlayDeveloperReportingV1beta1AnomalyList),
+          anomalies: S.optional(__S(35, __c4, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2225,14 +1847,12 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
           pageToken: S.optional(S.String),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequestUserCohortEnum,
-          ),
-          metrics: S.optional(StringList),
+          userCohort: S.optional(S.String),
+          metrics: S.optional(__S(1, __c0, 1)),
           filter: S.optional(S.String),
-          dimensions: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
           pageSize: S.optional(S.Number),
         }),
       ).annotate({
@@ -2243,11 +1863,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2259,7 +1875,7 @@ function __c4(j: number): any {
         identifier: "QueryVitalsAnonrssandswapmemoryusageRequest",
       });
     case 7:
-      return S.Array(GooglePlayDeveloperReportingV1beta1MetricValue);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c5(j: number): any {
@@ -2267,23 +1883,21 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(GoogleTypeDateTime),
-          aggregationPeriod: S.optional(
-            GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum,
-          ),
-          dimensions: S.optional(GooglePlayDeveloperReportingV1beta1DimensionValueList),
-          metrics: S.optional(GooglePlayDeveloperReportingV1beta1MetricValueList),
+          startTime: S.optional(__S(9, __c1, 1)),
+          aggregationPeriod: S.optional(S.String),
+          dimensions: S.optional(__S(33, __c4, 1)),
+          metrics: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1MetricsRow",
       });
     case 1:
-      return S.Array(GooglePlayDeveloperReportingV1beta1MetricsRow);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rows: S.optional(GooglePlayDeveloperReportingV1beta1MetricsRowList),
+          rows: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({
         identifier:
@@ -2293,13 +1907,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String),
-          dimensions: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
           pageSize: S.optional(S.Number),
-          metrics: S.optional(StringList),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserCohortEnum,
-          ),
+          metrics: S.optional(__S(1, __c0, 1)),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
+          userCohort: S.optional(S.String),
           filter: S.optional(S.String),
         }),
       ).annotate({
@@ -2309,9 +1921,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2325,7 +1935,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(GooglePlayDeveloperReportingV1beta1MetricsRowList),
+          rows: S.optional(__S(41, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2334,14 +1944,12 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(StringList),
-          metrics: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
+          metrics: S.optional(__S(1, __c0, 1)),
           pageSize: S.optional(S.Number),
           filter: S.optional(S.String),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequestUserCohortEnum,
-          ),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
+          userCohort: S.optional(S.String),
           pageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2351,11 +1959,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2373,15 +1977,13 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
-          metrics: S.optional(StringList),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
+          metrics: S.optional(__S(1, __c0, 1)),
           filter: S.optional(S.String),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum,
-          ),
+          userCohort: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest",
@@ -2390,9 +1992,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2406,11 +2006,11 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          metrics: S.optional(StringList),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
+          metrics: S.optional(__S(1, __c0, 1)),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
           filter: S.optional(S.String),
         }),
       ).annotate({
@@ -2420,9 +2020,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2437,7 +2035,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rows: S.optional(GooglePlayDeveloperReportingV1beta1MetricsRowList),
+          rows: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse",
@@ -2446,14 +2044,12 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          dimensions: S.optional(StringList),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
+          dimensions: S.optional(__S(1, __c0, 1)),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
           pageSize: S.optional(S.Number),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum,
-          ),
+          userCohort: S.optional(S.String),
           pageToken: S.optional(S.String),
-          metrics: S.optional(StringList),
+          metrics: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest",
@@ -2462,11 +2058,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2480,15 +2072,13 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum,
-          ),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
-          metrics: S.optional(StringList),
+          userCohort: S.optional(S.String),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
+          metrics: S.optional(__S(1, __c0, 1)),
           filter: S.optional(S.String),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          dimensions: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest",
@@ -2501,9 +2091,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2517,14 +2105,12 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
-          metrics: S.optional(StringList),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum,
-          ),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
+          metrics: S.optional(__S(1, __c0, 1)),
+          userCohort: S.optional(S.String),
           filter: S.optional(S.String),
         }),
       ).annotate({
@@ -2534,11 +2120,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2553,13 +2135,11 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          metrics: S.optional(StringList),
-          dimensions: S.optional(StringList),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum,
-          ),
+          metrics: S.optional(__S(1, __c0, 1)),
+          dimensions: S.optional(__S(1, __c0, 1)),
+          userCohort: S.optional(S.String),
           pageToken: S.optional(S.String),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
           pageSize: S.optional(S.Number),
         }),
       ).annotate({
@@ -2569,11 +2149,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2587,15 +2163,13 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(StringList),
+          dimensions: S.optional(__S(1, __c0, 1)),
           pageSize: S.optional(S.Number),
-          userCohort: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum,
-          ),
-          metrics: S.optional(StringList),
+          userCohort: S.optional(S.String),
+          metrics: S.optional(__S(1, __c0, 1)),
           pageToken: S.optional(S.String),
           filter: S.optional(S.String),
-          timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
+          timelineSpec: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier:
@@ -2605,11 +2179,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2623,7 +2193,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(GooglePlayDeveloperReportingV1beta1MetricsRowList),
+          rows: S.optional(__S(41, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2658,11 +2228,11 @@ function __c8(j: number): any {
         identifier: "GooglePlayDeveloperReportingV1beta1App",
       });
     case 2:
-      return S.Array(GooglePlayDeveloperReportingV1beta1App);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(GooglePlayDeveloperReportingV1beta1AppList),
+          apps: S.optional(__S(66, __c8, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2718,7 +2288,7 @@ function __c8(j: number): any {
         identifier: "GooglePlayDeveloperReportingV1beta1IssueAnnotation",
       });
     case 6:
-      return S.Array(GooglePlayDeveloperReportingV1beta1IssueAnnotation);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2743,18 +2313,18 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cause: S.optional(S.String),
-          annotations: S.optional(GooglePlayDeveloperReportingV1beta1IssueAnnotationList),
+          annotations: S.optional(__S(70, __c8, 6)),
           lastErrorReportTime: S.optional(S.String),
-          lastAppVersion: S.optional(GooglePlayDeveloperReportingV1beta1AppVersion),
-          firstAppVersion: S.optional(GooglePlayDeveloperReportingV1beta1AppVersion),
+          lastAppVersion: S.optional(__S(71, __c8, 7)),
+          firstAppVersion: S.optional(__S(71, __c8, 7)),
           distinctUsers: S.optional(S.String),
           name: S.optional(S.String),
-          sampleErrorReports: S.optional(StringList),
-          lastOsVersion: S.optional(GooglePlayDeveloperReportingV1beta1OsVersion),
-          distinctUsersPercent: S.optional(GoogleTypeDecimal),
+          sampleErrorReports: S.optional(__S(1, __c0, 1)),
+          lastOsVersion: S.optional(__S(72, __c9, 0)),
+          distinctUsersPercent: S.optional(__S(28, __c3, 4)),
           issueUri: S.optional(S.String),
-          type: S.optional(GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum),
-          firstOsVersion: S.optional(GooglePlayDeveloperReportingV1beta1OsVersion),
+          type: S.optional(S.String),
+          firstOsVersion: S.optional(__S(72, __c9, 0)),
           errorReportCount: S.optional(S.String),
           location: S.optional(S.String),
         }),
@@ -2762,12 +2332,12 @@ function __c9(j: number): any {
         identifier: "GooglePlayDeveloperReportingV1beta1ErrorIssue",
       });
     case 2:
-      return S.Array(GooglePlayDeveloperReportingV1beta1ErrorIssue);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          errorIssues: S.optional(GooglePlayDeveloperReportingV1beta1ErrorIssueList),
+          errorIssues: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse",
@@ -2823,7 +2393,7 @@ function __c9(j: number): any {
         S.Struct({
           marketingName: S.optional(S.String),
           deviceUri: S.optional(S.String),
-          deviceId: S.optional(GooglePlayDeveloperReportingV1beta1DeviceId),
+          deviceId: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1DeviceModelSummary",
@@ -2831,15 +2401,15 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum),
+          type: S.optional(S.String),
           eventTime: S.optional(S.String),
-          appVersion: S.optional(GooglePlayDeveloperReportingV1beta1AppVersion),
+          appVersion: S.optional(__S(71, __c8, 7)),
           vcsInformation: S.optional(S.String),
           name: S.optional(S.String),
           reportText: S.optional(S.String),
-          osVersion: S.optional(GooglePlayDeveloperReportingV1beta1OsVersion),
+          osVersion: S.optional(__S(72, __c9, 0)),
           issue: S.optional(S.String),
-          deviceModel: S.optional(GooglePlayDeveloperReportingV1beta1DeviceModelSummary),
+          deviceModel: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1ErrorReport",
@@ -2849,15 +2419,20 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GooglePlayDeveloperReportingV1beta1ErrorReport);
+      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          errorReports: S.optional(GooglePlayDeveloperReportingV1beta1ErrorReportList),
+          errorReports: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

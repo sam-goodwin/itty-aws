@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,35 +65,19 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request message for the `BatchEnableServices` method. */
 export interface BatchEnableServicesRequest {
   /** The identifiers of the services to enable on the project. A valid identifier would be: serviceusage.googleapis.com Enabling services requires that each service is public or is shared with the user enabling the service. A single request can enable a maximum of 20 services at a time. If more than 20 services are specified, the request will fail, and no state changes will occur. */
   serviceIds?: StringList;
 }
-const BatchEnableServicesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchEnableServicesRequest>;
-
 export interface BatchEnableServicesRequest_ {
   /** Parent to enable services on. An example name would be: `projects/123` where `123` is the project number. The `BatchEnableServices` method currently only supports projects. */
   parent: string;
   /** Request body */
   body?: BatchEnableServicesRequest;
 }
-const BatchEnableServicesRequest_ = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchEnableServicesRequest_>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -101,8 +87,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -116,22 +100,13 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
-
 export interface BatchGetServicesRequest {
   /** Names of the services to retrieve. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. A single request can get a maximum of 30 services at a time. */
   names?: StringList;
   /** Parent to retrieve services from. If this is set, the parent of all of the services specified in `names` must match this field. An example name would be: `projects/123` where `123` is the project number. The `BatchGetServices` method currently only supports projects. */
   parent: string;
 }
-const BatchGetServicesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchGetServicesRequest>;
-
 export type GoogleApiServiceusageV1ServiceStateEnum = "STATE_UNSPECIFIED" | "DISABLED" | "ENABLED";
-const GoogleApiServiceusageV1ServiceStateEnum = S.String;
-
 /** `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true */
 export interface Endpoint {
   /** The canonical name of this endpoint. */
@@ -143,11 +118,7 @@ export interface Endpoint {
   /** The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com". */
   target?: string;
 }
-const Endpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Endpoint>;
-
 export type EndpointList = Array<Endpoint>;
-const EndpointList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<EndpointList>;
-
 /** Configuration of a specific monitoring destination (the producer project or the consumer project). */
 export interface MonitoringDestination {
   /** The monitored resource type. The type must be defined in Service.monitored_resources section. */
@@ -155,17 +126,7 @@ export interface MonitoringDestination {
   /** Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section. */
   metrics?: StringList;
 }
-const MonitoringDestination = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MonitoringDestination>;
-
 export type MonitoringDestinationList = Array<MonitoringDestination>;
-const MonitoringDestinationList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MonitoringDestinationList>;
-
 /** Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue */
 export interface Monitoring {
   /** Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration. */
@@ -173,17 +134,11 @@ export interface Monitoring {
   /** Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration. */
   consumerDestinations?: MonitoringDestinationList;
 }
-const Monitoring = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Monitoring>;
-
 export type QuotaLimitTrafficSourceEnum =
   | "TRAFFIC_SOURCE_UNSPECIFIED"
   | "TRAFFIC_SOURCE_NONAGENTIC"
   | "TRAFFIC_SOURCE_AGENTIC";
-const QuotaLimitTrafficSourceEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringMap>;
-
 /** `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`. */
 export interface QuotaLimit {
   /** Default number of tokens that can be consumed during the specified duration. This is the number of tokens assigned when a client application developer activates the service for his/her project. Specifying a value of 0 will block all requests. This can be used if you are provisioning quota to selected consumers and blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative values are allowed. Used by group-based quotas only. */
@@ -209,11 +164,7 @@ export interface QuotaLimit {
   /** Maximum number of tokens that can be consumed during the specified duration. Client application developers can override the default limit up to this maximum. If specified, this value cannot be set to a value less than the default limit. If not specified, it is set to the default limit. To allow clients to apply overrides with no upper bound, set this to -1, indicating unlimited maximum quota. Used by group-based quotas only. */
   maxLimit?: string;
 }
-const QuotaLimit = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<QuotaLimit>;
-
 export type QuotaLimitList = Array<QuotaLimit>;
-const QuotaLimitList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<QuotaLimitList>;
-
 /** Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call. */
 export interface MetricRule {
   /** Optional. Metrics to update when the selected methods are called, and the associated cost applied to each metric, iff the source of the call is an agent. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative. */
@@ -225,11 +176,7 @@ export interface MetricRule {
   /** Selects the methods to which this rule applies. Refer to selector for syntax details. */
   selector?: string;
 }
-const MetricRule = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MetricRule>;
-
 export type MetricRuleList = Array<MetricRule>;
-const MetricRuleList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<MetricRuleList>;
-
 /** Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 (The metric rules bind all methods to the read_calls metric, except for the UpdateBook and DeleteBook methods. These two methods are mapped to the write_calls metric, with the UpdateBook method consuming at twice rate as the DeleteBook method.) metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64 */
 export interface Quota {
   /** List of QuotaLimit definitions for the service. */
@@ -237,8 +184,6 @@ export interface Quota {
   /** List of MetricRule definitions, each one mapping a selected method to one or more metrics. */
   metricRules?: MetricRuleList;
 }
-const Quota = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Quota>;
-
 /** Usage configuration rules for the service. */
 export interface UsageRule {
   /** If true, the selected method should skip service control and the control plane features, such as quota and billing, will not be available. This flag is used by Google Cloud Endpoints to bypass checks for internal methods, such as service health check methods. */
@@ -248,11 +193,7 @@ export interface UsageRule {
   /** Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details. */
   selector?: string;
 }
-const UsageRule = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UsageRule>;
-
 export type UsageRuleList = Array<UsageRule>;
-const UsageRuleList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UsageRuleList>;
-
 /** Configuration controlling usage of a service. */
 export interface Usage {
   /** Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs. */
@@ -262,11 +203,7 @@ export interface Usage {
   /** A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: UsageRuleList;
 }
-const Usage = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Usage>;
-
 export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
-const LabelDescriptorValueTypeEnum = S.String;
-
 /** A description of a label. */
 export interface LabelDescriptor {
   /** The type of data that can be assigned to the label. */
@@ -276,11 +213,7 @@ export interface LabelDescriptor {
   /** The label key. */
   key?: string;
 }
-const LabelDescriptor = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LabelDescriptor>;
-
 export type LabelDescriptorList = Array<LabelDescriptor>;
-const LabelDescriptorList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<LabelDescriptorList>;
-
 export type MonitoredResourceDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -290,8 +223,6 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const MonitoredResourceDescriptorLaunchStageEnum = S.String;
-
 /** An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. */
 export interface MonitoredResourceDescriptor {
   /** Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`. */
@@ -307,17 +238,7 @@ export interface MonitoredResourceDescriptor {
   /** Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitored resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list). */
   type?: string;
 }
-const MonitoredResourceDescriptor = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<MonitoredResourceDescriptor>;
-
 export type MonitoredResourceDescriptorList = Array<MonitoredResourceDescriptor>;
-const MonitoredResourceDescriptorList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MonitoredResourceDescriptorList>;
-
 /** A documentation rule provides information about individual API elements. */
 export interface DocumentationRule {
   /** Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element. */
@@ -329,14 +250,7 @@ export interface DocumentationRule {
   /** The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used. */
   selector?: string;
 }
-const DocumentationRule = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DocumentationRule>;
-
 export type DocumentationRuleList = Array<DocumentationRule>;
-const DocumentationRuleList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DocumentationRuleList>;
-
 /** Represents a documentation page. A page can contain subpages to represent nested documentation set structure. */
 export interface Page {
   /** Subpages of this page. The order of subpages specified here will be honored in the generated docset. */
@@ -346,11 +260,7 @@ export interface Page {
   /** The Markdown content of the page. You can use ```(== include {path} ==)``` to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page. */
   content?: string;
 }
-const Page = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Page>;
-
 export type PageList = Array<Page>;
-const PageList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PageList>;
-
 /** `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation. */
 export interface Documentation {
   /** Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field. */
@@ -370,15 +280,11 @@ export interface Documentation {
   /** A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`. */
   summary?: string;
 }
-const Documentation = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Documentation>;
-
 /** OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions. */
 export interface OAuthRequirements {
   /** The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read */
   canonicalScopes?: string;
 }
-const OAuthRequirements = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OAuthRequirements>;
-
 /** User-defined authentication requirements, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32). */
 export interface AuthRequirement {
   /** NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all the runtime components. The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService". Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com */
@@ -386,11 +292,7 @@ export interface AuthRequirement {
   /** id from authentication provider. Example: provider_id: bookstore_auth */
   providerId?: string;
 }
-const AuthRequirement = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AuthRequirement>;
-
 export type AuthRequirementList = Array<AuthRequirement>;
-const AuthRequirementList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AuthRequirementList>;
-
 /** Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored. */
 export interface AuthenticationRule {
   /** The requirements for OAuth credentials. */
@@ -402,14 +304,7 @@ export interface AuthenticationRule {
   /** Selects the methods to which this rule applies. Refer to selector for syntax details. */
   selector?: string;
 }
-const AuthenticationRule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AuthenticationRule>;
-
 export type AuthenticationRuleList = Array<AuthenticationRule>;
-const AuthenticationRuleList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AuthenticationRuleList>;
-
 /** Specifies a location to extract JWT from an API request. */
 export interface JwtLocation {
   /** Specifies URL query parameter name to extract JWT token. */
@@ -421,11 +316,7 @@ export interface JwtLocation {
   /** Specifies cookie name to extract JWT token. */
   cookie?: string;
 }
-const JwtLocation = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<JwtLocation>;
-
 export type JwtLocationList = Array<JwtLocation>;
-const JwtLocationList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<JwtLocationList>;
-
 /** Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32). */
 export interface AuthProvider {
   /** Defines the locations to extract the JWT. For now it is only used by the Cloud Endpoints to store the OpenAPI extension [x-google-jwt-locations] (https://cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-locations) JWT locations can be one of HTTP headers, URL query parameters or cookies. The rule is that the first match wins. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token */
@@ -441,11 +332,7 @@ export interface AuthProvider {
   /** Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com */
   issuer?: string;
 }
-const AuthProvider = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AuthProvider>;
-
 export type AuthProviderList = Array<AuthProvider>;
-const AuthProviderList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AuthProviderList>;
-
 /** `Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read */
 export interface Authentication {
   /** A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
@@ -453,15 +340,11 @@ export interface Authentication {
   /** Defines a set of authentication providers that a service supports. */
   providers?: AuthProviderList;
 }
-const Authentication = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Authentication>;
-
 /** `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined. */
 export interface SourceContext {
   /** The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`. */
   fileName?: string;
 }
-const SourceContext = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SourceContext>;
-
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
 export interface Option {
   /** The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`. */
@@ -469,17 +352,9 @@ export interface Option {
   /** The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type. */
   value?: DocumentMap;
 }
-const Option = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Option>;
-
 export type OptionList = Array<Option>;
-const OptionList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<OptionList>;
-
 export type ApiSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
-const ApiSyntaxEnum = S.String;
-
 export type MethodSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
-const MethodSyntaxEnum = S.String;
-
 /** Method represents a method of an API interface. New usages of this message as an alternative to MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Method {
   /** The source edition string, only valid when syntax is SYNTAX_EDITIONS. This field should be ignored, instead the edition should be inherited from Api. This is similar to Field and EnumValue. */
@@ -499,11 +374,7 @@ export interface Method {
   /** The URL of the output message type. */
   responseTypeUrl?: string;
 }
-const Method = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Method>;
-
 export type MethodList = Array<Method>;
-const MethodList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<MethodList>;
-
 /** Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... } */
 export interface Mixin {
   /** The fully qualified name of the interface which is included. */
@@ -511,11 +382,7 @@ export interface Mixin {
   /** If non-empty specifies a path under which inherited HTTP paths are rooted. */
   root?: string;
 }
-const Mixin = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Mixin>;
-
 export type MixinList = Array<Mixin>;
-const MixinList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<MixinList>;
-
 /** Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology. New usages of this message as an alternative to ServiceDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Api {
   /** Source context for the protocol buffer service represented by this message. */
@@ -535,11 +402,7 @@ export interface Api {
   /** The fully qualified name of this interface, including package name followed by the interface's simple name. */
   name?: string;
 }
-const Api = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Api>;
-
 export type ApiList = Array<Api>;
-const ApiList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ApiList>;
-
 /** The configuration of the service. */
 export interface GoogleApiServiceusageV1ServiceConfig {
   /** The DNS address at which this service is available. An example DNS address would be: `calendar.googleapis.com`. */
@@ -563,11 +426,6 @@ export interface GoogleApiServiceusageV1ServiceConfig {
   /** A list of API interfaces exported by this service. Contains only the names, versions, and method names of the interfaces. */
   apis?: ApiList;
 }
-const GoogleApiServiceusageV1ServiceConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GoogleApiServiceusageV1ServiceConfig>;
-
 /** A service that is available for use by the consumer. */
 export interface GoogleApiServiceusageV1Service {
   /** The resource name of the consumer and service. A valid name would be: - projects/123/services/serviceusage.googleapis.com */
@@ -579,64 +437,30 @@ export interface GoogleApiServiceusageV1Service {
   /** The resource name of the consumer. A valid name would be: - projects/123 */
   parent?: string;
 }
-const GoogleApiServiceusageV1Service = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GoogleApiServiceusageV1Service>;
-
 export type GoogleApiServiceusageV1ServiceList = Array<GoogleApiServiceusageV1Service>;
-const GoogleApiServiceusageV1ServiceList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GoogleApiServiceusageV1ServiceList>;
-
 /** Response message for the `BatchGetServices` method. */
 export interface BatchGetServicesResponse {
   /** The requested Service states. */
   services?: GoogleApiServiceusageV1ServiceList;
 }
-const BatchGetServicesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<BatchGetServicesResponse>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CancelOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteOperationsRequest>;
-
 export type DisableServiceRequestCheckIfServiceHasUsageEnum =
   | "CHECK_IF_SERVICE_HAS_USAGE_UNSPECIFIED"
   | "SKIP"
   | "CHECK";
-const DisableServiceRequestCheckIfServiceHasUsageEnum = S.String;
-
 /** Request message for the `DisableService` method. */
 export interface DisableServiceRequest {
   /** Defines the behavior for checking service usage when disabling a service. */
@@ -644,22 +468,12 @@ export interface DisableServiceRequest {
   /** Indicates if services that are enabled and which depend on this service should also be disabled. If not set, an error will be generated if any enabled services depend on the service to be disabled. When set, the service, and any enabled services that depend on it, will be disabled together. */
   disableDependentServices?: boolean;
 }
-const DisableServiceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DisableServiceRequest>;
-
 export interface DisableServicesRequest {
   /** Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. */
   name: string;
   /** Request body */
   body?: DisableServiceRequest;
 }
-const DisableServicesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DisableServicesRequest>;
-
 /** Request message for the `EnableService` method. */
 export type EnableServiceRequest = CancelOperationRequest;
 export interface EnableServicesRequest {
@@ -668,23 +482,14 @@ export interface EnableServicesRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const EnableServicesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<EnableServicesRequest>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetServicesRequest {
   /** Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. */
   name: string;
 }
-const GetServicesRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetServicesRequest>;
-
 export interface ListOperationsRequest {
   /** The name of the operation's parent resource. */
   name?: string;
@@ -697,14 +502,7 @@ export interface ListOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -714,11 +512,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListServicesRequest {
   /** Token identifying which result to start with, which is returned by a previous list call. */
   pageToken?: string;
@@ -729,8 +522,6 @@ export interface ListServicesRequest {
   /** Only list services that conform to the given filter. The allowed filter strings are `state:ENABLED` and `state:DISABLED`. */
   filter?: string;
 }
-const ListServicesRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ListServicesRequest>;
-
 /** Response message for the `ListServices` method. */
 export interface ListServicesResponse {
   /** The available services for the requested project. */
@@ -738,8 +529,6 @@ export interface ListServicesResponse {
   /** Token that can be passed to `ListServices` to resume a paginated query. */
   nextPageToken?: string;
 }
-const ListServicesResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListServicesResponse>;
-
 export type BatchEnableServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Enable multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. To enable a single service, use the `EnableService` method instead. */
 export const batchEnableServices: API.OperationMethod<
@@ -748,8 +537,8 @@ export const batchEnableServices: API.OperationMethod<
   BatchEnableServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchEnableServicesRequest_,
-  output: Operation,
+  input: __S(2, __c0, 2) as any as S.Schema<BatchEnableServicesRequest_>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -763,8 +552,8 @@ export const batchGetServices: API.OperationMethod<
   BatchGetServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetServicesRequest,
-  output: BatchGetServicesResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<BatchGetServicesRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<BatchGetServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -778,8 +567,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOperationsRequest,
-  output: Empty,
+  input: __S(55, __c6, 7) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -793,8 +582,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOperationsRequest,
-  output: Empty,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -808,8 +597,8 @@ export const disableServices: API.OperationMethod<
   DisableServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableServicesRequest,
-  output: Operation,
+  input: __S(58, __c7, 2) as any as S.Schema<DisableServicesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -823,8 +612,8 @@ export const enableServices: API.OperationMethod<
   EnableServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableServicesRequest,
-  output: Operation,
+  input: __S(59, __c7, 3) as any as S.Schema<EnableServicesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -838,8 +627,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(60, __c7, 4) as any as S.Schema<GetOperationsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -853,8 +642,8 @@ export const getServices: API.OperationMethod<
   GetServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServicesRequest,
-  output: GoogleApiServiceusageV1Service,
+  input: __S(61, __c7, 5) as any as S.Schema<GetServicesRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GoogleApiServiceusageV1Service>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -869,8 +658,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<ListOperationsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -886,8 +675,8 @@ export const listServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesRequest,
-  output: ListServicesResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<ListServicesRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,7 +691,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceIds: S.optional(StringList),
+          serviceIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "BatchEnableServicesRequest",
@@ -911,7 +700,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchEnableServicesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -925,29 +714,29 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
+          error: S.optional(__S(5, __c0, 5)),
+          metadata: S.optional(__S(3, __c0, 3)),
           name: S.optional(S.String),
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(StringList.pipe(T.Query())),
+          names: S.optional(__S(0, __c0, 0).pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -966,26 +755,26 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           allowCors: S.optional(S.Boolean),
-          aliases: S.optional(StringList),
+          aliases: S.optional(__S(0, __c0, 0)),
           target: S.optional(S.String),
         }),
       ).annotate({ identifier: "Endpoint" });
     case 1:
-      return S.Array(Endpoint);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           monitoredResource: S.optional(S.String),
-          metrics: S.optional(StringList),
+          metrics: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "MonitoringDestination" });
     case 3:
-      return S.Array(MonitoringDestination);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          producerDestinations: S.optional(MonitoringDestinationList),
-          consumerDestinations: S.optional(MonitoringDestinationList),
+          producerDestinations: S.optional(__S(11, __c1, 3)),
+          consumerDestinations: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "Monitoring" });
     case 5:
@@ -998,16 +787,16 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           freeTier: S.optional(S.String),
           displayName: S.optional(S.String),
-          trafficSource: S.optional(QuotaLimitTrafficSourceEnum),
+          trafficSource: S.optional(S.String),
           description: S.optional(S.String),
           metric: S.optional(S.String),
           unit: S.optional(S.String),
-          values: S.optional(StringMap),
+          values: S.optional(__S(13, __c1, 5)),
           maxLimit: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaLimit" });
     case 7:
-      return S.Array(QuotaLimit);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1015,19 +804,19 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          agenticMetricCosts: S.optional(StringMap),
-          metricCosts: S.optional(StringMap),
-          nonagenticMetricCosts: S.optional(StringMap),
+          agenticMetricCosts: S.optional(__S(13, __c1, 5)),
+          metricCosts: S.optional(__S(13, __c1, 5)),
+          nonagenticMetricCosts: S.optional(__S(13, __c1, 5)),
           selector: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricRule" });
     case 1:
-      return S.Array(MetricRule);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(QuotaLimitList),
-          metricRules: S.optional(MetricRuleList),
+          limits: S.optional(__S(15, __c1, 7)),
+          metricRules: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "Quota" });
     case 3:
@@ -1039,25 +828,25 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UsageRule" });
     case 4:
-      return S.Array(UsageRule);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          requirements: S.optional(StringList),
+          requirements: S.optional(__S(0, __c0, 0)),
           producerNotificationChannel: S.optional(S.String),
-          rules: S.optional(UsageRuleList),
+          rules: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "Usage" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          valueType: S.optional(LabelDescriptorValueTypeEnum),
+          valueType: S.optional(S.String),
           description: S.optional(S.String),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelDescriptor" });
     case 7:
-      return S.Array(LabelDescriptor);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1065,10 +854,10 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(LabelDescriptorList),
+          labels: S.optional(__S(23, __c2, 7)),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          launchStage: S.optional(MonitoredResourceDescriptorLaunchStageEnum),
+          launchStage: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -1076,7 +865,7 @@ function __c3(j: number): any {
         identifier: "MonitoredResourceDescriptor",
       });
     case 1:
-      return S.Array(MonitoredResourceDescriptor);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1087,27 +876,27 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "DocumentationRule" });
     case 3:
-      return S.Array(DocumentationRule);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subpages: S.optional(S.suspend(() => PageList)),
+          subpages: S.optional(S.suspend(() => __S(29, __c3, 5))),
           name: S.optional(S.String),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "Page" });
     case 5:
-      return S.Array(Page);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           overview: S.optional(S.String),
-          rules: S.optional(DocumentationRuleList),
+          rules: S.optional(__S(27, __c3, 3)),
           documentationRootUrl: S.optional(S.String),
           serviceRootUrl: S.optional(S.String),
-          sectionOverrides: S.optional(PageList),
+          sectionOverrides: S.optional(__S(29, __c3, 5)),
           additionalIamInfo: S.optional(S.String),
-          pages: S.optional(PageList),
+          pages: S.optional(__S(29, __c3, 5)),
           summary: S.optional(S.String),
         }),
       ).annotate({ identifier: "Documentation" });
@@ -1129,18 +918,18 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "AuthRequirement" });
     case 1:
-      return S.Array(AuthRequirement);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          oauth: S.optional(OAuthRequirements),
-          requirements: S.optional(AuthRequirementList),
+          oauth: S.optional(__S(31, __c3, 7)),
+          requirements: S.optional(__S(33, __c4, 1)),
           allowWithoutCredential: S.optional(S.Boolean),
           selector: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationRule" });
     case 3:
-      return S.Array(AuthenticationRule);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1151,11 +940,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "JwtLocation" });
     case 5:
-      return S.Array(JwtLocation);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          jwtLocations: S.optional(JwtLocationList),
+          jwtLocations: S.optional(__S(37, __c4, 5)),
           authorizationUrl: S.optional(S.String),
           jwksUri: S.optional(S.String),
           audiences: S.optional(S.String),
@@ -1164,7 +953,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "AuthProvider" });
     case 7:
-      return S.Array(AuthProvider);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1172,8 +961,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(AuthenticationRuleList),
-          providers: S.optional(AuthProviderList),
+          rules: S.optional(__S(35, __c4, 3)),
+          providers: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "Authentication" });
     case 1:
@@ -1186,26 +975,26 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(DocumentMap),
+          value: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Option" });
     case 3:
-      return S.Array(Option);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           edition: S.optional(S.String),
           name: S.optional(S.String),
           requestTypeUrl: S.optional(S.String),
-          options: S.optional(OptionList),
+          options: S.optional(__S(43, __c5, 3)),
           responseStreaming: S.optional(S.Boolean),
-          syntax: S.optional(MethodSyntaxEnum),
+          syntax: S.optional(S.String),
           requestStreaming: S.optional(S.Boolean),
           responseTypeUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "Method" });
     case 5:
-      return S.Array(Method);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1214,7 +1003,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Mixin" });
     case 7:
-      return S.Array(Mixin);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -1222,31 +1011,31 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceContext: S.optional(SourceContext),
-          options: S.optional(OptionList),
+          sourceContext: S.optional(__S(41, __c5, 1)),
+          options: S.optional(__S(43, __c5, 3)),
           version: S.optional(S.String),
           edition: S.optional(S.String),
-          syntax: S.optional(ApiSyntaxEnum),
-          methods: S.optional(MethodList),
-          mixins: S.optional(MixinList),
+          syntax: S.optional(S.String),
+          methods: S.optional(__S(45, __c5, 5)),
+          mixins: S.optional(__S(47, __c5, 7)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Api" });
     case 1:
-      return S.Array(Api);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          endpoints: S.optional(EndpointList),
-          monitoring: S.optional(Monitoring),
-          quota: S.optional(Quota),
-          usage: S.optional(Usage),
-          monitoredResources: S.optional(MonitoredResourceDescriptorList),
-          documentation: S.optional(Documentation),
+          endpoints: S.optional(__S(9, __c1, 1)),
+          monitoring: S.optional(__S(12, __c1, 4)),
+          quota: S.optional(__S(18, __c2, 2)),
+          usage: S.optional(__S(21, __c2, 5)),
+          monitoredResources: S.optional(__S(25, __c3, 1)),
+          documentation: S.optional(__S(30, __c3, 6)),
           title: S.optional(S.String),
-          authentication: S.optional(Authentication),
-          apis: S.optional(ApiList),
+          authentication: S.optional(__S(40, __c5, 0)),
+          apis: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({
         identifier: "GoogleApiServiceusageV1ServiceConfig",
@@ -1255,19 +1044,19 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          state: S.optional(GoogleApiServiceusageV1ServiceStateEnum),
-          config: S.optional(GoogleApiServiceusageV1ServiceConfig),
+          state: S.optional(S.String),
+          config: S.optional(__S(50, __c6, 2)),
           parent: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleApiServiceusageV1Service",
       });
     case 4:
-      return S.Array(GoogleApiServiceusageV1Service);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(GoogleApiServiceusageV1ServiceList),
+          services: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({ identifier: "BatchGetServicesResponse" });
     case 6:
@@ -1278,7 +1067,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1306,7 +1095,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          checkIfServiceHasUsage: S.optional(DisableServiceRequestCheckIfServiceHasUsageEnum),
+          checkIfServiceHasUsage: S.optional(S.String),
           disableDependentServices: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DisableServiceRequest" });
@@ -1314,7 +1103,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DisableServiceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1327,7 +1116,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1377,7 +1166,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c8(j: number): any {
@@ -1385,9 +1174,9 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(0, __c0, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 1:
@@ -1408,9 +1197,14 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(GoogleApiServiceusageV1ServiceList),
+          services: S.optional(__S(52, __c6, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

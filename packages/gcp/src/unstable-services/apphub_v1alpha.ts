@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,37 +66,21 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type ApplicationStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
-const ApplicationStateEnum = S.String;
-
 export type EnvironmentTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PRODUCTION"
   | "STAGING"
   | "TEST"
   | "DEVELOPMENT";
-const EnvironmentTypeEnum = S.String;
-
 /** Environment of the Application, Service, or Workload */
 export interface Environment {
   /** Required. Environment Type. */
@@ -102,15 +88,11 @@ export interface Environment {
   /** Optional. Environment name. Can contain only lowercase letters, numeric characters, underscores, and dashes. Can have a maximum length of 63 characters. Deprecated: Please refer to type instead. */
   environment?: string;
 }
-const Environment = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Environment>;
-
 /** Separate message to accommodate custom formats across IRC and Slack. */
 export interface Channel {
   /** Required. URI of the channel. */
   uri?: string;
 }
-const Channel = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Channel>;
-
 /** Contact information of stakeholders. */
 export interface ContactInfo {
   /** Optional. Contact's name. Can have a maximum length of 63 characters. */
@@ -120,19 +102,13 @@ export interface ContactInfo {
   /** Optional. Communication channel of the contacts. */
   channel?: Channel;
 }
-const ContactInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ContactInfo>;
-
 export type ContactInfoList = Array<ContactInfo>;
-const ContactInfoList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ContactInfoList>;
-
 export type CriticalityTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MISSION_CRITICAL"
   | "HIGH"
   | "MEDIUM"
   | "LOW";
-const CriticalityTypeEnum = S.String;
-
 /** Criticality of the Application, Service, or Workload */
 export interface Criticality {
   /** Optional. Criticality level. Can contain only lowercase letters, numeric characters, underscores, and dashes. Can have a maximum length of 63 characters. Deprecated: Please refer to type instead. */
@@ -142,8 +118,6 @@ export interface Criticality {
   /** Required. Criticality Type. */
   type?: CriticalityTypeEnum | (string & {});
 }
-const Criticality = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Criticality>;
-
 /** Consumer provided attributes. */
 export interface Attributes {
   /** Optional. User-defined environment information. */
@@ -157,18 +131,12 @@ export interface Attributes {
   /** Optional. Developer team that owns development and coding. */
   developerOwners?: ContactInfoList;
 }
-const Attributes = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Attributes>;
-
 export type ScopeTypeEnum = "TYPE_UNSPECIFIED" | "REGIONAL" | "GLOBAL";
-const ScopeTypeEnum = S.String;
-
 /** Scope of an application. */
 export interface Scope {
   /** Required. Scope Type. */
   type?: ScopeTypeEnum | (string & {});
 }
-const Scope = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Scope>;
-
 /** Application defines the governance boundary for App Hub entities that perform a logical end-to-end business function. App Hub supports application level IAM permission to align with governance requirements. */
 export interface Application {
   /** Optional. User-defined name for the Application. Can have a maximum length of 63 characters. */
@@ -190,8 +158,6 @@ export interface Application {
   /** Required. Immutable. Defines what data can be included into this Application. Limits which Services and Workloads can be registered. */
   scope?: Scope;
 }
-const Application = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Application>;
-
 export interface CreateProjectsLocationsApplicationsRequest {
   /** Required. The Application identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. */
   applicationId?: string;
@@ -202,17 +168,8 @@ export interface CreateProjectsLocationsApplicationsRequest {
   /** Request body */
   body?: Application;
 }
-const CreateProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateProjectsLocationsApplicationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -222,8 +179,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -237,49 +192,35 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Operation>;
-
 export type ServiceStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
   | "DETACHED";
-const ServiceStateEnum = S.String;
-
 export type RegistrationTypeTypeEnum = "TYPE_UNSPECIFIED" | "EXCLUSIVE" | "SHARED";
 /** The registration type of a service. */
 export interface RegistrationType {
   /** Output only. The registration type of a service. */
   type?: RegistrationTypeTypeEnum | (string & {});
 }
-const RegistrationType = Scope as any as S.Schema<RegistrationType>;
-
 /** The identity associated with a service or workload. */
 export interface Identity {
   /** Output only. The principal of the identity. Supported formats: * `sa://my-sa@PROJECT_ID.iam.gserviceaccount.com` for GCP Service Account * `principal://POOL_ID.global.PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/MANAGED_IDENTITY_ID` for Managed Workload Identity */
   principal?: string;
 }
-const Identity = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Identity>;
-
 /** Additional metadata for a Service or Workload. */
 export interface ExtendedMetadata {
   /** Output only. The metadata contents. */
   metadataStruct?: DocumentMap;
 }
-const ExtendedMetadata = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ExtendedMetadata>;
-
 export type ExtendedMetadataMap = { [key: string]: ExtendedMetadata | undefined };
-const ExtendedMetadataMap = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ExtendedMetadataMap>;
-
 export type FunctionalTypeTypeEnum = "TYPE_UNSPECIFIED" | "AGENT" | "MCP_SERVER" | "ENDPOINT";
 /** The functional type of a service or workload. */
 export interface FunctionalType {
   /** Output only. The functional type of a service or workload. */
   type?: FunctionalTypeTypeEnum | (string & {});
 }
-const FunctionalType = Scope as any as S.Schema<FunctionalType>;
-
 /** Properties of an underlying cloud resource that can comprise a Service. */
 export interface ServiceProperties {
   /** Output only. The service project identifier that the underlying cloud resource resides in. */
@@ -297,8 +238,6 @@ export interface ServiceProperties {
   /** Output only. The type of the service. */
   functionalType?: FunctionalType;
 }
-const ServiceProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ServiceProperties>;
-
 /** Reference to an underlying networking resource that can comprise a Service. */
 export interface ServiceReference {
   /** Output only. The underlying resource URI. For example, URI of Forwarding Rule, URL Map, and Backend Service. */
@@ -306,8 +245,6 @@ export interface ServiceReference {
   /** Output only. Additional path under the resource URI (demultiplexing one resource URI into multiple entries). Smallest unit a policy can be attached to. Examples: URL Map path entry. */
   path?: string;
 }
-const ServiceReference = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ServiceReference>;
-
 /** Service is an App Hub data model that contains a discovered service, which represents a network or API interface that exposes some functionality to clients for consumption over the network. */
 export interface Service {
   /** Optional. User-defined name for the Service. Can have a maximum length of 63 characters. */
@@ -333,8 +270,6 @@ export interface Service {
   /** Optional. Consumer provided attributes. */
   attributes?: Attributes;
 }
-const Service = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Service>;
-
 export interface CreateProjectsLocationsApplicationsServicesRequest {
   /** Required. The Service identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. */
   serviceId?: string;
@@ -345,18 +280,11 @@ export interface CreateProjectsLocationsApplicationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-const CreateProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateProjectsLocationsApplicationsServicesRequest>;
-
 /** Reference of an underlying compute resource represented by the Workload. */
 export interface WorkloadReference {
   /** Output only. The underlying compute resource uri. */
   uri?: string;
 }
-const WorkloadReference = Channel as any as S.Schema<WorkloadReference>;
-
 /** Properties of an underlying compute resource represented by the Workload. */
 export interface WorkloadProperties {
   /** Output only. The type of the workload. */
@@ -372,16 +300,12 @@ export interface WorkloadProperties {
   /** Output only. The service project identifier that the underlying cloud resource resides in. Empty for non-cloud resources. */
   gcpProject?: string;
 }
-const WorkloadProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<WorkloadProperties>;
-
 export type WorkloadStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
   | "DETACHED";
-const WorkloadStateEnum = S.String;
-
 /** Workload is an App Hub data model that contains a discovered workload, which represents a binary deployment (such as managed instance groups (MIGs) and GKE deployments) that performs the smallest logical subset of business functionality. */
 export interface Workload {
   /** Output only. Reference of an underlying compute resource represented by the Workload. These are immutable. */
@@ -407,8 +331,6 @@ export interface Workload {
   /** Output only. Workload state. */
   state?: WorkloadStateEnum | (string & {});
 }
-const Workload = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Workload>;
-
 export interface CreateProjectsLocationsApplicationsWorkloadsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -419,18 +341,11 @@ export interface CreateProjectsLocationsApplicationsWorkloadsRequest {
   /** Request body */
   body?: Workload;
 }
-const CreateProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateProjectsLocationsApplicationsWorkloadsRequest>;
-
 export type ServiceProjectAttachmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
   | "DELETING";
-const ServiceProjectAttachmentStateEnum = S.String;
-
 /** ServiceProjectAttachment represents an attachment from a service project to a host project. Service projects contain the underlying cloud infrastructure resources, and expose these resources to the host project through a ServiceProjectAttachment. With the attachments, the host project can provide an aggregated view of resources across all service projects. */
 export interface ServiceProjectAttachment {
   /** Identifier. The resource name of a ServiceProjectAttachment. Format: `"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}."` */
@@ -444,11 +359,6 @@ export interface ServiceProjectAttachment {
   /** Output only. ServiceProjectAttachment state. */
   state?: ServiceProjectAttachmentStateEnum | (string & {});
 }
-const ServiceProjectAttachment = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ServiceProjectAttachment>;
-
 export interface CreateProjectsLocationsServiceProjectAttachmentsRequest {
   /** Required. The service project attachment identifier must contain the project id of the service project specified in the service_project_attachment.service_project field. */
   serviceProjectAttachmentId?: string;
@@ -459,64 +369,34 @@ export interface CreateProjectsLocationsServiceProjectAttachmentsRequest {
   /** Request body */
   body?: ServiceProjectAttachment;
 }
-const CreateProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateProjectsLocationsServiceProjectAttachmentsRequest>;
-
 export interface DeleteProjectsLocationsApplicationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Fully qualified name of the Application to delete. Expected format: `projects/{project}/locations/{location}/applications/{application}`. */
   name: string;
 }
-const DeleteProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsApplicationsRequest>;
-
 export interface DeleteProjectsLocationsApplicationsServicesRequest {
   /** Required. Fully qualified name of the Service to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>;
-
 export interface DeleteProjectsLocationsApplicationsWorkloadsRequest {
   /** Required. Fully qualified name of the Workload to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsApplicationsWorkloadsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsServiceProjectAttachmentsRequest {
   /** Required. Fully qualified name of the service project attachment to delete. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsServiceProjectAttachmentsRequest>;
-
 /** Request for DetachServiceProjectAttachment. */
 export type DetachServiceProjectAttachmentRequest = CancelOperationRequest;
 export interface DetachServiceProjectAttachmentProjectsLocationsRequest {
@@ -525,18 +405,8 @@ export interface DetachServiceProjectAttachmentProjectsLocationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const DetachServiceProjectAttachmentProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DetachServiceProjectAttachmentProjectsLocationsRequest>;
-
 /** Response for DetachServiceProjectAttachment. */
 export interface DetachServiceProjectAttachmentResponse {}
-const DetachServiceProjectAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DetachServiceProjectAttachmentResponse>;
-
 export interface FindUnregisteredProjectsLocationsDiscoveredServicesRequest {
   /** Required. Project and location to find unregistered Discovered Services on. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -549,11 +419,6 @@ export interface FindUnregisteredProjectsLocationsDiscoveredServicesRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
 }
-const FindUnregisteredProjectsLocationsDiscoveredServicesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<FindUnregisteredProjectsLocationsDiscoveredServicesRequest>;
-
 /** DiscoveredService is a network or API interface that exposes some functionality to clients for consumption over the network. A discovered service can be registered to a App Hub service. */
 export interface DiscoveredService {
   /** Identifier. The resource name of the discovered service. Format: `"projects/{host-project-id}/locations/{location}/discoveredServices/{uuid}"` */
@@ -563,17 +428,8 @@ export interface DiscoveredService {
   /** Output only. Reference to an underlying networking resource that can comprise a Service. These are immutable. */
   serviceReference?: ServiceReference;
 }
-const DiscoveredService = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DiscoveredService>;
-
 export type DiscoveredServiceList = Array<DiscoveredService>;
-const DiscoveredServiceList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DiscoveredServiceList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StringList>;
-
 /** Response for FindUnregisteredServices. */
 export interface FindUnregisteredServicesResponse {
   /** List of Discovered Services. */
@@ -583,11 +439,6 @@ export interface FindUnregisteredServicesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const FindUnregisteredServicesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<FindUnregisteredServicesResponse>;
-
 export interface FindUnregisteredProjectsLocationsDiscoveredWorkloadsRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
@@ -600,11 +451,6 @@ export interface FindUnregisteredProjectsLocationsDiscoveredWorkloadsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-const FindUnregisteredProjectsLocationsDiscoveredWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<FindUnregisteredProjectsLocationsDiscoveredWorkloadsRequest>;
-
 /** DiscoveredWorkload is a binary deployment (such as managed instance groups (MIGs) and GKE deployments) that performs the smallest logical subset of business functionality. A discovered workload can be registered to an App Hub Workload. */
 export interface DiscoveredWorkload {
   /** Output only. Properties of an underlying compute resource represented by the Workload. These are immutable. */
@@ -614,14 +460,7 @@ export interface DiscoveredWorkload {
   /** Identifier. The resource name of the discovered workload. Format: `"projects/{host-project-id}/locations/{location}/discoveredWorkloads/{uuid}"` */
   name?: string;
 }
-const DiscoveredWorkload = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DiscoveredWorkload>;
-
 export type DiscoveredWorkloadList = Array<DiscoveredWorkload>;
-const DiscoveredWorkloadList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DiscoveredWorkloadList>;
-
 /** Response for FindUnregisteredWorkloads. */
 export interface FindUnregisteredWorkloadsResponse {
   /** A token identifying a page of results the server should return. */
@@ -631,23 +470,11 @@ export interface FindUnregisteredWorkloadsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const FindUnregisteredWorkloadsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<FindUnregisteredWorkloadsResponse>;
-
 export interface GetBoundaryProjectsLocationsRequest {
   /** Required. The name of the boundary to retrieve. Format: `projects/{project}/locations/{location}/boundary`. */
   name: string;
 }
-const GetBoundaryProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetBoundaryProjectsLocationsRequest>;
-
 export type BoundaryTypeEnum = "TYPE_UNSPECIFIED" | "AUTOMATIC" | "MANUAL" | "MANAGED_AUTOMATIC";
-const BoundaryTypeEnum = S.String;
-
 /** Application management boundary. */
 export interface Boundary {
   /** Output only. Update time. */
@@ -661,19 +488,12 @@ export interface Boundary {
   /** Identifier. The resource name of the boundary. Format: "projects/{project}/locations/{location}/boundary" */
   name?: string;
 }
-const Boundary = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Boundary>;
-
 export interface GetIamPolicyProjectsLocationsApplicationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApplicationsRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -685,8 +505,6 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -696,18 +514,12 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-const Binding = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<BindingList>;
-
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -715,11 +527,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const AuditLogConfig = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<AuditLogConfig>;
-
 export type AuditLogConfigList = Array<AuditLogConfig>;
-const AuditLogConfigList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -727,11 +535,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-const AuditConfig = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<AuditConfig>;
-
 export type AuditConfigList = Array<AuditConfig>;
-const AuditConfigList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<AuditConfigList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -743,20 +547,11 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
-const Policy = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Policy>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<StringMap>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -770,62 +565,30 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsApplicationsRequest {
   /** Required. Fully qualified name of the Application to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}`. */
   name: string;
 }
-const GetProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetProjectsLocationsApplicationsRequest>;
-
 export interface GetProjectsLocationsApplicationsServicesRequest {
   /** Required. Fully qualified name of the Service to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. */
   name: string;
 }
-const GetProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetProjectsLocationsApplicationsServicesRequest>;
-
 export interface GetProjectsLocationsApplicationsWorkloadsRequest {
   /** Required. Fully qualified name of the Workload to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. */
   name: string;
 }
-const GetProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetProjectsLocationsApplicationsWorkloadsRequest>;
-
 export interface GetProjectsLocationsDiscoveredServicesRequest {
   /** Required. Fully qualified name of the Discovered Service to fetch. Expected format: `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`. */
   name: string;
 }
-const GetProjectsLocationsDiscoveredServicesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetProjectsLocationsDiscoveredServicesRequest>;
-
 export interface GetProjectsLocationsDiscoveredWorkloadsRequest {
   /** Required. Fully qualified name of the Discovered Workload to fetch. Expected format: `projects/{project}/locations/{location}/discoveredWorkloads/{discoveredWorkload}`. */
   name: string;
 }
-const GetProjectsLocationsDiscoveredWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetProjectsLocationsDiscoveredWorkloadsRequest>;
-
 export interface GetProjectsLocationsExtendedMetadataSchemasRequest {
   /** Required. Schema resource name. Format: `projects/{project}/locations/{location}/extendedMetadataSchemas/{extended_metadata_schema}`. `{extended_metadata_schema}` has the format `"apphub.googleapis.com/{SchemaName}"`. */
   name: string;
 }
-const GetProjectsLocationsExtendedMetadataSchemasRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetProjectsLocationsExtendedMetadataSchemasRequest>;
-
 /** ExtendedMetadataSchema represents a schema for extended metadata of a service or workload. */
 export interface ExtendedMetadataSchema {
   /** Output only. The version of the schema. New versions are required to be backwards compatible. */
@@ -835,29 +598,14 @@ export interface ExtendedMetadataSchema {
   /** Identifier. Resource name of the schema. Format: projects//locations//extendedMetadataSchemas/ */
   name?: string;
 }
-const ExtendedMetadataSchema = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ExtendedMetadataSchema>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsServiceProjectAttachmentsRequest {
   /** Required. Fully qualified name of the service project attachment to retrieve. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. */
   name: string;
 }
-const GetProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetProjectsLocationsServiceProjectAttachmentsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -870,14 +618,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -885,11 +626,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsApplicationsRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
@@ -902,14 +638,7 @@ export interface ListProjectsLocationsApplicationsRequest {
   /** Optional. Filtering results. */
   filter?: string;
 }
-const ListProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListProjectsLocationsApplicationsRequest>;
-
 export type ApplicationList = Array<Application>;
-const ApplicationList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ApplicationList>;
-
 /** Response for ListApplications. */
 export interface ListApplicationsResponse {
   /** List of Applications. */
@@ -919,11 +648,6 @@ export interface ListApplicationsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListApplicationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListApplicationsResponse>;
-
 export interface ListProjectsLocationsApplicationsServicesRequest {
   /** Required. Fully qualified name of the parent Application to list Services for. Expected format: `projects/{project}/locations/{location}/applications/{application}`. */
   parent: string;
@@ -936,14 +660,7 @@ export interface ListProjectsLocationsApplicationsServicesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListProjectsLocationsApplicationsServicesRequest>;
-
 export type ServiceList = Array<Service>;
-const ServiceList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ServiceList>;
-
 /** Response for ListServices. */
 export interface ListServicesResponse {
   /** A token identifying a page of results the server should return. */
@@ -953,8 +670,6 @@ export interface ListServicesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListServicesResponse = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ListServicesResponse>;
-
 export interface ListProjectsLocationsApplicationsWorkloadsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -967,14 +682,7 @@ export interface ListProjectsLocationsApplicationsWorkloadsRequest {
   /** Optional. Filtering results. */
   filter?: string;
 }
-const ListProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListProjectsLocationsApplicationsWorkloadsRequest>;
-
 export type WorkloadList = Array<Workload>;
-const WorkloadList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<WorkloadList>;
-
 /** Response for ListWorkloads. */
 export interface ListWorkloadsResponse {
   /** Locations that could not be reached. */
@@ -984,11 +692,6 @@ export interface ListWorkloadsResponse {
   /** List of Workloads. */
   workloads?: WorkloadList;
 }
-const ListWorkloadsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListWorkloadsResponse>;
-
 export interface ListProjectsLocationsDiscoveredServicesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -1001,11 +704,6 @@ export interface ListProjectsLocationsDiscoveredServicesRequest {
   /** Optional. Filtering results. */
   filter?: string;
 }
-const ListProjectsLocationsDiscoveredServicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListProjectsLocationsDiscoveredServicesRequest>;
-
 /** Response for ListDiscoveredServices. */
 export interface ListDiscoveredServicesResponse {
   /** Locations that could not be reached. */
@@ -1015,11 +713,6 @@ export interface ListDiscoveredServicesResponse {
   /** List of Discovered Services. */
   discoveredServices?: DiscoveredServiceList;
 }
-const ListDiscoveredServicesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListDiscoveredServicesResponse>;
-
 export interface ListProjectsLocationsDiscoveredWorkloadsRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
@@ -1032,11 +725,6 @@ export interface ListProjectsLocationsDiscoveredWorkloadsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-const ListProjectsLocationsDiscoveredWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListProjectsLocationsDiscoveredWorkloadsRequest>;
-
 /** Response for ListDiscoveredWorkloads. */
 export interface ListDiscoveredWorkloadsResponse {
   /** A token identifying a page of results the server should return. */
@@ -1046,9 +734,6 @@ export interface ListDiscoveredWorkloadsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListDiscoveredWorkloadsResponse =
-  FindUnregisteredWorkloadsResponse as any as S.Schema<ListDiscoveredWorkloadsResponse>;
-
 export interface ListProjectsLocationsExtendedMetadataSchemasRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1057,17 +742,7 @@ export interface ListProjectsLocationsExtendedMetadataSchemasRequest {
   /** Required. Project and location to list Extended Metadata Schemas on. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsExtendedMetadataSchemasRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListProjectsLocationsExtendedMetadataSchemasRequest>;
-
 export type ExtendedMetadataSchemaList = Array<ExtendedMetadataSchema>;
-const ExtendedMetadataSchemaList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ExtendedMetadataSchemaList>;
-
 /** Response for ListExtendedMetadataSchemas. */
 export interface ListExtendedMetadataSchemasResponse {
   /** List of Extended Metadata Schemas. */
@@ -1075,11 +750,6 @@ export interface ListExtendedMetadataSchemasResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListExtendedMetadataSchemasResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListExtendedMetadataSchemasResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -1092,14 +762,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1109,11 +772,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsServiceProjectAttachmentsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1126,17 +784,7 @@ export interface ListProjectsLocationsServiceProjectAttachmentsRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
 }
-const ListProjectsLocationsServiceProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListProjectsLocationsServiceProjectAttachmentsRequest>;
-
 export type ServiceProjectAttachmentList = Array<ServiceProjectAttachment>;
-const ServiceProjectAttachmentList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ServiceProjectAttachmentList>;
-
 /** Response for ListServiceProjectAttachments. */
 export interface ListServiceProjectAttachmentsResponse {
   /** List of service project attachments. */
@@ -1146,72 +794,37 @@ export interface ListServiceProjectAttachmentsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListServiceProjectAttachmentsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListServiceProjectAttachmentsResponse>;
-
 export interface LookupProjectsLocationsDiscoveredServicesRequest {
   /** Required. Resource URI to find DiscoveredService for. Accepts both project number and project ID and does translation when needed. */
   uri?: string;
   /** Required. Host project ID and location to lookup Discovered Service in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-const LookupProjectsLocationsDiscoveredServicesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<LookupProjectsLocationsDiscoveredServicesRequest>;
-
 /** Response for LookupDiscoveredService. */
 export interface LookupDiscoveredServiceResponse {
   /** Discovered Service if exists, empty otherwise. */
   discoveredService?: DiscoveredService;
 }
-const LookupDiscoveredServiceResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<LookupDiscoveredServiceResponse>;
-
 export interface LookupProjectsLocationsDiscoveredWorkloadsRequest {
   /** Required. Host project ID and location to lookup Discovered Workload in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
   /** Required. Resource URI to find Discovered Workload for. Accepts both project number and project ID and does translation when needed. */
   uri?: string;
 }
-const LookupProjectsLocationsDiscoveredWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<LookupProjectsLocationsDiscoveredWorkloadsRequest>;
-
 /** Response for LookupDiscoveredWorkload. */
 export interface LookupDiscoveredWorkloadResponse {
   /** Discovered Workload if exists, empty otherwise. */
   discoveredWorkload?: DiscoveredWorkload;
 }
-const LookupDiscoveredWorkloadResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<LookupDiscoveredWorkloadResponse>;
-
 export interface LookupServiceProjectAttachmentProjectsLocationsRequest {
   /** Required. Service project ID and location to lookup service project attachment for. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. */
   name: string;
 }
-const LookupServiceProjectAttachmentProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<LookupServiceProjectAttachmentProjectsLocationsRequest>;
-
 /** Response for LookupServiceProjectAttachment. */
 export interface LookupServiceProjectAttachmentResponse {
   /** Service project attachment for a project if exists, empty otherwise. */
   serviceProjectAttachment?: ServiceProjectAttachment;
 }
-const LookupServiceProjectAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<LookupServiceProjectAttachmentResponse>;
-
 export interface PatchProjectsLocationsApplicationsRequest {
   /** Identifier. The resource name of an Application. Format: `"projects/{host-project-id}/locations/{location}/applications/{application-id}"` */
   name: string;
@@ -1222,11 +835,6 @@ export interface PatchProjectsLocationsApplicationsRequest {
   /** Request body */
   body?: Application;
 }
-const PatchProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>;
-
 export interface PatchProjectsLocationsApplicationsServicesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1237,11 +845,6 @@ export interface PatchProjectsLocationsApplicationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-const PatchProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>;
-
 export interface PatchProjectsLocationsApplicationsWorkloadsRequest {
   /** Identifier. The resource name of the Workload. Format: `"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"` */
   name: string;
@@ -1252,11 +855,6 @@ export interface PatchProjectsLocationsApplicationsWorkloadsRequest {
   /** Request body */
   body?: Workload;
 }
-const PatchProjectsLocationsApplicationsWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<PatchProjectsLocationsApplicationsWorkloadsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1264,48 +862,28 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsApplicationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApplicationsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsApplicationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApplicationsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface UpdateBoundaryProjectsLocationsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Boundary resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -1316,11 +894,6 @@ export interface UpdateBoundaryProjectsLocationsRequest {
   /** Request body */
   body?: Boundary;
 }
-const UpdateBoundaryProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<UpdateBoundaryProjectsLocationsRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -1334,8 +907,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1354,8 +927,8 @@ export const createProjectsLocationsApplications: API.OperationMethod<
   CreateProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApplicationsRequest,
-  output: Operation,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsLocationsApplicationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1374,8 +947,8 @@ export const createProjectsLocationsApplicationsServices: API.OperationMethod<
   CreateProjectsLocationsApplicationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApplicationsServicesRequest,
-  output: Operation,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateProjectsLocationsApplicationsServicesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1394,8 +967,8 @@ export const createProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   CreateProjectsLocationsApplicationsWorkloadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApplicationsWorkloadsRequest,
-  output: Operation,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateProjectsLocationsApplicationsWorkloadsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1414,8 +987,12 @@ export const createProjectsLocationsServiceProjectAttachments: API.OperationMeth
   CreateProjectsLocationsServiceProjectAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsServiceProjectAttachmentsRequest,
-  output: Operation,
+  input: __S(
+    26,
+    __c3,
+    2,
+  ) as any as S.Schema<CreateProjectsLocationsServiceProjectAttachmentsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1434,8 +1011,8 @@ export const deleteProjectsLocationsApplications: API.OperationMethod<
   DeleteProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsRequest,
-  output: Operation,
+  input: __S(27, __c3, 3) as any as S.Schema<DeleteProjectsLocationsApplicationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1031,8 @@ export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
   DeleteProjectsLocationsApplicationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsServicesRequest,
-  output: Operation,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1474,8 +1051,8 @@ export const deleteProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   DeleteProjectsLocationsApplicationsWorkloadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsWorkloadsRequest,
-  output: Operation,
+  input: __S(29, __c3, 5) as any as S.Schema<DeleteProjectsLocationsApplicationsWorkloadsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1494,8 +1071,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(30, __c3, 6) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1514,8 +1091,12 @@ export const deleteProjectsLocationsServiceProjectAttachments: API.OperationMeth
   DeleteProjectsLocationsServiceProjectAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsServiceProjectAttachmentsRequest,
-  output: Operation,
+  input: __S(
+    31,
+    __c3,
+    7,
+  ) as any as S.Schema<DeleteProjectsLocationsServiceProjectAttachmentsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1534,8 +1115,12 @@ export const detachServiceProjectAttachmentProjectsLocations: API.OperationMetho
   DetachServiceProjectAttachmentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachServiceProjectAttachmentProjectsLocationsRequest,
-  output: DetachServiceProjectAttachmentResponse,
+  input: __S(
+    32,
+    __c4,
+    0,
+  ) as any as S.Schema<DetachServiceProjectAttachmentProjectsLocationsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DetachServiceProjectAttachmentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1553,8 +1138,12 @@ export const findUnregisteredProjectsLocationsDiscoveredServices: API.PaginatedO
   GcpOpContext,
   FindUnregisteredServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindUnregisteredProjectsLocationsDiscoveredServicesRequest,
-  output: FindUnregisteredServicesResponse,
+  input: __S(
+    34,
+    __c4,
+    2,
+  ) as any as S.Schema<FindUnregisteredProjectsLocationsDiscoveredServicesRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<FindUnregisteredServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1573,8 +1162,12 @@ export const findUnregisteredProjectsLocationsDiscoveredWorkloads: API.Paginated
   GcpOpContext,
   FindUnregisteredWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindUnregisteredProjectsLocationsDiscoveredWorkloadsRequest,
-  output: FindUnregisteredWorkloadsResponse,
+  input: __S(
+    39,
+    __c4,
+    7,
+  ) as any as S.Schema<FindUnregisteredProjectsLocationsDiscoveredWorkloadsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<FindUnregisteredWorkloadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1182,8 @@ export const getBoundaryProjectsLocations: API.OperationMethod<
   GetBoundaryProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBoundaryProjectsLocationsRequest,
-  output: Boundary,
+  input: __S(43, __c5, 3) as any as S.Schema<GetBoundaryProjectsLocationsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<Boundary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1604,8 +1197,8 @@ export const getIamPolicyProjectsLocationsApplications: API.OperationMethod<
   GetIamPolicyProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApplicationsRequest,
-  output: Policy,
+  input: __S(45, __c5, 5) as any as S.Schema<GetIamPolicyProjectsLocationsApplicationsRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1619,8 +1212,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(54, __c6, 6) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1634,8 +1227,8 @@ export const getProjectsLocationsApplications: API.OperationMethod<
   GetProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApplicationsRequest,
-  output: Application,
+  input: __S(57, __c7, 1) as any as S.Schema<GetProjectsLocationsApplicationsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Application>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1649,8 +1242,8 @@ export const getProjectsLocationsApplicationsServices: API.OperationMethod<
   GetProjectsLocationsApplicationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApplicationsServicesRequest,
-  output: Service,
+  input: __S(58, __c7, 2) as any as S.Schema<GetProjectsLocationsApplicationsServicesRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1664,8 +1257,8 @@ export const getProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   GetProjectsLocationsApplicationsWorkloadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApplicationsWorkloadsRequest,
-  output: Workload,
+  input: __S(59, __c7, 3) as any as S.Schema<GetProjectsLocationsApplicationsWorkloadsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<Workload>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1679,8 +1272,8 @@ export const getProjectsLocationsDiscoveredServices: API.OperationMethod<
   GetProjectsLocationsDiscoveredServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDiscoveredServicesRequest,
-  output: DiscoveredService,
+  input: __S(60, __c7, 4) as any as S.Schema<GetProjectsLocationsDiscoveredServicesRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<DiscoveredService>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1694,8 +1287,8 @@ export const getProjectsLocationsDiscoveredWorkloads: API.OperationMethod<
   GetProjectsLocationsDiscoveredWorkloadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDiscoveredWorkloadsRequest,
-  output: DiscoveredWorkload,
+  input: __S(61, __c7, 5) as any as S.Schema<GetProjectsLocationsDiscoveredWorkloadsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DiscoveredWorkload>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1709,8 +1302,8 @@ export const getProjectsLocationsExtendedMetadataSchemas: API.OperationMethod<
   GetProjectsLocationsExtendedMetadataSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsExtendedMetadataSchemasRequest,
-  output: ExtendedMetadataSchema,
+  input: __S(62, __c7, 6) as any as S.Schema<GetProjectsLocationsExtendedMetadataSchemasRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<ExtendedMetadataSchema>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1317,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(64, __c8, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1739,8 +1332,8 @@ export const getProjectsLocationsServiceProjectAttachments: API.OperationMethod<
   GetProjectsLocationsServiceProjectAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsServiceProjectAttachmentsRequest,
-  output: ServiceProjectAttachment,
+  input: __S(65, __c8, 1) as any as S.Schema<GetProjectsLocationsServiceProjectAttachmentsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ServiceProjectAttachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1755,8 +1348,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1365,8 @@ export const listProjectsLocationsApplications: API.PaginatedOperationMethod<
   GcpOpContext,
   ListApplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsRequest,
-  output: ListApplicationsResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<ListProjectsLocationsApplicationsRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<ListApplicationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1789,8 +1382,8 @@ export const listProjectsLocationsApplicationsServices: API.PaginatedOperationMe
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsServicesRequest,
-  output: ListServicesResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<ListProjectsLocationsApplicationsServicesRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<ListServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1806,8 +1399,8 @@ export const listProjectsLocationsApplicationsWorkloads: API.PaginatedOperationM
   GcpOpContext,
   ListWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsWorkloadsRequest,
-  output: ListWorkloadsResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<ListProjectsLocationsApplicationsWorkloadsRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<ListWorkloadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1823,8 +1416,8 @@ export const listProjectsLocationsDiscoveredServices: API.PaginatedOperationMeth
   GcpOpContext,
   ListDiscoveredServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDiscoveredServicesRequest,
-  output: ListDiscoveredServicesResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<ListProjectsLocationsDiscoveredServicesRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<ListDiscoveredServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1840,8 +1433,8 @@ export const listProjectsLocationsDiscoveredWorkloads: API.PaginatedOperationMet
   GcpOpContext,
   ListDiscoveredWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDiscoveredWorkloadsRequest,
-  output: ListDiscoveredWorkloadsResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<ListProjectsLocationsDiscoveredWorkloadsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListDiscoveredWorkloadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1857,8 +1450,8 @@ export const listProjectsLocationsExtendedMetadataSchemas: API.PaginatedOperatio
   GcpOpContext,
   ListExtendedMetadataSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsExtendedMetadataSchemasRequest,
-  output: ListExtendedMetadataSchemasResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<ListProjectsLocationsExtendedMetadataSchemasRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ListExtendedMetadataSchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1874,8 +1467,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1484,12 @@ export const listProjectsLocationsServiceProjectAttachments: API.PaginatedOperat
   GcpOpContext,
   ListServiceProjectAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsServiceProjectAttachmentsRequest,
-  output: ListServiceProjectAttachmentsResponse,
+  input: __S(
+    87,
+    __c10,
+    7,
+  ) as any as S.Schema<ListProjectsLocationsServiceProjectAttachmentsRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<ListServiceProjectAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1907,8 +1504,8 @@ export const lookupProjectsLocationsDiscoveredServices: API.OperationMethod<
   LookupProjectsLocationsDiscoveredServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupProjectsLocationsDiscoveredServicesRequest,
-  output: LookupDiscoveredServiceResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<LookupProjectsLocationsDiscoveredServicesRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<LookupDiscoveredServiceResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1922,8 +1519,8 @@ export const lookupProjectsLocationsDiscoveredWorkloads: API.OperationMethod<
   LookupProjectsLocationsDiscoveredWorkloadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupProjectsLocationsDiscoveredWorkloadsRequest,
-  output: LookupDiscoveredWorkloadResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<LookupProjectsLocationsDiscoveredWorkloadsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<LookupDiscoveredWorkloadResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1940,8 +1537,12 @@ export const lookupServiceProjectAttachmentProjectsLocations: API.OperationMetho
   LookupServiceProjectAttachmentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupServiceProjectAttachmentProjectsLocationsRequest,
-  output: LookupServiceProjectAttachmentResponse,
+  input: __S(
+    94,
+    __c11,
+    6,
+  ) as any as S.Schema<LookupServiceProjectAttachmentProjectsLocationsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<LookupServiceProjectAttachmentResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1960,8 +1561,8 @@ export const patchProjectsLocationsApplications: API.OperationMethod<
   PatchProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApplicationsRequest,
-  output: Operation,
+  input: __S(96, __c12, 0) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1980,8 +1581,8 @@ export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
   PatchProjectsLocationsApplicationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApplicationsServicesRequest,
-  output: Operation,
+  input: __S(97, __c12, 1) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2000,8 +1601,8 @@ export const patchProjectsLocationsApplicationsWorkloads: API.OperationMethod<
   PatchProjectsLocationsApplicationsWorkloadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApplicationsWorkloadsRequest,
-  output: Operation,
+  input: __S(98, __c12, 2) as any as S.Schema<PatchProjectsLocationsApplicationsWorkloadsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2020,8 +1621,8 @@ export const setIamPolicyProjectsLocationsApplications: API.OperationMethod<
   SetIamPolicyProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApplicationsRequest,
-  output: Policy,
+  input: __S(100, __c12, 4) as any as S.Schema<SetIamPolicyProjectsLocationsApplicationsRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2040,8 +1641,12 @@ export const testIamPermissionsProjectsLocationsApplications: API.OperationMetho
   TestIamPermissionsProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApplicationsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    102,
+    __c12,
+    6,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsApplicationsRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2060,8 +1665,8 @@ export const updateBoundaryProjectsLocations: API.OperationMethod<
   UpdateBoundaryProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBoundaryProjectsLocationsRequest,
-  output: Operation,
+  input: __S(103, __c12, 7) as any as S.Schema<UpdateBoundaryProjectsLocationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2078,7 +1683,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2092,7 +1697,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(EnvironmentTypeEnum),
+          type: S.optional(S.String),
           environment: S.optional(S.String),
         }),
       ).annotate({ identifier: "Environment" });
@@ -2107,27 +1712,27 @@ function __c0(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           email: S.optional(S.String),
-          channel: S.optional(Channel),
+          channel: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ContactInfo" });
     case 5:
-      return S.Array(ContactInfo);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           level: S.optional(S.String),
           missionCritical: S.optional(S.Boolean),
-          type: S.optional(CriticalityTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Criticality" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(Environment),
-          businessOwners: S.optional(ContactInfoList),
-          criticality: S.optional(Criticality),
-          operatorOwners: S.optional(ContactInfoList),
-          developerOwners: S.optional(ContactInfoList),
+          environment: S.optional(__S(2, __c0, 2)),
+          businessOwners: S.optional(__S(5, __c0, 5)),
+          criticality: S.optional(__S(6, __c0, 6)),
+          operatorOwners: S.optional(__S(5, __c0, 5)),
+          developerOwners: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "Attributes" });
   }
@@ -2137,7 +1742,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ScopeTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Scope" });
     case 1:
@@ -2148,10 +1753,10 @@ function __c1(j: number): any {
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
           uid: S.optional(S.String),
-          state: S.optional(ApplicationStateEnum),
-          attributes: S.optional(Attributes),
+          state: S.optional(S.String),
+          attributes: S.optional(__S(7, __c0, 7)),
           name: S.optional(S.String),
-          scope: S.optional(Scope),
+          scope: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Application" });
     case 2:
@@ -2160,7 +1765,7 @@ function __c1(j: number): any {
           applicationId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Application.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2174,11 +1779,11 @@ function __c1(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(12, __c1, 4)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -2186,9 +1791,9 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          metadata: S.optional(__S(11, __c1, 3)),
+          response: S.optional(__S(11, __c1, 3)),
+          error: S.optional(__S(13, __c1, 5)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
         }),
@@ -2206,21 +1811,21 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadataStruct: S.optional(DocumentMap),
+          metadataStruct: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "ExtendedMetadata" });
     case 1:
-      return S.Record(S.String, ExtendedMetadata);
+      return S.Record(S.String, __S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           gcpProject: S.optional(S.String),
-          registrationType: S.optional(RegistrationType),
+          registrationType: S.optional(__S(8, __c1, 0)),
           zone: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(Identity),
-          extendedMetadata: S.optional(ExtendedMetadataMap),
-          functionalType: S.optional(FunctionalType),
+          identity: S.optional(__S(15, __c1, 7)),
+          extendedMetadata: S.optional(__S(17, __c2, 1)),
+          functionalType: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "ServiceProperties" });
     case 3:
@@ -2235,15 +1840,15 @@ function __c2(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          state: S.optional(ServiceStateEnum),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          serviceProperties: S.optional(ServiceProperties),
+          serviceProperties: S.optional(__S(18, __c2, 2)),
           discoveredService: S.optional(S.String),
-          serviceReference: S.optional(ServiceReference),
+          serviceReference: S.optional(__S(19, __c2, 3)),
           uid: S.optional(S.String),
-          attributes: S.optional(Attributes),
+          attributes: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "Service" });
     case 5:
@@ -2252,7 +1857,7 @@ function __c2(j: number): any {
           serviceId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Service.pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2266,20 +1871,20 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          functionalType: S.optional(FunctionalType),
+          functionalType: S.optional(__S(8, __c1, 0)),
           zone: S.optional(S.String),
-          extendedMetadata: S.optional(ExtendedMetadataMap),
+          extendedMetadata: S.optional(__S(17, __c2, 1)),
           location: S.optional(S.String),
-          identity: S.optional(Identity),
+          identity: S.optional(__S(15, __c1, 7)),
           gcpProject: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          workloadReference: S.optional(WorkloadReference),
-          workloadProperties: S.optional(WorkloadProperties),
-          attributes: S.optional(Attributes),
+          workloadReference: S.optional(__S(3, __c0, 3)),
+          workloadProperties: S.optional(__S(22, __c2, 6)),
+          attributes: S.optional(__S(7, __c0, 7)),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
@@ -2287,7 +1892,7 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           discoveredWorkload: S.optional(S.String),
-          state: S.optional(WorkloadStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Workload" });
   }
@@ -2300,7 +1905,7 @@ function __c3(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           workloadId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Workload.pipe(T.HttpBody())),
+          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2318,7 +1923,7 @@ function __c3(j: number): any {
           createTime: S.optional(S.String),
           serviceProject: S.optional(S.String),
           uid: S.optional(S.String),
-          state: S.optional(ServiceProjectAttachmentStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceProjectAttachment" });
     case 2:
@@ -2327,7 +1932,7 @@ function __c3(j: number): any {
           serviceProjectAttachmentId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ServiceProjectAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2420,7 +2025,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2457,20 +2062,20 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          serviceProperties: S.optional(ServiceProperties),
-          serviceReference: S.optional(ServiceReference),
+          serviceProperties: S.optional(__S(18, __c2, 2)),
+          serviceReference: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "DiscoveredService" });
     case 4:
-      return S.Array(DiscoveredService);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          discoveredServices: S.optional(DiscoveredServiceList),
+          discoveredServices: S.optional(__S(36, __c4, 4)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "FindUnregisteredServicesResponse",
@@ -2500,19 +2105,19 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workloadProperties: S.optional(WorkloadProperties),
-          workloadReference: S.optional(WorkloadReference),
+          workloadProperties: S.optional(__S(22, __c2, 6)),
+          workloadReference: S.optional(__S(3, __c0, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveredWorkload" });
     case 1:
-      return S.Array(DiscoveredWorkload);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          discoveredWorkloads: S.optional(DiscoveredWorkloadList),
-          unreachable: S.optional(StringList),
+          discoveredWorkloads: S.optional(__S(41, __c5, 1)),
+          unreachable: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "FindUnregisteredWorkloadsResponse",
@@ -2535,7 +2140,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          type: S.optional(BoundaryTypeEnum),
+          type: S.optional(S.String),
           createTime: S.optional(S.String),
           crmNode: S.optional(S.String),
           name: S.optional(S.String),
@@ -2569,8 +2174,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(Expr),
-          members: S.optional(StringList),
+          condition: S.optional(__S(46, __c5, 6)),
+          members: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "Binding" });
   }
@@ -2578,32 +2183,32 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Binding);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 2:
-      return S.Array(AuditLogConfig);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 4:
-      return S.Array(AuditConfig);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(BindingList),
-          auditConfigs: S.optional(AuditConfigList),
+          bindings: S.optional(__S(48, __c6, 0)),
+          auditConfigs: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({ identifier: "Policy" });
     case 6:
@@ -2630,9 +2235,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(55, __c6, 7)),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(11, __c1, 3)),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -2763,7 +2368,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(37, __c4, 5).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2779,12 +2384,12 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 3:
-      return S.Array(Location);
+      return S.Array(__S(56, __c7, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 5:
@@ -2806,12 +2411,12 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsApplicationsRequest",
       });
     case 6:
-      return S.Array(Application);
+      return S.Array(__S(9, __c1, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          applications: S.optional(ApplicationList),
-          unreachable: S.optional(StringList),
+          applications: S.optional(__S(70, __c8, 6)),
+          unreachable: S.optional(__S(37, __c4, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListApplicationsResponse" });
@@ -2838,13 +2443,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsApplicationsServicesRequest",
       });
     case 1:
-      return S.Array(Service);
+      return S.Array(__S(20, __c2, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          services: S.optional(ServiceList),
-          unreachable: S.optional(StringList),
+          services: S.optional(__S(73, __c9, 1)),
+          unreachable: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
     case 3:
@@ -2866,13 +2471,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsApplicationsWorkloadsRequest",
       });
     case 4:
-      return S.Array(Workload);
+      return S.Array(__S(23, __c2, 7));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(37, __c4, 5)),
           nextPageToken: S.optional(S.String),
-          workloads: S.optional(WorkloadList),
+          workloads: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({ identifier: "ListWorkloadsResponse" });
     case 6:
@@ -2896,9 +2501,9 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(37, __c4, 5)),
           nextPageToken: S.optional(S.String),
-          discoveredServices: S.optional(DiscoveredServiceList),
+          discoveredServices: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({
         identifier: "ListDiscoveredServicesResponse",
@@ -2942,11 +2547,11 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsExtendedMetadataSchemasRequest",
       });
     case 2:
-      return S.Array(ExtendedMetadataSchema);
+      return S.Array(__S(63, __c7, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          extendedMetadataSchemas: S.optional(ExtendedMetadataSchemaList),
+          extendedMetadataSchemas: S.optional(__S(82, __c10, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2971,12 +2576,12 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(14, __c1, 6));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(85, __c10, 5)),
+          unreachable: S.optional(__S(37, __c4, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3003,13 +2608,13 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ServiceProjectAttachment);
+      return S.Array(__S(25, __c3, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceProjectAttachments: S.optional(ServiceProjectAttachmentList),
+          serviceProjectAttachments: S.optional(__S(88, __c11, 0)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "ListServiceProjectAttachmentsResponse",
@@ -3032,7 +2637,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          discoveredService: S.optional(DiscoveredService),
+          discoveredService: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({
         identifier: "LookupDiscoveredServiceResponse",
@@ -3055,7 +2660,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          discoveredWorkload: S.optional(DiscoveredWorkload),
+          discoveredWorkload: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "LookupDiscoveredWorkloadResponse",
@@ -3077,7 +2682,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceProjectAttachment: S.optional(ServiceProjectAttachment),
+          serviceProjectAttachment: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "LookupServiceProjectAttachmentResponse",
@@ -3092,7 +2697,7 @@ function __c12(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Application.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3109,7 +2714,7 @@ function __c12(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Service.pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3126,7 +2731,7 @@ function __c12(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Workload.pipe(T.HttpBody())),
+          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3140,7 +2745,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(53, __c6, 5)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -3148,7 +2753,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3162,7 +2767,7 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -3171,7 +2776,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(101, __c12, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3188,7 +2793,7 @@ function __c12(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Boundary.pipe(T.HttpBody())),
+          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3200,4 +2805,9 @@ function __c12(j: number): any {
         identifier: "UpdateBoundaryProjectsLocationsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,22 +68,12 @@ export type GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsReques
   | "TARGET_TOKEN_TYPE_UNSPECIFIED"
   | "TARGET_TOKEN_TYPE_ACCESS_TOKEN"
   | "TARGET_TOKEN_TYPE_ID_JAG";
-const GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequestTargetTokenTypeEnum =
-  S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Configuration for binding downstream credentials to client communication channel properties. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_TokenBinding {
   /** Optional. The base64url-encoded SHA-256 hash of the DER-encoded X.509 client certificate, as defined in RFC 8705 Section 3.1 (corresponding to "x5t#S256"). Format requirements: - Base64url encoding (RFC 4648 Section 5) using URL-safe characters ('-' and '_') without padding ('='). - Exactly 43 characters long for a 256-bit SHA-256 digest. */
   certificateFingerprint?: string;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_TokenBinding = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_TokenBinding>;
-
 /** Request message for `ExchangeCredentials`. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequest {
   /** Optional. The desired target token type to be returned from the exchange. If unspecified, defaults to the token type configured on the AuthProvider. */
@@ -95,22 +87,12 @@ export interface GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsR
   /** Optional. The token binding parameters to be applied to downstream tokens and embedded into the ID-JAG assertion. */
   tokenBinding?: GoogleCloudAgentidentitycredentialsV1alpha_TokenBinding;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequest>;
-
 export interface ExchangeProjectsLocationsAuthProvidersCredentialsRequest {
   /** Required. The resource name of the auth provider. Format: `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
   authProvider: string;
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequest;
 }
-const ExchangeProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ExchangeProjectsLocationsAuthProvidersCredentialsRequest>;
-
 /** Response message for `ExchangeCredentials` containing the resulting credentials. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsResponse {
   /** The scopes actually associated with the retrieved token. */
@@ -122,11 +104,6 @@ export interface GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsR
   /** Optional. The time when the token was acquired. */
   acquireTime?: string;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsResponse>;
-
 /** Request message for `FinalizeCredentials`. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsRequest {
   /** Required. The same `consent_nonce` value that was provided during retrieval in the [UriConsentRequired](https://cloud.google.com/iam/docs/reference/agentidentitycredentials/rest/v1/projects.locations.authProviders.credentials/retrieve#UriConsentRequired) metadata. */
@@ -136,29 +113,14 @@ export interface GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsR
   /** Required. The identity of the end user. */
   userId?: string;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsRequest>;
-
 export interface FinalizeProjectsLocationsAuthProvidersCredentialsRequest {
   /** Required. The resource name of the auth provider. Format: `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
   authProvider: string;
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsRequest;
 }
-const FinalizeProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>;
-
 /** Response message for `FinalizeCredentials`. Intentionally empty. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse {}
-const GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse>;
-
 /** Request message for `RetrieveCredentials`. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsRequest {
   /** Required. The identity of the end user. */
@@ -170,22 +132,12 @@ export interface GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsR
   /** Optional. The URI to redirect the user to after consent is completed. This field is required for auth providers using the 3-legged OAuth flow. For other auth provider types, this field is unused but not rejected. */
   continueUri?: string;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsRequest>;
-
 export interface GetProjectsLocationsAuthProvidersCredentialsRequest {
   /** Required. The resource name of the auth provider. Format: `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
   authProvider: string;
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsRequest;
 }
-const GetProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>;
-
 /** Indicates that the user must visit the provided URI to consent to delegate permission to the agent to act on their behalf. The caller can either poll the `RetrieveCredentials` method, or await the /ValidateUserId callback. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_UriConsentRequired {
   /** Output only. A one-time, randomly generated value that validates the entire consent flow is handled by a single user, avoiding CSRF attacks. It must be submitted with the `FinalizeCredentials` request to complete the OAuth exchange. This will always be present. Implemented per [RFC 6819 Section 5.3.5](https://www.rfc-editor.org/rfc/rfc6819#section-5.3.5). */
@@ -195,18 +147,8 @@ export interface GoogleCloudAgentidentitycredentialsV1alpha_UriConsentRequired {
   /** Output only. The URL where the user should be redirected to grant consent. This will always be present. */
   authorizationUri?: string;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_UriConsentRequired = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_UriConsentRequired>;
-
 /** Indicates the user has rejected the permission delegation or canceled the request. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_ConsentRejected {}
-const GoogleCloudAgentidentitycredentialsV1alpha_ConsentRejected = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_ConsentRejected>;
-
 /** Indicates that the credential retrieval is pending. The caller should retry the `RetrieveCredentials` request after some time. */
 export type GoogleCloudAgentidentitycredentialsV1alpha_Pending =
   GoogleCloudAgentidentitycredentialsV1alpha_ConsentRejected;
@@ -221,11 +163,6 @@ export interface GoogleCloudAgentidentitycredentialsV1alpha_Success {
   /** The HTTP header name where the token should be placed. */
   header?: string;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_Success = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_Success>;
-
 /** Response message for `RetrieveCredentials`. Contains the access tokens and related artifacts. */
 export interface GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse {
   /** Message indicating URI-based consent is required. */
@@ -237,11 +174,6 @@ export interface GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsR
   /** Message indicating credentials were successfully retrieved. */
   success?: GoogleCloudAgentidentitycredentialsV1alpha_Success;
 }
-const GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse>;
-
 export type ExchangeProjectsLocationsAuthProvidersCredentialsError =
   | NotFound
   | Forbidden
@@ -255,8 +187,16 @@ export const exchangeProjectsLocationsAuthProvidersCredentials: API.OperationMet
   ExchangeProjectsLocationsAuthProvidersCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExchangeProjectsLocationsAuthProvidersCredentialsRequest,
-  output: GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsResponse,
+  input: __S(
+    3,
+    __c0,
+    3,
+  ) as any as S.Schema<ExchangeProjectsLocationsAuthProvidersCredentialsRequest>,
+  output: __S(
+    4,
+    __c0,
+    4,
+  ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -275,8 +215,16 @@ export const finalizeProjectsLocationsAuthProvidersCredentials: API.OperationMet
   FinalizeProjectsLocationsAuthProvidersCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinalizeProjectsLocationsAuthProvidersCredentialsRequest,
-  output: GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse,
+  input: __S(
+    6,
+    __c0,
+    6,
+  ) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>,
+  output: __S(
+    7,
+    __c0,
+    7,
+  ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -295,8 +243,12 @@ export const getProjectsLocationsAuthProvidersCredentials: API.OperationMethod<
   GetProjectsLocationsAuthProvidersCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthProvidersCredentialsRequest,
-  output: GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>,
+  output: __S(
+    13,
+    __c1,
+    5,
+  ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -318,12 +270,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          targetTokenType: S.optional(
-            GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequestTargetTokenTypeEnum,
-          ),
+          targetTokenType: S.optional(S.String),
           sourceCredential: S.optional(S.String),
-          scopes: S.optional(StringList),
-          tokenBinding: S.optional(GoogleCloudAgentidentitycredentialsV1alpha_TokenBinding),
+          scopes: S.optional(__S(0, __c0, 0)),
+          tokenBinding: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequest",
@@ -332,11 +282,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -350,7 +296,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(0, __c0, 0)),
           expireTime: S.optional(S.String),
           token: S.optional(S.String),
           acquireTime: S.optional(S.String),
@@ -372,11 +318,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -399,7 +341,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(0, __c0, 0)),
           forceRefreshToken: S.optional(S.String),
           continueUri: S.optional(S.String),
         }),
@@ -410,11 +352,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -442,7 +380,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(0, __c0, 0)),
           expireTime: S.optional(S.String),
           token: S.optional(S.String),
           header: S.optional(S.String),
@@ -453,15 +391,18 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          uriConsentRequired: S.optional(
-            GoogleCloudAgentidentitycredentialsV1alpha_UriConsentRequired,
-          ),
-          consentRejected: S.optional(GoogleCloudAgentidentitycredentialsV1alpha_ConsentRejected),
-          pending: S.optional(GoogleCloudAgentidentitycredentialsV1alpha_ConsentRejected),
-          success: S.optional(GoogleCloudAgentidentitycredentialsV1alpha_Success),
+          uriConsentRequired: S.optional(__S(10, __c1, 2)),
+          consentRejected: S.optional(__S(11, __c1, 3)),
+          pending: S.optional(__S(11, __c1, 3)),
+          success: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

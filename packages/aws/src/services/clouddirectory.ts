@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudDirectory",
   serviceShapeName: "AmazonCloudDirectory_20170111",
@@ -87,7 +89,7 @@ export class BatchWriteException
   extends /*@__PURE__*/ S.TaggedError<BatchWriteException>()("BatchWriteException", {
     Index: /*@__PURE__*/ S.optional(S.Number),
     Type: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => BatchWriteExceptionType).annotate({
+      /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "BatchWriteExceptionType",
       }),
     ),
@@ -297,14 +299,12 @@ export interface SchemaFacet {
   SchemaArn?: string;
   FacetName?: string;
 }
-const SchemaFacet = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SchemaFacet>;
 export type AttributeName = string;
 export interface AttributeKey {
   SchemaArn: string;
   FacetName: string;
   Name: string;
 }
-const AttributeKey = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AttributeKey>;
 export type StringAttributeValue = string;
 export type BinaryAttributeValue = Uint8Array;
 export type BooleanAttributeValue = boolean;
@@ -346,44 +346,30 @@ export type TypedAttributeValue =
       NumberValue?: never;
       DatetimeValue: Date;
     };
-const TypedAttributeValue = /*@__PURE__*/ __L.at(__c0, 2);
 export interface AttributeKeyAndValue {
   Key: AttributeKey;
   Value: TypedAttributeValue;
 }
-const AttributeKeyAndValue = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AttributeKeyAndValue>;
 export type AttributeKeyAndValueList = AttributeKeyAndValue[];
-const AttributeKeyAndValueList = /*@__PURE__*/ __L.at(__c0, 4);
 export type SelectorObjectReference = string;
 export interface ObjectReference {
   Selector?: string;
 }
-const ObjectReference = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ObjectReference>;
 export interface AddFacetToObjectRequest {
   DirectoryArn: string;
   SchemaFacet: SchemaFacet;
   ObjectAttributeList?: AttributeKeyAndValue[];
   ObjectReference: ObjectReference;
 }
-const AddFacetToObjectRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddFacetToObjectRequest>;
 export interface AddFacetToObjectResponse {}
-const AddFacetToObjectResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddFacetToObjectResponse>;
 export interface ApplySchemaRequest {
   PublishedSchemaArn: string;
   DirectoryArn: string;
 }
-const ApplySchemaRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ApplySchemaRequest>;
 export interface ApplySchemaResponse {
   AppliedSchemaArn?: string;
   DirectoryArn?: string;
 }
-const ApplySchemaResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ApplySchemaResponse>;
 export type LinkName = string;
 export interface AttachObjectRequest {
   DirectoryArn: string;
@@ -391,49 +377,34 @@ export interface AttachObjectRequest {
   ChildReference: ObjectReference;
   LinkName: string;
 }
-const AttachObjectRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AttachObjectRequest>;
 export type ObjectIdentifier = string;
 export interface AttachObjectResponse {
   AttachedObjectIdentifier?: string;
 }
-const AttachObjectResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AttachObjectResponse>;
 export interface AttachPolicyRequest {
   DirectoryArn: string;
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-const AttachPolicyRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AttachPolicyRequest>;
 export interface AttachPolicyResponse {}
-const AttachPolicyResponse = AddFacetToObjectResponse as any as S.Schema<AttachPolicyResponse>;
 export interface AttachToIndexRequest {
   DirectoryArn: string;
   IndexReference: ObjectReference;
   TargetReference: ObjectReference;
 }
-const AttachToIndexRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AttachToIndexRequest>;
 export interface AttachToIndexResponse {
   AttachedObjectIdentifier?: string;
 }
-const AttachToIndexResponse = AttachObjectResponse as any as S.Schema<AttachToIndexResponse>;
 export type TypedLinkName = string;
 export interface TypedLinkSchemaAndFacetName {
   SchemaArn: string;
   TypedLinkName: string;
 }
-const TypedLinkSchemaAndFacetName = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<TypedLinkSchemaAndFacetName>;
 export interface AttributeNameAndValue {
   AttributeName: string;
   Value: TypedAttributeValue;
 }
-const AttributeNameAndValue = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AttributeNameAndValue>;
 export type AttributeNameAndValueList = AttributeNameAndValue[];
-const AttributeNameAndValueList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface AttachTypedLinkRequest {
   DirectoryArn: string;
   SourceObjectReference: ObjectReference;
@@ -441,24 +412,15 @@ export interface AttachTypedLinkRequest {
   TypedLinkFacet: TypedLinkSchemaAndFacetName;
   Attributes: AttributeNameAndValue[];
 }
-const AttachTypedLinkRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AttachTypedLinkRequest>;
 export interface TypedLinkSpecifier {
   TypedLinkFacet: TypedLinkSchemaAndFacetName;
   SourceObjectReference: ObjectReference;
   TargetObjectReference: ObjectReference;
   IdentityAttributeValues: AttributeNameAndValue[];
 }
-const TypedLinkSpecifier = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<TypedLinkSpecifier>;
 export interface AttachTypedLinkResponse {
   TypedLinkSpecifier?: TypedLinkSpecifier;
 }
-const AttachTypedLinkResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AttachTypedLinkResponse>;
 export type NextToken = string;
 export type NumberResults = number;
 export interface BatchListObjectAttributes {
@@ -467,82 +429,50 @@ export interface BatchListObjectAttributes {
   MaxResults?: number;
   FacetFilter?: SchemaFacet;
 }
-const BatchListObjectAttributes = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<BatchListObjectAttributes>;
 export interface BatchListObjectChildren {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListObjectChildren = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BatchListObjectChildren>;
 export interface BatchListAttachedIndices {
   TargetReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListAttachedIndices = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BatchListAttachedIndices>;
 export interface BatchListObjectParentPaths {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListObjectParentPaths = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BatchListObjectParentPaths>;
 export interface BatchGetObjectInformation {
   ObjectReference: ObjectReference;
 }
-const BatchGetObjectInformation = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BatchGetObjectInformation>;
 export type AttributeNameList = string[];
-const AttributeNameList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface BatchGetObjectAttributes {
   ObjectReference: ObjectReference;
   SchemaFacet: SchemaFacet;
   AttributeNames: string[];
 }
-const BatchGetObjectAttributes = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BatchGetObjectAttributes>;
 export interface BatchListObjectParents {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListObjectParents = BatchListObjectChildren as any as S.Schema<BatchListObjectParents>;
 export interface BatchListObjectPolicies {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListObjectPolicies = BatchListObjectChildren as any as S.Schema<BatchListObjectPolicies>;
 export interface BatchListPolicyAttachments {
   PolicyReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListPolicyAttachments = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BatchListPolicyAttachments>;
 export interface BatchLookupPolicy {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchLookupPolicy = BatchListObjectChildren as any as S.Schema<BatchLookupPolicy>;
 export type RangeMode =
   | "FIRST"
   | "LAST"
@@ -550,42 +480,28 @@ export type RangeMode =
   | "INCLUSIVE"
   | "EXCLUSIVE"
   | (string & {});
-const RangeMode = S.String;
-
 export interface TypedAttributeValueRange {
   StartMode: RangeMode;
   StartValue?: TypedAttributeValue;
   EndMode: RangeMode;
   EndValue?: TypedAttributeValue;
 }
-const TypedAttributeValueRange = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<TypedAttributeValueRange>;
 export interface ObjectAttributeRange {
   AttributeKey?: AttributeKey;
   Range?: TypedAttributeValueRange;
 }
-const ObjectAttributeRange = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ObjectAttributeRange>;
 export type ObjectAttributeRangeList = ObjectAttributeRange[];
-const ObjectAttributeRangeList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface BatchListIndex {
   RangesOnIndexedValues?: ObjectAttributeRange[];
   IndexReference: ObjectReference;
   MaxResults?: number;
   NextToken?: string;
 }
-const BatchListIndex = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<BatchListIndex>;
 export interface TypedLinkAttributeRange {
   AttributeName?: string;
   Range: TypedAttributeValueRange;
 }
-const TypedLinkAttributeRange = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<TypedLinkAttributeRange>;
 export type TypedLinkAttributeRangeList = TypedLinkAttributeRange[];
-const TypedLinkAttributeRangeList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface BatchListOutgoingTypedLinks {
   ObjectReference: ObjectReference;
   FilterAttributeRanges?: TypedLinkAttributeRange[];
@@ -593,10 +509,6 @@ export interface BatchListOutgoingTypedLinks {
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListOutgoingTypedLinks = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<BatchListOutgoingTypedLinks>;
 export interface BatchListIncomingTypedLinks {
   ObjectReference: ObjectReference;
   FilterAttributeRanges?: TypedLinkAttributeRange[];
@@ -604,16 +516,10 @@ export interface BatchListIncomingTypedLinks {
   NextToken?: string;
   MaxResults?: number;
 }
-const BatchListIncomingTypedLinks =
-  BatchListOutgoingTypedLinks as any as S.Schema<BatchListIncomingTypedLinks>;
 export interface BatchGetLinkAttributes {
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeNames: string[];
 }
-const BatchGetLinkAttributes = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<BatchGetLinkAttributes>;
 export interface BatchReadOperation {
   ListObjectAttributes?: BatchListObjectAttributes;
   ListObjectChildren?: BatchListObjectChildren;
@@ -630,178 +536,99 @@ export interface BatchReadOperation {
   ListIncomingTypedLinks?: BatchListIncomingTypedLinks;
   GetLinkAttributes?: BatchGetLinkAttributes;
 }
-const BatchReadOperation = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<BatchReadOperation>;
 export type BatchReadOperationList = BatchReadOperation[];
-const BatchReadOperationList = /*@__PURE__*/ __L.at(__c4, 5);
 export type ConsistencyLevel = "SERIALIZABLE" | "EVENTUAL" | (string & {});
-const ConsistencyLevel = S.String;
-
 export interface BatchReadRequest {
   DirectoryArn: string;
   Operations: BatchReadOperation[];
   ConsistencyLevel?: ConsistencyLevel;
 }
-const BatchReadRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<BatchReadRequest>;
 export interface BatchListObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
   NextToken?: string;
 }
-const BatchListObjectAttributesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<BatchListObjectAttributesResponse>;
 export type LinkNameToObjectIdentifierMap = { [key: string]: string | undefined };
-const LinkNameToObjectIdentifierMap = /*@__PURE__*/ __L.at(__c5, 0);
 export interface BatchListObjectChildrenResponse {
   Children?: { [key: string]: string | undefined };
   NextToken?: string;
 }
-const BatchListObjectChildrenResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<BatchListObjectChildrenResponse>;
 export type SchemaFacetList = SchemaFacet[];
-const SchemaFacetList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface BatchGetObjectInformationResponse {
   SchemaFacets?: SchemaFacet[];
   ObjectIdentifier?: string;
 }
-const BatchGetObjectInformationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<BatchGetObjectInformationResponse>;
 export interface BatchGetObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-const BatchGetObjectAttributesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<BatchGetObjectAttributesResponse>;
 export interface IndexAttachment {
   IndexedAttributes?: AttributeKeyAndValue[];
   ObjectIdentifier?: string;
 }
-const IndexAttachment = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<IndexAttachment>;
 export type IndexAttachmentList = IndexAttachment[];
-const IndexAttachmentList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface BatchListAttachedIndicesResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-const BatchListAttachedIndicesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<BatchListAttachedIndicesResponse>;
 export type PathString = string;
 export type ObjectIdentifierList = string[];
-const ObjectIdentifierList = AttributeNameList as any as S.Schema<ObjectIdentifierList>;
 export interface PathToObjectIdentifiers {
   Path?: string;
   ObjectIdentifiers?: string[];
 }
-const PathToObjectIdentifiers = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<PathToObjectIdentifiers>;
 export type PathToObjectIdentifiersList = PathToObjectIdentifiers[];
-const PathToObjectIdentifiersList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface BatchListObjectParentPathsResponse {
   PathToObjectIdentifiersList?: PathToObjectIdentifiers[];
   NextToken?: string;
 }
-const BatchListObjectParentPathsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<BatchListObjectParentPathsResponse>;
 export interface BatchListObjectPoliciesResponse {
   AttachedPolicyIds?: string[];
   NextToken?: string;
 }
-const BatchListObjectPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<BatchListObjectPoliciesResponse>;
 export interface BatchListPolicyAttachmentsResponse {
   ObjectIdentifiers?: string[];
   NextToken?: string;
 }
-const BatchListPolicyAttachmentsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<BatchListPolicyAttachmentsResponse>;
 export type PolicyType = string;
 export interface PolicyAttachment {
   PolicyId?: string;
   ObjectIdentifier?: string;
   PolicyType?: string;
 }
-const PolicyAttachment = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<PolicyAttachment>;
 export type PolicyAttachmentList = PolicyAttachment[];
-const PolicyAttachmentList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface PolicyToPath {
   Path?: string;
   Policies?: PolicyAttachment[];
 }
-const PolicyToPath = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<PolicyToPath>;
 export type PolicyToPathList = PolicyToPath[];
-const PolicyToPathList = /*@__PURE__*/ __L.at(__c7, 0);
 export interface BatchLookupPolicyResponse {
   PolicyToPathList?: PolicyToPath[];
   NextToken?: string;
 }
-const BatchLookupPolicyResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<BatchLookupPolicyResponse>;
 export interface BatchListIndexResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-const BatchListIndexResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<BatchListIndexResponse>;
 export type TypedLinkSpecifierList = TypedLinkSpecifier[];
-const TypedLinkSpecifierList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface BatchListOutgoingTypedLinksResponse {
   TypedLinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-const BatchListOutgoingTypedLinksResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<BatchListOutgoingTypedLinksResponse>;
 export interface BatchListIncomingTypedLinksResponse {
   LinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-const BatchListIncomingTypedLinksResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<BatchListIncomingTypedLinksResponse>;
 export interface BatchGetLinkAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-const BatchGetLinkAttributesResponse =
-  BatchGetObjectAttributesResponse as any as S.Schema<BatchGetLinkAttributesResponse>;
 export interface ObjectIdentifierAndLinkNameTuple {
   ObjectIdentifier?: string;
   LinkName?: string;
 }
-const ObjectIdentifierAndLinkNameTuple = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ObjectIdentifierAndLinkNameTuple>;
 export type ObjectIdentifierAndLinkNameList = ObjectIdentifierAndLinkNameTuple[];
-const ObjectIdentifierAndLinkNameList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface BatchListObjectParentsResponse {
   ParentLinks?: ObjectIdentifierAndLinkNameTuple[];
   NextToken?: string;
 }
-const BatchListObjectParentsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<BatchListObjectParentsResponse>;
 export interface BatchReadSuccessfulResponse {
   ListObjectAttributes?: BatchListObjectAttributesResponse;
   ListObjectChildren?: BatchListObjectChildrenResponse;
@@ -818,10 +645,6 @@ export interface BatchReadSuccessfulResponse {
   GetLinkAttributes?: BatchGetLinkAttributesResponse;
   ListObjectParents?: BatchListObjectParentsResponse;
 }
-const BatchReadSuccessfulResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<BatchReadSuccessfulResponse>;
 export type BatchReadExceptionType =
   | "ValidationException"
   | "InvalidArnException"
@@ -837,28 +660,19 @@ export type BatchReadExceptionType =
   | "LimitExceededException"
   | "InternalServiceException"
   | (string & {});
-const BatchReadExceptionType = S.String;
-
 export type ExceptionMessage = string;
 export interface BatchReadException {
   Type?: BatchReadExceptionType;
   Message?: string;
 }
-const BatchReadException = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<BatchReadException>;
 export interface BatchReadOperationResponse {
   SuccessfulResponse?: BatchReadSuccessfulResponse;
   ExceptionResponse?: BatchReadException;
 }
-const BatchReadOperationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<BatchReadOperationResponse>;
 export type BatchReadOperationResponseList = BatchReadOperationResponse[];
-const BatchReadOperationResponseList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface BatchReadResponse {
   Responses?: BatchReadOperationResponse[];
 }
-const BatchReadResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<BatchReadResponse>;
 export type BatchReferenceName = string;
 export interface BatchCreateObject {
   SchemaFacet: SchemaFacet[];
@@ -867,81 +681,51 @@ export interface BatchCreateObject {
   LinkName?: string;
   BatchReferenceName?: string;
 }
-const BatchCreateObject = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<BatchCreateObject>;
 export interface BatchAttachObject {
   ParentReference: ObjectReference;
   ChildReference: ObjectReference;
   LinkName: string;
 }
-const BatchAttachObject = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<BatchAttachObject>;
 export interface BatchDetachObject {
   ParentReference: ObjectReference;
   LinkName: string;
   BatchReferenceName?: string;
 }
-const BatchDetachObject = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<BatchDetachObject>;
 export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE" | (string & {});
-const UpdateActionType = S.String;
-
 export interface ObjectAttributeAction {
   ObjectAttributeActionType?: UpdateActionType;
   ObjectAttributeUpdateValue?: TypedAttributeValue;
 }
-const ObjectAttributeAction = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ObjectAttributeAction>;
 export interface ObjectAttributeUpdate {
   ObjectAttributeKey?: AttributeKey;
   ObjectAttributeAction?: ObjectAttributeAction;
 }
-const ObjectAttributeUpdate = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ObjectAttributeUpdate>;
 export type ObjectAttributeUpdateList = ObjectAttributeUpdate[];
-const ObjectAttributeUpdateList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface BatchUpdateObjectAttributes {
   ObjectReference: ObjectReference;
   AttributeUpdates: ObjectAttributeUpdate[];
 }
-const BatchUpdateObjectAttributes = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<BatchUpdateObjectAttributes>;
 export interface BatchDeleteObject {
   ObjectReference: ObjectReference;
 }
-const BatchDeleteObject = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<BatchDeleteObject>;
 export interface BatchAddFacetToObject {
   SchemaFacet: SchemaFacet;
   ObjectAttributeList: AttributeKeyAndValue[];
   ObjectReference: ObjectReference;
 }
-const BatchAddFacetToObject = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<BatchAddFacetToObject>;
 export interface BatchRemoveFacetFromObject {
   SchemaFacet: SchemaFacet;
   ObjectReference: ObjectReference;
 }
-const BatchRemoveFacetFromObject = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<BatchRemoveFacetFromObject>;
 export interface BatchAttachPolicy {
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-const BatchAttachPolicy = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<BatchAttachPolicy>;
 export interface BatchDetachPolicy {
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-const BatchDetachPolicy = BatchAttachPolicy as any as S.Schema<BatchDetachPolicy>;
 export type AttributeKeyList = AttributeKey[];
-const AttributeKeyList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface BatchCreateIndex {
   OrderedIndexedAttributeList: AttributeKey[];
   IsUnique: boolean;
@@ -949,54 +733,36 @@ export interface BatchCreateIndex {
   LinkName?: string;
   BatchReferenceName?: string;
 }
-const BatchCreateIndex = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<BatchCreateIndex>;
 export interface BatchAttachToIndex {
   IndexReference: ObjectReference;
   TargetReference: ObjectReference;
 }
-const BatchAttachToIndex = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<BatchAttachToIndex>;
 export interface BatchDetachFromIndex {
   IndexReference: ObjectReference;
   TargetReference: ObjectReference;
 }
-const BatchDetachFromIndex = BatchAttachToIndex as any as S.Schema<BatchDetachFromIndex>;
 export interface BatchAttachTypedLink {
   SourceObjectReference: ObjectReference;
   TargetObjectReference: ObjectReference;
   TypedLinkFacet: TypedLinkSchemaAndFacetName;
   Attributes: AttributeNameAndValue[];
 }
-const BatchAttachTypedLink = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<BatchAttachTypedLink>;
 export interface BatchDetachTypedLink {
   TypedLinkSpecifier: TypedLinkSpecifier;
 }
-const BatchDetachTypedLink = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<BatchDetachTypedLink>;
 export interface LinkAttributeAction {
   AttributeActionType?: UpdateActionType;
   AttributeUpdateValue?: TypedAttributeValue;
 }
-const LinkAttributeAction = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<LinkAttributeAction>;
 export interface LinkAttributeUpdate {
   AttributeKey?: AttributeKey;
   AttributeAction?: LinkAttributeAction;
 }
-const LinkAttributeUpdate = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<LinkAttributeUpdate>;
 export type LinkAttributeUpdateList = LinkAttributeUpdate[];
-const LinkAttributeUpdateList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface BatchUpdateLinkAttributes {
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeUpdates: LinkAttributeUpdate[];
 }
-const BatchUpdateLinkAttributes = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<BatchUpdateLinkAttributes>;
 export interface BatchWriteOperation {
   CreateObject?: BatchCreateObject;
   AttachObject?: BatchAttachObject;
@@ -1014,91 +780,42 @@ export interface BatchWriteOperation {
   DetachTypedLink?: BatchDetachTypedLink;
   UpdateLinkAttributes?: BatchUpdateLinkAttributes;
 }
-const BatchWriteOperation = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<BatchWriteOperation>;
 export type BatchWriteOperationList = BatchWriteOperation[];
-const BatchWriteOperationList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface BatchWriteRequest {
   DirectoryArn: string;
   Operations: BatchWriteOperation[];
 }
-const BatchWriteRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<BatchWriteRequest>;
 export interface BatchCreateObjectResponse {
   ObjectIdentifier?: string;
 }
-const BatchCreateObjectResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<BatchCreateObjectResponse>;
 export interface BatchAttachObjectResponse {
   attachedObjectIdentifier?: string;
 }
-const BatchAttachObjectResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<BatchAttachObjectResponse>;
 export interface BatchDetachObjectResponse {
   detachedObjectIdentifier?: string;
 }
-const BatchDetachObjectResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<BatchDetachObjectResponse>;
 export interface BatchUpdateObjectAttributesResponse {
   ObjectIdentifier?: string;
 }
-const BatchUpdateObjectAttributesResponse =
-  BatchCreateObjectResponse as any as S.Schema<BatchUpdateObjectAttributesResponse>;
 export interface BatchDeleteObjectResponse {}
-const BatchDeleteObjectResponse =
-  AddFacetToObjectResponse as any as S.Schema<BatchDeleteObjectResponse>;
 export interface BatchAddFacetToObjectResponse {}
-const BatchAddFacetToObjectResponse =
-  AddFacetToObjectResponse as any as S.Schema<BatchAddFacetToObjectResponse>;
 export interface BatchRemoveFacetFromObjectResponse {}
-const BatchRemoveFacetFromObjectResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<BatchRemoveFacetFromObjectResponse>;
 export interface BatchAttachPolicyResponse {}
-const BatchAttachPolicyResponse =
-  AddFacetToObjectResponse as any as S.Schema<BatchAttachPolicyResponse>;
 export interface BatchDetachPolicyResponse {}
-const BatchDetachPolicyResponse =
-  AddFacetToObjectResponse as any as S.Schema<BatchDetachPolicyResponse>;
 export interface BatchCreateIndexResponse {
   ObjectIdentifier?: string;
 }
-const BatchCreateIndexResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<BatchCreateIndexResponse>;
 export interface BatchAttachToIndexResponse {
   AttachedObjectIdentifier?: string;
 }
-const BatchAttachToIndexResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<BatchAttachToIndexResponse>;
 export interface BatchDetachFromIndexResponse {
   DetachedObjectIdentifier?: string;
 }
-const BatchDetachFromIndexResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<BatchDetachFromIndexResponse>;
 export interface BatchAttachTypedLinkResponse {
   TypedLinkSpecifier?: TypedLinkSpecifier;
 }
-const BatchAttachTypedLinkResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<BatchAttachTypedLinkResponse>;
 export interface BatchDetachTypedLinkResponse {}
-const BatchDetachTypedLinkResponse =
-  AddFacetToObjectResponse as any as S.Schema<BatchDetachTypedLinkResponse>;
 export interface BatchUpdateLinkAttributesResponse {}
-const BatchUpdateLinkAttributesResponse =
-  BatchRemoveFacetFromObjectResponse as any as S.Schema<BatchUpdateLinkAttributesResponse>;
 export interface BatchWriteOperationResponse {
   CreateObject?: BatchCreateObjectResponse;
   AttachObject?: BatchAttachObjectResponse;
@@ -1116,25 +833,15 @@ export interface BatchWriteOperationResponse {
   DetachTypedLink?: BatchDetachTypedLinkResponse;
   UpdateLinkAttributes?: BatchUpdateLinkAttributesResponse;
 }
-const BatchWriteOperationResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<BatchWriteOperationResponse>;
 export type BatchWriteOperationResponseList = BatchWriteOperationResponse[];
-const BatchWriteOperationResponseList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface BatchWriteResponse {
   Responses?: BatchWriteOperationResponse[];
 }
-const BatchWriteResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<BatchWriteResponse>;
 export type DirectoryName = string;
 export interface CreateDirectoryRequest {
   Name: string;
   SchemaArn: string;
 }
-const CreateDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CreateDirectoryRequest>;
 export type DirectoryArn = string;
 export interface CreateDirectoryResponse {
   DirectoryArn: string;
@@ -1142,10 +849,6 @@ export interface CreateDirectoryResponse {
   ObjectIdentifier: string;
   AppliedSchemaArn: string;
 }
-const CreateDirectoryResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateDirectoryResponse>;
 export type FacetAttributeType =
   | "STRING"
   | "BINARY"
@@ -1154,8 +857,6 @@ export type FacetAttributeType =
   | "DATETIME"
   | "VARIANT"
   | (string & {});
-const FacetAttributeType = S.String;
-
 export type RuleKey = string;
 export type RuleType =
   | "BINARY_LENGTH"
@@ -1163,55 +864,34 @@ export type RuleType =
   | "STRING_FROM_SET"
   | "STRING_LENGTH"
   | (string & {});
-const RuleType = S.String;
-
 export type RuleParameterKey = string;
 export type RuleParameterValue = string;
 export type RuleParameterMap = { [key: string]: string | undefined };
-const RuleParameterMap = LinkNameToObjectIdentifierMap as any as S.Schema<RuleParameterMap>;
 export interface Rule {
   Type?: RuleType;
   Parameters?: { [key: string]: string | undefined };
 }
-const Rule = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Rule>;
 export type RuleMap = { [key: string]: Rule | undefined };
-const RuleMap = /*@__PURE__*/ __L.at(__c13, 3);
 export interface FacetAttributeDefinition {
   Type: FacetAttributeType;
   DefaultValue?: TypedAttributeValue;
   IsImmutable?: boolean;
   Rules?: { [key: string]: Rule | undefined };
 }
-const FacetAttributeDefinition = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<FacetAttributeDefinition>;
 export interface FacetAttributeReference {
   TargetFacetName: string;
   TargetAttributeName: string;
 }
-const FacetAttributeReference = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<FacetAttributeReference>;
 export type RequiredAttributeBehavior = "REQUIRED_ALWAYS" | "NOT_REQUIRED" | (string & {});
-const RequiredAttributeBehavior = S.String;
-
 export interface FacetAttribute {
   Name: string;
   AttributeDefinition?: FacetAttributeDefinition;
   AttributeReference?: FacetAttributeReference;
   RequiredBehavior?: RequiredAttributeBehavior;
 }
-const FacetAttribute = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<FacetAttribute>;
 export type FacetAttributeList = FacetAttribute[];
-const FacetAttributeList = /*@__PURE__*/ __L.at(__c13, 7);
 export type ObjectType = "NODE" | "LEAF_NODE" | "POLICY" | "INDEX" | (string & {});
-const ObjectType = S.String;
-
 export type FacetStyle = "STATIC" | "DYNAMIC" | (string & {});
-const FacetStyle = S.String;
-
 export interface CreateFacetRequest {
   SchemaArn: string;
   Name: string;
@@ -1219,9 +899,7 @@ export interface CreateFacetRequest {
   ObjectType?: ObjectType;
   FacetStyle?: FacetStyle;
 }
-const CreateFacetRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<CreateFacetRequest>;
 export interface CreateFacetResponse {}
-const CreateFacetResponse = AddFacetToObjectResponse as any as S.Schema<CreateFacetResponse>;
 export interface CreateIndexRequest {
   DirectoryArn: string;
   OrderedIndexedAttributeList: AttributeKey[];
@@ -1229,11 +907,9 @@ export interface CreateIndexRequest {
   ParentReference?: ObjectReference;
   LinkName?: string;
 }
-const CreateIndexRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<CreateIndexRequest>;
 export interface CreateIndexResponse {
   ObjectIdentifier?: string;
 }
-const CreateIndexResponse = BatchCreateIndexResponse as any as S.Schema<CreateIndexResponse>;
 export interface CreateObjectRequest {
   DirectoryArn: string;
   SchemaFacets: SchemaFacet[];
@@ -1241,23 +917,16 @@ export interface CreateObjectRequest {
   ParentReference?: ObjectReference;
   LinkName?: string;
 }
-const CreateObjectRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<CreateObjectRequest>;
 export interface CreateObjectResponse {
   ObjectIdentifier?: string;
 }
-const CreateObjectResponse = BatchCreateIndexResponse as any as S.Schema<CreateObjectResponse>;
 export type SchemaName = string;
 export interface CreateSchemaRequest {
   Name: string;
 }
-const CreateSchemaRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<CreateSchemaRequest>;
 export interface CreateSchemaResponse {
   SchemaArn?: string;
 }
-const CreateSchemaResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateSchemaResponse>;
 export interface TypedLinkAttributeDefinition {
   Name: string;
   Type: FacetAttributeType;
@@ -1266,209 +935,123 @@ export interface TypedLinkAttributeDefinition {
   Rules?: { [key: string]: Rule | undefined };
   RequiredBehavior: RequiredAttributeBehavior;
 }
-const TypedLinkAttributeDefinition = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<TypedLinkAttributeDefinition>;
 export type TypedLinkAttributeDefinitionList = TypedLinkAttributeDefinition[];
-const TypedLinkAttributeDefinitionList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface TypedLinkFacet {
   Name: string;
   Attributes: TypedLinkAttributeDefinition[];
   IdentityAttributeOrder: string[];
 }
-const TypedLinkFacet = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<TypedLinkFacet>;
 export interface CreateTypedLinkFacetRequest {
   SchemaArn: string;
   Facet: TypedLinkFacet;
 }
-const CreateTypedLinkFacetRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateTypedLinkFacetRequest>;
 export interface CreateTypedLinkFacetResponse {}
-const CreateTypedLinkFacetResponse =
-  AddFacetToObjectResponse as any as S.Schema<CreateTypedLinkFacetResponse>;
 export interface DeleteDirectoryRequest {
   DirectoryArn: string;
 }
-const DeleteDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteDirectoryRequest>;
 export interface DeleteDirectoryResponse {
   DirectoryArn: string;
 }
-const DeleteDirectoryResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteDirectoryResponse>;
 export interface DeleteFacetRequest {
   SchemaArn: string;
   Name: string;
 }
-const DeleteFacetRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<DeleteFacetRequest>;
 export interface DeleteFacetResponse {}
-const DeleteFacetResponse = AddFacetToObjectResponse as any as S.Schema<DeleteFacetResponse>;
 export interface DeleteObjectRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
 }
-const DeleteObjectRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<DeleteObjectRequest>;
 export interface DeleteObjectResponse {}
-const DeleteObjectResponse = AddFacetToObjectResponse as any as S.Schema<DeleteObjectResponse>;
 export interface DeleteSchemaRequest {
   SchemaArn: string;
 }
-const DeleteSchemaRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<DeleteSchemaRequest>;
 export interface DeleteSchemaResponse {
   SchemaArn?: string;
 }
-const DeleteSchemaResponse = CreateSchemaResponse as any as S.Schema<DeleteSchemaResponse>;
 export interface DeleteTypedLinkFacetRequest {
   SchemaArn: string;
   Name: string;
 }
-const DeleteTypedLinkFacetRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeleteTypedLinkFacetRequest>;
 export interface DeleteTypedLinkFacetResponse {}
-const DeleteTypedLinkFacetResponse =
-  AddFacetToObjectResponse as any as S.Schema<DeleteTypedLinkFacetResponse>;
 export interface DetachFromIndexRequest {
   DirectoryArn: string;
   IndexReference: ObjectReference;
   TargetReference: ObjectReference;
 }
-const DetachFromIndexRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DetachFromIndexRequest>;
 export interface DetachFromIndexResponse {
   DetachedObjectIdentifier?: string;
 }
-const DetachFromIndexResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DetachFromIndexResponse>;
 export interface DetachObjectRequest {
   DirectoryArn: string;
   ParentReference: ObjectReference;
   LinkName: string;
 }
-const DetachObjectRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<DetachObjectRequest>;
 export interface DetachObjectResponse {
   DetachedObjectIdentifier?: string;
 }
-const DetachObjectResponse = DetachFromIndexResponse as any as S.Schema<DetachObjectResponse>;
 export interface DetachPolicyRequest {
   DirectoryArn: string;
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-const DetachPolicyRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<DetachPolicyRequest>;
 export interface DetachPolicyResponse {}
-const DetachPolicyResponse = AddFacetToObjectResponse as any as S.Schema<DetachPolicyResponse>;
 export interface DetachTypedLinkRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
 }
-const DetachTypedLinkRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DetachTypedLinkRequest>;
 export interface DetachTypedLinkResponse {}
-const DetachTypedLinkResponse =
-  AddFacetToObjectResponse as any as S.Schema<DetachTypedLinkResponse>;
 export interface DisableDirectoryRequest {
   DirectoryArn: string;
 }
-const DisableDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<DisableDirectoryRequest>;
 export interface DisableDirectoryResponse {
   DirectoryArn: string;
 }
-const DisableDirectoryResponse =
-  DeleteDirectoryResponse as any as S.Schema<DisableDirectoryResponse>;
 export interface EnableDirectoryRequest {
   DirectoryArn: string;
 }
-const EnableDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<EnableDirectoryRequest>;
 export interface EnableDirectoryResponse {
   DirectoryArn: string;
 }
-const EnableDirectoryResponse = DeleteDirectoryResponse as any as S.Schema<EnableDirectoryResponse>;
 export interface GetAppliedSchemaVersionRequest {
   SchemaArn: string;
 }
-const GetAppliedSchemaVersionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetAppliedSchemaVersionRequest>;
 export interface GetAppliedSchemaVersionResponse {
   AppliedSchemaArn?: string;
 }
-const GetAppliedSchemaVersionResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetAppliedSchemaVersionResponse>;
 export interface GetDirectoryRequest {
   DirectoryArn: string;
 }
-const GetDirectoryRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<GetDirectoryRequest>;
 export type DirectoryState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
-const DirectoryState = S.String;
-
 export interface Directory {
   Name?: string;
   DirectoryArn?: string;
   State?: DirectoryState;
   CreationDateTime?: Date;
 }
-const Directory = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Directory>;
 export interface GetDirectoryResponse {
   Directory: Directory;
 }
-const GetDirectoryResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetDirectoryResponse>;
 export interface GetFacetRequest {
   SchemaArn: string;
   Name: string;
 }
-const GetFacetRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<GetFacetRequest>;
 export interface Facet {
   Name?: string;
   ObjectType?: ObjectType;
   FacetStyle?: FacetStyle;
 }
-const Facet = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<Facet>;
 export interface GetFacetResponse {
   Facet?: Facet;
 }
-const GetFacetResponse = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<GetFacetResponse>;
 export interface GetLinkAttributesRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeNames: string[];
   ConsistencyLevel?: ConsistencyLevel;
 }
-const GetLinkAttributesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetLinkAttributesRequest>;
 export interface GetLinkAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-const GetLinkAttributesResponse =
-  BatchGetObjectAttributesResponse as any as S.Schema<GetLinkAttributesResponse>;
 export interface GetObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1476,81 +1059,44 @@ export interface GetObjectAttributesRequest {
   SchemaFacet: SchemaFacet;
   AttributeNames: string[];
 }
-const GetObjectAttributesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetObjectAttributesRequest>;
 export interface GetObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-const GetObjectAttributesResponse =
-  BatchGetObjectAttributesResponse as any as S.Schema<GetObjectAttributesResponse>;
 export interface GetObjectInformationRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const GetObjectInformationRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetObjectInformationRequest>;
 export interface GetObjectInformationResponse {
   SchemaFacets?: SchemaFacet[];
   ObjectIdentifier?: string;
 }
-const GetObjectInformationResponse =
-  BatchGetObjectInformationResponse as any as S.Schema<GetObjectInformationResponse>;
 export interface GetSchemaAsJsonRequest {
   SchemaArn: string;
 }
-const GetSchemaAsJsonRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetSchemaAsJsonRequest>;
 export type SchemaJsonDocument = string;
 export interface GetSchemaAsJsonResponse {
   Name?: string;
   Document?: string;
 }
-const GetSchemaAsJsonResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetSchemaAsJsonResponse>;
 export interface GetTypedLinkFacetInformationRequest {
   SchemaArn: string;
   Name: string;
 }
-const GetTypedLinkFacetInformationRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetTypedLinkFacetInformationRequest>;
 export interface GetTypedLinkFacetInformationResponse {
   IdentityAttributeOrder?: string[];
 }
-const GetTypedLinkFacetInformationResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetTypedLinkFacetInformationResponse>;
 export interface ListAppliedSchemaArnsRequest {
   DirectoryArn: string;
   SchemaArn?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAppliedSchemaArnsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListAppliedSchemaArnsRequest>;
 export type Arns = string[];
-const Arns = AttributeNameList as any as S.Schema<Arns>;
 export interface ListAppliedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-const ListAppliedSchemaArnsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListAppliedSchemaArnsResponse>;
 export interface ListAttachedIndicesRequest {
   DirectoryArn: string;
   TargetReference: ObjectReference;
@@ -1558,86 +1104,48 @@ export interface ListAttachedIndicesRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const ListAttachedIndicesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListAttachedIndicesRequest>;
 export interface ListAttachedIndicesResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-const ListAttachedIndicesResponse =
-  BatchListAttachedIndicesResponse as any as S.Schema<ListAttachedIndicesResponse>;
 export interface ListDevelopmentSchemaArnsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListDevelopmentSchemaArnsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListDevelopmentSchemaArnsRequest>;
 export interface ListDevelopmentSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-const ListDevelopmentSchemaArnsResponse =
-  ListAppliedSchemaArnsResponse as any as S.Schema<ListDevelopmentSchemaArnsResponse>;
 export interface ListDirectoriesRequest {
   NextToken?: string;
   MaxResults?: number;
   state?: DirectoryState;
 }
-const ListDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListDirectoriesRequest>;
 export type DirectoryList = Directory[];
-const DirectoryList = /*@__PURE__*/ __L.at(__c19, 2);
 export interface ListDirectoriesResponse {
   Directories: Directory[];
   NextToken?: string;
 }
-const ListDirectoriesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListDirectoriesResponse>;
 export interface ListFacetAttributesRequest {
   SchemaArn: string;
   Name: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListFacetAttributesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListFacetAttributesRequest>;
 export interface ListFacetAttributesResponse {
   Attributes?: FacetAttribute[];
   NextToken?: string;
 }
-const ListFacetAttributesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListFacetAttributesResponse>;
 export interface ListFacetNamesRequest {
   SchemaArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListFacetNamesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListFacetNamesRequest>;
 export type FacetNameList = string[];
-const FacetNameList = AttributeNameList as any as S.Schema<FacetNameList>;
 export interface ListFacetNamesResponse {
   FacetNames?: string[];
   NextToken?: string;
 }
-const ListFacetNamesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListFacetNamesResponse>;
 export interface ListIncomingTypedLinksRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1647,16 +1155,10 @@ export interface ListIncomingTypedLinksRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const ListIncomingTypedLinksRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListIncomingTypedLinksRequest>;
 export interface ListIncomingTypedLinksResponse {
   LinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-const ListIncomingTypedLinksResponse =
-  BatchListIncomingTypedLinksResponse as any as S.Schema<ListIncomingTypedLinksResponse>;
 export interface ListIndexRequest {
   DirectoryArn: string;
   RangesOnIndexedValues?: ObjectAttributeRange[];
@@ -1665,27 +1167,19 @@ export interface ListIndexRequest {
   NextToken?: string;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const ListIndexRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListIndexRequest>;
 export interface ListIndexResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-const ListIndexResponse = BatchListIndexResponse as any as S.Schema<ListIndexResponse>;
 export interface ListManagedSchemaArnsRequest {
   SchemaArn?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListManagedSchemaArnsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListManagedSchemaArnsRequest>;
 export interface ListManagedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-const ListManagedSchemaArnsResponse =
-  ListAppliedSchemaArnsResponse as any as S.Schema<ListManagedSchemaArnsResponse>;
 export interface ListObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1694,16 +1188,10 @@ export interface ListObjectAttributesRequest {
   ConsistencyLevel?: ConsistencyLevel;
   FacetFilter?: SchemaFacet;
 }
-const ListObjectAttributesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListObjectAttributesRequest>;
 export interface ListObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
   NextToken?: string;
 }
-const ListObjectAttributesResponse =
-  BatchListObjectAttributesResponse as any as S.Schema<ListObjectAttributesResponse>;
 export interface ListObjectChildrenRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1711,32 +1199,20 @@ export interface ListObjectChildrenRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const ListObjectChildrenRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListObjectChildrenRequest>;
 export interface ListObjectChildrenResponse {
   Children?: { [key: string]: string | undefined };
   NextToken?: string;
 }
-const ListObjectChildrenResponse =
-  BatchListObjectChildrenResponse as any as S.Schema<ListObjectChildrenResponse>;
 export interface ListObjectParentPathsRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListObjectParentPathsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListObjectParentPathsRequest>;
 export interface ListObjectParentPathsResponse {
   PathToObjectIdentifiersList?: PathToObjectIdentifiers[];
   NextToken?: string;
 }
-const ListObjectParentPathsResponse =
-  BatchListObjectParentPathsResponse as any as S.Schema<ListObjectParentPathsResponse>;
 export interface ListObjectParentsRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1745,22 +1221,12 @@ export interface ListObjectParentsRequest {
   ConsistencyLevel?: ConsistencyLevel;
   IncludeAllLinksToEachParent?: boolean;
 }
-const ListObjectParentsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListObjectParentsRequest>;
 export type ObjectIdentifierToLinkNameMap = { [key: string]: string | undefined };
-const ObjectIdentifierToLinkNameMap =
-  LinkNameToObjectIdentifierMap as any as S.Schema<ObjectIdentifierToLinkNameMap>;
 export interface ListObjectParentsResponse {
   Parents?: { [key: string]: string | undefined };
   NextToken?: string;
   ParentLinks?: ObjectIdentifierAndLinkNameTuple[];
 }
-const ListObjectParentsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListObjectParentsResponse>;
 export interface ListObjectPoliciesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1768,16 +1234,10 @@ export interface ListObjectPoliciesRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const ListObjectPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListObjectPoliciesRequest>;
 export interface ListObjectPoliciesResponse {
   AttachedPolicyIds?: string[];
   NextToken?: string;
 }
-const ListObjectPoliciesResponse =
-  BatchListObjectPoliciesResponse as any as S.Schema<ListObjectPoliciesResponse>;
 export interface ListOutgoingTypedLinksRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1787,16 +1247,10 @@ export interface ListOutgoingTypedLinksRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const ListOutgoingTypedLinksRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListOutgoingTypedLinksRequest>;
 export interface ListOutgoingTypedLinksResponse {
   TypedLinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-const ListOutgoingTypedLinksResponse =
-  BatchListOutgoingTypedLinksResponse as any as S.Schema<ListOutgoingTypedLinksResponse>;
 export interface ListPolicyAttachmentsRequest {
   DirectoryArn: string;
   PolicyReference: ObjectReference;
@@ -1804,110 +1258,66 @@ export interface ListPolicyAttachmentsRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-const ListPolicyAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListPolicyAttachmentsRequest>;
 export interface ListPolicyAttachmentsResponse {
   ObjectIdentifiers?: string[];
   NextToken?: string;
 }
-const ListPolicyAttachmentsResponse =
-  BatchListPolicyAttachmentsResponse as any as S.Schema<ListPolicyAttachmentsResponse>;
 export interface ListPublishedSchemaArnsRequest {
   SchemaArn?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListPublishedSchemaArnsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListPublishedSchemaArnsRequest>;
 export interface ListPublishedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-const ListPublishedSchemaArnsResponse =
-  ListAppliedSchemaArnsResponse as any as S.Schema<ListPublishedSchemaArnsResponse>;
 export type TagsNumberResults = number;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
   NextToken?: string;
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTypedLinkFacetAttributesRequest {
   SchemaArn: string;
   Name: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListTypedLinkFacetAttributesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListTypedLinkFacetAttributesRequest>;
 export interface ListTypedLinkFacetAttributesResponse {
   Attributes?: TypedLinkAttributeDefinition[];
   NextToken?: string;
 }
-const ListTypedLinkFacetAttributesResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListTypedLinkFacetAttributesResponse>;
 export interface ListTypedLinkFacetNamesRequest {
   SchemaArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListTypedLinkFacetNamesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListTypedLinkFacetNamesRequest>;
 export type TypedLinkNameList = string[];
-const TypedLinkNameList = AttributeNameList as any as S.Schema<TypedLinkNameList>;
 export interface ListTypedLinkFacetNamesResponse {
   FacetNames?: string[];
   NextToken?: string;
 }
-const ListTypedLinkFacetNamesResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListTypedLinkFacetNamesResponse>;
 export interface LookupPolicyRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-const LookupPolicyRequest = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<LookupPolicyRequest>;
 export interface LookupPolicyResponse {
   PolicyToPathList?: PolicyToPath[];
   NextToken?: string;
 }
-const LookupPolicyResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<LookupPolicyResponse>;
 export type Version = string;
 export interface PublishSchemaRequest {
   DevelopmentSchemaArn: string;
@@ -1915,174 +1325,96 @@ export interface PublishSchemaRequest {
   MinorVersion?: string;
   Name?: string;
 }
-const PublishSchemaRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<PublishSchemaRequest>;
 export interface PublishSchemaResponse {
   PublishedSchemaArn?: string;
 }
-const PublishSchemaResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<PublishSchemaResponse>;
 export interface PutSchemaFromJsonRequest {
   SchemaArn: string;
   Document: string;
 }
-const PutSchemaFromJsonRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<PutSchemaFromJsonRequest>;
 export interface PutSchemaFromJsonResponse {
   Arn?: string;
 }
-const PutSchemaFromJsonResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<PutSchemaFromJsonResponse>;
 export interface RemoveFacetFromObjectRequest {
   DirectoryArn: string;
   SchemaFacet: SchemaFacet;
   ObjectReference: ObjectReference;
 }
-const RemoveFacetFromObjectRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<RemoveFacetFromObjectRequest>;
 export interface RemoveFacetFromObjectResponse {}
-const RemoveFacetFromObjectResponse =
-  AddFacetToObjectResponse as any as S.Schema<RemoveFacetFromObjectResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = AddFacetToObjectResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = AttributeNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = AddFacetToObjectResponse as any as S.Schema<UntagResourceResponse>;
 export interface FacetAttributeUpdate {
   Attribute?: FacetAttribute;
   Action?: UpdateActionType;
 }
-const FacetAttributeUpdate = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<FacetAttributeUpdate>;
 export type FacetAttributeUpdateList = FacetAttributeUpdate[];
-const FacetAttributeUpdateList = /*@__PURE__*/ __L.at(__c23, 6);
 export interface UpdateFacetRequest {
   SchemaArn: string;
   Name: string;
   AttributeUpdates?: FacetAttributeUpdate[];
   ObjectType?: ObjectType;
 }
-const UpdateFacetRequest = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<UpdateFacetRequest>;
 export interface UpdateFacetResponse {}
-const UpdateFacetResponse = AddFacetToObjectResponse as any as S.Schema<UpdateFacetResponse>;
 export interface UpdateLinkAttributesRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeUpdates: LinkAttributeUpdate[];
 }
-const UpdateLinkAttributesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<UpdateLinkAttributesRequest>;
 export interface UpdateLinkAttributesResponse {}
-const UpdateLinkAttributesResponse =
-  AddFacetToObjectResponse as any as S.Schema<UpdateLinkAttributesResponse>;
 export interface UpdateObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
   AttributeUpdates: ObjectAttributeUpdate[];
 }
-const UpdateObjectAttributesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UpdateObjectAttributesRequest>;
 export interface UpdateObjectAttributesResponse {
   ObjectIdentifier?: string;
 }
-const UpdateObjectAttributesResponse =
-  BatchCreateObjectResponse as any as S.Schema<UpdateObjectAttributesResponse>;
 export interface UpdateSchemaRequest {
   SchemaArn: string;
   Name: string;
 }
-const UpdateSchemaRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<UpdateSchemaRequest>;
 export interface UpdateSchemaResponse {
   SchemaArn?: string;
 }
-const UpdateSchemaResponse = CreateSchemaResponse as any as S.Schema<UpdateSchemaResponse>;
 export interface TypedLinkFacetAttributeUpdate {
   Attribute: TypedLinkAttributeDefinition;
   Action: UpdateActionType;
 }
-const TypedLinkFacetAttributeUpdate = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<TypedLinkFacetAttributeUpdate>;
 export type TypedLinkFacetAttributeUpdateList = TypedLinkFacetAttributeUpdate[];
-const TypedLinkFacetAttributeUpdateList = /*@__PURE__*/ __L.at(__c24, 4);
 export interface UpdateTypedLinkFacetRequest {
   SchemaArn: string;
   Name: string;
   AttributeUpdates: TypedLinkFacetAttributeUpdate[];
   IdentityAttributeOrder: string[];
 }
-const UpdateTypedLinkFacetRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<UpdateTypedLinkFacetRequest>;
 export interface UpdateTypedLinkFacetResponse {}
-const UpdateTypedLinkFacetResponse =
-  AddFacetToObjectResponse as any as S.Schema<UpdateTypedLinkFacetResponse>;
 export interface UpgradeAppliedSchemaRequest {
   PublishedSchemaArn: string;
   DirectoryArn: string;
   DryRun?: boolean;
 }
-const UpgradeAppliedSchemaRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UpgradeAppliedSchemaRequest>;
 export interface UpgradeAppliedSchemaResponse {
   UpgradedSchemaArn?: string;
   DirectoryArn?: string;
 }
-const UpgradeAppliedSchemaResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<UpgradeAppliedSchemaResponse>;
 export interface UpgradePublishedSchemaRequest {
   DevelopmentSchemaArn: string;
   PublishedSchemaArn: string;
   MinorVersion: string;
   DryRun?: boolean;
 }
-const UpgradePublishedSchemaRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<UpgradePublishedSchemaRequest>;
 export interface UpgradePublishedSchemaResponse {
   UpgradedSchemaArn?: string;
 }
-const UpgradePublishedSchemaResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<UpgradePublishedSchemaResponse>;
 export type BatchOperationIndex = number;
 export type BatchWriteExceptionType =
   | "InternalServiceException"
@@ -2104,8 +1436,6 @@ export type BatchWriteExceptionType =
   | "LimitExceededException"
   | "UnsupportedIndexTypeException"
   | (string & {});
-const BatchWriteExceptionType = S.String;
-
 export type AddFacetToObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -2126,8 +1456,8 @@ export const addFacetToObject: API.OperationMethod<
   AddFacetToObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddFacetToObjectRequest,
-  output: AddFacetToObjectResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<AddFacetToObjectRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<AddFacetToObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2165,8 +1495,8 @@ export const applySchema: API.OperationMethod<
   ApplySchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplySchemaRequest,
-  output: ApplySchemaResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ApplySchemaRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ApplySchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2210,8 +1540,8 @@ export const attachObject: API.OperationMethod<
   AttachObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachObjectRequest,
-  output: AttachObjectResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<AttachObjectRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AttachObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2251,8 +1581,8 @@ export const attachPolicy: API.OperationMethod<
   AttachPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachPolicyRequest,
-  output: AttachPolicyResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<AttachPolicyRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<AttachPolicyResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2292,8 +1622,8 @@ export const attachToIndex: API.OperationMethod<
   AttachToIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachToIndexRequest,
-  output: AttachToIndexResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<AttachToIndexRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AttachToIndexResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2334,8 +1664,8 @@ export const attachTypedLink: API.OperationMethod<
   AttachTypedLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachTypedLinkRequest,
-  output: AttachTypedLinkResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<AttachTypedLinkRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<AttachTypedLinkResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2371,8 +1701,8 @@ export const batchRead: API.OperationMethod<
   BatchReadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchReadRequest,
-  output: BatchReadResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<BatchReadRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<BatchReadResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2407,8 +1737,8 @@ export const batchWrite: API.OperationMethod<
   BatchWriteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchWriteRequest,
-  output: BatchWriteResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<BatchWriteRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<BatchWriteResponse>,
   errors: [
     AccessDeniedException,
     BatchWriteException,
@@ -2447,8 +1777,8 @@ export const createDirectory: API.OperationMethod<
   CreateDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDirectoryRequest,
-  output: CreateDirectoryResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateDirectoryRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryAlreadyExistsException,
@@ -2486,8 +1816,8 @@ export const createFacet: API.OperationMethod<
   CreateFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFacetRequest,
-  output: CreateFacetResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateFacetRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetAlreadyExistsException,
@@ -2527,8 +1857,8 @@ export const createIndex: API.OperationMethod<
   CreateIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIndexRequest,
-  output: CreateIndexResponse,
+  input: __S(113, __c14, 1) as any as S.Schema<CreateIndexRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<CreateIndexResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2572,8 +1902,8 @@ export const createObject: API.OperationMethod<
   CreateObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateObjectRequest,
-  output: CreateObjectResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<CreateObjectRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<CreateObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2622,8 +1952,8 @@ export const createSchema: API.OperationMethod<
   CreateSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSchemaRequest,
-  output: CreateSchemaResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<CreateSchemaRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<CreateSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2659,8 +1989,8 @@ export const createTypedLinkFacet: API.OperationMethod<
   CreateTypedLinkFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTypedLinkFacetRequest,
-  output: CreateTypedLinkFacetResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateTypedLinkFacetRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateTypedLinkFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetAlreadyExistsException,
@@ -2700,8 +2030,8 @@ export const deleteDirectory: API.OperationMethod<
   DeleteDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDirectoryRequest,
-  output: DeleteDirectoryResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<DeleteDirectoryRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<DeleteDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryDeletedException,
@@ -2740,8 +2070,8 @@ export const deleteFacet: API.OperationMethod<
   DeleteFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFacetRequest,
-  output: DeleteFacetResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<DeleteFacetRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DeleteFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetInUseException,
@@ -2779,8 +2109,8 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteObjectRequest,
-  output: DeleteObjectResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<DeleteObjectRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DeleteObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2816,8 +2146,8 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSchemaRequest,
-  output: DeleteSchemaResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<DeleteSchemaRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<DeleteSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2852,8 +2182,8 @@ export const deleteTypedLinkFacet: API.OperationMethod<
   DeleteTypedLinkFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTypedLinkFacetRequest,
-  output: DeleteTypedLinkFacetResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<DeleteTypedLinkFacetRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DeleteTypedLinkFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -2890,8 +2220,8 @@ export const detachFromIndex: API.OperationMethod<
   DetachFromIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachFromIndexRequest,
-  output: DetachFromIndexResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<DetachFromIndexRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<DetachFromIndexResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2930,8 +2260,8 @@ export const detachObject: API.OperationMethod<
   DetachObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachObjectRequest,
-  output: DetachObjectResponse,
+  input: __S(129, __c16, 1) as any as S.Schema<DetachObjectRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<DetachObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2968,8 +2298,8 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachPolicyRequest,
-  output: DetachPolicyResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<DetachPolicyRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DetachPolicyResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3006,8 +2336,8 @@ export const detachTypedLink: API.OperationMethod<
   DetachTypedLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachTypedLinkRequest,
-  output: DetachTypedLinkResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<DetachTypedLinkRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DetachTypedLinkResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3044,8 +2374,8 @@ export const disableDirectory: API.OperationMethod<
   DisableDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableDirectoryRequest,
-  output: DisableDirectoryResponse,
+  input: __S(132, __c16, 4) as any as S.Schema<DisableDirectoryRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<DisableDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryDeletedException,
@@ -3081,8 +2411,8 @@ export const enableDirectory: API.OperationMethod<
   EnableDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableDirectoryRequest,
-  output: EnableDirectoryResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<EnableDirectoryRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<EnableDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryDeletedException,
@@ -3116,8 +2446,8 @@ export const getAppliedSchemaVersion: API.OperationMethod<
   GetAppliedSchemaVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppliedSchemaVersionRequest,
-  output: GetAppliedSchemaVersionResponse,
+  input: __S(134, __c16, 6) as any as S.Schema<GetAppliedSchemaVersionRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<GetAppliedSchemaVersionResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3149,8 +2479,8 @@ export const getDirectory: API.OperationMethod<
   GetDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDirectoryRequest,
-  output: GetDirectoryResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<GetDirectoryRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<GetDirectoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3184,8 +2514,8 @@ export const getFacet: API.OperationMethod<
   GetFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFacetRequest,
-  output: GetFacetResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<GetFacetRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<GetFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -3221,8 +2551,8 @@ export const getLinkAttributes: API.OperationMethod<
   GetLinkAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLinkAttributesRequest,
-  output: GetLinkAttributesResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<GetLinkAttributesRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetLinkAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3259,8 +2589,8 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectAttributesRequest,
-  output: GetObjectAttributesResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<GetObjectAttributesRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetObjectAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3296,8 +2626,8 @@ export const getObjectInformation: API.OperationMethod<
   GetObjectInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectInformationRequest,
-  output: GetObjectInformationResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<GetObjectInformationRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetObjectInformationResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3331,8 +2661,8 @@ export const getSchemaAsJson: API.OperationMethod<
   GetSchemaAsJsonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaAsJsonRequest,
-  output: GetSchemaAsJsonResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<GetSchemaAsJsonRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<GetSchemaAsJsonResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3367,8 +2697,8 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
   GetTypedLinkFacetInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTypedLinkFacetInformationRequest,
-  output: GetTypedLinkFacetInformationResponse,
+  input: __S(147, __c18, 3) as any as S.Schema<GetTypedLinkFacetInformationRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetTypedLinkFacetInformationResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -3405,8 +2735,8 @@ export const listAppliedSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAppliedSchemaArnsRequest,
-  output: ListAppliedSchemaArnsResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<ListAppliedSchemaArnsRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<ListAppliedSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3447,8 +2777,8 @@ export const listAttachedIndices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAttachedIndicesRequest,
-  output: ListAttachedIndicesResponse,
+  input: __S(151, __c18, 7) as any as S.Schema<ListAttachedIndicesRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListAttachedIndicesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3490,8 +2820,8 @@ export const listDevelopmentSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevelopmentSchemaArnsRequest,
-  output: ListDevelopmentSchemaArnsResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<ListDevelopmentSchemaArnsRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<ListDevelopmentSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3531,8 +2861,8 @@ export const listDirectories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDirectoriesRequest,
-  output: ListDirectoriesResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<ListDirectoriesRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListDirectoriesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3573,8 +2903,8 @@ export const listFacetAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFacetAttributesRequest,
-  output: ListFacetAttributesResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<ListFacetAttributesRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ListFacetAttributesResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -3616,8 +2946,8 @@ export const listFacetNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFacetNamesRequest,
-  output: ListFacetNamesResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<ListFacetNamesRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<ListFacetNamesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3661,8 +2991,8 @@ export const listIncomingTypedLinks: API.OperationMethod<
   ListIncomingTypedLinksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIncomingTypedLinksRequest,
-  output: ListIncomingTypedLinksResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<ListIncomingTypedLinksRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ListIncomingTypedLinksResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3703,8 +3033,8 @@ export const listIndex: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListIndexRequest,
-  output: ListIndexResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<ListIndexRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ListIndexResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3746,8 +3076,8 @@ export const listManagedSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListManagedSchemaArnsRequest,
-  output: ListManagedSchemaArnsResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<ListManagedSchemaArnsRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<ListManagedSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3788,8 +3118,8 @@ export const listObjectAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListObjectAttributesRequest,
-  output: ListObjectAttributesResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<ListObjectAttributesRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ListObjectAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3835,8 +3165,8 @@ export const listObjectChildren: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListObjectChildrenRequest,
-  output: ListObjectChildrenResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<ListObjectChildrenRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListObjectChildrenResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3888,8 +3218,8 @@ export const listObjectParentPaths: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListObjectParentPathsRequest,
-  output: ListObjectParentPathsResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<ListObjectParentPathsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ListObjectParentPathsResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3934,8 +3264,8 @@ export const listObjectParents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListObjectParentsRequest,
-  output: ListObjectParentsResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<ListObjectParentsRequest>,
+  output: __S(167, __c20, 7) as any as S.Schema<ListObjectParentsResponse>,
   errors: [
     AccessDeniedException,
     CannotListParentOfRootException,
@@ -3979,8 +3309,8 @@ export const listObjectPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListObjectPoliciesRequest,
-  output: ListObjectPoliciesResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<ListObjectPoliciesRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListObjectPoliciesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -4025,8 +3355,8 @@ export const listOutgoingTypedLinks: API.OperationMethod<
   ListOutgoingTypedLinksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOutgoingTypedLinksRequest,
-  output: ListOutgoingTypedLinksResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<ListOutgoingTypedLinksRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListOutgoingTypedLinksResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -4066,8 +3396,8 @@ export const listPolicyAttachments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPolicyAttachmentsRequest,
-  output: ListPolicyAttachmentsResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<ListPolicyAttachmentsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListPolicyAttachmentsResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -4110,8 +3440,8 @@ export const listPublishedSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPublishedSchemaArnsRequest,
-  output: ListPublishedSchemaArnsResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<ListPublishedSchemaArnsRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<ListPublishedSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4154,8 +3484,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4197,8 +3527,8 @@ export const listTypedLinkFacetAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTypedLinkFacetAttributesRequest,
-  output: ListTypedLinkFacetAttributesResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<ListTypedLinkFacetAttributesRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<ListTypedLinkFacetAttributesResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -4241,8 +3571,8 @@ export const listTypedLinkFacetNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTypedLinkFacetNamesRequest,
-  output: ListTypedLinkFacetNamesResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<ListTypedLinkFacetNamesRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListTypedLinkFacetNamesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4289,8 +3619,8 @@ export const lookupPolicy: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: LookupPolicyRequest,
-  output: LookupPolicyResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<LookupPolicyRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<LookupPolicyResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -4331,8 +3661,8 @@ export const publishSchema: API.OperationMethod<
   PublishSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishSchemaRequest,
-  output: PublishSchemaResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<PublishSchemaRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<PublishSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4367,8 +3697,8 @@ export const putSchemaFromJson: API.OperationMethod<
   PutSchemaFromJsonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSchemaFromJsonRequest,
-  output: PutSchemaFromJsonResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<PutSchemaFromJsonRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<PutSchemaFromJsonResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4404,8 +3734,8 @@ export const removeFacetFromObject: API.OperationMethod<
   RemoveFacetFromObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveFacetFromObjectRequest,
-  output: RemoveFacetFromObjectResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<RemoveFacetFromObjectRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<RemoveFacetFromObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -4441,8 +3771,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(187, __c23, 3) as any as S.Schema<TagResourceRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4477,8 +3807,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<UntagResourceRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4522,8 +3852,8 @@ export const updateFacet: API.OperationMethod<
   UpdateFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFacetRequest,
-  output: UpdateFacetResponse,
+  input: __S(191, __c23, 7) as any as S.Schema<UpdateFacetRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UpdateFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -4562,8 +3892,8 @@ export const updateLinkAttributes: API.OperationMethod<
   UpdateLinkAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLinkAttributesRequest,
-  output: UpdateLinkAttributesResponse,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateLinkAttributesRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UpdateLinkAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -4601,8 +3931,8 @@ export const updateObjectAttributes: API.OperationMethod<
   UpdateObjectAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateObjectAttributesRequest,
-  output: UpdateObjectAttributesResponse,
+  input: __S(193, __c24, 1) as any as S.Schema<UpdateObjectAttributesRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<UpdateObjectAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -4639,8 +3969,8 @@ export const updateSchema: API.OperationMethod<
   UpdateSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSchemaRequest,
-  output: UpdateSchemaResponse,
+  input: __S(194, __c24, 2) as any as S.Schema<UpdateSchemaRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<UpdateSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4677,8 +4007,8 @@ export const updateTypedLinkFacet: API.OperationMethod<
   UpdateTypedLinkFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTypedLinkFacetRequest,
-  output: UpdateTypedLinkFacetResponse,
+  input: __S(197, __c24, 5) as any as S.Schema<UpdateTypedLinkFacetRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UpdateTypedLinkFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -4717,8 +4047,8 @@ export const upgradeAppliedSchema: API.OperationMethod<
   UpgradeAppliedSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpgradeAppliedSchemaRequest,
-  output: UpgradeAppliedSchemaResponse,
+  input: __S(198, __c24, 6) as any as S.Schema<UpgradeAppliedSchemaRequest>,
+  output: __S(199, __c24, 7) as any as S.Schema<UpgradeAppliedSchemaResponse>,
   errors: [
     AccessDeniedException,
     IncompatibleSchemaException,
@@ -4755,8 +4085,8 @@ export const upgradePublishedSchema: API.OperationMethod<
   UpgradePublishedSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpgradePublishedSchemaRequest,
-  output: UpgradePublishedSchemaResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<UpgradePublishedSchemaRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<UpgradePublishedSchemaResponse>,
   errors: [
     AccessDeniedException,
     IncompatibleSchemaException,
@@ -4797,11 +4127,11 @@ function __c0(j: number): any {
         }),
       ]);
     case 3:
-      return S.suspend(() => S.Struct({ Key: AttributeKey, Value: TypedAttributeValue })).annotate({
+      return S.suspend(() => S.Struct({ Key: __S(1, __c0, 1), Value: __S(2, __c0, 2) })).annotate({
         identifier: "AttributeKeyAndValue",
       });
     case 4:
-      return S.Array(AttributeKeyAndValue);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() => S.Struct({ Selector: S.optional(S.String) })).annotate({
         identifier: "ObjectReference",
@@ -4810,9 +4140,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          SchemaFacet: SchemaFacet,
-          ObjectAttributeList: S.optional(AttributeKeyAndValueList),
-          ObjectReference: ObjectReference,
+          SchemaFacet: __S(0, __c0, 0),
+          ObjectAttributeList: S.optional(__S(4, __c0, 4)),
+          ObjectReference: __S(5, __c0, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/object/facets" }),
@@ -4856,8 +4186,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ParentReference: ObjectReference,
-          ChildReference: ObjectReference,
+          ParentReference: __S(5, __c0, 5),
+          ChildReference: __S(5, __c0, 5),
           LinkName: S.String,
         }).pipe(
           T.all(
@@ -4878,8 +4208,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          PolicyReference: ObjectReference,
-          ObjectReference: ObjectReference,
+          PolicyReference: __S(5, __c0, 5),
+          ObjectReference: __S(5, __c0, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/policy/attach" }),
@@ -4895,8 +4225,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          IndexReference: ObjectReference,
-          TargetReference: ObjectReference,
+          IndexReference: __S(5, __c0, 5),
+          TargetReference: __S(5, __c0, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/index/attach" }),
@@ -4914,22 +4244,22 @@ function __c1(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.String, Value: TypedAttributeValue }),
+        S.Struct({ AttributeName: S.String, Value: __S(2, __c0, 2) }),
       ).annotate({ identifier: "AttributeNameAndValue" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AttributeNameAndValue);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          SourceObjectReference: ObjectReference,
-          TargetObjectReference: ObjectReference,
-          TypedLinkFacet: TypedLinkSchemaAndFacetName,
-          Attributes: AttributeNameAndValueList,
+          SourceObjectReference: __S(5, __c0, 5),
+          TargetObjectReference: __S(5, __c0, 5),
+          TypedLinkFacet: __S(14, __c1, 6),
+          Attributes: __S(16, __c2, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/typedlink/attach" }),
@@ -4944,23 +4274,23 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TypedLinkFacet: TypedLinkSchemaAndFacetName,
-          SourceObjectReference: ObjectReference,
-          TargetObjectReference: ObjectReference,
-          IdentityAttributeValues: AttributeNameAndValueList,
+          TypedLinkFacet: __S(14, __c1, 6),
+          SourceObjectReference: __S(5, __c0, 5),
+          TargetObjectReference: __S(5, __c0, 5),
+          IdentityAttributeValues: __S(16, __c2, 0),
         }),
       ).annotate({ identifier: "TypedLinkSpecifier" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ TypedLinkSpecifier: S.optional(TypedLinkSpecifier) }),
+        S.Struct({ TypedLinkSpecifier: S.optional(__S(18, __c2, 2)) }),
       ).annotate({ identifier: "AttachTypedLinkResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          FacetFilter: S.optional(SchemaFacet),
+          FacetFilter: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "BatchListObjectAttributes",
@@ -4968,7 +4298,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }),
@@ -4976,7 +4306,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          TargetReference: ObjectReference,
+          TargetReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }),
@@ -4984,7 +4314,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }),
@@ -4996,7 +4326,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ObjectReference: ObjectReference })).annotate({
+      return S.suspend(() => S.Struct({ ObjectReference: __S(5, __c0, 5) })).annotate({
         identifier: "BatchGetObjectInformation",
       });
     case 1:
@@ -5004,15 +4334,15 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ObjectReference: ObjectReference,
-          SchemaFacet: SchemaFacet,
-          AttributeNames: AttributeNameList,
+          ObjectReference: __S(5, __c0, 5),
+          SchemaFacet: __S(0, __c0, 0),
+          AttributeNames: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "BatchGetObjectAttributes" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PolicyReference: ObjectReference,
+          PolicyReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }),
@@ -5022,26 +4352,26 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          StartMode: RangeMode,
-          StartValue: S.optional(TypedAttributeValue),
-          EndMode: RangeMode,
-          EndValue: S.optional(TypedAttributeValue),
+          StartMode: S.String,
+          StartValue: S.optional(__S(2, __c0, 2)),
+          EndMode: S.String,
+          EndValue: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "TypedAttributeValueRange" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AttributeKey: S.optional(AttributeKey),
-          Range: S.optional(TypedAttributeValueRange),
+          AttributeKey: S.optional(__S(1, __c0, 1)),
+          Range: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "ObjectAttributeRange" });
     case 6:
-      return S.Array(ObjectAttributeRange);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          RangesOnIndexedValues: S.optional(ObjectAttributeRangeList),
-          IndexReference: ObjectReference,
+          RangesOnIndexedValues: S.optional(__S(30, __c3, 6)),
+          IndexReference: __S(5, __c0, 5),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }),
@@ -5052,16 +4382,16 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.optional(S.String), Range: TypedAttributeValueRange }),
+        S.Struct({ AttributeName: S.optional(S.String), Range: __S(28, __c3, 4) }),
       ).annotate({ identifier: "TypedLinkAttributeRange" });
     case 1:
-      return S.Array(TypedLinkAttributeRange);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ObjectReference: ObjectReference,
-          FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-          FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
+          ObjectReference: __S(5, __c0, 5),
+          FilterAttributeRanges: S.optional(__S(33, __c4, 1)),
+          FilterTypedLink: S.optional(__S(14, __c1, 6)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }),
@@ -5070,37 +4400,35 @@ function __c4(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ TypedLinkSpecifier: TypedLinkSpecifier, AttributeNames: AttributeNameList }),
+        S.Struct({ TypedLinkSpecifier: __S(18, __c2, 2), AttributeNames: __S(25, __c3, 1) }),
       ).annotate({ identifier: "BatchGetLinkAttributes" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ListObjectAttributes: S.optional(BatchListObjectAttributes),
-          ListObjectChildren: S.optional(BatchListObjectChildren),
-          ListAttachedIndices: S.optional(BatchListAttachedIndices),
-          ListObjectParentPaths: S.optional(BatchListObjectParentPaths),
-          GetObjectInformation: S.optional(BatchGetObjectInformation),
-          GetObjectAttributes: S.optional(BatchGetObjectAttributes),
-          ListObjectParents: S.optional(BatchListObjectParents),
-          ListObjectPolicies: S.optional(BatchListObjectPolicies),
-          ListPolicyAttachments: S.optional(BatchListPolicyAttachments),
-          LookupPolicy: S.optional(BatchLookupPolicy),
-          ListIndex: S.optional(BatchListIndex),
-          ListOutgoingTypedLinks: S.optional(BatchListOutgoingTypedLinks),
-          ListIncomingTypedLinks: S.optional(BatchListIncomingTypedLinks),
-          GetLinkAttributes: S.optional(BatchGetLinkAttributes),
+          ListObjectAttributes: S.optional(__S(20, __c2, 4)),
+          ListObjectChildren: S.optional(__S(21, __c2, 5)),
+          ListAttachedIndices: S.optional(__S(22, __c2, 6)),
+          ListObjectParentPaths: S.optional(__S(23, __c2, 7)),
+          GetObjectInformation: S.optional(__S(24, __c3, 0)),
+          GetObjectAttributes: S.optional(__S(26, __c3, 2)),
+          ListObjectParents: S.optional(__S(21, __c2, 5)),
+          ListObjectPolicies: S.optional(__S(21, __c2, 5)),
+          ListPolicyAttachments: S.optional(__S(27, __c3, 3)),
+          LookupPolicy: S.optional(__S(21, __c2, 5)),
+          ListIndex: S.optional(__S(31, __c3, 7)),
+          ListOutgoingTypedLinks: S.optional(__S(34, __c4, 2)),
+          ListIncomingTypedLinks: S.optional(__S(34, __c4, 2)),
+          GetLinkAttributes: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "BatchReadOperation" });
     case 5:
-      return S.Array(BatchReadOperation);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          Operations: BatchReadOperationList,
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          Operations: __S(37, __c4, 5),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/batchread" }),
@@ -5115,7 +4443,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(AttributeKeyAndValueList),
+          Attributes: S.optional(__S(4, __c0, 4)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5130,42 +4458,40 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Children: S.optional(LinkNameToObjectIdentifierMap),
+          Children: S.optional(__S(40, __c5, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BatchListObjectChildrenResponse",
       });
     case 2:
-      return S.Array(SchemaFacet);
+      return S.Array(__S(0, __c0, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          SchemaFacets: S.optional(SchemaFacetList),
+          SchemaFacets: S.optional(__S(42, __c5, 2)),
           ObjectIdentifier: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BatchGetObjectInformationResponse",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(4, __c0, 4)) })).annotate({
         identifier: "BatchGetObjectAttributesResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          IndexedAttributes: S.optional(AttributeKeyAndValueList),
+          IndexedAttributes: S.optional(__S(4, __c0, 4)),
           ObjectIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndexAttachment" });
     case 6:
-      return S.Array(IndexAttachment);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          IndexAttachments: S.optional(IndexAttachmentList),
+          IndexAttachments: S.optional(__S(46, __c5, 6)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5179,15 +4505,15 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Path: S.optional(S.String),
-          ObjectIdentifiers: S.optional(ObjectIdentifierList),
+          ObjectIdentifiers: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "PathToObjectIdentifiers" });
     case 1:
-      return S.Array(PathToObjectIdentifiers);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          PathToObjectIdentifiersList: S.optional(PathToObjectIdentifiersList),
+          PathToObjectIdentifiersList: S.optional(__S(49, __c6, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5196,7 +4522,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AttachedPolicyIds: S.optional(ObjectIdentifierList),
+          AttachedPolicyIds: S.optional(__S(25, __c3, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5205,7 +4531,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ObjectIdentifiers: S.optional(ObjectIdentifierList),
+          ObjectIdentifiers: S.optional(__S(25, __c3, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5220,21 +4546,21 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "PolicyAttachment" });
     case 6:
-      return S.Array(PolicyAttachment);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Path: S.optional(S.String), Policies: S.optional(PolicyAttachmentList) }),
+        S.Struct({ Path: S.optional(S.String), Policies: S.optional(__S(54, __c6, 6)) }),
       ).annotate({ identifier: "PolicyToPath" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PolicyToPath);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          PolicyToPathList: S.optional(PolicyToPathList),
+          PolicyToPathList: S.optional(__S(56, __c7, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5243,16 +4569,16 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          IndexAttachments: S.optional(IndexAttachmentList),
+          IndexAttachments: S.optional(__S(46, __c5, 6)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchListIndexResponse" });
     case 3:
-      return S.Array(TypedLinkSpecifier);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TypedLinkSpecifiers: S.optional(TypedLinkSpecifierList),
+          TypedLinkSpecifiers: S.optional(__S(59, __c7, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5261,7 +4587,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          LinkSpecifiers: S.optional(TypedLinkSpecifierList),
+          LinkSpecifiers: S.optional(__S(59, __c7, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5274,7 +4600,7 @@ function __c7(j: number): any {
         identifier: "ObjectIdentifierAndLinkNameTuple",
       });
     case 7:
-      return S.Array(ObjectIdentifierAndLinkNameTuple);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -5282,7 +4608,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ParentLinks: S.optional(ObjectIdentifierAndLinkNameList),
+          ParentLinks: S.optional(__S(63, __c7, 7)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5291,49 +4617,49 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ListObjectAttributes: S.optional(BatchListObjectAttributesResponse),
-          ListObjectChildren: S.optional(BatchListObjectChildrenResponse),
-          GetObjectInformation: S.optional(BatchGetObjectInformationResponse),
-          GetObjectAttributes: S.optional(BatchGetObjectAttributesResponse),
-          ListAttachedIndices: S.optional(BatchListAttachedIndicesResponse),
-          ListObjectParentPaths: S.optional(BatchListObjectParentPathsResponse),
-          ListObjectPolicies: S.optional(BatchListObjectPoliciesResponse),
-          ListPolicyAttachments: S.optional(BatchListPolicyAttachmentsResponse),
-          LookupPolicy: S.optional(BatchLookupPolicyResponse),
-          ListIndex: S.optional(BatchListIndexResponse),
-          ListOutgoingTypedLinks: S.optional(BatchListOutgoingTypedLinksResponse),
-          ListIncomingTypedLinks: S.optional(BatchListIncomingTypedLinksResponse),
-          GetLinkAttributes: S.optional(BatchGetLinkAttributesResponse),
-          ListObjectParents: S.optional(BatchListObjectParentsResponse),
+          ListObjectAttributes: S.optional(__S(39, __c4, 7)),
+          ListObjectChildren: S.optional(__S(41, __c5, 1)),
+          GetObjectInformation: S.optional(__S(43, __c5, 3)),
+          GetObjectAttributes: S.optional(__S(44, __c5, 4)),
+          ListAttachedIndices: S.optional(__S(47, __c5, 7)),
+          ListObjectParentPaths: S.optional(__S(50, __c6, 2)),
+          ListObjectPolicies: S.optional(__S(51, __c6, 3)),
+          ListPolicyAttachments: S.optional(__S(52, __c6, 4)),
+          LookupPolicy: S.optional(__S(57, __c7, 1)),
+          ListIndex: S.optional(__S(58, __c7, 2)),
+          ListOutgoingTypedLinks: S.optional(__S(60, __c7, 4)),
+          ListIncomingTypedLinks: S.optional(__S(61, __c7, 5)),
+          GetLinkAttributes: S.optional(__S(44, __c5, 4)),
+          ListObjectParents: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "BatchReadSuccessfulResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(BatchReadExceptionType), Message: S.optional(S.String) }),
+        S.Struct({ Type: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "BatchReadException" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          SuccessfulResponse: S.optional(BatchReadSuccessfulResponse),
-          ExceptionResponse: S.optional(BatchReadException),
+          SuccessfulResponse: S.optional(__S(65, __c8, 1)),
+          ExceptionResponse: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({
         identifier: "BatchReadOperationResponse",
       });
     case 4:
-      return S.Array(BatchReadOperationResponse);
+      return S.Array(__S(67, __c8, 3));
     case 5:
-      return S.suspend(() =>
-        S.Struct({ Responses: S.optional(BatchReadOperationResponseList) }),
-      ).annotate({ identifier: "BatchReadResponse" });
+      return S.suspend(() => S.Struct({ Responses: S.optional(__S(68, __c8, 4)) })).annotate({
+        identifier: "BatchReadResponse",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          SchemaFacet: SchemaFacetList,
-          ObjectAttributeList: AttributeKeyAndValueList,
-          ParentReference: S.optional(ObjectReference),
+          SchemaFacet: __S(42, __c5, 2),
+          ObjectAttributeList: __S(4, __c0, 4),
+          ParentReference: S.optional(__S(5, __c0, 5)),
           LinkName: S.optional(S.String),
           BatchReferenceName: S.optional(S.String),
         }),
@@ -5341,8 +4667,8 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ParentReference: ObjectReference,
-          ChildReference: ObjectReference,
+          ParentReference: __S(5, __c0, 5),
+          ChildReference: __S(5, __c0, 5),
           LinkName: S.String,
         }),
       ).annotate({ identifier: "BatchAttachObject" });
@@ -5353,7 +4679,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ParentReference: ObjectReference,
+          ParentReference: __S(5, __c0, 5),
           LinkName: S.String,
           BatchReferenceName: S.optional(S.String),
         }),
@@ -5361,40 +4687,40 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ObjectAttributeActionType: S.optional(UpdateActionType),
-          ObjectAttributeUpdateValue: S.optional(TypedAttributeValue),
+          ObjectAttributeActionType: S.optional(S.String),
+          ObjectAttributeUpdateValue: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "ObjectAttributeAction" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ObjectAttributeKey: S.optional(AttributeKey),
-          ObjectAttributeAction: S.optional(ObjectAttributeAction),
+          ObjectAttributeKey: S.optional(__S(1, __c0, 1)),
+          ObjectAttributeAction: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "ObjectAttributeUpdate" });
     case 3:
-      return S.Array(ObjectAttributeUpdate);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ ObjectReference: ObjectReference, AttributeUpdates: ObjectAttributeUpdateList }),
+        S.Struct({ ObjectReference: __S(5, __c0, 5), AttributeUpdates: __S(75, __c9, 3) }),
       ).annotate({
         identifier: "BatchUpdateObjectAttributes",
       });
     case 5:
-      return S.suspend(() => S.Struct({ ObjectReference: ObjectReference })).annotate({
+      return S.suspend(() => S.Struct({ ObjectReference: __S(5, __c0, 5) })).annotate({
         identifier: "BatchDeleteObject",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          SchemaFacet: SchemaFacet,
-          ObjectAttributeList: AttributeKeyAndValueList,
-          ObjectReference: ObjectReference,
+          SchemaFacet: __S(0, __c0, 0),
+          ObjectAttributeList: __S(4, __c0, 4),
+          ObjectReference: __S(5, __c0, 5),
         }),
       ).annotate({ identifier: "BatchAddFacetToObject" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ SchemaFacet: SchemaFacet, ObjectReference: ObjectReference }),
+        S.Struct({ SchemaFacet: __S(0, __c0, 0), ObjectReference: __S(5, __c0, 5) }),
       ).annotate({
         identifier: "BatchRemoveFacetFromObject",
       });
@@ -5404,49 +4730,49 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PolicyReference: ObjectReference, ObjectReference: ObjectReference }),
+        S.Struct({ PolicyReference: __S(5, __c0, 5), ObjectReference: __S(5, __c0, 5) }),
       ).annotate({ identifier: "BatchAttachPolicy" });
     case 1:
-      return S.Array(AttributeKey);
+      return S.Array(__S(1, __c0, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          OrderedIndexedAttributeList: AttributeKeyList,
+          OrderedIndexedAttributeList: __S(81, __c10, 1),
           IsUnique: S.Boolean,
-          ParentReference: S.optional(ObjectReference),
+          ParentReference: S.optional(__S(5, __c0, 5)),
           LinkName: S.optional(S.String),
           BatchReferenceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchCreateIndex" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ IndexReference: ObjectReference, TargetReference: ObjectReference }),
+        S.Struct({ IndexReference: __S(5, __c0, 5), TargetReference: __S(5, __c0, 5) }),
       ).annotate({ identifier: "BatchAttachToIndex" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SourceObjectReference: ObjectReference,
-          TargetObjectReference: ObjectReference,
-          TypedLinkFacet: TypedLinkSchemaAndFacetName,
-          Attributes: AttributeNameAndValueList,
+          SourceObjectReference: __S(5, __c0, 5),
+          TargetObjectReference: __S(5, __c0, 5),
+          TypedLinkFacet: __S(14, __c1, 6),
+          Attributes: __S(16, __c2, 0),
         }),
       ).annotate({ identifier: "BatchAttachTypedLink" });
     case 5:
-      return S.suspend(() => S.Struct({ TypedLinkSpecifier: TypedLinkSpecifier })).annotate({
+      return S.suspend(() => S.Struct({ TypedLinkSpecifier: __S(18, __c2, 2) })).annotate({
         identifier: "BatchDetachTypedLink",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AttributeActionType: S.optional(UpdateActionType),
-          AttributeUpdateValue: S.optional(TypedAttributeValue),
+          AttributeActionType: S.optional(S.String),
+          AttributeUpdateValue: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "LinkAttributeAction" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AttributeKey: S.optional(AttributeKey),
-          AttributeAction: S.optional(LinkAttributeAction),
+          AttributeKey: S.optional(__S(1, __c0, 1)),
+          AttributeAction: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({ identifier: "LinkAttributeUpdate" });
   }
@@ -5454,12 +4780,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LinkAttributeUpdate);
+      return S.Array(__S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TypedLinkSpecifier: TypedLinkSpecifier,
-          AttributeUpdates: LinkAttributeUpdateList,
+          TypedLinkSpecifier: __S(18, __c2, 2),
+          AttributeUpdates: __S(88, __c11, 0),
         }),
       ).annotate({
         identifier: "BatchUpdateLinkAttributes",
@@ -5467,30 +4793,30 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CreateObject: S.optional(BatchCreateObject),
-          AttachObject: S.optional(BatchAttachObject),
-          DetachObject: S.optional(BatchDetachObject),
-          UpdateObjectAttributes: S.optional(BatchUpdateObjectAttributes),
-          DeleteObject: S.optional(BatchDeleteObject),
-          AddFacetToObject: S.optional(BatchAddFacetToObject),
-          RemoveFacetFromObject: S.optional(BatchRemoveFacetFromObject),
-          AttachPolicy: S.optional(BatchAttachPolicy),
-          DetachPolicy: S.optional(BatchDetachPolicy),
-          CreateIndex: S.optional(BatchCreateIndex),
-          AttachToIndex: S.optional(BatchAttachToIndex),
-          DetachFromIndex: S.optional(BatchDetachFromIndex),
-          AttachTypedLink: S.optional(BatchAttachTypedLink),
-          DetachTypedLink: S.optional(BatchDetachTypedLink),
-          UpdateLinkAttributes: S.optional(BatchUpdateLinkAttributes),
+          CreateObject: S.optional(__S(70, __c8, 6)),
+          AttachObject: S.optional(__S(71, __c8, 7)),
+          DetachObject: S.optional(__S(72, __c9, 0)),
+          UpdateObjectAttributes: S.optional(__S(76, __c9, 4)),
+          DeleteObject: S.optional(__S(77, __c9, 5)),
+          AddFacetToObject: S.optional(__S(78, __c9, 6)),
+          RemoveFacetFromObject: S.optional(__S(79, __c9, 7)),
+          AttachPolicy: S.optional(__S(80, __c10, 0)),
+          DetachPolicy: S.optional(__S(80, __c10, 0)),
+          CreateIndex: S.optional(__S(82, __c10, 2)),
+          AttachToIndex: S.optional(__S(83, __c10, 3)),
+          DetachFromIndex: S.optional(__S(83, __c10, 3)),
+          AttachTypedLink: S.optional(__S(84, __c10, 4)),
+          DetachTypedLink: S.optional(__S(85, __c10, 5)),
+          UpdateLinkAttributes: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "BatchWriteOperation" });
     case 3:
-      return S.Array(BatchWriteOperation);
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          Operations: BatchWriteOperationList,
+          Operations: __S(91, __c11, 3),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/batchwrite" }),
@@ -5544,38 +4870,38 @@ function __c12(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        S.Struct({ TypedLinkSpecifier: S.optional(TypedLinkSpecifier) }),
+        S.Struct({ TypedLinkSpecifier: S.optional(__S(18, __c2, 2)) }),
       ).annotate({
         identifier: "BatchAttachTypedLinkResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CreateObject: S.optional(BatchCreateObjectResponse),
-          AttachObject: S.optional(BatchAttachObjectResponse),
-          DetachObject: S.optional(BatchDetachObjectResponse),
-          UpdateObjectAttributes: S.optional(BatchUpdateObjectAttributesResponse),
-          DeleteObject: S.optional(BatchDeleteObjectResponse),
-          AddFacetToObject: S.optional(BatchAddFacetToObjectResponse),
-          RemoveFacetFromObject: S.optional(BatchRemoveFacetFromObjectResponse),
-          AttachPolicy: S.optional(BatchAttachPolicyResponse),
-          DetachPolicy: S.optional(BatchDetachPolicyResponse),
-          CreateIndex: S.optional(BatchCreateIndexResponse),
-          AttachToIndex: S.optional(BatchAttachToIndexResponse),
-          DetachFromIndex: S.optional(BatchDetachFromIndexResponse),
-          AttachTypedLink: S.optional(BatchAttachTypedLinkResponse),
-          DetachTypedLink: S.optional(BatchDetachTypedLinkResponse),
-          UpdateLinkAttributes: S.optional(BatchUpdateLinkAttributesResponse),
+          CreateObject: S.optional(__S(93, __c11, 5)),
+          AttachObject: S.optional(__S(94, __c11, 6)),
+          DetachObject: S.optional(__S(95, __c11, 7)),
+          UpdateObjectAttributes: S.optional(__S(93, __c11, 5)),
+          DeleteObject: S.optional(__S(7, __c0, 7)),
+          AddFacetToObject: S.optional(__S(7, __c0, 7)),
+          RemoveFacetFromObject: S.optional(__S(96, __c12, 0)),
+          AttachPolicy: S.optional(__S(7, __c0, 7)),
+          DetachPolicy: S.optional(__S(7, __c0, 7)),
+          CreateIndex: S.optional(__S(97, __c12, 1)),
+          AttachToIndex: S.optional(__S(98, __c12, 2)),
+          DetachFromIndex: S.optional(__S(99, __c12, 3)),
+          AttachTypedLink: S.optional(__S(100, __c12, 4)),
+          DetachTypedLink: S.optional(__S(7, __c0, 7)),
+          UpdateLinkAttributes: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({
         identifier: "BatchWriteOperationResponse",
       });
     case 6:
-      return S.Array(BatchWriteOperationResponse);
+      return S.Array(__S(101, __c12, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Responses: S.optional(BatchWriteOperationResponseList) }),
-      ).annotate({ identifier: "BatchWriteResponse" });
+      return S.suspend(() => S.Struct({ Responses: S.optional(__S(102, __c12, 6)) })).annotate({
+        identifier: "BatchWriteResponse",
+      });
   }
 }
 function __c13(j: number): any {
@@ -5607,17 +4933,17 @@ function __c13(j: number): any {
       ).annotate({ identifier: "CreateDirectoryResponse" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(RuleType), Parameters: S.optional(RuleParameterMap) }),
+        S.Struct({ Type: S.optional(S.String), Parameters: S.optional(__S(40, __c5, 0)) }),
       ).annotate({ identifier: "Rule" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ Rule.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(106, __c13, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Type: FacetAttributeType,
-          DefaultValue: S.optional(TypedAttributeValue),
+          Type: S.String,
+          DefaultValue: S.optional(__S(2, __c0, 2)),
           IsImmutable: S.optional(S.Boolean),
-          Rules: S.optional(RuleMap),
+          Rules: S.optional(__S(107, __c13, 3)),
         }),
       ).annotate({ identifier: "FacetAttributeDefinition" });
     case 5:
@@ -5628,13 +4954,13 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          AttributeDefinition: S.optional(FacetAttributeDefinition),
-          AttributeReference: S.optional(FacetAttributeReference),
-          RequiredBehavior: S.optional(RequiredAttributeBehavior),
+          AttributeDefinition: S.optional(__S(108, __c13, 4)),
+          AttributeReference: S.optional(__S(109, __c13, 5)),
+          RequiredBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "FacetAttribute" });
     case 7:
-      return S.Array(FacetAttribute);
+      return S.Array(__S(110, __c13, 6));
   }
 }
 function __c14(j: number): any {
@@ -5644,9 +4970,9 @@ function __c14(j: number): any {
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           Name: S.String,
-          Attributes: S.optional(FacetAttributeList),
-          ObjectType: S.optional(ObjectType),
-          FacetStyle: S.optional(FacetStyle),
+          Attributes: S.optional(__S(111, __c13, 7)),
+          ObjectType: S.optional(S.String),
+          FacetStyle: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/facet/create" }),
@@ -5662,9 +4988,9 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          OrderedIndexedAttributeList: AttributeKeyList,
+          OrderedIndexedAttributeList: __S(81, __c10, 1),
           IsUnique: S.Boolean,
-          ParentReference: S.optional(ObjectReference),
+          ParentReference: S.optional(__S(5, __c0, 5)),
           LinkName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5681,9 +5007,9 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          SchemaFacets: SchemaFacetList,
-          ObjectAttributeList: S.optional(AttributeKeyAndValueList),
-          ParentReference: S.optional(ObjectReference),
+          SchemaFacets: __S(42, __c5, 2),
+          ObjectAttributeList: S.optional(__S(4, __c0, 4)),
+          ParentReference: S.optional(__S(5, __c0, 5)),
           LinkName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5717,23 +5043,23 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Type: FacetAttributeType,
-          DefaultValue: S.optional(TypedAttributeValue),
+          Type: S.String,
+          DefaultValue: S.optional(__S(2, __c0, 2)),
           IsImmutable: S.optional(S.Boolean),
-          Rules: S.optional(RuleMap),
-          RequiredBehavior: RequiredAttributeBehavior,
+          Rules: S.optional(__S(107, __c13, 3)),
+          RequiredBehavior: S.String,
         }),
       ).annotate({
         identifier: "TypedLinkAttributeDefinition",
       });
     case 6:
-      return S.Array(TypedLinkAttributeDefinition);
+      return S.Array(__S(117, __c14, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Attributes: TypedLinkAttributeDefinitionList,
-          IdentityAttributeOrder: AttributeNameList,
+          Attributes: __S(118, __c14, 6),
+          IdentityAttributeOrder: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "TypedLinkFacet" });
   }
@@ -5744,7 +5070,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          Facet: TypedLinkFacet,
+          Facet: __S(119, __c14, 7),
         }).pipe(
           T.all(
             T.Http({
@@ -5798,7 +5124,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/object/delete" }),
@@ -5848,8 +5174,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          IndexReference: ObjectReference,
-          TargetReference: ObjectReference,
+          IndexReference: __S(5, __c0, 5),
+          TargetReference: __S(5, __c0, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/index/detach" }),
@@ -5873,7 +5199,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ParentReference: ObjectReference,
+          ParentReference: __S(5, __c0, 5),
           LinkName: S.String,
         }).pipe(
           T.all(
@@ -5890,8 +5216,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          PolicyReference: ObjectReference,
-          ObjectReference: ObjectReference,
+          PolicyReference: __S(5, __c0, 5),
+          ObjectReference: __S(5, __c0, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/policy/detach" }),
@@ -5907,7 +5233,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          TypedLinkSpecifier: TypedLinkSpecifier,
+          TypedLinkSpecifier: __S(18, __c2, 2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/typedlink/detach" }),
@@ -5989,12 +5315,12 @@ function __c17(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           DirectoryArn: S.optional(S.String),
-          State: S.optional(DirectoryState),
+          State: S.optional(S.String),
           CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Directory" });
     case 2:
-      return S.suspend(() => S.Struct({ Directory: Directory })).annotate({
+      return S.suspend(() => S.Struct({ Directory: __S(137, __c17, 1) })).annotate({
         identifier: "GetDirectoryResponse",
       });
     case 3:
@@ -6017,21 +5343,21 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          ObjectType: S.optional(ObjectType),
-          FacetStyle: S.optional(FacetStyle),
+          ObjectType: S.optional(S.String),
+          FacetStyle: S.optional(S.String),
         }),
       ).annotate({ identifier: "Facet" });
     case 5:
-      return S.suspend(() => S.Struct({ Facet: S.optional(Facet) })).annotate({
+      return S.suspend(() => S.Struct({ Facet: S.optional(__S(140, __c17, 4)) })).annotate({
         identifier: "GetFacetResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          TypedLinkSpecifier: TypedLinkSpecifier,
-          AttributeNames: AttributeNameList,
-          ConsistencyLevel: S.optional(ConsistencyLevel),
+          TypedLinkSpecifier: __S(18, __c2, 2),
+          AttributeNames: __S(25, __c3, 1),
+          ConsistencyLevel: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({
@@ -6050,12 +5376,10 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
-          SchemaFacet: SchemaFacet,
-          AttributeNames: AttributeNameList,
+          ObjectReference: __S(5, __c0, 5),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
+          SchemaFacet: __S(0, __c0, 0),
+          AttributeNames: __S(25, __c3, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -6080,10 +5404,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          ObjectReference: __S(5, __c0, 5),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/object/information" }),
@@ -6134,7 +5456,7 @@ function __c18(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ IdentityAttributeOrder: S.optional(AttributeNameList) }),
+        S.Struct({ IdentityAttributeOrder: S.optional(__S(25, __c3, 1)) }),
       ).annotate({
         identifier: "GetTypedLinkFacetInformationResponse",
       });
@@ -6160,7 +5482,7 @@ function __c18(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
+        S.Struct({ SchemaArns: S.optional(__S(25, __c3, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAppliedSchemaArnsResponse",
       });
@@ -6168,12 +5490,10 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          TargetReference: ObjectReference,
+          TargetReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/object/indices" }),
@@ -6211,7 +5531,7 @@ function __c19(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          state: S.optional(DirectoryState),
+          state: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/directory/list" }),
@@ -6224,10 +5544,10 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListDirectoriesRequest" });
     case 2:
-      return S.Array(Directory);
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Directories: DirectoryList, NextToken: S.optional(S.String) }),
+        S.Struct({ Directories: __S(154, __c19, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDirectoriesResponse" });
     case 4:
       return S.suspend(() =>
@@ -6251,7 +5571,7 @@ function __c19(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Attributes: S.optional(FacetAttributeList), NextToken: S.optional(S.String) }),
+        S.Struct({ Attributes: S.optional(__S(111, __c13, 7)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListFacetAttributesResponse",
       });
@@ -6274,7 +5594,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListFacetNamesRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ FacetNames: S.optional(FacetNameList), NextToken: S.optional(S.String) }),
+        S.Struct({ FacetNames: S.optional(__S(25, __c3, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFacetNamesResponse" });
   }
 }
@@ -6284,12 +5604,12 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
-          FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-          FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
+          ObjectReference: __S(5, __c0, 5),
+          FilterAttributeRanges: S.optional(__S(33, __c4, 1)),
+          FilterTypedLink: S.optional(__S(14, __c1, 6)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel),
+          ConsistencyLevel: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/typedlink/incoming" }),
@@ -6307,13 +5627,11 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          RangesOnIndexedValues: S.optional(ObjectAttributeRangeList),
-          IndexReference: ObjectReference,
+          RangesOnIndexedValues: S.optional(__S(30, __c3, 6)),
+          IndexReference: __S(5, __c0, 5),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/index/targets" }),
@@ -6348,13 +5666,11 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
-          FacetFilter: S.optional(SchemaFacet),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
+          FacetFilter: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/object/attributes" }),
@@ -6372,12 +5688,10 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/object/children" }),
@@ -6395,7 +5709,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -6415,12 +5729,10 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
           IncludeAllLinksToEachParent: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -6436,9 +5748,9 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Parents: S.optional(ObjectIdentifierToLinkNameMap),
+          Parents: S.optional(__S(40, __c5, 0)),
           NextToken: S.optional(S.String),
-          ParentLinks: S.optional(ObjectIdentifierAndLinkNameList),
+          ParentLinks: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "ListObjectParentsResponse",
@@ -6451,12 +5763,10 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/object/policy" }),
@@ -6474,12 +5784,12 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
-          FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-          FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
+          ObjectReference: __S(5, __c0, 5),
+          FilterAttributeRanges: S.optional(__S(33, __c4, 1)),
+          FilterTypedLink: S.optional(__S(14, __c1, 6)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel),
+          ConsistencyLevel: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/typedlink/outgoing" }),
@@ -6497,12 +5807,10 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          PolicyReference: ObjectReference,
+          PolicyReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-            T.HttpHeader("x-amz-consistency-level"),
-          ),
+          ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/policy/attachment" }),
@@ -6559,10 +5867,10 @@ function __c21(j: number): any {
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 6:
-      return S.Array(Tag);
+      return S.Array(__S(173, __c21, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }),
+        S.Struct({ Tags: S.optional(__S(174, __c21, 6)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -6596,7 +5904,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(TypedLinkAttributeDefinitionList),
+          Attributes: S.optional(__S(118, __c14, 6)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6626,7 +5934,7 @@ function __c22(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ FacetNames: S.optional(TypedLinkNameList), NextToken: S.optional(S.String) }),
+        S.Struct({ FacetNames: S.optional(__S(25, __c3, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTypedLinkFacetNamesResponse",
       });
@@ -6634,7 +5942,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
+          ObjectReference: __S(5, __c0, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -6651,7 +5959,7 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PolicyToPathList: S.optional(PolicyToPathList),
+          PolicyToPathList: S.optional(__S(56, __c7, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookupPolicyResponse" });
@@ -6705,8 +6013,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          SchemaFacet: SchemaFacet,
-          ObjectReference: ObjectReference,
+          SchemaFacet: __S(0, __c0, 0),
+          ObjectReference: __S(5, __c0, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/object/facets/delete" }),
@@ -6722,7 +6030,7 @@ function __c23(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(174, __c21, 6) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/tags/add" }),
             svc,
@@ -6735,7 +6043,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(25, __c3, 1) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/tags/remove" }),
             svc,
@@ -6748,17 +6056,17 @@ function __c23(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Attribute: S.optional(FacetAttribute), Action: S.optional(UpdateActionType) }),
+        S.Struct({ Attribute: S.optional(__S(110, __c13, 6)), Action: S.optional(S.String) }),
       ).annotate({ identifier: "FacetAttributeUpdate" });
     case 6:
-      return S.Array(FacetAttributeUpdate);
+      return S.Array(__S(189, __c23, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           Name: S.String,
-          AttributeUpdates: S.optional(FacetAttributeUpdateList),
-          ObjectType: S.optional(ObjectType),
+          AttributeUpdates: S.optional(__S(190, __c23, 6)),
+          ObjectType: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/facet" }),
@@ -6778,8 +6086,8 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          TypedLinkSpecifier: TypedLinkSpecifier,
-          AttributeUpdates: LinkAttributeUpdateList,
+          TypedLinkSpecifier: __S(18, __c2, 2),
+          AttributeUpdates: __S(88, __c11, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -6800,8 +6108,8 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          ObjectReference: ObjectReference,
-          AttributeUpdates: ObjectAttributeUpdateList,
+          ObjectReference: __S(5, __c0, 5),
+          AttributeUpdates: __S(75, __c9, 3),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/object/update" }),
@@ -6833,19 +6141,19 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UpdateSchemaRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Attribute: TypedLinkAttributeDefinition, Action: UpdateActionType }),
+        S.Struct({ Attribute: __S(117, __c14, 5), Action: S.String }),
       ).annotate({
         identifier: "TypedLinkFacetAttributeUpdate",
       });
     case 4:
-      return S.Array(TypedLinkFacetAttributeUpdate);
+      return S.Array(__S(195, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           Name: S.String,
-          AttributeUpdates: TypedLinkFacetAttributeUpdateList,
-          IdentityAttributeOrder: AttributeNameList,
+          AttributeUpdates: __S(196, __c24, 4),
+          IdentityAttributeOrder: __S(25, __c3, 1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/typedlink/facet" }),
@@ -6919,4 +6227,9 @@ function __c25(j: number): any {
         identifier: "UpgradePublishedSchemaResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

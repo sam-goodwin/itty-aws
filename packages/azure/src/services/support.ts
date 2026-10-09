@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The type of resource. */
 export type Type = "Microsoft.Support/supportTickets" | "Microsoft.Support/communications";
-const Type = S.String;
-
 export interface CheckCommunicationNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -23,11 +23,6 @@ export interface CheckCommunicationNameAvailabilityRequest {
   /** The type of resource. */
   type: Type | (string & {});
 }
-const CheckCommunicationNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckCommunicationNameAvailabilityRequest>;
-
 /** Output of check name availability API. */
 export interface CheckNameAvailabilityOutput {
   /** Indicates whether the name is available. */
@@ -37,11 +32,6 @@ export interface CheckNameAvailabilityOutput {
   /** The detailed error message describing why the name is not available. */
   message?: string;
 }
-const CheckNameAvailabilityOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckNameAvailabilityOutput>;
-
 export interface CheckCommunicationsNoSubscriptionNameAvailabilityRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
@@ -50,11 +40,6 @@ export interface CheckCommunicationsNoSubscriptionNameAvailabilityRequest {
   /** The type of resource. */
   type: Type | (string & {});
 }
-const CheckCommunicationsNoSubscriptionNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckCommunicationsNoSubscriptionNameAvailabilityRequest>;
-
 export interface CheckSupportTicketNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -63,22 +48,12 @@ export interface CheckSupportTicketNameAvailabilityRequest {
   /** The type of resource. */
   type: Type | (string & {});
 }
-const CheckSupportTicketNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckSupportTicketNameAvailabilityRequest>;
-
 export interface CheckSupportTicketsNoSubscriptionNameAvailabilityRequest {
   /** The resource name to validate. */
   name: string;
   /** The type of resource. */
   type: Type | (string & {});
 }
-const CheckSupportTicketsNoSubscriptionNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CheckSupportTicketsNoSubscriptionNameAvailabilityRequest>;
-
 /** Describes the properties of a communication resource. */
 export interface CommunicationDetailsPropertiesInput {
   /** Email address of the sender. This property is required if called by a service principal. */
@@ -88,11 +63,6 @@ export interface CommunicationDetailsPropertiesInput {
   /** Body of the communication. */
   body: string;
 }
-const CommunicationDetailsPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CommunicationDetailsPropertiesInput>;
-
 export interface CreateCommunicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -103,19 +73,10 @@ export interface CreateCommunicationRequest {
   /** Properties of the resource. */
   properties: CommunicationDetailsPropertiesInput;
 }
-const CreateCommunicationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateCommunicationRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -131,16 +92,10 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
-
 /** Communication type. */
 export type CommunicationType = "web" | "phone";
-const CommunicationType = S.String;
-
 /** Direction of communication. */
 export type CommunicationDirection = "inbound" | "outbound";
-const CommunicationDirection = S.String;
-
 /** Describes the properties of a communication resource. */
 export interface CommunicationDetailsProperties {
   /** Communication type. */
@@ -156,11 +111,6 @@ export interface CommunicationDetailsProperties {
   /** Time in UTC (ISO 8601 format) when the communication was created. */
   createdDate?: string;
 }
-const CommunicationDetailsProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CommunicationDetailsProperties>;
-
 export interface CreateCommunicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -173,11 +123,6 @@ export interface CreateCommunicationResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-const CreateCommunicationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateCommunicationResponse>;
-
 export interface CreateCommunicationsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
@@ -186,11 +131,6 @@ export interface CreateCommunicationsNoSubscriptionRequest {
   /** Properties of the resource. */
   properties: CommunicationDetailsPropertiesInput;
 }
-const CreateCommunicationsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateCommunicationsNoSubscriptionRequest>;
-
 export interface CreateCommunicationsNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -203,9 +143,6 @@ export interface CreateCommunicationsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-const CreateCommunicationsNoSubscriptionResponse =
-  CreateCommunicationResponse as any as S.Schema<CreateCommunicationsNoSubscriptionResponse>;
-
 /** Describes the properties of a file. */
 export interface FileDetailsPropertiesInput {
   /** Size of each chunk. The size of each chunk should be provided in bytes and must not exceed 2.5 megabytes (MB). */
@@ -215,11 +152,6 @@ export interface FileDetailsPropertiesInput {
   /** Number of chunks to be uploaded. The maximum number of allowed chunks is 2. */
   numberOfChunks?: number;
 }
-const FileDetailsPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<FileDetailsPropertiesInput>;
-
 export interface CreateFileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -230,8 +162,6 @@ export interface CreateFileRequest {
   /** Properties of the resource */
   properties?: FileDetailsPropertiesInput;
 }
-const CreateFileRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateFileRequest>;
-
 /** Describes the properties of a file. */
 export interface FileDetailsProperties {
   /** Time in UTC (ISO 8601 format) when file workspace was created. */
@@ -243,11 +173,6 @@ export interface FileDetailsProperties {
   /** Number of chunks to be uploaded. The maximum number of allowed chunks is 2. */
   numberOfChunks?: number;
 }
-const FileDetailsProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<FileDetailsProperties>;
-
 export interface CreateFileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -260,8 +185,6 @@ export interface CreateFileResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-const CreateFileResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateFileResponse>;
-
 export interface CreateFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
@@ -270,11 +193,6 @@ export interface CreateFilesNoSubscriptionRequest {
   /** Properties of the resource */
   properties?: FileDetailsPropertiesInput;
 }
-const CreateFilesNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateFilesNoSubscriptionRequest>;
-
 export interface CreateFilesNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -287,22 +205,12 @@ export interface CreateFilesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-const CreateFilesNoSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateFilesNoSubscriptionResponse>;
-
 export interface CreateFileWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-const CreateFileWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateFileWorkspaceRequest>;
-
 /** Describes the properties of a file workspace. */
 export interface FileWorkspaceDetailsProperties {
   /** Time in UTC (ISO 8601 format) when file workspace was created. */
@@ -310,11 +218,6 @@ export interface FileWorkspaceDetailsProperties {
   /** Time in UTC (ISO 8601 format) when file workspace is going to expire. */
   expirationTime?: string;
 }
-const FileWorkspaceDetailsProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<FileWorkspaceDetailsProperties>;
-
 export interface CreateFileWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -327,20 +230,10 @@ export interface CreateFileWorkspaceResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-const CreateFileWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateFileWorkspaceResponse>;
-
 export interface CreateFileWorkspacesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-const CreateFileWorkspacesNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateFileWorkspacesNoSubscriptionRequest>;
-
 export interface CreateFileWorkspacesNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -353,28 +246,14 @@ export interface CreateFileWorkspacesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-const CreateFileWorkspacesNoSubscriptionResponse =
-  CreateFileWorkspaceResponse as any as S.Schema<CreateFileWorkspacesNoSubscriptionResponse>;
-
 /** A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers. */
 export type SeverityLevel = "minimal" | "moderate" | "critical" | "highestcriticalimpact";
-const SeverityLevel = S.String;
-
 /** Advanced diagnostic consent to be updated on the support ticket. */
 export type Consent = "Yes" | "No";
-const Consent = S.String;
-
 /** Preferred contact method. */
 export type PreferredContactMethod = "email" | "phone";
-const PreferredContactMethod = S.String;
-
 /** Additional email addresses listed will be copied on any correspondence about the support ticket. */
 export type ContactProfileAdditionalEmailAddressesList = Array<string>;
-const ContactProfileAdditionalEmailAddressesList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ContactProfileAdditionalEmailAddressesList>;
-
 /** Contact information associated with the support ticket. */
 export interface ContactProfile {
   /** First name. */
@@ -396,15 +275,8 @@ export interface ContactProfile {
   /** Preferred language of support from Azure. Support languages vary based on the severity you choose for your support ticket. Learn more at [Azure Severity and responsiveness](https://azure.microsoft.com/support/plans/response). Use the standard language-country code. Valid values are 'en-us' for English, 'zh-hans' for Chinese, 'es-es' for Spanish, 'fr-fr' for French, 'ja-jp' for Japanese, 'ko-kr' for Korean, 'ru-ru' for Russian, 'pt-br' for Portuguese, 'it-it' for Italian, 'zh-tw' for Chinese and 'de-de' for German. */
   preferredSupportLanguage: string;
 }
-const ContactProfile = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ContactProfile>;
-
 /** Service Level Agreement details for a support ticket. */
 export interface ServiceLevelAgreementInput {}
-const ServiceLevelAgreementInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ServiceLevelAgreementInput>;
-
 /** Support engineer information. */
 export type SupportEngineerInput = ServiceLevelAgreementInput;
 /** Additional information for technical support ticket. */
@@ -412,11 +284,6 @@ export interface TechnicalTicketDetails {
   /** This is the resource Id of the Azure service resource (For example: A virtual machine resource or an HDInsight resource) for which the support ticket is created. */
   resourceId?: string;
 }
-const TechnicalTicketDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<TechnicalTicketDetails>;
-
 /** This property is required for providing the region and new quota limits. */
 export interface QuotaChangeRequest {
   /** Region for which the quota increase request is being made. */
@@ -424,15 +291,8 @@ export interface QuotaChangeRequest {
   /** Payload of the quota increase request. */
   payload?: string;
 }
-const QuotaChangeRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<QuotaChangeRequest>;
-
 /** This property is required for providing the region and new quota limits. */
 export type QuotaTicketDetailsQuotaChangeRequestsList = Array<QuotaChangeRequest>;
-const QuotaTicketDetailsQuotaChangeRequestsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<QuotaTicketDetailsQuotaChangeRequestsList>;
-
 /** Additional set of information required for quota increase support ticket for certain quota types, e.g.: Virtual machine cores. Get complete details about Quota payload support request along with examples at [Support quota request](https://aka.ms/supportrpquotarequestpayload). */
 export interface QuotaTicketDetails {
   /** Required for certain quota types when there is a sub type, such as Batch, for which you are requesting a quota increase. */
@@ -442,12 +302,8 @@ export interface QuotaTicketDetails {
   /** This property is required for providing the region and new quota limits. */
   quotaChangeRequests?: QuotaTicketDetailsQuotaChangeRequestsList;
 }
-const QuotaTicketDetails = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<QuotaTicketDetails>;
-
 /** User consent value provided */
 export type UserConsent = "Yes" | "No";
-const UserConsent = S.String;
-
 /** This property indicates secondary consent for the support ticket. */
 export interface SecondaryConsent {
   /** User consent value provided */
@@ -455,15 +311,8 @@ export interface SecondaryConsent {
   /** The service name for which the secondary consent is being provided. The value needs to be retrieved from the Problem Classification API response. */
   type?: string;
 }
-const SecondaryConsent = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SecondaryConsent>;
-
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesInputSecondaryConsentList = Array<SecondaryConsent>;
-const SupportTicketDetailsPropertiesInputSecondaryConsentList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<SupportTicketDetailsPropertiesInputSecondaryConsentList>;
-
 /** Describes the properties of a support ticket. */
 export interface SupportTicketDetailsPropertiesInput {
   /** System generated support ticket Id that is unique. */
@@ -505,11 +354,6 @@ export interface SupportTicketDetailsPropertiesInput {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketDetailsPropertiesInputSecondaryConsentList;
 }
-const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<SupportTicketDetailsPropertiesInput>;
-
 export interface CreateSupportTicketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -518,11 +362,6 @@ export interface CreateSupportTicketRequest {
   /** Properties of the resource. */
   properties: SupportTicketDetailsPropertiesInput;
 }
-const CreateSupportTicketRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateSupportTicketRequest>;
-
 /** Service Level Agreement details for a support ticket. */
 export interface ServiceLevelAgreement {
   /** Time in UTC (ISO 8601 format) when the service level agreement starts. */
@@ -532,27 +371,15 @@ export interface ServiceLevelAgreement {
   /** Service Level Agreement in minutes. */
   slaMinutes?: number;
 }
-const ServiceLevelAgreement = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ServiceLevelAgreement>;
-
 /** Support engineer information. */
 export interface SupportEngineer {
   /** Email address of the Azure Support engineer assigned to the support ticket. */
   emailAddress?: string;
 }
-const SupportEngineer = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SupportEngineer>;
-
 /** This property indicates if support ticket is a temporary ticket. */
 export type IsTemporaryTicket = "Yes" | "No";
-const IsTemporaryTicket = S.String;
-
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesSecondaryConsentList = Array<SecondaryConsent>;
-const SupportTicketDetailsPropertiesSecondaryConsentList =
-  SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
-
 /** Describes the properties of a support ticket. */
 export interface SupportTicketDetailsProperties {
   /** System generated support ticket Id that is unique. */
@@ -610,11 +437,6 @@ export interface SupportTicketDetailsProperties {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketDetailsPropertiesSecondaryConsentList;
 }
-const SupportTicketDetailsProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<SupportTicketDetailsProperties>;
-
 export interface CreateSupportTicketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -627,22 +449,12 @@ export interface CreateSupportTicketResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-const CreateSupportTicketResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateSupportTicketResponse>;
-
 export interface CreateSupportTicketsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
   /** Properties of the resource. */
   properties: SupportTicketDetailsPropertiesInput;
 }
-const CreateSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateSupportTicketsNoSubscriptionRequest>;
-
 export interface CreateSupportTicketsNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -655,9 +467,6 @@ export interface CreateSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-const CreateSupportTicketsNoSubscriptionResponse =
-  CreateSupportTicketResponse as any as S.Schema<CreateSupportTicketsNoSubscriptionResponse>;
-
 export interface GetChatTranscriptRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -666,11 +475,6 @@ export interface GetChatTranscriptRequest {
   /** The name of the ChatTranscriptDetails */
   chatTranscriptName: string;
 }
-const GetChatTranscriptRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetChatTranscriptRequest>;
-
 /** Describes the properties of a Message Details resource. */
 export interface MessageProperties {
   /** Content type. */
@@ -684,15 +488,8 @@ export interface MessageProperties {
   /** Time in UTC (ISO 8601 format) when the communication was created. */
   createdDate?: string;
 }
-const MessageProperties = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<MessageProperties>;
-
 /** List of chat transcript communication resources. */
 export type ChatTranscriptDetailsPropertiesMessagesList = Array<MessageProperties>;
-const ChatTranscriptDetailsPropertiesMessagesList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ChatTranscriptDetailsPropertiesMessagesList>;
-
 /** Describes the properties of a Chat Transcript Details resource. */
 export interface ChatTranscriptDetailsProperties {
   /** List of chat transcript communication resources. */
@@ -700,11 +497,6 @@ export interface ChatTranscriptDetailsProperties {
   /** Time in UTC (ISO 8601 format) when the chat began. */
   startTime?: string;
 }
-const ChatTranscriptDetailsProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ChatTranscriptDetailsProperties>;
-
 export interface GetChatTranscriptResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -717,22 +509,12 @@ export interface GetChatTranscriptResponse {
   /** Properties of the resource. */
   properties?: ChatTranscriptDetailsProperties;
 }
-const GetChatTranscriptResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetChatTranscriptResponse>;
-
 export interface GetChatTranscriptsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
   /** The name of the ChatTranscriptDetails */
   chatTranscriptName: string;
 }
-const GetChatTranscriptsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetChatTranscriptsNoSubscriptionRequest>;
-
 export interface GetChatTranscriptsNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -745,9 +527,6 @@ export interface GetChatTranscriptsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties?: ChatTranscriptDetailsProperties;
 }
-const GetChatTranscriptsNoSubscriptionResponse =
-  GetChatTranscriptResponse as any as S.Schema<GetChatTranscriptsNoSubscriptionResponse>;
-
 export interface GetCommunicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -756,11 +535,6 @@ export interface GetCommunicationRequest {
   /** The name of the CommunicationDetails */
   communicationName: string;
 }
-const GetCommunicationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetCommunicationRequest>;
-
 export interface GetCommunicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -773,22 +547,12 @@ export interface GetCommunicationResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-const GetCommunicationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetCommunicationResponse>;
-
 export interface GetCommunicationsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
   /** The name of the CommunicationDetails */
   communicationName: string;
 }
-const GetCommunicationsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetCommunicationsNoSubscriptionRequest>;
-
 export interface GetCommunicationsNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -801,9 +565,6 @@ export interface GetCommunicationsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-const GetCommunicationsNoSubscriptionResponse =
-  CreateCommunicationResponse as any as S.Schema<GetCommunicationsNoSubscriptionResponse>;
-
 export interface GetFileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -812,8 +573,6 @@ export interface GetFileRequest {
   /** The name of the FileDetails */
   fileName: string;
 }
-const GetFileRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetFileRequest>;
-
 export interface GetFileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -826,19 +585,12 @@ export interface GetFileResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-const GetFileResponse = CreateFileResponse as any as S.Schema<GetFileResponse>;
-
 export interface GetFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
   /** The name of the FileDetails */
   fileName: string;
 }
-const GetFilesNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetFilesNoSubscriptionRequest>;
-
 export interface GetFilesNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -851,20 +603,12 @@ export interface GetFilesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-const GetFilesNoSubscriptionResponse =
-  CreateFilesNoSubscriptionResponse as any as S.Schema<GetFilesNoSubscriptionResponse>;
-
 export interface GetFileWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-const GetFileWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetFileWorkspaceRequest>;
-
 export interface GetFileWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -877,20 +621,10 @@ export interface GetFileWorkspaceResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-const GetFileWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetFileWorkspaceResponse>;
-
 export interface GetFileWorkspacesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-const GetFileWorkspacesNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetFileWorkspacesNoSubscriptionRequest>;
-
 export interface GetFileWorkspacesNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -903,20 +637,12 @@ export interface GetFileWorkspacesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-const GetFileWorkspacesNoSubscriptionResponse =
-  CreateFileWorkspaceResponse as any as S.Schema<GetFileWorkspacesNoSubscriptionResponse>;
-
 export interface GetProblemClassificationRequest {
   /** Name of the Azure service. */
   serviceName: string;
   /** Name of problem classification. */
   problemClassificationName: string;
 }
-const GetProblemClassificationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetProblemClassificationRequest>;
-
 /** This property indicates whether secondary consent is present for problem classification. */
 export interface SecondaryConsentEnabled {
   /** User consent description. */
@@ -924,19 +650,9 @@ export interface SecondaryConsentEnabled {
   /** The Azure service for which secondary consent is needed for case creation. */
   type?: string;
 }
-const SecondaryConsentEnabled = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SecondaryConsentEnabled>;
-
 /** This property indicates whether secondary consent is present for problem classification */
 export type ProblemClassificationPropertiesSecondaryConsentEnabledList =
   Array<SecondaryConsentEnabled>;
-const ProblemClassificationPropertiesSecondaryConsentEnabledList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ProblemClassificationPropertiesSecondaryConsentEnabledList>;
-
 /** Details about a problem classification available for an Azure service. */
 export interface ProblemClassificationProperties {
   /** Localized name of problem classification. */
@@ -944,11 +660,6 @@ export interface ProblemClassificationProperties {
   /** This property indicates whether secondary consent is present for problem classification */
   secondaryConsentEnabled?: ProblemClassificationPropertiesSecondaryConsentEnabledList;
 }
-const ProblemClassificationProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ProblemClassificationProperties>;
-
 export interface GetProblemClassificationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -961,22 +672,12 @@ export interface GetProblemClassificationResponse {
   /** Properties of the resource. */
   properties?: ProblemClassificationProperties;
 }
-const GetProblemClassificationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetProblemClassificationResponse>;
-
 export interface GetServiceRequest {
   /** Name of the Azure service. */
   serviceName: string;
 }
-const GetServiceRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetServiceRequest>;
-
 /** ARM Resource types. */
 export type ServicePropertiesResourceTypesList = Array<string>;
-const ServicePropertiesResourceTypesList =
-  ContactProfileAdditionalEmailAddressesList as any as S.Schema<ServicePropertiesResourceTypesList>;
-
 /** Details about an Azure service available for support ticket creation. */
 export interface ServiceProperties {
   /** Localized name of the Azure service. */
@@ -984,8 +685,6 @@ export interface ServiceProperties {
   /** ARM Resource types. */
   resourceTypes?: ServicePropertiesResourceTypesList;
 }
-const ServiceProperties = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ServiceProperties>;
-
 export interface GetServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -998,19 +697,12 @@ export interface GetServiceResponse {
   /** Properties of the resource. */
   properties?: ServiceProperties;
 }
-const GetServiceResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetServiceResponse>;
-
 export interface GetSupportTicketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-const GetSupportTicketRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetSupportTicketRequest>;
-
 export interface GetSupportTicketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1023,20 +715,10 @@ export interface GetSupportTicketResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-const GetSupportTicketResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetSupportTicketResponse>;
-
 export interface GetSupportTicketsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-const GetSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetSupportTicketsNoSubscriptionRequest>;
-
 export interface GetSupportTicketsNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1049,20 +731,12 @@ export interface GetSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-const GetSupportTicketsNoSubscriptionResponse =
-  CreateSupportTicketResponse as any as S.Schema<GetSupportTicketsNoSubscriptionResponse>;
-
 export interface ListChatTranscriptsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-const ListChatTranscriptsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListChatTranscriptsRequest>;
-
 /** Object that represents a Chat Transcript resource. */
 export interface ChatTranscriptDetails {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1076,18 +750,8 @@ export interface ChatTranscriptDetails {
   /** Properties of the resource. */
   properties?: ChatTranscriptDetailsProperties;
 }
-const ChatTranscriptDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ChatTranscriptDetails>;
-
 /** [Placeholder] Description for value property */
 export type ChatTranscriptsListResultValueList = Array<ChatTranscriptDetails>;
-const ChatTranscriptsListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ChatTranscriptsListResultValueList>;
-
 /** [Placeholder] Description for page model */
 export interface ChatTranscriptsListResult {
   /** [Placeholder] Description for nextLink property */
@@ -1095,20 +759,10 @@ export interface ChatTranscriptsListResult {
   /** [Placeholder] Description for value property */
   value?: ChatTranscriptsListResultValueList;
 }
-const ChatTranscriptsListResult = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ChatTranscriptsListResult>;
-
 export interface ListChatTranscriptsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-const ListChatTranscriptsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListChatTranscriptsNoSubscriptionRequest>;
-
 export interface ListCommunicationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1119,11 +773,6 @@ export interface ListCommunicationsRequest {
   /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
   _filter?: string;
 }
-const ListCommunicationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListCommunicationsRequest>;
-
 /** Object that represents a Communication resource. */
 export interface CommunicationDetails {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1137,15 +786,8 @@ export interface CommunicationDetails {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-const CommunicationDetails = GetCommunicationResponse as any as S.Schema<CommunicationDetails>;
-
 /** [Placeholder] Description for value property */
 export type CommunicationsListResultValueList = Array<CommunicationDetails>;
-const CommunicationsListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CommunicationsListResultValueList>;
-
 /** [Placeholder] Description for page model */
 export interface CommunicationsListResult {
   /** [Placeholder] Description for nextLink property */
@@ -1153,11 +795,6 @@ export interface CommunicationsListResult {
   /** [Placeholder] Description for value property */
   value?: CommunicationsListResultValueList;
 }
-const CommunicationsListResult = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CommunicationsListResult>;
-
 export interface ListCommunicationsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
@@ -1166,19 +803,12 @@ export interface ListCommunicationsNoSubscriptionRequest {
   /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
   _filter?: string;
 }
-const ListCommunicationsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListCommunicationsNoSubscriptionRequest>;
-
 export interface ListFilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-const ListFilesRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ListFilesRequest>;
-
 /** Object that represents File Details resource */
 export interface FileDetails {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1192,15 +822,8 @@ export interface FileDetails {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-const FileDetails = CreateFileResponse as any as S.Schema<FileDetails>;
-
 /** [Placeholder] Description for value property */
 export type FilesListResultValueList = Array<FileDetails>;
-const FilesListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<FilesListResultValueList>;
-
 /** [Placeholder] Description for page model */
 export interface FilesListResult {
   /** [Placeholder] Description for nextLink property */
@@ -1208,23 +831,11 @@ export interface FilesListResult {
   /** [Placeholder] Description for value property */
   value?: FilesListResultValueList;
 }
-const FilesListResult = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<FilesListResult>;
-
 export interface ListFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-const ListFilesNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListFilesNoSubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1236,16 +847,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1259,35 +864,18 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProblemClassificationsRequest {
   /** Name of the Azure service. */
   serviceName: string;
 }
-const ListProblemClassificationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListProblemClassificationsRequest>;
-
 /** ProblemClassification resource object. */
 export interface ProblemClassification {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1301,18 +889,8 @@ export interface ProblemClassification {
   /** Properties of the resource. */
   properties?: ProblemClassificationProperties;
 }
-const ProblemClassification = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ProblemClassification>;
-
 /** List of ProblemClassification resources. */
 export type ProblemClassificationsListResultValueList = Array<ProblemClassification>;
-const ProblemClassificationsListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ProblemClassificationsListResultValueList>;
-
 /** Collection of ProblemClassification resources. */
 export interface ProblemClassificationsListResult {
   /** The link to the next page of items */
@@ -1320,14 +898,7 @@ export interface ProblemClassificationsListResult {
   /** List of ProblemClassification resources. */
   value?: ProblemClassificationsListResultValueList;
 }
-const ProblemClassificationsListResult = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ProblemClassificationsListResult>;
-
 export interface ListServicesRequest {}
-const ListServicesRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ListServicesRequest>;
-
 /** Object that represents a Service resource. */
 export interface Service {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1341,15 +912,8 @@ export interface Service {
   /** Properties of the resource. */
   properties?: ServiceProperties;
 }
-const Service = GetServiceResponse as any as S.Schema<Service>;
-
 /** List of Service resources. */
 export type ServicesListResultValueList = Array<Service>;
-const ServicesListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ServicesListResultValueList>;
-
 /** Collection of Service resources. */
 export interface ServicesListResult {
   /** The link to the next page of items */
@@ -1357,8 +921,6 @@ export interface ServicesListResult {
   /** List of Service resources. */
   value?: ServicesListResultValueList;
 }
-const ServicesListResult = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ServicesListResult>;
-
 export interface ListSupportTicketsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1367,11 +929,6 @@ export interface ListSupportTicketsRequest {
   /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. [Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview). _Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator. For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge'). When using both filters, combine them using the logical 'AND'. */
   _filter?: string;
 }
-const ListSupportTicketsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListSupportTicketsRequest>;
-
 /** Object that represents SupportTicketDetails resource. */
 export interface SupportTicketDetails {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1385,15 +942,8 @@ export interface SupportTicketDetails {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-const SupportTicketDetails = GetSupportTicketResponse as any as S.Schema<SupportTicketDetails>;
-
 /** [Placeholder] Description for value property */
 export type SupportTicketsListResultValueList = Array<SupportTicketDetails>;
-const SupportTicketsListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<SupportTicketsListResultValueList>;
-
 /** [Placeholder] Description for page model */
 export interface SupportTicketsListResult {
   /** [Placeholder] Description for nextLink property */
@@ -1401,31 +951,16 @@ export interface SupportTicketsListResult {
   /** [Placeholder] Description for value property */
   value?: SupportTicketsListResultValueList;
 }
-const SupportTicketsListResult = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<SupportTicketsListResult>;
-
 export interface ListSupportTicketsNoSubscriptionRequest {
   /** The number of values to return in the collection. Default is 25 and max is 100. */
   _top?: number;
   /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. <a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'>Learn more</a> <br/><i>Status</i> , <i>ServiceId</i>, and <i>ProblemClassificationId</i> filters can only be used with 'eq' operator. For <i>CreatedDate</i> filter, the supported operators are 'gt' and 'ge'. When using both filters, combine them using the logical 'AND'. */
   _filter?: string;
 }
-const ListSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListSupportTicketsNoSubscriptionRequest>;
-
 /** Status to be updated on the ticket. */
 export type Status = "open" | "closed";
-const Status = S.String;
-
 /** Email addresses listed will be copied on any correspondence about the support ticket. */
 export type UpdateContactProfileAdditionalEmailAddressesList = Array<string>;
-const UpdateContactProfileAdditionalEmailAddressesList =
-  ContactProfileAdditionalEmailAddressesList as any as S.Schema<UpdateContactProfileAdditionalEmailAddressesList>;
-
 /** Contact information associated with the support ticket. */
 export interface UpdateContactProfile {
   /** First name. */
@@ -1447,16 +982,8 @@ export interface UpdateContactProfile {
   /** Preferred language of support from Azure. Support languages vary based on the severity you choose for your support ticket. Learn more at [Azure Severity and responsiveness](https://azure.microsoft.com/support/plans/response/). Use the standard language-country code. Valid values are 'en-us' for English, 'zh-hans' for Chinese, 'es-es' for Spanish, 'fr-fr' for French, 'ja-jp' for Japanese, 'ko-kr' for Korean, 'ru-ru' for Russian, 'pt-br' for Portuguese, 'it-it' for Italian, 'zh-tw' for Chinese and 'de-de' for German. */
   preferredSupportLanguage?: string;
 }
-const UpdateContactProfile = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UpdateContactProfile>;
-
 /** This property indicates secondary consents for the support ticket */
 export type UpdateSupportTicketRequestSecondaryConsentList = Array<SecondaryConsent>;
-const UpdateSupportTicketRequestSecondaryConsentList =
-  SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<UpdateSupportTicketRequestSecondaryConsentList>;
-
 export interface UpdateSupportTicketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1473,11 +1000,6 @@ export interface UpdateSupportTicketRequest {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: UpdateSupportTicketRequestSecondaryConsentList;
 }
-const UpdateSupportTicketRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<UpdateSupportTicketRequest>;
-
 export interface UpdateSupportTicketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1490,14 +1012,8 @@ export interface UpdateSupportTicketResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-const UpdateSupportTicketResponse =
-  CreateSupportTicketResponse as any as S.Schema<UpdateSupportTicketResponse>;
-
 /** This property indicates secondary consents for the support ticket */
 export type UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList = Array<SecondaryConsent>;
-const UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList =
-  SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList>;
-
 export interface UpdateSupportTicketsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
@@ -1512,11 +1028,6 @@ export interface UpdateSupportTicketsNoSubscriptionRequest {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList;
 }
-const UpdateSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequest>;
-
 export interface UpdateSupportTicketsNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1529,9 +1040,6 @@ export interface UpdateSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-const UpdateSupportTicketsNoSubscriptionResponse =
-  CreateSupportTicketResponse as any as S.Schema<UpdateSupportTicketsNoSubscriptionResponse>;
-
 export interface UploadFileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1544,11 +1052,7 @@ export interface UploadFileRequest {
   /** Index of the uploaded chunk (Index starts at 0) */
   chunkIndex?: number;
 }
-const UploadFileRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<UploadFileRequest>;
-
 export interface UploadFileResponse {}
-const UploadFileResponse = ServiceLevelAgreementInput as any as S.Schema<UploadFileResponse>;
-
 export interface UploadFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
@@ -1559,17 +1063,7 @@ export interface UploadFilesNoSubscriptionRequest {
   /** Index of the uploaded chunk (Index starts at 0) */
   chunkIndex?: number;
 }
-const UploadFilesNoSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UploadFilesNoSubscriptionRequest>;
-
 export interface UploadFilesNoSubscriptionResponse {}
-const UploadFilesNoSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UploadFilesNoSubscriptionResponse>;
-
 export type CheckCommunicationNameAvailabilityError = AzureOpError;
 /** Check the availability of a resource name. This API should be used to check the uniqueness of the name for adding a new communication to the support ticket. */
 export const CheckCommunicationNameAvailability: API.OperationMethod<
@@ -1578,8 +1072,8 @@ export const CheckCommunicationNameAvailability: API.OperationMethod<
   CheckCommunicationNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCommunicationNameAvailabilityRequest,
-  output: CheckNameAvailabilityOutput,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckCommunicationNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1087,12 @@ export const CheckCommunicationsNoSubscriptionNameAvailability: API.OperationMet
   CheckCommunicationsNoSubscriptionNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCommunicationsNoSubscriptionNameAvailabilityRequest,
-  output: CheckNameAvailabilityOutput,
+  input: __S(
+    2,
+    __c0,
+    2,
+  ) as any as S.Schema<CheckCommunicationsNoSubscriptionNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1106,8 @@ export const CheckSupportTicketNameAvailability: API.OperationMethod<
   CheckSupportTicketNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckSupportTicketNameAvailabilityRequest,
-  output: CheckNameAvailabilityOutput,
+  input: __S(3, __c0, 3) as any as S.Schema<CheckSupportTicketNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1121,12 @@ export const CheckSupportTicketsNoSubscriptionNameAvailability: API.OperationMet
   CheckSupportTicketsNoSubscriptionNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckSupportTicketsNoSubscriptionNameAvailabilityRequest,
-  output: CheckNameAvailabilityOutput,
+  input: __S(
+    4,
+    __c0,
+    4,
+  ) as any as S.Schema<CheckSupportTicketsNoSubscriptionNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1140,8 @@ export const CreateCommunication: API.OperationMethod<
   CreateCommunicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommunicationRequest,
-  output: CreateCommunicationResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateCommunicationRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateCommunicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1155,8 @@ export const CreateCommunicationsNoSubscription: API.OperationMethod<
   CreateCommunicationsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommunicationsNoSubscriptionRequest,
-  output: CreateCommunicationsNoSubscriptionResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateCommunicationsNoSubscriptionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateCommunicationsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1170,8 @@ export const CreateFile: API.OperationMethod<
   CreateFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFileRequest,
-  output: CreateFileResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateFileRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1185,8 @@ export const CreateFilesNoSubscription: API.OperationMethod<
   CreateFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFilesNoSubscriptionRequest,
-  output: CreateFilesNoSubscriptionResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateFilesNoSubscriptionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateFilesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1200,8 @@ export const CreateFileWorkspace: API.OperationMethod<
   CreateFileWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFileWorkspaceRequest,
-  output: CreateFileWorkspaceResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateFileWorkspaceRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateFileWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1215,8 @@ export const CreateFileWorkspacesNoSubscription: API.OperationMethod<
   CreateFileWorkspacesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFileWorkspacesNoSubscriptionRequest,
-  output: CreateFileWorkspacesNoSubscriptionResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateFileWorkspacesNoSubscriptionRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateFileWorkspacesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1230,8 @@ export const CreateSupportTicket: API.OperationMethod<
   CreateSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSupportTicketRequest,
-  output: CreateSupportTicketResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<CreateSupportTicketRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<CreateSupportTicketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1743,8 +1245,8 @@ export const CreateSupportTicketsNoSubscription: API.OperationMethod<
   CreateSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSupportTicketsNoSubscriptionRequest,
-  output: CreateSupportTicketsNoSubscriptionResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateSupportTicketsNoSubscriptionRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<CreateSupportTicketsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1758,8 +1260,8 @@ export const GetChatTranscript: API.OperationMethod<
   GetChatTranscriptError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChatTranscriptRequest,
-  output: GetChatTranscriptResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<GetChatTranscriptRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetChatTranscriptResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1773,8 +1275,8 @@ export const GetChatTranscriptsNoSubscription: API.OperationMethod<
   GetChatTranscriptsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChatTranscriptsNoSubscriptionRequest,
-  output: GetChatTranscriptsNoSubscriptionResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<GetChatTranscriptsNoSubscriptionRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetChatTranscriptsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1788,8 +1290,8 @@ export const GetCommunication: API.OperationMethod<
   GetCommunicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommunicationRequest,
-  output: GetCommunicationResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<GetCommunicationRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetCommunicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1803,8 +1305,8 @@ export const GetCommunicationsNoSubscription: API.OperationMethod<
   GetCommunicationsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommunicationsNoSubscriptionRequest,
-  output: GetCommunicationsNoSubscriptionResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<GetCommunicationsNoSubscriptionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetCommunicationsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1320,8 @@ export const GetFile: API.OperationMethod<
   GetFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileRequest,
-  output: GetFileResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<GetFileRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1335,8 @@ export const GetFilesNoSubscription: API.OperationMethod<
   GetFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFilesNoSubscriptionRequest,
-  output: GetFilesNoSubscriptionResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<GetFilesNoSubscriptionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetFilesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1350,8 @@ export const GetFileWorkspace: API.OperationMethod<
   GetFileWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileWorkspaceRequest,
-  output: GetFileWorkspaceResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<GetFileWorkspaceRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetFileWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1863,8 +1365,8 @@ export const GetFileWorkspacesNoSubscription: API.OperationMethod<
   GetFileWorkspacesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileWorkspacesNoSubscriptionRequest,
-  output: GetFileWorkspacesNoSubscriptionResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<GetFileWorkspacesNoSubscriptionRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetFileWorkspacesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1380,8 @@ export const GetProblemClassification: API.OperationMethod<
   GetProblemClassificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProblemClassificationRequest,
-  output: GetProblemClassificationResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<GetProblemClassificationRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<GetProblemClassificationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1893,8 +1395,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRequest,
-  output: GetServiceResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1908,8 +1410,8 @@ export const GetSupportTicket: API.OperationMethod<
   GetSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportTicketRequest,
-  output: GetSupportTicketResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<GetSupportTicketRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<GetSupportTicketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1923,8 +1425,8 @@ export const GetSupportTicketsNoSubscription: API.OperationMethod<
   GetSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportTicketsNoSubscriptionRequest,
-  output: GetSupportTicketsNoSubscriptionResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<GetSupportTicketsNoSubscriptionRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetSupportTicketsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1440,8 @@ export const ListChatTranscripts: API.OperationMethod<
   ListChatTranscriptsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChatTranscriptsRequest,
-  output: ChatTranscriptsListResult,
+  input: __S(62, __c7, 6) as any as S.Schema<ListChatTranscriptsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ChatTranscriptsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1455,8 @@ export const ListChatTranscriptsNoSubscription: API.OperationMethod<
   ListChatTranscriptsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChatTranscriptsNoSubscriptionRequest,
-  output: ChatTranscriptsListResult,
+  input: __S(66, __c8, 2) as any as S.Schema<ListChatTranscriptsNoSubscriptionRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ChatTranscriptsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1968,8 +1470,8 @@ export const ListCommunications: API.OperationMethod<
   ListCommunicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommunicationsRequest,
-  output: CommunicationsListResult,
+  input: __S(67, __c8, 3) as any as S.Schema<ListCommunicationsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<CommunicationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1983,8 +1485,8 @@ export const ListCommunicationsNoSubscription: API.OperationMethod<
   ListCommunicationsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommunicationsNoSubscriptionRequest,
-  output: CommunicationsListResult,
+  input: __S(70, __c8, 6) as any as S.Schema<ListCommunicationsNoSubscriptionRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<CommunicationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1500,8 @@ export const ListFiles: API.OperationMethod<
   ListFilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFilesRequest,
-  output: FilesListResult,
+  input: __S(71, __c8, 7) as any as S.Schema<ListFilesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<FilesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2013,8 +1515,8 @@ export const ListFilesNoSubscription: API.OperationMethod<
   ListFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFilesNoSubscriptionRequest,
-  output: FilesListResult,
+  input: __S(74, __c9, 2) as any as S.Schema<ListFilesNoSubscriptionRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<FilesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2028,8 +1530,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<ListOperationsRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2043,8 +1545,8 @@ export const ListProblemClassifications: API.OperationMethod<
   ListProblemClassificationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProblemClassificationsRequest,
-  output: ProblemClassificationsListResult,
+  input: __S(80, __c10, 0) as any as S.Schema<ListProblemClassificationsRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ProblemClassificationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2058,8 +1560,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServicesRequest,
-  output: ServicesListResult,
+  input: __S(84, __c10, 4) as any as S.Schema<ListServicesRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<ServicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2073,8 +1575,8 @@ export const ListSupportTickets: API.OperationMethod<
   ListSupportTicketsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSupportTicketsRequest,
-  output: SupportTicketsListResult,
+  input: __S(87, __c10, 7) as any as S.Schema<ListSupportTicketsRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<SupportTicketsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2088,8 +1590,8 @@ export const ListSupportTicketsNoSubscription: API.OperationMethod<
   ListSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSupportTicketsNoSubscriptionRequest,
-  output: SupportTicketsListResult,
+  input: __S(90, __c11, 2) as any as S.Schema<ListSupportTicketsNoSubscriptionRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<SupportTicketsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2103,8 +1605,8 @@ export const UpdateSupportTicket: API.OperationMethod<
   UpdateSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSupportTicketRequest,
-  output: UpdateSupportTicketResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<UpdateSupportTicketRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<UpdateSupportTicketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2118,8 +1620,8 @@ export const UpdateSupportTicketsNoSubscription: API.OperationMethod<
   UpdateSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSupportTicketsNoSubscriptionRequest,
-  output: UpdateSupportTicketsNoSubscriptionResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<UpdateSupportTicketsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2133,8 +1635,8 @@ export const UploadFile: API.OperationMethod<
   UploadFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadFileRequest,
-  output: UploadFileResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<UploadFileRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<UploadFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2148,8 +1650,8 @@ export const UploadFilesNoSubscription: API.OperationMethod<
   UploadFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadFilesNoSubscriptionRequest,
-  output: UploadFilesNoSubscriptionResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<UploadFilesNoSubscriptionRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UploadFilesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2164,7 +1666,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           supportTicketName: S.String.pipe(T.Label()),
           name: S.String,
-          type: Type,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2191,7 +1693,7 @@ function __c0(j: number): any {
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
           name: S.String,
-          type: Type,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2208,7 +1710,7 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: Type,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2224,7 +1726,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: Type,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2252,7 +1754,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           supportTicketName: S.String.pipe(T.Label()),
           communicationName: S.String.pipe(T.Label()),
-          properties: CommunicationDetailsPropertiesInput,
+          properties: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2268,10 +1770,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2282,8 +1784,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          communicationType: S.optional(CommunicationType),
-          communicationDirection: S.optional(CommunicationDirection),
+          communicationType: S.optional(S.String),
+          communicationDirection: S.optional(S.String),
           sender: S.optional(S.String),
           subject: S.String,
           body: S.String,
@@ -2298,8 +1800,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CommunicationDetailsProperties,
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: __S(8, __c1, 0),
         }),
       ).annotate({
         identifier: "CreateCommunicationResponse",
@@ -2309,7 +1811,7 @@ function __c1(j: number): any {
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
           communicationName: S.String.pipe(T.Label()),
-          properties: CommunicationDetailsPropertiesInput,
+          properties: __S(5, __c0, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2337,7 +1839,7 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           fileWorkspaceName: S.String.pipe(T.Label()),
           fileName: S.String.pipe(T.Label()),
-          properties: S.optional(FileDetailsPropertiesInput),
+          properties: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2362,8 +1864,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FileDetailsProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "CreateFileResponse" });
     case 7:
@@ -2371,7 +1873,7 @@ function __c1(j: number): any {
         S.Struct({
           fileWorkspaceName: S.String.pipe(T.Label()),
           fileName: S.String.pipe(T.Label()),
-          properties: S.optional(FileDetailsPropertiesInput),
+          properties: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2393,8 +1895,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FileDetailsProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "CreateFilesNoSubscriptionResponse",
@@ -2430,8 +1932,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FileWorkspaceDetailsProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "CreateFileWorkspaceResponse",
@@ -2458,9 +1960,9 @@ function __c2(j: number): any {
         S.Struct({
           firstName: S.String,
           lastName: S.String,
-          preferredContactMethod: PreferredContactMethod,
+          preferredContactMethod: S.String,
           primaryEmailAddress: S.String,
-          additionalEmailAddresses: S.optional(ContactProfileAdditionalEmailAddressesList),
+          additionalEmailAddresses: S.optional(__S(21, __c2, 5)),
           phoneNumber: S.optional(S.String),
           preferredTimeZone: S.String,
           country: S.String,
@@ -2489,46 +1991,46 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "QuotaChangeRequest" });
     case 2:
-      return S.Array(QuotaChangeRequest);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           quotaChangeRequestSubType: S.optional(S.String),
           quotaChangeRequestVersion: S.optional(S.String),
-          quotaChangeRequests: S.optional(QuotaTicketDetailsQuotaChangeRequestsList),
+          quotaChangeRequests: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "QuotaTicketDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          userConsent: S.optional(UserConsent),
+          userConsent: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecondaryConsent" });
     case 5:
-      return S.Array(SecondaryConsent);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           supportTicketId: S.optional(S.String),
           description: S.String,
           problemClassificationId: S.String,
-          severity: SeverityLevel,
+          severity: S.String,
           enrollmentId: S.optional(S.String),
           require24X7Response: S.optional(S.Boolean),
-          advancedDiagnosticConsent: Consent,
+          advancedDiagnosticConsent: S.String,
           problemScopingQuestions: S.optional(S.String),
           supportPlanId: S.optional(S.String),
-          contactDetails: ContactProfile,
-          serviceLevelAgreement: S.optional(ServiceLevelAgreementInput),
-          supportEngineer: S.optional(ServiceLevelAgreementInput),
+          contactDetails: __S(22, __c2, 6),
+          serviceLevelAgreement: S.optional(__S(23, __c2, 7)),
+          supportEngineer: S.optional(__S(23, __c2, 7)),
           title: S.String,
           problemStartTime: S.optional(S.String),
           serviceId: S.String,
           fileWorkspaceName: S.optional(S.String),
-          technicalTicketDetails: S.optional(TechnicalTicketDetails),
-          quotaTicketDetails: S.optional(QuotaTicketDetails),
-          secondaryConsent: S.optional(SupportTicketDetailsPropertiesInputSecondaryConsentList),
+          technicalTicketDetails: S.optional(__S(24, __c3, 0)),
+          quotaTicketDetails: S.optional(__S(27, __c3, 3)),
+          secondaryConsent: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "SupportTicketDetailsPropertiesInput",
@@ -2538,7 +2040,7 @@ function __c3(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           supportTicketName: S.String.pipe(T.Label()),
-          properties: SupportTicketDetailsPropertiesInput,
+          properties: __S(30, __c3, 6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2575,15 +2077,15 @@ function __c4(j: number): any {
           description: S.String,
           problemClassificationId: S.String,
           problemClassificationDisplayName: S.optional(S.String),
-          severity: SeverityLevel,
+          severity: S.String,
           enrollmentId: S.optional(S.String),
           require24X7Response: S.optional(S.Boolean),
-          advancedDiagnosticConsent: Consent,
+          advancedDiagnosticConsent: S.String,
           problemScopingQuestions: S.optional(S.String),
           supportPlanId: S.optional(S.String),
-          contactDetails: ContactProfile,
-          serviceLevelAgreement: S.optional(ServiceLevelAgreement),
-          supportEngineer: S.optional(SupportEngineer),
+          contactDetails: __S(22, __c2, 6),
+          serviceLevelAgreement: S.optional(__S(32, __c4, 0)),
+          supportEngineer: S.optional(__S(33, __c4, 1)),
           supportPlanType: S.optional(S.String),
           supportPlanDisplayName: S.optional(S.String),
           title: S.String,
@@ -2594,10 +2096,10 @@ function __c4(j: number): any {
           createdDate: S.optional(S.String),
           modifiedDate: S.optional(S.String),
           fileWorkspaceName: S.optional(S.String),
-          isTemporaryTicket: S.optional(IsTemporaryTicket),
-          technicalTicketDetails: S.optional(TechnicalTicketDetails),
-          quotaTicketDetails: S.optional(QuotaTicketDetails),
-          secondaryConsent: S.optional(SupportTicketDetailsPropertiesSecondaryConsentList),
+          isTemporaryTicket: S.optional(S.String),
+          technicalTicketDetails: S.optional(__S(24, __c3, 0)),
+          quotaTicketDetails: S.optional(__S(27, __c3, 3)),
+          secondaryConsent: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "SupportTicketDetailsProperties",
@@ -2608,8 +2110,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SupportTicketDetailsProperties,
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: __S(34, __c4, 2),
         }),
       ).annotate({
         identifier: "CreateSupportTicketResponse",
@@ -2618,7 +2120,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
-          properties: SupportTicketDetailsPropertiesInput,
+          properties: __S(30, __c3, 6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2649,14 +2151,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String),
-          communicationDirection: S.optional(CommunicationDirection),
+          communicationDirection: S.optional(S.String),
           sender: S.optional(S.String),
           body: S.optional(S.String),
           createdDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageProperties" });
     case 7:
-      return S.Array(MessageProperties);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -2664,7 +2166,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(ChatTranscriptDetailsPropertiesMessagesList),
+          messages: S.optional(__S(39, __c4, 7)),
           startTime: S.optional(S.String),
         }),
       ).annotate({
@@ -2676,8 +2178,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ChatTranscriptDetailsProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "GetChatTranscriptResponse",
@@ -2719,8 +2221,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CommunicationDetailsProperties,
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "GetCommunicationResponse" });
     case 5:
@@ -2794,8 +2296,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FileWorkspaceDetailsProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "GetFileWorkspaceResponse" });
     case 2:
@@ -2837,14 +2339,12 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SecondaryConsentEnabled" });
     case 5:
-      return S.Array(SecondaryConsentEnabled);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          secondaryConsentEnabled: S.optional(
-            ProblemClassificationPropertiesSecondaryConsentEnabledList,
-          ),
+          secondaryConsentEnabled: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "ProblemClassificationProperties",
@@ -2855,8 +2355,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProblemClassificationProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({
         identifier: "GetProblemClassificationResponse",
@@ -2882,7 +2382,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          resourceTypes: S.optional(ServicePropertiesResourceTypesList),
+          resourceTypes: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "ServiceProperties" });
     case 2:
@@ -2891,8 +2391,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ServiceProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
     case 3:
@@ -2915,8 +2415,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SupportTicketDetailsProperties,
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: __S(34, __c4, 2),
         }),
       ).annotate({ identifier: "GetSupportTicketResponse" });
     case 5:
@@ -2956,8 +2456,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ChatTranscriptDetailsProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "ChatTranscriptDetails" });
   }
@@ -2965,12 +2465,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ChatTranscriptDetails);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ChatTranscriptsListResultValueList),
+          value: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "ChatTranscriptsListResult",
@@ -3009,12 +2509,12 @@ function __c8(j: number): any {
         identifier: "ListCommunicationsRequest",
       });
     case 4:
-      return S.Array(CommunicationDetails);
+      return S.Array(__S(44, __c5, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(CommunicationsListResultValueList),
+          value: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "CommunicationsListResult" });
     case 6:
@@ -3053,12 +2553,12 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FileDetails);
+      return S.Array(__S(14, __c1, 6));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(FilesListResultValueList),
+          value: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "FilesListResult" });
     case 2:
@@ -3101,17 +2601,17 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(76, __c9, 4)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(78, __c9, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3140,17 +2640,17 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProblemClassificationProperties),
+          systemData: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({ identifier: "ProblemClassification" });
     case 2:
-      return S.Array(ProblemClassification);
+      return S.Array(__S(81, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ProblemClassificationsListResultValueList),
+          value: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({
         identifier: "ProblemClassificationsListResult",
@@ -3167,12 +2667,12 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListServicesRequest" });
     case 5:
-      return S.Array(Service);
+      return S.Array(__S(58, __c7, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ServicesListResultValueList),
+          value: S.optional(__S(85, __c10, 5)),
         }),
       ).annotate({ identifier: "ServicesListResult" });
     case 7:
@@ -3197,12 +2697,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SupportTicketDetails);
+      return S.Array(__S(60, __c7, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(SupportTicketsListResultValueList),
+          value: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "SupportTicketsListResult" });
     case 2:
@@ -3226,9 +2726,9 @@ function __c11(j: number): any {
         S.Struct({
           firstName: S.optional(S.String),
           lastName: S.optional(S.String),
-          preferredContactMethod: S.optional(PreferredContactMethod),
+          preferredContactMethod: S.optional(S.String),
           primaryEmailAddress: S.optional(S.String),
-          additionalEmailAddresses: S.optional(UpdateContactProfileAdditionalEmailAddressesList),
+          additionalEmailAddresses: S.optional(__S(21, __c2, 5)),
           phoneNumber: S.optional(S.String),
           preferredTimeZone: S.optional(S.String),
           country: S.optional(S.String),
@@ -3240,11 +2740,11 @@ function __c11(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           supportTicketName: S.String.pipe(T.Label()),
-          severity: S.optional(SeverityLevel),
-          status: S.optional(Status),
-          contactDetails: S.optional(UpdateContactProfile),
-          advancedDiagnosticConsent: S.optional(Consent),
-          secondaryConsent: S.optional(UpdateSupportTicketRequestSecondaryConsentList),
+          severity: S.optional(S.String),
+          status: S.optional(S.String),
+          contactDetails: S.optional(__S(91, __c11, 3)),
+          advancedDiagnosticConsent: S.optional(S.String),
+          secondaryConsent: S.optional(__S(29, __c3, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3260,13 +2760,11 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
-          severity: S.optional(SeverityLevel),
-          status: S.optional(Status),
-          contactDetails: S.optional(UpdateContactProfile),
-          advancedDiagnosticConsent: S.optional(Consent),
-          secondaryConsent: S.optional(
-            UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList,
-          ),
+          severity: S.optional(S.String),
+          status: S.optional(S.String),
+          contactDetails: S.optional(__S(91, __c11, 3)),
+          advancedDiagnosticConsent: S.optional(S.String),
+          secondaryConsent: S.optional(__S(29, __c3, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3322,4 +2820,9 @@ function __c12(j: number): any {
         identifier: "UploadFilesNoSubscriptionResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

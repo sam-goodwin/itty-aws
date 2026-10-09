@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -91,16 +93,9 @@ export type ReportDefinitionMetricsItemEnum =
   | "VIDEO_START"
   | "VIDEO_THIRD_QUARTILE"
   | "VIDEO_VTR";
-const ReportDefinitionMetricsItemEnum = S.String;
-
 export type ReportDefinitionMetricsItemEnumList = Array<
   ReportDefinitionMetricsItemEnum | (string & {})
 >;
-const ReportDefinitionMetricsItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ReportDefinitionMetricsItemEnumList>;
-
 export type ReportDefinitionDimensionsItemEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ADVERTISER_DOMAIN"
@@ -152,9 +147,6 @@ export type ReportDefinitionDimensionsItemEnum =
 export type ReportDefinitionDimensionsItemEnumList = Array<
   ReportDefinitionDimensionsItemEnum | (string & {})
 >;
-const ReportDefinitionDimensionsItemEnumList =
-  ReportDefinitionMetricsItemEnumList as any as S.Schema<ReportDefinitionDimensionsItemEnumList>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Agenciesandbrands_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -164,11 +156,6 @@ export interface Agenciesandbrands_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-const Agenciesandbrands_Date = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<Agenciesandbrands_Date>;
-
 /** A date range between two fixed dates (inclusive of end date). */
 export interface FixedDateRange {
   /** Required. The end date (inclusive) of this date range. */
@@ -176,8 +163,6 @@ export interface FixedDateRange {
   /** Required. The start date of this date range. */
   startDate?: Agenciesandbrands_Date;
 }
-const FixedDateRange = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<FixedDateRange>;
-
 export type DateRangeRelativeEnum =
   | "RELATIVE_DATE_RANGE_UNSPECIFIED"
   | "TODAY"
@@ -207,8 +192,6 @@ export type DateRangeRelativeEnum =
   | "LAST_6_MONTHS"
   | "LAST_12_MONTHS"
   | "ALL_AVAILABLE";
-const DateRangeRelativeEnum = S.String;
-
 /** A date range for a report. */
 export interface DateRange {
   /** A fixed date range. */
@@ -216,15 +199,11 @@ export interface DateRange {
   /** A relative date range. */
   relative?: DateRangeRelativeEnum | (string & {});
 }
-const DateRange = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DateRange>;
-
 /** A list of filters. */
 export interface FilterList {
   /** Required. A list of filters. */
   filters?: FilterList_;
 }
-const FilterList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FilterList>;
-
 export type FieldMetricEnum =
   | "METRIC_UNSPECIFIED"
   | "ACTIVE_VIEW_MEASURABILITY_RATE"
@@ -254,8 +233,6 @@ export type FieldMetricEnum =
   | "VIDEO_START"
   | "VIDEO_THIRD_QUARTILE"
   | "VIDEO_VTR";
-const FieldMetricEnum = S.String;
-
 export type FieldDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ADVERTISER_DOMAIN"
@@ -304,8 +281,6 @@ export type FieldDimensionEnum =
   | "TRANSACTION_TYPE"
   | "VAST_ERROR_CODE"
   | "WEEK";
-const FieldDimensionEnum = S.String;
-
 /** A dimension or a metric in a report. */
 export interface Field {
   /** The metric this field represents. */
@@ -313,8 +288,6 @@ export interface Field {
   /** The dimension this field represents. */
   dimension?: FieldDimensionEnum | (string & {});
 }
-const Field = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Field>;
-
 export type FieldFilterOperationEnum =
   | "IN"
   | "NOT_IN"
@@ -327,30 +300,20 @@ export type FieldFilterOperationEnum =
   | "BETWEEN"
   | "MATCHES"
   | "NOT_MATCHES";
-const FieldFilterOperationEnum = S.String;
-
 export type StringList_ = Array<string>;
-const StringList_ = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList_>;
-
 /** A list of string values. */
 export interface StringList {
   /** The values */
   values?: StringList_;
 }
-const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
-
 /** A list of integer values. */
 export type IntList = StringList;
 export type DoubleList_ = Array<number>;
-const DoubleList_ = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DoubleList_>;
-
 /** A list of double values. */
 export interface DoubleList {
   /** The values */
   values?: DoubleList_;
 }
-const DoubleList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DoubleList>;
-
 /** Represents a single value in a report. */
 export interface ReportValue {
   /** For lists of string values. */
@@ -370,11 +333,7 @@ export interface ReportValue {
   /** For double values. */
   doubleValue?: number;
 }
-const ReportValue = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ReportValue>;
-
 export type ReportValueList = Array<ReportValue>;
-const ReportValueList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ReportValueList>;
-
 /** A filter on a specific field. */
 export interface FieldFilter {
   /** Required. The field to filter on. */
@@ -384,8 +343,6 @@ export interface FieldFilter {
   /** Required. Values to filter to. */
   values?: ReportValueList;
 }
-const FieldFilter = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<FieldFilter>;
-
 /** A filter over one or more fields. */
 export interface Filter {
   /** A filter whose result is negated. */
@@ -397,19 +354,13 @@ export interface Filter {
   /** A filter on a single field. */
   fieldFilter?: FieldFilter;
 }
-const Filter = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Filter>;
-
 export type FilterList_ = Array<Filter>;
-const FilterList_ = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<FilterList_>;
-
 export type ReportDefinitionTimeZoneSourceEnum =
   | "TIME_ZONE_SOURCE_UNSPECIFIED"
   | "AD_EXCHANGE"
   | "UTC"
   | "PROVIDED"
   | "AGENCY";
-const ReportDefinitionTimeZoneSourceEnum = S.String;
-
 /** Represents a sorting in a report. */
 export interface Sort {
   /** Optional. The sort order. If true the sort will be descending. */
@@ -417,11 +368,7 @@ export interface Sort {
   /** Required. A field (dimension or metric) to sort by. */
   field?: Field;
 }
-const Sort = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Sort>;
-
 export type SortList = Array<Sort>;
-const SortList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SortList>;
-
 /** The definition of how a report should be run. */
 export interface ReportDefinition {
   /** Required. The list of metrics to report on. If empty, the report will have no metrics. */
@@ -441,8 +388,6 @@ export interface ReportDefinition {
   /** Optional. Default sorts to apply to this report. */
   sorts?: SortList;
 }
-const ReportDefinition = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ReportDefinition>;
-
 /** The `Report` resource. */
 export interface Report {
   /** Optional. Display name for the report. */
@@ -460,32 +405,18 @@ export interface Report {
   /** Output only. Report ID. */
   reportId?: string;
 }
-const Report = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Report>;
-
 export interface CreateAgenciesReportsRequest {
   /** Required. The parent resource where this `Report` will be created. Format: `agencies/{account_id}` */
   parent: string;
   /** Request body */
   body?: Report;
 }
-const CreateAgenciesReportsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateAgenciesReportsRequest>;
-
 export interface DeleteAgenciesReportsRequest {
   /** Required. Resource name of the report to delete. Format: `agencies/{account_id}/reports/{report_id}` */
   name: string;
 }
-const DeleteAgenciesReportsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteAgenciesReportsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Empty>;
-
 export interface FetchRowsAgenciesReportsResultsRequest {
   /** Optional. A page token, received from a previous `FetchReportResultRows` call. Provide this to retrieve the second and subsequent batches of rows. */
   pageToken?: string;
@@ -494,21 +425,12 @@ export interface FetchRowsAgenciesReportsResultsRequest {
   /** Optional. The maximum number of rows to return. The service may return fewer than this value. If unspecified, at most 1,000 rows will be returned. The maximum value is 10,000; values greater than 10,000 will be reduced to 10,000. */
   pageSize?: number;
 }
-const FetchRowsAgenciesReportsResultsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<FetchRowsAgenciesReportsResultsRequest>;
-
 /** Contains all metric values requested for a single date range and set of column dimension values (returned in the columns field of the response). The order of the metrics in each field corresponds to the order of the metrics specified in the request. */
 export interface MetricValueGroup {
   /** Data for the PRIMARY MetricValueType. */
   primaryValues?: ReportValueList;
 }
-const MetricValueGroup = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<MetricValueGroup>;
-
 export type MetricValueGroupList = Array<MetricValueGroup>;
-const MetricValueGroupList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<MetricValueGroupList>;
-
 /** A row of report data. */
 export interface Row {
   /** The order of the dimension values is the same as the order of the dimensions specified in the request. */
@@ -516,14 +438,8 @@ export interface Row {
   /** The length of the metric_value_groups field will be equal to the length of the date_ranges field in the fetch response. The metric_value_groups field is ordered such that each index corresponds to the date_range at the same index. For example, given date_ranges [x, y], metric_value_groups will have a length of two. The first entry in metric_value_groups represents the metrics for date x and the second entry in metric_value_groups represents the metrics for date y. */
   metricValueGroups?: MetricValueGroupList;
 }
-const Row = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Row>;
-
 export type RowList = Array<Row>;
-const RowList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RowList>;
-
 export type FixedDateRangeList = Array<FixedDateRange>;
-const FixedDateRangeList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<FixedDateRangeList>;
-
 /** The response message for the fetch report result rows endpoint. */
 export interface FetchReportResultRowsResponse {
   /** The time at which the report was scheduled to run. For non-scheduled reports, this is the time at which the report was requested to be run. */
@@ -537,35 +453,16 @@ export interface FetchReportResultRowsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const FetchReportResultRowsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<FetchReportResultRowsResponse>;
-
 export interface GetAgenciesReportsRequest {
   /** Required. The resource name of the report. Format: `agencies/{account_id}/reports/{report_id}` */
   name: string;
 }
-const GetAgenciesReportsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetAgenciesReportsRequest>;
-
 export interface GetAgenciesReportsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetAgenciesReportsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetAgenciesReportsOperationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -575,8 +472,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -590,8 +485,6 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Operation>;
-
 export interface ListAgenciesReportsRequest {
   /** Optional. Expression to filter the response. See syntax details at https://developers.google.com/ad-manager/api/beta/filters */
   filter?: string;
@@ -606,14 +499,7 @@ export interface ListAgenciesReportsRequest {
   /** Optional. A page token, received from a previous `ListReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReports` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListAgenciesReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListAgenciesReportsRequest>;
-
 export type ReportList = Array<Report>;
-const ReportList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ReportList>;
-
 /** Response object for `ListReportsResponse` containing matching `Report` objects. */
 export interface ListReportsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -623,8 +509,6 @@ export interface ListReportsResponse {
   /** Total number of `Report` objects. If a filter was included in the request, this reflects the total number after the filtering is applied. `total_size` won't be calculated in the response unless it has been included in a response field mask. The response field mask can be provided to the method by using the URL parameter `$fields` or `fields`, or by using the HTTP/gRPC header `X-Goog-FieldMask`. For more information, see https://developers.google.com/ad-manager/api/beta/field-masks */
   totalSize?: number;
 }
-const ListReportsResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListReportsResponse>;
-
 export interface PatchAgenciesReportsRequest {
   /** Identifier. The resource name of the report. Report resource name have the form: `agencies/{account_id}/reports/{report_id}` */
   name: string;
@@ -633,26 +517,14 @@ export interface PatchAgenciesReportsRequest {
   /** Request body */
   body?: Report;
 }
-const PatchAgenciesReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PatchAgenciesReportsRequest>;
-
 /** Request message for a running a report. */
 export interface RunReportRequest {}
-const RunReportRequest = Empty as any as S.Schema<RunReportRequest>;
-
 export interface RunAgenciesReportsRequest {
   /** Required. The report to run. Format: `agencies/{account_id}/reports/{report_id}` */
   name: string;
   /** Request body */
   body?: RunReportRequest;
 }
-const RunAgenciesReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<RunAgenciesReportsRequest>;
-
 export type CreateAgenciesReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a `Report` object. */
 export const createAgenciesReports: API.OperationMethod<
@@ -661,8 +533,8 @@ export const createAgenciesReports: API.OperationMethod<
   CreateAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgenciesReportsRequest,
-  output: Report,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateAgenciesReportsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -676,8 +548,8 @@ export const deleteAgenciesReports: API.OperationMethod<
   DeleteAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgenciesReportsRequest,
-  output: Empty,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteAgenciesReportsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -692,8 +564,8 @@ export const fetchRowsAgenciesReportsResults: API.PaginatedOperationMethod<
   GcpOpContext,
   FetchReportResultRowsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchRowsAgenciesReportsResultsRequest,
-  output: FetchReportResultRowsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<FetchRowsAgenciesReportsResultsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<FetchReportResultRowsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -708,8 +580,8 @@ export const getAgenciesReports: API.OperationMethod<
   GetAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgenciesReportsRequest,
-  output: Report,
+  input: __S(29, __c3, 5) as any as S.Schema<GetAgenciesReportsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -723,8 +595,8 @@ export const getAgenciesReportsOperations: API.OperationMethod<
   GetAgenciesReportsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgenciesReportsOperationsRequest,
-  output: Operation,
+  input: __S(30, __c3, 6) as any as S.Schema<GetAgenciesReportsOperationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -739,8 +611,8 @@ export const listAgenciesReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAgenciesReportsRequest,
-  output: ListReportsResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<ListAgenciesReportsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -755,8 +627,8 @@ export const patchAgenciesReports: API.OperationMethod<
   PatchAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAgenciesReportsRequest,
-  output: Report,
+  input: __S(38, __c4, 6) as any as S.Schema<PatchAgenciesReportsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -770,8 +642,8 @@ export const runAgenciesReports: API.OperationMethod<
   RunAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunAgenciesReportsRequest,
-  output: Operation,
+  input: __S(39, __c4, 7) as any as S.Schema<RunAgenciesReportsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -781,7 +653,7 @@ export const runAgenciesReports: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ReportDefinitionMetricsItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -793,28 +665,28 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          endDate: S.optional(Agenciesandbrands_Date),
-          startDate: S.optional(Agenciesandbrands_Date),
+          endDate: S.optional(__S(1, __c0, 1)),
+          startDate: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "FixedDateRange" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fixed: S.optional(FixedDateRange),
-          relative: S.optional(DateRangeRelativeEnum),
+          fixed: S.optional(__S(2, __c0, 2)),
+          relative: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateRange" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(S.suspend(() => FilterList_)),
+          filters: S.optional(S.suspend(() => __S(14, __c1, 6))),
         }),
       ).annotate({ identifier: "FilterList" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(FieldMetricEnum),
-          dimension: S.optional(FieldDimensionEnum),
+          metric: S.optional(S.String),
+          dimension: S.optional(S.String),
         }),
       ).annotate({ identifier: "Field" });
     case 6:
@@ -822,7 +694,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList_),
+          values: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "StringList" });
   }
@@ -834,48 +706,48 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(DoubleList_),
+          values: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "DoubleList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          stringListValue: S.optional(StringList),
+          stringListValue: S.optional(__S(7, __c0, 7)),
           intValue: S.optional(S.String),
-          intListValue: S.optional(StringList),
+          intListValue: S.optional(__S(7, __c0, 7)),
           bytesValue: S.optional(S.String),
           stringValue: S.optional(S.String),
-          doubleListValue: S.optional(DoubleList),
+          doubleListValue: S.optional(__S(9, __c1, 1)),
           boolValue: S.optional(S.Boolean),
           doubleValue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReportValue" });
     case 3:
-      return S.Array(ReportValue);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          field: S.optional(Field),
-          operation: S.optional(FieldFilterOperationEnum),
-          values: S.optional(ReportValueList),
+          field: S.optional(__S(5, __c0, 5)),
+          operation: S.optional(S.String),
+          values: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "FieldFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          notFilter: S.optional(Filter),
-          andFilter: S.optional(FilterList),
-          orFilter: S.optional(FilterList),
-          fieldFilter: S.optional(FieldFilter),
+          notFilter: S.optional(__S(13, __c1, 5)),
+          andFilter: S.optional(__S(4, __c0, 4)),
+          orFilter: S.optional(__S(4, __c0, 4)),
+          fieldFilter: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "Filter" });
     case 6:
-      return S.Array(Filter);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           descending: S.optional(S.Boolean),
-          field: S.optional(Field),
+          field: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "Sort" });
   }
@@ -883,25 +755,25 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Sort);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(ReportDefinitionMetricsItemEnumList),
+          metrics: S.optional(__S(0, __c0, 0)),
           currencyCode: S.optional(S.String),
-          dimensions: S.optional(ReportDefinitionDimensionsItemEnumList),
-          dateRange: S.optional(DateRange),
-          filters: S.optional(FilterList_),
-          timeZoneSource: S.optional(ReportDefinitionTimeZoneSourceEnum),
+          dimensions: S.optional(__S(0, __c0, 0)),
+          dateRange: S.optional(__S(3, __c0, 3)),
+          filters: S.optional(__S(14, __c1, 6)),
+          timeZoneSource: S.optional(S.String),
           timeZone: S.optional(S.String),
-          sorts: S.optional(SortList),
+          sorts: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ReportDefinition" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          reportDefinition: S.optional(ReportDefinition),
+          reportDefinition: S.optional(__S(17, __c2, 1)),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           locale: S.optional(S.String),
@@ -913,7 +785,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Report.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -961,7 +833,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          primaryValues: S.optional(ReportValueList),
+          primaryValues: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "MetricValueGroup" });
   }
@@ -969,25 +841,25 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetricValueGroup);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensionValues: S.optional(ReportValueList),
-          metricValueGroups: S.optional(MetricValueGroupList),
+          dimensionValues: S.optional(__S(11, __c1, 3)),
+          metricValueGroups: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "Row" });
     case 2:
-      return S.Array(Row);
+      return S.Array(__S(25, __c3, 1));
     case 3:
-      return S.Array(FixedDateRange);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           runTime: S.optional(S.String),
           totalRowCount: S.optional(S.Number),
-          rows: S.optional(RowList),
-          dateRanges: S.optional(FixedDateRangeList),
+          rows: S.optional(__S(26, __c3, 2)),
+          dateRanges: S.optional(__S(27, __c3, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1028,22 +900,22 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DocumentMap);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Status" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          error: S.optional(Status),
+          metadata: S.optional(__S(31, __c3, 7)),
+          error: S.optional(__S(33, __c4, 1)),
           name: S.optional(S.String),
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(31, __c3, 7)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1067,12 +939,12 @@ function __c4(j: number): any {
         identifier: "ListAgenciesReportsRequest",
       });
     case 4:
-      return S.Array(Report);
+      return S.Array(__S(18, __c2, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          reports: S.optional(ReportList),
+          reports: S.optional(__S(36, __c4, 4)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
@@ -1081,7 +953,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Report.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1096,7 +968,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RunReportRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1108,4 +980,9 @@ function __c4(j: number): any {
         identifier: "RunAgenciesReportsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

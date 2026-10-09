@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -25,25 +27,17 @@ export interface ListRequestAction {
   /** Filters by the action type. */
   type?: string;
 }
-const ListRequestAction = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListRequestAction>;
-
 export interface ListRequestActor {
   /** Filters by the email address of the actor that made the change. */
   email?: string;
   /** Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range. */
   ip?: string;
 }
-const ListRequestActor = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ListRequestActor>;
-
 export type ListRequestDirection = "desc" | "asc";
-const ListRequestDirection = S.String;
-
 export interface ListRequestZone {
   /** Filters by the name of the zone associated to the change. */
   name?: string;
 }
-const ListRequestZone = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListRequestZone>;
-
 export interface ListAuditLogsRequest {
   /** Identifier */
   accountId: string;
@@ -67,19 +61,13 @@ export interface ListAuditLogsRequest {
   since?: string;
   zone?: ListRequestZone;
 }
-const ListAuditLogsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListAuditLogsRequest>;
-
 export interface ListResultItemAction {
   /** A boolean that indicates if the action attempted was successful. */
   result?: boolean | null;
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
-const ListResultItemAction = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListResultItemAction>;
-
 export type ListResultItemActorType = "user" | "admin" | "Cloudflare";
-const ListResultItemActorType = S.String;
-
 export interface ListResultItemActor {
   /** The ID of the actor that performed the action. If a user performed the action, this will be their User ID. */
   id?: string | null;
@@ -90,25 +78,16 @@ export interface ListResultItemActor {
   /** The type of actor, whether a User, Cloudflare Admin, or an Automated System. */
   type?: ListResultItemActorType | null;
 }
-const ListResultItemActor = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListResultItemActor>;
-
 export interface ListResultItemOwner {
   /** Identifier */
   id?: string | null;
 }
-const ListResultItemOwner = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListResultItemOwner>;
-
 export interface ListResultItemResource {
   /** An identifier for the resource that was affected by the action. */
   id?: string | null;
   /** A short string that describes the resource that was affected by the action. */
   type?: string | null;
 }
-const ListResultItemResource = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListResultItemResource>;
-
 export interface ListResultItem {
   /** A string that uniquely identifies the audit log. */
   id?: string | null;
@@ -127,22 +106,13 @@ export interface ListResultItem {
   /** A UTC RFC3339 timestamp that specifies when the action being logged occured. */
   when?: string | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListResultList>;
-
 export interface ListAuditLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAuditLogsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListAuditLogsResponse>;
-
 export type ListAuditLogsError = CloudflareOpError;
 /** Gets a list of audit logs for an account. Can be filtered by who made the change, on which zone, and the timeframe of the change. */
 export const listAuditLogs: API.PaginatedOperationMethod<
@@ -153,8 +123,8 @@ export const listAuditLogs: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAuditLogsRequest,
-    output: ListAuditLogsResponse,
+    input: __S(3, __c0, 3) as any as S.Schema<ListAuditLogsRequest>,
+    output: __S(10, __c1, 2) as any as S.Schema<ListAuditLogsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -196,16 +166,16 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(ListRequestAction.pipe(T.DeepQuery("action"))),
-          actor: S.optional(ListRequestActor.pipe(T.DeepQuery("actor"))),
+          action: S.optional(__S(0, __c0, 0).pipe(T.DeepQuery("action"))),
+          actor: S.optional(__S(1, __c0, 1).pipe(T.DeepQuery("actor"))),
           before: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           export: S.optional(S.Boolean.pipe(T.Query())),
           hideUserLogs: S.optional(S.Boolean.pipe(T.Query("hide_user_logs"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           since: S.optional(S.String.pipe(T.Query())),
-          zone: S.optional(ListRequestZone.pipe(T.DeepQuery("zone"))),
+          zone: S.optional(__S(2, __c0, 2).pipe(T.DeepQuery("zone"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/audit_logs", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -223,7 +193,7 @@ function __c0(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(ListResultItemActorType)),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItemActor" });
     case 6:
@@ -247,25 +217,30 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(ListResultItemAction)),
-          actor: S.optional(S.NullOr(ListResultItemActor)),
+          action: S.optional(S.NullOr(__S(4, __c0, 4))),
+          actor: S.optional(S.NullOr(__S(5, __c0, 5))),
           interface: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           newValue: S.optional(S.NullOr(S.String)),
           oldValue: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(ListResultItemOwner)),
-          resource: S.optional(S.NullOr(ListResultItemResource)),
+          owner: S.optional(S.NullOr(__S(6, __c0, 6))),
+          resource: S.optional(S.NullOr(__S(7, __c0, 7))),
           when: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 1:
-      return S.Array(ListResultItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(9, __c1, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAuditLogsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

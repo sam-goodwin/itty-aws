@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -41,15 +43,8 @@ export interface GetDisputeAlertRequest {
   /** The dispute alert ID, prefixed `dspa_`. */
   id: string;
 }
-const GetDisputeAlertRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetDisputeAlertRequest>;
-
 /** What the issuer sent. `early_fraud_warning` is a fraud report on a settled payment (Visa TC40 / Mastercard SAFE) -- refunding still avoids the chargeback, and Whop never charges a fee for one. `dispute_alert` is a pre-dispute notice from the issuer's alert network, which Whop pays for and passes on as a fee. `rapid_dispute_resolution` is a Visa RDR case the network already closed by refunding the payment -- nothing is left to act on. */
 export type DisputeAlertType = "early_fraud_warning" | "dispute_alert" | "rapid_dispute_resolution";
-const DisputeAlertType = S.String;
-
 export interface DisputeAlert {
   /** The account the alerted payment belongs to, prefixed `biz_`. `null` while the alert is unmatched. */
   account_id: string | null;
@@ -82,20 +77,12 @@ export interface DisputeAlert {
   /** When the alert was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-const DisputeAlert = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DisputeAlert>;
-
 export type ListDisputeAlertsRequestType =
   | "early_fraud_warning"
   | "dispute_alert"
   | "rapid_dispute_resolution";
-const ListDisputeAlertsRequestType = S.String;
-
 export type ListDisputeAlertsRequestOrder = "created_at" | "reported_at" | "amount";
-const ListDisputeAlertsRequestOrder = S.String;
-
 export type ListDisputeAlertsRequestDirection = "asc" | "desc";
-const ListDisputeAlertsRequestDirection = S.String;
-
 export interface ListDisputeAlertsRequest {
   /** Only alerts on this account's payments (`biz_` tag). Omit it to cover every account you can read. */
   account_id?: string;
@@ -120,37 +107,17 @@ export interface ListDisputeAlertsRequest {
   /** Only alerts Whop received after this ISO 8601 timestamp. */
   created_after?: string;
 }
-const ListDisputeAlertsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListDisputeAlertsRequest>;
-
 export type ListDisputeAlertsResponseDataList = Array<DisputeAlert>;
-const ListDisputeAlertsResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListDisputeAlertsResponseDataList>;
-
 export interface ListDisputeAlertsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListDisputeAlertsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListDisputeAlertsResponsePageInfo>;
-
 export interface ListDisputeAlertsResponse {
   data: ListDisputeAlertsResponseDataList;
   page_info: ListDisputeAlertsResponsePageInfo;
 }
-const ListDisputeAlertsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListDisputeAlertsResponse>;
-
 export type GetDisputeAlertError = Forbidden | NotFound | WhopOpError;
 /** Retrieve Dispute Alert Retrieves a single dispute alert or early fraud warning by ID. */
 export const getDisputeAlert: API.OperationMethod<
@@ -159,8 +126,8 @@ export const getDisputeAlert: API.OperationMethod<
   GetDisputeAlertError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDisputeAlertRequest,
-  output: DisputeAlert,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDisputeAlertRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisputeAlert>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -176,8 +143,8 @@ export const listDisputeAlerts: API.PaginatedOperationMethod<
   DisputeAlert
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDisputeAlertsRequest,
-    output: ListDisputeAlertsResponse,
+    input: __S(2, __c0, 2) as any as S.Schema<ListDisputeAlertsRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<ListDisputeAlertsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -218,7 +185,7 @@ function __c0(j: number): any {
           product_id: S.NullOr(S.String),
           reported_at: S.String,
           transaction_at: S.NullOr(S.String),
-          type: DisputeAlertType,
+          type: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "DisputeAlert" });
@@ -227,19 +194,19 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           payment_id: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListDisputeAlertsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListDisputeAlertsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListDisputeAlertsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dispute_alerts", code: 200 })),
       ).annotate({ identifier: "ListDisputeAlertsRequest" });
     case 3:
-      return S.Array(DisputeAlert);
+      return S.Array(__S(1, __c0, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -254,11 +221,16 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListDisputeAlertsResponseDataList,
-          page_info: ListDisputeAlertsResponsePageInfo,
+          data: __S(3, __c0, 3),
+          page_info: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "ListDisputeAlertsResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

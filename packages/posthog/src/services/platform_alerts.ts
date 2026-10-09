@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -13,53 +15,24 @@ export interface GetPlatformAlertRequest {
   project_id: string;
   id: string;
 }
-const GetPlatformAlertRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetPlatformAlertRequest>;
-
 /** * `logs` - Logs */
 export type PlatformAlertConfigurationSourceKindEnum = "logs";
-const PlatformAlertConfigurationSourceKindEnum = S.String;
-
 /** Source-specific query settings. The shape depends on source_kind. */
 export type PlatformAlertConfigurationSourceConfigMap = { [key: string]: unknown | undefined };
-const PlatformAlertConfigurationSourceConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PlatformAlertConfigurationSourceConfigMap>;
-
 /** * `day` - Day * `week` - Week * `month` - Month */
 export type CalendarUnitEnum = "day" | "week" | "month";
-const CalendarUnitEnum = S.String;
-
 export interface AlertScheduleRestrictionWindow {
   /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
   start?: string;
   /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
-const AlertScheduleRestrictionWindow = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AlertScheduleRestrictionWindow>;
-
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList = Array<AlertScheduleRestrictionWindow>;
-const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
-
 export interface AlertScheduleRestriction {
   /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
   blocked_windows?: AlertScheduleRestrictionBlockedWindowsList;
 }
-const AlertScheduleRestriction = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AlertScheduleRestriction>;
-
 /** * `not_firing` - Not firing * `firing` - Firing * `errored` - Errored * `snoozed` - Snoozed * `broken` - Broken */
 export type BillingAlertConfigurationStateEnum =
   | "not_firing"
@@ -67,8 +40,6 @@ export type BillingAlertConfigurationStateEnum =
   | "errored"
   | "snoozed"
   | "broken";
-const BillingAlertConfigurationStateEnum = S.String;
-
 export interface PlatformAlert {
   /** Unique identifier of this alert instance. */
   id: string;
@@ -83,15 +54,8 @@ export interface PlatformAlert {
   /** Time until which notifications are snoozed. Null when not snoozed. */
   snooze_until: string | null;
 }
-const PlatformAlert = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PlatformAlert>;
-
 /** Runtime state for each result group of this configuration. */
 export type PlatformAlertConfigurationAlertsList = Array<PlatformAlert>;
-const PlatformAlertConfigurationAlertsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PlatformAlertConfigurationAlertsList>;
-
 export interface PlatformAlertConfiguration {
   /** Unique identifier of the alert configuration. */
   id: string;
@@ -136,11 +100,6 @@ export interface PlatformAlertConfiguration {
   /** Runtime state for each result group of this configuration. */
   alerts: PlatformAlertConfigurationAlertsList;
 }
-const PlatformAlertConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PlatformAlertConfiguration>;
-
 export interface ListPlatformAlertsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -149,28 +108,13 @@ export interface ListPlatformAlertsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListPlatformAlertsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListPlatformAlertsRequest>;
-
 export type PaginatedPlatformAlertConfigurationListResultsList = Array<PlatformAlertConfiguration>;
-const PaginatedPlatformAlertConfigurationListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PaginatedPlatformAlertConfigurationListResultsList>;
-
 export interface PaginatedPlatformAlertConfigurationList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedPlatformAlertConfigurationListResultsList;
 }
-const PaginatedPlatformAlertConfigurationList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PaginatedPlatformAlertConfigurationList>;
-
 export type GetPlatformAlertError = PosthogOpError;
 export const getPlatformAlert: API.OperationMethod<
   GetPlatformAlertRequest,
@@ -178,8 +122,8 @@ export const getPlatformAlert: API.OperationMethod<
   GetPlatformAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlatformAlertRequest,
-  output: PlatformAlertConfiguration,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPlatformAlertRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<PlatformAlertConfiguration>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -192,8 +136,8 @@ export const listPlatformAlerts: API.OperationMethod<
   ListPlatformAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPlatformAlertsRequest,
-  output: PaginatedPlatformAlertConfigurationList,
+  input: __S(8, __c1, 0) as any as S.Schema<ListPlatformAlertsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PaginatedPlatformAlertConfigurationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -227,11 +171,11 @@ function __c0(j: number): any {
         identifier: "AlertScheduleRestrictionWindow",
       });
     case 3:
-      return S.Array(AlertScheduleRestrictionWindow);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          blocked_windows: S.optional(AlertScheduleRestrictionBlockedWindowsList),
+          blocked_windows: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "AlertScheduleRestriction" });
     case 5:
@@ -239,38 +183,38 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           grouping_key: S.String,
-          state: BillingAlertConfigurationStateEnum,
+          state: S.String,
           firing_started_at: S.NullOr(S.String),
           last_notified_at: S.NullOr(S.String),
           snooze_until: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PlatformAlert" });
     case 6:
-      return S.Array(PlatformAlert);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           enabled: S.Boolean,
-          source_kind: PlatformAlertConfigurationSourceKindEnum,
-          source_config: PlatformAlertConfigurationSourceConfigMap,
+          source_kind: S.String,
+          source_config: __S(1, __c0, 1),
           threshold_count: S.Number,
           threshold_operator: S.String,
           window_minutes: S.Number,
           check_interval_minutes: S.Number,
-          recurrence_unit: S.NullOr(CalendarUnitEnum),
+          recurrence_unit: S.NullOr(S.String),
           anchor_time: S.NullOr(S.String),
           evaluation_periods: S.Number,
           datapoints_to_alarm: S.Number,
           cooldown_minutes: S.Number,
-          schedule_restriction: S.NullOr(AlertScheduleRestriction),
+          schedule_restriction: S.NullOr(__S(4, __c0, 4)),
           next_check_at: S.NullOr(S.String),
           consecutive_failures: S.Number,
           legacy_configuration_id: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          alerts: PlatformAlertConfigurationAlertsList,
+          alerts: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "PlatformAlertConfiguration",
@@ -292,17 +236,22 @@ function __c1(j: number): any {
         identifier: "ListPlatformAlertsRequest",
       });
     case 1:
-      return S.Array(PlatformAlertConfiguration);
+      return S.Array(__S(7, __c0, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedPlatformAlertConfigurationListResultsList,
+          results: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "PaginatedPlatformAlertConfigurationList",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

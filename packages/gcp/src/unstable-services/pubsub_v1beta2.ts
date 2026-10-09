@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,30 +65,19 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request for the Acknowledge method. */
 export interface AcknowledgeRequest {
   /** The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the `Pull` response. Must not be empty. */
   ackIds?: StringList;
 }
-const AcknowledgeRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AcknowledgeRequest>;
-
 export interface AcknowledgeProjectsSubscriptionsRequest {
   /** The subscription whose message is being acknowledged. */
   subscription: string;
   /** Request body */
   body?: AcknowledgeRequest;
 }
-const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcknowledgeProjectsSubscriptionsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
-
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). */
 export interface OidcToken {
   /** Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used. */
@@ -94,11 +85,7 @@ export interface OidcToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account. */
   serviceAccountEmail?: string;
 }
-const OidcToken = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<OidcToken>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringMap>;
-
 /** Configuration for a push delivery endpoint. */
 export interface PushConfig {
   /** If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message. */
@@ -108,8 +95,6 @@ export interface PushConfig {
   /** Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. */
   attributes?: StringMap;
 }
-const PushConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PushConfig>;
-
 /** A subscription resource. */
 export interface Subscription {
   /** If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods. */
@@ -121,66 +106,37 @@ export interface Subscription {
   /** The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
   name?: string;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Subscription>;
-
 export interface CreateProjectsSubscriptionsRequest {
   /** The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
   name: string;
   /** Request body */
   body?: Subscription;
 }
-const CreateProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateProjectsSubscriptionsRequest>;
-
 /** A topic resource. */
 export interface Topic {
   /** The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
   name?: string;
 }
-const Topic = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Topic>;
-
 export interface CreateProjectsTopicsRequest {
   /** The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
   name: string;
   /** Request body */
   body?: Topic;
 }
-const CreateProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateProjectsTopicsRequest>;
-
 export interface DeleteProjectsSubscriptionsRequest {
   /** The subscription to delete. */
   subscription: string;
 }
-const DeleteProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteProjectsSubscriptionsRequest>;
-
 export interface DeleteProjectsTopicsRequest {
   /** Name of the topic to delete. */
   topic: string;
 }
-const DeleteProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteProjectsTopicsRequest>;
-
 export interface GetIamPolicyProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -192,8 +148,6 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -203,11 +157,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-const Binding = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -217,37 +167,20 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-const Policy = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Policy>;
-
 export interface GetIamPolicyProjectsTopicsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetIamPolicyProjectsTopicsRequest>;
-
 export interface GetProjectsSubscriptionsRequest {
   /** The name of the subscription to get. */
   subscription: string;
 }
-const GetProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetProjectsSubscriptionsRequest>;
-
 export interface GetProjectsTopicsRequest {
   /** The name of the topic to get. */
   topic: string;
 }
-const GetProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetProjectsTopicsRequest>;
-
 export interface ListProjectsSubscriptionsRequest {
   /** The name of the cloud project that subscriptions belong to. */
   project: string;
@@ -256,14 +189,7 @@ export interface ListProjectsSubscriptionsRequest {
   /** The value returned by the last `ListSubscriptionsResponse`; indicates that this is a continuation of a prior `ListSubscriptions` call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-const ListProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListProjectsSubscriptionsRequest>;
-
 export type SubscriptionList = Array<Subscription>;
-const SubscriptionList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SubscriptionList>;
-
 /** Response for the `ListSubscriptions` method. */
 export interface ListSubscriptionsResponse {
   /** If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new `ListSubscriptionsRequest` to get more subscriptions. */
@@ -271,11 +197,6 @@ export interface ListSubscriptionsResponse {
   /** The subscriptions that match the request. */
   subscriptions?: SubscriptionList;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListSubscriptionsResponse>;
-
 export interface ListProjectsTopicsRequest {
   /** The value returned by the last `ListTopicsResponse`; indicates that this is a continuation of a prior `ListTopics` call, and that the system should return the next page of data. */
   pageToken?: string;
@@ -284,14 +205,7 @@ export interface ListProjectsTopicsRequest {
   /** Maximum number of topics to return. */
   pageSize?: number;
 }
-const ListProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListProjectsTopicsRequest>;
-
 export type TopicList = Array<Topic>;
-const TopicList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TopicList>;
-
 /** Response for the `ListTopics` method. */
 export interface ListTopicsResponse {
   /** The resulting topics. */
@@ -299,8 +213,6 @@ export interface ListTopicsResponse {
   /** If not empty, indicates that there may be more topics that match the request; this value should be passed in a new `ListTopicsRequest`. */
   nextPageToken?: string;
 }
-const ListTopicsResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListTopicsResponse>;
-
 export interface ListProjectsTopicsSubscriptionsRequest {
   /** Maximum number of subscription names to return. */
   pageSize?: number;
@@ -309,11 +221,6 @@ export interface ListProjectsTopicsSubscriptionsRequest {
   /** The name of the topic that subscriptions are attached to. */
   topic: string;
 }
-const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListProjectsTopicsSubscriptionsRequest>;
-
 /** Response for the `ListTopicSubscriptions` method. */
 export interface ListTopicSubscriptionsResponse {
   /** If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new `ListTopicSubscriptionsRequest` to get more subscriptions. */
@@ -321,11 +228,6 @@ export interface ListTopicSubscriptionsResponse {
   /** The names of the subscriptions that match the request. */
   subscriptions?: StringList;
 }
-const ListTopicSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListTopicSubscriptionsResponse>;
-
 /** Request for the ModifyAckDeadline method. */
 export interface ModifyAckDeadlineRequest {
   /** The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call was made. Specifying zero may immediately make the message available for another pull request. */
@@ -335,43 +237,23 @@ export interface ModifyAckDeadlineRequest {
   /** List of acknowledgment IDs. */
   ackIds?: StringList;
 }
-const ModifyAckDeadlineRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ModifyAckDeadlineRequest>;
-
 export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
   /** The name of the subscription. */
   subscription: string;
   /** Request body */
   body?: ModifyAckDeadlineRequest;
 }
-const ModifyAckDeadlineProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>;
-
 /** Request for the ModifyPushConfig method. */
 export interface ModifyPushConfigRequest {
   /** The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` is not called. */
   pushConfig?: PushConfig;
 }
-const ModifyPushConfigRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ModifyPushConfigRequest>;
-
 export interface ModifyPushConfigProjectsSubscriptionsRequest {
   /** The name of the subscription. */
   subscription: string;
   /** Request body */
   body?: ModifyPushConfigRequest;
 }
-const ModifyPushConfigProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ModifyPushConfigProjectsSubscriptionsRequest>;
-
 /** A message data and its attributes. The message payload must not be empty; it must contain either a non-empty data field, or at least one attribute. */
 export interface PubsubMessage {
   /** The message payload. For JSON requests, the value of this field must be [base64-encoded](https://tools.ietf.org/html/rfc4648). */
@@ -383,36 +265,23 @@ export interface PubsubMessage {
   /** The time at which the message was published, populated by the server when it receives the `Publish` call. It must not be populated by the publisher in a `Publish` call. */
   publishTime?: string;
 }
-const PubsubMessage = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PubsubMessage>;
-
 export type PubsubMessageList = Array<PubsubMessage>;
-const PubsubMessageList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PubsubMessageList>;
-
 /** Request for the Publish method. */
 export interface PublishRequest {
   /** The messages to publish. */
   messages?: PubsubMessageList;
 }
-const PublishRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PublishRequest>;
-
 export interface PublishProjectsTopicsRequest {
   /** The messages in the request will be published on this topic. */
   topic: string;
   /** Request body */
   body?: PublishRequest;
 }
-const PublishProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PublishProjectsTopicsRequest>;
-
 /** Response for the `Publish` method. */
 export interface PublishResponse {
   /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
   messageIds?: StringList;
 }
-const PublishResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PublishResponse>;
-
 /** Request for the `Pull` method. */
 export interface PullRequest {
   /** The maximum number of messages returned for this request. The Pub/Sub system may return fewer than the number specified. */
@@ -420,19 +289,12 @@ export interface PullRequest {
   /** Optional. If this is specified as true the system will respond immediately even if it is not able to return a message in the `Pull` response. Otherwise the system is allowed to wait until at least one message is available rather than returning no messages. The client may cancel the request if it does not wish to wait any longer for the response. Warning: setting this field to `true` is discouraged because it adversely impacts the performance of `Pull` operations. We recommend that users do not set this field. */
   returnImmediately?: boolean;
 }
-const PullRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PullRequest>;
-
 export interface PullProjectsSubscriptionsRequest {
   /** The subscription from which messages should be pulled. */
   subscription: string;
   /** Request body */
   body?: PullRequest;
 }
-const PullProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PullProjectsSubscriptionsRequest>;
-
 /** A message and its corresponding acknowledgment ID. */
 export interface ReceivedMessage {
   /** This ID can be used to acknowledge the received message. */
@@ -440,87 +302,51 @@ export interface ReceivedMessage {
   /** The message. */
   message?: PubsubMessage;
 }
-const ReceivedMessage = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ReceivedMessage>;
-
 export type ReceivedMessageList = Array<ReceivedMessage>;
-const ReceivedMessageList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ReceivedMessageList>;
-
 /** Response for the `Pull` method. */
 export interface PullResponse {
   /** Received Pub/Sub messages. The Pub/Sub system will return zero messages if there are no more available in the backlog. The Pub/Sub system may return fewer than the `maxMessages` requested even if there are more messages available in the backlog. */
   receivedMessages?: ReceivedMessageList;
 }
-const PullResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PullResponse>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsSubscriptionsRequest>;
-
 export interface SetIamPolicyProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<SetIamPolicyProjectsTopicsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<TestIamPermissionsProjectsSubscriptionsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsTopicsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<TestIamPermissionsProjectsTopicsRequest>;
-
 export type AcknowledgeProjectsSubscriptionsError =
   | NotFound
   | Forbidden
@@ -534,8 +360,8 @@ export const acknowledgeProjectsSubscriptions: API.OperationMethod<
   AcknowledgeProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcknowledgeProjectsSubscriptionsRequest,
-  output: Empty,
+  input: __S(2, __c0, 2) as any as S.Schema<AcknowledgeProjectsSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -554,8 +380,8 @@ export const createProjectsSubscriptions: API.OperationMethod<
   CreateProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsSubscriptionsRequest,
-  output: Subscription,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateProjectsSubscriptionsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -569,8 +395,8 @@ export const createProjectsTopics: API.OperationMethod<
   CreateProjectsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTopicsRequest,
-  output: Topic,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsTopicsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -589,8 +415,8 @@ export const deleteProjectsSubscriptions: API.OperationMethod<
   DeleteProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsSubscriptionsRequest,
-  output: Empty,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteProjectsSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -604,8 +430,8 @@ export const deleteProjectsTopics: API.OperationMethod<
   DeleteProjectsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTopicsRequest,
-  output: Empty,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteProjectsTopicsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -619,8 +445,8 @@ export const getIamPolicyProjectsSubscriptions: API.OperationMethod<
   GetIamPolicyProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsSubscriptionsRequest,
-  output: Policy,
+  input: __S(13, __c1, 5) as any as S.Schema<GetIamPolicyProjectsSubscriptionsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -634,8 +460,8 @@ export const getIamPolicyProjectsTopics: API.OperationMethod<
   GetIamPolicyProjectsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsTopicsRequest,
-  output: Policy,
+  input: __S(18, __c2, 2) as any as S.Schema<GetIamPolicyProjectsTopicsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -649,8 +475,8 @@ export const getProjectsSubscriptions: API.OperationMethod<
   GetProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsSubscriptionsRequest,
-  output: Subscription,
+  input: __S(19, __c2, 3) as any as S.Schema<GetProjectsSubscriptionsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -664,8 +490,8 @@ export const getProjectsTopics: API.OperationMethod<
   GetProjectsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsTopicsRequest,
-  output: Topic,
+  input: __S(20, __c2, 4) as any as S.Schema<GetProjectsTopicsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -680,8 +506,8 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<ListProjectsSubscriptionsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -697,8 +523,8 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTopicsRequest,
-  output: ListTopicsResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<ListProjectsTopicsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListTopicsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -714,8 +540,8 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTopicSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTopicsSubscriptionsRequest,
-  output: ListTopicSubscriptionsResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<ListProjectsTopicsSubscriptionsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ListTopicSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -735,8 +561,8 @@ export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
   ModifyAckDeadlineProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyAckDeadlineProjectsSubscriptionsRequest,
-  output: Empty,
+  input: __S(30, __c3, 6) as any as S.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -755,8 +581,8 @@ export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
   ModifyPushConfigProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyPushConfigProjectsSubscriptionsRequest,
-  output: Empty,
+  input: __S(32, __c4, 0) as any as S.Schema<ModifyPushConfigProjectsSubscriptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -770,8 +596,8 @@ export const publishProjectsTopics: API.OperationMethod<
   PublishProjectsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishProjectsTopicsRequest,
-  output: PublishResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<PublishProjectsTopicsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<PublishResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -790,8 +616,8 @@ export const pullProjectsSubscriptions: API.OperationMethod<
   PullProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PullProjectsSubscriptionsRequest,
-  output: PullResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<PullProjectsSubscriptionsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<PullResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -810,8 +636,8 @@ export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
   SetIamPolicyProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsSubscriptionsRequest,
-  output: Policy,
+  input: __S(44, __c5, 4) as any as S.Schema<SetIamPolicyProjectsSubscriptionsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -830,8 +656,8 @@ export const setIamPolicyProjectsTopics: API.OperationMethod<
   SetIamPolicyProjectsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsTopicsRequest,
-  output: Policy,
+  input: __S(45, __c5, 5) as any as S.Schema<SetIamPolicyProjectsTopicsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -850,8 +676,8 @@ export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
   TestIamPermissionsProjectsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsSubscriptionsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<TestIamPermissionsProjectsSubscriptionsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -870,8 +696,8 @@ export const testIamPermissionsProjectsTopics: API.OperationMethod<
   TestIamPermissionsProjectsTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsTopicsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<TestIamPermissionsProjectsTopicsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -885,14 +711,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ackIds: S.optional(StringList),
+          ackIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "AcknowledgeRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscription: S.String.pipe(T.Label()),
-          body: S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -919,15 +745,15 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          oidcToken: S.optional(OidcToken),
+          oidcToken: S.optional(__S(4, __c0, 4)),
           pushEndpoint: S.optional(S.String),
-          attributes: S.optional(StringMap),
+          attributes: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "PushConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pushConfig: S.optional(PushConfig),
+          pushConfig: S.optional(__S(6, __c0, 6)),
           ackDeadlineSeconds: S.optional(S.Number),
           topic: S.optional(S.String),
           name: S.optional(S.String),
@@ -941,7 +767,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -962,7 +788,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1028,8 +854,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(StringList),
-          condition: S.optional(Expr),
+          members: S.optional(__S(0, __c0, 0)),
+          condition: S.optional(__S(14, __c1, 6)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
@@ -1038,11 +864,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Binding);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(16, __c2, 0)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
@@ -1105,12 +931,12 @@ function __c2(j: number): any {
         identifier: "ListProjectsSubscriptionsRequest",
       });
     case 6:
-      return S.Array(Subscription);
+      return S.Array(__S(7, __c0, 7));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          subscriptions: S.optional(SubscriptionList),
+          subscriptions: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
@@ -1136,11 +962,11 @@ function __c3(j: number): any {
         identifier: "ListProjectsTopicsRequest",
       });
     case 1:
-      return S.Array(Topic);
+      return S.Array(__S(9, __c1, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(TopicList),
+          topics: S.optional(__S(25, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTopicsResponse" });
@@ -1164,7 +990,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          subscriptions: S.optional(StringList),
+          subscriptions: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "ListTopicSubscriptionsResponse",
@@ -1174,14 +1000,14 @@ function __c3(j: number): any {
         S.Struct({
           ackDeadlineSeconds: S.optional(S.Number),
           ackId: S.optional(S.String),
-          ackIds: S.optional(StringList),
+          ackIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ModifyAckDeadlineRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           subscription: S.String.pipe(T.Label()),
-          body: S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1195,7 +1021,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pushConfig: S.optional(PushConfig),
+          pushConfig: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ModifyPushConfigRequest" });
   }
@@ -1206,7 +1032,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscription: S.String.pipe(T.Label()),
-          body: S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1222,23 +1048,23 @@ function __c4(j: number): any {
         S.Struct({
           data: S.optional(S.String),
           messageId: S.optional(S.String),
-          attributes: S.optional(StringMap),
+          attributes: S.optional(__S(5, __c0, 5)),
           publishTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PubsubMessage" });
     case 2:
-      return S.Array(PubsubMessage);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(PubsubMessageList),
+          messages: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "PublishRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           topic: S.String.pipe(T.Label()),
-          body: S.optional(PublishRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1252,7 +1078,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          messageIds: S.optional(StringList),
+          messageIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "PublishResponse" });
     case 6:
@@ -1266,7 +1092,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscription: S.String.pipe(T.Label()),
-          body: S.optional(PullRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1285,28 +1111,28 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ackId: S.optional(S.String),
-          message: S.optional(PubsubMessage),
+          message: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "ReceivedMessage" });
     case 1:
-      return S.Array(ReceivedMessage);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          receivedMessages: S.optional(ReceivedMessageList),
+          receivedMessages: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "PullResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1321,7 +1147,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1335,7 +1161,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1344,7 +1170,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1363,7 +1189,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1375,4 +1201,9 @@ function __c6(j: number): any {
         identifier: "TestIamPermissionsProjectsTopicsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

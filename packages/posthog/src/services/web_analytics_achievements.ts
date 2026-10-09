@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -16,53 +18,26 @@ export interface AcknowledgeWebAnalyticsAchievementCelebrationRequest {
   /** Stage number being acknowledged, 1-5. */
   stage: number;
 }
-const AcknowledgeWebAnalyticsAchievementCelebrationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcknowledgeWebAnalyticsAchievementCelebrationRequest>;
-
 export interface AcknowledgeCelebrationResponse {
   /** True if a matching pending celebration was cleared (idempotent). */
   acknowledged: boolean;
 }
-const AcknowledgeCelebrationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcknowledgeCelebrationResponse>;
-
 export interface UpdateWebAnalyticsAchievementPreferencesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** When true, the requesting user has hidden the Web analytics achievements gamification UI and suppressed achievement-unlocked notifications for this project. Scoped per (project, user). */
   achievements_opt_out: boolean;
 }
-const UpdateWebAnalyticsAchievementPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UpdateWebAnalyticsAchievementPreferencesRequest>;
-
 export interface WebAnalyticsUserPreferences {
   /** When true, the requesting user has hidden the Web analytics achievements gamification UI and suppressed achievement-unlocked notifications for this project. Scoped per (project, user). */
   achievements_opt_out: boolean;
 }
-const WebAnalyticsUserPreferences = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<WebAnalyticsUserPreferences>;
-
 export interface WebAnalyticsAchievementsOverviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const WebAnalyticsAchievementsOverviewRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<WebAnalyticsAchievementsOverviewRequest>;
-
 /** * `user` - user * `team` - team */
 export type AchievementDefinitionScopeEnum = "user" | "team";
-const AchievementDefinitionScopeEnum = S.String;
-
 export interface AchievementStage {
   /** Stage number within the track, 1-5. */
   stage: number;
@@ -71,15 +46,8 @@ export interface AchievementStage {
   /** Progress value needed to unlock this stage, resolved for the user's streak arm. */
   threshold: number;
 }
-const AchievementStage = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AchievementStage>;
-
 /** The five stages of this track, in ascending threshold order. */
 export type AchievementDefinitionStagesList = Array<AchievementStage>;
-const AchievementDefinitionStagesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AchievementDefinitionStagesList>;
-
 export interface AchievementDefinition {
   /** Stable track identifier, e.g. 'streak'. */
   key: string;
@@ -94,25 +62,10 @@ export interface AchievementDefinition {
   /** The five stages of this track, in ascending threshold order. */
   stages: AchievementDefinitionStagesList;
 }
-const AchievementDefinition = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AchievementDefinition>;
-
 /** All Wave-1 track definitions, thresholds resolved for the user's streak arm. */
 export type AchievementsListResponseDefinitionsList = Array<AchievementDefinition>;
-const AchievementsListResponseDefinitionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AchievementsListResponseDefinitionsList>;
-
 /** Map of unlocked stage number (as a string, '1'-'5') to the ISO timestamp it was unlocked. */
 export type AchievementProgressUnlockedAtMap = { [key: string]: string | undefined };
-const AchievementProgressUnlockedAtMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AchievementProgressUnlockedAtMap>;
-
 export interface AchievementProgress {
   /** Track this progress row belongs to. */
   track_key: string;
@@ -125,20 +78,10 @@ export interface AchievementProgress {
   /** Map of unlocked stage number (as a string, '1'-'5') to the ISO timestamp it was unlocked. */
   unlocked_at: AchievementProgressUnlockedAtMap;
 }
-const AchievementProgress = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AchievementProgress>;
-
 /** The requesting user's progress on per-user tracks. */
 export type AchievementsListResponseUserProgressList = Array<AchievementProgress>;
-const AchievementsListResponseUserProgressList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AchievementsListResponseUserProgressList>;
-
 /** The team's progress on per-team tracks. */
 export type AchievementsListResponseTeamProgressList = Array<AchievementProgress>;
-const AchievementsListResponseTeamProgressList =
-  AchievementsListResponseUserProgressList as any as S.Schema<AchievementsListResponseTeamProgressList>;
-
 export interface PendingCelebration {
   /** Track whose stage was newly unlocked. */
   track_key: string;
@@ -147,15 +90,8 @@ export interface PendingCelebration {
   /** Name of the unlocked stage, shown in the celebration UI. */
   stage_name: string;
 }
-const PendingCelebration = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PendingCelebration>;
-
 /** Newly unlocked stages awaiting an in-session celebration; acknowledge each to clear it. */
 export type AchievementsListResponsePendingCelebrationsList = Array<PendingCelebration>;
-const AchievementsListResponsePendingCelebrationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AchievementsListResponsePendingCelebrationsList>;
-
 export interface AchievementsListResponse {
   /** All Wave-1 track definitions, thresholds resolved for the user's streak arm. */
   definitions: AchievementsListResponseDefinitionsList;
@@ -166,59 +102,30 @@ export interface AchievementsListResponse {
   /** Newly unlocked stages awaiting an in-session celebration; acknowledge each to clear it. */
   pending_celebrations: AchievementsListResponsePendingCelebrationsList;
 }
-const AchievementsListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AchievementsListResponse>;
-
 export interface WebAnalyticsAchievementsPreferencesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const WebAnalyticsAchievementsPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<WebAnalyticsAchievementsPreferencesRequest>;
-
 /** * `data` - data * `recording` - recording */
 export type InteractionKindEnum = "data" | "recording";
-const InteractionKindEnum = S.String;
-
 export interface WebAnalyticsAchievementsRecordInteractionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Which interaction counter to increment: 'data' (slicing/filtering the dashboard) or 'recording' (opening a session recording). * `data` - data * `recording` - recording */
   interaction_kind: InteractionKindEnum | (string & {});
 }
-const WebAnalyticsAchievementsRecordInteractionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<WebAnalyticsAchievementsRecordInteractionRequest>;
-
 export interface RecordInteractionResponse {
   /** True once the interaction has been counted for the user. */
   recorded: boolean;
 }
-const RecordInteractionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<RecordInteractionResponse>;
-
 export interface WebAnalyticsAchievementsRecordVisitRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const WebAnalyticsAchievementsRecordVisitRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<WebAnalyticsAchievementsRecordVisitRequest>;
-
 export interface RecordVisitResponse {
   /** True once today's visit row exists for the user. */
   recorded: boolean;
 }
-const RecordVisitResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<RecordVisitResponse>;
-
 export type AcknowledgeWebAnalyticsAchievementCelebrationError = PosthogOpError;
 /** Acknowledge an achievement celebration Clears a pending celebration for the given track and stage once the client has shown it, so it isn't celebrated again. Idempotent. */
 export const acknowledgeWebAnalyticsAchievementCelebration: API.OperationMethod<
@@ -227,8 +134,8 @@ export const acknowledgeWebAnalyticsAchievementCelebration: API.OperationMethod<
   AcknowledgeWebAnalyticsAchievementCelebrationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcknowledgeWebAnalyticsAchievementCelebrationRequest,
-  output: AcknowledgeCelebrationResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AcknowledgeWebAnalyticsAchievementCelebrationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AcknowledgeCelebrationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -242,8 +149,8 @@ export const updateWebAnalyticsAchievementPreferences: API.OperationMethod<
   UpdateWebAnalyticsAchievementPreferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebAnalyticsAchievementPreferencesRequest,
-  output: WebAnalyticsUserPreferences,
+  input: __S(2, __c0, 2) as any as S.Schema<UpdateWebAnalyticsAchievementPreferencesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<WebAnalyticsUserPreferences>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -257,8 +164,8 @@ export const webAnalyticsAchievementsOverview: API.OperationMethod<
   WebAnalyticsAchievementsOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsAchievementsOverviewRequest,
-  output: AchievementsListResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<WebAnalyticsAchievementsOverviewRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<AchievementsListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -272,8 +179,8 @@ export const webAnalyticsAchievementsPreferences: API.OperationMethod<
   WebAnalyticsAchievementsPreferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsAchievementsPreferencesRequest,
-  output: WebAnalyticsUserPreferences,
+  input: __S(15, __c1, 7) as any as S.Schema<WebAnalyticsAchievementsPreferencesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<WebAnalyticsUserPreferences>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -287,8 +194,8 @@ export const webAnalyticsAchievementsRecordInteraction: API.OperationMethod<
   WebAnalyticsAchievementsRecordInteractionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsAchievementsRecordInteractionRequest,
-  output: RecordInteractionResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<WebAnalyticsAchievementsRecordInteractionRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<RecordInteractionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -302,8 +209,8 @@ export const webAnalyticsAchievementsRecordVisit: API.OperationMethod<
   WebAnalyticsAchievementsRecordVisitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsAchievementsRecordVisitRequest,
-  output: RecordVisitResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<WebAnalyticsAchievementsRecordVisitRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<RecordVisitResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -382,16 +289,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AchievementStage" });
     case 6:
-      return S.Array(AchievementStage);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           display_name: S.String,
           description: S.String,
-          scope: AchievementDefinitionScopeEnum,
+          scope: S.String,
           is_experiment_track: S.Boolean,
-          stages: AchievementDefinitionStagesList,
+          stages: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "AchievementDefinition" });
   }
@@ -399,7 +306,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AchievementDefinition);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.Record(S.String, S.String);
     case 2:
@@ -409,11 +316,11 @@ function __c1(j: number): any {
           current_stage: S.Number,
           progress_value: S.Number,
           last_computed_at: S.NullOr(S.String),
-          unlocked_at: AchievementProgressUnlockedAtMap,
+          unlocked_at: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "AchievementProgress" });
     case 3:
-      return S.Array(AchievementProgress);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -423,14 +330,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PendingCelebration" });
     case 5:
-      return S.Array(PendingCelebration);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          definitions: AchievementsListResponseDefinitionsList,
-          user_progress: AchievementsListResponseUserProgressList,
-          team_progress: AchievementsListResponseTeamProgressList,
-          pending_celebrations: AchievementsListResponsePendingCelebrationsList,
+          definitions: __S(8, __c1, 0),
+          user_progress: __S(11, __c1, 3),
+          team_progress: __S(11, __c1, 3),
+          pending_celebrations: __S(13, __c1, 5),
         }),
       ).annotate({ identifier: "AchievementsListResponse" });
     case 7:
@@ -455,7 +362,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          interaction_kind: InteractionKindEnum,
+          interaction_kind: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -495,4 +402,9 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RecordVisitResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

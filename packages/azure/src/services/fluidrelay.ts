@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,17 +21,7 @@ export interface DeleteFluidRelayContainerRequest {
   /** The Fluid Relay container resource name. */
   fluidRelayContainerName: string;
 }
-const DeleteFluidRelayContainerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteFluidRelayContainerRequest>;
-
 export interface DeleteFluidRelayContainerResponse {}
-const DeleteFluidRelayContainerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteFluidRelayContainerResponse>;
-
 export interface DeleteFluidRelayServerRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -38,34 +30,15 @@ export interface DeleteFluidRelayServerRequest {
   /** The Fluid Relay server resource name. */
   fluidRelayServerName: string;
 }
-const DeleteFluidRelayServerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteFluidRelayServerRequest>;
-
 export interface DeleteFluidRelayServerResponse {}
-const DeleteFluidRelayServerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteFluidRelayServerResponse>;
-
 /** Resource tags. */
 export type FluidRelayServersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const FluidRelayServersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<FluidRelayServersCreateOrUpdateRequestTagsMap>;
-
 /** Provision states for FluidRelay RP */
 export type FluidRelayServerPropertiesInputProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const FluidRelayServerPropertiesInputProvisioningState = S.String;
-
 /** Values can be SystemAssigned or UserAssigned */
 export type CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType =
   | "SystemAssigned"
   | "UserAssigned";
-const CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType = S.String;
-
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity {
   /** Values can be SystemAssigned or UserAssigned */
@@ -75,11 +48,6 @@ export interface CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity 
   /** user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity. */
   userAssignedIdentityResourceId?: string;
 }
-const CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity>;
-
 /** All Customer-managed key encryption properties for the resource. */
 export interface CustomerManagedKeyEncryptionProperties {
   /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
@@ -87,22 +55,13 @@ export interface CustomerManagedKeyEncryptionProperties {
   /** key encryption key Url, with or without a version. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. Key auto rotation is enabled by providing a key uri without version. Otherwise, customer is responsible for rotating the key. The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url. */
   keyEncryptionKeyUrl?: string;
 }
-const CustomerManagedKeyEncryptionProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CustomerManagedKeyEncryptionProperties>;
-
 /** All encryption configuration for a resource. */
 export interface EncryptionProperties {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: CustomerManagedKeyEncryptionProperties;
 }
-const EncryptionProperties = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EncryptionProperties>;
-
 /** Sku of the storage associated with the resource */
 export type FluidRelayServerPropertiesInputStoragesku = "standard" | "basic";
-const FluidRelayServerPropertiesInputStoragesku = S.String;
-
 /** The properties of a Fluid Relay Service resource. */
 export interface FluidRelayServerPropertiesInput {
   /** Provision states for FluidRelay RP */
@@ -112,32 +71,17 @@ export interface FluidRelayServerPropertiesInput {
   /** Sku of the storage associated with the resource */
   storagesku?: FluidRelayServerPropertiesInputStoragesku | (string & {});
 }
-const FluidRelayServerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<FluidRelayServerPropertiesInput>;
-
 /** The identity type. */
 export type IdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const IdentityInputType = S.String;
-
 export interface IdentityInputUserAssignedIdentitiesValue {}
-const IdentityInputUserAssignedIdentitiesValue =
-  DeleteFluidRelayContainerResponse as any as S.Schema<IdentityInputUserAssignedIdentitiesValue>;
-
 /** The list of user identities associated with the resource. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: IdentityInputUserAssignedIdentitiesValue | undefined;
 };
-const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
@@ -145,8 +89,6 @@ export interface IdentityInput {
   /** The list of user identities associated with the resource. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-const IdentityInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<IdentityInput>;
-
 export interface FluidRelayServersCreateOrUpdateRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -163,33 +105,14 @@ export interface FluidRelayServersCreateOrUpdateRequest {
   /** The type of identity used for the resource. */
   identity?: IdentityInput;
 }
-const FluidRelayServersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<FluidRelayServersCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type FluidRelayServersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const FluidRelayServersCreateOrUpdateResponseTagsMap =
-  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<FluidRelayServersCreateOrUpdateResponseTagsMap>;
-
 /** The Fluid Relay Orderer endpoints. */
 export type FluidRelayEndpointsOrdererEndpointsList = Array<string>;
-const FluidRelayEndpointsOrdererEndpointsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<FluidRelayEndpointsOrdererEndpointsList>;
-
 /** The Fluid Relay storage endpoints. */
 export type FluidRelayEndpointsStorageEndpointsList = Array<string>;
-const FluidRelayEndpointsStorageEndpointsList =
-  FluidRelayEndpointsOrdererEndpointsList as any as S.Schema<FluidRelayEndpointsStorageEndpointsList>;
-
 /** The Fluid Relay service endpoints. */
 export type FluidRelayEndpointsServiceEndpointsList = Array<string>;
-const FluidRelayEndpointsServiceEndpointsList =
-  FluidRelayEndpointsOrdererEndpointsList as any as S.Schema<FluidRelayEndpointsServiceEndpointsList>;
-
 /** The Fluid Relay endpoints for this server */
 export interface FluidRelayEndpoints {
   /** The Fluid Relay Orderer endpoints. */
@@ -199,16 +122,10 @@ export interface FluidRelayEndpoints {
   /** The Fluid Relay service endpoints. */
   serviceEndpoints?: FluidRelayEndpointsServiceEndpointsList;
 }
-const FluidRelayEndpoints = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<FluidRelayEndpoints>;
-
 /** Provision states for FluidRelay RP */
 export type FluidRelayServerPropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const FluidRelayServerPropertiesProvisioningState = S.String;
-
 /** Sku of the storage associated with the resource */
 export type FluidRelayServerPropertiesStoragesku = "standard" | "basic";
-const FluidRelayServerPropertiesStoragesku = S.String;
-
 /** The properties of a Fluid Relay Service resource. */
 export interface FluidRelayServerProperties {
   /** The Fluid tenantId for this server */
@@ -222,27 +139,18 @@ export interface FluidRelayServerProperties {
   /** Sku of the storage associated with the resource */
   storagesku?: FluidRelayServerPropertiesStoragesku;
 }
-const FluidRelayServerProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<FluidRelayServerProperties>;
-
 /** The type of identity that created the resource. */
 export type FluidRelayServersCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const FluidRelayServersCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type FluidRelayServersCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const FluidRelayServersCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface FluidRelayServersCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -258,39 +166,22 @@ export interface FluidRelayServersCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const FluidRelayServersCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<FluidRelayServersCreateOrUpdateResponseSystemData>;
-
 /** The identity type. */
 export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const IdentityType = S.String;
-
 export interface IdentityUserAssignedIdentitiesValue {
   /** The principal id of user assigned identity. */
   principalId?: string;
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-const IdentityUserAssignedIdentitiesValue = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IdentityUserAssignedIdentitiesValue>;
-
 /** The list of user identities associated with the resource. */
 export type IdentityUserAssignedIdentitiesMap = {
   [key: string]: IdentityUserAssignedIdentitiesValue | undefined;
 };
-const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface Identity {
   /** The principal ID of resource identity. */
@@ -302,8 +193,6 @@ export interface Identity {
   /** The list of user identities associated with the resource. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-const Identity = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Identity>;
-
 export interface FluidRelayServersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -322,11 +211,6 @@ export interface FluidRelayServersCreateOrUpdateResponse {
   /** The type of identity used for the resource. */
   identity?: Identity;
 }
-const FluidRelayServersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<FluidRelayServersCreateOrUpdateResponse>;
-
 export interface GetFluidRelayContainerRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -337,15 +221,8 @@ export interface GetFluidRelayContainerRequest {
   /** The Fluid Relay container resource name. */
   fluidRelayContainerName: string;
 }
-const GetFluidRelayContainerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetFluidRelayContainerRequest>;
-
 /** Provision states for FluidRelay RP */
 export type FluidRelayContainerPropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const FluidRelayContainerPropertiesProvisioningState = S.String;
-
 /** The properties of a Fluid Relay Container resource. */
 export interface FluidRelayContainerProperties {
   /** The Fluid tenantId for this container */
@@ -359,27 +236,18 @@ export interface FluidRelayContainerProperties {
   /** Last time when user access this resource */
   lastAccessTime?: string;
 }
-const FluidRelayContainerProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<FluidRelayContainerProperties>;
-
 /** The type of identity that created the resource. */
 export type GetFluidRelayContainerResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const GetFluidRelayContainerResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetFluidRelayContainerResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const GetFluidRelayContainerResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetFluidRelayContainerResponseSystemData {
   /** The identity that created the resource. */
@@ -395,11 +263,6 @@ export interface GetFluidRelayContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetFluidRelayContainerResponseSystemData = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetFluidRelayContainerResponseSystemData>;
-
 export interface GetFluidRelayContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -412,11 +275,6 @@ export interface GetFluidRelayContainerResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetFluidRelayContainerResponseSystemData;
 }
-const GetFluidRelayContainerResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetFluidRelayContainerResponse>;
-
 export interface GetFluidRelayServerRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -425,16 +283,8 @@ export interface GetFluidRelayServerRequest {
   /** The Fluid Relay server resource name. */
   fluidRelayServerName: string;
 }
-const GetFluidRelayServerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetFluidRelayServerRequest>;
-
 /** Resource tags. */
 export type GetFluidRelayServerResponseTagsMap = { [key: string]: string | undefined };
-const GetFluidRelayServerResponseTagsMap =
-  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<GetFluidRelayServerResponseTagsMap>;
-
 /** The type of identity that created the resource. */
 export type GetFluidRelayServerResponseSystemDataCreatedByType =
   | "User"
@@ -462,9 +312,6 @@ export interface GetFluidRelayServerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetFluidRelayServerResponseSystemData =
-  GetFluidRelayContainerResponseSystemData as any as S.Schema<GetFluidRelayServerResponseSystemData>;
-
 export interface GetFluidRelayServerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -483,11 +330,6 @@ export interface GetFluidRelayServerResponse {
   /** The type of identity used for the resource. */
   identity?: Identity;
 }
-const GetFluidRelayServerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetFluidRelayServerResponse>;
-
 export interface ListFluidRelayContainerByFluidRelayServersRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -496,11 +338,6 @@ export interface ListFluidRelayContainerByFluidRelayServersRequest {
   /** The Fluid Relay server resource name. */
   fluidRelayServerName: string;
 }
-const ListFluidRelayContainerByFluidRelayServersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListFluidRelayContainerByFluidRelayServersRequest>;
-
 /** The type of identity that created the resource. */
 export type FluidRelayContainerSystemDataCreatedByType =
   | "User"
@@ -528,9 +365,6 @@ export interface FluidRelayContainerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const FluidRelayContainerSystemData =
-  GetFluidRelayContainerResponseSystemData as any as S.Schema<FluidRelayContainerSystemData>;
-
 /** A FluidRelay Container. */
 export interface FluidRelayContainer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -544,15 +378,8 @@ export interface FluidRelayContainer {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: FluidRelayContainerSystemData;
 }
-const FluidRelayContainer = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<FluidRelayContainer>;
-
 /** A sequence of FluidRelay containers. */
 export type FluidRelayContainerListValueList = Array<FluidRelayContainer>;
-const FluidRelayContainerListValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<FluidRelayContainerListValueList>;
-
 /** Paged response */
 export interface FluidRelayContainerList {
   /** A sequence of FluidRelay containers. */
@@ -560,17 +387,7 @@ export interface FluidRelayContainerList {
   /** A link to the next page of results, if any. */
   nextLink?: string;
 }
-const FluidRelayContainerList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<FluidRelayContainerList>;
-
 export interface ListFluidRelayOperationsRequest {}
-const ListFluidRelayOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListFluidRelayOperationsRequest>;
-
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.FluidRelay */
@@ -582,8 +399,6 @@ export interface OperationDisplay {
   /** Description of the operation, e.g., 'Write confluent'. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationDisplay>;
-
 /** A FluidRelay REST API operation. */
 export interface OperationResult {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -593,15 +408,8 @@ export interface OperationResult {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
-const OperationResult = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<OperationResult>;
-
 /** List of FluidRelay operations supported by the Microsoft.FluidRelay provider. */
 export type OperationListResultValueList = Array<OperationResult>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Result of GET request to list FluidRelay operations. */
 export interface OperationListResult {
   /** List of FluidRelay operations supported by the Microsoft.FluidRelay provider. */
@@ -609,24 +417,14 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<OperationListResult>;
-
 export interface ListFluidRelayServerByResourceGroupRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
   /** The resource group containing the resource. */
   resourceGroup: string;
 }
-const ListFluidRelayServerByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListFluidRelayServerByResourceGroupRequest>;
-
 /** Resource tags. */
 export type FluidRelayServerTagsMap = { [key: string]: string | undefined };
-const FluidRelayServerTagsMap =
-  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<FluidRelayServerTagsMap>;
-
 /** The type of identity that created the resource. */
 export type FluidRelayServerSystemDataCreatedByType =
   | "User"
@@ -654,9 +452,6 @@ export interface FluidRelayServerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const FluidRelayServerSystemData =
-  GetFluidRelayContainerResponseSystemData as any as S.Schema<FluidRelayServerSystemData>;
-
 /** A FluidRelay Server. */
 export interface FluidRelayServer {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -676,15 +471,8 @@ export interface FluidRelayServer {
   /** The type of identity used for the resource. */
   identity?: Identity;
 }
-const FluidRelayServer = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<FluidRelayServer>;
-
 /** A sequence of FluidRelay servers. */
 export type FluidRelayServerListValueList = Array<FluidRelayServer>;
-const FluidRelayServerListValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<FluidRelayServerListValueList>;
-
 /** Paged response */
 export interface FluidRelayServerList {
   /** A sequence of FluidRelay servers. */
@@ -692,17 +480,10 @@ export interface FluidRelayServerList {
   /** A link to the next page of results, if any. */
   nextLink?: string;
 }
-const FluidRelayServerList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<FluidRelayServerList>;
-
 export interface ListFluidRelayServerBySubscriptionRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
 }
-const ListFluidRelayServerBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListFluidRelayServerBySubscriptionRequest>;
-
 export interface ListFluidRelayServerKeysRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -711,11 +492,6 @@ export interface ListFluidRelayServerKeysRequest {
   /** The Fluid Relay server resource name. */
   fluidRelayServerName: string;
 }
-const ListFluidRelayServerKeysRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListFluidRelayServerKeysRequest>;
-
 /** The set of available keys for this server. */
 export interface FluidRelayServerKeys {
   /** The primary key for this server */
@@ -723,12 +499,8 @@ export interface FluidRelayServerKeys {
   /** The secondary key for this server */
   key2?: string;
 }
-const FluidRelayServerKeys = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<FluidRelayServerKeys>;
-
 /** The key to regenerate. */
 export type RegenerateFluidRelayServerKeyRequestKeyName = "key1" | "key2";
-const RegenerateFluidRelayServerKeyRequestKeyName = S.String;
-
 export interface RegenerateFluidRelayServerKeyRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -739,26 +511,13 @@ export interface RegenerateFluidRelayServerKeyRequest {
   /** The key to regenerate. */
   keyName: RegenerateFluidRelayServerKeyRequestKeyName | (string & {});
 }
-const RegenerateFluidRelayServerKeyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<RegenerateFluidRelayServerKeyRequest>;
-
 /** The properties that can be provided when updating FluidRelayServer resource */
 export interface FluidRelayServerUpdateProperties {
   /** All encryption configuration for a resource. */
   encryption?: EncryptionProperties;
 }
-const FluidRelayServerUpdateProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<FluidRelayServerUpdateProperties>;
-
 /** Resource tags. */
 export type UpdateFluidRelayServerRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFluidRelayServerRequestTagsMap =
-  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFluidRelayServerRequestTagsMap>;
-
 export interface UpdateFluidRelayServerRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
@@ -775,16 +534,8 @@ export interface UpdateFluidRelayServerRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateFluidRelayServerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UpdateFluidRelayServerRequest>;
-
 /** Resource tags. */
 export type UpdateFluidRelayServerResponseTagsMap = { [key: string]: string | undefined };
-const UpdateFluidRelayServerResponseTagsMap =
-  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFluidRelayServerResponseTagsMap>;
-
 /** The type of identity that created the resource. */
 export type UpdateFluidRelayServerResponseSystemDataCreatedByType =
   | "User"
@@ -812,9 +563,6 @@ export interface UpdateFluidRelayServerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const UpdateFluidRelayServerResponseSystemData =
-  GetFluidRelayContainerResponseSystemData as any as S.Schema<UpdateFluidRelayServerResponseSystemData>;
-
 export interface UpdateFluidRelayServerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -833,11 +581,6 @@ export interface UpdateFluidRelayServerResponse {
   /** The type of identity used for the resource. */
   identity?: Identity;
 }
-const UpdateFluidRelayServerResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UpdateFluidRelayServerResponse>;
-
 export type DeleteFluidRelayContainerError = AzureOpError;
 /** Delete a Fluid Relay container. */
 export const DeleteFluidRelayContainer: API.OperationMethod<
@@ -846,8 +589,8 @@ export const DeleteFluidRelayContainer: API.OperationMethod<
   DeleteFluidRelayContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFluidRelayContainerRequest,
-  output: DeleteFluidRelayContainerResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteFluidRelayContainerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteFluidRelayContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -861,8 +604,8 @@ export const DeleteFluidRelayServer: API.OperationMethod<
   DeleteFluidRelayServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFluidRelayServerRequest,
-  output: DeleteFluidRelayServerResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteFluidRelayServerRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteFluidRelayServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -876,8 +619,8 @@ export const FluidRelayServersCreateOrUpdate: API.OperationMethod<
   FluidRelayServersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FluidRelayServersCreateOrUpdateRequest,
-  output: FluidRelayServersCreateOrUpdateResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<FluidRelayServersCreateOrUpdateRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<FluidRelayServersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -891,8 +634,8 @@ export const GetFluidRelayContainer: API.OperationMethod<
   GetFluidRelayContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFluidRelayContainerRequest,
-  output: GetFluidRelayContainerResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<GetFluidRelayContainerRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetFluidRelayContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -906,8 +649,8 @@ export const GetFluidRelayServer: API.OperationMethod<
   GetFluidRelayServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFluidRelayServerRequest,
-  output: GetFluidRelayServerResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<GetFluidRelayServerRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetFluidRelayServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -921,8 +664,8 @@ export const ListFluidRelayContainerByFluidRelayServers: API.OperationMethod<
   ListFluidRelayContainerByFluidRelayServersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFluidRelayContainerByFluidRelayServersRequest,
-  output: FluidRelayContainerList,
+  input: __S(26, __c3, 2) as any as S.Schema<ListFluidRelayContainerByFluidRelayServersRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<FluidRelayContainerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -936,8 +679,8 @@ export const ListFluidRelayOperations: API.OperationMethod<
   ListFluidRelayOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFluidRelayOperationsRequest,
-  output: OperationListResult,
+  input: __S(30, __c3, 6) as any as S.Schema<ListFluidRelayOperationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -951,8 +694,8 @@ export const ListFluidRelayServerByResourceGroup: API.OperationMethod<
   ListFluidRelayServerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFluidRelayServerByResourceGroupRequest,
-  output: FluidRelayServerList,
+  input: __S(35, __c4, 3) as any as S.Schema<ListFluidRelayServerByResourceGroupRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<FluidRelayServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -966,8 +709,8 @@ export const ListFluidRelayServerBySubscription: API.OperationMethod<
   ListFluidRelayServerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFluidRelayServerBySubscriptionRequest,
-  output: FluidRelayServerList,
+  input: __S(39, __c4, 7) as any as S.Schema<ListFluidRelayServerBySubscriptionRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<FluidRelayServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -981,8 +724,8 @@ export const ListFluidRelayServerKeys: API.OperationMethod<
   ListFluidRelayServerKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFluidRelayServerKeysRequest,
-  output: FluidRelayServerKeys,
+  input: __S(40, __c5, 0) as any as S.Schema<ListFluidRelayServerKeysRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<FluidRelayServerKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -996,8 +739,8 @@ export const RegenerateFluidRelayServerKey: API.OperationMethod<
   RegenerateFluidRelayServerKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateFluidRelayServerKeyRequest,
-  output: FluidRelayServerKeys,
+  input: __S(42, __c5, 2) as any as S.Schema<RegenerateFluidRelayServerKeyRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<FluidRelayServerKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1011,8 +754,8 @@ export const UpdateFluidRelayServer: API.OperationMethod<
   UpdateFluidRelayServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFluidRelayServerRequest,
-  output: UpdateFluidRelayServerResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<UpdateFluidRelayServerRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<UpdateFluidRelayServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1069,9 +812,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          identityType: S.optional(
-            CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType,
-          ),
+          identityType: S.optional(S.String),
           userAssignedIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -1080,9 +821,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keyEncryptionKeyIdentity: S.optional(
-            CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity,
-          ),
+          keyEncryptionKeyIdentity: S.optional(__S(5, __c0, 5)),
           keyEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -1091,7 +830,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          customerManagedKeyEncryption: S.optional(CustomerManagedKeyEncryptionProperties),
+          customerManagedKeyEncryption: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
   }
@@ -1101,20 +840,20 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(FluidRelayServerPropertiesInputProvisioningState),
-          encryption: S.optional(EncryptionProperties),
-          storagesku: S.optional(FluidRelayServerPropertiesInputStoragesku),
+          provisioningState: S.optional(S.String),
+          encryption: S.optional(__S(7, __c0, 7)),
+          storagesku: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FluidRelayServerPropertiesInput",
       });
     case 1:
-      return S.Record(S.String, IdentityInputUserAssignedIdentitiesValue);
+      return S.Record(S.String, __S(1, __c0, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(IdentityInputType),
-          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 3:
@@ -1123,10 +862,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           fluidRelayServerName: S.String.pipe(T.Label()),
-          tags: S.optional(FluidRelayServersCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(4, __c0, 4)),
           location: S.String,
-          properties: S.optional(FluidRelayServerPropertiesInput),
-          identity: S.optional(IdentityInput),
+          properties: S.optional(__S(8, __c1, 0)),
+          identity: S.optional(__S(10, __c1, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1143,19 +882,19 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ordererEndpoints: S.optional(FluidRelayEndpointsOrdererEndpointsList),
-          storageEndpoints: S.optional(FluidRelayEndpointsStorageEndpointsList),
-          serviceEndpoints: S.optional(FluidRelayEndpointsServiceEndpointsList),
+          ordererEndpoints: S.optional(__S(12, __c1, 4)),
+          storageEndpoints: S.optional(__S(12, __c1, 4)),
+          serviceEndpoints: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "FluidRelayEndpoints" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           frsTenantId: S.optional(S.String),
-          fluidRelayEndpoints: S.optional(FluidRelayEndpoints),
-          provisioningState: S.optional(FluidRelayServerPropertiesProvisioningState),
-          encryption: S.optional(EncryptionProperties),
-          storagesku: S.optional(FluidRelayServerPropertiesStoragesku),
+          fluidRelayEndpoints: S.optional(__S(13, __c1, 5)),
+          provisioningState: S.optional(S.String),
+          encryption: S.optional(__S(7, __c0, 7)),
+          storagesku: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FluidRelayServerProperties",
@@ -1164,12 +903,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(FluidRelayServersCreateOrUpdateResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            FluidRelayServersCreateOrUpdateResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1189,14 +926,14 @@ function __c2(j: number): any {
         identifier: "IdentityUserAssignedIdentitiesValue",
       });
     case 1:
-      return S.Record(S.String, IdentityUserAssignedIdentitiesValue);
+      return S.Record(S.String, __S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(IdentityType),
-          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "Identity" });
     case 3:
@@ -1205,11 +942,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(FluidRelayServersCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(4, __c0, 4)),
           location: S.String,
-          properties: S.optional(FluidRelayServerProperties),
-          systemData: S.optional(FluidRelayServersCreateOrUpdateResponseSystemData),
-          identity: S.optional(Identity),
+          properties: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(15, __c1, 7)),
+          identity: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "FluidRelayServersCreateOrUpdateResponse",
@@ -1237,7 +974,7 @@ function __c2(j: number): any {
         S.Struct({
           frsTenantId: S.optional(S.String),
           frsContainerId: S.optional(S.String),
-          provisioningState: S.optional(FluidRelayContainerPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           creationTime: S.optional(S.String),
           lastAccessTime: S.optional(S.String),
         }),
@@ -1248,12 +985,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(GetFluidRelayContainerResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            GetFluidRelayContainerResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1265,8 +1000,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(FluidRelayContainerProperties),
-          systemData: S.optional(GetFluidRelayContainerResponseSystemData),
+          properties: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "GetFluidRelayContainerResponse",
@@ -1298,11 +1033,11 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(GetFluidRelayServerResponseTagsMap),
+          tags: S.optional(__S(4, __c0, 4)),
           location: S.String,
-          properties: S.optional(FluidRelayServerProperties),
-          systemData: S.optional(GetFluidRelayServerResponseSystemData),
-          identity: S.optional(Identity),
+          properties: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(22, __c2, 6)),
+          identity: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "GetFluidRelayServerResponse",
@@ -1330,16 +1065,16 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(FluidRelayContainerProperties),
-          systemData: S.optional(FluidRelayContainerSystemData),
+          properties: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "FluidRelayContainer" });
     case 4:
-      return S.Array(FluidRelayContainer);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(FluidRelayContainerListValueList),
+          value: S.optional(__S(28, __c3, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FluidRelayContainerList" });
@@ -1373,16 +1108,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(31, __c3, 7)),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 1:
-      return S.Array(OperationResult);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(33, __c4, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -1408,19 +1143,19 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(FluidRelayServerTagsMap),
+          tags: S.optional(__S(4, __c0, 4)),
           location: S.String,
-          properties: S.optional(FluidRelayServerProperties),
-          systemData: S.optional(FluidRelayServerSystemData),
-          identity: S.optional(Identity),
+          properties: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(22, __c2, 6)),
+          identity: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "FluidRelayServer" });
     case 5:
-      return S.Array(FluidRelayServer);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: FluidRelayServerListValueList,
+          value: __S(37, __c4, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FluidRelayServerList" });
@@ -1473,7 +1208,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           fluidRelayServerName: S.String.pipe(T.Label()),
-          keyName: RegenerateFluidRelayServerKeyRequestKeyName,
+          keyName: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1488,7 +1223,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(EncryptionProperties),
+          encryption: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "FluidRelayServerUpdateProperties",
@@ -1499,9 +1234,9 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           fluidRelayServerName: S.String.pipe(T.Label()),
-          properties: S.optional(FluidRelayServerUpdateProperties),
-          tags: S.optional(UpdateFluidRelayServerRequestTagsMap),
-          identity: S.optional(IdentityInput),
+          properties: S.optional(__S(43, __c5, 3)),
+          tags: S.optional(__S(4, __c0, 4)),
+          identity: S.optional(__S(10, __c1, 2)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1520,14 +1255,19 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(UpdateFluidRelayServerResponseTagsMap),
+          tags: S.optional(__S(4, __c0, 4)),
           location: S.String,
-          properties: S.optional(FluidRelayServerProperties),
-          systemData: S.optional(UpdateFluidRelayServerResponseSystemData),
-          identity: S.optional(Identity),
+          properties: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(22, __c2, 6)),
+          identity: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "UpdateFluidRelayServerResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

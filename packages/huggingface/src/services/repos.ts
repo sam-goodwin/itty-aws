@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -498,18 +500,8 @@ export interface CreateRepositoryRequestBodyCase3SecretsItem {
   description?: string;
   value: string;
 }
-const CreateRepositoryRequestBodyCase3SecretsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRepositoryRequestBodyCase3SecretsItem>;
-
 export type CreateRepositoryRequestBodyCase3SecretsList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-const CreateRepositoryRequestBodyCase3SecretsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRepositoryRequestBodyCase3SecretsList>;
-
 export type CreateRepositoryRequestBodyCase3VariablesItem =
   CreateRepositoryRequestBodyCase3SecretsItem;
 export type CreateRepositoryRequestBodyCase3VariablesList =
@@ -520,8 +512,6 @@ export type CreateRepositoryRequestBodyCase3VolumesItemType =
   | "model"
   | "dataset"
   | "space";
-const CreateRepositoryRequestBodyCase3VolumesItemType = S.String;
-
 export interface CreateRepositoryRequestBodyCase3VolumesItem {
   type: CreateRepositoryRequestBodyCase3VolumesItemType | (string & {});
   /** Source identifier, e.g. 'username/my-bucket' or 'username/my-model' */
@@ -535,19 +525,9 @@ export interface CreateRepositoryRequestBodyCase3VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-const CreateRepositoryRequestBodyCase3VolumesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateRepositoryRequestBodyCase3VolumesItem>;
-
 /** HuggingFace Buckets or Repos to mount as volumes in the Space container. */
 export type CreateRepositoryRequestBodyCase3VolumesList =
   Array<CreateRepositoryRequestBodyCase3VolumesItem>;
-const CreateRepositoryRequestBodyCase3VolumesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateRepositoryRequestBodyCase3VolumesList>;
-
 /** The Space SDK. `static` is free for everyone. `gradio` and `docker` run on compute: on the free `cpu-basic` flavor they require a subscription (PRO for users, Team/Enterprise for orgs), while paid hardware only requires billing (a payment method and prepaid credits). */
 export type CreateRepositoryRequestBodyCase3Sdk = "gradio" | "docker" | "static";
 export interface CreateRepositoryRequestBodyCase3 {
@@ -585,16 +565,9 @@ export type CreateRepositoryRequestBody =
   | CreateRepositoryRequestBodyCase1
   | CreateRepositoryRequestBodyCase2
   | CreateRepositoryRequestBodyCase3;
-const CreateRepositoryRequestBody = S.Unknown as any as S.Schema<CreateRepositoryRequestBody>;
-
 export interface CreateRepositoryRequest {
   body?: CreateRepositoryRequestBody;
 }
-const CreateRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateRepositoryRequest>;
-
 export interface CreateRepositoryResponse {
   url: string;
   name: string;
@@ -602,17 +575,8 @@ export interface CreateRepositoryResponse {
   id: string;
   filesCopyPending?: boolean;
 }
-const CreateRepositoryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateRepositoryResponse>;
-
 export type DuplicateRepositoryRequestRepoType = "spaces";
-const DuplicateRepositoryRequestRepoType = S.String;
-
 export type DuplicateRepositoryRequestVisibility = "private" | "public" | "protected";
-const DuplicateRepositoryRequestVisibility = S.String;
-
 export type DuplicateRepositoryRequestHardware =
   | "cpu-basic"
   | "cpu-upgrade"
@@ -644,24 +608,13 @@ export type DuplicateRepositoryRequestHardware =
   | "rtx-pro-6000x8"
   | "inf2x6"
   | "";
-const DuplicateRepositoryRequestHardware = S.String;
-
 export type DuplicateRepositoryRequestSleepTimeSeconds = number | number;
-const DuplicateRepositoryRequestSleepTimeSeconds =
-  S.Unknown as any as S.Schema<DuplicateRepositoryRequestSleepTimeSeconds>;
-
 export type DuplicateRepositoryRequestSecretsItem = CreateRepositoryRequestBodyCase3SecretsItem;
 export type DuplicateRepositoryRequestSecretsList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-const DuplicateRepositoryRequestSecretsList =
-  CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<DuplicateRepositoryRequestSecretsList>;
-
 export type DuplicateRepositoryRequestVariablesItem = CreateRepositoryRequestBodyCase3SecretsItem;
 export type DuplicateRepositoryRequestVariablesList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-const DuplicateRepositoryRequestVariablesList =
-  CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<DuplicateRepositoryRequestVariablesList>;
-
 export type DuplicateRepositoryRequestVolumesItemType = "bucket" | "model" | "dataset" | "space";
 export interface DuplicateRepositoryRequestVolumesItem {
   type: DuplicateRepositoryRequestVolumesItemType | (string & {});
@@ -678,9 +631,6 @@ export interface DuplicateRepositoryRequestVolumesItem {
 }
 /** HuggingFace Buckets or Repos to mount as volumes in the duplicated Space. */
 export type DuplicateRepositoryRequestVolumesList = Array<DuplicateRepositoryRequestVolumesItem>;
-const DuplicateRepositoryRequestVolumesList =
-  CreateRepositoryRequestBodyCase3VolumesList as any as S.Schema<DuplicateRepositoryRequestVolumesList>;
-
 export interface DuplicateRepositoryRequest {
   repoType: DuplicateRepositoryRequestRepoType | (string & {});
   namespace: string;
@@ -696,34 +646,17 @@ export interface DuplicateRepositoryRequest {
   /** HuggingFace Buckets or Repos to mount as volumes in the duplicated Space. */
   volumes?: DuplicateRepositoryRequestVolumesList;
 }
-const DuplicateRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DuplicateRepositoryRequest>;
-
 export interface DuplicateRepositoryResponse {
   url: string;
   /** True when the repo's LFS/Xet files are still being copied in the background; poll `.../duplicate/status` */
   filesCopyPending: boolean;
 }
-const DuplicateRepositoryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DuplicateRepositoryResponse>;
-
 export type DuplicationStatusRequestRepoType = "models" | "datasets" | "spaces";
-const DuplicationStatusRequestRepoType = S.String;
-
 export interface DuplicationStatusRequest {
   repoType: DuplicationStatusRequestRepoType | (string & {});
   namespace: string;
   repo: string;
 }
-const DuplicationStatusRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DuplicationStatusRequest>;
-
 export interface DuplicationStatusResponse {
   /** True while the LFS/Xet files are still being copied */
   pending: boolean;
@@ -732,24 +665,13 @@ export interface DuplicationStatusResponse {
   /** Number of files copied so far */
   filesCopied?: number;
 }
-const DuplicationStatusResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DuplicationStatusResponse>;
-
 export type MoveRepoRequestType = "dataset" | "model" | "space" | "bucket" | "kernel" | "container";
-const MoveRepoRequestType = S.String;
-
 export interface MoveRepoRequest {
   fromRepo: string;
   toRepo: string;
   type?: MoveRepoRequestType | (string & {});
 }
-const MoveRepoRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MoveRepoRequest>;
-
 export interface MoveRepoResponse {}
-const MoveRepoResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MoveRepoResponse>;
-
 export type CreateRepositoryError = Conflict | HuggingFaceOpError;
 /** Create repository */
 export const createRepository: API.OperationMethod<
@@ -758,8 +680,8 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRepositoryRequest,
-  output: CreateRepositoryResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateRepositoryRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateRepositoryResponse>,
   errors: [Conflict],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -773,8 +695,8 @@ export const duplicateRepository: API.OperationMethod<
   DuplicateRepositoryError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DuplicateRepositoryRequest,
-  output: DuplicateRepositoryResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<DuplicateRepositoryRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DuplicateRepositoryResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -788,8 +710,8 @@ export const duplicationStatus: API.OperationMethod<
   DuplicationStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DuplicationStatusRequest,
-  output: DuplicationStatusResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DuplicationStatusRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DuplicationStatusResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -803,8 +725,8 @@ export const moveRepo: API.OperationMethod<
   MoveRepoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveRepoRequest,
-  output: MoveRepoResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<MoveRepoRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<MoveRepoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -824,11 +746,11 @@ function __c0(j: number): any {
         identifier: "CreateRepositoryRequestBodyCase3SecretsItem",
       });
     case 1:
-      return S.Array(CreateRepositoryRequestBodyCase3SecretsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: CreateRepositoryRequestBodyCase3VolumesItemType,
+          type: S.String,
           source: S.String,
           mountPath: S.String,
           revision: S.optional(S.String),
@@ -839,11 +761,11 @@ function __c0(j: number): any {
         identifier: "CreateRepositoryRequestBodyCase3VolumesItem",
       });
     case 3:
-      return S.Array(CreateRepositoryRequestBodyCase3VolumesItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CreateRepositoryRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/repos/create", code: 200 })),
       ).annotate({ identifier: "CreateRepositoryRequest" });
     case 5:
@@ -858,18 +780,18 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repoType: DuplicateRepositoryRequestRepoType.pipe(T.Label()),
+          repoType: S.String.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           repository: S.String,
           private: S.optional(S.Boolean),
-          visibility: S.optional(DuplicateRepositoryRequestVisibility),
+          visibility: S.optional(S.String),
           resourceGroupId: S.optional(S.NullOr(S.String)),
-          hardware: S.optional(DuplicateRepositoryRequestHardware),
-          sleepTimeSeconds: S.optional(DuplicateRepositoryRequestSleepTimeSeconds),
-          secrets: S.optional(DuplicateRepositoryRequestSecretsList),
-          variables: S.optional(DuplicateRepositoryRequestVariablesList),
-          volumes: S.optional(DuplicateRepositoryRequestVolumesList),
+          hardware: S.optional(S.String),
+          sleepTimeSeconds: S.optional(S.Unknown),
+          secrets: S.optional(__S(1, __c0, 1)),
+          variables: S.optional(__S(1, __c0, 1)),
+          volumes: S.optional(__S(3, __c0, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -896,7 +818,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          repoType: DuplicationStatusRequestRepoType.pipe(T.Label()),
+          repoType: S.String.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
         }).pipe(
@@ -922,7 +844,7 @@ function __c1(j: number): any {
         S.Struct({
           fromRepo: S.String,
           toRepo: S.String,
-          type: S.optional(MoveRepoRequestType),
+          type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/repos/move", code: 200 })),
       ).annotate({ identifier: "MoveRepoRequest" });
     case 3:
@@ -930,4 +852,9 @@ function __c1(j: number): any {
         identifier: "MoveRepoResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

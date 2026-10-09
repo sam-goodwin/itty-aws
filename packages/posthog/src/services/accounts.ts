@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,29 +16,11 @@ export interface AccountsDestroyRequest {
   /** A UUID string identifying this account. */
   id: string;
 }
-const AccountsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccountsDestroyRequest>;
-
 export interface AccountsDestroyResponse {}
-const AccountsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AccountsDestroyResponse>;
-
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type CreateAccountRequestPropertiesEmailDomainsList = Array<string>;
-const CreateAccountRequestPropertiesEmailDomainsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateAccountRequestPropertiesEmailDomainsList>;
-
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type CreateAccountRequestPropertiesKnownEmailsList = Array<string>;
-const CreateAccountRequestPropertiesKnownEmailsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateAccountRequestPropertiesKnownEmailsList>;
-
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface CreateAccountRequestProperties {
   /** Primary company website hostname used for account identity and logo lookup. */
@@ -54,20 +38,10 @@ export interface CreateAccountRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-const CreateAccountRequestProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateAccountRequestProperties>;
-
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type CreateAccountRequestTagsList = Array<string>;
-const CreateAccountRequestTagsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateAccountRequestTagsList>;
-
 /** * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type SlackSummaryCadenceEnum = "daily" | "weekly" | "monthly";
-const SlackSummaryCadenceEnum = S.String;
-
 export interface CreateAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -84,18 +58,10 @@ export interface CreateAccountRequest {
   /** When the account churned. Null means the account has not churned. */
   churned_at?: string | null;
 }
-const CreateAccountRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateAccountRequest>;
-
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type AccountPropertiesEmailDomainsList = Array<string>;
-const AccountPropertiesEmailDomainsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountPropertiesEmailDomainsList>;
-
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type AccountPropertiesKnownEmailsList = Array<string>;
-const AccountPropertiesKnownEmailsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountPropertiesKnownEmailsList>;
-
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface AccountProperties {
   /** Primary company website hostname used for account identity and logo lookup. */
@@ -113,17 +79,10 @@ export interface AccountProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-const AccountProperties = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AccountProperties>;
-
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountTagsList = Array<string>;
-const AccountTagsList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AccountTagsList>;
-
 /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
 export type AccountNotebooksList = Array<string>;
-const AccountNotebooksList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountNotebooksList>;
-
 /** A Customer Analytics account -- a logical grouping used to assign customer-success ownership. */
 export interface Account {
   id: string;
@@ -147,61 +106,32 @@ export interface Account {
   created_by: number | null;
   updated_at: string | null;
 }
-const Account = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Account>;
-
 export interface CreateAccountsPresenceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this account. */
   id: string;
 }
-const CreateAccountsPresenceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateAccountsPresenceRequest>;
-
 export interface AccountPresenceViewer {
   /** PostHog user ID of the teammate viewing this account. */
   user_id: number;
   /** Display name of the teammate viewing this account. */
   display_name: string;
 }
-const AccountPresenceViewer = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AccountPresenceViewer>;
-
 export type CreateAccountsPresenceResponseBodyList = Array<AccountPresenceViewer>;
-const CreateAccountsPresenceResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateAccountsPresenceResponseBodyList>;
-
 export type CreateAccountsPresenceResponse = CreateAccountsPresenceResponseBodyList;
-const CreateAccountsPresenceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateAccountsPresenceResponse>;
-
 export interface GetAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this account. */
   id: string;
 }
-const GetAccountRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetAccountRequest>;
-
 export interface GetAccountsByExternalIdRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Exact external account identifier. Leading and trailing whitespace is significant. */
   external_id: string;
 }
-const GetAccountsByExternalIdRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetAccountsByExternalIdRequest>;
-
 export type ListAccountsRequestOrdering =
   | "-created_at"
   | "-name"
@@ -209,8 +139,6 @@ export type ListAccountsRequestOrdering =
   | "created_at"
   | "name"
   | "updated_at";
-const ListAccountsRequestOrdering = S.String;
-
 export interface ListAccountsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -231,22 +159,13 @@ export interface ListAccountsRequest {
   /** JSON-encoded array of tag names to filter by, e.g. `["enterprise","priority"]`. Returns accounts that have any of the listed tags. Malformed values (not a JSON-encoded list of strings) return a 400. */
   tags?: string;
 }
-const ListAccountsRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListAccountsRequest>;
-
 export type PaginatedAccountListResultsList = Array<Account>;
-const PaginatedAccountListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PaginatedAccountListResultsList>;
-
 export interface PaginatedAccountList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountListResultsList;
 }
-const PaginatedAccountList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PaginatedAccountList>;
-
 export interface ListAccountsEmailThreadMessagesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -258,38 +177,18 @@ export interface ListAccountsEmailThreadMessagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListAccountsEmailThreadMessagesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListAccountsEmailThreadMessagesRequest>;
-
 export interface AccountEmailThreadAddress {
   /** Name from the email header. */
   name: string;
   /** Email address from the email header. */
   email: string;
 }
-const AccountEmailThreadAddress = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AccountEmailThreadAddress>;
-
 /** Recipients from the email To header. */
 export type AccountEmailThreadMessageToRecipientsList = Array<AccountEmailThreadAddress>;
-const AccountEmailThreadMessageToRecipientsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AccountEmailThreadMessageToRecipientsList>;
-
 /** Recipients from the email Cc header. */
 export type AccountEmailThreadMessageCcRecipientsList = Array<AccountEmailThreadAddress>;
-const AccountEmailThreadMessageCcRecipientsList =
-  AccountEmailThreadMessageToRecipientsList as any as S.Schema<AccountEmailThreadMessageCcRecipientsList>;
-
 /** * `inbound` - Inbound * `outbound` - Outbound */
 export type EmailThreadMessageDirectionEnum = "inbound" | "outbound";
-const EmailThreadMessageDirectionEnum = S.String;
-
 export interface AccountEmailThreadMessage {
   /** UUID of the captured email message. */
   id: string;
@@ -308,28 +207,13 @@ export interface AccountEmailThreadMessage {
   /** Plain-text email content. */
   content: string;
 }
-const AccountEmailThreadMessage = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AccountEmailThreadMessage>;
-
 export type PaginatedAccountEmailThreadMessageListResultsList = Array<AccountEmailThreadMessage>;
-const PaginatedAccountEmailThreadMessageListResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<PaginatedAccountEmailThreadMessageListResultsList>;
-
 export interface PaginatedAccountEmailThreadMessageList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountEmailThreadMessageListResultsList;
 }
-const PaginatedAccountEmailThreadMessageList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<PaginatedAccountEmailThreadMessageList>;
-
 export interface ListAccountsEmailThreadsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -340,11 +224,6 @@ export interface ListAccountsEmailThreadsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListAccountsEmailThreadsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListAccountsEmailThreadsRequest>;
-
 export interface ConversationMessageSender {
   /** Display name of the message sender. */
   name: string;
@@ -355,11 +234,6 @@ export interface ConversationMessageSender {
   /** Distinct ID of the sender, when available. */
   distinct_id: string | null;
 }
-const ConversationMessageSender = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ConversationMessageSender>;
-
 export interface ConversationMessageSummary {
   /** Sender of the message. */
   sender: ConversationMessageSender;
@@ -368,15 +242,8 @@ export interface ConversationMessageSummary {
   /** Whether PostHog received or sent the message. * `inbound` - Inbound * `outbound` - Outbound */
   direction: EmailThreadMessageDirectionEnum;
 }
-const ConversationMessageSummary = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ConversationMessageSummary>;
-
 /** * `internal` - Internal * `customer` - Customer */
 export type EmailThreadParticipantKindEnum = "internal" | "customer";
-const EmailThreadParticipantKindEnum = S.String;
-
 export interface AccountEmailThreadParticipant {
   /** Email address of the thread participant. */
   email: string;
@@ -387,18 +254,8 @@ export interface AccountEmailThreadParticipant {
   /** UUID of the matched PostHog person for a customer participant, when available. */
   person_id: string | null;
 }
-const AccountEmailThreadParticipant = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AccountEmailThreadParticipant>;
-
 /** Participants included in the email thread. */
 export type AccountEmailThreadParticipantsList = Array<AccountEmailThreadParticipant>;
-const AccountEmailThreadParticipantsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<AccountEmailThreadParticipantsList>;
-
 export interface AccountEmailThread {
   /** UUID of the captured email thread. */
   id: string;
@@ -419,25 +276,13 @@ export interface AccountEmailThread {
   /** Participants included in the email thread. */
   participants: AccountEmailThreadParticipantsList;
 }
-const AccountEmailThread = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AccountEmailThread>;
-
 export type PaginatedAccountEmailThreadListResultsList = Array<AccountEmailThread>;
-const PaginatedAccountEmailThreadListResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<PaginatedAccountEmailThreadListResultsList>;
-
 export interface PaginatedAccountEmailThreadList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountEmailThreadListResultsList;
 }
-const PaginatedAccountEmailThreadList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PaginatedAccountEmailThreadList>;
-
 export interface ListAccountsMeetingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -450,11 +295,6 @@ export interface ListAccountsMeetingsRequest {
   /** Filter meetings by title or attendee email/name. */
   search?: string;
 }
-const ListAccountsMeetingsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListAccountsMeetingsRequest>;
-
 /** One attendee of a synced calendar meeting (read-only). */
 export interface MeetingParticipant {
   /** Email address of the attendee. */
@@ -468,15 +308,8 @@ export interface MeetingParticipant {
   /** UUID of the PostHog person resolved for this attendee, if any. */
   person_id: string | null;
 }
-const MeetingParticipant = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MeetingParticipant>;
-
 /** Attendees of the meeting. */
 export type MeetingParticipantsList = Array<MeetingParticipant>;
-const MeetingParticipantsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<MeetingParticipantsList>;
-
 /** A calendar meeting synced from a connected employee calendar (read-only). */
 export interface Meeting {
   /** UUID of the meeting. */
@@ -496,63 +329,31 @@ export interface Meeting {
   /** Attendees of the meeting. */
   participants: MeetingParticipantsList;
 }
-const Meeting = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Meeting>;
-
 export type PaginatedMeetingListResultsList = Array<Meeting>;
-const PaginatedMeetingListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<PaginatedMeetingListResultsList>;
-
 export interface PaginatedMeetingList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMeetingListResultsList;
 }
-const PaginatedMeetingList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PaginatedMeetingList>;
-
 /** Up to 100 account IDs to read presence for. */
 export type ListAccountsPresenceRequestAccountIdsList = Array<string>;
-const ListAccountsPresenceRequestAccountIdsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<ListAccountsPresenceRequestAccountIdsList>;
-
 export interface ListAccountsPresenceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Up to 100 account IDs to read presence for. */
   account_ids: ListAccountsPresenceRequestAccountIdsList;
 }
-const ListAccountsPresenceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListAccountsPresenceRequest>;
-
 /** People viewing this account. */
 export type AccountPresenceViewersList = Array<AccountPresenceViewer>;
-const AccountPresenceViewersList =
-  CreateAccountsPresenceResponseBodyList as any as S.Schema<AccountPresenceViewersList>;
-
 export interface AccountPresence {
   /** Customer analytics account ID. */
   account_id: string;
   /** People viewing this account. */
   viewers: AccountPresenceViewersList;
 }
-const AccountPresence = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AccountPresence>;
-
 export type ListAccountsPresenceResponseBodyList = Array<AccountPresence>;
-const ListAccountsPresenceResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListAccountsPresenceResponseBodyList>;
-
 export type ListAccountsPresenceResponse = ListAccountsPresenceResponseBodyList;
-const ListAccountsPresenceResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListAccountsPresenceResponse>;
-
 export interface ListAccountsSummariesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -563,11 +364,6 @@ export interface ListAccountsSummariesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListAccountsSummariesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListAccountsSummariesRequest>;
-
 /** Metadata for one message a channel summary covered -- never the message text. */
 export interface ChannelSummaryMessage {
   /** Display name of the message author. */
@@ -577,18 +373,8 @@ export interface ChannelSummaryMessage {
   /** Slack permalink to the message. */
   permalink: string;
 }
-const ChannelSummaryMessage = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ChannelSummaryMessage>;
-
 /** The messages the summary covered, in transcript order -- metadata only, no message text. */
 export type AccountChannelSummaryMessagesList = Array<ChannelSummaryMessage>;
-const AccountChannelSummaryMessagesList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<AccountChannelSummaryMessagesList>;
-
 /** An AI summary of one closed period of the account's bound Slack channel (read-only). */
 export interface AccountChannelSummary {
   /** UUID of the summary. */
@@ -610,28 +396,13 @@ export interface AccountChannelSummary {
   /** When the summary was generated. */
   generated_at: string;
 }
-const AccountChannelSummary = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<AccountChannelSummary>;
-
 export type PaginatedAccountChannelSummaryListResultsList = Array<AccountChannelSummary>;
-const PaginatedAccountChannelSummaryListResultsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PaginatedAccountChannelSummaryListResultsList>;
-
 export interface PaginatedAccountChannelSummaryList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountChannelSummaryListResultsList;
 }
-const PaginatedAccountChannelSummaryList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PaginatedAccountChannelSummaryList>;
-
 export interface ListAccountsSupportTicketMessagesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -643,11 +414,6 @@ export interface ListAccountsSupportTicketMessagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListAccountsSupportTicketMessagesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListAccountsSupportTicketMessagesRequest>;
-
 export interface AccountSupportTicketMessage {
   /** UUID of the support ticket message. */
   id: string;
@@ -662,40 +428,20 @@ export interface AccountSupportTicketMessage {
   /** When the message was created. */
   created_at: string;
 }
-const AccountSupportTicketMessage = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<AccountSupportTicketMessage>;
-
 export type PaginatedAccountSupportTicketMessageListResultsList =
   Array<AccountSupportTicketMessage>;
-const PaginatedAccountSupportTicketMessageListResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<PaginatedAccountSupportTicketMessageListResultsList>;
-
 export interface PaginatedAccountSupportTicketMessageList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountSupportTicketMessageListResultsList;
 }
-const PaginatedAccountSupportTicketMessageList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<PaginatedAccountSupportTicketMessageList>;
-
 export interface ListAccountsSupportTicketsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this account. */
   id: string;
 }
-const ListAccountsSupportTicketsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListAccountsSupportTicketsRequest>;
-
 /** A support ticket linked to an account, sourced from the conversations product (read-only). */
 export interface SupportTicket {
   /** UUID of the support ticket. */
@@ -719,20 +465,8 @@ export interface SupportTicket {
   /** Distinct ID of the customer who started the ticket. */
   distinct_id: string;
 }
-const SupportTicket = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<SupportTicket>;
-
 export type ListAccountsSupportTicketsResponseBodyList = Array<SupportTicket>;
-const ListAccountsSupportTicketsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListAccountsSupportTicketsResponseBodyList>;
-
 export type ListAccountsSupportTicketsResponse = ListAccountsSupportTicketsResponseBodyList;
-const ListAccountsSupportTicketsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListAccountsSupportTicketsResponse>;
-
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type UpdateAccountRequestPropertiesEmailDomainsList = Array<string>;
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
@@ -754,14 +488,8 @@ export interface UpdateAccountRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-const UpdateAccountRequestProperties =
-  CreateAccountRequestProperties as any as S.Schema<UpdateAccountRequestProperties>;
-
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type UpdateAccountRequestTagsList = Array<string>;
-const UpdateAccountRequestTagsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountRequestTagsList>;
-
 export interface UpdateAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -780,8 +508,6 @@ export interface UpdateAccountRequest {
   /** When the account churned. Null means the account has not churned. */
   churned_at?: string | null;
 }
-const UpdateAccountRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<UpdateAccountRequest>;
-
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type UpdateAccountsPartialRequestPropertiesEmailDomainsList = Array<string>;
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
@@ -803,14 +529,8 @@ export interface UpdateAccountsPartialRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-const UpdateAccountsPartialRequestProperties =
-  CreateAccountRequestProperties as any as S.Schema<UpdateAccountsPartialRequestProperties>;
-
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type UpdateAccountsPartialRequestTagsList = Array<string>;
-const UpdateAccountsPartialRequestTagsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountsPartialRequestTagsList>;
-
 export interface UpdateAccountsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -829,11 +549,6 @@ export interface UpdateAccountsPartialRequest {
   /** When the account churned. Null means the account has not churned. */
   churned_at?: string | null;
 }
-const UpdateAccountsPartialRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UpdateAccountsPartialRequest>;
-
 export type AccountsDestroyError = PosthogOpError;
 export const accountsDestroy: API.OperationMethod<
   AccountsDestroyRequest,
@@ -841,8 +556,8 @@ export const accountsDestroy: API.OperationMethod<
   AccountsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountsDestroyRequest,
-  output: AccountsDestroyResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AccountsDestroyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AccountsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -855,8 +570,8 @@ export const createAccount: API.OperationMethod<
   CreateAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountRequest,
-  output: Account,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateAccountRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -869,8 +584,8 @@ export const createAccountsPresence: API.OperationMethod<
   CreateAccountsPresenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsPresenceRequest,
-  output: CreateAccountsPresenceResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateAccountsPresenceRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateAccountsPresenceResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -883,8 +598,8 @@ export const getAccount: API.OperationMethod<
   GetAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountRequest,
-  output: Account,
+  input: __S(12, __c1, 4) as any as S.Schema<GetAccountRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -897,8 +612,8 @@ export const getAccountsByExternalId: API.OperationMethod<
   GetAccountsByExternalIdError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsByExternalIdRequest,
-  output: Account,
+  input: __S(13, __c1, 5) as any as S.Schema<GetAccountsByExternalIdRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -911,8 +626,8 @@ export const listAccounts: API.OperationMethod<
   ListAccountsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsRequest,
-  output: PaginatedAccountList,
+  input: __S(14, __c1, 6) as any as S.Schema<ListAccountsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PaginatedAccountList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -925,8 +640,8 @@ export const listAccountsEmailThreadMessages: API.OperationMethod<
   ListAccountsEmailThreadMessagesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsEmailThreadMessagesRequest,
-  output: PaginatedAccountEmailThreadMessageList,
+  input: __S(17, __c2, 1) as any as S.Schema<ListAccountsEmailThreadMessagesRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<PaginatedAccountEmailThreadMessageList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -939,8 +654,8 @@ export const listAccountsEmailThreads: API.OperationMethod<
   ListAccountsEmailThreadsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsEmailThreadsRequest,
-  output: PaginatedAccountEmailThreadList,
+  input: __S(23, __c2, 7) as any as S.Schema<ListAccountsEmailThreadsRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<PaginatedAccountEmailThreadList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -953,8 +668,8 @@ export const listAccountsMeetings: API.OperationMethod<
   ListAccountsMeetingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsMeetingsRequest,
-  output: PaginatedMeetingList,
+  input: __S(31, __c3, 7) as any as S.Schema<ListAccountsMeetingsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<PaginatedMeetingList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -967,8 +682,8 @@ export const listAccountsPresence: API.OperationMethod<
   ListAccountsPresenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsPresenceRequest,
-  output: ListAccountsPresenceResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<ListAccountsPresenceRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ListAccountsPresenceResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -981,8 +696,8 @@ export const listAccountsSummaries: API.OperationMethod<
   ListAccountsSummariesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsSummariesRequest,
-  output: PaginatedAccountChannelSummaryList,
+  input: __S(41, __c5, 1) as any as S.Schema<ListAccountsSummariesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<PaginatedAccountChannelSummaryList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -995,8 +710,8 @@ export const listAccountsSupportTicketMessages: API.OperationMethod<
   ListAccountsSupportTicketMessagesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsSupportTicketMessagesRequest,
-  output: PaginatedAccountSupportTicketMessageList,
+  input: __S(47, __c5, 7) as any as S.Schema<ListAccountsSupportTicketMessagesRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<PaginatedAccountSupportTicketMessageList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1009,8 +724,8 @@ export const listAccountsSupportTickets: API.OperationMethod<
   ListAccountsSupportTicketsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsSupportTicketsRequest,
-  output: ListAccountsSupportTicketsResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ListAccountsSupportTicketsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<ListAccountsSupportTicketsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1023,8 +738,8 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountRequest,
-  output: Account,
+  input: __S(55, __c6, 7) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1037,8 +752,8 @@ export const updateAccountsPartial: API.OperationMethod<
   UpdateAccountsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsPartialRequest,
-  output: Account,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateAccountsPartialRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1066,8 +781,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           website_domain: S.optional(S.NullOr(S.String)),
-          email_domains: S.optional(CreateAccountRequestPropertiesEmailDomainsList),
-          known_emails: S.optional(CreateAccountRequestPropertiesKnownEmailsList),
+          email_domains: S.optional(__S(2, __c0, 2)),
+          known_emails: S.optional(__S(2, __c0, 2)),
           stripe_customer_id: S.optional(S.NullOr(S.String)),
           hubspot_deal_id: S.optional(S.NullOr(S.String)),
           billing_id: S.optional(S.NullOr(S.String)),
@@ -1086,9 +801,9 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(CreateAccountRequestProperties)),
-          tags: S.optional(CreateAccountRequestTagsList),
-          slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
+          tags: S.optional(__S(2, __c0, 2)),
+          slack_summary_cadence: S.optional(S.NullOr(S.String)),
           churned_at: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/accounts/", code: 200 })),
       ).annotate({ identifier: "CreateAccountRequest" });
@@ -1096,8 +811,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           website_domain: S.optional(S.NullOr(S.String)),
-          email_domains: S.optional(AccountPropertiesEmailDomainsList),
-          known_emails: S.optional(AccountPropertiesKnownEmailsList),
+          email_domains: S.optional(__S(2, __c0, 2)),
+          known_emails: S.optional(__S(2, __c0, 2)),
           stripe_customer_id: S.optional(S.NullOr(S.String)),
           hubspot_deal_id: S.optional(S.NullOr(S.String)),
           billing_id: S.optional(S.NullOr(S.String)),
@@ -1116,10 +831,10 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(AccountProperties)),
-          tags: S.optional(AccountTagsList),
-          notebooks: AccountNotebooksList,
-          slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+          properties: S.optional(S.NullOr(__S(5, __c0, 5))),
+          tags: S.optional(__S(6, __c0, 6)),
+          notebooks: __S(2, __c0, 2),
+          slack_summary_cadence: S.optional(S.NullOr(S.String)),
           churned_at: S.optional(S.NullOr(S.String)),
           ignored_at: S.NullOr(S.String),
           created_at: S.String,
@@ -1154,11 +869,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AccountPresenceViewer" });
     case 2:
-      return S.Array(AccountPresenceViewer);
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.suspend(() =>
-        CreateAccountsPresenceResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateAccountsPresenceResponse",
       });
     case 4:
@@ -1194,13 +907,13 @@ function __c1(j: number): any {
           include_ignored: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(ListAccountsRequestOrdering.pipe(T.Query())),
+          ordering: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/accounts/", code: 200 })),
       ).annotate({ identifier: "ListAccountsRequest" });
     case 7:
-      return S.Array(Account);
+      return S.Array(__S(7, __c0, 7));
   }
 }
 function __c2(j: number): any {
@@ -1211,7 +924,7 @@ function __c2(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedAccountListResultsList,
+          results: __S(15, __c1, 7),
         }),
       ).annotate({ identifier: "PaginatedAccountList" });
     case 1:
@@ -1242,31 +955,31 @@ function __c2(j: number): any {
         identifier: "AccountEmailThreadAddress",
       });
     case 3:
-      return S.Array(AccountEmailThreadAddress);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           sent_at: S.String,
-          sender: AccountEmailThreadAddress,
-          to_recipients: AccountEmailThreadMessageToRecipientsList,
-          cc_recipients: AccountEmailThreadMessageCcRecipientsList,
+          sender: __S(18, __c2, 2),
+          to_recipients: __S(19, __c2, 3),
+          cc_recipients: __S(19, __c2, 3),
           sender_authenticated: S.Boolean,
-          direction: EmailThreadMessageDirectionEnum,
+          direction: S.String,
           content: S.String,
         }),
       ).annotate({
         identifier: "AccountEmailThreadMessage",
       });
     case 5:
-      return S.Array(AccountEmailThreadMessage);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedAccountEmailThreadMessageListResultsList,
+          results: __S(21, __c2, 5),
         }),
       ).annotate({
         identifier: "PaginatedAccountEmailThreadMessageList",
@@ -1306,9 +1019,9 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sender: ConversationMessageSender,
+          sender: __S(24, __c3, 0),
           sent_at: S.String,
-          direction: EmailThreadMessageDirectionEnum,
+          direction: S.String,
         }),
       ).annotate({
         identifier: "ConversationMessageSummary",
@@ -1318,14 +1031,14 @@ function __c3(j: number): any {
         S.Struct({
           email: S.String,
           display_name: S.String,
-          kind: EmailThreadParticipantKindEnum,
+          kind: S.String,
           person_id: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "AccountEmailThreadParticipant",
       });
     case 3:
-      return S.Array(AccountEmailThreadParticipant);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1333,22 +1046,22 @@ function __c3(j: number): any {
           subject: S.String,
           preview: S.String,
           first_message_at: S.NullOr(S.String),
-          first_message: S.NullOr(ConversationMessageSummary),
+          first_message: S.NullOr(__S(25, __c3, 1)),
           last_message_at: S.NullOr(S.String),
-          last_message: S.NullOr(ConversationMessageSummary),
+          last_message: S.NullOr(__S(25, __c3, 1)),
           message_count: S.Number,
-          participants: AccountEmailThreadParticipantsList,
+          participants: __S(27, __c3, 3),
         }),
       ).annotate({ identifier: "AccountEmailThread" });
     case 5:
-      return S.Array(AccountEmailThread);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedAccountEmailThreadListResultsList,
+          results: __S(29, __c3, 5),
         }),
       ).annotate({
         identifier: "PaginatedAccountEmailThreadList",
@@ -1386,7 +1099,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "MeetingParticipant" });
     case 1:
-      return S.Array(MeetingParticipant);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1397,25 +1110,25 @@ function __c4(j: number): any {
           end_time: S.NullOr(S.String),
           organizer_email: S.String,
           status: S.String,
-          participants: MeetingParticipantsList,
+          participants: __S(33, __c4, 1),
         }),
       ).annotate({ identifier: "Meeting" });
     case 3:
-      return S.Array(Meeting);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedMeetingListResultsList,
+          results: __S(35, __c4, 3),
         }),
       ).annotate({ identifier: "PaginatedMeetingList" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          account_ids: ListAccountsPresenceRequestAccountIdsList,
+          account_ids: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1430,19 +1143,17 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          viewers: AccountPresenceViewersList,
+          viewers: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "AccountPresence" });
     case 7:
-      return S.Array(AccountPresence);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListAccountsPresenceResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccountsPresenceResponse",
       });
     case 1:
@@ -1471,30 +1182,30 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ChannelSummaryMessage" });
     case 3:
-      return S.Array(ChannelSummaryMessage);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           slack_channel_id: S.String,
-          cadence: SlackSummaryCadenceEnum,
+          cadence: S.String,
           period_start: S.String,
           period_end: S.String,
           content: S.String,
           message_count: S.Number,
-          messages: AccountChannelSummaryMessagesList,
+          messages: __S(43, __c5, 3),
           generated_at: S.String,
         }),
       ).annotate({ identifier: "AccountChannelSummary" });
     case 5:
-      return S.Array(AccountChannelSummary);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedAccountChannelSummaryListResultsList,
+          results: __S(45, __c5, 5),
         }),
       ).annotate({
         identifier: "PaginatedAccountChannelSummaryList",
@@ -1527,7 +1238,7 @@ function __c6(j: number): any {
           id: S.String,
           content: S.String,
           author_name: S.String,
-          direction: EmailThreadMessageDirectionEnum,
+          direction: S.String,
           is_private: S.Boolean,
           created_at: S.String,
         }),
@@ -1535,14 +1246,14 @@ function __c6(j: number): any {
         identifier: "AccountSupportTicketMessage",
       });
     case 1:
-      return S.Array(AccountSupportTicketMessage);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedAccountSupportTicketMessageListResultsList,
+          results: __S(49, __c6, 1),
         }),
       ).annotate({
         identifier: "PaginatedAccountSupportTicketMessageList",
@@ -1570,7 +1281,7 @@ function __c6(j: number): any {
           status: S.String,
           last_message_at: S.NullOr(S.String),
           last_message_text: S.NullOr(S.String),
-          last_message: S.NullOr(ConversationMessageSummary),
+          last_message: S.NullOr(__S(25, __c3, 1)),
           deep_link: S.String,
           created_at: S.String,
           started_by: S.String,
@@ -1578,11 +1289,9 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SupportTicket" });
     case 5:
-      return S.Array(SupportTicket);
+      return S.Array(__S(52, __c6, 4));
     case 6:
-      return S.suspend(() =>
-        ListAccountsSupportTicketsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccountsSupportTicketsResponse",
       });
     case 7:
@@ -1592,9 +1301,9 @@ function __c6(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.String,
           external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(UpdateAccountRequestProperties)),
-          tags: S.optional(UpdateAccountRequestTagsList),
-          slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
+          tags: S.optional(__S(2, __c0, 2)),
+          slack_summary_cadence: S.optional(S.NullOr(S.String)),
           churned_at: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/accounts/{id}/", code: 200 }),
@@ -1611,9 +1320,9 @@ function __c7(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(UpdateAccountsPartialRequestProperties)),
-          tags: S.optional(UpdateAccountsPartialRequestTagsList),
-          slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
+          tags: S.optional(__S(2, __c0, 2)),
+          slack_summary_cadence: S.optional(S.NullOr(S.String)),
           churned_at: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/accounts/{id}/", code: 200 }),
@@ -1622,4 +1331,9 @@ function __c7(j: number): any {
         identifier: "UpdateAccountsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

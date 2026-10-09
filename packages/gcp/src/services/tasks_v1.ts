@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,40 +68,23 @@ export interface ClearTasksRequest {
   /** Task list identifier. */
   tasklist: string;
 }
-const ClearTasksRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ClearTasksRequest>;
-
 export interface ClearTasksResponse {}
-const ClearTasksResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ClearTasksResponse>;
-
 export interface DeleteTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
 }
-const DeleteTasklistsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteTasklistsRequest>;
-
 export interface DeleteTasklistsResponse {}
-const DeleteTasklistsResponse = ClearTasksResponse as any as S.Schema<DeleteTasklistsResponse>;
-
 export interface DeleteTasksRequest {
   /** Task identifier. */
   task: string;
   /** Task list identifier. */
   tasklist: string;
 }
-const DeleteTasksRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteTasksRequest>;
-
 export interface DeleteTasksResponse {}
-const DeleteTasksResponse = ClearTasksResponse as any as S.Schema<DeleteTasksResponse>;
-
 export interface GetTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
 }
-const GetTasklistsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetTasklistsRequest>;
-
 export interface TaskList {
   /** ETag of the resource. */
   etag?: string;
@@ -114,16 +99,12 @@ export interface TaskList {
   /** Task list identifier. */
   id?: string;
 }
-const TaskList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TaskList>;
-
 export interface GetTasksRequest {
   /** Task list identifier. */
   tasklist: string;
   /** Task identifier. */
   task: string;
 }
-const GetTasksRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetTasksRequest>;
-
 /** Information about the Drive resource where a task was assigned from (the document, sheet, etc.). */
 export interface DriveResourceInfo {
   /** Output only. Identifier of the file in the Drive API. */
@@ -131,22 +112,16 @@ export interface DriveResourceInfo {
   /** Output only. Resource key required to access files shared via a shared link. Not required for all files. See also developers.google.com/drive/api/guides/resource-keys. */
   resourceKey?: string;
 }
-const DriveResourceInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DriveResourceInfo>;
-
 /** Information about the Chat Space where a task was assigned from. */
 export interface SpaceInfo {
   /** Output only. The Chat space where this task originates from. The format is "spaces/{space}". */
   space?: string;
 }
-const SpaceInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SpaceInfo>;
-
 export type AssignmentInfoSurfaceTypeEnum =
   | "CONTEXT_TYPE_UNSPECIFIED"
   | "GMAIL"
   | "DOCUMENT"
   | "SPACE";
-const AssignmentInfoSurfaceTypeEnum = S.String;
-
 /** Information about the source of the task assignment (Document, Chat Space). */
 export interface AssignmentInfo {
   /** Output only. Information about the Drive file where this task originates from. Currently, the Drive file can only be a document. This field is read-only. */
@@ -158,8 +133,6 @@ export interface AssignmentInfo {
   /** Output only. The type of surface this assigned task originates from. Currently limited to DOCUMENT or SPACE. */
   surfaceType?: AssignmentInfoSurfaceTypeEnum | (string & {});
 }
-const AssignmentInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AssignmentInfo>;
-
 export interface TaskLinksItem {
   /** Type of the link, e.g. "email", "generic", "chat_message", "keep_note". */
   type?: string;
@@ -168,11 +141,7 @@ export interface TaskLinksItem {
   /** The URL. */
   link?: string;
 }
-const TaskLinksItem = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TaskLinksItem>;
-
 export type TaskLinksItemList = Array<TaskLinksItem>;
-const TaskLinksItemList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<TaskLinksItemList>;
-
 export interface Task {
   /** Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not been completed. */
   completed?: string;
@@ -209,17 +178,10 @@ export interface Task {
   /** Flag indicating whether the task is hidden. This is the case if the task had been marked completed when the task list was last cleared. The default is False. This field is read-only. */
   hidden?: boolean;
 }
-const Task = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Task>;
-
 export interface InsertTasklistsRequest {
   /** Request body */
   body?: TaskList;
 }
-const InsertTasklistsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<InsertTasklistsRequest>;
-
 export interface InsertTasksRequest {
   /** Parent task identifier. If the task is created at the top level, this parameter is omitted. An assigned task cannot be a parent task, nor can it have a parent. Setting the parent to an assigned task results in failure of the request. Optional. */
   parent?: string;
@@ -230,19 +192,13 @@ export interface InsertTasksRequest {
   /** Request body */
   body?: Task;
 }
-const InsertTasksRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<InsertTasksRequest>;
-
 export interface ListTasklistsRequest {
   /** Maximum number of task lists returned on one page. Optional. The default is 1000 (max allowed: 1000). */
   maxResults?: number;
   /** Token specifying the result page to return. Optional. */
   pageToken?: string;
 }
-const ListTasklistsRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListTasklistsRequest>;
-
 export type TaskListList = Array<TaskList>;
-const TaskListList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<TaskListList>;
-
 export interface TaskLists {
   /** Type of the resource. This is always "tasks#taskLists". */
   kind?: string;
@@ -253,8 +209,6 @@ export interface TaskLists {
   /** Token that can be used to request the next page of this result. */
   nextPageToken?: string;
 }
-const TaskLists = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TaskLists>;
-
 export interface ListTasksRequest {
   /** Optional. Flag indicating whether tasks assigned to the current user are returned in the result. Optional. The default is False. */
   showAssigned?: boolean;
@@ -281,11 +235,7 @@ export interface ListTasksRequest {
   /** Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by due date. */
   dueMin?: string;
 }
-const ListTasksRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListTasksRequest>;
-
 export type TaskList_ = Array<Task>;
-const TaskList_ = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<TaskList_>;
-
 export interface Tasks {
   /** ETag of the resource. */
   etag?: string;
@@ -296,8 +246,6 @@ export interface Tasks {
   /** Token used to access the next page of this result. */
   nextPageToken?: string;
 }
-const Tasks = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Tasks>;
-
 export interface MoveTasksRequest {
   /** Optional. Destination task list identifier. If set, the task is moved from tasklist to the destinationTasklist list. Otherwise the task is moved within its current list. Recurrent tasks cannot currently be moved between lists. */
   destinationTasklist?: string;
@@ -310,19 +258,12 @@ export interface MoveTasksRequest {
   /** Task identifier. */
   task: string;
 }
-const MoveTasksRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<MoveTasksRequest>;
-
 export interface PatchTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
   /** Request body */
   body?: TaskList;
 }
-const PatchTasklistsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<PatchTasklistsRequest>;
-
 export interface PatchTasksRequest {
   /** Task list identifier. */
   tasklist: string;
@@ -331,19 +272,12 @@ export interface PatchTasksRequest {
   /** Request body */
   body?: Task;
 }
-const PatchTasksRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PatchTasksRequest>;
-
 export interface UpdateTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
   /** Request body */
   body?: TaskList;
 }
-const UpdateTasklistsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<UpdateTasklistsRequest>;
-
 export interface UpdateTasksRequest {
   /** Task list identifier. */
   tasklist: string;
@@ -352,8 +286,6 @@ export interface UpdateTasksRequest {
   /** Request body */
   body?: Task;
 }
-const UpdateTasksRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UpdateTasksRequest>;
-
 export type ClearTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Clears all completed tasks from the specified task list. The affected tasks will be marked as 'hidden' and no longer be returned by default when retrieving all tasks for a task list. */
 export const clearTasks: API.OperationMethod<
@@ -362,8 +294,8 @@ export const clearTasks: API.OperationMethod<
   ClearTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClearTasksRequest,
-  output: ClearTasksResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ClearTasksRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ClearTasksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -377,8 +309,8 @@ export const deleteTasklists: API.OperationMethod<
   DeleteTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTasklistsRequest,
-  output: DeleteTasklistsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteTasklistsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteTasklistsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -392,8 +324,8 @@ export const deleteTasks: API.OperationMethod<
   DeleteTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTasksRequest,
-  output: DeleteTasksResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DeleteTasksRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteTasksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -407,8 +339,8 @@ export const getTasklists: API.OperationMethod<
   GetTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasklistsRequest,
-  output: TaskList,
+  input: __S(4, __c0, 4) as any as S.Schema<GetTasklistsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -418,8 +350,8 @@ export type GetTasksError = NotFound | Forbidden | GcpOpError;
 /** Returns the specified task. */
 export const getTasks: API.OperationMethod<GetTasksRequest, Task, GetTasksError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetTasksRequest,
-    output: Task,
+    input: __S(6, __c0, 6) as any as S.Schema<GetTasksRequest>,
+    output: __S(12, __c1, 4) as any as S.Schema<Task>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -433,8 +365,8 @@ export const insertTasklists: API.OperationMethod<
   InsertTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertTasklistsRequest,
-  output: TaskList,
+  input: __S(13, __c1, 5) as any as S.Schema<InsertTasklistsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -448,8 +380,8 @@ export const insertTasks: API.OperationMethod<
   InsertTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertTasksRequest,
-  output: Task,
+  input: __S(14, __c1, 6) as any as S.Schema<InsertTasksRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -464,8 +396,8 @@ export const listTasklists: API.PaginatedOperationMethod<
   GcpOpContext,
   TaskList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTasklistsRequest,
-  output: TaskLists,
+  input: __S(15, __c1, 7) as any as S.Schema<ListTasklistsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<TaskLists>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -481,8 +413,8 @@ export const listTasks: API.PaginatedOperationMethod<
   GcpOpContext,
   Task
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTasksRequest,
-  output: Tasks,
+  input: __S(18, __c2, 2) as any as S.Schema<ListTasksRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Tasks>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -493,8 +425,8 @@ export type MoveTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpO
 /** Moves the specified task to another position in the destination task list. If the destination list is not specified, the task is moved within its current list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks. A user can have up to 2,000 subtasks per task. */
 export const moveTasks: API.OperationMethod<MoveTasksRequest, Task, MoveTasksError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: MoveTasksRequest,
-    output: Task,
+    input: __S(21, __c2, 5) as any as S.Schema<MoveTasksRequest>,
+    output: __S(12, __c1, 4) as any as S.Schema<Task>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -508,8 +440,8 @@ export const patchTasklists: API.OperationMethod<
   PatchTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchTasklistsRequest,
-  output: TaskList,
+  input: __S(22, __c2, 6) as any as S.Schema<PatchTasklistsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -523,8 +455,8 @@ export const patchTasks: API.OperationMethod<
   PatchTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchTasksRequest,
-  output: Task,
+  input: __S(23, __c2, 7) as any as S.Schema<PatchTasksRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -538,8 +470,8 @@ export const updateTasklists: API.OperationMethod<
   UpdateTasklistsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTasklistsRequest,
-  output: TaskList,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateTasklistsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<TaskList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -553,8 +485,8 @@ export const updateTasks: API.OperationMethod<
   UpdateTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTasksRequest,
-  output: Task,
+  input: __S(25, __c3, 1) as any as S.Schema<UpdateTasksRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -660,10 +592,10 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          driveResourceInfo: S.optional(DriveResourceInfo),
+          driveResourceInfo: S.optional(__S(7, __c0, 7)),
           linkToTask: S.optional(S.String),
-          spaceInfo: S.optional(SpaceInfo),
-          surfaceType: S.optional(AssignmentInfoSurfaceTypeEnum),
+          spaceInfo: S.optional(__S(8, __c1, 0)),
+          surfaceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssignmentInfo" });
     case 2:
@@ -675,19 +607,19 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "TaskLinksItem" });
     case 3:
-      return S.Array(TaskLinksItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           completed: S.optional(S.String),
           parent: S.optional(S.String),
-          assignmentInfo: S.optional(AssignmentInfo),
+          assignmentInfo: S.optional(__S(9, __c1, 1)),
           selfLink: S.optional(S.String),
           position: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
           title: S.optional(S.String),
-          links: S.optional(TaskLinksItemList),
+          links: S.optional(__S(11, __c1, 3)),
           status: S.optional(S.String),
           webViewLink: S.optional(S.String),
           deleted: S.optional(S.Boolean),
@@ -701,7 +633,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(TaskList.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -716,7 +648,7 @@ function __c1(j: number): any {
           parent: S.optional(S.String.pipe(T.Query())),
           tasklist: S.String.pipe(T.Label()),
           previous: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Task.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -743,12 +675,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TaskList);
+      return S.Array(__S(5, __c0, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: TaskListList,
+          items: __S(16, __c2, 0),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -777,12 +709,12 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListTasksRequest" });
     case 3:
-      return S.Array(Task);
+      return S.Array(__S(12, __c1, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          items: TaskList_,
+          items: __S(19, __c2, 3),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -807,7 +739,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
-          body: S.optional(TaskList.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -821,7 +753,7 @@ function __c2(j: number): any {
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
           task: S.String.pipe(T.Label()),
-          body: S.optional(Task.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -838,7 +770,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
-          body: S.optional(TaskList.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -852,7 +784,7 @@ function __c3(j: number): any {
         S.Struct({
           tasklist: S.String.pipe(T.Label()),
           task: S.String.pipe(T.Label()),
-          body: S.optional(Task.pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -862,4 +794,9 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "UpdateTasksRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

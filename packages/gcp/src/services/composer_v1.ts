@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,25 +69,14 @@ export interface CheckUpgradeRequest {
   /** Optional. The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview). */
   imageVersion?: string;
 }
-const CheckUpgradeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CheckUpgradeRequest>;
-
 export interface CheckUpgradeProjectsLocationsEnvironmentsRequest {
   /** Required. The resource name of the environment to check upgrade for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
   /** Request body */
   body?: CheckUpgradeRequest;
 }
-const CheckUpgradeProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckUpgradeProjectsLocationsEnvironmentsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -95,8 +86,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -110,14 +99,8 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
-
 export type EnvironmentModeEnum = "MODE_UNSPECIFIED" | "DEVELOPMENT";
-const EnvironmentModeEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringMap>;
-
 export type EnvironmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -126,15 +109,11 @@ export type EnvironmentStateEnum =
   | "HIBERNATED"
   | "DELETING"
   | "ERROR";
-const EnvironmentStateEnum = S.String;
-
 /** The configuration for data storage in the environment. */
 export interface StorageConfig {
   /** Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix. */
   bucket?: string;
 }
-const StorageConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StorageConfig>;
-
 /** The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday. */
 export interface MaintenanceWindow {
   /** Required. Start time of the first recurrence of the maintenance window. */
@@ -144,8 +123,6 @@ export interface MaintenanceWindow {
   /** Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`. */
   recurrence?: string;
 }
-const MaintenanceWindow = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MaintenanceWindow>;
-
 /** Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software. */
 export interface IPAllocationPolicy {
   /** Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters. */
@@ -159,11 +136,7 @@ export interface IPAllocationPolicy {
   /** Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. */
   servicesSecondaryRangeName?: string;
 }
-const IPAllocationPolicy = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IPAllocationPolicy>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StringList>;
-
 /** The configuration information for the Kubernetes Engine nodes running the Apache Airflow software. */
 export interface NodeConfig {
   /** Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. */
@@ -191,8 +164,6 @@ export interface NodeConfig {
   /** Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent */
   enableIpMasqAgent?: boolean;
 }
-const NodeConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<NodeConfig>;
-
 /** The configuration for scheduled snapshot creation mechanism. */
 export interface ScheduledSnapshotsConfig {
   /** Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution. */
@@ -204,18 +175,11 @@ export interface ScheduledSnapshotsConfig {
   /** Optional. The Cloud Storage location for storing automatically created snapshots. */
   snapshotLocation?: string;
 }
-const ScheduledSnapshotsConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ScheduledSnapshotsConfig>;
-
 /** The Recovery settings of an environment. */
 export interface RecoveryConfig {
   /** Optional. The configuration for scheduled snapshot creation mechanism. */
   scheduledSnapshotsConfig?: ScheduledSnapshotsConfig;
 }
-const RecoveryConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RecoveryConfig>;
-
 /** Configuration for resources used by Airflow workers. */
 export interface WorkerResource {
   /** Optional. CPU request and limit for a single Airflow worker replica. */
@@ -229,8 +193,6 @@ export interface WorkerResource {
   /** Optional. Memory (GB) request and limit for a single Airflow worker replica. */
   memoryGb?: number;
 }
-const WorkerResource = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<WorkerResource>;
-
 /** Configuration for resources used by Airflow triggerers. */
 export interface TriggererResource {
   /** Optional. CPU request and limit for a single Airflow triggerer replica. */
@@ -240,8 +202,6 @@ export interface TriggererResource {
   /** Optional. Memory (GB) request and limit for a single Airflow triggerer replica. */
   memoryGb?: number;
 }
-const TriggererResource = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TriggererResource>;
-
 /** Configuration for resources used by Airflow web server. */
 export interface WebServerResource {
   /** Optional. Storage (GB) request and limit for Airflow web server. */
@@ -251,8 +211,6 @@ export interface WebServerResource {
   /** Optional. Memory (GB) request and limit for Airflow web server. */
   memoryGb?: number;
 }
-const WebServerResource = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<WebServerResource>;
-
 /** Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export interface DagProcessorResource {
   /** Optional. CPU request and limit for a single Airflow DAG processor replica. */
@@ -264,8 +222,6 @@ export interface DagProcessorResource {
   /** Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created. */
   count?: number;
 }
-const DagProcessorResource = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DagProcessorResource>;
-
 /** Configuration for resources used by Airflow schedulers. */
 export interface SchedulerResource {
   /** Optional. Memory (GB) request and limit for a single Airflow scheduler replica. */
@@ -277,8 +233,6 @@ export interface SchedulerResource {
   /** Optional. Storage (GB) request and limit for a single Airflow scheduler replica. */
   storageGb?: number;
 }
-const SchedulerResource = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SchedulerResource>;
-
 /** The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
 export interface WorkloadsConfig {
   /** Optional. Resources used by Airflow workers. */
@@ -292,38 +246,25 @@ export interface WorkloadsConfig {
   /** Optional. Resources used by Airflow schedulers. */
   scheduler?: SchedulerResource;
 }
-const WorkloadsConfig = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<WorkloadsConfig>;
-
 export type EnvironmentConfigEnvironmentSizeEnum =
   | "ENVIRONMENT_SIZE_UNSPECIFIED"
   | "ENVIRONMENT_SIZE_SMALL"
   | "ENVIRONMENT_SIZE_MEDIUM"
   | "ENVIRONMENT_SIZE_LARGE"
   | "ENVIRONMENT_SIZE_EXTRA_LARGE";
-const EnvironmentConfigEnvironmentSizeEnum = S.String;
-
 /** Configuration for Cloud Data Lineage integration. */
 export interface CloudDataLineageIntegration {
   /** Optional. Whether or not Cloud Data Lineage integration is enabled. */
   enabled?: boolean;
 }
-const CloudDataLineageIntegration = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CloudDataLineageIntegration>;
-
 export type SoftwareConfigAuditLogsReplicationModeEnum =
   | "AUDIT_LOGS_REPLICATION_MODE_UNSPECIFIED"
   | "AUDIT_LOGS_REPLICATION_DISABLED"
   | "AUDIT_LOGS_REPLICATION_ENABLED";
-const SoftwareConfigAuditLogsReplicationModeEnum = S.String;
-
 export type SoftwareConfigWebServerPluginsModeEnum =
   | "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"
   | "PLUGINS_DISABLED"
   | "PLUGINS_ENABLED";
-const SoftwareConfigWebServerPluginsModeEnum = S.String;
-
 /** Specifies the selection and configuration of software inside the environment. */
 export interface SoftwareConfig {
   /** Optional. The configuration for Cloud Data Lineage integration. */
@@ -345,30 +286,20 @@ export interface SoftwareConfig {
   /** Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden. */
   airflowConfigOverrides?: StringMap;
 }
-const SoftwareConfig = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SoftwareConfig>;
-
 export type EnvironmentConfigResilienceModeEnum = "RESILIENCE_MODE_UNSPECIFIED" | "HIGH_RESILIENCE";
-const EnvironmentConfigResilienceModeEnum = S.String;
-
 export type PrivateEnvironmentConfigNetworkingTypeEnum =
   | "NETWORKING_TYPE_UNSPECIFIED"
   | "PRIVATE"
   | "PUBLIC";
-const PrivateEnvironmentConfigNetworkingTypeEnum = S.String;
-
 export type NetworkingConfigConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "VPC_PEERING"
   | "PRIVATE_SERVICE_CONNECT";
-const NetworkingConfigConnectionTypeEnum = S.String;
-
 /** Configuration options for networking connections in the Composer 2 environment. */
 export interface NetworkingConfig {
   /** Optional. Indicates the user requested specific connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment. */
   connectionType?: NetworkingConfigConnectionTypeEnum | (string & {});
 }
-const NetworkingConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<NetworkingConfig>;
-
 /** Configuration options for the private GKE cluster in a Cloud Composer environment. */
 export interface PrivateClusterConfig {
   /** Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used. */
@@ -378,8 +309,6 @@ export interface PrivateClusterConfig {
   /** Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. */
   masterIpv4ReservedRange?: string;
 }
-const PrivateClusterConfig = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PrivateClusterConfig>;
-
 /** The configuration information for configuring a Private IP Cloud Composer environment. */
 export interface PrivateEnvironmentConfig {
   /** Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
@@ -407,11 +336,6 @@ export interface PrivateEnvironmentConfig {
   /** Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
   enablePrivateBuildsOnly?: boolean;
 }
-const PrivateEnvironmentConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PrivateEnvironmentConfig>;
-
 /** Allowed IP range with user-provided description. */
 export interface AllowedIpRange {
   /** Optional. User-provided description. It must contain at most 300 characters. */
@@ -419,50 +343,30 @@ export interface AllowedIpRange {
   /** IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`. */
   value?: string;
 }
-const AllowedIpRange = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AllowedIpRange>;
-
 export type AllowedIpRangeList = Array<AllowedIpRange>;
-const AllowedIpRangeList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AllowedIpRangeList>;
-
 /** Network-level access control policy for the Airflow web server. */
 export interface WebServerNetworkAccessControl {
   /** A collection of allowed IP ranges with descriptions. */
   allowedIpRanges?: AllowedIpRangeList;
 }
-const WebServerNetworkAccessControl = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<WebServerNetworkAccessControl>;
-
 /** The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.* */
 export interface WebServerConfig {
   /** Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values. */
   machineType?: string;
 }
-const WebServerConfig = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<WebServerConfig>;
-
 export type TaskLogsRetentionConfigStorageModeEnum =
   | "TASK_LOGS_STORAGE_MODE_UNSPECIFIED"
   | "CLOUD_LOGGING_AND_CLOUD_STORAGE"
   | "CLOUD_LOGGING_ONLY";
-const TaskLogsRetentionConfigStorageModeEnum = S.String;
-
 /** The configuration setting for Task Logs. */
 export interface TaskLogsRetentionConfig {
   /** Optional. The mode of storage for Airflow workers task logs. */
   storageMode?: TaskLogsRetentionConfigStorageModeEnum | (string & {});
 }
-const TaskLogsRetentionConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<TaskLogsRetentionConfig>;
-
 export type AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
   | "RETENTION_MODE_UNSPECIFIED"
   | "RETENTION_MODE_ENABLED"
   | "RETENTION_MODE_DISABLED";
-const AirflowMetadataRetentionPolicyConfigRetentionModeEnum = S.String;
-
 /** The policy for airflow metadata database retention. */
 export interface AirflowMetadataRetentionPolicyConfig {
   /** Optional. How many days data should be retained for. */
@@ -470,11 +374,6 @@ export interface AirflowMetadataRetentionPolicyConfig {
   /** Optional. Retention can be either enabled or disabled. */
   retentionMode?: AirflowMetadataRetentionPolicyConfigRetentionModeEnum | (string & {});
 }
-const AirflowMetadataRetentionPolicyConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AirflowMetadataRetentionPolicyConfig>;
-
 /** The configuration setting for Airflow database data retention mechanism. */
 export interface DataRetentionConfig {
   /** Optional. The configuration settings for task logs retention */
@@ -482,15 +381,11 @@ export interface DataRetentionConfig {
   /** Optional. The retention policy for airflow metadata database. */
   airflowMetadataRetentionConfig?: AirflowMetadataRetentionPolicyConfig;
 }
-const DataRetentionConfig = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DataRetentionConfig>;
-
 /** The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
 export interface EncryptionConfig {
   /** Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used. */
   kmsKeyName?: string;
 }
-const EncryptionConfig = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<EncryptionConfig>;
-
 /** CIDR block with an optional name. */
 export interface CidrBlock {
   /** CIDR block that must be specified in CIDR notation. */
@@ -498,11 +393,7 @@ export interface CidrBlock {
   /** User-defined name that identifies the CIDR block. */
   displayName?: string;
 }
-const CidrBlock = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CidrBlock>;
-
 export type CidrBlockList = Array<CidrBlock>;
-const CidrBlockList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CidrBlockList>;
-
 /** Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs. */
 export interface MasterAuthorizedNetworksConfig {
   /** Up to 50 external networks that could access Kubernetes master through HTTPS. */
@@ -510,11 +401,6 @@ export interface MasterAuthorizedNetworksConfig {
   /** Optional. Whether or not master authorized networks feature is enabled. */
   enabled?: boolean;
 }
-const MasterAuthorizedNetworksConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<MasterAuthorizedNetworksConfig>;
-
 /** The configuration of Cloud SQL instance that is used by the Apache Airflow software. */
 export interface DatabaseConfig {
   /** Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*. */
@@ -522,8 +408,6 @@ export interface DatabaseConfig {
   /** Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
   machineType?: string;
 }
-const DatabaseConfig = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DatabaseConfig>;
-
 /** Configuration information for an environment. */
 export interface EnvironmentConfig {
   /** Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week. */
@@ -565,8 +449,6 @@ export interface EnvironmentConfig {
   /** Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. */
   databaseConfig?: DatabaseConfig;
 }
-const EnvironmentConfig = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<EnvironmentConfig>;
-
 /** An environment for running orchestration tasks. */
 export interface Environment {
   /** Optional. Selects the environment mode that determines what settings are customizable and what features are available in the environment. */
@@ -592,19 +474,12 @@ export interface Environment {
   /** Optional. Configuration parameters for this environment. */
   config?: EnvironmentConfig;
 }
-const Environment = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Environment>;
-
 export interface CreateProjectsLocationsEnvironmentsRequest {
   /** The parent must be of the form "projects/{projectId}/locations/{locationId}". */
   parent: string;
   /** Request body */
   body?: Environment;
 }
-const CreateProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateProjectsLocationsEnvironmentsRequest>;
-
 /** User workloads ConfigMap used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator. */
 export interface UserWorkloadsConfigMap {
   /** Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
@@ -612,22 +487,12 @@ export interface UserWorkloadsConfigMap {
   /** Optional. The "data" field of Kubernetes ConfigMap, organized in key-value pairs. For details see: https://kubernetes.io/docs/concepts/configuration/configmap/ Example: { "example_key": "example_value", "another_key": "another_value" } */
   data?: StringMap;
 }
-const UserWorkloadsConfigMap = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UserWorkloadsConfigMap>;
-
 export interface CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Required. The environment name to create a ConfigMap for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   parent: string;
   /** Request body */
   body?: UserWorkloadsConfigMap;
 }
-const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
 /** User workloads Secret used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator. */
 export interface UserWorkloadsSecret {
   /** Identifier. The resource name of the Secret, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
@@ -635,77 +500,38 @@ export interface UserWorkloadsSecret {
   /** Optional. The "data" field of Kubernetes Secret, organized in key-value pairs, which can contain sensitive values such as a password, a token, or a key. The values for all keys have to be base64-encoded strings. For details see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: { "example": "ZXhhbXBsZV92YWx1ZQ==", "another-example": "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" } */
   data?: StringMap;
 }
-const UserWorkloadsSecret = UserWorkloadsConfigMap as any as S.Schema<UserWorkloadsSecret>;
-
 export interface CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The environment name to create a Secret for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   parent: string;
   /** Request body */
   body?: UserWorkloadsSecret;
 }
-const CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
-
 /** Request to trigger database failover (only for highly resilient environments). */
 export interface DatabaseFailoverRequest {}
-const DatabaseFailoverRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DatabaseFailoverRequest>;
-
 export interface DatabaseFailoverProjectsLocationsEnvironmentsRequest {
   /** Target environment: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
   /** Request body */
   body?: DatabaseFailoverRequest;
 }
-const DatabaseFailoverProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DatabaseFailoverProjectsLocationsEnvironmentsRequest>;
-
 export interface DeleteProjectsLocationsEnvironmentsRequest {
   /** The environment to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   name: string;
 }
-const DeleteProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsEnvironmentsRequest>;
-
 export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Required. The ConfigMap to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
   name: string;
 }
-const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = DatabaseFailoverRequest as any as S.Schema<Empty>;
-
 export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The Secret to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
   name: string;
 }
-const DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 /** Execute Airflow Command request. */
 export interface ExecuteAirflowCommandRequest {
   /** Airflow subcommand. */
@@ -715,22 +541,12 @@ export interface ExecuteAirflowCommandRequest {
   /** Airflow command. */
   command?: string;
 }
-const ExecuteAirflowCommandRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ExecuteAirflowCommandRequest>;
-
 export interface ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". */
   environment: string;
   /** Request body */
   body?: ExecuteAirflowCommandRequest;
 }
-const ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest>;
-
 /** Response to ExecuteAirflowCommandRequest. */
 export interface ExecuteAirflowCommandResponse {
   /** The namespace of the pod where the command is executed. */
@@ -742,20 +558,10 @@ export interface ExecuteAirflowCommandResponse {
   /** The unique ID of the command execution for polling. */
   executionId?: string;
 }
-const ExecuteAirflowCommandResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ExecuteAirflowCommandResponse>;
-
 export interface FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest {
   /** Required. The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
 }
-const FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest>;
-
 /** Response for FetchDatabasePropertiesRequest. */
 export interface FetchDatabasePropertiesResponse {
   /** The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only fail over to the failover replica when the status is true. */
@@ -765,47 +571,22 @@ export interface FetchDatabasePropertiesResponse {
   /** The Compute Engine zone that the instance is currently serving from. */
   primaryGceZone?: string;
 }
-const FetchDatabasePropertiesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<FetchDatabasePropertiesResponse>;
-
 export interface GetProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   name: string;
 }
-const GetProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetProjectsLocationsEnvironmentsRequest>;
-
 export interface GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Required. The resource name of the ConfigMap to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
   name: string;
 }
-const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
 export interface GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The resource name of the Secret to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
   name: string;
 }
-const GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsEnvironmentsRequest {
   /** List environments in the given project and location, in the form: "projects/{projectId}/locations/{locationId}" */
   parent: string;
@@ -814,14 +595,7 @@ export interface ListProjectsLocationsEnvironmentsRequest {
   /** The maximum number of environments to return. */
   pageSize?: number;
 }
-const ListProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>;
-
 export type EnvironmentList = Array<Environment>;
-const EnvironmentList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<EnvironmentList>;
-
 /** The environments in a project and location. */
 export interface ListEnvironmentsResponse {
   /** The page token used to query for the next page if one exists. */
@@ -829,11 +603,6 @@ export interface ListEnvironmentsResponse {
   /** The list of environments returned by a ListEnvironmentsRequest. */
   environments?: EnvironmentList;
 }
-const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListEnvironmentsResponse>;
-
 export interface ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -842,17 +611,7 @@ export interface ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest
   /** Optional. The maximum number of ConfigMaps to return. */
   pageSize?: number;
 }
-const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
 export type UserWorkloadsConfigMapList = Array<UserWorkloadsConfigMap>;
-const UserWorkloadsConfigMapList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UserWorkloadsConfigMapList>;
-
 /** The user workloads ConfigMaps for a given environment. */
 export interface ListUserWorkloadsConfigMapsResponse {
   /** The page token used to query for the next page if one exists. */
@@ -860,11 +619,6 @@ export interface ListUserWorkloadsConfigMapsResponse {
   /** The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest. */
   userWorkloadsConfigMaps?: UserWorkloadsConfigMapList;
 }
-const ListUserWorkloadsConfigMapsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListUserWorkloadsConfigMapsResponse>;
-
 export interface ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -873,15 +627,7 @@ export interface ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. List Secrets in the given environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   parent: string;
 }
-const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
-
 export type UserWorkloadsSecretList = Array<UserWorkloadsSecret>;
-const UserWorkloadsSecretList =
-  UserWorkloadsConfigMapList as any as S.Schema<UserWorkloadsSecretList>;
-
 /** The user workloads Secrets for a given environment. */
 export interface ListUserWorkloadsSecretsResponse {
   /** The page token used to query for the next page if one exists. */
@@ -889,11 +635,6 @@ export interface ListUserWorkloadsSecretsResponse {
   /** The list of Secrets returned by a ListUserWorkloadsSecretsRequest. */
   userWorkloadsSecrets?: UserWorkloadsSecretList;
 }
-const ListUserWorkloadsSecretsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListUserWorkloadsSecretsResponse>;
-
 export interface ListProjectsLocationsEnvironmentsWorkloadsRequest {
   /** Optional. The maximum number of environments to return. */
   pageSize?: number;
@@ -904,11 +645,6 @@ export interface ListProjectsLocationsEnvironmentsWorkloadsRequest {
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-const ListProjectsLocationsEnvironmentsWorkloadsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListProjectsLocationsEnvironmentsWorkloadsRequest>;
-
 export type ComposerWorkloadStatusStateEnum =
   | "COMPOSER_WORKLOAD_STATE_UNSPECIFIED"
   | "PENDING"
@@ -917,8 +653,6 @@ export type ComposerWorkloadStatusStateEnum =
   | "ERROR"
   | "SUCCEEDED"
   | "FAILED";
-const ComposerWorkloadStatusStateEnum = S.String;
-
 /** Workload status. */
 export interface ComposerWorkloadStatus {
   /** Output only. Text to provide more descriptive status. */
@@ -928,11 +662,6 @@ export interface ComposerWorkloadStatus {
   /** Output only. Detailed message of the status. */
   detailedStatusMessage?: string;
 }
-const ComposerWorkloadStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ComposerWorkloadStatus>;
-
 export type ComposerWorkloadTypeEnum =
   | "COMPOSER_WORKLOAD_TYPE_UNSPECIFIED"
   | "CELERY_WORKER"
@@ -943,8 +672,6 @@ export type ComposerWorkloadTypeEnum =
   | "TRIGGERER"
   | "WEB_SERVER"
   | "REDIS";
-const ComposerWorkloadTypeEnum = S.String;
-
 /** Information about a single workload. */
 export interface ComposerWorkload {
   /** Output only. Status of a workload. */
@@ -954,11 +681,7 @@ export interface ComposerWorkload {
   /** Type of a workload. */
   type?: ComposerWorkloadTypeEnum;
 }
-const ComposerWorkload = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ComposerWorkload>;
-
 export type ComposerWorkloadList = Array<ComposerWorkload>;
-const ComposerWorkloadList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ComposerWorkloadList>;
-
 /** Response to ListWorkloadsRequest. */
 export interface ListWorkloadsResponse {
   /** The list of environment workloads. */
@@ -966,11 +689,6 @@ export interface ListWorkloadsResponse {
   /** The page token used to query for the next page if one exists. */
   nextPageToken?: string;
 }
-const ListWorkloadsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListWorkloadsResponse>;
-
 export interface ListProjectsLocationsImageVersionsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -981,11 +699,6 @@ export interface ListProjectsLocationsImageVersionsRequest {
   /** The maximum number of image_versions to return. */
   pageSize?: number;
 }
-const ListProjectsLocationsImageVersionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListProjectsLocationsImageVersionsRequest>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Composer_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -995,8 +708,6 @@ export interface Composer_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-const Composer_Date = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Composer_Date>;
-
 /** ImageVersion information */
 export interface ImageVersion {
   /** The date of the version release. */
@@ -1012,11 +723,7 @@ export interface ImageVersion {
   /** Whether it is impossible to create an environment with the image version. */
   creationDisabled?: boolean;
 }
-const ImageVersion = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ImageVersion>;
-
 export type ImageVersionList = Array<ImageVersion>;
-const ImageVersionList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ImageVersionList>;
-
 /** The ImageVersions in a project and location. */
 export interface ListImageVersionsResponse {
   /** The list of supported ImageVersions in a location. */
@@ -1024,11 +731,6 @@ export interface ListImageVersionsResponse {
   /** The page token used to query for the next page if one exists. */
   nextPageToken?: string;
 }
-const ListImageVersionsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListImageVersionsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -1041,14 +743,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -1058,11 +753,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 /** Request to load a snapshot into a Cloud Composer environment. */
 export interface LoadSnapshotRequest {
   /** Whether or not to skip copying Cloud Storage data when loading the environment's state. */
@@ -1076,19 +766,12 @@ export interface LoadSnapshotRequest {
   /** Whether or not to skip setting Airflow overrides when loading the environment's state. */
   skipAirflowOverridesSetting?: boolean;
 }
-const LoadSnapshotRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<LoadSnapshotRequest>;
-
 export interface LoadSnapshotProjectsLocationsEnvironmentsRequest {
   /** The resource name of the target environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
   /** Request body */
   body?: LoadSnapshotRequest;
 }
-const LoadSnapshotProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<LoadSnapshotProjectsLocationsEnvironmentsRequest>;
-
 export interface PatchProjectsLocationsEnvironmentsRequest {
   /** Required. A comma-separated list of paths, relative to `Environment`, of fields to update. For example, to set the version of scikit-learn to install in the environment to 0.19.0 and to remove an existing installation of numpy, the `updateMask` parameter would include the following two `paths` values: "config.softwareConfig.pypiPackages.scikit-learn" and "config.softwareConfig.pypiPackages.numpy". The included patch environment would specify the scikit-learn version as follows: { "config":{ "softwareConfig":{ "pypiPackages":{ "scikit-learn":"==0.19.0" } } } } Note that in the above example, any existing PyPI packages other than scikit-learn and numpy will be unaffected. Only one update type may be included in a single request's `updateMask`. For example, one cannot update both the PyPI packages and labels in the same request. However, it is possible to update multiple members of a map field simultaneously in the same request. For example, to set the labels "label1" and "label2" while clearing "label3" (assuming it already exists), one can provide the paths "labels.label1", "labels.label2", and "labels.label3" and populate the patch environment as follows: { "labels":{ "label1":"new-label1-value" "label2":"new-label2-value" } } Note that in the above example, any existing labels that are not included in the `updateMask` will be unaffected. It is also possible to replace an entire map field by providing the map field's path in the `updateMask`. The new value of the field will be that which is provided in the patch environment. For example, to delete all pre-existing user-specified PyPI packages and install botocore at version 1.7.14, the `updateMask` would contain the path "config.softwareConfig.pypiPackages", and the patch environment would be the following: { "config":{ "softwareConfig":{ "pypiPackages":{ "botocore":"==1.7.14" } } } } **Note:** Only the following fields can be updated: * `config.softwareConfig.pypiPackages` * Replace all custom custom PyPI packages. If a replacement package map is not included in `environment`, all custom PyPI packages are cleared. It is an error to provide both this mask and a mask specifying an individual package. * `config.softwareConfig.pypiPackages.`packagename * Update the custom PyPI package *packagename*, preserving other packages. To delete the package, include it in `updateMask`, and omit the mapping for it in `environment.config.softwareConfig.pypiPackages`. It is an error to provide both a mask of this form and the `config.softwareConfig.pypiPackages` mask. * `labels` * Replace all environment labels. If a replacement labels map is not included in `environment`, all labels are cleared. It is an error to provide both this mask and a mask specifying one or more individual labels. * `labels.`labelName * Set the label named *labelName*, while preserving other labels. To delete the label, include it in `updateMask` and omit its mapping in `environment.labels`. It is an error to provide both a mask of this form and the `labels` mask. * `config.nodeCount` * Horizontally scale the number of nodes in the environment. An integer greater than or equal to 3 must be provided in the `config.nodeCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerNetworkAccessControl` * Replace the environment's current `WebServerNetworkAccessControl`. * `config.softwareConfig.airflowConfigOverrides` * Replace all Apache Airflow config overrides. If a replacement config overrides map is not included in `environment`, all config overrides are cleared. It is an error to provide both this mask and a mask specifying one or more individual config overrides. * `config.softwareConfig.airflowConfigOverrides.`section-name * Override the Apache Airflow config property *name* in the section named *section*, preserving other properties. To delete the property override, include it in `updateMask` and omit its mapping in `environment.config.softwareConfig.airflowConfigOverrides`. It is an error to provide both a mask of this form and the `config.softwareConfig.airflowConfigOverrides` mask. * `config.softwareConfig.envVariables` * Replace all environment variables. If a replacement environment variable map is not included in `environment`, all custom environment variables are cleared. * `config.softwareConfig.schedulerCount` * Horizontally scale the number of schedulers in Airflow. A positive integer not greater than the number of nodes must be provided in the `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*. * `config.databaseConfig.machineType` * Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
   updateMask?: string;
@@ -1097,11 +780,6 @@ export interface PatchProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: Environment;
 }
-const PatchProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<PatchProjectsLocationsEnvironmentsRequest>;
-
 /** Poll Airflow Command request. */
 export interface PollAirflowCommandRequest {
   /** The namespace of the pod where the command is executed. */
@@ -1113,22 +791,12 @@ export interface PollAirflowCommandRequest {
   /** Line number from which new logs should be fetched. */
   nextLineNumber?: number;
 }
-const PollAirflowCommandRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<PollAirflowCommandRequest>;
-
 export interface PollAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
   /** Request body */
   body?: PollAirflowCommandRequest;
 }
-const PollAirflowCommandProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PollAirflowCommandProjectsLocationsEnvironmentsRequest>;
-
 /** Contains information about a single line from logs. */
 export interface Line {
   /** Number of the line. */
@@ -1136,11 +804,7 @@ export interface Line {
   /** Text content of the log line. */
   content?: string;
 }
-const Line = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Line>;
-
 export type LineList = Array<Line>;
-const LineList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<LineList>;
-
 /** Information about how a command ended. */
 export interface ExitInfo {
   /** Error message. Empty if there was no error. */
@@ -1148,8 +812,6 @@ export interface ExitInfo {
   /** The exit code from the command execution. */
   exitCode?: number;
 }
-const ExitInfo = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ExitInfo>;
-
 /** Response to PollAirflowCommandRequest. */
 export interface PollAirflowCommandResponse {
   /** Output from the command execution. It may not contain the full output and the caller may need to poll for more lines. */
@@ -1159,11 +821,6 @@ export interface PollAirflowCommandResponse {
   /** Whether the command execution has finished and there is no more output. */
   outputEnd?: boolean;
 }
-const PollAirflowCommandResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PollAirflowCommandResponse>;
-
 /** Restart Airflow web server. */
 export type RestartWebServerRequest = DatabaseFailoverRequest;
 export interface RestartWebServerProjectsLocationsEnvironmentsRequest {
@@ -1172,29 +829,17 @@ export interface RestartWebServerProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: DatabaseFailoverRequest;
 }
-const RestartWebServerProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<RestartWebServerProjectsLocationsEnvironmentsRequest>;
-
 /** Request to create a snapshot of a Cloud Composer environment. */
 export interface SaveSnapshotRequest {
   /** Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "gs://my-bucket/snapshots". */
   snapshotLocation?: string;
 }
-const SaveSnapshotRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<SaveSnapshotRequest>;
-
 export interface SaveSnapshotProjectsLocationsEnvironmentsRequest {
   /** The resource name of the source environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
   /** Request body */
   body?: SaveSnapshotRequest;
 }
-const SaveSnapshotProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<SaveSnapshotProjectsLocationsEnvironmentsRequest>;
-
 /** Stop Airflow Command request. */
 export interface StopAirflowCommandRequest {
   /** The unique ID of the command execution. */
@@ -1206,22 +851,12 @@ export interface StopAirflowCommandRequest {
   /** The name of the pod where the command is executed. */
   pod?: string;
 }
-const StopAirflowCommandRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<StopAirflowCommandRequest>;
-
 export interface StopAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". */
   environment: string;
   /** Request body */
   body?: StopAirflowCommandRequest;
 }
-const StopAirflowCommandProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<StopAirflowCommandProjectsLocationsEnvironmentsRequest>;
-
 /** Response to StopAirflowCommandRequest. */
 export interface StopAirflowCommandResponse {
   /** Output message from stopping execution request. */
@@ -1229,33 +864,18 @@ export interface StopAirflowCommandResponse {
   /** Whether the execution is still running. */
   isDone?: boolean;
 }
-const StopAirflowCommandResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<StopAirflowCommandResponse>;
-
 export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
   name: string;
   /** Request body */
   body?: UserWorkloadsConfigMap;
 }
-const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
 export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Identifier. The resource name of the Secret, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
   name: string;
   /** Request body */
   body?: UserWorkloadsSecret;
 }
-const UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
-
 export type CheckUpgradeProjectsLocationsEnvironmentsError =
   | NotFound
   | Forbidden
@@ -1269,8 +889,8 @@ export const checkUpgradeProjectsLocationsEnvironments: API.OperationMethod<
   CheckUpgradeProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckUpgradeProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(1, __c0, 1) as any as S.Schema<CheckUpgradeProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1289,8 +909,8 @@ export const createProjectsLocationsEnvironments: API.OperationMethod<
   CreateProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1309,8 +929,12 @@ export const createProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
   CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: UserWorkloadsConfigMap,
+  input: __S(
+    41,
+    __c5,
+    1,
+  ) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UserWorkloadsConfigMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1329,8 +953,12 @@ export const createProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
   CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
-  output: UserWorkloadsSecret,
+  input: __S(
+    42,
+    __c5,
+    2,
+  ) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UserWorkloadsSecret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1349,8 +977,8 @@ export const databaseFailoverProjectsLocationsEnvironments: API.OperationMethod<
   DatabaseFailoverProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseFailoverProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(44, __c5, 4) as any as S.Schema<DatabaseFailoverProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1369,8 +997,8 @@ export const deleteProjectsLocationsEnvironments: API.OperationMethod<
   DeleteProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(45, __c5, 5) as any as S.Schema<DeleteProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1389,8 +1017,12 @@ export const deleteProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
   DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: Empty,
+  input: __S(
+    46,
+    __c5,
+    6,
+  ) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1409,8 +1041,12 @@ export const deleteProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
   DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
-  output: Empty,
+  input: __S(
+    47,
+    __c5,
+    7,
+  ) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1429,8 +1065,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1449,8 +1085,12 @@ export const executeAirflowCommandProjectsLocationsEnvironments: API.OperationMe
   ExecuteAirflowCommandProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest,
-  output: ExecuteAirflowCommandResponse,
+  input: __S(
+    50,
+    __c6,
+    2,
+  ) as any as S.Schema<ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ExecuteAirflowCommandResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1467,8 +1107,12 @@ export const fetchDatabasePropertiesProjectsLocationsEnvironments: API.Operation
   FetchDatabasePropertiesProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest,
-  output: FetchDatabasePropertiesResponse,
+  input: __S(
+    52,
+    __c6,
+    4,
+  ) as any as S.Schema<FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<FetchDatabasePropertiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1482,8 +1126,8 @@ export const getProjectsLocationsEnvironments: API.OperationMethod<
   GetProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsEnvironmentsRequest,
-  output: Environment,
+  input: __S(54, __c6, 6) as any as S.Schema<GetProjectsLocationsEnvironmentsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1500,8 +1144,12 @@ export const getProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Operat
   GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: UserWorkloadsConfigMap,
+  input: __S(
+    55,
+    __c6,
+    7,
+  ) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UserWorkloadsConfigMap>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1166,12 @@ export const getProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operation
   GetProjectsLocationsEnvironmentsUserWorkloadsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
-  output: UserWorkloadsSecret,
+  input: __S(
+    56,
+    __c7,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UserWorkloadsSecret>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1185,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(57, __c7, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1549,8 +1201,8 @@ export const listProjectsLocationsEnvironments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsEnvironmentsRequest,
-  output: ListEnvironmentsResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1569,8 +1221,12 @@ export const listProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Pagin
   GcpOpContext,
   ListUserWorkloadsConfigMapsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: ListUserWorkloadsConfigMapsResponse,
+  input: __S(
+    61,
+    __c7,
+    5,
+  ) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<ListUserWorkloadsConfigMapsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1245,12 @@ export const listProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Paginate
   GcpOpContext,
   ListUserWorkloadsSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
-  output: ListUserWorkloadsSecretsResponse,
+  input: __S(
+    64,
+    __c8,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListUserWorkloadsSecretsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1266,8 @@ export const listProjectsLocationsEnvironmentsWorkloads: API.PaginatedOperationM
   GcpOpContext,
   ListWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsEnvironmentsWorkloadsRequest,
-  output: ListWorkloadsResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<ListProjectsLocationsEnvironmentsWorkloadsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ListWorkloadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1283,8 @@ export const listProjectsLocationsImageVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListImageVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsImageVersionsRequest,
-  output: ListImageVersionsResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<ListProjectsLocationsImageVersionsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<ListImageVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1640,8 +1300,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1321,8 @@ export const loadSnapshotProjectsLocationsEnvironments: API.OperationMethod<
   LoadSnapshotProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LoadSnapshotProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(80, __c10, 0) as any as S.Schema<LoadSnapshotProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1341,8 @@ export const patchProjectsLocationsEnvironments: API.OperationMethod<
   PatchProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(81, __c10, 1) as any as S.Schema<PatchProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1361,12 @@ export const pollAirflowCommandProjectsLocationsEnvironments: API.OperationMetho
   PollAirflowCommandProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PollAirflowCommandProjectsLocationsEnvironmentsRequest,
-  output: PollAirflowCommandResponse,
+  input: __S(
+    83,
+    __c10,
+    3,
+  ) as any as S.Schema<PollAirflowCommandProjectsLocationsEnvironmentsRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<PollAirflowCommandResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1385,8 @@ export const restartWebServerProjectsLocationsEnvironments: API.OperationMethod<
   RestartWebServerProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartWebServerProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(88, __c11, 0) as any as S.Schema<RestartWebServerProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1405,8 @@ export const saveSnapshotProjectsLocationsEnvironments: API.OperationMethod<
   SaveSnapshotProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SaveSnapshotProjectsLocationsEnvironmentsRequest,
-  output: Operation,
+  input: __S(90, __c11, 2) as any as S.Schema<SaveSnapshotProjectsLocationsEnvironmentsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1425,12 @@ export const stopAirflowCommandProjectsLocationsEnvironments: API.OperationMetho
   StopAirflowCommandProjectsLocationsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopAirflowCommandProjectsLocationsEnvironmentsRequest,
-  output: StopAirflowCommandResponse,
+  input: __S(
+    92,
+    __c11,
+    4,
+  ) as any as S.Schema<StopAirflowCommandProjectsLocationsEnvironmentsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<StopAirflowCommandResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1449,12 @@ export const updateProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
   UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: UserWorkloadsConfigMap,
+  input: __S(
+    94,
+    __c11,
+    6,
+  ) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UserWorkloadsConfigMap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1473,12 @@ export const updateProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
   UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
-  output: UserWorkloadsSecret,
+  input: __S(
+    95,
+    __c11,
+    7,
+  ) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UserWorkloadsSecret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1821,7 +1497,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(CheckUpgradeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1835,22 +1511,22 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(2, __c0, 2)),
+          response: S.optional(__S(2, __c0, 2)),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
+          error: S.optional(__S(4, __c0, 4)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1894,10 +1570,10 @@ function __c1(j: number): any {
           network: S.optional(S.String),
           location: S.optional(S.String),
           composerInternalIpv4CidrBlock: S.optional(S.String),
-          ipAllocationPolicy: S.optional(IPAllocationPolicy),
-          oauthScopes: S.optional(StringList),
+          ipAllocationPolicy: S.optional(__S(9, __c1, 1)),
+          oauthScopes: S.optional(__S(10, __c1, 2)),
           machineType: S.optional(S.String),
-          tags: S.optional(StringList),
+          tags: S.optional(__S(10, __c1, 2)),
           composerNetworkAttachment: S.optional(S.String),
           subnetwork: S.optional(S.String),
           enableIpMasqAgent: S.optional(S.Boolean),
@@ -1915,7 +1591,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scheduledSnapshotsConfig: S.optional(ScheduledSnapshotsConfig),
+          scheduledSnapshotsConfig: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "RecoveryConfig" });
     case 6:
@@ -1969,11 +1645,11 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          worker: S.optional(WorkerResource),
-          triggerer: S.optional(TriggererResource),
-          webServer: S.optional(WebServerResource),
-          dagProcessor: S.optional(DagProcessorResource),
-          scheduler: S.optional(SchedulerResource),
+          worker: S.optional(__S(14, __c1, 6)),
+          triggerer: S.optional(__S(15, __c1, 7)),
+          webServer: S.optional(__S(16, __c2, 0)),
+          dagProcessor: S.optional(__S(17, __c2, 1)),
+          scheduler: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "WorkloadsConfig" });
     case 4:
@@ -1987,21 +1663,21 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          cloudDataLineageIntegration: S.optional(CloudDataLineageIntegration),
+          cloudDataLineageIntegration: S.optional(__S(20, __c2, 4)),
           schedulerCount: S.optional(S.Number),
-          envVariables: S.optional(StringMap),
+          envVariables: S.optional(__S(6, __c0, 6)),
           imageVersion: S.optional(S.String),
-          auditLogsReplicationMode: S.optional(SoftwareConfigAuditLogsReplicationModeEnum),
-          webServerPluginsMode: S.optional(SoftwareConfigWebServerPluginsModeEnum),
-          pypiPackages: S.optional(StringMap),
+          auditLogsReplicationMode: S.optional(S.String),
+          webServerPluginsMode: S.optional(S.String),
+          pypiPackages: S.optional(__S(6, __c0, 6)),
           pythonVersion: S.optional(S.String),
-          airflowConfigOverrides: S.optional(StringMap),
+          airflowConfigOverrides: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "SoftwareConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          connectionType: S.optional(NetworkingConfigConnectionTypeEnum),
+          connectionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkingConfig" });
     case 7:
@@ -2021,15 +1697,15 @@ function __c3(j: number): any {
         S.Struct({
           webServerIpv4CidrBlock: S.optional(S.String),
           enablePrivateEnvironment: S.optional(S.Boolean),
-          networkingType: S.optional(PrivateEnvironmentConfigNetworkingTypeEnum),
+          networkingType: S.optional(S.String),
           webServerIpv4ReservedRange: S.optional(S.String),
           cloudComposerNetworkIpv4ReservedRange: S.optional(S.String),
-          networkingConfig: S.optional(NetworkingConfig),
+          networkingConfig: S.optional(__S(22, __c2, 6)),
           cloudComposerNetworkIpv4CidrBlock: S.optional(S.String),
           cloudSqlIpv4CidrBlock: S.optional(S.String),
           cloudComposerConnectionSubnetwork: S.optional(S.String),
           enablePrivatelyUsedPublicIps: S.optional(S.Boolean),
-          privateClusterConfig: S.optional(PrivateClusterConfig),
+          privateClusterConfig: S.optional(__S(23, __c2, 7)),
           enablePrivateBuildsOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PrivateEnvironmentConfig" });
@@ -2041,11 +1717,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "AllowedIpRange" });
     case 2:
-      return S.Array(AllowedIpRange);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedIpRanges: S.optional(AllowedIpRangeList),
+          allowedIpRanges: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "WebServerNetworkAccessControl",
@@ -2059,14 +1735,14 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          storageMode: S.optional(TaskLogsRetentionConfigStorageModeEnum),
+          storageMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskLogsRetentionConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           retentionDays: S.optional(S.Number),
-          retentionMode: S.optional(AirflowMetadataRetentionPolicyConfigRetentionModeEnum),
+          retentionMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AirflowMetadataRetentionPolicyConfig",
@@ -2074,8 +1750,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          taskLogsRetentionConfig: S.optional(TaskLogsRetentionConfig),
-          airflowMetadataRetentionConfig: S.optional(AirflowMetadataRetentionPolicyConfig),
+          taskLogsRetentionConfig: S.optional(__S(29, __c3, 5)),
+          airflowMetadataRetentionConfig: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "DataRetentionConfig" });
   }
@@ -2096,11 +1772,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "CidrBlock" });
     case 2:
-      return S.Array(CidrBlock);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cidrBlocks: S.optional(CidrBlockList),
+          cidrBlocks: S.optional(__S(34, __c4, 2)),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2116,48 +1792,48 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          maintenanceWindow: S.optional(MaintenanceWindow),
-          nodeConfig: S.optional(NodeConfig),
-          recoveryConfig: S.optional(RecoveryConfig),
+          maintenanceWindow: S.optional(__S(8, __c1, 0)),
+          nodeConfig: S.optional(__S(11, __c1, 3)),
+          recoveryConfig: S.optional(__S(13, __c1, 5)),
           airflowByoidUri: S.optional(S.String),
-          workloadsConfig: S.optional(WorkloadsConfig),
+          workloadsConfig: S.optional(__S(19, __c2, 3)),
           airflowUri: S.optional(S.String),
           dagGcsPrefix: S.optional(S.String),
-          environmentSize: S.optional(EnvironmentConfigEnvironmentSizeEnum),
-          softwareConfig: S.optional(SoftwareConfig),
-          resilienceMode: S.optional(EnvironmentConfigResilienceModeEnum),
-          privateEnvironmentConfig: S.optional(PrivateEnvironmentConfig),
-          webServerNetworkAccessControl: S.optional(WebServerNetworkAccessControl),
+          environmentSize: S.optional(S.String),
+          softwareConfig: S.optional(__S(21, __c2, 5)),
+          resilienceMode: S.optional(S.String),
+          privateEnvironmentConfig: S.optional(__S(24, __c3, 0)),
+          webServerNetworkAccessControl: S.optional(__S(27, __c3, 3)),
           gkeCluster: S.optional(S.String),
-          webServerConfig: S.optional(WebServerConfig),
+          webServerConfig: S.optional(__S(28, __c3, 4)),
           nodeCount: S.optional(S.Number),
-          dataRetentionConfig: S.optional(DataRetentionConfig),
-          encryptionConfig: S.optional(EncryptionConfig),
-          masterAuthorizedNetworksConfig: S.optional(MasterAuthorizedNetworksConfig),
-          databaseConfig: S.optional(DatabaseConfig),
+          dataRetentionConfig: S.optional(__S(31, __c3, 7)),
+          encryptionConfig: S.optional(__S(32, __c4, 0)),
+          masterAuthorizedNetworksConfig: S.optional(__S(35, __c4, 3)),
+          databaseConfig: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "EnvironmentConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(EnvironmentModeEnum),
-          labels: S.optional(StringMap),
+          mode: S.optional(S.String),
+          labels: S.optional(__S(6, __c0, 6)),
           createTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           uuid: S.optional(S.String),
-          state: S.optional(EnvironmentStateEnum),
+          state: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
-          storageConfig: S.optional(StorageConfig),
-          config: S.optional(EnvironmentConfig),
+          storageConfig: S.optional(__S(7, __c0, 7)),
+          config: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "Environment" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Environment.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2176,14 +1852,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          data: S.optional(StringMap),
+          data: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "UserWorkloadsConfigMap" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserWorkloadsConfigMap.pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2198,7 +1874,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserWorkloadsSecret.pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2217,7 +1893,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(DatabaseFailoverRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2292,7 +1968,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subcommand: S.optional(S.String),
-          parameters: S.optional(StringList),
+          parameters: S.optional(__S(10, __c1, 2)),
           command: S.optional(S.String),
         }),
       ).annotate({
@@ -2302,7 +1978,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteAirflowCommandRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2409,12 +2085,12 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsEnvironmentsRequest",
       });
     case 3:
-      return S.Array(Environment);
+      return S.Array(__S(38, __c4, 6));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          environments: S.optional(EnvironmentList),
+          environments: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
     case 5:
@@ -2434,12 +2110,12 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
       });
     case 6:
-      return S.Array(UserWorkloadsConfigMap);
+      return S.Array(__S(40, __c5, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          userWorkloadsConfigMaps: S.optional(UserWorkloadsConfigMapList),
+          userWorkloadsConfigMaps: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({
         identifier: "ListUserWorkloadsConfigMapsResponse",
@@ -2468,7 +2144,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          userWorkloadsSecrets: S.optional(UserWorkloadsSecretList),
+          userWorkloadsSecrets: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({
         identifier: "ListUserWorkloadsSecretsResponse",
@@ -2494,24 +2170,24 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           statusMessage: S.optional(S.String),
-          state: S.optional(ComposerWorkloadStatusStateEnum),
+          state: S.optional(S.String),
           detailedStatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComposerWorkloadStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ComposerWorkloadStatus),
+          status: S.optional(__S(67, __c8, 3)),
           name: S.optional(S.String),
-          type: S.optional(ComposerWorkloadTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComposerWorkload" });
     case 5:
-      return S.Array(ComposerWorkload);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          workloads: S.optional(ComposerWorkloadList),
+          workloads: S.optional(__S(69, __c8, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkloadsResponse" });
@@ -2547,20 +2223,20 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          releaseDate: S.optional(Composer_Date),
+          releaseDate: S.optional(__S(72, __c9, 0)),
           upgradeDisabled: S.optional(S.Boolean),
-          supportedPythonVersions: S.optional(StringList),
+          supportedPythonVersions: S.optional(__S(10, __c1, 2)),
           isDefault: S.optional(S.Boolean),
           imageVersionId: S.optional(S.String),
           creationDisabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ImageVersion" });
     case 2:
-      return S.Array(ImageVersion);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          imageVersions: S.optional(ImageVersionList),
+          imageVersions: S.optional(__S(74, __c9, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2585,13 +2261,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(5, __c0, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(10, __c1, 2)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 7:
@@ -2612,7 +2288,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(LoadSnapshotRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2628,7 +2304,7 @@ function __c10(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Environment.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2654,7 +2330,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(PollAirflowCommandRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2673,7 +2349,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "Line" });
     case 5:
-      return S.Array(Line);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2684,8 +2360,8 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          output: S.optional(LineList),
-          exitInfo: S.optional(ExitInfo),
+          output: S.optional(__S(85, __c10, 5)),
+          exitInfo: S.optional(__S(86, __c10, 6)),
           outputEnd: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2699,7 +2375,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DatabaseFailoverRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2720,7 +2396,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(SaveSnapshotRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2746,7 +2422,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environment: S.String.pipe(T.Label()),
-          body: S.optional(StopAirflowCommandRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2760,7 +2436,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          output: S.optional(StringList),
+          output: S.optional(__S(10, __c1, 2)),
           isDone: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2770,7 +2446,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UserWorkloadsConfigMap.pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://composer.googleapis.com/" }),
         ),
@@ -2781,7 +2457,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UserWorkloadsSecret.pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://composer.googleapis.com/" }),
         ),
@@ -2789,4 +2465,9 @@ function __c11(j: number): any {
         identifier: "UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

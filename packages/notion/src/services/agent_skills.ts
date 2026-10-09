@@ -7,17 +7,14 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
 export interface GetPluginDirectoryRequest {
   id: string;
 }
-const GetPluginDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetPluginDirectoryRequest>;
-
 export interface GetPluginDirectoryResponse {
   id: string;
   /** Opaque version identifier for the plugin directory. Compare this value for equality to determine whether the directory has changed. This matches the version_id in the corresponding plugin summary. */
@@ -25,19 +22,9 @@ export interface GetPluginDirectoryResponse {
   /** Temporary signed URL for downloading the plugin directory as a gzipped tar archive. */
   url: string;
 }
-const GetPluginDirectoryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetPluginDirectoryResponse>;
-
 export interface GetSkillDirectoryRequest {
   id: string;
 }
-const GetSkillDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetSkillDirectoryRequest>;
-
 export interface GetSkillDirectoryResponse {
   /** Identifier for the skill page. */
   id: string;
@@ -46,15 +33,10 @@ export interface GetSkillDirectoryResponse {
   /** Temporary signed URL for downloading the skill directory archive. */
   url: string;
 }
-const GetSkillDirectoryResponse =
-  GetPluginDirectoryResponse as any as S.Schema<GetSkillDirectoryResponse>;
-
 export interface ListPluginsRequest {
   page_size?: number;
   start_cursor?: string;
 }
-const ListPluginsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListPluginsRequest>;
-
 export interface ListPluginsResponseResultsItem {
   id: string;
   name: string;
@@ -62,17 +44,7 @@ export interface ListPluginsResponseResultsItem {
   /** Opaque version identifier for the plugin. Compare this value for equality to determine whether the plugin has changed. */
   version_id: string;
 }
-const ListPluginsResponseResultsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListPluginsResponseResultsItem>;
-
 export type ListPluginsResponseResultsList = Array<ListPluginsResponseResultsItem>;
-const ListPluginsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListPluginsResponseResultsList>;
-
 export interface ListPluginsResponse {
   /** Always `list` */
   object: string;
@@ -82,8 +54,6 @@ export interface ListPluginsResponse {
   /** Always `plugin` */
   type: string;
 }
-const ListPluginsResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListPluginsResponse>;
-
 export type GetPluginDirectoryError = NotionOpError;
 /** Get a plugin directory */
 export const getPluginDirectory: API.OperationMethod<
@@ -92,8 +62,8 @@ export const getPluginDirectory: API.OperationMethod<
   GetPluginDirectoryError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPluginDirectoryRequest,
-  output: GetPluginDirectoryResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPluginDirectoryRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetPluginDirectoryResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -107,8 +77,8 @@ export const getSkillDirectory: API.OperationMethod<
   GetSkillDirectoryError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSkillDirectoryRequest,
-  output: GetSkillDirectoryResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<GetSkillDirectoryRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetSkillDirectoryResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -124,8 +94,8 @@ export const listPlugins: API.PaginatedOperationMethod<
   ListPluginsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPluginsRequest,
-    output: ListPluginsResponse,
+    input: __S(3, __c0, 3) as any as S.Schema<ListPluginsRequest>,
+    output: __S(6, __c0, 6) as any as S.Schema<ListPluginsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -185,16 +155,21 @@ function __c0(j: number): any {
         identifier: "ListPluginsResponseResultsItem",
       });
     case 5:
-      return S.Array(ListPluginsResponseResultsItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          results: ListPluginsResponseResultsList,
+          results: __S(5, __c0, 5),
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
           type: S.String,
         }),
       ).annotate({ identifier: "ListPluginsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

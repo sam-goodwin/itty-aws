@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,19 +54,10 @@ export interface CreateDmMemberRequest {
   /** The unique identifier of the user to add to the DM channel. For example, 'user_xxxxx'. */
   user_id: string;
 }
-const CreateDmMemberRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDmMemberRequest>;
-
 /** The notification preferences for a DMs feed member */
 export type DmsFeedMemberNotificationPreferences = "all" | "mentions" | "none";
-const DmsFeedMemberNotificationPreferences = S.String;
-
 /** The statuses of a DMs feed member */
 export type DmsFeedMemberStatuses = "requested" | "accepted" | "hidden" | "closed" | "archived";
-const DmsFeedMemberStatuses = S.String;
-
 /** A user's membership record in a messaging channel, including notification preferences and read state. */
 export interface DmMember {
   /** The unique identifier of the messaging channel this membership belongs to. */
@@ -80,29 +73,15 @@ export interface DmMember {
   /** The unique identifier of the user who holds this channel membership. */
   user_id: string;
 }
-const DmMember = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DmMember>;
-
 export interface DeleteDmMemberRequest {
   /** The unique identifier of the DM channel member to remove. */
   id: string;
 }
-const DeleteDmMemberRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteDmMemberRequest>;
-
 export type DeleteDmMemberResponse = boolean;
-const DeleteDmMemberResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteDmMemberResponse>;
-
 export interface GetDmMemberRequest {
   /** The unique identifier of the DM channel member to retrieve. */
   id: string;
 }
-const GetDmMemberRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetDmMemberRequest>;
-
 export interface ListDmMemberRequest {
   after?: string;
   before?: string;
@@ -110,8 +89,6 @@ export interface ListDmMemberRequest {
   last?: number;
   channel_id: string;
 }
-const ListDmMemberRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListDmMemberRequest>;
-
 /** A user's membership record in a messaging channel, including notification preferences and read state. */
 export interface DmMemberListItem {
   /** The unique identifier of the messaging channel this membership belongs to. */
@@ -125,15 +102,8 @@ export interface DmMemberListItem {
   /** The unique identifier of the user who holds this channel membership. */
   user_id: string;
 }
-const DmMemberListItem = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DmMemberListItem>;
-
 /** A list of nodes. */
 export type ListDmMemberResponseDataList = Array<DmMemberListItem>;
-const ListDmMemberResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListDmMemberResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -145,16 +115,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PageInfo>;
-
 export interface ListDmMemberResponse {
   /** A list of nodes. */
   data: ListDmMemberResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListDmMemberResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListDmMemberResponse>;
-
 export interface UpdateDmMemberRequest {
   /** The unique identifier of the DM channel member to update. */
   id: string;
@@ -163,11 +129,6 @@ export interface UpdateDmMemberRequest {
   /** The membership status for this member in the DM channel. */
   status?: DmsFeedMemberStatuses | (string & {}) | null;
 }
-const UpdateDmMemberRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateDmMemberRequest>;
-
 export type CreateDmMemberError =
   | BadRequest
   | Forbidden
@@ -181,8 +142,8 @@ export const createDmMember: API.OperationMethod<
   CreateDmMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDmMemberRequest,
-  output: DmMember,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDmMemberRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DmMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -201,8 +162,8 @@ export const deleteDmMember: API.OperationMethod<
   DeleteDmMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDmMemberRequest,
-  output: DeleteDmMemberResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteDmMemberRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteDmMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -221,8 +182,8 @@ export const getDmMember: API.OperationMethod<
   GetDmMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDmMemberRequest,
-  output: DmMember,
+  input: __S(4, __c0, 4) as any as S.Schema<GetDmMemberRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DmMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -243,8 +204,8 @@ export const listDmMember: API.PaginatedOperationMethod<
   DmMemberListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDmMemberRequest,
-    output: ListDmMemberResponse,
+    input: __S(5, __c0, 5) as any as S.Schema<ListDmMemberRequest>,
+    output: __S(9, __c1, 1) as any as S.Schema<ListDmMemberResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -273,8 +234,8 @@ export const updateDmMember: API.OperationMethod<
   UpdateDmMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDmMemberRequest,
-  output: DmMember,
+  input: __S(10, __c1, 2) as any as S.Schema<UpdateDmMemberRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DmMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -296,8 +257,8 @@ function __c0(j: number): any {
           channel_id: S.String,
           id: S.String,
           last_viewed_at: S.NullOr(S.String),
-          notification_preference: DmsFeedMemberNotificationPreferences,
-          status: DmsFeedMemberStatuses,
+          notification_preference: S.String,
+          status: S.String,
           user_id: S.String,
         }),
       ).annotate({ identifier: "DmMember" });
@@ -333,12 +294,12 @@ function __c0(j: number): any {
           channel_id: S.String,
           id: S.String,
           last_viewed_at: S.NullOr(S.String),
-          status: DmsFeedMemberStatuses,
+          status: S.String,
           user_id: S.String,
         }),
       ).annotate({ identifier: "DmMemberListItem" });
     case 7:
-      return S.Array(DmMemberListItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -355,17 +316,22 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListDmMemberResponseDataList,
-          page_info: PageInfo,
+          data: __S(7, __c0, 7),
+          page_info: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "ListDmMemberResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          notification_preference: S.optional(S.NullOr(DmsFeedMemberNotificationPreferences)),
-          status: S.optional(S.NullOr(DmsFeedMemberStatuses)),
+          notification_preference: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/dm_members/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateDmMemberRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

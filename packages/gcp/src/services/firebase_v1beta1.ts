@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -81,25 +83,14 @@ export interface AddFirebaseRequest {
   /** **DEPRECATED.** _Instead, use product-specific REST APIs to work with the location of each resource in a Project. This field may be ignored, especially for newly provisioned projects after October 30, 2024._ The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location), which are resources associated with Google App Engine. The location must be one of the available [Google App Engine locations](https://cloud.google.com/about/locations#region). */
   locationId?: string;
 }
-const AddFirebaseRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddFirebaseRequest>;
-
 export interface AddFirebaseProjectsRequest {
   /** The resource name of the Google Cloud `Project` in which Firebase resources will be added and Firebase services enabled, in the format: projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. After calling `AddFirebase`, the unique Project identifiers ( [`projectNumber`](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_number) and [`projectId`](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id)) of the underlying Google Cloud `Project` are also the identifiers of the FirebaseProject. */
   project: string;
   /** Request body */
   body?: AddFirebaseRequest;
 }
-const AddFirebaseProjectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddFirebaseProjectsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -109,8 +100,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -124,36 +113,20 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
-
 export interface AddGoogleAnalyticsRequest {
   /** The ID for the existing [Google Analytics account](http://www.google.com/analytics/) that you want to link with the `FirebaseProject`. Specifying this field will provision a new Google Analytics property in your Google Analytics account and associate the new property with the `FirebaseProject`. */
   analyticsAccountId?: string;
   /** The ID for the existing Google Analytics property that you want to associate with the `FirebaseProject`. */
   analyticsPropertyId?: string;
 }
-const AddGoogleAnalyticsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddGoogleAnalyticsRequest>;
-
 export interface AddGoogleAnalyticsProjectsRequest {
   /** The resource name of the FirebaseProject to link to an existing Google Analytics account, in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   parent: string;
   /** Request body */
   body?: AddGoogleAnalyticsRequest;
 }
-const AddGoogleAnalyticsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddGoogleAnalyticsProjectsRequest>;
-
 export type AndroidAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-const AndroidAppStateEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringList>;
-
 /** Details of a Firebase App for Android. */
 export interface AndroidApp {
   /** This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated. */
@@ -179,22 +152,13 @@ export interface AndroidApp {
   /** The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `AndroidApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.androidApps/getConfig). If `api_key_id` is not set in requests to [`androidApps.Create`](../../rest/v1beta1/projects.androidApps/create), then Firebase automatically associates an `api_key_id` with the `AndroidApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `AndroidApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys. */
   apiKeyId?: string;
 }
-const AndroidApp = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AndroidApp>;
-
 export interface CreateProjectsAndroidAppsRequest {
   /** The resource name of the parent FirebaseProject in which to create an AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   parent: string;
   /** Request body */
   body?: AndroidApp;
 }
-const CreateProjectsAndroidAppsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateProjectsAndroidAppsRequest>;
-
 export type ShaCertificateCertTypeEnum = "SHA_CERTIFICATE_TYPE_UNSPECIFIED" | "SHA_1" | "SHA_256";
-const ShaCertificateCertTypeEnum = S.String;
-
 /** A SHA-1 or SHA-256 certificate associated with the AndroidApp. */
 export interface ShaCertificate {
   /** The resource name of the ShaCertificate for the AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)). * SHA_HASH: the certificate hash for the App (see [`shaHash`](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)). */
@@ -204,22 +168,13 @@ export interface ShaCertificate {
   /** The type of SHA certificate encoded in the hash. */
   certType?: ShaCertificateCertTypeEnum | (string & {});
 }
-const ShaCertificate = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ShaCertificate>;
-
 export interface CreateProjectsAndroidAppsShaRequest {
   /** The resource name of the parent AndroidApp to which to add a ShaCertificate, in the format: projects/PROJECT_IDENTIFIER/androidApps/ APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   parent: string;
   /** Request body */
   body?: ShaCertificate;
 }
-const CreateProjectsAndroidAppsShaRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateProjectsAndroidAppsShaRequest>;
-
 export type IosAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-const IosAppStateEnum = S.String;
-
 /** Details of a Firebase App for iOS. */
 export interface IosApp {
   /** Output only. Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified. */
@@ -245,22 +200,13 @@ export interface IosApp {
   /** This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated. */
   etag?: string;
 }
-const IosApp = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<IosApp>;
-
 export interface CreateProjectsIosAppsRequest {
   /** The resource name of the parent FirebaseProject in which to create an IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   parent: string;
   /** Request body */
   body?: IosApp;
 }
-const CreateProjectsIosAppsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateProjectsIosAppsRequest>;
-
 export type WebAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-const WebAppStateEnum = S.String;
-
 /** Details of a Firebase App for the web. */
 export interface WebApp {
   /** Output only. Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`. */
@@ -284,61 +230,32 @@ export interface WebApp {
   /** This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated. */
   etag?: string;
 }
-const WebApp = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<WebApp>;
-
 export interface CreateProjectsWebAppsRequest {
   /** The resource name of the parent FirebaseProject in which to create a WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   parent: string;
   /** Request body */
   body?: WebApp;
 }
-const CreateProjectsWebAppsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateProjectsWebAppsRequest>;
-
 export interface DeleteProjectsAndroidAppsShaRequest {
   /** The resource name of the ShaCertificate to remove from the parent AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID /sha/SHA_HASH Refer to the `ShaCertificate` [`name`](../projects.androidApps.sha#ShaCertificate.FIELDS.name) field for details about PROJECT_IDENTIFIER, APP_ID, and SHA_HASH values. You can obtain the full resource name of the `ShaCertificate` from the response of [`ListShaCertificates`](../projects.androidApps.sha/list) or the original [`CreateShaCertificate`](../projects.androidApps.sha/create). */
   name: string;
 }
-const DeleteProjectsAndroidAppsShaRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteProjectsAndroidAppsShaRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Empty>;
-
 export interface FinalizeDefaultLocationRequest {
   /** **DEPRECATED** The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location), which are resources associated with Google App Engine. The location must be one of the available [Google App Engine locations](https://cloud.google.com/about/locations#region). */
   locationId?: string;
 }
-const FinalizeDefaultLocationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<FinalizeDefaultLocationRequest>;
-
 export interface FinalizeProjectsDefaultLocationRequest {
   /** The resource name of the FirebaseProject for which the ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location) will be set, in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   parent: string;
   /** Request body */
   body?: FinalizeDefaultLocationRequest;
 }
-const FinalizeProjectsDefaultLocationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<FinalizeProjectsDefaultLocationRequest>;
-
 export interface GetAdminSdkConfigProjectsRequest {
   /** The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
-const GetAdminSdkConfigProjectsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetAdminSdkConfigProjectsRequest>;
-
 export interface AdminSdkConfig {
   /** **DEPRECATED.** _Instead, find the name of the default Cloud Storage for Firebase bucket using the [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list) within the Cloud Storage for Firebase REST API. If the default bucket for the Project has not yet been provisioned, the return might not contain a default bucket. Note that the config that's generated for the Firebase console or the Firebase CLI uses the Cloud Storage for Firebase endpoint to populate this value for that config._ The name of the default Cloud Storage for Firebase bucket. */
   storageBucket?: string;
@@ -349,17 +266,10 @@ export interface AdminSdkConfig {
   /** **DEPRECATED.** _Instead, find the URL of the default Realtime Database instance using the [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list) within the Firebase Realtime Database REST API. If the default instance for the Project has not yet been provisioned, the return might not contain a default instance. Note that the config that's generated for the Firebase console or the Firebase CLI uses the Realtime Database endpoint to populate this value for that config._ The URL of the default Firebase Realtime Database instance. */
   databaseURL?: string;
 }
-const AdminSdkConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AdminSdkConfig>;
-
 export interface GetAnalyticsDetailsProjectsRequest {
   /** The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER/analyticsDetails Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
-const GetAnalyticsDetailsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetAnalyticsDetailsProjectsRequest>;
-
 /** Details of a Google Analytics property */
 export interface AnalyticsProperty {
   /** The display name of the Google Analytics property associated with the specified `FirebaseProject`. */
@@ -369,8 +279,6 @@ export interface AnalyticsProperty {
   /** Output only. The ID of the [Google Analytics account](https://www.google.com/analytics/) for the Google Analytics property associated with the specified FirebaseProject. */
   analyticsAccountId?: string;
 }
-const AnalyticsProperty = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AnalyticsProperty>;
-
 /** A mapping of a Firebase App to a Google Analytics data stream */
 export interface StreamMapping {
   /** Applicable for Firebase Web Apps only. The unique Google-assigned identifier of the Google Analytics web stream associated with the Firebase Web App. Firebase SDKs use this ID to interact with Google Analytics APIs. Learn more about this ID and Google Analytics web streams in the [Analytics documentation](https://support.google.com/analytics/answer/9304153). */
@@ -380,28 +288,17 @@ export interface StreamMapping {
   /** The resource name of the Firebase App associated with the Google Analytics data stream, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID or projects/PROJECT_IDENTIFIER/iosApps/APP_ID or projects/PROJECT_IDENTIFIER /webApps/APP_ID Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   app?: string;
 }
-const StreamMapping = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<StreamMapping>;
-
 export type StreamMappingList = Array<StreamMapping>;
-const StreamMappingList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<StreamMappingList>;
-
 export interface AnalyticsDetails {
   /** The Analytics Property object associated with the specified `FirebaseProject`. This object contains the details of the Google Analytics property associated with the Project. */
   analyticsProperty?: AnalyticsProperty;
   /** - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each Firebase App in the specified `FirebaseProject`. Each `app` and `streamId` appears only once. - For `WebApps`: a map of `app` to `streamId` and `measurementId` for each `WebApp` in the specified `FirebaseProject`. Each `app`, `streamId`, and `measurementId` appears only once. */
   streamMappings?: StreamMappingList;
 }
-const AnalyticsDetails = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AnalyticsDetails>;
-
 export interface GetConfigProjectsAndroidAppsRequest {
   /** The resource name of the AndroidApp configuration to download, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-const GetConfigProjectsAndroidAppsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetConfigProjectsAndroidAppsRequest>;
-
 /** Configuration metadata of a single Firebase App for Android. */
 export interface AndroidAppConfig {
   /** The contents of the JSON configuration file. */
@@ -409,17 +306,10 @@ export interface AndroidAppConfig {
   /** The filename that the configuration artifact for the `AndroidApp` is typically saved as. For example: `google-services.json` */
   configFilename?: string;
 }
-const AndroidAppConfig = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AndroidAppConfig>;
-
 export interface GetConfigProjectsIosAppsRequest {
   /** The resource name of the App configuration to download, in the format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-const GetConfigProjectsIosAppsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetConfigProjectsIosAppsRequest>;
-
 /** Configuration metadata of a single Firebase App for iOS. */
 export interface IosAppConfig {
   /** The content of the XML configuration file. */
@@ -427,17 +317,10 @@ export interface IosAppConfig {
   /** The filename that the configuration artifact for the `IosApp` is typically saved as. For example: `GoogleService-Info.plist` */
   configFilename?: string;
 }
-const IosAppConfig = AndroidAppConfig as any as S.Schema<IosAppConfig>;
-
 export interface GetConfigProjectsWebAppsRequest {
   /** The resource name of the WebApp configuration to download, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-const GetConfigProjectsWebAppsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetConfigProjectsWebAppsRequest>;
-
 /** Configuration metadata of a single Firebase App for the web. */
 export interface WebAppConfig {
   /** **DEPRECATED.** _Instead, use product-specific REST APIs to find the location of each resource in a Project. This field may not be populated, especially for newly provisioned projects after October 30, 2024._ The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location), which are resources associated with Google App Engine. The location is one of the available [App Engine locations](https://cloud.google.com/about/locations#region). This field is omitted if the location for default Google Cloud resources has not been set. */
@@ -467,26 +350,16 @@ export interface WebAppConfig {
   /** Version of the config specification. */
   version?: string;
 }
-const WebAppConfig = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<WebAppConfig>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetProjectsRequest {
   /** The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
-const GetProjectsRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetProjectsRequest>;
-
 export type FirebaseProjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-const FirebaseProjectStateEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<StringMap>;
-
 /** **DEPRECATED.** _Auto-provisioning of these resources is changing, so this object no longer reliably provides information about the resources within the Project. Instead, retrieve information about each resource directly from its resource-specific API._ The default auto-provisioned resources associated with the Project. */
 export interface DefaultResources {
   /** Output only. **DEPRECATED.** _Instead, find the name of the default Realtime Database instance using the [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list) within the Firebase Realtime Database REST API. If the default Realtime Database instance for a Project has not yet been provisioned, the return might not contain a default instance._ The default Firebase Realtime Database instance name, in the format: PROJECT_ID Though rare, your `projectId` might already be used as the name for an existing Realtime Database instance in another project (learn more about [database sharding](https://firebase.google.com/docs/database/usage/sharding)). In these cases, your `projectId` is appended with a hyphen then five alphanumeric characters to create your default Realtime Database instance name. For example, if your `projectId` is `myproject123`, your default database instance name might be: `myproject123-a5c16` */
@@ -498,8 +371,6 @@ export interface DefaultResources {
   /** Output only. **DEPRECATED.** _Instead, find the name of the default Cloud Storage for Firebase bucket using the [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list) within the Cloud Storage for Firebase REST API. If the default bucket for the Project has not yet been provisioned, the return might not contain a default bucket._ The name of the default Cloud Storage for Firebase bucket, in one of the following formats: * If provisioned _before_ October 30, 2024: PROJECT_ID.firebasestorage.app * If provisioned _on or after_ October 30, 2024: PROJECT_ID.firebasestorage.app */
   storageBucket?: string;
 }
-const DefaultResources = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DefaultResources>;
-
 /** A `FirebaseProject` is the top-level Firebase entity. It is the container for Firebase Apps, Firebase Hosting sites, storage systems (Firebase Realtime Database, Cloud Firestore, Cloud Storage buckets), and other Firebase and Google Cloud resources. You create a `FirebaseProject` by calling AddFirebase and specifying an *existing* [Google Cloud `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects). This adds Firebase resources to the existing Google Cloud `Project`. Since a FirebaseProject is actually also a Google Cloud `Project`, a `FirebaseProject` has the same underlying Google Cloud identifiers (`projectNumber` and `projectId`). This allows for easy interop with Google APIs. */
 export interface FirebaseProject {
   /** The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. */
@@ -519,46 +390,24 @@ export interface FirebaseProject {
   /** The user-assigned display name of the Project. */
   displayName?: string;
 }
-const FirebaseProject = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<FirebaseProject>;
-
 export interface GetProjectsAndroidAppsRequest {
   /** The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-const GetProjectsAndroidAppsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetProjectsAndroidAppsRequest>;
-
 export interface GetProjectsIosAppsRequest {
   /** The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-const GetProjectsIosAppsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetProjectsIosAppsRequest>;
-
 export interface GetProjectsWebAppsRequest {
   /** The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-const GetProjectsWebAppsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetProjectsWebAppsRequest>;
-
 export interface ListAvailableProjectsRequest {
   /** Token returned from a previous call to `ListAvailableProjects` indicating where in the set of Projects to resume listing. */
   pageToken?: string;
   /** The maximum number of Projects to return in the response. The server may return fewer than this value at its discretion. If no value is specified (or too large a value is specified), the server will impose its own limit. This value cannot be negative. */
   pageSize?: number;
 }
-const ListAvailableProjectsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListAvailableProjectsRequest>;
-
 /** A reference to a Google Cloud `Project`. */
 export interface ProjectInfo {
   /** **DEPRECATED** _Instead, use product-specific REST APIs to work with the location of each resource in a Project. This field may not be populated, especially for newly provisioned projects after October 30, 2024._ The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location). The location is one of the available [Google App Engine locations](https://cloud.google.com/about/locations#region). Not all Projects will have this field populated. If it is not populated, it means that the Project does not yet have a location for default Google Cloud resources. */
@@ -568,22 +417,13 @@ export interface ProjectInfo {
   /** The resource name of the Google Cloud `Project` to which Firebase resources can be added, in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   project?: string;
 }
-const ProjectInfo = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ProjectInfo>;
-
 export type ProjectInfoList = Array<ProjectInfo>;
-const ProjectInfoList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ProjectInfoList>;
-
 export interface ListAvailableProjectsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent calls to `ListAvailableProjects` to find the next group of Projects. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
   /** The list of Google Cloud `Projects` which can have Firebase resources added to them. */
   projectInfo?: ProjectInfoList;
 }
-const ListAvailableProjectsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListAvailableProjectsResponse>;
-
 export interface ListProjectsRequest {
   /** The maximum number of Projects to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), the server will impose its own limit. This value cannot be negative. */
   pageSize?: number;
@@ -592,22 +432,13 @@ export interface ListProjectsRequest {
   /** Optional. Controls whether Projects in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Projects will be returned. */
   showDeleted?: boolean;
 }
-const ListProjectsRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListProjectsRequest>;
-
 export type FirebaseProjectList = Array<FirebaseProject>;
-const FirebaseProjectList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<FirebaseProjectList>;
-
 export interface ListFirebaseProjectsResponse {
   /** One page of the list of Projects that are accessible to the caller. */
   results?: FirebaseProjectList;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent calls to `ListFirebaseProjects` to find the next group of Projects. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-const ListFirebaseProjectsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListFirebaseProjectsResponse>;
-
 export interface ListProjectsAndroidAppsRequest {
   /** The maximum number of Apps to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
   pageSize?: number;
@@ -618,46 +449,22 @@ export interface ListProjectsAndroidAppsRequest {
   /** Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned. */
   showDeleted?: boolean;
 }
-const ListProjectsAndroidAppsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListProjectsAndroidAppsRequest>;
-
 export type AndroidAppList = Array<AndroidApp>;
-const AndroidAppList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<AndroidAppList>;
-
 export interface ListAndroidAppsResponse {
   /** List of each `AndroidApp` associated with the specified `FirebaseProject`. */
   apps?: AndroidAppList;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListAndroidApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-const ListAndroidAppsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListAndroidAppsResponse>;
-
 export interface ListProjectsAndroidAppsShaRequest {
   /** The resource name of the parent AndroidApp for which to list each associated ShaCertificate, in the format: projects/PROJECT_IDENTIFIER /androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   parent: string;
 }
-const ListProjectsAndroidAppsShaRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListProjectsAndroidAppsShaRequest>;
-
 export type ShaCertificateList = Array<ShaCertificate>;
-const ShaCertificateList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ShaCertificateList>;
-
 export interface ListShaCertificatesResponse {
   /** The list of each `ShaCertificate` associated with the `AndroidApp`. */
   certificates?: ShaCertificateList;
 }
-const ListShaCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListShaCertificatesResponse>;
-
 export interface ListProjectsAvailableLocationsRequest {
   /** Token returned from a previous call to `ListAvailableLocations` indicating where in the list of locations to resume listing. */
   pageToken?: string;
@@ -666,27 +473,13 @@ export interface ListProjectsAvailableLocationsRequest {
   /** The FirebaseProject for which to list [locations for default Google Cloud resources](https://firebase.google.com/docs/projects/locations#default-cloud-location), in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. If no unique project identifier is specified (that is, `projects/-`), the returned list does not take into account org-specific or project-specific location restrictions. */
   parent: string;
 }
-const ListProjectsAvailableLocationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListProjectsAvailableLocationsRequest>;
-
 export type LocationTypeEnum = "LOCATION_TYPE_UNSPECIFIED" | "REGIONAL" | "MULTI_REGIONAL";
-const LocationTypeEnum = S.String;
-
 export type LocationFeaturesItemEnum =
   | "LOCATION_FEATURE_UNSPECIFIED"
   | "FIRESTORE"
   | "DEFAULT_STORAGE"
   | "FUNCTIONS";
-const LocationFeaturesItemEnum = S.String;
-
 export type LocationFeaturesItemEnumList = Array<LocationFeaturesItemEnum>;
-const LocationFeaturesItemEnumList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<LocationFeaturesItemEnumList>;
-
 /** **DEPRECATED.** _This Location is no longer used to determine Firebase resource locations. Instead, consult product documentation to determine valid locations for each resource used in your Project._ A ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location) that can be selected for a FirebaseProject. These are resources associated with Google App Engine. */
 export interface Location {
   /** Indicates whether the location for default Google Cloud resources is a [regional or multi-regional location](https://firebase.google.com/docs/projects/locations#types) for data replication. */
@@ -696,22 +489,13 @@ export interface Location {
   /** Products and services that are available in the location for default Google Cloud resources. */
   features?: LocationFeaturesItemEnumList;
 }
-const Location = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Location>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<LocationList>;
-
 export interface ListAvailableLocationsResponse {
   /** One page of results from a call to `ListAvailableLocations`. */
   locations?: LocationList;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results and all available locations have been listed. This token can be used in a subsequent call to `ListAvailableLocations` to find more locations. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-const ListAvailableLocationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListAvailableLocationsResponse>;
-
 export interface ListProjectsIosAppsRequest {
   /** Token returned from a previous call to `ListIosApps` indicating where in the set of Apps to resume listing. */
   pageToken?: string;
@@ -722,22 +506,13 @@ export interface ListProjectsIosAppsRequest {
   /** Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned. */
   showDeleted?: boolean;
 }
-const ListProjectsIosAppsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListProjectsIosAppsRequest>;
-
 export type IosAppList = Array<IosApp>;
-const IosAppList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<IosAppList>;
-
 export interface ListIosAppsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListIosApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
   /** List of each `IosApp` associated with the specified `FirebaseProject`. */
   apps?: IosAppList;
 }
-const ListIosAppsResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListIosAppsResponse>;
-
 export interface ListProjectsWebAppsRequest {
   /** The maximum number of Apps to return in the response. The server may return fewer than this value at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
   pageSize?: number;
@@ -748,22 +523,13 @@ export interface ListProjectsWebAppsRequest {
   /** Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned. */
   showDeleted?: boolean;
 }
-const ListProjectsWebAppsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListProjectsWebAppsRequest>;
-
 export type WebAppList = Array<WebApp>;
-const WebAppList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<WebAppList>;
-
 export interface ListWebAppsResponse {
   /** List of each `WebApp` associated with the specified `FirebaseProject`. */
   apps?: WebAppList;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListWebApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-const ListWebAppsResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListWebAppsResponse>;
-
 export interface PatchProjectsRequest {
   /** The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. */
   name: string;
@@ -772,8 +538,6 @@ export interface PatchProjectsRequest {
   /** Request body */
   body?: FirebaseProject;
 }
-const PatchProjectsRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PatchProjectsRequest>;
-
 export interface PatchProjectsAndroidAppsRequest {
   /** Specifies which fields of the AndroidApp to update. Note that the following fields are immutable: `name`, `app_id`, `project_id`, and `package_name`. To update `state`, use any of the following endpoints: RemoveAndroidApp or UndeleteAndroidApp. */
   updateMask?: string;
@@ -782,11 +546,6 @@ export interface PatchProjectsAndroidAppsRequest {
   /** Request body */
   body?: AndroidApp;
 }
-const PatchProjectsAndroidAppsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<PatchProjectsAndroidAppsRequest>;
-
 export interface PatchProjectsIosAppsRequest {
   /** The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)). */
   name: string;
@@ -795,11 +554,6 @@ export interface PatchProjectsIosAppsRequest {
   /** Request body */
   body?: IosApp;
 }
-const PatchProjectsIosAppsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<PatchProjectsIosAppsRequest>;
-
 export interface PatchProjectsWebAppsRequest {
   /** The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)). */
   name: string;
@@ -808,31 +562,16 @@ export interface PatchProjectsWebAppsRequest {
   /** Request body */
   body?: WebApp;
 }
-const PatchProjectsWebAppsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<PatchProjectsWebAppsRequest>;
-
 export interface RemoveAnalyticsRequest {
   /** Optional. The ID of the Google Analytics property associated with the specified `FirebaseProject`. - If not set, then the Google Analytics property that is currently associated with the specified `FirebaseProject` is removed. - If set, and the specified `FirebaseProject` is currently associated with a *different* Google Analytics property, then the response is a `412 Precondition Failed` error. */
   analyticsPropertyId?: string;
 }
-const RemoveAnalyticsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<RemoveAnalyticsRequest>;
-
 export interface RemoveAnalyticsProjectsRequest {
   /** The resource name of the FirebaseProject to unlink from its Google Analytics account, in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   parent: string;
   /** Request body */
   body?: RemoveAnalyticsRequest;
 }
-const RemoveAnalyticsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<RemoveAnalyticsProjectsRequest>;
-
 export interface RemoveAndroidAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be removed. */
   validateOnly?: boolean;
@@ -843,22 +582,12 @@ export interface RemoveAndroidAppRequest {
   /** Checksum provided in the AndroidApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-const RemoveAndroidAppRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<RemoveAndroidAppRequest>;
-
 export interface RemoveProjectsAndroidAppsRequest {
   /** Required. The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the AndroidApp [name](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
   /** Request body */
   body?: RemoveAndroidAppRequest;
 }
-const RemoveProjectsAndroidAppsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<RemoveProjectsAndroidAppsRequest>;
-
 export interface RemoveIosAppRequest {
   /** Checksum provided in the IosApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
@@ -869,19 +598,12 @@ export interface RemoveIosAppRequest {
   /** Determines whether to _immediately_ delete the IosApp. If set to true, the App is immediately deleted from the Project and cannot be undeleted (that is, restored to the Project). If not set, defaults to false, which means the App will be set to expire in 30 days. Within the 30 days, the App may be restored to the Project using UndeleteIosApp */
   immediate?: boolean;
 }
-const RemoveIosAppRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<RemoveIosAppRequest>;
-
 export interface RemoveProjectsIosAppsRequest {
   /** Required. The resource name of the IosApp, in the format: projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp [name](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
   /** Request body */
   body?: RemoveIosAppRequest;
 }
-const RemoveProjectsIosAppsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<RemoveProjectsIosAppsRequest>;
-
 export interface RemoveWebAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be removed. */
   validateOnly?: boolean;
@@ -892,19 +614,12 @@ export interface RemoveWebAppRequest {
   /** Checksum provided in the WebApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-const RemoveWebAppRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<RemoveWebAppRequest>;
-
 export interface RemoveProjectsWebAppsRequest {
   /** Required. The resource name of the WebApp, in the format: projects/ PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp [name](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
   /** Request body */
   body?: RemoveWebAppRequest;
 }
-const RemoveProjectsWebAppsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<RemoveProjectsWebAppsRequest>;
-
 export interface SearchAppsProjectsRequest {
   /** The parent FirebaseProject for which to list Apps, in the format: projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   parent: string;
@@ -917,17 +632,8 @@ export interface SearchAppsProjectsRequest {
   /** Token returned from a previous call to `SearchFirebaseApps` indicating where in the set of Apps to resume listing. */
   pageToken?: string;
 }
-const SearchAppsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<SearchAppsProjectsRequest>;
-
 export type FirebaseAppInfoPlatformEnum = "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID" | "WEB";
-const FirebaseAppInfoPlatformEnum = S.String;
-
 export type FirebaseAppInfoStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-const FirebaseAppInfoStateEnum = S.String;
-
 /** A high-level summary of an App. */
 export interface FirebaseAppInfo {
   /** The platform of the Firebase App. */
@@ -947,88 +653,49 @@ export interface FirebaseAppInfo {
   /** Output only. Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified. */
   appId?: string;
 }
-const FirebaseAppInfo = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<FirebaseAppInfo>;
-
 export type FirebaseAppInfoList = Array<FirebaseAppInfo>;
-const FirebaseAppInfoList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<FirebaseAppInfoList>;
-
 export interface SearchFirebaseAppsResponse {
   /** One page of results from a call to `SearchFirebaseApps`. */
   apps?: FirebaseAppInfoList;
   /** If the result list is too large to fit in a single response, then a token is returned. This token can be used in a subsequent calls to `SearchFirebaseApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-const SearchFirebaseAppsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<SearchFirebaseAppsResponse>;
-
 export interface UndeleteAndroidAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be undeleted. */
   validateOnly?: boolean;
   /** Checksum provided in the AndroidApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-const UndeleteAndroidAppRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<UndeleteAndroidAppRequest>;
-
 export interface UndeleteProjectsAndroidAppsRequest {
   /** Required. The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the AndroidApp [name](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
   /** Request body */
   body?: UndeleteAndroidAppRequest;
 }
-const UndeleteProjectsAndroidAppsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<UndeleteProjectsAndroidAppsRequest>;
-
 export interface UndeleteIosAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be undeleted. */
   validateOnly?: boolean;
   /** Checksum provided in the IosApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-const UndeleteIosAppRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<UndeleteIosAppRequest>;
-
 export interface UndeleteProjectsIosAppsRequest {
   /** Required. The resource name of the IosApp, in the format: projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp [name](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
   /** Request body */
   body?: UndeleteIosAppRequest;
 }
-const UndeleteProjectsIosAppsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<UndeleteProjectsIosAppsRequest>;
-
 export interface UndeleteWebAppRequest {
   /** Checksum provided in the WebApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
   /** If set to true, the request is only validated. The App will _not_ be undeleted. */
   validateOnly?: boolean;
 }
-const UndeleteWebAppRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<UndeleteWebAppRequest>;
-
 export interface UndeleteProjectsWebAppsRequest {
   /** Required. The resource name of the WebApp, in the format: projects/ PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp [name](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
   /** Request body */
   body?: UndeleteWebAppRequest;
 }
-const UndeleteProjectsWebAppsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<UndeleteProjectsWebAppsRequest>;
-
 export type AddFirebaseProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds Firebase resources and enables Firebase services in the specified existing [Google Cloud `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects). Since a FirebaseProject is actually also a Google Cloud `Project`, a `FirebaseProject` has the same underlying Google Cloud identifiers (`projectNumber` and `projectId`). This allows for easy interop with Google APIs. The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation` succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to a FirebaseProject; if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a google.rpc.Status. The `Operation` is automatically deleted after completion, so there is no need to call DeleteOperation. This method does not modify any billing account information on the underlying Google Cloud `Project`. To call `AddFirebase`, a project member or service account must have the following permissions (the IAM roles of Editor and Owner contain these permissions): `firebase.projects.update`, `resourcemanager.projects.get`, `serviceusage.services.enable`, and `serviceusage.services.get`. */
 export const addFirebaseProjects: API.OperationMethod<
@@ -1037,8 +704,8 @@ export const addFirebaseProjects: API.OperationMethod<
   AddFirebaseProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddFirebaseProjectsRequest,
-  output: Operation,
+  input: __S(1, __c0, 1) as any as S.Schema<AddFirebaseProjectsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1057,8 +724,8 @@ export const addGoogleAnalyticsProjects: API.OperationMethod<
   AddGoogleAnalyticsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddGoogleAnalyticsProjectsRequest,
-  output: Operation,
+  input: __S(7, __c0, 7) as any as S.Schema<AddGoogleAnalyticsProjectsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1077,8 +744,8 @@ export const createProjectsAndroidApps: API.OperationMethod<
   CreateProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsAndroidAppsRequest,
-  output: Operation,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsAndroidAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1097,8 +764,8 @@ export const createProjectsAndroidAppsSha: API.OperationMethod<
   CreateProjectsAndroidAppsShaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsAndroidAppsShaRequest,
-  output: ShaCertificate,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateProjectsAndroidAppsShaRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ShaCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1112,8 +779,8 @@ export const createProjectsIosApps: API.OperationMethod<
   CreateProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsIosAppsRequest,
-  output: Operation,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateProjectsIosAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1127,8 +794,8 @@ export const createProjectsWebApps: API.OperationMethod<
   CreateProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsWebAppsRequest,
-  output: Operation,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateProjectsWebAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1147,8 +814,8 @@ export const deleteProjectsAndroidAppsSha: API.OperationMethod<
   DeleteProjectsAndroidAppsShaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsAndroidAppsShaRequest,
-  output: Empty,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteProjectsAndroidAppsShaRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1167,8 +834,8 @@ export const finalizeProjectsDefaultLocation: API.OperationMethod<
   FinalizeProjectsDefaultLocationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinalizeProjectsDefaultLocationRequest,
-  output: Operation,
+  input: __S(20, __c2, 4) as any as S.Schema<FinalizeProjectsDefaultLocationRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1182,8 +849,8 @@ export const getAdminSdkConfigProjects: API.OperationMethod<
   GetAdminSdkConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdminSdkConfigProjectsRequest,
-  output: AdminSdkConfig,
+  input: __S(21, __c2, 5) as any as S.Schema<GetAdminSdkConfigProjectsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<AdminSdkConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1197,8 +864,8 @@ export const getAnalyticsDetailsProjects: API.OperationMethod<
   GetAnalyticsDetailsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnalyticsDetailsProjectsRequest,
-  output: AnalyticsDetails,
+  input: __S(23, __c2, 7) as any as S.Schema<GetAnalyticsDetailsProjectsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<AnalyticsDetails>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1212,8 +879,8 @@ export const getConfigProjectsAndroidApps: API.OperationMethod<
   GetConfigProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigProjectsAndroidAppsRequest,
-  output: AndroidAppConfig,
+  input: __S(28, __c3, 4) as any as S.Schema<GetConfigProjectsAndroidAppsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<AndroidAppConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1227,8 +894,8 @@ export const getConfigProjectsIosApps: API.OperationMethod<
   GetConfigProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigProjectsIosAppsRequest,
-  output: IosAppConfig,
+  input: __S(30, __c3, 6) as any as S.Schema<GetConfigProjectsIosAppsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<IosAppConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1242,8 +909,8 @@ export const getConfigProjectsWebApps: API.OperationMethod<
   GetConfigProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigProjectsWebAppsRequest,
-  output: WebAppConfig,
+  input: __S(31, __c3, 7) as any as S.Schema<GetConfigProjectsWebAppsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<WebAppConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1257,8 +924,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(33, __c4, 1) as any as S.Schema<GetOperationsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1272,8 +939,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsRequest,
-  output: FirebaseProject,
+  input: __S(34, __c4, 2) as any as S.Schema<GetProjectsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<FirebaseProject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1287,8 +954,8 @@ export const getProjectsAndroidApps: API.OperationMethod<
   GetProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsAndroidAppsRequest,
-  output: AndroidApp,
+  input: __S(38, __c4, 6) as any as S.Schema<GetProjectsAndroidAppsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<AndroidApp>,
   errors: [NotFound, Forbidden, AndroidAppNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1302,8 +969,8 @@ export const getProjectsIosApps: API.OperationMethod<
   GetProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsIosAppsRequest,
-  output: IosApp,
+  input: __S(39, __c4, 7) as any as S.Schema<GetProjectsIosAppsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<IosApp>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +984,8 @@ export const getProjectsWebApps: API.OperationMethod<
   GetProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsWebAppsRequest,
-  output: WebApp,
+  input: __S(40, __c5, 0) as any as S.Schema<GetProjectsWebAppsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1333,8 +1000,8 @@ export const listAvailableProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAvailableProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAvailableProjectsRequest,
-  output: ListAvailableProjectsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<ListAvailableProjectsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ListAvailableProjectsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1017,8 @@ export const listProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFirebaseProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsRequest,
-  output: ListFirebaseProjectsResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<ListProjectsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListFirebaseProjectsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1367,8 +1034,8 @@ export const listProjectsAndroidApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAndroidAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsAndroidAppsRequest,
-  output: ListAndroidAppsResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<ListProjectsAndroidAppsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ListAndroidAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1050,8 @@ export const listProjectsAndroidAppsSha: API.OperationMethod<
   ListProjectsAndroidAppsShaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsAndroidAppsShaRequest,
-  output: ListShaCertificatesResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsAndroidAppsShaRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<ListShaCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1066,8 @@ export const listProjectsAvailableLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAvailableLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsAvailableLocationsRequest,
-  output: ListAvailableLocationsResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<ListProjectsAvailableLocationsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ListAvailableLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1416,8 +1083,8 @@ export const listProjectsIosApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListIosAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsIosAppsRequest,
-  output: ListIosAppsResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<ListProjectsIosAppsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ListIosAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1100,8 @@ export const listProjectsWebApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWebAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsWebAppsRequest,
-  output: ListWebAppsResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<ListProjectsWebAppsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ListWebAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1449,8 +1116,8 @@ export const patchProjects: API.OperationMethod<
   PatchProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsRequest,
-  output: FirebaseProject,
+  input: __S(65, __c8, 1) as any as S.Schema<PatchProjectsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<FirebaseProject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1470,8 +1137,8 @@ export const patchProjectsAndroidApps: API.OperationMethod<
   PatchProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsAndroidAppsRequest,
-  output: AndroidApp,
+  input: __S(66, __c8, 2) as any as S.Schema<PatchProjectsAndroidAppsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<AndroidApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AndroidAppNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1485,8 +1152,8 @@ export const patchProjectsIosApps: API.OperationMethod<
   PatchProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsIosAppsRequest,
-  output: IosApp,
+  input: __S(67, __c8, 3) as any as S.Schema<PatchProjectsIosAppsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<IosApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1500,8 +1167,8 @@ export const patchProjectsWebApps: API.OperationMethod<
   PatchProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsWebAppsRequest,
-  output: WebApp,
+  input: __S(68, __c8, 4) as any as S.Schema<PatchProjectsWebAppsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1520,8 +1187,8 @@ export const removeAnalyticsProjects: API.OperationMethod<
   RemoveAnalyticsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAnalyticsProjectsRequest,
-  output: Empty,
+  input: __S(70, __c8, 6) as any as S.Schema<RemoveAnalyticsProjectsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1208,8 @@ export const removeProjectsAndroidApps: API.OperationMethod<
   RemoveProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveProjectsAndroidAppsRequest,
-  output: Operation,
+  input: __S(72, __c9, 0) as any as S.Schema<RemoveProjectsAndroidAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AndroidAppNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1223,8 @@ export const removeProjectsIosApps: API.OperationMethod<
   RemoveProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveProjectsIosAppsRequest,
-  output: Operation,
+  input: __S(74, __c9, 2) as any as S.Schema<RemoveProjectsIosAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1238,8 @@ export const removeProjectsWebApps: API.OperationMethod<
   RemoveProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveProjectsWebAppsRequest,
-  output: Operation,
+  input: __S(76, __c9, 4) as any as S.Schema<RemoveProjectsWebAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1587,8 +1254,8 @@ export const searchAppsProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchFirebaseAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchAppsProjectsRequest,
-  output: SearchFirebaseAppsResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<SearchAppsProjectsRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<SearchFirebaseAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1275,8 @@ export const undeleteProjectsAndroidApps: API.OperationMethod<
   UndeleteProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsAndroidAppsRequest,
-  output: Operation,
+  input: __S(82, __c10, 2) as any as S.Schema<UndeleteProjectsAndroidAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1628,8 +1295,8 @@ export const undeleteProjectsIosApps: API.OperationMethod<
   UndeleteProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsIosAppsRequest,
-  output: Operation,
+  input: __S(84, __c10, 4) as any as S.Schema<UndeleteProjectsIosAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1648,8 +1315,8 @@ export const undeleteProjectsWebApps: API.OperationMethod<
   UndeleteProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsWebAppsRequest,
-  output: Operation,
+  input: __S(86, __c10, 6) as any as S.Schema<UndeleteProjectsWebAppsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1668,7 +1335,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
-          body: S.optional(AddFirebaseRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1682,23 +1349,23 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3, __c0, 3)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMap),
+          response: S.optional(__S(2, __c0, 2)),
+          metadata: S.optional(__S(2, __c0, 2)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
@@ -1714,7 +1381,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AddGoogleAnalyticsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1738,12 +1405,12 @@ function __c1(j: number): any {
           projectId: S.optional(S.String),
           name: S.optional(S.String),
           expireTime: S.optional(S.String),
-          state: S.optional(AndroidAppStateEnum),
+          state: S.optional(S.String),
           appId: S.optional(S.String),
           displayName: S.optional(S.String),
-          sha256Hashes: S.optional(StringList),
+          sha256Hashes: S.optional(__S(8, __c1, 0)),
           packageName: S.optional(S.String),
-          sha1Hashes: S.optional(StringList),
+          sha1Hashes: S.optional(__S(8, __c1, 0)),
           apiKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AndroidApp" });
@@ -1751,7 +1418,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AndroidApp.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1767,14 +1434,14 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           shaHash: S.optional(S.String),
-          certType: S.optional(ShaCertificateCertTypeEnum),
+          certType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShaCertificate" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ShaCertificate.pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1790,7 +1457,7 @@ function __c1(j: number): any {
         S.Struct({
           appId: S.optional(S.String),
           teamId: S.optional(S.String),
-          state: S.optional(IosAppStateEnum),
+          state: S.optional(S.String),
           appStoreId: S.optional(S.String),
           expireTime: S.optional(S.String),
           apiKeyId: S.optional(S.String),
@@ -1805,7 +1472,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(IosApp.pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1822,8 +1489,8 @@ function __c1(j: number): any {
           projectId: S.optional(S.String),
           appId: S.optional(S.String),
           displayName: S.optional(S.String),
-          state: S.optional(WebAppStateEnum),
-          appUrls: S.optional(StringList),
+          state: S.optional(S.String),
+          appUrls: S.optional(__S(8, __c1, 0)),
           expireTime: S.optional(S.String),
           webId: S.optional(S.String),
           name: S.optional(S.String),
@@ -1839,7 +1506,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(WebApp.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1880,7 +1547,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(FinalizeDefaultLocationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1949,12 +1616,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "StreamMapping" });
     case 2:
-      return S.Array(StreamMapping);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          analyticsProperty: S.optional(AnalyticsProperty),
-          streamMappings: S.optional(StreamMappingList),
+          analyticsProperty: S.optional(__S(24, __c3, 0)),
+          streamMappings: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "AnalyticsDetails" });
     case 4:
@@ -2068,11 +1735,11 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           projectNumber: S.optional(S.String),
-          state: S.optional(FirebaseProjectStateEnum),
-          annotations: S.optional(StringMap),
+          state: S.optional(S.String),
+          annotations: S.optional(__S(35, __c4, 3)),
           projectId: S.optional(S.String),
           etag: S.optional(S.String),
-          resources: S.optional(DefaultResources),
+          resources: S.optional(__S(36, __c4, 4)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirebaseProject" });
@@ -2146,12 +1813,12 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ProjectInfo" });
     case 3:
-      return S.Array(ProjectInfo);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          projectInfo: S.optional(ProjectInfoList),
+          projectInfo: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "ListAvailableProjectsResponse",
@@ -2171,11 +1838,11 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
     case 6:
-      return S.Array(FirebaseProject);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(FirebaseProjectList),
+          results: S.optional(__S(46, __c5, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2203,11 +1870,11 @@ function __c6(j: number): any {
         identifier: "ListProjectsAndroidAppsRequest",
       });
     case 1:
-      return S.Array(AndroidApp);
+      return S.Array(__S(9, __c1, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(AndroidAppList),
+          apps: S.optional(__S(49, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAndroidAppsResponse" });
@@ -2226,11 +1893,11 @@ function __c6(j: number): any {
         identifier: "ListProjectsAndroidAppsShaRequest",
       });
     case 4:
-      return S.Array(ShaCertificate);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(ShaCertificateList),
+          certificates: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "ListShaCertificatesResponse",
@@ -2252,7 +1919,7 @@ function __c6(j: number): any {
         identifier: "ListProjectsAvailableLocationsRequest",
       });
     case 7:
-      return S.Array(LocationFeaturesItemEnum);
+      return S.Array(S.String);
   }
 }
 function __c7(j: number): any {
@@ -2260,17 +1927,17 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(LocationTypeEnum),
+          type: S.optional(S.String),
           locationId: S.optional(S.String),
-          features: S.optional(LocationFeaturesItemEnumList),
+          features: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({ identifier: "Location" });
     case 1:
-      return S.Array(Location);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(57, __c7, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2294,12 +1961,12 @@ function __c7(j: number): any {
         identifier: "ListProjectsIosAppsRequest",
       });
     case 4:
-      return S.Array(IosApp);
+      return S.Array(__S(13, __c1, 5));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          apps: S.optional(IosAppList),
+          apps: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "ListIosAppsResponse" });
     case 6:
@@ -2320,7 +1987,7 @@ function __c7(j: number): any {
         identifier: "ListProjectsWebAppsRequest",
       });
     case 7:
-      return S.Array(WebApp);
+      return S.Array(__S(15, __c1, 7));
   }
 }
 function __c8(j: number): any {
@@ -2328,7 +1995,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(WebAppList),
+          apps: S.optional(__S(63, __c7, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWebAppsResponse" });
@@ -2337,7 +2004,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(FirebaseProject.pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2351,7 +2018,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(AndroidApp.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2367,7 +2034,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(IosApp.pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2383,7 +2050,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(WebApp.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2404,7 +2071,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RemoveAnalyticsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2432,7 +2099,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RemoveAndroidAppRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2456,7 +2123,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RemoveIosAppRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2480,7 +2147,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RemoveWebAppRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2512,9 +2179,9 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          platform: S.optional(FirebaseAppInfoPlatformEnum),
+          platform: S.optional(S.String),
           namespace: S.optional(S.String),
-          state: S.optional(FirebaseAppInfoStateEnum),
+          state: S.optional(S.String),
           expireTime: S.optional(S.String),
           name: S.optional(S.String),
           apiKeyId: S.optional(S.String),
@@ -2523,7 +2190,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "FirebaseAppInfo" });
     case 7:
-      return S.Array(FirebaseAppInfo);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -2531,7 +2198,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(FirebaseAppInfoList),
+          apps: S.optional(__S(79, __c9, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2550,7 +2217,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UndeleteAndroidAppRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2572,7 +2239,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UndeleteIosAppRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(83, __c10, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2594,7 +2261,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UndeleteWebAppRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2606,4 +2273,9 @@ function __c10(j: number): any {
         identifier: "UndeleteProjectsWebAppsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

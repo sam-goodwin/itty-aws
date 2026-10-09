@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -20,8 +22,6 @@ export type DeleteRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-const DeleteRecordSetRequestRecordType = S.String;
-
 export interface DeleteRecordSetRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -34,17 +34,7 @@ export interface DeleteRecordSetRequest {
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
-const DeleteRecordSetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteRecordSetRequest>;
-
 export interface DeleteRecordSetResponse {}
-const DeleteRecordSetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteRecordSetResponse>;
-
 export interface DeleteZoneRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -53,51 +43,27 @@ export interface DeleteZoneRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
 }
-const DeleteZoneRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteZoneRequest>;
-
 export interface DeleteZoneResponse {}
-const DeleteZoneResponse = DeleteRecordSetResponse as any as S.Schema<DeleteZoneResponse>;
-
 /** A reference to a another resource */
 export interface SubResource {
   /** Resource Id. */
   id?: string;
 }
-const SubResource = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SubResource>;
-
 /** A list of references to azure resources for which referencing dns records need to be queried. */
 export type DnsResourceReferenceRequestPropertiesTargetResourcesList = Array<SubResource>;
-const DnsResourceReferenceRequestPropertiesTargetResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DnsResourceReferenceRequestPropertiesTargetResourcesList>;
-
 /** Represents the properties of the Dns Resource Reference Request. */
 export interface DnsResourceReferenceRequestProperties {
   /** A list of references to azure resources for which referencing dns records need to be queried. */
   targetResources?: DnsResourceReferenceRequestPropertiesTargetResourcesList;
 }
-const DnsResourceReferenceRequestProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DnsResourceReferenceRequestProperties>;
-
 export interface GetDnsResourceReferenceByTargetResourcesRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
   /** The properties of the Resource Reference Request. */
   properties?: DnsResourceReferenceRequestProperties;
 }
-const GetDnsResourceReferenceByTargetResourcesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetDnsResourceReferenceByTargetResourcesRequest>;
-
 /** A list of dns Records */
 export type DnsResourceReferenceDnsResourcesList = Array<SubResource>;
-const DnsResourceReferenceDnsResourcesList =
-  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<DnsResourceReferenceDnsResourcesList>;
-
 /** Represents a single Azure resource and its referencing DNS records. */
 export interface DnsResourceReference {
   /** A list of dns Records */
@@ -105,36 +71,19 @@ export interface DnsResourceReference {
   /** A reference to an azure resource from where the dns resource value is taken. */
   targetResource?: SubResource;
 }
-const DnsResourceReference = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DnsResourceReference>;
-
 /** The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request */
 export type DnsResourceReferenceResultPropertiesDnsResourceReferencesList =
   Array<DnsResourceReference>;
-const DnsResourceReferenceResultPropertiesDnsResourceReferencesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DnsResourceReferenceResultPropertiesDnsResourceReferencesList>;
-
 /** The result of dns resource reference request. Returns a list of dns resource references for each of the azure resource in the request. */
 export interface DnsResourceReferenceResultProperties {
   /** The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request */
   dnsResourceReferences?: DnsResourceReferenceResultPropertiesDnsResourceReferencesList;
 }
-const DnsResourceReferenceResultProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DnsResourceReferenceResultProperties>;
-
 /** Represents the properties of the Dns Resource Reference Result. */
 export interface DnsResourceReferenceResult {
   /** The result of dns resource reference request. Returns a list of dns resource references for each of the azure resource in the request. */
   properties?: DnsResourceReferenceResultProperties;
 }
-const DnsResourceReferenceResult = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DnsResourceReferenceResult>;
-
 export type GetRecordSetRequestRecordType =
   | "A"
   | "AAAA"
@@ -146,8 +95,6 @@ export type GetRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-const GetRecordSetRequestRecordType = S.String;
-
 export interface GetRecordSetRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -160,43 +107,22 @@ export interface GetRecordSetRequest {
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
-const GetRecordSetRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetRecordSetRequest>;
-
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesMetadataMap = { [key: string]: string | undefined };
-const RecordSetPropertiesMetadataMap = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RecordSetPropertiesMetadataMap>;
-
 /** An A record. */
 export interface ARecord {
   /** The IPv4 address of this A record. */
   ipv4Address?: string;
 }
-const ARecord = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ARecord>;
-
 /** The list of A records in the record set. */
 export type RecordSetPropertiesARecordsList = Array<ARecord>;
-const RecordSetPropertiesARecordsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<RecordSetPropertiesARecordsList>;
-
 /** An AAAA record. */
 export interface AaaaRecord {
   /** The IPv6 address of this AAAA record. */
   ipv6Address?: string;
 }
-const AaaaRecord = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AaaaRecord>;
-
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesAAAARecordsList = Array<AaaaRecord>;
-const RecordSetPropertiesAAAARecordsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<RecordSetPropertiesAAAARecordsList>;
-
 /** An MX record. */
 export interface MxRecord {
   /** The preference value for this MX record. */
@@ -204,43 +130,22 @@ export interface MxRecord {
   /** The domain name of the mail host for this MX record. */
   exchange?: string;
 }
-const MxRecord = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<MxRecord>;
-
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesMXRecordsList = Array<MxRecord>;
-const RecordSetPropertiesMXRecordsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RecordSetPropertiesMXRecordsList>;
-
 /** An NS record. */
 export interface NsRecord {
   /** The name server name for this NS record. */
   nsdname?: string;
 }
-const NsRecord = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<NsRecord>;
-
 /** The list of NS records in the record set. */
 export type RecordSetPropertiesNSRecordsList = Array<NsRecord>;
-const RecordSetPropertiesNSRecordsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RecordSetPropertiesNSRecordsList>;
-
 /** A PTR record. */
 export interface PtrRecord {
   /** The PTR target domain name for this PTR record. */
   ptrdname?: string;
 }
-const PtrRecord = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PtrRecord>;
-
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesPTRRecordsList = Array<PtrRecord>;
-const RecordSetPropertiesPTRRecordsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<RecordSetPropertiesPTRRecordsList>;
-
 /** An SRV record. */
 export interface SrvRecord {
   /** The priority value for this SRV record. */
@@ -252,40 +157,22 @@ export interface SrvRecord {
   /** The target domain name for this SRV record. */
   target?: string;
 }
-const SrvRecord = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SrvRecord>;
-
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesSRVRecordsList = Array<SrvRecord>;
-const RecordSetPropertiesSRVRecordsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<RecordSetPropertiesSRVRecordsList>;
-
 /** The text value of this TXT record. */
 export type TxtRecordValueList = Array<string>;
-const TxtRecordValueList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TxtRecordValueList>;
-
 /** A TXT record. */
 export interface TxtRecord {
   /** The text value of this TXT record. */
   value?: TxtRecordValueList;
 }
-const TxtRecord = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<TxtRecord>;
-
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesTXTRecordsList = Array<TxtRecord>;
-const RecordSetPropertiesTXTRecordsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<RecordSetPropertiesTXTRecordsList>;
-
 /** A CNAME record. */
 export interface CnameRecord {
   /** The canonical name for this CNAME record. */
   cname?: string;
 }
-const CnameRecord = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CnameRecord>;
-
 /** An SOA record. */
 export interface SoaRecord {
   /** The domain name of the authoritative name server for this SOA record. */
@@ -303,8 +190,6 @@ export interface SoaRecord {
   /** The minimum value for this SOA record. By convention this is used to determine the negative caching duration. */
   minimumTTL?: number;
 }
-const SoaRecord = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SoaRecord>;
-
 /** A CAA record. */
 export interface CaaRecord {
   /** The flags for this CAA record as an integer between 0 and 255. */
@@ -314,15 +199,8 @@ export interface CaaRecord {
   /** The value for this CAA record. */
   value?: string;
 }
-const CaaRecord = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CaaRecord>;
-
 /** The list of CAA records in the record set. */
 export type RecordSetPropertiesCaaRecordsList = Array<CaaRecord>;
-const RecordSetPropertiesCaaRecordsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<RecordSetPropertiesCaaRecordsList>;
-
 /** Represents the properties of the records in the record set. */
 export interface RecordSetProperties {
   /** The metadata attached to the record set. */
@@ -356,8 +234,6 @@ export interface RecordSetProperties {
   /** The list of CAA records in the record set. */
   caaRecords?: RecordSetPropertiesCaaRecordsList;
 }
-const RecordSetProperties = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RecordSetProperties>;
-
 /** Describes a DNS record set (a collection of DNS records with the same name and type). */
 export interface RecordSet {
   /** The ID of the record set. */
@@ -371,8 +247,6 @@ export interface RecordSet {
   /** The properties of the record set. */
   properties?: RecordSetProperties;
 }
-const RecordSet = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<RecordSet>;
-
 export interface GetZoneRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -381,32 +255,16 @@ export interface GetZoneRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
 }
-const GetZoneRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetZoneRequest>;
-
 /** Resource tags. */
 export type GetZoneResponseTagsMap = { [key: string]: string | undefined };
-const GetZoneResponseTagsMap =
-  RecordSetPropertiesMetadataMap as any as S.Schema<GetZoneResponseTagsMap>;
-
 /** The name servers for this DNS zone. This is a read-only property and any attempt to set this value will be ignored. */
 export type ZonePropertiesNameServersList = Array<string>;
-const ZonePropertiesNameServersList =
-  TxtRecordValueList as any as S.Schema<ZonePropertiesNameServersList>;
-
 /** The type of this DNS zone (Public or Private). */
 export type ZonePropertiesZoneType = "Public" | "Private";
-const ZonePropertiesZoneType = S.String;
-
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesRegistrationVirtualNetworksList = Array<SubResource>;
-const ZonePropertiesRegistrationVirtualNetworksList =
-  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesRegistrationVirtualNetworksList>;
-
 /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesResolutionVirtualNetworksList = Array<SubResource>;
-const ZonePropertiesResolutionVirtualNetworksList =
-  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesResolutionVirtualNetworksList>;
-
 /** Represents the properties of the zone. */
 export interface ZoneProperties {
   /** The maximum number of record sets that can be created in this DNS zone. This is a read-only property and any attempt to set this value will be ignored. */
@@ -424,8 +282,6 @@ export interface ZoneProperties {
   /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
   resolutionVirtualNetworks?: ZonePropertiesResolutionVirtualNetworksList;
 }
-const ZoneProperties = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ZoneProperties>;
-
 export interface GetZoneResponse {
   /** Resource ID. */
   id?: string;
@@ -442,8 +298,6 @@ export interface GetZoneResponse {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-const GetZoneResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetZoneResponse>;
-
 export interface ListRecordSetAllByDnsZoneRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -456,18 +310,8 @@ export interface ListRecordSetAllByDnsZoneRequest {
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
 }
-const ListRecordSetAllByDnsZoneRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListRecordSetAllByDnsZoneRequest>;
-
 /** Information about the record sets in the response. */
 export type RecordSetListResultValueList = Array<RecordSet>;
-const RecordSetListResultValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<RecordSetListResultValueList>;
-
 /** The response to a record set List operation. */
 export interface RecordSetListResult {
   /** Information about the record sets in the response. */
@@ -475,8 +319,6 @@ export interface RecordSetListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-const RecordSetListResult = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RecordSetListResult>;
-
 export interface ListRecordSetByDnsZoneRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -489,11 +331,6 @@ export interface ListRecordSetByDnsZoneRequest {
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
 }
-const ListRecordSetByDnsZoneRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListRecordSetByDnsZoneRequest>;
-
 export type ListRecordSetByTypeRequestRecordType =
   | "A"
   | "AAAA"
@@ -505,8 +342,6 @@ export type ListRecordSetByTypeRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-const ListRecordSetByTypeRequestRecordType = S.String;
-
 export interface ListRecordSetByTypeRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -521,11 +356,6 @@ export interface ListRecordSetByTypeRequest {
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
 }
-const ListRecordSetByTypeRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListRecordSetByTypeRequest>;
-
 export interface ListZoneByResourceGroupRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -534,11 +364,6 @@ export interface ListZoneByResourceGroupRequest {
   /** The maximum number of record sets to return. If not specified, returns up to 100 record sets. */
   _top?: number;
 }
-const ListZoneByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListZoneByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ZoneTagsMap = { [key: string]: string | undefined };
 /** Describes a DNS zone. */
@@ -558,15 +383,8 @@ export interface Zone {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-const Zone = GetZoneResponse as any as S.Schema<Zone>;
-
 /** Information about the DNS zones. */
 export type ZoneListResultValueList = Array<Zone>;
-const ZoneListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ZoneListResultValueList>;
-
 /** The response to a Zone List or ListAll operation. */
 export interface ZoneListResult {
   /** Information about the DNS zones. */
@@ -574,16 +392,12 @@ export interface ZoneListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-const ZoneListResult = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ZoneListResult>;
-
 export interface ListZonesRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
   /** The maximum number of DNS zones to return. If not specified, returns up to 100 zones. */
   _top?: number;
 }
-const ListZonesRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListZonesRequest>;
-
 export type RecordSetsCreateOrUpdateRequestRecordType =
   | "A"
   | "AAAA"
@@ -595,53 +409,24 @@ export type RecordSetsCreateOrUpdateRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-const RecordSetsCreateOrUpdateRequestRecordType = S.String;
-
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesInputMetadataMap = { [key: string]: string | undefined };
-const RecordSetPropertiesInputMetadataMap =
-  RecordSetPropertiesMetadataMap as any as S.Schema<RecordSetPropertiesInputMetadataMap>;
-
 /** The list of A records in the record set. */
 export type RecordSetPropertiesInputARecordsList = Array<ARecord>;
-const RecordSetPropertiesInputARecordsList =
-  RecordSetPropertiesARecordsList as any as S.Schema<RecordSetPropertiesInputARecordsList>;
-
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesInputAAAARecordsList = Array<AaaaRecord>;
-const RecordSetPropertiesInputAAAARecordsList =
-  RecordSetPropertiesAAAARecordsList as any as S.Schema<RecordSetPropertiesInputAAAARecordsList>;
-
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesInputMXRecordsList = Array<MxRecord>;
-const RecordSetPropertiesInputMXRecordsList =
-  RecordSetPropertiesMXRecordsList as any as S.Schema<RecordSetPropertiesInputMXRecordsList>;
-
 /** The list of NS records in the record set. */
 export type RecordSetPropertiesInputNSRecordsList = Array<NsRecord>;
-const RecordSetPropertiesInputNSRecordsList =
-  RecordSetPropertiesNSRecordsList as any as S.Schema<RecordSetPropertiesInputNSRecordsList>;
-
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesInputPTRRecordsList = Array<PtrRecord>;
-const RecordSetPropertiesInputPTRRecordsList =
-  RecordSetPropertiesPTRRecordsList as any as S.Schema<RecordSetPropertiesInputPTRRecordsList>;
-
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesInputSRVRecordsList = Array<SrvRecord>;
-const RecordSetPropertiesInputSRVRecordsList =
-  RecordSetPropertiesSRVRecordsList as any as S.Schema<RecordSetPropertiesInputSRVRecordsList>;
-
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesInputTXTRecordsList = Array<TxtRecord>;
-const RecordSetPropertiesInputTXTRecordsList =
-  RecordSetPropertiesTXTRecordsList as any as S.Schema<RecordSetPropertiesInputTXTRecordsList>;
-
 /** The list of CAA records in the record set. */
 export type RecordSetPropertiesInputCaaRecordsList = Array<CaaRecord>;
-const RecordSetPropertiesInputCaaRecordsList =
-  RecordSetPropertiesCaaRecordsList as any as S.Schema<RecordSetPropertiesInputCaaRecordsList>;
-
 /** Represents the properties of the records in the record set. */
 export interface RecordSetPropertiesInput {
   /** The metadata attached to the record set. */
@@ -671,11 +456,6 @@ export interface RecordSetPropertiesInput {
   /** The list of CAA records in the record set. */
   caaRecords?: RecordSetPropertiesInputCaaRecordsList;
 }
-const RecordSetPropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<RecordSetPropertiesInput>;
-
 export interface RecordSetsCreateOrUpdateRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -692,11 +472,6 @@ export interface RecordSetsCreateOrUpdateRequest {
   /** The properties of the record set. */
   properties?: RecordSetPropertiesInput;
 }
-const RecordSetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<RecordSetsCreateOrUpdateRequest>;
-
 export type UpdateRecordSetRequestRecordType =
   | "A"
   | "AAAA"
@@ -708,8 +483,6 @@ export type UpdateRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-const UpdateRecordSetRequestRecordType = S.String;
-
 export interface UpdateRecordSetRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -726,16 +499,8 @@ export interface UpdateRecordSetRequest {
   /** The properties of the record set. */
   properties?: RecordSetPropertiesInput;
 }
-const UpdateRecordSetRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<UpdateRecordSetRequest>;
-
 /** Resource tags. */
 export type UpdateZoneRequestTagsMap = { [key: string]: string | undefined };
-const UpdateZoneRequestTagsMap =
-  RecordSetPropertiesMetadataMap as any as S.Schema<UpdateZoneRequestTagsMap>;
-
 export interface UpdateZoneRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -746,8 +511,6 @@ export interface UpdateZoneRequest {
   /** Resource tags. */
   tags?: UpdateZoneRequestTagsMap;
 }
-const UpdateZoneRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<UpdateZoneRequest>;
-
 /** Resource tags. */
 export type UpdateZoneResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateZoneResponse {
@@ -766,27 +529,14 @@ export interface UpdateZoneResponse {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-const UpdateZoneResponse = GetZoneResponse as any as S.Schema<UpdateZoneResponse>;
-
 /** Resource tags. */
 export type ZonesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ZonesCreateOrUpdateRequestTagsMap =
-  RecordSetPropertiesMetadataMap as any as S.Schema<ZonesCreateOrUpdateRequestTagsMap>;
-
 /** The type of this DNS zone (Public or Private). */
 export type ZonePropertiesInputZoneType = "Public" | "Private";
-const ZonePropertiesInputZoneType = S.String;
-
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesInputRegistrationVirtualNetworksList = Array<SubResource>;
-const ZonePropertiesInputRegistrationVirtualNetworksList =
-  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesInputRegistrationVirtualNetworksList>;
-
 /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesInputResolutionVirtualNetworksList = Array<SubResource>;
-const ZonePropertiesInputResolutionVirtualNetworksList =
-  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesInputResolutionVirtualNetworksList>;
-
 /** Represents the properties of the zone. */
 export interface ZonePropertiesInput {
   /** The type of this DNS zone (Public or Private). */
@@ -796,8 +546,6 @@ export interface ZonePropertiesInput {
   /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
   resolutionVirtualNetworks?: ZonePropertiesInputResolutionVirtualNetworksList;
 }
-const ZonePropertiesInput = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ZonePropertiesInput>;
-
 export interface ZonesCreateOrUpdateRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
   subscriptionId: string;
@@ -814,16 +562,8 @@ export interface ZonesCreateOrUpdateRequest {
   /** The properties of the zone. */
   properties?: ZonePropertiesInput;
 }
-const ZonesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ZonesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ZonesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ZonesCreateOrUpdateResponseTagsMap =
-  RecordSetPropertiesMetadataMap as any as S.Schema<ZonesCreateOrUpdateResponseTagsMap>;
-
 export interface ZonesCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -840,11 +580,6 @@ export interface ZonesCreateOrUpdateResponse {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-const ZonesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ZonesCreateOrUpdateResponse>;
-
 export type DeleteRecordSetError = AzureOpError;
 /** Deletes a record set from a DNS zone. This operation cannot be undone. */
 export const DeleteRecordSet: API.OperationMethod<
@@ -853,8 +588,8 @@ export const DeleteRecordSet: API.OperationMethod<
   DeleteRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecordSetRequest,
-  output: DeleteRecordSetResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteRecordSetRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteRecordSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -868,8 +603,8 @@ export const DeleteZone: API.OperationMethod<
   DeleteZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteZoneRequest,
-  output: DeleteZoneResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteZoneRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -883,8 +618,8 @@ export const GetDnsResourceReferenceByTargetResources: API.OperationMethod<
   GetDnsResourceReferenceByTargetResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDnsResourceReferenceByTargetResourcesRequest,
-  output: DnsResourceReferenceResult,
+  input: __S(6, __c0, 6) as any as S.Schema<GetDnsResourceReferenceByTargetResourcesRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DnsResourceReferenceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -898,8 +633,8 @@ export const GetRecordSet: API.OperationMethod<
   GetRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecordSetRequest,
-  output: RecordSet,
+  input: __S(11, __c1, 3) as any as S.Schema<GetRecordSetRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<RecordSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -913,8 +648,8 @@ export const GetZone: API.OperationMethod<
   GetZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetZoneRequest,
-  output: GetZoneResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<GetZoneRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -928,8 +663,8 @@ export const ListRecordSetAllByDnsZone: API.OperationMethod<
   ListRecordSetAllByDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRecordSetAllByDnsZoneRequest,
-  output: RecordSetListResult,
+  input: __S(37, __c4, 5) as any as S.Schema<ListRecordSetAllByDnsZoneRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -943,8 +678,8 @@ export const ListRecordSetByDnsZone: API.OperationMethod<
   ListRecordSetByDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRecordSetByDnsZoneRequest,
-  output: RecordSetListResult,
+  input: __S(40, __c5, 0) as any as S.Schema<ListRecordSetByDnsZoneRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -958,8 +693,8 @@ export const ListRecordSetByType: API.OperationMethod<
   ListRecordSetByTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRecordSetByTypeRequest,
-  output: RecordSetListResult,
+  input: __S(41, __c5, 1) as any as S.Schema<ListRecordSetByTypeRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -973,8 +708,8 @@ export const ListZoneByResourceGroup: API.OperationMethod<
   ListZoneByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListZoneByResourceGroupRequest,
-  output: ZoneListResult,
+  input: __S(42, __c5, 2) as any as S.Schema<ListZoneByResourceGroupRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -988,8 +723,8 @@ export const ListZones: API.OperationMethod<
   ListZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListZonesRequest,
-  output: ZoneListResult,
+  input: __S(45, __c5, 5) as any as S.Schema<ListZonesRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1003,8 +738,8 @@ export const RecordSetsCreateOrUpdate: API.OperationMethod<
   RecordSetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordSetsCreateOrUpdateRequest,
-  output: RecordSet,
+  input: __S(47, __c5, 7) as any as S.Schema<RecordSetsCreateOrUpdateRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<RecordSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1018,8 +753,8 @@ export const UpdateRecordSet: API.OperationMethod<
   UpdateRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRecordSetRequest,
-  output: RecordSet,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateRecordSetRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<RecordSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1033,8 +768,8 @@ export const UpdateZone: API.OperationMethod<
   UpdateZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateZoneRequest,
-  output: UpdateZoneResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<UpdateZoneRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<UpdateZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1048,8 +783,8 @@ export const ZonesCreateOrUpdate: API.OperationMethod<
   ZonesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZonesCreateOrUpdateRequest,
-  output: ZonesCreateOrUpdateResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ZonesCreateOrUpdateRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ZonesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1064,7 +799,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           zoneName: S.String.pipe(T.Label()),
-          recordType: DeleteRecordSetRequestRecordType.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1101,11 +836,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SubResource" });
     case 4:
-      return S.Array(SubResource);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          targetResources: S.optional(DnsResourceReferenceRequestPropertiesTargetResourcesList),
+          targetResources: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "DnsResourceReferenceRequestProperties",
@@ -1114,7 +849,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(DnsResourceReferenceRequestProperties),
+          properties: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1129,8 +864,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dnsResources: S.optional(DnsResourceReferenceDnsResourcesList),
-          targetResource: S.optional(SubResource),
+          dnsResources: S.optional(__S(4, __c0, 4)),
+          targetResource: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "DnsResourceReference" });
   }
@@ -1138,13 +873,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DnsResourceReference);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dnsResourceReferences: S.optional(
-            DnsResourceReferenceResultPropertiesDnsResourceReferencesList,
-          ),
+          dnsResourceReferences: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "DnsResourceReferenceResultProperties",
@@ -1152,7 +885,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(DnsResourceReferenceResultProperties),
+          properties: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "DnsResourceReferenceResult",
@@ -1163,7 +896,7 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           zoneName: S.String.pipe(T.Label()),
-          recordType: GetRecordSetRequestRecordType.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1183,7 +916,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ARecord" });
     case 6:
-      return S.Array(ARecord);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1195,7 +928,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AaaaRecord);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1204,7 +937,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "MxRecord" });
     case 2:
-      return S.Array(MxRecord);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1212,7 +945,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "NsRecord" });
     case 4:
-      return S.Array(NsRecord);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1220,7 +953,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PtrRecord" });
     case 6:
-      return S.Array(PtrRecord);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1235,17 +968,17 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SrvRecord);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(TxtRecordValueList),
+          value: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "TxtRecord" });
     case 3:
-      return S.Array(TxtRecord);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1273,7 +1006,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CaaRecord" });
     case 7:
-      return S.Array(CaaRecord);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1281,21 +1014,21 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(RecordSetPropertiesMetadataMap),
+          metadata: S.optional(__S(12, __c1, 4)),
           TTL: S.optional(S.Number),
           fqdn: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          targetResource: S.optional(SubResource),
-          ARecords: S.optional(RecordSetPropertiesARecordsList),
-          AAAARecords: S.optional(RecordSetPropertiesAAAARecordsList),
-          MXRecords: S.optional(RecordSetPropertiesMXRecordsList),
-          NSRecords: S.optional(RecordSetPropertiesNSRecordsList),
-          PTRRecords: S.optional(RecordSetPropertiesPTRRecordsList),
-          SRVRecords: S.optional(RecordSetPropertiesSRVRecordsList),
-          TXTRecords: S.optional(RecordSetPropertiesTXTRecordsList),
-          CNAMERecord: S.optional(CnameRecord),
-          SOARecord: S.optional(SoaRecord),
-          caaRecords: S.optional(RecordSetPropertiesCaaRecordsList),
+          targetResource: S.optional(__S(3, __c0, 3)),
+          ARecords: S.optional(__S(14, __c1, 6)),
+          AAAARecords: S.optional(__S(16, __c2, 0)),
+          MXRecords: S.optional(__S(18, __c2, 2)),
+          NSRecords: S.optional(__S(20, __c2, 4)),
+          PTRRecords: S.optional(__S(22, __c2, 6)),
+          SRVRecords: S.optional(__S(24, __c3, 0)),
+          TXTRecords: S.optional(__S(27, __c3, 3)),
+          CNAMERecord: S.optional(__S(28, __c3, 4)),
+          SOARecord: S.optional(__S(29, __c3, 5)),
+          caaRecords: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "RecordSetProperties" });
     case 1:
@@ -1305,7 +1038,7 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(RecordSetProperties),
+          properties: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "RecordSet" });
     case 2:
@@ -1329,10 +1062,10 @@ function __c4(j: number): any {
           maxNumberOfRecordSets: S.optional(S.Number),
           maxNumberOfRecordsPerRecordSet: S.optional(S.Number),
           numberOfRecordSets: S.optional(S.Number),
-          nameServers: S.optional(ZonePropertiesNameServersList),
-          zoneType: S.optional(ZonePropertiesZoneType),
-          registrationVirtualNetworks: S.optional(ZonePropertiesRegistrationVirtualNetworksList),
-          resolutionVirtualNetworks: S.optional(ZonePropertiesResolutionVirtualNetworksList),
+          nameServers: S.optional(__S(25, __c3, 1)),
+          zoneType: S.optional(S.String),
+          registrationVirtualNetworks: S.optional(__S(4, __c0, 4)),
+          resolutionVirtualNetworks: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ZoneProperties" });
     case 4:
@@ -1342,9 +1075,9 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(GetZoneResponseTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
           etag: S.optional(S.String),
-          properties: S.optional(ZoneProperties),
+          properties: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "GetZoneResponse" });
     case 5:
@@ -1367,11 +1100,11 @@ function __c4(j: number): any {
         identifier: "ListRecordSetAllByDnsZoneRequest",
       });
     case 6:
-      return S.Array(RecordSet);
+      return S.Array(__S(33, __c4, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RecordSetListResultValueList),
+          value: S.optional(__S(38, __c4, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordSetListResult" });
@@ -1404,7 +1137,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           zoneName: S.String.pipe(T.Label()),
-          recordType: ListRecordSetByTypeRequestRecordType.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
         }).pipe(
@@ -1436,11 +1169,11 @@ function __c5(j: number): any {
         identifier: "ListZoneByResourceGroupRequest",
       });
     case 3:
-      return S.Array(Zone);
+      return S.Array(__S(36, __c4, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ZoneListResultValueList),
+          value: S.optional(__S(43, __c5, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ZoneListResult" });
@@ -1461,19 +1194,19 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(RecordSetPropertiesInputMetadataMap),
+          metadata: S.optional(__S(12, __c1, 4)),
           TTL: S.optional(S.Number),
-          targetResource: S.optional(SubResource),
-          ARecords: S.optional(RecordSetPropertiesInputARecordsList),
-          AAAARecords: S.optional(RecordSetPropertiesInputAAAARecordsList),
-          MXRecords: S.optional(RecordSetPropertiesInputMXRecordsList),
-          NSRecords: S.optional(RecordSetPropertiesInputNSRecordsList),
-          PTRRecords: S.optional(RecordSetPropertiesInputPTRRecordsList),
-          SRVRecords: S.optional(RecordSetPropertiesInputSRVRecordsList),
-          TXTRecords: S.optional(RecordSetPropertiesInputTXTRecordsList),
-          CNAMERecord: S.optional(CnameRecord),
-          SOARecord: S.optional(SoaRecord),
-          caaRecords: S.optional(RecordSetPropertiesInputCaaRecordsList),
+          targetResource: S.optional(__S(3, __c0, 3)),
+          ARecords: S.optional(__S(14, __c1, 6)),
+          AAAARecords: S.optional(__S(16, __c2, 0)),
+          MXRecords: S.optional(__S(18, __c2, 2)),
+          NSRecords: S.optional(__S(20, __c2, 4)),
+          PTRRecords: S.optional(__S(22, __c2, 6)),
+          SRVRecords: S.optional(__S(24, __c3, 0)),
+          TXTRecords: S.optional(__S(27, __c3, 3)),
+          CNAMERecord: S.optional(__S(28, __c3, 4)),
+          SOARecord: S.optional(__S(29, __c3, 5)),
+          caaRecords: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "RecordSetPropertiesInput" });
     case 7:
@@ -1482,10 +1215,10 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           zoneName: S.String.pipe(T.Label()),
-          recordType: RecordSetsCreateOrUpdateRequestRecordType.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(RecordSetPropertiesInput),
+          properties: S.optional(__S(46, __c5, 6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1507,10 +1240,10 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           zoneName: S.String.pipe(T.Label()),
-          recordType: UpdateRecordSetRequestRecordType.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(RecordSetPropertiesInput),
+          properties: S.optional(__S(46, __c5, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1526,7 +1259,7 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           zoneName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateZoneRequestTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1539,11 +1272,9 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          zoneType: S.optional(ZonePropertiesInputZoneType),
-          registrationVirtualNetworks: S.optional(
-            ZonePropertiesInputRegistrationVirtualNetworksList,
-          ),
-          resolutionVirtualNetworks: S.optional(ZonePropertiesInputResolutionVirtualNetworksList),
+          zoneType: S.optional(S.String),
+          registrationVirtualNetworks: S.optional(__S(4, __c0, 4)),
+          resolutionVirtualNetworks: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ZonePropertiesInput" });
     case 3:
@@ -1553,9 +1284,9 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           zoneName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(ZonesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
           etag: S.optional(S.String),
-          properties: S.optional(ZonePropertiesInput),
+          properties: S.optional(__S(50, __c6, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1574,12 +1305,17 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(ZonesCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
           etag: S.optional(S.String),
-          properties: S.optional(ZoneProperties),
+          properties: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({
         identifier: "ZonesCreateOrUpdateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

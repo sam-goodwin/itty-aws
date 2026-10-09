@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "S3Tables",
   serviceShapeName: "S3TableBuckets",
@@ -123,43 +125,27 @@ export class TooManyRequestsException
 export type TableBucketARN = string;
 export type NamespaceName = string;
 export type NamespaceList = string[];
-const NamespaceList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateNamespaceRequest {
   tableBucketARN: string;
   namespace: string[];
 }
-const CreateNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateNamespaceRequest>;
 export interface CreateNamespaceResponse {
   tableBucketARN: string;
   namespace: string[];
 }
-const CreateNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateNamespaceResponse>;
 export type TableName = string;
 export type OpenTableFormat = "ICEBERG" | (string & {});
-const OpenTableFormat = S.String;
-
 export interface SchemaField {
   id?: number;
   name: string;
   type: string;
   required?: boolean;
 }
-const SchemaField = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SchemaField>;
 export type SchemaFieldList = SchemaField[];
-const SchemaFieldList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface IcebergSchema {
   fields: SchemaField[];
 }
-const IcebergSchema = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<IcebergSchema>;
 export type SchemaV2FieldType = "struct" | (string & {});
-const SchemaV2FieldType = S.String;
-
 export interface SchemaV2Field {
   id: number;
   name: string;
@@ -167,57 +153,39 @@ export interface SchemaV2Field {
   required: boolean;
   doc?: string;
 }
-const SchemaV2Field = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SchemaV2Field>;
 export type SchemaV2FieldList = SchemaV2Field[];
-const SchemaV2FieldList = /*@__PURE__*/ __L.at(__c0, 7);
 export type IntegerList = number[];
-const IntegerList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface IcebergSchemaV2 {
   type: SchemaV2FieldType;
   fields: SchemaV2Field[];
   schemaId?: number;
   identifierFieldIds?: number[];
 }
-const IcebergSchemaV2 = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IcebergSchemaV2>;
 export interface IcebergPartitionField {
   sourceId: number;
   transform: string;
   name: string;
   fieldId?: number;
 }
-const IcebergPartitionField = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<IcebergPartitionField>;
 export type IcebergPartitionFieldList = IcebergPartitionField[];
-const IcebergPartitionFieldList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface IcebergPartitionSpec {
   fields: IcebergPartitionField[];
   specId?: number;
 }
-const IcebergPartitionSpec = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<IcebergPartitionSpec>;
 export type IcebergSortDirection = "asc" | "desc" | (string & {});
-const IcebergSortDirection = S.String;
-
 export type IcebergNullOrder = "nulls-first" | "nulls-last" | (string & {});
-const IcebergNullOrder = S.String;
-
 export interface IcebergSortField {
   sourceId: number;
   transform: string;
   direction: IcebergSortDirection;
   nullOrder: IcebergNullOrder;
 }
-const IcebergSortField = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<IcebergSortField>;
 export type IcebergSortFieldList = IcebergSortField[];
-const IcebergSortFieldList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface IcebergSortOrder {
   orderId: number;
   fields: IcebergSortField[];
 }
-const IcebergSortOrder = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IcebergSortOrder>;
 export type TableProperties = { [key: string]: string | undefined };
-const TableProperties = /*@__PURE__*/ __L.at(__c2, 0);
 export interface IcebergMetadata {
   schema?: IcebergSchema;
   schemaV2?: IcebergSchemaV2;
@@ -225,34 +193,19 @@ export interface IcebergMetadata {
   writeOrder?: IcebergSortOrder;
   properties?: { [key: string]: string | undefined };
 }
-const IcebergMetadata = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<IcebergMetadata>;
 export type TableMetadata = { iceberg: IcebergMetadata };
-const TableMetadata = /*@__PURE__*/ __L.at(__c2, 2);
 export type SSEAlgorithm = "AES256" | "aws:kms" | (string & {});
-const SSEAlgorithm = S.String;
-
 export interface EncryptionConfiguration {
   sseAlgorithm: SSEAlgorithm;
   kmsKeyArn?: string;
 }
-const EncryptionConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<EncryptionConfiguration>;
 export type StorageClass = "STANDARD" | "INTELLIGENT_TIERING" | (string & {});
-const StorageClass = S.String;
-
 export interface StorageClassConfiguration {
   storageClass: StorageClass;
 }
-const StorageClassConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<StorageClassConfiguration>;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c2, 5);
 export interface CreateTableRequest {
   tableBucketARN: string;
   namespace: string;
@@ -263,14 +216,12 @@ export interface CreateTableRequest {
   storageClassConfiguration?: StorageClassConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-const CreateTableRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateTableRequest>;
 export type TableARN = string;
 export type VersionToken = string;
 export interface CreateTableResponse {
   tableARN: string;
   versionToken: string;
 }
-const CreateTableResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreateTableResponse>;
 export type TableBucketName = string;
 export interface CreateTableBucketRequest {
   name: string;
@@ -278,122 +229,57 @@ export interface CreateTableBucketRequest {
   storageClassConfiguration?: StorageClassConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-const CreateTableBucketRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateTableBucketRequest>;
 export interface CreateTableBucketResponse {
   arn: string;
 }
-const CreateTableBucketResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateTableBucketResponse>;
 export interface DeleteNamespaceRequest {
   tableBucketARN: string;
   namespace: string;
 }
-const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteNamespaceRequest>;
 export interface DeleteNamespaceResponse {}
-const DeleteNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteNamespaceResponse>;
 export interface DeleteTableRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
   versionToken?: string;
 }
-const DeleteTableRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
-const DeleteTableResponse = DeleteNamespaceResponse as any as S.Schema<DeleteTableResponse>;
 export interface DeleteTableBucketRequest {
   tableBucketARN: string;
 }
-const DeleteTableBucketRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteTableBucketRequest>;
 export interface DeleteTableBucketResponse {}
-const DeleteTableBucketResponse =
-  DeleteNamespaceResponse as any as S.Schema<DeleteTableBucketResponse>;
 export interface DeleteTableBucketEncryptionRequest {
   tableBucketARN: string;
 }
-const DeleteTableBucketEncryptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteTableBucketEncryptionRequest>;
 export interface DeleteTableBucketEncryptionResponse {}
-const DeleteTableBucketEncryptionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteTableBucketEncryptionResponse>;
 export interface DeleteTableBucketMetricsConfigurationRequest {
   tableBucketARN: string;
 }
-const DeleteTableBucketMetricsConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DeleteTableBucketMetricsConfigurationRequest>;
 export interface DeleteTableBucketMetricsConfigurationResponse {}
-const DeleteTableBucketMetricsConfigurationResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<DeleteTableBucketMetricsConfigurationResponse>;
 export interface DeleteTableBucketPolicyRequest {
   tableBucketARN: string;
 }
-const DeleteTableBucketPolicyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteTableBucketPolicyRequest>;
 export interface DeleteTableBucketPolicyResponse {}
-const DeleteTableBucketPolicyResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteTableBucketPolicyResponse>;
 export interface DeleteTableBucketReplicationRequest {
   tableBucketARN: string;
   versionToken?: string;
 }
-const DeleteTableBucketReplicationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteTableBucketReplicationRequest>;
 export interface DeleteTableBucketReplicationResponse {}
-const DeleteTableBucketReplicationResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<DeleteTableBucketReplicationResponse>;
 export interface DeleteTablePolicyRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-const DeleteTablePolicyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteTablePolicyRequest>;
 export interface DeleteTablePolicyResponse {}
-const DeleteTablePolicyResponse =
-  DeleteNamespaceResponse as any as S.Schema<DeleteTablePolicyResponse>;
 export interface DeleteTableReplicationRequest {
   tableArn: string;
   versionToken: string;
 }
-const DeleteTableReplicationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteTableReplicationRequest>;
 export interface DeleteTableReplicationResponse {}
-const DeleteTableReplicationResponse =
-  DeleteNamespaceResponse as any as S.Schema<DeleteTableReplicationResponse>;
 export interface GetNamespaceRequest {
   tableBucketARN: string;
   namespace: string;
 }
-const GetNamespaceRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetNamespaceRequest>;
 export type AccountId = string;
 export type NamespaceId = string;
 export type TableBucketId = string;
@@ -405,33 +291,21 @@ export interface GetNamespaceResponse {
   namespaceId?: string;
   tableBucketId?: string;
 }
-const GetNamespaceResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetNamespaceResponse>;
 export interface GetTableRequest {
   tableBucketARN?: string;
   namespace?: string;
   name?: string;
   tableArn?: string;
 }
-const GetTableRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetTableRequest>;
 export type TableType = "customer" | "aws" | (string & {});
-const TableType = S.String;
-
 export type MetadataLocation = string;
 export type WarehouseLocation = string;
 export interface ReplicationInformation {
   sourceTableARN: string;
 }
-const ReplicationInformation = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ReplicationInformation>;
 export interface ManagedTableInformation {
   replicationInformation?: ReplicationInformation;
 }
-const ManagedTableInformation = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ManagedTableInformation>;
 export interface GetTableResponse {
   name: string;
   type: TableType;
@@ -451,17 +325,10 @@ export interface GetTableResponse {
   tableBucketId?: string;
   managedTableInformation?: ManagedTableInformation;
 }
-const GetTableResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetTableResponse>;
 export interface GetTableBucketRequest {
   tableBucketARN: string;
 }
-const GetTableBucketRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetTableBucketRequest>;
 export type TableBucketType = "customer" | "aws" | (string & {});
-const TableBucketType = S.String;
-
 export interface GetTableBucketResponse {
   arn: string;
   name: string;
@@ -470,418 +337,214 @@ export interface GetTableBucketResponse {
   tableBucketId?: string;
   type?: TableBucketType;
 }
-const GetTableBucketResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetTableBucketResponse>;
 export interface GetTableBucketEncryptionRequest {
   tableBucketARN: string;
 }
-const GetTableBucketEncryptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetTableBucketEncryptionRequest>;
 export interface GetTableBucketEncryptionResponse {
   encryptionConfiguration: EncryptionConfiguration;
 }
-const GetTableBucketEncryptionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetTableBucketEncryptionResponse>;
 export interface GetTableBucketMaintenanceConfigurationRequest {
   tableBucketARN: string;
 }
-const GetTableBucketMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetTableBucketMaintenanceConfigurationRequest>;
 export type TableBucketMaintenanceType = "icebergUnreferencedFileRemoval" | (string & {});
-const TableBucketMaintenanceType = S.String;
-
 export type MaintenanceStatus = "enabled" | "disabled" | (string & {});
-const MaintenanceStatus = S.String;
-
 export type PositiveInteger = number;
 export interface IcebergUnreferencedFileRemovalSettings {
   unreferencedDays?: number;
   nonCurrentDays?: number;
 }
-const IcebergUnreferencedFileRemovalSettings = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<IcebergUnreferencedFileRemovalSettings>;
 export type TableBucketMaintenanceSettings = {
   icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings;
 };
-const TableBucketMaintenanceSettings = /*@__PURE__*/ __L.at(__c6, 2);
 export interface TableBucketMaintenanceConfigurationValue {
   status?: MaintenanceStatus;
   settings?: TableBucketMaintenanceSettings;
 }
-const TableBucketMaintenanceConfigurationValue = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TableBucketMaintenanceConfigurationValue>;
 export type TableBucketMaintenanceConfiguration = {
   [key in TableBucketMaintenanceType]?: TableBucketMaintenanceConfigurationValue;
 };
-const TableBucketMaintenanceConfiguration = /*@__PURE__*/ __L.at(__c6, 4);
 export interface GetTableBucketMaintenanceConfigurationResponse {
   tableBucketARN: string;
   configuration: { [key: string]: TableBucketMaintenanceConfigurationValue | undefined };
 }
-const GetTableBucketMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetTableBucketMaintenanceConfigurationResponse>;
 export interface GetTableBucketMetricsConfigurationRequest {
   tableBucketARN: string;
 }
-const GetTableBucketMetricsConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetTableBucketMetricsConfigurationRequest>;
 export interface GetTableBucketMetricsConfigurationResponse {
   tableBucketARN: string;
   id?: string;
 }
-const GetTableBucketMetricsConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetTableBucketMetricsConfigurationResponse>;
 export interface GetTableBucketPolicyRequest {
   tableBucketARN: string;
 }
-const GetTableBucketPolicyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetTableBucketPolicyRequest>;
 export type ResourcePolicy = string;
 export interface GetTableBucketPolicyResponse {
   resourcePolicy: string;
 }
-const GetTableBucketPolicyResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetTableBucketPolicyResponse>;
 export interface GetTableBucketReplicationRequest {
   tableBucketARN: string;
 }
-const GetTableBucketReplicationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetTableBucketReplicationRequest>;
 export type IAMRole = string;
 export interface ReplicationDestination {
   destinationTableBucketARN: string;
 }
-const ReplicationDestination = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ReplicationDestination>;
 export type ReplicationDestinations = ReplicationDestination[];
-const ReplicationDestinations = /*@__PURE__*/ __L.at(__c7, 4);
 export interface TableBucketReplicationRule {
   destinations: ReplicationDestination[];
 }
-const TableBucketReplicationRule = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<TableBucketReplicationRule>;
 export type TableBucketReplicationRules = TableBucketReplicationRule[];
-const TableBucketReplicationRules = /*@__PURE__*/ __L.at(__c7, 6);
 export interface TableBucketReplicationConfiguration {
   role: string;
   rules: TableBucketReplicationRule[];
 }
-const TableBucketReplicationConfiguration = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<TableBucketReplicationConfiguration>;
 export interface GetTableBucketReplicationResponse {
   versionToken: string;
   configuration: TableBucketReplicationConfiguration;
 }
-const GetTableBucketReplicationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetTableBucketReplicationResponse>;
 export interface GetTableBucketStorageClassRequest {
   tableBucketARN: string;
 }
-const GetTableBucketStorageClassRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetTableBucketStorageClassRequest>;
 export interface GetTableBucketStorageClassResponse {
   storageClassConfiguration: StorageClassConfiguration;
 }
-const GetTableBucketStorageClassResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetTableBucketStorageClassResponse>;
 export interface GetTableEncryptionRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-const GetTableEncryptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetTableEncryptionRequest>;
 export interface GetTableEncryptionResponse {
   encryptionConfiguration: EncryptionConfiguration;
 }
-const GetTableEncryptionResponse =
-  GetTableBucketEncryptionResponse as any as S.Schema<GetTableEncryptionResponse>;
 export interface GetTableMaintenanceConfigurationRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-const GetTableMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetTableMaintenanceConfigurationRequest>;
 export type TableMaintenanceType =
   | "icebergCompaction"
   | "icebergSnapshotManagement"
   | (string & {});
-const TableMaintenanceType = S.String;
-
 export type IcebergCompactionStrategy = "auto" | "binpack" | "sort" | "z-order" | (string & {});
-const IcebergCompactionStrategy = S.String;
-
 export interface IcebergCompactionSettings {
   targetFileSizeMB?: number;
   strategy?: IcebergCompactionStrategy;
 }
-const IcebergCompactionSettings = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<IcebergCompactionSettings>;
 export interface IcebergSnapshotManagementSettings {
   minSnapshotsToKeep?: number;
   maxSnapshotAgeHours?: number;
 }
-const IcebergSnapshotManagementSettings = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<IcebergSnapshotManagementSettings>;
 export type TableMaintenanceSettings =
   | { icebergCompaction: IcebergCompactionSettings; icebergSnapshotManagement?: never }
   | { icebergCompaction?: never; icebergSnapshotManagement: IcebergSnapshotManagementSettings };
-const TableMaintenanceSettings = /*@__PURE__*/ __L.at(__c8, 7);
 export interface TableMaintenanceConfigurationValue {
   status?: MaintenanceStatus;
   settings?: TableMaintenanceSettings;
 }
-const TableMaintenanceConfigurationValue = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<TableMaintenanceConfigurationValue>;
 export type TableMaintenanceConfiguration = {
   [key in TableMaintenanceType]?: TableMaintenanceConfigurationValue;
 };
-const TableMaintenanceConfiguration = /*@__PURE__*/ __L.at(__c9, 1);
 export interface GetTableMaintenanceConfigurationResponse {
   tableARN: string;
   configuration: { [key: string]: TableMaintenanceConfigurationValue | undefined };
 }
-const GetTableMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetTableMaintenanceConfigurationResponse>;
 export interface GetTableMaintenanceJobStatusRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-const GetTableMaintenanceJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetTableMaintenanceJobStatusRequest>;
 export type TableMaintenanceJobType =
   | "icebergCompaction"
   | "icebergSnapshotManagement"
   | "icebergUnreferencedFileRemoval"
   | (string & {});
-const TableMaintenanceJobType = S.String;
-
 export type JobStatus = "Not_Yet_Run" | "Successful" | "Failed" | "Disabled" | (string & {});
-const JobStatus = S.String;
-
 export interface TableMaintenanceJobStatusValue {
   status: JobStatus;
   lastRunTimestamp?: Date;
   failureMessage?: string;
 }
-const TableMaintenanceJobStatusValue = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<TableMaintenanceJobStatusValue>;
 export type TableMaintenanceJobStatus = {
   [key in TableMaintenanceJobType]?: TableMaintenanceJobStatusValue;
 };
-const TableMaintenanceJobStatus = /*@__PURE__*/ __L.at(__c9, 5);
 export interface GetTableMaintenanceJobStatusResponse {
   tableARN: string;
   status: { [key: string]: TableMaintenanceJobStatusValue | undefined };
 }
-const GetTableMaintenanceJobStatusResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetTableMaintenanceJobStatusResponse>;
 export interface GetTableMetadataLocationRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-const GetTableMetadataLocationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetTableMetadataLocationRequest>;
 export interface GetTableMetadataLocationResponse {
   versionToken: string;
   metadataLocation?: string;
   warehouseLocation: string;
 }
-const GetTableMetadataLocationResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetTableMetadataLocationResponse>;
 export interface GetTablePolicyRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-const GetTablePolicyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetTablePolicyRequest>;
 export interface GetTablePolicyResponse {
   resourcePolicy: string;
 }
-const GetTablePolicyResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetTablePolicyResponse>;
 export interface GetTableRecordExpirationConfigurationRequest {
   tableArn: string;
 }
-const GetTableRecordExpirationConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetTableRecordExpirationConfigurationRequest>;
 export type TableRecordExpirationStatus = "enabled" | "disabled" | (string & {});
-const TableRecordExpirationStatus = S.String;
-
 export interface TableRecordExpirationSettings {
   days?: number;
 }
-const TableRecordExpirationSettings = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<TableRecordExpirationSettings>;
 export interface TableRecordExpirationConfigurationValue {
   status?: TableRecordExpirationStatus;
   settings?: TableRecordExpirationSettings;
 }
-const TableRecordExpirationConfigurationValue = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<TableRecordExpirationConfigurationValue>;
 export interface GetTableRecordExpirationConfigurationResponse {
   configuration: TableRecordExpirationConfigurationValue;
 }
-const GetTableRecordExpirationConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetTableRecordExpirationConfigurationResponse>;
 export interface GetTableRecordExpirationJobStatusRequest {
   tableArn: string;
 }
-const GetTableRecordExpirationJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetTableRecordExpirationJobStatusRequest>;
 export type TableRecordExpirationJobStatus =
   | "NotYetRun"
   | "Successful"
   | "Failed"
   | "Disabled"
   | (string & {});
-const TableRecordExpirationJobStatus = S.String;
-
 export interface TableRecordExpirationJobMetrics {
   deletedDataFiles?: number;
   deletedRecords?: number;
   removedFilesSize?: number;
 }
-const TableRecordExpirationJobMetrics = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<TableRecordExpirationJobMetrics>;
 export interface GetTableRecordExpirationJobStatusResponse {
   status: TableRecordExpirationJobStatus;
   lastRunTimestamp?: Date;
   failureMessage?: string;
   metrics?: TableRecordExpirationJobMetrics;
 }
-const GetTableRecordExpirationJobStatusResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetTableRecordExpirationJobStatusResponse>;
 export interface GetTableReplicationRequest {
   tableArn: string;
 }
-const GetTableReplicationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetTableReplicationRequest>;
 export interface TableReplicationRule {
   destinations: ReplicationDestination[];
 }
-const TableReplicationRule = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<TableReplicationRule>;
 export type TableReplicationRules = TableReplicationRule[];
-const TableReplicationRules = /*@__PURE__*/ __L.at(__c11, 4);
 export interface TableReplicationConfiguration {
   role: string;
   rules: TableReplicationRule[];
 }
-const TableReplicationConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<TableReplicationConfiguration>;
 export interface GetTableReplicationResponse {
   versionToken: string;
   configuration: TableReplicationConfiguration;
 }
-const GetTableReplicationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetTableReplicationResponse>;
 export interface GetTableReplicationStatusRequest {
   tableArn: string;
 }
-const GetTableReplicationStatusRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetTableReplicationStatusRequest>;
 export type ReplicationStatus = "pending" | "completed" | "failed" | (string & {});
-const ReplicationStatus = S.String;
-
 export interface LastSuccessfulReplicatedUpdate {
   metadataLocation: string;
   timestamp: Date;
 }
-const LastSuccessfulReplicatedUpdate = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<LastSuccessfulReplicatedUpdate>;
 export interface ReplicationDestinationStatusModel {
   replicationStatus: ReplicationStatus;
   destinationTableBucketArn: string;
@@ -889,34 +552,19 @@ export interface ReplicationDestinationStatusModel {
   lastSuccessfulReplicatedUpdate?: LastSuccessfulReplicatedUpdate;
   failureMessage?: string;
 }
-const ReplicationDestinationStatusModel = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ReplicationDestinationStatusModel>;
 export type ReplicationDestinationStatuses = ReplicationDestinationStatusModel[];
-const ReplicationDestinationStatuses = /*@__PURE__*/ __L.at(__c12, 2);
 export interface GetTableReplicationStatusResponse {
   sourceTableArn: string;
   destinations: ReplicationDestinationStatusModel[];
 }
-const GetTableReplicationStatusResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetTableReplicationStatusResponse>;
 export interface GetTableStorageClassRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-const GetTableStorageClassRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetTableStorageClassRequest>;
 export interface GetTableStorageClassResponse {
   storageClassConfiguration: StorageClassConfiguration;
 }
-const GetTableStorageClassResponse =
-  GetTableBucketStorageClassResponse as any as S.Schema<GetTableStorageClassResponse>;
 export type NextToken = string;
 export type ListNamespacesLimit = number;
 export interface ListNamespacesRequest {
@@ -925,10 +573,6 @@ export interface ListNamespacesRequest {
   continuationToken?: string;
   maxNamespaces?: number;
 }
-const ListNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListNamespacesRequest>;
 export interface NamespaceSummary {
   namespace: string[];
   createdAt: Date;
@@ -937,17 +581,11 @@ export interface NamespaceSummary {
   namespaceId?: string;
   tableBucketId?: string;
 }
-const NamespaceSummary = GetNamespaceResponse as any as S.Schema<NamespaceSummary>;
 export type NamespaceSummaryList = NamespaceSummary[];
-const NamespaceSummaryList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ListNamespacesResponse {
   namespaces: NamespaceSummary[];
   continuationToken?: string;
 }
-const ListNamespacesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListNamespacesResponse>;
 export type ListTableBucketsLimit = number;
 export interface ListTableBucketsRequest {
   prefix?: string;
@@ -955,10 +593,6 @@ export interface ListTableBucketsRequest {
   maxBuckets?: number;
   type?: TableBucketType;
 }
-const ListTableBucketsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListTableBucketsRequest>;
 export interface TableBucketSummary {
   arn: string;
   name: string;
@@ -967,17 +601,11 @@ export interface TableBucketSummary {
   tableBucketId?: string;
   type?: TableBucketType;
 }
-const TableBucketSummary = GetTableBucketResponse as any as S.Schema<TableBucketSummary>;
 export type TableBucketSummaryList = TableBucketSummary[];
-const TableBucketSummaryList = /*@__PURE__*/ __L.at(__c13, 1);
 export interface ListTableBucketsResponse {
   tableBuckets: TableBucketSummary[];
   continuationToken?: string;
 }
-const ListTableBucketsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListTableBucketsResponse>;
 export type ListTablesLimit = number;
 export interface ListTablesRequest {
   tableBucketARN: string;
@@ -986,7 +614,6 @@ export interface ListTablesRequest {
   continuationToken?: string;
   maxTables?: number;
 }
-const ListTablesRequest = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ListTablesRequest>;
 export interface TableSummary {
   namespace: string[];
   name: string;
@@ -998,101 +625,52 @@ export interface TableSummary {
   namespaceId?: string;
   tableBucketId?: string;
 }
-const TableSummary = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<TableSummary>;
 export type TableSummaryList = TableSummary[];
-const TableSummaryList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ListTablesResponse {
   tables: TableSummary[];
   continuationToken?: string;
 }
-const ListTablesResponse = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ListTablesResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutTableBucketEncryptionRequest {
   tableBucketARN: string;
   encryptionConfiguration: EncryptionConfiguration;
 }
-const PutTableBucketEncryptionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<PutTableBucketEncryptionRequest>;
 export interface PutTableBucketEncryptionResponse {}
-const PutTableBucketEncryptionResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketEncryptionResponse>;
 export interface PutTableBucketMaintenanceConfigurationRequest {
   tableBucketARN: string;
   type: TableBucketMaintenanceType;
   value: TableBucketMaintenanceConfigurationValue;
 }
-const PutTableBucketMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<PutTableBucketMaintenanceConfigurationRequest>;
 export interface PutTableBucketMaintenanceConfigurationResponse {}
-const PutTableBucketMaintenanceConfigurationResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketMaintenanceConfigurationResponse>;
 export interface PutTableBucketMetricsConfigurationRequest {
   tableBucketARN: string;
 }
-const PutTableBucketMetricsConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<PutTableBucketMetricsConfigurationRequest>;
 export interface PutTableBucketMetricsConfigurationResponse {}
-const PutTableBucketMetricsConfigurationResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketMetricsConfigurationResponse>;
 export interface PutTableBucketPolicyRequest {
   tableBucketARN: string;
   resourcePolicy: string;
 }
-const PutTableBucketPolicyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<PutTableBucketPolicyRequest>;
 export interface PutTableBucketPolicyResponse {}
-const PutTableBucketPolicyResponse =
-  DeleteNamespaceResponse as any as S.Schema<PutTableBucketPolicyResponse>;
 export interface PutTableBucketReplicationRequest {
   tableBucketARN: string;
   versionToken?: string;
   configuration: TableBucketReplicationConfiguration;
 }
-const PutTableBucketReplicationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<PutTableBucketReplicationRequest>;
 export interface PutTableBucketReplicationResponse {
   versionToken: string;
   status: string;
 }
-const PutTableBucketReplicationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<PutTableBucketReplicationResponse>;
 export interface PutTableBucketStorageClassRequest {
   tableBucketARN: string;
   storageClassConfiguration: StorageClassConfiguration;
 }
-const PutTableBucketStorageClassRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<PutTableBucketStorageClassRequest>;
 export interface PutTableBucketStorageClassResponse {}
-const PutTableBucketStorageClassResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketStorageClassResponse>;
 export interface PutTableMaintenanceConfigurationRequest {
   tableBucketARN: string;
   namespace: string;
@@ -1100,51 +678,28 @@ export interface PutTableMaintenanceConfigurationRequest {
   type: TableMaintenanceType;
   value: TableMaintenanceConfigurationValue;
 }
-const PutTableMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<PutTableMaintenanceConfigurationRequest>;
 export interface PutTableMaintenanceConfigurationResponse {}
-const PutTableMaintenanceConfigurationResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableMaintenanceConfigurationResponse>;
 export interface PutTablePolicyRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
   resourcePolicy: string;
 }
-const PutTablePolicyRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<PutTablePolicyRequest>;
 export interface PutTablePolicyResponse {}
-const PutTablePolicyResponse = DeleteNamespaceResponse as any as S.Schema<PutTablePolicyResponse>;
 export interface PutTableRecordExpirationConfigurationRequest {
   tableArn: string;
   value: TableRecordExpirationConfigurationValue;
 }
-const PutTableRecordExpirationConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<PutTableRecordExpirationConfigurationRequest>;
 export interface PutTableRecordExpirationConfigurationResponse {}
-const PutTableRecordExpirationConfigurationResponse =
-  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableRecordExpirationConfigurationResponse>;
 export interface PutTableReplicationRequest {
   tableArn: string;
   versionToken?: string;
   configuration: TableReplicationConfiguration;
 }
-const PutTableReplicationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<PutTableReplicationRequest>;
 export interface PutTableReplicationResponse {
   versionToken: string;
   status: string;
 }
-const PutTableReplicationResponse =
-  PutTableBucketReplicationResponse as any as S.Schema<PutTableReplicationResponse>;
 export interface RenameTableRequest {
   tableBucketARN: string;
   namespace: string;
@@ -1153,28 +708,18 @@ export interface RenameTableRequest {
   newName?: string;
   versionToken?: string;
 }
-const RenameTableRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<RenameTableRequest>;
 export interface RenameTableResponse {}
-const RenameTableResponse = DeleteNamespaceResponse as any as S.Schema<RenameTableResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteNamespaceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = NamespaceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteNamespaceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateTableMetadataLocationRequest {
   tableBucketARN: string;
   namespace: string;
@@ -1182,10 +727,6 @@ export interface UpdateTableMetadataLocationRequest {
   versionToken: string;
   metadataLocation: string;
 }
-const UpdateTableMetadataLocationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<UpdateTableMetadataLocationRequest>;
 export interface UpdateTableMetadataLocationResponse {
   name: string;
   tableARN: string;
@@ -1193,10 +734,6 @@ export interface UpdateTableMetadataLocationResponse {
   versionToken: string;
   metadataLocation: string;
 }
-const UpdateTableMetadataLocationResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<UpdateTableMetadataLocationResponse>;
 export type ErrorMessage = string;
 export type CreateNamespaceError =
   | BadRequestException
@@ -1219,8 +756,8 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNamespaceRequest,
-  output: CreateNamespaceResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateNamespaceRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateNamespaceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1265,8 +802,8 @@ export const createTable: API.OperationMethod<
   CreateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableRequest,
-  output: CreateTableResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<CreateTableRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateTableResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1307,8 +844,8 @@ export const createTableBucket: API.OperationMethod<
   CreateTableBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableBucketRequest,
-  output: CreateTableBucketResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateTableBucketRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CreateTableBucketResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1343,8 +880,8 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNamespaceRequest,
-  output: DeleteNamespaceResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1379,8 +916,8 @@ export const deleteTable: API.OperationMethod<
   DeleteTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableRequest,
-  output: DeleteTableResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteTableRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteTableResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1415,8 +952,8 @@ export const deleteTableBucket: API.OperationMethod<
   DeleteTableBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableBucketRequest,
-  output: DeleteTableBucketResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<DeleteTableBucketRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteTableBucketResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1451,8 +988,8 @@ export const deleteTableBucketEncryption: API.OperationMethod<
   DeleteTableBucketEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableBucketEncryptionRequest,
-  output: DeleteTableBucketEncryptionResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<DeleteTableBucketEncryptionRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<DeleteTableBucketEncryptionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1487,8 +1024,8 @@ export const deleteTableBucketMetricsConfiguration: API.OperationMethod<
   DeleteTableBucketMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableBucketMetricsConfigurationRequest,
-  output: DeleteTableBucketMetricsConfigurationResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteTableBucketMetricsConfigurationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<DeleteTableBucketMetricsConfigurationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1523,8 +1060,8 @@ export const deleteTableBucketPolicy: API.OperationMethod<
   DeleteTableBucketPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableBucketPolicyRequest,
-  output: DeleteTableBucketPolicyResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<DeleteTableBucketPolicyRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteTableBucketPolicyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1560,8 +1097,8 @@ export const deleteTableBucketReplication: API.OperationMethod<
   DeleteTableBucketReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableBucketReplicationRequest,
-  output: DeleteTableBucketReplicationResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<DeleteTableBucketReplicationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<DeleteTableBucketReplicationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1597,8 +1134,8 @@ export const deleteTablePolicy: API.OperationMethod<
   DeleteTablePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTablePolicyRequest,
-  output: DeleteTablePolicyResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<DeleteTablePolicyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteTablePolicyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1634,8 +1171,8 @@ export const deleteTableReplication: API.OperationMethod<
   DeleteTableReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableReplicationRequest,
-  output: DeleteTableReplicationResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<DeleteTableReplicationRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteTableReplicationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1672,8 +1209,8 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceRequest,
-  output: GetNamespaceResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<GetNamespaceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1710,8 +1247,8 @@ export const getTable: API.OperationMethod<
   GetTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableRequest,
-  output: GetTableResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<GetTableRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetTableResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1748,8 +1285,8 @@ export const getTableBucket: API.OperationMethod<
   GetTableBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableBucketRequest,
-  output: GetTableBucketResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetTableBucketRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GetTableBucketResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1785,8 +1322,8 @@ export const getTableBucketEncryption: API.OperationMethod<
   GetTableBucketEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableBucketEncryptionRequest,
-  output: GetTableBucketEncryptionResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<GetTableBucketEncryptionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetTableBucketEncryptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1821,8 +1358,8 @@ export const getTableBucketMaintenanceConfiguration: API.OperationMethod<
   GetTableBucketMaintenanceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableBucketMaintenanceConfigurationRequest,
-  output: GetTableBucketMaintenanceConfigurationResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<GetTableBucketMaintenanceConfigurationRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<GetTableBucketMaintenanceConfigurationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1857,8 +1394,8 @@ export const getTableBucketMetricsConfiguration: API.OperationMethod<
   GetTableBucketMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableBucketMetricsConfigurationRequest,
-  output: GetTableBucketMetricsConfigurationResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<GetTableBucketMetricsConfigurationRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<GetTableBucketMetricsConfigurationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1893,8 +1430,8 @@ export const getTableBucketPolicy: API.OperationMethod<
   GetTableBucketPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableBucketPolicyRequest,
-  output: GetTableBucketPolicyResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<GetTableBucketPolicyRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<GetTableBucketPolicyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1930,8 +1467,8 @@ export const getTableBucketReplication: API.OperationMethod<
   GetTableBucketReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableBucketReplicationRequest,
-  output: GetTableBucketReplicationResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<GetTableBucketReplicationRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetTableBucketReplicationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1967,8 +1504,8 @@ export const getTableBucketStorageClass: API.OperationMethod<
   GetTableBucketStorageClassError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableBucketStorageClassRequest,
-  output: GetTableBucketStorageClassResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<GetTableBucketStorageClassRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<GetTableBucketStorageClassResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2003,8 +1540,8 @@ export const getTableEncryption: API.OperationMethod<
   GetTableEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableEncryptionRequest,
-  output: GetTableEncryptionResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<GetTableEncryptionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetTableEncryptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2041,8 +1578,8 @@ export const getTableMaintenanceConfiguration: API.OperationMethod<
   GetTableMaintenanceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableMaintenanceConfigurationRequest,
-  output: GetTableMaintenanceConfigurationResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<GetTableMaintenanceConfigurationRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<GetTableMaintenanceConfigurationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2077,8 +1614,8 @@ export const getTableMaintenanceJobStatus: API.OperationMethod<
   GetTableMaintenanceJobStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableMaintenanceJobStatusRequest,
-  output: GetTableMaintenanceJobStatusResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<GetTableMaintenanceJobStatusRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<GetTableMaintenanceJobStatusResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2113,8 +1650,8 @@ export const getTableMetadataLocation: API.OperationMethod<
   GetTableMetadataLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableMetadataLocationRequest,
-  output: GetTableMetadataLocationResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<GetTableMetadataLocationRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetTableMetadataLocationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2149,8 +1686,8 @@ export const getTablePolicy: API.OperationMethod<
   GetTablePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTablePolicyRequest,
-  output: GetTablePolicyResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<GetTablePolicyRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetTablePolicyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2185,8 +1722,8 @@ export const getTableRecordExpirationConfiguration: API.OperationMethod<
   GetTableRecordExpirationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableRecordExpirationConfigurationRequest,
-  output: GetTableRecordExpirationConfigurationResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<GetTableRecordExpirationConfigurationRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<GetTableRecordExpirationConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2221,8 +1758,8 @@ export const getTableRecordExpirationJobStatus: API.OperationMethod<
   GetTableRecordExpirationJobStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableRecordExpirationJobStatusRequest,
-  output: GetTableRecordExpirationJobStatusResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<GetTableRecordExpirationJobStatusRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<GetTableRecordExpirationJobStatusResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2258,8 +1795,8 @@ export const getTableReplication: API.OperationMethod<
   GetTableReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableReplicationRequest,
-  output: GetTableReplicationResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<GetTableReplicationRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetTableReplicationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2295,8 +1832,8 @@ export const getTableReplicationStatus: API.OperationMethod<
   GetTableReplicationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableReplicationStatusRequest,
-  output: GetTableReplicationStatusResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<GetTableReplicationStatusRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetTableReplicationStatusResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2331,8 +1868,8 @@ export const getTableStorageClass: API.OperationMethod<
   GetTableStorageClassError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableStorageClassRequest,
-  output: GetTableStorageClassResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<GetTableStorageClassRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<GetTableStorageClassResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2369,8 +1906,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NamespaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNamespacesRequest,
-  output: ListNamespacesResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<ListNamespacesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2414,8 +1951,8 @@ export const listTableBuckets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableBucketSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTableBucketsRequest,
-  output: ListTableBucketsResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<ListTableBucketsRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ListTableBucketsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2458,8 +1995,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTablesRequest,
-  output: ListTablesResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<ListTablesRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<ListTablesResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2502,8 +2039,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(111, __c13, 7) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2540,8 +2077,8 @@ export const putTableBucketEncryption: API.OperationMethod<
   PutTableBucketEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableBucketEncryptionRequest,
-  output: PutTableBucketEncryptionResponse,
+  input: __S(113, __c14, 1) as any as S.Schema<PutTableBucketEncryptionRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<PutTableBucketEncryptionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2576,8 +2113,8 @@ export const putTableBucketMaintenanceConfiguration: API.OperationMethod<
   PutTableBucketMaintenanceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableBucketMaintenanceConfigurationRequest,
-  output: PutTableBucketMaintenanceConfigurationResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<PutTableBucketMaintenanceConfigurationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<PutTableBucketMaintenanceConfigurationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2612,8 +2149,8 @@ export const putTableBucketMetricsConfiguration: API.OperationMethod<
   PutTableBucketMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableBucketMetricsConfigurationRequest,
-  output: PutTableBucketMetricsConfigurationResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<PutTableBucketMetricsConfigurationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<PutTableBucketMetricsConfigurationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2648,8 +2185,8 @@ export const putTableBucketPolicy: API.OperationMethod<
   PutTableBucketPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableBucketPolicyRequest,
-  output: PutTableBucketPolicyResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<PutTableBucketPolicyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<PutTableBucketPolicyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2701,8 +2238,8 @@ export const putTableBucketReplication: API.OperationMethod<
   PutTableBucketReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableBucketReplicationRequest,
-  output: PutTableBucketReplicationResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<PutTableBucketReplicationRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<PutTableBucketReplicationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2738,8 +2275,8 @@ export const putTableBucketStorageClass: API.OperationMethod<
   PutTableBucketStorageClassError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableBucketStorageClassRequest,
-  output: PutTableBucketStorageClassResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<PutTableBucketStorageClassRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<PutTableBucketStorageClassResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2774,8 +2311,8 @@ export const putTableMaintenanceConfiguration: API.OperationMethod<
   PutTableMaintenanceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableMaintenanceConfigurationRequest,
-  output: PutTableMaintenanceConfigurationResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<PutTableMaintenanceConfigurationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<PutTableMaintenanceConfigurationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2810,8 +2347,8 @@ export const putTablePolicy: API.OperationMethod<
   PutTablePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTablePolicyRequest,
-  output: PutTablePolicyResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<PutTablePolicyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<PutTablePolicyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2846,8 +2383,8 @@ export const putTableRecordExpirationConfiguration: API.OperationMethod<
   PutTableRecordExpirationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableRecordExpirationConfigurationRequest,
-  output: PutTableRecordExpirationConfigurationResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<PutTableRecordExpirationConfigurationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<PutTableRecordExpirationConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2897,8 +2434,8 @@ export const putTableReplication: API.OperationMethod<
   PutTableReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableReplicationRequest,
-  output: PutTableReplicationResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<PutTableReplicationRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<PutTableReplicationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2934,8 +2471,8 @@ export const renameTable: API.OperationMethod<
   RenameTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenameTableRequest,
-  output: RenameTableResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<RenameTableRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<RenameTableResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2972,8 +2509,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<TagResourceRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3010,8 +2547,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<UntagResourceRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3046,8 +2583,8 @@ export const updateTableMetadataLocation: API.OperationMethod<
   UpdateTableMetadataLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTableMetadataLocationRequest,
-  output: UpdateTableMetadataLocationResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<UpdateTableMetadataLocationRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<UpdateTableMetadataLocationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3070,7 +2607,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-          namespace: NamespaceList,
+          namespace: __S(0, __c0, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/namespaces/{tableBucketARN}" }),
@@ -3084,7 +2621,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateNamespaceRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ tableBucketARN: S.String, namespace: NamespaceList }),
+        S.Struct({ tableBucketARN: S.String, namespace: __S(0, __c0, 0) }),
       ).annotate({ identifier: "CreateNamespaceResponse" });
     case 3:
       return S.suspend(() =>
@@ -3096,9 +2633,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SchemaField" });
     case 4:
-      return S.Array(SchemaField);
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.suspend(() => S.Struct({ fields: SchemaFieldList })).annotate({
+      return S.suspend(() => S.Struct({ fields: __S(4, __c0, 4) })).annotate({
         identifier: "IcebergSchema",
       });
     case 6:
@@ -3112,7 +2649,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SchemaV2Field" });
     case 7:
-      return S.Array(SchemaV2Field);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -3122,10 +2659,10 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: SchemaV2FieldType,
-          fields: SchemaV2FieldList,
+          type: S.String,
+          fields: __S(7, __c0, 7),
           schemaId: S.optional(S.Number),
-          identifierFieldIds: S.optional(IntegerList),
+          identifierFieldIds: S.optional(__S(8, __c1, 0)),
         }).pipe(
           S.encodeKeys({ schemaId: "schema-id", identifierFieldIds: "identifier-field-ids" }),
         ),
@@ -3140,10 +2677,10 @@ function __c1(j: number): any {
         }).pipe(S.encodeKeys({ sourceId: "source-id", fieldId: "field-id" })),
       ).annotate({ identifier: "IcebergPartitionField" });
     case 3:
-      return S.Array(IcebergPartitionField);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ fields: IcebergPartitionFieldList, specId: S.optional(S.Number) }).pipe(
+        S.Struct({ fields: __S(11, __c1, 3), specId: S.optional(S.Number) }).pipe(
           S.encodeKeys({ specId: "spec-id" }),
         ),
       ).annotate({ identifier: "IcebergPartitionSpec" });
@@ -3152,15 +2689,15 @@ function __c1(j: number): any {
         S.Struct({
           sourceId: S.Number,
           transform: S.String,
-          direction: IcebergSortDirection,
-          nullOrder: IcebergNullOrder,
+          direction: S.String,
+          nullOrder: S.String,
         }).pipe(S.encodeKeys({ sourceId: "source-id", nullOrder: "null-order" })),
       ).annotate({ identifier: "IcebergSortField" });
     case 6:
-      return S.Array(IcebergSortField);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ orderId: S.Number, fields: IcebergSortFieldList }).pipe(
+        S.Struct({ orderId: S.Number, fields: __S(14, __c1, 6) }).pipe(
           S.encodeKeys({ orderId: "order-id" }),
         ),
       ).annotate({ identifier: "IcebergSortOrder" });
@@ -3173,21 +2710,21 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schema: S.optional(IcebergSchema),
-          schemaV2: S.optional(IcebergSchemaV2),
-          partitionSpec: S.optional(IcebergPartitionSpec),
-          writeOrder: S.optional(IcebergSortOrder),
-          properties: S.optional(TableProperties),
+          schema: S.optional(__S(5, __c0, 5)),
+          schemaV2: S.optional(__S(9, __c1, 1)),
+          partitionSpec: S.optional(__S(12, __c1, 4)),
+          writeOrder: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "IcebergMetadata" });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ iceberg: IcebergMetadata })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ iceberg: __S(17, __c2, 1) })]);
     case 3:
       return S.suspend(() =>
-        S.Struct({ sseAlgorithm: SSEAlgorithm, kmsKeyArn: S.optional(S.String) }),
+        S.Struct({ sseAlgorithm: S.String, kmsKeyArn: S.optional(S.String) }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 4:
-      return S.suspend(() => S.Struct({ storageClass: StorageClass })).annotate({
+      return S.suspend(() => S.Struct({ storageClass: S.String })).annotate({
         identifier: "StorageClassConfiguration",
       });
     case 5:
@@ -3198,11 +2735,11 @@ function __c2(j: number): any {
           tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
           namespace: S.String.pipe(T.HttpLabel("namespace")),
           name: S.String,
-          format: OpenTableFormat,
-          metadata: S.optional(TableMetadata),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
-          storageClassConfiguration: S.optional(StorageClassConfiguration),
-          tags: S.optional(Tags),
+          format: S.String,
+          metadata: S.optional(__S(18, __c2, 2)),
+          encryptionConfiguration: S.optional(__S(19, __c2, 3)),
+          storageClassConfiguration: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(21, __c2, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/tables/{tableBucketARN}/{namespace}" }),
@@ -3226,9 +2763,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
-          storageClassConfiguration: S.optional(StorageClassConfiguration),
-          tags: S.optional(Tags),
+          encryptionConfiguration: S.optional(__S(19, __c2, 3)),
+          storageClassConfiguration: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(21, __c2, 5)),
         }).pipe(T.all(T.Http({ method: "PUT", uri: "/buckets" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTableBucketRequest" });
     case 1:
@@ -3415,7 +2952,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          namespace: NamespaceList,
+          namespace: __S(0, __c0, 0),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           createdBy: S.String,
           ownerAccountId: S.String,
@@ -3442,15 +2979,15 @@ function __c5(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ replicationInformation: S.optional(ReplicationInformation) }),
+        S.Struct({ replicationInformation: S.optional(__S(41, __c5, 1)) }),
       ).annotate({ identifier: "ManagedTableInformation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: TableType,
+          type: S.String,
           tableARN: S.String,
-          namespace: NamespaceList,
+          namespace: __S(0, __c0, 0),
           namespaceId: S.optional(S.String),
           versionToken: S.String,
           metadataLocation: S.optional(S.String),
@@ -3461,9 +2998,9 @@ function __c5(j: number): any {
           modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedBy: S.optional(S.String),
           ownerAccountId: S.String,
-          format: OpenTableFormat,
+          format: S.String,
           tableBucketId: S.optional(S.String),
-          managedTableInformation: S.optional(ManagedTableInformation),
+          managedTableInformation: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "GetTableResponse" });
     case 4:
@@ -3487,7 +3024,7 @@ function __c5(j: number): any {
           ownerAccountId: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           tableBucketId: S.optional(S.String),
-          type: S.optional(TableBucketType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTableBucketResponse" });
     case 6:
@@ -3506,9 +3043,7 @@ function __c5(j: number): any {
         identifier: "GetTableBucketEncryptionRequest",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ encryptionConfiguration: EncryptionConfiguration }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ encryptionConfiguration: __S(19, __c2, 3) })).annotate({
         identifier: "GetTableBucketEncryptionResponse",
       });
   }
@@ -3539,26 +3074,23 @@ function __c6(j: number): any {
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings,
+          icebergUnreferencedFileRemoval: __S(49, __c6, 1),
         }),
       ]);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(MaintenanceStatus),
-          settings: S.optional(TableBucketMaintenanceSettings),
+          status: S.optional(S.String),
+          settings: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({
         identifier: "TableBucketMaintenanceConfigurationValue",
       });
     case 4:
-      return S.Record(
-        TableBucketMaintenanceType,
-        /*@__PURE__*/ TableBucketMaintenanceConfigurationValue.pipe(S.optional),
-      );
+      return S.Record(S.String, /*@__PURE__*/ __S(51, __c6, 3).pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ tableBucketARN: S.String, configuration: TableBucketMaintenanceConfiguration }),
+        S.Struct({ tableBucketARN: S.String, configuration: __S(52, __c6, 4) }),
       ).annotate({
         identifier: "GetTableBucketMaintenanceConfigurationResponse",
       });
@@ -3626,17 +3158,15 @@ function __c7(j: number): any {
         identifier: "ReplicationDestination",
       });
     case 4:
-      return S.Array(ReplicationDestination);
+      return S.Array(__S(59, __c7, 3));
     case 5:
-      return S.suspend(() => S.Struct({ destinations: ReplicationDestinations })).annotate({
+      return S.suspend(() => S.Struct({ destinations: __S(60, __c7, 4) })).annotate({
         identifier: "TableBucketReplicationRule",
       });
     case 6:
-      return S.Array(TableBucketReplicationRule);
+      return S.Array(__S(61, __c7, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ role: S.String, rules: TableBucketReplicationRules }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ role: S.String, rules: __S(62, __c7, 6) })).annotate({
         identifier: "TableBucketReplicationConfiguration",
       });
   }
@@ -3645,7 +3175,7 @@ function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ versionToken: S.String, configuration: TableBucketReplicationConfiguration }),
+        S.Struct({ versionToken: S.String, configuration: __S(63, __c7, 7) }),
       ).annotate({
         identifier: "GetTableBucketReplicationResponse",
       });
@@ -3665,9 +3195,7 @@ function __c8(j: number): any {
         identifier: "GetTableBucketStorageClassRequest",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ storageClassConfiguration: StorageClassConfiguration }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ storageClassConfiguration: __S(20, __c2, 4) })).annotate({
         identifier: "GetTableBucketStorageClassResponse",
       });
     case 3:
@@ -3718,7 +3246,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetFileSizeMB: S.optional(S.Number),
-          strategy: S.optional(IcebergCompactionStrategy),
+          strategy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IcebergCompactionSettings",
@@ -3734,8 +3262,8 @@ function __c8(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ icebergCompaction: IcebergCompactionSettings }),
-        /*@__PURE__*/ S.Struct({ icebergSnapshotManagement: IcebergSnapshotManagementSettings }),
+        /*@__PURE__*/ S.Struct({ icebergCompaction: __S(69, __c8, 5) }),
+        /*@__PURE__*/ S.Struct({ icebergSnapshotManagement: __S(70, __c8, 6) }),
       ]);
   }
 }
@@ -3744,20 +3272,17 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(MaintenanceStatus),
-          settings: S.optional(TableMaintenanceSettings),
+          status: S.optional(S.String),
+          settings: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({
         identifier: "TableMaintenanceConfigurationValue",
       });
     case 1:
-      return S.Record(
-        TableMaintenanceType,
-        /*@__PURE__*/ TableMaintenanceConfigurationValue.pipe(S.optional),
-      );
+      return S.Record(S.String, /*@__PURE__*/ __S(72, __c9, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
-        S.Struct({ tableARN: S.String, configuration: TableMaintenanceConfiguration }),
+        S.Struct({ tableARN: S.String, configuration: __S(73, __c9, 1) }),
       ).annotate({
         identifier: "GetTableMaintenanceConfigurationResponse",
       });
@@ -3786,7 +3311,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: JobStatus,
+          status: S.String,
           lastRunTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           failureMessage: S.optional(S.String),
         }),
@@ -3794,14 +3319,9 @@ function __c9(j: number): any {
         identifier: "TableMaintenanceJobStatusValue",
       });
     case 5:
-      return S.Record(
-        TableMaintenanceJobType,
-        /*@__PURE__*/ TableMaintenanceJobStatusValue.pipe(S.optional),
-      );
+      return S.Record(S.String, /*@__PURE__*/ __S(76, __c9, 4).pipe(S.optional));
     case 6:
-      return S.suspend(() =>
-        S.Struct({ tableARN: S.String, status: TableMaintenanceJobStatus }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ tableARN: S.String, status: __S(77, __c9, 5) })).annotate({
         identifier: "GetTableMaintenanceJobStatusResponse",
       });
     case 7:
@@ -3883,16 +3403,14 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TableRecordExpirationStatus),
-          settings: S.optional(TableRecordExpirationSettings),
+          status: S.optional(S.String),
+          settings: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({
         identifier: "TableRecordExpirationConfigurationValue",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ configuration: TableRecordExpirationConfigurationValue }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ configuration: __S(85, __c10, 5) })).annotate({
         identifier: "GetTableRecordExpirationConfigurationResponse",
       });
     case 7:
@@ -3927,10 +3445,10 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: TableRecordExpirationJobStatus,
+          status: S.String,
           lastRunTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           failureMessage: S.optional(S.String),
-          metrics: S.optional(TableRecordExpirationJobMetrics),
+          metrics: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({
         identifier: "GetTableRecordExpirationJobStatusResponse",
@@ -3944,18 +3462,18 @@ function __c11(j: number): any {
         identifier: "GetTableReplicationRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ destinations: ReplicationDestinations })).annotate({
+      return S.suspend(() => S.Struct({ destinations: __S(60, __c7, 4) })).annotate({
         identifier: "TableReplicationRule",
       });
     case 4:
-      return S.Array(TableReplicationRule);
+      return S.Array(__S(91, __c11, 3));
     case 5:
-      return S.suspend(() => S.Struct({ role: S.String, rules: TableReplicationRules })).annotate({
+      return S.suspend(() => S.Struct({ role: S.String, rules: __S(92, __c11, 4) })).annotate({
         identifier: "TableReplicationConfiguration",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ versionToken: S.String, configuration: TableReplicationConfiguration }),
+        S.Struct({ versionToken: S.String, configuration: __S(93, __c11, 5) }),
       ).annotate({
         identifier: "GetTableReplicationResponse",
       });
@@ -3990,20 +3508,20 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          replicationStatus: ReplicationStatus,
+          replicationStatus: S.String,
           destinationTableBucketArn: S.String,
           destinationTableArn: S.optional(S.String),
-          lastSuccessfulReplicatedUpdate: S.optional(LastSuccessfulReplicatedUpdate),
+          lastSuccessfulReplicatedUpdate: S.optional(__S(96, __c12, 0)),
           failureMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReplicationDestinationStatusModel",
       });
     case 2:
-      return S.Array(ReplicationDestinationStatusModel);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ sourceTableArn: S.String, destinations: ReplicationDestinationStatuses }),
+        S.Struct({ sourceTableArn: S.String, destinations: __S(98, __c12, 2) }),
       ).annotate({
         identifier: "GetTableReplicationStatusResponse",
       });
@@ -4048,10 +3566,10 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListNamespacesRequest" });
     case 6:
-      return S.Array(NamespaceSummary);
+      return S.Array(__S(39, __c4, 7));
     case 7:
       return S.suspend(() =>
-        S.Struct({ namespaces: NamespaceSummaryList, continuationToken: S.optional(S.String) }),
+        S.Struct({ namespaces: __S(102, __c12, 6), continuationToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListNamespacesResponse" });
   }
 }
@@ -4063,14 +3581,14 @@ function __c13(j: number): any {
           prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
           continuationToken: S.optional(S.String).pipe(T.HttpQuery("continuationToken")),
           maxBuckets: S.optional(S.Number).pipe(T.HttpQuery("maxBuckets")),
-          type: S.optional(TableBucketType).pipe(T.HttpQuery("type")),
+          type: S.optional(S.String).pipe(T.HttpQuery("type")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/buckets" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTableBucketsRequest" });
     case 1:
-      return S.Array(TableBucketSummary);
+      return S.Array(__S(45, __c5, 5));
     case 2:
       return S.suspend(() =>
-        S.Struct({ tableBuckets: TableBucketSummaryList, continuationToken: S.optional(S.String) }),
+        S.Struct({ tableBuckets: __S(105, __c13, 1), continuationToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTableBucketsResponse" });
     case 3:
       return S.suspend(() =>
@@ -4094,9 +3612,9 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          namespace: NamespaceList,
+          namespace: __S(0, __c0, 0),
           name: S.String,
-          type: TableType,
+          type: S.String,
           tableARN: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4106,10 +3624,10 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "TableSummary" });
     case 5:
-      return S.Array(TableSummary);
+      return S.Array(__S(108, __c13, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ tables: TableSummaryList, continuationToken: S.optional(S.String) }),
+        S.Struct({ tables: __S(109, __c13, 5), continuationToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTablesResponse" });
     case 7:
       return S.suspend(() =>
@@ -4124,14 +3642,14 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(21, __c2, 5)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-          encryptionConfiguration: EncryptionConfiguration,
+          encryptionConfiguration: __S(19, __c2, 3),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/encryption" }),
@@ -4149,8 +3667,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-          type: TableBucketMaintenanceType.pipe(T.HttpLabel("type")),
-          value: TableBucketMaintenanceConfigurationValue,
+          type: S.String.pipe(T.HttpLabel("type")),
+          value: __S(51, __c6, 3),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/maintenance/{type}" }),
@@ -4202,7 +3720,7 @@ function __c14(j: number): any {
         S.Struct({
           tableBucketARN: S.String.pipe(T.HttpQuery("tableBucketARN")),
           versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
-          configuration: TableBucketReplicationConfiguration,
+          configuration: __S(63, __c7, 7),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/table-bucket-replication" }),
@@ -4224,7 +3742,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-          storageClassConfiguration: StorageClassConfiguration,
+          storageClassConfiguration: __S(20, __c2, 4),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/storage-class" }),
@@ -4248,8 +3766,8 @@ function __c15(j: number): any {
           tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
           namespace: S.String.pipe(T.HttpLabel("namespace")),
           name: S.String.pipe(T.HttpLabel("name")),
-          type: TableMaintenanceType.pipe(T.HttpLabel("type")),
-          value: TableMaintenanceConfigurationValue,
+          type: S.String.pipe(T.HttpLabel("type")),
+          value: __S(72, __c9, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -4288,7 +3806,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tableArn: S.String.pipe(T.HttpQuery("tableArn")),
-          value: TableRecordExpirationConfigurationValue,
+          value: __S(85, __c10, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/table-record-expiration" }),
@@ -4307,7 +3825,7 @@ function __c15(j: number): any {
         S.Struct({
           tableArn: S.String.pipe(T.HttpQuery("tableArn")),
           versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
-          configuration: TableReplicationConfiguration,
+          configuration: __S(93, __c11, 5),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/table-replication" }), svc, auth, proto, ver, rules),
         ),
@@ -4336,7 +3854,10 @@ function __c15(j: number): any {
       ).annotate({ identifier: "RenameTableRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(21, __c2, 5),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tag/{resourceArn}" }),
             svc,
@@ -4351,7 +3872,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tag/{resourceArn}" }),
@@ -4396,7 +3917,7 @@ function __c16(j: number): any {
         S.Struct({
           name: S.String,
           tableARN: S.String,
-          namespace: NamespaceList,
+          namespace: __S(0, __c0, 0),
           versionToken: S.String,
           metadataLocation: S.String,
         }),
@@ -4404,4 +3925,9 @@ function __c16(j: number): any {
         identifier: "UpdateTableMetadataLocationResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

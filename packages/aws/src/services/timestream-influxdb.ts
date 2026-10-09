@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Timestream InfluxDB",
   serviceShapeName: "AmazonTimestreamInfluxDB",
@@ -132,7 +134,7 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "ValidationExceptionReason",
       }),
     },
@@ -144,14 +146,12 @@ export type RetentionDays = number;
 export type TagKey = string;
 export type TagValue = string;
 export type RequestTagMap = { [key: string]: string | undefined };
-const RequestTagMap = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateDbBackupInput {
   name: string;
   dbResourceId: string;
   retentionDays?: number;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDbBackupInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateDbBackupInput>;
 export type DbBackupId = string;
 export type Arn = string;
 export type DbBackupStatus =
@@ -161,8 +161,6 @@ export type DbBackupStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-const DbBackupStatus = S.String;
-
 export type DbBackupType =
   | "HOURLY"
   | "DAILY"
@@ -172,29 +170,22 @@ export type DbBackupType =
   | "ON_DEMAND"
   | "CONTINUOUS"
   | (string & {});
-const DbBackupType = S.String;
-
 export type EngineType =
   | "INFLUXDB_V2"
   | "INFLUXDB_V3_CORE"
   | "INFLUXDB_V3_ENTERPRISE"
   | (string & {});
-const EngineType = S.String;
-
 export type ResourceDeploymentType =
   | "SINGLE_AZ"
   | "WITH_MULTIAZ_STANDBY"
   | "MULTI_NODE_READ_REPLICAS"
   | (string & {});
-const ResourceDeploymentType = S.String;
-
 export type KmsKeyId = string;
 export interface ClusterConfiguration {
   ingestQueryInstances?: number;
   queryOnlyInstances?: number;
   dedicatedCompactor?: boolean;
 }
-const ClusterConfiguration = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ClusterConfiguration>;
 export type DbParameterGroupId = string;
 export type DbInstanceType =
   | "db.influx.medium"
@@ -207,47 +198,31 @@ export type DbInstanceType =
   | "db.influx.16xlarge"
   | "db.influx.24xlarge"
   | (string & {});
-const DbInstanceType = S.String;
-
 export interface S3Configuration {
   bucketName: string;
   enabled: boolean;
 }
-const S3Configuration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<S3Configuration>;
 export interface LogDeliveryConfiguration {
   s3Configuration: S3Configuration;
 }
-const LogDeliveryConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<LogDeliveryConfiguration>;
 export type FailoverMode = "AUTOMATIC" | "NO_FAILOVER" | (string & {});
-const FailoverMode = S.String;
-
 export type DbStorageType =
   | "InfluxIOIncludedT1"
   | "InfluxIOIncludedT2"
   | "InfluxIOIncludedT3"
   | (string & {});
-const DbStorageType = S.String;
-
 export type AllocatedStorage = number;
 export type VpcSubnetId = string;
 export type VpcSubnetIdList = string[];
-const VpcSubnetIdList = /*@__PURE__*/ __L.at(__c0, 5);
 export type VpcSecurityGroupId = string;
 export type VpcSecurityGroupIdList = string[];
-const VpcSecurityGroupIdList = VpcSubnetIdList as any as S.Schema<VpcSecurityGroupIdList>;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
-const NetworkType = S.String;
-
 export type IanaTimezone = string;
 export type MaintenanceWindow = string;
 export interface MaintenanceSchedule {
   timezone: string;
   preferredMaintenanceWindow: string;
 }
-const MaintenanceSchedule = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<MaintenanceSchedule>;
 export interface CreateDbBackupOutput {
   id: string;
   name?: string;
@@ -275,7 +250,6 @@ export interface CreateDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-const CreateDbBackupOutput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateDbBackupOutput>;
 export type DbClusterName = string;
 export type Username = string | redacted.Redacted<string>;
 export type Password = string | redacted.Redacted<string>;
@@ -284,8 +258,6 @@ export type Bucket = string;
 export type Port = number;
 export type DbParameterGroupIdentifier = string;
 export type ClusterDeploymentType = "MULTI_NODE_READ_REPLICAS" | (string & {});
-const ClusterDeploymentType = S.String;
-
 export type AutomatedDbBackupType =
   | "HOURLY"
   | "DAILY"
@@ -294,8 +266,6 @@ export type AutomatedDbBackupType =
   | "CUSTOM_SCHEDULE"
   | "CONTINUOUS"
   | (string & {});
-const AutomatedDbBackupType = S.String;
-
 export type AutomatedBackupRetentionDays = number;
 export type AwsCronSchedule = string;
 export interface DbBackupConfiguration {
@@ -304,12 +274,7 @@ export interface DbBackupConfiguration {
   enabled: boolean;
   customSchedule?: string;
 }
-const DbBackupConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DbBackupConfiguration>;
 export type DbBackupConfigurationInputList = DbBackupConfiguration[];
-const DbBackupConfigurationInputList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface CreateDbClusterInput {
   name: string;
   username?: string | redacted.Redacted<string>;
@@ -333,7 +298,6 @@ export interface CreateDbClusterInput {
   kmsKeyId?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDbClusterInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateDbClusterInput>;
 export type DbClusterId = string;
 export type ClusterStatus =
   | "CREATING"
@@ -350,20 +314,12 @@ export type ClusterStatus =
   | "RESTORING"
   | "RESTORE_FAILED"
   | (string & {});
-const ClusterStatus = S.String;
-
 export interface CreateDbClusterOutput {
   dbClusterId?: string;
   dbClusterStatus?: ClusterStatus;
 }
-const CreateDbClusterOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateDbClusterOutput>;
 export type DbInstanceName = string;
 export type DeploymentType = "SINGLE_AZ" | "WITH_MULTIAZ_STANDBY" | (string & {});
-const DeploymentType = S.String;
-
 export interface CreateDbInstanceInput {
   name: string;
   username?: string | redacted.Redacted<string>;
@@ -386,10 +342,6 @@ export interface CreateDbInstanceInput {
   dbBackupConfigurations?: DbBackupConfiguration[];
   kmsKeyId?: string;
 }
-const CreateDbInstanceInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateDbInstanceInput>;
 export type DbInstanceId = string;
 export type Status =
   | "CREATING"
@@ -407,8 +359,6 @@ export type Status =
   | "RESTORING"
   | "RESTORE_FAILED"
   | (string & {});
-const Status = S.String;
-
 export type InstanceMode =
   | "PRIMARY"
   | "STANDBY"
@@ -418,10 +368,7 @@ export type InstanceMode =
   | "COMPACT"
   | "PROCESS"
   | (string & {});
-const InstanceMode = S.String;
-
 export type InstanceModeList = InstanceMode[];
-const InstanceModeList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface DbBackupConfigurationOutput {
   type: AutomatedDbBackupType;
   retentionDays: number;
@@ -429,12 +376,7 @@ export interface DbBackupConfigurationOutput {
   customSchedule?: string;
   nextAutomatedBackupTime?: Date;
 }
-const DbBackupConfigurationOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DbBackupConfigurationOutput>;
 export type DbBackupConfigurationOutputList = DbBackupConfigurationOutput[];
-const DbBackupConfigurationOutputList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateDbInstanceOutput {
   id: string;
   name: string;
@@ -464,17 +406,9 @@ export interface CreateDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-const CreateDbInstanceOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateDbInstanceOutput>;
 export type DbParameterGroupName = string;
 export type LogLevel = "debug" | "info" | "error" | (string & {});
-const LogLevel = S.String;
-
 export type TracingType = "log" | "jaeger" | "disabled" | (string & {});
-const TracingType = S.String;
-
 export type DurationType =
   | "hours"
   | "minutes"
@@ -482,13 +416,10 @@ export type DurationType =
   | "milliseconds"
   | "days"
   | (string & {});
-const DurationType = S.String;
-
 export interface Duration {
   durationType: DurationType;
   value: number;
 }
-const Duration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Duration>;
 export interface InfluxDBv2Parameters {
   fluxLogEnabled?: boolean;
   logLevel?: LogLevel;
@@ -525,17 +456,11 @@ export interface InfluxDBv2Parameters {
   storageWalMaxWriteDelay?: Duration;
   uiDisabled?: boolean;
 }
-const InfluxDBv2Parameters = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<InfluxDBv2Parameters>;
 export type LogFormats = "full" | (string & {});
-const LogFormats = S.String;
-
 export type DataFusionRuntimeType = "multi-thread" | "multi-thread-alt" | (string & {});
-const DataFusionRuntimeType = S.String;
-
 export type PercentOrAbsoluteLong =
   | { percent: string; absolute?: never }
   | { percent?: never; absolute: number };
-const PercentOrAbsoluteLong = /*@__PURE__*/ __L.at(__c2, 3);
 export type PluginRepositorySecretArn = string;
 export interface InfluxDBv3CoreParameters {
   queryFileLimit?: number;
@@ -580,10 +505,6 @@ export interface InfluxDBv3CoreParameters {
   pluginRepositoryUrl?: string;
   pluginRepositorySecretArn?: string;
 }
-const InfluxDBv3CoreParameters = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<InfluxDBv3CoreParameters>;
 export interface InfluxDBv3EnterpriseParameters {
   queryFileLimit?: number;
   queryLogSize?: number;
@@ -640,10 +561,6 @@ export interface InfluxDBv3EnterpriseParameters {
   replicationInterval?: Duration;
   catalogSyncInterval?: Duration;
 }
-const InfluxDBv3EnterpriseParameters = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<InfluxDBv3EnterpriseParameters>;
 export type Parameters =
   | { InfluxDBv2: InfluxDBv2Parameters; InfluxDBv3Core?: never; InfluxDBv3Enterprise?: never }
   | { InfluxDBv2?: never; InfluxDBv3Core: InfluxDBv3CoreParameters; InfluxDBv3Enterprise?: never }
@@ -652,17 +569,12 @@ export type Parameters =
       InfluxDBv3Core?: never;
       InfluxDBv3Enterprise: InfluxDBv3EnterpriseParameters;
     };
-const Parameters = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateDbParameterGroupInput {
   name: string;
   description?: string;
   parameters?: Parameters;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDbParameterGroupInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateDbParameterGroupInput>;
 export interface CreateDbParameterGroupOutput {
   id: string;
   name: string;
@@ -670,14 +582,9 @@ export interface CreateDbParameterGroupOutput {
   description?: string;
   parameters?: Parameters;
 }
-const CreateDbParameterGroupOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateDbParameterGroupOutput>;
 export interface DeleteDbBackupInput {
   identifier: string;
 }
-const DeleteDbBackupInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DeleteDbBackupInput>;
 export interface DeleteDbBackupOutput {
   id: string;
   name?: string;
@@ -705,28 +612,18 @@ export interface DeleteDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-const DeleteDbBackupOutput = CreateDbBackupOutput as any as S.Schema<DeleteDbBackupOutput>;
 export interface DeleteDbClusterInput {
   dbClusterId: string;
   retainAutomatedBackups?: boolean;
 }
-const DeleteDbClusterInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteDbClusterInput>;
 export interface DeleteDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-const DeleteDbClusterOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteDbClusterOutput>;
 export type DbInstanceIdentifier = string;
 export interface DeleteDbInstanceInput {
   identifier: string;
   retainAutomatedBackups?: boolean;
 }
-const DeleteDbInstanceInput = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteDbInstanceInput>;
 export interface DeleteDbInstanceOutput {
   id: string;
   name: string;
@@ -756,11 +653,9 @@ export interface DeleteDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-const DeleteDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<DeleteDbInstanceOutput>;
 export interface GetDbBackupInput {
   identifier: string;
 }
-const GetDbBackupInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetDbBackupInput>;
 export interface GetDbBackupOutput {
   id: string;
   name?: string;
@@ -788,11 +683,9 @@ export interface GetDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-const GetDbBackupOutput = CreateDbBackupOutput as any as S.Schema<GetDbBackupOutput>;
 export interface GetDbClusterInput {
   dbClusterId: string;
 }
-const GetDbClusterInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetDbClusterInput>;
 export interface GetDbClusterOutput {
   id: string;
   name: string;
@@ -822,11 +715,9 @@ export interface GetDbClusterOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-const GetDbClusterOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetDbClusterOutput>;
 export interface GetDbInstanceInput {
   identifier: string;
 }
-const GetDbInstanceInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetDbInstanceInput>;
 export interface GetDbInstanceOutput {
   id: string;
   name: string;
@@ -856,14 +747,9 @@ export interface GetDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-const GetDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<GetDbInstanceOutput>;
 export interface GetDbParameterGroupInput {
   identifier: string;
 }
-const GetDbParameterGroupInput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetDbParameterGroupInput>;
 export interface GetDbParameterGroupOutput {
   id: string;
   name: string;
@@ -871,8 +757,6 @@ export interface GetDbParameterGroupOutput {
   description?: string;
   parameters?: Parameters;
 }
-const GetDbParameterGroupOutput =
-  CreateDbParameterGroupOutput as any as S.Schema<GetDbParameterGroupOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListDbBackupsInput {
@@ -880,7 +764,6 @@ export interface ListDbBackupsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDbBackupsInput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListDbBackupsInput>;
 export interface DbBackupSummary {
   id: string;
   name?: string;
@@ -894,19 +777,15 @@ export interface DbBackupSummary {
   deploymentType?: ResourceDeploymentType;
   kmsKeyId?: string;
 }
-const DbBackupSummary = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DbBackupSummary>;
 export type DbBackupSummaryList = DbBackupSummary[];
-const DbBackupSummaryList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListDbBackupsOutput {
   items: DbBackupSummary[];
   nextToken?: string;
 }
-const ListDbBackupsOutput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListDbBackupsOutput>;
 export interface ListDbClustersInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDbClustersInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListDbClustersInput>;
 export interface DbClusterSummary {
   id: string;
   name: string;
@@ -922,19 +801,15 @@ export interface DbClusterSummary {
   allocatedStorage?: number;
   engineType?: EngineType;
 }
-const DbClusterSummary = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DbClusterSummary>;
 export type DbClusterSummaryList = DbClusterSummary[];
-const DbClusterSummaryList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListDbClustersOutput {
   items: DbClusterSummary[];
   nextToken?: string;
 }
-const ListDbClustersOutput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListDbClustersOutput>;
 export interface ListDbInstancesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDbInstancesInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListDbInstancesInput>;
 export interface DbInstanceSummary {
   id: string;
   name: string;
@@ -948,26 +823,16 @@ export interface DbInstanceSummary {
   allocatedStorage?: number;
   deploymentType?: DeploymentType;
 }
-const DbInstanceSummary = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DbInstanceSummary>;
 export type DbInstanceSummaryList = DbInstanceSummary[];
-const DbInstanceSummaryList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListDbInstancesOutput {
   items: DbInstanceSummary[];
   nextToken?: string;
 }
-const ListDbInstancesOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListDbInstancesOutput>;
 export interface ListDbInstancesForClusterInput {
   dbClusterId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDbInstancesForClusterInput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListDbInstancesForClusterInput>;
 export interface DbInstanceForClusterSummary {
   id: string;
   name: string;
@@ -983,82 +848,44 @@ export interface DbInstanceForClusterSummary {
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
 }
-const DbInstanceForClusterSummary = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DbInstanceForClusterSummary>;
 export type DbInstanceForClusterSummaryList = DbInstanceForClusterSummary[];
-const DbInstanceForClusterSummaryList = /*@__PURE__*/ __L.at(__c6, 0);
 export interface ListDbInstancesForClusterOutput {
   items: DbInstanceForClusterSummary[];
   nextToken?: string;
 }
-const ListDbInstancesForClusterOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListDbInstancesForClusterOutput>;
 export interface ListDbParameterGroupsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDbParameterGroupsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListDbParameterGroupsInput>;
 export interface DbParameterGroupSummary {
   id: string;
   name: string;
   arn: string;
   description?: string;
 }
-const DbParameterGroupSummary = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DbParameterGroupSummary>;
 export type DbParameterGroupSummaryList = DbParameterGroupSummary[];
-const DbParameterGroupSummaryList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface ListDbParameterGroupsOutput {
   items: DbParameterGroupSummary[];
   nextToken?: string;
 }
-const ListDbParameterGroupsOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListDbParameterGroupsOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-const ResponseTagMap = RequestTagMap as any as S.Schema<ResponseTagMap>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type DbInstanceIdList = string[];
-const DbInstanceIdList = VpcSubnetIdList as any as S.Schema<DbInstanceIdList>;
 export interface RebootDbClusterInput {
   dbClusterId: string;
   instanceIds?: string[];
 }
-const RebootDbClusterInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<RebootDbClusterInput>;
 export interface RebootDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-const RebootDbClusterOutput = DeleteDbClusterOutput as any as S.Schema<RebootDbClusterOutput>;
 export interface RebootDbInstanceInput {
   identifier: string;
 }
-const RebootDbInstanceInput = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<RebootDbInstanceInput>;
 export interface RebootDbInstanceOutput {
   id: string;
   name: string;
@@ -1088,11 +915,8 @@ export interface RebootDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-const RebootDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<RebootDbInstanceOutput>;
 export type DbResourceName = string;
 export type RestoreMode = "NEW_RESOURCE" | "REPLACE_EXISTING" | (string & {});
-const RestoreMode = S.String;
-
 export interface RestoreFromDbBackupInput {
   name: string;
   dbBackupId: string;
@@ -1110,16 +934,8 @@ export interface RestoreFromDbBackupInput {
   dbBackupConfigurations?: DbBackupConfiguration[];
   kmsKeyId?: string;
 }
-const RestoreFromDbBackupInput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RestoreFromDbBackupInput>;
 export type RestoreStatus = "RESTORING" | (string & {});
-const RestoreStatus = S.String;
-
 export type ResourceType = "DB_INSTANCE" | "DB_CLUSTER" | (string & {});
-const ResourceType = S.String;
-
 export interface RestoreFromDbBackupOutput {
   restoredDbResourceId?: string;
   restoreStatus?: RestoreStatus;
@@ -1127,26 +943,17 @@ export interface RestoreFromDbBackupOutput {
   engineType?: EngineType;
   deploymentType?: ResourceDeploymentType;
 }
-const RestoreFromDbBackupOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<RestoreFromDbBackupOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-const TagKeys = VpcSubnetIdList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDbClusterInput {
   dbClusterId: string;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
@@ -1157,11 +964,9 @@ export interface UpdateDbClusterInput {
   maintenanceSchedule?: MaintenanceSchedule;
   dbBackupConfigurations?: DbBackupConfiguration[];
 }
-const UpdateDbClusterInput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<UpdateDbClusterInput>;
 export interface UpdateDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-const UpdateDbClusterOutput = DeleteDbClusterOutput as any as S.Schema<UpdateDbClusterOutput>;
 export interface UpdateDbInstanceInput {
   identifier: string;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
@@ -1174,10 +979,6 @@ export interface UpdateDbInstanceInput {
   maintenanceSchedule?: MaintenanceSchedule;
   dbBackupConfigurations?: DbBackupConfiguration[];
 }
-const UpdateDbInstanceInput = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<UpdateDbInstanceInput>;
 export interface UpdateDbInstanceOutput {
   id: string;
   name: string;
@@ -1207,10 +1008,7 @@ export interface UpdateDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-const UpdateDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<UpdateDbInstanceOutput>;
 export type ValidationExceptionReason = "FIELD_VALIDATION_FAILED" | "OTHER" | (string & {});
-const ValidationExceptionReason = S.String;
-
 export type CreateDbBackupError =
   | AccessDeniedException
   | ConflictException
@@ -1229,8 +1027,8 @@ export const createDbBackup: API.OperationMethod<
   CreateDbBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDbBackupInput,
-  output: CreateDbBackupOutput,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateDbBackupInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateDbBackupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1263,8 +1061,8 @@ export const createDbCluster: API.OperationMethod<
   CreateDbClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDbClusterInput,
-  output: CreateDbClusterOutput,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateDbClusterInput>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateDbClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1297,8 +1095,8 @@ export const createDbInstance: API.OperationMethod<
   CreateDbInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDbInstanceInput,
-  output: CreateDbInstanceOutput,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateDbInstanceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateDbInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1331,8 +1129,8 @@ export const createDbParameterGroup: API.OperationMethod<
   CreateDbParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDbParameterGroupInput,
-  output: CreateDbParameterGroupOutput,
+  input: __S(23, __c2, 7) as any as S.Schema<CreateDbParameterGroupInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<CreateDbParameterGroupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1364,8 +1162,8 @@ export const deleteDbBackup: API.OperationMethod<
   DeleteDbBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDbBackupInput,
-  output: DeleteDbBackupOutput,
+  input: __S(25, __c3, 1) as any as S.Schema<DeleteDbBackupInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<DeleteDbBackupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1396,8 +1194,8 @@ export const deleteDbCluster: API.OperationMethod<
   DeleteDbClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDbClusterInput,
-  output: DeleteDbClusterOutput,
+  input: __S(26, __c3, 2) as any as S.Schema<DeleteDbClusterInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteDbClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1428,8 +1226,8 @@ export const deleteDbInstance: API.OperationMethod<
   DeleteDbInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDbInstanceInput,
-  output: DeleteDbInstanceOutput,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteDbInstanceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDbInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1459,8 +1257,8 @@ export const getDbBackup: API.OperationMethod<
   GetDbBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDbBackupInput,
-  output: GetDbBackupOutput,
+  input: __S(29, __c3, 5) as any as S.Schema<GetDbBackupInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<GetDbBackupOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1489,8 +1287,8 @@ export const getDbCluster: API.OperationMethod<
   GetDbClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDbClusterInput,
-  output: GetDbClusterOutput,
+  input: __S(30, __c3, 6) as any as S.Schema<GetDbClusterInput>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetDbClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1519,8 +1317,8 @@ export const getDbInstance: API.OperationMethod<
   GetDbInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDbInstanceInput,
-  output: GetDbInstanceOutput,
+  input: __S(32, __c4, 0) as any as S.Schema<GetDbInstanceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetDbInstanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1549,8 +1347,8 @@ export const getDbParameterGroup: API.OperationMethod<
   GetDbParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDbParameterGroupInput,
-  output: GetDbParameterGroupOutput,
+  input: __S(33, __c4, 1) as any as S.Schema<GetDbParameterGroupInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetDbParameterGroupOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1580,8 +1378,8 @@ export const listDbBackups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DbBackupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDbBackupsInput,
-  output: ListDbBackupsOutput,
+  input: __S(34, __c4, 2) as any as S.Schema<ListDbBackupsInput>,
+  output: __S(37, __c4, 5) as any as S.Schema<ListDbBackupsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1617,8 +1415,8 @@ export const listDbClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DbClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDbClustersInput,
-  output: ListDbClustersOutput,
+  input: __S(38, __c4, 6) as any as S.Schema<ListDbClustersInput>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListDbClustersOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1654,8 +1452,8 @@ export const listDbInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DbInstanceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDbInstancesInput,
-  output: ListDbInstancesOutput,
+  input: __S(42, __c5, 2) as any as S.Schema<ListDbInstancesInput>,
+  output: __S(45, __c5, 5) as any as S.Schema<ListDbInstancesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1691,8 +1489,8 @@ export const listDbInstancesForCluster: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DbInstanceForClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDbInstancesForClusterInput,
-  output: ListDbInstancesForClusterOutput,
+  input: __S(46, __c5, 6) as any as S.Schema<ListDbInstancesForClusterInput>,
+  output: __S(49, __c6, 1) as any as S.Schema<ListDbInstancesForClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1728,8 +1526,8 @@ export const listDbParameterGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DbParameterGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDbParameterGroupsInput,
-  output: ListDbParameterGroupsOutput,
+  input: __S(50, __c6, 2) as any as S.Schema<ListDbParameterGroupsInput>,
+  output: __S(53, __c6, 5) as any as S.Schema<ListDbParameterGroupsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1758,8 +1556,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1783,8 +1581,8 @@ export const rebootDbCluster: API.OperationMethod<
   RebootDbClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootDbClusterInput,
-  output: RebootDbClusterOutput,
+  input: __S(56, __c7, 0) as any as S.Schema<RebootDbClusterInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<RebootDbClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1815,8 +1613,8 @@ export const rebootDbInstance: API.OperationMethod<
   RebootDbInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootDbInstanceInput,
-  output: RebootDbInstanceOutput,
+  input: __S(57, __c7, 1) as any as S.Schema<RebootDbInstanceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<RebootDbInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1848,8 +1646,8 @@ export const restoreFromDbBackup: API.OperationMethod<
   RestoreFromDbBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreFromDbBackupInput,
-  output: RestoreFromDbBackupOutput,
+  input: __S(58, __c7, 2) as any as S.Schema<RestoreFromDbBackupInput>,
+  output: __S(59, __c7, 3) as any as S.Schema<RestoreFromDbBackupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1877,8 +1675,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<TagResourceRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1895,8 +1693,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<UntagResourceRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1920,8 +1718,8 @@ export const updateDbCluster: API.OperationMethod<
   UpdateDbClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDbClusterInput,
-  output: UpdateDbClusterOutput,
+  input: __S(63, __c7, 7) as any as S.Schema<UpdateDbClusterInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<UpdateDbClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1952,8 +1750,8 @@ export const updateDbInstance: API.OperationMethod<
   UpdateDbInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDbInstanceInput,
-  output: UpdateDbInstanceOutput,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateDbInstanceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateDbInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1978,7 +1776,7 @@ function __c0(j: number): any {
           name: S.String,
           dbResourceId: S.String,
           retentionDays: S.optional(S.Number),
-          tags: S.optional(RequestTagMap),
+          tags: S.optional(__S(0, __c0, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDbBackupInput" });
     case 2:
@@ -1994,7 +1792,7 @@ function __c0(j: number): any {
         identifier: "S3Configuration",
       });
     case 4:
-      return S.suspend(() => S.Struct({ s3Configuration: S3Configuration })).annotate({
+      return S.suspend(() => S.Struct({ s3Configuration: __S(3, __c0, 3) })).annotate({
         identifier: "LogDeliveryConfiguration",
       });
     case 5:
@@ -2009,28 +1807,28 @@ function __c0(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           arn: S.String,
-          status: S.optional(DbBackupStatus),
+          status: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           expiresAfter: S.optional(S.String),
           dbResourceId: S.optional(S.String),
-          type: S.optional(DbBackupType),
-          engineType: S.optional(EngineType),
-          deploymentType: S.optional(ResourceDeploymentType),
+          type: S.optional(S.String),
+          engineType: S.optional(S.String),
+          deploymentType: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          clusterConfiguration: S.optional(ClusterConfiguration),
+          clusterConfiguration: S.optional(__S(2, __c0, 2)),
           dbParameterGroupId: S.optional(S.String),
-          dbInstanceType: S.optional(DbInstanceType),
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-          failoverMode: S.optional(FailoverMode),
-          dbStorageType: S.optional(DbStorageType),
+          dbInstanceType: S.optional(S.String),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
+          failoverMode: S.optional(S.String),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          vpcSubnetIds: S.optional(VpcSubnetIdList),
-          vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          vpcSubnetIds: S.optional(__S(5, __c0, 5)),
+          vpcSecurityGroupIds: S.optional(__S(5, __c0, 5)),
           publiclyAccessible: S.optional(S.Boolean),
           port: S.optional(S.Number),
-          networkType: S.optional(NetworkType),
+          networkType: S.optional(S.String),
           influxAuthParametersSecretArn: S.optional(S.String),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CreateDbBackupOutput" });
   }
@@ -2040,14 +1838,14 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: AutomatedDbBackupType,
+          type: S.String,
           retentionDays: S.Number,
           enabled: S.Boolean,
           customSchedule: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbBackupConfiguration" });
     case 1:
-      return S.Array(DbBackupConfiguration);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2058,25 +1856,25 @@ function __c1(j: number): any {
           bucket: S.optional(S.String),
           port: S.optional(S.Number),
           dbParameterGroupIdentifier: S.optional(S.String),
-          dbInstanceType: DbInstanceType,
-          dbStorageType: S.optional(DbStorageType),
+          dbInstanceType: S.String,
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          networkType: S.optional(NetworkType),
+          networkType: S.optional(S.String),
           publiclyAccessible: S.optional(S.Boolean),
-          vpcSubnetIds: VpcSubnetIdList,
-          vpcSecurityGroupIds: VpcSecurityGroupIdList,
-          deploymentType: S.optional(ClusterDeploymentType),
-          failoverMode: S.optional(FailoverMode),
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
-          dbBackupConfigurations: S.optional(DbBackupConfigurationInputList),
+          vpcSubnetIds: __S(5, __c0, 5),
+          vpcSecurityGroupIds: __S(5, __c0, 5),
+          deploymentType: S.optional(S.String),
+          failoverMode: S.optional(S.String),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
+          dbBackupConfigurations: S.optional(__S(9, __c1, 1)),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(RequestTagMap),
+          tags: S.optional(__S(0, __c0, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDbClusterInput" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ dbClusterId: S.optional(S.String), dbClusterStatus: S.optional(ClusterStatus) }),
+        S.Struct({ dbClusterId: S.optional(S.String), dbClusterStatus: S.optional(S.String) }),
       ).annotate({ identifier: "CreateDbClusterOutput" });
     case 4:
       return S.suspend(() =>
@@ -2086,29 +1884,29 @@ function __c1(j: number): any {
           password: SensitiveString,
           organization: S.optional(S.String),
           bucket: S.optional(S.String),
-          dbInstanceType: DbInstanceType,
-          vpcSubnetIds: VpcSubnetIdList,
-          vpcSecurityGroupIds: VpcSecurityGroupIdList,
+          dbInstanceType: S.String,
+          vpcSubnetIds: __S(5, __c0, 5),
+          vpcSecurityGroupIds: __S(5, __c0, 5),
           publiclyAccessible: S.optional(S.Boolean),
-          dbStorageType: S.optional(DbStorageType),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.Number,
           dbParameterGroupIdentifier: S.optional(S.String),
-          deploymentType: S.optional(DeploymentType),
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
-          tags: S.optional(RequestTagMap),
+          deploymentType: S.optional(S.String),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           port: S.optional(S.Number),
-          networkType: S.optional(NetworkType),
-          dbBackupConfigurations: S.optional(DbBackupConfigurationInputList),
+          networkType: S.optional(S.String),
+          dbBackupConfigurations: S.optional(__S(9, __c1, 1)),
           kmsKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDbInstanceInput" });
     case 5:
-      return S.Array(InstanceMode);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: AutomatedDbBackupType,
+          type: S.String,
           retentionDays: S.Number,
           enabled: S.Boolean,
           customSchedule: S.optional(S.String),
@@ -2120,7 +1918,7 @@ function __c1(j: number): any {
         identifier: "DbBackupConfigurationOutput",
       });
     case 7:
-      return S.Array(DbBackupConfigurationOutput);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -2131,50 +1929,50 @@ function __c2(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(Status),
+          status: S.optional(S.String),
           endpoint: S.optional(S.String),
           port: S.optional(S.Number),
-          networkType: S.optional(NetworkType),
-          dbInstanceType: S.optional(DbInstanceType),
-          dbStorageType: S.optional(DbStorageType),
+          networkType: S.optional(S.String),
+          dbInstanceType: S.optional(S.String),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          deploymentType: S.optional(DeploymentType),
-          vpcSubnetIds: VpcSubnetIdList,
+          deploymentType: S.optional(S.String),
+          vpcSubnetIds: __S(5, __c0, 5),
           publiclyAccessible: S.optional(S.Boolean),
-          vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          vpcSecurityGroupIds: S.optional(__S(5, __c0, 5)),
           dbParameterGroupIdentifier: S.optional(S.String),
           availabilityZone: S.optional(S.String),
           secondaryAvailabilityZone: S.optional(S.String),
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
           influxAuthParametersSecretArn: S.optional(S.String),
           dbClusterId: S.optional(S.String),
-          instanceMode: S.optional(InstanceMode),
-          instanceModes: S.optional(InstanceModeList),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
+          instanceMode: S.optional(S.String),
+          instanceModes: S.optional(__S(13, __c1, 5)),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
           lastMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           nextMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dbBackupConfigurations: S.optional(DbBackupConfigurationOutputList),
+          dbBackupConfigurations: S.optional(__S(15, __c1, 7)),
           kmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateDbInstanceOutput" });
     case 1:
-      return S.suspend(() => S.Struct({ durationType: DurationType, value: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ durationType: S.String, value: S.Number })).annotate({
         identifier: "Duration",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           fluxLogEnabled: S.optional(S.Boolean),
-          logLevel: S.optional(LogLevel),
+          logLevel: S.optional(S.String),
           noTasks: S.optional(S.Boolean),
           queryConcurrency: S.optional(S.Number),
           queryQueueSize: S.optional(S.Number),
-          tracingType: S.optional(TracingType),
+          tracingType: S.optional(S.String),
           metricsDisabled: S.optional(S.Boolean),
-          httpIdleTimeout: S.optional(Duration),
-          httpReadHeaderTimeout: S.optional(Duration),
-          httpReadTimeout: S.optional(Duration),
-          httpWriteTimeout: S.optional(Duration),
+          httpIdleTimeout: S.optional(__S(17, __c2, 1)),
+          httpReadHeaderTimeout: S.optional(__S(17, __c2, 1)),
+          httpReadTimeout: S.optional(__S(17, __c2, 1)),
+          httpWriteTimeout: S.optional(__S(17, __c2, 1)),
           influxqlMaxSelectBuckets: S.optional(S.Number),
           influxqlMaxSelectPoint: S.optional(S.Number),
           influxqlMaxSelectSeries: S.optional(S.Number),
@@ -2186,17 +1984,17 @@ function __c2(j: number): any {
           sessionRenewDisabled: S.optional(S.Boolean),
           storageCacheMaxMemorySize: S.optional(S.Number),
           storageCacheSnapshotMemorySize: S.optional(S.Number),
-          storageCacheSnapshotWriteColdDuration: S.optional(Duration),
-          storageCompactFullWriteColdDuration: S.optional(Duration),
+          storageCacheSnapshotWriteColdDuration: S.optional(__S(17, __c2, 1)),
+          storageCompactFullWriteColdDuration: S.optional(__S(17, __c2, 1)),
           storageCompactThroughputBurst: S.optional(S.Number),
           storageMaxConcurrentCompactions: S.optional(S.Number),
           storageMaxIndexLogFileSize: S.optional(S.Number),
           storageNoValidateFieldSize: S.optional(S.Boolean),
-          storageRetentionCheckInterval: S.optional(Duration),
+          storageRetentionCheckInterval: S.optional(__S(17, __c2, 1)),
           storageSeriesFileMaxConcurrentSnapshotCompactions: S.optional(S.Number),
           storageSeriesIdSetCacheSize: S.optional(S.Number),
           storageWalMaxConcurrentWrites: S.optional(S.Number),
-          storageWalMaxWriteDelay: S.optional(Duration),
+          storageWalMaxWriteDelay: S.optional(__S(17, __c2, 1)),
           uiDisabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InfluxDBv2Parameters" });
@@ -2211,42 +2009,42 @@ function __c2(j: number): any {
           queryFileLimit: S.optional(S.Number),
           queryLogSize: S.optional(S.Number),
           logFilter: S.optional(S.String),
-          logFormat: S.optional(LogFormats),
+          logFormat: S.optional(S.String),
           dataFusionNumThreads: S.optional(S.Number),
-          dataFusionRuntimeType: S.optional(DataFusionRuntimeType),
+          dataFusionRuntimeType: S.optional(S.String),
           dataFusionRuntimeDisableLifoSlot: S.optional(S.Boolean),
           dataFusionRuntimeEventInterval: S.optional(S.Number),
           dataFusionRuntimeGlobalQueueInterval: S.optional(S.Number),
           dataFusionRuntimeMaxBlockingThreads: S.optional(S.Number),
           dataFusionRuntimeMaxIoEventsPerTick: S.optional(S.Number),
-          dataFusionRuntimeThreadKeepAlive: S.optional(Duration),
+          dataFusionRuntimeThreadKeepAlive: S.optional(__S(17, __c2, 1)),
           dataFusionRuntimeThreadPriority: S.optional(S.Number),
           dataFusionMaxParquetFanout: S.optional(S.Number),
           dataFusionUseCachedParquetLoader: S.optional(S.Boolean),
           dataFusionConfig: S.optional(S.String),
           maxHttpRequestSize: S.optional(S.Number),
-          forceSnapshotMemThreshold: S.optional(PercentOrAbsoluteLong),
+          forceSnapshotMemThreshold: S.optional(__S(19, __c2, 3)),
           walSnapshotSize: S.optional(S.Number),
           walMaxWriteBufferSize: S.optional(S.Number),
           snapshottedWalFilesToKeep: S.optional(S.Number),
-          preemptiveCacheAge: S.optional(Duration),
+          preemptiveCacheAge: S.optional(__S(17, __c2, 1)),
           parquetMemCachePrunePercentage: S.optional(S.Number),
-          parquetMemCachePruneInterval: S.optional(Duration),
+          parquetMemCachePruneInterval: S.optional(__S(17, __c2, 1)),
           disableParquetMemCache: S.optional(S.Boolean),
-          parquetMemCacheQueryPathDuration: S.optional(Duration),
-          lastCacheEvictionInterval: S.optional(Duration),
-          distinctCacheEvictionInterval: S.optional(Duration),
-          gen1Duration: S.optional(Duration),
-          execMemPoolBytes: S.optional(PercentOrAbsoluteLong),
-          parquetMemCacheSize: S.optional(PercentOrAbsoluteLong),
+          parquetMemCacheQueryPathDuration: S.optional(__S(17, __c2, 1)),
+          lastCacheEvictionInterval: S.optional(__S(17, __c2, 1)),
+          distinctCacheEvictionInterval: S.optional(__S(17, __c2, 1)),
+          gen1Duration: S.optional(__S(17, __c2, 1)),
+          execMemPoolBytes: S.optional(__S(19, __c2, 3)),
+          parquetMemCacheSize: S.optional(__S(19, __c2, 3)),
           walReplayFailOnError: S.optional(S.Boolean),
           walReplayConcurrencyLimit: S.optional(S.Number),
           tableIndexCacheMaxEntries: S.optional(S.Number),
           tableIndexCacheConcurrencyLimit: S.optional(S.Number),
-          gen1LookbackDuration: S.optional(Duration),
-          retentionCheckInterval: S.optional(Duration),
-          deleteGracePeriod: S.optional(Duration),
-          hardDeleteDefaultDuration: S.optional(Duration),
+          gen1LookbackDuration: S.optional(__S(17, __c2, 1)),
+          retentionCheckInterval: S.optional(__S(17, __c2, 1)),
+          deleteGracePeriod: S.optional(__S(17, __c2, 1)),
+          hardDeleteDefaultDuration: S.optional(__S(17, __c2, 1)),
           pluginRepositoryUrl: S.optional(S.String),
           pluginRepositorySecretArn: S.optional(S.String),
         }),
@@ -2257,42 +2055,42 @@ function __c2(j: number): any {
           queryFileLimit: S.optional(S.Number),
           queryLogSize: S.optional(S.Number),
           logFilter: S.optional(S.String),
-          logFormat: S.optional(LogFormats),
+          logFormat: S.optional(S.String),
           dataFusionNumThreads: S.optional(S.Number),
-          dataFusionRuntimeType: S.optional(DataFusionRuntimeType),
+          dataFusionRuntimeType: S.optional(S.String),
           dataFusionRuntimeDisableLifoSlot: S.optional(S.Boolean),
           dataFusionRuntimeEventInterval: S.optional(S.Number),
           dataFusionRuntimeGlobalQueueInterval: S.optional(S.Number),
           dataFusionRuntimeMaxBlockingThreads: S.optional(S.Number),
           dataFusionRuntimeMaxIoEventsPerTick: S.optional(S.Number),
-          dataFusionRuntimeThreadKeepAlive: S.optional(Duration),
+          dataFusionRuntimeThreadKeepAlive: S.optional(__S(17, __c2, 1)),
           dataFusionRuntimeThreadPriority: S.optional(S.Number),
           dataFusionMaxParquetFanout: S.optional(S.Number),
           dataFusionUseCachedParquetLoader: S.optional(S.Boolean),
           dataFusionConfig: S.optional(S.String),
           maxHttpRequestSize: S.optional(S.Number),
-          forceSnapshotMemThreshold: S.optional(PercentOrAbsoluteLong),
+          forceSnapshotMemThreshold: S.optional(__S(19, __c2, 3)),
           walSnapshotSize: S.optional(S.Number),
           walMaxWriteBufferSize: S.optional(S.Number),
           snapshottedWalFilesToKeep: S.optional(S.Number),
-          preemptiveCacheAge: S.optional(Duration),
+          preemptiveCacheAge: S.optional(__S(17, __c2, 1)),
           parquetMemCachePrunePercentage: S.optional(S.Number),
-          parquetMemCachePruneInterval: S.optional(Duration),
+          parquetMemCachePruneInterval: S.optional(__S(17, __c2, 1)),
           disableParquetMemCache: S.optional(S.Boolean),
-          parquetMemCacheQueryPathDuration: S.optional(Duration),
-          lastCacheEvictionInterval: S.optional(Duration),
-          distinctCacheEvictionInterval: S.optional(Duration),
-          gen1Duration: S.optional(Duration),
-          execMemPoolBytes: S.optional(PercentOrAbsoluteLong),
-          parquetMemCacheSize: S.optional(PercentOrAbsoluteLong),
+          parquetMemCacheQueryPathDuration: S.optional(__S(17, __c2, 1)),
+          lastCacheEvictionInterval: S.optional(__S(17, __c2, 1)),
+          distinctCacheEvictionInterval: S.optional(__S(17, __c2, 1)),
+          gen1Duration: S.optional(__S(17, __c2, 1)),
+          execMemPoolBytes: S.optional(__S(19, __c2, 3)),
+          parquetMemCacheSize: S.optional(__S(19, __c2, 3)),
           walReplayFailOnError: S.optional(S.Boolean),
           walReplayConcurrencyLimit: S.optional(S.Number),
           tableIndexCacheMaxEntries: S.optional(S.Number),
           tableIndexCacheConcurrencyLimit: S.optional(S.Number),
-          gen1LookbackDuration: S.optional(Duration),
-          retentionCheckInterval: S.optional(Duration),
-          deleteGracePeriod: S.optional(Duration),
-          hardDeleteDefaultDuration: S.optional(Duration),
+          gen1LookbackDuration: S.optional(__S(17, __c2, 1)),
+          retentionCheckInterval: S.optional(__S(17, __c2, 1)),
+          deleteGracePeriod: S.optional(__S(17, __c2, 1)),
+          hardDeleteDefaultDuration: S.optional(__S(17, __c2, 1)),
           pluginRepositoryUrl: S.optional(S.String),
           pluginRepositorySecretArn: S.optional(S.String),
           ingestQueryInstances: S.Number,
@@ -2300,31 +2098,31 @@ function __c2(j: number): any {
           dedicatedCompactor: S.Boolean,
           compactionRowLimit: S.optional(S.Number),
           compactionMaxNumFilesPerPlan: S.optional(S.Number),
-          compactionGen2Duration: S.optional(Duration),
+          compactionGen2Duration: S.optional(__S(17, __c2, 1)),
           compactionMultipliers: S.optional(S.String),
-          compactionCleanupWait: S.optional(Duration),
-          compactionCheckInterval: S.optional(Duration),
+          compactionCleanupWait: S.optional(__S(17, __c2, 1)),
+          compactionCheckInterval: S.optional(__S(17, __c2, 1)),
           lastValueCacheDisableFromHistory: S.optional(S.Boolean),
           distinctValueCacheDisableFromHistory: S.optional(S.Boolean),
-          replicationInterval: S.optional(Duration),
-          catalogSyncInterval: S.optional(Duration),
+          replicationInterval: S.optional(__S(17, __c2, 1)),
+          catalogSyncInterval: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "InfluxDBv3EnterpriseParameters",
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ InfluxDBv2: InfluxDBv2Parameters }),
-        /*@__PURE__*/ S.Struct({ InfluxDBv3Core: InfluxDBv3CoreParameters }),
-        /*@__PURE__*/ S.Struct({ InfluxDBv3Enterprise: InfluxDBv3EnterpriseParameters }),
+        /*@__PURE__*/ S.Struct({ InfluxDBv2: __S(18, __c2, 2) }),
+        /*@__PURE__*/ S.Struct({ InfluxDBv3Core: __S(20, __c2, 4) }),
+        /*@__PURE__*/ S.Struct({ InfluxDBv3Enterprise: __S(21, __c2, 5) }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          parameters: S.optional(Parameters),
-          tags: S.optional(RequestTagMap),
+          parameters: S.optional(__S(22, __c2, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDbParameterGroupInput",
@@ -2340,7 +2138,7 @@ function __c3(j: number): any {
           name: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          parameters: S.optional(Parameters),
+          parameters: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "CreateDbParameterGroupOutput",
@@ -2358,7 +2156,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "DeleteDbClusterInput" });
     case 3:
-      return S.suspend(() => S.Struct({ dbClusterStatus: S.optional(ClusterStatus) })).annotate({
+      return S.suspend(() => S.Struct({ dbClusterStatus: S.optional(S.String) })).annotate({
         identifier: "DeleteDbClusterOutput",
       });
     case 4:
@@ -2385,29 +2183,29 @@ function __c3(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(ClusterStatus),
+          status: S.optional(S.String),
           endpoint: S.optional(S.String),
           readerEndpoint: S.optional(S.String),
           port: S.optional(S.Number),
-          deploymentType: S.optional(ClusterDeploymentType),
-          dbInstanceType: S.optional(DbInstanceType),
-          networkType: S.optional(NetworkType),
-          dbStorageType: S.optional(DbStorageType),
+          deploymentType: S.optional(S.String),
+          dbInstanceType: S.optional(S.String),
+          networkType: S.optional(S.String),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          engineType: S.optional(EngineType),
+          engineType: S.optional(S.String),
           publiclyAccessible: S.optional(S.Boolean),
           dbParameterGroupIdentifier: S.optional(S.String),
           effectiveDbParameterGroupIdentifier: S.optional(S.String),
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
           lastMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           nextMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           influxAuthParametersSecretArn: S.optional(S.String),
-          vpcSubnetIds: S.optional(VpcSubnetIdList),
-          vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-          failoverMode: S.optional(FailoverMode),
-          clusterConfiguration: S.optional(ClusterConfiguration),
-          dbBackupConfigurations: S.optional(DbBackupConfigurationOutputList),
+          vpcSubnetIds: S.optional(__S(5, __c0, 5)),
+          vpcSecurityGroupIds: S.optional(__S(5, __c0, 5)),
+          failoverMode: S.optional(S.String),
+          clusterConfiguration: S.optional(__S(2, __c0, 2)),
+          dbBackupConfigurations: S.optional(__S(15, __c1, 7)),
           kmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDbClusterOutput" });
@@ -2441,21 +2239,21 @@ function __c4(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           arn: S.String,
-          status: S.optional(DbBackupStatus),
+          status: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           expiresAfter: S.optional(S.String),
           dbResourceId: S.optional(S.String),
-          type: S.optional(DbBackupType),
-          engineType: S.optional(EngineType),
-          deploymentType: S.optional(ResourceDeploymentType),
+          type: S.optional(S.String),
+          engineType: S.optional(S.String),
+          deploymentType: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbBackupSummary" });
     case 4:
-      return S.Array(DbBackupSummary);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: DbBackupSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(36, __c4, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDbBackupsOutput" });
     case 6:
       return S.suspend(() =>
@@ -2469,16 +2267,16 @@ function __c4(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(ClusterStatus),
+          status: S.optional(S.String),
           endpoint: S.optional(S.String),
           readerEndpoint: S.optional(S.String),
           port: S.optional(S.Number),
-          deploymentType: S.optional(ClusterDeploymentType),
-          dbInstanceType: S.optional(DbInstanceType),
-          networkType: S.optional(NetworkType),
-          dbStorageType: S.optional(DbStorageType),
+          deploymentType: S.optional(S.String),
+          dbInstanceType: S.optional(S.String),
+          networkType: S.optional(S.String),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          engineType: S.optional(EngineType),
+          engineType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbClusterSummary" });
   }
@@ -2486,10 +2284,10 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DbClusterSummary);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: DbClusterSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(40, __c5, 0), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDbClustersOutput" });
     case 2:
       return S.suspend(() =>
@@ -2503,21 +2301,21 @@ function __c5(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(Status),
+          status: S.optional(S.String),
           endpoint: S.optional(S.String),
           port: S.optional(S.Number),
-          networkType: S.optional(NetworkType),
-          dbInstanceType: S.optional(DbInstanceType),
-          dbStorageType: S.optional(DbStorageType),
+          networkType: S.optional(S.String),
+          dbInstanceType: S.optional(S.String),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          deploymentType: S.optional(DeploymentType),
+          deploymentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbInstanceSummary" });
     case 4:
-      return S.Array(DbInstanceSummary);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: DbInstanceSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(44, __c5, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDbInstancesOutput" });
     case 6:
       return S.suspend(() =>
@@ -2535,16 +2333,16 @@ function __c5(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(Status),
+          status: S.optional(S.String),
           endpoint: S.optional(S.String),
           port: S.optional(S.Number),
-          networkType: S.optional(NetworkType),
-          dbInstanceType: S.optional(DbInstanceType),
-          dbStorageType: S.optional(DbStorageType),
+          networkType: S.optional(S.String),
+          dbInstanceType: S.optional(S.String),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          deploymentType: S.optional(DeploymentType),
-          instanceMode: S.optional(InstanceMode),
-          instanceModes: S.optional(InstanceModeList),
+          deploymentType: S.optional(S.String),
+          instanceMode: S.optional(S.String),
+          instanceModes: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "DbInstanceForClusterSummary",
@@ -2554,10 +2352,10 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DbInstanceForClusterSummary);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: DbInstanceForClusterSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(48, __c6, 0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDbInstancesForClusterOutput",
       });
@@ -2579,10 +2377,10 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "DbParameterGroupSummary" });
     case 4:
-      return S.Array(DbParameterGroupSummary);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: DbParameterGroupSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(52, __c6, 4), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDbParameterGroupsOutput",
       });
@@ -2595,7 +2393,7 @@ function __c6(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(ResponseTagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(0, __c0, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2604,7 +2402,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ dbClusterId: S.String, instanceIds: S.optional(DbInstanceIdList) }).pipe(
+        S.Struct({ dbClusterId: S.String, instanceIds: S.optional(__S(5, __c0, 5)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RebootDbClusterInput" });
@@ -2620,17 +2418,17 @@ function __c7(j: number): any {
           name: S.String,
           dbBackupId: S.String,
           restoreToTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          restoreMode: S.optional(RestoreMode),
-          vpcSubnetIds: S.optional(VpcSubnetIdList),
-          vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+          restoreMode: S.optional(S.String),
+          vpcSubnetIds: S.optional(__S(5, __c0, 5)),
+          vpcSecurityGroupIds: S.optional(__S(5, __c0, 5)),
           publiclyAccessible: S.optional(S.Boolean),
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
-          tags: S.optional(RequestTagMap),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(0, __c0, 0)),
           port: S.optional(S.Number),
-          networkType: S.optional(NetworkType),
-          deploymentType: S.optional(ResourceDeploymentType),
-          dbBackupConfigurations: S.optional(DbBackupConfigurationInputList),
+          networkType: S.optional(S.String),
+          deploymentType: S.optional(S.String),
+          dbBackupConfigurations: S.optional(__S(9, __c1, 1)),
           kmsKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RestoreFromDbBackupInput" });
@@ -2638,17 +2436,17 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restoredDbResourceId: S.optional(S.String),
-          restoreStatus: S.optional(RestoreStatus),
-          resourceType: S.optional(ResourceType),
-          engineType: S.optional(EngineType),
-          deploymentType: S.optional(ResourceDeploymentType),
+          restoreStatus: S.optional(S.String),
+          resourceType: S.optional(S.String),
+          engineType: S.optional(S.String),
+          deploymentType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RestoreFromDbBackupOutput",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(0, __c0, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -2658,21 +2456,22 @@ function __c7(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tagKeys: TagKeys }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(5, __c0, 5),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           dbClusterId: S.String,
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
           dbParameterGroupIdentifier: S.optional(S.String),
           port: S.optional(S.Number),
-          dbInstanceType: S.optional(DbInstanceType),
-          failoverMode: S.optional(FailoverMode),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
-          dbBackupConfigurations: S.optional(DbBackupConfigurationInputList),
+          dbInstanceType: S.optional(S.String),
+          failoverMode: S.optional(S.String),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
+          dbBackupConfigurations: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDbClusterInput" });
   }
@@ -2683,16 +2482,21 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identifier: S.String,
-          logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+          logDeliveryConfiguration: S.optional(__S(4, __c0, 4)),
           dbParameterGroupIdentifier: S.optional(S.String),
           port: S.optional(S.Number),
-          dbInstanceType: S.optional(DbInstanceType),
-          deploymentType: S.optional(DeploymentType),
-          dbStorageType: S.optional(DbStorageType),
+          dbInstanceType: S.optional(S.String),
+          deploymentType: S.optional(S.String),
+          dbStorageType: S.optional(S.String),
           allocatedStorage: S.optional(S.Number),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
-          dbBackupConfigurations: S.optional(DbBackupConfigurationInputList),
+          maintenanceSchedule: S.optional(__S(6, __c0, 6)),
+          dbBackupConfigurations: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDbInstanceInput" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

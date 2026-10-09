@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,8 +69,6 @@ export type AuthorTypeEnum =
   | "REGULAR_USER"
   | "LOCAL_GUIDE"
   | "MERCHANT";
-const AuthorTypeEnum = /*@__PURE__*/ S.String;
-
 /** Represents the author of a question or answer */
 export interface Author {
   /** The display name of the user */
@@ -78,8 +78,6 @@ export interface Author {
   /** The type of user the author is. */
   type?: AuthorTypeEnum | (string & {});
 }
-const Author = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Author>;
-
 /** Represents an answer to a question */
 export interface Answer {
   /** Output only. The number of upvotes for the answer. */
@@ -95,11 +93,7 @@ export interface Answer {
   /** Required. The text of the answer. It should contain at least one non-whitespace character. The maximum length is 4096 characters. */
   text?: string;
 }
-const Answer = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Answer>;
-
 export type AnswerList = Array<Answer>;
-const AnswerList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AnswerList>;
-
 /** Represents a single question and some of its answers. */
 export interface Question {
   /** Immutable. The unique name for the question. locations/*\/questions/* This field will be ignored if set during question creation. */
@@ -119,41 +113,22 @@ export interface Question {
   /** Output only. The total number of answers posted for this question. */
   totalAnswerCount?: number;
 }
-const Question = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Question>;
-
 export interface CreateLocationsQuestionsRequest {
   /** Required. The name of the location to write a question for. */
   parent: string;
   /** Request body */
   body?: Question;
 }
-const CreateLocationsQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateLocationsQuestionsRequest>;
-
 export interface DeleteLocationsQuestionsRequest {
   /** Required. The name of the question to delete. */
   name: string;
 }
-const DeleteLocationsQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteLocationsQuestionsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Empty>;
-
 export interface DeleteLocationsQuestionsAnswersRequest {
   /** Required. The name of the question to delete an answer for. */
   name: string;
 }
-const DeleteLocationsQuestionsAnswersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteLocationsQuestionsAnswersRequest>;
-
 export interface ListLocationsQuestionsRequest {
   /** Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true" */
   filter?: string;
@@ -168,14 +143,7 @@ export interface ListLocationsQuestionsRequest {
   /** Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. */
   answersPerQuestion?: number;
 }
-const ListLocationsQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListLocationsQuestionsRequest>;
-
 export type QuestionList = Array<Question>;
-const QuestionList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<QuestionList>;
-
 /** Response message for QuestionsAndAnswers.ListQuestions */
 export interface ListQuestionsResponse {
   /** The total number of questions posted for this location across all pages. */
@@ -185,11 +153,6 @@ export interface ListQuestionsResponse {
   /** The requested questions, */
   questions?: QuestionList;
 }
-const ListQuestionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListQuestionsResponse>;
-
 export interface ListLocationsQuestionsAnswersRequest {
   /** Required. The name of the question to fetch answers for. */
   parent: string;
@@ -200,11 +163,6 @@ export interface ListLocationsQuestionsAnswersRequest {
   /** Optional. The order to return the answers. Valid options include 'update_time desc' and 'upvote_count desc', which will return the answers sorted descendingly by the requested field. The default sort order is 'update_time desc'. */
   orderBy?: string;
 }
-const ListLocationsQuestionsAnswersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListLocationsQuestionsAnswersRequest>;
-
 /** Response message for QuestionsAndAnswers.ListAnswers */
 export interface ListAnswersResponse {
   /** The requested answers. */
@@ -214,8 +172,6 @@ export interface ListAnswersResponse {
   /** The total number of answers posted for this question across all pages. */
   totalSize?: number;
 }
-const ListAnswersResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListAnswersResponse>;
-
 export interface PatchLocationsQuestionsRequest {
   /** Required. The specific fields to update. Only question text can be updated. */
   updateMask?: string;
@@ -224,29 +180,17 @@ export interface PatchLocationsQuestionsRequest {
   /** Request body */
   body?: Question;
 }
-const PatchLocationsQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PatchLocationsQuestionsRequest>;
-
 /** Request message for QuestionsAndAnswers.UpsertAnswer */
 export interface UpsertAnswerRequest {
   /** Required. The new answer. */
   answer?: Answer;
 }
-const UpsertAnswerRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UpsertAnswerRequest>;
-
 export interface UpsertLocationsQuestionsAnswersRequest {
   /** Required. The name of the question to write an answer for. */
   parent: string;
   /** Request body */
   body?: UpsertAnswerRequest;
 }
-const UpsertLocationsQuestionsAnswersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UpsertLocationsQuestionsAnswersRequest>;
-
 export type CreateLocationsQuestionsError =
   | NotFound
   | Forbidden
@@ -260,8 +204,8 @@ export const createLocationsQuestions: API.OperationMethod<
   CreateLocationsQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLocationsQuestionsRequest,
-  output: Question,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateLocationsQuestionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Question>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -280,8 +224,8 @@ export const deleteLocationsQuestions: API.OperationMethod<
   DeleteLocationsQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLocationsQuestionsRequest,
-  output: Empty,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteLocationsQuestionsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,8 +244,8 @@ export const deleteLocationsQuestionsAnswers: API.OperationMethod<
   DeleteLocationsQuestionsAnswersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLocationsQuestionsAnswersRequest,
-  output: Empty,
+  input: __S(7, __c0, 7) as any as S.Schema<DeleteLocationsQuestionsAnswersRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -316,8 +260,8 @@ export const listLocationsQuestions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQuestionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsQuestionsRequest,
-  output: ListQuestionsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListLocationsQuestionsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListQuestionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -336,8 +280,8 @@ export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAnswersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsQuestionsAnswersRequest,
-  output: ListAnswersResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<ListLocationsQuestionsAnswersRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ListAnswersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -360,8 +304,8 @@ export const patchLocationsQuestions: API.OperationMethod<
   PatchLocationsQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchLocationsQuestionsRequest,
-  output: Question,
+  input: __S(13, __c1, 5) as any as S.Schema<PatchLocationsQuestionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Question>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -380,8 +324,8 @@ export const upsertLocationsQuestionsAnswers: API.OperationMethod<
   UpsertLocationsQuestionsAnswersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpsertLocationsQuestionsAnswersRequest,
-  output: Answer,
+  input: __S(15, __c1, 7) as any as S.Schema<UpsertLocationsQuestionsAnswersRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Answer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -395,7 +339,7 @@ function __c0(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           profilePhotoUri: S.optional(S.String),
-          type: S.optional(AuthorTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Author" });
     case 1:
@@ -405,20 +349,20 @@ function __c0(j: number): any {
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          author: S.optional(Author),
+          author: S.optional(__S(0, __c0, 0)),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "Answer" });
     case 2:
-      return S.Array(Answer);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          author: S.optional(Author),
+          author: S.optional(__S(0, __c0, 0)),
           text: S.optional(S.String),
           updateTime: S.optional(S.String),
-          topAnswers: S.optional(AnswerList),
+          topAnswers: S.optional(__S(2, __c0, 2)),
           upvoteCount: S.optional(S.Number),
           createTime: S.optional(S.String),
           totalAnswerCount: S.optional(S.Number),
@@ -428,7 +372,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Question.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -495,13 +439,13 @@ function __c1(j: number): any {
         identifier: "ListLocationsQuestionsRequest",
       });
     case 1:
-      return S.Array(Question);
+      return S.Array(__S(3, __c0, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          questions: S.optional(QuestionList),
+          questions: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "ListQuestionsResponse",
@@ -526,7 +470,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          answers: S.optional(AnswerList),
+          answers: S.optional(__S(2, __c0, 2)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -538,7 +482,7 @@ function __c1(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Question.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -552,7 +496,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          answer: S.optional(Answer),
+          answer: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "UpsertAnswerRequest",
@@ -561,7 +505,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UpsertAnswerRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -573,4 +517,9 @@ function __c1(j: number): any {
         identifier: "UpsertLocationsQuestionsAnswersRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

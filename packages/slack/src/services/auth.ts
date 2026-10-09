@@ -7,6 +7,8 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -18,8 +20,6 @@ export interface ListTeamsRequest {
   /** Whether to return icon paths for each workspace. An icon path represents a URI pointing to the image signifying the workspace. */
   include_icon?: boolean;
 }
-const ListTeamsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListTeamsRequest>;
-
 /** Paths to icons */
 export interface ListTeamsResponseTeamsItemIcon {
   image_34?: string;
@@ -31,11 +31,6 @@ export interface ListTeamsResponseTeamsItemIcon {
   image_230?: string;
   image_default?: boolean;
 }
-const ListTeamsResponseTeamsItemIcon = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ListTeamsResponseTeamsItemIcon>;
-
 export interface ListTeamsResponseTeamsItem {
   /** ID of the workspace */
   id?: string;
@@ -44,27 +39,12 @@ export interface ListTeamsResponseTeamsItem {
   /** Paths to icons */
   icon?: ListTeamsResponseTeamsItemIcon;
 }
-const ListTeamsResponseTeamsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListTeamsResponseTeamsItem>;
-
 export type ListTeamsResponseTeamsList = Array<ListTeamsResponseTeamsItem>;
-const ListTeamsResponseTeamsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListTeamsResponseTeamsList>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListTeamsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-const ListTeamsResponseResponseMetadata = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListTeamsResponseResponseMetadata>;
-
 export interface ListTeamsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -72,24 +52,16 @@ export interface ListTeamsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListTeamsResponseResponseMetadata;
 }
-const ListTeamsResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListTeamsResponse>;
-
 export interface RevokeAuthRequest {
   /** Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked. */
   test?: boolean;
 }
-const RevokeAuthRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RevokeAuthRequest>;
-
 export interface RevokeAuthResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   revoked: boolean;
 }
-const RevokeAuthResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RevokeAuthResponse>;
-
 export interface TestAuthRequest {}
-const TestAuthRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TestAuthRequest>;
-
 export interface TestAuthResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -105,8 +77,6 @@ export interface TestAuthResponse {
   is_enterprise_install?: boolean;
   expires_in?: number | null;
 }
-const TestAuthResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TestAuthResponse>;
-
 export type ListTeamsError = SlackOpError;
 /** Obtain a full list of workspaces your org-wide app has been approved for. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` -- Invalid cursor. - `invalid_limit` -- The value passed for `limit` was not valid. - `invalid_auth` -- The token doesn't have access to this endpoint. - `internal_error` -- There was an internal error. See https://docs.slack.dev/reference/methods/auth.teams.list */
 export const listTeams: API.PaginatedOperationMethod<
@@ -117,8 +87,8 @@ export const listTeams: API.PaginatedOperationMethod<
   ListTeamsResponseTeamsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTeamsRequest,
-    output: ListTeamsResponse,
+    input: __S(0, __c0, 0) as any as S.Schema<ListTeamsRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<ListTeamsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -141,8 +111,8 @@ export const revokeAuth: API.OperationMethod<
   RevokeAuthError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAuthRequest,
-  output: RevokeAuthResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<RevokeAuthRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<RevokeAuthResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -156,8 +126,8 @@ export const testAuth: API.OperationMethod<
   TestAuthError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestAuthRequest,
-  output: TestAuthResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<TestAuthRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<TestAuthResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -201,13 +171,13 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.String,
-          icon: S.optional(ListTeamsResponseTeamsItemIcon),
+          icon: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "ListTeamsResponseTeamsItem",
       });
     case 3:
-      return S.Array(ListTeamsResponseTeamsItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -220,8 +190,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          teams: ListTeamsResponseTeamsList,
-          response_metadata: S.optional(ListTeamsResponseResponseMetadata),
+          teams: __S(3, __c0, 3),
+          response_metadata: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ListTeamsResponse" });
     case 6:
@@ -263,4 +233,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "TestAuthResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

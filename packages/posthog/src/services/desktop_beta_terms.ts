@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -12,29 +14,14 @@ export interface CreateDesktopBetaTermRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const CreateDesktopBetaTermRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDesktopBetaTermRequest>;
-
 export interface DesktopBetaTermsAcceptanceDTO {
   /** Whether the organization has accepted the PostHog Desktop beta terms. */
   is_desktop_beta_terms_accepted: boolean;
 }
-const DesktopBetaTermsAcceptanceDTO = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DesktopBetaTermsAcceptanceDTO>;
-
 export interface ListDesktopBetaTermsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListDesktopBetaTermsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListDesktopBetaTermsRequest>;
-
 export type CreateDesktopBetaTermError = PosthogOpError;
 export const createDesktopBetaTerm: API.OperationMethod<
   CreateDesktopBetaTermRequest,
@@ -42,8 +29,8 @@ export const createDesktopBetaTerm: API.OperationMethod<
   CreateDesktopBetaTermError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDesktopBetaTermRequest,
-  output: DesktopBetaTermsAcceptanceDTO,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDesktopBetaTermRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DesktopBetaTermsAcceptanceDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -56,8 +43,8 @@ export const listDesktopBetaTerms: API.OperationMethod<
   ListDesktopBetaTermsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDesktopBetaTermsRequest,
-  output: DesktopBetaTermsAcceptanceDTO,
+  input: __S(2, __c0, 2) as any as S.Schema<ListDesktopBetaTermsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DesktopBetaTermsAcceptanceDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -103,4 +90,9 @@ function __c0(j: number): any {
         identifier: "ListDesktopBetaTermsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

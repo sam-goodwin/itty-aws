@@ -9,6 +9,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Interconnect",
   serviceShapeName: "Interconnect",
@@ -55,13 +57,11 @@ export type AmazonResourceName = string;
 export type AttachPoint =
   | { directConnectGateway: string; arn?: never }
   | { directConnectGateway?: never; arn: string };
-const AttachPoint = /*@__PURE__*/ __L.at(__c0, 0);
 export type ActivationKey = string | redacted.Redacted<string>;
 export type ConnectionDescription = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AcceptConnectionProposalRequest {
   attachPoint: AttachPoint;
   activationKey: string | redacted.Redacted<string>;
@@ -69,10 +69,6 @@ export interface AcceptConnectionProposalRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const AcceptConnectionProposalRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcceptConnectionProposalRequest>;
 export type ConnectionId = string;
 export type ConnectionBandwidth = string;
 export type EnvironmentId = string;
@@ -81,7 +77,6 @@ export type LastMileProvider = string;
 export type Provider =
   | { cloudServiceProvider: string; lastMileProvider?: never }
   | { cloudServiceProvider?: never; lastMileProvider: string };
-const Provider = /*@__PURE__*/ __L.at(__c0, 3);
 export type Location = string;
 export type ProductType = string;
 export type ConnectionState =
@@ -94,8 +89,6 @@ export type ConnectionState =
   | "failed"
   | "updating"
   | (string & {});
-const ConnectionState = S.String;
-
 export type ConnectionSharedId = string;
 export type BillingTier = number;
 export type OwnerAccountId = string;
@@ -116,17 +109,11 @@ export interface Connection {
   activationKey: string | redacted.Redacted<string>;
   tags?: { [key: string]: string | undefined };
 }
-const Connection = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Connection>;
 export interface AcceptConnectionProposalResponse {
   connection?: Connection;
 }
-const AcceptConnectionProposalResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AcceptConnectionProposalResponse>;
 export type RemoteOwnerAccount = string;
 export type RemoteAccountIdentifier = { identifier: string };
-const RemoteAccountIdentifier = /*@__PURE__*/ __L.at(__c0, 6);
 export interface CreateConnectionRequest {
   description?: string;
   bandwidth: string;
@@ -136,77 +123,41 @@ export interface CreateConnectionRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const CreateConnectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateConnectionRequest>;
 export interface CreateConnectionResponse {
   connection?: Connection;
 }
-const CreateConnectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateConnectionResponse>;
 export interface DeleteConnectionRequest {
   identifier: string;
   clientToken?: string;
 }
-const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {
   connection: Connection;
 }
-const DeleteConnectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteConnectionResponse>;
 export interface DescribeConnectionProposalRequest {
   activationKey: string | redacted.Redacted<string>;
 }
-const DescribeConnectionProposalRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DescribeConnectionProposalRequest>;
 export interface DescribeConnectionProposalResponse {
   bandwidth: string;
   environmentId: string;
   provider: Provider;
   location: string;
 }
-const DescribeConnectionProposalResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DescribeConnectionProposalResponse>;
 export interface GetConnectionRequest {
   identifier: string;
 }
-const GetConnectionRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetConnectionRequest>;
 export interface GetConnectionResponse {
   connection?: Connection;
 }
-const GetConnectionResponse = CreateConnectionResponse as any as S.Schema<GetConnectionResponse>;
 export interface GetEnvironmentRequest {
   id: string;
 }
-const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetEnvironmentRequest>;
 export type EnvironmentState = "available" | "limited" | "unavailable" | (string & {});
-const EnvironmentState = S.String;
-
 export type BandwidthList = string[];
-const BandwidthList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface Bandwidths {
   available?: string[];
   supported?: string[];
 }
-const Bandwidths = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Bandwidths>;
 export type RemoteAccountIdentifierType = "account" | "email" | (string & {});
-const RemoteAccountIdentifierType = S.String;
-
 export interface Environment {
   provider: Provider;
   location: string;
@@ -217,14 +168,9 @@ export interface Environment {
   activationPageUrl?: string;
   remoteIdentifierType?: RemoteAccountIdentifierType;
 }
-const Environment = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Environment>;
 export interface GetEnvironmentResponse {
   environment: Environment;
 }
-const GetEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetEnvironmentResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListAttachPointsRequest {
@@ -232,32 +178,17 @@ export interface ListAttachPointsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAttachPointsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListAttachPointsRequest>;
 export type AttachPointType = "DirectConnectGateway" | (string & {});
-const AttachPointType = S.String;
-
 export interface AttachPointDescriptor {
   type: AttachPointType;
   identifier: string;
   name: string;
 }
-const AttachPointDescriptor = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AttachPointDescriptor>;
 export type AttachPointDescriptorList = AttachPointDescriptor[];
-const AttachPointDescriptorList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface ListAttachPointsResponse {
   attachPoints: AttachPointDescriptor[];
   nextToken?: string;
 }
-const ListAttachPointsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListAttachPointsResponse>;
 export interface ListConnectionsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -266,10 +197,6 @@ export interface ListConnectionsRequest {
   provider?: Provider;
   attachPoint?: AttachPoint;
 }
-const ListConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListConnectionsRequest>;
 export interface ConnectionSummary {
   id: string;
   arn: string;
@@ -284,82 +211,48 @@ export interface ConnectionSummary {
   sharedId: string;
   billingTier?: number;
 }
-const ConnectionSummary = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ConnectionSummary>;
 export type ConnectionSummariesList = ConnectionSummary[];
-const ConnectionSummariesList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListConnectionsResponse {
   connections?: ConnectionSummary[];
   nextToken?: string;
 }
-const ListConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListConnectionsResponse>;
 export interface ListEnvironmentsRequest {
   maxResults?: number;
   nextToken?: string;
   provider?: Provider;
   location?: string;
 }
-const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListEnvironmentsRequest>;
 export type EnvironmentList = Environment[];
-const EnvironmentList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ListEnvironmentsResponse {
   environments: Environment[];
   nextToken?: string;
 }
-const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListEnvironmentsResponse>;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = BandwidthList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectionRequest {
   identifier: string;
   description?: string;
   bandwidth?: string;
   clientToken?: string;
 }
-const UpdateConnectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateConnectionRequest>;
 export interface UpdateConnectionResponse {
   connection?: Connection;
 }
-const UpdateConnectionResponse =
-  CreateConnectionResponse as any as S.Schema<UpdateConnectionResponse>;
 export type AcceptConnectionProposalError = CommonErrors;
 /**
  * Accepts a connection proposal which was generated at a supported partner's portal.
@@ -374,8 +267,8 @@ export const acceptConnectionProposal: API.OperationMethod<
   AcceptConnectionProposalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptConnectionProposalRequest,
-  output: AcceptConnectionProposalResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AcceptConnectionProposalRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AcceptConnectionProposalResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -398,8 +291,8 @@ export const createConnection: API.OperationMethod<
   CreateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectionRequest,
-  output: CreateConnectionResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateConnectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateConnectionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -418,8 +311,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectionRequest,
-  output: DeleteConnectionResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeleteConnectionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -436,8 +329,8 @@ export const describeConnectionProposal: API.OperationMethod<
   DescribeConnectionProposalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeConnectionProposalRequest,
-  output: DescribeConnectionProposalResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DescribeConnectionProposalRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DescribeConnectionProposalResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -454,8 +347,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: GetConnectionResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetConnectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetConnectionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -472,8 +365,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: GetEnvironmentResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetEnvironmentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -491,8 +384,8 @@ export const listAttachPoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttachPointDescriptor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAttachPointsRequest,
-  output: ListAttachPointsResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<ListAttachPointsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<ListAttachPointsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -528,8 +421,8 @@ export const listConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConnectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListConnectionsRequest,
-  output: ListConnectionsResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<ListConnectionsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListConnectionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -553,8 +446,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Environment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentsRequest,
-  output: ListEnvironmentsResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -577,8 +470,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -595,8 +488,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -613,8 +506,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<UntagResourceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -631,8 +524,8 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectionRequest,
-  output: UpdateConnectionResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<UpdateConnectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateConnectionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -652,10 +545,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attachPoint: AttachPoint,
+          attachPoint: __S(0, __c0, 0),
           activationKey: SensitiveString,
           description: S.optional(S.String),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(1, __c0, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -673,21 +566,21 @@ function __c0(j: number): any {
           arn: S.String,
           description: S.String,
           bandwidth: S.String,
-          attachPoint: AttachPoint,
+          attachPoint: __S(0, __c0, 0),
           environmentId: S.String,
-          provider: Provider,
+          provider: __S(3, __c0, 3),
           location: S.String,
           type: S.String,
-          state: ConnectionState,
+          state: S.String,
           sharedId: S.String,
           billingTier: S.optional(S.Number),
           ownerAccount: S.String,
           activationKey: SensitiveString,
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "Connection" });
     case 5:
-      return S.suspend(() => S.Struct({ connection: S.optional(Connection) })).annotate({
+      return S.suspend(() => S.Struct({ connection: S.optional(__S(4, __c0, 4)) })).annotate({
         identifier: "AcceptConnectionProposalResponse",
       });
     case 6:
@@ -697,10 +590,10 @@ function __c0(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           bandwidth: S.String,
-          attachPoint: AttachPoint,
+          attachPoint: __S(0, __c0, 0),
           environmentId: S.String,
-          remoteAccount: S.optional(RemoteAccountIdentifier),
-          tags: S.optional(TagMap),
+          remoteAccount: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(1, __c0, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateConnectionRequest" });
@@ -709,7 +602,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ connection: S.optional(Connection) })).annotate({
+      return S.suspend(() => S.Struct({ connection: S.optional(__S(4, __c0, 4)) })).annotate({
         identifier: "CreateConnectionResponse",
       });
     case 1:
@@ -720,7 +613,7 @@ function __c1(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteConnectionRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ connection: Connection })).annotate({
+      return S.suspend(() => S.Struct({ connection: __S(4, __c0, 4) })).annotate({
         identifier: "DeleteConnectionResponse",
       });
     case 3:
@@ -736,7 +629,7 @@ function __c1(j: number): any {
         S.Struct({
           bandwidth: S.String,
           environmentId: S.String,
-          provider: Provider,
+          provider: __S(3, __c0, 3),
           location: S.String,
         }),
       ).annotate({
@@ -762,23 +655,26 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ available: S.optional(BandwidthList), supported: S.optional(BandwidthList) }),
+        S.Struct({
+          available: S.optional(__S(15, __c1, 7)),
+          supported: S.optional(__S(15, __c1, 7)),
+        }),
       ).annotate({ identifier: "Bandwidths" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provider: Provider,
+          provider: __S(3, __c0, 3),
           location: S.String,
           environmentId: S.String,
-          state: EnvironmentState,
-          bandwidths: Bandwidths,
+          state: S.String,
+          bandwidths: __S(16, __c2, 0),
           type: S.String,
           activationPageUrl: S.optional(S.String),
-          remoteIdentifierType: S.optional(RemoteAccountIdentifierType),
+          remoteIdentifierType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Environment" });
     case 2:
-      return S.suspend(() => S.Struct({ environment: Environment })).annotate({
+      return S.suspend(() => S.Struct({ environment: __S(17, __c2, 1) })).annotate({
         identifier: "GetEnvironmentResponse",
       });
     case 3:
@@ -791,23 +687,23 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListAttachPointsRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ type: AttachPointType, identifier: S.String, name: S.String }),
+        S.Struct({ type: S.String, identifier: S.String, name: S.String }),
       ).annotate({ identifier: "AttachPointDescriptor" });
     case 5:
-      return S.Array(AttachPointDescriptor);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ attachPoints: AttachPointDescriptorList, nextToken: S.optional(S.String) }),
+        S.Struct({ attachPoints: __S(21, __c2, 5), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAttachPointsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          state: S.optional(ConnectionState),
+          state: S.optional(S.String),
           environmentId: S.optional(S.String),
-          provider: S.optional(Provider),
-          attachPoint: S.optional(AttachPoint),
+          provider: S.optional(__S(3, __c0, 3)),
+          attachPoint: S.optional(__S(0, __c0, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListConnectionsRequest" });
   }
@@ -821,22 +717,22 @@ function __c3(j: number): any {
           arn: S.String,
           description: S.String,
           bandwidth: S.String,
-          attachPoint: AttachPoint,
+          attachPoint: __S(0, __c0, 0),
           environmentId: S.String,
-          provider: Provider,
+          provider: __S(3, __c0, 3),
           location: S.String,
           type: S.String,
-          state: ConnectionState,
+          state: S.String,
           sharedId: S.String,
           billingTier: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ConnectionSummary" });
     case 1:
-      return S.Array(ConnectionSummary);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(ConnectionSummariesList),
+          connections: S.optional(__S(25, __c3, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
@@ -845,15 +741,15 @@ function __c3(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          provider: S.optional(Provider),
+          provider: S.optional(__S(3, __c0, 3)),
           location: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
     case 4:
-      return S.Array(Environment);
+      return S.Array(__S(17, __c2, 1));
     case 5:
       return S.suspend(() =>
-        S.Struct({ environments: EnvironmentList, nextToken: S.optional(S.String) }),
+        S.Struct({ environments: __S(28, __c3, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
     case 6:
       return S.suspend(() =>
@@ -864,7 +760,7 @@ function __c3(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(1, __c0, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -873,7 +769,7 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, tags: TagMap }).pipe(
+        S.Struct({ arn: S.String, tags: __S(1, __c0, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -883,7 +779,7 @@ function __c4(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, tagKeys: TagKeyList }).pipe(
+        S.Struct({ arn: S.String, tagKeys: __S(15, __c1, 7) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -897,4 +793,9 @@ function __c4(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateConnectionRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

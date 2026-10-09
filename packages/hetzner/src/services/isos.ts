@@ -7,6 +7,8 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -14,12 +16,8 @@ export interface GetIsoRequest {
   /** ID of the ISO. */
   id: number;
 }
-const GetIsoRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetIsoRequest>;
-
 /** Type of the ISO. */
 export type GetIsoResponseIsoType = "public" | "private";
-const GetIsoResponseIsoType = S.String;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export interface GetIsoResponseIsoDeprecation {
   /** Date of the deprecated resource removal. Once this date is reached, the resource will not be returned by resource type "list" endpoint, and the resource can not be used to create new resources. For example, if this is an image, you can not create new servers with this image after the mentioned date. */
@@ -27,15 +25,8 @@ export interface GetIsoResponseIsoDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
-const GetIsoResponseIsoDeprecation = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetIsoResponseIsoDeprecation>;
-
 /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
 export type GetIsoResponseIsoArchitecture = "x86" | "arm";
-const GetIsoResponseIsoArchitecture = S.String;
-
 export interface GetIsoResponseIso {
   /** ID of the [ISO](#tag/isos). */
   id: number;
@@ -50,17 +41,11 @@ export interface GetIsoResponseIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: GetIsoResponseIsoArchitecture | null;
 }
-const GetIsoResponseIso = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetIsoResponseIso>;
-
 export interface GetIsoResponse {
   iso: GetIsoResponseIso;
 }
-const GetIsoResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetIsoResponse>;
-
 /** CPU architecture of the Resource. */
 export type ListIsosRequestArchitecture = "x86" | "arm";
-const ListIsosRequestArchitecture = S.String;
-
 export interface ListIsosRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -73,8 +58,6 @@ export interface ListIsosRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListIsosRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListIsosRequest>;
-
 /** Type of the ISO. */
 export type ListIsosResponseIsosItemType = "public" | "private";
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -95,14 +78,7 @@ export interface ListIsosResponseIsosItem {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: ListIsosResponseIsosItemArchitecture | null;
 }
-const ListIsosResponseIsosItem = GetIsoResponseIso as any as S.Schema<ListIsosResponseIsosItem>;
-
 export type ListIsosResponseIsosList = Array<ListIsosResponseIsosItem>;
-const ListIsosResponseIsosList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListIsosResponseIsosList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListIsosResponseMetaPagination {
   /** Current page number. */
@@ -118,23 +94,14 @@ export interface ListIsosResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListIsosResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListIsosResponseMetaPagination>;
-
 export interface ListIsosResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListIsosResponseMetaPagination;
 }
-const ListIsosResponseMeta = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListIsosResponseMeta>;
-
 export interface ListIsosResponse {
   isos: ListIsosResponseIsosList;
   meta: ListIsosResponseMeta;
 }
-const ListIsosResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListIsosResponse>;
-
 export type GetIsoError = HetznerOpError;
 /** Get an ISO Returns a specific ISO object. */
 export const getIso: API.OperationMethod<
@@ -143,8 +110,8 @@ export const getIso: API.OperationMethod<
   GetIsoError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIsoRequest,
-  output: GetIsoResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetIsoRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetIsoResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -160,8 +127,8 @@ export const listIsos: API.PaginatedOperationMethod<
   ListIsosResponseIsosItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListIsosRequest,
-    output: ListIsosResponse,
+    input: __S(4, __c0, 4) as any as S.Schema<ListIsosRequest>,
+    output: __S(8, __c1, 0) as any as S.Schema<ListIsosResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -200,29 +167,29 @@ function __c0(j: number): any {
           id: S.Number,
           name: S.NullOr(S.String),
           description: S.String,
-          type: S.NullOr(GetIsoResponseIsoType),
-          deprecation: S.NullOr(GetIsoResponseIsoDeprecation),
-          architecture: S.NullOr(GetIsoResponseIsoArchitecture),
+          type: S.NullOr(S.String),
+          deprecation: S.NullOr(__S(1, __c0, 1)),
+          architecture: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GetIsoResponseIso" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          iso: GetIsoResponseIso,
+          iso: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "GetIsoResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
-          architecture: S.optional(ListIsosRequestArchitecture.pipe(T.Query())),
+          architecture: S.optional(S.String.pipe(T.Query())),
           include_architecture_wildcard: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/isos", code: 200 })),
       ).annotate({ identifier: "ListIsosRequest" });
     case 5:
-      return S.Array(ListIsosResponseIsosItem);
+      return S.Array(__S(2, __c0, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -239,7 +206,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListIsosResponseMetaPagination,
+          pagination: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "ListIsosResponseMeta" });
   }
@@ -249,9 +216,14 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          isos: ListIsosResponseIsosList,
-          meta: ListIsosResponseMeta,
+          isos: __S(5, __c0, 5),
+          meta: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "ListIsosResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

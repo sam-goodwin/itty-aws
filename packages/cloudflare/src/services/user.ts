@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -146,8 +148,6 @@ export class TokenNotFound
   ) {}
 
 export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
-const TokensCreateRequestPoliciesItemEffect = S.String;
-
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
   /** A category used to group permission groups. */
   category?: string;
@@ -166,11 +166,6 @@ export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
   /** Indicates the permission group's availability or visibility. */
   visibility?: string;
 }
-const TokensCreateRequestPoliciesItemPermissionGroupsItemMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsItemMeta>;
-
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
@@ -179,34 +174,17 @@ export interface TokensCreateRequestPoliciesItemPermissionGroupsItem {
   /** Name of the permission group. */
   name?: string;
 }
-const TokensCreateRequestPoliciesItemPermissionGroupsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
-
 export type TokensCreateRequestPoliciesItemPermissionGroupsList =
   Array<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
-const TokensCreateRequestPoliciesItemPermissionGroupsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsList>;
-
 export type TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensCreateRequestPoliciesItemResourcesValue =
   | string
   | TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensCreateRequestPoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c0, 3);
-
 export type TokensCreateRequestPoliciesItemResourcesMap = {
   [key: string]: TokensCreateRequestPoliciesItemResourcesValue | undefined;
 };
-const TokensCreateRequestPoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<TokensCreateRequestPoliciesItemResourcesMap>;
-
 export interface TokensCreateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
   effect: TokensCreateRequestPoliciesItemEffect | (string & {});
@@ -215,47 +193,19 @@ export interface TokensCreateRequestPoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensCreateRequestPoliciesItemResourcesMap;
 }
-const TokensCreateRequestPoliciesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<TokensCreateRequestPoliciesItem>;
-
 export type TokensCreateRequestPoliciesList = Array<TokensCreateRequestPoliciesItem>;
-const TokensCreateRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<TokensCreateRequestPoliciesList>;
-
 export type TokensCreateRequestConditionRequestIpInList = Array<string>;
-const TokensCreateRequestConditionRequestIpInList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<TokensCreateRequestConditionRequestIpInList>;
-
 export type TokensCreateRequestConditionRequestIpNotInList = Array<string>;
-const TokensCreateRequestConditionRequestIpNotInList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensCreateRequestConditionRequestIpNotInList>;
-
 export interface TokensCreateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   in?: TokensCreateRequestConditionRequestIpInList;
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensCreateRequestConditionRequestIpNotInList;
 }
-const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<TokensCreateRequestConditionRequestIp>;
-
 export interface TokensCreateRequestCondition {
   /** Client IP restrictions. */
   requestIp?: TokensCreateRequestConditionRequestIp;
 }
-const TokensCreateRequestCondition = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<TokensCreateRequestCondition>;
-
 export interface CreateTokenRequest {
   /** Token name. */
   name: string;
@@ -267,39 +217,19 @@ export interface CreateTokenRequest {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string;
 }
-const CreateTokenRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateTokenRequest>;
-
 export type TokensCreateResponseConditionRequestIpInList = Array<string>;
-const TokensCreateResponseConditionRequestIpInList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensCreateResponseConditionRequestIpInList>;
-
 export type TokensCreateResponseConditionRequestIpNotInList = Array<string>;
-const TokensCreateResponseConditionRequestIpNotInList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensCreateResponseConditionRequestIpNotInList>;
-
 export interface TokensCreateResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   in?: TokensCreateResponseConditionRequestIpInList | null;
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensCreateResponseConditionRequestIpNotInList | null;
 }
-const TokensCreateResponseConditionRequestIp = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<TokensCreateResponseConditionRequestIp>;
-
 export interface TokensCreateResponseCondition {
   /** Client IP restrictions. */
   requestIp?: TokensCreateResponseConditionRequestIp | null;
 }
-const TokensCreateResponseCondition = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TokensCreateResponseCondition>;
-
 export type TokensCreateResponsePoliciesItemEffect = "allow" | "deny";
-const TokensCreateResponsePoliciesItemEffect = S.String;
-
 export interface TokensCreateResponsePoliciesItemPermissionGroupsItemMeta {
   /** A category used to group permission groups. */
   category?: string | null;
@@ -318,11 +248,6 @@ export interface TokensCreateResponsePoliciesItemPermissionGroupsItemMeta {
   /** Indicates the permission group's availability or visibility. */
   visibility?: string | null;
 }
-const TokensCreateResponsePoliciesItemPermissionGroupsItemMeta = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<TokensCreateResponsePoliciesItemPermissionGroupsItemMeta>;
-
 export interface TokensCreateResponsePoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
@@ -331,34 +256,17 @@ export interface TokensCreateResponsePoliciesItemPermissionGroupsItem {
   /** Name of the permission group. */
   name?: string | null;
 }
-const TokensCreateResponsePoliciesItemPermissionGroupsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-
 export type TokensCreateResponsePoliciesItemPermissionGroupsList =
   Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensCreateResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<TokensCreateResponsePoliciesItemPermissionGroupsList>;
-
 export type TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensCreateResponsePoliciesItemResourcesValue =
   | string
   | TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensCreateResponsePoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c2, 0);
-
 export type TokensCreateResponsePoliciesItemResourcesMap = {
   [key: string]: TokensCreateResponsePoliciesItemResourcesValue | undefined;
 };
-const TokensCreateResponsePoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<TokensCreateResponsePoliciesItemResourcesMap>;
-
 export interface TokensCreateResponsePoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -369,20 +277,8 @@ export interface TokensCreateResponsePoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensCreateResponsePoliciesItemResourcesMap;
 }
-const TokensCreateResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<TokensCreateResponsePoliciesItem>;
-
 export type TokensCreateResponsePoliciesList = Array<TokensCreateResponsePoliciesItem>;
-const TokensCreateResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<TokensCreateResponsePoliciesList>;
-
 export type TokensCreateResponseStatus = "active" | "disabled" | "expired";
-const TokensCreateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTokenResponse {
   /** Token identifier tag. */
@@ -413,65 +309,34 @@ export interface CreateTokenResponse {
   /** The token value. */
   value?: string | null;
 }
-const CreateTokenResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateTokenResponse>;
-
 export interface DeleteOrganizationRequest {
   /** Identifier */
   organizationId: string;
 }
-const DeleteOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteOrganizationRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteOrganizationResponse {
   /** Identifier */
   id?: string | null;
 }
-const DeleteOrganizationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteOrganizationResponse>;
-
 export interface DeleteSubscriptionRequest {
   /** Subscription identifier tag. */
   identifier: string;
 }
-const DeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteSubscriptionRequest>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteSubscriptionResponse {
   /** Subscription identifier tag. */
   subscriptionId?: string | null;
 }
-const DeleteSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteSubscriptionResponse>;
-
 export interface DeleteTokenRequest {
   /** Token identifier tag. */
   tokenId: string;
 }
-const DeleteTokenRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DeleteTokenRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteTokenResponse {
   /** Identifier */
   id: string;
 }
-const DeleteTokenResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteTokenResponse>;
-
 export interface GetBillingProfileRequest {}
-const GetBillingProfileRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetBillingProfileRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBillingProfileResponse {
   /** Billing item identifier tag. */
@@ -514,24 +379,12 @@ export interface GetBillingProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-const GetBillingProfileResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetBillingProfileResponse>;
-
 export interface GetInviteRequest {
   /** Invite identifier tag. */
   inviteId: string;
 }
-const GetInviteRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetInviteRequest>;
-
 export type InvitesGetResponseRolesList = Array<string>;
-const InvitesGetResponseRolesList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<InvitesGetResponseRolesList>;
-
 export type InvitesGetResponseStatus = "pending" | "accepted" | "rejected" | "expired";
-const InvitesGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetInviteResponse {
   /** ID of the user to add to the organization. */
@@ -556,23 +409,11 @@ export interface GetInviteResponse {
   /** Current status of the invitation. */
   status?: InvitesGetResponseStatus | null;
 }
-const GetInviteResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetInviteResponse>;
-
 export interface GetOrganizationRequest {
   /** Identifier */
   organizationId: string;
 }
-const GetOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetOrganizationRequest>;
-
 export type GetOrganizationResponse = unknown;
-const GetOrganizationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetOrganizationResponse>;
-
 export interface GetSpectrumAnalyticsZonesReportRequest {
   /** Include CDN traffic in the bandwidth aggregation. */
   cdnTraffic?: boolean;
@@ -581,11 +422,6 @@ export interface GetSpectrumAnalyticsZonesReportRequest {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
-const GetSpectrumAnalyticsZonesReportRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetSpectrumAnalyticsZonesReportRequest>;
-
 export interface GetSpectrumAnalyticsZonesReportResultItemTotalsBandwidth {
   /** Sum of ingress and egress bytes transferred. */
   all: number;
@@ -594,51 +430,19 @@ export interface GetSpectrumAnalyticsZonesReportResultItemTotalsBandwidth {
   /** Sum of ingress bytes transferred. */
   ingress: number;
 }
-const GetSpectrumAnalyticsZonesReportResultItemTotalsBandwidth = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetSpectrumAnalyticsZonesReportResultItemTotalsBandwidth>;
-
 export interface GetSpectrumAnalyticsZonesReportResultItemTotals {
   bandwidth: GetSpectrumAnalyticsZonesReportResultItemTotalsBandwidth;
 }
-const GetSpectrumAnalyticsZonesReportResultItemTotals = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetSpectrumAnalyticsZonesReportResultItemTotals>;
-
 export interface GetSpectrumAnalyticsZonesReportResultItem {
   totals: GetSpectrumAnalyticsZonesReportResultItemTotals;
   /** Identifier. */
   zoneId: string;
 }
-const GetSpectrumAnalyticsZonesReportResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetSpectrumAnalyticsZonesReportResultItem>;
-
 export type GetSpectrumAnalyticsZonesReportResultList =
   Array<GetSpectrumAnalyticsZonesReportResultItem>;
-const GetSpectrumAnalyticsZonesReportResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetSpectrumAnalyticsZonesReportResultList>;
-
 export type GetSpectrumAnalyticsZonesReportResponse = GetSpectrumAnalyticsZonesReportResultList;
-const GetSpectrumAnalyticsZonesReportResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetSpectrumAnalyticsZonesReportResponse>;
-
 export interface GetSubscriptionRequest {}
-const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetSubscriptionRequest>;
-
 export type SubscriptionsGetResultItemFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
-const SubscriptionsGetResultItemFrequency = S.String;
-
 export type SubscriptionsGetResultItemRatePlanId =
   | "free"
   | "lite"
@@ -650,12 +454,7 @@ export type SubscriptionsGetResultItemRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsGetResultItemRatePlanId = S.String;
-
 export type SubscriptionsGetResultItemRatePlanSetsList = Array<string>;
-const SubscriptionsGetResultItemRatePlanSetsList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
-
 export interface SubscriptionsGetResultItemRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsGetResultItemRatePlanId | null;
@@ -672,11 +471,6 @@ export interface SubscriptionsGetResultItemRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsGetResultItemRatePlanSetsList | null;
 }
-const SubscriptionsGetResultItemRatePlan = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<SubscriptionsGetResultItemRatePlan>;
-
 export type SubscriptionsGetResultItemState =
   | "Trial"
   | "Provisioned"
@@ -685,8 +479,6 @@ export type SubscriptionsGetResultItemState =
   | "Cancelled"
   | "Failed"
   | "Expired";
-const SubscriptionsGetResultItemState = S.String;
-
 export interface SubscriptionsGetResultItem {
   /** Subscription identifier tag. */
   id?: string | null;
@@ -705,34 +497,17 @@ export interface SubscriptionsGetResultItem {
   /** The state that the subscription is in. */
   state?: SubscriptionsGetResultItemState | null;
 }
-const SubscriptionsGetResultItem = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<SubscriptionsGetResultItem>;
-
 export type SubscriptionsGetResultList = Array<SubscriptionsGetResultItem>;
-const SubscriptionsGetResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<SubscriptionsGetResultList>;
-
 export interface GetSubscriptionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SubscriptionsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetSubscriptionResponse>;
-
 export interface GetTokenRequest {
   /** Token identifier tag. */
   tokenId: string;
 }
-const GetTokenRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetTokenRequest>;
-
 export type TokensGetResponseConditionRequestIpInList = Array<string>;
 export type TokensGetResponseConditionRequestIpNotInList = Array<string>;
 export interface TokensGetResponseConditionRequestIp {
@@ -741,46 +516,26 @@ export interface TokensGetResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensGetResponseConditionRequestIpNotInList | null;
 }
-const TokensGetResponseConditionRequestIp =
-  TokensCreateResponseConditionRequestIp as any as S.Schema<TokensGetResponseConditionRequestIp>;
-
 export interface TokensGetResponseCondition {
   /** Client IP restrictions. */
   requestIp?: TokensGetResponseConditionRequestIp | null;
 }
-const TokensGetResponseCondition = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<TokensGetResponseCondition>;
-
 export type TokensGetResponsePoliciesItemEffect = "allow" | "deny";
-const TokensGetResponsePoliciesItemEffect = S.String;
-
 export type TokensGetResponsePoliciesItemPermissionGroupsItemMeta =
   TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type TokensGetResponsePoliciesItemPermissionGroupsItem =
   TokensCreateResponsePoliciesItemPermissionGroupsItem;
 export type TokensGetResponsePoliciesItemPermissionGroupsList =
   Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensGetResponsePoliciesItemPermissionGroupsList =
-  TokensCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsList>;
-
 export type TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensGetResponsePoliciesItemResourcesValue =
   | string
   | TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensGetResponsePoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c5, 6);
-
 export type TokensGetResponsePoliciesItemResourcesMap = {
   [key: string]: TokensGetResponsePoliciesItemResourcesValue | undefined;
 };
-const TokensGetResponsePoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<TokensGetResponsePoliciesItemResourcesMap>;
-
 export interface TokensGetResponsePoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -791,20 +546,8 @@ export interface TokensGetResponsePoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensGetResponsePoliciesItemResourcesMap;
 }
-const TokensGetResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<TokensGetResponsePoliciesItem>;
-
 export type TokensGetResponsePoliciesList = Array<TokensGetResponsePoliciesItem>;
-const TokensGetResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<TokensGetResponsePoliciesList>;
-
 export type TokensGetResponseStatus = "active" | "disabled" | "expired";
-const TokensGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTokenResponse {
   /** Token identifier tag. */
@@ -833,28 +576,11 @@ export interface GetTokenResponse {
   /** Status of the token. */
   status?: TokensGetResponseStatus | null;
 }
-const GetTokenResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetTokenResponse>;
-
 export interface GetUserRequest {}
-const GetUserRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetUserRequest>;
-
 export type GetResponseBetasList = Array<string>;
-const GetResponseBetasList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<GetResponseBetasList>;
-
 export type GetResponseOrganizationsItemPermissionsList = Array<unknown>;
-const GetResponseOrganizationsItemPermissionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetResponseOrganizationsItemPermissionsList>;
-
 export type GetResponseOrganizationsItemRolesList = Array<string>;
-const GetResponseOrganizationsItemRolesList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<GetResponseOrganizationsItemRolesList>;
-
 export type GetResponseOrganizationsItemStatus = "member" | "invited";
-const GetResponseOrganizationsItemStatus = S.String;
-
 export interface GetResponseOrganizationsItem {
   /** Identifier */
   id?: string | null;
@@ -867,17 +593,7 @@ export interface GetResponseOrganizationsItem {
   /** Whether the user is a member of the organization or has an invitation pending. */
   status?: GetResponseOrganizationsItemStatus | null;
 }
-const GetResponseOrganizationsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetResponseOrganizationsItem>;
-
 export type GetResponseOrganizationsList = Array<GetResponseOrganizationsItem>;
-const GetResponseOrganizationsList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetResponseOrganizationsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUserResponse {
   /** Identifier of the user. */
@@ -910,40 +626,21 @@ export interface GetUserResponse {
   /** The zipcode or postal code where the user lives. */
   zipcode?: string | null;
 }
-const GetUserResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetUserResponse>;
-
 export interface AuditLogsListRequestAction {
   /** Filters by the action type. */
   type?: string;
 }
-const AuditLogsListRequestAction = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<AuditLogsListRequestAction>;
-
 export interface AuditLogsListRequestActor {
   /** Filters by the email address of the actor that made the change. */
   email?: string;
   /** Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range. */
   ip?: string;
 }
-const AuditLogsListRequestActor = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<AuditLogsListRequestActor>;
-
 export type AuditLogsListRequestDirection = "desc" | "asc";
-const AuditLogsListRequestDirection = S.String;
-
 export interface AuditLogsListRequestZone {
   /** Filters by the name of the zone associated to the change. */
   name?: string;
 }
-const AuditLogsListRequestZone = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<AuditLogsListRequestZone>;
-
 export interface ListAuditLogsRequest {
   /** Finds a specific log by its ID. */
   id?: string;
@@ -965,22 +662,13 @@ export interface ListAuditLogsRequest {
   since?: string;
   zone?: AuditLogsListRequestZone;
 }
-const ListAuditLogsRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListAuditLogsRequest>;
-
 export interface AuditLogsListResultItemAction {
   /** A boolean that indicates if the action attempted was successful. */
   result?: boolean | null;
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
-const AuditLogsListResultItemAction = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AuditLogsListResultItemAction>;
-
 export type AuditLogsListResultItemActorType = "user" | "admin" | "Cloudflare";
-const AuditLogsListResultItemActorType = S.String;
-
 export interface AuditLogsListResultItemActor {
   /** The ID of the actor that performed the action. If a user performed the action, this will be their User ID. */
   id?: string | null;
@@ -991,31 +679,16 @@ export interface AuditLogsListResultItemActor {
   /** The type of actor, whether a User, Cloudflare Admin, or an Automated System. */
   type?: AuditLogsListResultItemActorType | null;
 }
-const AuditLogsListResultItemActor = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<AuditLogsListResultItemActor>;
-
 export interface AuditLogsListResultItemOwner {
   /** Identifier */
   id?: string | null;
 }
-const AuditLogsListResultItemOwner = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<AuditLogsListResultItemOwner>;
-
 export interface AuditLogsListResultItemResource {
   /** An identifier for the resource that was affected by the action. */
   id?: string | null;
   /** A short string that describes the resource that was affected by the action. */
   type?: string | null;
 }
-const AuditLogsListResultItemResource = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<AuditLogsListResultItemResource>;
-
 export interface AuditLogsListResultItem {
   /** A string that uniquely identifies the audit log. */
   id?: string | null;
@@ -1034,31 +707,14 @@ export interface AuditLogsListResultItem {
   /** A UTC RFC3339 timestamp that specifies when the action being logged occured. */
   when?: string | null;
 }
-const AuditLogsListResultItem = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<AuditLogsListResultItem>;
-
 export type AuditLogsListResultList = Array<AuditLogsListResultItem>;
-const AuditLogsListResultList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<AuditLogsListResultList>;
-
 export interface ListAuditLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AuditLogsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAuditLogsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListAuditLogsResponse>;
-
 export type BillingHistoryListRequestOrder = "type" | "occurred_at" | "action";
-const BillingHistoryListRequestOrder = S.String;
-
 export interface ListBillingHistoriesRequest {
   /** The billing item action. */
   action?: string;
@@ -1073,19 +729,9 @@ export interface ListBillingHistoriesRequest {
   /** The billing item type. */
   type?: string;
 }
-const ListBillingHistoriesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListBillingHistoriesRequest>;
-
 export interface BillingHistoryListResultItemZone {
   name?: string | null;
 }
-const BillingHistoryListResultItemZone = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<BillingHistoryListResultItemZone>;
-
 export interface BillingHistoryListResultItem {
   /** Billing item identifier tag. */
   id: string;
@@ -1103,38 +749,16 @@ export interface BillingHistoryListResultItem {
   type: string;
   zone: BillingHistoryListResultItemZone;
 }
-const BillingHistoryListResultItem = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<BillingHistoryListResultItem>;
-
 export type BillingHistoryListResultList = Array<BillingHistoryListResultItem>;
-const BillingHistoryListResultList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<BillingHistoryListResultList>;
-
 export interface ListBillingHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: BillingHistoryListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListBillingHistoriesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListBillingHistoriesResponse>;
-
 export interface ListInvitesRequest {}
-const ListInvitesRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListInvitesRequest>;
-
 export type InvitesListResultItemRolesList = Array<string>;
-const InvitesListResultItemRolesList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<InvitesListResultItemRolesList>;
-
 export type InvitesListResultItemStatus = "pending" | "accepted" | "rejected" | "expired";
-const InvitesListResultItemStatus = S.String;
-
 export interface InvitesListResultItem {
   /** ID of the user to add to the organization. */
   invitedMemberId: string;
@@ -1158,37 +782,17 @@ export interface InvitesListResultItem {
   /** Current status of the invitation. */
   status?: InvitesListResultItemStatus | null;
 }
-const InvitesListResultItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<InvitesListResultItem>;
-
 export type InvitesListResultList = Array<InvitesListResultItem>;
-const InvitesListResultList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<InvitesListResultList>;
-
 export interface ListInvitesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: InvitesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListInvitesResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListInvitesResponse>;
-
 export type OrganizationsListRequestDirection = "asc" | "desc";
-const OrganizationsListRequestDirection = S.String;
-
 export type OrganizationsListRequestMatch = "any" | "all";
-const OrganizationsListRequestMatch = S.String;
-
 export type OrganizationsListRequestOrder = "id" | "name" | "status";
-const OrganizationsListRequestOrder = S.String;
-
 export type OrganizationsListRequestStatus = "member" | "invited";
-const OrganizationsListRequestStatus = S.String;
-
 export interface ListOrganizationsRequest {
   /** Direction to order organizations. */
   direction?: OrganizationsListRequestDirection | (string & {});
@@ -1205,22 +809,9 @@ export interface ListOrganizationsRequest {
   /** Whether the user is a member of the organization or has an inivitation pending. */
   status?: OrganizationsListRequestStatus | (string & {});
 }
-const ListOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListOrganizationsRequest>;
-
 export type OrganizationsListResultItemPermissionsList = Array<unknown>;
-const OrganizationsListResultItemPermissionsList =
-  GetResponseOrganizationsItemPermissionsList as any as S.Schema<OrganizationsListResultItemPermissionsList>;
-
 export type OrganizationsListResultItemRolesList = Array<string>;
-const OrganizationsListResultItemRolesList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<OrganizationsListResultItemRolesList>;
-
 export type OrganizationsListResultItemStatus = "member" | "invited";
-const OrganizationsListResultItemStatus = S.String;
-
 export interface OrganizationsListResultItem {
   /** Identifier */
   id?: string | null;
@@ -1233,35 +824,15 @@ export interface OrganizationsListResultItem {
   /** Whether the user is a member of the organization or has an invitation pending. */
   status?: OrganizationsListResultItemStatus | null;
 }
-const OrganizationsListResultItem = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<OrganizationsListResultItem>;
-
 export type OrganizationsListResultList = Array<OrganizationsListResultItem>;
-const OrganizationsListResultList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<OrganizationsListResultList>;
-
 export interface ListOrganizationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: OrganizationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListOrganizationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListOrganizationsResponse>;
-
 export interface ListTenantsRequest {}
-const ListTenantsRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ListTenantsRequest>;
-
 export type TenantsListResultItemMetaHierarchyTagsList = Array<string>;
-const TenantsListResultItemMetaHierarchyTagsList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TenantsListResultItemMetaHierarchyTagsList>;
-
 export interface TenantsListResultItemMetaTenantFlags {
   accountCreation: string;
   accountCreationAppliesTenantDefaults: string;
@@ -1272,11 +843,6 @@ export interface TenantsListResultItemMetaTenantFlags {
   memberManagement: string;
   subOrgCreation: string;
 }
-const TenantsListResultItemMetaTenantFlags = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<TenantsListResultItemMetaTenantFlags>;
-
 export interface TenantsListResultItemMeta {
   /** Ordered chain of organization tags from the root organization down to (and including) this organization itself. Root organizations return a single-element array containing their own tag; sub-organizations return `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for constructing authorization scopes that need to cover every ancestor in the hierarchy. */
   hierarchyTags?: TenantsListResultItemMetaHierarchyTagsList | null;
@@ -1284,20 +850,10 @@ export interface TenantsListResultItemMeta {
   /** Enable features for Organizations. */
   tenantFlags?: TenantsListResultItemMetaTenantFlags | null;
 }
-const TenantsListResultItemMeta = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<TenantsListResultItemMeta>;
-
 export interface TenantsListResultItemParent {
   id: string;
   name: string;
 }
-const TenantsListResultItemParent = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<TenantsListResultItemParent>;
-
 export interface TenantsListResultItemProfile {
   businessAddress: string;
   businessEmail: string;
@@ -1305,11 +861,6 @@ export interface TenantsListResultItemProfile {
   businessPhone: string;
   externalMetadata: string;
 }
-const TenantsListResultItemProfile = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<TenantsListResultItemProfile>;
-
 export interface TenantsListResultItem {
   id: string;
   createTime: string;
@@ -1318,36 +869,19 @@ export interface TenantsListResultItem {
   parent?: TenantsListResultItemParent | null;
   profile?: TenantsListResultItemProfile | null;
 }
-const TenantsListResultItem = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<TenantsListResultItem>;
-
 export type TenantsListResultList = Array<TenantsListResultItem>;
-const TenantsListResultList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<TenantsListResultList>;
-
 export interface ListTenantsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: TenantsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListTenantsResponse = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ListTenantsResponse>;
-
 export interface ListTokenPermissionGroupsRequest {
   /** Filter by the name of the permission group. The value must be URL-encoded. */
   name?: string;
   /** Filter by the scope of the permission group. The value must be URL-encoded. */
   scope?: string;
 }
-const ListTokenPermissionGroupsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListTokenPermissionGroupsRequest>;
-
 export type TokensPermissionGroupsListResultItemCategory =
   | "developer_platform"
   | "ai_and_machine_learning"
@@ -1362,22 +896,13 @@ export type TokensPermissionGroupsListResultItemCategory =
   | "cache_and_performance"
   | "account_and_billing"
   | "other";
-const TokensPermissionGroupsListResultItemCategory = S.String;
-
 export type TokensPermissionGroupsListResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
   | "com.cloudflare.api.user"
   | "com.cloudflare.edge.r2.bucket";
-const TokensPermissionGroupsListResultItemScopesItem = S.String;
-
 export type TokensPermissionGroupsListResultItemScopesList =
   Array<TokensPermissionGroupsListResultItemScopesItem>;
-const TokensPermissionGroupsListResultItemScopesList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<TokensPermissionGroupsListResultItemScopesList>;
-
 export interface TokensPermissionGroupsListResultItem {
   /** Public ID. */
   id?: string | null;
@@ -1390,31 +915,14 @@ export interface TokensPermissionGroupsListResultItem {
   /** Resources to which the Permission Group is scoped */
   scopes?: TokensPermissionGroupsListResultItemScopesList | null;
 }
-const TokensPermissionGroupsListResultItem = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<TokensPermissionGroupsListResultItem>;
-
 export type TokensPermissionGroupsListResultList = Array<TokensPermissionGroupsListResultItem>;
-const TokensPermissionGroupsListResultList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<TokensPermissionGroupsListResultList>;
-
 export interface ListTokenPermissionGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: TokensPermissionGroupsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListTokenPermissionGroupsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListTokenPermissionGroupsResponse>;
-
 export type TokensListRequestDirection = "asc" | "desc";
-const TokensListRequestDirection = S.String;
-
 export interface ListTokensRequest {
   /** Direction to order results. */
   direction?: TokensListRequestDirection | (string & {});
@@ -1425,8 +933,6 @@ export interface ListTokensRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const ListTokensRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ListTokensRequest>;
-
 export type TokensListResultItemConditionRequestIpInList = Array<string>;
 export type TokensListResultItemConditionRequestIpNotInList = Array<string>;
 export interface TokensListResultItemConditionRequestIp {
@@ -1439,37 +945,22 @@ export interface TokensListResultItemCondition {
   /** Client IP restrictions. */
   requestIp?: TokensListResultItemConditionRequestIp | null;
 }
-const TokensListResultItemCondition =
-  TokensCreateResponseCondition as any as S.Schema<TokensListResultItemCondition>;
-
 export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
-const TokensListResultItemPoliciesItemEffect = S.String;
-
 export type TokensListResultItemPoliciesItemPermissionGroupsItemMeta =
   TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type TokensListResultItemPoliciesItemPermissionGroupsItem =
   TokensCreateResponsePoliciesItemPermissionGroupsItem;
 export type TokensListResultItemPoliciesItemPermissionGroupsList =
   Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensListResultItemPoliciesItemPermissionGroupsList =
-  TokensCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsList>;
-
 export type TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensListResultItemPoliciesItemResourcesValue =
   | string
   | TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensListResultItemPoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c11, 6);
-
 export type TokensListResultItemPoliciesItemResourcesMap = {
   [key: string]: TokensListResultItemPoliciesItemResourcesValue | undefined;
 };
-const TokensListResultItemPoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<TokensListResultItemPoliciesItemResourcesMap>;
-
 export interface TokensListResultItemPoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -1480,20 +971,8 @@ export interface TokensListResultItemPoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensListResultItemPoliciesItemResourcesMap;
 }
-const TokensListResultItemPoliciesItem = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<TokensListResultItemPoliciesItem>;
-
 export type TokensListResultItemPoliciesList = Array<TokensListResultItemPoliciesItem>;
-const TokensListResultItemPoliciesList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<TokensListResultItemPoliciesList>;
-
 export type TokensListResultItemStatus = "active" | "disabled" | "expired";
-const TokensListResultItemStatus = S.String;
-
 export interface TokensListResultItem {
   /** Token identifier tag. */
   id?: string | null;
@@ -1521,43 +1000,22 @@ export interface TokensListResultItem {
   /** Status of the token. */
   status?: TokensListResultItemStatus | null;
 }
-const TokensListResultItem = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<TokensListResultItem>;
-
 export type TokensListResultList = Array<TokensListResultItem>;
-const TokensListResultList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<TokensListResultList>;
-
 export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: TokensListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListTokensResponse = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ListTokensResponse>;
-
 export type InvitesEditRequestStatus = "accepted" | "rejected";
-const InvitesEditRequestStatus = S.String;
-
 export interface PatchInviteRequest {
   /** Invite identifier tag. */
   inviteId: string;
   /** Status of your response to the invitation (rejected or accepted). */
   status: InvitesEditRequestStatus | (string & {});
 }
-const PatchInviteRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PatchInviteRequest>;
-
 export type InvitesEditResponseRolesList = Array<string>;
-const InvitesEditResponseRolesList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<InvitesEditResponseRolesList>;
-
 export type InvitesEditResponseStatus = "pending" | "accepted" | "rejected" | "expired";
-const InvitesEditResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchInviteResponse {
   /** ID of the user to add to the organization. */
@@ -1582,8 +1040,6 @@ export interface PatchInviteResponse {
   /** Current status of the invitation. */
   status?: InvitesEditResponseStatus | null;
 }
-const PatchInviteResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<PatchInviteResponse>;
-
 export interface PatchUserRequest {
   /** The country in which the user lives. */
   country?: string;
@@ -1596,23 +1052,10 @@ export interface PatchUserRequest {
   /** The zipcode or postal code where the user lives. */
   zipcode?: string;
 }
-const PatchUserRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<PatchUserRequest>;
-
 export type EditResponseBetasList = Array<string>;
-const EditResponseBetasList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<EditResponseBetasList>;
-
 export type EditResponseOrganizationsItemPermissionsList = Array<unknown>;
-const EditResponseOrganizationsItemPermissionsList =
-  GetResponseOrganizationsItemPermissionsList as any as S.Schema<EditResponseOrganizationsItemPermissionsList>;
-
 export type EditResponseOrganizationsItemRolesList = Array<string>;
-const EditResponseOrganizationsItemRolesList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<EditResponseOrganizationsItemRolesList>;
-
 export type EditResponseOrganizationsItemStatus = "member" | "invited";
-const EditResponseOrganizationsItemStatus = S.String;
-
 export interface EditResponseOrganizationsItem {
   /** Identifier */
   id?: string | null;
@@ -1625,17 +1068,7 @@ export interface EditResponseOrganizationsItem {
   /** Whether the user is a member of the organization or has an invitation pending. */
   status?: EditResponseOrganizationsItemStatus | null;
 }
-const EditResponseOrganizationsItem = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<EditResponseOrganizationsItem>;
-
 export type EditResponseOrganizationsList = Array<EditResponseOrganizationsItem>;
-const EditResponseOrganizationsList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<EditResponseOrganizationsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchUserResponse {
   /** Identifier of the user. */
@@ -1668,11 +1101,7 @@ export interface PatchUserResponse {
   /** The zipcode or postal code where the user lives. */
   zipcode?: string | null;
 }
-const PatchUserResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<PatchUserResponse>;
-
 export type SubscriptionsUpdateRequestFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
-const SubscriptionsUpdateRequestFrequency = S.String;
-
 export type SubscriptionsUpdateRequestRatePlanId =
   | "free"
   | "lite"
@@ -1684,12 +1113,7 @@ export type SubscriptionsUpdateRequestRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
-const SubscriptionsUpdateRequestRatePlanId = S.String;
-
 export type SubscriptionsUpdateRequestRatePlanSetsList = Array<string>;
-const SubscriptionsUpdateRequestRatePlanSetsList =
-  TokensCreateRequestConditionRequestIpInList as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
-
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsUpdateRequestRatePlanId | (string & {});
@@ -1706,11 +1130,6 @@ export interface SubscriptionsUpdateRequestRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsUpdateRequestRatePlanSetsList;
 }
-const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<SubscriptionsUpdateRequestRatePlan>;
-
 export interface PutSubscriptionRequest {
   /** Subscription identifier tag. */
   identifier: string;
@@ -1719,54 +1138,28 @@ export interface PutSubscriptionRequest {
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsUpdateRequestRatePlan;
 }
-const PutSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<PutSubscriptionRequest>;
-
 export type PutSubscriptionResponse = unknown;
-const PutSubscriptionResponse = GetOrganizationResponse as any as S.Schema<PutSubscriptionResponse>;
-
 export interface PutTokenValueRequest {
   /** Token identifier tag. */
   tokenId: string;
 }
-const PutTokenValueRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<PutTokenValueRequest>;
-
 export type PutTokenValueResponse = unknown;
-const PutTokenValueResponse = GetOrganizationResponse as any as S.Schema<PutTokenValueResponse>;
-
 export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
-const TokensUpdateRequestPoliciesItemEffect = S.String;
-
 export type TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta =
   TokensCreateRequestPoliciesItemPermissionGroupsItemMeta;
 export type TokensUpdateRequestPoliciesItemPermissionGroupsItem =
   TokensCreateRequestPoliciesItemPermissionGroupsItem;
 export type TokensUpdateRequestPoliciesItemPermissionGroupsList =
   Array<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
-const TokensUpdateRequestPoliciesItemPermissionGroupsList =
-  TokensCreateRequestPoliciesItemPermissionGroupsList as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsList>;
-
 export type TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensUpdateRequestPoliciesItemResourcesValue =
   | string
   | TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensUpdateRequestPoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c13, 6);
-
 export type TokensUpdateRequestPoliciesItemResourcesMap = {
   [key: string]: TokensUpdateRequestPoliciesItemResourcesValue | undefined;
 };
-const TokensUpdateRequestPoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesMap>;
-
 export interface TokensUpdateRequestPoliciesItem {
   /** Allow or deny operations against the resources. */
   effect: TokensUpdateRequestPoliciesItemEffect | (string & {});
@@ -1775,17 +1168,7 @@ export interface TokensUpdateRequestPoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensUpdateRequestPoliciesItemResourcesMap;
 }
-const TokensUpdateRequestPoliciesItem = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<TokensUpdateRequestPoliciesItem>;
-
 export type TokensUpdateRequestPoliciesList = Array<TokensUpdateRequestPoliciesItem>;
-const TokensUpdateRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<TokensUpdateRequestPoliciesList>;
-
 export type TokensUpdateRequestConditionRequestIpInList = Array<string>;
 export type TokensUpdateRequestConditionRequestIpNotInList = Array<string>;
 export interface TokensUpdateRequestConditionRequestIp {
@@ -1798,12 +1181,7 @@ export interface TokensUpdateRequestCondition {
   /** Client IP restrictions. */
   requestIp?: TokensUpdateRequestConditionRequestIp;
 }
-const TokensUpdateRequestCondition =
-  TokensCreateRequestCondition as any as S.Schema<TokensUpdateRequestCondition>;
-
 export type TokensUpdateRequestStatus = "active" | "disabled" | "expired";
-const TokensUpdateRequestStatus = S.String;
-
 export interface UpdateTokenRequest {
   /** Token identifier tag. */
   tokenId: string;
@@ -1819,8 +1197,6 @@ export interface UpdateTokenRequest {
   /** Status of the token. */
   status?: TokensUpdateRequestStatus | (string & {});
 }
-const UpdateTokenRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<UpdateTokenRequest>;
-
 export type TokensUpdateResponseConditionRequestIpInList = Array<string>;
 export type TokensUpdateResponseConditionRequestIpNotInList = Array<string>;
 export interface TokensUpdateResponseConditionRequestIp {
@@ -1833,37 +1209,22 @@ export interface TokensUpdateResponseCondition {
   /** Client IP restrictions. */
   requestIp?: TokensUpdateResponseConditionRequestIp | null;
 }
-const TokensUpdateResponseCondition =
-  TokensCreateResponseCondition as any as S.Schema<TokensUpdateResponseCondition>;
-
 export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
-const TokensUpdateResponsePoliciesItemEffect = S.String;
-
 export type TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta =
   TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export type TokensUpdateResponsePoliciesItemPermissionGroupsItem =
   TokensCreateResponsePoliciesItemPermissionGroupsItem;
 export type TokensUpdateResponsePoliciesItemPermissionGroupsList =
   Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-const TokensUpdateResponsePoliciesItemPermissionGroupsList =
-  TokensCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsList>;
-
 export type TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export type TokensUpdateResponsePoliciesItemResourcesValue =
   | string
   | TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
-const TokensUpdateResponsePoliciesItemResourcesValue = /*@__PURE__*/ __L.at(__c14, 3);
-
 export type TokensUpdateResponsePoliciesItemResourcesMap = {
   [key: string]: TokensUpdateResponsePoliciesItemResourcesValue | undefined;
 };
-const TokensUpdateResponsePoliciesItemResourcesMap = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesMap>;
-
 export interface TokensUpdateResponsePoliciesItem {
   /** Policy identifier. */
   id: string;
@@ -1874,20 +1235,8 @@ export interface TokensUpdateResponsePoliciesItem {
   /** A list of resource names that the policy applies to. */
   resources: TokensUpdateResponsePoliciesItemResourcesMap;
 }
-const TokensUpdateResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<TokensUpdateResponsePoliciesItem>;
-
 export type TokensUpdateResponsePoliciesList = Array<TokensUpdateResponsePoliciesItem>;
-const TokensUpdateResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<TokensUpdateResponsePoliciesList>;
-
 export type TokensUpdateResponseStatus = "active" | "disabled" | "expired";
-const TokensUpdateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTokenResponse {
   /** Token identifier tag. */
@@ -1916,14 +1265,8 @@ export interface UpdateTokenResponse {
   /** Status of the token. */
   status?: TokensUpdateResponseStatus | null;
 }
-const UpdateTokenResponse = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<UpdateTokenResponse>;
-
 export interface VerifyTokenRequest {}
-const VerifyTokenRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<VerifyTokenRequest>;
-
 export type TokensVerifyResponseStatus = "active" | "disabled" | "expired";
-const TokensVerifyResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface VerifyTokenResponse {
   /** Token identifier tag. */
@@ -1935,8 +1278,6 @@ export interface VerifyTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
 }
-const VerifyTokenResponse = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<VerifyTokenResponse>;
-
 export type CreateTokenError =
   | InvalidRoute
   | InvalidTokenName
@@ -1949,8 +1290,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTokenRequest,
-  output: CreateTokenResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateTokenRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateTokenResponse>,
   errors: [
     InvalidRoute,
     InvalidTokenName,
@@ -1970,8 +1311,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationRequest,
-  output: DeleteOrganizationResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<DeleteOrganizationRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<DeleteOrganizationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1985,8 +1326,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionRequest,
-  output: DeleteSubscriptionResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2000,8 +1341,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTokenRequest,
-  output: DeleteTokenResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<DeleteTokenResponse>,
   errors: [InvalidRoute, MethodNotAllowed, TokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2015,8 +1356,8 @@ export const getBillingProfile: API.OperationMethod<
   GetBillingProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingProfileRequest,
-  output: GetBillingProfileResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<GetBillingProfileRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<GetBillingProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2030,8 +1371,8 @@ export const getInvite: API.OperationMethod<
   GetInviteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInviteRequest,
-  output: GetInviteResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<GetInviteRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetInviteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2045,8 +1386,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationRequest,
-  output: GetOrganizationResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetOrganizationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2060,8 +1401,8 @@ export const getSpectrumAnalyticsZonesReport: API.OperationMethod<
   GetSpectrumAnalyticsZonesReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpectrumAnalyticsZonesReportRequest,
-  output: GetSpectrumAnalyticsZonesReportResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetSpectrumAnalyticsZonesReportRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetSpectrumAnalyticsZonesReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2077,8 +1418,8 @@ export const getSubscription: API.PaginatedOperationMethod<
   SubscriptionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetSubscriptionRequest,
-    output: GetSubscriptionResponse,
+    input: __S(39, __c4, 7) as any as S.Schema<GetSubscriptionRequest>,
+    output: __S(43, __c5, 3) as any as S.Schema<GetSubscriptionResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2095,8 +1436,8 @@ export const getToken: API.OperationMethod<
   GetTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTokenRequest,
-  output: GetTokenResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetTokenRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetTokenResponse>,
   errors: [InvalidRoute, TokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2110,8 +1451,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: GetUserResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<GetUserRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<GetUserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2127,8 +1468,8 @@ export const listAuditLogs: API.PaginatedOperationMethod<
   AuditLogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAuditLogsRequest,
-    output: ListAuditLogsResponse,
+    input: __S(59, __c7, 3) as any as S.Schema<ListAuditLogsRequest>,
+    output: __S(66, __c8, 2) as any as S.Schema<ListAuditLogsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2153,8 +1494,8 @@ export const listBillingHistories: API.PaginatedOperationMethod<
   BillingHistoryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListBillingHistoriesRequest,
-    output: ListBillingHistoriesResponse,
+    input: __S(67, __c8, 3) as any as S.Schema<ListBillingHistoriesRequest>,
+    output: __S(71, __c8, 7) as any as S.Schema<ListBillingHistoriesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2179,8 +1520,8 @@ export const listInvites: API.PaginatedOperationMethod<
   InvitesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListInvitesRequest,
-    output: ListInvitesResponse,
+    input: __S(72, __c9, 0) as any as S.Schema<ListInvitesRequest>,
+    output: __S(75, __c9, 3) as any as S.Schema<ListInvitesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2199,8 +1540,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   OrganizationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListOrganizationsRequest,
-    output: ListOrganizationsResponse,
+    input: __S(76, __c9, 4) as any as S.Schema<ListOrganizationsRequest>,
+    output: __S(79, __c9, 7) as any as S.Schema<ListOrganizationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2225,8 +1566,8 @@ export const listTenants: API.PaginatedOperationMethod<
   TenantsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTenantsRequest,
-    output: ListTenantsResponse,
+    input: __S(80, __c10, 0) as any as S.Schema<ListTenantsRequest>,
+    output: __S(87, __c10, 7) as any as S.Schema<ListTenantsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2245,8 +1586,8 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
   TokensPermissionGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTokenPermissionGroupsRequest,
-    output: ListTokenPermissionGroupsResponse,
+    input: __S(88, __c11, 0) as any as S.Schema<ListTokenPermissionGroupsRequest>,
+    output: __S(92, __c11, 4) as any as S.Schema<ListTokenPermissionGroupsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2265,8 +1606,8 @@ export const listTokens: API.PaginatedOperationMethod<
   TokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTokensRequest,
-    output: ListTokensResponse,
+    input: __S(93, __c11, 5) as any as S.Schema<ListTokensRequest>,
+    output: __S(100, __c12, 4) as any as S.Schema<ListTokensResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2289,8 +1630,8 @@ export const patchInvite: API.OperationMethod<
   PatchInviteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchInviteRequest,
-  output: PatchInviteResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<PatchInviteRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<PatchInviteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2304,8 +1645,8 @@ export const patchUser: API.OperationMethod<
   PatchUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUserRequest,
-  output: PatchUserResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<PatchUserRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<PatchUserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2319,8 +1660,8 @@ export const putSubscription: API.OperationMethod<
   PutSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSubscriptionRequest,
-  output: PutSubscriptionResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<PutSubscriptionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PutSubscriptionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2334,8 +1675,8 @@ export const putTokenValue: API.OperationMethod<
   PutTokenValueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTokenValueRequest,
-  output: PutTokenValueResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<PutTokenValueRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PutTokenValueResponse>,
   errors: [InvalidRoute, TokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2354,8 +1695,8 @@ export const updateToken: API.OperationMethod<
   UpdateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTokenRequest,
-  output: UpdateTokenResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<UpdateTokenRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<UpdateTokenResponse>,
   errors: [
     InvalidRoute,
     MethodNotAllowed,
@@ -2376,8 +1717,8 @@ export const verifyToken: API.OperationMethod<
   VerifyTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyTokenRequest,
-  output: VerifyTokenResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<VerifyTokenRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<VerifyTokenResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2405,32 +1746,30 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          meta: S.optional(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
+          meta: S.optional(__S(0, __c0, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItem",
       });
     case 2:
-      return S.Array(TokensCreateRequestPoliciesItemPermissionGroupsItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 4:
-      return S.Record(S.String, TokensCreateRequestPoliciesItemResourcesValue);
+      return S.Record(S.String, __S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          effect: TokensCreateRequestPoliciesItemEffect,
-          permissionGroups: TokensCreateRequestPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensCreateRequestPoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(2, __c0, 2).pipe(T.Body("permission_groups")),
+          resources: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "TokensCreateRequestPoliciesItem",
       });
     case 6:
-      return S.Array(TokensCreateRequestPoliciesItem);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.Array(S.String);
   }
@@ -2440,8 +1779,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          in: S.optional(TokensCreateRequestConditionRequestIpInList),
-          notIn: S.optional(TokensCreateRequestConditionRequestIpNotInList.pipe(T.Body("not_in"))),
+          in: S.optional(__S(7, __c0, 7)),
+          notIn: S.optional(__S(7, __c0, 7).pipe(T.Body("not_in"))),
         }),
       ).annotate({
         identifier: "TokensCreateRequestConditionRequestIp",
@@ -2449,7 +1788,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          requestIp: S.optional(TokensCreateRequestConditionRequestIp.pipe(T.Body("request_ip"))),
+          requestIp: S.optional(__S(8, __c1, 0).pipe(T.Body("request_ip"))),
         }),
       ).annotate({
         identifier: "TokensCreateRequestCondition",
@@ -2458,8 +1797,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          policies: TokensCreateRequestPoliciesList,
-          condition: S.optional(TokensCreateRequestCondition),
+          policies: __S(6, __c0, 6),
+          condition: S.optional(__S(9, __c1, 1)),
           expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
           notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
         })
@@ -2469,10 +1808,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          in: S.optional(S.NullOr(TokensCreateResponseConditionRequestIpInList)),
-          notIn: S.optional(
-            S.NullOr(TokensCreateResponseConditionRequestIpNotInList).pipe(T.Body("not_in")),
-          ),
+          in: S.optional(S.NullOr(__S(7, __c0, 7))),
+          notIn: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("not_in"))),
         }),
       ).annotate({
         identifier: "TokensCreateResponseConditionRequestIp",
@@ -2480,9 +1817,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requestIp: S.optional(
-            S.NullOr(TokensCreateResponseConditionRequestIp).pipe(T.Body("request_ip")),
-          ),
+          requestIp: S.optional(S.NullOr(__S(11, __c1, 3)).pipe(T.Body("request_ip"))),
         }),
       ).annotate({
         identifier: "TokensCreateResponseCondition",
@@ -2506,14 +1841,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          meta: S.optional(S.NullOr(TokensCreateResponsePoliciesItemPermissionGroupsItemMeta)),
+          meta: S.optional(S.NullOr(__S(13, __c1, 5))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TokensCreateResponsePoliciesItemPermissionGroupsItem",
       });
     case 7:
-      return S.Array(TokensCreateResponsePoliciesItemPermissionGroupsItem);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -2521,27 +1856,25 @@ function __c2(j: number): any {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 1:
-      return S.Record(S.String, TokensCreateResponsePoliciesItemResourcesValue);
+      return S.Record(S.String, __S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensCreateResponsePoliciesItemEffect,
-          permissionGroups: TokensCreateResponsePoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensCreateResponsePoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(15, __c1, 7).pipe(T.Body("permission_groups")),
+          resources: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "TokensCreateResponsePoliciesItem",
       });
     case 3:
-      return S.Array(TokensCreateResponsePoliciesItem);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensCreateResponseCondition)),
+          condition: S.optional(S.NullOr(__S(12, __c1, 4))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -2551,10 +1884,10 @@ function __c2(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensCreateResponsePoliciesList)),
+          policies: S.optional(S.NullOr(__S(19, __c2, 3))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensCreateResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTokenResponse" });
@@ -2691,8 +2024,8 @@ function __c3(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("organization_is_enforcing_twofactor")),
           ),
           organizationName: S.optional(S.NullOr(S.String).pipe(T.Body("organization_name"))),
-          roles: S.optional(S.NullOr(InvitesGetResponseRolesList)),
-          status: S.optional(S.NullOr(InvitesGetResponseStatus)),
+          roles: S.optional(S.NullOr(__S(7, __c0, 7))),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInviteResponse" });
     case 7:
@@ -2736,7 +2069,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bandwidth: GetSpectrumAnalyticsZonesReportResultItemTotalsBandwidth,
+          bandwidth: __S(34, __c4, 2),
         }),
       ).annotate({
         identifier: "GetSpectrumAnalyticsZonesReportResultItemTotals",
@@ -2744,20 +2077,17 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          totals: GetSpectrumAnalyticsZonesReportResultItemTotals,
+          totals: __S(35, __c4, 3),
           zoneId: S.String.pipe(T.Body("zone_id")),
         }),
       ).annotate({
         identifier: "GetSpectrumAnalyticsZonesReportResultItem",
       });
     case 5:
-      return S.Array(GetSpectrumAnalyticsZonesReportResultItem);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
-        GetSpectrumAnalyticsZonesReportResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(37, __c4, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSpectrumAnalyticsZonesReportResponse",
       });
@@ -2774,13 +2104,13 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(SubscriptionsGetResultItemRatePlanId)),
+          id: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(SubscriptionsGetResultItemRatePlanSetsList)),
+          sets: S.optional(S.NullOr(__S(7, __c0, 7))),
         }),
       ).annotate({
         identifier: "SubscriptionsGetResultItemRatePlan",
@@ -2792,22 +2122,20 @@ function __c5(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(SubscriptionsGetResultItemFrequency)),
+          frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(
-            S.NullOr(SubscriptionsGetResultItemRatePlan).pipe(T.Body("rate_plan")),
-          ),
-          state: S.optional(S.NullOr(SubscriptionsGetResultItemState)),
+          ratePlan: S.optional(S.NullOr(__S(40, __c5, 0)).pipe(T.Body("rate_plan"))),
+          state: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "SubscriptionsGetResultItem",
       });
     case 2:
-      return S.Array(SubscriptionsGetResultItem);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: SubscriptionsGetResultList.pipe(T.EnvelopePayload()),
+          result: __S(42, __c5, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubscriptionResponse" });
@@ -2822,9 +2150,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          requestIp: S.optional(
-            S.NullOr(TokensGetResponseConditionRequestIp).pipe(T.Body("request_ip")),
-          ),
+          requestIp: S.optional(S.NullOr(__S(11, __c1, 3)).pipe(T.Body("request_ip"))),
         }),
       ).annotate({
         identifier: "TokensGetResponseCondition",
@@ -2832,7 +2158,7 @@ function __c5(j: number): any {
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 7:
-      return S.Record(S.String, TokensGetResponsePoliciesItemResourcesValue);
+      return S.Record(S.String, __S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -2841,22 +2167,20 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensGetResponsePoliciesItemEffect,
-          permissionGroups: TokensGetResponsePoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensGetResponsePoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(15, __c1, 7).pipe(T.Body("permission_groups")),
+          resources: __S(47, __c5, 7),
         }),
       ).annotate({
         identifier: "TokensGetResponsePoliciesItem",
       });
     case 1:
-      return S.Array(TokensGetResponsePoliciesItem);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensGetResponseCondition)),
+          condition: S.optional(S.NullOr(__S(45, __c5, 5))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -2866,10 +2190,10 @@ function __c6(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensGetResponsePoliciesList)),
+          policies: S.optional(S.NullOr(__S(49, __c6, 1))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensGetResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTokenResponse" });
     case 3:
@@ -2885,28 +2209,28 @@ function __c6(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(GetResponseOrganizationsItemPermissionsList)),
-          roles: S.optional(S.NullOr(GetResponseOrganizationsItemRolesList)),
-          status: S.optional(S.NullOr(GetResponseOrganizationsItemStatus)),
+          permissions: S.optional(S.NullOr(__S(52, __c6, 4))),
+          roles: S.optional(S.NullOr(__S(7, __c0, 7))),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponseOrganizationsItem",
       });
     case 6:
-      return S.Array(GetResponseOrganizationsItem);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           email: S.String,
-          betas: S.optional(S.NullOr(GetResponseBetasList)),
+          betas: S.optional(S.NullOr(__S(7, __c0, 7))),
           country: S.optional(S.NullOr(S.String)),
           firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
           hasBusinessZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_business_zones"))),
           hasEnterpriseZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_enterprise_zones"))),
           hasProZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_pro_zones"))),
           lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
-          organizations: S.optional(S.NullOr(GetResponseOrganizationsList)),
+          organizations: S.optional(S.NullOr(__S(54, __c6, 6))),
           suspended: S.optional(S.NullOr(S.Boolean)),
           telephone: S.optional(S.NullOr(S.String)),
           twoFactorAuthenticationEnabled: S.optional(
@@ -2949,16 +2273,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(AuditLogsListRequestAction.pipe(T.DeepQuery("action"))),
-          actor: S.optional(AuditLogsListRequestActor.pipe(T.DeepQuery("actor"))),
+          action: S.optional(__S(56, __c7, 0).pipe(T.DeepQuery("action"))),
+          actor: S.optional(__S(57, __c7, 1).pipe(T.DeepQuery("actor"))),
           before: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(AuditLogsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           export: S.optional(S.Boolean.pipe(T.Query())),
           hideUserLogs: S.optional(S.Boolean.pipe(T.Query("hide_user_logs"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           since: S.optional(S.String.pipe(T.Query())),
-          zone: S.optional(AuditLogsListRequestZone.pipe(T.DeepQuery("zone"))),
+          zone: S.optional(__S(58, __c7, 2).pipe(T.DeepQuery("zone"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2978,7 +2302,7 @@ function __c7(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(AuditLogsListResultItemActorType)),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "AuditLogsListResultItemActor",
@@ -3008,23 +2332,23 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(AuditLogsListResultItemAction)),
-          actor: S.optional(S.NullOr(AuditLogsListResultItemActor)),
+          action: S.optional(S.NullOr(__S(60, __c7, 4))),
+          actor: S.optional(S.NullOr(__S(61, __c7, 5))),
           interface: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           newValue: S.optional(S.NullOr(S.String)),
           oldValue: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(AuditLogsListResultItemOwner)),
-          resource: S.optional(S.NullOr(AuditLogsListResultItemResource)),
+          owner: S.optional(S.NullOr(__S(62, __c7, 6))),
+          resource: S.optional(S.NullOr(__S(63, __c7, 7))),
           when: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AuditLogsListResultItem" });
     case 1:
-      return S.Array(AuditLogsListResultItem);
+      return S.Array(__S(64, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: AuditLogsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(65, __c8, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAuditLogsResponse" });
@@ -3033,7 +2357,7 @@ function __c8(j: number): any {
         S.Struct({
           action: S.optional(S.String.pipe(T.Query())),
           occurredAt: S.optional(S.String.pipe(T.Query("occurred_at"))),
-          order: S.optional(BillingHistoryListRequestOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           type: S.optional(S.String.pipe(T.Query())),
@@ -3061,17 +2385,17 @@ function __c8(j: number): any {
           description: S.String,
           occurredAt: S.String.pipe(T.Body("occurred_at")),
           type: S.String,
-          zone: BillingHistoryListResultItemZone,
+          zone: __S(68, __c8, 4),
         }),
       ).annotate({
         identifier: "BillingHistoryListResultItem",
       });
     case 6:
-      return S.Array(BillingHistoryListResultItem);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: BillingHistoryListResultList.pipe(T.EnvelopePayload()),
+          result: __S(70, __c8, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3101,29 +2425,29 @@ function __c9(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("organization_is_enforcing_twofactor")),
           ),
           organizationName: S.optional(S.NullOr(S.String).pipe(T.Body("organization_name"))),
-          roles: S.optional(S.NullOr(InvitesListResultItemRolesList)),
-          status: S.optional(S.NullOr(InvitesListResultItemStatus)),
+          roles: S.optional(S.NullOr(__S(7, __c0, 7))),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "InvitesListResultItem" });
     case 2:
-      return S.Array(InvitesListResultItem);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: InvitesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(74, __c9, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInvitesResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(OrganizationsListRequestDirection.pipe(T.Query())),
-          match: S.optional(OrganizationsListRequestMatch.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          match: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(OrganizationsListRequestOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          status: S.optional(OrganizationsListRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/user/organizations", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3133,19 +2457,19 @@ function __c9(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(OrganizationsListResultItemPermissionsList)),
-          roles: S.optional(S.NullOr(OrganizationsListResultItemRolesList)),
-          status: S.optional(S.NullOr(OrganizationsListResultItemStatus)),
+          permissions: S.optional(S.NullOr(__S(52, __c6, 4))),
+          roles: S.optional(S.NullOr(__S(7, __c0, 7))),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "OrganizationsListResultItem",
       });
     case 6:
-      return S.Array(OrganizationsListResultItem);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: OrganizationsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(78, __c9, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3181,13 +2505,9 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          hierarchyTags: S.optional(
-            S.NullOr(TenantsListResultItemMetaHierarchyTagsList).pipe(T.Body("hierarchy_tags")),
-          ),
+          hierarchyTags: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("hierarchy_tags"))),
           managedBy: S.optional(S.NullOr(S.String).pipe(T.Body("managed_by"))),
-          tenantFlags: S.optional(
-            S.NullOr(TenantsListResultItemMetaTenantFlags).pipe(T.Body("tenant_flags")),
-          ),
+          tenantFlags: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("tenant_flags"))),
         }),
       ).annotate({
         identifier: "TenantsListResultItemMeta",
@@ -3218,18 +2538,18 @@ function __c10(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: TenantsListResultItemMeta,
+          meta: __S(82, __c10, 2),
           name: S.String,
-          parent: S.optional(S.NullOr(TenantsListResultItemParent)),
-          profile: S.optional(S.NullOr(TenantsListResultItemProfile)),
+          parent: S.optional(S.NullOr(__S(83, __c10, 3))),
+          profile: S.optional(S.NullOr(__S(84, __c10, 4))),
         }),
       ).annotate({ identifier: "TenantsListResultItem" });
     case 6:
-      return S.Array(TenantsListResultItem);
+      return S.Array(__S(85, __c10, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: TenantsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(86, __c10, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTenantsResponse" });
@@ -3249,25 +2569,25 @@ function __c11(j: number): any {
         identifier: "ListTokenPermissionGroupsRequest",
       });
     case 1:
-      return S.Array(TokensPermissionGroupsListResultItemScopesItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          category: S.optional(S.NullOr(TokensPermissionGroupsListResultItemCategory)),
+          category: S.optional(S.NullOr(S.String)),
           isSelectable: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_selectable"))),
           name: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(S.NullOr(TokensPermissionGroupsListResultItemScopesList)),
+          scopes: S.optional(S.NullOr(__S(89, __c11, 1))),
         }),
       ).annotate({
         identifier: "TokensPermissionGroupsListResultItem",
       });
     case 3:
-      return S.Array(TokensPermissionGroupsListResultItem);
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: TokensPermissionGroupsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(91, __c11, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3276,7 +2596,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(TokensListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           includeExpired: S.optional(S.Boolean.pipe(T.Query("include_expired"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -3287,7 +2607,7 @@ function __c11(j: number): any {
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 7:
-      return S.Record(S.String, TokensListResultItemPoliciesItemResourcesValue);
+      return S.Record(S.String, __S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -3296,22 +2616,20 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensListResultItemPoliciesItemEffect,
-          permissionGroups: TokensListResultItemPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensListResultItemPoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(15, __c1, 7).pipe(T.Body("permission_groups")),
+          resources: __S(95, __c11, 7),
         }),
       ).annotate({
         identifier: "TokensListResultItemPoliciesItem",
       });
     case 1:
-      return S.Array(TokensListResultItemPoliciesItem);
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensListResultItemCondition)),
+          condition: S.optional(S.NullOr(__S(12, __c1, 4))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -3321,18 +2639,18 @@ function __c12(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensListResultItemPoliciesList)),
+          policies: S.optional(S.NullOr(__S(97, __c12, 1))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensListResultItemStatus)),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TokensListResultItem" });
     case 3:
-      return S.Array(TokensListResultItem);
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: TokensListResultList.pipe(T.EnvelopePayload()),
+          result: __S(99, __c12, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTokensResponse" });
@@ -3340,7 +2658,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           inviteId: S.String.pipe(T.Label("invite_id")),
-          status: InvitesEditRequestStatus,
+          status: S.String,
         })
           .pipe(T.Http({ method: "PATCH", uri: "/user/invites/{invite_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3359,8 +2677,8 @@ function __c12(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("organization_is_enforcing_twofactor")),
           ),
           organizationName: S.optional(S.NullOr(S.String).pipe(T.Body("organization_name"))),
-          roles: S.optional(S.NullOr(InvitesEditResponseRolesList)),
-          status: S.optional(S.NullOr(InvitesEditResponseStatus)),
+          roles: S.optional(S.NullOr(__S(7, __c0, 7))),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchInviteResponse" });
     case 7:
@@ -3384,28 +2702,28 @@ function __c13(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(EditResponseOrganizationsItemPermissionsList)),
-          roles: S.optional(S.NullOr(EditResponseOrganizationsItemRolesList)),
-          status: S.optional(S.NullOr(EditResponseOrganizationsItemStatus)),
+          permissions: S.optional(S.NullOr(__S(52, __c6, 4))),
+          roles: S.optional(S.NullOr(__S(7, __c0, 7))),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "EditResponseOrganizationsItem",
       });
     case 1:
-      return S.Array(EditResponseOrganizationsItem);
+      return S.Array(__S(104, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           email: S.String,
-          betas: S.optional(S.NullOr(EditResponseBetasList)),
+          betas: S.optional(S.NullOr(__S(7, __c0, 7))),
           country: S.optional(S.NullOr(S.String)),
           firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
           hasBusinessZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_business_zones"))),
           hasEnterpriseZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_enterprise_zones"))),
           hasProZones: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_pro_zones"))),
           lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
-          organizations: S.optional(S.NullOr(EditResponseOrganizationsList)),
+          organizations: S.optional(S.NullOr(__S(105, __c13, 1))),
           suspended: S.optional(S.NullOr(S.Boolean)),
           telephone: S.optional(S.NullOr(S.String)),
           twoFactorAuthenticationEnabled: S.optional(
@@ -3420,13 +2738,13 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(SubscriptionsUpdateRequestRatePlanId),
+          id: S.optional(S.String),
           currency: S.optional(S.String),
           externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
+          sets: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "SubscriptionsUpdateRequestRatePlan",
@@ -3435,8 +2753,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identifier: S.String.pipe(T.Label()),
-          frequency: S.optional(SubscriptionsUpdateRequestFrequency),
-          ratePlan: S.optional(SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan"))),
+          frequency: S.optional(S.String),
+          ratePlan: S.optional(__S(107, __c13, 3).pipe(T.Body("rate_plan"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/user/subscriptions/{identifier}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3452,7 +2770,7 @@ function __c13(j: number): any {
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 7:
-      return S.Record(S.String, TokensUpdateRequestPoliciesItemResourcesValue);
+      return S.Record(S.String, __S(110, __c13, 6));
   }
 }
 function __c14(j: number): any {
@@ -3460,27 +2778,25 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          effect: TokensUpdateRequestPoliciesItemEffect,
-          permissionGroups: TokensUpdateRequestPoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensUpdateRequestPoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(2, __c0, 2).pipe(T.Body("permission_groups")),
+          resources: __S(111, __c13, 7),
         }),
       ).annotate({
         identifier: "TokensUpdateRequestPoliciesItem",
       });
     case 1:
-      return S.Array(TokensUpdateRequestPoliciesItem);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           tokenId: S.String.pipe(T.Label("token_id")),
           name: S.String,
-          policies: TokensUpdateRequestPoliciesList,
-          condition: S.optional(TokensUpdateRequestCondition),
+          policies: __S(113, __c14, 1),
+          condition: S.optional(__S(9, __c1, 1)),
           expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
           notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-          status: S.optional(TokensUpdateRequestStatus),
+          status: S.optional(S.String),
         })
           .pipe(T.Http({ method: "PUT", uri: "/user/tokens/{token_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3488,27 +2804,25 @@ function __c14(j: number): any {
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 4:
-      return S.Record(S.String, TokensUpdateResponsePoliciesItemResourcesValue);
+      return S.Record(S.String, __S(115, __c14, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          effect: TokensUpdateResponsePoliciesItemEffect,
-          permissionGroups: TokensUpdateResponsePoliciesItemPermissionGroupsList.pipe(
-            T.Body("permission_groups"),
-          ),
-          resources: TokensUpdateResponsePoliciesItemResourcesMap,
+          effect: S.String,
+          permissionGroups: __S(15, __c1, 7).pipe(T.Body("permission_groups")),
+          resources: __S(116, __c14, 4),
         }),
       ).annotate({
         identifier: "TokensUpdateResponsePoliciesItem",
       });
     case 6:
-      return S.Array(TokensUpdateResponsePoliciesItem);
+      return S.Array(__S(117, __c14, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          condition: S.optional(S.NullOr(TokensUpdateResponseCondition)),
+          condition: S.optional(S.NullOr(__S(12, __c1, 4))),
           creatorEmailAtCreation: S.optional(
             S.NullOr(S.String).pipe(T.Body("creator_email_at_creation")),
           ),
@@ -3518,10 +2832,10 @@ function __c14(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-          policies: S.optional(S.NullOr(TokensUpdateResponsePoliciesList)),
+          policies: S.optional(S.NullOr(__S(118, __c14, 6))),
           provisionerId: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_id"))),
           provisionerType: S.optional(S.NullOr(S.String).pipe(T.Body("provisioner_type"))),
-          status: S.optional(S.NullOr(TokensUpdateResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateTokenResponse" });
   }
@@ -3538,10 +2852,15 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: TokensVerifyResponseStatus,
+          status: S.String,
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
           notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "VerifyTokenResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

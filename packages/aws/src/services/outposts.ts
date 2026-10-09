@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Outposts",
   serviceShapeName: "OutpostsOlafService",
@@ -90,7 +92,7 @@ export class ConflictException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceId: /*@__PURE__*/ S.optional(S.String),
       ResourceType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ResourceType" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(409),
@@ -125,22 +127,12 @@ export interface CancelCapacityTaskInput {
   CapacityTaskId: string;
   OutpostIdentifier: string;
 }
-const CancelCapacityTaskInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelCapacityTaskInput>;
 export interface CancelCapacityTaskOutput {}
-const CancelCapacityTaskOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelCapacityTaskOutput>;
 export type OrderId = string;
 export interface CancelOrderInput {
   OrderId: string;
 }
-const CancelOrderInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CancelOrderInput>;
 export interface CancelOrderOutput {}
-const CancelOrderOutput = CancelCapacityTaskOutput as any as S.Schema<CancelOrderOutput>;
 export type QuoteIdentifier = string;
 export type QuoteOptionIdentifier = string;
 export type SkuCode = string;
@@ -149,15 +141,9 @@ export interface LineItemRequest {
   CatalogItemId?: string;
   Quantity?: number;
 }
-const LineItemRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LineItemRequest>;
 export type LineItemRequestListDefinition = LineItemRequest[];
-const LineItemRequestListDefinition = /*@__PURE__*/ __L.at(__c0, 4);
 export type PaymentOption = "ALL_UPFRONT" | "NO_UPFRONT" | "PARTIAL_UPFRONT" | (string & {});
-const PaymentOption = S.String;
-
 export type PaymentTerm = "THREE_YEARS" | "ONE_YEAR" | "FIVE_YEARS" | (string & {});
-const PaymentTerm = S.String;
-
 export interface CreateOrderInput {
   OutpostIdentifier: string;
   QuoteIdentifier?: string;
@@ -166,7 +152,6 @@ export interface CreateOrderInput {
   PaymentOption: PaymentOption;
   PaymentTerm?: PaymentTerm;
 }
-const CreateOrderInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateOrderInput>;
 export type OutpostIdOnly = string;
 export type OrderStatus =
   | "RECEIVED"
@@ -181,8 +166,6 @@ export type OrderStatus =
   | "COMPLETED"
   | "ERROR"
   | (string & {});
-const OrderStatus = S.String;
-
 export type LineItemId = string;
 export type LineItemStatus =
   | "PREPARING"
@@ -195,31 +178,20 @@ export type LineItemStatus =
   | "CANCELLED"
   | "REPLACED"
   | (string & {});
-const LineItemStatus = S.String;
-
 export type TrackingId = string;
 export type ShipmentCarrier = "DHL" | "DBS" | "FEDEX" | "UPS" | "EXPEDITORS" | (string & {});
-const ShipmentCarrier = S.String;
-
 export interface ShipmentInformation {
   ShipmentTrackingNumber?: string;
   ShipmentCarrier?: ShipmentCarrier;
 }
-const ShipmentInformation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ShipmentInformation>;
 export type AssetId = string;
 export type MacAddress = string;
 export type MacAddressList = string[];
-const MacAddressList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface LineItemAssetInformation {
   AssetId?: string;
   MacAddressList?: string[];
 }
-const LineItemAssetInformation = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<LineItemAssetInformation>;
 export type LineItemAssetInformationList = LineItemAssetInformation[];
-const LineItemAssetInformationList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface LineItem {
   CatalogItemId?: string;
   LineItemId?: string;
@@ -230,13 +202,9 @@ export interface LineItem {
   PreviousLineItemId?: string;
   PreviousOrderId?: string;
 }
-const LineItem = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LineItem>;
 export type LineItemListDefinition = LineItem[];
-const LineItemListDefinition = /*@__PURE__*/ __L.at(__c1, 3);
 export type ISO8601Timestamp = Date;
 export type OrderType = "OUTPOST" | "REPLACEMENT" | (string & {});
-const OrderType = S.String;
-
 export interface Order {
   OutpostId?: string;
   QuoteIdentifier?: string;
@@ -250,11 +218,9 @@ export interface Order {
   PaymentTerm?: PaymentTerm;
   OrderType?: OrderType;
 }
-const Order = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Order>;
 export interface CreateOrderOutput {
   Order?: Order;
 }
-const CreateOrderOutput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateOrderOutput>;
 export type OutpostName = string;
 export type OutpostDescription = string;
 export type SiteId = string;
@@ -263,10 +229,7 @@ export type AvailabilityZoneId = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c1, 6);
 export type SupportedHardwareType = "RACK" | "SERVER" | (string & {});
-const SupportedHardwareType = S.String;
-
 export interface CreateOutpostInput {
   Name: string;
   Description?: string;
@@ -276,18 +239,13 @@ export interface CreateOutpostInput {
   Tags?: { [key: string]: string | undefined };
   SupportedHardwareType?: SupportedHardwareType;
 }
-const CreateOutpostInput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateOutpostInput>;
 export type OutpostId = string;
 export type OwnerId = string;
 export type OutpostArn = string;
 export type LifeCycleStatus = string;
 export type SiteArn = string;
 export type OutpostGeneration = "GENERATION_2" | "GENERATION_1" | (string & {});
-const OutpostGeneration = S.String;
-
 export type RackScalingType = "SINGLE_RACK" | "MULTI_RACK" | (string & {});
-const RackScalingType = S.String;
-
 export interface Outpost {
   OutpostId?: string;
   OwnerId?: string;
@@ -304,86 +262,57 @@ export interface Outpost {
   Generation?: OutpostGeneration;
   RackScalingType?: RackScalingType;
 }
-const Outpost = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Outpost>;
 export interface CreateOutpostOutput {
   Outpost?: Outpost;
 }
-const CreateOutpostOutput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateOutpostOutput>;
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetIds = string[];
-const SubnetIds = MacAddressList as any as S.Schema<SubnetIds>;
 export type VpcEndpointId = string;
 export interface VpcInformation {
   VpcId?: string;
   SubnetIds?: string[];
   VpcEndpointId?: string;
 }
-const VpcInformation = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<VpcInformation>;
 export type VpcInformationList = VpcInformation[];
-const VpcInformationList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface CreatePrivateConnectivityConfigInput {
   OutpostId: string;
   VpcInformationList: VpcInformation[];
 }
-const CreatePrivateConnectivityConfigInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreatePrivateConnectivityConfigInput>;
 export type RoleArn = string;
 export type PrivateConnectivityStatus = "ENABLED" | "DISABLED" | (string & {});
-const PrivateConnectivityStatus = S.String;
-
 export interface PrivateConnectivityConfig {
   RoleArn?: string;
   PrivateConnectivityStatus?: PrivateConnectivityStatus;
   VpcInformationList?: VpcInformation[];
   ProvisioningRoleArn?: string;
 }
-const PrivateConnectivityConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<PrivateConnectivityConfig>;
 export interface CreatePrivateConnectivityConfigOutput {
   PrivateConnectivityConfig?: PrivateConnectivityConfig;
   OutpostId?: string;
 }
-const CreatePrivateConnectivityConfigOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreatePrivateConnectivityConfigOutput>;
 export type CountryCode = string;
 export type QuoteCapacityType = "EC2" | "EBS" | "S3" | (string & {});
-const QuoteCapacityType = S.String;
-
 export interface QuoteCapacity {
   QuoteCapacityType?: QuoteCapacityType;
   Unit?: string;
   Quantity?: number;
 }
-const QuoteCapacity = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<QuoteCapacity>;
 export type QuoteCapacityList = QuoteCapacity[];
-const QuoteCapacityList = /*@__PURE__*/ __L.at(__c3, 0);
 export type QuoteConstraintType =
   | "RACK_MAXIMUM"
   | "RACK_MAX_POWER_KVA"
   | "RACK_MAX_WEIGHT_LBS"
   | "RACK_SPACE_CONSTRAINED"
   | (string & {});
-const QuoteConstraintType = S.String;
-
 export type ConstraintValue = string;
 export interface QuoteConstraint {
   QuoteConstraintType?: QuoteConstraintType;
   Value?: string;
 }
-const QuoteConstraint = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<QuoteConstraint>;
 export type QuoteConstraintList = QuoteConstraint[];
-const QuoteConstraintList = /*@__PURE__*/ __L.at(__c3, 2);
 export type PaymentOptionList = PaymentOption[];
-const PaymentOptionList = /*@__PURE__*/ __L.at(__c3, 3);
 export type PaymentTermList = PaymentTerm[];
-const PaymentTermList = PaymentOptionList as any as S.Schema<PaymentTermList>;
 export type QuoteDescription = string | redacted.Redacted<string>;
 export interface CreateQuoteInput {
   OutpostIdentifier?: string;
@@ -394,34 +323,24 @@ export interface CreateQuoteInput {
   RequestedPaymentTerms?: PaymentTerm[];
   Description?: string | redacted.Redacted<string>;
 }
-const CreateQuoteInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateQuoteInput>;
 export type QuoteId = string;
 export type AccountId = string;
 export type QuoteStatus = "CREATED" | "ORDER_SUBMITTED" | "EXPIRED" | (string & {});
-const QuoteStatus = S.String;
-
 export type StatusMessage = string;
 export interface CapacitySummary {
   ExistingCapacities?: QuoteCapacity[];
   FinalCapacities?: QuoteCapacity[];
   CapacityChange?: QuoteCapacity[];
 }
-const CapacitySummary = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CapacitySummary>;
 export type QuoteSpecificationType =
   | "UPDATED_RACK"
   | "NEW_RACK"
   | "EXISTING_RACK"
   | "SERVER"
   | (string & {});
-const QuoteSpecificationType = S.String;
-
 export type RackId = string;
 export type QuoteRackUseType = "NETWORKING" | "COMPUTE" | (string & {});
-const QuoteRackUseType = S.String;
-
 export type RackUnitHeight = "HEIGHT_42U" | "HEIGHT_2U" | "HEIGHT_1U" | (string & {});
-const RackUnitHeight = S.String;
-
 export type Family = string;
 export type MaxSize = string;
 export type Quantity = string;
@@ -430,9 +349,7 @@ export interface EC2Capacity {
   MaxSize?: string;
   Quantity?: string;
 }
-const EC2Capacity = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<EC2Capacity>;
 export type EC2CapacityListDefinition = EC2Capacity[];
-const EC2CapacityListDefinition = /*@__PURE__*/ __L.at(__c3, 7);
 export interface RackSpecificationDetails {
   RackId?: string;
   RackUse?: QuoteRackUseType;
@@ -444,10 +361,6 @@ export interface RackSpecificationDetails {
   RackUnitHeight?: RackUnitHeight;
   EC2Capacities?: EC2Capacity[];
 }
-const RackSpecificationDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<RackSpecificationDetails>;
 export interface ServerSpecificationDetails {
   ServerPowerDrawKva?: number;
   ServerWeightLbs?: number;
@@ -457,25 +370,15 @@ export interface ServerSpecificationDetails {
   RackUnitHeight?: RackUnitHeight;
   EC2Capacities?: EC2Capacity[];
 }
-const ServerSpecificationDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ServerSpecificationDetails>;
 export interface QuoteSpecification {
   QuoteSpecificationType?: QuoteSpecificationType;
   ExistingRackSpecificationDetails?: RackSpecificationDetails;
   FinalRackSpecificationDetails?: RackSpecificationDetails;
   ServerSpecificationDetails?: ServerSpecificationDetails;
 }
-const QuoteSpecification = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<QuoteSpecification>;
 export type QuoteSpecificationList = QuoteSpecification[];
-const QuoteSpecificationList = /*@__PURE__*/ __L.at(__c4, 3);
 export type QuotePricingType = "SUBSCRIPTION" | (string & {});
-const QuotePricingType = S.String;
-
 export type CurrencyCode = "USD" | (string & {});
-const CurrencyCode = S.String;
-
 export interface SubscriptionPricingDetails {
   PaymentOption?: PaymentOption;
   PaymentTerm?: PaymentTerm;
@@ -483,17 +386,11 @@ export interface SubscriptionPricingDetails {
   MonthlyRecurringPrice?: number;
   Currency?: CurrencyCode;
 }
-const SubscriptionPricingDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SubscriptionPricingDetails>;
 export interface PricingOption {
   PricingType?: QuotePricingType;
   SubscriptionPricingDetails?: SubscriptionPricingDetails;
 }
-const PricingOption = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PricingOption>;
 export type PricingOptionList = PricingOption[];
-const PricingOptionList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface QuoteOption {
   QuoteOptionIdentifier?: string;
   Capacities?: QuoteCapacity[];
@@ -501,9 +398,7 @@ export interface QuoteOption {
   Specifications?: QuoteSpecification[];
   PricingOptions?: PricingOption[];
 }
-const QuoteOption = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<QuoteOption>;
 export type QuoteOptionList = QuoteOption[];
-const QuoteOptionList = /*@__PURE__*/ __L.at(__c5, 0);
 export type OrderingRequirementType =
   | "OUTPOST_ACTIVE_CHECK_ERROR"
   | "MAXIMUM_ALLOWED_ORDERS_CHECK_ERROR"
@@ -523,19 +418,13 @@ export type OrderingRequirementType =
   | "OUTPOST_NOT_FOUND_ERROR"
   | "OUTPOST_RENEWAL_REQUIRED_ERROR"
   | (string & {});
-const OrderingRequirementType = S.String;
-
 export type OrderingRequirementStatus = "PASS" | "FAIL" | "EXEMPT" | (string & {});
-const OrderingRequirementStatus = S.String;
-
 export interface OrderingRequirement {
   StatusMessage?: string;
   OrderingRequirementType?: OrderingRequirementType;
   Status?: OrderingRequirementStatus;
 }
-const OrderingRequirement = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<OrderingRequirement>;
 export type OrderingRequirementList = OrderingRequirement[];
-const OrderingRequirementList = /*@__PURE__*/ __L.at(__c5, 2);
 export type OrderIdentifier = string;
 export interface Quote {
   QuoteId?: string;
@@ -555,11 +444,9 @@ export interface Quote {
   ExpirationDate?: Date;
   Description?: string | redacted.Redacted<string>;
 }
-const Quote = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Quote>;
 export interface CreateQuoteOutput {
   Quote?: Quote;
 }
-const CreateQuoteOutput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateQuoteOutput>;
 export type AutoFillIdempotencyToken = string;
 export interface CreateRenewalInput {
   PaymentOption: PaymentOption;
@@ -567,7 +454,6 @@ export interface CreateRenewalInput {
   OutpostIdentifier: string;
   ClientToken?: string;
 }
-const CreateRenewalInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateRenewalInput>;
 export interface CreateRenewalOutput {
   PaymentOption?: PaymentOption;
   PaymentTerm?: PaymentTerm;
@@ -576,7 +462,6 @@ export interface CreateRenewalOutput {
   MonthlyRecurringPrice?: number;
   Currency?: CurrencyCode;
 }
-const CreateRenewalOutput = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CreateRenewalOutput>;
 export type SiteName = string;
 export type SiteDescription = string;
 export type SiteNotes = string;
@@ -603,18 +488,13 @@ export interface Address {
   CountryCode: string;
   Municipality?: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Address>;
 export type PowerDrawKva =
   | "POWER_5_KVA"
   | "POWER_10_KVA"
   | "POWER_15_KVA"
   | "POWER_30_KVA"
   | (string & {});
-const PowerDrawKva = S.String;
-
 export type PowerPhase = "SINGLE_PHASE" | "THREE_PHASE" | (string & {});
-const PowerPhase = S.String;
-
 export type PowerConnector =
   | "L6_30P"
   | "IEC309"
@@ -622,14 +502,8 @@ export type PowerConnector =
   | "AH532P6W"
   | "CS8365C"
   | (string & {});
-const PowerConnector = S.String;
-
 export type PowerFeedDrop = "ABOVE_RACK" | "BELOW_RACK" | (string & {});
-const PowerFeedDrop = S.String;
-
 export type UplinkGbps = "UPLINK_1G" | "UPLINK_10G" | "UPLINK_40G" | "UPLINK_100G" | (string & {});
-const UplinkGbps = S.String;
-
 export type UplinkCount =
   | "UPLINK_COUNT_1"
   | "UPLINK_COUNT_2"
@@ -642,11 +516,7 @@ export type UplinkCount =
   | "UPLINK_COUNT_12"
   | "UPLINK_COUNT_16"
   | (string & {});
-const UplinkCount = S.String;
-
 export type FiberOpticCableType = "SINGLE_MODE" | "MULTI_MODE" | (string & {});
-const FiberOpticCableType = S.String;
-
 export type OpticalStandard =
   | "OPTIC_10GBASE_SR"
   | "OPTIC_10GBASE_IR"
@@ -662,8 +532,6 @@ export type OpticalStandard =
   | "OPTIC_1000BASE_LX"
   | "OPTIC_1000BASE_SX"
   | (string & {});
-const OpticalStandard = S.String;
-
 export type MaximumSupportedWeightLbs =
   | "NO_LIMIT"
   | "MAX_1400_LBS"
@@ -671,8 +539,6 @@ export type MaximumSupportedWeightLbs =
   | "MAX_1800_LBS"
   | "MAX_2000_LBS"
   | (string & {});
-const MaximumSupportedWeightLbs = S.String;
-
 export interface RackPhysicalProperties {
   PowerDrawKva?: PowerDrawKva;
   PowerPhase?: PowerPhase;
@@ -684,10 +550,6 @@ export interface RackPhysicalProperties {
   OpticalStandard?: OpticalStandard;
   MaximumSupportedWeightLbs?: MaximumSupportedWeightLbs;
 }
-const RackPhysicalProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<RackPhysicalProperties>;
 export interface CreateSiteInput {
   Name: string;
   Description?: string;
@@ -697,7 +559,6 @@ export interface CreateSiteInput {
   ShippingAddress?: Address;
   RackPhysicalProperties?: RackPhysicalProperties;
 }
-const CreateSiteInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateSiteInput>;
 export interface Site {
   SiteId?: string;
   AccountId?: string;
@@ -711,48 +572,35 @@ export interface Site {
   OperatingAddressCity?: string;
   RackPhysicalProperties?: RackPhysicalProperties;
 }
-const Site = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Site>;
 export interface CreateSiteOutput {
   Site?: Site;
 }
-const CreateSiteOutput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CreateSiteOutput>;
 export interface DeleteOutpostInput {
   OutpostId: string;
 }
-const DeleteOutpostInput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DeleteOutpostInput>;
 export interface DeleteOutpostOutput {}
-const DeleteOutpostOutput = CancelCapacityTaskOutput as any as S.Schema<DeleteOutpostOutput>;
 export interface DeleteQuoteInput {
   QuoteIdentifier: string;
 }
-const DeleteQuoteInput = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DeleteQuoteInput>;
 export interface DeleteQuoteOutput {}
-const DeleteQuoteOutput = CancelCapacityTaskOutput as any as S.Schema<DeleteQuoteOutput>;
 export interface DeleteSiteInput {
   SiteId: string;
 }
-const DeleteSiteInput = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DeleteSiteInput>;
 export interface DeleteSiteOutput {}
-const DeleteSiteOutput = CancelCapacityTaskOutput as any as S.Schema<DeleteSiteOutput>;
 export interface GetCapacityTaskInput {
   CapacityTaskId: string;
   OutpostIdentifier: string;
 }
-const GetCapacityTaskInput = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetCapacityTaskInput>;
 export type InstanceTypeName = string;
 export type InstanceTypeCount = number;
 export interface InstanceTypeCapacity {
   InstanceType: string;
   Count: number;
 }
-const InstanceTypeCapacity = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<InstanceTypeCapacity>;
 export type RequestedInstancePools = InstanceTypeCapacity[];
-const RequestedInstancePools = /*@__PURE__*/ __L.at(__c7, 1);
 export type InstanceId = string;
 export type InstanceIdList = string[];
-const InstanceIdList = MacAddressList as any as S.Schema<InstanceIdList>;
 export type AccountIdList = string[];
-const AccountIdList = MacAddressList as any as S.Schema<AccountIdList>;
 export type AWSServiceName =
   | "AWS"
   | "EC2"
@@ -762,16 +610,12 @@ export type AWSServiceName =
   | "RDS"
   | "ROUTE53"
   | (string & {});
-const AWSServiceName = S.String;
-
 export type AWSServiceNameList = AWSServiceName[];
-const AWSServiceNameList = PaymentOptionList as any as S.Schema<AWSServiceNameList>;
 export interface InstancesToExclude {
   Instances?: string[];
   AccountIds?: string[];
   Services?: AWSServiceName[];
 }
-const InstancesToExclude = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<InstancesToExclude>;
 export type DryRun = boolean;
 export type CapacityTaskStatus =
   | "REQUESTED"
@@ -782,8 +626,6 @@ export type CapacityTaskStatus =
   | "CANCELLATION_IN_PROGRESS"
   | "CANCELLED"
   | (string & {});
-const CapacityTaskStatus = S.String;
-
 export type CapacityTaskStatusReason = string;
 export type CapacityTaskFailureType =
   | "UNSUPPORTED_CAPACITY_CONFIGURATION"
@@ -792,16 +634,11 @@ export type CapacityTaskFailureType =
   | "INTERNAL_SERVER_ERROR"
   | "RESOURCE_NOT_FOUND"
   | (string & {});
-const CapacityTaskFailureType = S.String;
-
 export interface CapacityTaskFailure {
   Reason: string;
   Type?: CapacityTaskFailureType;
 }
-const CapacityTaskFailure = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CapacityTaskFailure>;
 export type TaskActionOnBlockingInstances = "WAIT_FOR_EVACUATION" | "FAIL_TASK" | (string & {});
-const TaskActionOnBlockingInstances = S.String;
-
 export interface GetCapacityTaskOutput {
   CapacityTaskId?: string;
   OutpostId?: string;
@@ -817,25 +654,16 @@ export interface GetCapacityTaskOutput {
   LastModifiedDate?: Date;
   TaskActionOnBlockingInstances?: TaskActionOnBlockingInstances;
 }
-const GetCapacityTaskOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetCapacityTaskOutput>;
 export interface GetCatalogItemInput {
   CatalogItemId: string;
 }
-const GetCatalogItemInput = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetCatalogItemInput>;
 export type CatalogItemStatus = "AVAILABLE" | "DISCONTINUED" | (string & {});
-const CatalogItemStatus = S.String;
-
 export type CatalogItemPowerKva = number;
 export type CatalogItemWeightLbs = number;
 export type SupportedUplinkGbps = number;
 export type SupportedUplinkGbpsListDefinition = number[];
-const SupportedUplinkGbpsListDefinition = /*@__PURE__*/ __L.at(__c7, 6);
 export type SupportedStorageEnum = "EBS" | "S3" | (string & {});
 export type SupportedStorageList = SupportedStorageEnum[];
-const SupportedStorageList = PaymentOptionList as any as S.Schema<SupportedStorageList>;
 export interface CatalogItem {
   CatalogItemId?: string;
   ItemStatus?: CatalogItemStatus;
@@ -846,21 +674,17 @@ export interface CatalogItem {
   SupportedStorage?: SupportedStorageEnum[];
   RackScalingType?: RackScalingType;
 }
-const CatalogItem = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CatalogItem>;
 export interface GetCatalogItemOutput {
   CatalogItem?: CatalogItem;
 }
-const GetCatalogItemOutput = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetCatalogItemOutput>;
 export type ConnectionId = string;
 export interface GetConnectionRequest {
   ConnectionId: string;
 }
-const GetConnectionRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetConnectionRequest>;
 export type WireGuardPublicKey = string;
 export type ServerEndpoint = string;
 export type CIDR = string;
 export type CIDRList = string[];
-const CIDRList = MacAddressList as any as S.Schema<CIDRList>;
 export interface ConnectionDetails {
   ClientPublicKey?: string;
   ServerPublicKey?: string;
@@ -869,31 +693,22 @@ export interface ConnectionDetails {
   ServerTunnelAddress?: string;
   AllowedIps?: string[];
 }
-const ConnectionDetails = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ConnectionDetails>;
 export interface GetConnectionResponse {
   ConnectionId?: string;
   ConnectionDetails?: ConnectionDetails;
 }
-const GetConnectionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetConnectionResponse>;
 export interface GetOrderInput {
   OrderId: string;
 }
-const GetOrderInput = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetOrderInput>;
 export interface GetOrderOutput {
   Order?: Order;
 }
-const GetOrderOutput = CreateOrderOutput as any as S.Schema<GetOrderOutput>;
 export interface GetOutpostInput {
   OutpostId: string;
 }
-const GetOutpostInput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetOutpostInput>;
 export interface GetOutpostOutput {
   Outpost?: Outpost;
 }
-const GetOutpostOutput = CreateOutpostOutput as any as S.Schema<GetOutpostOutput>;
 export type Token = string;
 export type MaxResults1000 = number;
 export interface GetOutpostBillingInformationInput {
@@ -901,18 +716,9 @@ export interface GetOutpostBillingInformationInput {
   MaxResults?: number;
   OutpostIdentifier: string;
 }
-const GetOutpostBillingInformationInput = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetOutpostBillingInformationInput>;
 export type SubscriptionType = "ORIGINAL" | "RENEWAL" | "CAPACITY_INCREASE" | (string & {});
-const SubscriptionType = S.String;
-
 export type SubscriptionStatus = "ACTIVE" | "PENDING" | "INACTIVE" | "CANCELLED" | (string & {});
-const SubscriptionStatus = S.String;
-
 export type OrderIdList = string[];
-const OrderIdList = MacAddressList as any as S.Schema<OrderIdList>;
 export interface Subscription {
   SubscriptionId?: string;
   SubscriptionType?: SubscriptionType;
@@ -924,9 +730,7 @@ export interface Subscription {
   MonthlyRecurringPrice?: number;
   UpfrontPrice?: number;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
-const SubscriptionList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface GetOutpostBillingInformationOutput {
   NextToken?: string;
   Subscriptions?: Subscription[];
@@ -934,38 +738,24 @@ export interface GetOutpostBillingInformationOutput {
   PaymentTerm?: PaymentTerm;
   PaymentOption?: PaymentOption;
 }
-const GetOutpostBillingInformationOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetOutpostBillingInformationOutput>;
 export interface GetOutpostInstanceTypesInput {
   OutpostId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const GetOutpostInstanceTypesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetOutpostInstanceTypesInput>;
 export type InstanceType = string;
 export type VCPUCount = number;
 export interface InstanceTypeItem {
   InstanceType?: string;
   VCPUs?: number;
 }
-const InstanceTypeItem = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<InstanceTypeItem>;
 export type InstanceTypeListDefinition = InstanceTypeItem[];
-const InstanceTypeListDefinition = /*@__PURE__*/ __L.at(__c9, 4);
 export interface GetOutpostInstanceTypesOutput {
   InstanceTypes?: InstanceTypeItem[];
   NextToken?: string;
   OutpostId?: string;
   OutpostArn?: string;
 }
-const GetOutpostInstanceTypesOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetOutpostInstanceTypesOutput>;
 export type AssetIdInput = string;
 export interface GetOutpostSupportedInstanceTypesInput {
   OutpostIdentifier: string;
@@ -974,88 +764,49 @@ export interface GetOutpostSupportedInstanceTypesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetOutpostSupportedInstanceTypesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetOutpostSupportedInstanceTypesInput>;
 export interface GetOutpostSupportedInstanceTypesOutput {
   InstanceTypes?: InstanceTypeItem[];
   NextToken?: string;
 }
-const GetOutpostSupportedInstanceTypesOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetOutpostSupportedInstanceTypesOutput>;
 export interface GetPrivateConnectivityConfigInput {
   OutpostId: string;
 }
-const GetPrivateConnectivityConfigInput = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetPrivateConnectivityConfigInput>;
 export interface GetPrivateConnectivityConfigOutput {
   PrivateConnectivityConfig?: PrivateConnectivityConfig;
 }
-const GetPrivateConnectivityConfigOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetPrivateConnectivityConfigOutput>;
 export interface GetQuoteInput {
   QuoteIdentifier: string;
 }
-const GetQuoteInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetQuoteInput>;
 export interface GetQuoteOutput {
   Quote?: Quote;
 }
-const GetQuoteOutput = CreateQuoteOutput as any as S.Schema<GetQuoteOutput>;
 export interface GetRenewalPricingInput {
   OutpostIdentifier: string;
 }
-const GetRenewalPricingInput = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetRenewalPricingInput>;
 export type PricingResult = "PRICED" | "UNABLE_TO_PRICE" | (string & {});
-const PricingResult = S.String;
-
 export interface GetRenewalPricingOutput {
   PricingResult?: PricingResult;
   PricingOptions?: PricingOption[];
 }
-const GetRenewalPricingOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetRenewalPricingOutput>;
 export interface GetSiteInput {
   SiteId: string;
 }
-const GetSiteInput = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetSiteInput>;
 export interface GetSiteOutput {
   Site?: Site;
 }
-const GetSiteOutput = CreateSiteOutput as any as S.Schema<GetSiteOutput>;
 export type AddressType = "SHIPPING_ADDRESS" | "OPERATING_ADDRESS" | (string & {});
-const AddressType = S.String;
-
 export interface GetSiteAddressInput {
   SiteId: string;
   AddressType: AddressType;
 }
-const GetSiteAddressInput = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetSiteAddressInput>;
 export interface GetSiteAddressOutput {
   SiteId?: string;
   AddressType?: AddressType;
   Address?: Address;
 }
-const GetSiteAddressOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetSiteAddressOutput>;
 export type AssetIdList = string[];
-const AssetIdList = MacAddressList as any as S.Schema<AssetIdList>;
 export type OutpostInstanceType = string;
 export type OutpostInstanceTypeList = string[];
-const OutpostInstanceTypeList = MacAddressList as any as S.Schema<OutpostInstanceTypeList>;
 export interface ListAssetInstancesInput {
   OutpostIdentifier: string;
   AssetIdFilter?: string[];
@@ -1065,10 +816,6 @@ export interface ListAssetInstancesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAssetInstancesInput = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListAssetInstancesInput>;
 export interface AssetInstance {
   InstanceId?: string;
   InstanceType?: string;
@@ -1076,23 +823,15 @@ export interface AssetInstance {
   AccountId?: string;
   AwsServiceName?: AWSServiceName;
 }
-const AssetInstance = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<AssetInstance>;
 export type AssetInstanceList = AssetInstance[];
-const AssetInstanceList = /*@__PURE__*/ __L.at(__c11, 2);
 export interface ListAssetInstancesOutput {
   AssetInstances?: AssetInstance[];
   NextToken?: string;
 }
-const ListAssetInstancesOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListAssetInstancesOutput>;
 export type HostId = string;
 export type HostIdList = string[];
-const HostIdList = MacAddressList as any as S.Schema<HostIdList>;
 export type AssetState = "ACTIVE" | "RETIRING" | "ISOLATED" | "INSTALLING" | (string & {});
 export type StatusList = AssetState[];
-const StatusList = PaymentOptionList as any as S.Schema<StatusList>;
 export type AssetType =
   | "COMPUTE"
   | "STORAGE"
@@ -1100,10 +839,7 @@ export type AssetType =
   | "SWITCH"
   | "NETWORKING"
   | (string & {});
-const AssetType = S.String;
-
 export type AssetTypeList = AssetType[];
-const AssetTypeList = PaymentOptionList as any as S.Schema<AssetTypeList>;
 export interface ListAssetsInput {
   OutpostIdentifier: string;
   HostIdFilter?: string[];
@@ -1112,23 +848,14 @@ export interface ListAssetsInput {
   StatusFilter?: AssetState[];
   AssetTypeFilter?: AssetType[];
 }
-const ListAssetsInput = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ListAssetsInput>;
 export type ComputeAssetState = "ACTIVE" | "ISOLATED" | "RETIRING" | "INSTALLING" | (string & {});
-const ComputeAssetState = S.String;
-
 export type InstanceFamilyName = string;
 export type InstanceFamilies = string[];
-const InstanceFamilies = MacAddressList as any as S.Schema<InstanceFamilies>;
 export interface AssetInstanceTypeCapacity {
   InstanceType: string;
   Count: number;
 }
-const AssetInstanceTypeCapacity = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<AssetInstanceTypeCapacity>;
 export type AssetInstanceCapacityList = AssetInstanceTypeCapacity[];
-const AssetInstanceCapacityList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface ComputeAttributes {
   HostId?: string;
   State?: ComputeAssetState;
@@ -1136,12 +863,10 @@ export interface ComputeAttributes {
   InstanceTypeCapacities?: AssetInstanceTypeCapacity[];
   MaxVcpus?: number;
 }
-const ComputeAttributes = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ComputeAttributes>;
 export type RackElevation = number;
 export interface AssetLocation {
   RackElevation?: number;
 }
-const AssetLocation = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<AssetLocation>;
 export interface AssetInfo {
   AssetId?: string;
   RackId?: string;
@@ -1149,52 +874,34 @@ export interface AssetInfo {
   ComputeAttributes?: ComputeAttributes;
   AssetLocation?: AssetLocation;
 }
-const AssetInfo = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<AssetInfo>;
 export type AssetListDefinition = AssetInfo[];
-const AssetListDefinition = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListAssetsOutput {
   Assets?: AssetInfo[];
   NextToken?: string;
 }
-const ListAssetsOutput = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ListAssetsOutput>;
 export interface ListBlockingInstancesForCapacityTaskInput {
   OutpostIdentifier: string;
   CapacityTaskId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListBlockingInstancesForCapacityTaskInput = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListBlockingInstancesForCapacityTaskInput>;
 export interface BlockingInstance {
   InstanceId?: string;
   AccountId?: string;
   AwsServiceName?: AWSServiceName;
 }
-const BlockingInstance = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<BlockingInstance>;
 export type BlockingInstancesList = BlockingInstance[];
-const BlockingInstancesList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ListBlockingInstancesForCapacityTaskOutput {
   BlockingInstances?: BlockingInstance[];
   NextToken?: string;
 }
-const ListBlockingInstancesForCapacityTaskOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListBlockingInstancesForCapacityTaskOutput>;
 export type CapacityTaskStatusList = CapacityTaskStatus[];
-const CapacityTaskStatusList = PaymentOptionList as any as S.Schema<CapacityTaskStatusList>;
 export interface ListCapacityTasksInput {
   OutpostIdentifierFilter?: string;
   MaxResults?: number;
   NextToken?: string;
   CapacityTaskStatusFilter?: CapacityTaskStatus[];
 }
-const ListCapacityTasksInput = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListCapacityTasksInput>;
 export interface CapacityTaskSummary {
   CapacityTaskId?: string;
   OutpostId?: string;
@@ -1205,22 +912,14 @@ export interface CapacityTaskSummary {
   CompletionDate?: Date;
   LastModifiedDate?: Date;
 }
-const CapacityTaskSummary = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CapacityTaskSummary>;
 export type CapacityTaskList = CapacityTaskSummary[];
-const CapacityTaskList = /*@__PURE__*/ __L.at(__c13, 2);
 export interface ListCapacityTasksOutput {
   CapacityTasks?: CapacityTaskSummary[];
   NextToken?: string;
 }
-const ListCapacityTasksOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListCapacityTasksOutput>;
 export type CatalogItemClass = "RACK" | "SERVER" | (string & {});
 export type CatalogItemClassList = CatalogItemClass[];
-const CatalogItemClassList = PaymentOptionList as any as S.Schema<CatalogItemClassList>;
 export type EC2FamilyList = string[];
-const EC2FamilyList = MacAddressList as any as S.Schema<EC2FamilyList>;
 export interface ListCatalogItemsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -1228,41 +927,24 @@ export interface ListCatalogItemsInput {
   SupportedStorageFilter?: SupportedStorageEnum[];
   EC2FamilyFilter?: string[];
 }
-const ListCatalogItemsInput = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListCatalogItemsInput>;
 export type CatalogItemListDefinition = CatalogItem[];
-const CatalogItemListDefinition = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ListCatalogItemsOutput {
   CatalogItems?: CatalogItem[];
   NextToken?: string;
 }
-const ListCatalogItemsOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListCatalogItemsOutput>;
 export interface ListOrderableInstanceTypesInput {
   OutpostGenerationFilter?: OutpostGeneration;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListOrderableInstanceTypesInput = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListOrderableInstanceTypesInput>;
 export type MemoryInMib = number;
 export type NetworkPerformance = string;
 export type FormFactor = "RACK" | "SERVER" | (string & {});
-const FormFactor = S.String;
-
 export interface FormFactorConfig {
   FormFactor?: FormFactor;
   OutpostGeneration?: OutpostGeneration;
 }
-const FormFactorConfig = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<FormFactorConfig>;
 export type FormFactorConfigList = FormFactorConfig[];
-const FormFactorConfigList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface DetailedInstanceTypeItem {
   InstanceType?: string;
   VCPUs?: number;
@@ -1270,28 +952,17 @@ export interface DetailedInstanceTypeItem {
   NetworkPerformance?: string;
   FormFactorConfigs?: FormFactorConfig[];
 }
-const DetailedInstanceTypeItem = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DetailedInstanceTypeItem>;
 export type DetailedInstanceTypeListDefinition = DetailedInstanceTypeItem[];
-const DetailedInstanceTypeListDefinition = /*@__PURE__*/ __L.at(__c14, 3);
 export interface ListOrderableInstanceTypesOutput {
   InstanceTypes?: DetailedInstanceTypeItem[];
   NextToken?: string;
 }
-const ListOrderableInstanceTypesOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListOrderableInstanceTypesOutput>;
 export interface ListOrdersInput {
   OutpostIdentifierFilter?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListOrdersInput = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ListOrdersInput>;
 export type LineItemStatusCounts = { [key in LineItemStatus]?: number };
-const LineItemStatusCounts = /*@__PURE__*/ __L.at(__c14, 6);
 export interface OrderSummary {
   OutpostId?: string;
   OrderId?: string;
@@ -1301,20 +972,14 @@ export interface OrderSummary {
   OrderSubmissionDate?: Date;
   OrderFulfilledDate?: Date;
 }
-const OrderSummary = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<OrderSummary>;
 export type OrderSummaryListDefinition = OrderSummary[];
-const OrderSummaryListDefinition = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListOrdersOutput {
   Orders?: OrderSummary[];
   NextToken?: string;
 }
-const ListOrdersOutput = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ListOrdersOutput>;
 export type LifeCycleStatusList = string[];
-const LifeCycleStatusList = MacAddressList as any as S.Schema<LifeCycleStatusList>;
 export type AvailabilityZoneList = string[];
-const AvailabilityZoneList = MacAddressList as any as S.Schema<AvailabilityZoneList>;
 export type AvailabilityZoneIdList = string[];
-const AvailabilityZoneIdList = MacAddressList as any as S.Schema<AvailabilityZoneIdList>;
 export interface ListOutpostsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -1322,19 +987,15 @@ export interface ListOutpostsInput {
   AvailabilityZoneFilter?: string[];
   AvailabilityZoneIdFilter?: string[];
 }
-const ListOutpostsInput = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ListOutpostsInput>;
 export type OutpostListDefinition = Outpost[];
-const OutpostListDefinition = /*@__PURE__*/ __L.at(__c15, 3);
 export interface ListOutpostsOutput {
   Outposts?: Outpost[];
   NextToken?: string;
 }
-const ListOutpostsOutput = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ListOutpostsOutput>;
 export interface ListQuotesInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListQuotesInput = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ListQuotesInput>;
 export interface QuoteSummary {
   QuoteId?: string;
   AccountId?: string;
@@ -1352,20 +1013,14 @@ export interface QuoteSummary {
   ExpirationDate?: Date;
   Description?: string | redacted.Redacted<string>;
 }
-const QuoteSummary = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<QuoteSummary>;
 export type QuoteSummaryListDefinition = QuoteSummary[];
-const QuoteSummaryListDefinition = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ListQuotesOutput {
   Quotes?: QuoteSummary[];
   NextToken?: string;
 }
-const ListQuotesOutput = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ListQuotesOutput>;
 export type CountryCodeList = string[];
-const CountryCodeList = MacAddressList as any as S.Schema<CountryCodeList>;
 export type StateOrRegionList = string[];
-const StateOrRegionList = MacAddressList as any as S.Schema<StateOrRegionList>;
 export type CityList = string[];
-const CityList = MacAddressList as any as S.Schema<CityList>;
 export interface ListSitesInput {
   NextToken?: string;
   MaxResults?: number;
@@ -1373,29 +1028,18 @@ export interface ListSitesInput {
   OperatingAddressStateOrRegionFilter?: string[];
   OperatingAddressCityFilter?: string[];
 }
-const ListSitesInput = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ListSitesInput>;
 export type SiteListDefinition = Site[];
-const SiteListDefinition = /*@__PURE__*/ __L.at(__c16, 2);
 export interface ListSitesOutput {
   Sites?: Site[];
   NextToken?: string;
 }
-const ListSitesOutput = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ListSitesOutput>;
 export type Arn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface StartCapacityTaskInput {
   OutpostIdentifier: string;
   OrderId?: string;
@@ -1405,10 +1049,6 @@ export interface StartCapacityTaskInput {
   DryRun?: boolean;
   TaskActionOnBlockingInstances?: TaskActionOnBlockingInstances;
 }
-const StartCapacityTaskInput = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<StartCapacityTaskInput>;
 export interface StartCapacityTaskOutput {
   CapacityTaskId?: string;
   OutpostId?: string;
@@ -1424,7 +1064,6 @@ export interface StartCapacityTaskOutput {
   LastModifiedDate?: Date;
   TaskActionOnBlockingInstances?: TaskActionOnBlockingInstances;
 }
-const StartCapacityTaskOutput = GetCapacityTaskOutput as any as S.Schema<StartCapacityTaskOutput>;
 export type DeviceSerialNumber = string;
 export type NetworkInterfaceDeviceIndex = number;
 export interface StartConnectionRequest {
@@ -1433,31 +1072,17 @@ export interface StartConnectionRequest {
   ClientPublicKey: string;
   NetworkInterfaceDeviceIndex: number;
 }
-const StartConnectionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<StartConnectionRequest>;
 export type UnderlayIpAddress = string;
 export interface StartConnectionResponse {
   ConnectionId?: string;
   UnderlayIpAddress?: string;
 }
-const StartConnectionResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<StartConnectionResponse>;
 export type ValidateOnly = boolean;
 export interface StartOutpostDecommissionInput {
   OutpostIdentifier: string;
   ValidateOnly?: boolean;
 }
-const StartOutpostDecommissionInput = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<StartOutpostDecommissionInput>;
 export type DecommissionRequestStatus = "SKIPPED" | "BLOCKED" | "REQUESTED" | (string & {});
-const DecommissionRequestStatus = S.String;
-
 export type BlockingResourceType =
   | "EC2_INSTANCE"
   | "OUTPOST_RAM_SHARE"
@@ -1468,45 +1093,30 @@ export type BlockingResourceType =
   | "OUTPOST_ORDER_INTERVENTION_REQUIRED"
   | (string & {});
 export type BlockingResourceTypeList = BlockingResourceType[];
-const BlockingResourceTypeList = PaymentOptionList as any as S.Schema<BlockingResourceTypeList>;
 export interface StartOutpostDecommissionOutput {
   Status?: DecommissionRequestStatus;
   BlockingResourceTypes?: BlockingResourceType[];
 }
-const StartOutpostDecommissionOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<StartOutpostDecommissionOutput>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = CancelCapacityTaskOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = MacAddressList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = CancelCapacityTaskOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateOutpostInput {
   OutpostId: string;
   Name?: string;
   Description?: string;
   SupportedHardwareType?: SupportedHardwareType;
 }
-const UpdateOutpostInput = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<UpdateOutpostInput>;
 export interface UpdateOutpostOutput {
   Outpost?: Outpost;
 }
-const UpdateOutpostOutput = CreateOutpostOutput as any as S.Schema<UpdateOutpostOutput>;
 export type OutpostIdentifierOrEmpty = string;
 export interface UpdateQuoteInput {
   QuoteIdentifier: string;
@@ -1518,39 +1128,27 @@ export interface UpdateQuoteInput {
   RequestedPaymentTerms?: PaymentTerm[];
   Description?: string | redacted.Redacted<string>;
 }
-const UpdateQuoteInput = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<UpdateQuoteInput>;
 export interface UpdateQuoteOutput {
   Quote?: Quote;
 }
-const UpdateQuoteOutput = CreateQuoteOutput as any as S.Schema<UpdateQuoteOutput>;
 export interface UpdateSiteInput {
   SiteId: string;
   Name?: string;
   Description?: string;
   Notes?: string;
 }
-const UpdateSiteInput = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<UpdateSiteInput>;
 export interface UpdateSiteOutput {
   Site?: Site;
 }
-const UpdateSiteOutput = CreateSiteOutput as any as S.Schema<UpdateSiteOutput>;
 export interface UpdateSiteAddressInput {
   SiteId: string;
   AddressType: AddressType;
   Address: Address;
 }
-const UpdateSiteAddressInput = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<UpdateSiteAddressInput>;
 export interface UpdateSiteAddressOutput {
   AddressType?: AddressType;
   Address?: Address;
 }
-const UpdateSiteAddressOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<UpdateSiteAddressOutput>;
 export interface UpdateSiteRackPhysicalPropertiesInput {
   SiteId: string;
   PowerDrawKva?: PowerDrawKva;
@@ -1563,21 +1161,11 @@ export interface UpdateSiteRackPhysicalPropertiesInput {
   OpticalStandard?: OpticalStandard;
   MaximumSupportedWeightLbs?: MaximumSupportedWeightLbs;
 }
-const UpdateSiteRackPhysicalPropertiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<UpdateSiteRackPhysicalPropertiesInput>;
 export interface UpdateSiteRackPhysicalPropertiesOutput {
   Site?: Site;
 }
-const UpdateSiteRackPhysicalPropertiesOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<UpdateSiteRackPhysicalPropertiesOutput>;
 export type ErrorMessage = string;
 export type ResourceType = "OUTPOST" | "ORDER" | (string & {});
-const ResourceType = S.String;
-
 export type CancelCapacityTaskError =
   | AccessDeniedException
   | ConflictException
@@ -1594,8 +1182,8 @@ export const cancelCapacityTask: API.OperationMethod<
   CancelCapacityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelCapacityTaskInput,
-  output: CancelCapacityTaskOutput,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelCapacityTaskInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelCapacityTaskOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1624,8 +1212,8 @@ export const cancelOrder: API.OperationMethod<
   CancelOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOrderInput,
-  output: CancelOrderOutput,
+  input: __S(2, __c0, 2) as any as S.Schema<CancelOrderInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelOrderOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1655,8 +1243,8 @@ export const createOrder: API.OperationMethod<
   CreateOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrderInput,
-  output: CreateOrderOutput,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateOrderInput>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreateOrderOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1689,8 +1277,8 @@ export const createOutpost: API.OperationMethod<
   CreateOutpostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOutpostInput,
-  output: CreateOutpostOutput,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateOutpostInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateOutpostOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1723,8 +1311,8 @@ export const createPrivateConnectivityConfig: API.OperationMethod<
   CreatePrivateConnectivityConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateConnectivityConfigInput,
-  output: CreatePrivateConnectivityConfigOutput,
+  input: __S(20, __c2, 4) as any as S.Schema<CreatePrivateConnectivityConfigInput>,
+  output: __S(22, __c2, 6) as any as S.Schema<CreatePrivateConnectivityConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1754,8 +1342,8 @@ export const createQuote: API.OperationMethod<
   CreateQuoteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQuoteInput,
-  output: CreateQuoteOutput,
+  input: __S(28, __c3, 4) as any as S.Schema<CreateQuoteInput>,
+  output: __S(44, __c5, 4) as any as S.Schema<CreateQuoteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1777,8 +1365,8 @@ export const createRenewal: API.OperationMethod<
   CreateRenewalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRenewalInput,
-  output: CreateRenewalOutput,
+  input: __S(45, __c5, 5) as any as S.Schema<CreateRenewalInput>,
+  output: __S(46, __c5, 6) as any as S.Schema<CreateRenewalOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1801,8 +1389,8 @@ export const createSite: API.OperationMethod<
   CreateSiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSiteInput,
-  output: CreateSiteOutput,
+  input: __S(49, __c6, 1) as any as S.Schema<CreateSiteInput>,
+  output: __S(51, __c6, 3) as any as S.Schema<CreateSiteOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1831,8 +1419,8 @@ export const deleteOutpost: API.OperationMethod<
   DeleteOutpostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOutpostInput,
-  output: DeleteOutpostOutput,
+  input: __S(52, __c6, 4) as any as S.Schema<DeleteOutpostInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteOutpostOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1860,8 +1448,8 @@ export const deleteQuote: API.OperationMethod<
   DeleteQuoteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteQuoteInput,
-  output: DeleteQuoteOutput,
+  input: __S(53, __c6, 5) as any as S.Schema<DeleteQuoteInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteQuoteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1884,8 +1472,8 @@ export const deleteSite: API.OperationMethod<
   DeleteSiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSiteInput,
-  output: DeleteSiteOutput,
+  input: __S(54, __c6, 6) as any as S.Schema<DeleteSiteInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSiteOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1913,8 +1501,8 @@ export const getCapacityTask: API.OperationMethod<
   GetCapacityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCapacityTaskInput,
-  output: GetCapacityTaskOutput,
+  input: __S(55, __c6, 7) as any as S.Schema<GetCapacityTaskInput>,
+  output: __S(60, __c7, 4) as any as S.Schema<GetCapacityTaskOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1936,8 +1524,8 @@ export const getCatalogItem: API.OperationMethod<
   GetCatalogItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCatalogItemInput,
-  output: GetCatalogItemOutput,
+  input: __S(61, __c7, 5) as any as S.Schema<GetCatalogItemInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetCatalogItemOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1966,8 +1554,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: GetConnectionResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<GetConnectionRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<GetConnectionResponse>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1988,8 +1576,8 @@ export const getOrder: API.OperationMethod<
   GetOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrderInput,
-  output: GetOrderOutput,
+  input: __S(68, __c8, 4) as any as S.Schema<GetOrderInput>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetOrderOutput>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2011,8 +1599,8 @@ export const getOutpost: API.OperationMethod<
   GetOutpostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOutpostInput,
-  output: GetOutpostOutput,
+  input: __S(69, __c8, 5) as any as S.Schema<GetOutpostInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetOutpostOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2034,8 +1622,8 @@ export const getOutpostBillingInformation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetOutpostBillingInformationInput,
-  output: GetOutpostBillingInformationOutput,
+  input: __S(70, __c8, 6) as any as S.Schema<GetOutpostBillingInformationInput>,
+  output: __S(73, __c9, 1) as any as S.Schema<GetOutpostBillingInformationOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2064,8 +1652,8 @@ export const getOutpostInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceTypeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetOutpostInstanceTypesInput,
-  output: GetOutpostInstanceTypesOutput,
+  input: __S(74, __c9, 2) as any as S.Schema<GetOutpostInstanceTypesInput>,
+  output: __S(77, __c9, 5) as any as S.Schema<GetOutpostInstanceTypesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2096,8 +1684,8 @@ export const getOutpostSupportedInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceTypeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetOutpostSupportedInstanceTypesInput,
-  output: GetOutpostSupportedInstanceTypesOutput,
+  input: __S(78, __c9, 6) as any as S.Schema<GetOutpostSupportedInstanceTypesInput>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetOutpostSupportedInstanceTypesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2125,8 +1713,8 @@ export const getPrivateConnectivityConfig: API.OperationMethod<
   GetPrivateConnectivityConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateConnectivityConfigInput,
-  output: GetPrivateConnectivityConfigOutput,
+  input: __S(80, __c10, 0) as any as S.Schema<GetPrivateConnectivityConfigInput>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetPrivateConnectivityConfigOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2148,8 +1736,8 @@ export const getQuote: API.OperationMethod<
   GetQuoteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQuoteInput,
-  output: GetQuoteOutput,
+  input: __S(82, __c10, 2) as any as S.Schema<GetQuoteInput>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetQuoteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2171,8 +1759,8 @@ export const getRenewalPricing: API.OperationMethod<
   GetRenewalPricingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRenewalPricingInput,
-  output: GetRenewalPricingOutput,
+  input: __S(83, __c10, 3) as any as S.Schema<GetRenewalPricingInput>,
+  output: __S(84, __c10, 4) as any as S.Schema<GetRenewalPricingOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2194,8 +1782,8 @@ export const getSite: API.OperationMethod<
   GetSiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSiteInput,
-  output: GetSiteOutput,
+  input: __S(85, __c10, 5) as any as S.Schema<GetSiteInput>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetSiteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2217,8 +1805,8 @@ export const getSiteAddress: API.OperationMethod<
   GetSiteAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSiteAddressInput,
-  output: GetSiteAddressOutput,
+  input: __S(86, __c10, 6) as any as S.Schema<GetSiteAddressInput>,
+  output: __S(87, __c10, 7) as any as S.Schema<GetSiteAddressOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2242,8 +1830,8 @@ export const listAssetInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssetInstancesInput,
-  output: ListAssetInstancesOutput,
+  input: __S(88, __c11, 0) as any as S.Schema<ListAssetInstancesInput>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListAssetInstancesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2276,8 +1864,8 @@ export const listAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssetsInput,
-  output: ListAssetsOutput,
+  input: __S(92, __c11, 4) as any as S.Schema<ListAssetsInput>,
+  output: __S(99, __c12, 3) as any as S.Schema<ListAssetsOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2308,8 +1896,8 @@ export const listBlockingInstancesForCapacityTask: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BlockingInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBlockingInstancesForCapacityTaskInput,
-  output: ListBlockingInstancesForCapacityTaskOutput,
+  input: __S(100, __c12, 4) as any as S.Schema<ListBlockingInstancesForCapacityTaskInput>,
+  output: __S(103, __c12, 7) as any as S.Schema<ListBlockingInstancesForCapacityTaskOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2342,8 +1930,8 @@ export const listCapacityTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CapacityTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCapacityTasksInput,
-  output: ListCapacityTasksOutput,
+  input: __S(104, __c13, 0) as any as S.Schema<ListCapacityTasksInput>,
+  output: __S(107, __c13, 3) as any as S.Schema<ListCapacityTasksOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2376,8 +1964,8 @@ export const listCatalogItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CatalogItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCatalogItemsInput,
-  output: ListCatalogItemsOutput,
+  input: __S(108, __c13, 4) as any as S.Schema<ListCatalogItemsInput>,
+  output: __S(110, __c13, 6) as any as S.Schema<ListCatalogItemsOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2407,8 +1995,8 @@ export const listOrderableInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DetailedInstanceTypeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrderableInstanceTypesInput,
-  output: ListOrderableInstanceTypesOutput,
+  input: __S(111, __c13, 7) as any as S.Schema<ListOrderableInstanceTypesInput>,
+  output: __S(116, __c14, 4) as any as S.Schema<ListOrderableInstanceTypesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2437,8 +2025,8 @@ export const listOrders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OrderSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrdersInput,
-  output: ListOrdersOutput,
+  input: __S(117, __c14, 5) as any as S.Schema<ListOrdersInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListOrdersOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2470,8 +2058,8 @@ export const listOutposts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Outpost
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOutpostsInput,
-  output: ListOutpostsOutput,
+  input: __S(122, __c15, 2) as any as S.Schema<ListOutpostsInput>,
+  output: __S(124, __c15, 4) as any as S.Schema<ListOutpostsOutput>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2495,8 +2083,8 @@ export const listQuotes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuoteSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListQuotesInput,
-  output: ListQuotesOutput,
+  input: __S(125, __c15, 5) as any as S.Schema<ListQuotesInput>,
+  output: __S(128, __c16, 0) as any as S.Schema<ListQuotesOutput>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2529,8 +2117,8 @@ export const listSites: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Site
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSitesInput,
-  output: ListSitesOutput,
+  input: __S(129, __c16, 1) as any as S.Schema<ListSitesInput>,
+  output: __S(131, __c16, 3) as any as S.Schema<ListSitesOutput>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2557,8 +2145,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(132, __c16, 4) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2582,8 +2170,8 @@ export const startCapacityTask: API.OperationMethod<
   StartCapacityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartCapacityTaskInput,
-  output: StartCapacityTaskOutput,
+  input: __S(134, __c16, 6) as any as S.Schema<StartCapacityTaskInput>,
+  output: __S(60, __c7, 4) as any as S.Schema<StartCapacityTaskOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2618,8 +2206,8 @@ export const startConnection: API.OperationMethod<
   StartConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartConnectionRequest,
-  output: StartConnectionResponse,
+  input: __S(135, __c16, 7) as any as S.Schema<StartConnectionRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<StartConnectionResponse>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2642,8 +2230,8 @@ export const startOutpostDecommission: API.OperationMethod<
   StartOutpostDecommissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartOutpostDecommissionInput,
-  output: StartOutpostDecommissionOutput,
+  input: __S(137, __c17, 1) as any as S.Schema<StartOutpostDecommissionInput>,
+  output: __S(138, __c17, 2) as any as S.Schema<StartOutpostDecommissionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2670,8 +2258,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<TagResourceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2692,8 +2280,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2716,8 +2304,8 @@ export const updateOutpost: API.OperationMethod<
   UpdateOutpostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOutpostInput,
-  output: UpdateOutpostOutput,
+  input: __S(141, __c17, 5) as any as S.Schema<UpdateOutpostInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdateOutpostOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2746,8 +2334,8 @@ export const updateQuote: API.OperationMethod<
   UpdateQuoteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateQuoteInput,
-  output: UpdateQuoteOutput,
+  input: __S(142, __c17, 6) as any as S.Schema<UpdateQuoteInput>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateQuoteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2770,8 +2358,8 @@ export const updateSite: API.OperationMethod<
   UpdateSiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSiteInput,
-  output: UpdateSiteOutput,
+  input: __S(143, __c17, 7) as any as S.Schema<UpdateSiteInput>,
+  output: __S(51, __c6, 3) as any as S.Schema<UpdateSiteOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2806,8 +2394,8 @@ export const updateSiteAddress: API.OperationMethod<
   UpdateSiteAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSiteAddressInput,
-  output: UpdateSiteAddressOutput,
+  input: __S(144, __c18, 0) as any as S.Schema<UpdateSiteAddressInput>,
+  output: __S(145, __c18, 1) as any as S.Schema<UpdateSiteAddressOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2841,8 +2429,8 @@ export const updateSiteRackPhysicalProperties: API.OperationMethod<
   UpdateSiteRackPhysicalPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSiteRackPhysicalPropertiesInput,
-  output: UpdateSiteRackPhysicalPropertiesOutput,
+  input: __S(146, __c18, 2) as any as S.Schema<UpdateSiteRackPhysicalPropertiesInput>,
+  output: __S(147, __c18, 3) as any as S.Schema<UpdateSiteRackPhysicalPropertiesOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2899,23 +2487,23 @@ function __c0(j: number): any {
         S.Struct({ CatalogItemId: S.optional(S.String), Quantity: S.optional(S.Number) }),
       ).annotate({ identifier: "LineItemRequest" });
     case 4:
-      return S.Array(LineItemRequest);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           OutpostIdentifier: S.String,
           QuoteIdentifier: S.optional(S.String),
           QuoteOptionIdentifier: S.optional(S.String),
-          LineItems: S.optional(LineItemRequestListDefinition),
-          PaymentOption: PaymentOption,
-          PaymentTerm: S.optional(PaymentTerm),
+          LineItems: S.optional(__S(4, __c0, 4)),
+          PaymentOption: S.String,
+          PaymentTerm: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/orders" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateOrderInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ShipmentTrackingNumber: S.optional(S.String),
-          ShipmentCarrier: S.optional(ShipmentCarrier),
+          ShipmentCarrier: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShipmentInformation" });
     case 7:
@@ -2926,25 +2514,25 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AssetId: S.optional(S.String), MacAddressList: S.optional(MacAddressList) }),
+        S.Struct({ AssetId: S.optional(S.String), MacAddressList: S.optional(__S(7, __c0, 7)) }),
       ).annotate({ identifier: "LineItemAssetInformation" });
     case 1:
-      return S.Array(LineItemAssetInformation);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           CatalogItemId: S.optional(S.String),
           LineItemId: S.optional(S.String),
           Quantity: S.optional(S.Number),
-          Status: S.optional(LineItemStatus),
-          ShipmentInformation: S.optional(ShipmentInformation),
-          AssetInformationList: S.optional(LineItemAssetInformationList),
+          Status: S.optional(S.String),
+          ShipmentInformation: S.optional(__S(6, __c0, 6)),
+          AssetInformationList: S.optional(__S(9, __c1, 1)),
           PreviousLineItemId: S.optional(S.String),
           PreviousOrderId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LineItem" });
     case 3:
-      return S.Array(LineItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2952,17 +2540,17 @@ function __c1(j: number): any {
           QuoteIdentifier: S.optional(S.String),
           QuoteOptionIdentifier: S.optional(S.String),
           OrderId: S.optional(S.String),
-          Status: S.optional(OrderStatus),
-          LineItems: S.optional(LineItemListDefinition),
-          PaymentOption: S.optional(PaymentOption),
+          Status: S.optional(S.String),
+          LineItems: S.optional(__S(11, __c1, 3)),
+          PaymentOption: S.optional(S.String),
           OrderSubmissionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           OrderFulfilledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          PaymentTerm: S.optional(PaymentTerm),
-          OrderType: S.optional(OrderType),
+          PaymentTerm: S.optional(S.String),
+          OrderType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Order" });
     case 5:
-      return S.suspend(() => S.Struct({ Order: S.optional(Order) })).annotate({
+      return S.suspend(() => S.Struct({ Order: S.optional(__S(12, __c1, 4)) })).annotate({
         identifier: "CreateOrderOutput",
       });
     case 6:
@@ -2975,8 +2563,8 @@ function __c1(j: number): any {
           SiteId: S.String,
           AvailabilityZone: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
-          Tags: S.optional(TagMap),
-          SupportedHardwareType: S.optional(SupportedHardwareType),
+          Tags: S.optional(__S(14, __c1, 6)),
+          SupportedHardwareType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/outposts" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateOutpostInput" });
   }
@@ -2995,32 +2583,32 @@ function __c2(j: number): any {
           LifeCycleStatus: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(14, __c1, 6)),
           SiteArn: S.optional(S.String),
-          SupportedHardwareType: S.optional(SupportedHardwareType),
-          Generation: S.optional(OutpostGeneration),
-          RackScalingType: S.optional(RackScalingType),
+          SupportedHardwareType: S.optional(S.String),
+          Generation: S.optional(S.String),
+          RackScalingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Outpost" });
     case 1:
-      return S.suspend(() => S.Struct({ Outpost: S.optional(Outpost) })).annotate({
+      return S.suspend(() => S.Struct({ Outpost: S.optional(__S(16, __c2, 0)) })).annotate({
         identifier: "CreateOutpostOutput",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           VpcId: S.optional(S.String),
-          SubnetIds: S.optional(SubnetIds),
+          SubnetIds: S.optional(__S(7, __c0, 7)),
           VpcEndpointId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcInformation" });
     case 3:
-      return S.Array(VpcInformation);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           OutpostId: S.String.pipe(T.HttpLabel("OutpostId")),
-          VpcInformationList: VpcInformationList,
+          VpcInformationList: __S(19, __c2, 3),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/outposts/{OutpostId}/privateConnectivity" }),
@@ -3038,8 +2626,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RoleArn: S.optional(S.String),
-          PrivateConnectivityStatus: S.optional(PrivateConnectivityStatus),
-          VpcInformationList: S.optional(VpcInformationList),
+          PrivateConnectivityStatus: S.optional(S.String),
+          VpcInformationList: S.optional(__S(19, __c2, 3)),
           ProvisioningRoleArn: S.optional(S.String),
         }),
       ).annotate({
@@ -3048,7 +2636,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PrivateConnectivityConfig: S.optional(PrivateConnectivityConfig),
+          PrivateConnectivityConfig: S.optional(__S(21, __c2, 5)),
           OutpostId: S.optional(S.String),
         }),
       ).annotate({
@@ -3057,7 +2645,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          QuoteCapacityType: S.optional(QuoteCapacityType),
+          QuoteCapacityType: S.optional(S.String),
           Unit: S.optional(S.String),
           Quantity: S.optional(S.Number),
         }),
@@ -3067,36 +2655,36 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(QuoteCapacity);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          QuoteConstraintType: S.optional(QuoteConstraintType),
+          QuoteConstraintType: S.optional(S.String),
           Value: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuoteConstraint" });
     case 2:
-      return S.Array(QuoteConstraint);
+      return S.Array(__S(25, __c3, 1));
     case 3:
-      return S.Array(PaymentOption);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           OutpostIdentifier: S.optional(S.String),
           CountryCode: S.String,
-          RequestedCapacities: QuoteCapacityList,
-          RequestedConstraints: S.optional(QuoteConstraintList),
-          RequestedPaymentOptions: S.optional(PaymentOptionList),
-          RequestedPaymentTerms: S.optional(PaymentTermList),
+          RequestedCapacities: __S(24, __c3, 0),
+          RequestedConstraints: S.optional(__S(26, __c3, 2)),
+          RequestedPaymentOptions: S.optional(__S(27, __c3, 3)),
+          RequestedPaymentTerms: S.optional(__S(27, __c3, 3)),
           Description: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/quotes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateQuoteInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ExistingCapacities: S.optional(QuoteCapacityList),
-          FinalCapacities: S.optional(QuoteCapacityList),
-          CapacityChange: S.optional(QuoteCapacityList),
+          ExistingCapacities: S.optional(__S(24, __c3, 0)),
+          FinalCapacities: S.optional(__S(24, __c3, 0)),
+          CapacityChange: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "CapacitySummary" });
     case 6:
@@ -3108,7 +2696,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "EC2Capacity" });
     case 7:
-      return S.Array(EC2Capacity);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -3117,14 +2705,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RackId: S.optional(S.String),
-          RackUse: S.optional(QuoteRackUseType),
+          RackUse: S.optional(S.String),
           RackPowerDrawKva: S.optional(S.Number),
           RackWeightLbs: S.optional(S.Number),
           RackHeightInches: S.optional(S.Number),
           RackWidthInches: S.optional(S.Number),
           RackDepthInches: S.optional(S.Number),
-          RackUnitHeight: S.optional(RackUnitHeight),
-          EC2Capacities: S.optional(EC2CapacityListDefinition),
+          RackUnitHeight: S.optional(S.String),
+          EC2Capacities: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "RackSpecificationDetails" });
     case 1:
@@ -3135,8 +2723,8 @@ function __c4(j: number): any {
           ServerHeightInches: S.optional(S.Number),
           ServerWidthInches: S.optional(S.Number),
           ServerDepthInches: S.optional(S.Number),
-          RackUnitHeight: S.optional(RackUnitHeight),
-          EC2Capacities: S.optional(EC2CapacityListDefinition),
+          RackUnitHeight: S.optional(S.String),
+          EC2Capacities: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier: "ServerSpecificationDetails",
@@ -3144,22 +2732,22 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          QuoteSpecificationType: S.optional(QuoteSpecificationType),
-          ExistingRackSpecificationDetails: S.optional(RackSpecificationDetails),
-          FinalRackSpecificationDetails: S.optional(RackSpecificationDetails),
-          ServerSpecificationDetails: S.optional(ServerSpecificationDetails),
+          QuoteSpecificationType: S.optional(S.String),
+          ExistingRackSpecificationDetails: S.optional(__S(32, __c4, 0)),
+          FinalRackSpecificationDetails: S.optional(__S(32, __c4, 0)),
+          ServerSpecificationDetails: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "QuoteSpecification" });
     case 3:
-      return S.Array(QuoteSpecification);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PaymentOption: S.optional(PaymentOption),
-          PaymentTerm: S.optional(PaymentTerm),
+          PaymentOption: S.optional(S.String),
+          PaymentTerm: S.optional(S.String),
           UpfrontPrice: S.optional(S.Number),
           MonthlyRecurringPrice: S.optional(S.Number),
-          Currency: S.optional(CurrencyCode),
+          Currency: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SubscriptionPricingDetails",
@@ -3167,20 +2755,20 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PricingType: S.optional(QuotePricingType),
-          SubscriptionPricingDetails: S.optional(SubscriptionPricingDetails),
+          PricingType: S.optional(S.String),
+          SubscriptionPricingDetails: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "PricingOption" });
     case 6:
-      return S.Array(PricingOption);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           QuoteOptionIdentifier: S.optional(S.String),
-          Capacities: S.optional(QuoteCapacityList),
-          CapacitySummary: S.optional(CapacitySummary),
-          Specifications: S.optional(QuoteSpecificationList),
-          PricingOptions: S.optional(PricingOptionList),
+          Capacities: S.optional(__S(24, __c3, 0)),
+          CapacitySummary: S.optional(__S(29, __c3, 5)),
+          Specifications: S.optional(__S(35, __c4, 3)),
+          PricingOptions: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "QuoteOption" });
   }
@@ -3188,32 +2776,32 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(QuoteOption);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           StatusMessage: S.optional(S.String),
-          OrderingRequirementType: S.optional(OrderingRequirementType),
-          Status: S.optional(OrderingRequirementStatus),
+          OrderingRequirementType: S.optional(S.String),
+          Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderingRequirement" });
     case 2:
-      return S.Array(OrderingRequirement);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           QuoteId: S.optional(S.String),
           AccountId: S.optional(S.String),
-          QuoteStatus: S.optional(QuoteStatus),
+          QuoteStatus: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           OutpostArn: S.optional(S.String),
           CountryCode: S.optional(S.String),
-          RequestedCapacities: S.optional(QuoteCapacityList),
-          RequestedConstraints: S.optional(QuoteConstraintList),
-          RequestedPaymentOptions: S.optional(PaymentOptionList),
-          RequestedPaymentTerms: S.optional(PaymentTermList),
-          QuoteOptions: S.optional(QuoteOptionList),
-          OrderingRequirements: S.optional(OrderingRequirementList),
+          RequestedCapacities: S.optional(__S(24, __c3, 0)),
+          RequestedConstraints: S.optional(__S(26, __c3, 2)),
+          RequestedPaymentOptions: S.optional(__S(27, __c3, 3)),
+          RequestedPaymentTerms: S.optional(__S(27, __c3, 3)),
+          QuoteOptions: S.optional(__S(40, __c5, 0)),
+          OrderingRequirements: S.optional(__S(42, __c5, 2)),
           SubmittedOrderId: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3221,14 +2809,14 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Quote" });
     case 4:
-      return S.suspend(() => S.Struct({ Quote: S.optional(Quote) })).annotate({
+      return S.suspend(() => S.Struct({ Quote: S.optional(__S(43, __c5, 3)) })).annotate({
         identifier: "CreateQuoteOutput",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PaymentOption: PaymentOption,
-          PaymentTerm: PaymentTerm,
+          PaymentOption: S.String,
+          PaymentTerm: S.String,
           OutpostIdentifier: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/renewals" }), svc, auth, proto, ver, rules)),
@@ -3236,12 +2824,12 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PaymentOption: S.optional(PaymentOption),
-          PaymentTerm: S.optional(PaymentTerm),
+          PaymentOption: S.optional(S.String),
+          PaymentTerm: S.optional(S.String),
           OutpostId: S.optional(S.String),
           UpfrontPrice: S.optional(S.Number),
           MonthlyRecurringPrice: S.optional(S.Number),
-          Currency: S.optional(CurrencyCode),
+          Currency: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateRenewalOutput" });
     case 7:
@@ -3267,15 +2855,15 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          PowerDrawKva: S.optional(PowerDrawKva),
-          PowerPhase: S.optional(PowerPhase),
-          PowerConnector: S.optional(PowerConnector),
-          PowerFeedDrop: S.optional(PowerFeedDrop),
-          UplinkGbps: S.optional(UplinkGbps),
-          UplinkCount: S.optional(UplinkCount),
-          FiberOpticCableType: S.optional(FiberOpticCableType),
-          OpticalStandard: S.optional(OpticalStandard),
-          MaximumSupportedWeightLbs: S.optional(MaximumSupportedWeightLbs),
+          PowerDrawKva: S.optional(S.String),
+          PowerPhase: S.optional(S.String),
+          PowerConnector: S.optional(S.String),
+          PowerFeedDrop: S.optional(S.String),
+          UplinkGbps: S.optional(S.String),
+          UplinkCount: S.optional(S.String),
+          FiberOpticCableType: S.optional(S.String),
+          OpticalStandard: S.optional(S.String),
+          MaximumSupportedWeightLbs: S.optional(S.String),
         }),
       ).annotate({ identifier: "RackPhysicalProperties" });
     case 1:
@@ -3284,10 +2872,10 @@ function __c6(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           Notes: S.optional(S.String),
-          Tags: S.optional(TagMap),
-          OperatingAddress: S.optional(Address),
-          ShippingAddress: S.optional(Address),
-          RackPhysicalProperties: S.optional(RackPhysicalProperties),
+          Tags: S.optional(__S(14, __c1, 6)),
+          OperatingAddress: S.optional(__S(47, __c5, 7)),
+          ShippingAddress: S.optional(__S(47, __c5, 7)),
+          RackPhysicalProperties: S.optional(__S(48, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/sites" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSiteInput" });
     case 2:
@@ -3297,17 +2885,17 @@ function __c6(j: number): any {
           AccountId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(14, __c1, 6)),
           SiteArn: S.optional(S.String),
           Notes: S.optional(S.String),
           OperatingAddressCountryCode: S.optional(S.String),
           OperatingAddressStateOrRegion: S.optional(S.String),
           OperatingAddressCity: S.optional(S.String),
-          RackPhysicalProperties: S.optional(RackPhysicalProperties),
+          RackPhysicalProperties: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "Site" });
     case 3:
-      return S.suspend(() => S.Struct({ Site: S.optional(Site) })).annotate({
+      return S.suspend(() => S.Struct({ Site: S.optional(__S(50, __c6, 2)) })).annotate({
         identifier: "CreateSiteOutput",
       });
     case 4:
@@ -3370,19 +2958,19 @@ function __c7(j: number): any {
         identifier: "InstanceTypeCapacity",
       });
     case 1:
-      return S.Array(InstanceTypeCapacity);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Instances: S.optional(InstanceIdList),
-          AccountIds: S.optional(AccountIdList),
-          Services: S.optional(AWSServiceNameList),
+          Instances: S.optional(__S(7, __c0, 7)),
+          AccountIds: S.optional(__S(7, __c0, 7)),
+          Services: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "InstancesToExclude" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ Reason: S.String, Type: S.optional(CapacityTaskFailureType) }),
-      ).annotate({ identifier: "CapacityTaskFailure" });
+      return S.suspend(() => S.Struct({ Reason: S.String, Type: S.optional(S.String) })).annotate({
+        identifier: "CapacityTaskFailure",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3390,15 +2978,15 @@ function __c7(j: number): any {
           OutpostId: S.optional(S.String),
           OrderId: S.optional(S.String),
           AssetId: S.optional(S.String),
-          RequestedInstancePools: S.optional(RequestedInstancePools),
-          InstancesToExclude: S.optional(InstancesToExclude),
+          RequestedInstancePools: S.optional(__S(57, __c7, 1)),
+          InstancesToExclude: S.optional(__S(58, __c7, 2)),
           DryRun: S.optional(S.Boolean),
-          CapacityTaskStatus: S.optional(CapacityTaskStatus),
-          Failed: S.optional(CapacityTaskFailure),
+          CapacityTaskStatus: S.optional(S.String),
+          Failed: S.optional(__S(59, __c7, 3)),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TaskActionOnBlockingInstances: S.optional(TaskActionOnBlockingInstances),
+          TaskActionOnBlockingInstances: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetCapacityTaskOutput" });
     case 5:
@@ -3420,13 +3008,13 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogItemId: S.optional(S.String),
-          ItemStatus: S.optional(CatalogItemStatus),
-          EC2Capacities: S.optional(EC2CapacityListDefinition),
+          ItemStatus: S.optional(S.String),
+          EC2Capacities: S.optional(__S(31, __c3, 7)),
           PowerKva: S.optional(S.Number),
           WeightLbs: S.optional(S.Number),
-          SupportedUplinkGbps: S.optional(SupportedUplinkGbpsListDefinition),
-          SupportedStorage: S.optional(SupportedStorageList),
-          RackScalingType: S.optional(RackScalingType),
+          SupportedUplinkGbps: S.optional(__S(62, __c7, 6)),
+          SupportedStorage: S.optional(__S(27, __c3, 3)),
+          RackScalingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogItem" });
   }
@@ -3434,7 +3022,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CatalogItem: S.optional(CatalogItem) })).annotate({
+      return S.suspend(() => S.Struct({ CatalogItem: S.optional(__S(63, __c7, 7)) })).annotate({
         identifier: "GetCatalogItemOutput",
       });
     case 1:
@@ -3458,14 +3046,14 @@ function __c8(j: number): any {
           ServerEndpoint: S.optional(S.String),
           ClientTunnelAddress: S.optional(S.String),
           ServerTunnelAddress: S.optional(S.String),
-          AllowedIps: S.optional(CIDRList),
+          AllowedIps: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "ConnectionDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ConnectionId: S.optional(S.String),
-          ConnectionDetails: S.optional(ConnectionDetails),
+          ConnectionDetails: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "GetConnectionResponse" });
     case 4:
@@ -3510,12 +3098,12 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SubscriptionId: S.optional(S.String),
-          SubscriptionType: S.optional(SubscriptionType),
-          SubscriptionStatus: S.optional(SubscriptionStatus),
-          OrderIds: S.optional(OrderIdList),
+          SubscriptionType: S.optional(S.String),
+          SubscriptionStatus: S.optional(S.String),
+          OrderIds: S.optional(__S(7, __c0, 7)),
           BeginDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Currency: S.optional(CurrencyCode),
+          Currency: S.optional(S.String),
           MonthlyRecurringPrice: S.optional(S.Number),
           UpfrontPrice: S.optional(S.Number),
         }),
@@ -3525,15 +3113,15 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Subscription);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Subscriptions: S.optional(SubscriptionList),
+          Subscriptions: S.optional(__S(72, __c9, 0)),
           ContractEndDate: S.optional(S.String),
-          PaymentTerm: S.optional(PaymentTerm),
-          PaymentOption: S.optional(PaymentOption),
+          PaymentTerm: S.optional(S.String),
+          PaymentOption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetOutpostBillingInformationOutput",
@@ -3562,11 +3150,11 @@ function __c9(j: number): any {
         S.Struct({ InstanceType: S.optional(S.String), VCPUs: S.optional(S.Number) }),
       ).annotate({ identifier: "InstanceTypeItem" });
     case 4:
-      return S.Array(InstanceTypeItem);
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          InstanceTypes: S.optional(InstanceTypeListDefinition),
+          InstanceTypes: S.optional(__S(76, __c9, 4)),
           NextToken: S.optional(S.String),
           OutpostId: S.optional(S.String),
           OutpostArn: S.optional(S.String),
@@ -3598,7 +3186,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          InstanceTypes: S.optional(InstanceTypeListDefinition),
+          InstanceTypes: S.optional(__S(76, __c9, 4)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3625,7 +3213,7 @@ function __c10(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ PrivateConnectivityConfig: S.optional(PrivateConnectivityConfig) }),
+        S.Struct({ PrivateConnectivityConfig: S.optional(__S(21, __c2, 5)) }),
       ).annotate({
         identifier: "GetPrivateConnectivityConfigOutput",
       });
@@ -3658,8 +3246,8 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PricingResult: S.optional(PricingResult),
-          PricingOptions: S.optional(PricingOptionList),
+          PricingResult: S.optional(S.String),
+          PricingOptions: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "GetRenewalPricingOutput" });
     case 5:
@@ -3672,7 +3260,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SiteId: S.String.pipe(T.HttpLabel("SiteId")),
-          AddressType: AddressType.pipe(T.HttpQuery("AddressType")),
+          AddressType: S.String.pipe(T.HttpQuery("AddressType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/sites/{SiteId}/address" }),
@@ -3688,8 +3276,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SiteId: S.optional(S.String),
-          AddressType: S.optional(AddressType),
-          Address: S.optional(Address),
+          AddressType: S.optional(S.String),
+          Address: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "GetSiteAddressOutput" });
   }
@@ -3700,12 +3288,10 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OutpostIdentifier: S.String.pipe(T.HttpLabel("OutpostIdentifier")),
-          AssetIdFilter: S.optional(AssetIdList).pipe(T.HttpQuery("AssetIdFilter")),
-          InstanceTypeFilter: S.optional(OutpostInstanceTypeList).pipe(
-            T.HttpQuery("InstanceTypeFilter"),
-          ),
-          AccountIdFilter: S.optional(AccountIdList).pipe(T.HttpQuery("AccountIdFilter")),
-          AwsServiceFilter: S.optional(AWSServiceNameList).pipe(T.HttpQuery("AwsServiceFilter")),
+          AssetIdFilter: S.optional(__S(7, __c0, 7)).pipe(T.HttpQuery("AssetIdFilter")),
+          InstanceTypeFilter: S.optional(__S(7, __c0, 7)).pipe(T.HttpQuery("InstanceTypeFilter")),
+          AccountIdFilter: S.optional(__S(7, __c0, 7)).pipe(T.HttpQuery("AccountIdFilter")),
+          AwsServiceFilter: S.optional(__S(27, __c3, 3)).pipe(T.HttpQuery("AwsServiceFilter")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(
@@ -3726,15 +3312,15 @@ function __c11(j: number): any {
           InstanceType: S.optional(S.String),
           AssetId: S.optional(S.String),
           AccountId: S.optional(S.String),
-          AwsServiceName: S.optional(AWSServiceName),
+          AwsServiceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssetInstance" });
     case 2:
-      return S.Array(AssetInstance);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AssetInstances: S.optional(AssetInstanceList),
+          AssetInstances: S.optional(__S(90, __c11, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAssetInstancesOutput" });
@@ -3742,11 +3328,11 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OutpostIdentifier: S.String.pipe(T.HttpLabel("OutpostIdentifier")),
-          HostIdFilter: S.optional(HostIdList).pipe(T.HttpQuery("HostIdFilter")),
+          HostIdFilter: S.optional(__S(7, __c0, 7)).pipe(T.HttpQuery("HostIdFilter")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          StatusFilter: S.optional(StatusList).pipe(T.HttpQuery("StatusFilter")),
-          AssetTypeFilter: S.optional(AssetTypeList).pipe(T.HttpQuery("AssetTypeFilter")),
+          StatusFilter: S.optional(__S(27, __c3, 3)).pipe(T.HttpQuery("StatusFilter")),
+          AssetTypeFilter: S.optional(__S(27, __c3, 3)).pipe(T.HttpQuery("AssetTypeFilter")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/outposts/{OutpostIdentifier}/assets" }),
@@ -3763,14 +3349,14 @@ function __c11(j: number): any {
         identifier: "AssetInstanceTypeCapacity",
       });
     case 6:
-      return S.Array(AssetInstanceTypeCapacity);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           HostId: S.optional(S.String),
-          State: S.optional(ComputeAssetState),
-          InstanceFamilies: S.optional(InstanceFamilies),
-          InstanceTypeCapacities: S.optional(AssetInstanceCapacityList),
+          State: S.optional(S.String),
+          InstanceFamilies: S.optional(__S(7, __c0, 7)),
+          InstanceTypeCapacities: S.optional(__S(94, __c11, 6)),
           MaxVcpus: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ComputeAttributes" });
@@ -3787,16 +3373,16 @@ function __c12(j: number): any {
         S.Struct({
           AssetId: S.optional(S.String),
           RackId: S.optional(S.String),
-          AssetType: S.optional(AssetType),
-          ComputeAttributes: S.optional(ComputeAttributes),
-          AssetLocation: S.optional(AssetLocation),
+          AssetType: S.optional(S.String),
+          ComputeAttributes: S.optional(__S(95, __c11, 7)),
+          AssetLocation: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "AssetInfo" });
     case 2:
-      return S.Array(AssetInfo);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Assets: S.optional(AssetListDefinition), NextToken: S.optional(S.String) }),
+        S.Struct({ Assets: S.optional(__S(98, __c12, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAssetsOutput" });
     case 4:
       return S.suspend(() =>
@@ -3826,15 +3412,15 @@ function __c12(j: number): any {
         S.Struct({
           InstanceId: S.optional(S.String),
           AccountId: S.optional(S.String),
-          AwsServiceName: S.optional(AWSServiceName),
+          AwsServiceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlockingInstance" });
     case 6:
-      return S.Array(BlockingInstance);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          BlockingInstances: S.optional(BlockingInstancesList),
+          BlockingInstances: S.optional(__S(102, __c12, 6)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3852,7 +3438,7 @@ function __c13(j: number): any {
           ),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          CapacityTaskStatusFilter: S.optional(CapacityTaskStatusList).pipe(
+          CapacityTaskStatusFilter: S.optional(__S(27, __c3, 3)).pipe(
             T.HttpQuery("CapacityTaskStatusFilter"),
           ),
         }).pipe(
@@ -3866,45 +3452,48 @@ function __c13(j: number): any {
           OutpostId: S.optional(S.String),
           OrderId: S.optional(S.String),
           AssetId: S.optional(S.String),
-          CapacityTaskStatus: S.optional(CapacityTaskStatus),
+          CapacityTaskStatus: S.optional(S.String),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CapacityTaskSummary" });
     case 2:
-      return S.Array(CapacityTaskSummary);
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ CapacityTasks: S.optional(CapacityTaskList), NextToken: S.optional(S.String) }),
+        S.Struct({
+          CapacityTasks: S.optional(__S(106, __c13, 2)),
+          NextToken: S.optional(S.String),
+        }),
       ).annotate({ identifier: "ListCapacityTasksOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          ItemClassFilter: S.optional(CatalogItemClassList).pipe(T.HttpQuery("ItemClassFilter")),
-          SupportedStorageFilter: S.optional(SupportedStorageList).pipe(
+          ItemClassFilter: S.optional(__S(27, __c3, 3)).pipe(T.HttpQuery("ItemClassFilter")),
+          SupportedStorageFilter: S.optional(__S(27, __c3, 3)).pipe(
             T.HttpQuery("SupportedStorageFilter"),
           ),
-          EC2FamilyFilter: S.optional(EC2FamilyList).pipe(T.HttpQuery("EC2FamilyFilter")),
+          EC2FamilyFilter: S.optional(__S(7, __c0, 7)).pipe(T.HttpQuery("EC2FamilyFilter")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/catalog/items" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListCatalogItemsInput" });
     case 5:
-      return S.Array(CatalogItem);
+      return S.Array(__S(63, __c7, 7));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          CatalogItems: S.optional(CatalogItemListDefinition),
+          CatalogItems: S.optional(__S(109, __c13, 5)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCatalogItemsOutput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          OutpostGenerationFilter: S.optional(OutpostGeneration).pipe(
+          OutpostGenerationFilter: S.optional(S.String).pipe(
             T.HttpQuery("OutpostGenerationFilter"),
           ),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -3922,12 +3511,12 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FormFactor: S.optional(FormFactor),
-          OutpostGeneration: S.optional(OutpostGeneration),
+          FormFactor: S.optional(S.String),
+          OutpostGeneration: S.optional(S.String),
         }),
       ).annotate({ identifier: "FormFactorConfig" });
     case 1:
-      return S.Array(FormFactorConfig);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3935,15 +3524,15 @@ function __c14(j: number): any {
           VCPUs: S.optional(S.Number),
           MemoryInMib: S.optional(S.Number),
           NetworkPerformance: S.optional(S.String),
-          FormFactorConfigs: S.optional(FormFactorConfigList),
+          FormFactorConfigs: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({ identifier: "DetailedInstanceTypeItem" });
     case 3:
-      return S.Array(DetailedInstanceTypeItem);
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          InstanceTypes: S.optional(DetailedInstanceTypeListDefinition),
+          InstanceTypes: S.optional(__S(115, __c14, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3962,15 +3551,15 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListOrdersInput" });
     case 6:
-      return S.Record(LineItemStatus, /*@__PURE__*/ S.Number.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           OutpostId: S.optional(S.String),
           OrderId: S.optional(S.String),
-          OrderType: S.optional(OrderType),
-          Status: S.optional(OrderStatus),
-          LineItemCountsByStatus: S.optional(LineItemStatusCounts),
+          OrderType: S.optional(S.String),
+          Status: S.optional(S.String),
+          LineItemCountsByStatus: S.optional(__S(118, __c14, 6)),
           OrderSubmissionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           OrderFulfilledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -3980,11 +3569,11 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OrderSummary);
+      return S.Array(__S(119, __c14, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Orders: S.optional(OrderSummaryListDefinition),
+          Orders: S.optional(__S(120, __c15, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOrdersOutput" });
@@ -3993,22 +3582,22 @@ function __c15(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          LifeCycleStatusFilter: S.optional(LifeCycleStatusList).pipe(
+          LifeCycleStatusFilter: S.optional(__S(7, __c0, 7)).pipe(
             T.HttpQuery("LifeCycleStatusFilter"),
           ),
-          AvailabilityZoneFilter: S.optional(AvailabilityZoneList).pipe(
+          AvailabilityZoneFilter: S.optional(__S(7, __c0, 7)).pipe(
             T.HttpQuery("AvailabilityZoneFilter"),
           ),
-          AvailabilityZoneIdFilter: S.optional(AvailabilityZoneIdList).pipe(
+          AvailabilityZoneIdFilter: S.optional(__S(7, __c0, 7)).pipe(
             T.HttpQuery("AvailabilityZoneIdFilter"),
           ),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/outposts" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListOutpostsInput" });
     case 3:
-      return S.Array(Outpost);
+      return S.Array(__S(16, __c2, 0));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Outposts: S.optional(OutpostListDefinition), NextToken: S.optional(S.String) }),
+        S.Struct({ Outposts: S.optional(__S(123, __c15, 3)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListOutpostsOutput" });
     case 5:
       return S.suspend(() =>
@@ -4022,15 +3611,15 @@ function __c15(j: number): any {
         S.Struct({
           QuoteId: S.optional(S.String),
           AccountId: S.optional(S.String),
-          QuoteStatus: S.optional(QuoteStatus),
+          QuoteStatus: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           OutpostArn: S.optional(S.String),
           CountryCode: S.optional(S.String),
-          RequestedCapacities: S.optional(QuoteCapacityList),
-          RequestedConstraints: S.optional(QuoteConstraintList),
-          RequestedPaymentOptions: S.optional(PaymentOptionList),
-          RequestedPaymentTerms: S.optional(PaymentTermList),
-          QuoteOptions: S.optional(QuoteOptionList),
+          RequestedCapacities: S.optional(__S(24, __c3, 0)),
+          RequestedConstraints: S.optional(__S(26, __c3, 2)),
+          RequestedPaymentOptions: S.optional(__S(27, __c3, 3)),
+          RequestedPaymentTerms: S.optional(__S(27, __c3, 3)),
+          QuoteOptions: S.optional(__S(40, __c5, 0)),
           SubmittedOrderId: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4038,7 +3627,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "QuoteSummary" });
     case 7:
-      return S.Array(QuoteSummary);
+      return S.Array(__S(126, __c15, 6));
   }
 }
 function __c16(j: number): any {
@@ -4046,7 +3635,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Quotes: S.optional(QuoteSummaryListDefinition),
+          Quotes: S.optional(__S(127, __c15, 7)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListQuotesOutput" });
@@ -4055,22 +3644,22 @@ function __c16(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          OperatingAddressCountryCodeFilter: S.optional(CountryCodeList).pipe(
+          OperatingAddressCountryCodeFilter: S.optional(__S(7, __c0, 7)).pipe(
             T.HttpQuery("OperatingAddressCountryCodeFilter"),
           ),
-          OperatingAddressStateOrRegionFilter: S.optional(StateOrRegionList).pipe(
+          OperatingAddressStateOrRegionFilter: S.optional(__S(7, __c0, 7)).pipe(
             T.HttpQuery("OperatingAddressStateOrRegionFilter"),
           ),
-          OperatingAddressCityFilter: S.optional(CityList).pipe(
+          OperatingAddressCityFilter: S.optional(__S(7, __c0, 7)).pipe(
             T.HttpQuery("OperatingAddressCityFilter"),
           ),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/sites" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSitesInput" });
     case 2:
-      return S.Array(Site);
+      return S.Array(__S(50, __c6, 2));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Sites: S.optional(SiteListDefinition), NextToken: S.optional(S.String) }),
+        S.Struct({ Sites: S.optional(__S(130, __c16, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSitesOutput" });
     case 4:
       return S.suspend(() =>
@@ -4088,7 +3677,7 @@ function __c16(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(14, __c1, 6)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 6:
@@ -4097,10 +3686,10 @@ function __c16(j: number): any {
           OutpostIdentifier: S.String.pipe(T.HttpLabel("OutpostIdentifier")),
           OrderId: S.optional(S.String),
           AssetId: S.optional(S.String),
-          InstancePools: RequestedInstancePools,
-          InstancesToExclude: S.optional(InstancesToExclude),
+          InstancePools: __S(57, __c7, 1),
+          InstancesToExclude: S.optional(__S(58, __c7, 2)),
           DryRun: S.optional(S.Boolean),
-          TaskActionOnBlockingInstances: S.optional(TaskActionOnBlockingInstances),
+          TaskActionOnBlockingInstances: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/outposts/{OutpostIdentifier}/capacity" }),
@@ -4152,15 +3741,18 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(DecommissionRequestStatus),
-          BlockingResourceTypes: S.optional(BlockingResourceTypeList),
+          Status: S.optional(S.String),
+          BlockingResourceTypes: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "StartOutpostDecommissionOutput",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap }).pipe(
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: __S(14, __c1, 6),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -4175,7 +3767,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(7, __c0, 7).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -4193,7 +3785,7 @@ function __c17(j: number): any {
           OutpostId: S.String.pipe(T.HttpLabel("OutpostId")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          SupportedHardwareType: S.optional(SupportedHardwareType),
+          SupportedHardwareType: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/outposts/{OutpostId}" }),
@@ -4211,10 +3803,10 @@ function __c17(j: number): any {
           QuoteIdentifier: S.String.pipe(T.HttpLabel("QuoteIdentifier")),
           OutpostIdentifier: S.optional(S.String),
           CountryCode: S.optional(S.String),
-          RequestedCapacities: S.optional(QuoteCapacityList),
-          RequestedConstraints: S.optional(QuoteConstraintList),
-          RequestedPaymentOptions: S.optional(PaymentOptionList),
-          RequestedPaymentTerms: S.optional(PaymentTermList),
+          RequestedCapacities: S.optional(__S(24, __c3, 0)),
+          RequestedConstraints: S.optional(__S(26, __c3, 2)),
+          RequestedPaymentOptions: S.optional(__S(27, __c3, 3)),
+          RequestedPaymentTerms: S.optional(__S(27, __c3, 3)),
           Description: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -4246,8 +3838,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SiteId: S.String.pipe(T.HttpLabel("SiteId")),
-          AddressType: AddressType,
-          Address: Address,
+          AddressType: S.String,
+          Address: __S(47, __c5, 7),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/sites/{SiteId}/address" }),
@@ -4261,21 +3853,21 @@ function __c18(j: number): any {
       ).annotate({ identifier: "UpdateSiteAddressInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AddressType: S.optional(AddressType), Address: S.optional(Address) }),
+        S.Struct({ AddressType: S.optional(S.String), Address: S.optional(__S(47, __c5, 7)) }),
       ).annotate({ identifier: "UpdateSiteAddressOutput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           SiteId: S.String.pipe(T.HttpLabel("SiteId")),
-          PowerDrawKva: S.optional(PowerDrawKva),
-          PowerPhase: S.optional(PowerPhase),
-          PowerConnector: S.optional(PowerConnector),
-          PowerFeedDrop: S.optional(PowerFeedDrop),
-          UplinkGbps: S.optional(UplinkGbps),
-          UplinkCount: S.optional(UplinkCount),
-          FiberOpticCableType: S.optional(FiberOpticCableType),
-          OpticalStandard: S.optional(OpticalStandard),
-          MaximumSupportedWeightLbs: S.optional(MaximumSupportedWeightLbs),
+          PowerDrawKva: S.optional(S.String),
+          PowerPhase: S.optional(S.String),
+          PowerConnector: S.optional(S.String),
+          PowerFeedDrop: S.optional(S.String),
+          UplinkGbps: S.optional(S.String),
+          UplinkCount: S.optional(S.String),
+          FiberOpticCableType: S.optional(S.String),
+          OpticalStandard: S.optional(S.String),
+          MaximumSupportedWeightLbs: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/sites/{SiteId}/rackPhysicalProperties" }),
@@ -4290,8 +3882,13 @@ function __c18(j: number): any {
         identifier: "UpdateSiteRackPhysicalPropertiesInput",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Site: S.optional(Site) })).annotate({
+      return S.suspend(() => S.Struct({ Site: S.optional(__S(50, __c6, 2)) })).annotate({
         identifier: "UpdateSiteRackPhysicalPropertiesOutput",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

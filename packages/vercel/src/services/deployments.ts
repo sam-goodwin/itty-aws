@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -71,67 +73,32 @@ export interface CancelDeploymentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const CancelDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelDeploymentRequest>;
-
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type CancelDeploymentResponseAliasList = Array<string>;
-const CancelDeploymentResponseAliasList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelDeploymentResponseAliasList>;
-
 export type CancelDeploymentResponseAliasAssignedAt = number | boolean;
-const CancelDeploymentResponseAliasAssignedAt =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseAliasAssignedAt>;
-
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export interface CancelDeploymentResponseAliasError {
   code: string;
   message: string;
 }
-const CancelDeploymentResponseAliasError = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelDeploymentResponseAliasError>;
-
 export interface CancelDeploymentResponseAliasWarning {
   action?: string;
   code: string;
   link?: string;
   message: string;
 }
-const CancelDeploymentResponseAliasWarning = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelDeploymentResponseAliasWarning>;
-
 export interface CancelDeploymentResponseAtprotoCase0 {
   enabled: boolean;
 }
 export type CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList = Array<string>;
-const CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList>;
-
 export type CancelDeploymentResponseAtprotoCase1SubscriptionDidsList = Array<string>;
 export type CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem =
   | "account"
   | "commit"
   | "identity"
   | "sync";
-const CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem = S.String;
-
 export type CancelDeploymentResponseAtprotoCase1SubscriptionKindsList =
   Array<CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem>;
-const CancelDeploymentResponseAtprotoCase1SubscriptionKindsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionKindsList>;
-
 export interface CancelDeploymentResponseAtprotoCase1Subscription {
   collections: CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList;
   dids?: CancelDeploymentResponseAtprotoCase1SubscriptionDidsList;
@@ -145,9 +112,6 @@ export interface CancelDeploymentResponseAtprotoCase1 {
 export type CancelDeploymentResponseAtproto =
   | CancelDeploymentResponseAtprotoCase0
   | CancelDeploymentResponseAtprotoCase1;
-const CancelDeploymentResponseAtproto =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseAtproto>;
-
 /** Commit metadata from the git commit author */
 export interface CancelDeploymentResponseAttributionCommitMeta {
   /** Email from git commit author */
@@ -157,15 +121,7 @@ export interface CancelDeploymentResponseAttributionCommitMeta {
   /** Name from git commit author */
   name?: string;
 }
-const CancelDeploymentResponseAttributionCommitMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelDeploymentResponseAttributionCommitMeta>;
-
 export type CancelDeploymentResponseAttributionGitUserId = string | number;
-const CancelDeploymentResponseAttributionGitUserId =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseAttributionGitUserId>;
-
 /** Git provider user associated with the commit author email (only set if resolved) */
 export interface CancelDeploymentResponseAttributionGitUser {
   id: CancelDeploymentResponseAttributionGitUserId;
@@ -176,16 +132,8 @@ export interface CancelDeploymentResponseAttributionGitUser {
   /** User type */
   type?: string;
 }
-const CancelDeploymentResponseAttributionGitUser = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CancelDeploymentResponseAttributionGitUser>;
-
 /** Team roles at time of deployment */
 export type CancelDeploymentResponseAttributionVercelUserTeamRolesList = Array<string>;
-const CancelDeploymentResponseAttributionVercelUserTeamRolesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAttributionVercelUserTeamRolesList>;
-
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface CancelDeploymentResponseAttributionVercelUser {
   /** Vercel user ID */
@@ -195,11 +143,6 @@ export interface CancelDeploymentResponseAttributionVercelUser {
   /** Vercel username */
   username: string;
 }
-const CancelDeploymentResponseAttributionVercelUser = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelDeploymentResponseAttributionVercelUser>;
-
 /** Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled. */
 export interface CancelDeploymentResponseAttribution {
   /** Commit metadata from the git commit author */
@@ -209,136 +152,66 @@ export interface CancelDeploymentResponseAttribution {
   /** Vercel user linked to the git provider account (only set if resolved) */
   vercelUser?: CancelDeploymentResponseAttributionVercelUser;
 }
-const CancelDeploymentResponseAttribution = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelDeploymentResponseAttribution>;
-
 export type CancelDeploymentResponseAutomaticAliasesList = Array<string>;
-const CancelDeploymentResponseAutomaticAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAutomaticAliasesList>;
-
 export type CancelDeploymentResponseBuildEnvList = Array<string>;
-const CancelDeploymentResponseBuildEnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseBuildEnvList>;
-
 export interface CancelDeploymentResponseBuild {
   env: CancelDeploymentResponseBuildEnvList;
 }
-const CancelDeploymentResponseBuild = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CancelDeploymentResponseBuild>;
-
 export type CancelDeploymentResponseBuildArtifactUrlsList = Array<string>;
-const CancelDeploymentResponseBuildArtifactUrlsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseBuildArtifactUrlsList>;
-
 export type CancelDeploymentResponseBuildsItemConfigMap = { [key: string]: unknown | undefined };
-const CancelDeploymentResponseBuildsItemConfigMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CancelDeploymentResponseBuildsItemConfigMap>;
-
 export interface CancelDeploymentResponseBuildsItem {
   config?: CancelDeploymentResponseBuildsItemConfigMap;
   src?: string;
   use: string;
 }
-const CancelDeploymentResponseBuildsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CancelDeploymentResponseBuildsItem>;
-
 export type CancelDeploymentResponseBuildsList = Array<CancelDeploymentResponseBuildsItem>;
-const CancelDeploymentResponseBuildsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CancelDeploymentResponseBuildsList>;
-
 export type CancelDeploymentResponseChecksDeploymentAliasState = "failed" | "pending" | "succeeded";
-const CancelDeploymentResponseChecksDeploymentAliasState = S.String;
-
 /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
 export interface CancelDeploymentResponseChecksDeploymentAlias {
   completedAt?: number;
   startedAt: number;
   state: CancelDeploymentResponseChecksDeploymentAliasState;
 }
-const CancelDeploymentResponseChecksDeploymentAlias = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CancelDeploymentResponseChecksDeploymentAlias>;
-
 export interface CancelDeploymentResponseChecks {
   /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
   deployment_alias: CancelDeploymentResponseChecksDeploymentAlias;
 }
-const CancelDeploymentResponseChecks = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CancelDeploymentResponseChecks>;
-
 export type CancelDeploymentResponseChecksConclusion =
   | "canceled"
   | "failed"
   | "skipped"
   | "succeeded";
-const CancelDeploymentResponseChecksConclusion = S.String;
-
 export type CancelDeploymentResponseChecksState = "completed" | "registered" | "running";
-const CancelDeploymentResponseChecksState = S.String;
-
 export type CancelDeploymentResponseConfigFunctionMemoryType =
   | "performance"
   | "performance_xl"
   | "standard"
   | "standard_legacy";
-const CancelDeploymentResponseConfigFunctionMemoryType = S.String;
-
 export type CancelDeploymentResponseConfigFunctionType = "fluid" | "standard";
-const CancelDeploymentResponseConfigFunctionType = S.String;
-
 /** Build resource configuration snapshot for this deployment. */
 export type CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration =
   | "SKIP_NAMESPACE_QUEUE"
   | "WAIT_FOR_NAMESPACE_QUEUE";
-const CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration = S.String;
-
 /** Build resource configuration snapshot for this deployment. */
 export interface CancelDeploymentResponseConfigResourceConfigBuildQueue {
   /** Build resource configuration snapshot for this deployment. */
   configuration?: CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration;
 }
-const CancelDeploymentResponseConfigResourceConfigBuildQueue = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CancelDeploymentResponseConfigResourceConfigBuildQueue>;
-
 /** When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues */
 export type CancelDeploymentResponseConfigResourceConfigElasticConcurrency =
   | "PROJECT_SETTING"
   | "SKIP_QUEUE"
   | "TEAM_SETTING";
-const CancelDeploymentResponseConfigResourceConfigElasticConcurrency = S.String;
-
 /** Machine type that was used for the build. */
 export type CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType =
   | "basic"
   | "enhanced"
   | "standard"
   | "turbo";
-const CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType = S.String;
-
 export interface CancelDeploymentResponseConfigResourceConfigBuildMachine {
   /** Machine type that was used for the build. */
   purchaseType?: CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType | null;
 }
-const CancelDeploymentResponseConfigResourceConfigBuildMachine = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CancelDeploymentResponseConfigResourceConfigBuildMachine>;
-
 /** Build resource configuration snapshot for this deployment. */
 export interface CancelDeploymentResponseConfigResourceConfig {
   /** Build resource configuration snapshot for this deployment. */
@@ -347,11 +220,6 @@ export interface CancelDeploymentResponseConfigResourceConfig {
   elasticConcurrency?: CancelDeploymentResponseConfigResourceConfigElasticConcurrency;
   buildMachine?: CancelDeploymentResponseConfigResourceConfigBuildMachine;
 }
-const CancelDeploymentResponseConfigResourceConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CancelDeploymentResponseConfigResourceConfig>;
-
 /** Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured */
 export interface CancelDeploymentResponseConfig {
   functionMemoryType: CancelDeploymentResponseConfigFunctionMemoryType;
@@ -364,15 +232,8 @@ export interface CancelDeploymentResponseConfig {
   secureComputePrimaryRegion: string | null;
   version?: number;
 }
-const CancelDeploymentResponseConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CancelDeploymentResponseConfig>;
-
 /** Principal type of the deployment creator. */
 export type CancelDeploymentResponseCreatorType = "app" | "integration" | "system" | "user";
-const CancelDeploymentResponseCreatorType = S.String;
-
 /** Information about the deployment creator */
 export interface CancelDeploymentResponseCreator {
   /** The avatar of the user that created the deployment */
@@ -384,26 +245,11 @@ export interface CancelDeploymentResponseCreator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-const CancelDeploymentResponseCreator = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CancelDeploymentResponseCreator>;
-
 export interface CancelDeploymentResponseCronsItem {
   path: string;
   schedule: string;
 }
-const CancelDeploymentResponseCronsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CancelDeploymentResponseCronsItem>;
-
 export type CancelDeploymentResponseCronsList = Array<CancelDeploymentResponseCronsItem>;
-const CancelDeploymentResponseCronsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CancelDeploymentResponseCronsList>;
-
 /** The type of matching to perform */
 export type CancelDeploymentResponseCustomEnvironmentCase0BranchMatcherType =
   | "endsWith"
@@ -486,9 +332,6 @@ export interface CancelDeploymentResponseCustomEnvironmentCase1 {
 export type CancelDeploymentResponseCustomEnvironment =
   | CancelDeploymentResponseCustomEnvironmentCase0
   | CancelDeploymentResponseCustomEnvironmentCase1;
-const CancelDeploymentResponseCustomEnvironment =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseCustomEnvironment>;
-
 export interface CancelDeploymentResponseDuration {
   /** Unix timestamp in milliseconds when the build container exited. */
   endTime?: number;
@@ -505,15 +348,7 @@ export interface CancelDeploymentResponseDuration {
   /** Milliseconds from entering BUILDING until the deployment reached its current ready state. */
   timeToReady?: number;
 }
-const CancelDeploymentResponseDuration = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CancelDeploymentResponseDuration>;
-
 export type CancelDeploymentResponseEnvList = Array<string>;
-const CancelDeploymentResponseEnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseEnvList>;
-
 /** TODO: The following types will eventually be exported by a more relevant package. */
 export type FlagJSONValueCase2List = Array<FlagJSONValue>;
 export type FlagJSONValueCase3Map = { [key: string]: FlagJSONValue | undefined };
@@ -546,22 +381,11 @@ export type CancelDeploymentResponseFlagsCase1List = Array<unknown>;
 export type CancelDeploymentResponseFlags =
   | CancelDeploymentResponseFlagsCase0
   | CancelDeploymentResponseFlagsCase1List;
-const CancelDeploymentResponseFlags = S.Unknown as any as S.Schema<CancelDeploymentResponseFlags>;
-
 export type CancelDeploymentResponseFunctionsValueAffinityMode = "strict";
-const CancelDeploymentResponseFunctionsValueAffinityMode = S.String;
-
 export interface CancelDeploymentResponseFunctionsValueAffinity {
   mode: CancelDeploymentResponseFunctionsValueAffinityMode;
 }
-const CancelDeploymentResponseFunctionsValueAffinity = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CancelDeploymentResponseFunctionsValueAffinity>;
-
 export type CancelDeploymentResponseFunctionsValueArchitecture = "arm64" | "x86_64";
-const CancelDeploymentResponseFunctionsValueArchitecture = S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
@@ -611,31 +435,14 @@ export type CancelDeploymentResponseFunctionsValueExperimentalTriggersItem =
   | CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0
   | CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1
   | CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2;
-const CancelDeploymentResponseFunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseFunctionsValueExperimentalTriggersItem>;
-
 export type CancelDeploymentResponseFunctionsValueExperimentalTriggersList =
   Array<CancelDeploymentResponseFunctionsValueExperimentalTriggersItem>;
-const CancelDeploymentResponseFunctionsValueExperimentalTriggersList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CancelDeploymentResponseFunctionsValueExperimentalTriggersList>;
-
 export type CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList = Array<string>;
-const CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList>;
-
 export type CancelDeploymentResponseFunctionsValueMaxDurationCase1 = "max";
 export type CancelDeploymentResponseFunctionsValueMaxDuration =
   | number
   | CancelDeploymentResponseFunctionsValueMaxDurationCase1;
-const CancelDeploymentResponseFunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseFunctionsValueMaxDuration>;
-
 export type CancelDeploymentResponseFunctionsValueRegionsList = Array<string>;
-const CancelDeploymentResponseFunctionsValueRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseFunctionsValueRegionsList>;
-
 export interface CancelDeploymentResponseFunctionsValue {
   affinity?: CancelDeploymentResponseFunctionsValueAffinity;
   architecture?: CancelDeploymentResponseFunctionsValueArchitecture;
@@ -650,19 +457,9 @@ export interface CancelDeploymentResponseFunctionsValue {
   runtime?: string;
   supportsCancellation?: boolean;
 }
-const CancelDeploymentResponseFunctionsValue = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CancelDeploymentResponseFunctionsValue>;
-
 export type CancelDeploymentResponseFunctionsMap = {
   [key: string]: CancelDeploymentResponseFunctionsValue | undefined;
 };
-const CancelDeploymentResponseFunctionsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CancelDeploymentResponseFunctionsMap>;
-
 export type CancelDeploymentResponseGitRepoCase0OwnerType = "team" | "user";
 export type CancelDeploymentResponseGitRepoCase0Type = "gitlab";
 export interface CancelDeploymentResponseGitRepoCase0 {
@@ -737,9 +534,6 @@ export type CancelDeploymentResponseGitRepo =
   | CancelDeploymentResponseGitRepoCase2
   | CancelDeploymentResponseGitRepoCase3
   | CancelDeploymentResponseGitRepoCase4;
-const CancelDeploymentResponseGitRepo =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseGitRepo>;
-
 export type CancelDeploymentResponseGitSourceCase0RepoId = string | number;
 export type CancelDeploymentResponseGitSourceCase0Type = "github";
 export interface CancelDeploymentResponseGitSourceCase0 {
@@ -958,50 +752,22 @@ export type CancelDeploymentResponseGitSource =
   | CancelDeploymentResponseGitSourceCase16
   | CancelDeploymentResponseGitSourceCase17
   | CancelDeploymentResponseGitSourceCase18;
-const CancelDeploymentResponseGitSource =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseGitSource>;
-
 export type CancelDeploymentResponseImagesContentDispositionType = "attachment" | "inline";
-const CancelDeploymentResponseImagesContentDispositionType = S.String;
-
 export type CancelDeploymentResponseImagesDomainsList = Array<string>;
-const CancelDeploymentResponseImagesDomainsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseImagesDomainsList>;
-
 export type CancelDeploymentResponseImagesFormatsItem = "image/avif" | "image/webp";
 export type CancelDeploymentResponseImagesFormatsList =
   Array<CancelDeploymentResponseImagesFormatsItem>;
-const CancelDeploymentResponseImagesFormatsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionKindsList as any as S.Schema<CancelDeploymentResponseImagesFormatsList>;
-
 export interface CancelDeploymentResponseImagesLocalPatternsItem {
   /** Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments. */
   pathname?: string;
   /** Can be literal query string such as `?v=1` or empty string meaning no query string. */
   search?: string;
 }
-const CancelDeploymentResponseImagesLocalPatternsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CancelDeploymentResponseImagesLocalPatternsItem>;
-
 export type CancelDeploymentResponseImagesLocalPatternsList =
   Array<CancelDeploymentResponseImagesLocalPatternsItem>;
-const CancelDeploymentResponseImagesLocalPatternsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CancelDeploymentResponseImagesLocalPatternsList>;
-
 export type CancelDeploymentResponseImagesQualitiesList = Array<number>;
-const CancelDeploymentResponseImagesQualitiesList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CancelDeploymentResponseImagesQualitiesList>;
-
 /** Must be `http` or `https`. */
 export type CancelDeploymentResponseImagesRemotePatternsItemProtocol = "http" | "https";
-const CancelDeploymentResponseImagesRemotePatternsItemProtocol = S.String;
-
 export interface CancelDeploymentResponseImagesRemotePatternsItem {
   /** Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains. */
   hostname: string;
@@ -1014,22 +780,9 @@ export interface CancelDeploymentResponseImagesRemotePatternsItem {
   /** Can be literal query string such as `?v=1` or empty string meaning no query string. */
   search?: string;
 }
-const CancelDeploymentResponseImagesRemotePatternsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CancelDeploymentResponseImagesRemotePatternsItem>;
-
 export type CancelDeploymentResponseImagesRemotePatternsList =
   Array<CancelDeploymentResponseImagesRemotePatternsItem>;
-const CancelDeploymentResponseImagesRemotePatternsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CancelDeploymentResponseImagesRemotePatternsList>;
-
 export type CancelDeploymentResponseImagesSizesList = Array<number>;
-const CancelDeploymentResponseImagesSizesList =
-  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<CancelDeploymentResponseImagesSizesList>;
-
 export interface CancelDeploymentResponseImages {
   contentDispositionType?: CancelDeploymentResponseImagesContentDispositionType;
   contentSecurityPolicy?: string;
@@ -1042,19 +795,12 @@ export interface CancelDeploymentResponseImages {
   remotePatterns?: CancelDeploymentResponseImagesRemotePatternsList;
   sizes?: CancelDeploymentResponseImagesSizesList;
 }
-const CancelDeploymentResponseImages = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CancelDeploymentResponseImages>;
-
 export type CancelDeploymentResponseIntegrationsStatus =
   | "error"
   | "pending"
   | "ready"
   | "skipped"
   | "timeout";
-const CancelDeploymentResponseIntegrationsStatus = S.String;
-
 export interface CancelDeploymentResponseIntegrations {
   claimedAt?: number;
   completedAt?: number;
@@ -1063,34 +809,17 @@ export interface CancelDeploymentResponseIntegrations {
   startedAt: number;
   status: CancelDeploymentResponseIntegrationsStatus;
 }
-const CancelDeploymentResponseIntegrations = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CancelDeploymentResponseIntegrations>;
-
 export type CancelDeploymentResponseLambdasItemReadyState =
   | "BUILDING"
   | "ERROR"
   | "INITIALIZING"
   | "READY";
-const CancelDeploymentResponseLambdasItemReadyState = S.String;
-
 export interface CancelDeploymentResponseLambdasItemOutputItem {
   functionName: string;
   path: string;
 }
-const CancelDeploymentResponseLambdasItemOutputItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CancelDeploymentResponseLambdasItemOutputItem>;
-
 export type CancelDeploymentResponseLambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-const CancelDeploymentResponseLambdasItemOutputList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CancelDeploymentResponseLambdasItemOutputList>;
-
 /** A partial representation of a Build used by the deployment endpoint. */
 export interface CancelDeploymentResponseLambdasItem {
   createdAt?: number;
@@ -1100,21 +829,9 @@ export interface CancelDeploymentResponseLambdasItem {
   readyStateAt?: number;
   output: CancelDeploymentResponseLambdasItemOutputList;
 }
-const CancelDeploymentResponseLambdasItem = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CancelDeploymentResponseLambdasItem>;
-
 export type CancelDeploymentResponseLambdasList = Array<CancelDeploymentResponseLambdasItem>;
-const CancelDeploymentResponseLambdasList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CancelDeploymentResponseLambdasList>;
-
 /** Current provisioning state */
 export type CancelDeploymentResponseManualProvisioningState = "COMPLETE" | "PENDING" | "TIMEOUT";
-const CancelDeploymentResponseManualProvisioningState = S.String;
-
 /** Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called. */
 export interface CancelDeploymentResponseManualProvisioning {
   /** Timestamp when manual provisioning completed */
@@ -1122,17 +839,7 @@ export interface CancelDeploymentResponseManualProvisioning {
   /** Current provisioning state */
   state: CancelDeploymentResponseManualProvisioningState;
 }
-const CancelDeploymentResponseManualProvisioning = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CancelDeploymentResponseManualProvisioning>;
-
 export type CancelDeploymentResponseMetaMap = { [key: string]: string | undefined };
-const CancelDeploymentResponseMetaMap = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CancelDeploymentResponseMetaMap>;
-
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CancelDeploymentResponseMicrofrontendsCase0GroupIdsList = Array<string>;
 export interface CancelDeploymentResponseMicrofrontendsCase0 {
@@ -1165,9 +872,6 @@ export interface CancelDeploymentResponseMicrofrontendsCase1 {
 export type CancelDeploymentResponseMicrofrontends =
   | CancelDeploymentResponseMicrofrontendsCase0
   | CancelDeploymentResponseMicrofrontendsCase1;
-const CancelDeploymentResponseMicrofrontends =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseMicrofrontends>;
-
 /** If set it overrides the `projectSettings.nodeVersion` for this deployment. */
 export type CancelDeploymentResponseNodeVersion =
   | "10.x"
@@ -1179,12 +883,7 @@ export type CancelDeploymentResponseNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-const CancelDeploymentResponseNodeVersion = S.String;
-
 export type CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList = Array<string>;
-const CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList>;
-
 export interface CancelDeploymentResponseOidcTokenClaims {
   aud: string;
   custom_environment_id?: string;
@@ -1200,22 +899,10 @@ export interface CancelDeploymentResponseOidcTokenClaims {
   scope: string;
   sub: string;
 }
-const CancelDeploymentResponseOidcTokenClaims = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CancelDeploymentResponseOidcTokenClaims>;
-
 export type CancelDeploymentResponseOomReport = "out-of-memory";
-const CancelDeploymentResponseOomReport = S.String;
-
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type CancelDeploymentResponsePassiveRegionsList = Array<string>;
-const CancelDeploymentResponsePassiveRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponsePassiveRegionsList>;
-
 export type CancelDeploymentResponsePlan = "enterprise" | "hobby" | "pro";
-const CancelDeploymentResponsePlan = S.String;
-
 /** The user on the external platform who triggered the deployment. */
 export interface CancelDeploymentResponsePlatformCreator {
   /** URL of the platform user's avatar image. */
@@ -1223,20 +910,10 @@ export interface CancelDeploymentResponsePlatformCreator {
   /** Display name of the platform user. */
   name: string;
 }
-const CancelDeploymentResponsePlatformCreator = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CancelDeploymentResponsePlatformCreator>;
-
 /** Arbitrary key-value metadata provided by the platform. */
 export type CancelDeploymentResponsePlatformMetaMap = { [key: string]: string | undefined };
-const CancelDeploymentResponsePlatformMetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<CancelDeploymentResponsePlatformMetaMap>;
-
 /** Whether the value is an opaque identifier or a URL. */
 export type CancelDeploymentResponsePlatformOriginType = "id" | "url";
-const CancelDeploymentResponsePlatformOriginType = S.String;
-
 /** Reference back to the entity on the platform that initiated the deployment. */
 export interface CancelDeploymentResponsePlatformOrigin {
   /** Whether the value is an opaque identifier or a URL. */
@@ -1244,21 +921,11 @@ export interface CancelDeploymentResponsePlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-const CancelDeploymentResponsePlatformOrigin = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CancelDeploymentResponsePlatformOrigin>;
-
 /** The external platform that created the deployment (e.g. its display name). */
 export interface CancelDeploymentResponsePlatformSource {
   /** Display name of the platform. */
   name: string;
 }
-const CancelDeploymentResponsePlatformSource = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CancelDeploymentResponsePlatformSource>;
-
 /** Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it) */
 export interface CancelDeploymentResponsePlatform {
   /** The user on the external platform who triggered the deployment. */
@@ -1270,22 +937,12 @@ export interface CancelDeploymentResponsePlatform {
   /** The external platform that created the deployment (e.g. its display name). */
   source: CancelDeploymentResponsePlatformSource;
 }
-const CancelDeploymentResponsePlatform = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CancelDeploymentResponsePlatform>;
-
 /** The public project information associated with the deployment. */
 export interface CancelDeploymentResponseProject {
   framework?: string | null;
   id: string;
   name: string;
 }
-const CancelDeploymentResponseProject = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CancelDeploymentResponseProject>;
-
 export type CancelDeploymentResponseProjectSettingsFramework =
   | "actix-web"
   | "angular"
@@ -1361,8 +1018,6 @@ export type CancelDeploymentResponseProjectSettingsFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-const CancelDeploymentResponseProjectSettingsFramework = S.String;
-
 export type CancelDeploymentResponseProjectSettingsNodeVersion =
   | "10.x"
   | "12.x"
@@ -1373,8 +1028,6 @@ export type CancelDeploymentResponseProjectSettingsNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-const CancelDeploymentResponseProjectSettingsNodeVersion = S.String;
-
 export interface CancelDeploymentResponseProjectSettingsSpeedInsights {
   canceledAt?: number;
   /** When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads "first free data point observed", not necessarily "first ever". */
@@ -1385,11 +1038,6 @@ export interface CancelDeploymentResponseProjectSettingsSpeedInsights {
   id: string;
   paidAt?: number;
 }
-const CancelDeploymentResponseProjectSettingsSpeedInsights = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CancelDeploymentResponseProjectSettingsSpeedInsights>;
-
 export interface CancelDeploymentResponseProjectSettingsWebAnalytics {
   canceledAt?: number;
   disabledAt?: number;
@@ -1397,11 +1045,6 @@ export interface CancelDeploymentResponseProjectSettingsWebAnalytics {
   hasData?: boolean;
   id: string;
 }
-const CancelDeploymentResponseProjectSettingsWebAnalytics = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CancelDeploymentResponseProjectSettingsWebAnalytics>;
-
 export interface CancelDeploymentResponseProjectSettings {
   buildCommand?: string | null;
   commandForIgnoringBuildStep?: string | null;
@@ -1413,11 +1056,6 @@ export interface CancelDeploymentResponseProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-const CancelDeploymentResponseProjectSettings = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CancelDeploymentResponseProjectSettings>;
-
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type CancelDeploymentResponseReadyState =
   | "BLOCKED"
@@ -1427,39 +1065,26 @@ export type CancelDeploymentResponseReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-const CancelDeploymentResponseReadyState = S.String;
-
 /** Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic */
 export type CancelDeploymentResponseReadySubstate = "PROMOTED" | "ROLLING" | "STAGED";
-const CancelDeploymentResponseReadySubstate = S.String;
-
 /** The regions the deployment exists in */
 export type CancelDeploymentResponseRegionsList = Array<string>;
-const CancelDeploymentResponseRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRegionsList>;
-
 /** The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type. */
 export type CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType =
   | "basic"
   | "enhanced"
   | "none"
   | "standard";
-const CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType = S.String;
-
 /** Whether the build ran on a fixed or elastic machine. Used to drive billing for the build. */
 export type CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType =
   | "elastic"
   | "fixed";
-const CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType = S.String;
-
 /** Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project. */
 export type CancelDeploymentResponseResourceConfigBuildMachinePurchaseType =
   | "basic"
   | "enhanced"
   | "standard"
   | "turbo";
-const CancelDeploymentResponseResourceConfigBuildMachinePurchaseType = S.String;
-
 /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
 export type CancelDeploymentResponseResourceConfigBuildMachineSelectionSource =
   | "deployment-override"
@@ -1468,8 +1093,6 @@ export type CancelDeploymentResponseResourceConfigBuildMachineSelectionSource =
   | "project-setting"
   | "team-entitlement"
   | "team-setting";
-const CancelDeploymentResponseResourceConfigBuildMachineSelectionSource = S.String;
-
 /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
 export interface CancelDeploymentResponseResourceConfigBuildMachine {
   /** Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive. */
@@ -1485,20 +1108,10 @@ export interface CancelDeploymentResponseResourceConfigBuildMachine {
   /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
   selectionSource?: CancelDeploymentResponseResourceConfigBuildMachineSelectionSource;
 }
-const CancelDeploymentResponseResourceConfigBuildMachine = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CancelDeploymentResponseResourceConfigBuildMachine>;
-
 export interface CancelDeploymentResponseResourceConfig {
   /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
   buildMachine?: CancelDeploymentResponseResourceConfigBuildMachine;
 }
-const CancelDeploymentResponseResourceConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CancelDeploymentResponseResourceConfig>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type CancelDeploymentResponseRoutesItemCase0DestinationCase1Type = "service";
 export interface CancelDeploymentResponseRoutesItemCase0DestinationCase1 {
@@ -1755,29 +1368,14 @@ export type CancelDeploymentResponseRoutesItem =
   | CancelDeploymentResponseRoutesItemCase0
   | CancelDeploymentResponseRoutesItemCase1
   | CancelDeploymentResponseRoutesItemCase2;
-const CancelDeploymentResponseRoutesItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItem>;
-
 export type CancelDeploymentResponseRoutesList = Array<CancelDeploymentResponseRoutesItem>;
-const CancelDeploymentResponseRoutesList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CancelDeploymentResponseRoutesList>;
-
 /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
 export type CancelDeploymentResponseSeatBlockBlockCode =
   | "COMMIT_AUTHOR_REQUIRED"
   | "TEAM_ACCESS_REQUIRED";
-const CancelDeploymentResponseSeatBlockBlockCode = S.String;
-
 /** The git provider type associated with gitUserId. */
 export type CancelDeploymentResponseSeatBlockGitProvider = "bitbucket" | "github" | "gitlab";
-const CancelDeploymentResponseSeatBlockGitProvider = S.String;
-
 export type CancelDeploymentResponseSeatBlockGitUserId = string | number;
-const CancelDeploymentResponseSeatBlockGitUserId =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseSeatBlockGitUserId>;
-
 /** NSNB Blocked metadata */
 export interface CancelDeploymentResponseSeatBlock {
   /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
@@ -1790,11 +1388,6 @@ export interface CancelDeploymentResponseSeatBlock {
   /** The blocked vercel user ID. */
   userId?: string;
 }
-const CancelDeploymentResponseSeatBlock = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CancelDeploymentResponseSeatBlock>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List =
   Array<string>;
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFiles =
@@ -3052,16 +2645,8 @@ export interface CancelDeploymentResponseServicesItemCase1 {
 export type CancelDeploymentResponseServicesItem =
   | CancelDeploymentResponseServicesItemCase0
   | CancelDeploymentResponseServicesItemCase1;
-const CancelDeploymentResponseServicesItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItem>;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export type CancelDeploymentResponseServicesList = Array<CancelDeploymentResponseServicesItem>;
-const CancelDeploymentResponseServicesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CancelDeploymentResponseServicesList>;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CancelDeploymentResponseSource =
   | "api-trigger-git-deploy"
@@ -3074,8 +2659,6 @@ export type CancelDeploymentResponseSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-const CancelDeploymentResponseSource = S.String;
-
 export type CancelDeploymentResponseStatus =
   | "BLOCKED"
   | "BUILDING"
@@ -3084,12 +2667,8 @@ export type CancelDeploymentResponseStatus =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-const CancelDeploymentResponseStatus = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type CancelDeploymentResponseTarget = "production" | "staging";
-const CancelDeploymentResponseTarget = S.String;
-
 /** The team that owns the deployment if any */
 export interface CancelDeploymentResponseTeam {
   avatar?: string;
@@ -3097,23 +2676,11 @@ export interface CancelDeploymentResponseTeam {
   name: string;
   slug: string;
 }
-const CancelDeploymentResponseTeam = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CancelDeploymentResponseTeam>;
-
 export type CancelDeploymentResponseType = "LAMBDAS";
-const CancelDeploymentResponseType = S.String;
-
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type CancelDeploymentResponseUserAliasesList = Array<string>;
-const CancelDeploymentResponseUserAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseUserAliasesList>;
-
 /** The platform version that was used to create the deployment. */
 export type CancelDeploymentResponseVersion = 2;
-const CancelDeploymentResponseVersion = S.Number;
-
 export interface CancelDeploymentResponse {
   /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
   alias?: CancelDeploymentResponseAliasList;
@@ -3246,23 +2813,12 @@ export interface CancelDeploymentResponse {
   /** The platform version that was used to create the deployment. */
   version: CancelDeploymentResponseVersion;
 }
-const CancelDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CancelDeploymentResponse>;
-
 /** Forces a new deployment even if there is a previous similar deployment. Set to `1` to bypass deployment deduplication and always trigger a fresh build. */
 export type CreateDeploymentRequestForceNew = "0" | "1";
-const CreateDeploymentRequestForceNew = S.String;
-
 /** Set to `1` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a `400` asking you to confirm. Use this to suppress that check in automated pipelines. */
 export type CreateDeploymentRequestSkipAutoDetectionConfirmation = "0" | "1";
-const CreateDeploymentRequestSkipAutoDetectionConfirmation = S.String;
-
 /** Selects a custom build machine for this deployment without changing project settings. */
 export type CreateDeploymentRequestBuildMachine = "turbo";
-const CreateDeploymentRequestBuildMachine = S.String;
-
 /** The file content encoding, it could be either a base64 (useful for images, etc.) of the files or the plain text for source code. */
 export type CreateDeploymentRequestFilesItemCase0Encoding = "base64" | "utf-8";
 /** Used in the case you want to inline a file inside the request */
@@ -3286,16 +2842,8 @@ export interface CreateDeploymentRequestFilesItemCase1 {
 export type CreateDeploymentRequestFilesItem =
   | CreateDeploymentRequestFilesItemCase0
   | CreateDeploymentRequestFilesItemCase1;
-const CreateDeploymentRequestFilesItem =
-  S.Unknown as any as S.Schema<CreateDeploymentRequestFilesItem>;
-
 /** The files to include in the deployment. Each entry is either an inlined file (with `data` and `encoding`) or a reference to a previously uploaded file (with `sha` and `size`). Required for non-git deployments. Cannot be used together with `gitSource`. */
 export type CreateDeploymentRequestFilesList = Array<CreateDeploymentRequestFilesItem>;
-const CreateDeploymentRequestFilesList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateDeploymentRequestFilesList>;
-
 /** Populates initial git metadata for different git providers. */
 export interface CreateDeploymentRequestGitMetadata {
   /** The git repository's remote origin url */
@@ -3323,11 +2871,6 @@ export interface CreateDeploymentRequestGitMetadata {
   /** Path of the deployed directory relative to the detected git repository root. Empty string when deploying from the repository root. */
   rootDirectory?: string;
 }
-const CreateDeploymentRequestGitMetadata = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateDeploymentRequestGitMetadata>;
-
 export type CreateDeploymentRequestGitSourceCase0Type = "vercel";
 export interface CreateDeploymentRequestGitSourceCase0 {
   type: CreateDeploymentRequestGitSourceCase0Type;
@@ -3417,14 +2960,8 @@ export type CreateDeploymentRequestGitSource =
   | CreateDeploymentRequestGitSourceCase6
   | CreateDeploymentRequestGitSourceCase7
   | CreateDeploymentRequestGitSourceCase8;
-const CreateDeploymentRequestGitSource =
-  S.Unknown as any as S.Schema<CreateDeploymentRequestGitSource>;
-
 /** An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment. For deployments created with a Cursor Origin `gitSource`, Vercel automatically adds `cursorOriginDeployment`, `cursorOriginCommitSha`, `cursorOriginCommitRef`, `cursorOriginCommitMessage`, `cursorOriginCommitAuthorName`, `cursorOriginCommitAuthorEmail` when available, `cursorOriginOwner`, `cursorOriginRepo`, `cursorOriginRepoId`, and `cursorOriginPrId` for pull request deployments. */
 export type CreateDeploymentRequestMetaMap = { [key: string]: string | undefined };
-const CreateDeploymentRequestMetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentRequestMetaMap>;
-
 /** The framework that is being used for this project. When `null` is used no framework is selected */
 export type CreateDeploymentRequestProjectSettingsFramework =
   | "services"
@@ -3501,8 +3038,6 @@ export type CreateDeploymentRequestProjectSettingsFramework =
   | "node"
   | "go"
   | "mastra";
-const CreateDeploymentRequestProjectSettingsFramework = S.String;
-
 /** Override the Node.js version that should be used for this deployment */
 export type CreateDeploymentRequestProjectSettingsNodeVersion =
   | "24.x"
@@ -3514,8 +3049,6 @@ export type CreateDeploymentRequestProjectSettingsNodeVersion =
   | "12.x"
   | "10.x"
   | "8.10.x";
-const CreateDeploymentRequestProjectSettingsNodeVersion = S.String;
-
 /** Project settings that will be applied to the deployment. It is required for the first deployment of a project and will be saved for any following deployments */
 export interface CreateDeploymentRequestProjectSettings {
   /** The build command for this project. When `null` is used this value will be automatically detected */
@@ -3540,11 +3073,6 @@ export interface CreateDeploymentRequestProjectSettings {
   /** Indicates if there are source files outside of the root directory, typically used for monorepos */
   sourceFilesOutsideRootDirectory?: boolean;
 }
-const CreateDeploymentRequestProjectSettings = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateDeploymentRequestProjectSettings>;
-
 export interface CreateDeploymentRequest {
   /** Forces a new deployment even if there is a previous similar deployment. Set to `1` to bypass deployment deduplication and always trigger a fresh build. */
   forceNew?: CreateDeploymentRequestForceNew | (string & {});
@@ -3585,11 +3113,6 @@ export interface CreateDeploymentRequest {
   /** When `true` and `deploymentId` is passed in, the sha from the previous deployment's `gitSource` is removed forcing the latest commit to be used. */
   withLatestCommit?: boolean;
 }
-const CreateDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateDeploymentRequest>;
-
 export type CreateDeploymentResponseBodyCase0AliasList = Array<string>;
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type CreateDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
@@ -6327,14 +5850,7 @@ export interface CreateDeploymentResponseBodyCase1 {
 export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBodyCase0
   | CreateDeploymentResponseBodyCase1;
-const CreateDeploymentResponseBody = S.Unknown as any as S.Schema<CreateDeploymentResponseBody>;
-
 export type CreateDeploymentResponse = CreateDeploymentResponseBody;
-const CreateDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateDeploymentResponse>;
-
 export interface DeleteDeploymentRequest {
   /** The ID of the deployment to be deleted */
   id: string;
@@ -6345,26 +5861,14 @@ export interface DeleteDeploymentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteDeploymentRequest>;
-
 /** A constant with the final state of the deployment. */
 export type DeleteDeploymentResponseState = "DELETED";
-const DeleteDeploymentResponseState = S.String;
-
 export interface DeleteDeploymentResponse {
   /** A constant with the final state of the deployment. */
   state: DeleteDeploymentResponseState;
   /** The removed deployment ID. */
   uid: string;
 }
-const DeleteDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteDeploymentResponse>;
-
 export interface GetDeploymentRequest {
   /** The unique identifier or hostname of the deployment. */
   idOrUrl: string;
@@ -6375,8 +5879,6 @@ export interface GetDeploymentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDeploymentRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetDeploymentRequest>;
-
 export type GetDeploymentResponseBodyCase0AliasList = Array<string>;
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type GetDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
@@ -9601,33 +9103,15 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBodyCase0
   | GetDeploymentResponseBodyCase1
   | GetDeploymentResponseBodyCase2;
-const GetDeploymentResponseBody = S.Unknown as any as S.Schema<GetDeploymentResponseBody>;
-
 export type GetDeploymentResponse = GetDeploymentResponseBody;
-const GetDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetDeploymentResponse>;
-
 /** Order of the returned events based on the timestamp. */
 export type GetDeploymentEventsRequestDirection = "backward" | "forward";
-const GetDeploymentEventsRequestDirection = S.String;
-
 /** When enabled, this endpoint will return live events as they happen. */
 export type GetDeploymentEventsRequestFollow = 0 | 1;
-const GetDeploymentEventsRequestFollow = S.Number;
-
 /** HTTP status code range to filter events by. */
 export type GetDeploymentEventsRequestStatusCode = number | string;
-const GetDeploymentEventsRequestStatusCode =
-  S.Unknown as any as S.Schema<GetDeploymentEventsRequestStatusCode>;
-
 export type GetDeploymentEventsRequestDelimiter = 0 | 1;
-const GetDeploymentEventsRequestDelimiter = S.Number;
-
 export type GetDeploymentEventsRequestBuilds = 0 | 1;
-const GetDeploymentEventsRequestBuilds = S.Number;
-
 export interface GetDeploymentEventsRequest {
   /** The unique identifier or hostname of the deployment. */
   idOrUrl: string;
@@ -9652,11 +9136,6 @@ export interface GetDeploymentEventsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDeploymentEventsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetDeploymentEventsRequest>;
-
 export interface GetDeploymentEventsResponseBodyItemCase0PayloadInfo {
   entrypoint?: string;
   name: string;
@@ -9874,21 +9353,8 @@ export type GetDeploymentEventsResponseBodyItem =
   | GetDeploymentEventsResponseBodyItemCase0
   | GetDeploymentEventsResponseBodyItemCase1
   | GetDeploymentEventsResponseBodyItemCase2;
-const GetDeploymentEventsResponseBodyItem =
-  S.Unknown as any as S.Schema<GetDeploymentEventsResponseBodyItem>;
-
 export type GetDeploymentEventsResponseBodyList = Array<GetDeploymentEventsResponseBodyItem | null>;
-const GetDeploymentEventsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetDeploymentEventsResponseBodyList>;
-
 export type GetDeploymentEventsResponse = GetDeploymentEventsResponseBodyList;
-const GetDeploymentEventsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetDeploymentEventsResponse>;
-
 export interface GetDeploymentFileContentsRequest {
   /** The unique deployment identifier */
   id: string;
@@ -9901,22 +9367,9 @@ export interface GetDeploymentFileContentsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDeploymentFileContentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetDeploymentFileContentsRequest>;
-
 export interface GetDeploymentFileContentsResponse {}
-const GetDeploymentFileContentsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetDeploymentFileContentsResponse>;
-
 /** Filter deployments from the given project IDs. Cannot be used when projectId is specified. */
 export type GetDeploymentsRequestProjectIdsList = Array<string>;
-const GetDeploymentsRequestProjectIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentsRequestProjectIdsList>;
-
 export interface GetDeploymentsRequest {
   /** Name of the deployment. */
   app?: string;
@@ -9951,24 +9404,13 @@ export interface GetDeploymentsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetDeploymentsRequest>;
-
 export type GetDeploymentsResponseDeploymentsItemAliasAssigned = number | boolean;
-const GetDeploymentsResponseDeploymentsItemAliasAssigned =
-  S.Unknown as any as S.Schema<GetDeploymentsResponseDeploymentsItemAliasAssigned>;
-
 /** An error object in case aliasing of the deployment failed. */
 export type GetDeploymentsResponseDeploymentsItemAliasError = CancelDeploymentResponseAliasError;
 /** Commit metadata from the git commit author */
 export type GetDeploymentsResponseDeploymentsItemAttributionCommitMeta =
   CancelDeploymentResponseAttributionCommitMeta;
 export type GetDeploymentsResponseDeploymentsItemAttributionGitUserId = string | number;
-const GetDeploymentsResponseDeploymentsItemAttributionGitUserId =
-  S.Unknown as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionGitUserId>;
-
 /** Git provider user associated with the commit author email (only set if resolved) */
 export interface GetDeploymentsResponseDeploymentsItemAttributionGitUser {
   id: GetDeploymentsResponseDeploymentsItemAttributionGitUserId;
@@ -9979,16 +9421,8 @@ export interface GetDeploymentsResponseDeploymentsItemAttributionGitUser {
   /** User type */
   type?: string;
 }
-const GetDeploymentsResponseDeploymentsItemAttributionGitUser = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionGitUser>;
-
 /** Team roles at time of deployment */
 export type GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList = Array<string>;
-const GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList>;
-
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
   /** Vercel user ID */
@@ -9998,11 +9432,6 @@ export interface GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
   /** Vercel username */
   username: string;
 }
-const GetDeploymentsResponseDeploymentsItemAttributionVercelUser = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionVercelUser>;
-
 /** Commit attribution metadata */
 export interface GetDeploymentsResponseDeploymentsItemAttribution {
   /** Commit metadata from the git commit author */
@@ -10012,61 +9441,38 @@ export interface GetDeploymentsResponseDeploymentsItemAttribution {
   /** Vercel user linked to the git provider account (only set if resolved) */
   vercelUser?: GetDeploymentsResponseDeploymentsItemAttributionVercelUser;
 }
-const GetDeploymentsResponseDeploymentsItemAttribution = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttribution>;
-
 export type GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState =
   | "failed"
   | "pending"
   | "succeeded";
-const GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState = S.String;
-
 /** Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle. */
 export interface GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias {
   completedAt?: number;
   startedAt: number;
   state: GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState;
 }
-const GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias>;
-
 /** Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle. */
 export interface GetDeploymentsResponseDeploymentsItemChecks {
   /** Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle. */
   deployment_alias: GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias;
 }
-const GetDeploymentsResponseDeploymentsItemChecks = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemChecks>;
-
 /** Conclusion for checks */
 export type GetDeploymentsResponseDeploymentsItemChecksConclusion =
   | "canceled"
   | "failed"
   | "skipped"
   | "succeeded";
-const GetDeploymentsResponseDeploymentsItemChecksConclusion = S.String;
-
 /** State of all registered checks */
 export type GetDeploymentsResponseDeploymentsItemChecksState =
   | "completed"
   | "registered"
   | "running";
-const GetDeploymentsResponseDeploymentsItemChecksState = S.String;
-
 /** Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded). */
 export type GetDeploymentsResponseDeploymentsItemCreatorType =
   | "app"
   | "integration"
   | "system"
   | "user";
-const GetDeploymentsResponseDeploymentsItemCreatorType = S.String;
-
 /** Metadata information of the deployment creator. */
 export interface GetDeploymentsResponseDeploymentsItemCreator {
   /** The email address of the user. */
@@ -10082,21 +9488,11 @@ export interface GetDeploymentsResponseDeploymentsItemCreator {
   /** The username of the user. */
   username?: string;
 }
-const GetDeploymentsResponseDeploymentsItemCreator = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemCreator>;
-
 /** The custom environment used for this deployment, if any */
 export interface GetDeploymentsResponseDeploymentsItemCustomEnvironment {
   id: string;
   slug?: string;
 }
-const GetDeploymentsResponseDeploymentsItemCustomEnvironment = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemCustomEnvironment>;
-
 /** Current provisioning state */
 export type GetDeploymentsResponseDeploymentsItemManualProvisioningState =
   | "COMPLETE"
@@ -10108,18 +9504,10 @@ export interface GetDeploymentsResponseDeploymentsItemManualProvisioning {
   /** Current provisioning state */
   state: GetDeploymentsResponseDeploymentsItemManualProvisioningState;
 }
-const GetDeploymentsResponseDeploymentsItemManualProvisioning =
-  CancelDeploymentResponseManualProvisioning as any as S.Schema<GetDeploymentsResponseDeploymentsItemManualProvisioning>;
-
 /** Metadata information from the Git provider. */
 export type GetDeploymentsResponseDeploymentsItemMetaMap = { [key: string]: string | undefined };
-const GetDeploymentsResponseDeploymentsItemMetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentsResponseDeploymentsItemMetaMap>;
-
 /** Indicates if the deployment encountered an out-of-memory error. */
 export type GetDeploymentsResponseDeploymentsItemOomReport = "out-of-memory";
-const GetDeploymentsResponseDeploymentsItemOomReport = S.String;
-
 /** The user on the external platform who triggered the deployment. */
 export type GetDeploymentsResponseDeploymentsItemPlatformCreator =
   CancelDeploymentResponsePlatformCreator;
@@ -10127,9 +9515,6 @@ export type GetDeploymentsResponseDeploymentsItemPlatformCreator =
 export type GetDeploymentsResponseDeploymentsItemPlatformMetaMap = {
   [key: string]: string | undefined;
 };
-const GetDeploymentsResponseDeploymentsItemPlatformMetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformMetaMap>;
-
 /** Whether the value is an opaque identifier or a URL. */
 export type GetDeploymentsResponseDeploymentsItemPlatformOriginType = "id" | "url";
 /** Reference back to the entity on the platform that initiated the deployment. */
@@ -10139,9 +9524,6 @@ export interface GetDeploymentsResponseDeploymentsItemPlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-const GetDeploymentsResponseDeploymentsItemPlatformOrigin =
-  CancelDeploymentResponsePlatformOrigin as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformOrigin>;
-
 /** The external platform that created the deployment (e.g. its display name). */
 export type GetDeploymentsResponseDeploymentsItemPlatformSource =
   CancelDeploymentResponsePlatformSource;
@@ -10156,11 +9538,6 @@ export interface GetDeploymentsResponseDeploymentsItemPlatform {
   /** The external platform that created the deployment (e.g. its display name). */
   source: CancelDeploymentResponsePlatformSource;
 }
-const GetDeploymentsResponseDeploymentsItemPlatform = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatform>;
-
 export type GetDeploymentsResponseDeploymentsItemProjectSettingsFramework =
   | "actix-web"
   | "angular"
@@ -10236,8 +9613,6 @@ export type GetDeploymentsResponseDeploymentsItemProjectSettingsFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-const GetDeploymentsResponseDeploymentsItemProjectSettingsFramework = S.String;
-
 /** Since June '23 */
 export interface GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments {
   /** Whether the Vercel bot should comment on commits */
@@ -10245,11 +9620,6 @@ export interface GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments
   /** Whether the Vercel bot should comment on PRs */
   onPullRequest: boolean;
 }
-const GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments>;
-
 export type GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion =
   | "10.x"
   | "12.x"
@@ -10260,8 +9630,6 @@ export type GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-const GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion = S.String;
-
 export type GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights =
   CancelDeploymentResponseProjectSettingsSpeedInsights;
 export type GetDeploymentsResponseDeploymentsItemProjectSettingsWebAnalytics =
@@ -10287,11 +9655,6 @@ export interface GetDeploymentsResponseDeploymentsItemProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-const GetDeploymentsResponseDeploymentsItemProjectSettings = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemProjectSettings>;
-
 export type GetDeploymentsResponseDeploymentsItemReadyState =
   | "BLOCKED"
   | "BUILDING"
@@ -10301,29 +9664,18 @@ export type GetDeploymentsResponseDeploymentsItemReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-const GetDeploymentsResponseDeploymentsItemReadyState = S.String;
-
 /** Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic */
 export type GetDeploymentsResponseDeploymentsItemReadySubstate = "PROMOTED" | "ROLLING" | "STAGED";
-const GetDeploymentsResponseDeploymentsItemReadySubstate = S.String;
-
 /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
 export type GetDeploymentsResponseDeploymentsItemSeatBlockBlockCode =
   | "COMMIT_AUTHOR_REQUIRED"
   | "TEAM_ACCESS_REQUIRED";
-const GetDeploymentsResponseDeploymentsItemSeatBlockBlockCode = S.String;
-
 /** The git provider type associated with gitUserId. */
 export type GetDeploymentsResponseDeploymentsItemSeatBlockGitProvider =
   | "bitbucket"
   | "github"
   | "gitlab";
-const GetDeploymentsResponseDeploymentsItemSeatBlockGitProvider = S.String;
-
 export type GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId = string | number;
-const GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId =
-  S.Unknown as any as S.Schema<GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId>;
-
 /** NSNB Blocked metadata */
 export interface GetDeploymentsResponseDeploymentsItemSeatBlock {
   /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
@@ -10336,11 +9688,6 @@ export interface GetDeploymentsResponseDeploymentsItemSeatBlock {
   /** The blocked vercel user ID. */
   userId?: string;
 }
-const GetDeploymentsResponseDeploymentsItemSeatBlock = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemSeatBlock>;
-
 /** The source of the deployment. */
 export type GetDeploymentsResponseDeploymentsItemSource =
   | "api-trigger-git-deploy"
@@ -10353,8 +9700,6 @@ export type GetDeploymentsResponseDeploymentsItemSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-const GetDeploymentsResponseDeploymentsItemSource = S.String;
-
 /** In which state is the deployment. */
 export type GetDeploymentsResponseDeploymentsItemState =
   | "BLOCKED"
@@ -10365,16 +9710,10 @@ export type GetDeploymentsResponseDeploymentsItemState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-const GetDeploymentsResponseDeploymentsItemState = S.String;
-
 /** On which environment has the deployment been deployed to. */
 export type GetDeploymentsResponseDeploymentsItemTarget = "production" | "staging";
-const GetDeploymentsResponseDeploymentsItemTarget = S.String;
-
 /** The type of the deployment. */
 export type GetDeploymentsResponseDeploymentsItemType = "LAMBDAS";
-const GetDeploymentsResponseDeploymentsItemType = S.String;
-
 export interface GetDeploymentsResponseDeploymentsItem {
   aliasAssigned?: GetDeploymentsResponseDeploymentsItemAliasAssigned | null;
   /** An error object in case aliasing of the deployment failed. */
@@ -10456,17 +9795,7 @@ export interface GetDeploymentsResponseDeploymentsItem {
   /** The URL of the deployment. */
   url: string;
 }
-const GetDeploymentsResponseDeploymentsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItem>;
-
 export type GetDeploymentsResponseDeploymentsList = Array<GetDeploymentsResponseDeploymentsItem>;
-const GetDeploymentsResponseDeploymentsList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsList>;
-
 /** This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. */
 export interface Pagination {
   /** Amount of items in the current page. */
@@ -10476,17 +9805,10 @@ export interface Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
-const Pagination = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<Pagination>;
-
 export interface GetDeploymentsResponse {
   deployments: GetDeploymentsResponseDeploymentsList;
   pagination: Pagination;
 }
-const GetDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetDeploymentsResponse>;
-
 export interface ListDeploymentFilesRequest {
   /** The unique deployment identifier */
   id: string;
@@ -10495,22 +9817,10 @@ export interface ListDeploymentFilesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListDeploymentFilesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListDeploymentFilesRequest>;
-
 /** The list of children files of the directory (only valid for the `directory` type) */
 export type FileTreeChildrenList = Array<FileTree>;
-const FileTreeChildrenList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<FileTreeChildrenList>;
-
 /** String indicating the type of file tree entry. */
 export type FileTreeType = "directory" | "file" | "invalid" | "lambda" | "middleware" | "symlink";
-const FileTreeType = S.String;
-
 /** A deployment file tree entry */
 export interface FileTree {
   /** The list of children files of the directory (only valid for the `directory` type) */
@@ -10526,23 +9836,9 @@ export interface FileTree {
   /** The unique identifier of the file (only valid for the `file` type) */
   uid?: string;
 }
-const FileTree = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<FileTree>;
-
 export type ListDeploymentFilesResponseBodyList = Array<FileTree>;
-const ListDeploymentFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListDeploymentFilesResponseBodyList>;
-
 export type ListDeploymentFilesResponse = ListDeploymentFilesResponseBodyList;
-const ListDeploymentFilesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListDeploymentFilesResponse>;
-
 export type UpdateIntegrationDeploymentActionRequestStatus = "running" | "succeeded" | "failed";
-const UpdateIntegrationDeploymentActionRequestStatus = S.String;
-
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsItem {
   name: string;
   value: string;
@@ -10593,16 +9889,8 @@ export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase1 {
 export type UpdateIntegrationDeploymentActionRequestOutcomesItem =
   | UpdateIntegrationDeploymentActionRequestOutcomesItemCase0
   | UpdateIntegrationDeploymentActionRequestOutcomesItemCase1;
-const UpdateIntegrationDeploymentActionRequestOutcomesItem =
-  S.Unknown as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItem>;
-
 export type UpdateIntegrationDeploymentActionRequestOutcomesList =
   Array<UpdateIntegrationDeploymentActionRequestOutcomesItem>;
-const UpdateIntegrationDeploymentActionRequestOutcomesList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesList>;
-
 export interface UpdateIntegrationDeploymentActionRequest {
   deploymentId: string;
   integrationConfigurationId: string;
@@ -10613,15 +9901,7 @@ export interface UpdateIntegrationDeploymentActionRequest {
   statusUrl?: string;
   outcomes?: UpdateIntegrationDeploymentActionRequestOutcomesList;
 }
-const UpdateIntegrationDeploymentActionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UpdateIntegrationDeploymentActionRequest>;
-
 export interface UpdateIntegrationDeploymentActionResponse {}
-const UpdateIntegrationDeploymentActionResponse =
-  GetDeploymentFileContentsResponse as any as S.Schema<UpdateIntegrationDeploymentActionResponse>;
-
 export interface UploadFileRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -10636,8 +9916,6 @@ export interface UploadFileRequest {
   /** The file size as an alternative to `Content-Length` */
   xNowSize?: number;
 }
-const UploadFileRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<UploadFileRequest>;
-
 /** Array of URLs where the file was updated */
 export type UploadFileResponseBodyCase0UrlsList = Array<string>;
 export interface UploadFileResponseBodyCase0 {
@@ -10645,11 +9923,7 @@ export interface UploadFileResponseBodyCase0 {
   urls: UploadFileResponseBodyCase0UrlsList;
 }
 export type UploadFileResponseBody = UploadFileResponseBodyCase0 | unknown;
-const UploadFileResponseBody = S.Unknown as any as S.Schema<UploadFileResponseBody>;
-
 export type UploadFileResponse = UploadFileResponseBody;
-const UploadFileResponse = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<UploadFileResponse>;
-
 export type CancelDeploymentError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Cancel a deployment Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors -- without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success. */
 export const cancelDeployment: API.OperationMethod<
@@ -10658,8 +9932,8 @@ export const cancelDeployment: API.OperationMethod<
   CancelDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelDeploymentRequest,
-  output: CancelDeploymentResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelDeploymentRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CancelDeploymentResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10679,8 +9953,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentRequest,
-  output: CreateDeploymentResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateDeploymentResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10694,8 +9968,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentRequest,
-  output: DeleteDeploymentResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10709,8 +9983,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentRequest,
-  output: GetDeploymentResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetDeploymentResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10724,8 +9998,8 @@ export const getDeploymentEvents: API.OperationMethod<
   GetDeploymentEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentEventsRequest,
-  output: GetDeploymentEventsResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<GetDeploymentEventsRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<GetDeploymentEventsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10739,8 +10013,8 @@ export const getDeploymentFileContents: API.OperationMethod<
   GetDeploymentFileContentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentFileContentsRequest,
-  output: GetDeploymentFileContentsResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<GetDeploymentFileContentsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<GetDeploymentFileContentsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10759,8 +10033,8 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentsRequest,
-  output: GetDeploymentsResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<GetDeploymentsRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<GetDeploymentsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10774,8 +10048,8 @@ export const listDeploymentFiles: API.OperationMethod<
   ListDeploymentFilesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentFilesRequest,
-  output: ListDeploymentFilesResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<ListDeploymentFilesRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListDeploymentFilesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10793,8 +10067,8 @@ export const updateIntegrationDeploymentAction: API.OperationMethod<
   UpdateIntegrationDeploymentActionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationDeploymentActionRequest,
-  output: UpdateIntegrationDeploymentActionResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<UpdateIntegrationDeploymentActionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<UpdateIntegrationDeploymentActionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10808,8 +10082,8 @@ export const uploadFile: API.OperationMethod<
   UploadFileError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadFileRequest,
-  output: UploadFileResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<UploadFileRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<UploadFileResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10851,7 +10125,7 @@ function __c0(j: number): any {
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Array(CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10865,7 +10139,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: CancelDeploymentResponseAttributionGitUserId,
+          id: S.Unknown,
           login: S.String,
           provider: S.optional(S.String),
           type: S.optional(S.String),
@@ -10881,7 +10155,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          teamRoles: S.optional(CancelDeploymentResponseAttributionVercelUserTeamRolesList),
+          teamRoles: S.optional(__S(1, __c0, 1)),
           username: S.String,
         }),
       ).annotate({
@@ -10890,9 +10164,9 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          commitMeta: S.optional(CancelDeploymentResponseAttributionCommitMeta),
-          gitUser: S.optional(CancelDeploymentResponseAttributionGitUser),
-          vercelUser: S.optional(CancelDeploymentResponseAttributionVercelUser),
+          commitMeta: S.optional(__S(6, __c0, 6)),
+          gitUser: S.optional(__S(7, __c0, 7)),
+          vercelUser: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseAttribution",
@@ -10900,7 +10174,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          env: CancelDeploymentResponseBuildEnvList,
+          env: __S(1, __c0, 1),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseBuild",
@@ -10910,7 +10184,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(CancelDeploymentResponseBuildsItemConfigMap),
+          config: S.optional(__S(11, __c1, 3)),
           src: S.optional(S.String),
           use: S.String,
         }),
@@ -10918,13 +10192,13 @@ function __c1(j: number): any {
         identifier: "CancelDeploymentResponseBuildsItem",
       });
     case 5:
-      return S.Array(CancelDeploymentResponseBuildsItem);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           completedAt: S.optional(S.Number),
           startedAt: S.Number,
-          state: CancelDeploymentResponseChecksDeploymentAliasState,
+          state: S.String,
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseChecksDeploymentAlias",
@@ -10932,9 +10206,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deployment_alias: CancelDeploymentResponseChecksDeploymentAlias.pipe(
-            T.Body("deployment-alias"),
-          ),
+          deployment_alias: __S(14, __c1, 6).pipe(T.Body("deployment-alias")),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseChecks",
@@ -10946,9 +10218,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(
-            CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration,
-          ),
+          configuration: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseConfigResourceConfigBuildQueue",
@@ -10956,9 +10226,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          purchaseType: S.optional(
-            S.NullOr(CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType),
-          ),
+          purchaseType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseConfigResourceConfigBuildMachine",
@@ -10966,11 +10234,9 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          buildQueue: S.optional(CancelDeploymentResponseConfigResourceConfigBuildQueue),
-          elasticConcurrency: S.optional(
-            CancelDeploymentResponseConfigResourceConfigElasticConcurrency,
-          ),
-          buildMachine: S.optional(CancelDeploymentResponseConfigResourceConfigBuildMachine),
+          buildQueue: S.optional(__S(16, __c2, 0)),
+          elasticConcurrency: S.optional(S.String),
+          buildMachine: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseConfigResourceConfig",
@@ -10978,11 +10244,11 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          functionMemoryType: CancelDeploymentResponseConfigFunctionMemoryType,
+          functionMemoryType: S.String,
           functionTimeout: S.NullOr(S.Number),
-          functionType: CancelDeploymentResponseConfigFunctionType,
+          functionType: S.String,
           isUsingActiveCPU: S.optional(S.Boolean),
-          resourceConfig: S.optional(CancelDeploymentResponseConfigResourceConfig),
+          resourceConfig: S.optional(__S(18, __c2, 2)),
           secureComputeFallbackRegion: S.NullOr(S.String),
           secureComputePrimaryRegion: S.NullOr(S.String),
           version: S.optional(S.Number),
@@ -10994,7 +10260,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           avatar: S.optional(S.String),
-          type: S.optional(CancelDeploymentResponseCreatorType),
+          type: S.optional(S.String),
           uid: S.String,
           username: S.optional(S.String),
         }),
@@ -11011,7 +10277,7 @@ function __c2(j: number): any {
         identifier: "CancelDeploymentResponseCronsItem",
       });
     case 6:
-      return S.Array(CancelDeploymentResponseCronsItem);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -11033,30 +10299,26 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: CancelDeploymentResponseFunctionsValueAffinityMode,
+          mode: S.String,
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseFunctionsValueAffinity",
       });
     case 1:
-      return S.Array(CancelDeploymentResponseFunctionsValueExperimentalTriggersItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          affinity: S.optional(CancelDeploymentResponseFunctionsValueAffinity),
-          architecture: S.optional(CancelDeploymentResponseFunctionsValueArchitecture),
+          affinity: S.optional(__S(24, __c3, 0)),
+          architecture: S.optional(S.String),
           excludeFiles: S.optional(S.String),
-          experimentalTriggers: S.optional(
-            CancelDeploymentResponseFunctionsValueExperimentalTriggersList,
-          ),
-          functionFailoverRegions: S.optional(
-            CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList,
-          ),
+          experimentalTriggers: S.optional(__S(25, __c3, 1)),
+          functionFailoverRegions: S.optional(__S(4, __c0, 4)),
           includeFiles: S.optional(S.String),
           maxConcurrency: S.optional(S.Number),
-          maxDuration: S.optional(CancelDeploymentResponseFunctionsValueMaxDuration),
+          maxDuration: S.optional(S.Unknown),
           memory: S.optional(S.Number),
-          regions: S.optional(CancelDeploymentResponseFunctionsValueRegionsList),
+          regions: S.optional(__S(1, __c0, 1)),
           runtime: S.optional(S.String),
           supportsCancellation: S.optional(S.Boolean),
         }),
@@ -11064,7 +10326,7 @@ function __c3(j: number): any {
         identifier: "CancelDeploymentResponseFunctionsValue",
       });
     case 3:
-      return S.Record(S.String, CancelDeploymentResponseFunctionsValue);
+      return S.Record(S.String, __S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11075,7 +10337,7 @@ function __c3(j: number): any {
         identifier: "CancelDeploymentResponseImagesLocalPatternsItem",
       });
     case 5:
-      return S.Array(CancelDeploymentResponseImagesLocalPatternsItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.Array(S.Number);
     case 7:
@@ -11084,7 +10346,7 @@ function __c3(j: number): any {
           hostname: S.String,
           pathname: S.optional(S.String),
           port: S.optional(S.String),
-          protocol: S.optional(CancelDeploymentResponseImagesRemotePatternsItemProtocol),
+          protocol: S.optional(S.String),
           search: S.optional(S.String),
         }),
       ).annotate({
@@ -11095,20 +10357,20 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CancelDeploymentResponseImagesRemotePatternsItem);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentDispositionType: S.optional(CancelDeploymentResponseImagesContentDispositionType),
+          contentDispositionType: S.optional(S.String),
           contentSecurityPolicy: S.optional(S.String),
           dangerouslyAllowSVG: S.optional(S.Boolean),
-          domains: S.optional(CancelDeploymentResponseImagesDomainsList),
-          formats: S.optional(CancelDeploymentResponseImagesFormatsList),
-          localPatterns: S.optional(CancelDeploymentResponseImagesLocalPatternsList),
+          domains: S.optional(__S(1, __c0, 1)),
+          formats: S.optional(__S(5, __c0, 5)),
+          localPatterns: S.optional(__S(29, __c3, 5)),
           minimumCacheTTL: S.optional(S.Number),
-          qualities: S.optional(CancelDeploymentResponseImagesQualitiesList),
-          remotePatterns: S.optional(CancelDeploymentResponseImagesRemotePatternsList),
-          sizes: S.optional(CancelDeploymentResponseImagesSizesList),
+          qualities: S.optional(__S(30, __c3, 6)),
+          remotePatterns: S.optional(__S(32, __c4, 0)),
+          sizes: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseImages",
@@ -11121,7 +10383,7 @@ function __c4(j: number): any {
           skippedAt: S.optional(S.Number),
           skippedBy: S.optional(S.String),
           startedAt: S.Number,
-          status: CancelDeploymentResponseIntegrationsStatus,
+          status: S.String,
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseIntegrations",
@@ -11136,27 +10398,31 @@ function __c4(j: number): any {
         identifier: "CancelDeploymentResponseLambdasItemOutputItem",
       });
     case 4:
-      return S.Array(CancelDeploymentResponseLambdasItemOutputItem);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.Number),
           entrypoint: S.optional(S.NullOr(S.String)),
           id: S.String,
-          readyState: S.optional(CancelDeploymentResponseLambdasItemReadyState),
+          readyState: S.optional(S.String),
           readyStateAt: S.optional(S.Number),
-          output: CancelDeploymentResponseLambdasItemOutputList,
+          output: __S(
+            36,
+            __c4,
+            4,
+          ) as any as S.Schema<CancelDeploymentResponseLambdasItemOutputList>,
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseLambdasItem",
       });
     case 6:
-      return S.Array(CancelDeploymentResponseLambdasItem);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           completedAt: S.optional(S.Number),
-          state: CancelDeploymentResponseManualProvisioningState,
+          state: S.String,
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseManualProvisioning",
@@ -11175,7 +10441,7 @@ function __c5(j: number): any {
           deployment_id: S.optional(S.String),
           environment: S.String,
           iss: S.String,
-          mfe_group_ids: S.optional(CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList),
+          mfe_group_ids: S.optional(__S(1, __c0, 1)),
           owner: S.String,
           owner_id: S.String,
           plan: S.optional(S.String),
@@ -11199,7 +10465,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: CancelDeploymentResponsePlatformOriginType,
+          type: S.String,
           value: S.String,
         }),
       ).annotate({
@@ -11216,10 +10482,10 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          creator: CancelDeploymentResponsePlatformCreator,
-          meta: S.optional(CancelDeploymentResponsePlatformMetaMap),
-          origin: CancelDeploymentResponsePlatformOrigin,
-          source: CancelDeploymentResponsePlatformSource,
+          creator: __S(42, __c5, 2),
+          meta: S.optional(__S(40, __c5, 0)),
+          origin: __S(43, __c5, 3),
+          source: __S(44, __c5, 4),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponsePlatform",
@@ -11270,12 +10536,12 @@ function __c6(j: number): any {
           buildCommand: S.optional(S.NullOr(S.String)),
           commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
           devCommand: S.optional(S.NullOr(S.String)),
-          framework: S.optional(S.NullOr(CancelDeploymentResponseProjectSettingsFramework)),
+          framework: S.optional(S.NullOr(S.String)),
           installCommand: S.optional(S.NullOr(S.String)),
-          nodeVersion: S.optional(CancelDeploymentResponseProjectSettingsNodeVersion),
+          nodeVersion: S.optional(S.String),
           outputDirectory: S.optional(S.NullOr(S.String)),
-          speedInsights: S.optional(CancelDeploymentResponseProjectSettingsSpeedInsights),
-          webAnalytics: S.optional(CancelDeploymentResponseProjectSettingsWebAnalytics),
+          speedInsights: S.optional(__S(47, __c5, 7)),
+          webAnalytics: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseProjectSettings",
@@ -11284,17 +10550,11 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cores: S.optional(S.Number),
-          defaultPurchaseType: S.optional(
-            CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType,
-          ),
-          machineSelectionType: S.optional(
-            CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType,
-          ),
+          defaultPurchaseType: S.optional(S.String),
+          machineSelectionType: S.optional(S.String),
           memory: S.optional(S.Number),
-          purchaseType: S.optional(CancelDeploymentResponseResourceConfigBuildMachinePurchaseType),
-          selectionSource: S.optional(
-            CancelDeploymentResponseResourceConfigBuildMachineSelectionSource,
-          ),
+          purchaseType: S.optional(S.String),
+          selectionSource: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseResourceConfigBuildMachine",
@@ -11302,19 +10562,19 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          buildMachine: S.optional(CancelDeploymentResponseResourceConfigBuildMachine),
+          buildMachine: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({
         identifier: "CancelDeploymentResponseResourceConfig",
       });
     case 4:
-      return S.Array(CancelDeploymentResponseRoutesItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          blockCode: CancelDeploymentResponseSeatBlockBlockCode,
-          gitProvider: S.optional(CancelDeploymentResponseSeatBlockGitProvider),
-          gitUserId: S.optional(CancelDeploymentResponseSeatBlockGitUserId),
+          blockCode: S.String,
+          gitProvider: S.optional(S.String),
+          gitUserId: S.optional(S.Unknown),
           isVerified: S.optional(S.Boolean),
           userId: S.optional(S.String),
         }),
@@ -11322,7 +10582,7 @@ function __c6(j: number): any {
         identifier: "CancelDeploymentResponseSeatBlock",
       });
     case 6:
-      return S.Array(CancelDeploymentResponseServicesItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -11341,104 +10601,104 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(CancelDeploymentResponseAliasList),
+          alias: S.optional(__S(1, __c0, 1)),
           aliasAssigned: S.Boolean,
-          aliasAssignedAt: S.optional(S.NullOr(CancelDeploymentResponseAliasAssignedAt)),
-          aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
+          aliasAssignedAt: S.optional(S.NullOr(S.Unknown)),
+          aliasError: S.optional(S.NullOr(__S(2, __c0, 2))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          aliasWarning: S.optional(S.NullOr(CancelDeploymentResponseAliasWarning)),
+          aliasWarning: S.optional(S.NullOr(__S(3, __c0, 3))),
           alwaysRefuseToBuild: S.optional(S.Boolean),
-          atproto: S.optional(CancelDeploymentResponseAtproto),
-          attribution: S.optional(CancelDeploymentResponseAttribution),
+          atproto: S.optional(S.Unknown),
+          attribution: S.optional(__S(9, __c1, 1)),
           autoAssignCustomDomains: S.optional(S.Boolean),
-          automaticAliases: S.optional(CancelDeploymentResponseAutomaticAliasesList),
+          automaticAliases: S.optional(__S(1, __c0, 1)),
           bootedAt: S.Number,
-          build: CancelDeploymentResponseBuild,
-          buildArtifactUrls: S.optional(CancelDeploymentResponseBuildArtifactUrlsList),
+          build: __S(10, __c1, 2),
+          buildArtifactUrls: S.optional(__S(1, __c0, 1)),
           buildContainerFinishedAt: S.optional(S.Number),
           buildErrorAt: S.optional(S.Number),
           buildingAt: S.Number,
-          builds: S.optional(CancelDeploymentResponseBuildsList),
+          builds: S.optional(__S(13, __c1, 5)),
           buildSkipped: S.Boolean,
           canceledAt: S.optional(S.Number),
-          checks: S.optional(CancelDeploymentResponseChecks),
-          checksConclusion: S.optional(CancelDeploymentResponseChecksConclusion),
-          checksState: S.optional(CancelDeploymentResponseChecksState),
-          config: S.optional(CancelDeploymentResponseConfig),
+          checks: S.optional(__S(15, __c1, 7)),
+          checksConclusion: S.optional(S.String),
+          checksState: S.optional(S.String),
+          config: S.optional(__S(19, __c2, 3)),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: CancelDeploymentResponseCreator,
-          crons: S.optional(CancelDeploymentResponseCronsList),
-          customEnvironment: S.optional(CancelDeploymentResponseCustomEnvironment),
+          creator: __S(20, __c2, 4),
+          crons: S.optional(__S(22, __c2, 6)),
+          customEnvironment: S.optional(S.Unknown),
           defaultRoute: S.optional(S.String),
           deletedAt: S.optional(S.NullOr(S.Number)),
-          duration: CancelDeploymentResponseDuration,
-          env: CancelDeploymentResponseEnvList,
+          duration: __S(23, __c2, 7),
+          env: __S(1, __c0, 1),
           errorCode: S.optional(S.String),
           errorLink: S.optional(S.String),
           errorMessage: S.optional(S.NullOr(S.String)),
           errorStep: S.optional(S.String),
-          flags: S.optional(CancelDeploymentResponseFlags),
-          functions: S.optional(S.NullOr(CancelDeploymentResponseFunctionsMap)),
-          gitRepo: S.optional(S.NullOr(CancelDeploymentResponseGitRepo)),
-          gitSource: S.optional(CancelDeploymentResponseGitSource),
+          flags: S.optional(S.Unknown),
+          functions: S.optional(S.NullOr(__S(27, __c3, 3))),
+          gitRepo: S.optional(S.NullOr(S.Unknown)),
+          gitSource: S.optional(S.Unknown),
           id: S.String,
-          images: S.optional(CancelDeploymentResponseImages),
+          images: S.optional(__S(33, __c4, 1)),
           initReadyAt: S.optional(S.Number),
           inspectorUrl: S.NullOr(S.String),
-          integrations: S.optional(CancelDeploymentResponseIntegrations),
+          integrations: S.optional(__S(34, __c4, 2)),
           isFirstBranchDeployment: S.optional(S.Boolean),
           isInConcurrentBuildsQueue: S.Boolean,
           isInstantStatic: S.optional(S.Boolean),
           isInSystemBuildsQueue: S.Boolean,
-          lambdas: S.optional(CancelDeploymentResponseLambdasList),
-          manualProvisioning: S.optional(CancelDeploymentResponseManualProvisioning),
-          meta: CancelDeploymentResponseMetaMap,
-          microfrontends: S.optional(CancelDeploymentResponseMicrofrontends),
+          lambdas: S.optional(__S(38, __c4, 6)),
+          manualProvisioning: S.optional(__S(39, __c4, 7)),
+          meta: __S(40, __c5, 0),
+          microfrontends: S.optional(S.Unknown),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          nodeVersion: S.optional(CancelDeploymentResponseNodeVersion),
-          oidcTokenClaims: S.optional(CancelDeploymentResponseOidcTokenClaims),
-          oomReport: S.optional(CancelDeploymentResponseOomReport),
+          nodeVersion: S.optional(S.String),
+          oidcTokenClaims: S.optional(__S(41, __c5, 1)),
+          oomReport: S.optional(S.String),
           originCacheRegion: S.optional(S.String),
           ownerId: S.String,
           passiveConnectConfigurationId: S.optional(S.String),
-          passiveRegions: S.optional(CancelDeploymentResponsePassiveRegionsList),
-          plan: CancelDeploymentResponsePlan,
-          platform: S.optional(CancelDeploymentResponsePlatform),
+          passiveRegions: S.optional(__S(1, __c0, 1)),
+          plan: S.String,
+          platform: S.optional(__S(45, __c5, 5)),
           prebuilt: S.optional(S.Boolean),
           previewCommentsEnabled: S.optional(S.Boolean),
-          project: S.optional(CancelDeploymentResponseProject),
+          project: S.optional(__S(46, __c5, 6)),
           projectId: S.String,
-          projectSettings: CancelDeploymentResponseProjectSettings,
+          projectSettings: __S(49, __c6, 1),
           public: S.Boolean,
           ready: S.optional(S.Number),
-          readyState: CancelDeploymentResponseReadyState,
+          readyState: S.String,
           readyStateReason: S.optional(S.String),
-          readySubstate: S.optional(CancelDeploymentResponseReadySubstate),
-          regions: CancelDeploymentResponseRegionsList,
-          resourceConfig: S.optional(CancelDeploymentResponseResourceConfig),
-          routes: S.NullOr(CancelDeploymentResponseRoutesList),
-          seatBlock: S.optional(CancelDeploymentResponseSeatBlock),
-          services: S.optional(CancelDeploymentResponseServicesList),
+          readySubstate: S.optional(S.String),
+          regions: __S(1, __c0, 1),
+          resourceConfig: S.optional(__S(51, __c6, 3)),
+          routes: S.NullOr(__S(52, __c6, 4)),
+          seatBlock: S.optional(__S(53, __c6, 5)),
+          services: S.optional(__S(54, __c6, 6)),
           softDeletedByRetention: S.optional(S.Boolean),
-          source: S.optional(CancelDeploymentResponseSource),
-          status: CancelDeploymentResponseStatus,
-          target: S.optional(S.NullOr(CancelDeploymentResponseTarget)),
-          team: S.optional(CancelDeploymentResponseTeam),
+          source: S.optional(S.String),
+          status: S.String,
+          target: S.optional(S.NullOr(S.String)),
+          team: S.optional(__S(55, __c6, 7)),
           ttyBuildLogs: S.optional(S.Boolean),
-          type: CancelDeploymentResponseType,
+          type: S.String,
           undeletedAt: S.optional(S.Number),
           url: S.String,
-          userAliases: S.optional(CancelDeploymentResponseUserAliasesList),
+          userAliases: S.optional(__S(1, __c0, 1)),
           userConfiguredDeploymentId: S.optional(S.String),
-          version: CancelDeploymentResponseVersion,
+          version: S.Number,
         }),
       ).annotate({ identifier: "CancelDeploymentResponse" });
     case 1:
-      return S.Array(CreateDeploymentRequestFilesItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11464,9 +10724,9 @@ function __c7(j: number): any {
           buildCommand: S.optional(S.NullOr(S.String)),
           commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
           devCommand: S.optional(S.NullOr(S.String)),
-          framework: S.optional(S.NullOr(CreateDeploymentRequestProjectSettingsFramework)),
+          framework: S.optional(S.NullOr(S.String)),
           installCommand: S.optional(S.NullOr(S.String)),
-          nodeVersion: S.optional(CreateDeploymentRequestProjectSettingsNodeVersion),
+          nodeVersion: S.optional(S.String),
           outputDirectory: S.optional(S.NullOr(S.String)),
           rootDirectory: S.optional(S.NullOr(S.String)),
           serverlessFunctionRegion: S.optional(S.NullOr(S.String)),
@@ -11479,30 +10739,28 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          forceNew: S.optional(CreateDeploymentRequestForceNew.pipe(T.Query())),
-          skipAutoDetectionConfirmation: S.optional(
-            CreateDeploymentRequestSkipAutoDetectionConfirmation.pipe(T.Query()),
-          ),
+          forceNew: S.optional(S.String.pipe(T.Query())),
+          skipAutoDetectionConfirmation: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          buildMachine: S.optional(CreateDeploymentRequestBuildMachine),
+          buildMachine: S.optional(S.String),
           customEnvironmentSlugOrId: S.optional(S.String),
           deploymentId: S.optional(S.String),
-          files: S.optional(CreateDeploymentRequestFilesList),
+          files: S.optional(__S(57, __c7, 1)),
           gitAccessToken: S.optional(S.String),
-          gitMetadata: S.optional(CreateDeploymentRequestGitMetadata),
-          gitSource: S.optional(CreateDeploymentRequestGitSource),
-          meta: S.optional(CreateDeploymentRequestMetaMap),
+          gitMetadata: S.optional(__S(58, __c7, 2)),
+          gitSource: S.optional(S.Unknown),
+          meta: S.optional(__S(40, __c5, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
           project: S.optional(S.String),
-          projectSettings: S.optional(CreateDeploymentRequestProjectSettings),
+          projectSettings: S.optional(__S(59, __c7, 3)),
           target: S.optional(S.String),
           withLatestCommit: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v13/deployments", code: 200 })),
       ).annotate({ identifier: "CreateDeploymentRequest" });
     case 5:
-      return S.suspend(() => CreateDeploymentResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDeploymentResponse",
       });
     case 6:
@@ -11517,7 +10775,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          state: DeleteDeploymentResponseState,
+          state: S.String,
           uid: S.String,
         }),
       ).annotate({ identifier: "DeleteDeploymentResponse" });
@@ -11535,22 +10793,22 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v13/deployments/{idOrUrl}", code: 200 })),
       ).annotate({ identifier: "GetDeploymentRequest" });
     case 1:
-      return S.suspend(() => GetDeploymentResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDeploymentResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           idOrUrl: S.String.pipe(T.Label()),
-          direction: S.optional(GetDeploymentEventsRequestDirection.pipe(T.Query())),
-          follow: S.optional(GetDeploymentEventsRequestFollow.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          follow: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           since: S.optional(S.Number.pipe(T.Query())),
           until: S.optional(S.Number.pipe(T.Query())),
-          statusCode: S.optional(GetDeploymentEventsRequestStatusCode.pipe(T.Query())),
-          delimiter: S.optional(GetDeploymentEventsRequestDelimiter.pipe(T.Query())),
-          builds: S.optional(GetDeploymentEventsRequestBuilds.pipe(T.Query())),
+          statusCode: S.optional(S.Unknown.pipe(T.Query())),
+          delimiter: S.optional(S.Number.pipe(T.Query())),
+          builds: S.optional(S.Number.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v3/deployments/{idOrUrl}/events", code: 200 })),
@@ -11558,11 +10816,9 @@ function __c8(j: number): any {
         identifier: "GetDeploymentEventsRequest",
       });
     case 3:
-      return S.Array(/*@__PURE__*/ S.NullOr(GetDeploymentEventsResponseBodyItem));
+      return S.Array(/*@__PURE__*/ S.NullOr(S.Unknown));
     case 4:
-      return S.suspend(() =>
-        GetDeploymentEventsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDeploymentEventsResponse",
       });
     case 5:
@@ -11588,7 +10844,7 @@ function __c8(j: number): any {
           from: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
-          projectIds: S.optional(GetDeploymentsRequestProjectIdsList.pipe(T.Query())),
+          projectIds: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           target: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.Number.pipe(T.Query())),
           users: S.optional(S.String.pipe(T.Query())),
@@ -11609,7 +10865,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: GetDeploymentsResponseDeploymentsItemAttributionGitUserId,
+          id: S.Unknown,
           login: S.String,
           provider: S.optional(S.String),
           type: S.optional(S.String),
@@ -11621,9 +10877,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          teamRoles: S.optional(
-            GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList,
-          ),
+          teamRoles: S.optional(__S(4, __c0, 4)),
           username: S.String,
         }),
       ).annotate({
@@ -11632,9 +10886,9 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          commitMeta: S.optional(CancelDeploymentResponseAttributionCommitMeta),
-          gitUser: S.optional(GetDeploymentsResponseDeploymentsItemAttributionGitUser),
-          vercelUser: S.optional(GetDeploymentsResponseDeploymentsItemAttributionVercelUser),
+          commitMeta: S.optional(__S(6, __c0, 6)),
+          gitUser: S.optional(__S(72, __c9, 0)),
+          vercelUser: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemAttribution",
@@ -11644,7 +10898,7 @@ function __c9(j: number): any {
         S.Struct({
           completedAt: S.optional(S.Number),
           startedAt: S.Number,
-          state: GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState,
+          state: S.String,
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias",
@@ -11652,9 +10906,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deployment_alias: GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias.pipe(
-            T.Body("deployment-alias"),
-          ),
+          deployment_alias: __S(75, __c9, 3).pipe(T.Body("deployment-alias")),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemChecks",
@@ -11665,7 +10917,7 @@ function __c9(j: number): any {
           email: S.optional(S.String),
           githubLogin: S.optional(S.String),
           gitlabLogin: S.optional(S.String),
-          type: S.optional(GetDeploymentsResponseDeploymentsItemCreatorType),
+          type: S.optional(S.String),
           uid: S.String,
           username: S.optional(S.String),
         }),
@@ -11684,10 +10936,10 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          creator: CancelDeploymentResponsePlatformCreator,
-          meta: S.optional(GetDeploymentsResponseDeploymentsItemPlatformMetaMap),
-          origin: GetDeploymentsResponseDeploymentsItemPlatformOrigin,
-          source: CancelDeploymentResponsePlatformSource,
+          creator: __S(42, __c5, 2),
+          meta: S.optional(__S(40, __c5, 0)),
+          origin: __S(43, __c5, 3),
+          source: __S(44, __c5, 4),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemPlatform",
@@ -11713,20 +10965,18 @@ function __c10(j: number): any {
           createdAt: S.optional(S.Number),
           customerSupportCodeVisibility: S.optional(S.Boolean),
           devCommand: S.optional(S.NullOr(S.String)),
-          framework: S.optional(
-            S.NullOr(GetDeploymentsResponseDeploymentsItemProjectSettingsFramework),
-          ),
-          gitComments: S.optional(GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments),
+          framework: S.optional(S.NullOr(S.String)),
+          gitComments: S.optional(__S(80, __c10, 0)),
           gitForkProtection: S.optional(S.Boolean),
           gitLFS: S.optional(S.Boolean),
           installCommand: S.optional(S.NullOr(S.String)),
-          nodeVersion: S.optional(GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion),
+          nodeVersion: S.optional(S.String),
           outputDirectory: S.optional(S.NullOr(S.String)),
           rootDirectory: S.optional(S.NullOr(S.String)),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(CancelDeploymentResponseProjectSettingsSpeedInsights),
-          webAnalytics: S.optional(CancelDeploymentResponseProjectSettingsWebAnalytics),
+          speedInsights: S.optional(__S(47, __c5, 7)),
+          webAnalytics: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({
         identifier: "GetDeploymentsResponseDeploymentsItemProjectSettings",
@@ -11734,9 +10984,9 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          blockCode: GetDeploymentsResponseDeploymentsItemSeatBlockBlockCode,
-          gitProvider: S.optional(GetDeploymentsResponseDeploymentsItemSeatBlockGitProvider),
-          gitUserId: S.optional(GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId),
+          blockCode: S.String,
+          gitProvider: S.optional(S.String),
+          gitUserId: S.optional(S.Unknown),
           isVerified: S.optional(S.Boolean),
           userId: S.optional(S.String),
         }),
@@ -11746,19 +10996,19 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          aliasAssigned: S.optional(S.NullOr(GetDeploymentsResponseDeploymentsItemAliasAssigned)),
-          aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
-          attribution: S.optional(GetDeploymentsResponseDeploymentsItemAttribution),
+          aliasAssigned: S.optional(S.NullOr(S.Unknown)),
+          aliasError: S.optional(S.NullOr(__S(2, __c0, 2))),
+          attribution: S.optional(__S(74, __c9, 2)),
           buildingAt: S.optional(S.Number),
-          checks: S.optional(GetDeploymentsResponseDeploymentsItemChecks),
-          checksConclusion: S.optional(GetDeploymentsResponseDeploymentsItemChecksConclusion),
-          checksState: S.optional(GetDeploymentsResponseDeploymentsItemChecksState),
+          checks: S.optional(__S(76, __c9, 4)),
+          checksConclusion: S.optional(S.String),
+          checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           created: S.Number,
           createdAt: S.Number,
-          creator: GetDeploymentsResponseDeploymentsItemCreator,
-          customEnvironment: S.optional(GetDeploymentsResponseDeploymentsItemCustomEnvironment),
+          creator: __S(77, __c9, 5),
+          customEnvironment: S.optional(__S(78, __c9, 6)),
           defaultRoute: S.optional(S.String),
           deleted: S.optional(S.Number),
           errorCode: S.optional(S.String),
@@ -11766,25 +11016,25 @@ function __c10(j: number): any {
           expiration: S.optional(S.Number),
           inspectorUrl: S.NullOr(S.String),
           isRollbackCandidate: S.optional(S.NullOr(S.Boolean)),
-          manualProvisioning: S.optional(GetDeploymentsResponseDeploymentsItemManualProvisioning),
-          meta: S.optional(GetDeploymentsResponseDeploymentsItemMetaMap),
+          manualProvisioning: S.optional(__S(39, __c4, 7)),
+          meta: S.optional(__S(40, __c5, 0)),
           name: S.String,
-          oomReport: S.optional(GetDeploymentsResponseDeploymentsItemOomReport),
+          oomReport: S.optional(S.String),
           passiveConnectConfigurationId: S.optional(S.String),
-          platform: S.optional(GetDeploymentsResponseDeploymentsItemPlatform),
+          platform: S.optional(__S(79, __c9, 7)),
           prebuilt: S.optional(S.Boolean),
           projectId: S.String,
-          projectSettings: S.optional(GetDeploymentsResponseDeploymentsItemProjectSettings),
+          projectSettings: S.optional(__S(81, __c10, 1)),
           proposedExpiration: S.optional(S.Number),
           ready: S.optional(S.Number),
-          readyState: GetDeploymentsResponseDeploymentsItemReadyState,
-          readySubstate: S.optional(GetDeploymentsResponseDeploymentsItemReadySubstate),
-          seatBlock: S.optional(GetDeploymentsResponseDeploymentsItemSeatBlock),
+          readyState: S.String,
+          readySubstate: S.optional(S.String),
+          seatBlock: S.optional(__S(82, __c10, 2)),
           softDeletedByRetention: S.optional(S.Boolean),
-          source: S.optional(GetDeploymentsResponseDeploymentsItemSource),
-          state: S.optional(GetDeploymentsResponseDeploymentsItemState),
-          target: S.optional(S.NullOr(GetDeploymentsResponseDeploymentsItemTarget)),
-          type: GetDeploymentsResponseDeploymentsItemType,
+          source: S.optional(S.String),
+          state: S.optional(S.String),
+          target: S.optional(S.NullOr(S.String)),
+          type: S.String,
           uid: S.String,
           undeleted: S.optional(S.Number),
           url: S.String,
@@ -11793,7 +11043,7 @@ function __c10(j: number): any {
         identifier: "GetDeploymentsResponseDeploymentsItem",
       });
     case 4:
-      return S.Array(GetDeploymentsResponseDeploymentsItem);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11805,8 +11055,8 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deployments: GetDeploymentsResponseDeploymentsList,
-          pagination: Pagination,
+          deployments: __S(84, __c10, 4),
+          pagination: __S(85, __c10, 5),
         }),
       ).annotate({ identifier: "GetDeploymentsResponse" });
     case 7:
@@ -11824,28 +11074,26 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => FileTree));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(89, __c11, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          children: S.optional(FileTreeChildrenList),
+          children: S.optional(__S(88, __c11, 0)),
           contentType: S.optional(S.String),
           mode: S.Number,
           name: S.String,
-          type: FileTreeType,
+          type: S.String,
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileTree" });
     case 2:
-      return S.Array(FileTree);
+      return S.Array(__S(89, __c11, 1));
     case 3:
-      return S.suspend(() =>
-        ListDeploymentFilesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(90, __c11, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDeploymentFilesResponse",
       });
     case 4:
-      return S.Array(UpdateIntegrationDeploymentActionRequestOutcomesItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11853,10 +11101,10 @@ function __c11(j: number): any {
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
           action: S.String.pipe(T.Label()),
-          status: S.optional(UpdateIntegrationDeploymentActionRequestStatus),
+          status: S.optional(S.String),
           statusText: S.optional(S.String),
           statusUrl: S.optional(S.String),
-          outcomes: S.optional(UpdateIntegrationDeploymentActionRequestOutcomesList),
+          outcomes: S.optional(__S(92, __c11, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11879,8 +11127,13 @@ function __c11(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v2/files", code: 200 })),
       ).annotate({ identifier: "UploadFileRequest" });
     case 7:
-      return S.suspend(() => UploadFileResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UploadFileResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

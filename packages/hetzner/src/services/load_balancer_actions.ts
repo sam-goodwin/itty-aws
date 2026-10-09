@@ -7,24 +7,17 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** Protocol of the Load Balancer. */
 export type AddLoadBalancerServiceRequestProtocol = "tcp" | "http" | "https";
-const AddLoadBalancerServiceRequestProtocol = S.String;
-
 /** Type of the health check. */
 export type AddLoadBalancerServiceRequestHealthCheckProtocol = "tcp" | "http";
-const AddLoadBalancerServiceRequestHealthCheckProtocol = S.String;
-
 /** List of returned HTTP status codes in order to pass the health check. Supports the wildcards `?` for exactly one character and `*` for multiple ones. */
 export type AddLoadBalancerServiceRequestHealthCheckHttpStatusCodesList = Array<string>;
-const AddLoadBalancerServiceRequestHealthCheckHttpStatusCodesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddLoadBalancerServiceRequestHealthCheckHttpStatusCodesList>;
-
 /** Additional configuration for protocol http. */
 export interface AddLoadBalancerServiceRequestHealthCheckHttp {
   /** Host header to send in the HTTP request. May not contain spaces, percent or backslash symbols. Can be null, in that case no host header is sent. */
@@ -38,11 +31,6 @@ export interface AddLoadBalancerServiceRequestHealthCheckHttp {
   /** Use HTTPS for health check. */
   tls?: boolean;
 }
-const AddLoadBalancerServiceRequestHealthCheckHttp = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddLoadBalancerServiceRequestHealthCheckHttp>;
-
 export interface AddLoadBalancerServiceRequestHealthCheck {
   /** Type of the health check. */
   protocol: AddLoadBalancerServiceRequestHealthCheckProtocol | (string & {});
@@ -57,18 +45,8 @@ export interface AddLoadBalancerServiceRequestHealthCheck {
   /** Additional configuration for protocol http. */
   http?: AddLoadBalancerServiceRequestHealthCheckHttp;
 }
-const AddLoadBalancerServiceRequestHealthCheck = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddLoadBalancerServiceRequestHealthCheck>;
-
 /** IDs of the Certificates to use for TLS/SSL termination by the Load Balancer; empty for TLS/SSL passthrough or if `protocol` is `http`. */
 export type AddLoadBalancerServiceRequestHttpCertificatesList = Array<number>;
-const AddLoadBalancerServiceRequestHttpCertificatesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddLoadBalancerServiceRequestHttpCertificatesList>;
-
 /** Configuration option for protocols http and https. */
 export interface AddLoadBalancerServiceRequestHttp {
   /** Name of the cookie used for sticky sessions. */
@@ -84,11 +62,6 @@ export interface AddLoadBalancerServiceRequestHttp {
   /** Use sticky sessions. Only available if `protocol` is `http` or `https`. */
   sticky_sessions?: boolean;
 }
-const AddLoadBalancerServiceRequestHttp = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AddLoadBalancerServiceRequestHttp>;
-
 export interface AddLoadBalancerServiceRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -104,34 +77,17 @@ export interface AddLoadBalancerServiceRequest {
   /** Configuration option for protocols http and https. */
   http?: AddLoadBalancerServiceRequestHttp;
 }
-const AddLoadBalancerServiceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AddLoadBalancerServiceRequest>;
-
 /** Status of the Action. */
 export type AddLoadBalancerServiceResponseActionStatus = "running" | "success" | "error";
-const AddLoadBalancerServiceResponseActionStatus = S.String;
-
 export interface AddLoadBalancerServiceResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const AddLoadBalancerServiceResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddLoadBalancerServiceResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type AddLoadBalancerServiceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const AddLoadBalancerServiceResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddLoadBalancerServiceResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface AddLoadBalancerServiceResponseActionError {
   /** Fixed error code for machines. */
@@ -139,11 +95,6 @@ export interface AddLoadBalancerServiceResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const AddLoadBalancerServiceResponseActionError = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddLoadBalancerServiceResponseActionError>;
-
 export interface AddLoadBalancerServiceResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -162,23 +113,11 @@ export interface AddLoadBalancerServiceResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const AddLoadBalancerServiceResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AddLoadBalancerServiceResponseAction>;
-
 export interface AddLoadBalancerServiceResponse {
   action: AddLoadBalancerServiceResponseAction;
 }
-const AddLoadBalancerServiceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AddLoadBalancerServiceResponse>;
-
 /** Type of the resource. */
 export type AddLoadBalancerTargetRequestType = "server" | "label_selector" | "ip";
-const AddLoadBalancerTargetRequestType = S.String;
-
 /** Configuration for type Server, only valid and required if type is `server`. */
 export interface AddLoadBalancerTargetRequestServer {
   /** ID of the Server. */
@@ -186,31 +125,16 @@ export interface AddLoadBalancerTargetRequestServer {
   /** Optional public IP of the Server to use as target. Must be the Primary IPv4 of the Server, or an IPv6 host address within IPv6 /64 subnet of the Server. If omitted, the Primary IPv4 of the Server is used. Must not be a private IP and is only valid for public targets. */
   ip?: string;
 }
-const AddLoadBalancerTargetRequestServer = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AddLoadBalancerTargetRequestServer>;
-
 /** Configuration for label selector targets, only valid and required if type is `label_selector`. */
 export interface AddLoadBalancerTargetRequestLabelSelector {
   /** Label selector. */
   selector: string;
 }
-const AddLoadBalancerTargetRequestLabelSelector = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddLoadBalancerTargetRequestLabelSelector>;
-
 /** Configuration for an IP target. It is only possible to use the (Public or vSwitch) IPs of Hetzner Online Root Servers belonging to the project owner. IPs belonging to other users are blocked. Additionally IPs belonging to services provided by Hetzner Cloud (Servers, Load Balancers, ...) are blocked as well. Only valid and required if type is `ip`. */
 export interface AddLoadBalancerTargetRequestIp {
   /** IP of a server that belongs to the same customer (public IPv4/IPv6) or private IP in a subnet type vswitch. */
   ip: string;
 }
-const AddLoadBalancerTargetRequestIp = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AddLoadBalancerTargetRequestIp>;
-
 export interface AddLoadBalancerTargetRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -225,23 +149,13 @@ export interface AddLoadBalancerTargetRequest {
   /** Use the private network IP instead of the public IP of the Server, requires the Server and Load Balancer to be in the same network. Only valid for target types `server` and `label_selector`. */
   use_private_ip?: boolean;
 }
-const AddLoadBalancerTargetRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AddLoadBalancerTargetRequest>;
-
 /** Status of the Action. */
 export type AddLoadBalancerTargetResponseActionStatus = "running" | "success" | "error";
-const AddLoadBalancerTargetResponseActionStatus = S.String;
-
 export type AddLoadBalancerTargetResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type AddLoadBalancerTargetResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const AddLoadBalancerTargetResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<AddLoadBalancerTargetResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AddLoadBalancerTargetResponseActionError = AddLoadBalancerServiceResponseActionError;
 export interface AddLoadBalancerTargetResponseAction {
@@ -262,19 +176,9 @@ export interface AddLoadBalancerTargetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const AddLoadBalancerTargetResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AddLoadBalancerTargetResponseAction>;
-
 export interface AddLoadBalancerTargetResponse {
   action: AddLoadBalancerTargetResponseAction;
 }
-const AddLoadBalancerTargetResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AddLoadBalancerTargetResponse>;
-
 export interface AttachLoadBalancerToNetworkRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -285,23 +189,13 @@ export interface AttachLoadBalancerToNetworkRequest {
   /** IP range in CIDR block notation of the subnet to attach to. This allows for auto assigning an IP address for a specific subnet. Providing `ip` that is not part of `ip_range` will result in an error. */
   ip_range?: string;
 }
-const AttachLoadBalancerToNetworkRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AttachLoadBalancerToNetworkRequest>;
-
 /** Status of the Action. */
 export type AttachLoadBalancerToNetworkResponseActionStatus = "running" | "success" | "error";
-const AttachLoadBalancerToNetworkResponseActionStatus = S.String;
-
 export type AttachLoadBalancerToNetworkResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type AttachLoadBalancerToNetworkResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const AttachLoadBalancerToNetworkResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<AttachLoadBalancerToNetworkResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachLoadBalancerToNetworkResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -323,46 +217,24 @@ export interface AttachLoadBalancerToNetworkResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const AttachLoadBalancerToNetworkResponseAction = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AttachLoadBalancerToNetworkResponseAction>;
-
 export interface AttachLoadBalancerToNetworkResponse {
   action: AttachLoadBalancerToNetworkResponseAction;
 }
-const AttachLoadBalancerToNetworkResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AttachLoadBalancerToNetworkResponse>;
-
 /** Type of the algorithm. */
 export type ChangeLoadBalancerAlgorithmRequestType = "round_robin" | "least_connections";
-const ChangeLoadBalancerAlgorithmRequestType = S.String;
-
 export interface ChangeLoadBalancerAlgorithmRequest {
   /** ID of the Load Balancer. */
   id: number;
   /** Type of the algorithm. */
   type: ChangeLoadBalancerAlgorithmRequestType | (string & {});
 }
-const ChangeLoadBalancerAlgorithmRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ChangeLoadBalancerAlgorithmRequest>;
-
 /** Status of the Action. */
 export type ChangeLoadBalancerAlgorithmResponseActionStatus = "running" | "success" | "error";
-const ChangeLoadBalancerAlgorithmResponseActionStatus = S.String;
-
 export type ChangeLoadBalancerAlgorithmResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerAlgorithmResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const ChangeLoadBalancerAlgorithmResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerAlgorithmResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerAlgorithmResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -384,19 +256,9 @@ export interface ChangeLoadBalancerAlgorithmResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const ChangeLoadBalancerAlgorithmResponseAction = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ChangeLoadBalancerAlgorithmResponseAction>;
-
 export interface ChangeLoadBalancerAlgorithmResponse {
   action: ChangeLoadBalancerAlgorithmResponseAction;
 }
-const ChangeLoadBalancerAlgorithmResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ChangeLoadBalancerAlgorithmResponse>;
-
 export interface ChangeLoadBalancerDnsPtrRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -405,23 +267,13 @@ export interface ChangeLoadBalancerDnsPtrRequest {
   /** Domain Name to point to. PTR record content used for reverse DNS. Set to null to reset (IPv4) to the default value or remove (IPv6) the record. */
   dns_ptr: string | null;
 }
-const ChangeLoadBalancerDnsPtrRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ChangeLoadBalancerDnsPtrRequest>;
-
 /** Status of the Action. */
 export type ChangeLoadBalancerDnsPtrResponseActionStatus = "running" | "success" | "error";
-const ChangeLoadBalancerDnsPtrResponseActionStatus = S.String;
-
 export type ChangeLoadBalancerDnsPtrResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerDnsPtrResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const ChangeLoadBalancerDnsPtrResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerDnsPtrResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerDnsPtrResponseActionError = AddLoadBalancerServiceResponseActionError;
 export interface ChangeLoadBalancerDnsPtrResponseAction {
@@ -442,42 +294,22 @@ export interface ChangeLoadBalancerDnsPtrResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const ChangeLoadBalancerDnsPtrResponseAction = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ChangeLoadBalancerDnsPtrResponseAction>;
-
 export interface ChangeLoadBalancerDnsPtrResponse {
   action: ChangeLoadBalancerDnsPtrResponseAction;
 }
-const ChangeLoadBalancerDnsPtrResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ChangeLoadBalancerDnsPtrResponse>;
-
 export interface ChangeLoadBalancerProtectionRequest {
   /** ID of the Load Balancer. */
   id: number;
   /** If true, prevents the Load Balancer from being deleted. */
   delete?: boolean;
 }
-const ChangeLoadBalancerProtectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ChangeLoadBalancerProtectionRequest>;
-
 /** Status of the Action. */
 export type ChangeLoadBalancerProtectionResponseActionStatus = "running" | "success" | "error";
-const ChangeLoadBalancerProtectionResponseActionStatus = S.String;
-
 export type ChangeLoadBalancerProtectionResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerProtectionResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const ChangeLoadBalancerProtectionResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerProtectionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerProtectionResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -499,42 +331,22 @@ export interface ChangeLoadBalancerProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const ChangeLoadBalancerProtectionResponseAction = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ChangeLoadBalancerProtectionResponseAction>;
-
 export interface ChangeLoadBalancerProtectionResponse {
   action: ChangeLoadBalancerProtectionResponseAction;
 }
-const ChangeLoadBalancerProtectionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ChangeLoadBalancerProtectionResponse>;
-
 export interface ChangeLoadBalancerTypeRequest {
   /** ID of the Load Balancer. */
   id: number;
   /** ID or name of Load Balancer type the Load Balancer should migrate to. */
   load_balancer_type: string;
 }
-const ChangeLoadBalancerTypeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ChangeLoadBalancerTypeRequest>;
-
 /** Status of the Action. */
 export type ChangeLoadBalancerTypeResponseActionStatus = "running" | "success" | "error";
-const ChangeLoadBalancerTypeResponseActionStatus = S.String;
-
 export type ChangeLoadBalancerTypeResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerTypeResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const ChangeLoadBalancerTypeResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerTypeResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerTypeResponseActionError = AddLoadBalancerServiceResponseActionError;
 export interface ChangeLoadBalancerTypeResponseAction {
@@ -555,42 +367,22 @@ export interface ChangeLoadBalancerTypeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const ChangeLoadBalancerTypeResponseAction = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ChangeLoadBalancerTypeResponseAction>;
-
 export interface ChangeLoadBalancerTypeResponse {
   action: ChangeLoadBalancerTypeResponseAction;
 }
-const ChangeLoadBalancerTypeResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ChangeLoadBalancerTypeResponse>;
-
 export interface DeleteLoadBalancerServiceRequest {
   /** ID of the Load Balancer. */
   id: number;
   /** The listen port of the service you want to delete. */
   listen_port: number;
 }
-const DeleteLoadBalancerServiceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DeleteLoadBalancerServiceRequest>;
-
 /** Status of the Action. */
 export type DeleteLoadBalancerServiceResponseActionStatus = "running" | "success" | "error";
-const DeleteLoadBalancerServiceResponseActionStatus = S.String;
-
 export type DeleteLoadBalancerServiceResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DeleteLoadBalancerServiceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const DeleteLoadBalancerServiceResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<DeleteLoadBalancerServiceResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteLoadBalancerServiceResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -612,42 +404,22 @@ export interface DeleteLoadBalancerServiceResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const DeleteLoadBalancerServiceResponseAction = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteLoadBalancerServiceResponseAction>;
-
 export interface DeleteLoadBalancerServiceResponse {
   action: DeleteLoadBalancerServiceResponseAction;
 }
-const DeleteLoadBalancerServiceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteLoadBalancerServiceResponse>;
-
 export interface DetachLoadBalancerFromNetworkRequest {
   /** ID of the Load Balancer. */
   id: number;
   /** ID of an existing network to detach the Load Balancer from. */
   network: number;
 }
-const DetachLoadBalancerFromNetworkRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DetachLoadBalancerFromNetworkRequest>;
-
 /** Status of the Action. */
 export type DetachLoadBalancerFromNetworkResponseActionStatus = "running" | "success" | "error";
-const DetachLoadBalancerFromNetworkResponseActionStatus = S.String;
-
 export type DetachLoadBalancerFromNetworkResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DetachLoadBalancerFromNetworkResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const DetachLoadBalancerFromNetworkResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<DetachLoadBalancerFromNetworkResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachLoadBalancerFromNetworkResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -669,43 +441,23 @@ export interface DetachLoadBalancerFromNetworkResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const DetachLoadBalancerFromNetworkResponseAction = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DetachLoadBalancerFromNetworkResponseAction>;
-
 export interface DetachLoadBalancerFromNetworkResponse {
   action: DetachLoadBalancerFromNetworkResponseAction;
 }
-const DetachLoadBalancerFromNetworkResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DetachLoadBalancerFromNetworkResponse>;
-
 export interface DisableLoadBalancerPublicInterfaceRequest {
   /** ID of the Load Balancer. */
   id: number;
 }
-const DisableLoadBalancerPublicInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DisableLoadBalancerPublicInterfaceRequest>;
-
 /** Status of the Action. */
 export type DisableLoadBalancerPublicInterfaceResponseActionStatus =
   | "running"
   | "success"
   | "error";
-const DisableLoadBalancerPublicInterfaceResponseActionStatus = S.String;
-
 export type DisableLoadBalancerPublicInterfaceResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DisableLoadBalancerPublicInterfaceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const DisableLoadBalancerPublicInterfaceResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<DisableLoadBalancerPublicInterfaceResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableLoadBalancerPublicInterfaceResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -727,40 +479,20 @@ export interface DisableLoadBalancerPublicInterfaceResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const DisableLoadBalancerPublicInterfaceResponseAction = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DisableLoadBalancerPublicInterfaceResponseAction>;
-
 export interface DisableLoadBalancerPublicInterfaceResponse {
   action: DisableLoadBalancerPublicInterfaceResponseAction;
 }
-const DisableLoadBalancerPublicInterfaceResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DisableLoadBalancerPublicInterfaceResponse>;
-
 export interface EnableLoadBalancerPublicInterfaceRequest {
   /** ID of the Load Balancer. */
   id: number;
 }
-const EnableLoadBalancerPublicInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<EnableLoadBalancerPublicInterfaceRequest>;
-
 /** Status of the Action. */
 export type EnableLoadBalancerPublicInterfaceResponseActionStatus = "running" | "success" | "error";
-const EnableLoadBalancerPublicInterfaceResponseActionStatus = S.String;
-
 export type EnableLoadBalancerPublicInterfaceResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type EnableLoadBalancerPublicInterfaceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const EnableLoadBalancerPublicInterfaceResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<EnableLoadBalancerPublicInterfaceResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableLoadBalancerPublicInterfaceResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -782,40 +514,20 @@ export interface EnableLoadBalancerPublicInterfaceResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const EnableLoadBalancerPublicInterfaceResponseAction = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<EnableLoadBalancerPublicInterfaceResponseAction>;
-
 export interface EnableLoadBalancerPublicInterfaceResponse {
   action: EnableLoadBalancerPublicInterfaceResponseAction;
 }
-const EnableLoadBalancerPublicInterfaceResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<EnableLoadBalancerPublicInterfaceResponse>;
-
 export interface GetLoadBalancersActionRequest {
   /** ID of the Action. */
   id: number;
 }
-const GetLoadBalancersActionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetLoadBalancersActionRequest>;
-
 /** Status of the Action. */
 export type GetLoadBalancersActionResponseActionStatus = "running" | "success" | "error";
-const GetLoadBalancersActionResponseActionStatus = S.String;
-
 export type GetLoadBalancersActionResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetLoadBalancersActionResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const GetLoadBalancersActionResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<GetLoadBalancersActionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetLoadBalancersActionResponseActionError = AddLoadBalancerServiceResponseActionError;
 export interface GetLoadBalancersActionResponseAction {
@@ -836,19 +548,9 @@ export interface GetLoadBalancersActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const GetLoadBalancersActionResponseAction = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetLoadBalancersActionResponseAction>;
-
 export interface GetLoadBalancersActionResponse {
   action: GetLoadBalancersActionResponseAction;
 }
-const GetLoadBalancersActionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetLoadBalancersActionResponse>;
-
 export type ListLoadBalancerActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -865,24 +567,14 @@ export type ListLoadBalancerActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-const ListLoadBalancerActionsRequestSortItem = S.String;
-
 export type ListLoadBalancerActionsRequestSortList = Array<
   ListLoadBalancerActionsRequestSortItem | (string & {})
 >;
-const ListLoadBalancerActionsRequestSortList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListLoadBalancerActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListLoadBalancerActionsRequestStatusItem = "running" | "success" | "error";
 export type ListLoadBalancerActionsRequestStatusList = Array<
   ListLoadBalancerActionsRequestStatusItem | (string & {})
 >;
-const ListLoadBalancerActionsRequestStatusList =
-  ListLoadBalancerActionsRequestSortList as any as S.Schema<ListLoadBalancerActionsRequestStatusList>;
-
 export interface ListLoadBalancerActionsRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -895,23 +587,13 @@ export interface ListLoadBalancerActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListLoadBalancerActionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListLoadBalancerActionsRequest>;
-
 /** Status of the Action. */
 export type ListLoadBalancerActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListLoadBalancerActionsResponseActionsItemStatus = S.String;
-
 export type ListLoadBalancerActionsResponseActionsItemResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListLoadBalancerActionsResponseActionsItemResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const ListLoadBalancerActionsResponseActionsItemResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ListLoadBalancerActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListLoadBalancerActionsResponseActionsItemError =
   AddLoadBalancerServiceResponseActionError;
@@ -933,18 +615,8 @@ export interface ListLoadBalancerActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const ListLoadBalancerActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListLoadBalancerActionsResponseActionsItem>;
-
 export type ListLoadBalancerActionsResponseActionsList =
   Array<ListLoadBalancerActionsResponseActionsItem>;
-const ListLoadBalancerActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListLoadBalancerActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListLoadBalancerActionsResponseMetaPagination {
   /** Current page number. */
@@ -960,33 +632,15 @@ export interface ListLoadBalancerActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListLoadBalancerActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListLoadBalancerActionsResponseMetaPagination>;
-
 export interface ListLoadBalancerActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListLoadBalancerActionsResponseMetaPagination;
 }
-const ListLoadBalancerActionsResponseMeta = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListLoadBalancerActionsResponseMeta>;
-
 export interface ListLoadBalancerActionsResponse {
   actions: ListLoadBalancerActionsResponseActionsList;
   meta: ListLoadBalancerActionsResponseMeta;
 }
-const ListLoadBalancerActionsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListLoadBalancerActionsResponse>;
-
 export type ListLoadBalancersActionsRequestIdList = Array<number>;
-const ListLoadBalancersActionsRequestIdList =
-  AddLoadBalancerServiceRequestHttpCertificatesList as any as S.Schema<ListLoadBalancersActionsRequestIdList>;
-
 export type ListLoadBalancersActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -1006,17 +660,11 @@ export type ListLoadBalancersActionsRequestSortItem =
 export type ListLoadBalancersActionsRequestSortList = Array<
   ListLoadBalancersActionsRequestSortItem | (string & {})
 >;
-const ListLoadBalancersActionsRequestSortList =
-  ListLoadBalancerActionsRequestSortList as any as S.Schema<ListLoadBalancersActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListLoadBalancersActionsRequestStatusItem = "running" | "success" | "error";
 export type ListLoadBalancersActionsRequestStatusList = Array<
   ListLoadBalancersActionsRequestStatusItem | (string & {})
 >;
-const ListLoadBalancersActionsRequestStatusList =
-  ListLoadBalancerActionsRequestSortList as any as S.Schema<ListLoadBalancersActionsRequestStatusList>;
-
 export interface ListLoadBalancersActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListLoadBalancersActionsRequestIdList;
@@ -1029,23 +677,13 @@ export interface ListLoadBalancersActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListLoadBalancersActionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListLoadBalancersActionsRequest>;
-
 /** Status of the Action. */
 export type ListLoadBalancersActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListLoadBalancersActionsResponseActionsItemStatus = S.String;
-
 export type ListLoadBalancersActionsResponseActionsItemResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListLoadBalancersActionsResponseActionsItemResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const ListLoadBalancersActionsResponseActionsItemResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ListLoadBalancersActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListLoadBalancersActionsResponseActionsItemError =
   AddLoadBalancerServiceResponseActionError;
@@ -1067,18 +705,8 @@ export interface ListLoadBalancersActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const ListLoadBalancersActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListLoadBalancersActionsResponseActionsItem>;
-
 export type ListLoadBalancersActionsResponseActionsList =
   Array<ListLoadBalancersActionsResponseActionsItem>;
-const ListLoadBalancersActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListLoadBalancersActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListLoadBalancersActionsResponseMetaPagination =
   ListLoadBalancerActionsResponseMetaPagination;
@@ -1087,15 +715,8 @@ export interface ListLoadBalancersActionsResponse {
   actions: ListLoadBalancersActionsResponseActionsList;
   meta: ListLoadBalancerActionsResponseMeta;
 }
-const ListLoadBalancersActionsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListLoadBalancersActionsResponse>;
-
 /** Type of the resource. */
 export type RemoveLoadBalancerTargetRequestType = "server" | "label_selector" | "ip";
-const RemoveLoadBalancerTargetRequestType = S.String;
-
 /** Configuration for type Server, only valid and required if type is `server`. */
 export type RemoveLoadBalancerTargetRequestServer = AddLoadBalancerTargetRequestServer;
 /** Configuration for label selector targets, only valid and required if type is `label_selector`. */
@@ -1115,23 +736,13 @@ export interface RemoveLoadBalancerTargetRequest {
   /** Configuration for an IP target. It is only possible to use the (Public or vSwitch) IPs of Hetzner Online Root Servers belonging to the project owner. IPs belonging to other users are blocked. Additionally IPs belonging to services provided by Hetzner Cloud (Servers, Load Balancers, ...) are blocked as well. Only valid and required if type is `ip`. */
   ip?: AddLoadBalancerTargetRequestIp;
 }
-const RemoveLoadBalancerTargetRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RemoveLoadBalancerTargetRequest>;
-
 /** Status of the Action. */
 export type RemoveLoadBalancerTargetResponseActionStatus = "running" | "success" | "error";
-const RemoveLoadBalancerTargetResponseActionStatus = S.String;
-
 export type RemoveLoadBalancerTargetResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type RemoveLoadBalancerTargetResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const RemoveLoadBalancerTargetResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<RemoveLoadBalancerTargetResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveLoadBalancerTargetResponseActionError = AddLoadBalancerServiceResponseActionError;
 export interface RemoveLoadBalancerTargetResponseAction {
@@ -1152,27 +763,13 @@ export interface RemoveLoadBalancerTargetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const RemoveLoadBalancerTargetResponseAction = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<RemoveLoadBalancerTargetResponseAction>;
-
 export interface RemoveLoadBalancerTargetResponse {
   action: RemoveLoadBalancerTargetResponseAction;
 }
-const RemoveLoadBalancerTargetResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<RemoveLoadBalancerTargetResponse>;
-
 /** Protocol of the Load Balancer. */
 export type UpdateLoadBalancerServiceRequestProtocol = "tcp" | "http" | "https";
-const UpdateLoadBalancerServiceRequestProtocol = S.String;
-
 /** Type of the health check. */
 export type UpdateLoadBalancerServiceRequestHealthCheckProtocol = "tcp" | "http";
-const UpdateLoadBalancerServiceRequestHealthCheckProtocol = S.String;
-
 /** List of returned HTTP status codes in order to pass the health check. Supports the wildcards `?` for exactly one character and `*` for multiple ones. */
 export type UpdateLoadBalancerServiceRequestHealthCheckHttpStatusCodesList = Array<string>;
 /** Additional configuration for protocol http. */
@@ -1188,9 +785,6 @@ export interface UpdateLoadBalancerServiceRequestHealthCheckHttp {
   /** Use HTTPS for health check. */
   tls?: boolean;
 }
-const UpdateLoadBalancerServiceRequestHealthCheckHttp =
-  AddLoadBalancerServiceRequestHealthCheckHttp as any as S.Schema<UpdateLoadBalancerServiceRequestHealthCheckHttp>;
-
 export interface UpdateLoadBalancerServiceRequestHealthCheck {
   /** Type of the health check. */
   protocol: UpdateLoadBalancerServiceRequestHealthCheckProtocol | (string & {});
@@ -1205,11 +799,6 @@ export interface UpdateLoadBalancerServiceRequestHealthCheck {
   /** Additional configuration for protocol http. */
   http?: UpdateLoadBalancerServiceRequestHealthCheckHttp;
 }
-const UpdateLoadBalancerServiceRequestHealthCheck = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<UpdateLoadBalancerServiceRequestHealthCheck>;
-
 /** IDs of the Certificates to use for TLS/SSL termination by the Load Balancer; empty for TLS/SSL passthrough or if `protocol` is `http`. */
 export type UpdateLoadBalancerServiceRequestHttpCertificatesList = Array<number>;
 /** Configuration option for protocols http and https. */
@@ -1227,9 +816,6 @@ export interface UpdateLoadBalancerServiceRequestHttp {
   /** Use sticky sessions. Only available if `protocol` is `http` or `https`. */
   sticky_sessions?: boolean;
 }
-const UpdateLoadBalancerServiceRequestHttp =
-  AddLoadBalancerServiceRequestHttp as any as S.Schema<UpdateLoadBalancerServiceRequestHttp>;
-
 export interface UpdateLoadBalancerServiceRequest {
   /** ID of the Load Balancer. */
   id: number;
@@ -1245,23 +831,13 @@ export interface UpdateLoadBalancerServiceRequest {
   /** Configuration option for protocols http and https. */
   http?: UpdateLoadBalancerServiceRequestHttp;
 }
-const UpdateLoadBalancerServiceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UpdateLoadBalancerServiceRequest>;
-
 /** Status of the Action. */
 export type UpdateLoadBalancerServiceResponseActionStatus = "running" | "success" | "error";
-const UpdateLoadBalancerServiceResponseActionStatus = S.String;
-
 export type UpdateLoadBalancerServiceResponseActionResourcesItem =
   AddLoadBalancerServiceResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type UpdateLoadBalancerServiceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-const UpdateLoadBalancerServiceResponseActionResourcesList =
-  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<UpdateLoadBalancerServiceResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UpdateLoadBalancerServiceResponseActionError =
   AddLoadBalancerServiceResponseActionError;
@@ -1283,19 +859,9 @@ export interface UpdateLoadBalancerServiceResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddLoadBalancerServiceResponseActionError | null;
 }
-const UpdateLoadBalancerServiceResponseAction = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<UpdateLoadBalancerServiceResponseAction>;
-
 export interface UpdateLoadBalancerServiceResponse {
   action: UpdateLoadBalancerServiceResponseAction;
 }
-const UpdateLoadBalancerServiceResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<UpdateLoadBalancerServiceResponse>;
-
 export type AddLoadBalancerServiceError = HetznerOpError;
 /** Add Service Adds a service to a Load Balancer. #### Operation specific errors */
 export const addLoadBalancerService: API.OperationMethod<
@@ -1304,8 +870,8 @@ export const addLoadBalancerService: API.OperationMethod<
   AddLoadBalancerServiceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddLoadBalancerServiceRequest,
-  output: AddLoadBalancerServiceResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<AddLoadBalancerServiceRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<AddLoadBalancerServiceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1319,8 +885,8 @@ export const addLoadBalancerTarget: API.OperationMethod<
   AddLoadBalancerTargetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddLoadBalancerTargetRequest,
-  output: AddLoadBalancerTargetResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<AddLoadBalancerTargetRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<AddLoadBalancerTargetResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1334,8 +900,8 @@ export const attachLoadBalancerToNetwork: API.OperationMethod<
   AttachLoadBalancerToNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachLoadBalancerToNetworkRequest,
-  output: AttachLoadBalancerToNetworkResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<AttachLoadBalancerToNetworkRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<AttachLoadBalancerToNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1349,8 +915,8 @@ export const changeLoadBalancerAlgorithm: API.OperationMethod<
   ChangeLoadBalancerAlgorithmError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeLoadBalancerAlgorithmRequest,
-  output: ChangeLoadBalancerAlgorithmResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<ChangeLoadBalancerAlgorithmRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<ChangeLoadBalancerAlgorithmResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1364,8 +930,8 @@ export const changeLoadBalancerDnsPtr: API.OperationMethod<
   ChangeLoadBalancerDnsPtrError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeLoadBalancerDnsPtrRequest,
-  output: ChangeLoadBalancerDnsPtrResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<ChangeLoadBalancerDnsPtrRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ChangeLoadBalancerDnsPtrResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1379,8 +945,8 @@ export const changeLoadBalancerProtection: API.OperationMethod<
   ChangeLoadBalancerProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeLoadBalancerProtectionRequest,
-  output: ChangeLoadBalancerProtectionResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<ChangeLoadBalancerProtectionRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ChangeLoadBalancerProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1394,8 +960,8 @@ export const changeLoadBalancerType: API.OperationMethod<
   ChangeLoadBalancerTypeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeLoadBalancerTypeRequest,
-  output: ChangeLoadBalancerTypeResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<ChangeLoadBalancerTypeRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<ChangeLoadBalancerTypeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1409,8 +975,8 @@ export const deleteLoadBalancerService: API.OperationMethod<
   DeleteLoadBalancerServiceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLoadBalancerServiceRequest,
-  output: DeleteLoadBalancerServiceResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteLoadBalancerServiceRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DeleteLoadBalancerServiceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1424,8 +990,8 @@ export const detachLoadBalancerFromNetwork: API.OperationMethod<
   DetachLoadBalancerFromNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachLoadBalancerFromNetworkRequest,
-  output: DetachLoadBalancerFromNetworkResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<DetachLoadBalancerFromNetworkRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<DetachLoadBalancerFromNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1005,8 @@ export const disableLoadBalancerPublicInterface: API.OperationMethod<
   DisableLoadBalancerPublicInterfaceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableLoadBalancerPublicInterfaceRequest,
-  output: DisableLoadBalancerPublicInterfaceResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<DisableLoadBalancerPublicInterfaceRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DisableLoadBalancerPublicInterfaceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1020,8 @@ export const enableLoadBalancerPublicInterface: API.OperationMethod<
   EnableLoadBalancerPublicInterfaceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableLoadBalancerPublicInterfaceRequest,
-  output: EnableLoadBalancerPublicInterfaceResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<EnableLoadBalancerPublicInterfaceRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<EnableLoadBalancerPublicInterfaceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1469,8 +1035,8 @@ export const getLoadBalancersAction: API.OperationMethod<
   GetLoadBalancersActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoadBalancersActionRequest,
-  output: GetLoadBalancersActionResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetLoadBalancersActionRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<GetLoadBalancersActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1486,8 +1052,8 @@ export const listLoadBalancerActions: API.PaginatedOperationMethod<
   ListLoadBalancerActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLoadBalancerActionsRequest,
-    output: ListLoadBalancerActionsResponse,
+    input: __S(48, __c6, 0) as any as S.Schema<ListLoadBalancerActionsRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<ListLoadBalancerActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1512,8 +1078,8 @@ export const listLoadBalancersActions: API.PaginatedOperationMethod<
   ListLoadBalancersActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLoadBalancersActionsRequest,
-    output: ListLoadBalancersActionsResponse,
+    input: __S(54, __c6, 6) as any as S.Schema<ListLoadBalancersActionsRequest>,
+    output: __S(57, __c7, 1) as any as S.Schema<ListLoadBalancersActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1536,8 +1102,8 @@ export const removeLoadBalancerTarget: API.OperationMethod<
   RemoveLoadBalancerTargetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveLoadBalancerTargetRequest,
-  output: RemoveLoadBalancerTargetResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<RemoveLoadBalancerTargetRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<RemoveLoadBalancerTargetResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1551,8 +1117,8 @@ export const updateLoadBalancerService: API.OperationMethod<
   UpdateLoadBalancerServiceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLoadBalancerServiceRequest,
-  output: UpdateLoadBalancerServiceResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<UpdateLoadBalancerServiceRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateLoadBalancerServiceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1569,7 +1135,7 @@ function __c0(j: number): any {
           domain: S.optional(S.NullOr(S.String)),
           path: S.optional(S.String),
           response: S.optional(S.String),
-          status_codes: S.optional(AddLoadBalancerServiceRequestHealthCheckHttpStatusCodesList),
+          status_codes: S.optional(__S(0, __c0, 0)),
           tls: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1578,12 +1144,12 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          protocol: AddLoadBalancerServiceRequestHealthCheckProtocol,
+          protocol: S.String,
           port: S.Number,
           interval: S.Number,
           timeout: S.Number,
           retries: S.Number,
-          http: S.optional(AddLoadBalancerServiceRequestHealthCheckHttp),
+          http: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "AddLoadBalancerServiceRequestHealthCheck",
@@ -1596,7 +1162,7 @@ function __c0(j: number): any {
           cookie_name: S.optional(S.String),
           cookie_lifetime: S.optional(S.Number),
           timeout_idle: S.optional(S.Number),
-          certificates: S.optional(AddLoadBalancerServiceRequestHttpCertificatesList),
+          certificates: S.optional(__S(3, __c0, 3)),
           redirect_http: S.optional(S.Boolean),
           sticky_sessions: S.optional(S.Boolean),
         }),
@@ -1607,12 +1173,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          protocol: AddLoadBalancerServiceRequestProtocol,
+          protocol: S.String,
           listen_port: S.Number,
           destination_port: S.Number,
           proxyprotocol: S.Boolean,
-          health_check: AddLoadBalancerServiceRequestHealthCheck,
-          http: S.optional(AddLoadBalancerServiceRequestHttp),
+          health_check: __S(2, __c0, 2),
+          http: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/add_service", code: 200 }),
         ),
@@ -1629,7 +1195,7 @@ function __c0(j: number): any {
         identifier: "AddLoadBalancerServiceResponseActionResourcesItem",
       });
     case 7:
-      return S.Array(AddLoadBalancerServiceResponseActionResourcesItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -1648,12 +1214,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: AddLoadBalancerServiceResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: AddLoadBalancerServiceResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "AddLoadBalancerServiceResponseAction",
@@ -1661,7 +1227,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: AddLoadBalancerServiceResponseAction,
+          action: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "AddLoadBalancerServiceResponse",
@@ -1695,10 +1261,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: AddLoadBalancerTargetRequestType,
-          server: S.optional(AddLoadBalancerTargetRequestServer),
-          label_selector: S.optional(AddLoadBalancerTargetRequestLabelSelector),
-          ip: S.optional(AddLoadBalancerTargetRequestIp),
+          type: S.String,
+          server: S.optional(__S(11, __c1, 3)),
+          label_selector: S.optional(__S(12, __c1, 4)),
+          ip: S.optional(__S(13, __c1, 5)),
           use_private_ip: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/add_target", code: 200 }),
@@ -1711,12 +1277,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: AddLoadBalancerTargetResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: AddLoadBalancerTargetResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "AddLoadBalancerTargetResponseAction",
@@ -1728,7 +1294,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: AddLoadBalancerTargetResponseAction,
+          action: __S(15, __c1, 7),
         }),
       ).annotate({
         identifier: "AddLoadBalancerTargetResponse",
@@ -1755,12 +1321,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: AttachLoadBalancerToNetworkResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: AttachLoadBalancerToNetworkResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "AttachLoadBalancerToNetworkResponseAction",
@@ -1768,7 +1334,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: AttachLoadBalancerToNetworkResponseAction,
+          action: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "AttachLoadBalancerToNetworkResponse",
@@ -1777,7 +1343,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: ChangeLoadBalancerAlgorithmRequestType,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1793,12 +1359,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeLoadBalancerAlgorithmResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeLoadBalancerAlgorithmResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerAlgorithmResponseAction",
@@ -1806,7 +1372,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeLoadBalancerAlgorithmResponseAction,
+          action: __S(21, __c2, 5),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerAlgorithmResponse",
@@ -1832,12 +1398,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeLoadBalancerDnsPtrResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeLoadBalancerDnsPtrResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerDnsPtrResponseAction",
@@ -1845,7 +1411,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeLoadBalancerDnsPtrResponseAction,
+          action: __S(24, __c3, 0),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerDnsPtrResponse",
@@ -1870,12 +1436,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeLoadBalancerProtectionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeLoadBalancerProtectionResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerProtectionResponseAction",
@@ -1883,7 +1449,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeLoadBalancerProtectionResponseAction,
+          action: __S(27, __c3, 3),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerProtectionResponse",
@@ -1904,12 +1470,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeLoadBalancerTypeResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeLoadBalancerTypeResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerTypeResponseAction",
@@ -1917,7 +1483,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeLoadBalancerTypeResponseAction,
+          action: __S(30, __c3, 6),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerTypeResponse",
@@ -1942,12 +1508,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: DeleteLoadBalancerServiceResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: DeleteLoadBalancerServiceResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "DeleteLoadBalancerServiceResponseAction",
@@ -1955,7 +1521,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: DeleteLoadBalancerServiceResponseAction,
+          action: __S(33, __c4, 1),
         }),
       ).annotate({
         identifier: "DeleteLoadBalancerServiceResponse",
@@ -1980,12 +1546,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: DetachLoadBalancerFromNetworkResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: DetachLoadBalancerFromNetworkResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "DetachLoadBalancerFromNetworkResponseAction",
@@ -1993,7 +1559,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: DetachLoadBalancerFromNetworkResponseAction,
+          action: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "DetachLoadBalancerFromNetworkResponse",
@@ -2017,12 +1583,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: DisableLoadBalancerPublicInterfaceResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: DisableLoadBalancerPublicInterfaceResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "DisableLoadBalancerPublicInterfaceResponseAction",
@@ -2034,7 +1600,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: DisableLoadBalancerPublicInterfaceResponseAction,
+          action: __S(39, __c4, 7),
         }),
       ).annotate({
         identifier: "DisableLoadBalancerPublicInterfaceResponse",
@@ -2058,12 +1624,12 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: EnableLoadBalancerPublicInterfaceResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: EnableLoadBalancerPublicInterfaceResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "EnableLoadBalancerPublicInterfaceResponseAction",
@@ -2071,7 +1637,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: EnableLoadBalancerPublicInterfaceResponseAction,
+          action: __S(42, __c5, 2),
         }),
       ).annotate({
         identifier: "EnableLoadBalancerPublicInterfaceResponse",
@@ -2089,12 +1655,12 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: GetLoadBalancersActionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: GetLoadBalancersActionResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "GetLoadBalancersActionResponseAction",
@@ -2102,13 +1668,13 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: GetLoadBalancersActionResponseAction,
+          action: __S(45, __c5, 5),
         }),
       ).annotate({
         identifier: "GetLoadBalancersActionResponse",
       });
     case 7:
-      return S.Array(ListLoadBalancerActionsRequestSortItem);
+      return S.Array(S.String);
   }
 }
 function __c6(j: number): any {
@@ -2117,8 +1683,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(ListLoadBalancerActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListLoadBalancerActionsRequestStatusList.pipe(T.Query())),
+          sort: S.optional(__S(47, __c5, 7).pipe(T.Query())),
+          status: S.optional(__S(47, __c5, 7).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/load_balancers/{id}/actions", code: 200 })),
@@ -2130,18 +1696,18 @@ function __c6(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListLoadBalancerActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListLoadBalancerActionsResponseActionsItemResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ListLoadBalancerActionsResponseActionsItem",
       });
     case 2:
-      return S.Array(ListLoadBalancerActionsResponseActionsItem);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2158,7 +1724,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListLoadBalancerActionsResponseMetaPagination,
+          pagination: __S(51, __c6, 3),
         }),
       ).annotate({
         identifier: "ListLoadBalancerActionsResponseMeta",
@@ -2166,8 +1732,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: ListLoadBalancerActionsResponseActionsList,
-          meta: ListLoadBalancerActionsResponseMeta,
+          actions: __S(50, __c6, 2),
+          meta: __S(52, __c6, 4),
         }),
       ).annotate({
         identifier: "ListLoadBalancerActionsResponse",
@@ -2175,9 +1741,9 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(ListLoadBalancersActionsRequestIdList.pipe(T.Query())),
-          sort: S.optional(ListLoadBalancersActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListLoadBalancersActionsRequestStatusList.pipe(T.Query())),
+          id: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          sort: S.optional(__S(47, __c5, 7).pipe(T.Query())),
+          status: S.optional(__S(47, __c5, 7).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/load_balancers/actions", code: 200 })),
@@ -2189,12 +1755,12 @@ function __c6(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListLoadBalancersActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListLoadBalancersActionsResponseActionsItemResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ListLoadBalancersActionsResponseActionsItem",
@@ -2204,12 +1770,12 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListLoadBalancersActionsResponseActionsItem);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: ListLoadBalancersActionsResponseActionsList,
-          meta: ListLoadBalancerActionsResponseMeta,
+          actions: __S(56, __c7, 0),
+          meta: __S(52, __c6, 4),
         }),
       ).annotate({
         identifier: "ListLoadBalancersActionsResponse",
@@ -2218,10 +1784,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: RemoveLoadBalancerTargetRequestType,
-          server: S.optional(AddLoadBalancerTargetRequestServer),
-          label_selector: S.optional(AddLoadBalancerTargetRequestLabelSelector),
-          ip: S.optional(AddLoadBalancerTargetRequestIp),
+          type: S.String,
+          server: S.optional(__S(11, __c1, 3)),
+          label_selector: S.optional(__S(12, __c1, 4)),
+          ip: S.optional(__S(13, __c1, 5)),
         }).pipe(
           T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/remove_target", code: 200 }),
         ),
@@ -2233,12 +1799,12 @@ function __c7(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: RemoveLoadBalancerTargetResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: RemoveLoadBalancerTargetResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "RemoveLoadBalancerTargetResponseAction",
@@ -2246,7 +1812,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: RemoveLoadBalancerTargetResponseAction,
+          action: __S(59, __c7, 3),
         }),
       ).annotate({
         identifier: "RemoveLoadBalancerTargetResponse",
@@ -2254,12 +1820,12 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          protocol: UpdateLoadBalancerServiceRequestHealthCheckProtocol,
+          protocol: S.String,
           port: S.Number,
           interval: S.Number,
           timeout: S.Number,
           retries: S.Number,
-          http: S.optional(UpdateLoadBalancerServiceRequestHealthCheckHttp),
+          http: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "UpdateLoadBalancerServiceRequestHealthCheck",
@@ -2268,12 +1834,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          protocol: S.optional(UpdateLoadBalancerServiceRequestProtocol),
+          protocol: S.optional(S.String),
           listen_port: S.Number,
           destination_port: S.optional(S.Number),
           proxyprotocol: S.optional(S.Boolean),
-          health_check: S.optional(UpdateLoadBalancerServiceRequestHealthCheck),
-          http: S.optional(UpdateLoadBalancerServiceRequestHttp),
+          health_check: S.optional(__S(61, __c7, 5)),
+          http: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/update_service", code: 200 }),
         ),
@@ -2285,12 +1851,12 @@ function __c7(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: UpdateLoadBalancerServiceResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: UpdateLoadBalancerServiceResponseActionResourcesList,
-          error: S.NullOr(AddLoadBalancerServiceResponseActionError),
+          resources: __S(7, __c0, 7),
+          error: S.NullOr(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "UpdateLoadBalancerServiceResponseAction",
@@ -2302,10 +1868,15 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: UpdateLoadBalancerServiceResponseAction,
+          action: __S(63, __c7, 7),
         }),
       ).annotate({
         identifier: "UpdateLoadBalancerServiceResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

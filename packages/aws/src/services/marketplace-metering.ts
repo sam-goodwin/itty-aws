@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Metering",
   serviceShapeName: "AWSMPMeteringService",
@@ -208,16 +210,12 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface UsageAllocation {
   AllocatedUsageQuantity: number;
   Tags?: Tag[];
 }
-const UsageAllocation = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UsageAllocation>;
 export type UsageAllocations = UsageAllocation[];
-const UsageAllocations = /*@__PURE__*/ __L.at(__c0, 3);
 export type CustomerAWSAccountId = string;
 export type LicenseArn = string;
 export interface UsageRecord {
@@ -229,41 +227,27 @@ export interface UsageRecord {
   CustomerAWSAccountId?: string;
   LicenseArn?: string;
 }
-const UsageRecord = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UsageRecord>;
 export type UsageRecordList = UsageRecord[];
-const UsageRecordList = /*@__PURE__*/ __L.at(__c0, 5);
 export type ProductCode = string;
 export interface BatchMeterUsageRequest {
   UsageRecords: UsageRecord[];
   ProductCode?: string;
 }
-const BatchMeterUsageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BatchMeterUsageRequest>;
 export type UsageRecordResultStatus =
   | "Success"
   | "CustomerNotSubscribed"
   | "DuplicateRecord"
   | (string & {});
-const UsageRecordResultStatus = S.String;
-
 export interface UsageRecordResult {
   UsageRecord?: UsageRecord;
   MeteringRecordId?: string;
   Status?: UsageRecordResultStatus;
 }
-const UsageRecordResult = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UsageRecordResult>;
 export type UsageRecordResultList = UsageRecordResult[];
-const UsageRecordResultList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchMeterUsageResult {
   Results?: UsageRecordResult[];
   UnprocessedRecords?: UsageRecord[];
 }
-const BatchMeterUsageResult = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchMeterUsageResult>;
 export type ClientToken = string;
 export interface MeterUsageRequest {
   ProductCode: string;
@@ -274,11 +258,9 @@ export interface MeterUsageRequest {
   UsageAllocations?: UsageAllocation[];
   ClientToken?: string;
 }
-const MeterUsageRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MeterUsageRequest>;
 export interface MeterUsageResult {
   MeteringRecordId?: string;
 }
-const MeterUsageResult = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MeterUsageResult>;
 export type VersionInteger = number;
 export type Nonce = string;
 export interface RegisterUsageRequest {
@@ -286,30 +268,20 @@ export interface RegisterUsageRequest {
   PublicKeyVersion: number;
   Nonce?: string;
 }
-const RegisterUsageRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RegisterUsageRequest>;
 export type NonEmptyString = string;
 export interface RegisterUsageResult {
   PublicKeyRotationTimestamp?: Date;
   Signature?: string;
 }
-const RegisterUsageResult = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RegisterUsageResult>;
 export interface ResolveCustomerRequest {
   RegistrationToken: string;
 }
-const ResolveCustomerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ResolveCustomerRequest>;
 export interface ResolveCustomerResult {
   CustomerIdentifier?: string;
   ProductCode?: string;
   CustomerAWSAccountId?: string;
   LicenseArn?: string;
 }
-const ResolveCustomerResult = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ResolveCustomerResult>;
 export type ErrorMessage = string;
 export type BatchMeterUsageError =
   | DisabledApiException
@@ -364,8 +336,8 @@ export const batchMeterUsage: API.OperationMethod<
   BatchMeterUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchMeterUsageRequest,
-  output: BatchMeterUsageResult,
+  input: __S(6, __c0, 6) as any as S.Schema<BatchMeterUsageRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<BatchMeterUsageResult>,
   errors: [
     DisabledApiException,
     InternalServiceErrorException,
@@ -443,8 +415,8 @@ export const meterUsage: API.OperationMethod<
   MeterUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: MeterUsageRequest,
-  output: MeterUsageResult,
+  input: __S(10, __c1, 2) as any as S.Schema<MeterUsageRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<MeterUsageResult>,
   errors: [
     CustomerNotEntitledException,
     DuplicateRequestException,
@@ -520,8 +492,8 @@ export const registerUsage: API.OperationMethod<
   RegisterUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterUsageRequest,
-  output: RegisterUsageResult,
+  input: __S(12, __c1, 4) as any as S.Schema<RegisterUsageRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<RegisterUsageResult>,
   errors: [
     CustomerNotEntitledException,
     DisabledApiException,
@@ -570,8 +542,8 @@ export const resolveCustomer: API.OperationMethod<
   ResolveCustomerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResolveCustomerRequest,
-  output: ResolveCustomerResult,
+  input: __S(14, __c1, 6) as any as S.Schema<ResolveCustomerRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ResolveCustomerResult>,
   errors: [
     DisabledApiException,
     ExpiredTokenException,
@@ -592,13 +564,13 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ AllocatedUsageQuantity: S.Number, Tags: S.optional(TagList) }),
+        S.Struct({ AllocatedUsageQuantity: S.Number, Tags: S.optional(__S(1, __c0, 1)) }),
       ).annotate({ identifier: "UsageAllocation" });
     case 3:
-      return S.Array(UsageAllocation);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -606,25 +578,25 @@ function __c0(j: number): any {
           CustomerIdentifier: S.optional(S.String),
           Dimension: S.String,
           Quantity: S.optional(S.Number),
-          UsageAllocations: S.optional(UsageAllocations),
+          UsageAllocations: S.optional(__S(3, __c0, 3)),
           CustomerAWSAccountId: S.optional(S.String),
           LicenseArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageRecord" });
     case 5:
-      return S.Array(UsageRecord);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ UsageRecords: UsageRecordList, ProductCode: S.optional(S.String) }).pipe(
+        S.Struct({ UsageRecords: __S(5, __c0, 5), ProductCode: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchMeterUsageRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          UsageRecord: S.optional(UsageRecord),
+          UsageRecord: S.optional(__S(4, __c0, 4)),
           MeteringRecordId: S.optional(S.String),
-          Status: S.optional(UsageRecordResultStatus),
+          Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageRecordResult" });
   }
@@ -632,12 +604,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UsageRecordResult);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Results: S.optional(UsageRecordResultList),
-          UnprocessedRecords: S.optional(UsageRecordList),
+          Results: S.optional(__S(8, __c1, 0)),
+          UnprocessedRecords: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "BatchMeterUsageResult" });
     case 2:
@@ -648,7 +620,7 @@ function __c1(j: number): any {
           UsageDimension: S.String,
           UsageQuantity: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
-          UsageAllocations: S.optional(UsageAllocations),
+          UsageAllocations: S.optional(__S(3, __c0, 3)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "MeterUsageRequest" });
@@ -687,4 +659,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ResolveCustomerResult" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

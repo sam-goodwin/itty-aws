@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Route53 Recovery Cluster",
   serviceShapeName: "ToggleCustomerAPI",
@@ -148,12 +150,12 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(13, __c1, 5)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -164,23 +166,13 @@ export type Arn = string;
 export interface GetRoutingControlStateRequest {
   RoutingControlArn: string;
 }
-const GetRoutingControlStateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetRoutingControlStateRequest>;
 export type RoutingControlState = "On" | "Off" | (string & {});
-const RoutingControlState = S.String;
-
 export type RoutingControlName = string;
 export interface GetRoutingControlStateResponse {
   RoutingControlArn: string;
   RoutingControlState: RoutingControlState;
   RoutingControlName?: string;
 }
-const GetRoutingControlStateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetRoutingControlStateResponse>;
 export type PageToken = string;
 export type MaxResults = number;
 export interface ListRoutingControlsRequest {
@@ -188,10 +180,6 @@ export interface ListRoutingControlsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListRoutingControlsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListRoutingControlsRequest>;
 export type ControlPanelName = string;
 export type Owner = string;
 export interface RoutingControl {
@@ -202,54 +190,28 @@ export interface RoutingControl {
   RoutingControlState?: RoutingControlState;
   Owner?: string;
 }
-const RoutingControl = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RoutingControl>;
 export type RoutingControls = RoutingControl[];
-const RoutingControls = /*@__PURE__*/ __L.at(__c0, 4);
 export interface ListRoutingControlsResponse {
   RoutingControls: RoutingControl[];
   NextToken?: string;
 }
-const ListRoutingControlsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListRoutingControlsResponse>;
 export type Arns = string[];
-const Arns = /*@__PURE__*/ __L.at(__c0, 6);
 export interface UpdateRoutingControlStateRequest {
   RoutingControlArn: string;
   RoutingControlState: RoutingControlState;
   SafetyRulesToOverride?: string[];
 }
-const UpdateRoutingControlStateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<UpdateRoutingControlStateRequest>;
 export interface UpdateRoutingControlStateResponse {}
-const UpdateRoutingControlStateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UpdateRoutingControlStateResponse>;
 export interface UpdateRoutingControlStateEntry {
   RoutingControlArn: string;
   RoutingControlState: RoutingControlState;
 }
-const UpdateRoutingControlStateEntry = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UpdateRoutingControlStateEntry>;
 export type UpdateRoutingControlStateEntries = UpdateRoutingControlStateEntry[];
-const UpdateRoutingControlStateEntries = /*@__PURE__*/ __L.at(__c1, 2);
 export interface UpdateRoutingControlStatesRequest {
   UpdateRoutingControlStateEntries: UpdateRoutingControlStateEntry[];
   SafetyRulesToOverride?: string[];
 }
-const UpdateRoutingControlStatesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateRoutingControlStatesRequest>;
 export interface UpdateRoutingControlStatesResponse {}
-const UpdateRoutingControlStatesResponse =
-  UpdateRoutingControlStateResponse as any as S.Schema<UpdateRoutingControlStatesResponse>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason =
   | "unknownOperation"
@@ -257,18 +219,11 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c1, 5);
 export type GetRoutingControlStateError =
   | AccessDeniedException
   | EndpointTemporarilyUnavailableException
@@ -310,8 +265,8 @@ export const getRoutingControlState: API.OperationMethod<
   GetRoutingControlStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoutingControlStateRequest,
-  output: GetRoutingControlStateResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRoutingControlStateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetRoutingControlStateResponse>,
   errors: [
     AccessDeniedException,
     EndpointTemporarilyUnavailableException,
@@ -368,8 +323,8 @@ export const listRoutingControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RoutingControl
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRoutingControlsRequest,
-  output: ListRoutingControlsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ListRoutingControlsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ListRoutingControlsResponse>,
   errors: [
     AccessDeniedException,
     EndpointTemporarilyUnavailableException,
@@ -434,8 +389,8 @@ export const updateRoutingControlState: API.OperationMethod<
   UpdateRoutingControlStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoutingControlStateRequest,
-  output: UpdateRoutingControlStateResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<UpdateRoutingControlStateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateRoutingControlStateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -496,8 +451,8 @@ export const updateRoutingControlStates: API.OperationMethod<
   UpdateRoutingControlStatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoutingControlStatesRequest,
-  output: UpdateRoutingControlStatesResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<UpdateRoutingControlStatesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateRoutingControlStatesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -528,7 +483,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RoutingControlArn: S.String,
-          RoutingControlState: RoutingControlState,
+          RoutingControlState: S.String,
           RoutingControlName: S.optional(S.String),
         }),
       ).annotate({
@@ -551,15 +506,15 @@ function __c0(j: number): any {
           ControlPanelName: S.optional(S.String),
           RoutingControlArn: S.optional(S.String),
           RoutingControlName: S.optional(S.String),
-          RoutingControlState: S.optional(RoutingControlState),
+          RoutingControlState: S.optional(S.String),
           Owner: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingControl" });
     case 4:
-      return S.Array(RoutingControl);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ RoutingControls: RoutingControls, NextToken: S.optional(S.String) }),
+        S.Struct({ RoutingControls: __S(4, __c0, 4), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRoutingControlsResponse",
       });
@@ -569,8 +524,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RoutingControlArn: S.String,
-          RoutingControlState: RoutingControlState,
-          SafetyRulesToOverride: S.optional(Arns),
+          RoutingControlState: S.String,
+          SafetyRulesToOverride: S.optional(__S(6, __c0, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateRoutingControlStateRequest",
@@ -585,17 +540,17 @@ function __c1(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ RoutingControlArn: S.String, RoutingControlState: RoutingControlState }),
+        S.Struct({ RoutingControlArn: S.String, RoutingControlState: S.String }),
       ).annotate({
         identifier: "UpdateRoutingControlStateEntry",
       });
     case 2:
-      return S.Array(UpdateRoutingControlStateEntry);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          UpdateRoutingControlStateEntries: UpdateRoutingControlStateEntries,
-          SafetyRulesToOverride: S.optional(Arns),
+          UpdateRoutingControlStateEntries: __S(10, __c1, 2),
+          SafetyRulesToOverride: S.optional(__S(6, __c0, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateRoutingControlStatesRequest",
@@ -605,6 +560,11 @@ function __c1(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 5:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(12, __c1, 4));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

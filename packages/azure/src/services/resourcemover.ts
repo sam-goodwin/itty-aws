@@ -6,20 +6,15 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type CommitMoveCollectionRequestMoveResourcesList = Array<string>;
-const CommitMoveCollectionRequestMoveResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CommitMoveCollectionRequestMoveResourcesList>;
-
 /** Defines the move resource input type. */
 export type MoveResourceInputType = "MoveResourceId" | "MoveResourceSourceId";
-const MoveResourceInputType = S.String;
-
 export interface CommitMoveCollectionRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -33,25 +28,10 @@ export interface CommitMoveCollectionRequest {
   moveResources: CommitMoveCollectionRequestMoveResourcesList;
   moveResourceInputType?: MoveResourceInputType | (string & {});
 }
-const CommitMoveCollectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CommitMoveCollectionRequest>;
-
 /** The error details. */
 export type OperationStatusErrorDetailsList = Array<OperationStatusError>;
-const OperationStatusErrorDetailsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<OperationStatusErrorDetailsList>;
-
 /** The affected move resources. */
 export type AffectedMoveResourceMoveResourcesList = Array<AffectedMoveResource>;
-const AffectedMoveResourceMoveResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AffectedMoveResourceMoveResourcesList>;
-
 /** The RP custom operation error info. */
 export interface AffectedMoveResource {
   /** The affected move resource id. */
@@ -61,22 +41,13 @@ export interface AffectedMoveResource {
   /** The affected move resources. */
   moveResources?: AffectedMoveResourceMoveResourcesList;
 }
-const AffectedMoveResource = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AffectedMoveResource>;
-
 /** The affected move resources. */
 export type MoveErrorInfoMoveResourcesList = Array<AffectedMoveResource>;
-const MoveErrorInfoMoveResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<MoveErrorInfoMoveResourcesList>;
-
 /** The move custom error info. */
 export interface MoveErrorInfo {
   /** The affected move resources. */
   moveResources?: MoveErrorInfoMoveResourcesList;
 }
-const MoveErrorInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<MoveErrorInfo>;
-
 /** The operation error info. */
 export interface OperationErrorAdditionalInfo {
   /** The error type. */
@@ -84,18 +55,8 @@ export interface OperationErrorAdditionalInfo {
   /** The operation error info. */
   info?: MoveErrorInfo;
 }
-const OperationErrorAdditionalInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<OperationErrorAdditionalInfo>;
-
 /** The additional info. */
 export type OperationStatusErrorAdditionalInfoList = Array<OperationErrorAdditionalInfo>;
-const OperationStatusErrorAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<OperationStatusErrorAdditionalInfoList>;
-
 /** Class for operation status errors. */
 export interface OperationStatusError {
   /** The error code. */
@@ -107,8 +68,6 @@ export interface OperationStatusError {
   /** The additional info. */
   additionalInfo?: OperationStatusErrorAdditionalInfoList;
 }
-const OperationStatusError = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<OperationStatusError>;
-
 /** Operation status REST resource. */
 export interface OperationStatus {
   /** Resource Id. */
@@ -126,19 +85,10 @@ export interface OperationStatus {
   /** Custom data. */
   properties?: unknown;
 }
-const OperationStatus = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<OperationStatus>;
-
 /** Resource tags. */
 export type CreateMoveCollectionRequestTagsMap = { [key: string]: string | undefined };
-const CreateMoveCollectionRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateMoveCollectionRequestTagsMap>;
-
 /** The type of identity used for the resource mover service. */
 export type ResourceIdentityType = "None" | "SystemAssigned" | "UserAssigned";
-const ResourceIdentityType = S.String;
-
 /** Defines the MSI properties of the Move Collection. */
 export interface Identity {
   type?: ResourceIdentityType | (string & {});
@@ -147,12 +97,8 @@ export interface Identity {
   /** Gets or sets the tenant id. */
   tenantId?: string;
 }
-const Identity = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Identity>;
-
 /** Defines the MoveType. */
 export type MoveType = "RegionToRegion" | "RegionToZone";
-const MoveType = S.String;
-
 /** Defines the move collection properties. */
 export interface MoveCollectionPropertiesInput {
   /** Gets or sets the source region. */
@@ -165,11 +111,6 @@ export interface MoveCollectionPropertiesInput {
   version?: string;
   moveType?: MoveType | (string & {});
 }
-const MoveCollectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<MoveCollectionPropertiesInput>;
-
 export interface CreateMoveCollectionRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -184,27 +125,12 @@ export interface CreateMoveCollectionRequest {
   identity?: Identity;
   properties?: MoveCollectionPropertiesInput;
 }
-const CreateMoveCollectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateMoveCollectionRequest>;
-
 /** Resource tags. */
 export type MoveCollectionTagsMap = { [key: string]: string | undefined };
-const MoveCollectionTagsMap =
-  CreateMoveCollectionRequestTagsMap as any as S.Schema<MoveCollectionTagsMap>;
-
 /** Defines the provisioning states. */
 export type ProvisioningState = "Succeeded" | "Updating" | "Creating" | "Failed";
-const ProvisioningState = S.String;
-
 /** A list of additional details about the error. */
 export type MoveResourceErrorBodyDetailsList = Array<MoveResourceErrorBody>;
-const MoveResourceErrorBodyDetailsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<MoveResourceErrorBodyDetailsList>;
-
 /** An error response from the Azure Migrate service. */
 export interface MoveResourceErrorBody {
   /** An identifier for the error. Codes are invariant and are intended to be consumed programmatically. */
@@ -216,18 +142,11 @@ export interface MoveResourceErrorBody {
   /** A list of additional details about the error. */
   details?: MoveResourceErrorBodyDetailsList;
 }
-const MoveResourceErrorBody = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<MoveResourceErrorBody>;
-
 /** An error response from the azure resource mover service. */
 export interface MoveResourceError {
   /** The move resource error body. */
   properties?: MoveResourceErrorBody;
 }
-const MoveResourceError = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<MoveResourceError>;
-
 /** Defines the move collection properties. */
 export interface MoveCollectionProperties {
   /** Gets or sets the source region. */
@@ -243,27 +162,18 @@ export interface MoveCollectionProperties {
   /** Defines the move collection errors. */
   errors?: MoveResourceError;
 }
-const MoveCollectionProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<MoveCollectionProperties>;
-
 /** The type of identity that created the resource. */
 export type MoveCollectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const MoveCollectionSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type MoveCollectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const MoveCollectionSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface MoveCollectionSystemData {
   /** The identity that created the resource. */
@@ -279,11 +189,6 @@ export interface MoveCollectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const MoveCollectionSystemData = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<MoveCollectionSystemData>;
-
 /** Define the move collection. */
 export interface MoveCollection {
   /** Fully qualified resource Id for the resource. */
@@ -303,8 +208,6 @@ export interface MoveCollection {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: MoveCollectionSystemData;
 }
-const MoveCollection = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<MoveCollection>;
-
 /** Gets or sets the resource settings. */
 export interface ResourceSettings {
   /** The resource type. For example, the value can be Microsoft.Compute/virtualMachines. */
@@ -314,8 +217,6 @@ export interface ResourceSettings {
   /** Gets or sets the target resource group name. */
   targetResourceGroupName?: string;
 }
-const ResourceSettings = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ResourceSettings>;
-
 /** Defines the dependency override of the move resource. */
 export interface MoveResourceDependencyOverride {
   /** Gets or sets the ARM ID of the dependent resource. */
@@ -323,19 +224,9 @@ export interface MoveResourceDependencyOverride {
   /** Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of the dependent resource. */
   targetId?: string;
 }
-const MoveResourceDependencyOverride = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<MoveResourceDependencyOverride>;
-
 /** Gets or sets the move resource dependencies overrides. */
 export type MoveResourcePropertiesInputDependsOnOverridesList =
   Array<MoveResourceDependencyOverride>;
-const MoveResourcePropertiesInputDependsOnOverridesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<MoveResourcePropertiesInputDependsOnOverridesList>;
-
 /** Defines the move resource properties. */
 export interface MoveResourcePropertiesInput {
   /** Gets or sets the Source ARM Id of the resource. */
@@ -347,11 +238,6 @@ export interface MoveResourcePropertiesInput {
   /** Gets or sets the move resource dependencies overrides. */
   dependsOnOverrides?: MoveResourcePropertiesInputDependsOnOverridesList;
 }
-const MoveResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<MoveResourcePropertiesInput>;
-
 export interface CreateMoveResourceRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -363,11 +249,6 @@ export interface CreateMoveResourceRequest {
   moveResourceName: string;
   properties?: MoveResourcePropertiesInput;
 }
-const CreateMoveResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateMoveResourceRequest>;
-
 /** Defines the MoveResource states. */
 export type MoveState =
   | "AssignmentPending"
@@ -385,56 +266,34 @@ export type MoveState =
   | "Committed"
   | "DeleteSourcePending"
   | "ResourceMoveCompleted";
-const MoveState = S.String;
-
 /** Defines the job name. */
 export type JobName = "InitialSync";
-const JobName = S.String;
-
 /** Defines the job status. */
 export interface JobStatus {
   jobName?: JobName;
   /** Gets or sets the monitoring job percentage. */
   jobProgress?: string;
 }
-const JobStatus = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<JobStatus>;
-
 /** Defines the move resource status. */
 export interface MoveResourceStatus {
   moveState?: MoveState;
   jobStatus?: JobStatus;
   errors?: MoveResourceError;
 }
-const MoveResourceStatus = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<MoveResourceStatus>;
-
 /** Defines the resolution type. */
 export type ResolutionType = "Manual" | "Automatic";
-const ResolutionType = S.String;
-
 /** Defines the dependency type. */
 export type DependencyType = "RequiredForPrepare" | "RequiredForMove";
-const DependencyType = S.String;
-
 /** Defines the properties for manual resolution. */
 export interface ManualResolutionProperties {
   /** Gets or sets the target resource ARM ID of the dependent resource if the resource type is Manual. */
   targetId?: string;
 }
-const ManualResolutionProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ManualResolutionProperties>;
-
 /** Defines the properties for automatic resolution. */
 export interface AutomaticResolutionProperties {
   /** Gets the MoveResource ARM ID of the dependent resource if the resolution type is Automatic. */
   moveResourceId?: string;
 }
-const AutomaticResolutionProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AutomaticResolutionProperties>;
-
 /** Defines the dependency of the move resource. */
 export interface MoveResourceDependency {
   /** Gets the source ARM ID of the dependent resource. */
@@ -448,23 +307,10 @@ export interface MoveResourceDependency {
   /** Gets or sets a value indicating whether the dependency is optional. */
   isOptional?: string;
 }
-const MoveResourceDependency = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<MoveResourceDependency>;
-
 /** Gets or sets the move resource dependencies. */
 export type MoveResourcePropertiesDependsOnList = Array<MoveResourceDependency>;
-const MoveResourcePropertiesDependsOnList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<MoveResourcePropertiesDependsOnList>;
-
 /** Gets or sets the move resource dependencies overrides. */
 export type MoveResourcePropertiesDependsOnOverridesList = Array<MoveResourceDependencyOverride>;
-const MoveResourcePropertiesDependsOnOverridesList =
-  MoveResourcePropertiesInputDependsOnOverridesList as any as S.Schema<MoveResourcePropertiesDependsOnOverridesList>;
-
 /** Defines the move resource properties. */
 export interface MoveResourceProperties {
   provisioningState?: ProvisioningState;
@@ -489,11 +335,6 @@ export interface MoveResourceProperties {
   /** Defines the move resource errors. */
   errors?: MoveResourceError;
 }
-const MoveResourceProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<MoveResourceProperties>;
-
 /** The type of identity that created the resource. */
 export type MoveResourceSystemDataCreatedByType =
   | "User"
@@ -521,8 +362,6 @@ export interface MoveResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const MoveResourceSystemData = MoveCollectionSystemData as any as S.Schema<MoveResourceSystemData>;
-
 /** Defines the move resource. */
 export interface MoveResource {
   /** Fully qualified resource Id for the resource. */
@@ -535,8 +374,6 @@ export interface MoveResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: MoveResourceSystemData;
 }
-const MoveResource = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MoveResource>;
-
 export interface DeleteMoveCollectionRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -545,11 +382,6 @@ export interface DeleteMoveCollectionRequest {
   /** The Move Collection Name. */
   moveCollectionName: string;
 }
-const DeleteMoveCollectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteMoveCollectionRequest>;
-
 export interface DeleteMoveResourceRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -560,11 +392,6 @@ export interface DeleteMoveResourceRequest {
   /** The Move Resource Name. */
   moveResourceName: string;
 }
-const DeleteMoveResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteMoveResourceRequest>;
-
 export interface GetMoveCollectionRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -573,11 +400,6 @@ export interface GetMoveCollectionRequest {
   /** The Move Collection Name. */
   moveCollectionName: string;
 }
-const GetMoveCollectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetMoveCollectionRequest>;
-
 export interface GetMoveResourceRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -588,17 +410,7 @@ export interface GetMoveResourceRequest {
   /** The Move Resource Name. */
   moveResourceName: string;
 }
-const GetMoveResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetMoveResourceRequest>;
-
 export interface GetOperationsDiscoveryRequest {}
-const GetOperationsDiscoveryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetOperationsDiscoveryRequest>;
-
 /** Contains the localized display information for this particular operation / action. These value will be used by several clients for (1) custom role definitions for RBAC; (2) complex query filters for the event service; and (3) audit history / records for management operations. */
 export interface Display {
   /** Gets or sets the provider. The localized friendly form of the resource provider name - it is expected to also include the publisher/company responsible. It should use Title Casing and begin with "Microsoft" for 1st party services. e.g. "Microsoft Monitoring Insights" or "Microsoft Compute.". */
@@ -610,8 +422,6 @@ export interface Display {
   /** Gets or sets the description. The localized friendly description for the operation, as it should be shown to the user. It should be thorough, yet concise - it will be used in tool tips and detailed views. Prescriptive guidance for namespace: Read any 'display.provider' resource Create or Update any 'display.provider' resource Delete any 'display.provider' resource Perform any other action on any 'display.provider' resource Prescriptive guidance for namespace: Read any 'display.resource' Create or Update any 'display.resource' Delete any 'display.resource' 'ActionName' any 'display.resources'. */
   description?: string;
 }
-const Display = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Display>;
-
 /** Operations discovery class. */
 export interface OperationsDiscovery {
   /** Gets or sets Name of the API. The name of the operation being performed on this particular object. It should match the action name that appears in RBAC / the event service. Examples of operations include: * Microsoft.Compute/virtualMachine/capture/action * Microsoft.Compute/virtualMachine/restart/action * Microsoft.Compute/virtualMachine/write * Microsoft.Compute/virtualMachine/read * Microsoft.Compute/virtualMachine/delete Each action should include, in order: (1) Resource Provider Namespace (2) Type hierarchy for which the action applies (e.g. server/databases for a SQL Azure database) (3) Read, Write, Action or Delete indicating which type applies. If it is a PUT/PATCH on a collection or named value, Write should be used. If it is a GET, Read should be used. If it is a DELETE, Delete should be used. If it is a POST, Action should be used. As a note: all resource providers would need to include the "{Resource Provider Namespace}/register/action" operation in their response. This API is used to register for their service, and should include details about the operation (e.g. a localized name for the resource provider + any special considerations like PII release). */
@@ -623,15 +433,8 @@ export interface OperationsDiscovery {
   origin?: string;
   properties?: unknown;
 }
-const OperationsDiscovery = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<OperationsDiscovery>;
-
 /** Gets or sets the ClientDiscovery details. */
 export type OperationsDiscoveryCollectionValueList = Array<OperationsDiscovery>;
-const OperationsDiscoveryCollectionValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<OperationsDiscoveryCollectionValueList>;
-
 /** Collection of ClientDiscovery details. */
 export interface OperationsDiscoveryCollection {
   /** Gets or sets the ClientDiscovery details. */
@@ -639,14 +442,7 @@ export interface OperationsDiscoveryCollection {
   /** Gets or sets the value of next link. */
   nextLink?: string;
 }
-const OperationsDiscoveryCollection = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<OperationsDiscoveryCollection>;
-
 export type GetUnresolvedDependencyRequestDependencyLevel = "Direct" | "Descendant";
-const GetUnresolvedDependencyRequestDependencyLevel = S.String;
-
 export interface GetUnresolvedDependencyRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -661,11 +457,6 @@ export interface GetUnresolvedDependencyRequest {
   /** The filter to apply on the operation. For example, $apply=filter(count eq 2). */
   _filter?: string;
 }
-const GetUnresolvedDependencyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetUnresolvedDependencyRequest>;
-
 /** Unresolved dependency. */
 export interface UnresolvedDependency {
   /** Gets or sets the count. */
@@ -673,15 +464,8 @@ export interface UnresolvedDependency {
   /** Gets or sets the arm id of the dependency. */
   id?: string;
 }
-const UnresolvedDependency = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<UnresolvedDependency>;
-
 /** Gets or sets the list of unresolved dependencies. */
 export type UnresolvedDependencyCollectionValueList = Array<UnresolvedDependency>;
-const UnresolvedDependencyCollectionValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UnresolvedDependencyCollectionValueList>;
-
 /** Summary item. */
 export interface Summary {
   /** Gets the count. */
@@ -689,15 +473,8 @@ export interface Summary {
   /** Gets the item. */
   item?: string;
 }
-const Summary = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Summary>;
-
 /** Gets or sets the list of summary items. */
 export type SummaryCollectionSummaryList = Array<Summary>;
-const SummaryCollectionSummaryList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<SummaryCollectionSummaryList>;
-
 /** Summary Collection. */
 export interface SummaryCollection {
   /** Gets or sets the field name on which summary is done. */
@@ -705,8 +482,6 @@ export interface SummaryCollection {
   /** Gets or sets the list of summary items. */
   summary?: SummaryCollectionSummaryList;
 }
-const SummaryCollection = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SummaryCollection>;
-
 /** Unresolved dependency collection. */
 export interface UnresolvedDependencyCollection {
   /** Gets or sets the list of unresolved dependencies. */
@@ -718,11 +493,6 @@ export interface UnresolvedDependencyCollection {
   /** Gets the total count. */
   totalCount?: number;
 }
-const UnresolvedDependencyCollection = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<UnresolvedDependencyCollection>;
-
 export interface ListMoveCollectionRequiredForRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -733,26 +503,13 @@ export interface ListMoveCollectionRequiredForRequest {
   /** The sourceId for which the api is invoked. */
   sourceId: string;
 }
-const ListMoveCollectionRequiredForRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListMoveCollectionRequiredForRequest>;
-
 /** Gets or sets the list of source Ids for which the input resource is required. */
 export type RequiredForResourcesCollectionSourceIdsList = Array<string>;
-const RequiredForResourcesCollectionSourceIdsList =
-  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<RequiredForResourcesCollectionSourceIdsList>;
-
 /** Required for resources collection. */
 export interface RequiredForResourcesCollection {
   /** Gets or sets the list of source Ids for which the input resource is required. */
   sourceIds?: RequiredForResourcesCollectionSourceIdsList;
 }
-const RequiredForResourcesCollection = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<RequiredForResourcesCollection>;
-
 export interface ListMoveResourcesRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -763,18 +520,8 @@ export interface ListMoveResourcesRequest {
   /** The filter to apply on the operation. For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'. */
   _filter?: string;
 }
-const ListMoveResourcesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListMoveResourcesRequest>;
-
 /** Gets the list of move resources. */
 export type MoveResourceCollectionValueList = Array<MoveResource>;
-const MoveResourceCollectionValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<MoveResourceCollectionValueList>;
-
 /** Defines the collection of move resources. */
 export interface MoveResourceCollection {
   /** Gets the list of move resources. */
@@ -786,16 +533,8 @@ export interface MoveResourceCollection {
   /** Gets the total count. */
   totalCount?: number;
 }
-const MoveResourceCollection = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<MoveResourceCollection>;
-
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsBulkRemoveRequestMoveResourcesList = Array<string>;
-const MoveCollectionsBulkRemoveRequestMoveResourcesList =
-  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
-
 export interface MoveCollectionsBulkRemoveRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -807,16 +546,8 @@ export interface MoveCollectionsBulkRemoveRequest {
   moveResources?: MoveCollectionsBulkRemoveRequestMoveResourcesList;
   moveResourceInputType?: MoveResourceInputType | (string & {});
 }
-const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<MoveCollectionsBulkRemoveRequest>;
-
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsDiscardRequestMoveResourcesList = Array<string>;
-const MoveCollectionsDiscardRequestMoveResourcesList =
-  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsDiscardRequestMoveResourcesList>;
-
 export interface MoveCollectionsDiscardRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -830,16 +561,8 @@ export interface MoveCollectionsDiscardRequest {
   moveResources: MoveCollectionsDiscardRequestMoveResourcesList;
   moveResourceInputType?: MoveResourceInputType | (string & {});
 }
-const MoveCollectionsDiscardRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<MoveCollectionsDiscardRequest>;
-
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsInitiateMoveRequestMoveResourcesList = Array<string>;
-const MoveCollectionsInitiateMoveRequestMoveResourcesList =
-  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsInitiateMoveRequestMoveResourcesList>;
-
 export interface MoveCollectionsInitiateMoveRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -853,29 +576,14 @@ export interface MoveCollectionsInitiateMoveRequest {
   moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList;
   moveResourceInputType?: MoveResourceInputType | (string & {});
 }
-const MoveCollectionsInitiateMoveRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<MoveCollectionsInitiateMoveRequest>;
-
 export interface MoveCollectionsListMoveCollectionsByResourceGroupRequest {
   /** The Subscription ID. */
   subscriptionId: string;
   /** The Resource Group Name. */
   resourceGroupName: string;
 }
-const MoveCollectionsListMoveCollectionsByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<MoveCollectionsListMoveCollectionsByResourceGroupRequest>;
-
 /** Gets the list of move collections. */
 export type MoveCollectionResultListValueList = Array<MoveCollection>;
-const MoveCollectionResultListValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<MoveCollectionResultListValueList>;
-
 /** Defines the collection of move collections. */
 export interface MoveCollectionResultList {
   /** Gets the list of move collections. */
@@ -883,25 +591,12 @@ export interface MoveCollectionResultList {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-const MoveCollectionResultList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<MoveCollectionResultList>;
-
 export interface MoveCollectionsListMoveCollectionsBySubscriptionRequest {
   /** The Subscription ID. */
   subscriptionId: string;
 }
-const MoveCollectionsListMoveCollectionsBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<MoveCollectionsListMoveCollectionsBySubscriptionRequest>;
-
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsPrepareRequestMoveResourcesList = Array<string>;
-const MoveCollectionsPrepareRequestMoveResourcesList =
-  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsPrepareRequestMoveResourcesList>;
-
 export interface MoveCollectionsPrepareRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -915,11 +610,6 @@ export interface MoveCollectionsPrepareRequest {
   moveResources: MoveCollectionsPrepareRequestMoveResourcesList;
   moveResourceInputType?: MoveResourceInputType | (string & {});
 }
-const MoveCollectionsPrepareRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<MoveCollectionsPrepareRequest>;
-
 export interface MoveCollectionsResolveDependenciesRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -928,16 +618,8 @@ export interface MoveCollectionsResolveDependenciesRequest {
   /** The Move Collection Name. */
   moveCollectionName: string;
 }
-const MoveCollectionsResolveDependenciesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<MoveCollectionsResolveDependenciesRequest>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateMoveCollectionRequestTagsMap = { [key: string]: string | undefined };
-const UpdateMoveCollectionRequestTagsMap =
-  CreateMoveCollectionRequestTagsMap as any as S.Schema<UpdateMoveCollectionRequestTagsMap>;
-
 export interface UpdateMoveCollectionRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -949,11 +631,6 @@ export interface UpdateMoveCollectionRequest {
   tags?: UpdateMoveCollectionRequestTagsMap;
   identity?: Identity;
 }
-const UpdateMoveCollectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<UpdateMoveCollectionRequest>;
-
 export type CommitMoveCollectionError = AzureOpError;
 /** Commits the set of resources included in the request body. The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true. */
 export const CommitMoveCollection: API.OperationMethod<
@@ -962,8 +639,8 @@ export const CommitMoveCollection: API.OperationMethod<
   CommitMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitMoveCollectionRequest,
-  output: OperationStatus,
+  input: __S(1, __c0, 1) as any as S.Schema<CommitMoveCollectionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -977,8 +654,8 @@ export const CreateMoveCollection: API.OperationMethod<
   CreateMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMoveCollectionRequest,
-  output: MoveCollection,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateMoveCollectionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<MoveCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -992,8 +669,8 @@ export const CreateMoveResource: API.OperationMethod<
   CreateMoveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMoveResourceRequest,
-  output: MoveResource,
+  input: __S(25, __c3, 1) as any as S.Schema<CreateMoveResourceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<MoveResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1007,8 +684,8 @@ export const DeleteMoveCollection: API.OperationMethod<
   DeleteMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMoveCollectionRequest,
-  output: OperationStatus,
+  input: __S(34, __c4, 2) as any as S.Schema<DeleteMoveCollectionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1022,8 +699,8 @@ export const DeleteMoveResource: API.OperationMethod<
   DeleteMoveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMoveResourceRequest,
-  output: OperationStatus,
+  input: __S(35, __c4, 3) as any as S.Schema<DeleteMoveResourceRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1037,8 +714,8 @@ export const GetMoveCollection: API.OperationMethod<
   GetMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMoveCollectionRequest,
-  output: MoveCollection,
+  input: __S(36, __c4, 4) as any as S.Schema<GetMoveCollectionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<MoveCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1052,8 +729,8 @@ export const GetMoveResource: API.OperationMethod<
   GetMoveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMoveResourceRequest,
-  output: MoveResource,
+  input: __S(37, __c4, 5) as any as S.Schema<GetMoveResourceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<MoveResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1066,8 +743,8 @@ export const GetOperationsDiscovery: API.OperationMethod<
   GetOperationsDiscoveryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsDiscoveryRequest,
-  output: OperationsDiscoveryCollection,
+  input: __S(38, __c4, 6) as any as S.Schema<GetOperationsDiscoveryRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<OperationsDiscoveryCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1081,8 +758,8 @@ export const GetUnresolvedDependency: API.OperationMethod<
   GetUnresolvedDependencyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUnresolvedDependencyRequest,
-  output: UnresolvedDependencyCollection,
+  input: __S(43, __c5, 3) as any as S.Schema<GetUnresolvedDependencyRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<UnresolvedDependencyCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1096,8 +773,8 @@ export const ListMoveCollectionRequiredFor: API.OperationMethod<
   ListMoveCollectionRequiredForError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMoveCollectionRequiredForRequest,
-  output: RequiredForResourcesCollection,
+  input: __S(50, __c6, 2) as any as S.Schema<ListMoveCollectionRequiredForRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<RequiredForResourcesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1111,8 +788,8 @@ export const ListMoveResources: API.OperationMethod<
   ListMoveResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMoveResourcesRequest,
-  output: MoveResourceCollection,
+  input: __S(52, __c6, 4) as any as S.Schema<ListMoveResourcesRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<MoveResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1126,8 +803,8 @@ export const MoveCollectionsBulkRemove: API.OperationMethod<
   MoveCollectionsBulkRemoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsBulkRemoveRequest,
-  output: OperationStatus,
+  input: __S(55, __c6, 7) as any as S.Schema<MoveCollectionsBulkRemoveRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1141,8 +818,8 @@ export const MoveCollectionsDiscard: API.OperationMethod<
   MoveCollectionsDiscardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsDiscardRequest,
-  output: OperationStatus,
+  input: __S(56, __c7, 0) as any as S.Schema<MoveCollectionsDiscardRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1156,8 +833,8 @@ export const MoveCollectionsInitiateMove: API.OperationMethod<
   MoveCollectionsInitiateMoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsInitiateMoveRequest,
-  output: OperationStatus,
+  input: __S(57, __c7, 1) as any as S.Schema<MoveCollectionsInitiateMoveRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1171,8 +848,12 @@ export const MoveCollectionsListMoveCollectionsByResourceGroup: API.OperationMet
   MoveCollectionsListMoveCollectionsByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsListMoveCollectionsByResourceGroupRequest,
-  output: MoveCollectionResultList,
+  input: __S(
+    58,
+    __c7,
+    2,
+  ) as any as S.Schema<MoveCollectionsListMoveCollectionsByResourceGroupRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<MoveCollectionResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1186,8 +867,12 @@ export const MoveCollectionsListMoveCollectionsBySubscription: API.OperationMeth
   MoveCollectionsListMoveCollectionsBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsListMoveCollectionsBySubscriptionRequest,
-  output: MoveCollectionResultList,
+  input: __S(
+    61,
+    __c7,
+    5,
+  ) as any as S.Schema<MoveCollectionsListMoveCollectionsBySubscriptionRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<MoveCollectionResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1201,8 +886,8 @@ export const MoveCollectionsPrepare: API.OperationMethod<
   MoveCollectionsPrepareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsPrepareRequest,
-  output: OperationStatus,
+  input: __S(62, __c7, 6) as any as S.Schema<MoveCollectionsPrepareRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1216,8 +901,8 @@ export const MoveCollectionsResolveDependencies: API.OperationMethod<
   MoveCollectionsResolveDependenciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsResolveDependenciesRequest,
-  output: OperationStatus,
+  input: __S(63, __c7, 7) as any as S.Schema<MoveCollectionsResolveDependenciesRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1231,8 +916,8 @@ export const UpdateMoveCollection: API.OperationMethod<
   UpdateMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMoveCollectionRequest,
-  output: MoveCollection,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateMoveCollectionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<MoveCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1250,8 +935,8 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean),
-          moveResources: CommitMoveCollectionRequestMoveResourcesList,
-          moveResourceInputType: S.optional(MoveResourceInputType),
+          moveResources: __S(0, __c0, 0),
+          moveResourceInputType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1264,30 +949,30 @@ function __c0(j: number): any {
         identifier: "CommitMoveCollectionRequest",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusError));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(9, __c1, 1)));
     case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => AffectedMoveResource));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(4, __c0, 4)));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           sourceId: S.optional(S.String),
-          moveResources: S.optional(AffectedMoveResourceMoveResourcesList),
+          moveResources: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "AffectedMoveResource" });
     case 5:
-      return S.Array(AffectedMoveResource);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          moveResources: S.optional(MoveErrorInfoMoveResourcesList),
+          moveResources: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "MoveErrorInfo" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          info: S.optional(MoveErrorInfo),
+          info: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "OperationErrorAdditionalInfo",
@@ -1297,14 +982,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OperationErrorAdditionalInfo);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(OperationStatusErrorDetailsList),
-          additionalInfo: S.optional(OperationStatusErrorAdditionalInfoList),
+          details: S.optional(__S(2, __c0, 2)),
+          additionalInfo: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "OperationStatusError" });
     case 2:
@@ -1315,7 +1000,7 @@ function __c1(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(OperationStatusError),
+          error: S.optional(__S(9, __c1, 1)),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationStatus" });
@@ -1324,7 +1009,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceIdentityType),
+          type: S.optional(S.String),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
@@ -1336,7 +1021,7 @@ function __c1(j: number): any {
           targetRegion: S.optional(S.String),
           moveRegion: S.optional(S.String),
           version: S.optional(S.String),
-          moveType: S.optional(MoveType),
+          moveType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MoveCollectionPropertiesInput",
@@ -1347,10 +1032,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateMoveCollectionRequestTagsMap),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.optional(S.String),
-          identity: S.optional(Identity),
-          properties: S.optional(MoveCollectionPropertiesInput),
+          identity: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(13, __c1, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1363,7 +1048,7 @@ function __c1(j: number): any {
         identifier: "CreateMoveCollectionRequest",
       });
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => MoveResourceErrorBody));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(16, __c2, 0)));
   }
 }
 function __c2(j: number): any {
@@ -1374,13 +1059,13 @@ function __c2(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(MoveResourceErrorBodyDetailsList),
+          details: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "MoveResourceErrorBody" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(MoveResourceErrorBody),
+          properties: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "MoveResourceError" });
     case 2:
@@ -1389,20 +1074,20 @@ function __c2(j: number): any {
           sourceRegion: S.optional(S.String),
           targetRegion: S.optional(S.String),
           moveRegion: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           version: S.optional(S.String),
-          moveType: S.optional(MoveType),
-          errors: S.optional(MoveResourceError),
+          moveType: S.optional(S.String),
+          errors: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "MoveCollectionProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(MoveCollectionSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(MoveCollectionSystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoveCollectionSystemData" });
@@ -1413,11 +1098,11 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(MoveCollectionTagsMap),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.optional(S.String),
-          identity: S.optional(Identity),
-          properties: S.optional(MoveCollectionProperties),
-          systemData: S.optional(MoveCollectionSystemData),
+          identity: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "MoveCollection" });
     case 5:
@@ -1438,7 +1123,7 @@ function __c2(j: number): any {
         identifier: "MoveResourceDependencyOverride",
       });
     case 7:
-      return S.Array(MoveResourceDependencyOverride);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1448,8 +1133,8 @@ function __c3(j: number): any {
         S.Struct({
           sourceId: S.String,
           existingTargetId: S.optional(S.String),
-          resourceSettings: S.optional(ResourceSettings),
-          dependsOnOverrides: S.optional(MoveResourcePropertiesInputDependsOnOverridesList),
+          resourceSettings: S.optional(__S(21, __c2, 5)),
+          dependsOnOverrides: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "MoveResourcePropertiesInput",
@@ -1461,7 +1146,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           moveResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(MoveResourcePropertiesInput),
+          properties: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1476,16 +1161,16 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jobName: S.optional(JobName),
+          jobName: S.optional(S.String),
           jobProgress: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          moveState: S.optional(MoveState),
-          jobStatus: S.optional(JobStatus),
-          errors: S.optional(MoveResourceError),
+          moveState: S.optional(S.String),
+          jobStatus: S.optional(__S(26, __c3, 2)),
+          errors: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "MoveResourceStatus" });
     case 4:
@@ -1509,15 +1194,15 @@ function __c3(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           resolutionStatus: S.optional(S.String),
-          resolutionType: S.optional(ResolutionType),
-          dependencyType: S.optional(DependencyType),
-          manualResolution: S.optional(ManualResolutionProperties),
-          automaticResolution: S.optional(AutomaticResolutionProperties),
+          resolutionType: S.optional(S.String),
+          dependencyType: S.optional(S.String),
+          manualResolution: S.optional(__S(28, __c3, 4)),
+          automaticResolution: S.optional(__S(29, __c3, 5)),
           isOptional: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoveResourceDependency" });
     case 7:
-      return S.Array(MoveResourceDependency);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1525,17 +1210,17 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           sourceId: S.String,
           targetId: S.optional(S.String),
           existingTargetId: S.optional(S.String),
-          resourceSettings: S.optional(ResourceSettings),
-          sourceResourceSettings: S.optional(ResourceSettings),
-          moveStatus: S.optional(MoveResourceStatus),
-          dependsOn: S.optional(MoveResourcePropertiesDependsOnList),
-          dependsOnOverrides: S.optional(MoveResourcePropertiesDependsOnOverridesList),
+          resourceSettings: S.optional(__S(21, __c2, 5)),
+          sourceResourceSettings: S.optional(__S(21, __c2, 5)),
+          moveStatus: S.optional(__S(27, __c3, 3)),
+          dependsOn: S.optional(__S(31, __c3, 7)),
+          dependsOnOverrides: S.optional(__S(23, __c2, 7)),
           isResolveRequired: S.optional(S.Boolean),
-          errors: S.optional(MoveResourceError),
+          errors: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "MoveResourceProperties" });
     case 1:
@@ -1544,8 +1229,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(MoveResourceProperties),
-          systemData: S.optional(MoveResourceSystemData),
+          properties: S.optional(__S(32, __c4, 0)),
+          systemData: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "MoveResource" });
     case 2:
@@ -1645,17 +1330,17 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(Display),
+          display: S.optional(__S(39, __c4, 7)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationsDiscovery" });
     case 1:
-      return S.Array(OperationsDiscovery);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationsDiscoveryCollectionValueList),
+          value: S.optional(__S(41, __c5, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1667,9 +1352,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
-          dependencyLevel: S.optional(
-            GetUnresolvedDependencyRequestDependencyLevel.pipe(T.Query()),
-          ),
+          dependencyLevel: S.optional(S.String.pipe(T.Query())),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
         }).pipe(
@@ -1691,7 +1374,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "UnresolvedDependency" });
     case 5:
-      return S.Array(UnresolvedDependency);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1700,7 +1383,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Summary" });
     case 7:
-      return S.Array(Summary);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -1709,15 +1392,15 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fieldName: S.optional(S.String),
-          summary: S.optional(SummaryCollectionSummaryList),
+          summary: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "SummaryCollection" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(UnresolvedDependencyCollectionValueList),
+          value: S.optional(__S(45, __c5, 5)),
           nextLink: S.optional(S.String),
-          summaryCollection: S.optional(SummaryCollection),
+          summaryCollection: S.optional(__S(48, __c6, 0)),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -1744,7 +1427,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceIds: S.optional(RequiredForResourcesCollectionSourceIdsList),
+          sourceIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "RequiredForResourcesCollection",
@@ -1766,13 +1449,13 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListMoveResourcesRequest" });
     case 5:
-      return S.Array(MoveResource);
+      return S.Array(__S(33, __c4, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(MoveResourceCollectionValueList),
+          value: S.optional(__S(53, __c6, 5)),
           nextLink: S.optional(S.String),
-          summaryCollection: S.optional(SummaryCollection),
+          summaryCollection: S.optional(__S(48, __c6, 0)),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MoveResourceCollection" });
@@ -1783,8 +1466,8 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean),
-          moveResources: S.optional(MoveCollectionsBulkRemoveRequestMoveResourcesList),
-          moveResourceInputType: S.optional(MoveResourceInputType),
+          moveResources: S.optional(__S(0, __c0, 0)),
+          moveResourceInputType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1807,8 +1490,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean),
-          moveResources: MoveCollectionsDiscardRequestMoveResourcesList,
-          moveResourceInputType: S.optional(MoveResourceInputType),
+          moveResources: __S(0, __c0, 0),
+          moveResourceInputType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1827,8 +1510,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean),
-          moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList,
-          moveResourceInputType: S.optional(MoveResourceInputType),
+          moveResources: __S(0, __c0, 0),
+          moveResourceInputType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1857,11 +1540,11 @@ function __c7(j: number): any {
         identifier: "MoveCollectionsListMoveCollectionsByResourceGroupRequest",
       });
     case 3:
-      return S.Array(MoveCollection);
+      return S.Array(__S(20, __c2, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(MoveCollectionResultListValueList),
+          value: S.optional(__S(59, __c7, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoveCollectionResultList" });
@@ -1887,8 +1570,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean),
-          moveResources: MoveCollectionsPrepareRequestMoveResourcesList,
-          moveResourceInputType: S.optional(MoveResourceInputType),
+          moveResources: __S(0, __c0, 0),
+          moveResourceInputType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1927,8 +1610,8 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           moveCollectionName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateMoveCollectionRequestTagsMap),
-          identity: S.optional(Identity),
+          tags: S.optional(__S(11, __c1, 3)),
+          identity: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1941,4 +1624,9 @@ function __c8(j: number): any {
         identifier: "UpdateMoveCollectionRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

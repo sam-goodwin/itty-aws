@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -90,8 +92,6 @@ export class PolicyQuotaExceeded
   ) {}
 
 export type PoliciesCreateRequestAction = "allow" | "log" | "add_reporting_directives";
-const PoliciesCreateRequestAction = S.String;
-
 export interface CreatePolicyRequest {
   /** Identifier */
   zoneId: string;
@@ -106,11 +106,7 @@ export interface CreatePolicyRequest {
   /** The policy which will be applied */
   value: string;
 }
-const CreatePolicyRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreatePolicyRequest>;
-
 export type PoliciesCreateResponseAction = "allow" | "log" | "add_reporting_directives";
-const PoliciesCreateResponseAction = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePolicyResponse {
   /** Identifier */
@@ -126,41 +122,22 @@ export interface CreatePolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-const CreatePolicyResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreatePolicyResponse>;
-
 export interface DeletePolicyRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   policyId: string;
 }
-const DeletePolicyRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeletePolicyRequest>;
-
 export interface DeletePolicyResponse {}
-const DeletePolicyResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeletePolicyResponse>;
-
 export interface GetConnectionRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   connectionId: string;
 }
-const GetConnectionRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetConnectionRequest>;
-
 export type ConnectionsGetResponseMaliciousDomainCategoriesList = Array<string>;
-const ConnectionsGetResponseMaliciousDomainCategoriesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ConnectionsGetResponseMaliciousDomainCategoriesList>;
-
 export type ConnectionsGetResponseMaliciousUrlCategoriesList = Array<string>;
-const ConnectionsGetResponseMaliciousUrlCategoriesList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsGetResponseMaliciousUrlCategoriesList>;
-
 export type ConnectionsGetResponsePageUrlsList = Array<string>;
-const ConnectionsGetResponsePageUrlsList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsGetResponsePageUrlsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConnectionResponse {
   /** Identifier */
@@ -178,29 +155,15 @@ export interface GetConnectionResponse {
   pageUrls?: ConnectionsGetResponsePageUrlsList | null;
   urlReportedMalicious?: boolean | null;
 }
-const GetConnectionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetConnectionResponse>;
-
 export interface GetCookyRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   cookieId: string;
 }
-const GetCookyRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetCookyRequest>;
-
 export type CookiesGetResponseType = "first_party" | "unknown";
-const CookiesGetResponseType = S.String;
-
 export type CookiesGetResponsePageUrlsList = Array<string>;
-const CookiesGetResponsePageUrlsList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<CookiesGetResponsePageUrlsList>;
-
 export type CookiesGetResponseSameSiteAttribute = "lax" | "strict" | "none";
-const CookiesGetResponseSameSiteAttribute = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCookyResponse {
   /** Identifier */
@@ -219,14 +182,10 @@ export interface GetCookyResponse {
   sameSiteAttribute?: CookiesGetResponseSameSiteAttribute | null;
   secureAttribute?: boolean | null;
 }
-const GetCookyResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetCookyResponse>;
-
 export interface GetPageShieldRequest {
   /** Identifier */
   zoneId: string;
 }
-const GetPageShieldRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetPageShieldRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPageShieldResponse {
   /** When true, indicates that Client-Side Security is enabled. */
@@ -238,19 +197,12 @@ export interface GetPageShieldResponse {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
 }
-const GetPageShieldResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetPageShieldResponse>;
-
 export interface GetPolicyRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   policyId: string;
 }
-const GetPolicyRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetPolicyRequest>;
-
 export type PoliciesGetResponseAction = "allow" | "log" | "add_reporting_directives";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPolicyResponse {
@@ -267,28 +219,15 @@ export interface GetPolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-const GetPolicyResponse = CreatePolicyResponse as any as S.Schema<GetPolicyResponse>;
-
 export interface GetScriptRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   scriptId: string;
 }
-const GetScriptRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetScriptRequest>;
-
 export type ScriptsGetResponseMaliciousDomainCategoriesList = Array<string>;
-const ScriptsGetResponseMaliciousDomainCategoriesList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponseMaliciousDomainCategoriesList>;
-
 export type ScriptsGetResponseMaliciousUrlCategoriesList = Array<string>;
-const ScriptsGetResponseMaliciousUrlCategoriesList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponseMaliciousUrlCategoriesList>;
-
 export type ScriptsGetResponsePageUrlsList = Array<string>;
-const ScriptsGetResponsePageUrlsList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponsePageUrlsList>;
-
 export interface ScriptsGetResponseVersionsItem {
   /** The cryptomining score of the JavaScript content. */
   cryptominingScore?: number | null;
@@ -307,17 +246,7 @@ export interface ScriptsGetResponseVersionsItem {
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
   obfuscationScore?: number | null;
 }
-const ScriptsGetResponseVersionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ScriptsGetResponseVersionsItem>;
-
 export type ScriptsGetResponseVersionsList = Array<ScriptsGetResponseVersionsItem>;
-const ScriptsGetResponseVersionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ScriptsGetResponseVersionsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptResponse {
   /** Identifier */
@@ -352,17 +281,9 @@ export interface GetScriptResponse {
   urlReportedMalicious?: boolean | null;
   versions?: ScriptsGetResponseVersionsList | null;
 }
-const GetScriptResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetScriptResponse>;
-
 export type ConnectionsListRequestDirection = "asc" | "desc";
-const ConnectionsListRequestDirection = S.String;
-
 export type ConnectionsListRequestExport = "csv";
-const ConnectionsListRequestExport = S.String;
-
 export type ConnectionsListRequestOrderBy = "first_seen_at" | "last_seen_at";
-const ConnectionsListRequestOrderBy = S.String;
-
 export interface ListConnectionsRequest {
   /** Identifier */
   zoneId: string;
@@ -391,23 +312,9 @@ export interface ListConnectionsRequest {
   /** Includes connections whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
-const ListConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListConnectionsRequest>;
-
 export type ConnectionsListResultItemMaliciousDomainCategoriesList = Array<string>;
-const ConnectionsListResultItemMaliciousDomainCategoriesList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemMaliciousDomainCategoriesList>;
-
 export type ConnectionsListResultItemMaliciousUrlCategoriesList = Array<string>;
-const ConnectionsListResultItemMaliciousUrlCategoriesList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemMaliciousUrlCategoriesList>;
-
 export type ConnectionsListResultItemPageUrlsList = Array<string>;
-const ConnectionsListResultItemPageUrlsList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemPageUrlsList>;
-
 export interface ConnectionsListResultItem {
   /** Identifier */
   id: string;
@@ -424,43 +331,18 @@ export interface ConnectionsListResultItem {
   pageUrls?: ConnectionsListResultItemPageUrlsList | null;
   urlReportedMalicious?: boolean | null;
 }
-const ConnectionsListResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ConnectionsListResultItem>;
-
 export type ConnectionsListResultList = Array<ConnectionsListResultItem>;
-const ConnectionsListResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ConnectionsListResultList>;
-
 export interface ListConnectionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ConnectionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListConnectionsResponse>;
-
 export type CookiesListRequestDirection = "asc" | "desc";
-const CookiesListRequestDirection = S.String;
-
 export type CookiesListRequestExport = "csv";
-const CookiesListRequestExport = S.String;
-
 export type CookiesListRequestOrderBy = "first_seen_at" | "last_seen_at";
-const CookiesListRequestOrderBy = S.String;
-
 export type CookiesListRequestSameSite = "lax" | "strict" | "none";
-const CookiesListRequestSameSite = S.String;
-
 export type CookiesListRequestType = "first_party" | "unknown";
-const CookiesListRequestType = S.String;
-
 export interface ListCookiesRequest {
   /** Identifier */
   zoneId: string;
@@ -493,18 +375,9 @@ export interface ListCookiesRequest {
   /** Filters the returned cookies that match the specified type attribute */
   type?: CookiesListRequestType | (string & {});
 }
-const ListCookiesRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListCookiesRequest>;
-
 export type CookiesListResultItemType = "first_party" | "unknown";
-const CookiesListResultItemType = S.String;
-
 export type CookiesListResultItemPageUrlsList = Array<string>;
-const CookiesListResultItemPageUrlsList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<CookiesListResultItemPageUrlsList>;
-
 export type CookiesListResultItemSameSiteAttribute = "lax" | "strict" | "none";
-const CookiesListResultItemSameSiteAttribute = S.String;
-
 export interface CookiesListResultItem {
   /** Identifier */
   id: string;
@@ -522,34 +395,18 @@ export interface CookiesListResultItem {
   sameSiteAttribute?: CookiesListResultItemSameSiteAttribute | null;
   secureAttribute?: boolean | null;
 }
-const CookiesListResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CookiesListResultItem>;
-
 export type CookiesListResultList = Array<CookiesListResultItem>;
-const CookiesListResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CookiesListResultList>;
-
 export interface ListCookiesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: CookiesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListCookiesResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListCookiesResponse>;
-
 export interface ListPoliciesRequest {
   /** Identifier */
   zoneId: string;
 }
-const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListPoliciesRequest>;
-
 export type PoliciesListResultItemAction = "allow" | "log" | "add_reporting_directives";
-const PoliciesListResultItemAction = S.String;
-
 export interface PoliciesListResultItem {
   /** Identifier */
   id: string;
@@ -564,34 +421,16 @@ export interface PoliciesListResultItem {
   /** The policy which will be applied */
   value: string;
 }
-const PoliciesListResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PoliciesListResultItem>;
-
 export type PoliciesListResultList = Array<PoliciesListResultItem>;
-const PoliciesListResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<PoliciesListResultList>;
-
 export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PoliciesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListPoliciesResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListPoliciesResponse>;
-
 export type ScriptsListRequestDirection = "asc" | "desc";
-const ScriptsListRequestDirection = S.String;
-
 export type ScriptsListRequestExport = "csv";
-const ScriptsListRequestExport = S.String;
-
 export type ScriptsListRequestOrderBy = "first_seen_at" | "last_seen_at";
-const ScriptsListRequestOrderBy = S.String;
-
 export interface ListScriptsRequest {
   /** Identifier */
   zoneId: string;
@@ -622,20 +461,9 @@ export interface ListScriptsRequest {
   /** Includes scripts whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
-const ListScriptsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListScriptsRequest>;
-
 export type ScriptsListResultItemMaliciousDomainCategoriesList = Array<string>;
-const ScriptsListResultItemMaliciousDomainCategoriesList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemMaliciousDomainCategoriesList>;
-
 export type ScriptsListResultItemMaliciousUrlCategoriesList = Array<string>;
-const ScriptsListResultItemMaliciousUrlCategoriesList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemMaliciousUrlCategoriesList>;
-
 export type ScriptsListResultItemPageUrlsList = Array<string>;
-const ScriptsListResultItemPageUrlsList =
-  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemPageUrlsList>;
-
 export interface ScriptsListResultItem {
   /** Identifier */
   id: string;
@@ -668,25 +496,13 @@ export interface ScriptsListResultItem {
   pageUrls?: ScriptsListResultItemPageUrlsList | null;
   urlReportedMalicious?: boolean | null;
 }
-const ScriptsListResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ScriptsListResultItem>;
-
 export type ScriptsListResultList = Array<ScriptsListResultItem>;
-const ScriptsListResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ScriptsListResultList>;
-
 export interface ListScriptsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ScriptsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListScriptsResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListScriptsResponse>;
-
 export interface PutPageShieldRequest {
   /** Identifier */
   zoneId: string;
@@ -697,8 +513,6 @@ export interface PutPageShieldRequest {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath?: boolean;
 }
-const PutPageShieldRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PutPageShieldRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutPageShieldResponse {
   /** When true, indicates that Client-Side Security is enabled. */
@@ -710,11 +524,7 @@ export interface PutPageShieldResponse {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
 }
-const PutPageShieldResponse = GetPageShieldResponse as any as S.Schema<PutPageShieldResponse>;
-
 export type PoliciesUpdateRequestAction = "allow" | "log" | "add_reporting_directives";
-const PoliciesUpdateRequestAction = S.String;
-
 export interface UpdatePolicyRequest {
   /** Identifier */
   zoneId: string;
@@ -731,8 +541,6 @@ export interface UpdatePolicyRequest {
   /** The policy which will be applied */
   value?: string;
 }
-const UpdatePolicyRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UpdatePolicyRequest>;
-
 export type PoliciesUpdateResponseAction = "allow" | "log" | "add_reporting_directives";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdatePolicyResponse {
@@ -749,8 +557,6 @@ export interface UpdatePolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
-
 export type CreatePolicyError = PolicyQuotaExceeded | Forbidden | CloudflareOpError;
 /** Creates a rule that applies a client-side security action when its filter expression matches. */
 export const createPolicy: API.OperationMethod<
@@ -759,8 +565,8 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePolicyRequest,
-  output: CreatePolicyResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePolicyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreatePolicyResponse>,
   errors: [PolicyQuotaExceeded, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -774,8 +580,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePolicyRequest,
-  output: DeletePolicyResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeletePolicyResponse>,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -789,8 +595,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: GetConnectionResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetConnectionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetConnectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -804,8 +610,8 @@ export const getCooky: API.OperationMethod<
   GetCookyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCookyRequest,
-  output: GetCookyResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetCookyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCookyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -819,8 +625,8 @@ export const getPageShield: API.OperationMethod<
   GetPageShieldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPageShieldRequest,
-  output: GetPageShieldResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<GetPageShieldRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetPageShieldResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -834,8 +640,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyRequest,
-  output: GetPolicyResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<GetPolicyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetPolicyResponse>,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -849,8 +655,8 @@ export const getScript: API.OperationMethod<
   GetScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScriptRequest,
-  output: GetScriptResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetScriptRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetScriptResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -866,8 +672,8 @@ export const listConnections: API.PaginatedOperationMethod<
   ConnectionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListConnectionsRequest,
-    output: ListConnectionsResponse,
+    input: __S(16, __c2, 0) as any as S.Schema<ListConnectionsRequest>,
+    output: __S(19, __c2, 3) as any as S.Schema<ListConnectionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -886,8 +692,8 @@ export const listCookies: API.PaginatedOperationMethod<
   CookiesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCookiesRequest,
-    output: ListCookiesResponse,
+    input: __S(20, __c2, 4) as any as S.Schema<ListCookiesRequest>,
+    output: __S(23, __c2, 7) as any as S.Schema<ListCookiesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -906,8 +712,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   PoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPoliciesRequest,
-    output: ListPoliciesResponse,
+    input: __S(24, __c3, 0) as any as S.Schema<ListPoliciesRequest>,
+    output: __S(27, __c3, 3) as any as S.Schema<ListPoliciesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -926,8 +732,8 @@ export const listScripts: API.PaginatedOperationMethod<
   ScriptsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListScriptsRequest,
-    output: ListScriptsResponse,
+    input: __S(28, __c3, 4) as any as S.Schema<ListScriptsRequest>,
+    output: __S(31, __c3, 7) as any as S.Schema<ListScriptsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -944,8 +750,8 @@ export const putPageShield: API.OperationMethod<
   PutPageShieldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPageShieldRequest,
-  output: PutPageShieldResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<PutPageShieldRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PutPageShieldResponse>,
   errors: [NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -959,8 +765,8 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePolicyRequest,
-  output: UpdatePolicyResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<UpdatePolicyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdatePolicyResponse>,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -973,7 +779,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          action: PoliciesCreateRequestAction,
+          action: S.String,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
@@ -986,7 +792,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          action: PoliciesCreateResponseAction,
+          action: S.String,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
@@ -1044,18 +850,12 @@ function __c0(j: number): any {
           ),
           firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
           maliciousDomainCategories: S.optional(
-            S.NullOr(ConnectionsGetResponseMaliciousDomainCategoriesList).pipe(
-              T.Body("malicious_domain_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
           ),
           maliciousUrlCategories: S.optional(
-            S.NullOr(ConnectionsGetResponseMaliciousUrlCategoriesList).pipe(
-              T.Body("malicious_url_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
           ),
-          pageUrls: S.optional(
-            S.NullOr(ConnectionsGetResponsePageUrlsList).pipe(T.Body("page_urls")),
-          ),
+          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
           urlReportedMalicious: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
           ),
@@ -1088,16 +888,14 @@ function __c1(j: number): any {
           host: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
           name: S.String,
-          type: CookiesGetResponseType,
+          type: S.String,
           domainAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("domain_attribute"))),
           expiresAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("expires_attribute"))),
           httpOnlyAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("http_only_attribute"))),
           maxAgeAttribute: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age_attribute"))),
-          pageUrls: S.optional(S.NullOr(CookiesGetResponsePageUrlsList).pipe(T.Body("page_urls"))),
+          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
           pathAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("path_attribute"))),
-          sameSiteAttribute: S.optional(
-            S.NullOr(CookiesGetResponseSameSiteAttribute).pipe(T.Body("same_site_attribute")),
-          ),
+          sameSiteAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("same_site_attribute"))),
           secureAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("secure_attribute"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCookyResponse" });
@@ -1166,7 +964,7 @@ function __c1(j: number): any {
         identifier: "ScriptsGetResponseVersionsItem",
       });
     case 6:
-      return S.Array(ScriptsGetResponseVersionsItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1188,22 +986,18 @@ function __c1(j: number): any {
           jsIntegrityScore: S.optional(S.NullOr(S.Number).pipe(T.Body("js_integrity_score"))),
           magecartScore: S.optional(S.NullOr(S.Number).pipe(T.Body("magecart_score"))),
           maliciousDomainCategories: S.optional(
-            S.NullOr(ScriptsGetResponseMaliciousDomainCategoriesList).pipe(
-              T.Body("malicious_domain_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
           ),
           maliciousUrlCategories: S.optional(
-            S.NullOr(ScriptsGetResponseMaliciousUrlCategoriesList).pipe(
-              T.Body("malicious_url_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
           ),
           malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
           obfuscationScore: S.optional(S.NullOr(S.Number).pipe(T.Body("obfuscation_score"))),
-          pageUrls: S.optional(S.NullOr(ScriptsGetResponsePageUrlsList).pipe(T.Body("page_urls"))),
+          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
           urlReportedMalicious: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
           ),
-          versions: S.optional(S.NullOr(ScriptsGetResponseVersionsList)),
+          versions: S.optional(S.NullOr(__S(14, __c1, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptResponse" });
   }
@@ -1214,12 +1008,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(ConnectionsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           excludeCdnCgi: S.optional(S.Boolean.pipe(T.Query("exclude_cdn_cgi"))),
           excludeUrls: S.optional(S.String.pipe(T.Query("exclude_urls"))),
-          export: S.optional(ConnectionsListRequestExport.pipe(T.Query())),
+          export: S.optional(S.String.pipe(T.Query())),
           hosts: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(ConnectionsListRequestOrderBy.pipe(T.Query("order_by"))),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           page: S.optional(S.String.pipe(T.Query())),
           pageUrl: S.optional(S.String.pipe(T.Query("page_url"))),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -1247,18 +1041,12 @@ function __c2(j: number): any {
           ),
           firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
           maliciousDomainCategories: S.optional(
-            S.NullOr(ConnectionsListResultItemMaliciousDomainCategoriesList).pipe(
-              T.Body("malicious_domain_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
           ),
           maliciousUrlCategories: S.optional(
-            S.NullOr(ConnectionsListResultItemMaliciousUrlCategoriesList).pipe(
-              T.Body("malicious_url_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
           ),
-          pageUrls: S.optional(
-            S.NullOr(ConnectionsListResultItemPageUrlsList).pipe(T.Body("page_urls")),
-          ),
+          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
           urlReportedMalicious: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
           ),
@@ -1267,11 +1055,11 @@ function __c2(j: number): any {
         identifier: "ConnectionsListResultItem",
       });
     case 2:
-      return S.Array(ConnectionsListResultItem);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: ConnectionsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(18, __c2, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectionsResponse" });
@@ -1279,20 +1067,20 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(CookiesListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
-          export: S.optional(CookiesListRequestExport.pipe(T.Query())),
+          export: S.optional(S.String.pipe(T.Query())),
           hosts: S.optional(S.String.pipe(T.Query())),
           httpOnly: S.optional(S.Boolean.pipe(T.Query("http_only"))),
           name: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(CookiesListRequestOrderBy.pipe(T.Query("order_by"))),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           page: S.optional(S.String.pipe(T.Query())),
           pageUrl: S.optional(S.String.pipe(T.Query("page_url"))),
           path: S.optional(S.String.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          sameSite: S.optional(CookiesListRequestSameSite.pipe(T.Query("same_site"))),
+          sameSite: S.optional(S.String.pipe(T.Query("same_site"))),
           secure: S.optional(S.Boolean.pipe(T.Query())),
-          type: S.optional(CookiesListRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield/cookies", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1305,27 +1093,23 @@ function __c2(j: number): any {
           host: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
           name: S.String,
-          type: CookiesListResultItemType,
+          type: S.String,
           domainAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("domain_attribute"))),
           expiresAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("expires_attribute"))),
           httpOnlyAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("http_only_attribute"))),
           maxAgeAttribute: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age_attribute"))),
-          pageUrls: S.optional(
-            S.NullOr(CookiesListResultItemPageUrlsList).pipe(T.Body("page_urls")),
-          ),
+          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
           pathAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("path_attribute"))),
-          sameSiteAttribute: S.optional(
-            S.NullOr(CookiesListResultItemSameSiteAttribute).pipe(T.Body("same_site_attribute")),
-          ),
+          sameSiteAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("same_site_attribute"))),
           secureAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("secure_attribute"))),
         }),
       ).annotate({ identifier: "CookiesListResultItem" });
     case 6:
-      return S.Array(CookiesListResultItem);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: CookiesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(22, __c2, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCookiesResponse" });
@@ -1345,7 +1129,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          action: PoliciesListResultItemAction,
+          action: S.String,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
@@ -1353,11 +1137,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "PoliciesListResultItem" });
     case 2:
-      return S.Array(PoliciesListResultItem);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: PoliciesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(26, __c3, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPoliciesResponse" });
@@ -1365,13 +1149,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(ScriptsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           excludeCdnCgi: S.optional(S.Boolean.pipe(T.Query("exclude_cdn_cgi"))),
           excludeDuplicates: S.optional(S.Boolean.pipe(T.Query("exclude_duplicates"))),
           excludeUrls: S.optional(S.String.pipe(T.Query("exclude_urls"))),
-          export: S.optional(ScriptsListRequestExport.pipe(T.Query())),
+          export: S.optional(S.String.pipe(T.Query())),
           hosts: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(ScriptsListRequestOrderBy.pipe(T.Query("order_by"))),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           page: S.optional(S.String.pipe(T.Query())),
           pageUrl: S.optional(S.String.pipe(T.Query("page_url"))),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -1403,31 +1187,25 @@ function __c3(j: number): any {
           jsIntegrityScore: S.optional(S.NullOr(S.Number).pipe(T.Body("js_integrity_score"))),
           magecartScore: S.optional(S.NullOr(S.Number).pipe(T.Body("magecart_score"))),
           maliciousDomainCategories: S.optional(
-            S.NullOr(ScriptsListResultItemMaliciousDomainCategoriesList).pipe(
-              T.Body("malicious_domain_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
           ),
           maliciousUrlCategories: S.optional(
-            S.NullOr(ScriptsListResultItemMaliciousUrlCategoriesList).pipe(
-              T.Body("malicious_url_categories"),
-            ),
+            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
           ),
           malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
           obfuscationScore: S.optional(S.NullOr(S.Number).pipe(T.Body("obfuscation_score"))),
-          pageUrls: S.optional(
-            S.NullOr(ScriptsListResultItemPageUrlsList).pipe(T.Body("page_urls")),
-          ),
+          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
           urlReportedMalicious: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
           ),
         }),
       ).annotate({ identifier: "ScriptsListResultItem" });
     case 6:
-      return S.Array(ScriptsListResultItem);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: ScriptsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(30, __c3, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScriptsResponse" });
@@ -1453,7 +1231,7 @@ function __c4(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           policyId: S.String.pipe(T.Label("policy_id")),
-          action: S.optional(PoliciesUpdateRequestAction),
+          action: S.optional(S.String),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           expression: S.optional(S.String),
@@ -1469,4 +1247,9 @@ function __c4(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePolicyRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

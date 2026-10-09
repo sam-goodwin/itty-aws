@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -75,8 +77,6 @@ export type CancelSubscriptionRequestCancellationReasonEnum =
   | "CANCELLATION_REASON_SYSTEM_CANCEL"
   | "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH"
   | "CANCELLATION_REASON_OTHER";
-const CancelSubscriptionRequestCancellationReasonEnum = S.String;
-
 /** Request to cancel a subscription. */
 export interface CancelSubscriptionRequest {
   /** Optional. If true, Google will cancel the subscription immediately, and may or may not (based on the contract) issue a prorated refund for the remainder of the billing cycle. Otherwise, Google defers the cancellation at renewal_time, and will not issue a refund. - YouTube subscriptions must use this option currently. However, the user will still have access to the subscription until the end of the billing cycle. */
@@ -84,29 +84,17 @@ export interface CancelSubscriptionRequest {
   /** Specifies the reason for the cancellation. */
   cancellationReason?: CancelSubscriptionRequestCancellationReasonEnum | (string & {});
 }
-const CancelSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelSubscriptionRequest>;
-
 export interface CancelPartnersSubscriptionsRequest {
   /** Required. The name of the subscription resource to be cancelled. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" */
   name: string;
   /** Request body */
   body?: CancelSubscriptionRequest;
 }
-const CancelPartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelPartnersSubscriptionsRequest>;
-
 export type SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum =
   | "BILLING_CYCLE_SPEC_UNSPECIFIED"
   | "BILLING_CYCLE_SPEC_ALIGN_WITH_PREVIOUS_SUBSCRIPTION"
   | "BILLING_CYCLE_SPEC_START_IMMEDIATELY"
   | "BILLING_CYCLE_SPEC_DEFERRED_TO_NEXT_RECURRENCE";
-const SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum = S.String;
-
 /** Details about the previous subscription that this new subscription upgrades/downgrades from. */
 export interface SubscriptionUpgradeDowngradeDetails {
   /** Required. The previous subscription id to be replaced. The format can be one of the following: 1. `subscription_id`: the old subscription id under the same partner_id. 2. `partners/{partner_id}/subscriptions/{subscription_id}`. A different partner_id is allowed. But they must be under the same partner group. */
@@ -114,14 +102,7 @@ export interface SubscriptionUpgradeDowngradeDetails {
   /** Required. Specifies the billing cycle spec for the new upgraded/downgraded subscription. */
   billingCycleSpec?: SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum | (string & {});
 }
-const SubscriptionUpgradeDowngradeDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<SubscriptionUpgradeDowngradeDetails>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
-
 /** Describes a location of an end user. */
 export interface Location {
   /** The postal code this location refers to. Ex. "94043" */
@@ -129,8 +110,6 @@ export interface Location {
   /** 2-letter ISO region code for current content region. Ex. "US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1 */
   regionCode?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Location>;
-
 /** Describes the details of the migrated subscription. */
 export interface SubscriptionMigrationDetails {
   /** Output only. The migrated subscription id in the legacy system. */
@@ -138,14 +117,7 @@ export interface SubscriptionMigrationDetails {
   /** Output only. The creation time of the migrated subscription in the legacy system. */
   legacyCreationTime?: string;
 }
-const SubscriptionMigrationDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SubscriptionMigrationDetails>;
-
 export type DurationUnitEnum = "UNIT_UNSPECIFIED" | "MONTH" | "DAY" | "HOUR";
-const DurationUnitEnum = S.String;
-
 /** Describes the length of a period of a time. */
 export interface Duration {
   /** The unit used for the duration */
@@ -153,14 +125,10 @@ export interface Duration {
   /** number of duration units to be included. */
   count?: number;
 }
-const Duration = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Duration>;
-
 export type SubscriptionPromotionSpecTypeEnum =
   | "PROMOTION_TYPE_UNSPECIFIED"
   | "PROMOTION_TYPE_FREE_TRIAL"
   | "PROMOTION_TYPE_INTRODUCTORY_PRICING";
-const SubscriptionPromotionSpecTypeEnum = S.String;
-
 /** Describes the amount unit including the currency code. */
 export interface Amount {
   /** Required. Currency codes in accordance with [ISO-4217 Currency Codes] (https://en.wikipedia.org/wiki/ISO_4217). For example, USD. */
@@ -168,8 +136,6 @@ export interface Amount {
   /** Required. Amount in micros (1_000_000 micros = 1 currency unit) */
   amountMicros?: string;
 }
-const Amount = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Amount>;
-
 /** The duration of an introductory pricing promotion. */
 export interface PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
   /** Output only. The duration of an introductory offer in billing cycles. */
@@ -181,28 +147,13 @@ export interface PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
   /** Output only. The discount percentage in micros. For example, 50,000 represents 5%. */
   discountRatioMicros?: string;
 }
-const PromotionIntroductoryPricingDetailsIntroductoryPricingSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
-
 export type PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList =
   Array<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
-const PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList>;
-
 /** The details of a introductory pricing promotion. */
 export interface PromotionIntroductoryPricingDetails {
   /** Output only. Specifies the introductory pricing periods. */
   introductoryPricingSpecs?: PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList;
 }
-const PromotionIntroductoryPricingDetails = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PromotionIntroductoryPricingDetails>;
-
 /** Describes the spec for one promotion. */
 export interface SubscriptionPromotionSpec {
   /** Output only. The duration of the free trial if the promotion is of type FREE_TRIAL. */
@@ -214,17 +165,7 @@ export interface SubscriptionPromotionSpec {
   /** Output only. The details of the introductory pricing spec if the promotion is of type INTRODUCTORY_PRICING. */
   introductoryPricingDetails?: PromotionIntroductoryPricingDetails;
 }
-const SubscriptionPromotionSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<SubscriptionPromotionSpec>;
-
 export type SubscriptionPromotionSpecList = Array<SubscriptionPromotionSpec>;
-const SubscriptionPromotionSpecList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<SubscriptionPromotionSpecList>;
-
 export type SubscriptionLineItemStateEnum =
   | "LINE_ITEM_STATE_UNSPECIFIED"
   | "LINE_ITEM_STATE_ACTIVE"
@@ -234,8 +175,6 @@ export type SubscriptionLineItemStateEnum =
   | "LINE_ITEM_STATE_DEACTIVATING"
   | "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE"
   | "LINE_ITEM_STATE_OFF_CYCLE_CHARGING";
-const SubscriptionLineItemStateEnum = S.String;
-
 /** A description of what time period or moment in time the product or service is being delivered over. */
 export interface ServicePeriod {
   /** Optional. The end time of the service period. Time is exclusive. */
@@ -243,40 +182,27 @@ export interface ServicePeriod {
   /** Required. The start time of the service period. Time is inclusive. */
   startTime?: string;
 }
-const ServicePeriod = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ServicePeriod>;
-
 /** Details for a ONE_TIME recurrence line item. */
 export interface SubscriptionLineItemOneTimeRecurrenceDetails {
   /** Output only. The service period of the ONE_TIME line item. */
   servicePeriod?: ServicePeriod;
 }
-const SubscriptionLineItemOneTimeRecurrenceDetails = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<SubscriptionLineItemOneTimeRecurrenceDetails>;
-
 export type SubscriptionLineItemPlanTypeEnum =
   | "LINE_ITEM_PLAN_TYPE_UNSPECIFIED"
   | "LINE_ITEM_PLAN_TYPE_BASE"
   | "LINE_ITEM_PLAN_TYPE_ADDON";
-const SubscriptionLineItemPlanTypeEnum = S.String;
-
 export type GoogleOnePayloadSalesChannelEnum =
   | "CHANNEL_UNSPECIFIED"
   | "CHANNEL_RETAIL"
   | "CHANNEL_ONLINE_WEB"
   | "CHANNEL_ONLINE_ANDROID_APP"
   | "CHANNEL_ONLINE_IOS_APP";
-const GoogleOnePayloadSalesChannelEnum = S.String;
-
 export type GoogleOnePayloadOfferingEnum =
   | "OFFERING_UNSPECIFIED"
   | "OFFERING_VAS_BUNDLE"
   | "OFFERING_VAS_STANDALONE"
   | "OFFERING_HARD_BUNDLE"
   | "OFFERING_SOFT_BUNDLE";
-const GoogleOnePayloadOfferingEnum = S.String;
-
 /** Payload specific to Google One products. */
 export interface GoogleOnePayload {
   /** The type of sales channel through which the subscription was sold. */
@@ -288,15 +214,11 @@ export interface GoogleOnePayload {
   /** The identifier for the partner store where the subscription was sold. */
   storeId?: string;
 }
-const GoogleOnePayload = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GoogleOnePayload>;
-
 export type YoutubePayloadPartnerPlanTypeEnum =
   | "PARTNER_PLAN_TYPE_UNSPECIFIED"
   | "PARTNER_PLAN_TYPE_STANDALONE"
   | "PARTNER_PLAN_TYPE_HARD_BUNDLE"
   | "PARTNER_PLAN_TYPE_SOFT_BUNDLE";
-const YoutubePayloadPartnerPlanTypeEnum = S.String;
-
 /** Payload specific to Youtube products. */
 export interface YoutubePayload {
   /** Output only. The access expiration time for this line item. */
@@ -306,8 +228,6 @@ export interface YoutubePayload {
   /** Optional. Specifies the plan type offered to the end user by the partner. */
   partnerPlanType?: YoutubePayloadPartnerPlanTypeEnum | (string & {});
 }
-const YoutubePayload = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<YoutubePayload>;
-
 /** Payload specific for Google Home products. */
 export interface GoogleHomePayload {
   /** Output only. This identifies whether the subscription is attached to a Google Home structure. */
@@ -317,8 +237,6 @@ export interface GoogleHomePayload {
   /** Optional. Structure identifier on Google side. */
   googleStructureId?: string;
 }
-const GoogleHomePayload = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GoogleHomePayload>;
-
 /** Specifies product specific payload. */
 export interface ProductPayload {
   /** Product-specific payloads. Payload specific to Google One products. */
@@ -328,14 +246,10 @@ export interface ProductPayload {
   /** Payload specific to Google Home products. */
   googleHomePayload?: GoogleHomePayload;
 }
-const ProductPayload = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ProductPayload>;
-
 export type SubscriptionLineItemRecurrenceTypeEnum =
   | "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED"
   | "LINE_ITEM_RECURRENCE_TYPE_PERIODIC"
   | "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME";
-const SubscriptionLineItemRecurrenceTypeEnum = S.String;
-
 /** The details for an element in the hard bundle. */
 export interface SubscriptionLineItemBundleDetailsBundleElementDetails {
   /** Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'. */
@@ -343,38 +257,18 @@ export interface SubscriptionLineItemBundleDetailsBundleElementDetails {
   /** Output only. The time when this product is linked to an end user. */
   userAccountLinkedTime?: string;
 }
-const SubscriptionLineItemBundleDetailsBundleElementDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SubscriptionLineItemBundleDetailsBundleElementDetails>;
-
 export type SubscriptionLineItemBundleDetailsBundleElementDetailsList =
   Array<SubscriptionLineItemBundleDetailsBundleElementDetails>;
-const SubscriptionLineItemBundleDetailsBundleElementDetailsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SubscriptionLineItemBundleDetailsBundleElementDetailsList>;
-
 /** The bundle details for a line item corresponding to a hard bundle. */
 export interface SubscriptionLineItemBundleDetails {
   /** Output only. The details for each element in the hard bundle. */
   bundleElementDetails?: SubscriptionLineItemBundleDetailsBundleElementDetailsList;
 }
-const SubscriptionLineItemBundleDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SubscriptionLineItemBundleDetails>;
-
 /** Details for a subscription line item with finite billing cycles. */
 export interface FiniteBillingCycleDetails {
   /** The number of a subscription line item billing cycles after which billing will stop automatically. */
   billingCycleCountLimit?: string;
 }
-const FiniteBillingCycleDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<FiniteBillingCycleDetails>;
-
 /** Individual line item definition of a subscription. */
 export interface SubscriptionLineItem {
   /** Identifier. Resource name of the line item. Format: partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem} */
@@ -406,22 +300,13 @@ export interface SubscriptionLineItem {
   /** Output only. The free trial end time will be populated after the line item is successfully processed. End time of the line item free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It will be set the same as createTime if no free trial promotion is specified. */
   lineItemFreeTrialEndTime?: string;
 }
-const SubscriptionLineItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SubscriptionLineItem>;
-
 export type SubscriptionLineItemList = Array<SubscriptionLineItem>;
-const SubscriptionLineItemList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<SubscriptionLineItemList>;
-
 export type SubscriptionProcessingStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
   | "PROCESSING_STATE_CANCELLING"
   | "PROCESSING_STATE_RECURRING"
   | "PROCESSING_STATE_RESUMING"
   | "PROCESSING_STATE_SUSPENDING";
-const SubscriptionProcessingStateEnum = S.String;
-
 export type SubscriptionStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_CREATED"
@@ -430,8 +315,6 @@ export type SubscriptionStateEnum =
   | "STATE_IN_GRACE_PERIOD"
   | "STATE_CANCEL_AT_END_OF_CYCLE"
   | "STATE_SUSPENDED";
-const SubscriptionStateEnum = S.String;
-
 export type SubscriptionCancellationDetailsReasonEnum =
   | "CANCELLATION_REASON_UNSPECIFIED"
   | "CANCELLATION_REASON_FRAUD"
@@ -445,18 +328,11 @@ export type SubscriptionCancellationDetailsReasonEnum =
   | "CANCELLATION_REASON_SYSTEM_CANCEL"
   | "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH"
   | "CANCELLATION_REASON_OTHER";
-const SubscriptionCancellationDetailsReasonEnum = S.String;
-
 /** Describes the details of a cancelled or cancelling subscription. */
 export interface SubscriptionCancellationDetails {
   /** Output only. The reason of the cancellation. */
   reason?: SubscriptionCancellationDetailsReasonEnum | (string & {});
 }
-const SubscriptionCancellationDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SubscriptionCancellationDetails>;
-
 /** Acts as a central billing entity between an external partner and Google. Google services use the subscription state to grant or revoke the user's service entitlement. Note: The subscription state might not perfectly align with the user's service entitlement. Some services might continue providing access until the current cycle ends, even if the subscription is immediately canceled. Consult the relevant contract or product policy for specific details. */
 export interface Subscription {
   /** Output only. System generated timestamp when the subscription is most recently updated. UTC timezone. */
@@ -500,18 +376,11 @@ export interface Subscription {
   /** Output only. System generated timestamp when the subscription is created. UTC timezone. */
   createTime?: string;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Subscription>;
-
 /** Response that contains the cancelled subscription resource. */
 export interface CancelSubscriptionResponse {
   /** The cancelled subscription resource. */
   subscription?: Subscription;
 }
-const CancelSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CancelSubscriptionResponse>;
-
 export interface CreatePartnersSubscriptionsRequest {
   /** Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}". */
   parent: string;
@@ -520,11 +389,6 @@ export interface CreatePartnersSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const CreatePartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreatePartnersSubscriptionsRequest>;
-
 /** The details of the line item to be entitled. */
 export interface EntitleSubscriptionRequestLineItemEntitlementDetails {
   /** Required. The index of the line item to be entitled. */
@@ -532,47 +396,24 @@ export interface EntitleSubscriptionRequestLineItemEntitlementDetails {
   /** Optional. Only applicable if the line item corresponds to a hard bundle. Product resource names that identify the bundle elements to be entitled in the line item. If unspecified, all bundle elements will be entitled. The format is 'partners/{partner_id}/products/{product_id}'. */
   products?: StringList;
 }
-const EntitleSubscriptionRequestLineItemEntitlementDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<EntitleSubscriptionRequestLineItemEntitlementDetails>;
-
 export type EntitleSubscriptionRequestLineItemEntitlementDetailsList =
   Array<EntitleSubscriptionRequestLineItemEntitlementDetails>;
-const EntitleSubscriptionRequestLineItemEntitlementDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<EntitleSubscriptionRequestLineItemEntitlementDetailsList>;
-
 /** Partner request for entitling the previously provisioned subscription to an end user. The end user identity is inferred from the request OAuth context. */
 export interface EntitleSubscriptionRequest {
   /** Optional. The line items to be entitled. If unspecified, all line items will be entitled. */
   lineItemEntitlementDetails?: EntitleSubscriptionRequestLineItemEntitlementDetailsList;
 }
-const EntitleSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<EntitleSubscriptionRequest>;
-
 export interface EntitlePartnersSubscriptionsRequest {
   /** Required. The name of the subscription resource that is entitled to the current end user. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" */
   name: string;
   /** Request body */
   body?: EntitleSubscriptionRequest;
 }
-const EntitlePartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<EntitlePartnersSubscriptionsRequest>;
-
 /** Response that contains the entitled subscription resource. */
 export interface EntitleSubscriptionResponse {
   /** The subscription that has user linked to it. */
   subscription?: Subscription;
 }
-const EntitleSubscriptionResponse =
-  CancelSubscriptionResponse as any as S.Schema<EntitleSubscriptionResponse>;
-
 /** Describes the details of an extension request. */
 export interface Extension {
   /** Required. Specifies the period of access the subscription should grant. */
@@ -580,8 +421,6 @@ export interface Extension {
   /** Required. Identifier of the end-user in partner's system. */
   partnerUserToken?: string;
 }
-const Extension = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Extension>;
-
 /** Request message for extending a Subscription resource. A new recurrence will be made based on the subscription schedule defined by the original product. */
 export interface ExtendSubscriptionRequest {
   /** Required. Specifies details of the extension. Currently, the duration of the extension must be exactly one billing cycle of the original subscription. */
@@ -589,22 +428,12 @@ export interface ExtendSubscriptionRequest {
   /** Required. Restricted to 36 ASCII characters. A random UUID is recommended. The idempotency key for the request. The ID generation logic is controlled by the partner. request_id should be the same as on retries of the same request. A different request_id must be used for a extension of a different cycle. */
   requestId?: string;
 }
-const ExtendSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ExtendSubscriptionRequest>;
-
 export interface ExtendPartnersSubscriptionsRequest {
   /** Required. The name of the subscription resource to be extended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}". */
   name: string;
   /** Request body */
   body?: ExtendSubscriptionRequest;
 }
-const ExtendPartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ExtendPartnersSubscriptionsRequest>;
-
 /** Response that contains the timestamps after the extension. */
 export interface ExtendSubscriptionResponse {
   /** End of the free trial period, in ISO 8061 format. UTC timezone. Example, "freeTrialEndTime":"2019-08-31T17:28:54.564Z" This time will be set the same as initial subscription creation time if no free trial period is offered to the partner. */
@@ -614,11 +443,6 @@ export interface ExtendSubscriptionResponse {
   /** Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061 format. For example: "2019-08-31T17:28:54.564Z" */
   renewalTime?: string;
 }
-const ExtendSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ExtendSubscriptionResponse>;
-
 /** Request to find eligible promotions for the current user. */
 export interface FindEligiblePromotionsRequest {
   /** Optional. A page token, received from a previous `FindEligiblePromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FindEligiblePromotions` must match the call that provided the page token. */
@@ -628,22 +452,12 @@ export interface FindEligiblePromotionsRequest {
   /** Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id` */
   filter?: string;
 }
-const FindEligiblePromotionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<FindEligiblePromotionsRequest>;
-
 export interface FindEligiblePartnersPromotionsRequest {
   /** Required. The parent, the partner that can resell. Format: partners/{partner} */
   parent: string;
   /** Request body */
   body?: FindEligiblePromotionsRequest;
 }
-const FindEligiblePartnersPromotionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<FindEligiblePartnersPromotionsRequest>;
-
 /** Localized variant of a text in a particular language. */
 export interface GoogleTypeLocalizedText {
   /** The text's BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
@@ -651,23 +465,11 @@ export interface GoogleTypeLocalizedText {
   /** Localized string in the language corresponding to language_code below. */
   text?: string;
 }
-const GoogleTypeLocalizedText = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GoogleTypeLocalizedText>;
-
 export type GoogleTypeLocalizedTextList = Array<GoogleTypeLocalizedText>;
-const GoogleTypeLocalizedTextList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GoogleTypeLocalizedTextList>;
-
 export type PromotionPromotionTypeEnum =
   | "PROMOTION_TYPE_UNSPECIFIED"
   | "PROMOTION_TYPE_FREE_TRIAL"
   | "PROMOTION_TYPE_INTRODUCTORY_PRICING";
-const PromotionPromotionTypeEnum = S.String;
-
 /** A Promotion resource that defines a promotion for a subscription that can be resold. */
 export interface Promotion {
   /** Optional. Specifies the end time (exclusive) of the period that the promotion is available in. If unset, the promotion is available indefinitely. */
@@ -689,11 +491,7 @@ export interface Promotion {
   /** Optional. Specifies the duration of the free trial of the subscription when promotion_type is PROMOTION_TYPE_FREE_TRIAL */
   freeTrialDuration?: Duration;
 }
-const Promotion = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Promotion>;
-
 export type PromotionList = Array<Promotion>;
-const PromotionList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PromotionList>;
-
 /** Response containing the found promotions for the current user. */
 export interface FindEligiblePromotionsResponse {
   /** The promotions for the current user. */
@@ -701,28 +499,16 @@ export interface FindEligiblePromotionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const FindEligiblePromotionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<FindEligiblePromotionsResponse>;
-
 /** The options for the intent. */
 export interface IntentPayloadIntentOptions {
   /** Optional. If true, Google may use a different product and promotion id from the ones in the `create_intent` based on the user's eligibility. Only applicable for certain YouTube free trial offers. */
   enableOfferOverride?: boolean;
 }
-const IntentPayloadIntentOptions = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IntentPayloadIntentOptions>;
-
 /** The cycle options when starting and resuming a subscription. */
 export interface CycleOptions {
   /** Optional. The duration of the initial cycle. Only `DAY` is supported. If set, Google will start the subscription with this initial cycle duration starting at the request time (see available methods below). A prorated charge will be applied. This option is available to the following methods: - partners.subscriptions.provision - partners.subscriptions.resume - partners.userSessions.generate */
   initialCycleDuration?: Duration;
 }
-const CycleOptions = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CycleOptions>;
-
 /** Intent message for creating a Subscription resource. */
 export interface CreateSubscriptionIntent {
   /** Optional. Deprecated: Use the `parent` field in `GenerateUserSessionRequest` instead. The parent resource name, which is the identifier of the partner. */
@@ -734,21 +520,11 @@ export interface CreateSubscriptionIntent {
   /** Required. The Subscription to be created. */
   subscription?: Subscription;
 }
-const CreateSubscriptionIntent = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateSubscriptionIntent>;
-
 /** Intent for entitling the previously provisioned subscription to an end user. */
 export interface EntitleSubscriptionIntent {
   /** Required. The name of the subscription resource that is entitled to the current end user. It is in the format of "partners/{partner_id}/subscriptions/{subscriptionId}". */
   name?: string;
 }
-const EntitleSubscriptionIntent = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<EntitleSubscriptionIntent>;
-
 /** The payload that describes the user intent. */
 export interface IntentPayload {
   /** Optional. The additional features for the intent. */
@@ -758,29 +534,17 @@ export interface IntentPayload {
   /** The request to entitle a subscription. */
   entitleIntent?: EntitleSubscriptionIntent;
 }
-const IntentPayload = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<IntentPayload>;
-
 /** Request to generate a user session. */
 export interface GenerateUserSessionRequest {
   /** The user intent to generate the user session. */
   intentPayload?: IntentPayload;
 }
-const GenerateUserSessionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GenerateUserSessionRequest>;
-
 export interface GeneratePartnersUserSessionsRequest {
   /** Required. The parent, the partner that can resell. Format: partners/{partner} */
   parent: string;
   /** Request body */
   body?: GenerateUserSessionRequest;
 }
-const GeneratePartnersUserSessionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GeneratePartnersUserSessionsRequest>;
-
 /** Contains a short-lived token containing information required to interact with the Google Payments Reseller Platform via web endpoints. - Generate a user session token dynamically for an authenticated user. Do not share a token directly with a user in an unauthenticated context, such as SMS or email. - You can regenerate new session tokens repeatedly for the same `generate` request if necessary, regardless of whether previous tokens have expired. Multiple sessions will not result in duplicate fulfillments because the `subscription ID` guarantees uniqueness. For more integration details, see the [Google Managed Signup](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup) documentation. */
 export interface UserSession {
   /** Output only. The encrypted token of the user session, including the information of the user's intent and request. This token should be provided when redirecting the user to Google. */
@@ -788,27 +552,15 @@ export interface UserSession {
   /** Output only. The time at which the user session expires. */
   expireTime?: string;
 }
-const UserSession = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<UserSession>;
-
 /** Response that contains the details for generated user session. */
 export interface GenerateUserSessionResponse {
   /** The generated user session. The token size is proportional to the size of the intent payload. */
   userSession?: UserSession;
 }
-const GenerateUserSessionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GenerateUserSessionResponse>;
-
 export interface GetPartnersSubscriptionsRequest {
   /** Required. The name of the subscription resource to retrieve. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" */
   name: string;
 }
-const GetPartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetPartnersSubscriptionsRequest>;
-
 export interface ListPartnersProductsRequest {
   /** Optional. A page token, received from a previous `ListProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProducts` must match the call that provided the page token. */
   pageToken?: string;
@@ -819,17 +571,10 @@ export interface ListPartnersProductsRequest {
   /** Required. The parent, the partner that can resell. Format: partners/{partner} */
   parent: string;
 }
-const ListPartnersProductsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListPartnersProductsRequest>;
-
 export type ProductProductTypeEnum =
   | "PRODUCT_TYPE_UNSPECIFIED"
   | "PRODUCT_TYPE_SUBSCRIPTION"
   | "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION";
-const ProductProductTypeEnum = S.String;
-
 /** Configs the prices in an available region. */
 export interface ProductPriceConfig {
   /** Output only. The price in the region. */
@@ -837,36 +582,17 @@ export interface ProductPriceConfig {
   /** Output only. 2-letter ISO region code where the product is available in. Ex. "US". */
   regionCode?: string;
 }
-const ProductPriceConfig = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ProductPriceConfig>;
-
 export type ProductPriceConfigList = Array<ProductPriceConfig>;
-const ProductPriceConfigList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ProductPriceConfigList>;
-
 /** The individual product that is included in the bundle. */
 export interface ProductBundleDetailsBundleElement {
   /** Required. Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'. */
   product?: string;
 }
-const ProductBundleDetailsBundleElement = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ProductBundleDetailsBundleElement>;
-
 export type ProductBundleDetailsBundleElementList = Array<ProductBundleDetailsBundleElement>;
-const ProductBundleDetailsBundleElementList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ProductBundleDetailsBundleElementList>;
-
 export type ProductBundleDetailsEntitlementModeEnum =
   | "ENTITLEMENT_MODE_UNSPECIFIED"
   | "ENTITLEMENT_MODE_FULL"
   | "ENTITLEMENT_MODE_INCREMENTAL";
-const ProductBundleDetailsEntitlementModeEnum = S.String;
-
 /** Details for a bundle product. */
 export interface ProductBundleDetails {
   /** The individual products that are included in the bundle. */
@@ -874,8 +600,6 @@ export interface ProductBundleDetails {
   /** The entitlement mode of the bundle product. */
   entitlementMode?: ProductBundleDetailsEntitlementModeEnum;
 }
-const ProductBundleDetails = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ProductBundleDetails>;
-
 /** A Product resource that defines a subscription service that can be resold. */
 export interface Product {
   /** Output only. Localized human readable name of the product. */
@@ -895,11 +619,7 @@ export interface Product {
   /** Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be charged indefinitely. */
   finiteBillingCycleDetails?: FiniteBillingCycleDetails;
 }
-const Product = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Product>;
-
 export type ProductList = Array<Product>;
-const ProductList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ProductList>;
-
 /** Response that contains the products. */
 export interface ListProductsResponse {
   /** The products for the specified partner. */
@@ -907,8 +627,6 @@ export interface ListProductsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListProductsResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListProductsResponse>;
-
 export interface ListPartnersPromotionsRequest {
   /** Required. The parent, the partner that can resell. Format: partners/{partner} */
   parent: string;
@@ -919,11 +637,6 @@ export interface ListPartnersPromotionsRequest {
   /** Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListPartnersPromotionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListPartnersPromotionsRequest>;
-
 /** Response that contains the promotions. */
 export interface ListPromotionsResponse {
   /** The promotions for the specified partner. */
@@ -931,11 +644,6 @@ export interface ListPromotionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListPromotionsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListPromotionsResponse>;
-
 export interface PatchPartnersSubscriptionsLineItemsRequest {
   /** Optional. An idempotency ID for the request. A random UUID is recommended. Restricted to 36 ASCII characters. */
   requestId?: string;
@@ -946,18 +654,11 @@ export interface PatchPartnersSubscriptionsLineItemsRequest {
   /** Request body */
   body?: SubscriptionLineItem;
 }
-const PatchPartnersSubscriptionsLineItemsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PatchPartnersSubscriptionsLineItemsRequest>;
-
 export type ProvisionPartnersSubscriptionsCycleOptions_initialCycleDuration_unitEnum =
   | "UNIT_UNSPECIFIED"
   | "MONTH"
   | "DAY"
   | "HOUR";
-const ProvisionPartnersSubscriptionsCycleOptions_initialCycleDuration_unitEnum = S.String;
-
 export interface ProvisionPartnersSubscriptionsRequest {
   /** Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error. */
   subscriptionId?: string;
@@ -972,18 +673,11 @@ export interface ProvisionPartnersSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const ProvisionPartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ProvisionPartnersSubscriptionsRequest>;
-
 export type ResumeSubscriptionRequestResumeModeEnum =
   | "RESUME_MODE_UNSPECIFIED"
   | "RESUME_MODE_CYCLE_OPTIONS"
   | "RESUME_MODE_RESTORE_EXISTING_BILLING_SCHEDULE"
   | "RESUME_MODE_IMMEDIATE_NEW_CYCLE";
-const ResumeSubscriptionRequestResumeModeEnum = S.String;
-
 /** Request to resume a suspended subscription. */
 export interface ResumeSubscriptionRequest {
   /** Optional. The cycle options for the subscription. */
@@ -991,91 +685,50 @@ export interface ResumeSubscriptionRequest {
   /** Required. The mode to resume the subscription. */
   resumeMode?: ResumeSubscriptionRequestResumeModeEnum | (string & {});
 }
-const ResumeSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ResumeSubscriptionRequest>;
-
 export interface ResumePartnersSubscriptionsRequest {
   /** Required. The name of the subscription resource to be resumed. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" */
   name: string;
   /** Request body */
   body?: ResumeSubscriptionRequest;
 }
-const ResumePartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ResumePartnersSubscriptionsRequest>;
-
 /** Response that contains the resumed subscription. */
 export interface ResumeSubscriptionResponse {
   /** The resumed subscription resource. */
   subscription?: Subscription;
 }
-const ResumeSubscriptionResponse =
-  CancelSubscriptionResponse as any as S.Schema<ResumeSubscriptionResponse>;
-
 export type SuspendSubscriptionRequestSuspendModeEnum =
   | "SUSPEND_MODE_UNSPECIFIED"
   | "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD"
   | "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD";
-const SuspendSubscriptionRequestSuspendModeEnum = S.String;
-
 /** Request to suspend a subscription. */
 export interface SuspendSubscriptionRequest {
   /** Optional. The mode to suspend the subscription. It's required for partners to specify the suspend mode, whether suspend immediately and indefinitely, or cancel the subscription after grace_period_millis or auto_cancel_duration_millis if it's not resumed. */
   suspendMode?: SuspendSubscriptionRequestSuspendModeEnum | (string & {});
 }
-const SuspendSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<SuspendSubscriptionRequest>;
-
 export interface SuspendPartnersSubscriptionsRequest {
   /** Required. The name of the subscription resource to be suspended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" */
   name: string;
   /** Request body */
   body?: SuspendSubscriptionRequest;
 }
-const SuspendPartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<SuspendPartnersSubscriptionsRequest>;
-
 /** Response that contains the suspended subscription. */
 export interface SuspendSubscriptionResponse {
   /** The suspended subscription resource. */
   subscription?: Subscription;
 }
-const SuspendSubscriptionResponse =
-  CancelSubscriptionResponse as any as S.Schema<SuspendSubscriptionResponse>;
-
 /** Request to revoke a cancellation request. */
 export interface UndoCancelSubscriptionRequest {}
-const UndoCancelSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UndoCancelSubscriptionRequest>;
-
 export interface UndoCancelPartnersSubscriptionsRequest {
   /** Required. The name of the subscription resource whose pending cancellation needs to be undone. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" */
   name: string;
   /** Request body */
   body?: UndoCancelSubscriptionRequest;
 }
-const UndoCancelPartnersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UndoCancelPartnersSubscriptionsRequest>;
-
 /** Response that contains the updated subscription resource. */
 export interface UndoCancelSubscriptionResponse {
   /** The updated subscription resource. */
   subscription?: Subscription;
 }
-const UndoCancelSubscriptionResponse =
-  CancelSubscriptionResponse as any as S.Schema<UndoCancelSubscriptionResponse>;
-
 export type CancelPartnersSubscriptionsError =
   | NotFound
   | Forbidden
@@ -1089,8 +742,8 @@ export const cancelPartnersSubscriptions: API.OperationMethod<
   CancelPartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelPartnersSubscriptionsRequest,
-  output: CancelSubscriptionResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelPartnersSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CancelSubscriptionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1109,8 +762,8 @@ export const createPartnersSubscriptions: API.OperationMethod<
   CreatePartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePartnersSubscriptionsRequest,
-  output: Subscription,
+  input: __S(28, __c3, 4) as any as S.Schema<CreatePartnersSubscriptionsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1129,8 +782,8 @@ export const entitlePartnersSubscriptions: API.OperationMethod<
   EntitlePartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EntitlePartnersSubscriptionsRequest,
-  output: EntitleSubscriptionResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<EntitlePartnersSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<EntitleSubscriptionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1149,8 +802,8 @@ export const extendPartnersSubscriptions: API.OperationMethod<
   ExtendPartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtendPartnersSubscriptionsRequest,
-  output: ExtendSubscriptionResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<ExtendPartnersSubscriptionsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ExtendSubscriptionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1169,8 +822,8 @@ export const findEligiblePartnersPromotions: API.OperationMethod<
   FindEligiblePartnersPromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FindEligiblePartnersPromotionsRequest,
-  output: FindEligiblePromotionsResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<FindEligiblePartnersPromotionsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<FindEligiblePromotionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1189,8 +842,8 @@ export const generatePartnersUserSessions: API.OperationMethod<
   GeneratePartnersUserSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeneratePartnersUserSessionsRequest,
-  output: GenerateUserSessionResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<GeneratePartnersUserSessionsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GenerateUserSessionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1204,8 +857,8 @@ export const getPartnersSubscriptions: API.OperationMethod<
   GetPartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPartnersSubscriptionsRequest,
-  output: Subscription,
+  input: __S(53, __c6, 5) as any as S.Schema<GetPartnersSubscriptionsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1220,8 +873,8 @@ export const listPartnersProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPartnersProductsRequest,
-  output: ListProductsResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<ListPartnersProductsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<ListProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1237,8 +890,8 @@ export const listPartnersPromotions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPromotionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPartnersPromotionsRequest,
-  output: ListPromotionsResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<ListPartnersPromotionsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ListPromotionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1258,8 +911,8 @@ export const patchPartnersSubscriptionsLineItems: API.OperationMethod<
   PatchPartnersSubscriptionsLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchPartnersSubscriptionsLineItemsRequest,
-  output: SubscriptionLineItem,
+  input: __S(65, __c8, 1) as any as S.Schema<PatchPartnersSubscriptionsLineItemsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<SubscriptionLineItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1278,8 +931,8 @@ export const provisionPartnersSubscriptions: API.OperationMethod<
   ProvisionPartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProvisionPartnersSubscriptionsRequest,
-  output: Subscription,
+  input: __S(66, __c8, 2) as any as S.Schema<ProvisionPartnersSubscriptionsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1298,8 +951,8 @@ export const resumePartnersSubscriptions: API.OperationMethod<
   ResumePartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumePartnersSubscriptionsRequest,
-  output: ResumeSubscriptionResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<ResumePartnersSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<ResumeSubscriptionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1318,8 +971,8 @@ export const suspendPartnersSubscriptions: API.OperationMethod<
   SuspendPartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SuspendPartnersSubscriptionsRequest,
-  output: SuspendSubscriptionResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<SuspendPartnersSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<SuspendSubscriptionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1338,8 +991,8 @@ export const undoCancelPartnersSubscriptions: API.OperationMethod<
   UndoCancelPartnersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndoCancelPartnersSubscriptionsRequest,
-  output: UndoCancelSubscriptionResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<UndoCancelPartnersSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<UndoCancelSubscriptionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1352,7 +1005,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cancelImmediately: S.optional(S.Boolean),
-          cancellationReason: S.optional(CancelSubscriptionRequestCancellationReasonEnum),
+          cancellationReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CancelSubscriptionRequest",
@@ -1361,7 +1014,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1376,7 +1029,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           previousSubscriptionId: S.optional(S.String),
-          billingCycleSpec: S.optional(SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum),
+          billingCycleSpec: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SubscriptionUpgradeDowngradeDetails",
@@ -1402,7 +1055,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(DurationUnitEnum),
+          unit: S.optional(S.String),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Duration" });
@@ -1422,20 +1075,18 @@ function __c1(j: number): any {
         S.Struct({
           recurrenceCount: S.optional(S.Number),
           regionCode: S.optional(S.String),
-          discountAmount: S.optional(Amount),
+          discountAmount: S.optional(__S(7, __c0, 7)),
           discountRatioMicros: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PromotionIntroductoryPricingDetailsIntroductoryPricingSpec",
       });
     case 1:
-      return S.Array(PromotionIntroductoryPricingDetailsIntroductoryPricingSpec);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          introductoryPricingSpecs: S.optional(
-            PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList,
-          ),
+          introductoryPricingSpecs: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "PromotionIntroductoryPricingDetails",
@@ -1443,16 +1094,16 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          freeTrialDuration: S.optional(Duration),
-          type: S.optional(SubscriptionPromotionSpecTypeEnum),
+          freeTrialDuration: S.optional(__S(6, __c0, 6)),
+          type: S.optional(S.String),
           promotion: S.optional(S.String),
-          introductoryPricingDetails: S.optional(PromotionIntroductoryPricingDetails),
+          introductoryPricingDetails: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "SubscriptionPromotionSpec",
       });
     case 4:
-      return S.Array(SubscriptionPromotionSpec);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1463,7 +1114,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          servicePeriod: S.optional(ServicePeriod),
+          servicePeriod: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "SubscriptionLineItemOneTimeRecurrenceDetails",
@@ -1471,9 +1122,9 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          salesChannel: S.optional(GoogleOnePayloadSalesChannelEnum),
-          campaigns: S.optional(StringList),
-          offering: S.optional(GoogleOnePayloadOfferingEnum),
+          salesChannel: S.optional(S.String),
+          campaigns: S.optional(__S(3, __c0, 3)),
+          offering: S.optional(S.String),
           storeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleOnePayload" });
@@ -1485,8 +1136,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accessEndTime: S.optional(S.String),
-          partnerEligibilityIds: S.optional(StringList),
-          partnerPlanType: S.optional(YoutubePayloadPartnerPlanTypeEnum),
+          partnerEligibilityIds: S.optional(__S(3, __c0, 3)),
+          partnerPlanType: S.optional(S.String),
         }),
       ).annotate({ identifier: "YoutubePayload" });
     case 1:
@@ -1500,9 +1151,9 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          googleOnePayload: S.optional(GoogleOnePayload),
-          youtubePayload: S.optional(YoutubePayload),
-          googleHomePayload: S.optional(GoogleHomePayload),
+          googleOnePayload: S.optional(__S(15, __c1, 7)),
+          youtubePayload: S.optional(__S(16, __c2, 0)),
+          googleHomePayload: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "ProductPayload" });
     case 3:
@@ -1515,13 +1166,11 @@ function __c2(j: number): any {
         identifier: "SubscriptionLineItemBundleDetailsBundleElementDetails",
       });
     case 4:
-      return S.Array(SubscriptionLineItemBundleDetailsBundleElementDetails);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bundleElementDetails: S.optional(
-            SubscriptionLineItemBundleDetailsBundleElementDetailsList,
-          ),
+          bundleElementDetails: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "SubscriptionLineItemBundleDetails",
@@ -1538,18 +1187,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          lineItemPromotionSpecs: S.optional(SubscriptionPromotionSpecList),
-          state: S.optional(SubscriptionLineItemStateEnum),
-          oneTimeRecurrenceDetails: S.optional(SubscriptionLineItemOneTimeRecurrenceDetails),
-          amount: S.optional(Amount),
+          lineItemPromotionSpecs: S.optional(__S(12, __c1, 4)),
+          state: S.optional(S.String),
+          oneTimeRecurrenceDetails: S.optional(__S(14, __c1, 6)),
+          amount: S.optional(__S(7, __c0, 7)),
           description: S.optional(S.String),
-          planType: S.optional(SubscriptionLineItemPlanTypeEnum),
-          productPayload: S.optional(ProductPayload),
+          planType: S.optional(S.String),
+          productPayload: S.optional(__S(18, __c2, 2)),
           product: S.optional(S.String),
-          recurrenceType: S.optional(SubscriptionLineItemRecurrenceTypeEnum),
+          recurrenceType: S.optional(S.String),
           lineItemIndex: S.optional(S.Number),
-          bundleDetails: S.optional(SubscriptionLineItemBundleDetails),
-          finiteBillingCycleDetails: S.optional(FiniteBillingCycleDetails),
+          bundleDetails: S.optional(__S(21, __c2, 5)),
+          finiteBillingCycleDetails: S.optional(__S(22, __c2, 6)),
           lineItemFreeTrialEndTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionLineItem" });
@@ -1558,11 +1207,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SubscriptionLineItem);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(SubscriptionCancellationDetailsReasonEnum),
+          reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SubscriptionCancellationDetails",
@@ -1574,18 +1223,18 @@ function __c3(j: number): any {
           purchaseTime: S.optional(S.String),
           partnerUserToken: S.optional(S.String),
           name: S.optional(S.String),
-          upgradeDowngradeDetails: S.optional(SubscriptionUpgradeDowngradeDetails),
-          promotions: S.optional(StringList),
-          serviceLocation: S.optional(Location),
-          migrationDetails: S.optional(SubscriptionMigrationDetails),
-          lineItems: S.optional(SubscriptionLineItemList),
-          processingState: S.optional(SubscriptionProcessingStateEnum),
-          state: S.optional(SubscriptionStateEnum),
-          cancellationDetails: S.optional(SubscriptionCancellationDetails),
+          upgradeDowngradeDetails: S.optional(__S(2, __c0, 2)),
+          promotions: S.optional(__S(3, __c0, 3)),
+          serviceLocation: S.optional(__S(4, __c0, 4)),
+          migrationDetails: S.optional(__S(5, __c0, 5)),
+          lineItems: S.optional(__S(24, __c3, 0)),
+          processingState: S.optional(S.String),
+          state: S.optional(S.String),
+          cancellationDetails: S.optional(__S(25, __c3, 1)),
           endUserEntitled: S.optional(S.Boolean),
           freeTrialEndTime: S.optional(S.String),
-          products: S.optional(StringList),
-          promotionSpecs: S.optional(SubscriptionPromotionSpecList),
+          products: S.optional(__S(3, __c0, 3)),
+          promotionSpecs: S.optional(__S(12, __c1, 4)),
           redirectUri: S.optional(S.String),
           cycleEndTime: S.optional(S.String),
           renewalTime: S.optional(S.String),
@@ -1595,7 +1244,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          subscription: S.optional(Subscription),
+          subscription: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "CancelSubscriptionResponse",
@@ -1605,7 +1254,7 @@ function __c3(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           subscriptionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1620,19 +1269,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lineItemIndex: S.optional(S.Number),
-          products: S.optional(StringList),
+          products: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "EntitleSubscriptionRequestLineItemEntitlementDetails",
       });
     case 6:
-      return S.Array(EntitleSubscriptionRequestLineItemEntitlementDetails);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          lineItemEntitlementDetails: S.optional(
-            EntitleSubscriptionRequestLineItemEntitlementDetailsList,
-          ),
+          lineItemEntitlementDetails: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({
         identifier: "EntitleSubscriptionRequest",
@@ -1645,7 +1292,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(EntitleSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1659,14 +1306,14 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          duration: S.optional(Duration),
+          duration: S.optional(__S(6, __c0, 6)),
           partnerUserToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Extension" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          extension: S.optional(Extension),
+          extension: S.optional(__S(33, __c4, 1)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
@@ -1676,7 +1323,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ExtendSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1711,7 +1358,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(FindEligiblePromotionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1734,27 +1381,27 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleTypeLocalizedText);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
           name: S.optional(S.String),
           startTime: S.optional(S.String),
-          regionCodes: S.optional(StringList),
-          titles: S.optional(GoogleTypeLocalizedTextList),
-          applicableProducts: S.optional(StringList),
-          introductoryPricingDetails: S.optional(PromotionIntroductoryPricingDetails),
-          promotionType: S.optional(PromotionPromotionTypeEnum),
-          freeTrialDuration: S.optional(Duration),
+          regionCodes: S.optional(__S(3, __c0, 3)),
+          titles: S.optional(__S(40, __c5, 0)),
+          applicableProducts: S.optional(__S(3, __c0, 3)),
+          introductoryPricingDetails: S.optional(__S(10, __c1, 2)),
+          promotionType: S.optional(S.String),
+          freeTrialDuration: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Promotion" });
     case 2:
-      return S.Array(Promotion);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          promotions: S.optional(PromotionList),
+          promotions: S.optional(__S(42, __c5, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1771,16 +1418,16 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          initialCycleDuration: S.optional(Duration),
+          initialCycleDuration: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CycleOptions" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          cycleOptions: S.optional(CycleOptions),
+          cycleOptions: S.optional(__S(45, __c5, 5)),
           subscriptionId: S.optional(S.String),
-          subscription: S.optional(Subscription),
+          subscription: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "CreateSubscriptionIntent" });
     case 7:
@@ -1798,15 +1445,15 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          intentOptions: S.optional(IntentPayloadIntentOptions),
-          createIntent: S.optional(CreateSubscriptionIntent),
-          entitleIntent: S.optional(EntitleSubscriptionIntent),
+          intentOptions: S.optional(__S(44, __c5, 4)),
+          createIntent: S.optional(__S(46, __c5, 6)),
+          entitleIntent: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "IntentPayload" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          intentPayload: S.optional(IntentPayload),
+          intentPayload: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({
         identifier: "GenerateUserSessionRequest",
@@ -1815,7 +1462,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GenerateUserSessionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1836,7 +1483,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          userSession: S.optional(UserSession),
+          userSession: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({
         identifier: "GenerateUserSessionResponse",
@@ -1875,7 +1522,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(Amount),
+          amount: S.optional(__S(7, __c0, 7)),
           regionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPriceConfig" });
@@ -1884,7 +1531,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProductPriceConfig);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1894,33 +1541,33 @@ function __c7(j: number): any {
         identifier: "ProductBundleDetailsBundleElement",
       });
     case 2:
-      return S.Array(ProductBundleDetailsBundleElement);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bundleElements: S.optional(ProductBundleDetailsBundleElementList),
-          entitlementMode: S.optional(ProductBundleDetailsEntitlementModeEnum),
+          bundleElements: S.optional(__S(58, __c7, 2)),
+          entitlementMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductBundleDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          titles: S.optional(GoogleTypeLocalizedTextList),
+          titles: S.optional(__S(40, __c5, 0)),
           name: S.optional(S.String),
-          regionCodes: S.optional(StringList),
-          productType: S.optional(ProductProductTypeEnum),
-          priceConfigs: S.optional(ProductPriceConfigList),
-          subscriptionBillingCycleDuration: S.optional(Duration),
-          bundleDetails: S.optional(ProductBundleDetails),
-          finiteBillingCycleDetails: S.optional(FiniteBillingCycleDetails),
+          regionCodes: S.optional(__S(3, __c0, 3)),
+          productType: S.optional(S.String),
+          priceConfigs: S.optional(__S(56, __c7, 0)),
+          subscriptionBillingCycleDuration: S.optional(__S(6, __c0, 6)),
+          bundleDetails: S.optional(__S(59, __c7, 3)),
+          finiteBillingCycleDetails: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "Product" });
     case 5:
-      return S.Array(Product);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(ProductList),
+          products: S.optional(__S(61, __c7, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
@@ -1948,7 +1595,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          promotions: S.optional(PromotionList),
+          promotions: S.optional(__S(42, __c5, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPromotionsResponse" });
@@ -1958,7 +1605,7 @@ function __c8(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SubscriptionLineItem.pipe(T.HttpBody())),
+          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1975,12 +1622,8 @@ function __c8(j: number): any {
           subscriptionId: S.optional(S.String.pipe(T.Query())),
           "cycleOptions.initialCycleDuration.count": S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          "cycleOptions.initialCycleDuration.unit": S.optional(
-            ProvisionPartnersSubscriptionsCycleOptions_initialCycleDuration_unitEnum.pipe(
-              T.Query(),
-            ),
-          ),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          "cycleOptions.initialCycleDuration.unit": S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1994,8 +1637,8 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cycleOptions: S.optional(CycleOptions),
-          resumeMode: S.optional(ResumeSubscriptionRequestResumeModeEnum),
+          cycleOptions: S.optional(__S(45, __c5, 5)),
+          resumeMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResumeSubscriptionRequest",
@@ -2004,7 +1647,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ResumeSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2018,7 +1661,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          suspendMode: S.optional(SuspendSubscriptionRequestSuspendModeEnum),
+          suspendMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SuspendSubscriptionRequest",
@@ -2027,7 +1670,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SuspendSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2050,7 +1693,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UndoCancelSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2062,4 +1705,9 @@ function __c9(j: number): any {
         identifier: "UndoCancelPartnersSubscriptionsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

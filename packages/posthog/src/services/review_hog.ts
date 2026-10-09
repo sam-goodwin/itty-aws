@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -51,11 +53,6 @@ export interface GetReviewHogReviewRequest {
   /** A UUID string identifying this review report. */
   id: string;
 }
-const GetReviewHogReviewRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetReviewHogReviewRequest>;
-
 /** * `fetching` - fetching * `chunking` - chunking * `selecting` - selecting * `reviewing` - reviewing * `deduplicating` - deduplicating * `validating` - validating * `finalizing` - finalizing */
 export type ReviewStageEnum =
   | "fetching"
@@ -65,8 +62,6 @@ export type ReviewStageEnum =
   | "deduplicating"
   | "validating"
   | "finalizing";
-const ReviewStageEnum = S.String;
-
 export interface ReviewProgress {
   /** How far the in-flight review turn has come: fetching the diff, chunking, picking each chunk's perspectives, reviewing chunks, merging overlapping findings, validating them, or finalizing (building and publishing the review). * `fetching` - fetching * `chunking` - chunking * `selecting` - selecting * `reviewing` - reviewing * `deduplicating` - deduplicating * `validating` - validating * `finalizing` - finalizing */
   review_stage: ReviewStageEnum;
@@ -75,12 +70,8 @@ export interface ReviewProgress {
   /** Work units the stage expects in total; null when unknown. */
   total: number | null;
 }
-const ReviewProgress = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ReviewProgress>;
-
 /** * `resolving` - resolving * `stopped` - stopped */
 export type ResolutionStatusEnum = "resolving" | "stopped";
-const ResolutionStatusEnum = S.String;
-
 export interface ReviewResolutionStatus {
   /** Where the run stands: `resolving` while threads are being settled, `stopped` when the run died partway (went quiet with no closing summary). * `resolving` - resolving * `stopped` - stopped */
   resolution_status: ResolutionStatusEnum;
@@ -93,33 +84,14 @@ export interface ReviewResolutionStatus {
   /** Settled threads left for the author: judged worth doing but not safe to fix unattended. */
   needs_attention: number;
 }
-const ReviewResolutionStatus = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ReviewResolutionStatus>;
-
 /** Every enabled perspective the selector chose from, in pass order. */
 export type ReviewPerspectiveSelectionRosterList = Array<string>;
-const ReviewPerspectiveSelectionRosterList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ReviewPerspectiveSelectionRosterList>;
-
 /** The chunk's files, from the turn's chunk set. */
 export type ReviewSelectionChunkFilesList = Array<string>;
-const ReviewSelectionChunkFilesList =
-  ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkFilesList>;
-
 /** Perspectives the selector ran on this chunk, in pass order. */
 export type ReviewSelectionChunkPerspectivesList = Array<string>;
-const ReviewSelectionChunkPerspectivesList =
-  ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkPerspectivesList>;
-
 /** Roster perspectives the selector skipped on this chunk, in pass order. */
 export type ReviewSelectionChunkSkippedList = Array<string>;
-const ReviewSelectionChunkSkippedList =
-  ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkSkippedList>;
-
 export interface ReviewSelectionChunk {
   /** The chunk this row describes, as numbered by the chunker. */
   chunk_id: number;
@@ -134,48 +106,24 @@ export interface ReviewSelectionChunk {
   /** The selector's one-line reasoning for this chunk's picks. */
   reason: string;
 }
-const ReviewSelectionChunk = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ReviewSelectionChunk>;
-
 /** Per-chunk picks with reasons, in chunk order. */
 export type ReviewPerspectiveSelectionChunksList = Array<ReviewSelectionChunk>;
-const ReviewPerspectiveSelectionChunksList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ReviewPerspectiveSelectionChunksList>;
-
 export interface ReviewPerspectiveSelection {
   /** Every enabled perspective the selector chose from, in pass order. */
   roster: ReviewPerspectiveSelectionRosterList;
   /** Per-chunk picks with reasons, in chunk order. */
   chunks: ReviewPerspectiveSelectionChunksList;
 }
-const ReviewPerspectiveSelection = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ReviewPerspectiveSelection>;
-
 /** * `must_fix` - must_fix * `should_fix` - should_fix * `consider` - consider */
 export type ReviewIssuePriorityEnum = "must_fix" | "should_fix" | "consider";
-const ReviewIssuePriorityEnum = S.String;
-
 export interface ReviewFindingLineRange {
   /** First affected line. */
   start: number;
   /** Last affected line; null for a single line. */
   end: number | null;
 }
-const ReviewFindingLineRange = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ReviewFindingLineRange>;
-
 /** Affected line ranges within the file. */
 export type ReviewFindingLinesList = Array<ReviewFindingLineRange>;
-const ReviewFindingLinesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ReviewFindingLinesList>;
-
 /** * `bug` - bug * `security` - security * `performance` - performance * `code_quality` - code_quality * `best_practice` - best_practice * `documentation` - documentation * `testing` - testing * `accessibility` - accessibility * `compatibility` - compatibility */
 export type ValidatorCategoryEnum =
   | "bug"
@@ -187,8 +135,6 @@ export type ValidatorCategoryEnum =
   | "testing"
   | "accessibility"
   | "compatibility";
-const ValidatorCategoryEnum = S.String;
-
 export interface ReviewFinding {
   /** One-line summary of the finding. */
   title: string;
@@ -211,20 +157,10 @@ export interface ReviewFinding {
   /** The validator's argumentation for keeping or dismissing the finding. */
   validator_note: string;
 }
-const ReviewFinding = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ReviewFinding>;
-
 /** The latest turn's validated findings, most urgent first. */
 export type ReviewDetailFindingsList = Array<ReviewFinding>;
-const ReviewDetailFindingsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ReviewDetailFindingsList>;
-
 /** The latest turn's findings the validator dismissed, with its reasoning. */
 export type ReviewDetailDismissedFindingsList = Array<ReviewFinding>;
-const ReviewDetailDismissedFindingsList =
-  ReviewDetailFindingsList as any as S.Schema<ReviewDetailDismissedFindingsList>;
-
 export interface ReviewDetail {
   /** The review report's id, for fetching the review's detail. */
   id: string;
@@ -291,22 +227,13 @@ export interface ReviewDetail {
   /** The latest turn's findings the validator dismissed, with its reasoning. */
   dismissed_findings: ReviewDetailDismissedFindingsList;
 }
-const ReviewDetail = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ReviewDetail>;
-
 export type GetReviewHogReviewsPerspectiveStatRequestScope = "mine" | "everyone";
-const GetReviewHogReviewsPerspectiveStatRequestScope = S.String;
-
 export interface GetReviewHogReviewsPerspectiveStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Whose reviews to aggregate: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project. * `mine` - mine * `everyone` - everyone */
   scope?: GetReviewHogReviewsPerspectiveStatRequestScope | (string & {});
 }
-const GetReviewHogReviewsPerspectiveStatRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetReviewHogReviewsPerspectiveStatRequest>;
-
 export interface ReviewPerspectiveStatItem {
   /** The review skill (perspective or blind-spot sweep) that raised the findings. */
   skill_name: string;
@@ -317,38 +244,18 @@ export interface ReviewPerspectiveStatItem {
   /** Of those, findings the validator dismissed. */
   dismissed: number;
 }
-const ReviewPerspectiveStatItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ReviewPerspectiveStatItem>;
-
 /** Per-skill effectiveness across those reviews, most kept findings first. */
 export type ReviewPerspectiveStatsPerspectivesList = Array<ReviewPerspectiveStatItem>;
-const ReviewPerspectiveStatsPerspectivesList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ReviewPerspectiveStatsPerspectivesList>;
-
 export interface ReviewPerspectiveStats {
   /** How many recent completed reviews the stats aggregate over. */
   report_count: number;
   /** Per-skill effectiveness across those reviews, most kept findings first. */
   perspectives: ReviewPerspectiveStatsPerspectivesList;
 }
-const ReviewPerspectiveStats = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ReviewPerspectiveStats>;
-
 export interface ListReviewHogBlindSpotsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListReviewHogBlindSpotsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListReviewHogBlindSpotsRequest>;
-
 export interface ReviewBlindSpotsConfig {
   /** Name of the `review-hog-blind-spots-*` skill this row represents (the sweep's identity). */
   skill_name: string;
@@ -359,32 +266,12 @@ export interface ReviewBlindSpotsConfig {
   /** The blind-spots skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-const ReviewBlindSpotsConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ReviewBlindSpotsConfig>;
-
 export type ListReviewHogBlindSpotsResponseBodyList = Array<ReviewBlindSpotsConfig>;
-const ListReviewHogBlindSpotsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListReviewHogBlindSpotsResponseBodyList>;
-
 export type ListReviewHogBlindSpotsResponse = ListReviewHogBlindSpotsResponseBodyList;
-const ListReviewHogBlindSpotsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListReviewHogBlindSpotsResponse>;
-
 export interface ListReviewHogPerspectivesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListReviewHogPerspectivesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListReviewHogPerspectivesRequest>;
-
 export interface ReviewPerspectiveConfig {
   /** Name of the `review-hog-perspective-*` skill this row toggles (the perspective's identity). */
   skill_name: string;
@@ -395,32 +282,12 @@ export interface ReviewPerspectiveConfig {
   /** The perspective skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-const ReviewPerspectiveConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ReviewPerspectiveConfig>;
-
 export type ListReviewHogPerspectivesResponseBodyList = Array<ReviewPerspectiveConfig>;
-const ListReviewHogPerspectivesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListReviewHogPerspectivesResponseBodyList>;
-
 export type ListReviewHogPerspectivesResponse = ListReviewHogPerspectivesResponseBodyList;
-const ListReviewHogPerspectivesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListReviewHogPerspectivesResponse>;
-
 export interface ListReviewHogResolutionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListReviewHogResolutionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListReviewHogResolutionRequest>;
-
 export interface ReviewResolutionConfig {
   /** Name of the `review-hog-resolution-*` skill this row represents (the criteria's identity). */
   skill_name: string;
@@ -431,16 +298,9 @@ export interface ReviewResolutionConfig {
   /** The resolution skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-const ReviewResolutionConfig = ReviewBlindSpotsConfig as any as S.Schema<ReviewResolutionConfig>;
-
 export type ListReviewHogResolutionResponseBodyList = Array<ReviewResolutionConfig>;
 export type ListReviewHogResolutionResponse = ListReviewHogResolutionResponseBodyList;
-const ListReviewHogResolutionResponse =
-  ListReviewHogBlindSpotsResponse as any as S.Schema<ListReviewHogResolutionResponse>;
-
 export type ListReviewHogReviewsRequestScope = "mine" | "everyone";
-const ListReviewHogReviewsRequestScope = S.String;
-
 export interface ListReviewHogReviewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -449,11 +309,6 @@ export interface ListReviewHogReviewsRequest {
   /** Whose reviews to list: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project. * `mine` - mine * `everyone` - everyone */
   scope?: ListReviewHogReviewsRequestScope | (string & {});
 }
-const ListReviewHogReviewsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListReviewHogReviewsRequest>;
-
 export interface ReviewRecentReview {
   /** The review report's id, for fetching the review's detail. */
   id: string;
@@ -508,35 +363,18 @@ export interface ReviewRecentReview {
   /** Raw issues the blind-spot sweep added in the latest turn, before dedupe; null if unknown. */
   blind_spot_issue_count: number | null;
 }
-const ReviewRecentReview = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ReviewRecentReview>;
-
 /** The scoped reviews: in-progress runs first, then completed newest first. */
 export type ReviewRecentReviewsPageResultsList = Array<ReviewRecentReview>;
-const ReviewRecentReviewsPageResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ReviewRecentReviewsPageResultsList>;
-
 export interface ReviewRecentReviewsPage {
   /** The scoped reviews: in-progress runs first, then completed newest first. */
   results: ReviewRecentReviewsPageResultsList;
   /** Whether reviews exist beyond this page -- drives the list's "Show more" button. */
   has_more: boolean;
 }
-const ReviewRecentReviewsPage = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ReviewRecentReviewsPage>;
-
 export interface ListReviewHogValidatorsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListReviewHogValidatorsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListReviewHogValidatorsRequest>;
-
 export interface ReviewValidatorConfig {
   /** Name of the `review-hog-validation-*` skill this row represents (the validator's identity). */
   skill_name: string;
@@ -547,17 +385,10 @@ export interface ReviewValidatorConfig {
   /** The validator skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-const ReviewValidatorConfig = ReviewBlindSpotsConfig as any as S.Schema<ReviewValidatorConfig>;
-
 export type ListReviewHogValidatorsResponseBodyList = Array<ReviewValidatorConfig>;
 export type ListReviewHogValidatorsResponse = ListReviewHogValidatorsResponseBodyList;
-const ListReviewHogValidatorsResponse =
-  ListReviewHogBlindSpotsResponse as any as S.Schema<ListReviewHogValidatorsResponse>;
-
 /** * `review` - review * `review_only` - review_only * `resolve_only` - resolve_only * `flash` - flash */
 export type ReviewTriggerRequestRunModeEnum = "review" | "review_only" | "resolve_only" | "flash";
-const ReviewTriggerRequestRunModeEnum = S.String;
-
 export interface ReviewHogReviewsTriggerCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -566,22 +397,12 @@ export interface ReviewHogReviewsTriggerCreateRequest {
   /** What to run on the pull request. 'review' (default) reviews it and, when the requesting user's resolve_comments setting is on, chains the resolution stage; 'review_only' reviews without resolving regardless of that setting; 'resolve_only' skips the review and only runs the resolution stage on the PR's existing unresolved review threads; 'flash' uses a lower-cost model for the review passes and validation, and never resolves comments. * `review` - review * `review_only` - review_only * `resolve_only` - resolve_only * `flash` - flash */
   run_mode?: ReviewTriggerRequestRunModeEnum | (string & {});
 }
-const ReviewHogReviewsTriggerCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ReviewHogReviewsTriggerCreateRequest>;
-
 export interface ReviewTriggerResponse {
   /** Temporal workflow id for the started review run; empty when no run was started. */
   workflow_id: string;
   /** Run lifecycle marker: 'started' when the review was queued, 'already_reviewed' when the pull request's current commit already has a published review in the requested mode, 'joined_running_review' when a review was already in flight and the request joined its queue. A requested Full review waits for an active Flash review. */
   status: string;
 }
-const ReviewTriggerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ReviewTriggerResponse>;
-
 export interface UpdateReviewHogBlindSpotsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -589,11 +410,6 @@ export interface UpdateReviewHogBlindSpotsPartialRequest {
   /** Set true to make this the single blind-spots skill that runs on the user's PR reviews. Only true is accepted -- the blind-spot check is single-active, so you switch by selecting a different skill, not by deactivating the current one. */
   active?: boolean;
 }
-const UpdateReviewHogBlindSpotsPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UpdateReviewHogBlindSpotsPartialRequest>;
-
 export interface UpdateReviewHogPerspectivesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -601,11 +417,6 @@ export interface UpdateReviewHogPerspectivesPartialRequest {
   /** Set true to run this perspective on the user's PR reviews, false to stop running it. */
   enabled?: boolean;
 }
-const UpdateReviewHogPerspectivesPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UpdateReviewHogPerspectivesPartialRequest>;
-
 export interface UpdateReviewHogResolutionPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -613,11 +424,6 @@ export interface UpdateReviewHogResolutionPartialRequest {
   /** Set true to make these the single resolution criteria applied on the user's PRs. Only true is accepted -- resolution criteria are single-active, so you switch by selecting a different skill, not by deactivating the current one. */
   active?: boolean;
 }
-const UpdateReviewHogResolutionPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<UpdateReviewHogResolutionPartialRequest>;
-
 export interface UpdateReviewHogValidatorsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -625,11 +431,6 @@ export interface UpdateReviewHogValidatorsPartialRequest {
   /** Set true to make this the single validator that runs on the user's PR reviews. Only true is accepted -- validators are single-active, so you switch by selecting a different one, not by deactivating the current one. */
   active?: boolean;
 }
-const UpdateReviewHogValidatorsPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateReviewHogValidatorsPartialRequest>;
-
 export type GetReviewHogReviewError = NotFound | PosthogOpError;
 /** Retrieve one review's detail One completed ReviewHog review on this project, with the latest turn's validated findings, the findings the validator dismissed (and why), and the review body published to GitHub. Project-wide, so reviews listed under `scope=everyone` can be opened too. */
 export const getReviewHogReview: API.OperationMethod<
@@ -638,8 +439,8 @@ export const getReviewHogReview: API.OperationMethod<
   GetReviewHogReviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReviewHogReviewRequest,
-  output: ReviewDetail,
+  input: __S(0, __c0, 0) as any as S.Schema<GetReviewHogReviewRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ReviewDetail>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -653,8 +454,8 @@ export const getReviewHogReviewsPerspectiveStat: API.OperationMethod<
   GetReviewHogReviewsPerspectiveStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReviewHogReviewsPerspectiveStatRequest,
-  output: ReviewPerspectiveStats,
+  input: __S(12, __c1, 4) as any as S.Schema<GetReviewHogReviewsPerspectiveStatRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ReviewPerspectiveStats>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -668,8 +469,8 @@ export const listReviewHogBlindSpots: API.OperationMethod<
   ListReviewHogBlindSpotsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewHogBlindSpotsRequest,
-  output: ListReviewHogBlindSpotsResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<ListReviewHogBlindSpotsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListReviewHogBlindSpotsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -683,8 +484,8 @@ export const listReviewHogPerspectives: API.OperationMethod<
   ListReviewHogPerspectivesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewHogPerspectivesRequest,
-  output: ListReviewHogPerspectivesResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<ListReviewHogPerspectivesRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ListReviewHogPerspectivesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -698,8 +499,8 @@ export const listReviewHogResolution: API.OperationMethod<
   ListReviewHogResolutionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewHogResolutionRequest,
-  output: ListReviewHogResolutionResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<ListReviewHogResolutionRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListReviewHogResolutionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -713,8 +514,8 @@ export const listReviewHogReviews: API.OperationMethod<
   ListReviewHogReviewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewHogReviewsRequest,
-  output: ReviewRecentReviewsPage,
+  input: __S(25, __c3, 1) as any as S.Schema<ListReviewHogReviewsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ReviewRecentReviewsPage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -728,8 +529,8 @@ export const listReviewHogValidators: API.OperationMethod<
   ListReviewHogValidatorsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReviewHogValidatorsRequest,
-  output: ListReviewHogValidatorsResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<ListReviewHogValidatorsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListReviewHogValidatorsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -743,8 +544,8 @@ export const reviewHogReviewsTriggerCreate: API.OperationMethod<
   ReviewHogReviewsTriggerCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReviewHogReviewsTriggerCreateRequest,
-  output: ReviewTriggerResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<ReviewHogReviewsTriggerCreateRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<ReviewTriggerResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -758,8 +559,8 @@ export const updateReviewHogBlindSpotsPartial: API.OperationMethod<
   UpdateReviewHogBlindSpotsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReviewHogBlindSpotsPartialRequest,
-  output: ReviewBlindSpotsConfig,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateReviewHogBlindSpotsPartialRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ReviewBlindSpotsConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -773,8 +574,8 @@ export const updateReviewHogPerspectivesPartial: API.OperationMethod<
   UpdateReviewHogPerspectivesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReviewHogPerspectivesPartialRequest,
-  output: ReviewPerspectiveConfig,
+  input: __S(33, __c4, 1) as any as S.Schema<UpdateReviewHogPerspectivesPartialRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ReviewPerspectiveConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -788,8 +589,8 @@ export const updateReviewHogResolutionPartial: API.OperationMethod<
   UpdateReviewHogResolutionPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReviewHogResolutionPartialRequest,
-  output: ReviewResolutionConfig,
+  input: __S(34, __c4, 2) as any as S.Schema<UpdateReviewHogResolutionPartialRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ReviewResolutionConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -803,8 +604,8 @@ export const updateReviewHogValidatorsPartial: API.OperationMethod<
   UpdateReviewHogValidatorsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReviewHogValidatorsPartialRequest,
-  output: ReviewValidatorConfig,
+  input: __S(35, __c4, 3) as any as S.Schema<UpdateReviewHogValidatorsPartialRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ReviewValidatorConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -831,7 +632,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          review_stage: ReviewStageEnum,
+          review_stage: S.String,
           done: S.NullOr(S.Number),
           total: S.NullOr(S.Number),
         }),
@@ -839,7 +640,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resolution_status: ResolutionStatusEnum,
+          resolution_status: S.String,
           done: S.Number,
           total: S.Number,
           fixed: S.Number,
@@ -853,19 +654,19 @@ function __c0(j: number): any {
         S.Struct({
           chunk_id: S.Number,
           chunk_type: S.NullOr(S.String),
-          files: ReviewSelectionChunkFilesList,
-          perspectives: ReviewSelectionChunkPerspectivesList,
-          skipped: ReviewSelectionChunkSkippedList,
+          files: __S(3, __c0, 3),
+          perspectives: __S(3, __c0, 3),
+          skipped: __S(3, __c0, 3),
           reason: S.String,
         }),
       ).annotate({ identifier: "ReviewSelectionChunk" });
     case 5:
-      return S.Array(ReviewSelectionChunk);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          roster: ReviewPerspectiveSelectionRosterList,
-          chunks: ReviewPerspectiveSelectionChunksList,
+          roster: __S(3, __c0, 3),
+          chunks: __S(5, __c0, 5),
         }),
       ).annotate({
         identifier: "ReviewPerspectiveSelection",
@@ -882,24 +683,24 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ReviewFindingLineRange);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           file: S.String,
-          lines: ReviewFindingLinesList,
+          lines: __S(8, __c1, 0),
           body: S.String,
           suggestion: S.String,
-          effective_priority: ReviewIssuePriorityEnum,
-          reviewer_priority: ReviewIssuePriorityEnum,
+          effective_priority: S.String,
+          reviewer_priority: S.String,
           source_perspective: S.NullOr(S.String),
-          validator_category: S.NullOr(ValidatorCategoryEnum),
+          validator_category: S.NullOr(S.String),
           validator_note: S.String,
         }),
       ).annotate({ identifier: "ReviewFinding" });
     case 2:
-      return S.Array(ReviewFinding);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -917,8 +718,8 @@ function __c1(j: number): any {
           last_run_at: S.NullOr(S.String),
           published: S.Boolean,
           in_progress: S.Boolean,
-          progress: S.NullOr(ReviewProgress),
-          resolution: S.NullOr(ReviewResolutionStatus),
+          progress: S.NullOr(__S(1, __c0, 1)),
+          resolution: S.NullOr(__S(2, __c0, 2)),
           must_fix_count: S.Number,
           should_fix_count: S.Number,
           consider_count: S.Number,
@@ -930,18 +731,18 @@ function __c1(j: number): any {
           perspective_issue_count: S.NullOr(S.Number),
           blind_spot_issue_count: S.NullOr(S.Number),
           head_sha: S.NullOr(S.String),
-          perspective_selection: S.NullOr(ReviewPerspectiveSelection),
+          perspective_selection: S.NullOr(__S(6, __c0, 6)),
           report_markdown: S.String,
-          run_urgency_threshold: S.NullOr(ReviewIssuePriorityEnum),
-          findings: ReviewDetailFindingsList,
-          dismissed_findings: ReviewDetailDismissedFindingsList,
+          run_urgency_threshold: S.NullOr(S.String),
+          findings: __S(10, __c1, 2),
+          dismissed_findings: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ReviewDetail" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          scope: S.optional(GetReviewHogReviewsPerspectiveStatRequestScope.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -964,12 +765,12 @@ function __c1(j: number): any {
         identifier: "ReviewPerspectiveStatItem",
       });
     case 6:
-      return S.Array(ReviewPerspectiveStatItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           report_count: S.Number,
-          perspectives: ReviewPerspectiveStatsPerspectivesList,
+          perspectives: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "ReviewPerspectiveStats" });
   }
@@ -1000,11 +801,9 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ReviewBlindSpotsConfig" });
     case 2:
-      return S.Array(ReviewBlindSpotsConfig);
+      return S.Array(__S(17, __c2, 1));
     case 3:
-      return S.suspend(() =>
-        ListReviewHogBlindSpotsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReviewHogBlindSpotsResponse",
       });
     case 4:
@@ -1031,11 +830,9 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ReviewPerspectiveConfig" });
     case 6:
-      return S.Array(ReviewPerspectiveConfig);
+      return S.Array(__S(21, __c2, 5));
     case 7:
-      return S.suspend(() =>
-        ListReviewHogPerspectivesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(22, __c2, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReviewHogPerspectivesResponse",
       });
   }
@@ -1061,7 +858,7 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
-          scope: S.optional(ListReviewHogReviewsRequestScope.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1089,8 +886,8 @@ function __c3(j: number): any {
           last_run_at: S.NullOr(S.String),
           published: S.Boolean,
           in_progress: S.Boolean,
-          progress: S.NullOr(ReviewProgress),
-          resolution: S.NullOr(ReviewResolutionStatus),
+          progress: S.NullOr(__S(1, __c0, 1)),
+          resolution: S.NullOr(__S(2, __c0, 2)),
           must_fix_count: S.Number,
           should_fix_count: S.Number,
           consider_count: S.Number,
@@ -1104,11 +901,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ReviewRecentReview" });
     case 3:
-      return S.Array(ReviewRecentReview);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: ReviewRecentReviewsPageResultsList,
+          results: __S(27, __c3, 3),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "ReviewRecentReviewsPage" });
@@ -1131,7 +928,7 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           pr_url: S.String,
-          run_mode: S.optional(ReviewTriggerRequestRunModeEnum),
+          run_mode: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1218,4 +1015,9 @@ function __c4(j: number): any {
         identifier: "UpdateReviewHogValidatorsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

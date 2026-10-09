@@ -6,69 +6,33 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface FlashContainerDeregisterRequest {
   serviceName?: string;
 }
-const FlashContainerDeregisterRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<FlashContainerDeregisterRequest>;
-
 export interface FlashContainerDeregisterResponse {}
-const FlashContainerDeregisterResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<FlashContainerDeregisterResponse>;
-
 export interface FlashSetTargetSlotsMetricsRequest {
   /** TODO(claudia): add other metrics to use in autoscaling decisions */
   functionId?: string;
   targetSlots?: number;
 }
-const FlashSetTargetSlotsMetricsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<FlashSetTargetSlotsMetricsRequest>;
-
 export interface FlashSetTargetSlotsMetricsResponse {}
-const FlashSetTargetSlotsMetricsResponse =
-  FlashContainerDeregisterResponse as any as S.Schema<FlashSetTargetSlotsMetricsResponse>;
-
 export interface ListFlashContainerRequest {
   functionId?: string;
 }
-const ListFlashContainerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListFlashContainerRequest>;
-
 export interface ListFlashContainerResponseContainer {
   taskId?: string;
   host?: string;
   port?: number;
 }
-const ListFlashContainerResponseContainer = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListFlashContainerResponseContainer>;
-
 export type ListFlashContainerResponseContainerList = Array<ListFlashContainerResponseContainer>;
-const ListFlashContainerResponseContainerList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListFlashContainerResponseContainerList>;
-
 export interface ListFlashContainerResponse {
   containers?: ListFlashContainerResponseContainerList;
 }
-const ListFlashContainerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListFlashContainerResponse>;
-
 export interface RegisterFlashContainerRequest {
   serviceName?: string;
   /** not used? */
@@ -77,19 +41,9 @@ export interface RegisterFlashContainerRequest {
   host?: string;
   port?: number;
 }
-const RegisterFlashContainerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<RegisterFlashContainerRequest>;
-
 export interface RegisterFlashContainerResponse {
   url?: string;
 }
-const RegisterFlashContainerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<RegisterFlashContainerResponse>;
-
 export type FlashContainerDeregisterError = ModalOpError;
 /** Modal Flash (experimental) */
 export const flashContainerDeregister: API.OperationMethod<
@@ -98,8 +52,8 @@ export const flashContainerDeregister: API.OperationMethod<
   FlashContainerDeregisterError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlashContainerDeregisterRequest,
-  output: FlashContainerDeregisterResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<FlashContainerDeregisterRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<FlashContainerDeregisterResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -112,8 +66,8 @@ export const flashSetTargetSlotsMetrics: API.OperationMethod<
   FlashSetTargetSlotsMetricsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlashSetTargetSlotsMetricsRequest,
-  output: FlashSetTargetSlotsMetricsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<FlashSetTargetSlotsMetricsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<FlashSetTargetSlotsMetricsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -126,8 +80,8 @@ export const listFlashContainer: API.OperationMethod<
   ListFlashContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFlashContainerRequest,
-  output: ListFlashContainerResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<ListFlashContainerRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ListFlashContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -140,8 +94,8 @@ export const registerFlashContainer: API.OperationMethod<
   RegisterFlashContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterFlashContainerRequest,
-  output: RegisterFlashContainerResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<RegisterFlashContainerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RegisterFlashContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -208,11 +162,11 @@ function __c0(j: number): any {
         identifier: "ListFlashContainerResponseContainer",
       });
     case 5:
-      return S.Array(ListFlashContainerResponseContainer);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          containers: S.optional(ListFlashContainerResponseContainerList),
+          containers: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "ListFlashContainerResponse",
@@ -248,4 +202,9 @@ function __c1(j: number): any {
         identifier: "RegisterFlashContainerResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

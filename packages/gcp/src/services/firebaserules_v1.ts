@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -73,19 +75,12 @@ export interface Release {
   /** Required. Format: `projects/{project_id}/releases/{release_id}` */
   name?: string;
 }
-const Release = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Release>;
-
 export interface CreateProjectsReleasesRequest {
   /** Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}` */
   name: string;
   /** Request body */
   body?: Release;
 }
-const CreateProjectsReleasesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateProjectsReleasesRequest>;
-
 /** `File` containing source content. */
 export interface File {
   /** Fingerprint (e.g. github sha) associated with the `File`. */
@@ -95,28 +90,18 @@ export interface File {
   /** Required. File name. */
   name?: string;
 }
-const File = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<File>;
-
 export type FileList = Array<File>;
-const FileList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<FileList>;
-
 /** `Source` is one or more `File` messages comprising a logical set of rules. */
 export interface Source {
   /** Required. `File` set constituting the `Source` bundle. */
   files?: FileList;
 }
-const Source = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Source>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
-
 /** Metadata for a Ruleset. */
 export interface Metadata {
   /** Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these. */
   services?: StringList;
 }
-const Metadata = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Metadata>;
-
 /** `Ruleset` is an immutable copy of `Source` with a globally unique identifier and a creation time. */
 export interface Ruleset {
   /** Required. `Source` for the `Ruleset`. */
@@ -130,70 +115,40 @@ export interface Ruleset {
   /** Output only. The metadata for this ruleset. */
   metadata?: Metadata;
 }
-const Ruleset = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Ruleset>;
-
 export interface CreateProjectsRulesetsRequest {
   /** Required. Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}` */
   name: string;
   /** Request body */
   body?: Ruleset;
 }
-const CreateProjectsRulesetsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateProjectsRulesetsRequest>;
-
 export interface DeleteProjectsReleasesRequest {
   /** Required. Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}` */
   name: string;
 }
-const DeleteProjectsReleasesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteProjectsReleasesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Empty>;
-
 export interface DeleteProjectsRulesetsRequest {
   /** Required. Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}` */
   name: string;
 }
-const DeleteProjectsRulesetsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteProjectsRulesetsRequest>;
-
 export type GetExecutableProjectsReleasesExecutableVersionEnum =
   | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
   | "FIREBASE_RULES_EXECUTABLE_V1"
   | "FIREBASE_RULES_EXECUTABLE_V2";
-const GetExecutableProjectsReleasesExecutableVersionEnum = S.String;
-
 export interface GetExecutableProjectsReleasesRequest {
   /** Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` */
   name: string;
   /** Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1. */
   executableVersion?: GetExecutableProjectsReleasesExecutableVersionEnum | (string & {});
 }
-const GetExecutableProjectsReleasesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetExecutableProjectsReleasesRequest>;
-
 export type GetReleaseExecutableResponseLanguageEnum =
   | "LANGUAGE_UNSPECIFIED"
   | "FIREBASE_RULES"
   | "EVENT_FLOW_TRIGGERS";
-const GetReleaseExecutableResponseLanguageEnum = S.String;
-
 export type GetReleaseExecutableResponseExecutableVersionEnum =
   | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
   | "FIREBASE_RULES_EXECUTABLE_V1"
   | "FIREBASE_RULES_EXECUTABLE_V2";
-const GetReleaseExecutableResponseExecutableVersionEnum = S.String;
-
 /** The response for FirebaseRulesService.GetReleaseExecutable */
 export interface GetReleaseExecutableResponse {
   /** Executable view of the `Ruleset` referenced by the `Release`. */
@@ -209,29 +164,14 @@ export interface GetReleaseExecutableResponse {
   /** The Rules runtime version of the executable. */
   executableVersion?: GetReleaseExecutableResponseExecutableVersionEnum;
 }
-const GetReleaseExecutableResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetReleaseExecutableResponse>;
-
 export interface GetProjectsReleasesRequest {
   /** Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` */
   name: string;
 }
-const GetProjectsReleasesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetProjectsReleasesRequest>;
-
 export interface GetProjectsRulesetsRequest {
   /** Required. Resource name for the ruleset to get. Format: `projects/{project_id}/rulesets/{ruleset_id}` */
   name: string;
 }
-const GetProjectsRulesetsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetProjectsRulesetsRequest>;
-
 export interface ListProjectsReleasesRequest {
   /** Optional. Next page token for the next batch of `Release` instances. */
   pageToken?: string;
@@ -242,14 +182,7 @@ export interface ListProjectsReleasesRequest {
   /** Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load fewer than `page_size` results due to the size of the output. To traverse all of the releases, the caller should iterate until the `page_token` on the response is empty. */
   pageSize?: number;
 }
-const ListProjectsReleasesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListProjectsReleasesRequest>;
-
 export type ReleaseList = Array<Release>;
-const ReleaseList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ReleaseList>;
-
 /** The response for FirebaseRulesService.ListReleases. */
 export interface ListReleasesResponse {
   /** List of `Release` instances. */
@@ -257,8 +190,6 @@ export interface ListReleasesResponse {
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
-const ListReleasesResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListReleasesResponse>;
-
 export interface ListProjectsRulesetsRequest {
   /** Required. Resource name for the project. Format: `projects/{project_id}` */
   name: string;
@@ -269,14 +200,7 @@ export interface ListProjectsRulesetsRequest {
   /** Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load less than `page_size` due to the size of the output. To traverse all of the releases, caller should iterate until the `page_token` is empty. */
   pageSize?: number;
 }
-const ListProjectsRulesetsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListProjectsRulesetsRequest>;
-
 export type RulesetList = Array<Ruleset>;
-const RulesetList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RulesetList>;
-
 /** The response for FirebaseRulesService.ListRulesets. */
 export interface ListRulesetsResponse {
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
@@ -284,8 +208,6 @@ export interface ListRulesetsResponse {
   /** List of `Ruleset` instances. */
   rulesets?: RulesetList;
 }
-const ListRulesetsResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListRulesetsResponse>;
-
 /** The request for FirebaseRulesService.UpdateRelease. */
 export interface UpdateReleaseRequest {
   /** Optional. Specifies which fields to update. */
@@ -293,19 +215,12 @@ export interface UpdateReleaseRequest {
   /** Required. `Release` to update. */
   release?: Release;
 }
-const UpdateReleaseRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UpdateReleaseRequest>;
-
 export interface PatchProjectsReleasesRequest {
   /** Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}` */
   name: string;
   /** Request body */
   body?: UpdateReleaseRequest;
 }
-const PatchProjectsReleasesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<PatchProjectsReleasesRequest>;
-
 /** Possible result values from the function mock invocation. */
 export interface Result {
   /** The result is an actual value. The type of the value must match that of the type declared by the service. */
@@ -313,8 +228,6 @@ export interface Result {
   /** The result is undefined, meaning the result could not be computed. */
   undefined?: Empty;
 }
-const Result = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Result>;
-
 /** Arg matchers for the mock function. */
 export interface Arg {
   /** Argument exactly matches value provided. */
@@ -322,11 +235,7 @@ export interface Arg {
   /** Argument matches any value provided. */
   anyValue?: Empty;
 }
-const Arg = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Arg>;
-
 export type ArgList = Array<Arg>;
-const ArgList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ArgList>;
-
 /** Mock function definition. Mocks must refer to a function declared by the target service. The type of the function args and result will be inferred at test time. If either the arg or result values are not compatible with function type declaration, the request will be considered invalid. More than one `FunctionMock` may be provided for a given function name so long as the `Arg` matchers are distinct. There may be only one function for a given overload where all `Arg` values are `Arg.any_value`. */
 export interface FunctionMock {
   /** The mock result of the function call. */
@@ -336,20 +245,10 @@ export interface FunctionMock {
   /** The list of `Arg` values to match. The order in which the arguments are provided is the order in which they must appear in the function invocation. */
   args?: ArgList;
 }
-const FunctionMock = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<FunctionMock>;
-
 export type FunctionMockList = Array<FunctionMock>;
-const FunctionMockList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<FunctionMockList>;
-
 export type TestCasePathEncodingEnum = "ENCODING_UNSPECIFIED" | "URL_ENCODED" | "PLAIN";
-const TestCasePathEncodingEnum = S.String;
-
 export type TestCaseExpressionReportLevelEnum = "LEVEL_UNSPECIFIED" | "NONE" | "FULL" | "VISITED";
-const TestCaseExpressionReportLevelEnum = S.String;
-
 export type TestCaseExpectationEnum = "EXPECTATION_UNSPECIFIED" | "ALLOW" | "DENY";
-const TestCaseExpectationEnum = S.String;
-
 /** `TestCase` messages provide the request context and an expectation as to whether the given context will be allowed or denied. Test cases may specify the `request`, `resource`, and `function_mocks` to mock a function call to a service-provided function. The `request` object represents context present at request-time. The `resource` is the value of the target resource as it appears in persistent storage before the request is executed. */
 export interface TestCase {
   /** Optional function mocks for service-defined functions. If not set, any service defined function is expected to return an error, which may or may not influence the test outcome. */
@@ -365,18 +264,12 @@ export interface TestCase {
   /** Request context. The exact format of the request context is service-dependent. See the appropriate service documentation for information about the supported fields and types on the request. Minimally, all services support the following fields and types: Request field | Type ---------------|----------------- auth.uid | `string` auth.token | `map` headers | `map` method | `string` params | `map` path | `string` time | `google.protobuf.Timestamp` If the request value is not well-formed for the service, the request will be rejected as an invalid argument. */
   request?: unknown;
 }
-const TestCase = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<TestCase>;
-
 export type TestCaseList = Array<TestCase>;
-const TestCaseList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<TestCaseList>;
-
 /** `TestSuite` is a collection of `TestCase` instances that validate the logical correctness of a `Ruleset`. The `TestSuite` may be referenced in-line within a `TestRuleset` invocation or as part of a `Release` object as a pre-release check. */
 export interface TestSuite {
   /** Collection of test cases associated with the `TestSuite`. */
   testCases?: TestCaseList;
 }
-const TestSuite = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TestSuite>;
-
 /** The request for FirebaseRulesService.TestRuleset. */
 export interface TestRulesetRequest {
   /** Required. The tests to execute against the `Source`. When `Source` is provided inline, the test cases will only be run if the `Source` is syntactically and semantically valid. Inline `TestSuite` to run. */
@@ -384,16 +277,12 @@ export interface TestRulesetRequest {
   /** Optional. Optional `Source` to be checked for correctness. This field must not be set when the resource name refers to a `Ruleset`. */
   source?: Source;
 }
-const TestRulesetRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TestRulesetRequest>;
-
 export interface TestProjectsRequest {
   /** Required. Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the resource name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`, this must be the `Ruleset` resource name: Format: `projects/{project_id}/rulesets/{ruleset_id}` */
   name: string;
   /** Request body */
   body?: TestRulesetRequest;
 }
-const TestProjectsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TestProjectsRequest>;
-
 /** Position in the `Source` content including its line, column number, and an index of the `File` in the `Source` message. Used for debug purposes. */
 export interface SourcePosition {
   /** First column on the source line associated with the source fragment. */
@@ -407,8 +296,6 @@ export interface SourcePosition {
   /** Name of the `File`. */
   fileName?: string;
 }
-const SourcePosition = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SourcePosition>;
-
 /** Store the position and access outcome for an expression visited in rules. */
 export interface VisitedExpression {
   /** Position in the `Source` or `Ruleset` where an expression was visited. */
@@ -416,17 +303,8 @@ export interface VisitedExpression {
   /** The evaluated value for the visited expression, e.g. true/false */
   value?: unknown;
 }
-const VisitedExpression = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<VisitedExpression>;
-
 export type VisitedExpressionList = Array<VisitedExpression>;
-const VisitedExpressionList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<VisitedExpressionList>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DocumentList>;
-
 /** Represents a service-defined function call that was invoked during test execution. */
 export interface FunctionCall {
   /** Name of the function invoked. */
@@ -434,14 +312,8 @@ export interface FunctionCall {
   /** The arguments that were provided to the function. */
   args?: DocumentList;
 }
-const FunctionCall = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<FunctionCall>;
-
 export type FunctionCallList = Array<FunctionCall>;
-const FunctionCallList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<FunctionCallList>;
-
 export type TestResultStateEnum = "STATE_UNSPECIFIED" | "SUCCESS" | "FAILURE";
-const TestResultStateEnum = S.String;
-
 /** Tuple for how many times an Expression was evaluated to a particular ExpressionValue. */
 export interface ValueCount {
   /** The return value of the expression */
@@ -449,11 +321,7 @@ export interface ValueCount {
   /** The amount of times that expression returned. */
   count?: number;
 }
-const ValueCount = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ValueCount>;
-
 export type ValueCountList = Array<ValueCount>;
-const ValueCountList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ValueCountList>;
-
 /** Describes where in a file an expression is found and what it was evaluated to over the course of its use. */
 export interface ExpressionReport {
   /** Values that this expression evaluated to when encountered. */
@@ -463,11 +331,7 @@ export interface ExpressionReport {
   /** Position of expression in original rules source. */
   sourcePosition?: SourcePosition;
 }
-const ExpressionReport = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ExpressionReport>;
-
 export type ExpressionReportList = Array<ExpressionReport>;
-const ExpressionReportList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ExpressionReportList>;
-
 /** Test result message containing the state of the test as well as a description and source position for test failures. */
 export interface TestResult {
   /** The set of visited permission expressions for a given test. This returns the positions and evaluation results of all visited permission expressions which were relevant to the test case, e.g. ``` match /path { allow read if: } ``` For a detailed report of the intermediate evaluation states, see the `expression_reports` field */
@@ -483,14 +347,8 @@ export interface TestResult {
   /** Position in the `Source` or `Ruleset` where the principle runtime error occurs. Evaluation of an expression may result in an error. Rules are deny by default, so a `DENY` expectation when an error is generated is valid. When there is a `DENY` with an error, the `SourcePosition` is returned. E.g. `error_position { line: 19 column: 37 }` */
   errorPosition?: SourcePosition;
 }
-const TestResult = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TestResult>;
-
 export type TestResultList = Array<TestResult>;
-const TestResultList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TestResultList>;
-
 export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "DEPRECATION" | "WARNING" | "ERROR";
-const IssueSeverityEnum = S.String;
-
 /** Issues include warnings, errors, and deprecation notices. */
 export interface Issue {
   /** The severity of the issue. */
@@ -500,11 +358,7 @@ export interface Issue {
   /** Short error description. */
   description?: string;
 }
-const Issue = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Issue>;
-
 export type IssueList = Array<Issue>;
-const IssueList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<IssueList>;
-
 /** The response for FirebaseRulesService.TestRuleset. */
 export interface TestRulesetResponse {
   /** The set of test results given the test cases in the `TestSuite`. The results will appear in the same order as the test cases appear in the `TestSuite`. */
@@ -512,8 +366,6 @@ export interface TestRulesetResponse {
   /** Syntactic and semantic `Source` issues of varying severity. Issues of `ERROR` severity will prevent tests from executing. */
   issues?: IssueList;
 }
-const TestRulesetResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<TestRulesetResponse>;
-
 export type CreateProjectsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Create a `Release`. Release names should reflect the developer's deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name -> Ruleset Name * projects/foo/releases/prod -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/beta -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 -> projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method. */
 export const createProjectsReleases: API.OperationMethod<
@@ -522,8 +374,8 @@ export const createProjectsReleases: API.OperationMethod<
   CreateProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsReleasesRequest,
-  output: Release,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateProjectsReleasesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -537,8 +389,8 @@ export const createProjectsRulesets: API.OperationMethod<
   CreateProjectsRulesetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsRulesetsRequest,
-  output: Ruleset,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateProjectsRulesetsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Ruleset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -552,8 +404,8 @@ export const deleteProjectsReleases: API.OperationMethod<
   DeleteProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsReleasesRequest,
-  output: Empty,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteProjectsReleasesRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -567,8 +419,8 @@ export const deleteProjectsRulesets: API.OperationMethod<
   DeleteProjectsRulesetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsRulesetsRequest,
-  output: Empty,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteProjectsRulesetsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -582,8 +434,8 @@ export const getExecutableProjectsReleases: API.OperationMethod<
   GetExecutableProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExecutableProjectsReleasesRequest,
-  output: GetReleaseExecutableResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetExecutableProjectsReleasesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetReleaseExecutableResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -597,8 +449,8 @@ export const getProjectsReleases: API.OperationMethod<
   GetProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsReleasesRequest,
-  output: Release,
+  input: __S(14, __c1, 6) as any as S.Schema<GetProjectsReleasesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -612,8 +464,8 @@ export const getProjectsRulesets: API.OperationMethod<
   GetProjectsRulesetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsRulesetsRequest,
-  output: Ruleset,
+  input: __S(15, __c1, 7) as any as S.Schema<GetProjectsRulesetsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<Ruleset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +480,8 @@ export const listProjectsReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsReleasesRequest,
-  output: ListReleasesResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<ListProjectsReleasesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -645,8 +497,8 @@ export const listProjectsRulesets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRulesetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsRulesetsRequest,
-  output: ListRulesetsResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<ListProjectsRulesetsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ListRulesetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -661,8 +513,8 @@ export const patchProjectsReleases: API.OperationMethod<
   PatchProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsReleasesRequest,
-  output: Release,
+  input: __S(23, __c2, 7) as any as S.Schema<PatchProjectsReleasesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -676,8 +528,8 @@ export const testProjects: API.OperationMethod<
   TestProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestProjectsRequest,
-  output: TestRulesetResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<TestProjectsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<TestRulesetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -699,7 +551,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Release.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -719,11 +571,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "File" });
     case 3:
-      return S.Array(File);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(FileList),
+          files: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Source" });
     case 5:
@@ -731,17 +583,17 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(StringList),
+          services: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "Metadata" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(Source),
+          source: S.optional(__S(4, __c0, 4)),
           attachmentPoint: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(Metadata),
+          metadata: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Ruleset" });
   }
@@ -752,7 +604,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Ruleset.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -799,9 +651,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          executableVersion: S.optional(
-            GetExecutableProjectsReleasesExecutableVersionEnum.pipe(T.Query()),
-          ),
+          executableVersion: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -816,11 +666,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           executable: S.optional(S.String),
-          language: S.optional(GetReleaseExecutableResponseLanguageEnum),
+          language: S.optional(S.String),
           rulesetName: S.optional(S.String),
           updateTime: S.optional(S.String),
           syncTime: S.optional(S.String),
-          executableVersion: S.optional(GetReleaseExecutableResponseExecutableVersionEnum),
+          executableVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetReleaseExecutableResponse",
@@ -875,11 +725,11 @@ function __c2(j: number): any {
         identifier: "ListProjectsReleasesRequest",
       });
     case 1:
-      return S.Array(Release);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          releases: S.optional(ReleaseList),
+          releases: S.optional(__S(17, __c2, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
@@ -901,26 +751,26 @@ function __c2(j: number): any {
         identifier: "ListProjectsRulesetsRequest",
       });
     case 4:
-      return S.Array(Ruleset);
+      return S.Array(__S(7, __c0, 7));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rulesets: S.optional(RulesetList),
+          rulesets: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "ListRulesetsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          release: S.optional(Release),
+          release: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "UpdateReleaseRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateReleaseRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -939,45 +789,45 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
-          undefined: S.optional(Empty),
+          undefined: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Result" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           exactValue: S.optional(S.Unknown),
-          anyValue: S.optional(Empty),
+          anyValue: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Arg" });
     case 2:
-      return S.Array(Arg);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(Result),
+          result: S.optional(__S(24, __c3, 0)),
           function: S.optional(S.String),
-          args: S.optional(ArgList),
+          args: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "FunctionMock" });
     case 4:
-      return S.Array(FunctionMock);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          functionMocks: S.optional(FunctionMockList),
-          pathEncoding: S.optional(TestCasePathEncodingEnum),
-          expressionReportLevel: S.optional(TestCaseExpressionReportLevelEnum),
-          expectation: S.optional(TestCaseExpectationEnum),
+          functionMocks: S.optional(__S(28, __c3, 4)),
+          pathEncoding: S.optional(S.String),
+          expressionReportLevel: S.optional(S.String),
+          expectation: S.optional(S.String),
           resource: S.optional(S.Unknown),
           request: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "TestCase" });
     case 6:
-      return S.Array(TestCase);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          testCases: S.optional(TestCaseList),
+          testCases: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "TestSuite" });
   }
@@ -987,15 +837,15 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          testSuite: S.optional(TestSuite),
-          source: S.optional(Source),
+          testSuite: S.optional(__S(31, __c3, 7)),
+          source: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "TestRulesetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(TestRulesetRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1017,23 +867,23 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourcePosition: S.optional(SourcePosition),
+          sourcePosition: S.optional(__S(34, __c4, 2)),
           value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "VisitedExpression" });
     case 4:
-      return S.Array(VisitedExpression);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           function: S.optional(S.String),
-          args: S.optional(DocumentList),
+          args: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "FunctionCall" });
     case 7:
-      return S.Array(FunctionCall);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1046,40 +896,40 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ValueCount" });
     case 1:
-      return S.Array(ValueCount);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(ValueCountList),
-          children: S.optional(S.suspend(() => ExpressionReportList)),
-          sourcePosition: S.optional(SourcePosition),
+          values: S.optional(__S(41, __c5, 1)),
+          children: S.optional(S.suspend(() => __S(43, __c5, 3))),
+          sourcePosition: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "ExpressionReport" });
     case 3:
-      return S.Array(ExpressionReport);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          visitedExpressions: S.optional(VisitedExpressionList),
-          functionCalls: S.optional(FunctionCallList),
-          state: S.optional(TestResultStateEnum),
-          expressionReports: S.optional(ExpressionReportList),
-          debugMessages: S.optional(StringList),
-          errorPosition: S.optional(SourcePosition),
+          visitedExpressions: S.optional(__S(36, __c4, 4)),
+          functionCalls: S.optional(__S(39, __c4, 7)),
+          state: S.optional(S.String),
+          expressionReports: S.optional(__S(43, __c5, 3)),
+          debugMessages: S.optional(__S(5, __c0, 5)),
+          errorPosition: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "TestResult" });
     case 5:
-      return S.Array(TestResult);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(IssueSeverityEnum),
-          sourcePosition: S.optional(SourcePosition),
+          severity: S.optional(S.String),
+          sourcePosition: S.optional(__S(34, __c4, 2)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Issue" });
     case 7:
-      return S.Array(Issue);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -1087,9 +937,14 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          testResults: S.optional(TestResultList),
-          issues: S.optional(IssueList),
+          testResults: S.optional(__S(45, __c5, 5)),
+          issues: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "TestRulesetResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

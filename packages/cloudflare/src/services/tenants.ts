@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -54,39 +56,21 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 export interface GetEntitlementRequest {
   tenantId: string;
 }
-const GetEntitlementRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetEntitlementRequest>;
-
 export type EntitlementsGetResponseAllowAddSubdomainType = "bool";
-const EntitlementsGetResponseAllowAddSubdomainType = S.String;
-
 export interface EntitlementsGetResponseAllowAddSubdomain {
   type: EntitlementsGetResponseAllowAddSubdomainType;
   value: boolean;
 }
-const EntitlementsGetResponseAllowAddSubdomain = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<EntitlementsGetResponseAllowAddSubdomain>;
-
 export type EntitlementsGetResponseAllowAutoAcceptInvitesType = "bool";
 export interface EntitlementsGetResponseAllowAutoAcceptInvites {
   type: EntitlementsGetResponseAllowAutoAcceptInvitesType;
   value: boolean;
 }
-const EntitlementsGetResponseAllowAutoAcceptInvites =
-  EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponseAllowAutoAcceptInvites>;
-
 export type EntitlementsGetResponseCnameSetupAllowedType = "bool";
 export interface EntitlementsGetResponseCnameSetupAllowed {
   type: EntitlementsGetResponseCnameSetupAllowedType;
   value: boolean;
 }
-const EntitlementsGetResponseCnameSetupAllowed =
-  EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
-
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
   "max_count";
 export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation {
@@ -109,52 +93,25 @@ export type EntitlementsGetResponseCustomEntitlementsItemAllocation =
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation;
-const EntitlementsGetResponseCustomEntitlementsItemAllocation = /*@__PURE__*/ __L.at(__c0, 2);
-
 export interface EntitlementsGetResponseCustomEntitlementsItemFeature {
   key: string;
 }
-const EntitlementsGetResponseCustomEntitlementsItemFeature = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemFeature>;
-
 export interface EntitlementsGetResponseCustomEntitlementsItem {
   allocation: EntitlementsGetResponseCustomEntitlementsItemAllocation;
   feature: EntitlementsGetResponseCustomEntitlementsItemFeature;
 }
-const EntitlementsGetResponseCustomEntitlementsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItem>;
-
 export type EntitlementsGetResponseCustomEntitlementsList =
   Array<EntitlementsGetResponseCustomEntitlementsItem>;
-const EntitlementsGetResponseCustomEntitlementsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsList>;
-
 export type EntitlementsGetResponseMhsCertificateCountType = "max_count";
-const EntitlementsGetResponseMhsCertificateCountType = S.String;
-
 export interface EntitlementsGetResponseMhsCertificateCount {
   type: EntitlementsGetResponseMhsCertificateCountType;
   value: number;
 }
-const EntitlementsGetResponseMhsCertificateCount = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<EntitlementsGetResponseMhsCertificateCount>;
-
 export type EntitlementsGetResponsePartialSetupAllowedType = "bool";
 export interface EntitlementsGetResponsePartialSetupAllowed {
   type: EntitlementsGetResponsePartialSetupAllowedType;
   value: boolean;
 }
-const EntitlementsGetResponsePartialSetupAllowed =
-  EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponsePartialSetupAllowed>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEntitlementResponse {
   allowAddSubdomain: EntitlementsGetResponseAllowAddSubdomain;
@@ -164,62 +121,25 @@ export interface GetEntitlementResponse {
   mhsCertificateCount: EntitlementsGetResponseMhsCertificateCount;
   partialSetupAllowed: EntitlementsGetResponsePartialSetupAllowed;
 }
-const GetEntitlementResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetEntitlementResponse>;
-
 export interface GetTenantRequest {
   tenantId: string;
 }
-const GetTenantRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetTenantRequest>;
-
 export interface GetResponseTenantContacts {
   email?: string | null;
   website?: string | null;
 }
-const GetResponseTenantContacts = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetResponseTenantContacts>;
-
 export type GetResponseTenantLabelsList = Array<string>;
-const GetResponseTenantLabelsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetResponseTenantLabelsList>;
-
 export interface GetResponseTenantMetadataDnsNsPool {
   primary?: string | null;
   secondary?: string | null;
 }
-const GetResponseTenantMetadataDnsNsPool = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetResponseTenantMetadataDnsNsPool>;
-
 export interface GetResponseTenantMetadataDns {
   nsPool: GetResponseTenantMetadataDnsNsPool;
 }
-const GetResponseTenantMetadataDns = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetResponseTenantMetadataDns>;
-
 export interface GetResponseTenantMetadata {
   dns?: GetResponseTenantMetadataDns | null;
 }
-const GetResponseTenantMetadata = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetResponseTenantMetadata>;
-
 export type GetResponseTenantUnitsItemUnitMembershipsList = Array<unknown>;
-const GetResponseTenantUnitsItemUnitMembershipsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetResponseTenantUnitsItemUnitMembershipsList>;
-
 export interface GetResponseTenantUnitsItem {
   unitMemberships: GetResponseTenantUnitsItemUnitMembershipsList;
   unitMetadata: unknown;
@@ -227,17 +147,7 @@ export interface GetResponseTenantUnitsItem {
   unitStatus: string;
   unitTag: string;
 }
-const GetResponseTenantUnitsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetResponseTenantUnitsItem>;
-
 export type GetResponseTenantUnitsList = Array<GetResponseTenantUnitsItem>;
-const GetResponseTenantUnitsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetResponseTenantUnitsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTenantResponse {
   cdate: string;
@@ -253,13 +163,9 @@ export interface GetTenantResponse {
   tenantUnits: GetResponseTenantUnitsList;
   customerId?: string | null;
 }
-const GetTenantResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetTenantResponse>;
-
 export interface ListAccountsRequest {
   tenantId: string;
 }
-const ListAccountsRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListAccountsRequest>;
-
 export interface AccountsListResultItemSettings {
   abuseContactEmail: string;
   accessApprovalExpiry: string;
@@ -270,20 +176,8 @@ export interface AccountsListResultItemSettings {
   /** Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated. */
   useAccountCustomNsByDefault: boolean;
 }
-const AccountsListResultItemSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AccountsListResultItemSettings>;
-
 export type AccountsListResultItemType = "standard" | "enterprise";
-const AccountsListResultItemType = S.String;
-
 export type AccountsListResultItemTagsMap = { [key: string]: string | undefined };
-const AccountsListResultItemTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AccountsListResultItemTagsMap>;
-
 export interface AccountsListResultItem {
   id: string;
   createdOn: string;
@@ -293,83 +187,38 @@ export interface AccountsListResultItem {
   /** Account tags, present only when `include_tags=true` is requested. */
   tags?: AccountsListResultItemTagsMap | null;
 }
-const AccountsListResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AccountsListResultItem>;
-
 export type AccountsListResultList = Array<AccountsListResultItem>;
-const AccountsListResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AccountsListResultList>;
-
 export interface ListAccountsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AccountsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAccountsResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListAccountsResponse>;
-
 export interface ListAccountTypesRequest {
   tenantId: string;
 }
-const ListAccountTypesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListAccountTypesRequest>;
-
 export type AccountTypesListResultList = Array<string>;
-const AccountTypesListResultList =
-  GetResponseTenantLabelsList as any as S.Schema<AccountTypesListResultList>;
-
 export interface ListAccountTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AccountTypesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAccountTypesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListAccountTypesResponse>;
-
 export interface ListMembershipsRequest {
   tenantId: string;
 }
-const ListMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListMembershipsRequest>;
-
 export interface MembershipsListResultItem {
   userEmail: string;
   userName: string;
   userTag: string;
 }
-const MembershipsListResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MembershipsListResultItem>;
-
 export type MembershipsListResultList = Array<MembershipsListResultItem>;
-const MembershipsListResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<MembershipsListResultList>;
-
 export interface ListMembershipsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: MembershipsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListMembershipsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListMembershipsResponse>;
-
 export type GetEntitlementError = CloudflareOpError;
 /** Retrieves the innate and custom entitlement allocations available to this tenant. */
 export const getEntitlement: API.OperationMethod<
@@ -378,8 +227,8 @@ export const getEntitlement: API.OperationMethod<
   GetEntitlementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntitlementRequest,
-  output: GetEntitlementResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetEntitlementRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<GetEntitlementResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -393,8 +242,8 @@ export const getTenant: API.OperationMethod<
   GetTenantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTenantRequest,
-  output: GetTenantResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<GetTenantRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetTenantResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -410,8 +259,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   AccountsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAccountsRequest,
-    output: ListAccountsResponse,
+    input: __S(18, __c2, 2) as any as S.Schema<ListAccountsRequest>,
+    output: __S(23, __c2, 7) as any as S.Schema<ListAccountsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -430,8 +279,8 @@ export const listAccountTypes: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAccountTypesRequest,
-    output: ListAccountTypesResponse,
+    input: __S(24, __c3, 0) as any as S.Schema<ListAccountTypesRequest>,
+    output: __S(25, __c3, 1) as any as S.Schema<ListAccountTypesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -450,8 +299,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   MembershipsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListMembershipsRequest,
-    output: ListMembershipsResponse,
+    input: __S(26, __c3, 2) as any as S.Schema<ListMembershipsRequest>,
+    output: __S(29, __c3, 5) as any as S.Schema<ListMembershipsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -474,7 +323,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: EntitlementsGetResponseAllowAddSubdomainType,
+          type: S.String,
           value: S.Boolean,
         }),
       ).annotate({
@@ -502,18 +351,18 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allocation: EntitlementsGetResponseCustomEntitlementsItemAllocation,
-          feature: EntitlementsGetResponseCustomEntitlementsItemFeature,
+          allocation: __S(2, __c0, 2),
+          feature: __S(3, __c0, 3),
         }),
       ).annotate({
         identifier: "EntitlementsGetResponseCustomEntitlementsItem",
       });
     case 5:
-      return S.Array(EntitlementsGetResponseCustomEntitlementsItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: EntitlementsGetResponseMhsCertificateCountType,
+          type: S.String,
           value: S.Number,
         }),
       ).annotate({
@@ -522,24 +371,12 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowAddSubdomain: EntitlementsGetResponseAllowAddSubdomain.pipe(
-            T.Body("allow_add_subdomain"),
-          ),
-          allowAutoAcceptInvites: EntitlementsGetResponseAllowAutoAcceptInvites.pipe(
-            T.Body("allow_auto_accept_invites"),
-          ),
-          cnameSetupAllowed: EntitlementsGetResponseCnameSetupAllowed.pipe(
-            T.Body("cname_setup_allowed"),
-          ),
-          customEntitlements: EntitlementsGetResponseCustomEntitlementsList.pipe(
-            T.Body("custom_entitlements"),
-          ),
-          mhsCertificateCount: EntitlementsGetResponseMhsCertificateCount.pipe(
-            T.Body("mhs_certificate_count"),
-          ),
-          partialSetupAllowed: EntitlementsGetResponsePartialSetupAllowed.pipe(
-            T.Body("partial_setup_allowed"),
-          ),
+          allowAddSubdomain: __S(1, __c0, 1).pipe(T.Body("allow_add_subdomain")),
+          allowAutoAcceptInvites: __S(1, __c0, 1).pipe(T.Body("allow_auto_accept_invites")),
+          cnameSetupAllowed: __S(1, __c0, 1).pipe(T.Body("cname_setup_allowed")),
+          customEntitlements: __S(5, __c0, 5).pipe(T.Body("custom_entitlements")),
+          mhsCertificateCount: __S(6, __c0, 6).pipe(T.Body("mhs_certificate_count")),
+          partialSetupAllowed: __S(1, __c0, 1).pipe(T.Body("partial_setup_allowed")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetEntitlementResponse" });
   }
@@ -577,7 +414,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          nsPool: GetResponseTenantMetadataDnsNsPool.pipe(T.Body("ns_pool")),
+          nsPool: __S(11, __c1, 3).pipe(T.Body("ns_pool")),
         }),
       ).annotate({
         identifier: "GetResponseTenantMetadataDns",
@@ -585,7 +422,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dns: S.optional(S.NullOr(GetResponseTenantMetadataDns)),
+          dns: S.optional(S.NullOr(__S(12, __c1, 4))),
         }),
       ).annotate({
         identifier: "GetResponseTenantMetadata",
@@ -595,9 +432,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unitMemberships: GetResponseTenantUnitsItemUnitMembershipsList.pipe(
-            T.Body("unit_memberships"),
-          ),
+          unitMemberships: __S(14, __c1, 6).pipe(T.Body("unit_memberships")),
           unitMetadata: S.Unknown.pipe(T.Body("unit_metadata")),
           unitName: S.String.pipe(T.Body("unit_name")),
           unitStatus: S.String.pipe(T.Body("unit_status")),
@@ -611,21 +446,21 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetResponseTenantUnitsItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           cdate: S.String,
           edate: S.String,
-          tenantContacts: GetResponseTenantContacts.pipe(T.Body("tenant_contacts")),
-          tenantLabels: GetResponseTenantLabelsList.pipe(T.Body("tenant_labels")),
-          tenantMetadata: GetResponseTenantMetadata.pipe(T.Body("tenant_metadata")),
+          tenantContacts: __S(9, __c1, 1).pipe(T.Body("tenant_contacts")),
+          tenantLabels: __S(10, __c1, 2).pipe(T.Body("tenant_labels")),
+          tenantMetadata: __S(13, __c1, 5).pipe(T.Body("tenant_metadata")),
           tenantName: S.String.pipe(T.Body("tenant_name")),
           tenantNetwork: S.Unknown.pipe(T.Body("tenant_network")),
           tenantStatus: S.String.pipe(T.Body("tenant_status")),
           tenantTag: S.String.pipe(T.Body("tenant_tag")),
           tenantType: S.String.pipe(T.Body("tenant_type")),
-          tenantUnits: GetResponseTenantUnitsList.pipe(T.Body("tenant_units")),
+          tenantUnits: __S(16, __c2, 0).pipe(T.Body("tenant_units")),
           customerId: S.optional(S.NullOr(S.String).pipe(T.Body("customer_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTenantResponse" });
@@ -658,17 +493,17 @@ function __c2(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           name: S.String,
-          settings: AccountsListResultItemSettings,
-          type: AccountsListResultItemType,
-          tags: S.optional(S.NullOr(AccountsListResultItemTagsMap)),
+          settings: __S(19, __c2, 3),
+          type: S.String,
+          tags: S.optional(S.NullOr(__S(20, __c2, 4))),
         }),
       ).annotate({ identifier: "AccountsListResultItem" });
     case 6:
-      return S.Array(AccountsListResultItem);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: AccountsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(22, __c2, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAccountsResponse" });
@@ -687,7 +522,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: AccountTypesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(10, __c1, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAccountTypesResponse" });
@@ -710,13 +545,18 @@ function __c3(j: number): any {
         identifier: "MembershipsListResultItem",
       });
     case 4:
-      return S.Array(MembershipsListResultItem);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: MembershipsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(28, __c3, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembershipsResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

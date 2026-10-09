@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Inspector Scan",
   serviceShapeName: "InspectorScan",
@@ -85,7 +87,7 @@ export class InternalServerException
     "InternalServerException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => InternalServerExceptionReason).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "InternalServerExceptionReason",
       }),
       retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
@@ -113,11 +115,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFields).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(3, __c0, 3)).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
@@ -126,20 +128,14 @@ export class ValidationException
   ).pipe(C.withBadRequestError) {}
 export type Sbom = unknown;
 export type OutputFormat = "CYCLONE_DX_1_5" | "INSPECTOR" | "INSPECTOR_ALT" | (string & {});
-const OutputFormat = S.String;
-
 export interface ScanSbomRequest {
   sbom: any;
   outputFormat?: OutputFormat;
 }
-const ScanSbomRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ScanSbomRequest>;
 export interface ScanSbomResponse {
   sbom?: any;
 }
-const ScanSbomResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ScanSbomResponse>;
 export type InternalServerExceptionReason = "FAILED_TO_GENERATE_SBOM" | "OTHER" | (string & {});
-const InternalServerExceptionReason = S.String;
-
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "CANNOT_PARSE"
@@ -147,18 +143,11 @@ export type ValidationExceptionReason =
   | "UNSUPPORTED_SBOM_TYPE"
   | "OTHER"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFields = ValidationExceptionField[];
-const ValidationExceptionFields = /*@__PURE__*/ __L.at(__c0, 3);
 export type ScanSbomError =
   | AccessDeniedException
   | InternalServerException
@@ -176,8 +165,8 @@ export const scanSbom: API.OperationMethod<
   ScanSbomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScanSbomRequest,
-  output: ScanSbomResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ScanSbomRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ScanSbomResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -194,7 +183,7 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ sbom: S.Any, outputFormat: S.optional(OutputFormat) }).pipe(
+        S.Struct({ sbom: S.Any, outputFormat: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/scan/sbom" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ScanSbomRequest" });
@@ -207,6 +196,11 @@ function __c0(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 3:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(2, __c0, 2));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

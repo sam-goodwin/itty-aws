@@ -5,28 +5,21 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm` - LLM * `hog` - Hog */
 export type TaggerTypeEnum = "llm" | "hog";
-const TaggerTypeEnum = S.String;
-
 export interface TagDefinition {
   /** Tag identifier */
   name: string;
   /** Description to help the LLM classify */
   description?: string;
 }
-const TagDefinition = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TagDefinition>;
-
 /** Available tags the LLM can assign */
 export type LLMTaggerConfigTagsList = Array<TagDefinition>;
-const LLMTaggerConfigTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<LLMTaggerConfigTagsList>;
-
 export interface LLMTaggerConfig {
   /** Prompt instructing the LLM how to tag generations */
   prompt: string;
@@ -46,21 +39,9 @@ export interface HogTaggerConfig {
   tags?: HogTaggerConfigTagsList;
 }
 export type TaggerConfig = LLMTaggerConfig | HogTaggerConfig;
-const TaggerConfig = S.Unknown as any as S.Schema<TaggerConfig>;
-
 export type TaggerConditionPropertiesItemMap = { [key: string]: unknown | undefined };
-const TaggerConditionPropertiesItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<TaggerConditionPropertiesItemMap>;
-
 /** Property filters that scope when this condition fires */
 export type TaggerConditionPropertiesList = Array<TaggerConditionPropertiesItemMap>;
-const TaggerConditionPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<TaggerConditionPropertiesList>;
-
 export interface TaggerCondition {
   /** Stable identifier for this condition */
   id: string;
@@ -69,15 +50,8 @@ export interface TaggerCondition {
   /** Property filters that scope when this condition fires */
   properties?: TaggerConditionPropertiesList;
 }
-const TaggerCondition = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TaggerCondition>;
-
 /** Conditions that scope when the tagger runs */
 export type CreateTaggerRequestConditionsList = Array<TaggerCondition>;
-const CreateTaggerRequestConditionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateTaggerRequestConditionsList>;
-
 /** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub * `openai_compatible` - OpenAI-compatible */
 export type LLMCompletionProviderEnum =
   | "openai"
@@ -90,8 +64,6 @@ export type LLMCompletionProviderEnum =
   | "minimax"
   | "zeabur"
   | "openai_compatible";
-const LLMCompletionProviderEnum = S.String;
-
 export interface TaggerModelConfigurationWrite {
   /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub * `openai_compatible` - OpenAI-compatible */
   provider: LLMCompletionProviderEnum | (string & {});
@@ -100,11 +72,6 @@ export interface TaggerModelConfigurationWrite {
   /** Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit/null when no provider key should be pinned. */
   provider_key_id?: string | null;
 }
-const TaggerModelConfigurationWrite = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<TaggerModelConfigurationWrite>;
-
 export interface CreateTaggerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -118,13 +85,8 @@ export interface CreateTaggerRequest {
   conditions?: CreateTaggerRequestConditionsList;
   model_configuration?: TaggerModelConfigurationWrite | null;
 }
-const CreateTaggerRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateTaggerRequest>;
-
 /** Conditions that scope when the tagger runs */
 export type TaggerConditionsList = Array<TaggerCondition>;
-const TaggerConditionsList =
-  CreateTaggerRequestConditionsList as any as S.Schema<TaggerConditionsList>;
-
 /** Nested serializer for model configuration. */
 export interface TaggerModelConfiguration {
   /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub * `openai_compatible` - OpenAI-compatible */
@@ -135,15 +97,7 @@ export interface TaggerModelConfiguration {
   provider_key_id?: string | null;
   provider_key_name: string | null;
 }
-const TaggerModelConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<TaggerModelConfiguration>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap =
-  TaggerConditionPropertiesItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -157,8 +111,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -170,8 +122,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UserBasic>;
-
 export interface Tagger {
   id: string;
   name: string;
@@ -188,8 +138,6 @@ export interface Tagger {
   created_by: UserBasic;
   deleted?: boolean;
 }
-const Tagger = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Tagger>;
-
 export interface TestHogTaggerTag {
   /** Tag identifier to allow in Hog test results. */
   name: string;
@@ -198,9 +146,6 @@ export interface TestHogTaggerTag {
 }
 /** Optional tag whitelist. Returned tags outside this list are filtered out. */
 export type CreateTaggersTestHogRequestTagsList = Array<TestHogTaggerTag>;
-const CreateTaggersTestHogRequestTagsList =
-  LLMTaggerConfigTagsList as any as S.Schema<CreateTaggersTestHogRequestTagsList>;
-
 export interface CreateTaggersTestHogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -211,18 +156,8 @@ export interface CreateTaggersTestHogRequest {
   /** Optional tag whitelist. Returned tags outside this list are filtered out. */
   tags?: CreateTaggersTestHogRequestTagsList;
 }
-const CreateTaggersTestHogRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateTaggersTestHogRequest>;
-
 /** Tag names returned by the Hog code. */
 export type TestHogTaggerResultItemTagsList = Array<string>;
-const TestHogTaggerResultItemTagsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TestHogTaggerResultItemTagsList>;
-
 export interface TestHogTaggerResultItem {
   /** UUID of the sampled $ai_generation event. */
   event_uuid: string;
@@ -239,41 +174,21 @@ export interface TestHogTaggerResultItem {
   /** Error message if the Hog code failed. */
   error?: string | null;
 }
-const TestHogTaggerResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<TestHogTaggerResultItem>;
-
 /** Per-event Hog tagger test results. */
 export type TestHogTaggerResponseResultsList = Array<TestHogTaggerResultItem>;
-const TestHogTaggerResponseResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<TestHogTaggerResponseResultsList>;
-
 export interface TestHogTaggerResponse {
   /** Per-event Hog tagger test results. */
   results: TestHogTaggerResponseResultsList;
   /** Optional message, for example when no recent AI events were found. */
   message?: string;
 }
-const TestHogTaggerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<TestHogTaggerResponse>;
-
 export interface GetTaggerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this tagger. */
   id: string;
 }
-const GetTaggerRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetTaggerRequest>;
-
 export type ListTaggersRequestIdInList = Array<string>;
-const ListTaggersRequestIdInList =
-  TestHogTaggerResultItemTagsList as any as S.Schema<ListTaggersRequestIdInList>;
-
 export type ListTaggersRequestOrderByItem =
   | "-created_at"
   | "-name"
@@ -281,14 +196,7 @@ export type ListTaggersRequestOrderByItem =
   | "created_at"
   | "name"
   | "updated_at";
-const ListTaggersRequestOrderByItem = S.String;
-
 export type ListTaggersRequestOrderByList = Array<ListTaggersRequestOrderByItem | (string & {})>;
-const ListTaggersRequestOrderByList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListTaggersRequestOrderByList>;
-
 export interface ListTaggersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -305,44 +213,22 @@ export interface ListTaggersRequest {
   /** Search in name or description */
   search?: string;
 }
-const ListTaggersRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListTaggersRequest>;
-
 export type PaginatedTaggerListResultsList = Array<Tagger>;
-const PaginatedTaggerListResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PaginatedTaggerListResultsList>;
-
 export interface PaginatedTaggerList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTaggerListResultsList;
 }
-const PaginatedTaggerList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PaginatedTaggerList>;
-
 export interface TaggersDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this tagger. */
   id: string;
 }
-const TaggersDestroyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<TaggersDestroyRequest>;
-
 export interface TaggersDestroyResponse {}
-const TaggersDestroyResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<TaggersDestroyResponse>;
-
 /** Conditions that scope when the tagger runs */
 export type UpdateTaggerRequestConditionsList = Array<TaggerCondition>;
-const UpdateTaggerRequestConditionsList =
-  CreateTaggerRequestConditionsList as any as S.Schema<UpdateTaggerRequestConditionsList>;
-
 export interface UpdateTaggerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -359,13 +245,8 @@ export interface UpdateTaggerRequest {
   model_configuration?: TaggerModelConfigurationWrite | null;
   deleted?: boolean;
 }
-const UpdateTaggerRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UpdateTaggerRequest>;
-
 /** Conditions that scope when the tagger runs */
 export type UpdateTaggersPartialRequestConditionsList = Array<TaggerCondition>;
-const UpdateTaggersPartialRequestConditionsList =
-  CreateTaggerRequestConditionsList as any as S.Schema<UpdateTaggersPartialRequestConditionsList>;
-
 export interface UpdateTaggersPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -382,11 +263,6 @@ export interface UpdateTaggersPartialRequest {
   model_configuration?: TaggerModelConfigurationWrite | null;
   deleted?: boolean;
 }
-const UpdateTaggersPartialRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<UpdateTaggersPartialRequest>;
-
 export type CreateTaggerError = PosthogOpError;
 export const createTagger: API.OperationMethod<
   CreateTaggerRequest,
@@ -394,8 +270,8 @@ export const createTagger: API.OperationMethod<
   CreateTaggerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTaggerRequest,
-  output: Tagger,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateTaggerRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -409,8 +285,8 @@ export const createTaggersTestHog: API.OperationMethod<
   CreateTaggersTestHogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTaggersTestHogRequest,
-  output: TestHogTaggerResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateTaggersTestHogRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<TestHogTaggerResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -423,8 +299,8 @@ export const getTagger: API.OperationMethod<
   GetTaggerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaggerRequest,
-  output: Tagger,
+  input: __S(16, __c2, 0) as any as S.Schema<GetTaggerRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -437,8 +313,8 @@ export const listTaggers: API.OperationMethod<
   ListTaggersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTaggersRequest,
-  output: PaginatedTaggerList,
+  input: __S(18, __c2, 2) as any as S.Schema<ListTaggersRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<PaginatedTaggerList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -452,8 +328,8 @@ export const taggersDestroy: API.OperationMethod<
   TaggersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TaggersDestroyRequest,
-  output: TaggersDestroyResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<TaggersDestroyRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<TaggersDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -466,8 +342,8 @@ export const updateTagger: API.OperationMethod<
   UpdateTaggerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTaggerRequest,
-  output: Tagger,
+  input: __S(23, __c2, 7) as any as S.Schema<UpdateTaggerRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -480,8 +356,8 @@ export const updateTaggersPartial: API.OperationMethod<
   UpdateTaggersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTaggersPartialRequest,
-  output: Tagger,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateTaggersPartialRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -498,25 +374,25 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TagDefinition" });
     case 1:
-      return S.Array(TagDefinition);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(TaggerConditionPropertiesItemMap);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           rollout_percentage: S.optional(S.Number),
-          properties: S.optional(TaggerConditionPropertiesList),
+          properties: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "TaggerCondition" });
     case 5:
-      return S.Array(TaggerCondition);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provider: LLMCompletionProviderEnum,
+          provider: S.String,
           model: S.String,
           provider_key_id: S.optional(S.NullOr(S.String)),
         }),
@@ -530,10 +406,10 @@ function __c0(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tagger_type: S.optional(TaggerTypeEnum),
-          tagger_config: TaggerConfig,
-          conditions: S.optional(CreateTaggerRequestConditionsList),
-          model_configuration: S.optional(S.NullOr(TaggerModelConfigurationWrite)),
+          tagger_type: S.optional(S.String),
+          tagger_config: S.Unknown,
+          conditions: S.optional(__S(5, __c0, 5)),
+          model_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/taggers/", code: 200 })),
       ).annotate({ identifier: "CreateTaggerRequest" });
   }
@@ -543,7 +419,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provider: LLMCompletionProviderEnum,
+          provider: S.String,
           model: S.String,
           provider_key_id: S.optional(S.NullOr(S.String)),
           provider_key_name: S.NullOr(S.String),
@@ -559,8 +435,8 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 2:
@@ -570,13 +446,13 @@ function __c1(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tagger_type: S.optional(TaggerTypeEnum),
-          tagger_config: TaggerConfig,
-          conditions: S.optional(TaggerConditionsList),
-          model_configuration: S.optional(S.NullOr(TaggerModelConfiguration)),
+          tagger_type: S.optional(S.String),
+          tagger_config: S.Unknown,
+          conditions: S.optional(__S(5, __c0, 5)),
+          model_configuration: S.optional(S.NullOr(__S(8, __c1, 0))),
           created_at: S.String,
           updated_at: S.String,
-          created_by: UserBasic,
+          created_by: __S(9, __c1, 1),
           deleted: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Tagger" });
@@ -586,7 +462,7 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           source: S.String,
           sample_count: S.optional(S.Number),
-          tags: S.optional(CreateTaggersTestHogRequestTagsList),
+          tags: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -606,17 +482,17 @@ function __c1(j: number): any {
           trace_id: S.optional(S.NullOr(S.String)),
           input_preview: S.String,
           output_preview: S.String,
-          tags: TestHogTaggerResultItemTagsList,
+          tags: __S(12, __c1, 4),
           reasoning: S.String,
           error: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TestHogTaggerResultItem" });
     case 6:
-      return S.Array(TestHogTaggerResultItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: TestHogTaggerResponseResultsList,
+          results: __S(14, __c1, 6),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestHogTaggerResponse" });
@@ -634,28 +510,28 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetTaggerRequest" });
     case 1:
-      return S.Array(ListTaggersRequestOrderByItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
-          id__in: S.optional(ListTaggersRequestIdInList.pipe(T.Query())),
+          id__in: S.optional(__S(12, __c1, 4).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          order_by: S.optional(ListTaggersRequestOrderByList.pipe(T.Query())),
+          order_by: S.optional(__S(17, __c2, 1).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/taggers/", code: 200 })),
       ).annotate({ identifier: "ListTaggersRequest" });
     case 3:
-      return S.Array(Tagger);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedTaggerListResultsList,
+          results: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "PaginatedTaggerList" });
     case 5:
@@ -679,10 +555,10 @@ function __c2(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tagger_type: S.optional(TaggerTypeEnum),
-          tagger_config: TaggerConfig,
-          conditions: S.optional(UpdateTaggerRequestConditionsList),
-          model_configuration: S.optional(S.NullOr(TaggerModelConfigurationWrite)),
+          tagger_type: S.optional(S.String),
+          tagger_config: S.Unknown,
+          conditions: S.optional(__S(5, __c0, 5)),
+          model_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
           deleted: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/taggers/{id}/", code: 200 }),
@@ -700,10 +576,10 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tagger_type: S.optional(TaggerTypeEnum),
-          tagger_config: S.optional(TaggerConfig),
-          conditions: S.optional(UpdateTaggersPartialRequestConditionsList),
-          model_configuration: S.optional(S.NullOr(TaggerModelConfigurationWrite)),
+          tagger_type: S.optional(S.String),
+          tagger_config: S.optional(S.Unknown),
+          conditions: S.optional(__S(5, __c0, 5)),
+          model_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
           deleted: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/taggers/{id}/", code: 200 }),
@@ -712,4 +588,9 @@ function __c3(j: number): any {
         identifier: "UpdateTaggersPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

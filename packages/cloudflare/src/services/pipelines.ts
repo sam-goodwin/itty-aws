@@ -13,6 +13,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -215,23 +217,11 @@ export interface CreateRequestDestinationBatch {
   /** Specifies rough maximum number of rows per file. */
   maxRows?: number;
 }
-const CreateRequestDestinationBatch = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRequestDestinationBatch>;
-
 export type CreateRequestDestinationCompressionType = "none" | "gzip" | "deflate";
-const CreateRequestDestinationCompressionType = S.String;
-
 export interface CreateRequestDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type?: CreateRequestDestinationCompressionType | (string & {});
 }
-const CreateRequestDestinationCompression = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRequestDestinationCompression>;
-
 export interface CreateRequestDestinationCredentials {
   /** Specifies the R2 Bucket Access Key Id. */
   accessKeyId: string;
@@ -240,14 +230,7 @@ export interface CreateRequestDestinationCredentials {
   /** Specifies the R2 Bucket Secret Access Key. */
   secretAccessKey: string;
 }
-const CreateRequestDestinationCredentials = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateRequestDestinationCredentials>;
-
 export type CreateRequestDestinationFormat = "json";
-const CreateRequestDestinationFormat = S.String;
-
 export interface CreateRequestDestinationPath {
   /** Specifies the R2 Bucket to store files. */
   bucket: string;
@@ -258,14 +241,7 @@ export interface CreateRequestDestinationPath {
   /** Specifies the base directory within the bucket. */
   prefix?: string;
 }
-const CreateRequestDestinationPath = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateRequestDestinationPath>;
-
 export type CreateRequestDestinationType = "r2";
-const CreateRequestDestinationType = S.String;
-
 export interface CreateRequestDestination {
   batch: CreateRequestDestinationBatch;
   compression: CreateRequestDestinationCompression;
@@ -276,11 +252,6 @@ export interface CreateRequestDestination {
   /** Specifies the type of destination. */
   type: CreateRequestDestinationType | (string & {});
 }
-const CreateRequestDestination = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateRequestDestination>;
-
 export type CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat = "json";
 export type CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
@@ -305,14 +276,7 @@ export interface CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindi
 export type CreateRequestSourceItem =
   | CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
-const CreateRequestSourceItem = /*@__PURE__*/ __L.at(__c0, 5);
-
 export type CreateRequestSourceList = Array<CreateRequestSourceItem>;
-const CreateRequestSourceList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateRequestSourceList>;
-
 export interface CreatePipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -321,11 +285,6 @@ export interface CreatePipelineRequest {
   name: string;
   source: CreateRequestSourceList;
 }
-const CreatePipelineRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreatePipelineRequest>;
-
 export interface CreateResponseDestinationBatch {
   /** Specifies rough maximum size of files. */
   maxBytes: number;
@@ -334,26 +293,12 @@ export interface CreateResponseDestinationBatch {
   /** Specifies rough maximum number of rows per file. */
   maxRows: number;
 }
-const CreateResponseDestinationBatch = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateResponseDestinationBatch>;
-
 export type CreateResponseDestinationCompressionType = "none" | "gzip" | "deflate";
-const CreateResponseDestinationCompressionType = S.String;
-
 export interface CreateResponseDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type: CreateResponseDestinationCompressionType;
 }
-const CreateResponseDestinationCompression = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateResponseDestinationCompression>;
-
 export type CreateResponseDestinationFormat = "json";
-const CreateResponseDestinationFormat = S.String;
-
 export interface CreateResponseDestinationPath {
   /** Specifies the R2 Bucket to store files. */
   bucket: string;
@@ -364,14 +309,7 @@ export interface CreateResponseDestinationPath {
   /** Specifies the base directory within the bucket. */
   prefix?: string | null;
 }
-const CreateResponseDestinationPath = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateResponseDestinationPath>;
-
 export type CreateResponseDestinationType = "r2";
-const CreateResponseDestinationType = S.String;
-
 export interface CreateResponseDestination {
   batch: CreateResponseDestinationBatch;
   compression: CreateResponseDestinationCompression;
@@ -381,11 +319,6 @@ export interface CreateResponseDestination {
   /** Specifies the type of destination. */
   type: CreateResponseDestinationType;
 }
-const CreateResponseDestination = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateResponseDestination>;
-
 export type CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat = "json";
 export type CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
@@ -410,14 +343,7 @@ export interface CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBind
 export type CreateResponseSourceItem =
   | CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
-const CreateResponseSourceItem = /*@__PURE__*/ __L.at(__c1, 4);
-
 export type CreateResponseSourceList = Array<CreateResponseSourceItem>;
-const CreateResponseSourceList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateResponseSourceList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePipelineResponse {
   /** Specifies the pipeline identifier. */
@@ -431,14 +357,7 @@ export interface CreatePipelineResponse {
   /** Indicates the version number of last saved configuration. */
   version: number;
 }
-const CreatePipelineResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreatePipelineResponse>;
-
 export type SinksCreateRequestType = "r2" | "r2_data_catalog" | "basin_catalog";
-const SinksCreateRequestType = S.String;
-
 export interface SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials {
   /** Cloudflare Account ID for the bucket */
   accessKeyId: string;
@@ -506,8 +425,6 @@ export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable {
 export type SinksCreateRequestConfig =
   | SinksCreateRequestConfigCloudflarePipelinesR2Table
   | SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable;
-const SinksCreateRequestConfig = /*@__PURE__*/ __L.at(__c1, 7);
-
 export type SinksCreateRequestFormatJsonType = "json";
 export type SinksCreateRequestFormatJsonCompression = "uncompressed" | "gzip";
 export type SinksCreateRequestFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -535,8 +452,6 @@ export interface SinksCreateRequestFormatParquet {
 export type SinksCreateRequestFormat =
   | SinksCreateRequestFormatJson
   | SinksCreateRequestFormatParquet;
-const SinksCreateRequestFormat = /*@__PURE__*/ __L.at(__c2, 0);
-
 export type SinksCreateRequestSchemaFieldsItemInt32Type = "int32";
 export interface SinksCreateRequestSchemaFieldsItemInt32 {
   type: SinksCreateRequestSchemaFieldsItemInt32Type;
@@ -643,23 +558,11 @@ export type SinksCreateRequestSchemaFieldsItem =
   | SinksCreateRequestSchemaFieldsItemJson
   | SinksCreateRequestSchemaFieldsItemStruct
   | SinksCreateRequestSchemaFieldsItemList;
-const SinksCreateRequestSchemaFieldsItem = /*@__PURE__*/ __L.at(__c2, 1);
-
 export type SinksCreateRequestSchemaFieldsList = Array<SinksCreateRequestSchemaFieldsItem>;
-const SinksCreateRequestSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SinksCreateRequestSchemaFieldsList>;
-
 export interface SinksCreateRequestSchema {
   fields?: SinksCreateRequestSchemaFieldsList;
   inferred?: boolean;
 }
-const SinksCreateRequestSchema = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SinksCreateRequestSchema>;
-
 export interface CreateSinkRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -674,11 +577,7 @@ export interface CreateSinkRequest {
   /** Defines the schema of the events in the data stream. */
   schema?: SinksCreateRequestSchema;
 }
-const CreateSinkRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateSinkRequest>;
-
 export type SinksCreateResponseType = "r2" | "r2_data_catalog" | "basin_catalog";
-const SinksCreateResponseType = S.String;
-
 export type SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials =
   SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials;
 export type SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy =
@@ -742,8 +641,6 @@ export interface SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable 
 export type SinksCreateResponseConfig =
   | SinksCreateResponseConfigCloudflarePipelinesR2Table
   | SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable;
-const SinksCreateResponseConfig = /*@__PURE__*/ __L.at(__c2, 5);
-
 export type SinksCreateResponseFormatJsonType = "json";
 export type SinksCreateResponseFormatJsonCompression = "uncompressed" | "gzip";
 export type SinksCreateResponseFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -771,8 +668,6 @@ export interface SinksCreateResponseFormatParquet {
 export type SinksCreateResponseFormat =
   | SinksCreateResponseFormatJson
   | SinksCreateResponseFormatParquet;
-const SinksCreateResponseFormat = /*@__PURE__*/ __L.at(__c2, 6);
-
 export type SinksCreateResponseSchemaFieldsItemInt32Type = "int32";
 export interface SinksCreateResponseSchemaFieldsItemInt32 {
   type: SinksCreateResponseSchemaFieldsItemInt32Type;
@@ -879,23 +774,11 @@ export type SinksCreateResponseSchemaFieldsItem =
   | SinksCreateResponseSchemaFieldsItemJson
   | SinksCreateResponseSchemaFieldsItemStruct
   | SinksCreateResponseSchemaFieldsItemList;
-const SinksCreateResponseSchemaFieldsItem = /*@__PURE__*/ __L.at(__c2, 7);
-
 export type SinksCreateResponseSchemaFieldsList = Array<SinksCreateResponseSchemaFieldsItem>;
-const SinksCreateResponseSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<SinksCreateResponseSchemaFieldsList>;
-
 export interface SinksCreateResponseSchema {
   fields?: SinksCreateResponseSchemaFieldsList | null;
   inferred?: boolean | null;
 }
-const SinksCreateResponseSchema = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SinksCreateResponseSchema>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSinkResponse {
   /** Indicates a unique identifier for this sink. */
@@ -913,8 +796,6 @@ export interface CreateSinkResponse {
   /** Defines the schema of the events in the data stream. */
   schema?: SinksCreateResponseSchema | null;
 }
-const CreateSinkResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateSinkResponse>;
-
 export type StreamsCreateRequestFormatJsonType = "json";
 export type StreamsCreateRequestFormatJsonDecimalEncoding = "number" | "string" | "bytes";
 export type StreamsCreateRequestFormatJsonTimestampFormat = "rfc3339" | "unix_millis";
@@ -939,22 +820,10 @@ export interface StreamsCreateRequestFormatParquet {
 export type StreamsCreateRequestFormat =
   | StreamsCreateRequestFormatJson
   | StreamsCreateRequestFormatParquet;
-const StreamsCreateRequestFormat = /*@__PURE__*/ __L.at(__c3, 3);
-
 export type StreamsCreateRequestHttpCorsOriginsList = Array<string>;
-const StreamsCreateRequestHttpCorsOriginsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<StreamsCreateRequestHttpCorsOriginsList>;
-
 export interface StreamsCreateRequestHttpCors {
   origins?: StreamsCreateRequestHttpCorsOriginsList;
 }
-const StreamsCreateRequestHttpCors = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<StreamsCreateRequestHttpCors>;
-
 export interface StreamsCreateRequestHttp {
   /** Indicates that authentication is required for the HTTP endpoint. */
   authentication: boolean;
@@ -963,11 +832,6 @@ export interface StreamsCreateRequestHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsCreateRequestHttpCors;
 }
-const StreamsCreateRequestHttp = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<StreamsCreateRequestHttp>;
-
 export type StreamsCreateRequestSchemaFieldsItemInt32Type = "int32";
 export interface StreamsCreateRequestSchemaFieldsItemInt32 {
   type: StreamsCreateRequestSchemaFieldsItemInt32Type;
@@ -1074,32 +938,15 @@ export type StreamsCreateRequestSchemaFieldsItem =
   | StreamsCreateRequestSchemaFieldsItemJson
   | StreamsCreateRequestSchemaFieldsItemStruct
   | StreamsCreateRequestSchemaFieldsItemList;
-const StreamsCreateRequestSchemaFieldsItem = /*@__PURE__*/ __L.at(__c3, 7);
-
 export type StreamsCreateRequestSchemaFieldsList = Array<StreamsCreateRequestSchemaFieldsItem>;
-const StreamsCreateRequestSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<StreamsCreateRequestSchemaFieldsList>;
-
 export interface StreamsCreateRequestSchema {
   fields?: StreamsCreateRequestSchemaFieldsList;
   inferred?: boolean;
 }
-const StreamsCreateRequestSchema = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<StreamsCreateRequestSchema>;
-
 export interface StreamsCreateRequestWorkerBinding {
   /** Indicates that the worker binding is enabled. */
   enabled: boolean;
 }
-const StreamsCreateRequestWorkerBinding = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<StreamsCreateRequestWorkerBinding>;
-
 export interface CreateStreamRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -1112,20 +959,10 @@ export interface CreateStreamRequest {
   schema?: StreamsCreateRequestSchema;
   workerBinding?: StreamsCreateRequestWorkerBinding;
 }
-const CreateStreamRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateStreamRequest>;
-
 export type StreamsCreateResponseHttpCorsOriginsList = Array<string>;
-const StreamsCreateResponseHttpCorsOriginsList =
-  StreamsCreateRequestHttpCorsOriginsList as any as S.Schema<StreamsCreateResponseHttpCorsOriginsList>;
-
 export interface StreamsCreateResponseHttpCors {
   origins?: StreamsCreateResponseHttpCorsOriginsList | null;
 }
-const StreamsCreateResponseHttpCors = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<StreamsCreateResponseHttpCors>;
-
 export interface StreamsCreateResponseHttp {
   /** Indicates that authentication is required for the HTTP endpoint. */
   authentication: boolean;
@@ -1134,11 +971,6 @@ export interface StreamsCreateResponseHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsCreateResponseHttpCors | null;
 }
-const StreamsCreateResponseHttp = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<StreamsCreateResponseHttp>;
-
 export type StreamsCreateResponseWorkerBinding = StreamsCreateRequestWorkerBinding;
 export type StreamsCreateResponseFormatJsonType = "json";
 export type StreamsCreateResponseFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -1164,8 +996,6 @@ export interface StreamsCreateResponseFormatParquet {
 export type StreamsCreateResponseFormat =
   | StreamsCreateResponseFormatJson
   | StreamsCreateResponseFormatParquet;
-const StreamsCreateResponseFormat = /*@__PURE__*/ __L.at(__c4, 6);
-
 export type StreamsCreateResponseSchemaFieldsItemInt32Type = "int32";
 export interface StreamsCreateResponseSchemaFieldsItemInt32 {
   type: StreamsCreateResponseSchemaFieldsItemInt32Type;
@@ -1272,23 +1102,11 @@ export type StreamsCreateResponseSchemaFieldsItem =
   | StreamsCreateResponseSchemaFieldsItemJson
   | StreamsCreateResponseSchemaFieldsItemStruct
   | StreamsCreateResponseSchemaFieldsItemList;
-const StreamsCreateResponseSchemaFieldsItem = /*@__PURE__*/ __L.at(__c4, 7);
-
 export type StreamsCreateResponseSchemaFieldsList = Array<StreamsCreateResponseSchemaFieldsItem>;
-const StreamsCreateResponseSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<StreamsCreateResponseSchemaFieldsList>;
-
 export interface StreamsCreateResponseSchema {
   fields?: StreamsCreateResponseSchemaFieldsList | null;
   inferred?: boolean | null;
 }
-const StreamsCreateResponseSchema = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<StreamsCreateResponseSchema>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateStreamResponse {
   /** Indicates a unique identifier for this stream. */
@@ -1308,8 +1126,6 @@ export interface CreateStreamResponse {
   /** Defines the schema of the events in the data stream. */
   schema?: StreamsCreateResponseSchema | null;
 }
-const CreateStreamResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CreateStreamResponse>;
-
 export interface CreateV1PipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -1318,11 +1134,6 @@ export interface CreateV1PipelineRequest {
   /** Specifies SQL for the Pipeline processing flow. */
   sql: string;
 }
-const CreateV1PipelineRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateV1PipelineRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateV1PipelineResponse {
   /** Indicates a unique identifier for this pipeline. */
@@ -1336,88 +1147,49 @@ export interface CreateV1PipelineResponse {
   /** Indicates the current status of the Pipeline. */
   status: string;
 }
-const CreateV1PipelineResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateV1PipelineResponse>;
-
 export interface DeletePipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Defines the name of the pipeline. */
   pipelineName: string;
 }
-const DeletePipelineRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeletePipelineRequest>;
-
 export interface DeletePipelineResponse {}
-const DeletePipelineResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DeletePipelineResponse>;
-
 export interface DeleteSinkRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the publid ID of the sink. */
   sinkId: string;
 }
-const DeleteSinkRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DeleteSinkRequest>;
-
 export type DeleteSinkResponse = unknown;
-const DeleteSinkResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DeleteSinkResponse>;
-
 export interface DeleteStreamRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the public ID of the stream. */
   streamId: string;
 }
-const DeleteStreamRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeleteStreamRequest>;
-
 export type DeleteStreamResponse = unknown;
-const DeleteStreamResponse = DeleteSinkResponse as any as S.Schema<DeleteStreamResponse>;
-
 export interface DeleteV1PipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the public ID of the pipeline. */
   pipelineId: string;
 }
-const DeleteV1PipelineRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteV1PipelineRequest>;
-
 export type DeleteV1PipelineResponse = unknown;
-const DeleteV1PipelineResponse = DeleteSinkResponse as any as S.Schema<DeleteV1PipelineResponse>;
-
 export interface GetPipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Defines the name of the pipeline. */
   pipelineName: string;
 }
-const GetPipelineRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetPipelineRequest>;
-
 export type GetResponseDestinationBatch = CreateResponseDestinationBatch;
 export type GetResponseDestinationCompressionType = "none" | "gzip" | "deflate";
 export interface GetResponseDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type: GetResponseDestinationCompressionType;
 }
-const GetResponseDestinationCompression =
-  CreateResponseDestinationCompression as any as S.Schema<GetResponseDestinationCompression>;
-
 export type GetResponseDestinationFormat = "json";
-const GetResponseDestinationFormat = S.String;
-
 export type GetResponseDestinationPath = CreateResponseDestinationPath;
 export type GetResponseDestinationType = "r2";
-const GetResponseDestinationType = S.String;
-
 export interface GetResponseDestination {
   batch: CreateResponseDestinationBatch;
   compression: GetResponseDestinationCompression;
@@ -1427,11 +1199,6 @@ export interface GetResponseDestination {
   /** Specifies the type of destination. */
   type: GetResponseDestinationType;
 }
-const GetResponseDestination = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetResponseDestination>;
-
 export type GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat = "json";
 export type GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
@@ -1456,14 +1223,7 @@ export interface GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBinding
 export type GetResponseSourceItem =
   | GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
-const GetResponseSourceItem = /*@__PURE__*/ __L.at(__c6, 5);
-
 export type GetResponseSourceList = Array<GetResponseSourceItem>;
-const GetResponseSourceList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetResponseSourceList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPipelineResponse {
   /** Specifies the pipeline identifier. */
@@ -1477,19 +1237,13 @@ export interface GetPipelineResponse {
   /** Indicates the version number of last saved configuration. */
   version: number;
 }
-const GetPipelineResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetPipelineResponse>;
-
 export interface GetSinkRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the publid ID of the sink. */
   sinkId: string;
 }
-const GetSinkRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetSinkRequest>;
-
 export type SinksGetResponseType = "r2" | "r2_data_catalog" | "basin_catalog";
-const SinksGetResponseType = S.String;
-
 export type SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
   | "serial"
   | "uuid"
@@ -1540,8 +1294,6 @@ export interface SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePubl
 export type SinksGetResponseConfig =
   | SinksGetResponseConfigCloudflarePipelinesR2TablePublic
   | SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
-const SinksGetResponseConfig = /*@__PURE__*/ __L.at(__c7, 1);
-
 export type SinksGetResponseFormatJsonType = "json";
 export type SinksGetResponseFormatJsonCompression = "uncompressed" | "gzip";
 export type SinksGetResponseFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -1567,8 +1319,6 @@ export interface SinksGetResponseFormatParquet {
   rowGroupBytes?: number | null;
 }
 export type SinksGetResponseFormat = SinksGetResponseFormatJson | SinksGetResponseFormatParquet;
-const SinksGetResponseFormat = /*@__PURE__*/ __L.at(__c7, 2);
-
 export type SinksGetResponseSchemaFieldsItemInt32Type = "int32";
 export interface SinksGetResponseSchemaFieldsItemInt32 {
   type: SinksGetResponseSchemaFieldsItemInt32Type;
@@ -1675,23 +1425,11 @@ export type SinksGetResponseSchemaFieldsItem =
   | SinksGetResponseSchemaFieldsItemJson
   | SinksGetResponseSchemaFieldsItemStruct
   | SinksGetResponseSchemaFieldsItemList;
-const SinksGetResponseSchemaFieldsItem = /*@__PURE__*/ __L.at(__c7, 3);
-
 export type SinksGetResponseSchemaFieldsList = Array<SinksGetResponseSchemaFieldsItem>;
-const SinksGetResponseSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<SinksGetResponseSchemaFieldsList>;
-
 export interface SinksGetResponseSchema {
   fields?: SinksGetResponseSchemaFieldsList | null;
   inferred?: boolean | null;
 }
-const SinksGetResponseSchema = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<SinksGetResponseSchema>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSinkResponse {
   /** Indicates a unique identifier for this sink. */
@@ -1709,23 +1447,16 @@ export interface GetSinkResponse {
   /** Defines the schema of the events in the data stream. */
   schema?: SinksGetResponseSchema | null;
 }
-const GetSinkResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetSinkResponse>;
-
 export interface GetStreamRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the public ID of the stream. */
   streamId: string;
 }
-const GetStreamRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GetStreamRequest>;
-
 export type StreamsGetResponseHttpCorsOriginsList = Array<string>;
 export interface StreamsGetResponseHttpCors {
   origins?: StreamsGetResponseHttpCorsOriginsList | null;
 }
-const StreamsGetResponseHttpCors =
-  StreamsCreateResponseHttpCors as any as S.Schema<StreamsGetResponseHttpCors>;
-
 export interface StreamsGetResponseHttp {
   /** Indicates that authentication is required for the HTTP endpoint. */
   authentication: boolean;
@@ -1734,11 +1465,6 @@ export interface StreamsGetResponseHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsGetResponseHttpCors | null;
 }
-const StreamsGetResponseHttp = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<StreamsGetResponseHttp>;
-
 export type StreamsGetResponseWorkerBinding = StreamsCreateRequestWorkerBinding;
 export type StreamsGetResponseFormatJsonType = "json";
 export type StreamsGetResponseFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -1764,8 +1490,6 @@ export interface StreamsGetResponseFormatParquet {
 export type StreamsGetResponseFormat =
   | StreamsGetResponseFormatJson
   | StreamsGetResponseFormatParquet;
-const StreamsGetResponseFormat = /*@__PURE__*/ __L.at(__c8, 1);
-
 export type StreamsGetResponseSchemaFieldsItemInt32Type = "int32";
 export interface StreamsGetResponseSchemaFieldsItemInt32 {
   type: StreamsGetResponseSchemaFieldsItemInt32Type;
@@ -1872,23 +1596,11 @@ export type StreamsGetResponseSchemaFieldsItem =
   | StreamsGetResponseSchemaFieldsItemJson
   | StreamsGetResponseSchemaFieldsItemStruct
   | StreamsGetResponseSchemaFieldsItemList;
-const StreamsGetResponseSchemaFieldsItem = /*@__PURE__*/ __L.at(__c8, 2);
-
 export type StreamsGetResponseSchemaFieldsList = Array<StreamsGetResponseSchemaFieldsItem>;
-const StreamsGetResponseSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<StreamsGetResponseSchemaFieldsList>;
-
 export interface StreamsGetResponseSchema {
   fields?: StreamsGetResponseSchemaFieldsList | null;
   inferred?: boolean | null;
 }
-const StreamsGetResponseSchema = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<StreamsGetResponseSchema>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStreamResponse {
   /** Indicates a unique identifier for this stream. */
@@ -1908,19 +1620,13 @@ export interface GetStreamResponse {
   /** Defines the schema of the events in the data stream. */
   schema?: StreamsGetResponseSchema | null;
 }
-const GetStreamResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetStreamResponse>;
-
 export interface GetV1PipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the public ID of the pipeline. */
   pipelineId: string;
 }
-const GetV1PipelineRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetV1PipelineRequest>;
-
 export type GetV1ResponseTablesItemType = "stream" | "sink";
-const GetV1ResponseTablesItemType = S.String;
-
 export interface GetV1ResponseTablesItem {
   /** Unique identifier for the connection (stream or sink). */
   id: string;
@@ -1933,17 +1639,7 @@ export interface GetV1ResponseTablesItem {
   /** Current version of the connection used by this pipeline. */
   version: number;
 }
-const GetV1ResponseTablesItem = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetV1ResponseTablesItem>;
-
 export type GetV1ResponseTablesList = Array<GetV1ResponseTablesItem>;
-const GetV1ResponseTablesList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetV1ResponseTablesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetV1PipelineResponse {
   /** Indicates a unique identifier for this pipeline. */
@@ -1961,11 +1657,6 @@ export interface GetV1PipelineResponse {
   /** Indicates the reason for the failure of the Pipeline. */
   failureReason?: string | null;
 }
-const GetV1PipelineResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetV1PipelineResponse>;
-
 export interface ListPipelinesRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -1976,8 +1667,6 @@ export interface ListPipelinesRequest {
   /** Specifies the prefix of pipeline name to search. */
   search?: string;
 }
-const ListPipelinesRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ListPipelinesRequest>;
-
 export type ListResponseResultsItemDestinationBatch = CreateResponseDestinationBatch;
 export type ListResponseResultsItemDestinationCompressionType = "none" | "gzip" | "deflate";
 export interface ListResponseResultsItemDestinationCompression {
@@ -1996,9 +1685,6 @@ export interface ListResponseResultsItemDestination {
   /** Specifies the type of destination. */
   type: ListResponseResultsItemDestinationType;
 }
-const ListResponseResultsItemDestination =
-  CreateResponseDestination as any as S.Schema<ListResponseResultsItemDestination>;
-
 export type ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat =
   "json";
 export type ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
@@ -2025,14 +1711,7 @@ export interface ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipe
 export type ListResponseResultsItemSourceItem =
   | ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
-const ListResponseResultsItemSourceItem = /*@__PURE__*/ __L.at(__c9, 3);
-
 export type ListResponseResultsItemSourceList = Array<ListResponseResultsItemSourceItem>;
-const ListResponseResultsItemSourceList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListResponseResultsItemSourceList>;
-
 export interface ListResponseResultsItem {
   /** Specifies the pipeline identifier. */
   id: string;
@@ -2045,28 +1724,13 @@ export interface ListResponseResultsItem {
   /** Indicates the version number of last saved configuration. */
   version: number;
 }
-const ListResponseResultsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListResponseResultsItem>;
-
 export type ListResponseResultsList = Array<ListResponseResultsItem>;
-const ListResponseResultsList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListResponseResultsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListPipelinesResponse {
   results: ListResponseResultsList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListPipelinesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListPipelinesResponse>;
-
 export interface ListSinksRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -2076,11 +1740,7 @@ export interface ListSinksRequest {
   perPage?: number;
   pipelineId?: string;
 }
-const ListSinksRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ListSinksRequest>;
-
 export type SinksListResultItemType = "r2" | "r2_data_catalog" | "basin_catalog";
-const SinksListResultItemType = S.String;
-
 export type SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
   | "serial"
   | "uuid"
@@ -2121,8 +1781,6 @@ export type SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic
 export type SinksListResultItemConfig =
   | SinksListResultItemConfigCloudflarePipelinesR2TablePublic
   | SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
-const SinksListResultItemConfig = /*@__PURE__*/ __L.at(__c10, 1);
-
 export type SinksListResultItemFormatJsonType = "json";
 export type SinksListResultItemFormatJsonCompression = "uncompressed" | "gzip";
 export type SinksListResultItemFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -2150,8 +1808,6 @@ export interface SinksListResultItemFormatParquet {
 export type SinksListResultItemFormat =
   | SinksListResultItemFormatJson
   | SinksListResultItemFormatParquet;
-const SinksListResultItemFormat = /*@__PURE__*/ __L.at(__c10, 2);
-
 export type SinksListResultItemSchemaFieldsItemInt32Type = "int32";
 export interface SinksListResultItemSchemaFieldsItemInt32 {
   type: SinksListResultItemSchemaFieldsItemInt32Type;
@@ -2258,23 +1914,11 @@ export type SinksListResultItemSchemaFieldsItem =
   | SinksListResultItemSchemaFieldsItemJson
   | SinksListResultItemSchemaFieldsItemStruct
   | SinksListResultItemSchemaFieldsItemList;
-const SinksListResultItemSchemaFieldsItem = /*@__PURE__*/ __L.at(__c10, 3);
-
 export type SinksListResultItemSchemaFieldsList = Array<SinksListResultItemSchemaFieldsItem>;
-const SinksListResultItemSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<SinksListResultItemSchemaFieldsList>;
-
 export interface SinksListResultItemSchema {
   fields?: SinksListResultItemSchemaFieldsList | null;
   inferred?: boolean | null;
 }
-const SinksListResultItemSchema = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<SinksListResultItemSchema>;
-
 export interface SinksListResultItem {
   /** Indicates a unique identifier for this sink. */
   id: string;
@@ -2291,19 +1935,13 @@ export interface SinksListResultItem {
   /** Defines the schema of the events in the data stream. */
   schema?: SinksListResultItemSchema | null;
 }
-const SinksListResultItem = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<SinksListResultItem>;
-
 export type SinksListResultList = Array<SinksListResultItem>;
-const SinksListResultList = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<SinksListResultList>;
-
 export interface ListSinksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SinksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSinksResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ListSinksResponse>;
-
 export interface ListStreamsRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -2314,8 +1952,6 @@ export interface ListStreamsRequest {
   /** Specifies the public ID of the pipeline. */
   pipelineId?: string;
 }
-const ListStreamsRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ListStreamsRequest>;
-
 export type StreamsListResultItemHttpCorsOriginsList = Array<string>;
 export interface StreamsListResultItemHttpCors {
   origins?: StreamsListResultItemHttpCorsOriginsList | null;
@@ -2328,9 +1964,6 @@ export interface StreamsListResultItemHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsListResultItemHttpCors | null;
 }
-const StreamsListResultItemHttp =
-  StreamsCreateResponseHttp as any as S.Schema<StreamsListResultItemHttp>;
-
 export type StreamsListResultItemWorkerBinding = StreamsCreateRequestWorkerBinding;
 export type StreamsListResultItemFormatJsonType = "json";
 export type StreamsListResultItemFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -2356,8 +1989,6 @@ export interface StreamsListResultItemFormatParquet {
 export type StreamsListResultItemFormat =
   | StreamsListResultItemFormatJson
   | StreamsListResultItemFormatParquet;
-const StreamsListResultItemFormat = /*@__PURE__*/ __L.at(__c11, 2);
-
 export type StreamsListResultItemSchemaFieldsItemInt32Type = "int32";
 export interface StreamsListResultItemSchemaFieldsItemInt32 {
   type: StreamsListResultItemSchemaFieldsItemInt32Type;
@@ -2464,23 +2095,11 @@ export type StreamsListResultItemSchemaFieldsItem =
   | StreamsListResultItemSchemaFieldsItemJson
   | StreamsListResultItemSchemaFieldsItemStruct
   | StreamsListResultItemSchemaFieldsItemList;
-const StreamsListResultItemSchemaFieldsItem = /*@__PURE__*/ __L.at(__c11, 3);
-
 export type StreamsListResultItemSchemaFieldsList = Array<StreamsListResultItemSchemaFieldsItem>;
-const StreamsListResultItemSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<StreamsListResultItemSchemaFieldsList>;
-
 export interface StreamsListResultItemSchema {
   fields?: StreamsListResultItemSchemaFieldsList | null;
   inferred?: boolean | null;
 }
-const StreamsListResultItemSchema = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<StreamsListResultItemSchema>;
-
 export interface StreamsListResultItem {
   /** Indicates a unique identifier for this stream. */
   id: string;
@@ -2499,25 +2118,13 @@ export interface StreamsListResultItem {
   /** Defines the schema of the events in the data stream. */
   schema?: StreamsListResultItemSchema | null;
 }
-const StreamsListResultItem = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<StreamsListResultItem>;
-
 export type StreamsListResultList = Array<StreamsListResultItem>;
-const StreamsListResultList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<StreamsListResultList>;
-
 export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: StreamsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListStreamsResponse = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<ListStreamsResponse>;
-
 export interface ListV1PipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -2526,11 +2133,6 @@ export interface ListV1PipelineRequest {
   page?: number;
   perPage?: number;
 }
-const ListV1PipelineRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListV1PipelineRequest>;
-
 export interface ListV1ResultItem {
   /** Indicates a unique identifier for this pipeline. */
   id: string;
@@ -2543,22 +2145,13 @@ export interface ListV1ResultItem {
   /** Indicates the current status of the Pipeline. */
   status: string;
 }
-const ListV1ResultItem = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<ListV1ResultItem>;
-
 export type ListV1ResultList = Array<ListV1ResultItem>;
-const ListV1ResultList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ListV1ResultList>;
-
 export interface ListV1PipelineResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListV1ResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListV1PipelineResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListV1PipelineResponse>;
-
 export type StreamsUpdateRequestHttpCorsOriginsList = Array<string>;
 export interface StreamsUpdateRequestHttpCors {
   origins?: StreamsUpdateRequestHttpCorsOriginsList;
@@ -2571,9 +2164,6 @@ export interface StreamsUpdateRequestHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsUpdateRequestHttpCors;
 }
-const StreamsUpdateRequestHttp =
-  StreamsCreateRequestHttp as any as S.Schema<StreamsUpdateRequestHttp>;
-
 export type StreamsUpdateRequestWorkerBinding = StreamsCreateRequestWorkerBinding;
 export interface PatchStreamRequest {
   /** Specifies the public ID of the account. */
@@ -2583,8 +2173,6 @@ export interface PatchStreamRequest {
   http?: StreamsUpdateRequestHttp;
   workerBinding?: StreamsCreateRequestWorkerBinding;
 }
-const PatchStreamRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PatchStreamRequest>;
-
 export type StreamsUpdateResponseHttpCorsOriginsList = Array<string>;
 export interface StreamsUpdateResponseHttpCors {
   origins?: StreamsUpdateResponseHttpCorsOriginsList | null;
@@ -2597,9 +2185,6 @@ export interface StreamsUpdateResponseHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsUpdateResponseHttpCors | null;
 }
-const StreamsUpdateResponseHttp =
-  StreamsCreateResponseHttp as any as S.Schema<StreamsUpdateResponseHttp>;
-
 export type StreamsUpdateResponseWorkerBinding = StreamsCreateRequestWorkerBinding;
 export type StreamsUpdateResponseFormatJsonType = "json";
 export type StreamsUpdateResponseFormatJsonDecimalEncoding = "number" | "string" | "bytes";
@@ -2625,8 +2210,6 @@ export interface StreamsUpdateResponseFormatParquet {
 export type StreamsUpdateResponseFormat =
   | StreamsUpdateResponseFormatJson
   | StreamsUpdateResponseFormatParquet;
-const StreamsUpdateResponseFormat = /*@__PURE__*/ __L.at(__c12, 6);
-
 export type StreamsUpdateResponseSchemaFieldsItemInt32Type = "int32";
 export interface StreamsUpdateResponseSchemaFieldsItemInt32 {
   type: StreamsUpdateResponseSchemaFieldsItemInt32Type;
@@ -2733,23 +2316,11 @@ export type StreamsUpdateResponseSchemaFieldsItem =
   | StreamsUpdateResponseSchemaFieldsItemJson
   | StreamsUpdateResponseSchemaFieldsItemStruct
   | StreamsUpdateResponseSchemaFieldsItemList;
-const StreamsUpdateResponseSchemaFieldsItem = /*@__PURE__*/ __L.at(__c12, 7);
-
 export type StreamsUpdateResponseSchemaFieldsList = Array<StreamsUpdateResponseSchemaFieldsItem>;
-const StreamsUpdateResponseSchemaFieldsList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<StreamsUpdateResponseSchemaFieldsList>;
-
 export interface StreamsUpdateResponseSchema {
   fields?: StreamsUpdateResponseSchemaFieldsList | null;
   inferred?: boolean | null;
 }
-const StreamsUpdateResponseSchema = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<StreamsUpdateResponseSchema>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchStreamResponse {
   /** Indicates a unique identifier for this stream. */
@@ -2769,50 +2340,26 @@ export interface PatchStreamResponse {
   /** Defines the schema of the events in the data stream. */
   schema?: StreamsUpdateResponseSchema | null;
 }
-const PatchStreamResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<PatchStreamResponse>;
-
 export type SendStreamRecordsEventList = Array<unknown>;
-const SendStreamRecordsEventList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<SendStreamRecordsEventList>;
-
 export interface SendStreamRecordsRequest {
   /** The stream ID; selects the ingest host. */
   streamId: string;
   /** The events, sent as the bare JSON array body. At most 5 MB per request. */
   records: SendStreamRecordsEventList;
 }
-const SendStreamRecordsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<SendStreamRecordsRequest>;
-
 export interface SendStreamRecordsResponse {
   /** How many events the stream accepted. */
   committed?: number | null;
 }
-const SendStreamRecordsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<SendStreamRecordsResponse>;
-
 export type UpdateRequestDestinationBatch = CreateRequestDestinationBatch;
 export type UpdateRequestDestinationCompressionType = "none" | "gzip" | "deflate";
 export interface UpdateRequestDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type?: UpdateRequestDestinationCompressionType | (string & {});
 }
-const UpdateRequestDestinationCompression =
-  CreateRequestDestinationCompression as any as S.Schema<UpdateRequestDestinationCompression>;
-
 export type UpdateRequestDestinationFormat = "json";
-const UpdateRequestDestinationFormat = S.String;
-
 export type UpdateRequestDestinationPath = CreateRequestDestinationPath;
 export type UpdateRequestDestinationType = "r2";
-const UpdateRequestDestinationType = S.String;
-
 export type UpdateRequestDestinationCredentials = CreateRequestDestinationCredentials;
 export interface UpdateRequestDestination {
   batch: CreateRequestDestinationBatch;
@@ -2824,11 +2371,6 @@ export interface UpdateRequestDestination {
   type: UpdateRequestDestinationType | (string & {});
   credentials?: CreateRequestDestinationCredentials;
 }
-const UpdateRequestDestination = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<UpdateRequestDestination>;
-
 export type UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat = "json";
 export type UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
@@ -2853,14 +2395,7 @@ export interface UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindi
 export type UpdateRequestSourceItem =
   | UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
-const UpdateRequestSourceItem = /*@__PURE__*/ __L.at(__c13, 7);
-
 export type UpdateRequestSourceList = Array<UpdateRequestSourceItem>;
-const UpdateRequestSourceList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<UpdateRequestSourceList>;
-
 export interface UpdatePipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
@@ -2871,11 +2406,6 @@ export interface UpdatePipelineRequest {
   name: string;
   source: UpdateRequestSourceList;
 }
-const UpdatePipelineRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<UpdatePipelineRequest>;
-
 export type UpdateResponseDestinationBatch = CreateResponseDestinationBatch;
 export type UpdateResponseDestinationCompressionType = "none" | "gzip" | "deflate";
 export interface UpdateResponseDestinationCompression {
@@ -2894,9 +2424,6 @@ export interface UpdateResponseDestination {
   /** Specifies the type of destination. */
   type: UpdateResponseDestinationType;
 }
-const UpdateResponseDestination =
-  CreateResponseDestination as any as S.Schema<UpdateResponseDestination>;
-
 export type UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat = "json";
 export type UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
@@ -2921,14 +2448,7 @@ export interface UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBind
 export type UpdateResponseSourceItem =
   | UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
-const UpdateResponseSourceItem = /*@__PURE__*/ __L.at(__c14, 2);
-
 export type UpdateResponseSourceList = Array<UpdateResponseSourceItem>;
-const UpdateResponseSourceList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<UpdateResponseSourceList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdatePipelineResponse {
   /** Specifies the pipeline identifier. */
@@ -2942,41 +2462,21 @@ export interface UpdatePipelineResponse {
   /** Indicates the version number of last saved configuration. */
   version: number;
 }
-const UpdatePipelineResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<UpdatePipelineResponse>;
-
 export interface ValidateSqlPipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies SQL to validate. */
   sql: string;
 }
-const ValidateSqlPipelineRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ValidateSqlPipelineRequest>;
-
 export interface ValidateSqlResponseTablesValue {
   id: string;
   name: string;
   type: string;
   version: number;
 }
-const ValidateSqlResponseTablesValue = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ValidateSqlResponseTablesValue>;
-
 export type ValidateSqlResponseTablesMap = {
   [key: string]: ValidateSqlResponseTablesValue | undefined;
 };
-const ValidateSqlResponseTablesMap = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ValidateSqlResponseTablesMap>;
-
 export interface ValidateSqlResponseGraphEdgesItem {
   destId: number;
   edgeType: string;
@@ -2984,43 +2484,18 @@ export interface ValidateSqlResponseGraphEdgesItem {
   srcId: number;
   valueType: string;
 }
-const ValidateSqlResponseGraphEdgesItem = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ValidateSqlResponseGraphEdgesItem>;
-
 export type ValidateSqlResponseGraphEdgesList = Array<ValidateSqlResponseGraphEdgesItem>;
-const ValidateSqlResponseGraphEdgesList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ValidateSqlResponseGraphEdgesList>;
-
 export interface ValidateSqlResponseGraphNodesItem {
   description: string;
   nodeId: number;
   operator: string;
   parallelism: number;
 }
-const ValidateSqlResponseGraphNodesItem = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ValidateSqlResponseGraphNodesItem>;
-
 export type ValidateSqlResponseGraphNodesList = Array<ValidateSqlResponseGraphNodesItem>;
-const ValidateSqlResponseGraphNodesList = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ValidateSqlResponseGraphNodesList>;
-
 export interface ValidateSqlResponseGraph {
   edges: ValidateSqlResponseGraphEdgesList;
   nodes: ValidateSqlResponseGraphNodesList;
 }
-const ValidateSqlResponseGraph = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ValidateSqlResponseGraph>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ValidateSqlPipelineResponse {
   /** Indicates tables involved in the processing. */
@@ -3028,11 +2503,6 @@ export interface ValidateSqlPipelineResponse {
   /** Indicates the processing flow to implement the SQL. */
   graph?: ValidateSqlResponseGraph | null;
 }
-const ValidateSqlPipelineResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ValidateSqlPipelineResponse>;
-
 export type CreatePipelineError = CloudflareOpError;
 /** [DEPRECATED] Create a new pipeline. Use the new /pipelines/v1/pipelines endpoint instead. */
 export const createPipeline: API.OperationMethod<
@@ -3041,8 +2511,8 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePipelineRequest,
-  output: CreatePipelineResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreatePipelineRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreatePipelineResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3060,8 +2530,8 @@ export const createSink: API.OperationMethod<
   CreateSinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSinkRequest,
-  output: CreateSinkResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateSinkRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<CreateSinkResponse>,
   errors: [
     SinkAuthFailed,
     InvalidSinkConfig,
@@ -3081,8 +2551,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamRequest,
-  output: CreateStreamResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<CreateStreamRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<CreateStreamResponse>,
   errors: [InvalidStreamName, StreamAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3100,8 +2570,8 @@ export const createV1Pipeline: API.OperationMethod<
   CreateV1PipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateV1PipelineRequest,
-  output: CreateV1PipelineResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<CreateV1PipelineRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<CreateV1PipelineResponse>,
   errors: [
     TableNotFound,
     InvalidSql,
@@ -3121,8 +2591,8 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePipelineRequest,
-  output: DeletePipelineResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<DeletePipelineRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<DeletePipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3136,8 +2606,8 @@ export const deleteSink: API.OperationMethod<
   DeleteSinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSinkRequest,
-  output: DeleteSinkResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<DeleteSinkRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteSinkResponse>,
   errors: [SinkNotFound, InvalidSinkId, SinkInUse, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3156,8 +2626,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStreamRequest,
-  output: DeleteStreamResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<DeleteStreamRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteStreamResponse>,
   errors: [
     PipelineNotExists,
     StreamNotFound,
@@ -3178,8 +2648,8 @@ export const deleteV1Pipeline: API.OperationMethod<
   DeleteV1PipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteV1PipelineRequest,
-  output: DeleteV1PipelineResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<DeleteV1PipelineRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteV1PipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3193,8 +2663,8 @@ export const getPipeline: API.OperationMethod<
   GetPipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPipelineRequest,
-  output: GetPipelineResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<GetPipelineRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<GetPipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3208,8 +2678,8 @@ export const getSink: API.OperationMethod<
   GetSinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSinkRequest,
-  output: GetSinkResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<GetSinkRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GetSinkResponse>,
   errors: [SinkNotFound, InvalidSinkId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3223,8 +2693,8 @@ export const getStream: API.OperationMethod<
   GetStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamRequest,
-  output: GetStreamResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<GetStreamRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<GetStreamResponse>,
   errors: [StreamNotFound, InvalidStreamId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3238,8 +2708,8 @@ export const getV1Pipeline: API.OperationMethod<
   GetV1PipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV1PipelineRequest,
-  output: GetV1PipelineResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<GetV1PipelineRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<GetV1PipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3255,8 +2725,8 @@ export const listPipelines: API.PaginatedOperationMethod<
   ListResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPipelinesRequest,
-    output: ListPipelinesResponse,
+    input: __S(74, __c9, 2) as any as S.Schema<ListPipelinesRequest>,
+    output: __S(79, __c9, 7) as any as S.Schema<ListPipelinesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3275,8 +2745,8 @@ export const listSinks: API.PaginatedOperationMethod<
   SinksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSinksRequest,
-    output: ListSinksResponse,
+    input: __S(80, __c10, 0) as any as S.Schema<ListSinksRequest>,
+    output: __S(88, __c11, 0) as any as S.Schema<ListSinksResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3301,8 +2771,8 @@ export const listStreams: API.PaginatedOperationMethod<
   StreamsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListStreamsRequest,
-    output: ListStreamsResponse,
+    input: __S(89, __c11, 1) as any as S.Schema<ListStreamsRequest>,
+    output: __S(96, __c12, 0) as any as S.Schema<ListStreamsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3327,8 +2797,8 @@ export const listV1Pipeline: API.PaginatedOperationMethod<
   ListV1ResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListV1PipelineRequest,
-    output: ListV1PipelineResponse,
+    input: __S(97, __c12, 1) as any as S.Schema<ListV1PipelineRequest>,
+    output: __S(100, __c12, 4) as any as S.Schema<ListV1PipelineResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3351,8 +2821,8 @@ export const patchStream: API.OperationMethod<
   PatchStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStreamRequest,
-  output: PatchStreamResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<PatchStreamRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<PatchStreamResponse>,
   errors: [StreamNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3366,8 +2836,8 @@ export const sendStreamRecords: API.OperationMethod<
   SendStreamRecordsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendStreamRecordsRequest,
-  output: SendStreamRecordsResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<SendStreamRecordsRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<SendStreamRecordsResponse>,
   errors: [IngestStreamNotFound, InvalidIngestData, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3381,8 +2851,8 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePipelineRequest,
-  output: UpdatePipelineResponse,
+  input: __S(113, __c14, 1) as any as S.Schema<UpdatePipelineRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<UpdatePipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3396,8 +2866,8 @@ export const validateSqlPipeline: API.OperationMethod<
   ValidateSqlPipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateSqlPipelineRequest,
-  output: ValidateSqlPipelineResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<ValidateSqlPipelineRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<ValidateSqlPipelineResponse>,
   errors: [TableNotFound, InvalidSql, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3419,7 +2889,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CreateRequestDestinationCompressionType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateRequestDestinationCompression",
@@ -3448,12 +2918,12 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          batch: CreateRequestDestinationBatch,
-          compression: CreateRequestDestinationCompression,
-          credentials: CreateRequestDestinationCredentials,
-          format: CreateRequestDestinationFormat,
-          path: CreateRequestDestinationPath,
-          type: CreateRequestDestinationType,
+          batch: __S(0, __c0, 0),
+          compression: __S(1, __c0, 1),
+          credentials: __S(2, __c0, 2),
+          format: S.String,
+          path: __S(3, __c0, 3),
+          type: S.String,
         }),
       ).annotate({ identifier: "CreateRequestDestination" });
     case 5:
@@ -3464,14 +2934,14 @@ function __c0(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(CreateRequestSourceItem);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          destination: CreateRequestDestination,
+          destination: __S(4, __c0, 4),
           name: S.String,
-          source: CreateRequestSourceList,
+          source: __S(6, __c0, 6),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/pipelines", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3493,7 +2963,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: CreateResponseDestinationCompressionType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "CreateResponseDestinationCompression",
@@ -3512,11 +2982,11 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          batch: CreateResponseDestinationBatch,
-          compression: CreateResponseDestinationCompression,
-          format: CreateResponseDestinationFormat,
-          path: CreateResponseDestinationPath,
-          type: CreateResponseDestinationType,
+          batch: __S(8, __c1, 0),
+          compression: __S(9, __c1, 1),
+          format: S.String,
+          path: __S(10, __c1, 2),
+          type: S.String,
         }),
       ).annotate({
         identifier: "CreateResponseDestination",
@@ -3529,15 +2999,15 @@ function __c1(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(CreateResponseSourceItem);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          destination: CreateResponseDestination,
+          destination: __S(11, __c1, 3),
           endpoint: S.String,
           name: S.String,
-          source: CreateResponseSourceList,
+          source: __S(13, __c1, 5),
           version: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePipelineResponse" });
@@ -3606,11 +3076,11 @@ function __c2(j: number): any {
         ),
       );
     case 2:
-      return S.Array(SinksCreateRequestSchemaFieldsItem);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(SinksCreateRequestSchemaFieldsList),
+          fields: S.optional(__S(18, __c2, 2)),
           inferred: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SinksCreateRequestSchema" });
@@ -3619,10 +3089,10 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          type: SinksCreateRequestType,
-          config: S.optional(SinksCreateRequestConfig),
-          format: S.optional(SinksCreateRequestFormat),
-          schema: S.optional(SinksCreateRequestSchema),
+          type: S.String,
+          config: S.optional(__S(15, __c1, 7)),
+          format: S.optional(__S(16, __c2, 0)),
+          schema: S.optional(__S(19, __c2, 3)),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/pipelines/v1/sinks", code: 200 }),
@@ -3694,11 +3164,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SinksCreateResponseSchemaFieldsItem);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(SinksCreateResponseSchemaFieldsList)),
+          fields: S.optional(S.NullOr(__S(24, __c3, 0))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -3711,10 +3181,10 @@ function __c3(j: number): any {
           createdAt: S.String.pipe(T.Body("created_at")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          type: SinksCreateResponseType,
-          config: S.optional(S.NullOr(SinksCreateResponseConfig)),
-          format: S.optional(S.NullOr(SinksCreateResponseFormat)),
-          schema: S.optional(S.NullOr(SinksCreateResponseSchema)),
+          type: S.String,
+          config: S.optional(S.NullOr(__S(21, __c2, 5))),
+          format: S.optional(S.NullOr(__S(22, __c2, 6))),
+          schema: S.optional(S.NullOr(__S(25, __c3, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateSinkResponse" });
     case 3:
@@ -3732,7 +3202,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          origins: S.optional(StreamsCreateRequestHttpCorsOriginsList),
+          origins: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "StreamsCreateRequestHttpCors",
@@ -3742,7 +3212,7 @@ function __c3(j: number): any {
         S.Struct({
           authentication: S.Boolean,
           enabled: S.Boolean,
-          cors: S.optional(StreamsCreateRequestHttpCors),
+          cors: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "StreamsCreateRequestHttp" });
     case 7:
@@ -3784,11 +3254,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StreamsCreateRequestSchemaFieldsItem);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(StreamsCreateRequestSchemaFieldsList),
+          fields: S.optional(__S(32, __c4, 0)),
           inferred: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3807,12 +3277,10 @@ function __c4(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          format: S.optional(StreamsCreateRequestFormat),
-          http: S.optional(StreamsCreateRequestHttp),
-          schema: S.optional(StreamsCreateRequestSchema),
-          workerBinding: S.optional(
-            StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
-          ),
+          format: S.optional(__S(27, __c3, 3)),
+          http: S.optional(__S(30, __c3, 6)),
+          schema: S.optional(__S(33, __c4, 1)),
+          workerBinding: S.optional(__S(34, __c4, 2).pipe(T.Body("worker_binding"))),
         })
           .pipe(
             T.Http({
@@ -3826,7 +3294,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          origins: S.optional(S.NullOr(StreamsCreateResponseHttpCorsOriginsList)),
+          origins: S.optional(S.NullOr(__S(28, __c3, 4))),
         }),
       ).annotate({
         identifier: "StreamsCreateResponseHttpCors",
@@ -3836,7 +3304,7 @@ function __c4(j: number): any {
         S.Struct({
           authentication: S.Boolean,
           enabled: S.Boolean,
-          cors: S.optional(S.NullOr(StreamsCreateResponseHttpCors)),
+          cors: S.optional(S.NullOr(__S(36, __c4, 4))),
         }),
       ).annotate({
         identifier: "StreamsCreateResponseHttp",
@@ -3890,11 +3358,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StreamsCreateResponseSchemaFieldsItem);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(StreamsCreateResponseSchemaFieldsList)),
+          fields: S.optional(S.NullOr(__S(40, __c5, 0))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -3905,14 +3373,14 @@ function __c5(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: StreamsCreateResponseHttp,
+          http: __S(37, __c4, 5),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
+          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(StreamsCreateResponseFormat)),
-          schema: S.optional(S.NullOr(StreamsCreateResponseSchema)),
+          format: S.optional(S.NullOr(__S(38, __c4, 6))),
+          schema: S.optional(S.NullOr(__S(41, __c5, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateStreamResponse" });
     case 3:
@@ -4032,11 +3500,11 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          batch: CreateResponseDestinationBatch,
-          compression: GetResponseDestinationCompression,
-          format: GetResponseDestinationFormat,
-          path: CreateResponseDestinationPath,
-          type: GetResponseDestinationType,
+          batch: __S(8, __c1, 0),
+          compression: __S(9, __c1, 1),
+          format: S.String,
+          path: __S(10, __c1, 2),
+          type: S.String,
         }),
       ).annotate({ identifier: "GetResponseDestination" });
     case 5:
@@ -4047,15 +3515,15 @@ function __c6(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(GetResponseSourceItem);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          destination: GetResponseDestination,
+          destination: __S(52, __c6, 4),
           endpoint: S.String,
           name: S.String,
-          source: GetResponseSourceList,
+          source: __S(54, __c6, 6),
           version: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPipelineResponse" });
@@ -4138,11 +3606,11 @@ function __c7(j: number): any {
         ),
       );
     case 4:
-      return S.Array(SinksGetResponseSchemaFieldsItem);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(SinksGetResponseSchemaFieldsList)),
+          fields: S.optional(S.NullOr(__S(60, __c7, 4))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "SinksGetResponseSchema" });
@@ -4153,10 +3621,10 @@ function __c7(j: number): any {
           createdAt: S.String.pipe(T.Body("created_at")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          type: SinksGetResponseType,
-          config: S.optional(S.NullOr(SinksGetResponseConfig)),
-          format: S.optional(S.NullOr(SinksGetResponseFormat)),
-          schema: S.optional(S.NullOr(SinksGetResponseSchema)),
+          type: S.String,
+          config: S.optional(S.NullOr(__S(57, __c7, 1))),
+          format: S.optional(S.NullOr(__S(58, __c7, 2))),
+          schema: S.optional(S.NullOr(__S(61, __c7, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSinkResponse" });
     case 7:
@@ -4183,7 +3651,7 @@ function __c8(j: number): any {
         S.Struct({
           authentication: S.Boolean,
           enabled: S.Boolean,
-          cors: S.optional(S.NullOr(StreamsGetResponseHttpCors)),
+          cors: S.optional(S.NullOr(__S(36, __c4, 4))),
         }),
       ).annotate({ identifier: "StreamsGetResponseHttp" });
     case 1:
@@ -4231,11 +3699,11 @@ function __c8(j: number): any {
         ),
       );
     case 3:
-      return S.Array(StreamsGetResponseSchemaFieldsItem);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(StreamsGetResponseSchemaFieldsList)),
+          fields: S.optional(S.NullOr(__S(67, __c8, 3))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "StreamsGetResponseSchema" });
@@ -4244,14 +3712,14 @@ function __c8(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: StreamsGetResponseHttp,
+          http: __S(64, __c8, 0),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
+          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(StreamsGetResponseFormat)),
-          schema: S.optional(S.NullOr(StreamsGetResponseSchema)),
+          format: S.optional(S.NullOr(__S(65, __c8, 1))),
+          schema: S.optional(S.NullOr(__S(68, __c8, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStreamResponse" });
     case 6:
@@ -4275,7 +3743,7 @@ function __c8(j: number): any {
           id: S.String,
           latest: S.Number,
           name: S.String,
-          type: GetV1ResponseTablesItemType,
+          type: S.String,
           version: S.Number,
         }),
       ).annotate({ identifier: "GetV1ResponseTablesItem" });
@@ -4284,7 +3752,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetV1ResponseTablesItem);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4294,7 +3762,7 @@ function __c9(j: number): any {
           name: S.String,
           sql: S.String,
           status: S.String,
-          tables: GetV1ResponseTablesList,
+          tables: __S(72, __c9, 0),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1PipelineResponse" });
@@ -4317,24 +3785,24 @@ function __c9(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(ListResponseResultsItemSourceItem);
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          destination: ListResponseResultsItemDestination,
+          destination: __S(11, __c1, 3),
           endpoint: S.String,
           name: S.String,
-          source: ListResponseResultsItemSourceList,
+          source: __S(76, __c9, 4),
           version: S.Number,
         }),
       ).annotate({ identifier: "ListResponseResultsItem" });
     case 6:
-      return S.Array(ListResponseResultsItem);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: ListResponseResultsList,
+          results: __S(78, __c9, 6),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPipelinesResponse" });
@@ -4416,11 +3884,11 @@ function __c10(j: number): any {
         ),
       );
     case 4:
-      return S.Array(SinksListResultItemSchemaFieldsItem);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(SinksListResultItemSchemaFieldsList)),
+          fields: S.optional(S.NullOr(__S(84, __c10, 4))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -4433,14 +3901,14 @@ function __c10(j: number): any {
           createdAt: S.String.pipe(T.Body("created_at")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          type: SinksListResultItemType,
-          config: S.optional(S.NullOr(SinksListResultItemConfig)),
-          format: S.optional(S.NullOr(SinksListResultItemFormat)),
-          schema: S.optional(S.NullOr(SinksListResultItemSchema)),
+          type: S.String,
+          config: S.optional(S.NullOr(__S(81, __c10, 1))),
+          format: S.optional(S.NullOr(__S(82, __c10, 2))),
+          schema: S.optional(S.NullOr(__S(85, __c10, 5))),
         }),
       ).annotate({ identifier: "SinksListResultItem" });
     case 7:
-      return S.Array(SinksListResultItem);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -4448,7 +3916,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: SinksListResultList.pipe(T.EnvelopePayload()),
+          result: __S(87, __c10, 7).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSinksResponse" });
@@ -4515,11 +3983,11 @@ function __c11(j: number): any {
         ),
       );
     case 4:
-      return S.Array(StreamsListResultItemSchemaFieldsItem);
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(StreamsListResultItemSchemaFieldsList)),
+          fields: S.optional(S.NullOr(__S(92, __c11, 4))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -4530,18 +3998,18 @@ function __c11(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: StreamsListResultItemHttp,
+          http: __S(37, __c4, 5),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
+          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(StreamsListResultItemFormat)),
-          schema: S.optional(S.NullOr(StreamsListResultItemSchema)),
+          format: S.optional(S.NullOr(__S(90, __c11, 2))),
+          schema: S.optional(S.NullOr(__S(93, __c11, 5))),
         }),
       ).annotate({ identifier: "StreamsListResultItem" });
     case 7:
-      return S.Array(StreamsListResultItem);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -4549,7 +4017,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: StreamsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(95, __c11, 7).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStreamsResponse" });
@@ -4582,11 +4050,11 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ListV1ResultItem" });
     case 3:
-      return S.Array(ListV1ResultItem);
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: ListV1ResultList.pipe(T.EnvelopePayload()),
+          result: __S(99, __c12, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListV1PipelineResponse" });
@@ -4595,10 +4063,8 @@ function __c12(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           streamId: S.String.pipe(T.Label("stream_id")),
-          http: S.optional(StreamsUpdateRequestHttp),
-          workerBinding: S.optional(
-            StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
-          ),
+          http: S.optional(__S(30, __c3, 6)),
+          workerBinding: S.optional(__S(34, __c4, 2).pipe(T.Body("worker_binding"))),
         })
           .pipe(
             T.Http({
@@ -4658,11 +4124,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StreamsUpdateResponseSchemaFieldsItem);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(StreamsUpdateResponseSchemaFieldsList)),
+          fields: S.optional(S.NullOr(__S(104, __c13, 0))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -4673,14 +4139,14 @@ function __c13(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: StreamsUpdateResponseHttp,
+          http: __S(37, __c4, 5),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
+          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(StreamsUpdateResponseFormat)),
-          schema: S.optional(S.NullOr(StreamsUpdateResponseSchema)),
+          format: S.optional(S.NullOr(__S(102, __c12, 6))),
+          schema: S.optional(S.NullOr(__S(105, __c13, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchStreamResponse" });
     case 3:
@@ -4689,7 +4155,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
-          records: SendStreamRecordsEventList.pipe(T.HttpBody()),
+          records: __S(107, __c13, 3).pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "POST", uri: "/", code: 200 }))
           .pipe(T.Host("https://{stream_id}.ingest.cloudflare.com")),
@@ -4705,12 +4171,12 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          batch: CreateRequestDestinationBatch,
-          compression: UpdateRequestDestinationCompression,
-          format: UpdateRequestDestinationFormat,
-          path: CreateRequestDestinationPath,
-          type: UpdateRequestDestinationType,
-          credentials: S.optional(CreateRequestDestinationCredentials),
+          batch: __S(0, __c0, 0),
+          compression: __S(1, __c0, 1),
+          format: S.String,
+          path: __S(3, __c0, 3),
+          type: S.String,
+          credentials: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "UpdateRequestDestination" });
     case 7:
@@ -4725,15 +4191,15 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateRequestSourceItem);
+      return S.Array(__S(111, __c13, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           pipelineName: S.String.pipe(T.Label("pipeline_name")),
-          destination: UpdateRequestDestination,
+          destination: __S(110, __c13, 6),
           name: S.String,
-          source: UpdateRequestSourceList,
+          source: __S(112, __c14, 0),
         })
           .pipe(
             T.Http({
@@ -4752,15 +4218,15 @@ function __c14(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(UpdateResponseSourceItem);
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          destination: UpdateResponseDestination,
+          destination: __S(11, __c1, 3),
           endpoint: S.String,
           name: S.String,
-          source: UpdateResponseSourceList,
+          source: __S(115, __c14, 3),
           version: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePipelineResponse" });
@@ -4793,7 +4259,7 @@ function __c14(j: number): any {
         identifier: "ValidateSqlResponseTablesValue",
       });
     case 7:
-      return S.Record(S.String, ValidateSqlResponseTablesValue);
+      return S.Record(S.String, __S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -4811,7 +4277,7 @@ function __c15(j: number): any {
         identifier: "ValidateSqlResponseGraphEdgesItem",
       });
     case 1:
-      return S.Array(ValidateSqlResponseGraphEdgesItem);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4824,22 +4290,27 @@ function __c15(j: number): any {
         identifier: "ValidateSqlResponseGraphNodesItem",
       });
     case 3:
-      return S.Array(ValidateSqlResponseGraphNodesItem);
+      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          edges: ValidateSqlResponseGraphEdgesList,
-          nodes: ValidateSqlResponseGraphNodesList,
+          edges: __S(121, __c15, 1),
+          nodes: __S(123, __c15, 3),
         }),
       ).annotate({ identifier: "ValidateSqlResponseGraph" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tables: ValidateSqlResponseTablesMap,
-          graph: S.optional(S.NullOr(ValidateSqlResponseGraph)),
+          tables: __S(119, __c14, 7),
+          graph: S.optional(S.NullOr(__S(124, __c15, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ValidateSqlPipelineResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

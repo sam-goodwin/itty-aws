@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,8 +66,6 @@ export class NotFound
 
 /** A strategy that consolidates activities using the grouping rules from the legacy V1 Activity API. Similar actions occurring within a window of time can be grouped across multiple targets (such as moving a set of files at once) or multiple actors (such as several users editing the same item). Grouping rules for this strategy are specific to each type of action. */
 export interface Legacy {}
-const Legacy = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Legacy>;
-
 /** A strategy that does no consolidation of individual activities. */
 export type NoConsolidation = Legacy;
 /** How the individual activities are consolidated. If a set of activities is related they can be consolidated into one combined activity, such as one actor performing the same action on multiple targets, or multiple actors performing the same action on a single target. The strategy defines the rules for which activities are related. */
@@ -75,11 +75,6 @@ export interface ConsolidationStrategy {
   /** The individual activities are not consolidated. */
   none?: Legacy;
 }
-const ConsolidationStrategy = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConsolidationStrategy>;
-
 /** The request message for querying Drive activity. */
 export interface QueryDriveActivityRequest {
   /** The filtering for items returned from this query request. The format of the filter string is a sequence of expressions, joined by an optional "AND", where each expression is of the form "field operator value". Supported fields: - `time`: Uses numerical operators on date values either in terms of milliseconds since Jan 1, 1970 or in RFC 3339 format. Examples: - `time > 1452409200000 AND time <= 1492812924310` - `time >= "2016-01-10T01:02:03-05:00"` - `detail.action_detail_case`: Uses the "has" operator (:) and either a singular value or a list of allowed action types enclosed in parentheses, separated by a space. To exclude a result from the response, prepend a hyphen (`-`) to the beginning of the filter string. Examples: - `detail.action_detail_case:RENAME` - `detail.action_detail_case:(CREATE RESTORE)` - `-detail.action_detail_case:MOVE` */
@@ -95,29 +90,18 @@ export interface QueryDriveActivityRequest {
   /** Details on how to consolidate related actions that make up the activity. If not set, then related actions aren't consolidated. */
   consolidationStrategy?: ConsolidationStrategy;
 }
-const QueryDriveActivityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<QueryDriveActivityRequest>;
-
 export interface QueryActivityRequest {
   /** Request body */
   body?: QueryDriveActivityRequest;
 }
-const QueryActivityRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<QueryActivityRequest>;
-
 /** Empty message representing an administrator. */
 export type Administrator = Legacy;
 export type SystemEventTypeEnum = "TYPE_UNSPECIFIED" | "USER_DELETION" | "TRASH_AUTO_PURGE";
-const SystemEventTypeEnum = S.String;
-
 /** Event triggered by system operations instead of end users. */
 export interface SystemEvent {
   /** The type of the system event that may triggered activity. */
   type?: SystemEventTypeEnum;
 }
-const SystemEvent = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemEvent>;
-
 /** A user whose account has since been deleted. */
 export type DeletedUser = Legacy;
 /** A user about whom nothing is currently known. */
@@ -129,8 +113,6 @@ export interface KnownUser {
   /** True if this is the user making the request. */
   isCurrentUser?: boolean;
 }
-const KnownUser = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<KnownUser>;
-
 /** Information about an end user. */
 export interface User {
   /** A user whose account has since been deleted. */
@@ -140,15 +122,11 @@ export interface User {
   /** A known user. */
   knownUser?: KnownUser;
 }
-const User = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<User>;
-
 /** Information about an impersonation, where an admin acts on behalf of an end user. Information about the acting admin is not currently available. */
 export interface Impersonation {
   /** The impersonated user. */
   impersonatedUser?: User;
 }
-const Impersonation = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Impersonation>;
-
 /** Empty message representing an anonymous user or indicating the authenticated user should be anonymized. */
 export type AnonymousUser = Legacy;
 /** The actor of a Drive activity. */
@@ -164,8 +142,6 @@ export interface Actor {
   /** An anonymous user. */
   anonymous?: Legacy;
 }
-const Actor = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Actor>;
-
 /** An empty message indicating an object was edited. */
 export type Edit = Legacy;
 /** An object was renamed. */
@@ -175,8 +151,6 @@ export interface Rename {
   /** The new title of the drive object. */
   newTitle?: string;
 }
-const Rename = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Rename>;
-
 export type RestrictionChangeFeatureEnum =
   | "FEATURE_UNSPECIFIED"
   | "SHARING_OUTSIDE_DOMAIN"
@@ -186,14 +160,10 @@ export type RestrictionChangeFeatureEnum =
   | "FILE_ORGANIZER_CAN_SHARE_FOLDERS"
   | "READERS_CAN_DOWNLOAD"
   | "WRITERS_CAN_DOWNLOAD";
-const RestrictionChangeFeatureEnum = S.String;
-
 export type RestrictionChangeNewRestrictionEnum =
   | "RESTRICTION_UNSPECIFIED"
   | "UNRESTRICTED"
   | "FULLY_RESTRICTED";
-const RestrictionChangeNewRestrictionEnum = S.String;
-
 /** Information about restriction policy changes to a feature. */
 export interface RestrictionChange {
   /** The feature which had a change in restriction policy. */
@@ -201,21 +171,12 @@ export interface RestrictionChange {
   /** The restriction in place after the change. */
   newRestriction?: RestrictionChangeNewRestrictionEnum;
 }
-const RestrictionChange = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<RestrictionChange>;
-
 export type RestrictionChangeList = Array<RestrictionChange>;
-const RestrictionChangeList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RestrictionChangeList>;
-
 /** Information about settings changes. */
 export interface SettingsChange {
   /** The set of changes made to restrictions. */
   restrictionChanges?: RestrictionChangeList;
 }
-const SettingsChange = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SettingsChange>;
-
 export type AssignmentSubtypeEnum =
   | "SUBTYPE_UNSPECIFIED"
   | "ADDED"
@@ -225,8 +186,6 @@ export type AssignmentSubtypeEnum =
   | "RESOLVED"
   | "REOPENED"
   | "REASSIGNED";
-const AssignmentSubtypeEnum = S.String;
-
 /** A comment with an assignment. */
 export interface Assignment {
   /** The sub-type of this event. */
@@ -234,8 +193,6 @@ export interface Assignment {
   /** The user to whom the comment was assigned. */
   assignedUser?: User;
 }
-const Assignment = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Assignment>;
-
 export type PostSubtypeEnum =
   | "SUBTYPE_UNSPECIFIED"
   | "ADDED"
@@ -244,18 +201,12 @@ export type PostSubtypeEnum =
   | "REPLY_DELETED"
   | "RESOLVED"
   | "REOPENED";
-const PostSubtypeEnum = S.String;
-
 /** A regular posted comment. */
 export interface Post {
   /** The sub-type of this event. */
   subtype?: PostSubtypeEnum;
 }
-const Post = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Post>;
-
 export type UserList_ = Array<User>;
-const UserList_ = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UserList_>;
-
 export type SuggestionSubtypeEnum =
   | "SUBTYPE_UNSPECIFIED"
   | "ADDED"
@@ -271,8 +222,6 @@ export interface Suggestion {
   /** The sub-type of this event. */
   subtype?: SuggestionSubtypeEnum;
 }
-const Suggestion = Post as any as S.Schema<Suggestion>;
-
 /** A change about comments on an object. */
 export interface Comment {
   /** A change on an assignment. */
@@ -284,16 +233,12 @@ export interface Comment {
   /** A change on a suggestion. */
   suggestion?: Suggestion;
 }
-const Comment = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Comment>;
-
 export type RestoreTypeEnum = "TYPE_UNSPECIFIED" | "UNTRASH";
 /** A deleted object was restored. */
 export interface Restore {
   /** The type of restore action taken. */
   type?: RestoreTypeEnum;
 }
-const Restore = SystemEvent as any as S.Schema<Restore>;
-
 /** Information about a domain. */
 export interface Domain {
   /** The name of the domain, e.g. `google.com`. */
@@ -301,8 +246,6 @@ export interface Domain {
   /** An opaque string used to identify this domain. */
   legacyId?: string;
 }
-const Domain = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Domain>;
-
 export type PermissionRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "OWNER"
@@ -312,8 +255,6 @@ export type PermissionRoleEnum =
   | "COMMENTER"
   | "VIEWER"
   | "PUBLISHED_VIEWER";
-const PermissionRoleEnum = S.String;
-
 /** Represents any user (including a logged out user). */
 export type Anyone = Legacy;
 /** Information about a group. */
@@ -323,8 +264,6 @@ export interface Group {
   /** The title of the group. */
   title?: string;
 }
-const Group = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Group>;
-
 /** The permission setting of an object. */
 export interface Permission {
   /** The domain to whom this permission applies. */
@@ -340,11 +279,7 @@ export interface Permission {
   /** The group to whom this permission applies. */
   group?: Group;
 }
-const Permission = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Permission>;
-
 export type PermissionList = Array<Permission>;
-const PermissionList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PermissionList>;
-
 /** A change of the permission setting on an item. */
 export interface PermissionChange {
   /** The set of permissions removed by this change. */
@@ -352,8 +287,6 @@ export interface PermissionChange {
   /** The set of permissions added by this change. */
   addedPermissions?: PermissionList;
 }
-const PermissionChange = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PermissionChange>;
-
 /** An object was created from scratch. */
 export type New = Legacy;
 /** An object was uploaded into Drive. */
@@ -365,8 +298,6 @@ export interface TeamDriveReference {
   /** This field is deprecated; please see `DriveReference.name` instead. */
   name?: string;
 }
-const TeamDriveReference = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TeamDriveReference>;
-
 /** A Drive item which is a file. */
 export type DriveFile = Legacy;
 export type DriveFolderTypeEnum =
@@ -379,8 +310,6 @@ export interface DriveFolder {
   /** The type of Drive folder. */
   type?: DriveFolderTypeEnum;
 }
-const DriveFolder = SystemEvent as any as S.Schema<DriveFolder>;
-
 export type FolderTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MY_DRIVE_ROOT"
@@ -391,8 +320,6 @@ export interface Folder {
   /** This field is deprecated; please see `DriveFolder.type` instead. */
   type?: FolderTypeEnum;
 }
-const Folder = SystemEvent as any as S.Schema<Folder>;
-
 /** This item is deprecated; please see `DriveFile` instead. */
 export type File = Legacy;
 /** A lightweight reference to a Drive item, such as a file or folder. */
@@ -410,8 +337,6 @@ export interface DriveItemReference {
   /** This field is deprecated; please use the `driveFile` field instead. */
   file?: Legacy;
 }
-const DriveItemReference = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DriveItemReference>;
-
 /** A lightweight reference to a shared drive. */
 export interface DriveReference {
   /** The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a specific collection ID for this resource name. */
@@ -419,8 +344,6 @@ export interface DriveReference {
   /** The title of the shared drive. */
   title?: string;
 }
-const DriveReference = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DriveReference>;
-
 /** A lightweight reference to the target of activity. */
 export interface TargetReference {
   /** This field is deprecated; please use the `drive` field instead. */
@@ -430,15 +353,11 @@ export interface TargetReference {
   /** The target is a shared drive. */
   drive?: DriveReference;
 }
-const TargetReference = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TargetReference>;
-
 /** An object was created by copying an existing object. */
 export interface Copy {
   /** The original object. */
   originalObject?: TargetReference;
 }
-const Copy = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Copy>;
-
 /** An object was created. */
 export interface Create {
   /** If present, indicates the object was newly created (e.g. as a blank document), not derived from a Drive object or external object. */
@@ -448,35 +367,25 @@ export interface Create {
   /** If present, indicates the object was created by copying an existing Drive object. */
   copy?: Copy;
 }
-const Create = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Create>;
-
 export type DeleteTypeEnum = "TYPE_UNSPECIFIED" | "TRASH" | "PERMANENT_DELETE";
 /** An object was deleted. */
 export interface Delete {
   /** The type of delete action taken. */
   type?: DeleteTypeEnum;
 }
-const Delete = SystemEvent as any as S.Schema<Delete>;
-
 export type ApplicationReferenceTypeEnum = "UNSPECIFIED_REFERENCE_TYPE" | "LINK" | "DISCUSS";
 /** Activity in applications other than Drive. */
 export interface ApplicationReference {
   /** The reference type corresponding to this event. */
   type?: ApplicationReferenceTypeEnum;
 }
-const ApplicationReference = SystemEvent as any as S.Schema<ApplicationReference>;
-
 export type DataLeakPreventionChangeTypeEnum = "TYPE_UNSPECIFIED" | "FLAGGED" | "CLEARED";
 /** A change in the object's data leak prevention status. */
 export interface DataLeakPreventionChange {
   /** The type of Data Leak Prevention (DLP) change. */
   type?: DataLeakPreventionChangeTypeEnum;
 }
-const DataLeakPreventionChange = SystemEvent as any as S.Schema<DataLeakPreventionChange>;
-
 export type TargetReferenceList = Array<TargetReference>;
-const TargetReferenceList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TargetReferenceList>;
-
 /** An object was moved. */
 export interface Move {
   /** The removed parent object(s). */
@@ -484,30 +393,19 @@ export interface Move {
   /** The added parent object(s). */
   addedParents?: TargetReferenceList;
 }
-const Move = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Move>;
-
 export type AppliedLabelChangeDetailTypesItemEnum =
   | "TYPE_UNSPECIFIED"
   | "LABEL_ADDED"
   | "LABEL_REMOVED"
   | "LABEL_FIELD_VALUE_CHANGED"
   | "LABEL_APPLIED_BY_ITEM_CREATE";
-const AppliedLabelChangeDetailTypesItemEnum = S.String;
-
 export type AppliedLabelChangeDetailTypesItemEnumList =
   Array<AppliedLabelChangeDetailTypesItemEnum>;
-const AppliedLabelChangeDetailTypesItemEnumList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AppliedLabelChangeDetailTypesItemEnumList>;
-
 /** Wrapper for User Field value. */
 export interface SingleUser {
   /** User value as email. */
   value?: string;
 }
-const SingleUser = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SingleUser>;
-
 /** Wrapper for Selection Field value as combined value/display_name pair for selected choice. */
 export interface Selection {
   /** Selection value as Field Choice ID. */
@@ -515,57 +413,39 @@ export interface Selection {
   /** Selection value as human-readable display string. */
   displayName?: string;
 }
-const Selection = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Selection>;
-
 export type SelectionList_ = Array<Selection>;
-const SelectionList_ = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SelectionList_>;
-
 /** Wrapper for SelectionList Field value. */
 export interface SelectionList {
   /** Selection values. */
   values?: SelectionList_;
 }
-const SelectionList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SelectionList>;
-
 /** Wrapper for Text Field value. */
 export interface Text {
   /** Value of Text Field. */
   value?: string;
 }
-const Text = SingleUser as any as S.Schema<Text>;
-
 export type TextList_ = Array<Text>;
-const TextList_ = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TextList_>;
-
 /** Wrapper for Text List Field value. */
 export interface TextList {
   /** Text values. */
   values?: TextList_;
 }
-const TextList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<TextList>;
-
 export type SingleUserList = Array<SingleUser>;
 /** Wrapper for UserList Field value. */
 export interface UserList {
   /** User values. */
   values?: SingleUserList;
 }
-const UserList = TextList as any as S.Schema<UserList>;
-
 /** Wrapper for Date Field value. */
 export interface Driveactivity_Date {
   /** Date value. */
   value?: string;
 }
-const Driveactivity_Date = SingleUser as any as S.Schema<Driveactivity_Date>;
-
 /** Wrapper for Integer Field value. */
 export interface Integer {
   /** Integer value. */
   value?: string;
 }
-const Integer = SingleUser as any as S.Schema<Integer>;
-
 /** Contains a value of a Field. */
 export interface FieldValue {
   /** User Field value. */
@@ -585,8 +465,6 @@ export interface FieldValue {
   /** Integer Field value. */
   integer?: Integer;
 }
-const FieldValue = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<FieldValue>;
-
 /** Change to a Field value. */
 export interface FieldValueChange {
   /** The ID of this field. Field IDs are unique within a Label. */
@@ -598,11 +476,7 @@ export interface FieldValueChange {
   /** The value that was previously set on the field. If not present, the field was newly set. At least one of {old_value|new_value} is always set. */
   oldValue?: FieldValue;
 }
-const FieldValueChange = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<FieldValueChange>;
-
 export type FieldValueChangeList = Array<FieldValueChange>;
-const FieldValueChangeList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<FieldValueChangeList>;
-
 /** A change made to a Label on the Target. */
 export interface AppliedLabelChangeDetail {
   /** The human-readable title of the label that changed. */
@@ -614,24 +488,12 @@ export interface AppliedLabelChangeDetail {
   /** Field Changes. Only present if `types` contains `LABEL_FIELD_VALUE_CHANGED`. */
   fieldChanges?: FieldValueChangeList;
 }
-const AppliedLabelChangeDetail = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AppliedLabelChangeDetail>;
-
 export type AppliedLabelChangeDetailList = Array<AppliedLabelChangeDetail>;
-const AppliedLabelChangeDetailList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AppliedLabelChangeDetailList>;
-
 /** Label changes that were made on the Target. */
 export interface AppliedLabelChange {
   /** Changes that were made to the Label on the Target. */
   changes?: AppliedLabelChangeDetailList;
 }
-const AppliedLabelChange = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AppliedLabelChange>;
-
 /** Data describing the type and additional information of an action. */
 export interface ActionDetail {
   /** An object was edited. */
@@ -659,8 +521,6 @@ export interface ActionDetail {
   /** Label was changed. */
   appliedLabelChange?: AppliedLabelChange;
 }
-const ActionDetail = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ActionDetail>;
-
 /** Information about the owner of a Drive item. */
 export interface Owner {
   /** The drive that owns the item. */
@@ -672,8 +532,6 @@ export interface Owner {
   /** The user that owns the Drive item. */
   user?: User;
 }
-const Owner = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Owner>;
-
 /** A Drive item, such as a file or folder. */
 export interface DriveItem {
   /** This field is deprecated; please use the `driveFolder` field instead. */
@@ -693,8 +551,6 @@ export interface DriveItem {
   /** This field is deprecated; please use the `driveFile` field instead. */
   file?: Legacy;
 }
-const DriveItem = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DriveItem>;
-
 /** Information about a shared drive. */
 export interface Drive {
   /** The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a specific collection ID for this resource name. */
@@ -704,8 +560,6 @@ export interface Drive {
   /** The root of this shared drive. */
   root?: DriveItem;
 }
-const Drive = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Drive>;
-
 /** A comment on a file. */
 export interface FileComment {
   /** The Drive item containing this comment. */
@@ -717,8 +571,6 @@ export interface FileComment {
   /** The link to the discussion thread containing this comment, for example, `https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID`. */
   linkToDiscussion?: string;
 }
-const FileComment = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<FileComment>;
-
 /** This item is deprecated; please see `Drive` instead. */
 export interface TeamDrive {
   /** This field is deprecated; please see `Drive.root` instead. */
@@ -728,8 +580,6 @@ export interface TeamDrive {
   /** This field is deprecated; please see `Drive.name` instead. */
   name?: string;
 }
-const TeamDrive = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<TeamDrive>;
-
 /** Information about the target of activity. For more information on how activity history is shared with users, see [Activity history visibility](https://developers.google.com/workspace/drive/activity/v2#activityhistory). */
 export interface Target {
   /** The target is a Drive item. */
@@ -741,8 +591,6 @@ export interface Target {
   /** This field is deprecated; please use the `drive` field instead. */
   teamDrive?: TeamDrive;
 }
-const Target = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Target>;
-
 /** Information about time ranges. */
 export interface TimeRange {
   /** The end of the time range. */
@@ -750,8 +598,6 @@ export interface TimeRange {
   /** The start of the time range. */
   startTime?: string;
 }
-const TimeRange = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TimeRange>;
-
 /** Information about the action. */
 export interface Action {
   /** The actor responsible for this action (or empty if all actors are responsible). */
@@ -765,17 +611,9 @@ export interface Action {
   /** The action occurred at this specific time. */
   timestamp?: string;
 }
-const Action = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Action>;
-
 export type ActionList = Array<Action>;
-const ActionList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ActionList>;
-
 export type TargetList = Array<Target>;
-const TargetList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TargetList>;
-
 export type ActorList = Array<Actor>;
-const ActorList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ActorList>;
-
 /** A single Drive activity comprising one or more Actions by one or more Actors on one or more Targets. Some Action groupings occur spontaneously, such as moving an item into a shared folder triggering a permission change. Other groupings of related Actions, such as multiple Actors editing one item or moving multiple files into a new folder, are controlled by the selection of a ConsolidationStrategy in the QueryDriveActivityRequest. */
 export interface DriveActivity {
   /** Details on all actions in this activity. */
@@ -791,11 +629,7 @@ export interface DriveActivity {
   /** All actor(s) responsible for the activity. */
   actors?: ActorList;
 }
-const DriveActivity = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DriveActivity>;
-
 export type DriveActivityList = Array<DriveActivity>;
-const DriveActivityList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DriveActivityList>;
-
 /** Response message for querying Drive activity. */
 export interface QueryDriveActivityResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -803,11 +637,6 @@ export interface QueryDriveActivityResponse {
   /** List of activity requested. */
   activities?: DriveActivityList;
 }
-const QueryDriveActivityResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<QueryDriveActivityResponse>;
-
 export type QueryActivityError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Query past activity in Google Drive. */
 export const queryActivity: API.OperationMethod<
@@ -816,8 +645,8 @@ export const queryActivity: API.OperationMethod<
   QueryActivityError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryActivityRequest,
-  output: QueryDriveActivityResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<QueryActivityRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<QueryDriveActivityResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -833,8 +662,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          legacy: S.optional(Legacy),
-          none: S.optional(Legacy),
+          legacy: S.optional(__S(0, __c0, 0)),
+          none: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ConsolidationStrategy" });
     case 2:
@@ -845,7 +674,7 @@ function __c0(j: number): any {
           pageToken: S.optional(S.String),
           ancestorName: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          consolidationStrategy: S.optional(ConsolidationStrategy),
+          consolidationStrategy: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "QueryDriveActivityRequest",
@@ -853,7 +682,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(QueryDriveActivityRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -865,7 +694,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(SystemEventTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemEvent" });
     case 5:
@@ -878,15 +707,15 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deletedUser: S.optional(Legacy),
-          unknownUser: S.optional(Legacy),
-          knownUser: S.optional(KnownUser),
+          deletedUser: S.optional(__S(0, __c0, 0)),
+          unknownUser: S.optional(__S(0, __c0, 0)),
+          knownUser: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "User" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          impersonatedUser: S.optional(User),
+          impersonatedUser: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Impersonation" });
   }
@@ -896,11 +725,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          administrator: S.optional(Legacy),
-          system: S.optional(SystemEvent),
-          user: S.optional(User),
-          impersonation: S.optional(Impersonation),
-          anonymous: S.optional(Legacy),
+          administrator: S.optional(__S(0, __c0, 0)),
+          system: S.optional(__S(4, __c0, 4)),
+          user: S.optional(__S(6, __c0, 6)),
+          impersonation: S.optional(__S(7, __c0, 7)),
+          anonymous: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "Actor" });
     case 1:
@@ -913,33 +742,33 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          feature: S.optional(RestrictionChangeFeatureEnum),
-          newRestriction: S.optional(RestrictionChangeNewRestrictionEnum),
+          feature: S.optional(S.String),
+          newRestriction: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestrictionChange" });
     case 3:
-      return S.Array(RestrictionChange);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          restrictionChanges: S.optional(RestrictionChangeList),
+          restrictionChanges: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "SettingsChange" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subtype: S.optional(AssignmentSubtypeEnum),
-          assignedUser: S.optional(User),
+          subtype: S.optional(S.String),
+          assignedUser: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Assignment" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          subtype: S.optional(PostSubtypeEnum),
+          subtype: S.optional(S.String),
         }),
       ).annotate({ identifier: "Post" });
     case 7:
-      return S.Array(User);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c2(j: number): any {
@@ -947,10 +776,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assignment: S.optional(Assignment),
-          post: S.optional(Post),
-          mentionedUsers: S.optional(UserList_),
-          suggestion: S.optional(Suggestion),
+          assignment: S.optional(__S(13, __c1, 5)),
+          post: S.optional(__S(14, __c1, 6)),
+          mentionedUsers: S.optional(__S(15, __c1, 7)),
+          suggestion: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "Comment" });
     case 1:
@@ -970,21 +799,21 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          domain: S.optional(Domain),
-          user: S.optional(User),
-          role: S.optional(PermissionRoleEnum),
-          anyone: S.optional(Legacy),
+          domain: S.optional(__S(17, __c2, 1)),
+          user: S.optional(__S(6, __c0, 6)),
+          role: S.optional(S.String),
+          anyone: S.optional(__S(0, __c0, 0)),
           allowDiscovery: S.optional(S.Boolean),
-          group: S.optional(Group),
+          group: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "Permission" });
     case 4:
-      return S.Array(Permission);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          removedPermissions: S.optional(PermissionList),
-          addedPermissions: S.optional(PermissionList),
+          removedPermissions: S.optional(__S(20, __c2, 4)),
+          addedPermissions: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "PermissionChange" });
     case 6:
@@ -997,12 +826,12 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          driveFile: S.optional(Legacy),
+          driveFile: S.optional(__S(0, __c0, 0)),
           title: S.optional(S.String),
-          driveFolder: S.optional(DriveFolder),
-          folder: S.optional(Folder),
+          driveFolder: S.optional(__S(4, __c0, 4)),
+          folder: S.optional(__S(4, __c0, 4)),
           name: S.optional(S.String),
-          file: S.optional(Legacy),
+          file: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "DriveItemReference" });
   }
@@ -1019,36 +848,36 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          teamDrive: S.optional(TeamDriveReference),
-          driveItem: S.optional(DriveItemReference),
-          drive: S.optional(DriveReference),
+          teamDrive: S.optional(__S(22, __c2, 6)),
+          driveItem: S.optional(__S(23, __c2, 7)),
+          drive: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "TargetReference" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          originalObject: S.optional(TargetReference),
+          originalObject: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "Copy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          new: S.optional(Legacy),
-          upload: S.optional(Legacy),
-          copy: S.optional(Copy),
+          new: S.optional(__S(0, __c0, 0)),
+          upload: S.optional(__S(0, __c0, 0)),
+          copy: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "Create" });
     case 4:
-      return S.Array(TargetReference);
+      return S.Array(__S(25, __c3, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          removedParents: S.optional(TargetReferenceList),
-          addedParents: S.optional(TargetReferenceList),
+          removedParents: S.optional(__S(28, __c3, 4)),
+          addedParents: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "Move" });
     case 6:
-      return S.Array(AppliedLabelChangeDetailTypesItemEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1067,32 +896,32 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Selection" });
     case 1:
-      return S.Array(Selection);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(SelectionList_),
+          values: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "SelectionList" });
     case 3:
-      return S.Array(Text);
+      return S.Array(__S(31, __c3, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(TextList_),
+          values: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "TextList" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(SingleUser),
-          selection: S.optional(Selection),
-          selectionList: S.optional(SelectionList),
-          textList: S.optional(TextList),
-          userList: S.optional(UserList),
-          text: S.optional(Text),
-          date: S.optional(Driveactivity_Date),
-          integer: S.optional(Integer),
+          user: S.optional(__S(31, __c3, 7)),
+          selection: S.optional(__S(32, __c4, 0)),
+          selectionList: S.optional(__S(34, __c4, 2)),
+          textList: S.optional(__S(36, __c4, 4)),
+          userList: S.optional(__S(36, __c4, 4)),
+          text: S.optional(__S(31, __c3, 7)),
+          date: S.optional(__S(31, __c3, 7)),
+          integer: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "FieldValue" });
     case 6:
@@ -1100,12 +929,12 @@ function __c4(j: number): any {
         S.Struct({
           fieldId: S.optional(S.String),
           displayName: S.optional(S.String),
-          newValue: S.optional(FieldValue),
-          oldValue: S.optional(FieldValue),
+          newValue: S.optional(__S(37, __c4, 5)),
+          oldValue: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "FieldValueChange" });
     case 7:
-      return S.Array(FieldValueChange);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1114,56 +943,56 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          types: S.optional(AppliedLabelChangeDetailTypesItemEnumList),
+          types: S.optional(__S(30, __c3, 6)),
           label: S.optional(S.String),
-          fieldChanges: S.optional(FieldValueChangeList),
+          fieldChanges: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "AppliedLabelChangeDetail" });
     case 1:
-      return S.Array(AppliedLabelChangeDetail);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          changes: S.optional(AppliedLabelChangeDetailList),
+          changes: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "AppliedLabelChange" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          edit: S.optional(Legacy),
-          rename: S.optional(Rename),
-          settingsChange: S.optional(SettingsChange),
-          comment: S.optional(Comment),
-          restore: S.optional(Restore),
-          permissionChange: S.optional(PermissionChange),
-          create: S.optional(Create),
-          delete: S.optional(Delete),
-          reference: S.optional(ApplicationReference),
-          dlpChange: S.optional(DataLeakPreventionChange),
-          move: S.optional(Move),
-          appliedLabelChange: S.optional(AppliedLabelChange),
+          edit: S.optional(__S(0, __c0, 0)),
+          rename: S.optional(__S(9, __c1, 1)),
+          settingsChange: S.optional(__S(12, __c1, 4)),
+          comment: S.optional(__S(16, __c2, 0)),
+          restore: S.optional(__S(4, __c0, 4)),
+          permissionChange: S.optional(__S(21, __c2, 5)),
+          create: S.optional(__S(27, __c3, 3)),
+          delete: S.optional(__S(4, __c0, 4)),
+          reference: S.optional(__S(4, __c0, 4)),
+          dlpChange: S.optional(__S(4, __c0, 4)),
+          move: S.optional(__S(29, __c3, 5)),
+          appliedLabelChange: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "ActionDetail" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          drive: S.optional(DriveReference),
-          domain: S.optional(Domain),
-          teamDrive: S.optional(TeamDriveReference),
-          user: S.optional(User),
+          drive: S.optional(__S(24, __c3, 0)),
+          domain: S.optional(__S(17, __c2, 1)),
+          teamDrive: S.optional(__S(22, __c2, 6)),
+          user: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Owner" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(Folder),
-          driveFile: S.optional(Legacy),
-          owner: S.optional(Owner),
+          folder: S.optional(__S(4, __c0, 4)),
+          driveFile: S.optional(__S(0, __c0, 0)),
+          owner: S.optional(__S(44, __c5, 4)),
           mimeType: S.optional(S.String),
           title: S.optional(S.String),
           name: S.optional(S.String),
-          driveFolder: S.optional(DriveFolder),
-          file: S.optional(Legacy),
+          driveFolder: S.optional(__S(4, __c0, 4)),
+          file: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "DriveItem" });
     case 6:
@@ -1171,13 +1000,13 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           title: S.optional(S.String),
-          root: S.optional(DriveItem),
+          root: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "Drive" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          parent: S.optional(DriveItem),
+          parent: S.optional(__S(45, __c5, 5)),
           legacyCommentId: S.optional(S.String),
           legacyDiscussionId: S.optional(S.String),
           linkToDiscussion: S.optional(S.String),
@@ -1190,7 +1019,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          root: S.optional(DriveItem),
+          root: S.optional(__S(45, __c5, 5)),
           title: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1198,10 +1027,10 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          driveItem: S.optional(DriveItem),
-          drive: S.optional(Drive),
-          fileComment: S.optional(FileComment),
-          teamDrive: S.optional(TeamDrive),
+          driveItem: S.optional(__S(45, __c5, 5)),
+          drive: S.optional(__S(46, __c5, 6)),
+          fileComment: S.optional(__S(47, __c5, 7)),
+          teamDrive: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "Target" });
     case 2:
@@ -1214,28 +1043,28 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actor: S.optional(Actor),
-          detail: S.optional(ActionDetail),
-          target: S.optional(Target),
-          timeRange: S.optional(TimeRange),
+          actor: S.optional(__S(8, __c1, 0)),
+          detail: S.optional(__S(43, __c5, 3)),
+          target: S.optional(__S(49, __c6, 1)),
+          timeRange: S.optional(__S(50, __c6, 2)),
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Action" });
     case 4:
-      return S.Array(Action);
+      return S.Array(__S(51, __c6, 3));
     case 5:
-      return S.Array(Target);
+      return S.Array(__S(49, __c6, 1));
     case 6:
-      return S.Array(Actor);
+      return S.Array(__S(8, __c1, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(ActionList),
-          timeRange: S.optional(TimeRange),
+          actions: S.optional(__S(52, __c6, 4)),
+          timeRange: S.optional(__S(50, __c6, 2)),
           timestamp: S.optional(S.String),
-          targets: S.optional(TargetList),
-          primaryActionDetail: S.optional(ActionDetail),
-          actors: S.optional(ActorList),
+          targets: S.optional(__S(53, __c6, 5)),
+          primaryActionDetail: S.optional(__S(43, __c5, 3)),
+          actors: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({ identifier: "DriveActivity" });
   }
@@ -1243,15 +1072,20 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DriveActivity);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          activities: S.optional(DriveActivityList),
+          activities: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "QueryDriveActivityResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

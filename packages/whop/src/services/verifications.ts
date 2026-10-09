@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -156,8 +158,6 @@ export interface CreateVerificationRequestBodyCase1 {
 export type CreateVerificationRequestBody =
   | CreateVerificationRequestBodyCase0
   | CreateVerificationRequestBodyCase1;
-const CreateVerificationRequestBody = S.Unknown as any as S.Schema<CreateVerificationRequestBody>;
-
 export interface CreateVerificationRequest {
   /** Business account whose identity you want to verify, prefixed `biz_`. Provide this or `user_id`. */
   account_id?: string;
@@ -167,11 +167,6 @@ export interface CreateVerificationRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateVerificationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateVerificationRequest>;
-
 /** Address on the verification profile. `null` when no address is set. */
 export interface CreateVerificationResponseAddress {
   city?: string | null;
@@ -186,48 +181,20 @@ export interface CreateVerificationResponseAddress {
   /** State, province, or region code, for example `CA`. */
   state?: string | null;
 }
-const CreateVerificationResponseAddress = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateVerificationResponseAddress>;
-
 export type CreateVerificationResponseKind = "individual" | "business";
-const CreateVerificationResponseKind = S.String;
-
 /** Selected option values that make the follow-up prompt visible. */
 export type CreateVerificationResponseRequestedInformationItemDetailsVisibleForList = Array<string>;
-const CreateVerificationResponseRequestedInformationItemDetailsVisibleForList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    2,
-  ) as any as S.Schema<CreateVerificationResponseRequestedInformationItemDetailsVisibleForList>;
-
 export interface CreateVerificationResponseRequestedInformationItemErrorsItem {
   /** Stable error code. */
   code?: string;
   /** Why it was rejected. */
   reason?: string;
 }
-const CreateVerificationResponseRequestedInformationItemErrorsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateVerificationResponseRequestedInformationItemErrorsItem>;
-
 /** Present after a rejected submission. */
 export type CreateVerificationResponseRequestedInformationItemErrorsList =
   Array<CreateVerificationResponseRequestedInformationItemErrorsItem>;
-const CreateVerificationResponseRequestedInformationItemErrorsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateVerificationResponseRequestedInformationItemErrorsList>;
-
 /** The values `value` may take on a `select` item. On an `id_document` item these are the ID types accepted, and the chosen one decides which `documents` slots to send. Absent when the item has no choice to make. */
 export type CreateVerificationResponseRequestedInformationItemOptionsList = Array<string>;
-const CreateVerificationResponseRequestedInformationItemOptionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateVerificationResponseRequestedInformationItemOptionsList>;
-
 /** Optional native input format for a text response. */
 export type CreateVerificationResponseRequestedInformationItemResponseType =
   | "yes_no"
@@ -236,34 +203,19 @@ export type CreateVerificationResponseRequestedInformationItemResponseType =
   | "url"
   | "number"
   | "tel";
-const CreateVerificationResponseRequestedInformationItemResponseType = S.String;
-
 /** Whether a question with `options` accepts one value or multiple values. */
 export type CreateVerificationResponseRequestedInformationItemSelectionMode = "single" | "multiple";
-const CreateVerificationResponseRequestedInformationItemSelectionMode = S.String;
-
 export interface FileMultipartUrl {
   /** The 1-based index of this part within the multipart upload. */
   part_number: number;
   /** The presigned URL to PUT this part's bytes to. */
   url: string;
 }
-const FileMultipartUrl = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FileMultipartUrl>;
-
 export type FileMultipartUploadUrlsList = Array<FileMultipartUrl>;
-const FileMultipartUploadUrlsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<FileMultipartUploadUrlsList>;
-
 /** Where the file is in its upload lifecycle. */
 export type FileUploadStatus = "pending" | "processing" | "ready" | "failed";
-const FileUploadStatus = S.String;
-
 /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
 export type FileVisibility = "public" | "private";
-const FileVisibility = S.String;
-
 export interface File {
   /** The file's MIME type, e.g. `application/pdf`. */
   content_type: string | null;
@@ -293,22 +245,11 @@ export interface File {
   /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
   visibility: FileVisibility;
 }
-const File = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<File>;
-
 /** Documents supplied with the requirement for context. */
 export type CreateVerificationResponseRequestedInformationItemSupportingDocumentsList = Array<File>;
-const CreateVerificationResponseRequestedInformationItemSupportingDocumentsList =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    1,
-  ) as any as S.Schema<CreateVerificationResponseRequestedInformationItemSupportingDocumentsList>;
-
 /** Selected option values that make the supporting-file input visible. */
 export type CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
-const CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
-
 export interface CreateVerificationResponseRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */
   action_url?: string;
@@ -345,23 +286,11 @@ export interface CreateVerificationResponseRequestedInformationItem {
   /** What to send as the answer, so you never have to infer it: `files` (a document, as a list of its pages), `id_document` (send `documents` with the slot keys for the ID you are uploading), `text`, `date`, `phone` or `select` (send `value`), `text_with_files` (send `value` and optional `files`), `address` (send `address`), or `liveness` (open `action_url`, then send `value` as `true` after completion). */
   type: string;
 }
-const CreateVerificationResponseRequestedInformationItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateVerificationResponseRequestedInformationItem>;
-
 /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type CreateVerificationResponseRequestedInformationList =
   Array<CreateVerificationResponseRequestedInformationItem>;
-const CreateVerificationResponseRequestedInformationList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateVerificationResponseRequestedInformationList>;
-
 /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
 export type CreateVerificationResponseRequiredDocumentsItemStatus = "pending_upload" | "submitted";
-const CreateVerificationResponseRequiredDocumentsItemStatus = S.String;
-
 export interface CreateVerificationResponseRequiredDocumentsItem {
   /** Document slot key, such as `id_card_front`, `id_card_back`, or `selfie`. */
   document?: string;
@@ -370,19 +299,9 @@ export interface CreateVerificationResponseRequiredDocumentsItem {
   /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
   status?: CreateVerificationResponseRequiredDocumentsItemStatus;
 }
-const CreateVerificationResponseRequiredDocumentsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateVerificationResponseRequiredDocumentsItem>;
-
 /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type CreateVerificationResponseRequiredDocumentsList =
   Array<CreateVerificationResponseRequiredDocumentsItem>;
-const CreateVerificationResponseRequiredDocumentsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateVerificationResponseRequiredDocumentsList>;
-
 /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type CreateVerificationResponseStatus =
   | "not_started"
@@ -392,8 +311,6 @@ export type CreateVerificationResponseStatus =
   | "approved"
   | "rejected"
   | "action_required";
-const CreateVerificationResponseStatus = S.String;
-
 export interface CreateVerificationResponse {
   /** Address on the verification profile. `null` when no address is set. */
   address?: CreateVerificationResponseAddress | null;
@@ -427,43 +344,22 @@ export interface CreateVerificationResponse {
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
 }
-const CreateVerificationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateVerificationResponse>;
-
 export interface GetVerificationRequest {
   /** Verification profile ID, prefixed `idpf_`. */
   id: string;
 }
-const GetVerificationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetVerificationRequest>;
-
 /** Address on the verification profile. `null` when no address is set. */
 export type GetVerificationResponseAddress = CreateVerificationResponseAddress;
 export type GetVerificationResponseKind = "individual" | "business";
-const GetVerificationResponseKind = S.String;
-
 /** Selected option values that make the follow-up prompt visible. */
 export type GetVerificationResponseRequestedInformationItemDetailsVisibleForList = Array<string>;
-const GetVerificationResponseRequestedInformationItemDetailsVisibleForList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<GetVerificationResponseRequestedInformationItemDetailsVisibleForList>;
-
 export type GetVerificationResponseRequestedInformationItemErrorsItem =
   CreateVerificationResponseRequestedInformationItemErrorsItem;
 /** Present after a rejected submission. */
 export type GetVerificationResponseRequestedInformationItemErrorsList =
   Array<CreateVerificationResponseRequestedInformationItemErrorsItem>;
-const GetVerificationResponseRequestedInformationItemErrorsList =
-  CreateVerificationResponseRequestedInformationItemErrorsList as any as S.Schema<GetVerificationResponseRequestedInformationItemErrorsList>;
-
 /** The values `value` may take on a `select` item. On an `id_document` item these are the ID types accepted, and the chosen one decides which `documents` slots to send. Absent when the item has no choice to make. */
 export type GetVerificationResponseRequestedInformationItemOptionsList = Array<string>;
-const GetVerificationResponseRequestedInformationItemOptionsList =
-  CreateVerificationResponseRequestedInformationItemOptionsList as any as S.Schema<GetVerificationResponseRequestedInformationItemOptionsList>;
-
 /** Optional native input format for a text response. */
 export type GetVerificationResponseRequestedInformationItemResponseType =
   | "yes_no"
@@ -472,23 +368,13 @@ export type GetVerificationResponseRequestedInformationItemResponseType =
   | "url"
   | "number"
   | "tel";
-const GetVerificationResponseRequestedInformationItemResponseType = S.String;
-
 /** Whether a question with `options` accepts one value or multiple values. */
 export type GetVerificationResponseRequestedInformationItemSelectionMode = "single" | "multiple";
-const GetVerificationResponseRequestedInformationItemSelectionMode = S.String;
-
 /** Documents supplied with the requirement for context. */
 export type GetVerificationResponseRequestedInformationItemSupportingDocumentsList = Array<File>;
-const GetVerificationResponseRequestedInformationItemSupportingDocumentsList =
-  CreateVerificationResponseRequestedInformationItemSupportingDocumentsList as any as S.Schema<GetVerificationResponseRequestedInformationItemSupportingDocumentsList>;
-
 /** Selected option values that make the supporting-file input visible. */
 export type GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
-const GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
-
 export interface GetVerificationResponseRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */
   action_url?: string;
@@ -525,19 +411,9 @@ export interface GetVerificationResponseRequestedInformationItem {
   /** What to send as the answer, so you never have to infer it: `files` (a document, as a list of its pages), `id_document` (send `documents` with the slot keys for the ID you are uploading), `text`, `date`, `phone` or `select` (send `value`), `text_with_files` (send `value` and optional `files`), `address` (send `address`), or `liveness` (open `action_url`, then send `value` as `true` after completion). */
   type: string;
 }
-const GetVerificationResponseRequestedInformationItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetVerificationResponseRequestedInformationItem>;
-
 /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type GetVerificationResponseRequestedInformationList =
   Array<GetVerificationResponseRequestedInformationItem>;
-const GetVerificationResponseRequestedInformationList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetVerificationResponseRequestedInformationList>;
-
 /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
 export type GetVerificationResponseRequiredDocumentsItemStatus = "pending_upload" | "submitted";
 export interface GetVerificationResponseRequiredDocumentsItem {
@@ -551,9 +427,6 @@ export interface GetVerificationResponseRequiredDocumentsItem {
 /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type GetVerificationResponseRequiredDocumentsList =
   Array<GetVerificationResponseRequiredDocumentsItem>;
-const GetVerificationResponseRequiredDocumentsList =
-  CreateVerificationResponseRequiredDocumentsList as any as S.Schema<GetVerificationResponseRequiredDocumentsList>;
-
 /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type GetVerificationResponseStatus =
   | "not_started"
@@ -563,8 +436,6 @@ export type GetVerificationResponseStatus =
   | "approved"
   | "rejected"
   | "action_required";
-const GetVerificationResponseStatus = S.String;
-
 export interface GetVerificationResponse {
   /** Address on the verification profile. `null` when no address is set. */
   address?: CreateVerificationResponseAddress | null;
@@ -598,17 +469,8 @@ export interface GetVerificationResponse {
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
 }
-const GetVerificationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetVerificationResponse>;
-
 export type ListVerificationsRequestOrder = "updated_at" | "created_at";
-const ListVerificationsRequestOrder = S.String;
-
 export type ListVerificationsRequestDirection = "asc" | "desc";
-const ListVerificationsRequestDirection = S.String;
-
 export interface ListVerificationsRequest {
   /** Business account whose verifications you want to list, prefixed `biz_`. Provide this or `user_id`. */
   account_id?: string;
@@ -619,37 +481,19 @@ export interface ListVerificationsRequest {
   /** Sort direction for returned verifications. */
   direction?: ListVerificationsRequestDirection | (string & {});
 }
-const ListVerificationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListVerificationsRequest>;
-
 /** Address on the verification profile. `null` when no address is set. */
 export type ListVerificationsResponseDataItemAddress = CreateVerificationResponseAddress;
 export type ListVerificationsResponseDataItemKind = "individual" | "business";
-const ListVerificationsResponseDataItemKind = S.String;
-
 /** Selected option values that make the follow-up prompt visible. */
 export type ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList =
   Array<string>;
-const ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList>;
-
 export type ListVerificationsResponseDataItemRequestedInformationItemErrorsItem =
   CreateVerificationResponseRequestedInformationItemErrorsItem;
 /** Present after a rejected submission. */
 export type ListVerificationsResponseDataItemRequestedInformationItemErrorsList =
   Array<CreateVerificationResponseRequestedInformationItemErrorsItem>;
-const ListVerificationsResponseDataItemRequestedInformationItemErrorsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemErrorsList>;
-
 /** The values `value` may take on a `select` item. On an `id_document` item these are the ID types accepted, and the chosen one decides which `documents` slots to send. Absent when the item has no choice to make. */
 export type ListVerificationsResponseDataItemRequestedInformationItemOptionsList = Array<string>;
-const ListVerificationsResponseDataItemRequestedInformationItemOptionsList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemOptionsList>;
-
 /** Optional native input format for a text response. */
 export type ListVerificationsResponseDataItemRequestedInformationItemResponseType =
   | "yes_no"
@@ -658,26 +502,16 @@ export type ListVerificationsResponseDataItemRequestedInformationItemResponseTyp
   | "url"
   | "number"
   | "tel";
-const ListVerificationsResponseDataItemRequestedInformationItemResponseType = S.String;
-
 /** Whether a question with `options` accepts one value or multiple values. */
 export type ListVerificationsResponseDataItemRequestedInformationItemSelectionMode =
   | "single"
   | "multiple";
-const ListVerificationsResponseDataItemRequestedInformationItemSelectionMode = S.String;
-
 /** Documents supplied with the requirement for context. */
 export type ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList =
   Array<File>;
-const ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList =
-  CreateVerificationResponseRequestedInformationItemSupportingDocumentsList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList>;
-
 /** Selected option values that make the supporting-file input visible. */
 export type ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
-const ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList>;
-
 export interface ListVerificationsResponseDataItemRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */
   action_url?: string;
@@ -714,19 +548,9 @@ export interface ListVerificationsResponseDataItemRequestedInformationItem {
   /** What to send as the answer, so you never have to infer it: `files` (a document, as a list of its pages), `id_document` (send `documents` with the slot keys for the ID you are uploading), `text`, `date`, `phone` or `select` (send `value`), `text_with_files` (send `value` and optional `files`), `address` (send `address`), or `liveness` (open `action_url`, then send `value` as `true` after completion). */
   type: string;
 }
-const ListVerificationsResponseDataItemRequestedInformationItem = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItem>;
-
 /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type ListVerificationsResponseDataItemRequestedInformationList =
   Array<ListVerificationsResponseDataItemRequestedInformationItem>;
-const ListVerificationsResponseDataItemRequestedInformationList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationList>;
-
 /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
 export type ListVerificationsResponseDataItemRequiredDocumentsItemStatus =
   | "pending_upload"
@@ -742,9 +566,6 @@ export interface ListVerificationsResponseDataItemRequiredDocumentsItem {
 /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type ListVerificationsResponseDataItemRequiredDocumentsList =
   Array<ListVerificationsResponseDataItemRequiredDocumentsItem>;
-const ListVerificationsResponseDataItemRequiredDocumentsList =
-  CreateVerificationResponseRequiredDocumentsList as any as S.Schema<ListVerificationsResponseDataItemRequiredDocumentsList>;
-
 /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type ListVerificationsResponseDataItemStatus =
   | "not_started"
@@ -754,8 +575,6 @@ export type ListVerificationsResponseDataItemStatus =
   | "approved"
   | "rejected"
   | "action_required";
-const ListVerificationsResponseDataItemStatus = S.String;
-
 export interface ListVerificationsResponseDataItem {
   /** Address on the verification profile. `null` when no address is set. */
   address?: CreateVerificationResponseAddress | null;
@@ -789,25 +608,10 @@ export interface ListVerificationsResponseDataItem {
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
 }
-const ListVerificationsResponseDataItem = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListVerificationsResponseDataItem>;
-
 export type ListVerificationsResponseDataList = Array<ListVerificationsResponseDataItem>;
-const ListVerificationsResponseDataList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListVerificationsResponseDataList>;
-
 export interface ListVerificationsResponse {
   data?: ListVerificationsResponseDataList;
 }
-const ListVerificationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListVerificationsResponse>;
-
 /** Personal address for the individual. */
 export type UpdateVerificationRequestBodyCase0PersonalAddress =
   CreateVerificationRequestBodyCase0Address;
@@ -949,41 +753,23 @@ export interface UpdateVerificationRequestBodyCase1 {
 export type UpdateVerificationRequestBody =
   | UpdateVerificationRequestBodyCase0
   | UpdateVerificationRequestBodyCase1;
-const UpdateVerificationRequestBody = S.Unknown as any as S.Schema<UpdateVerificationRequestBody>;
-
 export interface UpdateVerificationRequest {
   /** Verification profile ID, prefixed `idpf_`. */
   id: string;
   body: UpdateVerificationRequestBody;
 }
-const UpdateVerificationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<UpdateVerificationRequest>;
-
 /** Address on the verification profile. `null` when no address is set. */
 export type UpdateVerificationResponseAddress = CreateVerificationResponseAddress;
 export type UpdateVerificationResponseKind = "individual" | "business";
-const UpdateVerificationResponseKind = S.String;
-
 /** Selected option values that make the follow-up prompt visible. */
 export type UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList = Array<string>;
-const UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList>;
-
 export type UpdateVerificationResponseRequestedInformationItemErrorsItem =
   CreateVerificationResponseRequestedInformationItemErrorsItem;
 /** Present after a rejected submission. */
 export type UpdateVerificationResponseRequestedInformationItemErrorsList =
   Array<CreateVerificationResponseRequestedInformationItemErrorsItem>;
-const UpdateVerificationResponseRequestedInformationItemErrorsList =
-  CreateVerificationResponseRequestedInformationItemErrorsList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemErrorsList>;
-
 /** The values `value` may take on a `select` item. On an `id_document` item these are the ID types accepted, and the chosen one decides which `documents` slots to send. Absent when the item has no choice to make. */
 export type UpdateVerificationResponseRequestedInformationItemOptionsList = Array<string>;
-const UpdateVerificationResponseRequestedInformationItemOptionsList =
-  CreateVerificationResponseRequestedInformationItemOptionsList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemOptionsList>;
-
 /** Optional native input format for a text response. */
 export type UpdateVerificationResponseRequestedInformationItemResponseType =
   | "yes_no"
@@ -992,23 +778,13 @@ export type UpdateVerificationResponseRequestedInformationItemResponseType =
   | "url"
   | "number"
   | "tel";
-const UpdateVerificationResponseRequestedInformationItemResponseType = S.String;
-
 /** Whether a question with `options` accepts one value or multiple values. */
 export type UpdateVerificationResponseRequestedInformationItemSelectionMode = "single" | "multiple";
-const UpdateVerificationResponseRequestedInformationItemSelectionMode = S.String;
-
 /** Documents supplied with the requirement for context. */
 export type UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList = Array<File>;
-const UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList =
-  CreateVerificationResponseRequestedInformationItemSupportingDocumentsList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList>;
-
 /** Selected option values that make the supporting-file input visible. */
 export type UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
-const UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
-  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
-
 export interface UpdateVerificationResponseRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */
   action_url?: string;
@@ -1045,19 +821,9 @@ export interface UpdateVerificationResponseRequestedInformationItem {
   /** What to send as the answer, so you never have to infer it: `files` (a document, as a list of its pages), `id_document` (send `documents` with the slot keys for the ID you are uploading), `text`, `date`, `phone` or `select` (send `value`), `text_with_files` (send `value` and optional `files`), `address` (send `address`), or `liveness` (open `action_url`, then send `value` as `true` after completion). */
   type: string;
 }
-const UpdateVerificationResponseRequestedInformationItem = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UpdateVerificationResponseRequestedInformationItem>;
-
 /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type UpdateVerificationResponseRequestedInformationList =
   Array<UpdateVerificationResponseRequestedInformationItem>;
-const UpdateVerificationResponseRequestedInformationList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<UpdateVerificationResponseRequestedInformationList>;
-
 /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
 export type UpdateVerificationResponseRequiredDocumentsItemStatus = "pending_upload" | "submitted";
 export interface UpdateVerificationResponseRequiredDocumentsItem {
@@ -1071,9 +837,6 @@ export interface UpdateVerificationResponseRequiredDocumentsItem {
 /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type UpdateVerificationResponseRequiredDocumentsList =
   Array<UpdateVerificationResponseRequiredDocumentsItem>;
-const UpdateVerificationResponseRequiredDocumentsList =
-  CreateVerificationResponseRequiredDocumentsList as any as S.Schema<UpdateVerificationResponseRequiredDocumentsList>;
-
 /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type UpdateVerificationResponseStatus =
   | "not_started"
@@ -1083,8 +846,6 @@ export type UpdateVerificationResponseStatus =
   | "approved"
   | "rejected"
   | "action_required";
-const UpdateVerificationResponseStatus = S.String;
-
 export interface UpdateVerificationResponse {
   /** Address on the verification profile. `null` when no address is set. */
   address?: CreateVerificationResponseAddress | null;
@@ -1118,11 +879,6 @@ export interface UpdateVerificationResponse {
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
 }
-const UpdateVerificationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateVerificationResponse>;
-
 export type CreateVerificationError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create Verification Starts a hosted verification session for an account or user, or returns the active session when one already exists. Any fields you include in the request body are used to prefill the session. Send `documents` (with `document_type`) to instead verify the person from identity documents included in this request -- no hosted session involved. Send `share_token` to reuse a verification another Sumsub account has already completed for this person, instead of verifying them again. Send `verification_id` to reuse a verification the signed-in user already completed on Whop. Every mode except `verification_id` is rejected once the account has an `approved` verification -- unlink it first to start a new one -- while `verification_id` replaces whichever verification of that kind the account currently has. */
 export const createVerification: API.OperationMethod<
@@ -1131,8 +887,8 @@ export const createVerification: API.OperationMethod<
   CreateVerificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVerificationRequest,
-  output: CreateVerificationResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateVerificationRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1146,8 +902,8 @@ export const getVerification: API.OperationMethod<
   GetVerificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVerificationRequest,
-  output: GetVerificationResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GetVerificationRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetVerificationResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1161,8 +917,8 @@ export const listVerifications: API.OperationMethod<
   ListVerificationsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVerificationsRequest,
-  output: ListVerificationsResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<ListVerificationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ListVerificationsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1176,8 +932,8 @@ export const updateVerification: API.OperationMethod<
   UpdateVerificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVerificationRequest,
-  output: UpdateVerificationResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<UpdateVerificationRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<UpdateVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1191,7 +947,7 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(CreateVerificationRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/verifications", code: 200 })),
       ).annotate({
@@ -1222,7 +978,7 @@ function __c0(j: number): any {
         identifier: "CreateVerificationResponseRequestedInformationItemErrorsItem",
       });
     case 4:
-      return S.Array(CreateVerificationResponseRequestedInformationItemErrorsItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.Array(S.String);
     case 6:
@@ -1233,7 +989,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FileMultipartUrl" });
     case 7:
-      return S.Array(FileMultipartUrl);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -1247,68 +1003,60 @@ function __c1(j: number): any {
           id: S.String,
           multipart_chunk_size: S.optional(S.NullOr(S.Number)),
           multipart_upload_id: S.optional(S.NullOr(S.String)),
-          multipart_upload_urls: S.optional(S.NullOr(FileMultipartUploadUrlsList)),
+          multipart_upload_urls: S.optional(S.NullOr(__S(7, __c0, 7))),
           object: S.String,
           size: S.NullOr(S.Number),
           upload_headers: S.optional(S.Unknown),
-          upload_status: FileUploadStatus,
+          upload_status: S.String,
           upload_url: S.optional(S.NullOr(S.String)),
           url: S.NullOr(S.String),
-          visibility: FileVisibility,
+          visibility: S.String,
         }),
       ).annotate({ identifier: "File" });
     case 1:
-      return S.Array(File);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           action_url: S.optional(S.String),
           details_label: S.optional(S.String),
           details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(
-            CreateVerificationResponseRequestedInformationItemDetailsVisibleForList,
-          ),
-          errors: S.optional(CreateVerificationResponseRequestedInformationItemErrorsList),
+          details_visible_for: S.optional(__S(2, __c0, 2)),
+          errors: S.optional(__S(4, __c0, 4)),
           id: S.String,
           label: S.String,
           optional: S.optional(S.Boolean),
-          options: S.optional(CreateVerificationResponseRequestedInformationItemOptionsList),
+          options: S.optional(__S(5, __c0, 5)),
           requirement: S.String,
-          response_type: S.optional(CreateVerificationResponseRequestedInformationItemResponseType),
-          selection_mode: S.optional(
-            CreateVerificationResponseRequestedInformationItemSelectionMode,
-          ),
-          supporting_documents: S.optional(
-            CreateVerificationResponseRequestedInformationItemSupportingDocumentsList,
-          ),
+          response_type: S.optional(S.String),
+          selection_mode: S.optional(S.String),
+          supporting_documents: S.optional(__S(9, __c1, 1)),
           supporting_files_explanation_allowed: S.optional(S.Boolean),
           supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(
-            CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList,
-          ),
+          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
           type: S.String,
         }),
       ).annotate({
         identifier: "CreateVerificationResponseRequestedInformationItem",
       });
     case 3:
-      return S.Array(CreateVerificationResponseRequestedInformationItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           document: S.optional(S.String),
           rejection_reason: S.optional(S.NullOr(S.String)),
-          status: S.optional(CreateVerificationResponseRequiredDocumentsItemStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateVerificationResponseRequiredDocumentsItem",
       });
     case 5:
-      return S.Array(CreateVerificationResponseRequiredDocumentsItem);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(CreateVerificationResponseAddress)),
+          address: S.optional(S.NullOr(__S(1, __c0, 1))),
           business_name: S.optional(S.NullOr(S.String)),
           business_structure: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
@@ -1317,13 +1065,13 @@ function __c1(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           first_name: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          kind: S.optional(CreateVerificationResponseKind),
+          kind: S.optional(S.String),
           last_name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(CreateVerificationResponseRequestedInformationList),
-          required_documents: S.optional(CreateVerificationResponseRequiredDocumentsList),
+          requested_information: S.optional(__S(11, __c1, 3)),
+          required_documents: S.optional(__S(13, __c1, 5)),
           session_url: S.optional(S.NullOr(S.String)),
-          status: S.optional(CreateVerificationResponseStatus),
+          status: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({
@@ -1345,36 +1093,30 @@ function __c2(j: number): any {
           action_url: S.optional(S.String),
           details_label: S.optional(S.String),
           details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(
-            GetVerificationResponseRequestedInformationItemDetailsVisibleForList,
-          ),
-          errors: S.optional(GetVerificationResponseRequestedInformationItemErrorsList),
+          details_visible_for: S.optional(__S(2, __c0, 2)),
+          errors: S.optional(__S(4, __c0, 4)),
           id: S.String,
           label: S.String,
           optional: S.optional(S.Boolean),
-          options: S.optional(GetVerificationResponseRequestedInformationItemOptionsList),
+          options: S.optional(__S(5, __c0, 5)),
           requirement: S.String,
-          response_type: S.optional(GetVerificationResponseRequestedInformationItemResponseType),
-          selection_mode: S.optional(GetVerificationResponseRequestedInformationItemSelectionMode),
-          supporting_documents: S.optional(
-            GetVerificationResponseRequestedInformationItemSupportingDocumentsList,
-          ),
+          response_type: S.optional(S.String),
+          selection_mode: S.optional(S.String),
+          supporting_documents: S.optional(__S(9, __c1, 1)),
           supporting_files_explanation_allowed: S.optional(S.Boolean),
           supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(
-            GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList,
-          ),
+          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
           type: S.String,
         }),
       ).annotate({
         identifier: "GetVerificationResponseRequestedInformationItem",
       });
     case 1:
-      return S.Array(GetVerificationResponseRequestedInformationItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(CreateVerificationResponseAddress)),
+          address: S.optional(S.NullOr(__S(1, __c0, 1))),
           business_name: S.optional(S.NullOr(S.String)),
           business_structure: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
@@ -1383,13 +1125,13 @@ function __c2(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           first_name: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          kind: S.optional(GetVerificationResponseKind),
+          kind: S.optional(S.String),
           last_name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(GetVerificationResponseRequestedInformationList),
-          required_documents: S.optional(GetVerificationResponseRequiredDocumentsList),
+          requested_information: S.optional(__S(17, __c2, 1)),
+          required_documents: S.optional(__S(13, __c1, 5)),
           session_url: S.optional(S.NullOr(S.String)),
-          status: S.optional(GetVerificationResponseStatus),
+          status: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetVerificationResponse" });
@@ -1398,52 +1140,42 @@ function __c2(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListVerificationsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListVerificationsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/verifications", code: 200 })),
       ).annotate({ identifier: "ListVerificationsRequest" });
     case 4:
-      return S.Array(CreateVerificationResponseRequestedInformationItemErrorsItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           action_url: S.optional(S.String),
           details_label: S.optional(S.String),
           details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(
-            ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList,
-          ),
-          errors: S.optional(ListVerificationsResponseDataItemRequestedInformationItemErrorsList),
+          details_visible_for: S.optional(__S(2, __c0, 2)),
+          errors: S.optional(__S(20, __c2, 4)),
           id: S.String,
           label: S.String,
           optional: S.optional(S.Boolean),
-          options: S.optional(ListVerificationsResponseDataItemRequestedInformationItemOptionsList),
+          options: S.optional(__S(2, __c0, 2)),
           requirement: S.String,
-          response_type: S.optional(
-            ListVerificationsResponseDataItemRequestedInformationItemResponseType,
-          ),
-          selection_mode: S.optional(
-            ListVerificationsResponseDataItemRequestedInformationItemSelectionMode,
-          ),
-          supporting_documents: S.optional(
-            ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList,
-          ),
+          response_type: S.optional(S.String),
+          selection_mode: S.optional(S.String),
+          supporting_documents: S.optional(__S(9, __c1, 1)),
           supporting_files_explanation_allowed: S.optional(S.Boolean),
           supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(
-            ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList,
-          ),
+          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
           type: S.String,
         }),
       ).annotate({
         identifier: "ListVerificationsResponseDataItemRequestedInformationItem",
       });
     case 6:
-      return S.Array(ListVerificationsResponseDataItemRequestedInformationItem);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(CreateVerificationResponseAddress)),
+          address: S.optional(S.NullOr(__S(1, __c0, 1))),
           business_name: S.optional(S.NullOr(S.String)),
           business_structure: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
@@ -1452,15 +1184,13 @@ function __c2(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           first_name: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          kind: S.optional(ListVerificationsResponseDataItemKind),
+          kind: S.optional(S.String),
           last_name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(
-            ListVerificationsResponseDataItemRequestedInformationList,
-          ),
-          required_documents: S.optional(ListVerificationsResponseDataItemRequiredDocumentsList),
+          requested_information: S.optional(__S(22, __c2, 6)),
+          required_documents: S.optional(__S(13, __c1, 5)),
           session_url: S.optional(S.NullOr(S.String)),
-          status: S.optional(ListVerificationsResponseDataItemStatus),
+          status: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({
@@ -1471,11 +1201,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListVerificationsResponseDataItem);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListVerificationsResponseDataList),
+          data: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "ListVerificationsResponse",
@@ -1484,7 +1214,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: UpdateVerificationRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/verifications/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateVerificationRequest",
@@ -1495,38 +1225,30 @@ function __c3(j: number): any {
           action_url: S.optional(S.String),
           details_label: S.optional(S.String),
           details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(
-            UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList,
-          ),
-          errors: S.optional(UpdateVerificationResponseRequestedInformationItemErrorsList),
+          details_visible_for: S.optional(__S(2, __c0, 2)),
+          errors: S.optional(__S(4, __c0, 4)),
           id: S.String,
           label: S.String,
           optional: S.optional(S.Boolean),
-          options: S.optional(UpdateVerificationResponseRequestedInformationItemOptionsList),
+          options: S.optional(__S(5, __c0, 5)),
           requirement: S.String,
-          response_type: S.optional(UpdateVerificationResponseRequestedInformationItemResponseType),
-          selection_mode: S.optional(
-            UpdateVerificationResponseRequestedInformationItemSelectionMode,
-          ),
-          supporting_documents: S.optional(
-            UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList,
-          ),
+          response_type: S.optional(S.String),
+          selection_mode: S.optional(S.String),
+          supporting_documents: S.optional(__S(9, __c1, 1)),
           supporting_files_explanation_allowed: S.optional(S.Boolean),
           supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(
-            UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList,
-          ),
+          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
           type: S.String,
         }),
       ).annotate({
         identifier: "UpdateVerificationResponseRequestedInformationItem",
       });
     case 4:
-      return S.Array(UpdateVerificationResponseRequestedInformationItem);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(CreateVerificationResponseAddress)),
+          address: S.optional(S.NullOr(__S(1, __c0, 1))),
           business_name: S.optional(S.NullOr(S.String)),
           business_structure: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
@@ -1535,17 +1257,22 @@ function __c3(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           first_name: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          kind: S.optional(UpdateVerificationResponseKind),
+          kind: S.optional(S.String),
           last_name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(UpdateVerificationResponseRequestedInformationList),
-          required_documents: S.optional(UpdateVerificationResponseRequiredDocumentsList),
+          requested_information: S.optional(__S(28, __c3, 4)),
+          required_documents: S.optional(__S(13, __c1, 5)),
           session_url: S.optional(S.NullOr(S.String)),
-          status: S.optional(UpdateVerificationResponseStatus),
+          status: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateVerificationResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

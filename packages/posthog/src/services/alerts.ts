@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -38,11 +40,6 @@ export class NotFound
 
 /** Destination IDs to delete, as returned when the destination was created. */
 export type AlertsDestinationsDeleteCreateRequestHogFunctionIdsList = Array<string>;
-const AlertsDestinationsDeleteCreateRequestHogFunctionIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
-
 export interface AlertsDestinationsDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -51,75 +48,38 @@ export interface AlertsDestinationsDeleteCreateRequest {
   /** Destination IDs to delete, as returned when the destination was created. */
   hog_function_ids: AlertsDestinationsDeleteCreateRequestHogFunctionIdsList;
 }
-const AlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AlertsDestinationsDeleteCreateRequest>;
-
 export interface AlertsDestinationsDeleteCreateResponse {}
-const AlertsDestinationsDeleteCreateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AlertsDestinationsDeleteCreateResponse>;
-
 export interface AlertsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this alert configuration. */
   id: string;
 }
-const AlertsDestroyRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AlertsDestroyRequest>;
-
 export interface AlertsDestroyResponse {}
-const AlertsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AlertsDestroyResponse>;
-
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type CreateAlertRequestSubscribedUsersList = Array<number>;
-const CreateAlertRequestSubscribedUsersList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateAlertRequestSubscribedUsersList>;
-
 export interface InsightsThresholdBounds {
   /** Alert fires when the value drops below this number. */
   lower?: number | null;
   /** Alert fires when the value exceeds this number. */
   upper?: number | null;
 }
-const InsightsThresholdBounds = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<InsightsThresholdBounds>;
-
 export type InsightThresholdType = "absolute" | "percentage";
-const InsightThresholdType = S.String;
-
 export interface InsightThreshold {
   bounds?: InsightsThresholdBounds | null;
   /** Whether bounds are compared as absolute values or as percentage change from the previous interval. */
   type?: InsightThresholdType | (string & {});
 }
-const InsightThreshold = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<InsightThreshold>;
-
 export interface ThresholdInput {
   /** Optional name for the threshold. */
   name?: string;
   /** Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set. */
   configuration?: InsightThreshold;
 }
-const ThresholdInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ThresholdInput>;
-
 export type AlertConditionType = "absolute_value" | "relative_increase" | "relative_decrease";
-const AlertConditionType = S.String;
-
 export interface AlertCondition {
   type?: AlertConditionType | (string & {});
 }
-const AlertCondition = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AlertCondition>;
-
 export interface TrendsAlertConfig {
   /** When true, evaluate the current (still incomplete) time interval in addition to completed ones. */
   check_ongoing_interval?: boolean | null;
@@ -157,8 +117,6 @@ export type AlertConfigUnion =
   | HogQLAlertConfig
   | FunnelsAlertConfig
   | MetricsAlertConfig;
-const AlertConfigUnion = S.Unknown as any as S.Schema<AlertConfigUnion>;
-
 export interface PreprocessingConfig {
   /** Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0) */
   diffs_n?: number | null;
@@ -322,8 +280,6 @@ export type DetectorConfig =
   | OCSVMDetectorConfig
   | ECODDetectorConfig
   | LLMDetectorConfig;
-const DetectorConfig = S.Unknown as any as S.Schema<DetectorConfig>;
-
 /** * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type CalculationIntervalEnum =
   | "real_time"
@@ -332,39 +288,20 @@ export type CalculationIntervalEnum =
   | "daily"
   | "weekly"
   | "monthly";
-const CalculationIntervalEnum = S.String;
-
 export interface AlertScheduleRestrictionWindow {
   /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
   start?: string;
   /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
-const AlertScheduleRestrictionWindow = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AlertScheduleRestrictionWindow>;
-
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList = Array<AlertScheduleRestrictionWindow>;
-const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
-
 export interface AlertScheduleRestriction {
   /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
   blocked_windows?: AlertScheduleRestrictionBlockedWindowsList;
 }
-const AlertScheduleRestriction = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AlertScheduleRestriction>;
-
 /** * `notify` - Notify * `suppress` - Suppress */
 export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
-const InvestigationInconclusiveActionEnum = S.String;
-
 export interface CreateAlertRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -402,14 +339,7 @@ export interface CreateAlertRequest {
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
-const CreateAlertRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateAlertRequest>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -423,8 +353,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -436,13 +364,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UserBasic>;
-
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type AlertSubscribedUsersList = Array<number>;
-const AlertSubscribedUsersList =
-  CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSubscribedUsersList>;
-
 export interface Threshold {
   id?: string;
   created_at?: string;
@@ -451,23 +374,13 @@ export interface Threshold {
   /** Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set. */
   configuration?: InsightThreshold;
 }
-const Threshold = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Threshold>;
-
 /** * `Firing` - Firing * `Not firing` - Not firing * `Errored` - Errored * `Snoozed` - Snoozed */
 export type AlertCheckStateEnum = "Firing" | "Not firing" | "Errored" | "Snoozed";
-const AlertCheckStateEnum = S.String;
-
 export type AlertCheckErrorMap = { [key: string]: string | undefined };
-const AlertCheckErrorMap = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AlertCheckErrorMap>;
-
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
 export type InvestigationStatusEnum = "pending" | "running" | "done" | "failed" | "skipped";
-const InvestigationStatusEnum = S.String;
-
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum = "true_positive" | "false_positive" | "inconclusive";
-const InvestigationVerdictEnum = S.String;
-
 export interface AlertDelivery {
   /** Delivery channel: 'email' or 'hog_function' (destinations). */
   channel: string;
@@ -484,15 +397,8 @@ export interface AlertDelivery {
   /** Ready-to-display description of the delivery, e.g. 'Email: a@example.com' or 'Slack #eng-alerts'. */
   display_label: string;
 }
-const AlertDelivery = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AlertDelivery>;
-
 /** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
 export type AlertCheckDeliveriesList = Array<AlertDelivery>;
-const AlertCheckDeliveriesList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AlertCheckDeliveriesList>;
-
 export interface AlertCheck {
   id?: string;
   created_at?: string;
@@ -515,15 +421,9 @@ export interface AlertCheck {
   /** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
   deliveries?: AlertCheckDeliveriesList | null;
 }
-const AlertCheck = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AlertCheck>;
-
 /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
 export type AlertChecksList = Array<AlertCheck>;
-const AlertChecksList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AlertChecksList>;
-
 export type SearchMatchTypeEnum = "exact" | "similar";
-const SearchMatchTypeEnum = S.String;
-
 export interface Alert {
   id?: string;
   created_by?: UserBasic | null;
@@ -581,12 +481,8 @@ export interface Alert {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-const Alert = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Alert>;
-
 /** * `slack` - slack */
 export type ChannelTypeEnum = "slack";
-const ChannelTypeEnum = S.String;
-
 export interface CreateAlertsDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -601,30 +497,14 @@ export interface CreateAlertsDestinationRequest {
   /** Channel name shown on the destination, for example product-alerts. */
   slack_channel_name?: string;
 }
-const CreateAlertsDestinationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateAlertsDestinationRequest>;
-
 /** IDs of the created destination. Pass them to destinations/delete to remove it. */
 export type AlertDestinationResponseHogFunctionIdsList = Array<string>;
-const AlertDestinationResponseHogFunctionIdsList =
-  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertDestinationResponseHogFunctionIdsList>;
-
 export interface AlertDestinationResponse {
   /** IDs of the created destination. Pass them to destinations/delete to remove it. */
   hog_function_ids: AlertDestinationResponseHogFunctionIdsList;
 }
-const AlertDestinationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AlertDestinationResponse>;
-
 /** Numeric insight ID or saved insight short ID to simulate the detector on. */
 export type CreateAlertsSimulateRequestInsight = number | string;
-const CreateAlertsSimulateRequestInsight =
-  S.Unknown as any as S.Schema<CreateAlertsSimulateRequestInsight>;
-
 export interface CreateAlertsSimulateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -641,84 +521,36 @@ export interface CreateAlertsSimulateRequest {
   /** Per-insight-kind alert config. For SQL insights, selects the evaluated column and read direction (last_row/first_row) so the preview matches the alert; ignored for trends. */
   config?: AlertConfigUnion | null;
 }
-const CreateAlertsSimulateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateAlertsSimulateRequest>;
-
 /** Data values for each point. */
 export type AlertSimulateResponseDataList = Array<number>;
-const AlertSimulateResponseDataList =
-  CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSimulateResponseDataList>;
-
 /** Date labels for each point. */
 export type AlertSimulateResponseDatesList = Array<string>;
-const AlertSimulateResponseDatesList =
-  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertSimulateResponseDatesList>;
-
 /** Score for each point. Null can mean insufficient data or a valid unscored point. AI previews report model confidence only for points flagged by an anomaly verdict; all other points are null, including every point in a normal verdict. */
 export type AlertSimulateResponseScoresList = Array<number | null>;
-const AlertSimulateResponseScoresList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AlertSimulateResponseScoresList>;
-
 /** Indices of points flagged as anomalies. */
 export type AlertSimulateResponseTriggeredIndicesList = Array<number>;
-const AlertSimulateResponseTriggeredIndicesList =
-  CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSimulateResponseTriggeredIndicesList>;
-
 /** Dates of points flagged as anomalies. */
 export type AlertSimulateResponseTriggeredDatesList = Array<string>;
-const AlertSimulateResponseTriggeredDatesList =
-  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertSimulateResponseTriggeredDatesList>;
-
 export type AlertSimulateResponseSubDetectorScoresItemMap = { [key: string]: unknown | undefined };
-const AlertSimulateResponseSubDetectorScoresItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<AlertSimulateResponseSubDetectorScoresItemMap>;
-
 /** Per-sub-detector scores for ensemble detectors. Each entry has 'type' and 'scores' fields. */
 export type AlertSimulateResponseSubDetectorScoresList =
   Array<AlertSimulateResponseSubDetectorScoresItemMap>;
-const AlertSimulateResponseSubDetectorScoresList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<AlertSimulateResponseSubDetectorScoresList>;
-
 /** Data values for each point. */
 export type BreakdownSimulationResultDataList = Array<number>;
-const BreakdownSimulationResultDataList =
-  CreateAlertRequestSubscribedUsersList as any as S.Schema<BreakdownSimulationResultDataList>;
-
 /** Date labels for each point. */
 export type BreakdownSimulationResultDatesList = Array<string>;
-const BreakdownSimulationResultDatesList =
-  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BreakdownSimulationResultDatesList>;
-
 /** Anomaly score for each point. */
 export type BreakdownSimulationResultScoresList = Array<number | null>;
-const BreakdownSimulationResultScoresList =
-  AlertSimulateResponseScoresList as any as S.Schema<BreakdownSimulationResultScoresList>;
-
 /** Indices of points flagged as anomalies. */
 export type BreakdownSimulationResultTriggeredIndicesList = Array<number>;
-const BreakdownSimulationResultTriggeredIndicesList =
-  CreateAlertRequestSubscribedUsersList as any as S.Schema<BreakdownSimulationResultTriggeredIndicesList>;
-
 /** Dates of points flagged as anomalies. */
 export type BreakdownSimulationResultTriggeredDatesList = Array<string>;
-const BreakdownSimulationResultTriggeredDatesList =
-  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BreakdownSimulationResultTriggeredDatesList>;
-
 export type BreakdownSimulationResultSubDetectorScoresItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Per-sub-detector scores for ensemble detectors. */
 export type BreakdownSimulationResultSubDetectorScoresList =
   Array<BreakdownSimulationResultSubDetectorScoresItemMap>;
-const BreakdownSimulationResultSubDetectorScoresList =
-  AlertSimulateResponseSubDetectorScoresList as any as S.Schema<BreakdownSimulationResultSubDetectorScoresList>;
-
 export interface BreakdownSimulationResult {
   /** Breakdown value label. */
   label?: string;
@@ -739,18 +571,8 @@ export interface BreakdownSimulationResult {
   /** Per-sub-detector scores for ensemble detectors. */
   sub_detector_scores?: BreakdownSimulationResultSubDetectorScoresList;
 }
-const BreakdownSimulationResult = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<BreakdownSimulationResult>;
-
 /** Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values). */
 export type AlertSimulateResponseBreakdownResultsList = Array<BreakdownSimulationResult>;
-const AlertSimulateResponseBreakdownResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AlertSimulateResponseBreakdownResultsList>;
-
 export interface AlertSimulateResponse {
   /** Completed intervals skipped. */
   evaluation_delay_intervals?: number;
@@ -781,26 +603,13 @@ export interface AlertSimulateResponse {
   /** Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values). */
   breakdown_results?: AlertSimulateResponseBreakdownResultsList;
 }
-const AlertSimulateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AlertSimulateResponse>;
-
 export interface CreateAlertsTestDeliveryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this alert configuration. */
   id: string;
 }
-const CreateAlertsTestDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateAlertsTestDeliveryRequest>;
-
 export interface CreateAlertsTestDeliveryResponse {}
-const CreateAlertsTestDeliveryResponse =
-  AlertsDestinationsDeleteCreateResponse as any as S.Schema<CreateAlertsTestDeliveryResponse>;
-
 export interface GetAlertRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -815,8 +624,6 @@ export interface GetAlertRequest {
   /** Number of newest checks to skip (0-based). Use with checks_limit for pagination. Default 0. */
   checks_offset?: number;
 }
-const GetAlertRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetAlertRequest>;
-
 export interface ListAlertsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -835,27 +642,15 @@ export interface ListAlertsRequest {
   /** Optional. Fuzzy match against alert `name` using Postgres trigram word similarity (handles typos, transpositions, and prefix-as-you-type). Results are ordered by relevance, then creation time. Capped at 200 characters; longer queries return a 400 error. */
   search?: string;
 }
-const ListAlertsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListAlertsRequest>;
-
 export type PaginatedAlertListResultsList = Array<Alert>;
-const PaginatedAlertListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PaginatedAlertListResultsList>;
-
 export interface PaginatedAlertList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedAlertListResultsList;
 }
-const PaginatedAlertList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PaginatedAlertList>;
-
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type UpdateAlertRequestSubscribedUsersList = Array<number>;
-const UpdateAlertRequestSubscribedUsersList =
-  CreateAlertRequestSubscribedUsersList as any as S.Schema<UpdateAlertRequestSubscribedUsersList>;
-
 export interface UpdateAlertRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -895,13 +690,8 @@ export interface UpdateAlertRequest {
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
-const UpdateAlertRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<UpdateAlertRequest>;
-
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type UpdateAlertsPartialRequestSubscribedUsersList = Array<number>;
-const UpdateAlertsPartialRequestSubscribedUsersList =
-  CreateAlertRequestSubscribedUsersList as any as S.Schema<UpdateAlertsPartialRequestSubscribedUsersList>;
-
 export interface UpdateAlertsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -941,11 +731,6 @@ export interface UpdateAlertsPartialRequest {
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
-const UpdateAlertsPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<UpdateAlertsPartialRequest>;
-
 export type AlertsDestinationsDeleteCreateError = PosthogOpError;
 /** Stop sending this alert to a destination. The alert keeps its email recipients. */
 export const alertsDestinationsDeleteCreate: API.OperationMethod<
@@ -954,8 +739,8 @@ export const alertsDestinationsDeleteCreate: API.OperationMethod<
   AlertsDestinationsDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AlertsDestinationsDeleteCreateRequest,
-  output: AlertsDestinationsDeleteCreateResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<AlertsDestinationsDeleteCreateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AlertsDestinationsDeleteCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -968,8 +753,8 @@ export const alertsDestroy: API.OperationMethod<
   AlertsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AlertsDestroyRequest,
-  output: AlertsDestroyResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<AlertsDestroyRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AlertsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -982,8 +767,8 @@ export const createAlert: API.OperationMethod<
   CreateAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAlertRequest,
-  output: Alert,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateAlertRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -997,8 +782,8 @@ export const createAlertsDestination: API.OperationMethod<
   CreateAlertsDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAlertsDestinationRequest,
-  output: AlertDestinationResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<CreateAlertsDestinationRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<AlertDestinationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1012,8 +797,8 @@ export const createAlertsSimulate: API.OperationMethod<
   CreateAlertsSimulateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAlertsSimulateRequest,
-  output: AlertSimulateResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<CreateAlertsSimulateRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<AlertSimulateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1027,8 +812,8 @@ export const createAlertsTestDelivery: API.OperationMethod<
   CreateAlertsTestDeliveryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAlertsTestDeliveryRequest,
-  output: CreateAlertsTestDeliveryResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<CreateAlertsTestDeliveryRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateAlertsTestDeliveryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1041,8 +826,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertRequest,
-  output: Alert,
+  input: __S(32, __c4, 0) as any as S.Schema<GetAlertRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1055,8 +840,8 @@ export const listAlerts: API.OperationMethod<
   ListAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAlertsRequest,
-  output: PaginatedAlertList,
+  input: __S(33, __c4, 1) as any as S.Schema<ListAlertsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaginatedAlertList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1069,8 +854,8 @@ export const updateAlert: API.OperationMethod<
   UpdateAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAlertRequest,
-  output: Alert,
+  input: __S(36, __c4, 4) as any as S.Schema<UpdateAlertRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1083,8 +868,8 @@ export const updateAlertsPartial: API.OperationMethod<
   UpdateAlertsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAlertsPartialRequest,
-  output: Alert,
+  input: __S(37, __c4, 5) as any as S.Schema<UpdateAlertsPartialRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1100,7 +885,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          hog_function_ids: AlertsDestinationsDeleteCreateRequestHogFunctionIdsList,
+          hog_function_ids: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1140,8 +925,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bounds: S.optional(S.NullOr(InsightsThresholdBounds)),
-          type: S.optional(InsightThresholdType),
+          bounds: S.optional(S.NullOr(__S(6, __c0, 6))),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "InsightThreshold" });
   }
@@ -1152,13 +937,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          configuration: S.optional(InsightThreshold),
+          configuration: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "ThresholdInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(AlertConditionType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertCondition" });
     case 2:
@@ -1171,11 +956,11 @@ function __c1(j: number): any {
         identifier: "AlertScheduleRestrictionWindow",
       });
     case 3:
-      return S.Array(AlertScheduleRestrictionWindow);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          blocked_windows: S.optional(AlertScheduleRestrictionBlockedWindowsList),
+          blocked_windows: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "AlertScheduleRestriction" });
     case 5:
@@ -1184,21 +969,21 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           insight: S.optional(S.Number),
           name: S.optional(S.String),
-          subscribed_users: S.optional(CreateAlertRequestSubscribedUsersList),
-          threshold: S.optional(ThresholdInput),
-          condition: S.optional(S.NullOr(AlertCondition)),
+          subscribed_users: S.optional(__S(5, __c0, 5)),
+          threshold: S.optional(__S(8, __c1, 0)),
+          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
           enabled: S.optional(S.Boolean),
           schedule_start_time: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.NullOr(AlertConfigUnion)),
-          detector_config: S.optional(S.NullOr(DetectorConfig)),
+          config: S.optional(S.NullOr(S.Unknown)),
+          detector_config: S.optional(S.NullOr(S.Unknown)),
           evaluation_delay_intervals: S.optional(S.Number),
-          calculation_interval: S.optional(CalculationIntervalEnum),
+          calculation_interval: S.optional(S.String),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
+          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
-          investigation_inconclusive_action: S.optional(InvestigationInconclusiveActionEnum),
+          investigation_inconclusive_action: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/alerts/", code: 200 })),
       ).annotate({ identifier: "CreateAlertRequest" });
     case 6:
@@ -1213,8 +998,8 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(14, __c1, 6))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
   }
@@ -1227,7 +1012,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(InsightThreshold),
+          configuration: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "Threshold" });
     case 1:
@@ -1245,66 +1030,66 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AlertDelivery" });
     case 3:
-      return S.Array(AlertDelivery);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           calculated_value: S.optional(S.NullOr(S.Number)),
-          state: S.optional(AlertCheckStateEnum),
-          error: S.optional(S.NullOr(AlertCheckErrorMap)),
+          state: S.optional(S.String),
+          error: S.optional(S.NullOr(__S(17, __c2, 1))),
           targets_notified: S.optional(S.Boolean),
           anomaly_scores: S.optional(S.Unknown),
           triggered_points: S.optional(S.Unknown),
           triggered_dates: S.optional(S.Unknown),
           interval: S.optional(S.NullOr(S.String)),
           triggered_metadata: S.optional(S.Unknown),
-          investigation_status: S.optional(S.NullOr(InvestigationStatusEnum)),
-          investigation_verdict: S.optional(S.NullOr(InvestigationVerdictEnum)),
+          investigation_status: S.optional(S.NullOr(S.String)),
+          investigation_verdict: S.optional(S.NullOr(S.String)),
           investigation_summary: S.optional(S.NullOr(S.String)),
           investigation_notebook_short_id: S.optional(S.NullOr(S.String)),
           notification_sent_at: S.optional(S.NullOr(S.String)),
           notification_suppressed_by_agent: S.optional(S.Boolean),
-          deliveries: S.optional(S.NullOr(AlertCheckDeliveriesList)),
+          deliveries: S.optional(S.NullOr(__S(19, __c2, 3))),
         }),
       ).annotate({ identifier: "AlertCheck" });
     case 5:
-      return S.Array(AlertCheck);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(15, __c1, 7))),
           created_at: S.optional(S.String),
           insight: S.optional(S.Number),
           insight_short_id: S.optional(S.String),
           insight_display_name: S.optional(S.String),
           llm_detector_available: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          subscribed_users: S.optional(AlertSubscribedUsersList),
-          threshold: S.optional(Threshold),
-          condition: S.optional(S.NullOr(AlertCondition)),
+          subscribed_users: S.optional(__S(5, __c0, 5)),
+          threshold: S.optional(__S(16, __c2, 0)),
+          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
           state: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           last_notified_at: S.optional(S.NullOr(S.String)),
           last_checked_at: S.optional(S.NullOr(S.String)),
           schedule_start_time: S.optional(S.NullOr(S.String)),
           next_check_at: S.optional(S.NullOr(S.String)),
-          checks: S.optional(AlertChecksList),
+          checks: S.optional(__S(21, __c2, 5)),
           checks_total: S.optional(S.NullOr(S.Number)),
-          config: S.optional(S.NullOr(AlertConfigUnion)),
-          detector_config: S.optional(S.NullOr(DetectorConfig)),
+          config: S.optional(S.NullOr(S.Unknown)),
+          detector_config: S.optional(S.NullOr(S.Unknown)),
           evaluation_delay_intervals: S.optional(S.Number),
-          calculation_interval: S.optional(CalculationIntervalEnum),
+          calculation_interval: S.optional(S.String),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
+          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
           last_value: S.optional(S.NullOr(S.Number)),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
-          investigation_inconclusive_action: S.optional(InvestigationInconclusiveActionEnum),
-          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+          investigation_inconclusive_action: S.optional(S.String),
+          search_match_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Alert" });
     case 7:
@@ -1312,7 +1097,7 @@ function __c2(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          type: S.optional(ChannelTypeEnum),
+          type: S.optional(S.String),
           slack_workspace_id: S.Number,
           slack_channel_id: S.String,
           slack_channel_name: S.optional(S.String),
@@ -1333,7 +1118,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          hog_function_ids: AlertDestinationResponseHogFunctionIdsList,
+          hog_function_ids: __S(0, __c0, 0),
         }),
       ).annotate({ identifier: "AlertDestinationResponse" });
     case 1:
@@ -1341,11 +1126,11 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           evaluation_delay_intervals: S.optional(S.Number),
-          insight: S.optional(CreateAlertsSimulateRequestInsight),
-          detector_config: S.optional(DetectorConfig),
+          insight: S.optional(S.Unknown),
+          detector_config: S.optional(S.Unknown),
           series_index: S.optional(S.Number),
           date_from: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.NullOr(AlertConfigUnion)),
+          config: S.optional(S.NullOr(S.Unknown)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/alerts/simulate/", code: 200 }),
         ),
@@ -1355,25 +1140,25 @@ function __c3(j: number): any {
     case 2:
       return S.Array(/*@__PURE__*/ S.NullOr(S.Number));
     case 3:
-      return S.Array(AlertSimulateResponseSubDetectorScoresItemMap);
+      return S.Array(__S(14, __c1, 6));
     case 4:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          data: S.optional(BreakdownSimulationResultDataList),
-          dates: S.optional(BreakdownSimulationResultDatesList),
-          scores: S.optional(BreakdownSimulationResultScoresList),
-          triggered_indices: S.optional(BreakdownSimulationResultTriggeredIndicesList),
-          triggered_dates: S.optional(BreakdownSimulationResultTriggeredDatesList),
+          data: S.optional(__S(5, __c0, 5)),
+          dates: S.optional(__S(0, __c0, 0)),
+          scores: S.optional(__S(26, __c3, 2)),
+          triggered_indices: S.optional(__S(5, __c0, 5)),
+          triggered_dates: S.optional(__S(0, __c0, 0)),
           total_points: S.optional(S.Number),
           anomaly_count: S.optional(S.Number),
-          sub_detector_scores: S.optional(BreakdownSimulationResultSubDetectorScoresList),
+          sub_detector_scores: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "BreakdownSimulationResult",
       });
     case 5:
-      return S.Array(BreakdownSimulationResult);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1381,16 +1166,16 @@ function __c3(j: number): any {
           evaluated_interval_start: S.optional(S.String),
           evaluated_interval_end: S.optional(S.String),
           evaluated_interval_timezone: S.optional(S.String),
-          data: S.optional(AlertSimulateResponseDataList),
-          dates: S.optional(AlertSimulateResponseDatesList),
-          scores: S.optional(AlertSimulateResponseScoresList),
-          triggered_indices: S.optional(AlertSimulateResponseTriggeredIndicesList),
-          triggered_dates: S.optional(AlertSimulateResponseTriggeredDatesList),
+          data: S.optional(__S(5, __c0, 5)),
+          dates: S.optional(__S(0, __c0, 0)),
+          scores: S.optional(__S(26, __c3, 2)),
+          triggered_indices: S.optional(__S(5, __c0, 5)),
+          triggered_dates: S.optional(__S(0, __c0, 0)),
           interval: S.optional(S.NullOr(S.String)),
           total_points: S.optional(S.Number),
           anomaly_count: S.optional(S.Number),
-          sub_detector_scores: S.optional(AlertSimulateResponseSubDetectorScoresList),
-          breakdown_results: S.optional(AlertSimulateResponseBreakdownResultsList),
+          sub_detector_scores: S.optional(__S(27, __c3, 3)),
+          breakdown_results: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "AlertSimulateResponse" });
     case 7:
@@ -1439,14 +1224,14 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/alerts/", code: 200 })),
       ).annotate({ identifier: "ListAlertsRequest" });
     case 2:
-      return S.Array(Alert);
+      return S.Array(__S(22, __c2, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedAlertListResultsList),
+          results: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "PaginatedAlertList" });
     case 4:
@@ -1456,21 +1241,21 @@ function __c4(j: number): any {
           id: S.String.pipe(T.Label()),
           insight: S.optional(S.Number),
           name: S.optional(S.String),
-          subscribed_users: S.optional(UpdateAlertRequestSubscribedUsersList),
-          threshold: S.optional(ThresholdInput),
-          condition: S.optional(S.NullOr(AlertCondition)),
+          subscribed_users: S.optional(__S(5, __c0, 5)),
+          threshold: S.optional(__S(8, __c1, 0)),
+          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
           enabled: S.optional(S.Boolean),
           schedule_start_time: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.NullOr(AlertConfigUnion)),
-          detector_config: S.optional(S.NullOr(DetectorConfig)),
+          config: S.optional(S.NullOr(S.Unknown)),
+          detector_config: S.optional(S.NullOr(S.Unknown)),
           evaluation_delay_intervals: S.optional(S.Number),
-          calculation_interval: S.optional(CalculationIntervalEnum),
+          calculation_interval: S.optional(S.String),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
+          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
-          investigation_inconclusive_action: S.optional(InvestigationInconclusiveActionEnum),
+          investigation_inconclusive_action: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
         ),
@@ -1482,21 +1267,21 @@ function __c4(j: number): any {
           id: S.String.pipe(T.Label()),
           insight: S.optional(S.Number),
           name: S.optional(S.String),
-          subscribed_users: S.optional(UpdateAlertsPartialRequestSubscribedUsersList),
-          threshold: S.optional(ThresholdInput),
-          condition: S.optional(S.NullOr(AlertCondition)),
+          subscribed_users: S.optional(__S(5, __c0, 5)),
+          threshold: S.optional(__S(8, __c1, 0)),
+          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
           enabled: S.optional(S.Boolean),
           schedule_start_time: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.NullOr(AlertConfigUnion)),
-          detector_config: S.optional(S.NullOr(DetectorConfig)),
+          config: S.optional(S.NullOr(S.Unknown)),
+          detector_config: S.optional(S.NullOr(S.Unknown)),
           evaluation_delay_intervals: S.optional(S.Number),
-          calculation_interval: S.optional(CalculationIntervalEnum),
+          calculation_interval: S.optional(S.String),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
+          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
-          investigation_inconclusive_action: S.optional(InvestigationInconclusiveActionEnum),
+          investigation_inconclusive_action: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
         ),
@@ -1504,4 +1289,9 @@ function __c4(j: number): any {
         identifier: "UpdateAlertsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

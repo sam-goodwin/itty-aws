@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,11 +21,6 @@ export interface CheckSignalRNameAvailabilityRequest {
   /** The resource name to validate. e.g."my-resource-name" */
   name: string;
 }
-const CheckSignalRNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckSignalRNameAvailabilityRequest>;
-
 /** Result of the request to check name availability. It contains a flag and possible reason of failure. */
 export interface NameAvailability {
   /** Indicates whether the name is available or not. */
@@ -33,8 +30,6 @@ export interface NameAvailability {
   /** The message of the operation. */
   message?: string;
 }
-const NameAvailability = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<NameAvailability>;
-
 export interface DeleteSignalRRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -43,14 +38,7 @@ export interface DeleteSignalRRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const DeleteSignalRRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteSignalRRequest>;
-
 export interface DeleteSignalRResponse {}
-const DeleteSignalRResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteSignalRResponse>;
-
 export interface DeleteSignalRCustomCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -61,17 +49,7 @@ export interface DeleteSignalRCustomCertificateRequest {
   /** Custom certificate name */
   certificateName: string;
 }
-const DeleteSignalRCustomCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteSignalRCustomCertificateRequest>;
-
 export interface DeleteSignalRCustomCertificateResponse {}
-const DeleteSignalRCustomCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteSignalRCustomCertificateResponse>;
-
 export interface DeleteSignalRCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -82,15 +60,7 @@ export interface DeleteSignalRCustomDomainRequest {
   /** Custom domain name. */
   name: string;
 }
-const DeleteSignalRCustomDomainRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteSignalRCustomDomainRequest>;
-
 export interface DeleteSignalRCustomDomainResponse {}
-const DeleteSignalRCustomDomainResponse =
-  DeleteSignalRCustomCertificateResponse as any as S.Schema<DeleteSignalRCustomDomainResponse>;
-
 export interface DeleteSignalRPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -101,15 +71,7 @@ export interface DeleteSignalRPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const DeleteSignalRPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteSignalRPrivateEndpointConnectionRequest>;
-
 export interface DeleteSignalRPrivateEndpointConnectionResponse {}
-const DeleteSignalRPrivateEndpointConnectionResponse =
-  DeleteSignalRCustomCertificateResponse as any as S.Schema<DeleteSignalRPrivateEndpointConnectionResponse>;
-
 export interface DeleteSignalRReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -120,15 +82,7 @@ export interface DeleteSignalRReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const DeleteSignalRReplicasRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteSignalRReplicasRequest>;
-
 export interface DeleteSignalRReplicasResponse {}
-const DeleteSignalRReplicasResponse =
-  DeleteSignalRResponse as any as S.Schema<DeleteSignalRReplicasResponse>;
-
 export interface DeleteSignalRSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -139,15 +93,7 @@ export interface DeleteSignalRSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
 }
-const DeleteSignalRSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceRequest>;
-
 export interface DeleteSignalRSharedPrivateLinkResourceResponse {}
-const DeleteSignalRSharedPrivateLinkResourceResponse =
-  DeleteSignalRCustomCertificateResponse as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceResponse>;
-
 export interface GetSignalRRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -156,16 +102,10 @@ export interface GetSignalRRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const GetSignalRRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetSignalRRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -181,19 +121,10 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type GetSignalRResponseTagsMap = { [key: string]: string | undefined };
-const GetSignalRResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetSignalRResponseTagsMap>;
-
 /** Optional tier of this particular SKU. 'Standard' or 'Free'. `Basic` is deprecated, use `Standard` instead. */
 export type SignalRSkuTier = "Free" | "Basic" | "Standard" | "Premium";
-const SignalRSkuTier = S.String;
-
 /** The billing information of the resource. */
 export interface ResourceSku {
   /** The name of the SKU. Required. Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2 */
@@ -206,8 +137,6 @@ export interface ResourceSku {
   /** Optional, integer. The unit count of the resource. 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default. If present, following values are allowed: Free_F1: 1; Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P2: 100,200,300,400,500,600,700,800,900,1000; */
   capacity?: number;
 }
-const ResourceSku = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ResourceSku>;
-
 /** Provisioning state of the resource. */
 export type ProvisioningState =
   | "Unknown"
@@ -219,30 +148,19 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Moving";
-const ProvisioningState = S.String;
-
 /** Private endpoint */
 export interface PrivateEndpoint {
   /** Full qualified Id of the private endpoint */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PrivateEndpoint>;
-
 /** Group IDs */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
 export type PrivateLinkServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
   | "Disconnected";
-const PrivateLinkServiceConnectionStatus = S.String;
-
 /** Connection state of the private endpoint connection */
 export interface PrivateLinkServiceConnectionState {
   status?: PrivateLinkServiceConnectionStatus | (string & {});
@@ -251,11 +169,6 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** Private endpoint connection properties */
 export interface PrivateEndpointConnectionProperties {
   provisioningState?: ProvisioningState;
@@ -264,11 +177,6 @@ export interface PrivateEndpointConnectionProperties {
   groupIds?: PrivateEndpointConnectionPropertiesGroupIdsList;
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** A private endpoint connection to an azure resource */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -281,18 +189,8 @@ export interface PrivateEndpointConnection {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** Private endpoint connections to the resource. */
 export type SignalRPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const SignalRPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SignalRPropertiesPrivateEndpointConnectionsList>;
-
 /** Status of the shared private link resource */
 export type SharedPrivateLinkResourceStatus =
   | "Pending"
@@ -300,8 +198,6 @@ export type SharedPrivateLinkResourceStatus =
   | "Rejected"
   | "Disconnected"
   | "Timeout";
-const SharedPrivateLinkResourceStatus = S.String;
-
 /** Describes the properties of an existing Shared Private Link Resource */
 export interface SharedPrivateLinkResourceProperties {
   /** The group id from the provider of resource the shared private link resource is for */
@@ -313,11 +209,6 @@ export interface SharedPrivateLinkResourceProperties {
   requestMessage?: string;
   status?: SharedPrivateLinkResourceStatus;
 }
-const SharedPrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SharedPrivateLinkResourceProperties>;
-
 /** Describes a Shared Private Link Resource */
 export interface SharedPrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -330,38 +221,21 @@ export interface SharedPrivateLinkResource {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const SharedPrivateLinkResource = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SharedPrivateLinkResource>;
-
 /** The list of shared private link resources. */
 export type SignalRPropertiesSharedPrivateLinkResourcesList = Array<SharedPrivateLinkResource>;
-const SignalRPropertiesSharedPrivateLinkResourcesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<SignalRPropertiesSharedPrivateLinkResourcesList>;
-
 /** TLS settings for the resource */
 export interface SignalRTlsSettings {
   /** Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier. */
   clientCertEnabled?: boolean;
 }
-const SignalRTlsSettings = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SignalRTlsSettings>;
-
 /** FeatureFlags is the supported features of Azure SignalR service. - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use. - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively. - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively. - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature. */
 export type FeatureFlags =
   | "ServiceMode"
   | "EnableConnectivityLogs"
   | "EnableMessagingLogs"
   | "EnableLiveTrace";
-const FeatureFlags = S.String;
-
 /** Optional properties related to this feature. */
 export type SignalRFeaturePropertiesMap = { [key: string]: string | undefined };
-const SignalRFeaturePropertiesMap =
-  GetSignalRResponseTagsMap as any as S.Schema<SignalRFeaturePropertiesMap>;
-
 /** Feature of a resource, which controls the runtime behavior. */
 export interface SignalRFeature {
   flag: FeatureFlags | (string & {});
@@ -370,15 +244,8 @@ export interface SignalRFeature {
   /** Optional properties related to this feature. */
   properties?: SignalRFeaturePropertiesMap;
 }
-const SignalRFeature = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SignalRFeature>;
-
 /** List of the featureFlags. FeatureFlags that are not included in the parameters for the update operation will not be modified. And the response will only include featureFlags that are explicitly set. When a featureFlag is not explicitly set, its globally default value will be used But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags. */
 export type SignalRPropertiesFeaturesList = Array<SignalRFeature>;
-const SignalRPropertiesFeaturesList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SignalRPropertiesFeaturesList>;
-
 /** Live trace category configuration of a Microsoft.SignalRService resource. */
 export interface LiveTraceCategory {
   /** Gets or sets the live trace category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
@@ -386,15 +253,8 @@ export interface LiveTraceCategory {
   /** Indicates whether or the live trace category is enabled. Available values: true, false. Case insensitive. */
   enabled?: string;
 }
-const LiveTraceCategory = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LiveTraceCategory>;
-
 /** Gets or sets the list of category configurations. */
 export type LiveTraceConfigurationCategoriesList = Array<LiveTraceCategory>;
-const LiveTraceConfigurationCategoriesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<LiveTraceConfigurationCategoriesList>;
-
 /** Live trace configuration of a Microsoft.SignalRService resource. */
 export interface LiveTraceConfiguration {
   /** Indicates whether or not enable live trace. When it's set to true, live trace client can connect to the service. Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories". Available values: true, false. Case insensitive. */
@@ -402,11 +262,6 @@ export interface LiveTraceConfiguration {
   /** Gets or sets the list of category configurations. */
   categories?: LiveTraceConfigurationCategoriesList;
 }
-const LiveTraceConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<LiveTraceConfiguration>;
-
 /** Resource log category configuration of a Microsoft.SignalRService resource. */
 export interface ResourceLogCategory {
   /** Gets or sets the resource log category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
@@ -416,59 +271,35 @@ export interface ResourceLogCategory {
 }
 /** Gets or sets the list of category configurations. */
 export type ResourceLogConfigurationCategoriesList = Array<ResourceLogCategory>;
-const ResourceLogConfigurationCategoriesList =
-  LiveTraceConfigurationCategoriesList as any as S.Schema<ResourceLogConfigurationCategoriesList>;
-
 /** Resource log configuration of a Microsoft.SignalRService resource. */
 export interface ResourceLogConfiguration {
   /** Gets or sets the list of category configurations. */
   categories?: ResourceLogConfigurationCategoriesList;
 }
-const ResourceLogConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ResourceLogConfiguration>;
-
 /** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default. */
 export type SignalRCorsSettingsAllowedOriginsList = Array<string>;
-const SignalRCorsSettingsAllowedOriginsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SignalRCorsSettingsAllowedOriginsList>;
-
 /** Cross-Origin Resource Sharing (CORS) settings. */
 export interface SignalRCorsSettings {
   /** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default. */
   allowedOrigins?: SignalRCorsSettingsAllowedOriginsList;
 }
-const SignalRCorsSettings = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SignalRCorsSettings>;
-
 /** Serverless settings. */
 export interface ServerlessSettings {
   /** Gets or sets Client Connection Timeout. Optional to be set. Value in seconds. Default value is 30 seconds. Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals, and want the client to disconnect more quickly after the last message is sent. You can set the timeout to a longer period if messages are expected to be sent in longer intervals, and they want to keep the same client connection alive during this session. The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval. */
   connectionTimeoutInSeconds?: number;
 }
-const ServerlessSettings = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ServerlessSettings>;
-
 /** Upstream auth type enum. */
 export type UpstreamAuthType = "None" | "ManagedIdentity";
-const UpstreamAuthType = S.String;
-
 /** Managed identity settings for upstream. */
 export interface ManagedIdentitySettings {
   /** The Resource indicating the App ID URI of the target resource. It also appears in the aud (audience) claim of the issued token. */
   resource?: string;
 }
-const ManagedIdentitySettings = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ManagedIdentitySettings>;
-
 /** Upstream auth settings. If not set, no auth is used for upstream messages. */
 export interface UpstreamAuthSettings {
   type?: UpstreamAuthType | (string & {});
   managedIdentity?: ManagedIdentitySettings;
 }
-const UpstreamAuthSettings = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UpstreamAuthSettings>;
-
 /** Upstream template item settings. It defines the Upstream URL of the incoming requests. The template defines the pattern of the event, the hub or the category of the incoming request that matches current URL template. */
 export interface UpstreamTemplate {
   /** Gets or sets the matching pattern for hub names. If not set, it matches any hub. There are 3 kind of patterns supported: 1. "*", it to matches any hub name. 2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2". 3. The single hub name, for example, "hub1", it matches "hub1". */
@@ -481,41 +312,21 @@ export interface UpstreamTemplate {
   urlTemplate: string;
   auth?: UpstreamAuthSettings;
 }
-const UpstreamTemplate = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UpstreamTemplate>;
-
 /** Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects. */
 export type ServerlessUpstreamSettingsTemplatesList = Array<UpstreamTemplate>;
-const ServerlessUpstreamSettingsTemplatesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ServerlessUpstreamSettingsTemplatesList>;
-
 /** The settings for the Upstream when the service is in server-less mode. */
 export interface ServerlessUpstreamSettings {
   /** Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects. */
   templates?: ServerlessUpstreamSettingsTemplatesList;
 }
-const ServerlessUpstreamSettings = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ServerlessUpstreamSettings>;
-
 /** Azure Networking ACL Action. */
 export type ACLAction = "Allow" | "Deny";
-const ACLAction = S.String;
-
 /** The incoming request type to the service */
 export type SignalRRequestType = "ClientConnection" | "ServerConnection" | "RESTAPI" | "Trace";
-const SignalRRequestType = S.String;
-
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type NetworkACLAllowList = Array<SignalRRequestType | (string & {})>;
-const NetworkACLAllowList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<NetworkACLAllowList>;
-
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type NetworkACLDenyList = Array<SignalRRequestType | (string & {})>;
-const NetworkACLDenyList = NetworkACLAllowList as any as S.Schema<NetworkACLDenyList>;
-
 /** Network ACL */
 export interface NetworkACL {
   /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
@@ -523,18 +334,10 @@ export interface NetworkACL {
   /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
   deny?: NetworkACLDenyList;
 }
-const NetworkACL = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<NetworkACL>;
-
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type PrivateEndpointACLAllowList = Array<SignalRRequestType | (string & {})>;
-const PrivateEndpointACLAllowList =
-  NetworkACLAllowList as any as S.Schema<PrivateEndpointACLAllowList>;
-
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type PrivateEndpointACLDenyList = Array<SignalRRequestType | (string & {})>;
-const PrivateEndpointACLDenyList =
-  NetworkACLAllowList as any as S.Schema<PrivateEndpointACLDenyList>;
-
 /** ACL for a private endpoint */
 export interface PrivateEndpointACL {
   /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
@@ -544,30 +347,16 @@ export interface PrivateEndpointACL {
   /** Name of the private endpoint connection */
   name: string;
 }
-const PrivateEndpointACL = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<PrivateEndpointACL>;
-
 /** ACLs for requests from private endpoints */
 export type SignalRNetworkACLsPrivateEndpointsList = Array<PrivateEndpointACL>;
-const SignalRNetworkACLsPrivateEndpointsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<SignalRNetworkACLsPrivateEndpointsList>;
-
 /** An IP rule */
 export interface IPRule {
   /** An IP or CIDR or ServiceTag */
   value?: string;
   action?: ACLAction | (string & {});
 }
-const IPRule = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<IPRule>;
-
 /** IP rules for filtering public traffic */
 export type SignalRNetworkACLsIpRulesList = Array<IPRule>;
-const SignalRNetworkACLsIpRulesList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<SignalRNetworkACLsIpRulesList>;
-
 /** Network ACLs for the resource */
 export interface SignalRNetworkACLs {
   defaultAction?: ACLAction | (string & {});
@@ -577,8 +366,6 @@ export interface SignalRNetworkACLs {
   /** IP rules for filtering public traffic */
   ipRules?: SignalRNetworkACLsIpRulesList;
 }
-const SignalRNetworkACLs = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SignalRNetworkACLs>;
-
 /** A class that describes the properties of the resource */
 export interface SignalRProperties {
   provisioningState?: ProvisioningState;
@@ -618,16 +405,10 @@ export interface SignalRProperties {
   /** Stop or start the resource. Default to "False". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
   resourceStopped?: string;
 }
-const SignalRProperties = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SignalRProperties>;
-
 /** The kind of the service */
 export type ServiceKind = "SignalR" | "RawWebSockets";
-const ServiceKind = S.String;
-
 /** Represents the identity type: systemAssigned, userAssigned, None */
 export type ManagedIdentityType = "None" | "SystemAssigned" | "UserAssigned";
-const ManagedIdentityType = S.String;
-
 /** Properties of user assigned identity. */
 export interface UserAssignedIdentityProperty {
   /** Get the principal id for the user assigned identity */
@@ -635,20 +416,10 @@ export interface UserAssignedIdentityProperty {
   /** Get the client id for the user assigned identity */
   clientId?: string;
 }
-const UserAssignedIdentityProperty = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UserAssignedIdentityProperty>;
-
 /** Get or set the user assigned identities */
 export type ManagedIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityProperty | undefined;
 };
-const ManagedIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ManagedIdentityUserAssignedIdentitiesMap>;
-
 /** A class represent managed identities used for request and response */
 export interface ManagedIdentity {
   type?: ManagedIdentityType;
@@ -659,8 +430,6 @@ export interface ManagedIdentity {
   /** Get the tenant id for the system assigned identity. Only be used in response */
   tenantId?: string;
 }
-const ManagedIdentity = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ManagedIdentity>;
-
 export interface GetSignalRResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -679,8 +448,6 @@ export interface GetSignalRResponse {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const GetSignalRResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetSignalRResponse>;
-
 export interface GetSignalRCustomCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -691,11 +458,6 @@ export interface GetSignalRCustomCertificateRequest {
   /** Custom certificate name */
   certificateName: string;
 }
-const GetSignalRCustomCertificateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetSignalRCustomCertificateRequest>;
-
 /** Custom certificate properties. */
 export interface CustomCertificateProperties {
   provisioningState?: ProvisioningState;
@@ -706,11 +468,6 @@ export interface CustomCertificateProperties {
   /** Certificate secret version. */
   keyVaultSecretVersion?: string;
 }
-const CustomCertificateProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CustomCertificateProperties>;
-
 export interface GetSignalRCustomCertificateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -722,11 +479,6 @@ export interface GetSignalRCustomCertificateResponse {
   systemData?: SystemData;
   properties: CustomCertificateProperties;
 }
-const GetSignalRCustomCertificateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetSignalRCustomCertificateResponse>;
-
 export interface GetSignalRCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -737,18 +489,11 @@ export interface GetSignalRCustomDomainRequest {
   /** Custom domain name. */
   name: string;
 }
-const GetSignalRCustomDomainRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetSignalRCustomDomainRequest>;
-
 /** Reference to a resource. */
 export interface ResourceReference {
   /** Resource ID. */
   id?: string;
 }
-const ResourceReference = PrivateEndpoint as any as S.Schema<ResourceReference>;
-
 /** Properties of a custom domain. */
 export interface CustomDomainProperties {
   provisioningState?: ProvisioningState;
@@ -756,11 +501,6 @@ export interface CustomDomainProperties {
   domainName: string;
   customCertificate: ResourceReference;
 }
-const CustomDomainProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CustomDomainProperties>;
-
 export interface GetSignalRCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -772,11 +512,6 @@ export interface GetSignalRCustomDomainResponse {
   systemData?: SystemData;
   properties: CustomDomainProperties;
 }
-const GetSignalRCustomDomainResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetSignalRCustomDomainResponse>;
-
 export interface GetSignalRPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -787,11 +522,6 @@ export interface GetSignalRPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const GetSignalRPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetSignalRPrivateEndpointConnectionRequest>;
-
 export interface GetSignalRPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -803,9 +533,6 @@ export interface GetSignalRPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetSignalRPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetSignalRPrivateEndpointConnectionResponse>;
-
 export interface GetSignalRReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -816,16 +543,8 @@ export interface GetSignalRReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const GetSignalRReplicasRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetSignalRReplicasRequest>;
-
 /** Resource tags. */
 export type GetSignalRReplicasResponseTagsMap = { [key: string]: string | undefined };
-const GetSignalRReplicasResponseTagsMap =
-  GetSignalRResponseTagsMap as any as S.Schema<GetSignalRReplicasResponseTagsMap>;
-
 export interface ReplicaProperties {
   provisioningState?: ProvisioningState;
   /** Enable or disable the regional endpoint. Default to "Enabled". When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected. */
@@ -833,8 +552,6 @@ export interface ReplicaProperties {
   /** Stop or start the resource. Default to "false". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
   resourceStopped?: string;
 }
-const ReplicaProperties = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ReplicaProperties>;
-
 export interface GetSignalRReplicasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -851,11 +568,6 @@ export interface GetSignalRReplicasResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const GetSignalRReplicasResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetSignalRReplicasResponse>;
-
 export interface GetSignalRReplicaSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -868,11 +580,6 @@ export interface GetSignalRReplicaSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
 }
-const GetSignalRReplicaSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceRequest>;
-
 export interface GetSignalRReplicaSharedPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -884,9 +591,6 @@ export interface GetSignalRReplicaSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const GetSignalRReplicaSharedPrivateLinkResourceResponse =
-  SharedPrivateLinkResource as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceResponse>;
-
 export interface GetSignalRSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -897,11 +601,6 @@ export interface GetSignalRSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
 }
-const GetSignalRSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetSignalRSharedPrivateLinkResourceRequest>;
-
 export interface GetSignalRSharedPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -913,15 +612,7 @@ export interface GetSignalRSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const GetSignalRSharedPrivateLinkResourceResponse =
-  SharedPrivateLinkResource as any as S.Schema<GetSignalRSharedPrivateLinkResourceResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The object that describes a operation. */
 export interface OperationDisplay {
   /** Friendly name of the resource provider */
@@ -933,8 +624,6 @@ export interface OperationDisplay {
   /** The localized friendly description for the operation */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<OperationDisplay>;
-
 /** Specifications of the Dimension of metrics. */
 export interface Dimension {
   /** The public facing name of the dimension. */
@@ -946,15 +635,8 @@ export interface Dimension {
   /** A Boolean flag indicating whether this dimension should be included for the shoebox export scenario. */
   toBeExportedForShoebox?: boolean;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Dimension>;
-
 /** The dimensions of the metrics. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<MetricSpecificationDimensionsList>;
-
 /** Specifications of the Metrics for Azure Monitoring. */
 export interface MetricSpecification {
   /** Name of the metric. */
@@ -974,15 +656,8 @@ export interface MetricSpecification {
   /** The dimensions of the metrics. */
   dimensions?: MetricSpecificationDimensionsList;
 }
-const MetricSpecification = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<MetricSpecification>;
-
 /** Specifications of the Metrics for Azure Monitoring. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
 /** Specifications of the Logs for Azure Monitoring. */
 export interface LogSpecification {
   /** Name of the log. */
@@ -990,15 +665,8 @@ export interface LogSpecification {
   /** Localized friendly display name of the log. */
   displayName?: string;
 }
-const LogSpecification = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<LogSpecification>;
-
 /** Specifications of the Logs for Azure Monitoring. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
-
 /** An object that describes a specification. */
 export interface ServiceSpecification {
   /** Specifications of the Metrics for Azure Monitoring. */
@@ -1006,14 +674,10 @@ export interface ServiceSpecification {
   /** Specifications of the Logs for Azure Monitoring. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-const ServiceSpecification = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ServiceSpecification>;
-
 /** Extra Operation properties. */
 export interface OperationProperties {
   serviceSpecification?: ServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<OperationProperties>;
-
 /** REST API operation supported by resource provider. */
 export interface Operation {
   /** Name of the operation with format: {provider}/{resource}/{operation} */
@@ -1025,15 +689,8 @@ export interface Operation {
   origin?: string;
   properties?: OperationProperties;
 }
-const Operation = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider. */
 export type OperationListValueList = Array<Operation>;
-const OperationListValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<OperationListValueList>;
-
 /** Result of the request to list REST API operations. It contains a list of operations. */
 export interface OperationList {
   /** List of operations supported by the resource provider. */
@@ -1041,19 +698,12 @@ export interface OperationList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const OperationList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<OperationList>;
-
 export interface ListSignalRByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListSignalRByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListSignalRByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SignalRResourceTagsMap = { [key: string]: string | undefined };
 /** A class represent a resource. */
@@ -1075,15 +725,8 @@ export interface SignalRResource {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const SignalRResource = GetSignalRResponse as any as S.Schema<SignalRResource>;
-
 /** List of the resources */
 export type SignalRResourceListValueList = Array<SignalRResource>;
-const SignalRResourceListValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<SignalRResourceListValueList>;
-
 /** Object that includes an array of resources and a possible link for next set. */
 export interface SignalRResourceList {
   /** List of the resources */
@@ -1091,17 +734,10 @@ export interface SignalRResourceList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const SignalRResourceList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<SignalRResourceList>;
-
 export interface ListSignalRBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListSignalRBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListSignalRBySubscriptionRequest>;
-
 export interface ListSignalRCustomCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1110,11 +746,6 @@ export interface ListSignalRCustomCertificatesRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRCustomCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListSignalRCustomCertificatesRequest>;
-
 /** A custom certificate. */
 export interface CustomCertificate {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1127,15 +758,8 @@ export interface CustomCertificate {
   systemData?: SystemData;
   properties: CustomCertificateProperties;
 }
-const CustomCertificate = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CustomCertificate>;
-
 /** List of custom certificates of this resource. */
 export type CustomCertificateListValueList = Array<CustomCertificate>;
-const CustomCertificateListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CustomCertificateListValueList>;
-
 /** Custom certificates list. */
 export interface CustomCertificateList {
   /** List of custom certificates of this resource. */
@@ -1143,11 +767,6 @@ export interface CustomCertificateList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const CustomCertificateList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CustomCertificateList>;
-
 export interface ListSignalRCustomDomainsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1156,11 +775,6 @@ export interface ListSignalRCustomDomainsRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRCustomDomainsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListSignalRCustomDomainsRequest>;
-
 /** A custom domain */
 export interface CustomDomain {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1173,15 +787,8 @@ export interface CustomDomain {
   systemData?: SystemData;
   properties: CustomDomainProperties;
 }
-const CustomDomain = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<CustomDomain>;
-
 /** List of custom domains that bind to this resource. */
 export type CustomDomainListValueList = Array<CustomDomain>;
-const CustomDomainListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CustomDomainListValueList>;
-
 /** Custom domains list */
 export interface CustomDomainList {
   /** List of custom domains that bind to this resource. */
@@ -1189,8 +796,6 @@ export interface CustomDomainList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const CustomDomainList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CustomDomainList>;
-
 export interface ListSignalRKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1199,11 +804,6 @@ export interface ListSignalRKeysRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRKeysRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListSignalRKeysRequest>;
-
 /** A class represents the access keys of the resource. */
 export interface SignalRKeys {
   /** The primary access key. */
@@ -1215,8 +815,6 @@ export interface SignalRKeys {
   /** Connection string constructed via the secondaryKey */
   secondaryConnectionString?: string;
 }
-const SignalRKeys = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<SignalRKeys>;
-
 export interface ListSignalRPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1225,16 +823,8 @@ export interface ListSignalRPrivateEndpointConnectionsRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListSignalRPrivateEndpointConnectionsRequest>;
-
 /** The list of the private endpoint connections */
 export type PrivateEndpointConnectionListValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListValueList =
-  SignalRPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListValueList>;
-
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionList {
   /** The list of the private endpoint connections */
@@ -1242,11 +832,6 @@ export interface PrivateEndpointConnectionList {
   /** Request URL that can be used to query next page of private endpoint connections. Returned when the total number of requested private endpoint connections exceed maximum page size. */
   nextLink?: string;
 }
-const PrivateEndpointConnectionList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionList>;
-
 export interface ListSignalRPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1255,21 +840,10 @@ export interface ListSignalRPrivateLinkResourcesRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListSignalRPrivateLinkResourcesRequest>;
-
 /** Required members of the private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** Required private DNS zone names */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Describes the properties of a resource type that has been onboarded to private link service */
 export interface ShareablePrivateLinkResourceProperties {
   /** The description of the resource type that has been onboarded to private link service */
@@ -1279,30 +853,15 @@ export interface ShareablePrivateLinkResourceProperties {
   /** The resource provider type for the resource that has been onboarded to private link service */
   type?: string;
 }
-const ShareablePrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ShareablePrivateLinkResourceProperties>;
-
 /** Describes a resource type that has been onboarded to private link service */
 export interface ShareablePrivateLinkResourceType {
   /** The name of the resource type that has been onboarded to private link service */
   name?: string;
   properties?: ShareablePrivateLinkResourceProperties;
 }
-const ShareablePrivateLinkResourceType = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ShareablePrivateLinkResourceType>;
-
 /** The list of resources that are onboarded to private link service */
 export type PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
   Array<ShareablePrivateLinkResourceType>;
-const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList>;
-
 /** Private link resource properties */
 export interface PrivateLinkResourceProperties {
   /** Group Id of the private link resource */
@@ -1314,11 +873,6 @@ export interface PrivateLinkResourceProperties {
   /** The list of resources that are onboarded to private link service */
   shareablePrivateLinkResourceTypes?: PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** Private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1331,15 +885,8 @@ export interface PrivateLinkResource {
   systemData?: SystemData;
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<PrivateLinkResource>;
-
 /** List of PrivateLinkResource */
 export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<PrivateLinkResourceListValueList>;
-
 /** Contains a list of PrivateLinkResource and a possible link to query more results */
 export interface PrivateLinkResourceList {
   /** List of PrivateLinkResource */
@@ -1347,11 +894,6 @@ export interface PrivateLinkResourceList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const PrivateLinkResourceList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<PrivateLinkResourceList>;
-
 export interface ListSignalRReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1360,15 +902,8 @@ export interface ListSignalRReplicasRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRReplicasRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListSignalRReplicasRequest>;
-
 /** Resource tags. */
 export type ReplicaTagsMap = { [key: string]: string | undefined };
-const ReplicaTagsMap = GetSignalRResponseTagsMap as any as S.Schema<ReplicaTagsMap>;
-
 /** A class represent a replica resource. */
 export interface Replica {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1386,23 +921,14 @@ export interface Replica {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const Replica = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Replica>;
-
 /** List of the replica */
 export type ReplicaListValueList = Array<Replica>;
-const ReplicaListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ReplicaListValueList>;
-
 export interface ReplicaList {
   /** List of the replica */
   value?: ReplicaListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const ReplicaList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ReplicaList>;
-
 export interface ListSignalRReplicaSharedPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1413,16 +939,8 @@ export interface ListSignalRReplicaSharedPrivateLinkResourcesRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const ListSignalRReplicaSharedPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListSignalRReplicaSharedPrivateLinkResourcesRequest>;
-
 /** The list of the shared private link resources */
 export type SharedPrivateLinkResourceListValueList = Array<SharedPrivateLinkResource>;
-const SharedPrivateLinkResourceListValueList =
-  SignalRPropertiesSharedPrivateLinkResourcesList as any as S.Schema<SharedPrivateLinkResourceListValueList>;
-
 /** A list of shared private link resources */
 export interface SharedPrivateLinkResourceList {
   /** The list of the shared private link resources */
@@ -1430,11 +948,6 @@ export interface SharedPrivateLinkResourceList {
   /** Request URL that can be used to query next page of private endpoint connections. Returned when the total number of requested private endpoint connections exceed maximum page size. */
   nextLink?: string;
 }
-const SharedPrivateLinkResourceList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<SharedPrivateLinkResourceList>;
-
 export interface ListSignalRReplicaSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1445,22 +958,10 @@ export interface ListSignalRReplicaSkusRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const ListSignalRReplicaSkusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListSignalRReplicaSkusRequest>;
-
 /** Allows capacity value list. */
 export type SkuCapacityAllowedValuesList = Array<number>;
-const SkuCapacityAllowedValuesList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<SkuCapacityAllowedValuesList>;
-
 /** The scale type applicable to the sku. */
 export type ScaleType = "None" | "Manual" | "Automatic";
-const ScaleType = S.String;
-
 /** Describes scaling information of a sku. */
 export interface SkuCapacity {
   /** The lowest permitted capacity for this resource */
@@ -1473,8 +974,6 @@ export interface SkuCapacity {
   allowedValues?: SkuCapacityAllowedValuesList;
   scaleType?: ScaleType;
 }
-const SkuCapacity = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<SkuCapacity>;
-
 /** Describes an available sku." */
 export interface Sku {
   /** The resource type that this object applies to */
@@ -1482,12 +981,8 @@ export interface Sku {
   sku?: ResourceSku;
   capacity?: SkuCapacity;
 }
-const Sku = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<Sku>;
-
 /** The list of skus available for the resource. */
 export type SkuListValueList = Array<Sku>;
-const SkuListValueList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<SkuListValueList>;
-
 /** The list skus operation response */
 export interface SkuList {
   /** The list of skus available for the resource. */
@@ -1495,8 +990,6 @@ export interface SkuList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const SkuList = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<SkuList>;
-
 export interface ListSignalRSharedPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1505,11 +998,6 @@ export interface ListSignalRSharedPrivateLinkResourcesRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRSharedPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListSignalRSharedPrivateLinkResourcesRequest>;
-
 export interface ListSignalRSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1518,19 +1006,12 @@ export interface ListSignalRSkusRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListSignalRSkusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListSignalRSkusRequest>;
-
 export interface ListUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** the location like "eastus" */
   location: string;
 }
-const ListUsagesRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ListUsagesRequest>;
-
 /** Localizable String object containing the name and a localized value. */
 export interface SignalRUsageName {
   /** The identifier of the usage. */
@@ -1538,8 +1019,6 @@ export interface SignalRUsageName {
   /** Localized name of the usage. */
   localizedValue?: string;
 }
-const SignalRUsageName = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<SignalRUsageName>;
-
 /** Object that describes a specific usage of the resources. */
 export interface SignalRUsage {
   /** Fully qualified ARM resource id */
@@ -1552,15 +1031,8 @@ export interface SignalRUsage {
   /** Representing the units of the usage quota. Possible values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond. */
   unit?: string;
 }
-const SignalRUsage = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<SignalRUsage>;
-
 /** List of the resource usages */
 export type SignalRUsageListValueList = Array<SignalRUsage>;
-const SignalRUsageListValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<SignalRUsageListValueList>;
-
 /** Object that includes an array of the resource usages and a possible link for next set. */
 export interface SignalRUsageList {
   /** List of the resource usages */
@@ -1568,12 +1040,8 @@ export interface SignalRUsageList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const SignalRUsageList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<SignalRUsageList>;
-
 /** The type of access key. */
 export type KeyType = "Primary" | "Secondary" | "Salt";
-const KeyType = S.String;
-
 export interface RegenerateSignalRKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1583,11 +1051,6 @@ export interface RegenerateSignalRKeyRequest {
   resourceName: string;
   keyType?: KeyType | (string & {});
 }
-const RegenerateSignalRKeyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<RegenerateSignalRKeyRequest>;
-
 export interface RestartSignalRRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1596,14 +1059,7 @@ export interface RestartSignalRRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const RestartSignalRRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<RestartSignalRRequest>;
-
 export interface RestartSignalRResponse {}
-const RestartSignalRResponse = DeleteSignalRResponse as any as S.Schema<RestartSignalRResponse>;
-
 export interface RestartSignalRReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1614,20 +1070,9 @@ export interface RestartSignalRReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const RestartSignalRReplicasRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<RestartSignalRReplicasRequest>;
-
 export interface RestartSignalRReplicasResponse {}
-const RestartSignalRReplicasResponse =
-  DeleteSignalRResponse as any as S.Schema<RestartSignalRReplicasResponse>;
-
 /** Resource tags. */
 export type SignalRCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const SignalRCreateOrUpdateRequestTagsMap =
-  GetSignalRResponseTagsMap as any as S.Schema<SignalRCreateOrUpdateRequestTagsMap>;
-
 /** The billing information of the resource. */
 export interface ResourceSkuInput {
   /** The name of the SKU. Required. Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2 */
@@ -1636,13 +1081,8 @@ export interface ResourceSkuInput {
   /** Optional, integer. The unit count of the resource. 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default. If present, following values are allowed: Free_F1: 1; Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P2: 100,200,300,400,500,600,700,800,900,1000; */
   capacity?: number;
 }
-const ResourceSkuInput = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ResourceSkuInput>;
-
 /** List of the featureFlags. FeatureFlags that are not included in the parameters for the update operation will not be modified. And the response will only include featureFlags that are explicitly set. When a featureFlag is not explicitly set, its globally default value will be used But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags. */
 export type SignalRPropertiesInputFeaturesList = Array<SignalRFeature>;
-const SignalRPropertiesInputFeaturesList =
-  SignalRPropertiesFeaturesList as any as S.Schema<SignalRPropertiesInputFeaturesList>;
-
 /** A class that describes the properties of the resource */
 export interface SignalRPropertiesInput {
   tls?: SignalRTlsSettings;
@@ -1665,36 +1105,18 @@ export interface SignalRPropertiesInput {
   /** Stop or start the resource. Default to "False". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
   resourceStopped?: string;
 }
-const SignalRPropertiesInput = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<SignalRPropertiesInput>;
-
 /** Properties of user assigned identity. */
 export interface UserAssignedIdentityPropertyInput {}
-const UserAssignedIdentityPropertyInput =
-  DeleteSignalRCustomCertificateResponse as any as S.Schema<UserAssignedIdentityPropertyInput>;
-
 /** Get or set the user assigned identities */
 export type ManagedIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityPropertyInput | undefined;
 };
-const ManagedIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ManagedIdentityInputUserAssignedIdentitiesMap>;
-
 /** A class represent managed identities used for request and response */
 export interface ManagedIdentityInput {
   type?: ManagedIdentityType | (string & {});
   /** Get or set the user assigned identities */
   userAssignedIdentities?: ManagedIdentityInputUserAssignedIdentitiesMap;
 }
-const ManagedIdentityInput = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ManagedIdentityInput>;
-
 export interface SignalRCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1711,16 +1133,8 @@ export interface SignalRCreateOrUpdateRequest {
   kind?: ServiceKind | (string & {});
   identity?: ManagedIdentityInput;
 }
-const SignalRCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<SignalRCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type SignalRCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const SignalRCreateOrUpdateResponseTagsMap =
-  GetSignalRResponseTagsMap as any as S.Schema<SignalRCreateOrUpdateResponseTagsMap>;
-
 export interface SignalRCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1739,11 +1153,6 @@ export interface SignalRCreateOrUpdateResponse {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const SignalRCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<SignalRCreateOrUpdateResponse>;
-
 /** Custom certificate properties. */
 export interface CustomCertificatePropertiesInput {
   /** Base uri of the KeyVault that stores certificate. */
@@ -1753,11 +1162,6 @@ export interface CustomCertificatePropertiesInput {
   /** Certificate secret version. */
   keyVaultSecretVersion?: string;
 }
-const CustomCertificatePropertiesInput = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CustomCertificatePropertiesInput>;
-
 export interface SignalRCustomCertificatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1769,11 +1173,6 @@ export interface SignalRCustomCertificatesCreateOrUpdateRequest {
   certificateName: string;
   properties: CustomCertificatePropertiesInput;
 }
-const SignalRCustomCertificatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateRequest>;
-
 export interface SignalRCustomCertificatesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1785,20 +1184,12 @@ export interface SignalRCustomCertificatesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: CustomCertificateProperties;
 }
-const SignalRCustomCertificatesCreateOrUpdateResponse =
-  GetSignalRCustomCertificateResponse as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateResponse>;
-
 /** Properties of a custom domain. */
 export interface CustomDomainPropertiesInput {
   /** The custom domain name. */
   domainName: string;
   customCertificate: ResourceReference;
 }
-const CustomDomainPropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CustomDomainPropertiesInput>;
-
 export interface SignalRCustomDomainsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1810,11 +1201,6 @@ export interface SignalRCustomDomainsCreateOrUpdateRequest {
   name: string;
   properties: CustomDomainPropertiesInput;
 }
-const SignalRCustomDomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateRequest>;
-
 export interface SignalRCustomDomainsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1826,25 +1212,14 @@ export interface SignalRCustomDomainsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: CustomDomainProperties;
 }
-const SignalRCustomDomainsCreateOrUpdateResponse =
-  GetSignalRCustomDomainResponse as any as S.Schema<SignalRCustomDomainsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type SignalRReplicasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const SignalRReplicasCreateOrUpdateRequestTagsMap =
-  GetSignalRResponseTagsMap as any as S.Schema<SignalRReplicasCreateOrUpdateRequestTagsMap>;
-
 export interface ReplicaPropertiesInput {
   /** Enable or disable the regional endpoint. Default to "Enabled". When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected. */
   regionEndpointEnabled?: string;
   /** Stop or start the resource. Default to "false". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
   resourceStopped?: string;
 }
-const ReplicaPropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ReplicaPropertiesInput>;
-
 export interface SignalRReplicasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1861,11 +1236,6 @@ export interface SignalRReplicasCreateOrUpdateRequest {
   sku?: ResourceSkuInput;
   properties?: ReplicaPropertiesInput;
 }
-const SignalRReplicasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<SignalRReplicasCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type SignalRReplicasCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface SignalRReplicasCreateOrUpdateResponse {
@@ -1884,9 +1254,6 @@ export interface SignalRReplicasCreateOrUpdateResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const SignalRReplicasCreateOrUpdateResponse =
-  GetSignalRReplicasResponse as any as S.Schema<SignalRReplicasCreateOrUpdateResponse>;
-
 /** Describes the properties of an existing Shared Private Link Resource */
 export interface SharedPrivateLinkResourcePropertiesInput {
   /** The group id from the provider of resource the shared private link resource is for */
@@ -1896,11 +1263,6 @@ export interface SharedPrivateLinkResourcePropertiesInput {
   /** The request message for requesting approval of the shared private link resource */
   requestMessage?: string;
 }
-const SharedPrivateLinkResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<SharedPrivateLinkResourcePropertiesInput>;
-
 export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1914,11 +1276,6 @@ export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest {
   sharedPrivateLinkResourceName: string;
   properties?: SharedPrivateLinkResourcePropertiesInput;
 }
-const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest>;
-
 export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1930,11 +1287,6 @@ export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse 
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse>;
-
 export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1946,11 +1298,6 @@ export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest {
   sharedPrivateLinkResourceName: string;
   properties?: SharedPrivateLinkResourcePropertiesInput;
 }
-const SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest>;
-
 export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1962,14 +1309,8 @@ export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const SignalRSharedPrivateLinkResourcesCreateOrUpdateResponse =
-  SharedPrivateLinkResource as any as S.Schema<SignalRSharedPrivateLinkResourcesCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type UpdateSignalRRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSignalRRequestTagsMap =
-  GetSignalRResponseTagsMap as any as S.Schema<UpdateSignalRRequestTagsMap>;
-
 export interface UpdateSignalRRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1986,11 +1327,6 @@ export interface UpdateSignalRRequest {
   kind?: ServiceKind | (string & {});
   identity?: ManagedIdentityInput;
 }
-const UpdateSignalRRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<UpdateSignalRRequest>;
-
 /** Resource tags. */
 export type UpdateSignalRResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSignalRResponse {
@@ -2011,18 +1347,11 @@ export interface UpdateSignalRResponse {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const UpdateSignalRResponse = GetSignalRResponse as any as S.Schema<UpdateSignalRResponse>;
-
 /** Private endpoint connection properties */
 export interface PrivateEndpointConnectionPropertiesInput {
   privateEndpoint?: PrivateEndpoint;
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface UpdateSignalRPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2034,11 +1363,6 @@ export interface UpdateSignalRPrivateEndpointConnectionRequest {
   privateEndpointConnectionName: string;
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-const UpdateSignalRPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<UpdateSignalRPrivateEndpointConnectionRequest>;
-
 export interface UpdateSignalRPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2050,14 +1374,8 @@ export interface UpdateSignalRPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-const UpdateSignalRPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<UpdateSignalRPrivateEndpointConnectionResponse>;
-
 /** Resource tags. */
 export type UpdateSignalRReplicasRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSignalRReplicasRequestTagsMap =
-  GetSignalRResponseTagsMap as any as S.Schema<UpdateSignalRReplicasRequestTagsMap>;
-
 export interface UpdateSignalRReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2074,11 +1392,6 @@ export interface UpdateSignalRReplicasRequest {
   sku?: ResourceSkuInput;
   properties?: ReplicaPropertiesInput;
 }
-const UpdateSignalRReplicasRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<UpdateSignalRReplicasRequest>;
-
 /** Resource tags. */
 export type UpdateSignalRReplicasResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSignalRReplicasResponse {
@@ -2097,9 +1410,6 @@ export interface UpdateSignalRReplicasResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const UpdateSignalRReplicasResponse =
-  GetSignalRReplicasResponse as any as S.Schema<UpdateSignalRReplicasResponse>;
-
 export type CheckSignalRNameAvailabilityError = AzureOpError;
 /** Checks that the resource name is valid and is not already in use. */
 export const CheckSignalRNameAvailability: API.OperationMethod<
@@ -2108,8 +1418,8 @@ export const CheckSignalRNameAvailability: API.OperationMethod<
   CheckSignalRNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckSignalRNameAvailabilityRequest,
-  output: NameAvailability,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckSignalRNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<NameAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2123,8 +1433,8 @@ export const DeleteSignalR: API.OperationMethod<
   DeleteSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSignalRRequest,
-  output: DeleteSignalRResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteSignalRRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2138,8 +1448,8 @@ export const DeleteSignalRCustomCertificate: API.OperationMethod<
   DeleteSignalRCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSignalRCustomCertificateRequest,
-  output: DeleteSignalRCustomCertificateResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<DeleteSignalRCustomCertificateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2153,8 +1463,8 @@ export const DeleteSignalRCustomDomain: API.OperationMethod<
   DeleteSignalRCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSignalRCustomDomainRequest,
-  output: DeleteSignalRCustomDomainResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<DeleteSignalRCustomDomainRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2168,8 +1478,8 @@ export const DeleteSignalRPrivateEndpointConnection: API.OperationMethod<
   DeleteSignalRPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSignalRPrivateEndpointConnectionRequest,
-  output: DeleteSignalRPrivateEndpointConnectionResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<DeleteSignalRPrivateEndpointConnectionRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2183,8 +1493,8 @@ export const DeleteSignalRReplicas: API.OperationMethod<
   DeleteSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSignalRReplicasRequest,
-  output: DeleteSignalRReplicasResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteSignalRReplicasRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2198,8 +1508,8 @@ export const DeleteSignalRSharedPrivateLinkResource: API.OperationMethod<
   DeleteSignalRSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSignalRSharedPrivateLinkResourceRequest,
-  output: DeleteSignalRSharedPrivateLinkResourceResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2213,8 +1523,8 @@ export const GetSignalR: API.OperationMethod<
   GetSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalRRequest,
-  output: GetSignalRResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<GetSignalRRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2228,8 +1538,8 @@ export const GetSignalRCustomCertificate: API.OperationMethod<
   GetSignalRCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalRCustomCertificateRequest,
-  output: GetSignalRCustomCertificateResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<GetSignalRCustomCertificateRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetSignalRCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2243,8 +1553,8 @@ export const GetSignalRCustomDomain: API.OperationMethod<
   GetSignalRCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalRCustomDomainRequest,
-  output: GetSignalRCustomDomainResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<GetSignalRCustomDomainRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<GetSignalRCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2258,8 +1568,8 @@ export const GetSignalRPrivateEndpointConnection: API.OperationMethod<
   GetSignalRPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalRPrivateEndpointConnectionRequest,
-  output: GetSignalRPrivateEndpointConnectionResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<GetSignalRPrivateEndpointConnectionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetSignalRPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2273,8 +1583,8 @@ export const GetSignalRReplicas: API.OperationMethod<
   GetSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalRReplicasRequest,
-  output: GetSignalRReplicasResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<GetSignalRReplicasRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2288,8 +1598,8 @@ export const GetSignalRReplicaSharedPrivateLinkResource: API.OperationMethod<
   GetSignalRReplicaSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalRReplicaSharedPrivateLinkResourceRequest,
-  output: GetSignalRReplicaSharedPrivateLinkResourceResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2303,8 +1613,8 @@ export const GetSignalRSharedPrivateLinkResource: API.OperationMethod<
   GetSignalRSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalRSharedPrivateLinkResourceRequest,
-  output: GetSignalRSharedPrivateLinkResourceResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<GetSignalRSharedPrivateLinkResourceRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetSignalRSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2318,8 +1628,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationList,
+  input: __S(61, __c7, 5) as any as S.Schema<ListOperationsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2333,8 +1643,8 @@ export const ListSignalRByResourceGroup: API.OperationMethod<
   ListSignalRByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRByResourceGroupRequest,
-  output: SignalRResourceList,
+  input: __S(74, __c9, 2) as any as S.Schema<ListSignalRByResourceGroupRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<SignalRResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2348,8 +1658,8 @@ export const ListSignalRBySubscription: API.OperationMethod<
   ListSignalRBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRBySubscriptionRequest,
-  output: SignalRResourceList,
+  input: __S(77, __c9, 5) as any as S.Schema<ListSignalRBySubscriptionRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<SignalRResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2363,8 +1673,8 @@ export const ListSignalRCustomCertificates: API.OperationMethod<
   ListSignalRCustomCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRCustomCertificatesRequest,
-  output: CustomCertificateList,
+  input: __S(78, __c9, 6) as any as S.Schema<ListSignalRCustomCertificatesRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<CustomCertificateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2378,8 +1688,8 @@ export const ListSignalRCustomDomains: API.OperationMethod<
   ListSignalRCustomDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRCustomDomainsRequest,
-  output: CustomDomainList,
+  input: __S(82, __c10, 2) as any as S.Schema<ListSignalRCustomDomainsRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<CustomDomainList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2393,8 +1703,8 @@ export const ListSignalRKeys: API.OperationMethod<
   ListSignalRKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRKeysRequest,
-  output: SignalRKeys,
+  input: __S(86, __c10, 6) as any as S.Schema<ListSignalRKeysRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<SignalRKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2408,8 +1718,8 @@ export const ListSignalRPrivateEndpointConnections: API.OperationMethod<
   ListSignalRPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionList,
+  input: __S(88, __c11, 0) as any as S.Schema<ListSignalRPrivateEndpointConnectionsRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<PrivateEndpointConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2423,8 +1733,8 @@ export const ListSignalRPrivateLinkResources: API.OperationMethod<
   ListSignalRPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRPrivateLinkResourcesRequest,
-  output: PrivateLinkResourceList,
+  input: __S(90, __c11, 2) as any as S.Schema<ListSignalRPrivateLinkResourcesRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<PrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2438,8 +1748,8 @@ export const ListSignalRReplicas: API.OperationMethod<
   ListSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRReplicasRequest,
-  output: ReplicaList,
+  input: __S(98, __c12, 2) as any as S.Schema<ListSignalRReplicasRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<ReplicaList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2453,8 +1763,8 @@ export const ListSignalRReplicaSharedPrivateLinkResources: API.OperationMethod<
   ListSignalRReplicaSharedPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRReplicaSharedPrivateLinkResourcesRequest,
-  output: SharedPrivateLinkResourceList,
+  input: __S(102, __c12, 6) as any as S.Schema<ListSignalRReplicaSharedPrivateLinkResourcesRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2468,8 +1778,8 @@ export const ListSignalRReplicaSkus: API.OperationMethod<
   ListSignalRReplicaSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRReplicaSkusRequest,
-  output: SkuList,
+  input: __S(104, __c13, 0) as any as S.Schema<ListSignalRReplicaSkusRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<SkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2483,8 +1793,8 @@ export const ListSignalRSharedPrivateLinkResources: API.OperationMethod<
   ListSignalRSharedPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRSharedPrivateLinkResourcesRequest,
-  output: SharedPrivateLinkResourceList,
+  input: __S(110, __c13, 6) as any as S.Schema<ListSignalRSharedPrivateLinkResourcesRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2498,8 +1808,8 @@ export const ListSignalRSkus: API.OperationMethod<
   ListSignalRSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSignalRSkusRequest,
-  output: SkuList,
+  input: __S(111, __c13, 7) as any as S.Schema<ListSignalRSkusRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<SkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2513,8 +1823,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsagesRequest,
-  output: SignalRUsageList,
+  input: __S(112, __c14, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<SignalRUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2528,8 +1838,8 @@ export const RegenerateSignalRKey: API.OperationMethod<
   RegenerateSignalRKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateSignalRKeyRequest,
-  output: SignalRKeys,
+  input: __S(117, __c14, 5) as any as S.Schema<RegenerateSignalRKeyRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<SignalRKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2543,8 +1853,8 @@ export const RestartSignalR: API.OperationMethod<
   RestartSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartSignalRRequest,
-  output: RestartSignalRResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<RestartSignalRRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<RestartSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2558,8 +1868,8 @@ export const RestartSignalRReplicas: API.OperationMethod<
   RestartSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartSignalRReplicasRequest,
-  output: RestartSignalRReplicasResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<RestartSignalRReplicasRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<RestartSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2573,8 +1883,8 @@ export const SignalRCreateOrUpdate: API.OperationMethod<
   SignalRCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalRCreateOrUpdateRequest,
-  output: SignalRCreateOrUpdateResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<SignalRCreateOrUpdateRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<SignalRCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2588,8 +1898,8 @@ export const SignalRCustomCertificatesCreateOrUpdate: API.OperationMethod<
   SignalRCustomCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalRCustomCertificatesCreateOrUpdateRequest,
-  output: SignalRCustomCertificatesCreateOrUpdateResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2603,8 +1913,8 @@ export const SignalRCustomDomainsCreateOrUpdate: API.OperationMethod<
   SignalRCustomDomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalRCustomDomainsCreateOrUpdateRequest,
-  output: SignalRCustomDomainsCreateOrUpdateResponse,
+  input: __S(129, __c16, 1) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2618,8 +1928,8 @@ export const SignalRReplicasCreateOrUpdate: API.OperationMethod<
   SignalRReplicasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalRReplicasCreateOrUpdateRequest,
-  output: SignalRReplicasCreateOrUpdateResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<SignalRReplicasCreateOrUpdateRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<SignalRReplicasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2633,8 +1943,16 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdate: API.Operati
   SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest,
-  output: SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse,
+  input: __S(
+    133,
+    __c16,
+    5,
+  ) as any as S.Schema<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest>,
+  output: __S(
+    134,
+    __c16,
+    6,
+  ) as any as S.Schema<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2648,8 +1966,16 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdate: API.OperationMetho
   SignalRSharedPrivateLinkResourcesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest,
-  output: SignalRSharedPrivateLinkResourcesCreateOrUpdateResponse,
+  input: __S(
+    135,
+    __c16,
+    7,
+  ) as any as S.Schema<SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest>,
+  output: __S(
+    21,
+    __c2,
+    5,
+  ) as any as S.Schema<SignalRSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2663,8 +1989,8 @@ export const UpdateSignalR: API.OperationMethod<
   UpdateSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSignalRRequest,
-  output: UpdateSignalRResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateSignalRRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UpdateSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2004,8 @@ export const UpdateSignalRPrivateEndpointConnection: API.OperationMethod<
   UpdateSignalRPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSignalRPrivateEndpointConnectionRequest,
-  output: UpdateSignalRPrivateEndpointConnectionResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<UpdateSignalRPrivateEndpointConnectionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateSignalRPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2019,8 @@ export const UpdateSignalRReplicas: API.OperationMethod<
   UpdateSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSignalRReplicasRequest,
-  output: UpdateSignalRReplicasResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<UpdateSignalRReplicasRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<UpdateSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2865,10 +2191,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2878,7 +2204,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(SignalRSkuTier),
+          tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -2899,7 +2225,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateLinkServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -2909,10 +2235,10 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(14, __c1, 6)),
+          groupIds: S.optional(__S(15, __c1, 7)),
+          privateLinkServiceConnectionState: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -2923,22 +2249,22 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 3:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String,
           privateLinkResourceId: S.String,
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           requestMessage: S.optional(S.String),
-          status: S.optional(SharedPrivateLinkResourceStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResourceProperties",
@@ -2949,14 +2275,14 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SharedPrivateLinkResourceProperties),
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResource",
       });
     case 6:
-      return S.Array(SharedPrivateLinkResource);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2970,13 +2296,13 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          flag: FeatureFlags,
+          flag: S.String,
           value: S.String,
-          properties: S.optional(SignalRFeaturePropertiesMap),
+          properties: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "SignalRFeature" });
     case 1:
-      return S.Array(SignalRFeature);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2985,24 +2311,24 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "LiveTraceCategory" });
     case 3:
-      return S.Array(LiveTraceCategory);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.String),
-          categories: S.optional(LiveTraceConfigurationCategoriesList),
+          categories: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "LiveTraceConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(ResourceLogConfigurationCategoriesList),
+          categories: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "ResourceLogConfiguration" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(SignalRCorsSettingsAllowedOriginsList),
+          allowedOrigins: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "SignalRCorsSettings" });
     case 7:
@@ -3024,8 +2350,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(UpstreamAuthType),
-          managedIdentity: S.optional(ManagedIdentitySettings),
+          type: S.optional(S.String),
+          managedIdentity: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "UpstreamAuthSettings" });
     case 2:
@@ -3035,33 +2361,33 @@ function __c4(j: number): any {
           eventPattern: S.optional(S.String),
           categoryPattern: S.optional(S.String),
           urlTemplate: S.String,
-          auth: S.optional(UpstreamAuthSettings),
+          auth: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "UpstreamTemplate" });
     case 3:
-      return S.Array(UpstreamTemplate);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          templates: S.optional(ServerlessUpstreamSettingsTemplatesList),
+          templates: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({
         identifier: "ServerlessUpstreamSettings",
       });
     case 5:
-      return S.Array(SignalRRequestType);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          allow: S.optional(NetworkACLAllowList),
-          deny: S.optional(NetworkACLDenyList),
+          allow: S.optional(__S(37, __c4, 5)),
+          deny: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "NetworkACL" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allow: S.optional(PrivateEndpointACLAllowList),
-          deny: S.optional(PrivateEndpointACLDenyList),
+          allow: S.optional(__S(37, __c4, 5)),
+          deny: S.optional(__S(37, __c4, 5)),
           name: S.String,
         }),
       ).annotate({ identifier: "PrivateEndpointACL" });
@@ -3070,45 +2396,45 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateEndpointACL);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          action: S.optional(ACLAction),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "IPRule" });
     case 2:
-      return S.Array(IPRule);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          defaultAction: S.optional(ACLAction),
-          publicNetwork: S.optional(NetworkACL),
-          privateEndpoints: S.optional(SignalRNetworkACLsPrivateEndpointsList),
-          ipRules: S.optional(SignalRNetworkACLsIpRulesList),
+          defaultAction: S.optional(S.String),
+          publicNetwork: S.optional(__S(38, __c4, 6)),
+          privateEndpoints: S.optional(__S(40, __c5, 0)),
+          ipRules: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "SignalRNetworkACLs" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           externalIP: S.optional(S.String),
           hostName: S.optional(S.String),
           publicPort: S.optional(S.Number),
           serverPort: S.optional(S.Number),
           version: S.optional(S.String),
-          privateEndpointConnections: S.optional(SignalRPropertiesPrivateEndpointConnectionsList),
-          sharedPrivateLinkResources: S.optional(SignalRPropertiesSharedPrivateLinkResourcesList),
-          tls: S.optional(SignalRTlsSettings),
+          privateEndpointConnections: S.optional(__S(19, __c2, 3)),
+          sharedPrivateLinkResources: S.optional(__S(22, __c2, 6)),
+          tls: S.optional(__S(23, __c2, 7)),
           hostNamePrefix: S.optional(S.String),
-          features: S.optional(SignalRPropertiesFeaturesList),
-          liveTraceConfiguration: S.optional(LiveTraceConfiguration),
-          resourceLogConfiguration: S.optional(ResourceLogConfiguration),
-          cors: S.optional(SignalRCorsSettings),
-          serverless: S.optional(ServerlessSettings),
-          upstream: S.optional(ServerlessUpstreamSettings),
-          networkACLs: S.optional(SignalRNetworkACLs),
+          features: S.optional(__S(25, __c3, 1)),
+          liveTraceConfiguration: S.optional(__S(28, __c3, 4)),
+          resourceLogConfiguration: S.optional(__S(29, __c3, 5)),
+          cors: S.optional(__S(30, __c3, 6)),
+          serverless: S.optional(__S(31, __c3, 7)),
+          upstream: S.optional(__S(36, __c4, 4)),
+          networkACLs: S.optional(__S(43, __c5, 3)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           disableAadAuth: S.optional(S.Boolean),
@@ -3126,12 +2452,12 @@ function __c5(j: number): any {
         identifier: "UserAssignedIdentityProperty",
       });
     case 6:
-      return S.Record(S.String, UserAssignedIdentityProperty);
+      return S.Record(S.String, __S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(ManagedIdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(46, __c5, 6)),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
@@ -3146,13 +2472,13 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetSignalRResponseTagsMap),
+          systemData: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(SignalRProperties),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentity),
+          sku: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(44, __c5, 4)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "GetSignalRResponse" });
     case 1:
@@ -3176,7 +2502,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           keyVaultBaseUri: S.String,
           keyVaultSecretName: S.String,
           keyVaultSecretVersion: S.optional(S.String),
@@ -3190,8 +2516,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomCertificateProperties,
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: __S(50, __c6, 2),
         }),
       ).annotate({
         identifier: "GetSignalRCustomCertificateResponse",
@@ -3217,9 +2543,9 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           domainName: S.String,
-          customCertificate: ResourceReference,
+          customCertificate: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "CustomDomainProperties" });
     case 6:
@@ -3228,8 +2554,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomDomainProperties,
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: __S(53, __c6, 5),
         }),
       ).annotate({
         identifier: "GetSignalRCustomDomainResponse",
@@ -3277,7 +2603,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           regionEndpointEnabled: S.optional(S.String),
           resourceStopped: S.optional(S.String),
         }),
@@ -3288,11 +2614,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetSignalRReplicasResponseTagsMap),
+          systemData: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(ReplicaProperties),
+          sku: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({
         identifier: "GetSignalRReplicasResponse",
@@ -3368,7 +2694,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Dimension);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3379,11 +2705,11 @@ function __c8(j: number): any {
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.String),
           category: S.optional(S.String),
-          dimensions: S.optional(MetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 2:
-      return S.Array(MetricSpecification);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3392,18 +2718,18 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 4:
-      return S.Array(LogSpecification);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
-          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
+          metricSpecifications: S.optional(__S(66, __c8, 2)),
+          logSpecifications: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ServiceSpecification),
+          serviceSpecification: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 7:
@@ -3411,9 +2737,9 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(62, __c7, 6)),
           origin: S.optional(S.String),
-          properties: S.optional(OperationProperties),
+          properties: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -3421,11 +2747,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListValueList),
+          value: S.optional(__S(72, __c9, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
@@ -3446,11 +2772,11 @@ function __c9(j: number): any {
         identifier: "ListSignalRByResourceGroupRequest",
       });
     case 3:
-      return S.Array(SignalRResource);
+      return S.Array(__S(48, __c6, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SignalRResourceListValueList),
+          value: S.optional(__S(75, __c9, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRResourceList" });
@@ -3492,8 +2818,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomCertificateProperties,
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: __S(50, __c6, 2),
         }),
       ).annotate({ identifier: "CustomCertificate" });
   }
@@ -3501,11 +2827,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomCertificate);
+      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CustomCertificateListValueList),
+          value: S.optional(__S(80, __c10, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomCertificateList" });
@@ -3532,16 +2858,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomDomainProperties,
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: __S(53, __c6, 5),
         }),
       ).annotate({ identifier: "CustomDomain" });
     case 4:
-      return S.Array(CustomDomain);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CustomDomainListValueList),
+          value: S.optional(__S(84, __c10, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainList" });
@@ -3593,7 +2919,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListValueList),
+          value: S.optional(__S(19, __c2, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3630,22 +2956,20 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(ShareablePrivateLinkResourceProperties),
+          properties: S.optional(__S(91, __c11, 3)),
         }),
       ).annotate({
         identifier: "ShareablePrivateLinkResourceType",
       });
     case 5:
-      return S.Array(ShareablePrivateLinkResourceType);
+      return S.Array(__S(92, __c11, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
-          shareablePrivateLinkResourceTypes: S.optional(
-            PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList,
-          ),
+          requiredMembers: S.optional(__S(15, __c1, 7)),
+          requiredZoneNames: S.optional(__S(15, __c1, 7)),
+          shareablePrivateLinkResourceTypes: S.optional(__S(93, __c11, 5)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -3656,8 +2980,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(94, __c11, 6)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
   }
@@ -3665,11 +2989,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(95, __c11, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourceListValueList),
+          value: S.optional(__S(96, __c12, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceList" });
@@ -3696,19 +3020,19 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ReplicaTagsMap),
+          systemData: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(ReplicaProperties),
+          sku: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "Replica" });
     case 4:
-      return S.Array(Replica);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReplicaListValueList),
+          value: S.optional(__S(100, __c12, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaList" });
@@ -3733,7 +3057,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SharedPrivateLinkResourceListValueList),
+          value: S.optional(__S(22, __c2, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3769,24 +3093,24 @@ function __c13(j: number): any {
           minimum: S.optional(S.Number),
           maximum: S.optional(S.Number),
           default: S.optional(S.Number),
-          allowedValues: S.optional(SkuCapacityAllowedValuesList),
-          scaleType: S.optional(ScaleType),
+          allowedValues: S.optional(__S(105, __c13, 1)),
+          scaleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuCapacity" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(ResourceSku),
-          capacity: S.optional(SkuCapacity),
+          sku: S.optional(__S(13, __c1, 5)),
+          capacity: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({ identifier: "Sku" });
     case 4:
-      return S.Array(Sku);
+      return S.Array(__S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SkuListValueList),
+          value: S.optional(__S(108, __c13, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuList" });
@@ -3853,16 +3177,16 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(SignalRUsageName),
+          name: S.optional(__S(113, __c14, 1)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRUsage" });
     case 3:
-      return S.Array(SignalRUsage);
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SignalRUsageListValueList),
+          value: S.optional(__S(115, __c14, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRUsageList" });
@@ -3872,7 +3196,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          keyType: S.optional(KeyType),
+          keyType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3925,21 +3249,21 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(SignalRSkuTier),
+          tier: S.optional(S.String),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResourceSkuInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tls: S.optional(SignalRTlsSettings),
-          features: S.optional(SignalRPropertiesInputFeaturesList),
-          liveTraceConfiguration: S.optional(LiveTraceConfiguration),
-          resourceLogConfiguration: S.optional(ResourceLogConfiguration),
-          cors: S.optional(SignalRCorsSettings),
-          serverless: S.optional(ServerlessSettings),
-          upstream: S.optional(ServerlessUpstreamSettings),
-          networkACLs: S.optional(SignalRNetworkACLs),
+          tls: S.optional(__S(23, __c2, 7)),
+          features: S.optional(__S(25, __c3, 1)),
+          liveTraceConfiguration: S.optional(__S(28, __c3, 4)),
+          resourceLogConfiguration: S.optional(__S(29, __c3, 5)),
+          cors: S.optional(__S(30, __c3, 6)),
+          serverless: S.optional(__S(31, __c3, 7)),
+          upstream: S.optional(__S(36, __c4, 4)),
+          networkACLs: S.optional(__S(43, __c5, 3)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           disableAadAuth: S.optional(S.Boolean),
@@ -3948,12 +3272,12 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "SignalRPropertiesInput" });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityPropertyInput);
+      return S.Record(S.String, __S(5, __c0, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(ManagedIdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(122, __c15, 2)),
         }),
       ).annotate({ identifier: "ManagedIdentityInput" });
     case 4:
@@ -3962,12 +3286,12 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(SignalRCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(SignalRPropertiesInput),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentityInput),
+          sku: S.optional(__S(120, __c15, 0)),
+          properties: S.optional(__S(121, __c15, 1)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(123, __c15, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3985,13 +3309,13 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SignalRCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(SignalRProperties),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentity),
+          sku: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(44, __c5, 4)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "SignalRCreateOrUpdateResponse",
@@ -4013,7 +3337,7 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          properties: CustomCertificatePropertiesInput,
+          properties: __S(126, __c15, 6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4033,7 +3357,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
-          customCertificate: ResourceReference,
+          customCertificate: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "CustomDomainPropertiesInput",
@@ -4045,7 +3369,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: CustomDomainPropertiesInput,
+          properties: __S(128, __c16, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4071,10 +3395,10 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(SignalRReplicasCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(ReplicaPropertiesInput),
+          sku: S.optional(__S(120, __c15, 0)),
+          properties: S.optional(__S(130, __c16, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4104,7 +3428,7 @@ function __c16(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
+          properties: S.optional(__S(132, __c16, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4122,8 +3446,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SharedPrivateLinkResourceProperties),
+          systemData: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse",
@@ -4135,7 +3459,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
+          properties: S.optional(__S(132, __c16, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4157,12 +3481,12 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSignalRRequestTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(SignalRPropertiesInput),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentityInput),
+          sku: S.optional(__S(120, __c15, 0)),
+          properties: S.optional(__S(121, __c15, 1)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(123, __c15, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4175,8 +3499,8 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          privateEndpoint: S.optional(__S(14, __c1, 6)),
+          privateLinkServiceConnectionState: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -4188,7 +3512,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(137, __c17, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4207,10 +3531,10 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSignalRReplicasRequestTagsMap),
+          tags: S.optional(__S(12, __c1, 4)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(ReplicaPropertiesInput),
+          sku: S.optional(__S(120, __c15, 0)),
+          properties: S.optional(__S(130, __c16, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4223,4 +3547,9 @@ function __c17(j: number): any {
         identifier: "UpdateSignalRReplicasRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

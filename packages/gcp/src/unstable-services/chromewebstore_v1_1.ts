@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,16 +65,12 @@ export class NotFound
   ) {}
 
 export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED";
-const GetItemsProjectionEnum = S.String;
-
 export interface GetItemsRequest {
   /** Determines which subset of the item information to return. */
   projection?: GetItemsProjectionEnum | (string & {});
   /** Unique identifier representing the Chrome App, Chrome Extension, or the Chrome Theme. */
   itemId: string;
 }
-const GetItemsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetItemsRequest>;
-
 /** Error of the item */
 export interface ItemError {
   /** The error code. */
@@ -80,11 +78,7 @@ export interface ItemError {
   /** The human-readable detail message of the error. */
   error_detail?: string;
 }
-const ItemError = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ItemError>;
-
 export type ItemErrorList = Array<ItemError>;
-const ItemErrorList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ItemErrorList>;
-
 export interface Item {
   /** Detail human-readable status of the operation, in English only. Same error messages are displayed when you upload your app to the Chrome Web Store. */
   itemError?: ItemErrorList;
@@ -99,14 +93,10 @@ export interface Item {
   /** Status of the operation. Possible values are: - \"FAILURE\" - \"IN_PROGRESS\" - \"NOT_FOUND\" - \"SUCCESS\" */
   uploadState?: string;
 }
-const Item = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Item>;
-
 export interface InsertItemsRequest {
   /** The email of the publisher who owns the items. Defaults to the caller's email address. */
   publisherEmail?: string;
 }
-const InsertItemsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<InsertItemsRequest>;
-
 export interface PublishRequest {
   /** The publish target of this publish operation. This is the same as using publishTarget as a URL query parameter. The string value can either be target="trustedTesters" or target="default". The default value, if none is supplied, is target="default". Recommended usage is to use the URL query parameter to specificy the value. */
   target?: string;
@@ -115,8 +105,6 @@ export interface PublishRequest {
   /** The target deploy percentage of the item. It's only useful for items with big user base. */
   deployPercentage?: number;
 }
-const PublishRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PublishRequest>;
-
 export interface PublishItemsRequest {
   /** The deploy percentage you want to set for your item. Valid values are [0, 100]. If set to any number less than 100, only that many percentage of users will be allowed to get the update. */
   deployPercentage?: number;
@@ -129,11 +117,7 @@ export interface PublishItemsRequest {
   /** Request body */
   body?: PublishRequest;
 }
-const PublishItemsRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PublishItemsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
-
 export interface Item2 {
   /** Detailed human-comprehensible explanation of the status code above. */
   statusDetail?: StringList;
@@ -144,22 +128,18 @@ export interface Item2 {
   /** Static string value is always "chromewebstore#item". */
   kind?: string;
 }
-const Item2 = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Item2>;
-
 export interface UpdateItemsRequest {
   /** The ID of the item to upload. */
   itemId: string;
   /** Request body */
   body?: Item;
 }
-const UpdateItemsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UpdateItemsRequest>;
-
 export type GetItemsError = NotFound | Forbidden | GcpOpError;
 /** Gets your own Chrome Web Store item. */
 export const getItems: API.OperationMethod<GetItemsRequest, Item, GetItemsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetItemsRequest,
-    output: Item,
+    input: __S(0, __c0, 0) as any as S.Schema<GetItemsRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<Item>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -173,8 +153,8 @@ export const insertItems: API.OperationMethod<
   InsertItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertItemsRequest,
-  output: Item,
+  input: __S(4, __c0, 4) as any as S.Schema<InsertItemsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Item>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -188,8 +168,8 @@ export const publishItems: API.OperationMethod<
   PublishItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishItemsRequest,
-  output: Item2,
+  input: __S(6, __c0, 6) as any as S.Schema<PublishItemsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Item2>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -203,8 +183,8 @@ export const updateItems: API.OperationMethod<
   UpdateItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateItemsRequest,
-  output: Item,
+  input: __S(9, __c1, 1) as any as S.Schema<UpdateItemsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<Item>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -216,7 +196,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          projection: S.optional(GetItemsProjectionEnum.pipe(T.Query())),
+          projection: S.optional(S.String.pipe(T.Query())),
           itemId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -234,11 +214,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ItemError" });
     case 2:
-      return S.Array(ItemError);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          itemError: S.optional(ItemErrorList),
+          itemError: S.optional(__S(2, __c0, 2)),
           id: S.optional(S.String),
           crxVersion: S.optional(S.String),
           kind: S.optional(S.String),
@@ -273,7 +253,7 @@ function __c0(j: number): any {
           itemId: S.String.pipe(T.Label()),
           publishTarget: S.optional(S.String.pipe(T.Query())),
           reviewExemption: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(PublishRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -291,9 +271,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          statusDetail: S.optional(StringList),
+          statusDetail: S.optional(__S(7, __c0, 7)),
           item_id: S.optional(S.String),
-          status: S.optional(StringList),
+          status: S.optional(__S(7, __c0, 7)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Item2" });
@@ -301,7 +281,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           itemId: S.String.pipe(T.Label()),
-          body: S.optional(Item.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -311,4 +291,9 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "UpdateItemsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

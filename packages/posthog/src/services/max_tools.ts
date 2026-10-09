@@ -5,39 +5,24 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `trends` - trends * `funnel` - funnel * `retention` - retention * `sql` - sql */
 export type InsightTypeEnum = "trends" | "funnel" | "retention" | "sql";
-const InsightTypeEnum = S.String;
-
 export interface MaxToolsCreateAndQueryInsightCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   query?: string;
   insight_type?: InsightTypeEnum | (string & {});
 }
-const MaxToolsCreateAndQueryInsightCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateRequest>;
-
 export type MaxToolsCreateAndQueryInsightCreateResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-const MaxToolsCreateAndQueryInsightCreateResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateResponseBodyMap>;
-
 export type MaxToolsCreateAndQueryInsightCreateResponse =
   MaxToolsCreateAndQueryInsightCreateResponseBodyMap;
-const MaxToolsCreateAndQueryInsightCreateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateResponse>;
-
 export type MaxToolsCreateAndQueryInsightCreateError = PosthogOpError;
 export const maxToolsCreateAndQueryInsightCreate: API.OperationMethod<
   MaxToolsCreateAndQueryInsightCreateRequest,
@@ -45,8 +30,8 @@ export const maxToolsCreateAndQueryInsightCreate: API.OperationMethod<
   MaxToolsCreateAndQueryInsightCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MaxToolsCreateAndQueryInsightCreateRequest,
-  output: MaxToolsCreateAndQueryInsightCreateResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -60,7 +45,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           query: S.optional(S.String),
-          insight_type: S.optional(InsightTypeEnum),
+          insight_type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -74,10 +59,13 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.suspend(() =>
-        MaxToolsCreateAndQueryInsightCreateResponseBodyMap.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "MaxToolsCreateAndQueryInsightCreateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://elasticmapreduce.amazonaws.com/doc/2009-03-31");
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "EMR", serviceShapeName: "ElasticMapReduce" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "elasticmapreduce" });
@@ -178,8 +180,6 @@ export class StudioServiceRoleNotAssumable
   ).pipe(C.withRetryableError) {}
 export type XmlStringMaxLen256 = string;
 export type InstanceFleetType = "MASTER" | "CORE" | "TASK" | (string & {});
-const InstanceFleetType = S.String;
-
 export type WholeNumber = number;
 export type InstanceType = string;
 export type NonNegativeDouble = number;
@@ -190,29 +190,22 @@ export interface VolumeSpecification {
   SizeInGB?: number;
   Throughput?: number;
 }
-const VolumeSpecification = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<VolumeSpecification>;
 export interface EbsBlockDeviceConfig {
   VolumeSpecification?: VolumeSpecification;
   VolumesPerInstance?: number;
 }
-const EbsBlockDeviceConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EbsBlockDeviceConfig>;
 export type EbsBlockDeviceConfigList = EbsBlockDeviceConfig[];
-const EbsBlockDeviceConfigList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface EbsConfiguration {
   EbsBlockDeviceConfigs?: EbsBlockDeviceConfig[];
   EbsOptimized?: boolean;
 }
-const EbsConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EbsConfiguration>;
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 4);
 export interface Configuration {
   Classification?: string;
   Configurations?: Configuration[];
   Properties?: { [key: string]: string | undefined };
 }
-const Configuration = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Configuration>;
 export type ConfigurationList = Configuration[];
-const ConfigurationList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ConfigurationList>;
 export interface InstanceTypeConfig {
   InstanceType?: string;
   WeightedCapacity?: number;
@@ -223,15 +216,11 @@ export interface InstanceTypeConfig {
   CustomAmiId?: string;
   Priority?: number;
 }
-const InstanceTypeConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<InstanceTypeConfig>;
 export type InstanceTypeConfigList = InstanceTypeConfig[];
-const InstanceTypeConfigList = /*@__PURE__*/ __L.at(__c1, 0);
 export type SpotProvisioningTimeoutAction =
   | "SWITCH_TO_ON_DEMAND"
   | "TERMINATE_CLUSTER"
   | (string & {});
-const SpotProvisioningTimeoutAction = S.String;
-
 export type SpotProvisioningAllocationStrategy =
   | "capacity-optimized"
   | "price-capacity-optimized"
@@ -239,79 +228,43 @@ export type SpotProvisioningAllocationStrategy =
   | "diversified"
   | "capacity-optimized-prioritized"
   | (string & {});
-const SpotProvisioningAllocationStrategy = S.String;
-
 export interface SpotProvisioningSpecification {
   TimeoutDurationMinutes?: number;
   TimeoutAction?: SpotProvisioningTimeoutAction;
   BlockDurationMinutes?: number;
   AllocationStrategy?: SpotProvisioningAllocationStrategy;
 }
-const SpotProvisioningSpecification = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<SpotProvisioningSpecification>;
 export type OnDemandProvisioningAllocationStrategy = "lowest-price" | "prioritized" | (string & {});
-const OnDemandProvisioningAllocationStrategy = S.String;
-
 export type OnDemandCapacityReservationUsageStrategy =
   | "use-capacity-reservations-first"
   | (string & {});
-const OnDemandCapacityReservationUsageStrategy = S.String;
-
 export type OnDemandCapacityReservationPreference = "open" | "none" | (string & {});
-const OnDemandCapacityReservationPreference = S.String;
-
 export interface OnDemandCapacityReservationOptions {
   UsageStrategy?: OnDemandCapacityReservationUsageStrategy;
   CapacityReservationPreference?: OnDemandCapacityReservationPreference;
   CapacityReservationResourceGroupArn?: string;
 }
-const OnDemandCapacityReservationOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<OnDemandCapacityReservationOptions>;
 export interface OnDemandProvisioningSpecification {
   AllocationStrategy?: OnDemandProvisioningAllocationStrategy;
   CapacityReservationOptions?: OnDemandCapacityReservationOptions;
 }
-const OnDemandProvisioningSpecification = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<OnDemandProvisioningSpecification>;
 export interface InstanceFleetProvisioningSpecifications {
   SpotSpecification?: SpotProvisioningSpecification;
   OnDemandSpecification?: OnDemandProvisioningSpecification;
 }
-const InstanceFleetProvisioningSpecifications = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<InstanceFleetProvisioningSpecifications>;
 export interface SpotResizingSpecification {
   TimeoutDurationMinutes?: number;
   AllocationStrategy?: SpotProvisioningAllocationStrategy;
 }
-const SpotResizingSpecification = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<SpotResizingSpecification>;
 export interface OnDemandResizingSpecification {
   TimeoutDurationMinutes?: number;
   AllocationStrategy?: OnDemandProvisioningAllocationStrategy;
   CapacityReservationOptions?: OnDemandCapacityReservationOptions;
 }
-const OnDemandResizingSpecification = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<OnDemandResizingSpecification>;
 export interface InstanceFleetResizingSpecifications {
   SpotResizeSpecification?: SpotResizingSpecification;
   OnDemandResizeSpecification?: OnDemandResizingSpecification;
 }
-const InstanceFleetResizingSpecifications = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<InstanceFleetResizingSpecifications>;
 export interface InstanceFleetConfig {
   Name?: string;
   InstanceFleetType?: InstanceFleetType;
@@ -322,15 +275,10 @@ export interface InstanceFleetConfig {
   ResizeSpecifications?: InstanceFleetResizingSpecifications;
   Context?: string;
 }
-const InstanceFleetConfig = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<InstanceFleetConfig>;
 export interface AddInstanceFleetInput {
   ClusterId?: string;
   InstanceFleet?: InstanceFleetConfig;
 }
-const AddInstanceFleetInput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AddInstanceFleetInput>;
 export type InstanceFleetId = string;
 export type ArnType = string;
 export interface AddInstanceFleetOutput {
@@ -338,53 +286,33 @@ export interface AddInstanceFleetOutput {
   InstanceFleetId?: string;
   ClusterArn?: string;
 }
-const AddInstanceFleetOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AddInstanceFleetOutput>;
 export type MarketType = "ON_DEMAND" | "SPOT" | (string & {});
-const MarketType = S.String;
-
 export type InstanceRoleType = "MASTER" | "CORE" | "TASK" | (string & {});
-const InstanceRoleType = S.String;
-
 export interface ScalingConstraints {
   MinCapacity?: number;
   MaxCapacity?: number;
 }
-const ScalingConstraints = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ScalingConstraints>;
 export type AdjustmentType =
   | "CHANGE_IN_CAPACITY"
   | "PERCENT_CHANGE_IN_CAPACITY"
   | "EXACT_CAPACITY"
   | (string & {});
-const AdjustmentType = S.String;
-
 export interface SimpleScalingPolicyConfiguration {
   AdjustmentType?: AdjustmentType;
   ScalingAdjustment?: number;
   CoolDown?: number;
 }
-const SimpleScalingPolicyConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SimpleScalingPolicyConfiguration>;
 export interface ScalingAction {
   Market?: MarketType;
   SimpleScalingPolicyConfiguration?: SimpleScalingPolicyConfiguration;
 }
-const ScalingAction = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ScalingAction>;
 export type ComparisonOperator =
   | "GREATER_THAN_OR_EQUAL"
   | "GREATER_THAN"
   | "LESS_THAN"
   | "LESS_THAN_OR_EQUAL"
   | (string & {});
-const ComparisonOperator = S.String;
-
 export type Statistic = "SAMPLE_COUNT" | "AVERAGE" | "SUM" | "MINIMUM" | "MAXIMUM" | (string & {});
-const Statistic = S.String;
-
 export type Unit =
   | "NONE"
   | "SECONDS"
@@ -414,15 +342,11 @@ export type Unit =
   | "TERA_BITS_PER_SECOND"
   | "COUNT_PER_SECOND"
   | (string & {});
-const Unit = S.String;
-
 export interface MetricDimension {
   Key?: string;
   Value?: string;
 }
-const MetricDimension = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<MetricDimension>;
 export type MetricDimensionList = MetricDimension[];
-const MetricDimensionList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface CloudWatchAlarmDefinition {
   ComparisonOperator?: ComparisonOperator;
   EvaluationPeriods?: number;
@@ -434,28 +358,20 @@ export interface CloudWatchAlarmDefinition {
   Unit?: Unit;
   Dimensions?: MetricDimension[];
 }
-const CloudWatchAlarmDefinition = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CloudWatchAlarmDefinition>;
 export interface ScalingTrigger {
   CloudWatchAlarmDefinition?: CloudWatchAlarmDefinition;
 }
-const ScalingTrigger = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ScalingTrigger>;
 export interface ScalingRule {
   Name?: string;
   Description?: string;
   Action?: ScalingAction;
   Trigger?: ScalingTrigger;
 }
-const ScalingRule = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ScalingRule>;
 export type ScalingRuleList = ScalingRule[];
-const ScalingRuleList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface AutoScalingPolicy {
   Constraints?: ScalingConstraints;
   Rules?: ScalingRule[];
 }
-const AutoScalingPolicy = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AutoScalingPolicy>;
 export interface InstanceGroupConfig {
   Name?: string;
   Market?: MarketType;
@@ -468,139 +384,93 @@ export interface InstanceGroupConfig {
   AutoScalingPolicy?: AutoScalingPolicy;
   CustomAmiId?: string;
 }
-const InstanceGroupConfig = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<InstanceGroupConfig>;
 export type InstanceGroupConfigList = InstanceGroupConfig[];
-const InstanceGroupConfigList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface AddInstanceGroupsInput {
   InstanceGroups?: InstanceGroupConfig[];
   JobFlowId?: string;
 }
-const AddInstanceGroupsInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AddInstanceGroupsInput>;
 export type InstanceGroupIdsList = string[];
-const InstanceGroupIdsList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface AddInstanceGroupsOutput {
   JobFlowId?: string;
   InstanceGroupIds?: string[];
   ClusterArn?: string;
 }
-const AddInstanceGroupsOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AddInstanceGroupsOutput>;
 export type ActionOnFailure =
   | "TERMINATE_JOB_FLOW"
   | "TERMINATE_CLUSTER"
   | "CANCEL_AND_WAIT"
   | "CONTINUE"
   | (string & {});
-const ActionOnFailure = S.String;
-
 export type XmlString = string;
 export interface KeyValue {
   Key?: string;
   Value?: string;
 }
 export type KeyValueList = KeyValue[];
-const KeyValueList = MetricDimensionList as any as S.Schema<KeyValueList>;
 export type XmlStringList = string[];
-const XmlStringList = InstanceGroupIdsList as any as S.Schema<XmlStringList>;
 export interface HadoopJarStepConfig {
   Properties?: KeyValue[];
   Jar?: string;
   MainClass?: string;
   Args?: string[];
 }
-const HadoopJarStepConfig = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<HadoopJarStepConfig>;
 export interface S3MonitoringConfiguration {
   LogUri?: string;
   EncryptionKeyArn?: string;
 }
-const S3MonitoringConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<S3MonitoringConfiguration>;
 export interface StepMonitoringConfiguration {
   S3MonitoringConfiguration?: S3MonitoringConfiguration;
 }
-const StepMonitoringConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<StepMonitoringConfiguration>;
 export interface StepConfig {
   Name?: string;
   ActionOnFailure?: ActionOnFailure;
   HadoopJarStep?: HadoopJarStepConfig;
   StepMonitoringConfiguration?: StepMonitoringConfiguration;
 }
-const StepConfig = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StepConfig>;
 export type StepConfigList = StepConfig[];
-const StepConfigList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface AddJobFlowStepsInput {
   JobFlowId?: string;
   Steps?: StepConfig[];
   ExecutionRoleArn?: string;
 }
-const AddJobFlowStepsInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AddJobFlowStepsInput>;
 export type StepIdsList = string[];
-const StepIdsList = InstanceGroupIdsList as any as S.Schema<StepIdsList>;
 export interface AddJobFlowStepsOutput {
   StepIds?: string[];
 }
-const AddJobFlowStepsOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AddJobFlowStepsOutput>;
 export type ResourceId = string;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
 export type TagList = Tag[];
-const TagList = MetricDimensionList as any as S.Schema<TagList>;
 export type ClusterId = string;
 export interface AddTagsInput {
   ResourceId?: string;
   Tags?: Tag[];
   ClusterId?: string;
 }
-const AddTagsInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AddTagsInput>;
 export interface AddTagsOutput {}
-const AddTagsOutput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AddTagsOutput>;
 export type StepCancellationOption = "SEND_INTERRUPT" | "TERMINATE_PROCESS" | (string & {});
-const StepCancellationOption = S.String;
-
 export interface CancelStepsInput {
   ClusterId?: string;
   StepIds?: string[];
   StepCancellationOption?: StepCancellationOption;
 }
-const CancelStepsInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CancelStepsInput>;
 export type StepId = string;
 export type CancelStepsRequestStatus = "SUBMITTED" | "FAILED" | (string & {});
-const CancelStepsRequestStatus = S.String;
-
 export interface CancelStepsInfo {
   StepId?: string;
   Status?: CancelStepsRequestStatus;
   Reason?: string;
 }
-const CancelStepsInfo = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CancelStepsInfo>;
 export type CancelStepsInfoList = CancelStepsInfo[];
-const CancelStepsInfoList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface CancelStepsOutput {
   CancelStepsInfoList?: CancelStepsInfo[];
 }
-const CancelStepsOutput = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CancelStepsOutput>;
 export interface EMRContainersConfig {
   JobRunId?: string;
 }
-const EMRContainersConfig = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<EMRContainersConfig>;
 export type ProfilerType = "SHS" | "TEZUI" | "YTS" | (string & {});
-const ProfilerType = S.String;
-
 export interface CreatePersistentAppUIInput {
   TargetResourceArn?: string;
   EMRContainersConfig?: EMRContainersConfig;
@@ -608,42 +478,21 @@ export interface CreatePersistentAppUIInput {
   XReferer?: string;
   ProfilerType?: ProfilerType;
 }
-const CreatePersistentAppUIInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreatePersistentAppUIInput>;
 export interface CreatePersistentAppUIOutput {
   PersistentAppUIId?: string;
   RuntimeRoleEnabledCluster?: boolean;
 }
-const CreatePersistentAppUIOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreatePersistentAppUIOutput>;
 export interface CreateSecurityConfigurationInput {
   Name?: string;
   SecurityConfiguration?: string;
 }
-const CreateSecurityConfigurationInput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateSecurityConfigurationInput>;
 export interface CreateSecurityConfigurationOutput {
   Name: string;
   CreationDateTime: Date;
 }
-const CreateSecurityConfigurationOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateSecurityConfigurationOutput>;
 export type AuthMode = "SSO" | "IAM" | (string & {});
-const AuthMode = S.String;
-
 export type SubnetIdList = string[];
-const SubnetIdList = InstanceGroupIdsList as any as S.Schema<SubnetIdList>;
 export type IdcUserAssignment = "REQUIRED" | "OPTIONAL" | (string & {});
-const IdcUserAssignment = S.String;
-
 export interface CreateStudioInput {
   Name?: string;
   Description?: string;
@@ -663,15 +512,11 @@ export interface CreateStudioInput {
   IdcInstanceArn?: string;
   EncryptionKeyArn?: string;
 }
-const CreateStudioInput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CreateStudioInput>;
 export interface CreateStudioOutput {
   StudioId?: string;
   Url?: string;
 }
-const CreateStudioOutput = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CreateStudioOutput>;
 export type IdentityType = "USER" | "GROUP" | (string & {});
-const IdentityType = S.String;
-
 export interface CreateStudioSessionMappingInput {
   StudioId?: string;
   IdentityId?: string;
@@ -679,48 +524,25 @@ export interface CreateStudioSessionMappingInput {
   IdentityType?: IdentityType;
   SessionPolicyArn?: string;
 }
-const CreateStudioSessionMappingInput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateStudioSessionMappingInput>;
 export interface CreateStudioSessionMappingResponse {}
-const CreateStudioSessionMappingResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateStudioSessionMappingResponse>;
 export interface DeleteSecurityConfigurationInput {
   Name?: string;
 }
-const DeleteSecurityConfigurationInput = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteSecurityConfigurationInput>;
 export interface DeleteSecurityConfigurationOutput {}
-const DeleteSecurityConfigurationOutput =
-  CreateStudioSessionMappingResponse as any as S.Schema<DeleteSecurityConfigurationOutput>;
 export interface DeleteStudioInput {
   StudioId?: string;
 }
-const DeleteStudioInput = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<DeleteStudioInput>;
 export interface DeleteStudioResponse {}
-const DeleteStudioResponse = AddTagsOutput as any as S.Schema<DeleteStudioResponse>;
 export interface DeleteStudioSessionMappingInput {
   StudioId?: string;
   IdentityId?: string;
   IdentityName?: string;
   IdentityType?: IdentityType;
 }
-const DeleteStudioSessionMappingInput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteStudioSessionMappingInput>;
 export interface DeleteStudioSessionMappingResponse {}
-const DeleteStudioSessionMappingResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<DeleteStudioSessionMappingResponse>;
 export interface DescribeClusterInput {
   ClusterId?: string;
 }
-const DescribeClusterInput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DescribeClusterInput>;
 export type ClusterState =
   | "STARTING"
   | "BOOTSTRAPPING"
@@ -730,8 +552,6 @@ export type ClusterState =
   | "TERMINATED"
   | "TERMINATED_WITH_ERRORS"
   | (string & {});
-const ClusterState = S.String;
-
 export type ClusterStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
@@ -742,43 +562,30 @@ export type ClusterStateChangeReasonCode =
   | "STEP_FAILURE"
   | "ALL_STEPS_COMPLETED"
   | (string & {});
-const ClusterStateChangeReasonCode = S.String;
-
 export interface ClusterStateChangeReason {
   Code?: ClusterStateChangeReasonCode;
   Message?: string;
 }
-const ClusterStateChangeReason = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ClusterStateChangeReason>;
 export interface ClusterTimeline {
   CreationDateTime?: Date;
   ReadyDateTime?: Date;
   EndDateTime?: Date;
 }
-const ClusterTimeline = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ClusterTimeline>;
 export type ErrorData = { [key: string]: string | undefined }[];
-const ErrorData = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ErrorDetail {
   ErrorCode?: string;
   ErrorData?: { [key: string]: string | undefined }[];
   ErrorMessage?: string;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ErrorDetail>;
 export type ErrorDetailList = ErrorDetail[];
-const ErrorDetailList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface ClusterStatus {
   State?: ClusterState;
   StateChangeReason?: ClusterStateChangeReason;
   Timeline?: ClusterTimeline;
   ErrorDetails?: ErrorDetail[];
 }
-const ClusterStatus = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ClusterStatus>;
 export type XmlStringMaxLen256List = string[];
-const XmlStringMaxLen256List = InstanceGroupIdsList as any as S.Schema<XmlStringMaxLen256List>;
 export type StringList = string[];
-const StringList = InstanceGroupIdsList as any as S.Schema<StringList>;
 export interface Ec2InstanceAttributes {
   Ec2KeyName?: string;
   Ec2SubnetId?: string;
@@ -792,31 +599,19 @@ export interface Ec2InstanceAttributes {
   AdditionalMasterSecurityGroups?: string[];
   AdditionalSlaveSecurityGroups?: string[];
 }
-const Ec2InstanceAttributes = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<Ec2InstanceAttributes>;
 export type InstanceCollectionType = "INSTANCE_FLEET" | "INSTANCE_GROUP" | (string & {});
-const InstanceCollectionType = S.String;
-
 export interface Application {
   Name?: string;
   Version?: string;
   Args?: string[];
   AdditionalInfo?: { [key: string]: string | undefined };
 }
-const Application = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Application>;
 export type ApplicationList = Application[];
-const ApplicationList = /*@__PURE__*/ __L.at(__c8, 4);
 export type ScaleDownBehavior =
   | "TERMINATE_AT_INSTANCE_HOUR"
   | "TERMINATE_AT_TASK_COMPLETION"
   | (string & {});
-const ScaleDownBehavior = S.String;
-
 export type RepoUpgradeOnBoot = "SECURITY" | "NONE" | (string & {});
-const RepoUpgradeOnBoot = S.String;
-
 export interface KerberosAttributes {
   Realm?: string;
   KdcAdminPassword?: string | redacted.Redacted<string>;
@@ -824,20 +619,14 @@ export interface KerberosAttributes {
   ADDomainJoinUser?: string;
   ADDomainJoinPassword?: string | redacted.Redacted<string>;
 }
-const KerberosAttributes = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<KerberosAttributes>;
 export type OptionalArnType = string;
 export type PlacementGroupStrategy = "SPREAD" | "PARTITION" | "CLUSTER" | "NONE" | (string & {});
-const PlacementGroupStrategy = S.String;
-
 export interface PlacementGroupConfig {
   InstanceRole?: InstanceRoleType;
   PlacementStrategy?: PlacementGroupStrategy;
 }
-const PlacementGroupConfig = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<PlacementGroupConfig>;
 export type PlacementGroupConfigList = PlacementGroupConfig[];
-const PlacementGroupConfigList = /*@__PURE__*/ __L.at(__c8, 7);
 export type LogTypesMap = { [key: string]: string[] | undefined };
-const LogTypesMap = /*@__PURE__*/ __L.at(__c9, 0);
 export interface CloudWatchLogConfiguration {
   Enabled?: boolean;
   LogGroupName?: string;
@@ -845,37 +634,20 @@ export interface CloudWatchLogConfiguration {
   EncryptionKeyArn?: string;
   LogTypes?: { [key: string]: string[] | undefined };
 }
-const CloudWatchLogConfiguration = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CloudWatchLogConfiguration>;
 export type LogType = "system-logs" | "application-logs" | "persistent-ui-logs" | (string & {});
-const LogType = S.String;
-
 export type LogUploadPolicyValue =
   | "emr-managed"
   | "on-customer-s3only"
   | "disabled"
   | (string & {});
-const LogUploadPolicyValue = S.String;
-
 export type LogTypeMap = { [key in LogType]?: LogUploadPolicyValue };
-const LogTypeMap = /*@__PURE__*/ __L.at(__c9, 2);
 export interface S3LoggingConfiguration {
   LogTypeUploadPolicy?: { [key: string]: LogUploadPolicyValue | undefined };
 }
-const S3LoggingConfiguration = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<S3LoggingConfiguration>;
 export interface MonitoringConfiguration {
   CloudWatchLogConfiguration?: CloudWatchLogConfiguration;
   S3LoggingConfiguration?: S3LoggingConfiguration;
 }
-const MonitoringConfiguration = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<MonitoringConfiguration>;
 export interface Cluster {
   Id?: string;
   Name?: string;
@@ -915,7 +687,6 @@ export interface Cluster {
   MonitoringConfiguration?: MonitoringConfiguration;
   SessionEnabled?: boolean;
 }
-const Cluster = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Cluster>;
 export interface DescribeClusterOutput {
   Cluster?: Cluster & {
     KerberosAttributes: KerberosAttributes & {
@@ -928,10 +699,6 @@ export interface DescribeClusterOutput {
     };
   };
 }
-const DescribeClusterOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DescribeClusterOutput>;
 export type JobFlowExecutionState =
   | "STARTING"
   | "BOOTSTRAPPING"
@@ -942,20 +709,13 @@ export type JobFlowExecutionState =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-const JobFlowExecutionState = S.String;
-
 export type JobFlowExecutionStateList = JobFlowExecutionState[];
-const JobFlowExecutionStateList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface DescribeJobFlowsInput {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
   JobFlowIds?: string[];
   JobFlowStates?: JobFlowExecutionState[];
 }
-const DescribeJobFlowsInput = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DescribeJobFlowsInput>;
 export interface JobFlowExecutionStatusDetail {
   State?: JobFlowExecutionState;
   CreationDateTime?: Date;
@@ -964,10 +724,6 @@ export interface JobFlowExecutionStatusDetail {
   EndDateTime?: Date;
   LastStateChangeReason?: string;
 }
-const JobFlowExecutionStatusDetail = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<JobFlowExecutionStatusDetail>;
 export type InstanceGroupState =
   | "PROVISIONING"
   | "BOOTSTRAPPING"
@@ -981,8 +737,6 @@ export type InstanceGroupState =
   | "SHUTTING_DOWN"
   | "ENDED"
   | (string & {});
-const InstanceGroupState = S.String;
-
 export interface InstanceGroupDetail {
   InstanceGroupId?: string;
   Name?: string;
@@ -1000,14 +754,11 @@ export interface InstanceGroupDetail {
   EndDateTime?: Date;
   CustomAmiId?: string;
 }
-const InstanceGroupDetail = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<InstanceGroupDetail>;
 export type InstanceGroupDetailList = InstanceGroupDetail[];
-const InstanceGroupDetailList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface PlacementType {
   AvailabilityZone?: string;
   AvailabilityZones?: string[];
 }
-const PlacementType = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<PlacementType>;
 export interface JobFlowInstancesDetail {
   MasterInstanceType?: string;
   MasterPublicDnsName?: string;
@@ -1024,10 +775,6 @@ export interface JobFlowInstancesDetail {
   UnhealthyNodeReplacement?: boolean;
   HadoopVersion?: string;
 }
-const JobFlowInstancesDetail = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<JobFlowInstancesDetail>;
 export type StepExecutionState =
   | "PENDING"
   | "RUNNING"
@@ -1037,8 +784,6 @@ export type StepExecutionState =
   | "FAILED"
   | "INTERRUPTED"
   | (string & {});
-const StepExecutionState = S.String;
-
 export interface StepExecutionStatusDetail {
   State?: StepExecutionState;
   CreationDateTime?: Date;
@@ -1046,44 +791,24 @@ export interface StepExecutionStatusDetail {
   EndDateTime?: Date;
   LastStateChangeReason?: string;
 }
-const StepExecutionStatusDetail = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<StepExecutionStatusDetail>;
 export interface StepDetail {
   StepConfig?: StepConfig;
   ExecutionStatusDetail?: StepExecutionStatusDetail;
 }
-const StepDetail = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<StepDetail>;
 export type StepDetailList = StepDetail[];
-const StepDetailList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface ScriptBootstrapActionConfig {
   Path?: string;
   Args?: string[];
 }
-const ScriptBootstrapActionConfig = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ScriptBootstrapActionConfig>;
 export interface BootstrapActionConfig {
   Name?: string;
   ScriptBootstrapAction?: ScriptBootstrapActionConfig;
 }
-const BootstrapActionConfig = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<BootstrapActionConfig>;
 export interface BootstrapActionDetail {
   BootstrapActionConfig?: BootstrapActionConfig;
 }
-const BootstrapActionDetail = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<BootstrapActionDetail>;
 export type BootstrapActionDetailList = BootstrapActionDetail[];
-const BootstrapActionDetailList = /*@__PURE__*/ __L.at(__c11, 4);
 export type SupportedProductsList = string[];
-const SupportedProductsList = InstanceGroupIdsList as any as S.Schema<SupportedProductsList>;
 export interface JobFlowDetail {
   JobFlowId?: string;
   Name?: string;
@@ -1101,9 +826,7 @@ export interface JobFlowDetail {
   AutoScalingRole?: string;
   ScaleDownBehavior?: ScaleDownBehavior;
 }
-const JobFlowDetail = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<JobFlowDetail>;
 export type JobFlowDetailList = JobFlowDetail[];
-const JobFlowDetailList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface DescribeJobFlowsOutput {
   JobFlows?: (JobFlowDetail & {
     JobFlowId: XmlStringMaxLen256;
@@ -1144,20 +867,10 @@ export interface DescribeJobFlowsOutput {
     })[];
   })[];
 }
-const DescribeJobFlowsOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DescribeJobFlowsOutput>;
 export interface DescribeNotebookExecutionInput {
   NotebookExecutionId?: string;
 }
-const DescribeNotebookExecutionInput = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DescribeNotebookExecutionInput>;
 export type ExecutionEngineType = "EMR" | (string & {});
-const ExecutionEngineType = S.String;
-
 export type IAMRoleArn = string;
 export interface ExecutionEngineConfig {
   Id?: string;
@@ -1165,10 +878,6 @@ export interface ExecutionEngineConfig {
   MasterInstanceSecurityGroupId?: string;
   ExecutionRoleArn?: string;
 }
-const ExecutionEngineConfig = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ExecutionEngineConfig>;
 export type NotebookExecutionStatus =
   | "START_PENDING"
   | "STARTING"
@@ -1181,28 +890,17 @@ export type NotebookExecutionStatus =
   | "STOPPING"
   | "STOPPED"
   | (string & {});
-const NotebookExecutionStatus = S.String;
-
 export type UriString = string;
 export interface NotebookS3LocationForOutput {
   Bucket?: string;
   Key?: string;
 }
-const NotebookS3LocationForOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<NotebookS3LocationForOutput>;
 export interface OutputNotebookS3LocationForOutput {
   Bucket?: string;
   Key?: string;
 }
-const OutputNotebookS3LocationForOutput =
-  NotebookS3LocationForOutput as any as S.Schema<OutputNotebookS3LocationForOutput>;
 export type OutputNotebookFormat = "HTML" | (string & {});
-const OutputNotebookFormat = S.String;
-
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
-const EnvironmentVariablesMap = /*@__PURE__*/ __L.at(__c12, 3);
 export interface NotebookExecution {
   NotebookExecutionId?: string;
   EditorId?: string;
@@ -1222,29 +920,16 @@ export interface NotebookExecution {
   OutputNotebookFormat?: OutputNotebookFormat;
   EnvironmentVariables?: { [key: string]: string | undefined };
 }
-const NotebookExecution = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<NotebookExecution>;
 export interface DescribeNotebookExecutionOutput {
   NotebookExecution?: NotebookExecution & {
     ExecutionEngine: ExecutionEngineConfig & { Id: XmlStringMaxLen256 };
   };
 }
-const DescribeNotebookExecutionOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DescribeNotebookExecutionOutput>;
 export interface DescribePersistentAppUIInput {
   PersistentAppUIId?: string;
 }
-const DescribePersistentAppUIInput = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DescribePersistentAppUIInput>;
 export type PersistentAppUIType = "SHS" | "TEZ" | "YTS" | (string & {});
-const PersistentAppUIType = S.String;
-
 export type PersistentAppUITypeList = PersistentAppUIType[];
-const PersistentAppUITypeList =
-  JobFlowExecutionStateList as any as S.Schema<PersistentAppUITypeList>;
 export interface PersistentAppUI {
   PersistentAppUIId?: string;
   PersistentAppUITypeList?: PersistentAppUIType[];
@@ -1255,78 +940,48 @@ export interface PersistentAppUI {
   LastStateChangeReason?: string;
   Tags?: Tag[];
 }
-const PersistentAppUI = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<PersistentAppUI>;
 export interface DescribePersistentAppUIOutput {
   PersistentAppUI?: PersistentAppUI;
 }
-const DescribePersistentAppUIOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DescribePersistentAppUIOutput>;
 export type MaxResultsNumber = number;
 export interface DescribeReleaseLabelInput {
   ReleaseLabel?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeReleaseLabelInput = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DescribeReleaseLabelInput>;
 export interface SimplifiedApplication {
   Name?: string;
   Version?: string;
 }
-const SimplifiedApplication = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<SimplifiedApplication>;
 export type SimplifiedApplicationList = SimplifiedApplication[];
-const SimplifiedApplicationList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface OSRelease {
   Label?: string;
 }
-const OSRelease = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<OSRelease>;
 export type OSReleaseList = OSRelease[];
-const OSReleaseList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface DescribeReleaseLabelOutput {
   ReleaseLabel?: string;
   Applications?: SimplifiedApplication[];
   NextToken?: string;
   AvailableOSReleases?: OSRelease[];
 }
-const DescribeReleaseLabelOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DescribeReleaseLabelOutput>;
 export interface DescribeSecurityConfigurationInput {
   Name?: string;
 }
-const DescribeSecurityConfigurationInput = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DescribeSecurityConfigurationInput>;
 export interface DescribeSecurityConfigurationOutput {
   Name?: string;
   SecurityConfiguration?: string;
   CreationDateTime?: Date;
 }
-const DescribeSecurityConfigurationOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DescribeSecurityConfigurationOutput>;
 export interface DescribeStepInput {
   ClusterId?: string;
   StepId?: string;
 }
-const DescribeStepInput = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<DescribeStepInput>;
 export interface HadoopStepConfig {
   Jar?: string;
   Properties?: { [key: string]: string | undefined };
   MainClass?: string;
   Args?: string[];
 }
-const HadoopStepConfig = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<HadoopStepConfig>;
 export type StepState =
   | "PENDING"
   | "CANCEL_PENDING"
@@ -1336,33 +991,27 @@ export type StepState =
   | "FAILED"
   | "INTERRUPTED"
   | (string & {});
-const StepState = S.String;
-
 export type StepStateChangeReasonCode = "NONE" | (string & {});
 export interface StepStateChangeReason {
   Code?: StepStateChangeReasonCode;
   Message?: string;
 }
-const StepStateChangeReason = ClusterStateChangeReason as any as S.Schema<StepStateChangeReason>;
 export interface FailureDetails {
   Reason?: string;
   Message?: string;
   LogFile?: string;
 }
-const FailureDetails = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<FailureDetails>;
 export interface StepTimeline {
   CreationDateTime?: Date;
   StartDateTime?: Date;
   EndDateTime?: Date;
 }
-const StepTimeline = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<StepTimeline>;
 export interface StepStatus {
   State?: StepState;
   StateChangeReason?: StepStateChangeReason;
   FailureDetails?: FailureDetails;
   Timeline?: StepTimeline;
 }
-const StepStatus = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<StepStatus>;
 export interface Step {
   Id?: string;
   Name?: string;
@@ -1373,15 +1022,12 @@ export interface Step {
   LogUri?: string;
   EncryptionKeyArn?: string;
 }
-const Step = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<Step>;
 export interface DescribeStepOutput {
   Step?: Step;
 }
-const DescribeStepOutput = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<DescribeStepOutput>;
 export interface DescribeStudioInput {
   StudioId?: string;
 }
-const DescribeStudioInput = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<DescribeStudioInput>;
 export interface Studio {
   StudioId?: string;
   StudioArn?: string;
@@ -1405,48 +1051,25 @@ export interface Studio {
   IdcUserAssignment?: IdcUserAssignment;
   EncryptionKeyArn?: string;
 }
-const Studio = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<Studio>;
 export interface DescribeStudioOutput {
   Studio?: Studio;
 }
-const DescribeStudioOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DescribeStudioOutput>;
 export interface GetAutoTerminationPolicyInput {
   ClusterId?: string;
 }
-const GetAutoTerminationPolicyInput = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetAutoTerminationPolicyInput>;
 export interface AutoTerminationPolicy {
   IdleTimeout?: number;
 }
-const AutoTerminationPolicy = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<AutoTerminationPolicy>;
 export interface GetAutoTerminationPolicyOutput {
   AutoTerminationPolicy?: AutoTerminationPolicy;
 }
-const GetAutoTerminationPolicyOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetAutoTerminationPolicyOutput>;
 export interface GetBlockPublicAccessConfigurationInput {}
-const GetBlockPublicAccessConfigurationInput = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetBlockPublicAccessConfigurationInput>;
 export type Port = number;
 export interface PortRange {
   MinRange?: number;
   MaxRange?: number;
 }
-const PortRange = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<PortRange>;
 export type PortRanges = PortRange[];
-const PortRanges = /*@__PURE__*/ __L.at(__c16, 0);
 export interface BlockPublicAccessConfiguration {
   BlockPublicSecurityGroupRules?: boolean;
   PermittedPublicSecurityGroupRuleRanges?: PortRange[];
@@ -1454,18 +1077,10 @@ export interface BlockPublicAccessConfiguration {
   Configurations?: Configuration[];
   Properties?: { [key: string]: string | undefined };
 }
-const BlockPublicAccessConfiguration = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<BlockPublicAccessConfiguration>;
 export interface BlockPublicAccessConfigurationMetadata {
   CreationDateTime?: Date;
   CreatedByArn?: string;
 }
-const BlockPublicAccessConfigurationMetadata = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<BlockPublicAccessConfigurationMetadata>;
 export interface GetBlockPublicAccessConfigurationOutput {
   BlockPublicAccessConfiguration: BlockPublicAccessConfiguration & {
     BlockPublicSecurityGroupRules: boolean;
@@ -1476,43 +1091,23 @@ export interface GetBlockPublicAccessConfigurationOutput {
     CreatedByArn: ArnType;
   };
 }
-const GetBlockPublicAccessConfigurationOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetBlockPublicAccessConfigurationOutput>;
 export interface GetClusterSessionCredentialsInput {
   ClusterId?: string;
   ExecutionRoleArn?: string;
 }
-const GetClusterSessionCredentialsInput = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetClusterSessionCredentialsInput>;
 export interface UsernamePassword {
   Username?: string;
   Password?: string | redacted.Redacted<string>;
 }
-const UsernamePassword = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<UsernamePassword>;
 export type Credentials = { UsernamePassword: UsernamePassword };
-const Credentials = /*@__PURE__*/ __L.at(__c16, 6);
 export interface GetClusterSessionCredentialsOutput {
   Credentials?: Credentials;
   ExpiresAt?: Date;
 }
-const GetClusterSessionCredentialsOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetClusterSessionCredentialsOutput>;
 export interface GetManagedScalingPolicyInput {
   ClusterId?: string;
 }
-const GetManagedScalingPolicyInput = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetManagedScalingPolicyInput>;
 export type ComputeLimitsUnitType = "InstanceFleetUnits" | "Instances" | "VCPU" | (string & {});
-const ComputeLimitsUnitType = S.String;
-
 export interface ComputeLimits {
   UnitType?: ComputeLimitsUnitType;
   MinimumCapacityUnits?: number;
@@ -1520,20 +1115,13 @@ export interface ComputeLimits {
   MaximumOnDemandCapacityUnits?: number;
   MaximumCoreCapacityUnits?: number;
 }
-const ComputeLimits = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ComputeLimits>;
 export type UtilizationPerformanceIndexInteger = number;
 export type ScalingStrategy = "DEFAULT" | "ADVANCED" | (string & {});
-const ScalingStrategy = S.String;
-
 export interface ManagedScalingPolicy {
   ComputeLimits?: ComputeLimits;
   UtilizationPerformanceIndex?: number;
   ScalingStrategy?: ScalingStrategy;
 }
-const ManagedScalingPolicy = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ManagedScalingPolicy>;
 export interface GetManagedScalingPolicyOutput {
   ManagedScalingPolicy?: ManagedScalingPolicy & {
     ComputeLimits: ComputeLimits & {
@@ -1543,10 +1131,6 @@ export interface GetManagedScalingPolicyOutput {
     };
   };
 }
-const GetManagedScalingPolicyOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetManagedScalingPolicyOutput>;
 export type OnClusterAppUIType =
   | "SparkHistoryServer"
   | "YarnTimelineService"
@@ -1555,8 +1139,6 @@ export type OnClusterAppUIType =
   | "JobHistoryServer"
   | "ResourceManager"
   | (string & {});
-const OnClusterAppUIType = S.String;
-
 export interface GetOnClusterAppUIPresignedURLInput {
   ClusterId?: string;
   OnClusterAppUIType?: OnClusterAppUIType;
@@ -1564,18 +1146,10 @@ export interface GetOnClusterAppUIPresignedURLInput {
   DryRun?: boolean;
   ExecutionRoleArn?: string;
 }
-const GetOnClusterAppUIPresignedURLInput = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetOnClusterAppUIPresignedURLInput>;
 export interface GetOnClusterAppUIPresignedURLOutput {
   PresignedURLReady?: boolean;
   PresignedURL?: string;
 }
-const GetOnClusterAppUIPresignedURLOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetOnClusterAppUIPresignedURLOutput>;
 export interface GetPersistentAppUIPresignedURLInput {
   PersistentAppUIId?: string;
   PersistentAppUIType?: PersistentAppUIType;
@@ -1583,22 +1157,15 @@ export interface GetPersistentAppUIPresignedURLInput {
   AuthProxyCall?: boolean;
   ExecutionRoleArn?: string;
 }
-const GetPersistentAppUIPresignedURLInput = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetPersistentAppUIPresignedURLInput>;
 export interface GetPersistentAppUIPresignedURLOutput {
   PresignedURLReady?: boolean;
   PresignedURL?: string;
 }
-const GetPersistentAppUIPresignedURLOutput =
-  GetOnClusterAppUIPresignedURLOutput as any as S.Schema<GetPersistentAppUIPresignedURLOutput>;
 export type SessionId = string;
 export interface GetSessionInput {
   ClusterId?: string;
   SessionId?: string;
 }
-const GetSessionInput = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GetSessionInput>;
 export type SessionState =
   | "SUBMITTED"
   | "STARTING"
@@ -1609,8 +1176,6 @@ export type SessionState =
   | "TERMINATED"
   | "FAILED"
   | (string & {});
-const SessionState = S.String;
-
 export interface SessionCloudWatchLoggingConfiguration {
   Enabled?: boolean;
   LogGroup?: string;
@@ -1618,37 +1183,21 @@ export interface SessionCloudWatchLoggingConfiguration {
   EncryptionKeyArn?: string;
   LogTypes?: { [key: string]: string[] | undefined };
 }
-const SessionCloudWatchLoggingConfiguration = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<SessionCloudWatchLoggingConfiguration>;
 export interface SessionManagedLoggingConfiguration {
   Enabled?: boolean;
   EncryptionKeyArn?: string;
 }
-const SessionManagedLoggingConfiguration = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<SessionManagedLoggingConfiguration>;
 export interface SessionS3LoggingConfiguration {
   Enabled?: boolean;
   LogUri?: string;
   EncryptionKeyArn?: string;
   LogTypes?: { [key: string]: string[] | undefined };
 }
-const SessionS3LoggingConfiguration = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<SessionS3LoggingConfiguration>;
 export interface SessionMonitoringConfiguration {
   CloudWatchLoggingConfiguration?: SessionCloudWatchLoggingConfiguration;
   ManagedLoggingConfiguration?: SessionManagedLoggingConfiguration;
   S3LoggingConfiguration?: SessionS3LoggingConfiguration;
 }
-const SessionMonitoringConfiguration = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<SessionMonitoringConfiguration>;
 export interface Session {
   Id?: string;
   ClusterId?: string;
@@ -1670,19 +1219,13 @@ export interface Session {
   ServerUrl?: string;
   Tags?: Tag[];
 }
-const Session = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<Session>;
 export interface GetSessionOutput {
   Session: Session & { Id: SessionId; ClusterId: ClusterId; Arn: ArnType; State: SessionState };
 }
-const GetSessionOutput = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<GetSessionOutput>;
 export interface GetSessionEndpointInput {
   ClusterId?: string;
   SessionId?: string;
 }
-const GetSessionEndpointInput = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetSessionEndpointInput>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetSessionEndpointOutput {
   Endpoint: string;
@@ -1690,20 +1233,12 @@ export interface GetSessionEndpointOutput {
   AuthTokenExpirationTime?: Date;
   Credentials?: Credentials;
 }
-const GetSessionEndpointOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetSessionEndpointOutput>;
 export interface GetStudioSessionMappingInput {
   StudioId?: string;
   IdentityId?: string;
   IdentityName?: string;
   IdentityType?: IdentityType;
 }
-const GetStudioSessionMappingInput = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetStudioSessionMappingInput>;
 export interface SessionMappingDetail {
   StudioId?: string;
   IdentityId?: string;
@@ -1713,51 +1248,31 @@ export interface SessionMappingDetail {
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
-const SessionMappingDetail = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<SessionMappingDetail>;
 export interface GetStudioSessionMappingOutput {
   SessionMapping?: SessionMappingDetail;
 }
-const GetStudioSessionMappingOutput = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetStudioSessionMappingOutput>;
 export type Marker = string;
 export interface ListBootstrapActionsInput {
   ClusterId?: string;
   Marker?: string;
 }
-const ListBootstrapActionsInput = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListBootstrapActionsInput>;
 export interface Command {
   Name?: string;
   ScriptPath?: string;
   Args?: string[];
 }
-const Command = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Command>;
 export type CommandList = Command[];
-const CommandList = /*@__PURE__*/ __L.at(__c19, 5);
 export interface ListBootstrapActionsOutput {
   BootstrapActions?: Command[];
   Marker?: string;
 }
-const ListBootstrapActionsOutput = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListBootstrapActionsOutput>;
 export type ClusterStateList = ClusterState[];
-const ClusterStateList = JobFlowExecutionStateList as any as S.Schema<ClusterStateList>;
 export interface ListClustersInput {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
   ClusterStates?: ClusterState[];
   Marker?: string;
 }
-const ListClustersInput = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ListClustersInput>;
 export interface ClusterSummary {
   Id?: string;
   Name?: string;
@@ -1766,22 +1281,15 @@ export interface ClusterSummary {
   ClusterArn?: string;
   OutpostArn?: string;
 }
-const ClusterSummary = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ClusterSummary>;
 export type ClusterSummaryList = ClusterSummary[];
-const ClusterSummaryList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListClustersOutput {
   Clusters?: ClusterSummary[];
   Marker?: string;
 }
-const ListClustersOutput = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ListClustersOutput>;
 export interface ListInstanceFleetsInput {
   ClusterId?: string;
   Marker?: string;
 }
-const ListInstanceFleetsInput = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListInstanceFleetsInput>;
 export type InstanceFleetState =
   | "PROVISIONING"
   | "BOOTSTRAPPING"
@@ -1792,43 +1300,31 @@ export type InstanceFleetState =
   | "TERMINATING"
   | "TERMINATED"
   | (string & {});
-const InstanceFleetState = S.String;
-
 export type InstanceFleetStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
   | "INSTANCE_FAILURE"
   | "CLUSTER_TERMINATED"
   | (string & {});
-const InstanceFleetStateChangeReasonCode = S.String;
-
 export interface InstanceFleetStateChangeReason {
   Code?: InstanceFleetStateChangeReasonCode;
   Message?: string;
 }
-const InstanceFleetStateChangeReason = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<InstanceFleetStateChangeReason>;
 export interface InstanceFleetTimeline {
   CreationDateTime?: Date;
   ReadyDateTime?: Date;
   EndDateTime?: Date;
 }
-const InstanceFleetTimeline = ClusterTimeline as any as S.Schema<InstanceFleetTimeline>;
 export interface InstanceFleetStatus {
   State?: InstanceFleetState;
   StateChangeReason?: InstanceFleetStateChangeReason;
   Timeline?: InstanceFleetTimeline;
 }
-const InstanceFleetStatus = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<InstanceFleetStatus>;
 export interface EbsBlockDevice {
   VolumeSpecification?: VolumeSpecification;
   Device?: string;
 }
-const EbsBlockDevice = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<EbsBlockDevice>;
 export type EbsBlockDeviceList = EbsBlockDevice[];
-const EbsBlockDeviceList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface InstanceTypeSpecification {
   InstanceType?: string;
   WeightedCapacity?: number;
@@ -1840,12 +1336,7 @@ export interface InstanceTypeSpecification {
   CustomAmiId?: string;
   Priority?: number;
 }
-const InstanceTypeSpecification = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<InstanceTypeSpecification>;
 export type InstanceTypeSpecificationList = InstanceTypeSpecification[];
-const InstanceTypeSpecificationList = /*@__PURE__*/ __L.at(__c21, 1);
 export interface InstanceFleet {
   Id?: string;
   Name?: string;
@@ -1860,9 +1351,7 @@ export interface InstanceFleet {
   ResizeSpecifications?: InstanceFleetResizingSpecifications;
   Context?: string;
 }
-const InstanceFleet = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<InstanceFleet>;
 export type InstanceFleetList = InstanceFleet[];
-const InstanceFleetList = /*@__PURE__*/ __L.at(__c21, 3);
 export interface ListInstanceFleetsOutput {
   InstanceFleets?: (InstanceFleet & {
     InstanceTypeSpecifications: (InstanceTypeSpecification & {
@@ -1882,22 +1371,12 @@ export interface ListInstanceFleetsOutput {
   })[];
   Marker?: string;
 }
-const ListInstanceFleetsOutput = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListInstanceFleetsOutput>;
 export interface ListInstanceGroupsInput {
   ClusterId?: string;
   Marker?: string;
 }
-const ListInstanceGroupsInput = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListInstanceGroupsInput>;
 export type InstanceGroupId = string;
 export type InstanceGroupType = "MASTER" | "CORE" | "TASK" | (string & {});
-const InstanceGroupType = S.String;
-
 export type InstanceGroupStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
@@ -1908,37 +1387,27 @@ export interface InstanceGroupStateChangeReason {
   Code?: InstanceGroupStateChangeReasonCode;
   Message?: string;
 }
-const InstanceGroupStateChangeReason =
-  InstanceFleetStateChangeReason as any as S.Schema<InstanceGroupStateChangeReason>;
 export interface InstanceGroupTimeline {
   CreationDateTime?: Date;
   ReadyDateTime?: Date;
   EndDateTime?: Date;
 }
-const InstanceGroupTimeline = ClusterTimeline as any as S.Schema<InstanceGroupTimeline>;
 export interface InstanceGroupStatus {
   State?: InstanceGroupState;
   StateChangeReason?: InstanceGroupStateChangeReason;
   Timeline?: InstanceGroupTimeline;
 }
-const InstanceGroupStatus = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<InstanceGroupStatus>;
 export type InstanceId = string;
 export type EC2InstanceIdsList = string[];
-const EC2InstanceIdsList = InstanceGroupIdsList as any as S.Schema<EC2InstanceIdsList>;
 export interface InstanceResizePolicy {
   InstancesToTerminate?: string[];
   InstancesToProtect?: string[];
   InstanceTerminationTimeout?: number;
 }
-const InstanceResizePolicy = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<InstanceResizePolicy>;
 export interface ShrinkPolicy {
   DecommissionTimeout?: number;
   InstanceResizePolicy?: InstanceResizePolicy;
 }
-const ShrinkPolicy = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<ShrinkPolicy>;
 export type AutoScalingPolicyState =
   | "PENDING"
   | "ATTACHING"
@@ -1947,40 +1416,24 @@ export type AutoScalingPolicyState =
   | "DETACHED"
   | "FAILED"
   | (string & {});
-const AutoScalingPolicyState = S.String;
-
 export type AutoScalingPolicyStateChangeReasonCode =
   | "USER_REQUEST"
   | "PROVISION_FAILURE"
   | "CLEANUP_FAILURE"
   | (string & {});
-const AutoScalingPolicyStateChangeReasonCode = S.String;
-
 export interface AutoScalingPolicyStateChangeReason {
   Code?: AutoScalingPolicyStateChangeReasonCode;
   Message?: string;
 }
-const AutoScalingPolicyStateChangeReason = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<AutoScalingPolicyStateChangeReason>;
 export interface AutoScalingPolicyStatus {
   State?: AutoScalingPolicyState;
   StateChangeReason?: AutoScalingPolicyStateChangeReason;
 }
-const AutoScalingPolicyStatus = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<AutoScalingPolicyStatus>;
 export interface AutoScalingPolicyDescription {
   Status?: AutoScalingPolicyStatus;
   Constraints?: ScalingConstraints;
   Rules?: ScalingRule[];
 }
-const AutoScalingPolicyDescription = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<AutoScalingPolicyDescription>;
 export interface InstanceGroup {
   Id?: string;
   Name?: string;
@@ -2001,9 +1454,7 @@ export interface InstanceGroup {
   AutoScalingPolicy?: AutoScalingPolicyDescription;
   CustomAmiId?: string;
 }
-const InstanceGroup = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<InstanceGroup>;
 export type InstanceGroupList = InstanceGroup[];
-const InstanceGroupList = /*@__PURE__*/ __L.at(__c22, 5);
 export interface ListInstanceGroupsOutput {
   InstanceGroups?: (InstanceGroup & {
     EbsBlockDevices: (EbsBlockDevice & {
@@ -2031,12 +1482,7 @@ export interface ListInstanceGroupsOutput {
   })[];
   Marker?: string;
 }
-const ListInstanceGroupsOutput = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListInstanceGroupsOutput>;
 export type InstanceGroupTypeList = InstanceGroupType[];
-const InstanceGroupTypeList = JobFlowExecutionStateList as any as S.Schema<InstanceGroupTypeList>;
 export type InstanceState =
   | "AWAITING_FULFILLMENT"
   | "PROVISIONING"
@@ -2044,10 +1490,7 @@ export type InstanceState =
   | "RUNNING"
   | "TERMINATED"
   | (string & {});
-const InstanceState = S.String;
-
 export type InstanceStateList = InstanceState[];
-const InstanceStateList = JobFlowExecutionStateList as any as S.Schema<InstanceStateList>;
 export interface ListInstancesInput {
   ClusterId?: string;
   InstanceGroupId?: string;
@@ -2057,7 +1500,6 @@ export interface ListInstancesInput {
   InstanceStates?: InstanceState[];
   Marker?: string;
 }
-const ListInstancesInput = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<ListInstancesInput>;
 export type InstanceStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
@@ -2069,27 +1511,21 @@ export interface InstanceStateChangeReason {
   Code?: InstanceStateChangeReasonCode;
   Message?: string;
 }
-const InstanceStateChangeReason =
-  InstanceFleetStateChangeReason as any as S.Schema<InstanceStateChangeReason>;
 export interface InstanceTimeline {
   CreationDateTime?: Date;
   ReadyDateTime?: Date;
   EndDateTime?: Date;
 }
-const InstanceTimeline = ClusterTimeline as any as S.Schema<InstanceTimeline>;
 export interface InstanceStatus {
   State?: InstanceState;
   StateChangeReason?: InstanceStateChangeReason;
   Timeline?: InstanceTimeline;
 }
-const InstanceStatus = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<InstanceStatus>;
 export interface EbsVolume {
   Device?: string;
   VolumeId?: string;
 }
-const EbsVolume = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<EbsVolume>;
 export type EbsVolumeList = EbsVolume[];
-const EbsVolumeList = /*@__PURE__*/ __L.at(__c23, 2);
 export interface Instance {
   Id?: string;
   Ec2InstanceId?: string;
@@ -2104,14 +1540,11 @@ export interface Instance {
   InstanceType?: string;
   EbsVolumes?: EbsVolume[];
 }
-const Instance = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<Instance>;
 export type InstanceList = Instance[];
-const InstanceList = /*@__PURE__*/ __L.at(__c23, 4);
 export interface ListInstancesOutput {
   Instances?: Instance[];
   Marker?: string;
 }
-const ListInstancesOutput = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<ListInstancesOutput>;
 export interface ListNotebookExecutionsInput {
   EditorId?: string;
   Status?: NotebookExecutionStatus;
@@ -2120,10 +1553,6 @@ export interface ListNotebookExecutionsInput {
   Marker?: string;
   ExecutionEngineId?: string;
 }
-const ListNotebookExecutionsInput = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListNotebookExecutionsInput>;
 export interface NotebookExecutionSummary {
   NotebookExecutionId?: string;
   EditorId?: string;
@@ -2134,78 +1563,44 @@ export interface NotebookExecutionSummary {
   NotebookS3Location?: NotebookS3LocationForOutput;
   ExecutionEngineId?: string;
 }
-const NotebookExecutionSummary = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<NotebookExecutionSummary>;
 export type NotebookExecutionSummaryList = NotebookExecutionSummary[];
-const NotebookExecutionSummaryList = /*@__PURE__*/ __L.at(__c24, 0);
 export interface ListNotebookExecutionsOutput {
   NotebookExecutions?: NotebookExecutionSummary[];
   Marker?: string;
 }
-const ListNotebookExecutionsOutput = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListNotebookExecutionsOutput>;
 export interface ReleaseLabelFilter {
   Prefix?: string;
   Application?: string;
 }
-const ReleaseLabelFilter = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<ReleaseLabelFilter>;
 export interface ListReleaseLabelsInput {
   Filters?: ReleaseLabelFilter;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListReleaseLabelsInput = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListReleaseLabelsInput>;
 export interface ListReleaseLabelsOutput {
   ReleaseLabels?: string[];
   NextToken?: string;
 }
-const ListReleaseLabelsOutput = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListReleaseLabelsOutput>;
 export interface ListSecurityConfigurationsInput {
   Marker?: string;
 }
-const ListSecurityConfigurationsInput = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListSecurityConfigurationsInput>;
 export interface SecurityConfigurationSummary {
   Name?: string;
   CreationDateTime?: Date;
 }
-const SecurityConfigurationSummary = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<SecurityConfigurationSummary>;
 export type SecurityConfigurationList = SecurityConfigurationSummary[];
-const SecurityConfigurationList = /*@__PURE__*/ __L.at(__c24, 7);
 export interface ListSecurityConfigurationsOutput {
   SecurityConfigurations?: SecurityConfigurationSummary[];
   Marker?: string;
 }
-const ListSecurityConfigurationsOutput = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListSecurityConfigurationsOutput>;
 export type SessionStateList = SessionState[];
-const SessionStateList = JobFlowExecutionStateList as any as S.Schema<SessionStateList>;
 export interface ListSessionsInput {
   ClusterId?: string;
   SessionStates?: SessionState[];
   NextToken?: string;
   MaxResults?: number;
 }
-const ListSessionsInput = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<ListSessionsInput>;
 export type SessionList = Session[];
-const SessionList = /*@__PURE__*/ __L.at(__c25, 2);
 export interface ListSessionsOutput {
   Sessions?: (Session & {
     Id: SessionId;
@@ -2215,16 +1610,13 @@ export interface ListSessionsOutput {
   })[];
   NextToken?: string;
 }
-const ListSessionsOutput = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ListSessionsOutput>;
 export type StepStateList = StepState[];
-const StepStateList = JobFlowExecutionStateList as any as S.Schema<StepStateList>;
 export interface ListStepsInput {
   ClusterId?: string;
   StepStates?: StepState[];
   StepIds?: string[];
   Marker?: string;
 }
-const ListStepsInput = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ListStepsInput>;
 export interface StepSummary {
   Id?: string;
   Name?: string;
@@ -2234,18 +1626,14 @@ export interface StepSummary {
   LogUri?: string;
   EncryptionKeyArn?: string;
 }
-const StepSummary = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<StepSummary>;
 export type StepSummaryList = StepSummary[];
-const StepSummaryList = /*@__PURE__*/ __L.at(__c25, 6);
 export interface ListStepsOutput {
   Steps?: StepSummary[];
   Marker?: string;
 }
-const ListStepsOutput = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<ListStepsOutput>;
 export interface ListStudiosInput {
   Marker?: string;
 }
-const ListStudiosInput = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ListStudiosInput>;
 export interface StudioSummary {
   StudioId?: string;
   Name?: string;
@@ -2255,23 +1643,16 @@ export interface StudioSummary {
   AuthMode?: AuthMode;
   CreationTime?: Date;
 }
-const StudioSummary = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<StudioSummary>;
 export type StudioSummaryList = StudioSummary[];
-const StudioSummaryList = /*@__PURE__*/ __L.at(__c26, 2);
 export interface ListStudiosOutput {
   Studios?: StudioSummary[];
   Marker?: string;
 }
-const ListStudiosOutput = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<ListStudiosOutput>;
 export interface ListStudioSessionMappingsInput {
   StudioId?: string;
   IdentityType?: IdentityType;
   Marker?: string;
 }
-const ListStudioSessionMappingsInput = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListStudioSessionMappingsInput>;
 export interface SessionMappingSummary {
   StudioId?: string;
   IdentityId?: string;
@@ -2280,28 +1661,15 @@ export interface SessionMappingSummary {
   SessionPolicyArn?: string;
   CreationTime?: Date;
 }
-const SessionMappingSummary = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<SessionMappingSummary>;
 export type SessionMappingSummaryList = SessionMappingSummary[];
-const SessionMappingSummaryList = /*@__PURE__*/ __L.at(__c26, 6);
 export interface ListStudioSessionMappingsOutput {
   SessionMappings?: SessionMappingSummary[];
   Marker?: string;
 }
-const ListStudioSessionMappingsOutput = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListStudioSessionMappingsOutput>;
 export interface ListSupportedInstanceTypesInput {
   ReleaseLabel?: string;
   Marker?: string;
 }
-const ListSupportedInstanceTypesInput = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListSupportedInstanceTypesInput>;
 export interface SupportedInstanceType {
   Type?: string;
   MemoryGB?: number;
@@ -2315,31 +1683,20 @@ export interface SupportedInstanceType {
   EbsStorageOnly?: boolean;
   Architecture?: string;
 }
-const SupportedInstanceType = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<SupportedInstanceType>;
 export type SupportedInstanceTypesList = SupportedInstanceType[];
-const SupportedInstanceTypesList = /*@__PURE__*/ __L.at(__c27, 2);
 export interface ListSupportedInstanceTypesOutput {
   SupportedInstanceTypes?: SupportedInstanceType[];
   Marker?: string;
 }
-const ListSupportedInstanceTypesOutput = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListSupportedInstanceTypesOutput>;
 export interface ModifyClusterInput {
   ClusterId?: string;
   StepConcurrencyLevel?: number;
   ExtendedSupport?: boolean;
 }
-const ModifyClusterInput = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<ModifyClusterInput>;
 export interface ModifyClusterOutput {
   StepConcurrencyLevel?: number;
   ExtendedSupport?: boolean;
 }
-const ModifyClusterOutput = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<ModifyClusterOutput>;
 export interface InstanceFleetModifyConfig {
   InstanceFleetId?: string;
   TargetOnDemandCapacity?: number;
@@ -2348,27 +1705,13 @@ export interface InstanceFleetModifyConfig {
   InstanceTypeConfigs?: InstanceTypeConfig[];
   Context?: string;
 }
-const InstanceFleetModifyConfig = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<InstanceFleetModifyConfig>;
 export interface ModifyInstanceFleetInput {
   ClusterId?: string;
   InstanceFleet?: InstanceFleetModifyConfig;
 }
-const ModifyInstanceFleetInput = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ModifyInstanceFleetInput>;
 export interface ModifyInstanceFleetResponse {}
-const ModifyInstanceFleetResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<ModifyInstanceFleetResponse>;
 export type EC2InstanceIdsToTerminateList = string[];
-const EC2InstanceIdsToTerminateList =
-  InstanceGroupIdsList as any as S.Schema<EC2InstanceIdsToTerminateList>;
 export type ReconfigurationType = "OVERWRITE" | "MERGE" | (string & {});
-const ReconfigurationType = S.String;
-
 export interface InstanceGroupModifyConfig {
   InstanceGroupId?: string;
   InstanceCount?: number;
@@ -2377,32 +1720,17 @@ export interface InstanceGroupModifyConfig {
   ReconfigurationType?: ReconfigurationType;
   Configurations?: Configuration[];
 }
-const InstanceGroupModifyConfig = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<InstanceGroupModifyConfig>;
 export type InstanceGroupModifyConfigList = InstanceGroupModifyConfig[];
-const InstanceGroupModifyConfigList = /*@__PURE__*/ __L.at(__c28, 1);
 export interface ModifyInstanceGroupsInput {
   ClusterId?: string;
   InstanceGroups?: InstanceGroupModifyConfig[];
 }
-const ModifyInstanceGroupsInput = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ModifyInstanceGroupsInput>;
 export interface ModifyInstanceGroupsResponse {}
-const ModifyInstanceGroupsResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<ModifyInstanceGroupsResponse>;
 export interface PutAutoScalingPolicyInput {
   ClusterId?: string;
   InstanceGroupId?: string;
   AutoScalingPolicy?: AutoScalingPolicy;
 }
-const PutAutoScalingPolicyInput = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<PutAutoScalingPolicyInput>;
 export interface PutAutoScalingPolicyOutput {
   ClusterId?: string;
   InstanceGroupId?: string;
@@ -2427,85 +1755,41 @@ export interface PutAutoScalingPolicyOutput {
   };
   ClusterArn?: string;
 }
-const PutAutoScalingPolicyOutput = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<PutAutoScalingPolicyOutput>;
 export interface PutAutoTerminationPolicyInput {
   ClusterId?: string;
   AutoTerminationPolicy?: AutoTerminationPolicy;
 }
-const PutAutoTerminationPolicyInput = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<PutAutoTerminationPolicyInput>;
 export interface PutAutoTerminationPolicyOutput {}
-const PutAutoTerminationPolicyOutput =
-  CreateStudioSessionMappingResponse as any as S.Schema<PutAutoTerminationPolicyOutput>;
 export interface PutBlockPublicAccessConfigurationInput {
   BlockPublicAccessConfiguration?: BlockPublicAccessConfiguration;
 }
-const PutBlockPublicAccessConfigurationInput = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<PutBlockPublicAccessConfigurationInput>;
 export interface PutBlockPublicAccessConfigurationOutput {}
-const PutBlockPublicAccessConfigurationOutput =
-  CreateStudioSessionMappingResponse as any as S.Schema<PutBlockPublicAccessConfigurationOutput>;
 export interface PutManagedScalingPolicyInput {
   ClusterId?: string;
   ManagedScalingPolicy?: ManagedScalingPolicy;
 }
-const PutManagedScalingPolicyInput = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<PutManagedScalingPolicyInput>;
 export interface PutManagedScalingPolicyOutput {}
-const PutManagedScalingPolicyOutput =
-  CreateStudioSessionMappingResponse as any as S.Schema<PutManagedScalingPolicyOutput>;
 export interface RemoveAutoScalingPolicyInput {
   ClusterId?: string;
   InstanceGroupId?: string;
 }
-const RemoveAutoScalingPolicyInput = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<RemoveAutoScalingPolicyInput>;
 export interface RemoveAutoScalingPolicyOutput {}
-const RemoveAutoScalingPolicyOutput =
-  CreateStudioSessionMappingResponse as any as S.Schema<RemoveAutoScalingPolicyOutput>;
 export interface RemoveAutoTerminationPolicyInput {
   ClusterId?: string;
 }
-const RemoveAutoTerminationPolicyInput = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<RemoveAutoTerminationPolicyInput>;
 export interface RemoveAutoTerminationPolicyOutput {}
-const RemoveAutoTerminationPolicyOutput =
-  CreateStudioSessionMappingResponse as any as S.Schema<RemoveAutoTerminationPolicyOutput>;
 export interface RemoveManagedScalingPolicyInput {
   ClusterId?: string;
 }
-const RemoveManagedScalingPolicyInput = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<RemoveManagedScalingPolicyInput>;
 export interface RemoveManagedScalingPolicyOutput {}
-const RemoveManagedScalingPolicyOutput =
-  CreateStudioSessionMappingResponse as any as S.Schema<RemoveManagedScalingPolicyOutput>;
 export interface RemoveTagsInput {
   ResourceId?: string;
   TagKeys?: string[];
   ClusterId?: string;
 }
-const RemoveTagsInput = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<RemoveTagsInput>;
 export interface RemoveTagsOutput {}
-const RemoveTagsOutput = AddTagsOutput as any as S.Schema<RemoveTagsOutput>;
 export type InstanceFleetConfigList = InstanceFleetConfig[];
-const InstanceFleetConfigList = /*@__PURE__*/ __L.at(__c29, 4);
 export type SecurityGroupsList = string[];
-const SecurityGroupsList = InstanceGroupIdsList as any as S.Schema<SecurityGroupsList>;
 export interface JobFlowInstancesConfig {
   MasterInstanceType?: string;
   SlaveInstanceType?: string;
@@ -2526,22 +1810,12 @@ export interface JobFlowInstancesConfig {
   AdditionalMasterSecurityGroups?: string[];
   AdditionalSlaveSecurityGroups?: string[];
 }
-const JobFlowInstancesConfig = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<JobFlowInstancesConfig>;
 export type BootstrapActionConfigList = BootstrapActionConfig[];
-const BootstrapActionConfigList = /*@__PURE__*/ __L.at(__c29, 6);
 export interface SupportedProductConfig {
   Name?: string;
   Args?: string[];
 }
-const SupportedProductConfig = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<SupportedProductConfig>;
 export type NewSupportedProductsList = SupportedProductConfig[];
-const NewSupportedProductsList = /*@__PURE__*/ __L.at(__c30, 0);
 export interface RunJobFlowInput {
   Name?: string;
   LogUri?: string;
@@ -2579,68 +1853,38 @@ export interface RunJobFlowInput {
   MonitoringConfiguration?: MonitoringConfiguration;
   SessionEnabled?: boolean;
 }
-const RunJobFlowInput = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<RunJobFlowInput>;
 export interface RunJobFlowOutput {
   JobFlowId?: string;
   ClusterArn?: string;
 }
-const RunJobFlowOutput = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<RunJobFlowOutput>;
 export interface SetKeepJobFlowAliveWhenNoStepsInput {
   JobFlowIds?: string[];
   KeepJobFlowAliveWhenNoSteps?: boolean;
 }
-const SetKeepJobFlowAliveWhenNoStepsInput = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<SetKeepJobFlowAliveWhenNoStepsInput>;
 export interface SetKeepJobFlowAliveWhenNoStepsResponse {}
-const SetKeepJobFlowAliveWhenNoStepsResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<SetKeepJobFlowAliveWhenNoStepsResponse>;
 export interface SetTerminationProtectionInput {
   JobFlowIds?: string[];
   TerminationProtected?: boolean;
 }
-const SetTerminationProtectionInput = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<SetTerminationProtectionInput>;
 export interface SetTerminationProtectionResponse {}
-const SetTerminationProtectionResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<SetTerminationProtectionResponse>;
 export interface SetUnhealthyNodeReplacementInput {
   JobFlowIds?: string[];
   UnhealthyNodeReplacement?: boolean;
 }
-const SetUnhealthyNodeReplacementInput = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<SetUnhealthyNodeReplacementInput>;
 export interface SetUnhealthyNodeReplacementResponse {}
-const SetUnhealthyNodeReplacementResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<SetUnhealthyNodeReplacementResponse>;
 export interface SetVisibleToAllUsersInput {
   JobFlowIds?: string[];
   VisibleToAllUsers?: boolean;
 }
-const SetVisibleToAllUsersInput = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<SetVisibleToAllUsersInput>;
 export interface SetVisibleToAllUsersResponse {}
-const SetVisibleToAllUsersResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<SetVisibleToAllUsersResponse>;
 export interface NotebookS3LocationFromInput {
   Bucket?: string;
   Key?: string;
 }
-const NotebookS3LocationFromInput =
-  NotebookS3LocationForOutput as any as S.Schema<NotebookS3LocationFromInput>;
 export interface OutputNotebookS3LocationFromInput {
   Bucket?: string;
   Key?: string;
 }
-const OutputNotebookS3LocationFromInput =
-  NotebookS3LocationForOutput as any as S.Schema<OutputNotebookS3LocationFromInput>;
 export interface StartNotebookExecutionInput {
   EditorId?: string;
   RelativePath?: string;
@@ -2655,17 +1899,9 @@ export interface StartNotebookExecutionInput {
   OutputNotebookFormat?: OutputNotebookFormat;
   EnvironmentVariables?: { [key: string]: string | undefined };
 }
-const StartNotebookExecutionInput = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<StartNotebookExecutionInput>;
 export interface StartNotebookExecutionOutput {
   NotebookExecutionId?: string;
 }
-const StartNotebookExecutionOutput = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<StartNotebookExecutionOutput>;
 export type ClientRequestToken = string;
 export interface StartSessionInput {
   Name?: string;
@@ -2677,7 +1913,6 @@ export interface StartSessionInput {
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
-const StartSessionInput = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<StartSessionInput>;
 export interface StartSessionOutput {
   Id: string;
   ClusterId?: string;
@@ -2685,44 +1920,23 @@ export interface StartSessionOutput {
   AccountId?: string;
   State?: SessionState;
 }
-const StartSessionOutput = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<StartSessionOutput>;
 export interface StopNotebookExecutionInput {
   NotebookExecutionId?: string;
 }
-const StopNotebookExecutionInput = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<StopNotebookExecutionInput>;
 export interface StopNotebookExecutionResponse {}
-const StopNotebookExecutionResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<StopNotebookExecutionResponse>;
 export interface TerminateJobFlowsInput {
   JobFlowIds?: string[];
 }
-const TerminateJobFlowsInput = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<TerminateJobFlowsInput>;
 export interface TerminateJobFlowsResponse {}
-const TerminateJobFlowsResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<TerminateJobFlowsResponse>;
 export interface TerminateSessionInput {
   ClusterId?: string;
   SessionId?: string;
 }
-const TerminateSessionInput = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<TerminateSessionInput>;
 export interface TerminateSessionOutput {
   ClusterId: string;
   SessionId: string;
   State: SessionState;
 }
-const TerminateSessionOutput = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<TerminateSessionOutput>;
 export interface UpdateStudioInput {
   StudioId?: string;
   Name?: string;
@@ -2731,9 +1945,7 @@ export interface UpdateStudioInput {
   DefaultS3Location?: string;
   EncryptionKeyArn?: string;
 }
-const UpdateStudioInput = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<UpdateStudioInput>;
 export interface UpdateStudioResponse {}
-const UpdateStudioResponse = AddTagsOutput as any as S.Schema<UpdateStudioResponse>;
 export interface UpdateStudioSessionMappingInput {
   StudioId?: string;
   IdentityId?: string;
@@ -2741,13 +1953,7 @@ export interface UpdateStudioSessionMappingInput {
   IdentityType?: IdentityType;
   SessionPolicyArn?: string;
 }
-const UpdateStudioSessionMappingInput = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<UpdateStudioSessionMappingInput>;
 export interface UpdateStudioSessionMappingResponse {}
-const UpdateStudioSessionMappingResponse =
-  CreateStudioSessionMappingResponse as any as S.Schema<UpdateStudioSessionMappingResponse>;
 export type ErrorMessage = string;
 export type ErrorCode = string;
 export type AddInstanceFleetError =
@@ -2766,8 +1972,8 @@ export const addInstanceFleet: API.OperationMethod<
   AddInstanceFleetError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddInstanceFleetInput,
-  output: AddInstanceFleetOutput,
+  input: __S(17, __c2, 1) as any as S.Schema<AddInstanceFleetInput>,
+  output: __S(18, __c2, 2) as any as S.Schema<AddInstanceFleetOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2784,8 +1990,8 @@ export const addInstanceGroups: API.OperationMethod<
   AddInstanceGroupsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddInstanceGroupsInput,
-  output: AddInstanceGroupsOutput,
+  input: __S(31, __c3, 7) as any as S.Schema<AddInstanceGroupsInput>,
+  output: __S(33, __c4, 1) as any as S.Schema<AddInstanceGroupsOutput>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2823,8 +2029,8 @@ export const addJobFlowSteps: API.OperationMethod<
   AddJobFlowStepsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddJobFlowStepsInput,
-  output: AddJobFlowStepsOutput,
+  input: __S(39, __c4, 7) as any as S.Schema<AddJobFlowStepsInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<AddJobFlowStepsOutput>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2845,8 +2051,8 @@ export const addTags: API.OperationMethod<
   AddTagsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddTagsInput,
-  output: AddTagsOutput,
+  input: __S(41, __c5, 1) as any as S.Schema<AddTagsInput>,
+  output: __S(42, __c5, 2) as any as S.Schema<AddTagsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2867,8 +2073,8 @@ export const cancelSteps: API.OperationMethod<
   CancelStepsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelStepsInput,
-  output: CancelStepsOutput,
+  input: __S(43, __c5, 3) as any as S.Schema<CancelStepsInput>,
+  output: __S(46, __c5, 6) as any as S.Schema<CancelStepsOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2888,8 +2094,8 @@ export const createPersistentAppUI: API.OperationMethod<
   CreatePersistentAppUIError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistentAppUIInput,
-  output: CreatePersistentAppUIOutput,
+  input: __S(48, __c6, 0) as any as S.Schema<CreatePersistentAppUIInput>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreatePersistentAppUIOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2911,8 +2117,8 @@ export const createSecurityConfiguration: API.OperationMethod<
   CreateSecurityConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityConfigurationInput,
-  output: CreateSecurityConfigurationOutput,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateSecurityConfigurationInput>,
+  output: __S(51, __c6, 3) as any as S.Schema<CreateSecurityConfigurationOutput>,
   errors: [InternalServerException, InvalidRequestException, SecurityConfigurationAlreadyExists],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2934,8 +2140,8 @@ export const createStudio: API.OperationMethod<
   CreateStudioError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStudioInput,
-  output: CreateStudioOutput,
+  input: __S(52, __c6, 4) as any as S.Schema<CreateStudioInput>,
+  output: __S(53, __c6, 5) as any as S.Schema<CreateStudioOutput>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2964,8 +2170,8 @@ export const createStudioSessionMapping: API.OperationMethod<
   CreateStudioSessionMappingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStudioSessionMappingInput,
-  output: CreateStudioSessionMappingResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<CreateStudioSessionMappingInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<CreateStudioSessionMappingResponse>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2986,8 +2192,8 @@ export const deleteSecurityConfiguration: API.OperationMethod<
   DeleteSecurityConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityConfigurationInput,
-  output: DeleteSecurityConfigurationOutput,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteSecurityConfigurationInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<DeleteSecurityConfigurationOutput>,
   errors: [InternalServerException, InvalidRequestException, SecurityConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3008,8 +2214,8 @@ export const deleteStudio: API.OperationMethod<
   DeleteStudioError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStudioInput,
-  output: DeleteStudioResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<DeleteStudioInput>,
+  output: __S(42, __c5, 2) as any as S.Schema<DeleteStudioResponse>,
   errors: [InternalServerException, InvalidRequestException, StudioNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3029,8 +2235,8 @@ export const deleteStudioSessionMapping: API.OperationMethod<
   DeleteStudioSessionMappingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStudioSessionMappingInput,
-  output: DeleteStudioSessionMappingResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<DeleteStudioSessionMappingInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<DeleteStudioSessionMappingResponse>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3052,8 +2258,8 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeClusterInput,
-  output: DescribeClusterOutput,
+  input: __S(59, __c7, 3) as any as S.Schema<DescribeClusterInput>,
+  output: __S(78, __c9, 6) as any as S.Schema<DescribeClusterOutput>,
   errors: [InternalServerException, InvalidRequestException, ClusterNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3089,8 +2295,8 @@ export const describeJobFlows: API.OperationMethod<
   DescribeJobFlowsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeJobFlowsInput,
-  output: DescribeJobFlowsOutput,
+  input: __S(80, __c10, 0) as any as S.Schema<DescribeJobFlowsInput>,
+  output: __S(95, __c11, 7) as any as S.Schema<DescribeJobFlowsOutput>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3110,8 +2316,8 @@ export const describeNotebookExecution: API.OperationMethod<
   DescribeNotebookExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeNotebookExecutionInput,
-  output: DescribeNotebookExecutionOutput,
+  input: __S(96, __c12, 0) as any as S.Schema<DescribeNotebookExecutionInput>,
+  output: __S(101, __c12, 5) as any as S.Schema<DescribeNotebookExecutionOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3131,8 +2337,8 @@ export const describePersistentAppUI: API.OperationMethod<
   DescribePersistentAppUIError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePersistentAppUIInput,
-  output: DescribePersistentAppUIOutput,
+  input: __S(102, __c12, 6) as any as S.Schema<DescribePersistentAppUIInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<DescribePersistentAppUIOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3154,8 +2360,8 @@ export const describeReleaseLabel: API.OperationMethod<
   DescribeReleaseLabelError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeReleaseLabelInput,
-  output: DescribeReleaseLabelOutput,
+  input: __S(105, __c13, 1) as any as S.Schema<DescribeReleaseLabelInput>,
+  output: __S(110, __c13, 6) as any as S.Schema<DescribeReleaseLabelOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3177,8 +2383,8 @@ export const describeSecurityConfiguration: API.OperationMethod<
   DescribeSecurityConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSecurityConfigurationInput,
-  output: DescribeSecurityConfigurationOutput,
+  input: __S(111, __c13, 7) as any as S.Schema<DescribeSecurityConfigurationInput>,
+  output: __S(112, __c14, 0) as any as S.Schema<DescribeSecurityConfigurationOutput>,
   errors: [InternalServerException, InvalidRequestException, SecurityConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3195,8 +2401,8 @@ export const describeStep: API.OperationMethod<
   DescribeStepError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeStepInput,
-  output: DescribeStepOutput,
+  input: __S(113, __c14, 1) as any as S.Schema<DescribeStepInput>,
+  output: __S(119, __c14, 7) as any as S.Schema<DescribeStepOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3218,8 +2424,8 @@ export const describeStudio: API.OperationMethod<
   DescribeStudioError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeStudioInput,
-  output: DescribeStudioOutput,
+  input: __S(120, __c15, 0) as any as S.Schema<DescribeStudioInput>,
+  output: __S(122, __c15, 2) as any as S.Schema<DescribeStudioOutput>,
   errors: [InternalServerException, InvalidRequestException, StudioNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3236,8 +2442,8 @@ export const getAutoTerminationPolicy: API.OperationMethod<
   GetAutoTerminationPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoTerminationPolicyInput,
-  output: GetAutoTerminationPolicyOutput,
+  input: __S(123, __c15, 3) as any as S.Schema<GetAutoTerminationPolicyInput>,
+  output: __S(125, __c15, 5) as any as S.Schema<GetAutoTerminationPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3259,8 +2465,8 @@ export const getBlockPublicAccessConfiguration: API.OperationMethod<
   GetBlockPublicAccessConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBlockPublicAccessConfigurationInput,
-  output: GetBlockPublicAccessConfigurationOutput,
+  input: __S(126, __c15, 6) as any as S.Schema<GetBlockPublicAccessConfigurationInput>,
+  output: __S(131, __c16, 3) as any as S.Schema<GetBlockPublicAccessConfigurationOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3283,8 +2489,8 @@ export const getClusterSessionCredentials: API.OperationMethod<
   GetClusterSessionCredentialsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterSessionCredentialsInput,
-  output: GetClusterSessionCredentialsOutput,
+  input: __S(132, __c16, 4) as any as S.Schema<GetClusterSessionCredentialsInput>,
+  output: __S(135, __c16, 7) as any as S.Schema<GetClusterSessionCredentialsOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3301,8 +2507,8 @@ export const getManagedScalingPolicy: API.OperationMethod<
   GetManagedScalingPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedScalingPolicyInput,
-  output: GetManagedScalingPolicyOutput,
+  input: __S(136, __c17, 0) as any as S.Schema<GetManagedScalingPolicyInput>,
+  output: __S(139, __c17, 3) as any as S.Schema<GetManagedScalingPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3322,8 +2528,8 @@ export const getOnClusterAppUIPresignedURL: API.OperationMethod<
   GetOnClusterAppUIPresignedURLError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOnClusterAppUIPresignedURLInput,
-  output: GetOnClusterAppUIPresignedURLOutput,
+  input: __S(140, __c17, 4) as any as S.Schema<GetOnClusterAppUIPresignedURLInput>,
+  output: __S(141, __c17, 5) as any as S.Schema<GetOnClusterAppUIPresignedURLOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3343,8 +2549,8 @@ export const getPersistentAppUIPresignedURL: API.OperationMethod<
   GetPersistentAppUIPresignedURLError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersistentAppUIPresignedURLInput,
-  output: GetPersistentAppUIPresignedURLOutput,
+  input: __S(142, __c17, 6) as any as S.Schema<GetPersistentAppUIPresignedURLInput>,
+  output: __S(141, __c17, 5) as any as S.Schema<GetPersistentAppUIPresignedURLOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3361,8 +2567,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionInput,
-  output: GetSessionOutput,
+  input: __S(143, __c17, 7) as any as S.Schema<GetSessionInput>,
+  output: __S(149, __c18, 5) as any as S.Schema<GetSessionOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3382,8 +2588,8 @@ export const getSessionEndpoint: API.OperationMethod<
   GetSessionEndpointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionEndpointInput,
-  output: GetSessionEndpointOutput,
+  input: __S(150, __c18, 6) as any as S.Schema<GetSessionEndpointInput>,
+  output: __S(151, __c18, 7) as any as S.Schema<GetSessionEndpointOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3404,8 +2610,8 @@ export const getStudioSessionMapping: API.OperationMethod<
   GetStudioSessionMappingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStudioSessionMappingInput,
-  output: GetStudioSessionMappingOutput,
+  input: __S(152, __c19, 0) as any as S.Schema<GetStudioSessionMappingInput>,
+  output: __S(154, __c19, 2) as any as S.Schema<GetStudioSessionMappingOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3426,8 +2632,8 @@ export const listBootstrapActions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Command
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBootstrapActionsInput,
-  output: ListBootstrapActionsOutput,
+  input: __S(155, __c19, 3) as any as S.Schema<ListBootstrapActionsInput>,
+  output: __S(158, __c19, 6) as any as S.Schema<ListBootstrapActionsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3450,8 +2656,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListClustersInput,
-  output: ListClustersOutput,
+  input: __S(159, __c19, 7) as any as S.Schema<ListClustersInput>,
+  output: __S(162, __c20, 2) as any as S.Schema<ListClustersOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3476,8 +2682,8 @@ export const listInstanceFleets: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InstanceFleet
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInstanceFleetsInput,
-  output: ListInstanceFleetsOutput,
+  input: __S(163, __c20, 3) as any as S.Schema<ListInstanceFleetsInput>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListInstanceFleetsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3499,8 +2705,8 @@ export const listInstanceGroups: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InstanceGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInstanceGroupsInput,
-  output: ListInstanceGroupsOutput,
+  input: __S(173, __c21, 5) as any as S.Schema<ListInstanceGroupsInput>,
+  output: __S(182, __c22, 6) as any as S.Schema<ListInstanceGroupsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3522,8 +2728,8 @@ export const listInstances: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInstancesInput,
-  output: ListInstancesOutput,
+  input: __S(183, __c22, 7) as any as S.Schema<ListInstancesInput>,
+  output: __S(189, __c23, 5) as any as S.Schema<ListInstancesOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3548,8 +2754,8 @@ export const listNotebookExecutions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   NotebookExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNotebookExecutionsInput,
-  output: ListNotebookExecutionsOutput,
+  input: __S(190, __c23, 6) as any as S.Schema<ListNotebookExecutionsInput>,
+  output: __S(193, __c24, 1) as any as S.Schema<ListNotebookExecutionsOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3572,8 +2778,8 @@ export const listReleaseLabels: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListReleaseLabelsInput,
-  output: ListReleaseLabelsOutput,
+  input: __S(195, __c24, 3) as any as S.Schema<ListReleaseLabelsInput>,
+  output: __S(196, __c24, 4) as any as S.Schema<ListReleaseLabelsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3602,8 +2808,8 @@ export const listSecurityConfigurations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   SecurityConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSecurityConfigurationsInput,
-  output: ListSecurityConfigurationsOutput,
+  input: __S(197, __c24, 5) as any as S.Schema<ListSecurityConfigurationsInput>,
+  output: __S(200, __c25, 0) as any as S.Schema<ListSecurityConfigurationsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3626,8 +2832,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Session
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSessionsInput,
-  output: ListSessionsOutput,
+  input: __S(201, __c25, 1) as any as S.Schema<ListSessionsInput>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListSessionsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3651,8 +2857,8 @@ export const listSteps: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   StepSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStepsInput,
-  output: ListStepsOutput,
+  input: __S(204, __c25, 4) as any as S.Schema<ListStepsInput>,
+  output: __S(207, __c25, 7) as any as S.Schema<ListStepsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3672,8 +2878,8 @@ export const listStudios: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   StudioSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStudiosInput,
-  output: ListStudiosOutput,
+  input: __S(208, __c26, 0) as any as S.Schema<ListStudiosInput>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListStudiosOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3696,8 +2902,8 @@ export const listStudioSessionMappings: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   SessionMappingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStudioSessionMappingsInput,
-  output: ListStudioSessionMappingsOutput,
+  input: __S(212, __c26, 4) as any as S.Schema<ListStudioSessionMappingsInput>,
+  output: __S(215, __c26, 7) as any as S.Schema<ListStudioSessionMappingsOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3720,8 +2926,8 @@ export const listSupportedInstanceTypes: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSupportedInstanceTypesInput,
-  output: ListSupportedInstanceTypesOutput,
+  input: __S(216, __c27, 0) as any as S.Schema<ListSupportedInstanceTypesInput>,
+  output: __S(219, __c27, 3) as any as S.Schema<ListSupportedInstanceTypesOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3740,8 +2946,8 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyClusterInput,
-  output: ModifyClusterOutput,
+  input: __S(220, __c27, 4) as any as S.Schema<ModifyClusterInput>,
+  output: __S(221, __c27, 5) as any as S.Schema<ModifyClusterOutput>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3766,8 +2972,8 @@ export const modifyInstanceFleet: API.OperationMethod<
   ModifyInstanceFleetError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyInstanceFleetInput,
-  output: ModifyInstanceFleetResponse,
+  input: __S(223, __c27, 7) as any as S.Schema<ModifyInstanceFleetInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<ModifyInstanceFleetResponse>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3786,8 +2992,8 @@ export const modifyInstanceGroups: API.OperationMethod<
   ModifyInstanceGroupsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyInstanceGroupsInput,
-  output: ModifyInstanceGroupsResponse,
+  input: __S(226, __c28, 2) as any as S.Schema<ModifyInstanceGroupsInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<ModifyInstanceGroupsResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3807,8 +3013,8 @@ export const putAutoScalingPolicy: API.OperationMethod<
   PutAutoScalingPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAutoScalingPolicyInput,
-  output: PutAutoScalingPolicyOutput,
+  input: __S(227, __c28, 3) as any as S.Schema<PutAutoScalingPolicyInput>,
+  output: __S(228, __c28, 4) as any as S.Schema<PutAutoScalingPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3832,8 +3038,8 @@ export const putAutoTerminationPolicy: API.OperationMethod<
   PutAutoTerminationPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAutoTerminationPolicyInput,
-  output: PutAutoTerminationPolicyOutput,
+  input: __S(229, __c28, 5) as any as S.Schema<PutAutoTerminationPolicyInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<PutAutoTerminationPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3856,8 +3062,8 @@ export const putBlockPublicAccessConfiguration: API.OperationMethod<
   PutBlockPublicAccessConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBlockPublicAccessConfigurationInput,
-  output: PutBlockPublicAccessConfigurationOutput,
+  input: __S(230, __c28, 6) as any as S.Schema<PutBlockPublicAccessConfigurationInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<PutBlockPublicAccessConfigurationOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3877,8 +3083,8 @@ export const putManagedScalingPolicy: API.OperationMethod<
   PutManagedScalingPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutManagedScalingPolicyInput,
-  output: PutManagedScalingPolicyOutput,
+  input: __S(231, __c28, 7) as any as S.Schema<PutManagedScalingPolicyInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<PutManagedScalingPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3895,8 +3101,8 @@ export const removeAutoScalingPolicy: API.OperationMethod<
   RemoveAutoScalingPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAutoScalingPolicyInput,
-  output: RemoveAutoScalingPolicyOutput,
+  input: __S(232, __c29, 0) as any as S.Schema<RemoveAutoScalingPolicyInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<RemoveAutoScalingPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3913,8 +3119,8 @@ export const removeAutoTerminationPolicy: API.OperationMethod<
   RemoveAutoTerminationPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAutoTerminationPolicyInput,
-  output: RemoveAutoTerminationPolicyOutput,
+  input: __S(233, __c29, 1) as any as S.Schema<RemoveAutoTerminationPolicyInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<RemoveAutoTerminationPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3931,8 +3137,8 @@ export const removeManagedScalingPolicy: API.OperationMethod<
   RemoveManagedScalingPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveManagedScalingPolicyInput,
-  output: RemoveManagedScalingPolicyOutput,
+  input: __S(234, __c29, 2) as any as S.Schema<RemoveManagedScalingPolicyInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<RemoveManagedScalingPolicyOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3954,8 +3160,8 @@ export const removeTags: API.OperationMethod<
   RemoveTagsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveTagsInput,
-  output: RemoveTagsOutput,
+  input: __S(235, __c29, 3) as any as S.Schema<RemoveTagsInput>,
+  output: __S(42, __c5, 2) as any as S.Schema<RemoveTagsOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3996,8 +3202,8 @@ export const runJobFlow: API.OperationMethod<
   RunJobFlowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunJobFlowInput,
-  output: RunJobFlowOutput,
+  input: __S(241, __c30, 1) as any as S.Schema<RunJobFlowInput>,
+  output: __S(242, __c30, 2) as any as S.Schema<RunJobFlowOutput>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4018,8 +3224,8 @@ export const setKeepJobFlowAliveWhenNoSteps: API.OperationMethod<
   SetKeepJobFlowAliveWhenNoStepsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetKeepJobFlowAliveWhenNoStepsInput,
-  output: SetKeepJobFlowAliveWhenNoStepsResponse,
+  input: __S(243, __c30, 3) as any as S.Schema<SetKeepJobFlowAliveWhenNoStepsInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<SetKeepJobFlowAliveWhenNoStepsResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4054,8 +3260,8 @@ export const setTerminationProtection: API.OperationMethod<
   SetTerminationProtectionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetTerminationProtectionInput,
-  output: SetTerminationProtectionResponse,
+  input: __S(244, __c30, 4) as any as S.Schema<SetTerminationProtectionInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<SetTerminationProtectionResponse>,
   errors: [InternalServerError, JobFlowNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4085,8 +3291,8 @@ export const setUnhealthyNodeReplacement: API.OperationMethod<
   SetUnhealthyNodeReplacementError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetUnhealthyNodeReplacementInput,
-  output: SetUnhealthyNodeReplacementResponse,
+  input: __S(245, __c30, 5) as any as S.Schema<SetUnhealthyNodeReplacementInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<SetUnhealthyNodeReplacementResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4116,8 +3322,8 @@ export const setVisibleToAllUsers: API.OperationMethod<
   SetVisibleToAllUsersError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetVisibleToAllUsersInput,
-  output: SetVisibleToAllUsersResponse,
+  input: __S(246, __c30, 6) as any as S.Schema<SetVisibleToAllUsersInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<SetVisibleToAllUsersResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4137,8 +3343,8 @@ export const startNotebookExecution: API.OperationMethod<
   StartNotebookExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartNotebookExecutionInput,
-  output: StartNotebookExecutionOutput,
+  input: __S(247, __c30, 7) as any as S.Schema<StartNotebookExecutionInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<StartNotebookExecutionOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4155,8 +3361,8 @@ export const startSession: API.OperationMethod<
   StartSessionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSessionInput,
-  output: StartSessionOutput,
+  input: __S(249, __c31, 1) as any as S.Schema<StartSessionInput>,
+  output: __S(250, __c31, 2) as any as S.Schema<StartSessionOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4176,8 +3382,8 @@ export const stopNotebookExecution: API.OperationMethod<
   StopNotebookExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopNotebookExecutionInput,
-  output: StopNotebookExecutionResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<StopNotebookExecutionInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<StopNotebookExecutionResponse>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4201,8 +3407,8 @@ export const terminateJobFlows: API.OperationMethod<
   TerminateJobFlowsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateJobFlowsInput,
-  output: TerminateJobFlowsResponse,
+  input: __S(252, __c31, 4) as any as S.Schema<TerminateJobFlowsInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<TerminateJobFlowsResponse>,
   errors: [InternalServerError, JobFlowNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4222,8 +3428,8 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateSessionInput,
-  output: TerminateSessionOutput,
+  input: __S(253, __c31, 5) as any as S.Schema<TerminateSessionInput>,
+  output: __S(254, __c31, 6) as any as S.Schema<TerminateSessionOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4245,8 +3451,8 @@ export const updateStudio: API.OperationMethod<
   UpdateStudioError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStudioInput,
-  output: UpdateStudioResponse,
+  input: __S(255, __c31, 7) as any as S.Schema<UpdateStudioInput>,
+  output: __S(42, __c5, 2) as any as S.Schema<UpdateStudioResponse>,
   errors: [InternalServerException, InvalidRequestException, StudioNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4266,8 +3472,8 @@ export const updateStudioSessionMapping: API.OperationMethod<
   UpdateStudioSessionMappingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStudioSessionMappingInput,
-  output: UpdateStudioSessionMappingResponse,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateStudioSessionMappingInput>,
+  output: __S(55, __c6, 7) as any as S.Schema<UpdateStudioSessionMappingResponse>,
   errors: [InternalServerError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4289,16 +3495,16 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          VolumeSpecification: S.optional(VolumeSpecification),
+          VolumeSpecification: S.optional(__S(0, __c0, 0)),
           VolumesPerInstance: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EbsBlockDeviceConfig" });
     case 2:
-      return S.Array(EbsBlockDeviceConfig);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EbsBlockDeviceConfigs: S.optional(EbsBlockDeviceConfigList),
+          EbsBlockDeviceConfigs: S.optional(__S(2, __c0, 2)),
           EbsOptimized: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EbsConfiguration" });
@@ -4309,14 +3515,14 @@ function __c0(j: number): any {
         S.Struct({
           Classification: S.optional(S.String),
           Configurations: S.optional(
-            S.suspend(() => ConfigurationList).annotate({ identifier: "ConfigurationList" }),
+            S.suspend(() => __S(6, __c0, 6)).annotate({ identifier: "ConfigurationList" }),
           ),
-          Properties: S.optional(StringMap),
+          Properties: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Configuration" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => Configuration).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => __S(5, __c0, 5)).annotate({
           identifier: "Configuration",
         }),
       );
@@ -4327,8 +3533,8 @@ function __c0(j: number): any {
           WeightedCapacity: S.optional(S.Number),
           BidPrice: S.optional(S.String),
           BidPriceAsPercentageOfOnDemandPrice: S.optional(S.Number),
-          EbsConfiguration: S.optional(EbsConfiguration),
-          Configurations: S.optional(ConfigurationList),
+          EbsConfiguration: S.optional(__S(3, __c0, 3)),
+          Configurations: S.optional(__S(6, __c0, 6)),
           CustomAmiId: S.optional(S.String),
           Priority: S.optional(S.Number),
         }),
@@ -4338,14 +3544,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InstanceTypeConfig);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           TimeoutDurationMinutes: S.optional(S.Number),
-          TimeoutAction: S.optional(SpotProvisioningTimeoutAction),
+          TimeoutAction: S.optional(S.String),
           BlockDurationMinutes: S.optional(S.Number),
-          AllocationStrategy: S.optional(SpotProvisioningAllocationStrategy),
+          AllocationStrategy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SpotProvisioningSpecification",
@@ -4353,8 +3559,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          UsageStrategy: S.optional(OnDemandCapacityReservationUsageStrategy),
-          CapacityReservationPreference: S.optional(OnDemandCapacityReservationPreference),
+          UsageStrategy: S.optional(S.String),
+          CapacityReservationPreference: S.optional(S.String),
           CapacityReservationResourceGroupArn: S.optional(S.String),
         }),
       ).annotate({
@@ -4363,8 +3569,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AllocationStrategy: S.optional(OnDemandProvisioningAllocationStrategy),
-          CapacityReservationOptions: S.optional(OnDemandCapacityReservationOptions),
+          AllocationStrategy: S.optional(S.String),
+          CapacityReservationOptions: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "OnDemandProvisioningSpecification",
@@ -4372,8 +3578,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SpotSpecification: S.optional(SpotProvisioningSpecification),
-          OnDemandSpecification: S.optional(OnDemandProvisioningSpecification),
+          SpotSpecification: S.optional(__S(9, __c1, 1)),
+          OnDemandSpecification: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "InstanceFleetProvisioningSpecifications",
@@ -4382,7 +3588,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TimeoutDurationMinutes: S.optional(S.Number),
-          AllocationStrategy: S.optional(SpotProvisioningAllocationStrategy),
+          AllocationStrategy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SpotResizingSpecification",
@@ -4391,8 +3597,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TimeoutDurationMinutes: S.optional(S.Number),
-          AllocationStrategy: S.optional(OnDemandProvisioningAllocationStrategy),
-          CapacityReservationOptions: S.optional(OnDemandCapacityReservationOptions),
+          AllocationStrategy: S.optional(S.String),
+          CapacityReservationOptions: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "OnDemandResizingSpecification",
@@ -4400,8 +3606,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          SpotResizeSpecification: S.optional(SpotResizingSpecification),
-          OnDemandResizeSpecification: S.optional(OnDemandResizingSpecification),
+          SpotResizeSpecification: S.optional(__S(13, __c1, 5)),
+          OnDemandResizeSpecification: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "InstanceFleetResizingSpecifications",
@@ -4414,12 +3620,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          InstanceFleetType: S.optional(InstanceFleetType),
+          InstanceFleetType: S.optional(S.String),
           TargetOnDemandCapacity: S.optional(S.Number),
           TargetSpotCapacity: S.optional(S.Number),
-          InstanceTypeConfigs: S.optional(InstanceTypeConfigList),
-          LaunchSpecifications: S.optional(InstanceFleetProvisioningSpecifications),
-          ResizeSpecifications: S.optional(InstanceFleetResizingSpecifications),
+          InstanceTypeConfigs: S.optional(__S(8, __c1, 0)),
+          LaunchSpecifications: S.optional(__S(12, __c1, 4)),
+          ResizeSpecifications: S.optional(__S(15, __c1, 7)),
           Context: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceFleetConfig" });
@@ -4427,7 +3633,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          InstanceFleet: S.optional(InstanceFleetConfig),
+          InstanceFleet: S.optional(__S(16, __c2, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddInstanceFleetInput" });
     case 2:
@@ -4445,7 +3651,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AdjustmentType: S.optional(AdjustmentType),
+          AdjustmentType: S.optional(S.String),
           ScalingAdjustment: S.optional(S.Number),
           CoolDown: S.optional(S.Number),
         }),
@@ -4455,8 +3661,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Market: S.optional(MarketType),
-          SimpleScalingPolicyConfiguration: S.optional(SimpleScalingPolicyConfiguration),
+          Market: S.optional(S.String),
+          SimpleScalingPolicyConfiguration: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "ScalingAction" });
     case 6:
@@ -4464,7 +3670,7 @@ function __c2(j: number): any {
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "MetricDimension" });
     case 7:
-      return S.Array(MetricDimension);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -4472,62 +3678,62 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ComparisonOperator: S.optional(ComparisonOperator),
+          ComparisonOperator: S.optional(S.String),
           EvaluationPeriods: S.optional(S.Number),
           MetricName: S.optional(S.String),
           Namespace: S.optional(S.String),
           Period: S.optional(S.Number),
-          Statistic: S.optional(Statistic),
+          Statistic: S.optional(S.String),
           Threshold: S.optional(S.Number),
-          Unit: S.optional(Unit),
-          Dimensions: S.optional(MetricDimensionList),
+          Unit: S.optional(S.String),
+          Dimensions: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "CloudWatchAlarmDefinition",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ CloudWatchAlarmDefinition: S.optional(CloudWatchAlarmDefinition) }),
+        S.Struct({ CloudWatchAlarmDefinition: S.optional(__S(24, __c3, 0)) }),
       ).annotate({ identifier: "ScalingTrigger" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Action: S.optional(ScalingAction),
-          Trigger: S.optional(ScalingTrigger),
+          Action: S.optional(__S(21, __c2, 5)),
+          Trigger: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "ScalingRule" });
     case 3:
-      return S.Array(ScalingRule);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Constraints: S.optional(ScalingConstraints),
-          Rules: S.optional(ScalingRuleList),
+          Constraints: S.optional(__S(19, __c2, 3)),
+          Rules: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "AutoScalingPolicy" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Market: S.optional(MarketType),
-          InstanceRole: S.optional(InstanceRoleType),
+          Market: S.optional(S.String),
+          InstanceRole: S.optional(S.String),
           BidPrice: S.optional(S.String),
           InstanceType: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
-          Configurations: S.optional(ConfigurationList),
-          EbsConfiguration: S.optional(EbsConfiguration),
-          AutoScalingPolicy: S.optional(AutoScalingPolicy),
+          Configurations: S.optional(__S(6, __c0, 6)),
+          EbsConfiguration: S.optional(__S(3, __c0, 3)),
+          AutoScalingPolicy: S.optional(__S(28, __c3, 4)),
           CustomAmiId: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceGroupConfig" });
     case 6:
-      return S.Array(InstanceGroupConfig);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          InstanceGroups: S.optional(InstanceGroupConfigList),
+          InstanceGroups: S.optional(__S(30, __c3, 6)),
           JobFlowId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddInstanceGroupsInput" });
@@ -4541,17 +3747,17 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobFlowId: S.optional(S.String),
-          InstanceGroupIds: S.optional(InstanceGroupIdsList),
+          InstanceGroupIds: S.optional(__S(32, __c4, 0)),
           ClusterArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "AddInstanceGroupsOutput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Properties: S.optional(KeyValueList),
+          Properties: S.optional(__S(23, __c2, 7)),
           Jar: S.optional(S.String),
           MainClass: S.optional(S.String),
-          Args: S.optional(XmlStringList),
+          Args: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "HadoopJarStepConfig" });
     case 3:
@@ -4562,7 +3768,7 @@ function __c4(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ S3MonitoringConfiguration: S.optional(S3MonitoringConfiguration) }),
+        S.Struct({ S3MonitoringConfiguration: S.optional(__S(35, __c4, 3)) }),
       ).annotate({
         identifier: "StepMonitoringConfiguration",
       });
@@ -4570,18 +3776,18 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          ActionOnFailure: S.optional(ActionOnFailure),
-          HadoopJarStep: S.optional(HadoopJarStepConfig),
-          StepMonitoringConfiguration: S.optional(StepMonitoringConfiguration),
+          ActionOnFailure: S.optional(S.String),
+          HadoopJarStep: S.optional(__S(34, __c4, 2)),
+          StepMonitoringConfiguration: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "StepConfig" });
     case 6:
-      return S.Array(StepConfig);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           JobFlowId: S.optional(S.String),
-          Steps: S.optional(StepConfigList),
+          Steps: S.optional(__S(38, __c4, 6)),
           ExecutionRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddJobFlowStepsInput" });
@@ -4590,14 +3796,16 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ StepIds: S.optional(StepIdsList) }).pipe(ns)).annotate({
-        identifier: "AddJobFlowStepsOutput",
-      });
+      return S.suspend(() => S.Struct({ StepIds: S.optional(__S(32, __c4, 0)) }).pipe(ns)).annotate(
+        {
+          identifier: "AddJobFlowStepsOutput",
+        },
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(23, __c2, 7)),
           ClusterId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddTagsInput" });
@@ -4609,23 +3817,23 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          StepIds: S.optional(StepIdsList),
-          StepCancellationOption: S.optional(StepCancellationOption),
+          StepIds: S.optional(__S(32, __c4, 0)),
+          StepCancellationOption: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CancelStepsInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           StepId: S.optional(S.String),
-          Status: S.optional(CancelStepsRequestStatus),
+          Status: S.optional(S.String),
           Reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancelStepsInfo" });
     case 5:
-      return S.Array(CancelStepsInfo);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ CancelStepsInfoList: S.optional(CancelStepsInfoList) }).pipe(ns),
+        S.Struct({ CancelStepsInfoList: S.optional(__S(45, __c5, 5)) }).pipe(ns),
       ).annotate({ identifier: "CancelStepsOutput" });
     case 7:
       return S.suspend(() => S.Struct({ JobRunId: S.optional(S.String) })).annotate({
@@ -4639,10 +3847,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TargetResourceArn: S.optional(S.String),
-          EMRContainersConfig: S.optional(EMRContainersConfig),
-          Tags: S.optional(TagList),
+          EMRContainersConfig: S.optional(__S(47, __c5, 7)),
+          Tags: S.optional(__S(23, __c2, 7)),
           XReferer: S.optional(S.String),
-          ProfilerType: S.optional(ProfilerType),
+          ProfilerType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePersistentAppUIInput",
@@ -4678,9 +3886,9 @@ function __c6(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          AuthMode: S.optional(AuthMode),
+          AuthMode: S.optional(S.String),
           VpcId: S.optional(S.String),
-          SubnetIds: S.optional(SubnetIdList),
+          SubnetIds: S.optional(__S(32, __c4, 0)),
           ServiceRole: S.optional(S.String),
           UserRole: S.optional(S.String),
           WorkspaceSecurityGroupId: S.optional(S.String),
@@ -4688,9 +3896,9 @@ function __c6(j: number): any {
           DefaultS3Location: S.optional(S.String),
           IdpAuthUrl: S.optional(S.String),
           IdpRelayStateParameterName: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(23, __c2, 7)),
           TrustedIdentityPropagationEnabled: S.optional(S.Boolean),
-          IdcUserAssignment: S.optional(IdcUserAssignment),
+          IdcUserAssignment: S.optional(S.String),
           IdcInstanceArn: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4705,7 +3913,7 @@ function __c6(j: number): any {
           StudioId: S.optional(S.String),
           IdentityId: S.optional(S.String),
           IdentityName: S.optional(S.String),
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
           SessionPolicyArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4739,7 +3947,7 @@ function __c7(j: number): any {
           StudioId: S.optional(S.String),
           IdentityId: S.optional(S.String),
           IdentityName: S.optional(S.String),
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DeleteStudioSessionMappingInput",
@@ -4752,7 +3960,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DescribeClusterInput" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Code: S.optional(ClusterStateChangeReasonCode), Message: S.optional(S.String) }),
+        S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "ClusterStateChangeReason" });
     case 5:
       return S.suspend(() =>
@@ -4763,12 +3971,12 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ClusterTimeline" });
     case 6:
-      return S.Array(StringMap);
+      return S.Array(__S(4, __c0, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
           ErrorCode: S.optional(S.String),
-          ErrorData: S.optional(ErrorData),
+          ErrorData: S.optional(__S(62, __c7, 6)),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ErrorDetail" });
@@ -4777,14 +3985,14 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ErrorDetail);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(ClusterState),
-          StateChangeReason: S.optional(ClusterStateChangeReason),
-          Timeline: S.optional(ClusterTimeline),
-          ErrorDetails: S.optional(ErrorDetailList),
+          State: S.optional(S.String),
+          StateChangeReason: S.optional(__S(60, __c7, 4)),
+          Timeline: S.optional(__S(61, __c7, 5)),
+          ErrorDetails: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "ClusterStatus" });
     case 2:
@@ -4792,15 +4000,15 @@ function __c8(j: number): any {
         S.Struct({
           Ec2KeyName: S.optional(S.String),
           Ec2SubnetId: S.optional(S.String),
-          RequestedEc2SubnetIds: S.optional(XmlStringMaxLen256List),
+          RequestedEc2SubnetIds: S.optional(__S(32, __c4, 0)),
           Ec2AvailabilityZone: S.optional(S.String),
-          RequestedEc2AvailabilityZones: S.optional(XmlStringMaxLen256List),
+          RequestedEc2AvailabilityZones: S.optional(__S(32, __c4, 0)),
           IamInstanceProfile: S.optional(S.String),
           EmrManagedMasterSecurityGroup: S.optional(S.String),
           EmrManagedSlaveSecurityGroup: S.optional(S.String),
           ServiceAccessSecurityGroup: S.optional(S.String),
-          AdditionalMasterSecurityGroups: S.optional(StringList),
-          AdditionalSlaveSecurityGroups: S.optional(StringList),
+          AdditionalMasterSecurityGroups: S.optional(__S(32, __c4, 0)),
+          AdditionalSlaveSecurityGroups: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Ec2InstanceAttributes" });
     case 3:
@@ -4808,12 +4016,12 @@ function __c8(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Version: S.optional(S.String),
-          Args: S.optional(StringList),
-          AdditionalInfo: S.optional(StringMap),
+          Args: S.optional(__S(32, __c4, 0)),
+          AdditionalInfo: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Application" });
     case 4:
-      return S.Array(Application);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4827,18 +4035,18 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InstanceRole: S.optional(InstanceRoleType),
-          PlacementStrategy: S.optional(PlacementGroupStrategy),
+          InstanceRole: S.optional(S.String),
+          PlacementStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlacementGroupConfig" });
     case 7:
-      return S.Array(PlacementGroupConfig);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ XmlStringList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(32, __c4, 0).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4846,22 +4054,24 @@ function __c9(j: number): any {
           LogGroupName: S.optional(S.String),
           LogStreamNamePrefix: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
-          LogTypes: S.optional(LogTypesMap),
+          LogTypes: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "CloudWatchLogConfiguration",
       });
     case 2:
-      return S.Record(LogType, /*@__PURE__*/ LogUploadPolicyValue.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
-      return S.suspend(() => S.Struct({ LogTypeUploadPolicy: S.optional(LogTypeMap) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ LogTypeUploadPolicy: S.optional(__S(74, __c9, 2)) }),
+      ).annotate({
         identifier: "S3LoggingConfiguration",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLogConfiguration: S.optional(CloudWatchLogConfiguration),
-          S3LoggingConfiguration: S.optional(S3LoggingConfiguration),
+          CloudWatchLogConfiguration: S.optional(__S(73, __c9, 1)),
+          S3LoggingConfiguration: S.optional(__S(75, __c9, 3)),
         }),
       ).annotate({ identifier: "MonitoringConfiguration" });
     case 5:
@@ -4869,9 +4079,9 @@ function __c9(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Status: S.optional(ClusterStatus),
-          Ec2InstanceAttributes: S.optional(Ec2InstanceAttributes),
-          InstanceCollectionType: S.optional(InstanceCollectionType),
+          Status: S.optional(__S(65, __c8, 1)),
+          Ec2InstanceAttributes: S.optional(__S(66, __c8, 2)),
+          InstanceCollectionType: S.optional(S.String),
           LogUri: S.optional(S.String),
           LogEncryptionKmsKeyId: S.optional(S.String),
           RequestedAmiVersion: S.optional(S.String),
@@ -4881,37 +4091,39 @@ function __c9(j: number): any {
           TerminationProtected: S.optional(S.Boolean),
           UnhealthyNodeReplacement: S.optional(S.Boolean),
           VisibleToAllUsers: S.optional(S.Boolean),
-          Applications: S.optional(ApplicationList),
-          Tags: S.optional(TagList),
+          Applications: S.optional(__S(68, __c8, 4)),
+          Tags: S.optional(__S(23, __c2, 7)),
           ServiceRole: S.optional(S.String),
           NormalizedInstanceHours: S.optional(S.Number),
           MasterPublicDnsName: S.optional(S.String),
-          Configurations: S.optional(ConfigurationList),
+          Configurations: S.optional(__S(6, __c0, 6)),
           SecurityConfiguration: S.optional(S.String),
           AutoScalingRole: S.optional(S.String),
-          ScaleDownBehavior: S.optional(ScaleDownBehavior),
+          ScaleDownBehavior: S.optional(S.String),
           CustomAmiId: S.optional(S.String),
           EbsRootVolumeSize: S.optional(S.Number),
-          RepoUpgradeOnBoot: S.optional(RepoUpgradeOnBoot),
-          KerberosAttributes: S.optional(KerberosAttributes),
+          RepoUpgradeOnBoot: S.optional(S.String),
+          KerberosAttributes: S.optional(__S(69, __c8, 5)),
           ClusterArn: S.optional(S.String),
           OutpostArn: S.optional(S.String),
           StepConcurrencyLevel: S.optional(S.Number),
-          PlacementGroups: S.optional(PlacementGroupConfigList),
+          PlacementGroups: S.optional(__S(71, __c8, 7)),
           OSReleaseLabel: S.optional(S.String),
           EbsRootVolumeIops: S.optional(S.Number),
           EbsRootVolumeThroughput: S.optional(S.Number),
           ExtendedSupport: S.optional(S.Boolean),
-          MonitoringConfiguration: S.optional(MonitoringConfiguration),
+          MonitoringConfiguration: S.optional(__S(76, __c9, 4)),
           SessionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Cluster" });
     case 6:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
-        identifier: "DescribeClusterOutput",
-      });
+      return S.suspend(() => S.Struct({ Cluster: S.optional(__S(77, __c9, 5)) }).pipe(ns)).annotate(
+        {
+          identifier: "DescribeClusterOutput",
+        },
+      );
     case 7:
-      return S.Array(JobFlowExecutionState);
+      return S.Array(S.String);
   }
 }
 function __c10(j: number): any {
@@ -4921,14 +4133,14 @@ function __c10(j: number): any {
         S.Struct({
           CreatedAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          JobFlowIds: S.optional(XmlStringList),
-          JobFlowStates: S.optional(JobFlowExecutionStateList),
+          JobFlowIds: S.optional(__S(32, __c4, 0)),
+          JobFlowStates: S.optional(__S(79, __c9, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeJobFlowsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(JobFlowExecutionState),
+          State: S.optional(S.String),
           CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ReadyDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4943,13 +4155,13 @@ function __c10(j: number): any {
         S.Struct({
           InstanceGroupId: S.optional(S.String),
           Name: S.optional(S.String),
-          Market: S.optional(MarketType),
-          InstanceRole: S.optional(InstanceRoleType),
+          Market: S.optional(S.String),
+          InstanceRole: S.optional(S.String),
           BidPrice: S.optional(S.String),
           InstanceType: S.optional(S.String),
           InstanceRequestCount: S.optional(S.Number),
           InstanceRunningCount: S.optional(S.Number),
-          State: S.optional(InstanceGroupState),
+          State: S.optional(S.String),
           LastStateChangeReason: S.optional(S.String),
           CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4959,12 +4171,12 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "InstanceGroupDetail" });
     case 3:
-      return S.Array(InstanceGroupDetail);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           AvailabilityZone: S.optional(S.String),
-          AvailabilityZones: S.optional(XmlStringMaxLen256List),
+          AvailabilityZones: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "PlacementType" });
     case 5:
@@ -4975,11 +4187,11 @@ function __c10(j: number): any {
           MasterInstanceId: S.optional(S.String),
           SlaveInstanceType: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
-          InstanceGroups: S.optional(InstanceGroupDetailList),
+          InstanceGroups: S.optional(__S(83, __c10, 3)),
           NormalizedInstanceHours: S.optional(S.Number),
           Ec2KeyName: S.optional(S.String),
           Ec2SubnetId: S.optional(S.String),
-          Placement: S.optional(PlacementType),
+          Placement: S.optional(__S(84, __c10, 4)),
           KeepJobFlowAliveWhenNoSteps: S.optional(S.Boolean),
           TerminationProtected: S.optional(S.Boolean),
           UnhealthyNodeReplacement: S.optional(S.Boolean),
@@ -4989,7 +4201,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(StepExecutionState),
+          State: S.optional(S.String),
           CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5001,8 +4213,8 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          StepConfig: S.optional(StepConfig),
-          ExecutionStatusDetail: S.optional(StepExecutionStatusDetail),
+          StepConfig: S.optional(__S(37, __c4, 5)),
+          ExecutionStatusDetail: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({ identifier: "StepDetail" });
   }
@@ -5010,10 +4222,10 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StepDetail);
+      return S.Array(__S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Path: S.optional(S.String), Args: S.optional(XmlStringList) }),
+        S.Struct({ Path: S.optional(S.String), Args: S.optional(__S(32, __c4, 0)) }),
       ).annotate({
         identifier: "ScriptBootstrapActionConfig",
       });
@@ -5021,15 +4233,15 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          ScriptBootstrapAction: S.optional(ScriptBootstrapActionConfig),
+          ScriptBootstrapAction: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "BootstrapActionConfig" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ BootstrapActionConfig: S.optional(BootstrapActionConfig) }),
+        S.Struct({ BootstrapActionConfig: S.optional(__S(90, __c11, 2)) }),
       ).annotate({ identifier: "BootstrapActionDetail" });
     case 4:
-      return S.Array(BootstrapActionDetail);
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5038,23 +4250,23 @@ function __c11(j: number): any {
           LogUri: S.optional(S.String),
           LogEncryptionKmsKeyId: S.optional(S.String),
           AmiVersion: S.optional(S.String),
-          ExecutionStatusDetail: S.optional(JobFlowExecutionStatusDetail),
-          Instances: S.optional(JobFlowInstancesDetail),
-          Steps: S.optional(StepDetailList),
-          BootstrapActions: S.optional(BootstrapActionDetailList),
-          SupportedProducts: S.optional(SupportedProductsList),
+          ExecutionStatusDetail: S.optional(__S(81, __c10, 1)),
+          Instances: S.optional(__S(85, __c10, 5)),
+          Steps: S.optional(__S(88, __c11, 0)),
+          BootstrapActions: S.optional(__S(92, __c11, 4)),
+          SupportedProducts: S.optional(__S(32, __c4, 0)),
           VisibleToAllUsers: S.optional(S.Boolean),
           JobFlowRole: S.optional(S.String),
           ServiceRole: S.optional(S.String),
           AutoScalingRole: S.optional(S.String),
-          ScaleDownBehavior: S.optional(ScaleDownBehavior),
+          ScaleDownBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobFlowDetail" });
     case 6:
-      return S.Array(JobFlowDetail);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ JobFlows: S.optional(JobFlowDetailList) }).pipe(ns),
+        S.Struct({ JobFlows: S.optional(__S(94, __c11, 6)) }).pipe(ns),
       ).annotate({ identifier: "DescribeJobFlowsOutput" });
   }
 }
@@ -5072,7 +4284,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Type: S.optional(ExecutionEngineType),
+          Type: S.optional(S.String),
           MasterInstanceSecurityGroupId: S.optional(S.String),
           ExecutionRoleArn: S.optional(S.String),
         }),
@@ -5090,26 +4302,26 @@ function __c12(j: number): any {
         S.Struct({
           NotebookExecutionId: S.optional(S.String),
           EditorId: S.optional(S.String),
-          ExecutionEngine: S.optional(ExecutionEngineConfig),
+          ExecutionEngine: S.optional(__S(97, __c12, 1)),
           NotebookExecutionName: S.optional(S.String),
           NotebookParams: S.optional(S.String),
-          Status: S.optional(NotebookExecutionStatus),
+          Status: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Arn: S.optional(S.String),
           OutputNotebookURI: S.optional(S.String),
           LastStateChangeReason: S.optional(S.String),
           NotebookInstanceSecurityGroupId: S.optional(S.String),
-          Tags: S.optional(TagList),
-          NotebookS3Location: S.optional(NotebookS3LocationForOutput),
-          OutputNotebookS3Location: S.optional(OutputNotebookS3LocationForOutput),
-          OutputNotebookFormat: S.optional(OutputNotebookFormat),
-          EnvironmentVariables: S.optional(EnvironmentVariablesMap),
+          Tags: S.optional(__S(23, __c2, 7)),
+          NotebookS3Location: S.optional(__S(98, __c12, 2)),
+          OutputNotebookS3Location: S.optional(__S(98, __c12, 2)),
+          OutputNotebookFormat: S.optional(S.String),
+          EnvironmentVariables: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({ identifier: "NotebookExecution" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ NotebookExecution: S.optional(NotebookExecution) }).pipe(ns),
+        S.Struct({ NotebookExecution: S.optional(__S(100, __c12, 4)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeNotebookExecutionOutput",
       });
@@ -5125,13 +4337,13 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PersistentAppUIId: S.optional(S.String),
-          PersistentAppUITypeList: S.optional(PersistentAppUITypeList),
+          PersistentAppUITypeList: S.optional(__S(79, __c9, 7)),
           PersistentAppUIStatus: S.optional(S.String),
           AuthorId: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastStateChangeReason: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "PersistentAppUI" });
   }
@@ -5140,7 +4352,7 @@ function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PersistentAppUI: S.optional(PersistentAppUI) }).pipe(ns),
+        S.Struct({ PersistentAppUI: S.optional(__S(103, __c12, 7)) }).pipe(ns),
       ).annotate({
         identifier: "DescribePersistentAppUIOutput",
       });
@@ -5159,20 +4371,20 @@ function __c13(j: number): any {
         S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
       ).annotate({ identifier: "SimplifiedApplication" });
     case 3:
-      return S.Array(SimplifiedApplication);
+      return S.Array(__S(106, __c13, 2));
     case 4:
       return S.suspend(() => S.Struct({ Label: S.optional(S.String) })).annotate({
         identifier: "OSRelease",
       });
     case 5:
-      return S.Array(OSRelease);
+      return S.Array(__S(108, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ReleaseLabel: S.optional(S.String),
-          Applications: S.optional(SimplifiedApplicationList),
+          Applications: S.optional(__S(107, __c13, 3)),
           NextToken: S.optional(S.String),
-          AvailableOSReleases: S.optional(OSReleaseList),
+          AvailableOSReleases: S.optional(__S(109, __c13, 5)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeReleaseLabelOutput",
@@ -5209,9 +4421,9 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Jar: S.optional(S.String),
-          Properties: S.optional(StringMap),
+          Properties: S.optional(__S(4, __c0, 4)),
           MainClass: S.optional(S.String),
-          Args: S.optional(StringList),
+          Args: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "HadoopStepConfig" });
     case 3:
@@ -5233,10 +4445,10 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(StepState),
-          StateChangeReason: S.optional(StepStateChangeReason),
-          FailureDetails: S.optional(FailureDetails),
-          Timeline: S.optional(StepTimeline),
+          State: S.optional(S.String),
+          StateChangeReason: S.optional(__S(60, __c7, 4)),
+          FailureDetails: S.optional(__S(115, __c14, 3)),
+          Timeline: S.optional(__S(116, __c14, 4)),
         }),
       ).annotate({ identifier: "StepStatus" });
     case 6:
@@ -5244,16 +4456,16 @@ function __c14(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Config: S.optional(HadoopStepConfig),
-          ActionOnFailure: S.optional(ActionOnFailure),
-          Status: S.optional(StepStatus),
+          Config: S.optional(__S(114, __c14, 2)),
+          ActionOnFailure: S.optional(S.String),
+          Status: S.optional(__S(117, __c14, 5)),
           ExecutionRoleArn: S.optional(S.String),
           LogUri: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Step" });
     case 7:
-      return S.suspend(() => S.Struct({ Step: S.optional(Step) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Step: S.optional(__S(118, __c14, 6)) }).pipe(ns)).annotate({
         identifier: "DescribeStepOutput",
       });
   }
@@ -5273,9 +4485,9 @@ function __c15(j: number): any {
           StudioArn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          AuthMode: S.optional(AuthMode),
+          AuthMode: S.optional(S.String),
           VpcId: S.optional(S.String),
-          SubnetIds: S.optional(SubnetIdList),
+          SubnetIds: S.optional(__S(32, __c4, 0)),
           ServiceRole: S.optional(S.String),
           UserRole: S.optional(S.String),
           WorkspaceSecurityGroupId: S.optional(S.String),
@@ -5285,15 +4497,17 @@ function __c15(j: number): any {
           DefaultS3Location: S.optional(S.String),
           IdpAuthUrl: S.optional(S.String),
           IdpRelayStateParameterName: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(23, __c2, 7)),
           IdcInstanceArn: S.optional(S.String),
           TrustedIdentityPropagationEnabled: S.optional(S.Boolean),
-          IdcUserAssignment: S.optional(IdcUserAssignment),
+          IdcUserAssignment: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Studio" });
     case 2:
-      return S.suspend(() => S.Struct({ Studio: S.optional(Studio) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Studio: S.optional(__S(121, __c15, 1)) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeStudioOutput",
       });
     case 3:
@@ -5310,7 +4524,7 @@ function __c15(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ AutoTerminationPolicy: S.optional(AutoTerminationPolicy) }).pipe(ns),
+        S.Struct({ AutoTerminationPolicy: S.optional(__S(124, __c15, 4)) }).pipe(ns),
       ).annotate({
         identifier: "GetAutoTerminationPolicyOutput",
       });
@@ -5331,15 +4545,15 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PortRange);
+      return S.Array(__S(127, __c15, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           BlockPublicSecurityGroupRules: S.optional(S.Boolean),
-          PermittedPublicSecurityGroupRuleRanges: S.optional(PortRanges),
+          PermittedPublicSecurityGroupRuleRanges: S.optional(__S(128, __c16, 0)),
           Classification: S.optional(S.String),
-          Configurations: S.optional(ConfigurationList),
-          Properties: S.optional(StringMap),
+          Configurations: S.optional(__S(6, __c0, 6)),
+          Properties: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "BlockPublicAccessConfiguration",
@@ -5356,10 +4570,8 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          BlockPublicAccessConfiguration: S.optional(BlockPublicAccessConfiguration),
-          BlockPublicAccessConfigurationMetadata: S.optional(
-            BlockPublicAccessConfigurationMetadata,
-          ),
+          BlockPublicAccessConfiguration: S.optional(__S(129, __c16, 1)),
+          BlockPublicAccessConfigurationMetadata: S.optional(__S(130, __c16, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBlockPublicAccessConfigurationOutput",
@@ -5377,11 +4589,11 @@ function __c16(j: number): any {
         S.Struct({ Username: S.optional(S.String), Password: S.optional(SensitiveString) }),
       ).annotate({ identifier: "UsernamePassword" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ UsernamePassword: UsernamePassword })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ UsernamePassword: __S(133, __c16, 5) })]);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(Credentials),
+          Credentials: S.optional(__S(134, __c16, 6)),
           ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({
@@ -5402,7 +4614,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          UnitType: S.optional(ComputeLimitsUnitType),
+          UnitType: S.optional(S.String),
           MinimumCapacityUnits: S.optional(S.Number),
           MaximumCapacityUnits: S.optional(S.Number),
           MaximumOnDemandCapacityUnits: S.optional(S.Number),
@@ -5412,14 +4624,14 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ComputeLimits: S.optional(ComputeLimits),
+          ComputeLimits: S.optional(__S(137, __c17, 1)),
           UtilizationPerformanceIndex: S.optional(S.Number),
-          ScalingStrategy: S.optional(ScalingStrategy),
+          ScalingStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedScalingPolicy" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ManagedScalingPolicy: S.optional(ManagedScalingPolicy) }).pipe(ns),
+        S.Struct({ ManagedScalingPolicy: S.optional(__S(138, __c17, 2)) }).pipe(ns),
       ).annotate({
         identifier: "GetManagedScalingPolicyOutput",
       });
@@ -5427,7 +4639,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          OnClusterAppUIType: S.optional(OnClusterAppUIType),
+          OnClusterAppUIType: S.optional(S.String),
           ApplicationId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
           ExecutionRoleArn: S.optional(S.String),
@@ -5448,7 +4660,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PersistentAppUIId: S.optional(S.String),
-          PersistentAppUIType: S.optional(PersistentAppUIType),
+          PersistentAppUIType: S.optional(S.String),
           ApplicationId: S.optional(S.String),
           AuthProxyCall: S.optional(S.Boolean),
           ExecutionRoleArn: S.optional(S.String),
@@ -5473,7 +4685,7 @@ function __c18(j: number): any {
           LogGroup: S.optional(S.String),
           LogStreamNamePrefix: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
-          LogTypes: S.optional(LogTypesMap),
+          LogTypes: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "SessionCloudWatchLoggingConfiguration",
@@ -5490,7 +4702,7 @@ function __c18(j: number): any {
           Enabled: S.optional(S.Boolean),
           LogUri: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
-          LogTypes: S.optional(LogTypesMap),
+          LogTypes: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "SessionS3LoggingConfiguration",
@@ -5498,9 +4710,9 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLoggingConfiguration: S.optional(SessionCloudWatchLoggingConfiguration),
-          ManagedLoggingConfiguration: S.optional(SessionManagedLoggingConfiguration),
-          S3LoggingConfiguration: S.optional(SessionS3LoggingConfiguration),
+          CloudWatchLoggingConfiguration: S.optional(__S(144, __c18, 0)),
+          ManagedLoggingConfiguration: S.optional(__S(145, __c18, 1)),
+          S3LoggingConfiguration: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({
         identifier: "SessionMonitoringConfiguration",
@@ -5512,7 +4724,7 @@ function __c18(j: number): any {
           ClusterId: S.optional(S.String),
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
-          State: S.optional(SessionState),
+          State: S.optional(S.String),
           StateChangeReason: S.optional(S.String),
           ReleaseLabel: S.optional(S.String),
           ExecutionRoleArn: S.optional(S.String),
@@ -5522,15 +4734,17 @@ function __c18(j: number): any {
           StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IdleSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EngineConfigurations: S.optional(ConfigurationList),
-          MonitoringConfiguration: S.optional(SessionMonitoringConfiguration),
+          EngineConfigurations: S.optional(__S(6, __c0, 6)),
+          MonitoringConfiguration: S.optional(__S(147, __c18, 3)),
           SessionIdleTimeoutInMinutes: S.optional(S.Number),
           ServerUrl: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "Session" });
     case 5:
-      return S.suspend(() => S.Struct({ Session: S.optional(Session) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Session: S.optional(__S(148, __c18, 4)) }).pipe(ns),
+      ).annotate({
         identifier: "GetSessionOutput",
       });
     case 6:
@@ -5545,7 +4759,7 @@ function __c18(j: number): any {
           Endpoint: S.optional(S.String),
           AuthToken: S.optional(SensitiveString),
           AuthTokenExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Credentials: S.optional(Credentials),
+          Credentials: S.optional(__S(134, __c16, 6)),
         }).pipe(ns),
       ).annotate({ identifier: "GetSessionEndpointOutput" });
   }
@@ -5558,7 +4772,7 @@ function __c19(j: number): any {
           StudioId: S.optional(S.String),
           IdentityId: S.optional(S.String),
           IdentityName: S.optional(S.String),
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetStudioSessionMappingInput",
@@ -5569,7 +4783,7 @@ function __c19(j: number): any {
           StudioId: S.optional(S.String),
           IdentityId: S.optional(S.String),
           IdentityName: S.optional(S.String),
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
           SessionPolicyArn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5577,7 +4791,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "SessionMappingDetail" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ SessionMapping: S.optional(SessionMappingDetail) }).pipe(ns),
+        S.Struct({ SessionMapping: S.optional(__S(153, __c19, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetStudioSessionMappingOutput",
       });
@@ -5594,16 +4808,17 @@ function __c19(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           ScriptPath: S.optional(S.String),
-          Args: S.optional(StringList),
+          Args: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Command" });
     case 5:
-      return S.Array(Command);
+      return S.Array(__S(156, __c19, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ BootstrapActions: S.optional(CommandList), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          BootstrapActions: S.optional(__S(157, __c19, 5)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({
         identifier: "ListBootstrapActionsOutput",
       });
@@ -5612,7 +4827,7 @@ function __c19(j: number): any {
         S.Struct({
           CreatedAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ClusterStates: S.optional(ClusterStateList),
+          ClusterStates: S.optional(__S(79, __c9, 7)),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListClustersInput" });
@@ -5625,17 +4840,17 @@ function __c20(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Status: S.optional(ClusterStatus),
+          Status: S.optional(__S(65, __c8, 1)),
           NormalizedInstanceHours: S.optional(S.Number),
           ClusterArn: S.optional(S.String),
           OutpostArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterSummary" });
     case 1:
-      return S.Array(ClusterSummary);
+      return S.Array(__S(160, __c20, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Clusters: S.optional(ClusterSummaryList), Marker: S.optional(S.String) }).pipe(
+        S.Struct({ Clusters: S.optional(__S(161, __c20, 1)), Marker: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListClustersOutput" });
@@ -5648,7 +4863,7 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Code: S.optional(InstanceFleetStateChangeReasonCode),
+          Code: S.optional(S.String),
           Message: S.optional(S.String),
         }),
       ).annotate({
@@ -5657,20 +4872,20 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(InstanceFleetState),
-          StateChangeReason: S.optional(InstanceFleetStateChangeReason),
-          Timeline: S.optional(InstanceFleetTimeline),
+          State: S.optional(S.String),
+          StateChangeReason: S.optional(__S(164, __c20, 4)),
+          Timeline: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "InstanceFleetStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          VolumeSpecification: S.optional(VolumeSpecification),
+          VolumeSpecification: S.optional(__S(0, __c0, 0)),
           Device: S.optional(S.String),
         }),
       ).annotate({ identifier: "EbsBlockDevice" });
     case 7:
-      return S.Array(EbsBlockDevice);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -5682,8 +4897,8 @@ function __c21(j: number): any {
           WeightedCapacity: S.optional(S.Number),
           BidPrice: S.optional(S.String),
           BidPriceAsPercentageOfOnDemandPrice: S.optional(S.Number),
-          Configurations: S.optional(ConfigurationList),
-          EbsBlockDevices: S.optional(EbsBlockDeviceList),
+          Configurations: S.optional(__S(6, __c0, 6)),
+          EbsBlockDevices: S.optional(__S(167, __c20, 7)),
           EbsOptimized: S.optional(S.Boolean),
           CustomAmiId: S.optional(S.String),
           Priority: S.optional(S.Number),
@@ -5692,30 +4907,30 @@ function __c21(j: number): any {
         identifier: "InstanceTypeSpecification",
       });
     case 1:
-      return S.Array(InstanceTypeSpecification);
+      return S.Array(__S(168, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Status: S.optional(InstanceFleetStatus),
-          InstanceFleetType: S.optional(InstanceFleetType),
+          Status: S.optional(__S(165, __c20, 5)),
+          InstanceFleetType: S.optional(S.String),
           TargetOnDemandCapacity: S.optional(S.Number),
           TargetSpotCapacity: S.optional(S.Number),
           ProvisionedOnDemandCapacity: S.optional(S.Number),
           ProvisionedSpotCapacity: S.optional(S.Number),
-          InstanceTypeSpecifications: S.optional(InstanceTypeSpecificationList),
-          LaunchSpecifications: S.optional(InstanceFleetProvisioningSpecifications),
-          ResizeSpecifications: S.optional(InstanceFleetResizingSpecifications),
+          InstanceTypeSpecifications: S.optional(__S(169, __c21, 1)),
+          LaunchSpecifications: S.optional(__S(12, __c1, 4)),
+          ResizeSpecifications: S.optional(__S(15, __c1, 7)),
           Context: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceFleet" });
     case 3:
-      return S.Array(InstanceFleet);
+      return S.Array(__S(170, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          InstanceFleets: S.optional(InstanceFleetList),
+          InstanceFleets: S.optional(__S(171, __c21, 3)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListInstanceFleetsOutput" });
@@ -5728,16 +4943,16 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(InstanceGroupState),
-          StateChangeReason: S.optional(InstanceGroupStateChangeReason),
-          Timeline: S.optional(InstanceGroupTimeline),
+          State: S.optional(S.String),
+          StateChangeReason: S.optional(__S(164, __c20, 4)),
+          Timeline: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "InstanceGroupStatus" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          InstancesToTerminate: S.optional(EC2InstanceIdsList),
-          InstancesToProtect: S.optional(EC2InstanceIdsList),
+          InstancesToTerminate: S.optional(__S(32, __c4, 0)),
+          InstancesToProtect: S.optional(__S(32, __c4, 0)),
           InstanceTerminationTimeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InstanceResizePolicy" });
@@ -5749,13 +4964,13 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DecommissionTimeout: S.optional(S.Number),
-          InstanceResizePolicy: S.optional(InstanceResizePolicy),
+          InstanceResizePolicy: S.optional(__S(175, __c21, 7)),
         }),
       ).annotate({ identifier: "ShrinkPolicy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Code: S.optional(AutoScalingPolicyStateChangeReasonCode),
+          Code: S.optional(S.String),
           Message: S.optional(S.String),
         }),
       ).annotate({
@@ -5764,16 +4979,16 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(AutoScalingPolicyState),
-          StateChangeReason: S.optional(AutoScalingPolicyStateChangeReason),
+          State: S.optional(S.String),
+          StateChangeReason: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "AutoScalingPolicyStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(AutoScalingPolicyStatus),
-          Constraints: S.optional(ScalingConstraints),
-          Rules: S.optional(ScalingRuleList),
+          Status: S.optional(__S(178, __c22, 2)),
+          Constraints: S.optional(__S(19, __c2, 3)),
+          Rules: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "AutoScalingPolicyDescription",
@@ -5783,30 +4998,30 @@ function __c22(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Market: S.optional(MarketType),
-          InstanceGroupType: S.optional(InstanceGroupType),
+          Market: S.optional(S.String),
+          InstanceGroupType: S.optional(S.String),
           BidPrice: S.optional(S.String),
           InstanceType: S.optional(S.String),
           RequestedInstanceCount: S.optional(S.Number),
           RunningInstanceCount: S.optional(S.Number),
-          Status: S.optional(InstanceGroupStatus),
-          Configurations: S.optional(ConfigurationList),
+          Status: S.optional(__S(174, __c21, 6)),
+          Configurations: S.optional(__S(6, __c0, 6)),
           ConfigurationsVersion: S.optional(S.Number),
-          LastSuccessfullyAppliedConfigurations: S.optional(ConfigurationList),
+          LastSuccessfullyAppliedConfigurations: S.optional(__S(6, __c0, 6)),
           LastSuccessfullyAppliedConfigurationsVersion: S.optional(S.Number),
-          EbsBlockDevices: S.optional(EbsBlockDeviceList),
+          EbsBlockDevices: S.optional(__S(167, __c20, 7)),
           EbsOptimized: S.optional(S.Boolean),
-          ShrinkPolicy: S.optional(ShrinkPolicy),
-          AutoScalingPolicy: S.optional(AutoScalingPolicyDescription),
+          ShrinkPolicy: S.optional(__S(176, __c22, 0)),
+          AutoScalingPolicy: S.optional(__S(179, __c22, 3)),
           CustomAmiId: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceGroup" });
     case 5:
-      return S.Array(InstanceGroup);
+      return S.Array(__S(180, __c22, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InstanceGroups: S.optional(InstanceGroupList),
+          InstanceGroups: S.optional(__S(181, __c22, 5)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListInstanceGroupsOutput" });
@@ -5815,10 +5030,10 @@ function __c22(j: number): any {
         S.Struct({
           ClusterId: S.optional(S.String),
           InstanceGroupId: S.optional(S.String),
-          InstanceGroupTypes: S.optional(InstanceGroupTypeList),
+          InstanceGroupTypes: S.optional(__S(79, __c9, 7)),
           InstanceFleetId: S.optional(S.String),
-          InstanceFleetType: S.optional(InstanceFleetType),
-          InstanceStates: S.optional(InstanceStateList),
+          InstanceFleetType: S.optional(S.String),
+          InstanceStates: S.optional(__S(79, __c9, 7)),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListInstancesInput" });
@@ -5829,9 +5044,9 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(InstanceState),
-          StateChangeReason: S.optional(InstanceStateChangeReason),
-          Timeline: S.optional(InstanceTimeline),
+          State: S.optional(S.String),
+          StateChangeReason: S.optional(__S(164, __c20, 4)),
+          Timeline: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "InstanceStatus" });
     case 1:
@@ -5839,7 +5054,7 @@ function __c23(j: number): any {
         S.Struct({ Device: S.optional(S.String), VolumeId: S.optional(S.String) }),
       ).annotate({ identifier: "EbsVolume" });
     case 2:
-      return S.Array(EbsVolume);
+      return S.Array(__S(185, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5849,25 +5064,27 @@ function __c23(j: number): any {
           PublicIpAddress: S.optional(S.String),
           PrivateDnsName: S.optional(S.String),
           PrivateIpAddress: S.optional(S.String),
-          Status: S.optional(InstanceStatus),
+          Status: S.optional(__S(184, __c23, 0)),
           InstanceGroupId: S.optional(S.String),
           InstanceFleetId: S.optional(S.String),
-          Market: S.optional(MarketType),
+          Market: S.optional(S.String),
           InstanceType: S.optional(S.String),
-          EbsVolumes: S.optional(EbsVolumeList),
+          EbsVolumes: S.optional(__S(186, __c23, 2)),
         }),
       ).annotate({ identifier: "Instance" });
     case 4:
-      return S.Array(Instance);
+      return S.Array(__S(187, __c23, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Instances: S.optional(InstanceList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Instances: S.optional(__S(188, __c23, 4)), Marker: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListInstancesOutput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           EditorId: S.optional(S.String),
-          Status: S.optional(NotebookExecutionStatus),
+          Status: S.optional(S.String),
           From: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           To: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Marker: S.optional(S.String),
@@ -5882,10 +5099,10 @@ function __c23(j: number): any {
           NotebookExecutionId: S.optional(S.String),
           EditorId: S.optional(S.String),
           NotebookExecutionName: S.optional(S.String),
-          Status: S.optional(NotebookExecutionStatus),
+          Status: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          NotebookS3Location: S.optional(NotebookS3LocationForOutput),
+          NotebookS3Location: S.optional(__S(98, __c12, 2)),
           ExecutionEngineId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotebookExecutionSummary" });
@@ -5894,11 +5111,11 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NotebookExecutionSummary);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          NotebookExecutions: S.optional(NotebookExecutionSummaryList),
+          NotebookExecutions: S.optional(__S(192, __c24, 0)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5911,16 +5128,17 @@ function __c24(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ReleaseLabelFilter),
+          Filters: S.optional(__S(194, __c24, 2)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListReleaseLabelsInput" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ReleaseLabels: S.optional(StringList), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          ReleaseLabels: S.optional(__S(32, __c4, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListReleaseLabelsOutput" });
     case 5:
       return S.suspend(() =>
@@ -5940,7 +5158,7 @@ function __c24(j: number): any {
         identifier: "SecurityConfigurationSummary",
       });
     case 7:
-      return S.Array(SecurityConfigurationSummary);
+      return S.Array(__S(198, __c24, 6));
   }
 }
 function __c25(j: number): any {
@@ -5948,7 +5166,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SecurityConfigurations: S.optional(SecurityConfigurationList),
+          SecurityConfigurations: S.optional(__S(199, __c24, 7)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5958,23 +5176,26 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          SessionStates: S.optional(SessionStateList),
+          SessionStates: S.optional(__S(79, __c9, 7)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSessionsInput" });
     case 2:
-      return S.Array(Session);
+      return S.Array(__S(148, __c18, 4));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Sessions: S.optional(SessionList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          Sessions: S.optional(__S(202, __c25, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListSessionsOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          StepStates: S.optional(StepStateList),
-          StepIds: S.optional(XmlStringList),
+          StepStates: S.optional(__S(79, __c9, 7)),
+          StepIds: S.optional(__S(32, __c4, 0)),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListStepsInput" });
@@ -5983,18 +5204,18 @@ function __c25(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Config: S.optional(HadoopStepConfig),
-          ActionOnFailure: S.optional(ActionOnFailure),
-          Status: S.optional(StepStatus),
+          Config: S.optional(__S(114, __c14, 2)),
+          ActionOnFailure: S.optional(S.String),
+          Status: S.optional(__S(117, __c14, 5)),
           LogUri: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "StepSummary" });
     case 6:
-      return S.Array(StepSummary);
+      return S.Array(__S(205, __c25, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Steps: S.optional(StepSummaryList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Steps: S.optional(__S(206, __c25, 6)), Marker: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListStepsOutput" });
   }
 }
@@ -6014,21 +5235,23 @@ function __c26(j: number): any {
           VpcId: S.optional(S.String),
           Description: S.optional(S.String),
           Url: S.optional(S.String),
-          AuthMode: S.optional(AuthMode),
+          AuthMode: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "StudioSummary" });
     case 2:
-      return S.Array(StudioSummary);
+      return S.Array(__S(209, __c26, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Studios: S.optional(StudioSummaryList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Studios: S.optional(__S(210, __c26, 2)), Marker: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListStudiosOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           StudioId: S.optional(S.String),
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6040,17 +5263,17 @@ function __c26(j: number): any {
           StudioId: S.optional(S.String),
           IdentityId: S.optional(S.String),
           IdentityName: S.optional(S.String),
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
           SessionPolicyArn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SessionMappingSummary" });
     case 6:
-      return S.Array(SessionMappingSummary);
+      return S.Array(__S(213, __c26, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          SessionMappings: S.optional(SessionMappingSummaryList),
+          SessionMappings: S.optional(__S(214, __c26, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6085,11 +5308,11 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "SupportedInstanceType" });
     case 2:
-      return S.Array(SupportedInstanceType);
+      return S.Array(__S(217, __c27, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          SupportedInstanceTypes: S.optional(SupportedInstanceTypesList),
+          SupportedInstanceTypes: S.optional(__S(218, __c27, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6116,8 +5339,8 @@ function __c27(j: number): any {
           InstanceFleetId: S.optional(S.String),
           TargetOnDemandCapacity: S.optional(S.Number),
           TargetSpotCapacity: S.optional(S.Number),
-          ResizeSpecifications: S.optional(InstanceFleetResizingSpecifications),
-          InstanceTypeConfigs: S.optional(InstanceTypeConfigList),
+          ResizeSpecifications: S.optional(__S(15, __c1, 7)),
+          InstanceTypeConfigs: S.optional(__S(8, __c1, 0)),
           Context: S.optional(S.String),
         }),
       ).annotate({
@@ -6127,7 +5350,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          InstanceFleet: S.optional(InstanceFleetModifyConfig),
+          InstanceFleet: S.optional(__S(222, __c27, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyInstanceFleetInput" });
   }
@@ -6139,21 +5362,21 @@ function __c28(j: number): any {
         S.Struct({
           InstanceGroupId: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
-          EC2InstanceIdsToTerminate: S.optional(EC2InstanceIdsToTerminateList),
-          ShrinkPolicy: S.optional(ShrinkPolicy),
-          ReconfigurationType: S.optional(ReconfigurationType),
-          Configurations: S.optional(ConfigurationList),
+          EC2InstanceIdsToTerminate: S.optional(__S(32, __c4, 0)),
+          ShrinkPolicy: S.optional(__S(176, __c22, 0)),
+          ReconfigurationType: S.optional(S.String),
+          Configurations: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "InstanceGroupModifyConfig",
       });
     case 1:
-      return S.Array(InstanceGroupModifyConfig);
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          InstanceGroups: S.optional(InstanceGroupModifyConfigList),
+          InstanceGroups: S.optional(__S(225, __c28, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyInstanceGroupsInput",
@@ -6163,7 +5386,7 @@ function __c28(j: number): any {
         S.Struct({
           ClusterId: S.optional(S.String),
           InstanceGroupId: S.optional(S.String),
-          AutoScalingPolicy: S.optional(AutoScalingPolicy),
+          AutoScalingPolicy: S.optional(__S(28, __c3, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutAutoScalingPolicyInput",
@@ -6173,7 +5396,7 @@ function __c28(j: number): any {
         S.Struct({
           ClusterId: S.optional(S.String),
           InstanceGroupId: S.optional(S.String),
-          AutoScalingPolicy: S.optional(AutoScalingPolicyDescription),
+          AutoScalingPolicy: S.optional(__S(179, __c22, 3)),
           ClusterArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6183,7 +5406,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          AutoTerminationPolicy: S.optional(AutoTerminationPolicy),
+          AutoTerminationPolicy: S.optional(__S(124, __c15, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutAutoTerminationPolicyInput",
@@ -6191,7 +5414,7 @@ function __c28(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          BlockPublicAccessConfiguration: S.optional(BlockPublicAccessConfiguration),
+          BlockPublicAccessConfiguration: S.optional(__S(129, __c16, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutBlockPublicAccessConfigurationInput",
@@ -6200,7 +5423,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          ManagedScalingPolicy: S.optional(ManagedScalingPolicy),
+          ManagedScalingPolicy: S.optional(__S(138, __c17, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutManagedScalingPolicyInput",
@@ -6237,47 +5460,47 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
-          TagKeys: S.optional(StringList),
+          TagKeys: S.optional(__S(32, __c4, 0)),
           ClusterId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RemoveTagsInput" });
     case 4:
-      return S.Array(InstanceFleetConfig);
+      return S.Array(__S(16, __c2, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
           MasterInstanceType: S.optional(S.String),
           SlaveInstanceType: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
-          InstanceGroups: S.optional(InstanceGroupConfigList),
-          InstanceFleets: S.optional(InstanceFleetConfigList),
+          InstanceGroups: S.optional(__S(30, __c3, 6)),
+          InstanceFleets: S.optional(__S(236, __c29, 4)),
           Ec2KeyName: S.optional(S.String),
-          Placement: S.optional(PlacementType),
+          Placement: S.optional(__S(84, __c10, 4)),
           KeepJobFlowAliveWhenNoSteps: S.optional(S.Boolean),
           TerminationProtected: S.optional(S.Boolean),
           UnhealthyNodeReplacement: S.optional(S.Boolean),
           HadoopVersion: S.optional(S.String),
           Ec2SubnetId: S.optional(S.String),
-          Ec2SubnetIds: S.optional(XmlStringMaxLen256List),
+          Ec2SubnetIds: S.optional(__S(32, __c4, 0)),
           EmrManagedMasterSecurityGroup: S.optional(S.String),
           EmrManagedSlaveSecurityGroup: S.optional(S.String),
           ServiceAccessSecurityGroup: S.optional(S.String),
-          AdditionalMasterSecurityGroups: S.optional(SecurityGroupsList),
-          AdditionalSlaveSecurityGroups: S.optional(SecurityGroupsList),
+          AdditionalMasterSecurityGroups: S.optional(__S(32, __c4, 0)),
+          AdditionalSlaveSecurityGroups: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "JobFlowInstancesConfig" });
     case 6:
-      return S.Array(BootstrapActionConfig);
+      return S.Array(__S(90, __c11, 2));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Args: S.optional(XmlStringList) }),
+        S.Struct({ Name: S.optional(S.String), Args: S.optional(__S(32, __c4, 0)) }),
       ).annotate({ identifier: "SupportedProductConfig" });
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SupportedProductConfig);
+      return S.Array(__S(239, __c29, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6287,34 +5510,34 @@ function __c30(j: number): any {
           AdditionalInfo: S.optional(S.String),
           AmiVersion: S.optional(S.String),
           ReleaseLabel: S.optional(S.String),
-          Instances: S.optional(JobFlowInstancesConfig),
-          Steps: S.optional(StepConfigList),
+          Instances: S.optional(__S(237, __c29, 5)),
+          Steps: S.optional(__S(38, __c4, 6)),
           StepExecutionRoleArn: S.optional(S.String),
-          BootstrapActions: S.optional(BootstrapActionConfigList),
-          SupportedProducts: S.optional(SupportedProductsList),
-          NewSupportedProducts: S.optional(NewSupportedProductsList),
-          Applications: S.optional(ApplicationList),
-          Configurations: S.optional(ConfigurationList),
+          BootstrapActions: S.optional(__S(238, __c29, 6)),
+          SupportedProducts: S.optional(__S(32, __c4, 0)),
+          NewSupportedProducts: S.optional(__S(240, __c30, 0)),
+          Applications: S.optional(__S(68, __c8, 4)),
+          Configurations: S.optional(__S(6, __c0, 6)),
           VisibleToAllUsers: S.optional(S.Boolean),
           JobFlowRole: S.optional(S.String),
           ServiceRole: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(23, __c2, 7)),
           SecurityConfiguration: S.optional(S.String),
           AutoScalingRole: S.optional(S.String),
-          ScaleDownBehavior: S.optional(ScaleDownBehavior),
+          ScaleDownBehavior: S.optional(S.String),
           CustomAmiId: S.optional(S.String),
           EbsRootVolumeSize: S.optional(S.Number),
-          RepoUpgradeOnBoot: S.optional(RepoUpgradeOnBoot),
-          KerberosAttributes: S.optional(KerberosAttributes),
+          RepoUpgradeOnBoot: S.optional(S.String),
+          KerberosAttributes: S.optional(__S(69, __c8, 5)),
           StepConcurrencyLevel: S.optional(S.Number),
-          ManagedScalingPolicy: S.optional(ManagedScalingPolicy),
-          PlacementGroupConfigs: S.optional(PlacementGroupConfigList),
-          AutoTerminationPolicy: S.optional(AutoTerminationPolicy),
+          ManagedScalingPolicy: S.optional(__S(138, __c17, 2)),
+          PlacementGroupConfigs: S.optional(__S(71, __c8, 7)),
+          AutoTerminationPolicy: S.optional(__S(124, __c15, 4)),
           OSReleaseLabel: S.optional(S.String),
           EbsRootVolumeIops: S.optional(S.Number),
           EbsRootVolumeThroughput: S.optional(S.Number),
           ExtendedSupport: S.optional(S.Boolean),
-          MonitoringConfiguration: S.optional(MonitoringConfiguration),
+          MonitoringConfiguration: S.optional(__S(76, __c9, 4)),
           SessionEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RunJobFlowInput" });
@@ -6325,7 +5548,7 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          JobFlowIds: S.optional(XmlStringList),
+          JobFlowIds: S.optional(__S(32, __c4, 0)),
           KeepJobFlowAliveWhenNoSteps: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6334,7 +5557,7 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          JobFlowIds: S.optional(XmlStringList),
+          JobFlowIds: S.optional(__S(32, __c4, 0)),
           TerminationProtected: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6343,7 +5566,7 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          JobFlowIds: S.optional(XmlStringList),
+          JobFlowIds: S.optional(__S(32, __c4, 0)),
           UnhealthyNodeReplacement: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6352,7 +5575,7 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          JobFlowIds: S.optional(XmlStringList),
+          JobFlowIds: S.optional(__S(32, __c4, 0)),
           VisibleToAllUsers: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6365,14 +5588,14 @@ function __c30(j: number): any {
           RelativePath: S.optional(S.String),
           NotebookExecutionName: S.optional(S.String),
           NotebookParams: S.optional(S.String),
-          ExecutionEngine: S.optional(ExecutionEngineConfig),
+          ExecutionEngine: S.optional(__S(97, __c12, 1)),
           ServiceRole: S.optional(S.String),
           NotebookInstanceSecurityGroupId: S.optional(S.String),
-          Tags: S.optional(TagList),
-          NotebookS3Location: S.optional(NotebookS3LocationFromInput),
-          OutputNotebookS3Location: S.optional(OutputNotebookS3LocationFromInput),
-          OutputNotebookFormat: S.optional(OutputNotebookFormat),
-          EnvironmentVariables: S.optional(EnvironmentVariablesMap),
+          Tags: S.optional(__S(23, __c2, 7)),
+          NotebookS3Location: S.optional(__S(98, __c12, 2)),
+          OutputNotebookS3Location: S.optional(__S(98, __c12, 2)),
+          OutputNotebookFormat: S.optional(S.String),
+          EnvironmentVariables: S.optional(__S(99, __c12, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartNotebookExecutionInput",
@@ -6393,11 +5616,11 @@ function __c31(j: number): any {
           Name: S.optional(S.String),
           ClusterId: S.optional(S.String),
           ExecutionRoleArn: S.optional(S.String),
-          EngineConfigurations: S.optional(ConfigurationList),
-          MonitoringConfiguration: S.optional(SessionMonitoringConfiguration),
+          EngineConfigurations: S.optional(__S(6, __c0, 6)),
+          MonitoringConfiguration: S.optional(__S(147, __c18, 3)),
           SessionIdleTimeoutInMinutes: S.optional(S.Number),
           ClientRequestToken: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(23, __c2, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartSessionInput" });
     case 2:
@@ -6407,7 +5630,7 @@ function __c31(j: number): any {
           ClusterId: S.optional(S.String),
           Arn: S.optional(S.String),
           AccountId: S.optional(S.String),
-          State: S.optional(SessionState),
+          State: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "StartSessionOutput" });
     case 3:
@@ -6420,7 +5643,7 @@ function __c31(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ JobFlowIds: S.optional(XmlStringList) }).pipe(
+        S.Struct({ JobFlowIds: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TerminateJobFlowsInput" });
@@ -6435,7 +5658,7 @@ function __c31(j: number): any {
         S.Struct({
           ClusterId: S.optional(S.String),
           SessionId: S.optional(S.String),
-          State: S.optional(SessionState),
+          State: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "TerminateSessionOutput" });
     case 7:
@@ -6444,7 +5667,7 @@ function __c31(j: number): any {
           StudioId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          SubnetIds: S.optional(SubnetIdList),
+          SubnetIds: S.optional(__S(32, __c4, 0)),
           DefaultS3Location: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6459,11 +5682,16 @@ function __c32(j: number): any {
           StudioId: S.optional(S.String),
           IdentityId: S.optional(S.String),
           IdentityName: S.optional(S.String),
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
           SessionPolicyArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateStudioSessionMappingInput",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

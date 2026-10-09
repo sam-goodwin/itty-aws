@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -49,17 +51,8 @@ export interface GetOriginPostQuantumEncryptionRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetOriginPostQuantumEncryptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetOriginPostQuantumEncryptionRequest>;
-
 export type GetResponseId = "origin_pqe";
-const GetResponseId = S.String;
-
 export type GetResponseValue = "preferred" | "supported" | "off";
-const GetResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginPostQuantumEncryptionResponse {
   /** The identifier of the caching setting. */
@@ -71,25 +64,13 @@ export interface GetOriginPostQuantumEncryptionResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetOriginPostQuantumEncryptionResponse>;
-
 export type UpdateRequestValue = "preferred" | "supported" | "off";
-const UpdateRequestValue = S.String;
-
 export interface PutOriginPostQuantumEncryptionRequest {
   /** Identifier. */
   zoneId: string;
   /** Value of the Origin Post Quantum Encryption Setting. */
   value: UpdateRequestValue | (string & {});
 }
-const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PutOriginPostQuantumEncryptionRequest>;
-
 export type UpdateResponseId = "origin_pqe";
 export type UpdateResponseValue = "preferred" | "supported" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -103,9 +84,6 @@ export interface PutOriginPostQuantumEncryptionResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PutOriginPostQuantumEncryptionResponse =
-  GetOriginPostQuantumEncryptionResponse as any as S.Schema<PutOriginPostQuantumEncryptionResponse>;
-
 export type GetOriginPostQuantumEncryptionError =
   | InvalidZoneIdentifier
   | Forbidden
@@ -117,8 +95,8 @@ export const getOriginPostQuantumEncryption: API.OperationMethod<
   GetOriginPostQuantumEncryptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOriginPostQuantumEncryptionRequest,
-  output: GetOriginPostQuantumEncryptionResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetOriginPostQuantumEncryptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetOriginPostQuantumEncryptionResponse>,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -136,8 +114,8 @@ export const putOriginPostQuantumEncryption: API.OperationMethod<
   PutOriginPostQuantumEncryptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOriginPostQuantumEncryptionRequest,
-  output: PutOriginPostQuantumEncryptionResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<PutOriginPostQuantumEncryptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PutOriginPostQuantumEncryptionResponse>,
   errors: [
     InvalidZoneIdentifier,
     InvalidSettingValue,
@@ -171,9 +149,9 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: GetResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: GetResponseValue,
+          value: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -183,7 +161,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: UpdateRequestValue,
+          value: S.String,
         })
           .pipe(
             T.Http({
@@ -197,4 +175,9 @@ function __c0(j: number): any {
         identifier: "PutOriginPostQuantumEncryptionRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

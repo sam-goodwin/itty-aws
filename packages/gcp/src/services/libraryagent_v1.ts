@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,11 +68,6 @@ export interface BorrowShelvesBooksRequest {
   /** Required. The name of the book to borrow. */
   name: string;
 }
-const BorrowShelvesBooksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<BorrowShelvesBooksRequest>;
-
 /** A single book in the library. */
 export interface GoogleExampleLibraryagentV1Book {
   /** The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a book. */
@@ -82,17 +79,10 @@ export interface GoogleExampleLibraryagentV1Book {
   /** The name of the book author. */
   author?: string;
 }
-const GoogleExampleLibraryagentV1Book = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GoogleExampleLibraryagentV1Book>;
-
 export interface GetShelvesRequest {
   /** Required. The name of the shelf to retrieve. */
   name: string;
 }
-const GetShelvesRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetShelvesRequest>;
-
 /** A Shelf contains a collection of books with a theme. */
 export interface GoogleExampleLibraryagentV1Shelf {
   /** The theme of the shelf */
@@ -100,34 +90,17 @@ export interface GoogleExampleLibraryagentV1Shelf {
   /** Output only. The resource name of the shelf. Shelf names have the form `shelves/{shelf_id}`. The name is ignored when creating a shelf. */
   name?: string;
 }
-const GoogleExampleLibraryagentV1Shelf = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GoogleExampleLibraryagentV1Shelf>;
-
 export interface GetShelvesBooksRequest {
   /** Required. The name of the book to retrieve. */
   name: string;
 }
-const GetShelvesBooksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetShelvesBooksRequest>;
-
 export interface ListShelvesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListShelvesResponse.next_page_token returned from the previous call to `ListShelves` method. */
   pageToken?: string;
   /** Requested page size. Server may return fewer shelves than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListShelvesRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListShelvesRequest>;
-
 export type GoogleExampleLibraryagentV1ShelfList = Array<GoogleExampleLibraryagentV1Shelf>;
-const GoogleExampleLibraryagentV1ShelfList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleExampleLibraryagentV1ShelfList>;
-
 /** Response message for LibraryAgent.ListShelves. */
 export interface GoogleExampleLibraryagentV1ListShelvesResponse {
   /** The list of shelves. */
@@ -135,11 +108,6 @@ export interface GoogleExampleLibraryagentV1ListShelvesResponse {
   /** A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the subsequent call to `ListShelves` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const GoogleExampleLibraryagentV1ListShelvesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleExampleLibraryagentV1ListShelvesResponse>;
-
 export interface ListShelvesBooksRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method. */
   pageToken?: string;
@@ -148,17 +116,7 @@ export interface ListShelvesBooksRequest {
   /** Required. The name of the shelf whose books we'd like to list. */
   parent: string;
 }
-const ListShelvesBooksRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListShelvesBooksRequest>;
-
 export type GoogleExampleLibraryagentV1BookList = Array<GoogleExampleLibraryagentV1Book>;
-const GoogleExampleLibraryagentV1BookList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleExampleLibraryagentV1BookList>;
-
 /** Response message for LibraryAgent.ListBooks. */
 export interface GoogleExampleLibraryagentV1ListBooksResponse {
   /** The list of books. */
@@ -166,20 +124,10 @@ export interface GoogleExampleLibraryagentV1ListBooksResponse {
   /** A token to retrieve next page of results. Pass this value in the ListBooksRequest.page_token field in the subsequent call to `ListBooks` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const GoogleExampleLibraryagentV1ListBooksResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GoogleExampleLibraryagentV1ListBooksResponse>;
-
 export interface ReturnShelvesBooksRequest {
   /** Required. The name of the book to return. */
   name: string;
 }
-const ReturnShelvesBooksRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ReturnShelvesBooksRequest>;
-
 export type BorrowShelvesBooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions. */
 export const borrowShelvesBooks: API.OperationMethod<
@@ -188,8 +136,8 @@ export const borrowShelvesBooks: API.OperationMethod<
   BorrowShelvesBooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BorrowShelvesBooksRequest,
-  output: GoogleExampleLibraryagentV1Book,
+  input: __S(0, __c0, 0) as any as S.Schema<BorrowShelvesBooksRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GoogleExampleLibraryagentV1Book>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -203,8 +151,8 @@ export const getShelves: API.OperationMethod<
   GetShelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShelvesRequest,
-  output: GoogleExampleLibraryagentV1Shelf,
+  input: __S(2, __c0, 2) as any as S.Schema<GetShelvesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GoogleExampleLibraryagentV1Shelf>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -218,8 +166,8 @@ export const getShelvesBooks: API.OperationMethod<
   GetShelvesBooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShelvesBooksRequest,
-  output: GoogleExampleLibraryagentV1Book,
+  input: __S(4, __c0, 4) as any as S.Schema<GetShelvesBooksRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GoogleExampleLibraryagentV1Book>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -234,8 +182,8 @@ export const listShelves: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleExampleLibraryagentV1ListShelvesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListShelvesRequest,
-  output: GoogleExampleLibraryagentV1ListShelvesResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<ListShelvesRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<GoogleExampleLibraryagentV1ListShelvesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -251,8 +199,8 @@ export const listShelvesBooks: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleExampleLibraryagentV1ListBooksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListShelvesBooksRequest,
-  output: GoogleExampleLibraryagentV1ListBooksResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<ListShelvesBooksRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GoogleExampleLibraryagentV1ListBooksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -267,8 +215,8 @@ export const returnShelvesBooks: API.OperationMethod<
   ReturnShelvesBooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReturnShelvesBooksRequest,
-  output: GoogleExampleLibraryagentV1Book,
+  input: __S(11, __c1, 3) as any as S.Schema<ReturnShelvesBooksRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GoogleExampleLibraryagentV1Book>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -349,11 +297,11 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "ListShelvesRequest" });
     case 6:
-      return S.Array(GoogleExampleLibraryagentV1Shelf);
+      return S.Array(__S(3, __c0, 3));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          shelves: S.optional(GoogleExampleLibraryagentV1ShelfList),
+          shelves: S.optional(__S(6, __c0, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -378,11 +326,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListShelvesBooksRequest" });
     case 1:
-      return S.Array(GoogleExampleLibraryagentV1Book);
+      return S.Array(__S(1, __c0, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          books: S.optional(GoogleExampleLibraryagentV1BookList),
+          books: S.optional(__S(9, __c1, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -403,4 +351,9 @@ function __c1(j: number): any {
         identifier: "ReturnShelvesBooksRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

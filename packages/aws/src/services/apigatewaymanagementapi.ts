@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ApiGatewayManagementApi",
   serviceShapeName: "ApiGatewayManagementApi",
@@ -101,45 +103,25 @@ export class PayloadTooLargeException
 export interface DeleteConnectionRequest {
   ConnectionId: string;
 }
-const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {}
-const DeleteConnectionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteConnectionResponse>;
 export interface GetConnectionRequest {
   ConnectionId: string;
 }
-const GetConnectionRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetConnectionRequest>;
 export type __timestampIso8601 = Date;
 export interface Identity {
   SourceIp?: string;
   UserAgent?: string;
 }
-const Identity = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Identity>;
 export interface GetConnectionResponse {
   ConnectedAt?: Date;
   Identity?: Identity & { SourceIp: string; UserAgent: string };
   LastActiveAt?: Date;
 }
-const GetConnectionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetConnectionResponse>;
 export interface PostToConnectionRequest {
   Data?: T.StreamingInputBody;
   ConnectionId: string;
 }
-const PostToConnectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PostToConnectionRequest>;
 export interface PostToConnectionResponse {}
-const PostToConnectionResponse =
-  DeleteConnectionResponse as any as S.Schema<PostToConnectionResponse>;
 export type DeleteConnectionError =
   | ForbiddenException
   | GoneException
@@ -154,8 +136,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectionRequest,
-  output: DeleteConnectionResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteConnectionResponse>,
   errors: [ForbiddenException, GoneException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -176,8 +158,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: GetConnectionResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<GetConnectionRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetConnectionResponse>,
   errors: [ForbiddenException, GoneException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -199,8 +181,8 @@ export const postToConnection: API.OperationMethod<
   PostToConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostToConnectionRequest,
-  output: PostToConnectionResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<PostToConnectionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PostToConnectionResponse>,
   errors: [ForbiddenException, GoneException, LimitExceededException, PayloadTooLargeException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -250,7 +232,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConnectedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Identity: S.optional(Identity),
+          Identity: S.optional(__S(3, __c0, 3)),
           LastActiveAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(
           S.encodeKeys({
@@ -277,4 +259,9 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "PostToConnectionRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

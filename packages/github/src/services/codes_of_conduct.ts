@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -19,11 +21,6 @@ export class NotFound
   ) {}
 
 export interface GetAllCodesOfConductRequest {}
-const GetAllCodesOfConductRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetAllCodesOfConductRequest>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -32,28 +29,11 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CodeOfConduct>;
-
 export type GetAllCodesOfConductResponseBodyList = Array<CodeOfConduct>;
-const GetAllCodesOfConductResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetAllCodesOfConductResponseBodyList>;
-
 export type GetAllCodesOfConductResponse = GetAllCodesOfConductResponseBodyList;
-const GetAllCodesOfConductResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetAllCodesOfConductResponse>;
-
 export interface GetConductCodeRequest {
   key: string;
 }
-const GetConductCodeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetConductCodeRequest>;
-
 export type GetAllCodesOfConductError = GithubOpError;
 /** Get all codes of conduct Returns array of all GitHub's codes of conduct. */
 export const getAllCodesOfConduct: API.OperationMethod<
@@ -62,8 +42,8 @@ export const getAllCodesOfConduct: API.OperationMethod<
   GetAllCodesOfConductError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllCodesOfConductRequest,
-  output: GetAllCodesOfConductResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAllCodesOfConductRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetAllCodesOfConductResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -77,8 +57,8 @@ export const getConductCode: API.OperationMethod<
   GetConductCodeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConductCodeRequest,
-  output: CodeOfConduct,
+  input: __S(4, __c0, 4) as any as S.Schema<GetConductCodeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CodeOfConduct>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -104,11 +84,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CodeOfConduct" });
     case 2:
-      return S.Array(CodeOfConduct);
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.suspend(() =>
-        GetAllCodesOfConductResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAllCodesOfConductResponse",
       });
     case 4:
@@ -118,4 +96,9 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/codes_of_conduct/{key}", code: 200 })),
       ).annotate({ identifier: "GetConductCodeRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

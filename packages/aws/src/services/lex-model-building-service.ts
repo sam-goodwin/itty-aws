@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Lex Model Building Service",
   serviceShapeName: "AWSDeepSenseModelBuildingService",
@@ -138,10 +140,10 @@ export class ResourceInUseException
     "ResourceInUseException",
     {
       referenceType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ReferenceType).annotate({ identifier: "ReferenceType" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ReferenceType" }),
       ),
       exampleReference: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ResourceReference).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(128, __c16, 0)).annotate({
           identifier: "ResourceReference",
         }),
       ),
@@ -154,10 +156,6 @@ export interface CreateBotVersionRequest {
   name: string;
   checksum?: string;
 }
-const CreateBotVersionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateBotVersionRequest>;
 export type Description = string;
 export type IntentName = string;
 export type Version = string;
@@ -165,12 +163,8 @@ export interface Intent {
   intentName: string;
   intentVersion: string;
 }
-const Intent = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Intent>;
 export type IntentList = Intent[];
-const IntentList = /*@__PURE__*/ __L.at(__c0, 2);
 export type ContentType = "PlainText" | "SSML" | "CustomPayload" | (string & {});
-const ContentType = S.String;
-
 export type ContentString = string;
 export type GroupNumber = number;
 export interface Message {
@@ -178,9 +172,7 @@ export interface Message {
   content: string;
   groupNumber?: number;
 }
-const Message = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Message>;
 export type MessageList = Message[];
-const MessageList = /*@__PURE__*/ __L.at(__c0, 4);
 export type PromptMaxAttempts = number;
 export type ResponseCard = string;
 export interface Prompt {
@@ -188,12 +180,10 @@ export interface Prompt {
   maxAttempts: number;
   responseCard?: string;
 }
-const Prompt = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Prompt>;
 export interface Statement {
   messages: Message[];
   responseCard?: string;
 }
-const Statement = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Statement>;
 export type Status =
   | "BUILDING"
   | "READY"
@@ -201,8 +191,6 @@ export type Status =
   | "FAILED"
   | "NOT_BUILT"
   | (string & {});
-const Status = S.String;
-
 export type SessionTTL = number;
 export type Locale =
   | "de-DE"
@@ -219,8 +207,6 @@ export type Locale =
   | "ja-JP"
   | "ko-KR"
   | (string & {});
-const Locale = S.String;
-
 export interface CreateBotVersionResponse {
   name?: string;
   description?: string;
@@ -240,41 +226,25 @@ export interface CreateBotVersionResponse {
   enableModelImprovements?: boolean;
   detectSentiment?: boolean;
 }
-const CreateBotVersionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateBotVersionResponse>;
 export interface CreateIntentVersionRequest {
   name: string;
   checksum?: string;
 }
-const CreateIntentVersionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateIntentVersionRequest>;
 export type SlotName = string;
 export type SlotConstraint = "Required" | "Optional" | (string & {});
-const SlotConstraint = S.String;
-
 export type CustomOrBuiltinSlotTypeName = string;
 export type Priority = number;
 export type Utterance = string;
 export type SlotUtteranceList = string[];
-const SlotUtteranceList = /*@__PURE__*/ __L.at(__c1, 1);
 export type ObfuscationSetting = "NONE" | "DEFAULT_OBFUSCATION" | (string & {});
-const ObfuscationSetting = S.String;
-
 export type SlotDefaultValueString = string;
 export interface SlotDefaultValue {
   defaultValue: string;
 }
-const SlotDefaultValue = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SlotDefaultValue>;
 export type SlotDefaultValueList = SlotDefaultValue[];
-const SlotDefaultValueList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface SlotDefaultValueSpec {
   defaultValueList: SlotDefaultValue[];
 }
-const SlotDefaultValueSpec = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SlotDefaultValueSpec>;
 export interface Slot {
   name: string;
   description?: string;
@@ -288,31 +258,23 @@ export interface Slot {
   obfuscationSetting?: ObfuscationSetting;
   defaultValueSpec?: SlotDefaultValueSpec;
 }
-const Slot = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Slot>;
 export type SlotList = Slot[];
-const SlotList = /*@__PURE__*/ __L.at(__c1, 6);
 export type IntentUtteranceList = string[];
-const IntentUtteranceList = SlotUtteranceList as any as S.Schema<IntentUtteranceList>;
 export interface FollowUpPrompt {
   prompt: Prompt;
   rejectionStatement: Statement;
 }
-const FollowUpPrompt = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<FollowUpPrompt>;
 export type LambdaARN = string;
 export type MessageVersion = string;
 export interface CodeHook {
   uri: string;
   messageVersion: string;
 }
-const CodeHook = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CodeHook>;
 export type FulfillmentActivityType = "ReturnIntent" | "CodeHook" | (string & {});
-const FulfillmentActivityType = S.String;
-
 export interface FulfillmentActivity {
   type: FulfillmentActivityType;
   codeHook?: CodeHook;
 }
-const FulfillmentActivity = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<FulfillmentActivity>;
 export type BuiltinIntentSignature = string;
 export type KendraIndexArn = string;
 export type QueryFilterString = string;
@@ -322,14 +284,11 @@ export interface KendraConfiguration {
   queryFilterString?: string;
   role: string;
 }
-const KendraConfiguration = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<KendraConfiguration>;
 export type InputContextName = string;
 export interface InputContext {
   name: string;
 }
-const InputContext = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<InputContext>;
 export type InputContextList = InputContext[];
-const InputContextList = /*@__PURE__*/ __L.at(__c2, 4);
 export type OutputContextName = string;
 export type ContextTimeToLiveInSeconds = number;
 export type ContextTurnsToLive = number;
@@ -338,9 +297,7 @@ export interface OutputContext {
   timeToLiveInSeconds: number;
   turnsToLive: number;
 }
-const OutputContext = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<OutputContext>;
 export type OutputContextList = OutputContext[];
-const OutputContextList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateIntentVersionResponse {
   name?: string;
   description?: string;
@@ -361,49 +318,27 @@ export interface CreateIntentVersionResponse {
   inputContexts?: InputContext[];
   outputContexts?: OutputContext[];
 }
-const CreateIntentVersionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateIntentVersionResponse>;
 export type SlotTypeName = string;
 export interface CreateSlotTypeVersionRequest {
   name: string;
   checksum?: string;
 }
-const CreateSlotTypeVersionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateSlotTypeVersionRequest>;
 export type Value = string;
 export type SynonymList = string[];
-const SynonymList = SlotUtteranceList as any as S.Schema<SynonymList>;
 export interface EnumerationValue {
   value: string;
   synonyms?: string[];
 }
-const EnumerationValue = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EnumerationValue>;
 export type EnumerationValues = EnumerationValue[];
-const EnumerationValues = /*@__PURE__*/ __L.at(__c3, 2);
 export type SlotValueSelectionStrategy = "ORIGINAL_VALUE" | "TOP_RESOLUTION" | (string & {});
-const SlotValueSelectionStrategy = S.String;
-
 export type RegexPattern = string;
 export interface SlotTypeRegexConfiguration {
   pattern: string;
 }
-const SlotTypeRegexConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<SlotTypeRegexConfiguration>;
 export interface SlotTypeConfiguration {
   regexConfiguration?: SlotTypeRegexConfiguration;
 }
-const SlotTypeConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<SlotTypeConfiguration>;
 export type SlotTypeConfigurations = SlotTypeConfiguration[];
-const SlotTypeConfigurations = /*@__PURE__*/ __L.at(__c3, 5);
 export interface CreateSlotTypeVersionResponse {
   name?: string;
   description?: string;
@@ -416,106 +351,57 @@ export interface CreateSlotTypeVersionResponse {
   parentSlotTypeSignature?: string;
   slotTypeConfigurations?: SlotTypeConfiguration[];
 }
-const CreateSlotTypeVersionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateSlotTypeVersionResponse>;
 export interface DeleteBotRequest {
   name: string;
 }
-const DeleteBotRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeleteBotRequest>;
 export interface DeleteBotResponse {}
-const DeleteBotResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteBotResponse>;
 export type AliasName = string;
 export interface DeleteBotAliasRequest {
   name: string;
   botName: string;
 }
-const DeleteBotAliasRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteBotAliasRequest>;
 export interface DeleteBotAliasResponse {}
-const DeleteBotAliasResponse = DeleteBotResponse as any as S.Schema<DeleteBotAliasResponse>;
 export type BotChannelName = string;
 export interface DeleteBotChannelAssociationRequest {
   name: string;
   botName: string;
   botAlias: string;
 }
-const DeleteBotChannelAssociationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteBotChannelAssociationRequest>;
 export interface DeleteBotChannelAssociationResponse {}
-const DeleteBotChannelAssociationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteBotChannelAssociationResponse>;
 export type NumericalVersion = string;
 export interface DeleteBotVersionRequest {
   name: string;
   version: string;
 }
-const DeleteBotVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteBotVersionRequest>;
 export interface DeleteBotVersionResponse {}
-const DeleteBotVersionResponse = DeleteBotResponse as any as S.Schema<DeleteBotVersionResponse>;
 export interface DeleteIntentRequest {
   name: string;
 }
-const DeleteIntentRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DeleteIntentRequest>;
 export interface DeleteIntentResponse {}
-const DeleteIntentResponse = DeleteBotResponse as any as S.Schema<DeleteIntentResponse>;
 export interface DeleteIntentVersionRequest {
   name: string;
   version: string;
 }
-const DeleteIntentVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteIntentVersionRequest>;
 export interface DeleteIntentVersionResponse {}
-const DeleteIntentVersionResponse =
-  DeleteBotResponse as any as S.Schema<DeleteIntentVersionResponse>;
 export interface DeleteSlotTypeRequest {
   name: string;
 }
-const DeleteSlotTypeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteSlotTypeRequest>;
 export interface DeleteSlotTypeResponse {}
-const DeleteSlotTypeResponse = DeleteBotResponse as any as S.Schema<DeleteSlotTypeResponse>;
 export interface DeleteSlotTypeVersionRequest {
   name: string;
   version: string;
 }
-const DeleteSlotTypeVersionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeleteSlotTypeVersionRequest>;
 export interface DeleteSlotTypeVersionResponse {}
-const DeleteSlotTypeVersionResponse =
-  DeleteBotResponse as any as S.Schema<DeleteSlotTypeVersionResponse>;
 export type UserId = string;
 export interface DeleteUtterancesRequest {
   botName: string;
   userId: string;
 }
-const DeleteUtterancesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteUtterancesRequest>;
 export interface DeleteUtterancesResponse {}
-const DeleteUtterancesResponse = DeleteBotResponse as any as S.Schema<DeleteUtterancesResponse>;
 export interface GetBotRequest {
   name: string;
   versionOrAlias: string;
 }
-const GetBotRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetBotRequest>;
 export type ConfidenceThreshold = number;
 export interface GetBotResponse {
   name?: string;
@@ -537,18 +423,12 @@ export interface GetBotResponse {
   childDirected?: boolean;
   detectSentiment?: boolean;
 }
-const GetBotResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetBotResponse>;
 export interface GetBotAliasRequest {
   name: string;
   botName: string;
 }
-const GetBotAliasRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetBotAliasRequest>;
 export type LogType = "AUDIO" | "TEXT" | (string & {});
-const LogType = S.String;
-
 export type Destination = "CLOUDWATCH_LOGS" | "S3" | (string & {});
-const Destination = S.String;
-
 export type KmsKeyArn = string;
 export type ResourceArn = string;
 export type ResourcePrefix = string;
@@ -559,18 +439,12 @@ export interface LogSettingsResponse {
   resourceArn?: string;
   resourcePrefix?: string;
 }
-const LogSettingsResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<LogSettingsResponse>;
 export type LogSettingsResponseList = LogSettingsResponse[];
-const LogSettingsResponseList = /*@__PURE__*/ __L.at(__c5, 6);
 export type IamRoleArn = string;
 export interface ConversationLogsResponse {
   logSettings?: LogSettingsResponse[];
   iamRoleArn?: string;
 }
-const ConversationLogsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ConversationLogsResponse>;
 export interface GetBotAliasResponse {
   name?: string;
   description?: string;
@@ -581,7 +455,6 @@ export interface GetBotAliasResponse {
   checksum?: string;
   conversationLogs?: ConversationLogsResponse;
 }
-const GetBotAliasResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetBotAliasResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface GetBotAliasesRequest {
@@ -590,7 +463,6 @@ export interface GetBotAliasesRequest {
   maxResults?: number;
   nameContains?: string;
 }
-const GetBotAliasesRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetBotAliasesRequest>;
 export interface BotAliasMetadata {
   name?: string;
   description?: string;
@@ -601,34 +473,19 @@ export interface BotAliasMetadata {
   checksum?: string;
   conversationLogs?: ConversationLogsResponse;
 }
-const BotAliasMetadata = GetBotAliasResponse as any as S.Schema<BotAliasMetadata>;
 export type BotAliasMetadataList = BotAliasMetadata[];
-const BotAliasMetadataList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface GetBotAliasesResponse {
   BotAliases?: BotAliasMetadata[];
   nextToken?: string;
 }
-const GetBotAliasesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetBotAliasesResponse>;
 export interface GetBotChannelAssociationRequest {
   name: string;
   botName: string;
   botAlias: string;
 }
-const GetBotChannelAssociationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetBotChannelAssociationRequest>;
 export type ChannelType = "Facebook" | "Slack" | "Twilio-Sms" | "Kik" | (string & {});
-const ChannelType = S.String;
-
 export type ChannelConfigurationMap = { [key: string]: string | undefined };
-const ChannelConfigurationMap = /*@__PURE__*/ __L.at(__c6, 5);
 export type ChannelStatus = "IN_PROGRESS" | "CREATED" | "FAILED" | (string & {});
-const ChannelStatus = S.String;
-
 export interface GetBotChannelAssociationResponse {
   name?: string;
   description?: string;
@@ -640,10 +497,6 @@ export interface GetBotChannelAssociationResponse {
   status?: ChannelStatus;
   failureReason?: string;
 }
-const GetBotChannelAssociationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetBotChannelAssociationResponse>;
 export type AliasNameOrListAll = string;
 export interface GetBotChannelAssociationsRequest {
   botName: string;
@@ -652,10 +505,6 @@ export interface GetBotChannelAssociationsRequest {
   maxResults?: number;
   nameContains?: string;
 }
-const GetBotChannelAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetBotChannelAssociationsRequest>;
 export interface BotChannelAssociation {
   name?: string;
   description?: string;
@@ -667,26 +516,16 @@ export interface BotChannelAssociation {
   status?: ChannelStatus;
   failureReason?: string;
 }
-const BotChannelAssociation = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<BotChannelAssociation>;
 export type BotChannelAssociationList = BotChannelAssociation[];
-const BotChannelAssociationList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface GetBotChannelAssociationsResponse {
   botChannelAssociations?: BotChannelAssociation[];
   nextToken?: string;
 }
-const GetBotChannelAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetBotChannelAssociationsResponse>;
 export interface GetBotsRequest {
   nextToken?: string;
   maxResults?: number;
   nameContains?: string;
 }
-const GetBotsRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetBotsRequest>;
 export interface BotMetadata {
   name?: string;
   description?: string;
@@ -695,123 +534,74 @@ export interface BotMetadata {
   createdDate?: Date;
   version?: string;
 }
-const BotMetadata = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<BotMetadata>;
 export type BotMetadataList = BotMetadata[];
-const BotMetadataList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface GetBotsResponse {
   bots?: BotMetadata[];
   nextToken?: string;
 }
-const GetBotsResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetBotsResponse>;
 export interface GetBotVersionsRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetBotVersionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetBotVersionsRequest>;
 export interface GetBotVersionsResponse {
   bots?: BotMetadata[];
   nextToken?: string;
 }
-const GetBotVersionsResponse = GetBotsResponse as any as S.Schema<GetBotVersionsResponse>;
 export interface GetBuiltinIntentRequest {
   signature: string;
 }
-const GetBuiltinIntentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetBuiltinIntentRequest>;
 export type LocaleList = Locale[];
-const LocaleList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface BuiltinIntentSlot {
   name?: string;
 }
-const BuiltinIntentSlot = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<BuiltinIntentSlot>;
 export type BuiltinIntentSlotList = BuiltinIntentSlot[];
-const BuiltinIntentSlotList = /*@__PURE__*/ __L.at(__c8, 3);
 export interface GetBuiltinIntentResponse {
   signature?: string;
   supportedLocales?: Locale[];
   slots?: BuiltinIntentSlot[];
 }
-const GetBuiltinIntentResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetBuiltinIntentResponse>;
 export interface GetBuiltinIntentsRequest {
   locale?: Locale;
   signatureContains?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetBuiltinIntentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetBuiltinIntentsRequest>;
 export interface BuiltinIntentMetadata {
   signature?: string;
   supportedLocales?: Locale[];
 }
-const BuiltinIntentMetadata = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<BuiltinIntentMetadata>;
 export type BuiltinIntentMetadataList = BuiltinIntentMetadata[];
-const BuiltinIntentMetadataList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface GetBuiltinIntentsResponse {
   intents?: BuiltinIntentMetadata[];
   nextToken?: string;
 }
-const GetBuiltinIntentsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetBuiltinIntentsResponse>;
 export interface GetBuiltinSlotTypesRequest {
   locale?: Locale;
   signatureContains?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetBuiltinSlotTypesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetBuiltinSlotTypesRequest>;
 export type BuiltinSlotTypeSignature = string;
 export interface BuiltinSlotTypeMetadata {
   signature?: string;
   supportedLocales?: Locale[];
 }
 export type BuiltinSlotTypeMetadataList = BuiltinSlotTypeMetadata[];
-const BuiltinSlotTypeMetadataList =
-  BuiltinIntentMetadataList as any as S.Schema<BuiltinSlotTypeMetadataList>;
 export interface GetBuiltinSlotTypesResponse {
   slotTypes?: BuiltinSlotTypeMetadata[];
   nextToken?: string;
 }
-const GetBuiltinSlotTypesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetBuiltinSlotTypesResponse>;
 export type Name = string;
 export type ResourceType = "BOT" | "INTENT" | "SLOT_TYPE" | (string & {});
-const ResourceType = S.String;
-
 export type ExportType = "ALEXA_SKILLS_KIT" | "LEX" | (string & {});
-const ExportType = S.String;
-
 export interface GetExportRequest {
   name: string;
   version: string;
   resourceType: ResourceType;
   exportType: ExportType;
 }
-const GetExportRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetExportRequest>;
 export type ExportStatus = "IN_PROGRESS" | "READY" | "FAILED" | (string & {});
-const ExportStatus = S.String;
-
 export interface GetExportResponse {
   name?: string;
   version?: string;
@@ -821,19 +611,12 @@ export interface GetExportResponse {
   failureReason?: string;
   url?: string;
 }
-const GetExportResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetExportResponse>;
 export interface GetImportRequest {
   importId: string;
 }
-const GetImportRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetImportRequest>;
 export type MergeStrategy = "OVERWRITE_LATEST" | "FAIL_ON_CONFLICT" | (string & {});
-const MergeStrategy = S.String;
-
 export type ImportStatus = "IN_PROGRESS" | "COMPLETE" | "FAILED" | (string & {});
-const ImportStatus = S.String;
-
 export type StringList = string[];
-const StringList = SlotUtteranceList as any as S.Schema<StringList>;
 export interface GetImportResponse {
   name?: string;
   resourceType?: ResourceType;
@@ -843,12 +626,10 @@ export interface GetImportResponse {
   failureReason?: string[];
   createdDate?: Date;
 }
-const GetImportResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetImportResponse>;
 export interface GetIntentRequest {
   name: string;
   version: string;
 }
-const GetIntentRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetIntentRequest>;
 export interface GetIntentResponse {
   name?: string;
   description?: string;
@@ -869,13 +650,11 @@ export interface GetIntentResponse {
   inputContexts?: InputContext[];
   outputContexts?: OutputContext[];
 }
-const GetIntentResponse = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetIntentResponse>;
 export interface GetIntentsRequest {
   nextToken?: string;
   maxResults?: number;
   nameContains?: string;
 }
-const GetIntentsRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GetIntentsRequest>;
 export interface IntentMetadata {
   name?: string;
   description?: string;
@@ -883,63 +662,40 @@ export interface IntentMetadata {
   createdDate?: Date;
   version?: string;
 }
-const IntentMetadata = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<IntentMetadata>;
 export type IntentMetadataList = IntentMetadata[];
-const IntentMetadataList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface GetIntentsResponse {
   intents?: IntentMetadata[];
   nextToken?: string;
 }
-const GetIntentsResponse = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetIntentsResponse>;
 export interface GetIntentVersionsRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetIntentVersionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetIntentVersionsRequest>;
 export interface GetIntentVersionsResponse {
   intents?: IntentMetadata[];
   nextToken?: string;
 }
-const GetIntentVersionsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetIntentVersionsResponse>;
 export type MigrationId = string;
 export interface GetMigrationRequest {
   migrationId: string;
 }
-const GetMigrationRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetMigrationRequest>;
 export type V2BotId = string;
 export type MigrationStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | (string & {});
-const MigrationStatus = S.String;
-
 export type MigrationStrategy = "CREATE_NEW" | "UPDATE_EXISTING" | (string & {});
-const MigrationStrategy = S.String;
-
 export type MigrationAlertType = "ERROR" | "WARN" | (string & {});
-const MigrationAlertType = S.String;
-
 export type MigrationAlertMessage = string;
 export type MigrationAlertDetail = string;
 export type MigrationAlertDetails = string[];
-const MigrationAlertDetails = SlotUtteranceList as any as S.Schema<MigrationAlertDetails>;
 export type MigrationAlertReferenceURL = string;
 export type MigrationAlertReferenceURLs = string[];
-const MigrationAlertReferenceURLs =
-  SlotUtteranceList as any as S.Schema<MigrationAlertReferenceURLs>;
 export interface MigrationAlert {
   type?: MigrationAlertType;
   message?: string;
   details?: string[];
   referenceURLs?: string[];
 }
-const MigrationAlert = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<MigrationAlert>;
 export type MigrationAlerts = MigrationAlert[];
-const MigrationAlerts = /*@__PURE__*/ __L.at(__c11, 1);
 export interface GetMigrationResponse {
   migrationId?: string;
   v1BotName?: string;
@@ -952,16 +708,8 @@ export interface GetMigrationResponse {
   migrationTimestamp?: Date;
   alerts?: MigrationAlert[];
 }
-const GetMigrationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetMigrationResponse>;
 export type MigrationSortAttribute = "V1_BOT_NAME" | "MIGRATION_DATE_TIME" | (string & {});
-const MigrationSortAttribute = S.String;
-
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-const SortOrder = S.String;
-
 export interface GetMigrationsRequest {
   sortByAttribute?: MigrationSortAttribute;
   sortByOrder?: SortOrder;
@@ -970,10 +718,6 @@ export interface GetMigrationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const GetMigrationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetMigrationsRequest>;
 export interface MigrationSummary {
   migrationId?: string;
   v1BotName?: string;
@@ -985,22 +729,15 @@ export interface MigrationSummary {
   migrationStrategy?: MigrationStrategy;
   migrationTimestamp?: Date;
 }
-const MigrationSummary = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<MigrationSummary>;
 export type MigrationSummaryList = MigrationSummary[];
-const MigrationSummaryList = /*@__PURE__*/ __L.at(__c11, 5);
 export interface GetMigrationsResponse {
   migrationSummaries?: MigrationSummary[];
   nextToken?: string;
 }
-const GetMigrationsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetMigrationsResponse>;
 export interface GetSlotTypeRequest {
   name: string;
   version: string;
 }
-const GetSlotTypeRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<GetSlotTypeRequest>;
 export interface GetSlotTypeResponse {
   name?: string;
   description?: string;
@@ -1013,13 +750,11 @@ export interface GetSlotTypeResponse {
   parentSlotTypeSignature?: string;
   slotTypeConfigurations?: SlotTypeConfiguration[];
 }
-const GetSlotTypeResponse = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetSlotTypeResponse>;
 export interface GetSlotTypesRequest {
   nextToken?: string;
   maxResults?: number;
   nameContains?: string;
 }
-const GetSlotTypesRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetSlotTypesRequest>;
 export interface SlotTypeMetadata {
   name?: string;
   description?: string;
@@ -1028,46 +763,26 @@ export interface SlotTypeMetadata {
   version?: string;
 }
 export type SlotTypeMetadataList = SlotTypeMetadata[];
-const SlotTypeMetadataList = IntentMetadataList as any as S.Schema<SlotTypeMetadataList>;
 export interface GetSlotTypesResponse {
   slotTypes?: SlotTypeMetadata[];
   nextToken?: string;
 }
-const GetSlotTypesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetSlotTypesResponse>;
 export interface GetSlotTypeVersionsRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetSlotTypeVersionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetSlotTypeVersionsRequest>;
 export interface GetSlotTypeVersionsResponse {
   slotTypes?: SlotTypeMetadata[];
   nextToken?: string;
 }
-const GetSlotTypeVersionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetSlotTypeVersionsResponse>;
 export type BotVersions = string[];
-const BotVersions = SlotUtteranceList as any as S.Schema<BotVersions>;
 export type StatusType = "Detected" | "Missed" | (string & {});
-const StatusType = S.String;
-
 export interface GetUtterancesViewRequest {
   botName: string;
   botVersions: string[];
   statusType: StatusType;
 }
-const GetUtterancesViewRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetUtterancesViewRequest>;
 export type UtteranceString = string;
 export type Count = number;
 export interface UtteranceData {
@@ -1077,51 +792,31 @@ export interface UtteranceData {
   firstUtteredDate?: Date;
   lastUtteredDate?: Date;
 }
-const UtteranceData = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<UtteranceData>;
 export type ListOfUtterance = UtteranceData[];
-const ListOfUtterance = /*@__PURE__*/ __L.at(__c12, 7);
 export interface UtteranceList {
   botVersion?: string;
   utterances?: UtteranceData[];
 }
-const UtteranceList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<UtteranceList>;
 export type ListsOfUtterances = UtteranceList[];
-const ListsOfUtterances = /*@__PURE__*/ __L.at(__c13, 1);
 export interface GetUtterancesViewResponse {
   botName?: string;
   utterances?: UtteranceList[];
 }
-const GetUtterancesViewResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetUtterancesViewResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type ProcessBehavior = "SAVE" | "BUILD" | (string & {});
-const ProcessBehavior = S.String;
-
 export interface PutBotRequest {
   name: string;
   description?: string;
@@ -1140,7 +835,6 @@ export interface PutBotRequest {
   createVersion?: boolean;
   tags?: Tag[];
 }
-const PutBotRequest = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<PutBotRequest>;
 export interface PutBotResponse {
   name?: string;
   description?: string;
@@ -1163,24 +857,17 @@ export interface PutBotResponse {
   detectSentiment?: boolean;
   tags?: Tag[];
 }
-const PutBotResponse = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<PutBotResponse>;
 export interface LogSettingsRequest {
   logType: LogType;
   destination: Destination;
   kmsKeyArn?: string;
   resourceArn: string;
 }
-const LogSettingsRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<LogSettingsRequest>;
 export type LogSettingsRequestList = LogSettingsRequest[];
-const LogSettingsRequestList = /*@__PURE__*/ __L.at(__c14, 2);
 export interface ConversationLogsRequest {
   logSettings: LogSettingsRequest[];
   iamRoleArn: string;
 }
-const ConversationLogsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ConversationLogsRequest>;
 export interface PutBotAliasRequest {
   name: string;
   description?: string;
@@ -1190,7 +877,6 @@ export interface PutBotAliasRequest {
   conversationLogs?: ConversationLogsRequest;
   tags?: Tag[];
 }
-const PutBotAliasRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<PutBotAliasRequest>;
 export interface PutBotAliasResponse {
   name?: string;
   description?: string;
@@ -1202,7 +888,6 @@ export interface PutBotAliasResponse {
   conversationLogs?: ConversationLogsResponse;
   tags?: Tag[];
 }
-const PutBotAliasResponse = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<PutBotAliasResponse>;
 export interface PutIntentRequest {
   name: string;
   description?: string;
@@ -1221,7 +906,6 @@ export interface PutIntentRequest {
   inputContexts?: InputContext[];
   outputContexts?: OutputContext[];
 }
-const PutIntentRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<PutIntentRequest>;
 export interface PutIntentResponse {
   name?: string;
   description?: string;
@@ -1243,7 +927,6 @@ export interface PutIntentResponse {
   inputContexts?: InputContext[];
   outputContexts?: OutputContext[];
 }
-const PutIntentResponse = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<PutIntentResponse>;
 export interface PutSlotTypeRequest {
   name: string;
   description?: string;
@@ -1254,7 +937,6 @@ export interface PutSlotTypeRequest {
   parentSlotTypeSignature?: string;
   slotTypeConfigurations?: SlotTypeConfiguration[];
 }
-const PutSlotTypeRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<PutSlotTypeRequest>;
 export interface PutSlotTypeResponse {
   name?: string;
   description?: string;
@@ -1268,14 +950,12 @@ export interface PutSlotTypeResponse {
   parentSlotTypeSignature?: string;
   slotTypeConfigurations?: SlotTypeConfiguration[];
 }
-const PutSlotTypeResponse = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<PutSlotTypeResponse>;
 export interface StartImportRequest {
   payload: Uint8Array;
   resourceType: ResourceType;
   mergeStrategy: MergeStrategy;
   tags?: Tag[];
 }
-const StartImportRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<StartImportRequest>;
 export interface StartImportResponse {
   name?: string;
   resourceType?: ResourceType;
@@ -1285,7 +965,6 @@ export interface StartImportResponse {
   tags?: Tag[];
   createdDate?: Date;
 }
-const StartImportResponse = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<StartImportResponse>;
 export type V2BotName = string;
 export interface StartMigrationRequest {
   v1BotName: string;
@@ -1294,10 +973,6 @@ export interface StartMigrationRequest {
   v2BotRole: string;
   migrationStrategy: MigrationStrategy;
 }
-const StartMigrationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<StartMigrationRequest>;
 export interface StartMigrationResponse {
   v1BotName?: string;
   v1BotVersion?: string;
@@ -1308,37 +983,22 @@ export interface StartMigrationResponse {
   migrationStrategy?: MigrationStrategy;
   migrationTimestamp?: Date;
 }
-const StartMigrationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<StartMigrationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteBotResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = SlotUtteranceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteBotResponse as any as S.Schema<UntagResourceResponse>;
 export type ReferenceType = "Intent" | "Bot" | "BotAlias" | "BotChannel" | (string & {});
-const ReferenceType = S.String;
-
 export interface ResourceReference {
   name?: string;
   version?: string;
 }
-const ResourceReference = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ResourceReference>;
 export type CreateBotVersionError =
   | BadRequestException
   | ConflictException
@@ -1369,8 +1029,8 @@ export const createBotVersion: API.OperationMethod<
   CreateBotVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBotVersionRequest,
-  output: CreateBotVersionResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateBotVersionRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateBotVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1415,8 +1075,8 @@ export const createIntentVersion: API.OperationMethod<
   CreateIntentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntentVersionRequest,
-  output: CreateIntentVersionResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateIntentVersionRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateIntentVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1461,8 +1121,8 @@ export const createSlotTypeVersion: API.OperationMethod<
   CreateSlotTypeVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSlotTypeVersionRequest,
-  output: CreateSlotTypeVersionResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateSlotTypeVersionRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<CreateSlotTypeVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1511,8 +1171,8 @@ export const deleteBot: API.OperationMethod<
   DeleteBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBotRequest,
-  output: DeleteBotResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<DeleteBotRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteBotResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1552,8 +1212,8 @@ export const deleteBotAlias: API.OperationMethod<
   DeleteBotAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBotAliasRequest,
-  output: DeleteBotAliasResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<DeleteBotAliasRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteBotAliasResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1587,8 +1247,8 @@ export const deleteBotChannelAssociation: API.OperationMethod<
   DeleteBotChannelAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBotChannelAssociationRequest,
-  output: DeleteBotChannelAssociationResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<DeleteBotChannelAssociationRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<DeleteBotChannelAssociationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1622,8 +1282,8 @@ export const deleteBotVersion: API.OperationMethod<
   DeleteBotVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBotVersionRequest,
-  output: DeleteBotVersionResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<DeleteBotVersionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteBotVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1671,8 +1331,8 @@ export const deleteIntent: API.OperationMethod<
   DeleteIntentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntentRequest,
-  output: DeleteIntentResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<DeleteIntentRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteIntentResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1707,8 +1367,8 @@ export const deleteIntentVersion: API.OperationMethod<
   DeleteIntentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntentVersionRequest,
-  output: DeleteIntentVersionResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<DeleteIntentVersionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteIntentVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1756,8 +1416,8 @@ export const deleteSlotType: API.OperationMethod<
   DeleteSlotTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSlotTypeRequest,
-  output: DeleteSlotTypeResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<DeleteSlotTypeRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteSlotTypeResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1792,8 +1452,8 @@ export const deleteSlotTypeVersion: API.OperationMethod<
   DeleteSlotTypeVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSlotTypeVersionRequest,
-  output: DeleteSlotTypeVersionResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteSlotTypeVersionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteSlotTypeVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1836,8 +1496,8 @@ export const deleteUtterances: API.OperationMethod<
   DeleteUtterancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUtterancesRequest,
-  output: DeleteUtterancesResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<DeleteUtterancesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteUtterancesResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1868,8 +1528,8 @@ export const getBot: API.OperationMethod<
   GetBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotRequest,
-  output: GetBotResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<GetBotRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetBotResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1900,8 +1560,8 @@ export const getBotAlias: API.OperationMethod<
   GetBotAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotAliasRequest,
-  output: GetBotAliasResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetBotAliasRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetBotAliasResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1931,8 +1591,8 @@ export const getBotAliases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBotAliasesRequest,
-  output: GetBotAliasesResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<GetBotAliasesRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetBotAliasesResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1963,8 +1623,8 @@ export const getBotChannelAssociation: API.OperationMethod<
   GetBotChannelAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotChannelAssociationRequest,
-  output: GetBotChannelAssociationResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<GetBotChannelAssociationRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<GetBotChannelAssociationResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1996,8 +1656,8 @@ export const getBotChannelAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBotChannelAssociationsRequest,
-  output: GetBotChannelAssociationsResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<GetBotChannelAssociationsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetBotChannelAssociationsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2036,8 +1696,8 @@ export const getBots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBotsRequest,
-  output: GetBotsResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<GetBotsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GetBotsResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2083,8 +1743,8 @@ export const getBotVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBotVersionsRequest,
-  output: GetBotVersionsResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<GetBotVersionsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GetBotVersionsResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2119,8 +1779,8 @@ export const getBuiltinIntent: API.OperationMethod<
   GetBuiltinIntentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBuiltinIntentRequest,
-  output: GetBuiltinIntentResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<GetBuiltinIntentRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<GetBuiltinIntentResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2151,8 +1811,8 @@ export const getBuiltinIntents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBuiltinIntentsRequest,
-  output: GetBuiltinIntentsResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<GetBuiltinIntentsRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetBuiltinIntentsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2186,8 +1846,8 @@ export const getBuiltinSlotTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBuiltinSlotTypesRequest,
-  output: GetBuiltinSlotTypesResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<GetBuiltinSlotTypesRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<GetBuiltinSlotTypesResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2214,8 +1874,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportRequest,
-  output: GetExportResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<GetExportRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GetExportResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2243,8 +1903,8 @@ export const getImport: API.OperationMethod<
   GetImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImportRequest,
-  output: GetImportResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<GetImportRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<GetImportResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2275,8 +1935,8 @@ export const getIntent: API.OperationMethod<
   GetIntentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntentRequest,
-  output: GetIntentResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<GetIntentRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetIntentResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2315,8 +1975,8 @@ export const getIntents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetIntentsRequest,
-  output: GetIntentsResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<GetIntentsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<GetIntentsResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2362,8 +2022,8 @@ export const getIntentVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetIntentVersionsRequest,
-  output: GetIntentVersionsResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<GetIntentVersionsRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<GetIntentVersionsResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2397,8 +2057,8 @@ export const getMigration: API.OperationMethod<
   GetMigrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMigrationRequest,
-  output: GetMigrationResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<GetMigrationRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetMigrationResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2425,8 +2085,8 @@ export const getMigrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetMigrationsRequest,
-  output: GetMigrationsResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<GetMigrationsRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetMigrationsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2458,8 +2118,8 @@ export const getSlotType: API.OperationMethod<
   GetSlotTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSlotTypeRequest,
-  output: GetSlotTypeResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<GetSlotTypeRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetSlotTypeResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2498,8 +2158,8 @@ export const getSlotTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetSlotTypesRequest,
-  output: GetSlotTypesResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<GetSlotTypesRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<GetSlotTypesResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2545,8 +2205,8 @@ export const getSlotTypeVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetSlotTypeVersionsRequest,
-  output: GetSlotTypeVersionsResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<GetSlotTypeVersionsRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<GetSlotTypeVersionsResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2605,8 +2265,8 @@ export const getUtterancesView: API.OperationMethod<
   GetUtterancesViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUtterancesViewRequest,
-  output: GetUtterancesViewResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<GetUtterancesViewRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetUtterancesViewResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2629,8 +2289,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2676,8 +2336,8 @@ export const putBot: API.OperationMethod<
   PutBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBotRequest,
-  output: PutBotResponse,
+  input: __S(111, __c13, 7) as any as S.Schema<PutBotRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<PutBotResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2712,8 +2372,8 @@ export const putBotAlias: API.OperationMethod<
   PutBotAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBotAliasRequest,
-  output: PutBotAliasResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<PutBotAliasRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<PutBotAliasResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2793,8 +2453,8 @@ export const putIntent: API.OperationMethod<
   PutIntentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIntentRequest,
-  output: PutIntentResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<PutIntentRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<PutIntentResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2840,8 +2500,8 @@ export const putSlotType: API.OperationMethod<
   PutSlotTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSlotTypeRequest,
-  output: PutSlotTypeResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<PutSlotTypeRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<PutSlotTypeResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2868,8 +2528,8 @@ export const startImport: API.OperationMethod<
   StartImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartImportRequest,
-  output: StartImportResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<StartImportRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<StartImportResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2896,8 +2556,8 @@ export const startMigration: API.OperationMethod<
   StartMigrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartMigrationRequest,
-  output: StartMigrationResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<StartMigrationRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<StartMigrationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2927,8 +2587,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<TagResourceRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2957,8 +2617,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<UntagResourceRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2992,38 +2652,38 @@ function __c0(j: number): any {
         identifier: "Intent",
       });
     case 2:
-      return S.Array(Intent);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          contentType: ContentType,
+          contentType: S.String,
           content: S.String,
           groupNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Message" });
     case 4:
-      return S.Array(Message);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          messages: MessageList,
+          messages: __S(4, __c0, 4),
           maxAttempts: S.Number,
           responseCard: S.optional(S.String),
         }),
       ).annotate({ identifier: "Prompt" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ messages: MessageList, responseCard: S.optional(S.String) }),
+        S.Struct({ messages: __S(4, __c0, 4), responseCard: S.optional(S.String) }),
       ).annotate({ identifier: "Statement" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          intents: S.optional(IntentList),
-          clarificationPrompt: S.optional(Prompt),
-          abortStatement: S.optional(Statement),
-          status: S.optional(Status),
+          intents: S.optional(__S(2, __c0, 2)),
+          clarificationPrompt: S.optional(__S(5, __c0, 5)),
+          abortStatement: S.optional(__S(6, __c0, 6)),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3031,7 +2691,7 @@ function __c0(j: number): any {
           voiceId: S.optional(S.String),
           checksum: S.optional(S.String),
           version: S.optional(S.String),
-          locale: S.optional(Locale),
+          locale: S.optional(S.String),
           childDirected: S.optional(S.Boolean),
           enableModelImprovements: S.optional(S.Boolean),
           detectSentiment: S.optional(S.Boolean),
@@ -3063,9 +2723,9 @@ function __c1(j: number): any {
         identifier: "SlotDefaultValue",
       });
     case 3:
-      return S.Array(SlotDefaultValue);
+      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.suspend(() => S.Struct({ defaultValueList: SlotDefaultValueList })).annotate({
+      return S.suspend(() => S.Struct({ defaultValueList: __S(11, __c1, 3) })).annotate({
         identifier: "SlotDefaultValueSpec",
       });
     case 5:
@@ -3073,21 +2733,23 @@ function __c1(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          slotConstraint: SlotConstraint,
+          slotConstraint: S.String,
           slotType: S.optional(S.String),
           slotTypeVersion: S.optional(S.String),
-          valueElicitationPrompt: S.optional(Prompt),
+          valueElicitationPrompt: S.optional(__S(5, __c0, 5)),
           priority: S.optional(S.Number),
-          sampleUtterances: S.optional(SlotUtteranceList),
+          sampleUtterances: S.optional(__S(9, __c1, 1)),
           responseCard: S.optional(S.String),
-          obfuscationSetting: S.optional(ObfuscationSetting),
-          defaultValueSpec: S.optional(SlotDefaultValueSpec),
+          obfuscationSetting: S.optional(S.String),
+          defaultValueSpec: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "Slot" });
     case 6:
-      return S.Array(Slot);
+      return S.Array(__S(13, __c1, 5));
     case 7:
-      return S.suspend(() => S.Struct({ prompt: Prompt, rejectionStatement: Statement })).annotate({
+      return S.suspend(() =>
+        S.Struct({ prompt: __S(5, __c0, 5), rejectionStatement: __S(6, __c0, 6) }),
+      ).annotate({
         identifier: "FollowUpPrompt",
       });
   }
@@ -3100,7 +2762,7 @@ function __c2(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ type: FulfillmentActivityType, codeHook: S.optional(CodeHook) }),
+        S.Struct({ type: S.String, codeHook: S.optional(__S(16, __c2, 0)) }),
       ).annotate({ identifier: "FulfillmentActivity" });
     case 2:
       return S.suspend(() =>
@@ -3115,34 +2777,34 @@ function __c2(j: number): any {
         identifier: "InputContext",
       });
     case 4:
-      return S.Array(InputContext);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({ name: S.String, timeToLiveInSeconds: S.Number, turnsToLive: S.Number }),
       ).annotate({ identifier: "OutputContext" });
     case 6:
-      return S.Array(OutputContext);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          slots: S.optional(SlotList),
-          sampleUtterances: S.optional(IntentUtteranceList),
-          confirmationPrompt: S.optional(Prompt),
-          rejectionStatement: S.optional(Statement),
-          followUpPrompt: S.optional(FollowUpPrompt),
-          conclusionStatement: S.optional(Statement),
-          dialogCodeHook: S.optional(CodeHook),
-          fulfillmentActivity: S.optional(FulfillmentActivity),
+          slots: S.optional(__S(14, __c1, 6)),
+          sampleUtterances: S.optional(__S(9, __c1, 1)),
+          confirmationPrompt: S.optional(__S(5, __c0, 5)),
+          rejectionStatement: S.optional(__S(6, __c0, 6)),
+          followUpPrompt: S.optional(__S(15, __c1, 7)),
+          conclusionStatement: S.optional(__S(6, __c0, 6)),
+          dialogCodeHook: S.optional(__S(16, __c2, 0)),
+          fulfillmentActivity: S.optional(__S(17, __c2, 1)),
           parentIntentSignature: S.optional(S.String),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
           checksum: S.optional(S.String),
-          kendraConfiguration: S.optional(KendraConfiguration),
-          inputContexts: S.optional(InputContextList),
-          outputContexts: S.optional(OutputContextList),
+          kendraConfiguration: S.optional(__S(18, __c2, 2)),
+          inputContexts: S.optional(__S(20, __c2, 4)),
+          outputContexts: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "CreateIntentVersionResponse",
@@ -3168,33 +2830,33 @@ function __c3(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ value: S.String, synonyms: S.optional(SynonymList) }),
+        S.Struct({ value: S.String, synonyms: S.optional(__S(9, __c1, 1)) }),
       ).annotate({ identifier: "EnumerationValue" });
     case 2:
-      return S.Array(EnumerationValue);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() => S.Struct({ pattern: S.String })).annotate({
         identifier: "SlotTypeRegexConfiguration",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ regexConfiguration: S.optional(SlotTypeRegexConfiguration) }),
+        S.Struct({ regexConfiguration: S.optional(__S(27, __c3, 3)) }),
       ).annotate({ identifier: "SlotTypeConfiguration" });
     case 5:
-      return S.Array(SlotTypeConfiguration);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          enumerationValues: S.optional(EnumerationValues),
+          enumerationValues: S.optional(__S(26, __c3, 2)),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
           checksum: S.optional(S.String),
-          valueSelectionStrategy: S.optional(SlotValueSelectionStrategy),
+          valueSelectionStrategy: S.optional(S.String),
           parentSlotTypeSignature: S.optional(S.String),
-          slotTypeConfigurations: S.optional(SlotTypeConfigurations),
+          slotTypeConfigurations: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "CreateSlotTypeVersionResponse",
@@ -3364,12 +3026,12 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          intents: S.optional(IntentList),
+          intents: S.optional(__S(2, __c0, 2)),
           enableModelImprovements: S.optional(S.Boolean),
           nluIntentConfidenceThreshold: S.optional(S.Number),
-          clarificationPrompt: S.optional(Prompt),
-          abortStatement: S.optional(Statement),
-          status: S.optional(Status),
+          clarificationPrompt: S.optional(__S(5, __c0, 5)),
+          abortStatement: S.optional(__S(6, __c0, 6)),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3377,7 +3039,7 @@ function __c5(j: number): any {
           voiceId: S.optional(S.String),
           checksum: S.optional(S.String),
           version: S.optional(S.String),
-          locale: S.optional(Locale),
+          locale: S.optional(S.String),
           childDirected: S.optional(S.Boolean),
           detectSentiment: S.optional(S.Boolean),
         }),
@@ -3401,19 +3063,19 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(LogType),
-          destination: S.optional(Destination),
+          logType: S.optional(S.String),
+          destination: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
           resourceArn: S.optional(S.String),
           resourcePrefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSettingsResponse" });
     case 6:
-      return S.Array(LogSettingsResponse);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          logSettings: S.optional(LogSettingsResponseList),
+          logSettings: S.optional(__S(46, __c5, 6)),
           iamRoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConversationLogsResponse" });
@@ -3431,7 +3093,7 @@ function __c6(j: number): any {
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           checksum: S.optional(S.String),
-          conversationLogs: S.optional(ConversationLogsResponse),
+          conversationLogs: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "GetBotAliasResponse" });
     case 1:
@@ -3453,10 +3115,10 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "GetBotAliasesRequest" });
     case 2:
-      return S.Array(BotAliasMetadata);
+      return S.Array(__S(48, __c6, 0));
     case 3:
       return S.suspend(() =>
-        S.Struct({ BotAliases: S.optional(BotAliasMetadataList), nextToken: S.optional(S.String) }),
+        S.Struct({ BotAliases: S.optional(__S(50, __c6, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetBotAliasesResponse" });
     case 4:
       return S.suspend(() =>
@@ -3487,9 +3149,9 @@ function __c6(j: number): any {
           botAlias: S.optional(S.String),
           botName: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          type: S.optional(ChannelType),
-          botConfiguration: S.optional(ChannelConfigurationMap),
-          status: S.optional(ChannelStatus),
+          type: S.optional(S.String),
+          botConfiguration: S.optional(__S(53, __c6, 5)),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
       ).annotate({
@@ -3528,18 +3190,18 @@ function __c7(j: number): any {
           botAlias: S.optional(S.String),
           botName: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          type: S.optional(ChannelType),
-          botConfiguration: S.optional(ChannelConfigurationMap),
-          status: S.optional(ChannelStatus),
+          type: S.optional(S.String),
+          botConfiguration: S.optional(__S(53, __c6, 5)),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "BotChannelAssociation" });
     case 1:
-      return S.Array(BotChannelAssociation);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          botChannelAssociations: S.optional(BotChannelAssociationList),
+          botChannelAssociations: S.optional(__S(57, __c7, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3558,17 +3220,17 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(S.String),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "BotMetadata" });
     case 5:
-      return S.Array(BotMetadata);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ bots: S.optional(BotMetadataList), nextToken: S.optional(S.String) }),
+        S.Struct({ bots: S.optional(__S(61, __c7, 5)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetBotsResponse" });
     case 7:
       return S.suspend(() =>
@@ -3605,25 +3267,25 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "GetBuiltinIntentRequest" });
     case 1:
-      return S.Array(Locale);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() => S.Struct({ name: S.optional(S.String) })).annotate({
         identifier: "BuiltinIntentSlot",
       });
     case 3:
-      return S.Array(BuiltinIntentSlot);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           signature: S.optional(S.String),
-          supportedLocales: S.optional(LocaleList),
-          slots: S.optional(BuiltinIntentSlotList),
+          supportedLocales: S.optional(__S(65, __c8, 1)),
+          slots: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "GetBuiltinIntentResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          locale: S.optional(Locale).pipe(T.HttpQuery("locale")),
+          locale: S.optional(S.String).pipe(T.HttpQuery("locale")),
           signatureContains: S.optional(S.String).pipe(T.HttpQuery("signatureContains")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3633,10 +3295,13 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetBuiltinIntentsRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ signature: S.optional(S.String), supportedLocales: S.optional(LocaleList) }),
+        S.Struct({
+          signature: S.optional(S.String),
+          supportedLocales: S.optional(__S(65, __c8, 1)),
+        }),
       ).annotate({ identifier: "BuiltinIntentMetadata" });
     case 7:
-      return S.Array(BuiltinIntentMetadata);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -3644,7 +3309,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          intents: S.optional(BuiltinIntentMetadataList),
+          intents: S.optional(__S(71, __c8, 7)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3653,7 +3318,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          locale: S.optional(Locale).pipe(T.HttpQuery("locale")),
+          locale: S.optional(S.String).pipe(T.HttpQuery("locale")),
           signatureContains: S.optional(S.String).pipe(T.HttpQuery("signatureContains")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3673,7 +3338,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          slotTypes: S.optional(BuiltinSlotTypeMetadataList),
+          slotTypes: S.optional(__S(71, __c8, 7)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3684,8 +3349,8 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpQuery("name")),
           version: S.String.pipe(T.HttpQuery("version")),
-          resourceType: ResourceType.pipe(T.HttpQuery("resourceType")),
-          exportType: ExportType.pipe(T.HttpQuery("exportType")),
+          resourceType: S.String.pipe(T.HttpQuery("resourceType")),
+          exportType: S.String.pipe(T.HttpQuery("exportType")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/exports" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetExportRequest" });
     case 4:
@@ -3693,9 +3358,9 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           version: S.optional(S.String),
-          resourceType: S.optional(ResourceType),
-          exportType: S.optional(ExportType),
-          exportStatus: S.optional(ExportStatus),
+          resourceType: S.optional(S.String),
+          exportType: S.optional(S.String),
+          exportStatus: S.optional(S.String),
           failureReason: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -3717,11 +3382,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          resourceType: S.optional(ResourceType),
-          mergeStrategy: S.optional(MergeStrategy),
+          resourceType: S.optional(S.String),
+          mergeStrategy: S.optional(S.String),
           importId: S.optional(S.String),
-          importStatus: S.optional(ImportStatus),
-          failureReason: S.optional(StringList),
+          importStatus: S.optional(S.String),
+          failureReason: S.optional(__S(9, __c1, 1)),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetImportResponse" });
@@ -3750,22 +3415,22 @@ function __c10(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          slots: S.optional(SlotList),
-          sampleUtterances: S.optional(IntentUtteranceList),
-          confirmationPrompt: S.optional(Prompt),
-          rejectionStatement: S.optional(Statement),
-          followUpPrompt: S.optional(FollowUpPrompt),
-          conclusionStatement: S.optional(Statement),
-          dialogCodeHook: S.optional(CodeHook),
-          fulfillmentActivity: S.optional(FulfillmentActivity),
+          slots: S.optional(__S(14, __c1, 6)),
+          sampleUtterances: S.optional(__S(9, __c1, 1)),
+          confirmationPrompt: S.optional(__S(5, __c0, 5)),
+          rejectionStatement: S.optional(__S(6, __c0, 6)),
+          followUpPrompt: S.optional(__S(15, __c1, 7)),
+          conclusionStatement: S.optional(__S(6, __c0, 6)),
+          dialogCodeHook: S.optional(__S(16, __c2, 0)),
+          fulfillmentActivity: S.optional(__S(17, __c2, 1)),
           parentIntentSignature: S.optional(S.String),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
           checksum: S.optional(S.String),
-          kendraConfiguration: S.optional(KendraConfiguration),
-          inputContexts: S.optional(InputContextList),
-          outputContexts: S.optional(OutputContextList),
+          kendraConfiguration: S.optional(__S(18, __c2, 2)),
+          inputContexts: S.optional(__S(20, __c2, 4)),
+          outputContexts: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "GetIntentResponse" });
     case 1:
@@ -3787,10 +3452,10 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "IntentMetadata" });
     case 3:
-      return S.Array(IntentMetadata);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ intents: S.optional(IntentMetadataList), nextToken: S.optional(S.String) }),
+        S.Struct({ intents: S.optional(__S(83, __c10, 3)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetIntentsResponse" });
     case 5:
       return S.suspend(() =>
@@ -3811,7 +3476,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetIntentVersionsRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ intents: S.optional(IntentMetadataList), nextToken: S.optional(S.String) }),
+        S.Struct({ intents: S.optional(__S(83, __c10, 3)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetIntentVersionsResponse",
       });
@@ -3835,38 +3500,36 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(MigrationAlertType),
+          type: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(MigrationAlertDetails),
-          referenceURLs: S.optional(MigrationAlertReferenceURLs),
+          details: S.optional(__S(9, __c1, 1)),
+          referenceURLs: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "MigrationAlert" });
     case 1:
-      return S.Array(MigrationAlert);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           migrationId: S.optional(S.String),
           v1BotName: S.optional(S.String),
           v1BotVersion: S.optional(S.String),
-          v1BotLocale: S.optional(Locale),
+          v1BotLocale: S.optional(S.String),
           v2BotId: S.optional(S.String),
           v2BotRole: S.optional(S.String),
-          migrationStatus: S.optional(MigrationStatus),
-          migrationStrategy: S.optional(MigrationStrategy),
+          migrationStatus: S.optional(S.String),
+          migrationStrategy: S.optional(S.String),
           migrationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          alerts: S.optional(MigrationAlerts),
+          alerts: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "GetMigrationResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sortByAttribute: S.optional(MigrationSortAttribute).pipe(T.HttpQuery("sortByAttribute")),
-          sortByOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortByOrder")),
+          sortByAttribute: S.optional(S.String).pipe(T.HttpQuery("sortByAttribute")),
+          sortByOrder: S.optional(S.String).pipe(T.HttpQuery("sortByOrder")),
           v1BotNameContains: S.optional(S.String).pipe(T.HttpQuery("v1BotNameContains")),
-          migrationStatusEquals: S.optional(MigrationStatus).pipe(
-            T.HttpQuery("migrationStatusEquals"),
-          ),
+          migrationStatusEquals: S.optional(S.String).pipe(T.HttpQuery("migrationStatusEquals")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/migrations" }), svc, auth, proto, ver, rules)),
@@ -3877,20 +3540,20 @@ function __c11(j: number): any {
           migrationId: S.optional(S.String),
           v1BotName: S.optional(S.String),
           v1BotVersion: S.optional(S.String),
-          v1BotLocale: S.optional(Locale),
+          v1BotLocale: S.optional(S.String),
           v2BotId: S.optional(S.String),
           v2BotRole: S.optional(S.String),
-          migrationStatus: S.optional(MigrationStatus),
-          migrationStrategy: S.optional(MigrationStrategy),
+          migrationStatus: S.optional(S.String),
+          migrationStrategy: S.optional(S.String),
           migrationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MigrationSummary" });
     case 5:
-      return S.Array(MigrationSummary);
+      return S.Array(__S(92, __c11, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          migrationSummaries: S.optional(MigrationSummaryList),
+          migrationSummaries: S.optional(__S(93, __c11, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetMigrationsResponse" });
@@ -3919,14 +3582,14 @@ function __c12(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          enumerationValues: S.optional(EnumerationValues),
+          enumerationValues: S.optional(__S(26, __c3, 2)),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
           checksum: S.optional(S.String),
-          valueSelectionStrategy: S.optional(SlotValueSelectionStrategy),
+          valueSelectionStrategy: S.optional(S.String),
           parentSlotTypeSignature: S.optional(S.String),
-          slotTypeConfigurations: S.optional(SlotTypeConfigurations),
+          slotTypeConfigurations: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "GetSlotTypeResponse" });
     case 1:
@@ -3939,7 +3602,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetSlotTypesRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ slotTypes: S.optional(SlotTypeMetadataList), nextToken: S.optional(S.String) }),
+        S.Struct({ slotTypes: S.optional(__S(83, __c10, 3)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetSlotTypesResponse" });
     case 3:
       return S.suspend(() =>
@@ -3962,7 +3625,7 @@ function __c12(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ slotTypes: S.optional(SlotTypeMetadataList), nextToken: S.optional(S.String) }),
+        S.Struct({ slotTypes: S.optional(__S(83, __c10, 3)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetSlotTypeVersionsResponse",
       });
@@ -3970,8 +3633,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botName: S.String.pipe(T.HttpLabel("botName")),
-          botVersions: BotVersions.pipe(T.HttpQuery("bot_versions")),
-          statusType: StatusType.pipe(T.HttpQuery("status_type")),
+          botVersions: __S(9, __c1, 1).pipe(T.HttpQuery("bot_versions")),
+          statusType: S.String.pipe(T.HttpQuery("status_type")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/bots/{botName}/utterances?view=aggregation" }),
@@ -3994,20 +3657,20 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "UtteranceData" });
     case 7:
-      return S.Array(UtteranceData);
+      return S.Array(__S(102, __c12, 6));
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ botVersion: S.optional(S.String), utterances: S.optional(ListOfUtterance) }),
+        S.Struct({ botVersion: S.optional(S.String), utterances: S.optional(__S(103, __c12, 7)) }),
       ).annotate({ identifier: "UtteranceList" });
     case 1:
-      return S.Array(UtteranceList);
+      return S.Array(__S(104, __c13, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ botName: S.optional(S.String), utterances: S.optional(ListsOfUtterances) }),
+        S.Struct({ botName: S.optional(S.String), utterances: S.optional(__S(105, __c13, 1)) }),
       ).annotate({
         identifier: "GetUtterancesViewResponse",
       });
@@ -4031,9 +3694,9 @@ function __c13(j: number): any {
         identifier: "Tag",
       });
     case 5:
-      return S.Array(Tag);
+      return S.Array(__S(108, __c13, 4));
     case 6:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(109, __c13, 5)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 7:
@@ -4041,20 +3704,20 @@ function __c13(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          intents: S.optional(IntentList),
+          intents: S.optional(__S(2, __c0, 2)),
           enableModelImprovements: S.optional(S.Boolean),
           nluIntentConfidenceThreshold: S.optional(S.Number),
-          clarificationPrompt: S.optional(Prompt),
-          abortStatement: S.optional(Statement),
+          clarificationPrompt: S.optional(__S(5, __c0, 5)),
+          abortStatement: S.optional(__S(6, __c0, 6)),
           idleSessionTTLInSeconds: S.optional(S.Number),
           voiceId: S.optional(S.String),
           checksum: S.optional(S.String),
-          processBehavior: S.optional(ProcessBehavior),
-          locale: Locale,
+          processBehavior: S.optional(S.String),
+          locale: S.String,
           childDirected: S.Boolean,
           detectSentiment: S.optional(S.Boolean),
           createVersion: S.optional(S.Boolean),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(109, __c13, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/bots/{name}/versions/$LATEST" }),
@@ -4075,12 +3738,12 @@ function __c14(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          intents: S.optional(IntentList),
+          intents: S.optional(__S(2, __c0, 2)),
           enableModelImprovements: S.optional(S.Boolean),
           nluIntentConfidenceThreshold: S.optional(S.Number),
-          clarificationPrompt: S.optional(Prompt),
-          abortStatement: S.optional(Statement),
-          status: S.optional(Status),
+          clarificationPrompt: S.optional(__S(5, __c0, 5)),
+          abortStatement: S.optional(__S(6, __c0, 6)),
+          status: S.optional(S.String),
           failureReason: S.optional(S.String),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4088,27 +3751,27 @@ function __c14(j: number): any {
           voiceId: S.optional(S.String),
           checksum: S.optional(S.String),
           version: S.optional(S.String),
-          locale: S.optional(Locale),
+          locale: S.optional(S.String),
           childDirected: S.optional(S.Boolean),
           createVersion: S.optional(S.Boolean),
           detectSentiment: S.optional(S.Boolean),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(109, __c13, 5)),
         }),
       ).annotate({ identifier: "PutBotResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          logType: LogType,
-          destination: Destination,
+          logType: S.String,
+          destination: S.String,
           kmsKeyArn: S.optional(S.String),
           resourceArn: S.String,
         }),
       ).annotate({ identifier: "LogSettingsRequest" });
     case 2:
-      return S.Array(LogSettingsRequest);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ logSettings: LogSettingsRequestList, iamRoleArn: S.String }),
+        S.Struct({ logSettings: __S(114, __c14, 2), iamRoleArn: S.String }),
       ).annotate({ identifier: "ConversationLogsRequest" });
     case 4:
       return S.suspend(() =>
@@ -4118,8 +3781,8 @@ function __c14(j: number): any {
           botVersion: S.String,
           botName: S.String.pipe(T.HttpLabel("botName")),
           checksum: S.optional(S.String),
-          conversationLogs: S.optional(ConversationLogsRequest),
-          tags: S.optional(TagList),
+          conversationLogs: S.optional(__S(115, __c14, 3)),
+          tags: S.optional(__S(109, __c13, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/bots/{botName}/aliases/{name}" }),
@@ -4141,8 +3804,8 @@ function __c14(j: number): any {
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           checksum: S.optional(S.String),
-          conversationLogs: S.optional(ConversationLogsResponse),
-          tags: S.optional(TagList),
+          conversationLogs: S.optional(__S(47, __c5, 7)),
+          tags: S.optional(__S(109, __c13, 5)),
         }),
       ).annotate({ identifier: "PutBotAliasResponse" });
     case 6:
@@ -4150,20 +3813,20 @@ function __c14(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          slots: S.optional(SlotList),
-          sampleUtterances: S.optional(IntentUtteranceList),
-          confirmationPrompt: S.optional(Prompt),
-          rejectionStatement: S.optional(Statement),
-          followUpPrompt: S.optional(FollowUpPrompt),
-          conclusionStatement: S.optional(Statement),
-          dialogCodeHook: S.optional(CodeHook),
-          fulfillmentActivity: S.optional(FulfillmentActivity),
+          slots: S.optional(__S(14, __c1, 6)),
+          sampleUtterances: S.optional(__S(9, __c1, 1)),
+          confirmationPrompt: S.optional(__S(5, __c0, 5)),
+          rejectionStatement: S.optional(__S(6, __c0, 6)),
+          followUpPrompt: S.optional(__S(15, __c1, 7)),
+          conclusionStatement: S.optional(__S(6, __c0, 6)),
+          dialogCodeHook: S.optional(__S(16, __c2, 0)),
+          fulfillmentActivity: S.optional(__S(17, __c2, 1)),
           parentIntentSignature: S.optional(S.String),
           checksum: S.optional(S.String),
           createVersion: S.optional(S.Boolean),
-          kendraConfiguration: S.optional(KendraConfiguration),
-          inputContexts: S.optional(InputContextList),
-          outputContexts: S.optional(OutputContextList),
+          kendraConfiguration: S.optional(__S(18, __c2, 2)),
+          inputContexts: S.optional(__S(20, __c2, 4)),
+          outputContexts: S.optional(__S(22, __c2, 6)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/intents/{name}/versions/$LATEST" }),
@@ -4180,23 +3843,23 @@ function __c14(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          slots: S.optional(SlotList),
-          sampleUtterances: S.optional(IntentUtteranceList),
-          confirmationPrompt: S.optional(Prompt),
-          rejectionStatement: S.optional(Statement),
-          followUpPrompt: S.optional(FollowUpPrompt),
-          conclusionStatement: S.optional(Statement),
-          dialogCodeHook: S.optional(CodeHook),
-          fulfillmentActivity: S.optional(FulfillmentActivity),
+          slots: S.optional(__S(14, __c1, 6)),
+          sampleUtterances: S.optional(__S(9, __c1, 1)),
+          confirmationPrompt: S.optional(__S(5, __c0, 5)),
+          rejectionStatement: S.optional(__S(6, __c0, 6)),
+          followUpPrompt: S.optional(__S(15, __c1, 7)),
+          conclusionStatement: S.optional(__S(6, __c0, 6)),
+          dialogCodeHook: S.optional(__S(16, __c2, 0)),
+          fulfillmentActivity: S.optional(__S(17, __c2, 1)),
           parentIntentSignature: S.optional(S.String),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
           checksum: S.optional(S.String),
           createVersion: S.optional(S.Boolean),
-          kendraConfiguration: S.optional(KendraConfiguration),
-          inputContexts: S.optional(InputContextList),
-          outputContexts: S.optional(OutputContextList),
+          kendraConfiguration: S.optional(__S(18, __c2, 2)),
+          inputContexts: S.optional(__S(20, __c2, 4)),
+          outputContexts: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "PutIntentResponse" });
   }
@@ -4208,12 +3871,12 @@ function __c15(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          enumerationValues: S.optional(EnumerationValues),
+          enumerationValues: S.optional(__S(26, __c3, 2)),
           checksum: S.optional(S.String),
-          valueSelectionStrategy: S.optional(SlotValueSelectionStrategy),
+          valueSelectionStrategy: S.optional(S.String),
           createVersion: S.optional(S.Boolean),
           parentSlotTypeSignature: S.optional(S.String),
-          slotTypeConfigurations: S.optional(SlotTypeConfigurations),
+          slotTypeConfigurations: S.optional(__S(29, __c3, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/slottypes/{name}/versions/$LATEST" }),
@@ -4230,35 +3893,35 @@ function __c15(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          enumerationValues: S.optional(EnumerationValues),
+          enumerationValues: S.optional(__S(26, __c3, 2)),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
           checksum: S.optional(S.String),
-          valueSelectionStrategy: S.optional(SlotValueSelectionStrategy),
+          valueSelectionStrategy: S.optional(S.String),
           createVersion: S.optional(S.Boolean),
           parentSlotTypeSignature: S.optional(S.String),
-          slotTypeConfigurations: S.optional(SlotTypeConfigurations),
+          slotTypeConfigurations: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "PutSlotTypeResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           payload: T.Blob,
-          resourceType: ResourceType,
-          mergeStrategy: MergeStrategy,
-          tags: S.optional(TagList),
+          resourceType: S.String,
+          mergeStrategy: S.String,
+          tags: S.optional(__S(109, __c13, 5)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/imports" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartImportRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          resourceType: S.optional(ResourceType),
-          mergeStrategy: S.optional(MergeStrategy),
+          resourceType: S.optional(S.String),
+          mergeStrategy: S.optional(S.String),
           importId: S.optional(S.String),
-          importStatus: S.optional(ImportStatus),
-          tags: S.optional(TagList),
+          importStatus: S.optional(S.String),
+          tags: S.optional(__S(109, __c13, 5)),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "StartImportResponse" });
@@ -4269,7 +3932,7 @@ function __c15(j: number): any {
           v1BotVersion: S.String,
           v2BotName: S.String,
           v2BotRole: S.String,
-          migrationStrategy: MigrationStrategy,
+          migrationStrategy: S.String,
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/migrations" }), svc, auth, proto, ver, rules),
         ),
@@ -4279,17 +3942,20 @@ function __c15(j: number): any {
         S.Struct({
           v1BotName: S.optional(S.String),
           v1BotVersion: S.optional(S.String),
-          v1BotLocale: S.optional(Locale),
+          v1BotLocale: S.optional(S.String),
           v2BotId: S.optional(S.String),
           v2BotRole: S.optional(S.String),
           migrationId: S.optional(S.String),
-          migrationStrategy: S.optional(MigrationStrategy),
+          migrationStrategy: S.optional(S.String),
           migrationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "StartMigrationResponse" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagList }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(109, __c13, 5),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -4304,7 +3970,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(9, __c1, 1).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -4325,4 +3991,9 @@ function __c16(j: number): any {
         S.Struct({ name: S.optional(S.String), version: S.optional(S.String) }),
       ).annotate({ identifier: "ResourceReference" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

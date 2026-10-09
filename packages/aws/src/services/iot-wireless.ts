@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IoT Wireless",
   serviceShapeName: "iotwireless",
@@ -135,7 +137,6 @@ export interface SidewalkAccountInfo {
   AmazonId?: string;
   AppServerPrivateKey?: string | redacted.Redacted<string>;
 }
-const SidewalkAccountInfo = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SidewalkAccountInfo>;
 export type ClientRequestToken = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -143,119 +144,61 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface AssociateAwsAccountWithPartnerAccountRequest {
   Sidewalk: SidewalkAccountInfo;
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
-const AssociateAwsAccountWithPartnerAccountRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AssociateAwsAccountWithPartnerAccountRequest>;
 export type PartnerAccountArn = string;
 export interface AssociateAwsAccountWithPartnerAccountResponse {
   Sidewalk?: SidewalkAccountInfo;
   Arn?: string;
 }
-const AssociateAwsAccountWithPartnerAccountResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssociateAwsAccountWithPartnerAccountResponse>;
 export type FuotaTaskId = string;
 export type MulticastGroupId = string;
 export interface AssociateMulticastGroupWithFuotaTaskRequest {
   Id: string;
   MulticastGroupId: string;
 }
-const AssociateMulticastGroupWithFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskRequest>;
 export interface AssociateMulticastGroupWithFuotaTaskResponse {}
-const AssociateMulticastGroupWithFuotaTaskResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskResponse>;
 export type WirelessDeviceId = string;
 export interface AssociateWirelessDeviceWithFuotaTaskRequest {
   Id: string;
   WirelessDeviceId: string;
 }
-const AssociateWirelessDeviceWithFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskRequest>;
 export interface AssociateWirelessDeviceWithFuotaTaskResponse {}
-const AssociateWirelessDeviceWithFuotaTaskResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskResponse>;
 export interface AssociateWirelessDeviceWithMulticastGroupRequest {
   Id: string;
   WirelessDeviceId: string;
 }
-const AssociateWirelessDeviceWithMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupRequest>;
 export interface AssociateWirelessDeviceWithMulticastGroupResponse {}
-const AssociateWirelessDeviceWithMulticastGroupResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupResponse>;
 export type ThingArn = string;
 export interface AssociateWirelessDeviceWithThingRequest {
   Id: string;
   ThingArn: string;
 }
-const AssociateWirelessDeviceWithThingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AssociateWirelessDeviceWithThingRequest>;
 export interface AssociateWirelessDeviceWithThingResponse {}
-const AssociateWirelessDeviceWithThingResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessDeviceWithThingResponse>;
 export type WirelessGatewayId = string;
 export type IotCertificateId = string;
 export interface AssociateWirelessGatewayWithCertificateRequest {
   Id: string;
   IotCertificateId: string;
 }
-const AssociateWirelessGatewayWithCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AssociateWirelessGatewayWithCertificateRequest>;
 export interface AssociateWirelessGatewayWithCertificateResponse {
   IotCertificateId?: string;
 }
-const AssociateWirelessGatewayWithCertificateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AssociateWirelessGatewayWithCertificateResponse>;
 export interface AssociateWirelessGatewayWithThingRequest {
   Id: string;
   ThingArn: string;
 }
-const AssociateWirelessGatewayWithThingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AssociateWirelessGatewayWithThingRequest>;
 export interface AssociateWirelessGatewayWithThingResponse {}
-const AssociateWirelessGatewayWithThingResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessGatewayWithThingResponse>;
 export interface CancelMulticastGroupSessionRequest {
   Id: string;
 }
-const CancelMulticastGroupSessionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CancelMulticastGroupSessionRequest>;
 export interface CancelMulticastGroupSessionResponse {}
-const CancelMulticastGroupSessionResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<CancelMulticastGroupSessionResponse>;
 export type DestinationName = string;
 export type ExpressionType = "RuleName" | "MqttTopic" | (string & {});
-const ExpressionType = S.String;
-
 export type Expression = string;
 export type Description = string;
 export type RoleArn = string;
@@ -268,19 +211,11 @@ export interface CreateDestinationRequest {
   Tags?: Tag[];
   ClientRequestToken?: string;
 }
-const CreateDestinationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateDestinationRequest>;
 export type DestinationArn = string;
 export interface CreateDestinationResponse {
   Arn?: string;
   Name?: string;
 }
-const CreateDestinationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateDestinationResponse>;
 export type DeviceProfileName = string;
 export type SupportsClassB = boolean;
 export type ClassBTimeout = number;
@@ -297,7 +232,6 @@ export type RxDataRate2 = number;
 export type RxFreq2 = number;
 export type PresetFreq = number;
 export type FactoryPresetFreqsList = number[];
-const FactoryPresetFreqsList = /*@__PURE__*/ __L.at(__c2, 0);
 export type MaxEirp = number;
 export type MaxDutyCycle = number;
 export type RfRegion = string;
@@ -324,12 +258,7 @@ export interface LoRaWANDeviceProfile {
   SupportsJoin?: boolean;
   Supports32BitFCnt?: boolean;
 }
-const LoRaWANDeviceProfile = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LoRaWANDeviceProfile>;
 export interface SidewalkCreateDeviceProfile {}
-const SidewalkCreateDeviceProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SidewalkCreateDeviceProfile>;
 export interface CreateDeviceProfileRequest {
   Name?: string;
   LoRaWAN?: LoRaWANDeviceProfile;
@@ -337,20 +266,12 @@ export interface CreateDeviceProfileRequest {
   ClientRequestToken?: string;
   Sidewalk?: SidewalkCreateDeviceProfile;
 }
-const CreateDeviceProfileRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateDeviceProfileRequest>;
 export type DeviceProfileArn = string;
 export type DeviceProfileId = string;
 export interface CreateDeviceProfileResponse {
   Arn?: string;
   Id?: string;
 }
-const CreateDeviceProfileResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateDeviceProfileResponse>;
 export type FuotaTaskName = string;
 export type SupportedRfRegion =
   | "EU868"
@@ -367,12 +288,9 @@ export type SupportedRfRegion =
   | "KR920"
   | "IN865"
   | (string & {});
-const SupportedRfRegion = S.String;
-
 export interface LoRaWANFuotaTask {
   RfRegion?: SupportedRfRegion;
 }
-const LoRaWANFuotaTask = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<LoRaWANFuotaTask>;
 export type FirmwareUpdateImage = string;
 export type FirmwareUpdateRole = string;
 export type RedundancyPercent = number;
@@ -392,51 +310,31 @@ export interface CreateFuotaTaskRequest {
   FragmentIntervalMS?: number;
   Descriptor?: string;
 }
-const CreateFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateFuotaTaskRequest>;
 export type FuotaTaskArn = string;
 export interface CreateFuotaTaskResponse {
   Arn?: string;
   Id?: string;
 }
-const CreateFuotaTaskResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateFuotaTaskResponse>;
 export type MulticastGroupName = string;
 export type DlClass = "ClassB" | "ClassC" | (string & {});
-const DlClass = S.String;
-
 export type GatewayListMulticast = string[];
-const GatewayListMulticast = /*@__PURE__*/ __L.at(__c3, 0);
 export type TransmissionIntervalMulticast = number;
 export interface ParticipatingGatewaysMulticast {
   GatewayList?: string[];
   TransmissionInterval?: number;
 }
-const ParticipatingGatewaysMulticast = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ParticipatingGatewaysMulticast>;
 export type DlDr = number;
 export type DlFreq = number;
 export interface DefaultSessionParametersMulticast {
   DlDr?: number;
   DlFreq?: number;
 }
-const DefaultSessionParametersMulticast = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DefaultSessionParametersMulticast>;
 export interface LoRaWANMulticast {
   RfRegion?: SupportedRfRegion;
   DlClass?: DlClass;
   ParticipatingGateways?: ParticipatingGatewaysMulticast;
   DefaultSessionParameters?: DefaultSessionParametersMulticast;
 }
-const LoRaWANMulticast = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<LoRaWANMulticast>;
 export interface CreateMulticastGroupRequest {
   Name?: string;
   Description?: string;
@@ -444,40 +342,23 @@ export interface CreateMulticastGroupRequest {
   LoRaWAN: LoRaWANMulticast;
   Tags?: Tag[];
 }
-const CreateMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateMulticastGroupRequest>;
 export type MulticastGroupArn = string;
 export interface CreateMulticastGroupResponse {
   Arn?: string;
   Id?: string;
 }
-const CreateMulticastGroupResponse =
-  CreateDeviceProfileResponse as any as S.Schema<CreateMulticastGroupResponse>;
 export type NetworkAnalyzerConfigurationName = string;
 export type WirelessDeviceFrameInfo = "ENABLED" | "DISABLED" | (string & {});
-const WirelessDeviceFrameInfo = S.String;
-
 export type LogLevel = "INFO" | "ERROR" | "DISABLED" | (string & {});
-const LogLevel = S.String;
-
 export type MulticastFrameInfo = "ENABLED" | "DISABLED" | (string & {});
-const MulticastFrameInfo = S.String;
-
 export interface TraceContent {
   WirelessDeviceFrameInfo?: WirelessDeviceFrameInfo;
   LogLevel?: LogLevel;
   MulticastFrameInfo?: MulticastFrameInfo;
 }
-const TraceContent = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<TraceContent>;
 export type WirelessDeviceList = string[];
-const WirelessDeviceList = GatewayListMulticast as any as S.Schema<WirelessDeviceList>;
 export type WirelessGatewayList = string[];
-const WirelessGatewayList = GatewayListMulticast as any as S.Schema<WirelessGatewayList>;
 export type NetworkAnalyzerMulticastGroupList = string[];
-const NetworkAnalyzerMulticastGroupList =
-  GatewayListMulticast as any as S.Schema<NetworkAnalyzerMulticastGroupList>;
 export interface CreateNetworkAnalyzerConfigurationRequest {
   Name: string;
   TraceContent?: TraceContent;
@@ -488,17 +369,11 @@ export interface CreateNetworkAnalyzerConfigurationRequest {
   ClientRequestToken?: string;
   MulticastGroups?: string[];
 }
-const CreateNetworkAnalyzerConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateNetworkAnalyzerConfigurationRequest>;
 export type NetworkAnalyzerConfigurationArn = string;
 export interface CreateNetworkAnalyzerConfigurationResponse {
   Arn?: string;
   Name?: string;
 }
-const CreateNetworkAnalyzerConfigurationResponse =
-  CreateDestinationResponse as any as S.Schema<CreateNetworkAnalyzerConfigurationResponse>;
 export type ServiceProfileName = string;
 export type AddGwMetadata = boolean;
 export type DrMinBox = number;
@@ -520,31 +395,19 @@ export interface LoRaWANServiceProfile {
   NbTransMin?: number;
   NbTransMax?: number;
 }
-const LoRaWANServiceProfile = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<LoRaWANServiceProfile>;
 export interface CreateServiceProfileRequest {
   Name?: string;
   LoRaWAN?: LoRaWANServiceProfile;
   Tags?: Tag[];
   ClientRequestToken?: string;
 }
-const CreateServiceProfileRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateServiceProfileRequest>;
 export type ServiceProfileArn = string;
 export type ServiceProfileId = string;
 export interface CreateServiceProfileResponse {
   Arn?: string;
   Id?: string;
 }
-const CreateServiceProfileResponse =
-  CreateDeviceProfileResponse as any as S.Schema<CreateServiceProfileResponse>;
 export type WirelessDeviceType = "Sidewalk" | "LoRaWAN" | (string & {});
-const WirelessDeviceType = S.String;
-
 export type WirelessDeviceName = string;
 export type DevEui = string;
 export type AppKey = string;
@@ -555,7 +418,6 @@ export interface OtaaV1_1 {
   NwkKey?: string | redacted.Redacted<string>;
   JoinEui?: string;
 }
-const OtaaV1_1 = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OtaaV1_1>;
 export type AppEui = string;
 export type GenAppKey = string;
 export interface OtaaV1_0_x {
@@ -564,7 +426,6 @@ export interface OtaaV1_0_x {
   JoinEui?: string;
   GenAppKey?: string | redacted.Redacted<string>;
 }
-const OtaaV1_0_x = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<OtaaV1_0_x>;
 export type DevAddr = string;
 export type FNwkSIntKey = string;
 export type SNwkSIntKey = string;
@@ -576,44 +437,35 @@ export interface SessionKeysAbpV1_1 {
   NwkSEncKey?: string | redacted.Redacted<string>;
   AppSKey?: string | redacted.Redacted<string>;
 }
-const SessionKeysAbpV1_1 = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SessionKeysAbpV1_1>;
 export type FCntStart = number;
 export interface AbpV1_1 {
   DevAddr?: string;
   SessionKeys?: SessionKeysAbpV1_1;
   FCntStart?: number;
 }
-const AbpV1_1 = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AbpV1_1>;
 export type NwkSKey = string;
 export interface SessionKeysAbpV1_0_x {
   NwkSKey?: string | redacted.Redacted<string>;
   AppSKey?: string | redacted.Redacted<string>;
 }
-const SessionKeysAbpV1_0_x = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SessionKeysAbpV1_0_x>;
 export interface AbpV1_0_x {
   DevAddr?: string;
   SessionKeys?: SessionKeysAbpV1_0_x;
   FCntStart?: number;
 }
-const AbpV1_0_x = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AbpV1_0_x>;
 export type FPort = number;
 export interface Positioning {
   ClockSync?: number;
   Stream?: number;
   Gnss?: number;
 }
-const Positioning = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Positioning>;
 export type ApplicationConfigType = "SemtechGeolocation" | (string & {});
-const ApplicationConfigType = S.String;
-
 export interface ApplicationConfig {
   FPort?: number;
   Type?: ApplicationConfigType;
   DestinationName?: string;
 }
-const ApplicationConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ApplicationConfig>;
 export type Applications = ApplicationConfig[];
-const Applications = /*@__PURE__*/ __L.at(__c5, 1);
 export interface FPorts {
   Fuota?: number;
   Multicast?: number;
@@ -621,7 +473,6 @@ export interface FPorts {
   Positioning?: Positioning;
   Applications?: ApplicationConfig[];
 }
-const FPorts = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<FPorts>;
 export interface LoRaWANDevice {
   DevEui?: string;
   DeviceProfileId?: string;
@@ -632,24 +483,16 @@ export interface LoRaWANDevice {
   AbpV1_0_x?: AbpV1_0_x;
   FPorts?: FPorts;
 }
-const LoRaWANDevice = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<LoRaWANDevice>;
 export type PositioningConfigStatus = "Enabled" | "Disabled" | (string & {});
-const PositioningConfigStatus = S.String;
-
 export interface SidewalkPositioning {
   DestinationName?: string;
 }
-const SidewalkPositioning = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SidewalkPositioning>;
 export type SidewalkManufacturingSn = string;
 export interface SidewalkCreateWirelessDevice {
   DeviceProfileId?: string;
   Positioning?: SidewalkPositioning;
   SidewalkManufacturingSn?: string;
 }
-const SidewalkCreateWirelessDevice = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<SidewalkCreateWirelessDevice>;
 export interface CreateWirelessDeviceRequest {
   Type: WirelessDeviceType;
   Name?: string;
@@ -661,38 +504,26 @@ export interface CreateWirelessDeviceRequest {
   Positioning?: PositioningConfigStatus;
   Sidewalk?: SidewalkCreateWirelessDevice;
 }
-const CreateWirelessDeviceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateWirelessDeviceRequest>;
 export type WirelessDeviceArn = string;
 export interface CreateWirelessDeviceResponse {
   Arn?: string;
   Id?: string;
 }
-const CreateWirelessDeviceResponse =
-  CreateDeviceProfileResponse as any as S.Schema<CreateWirelessDeviceResponse>;
 export type WirelessGatewayName = string;
 export type GatewayEui = string;
 export type JoinEuiRange = string[];
-const JoinEuiRange = GatewayListMulticast as any as S.Schema<JoinEuiRange>;
 export type JoinEuiFilters = string[][];
-const JoinEuiFilters = /*@__PURE__*/ __L.at(__c5, 7);
 export type NetId = string;
 export type NetIdFilters = string[];
-const NetIdFilters = GatewayListMulticast as any as S.Schema<NetIdFilters>;
 export type SubBand = number;
 export type SubBands = number[];
-const SubBands = FactoryPresetFreqsList as any as S.Schema<SubBands>;
 export type BeaconingDataRate = number;
 export type BeaconingFrequency = number;
 export type BeaconingFrequencies = number[];
-const BeaconingFrequencies = FactoryPresetFreqsList as any as S.Schema<BeaconingFrequencies>;
 export interface Beaconing {
   DataRate?: number;
   Frequencies?: number[];
 }
-const Beaconing = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Beaconing>;
 export type GatewayMaxEirp = number;
 export interface LoRaWANGateway {
   GatewayEui?: string;
@@ -703,7 +534,6 @@ export interface LoRaWANGateway {
   Beaconing?: Beaconing;
   MaxEirp?: number;
 }
-const LoRaWANGateway = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<LoRaWANGateway>;
 export interface CreateWirelessGatewayRequest {
   Name?: string;
   Description?: string;
@@ -711,26 +541,16 @@ export interface CreateWirelessGatewayRequest {
   Tags?: Tag[];
   ClientRequestToken?: string;
 }
-const CreateWirelessGatewayRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateWirelessGatewayRequest>;
 export type WirelessGatewayArn = string;
 export interface CreateWirelessGatewayResponse {
   Arn?: string;
   Id?: string;
 }
-const CreateWirelessGatewayResponse =
-  CreateDeviceProfileResponse as any as S.Schema<CreateWirelessGatewayResponse>;
 export type WirelessGatewayTaskDefinitionId = string;
 export interface CreateWirelessGatewayTaskRequest {
   Id: string;
   WirelessGatewayTaskDefinitionId: string;
 }
-const CreateWirelessGatewayTaskRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateWirelessGatewayTaskRequest>;
 export type WirelessGatewayTaskStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -739,16 +559,10 @@ export type WirelessGatewayTaskStatus =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-const WirelessGatewayTaskStatus = S.String;
-
 export interface CreateWirelessGatewayTaskResponse {
   WirelessGatewayTaskDefinitionId?: string;
   Status?: WirelessGatewayTaskStatus;
 }
-const CreateWirelessGatewayTaskResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateWirelessGatewayTaskResponse>;
 export type AutoCreateTasks = boolean;
 export type WirelessGatewayTaskName = string;
 export type UpdateDataSource = string;
@@ -762,29 +576,17 @@ export interface LoRaWANGatewayVersion {
   Model?: string;
   Station?: string;
 }
-const LoRaWANGatewayVersion = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<LoRaWANGatewayVersion>;
 export interface LoRaWANUpdateGatewayTaskCreate {
   UpdateSignature?: string;
   SigKeyCrc?: number;
   CurrentVersion?: LoRaWANGatewayVersion;
   UpdateVersion?: LoRaWANGatewayVersion;
 }
-const LoRaWANUpdateGatewayTaskCreate = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<LoRaWANUpdateGatewayTaskCreate>;
 export interface UpdateWirelessGatewayTaskCreate {
   UpdateDataSource?: string;
   UpdateDataRole?: string;
   LoRaWAN?: LoRaWANUpdateGatewayTaskCreate;
 }
-const UpdateWirelessGatewayTaskCreate = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<UpdateWirelessGatewayTaskCreate>;
 export interface CreateWirelessGatewayTaskDefinitionRequest {
   AutoCreateTasks: boolean;
   Name?: string;
@@ -792,240 +594,106 @@ export interface CreateWirelessGatewayTaskDefinitionRequest {
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
-const CreateWirelessGatewayTaskDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateWirelessGatewayTaskDefinitionRequest>;
 export type WirelessGatewayTaskDefinitionArn = string;
 export interface CreateWirelessGatewayTaskDefinitionResponse {
   Id?: string;
   Arn?: string;
 }
-const CreateWirelessGatewayTaskDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateWirelessGatewayTaskDefinitionResponse>;
 export interface DeleteDestinationRequest {
   Name: string;
 }
-const DeleteDestinationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteDestinationRequest>;
 export interface DeleteDestinationResponse {}
-const DeleteDestinationResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteDestinationResponse>;
 export interface DeleteDeviceProfileRequest {
   Id: string;
 }
-const DeleteDeviceProfileRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteDeviceProfileRequest>;
 export interface DeleteDeviceProfileResponse {}
-const DeleteDeviceProfileResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteDeviceProfileResponse>;
 export interface DeleteFuotaTaskRequest {
   Id: string;
 }
-const DeleteFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteFuotaTaskRequest>;
 export interface DeleteFuotaTaskResponse {}
-const DeleteFuotaTaskResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteFuotaTaskResponse>;
 export interface DeleteMulticastGroupRequest {
   Id: string;
 }
-const DeleteMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteMulticastGroupRequest>;
 export interface DeleteMulticastGroupResponse {}
-const DeleteMulticastGroupResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteMulticastGroupResponse>;
 export interface DeleteNetworkAnalyzerConfigurationRequest {
   ConfigurationName: string;
 }
-const DeleteNetworkAnalyzerConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteNetworkAnalyzerConfigurationRequest>;
 export interface DeleteNetworkAnalyzerConfigurationResponse {}
-const DeleteNetworkAnalyzerConfigurationResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteNetworkAnalyzerConfigurationResponse>;
 export type MessageId = string;
 export interface DeleteQueuedMessagesRequest {
   Id: string;
   MessageId: string;
   WirelessDeviceType?: WirelessDeviceType;
 }
-const DeleteQueuedMessagesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteQueuedMessagesRequest>;
 export interface DeleteQueuedMessagesResponse {}
-const DeleteQueuedMessagesResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteQueuedMessagesResponse>;
 export interface DeleteServiceProfileRequest {
   Id: string;
 }
-const DeleteServiceProfileRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteServiceProfileRequest>;
 export interface DeleteServiceProfileResponse {}
-const DeleteServiceProfileResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteServiceProfileResponse>;
 export interface DeleteWirelessDeviceRequest {
   Id: string;
 }
-const DeleteWirelessDeviceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteWirelessDeviceRequest>;
 export interface DeleteWirelessDeviceResponse {}
-const DeleteWirelessDeviceResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteWirelessDeviceResponse>;
 export type ImportTaskId = string;
 export interface DeleteWirelessDeviceImportTaskRequest {
   Id: string;
 }
-const DeleteWirelessDeviceImportTaskRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteWirelessDeviceImportTaskRequest>;
 export interface DeleteWirelessDeviceImportTaskResponse {}
-const DeleteWirelessDeviceImportTaskResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteWirelessDeviceImportTaskResponse>;
 export interface DeleteWirelessGatewayRequest {
   Id: string;
 }
-const DeleteWirelessGatewayRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteWirelessGatewayRequest>;
 export interface DeleteWirelessGatewayResponse {}
-const DeleteWirelessGatewayResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<DeleteWirelessGatewayResponse>;
 export interface DeleteWirelessGatewayTaskRequest {
   Id: string;
 }
-const DeleteWirelessGatewayTaskRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteWirelessGatewayTaskRequest>;
 export interface DeleteWirelessGatewayTaskResponse {}
-const DeleteWirelessGatewayTaskResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteWirelessGatewayTaskResponse>;
 export interface DeleteWirelessGatewayTaskDefinitionRequest {
   Id: string;
 }
-const DeleteWirelessGatewayTaskDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionRequest>;
 export interface DeleteWirelessGatewayTaskDefinitionResponse {}
-const DeleteWirelessGatewayTaskDefinitionResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteWirelessGatewayTaskDefinitionResponse>;
 export type Identifier = string;
 export interface DeregisterWirelessDeviceRequest {
   Identifier: string;
   WirelessDeviceType?: WirelessDeviceType;
 }
-const DeregisterWirelessDeviceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeregisterWirelessDeviceRequest>;
 export interface DeregisterWirelessDeviceResponse {}
-const DeregisterWirelessDeviceResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeregisterWirelessDeviceResponse>;
 export type PartnerAccountId = string;
 export type PartnerType = "Sidewalk" | (string & {});
-const PartnerType = S.String;
-
 export interface DisassociateAwsAccountFromPartnerAccountRequest {
   PartnerAccountId: string;
   PartnerType: PartnerType;
 }
-const DisassociateAwsAccountFromPartnerAccountRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountRequest>;
 export interface DisassociateAwsAccountFromPartnerAccountResponse {}
-const DisassociateAwsAccountFromPartnerAccountResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateAwsAccountFromPartnerAccountResponse>;
 export interface DisassociateMulticastGroupFromFuotaTaskRequest {
   Id: string;
   MulticastGroupId: string;
 }
-const DisassociateMulticastGroupFromFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskRequest>;
 export interface DisassociateMulticastGroupFromFuotaTaskResponse {}
-const DisassociateMulticastGroupFromFuotaTaskResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskResponse>;
 export interface DisassociateWirelessDeviceFromFuotaTaskRequest {
   Id: string;
   WirelessDeviceId: string;
 }
-const DisassociateWirelessDeviceFromFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskRequest>;
 export interface DisassociateWirelessDeviceFromFuotaTaskResponse {}
-const DisassociateWirelessDeviceFromFuotaTaskResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskResponse>;
 export interface DisassociateWirelessDeviceFromMulticastGroupRequest {
   Id: string;
   WirelessDeviceId: string;
 }
-const DisassociateWirelessDeviceFromMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupRequest>;
 export interface DisassociateWirelessDeviceFromMulticastGroupResponse {}
-const DisassociateWirelessDeviceFromMulticastGroupResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupResponse>;
 export interface DisassociateWirelessDeviceFromThingRequest {
   Id: string;
 }
-const DisassociateWirelessDeviceFromThingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DisassociateWirelessDeviceFromThingRequest>;
 export interface DisassociateWirelessDeviceFromThingResponse {}
-const DisassociateWirelessDeviceFromThingResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessDeviceFromThingResponse>;
 export interface DisassociateWirelessGatewayFromCertificateRequest {
   Id: string;
 }
-const DisassociateWirelessGatewayFromCertificateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DisassociateWirelessGatewayFromCertificateRequest>;
 export interface DisassociateWirelessGatewayFromCertificateResponse {}
-const DisassociateWirelessGatewayFromCertificateResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessGatewayFromCertificateResponse>;
 export interface DisassociateWirelessGatewayFromThingRequest {
   Id: string;
 }
-const DisassociateWirelessGatewayFromThingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DisassociateWirelessGatewayFromThingRequest>;
 export interface DisassociateWirelessGatewayFromThingResponse {}
-const DisassociateWirelessGatewayFromThingResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessGatewayFromThingResponse>;
 export interface GetDestinationRequest {
   Name: string;
 }
-const GetDestinationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetDestinationRequest>;
 export interface GetDestinationResponse {
   Arn?: string;
   Name?: string;
@@ -1034,17 +702,9 @@ export interface GetDestinationResponse {
   Description?: string;
   RoleArn?: string;
 }
-const GetDestinationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetDestinationResponse>;
 export interface GetDeviceProfileRequest {
   Id: string;
 }
-const GetDeviceProfileRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetDeviceProfileRequest>;
 export type ApplicationServerPublicKey = string | redacted.Redacted<string>;
 export type QualificationStatus = boolean;
 export type DakCertificateId = string;
@@ -1059,21 +719,12 @@ export interface DakCertificateMetadata {
   ApId?: string;
   DeviceTypeId?: string;
 }
-const DakCertificateMetadata = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DakCertificateMetadata>;
 export type DakCertificateMetadataList = DakCertificateMetadata[];
-const DakCertificateMetadataList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface SidewalkGetDeviceProfile {
   ApplicationServerPublicKey?: string | redacted.Redacted<string>;
   QualificationStatus?: boolean;
   DakCertificateMetadata?: DakCertificateMetadata[];
 }
-const SidewalkGetDeviceProfile = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<SidewalkGetDeviceProfile>;
 export interface GetDeviceProfileResponse {
   Arn?: string;
   Name?: string;
@@ -1081,68 +732,32 @@ export interface GetDeviceProfileResponse {
   LoRaWAN?: LoRaWANDeviceProfile;
   Sidewalk?: SidewalkGetDeviceProfile;
 }
-const GetDeviceProfileResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetDeviceProfileResponse>;
 export interface GetEventConfigurationByResourceTypesRequest {}
-const GetEventConfigurationByResourceTypesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetEventConfigurationByResourceTypesRequest>;
 export type EventNotificationTopicStatus = "Enabled" | "Disabled" | (string & {});
-const EventNotificationTopicStatus = S.String;
-
 export interface SidewalkResourceTypeEventConfiguration {
   WirelessDeviceEventTopic?: EventNotificationTopicStatus;
 }
-const SidewalkResourceTypeEventConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SidewalkResourceTypeEventConfiguration>;
 export interface DeviceRegistrationStateResourceTypeEventConfiguration {
   Sidewalk?: SidewalkResourceTypeEventConfiguration;
 }
-const DeviceRegistrationStateResourceTypeEventConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeviceRegistrationStateResourceTypeEventConfiguration>;
 export interface ProximityResourceTypeEventConfiguration {
   Sidewalk?: SidewalkResourceTypeEventConfiguration;
 }
-const ProximityResourceTypeEventConfiguration =
-  DeviceRegistrationStateResourceTypeEventConfiguration as any as S.Schema<ProximityResourceTypeEventConfiguration>;
 export interface LoRaWANJoinResourceTypeEventConfiguration {
   WirelessDeviceEventTopic?: EventNotificationTopicStatus;
 }
-const LoRaWANJoinResourceTypeEventConfiguration =
-  SidewalkResourceTypeEventConfiguration as any as S.Schema<LoRaWANJoinResourceTypeEventConfiguration>;
 export interface JoinResourceTypeEventConfiguration {
   LoRaWAN?: LoRaWANJoinResourceTypeEventConfiguration;
 }
-const JoinResourceTypeEventConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<JoinResourceTypeEventConfiguration>;
 export interface LoRaWANConnectionStatusResourceTypeEventConfiguration {
   WirelessGatewayEventTopic?: EventNotificationTopicStatus;
 }
-const LoRaWANConnectionStatusResourceTypeEventConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<LoRaWANConnectionStatusResourceTypeEventConfiguration>;
 export interface ConnectionStatusResourceTypeEventConfiguration {
   LoRaWAN?: LoRaWANConnectionStatusResourceTypeEventConfiguration;
 }
-const ConnectionStatusResourceTypeEventConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ConnectionStatusResourceTypeEventConfiguration>;
 export interface MessageDeliveryStatusResourceTypeEventConfiguration {
   Sidewalk?: SidewalkResourceTypeEventConfiguration;
 }
-const MessageDeliveryStatusResourceTypeEventConfiguration =
-  DeviceRegistrationStateResourceTypeEventConfiguration as any as S.Schema<MessageDeliveryStatusResourceTypeEventConfiguration>;
 export interface GetEventConfigurationByResourceTypesResponse {
   DeviceRegistrationState?: DeviceRegistrationStateResourceTypeEventConfiguration;
   Proximity?: ProximityResourceTypeEventConfiguration;
@@ -1150,14 +765,9 @@ export interface GetEventConfigurationByResourceTypesResponse {
   ConnectionStatus?: ConnectionStatusResourceTypeEventConfiguration;
   MessageDeliveryStatus?: MessageDeliveryStatusResourceTypeEventConfiguration;
 }
-const GetEventConfigurationByResourceTypesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetEventConfigurationByResourceTypesResponse>;
 export interface GetFuotaTaskRequest {
   Id: string;
 }
-const GetFuotaTaskRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetFuotaTaskRequest>;
 export type FuotaTaskStatus =
   | "Pending"
   | "FuotaSession_Waiting"
@@ -1165,17 +775,11 @@ export type FuotaTaskStatus =
   | "FuotaDone"
   | "Delete_Waiting"
   | (string & {});
-const FuotaTaskStatus = S.String;
-
 export type StartTime = Date;
 export interface LoRaWANFuotaTaskGetInfo {
   RfRegion?: string;
   StartTime?: Date;
 }
-const LoRaWANFuotaTaskGetInfo = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<LoRaWANFuotaTaskGetInfo>;
 export type CreatedAt = Date;
 export interface GetFuotaTaskResponse {
   Arn?: string;
@@ -1192,42 +796,20 @@ export interface GetFuotaTaskResponse {
   FragmentIntervalMS?: number;
   Descriptor?: string;
 }
-const GetFuotaTaskResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetFuotaTaskResponse>;
 export interface GetLogLevelsByResourceTypesRequest {}
-const GetLogLevelsByResourceTypesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetLogLevelsByResourceTypesRequest>;
 export type WirelessGatewayType = "LoRaWAN" | (string & {});
-const WirelessGatewayType = S.String;
-
 export type WirelessGatewayEvent = "CUPS_Request" | "Certificate" | (string & {});
-const WirelessGatewayEvent = S.String;
-
 export interface WirelessGatewayEventLogOption {
   Event: WirelessGatewayEvent;
   LogLevel: LogLevel;
 }
-const WirelessGatewayEventLogOption = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<WirelessGatewayEventLogOption>;
 export type WirelessGatewayEventLogOptionList = WirelessGatewayEventLogOption[];
-const WirelessGatewayEventLogOptionList = /*@__PURE__*/ __L.at(__c12, 1);
 export interface WirelessGatewayLogOption {
   Type: WirelessGatewayType;
   LogLevel: LogLevel;
   Events?: WirelessGatewayEventLogOption[];
 }
-const WirelessGatewayLogOption = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<WirelessGatewayLogOption>;
 export type WirelessGatewayLogOptionList = WirelessGatewayLogOption[];
-const WirelessGatewayLogOptionList = /*@__PURE__*/ __L.at(__c12, 3);
 export type WirelessDeviceEvent =
   | "Join"
   | "Rejoin"
@@ -1239,77 +821,40 @@ export interface WirelessDeviceEventLogOption {
   Event: WirelessDeviceEvent;
   LogLevel: LogLevel;
 }
-const WirelessDeviceEventLogOption =
-  WirelessGatewayEventLogOption as any as S.Schema<WirelessDeviceEventLogOption>;
 export type WirelessDeviceEventLogOptionList = WirelessDeviceEventLogOption[];
-const WirelessDeviceEventLogOptionList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface WirelessDeviceLogOption {
   Type: WirelessDeviceType;
   LogLevel: LogLevel;
   Events?: WirelessDeviceEventLogOption[];
 }
-const WirelessDeviceLogOption = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<WirelessDeviceLogOption>;
 export type WirelessDeviceLogOptionList = WirelessDeviceLogOption[];
-const WirelessDeviceLogOptionList = /*@__PURE__*/ __L.at(__c12, 6);
 export type FuotaTaskType = "LoRaWAN" | (string & {});
-const FuotaTaskType = S.String;
-
 export type FuotaTaskEvent = "Fuota" | (string & {});
-const FuotaTaskEvent = S.String;
-
 export interface FuotaTaskEventLogOption {
   Event: FuotaTaskEvent;
   LogLevel: LogLevel;
 }
-const FuotaTaskEventLogOption = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<FuotaTaskEventLogOption>;
 export type FuotaTaskEventLogOptionList = FuotaTaskEventLogOption[];
-const FuotaTaskEventLogOptionList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface FuotaTaskLogOption {
   Type: FuotaTaskType;
   LogLevel: LogLevel;
   Events?: FuotaTaskEventLogOption[];
 }
-const FuotaTaskLogOption = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<FuotaTaskLogOption>;
 export type FuotaTaskLogOptionList = FuotaTaskLogOption[];
-const FuotaTaskLogOptionList = /*@__PURE__*/ __L.at(__c13, 2);
 export interface GetLogLevelsByResourceTypesResponse {
   DefaultLogLevel?: LogLevel;
   WirelessGatewayLogOptions?: WirelessGatewayLogOption[];
   WirelessDeviceLogOptions?: WirelessDeviceLogOption[];
   FuotaTaskLogOptions?: FuotaTaskLogOption[];
 }
-const GetLogLevelsByResourceTypesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetLogLevelsByResourceTypesResponse>;
 export interface GetMetricConfigurationRequest {}
-const GetMetricConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetMetricConfigurationRequest>;
 export type SummaryMetricConfigurationStatus = "Enabled" | "Disabled" | (string & {});
-const SummaryMetricConfigurationStatus = S.String;
-
 export interface SummaryMetricConfiguration {
   Status?: SummaryMetricConfigurationStatus;
 }
-const SummaryMetricConfiguration = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<SummaryMetricConfiguration>;
 export interface GetMetricConfigurationResponse {
   SummaryMetric?: SummaryMetricConfiguration;
 }
-const GetMetricConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetMetricConfigurationResponse>;
 export type MetricQueryId = string;
 export type MetricName =
   | "DeviceRSSI"
@@ -1345,22 +890,14 @@ export type MetricName =
   | "AwsAccountActiveDeviceCount"
   | "AwsAccountActiveGatewayCount"
   | (string & {});
-const MetricName = S.String;
-
 export type DimensionName = "DeviceId" | "GatewayId" | (string & {});
-const DimensionName = S.String;
-
 export type DimensionValue = string;
 export interface Dimension {
   name?: DimensionName;
   value?: string;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<Dimension>;
 export type Dimensions = Dimension[];
-const Dimensions = /*@__PURE__*/ __L.at(__c14, 0);
 export type AggregationPeriod = "OneHour" | "OneDay" | "OneWeek" | (string & {});
-const AggregationPeriod = S.String;
-
 export type MetricQueryStartTimestamp = Date;
 export type MetricQueryEndTimestamp = Date;
 export interface SummaryMetricQuery {
@@ -1371,20 +908,14 @@ export interface SummaryMetricQuery {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
 }
-const SummaryMetricQuery = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<SummaryMetricQuery>;
 export type SummaryMetricQueries = SummaryMetricQuery[];
-const SummaryMetricQueries = /*@__PURE__*/ __L.at(__c14, 2);
 export interface GetMetricsRequest {
   SummaryMetricQueries?: SummaryMetricQuery[];
 }
-const GetMetricsRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetMetricsRequest>;
 export type MetricQueryStatus = "Succeeded" | "Failed" | (string & {});
-const MetricQueryStatus = S.String;
-
 export type MetricQueryError = string;
 export type MetricQueryTimestamp = Date;
 export type MetricQueryTimestamps = Date[];
-const MetricQueryTimestamps = /*@__PURE__*/ __L.at(__c14, 4);
 export type Min = number;
 export type Max = number;
 export type Sum = number;
@@ -1399,9 +930,7 @@ export interface MetricQueryValue {
   Std?: number;
   P90?: number;
 }
-const MetricQueryValue = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<MetricQueryValue>;
 export type MetricQueryValues = MetricQueryValue[];
-const MetricQueryValues = /*@__PURE__*/ __L.at(__c14, 6);
 export type MetricUnit = string;
 export interface SummaryMetricQueryResult {
   QueryId?: string;
@@ -1416,23 +945,13 @@ export interface SummaryMetricQueryResult {
   Values?: MetricQueryValue[];
   Unit?: string;
 }
-const SummaryMetricQueryResult = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<SummaryMetricQueryResult>;
 export type SummaryMetricQueryResults = SummaryMetricQueryResult[];
-const SummaryMetricQueryResults = /*@__PURE__*/ __L.at(__c15, 0);
 export interface GetMetricsResponse {
   SummaryMetricQueryResults?: SummaryMetricQueryResult[];
 }
-const GetMetricsResponse = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<GetMetricsResponse>;
 export interface GetMulticastGroupRequest {
   Id: string;
 }
-const GetMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetMulticastGroupRequest>;
 export type MulticastGroupStatus = string;
 export type NumberOfDevicesRequested = number;
 export type NumberOfDevicesInGroup = number;
@@ -1444,7 +963,6 @@ export interface LoRaWANMulticastGet {
   ParticipatingGateways?: ParticipatingGatewaysMulticast;
   DefaultSessionParameters?: DefaultSessionParametersMulticast;
 }
-const LoRaWANMulticastGet = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<LoRaWANMulticastGet>;
 export interface GetMulticastGroupResponse {
   Arn?: string;
   Id?: string;
@@ -1454,17 +972,9 @@ export interface GetMulticastGroupResponse {
   LoRaWAN?: LoRaWANMulticastGet;
   CreatedAt?: Date;
 }
-const GetMulticastGroupResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetMulticastGroupResponse>;
 export interface GetMulticastGroupSessionRequest {
   Id: string;
 }
-const GetMulticastGroupSessionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetMulticastGroupSessionRequest>;
 export type SessionStartTimeTimestamp = Date;
 export type SessionTimeout = number;
 export interface LoRaWANMulticastSession {
@@ -1474,24 +984,12 @@ export interface LoRaWANMulticastSession {
   SessionTimeout?: number;
   PingSlotPeriod?: number;
 }
-const LoRaWANMulticastSession = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<LoRaWANMulticastSession>;
 export interface GetMulticastGroupSessionResponse {
   LoRaWAN?: LoRaWANMulticastSession;
 }
-const GetMulticastGroupSessionResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetMulticastGroupSessionResponse>;
 export interface GetNetworkAnalyzerConfigurationRequest {
   ConfigurationName: string;
 }
-const GetNetworkAnalyzerConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetNetworkAnalyzerConfigurationRequest>;
 export interface GetNetworkAnalyzerConfigurationResponse {
   TraceContent?: TraceContent;
   WirelessDevices?: string[];
@@ -1501,62 +999,37 @@ export interface GetNetworkAnalyzerConfigurationResponse {
   Name?: string;
   MulticastGroups?: string[];
 }
-const GetNetworkAnalyzerConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetNetworkAnalyzerConfigurationResponse>;
 export interface GetPartnerAccountRequest {
   PartnerAccountId: string;
   PartnerType: PartnerType;
 }
-const GetPartnerAccountRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetPartnerAccountRequest>;
 export type Fingerprint = string | redacted.Redacted<string>;
 export interface SidewalkAccountInfoWithFingerprint {
   AmazonId?: string;
   Fingerprint?: string | redacted.Redacted<string>;
   Arn?: string;
 }
-const SidewalkAccountInfoWithFingerprint = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<SidewalkAccountInfoWithFingerprint>;
 export type AccountLinked = boolean;
 export interface GetPartnerAccountResponse {
   Sidewalk?: SidewalkAccountInfoWithFingerprint;
   AccountLinked?: boolean;
 }
-const GetPartnerAccountResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetPartnerAccountResponse>;
 export type PositionResourceIdentifier = string;
 export type PositionResourceType = "WirelessDevice" | "WirelessGateway" | (string & {});
-const PositionResourceType = S.String;
-
 export interface GetPositionRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
 }
-const GetPositionRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<GetPositionRequest>;
 export type PositionCoordinateValue = number;
 export type PositionCoordinate = number[];
-const PositionCoordinate = FactoryPresetFreqsList as any as S.Schema<PositionCoordinate>;
 export type HorizontalAccuracy = number;
 export type VerticalAccuracy = number;
 export interface Accuracy {
   HorizontalAccuracy?: number;
   VerticalAccuracy?: number;
 }
-const Accuracy = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<Accuracy>;
 export type PositionSolverType = "GNSS" | (string & {});
-const PositionSolverType = S.String;
-
 export type PositionSolverProvider = "Semtech" | (string & {});
-const PositionSolverProvider = S.String;
-
 export type PositionSolverVersion = string;
 export type ISODateTimeString = string;
 export interface GetPositionResponse {
@@ -1567,52 +1040,32 @@ export interface GetPositionResponse {
   SolverVersion?: string;
   Timestamp?: string;
 }
-const GetPositionResponse = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetPositionResponse>;
 export interface GetPositionConfigurationRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
 }
-const GetPositionConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetPositionConfigurationRequest>;
 export type PositionConfigurationStatus = "Enabled" | "Disabled" | (string & {});
-const PositionConfigurationStatus = S.String;
-
 export type PositionConfigurationFec = "ROSE" | "NONE" | (string & {});
-const PositionConfigurationFec = S.String;
-
 export interface SemtechGnssDetail {
   Provider?: PositionSolverProvider;
   Type?: PositionSolverType;
   Status?: PositionConfigurationStatus;
   Fec?: PositionConfigurationFec;
 }
-const SemtechGnssDetail = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<SemtechGnssDetail>;
 export interface PositionSolverDetails {
   SemtechGnss?: SemtechGnssDetail;
 }
-const PositionSolverDetails = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<PositionSolverDetails>;
 export interface GetPositionConfigurationResponse {
   Solvers?: PositionSolverDetails;
   Destination?: string;
 }
-const GetPositionConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetPositionConfigurationResponse>;
 export type MacAddress = string;
 export type RSS = number;
 export interface WiFiAccessPoint {
   MacAddress: string;
   Rss: number;
 }
-const WiFiAccessPoint = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<WiFiAccessPoint>;
 export type WiFiAccessPoints = WiFiAccessPoint[];
-const WiFiAccessPoints = /*@__PURE__*/ __L.at(__c17, 5);
 export type MCC = number;
 export type MNC = number;
 export type LAC = number;
@@ -1623,23 +1076,19 @@ export interface GsmLocalId {
   Bsic: number;
   Bcch: number;
 }
-const GsmLocalId = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<GsmLocalId>;
 export type GsmTimingAdvance = number;
 export type RxLevel = number;
 export interface GlobalIdentity {
   Lac: number;
   GeranCid: number;
 }
-const GlobalIdentity = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GlobalIdentity>;
 export interface GsmNmrObj {
   Bsic: number;
   Bcch: number;
   RxLevel?: number;
   GlobalIdentity?: GlobalIdentity;
 }
-const GsmNmrObj = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<GsmNmrObj>;
 export type GsmNmrList = GsmNmrObj[];
-const GsmNmrList = /*@__PURE__*/ __L.at(__c18, 1);
 export interface GsmObj {
   Mcc: number;
   Mnc: number;
@@ -1650,9 +1099,7 @@ export interface GsmObj {
   RxLevel?: number;
   GsmNmr?: GsmNmrObj[];
 }
-const GsmObj = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<GsmObj>;
 export type GsmList = GsmObj[];
-const GsmList = /*@__PURE__*/ __L.at(__c18, 3);
 export type UtranCid = number;
 export type UARFCNDL = number;
 export type PSC = number;
@@ -1660,7 +1107,6 @@ export interface WcdmaLocalId {
   Uarfcndl: number;
   Psc: number;
 }
-const WcdmaLocalId = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<WcdmaLocalId>;
 export type RSCP = number;
 export type PathLoss = number;
 export interface WcdmaNmrObj {
@@ -1670,9 +1116,7 @@ export interface WcdmaNmrObj {
   Rscp?: number;
   PathLoss?: number;
 }
-const WcdmaNmrObj = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<WcdmaNmrObj>;
 export type WcdmaNmrList = WcdmaNmrObj[];
-const WcdmaNmrList = /*@__PURE__*/ __L.at(__c18, 6);
 export interface WcdmaObj {
   Mcc: number;
   Mnc: number;
@@ -1683,16 +1127,13 @@ export interface WcdmaObj {
   PathLoss?: number;
   WcdmaNmr?: WcdmaNmrObj[];
 }
-const WcdmaObj = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<WcdmaObj>;
 export type WcdmaList = WcdmaObj[];
-const WcdmaList = /*@__PURE__*/ __L.at(__c19, 0);
 export type UARFCN = number;
 export type CellParams = number;
 export interface TdscdmaLocalId {
   Uarfcn: number;
   CellParams: number;
 }
-const TdscdmaLocalId = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<TdscdmaLocalId>;
 export type TdscdmaTimingAdvance = number;
 export interface TdscdmaNmrObj {
   Uarfcn: number;
@@ -1701,9 +1142,7 @@ export interface TdscdmaNmrObj {
   Rscp?: number;
   PathLoss?: number;
 }
-const TdscdmaNmrObj = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<TdscdmaNmrObj>;
 export type TdscdmaNmrList = TdscdmaNmrObj[];
-const TdscdmaNmrList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface TdscdmaObj {
   Mcc: number;
   Mnc: number;
@@ -1715,9 +1154,7 @@ export interface TdscdmaObj {
   PathLoss?: number;
   TdscdmaNmr?: TdscdmaNmrObj[];
 }
-const TdscdmaObj = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<TdscdmaObj>;
 export type TdscdmaList = TdscdmaObj[];
-const TdscdmaList = /*@__PURE__*/ __L.at(__c19, 5);
 export type EutranCid = number;
 export type TAC = number;
 export type PCI = number;
@@ -1726,7 +1163,6 @@ export interface LteLocalId {
   Pci: number;
   Earfcn: number;
 }
-const LteLocalId = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<LteLocalId>;
 export type LteTimingAdvance = number;
 export type RSRP = number;
 export type RSRQ = number;
@@ -1738,9 +1174,7 @@ export interface LteNmrObj {
   Rsrp?: number;
   Rsrq?: number;
 }
-const LteNmrObj = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<LteNmrObj>;
 export type LteNmrList = LteNmrObj[];
-const LteNmrList = /*@__PURE__*/ __L.at(__c20, 0);
 export interface LteObj {
   Mcc: number;
   Mnc: number;
@@ -1753,9 +1187,7 @@ export interface LteObj {
   NrCapable?: boolean;
   LteNmr?: LteNmrObj[];
 }
-const LteObj = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<LteObj>;
 export type LteList = LteObj[];
-const LteList = /*@__PURE__*/ __L.at(__c20, 2);
 export type SystemId = number;
 export type NetworkId = number;
 export type BaseStationId = number;
@@ -1766,7 +1198,6 @@ export interface CdmaLocalId {
   PnOffset: number;
   CdmaChannel: number;
 }
-const CdmaLocalId = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<CdmaLocalId>;
 export type PilotPower = number;
 export type BaseLat = number;
 export type BaseLng = number;
@@ -1776,9 +1207,7 @@ export interface CdmaNmrObj {
   PilotPower?: number;
   BaseStationId?: number;
 }
-const CdmaNmrObj = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<CdmaNmrObj>;
 export type CdmaNmrList = CdmaNmrObj[];
-const CdmaNmrList = /*@__PURE__*/ __L.at(__c20, 5);
 export interface CdmaObj {
   SystemId: number;
   NetworkId: number;
@@ -1790,9 +1219,7 @@ export interface CdmaObj {
   BaseLng?: number;
   CdmaNmr?: CdmaNmrObj[];
 }
-const CdmaObj = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<CdmaObj>;
 export type CdmaList = CdmaObj[];
-const CdmaList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface CellTowers {
   Gsm?: GsmObj[];
   Wcdma?: WcdmaObj[];
@@ -1800,18 +1227,15 @@ export interface CellTowers {
   Lte?: LteObj[];
   Cdma?: CdmaObj[];
 }
-const CellTowers = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<CellTowers>;
 export type IPAddress = string;
 export interface Ip {
   IpAddress: string;
 }
-const Ip = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Ip>;
 export type GnssNav = string;
 export type GPST = number;
 export type CaptureTimeAccuracy = number;
 export type Coordinate = number;
 export type AssistPosition = number[];
-const AssistPosition = FactoryPresetFreqsList as any as S.Schema<AssistPosition>;
 export type Use2DSolver = boolean;
 export interface Gnss {
   Payload: string;
@@ -1821,14 +1245,11 @@ export interface Gnss {
   AssistAltitude?: number;
   Use2DSolver?: boolean;
 }
-const Gnss = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<Gnss>;
 export interface GnssCapture {
   Payload: string;
   CaptureTime?: number;
 }
-const GnssCapture = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<GnssCapture>;
 export type GnssCaptures = GnssCapture[];
-const GnssCaptures = /*@__PURE__*/ __L.at(__c21, 4);
 export interface GnssMultiFrame {
   Captures: GnssCapture[];
   CaptureTimeAccuracy?: number;
@@ -1836,20 +1257,14 @@ export interface GnssMultiFrame {
   AssistAltitude?: number;
   Use2DSolver?: boolean;
 }
-const GnssMultiFrame = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<GnssMultiFrame>;
 export type CreationDate = Date;
 export type ConfidencePercent = number;
 export interface WiFiCellular {
   ConfidencePercent?: number;
 }
-const WiFiCellular = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<WiFiCellular>;
 export interface AdvancedConfiguration {
   WiFiCellular?: WiFiCellular;
 }
-const AdvancedConfiguration = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<AdvancedConfiguration>;
 export interface GetPositionEstimateRequest {
   WiFiAccessPoints?: WiFiAccessPoint[];
   CellTowers?: CellTowers;
@@ -1859,17 +1274,9 @@ export interface GetPositionEstimateRequest {
   Timestamp?: Date;
   AdvancedConfiguration?: AdvancedConfiguration;
 }
-const GetPositionEstimateRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetPositionEstimateRequest>;
 export interface GetPositionEstimateResponse {
   GeoJsonPayload?: T.StreamingOutputBody;
 }
-const GetPositionEstimateResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetPositionEstimateResponse>;
 export type IdentifierType =
   | "PartnerAccountId"
   | "DevEui"
@@ -1877,77 +1284,41 @@ export type IdentifierType =
   | "WirelessDeviceId"
   | "WirelessGatewayId"
   | (string & {});
-const IdentifierType = S.String;
-
 export type EventNotificationPartnerType = "Sidewalk" | (string & {});
-const EventNotificationPartnerType = S.String;
-
 export interface GetResourceEventConfigurationRequest {
   Identifier: string;
   IdentifierType: IdentifierType;
   PartnerType?: EventNotificationPartnerType;
 }
-const GetResourceEventConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetResourceEventConfigurationRequest>;
 export interface SidewalkEventNotificationConfigurations {
   AmazonIdEventTopic?: EventNotificationTopicStatus;
 }
-const SidewalkEventNotificationConfigurations = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<SidewalkEventNotificationConfigurations>;
 export interface DeviceRegistrationStateEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
   WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
 }
-const DeviceRegistrationStateEventConfiguration = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<DeviceRegistrationStateEventConfiguration>;
 export interface ProximityEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
   WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
 }
-const ProximityEventConfiguration =
-  DeviceRegistrationStateEventConfiguration as any as S.Schema<ProximityEventConfiguration>;
 export interface LoRaWANJoinEventNotificationConfigurations {
   DevEuiEventTopic?: EventNotificationTopicStatus;
 }
-const LoRaWANJoinEventNotificationConfigurations = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<LoRaWANJoinEventNotificationConfigurations>;
 export interface JoinEventConfiguration {
   LoRaWAN?: LoRaWANJoinEventNotificationConfigurations;
   WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
 }
-const JoinEventConfiguration = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<JoinEventConfiguration>;
 export interface LoRaWANConnectionStatusEventNotificationConfigurations {
   GatewayEuiEventTopic?: EventNotificationTopicStatus;
 }
-const LoRaWANConnectionStatusEventNotificationConfigurations = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<LoRaWANConnectionStatusEventNotificationConfigurations>;
 export interface ConnectionStatusEventConfiguration {
   LoRaWAN?: LoRaWANConnectionStatusEventNotificationConfigurations;
   WirelessGatewayIdEventTopic?: EventNotificationTopicStatus;
 }
-const ConnectionStatusEventConfiguration = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ConnectionStatusEventConfiguration>;
 export interface MessageDeliveryStatusEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
   WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
 }
-const MessageDeliveryStatusEventConfiguration =
-  DeviceRegistrationStateEventConfiguration as any as S.Schema<MessageDeliveryStatusEventConfiguration>;
 export interface GetResourceEventConfigurationResponse {
   DeviceRegistrationState?: DeviceRegistrationStateEventConfiguration;
   Proximity?: ProximityEventConfiguration;
@@ -1955,50 +1326,26 @@ export interface GetResourceEventConfigurationResponse {
   ConnectionStatus?: ConnectionStatusEventConfiguration;
   MessageDeliveryStatus?: MessageDeliveryStatusEventConfiguration;
 }
-const GetResourceEventConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GetResourceEventConfigurationResponse>;
 export type ResourceIdentifier = string;
 export type ResourceType = string;
 export interface GetResourceLogLevelRequest {
   ResourceIdentifier: string;
   ResourceType: string;
 }
-const GetResourceLogLevelRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetResourceLogLevelRequest>;
 export interface GetResourceLogLevelResponse {
   LogLevel?: LogLevel;
 }
-const GetResourceLogLevelResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetResourceLogLevelResponse>;
 export interface GetResourcePositionRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
 }
-const GetResourcePositionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetResourcePositionRequest>;
 export interface GetResourcePositionResponse {
   GeoJsonPayload?: T.StreamingOutputBody;
 }
-const GetResourcePositionResponse =
-  GetPositionEstimateResponse as any as S.Schema<GetResourcePositionResponse>;
 export type WirelessGatewayServiceType = "CUPS" | "LNS" | (string & {});
-const WirelessGatewayServiceType = S.String;
-
 export interface GetServiceEndpointRequest {
   ServiceType?: WirelessGatewayServiceType;
 }
-const GetServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetServiceEndpointRequest>;
 export type EndPoint = string;
 export type CertificatePEM = string;
 export interface GetServiceEndpointResponse {
@@ -2006,17 +1353,9 @@ export interface GetServiceEndpointResponse {
   ServiceEndpoint?: string;
   ServerTrust?: string;
 }
-const GetServiceEndpointResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetServiceEndpointResponse>;
 export interface GetServiceProfileRequest {
   Id: string;
 }
-const GetServiceProfileRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GetServiceProfileRequest>;
 export type UlRate = number;
 export type UlBucketSize = number;
 export type UlRatePolicy = string;
@@ -2058,59 +1397,38 @@ export interface LoRaWANGetServiceProfileInfo {
   NbTransMin?: number;
   NbTransMax?: number;
 }
-const LoRaWANGetServiceProfileInfo = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<LoRaWANGetServiceProfileInfo>;
 export interface GetServiceProfileResponse {
   Arn?: string;
   Name?: string;
   Id?: string;
   LoRaWAN?: LoRaWANGetServiceProfileInfo;
 }
-const GetServiceProfileResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GetServiceProfileResponse>;
 export type WirelessDeviceIdType =
   | "WirelessDeviceId"
   | "DevEui"
   | "ThingName"
   | "SidewalkManufacturingSn"
   | (string & {});
-const WirelessDeviceIdType = S.String;
-
 export interface GetWirelessDeviceRequest {
   Identifier: string;
   IdentifierType: WirelessDeviceIdType;
 }
-const GetWirelessDeviceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetWirelessDeviceRequest>;
 export type ThingName = string;
 export type SidewalkId = string;
 export type SigningAlg = "Ed25519" | "P256r1" | (string & {});
-const SigningAlg = S.String;
-
 export type CertificateValue = string;
 export interface CertificateList {
   SigningAlg: SigningAlg;
   Value: string;
 }
-const CertificateList = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<CertificateList>;
 export type DeviceCertificateList = CertificateList[];
-const DeviceCertificateList = /*@__PURE__*/ __L.at(__c24, 4);
 export type PrivateKeysList = CertificateList[];
-const PrivateKeysList = DeviceCertificateList as any as S.Schema<PrivateKeysList>;
 export type WirelessDeviceSidewalkStatus =
   | "PROVISIONED"
   | "REGISTERED"
   | "ACTIVATED"
   | "UNKNOWN"
   | (string & {});
-const WirelessDeviceSidewalkStatus = S.String;
-
 export interface SidewalkDevice {
   AmazonId?: string;
   SidewalkId?: string;
@@ -2122,7 +1440,6 @@ export interface SidewalkDevice {
   Status?: WirelessDeviceSidewalkStatus;
   Positioning?: SidewalkPositioning;
 }
-const SidewalkDevice = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<SidewalkDevice>;
 export interface GetWirelessDeviceResponse {
   Type?: WirelessDeviceType;
   Name?: string;
@@ -2136,31 +1453,18 @@ export interface GetWirelessDeviceResponse {
   Sidewalk?: SidewalkDevice;
   Positioning?: PositioningConfigStatus;
 }
-const GetWirelessDeviceResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GetWirelessDeviceResponse>;
 export interface GetWirelessDeviceImportTaskRequest {
   Id: string;
 }
-const GetWirelessDeviceImportTaskRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<GetWirelessDeviceImportTaskRequest>;
 export type ImportTaskArn = string;
 export type DeviceCreationFile = string;
 export type DeviceCreationFileList = string[];
-const DeviceCreationFileList = GatewayListMulticast as any as S.Schema<DeviceCreationFileList>;
 export type Role = string;
 export interface SidewalkGetStartImportInfo {
   DeviceCreationFileList?: string[];
   Role?: string;
   Positioning?: SidewalkPositioning;
 }
-const SidewalkGetStartImportInfo = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<SidewalkGetStartImportInfo>;
 export type CreationTime = Date;
 export type ImportTaskStatus =
   | "INITIALIZING"
@@ -2170,8 +1474,6 @@ export type ImportTaskStatus =
   | "FAILED"
   | "DELETING"
   | (string & {});
-const ImportTaskStatus = S.String;
-
 export type StatusReason = string;
 export type ImportedWirelessDeviceCount = number;
 export interface GetWirelessDeviceImportTaskResponse {
@@ -2188,28 +1490,15 @@ export interface GetWirelessDeviceImportTaskResponse {
   OnboardedImportedDeviceCount?: number;
   FailedImportedDeviceCount?: number;
 }
-const GetWirelessDeviceImportTaskResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GetWirelessDeviceImportTaskResponse>;
 export interface GetWirelessDeviceStatisticsRequest {
   WirelessDeviceId: string;
 }
-const GetWirelessDeviceStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GetWirelessDeviceStatisticsRequest>;
 export interface LoRaWANGatewayMetadata {
   GatewayEui?: string;
   Snr?: number;
   Rssi?: number;
 }
-const LoRaWANGatewayMetadata = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<LoRaWANGatewayMetadata>;
 export type LoRaWANGatewayMetadataList = LoRaWANGatewayMetadata[];
-const LoRaWANGatewayMetadataList = /*@__PURE__*/ __L.at(__c25, 4);
 export type ProviderNetId = string;
 export type Id = string;
 export type DlAllowed = boolean;
@@ -2221,12 +1510,7 @@ export interface LoRaWANPublicGatewayMetadata {
   RfRegion?: string;
   DlAllowed?: boolean;
 }
-const LoRaWANPublicGatewayMetadata = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<LoRaWANPublicGatewayMetadata>;
 export type LoRaWANPublicGatewayMetadataList = LoRaWANPublicGatewayMetadata[];
-const LoRaWANPublicGatewayMetadataList = /*@__PURE__*/ __L.at(__c25, 6);
 export interface LoRaWANDeviceMetadata {
   DevEui?: string;
   FPort?: number;
@@ -2236,59 +1520,35 @@ export interface LoRaWANDeviceMetadata {
   Gateways?: LoRaWANGatewayMetadata[];
   PublicGateways?: LoRaWANPublicGatewayMetadata[];
 }
-const LoRaWANDeviceMetadata = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<LoRaWANDeviceMetadata>;
 export type BatteryLevel = "normal" | "low" | "critical" | (string & {});
-const BatteryLevel = S.String;
-
 export type Event = "discovered" | "lost" | "ack" | "nack" | "passthrough" | (string & {});
-const Event = S.String;
-
 export type DeviceState =
   | "Provisioned"
   | "RegisteredNotSeen"
   | "RegisteredReachable"
   | "RegisteredUnreachable"
   | (string & {});
-const DeviceState = S.String;
-
 export interface SidewalkDeviceMetadata {
   Rssi?: number;
   BatteryLevel?: BatteryLevel;
   Event?: Event;
   DeviceState?: DeviceState;
 }
-const SidewalkDeviceMetadata = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<SidewalkDeviceMetadata>;
 export interface GetWirelessDeviceStatisticsResponse {
   WirelessDeviceId?: string;
   LastUplinkReceivedAt?: string;
   LoRaWAN?: LoRaWANDeviceMetadata;
   Sidewalk?: SidewalkDeviceMetadata;
 }
-const GetWirelessDeviceStatisticsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<GetWirelessDeviceStatisticsResponse>;
 export type WirelessGatewayIdType =
   | "GatewayEui"
   | "WirelessGatewayId"
   | "ThingName"
   | (string & {});
-const WirelessGatewayIdType = S.String;
-
 export interface GetWirelessGatewayRequest {
   Identifier: string;
   IdentifierType: WirelessGatewayIdType;
 }
-const GetWirelessGatewayRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetWirelessGatewayRequest>;
 export interface GetWirelessGatewayResponse {
   Name?: string;
   Id?: string;
@@ -2298,72 +1558,34 @@ export interface GetWirelessGatewayResponse {
   ThingName?: string;
   ThingArn?: string;
 }
-const GetWirelessGatewayResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GetWirelessGatewayResponse>;
 export interface GetWirelessGatewayCertificateRequest {
   Id: string;
 }
-const GetWirelessGatewayCertificateRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<GetWirelessGatewayCertificateRequest>;
 export interface GetWirelessGatewayCertificateResponse {
   IotCertificateId?: string;
   LoRaWANNetworkServerCertificateId?: string;
 }
-const GetWirelessGatewayCertificateResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GetWirelessGatewayCertificateResponse>;
 export interface GetWirelessGatewayFirmwareInformationRequest {
   Id: string;
 }
-const GetWirelessGatewayFirmwareInformationRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<GetWirelessGatewayFirmwareInformationRequest>;
 export interface LoRaWANGatewayCurrentVersion {
   CurrentVersion?: LoRaWANGatewayVersion;
 }
-const LoRaWANGatewayCurrentVersion = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<LoRaWANGatewayCurrentVersion>;
 export interface GetWirelessGatewayFirmwareInformationResponse {
   LoRaWAN?: LoRaWANGatewayCurrentVersion;
 }
-const GetWirelessGatewayFirmwareInformationResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<GetWirelessGatewayFirmwareInformationResponse>;
 export interface GetWirelessGatewayStatisticsRequest {
   WirelessGatewayId: string;
 }
-const GetWirelessGatewayStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GetWirelessGatewayStatisticsRequest>;
 export type ConnectionStatus = "Connected" | "Disconnected" | (string & {});
-const ConnectionStatus = S.String;
-
 export interface GetWirelessGatewayStatisticsResponse {
   WirelessGatewayId?: string;
   LastUplinkReceivedAt?: string;
   ConnectionStatus?: ConnectionStatus;
 }
-const GetWirelessGatewayStatisticsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GetWirelessGatewayStatisticsResponse>;
 export interface GetWirelessGatewayTaskRequest {
   Id: string;
 }
-const GetWirelessGatewayTaskRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<GetWirelessGatewayTaskRequest>;
 export interface GetWirelessGatewayTaskResponse {
   WirelessGatewayId?: string;
   WirelessGatewayTaskDefinitionId?: string;
@@ -2371,37 +1593,21 @@ export interface GetWirelessGatewayTaskResponse {
   TaskCreatedAt?: string;
   Status?: WirelessGatewayTaskStatus;
 }
-const GetWirelessGatewayTaskResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<GetWirelessGatewayTaskResponse>;
 export interface GetWirelessGatewayTaskDefinitionRequest {
   Id: string;
 }
-const GetWirelessGatewayTaskDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<GetWirelessGatewayTaskDefinitionRequest>;
 export interface GetWirelessGatewayTaskDefinitionResponse {
   AutoCreateTasks?: boolean;
   Name?: string;
   Update?: UpdateWirelessGatewayTaskCreate;
   Arn?: string;
 }
-const GetWirelessGatewayTaskDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<GetWirelessGatewayTaskDefinitionResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListDestinationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListDestinationsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListDestinationsRequest>;
 export interface Destinations {
   Arn?: string;
   Name?: string;
@@ -2410,65 +1616,37 @@ export interface Destinations {
   Description?: string;
   RoleArn?: string;
 }
-const Destinations = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<Destinations>;
 export type DestinationList = Destinations[];
-const DestinationList = /*@__PURE__*/ __L.at(__c28, 1);
 export interface ListDestinationsResponse {
   NextToken?: string;
   DestinationList?: Destinations[];
 }
-const ListDestinationsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ListDestinationsResponse>;
 export type DeviceProfileType = "Sidewalk" | "LoRaWAN" | (string & {});
-const DeviceProfileType = S.String;
-
 export interface ListDeviceProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
   DeviceProfileType?: DeviceProfileType;
 }
-const ListDeviceProfilesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ListDeviceProfilesRequest>;
 export interface DeviceProfile {
   Arn?: string;
   Name?: string;
   Id?: string;
 }
-const DeviceProfile = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<DeviceProfile>;
 export type DeviceProfileList = DeviceProfile[];
-const DeviceProfileList = /*@__PURE__*/ __L.at(__c28, 5);
 export interface ListDeviceProfilesResponse {
   NextToken?: string;
   DeviceProfileList?: DeviceProfile[];
 }
-const ListDeviceProfilesResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ListDeviceProfilesResponse>;
 export type OnboardStatus = "INITIALIZED" | "PENDING" | "ONBOARDED" | "FAILED" | (string & {});
-const OnboardStatus = S.String;
-
 export interface ListDevicesForWirelessDeviceImportTaskRequest {
   Id: string;
   MaxResults?: number;
   NextToken?: string;
   Status?: OnboardStatus;
 }
-const ListDevicesForWirelessDeviceImportTaskRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskRequest>;
 export interface SidewalkListDevicesForImportInfo {
   Positioning?: SidewalkPositioning;
 }
-const SidewalkListDevicesForImportInfo = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<SidewalkListDevicesForImportInfo>;
 export type OnboardStatusReason = string;
 export type LastUpdateTime = Date;
 export interface ImportedSidewalkDevice {
@@ -2477,19 +1655,10 @@ export interface ImportedSidewalkDevice {
   OnboardingStatusReason?: string;
   LastUpdateTime?: Date;
 }
-const ImportedSidewalkDevice = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<ImportedSidewalkDevice>;
 export interface ImportedWirelessDevice {
   Sidewalk?: ImportedSidewalkDevice;
 }
-const ImportedWirelessDevice = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ImportedWirelessDevice>;
 export type ImportedWirelessDeviceList = ImportedWirelessDevice[];
-const ImportedWirelessDeviceList = /*@__PURE__*/ __L.at(__c29, 3);
 export interface ListDevicesForWirelessDeviceImportTaskResponse {
   NextToken?: string;
   DestinationName?: string;
@@ -2497,26 +1666,16 @@ export interface ListDevicesForWirelessDeviceImportTaskResponse {
   Sidewalk?: SidewalkListDevicesForImportInfo;
   ImportedWirelessDeviceList?: ImportedWirelessDevice[];
 }
-const ListDevicesForWirelessDeviceImportTaskResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskResponse>;
 export type EventNotificationResourceType =
   | "SidewalkAccount"
   | "WirelessDevice"
   | "WirelessGateway"
   | (string & {});
-const EventNotificationResourceType = S.String;
-
 export interface ListEventConfigurationsRequest {
   ResourceType: EventNotificationResourceType;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListEventConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ListEventConfigurationsRequest>;
 export interface EventNotificationItemConfigurations {
   DeviceRegistrationState?: DeviceRegistrationStateEventConfiguration;
   Proximity?: ProximityEventConfiguration;
@@ -2524,278 +1683,156 @@ export interface EventNotificationItemConfigurations {
   ConnectionStatus?: ConnectionStatusEventConfiguration;
   MessageDeliveryStatus?: MessageDeliveryStatusEventConfiguration;
 }
-const EventNotificationItemConfigurations =
-  GetResourceEventConfigurationResponse as any as S.Schema<EventNotificationItemConfigurations>;
 export interface EventConfigurationItem {
   Identifier?: string;
   IdentifierType?: IdentifierType;
   PartnerType?: EventNotificationPartnerType;
   Events?: EventNotificationItemConfigurations;
 }
-const EventConfigurationItem = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<EventConfigurationItem>;
 export type EventConfigurationsList = EventConfigurationItem[];
-const EventConfigurationsList = /*@__PURE__*/ __L.at(__c29, 7);
 export interface ListEventConfigurationsResponse {
   NextToken?: string;
   EventConfigurationsList?: EventConfigurationItem[];
 }
-const ListEventConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListEventConfigurationsResponse>;
 export interface ListFuotaTasksRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListFuotaTasksRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ListFuotaTasksRequest>;
 export interface FuotaTask {
   Id?: string;
   Arn?: string;
   Name?: string;
 }
-const FuotaTask = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<FuotaTask>;
 export type FuotaTaskList = FuotaTask[];
-const FuotaTaskList = /*@__PURE__*/ __L.at(__c30, 3);
 export interface ListFuotaTasksResponse {
   NextToken?: string;
   FuotaTaskList?: FuotaTask[];
 }
-const ListFuotaTasksResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ListFuotaTasksResponse>;
 export interface ListMulticastGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListMulticastGroupsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ListMulticastGroupsRequest>;
 export interface MulticastGroup {
   Id?: string;
   Arn?: string;
   Name?: string;
 }
 export type MulticastGroupList = MulticastGroup[];
-const MulticastGroupList = FuotaTaskList as any as S.Schema<MulticastGroupList>;
 export interface ListMulticastGroupsResponse {
   NextToken?: string;
   MulticastGroupList?: MulticastGroup[];
 }
-const ListMulticastGroupsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<ListMulticastGroupsResponse>;
 export interface ListMulticastGroupsByFuotaTaskRequest {
   Id: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListMulticastGroupsByFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ListMulticastGroupsByFuotaTaskRequest>;
 export interface MulticastGroupByFuotaTask {
   Id?: string;
 }
-const MulticastGroupByFuotaTask = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<MulticastGroupByFuotaTask>;
 export type MulticastGroupListByFuotaTask = MulticastGroupByFuotaTask[];
-const MulticastGroupListByFuotaTask = /*@__PURE__*/ __L.at(__c31, 1);
 export interface ListMulticastGroupsByFuotaTaskResponse {
   NextToken?: string;
   MulticastGroupList?: MulticastGroupByFuotaTask[];
 }
-const ListMulticastGroupsByFuotaTaskResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ListMulticastGroupsByFuotaTaskResponse>;
 export interface ListNetworkAnalyzerConfigurationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListNetworkAnalyzerConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ListNetworkAnalyzerConfigurationsRequest>;
 export interface NetworkAnalyzerConfigurations {
   Arn?: string;
   Name?: string;
 }
-const NetworkAnalyzerConfigurations =
-  CreateDestinationResponse as any as S.Schema<NetworkAnalyzerConfigurations>;
 export type NetworkAnalyzerConfigurationList = NetworkAnalyzerConfigurations[];
-const NetworkAnalyzerConfigurationList = /*@__PURE__*/ __L.at(__c31, 4);
 export interface ListNetworkAnalyzerConfigurationsResponse {
   NextToken?: string;
   NetworkAnalyzerConfigurationList?: NetworkAnalyzerConfigurations[];
 }
-const ListNetworkAnalyzerConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ListNetworkAnalyzerConfigurationsResponse>;
 export interface ListPartnerAccountsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListPartnerAccountsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ListPartnerAccountsRequest>;
 export type SidewalkAccountList = SidewalkAccountInfoWithFingerprint[];
-const SidewalkAccountList = /*@__PURE__*/ __L.at(__c31, 7);
 export interface ListPartnerAccountsResponse {
   NextToken?: string;
   Sidewalk?: SidewalkAccountInfoWithFingerprint[];
 }
-const ListPartnerAccountsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<ListPartnerAccountsResponse>;
 export interface ListPositionConfigurationsRequest {
   ResourceType?: PositionResourceType;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPositionConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ListPositionConfigurationsRequest>;
 export interface PositionConfigurationItem {
   ResourceIdentifier?: string;
   ResourceType?: PositionResourceType;
   Solvers?: PositionSolverDetails;
   Destination?: string;
 }
-const PositionConfigurationItem = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<PositionConfigurationItem>;
 export type PositionConfigurationList = PositionConfigurationItem[];
-const PositionConfigurationList = /*@__PURE__*/ __L.at(__c32, 3);
 export interface ListPositionConfigurationsResponse {
   PositionConfigurationList?: PositionConfigurationItem[];
   NextToken?: string;
 }
-const ListPositionConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ListPositionConfigurationsResponse>;
 export interface ListQueuedMessagesRequest {
   Id: string;
   NextToken?: string;
   MaxResults?: number;
   WirelessDeviceType?: WirelessDeviceType;
 }
-const ListQueuedMessagesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ListQueuedMessagesRequest>;
 export type TransmitMode = number;
 export type DownlinkMode = "SEQUENTIAL" | "CONCURRENT" | "USING_UPLINK_GATEWAY" | (string & {});
-const DownlinkMode = S.String;
-
 export type DownlinkFrequency = number;
 export interface GatewayListItem {
   GatewayId: string;
   DownlinkFrequency: number;
 }
-const GatewayListItem = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<GatewayListItem>;
 export type GatewayList = GatewayListItem[];
-const GatewayList = /*@__PURE__*/ __L.at(__c32, 7);
 export type TransmissionInterval = number;
 export interface ParticipatingGateways {
   DownlinkMode: DownlinkMode;
   GatewayList: GatewayListItem[];
   TransmissionInterval: number;
 }
-const ParticipatingGateways = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ParticipatingGateways>;
 export interface LoRaWANSendDataToDevice {
   FPort?: number;
   ParticipatingGateways?: ParticipatingGateways;
 }
-const LoRaWANSendDataToDevice = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<LoRaWANSendDataToDevice>;
 export interface DownlinkQueueMessage {
   MessageId?: string;
   TransmitMode?: number;
   ReceivedAt?: string;
   LoRaWAN?: LoRaWANSendDataToDevice;
 }
-const DownlinkQueueMessage = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<DownlinkQueueMessage>;
 export type DownlinkQueueMessagesList = DownlinkQueueMessage[];
-const DownlinkQueueMessagesList = /*@__PURE__*/ __L.at(__c33, 3);
 export interface ListQueuedMessagesResponse {
   NextToken?: string;
   DownlinkQueueMessagesList?: DownlinkQueueMessage[];
 }
-const ListQueuedMessagesResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<ListQueuedMessagesResponse>;
 export interface ListServiceProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListServiceProfilesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<ListServiceProfilesRequest>;
 export interface ServiceProfile {
   Arn?: string;
   Name?: string;
   Id?: string;
 }
 export type ServiceProfileList = ServiceProfile[];
-const ServiceProfileList = DeviceProfileList as any as S.Schema<ServiceProfileList>;
 export interface ListServiceProfilesResponse {
   NextToken?: string;
   ServiceProfileList?: ServiceProfile[];
 }
-const ListServiceProfilesResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ListServiceProfilesResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWirelessDeviceImportTasksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListWirelessDeviceImportTasksRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<ListWirelessDeviceImportTasksRequest>;
 export interface WirelessDeviceImportTask {
   Id?: string;
   Arn?: string;
@@ -2810,20 +1847,11 @@ export interface WirelessDeviceImportTask {
   OnboardedImportedDeviceCount?: number;
   FailedImportedDeviceCount?: number;
 }
-const WirelessDeviceImportTask = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<WirelessDeviceImportTask>;
 export type WirelessDeviceImportTaskList = WirelessDeviceImportTask[];
-const WirelessDeviceImportTaskList = /*@__PURE__*/ __L.at(__c34, 3);
 export interface ListWirelessDeviceImportTasksResponse {
   NextToken?: string;
   WirelessDeviceImportTaskList?: WirelessDeviceImportTask[];
 }
-const ListWirelessDeviceImportTasksResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<ListWirelessDeviceImportTasksResponse>;
 export interface ListWirelessDevicesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2834,14 +1862,9 @@ export interface ListWirelessDevicesRequest {
   FuotaTaskId?: string;
   MulticastGroupId?: string;
 }
-const ListWirelessDevicesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<ListWirelessDevicesRequest>;
 export interface LoRaWANListDevice {
   DevEui?: string;
 }
-const LoRaWANListDevice = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<LoRaWANListDevice>;
 export interface SidewalkListDevice {
   AmazonId?: string;
   SidewalkId?: string;
@@ -2851,7 +1874,6 @@ export interface SidewalkListDevice {
   Status?: WirelessDeviceSidewalkStatus;
   Positioning?: SidewalkPositioning;
 }
-const SidewalkListDevice = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<SidewalkListDevice>;
 export type FuotaDeviceStatus =
   | "Initial"
   | "Package_Not_Supported"
@@ -2866,8 +1888,6 @@ export type FuotaDeviceStatus =
   | "Successful"
   | "Device_exist_in_conflict_fuota_task"
   | (string & {});
-const FuotaDeviceStatus = S.String;
-
 export type MulticastDeviceStatus = string;
 export type McGroupId = number;
 export interface WirelessDeviceStatistics {
@@ -2884,28 +1904,15 @@ export interface WirelessDeviceStatistics {
   McGroupId?: number;
   Positioning?: PositioningConfigStatus;
 }
-const WirelessDeviceStatistics = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<WirelessDeviceStatistics>;
 export type WirelessDeviceStatisticsList = WirelessDeviceStatistics[];
-const WirelessDeviceStatisticsList = /*@__PURE__*/ __L.at(__c35, 1);
 export interface ListWirelessDevicesResponse {
   NextToken?: string;
   WirelessDeviceList?: WirelessDeviceStatistics[];
 }
-const ListWirelessDevicesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<ListWirelessDevicesResponse>;
 export interface ListWirelessGatewaysRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListWirelessGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<ListWirelessGatewaysRequest>;
 export interface WirelessGatewayStatistics {
   Arn?: string;
   Id?: string;
@@ -2914,150 +1921,74 @@ export interface WirelessGatewayStatistics {
   LoRaWAN?: LoRaWANGateway;
   LastUplinkReceivedAt?: string;
 }
-const WirelessGatewayStatistics = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<WirelessGatewayStatistics>;
 export type WirelessGatewayStatisticsList = WirelessGatewayStatistics[];
-const WirelessGatewayStatisticsList = /*@__PURE__*/ __L.at(__c35, 5);
 export interface ListWirelessGatewaysResponse {
   NextToken?: string;
   WirelessGatewayList?: WirelessGatewayStatistics[];
 }
-const ListWirelessGatewaysResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<ListWirelessGatewaysResponse>;
 export type WirelessGatewayTaskDefinitionType = "UPDATE" | (string & {});
-const WirelessGatewayTaskDefinitionType = S.String;
-
 export interface ListWirelessGatewayTaskDefinitionsRequest {
   MaxResults?: number;
   NextToken?: string;
   TaskDefinitionType?: WirelessGatewayTaskDefinitionType;
 }
-const ListWirelessGatewayTaskDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<ListWirelessGatewayTaskDefinitionsRequest>;
 export interface LoRaWANUpdateGatewayTaskEntry {
   CurrentVersion?: LoRaWANGatewayVersion;
   UpdateVersion?: LoRaWANGatewayVersion;
 }
-const LoRaWANUpdateGatewayTaskEntry = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<LoRaWANUpdateGatewayTaskEntry>;
 export interface UpdateWirelessGatewayTaskEntry {
   Id?: string;
   LoRaWAN?: LoRaWANUpdateGatewayTaskEntry;
   Arn?: string;
 }
-const UpdateWirelessGatewayTaskEntry = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<UpdateWirelessGatewayTaskEntry>;
 export type WirelessGatewayTaskDefinitionList = UpdateWirelessGatewayTaskEntry[];
-const WirelessGatewayTaskDefinitionList = /*@__PURE__*/ __L.at(__c36, 2);
 export interface ListWirelessGatewayTaskDefinitionsResponse {
   NextToken?: string;
   TaskDefinitions?: UpdateWirelessGatewayTaskEntry[];
 }
-const ListWirelessGatewayTaskDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ListWirelessGatewayTaskDefinitionsResponse>;
 export interface SemtechGnssConfiguration {
   Status: PositionConfigurationStatus;
   Fec: PositionConfigurationFec;
 }
-const SemtechGnssConfiguration = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<SemtechGnssConfiguration>;
 export interface PositionSolverConfigurations {
   SemtechGnss?: SemtechGnssConfiguration;
 }
-const PositionSolverConfigurations = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<PositionSolverConfigurations>;
 export interface PutPositionConfigurationRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
   Solvers?: PositionSolverConfigurations;
   Destination?: string;
 }
-const PutPositionConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<PutPositionConfigurationRequest>;
 export interface PutPositionConfigurationResponse {}
-const PutPositionConfigurationResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<PutPositionConfigurationResponse>;
 export interface PutResourceLogLevelRequest {
   ResourceIdentifier: string;
   ResourceType: string;
   LogLevel: LogLevel;
 }
-const PutResourceLogLevelRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<PutResourceLogLevelRequest>;
 export interface PutResourceLogLevelResponse {}
-const PutResourceLogLevelResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<PutResourceLogLevelResponse>;
 export interface ResetAllResourceLogLevelsRequest {}
-const ResetAllResourceLogLevelsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<ResetAllResourceLogLevelsRequest>;
 export interface ResetAllResourceLogLevelsResponse {}
-const ResetAllResourceLogLevelsResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<ResetAllResourceLogLevelsResponse>;
 export interface ResetResourceLogLevelRequest {
   ResourceIdentifier: string;
   ResourceType: string;
 }
-const ResetResourceLogLevelRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<ResetResourceLogLevelRequest>;
 export interface ResetResourceLogLevelResponse {}
-const ResetResourceLogLevelResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<ResetResourceLogLevelResponse>;
 export type PayloadData = string;
 export interface LoRaWANMulticastMetadata {
   FPort?: number;
 }
-const LoRaWANMulticastMetadata = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<LoRaWANMulticastMetadata>;
 export interface MulticastWirelessMetadata {
   LoRaWAN?: LoRaWANMulticastMetadata;
 }
-const MulticastWirelessMetadata = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<MulticastWirelessMetadata>;
 export interface SendDataToMulticastGroupRequest {
   Id: string;
   PayloadData: string;
   WirelessMetadata: MulticastWirelessMetadata;
 }
-const SendDataToMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<SendDataToMulticastGroupRequest>;
 export type MulticastGroupMessageId = string;
 export interface SendDataToMulticastGroupResponse {
   MessageId?: string;
 }
-const SendDataToMulticastGroupResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<SendDataToMulticastGroupResponse>;
 export type Seq = number;
 export type MessageType =
   | "CUSTOM_COMMAND_ID_NOTIFY"
@@ -3065,105 +1996,56 @@ export type MessageType =
   | "CUSTOM_COMMAND_ID_SET"
   | "CUSTOM_COMMAND_ID_RESP"
   | (string & {});
-const MessageType = S.String;
-
 export type AckModeRetryDurationSecs = number;
 export interface SidewalkSendDataToDevice {
   Seq?: number;
   MessageType?: MessageType;
   AckModeRetryDurationSecs?: number;
 }
-const SidewalkSendDataToDevice = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<SidewalkSendDataToDevice>;
 export interface WirelessMetadata {
   LoRaWAN?: LoRaWANSendDataToDevice;
   Sidewalk?: SidewalkSendDataToDevice;
 }
-const WirelessMetadata = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<WirelessMetadata>;
 export interface SendDataToWirelessDeviceRequest {
   Id: string;
   TransmitMode: number;
   PayloadData: string;
   WirelessMetadata?: WirelessMetadata;
 }
-const SendDataToWirelessDeviceRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<SendDataToWirelessDeviceRequest>;
 export interface SendDataToWirelessDeviceResponse {
   MessageId?: string;
 }
-const SendDataToWirelessDeviceResponse =
-  SendDataToMulticastGroupResponse as any as S.Schema<SendDataToWirelessDeviceResponse>;
 export type QueryString = string;
 export interface StartBulkAssociateWirelessDeviceWithMulticastGroupRequest {
   Id: string;
   QueryString?: string;
   Tags?: Tag[];
 }
-const StartBulkAssociateWirelessDeviceWithMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<StartBulkAssociateWirelessDeviceWithMulticastGroupRequest>;
 export interface StartBulkAssociateWirelessDeviceWithMulticastGroupResponse {}
-const StartBulkAssociateWirelessDeviceWithMulticastGroupResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<StartBulkAssociateWirelessDeviceWithMulticastGroupResponse>;
 export interface StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest {
   Id: string;
   QueryString?: string;
   Tags?: Tag[];
 }
-const StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest>;
 export interface StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse {}
-const StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse>;
 export interface LoRaWANStartFuotaTask {
   StartTime?: Date;
 }
-const LoRaWANStartFuotaTask = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<LoRaWANStartFuotaTask>;
 export interface StartFuotaTaskRequest {
   Id: string;
   LoRaWAN?: LoRaWANStartFuotaTask;
 }
-const StartFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<StartFuotaTaskRequest>;
 export interface StartFuotaTaskResponse {}
-const StartFuotaTaskResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<StartFuotaTaskResponse>;
 export interface StartMulticastGroupSessionRequest {
   Id: string;
   LoRaWAN: LoRaWANMulticastSession;
 }
-const StartMulticastGroupSessionRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<StartMulticastGroupSessionRequest>;
 export interface StartMulticastGroupSessionResponse {}
-const StartMulticastGroupSessionResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<StartMulticastGroupSessionResponse>;
 export type DeviceName = string;
 export interface SidewalkSingleStartImportInfo {
   SidewalkManufacturingSn?: string;
   Positioning?: SidewalkPositioning;
 }
-const SidewalkSingleStartImportInfo = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<SidewalkSingleStartImportInfo>;
 export interface StartSingleWirelessDeviceImportTaskRequest {
   DestinationName: string;
   ClientRequestToken?: string;
@@ -3172,25 +2054,15 @@ export interface StartSingleWirelessDeviceImportTaskRequest {
   Positioning?: PositioningConfigStatus;
   Sidewalk: SidewalkSingleStartImportInfo;
 }
-const StartSingleWirelessDeviceImportTaskRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<StartSingleWirelessDeviceImportTaskRequest>;
 export interface StartSingleWirelessDeviceImportTaskResponse {
   Id?: string;
   Arn?: string;
 }
-const StartSingleWirelessDeviceImportTaskResponse =
-  CreateWirelessGatewayTaskDefinitionResponse as any as S.Schema<StartSingleWirelessDeviceImportTaskResponse>;
 export interface SidewalkStartImportInfo {
   DeviceCreationFile?: string;
   Role?: string;
   Positioning?: SidewalkPositioning;
 }
-const SidewalkStartImportInfo = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<SidewalkStartImportInfo>;
 export interface StartWirelessDeviceImportTaskRequest {
   DestinationName: string;
   ClientRequestToken?: string;
@@ -3198,50 +2070,28 @@ export interface StartWirelessDeviceImportTaskRequest {
   Positioning?: PositioningConfigStatus;
   Sidewalk: SidewalkStartImportInfo;
 }
-const StartWirelessDeviceImportTaskRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<StartWirelessDeviceImportTaskRequest>;
 export interface StartWirelessDeviceImportTaskResponse {
   Id?: string;
   Arn?: string;
 }
-const StartWirelessDeviceImportTaskResponse =
-  CreateWirelessGatewayTaskDefinitionResponse as any as S.Schema<StartWirelessDeviceImportTaskResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = SidewalkCreateDeviceProfile as any as S.Schema<TagResourceResponse>;
 export interface TestWirelessDeviceRequest {
   Id: string;
 }
-const TestWirelessDeviceRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<TestWirelessDeviceRequest>;
 export type Result = string;
 export interface TestWirelessDeviceResponse {
   Result?: string;
 }
-const TestWirelessDeviceResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<TestWirelessDeviceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = GatewayListMulticast as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = SidewalkCreateDeviceProfile as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDestinationRequest {
   Name: string;
   ExpressionType?: ExpressionType;
@@ -3249,13 +2099,7 @@ export interface UpdateDestinationRequest {
   Description?: string;
   RoleArn?: string;
 }
-const UpdateDestinationRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<UpdateDestinationRequest>;
 export interface UpdateDestinationResponse {}
-const UpdateDestinationResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdateDestinationResponse>;
 export interface UpdateEventConfigurationByResourceTypesRequest {
   DeviceRegistrationState?: DeviceRegistrationStateResourceTypeEventConfiguration;
   Proximity?: ProximityResourceTypeEventConfiguration;
@@ -3263,13 +2107,7 @@ export interface UpdateEventConfigurationByResourceTypesRequest {
   ConnectionStatus?: ConnectionStatusResourceTypeEventConfiguration;
   MessageDeliveryStatus?: MessageDeliveryStatusResourceTypeEventConfiguration;
 }
-const UpdateEventConfigurationByResourceTypesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<UpdateEventConfigurationByResourceTypesRequest>;
 export interface UpdateEventConfigurationByResourceTypesResponse {}
-const UpdateEventConfigurationByResourceTypesResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateEventConfigurationByResourceTypesResponse>;
 export interface UpdateFuotaTaskRequest {
   Id: string;
   Name?: string;
@@ -3282,49 +2120,25 @@ export interface UpdateFuotaTaskRequest {
   FragmentIntervalMS?: number;
   Descriptor?: string;
 }
-const UpdateFuotaTaskRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<UpdateFuotaTaskRequest>;
 export interface UpdateFuotaTaskResponse {}
-const UpdateFuotaTaskResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdateFuotaTaskResponse>;
 export interface UpdateLogLevelsByResourceTypesRequest {
   DefaultLogLevel?: LogLevel;
   FuotaTaskLogOptions?: FuotaTaskLogOption[];
   WirelessDeviceLogOptions?: WirelessDeviceLogOption[];
   WirelessGatewayLogOptions?: WirelessGatewayLogOption[];
 }
-const UpdateLogLevelsByResourceTypesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<UpdateLogLevelsByResourceTypesRequest>;
 export interface UpdateLogLevelsByResourceTypesResponse {}
-const UpdateLogLevelsByResourceTypesResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateLogLevelsByResourceTypesResponse>;
 export interface UpdateMetricConfigurationRequest {
   SummaryMetric?: SummaryMetricConfiguration;
 }
-const UpdateMetricConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<UpdateMetricConfigurationRequest>;
 export interface UpdateMetricConfigurationResponse {}
-const UpdateMetricConfigurationResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateMetricConfigurationResponse>;
 export interface UpdateMulticastGroupRequest {
   Id: string;
   Name?: string;
   Description?: string;
   LoRaWAN?: LoRaWANMulticast;
 }
-const UpdateMulticastGroupRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<UpdateMulticastGroupRequest>;
 export interface UpdateMulticastGroupResponse {}
-const UpdateMulticastGroupResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdateMulticastGroupResponse>;
 export interface UpdateNetworkAnalyzerConfigurationRequest {
   ConfigurationName: string;
   TraceContent?: TraceContent;
@@ -3336,44 +2150,22 @@ export interface UpdateNetworkAnalyzerConfigurationRequest {
   MulticastGroupsToAdd?: string[];
   MulticastGroupsToRemove?: string[];
 }
-const UpdateNetworkAnalyzerConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<UpdateNetworkAnalyzerConfigurationRequest>;
 export interface UpdateNetworkAnalyzerConfigurationResponse {}
-const UpdateNetworkAnalyzerConfigurationResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateNetworkAnalyzerConfigurationResponse>;
 export interface SidewalkUpdateAccount {
   AppServerPrivateKey?: string | redacted.Redacted<string>;
 }
-const SidewalkUpdateAccount = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<SidewalkUpdateAccount>;
 export interface UpdatePartnerAccountRequest {
   Sidewalk: SidewalkUpdateAccount;
   PartnerAccountId: string;
   PartnerType: PartnerType;
 }
-const UpdatePartnerAccountRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<UpdatePartnerAccountRequest>;
 export interface UpdatePartnerAccountResponse {}
-const UpdatePartnerAccountResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdatePartnerAccountResponse>;
 export interface UpdatePositionRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
   Position: number[];
 }
-const UpdatePositionRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<UpdatePositionRequest>;
 export interface UpdatePositionResponse {}
-const UpdatePositionResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdatePositionResponse>;
 export interface UpdateResourceEventConfigurationRequest {
   Identifier: string;
   IdentifierType: IdentifierType;
@@ -3384,38 +2176,23 @@ export interface UpdateResourceEventConfigurationRequest {
   ConnectionStatus?: ConnectionStatusEventConfiguration;
   MessageDeliveryStatus?: MessageDeliveryStatusEventConfiguration;
 }
-const UpdateResourceEventConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<UpdateResourceEventConfigurationRequest>;
 export interface UpdateResourceEventConfigurationResponse {}
-const UpdateResourceEventConfigurationResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateResourceEventConfigurationResponse>;
 export interface UpdateResourcePositionRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
   GeoJsonPayload?: T.StreamingInputBody;
 }
-const UpdateResourcePositionRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<UpdateResourcePositionRequest>;
 export interface UpdateResourcePositionResponse {}
-const UpdateResourcePositionResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdateResourcePositionResponse>;
 export interface UpdateAbpV1_1 {
   FCntStart?: number;
 }
-const UpdateAbpV1_1 = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<UpdateAbpV1_1>;
 export interface UpdateAbpV1_0_x {
   FCntStart?: number;
 }
-const UpdateAbpV1_0_x = UpdateAbpV1_1 as any as S.Schema<UpdateAbpV1_0_x>;
 export interface UpdateFPorts {
   Positioning?: Positioning;
   Applications?: ApplicationConfig[];
 }
-const UpdateFPorts = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<UpdateFPorts>;
 export interface LoRaWANUpdateDevice {
   DeviceProfileId?: string;
   ServiceProfileId?: string;
@@ -3423,12 +2200,9 @@ export interface LoRaWANUpdateDevice {
   AbpV1_0_x?: UpdateAbpV1_0_x;
   FPorts?: UpdateFPorts;
 }
-const LoRaWANUpdateDevice = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<LoRaWANUpdateDevice>;
 export interface SidewalkUpdateWirelessDevice {
   Positioning?: SidewalkPositioning;
 }
-const SidewalkUpdateWirelessDevice =
-  SidewalkListDevicesForImportInfo as any as S.Schema<SidewalkUpdateWirelessDevice>;
 export interface UpdateWirelessDeviceRequest {
   Id: string;
   DestinationName?: string;
@@ -3438,31 +2212,15 @@ export interface UpdateWirelessDeviceRequest {
   Positioning?: PositioningConfigStatus;
   Sidewalk?: SidewalkUpdateWirelessDevice;
 }
-const UpdateWirelessDeviceRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<UpdateWirelessDeviceRequest>;
 export interface UpdateWirelessDeviceResponse {}
-const UpdateWirelessDeviceResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdateWirelessDeviceResponse>;
 export interface SidewalkUpdateImportInfo {
   DeviceCreationFile?: string;
 }
-const SidewalkUpdateImportInfo = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<SidewalkUpdateImportInfo>;
 export interface UpdateWirelessDeviceImportTaskRequest {
   Id: string;
   Sidewalk: SidewalkUpdateImportInfo;
 }
-const UpdateWirelessDeviceImportTaskRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<UpdateWirelessDeviceImportTaskRequest>;
 export interface UpdateWirelessDeviceImportTaskResponse {}
-const UpdateWirelessDeviceImportTaskResponse =
-  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateWirelessDeviceImportTaskResponse>;
 export interface UpdateWirelessGatewayRequest {
   Id: string;
   Name?: string;
@@ -3471,13 +2229,7 @@ export interface UpdateWirelessGatewayRequest {
   NetIdFilters?: string[];
   MaxEirp?: number;
 }
-const UpdateWirelessGatewayRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<UpdateWirelessGatewayRequest>;
 export interface UpdateWirelessGatewayResponse {}
-const UpdateWirelessGatewayResponse =
-  SidewalkCreateDeviceProfile as any as S.Schema<UpdateWirelessGatewayResponse>;
 export type Message = string;
 export type ResourceId = string;
 export type AssociateAwsAccountWithPartnerAccountError =
@@ -3497,8 +2249,8 @@ export const associateAwsAccountWithPartnerAccount: API.OperationMethod<
   AssociateAwsAccountWithPartnerAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateAwsAccountWithPartnerAccountRequest,
-  output: AssociateAwsAccountWithPartnerAccountResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<AssociateAwsAccountWithPartnerAccountRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AssociateAwsAccountWithPartnerAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3529,8 +2281,8 @@ export const associateMulticastGroupWithFuotaTask: API.OperationMethod<
   AssociateMulticastGroupWithFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateMulticastGroupWithFuotaTaskRequest,
-  output: AssociateMulticastGroupWithFuotaTaskResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3561,8 +2313,8 @@ export const associateWirelessDeviceWithFuotaTask: API.OperationMethod<
   AssociateWirelessDeviceWithFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateWirelessDeviceWithFuotaTaskRequest,
-  output: AssociateWirelessDeviceWithFuotaTaskResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3593,8 +2345,8 @@ export const associateWirelessDeviceWithMulticastGroup: API.OperationMethod<
   AssociateWirelessDeviceWithMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateWirelessDeviceWithMulticastGroupRequest,
-  output: AssociateWirelessDeviceWithMulticastGroupResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3625,8 +2377,8 @@ export const associateWirelessDeviceWithThing: API.OperationMethod<
   AssociateWirelessDeviceWithThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateWirelessDeviceWithThingRequest,
-  output: AssociateWirelessDeviceWithThingResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<AssociateWirelessDeviceWithThingRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<AssociateWirelessDeviceWithThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3657,8 +2409,8 @@ export const associateWirelessGatewayWithCertificate: API.OperationMethod<
   AssociateWirelessGatewayWithCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateWirelessGatewayWithCertificateRequest,
-  output: AssociateWirelessGatewayWithCertificateResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<AssociateWirelessGatewayWithCertificateRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<AssociateWirelessGatewayWithCertificateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3689,8 +2441,8 @@ export const associateWirelessGatewayWithThing: API.OperationMethod<
   AssociateWirelessGatewayWithThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateWirelessGatewayWithThingRequest,
-  output: AssociateWirelessGatewayWithThingResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<AssociateWirelessGatewayWithThingRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<AssociateWirelessGatewayWithThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3721,8 +2473,8 @@ export const cancelMulticastGroupSession: API.OperationMethod<
   CancelMulticastGroupSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelMulticastGroupSessionRequest,
-  output: CancelMulticastGroupSessionResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CancelMulticastGroupSessionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CancelMulticastGroupSessionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3753,8 +2505,8 @@ export const createDestination: API.OperationMethod<
   CreateDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDestinationRequest,
-  output: CreateDestinationResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateDestinationRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CreateDestinationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3784,8 +2536,8 @@ export const createDeviceProfile: API.OperationMethod<
   CreateDeviceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeviceProfileRequest,
-  output: CreateDeviceProfileResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateDeviceProfileRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateDeviceProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3815,8 +2567,8 @@ export const createFuotaTask: API.OperationMethod<
   CreateFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFuotaTaskRequest,
-  output: CreateFuotaTaskResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<CreateFuotaTaskRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3847,8 +2599,8 @@ export const createMulticastGroup: API.OperationMethod<
   CreateMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMulticastGroupRequest,
-  output: CreateMulticastGroupResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<CreateMulticastGroupRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3879,8 +2631,8 @@ export const createNetworkAnalyzerConfiguration: API.OperationMethod<
   CreateNetworkAnalyzerConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkAnalyzerConfigurationRequest,
-  output: CreateNetworkAnalyzerConfigurationResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<CreateNetworkAnalyzerConfigurationRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CreateNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3910,8 +2662,8 @@ export const createServiceProfile: API.OperationMethod<
   CreateServiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceProfileRequest,
-  output: CreateServiceProfileResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateServiceProfileRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateServiceProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3941,8 +2693,8 @@ export const createWirelessDevice: API.OperationMethod<
   CreateWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWirelessDeviceRequest,
-  output: CreateWirelessDeviceResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<CreateWirelessDeviceRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3983,8 +2735,8 @@ export const createWirelessGateway: API.OperationMethod<
   CreateWirelessGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWirelessGatewayRequest,
-  output: CreateWirelessGatewayResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateWirelessGatewayRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4014,8 +2766,8 @@ export const createWirelessGatewayTask: API.OperationMethod<
   CreateWirelessGatewayTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWirelessGatewayTaskRequest,
-  output: CreateWirelessGatewayTaskResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<CreateWirelessGatewayTaskRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<CreateWirelessGatewayTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4046,8 +2798,8 @@ export const createWirelessGatewayTaskDefinition: API.OperationMethod<
   CreateWirelessGatewayTaskDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWirelessGatewayTaskDefinitionRequest,
-  output: CreateWirelessGatewayTaskDefinitionResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateWirelessGatewayTaskDefinitionRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<CreateWirelessGatewayTaskDefinitionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4078,8 +2830,8 @@ export const deleteDestination: API.OperationMethod<
   DeleteDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDestinationRequest,
-  output: DeleteDestinationResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<DeleteDestinationRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteDestinationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4110,8 +2862,8 @@ export const deleteDeviceProfile: API.OperationMethod<
   DeleteDeviceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceProfileRequest,
-  output: DeleteDeviceProfileResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<DeleteDeviceProfileRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteDeviceProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4141,8 +2893,8 @@ export const deleteFuotaTask: API.OperationMethod<
   DeleteFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFuotaTaskRequest,
-  output: DeleteFuotaTaskResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<DeleteFuotaTaskRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4172,8 +2924,8 @@ export const deleteMulticastGroup: API.OperationMethod<
   DeleteMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMulticastGroupRequest,
-  output: DeleteMulticastGroupResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<DeleteMulticastGroupRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4204,8 +2956,8 @@ export const deleteNetworkAnalyzerConfiguration: API.OperationMethod<
   DeleteNetworkAnalyzerConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkAnalyzerConfigurationRequest,
-  output: DeleteNetworkAnalyzerConfigurationResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<DeleteNetworkAnalyzerConfigurationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4235,8 +2987,8 @@ export const deleteQueuedMessages: API.OperationMethod<
   DeleteQueuedMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteQueuedMessagesRequest,
-  output: DeleteQueuedMessagesResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<DeleteQueuedMessagesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteQueuedMessagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4266,8 +3018,8 @@ export const deleteServiceProfile: API.OperationMethod<
   DeleteServiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceProfileRequest,
-  output: DeleteServiceProfileResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteServiceProfileRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteServiceProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4297,8 +3049,8 @@ export const deleteWirelessDevice: API.OperationMethod<
   DeleteWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWirelessDeviceRequest,
-  output: DeleteWirelessDeviceResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<DeleteWirelessDeviceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4328,8 +3080,8 @@ export const deleteWirelessDeviceImportTask: API.OperationMethod<
   DeleteWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWirelessDeviceImportTaskRequest,
-  output: DeleteWirelessDeviceImportTaskResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<DeleteWirelessDeviceImportTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4370,8 +3122,8 @@ export const deleteWirelessGateway: API.OperationMethod<
   DeleteWirelessGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWirelessGatewayRequest,
-  output: DeleteWirelessGatewayResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<DeleteWirelessGatewayRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4400,8 +3152,8 @@ export const deleteWirelessGatewayTask: API.OperationMethod<
   DeleteWirelessGatewayTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWirelessGatewayTaskRequest,
-  output: DeleteWirelessGatewayTaskResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<DeleteWirelessGatewayTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteWirelessGatewayTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4431,8 +3183,8 @@ export const deleteWirelessGatewayTaskDefinition: API.OperationMethod<
   DeleteWirelessGatewayTaskDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWirelessGatewayTaskDefinitionRequest,
-  output: DeleteWirelessGatewayTaskDefinitionResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4460,8 +3212,8 @@ export const deregisterWirelessDevice: API.OperationMethod<
   DeregisterWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterWirelessDeviceRequest,
-  output: DeregisterWirelessDeviceResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<DeregisterWirelessDeviceRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeregisterWirelessDeviceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4490,8 +3242,8 @@ export const disassociateAwsAccountFromPartnerAccount: API.OperationMethod<
   DisassociateAwsAccountFromPartnerAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateAwsAccountFromPartnerAccountRequest,
-  output: DisassociateAwsAccountFromPartnerAccountResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4519,8 +3271,8 @@ export const disassociateMulticastGroupFromFuotaTask: API.OperationMethod<
   DisassociateMulticastGroupFromFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateMulticastGroupFromFuotaTaskRequest,
-  output: DisassociateMulticastGroupFromFuotaTaskResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4550,8 +3302,8 @@ export const disassociateWirelessDeviceFromFuotaTask: API.OperationMethod<
   DisassociateWirelessDeviceFromFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateWirelessDeviceFromFuotaTaskRequest,
-  output: DisassociateWirelessDeviceFromFuotaTaskResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4581,8 +3333,8 @@ export const disassociateWirelessDeviceFromMulticastGroup: API.OperationMethod<
   DisassociateWirelessDeviceFromMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateWirelessDeviceFromMulticastGroupRequest,
-  output: DisassociateWirelessDeviceFromMulticastGroupResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4612,8 +3364,8 @@ export const disassociateWirelessDeviceFromThing: API.OperationMethod<
   DisassociateWirelessDeviceFromThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateWirelessDeviceFromThingRequest,
-  output: DisassociateWirelessDeviceFromThingResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DisassociateWirelessDeviceFromThingRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DisassociateWirelessDeviceFromThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4643,8 +3395,8 @@ export const disassociateWirelessGatewayFromCertificate: API.OperationMethod<
   DisassociateWirelessGatewayFromCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateWirelessGatewayFromCertificateRequest,
-  output: DisassociateWirelessGatewayFromCertificateResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DisassociateWirelessGatewayFromCertificateRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DisassociateWirelessGatewayFromCertificateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4674,8 +3426,8 @@ export const disassociateWirelessGatewayFromThing: API.OperationMethod<
   DisassociateWirelessGatewayFromThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateWirelessGatewayFromThingRequest,
-  output: DisassociateWirelessGatewayFromThingResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DisassociateWirelessGatewayFromThingRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DisassociateWirelessGatewayFromThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4705,8 +3457,8 @@ export const getDestination: API.OperationMethod<
   GetDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDestinationRequest,
-  output: GetDestinationResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetDestinationRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetDestinationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4735,8 +3487,8 @@ export const getDeviceProfile: API.OperationMethod<
   GetDeviceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceProfileRequest,
-  output: GetDeviceProfileResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<GetDeviceProfileRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<GetDeviceProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4763,8 +3515,8 @@ export const getEventConfigurationByResourceTypes: API.OperationMethod<
   GetEventConfigurationByResourceTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventConfigurationByResourceTypesRequest,
-  output: GetEventConfigurationByResourceTypesResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<GetEventConfigurationByResourceTypesRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<GetEventConfigurationByResourceTypesResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4787,8 +3539,8 @@ export const getFuotaTask: API.OperationMethod<
   GetFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFuotaTaskRequest,
-  output: GetFuotaTaskResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<GetFuotaTaskRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4819,8 +3571,8 @@ export const getLogLevelsByResourceTypes: API.OperationMethod<
   GetLogLevelsByResourceTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogLevelsByResourceTypesRequest,
-  output: GetLogLevelsByResourceTypesResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<GetLogLevelsByResourceTypesRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<GetLogLevelsByResourceTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4850,8 +3602,8 @@ export const getMetricConfiguration: API.OperationMethod<
   GetMetricConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricConfigurationRequest,
-  output: GetMetricConfigurationResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<GetMetricConfigurationRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<GetMetricConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4882,8 +3634,8 @@ export const getMetrics: API.OperationMethod<
   GetMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricsRequest,
-  output: GetMetricsResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<GetMetricsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetMetricsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4913,8 +3665,8 @@ export const getMulticastGroup: API.OperationMethod<
   GetMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMulticastGroupRequest,
-  output: GetMulticastGroupResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<GetMulticastGroupRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<GetMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4943,8 +3695,8 @@ export const getMulticastGroupSession: API.OperationMethod<
   GetMulticastGroupSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMulticastGroupSessionRequest,
-  output: GetMulticastGroupSessionResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<GetMulticastGroupSessionRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<GetMulticastGroupSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4973,8 +3725,8 @@ export const getNetworkAnalyzerConfiguration: API.OperationMethod<
   GetNetworkAnalyzerConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkAnalyzerConfigurationRequest,
-  output: GetNetworkAnalyzerConfigurationResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<GetNetworkAnalyzerConfigurationRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5003,8 +3755,8 @@ export const getPartnerAccount: API.OperationMethod<
   GetPartnerAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPartnerAccountRequest,
-  output: GetPartnerAccountResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<GetPartnerAccountRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetPartnerAccountResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5035,8 +3787,8 @@ export const getPosition: API.OperationMethod<
   GetPositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPositionRequest,
-  output: GetPositionResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<GetPositionRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<GetPositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5068,8 +3820,8 @@ export const getPositionConfiguration: API.OperationMethod<
   GetPositionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPositionConfigurationRequest,
-  output: GetPositionConfigurationResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<GetPositionConfigurationRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<GetPositionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5100,8 +3852,8 @@ export const getPositionEstimate: API.OperationMethod<
   GetPositionEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPositionEstimateRequest,
-  output: GetPositionEstimateResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<GetPositionEstimateRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<GetPositionEstimateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5130,8 +3882,8 @@ export const getResourceEventConfiguration: API.OperationMethod<
   GetResourceEventConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceEventConfigurationRequest,
-  output: GetResourceEventConfigurationResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<GetResourceEventConfigurationRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<GetResourceEventConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5161,8 +3913,8 @@ export const getResourceLogLevel: API.OperationMethod<
   GetResourceLogLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceLogLevelRequest,
-  output: GetResourceLogLevelResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<GetResourceLogLevelRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<GetResourceLogLevelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5193,8 +3945,8 @@ export const getResourcePosition: API.OperationMethod<
   GetResourcePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePositionRequest,
-  output: GetResourcePositionResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<GetResourcePositionRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<GetResourcePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5223,8 +3975,8 @@ export const getServiceEndpoint: API.OperationMethod<
   GetServiceEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceEndpointRequest,
-  output: GetServiceEndpointResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<GetServiceEndpointRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<GetServiceEndpointResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5252,8 +4004,8 @@ export const getServiceProfile: API.OperationMethod<
   GetServiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceProfileRequest,
-  output: GetServiceProfileResponse,
+  input: __S(191, __c23, 7) as any as S.Schema<GetServiceProfileRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetServiceProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5282,8 +4034,8 @@ export const getWirelessDevice: API.OperationMethod<
   GetWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessDeviceRequest,
-  output: GetWirelessDeviceResponse,
+  input: __S(194, __c24, 2) as any as S.Schema<GetWirelessDeviceRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<GetWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5314,8 +4066,8 @@ export const getWirelessDeviceImportTask: API.OperationMethod<
   GetWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessDeviceImportTaskRequest,
-  output: GetWirelessDeviceImportTaskResponse,
+  input: __S(199, __c24, 7) as any as S.Schema<GetWirelessDeviceImportTaskRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5345,8 +4097,8 @@ export const getWirelessDeviceStatistics: API.OperationMethod<
   GetWirelessDeviceStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessDeviceStatisticsRequest,
-  output: GetWirelessDeviceStatisticsResponse,
+  input: __S(202, __c25, 2) as any as S.Schema<GetWirelessDeviceStatisticsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<GetWirelessDeviceStatisticsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5375,8 +4127,8 @@ export const getWirelessGateway: API.OperationMethod<
   GetWirelessGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessGatewayRequest,
-  output: GetWirelessGatewayResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<GetWirelessGatewayRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<GetWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5406,8 +4158,8 @@ export const getWirelessGatewayCertificate: API.OperationMethod<
   GetWirelessGatewayCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessGatewayCertificateRequest,
-  output: GetWirelessGatewayCertificateResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<GetWirelessGatewayCertificateRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<GetWirelessGatewayCertificateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5436,8 +4188,8 @@ export const getWirelessGatewayFirmwareInformation: API.OperationMethod<
   GetWirelessGatewayFirmwareInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessGatewayFirmwareInformationRequest,
-  output: GetWirelessGatewayFirmwareInformationResponse,
+  input: __S(214, __c26, 6) as any as S.Schema<GetWirelessGatewayFirmwareInformationRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetWirelessGatewayFirmwareInformationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5466,8 +4218,8 @@ export const getWirelessGatewayStatistics: API.OperationMethod<
   GetWirelessGatewayStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessGatewayStatisticsRequest,
-  output: GetWirelessGatewayStatisticsResponse,
+  input: __S(217, __c27, 1) as any as S.Schema<GetWirelessGatewayStatisticsRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<GetWirelessGatewayStatisticsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5496,8 +4248,8 @@ export const getWirelessGatewayTask: API.OperationMethod<
   GetWirelessGatewayTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessGatewayTaskRequest,
-  output: GetWirelessGatewayTaskResponse,
+  input: __S(219, __c27, 3) as any as S.Schema<GetWirelessGatewayTaskRequest>,
+  output: __S(220, __c27, 4) as any as S.Schema<GetWirelessGatewayTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5526,8 +4278,8 @@ export const getWirelessGatewayTaskDefinition: API.OperationMethod<
   GetWirelessGatewayTaskDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWirelessGatewayTaskDefinitionRequest,
-  output: GetWirelessGatewayTaskDefinitionResponse,
+  input: __S(221, __c27, 5) as any as S.Schema<GetWirelessGatewayTaskDefinitionRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<GetWirelessGatewayTaskDefinitionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5556,8 +4308,8 @@ export const listDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDestinationsRequest,
-  output: ListDestinationsResponse,
+  input: __S(223, __c27, 7) as any as S.Schema<ListDestinationsRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<ListDestinationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5590,8 +4342,8 @@ export const listDeviceProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDeviceProfilesRequest,
-  output: ListDeviceProfilesResponse,
+  input: __S(227, __c28, 3) as any as S.Schema<ListDeviceProfilesRequest>,
+  output: __S(230, __c28, 6) as any as S.Schema<ListDeviceProfilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5625,8 +4377,8 @@ export const listDevicesForWirelessDeviceImportTask: API.OperationMethod<
   ListDevicesForWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDevicesForWirelessDeviceImportTaskRequest,
-  output: ListDevicesForWirelessDeviceImportTaskResponse,
+  input: __S(231, __c28, 7) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5655,8 +4407,8 @@ export const listEventConfigurations: API.OperationMethod<
   ListEventConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventConfigurationsRequest,
-  output: ListEventConfigurationsResponse,
+  input: __S(237, __c29, 5) as any as S.Schema<ListEventConfigurationsRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<ListEventConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5684,8 +4436,8 @@ export const listFuotaTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFuotaTasksRequest,
-  output: ListFuotaTasksResponse,
+  input: __S(241, __c30, 1) as any as S.Schema<ListFuotaTasksRequest>,
+  output: __S(244, __c30, 4) as any as S.Schema<ListFuotaTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5718,8 +4470,8 @@ export const listMulticastGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMulticastGroupsRequest,
-  output: ListMulticastGroupsResponse,
+  input: __S(245, __c30, 5) as any as S.Schema<ListMulticastGroupsRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<ListMulticastGroupsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5753,8 +4505,8 @@ export const listMulticastGroupsByFuotaTask: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMulticastGroupsByFuotaTaskRequest,
-  output: ListMulticastGroupsByFuotaTaskResponse,
+  input: __S(247, __c30, 7) as any as S.Schema<ListMulticastGroupsByFuotaTaskRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<ListMulticastGroupsByFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5788,8 +4540,8 @@ export const listNetworkAnalyzerConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNetworkAnalyzerConfigurationsRequest,
-  output: ListNetworkAnalyzerConfigurationsResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<ListNetworkAnalyzerConfigurationsRequest>,
+  output: __S(253, __c31, 5) as any as S.Schema<ListNetworkAnalyzerConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5821,8 +4573,8 @@ export const listPartnerAccounts: API.OperationMethod<
   ListPartnerAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPartnerAccountsRequest,
-  output: ListPartnerAccountsResponse,
+  input: __S(254, __c31, 6) as any as S.Schema<ListPartnerAccountsRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<ListPartnerAccountsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5853,8 +4605,8 @@ export const listPositionConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPositionConfigurationsRequest,
-  output: ListPositionConfigurationsResponse,
+  input: __S(257, __c32, 1) as any as S.Schema<ListPositionConfigurationsRequest>,
+  output: __S(260, __c32, 4) as any as S.Schema<ListPositionConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5888,8 +4640,8 @@ export const listQueuedMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListQueuedMessagesRequest,
-  output: ListQueuedMessagesResponse,
+  input: __S(261, __c32, 5) as any as S.Schema<ListQueuedMessagesRequest>,
+  output: __S(268, __c33, 4) as any as S.Schema<ListQueuedMessagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5923,8 +4675,8 @@ export const listServiceProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceProfilesRequest,
-  output: ListServiceProfilesResponse,
+  input: __S(269, __c33, 5) as any as S.Schema<ListServiceProfilesRequest>,
+  output: __S(270, __c33, 6) as any as S.Schema<ListServiceProfilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5957,8 +4709,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(271, __c33, 7) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -5989,8 +4741,8 @@ export const listWirelessDeviceImportTasks: API.OperationMethod<
   ListWirelessDeviceImportTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWirelessDeviceImportTasksRequest,
-  output: ListWirelessDeviceImportTasksResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<ListWirelessDeviceImportTasksRequest>,
+  output: __S(276, __c34, 4) as any as S.Schema<ListWirelessDeviceImportTasksResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6020,8 +4772,8 @@ export const listWirelessDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListWirelessDevicesRequest,
-  output: ListWirelessDevicesResponse,
+  input: __S(277, __c34, 5) as any as S.Schema<ListWirelessDevicesRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ListWirelessDevicesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6054,8 +4806,8 @@ export const listWirelessGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListWirelessGatewaysRequest,
-  output: ListWirelessGatewaysResponse,
+  input: __S(283, __c35, 3) as any as S.Schema<ListWirelessGatewaysRequest>,
+  output: __S(286, __c35, 6) as any as S.Schema<ListWirelessGatewaysResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6087,8 +4839,8 @@ export const listWirelessGatewayTaskDefinitions: API.OperationMethod<
   ListWirelessGatewayTaskDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWirelessGatewayTaskDefinitionsRequest,
-  output: ListWirelessGatewayTaskDefinitionsResponse,
+  input: __S(287, __c35, 7) as any as S.Schema<ListWirelessGatewayTaskDefinitionsRequest>,
+  output: __S(291, __c36, 3) as any as S.Schema<ListWirelessGatewayTaskDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6119,8 +4871,8 @@ export const putPositionConfiguration: API.OperationMethod<
   PutPositionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPositionConfigurationRequest,
-  output: PutPositionConfigurationResponse,
+  input: __S(294, __c36, 6) as any as S.Schema<PutPositionConfigurationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<PutPositionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6150,8 +4902,8 @@ export const putResourceLogLevel: API.OperationMethod<
   PutResourceLogLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutResourceLogLevelRequest,
-  output: PutResourceLogLevelResponse,
+  input: __S(295, __c36, 7) as any as S.Schema<PutResourceLogLevelRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<PutResourceLogLevelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6181,8 +4933,8 @@ export const resetAllResourceLogLevels: API.OperationMethod<
   ResetAllResourceLogLevelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetAllResourceLogLevelsRequest,
-  output: ResetAllResourceLogLevelsResponse,
+  input: __S(296, __c37, 0) as any as S.Schema<ResetAllResourceLogLevelsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ResetAllResourceLogLevelsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6212,8 +4964,8 @@ export const resetResourceLogLevel: API.OperationMethod<
   ResetResourceLogLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetResourceLogLevelRequest,
-  output: ResetResourceLogLevelResponse,
+  input: __S(297, __c37, 1) as any as S.Schema<ResetResourceLogLevelRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ResetResourceLogLevelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6243,8 +4995,8 @@ export const sendDataToMulticastGroup: API.OperationMethod<
   SendDataToMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendDataToMulticastGroupRequest,
-  output: SendDataToMulticastGroupResponse,
+  input: __S(300, __c37, 4) as any as S.Schema<SendDataToMulticastGroupRequest>,
+  output: __S(301, __c37, 5) as any as S.Schema<SendDataToMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6273,8 +5025,8 @@ export const sendDataToWirelessDevice: API.OperationMethod<
   SendDataToWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendDataToWirelessDeviceRequest,
-  output: SendDataToWirelessDeviceResponse,
+  input: __S(304, __c38, 0) as any as S.Schema<SendDataToWirelessDeviceRequest>,
+  output: __S(301, __c37, 5) as any as S.Schema<SendDataToWirelessDeviceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -6303,8 +5055,16 @@ export const startBulkAssociateWirelessDeviceWithMulticastGroup: API.OperationMe
   StartBulkAssociateWirelessDeviceWithMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartBulkAssociateWirelessDeviceWithMulticastGroupRequest,
-  output: StartBulkAssociateWirelessDeviceWithMulticastGroupResponse,
+  input: __S(
+    305,
+    __c38,
+    1,
+  ) as any as S.Schema<StartBulkAssociateWirelessDeviceWithMulticastGroupRequest>,
+  output: __S(
+    306,
+    __c38,
+    2,
+  ) as any as S.Schema<StartBulkAssociateWirelessDeviceWithMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6334,8 +5094,16 @@ export const startBulkDisassociateWirelessDeviceFromMulticastGroup: API.Operatio
   StartBulkDisassociateWirelessDeviceFromMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest,
-  output: StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse,
+  input: __S(
+    307,
+    __c38,
+    3,
+  ) as any as S.Schema<StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest>,
+  output: __S(
+    308,
+    __c38,
+    4,
+  ) as any as S.Schema<StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6365,8 +5133,8 @@ export const startFuotaTask: API.OperationMethod<
   StartFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartFuotaTaskRequest,
-  output: StartFuotaTaskResponse,
+  input: __S(310, __c38, 6) as any as S.Schema<StartFuotaTaskRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<StartFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6397,8 +5165,8 @@ export const startMulticastGroupSession: API.OperationMethod<
   StartMulticastGroupSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartMulticastGroupSessionRequest,
-  output: StartMulticastGroupSessionResponse,
+  input: __S(311, __c38, 7) as any as S.Schema<StartMulticastGroupSessionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<StartMulticastGroupSessionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6429,8 +5197,8 @@ export const startSingleWirelessDeviceImportTask: API.OperationMethod<
   StartSingleWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSingleWirelessDeviceImportTaskRequest,
-  output: StartSingleWirelessDeviceImportTaskResponse,
+  input: __S(313, __c39, 1) as any as S.Schema<StartSingleWirelessDeviceImportTaskRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<StartSingleWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6462,8 +5230,8 @@ export const startWirelessDeviceImportTask: API.OperationMethod<
   StartWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartWirelessDeviceImportTaskRequest,
-  output: StartWirelessDeviceImportTaskResponse,
+  input: __S(315, __c39, 3) as any as S.Schema<StartWirelessDeviceImportTaskRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<StartWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6494,8 +5262,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(316, __c39, 4) as any as S.Schema<TagResourceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -6525,8 +5293,8 @@ export const testWirelessDevice: API.OperationMethod<
   TestWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestWirelessDeviceRequest,
-  output: TestWirelessDeviceResponse,
+  input: __S(317, __c39, 5) as any as S.Schema<TestWirelessDeviceRequest>,
+  output: __S(318, __c39, 6) as any as S.Schema<TestWirelessDeviceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -6554,8 +5322,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(319, __c39, 7) as any as S.Schema<UntagResourceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -6584,8 +5352,8 @@ export const updateDestination: API.OperationMethod<
   UpdateDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDestinationRequest,
-  output: UpdateDestinationResponse,
+  input: __S(320, __c40, 0) as any as S.Schema<UpdateDestinationRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateDestinationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6613,8 +5381,8 @@ export const updateEventConfigurationByResourceTypes: API.OperationMethod<
   UpdateEventConfigurationByResourceTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventConfigurationByResourceTypesRequest,
-  output: UpdateEventConfigurationByResourceTypesResponse,
+  input: __S(321, __c40, 1) as any as S.Schema<UpdateEventConfigurationByResourceTypesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateEventConfigurationByResourceTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6643,8 +5411,8 @@ export const updateFuotaTask: API.OperationMethod<
   UpdateFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFuotaTaskRequest,
-  output: UpdateFuotaTaskResponse,
+  input: __S(322, __c40, 2) as any as S.Schema<UpdateFuotaTaskRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6677,8 +5445,8 @@ export const updateLogLevelsByResourceTypes: API.OperationMethod<
   UpdateLogLevelsByResourceTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLogLevelsByResourceTypesRequest,
-  output: UpdateLogLevelsByResourceTypesResponse,
+  input: __S(323, __c40, 3) as any as S.Schema<UpdateLogLevelsByResourceTypesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateLogLevelsByResourceTypesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6709,8 +5477,8 @@ export const updateMetricConfiguration: API.OperationMethod<
   UpdateMetricConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMetricConfigurationRequest,
-  output: UpdateMetricConfigurationResponse,
+  input: __S(324, __c40, 4) as any as S.Schema<UpdateMetricConfigurationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateMetricConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6741,8 +5509,8 @@ export const updateMulticastGroup: API.OperationMethod<
   UpdateMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMulticastGroupRequest,
-  output: UpdateMulticastGroupResponse,
+  input: __S(325, __c40, 5) as any as S.Schema<UpdateMulticastGroupRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6772,8 +5540,8 @@ export const updateNetworkAnalyzerConfiguration: API.OperationMethod<
   UpdateNetworkAnalyzerConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkAnalyzerConfigurationRequest,
-  output: UpdateNetworkAnalyzerConfigurationResponse,
+  input: __S(326, __c40, 6) as any as S.Schema<UpdateNetworkAnalyzerConfigurationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6801,8 +5569,8 @@ export const updatePartnerAccount: API.OperationMethod<
   UpdatePartnerAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePartnerAccountRequest,
-  output: UpdatePartnerAccountResponse,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdatePartnerAccountRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdatePartnerAccountResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -6833,8 +5601,8 @@ export const updatePosition: API.OperationMethod<
   UpdatePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePositionRequest,
-  output: UpdatePositionResponse,
+  input: __S(329, __c41, 1) as any as S.Schema<UpdatePositionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdatePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6864,8 +5632,8 @@ export const updateResourceEventConfiguration: API.OperationMethod<
   UpdateResourceEventConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceEventConfigurationRequest,
-  output: UpdateResourceEventConfigurationResponse,
+  input: __S(330, __c41, 2) as any as S.Schema<UpdateResourceEventConfigurationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateResourceEventConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6897,8 +5665,8 @@ export const updateResourcePosition: API.OperationMethod<
   UpdateResourcePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourcePositionRequest,
-  output: UpdateResourcePositionResponse,
+  input: __S(331, __c41, 3) as any as S.Schema<UpdateResourcePositionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateResourcePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6927,8 +5695,8 @@ export const updateWirelessDevice: API.OperationMethod<
   UpdateWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWirelessDeviceRequest,
-  output: UpdateWirelessDeviceResponse,
+  input: __S(335, __c41, 7) as any as S.Schema<UpdateWirelessDeviceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6958,8 +5726,8 @@ export const updateWirelessDeviceImportTask: API.OperationMethod<
   UpdateWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWirelessDeviceImportTaskRequest,
-  output: UpdateWirelessDeviceImportTaskResponse,
+  input: __S(337, __c42, 1) as any as S.Schema<UpdateWirelessDeviceImportTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6989,8 +5757,8 @@ export const updateWirelessGateway: API.OperationMethod<
   UpdateWirelessGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWirelessGatewayRequest,
-  output: UpdateWirelessGatewayResponse,
+  input: __S(338, __c42, 2) as any as S.Schema<UpdateWirelessGatewayRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -7018,13 +5786,13 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 2:
-      return S.Array(Tag);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Sidewalk: SidewalkAccountInfo,
+          Sidewalk: __S(0, __c0, 0),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/partner-accounts" }), svc, auth, proto, ver, rules),
         ),
@@ -7033,7 +5801,7 @@ function __c0(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Sidewalk: S.optional(SidewalkAccountInfo), Arn: S.optional(S.String) }),
+        S.Struct({ Sidewalk: S.optional(__S(0, __c0, 0)), Arn: S.optional(S.String) }),
       ).annotate({
         identifier: "AssociateAwsAccountWithPartnerAccountResponse",
       });
@@ -7158,11 +5926,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          ExpressionType: ExpressionType,
+          ExpressionType: S.String,
           Expression: S.String,
           Description: S.optional(S.String),
           RoleArn: S.String,
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(2, __c0, 2)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/destinations" }), svc, auth, proto, ver, rules),
@@ -7196,7 +5964,7 @@ function __c2(j: number): any {
           RxDrOffset1: S.optional(S.Number),
           RxDataRate2: S.optional(S.Number),
           RxFreq2: S.optional(S.Number),
-          FactoryPresetFreqsList: S.optional(FactoryPresetFreqsList),
+          FactoryPresetFreqsList: S.optional(__S(16, __c2, 0)),
           MaxEirp: S.optional(S.Number),
           MaxDutyCycle: S.optional(S.Number),
           RfRegion: S.optional(S.String),
@@ -7212,10 +5980,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANDeviceProfile),
-          Tags: S.optional(TagList),
+          LoRaWAN: S.optional(__S(17, __c2, 1)),
+          Tags: S.optional(__S(2, __c0, 2)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Sidewalk: S.optional(SidewalkCreateDeviceProfile),
+          Sidewalk: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/device-profiles" }), svc, auth, proto, ver, rules),
         ),
@@ -7229,7 +5997,7 @@ function __c2(j: number): any {
         identifier: "CreateDeviceProfileResponse",
       });
     case 5:
-      return S.suspend(() => S.Struct({ RfRegion: S.optional(SupportedRfRegion) })).annotate({
+      return S.suspend(() => S.Struct({ RfRegion: S.optional(S.String) })).annotate({
         identifier: "LoRaWANFuotaTask",
       });
     case 6:
@@ -7238,10 +6006,10 @@ function __c2(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LoRaWAN: S.optional(LoRaWANFuotaTask),
+          LoRaWAN: S.optional(__S(21, __c2, 5)),
           FirmwareUpdateImage: S.String,
           FirmwareUpdateRole: S.String,
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(2, __c0, 2)),
           RedundancyPercent: S.optional(S.Number),
           FragmentSizeBytes: S.optional(S.Number),
           FragmentIntervalMS: S.optional(S.Number),
@@ -7263,7 +6031,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          GatewayList: S.optional(GatewayListMulticast),
+          GatewayList: S.optional(__S(24, __c3, 0)),
           TransmissionInterval: S.optional(S.Number),
         }),
       ).annotate({
@@ -7278,10 +6046,10 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RfRegion: S.optional(SupportedRfRegion),
-          DlClass: S.optional(DlClass),
-          ParticipatingGateways: S.optional(ParticipatingGatewaysMulticast),
-          DefaultSessionParameters: S.optional(DefaultSessionParametersMulticast),
+          RfRegion: S.optional(S.String),
+          DlClass: S.optional(S.String),
+          ParticipatingGateways: S.optional(__S(25, __c3, 1)),
+          DefaultSessionParameters: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "LoRaWANMulticast" });
     case 4:
@@ -7290,8 +6058,8 @@ function __c3(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LoRaWAN: LoRaWANMulticast,
-          Tags: S.optional(TagList),
+          LoRaWAN: __S(27, __c3, 3),
+          Tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/multicast-groups" }), svc, auth, proto, ver, rules),
         ),
@@ -7301,22 +6069,22 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          WirelessDeviceFrameInfo: S.optional(WirelessDeviceFrameInfo),
-          LogLevel: S.optional(LogLevel),
-          MulticastFrameInfo: S.optional(MulticastFrameInfo),
+          WirelessDeviceFrameInfo: S.optional(S.String),
+          LogLevel: S.optional(S.String),
+          MulticastFrameInfo: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceContent" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          TraceContent: S.optional(TraceContent),
-          WirelessDevices: S.optional(WirelessDeviceList),
-          WirelessGateways: S.optional(WirelessGatewayList),
+          TraceContent: S.optional(__S(29, __c3, 5)),
+          WirelessDevices: S.optional(__S(24, __c3, 0)),
+          WirelessGateways: S.optional(__S(24, __c3, 0)),
           Description: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(2, __c0, 2)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          MulticastGroups: S.optional(NetworkAnalyzerMulticastGroupList),
+          MulticastGroups: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/network-analyzer-configurations" }),
@@ -7352,8 +6120,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANServiceProfile),
-          Tags: S.optional(TagList),
+          LoRaWAN: S.optional(__S(31, __c3, 7)),
+          Tags: S.optional(__S(2, __c0, 2)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/service-profiles" }), svc, auth, proto, ver, rules),
@@ -7391,7 +6159,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DevAddr: S.optional(S.String),
-          SessionKeys: S.optional(SessionKeysAbpV1_1),
+          SessionKeys: S.optional(__S(35, __c4, 3)),
           FCntStart: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AbpV1_1" });
@@ -7403,7 +6171,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DevAddr: S.optional(S.String),
-          SessionKeys: S.optional(SessionKeysAbpV1_0_x),
+          SessionKeys: S.optional(__S(37, __c4, 5)),
           FCntStart: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AbpV1_0_x" });
@@ -7423,20 +6191,20 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FPort: S.optional(S.Number),
-          Type: S.optional(ApplicationConfigType),
+          Type: S.optional(S.String),
           DestinationName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationConfig" });
     case 1:
-      return S.Array(ApplicationConfig);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Fuota: S.optional(S.Number),
           Multicast: S.optional(S.Number),
           ClockSync: S.optional(S.Number),
-          Positioning: S.optional(Positioning),
-          Applications: S.optional(Applications),
+          Positioning: S.optional(__S(39, __c4, 7)),
+          Applications: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "FPorts" });
     case 3:
@@ -7445,11 +6213,11 @@ function __c5(j: number): any {
           DevEui: S.optional(S.String),
           DeviceProfileId: S.optional(S.String),
           ServiceProfileId: S.optional(S.String),
-          OtaaV1_1: S.optional(OtaaV1_1),
-          OtaaV1_0_x: S.optional(OtaaV1_0_x),
-          AbpV1_1: S.optional(AbpV1_1),
-          AbpV1_0_x: S.optional(AbpV1_0_x),
-          FPorts: S.optional(FPorts),
+          OtaaV1_1: S.optional(__S(33, __c4, 1)),
+          OtaaV1_0_x: S.optional(__S(34, __c4, 2)),
+          AbpV1_1: S.optional(__S(36, __c4, 4)),
+          AbpV1_0_x: S.optional(__S(38, __c4, 6)),
+          FPorts: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "LoRaWANDevice" });
     case 4:
@@ -7460,7 +6228,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeviceProfileId: S.optional(S.String),
-          Positioning: S.optional(SidewalkPositioning),
+          Positioning: S.optional(__S(44, __c5, 4)),
           SidewalkManufacturingSn: S.optional(S.String),
         }),
       ).annotate({
@@ -7469,15 +6237,15 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Type: WirelessDeviceType,
+          Type: S.String,
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           DestinationName: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LoRaWAN: S.optional(LoRaWANDevice),
-          Tags: S.optional(TagList),
-          Positioning: S.optional(PositioningConfigStatus),
-          Sidewalk: S.optional(SidewalkCreateWirelessDevice),
+          LoRaWAN: S.optional(__S(43, __c5, 3)),
+          Tags: S.optional(__S(2, __c0, 2)),
+          Positioning: S.optional(S.String),
+          Sidewalk: S.optional(__S(45, __c5, 5)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/wireless-devices" }), svc, auth, proto, ver, rules),
         ),
@@ -7485,24 +6253,24 @@ function __c5(j: number): any {
         identifier: "CreateWirelessDeviceRequest",
       });
     case 7:
-      return S.Array(JoinEuiRange);
+      return S.Array(__S(24, __c3, 0));
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DataRate: S.optional(S.Number), Frequencies: S.optional(BeaconingFrequencies) }),
+        S.Struct({ DataRate: S.optional(S.Number), Frequencies: S.optional(__S(16, __c2, 0)) }),
       ).annotate({ identifier: "Beaconing" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           GatewayEui: S.optional(S.String),
           RfRegion: S.optional(S.String),
-          JoinEuiFilters: S.optional(JoinEuiFilters),
-          NetIdFilters: S.optional(NetIdFilters),
-          SubBands: S.optional(SubBands),
-          Beaconing: S.optional(Beaconing),
+          JoinEuiFilters: S.optional(__S(47, __c5, 7)),
+          NetIdFilters: S.optional(__S(24, __c3, 0)),
+          SubBands: S.optional(__S(16, __c2, 0)),
+          Beaconing: S.optional(__S(48, __c6, 0)),
           MaxEirp: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LoRaWANGateway" });
@@ -7511,8 +6279,8 @@ function __c6(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: LoRaWANGateway,
-          Tags: S.optional(TagList),
+          LoRaWAN: __S(49, __c6, 1),
+          Tags: S.optional(__S(2, __c0, 2)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -7549,7 +6317,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WirelessGatewayTaskDefinitionId: S.optional(S.String),
-          Status: S.optional(WirelessGatewayTaskStatus),
+          Status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateWirelessGatewayTaskResponse",
@@ -7567,8 +6335,8 @@ function __c6(j: number): any {
         S.Struct({
           UpdateSignature: S.optional(S.String),
           SigKeyCrc: S.optional(S.Number),
-          CurrentVersion: S.optional(LoRaWANGatewayVersion),
-          UpdateVersion: S.optional(LoRaWANGatewayVersion),
+          CurrentVersion: S.optional(__S(53, __c6, 5)),
+          UpdateVersion: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "LoRaWANUpdateGatewayTaskCreate",
@@ -7578,7 +6346,7 @@ function __c6(j: number): any {
         S.Struct({
           UpdateDataSource: S.optional(S.String),
           UpdateDataRole: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANUpdateGatewayTaskCreate),
+          LoRaWAN: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({
         identifier: "UpdateWirelessGatewayTaskCreate",
@@ -7592,9 +6360,9 @@ function __c7(j: number): any {
         S.Struct({
           AutoCreateTasks: S.Boolean,
           Name: S.optional(S.String),
-          Update: S.optional(UpdateWirelessGatewayTaskCreate),
+          Update: S.optional(__S(55, __c6, 7)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/wireless-gateway-task-definitions" }),
@@ -7693,9 +6461,7 @@ function __c7(j: number): any {
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           MessageId: S.String.pipe(T.HttpQuery("messageId")),
-          WirelessDeviceType: S.optional(WirelessDeviceType).pipe(
-            T.HttpQuery("WirelessDeviceType"),
-          ),
+          WirelessDeviceType: S.optional(S.String).pipe(T.HttpQuery("WirelessDeviceType")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/wireless-devices/{Id}/data" }),
@@ -7807,9 +6573,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          WirelessDeviceType: S.optional(WirelessDeviceType).pipe(
-            T.HttpQuery("WirelessDeviceType"),
-          ),
+          WirelessDeviceType: S.optional(S.String).pipe(T.HttpQuery("WirelessDeviceType")),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/wireless-devices/{Identifier}/deregister" }),
@@ -7827,7 +6591,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PartnerAccountId: S.String.pipe(T.HttpLabel("PartnerAccountId")),
-          PartnerType: PartnerType.pipe(T.HttpQuery("partnerType")),
+          PartnerType: S.String.pipe(T.HttpQuery("partnerType")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/partner-accounts/{PartnerAccountId}" }),
@@ -7972,7 +6736,7 @@ function __c9(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Expression: S.optional(S.String),
-          ExpressionType: S.optional(ExpressionType),
+          ExpressionType: S.optional(S.String),
           Description: S.optional(S.String),
           RoleArn: S.optional(S.String),
         }),
@@ -8005,13 +6769,13 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "DakCertificateMetadata" });
     case 2:
-      return S.Array(DakCertificateMetadata);
+      return S.Array(__S(81, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ApplicationServerPublicKey: S.optional(SensitiveString),
           QualificationStatus: S.optional(S.Boolean),
-          DakCertificateMetadata: S.optional(DakCertificateMetadataList),
+          DakCertificateMetadata: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "SidewalkGetDeviceProfile" });
     case 4:
@@ -8020,8 +6784,8 @@ function __c10(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Id: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANDeviceProfile),
-          Sidewalk: S.optional(SidewalkGetDeviceProfile),
+          LoRaWAN: S.optional(__S(17, __c2, 1)),
+          Sidewalk: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "GetDeviceProfileResponse" });
     case 5:
@@ -8040,15 +6804,13 @@ function __c10(j: number): any {
         identifier: "GetEventConfigurationByResourceTypesRequest",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ WirelessDeviceEventTopic: S.optional(EventNotificationTopicStatus) }),
-      ).annotate({
-        identifier: "SidewalkResourceTypeEventConfiguration",
-      });
+      return S.suspend(() => S.Struct({ WirelessDeviceEventTopic: S.optional(S.String) })).annotate(
+        {
+          identifier: "SidewalkResourceTypeEventConfiguration",
+        },
+      );
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Sidewalk: S.optional(SidewalkResourceTypeEventConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Sidewalk: S.optional(__S(86, __c10, 6)) })).annotate({
         identifier: "DeviceRegistrationStateResourceTypeEventConfiguration",
       });
   }
@@ -8056,33 +6818,27 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ LoRaWAN: S.optional(LoRaWANJoinResourceTypeEventConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(86, __c10, 6)) })).annotate({
         identifier: "JoinResourceTypeEventConfiguration",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ WirelessGatewayEventTopic: S.optional(EventNotificationTopicStatus) }),
+        S.Struct({ WirelessGatewayEventTopic: S.optional(S.String) }),
       ).annotate({
         identifier: "LoRaWANConnectionStatusResourceTypeEventConfiguration",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ LoRaWAN: S.optional(LoRaWANConnectionStatusResourceTypeEventConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(89, __c11, 1)) })).annotate({
         identifier: "ConnectionStatusResourceTypeEventConfiguration",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DeviceRegistrationState: S.optional(
-            DeviceRegistrationStateResourceTypeEventConfiguration,
-          ),
-          Proximity: S.optional(ProximityResourceTypeEventConfiguration),
-          Join: S.optional(JoinResourceTypeEventConfiguration),
-          ConnectionStatus: S.optional(ConnectionStatusResourceTypeEventConfiguration),
-          MessageDeliveryStatus: S.optional(MessageDeliveryStatusResourceTypeEventConfiguration),
+          DeviceRegistrationState: S.optional(__S(87, __c10, 7)),
+          Proximity: S.optional(__S(87, __c10, 7)),
+          Join: S.optional(__S(88, __c11, 0)),
+          ConnectionStatus: S.optional(__S(90, __c11, 2)),
+          MessageDeliveryStatus: S.optional(__S(87, __c10, 7)),
         }),
       ).annotate({
         identifier: "GetEventConfigurationByResourceTypesResponse",
@@ -8105,10 +6861,10 @@ function __c11(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           Id: S.optional(S.String),
-          Status: S.optional(FuotaTaskStatus),
+          Status: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANFuotaTaskGetInfo),
+          LoRaWAN: S.optional(__S(93, __c11, 5)),
           FirmwareUpdateImage: S.optional(S.String),
           FirmwareUpdateRole: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -8131,37 +6887,35 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Event: WirelessGatewayEvent, LogLevel: LogLevel }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Event: S.String, LogLevel: S.String })).annotate({
         identifier: "WirelessGatewayEventLogOption",
       });
     case 1:
-      return S.Array(WirelessGatewayEventLogOption);
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Type: WirelessGatewayType,
-          LogLevel: LogLevel,
-          Events: S.optional(WirelessGatewayEventLogOptionList),
+          Type: S.String,
+          LogLevel: S.String,
+          Events: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "WirelessGatewayLogOption" });
     case 3:
-      return S.Array(WirelessGatewayLogOption);
+      return S.Array(__S(98, __c12, 2));
     case 4:
-      return S.Array(WirelessDeviceEventLogOption);
+      return S.Array(__S(96, __c12, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Type: WirelessDeviceType,
-          LogLevel: LogLevel,
-          Events: S.optional(WirelessDeviceEventLogOptionList),
+          Type: S.String,
+          LogLevel: S.String,
+          Events: S.optional(__S(100, __c12, 4)),
         }),
       ).annotate({ identifier: "WirelessDeviceLogOption" });
     case 6:
-      return S.Array(WirelessDeviceLogOption);
+      return S.Array(__S(101, __c12, 5));
     case 7:
-      return S.suspend(() => S.Struct({ Event: FuotaTaskEvent, LogLevel: LogLevel })).annotate({
+      return S.suspend(() => S.Struct({ Event: S.String, LogLevel: S.String })).annotate({
         identifier: "FuotaTaskEventLogOption",
       });
   }
@@ -8169,24 +6923,24 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FuotaTaskEventLogOption);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Type: FuotaTaskType,
-          LogLevel: LogLevel,
-          Events: S.optional(FuotaTaskEventLogOptionList),
+          Type: S.String,
+          LogLevel: S.String,
+          Events: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "FuotaTaskLogOption" });
     case 2:
-      return S.Array(FuotaTaskLogOption);
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DefaultLogLevel: S.optional(LogLevel),
-          WirelessGatewayLogOptions: S.optional(WirelessGatewayLogOptionList),
-          WirelessDeviceLogOptions: S.optional(WirelessDeviceLogOptionList),
-          FuotaTaskLogOptions: S.optional(FuotaTaskLogOptionList),
+          DefaultLogLevel: S.optional(S.String),
+          WirelessGatewayLogOptions: S.optional(__S(99, __c12, 3)),
+          WirelessDeviceLogOptions: S.optional(__S(102, __c12, 6)),
+          FuotaTaskLogOptions: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({
         identifier: "GetLogLevelsByResourceTypesResponse",
@@ -8207,43 +6961,39 @@ function __c13(j: number): any {
         identifier: "GetMetricConfigurationRequest",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ Status: S.optional(SummaryMetricConfigurationStatus) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
         identifier: "SummaryMetricConfiguration",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ SummaryMetric: S.optional(SummaryMetricConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ SummaryMetric: S.optional(__S(109, __c13, 5)) })).annotate({
         identifier: "GetMetricConfigurationResponse",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(DimensionName), value: S.optional(S.String) }),
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Dimension" });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Dimension);
+      return S.Array(__S(111, __c13, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           QueryId: S.optional(S.String),
-          MetricName: S.optional(MetricName),
-          Dimensions: S.optional(Dimensions),
-          AggregationPeriod: S.optional(AggregationPeriod),
+          MetricName: S.optional(S.String),
+          Dimensions: S.optional(__S(112, __c14, 0)),
+          AggregationPeriod: S.optional(S.String),
           StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SummaryMetricQuery" });
     case 2:
-      return S.Array(SummaryMetricQuery);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ SummaryMetricQueries: S.optional(SummaryMetricQueries) }).pipe(
+        S.Struct({ SummaryMetricQueries: S.optional(__S(114, __c14, 2)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/metrics" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetMetricsRequest" });
@@ -8261,20 +7011,20 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "MetricQueryValue" });
     case 6:
-      return S.Array(MetricQueryValue);
+      return S.Array(__S(117, __c14, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           QueryId: S.optional(S.String),
-          QueryStatus: S.optional(MetricQueryStatus),
+          QueryStatus: S.optional(S.String),
           Error: S.optional(S.String),
-          MetricName: S.optional(MetricName),
-          Dimensions: S.optional(Dimensions),
-          AggregationPeriod: S.optional(AggregationPeriod),
+          MetricName: S.optional(S.String),
+          Dimensions: S.optional(__S(112, __c14, 0)),
+          AggregationPeriod: S.optional(S.String),
           StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Timestamps: S.optional(MetricQueryTimestamps),
-          Values: S.optional(MetricQueryValues),
+          Timestamps: S.optional(__S(116, __c14, 4)),
+          Values: S.optional(__S(118, __c14, 6)),
           Unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "SummaryMetricQueryResult" });
@@ -8283,10 +7033,10 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SummaryMetricQueryResult);
+      return S.Array(__S(119, __c14, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ SummaryMetricQueryResults: S.optional(SummaryMetricQueryResults) }),
+        S.Struct({ SummaryMetricQueryResults: S.optional(__S(120, __c15, 0)) }),
       ).annotate({ identifier: "GetMetricsResponse" });
     case 2:
       return S.suspend(() =>
@@ -8304,12 +7054,12 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RfRegion: S.optional(SupportedRfRegion),
-          DlClass: S.optional(DlClass),
+          RfRegion: S.optional(S.String),
+          DlClass: S.optional(S.String),
           NumberOfDevicesRequested: S.optional(S.Number),
           NumberOfDevicesInGroup: S.optional(S.Number),
-          ParticipatingGateways: S.optional(ParticipatingGatewaysMulticast),
-          DefaultSessionParameters: S.optional(DefaultSessionParametersMulticast),
+          ParticipatingGateways: S.optional(__S(25, __c3, 1)),
+          DefaultSessionParameters: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "LoRaWANMulticastGet" });
     case 4:
@@ -8320,7 +7070,7 @@ function __c15(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Status: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANMulticastGet),
+          LoRaWAN: S.optional(__S(123, __c15, 3)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -8352,7 +7102,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "LoRaWANMulticastSession" });
     case 7:
-      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(LoRaWANMulticastSession) })).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(126, __c15, 6)) })).annotate({
         identifier: "GetMulticastGroupSessionResponse",
       });
   }
@@ -8377,13 +7127,13 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TraceContent: S.optional(TraceContent),
-          WirelessDevices: S.optional(WirelessDeviceList),
-          WirelessGateways: S.optional(WirelessGatewayList),
+          TraceContent: S.optional(__S(29, __c3, 5)),
+          WirelessDevices: S.optional(__S(24, __c3, 0)),
+          WirelessGateways: S.optional(__S(24, __c3, 0)),
           Description: S.optional(S.String),
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
-          MulticastGroups: S.optional(NetworkAnalyzerMulticastGroupList),
+          MulticastGroups: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "GetNetworkAnalyzerConfigurationResponse",
@@ -8392,7 +7142,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PartnerAccountId: S.String.pipe(T.HttpLabel("PartnerAccountId")),
-          PartnerType: PartnerType.pipe(T.HttpQuery("partnerType")),
+          PartnerType: S.String.pipe(T.HttpQuery("partnerType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/partner-accounts/{PartnerAccountId}" }),
@@ -8417,7 +7167,7 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Sidewalk: S.optional(SidewalkAccountInfoWithFingerprint),
+          Sidewalk: S.optional(__S(131, __c16, 3)),
           AccountLinked: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -8427,7 +7177,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
-          ResourceType: PositionResourceType.pipe(T.HttpQuery("resourceType")),
+          ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/positions/{ResourceIdentifier}" }),
@@ -8449,10 +7199,10 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Position: S.optional(PositionCoordinate),
-          Accuracy: S.optional(Accuracy),
-          SolverType: S.optional(PositionSolverType),
-          SolverProvider: S.optional(PositionSolverProvider),
+          Position: S.optional(__S(16, __c2, 0)),
+          Accuracy: S.optional(__S(134, __c16, 6)),
+          SolverType: S.optional(S.String),
+          SolverProvider: S.optional(S.String),
           SolverVersion: S.optional(S.String),
           Timestamp: S.optional(S.String),
         }),
@@ -8465,7 +7215,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
-          ResourceType: PositionResourceType.pipe(T.HttpQuery("resourceType")),
+          ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/position-configurations/{ResourceIdentifier}" }),
@@ -8482,19 +7232,19 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Provider: S.optional(PositionSolverProvider),
-          Type: S.optional(PositionSolverType),
-          Status: S.optional(PositionConfigurationStatus),
-          Fec: S.optional(PositionConfigurationFec),
+          Provider: S.optional(S.String),
+          Type: S.optional(S.String),
+          Status: S.optional(S.String),
+          Fec: S.optional(S.String),
         }),
       ).annotate({ identifier: "SemtechGnssDetail" });
     case 2:
-      return S.suspend(() => S.Struct({ SemtechGnss: S.optional(SemtechGnssDetail) })).annotate({
+      return S.suspend(() => S.Struct({ SemtechGnss: S.optional(__S(137, __c17, 1)) })).annotate({
         identifier: "PositionSolverDetails",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Solvers: S.optional(PositionSolverDetails), Destination: S.optional(S.String) }),
+        S.Struct({ Solvers: S.optional(__S(138, __c17, 2)), Destination: S.optional(S.String) }),
       ).annotate({
         identifier: "GetPositionConfigurationResponse",
       });
@@ -8503,7 +7253,7 @@ function __c17(j: number): any {
         identifier: "WiFiAccessPoint",
       });
     case 5:
-      return S.Array(WiFiAccessPoint);
+      return S.Array(__S(140, __c17, 4));
     case 6:
       return S.suspend(() => S.Struct({ Bsic: S.Number, Bcch: S.Number })).annotate({
         identifier: "GsmLocalId",
@@ -8522,11 +7272,11 @@ function __c18(j: number): any {
           Bsic: S.Number,
           Bcch: S.Number,
           RxLevel: S.optional(S.Number),
-          GlobalIdentity: S.optional(GlobalIdentity),
+          GlobalIdentity: S.optional(__S(143, __c17, 7)),
         }),
       ).annotate({ identifier: "GsmNmrObj" });
     case 1:
-      return S.Array(GsmNmrObj);
+      return S.Array(__S(144, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8534,14 +7284,14 @@ function __c18(j: number): any {
           Mnc: S.Number,
           Lac: S.Number,
           GeranCid: S.Number,
-          GsmLocalId: S.optional(GsmLocalId),
+          GsmLocalId: S.optional(__S(142, __c17, 6)),
           GsmTimingAdvance: S.optional(S.Number),
           RxLevel: S.optional(S.Number),
-          GsmNmr: S.optional(GsmNmrList),
+          GsmNmr: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({ identifier: "GsmObj" });
     case 3:
-      return S.Array(GsmObj);
+      return S.Array(__S(146, __c18, 2));
     case 4:
       return S.suspend(() => S.Struct({ Uarfcndl: S.Number, Psc: S.Number })).annotate({
         identifier: "WcdmaLocalId",
@@ -8557,7 +7307,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "WcdmaNmrObj" });
     case 6:
-      return S.Array(WcdmaNmrObj);
+      return S.Array(__S(149, __c18, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8565,10 +7315,10 @@ function __c18(j: number): any {
           Mnc: S.Number,
           Lac: S.optional(S.Number),
           UtranCid: S.Number,
-          WcdmaLocalId: S.optional(WcdmaLocalId),
+          WcdmaLocalId: S.optional(__S(148, __c18, 4)),
           Rscp: S.optional(S.Number),
           PathLoss: S.optional(S.Number),
-          WcdmaNmr: S.optional(WcdmaNmrList),
+          WcdmaNmr: S.optional(__S(150, __c18, 6)),
         }),
       ).annotate({ identifier: "WcdmaObj" });
   }
@@ -8576,7 +7326,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WcdmaObj);
+      return S.Array(__S(151, __c18, 7));
     case 1:
       return S.suspend(() => S.Struct({ Uarfcn: S.Number, CellParams: S.Number })).annotate({
         identifier: "TdscdmaLocalId",
@@ -8592,7 +7342,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "TdscdmaNmrObj" });
     case 3:
-      return S.Array(TdscdmaNmrObj);
+      return S.Array(__S(154, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8600,15 +7350,15 @@ function __c19(j: number): any {
           Mnc: S.Number,
           Lac: S.optional(S.Number),
           UtranCid: S.Number,
-          TdscdmaLocalId: S.optional(TdscdmaLocalId),
+          TdscdmaLocalId: S.optional(__S(153, __c19, 1)),
           TdscdmaTimingAdvance: S.optional(S.Number),
           Rscp: S.optional(S.Number),
           PathLoss: S.optional(S.Number),
-          TdscdmaNmr: S.optional(TdscdmaNmrList),
+          TdscdmaNmr: S.optional(__S(155, __c19, 3)),
         }),
       ).annotate({ identifier: "TdscdmaObj" });
     case 5:
-      return S.Array(TdscdmaObj);
+      return S.Array(__S(156, __c19, 4));
     case 6:
       return S.suspend(() => S.Struct({ Pci: S.Number, Earfcn: S.Number })).annotate({
         identifier: "LteLocalId",
@@ -8628,7 +7378,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LteNmrObj);
+      return S.Array(__S(159, __c19, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8636,16 +7386,16 @@ function __c20(j: number): any {
           Mnc: S.Number,
           EutranCid: S.Number,
           Tac: S.optional(S.Number),
-          LteLocalId: S.optional(LteLocalId),
+          LteLocalId: S.optional(__S(158, __c19, 6)),
           LteTimingAdvance: S.optional(S.Number),
           Rsrp: S.optional(S.Number),
           Rsrq: S.optional(S.Number),
           NrCapable: S.optional(S.Boolean),
-          LteNmr: S.optional(LteNmrList),
+          LteNmr: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "LteObj" });
     case 2:
-      return S.Array(LteObj);
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() => S.Struct({ PnOffset: S.Number, CdmaChannel: S.Number })).annotate({
         identifier: "CdmaLocalId",
@@ -8660,7 +7410,7 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "CdmaNmrObj" });
     case 5:
-      return S.Array(CdmaNmrObj);
+      return S.Array(__S(164, __c20, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8668,15 +7418,15 @@ function __c20(j: number): any {
           NetworkId: S.Number,
           BaseStationId: S.Number,
           RegistrationZone: S.optional(S.Number),
-          CdmaLocalId: S.optional(CdmaLocalId),
+          CdmaLocalId: S.optional(__S(163, __c20, 3)),
           PilotPower: S.optional(S.Number),
           BaseLat: S.optional(S.Number),
           BaseLng: S.optional(S.Number),
-          CdmaNmr: S.optional(CdmaNmrList),
+          CdmaNmr: S.optional(__S(165, __c20, 5)),
         }),
       ).annotate({ identifier: "CdmaObj" });
     case 7:
-      return S.Array(CdmaObj);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -8684,11 +7434,11 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Gsm: S.optional(GsmList),
-          Wcdma: S.optional(WcdmaList),
-          Tdscdma: S.optional(TdscdmaList),
-          Lte: S.optional(LteList),
-          Cdma: S.optional(CdmaList),
+          Gsm: S.optional(__S(147, __c18, 3)),
+          Wcdma: S.optional(__S(152, __c19, 0)),
+          Tdscdma: S.optional(__S(157, __c19, 5)),
+          Lte: S.optional(__S(162, __c20, 2)),
+          Cdma: S.optional(__S(167, __c20, 7)),
         }),
       ).annotate({ identifier: "CellTowers" });
     case 1:
@@ -8701,7 +7451,7 @@ function __c21(j: number): any {
           Payload: S.String,
           CaptureTime: S.optional(S.Number),
           CaptureTimeAccuracy: S.optional(S.Number),
-          AssistPosition: S.optional(AssistPosition),
+          AssistPosition: S.optional(__S(16, __c2, 0)),
           AssistAltitude: S.optional(S.Number),
           Use2DSolver: S.optional(S.Boolean),
         }),
@@ -8711,13 +7461,13 @@ function __c21(j: number): any {
         S.Struct({ Payload: S.String, CaptureTime: S.optional(S.Number) }),
       ).annotate({ identifier: "GnssCapture" });
     case 4:
-      return S.Array(GnssCapture);
+      return S.Array(__S(171, __c21, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Captures: GnssCaptures,
+          Captures: __S(172, __c21, 4),
           CaptureTimeAccuracy: S.optional(S.Number),
-          AssistPosition: S.optional(AssistPosition),
+          AssistPosition: S.optional(__S(16, __c2, 0)),
           AssistAltitude: S.optional(S.Number),
           Use2DSolver: S.optional(S.Boolean),
         }),
@@ -8727,7 +7477,7 @@ function __c21(j: number): any {
         identifier: "WiFiCellular",
       });
     case 7:
-      return S.suspend(() => S.Struct({ WiFiCellular: S.optional(WiFiCellular) })).annotate({
+      return S.suspend(() => S.Struct({ WiFiCellular: S.optional(__S(174, __c21, 6)) })).annotate({
         identifier: "AdvancedConfiguration",
       });
   }
@@ -8737,13 +7487,13 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          WiFiAccessPoints: S.optional(WiFiAccessPoints),
-          CellTowers: S.optional(CellTowers),
-          Ip: S.optional(Ip),
-          Gnss: S.optional(Gnss),
-          GnssMultiFrame: S.optional(GnssMultiFrame),
+          WiFiAccessPoints: S.optional(__S(141, __c17, 5)),
+          CellTowers: S.optional(__S(168, __c21, 0)),
+          Ip: S.optional(__S(169, __c21, 1)),
+          Gnss: S.optional(__S(170, __c21, 2)),
+          GnssMultiFrame: S.optional(__S(173, __c21, 5)),
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AdvancedConfiguration: S.optional(AdvancedConfiguration),
+          AdvancedConfiguration: S.optional(__S(175, __c21, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/position-estimate" }),
@@ -8767,8 +7517,8 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          IdentifierType: IdentifierType.pipe(T.HttpQuery("identifierType")),
-          PartnerType: S.optional(EventNotificationPartnerType).pipe(T.HttpQuery("partnerType")),
+          IdentifierType: S.String.pipe(T.HttpQuery("identifierType")),
+          PartnerType: S.optional(S.String).pipe(T.HttpQuery("partnerType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/event-configurations/{Identifier}" }),
@@ -8783,37 +7533,31 @@ function __c22(j: number): any {
         identifier: "GetResourceEventConfigurationRequest",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ AmazonIdEventTopic: S.optional(EventNotificationTopicStatus) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ AmazonIdEventTopic: S.optional(S.String) })).annotate({
         identifier: "SidewalkEventNotificationConfigurations",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Sidewalk: S.optional(SidewalkEventNotificationConfigurations),
-          WirelessDeviceIdEventTopic: S.optional(EventNotificationTopicStatus),
+          Sidewalk: S.optional(__S(179, __c22, 3)),
+          WirelessDeviceIdEventTopic: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeviceRegistrationStateEventConfiguration",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ DevEuiEventTopic: S.optional(EventNotificationTopicStatus) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ DevEuiEventTopic: S.optional(S.String) })).annotate({
         identifier: "LoRaWANJoinEventNotificationConfigurations",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LoRaWAN: S.optional(LoRaWANJoinEventNotificationConfigurations),
-          WirelessDeviceIdEventTopic: S.optional(EventNotificationTopicStatus),
+          LoRaWAN: S.optional(__S(181, __c22, 5)),
+          WirelessDeviceIdEventTopic: S.optional(S.String),
         }),
       ).annotate({ identifier: "JoinEventConfiguration" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ GatewayEuiEventTopic: S.optional(EventNotificationTopicStatus) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ GatewayEuiEventTopic: S.optional(S.String) })).annotate({
         identifier: "LoRaWANConnectionStatusEventNotificationConfigurations",
       });
   }
@@ -8823,8 +7567,8 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          LoRaWAN: S.optional(LoRaWANConnectionStatusEventNotificationConfigurations),
-          WirelessGatewayIdEventTopic: S.optional(EventNotificationTopicStatus),
+          LoRaWAN: S.optional(__S(183, __c22, 7)),
+          WirelessGatewayIdEventTopic: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectionStatusEventConfiguration",
@@ -8832,11 +7576,11 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DeviceRegistrationState: S.optional(DeviceRegistrationStateEventConfiguration),
-          Proximity: S.optional(ProximityEventConfiguration),
-          Join: S.optional(JoinEventConfiguration),
-          ConnectionStatus: S.optional(ConnectionStatusEventConfiguration),
-          MessageDeliveryStatus: S.optional(MessageDeliveryStatusEventConfiguration),
+          DeviceRegistrationState: S.optional(__S(180, __c22, 4)),
+          Proximity: S.optional(__S(180, __c22, 4)),
+          Join: S.optional(__S(182, __c22, 6)),
+          ConnectionStatus: S.optional(__S(184, __c23, 0)),
+          MessageDeliveryStatus: S.optional(__S(180, __c22, 4)),
         }),
       ).annotate({
         identifier: "GetResourceEventConfigurationResponse",
@@ -8860,14 +7604,14 @@ function __c23(j: number): any {
         identifier: "GetResourceLogLevelRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ LogLevel: S.optional(LogLevel) })).annotate({
+      return S.suspend(() => S.Struct({ LogLevel: S.optional(S.String) })).annotate({
         identifier: "GetResourceLogLevelResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
-          ResourceType: PositionResourceType.pipe(T.HttpQuery("resourceType")),
+          ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/resource-positions/{ResourceIdentifier}" }),
@@ -8884,7 +7628,7 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ServiceType: S.optional(WirelessGatewayServiceType).pipe(T.HttpQuery("serviceType")),
+          ServiceType: S.optional(S.String).pipe(T.HttpQuery("serviceType")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/service-endpoint" }), svc, auth, proto, ver, rules),
         ),
@@ -8894,7 +7638,7 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ServiceType: S.optional(WirelessGatewayServiceType),
+          ServiceType: S.optional(S.String),
           ServiceEndpoint: S.optional(S.String),
           ServerTrust: S.optional(S.String),
         }),
@@ -8954,7 +7698,7 @@ function __c24(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Id: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANGetServiceProfileInfo),
+          LoRaWAN: S.optional(__S(192, __c24, 0)),
         }),
       ).annotate({
         identifier: "GetServiceProfileResponse",
@@ -8963,7 +7707,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          IdentifierType: WirelessDeviceIdType.pipe(T.HttpQuery("identifierType")),
+          IdentifierType: S.String.pipe(T.HttpQuery("identifierType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/wireless-devices/{Identifier}" }),
@@ -8976,29 +7720,29 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "GetWirelessDeviceRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ SigningAlg: SigningAlg, Value: S.String })).annotate({
+      return S.suspend(() => S.Struct({ SigningAlg: S.String, Value: S.String })).annotate({
         identifier: "CertificateList",
       });
     case 4:
-      return S.Array(CertificateList);
+      return S.Array(__S(195, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           AmazonId: S.optional(S.String),
           SidewalkId: S.optional(S.String),
           SidewalkManufacturingSn: S.optional(S.String),
-          DeviceCertificates: S.optional(DeviceCertificateList),
-          PrivateKeys: S.optional(PrivateKeysList),
+          DeviceCertificates: S.optional(__S(196, __c24, 4)),
+          PrivateKeys: S.optional(__S(196, __c24, 4)),
           DeviceProfileId: S.optional(S.String),
           CertificateId: S.optional(S.String),
-          Status: S.optional(WirelessDeviceSidewalkStatus),
-          Positioning: S.optional(SidewalkPositioning),
+          Status: S.optional(S.String),
+          Positioning: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "SidewalkDevice" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(WirelessDeviceType),
+          Type: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           DestinationName: S.optional(S.String),
@@ -9006,9 +7750,9 @@ function __c24(j: number): any {
           Arn: S.optional(S.String),
           ThingName: S.optional(S.String),
           ThingArn: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANDevice),
-          Sidewalk: S.optional(SidewalkDevice),
-          Positioning: S.optional(PositioningConfigStatus),
+          LoRaWAN: S.optional(__S(43, __c5, 3)),
+          Sidewalk: S.optional(__S(197, __c24, 5)),
+          Positioning: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWirelessDeviceResponse",
@@ -9035,9 +7779,9 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DeviceCreationFileList: S.optional(DeviceCreationFileList),
+          DeviceCreationFileList: S.optional(__S(24, __c3, 0)),
           Role: S.optional(S.String),
-          Positioning: S.optional(SidewalkPositioning),
+          Positioning: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({
         identifier: "SidewalkGetStartImportInfo",
@@ -9048,10 +7792,10 @@ function __c25(j: number): any {
           Id: S.optional(S.String),
           Arn: S.optional(S.String),
           DestinationName: S.optional(S.String),
-          Positioning: S.optional(PositioningConfigStatus),
-          Sidewalk: S.optional(SidewalkGetStartImportInfo),
+          Positioning: S.optional(S.String),
+          Sidewalk: S.optional(__S(200, __c25, 0)),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(ImportTaskStatus),
+          Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
           InitializedImportedDeviceCount: S.optional(S.Number),
           PendingImportedDeviceCount: S.optional(S.Number),
@@ -9085,7 +7829,7 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "LoRaWANGatewayMetadata" });
     case 4:
-      return S.Array(LoRaWANGatewayMetadata);
+      return S.Array(__S(203, __c25, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -9100,7 +7844,7 @@ function __c25(j: number): any {
         identifier: "LoRaWANPublicGatewayMetadata",
       });
     case 6:
-      return S.Array(LoRaWANPublicGatewayMetadata);
+      return S.Array(__S(205, __c25, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9109,8 +7853,8 @@ function __c25(j: number): any {
           DataRate: S.optional(S.Number),
           Frequency: S.optional(S.Number),
           Timestamp: S.optional(S.String),
-          Gateways: S.optional(LoRaWANGatewayMetadataList),
-          PublicGateways: S.optional(LoRaWANPublicGatewayMetadataList),
+          Gateways: S.optional(__S(204, __c25, 4)),
+          PublicGateways: S.optional(__S(206, __c25, 6)),
         }),
       ).annotate({ identifier: "LoRaWANDeviceMetadata" });
   }
@@ -9121,9 +7865,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Rssi: S.optional(S.Number),
-          BatteryLevel: S.optional(BatteryLevel),
-          Event: S.optional(Event),
-          DeviceState: S.optional(DeviceState),
+          BatteryLevel: S.optional(S.String),
+          Event: S.optional(S.String),
+          DeviceState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SidewalkDeviceMetadata" });
     case 1:
@@ -9131,8 +7875,8 @@ function __c26(j: number): any {
         S.Struct({
           WirelessDeviceId: S.optional(S.String),
           LastUplinkReceivedAt: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANDeviceMetadata),
-          Sidewalk: S.optional(SidewalkDeviceMetadata),
+          LoRaWAN: S.optional(__S(207, __c25, 7)),
+          Sidewalk: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({
         identifier: "GetWirelessDeviceStatisticsResponse",
@@ -9141,7 +7885,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          IdentifierType: WirelessGatewayIdType.pipe(T.HttpQuery("identifierType")),
+          IdentifierType: S.String.pipe(T.HttpQuery("identifierType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/wireless-gateways/{Identifier}" }),
@@ -9161,7 +7905,7 @@ function __c26(j: number): any {
           Name: S.optional(S.String),
           Id: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANGateway),
+          LoRaWAN: S.optional(__S(49, __c6, 1)),
           Arn: S.optional(S.String),
           ThingName: S.optional(S.String),
           ThingArn: S.optional(S.String),
@@ -9209,9 +7953,7 @@ function __c26(j: number): any {
         identifier: "GetWirelessGatewayFirmwareInformationRequest",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ CurrentVersion: S.optional(LoRaWANGatewayVersion) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ CurrentVersion: S.optional(__S(53, __c6, 5)) })).annotate({
         identifier: "LoRaWANGatewayCurrentVersion",
       });
   }
@@ -9219,9 +7961,7 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ LoRaWAN: S.optional(LoRaWANGatewayCurrentVersion) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(215, __c26, 7)) })).annotate({
         identifier: "GetWirelessGatewayFirmwareInformationResponse",
       });
     case 1:
@@ -9244,7 +7984,7 @@ function __c27(j: number): any {
         S.Struct({
           WirelessGatewayId: S.optional(S.String),
           LastUplinkReceivedAt: S.optional(S.String),
-          ConnectionStatus: S.optional(ConnectionStatus),
+          ConnectionStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWirelessGatewayStatisticsResponse",
@@ -9271,7 +8011,7 @@ function __c27(j: number): any {
           WirelessGatewayTaskDefinitionId: S.optional(S.String),
           LastUplinkReceivedAt: S.optional(S.String),
           TaskCreatedAt: S.optional(S.String),
-          Status: S.optional(WirelessGatewayTaskStatus),
+          Status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWirelessGatewayTaskResponse",
@@ -9296,7 +8036,7 @@ function __c27(j: number): any {
         S.Struct({
           AutoCreateTasks: S.optional(S.Boolean),
           Name: S.optional(S.String),
-          Update: S.optional(UpdateWirelessGatewayTaskCreate),
+          Update: S.optional(__S(55, __c6, 7)),
           Arn: S.optional(S.String),
         }),
       ).annotate({
@@ -9320,24 +8060,27 @@ function __c28(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
-          ExpressionType: S.optional(ExpressionType),
+          ExpressionType: S.optional(S.String),
           Expression: S.optional(S.String),
           Description: S.optional(S.String),
           RoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Destinations" });
     case 1:
-      return S.Array(Destinations);
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), DestinationList: S.optional(DestinationList) }),
+        S.Struct({
+          NextToken: S.optional(S.String),
+          DestinationList: S.optional(__S(225, __c28, 1)),
+        }),
       ).annotate({ identifier: "ListDestinationsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          DeviceProfileType: S.optional(DeviceProfileType).pipe(T.HttpQuery("deviceProfileType")),
+          DeviceProfileType: S.optional(S.String).pipe(T.HttpQuery("deviceProfileType")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/device-profiles" }), svc, auth, proto, ver, rules),
         ),
@@ -9353,12 +8096,12 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "DeviceProfile" });
     case 5:
-      return S.Array(DeviceProfile);
+      return S.Array(__S(228, __c28, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          DeviceProfileList: S.optional(DeviceProfileList),
+          DeviceProfileList: S.optional(__S(229, __c28, 5)),
         }),
       ).annotate({
         identifier: "ListDeviceProfilesResponse",
@@ -9369,7 +8112,7 @@ function __c28(j: number): any {
           Id: S.String.pipe(T.HttpQuery("id")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          Status: S.optional(OnboardStatus).pipe(T.HttpQuery("status")),
+          Status: S.optional(S.String).pipe(T.HttpQuery("status")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/wireless_device_import_task" }),
@@ -9388,32 +8131,32 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Positioning: S.optional(SidewalkPositioning) })).annotate({
+      return S.suspend(() => S.Struct({ Positioning: S.optional(__S(44, __c5, 4)) })).annotate({
         identifier: "SidewalkListDevicesForImportInfo",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SidewalkManufacturingSn: S.optional(S.String),
-          OnboardingStatus: S.optional(OnboardStatus),
+          OnboardingStatus: S.optional(S.String),
           OnboardingStatusReason: S.optional(S.String),
           LastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ImportedSidewalkDevice" });
     case 2:
-      return S.suspend(() => S.Struct({ Sidewalk: S.optional(ImportedSidewalkDevice) })).annotate({
+      return S.suspend(() => S.Struct({ Sidewalk: S.optional(__S(233, __c29, 1)) })).annotate({
         identifier: "ImportedWirelessDevice",
       });
     case 3:
-      return S.Array(ImportedWirelessDevice);
+      return S.Array(__S(234, __c29, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           DestinationName: S.optional(S.String),
-          Positioning: S.optional(PositioningConfigStatus),
-          Sidewalk: S.optional(SidewalkListDevicesForImportInfo),
-          ImportedWirelessDeviceList: S.optional(ImportedWirelessDeviceList),
+          Positioning: S.optional(S.String),
+          Sidewalk: S.optional(__S(232, __c29, 0)),
+          ImportedWirelessDeviceList: S.optional(__S(235, __c29, 3)),
         }),
       ).annotate({
         identifier: "ListDevicesForWirelessDeviceImportTaskResponse",
@@ -9421,7 +8164,7 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: EventNotificationResourceType.pipe(T.HttpQuery("resourceType")),
+          ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -9441,13 +8184,13 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.optional(S.String),
-          IdentifierType: S.optional(IdentifierType),
-          PartnerType: S.optional(EventNotificationPartnerType),
-          Events: S.optional(EventNotificationItemConfigurations),
+          IdentifierType: S.optional(S.String),
+          PartnerType: S.optional(S.String),
+          Events: S.optional(__S(185, __c23, 1)),
         }),
       ).annotate({ identifier: "EventConfigurationItem" });
     case 7:
-      return S.Array(EventConfigurationItem);
+      return S.Array(__S(238, __c29, 6));
   }
 }
 function __c30(j: number): any {
@@ -9456,7 +8199,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          EventConfigurationsList: S.optional(EventConfigurationsList),
+          EventConfigurationsList: S.optional(__S(239, __c29, 7)),
         }),
       ).annotate({
         identifier: "ListEventConfigurationsResponse",
@@ -9479,10 +8222,13 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "FuotaTask" });
     case 3:
-      return S.Array(FuotaTask);
+      return S.Array(__S(242, __c30, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), FuotaTaskList: S.optional(FuotaTaskList) }),
+        S.Struct({
+          NextToken: S.optional(S.String),
+          FuotaTaskList: S.optional(__S(243, __c30, 3)),
+        }),
       ).annotate({ identifier: "ListFuotaTasksResponse" });
     case 5:
       return S.suspend(() =>
@@ -9499,7 +8245,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MulticastGroupList: S.optional(MulticastGroupList),
+          MulticastGroupList: S.optional(__S(243, __c30, 3)),
         }),
       ).annotate({
         identifier: "ListMulticastGroupsResponse",
@@ -9532,12 +8278,12 @@ function __c31(j: number): any {
         identifier: "MulticastGroupByFuotaTask",
       });
     case 1:
-      return S.Array(MulticastGroupByFuotaTask);
+      return S.Array(__S(248, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MulticastGroupList: S.optional(MulticastGroupListByFuotaTask),
+          MulticastGroupList: S.optional(__S(249, __c31, 1)),
         }),
       ).annotate({
         identifier: "ListMulticastGroupsByFuotaTaskResponse",
@@ -9561,12 +8307,12 @@ function __c31(j: number): any {
         identifier: "ListNetworkAnalyzerConfigurationsRequest",
       });
     case 4:
-      return S.Array(NetworkAnalyzerConfigurations);
+      return S.Array(__S(15, __c1, 7));
     case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          NetworkAnalyzerConfigurationList: S.optional(NetworkAnalyzerConfigurationList),
+          NetworkAnalyzerConfigurationList: S.optional(__S(252, __c31, 4)),
         }),
       ).annotate({
         identifier: "ListNetworkAnalyzerConfigurationsResponse",
@@ -9583,21 +8329,21 @@ function __c31(j: number): any {
         identifier: "ListPartnerAccountsRequest",
       });
     case 7:
-      return S.Array(SidewalkAccountInfoWithFingerprint);
+      return S.Array(__S(131, __c16, 3));
   }
 }
 function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Sidewalk: S.optional(SidewalkAccountList) }),
+        S.Struct({ NextToken: S.optional(S.String), Sidewalk: S.optional(__S(255, __c31, 7)) }),
       ).annotate({
         identifier: "ListPartnerAccountsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: S.optional(PositionResourceType).pipe(T.HttpQuery("resourceType")),
+          ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -9617,19 +8363,19 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.optional(S.String),
-          ResourceType: S.optional(PositionResourceType),
-          Solvers: S.optional(PositionSolverDetails),
+          ResourceType: S.optional(S.String),
+          Solvers: S.optional(__S(138, __c17, 2)),
           Destination: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PositionConfigurationItem",
       });
     case 3:
-      return S.Array(PositionConfigurationItem);
+      return S.Array(__S(258, __c32, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PositionConfigurationList: S.optional(PositionConfigurationList),
+          PositionConfigurationList: S.optional(__S(259, __c32, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9641,9 +8387,7 @@ function __c32(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          WirelessDeviceType: S.optional(WirelessDeviceType).pipe(
-            T.HttpQuery("WirelessDeviceType"),
-          ),
+          WirelessDeviceType: S.optional(S.String).pipe(T.HttpQuery("WirelessDeviceType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/wireless-devices/{Id}/data" }),
@@ -9662,7 +8406,7 @@ function __c32(j: number): any {
         S.Struct({ GatewayId: S.String, DownlinkFrequency: S.Number }),
       ).annotate({ identifier: "GatewayListItem" });
     case 7:
-      return S.Array(GatewayListItem);
+      return S.Array(__S(262, __c32, 6));
   }
 }
 function __c33(j: number): any {
@@ -9670,8 +8414,8 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DownlinkMode: DownlinkMode,
-          GatewayList: GatewayList,
+          DownlinkMode: S.String,
+          GatewayList: __S(263, __c32, 7),
           TransmissionInterval: S.Number,
         }),
       ).annotate({ identifier: "ParticipatingGateways" });
@@ -9679,7 +8423,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FPort: S.optional(S.Number),
-          ParticipatingGateways: S.optional(ParticipatingGateways),
+          ParticipatingGateways: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "LoRaWANSendDataToDevice" });
     case 2:
@@ -9688,16 +8432,16 @@ function __c33(j: number): any {
           MessageId: S.optional(S.String),
           TransmitMode: S.optional(S.Number),
           ReceivedAt: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANSendDataToDevice),
+          LoRaWAN: S.optional(__S(265, __c33, 1)),
         }),
       ).annotate({ identifier: "DownlinkQueueMessage" });
     case 3:
-      return S.Array(DownlinkQueueMessage);
+      return S.Array(__S(266, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          DownlinkQueueMessagesList: S.optional(DownlinkQueueMessagesList),
+          DownlinkQueueMessagesList: S.optional(__S(267, __c33, 3)),
         }),
       ).annotate({
         identifier: "ListQueuedMessagesResponse",
@@ -9717,7 +8461,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ServiceProfileList: S.optional(ServiceProfileList),
+          ServiceProfileList: S.optional(__S(229, __c28, 5)),
         }),
       ).annotate({
         identifier: "ListServiceProfilesResponse",
@@ -9735,7 +8479,7 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(2, __c0, 2)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
@@ -9762,10 +8506,10 @@ function __c34(j: number): any {
           Id: S.optional(S.String),
           Arn: S.optional(S.String),
           DestinationName: S.optional(S.String),
-          Positioning: S.optional(PositioningConfigStatus),
-          Sidewalk: S.optional(SidewalkGetStartImportInfo),
+          Positioning: S.optional(S.String),
+          Sidewalk: S.optional(__S(200, __c25, 0)),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(ImportTaskStatus),
+          Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
           InitializedImportedDeviceCount: S.optional(S.Number),
           PendingImportedDeviceCount: S.optional(S.Number),
@@ -9774,12 +8518,12 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "WirelessDeviceImportTask" });
     case 3:
-      return S.Array(WirelessDeviceImportTask);
+      return S.Array(__S(274, __c34, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          WirelessDeviceImportTaskList: S.optional(WirelessDeviceImportTaskList),
+          WirelessDeviceImportTaskList: S.optional(__S(275, __c34, 3)),
         }),
       ).annotate({
         identifier: "ListWirelessDeviceImportTasksResponse",
@@ -9792,9 +8536,7 @@ function __c34(j: number): any {
           DestinationName: S.optional(S.String).pipe(T.HttpQuery("destinationName")),
           DeviceProfileId: S.optional(S.String).pipe(T.HttpQuery("deviceProfileId")),
           ServiceProfileId: S.optional(S.String).pipe(T.HttpQuery("serviceProfileId")),
-          WirelessDeviceType: S.optional(WirelessDeviceType).pipe(
-            T.HttpQuery("wirelessDeviceType"),
-          ),
+          WirelessDeviceType: S.optional(S.String).pipe(T.HttpQuery("wirelessDeviceType")),
           FuotaTaskId: S.optional(S.String).pipe(T.HttpQuery("fuotaTaskId")),
           MulticastGroupId: S.optional(S.String).pipe(T.HttpQuery("multicastGroupId")),
         }).pipe(
@@ -9813,10 +8555,10 @@ function __c34(j: number): any {
           AmazonId: S.optional(S.String),
           SidewalkId: S.optional(S.String),
           SidewalkManufacturingSn: S.optional(S.String),
-          DeviceCertificates: S.optional(DeviceCertificateList),
+          DeviceCertificates: S.optional(__S(196, __c24, 4)),
           DeviceProfileId: S.optional(S.String),
-          Status: S.optional(WirelessDeviceSidewalkStatus),
-          Positioning: S.optional(SidewalkPositioning),
+          Status: S.optional(S.String),
+          Positioning: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "SidewalkListDevice" });
   }
@@ -9828,25 +8570,25 @@ function __c35(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           Id: S.optional(S.String),
-          Type: S.optional(WirelessDeviceType),
+          Type: S.optional(S.String),
           Name: S.optional(S.String),
           DestinationName: S.optional(S.String),
           LastUplinkReceivedAt: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANListDevice),
-          Sidewalk: S.optional(SidewalkListDevice),
-          FuotaDeviceStatus: S.optional(FuotaDeviceStatus),
+          LoRaWAN: S.optional(__S(278, __c34, 6)),
+          Sidewalk: S.optional(__S(279, __c34, 7)),
+          FuotaDeviceStatus: S.optional(S.String),
           MulticastDeviceStatus: S.optional(S.String),
           McGroupId: S.optional(S.Number),
-          Positioning: S.optional(PositioningConfigStatus),
+          Positioning: S.optional(S.String),
         }),
       ).annotate({ identifier: "WirelessDeviceStatistics" });
     case 1:
-      return S.Array(WirelessDeviceStatistics);
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          WirelessDeviceList: S.optional(WirelessDeviceStatisticsList),
+          WirelessDeviceList: S.optional(__S(281, __c35, 1)),
         }),
       ).annotate({
         identifier: "ListWirelessDevicesResponse",
@@ -9869,19 +8611,19 @@ function __c35(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANGateway),
+          LoRaWAN: S.optional(__S(49, __c6, 1)),
           LastUplinkReceivedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WirelessGatewayStatistics",
       });
     case 5:
-      return S.Array(WirelessGatewayStatistics);
+      return S.Array(__S(284, __c35, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          WirelessGatewayList: S.optional(WirelessGatewayStatisticsList),
+          WirelessGatewayList: S.optional(__S(285, __c35, 5)),
         }),
       ).annotate({
         identifier: "ListWirelessGatewaysResponse",
@@ -9891,9 +8633,7 @@ function __c35(j: number): any {
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          TaskDefinitionType: S.optional(WirelessGatewayTaskDefinitionType).pipe(
-            T.HttpQuery("taskDefinitionType"),
-          ),
+          TaskDefinitionType: S.optional(S.String).pipe(T.HttpQuery("taskDefinitionType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/wireless-gateway-task-definitions" }),
@@ -9914,8 +8654,8 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CurrentVersion: S.optional(LoRaWANGatewayVersion),
-          UpdateVersion: S.optional(LoRaWANGatewayVersion),
+          CurrentVersion: S.optional(__S(53, __c6, 5)),
+          UpdateVersion: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "LoRaWANUpdateGatewayTaskEntry",
@@ -9924,39 +8664,37 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANUpdateGatewayTaskEntry),
+          LoRaWAN: S.optional(__S(288, __c36, 0)),
           Arn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateWirelessGatewayTaskEntry",
       });
     case 2:
-      return S.Array(UpdateWirelessGatewayTaskEntry);
+      return S.Array(__S(289, __c36, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          TaskDefinitions: S.optional(WirelessGatewayTaskDefinitionList),
+          TaskDefinitions: S.optional(__S(290, __c36, 2)),
         }),
       ).annotate({
         identifier: "ListWirelessGatewayTaskDefinitionsResponse",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Status: PositionConfigurationStatus, Fec: PositionConfigurationFec }),
-      ).annotate({ identifier: "SemtechGnssConfiguration" });
+      return S.suspend(() => S.Struct({ Status: S.String, Fec: S.String })).annotate({
+        identifier: "SemtechGnssConfiguration",
+      });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ SemtechGnss: S.optional(SemtechGnssConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ SemtechGnss: S.optional(__S(292, __c36, 4)) })).annotate({
         identifier: "PositionSolverConfigurations",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
-          ResourceType: PositionResourceType.pipe(T.HttpQuery("resourceType")),
-          Solvers: S.optional(PositionSolverConfigurations),
+          ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
+          Solvers: S.optional(__S(293, __c36, 5)),
           Destination: S.optional(S.String),
         }).pipe(
           T.all(
@@ -9976,7 +8714,7 @@ function __c36(j: number): any {
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
           ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
-          LogLevel: LogLevel,
+          LogLevel: S.String,
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/log-levels/{ResourceIdentifier}" }),
@@ -10025,7 +8763,7 @@ function __c37(j: number): any {
         identifier: "LoRaWANMulticastMetadata",
       });
     case 3:
-      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(LoRaWANMulticastMetadata) })).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(298, __c37, 2)) })).annotate({
         identifier: "MulticastWirelessMetadata",
       });
     case 4:
@@ -10033,7 +8771,7 @@ function __c37(j: number): any {
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           PayloadData: S.String,
-          WirelessMetadata: MulticastWirelessMetadata,
+          WirelessMetadata: __S(299, __c37, 3),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/multicast-groups/{Id}/data" }),
@@ -10055,15 +8793,15 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Seq: S.optional(S.Number),
-          MessageType: S.optional(MessageType),
+          MessageType: S.optional(S.String),
           AckModeRetryDurationSecs: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SidewalkSendDataToDevice" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          LoRaWAN: S.optional(LoRaWANSendDataToDevice),
-          Sidewalk: S.optional(SidewalkSendDataToDevice),
+          LoRaWAN: S.optional(__S(265, __c33, 1)),
+          Sidewalk: S.optional(__S(302, __c37, 6)),
         }),
       ).annotate({ identifier: "WirelessMetadata" });
   }
@@ -10076,7 +8814,7 @@ function __c38(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           TransmitMode: S.Number,
           PayloadData: S.String,
-          WirelessMetadata: S.optional(WirelessMetadata),
+          WirelessMetadata: S.optional(__S(303, __c37, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/wireless-devices/{Id}/data" }),
@@ -10095,7 +8833,7 @@ function __c38(j: number): any {
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           QueryString: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/multicast-groups/{Id}/bulk" }),
@@ -10118,7 +8856,7 @@ function __c38(j: number): any {
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           QueryString: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/multicast-groups/{Id}/bulk" }),
@@ -10144,14 +8882,14 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
-          LoRaWAN: S.optional(LoRaWANStartFuotaTask),
+          LoRaWAN: S.optional(__S(309, __c38, 5)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/fuota-tasks/{Id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartFuotaTaskRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), LoRaWAN: LoRaWANMulticastSession }).pipe(
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), LoRaWAN: __S(126, __c15, 6) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/multicast-groups/{Id}/session" }),
             svc,
@@ -10172,7 +8910,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SidewalkManufacturingSn: S.optional(S.String),
-          Positioning: S.optional(SidewalkPositioning),
+          Positioning: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({
         identifier: "SidewalkSingleStartImportInfo",
@@ -10183,9 +8921,9 @@ function __c39(j: number): any {
           DestinationName: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DeviceName: S.optional(S.String),
-          Tags: S.optional(TagList),
-          Positioning: S.optional(PositioningConfigStatus),
-          Sidewalk: SidewalkSingleStartImportInfo,
+          Tags: S.optional(__S(2, __c0, 2)),
+          Positioning: S.optional(S.String),
+          Sidewalk: __S(312, __c39, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/wireless_single_device_import_task" }),
@@ -10204,7 +8942,7 @@ function __c39(j: number): any {
         S.Struct({
           DeviceCreationFile: S.optional(S.String),
           Role: S.optional(S.String),
-          Positioning: S.optional(SidewalkPositioning),
+          Positioning: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "SidewalkStartImportInfo" });
     case 3:
@@ -10212,9 +8950,9 @@ function __c39(j: number): any {
         S.Struct({
           DestinationName: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagList),
-          Positioning: S.optional(PositioningConfigStatus),
-          Sidewalk: SidewalkStartImportInfo,
+          Tags: S.optional(__S(2, __c0, 2)),
+          Positioning: S.optional(S.String),
+          Sidewalk: __S(314, __c39, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/wireless_device_import_task" }),
@@ -10230,9 +8968,10 @@ function __c39(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")), Tags: TagList }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules),
-        ),
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
+          Tags: __S(2, __c0, 2),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TagResourceRequest" });
     case 5:
       return S.suspend(() =>
@@ -10257,7 +8996,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(24, __c3, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
@@ -10268,7 +9007,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
-          ExpressionType: S.optional(ExpressionType),
+          ExpressionType: S.optional(S.String),
           Expression: S.optional(S.String),
           Description: S.optional(S.String),
           RoleArn: S.optional(S.String),
@@ -10286,13 +9025,11 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DeviceRegistrationState: S.optional(
-            DeviceRegistrationStateResourceTypeEventConfiguration,
-          ),
-          Proximity: S.optional(ProximityResourceTypeEventConfiguration),
-          Join: S.optional(JoinResourceTypeEventConfiguration),
-          ConnectionStatus: S.optional(ConnectionStatusResourceTypeEventConfiguration),
-          MessageDeliveryStatus: S.optional(MessageDeliveryStatusResourceTypeEventConfiguration),
+          DeviceRegistrationState: S.optional(__S(87, __c10, 7)),
+          Proximity: S.optional(__S(87, __c10, 7)),
+          Join: S.optional(__S(88, __c11, 0)),
+          ConnectionStatus: S.optional(__S(90, __c11, 2)),
+          MessageDeliveryStatus: S.optional(__S(87, __c10, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/event-configurations-resource-types" }),
@@ -10312,7 +9049,7 @@ function __c40(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANFuotaTask),
+          LoRaWAN: S.optional(__S(21, __c2, 5)),
           FirmwareUpdateImage: S.optional(S.String),
           FirmwareUpdateRole: S.optional(S.String),
           RedundancyPercent: S.optional(S.Number),
@@ -10333,10 +9070,10 @@ function __c40(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DefaultLogLevel: S.optional(LogLevel),
-          FuotaTaskLogOptions: S.optional(FuotaTaskLogOptionList),
-          WirelessDeviceLogOptions: S.optional(WirelessDeviceLogOptionList),
-          WirelessGatewayLogOptions: S.optional(WirelessGatewayLogOptionList),
+          DefaultLogLevel: S.optional(S.String),
+          FuotaTaskLogOptions: S.optional(__S(106, __c13, 2)),
+          WirelessDeviceLogOptions: S.optional(__S(102, __c12, 6)),
+          WirelessGatewayLogOptions: S.optional(__S(99, __c12, 3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/log-levels" }), svc, auth, proto, ver, rules),
         ),
@@ -10345,7 +9082,7 @@ function __c40(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ SummaryMetric: S.optional(SummaryMetricConfiguration) }).pipe(
+        S.Struct({ SummaryMetric: S.optional(__S(109, __c13, 5)) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/metric-configuration" }),
             svc,
@@ -10364,7 +9101,7 @@ function __c40(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANMulticast),
+          LoRaWAN: S.optional(__S(27, __c3, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/multicast-groups/{Id}" }),
@@ -10382,14 +9119,14 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationName: S.String.pipe(T.HttpLabel("ConfigurationName")),
-          TraceContent: S.optional(TraceContent),
-          WirelessDevicesToAdd: S.optional(WirelessDeviceList),
-          WirelessDevicesToRemove: S.optional(WirelessDeviceList),
-          WirelessGatewaysToAdd: S.optional(WirelessGatewayList),
-          WirelessGatewaysToRemove: S.optional(WirelessGatewayList),
+          TraceContent: S.optional(__S(29, __c3, 5)),
+          WirelessDevicesToAdd: S.optional(__S(24, __c3, 0)),
+          WirelessDevicesToRemove: S.optional(__S(24, __c3, 0)),
+          WirelessGatewaysToAdd: S.optional(__S(24, __c3, 0)),
+          WirelessGatewaysToRemove: S.optional(__S(24, __c3, 0)),
           Description: S.optional(S.String),
-          MulticastGroupsToAdd: S.optional(NetworkAnalyzerMulticastGroupList),
-          MulticastGroupsToRemove: S.optional(NetworkAnalyzerMulticastGroupList),
+          MulticastGroupsToAdd: S.optional(__S(24, __c3, 0)),
+          MulticastGroupsToRemove: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -10417,9 +9154,9 @@ function __c41(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Sidewalk: SidewalkUpdateAccount,
+          Sidewalk: __S(327, __c40, 7),
           PartnerAccountId: S.String.pipe(T.HttpLabel("PartnerAccountId")),
-          PartnerType: PartnerType.pipe(T.HttpQuery("partnerType")),
+          PartnerType: S.String.pipe(T.HttpQuery("partnerType")),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/partner-accounts/{PartnerAccountId}" }),
@@ -10437,8 +9174,8 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
-          ResourceType: PositionResourceType.pipe(T.HttpQuery("resourceType")),
-          Position: PositionCoordinate,
+          ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
+          Position: __S(16, __c2, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/positions/{ResourceIdentifier}" }),
@@ -10454,13 +9191,13 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          IdentifierType: IdentifierType.pipe(T.HttpQuery("identifierType")),
-          PartnerType: S.optional(EventNotificationPartnerType).pipe(T.HttpQuery("partnerType")),
-          DeviceRegistrationState: S.optional(DeviceRegistrationStateEventConfiguration),
-          Proximity: S.optional(ProximityEventConfiguration),
-          Join: S.optional(JoinEventConfiguration),
-          ConnectionStatus: S.optional(ConnectionStatusEventConfiguration),
-          MessageDeliveryStatus: S.optional(MessageDeliveryStatusEventConfiguration),
+          IdentifierType: S.String.pipe(T.HttpQuery("identifierType")),
+          PartnerType: S.optional(S.String).pipe(T.HttpQuery("partnerType")),
+          DeviceRegistrationState: S.optional(__S(180, __c22, 4)),
+          Proximity: S.optional(__S(180, __c22, 4)),
+          Join: S.optional(__S(182, __c22, 6)),
+          ConnectionStatus: S.optional(__S(184, __c23, 0)),
+          MessageDeliveryStatus: S.optional(__S(180, __c22, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/event-configurations/{Identifier}" }),
@@ -10478,7 +9215,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
-          ResourceType: PositionResourceType.pipe(T.HttpQuery("resourceType")),
+          ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
           GeoJsonPayload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
         }).pipe(
           T.all(
@@ -10499,16 +9236,19 @@ function __c41(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Positioning: S.optional(Positioning), Applications: S.optional(Applications) }),
+        S.Struct({
+          Positioning: S.optional(__S(39, __c4, 7)),
+          Applications: S.optional(__S(41, __c5, 1)),
+        }),
       ).annotate({ identifier: "UpdateFPorts" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           DeviceProfileId: S.optional(S.String),
           ServiceProfileId: S.optional(S.String),
-          AbpV1_1: S.optional(UpdateAbpV1_1),
-          AbpV1_0_x: S.optional(UpdateAbpV1_0_x),
-          FPorts: S.optional(UpdateFPorts),
+          AbpV1_1: S.optional(__S(332, __c41, 4)),
+          AbpV1_0_x: S.optional(__S(332, __c41, 4)),
+          FPorts: S.optional(__S(333, __c41, 5)),
         }),
       ).annotate({ identifier: "LoRaWANUpdateDevice" });
     case 7:
@@ -10518,9 +9258,9 @@ function __c41(j: number): any {
           DestinationName: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(LoRaWANUpdateDevice),
-          Positioning: S.optional(PositioningConfigStatus),
-          Sidewalk: S.optional(SidewalkUpdateWirelessDevice),
+          LoRaWAN: S.optional(__S(334, __c41, 6)),
+          Positioning: S.optional(S.String),
+          Sidewalk: S.optional(__S(232, __c29, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/wireless-devices/{Id}" }),
@@ -10544,7 +9284,7 @@ function __c42(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), Sidewalk: SidewalkUpdateImportInfo }).pipe(
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), Sidewalk: __S(336, __c42, 0) }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/wireless_device_import_task/{Id}" }),
             svc,
@@ -10563,8 +9303,8 @@ function __c42(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          JoinEuiFilters: S.optional(JoinEuiFilters),
-          NetIdFilters: S.optional(NetIdFilters),
+          JoinEuiFilters: S.optional(__S(47, __c5, 7)),
+          NetIdFilters: S.optional(__S(24, __c3, 0)),
           MaxEirp: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -10580,4 +9320,9 @@ function __c42(j: number): any {
         identifier: "UpdateWirelessGatewayRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

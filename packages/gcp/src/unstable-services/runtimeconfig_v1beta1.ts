@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,8 +71,6 @@ export interface RuntimeConfig {
   /** An optional description of the RuntimeConfig object. */
   description?: string;
 }
-const RuntimeConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<RuntimeConfig>;
-
 export interface CreateProjectsConfigsRequest {
   /** An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters. */
   requestId?: string;
@@ -79,14 +79,7 @@ export interface CreateProjectsConfigsRequest {
   /** Request body */
   body?: RuntimeConfig;
 }
-const CreateProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateProjectsConfigsRequest>;
-
 export type VariableStateEnum = "VARIABLE_STATE_UNSPECIFIED" | "UPDATED" | "DELETED";
-const VariableStateEnum = S.String;
-
 /** Describes a single variable within a RuntimeConfig resource. The name denotes the hierarchical variable name. For example, `ports/serving_port` is a valid variable name. The variable value is an opaque string and only leaf variables can have values (that is, variables that do not have any child variables). */
 export interface Variable {
   /** Output only. The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls. */
@@ -100,8 +93,6 @@ export interface Variable {
   /** Output only. The time of the last variable update. Timestamp will be UTC timestamp. */
   updateTime?: string;
 }
-const Variable = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Variable>;
-
 export interface CreateProjectsConfigsVariablesRequest {
   /** The path to the RutimeConfig resource that this variable should belong to. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   parent: string;
@@ -110,17 +101,8 @@ export interface CreateProjectsConfigsVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-const CreateProjectsConfigsVariablesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateProjectsConfigsVariablesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -130,8 +112,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Status>;
-
 /** A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would meet the condition in a RuntimeConfig resource: + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"` It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are counted. */
 export interface Cardinality {
   /** The root of the variable subtree to monitor. For example, `/foo`. */
@@ -139,15 +119,11 @@ export interface Cardinality {
   /** The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified. */
   number?: number;
 }
-const Cardinality = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Cardinality>;
-
 /** The condition that a Waiter resource is waiting for. */
 export interface EndCondition {
   /** The cardinality of the `EndCondition`. */
   cardinality?: Cardinality;
 }
-const EndCondition = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EndCondition>;
-
 /** A Waiter resource waits for some end condition within a RuntimeConfig resource to be met before it returns. For example, assume you have a distributed system where each node writes to a Variable resource indicating the node's readiness as part of the startup process. You then configure a Waiter resource with the success condition set to wait until some number of nodes have checked in. Afterwards, your application runs some arbitrary code after the condition has been met and the waiter returns successfully. Once created, a Waiter resource is immutable. To learn more about using waiters, read the [Creating a Waiter](/deployment-manager/runtime-configurator/creating-a-waiter) documentation. */
 export interface Waiter {
   /** The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name. */
@@ -165,8 +141,6 @@ export interface Waiter {
   /** Output only. The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter. */
   createTime?: string;
 }
-const Waiter = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Waiter>;
-
 export interface CreateProjectsConfigsWaitersRequest {
   /** The path to the configuration that will own the waiter. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`. */
   parent: string;
@@ -175,11 +149,6 @@ export interface CreateProjectsConfigsWaitersRequest {
   /** Request body */
   body?: Waiter;
 }
-const CreateProjectsConfigsWaitersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateProjectsConfigsWaitersRequest>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -193,52 +162,28 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsConfigsRequest {
   /** The RuntimeConfig resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   name: string;
 }
-const DeleteProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteProjectsConfigsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Empty>;
-
 export interface DeleteProjectsConfigsVariablesRequest {
   /** Set to `true` to recursively delete multiple variables with the same prefix. */
   recursive?: boolean;
   /** The name of the variable to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
   name: string;
 }
-const DeleteProjectsConfigsVariablesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteProjectsConfigsVariablesRequest>;
-
 export interface DeleteProjectsConfigsWaitersRequest {
   /** The Waiter resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
 }
-const DeleteProjectsConfigsWaitersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteProjectsConfigsWaitersRequest>;
-
 export interface GetIamPolicyProjectsConfigsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsConfigsRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -250,11 +195,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Expr>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<StringList>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -264,11 +205,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-const Binding = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -278,44 +215,22 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-const Policy = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Policy>;
-
 export interface GetProjectsConfigsRequest {
   /** The name of the RuntimeConfig resource to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   name: string;
 }
-const GetProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetProjectsConfigsRequest>;
-
 export interface GetProjectsConfigsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsConfigsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetProjectsConfigsOperationsRequest>;
-
 export interface GetProjectsConfigsVariablesRequest {
   /** The name of the variable to return, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]` */
   name: string;
 }
-const GetProjectsConfigsVariablesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetProjectsConfigsVariablesRequest>;
-
 export interface GetProjectsConfigsWaitersRequest {
   /** The fully-qualified name of the Waiter resource object to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
 }
-const GetProjectsConfigsWaitersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetProjectsConfigsWaitersRequest>;
-
 export interface ListProjectsConfigsRequest {
   /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
   pageSize?: number;
@@ -324,14 +239,7 @@ export interface ListProjectsConfigsRequest {
   /** The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848) for this request, in the format `projects/[PROJECT_ID]`. */
   parent: string;
 }
-const ListProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListProjectsConfigsRequest>;
-
 export type RuntimeConfigList = Array<RuntimeConfig>;
-const RuntimeConfigList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RuntimeConfigList>;
-
 /** `ListConfigs()` returns the following response. The order of returned objects is arbitrary; that is, it is not ordered in any particular way. */
 export interface ListConfigsResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
@@ -339,8 +247,6 @@ export interface ListConfigsResponse {
   /** A list of the configurations in the project. The order of returned objects is arbitrary; that is, it is not ordered in any particular way. */
   configs?: RuntimeConfigList;
 }
-const ListConfigsResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListConfigsResponse>;
-
 export interface ListProjectsConfigsVariablesRequest {
   /** The path to the RuntimeConfig resource for which you want to list variables. The configuration must exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   parent: string;
@@ -353,14 +259,7 @@ export interface ListProjectsConfigsVariablesRequest {
   /** The flag indicates whether the user wants to return values of variables. If true, then only those variables that user has IAM GetVariable permission will be returned along with their values. */
   returnValues?: boolean;
 }
-const ListProjectsConfigsVariablesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListProjectsConfigsVariablesRequest>;
-
 export type VariableList = Array<Variable>;
-const VariableList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<VariableList>;
-
 /** Response for the `ListVariables()` method. */
 export interface ListVariablesResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
@@ -368,11 +267,6 @@ export interface ListVariablesResponse {
   /** A list of variables and their values. The order of returned variable objects is arbitrary. */
   variables?: VariableList;
 }
-const ListVariablesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListVariablesResponse>;
-
 export interface ListProjectsConfigsWaitersRequest {
   /** Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous list request to get the next page of results. */
   pageToken?: string;
@@ -381,14 +275,7 @@ export interface ListProjectsConfigsWaitersRequest {
   /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
   pageSize?: number;
 }
-const ListProjectsConfigsWaitersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListProjectsConfigsWaitersRequest>;
-
 export type WaiterList = Array<Waiter>;
-const WaiterList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<WaiterList>;
-
 /** Response for the `ListWaiters()` method. Order of returned waiter objects is arbitrary. */
 export interface ListWaitersResponse {
   /** Found waiters in the project. */
@@ -396,128 +283,74 @@ export interface ListWaitersResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
   nextPageToken?: string;
 }
-const ListWaitersResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListWaitersResponse>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsConfigsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsConfigsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsConfigsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsConfigsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsConfigsOperationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsConfigsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<TestIamPermissionsProjectsConfigsOperationsRequest>;
-
 export interface TestIamPermissionsProjectsConfigsVariablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsConfigsVariablesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<TestIamPermissionsProjectsConfigsVariablesRequest>;
-
 export interface TestIamPermissionsProjectsConfigsWaitersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsConfigsWaitersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<TestIamPermissionsProjectsConfigsWaitersRequest>;
-
 export interface UpdateProjectsConfigsRequest {
   /** The name of the RuntimeConfig resource to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   name: string;
   /** Request body */
   body?: RuntimeConfig;
 }
-const UpdateProjectsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateProjectsConfigsRequest>;
-
 export interface UpdateProjectsConfigsVariablesRequest {
   /** The name of the variable to update, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
   name: string;
   /** Request body */
   body?: Variable;
 }
-const UpdateProjectsConfigsVariablesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateProjectsConfigsVariablesRequest>;
-
 /** Request for the `WatchVariable()` method. */
 export interface WatchVariableRequest {
   /** If specified, checks the current timestamp of the variable and if the current timestamp is newer than `newerThan` timestamp, the method returns immediately. If not specified or the variable has an older timestamp, the watcher waits for a the value to change before returning. */
   newerThan?: string;
 }
-const WatchVariableRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<WatchVariableRequest>;
-
 export interface WatchProjectsConfigsVariablesRequest {
   /** The name of the variable to watch, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   name: string;
   /** Request body */
   body?: WatchVariableRequest;
 }
-const WatchProjectsConfigsVariablesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<WatchProjectsConfigsVariablesRequest>;
-
 export type CreateProjectsConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new RuntimeConfig resource. The configuration name must be unique within project. */
 export const createProjectsConfigs: API.OperationMethod<
@@ -526,8 +359,8 @@ export const createProjectsConfigs: API.OperationMethod<
   CreateProjectsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsConfigsRequest,
-  output: RuntimeConfig,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateProjectsConfigsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<RuntimeConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +379,8 @@ export const createProjectsConfigsVariables: API.OperationMethod<
   CreateProjectsConfigsVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsConfigsVariablesRequest,
-  output: Variable,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateProjectsConfigsVariablesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Variable>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -566,8 +399,8 @@ export const createProjectsConfigsWaiters: API.OperationMethod<
   CreateProjectsConfigsWaitersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsConfigsWaitersRequest,
-  output: Operation,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsConfigsWaitersRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -581,8 +414,8 @@ export const deleteProjectsConfigs: API.OperationMethod<
   DeleteProjectsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsConfigsRequest,
-  output: Empty,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteProjectsConfigsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -601,8 +434,8 @@ export const deleteProjectsConfigsVariables: API.OperationMethod<
   DeleteProjectsConfigsVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsConfigsVariablesRequest,
-  output: Empty,
+  input: __S(14, __c1, 6) as any as S.Schema<DeleteProjectsConfigsVariablesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -621,8 +454,8 @@ export const deleteProjectsConfigsWaiters: API.OperationMethod<
   DeleteProjectsConfigsWaitersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsConfigsWaitersRequest,
-  output: Empty,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteProjectsConfigsWaitersRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -636,8 +469,8 @@ export const getIamPolicyProjectsConfigs: API.OperationMethod<
   GetIamPolicyProjectsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsConfigsRequest,
-  output: Policy,
+  input: __S(16, __c2, 0) as any as S.Schema<GetIamPolicyProjectsConfigsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -651,8 +484,8 @@ export const getProjectsConfigs: API.OperationMethod<
   GetProjectsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsRequest,
-  output: RuntimeConfig,
+  input: __S(22, __c2, 6) as any as S.Schema<GetProjectsConfigsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<RuntimeConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,8 +499,8 @@ export const getProjectsConfigsOperations: API.OperationMethod<
   GetProjectsConfigsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsOperationsRequest,
-  output: Operation,
+  input: __S(23, __c2, 7) as any as S.Schema<GetProjectsConfigsOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -681,8 +514,8 @@ export const getProjectsConfigsVariables: API.OperationMethod<
   GetProjectsConfigsVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsVariablesRequest,
-  output: Variable,
+  input: __S(24, __c3, 0) as any as S.Schema<GetProjectsConfigsVariablesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Variable>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -696,8 +529,8 @@ export const getProjectsConfigsWaiters: API.OperationMethod<
   GetProjectsConfigsWaitersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsConfigsWaitersRequest,
-  output: Waiter,
+  input: __S(25, __c3, 1) as any as S.Schema<GetProjectsConfigsWaitersRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Waiter>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -712,8 +545,8 @@ export const listProjectsConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsConfigsRequest,
-  output: ListConfigsResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<ListProjectsConfigsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ListConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -729,8 +562,8 @@ export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVariablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsConfigsVariablesRequest,
-  output: ListVariablesResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<ListProjectsConfigsVariablesRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<ListVariablesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -746,8 +579,8 @@ export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWaitersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsConfigsWaitersRequest,
-  output: ListWaitersResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<ListProjectsConfigsWaitersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListWaitersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -767,8 +600,8 @@ export const setIamPolicyProjectsConfigs: API.OperationMethod<
   SetIamPolicyProjectsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsConfigsRequest,
-  output: Policy,
+  input: __S(36, __c4, 4) as any as S.Schema<SetIamPolicyProjectsConfigsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -787,8 +620,8 @@ export const testIamPermissionsProjectsConfigs: API.OperationMethod<
   TestIamPermissionsProjectsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsConfigsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<TestIamPermissionsProjectsConfigsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -807,8 +640,8 @@ export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
   TestIamPermissionsProjectsConfigsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsConfigsOperationsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<TestIamPermissionsProjectsConfigsOperationsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -827,8 +660,8 @@ export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
   TestIamPermissionsProjectsConfigsVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsConfigsVariablesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<TestIamPermissionsProjectsConfigsVariablesRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -847,8 +680,8 @@ export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
   TestIamPermissionsProjectsConfigsWaitersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsConfigsWaitersRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<TestIamPermissionsProjectsConfigsWaitersRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -862,8 +695,8 @@ export const updateProjectsConfigs: API.OperationMethod<
   UpdateProjectsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsConfigsRequest,
-  output: RuntimeConfig,
+  input: __S(42, __c5, 2) as any as S.Schema<UpdateProjectsConfigsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<RuntimeConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -882,8 +715,8 @@ export const updateProjectsConfigsVariables: API.OperationMethod<
   UpdateProjectsConfigsVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsConfigsVariablesRequest,
-  output: Variable,
+  input: __S(43, __c5, 3) as any as S.Schema<UpdateProjectsConfigsVariablesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Variable>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,8 +735,8 @@ export const watchProjectsConfigsVariables: API.OperationMethod<
   WatchProjectsConfigsVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchProjectsConfigsVariablesRequest,
-  output: Variable,
+  input: __S(45, __c5, 5) as any as S.Schema<WatchProjectsConfigsVariablesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Variable>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -924,7 +757,7 @@ function __c0(j: number): any {
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RuntimeConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -938,7 +771,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(VariableStateEnum),
+          state: S.optional(S.String),
           value: S.optional(S.String),
           text: S.optional(S.String),
           name: S.optional(S.String),
@@ -950,7 +783,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Variable.pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -964,13 +797,13 @@ function __c0(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
@@ -987,18 +820,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cardinality: S.optional(Cardinality),
+          cardinality: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "EndCondition" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(6, __c0, 6)),
           done: S.optional(S.Boolean),
-          failure: S.optional(EndCondition),
+          failure: S.optional(__S(8, __c1, 0)),
           timeout: S.optional(S.String),
-          success: S.optional(EndCondition),
+          success: S.optional(__S(8, __c1, 0)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Waiter" });
@@ -1007,7 +840,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Waiter.pipe(T.HttpBody())),
+          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1021,10 +854,10 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(4, __c0, 4)),
+          response: S.optional(__S(4, __c0, 4)),
           name: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(6, __c0, 6)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1108,17 +941,17 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(Expr),
-          members: S.optional(StringList),
+          condition: S.optional(__S(17, __c2, 1)),
+          members: S.optional(__S(18, __c2, 2)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
     case 4:
-      return S.Array(Binding);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(20, __c2, 4)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
@@ -1200,12 +1033,12 @@ function __c3(j: number): any {
         identifier: "ListProjectsConfigsRequest",
       });
     case 3:
-      return S.Array(RuntimeConfig);
+      return S.Array(__S(0, __c0, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          configs: S.optional(RuntimeConfigList),
+          configs: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "ListConfigsResponse" });
     case 5:
@@ -1227,12 +1060,12 @@ function __c3(j: number): any {
         identifier: "ListProjectsConfigsVariablesRequest",
       });
     case 6:
-      return S.Array(Variable);
+      return S.Array(__S(2, __c0, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          variables: S.optional(VariableList),
+          variables: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "ListVariablesResponse" });
   }
@@ -1256,25 +1089,25 @@ function __c4(j: number): any {
         identifier: "ListProjectsConfigsWaitersRequest",
       });
     case 1:
-      return S.Array(Waiter);
+      return S.Array(__S(9, __c1, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          waiters: S.optional(WaiterList),
+          waiters: S.optional(__S(33, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWaitersResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1288,7 +1121,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1297,7 +1130,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1312,7 +1145,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1331,7 +1164,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1346,7 +1179,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1361,7 +1194,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RuntimeConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1376,7 +1209,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Variable.pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1397,7 +1230,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(WatchVariableRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1409,4 +1242,9 @@ function __c5(j: number): any {
         identifier: "WatchProjectsConfigsVariablesRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

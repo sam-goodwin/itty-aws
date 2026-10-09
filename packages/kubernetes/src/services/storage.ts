@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -45,25 +47,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -81,19 +70,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -109,19 +88,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -155,11 +124,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 /** TokenRequest contains parameters of a service account token. */
 export interface IoK8sApiStorageV1TokenRequest {
   /** audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver. */
@@ -167,23 +131,10 @@ export interface IoK8sApiStorageV1TokenRequest {
   /** expirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec". */
   expirationSeconds?: number;
 }
-const IoK8sApiStorageV1TokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiStorageV1TokenRequest>;
-
 /** tokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": { "<audience>": { "token": <token>, "expirationTimestamp": <expiration timestamp in RFC3339>, }, ... } Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically. */
 export type IoK8sApiStorageV1CSIDriverSpecTokenRequestsList = Array<IoK8sApiStorageV1TokenRequest>;
-const IoK8sApiStorageV1CSIDriverSpecTokenRequestsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IoK8sApiStorageV1CSIDriverSpecTokenRequestsList>;
-
 /** volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta. This field is immutable. */
 export type IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList = Array<string>;
-const IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList>;
-
 /** CSIDriverSpec is the specification of a CSIDriver. */
 export interface IoK8sApiStorageV1CSIDriverSpec {
   /** attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called. This field is immutable. */
@@ -209,11 +160,6 @@ export interface IoK8sApiStorageV1CSIDriverSpec {
   /** volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta. This field is immutable. */
   volumeLifecycleModes?: IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList;
 }
-const IoK8sApiStorageV1CSIDriverSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<IoK8sApiStorageV1CSIDriverSpec>;
-
 export interface CreateStorageV1CSIDriverRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -232,11 +178,6 @@ export interface CreateStorageV1CSIDriverRequest {
   /** spec represents the specification of the CSI Driver. */
   spec?: IoK8sApiStorageV1CSIDriverSpec;
 }
-const CreateStorageV1CSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateStorageV1CSIDriverRequest>;
-
 /** CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced. */
 export interface IoK8sApiStorageV1CSIDriver {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -248,26 +189,13 @@ export interface IoK8sApiStorageV1CSIDriver {
   /** spec represents the specification of the CSI Driver. */
   spec?: IoK8sApiStorageV1CSIDriverSpec;
 }
-const IoK8sApiStorageV1CSIDriver = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<IoK8sApiStorageV1CSIDriver>;
-
 /** VolumeNodeResources is a set of resource limits for scheduling of volumes. */
 export interface IoK8sApiStorageV1VolumeNodeResources {
   /** count indicates the maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded. */
   count?: number;
 }
-const IoK8sApiStorageV1VolumeNodeResources = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApiStorageV1VolumeNodeResources>;
-
 /** topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology. */
 export type IoK8sApiStorageV1CSINodeDriverTopologyKeysList = Array<string>;
-const IoK8sApiStorageV1CSINodeDriverTopologyKeysList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiStorageV1CSINodeDriverTopologyKeysList>;
-
 /** CSINodeDriver holds information about the specification of one CSI driver installed on a node */
 export interface IoK8sApiStorageV1CSINodeDriver {
   /** allocatable represents the volume resources of a node that are available for scheduling. This field is beta. */
@@ -279,28 +207,13 @@ export interface IoK8sApiStorageV1CSINodeDriver {
   /** topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology. */
   topologyKeys?: IoK8sApiStorageV1CSINodeDriverTopologyKeysList;
 }
-const IoK8sApiStorageV1CSINodeDriver = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeDriver>;
-
 /** drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty. */
 export type IoK8sApiStorageV1CSINodeSpecDriversList = Array<IoK8sApiStorageV1CSINodeDriver>;
-const IoK8sApiStorageV1CSINodeSpecDriversList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeSpecDriversList>;
-
 /** CSINodeSpec holds information about the specification of all CSI drivers installed on a node */
 export interface IoK8sApiStorageV1CSINodeSpec {
   /** drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty. */
   drivers?: IoK8sApiStorageV1CSINodeSpecDriversList;
 }
-const IoK8sApiStorageV1CSINodeSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeSpec>;
-
 /** StorageHealthCondition represents an adverse health condition reported by a CSI driver for its storage backend on a node. */
 export interface IoK8sApiStorageV1StorageHealthCondition {
   /** accessMode is the access mode affected. Nil means all access modes are affected. */
@@ -316,19 +229,9 @@ export interface IoK8sApiStorageV1StorageHealthCondition {
   /** volumeMode is the volume mode affected. Nil means both are affected. */
   volumeMode?: string;
 }
-const IoK8sApiStorageV1StorageHealthCondition = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IoK8sApiStorageV1StorageHealthCondition>;
-
 /** healthConditions are the adverse storage backend conditions reported by the CSI driver. At most 16 conditions may be reported. */
 export type IoK8sApiStorageV1StorageHealthHealthConditionsList =
   Array<IoK8sApiStorageV1StorageHealthCondition>;
-const IoK8sApiStorageV1StorageHealthHealthConditionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApiStorageV1StorageHealthHealthConditionsList>;
-
 /** StorageHealth contains storage backend health reported by a CSI driver on a node. */
 export interface IoK8sApiStorageV1StorageHealth {
   /** healthConditions are the adverse storage backend conditions reported by the CSI driver. At most 16 conditions may be reported. */
@@ -336,28 +239,13 @@ export interface IoK8sApiStorageV1StorageHealth {
   /** name is the CSI driver name, matching CSINodeDriver.name. */
   name: string;
 }
-const IoK8sApiStorageV1StorageHealth = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IoK8sApiStorageV1StorageHealth>;
-
 /** storageHealth contains backend health reports for CSI drivers registered on the node. */
 export type IoK8sApiStorageV1CSINodeStatusStorageHealthList = Array<IoK8sApiStorageV1StorageHealth>;
-const IoK8sApiStorageV1CSINodeStatusStorageHealthList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeStatusStorageHealthList>;
-
 /** CSINodeStatus contains health and status information for storage on a node. */
 export interface IoK8sApiStorageV1CSINodeStatus {
   /** storageHealth contains backend health reports for CSI drivers registered on the node. */
   storageHealth?: IoK8sApiStorageV1CSINodeStatusStorageHealthList;
 }
-const IoK8sApiStorageV1CSINodeStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeStatus>;
-
 export interface CreateStorageV1CSINodeRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -378,11 +266,6 @@ export interface CreateStorageV1CSINodeRequest {
   /** status contains health and status information for the node's storage. */
   status?: IoK8sApiStorageV1CSINodeStatus;
 }
-const CreateStorageV1CSINodeRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateStorageV1CSINodeRequest>;
-
 /** CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object. */
 export interface IoK8sApiStorageV1CSINode {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -396,18 +279,8 @@ export interface IoK8sApiStorageV1CSINode {
   /** status contains health and status information for the node's storage. */
   status?: IoK8sApiStorageV1CSINodeStatus;
 }
-const IoK8sApiStorageV1CSINode = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IoK8sApiStorageV1CSINode>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
-
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -417,26 +290,13 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
-
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
-
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
@@ -444,11 +304,6 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
-
 export interface CreateStorageV1NamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -475,11 +330,6 @@ export interface CreateStorageV1NamespacedCSIStorageCapacityRequest {
   /** storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable. */
   storageClassName: string;
 }
-const CreateStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateStorageV1NamespacedCSIStorageCapacityRequest>;
-
 /** CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment. This can be used when considering where to instantiate new PersistentVolumes. For example this can express things like: - StorageClass "standard" has "1234 GiB" available in "topology.kubernetes.io/zone=us-east1" - StorageClass "localssd" has "10 GiB" available in "kubernetes.io/hostname=knode-abc123" The following three cases all imply that no capacity is available for a certain combination: - no object exists with suitable topology and storage class name - such an object exists, but the capacity is unset - such an object exists, but the capacity is zero The producer of these objects can decide which approach is more suitable. They are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node. */
 export interface IoK8sApiStorageV1CSIStorageCapacity {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -497,16 +347,8 @@ export interface IoK8sApiStorageV1CSIStorageCapacity {
   /** storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable. */
   storageClassName: string;
 }
-const IoK8sApiStorageV1CSIStorageCapacity = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>;
-
 /** values is an array of string values. One value must match the label to be selected. Each entry in values is ORed. */
 export type IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList = Array<string>;
-const IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList>;
-
 /** A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future. */
 export interface IoK8sApiCoreV1TopologySelectorLabelRequirement {
   /** key is the label key that the selector applies to. */
@@ -514,47 +356,21 @@ export interface IoK8sApiCoreV1TopologySelectorLabelRequirement {
   /** values is an array of string values. One value must match the label to be selected. Each entry in values is ORed. */
   values: IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList;
 }
-const IoK8sApiCoreV1TopologySelectorLabelRequirement = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1TopologySelectorLabelRequirement>;
-
 /** matchLabelExpressions is a list of topology selector requirements by labels. Usage: Fields of type []TopologySelectorTerm must be listType=atomic. A list of topology selector requirements by labels. */
 export type IoK8sApiCoreV1TopologySelectorTermMatchLabelExpressionsList =
   Array<IoK8sApiCoreV1TopologySelectorLabelRequirement>;
-const IoK8sApiCoreV1TopologySelectorTermMatchLabelExpressionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1TopologySelectorTermMatchLabelExpressionsList>;
-
 /** A topology selector term represents the result of label queries. A null or empty topology selector term matches no objects. The requirements of them are ANDed. It provides a subset of functionality as NodeSelectorTerm. This is an alpha feature and may change in the future. */
 export interface IoK8sApiCoreV1TopologySelectorTerm {
   /** matchLabelExpressions is a list of topology selector requirements by labels. Usage: Fields of type []TopologySelectorTerm must be listType=atomic. A list of topology selector requirements by labels. */
   matchLabelExpressions?: IoK8sApiCoreV1TopologySelectorTermMatchLabelExpressionsList;
 }
-const IoK8sApiCoreV1TopologySelectorTerm = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1TopologySelectorTerm>;
-
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type CreateStorageV1StorageClassRequestAllowedTopologiesList =
   Array<IoK8sApiCoreV1TopologySelectorTerm>;
-const CreateStorageV1StorageClassRequestAllowedTopologiesList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateStorageV1StorageClassRequestAllowedTopologiesList>;
-
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
 export type CreateStorageV1StorageClassRequestMountOptionsList = Array<string>;
-const CreateStorageV1StorageClassRequestMountOptionsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<CreateStorageV1StorageClassRequestMountOptionsList>;
-
 /** parameters holds the parameters for the provisioner that should create volumes of this storage class. */
 export type CreateStorageV1StorageClassRequestParametersMap = { [key: string]: string | undefined };
-const CreateStorageV1StorageClassRequestParametersMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateStorageV1StorageClassRequestParametersMap>;
-
 export interface CreateStorageV1StorageClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -585,27 +401,13 @@ export interface CreateStorageV1StorageClassRequest {
   /** volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound. When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature. */
   volumeBindingMode?: string;
 }
-const CreateStorageV1StorageClassRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateStorageV1StorageClassRequest>;
-
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type IoK8sApiStorageV1StorageClassAllowedTopologiesList =
   Array<IoK8sApiCoreV1TopologySelectorTerm>;
-const IoK8sApiStorageV1StorageClassAllowedTopologiesList =
-  CreateStorageV1StorageClassRequestAllowedTopologiesList as any as S.Schema<IoK8sApiStorageV1StorageClassAllowedTopologiesList>;
-
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
 export type IoK8sApiStorageV1StorageClassMountOptionsList = Array<string>;
-const IoK8sApiStorageV1StorageClassMountOptionsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiStorageV1StorageClassMountOptionsList>;
-
 /** parameters holds the parameters for the provisioner that should create volumes of this storage class. */
 export type IoK8sApiStorageV1StorageClassParametersMap = { [key: string]: string | undefined };
-const IoK8sApiStorageV1StorageClassParametersMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiStorageV1StorageClassParametersMap>;
-
 /** StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned. StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name. */
 export interface IoK8sApiStorageV1StorageClass {
   /** allowVolumeExpansion shows whether the storage class allow volume expand. */
@@ -629,16 +431,8 @@ export interface IoK8sApiStorageV1StorageClass {
   /** volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound. When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature. */
   volumeBindingMode?: string;
 }
-const IoK8sApiStorageV1StorageClass = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IoK8sApiStorageV1StorageClass>;
-
 /** accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes */
 export type IoK8sApiCoreV1PersistentVolumeSpecAccessModesList = Array<string>;
-const IoK8sApiCoreV1PersistentVolumeSpecAccessModesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecAccessModesList>;
-
 /** Represents a Persistent Disk resource in AWS. An AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource {
   /** fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore */
@@ -650,11 +444,6 @@ export interface IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource {
   /** volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore */
   volumeID: string;
 }
-const IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource>;
-
 /** AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. */
 export interface IoK8sApiCoreV1AzureDiskVolumeSource {
   /** cachingMode is the Host Caching mode: None, Read Only, Read Write. */
@@ -670,11 +459,6 @@ export interface IoK8sApiCoreV1AzureDiskVolumeSource {
   /** readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. */
   readOnly?: boolean;
 }
-const IoK8sApiCoreV1AzureDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1AzureDiskVolumeSource>;
-
 /** AzureFile represents an Azure File Service mount on the host and bind mount to the pod. */
 export interface IoK8sApiCoreV1AzureFilePersistentVolumeSource {
   /** readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. */
@@ -686,21 +470,10 @@ export interface IoK8sApiCoreV1AzureFilePersistentVolumeSource {
   /** shareName is the azure Share Name */
   shareName: string;
 }
-const IoK8sApiCoreV1AzureFilePersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1AzureFilePersistentVolumeSource>;
-
 /** capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity */
 export type IoK8sApiCoreV1PersistentVolumeSpecCapacityMap = { [key: string]: string | undefined };
-const IoK8sApiCoreV1PersistentVolumeSpecCapacityMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecCapacityMap>;
-
 /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
 export type IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList = Array<string>;
-const IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList>;
-
 /** SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace */
 export interface IoK8sApiCoreV1SecretReference {
   /** name is unique within a namespace to reference a secret resource. */
@@ -708,11 +481,6 @@ export interface IoK8sApiCoreV1SecretReference {
   /** namespace defines the space within which the secret name must be unique. */
   namespace?: string;
 }
-const IoK8sApiCoreV1SecretReference = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1SecretReference>;
-
 /** Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1CephFSPersistentVolumeSource {
   /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
@@ -728,11 +496,6 @@ export interface IoK8sApiCoreV1CephFSPersistentVolumeSource {
   /** user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
   user?: string;
 }
-const IoK8sApiCoreV1CephFSPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1CephFSPersistentVolumeSource>;
-
 /** Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1CinderPersistentVolumeSource {
   /** fsType Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md */
@@ -744,11 +507,6 @@ export interface IoK8sApiCoreV1CinderPersistentVolumeSource {
   /** volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md */
   volumeID: string;
 }
-const IoK8sApiCoreV1CinderPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1CinderPersistentVolumeSource>;
-
 /** ObjectReference contains enough information to let you inspect or modify the referred object. */
 export interface IoK8sApiCoreV1ObjectReference {
   /** apiVersion is API version of the referent. */
@@ -766,18 +524,10 @@ export interface IoK8sApiCoreV1ObjectReference {
   /** uid of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids */
   uid?: string;
 }
-const IoK8sApiCoreV1ObjectReference = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1ObjectReference>;
-
 /** volumeAttributes of the volume to publish. */
 export type IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap>;
-
 /** Represents storage that is managed by an external CSI volume driver */
 export interface IoK8sApiCoreV1CSIPersistentVolumeSource {
   /** controllerExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerExpandVolume call. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed. */
@@ -801,21 +551,10 @@ export interface IoK8sApiCoreV1CSIPersistentVolumeSource {
   /** volumeHandle is the unique volume name returned by the CSI volume plugin's CreateVolume to refer to the volume on all subsequent calls. Required. */
   volumeHandle: string;
 }
-const IoK8sApiCoreV1CSIPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1CSIPersistentVolumeSource>;
-
 /** targetWWNs is Optional: FC target worldwide names (WWNs) */
 export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = Array<string>;
-const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
-
 /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
 export type IoK8sApiCoreV1FCVolumeSourceWwidsList = Array<string>;
-const IoK8sApiCoreV1FCVolumeSourceWwidsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
-
 /** Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1FCVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -829,18 +568,10 @@ export interface IoK8sApiCoreV1FCVolumeSource {
   /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
   wwids?: IoK8sApiCoreV1FCVolumeSourceWwidsList;
 }
-const IoK8sApiCoreV1FCVolumeSource = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1FCVolumeSource>;
-
 /** options is Optional: this field holds extra command options if any. */
 export type IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap>;
-
 /** FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin. */
 export interface IoK8sApiCoreV1FlexPersistentVolumeSource {
   /** driver is the name of the driver to use for this volume. */
@@ -854,11 +585,6 @@ export interface IoK8sApiCoreV1FlexPersistentVolumeSource {
   /** secretRef is Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts. */
   secretRef?: IoK8sApiCoreV1SecretReference;
 }
-const IoK8sApiCoreV1FlexPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1FlexPersistentVolumeSource>;
-
 /** Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1FlockerVolumeSource {
   /** datasetName is Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated */
@@ -866,11 +592,6 @@ export interface IoK8sApiCoreV1FlockerVolumeSource {
   /** datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset */
   datasetUUID?: string;
 }
-const IoK8sApiCoreV1FlockerVolumeSource = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1FlockerVolumeSource>;
-
 /** Represents a Persistent Disk resource in Google Compute Engine. A GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1GCEPersistentDiskVolumeSource {
   /** fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk */
@@ -882,11 +603,6 @@ export interface IoK8sApiCoreV1GCEPersistentDiskVolumeSource {
   /** readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk */
   readOnly?: boolean;
 }
-const IoK8sApiCoreV1GCEPersistentDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1GCEPersistentDiskVolumeSource>;
-
 /** Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1GlusterfsPersistentVolumeSource {
   /** endpoints is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod */
@@ -898,11 +614,6 @@ export interface IoK8sApiCoreV1GlusterfsPersistentVolumeSource {
   /** readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod */
   readOnly?: boolean;
 }
-const IoK8sApiCoreV1GlusterfsPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1GlusterfsPersistentVolumeSource>;
-
 /** Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1HostPathVolumeSource {
   /** path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath */
@@ -910,16 +621,8 @@ export interface IoK8sApiCoreV1HostPathVolumeSource {
   /** type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath */
   type?: string;
 }
-const IoK8sApiCoreV1HostPathVolumeSource = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1HostPathVolumeSource>;
-
 /** portals is the iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
 export type IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList = Array<string>;
-const IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList>;
-
 /** ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1ISCSIPersistentVolumeSource {
   /** chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication */
@@ -945,11 +648,6 @@ export interface IoK8sApiCoreV1ISCSIPersistentVolumeSource {
   /** targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
   targetPortal: string;
 }
-const IoK8sApiCoreV1ISCSIPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1ISCSIPersistentVolumeSource>;
-
 /** Local represents directly-attached storage with node affinity */
 export interface IoK8sApiCoreV1LocalVolumeSource {
   /** fsType is the filesystem type to mount. It applies only when the Path is a block device. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default value is to auto-select a filesystem if unspecified. */
@@ -957,16 +655,8 @@ export interface IoK8sApiCoreV1LocalVolumeSource {
   /** path of the full path to the volume on the node. It can be either a directory or block device (disk, partition, ...). */
   path: string;
 }
-const IoK8sApiCoreV1LocalVolumeSource = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1LocalVolumeSource>;
-
 /** mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options */
 export type IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList = Array<string>;
-const IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList>;
-
 /** Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1NFSVolumeSource {
   /** path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs */
@@ -976,16 +666,8 @@ export interface IoK8sApiCoreV1NFSVolumeSource {
   /** server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs */
   server: string;
 }
-const IoK8sApiCoreV1NFSVolumeSource = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1NFSVolumeSource>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
 export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = Array<string>;
-const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
-
 /** A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApiCoreV1NodeSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -995,25 +677,12 @@ export interface IoK8sApiCoreV1NodeSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
   values?: IoK8sApiCoreV1NodeSelectorRequirementValuesList;
 }
-const IoK8sApiCoreV1NodeSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirement>;
-
 /** matchExpressions is a list of node selector requirements by node's labels. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList>;
-
 /** matchFields is a list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
-  IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
-
 /** A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm. */
 export interface IoK8sApiCoreV1NodeSelectorTerm {
   /** matchExpressions is a list of node selector requirements by node's labels. */
@@ -1021,38 +690,18 @@ export interface IoK8sApiCoreV1NodeSelectorTerm {
   /** matchFields is a list of node selector requirements by node's fields. */
   matchFields?: IoK8sApiCoreV1NodeSelectorTermMatchFieldsList;
 }
-const IoK8sApiCoreV1NodeSelectorTerm = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTerm>;
-
 /** nodeSelectorTerms is a list of node selector terms. The terms are ORed. Required. A list of node selector terms. The terms are ORed. */
 export type IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList = Array<IoK8sApiCoreV1NodeSelectorTerm>;
-const IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList>;
-
 /** A node selector represents the union of the results of one or more label queries over a set of nodes; that is, it represents the OR of the selectors represented by the node selector terms. */
 export interface IoK8sApiCoreV1NodeSelector {
   /** nodeSelectorTerms is a list of node selector terms. The terms are ORed. Required. A list of node selector terms. The terms are ORed. */
   nodeSelectorTerms: IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList;
 }
-const IoK8sApiCoreV1NodeSelector = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelector>;
-
 /** VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from. */
 export interface IoK8sApiCoreV1VolumeNodeAffinity {
   /** required specifies hard node constraints that must be met. */
   required: IoK8sApiCoreV1NodeSelector;
 }
-const IoK8sApiCoreV1VolumeNodeAffinity = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1VolumeNodeAffinity>;
-
 /** Represents a Photon Controller persistent disk resource. */
 export interface IoK8sApiCoreV1PhotonPersistentDiskVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -1060,11 +709,6 @@ export interface IoK8sApiCoreV1PhotonPersistentDiskVolumeSource {
   /** pdID is the ID that identifies Photon Controller persistent disk */
   pdID: string;
 }
-const IoK8sApiCoreV1PhotonPersistentDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1PhotonPersistentDiskVolumeSource>;
-
 /** PortworxVolumeSource represents a Portworx volume resource. */
 export interface IoK8sApiCoreV1PortworxVolumeSource {
   /** fsType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -1074,11 +718,6 @@ export interface IoK8sApiCoreV1PortworxVolumeSource {
   /** volumeID uniquely identifies a Portworx volume */
   volumeID: string;
 }
-const IoK8sApiCoreV1PortworxVolumeSource = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1PortworxVolumeSource>;
-
 /** Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1QuobyteVolumeSource {
   /** group to map volume access to Default is no group */
@@ -1094,16 +733,8 @@ export interface IoK8sApiCoreV1QuobyteVolumeSource {
   /** volume is a string that references an already created Quobyte volume by name. */
   volume: string;
 }
-const IoK8sApiCoreV1QuobyteVolumeSource = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1QuobyteVolumeSource>;
-
 /** monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
 export type IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList = Array<string>;
-const IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList>;
-
 /** Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1RBDPersistentVolumeSource {
   /** fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd */
@@ -1123,11 +754,6 @@ export interface IoK8sApiCoreV1RBDPersistentVolumeSource {
   /** user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
   user?: string;
 }
-const IoK8sApiCoreV1RBDPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1RBDPersistentVolumeSource>;
-
 /** ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume */
 export interface IoK8sApiCoreV1ScaleIOPersistentVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs" */
@@ -1151,11 +777,6 @@ export interface IoK8sApiCoreV1ScaleIOPersistentVolumeSource {
   /** volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source. */
   volumeName: string;
 }
-const IoK8sApiCoreV1ScaleIOPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1ScaleIOPersistentVolumeSource>;
-
 /** Represents a StorageOS persistent volume resource. */
 export interface IoK8sApiCoreV1StorageOSPersistentVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -1169,11 +790,6 @@ export interface IoK8sApiCoreV1StorageOSPersistentVolumeSource {
   /** volumeNamespace specifies the scope of the volume within StorageOS. If no namespace is specified then the Pod's namespace will be used. This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created. */
   volumeNamespace?: string;
 }
-const IoK8sApiCoreV1StorageOSPersistentVolumeSource = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1StorageOSPersistentVolumeSource>;
-
 /** Represents a vSphere volume resource. */
 export interface IoK8sApiCoreV1VsphereVirtualDiskVolumeSource {
   /** fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -1185,11 +801,6 @@ export interface IoK8sApiCoreV1VsphereVirtualDiskVolumeSource {
   /** volumePath is the path that identifies vSphere volume vmdk */
   volumePath: string;
 }
-const IoK8sApiCoreV1VsphereVirtualDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1VsphereVirtualDiskVolumeSource>;
-
 /** PersistentVolumeSpec is the specification of a persistent volume. */
 export interface IoK8sApiCoreV1PersistentVolumeSpec {
   /** accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes */
@@ -1255,11 +866,6 @@ export interface IoK8sApiCoreV1PersistentVolumeSpec {
   /** vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver. */
   vsphereVolume?: IoK8sApiCoreV1VsphereVirtualDiskVolumeSource;
 }
-const IoK8sApiCoreV1PersistentVolumeSpec = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpec>;
-
 /** VolumeAttachmentSource represents a volume that should be attached. Right now only PersistentVolumes can be attached via external attacher, in the future we may allow also inline volumes in pods. Exactly one member can be set. */
 export interface IoK8sApiStorageV1VolumeAttachmentSource {
   /** inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature. */
@@ -1267,11 +873,6 @@ export interface IoK8sApiStorageV1VolumeAttachmentSource {
   /** persistentVolumeName represents the name of the persistent volume to attach. */
   persistentVolumeName?: string;
 }
-const IoK8sApiStorageV1VolumeAttachmentSource = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentSource>;
-
 /** VolumeAttachmentSpec is the specification of a VolumeAttachment request. */
 export interface IoK8sApiStorageV1VolumeAttachmentSpec {
   /** attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName(). */
@@ -1281,11 +882,6 @@ export interface IoK8sApiStorageV1VolumeAttachmentSpec {
   /** source represents the volume that should be attached. */
   source: IoK8sApiStorageV1VolumeAttachmentSource;
 }
-const IoK8sApiStorageV1VolumeAttachmentSpec = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentSpec>;
-
 /** VolumeError captures an error encountered during a volume operation. */
 export interface IoK8sApiStorageV1VolumeError {
   /** errorCode is a numeric gRPC code representing the error encountered during Attach or Detach operations. This field requires the MutableCSINodeAllocatableCount feature gate being enabled to be set. */
@@ -1295,18 +891,10 @@ export interface IoK8sApiStorageV1VolumeError {
   /** time represents the time the error was encountered. */
   time?: string;
 }
-const IoK8sApiStorageV1VolumeError = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<IoK8sApiStorageV1VolumeError>;
-
 /** attachmentMetadata is populated with any information returned by the attach operation, upon successful attach, that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher. */
 export type IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap>;
-
 /** VolumeAttachmentStatus is the status of a VolumeAttachment request. */
 export interface IoK8sApiStorageV1VolumeAttachmentStatus {
   /** attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher. */
@@ -1318,11 +906,6 @@ export interface IoK8sApiStorageV1VolumeAttachmentStatus {
   /** detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher. */
   detachError?: IoK8sApiStorageV1VolumeError;
 }
-const IoK8sApiStorageV1VolumeAttachmentStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentStatus>;
-
 export interface CreateStorageV1VolumeAttachmentRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1343,11 +926,6 @@ export interface CreateStorageV1VolumeAttachmentRequest {
   /** status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher. */
   status?: IoK8sApiStorageV1VolumeAttachmentStatus;
 }
-const CreateStorageV1VolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateStorageV1VolumeAttachmentRequest>;
-
 /** VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node. VolumeAttachment objects are non-namespaced. */
 export interface IoK8sApiStorageV1VolumeAttachment {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1361,18 +939,10 @@ export interface IoK8sApiStorageV1VolumeAttachment {
   /** status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher. */
   status?: IoK8sApiStorageV1VolumeAttachmentStatus;
 }
-const IoK8sApiStorageV1VolumeAttachment = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>;
-
 /** parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass. This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field. */
 export type CreateStorageV1VolumeAttributesClassRequestParametersMap = {
   [key: string]: string | undefined;
 };
-const CreateStorageV1VolumeAttributesClassRequestParametersMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateStorageV1VolumeAttributesClassRequestParametersMap>;
-
 export interface CreateStorageV1VolumeAttributesClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1393,18 +963,10 @@ export interface CreateStorageV1VolumeAttributesClassRequest {
   /** parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass. This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field. */
   parameters: CreateStorageV1VolumeAttributesClassRequestParametersMap;
 }
-const CreateStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateStorageV1VolumeAttributesClassRequest>;
-
 /** parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass. This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field. */
 export type IoK8sApiStorageV1VolumeAttributesClassParametersMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiStorageV1VolumeAttributesClassParametersMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassParametersMap>;
-
 /** VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning. */
 export interface IoK8sApiStorageV1VolumeAttributesClass {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1418,11 +980,6 @@ export interface IoK8sApiStorageV1VolumeAttributesClass {
   /** parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass. This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field. */
   parameters: IoK8sApiStorageV1VolumeAttributesClassParametersMap;
 }
-const IoK8sApiStorageV1VolumeAttributesClass = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>;
-
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -1430,11 +987,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
-
 export interface DeleteStorageV1CollectionCSIDriverRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1473,11 +1025,6 @@ export interface DeleteStorageV1CollectionCSIDriverRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CollectionCSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteStorageV1CollectionCSIDriverRequest>;
-
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -1487,19 +1034,9 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
-
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -1515,21 +1052,11 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
-
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
-
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -1543,11 +1070,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
-
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1567,11 +1089,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
-
 export interface DeleteStorageV1CollectionCSINodeRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1610,11 +1127,6 @@ export interface DeleteStorageV1CollectionCSINodeRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CollectionCSINodeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteStorageV1CollectionCSINodeRequest>;
-
 export interface DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1655,11 +1167,6 @@ export interface DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest>;
-
 export interface DeleteStorageV1CollectionStorageClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1698,11 +1205,6 @@ export interface DeleteStorageV1CollectionStorageClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CollectionStorageClassRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteStorageV1CollectionStorageClassRequest>;
-
 export interface DeleteStorageV1CollectionVolumeAttachmentRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1741,11 +1243,6 @@ export interface DeleteStorageV1CollectionVolumeAttachmentRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CollectionVolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteStorageV1CollectionVolumeAttachmentRequest>;
-
 export interface DeleteStorageV1CollectionVolumeAttributesClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1784,11 +1281,6 @@ export interface DeleteStorageV1CollectionVolumeAttributesClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CollectionVolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteStorageV1CollectionVolumeAttributesClassRequest>;
-
 export interface DeleteStorageV1CSIDriverRequest {
   /** name of the CSIDriver */
   name: string;
@@ -1811,11 +1303,6 @@ export interface DeleteStorageV1CSIDriverRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteStorageV1CSIDriverRequest>;
-
 export interface DeleteStorageV1CSINodeRequest {
   /** name of the CSINode */
   name: string;
@@ -1838,11 +1325,6 @@ export interface DeleteStorageV1CSINodeRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1CSINodeRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteStorageV1CSINodeRequest>;
-
 export interface DeleteStorageV1NamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1867,11 +1349,6 @@ export interface DeleteStorageV1NamespacedCSIStorageCapacityRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DeleteStorageV1NamespacedCSIStorageCapacityRequest>;
-
 export interface DeleteStorageV1StorageClassRequest {
   /** name of the StorageClass */
   name: string;
@@ -1894,11 +1371,6 @@ export interface DeleteStorageV1StorageClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1StorageClassRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeleteStorageV1StorageClassRequest>;
-
 export interface DeleteStorageV1VolumeAttachmentRequest {
   /** name of the VolumeAttachment */
   name: string;
@@ -1921,11 +1393,6 @@ export interface DeleteStorageV1VolumeAttachmentRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1VolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteStorageV1VolumeAttachmentRequest>;
-
 export interface DeleteStorageV1VolumeAttributesClassRequest {
   /** name of the VolumeAttributesClass */
   name: string;
@@ -1948,17 +1415,7 @@ export interface DeleteStorageV1VolumeAttributesClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteStorageV1VolumeAttributesClassRequest>;
-
 export interface GetStorageAPIGroupRequest {}
-const GetStorageAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetStorageAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -1966,11 +1423,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -1978,27 +1430,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2014,32 +1451,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetStorageV1APIResourcesRequest {}
-const GetStorageV1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetStorageV1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -2063,19 +1481,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2087,11 +1495,6 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export interface ListStorageV1CSIDriverRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -2118,18 +1521,8 @@ export interface ListStorageV1CSIDriverRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListStorageV1CSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListStorageV1CSIDriverRequest>;
-
 /** items is the list of CSIDriver */
 export type IoK8sApiStorageV1CSIDriverListItemsList = Array<IoK8sApiStorageV1CSIDriver>;
-const IoK8sApiStorageV1CSIDriverListItemsList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<IoK8sApiStorageV1CSIDriverListItemsList>;
-
 /** CSIDriverList is a collection of CSIDriver objects. */
 export interface IoK8sApiStorageV1CSIDriverList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2141,11 +1534,6 @@ export interface IoK8sApiStorageV1CSIDriverList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiStorageV1CSIDriverList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<IoK8sApiStorageV1CSIDriverList>;
-
 export interface ListStorageV1CSINodeRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -2172,18 +1560,8 @@ export interface ListStorageV1CSINodeRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListStorageV1CSINodeRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListStorageV1CSINodeRequest>;
-
 /** items is the list of CSINode */
 export type IoK8sApiStorageV1CSINodeListItemsList = Array<IoK8sApiStorageV1CSINode>;
-const IoK8sApiStorageV1CSINodeListItemsList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeListItemsList>;
-
 /** CSINodeList is a collection of CSINode objects. */
 export interface IoK8sApiStorageV1CSINodeList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2195,11 +1573,6 @@ export interface IoK8sApiStorageV1CSINodeList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiStorageV1CSINodeList = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeList>;
-
 export interface ListStorageV1CSIStorageCapacityForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2226,19 +1599,9 @@ export interface ListStorageV1CSIStorageCapacityForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListStorageV1CSIStorageCapacityForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListStorageV1CSIStorageCapacityForAllNamespacesRequest>;
-
 /** items is the list of CSIStorageCapacity objects. */
 export type IoK8sApiStorageV1CSIStorageCapacityListItemsList =
   Array<IoK8sApiStorageV1CSIStorageCapacity>;
-const IoK8sApiStorageV1CSIStorageCapacityListItemsList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityListItemsList>;
-
 /** CSIStorageCapacityList is a collection of CSIStorageCapacity objects. */
 export interface IoK8sApiStorageV1CSIStorageCapacityList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2250,11 +1613,6 @@ export interface IoK8sApiStorageV1CSIStorageCapacityList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiStorageV1CSIStorageCapacityList = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityList>;
-
 export interface ListStorageV1NamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2283,11 +1641,6 @@ export interface ListStorageV1NamespacedCSIStorageCapacityRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListStorageV1NamespacedCSIStorageCapacityRequest>;
-
 export interface ListStorageV1StorageClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -2314,18 +1667,8 @@ export interface ListStorageV1StorageClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListStorageV1StorageClassRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListStorageV1StorageClassRequest>;
-
 /** items is the list of StorageClasses */
 export type IoK8sApiStorageV1StorageClassListItemsList = Array<IoK8sApiStorageV1StorageClass>;
-const IoK8sApiStorageV1StorageClassListItemsList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<IoK8sApiStorageV1StorageClassListItemsList>;
-
 /** StorageClassList is a collection of storage classes. */
 export interface IoK8sApiStorageV1StorageClassList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2337,11 +1680,6 @@ export interface IoK8sApiStorageV1StorageClassList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiStorageV1StorageClassList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<IoK8sApiStorageV1StorageClassList>;
-
 export interface ListStorageV1VolumeAttachmentRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -2368,19 +1706,9 @@ export interface ListStorageV1VolumeAttachmentRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListStorageV1VolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListStorageV1VolumeAttachmentRequest>;
-
 /** items is the list of VolumeAttachments */
 export type IoK8sApiStorageV1VolumeAttachmentListItemsList =
   Array<IoK8sApiStorageV1VolumeAttachment>;
-const IoK8sApiStorageV1VolumeAttachmentListItemsList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentListItemsList>;
-
 /** VolumeAttachmentList is a collection of VolumeAttachment objects. */
 export interface IoK8sApiStorageV1VolumeAttachmentList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2392,11 +1720,6 @@ export interface IoK8sApiStorageV1VolumeAttachmentList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiStorageV1VolumeAttachmentList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentList>;
-
 export interface ListStorageV1VolumeAttributesClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -2423,19 +1746,9 @@ export interface ListStorageV1VolumeAttributesClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListStorageV1VolumeAttributesClassRequest>;
-
 /** items is the list of VolumeAttributesClass objects. */
 export type IoK8sApiStorageV1VolumeAttributesClassListItemsList =
   Array<IoK8sApiStorageV1VolumeAttributesClass>;
-const IoK8sApiStorageV1VolumeAttributesClassListItemsList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassListItemsList>;
-
 /** VolumeAttributesClassList is a collection of VolumeAttributesClass objects. */
 export interface IoK8sApiStorageV1VolumeAttributesClassList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2447,11 +1760,6 @@ export interface IoK8sApiStorageV1VolumeAttributesClassList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiStorageV1VolumeAttributesClassList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassList>;
-
 export interface PatchStorageV1CSIDriverRequest {
   /** name of the CSIDriver */
   name: string;
@@ -2466,11 +1774,6 @@ export interface PatchStorageV1CSIDriverRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1CSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<PatchStorageV1CSIDriverRequest>;
-
 export interface PatchStorageV1CSINodeRequest {
   /** name of the CSINode */
   name: string;
@@ -2485,11 +1788,6 @@ export interface PatchStorageV1CSINodeRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1CSINodeRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<PatchStorageV1CSINodeRequest>;
-
 export interface PatchStorageV1CSINodeStatusRequest {
   /** name of the CSINode */
   name: string;
@@ -2504,11 +1802,6 @@ export interface PatchStorageV1CSINodeStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1CSINodeStatusRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<PatchStorageV1CSINodeStatusRequest>;
-
 export interface PatchStorageV1NamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2525,11 +1818,6 @@ export interface PatchStorageV1NamespacedCSIStorageCapacityRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<PatchStorageV1NamespacedCSIStorageCapacityRequest>;
-
 export interface PatchStorageV1StorageClassRequest {
   /** name of the StorageClass */
   name: string;
@@ -2544,11 +1832,6 @@ export interface PatchStorageV1StorageClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1StorageClassRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<PatchStorageV1StorageClassRequest>;
-
 export interface PatchStorageV1VolumeAttachmentRequest {
   /** name of the VolumeAttachment */
   name: string;
@@ -2563,11 +1846,6 @@ export interface PatchStorageV1VolumeAttachmentRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1VolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<PatchStorageV1VolumeAttachmentRequest>;
-
 export interface PatchStorageV1VolumeAttachmentStatusRequest {
   /** name of the VolumeAttachment */
   name: string;
@@ -2582,11 +1860,6 @@ export interface PatchStorageV1VolumeAttachmentStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1VolumeAttachmentStatusRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<PatchStorageV1VolumeAttachmentStatusRequest>;
-
 export interface PatchStorageV1VolumeAttributesClassRequest {
   /** name of the VolumeAttributesClass */
   name: string;
@@ -2601,44 +1874,24 @@ export interface PatchStorageV1VolumeAttributesClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<PatchStorageV1VolumeAttributesClassRequest>;
-
 export interface ReadStorageV1CSIDriverRequest {
   /** name of the CSIDriver */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1CSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ReadStorageV1CSIDriverRequest>;
-
 export interface ReadStorageV1CSINodeRequest {
   /** name of the CSINode */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1CSINodeRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ReadStorageV1CSINodeRequest>;
-
 export interface ReadStorageV1CSINodeStatusRequest {
   /** name of the CSINode */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1CSINodeStatusRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ReadStorageV1CSINodeStatusRequest>;
-
 export interface ReadStorageV1NamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2647,55 +1900,30 @@ export interface ReadStorageV1NamespacedCSIStorageCapacityRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ReadStorageV1NamespacedCSIStorageCapacityRequest>;
-
 export interface ReadStorageV1StorageClassRequest {
   /** name of the StorageClass */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1StorageClassRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ReadStorageV1StorageClassRequest>;
-
 export interface ReadStorageV1VolumeAttachmentRequest {
   /** name of the VolumeAttachment */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1VolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ReadStorageV1VolumeAttachmentRequest>;
-
 export interface ReadStorageV1VolumeAttachmentStatusRequest {
   /** name of the VolumeAttachment */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1VolumeAttachmentStatusRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ReadStorageV1VolumeAttachmentStatusRequest>;
-
 export interface ReadStorageV1VolumeAttributesClassRequest {
   /** name of the VolumeAttributesClass */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ReadStorageV1VolumeAttributesClassRequest>;
-
 export interface ReplaceStorageV1CSIDriverRequest {
   /** name of the CSIDriver */
   name: string;
@@ -2716,11 +1944,6 @@ export interface ReplaceStorageV1CSIDriverRequest {
   /** spec represents the specification of the CSI Driver. */
   spec?: IoK8sApiStorageV1CSIDriverSpec;
 }
-const ReplaceStorageV1CSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ReplaceStorageV1CSIDriverRequest>;
-
 export interface ReplaceStorageV1CSINodeRequest {
   /** name of the CSINode */
   name: string;
@@ -2743,11 +1966,6 @@ export interface ReplaceStorageV1CSINodeRequest {
   /** status contains health and status information for the node's storage. */
   status?: IoK8sApiStorageV1CSINodeStatus;
 }
-const ReplaceStorageV1CSINodeRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ReplaceStorageV1CSINodeRequest>;
-
 export interface ReplaceStorageV1CSINodeStatusRequest {
   /** name of the CSINode */
   name: string;
@@ -2770,11 +1988,6 @@ export interface ReplaceStorageV1CSINodeStatusRequest {
   /** status contains health and status information for the node's storage. */
   status?: IoK8sApiStorageV1CSINodeStatus;
 }
-const ReplaceStorageV1CSINodeStatusRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ReplaceStorageV1CSINodeStatusRequest>;
-
 export interface ReplaceStorageV1NamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2803,29 +2016,15 @@ export interface ReplaceStorageV1NamespacedCSIStorageCapacityRequest {
   /** storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable. */
   storageClassName: string;
 }
-const ReplaceStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ReplaceStorageV1NamespacedCSIStorageCapacityRequest>;
-
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type ReplaceStorageV1StorageClassRequestAllowedTopologiesList =
   Array<IoK8sApiCoreV1TopologySelectorTerm>;
-const ReplaceStorageV1StorageClassRequestAllowedTopologiesList =
-  CreateStorageV1StorageClassRequestAllowedTopologiesList as any as S.Schema<ReplaceStorageV1StorageClassRequestAllowedTopologiesList>;
-
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
 export type ReplaceStorageV1StorageClassRequestMountOptionsList = Array<string>;
-const ReplaceStorageV1StorageClassRequestMountOptionsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<ReplaceStorageV1StorageClassRequestMountOptionsList>;
-
 /** parameters holds the parameters for the provisioner that should create volumes of this storage class. */
 export type ReplaceStorageV1StorageClassRequestParametersMap = {
   [key: string]: string | undefined;
 };
-const ReplaceStorageV1StorageClassRequestParametersMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceStorageV1StorageClassRequestParametersMap>;
-
 export interface ReplaceStorageV1StorageClassRequest {
   /** name of the StorageClass */
   name: string;
@@ -2858,11 +2057,6 @@ export interface ReplaceStorageV1StorageClassRequest {
   /** volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound. When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature. */
   volumeBindingMode?: string;
 }
-const ReplaceStorageV1StorageClassRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ReplaceStorageV1StorageClassRequest>;
-
 export interface ReplaceStorageV1VolumeAttachmentRequest {
   /** name of the VolumeAttachment */
   name: string;
@@ -2885,11 +2079,6 @@ export interface ReplaceStorageV1VolumeAttachmentRequest {
   /** status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher. */
   status?: IoK8sApiStorageV1VolumeAttachmentStatus;
 }
-const ReplaceStorageV1VolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ReplaceStorageV1VolumeAttachmentRequest>;
-
 export interface ReplaceStorageV1VolumeAttachmentStatusRequest {
   /** name of the VolumeAttachment */
   name: string;
@@ -2912,18 +2101,10 @@ export interface ReplaceStorageV1VolumeAttachmentStatusRequest {
   /** status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher. */
   status?: IoK8sApiStorageV1VolumeAttachmentStatus;
 }
-const ReplaceStorageV1VolumeAttachmentStatusRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ReplaceStorageV1VolumeAttachmentStatusRequest>;
-
 /** parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass. This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field. */
 export type ReplaceStorageV1VolumeAttributesClassRequestParametersMap = {
   [key: string]: string | undefined;
 };
-const ReplaceStorageV1VolumeAttributesClassRequestParametersMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceStorageV1VolumeAttributesClassRequestParametersMap>;
-
 export interface ReplaceStorageV1VolumeAttributesClassRequest {
   /** name of the VolumeAttributesClass */
   name: string;
@@ -2946,11 +2127,6 @@ export interface ReplaceStorageV1VolumeAttributesClassRequest {
   /** parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass. This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field. */
   parameters: ReplaceStorageV1VolumeAttributesClassRequestParametersMap;
 }
-const ReplaceStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ReplaceStorageV1VolumeAttributesClassRequest>;
-
 export interface WatchStorageV1CSIDriverRequest {
   /** name of the CSIDriver */
   name: string;
@@ -2979,22 +2155,12 @@ export interface WatchStorageV1CSIDriverRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1CSIDriverRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<WatchStorageV1CSIDriverRequest>;
-
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
-
 export interface WatchStorageV1CSIDriverListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3021,11 +2187,6 @@ export interface WatchStorageV1CSIDriverListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1CSIDriverListRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<WatchStorageV1CSIDriverListRequest>;
-
 export interface WatchStorageV1CSINodeRequest {
   /** name of the CSINode */
   name: string;
@@ -3054,11 +2215,6 @@ export interface WatchStorageV1CSINodeRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1CSINodeRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<WatchStorageV1CSINodeRequest>;
-
 export interface WatchStorageV1CSINodeListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3085,11 +2241,6 @@ export interface WatchStorageV1CSINodeListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1CSINodeListRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<WatchStorageV1CSINodeListRequest>;
-
 export interface WatchStorageV1CSIStorageCapacityListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3116,11 +2267,6 @@ export interface WatchStorageV1CSIStorageCapacityListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1CSIStorageCapacityListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<WatchStorageV1CSIStorageCapacityListForAllNamespacesRequest>;
-
 export interface WatchStorageV1NamespacedCSIStorageCapacityRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3151,11 +2297,6 @@ export interface WatchStorageV1NamespacedCSIStorageCapacityRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<WatchStorageV1NamespacedCSIStorageCapacityRequest>;
-
 export interface WatchStorageV1NamespacedCSIStorageCapacityListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3184,11 +2325,6 @@ export interface WatchStorageV1NamespacedCSIStorageCapacityListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1NamespacedCSIStorageCapacityListRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<WatchStorageV1NamespacedCSIStorageCapacityListRequest>;
-
 export interface WatchStorageV1StorageClassRequest {
   /** name of the StorageClass */
   name: string;
@@ -3217,11 +2353,6 @@ export interface WatchStorageV1StorageClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1StorageClassRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<WatchStorageV1StorageClassRequest>;
-
 export interface WatchStorageV1StorageClassListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3248,11 +2379,6 @@ export interface WatchStorageV1StorageClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1StorageClassListRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<WatchStorageV1StorageClassListRequest>;
-
 export interface WatchStorageV1VolumeAttachmentRequest {
   /** name of the VolumeAttachment */
   name: string;
@@ -3281,11 +2407,6 @@ export interface WatchStorageV1VolumeAttachmentRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1VolumeAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<WatchStorageV1VolumeAttachmentRequest>;
-
 export interface WatchStorageV1VolumeAttachmentListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3312,11 +2433,6 @@ export interface WatchStorageV1VolumeAttachmentListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1VolumeAttachmentListRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<WatchStorageV1VolumeAttachmentListRequest>;
-
 export interface WatchStorageV1VolumeAttributesClassRequest {
   /** name of the VolumeAttributesClass */
   name: string;
@@ -3345,11 +2461,6 @@ export interface WatchStorageV1VolumeAttributesClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<WatchStorageV1VolumeAttributesClassRequest>;
-
 export interface WatchStorageV1VolumeAttributesClassListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3376,11 +2487,6 @@ export interface WatchStorageV1VolumeAttributesClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchStorageV1VolumeAttributesClassListRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<WatchStorageV1VolumeAttributesClassListRequest>;
-
 export type CreateStorageV1CSIDriverError = Conflict | UnprocessableEntity | KubernetesOpError;
 /** create a CSIDriver */
 export const createStorageV1CSIDriver: API.OperationMethod<
@@ -3389,8 +2495,8 @@ export const createStorageV1CSIDriver: API.OperationMethod<
   CreateStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageV1CSIDriverRequest,
-  output: IoK8sApiStorageV1CSIDriver,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateStorageV1CSIDriverRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3404,8 +2510,8 @@ export const createStorageV1CSINode: API.OperationMethod<
   CreateStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageV1CSINodeRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateStorageV1CSINodeRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3422,8 +2528,8 @@ export const createStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   CreateStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageV1NamespacedCSIStorageCapacityRequest,
-  output: IoK8sApiStorageV1CSIStorageCapacity,
+  input: __S(27, __c3, 3) as any as S.Schema<CreateStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3437,8 +2543,8 @@ export const createStorageV1StorageClass: API.OperationMethod<
   CreateStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageV1StorageClassRequest,
-  output: IoK8sApiStorageV1StorageClass,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateStorageV1StorageClassRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3455,8 +2561,8 @@ export const createStorageV1VolumeAttachment: API.OperationMethod<
   CreateStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageV1VolumeAttachmentRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(70, __c8, 6) as any as S.Schema<CreateStorageV1VolumeAttachmentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3473,8 +2579,8 @@ export const createStorageV1VolumeAttributesClass: API.OperationMethod<
   CreateStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageV1VolumeAttributesClassRequest,
-  output: IoK8sApiStorageV1VolumeAttributesClass,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateStorageV1VolumeAttributesClassRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3488,8 +2594,8 @@ export const deleteStorageV1CollectionCSIDriver: API.OperationMethod<
   DeleteStorageV1CollectionCSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CollectionCSIDriverRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteStorageV1CollectionCSIDriverRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3503,8 +2609,8 @@ export const deleteStorageV1CollectionCSINode: API.OperationMethod<
   DeleteStorageV1CollectionCSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CollectionCSINodeRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(82, __c10, 2) as any as S.Schema<DeleteStorageV1CollectionCSINodeRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3518,8 +2624,12 @@ export const deleteStorageV1CollectionNamespacedCSIStorageCapacity: API.Operatio
   DeleteStorageV1CollectionNamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    83,
+    __c10,
+    3,
+  ) as any as S.Schema<DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3533,8 +2643,8 @@ export const deleteStorageV1CollectionStorageClass: API.OperationMethod<
   DeleteStorageV1CollectionStorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CollectionStorageClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(84, __c10, 4) as any as S.Schema<DeleteStorageV1CollectionStorageClassRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3548,8 +2658,8 @@ export const deleteStorageV1CollectionVolumeAttachment: API.OperationMethod<
   DeleteStorageV1CollectionVolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CollectionVolumeAttachmentRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteStorageV1CollectionVolumeAttachmentRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3563,8 +2673,12 @@ export const deleteStorageV1CollectionVolumeAttributesClass: API.OperationMethod
   DeleteStorageV1CollectionVolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CollectionVolumeAttributesClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    86,
+    __c10,
+    6,
+  ) as any as S.Schema<DeleteStorageV1CollectionVolumeAttributesClassRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3578,8 +2692,8 @@ export const deleteStorageV1CSIDriver: API.OperationMethod<
   DeleteStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CSIDriverRequest,
-  output: IoK8sApiStorageV1CSIDriver,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteStorageV1CSIDriverRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3593,8 +2707,8 @@ export const deleteStorageV1CSINode: API.OperationMethod<
   DeleteStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1CSINodeRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteStorageV1CSINodeRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3611,8 +2725,8 @@ export const deleteStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   DeleteStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1NamespacedCSIStorageCapacityRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(89, __c11, 1) as any as S.Schema<DeleteStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3626,8 +2740,8 @@ export const deleteStorageV1StorageClass: API.OperationMethod<
   DeleteStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1StorageClassRequest,
-  output: IoK8sApiStorageV1StorageClass,
+  input: __S(90, __c11, 2) as any as S.Schema<DeleteStorageV1StorageClassRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3641,8 +2755,8 @@ export const deleteStorageV1VolumeAttachment: API.OperationMethod<
   DeleteStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1VolumeAttachmentRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(91, __c11, 3) as any as S.Schema<DeleteStorageV1VolumeAttachmentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3656,8 +2770,8 @@ export const deleteStorageV1VolumeAttributesClass: API.OperationMethod<
   DeleteStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageV1VolumeAttributesClassRequest,
-  output: IoK8sApiStorageV1VolumeAttributesClass,
+  input: __S(92, __c11, 4) as any as S.Schema<DeleteStorageV1VolumeAttributesClassRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3671,8 +2785,8 @@ export const getStorageAPIGroup: API.OperationMethod<
   GetStorageAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(93, __c11, 5) as any as S.Schema<GetStorageAPIGroupRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3686,8 +2800,8 @@ export const getStorageV1APIResources: API.OperationMethod<
   GetStorageV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageV1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(99, __c12, 3) as any as S.Schema<GetStorageV1APIResourcesRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3701,8 +2815,8 @@ export const listStorageV1CSIDriver: API.OperationMethod<
   ListStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageV1CSIDriverRequest,
-  output: IoK8sApiStorageV1CSIDriverList,
+  input: __S(103, __c12, 7) as any as S.Schema<ListStorageV1CSIDriverRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<IoK8sApiStorageV1CSIDriverList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3716,8 +2830,8 @@ export const listStorageV1CSINode: API.OperationMethod<
   ListStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageV1CSINodeRequest,
-  output: IoK8sApiStorageV1CSINodeList,
+  input: __S(106, __c13, 2) as any as S.Schema<ListStorageV1CSINodeRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<IoK8sApiStorageV1CSINodeList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3731,8 +2845,12 @@ export const listStorageV1CSIStorageCapacityForAllNamespaces: API.OperationMetho
   ListStorageV1CSIStorageCapacityForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageV1CSIStorageCapacityForAllNamespacesRequest,
-  output: IoK8sApiStorageV1CSIStorageCapacityList,
+  input: __S(
+    109,
+    __c13,
+    5,
+  ) as any as S.Schema<ListStorageV1CSIStorageCapacityForAllNamespacesRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3746,8 +2864,8 @@ export const listStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   ListStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageV1NamespacedCSIStorageCapacityRequest,
-  output: IoK8sApiStorageV1CSIStorageCapacityList,
+  input: __S(112, __c14, 0) as any as S.Schema<ListStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3761,8 +2879,8 @@ export const listStorageV1StorageClass: API.OperationMethod<
   ListStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageV1StorageClassRequest,
-  output: IoK8sApiStorageV1StorageClassList,
+  input: __S(113, __c14, 1) as any as S.Schema<ListStorageV1StorageClassRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<IoK8sApiStorageV1StorageClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3776,8 +2894,8 @@ export const listStorageV1VolumeAttachment: API.OperationMethod<
   ListStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageV1VolumeAttachmentRequest,
-  output: IoK8sApiStorageV1VolumeAttachmentList,
+  input: __S(116, __c14, 4) as any as S.Schema<ListStorageV1VolumeAttachmentRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3791,8 +2909,8 @@ export const listStorageV1VolumeAttributesClass: API.OperationMethod<
   ListStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageV1VolumeAttributesClassRequest,
-  output: IoK8sApiStorageV1VolumeAttributesClassList,
+  input: __S(119, __c14, 7) as any as S.Schema<ListStorageV1VolumeAttributesClassRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3810,8 +2928,8 @@ export const patchStorageV1CSIDriver: API.OperationMethod<
   PatchStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1CSIDriverRequest,
-  output: IoK8sApiStorageV1CSIDriver,
+  input: __S(122, __c15, 2) as any as S.Schema<PatchStorageV1CSIDriverRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3829,8 +2947,8 @@ export const patchStorageV1CSINode: API.OperationMethod<
   PatchStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1CSINodeRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(123, __c15, 3) as any as S.Schema<PatchStorageV1CSINodeRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3844,8 +2962,8 @@ export const patchStorageV1CSINodeStatus: API.OperationMethod<
   PatchStorageV1CSINodeStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1CSINodeStatusRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(124, __c15, 4) as any as S.Schema<PatchStorageV1CSINodeStatusRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3863,8 +2981,8 @@ export const patchStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   PatchStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1NamespacedCSIStorageCapacityRequest,
-  output: IoK8sApiStorageV1CSIStorageCapacity,
+  input: __S(125, __c15, 5) as any as S.Schema<PatchStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3882,8 +3000,8 @@ export const patchStorageV1StorageClass: API.OperationMethod<
   PatchStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1StorageClassRequest,
-  output: IoK8sApiStorageV1StorageClass,
+  input: __S(126, __c15, 6) as any as S.Schema<PatchStorageV1StorageClassRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3901,8 +3019,8 @@ export const patchStorageV1VolumeAttachment: API.OperationMethod<
   PatchStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1VolumeAttachmentRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(127, __c15, 7) as any as S.Schema<PatchStorageV1VolumeAttachmentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3920,8 +3038,8 @@ export const patchStorageV1VolumeAttachmentStatus: API.OperationMethod<
   PatchStorageV1VolumeAttachmentStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1VolumeAttachmentStatusRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(128, __c16, 0) as any as S.Schema<PatchStorageV1VolumeAttachmentStatusRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3939,8 +3057,8 @@ export const patchStorageV1VolumeAttributesClass: API.OperationMethod<
   PatchStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchStorageV1VolumeAttributesClassRequest,
-  output: IoK8sApiStorageV1VolumeAttributesClass,
+  input: __S(129, __c16, 1) as any as S.Schema<PatchStorageV1VolumeAttributesClassRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3954,8 +3072,8 @@ export const readStorageV1CSIDriver: API.OperationMethod<
   ReadStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1CSIDriverRequest,
-  output: IoK8sApiStorageV1CSIDriver,
+  input: __S(130, __c16, 2) as any as S.Schema<ReadStorageV1CSIDriverRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3969,8 +3087,8 @@ export const readStorageV1CSINode: API.OperationMethod<
   ReadStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1CSINodeRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(131, __c16, 3) as any as S.Schema<ReadStorageV1CSINodeRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3984,8 +3102,8 @@ export const readStorageV1CSINodeStatus: API.OperationMethod<
   ReadStorageV1CSINodeStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1CSINodeStatusRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(132, __c16, 4) as any as S.Schema<ReadStorageV1CSINodeStatusRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3999,8 +3117,8 @@ export const readStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   ReadStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1NamespacedCSIStorageCapacityRequest,
-  output: IoK8sApiStorageV1CSIStorageCapacity,
+  input: __S(133, __c16, 5) as any as S.Schema<ReadStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4014,8 +3132,8 @@ export const readStorageV1StorageClass: API.OperationMethod<
   ReadStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1StorageClassRequest,
-  output: IoK8sApiStorageV1StorageClass,
+  input: __S(134, __c16, 6) as any as S.Schema<ReadStorageV1StorageClassRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4029,8 +3147,8 @@ export const readStorageV1VolumeAttachment: API.OperationMethod<
   ReadStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1VolumeAttachmentRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(135, __c16, 7) as any as S.Schema<ReadStorageV1VolumeAttachmentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4044,8 +3162,8 @@ export const readStorageV1VolumeAttachmentStatus: API.OperationMethod<
   ReadStorageV1VolumeAttachmentStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1VolumeAttachmentStatusRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(136, __c17, 0) as any as S.Schema<ReadStorageV1VolumeAttachmentStatusRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4059,8 +3177,8 @@ export const readStorageV1VolumeAttributesClass: API.OperationMethod<
   ReadStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadStorageV1VolumeAttributesClassRequest,
-  output: IoK8sApiStorageV1VolumeAttributesClass,
+  input: __S(137, __c17, 1) as any as S.Schema<ReadStorageV1VolumeAttributesClassRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4078,8 +3196,8 @@ export const replaceStorageV1CSIDriver: API.OperationMethod<
   ReplaceStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1CSIDriverRequest,
-  output: IoK8sApiStorageV1CSIDriver,
+  input: __S(138, __c17, 2) as any as S.Schema<ReplaceStorageV1CSIDriverRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4097,8 +3215,8 @@ export const replaceStorageV1CSINode: API.OperationMethod<
   ReplaceStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1CSINodeRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(139, __c17, 3) as any as S.Schema<ReplaceStorageV1CSINodeRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4112,8 +3230,8 @@ export const replaceStorageV1CSINodeStatus: API.OperationMethod<
   ReplaceStorageV1CSINodeStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1CSINodeStatusRequest,
-  output: IoK8sApiStorageV1CSINode,
+  input: __S(140, __c17, 4) as any as S.Schema<ReplaceStorageV1CSINodeStatusRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4131,8 +3249,8 @@ export const replaceStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   ReplaceStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1NamespacedCSIStorageCapacityRequest,
-  output: IoK8sApiStorageV1CSIStorageCapacity,
+  input: __S(141, __c17, 5) as any as S.Schema<ReplaceStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4150,8 +3268,8 @@ export const replaceStorageV1StorageClass: API.OperationMethod<
   ReplaceStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1StorageClassRequest,
-  output: IoK8sApiStorageV1StorageClass,
+  input: __S(142, __c17, 6) as any as S.Schema<ReplaceStorageV1StorageClassRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4169,8 +3287,8 @@ export const replaceStorageV1VolumeAttachment: API.OperationMethod<
   ReplaceStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1VolumeAttachmentRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(143, __c17, 7) as any as S.Schema<ReplaceStorageV1VolumeAttachmentRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4188,8 +3306,8 @@ export const replaceStorageV1VolumeAttachmentStatus: API.OperationMethod<
   ReplaceStorageV1VolumeAttachmentStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1VolumeAttachmentStatusRequest,
-  output: IoK8sApiStorageV1VolumeAttachment,
+  input: __S(144, __c18, 0) as any as S.Schema<ReplaceStorageV1VolumeAttachmentStatusRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4207,8 +3325,8 @@ export const replaceStorageV1VolumeAttributesClass: API.OperationMethod<
   ReplaceStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceStorageV1VolumeAttributesClassRequest,
-  output: IoK8sApiStorageV1VolumeAttributesClass,
+  input: __S(145, __c18, 1) as any as S.Schema<ReplaceStorageV1VolumeAttributesClassRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4222,8 +3340,8 @@ export const watchStorageV1CSIDriver: API.OperationMethod<
   WatchStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1CSIDriverRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(146, __c18, 2) as any as S.Schema<WatchStorageV1CSIDriverRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4237,8 +3355,8 @@ export const watchStorageV1CSIDriverList: API.OperationMethod<
   WatchStorageV1CSIDriverListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1CSIDriverListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(148, __c18, 4) as any as S.Schema<WatchStorageV1CSIDriverListRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4252,8 +3370,8 @@ export const watchStorageV1CSINode: API.OperationMethod<
   WatchStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1CSINodeRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(149, __c18, 5) as any as S.Schema<WatchStorageV1CSINodeRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4267,8 +3385,8 @@ export const watchStorageV1CSINodeList: API.OperationMethod<
   WatchStorageV1CSINodeListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1CSINodeListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(150, __c18, 6) as any as S.Schema<WatchStorageV1CSINodeListRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4282,8 +3400,12 @@ export const watchStorageV1CSIStorageCapacityListForAllNamespaces: API.Operation
   WatchStorageV1CSIStorageCapacityListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1CSIStorageCapacityListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    151,
+    __c18,
+    7,
+  ) as any as S.Schema<WatchStorageV1CSIStorageCapacityListForAllNamespacesRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4297,8 +3419,8 @@ export const watchStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   WatchStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1NamespacedCSIStorageCapacityRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(152, __c19, 0) as any as S.Schema<WatchStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4312,8 +3434,12 @@ export const watchStorageV1NamespacedCSIStorageCapacityList: API.OperationMethod
   WatchStorageV1NamespacedCSIStorageCapacityListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1NamespacedCSIStorageCapacityListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    153,
+    __c19,
+    1,
+  ) as any as S.Schema<WatchStorageV1NamespacedCSIStorageCapacityListRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4327,8 +3453,8 @@ export const watchStorageV1StorageClass: API.OperationMethod<
   WatchStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1StorageClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(154, __c19, 2) as any as S.Schema<WatchStorageV1StorageClassRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4342,8 +3468,8 @@ export const watchStorageV1StorageClassList: API.OperationMethod<
   WatchStorageV1StorageClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1StorageClassListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(155, __c19, 3) as any as S.Schema<WatchStorageV1StorageClassListRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4357,8 +3483,8 @@ export const watchStorageV1VolumeAttachment: API.OperationMethod<
   WatchStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1VolumeAttachmentRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(156, __c19, 4) as any as S.Schema<WatchStorageV1VolumeAttachmentRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4372,8 +3498,8 @@ export const watchStorageV1VolumeAttachmentList: API.OperationMethod<
   WatchStorageV1VolumeAttachmentListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1VolumeAttachmentListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(157, __c19, 5) as any as S.Schema<WatchStorageV1VolumeAttachmentListRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4387,8 +3513,8 @@ export const watchStorageV1VolumeAttributesClass: API.OperationMethod<
   WatchStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1VolumeAttributesClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(158, __c19, 6) as any as S.Schema<WatchStorageV1VolumeAttributesClassRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4402,8 +3528,8 @@ export const watchStorageV1VolumeAttributesClassList: API.OperationMethod<
   WatchStorageV1VolumeAttributesClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchStorageV1VolumeAttributesClassListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(159, __c19, 7) as any as S.Schema<WatchStorageV1VolumeAttributesClassListRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4431,7 +3557,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4446,22 +3572,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0, __c0, 0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1, __c0, 1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0, __c0, 0)),
+          managedFields: S.optional(__S(3, __c0, 3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5, __c0, 5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -4483,7 +3609,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiStorageV1TokenRequest);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4496,8 +3622,8 @@ function __c1(j: number): any {
           seLinuxMount: S.optional(S.Boolean),
           serviceAccountTokenInSecrets: S.optional(S.Boolean),
           storageCapacity: S.optional(S.Boolean),
-          tokenRequests: S.optional(IoK8sApiStorageV1CSIDriverSpecTokenRequestsList),
-          volumeLifecycleModes: S.optional(IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList),
+          tokenRequests: S.optional(__S(8, __c1, 0)),
+          volumeLifecycleModes: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSIDriverSpec",
@@ -4511,8 +3637,8 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiStorageV1CSIDriverSpec),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: S.optional(__S(9, __c1, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/csidrivers", code: 200 })),
       ).annotate({
         identifier: "CreateStorageV1CSIDriverRequest",
@@ -4522,8 +3648,8 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiStorageV1CSIDriverSpec),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSIDriver",
@@ -4539,20 +3665,20 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allocatable: S.optional(IoK8sApiStorageV1VolumeNodeResources),
+          allocatable: S.optional(__S(12, __c1, 4)),
           name: S.String,
           nodeID: S.String,
-          topologyKeys: S.optional(IoK8sApiStorageV1CSINodeDriverTopologyKeysList),
+          topologyKeys: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSINodeDriver",
       });
     case 6:
-      return S.Array(IoK8sApiStorageV1CSINodeDriver);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          drivers: S.optional(IoK8sApiStorageV1CSINodeSpecDriversList),
+          drivers: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSINodeSpec",
@@ -4575,22 +3701,22 @@ function __c2(j: number): any {
         identifier: "IoK8sApiStorageV1StorageHealthCondition",
       });
     case 1:
-      return S.Array(IoK8sApiStorageV1StorageHealthCondition);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          healthConditions: S.optional(IoK8sApiStorageV1StorageHealthHealthConditionsList),
+          healthConditions: S.optional(__S(17, __c2, 1)),
           name: S.String,
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1StorageHealth",
       });
     case 3:
-      return S.Array(IoK8sApiStorageV1StorageHealth);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          storageHealth: S.optional(IoK8sApiStorageV1CSINodeStatusStorageHealthList),
+          storageHealth: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSINodeStatus",
@@ -4604,9 +3730,9 @@ function __c2(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiStorageV1CSINodeSpec),
-          status: S.optional(IoK8sApiStorageV1CSINodeStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: S.optional(__S(15, __c1, 7)),
+          status: S.optional(__S(20, __c2, 4)),
         }).pipe(T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/csinodes", code: 200 })),
       ).annotate({
         identifier: "CreateStorageV1CSINodeRequest",
@@ -4616,9 +3742,9 @@ function __c2(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiStorageV1CSINodeSpec),
-          status: S.optional(IoK8sApiStorageV1CSINodeStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: S.optional(__S(15, __c1, 7)),
+          status: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "IoK8sApiStorageV1CSINode" });
     case 7:
@@ -4632,20 +3758,18 @@ function __c3(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList),
+          values: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
       });
     case 1:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(
-            IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList,
-          ),
-          matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
+          matchExpressions: S.optional(__S(25, __c3, 1)),
+          matchLabels: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
@@ -4662,8 +3786,8 @@ function __c3(j: number): any {
           capacity: S.optional(S.String),
           kind: S.optional(S.String),
           maximumVolumeSize: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          nodeTopology: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
+          metadata: S.optional(__S(6, __c0, 6)),
+          nodeTopology: S.optional(__S(26, __c3, 2)),
           storageClassName: S.String,
         }).pipe(
           T.Http({
@@ -4682,8 +3806,8 @@ function __c3(j: number): any {
           capacity: S.optional(S.String),
           kind: S.optional(S.String),
           maximumVolumeSize: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          nodeTopology: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
+          metadata: S.optional(__S(6, __c0, 6)),
+          nodeTopology: S.optional(__S(26, __c3, 2)),
           storageClassName: S.String,
         }),
       ).annotate({
@@ -4693,19 +3817,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          values: IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList,
+          values: __S(1, __c0, 1),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1TopologySelectorLabelRequirement",
       });
     case 6:
-      return S.Array(IoK8sApiCoreV1TopologySelectorLabelRequirement);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          matchLabelExpressions: S.optional(
-            IoK8sApiCoreV1TopologySelectorTermMatchLabelExpressionsList,
-          ),
+          matchLabelExpressions: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1TopologySelectorTerm",
@@ -4715,7 +3837,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiCoreV1TopologySelectorTerm);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4724,12 +3846,12 @@ function __c4(j: number): any {
           fieldManager: S.optional(S.String.pipe(T.Query())),
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           allowVolumeExpansion: S.optional(S.Boolean),
-          allowedTopologies: S.optional(CreateStorageV1StorageClassRequestAllowedTopologiesList),
+          allowedTopologies: S.optional(__S(32, __c4, 0)),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          mountOptions: S.optional(CreateStorageV1StorageClassRequestMountOptionsList),
-          parameters: S.optional(CreateStorageV1StorageClassRequestParametersMap),
+          metadata: S.optional(__S(6, __c0, 6)),
+          mountOptions: S.optional(__S(1, __c0, 1)),
+          parameters: S.optional(__S(0, __c0, 0)),
           provisioner: S.String,
           reclaimPolicy: S.optional(S.String),
           volumeBindingMode: S.optional(S.String),
@@ -4743,12 +3865,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowVolumeExpansion: S.optional(S.Boolean),
-          allowedTopologies: S.optional(IoK8sApiStorageV1StorageClassAllowedTopologiesList),
+          allowedTopologies: S.optional(__S(32, __c4, 0)),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          mountOptions: S.optional(IoK8sApiStorageV1StorageClassMountOptionsList),
-          parameters: S.optional(IoK8sApiStorageV1StorageClassParametersMap),
+          metadata: S.optional(__S(6, __c0, 6)),
+          mountOptions: S.optional(__S(1, __c0, 1)),
+          parameters: S.optional(__S(0, __c0, 0)),
           provisioner: S.String,
           reclaimPolicy: S.optional(S.String),
           volumeBindingMode: S.optional(S.String),
@@ -4803,11 +3925,11 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          monitors: IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList,
+          monitors: __S(1, __c0, 1),
           path: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
           secretFile: S.optional(S.String),
-          secretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          secretRef: S.optional(__S(38, __c4, 6)),
           user: S.optional(S.String),
         }),
       ).annotate({
@@ -4822,7 +3944,7 @@ function __c5(j: number): any {
         S.Struct({
           fsType: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          secretRef: S.optional(__S(38, __c4, 6)),
           volumeID: S.String,
         }),
       ).annotate({
@@ -4845,15 +3967,15 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          controllerExpandSecretRef: S.optional(IoK8sApiCoreV1SecretReference),
-          controllerPublishSecretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          controllerExpandSecretRef: S.optional(__S(38, __c4, 6)),
+          controllerPublishSecretRef: S.optional(__S(38, __c4, 6)),
           driver: S.String,
           fsType: S.optional(S.String),
-          nodeExpandSecretRef: S.optional(IoK8sApiCoreV1SecretReference),
-          nodePublishSecretRef: S.optional(IoK8sApiCoreV1SecretReference),
-          nodeStageSecretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          nodeExpandSecretRef: S.optional(__S(38, __c4, 6)),
+          nodePublishSecretRef: S.optional(__S(38, __c4, 6)),
+          nodeStageSecretRef: S.optional(__S(38, __c4, 6)),
           readOnly: S.optional(S.Boolean),
-          volumeAttributes: S.optional(IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap),
+          volumeAttributes: S.optional(__S(0, __c0, 0)),
           volumeHandle: S.String,
         }),
       ).annotate({
@@ -4865,8 +3987,8 @@ function __c5(j: number): any {
           fsType: S.optional(S.String),
           lun: S.optional(S.Number),
           readOnly: S.optional(S.Boolean),
-          targetWWNs: S.optional(IoK8sApiCoreV1FCVolumeSourceTargetWWNsList),
-          wwids: S.optional(IoK8sApiCoreV1FCVolumeSourceWwidsList),
+          targetWWNs: S.optional(__S(1, __c0, 1)),
+          wwids: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1FCVolumeSource",
@@ -4876,9 +3998,9 @@ function __c5(j: number): any {
         S.Struct({
           driver: S.String,
           fsType: S.optional(S.String),
-          options: S.optional(IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap),
+          options: S.optional(__S(0, __c0, 0)),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          secretRef: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1FlexPersistentVolumeSource",
@@ -4937,9 +4059,9 @@ function __c6(j: number): any {
           iqn: S.String,
           iscsiInterface: S.optional(S.String),
           lun: S.optional(S.Number),
-          portals: S.optional(IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList),
+          portals: S.optional(__S(1, __c0, 1)),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          secretRef: S.optional(__S(38, __c4, 6)),
           targetPortal: S.String,
         }),
       ).annotate({
@@ -4969,24 +4091,24 @@ function __c6(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(IoK8sApiCoreV1NodeSelectorRequirementValuesList),
+          values: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1NodeSelectorRequirement",
       });
     case 5:
-      return S.Array(IoK8sApiCoreV1NodeSelectorRequirement);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList),
-          matchFields: S.optional(IoK8sApiCoreV1NodeSelectorTermMatchFieldsList),
+          matchExpressions: S.optional(__S(53, __c6, 5)),
+          matchFields: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1NodeSelectorTerm",
       });
     case 7:
-      return S.Array(IoK8sApiCoreV1NodeSelectorTerm);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -4994,7 +4116,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nodeSelectorTerms: IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList,
+          nodeSelectorTerms: __S(55, __c6, 7),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1NodeSelector",
@@ -5002,7 +4124,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          required: IoK8sApiCoreV1NodeSelector,
+          required: __S(56, __c7, 0),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1VolumeNodeAffinity",
@@ -5045,10 +4167,10 @@ function __c7(j: number): any {
           fsType: S.optional(S.String),
           image: S.String,
           keyring: S.optional(S.String),
-          monitors: IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList,
+          monitors: __S(1, __c0, 1),
           pool: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          secretRef: S.optional(__S(38, __c4, 6)),
           user: S.optional(S.String),
         }),
       ).annotate({
@@ -5061,7 +4183,7 @@ function __c7(j: number): any {
           gateway: S.String,
           protectionDomain: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1SecretReference),
+          secretRef: S.optional(__S(38, __c4, 6)),
           sslEnabled: S.optional(S.Boolean),
           storageMode: S.optional(S.String),
           storagePool: S.optional(S.String),
@@ -5076,7 +4198,7 @@ function __c7(j: number): any {
         S.Struct({
           fsType: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1ObjectReference),
+          secretRef: S.optional(__S(41, __c5, 1)),
           volumeName: S.String,
           volumeNamespace: S.optional(S.String),
         }),
@@ -5101,37 +4223,37 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accessModes: S.optional(IoK8sApiCoreV1PersistentVolumeSpecAccessModesList),
-          awsElasticBlockStore: S.optional(IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource),
-          azureDisk: S.optional(IoK8sApiCoreV1AzureDiskVolumeSource),
-          azureFile: S.optional(IoK8sApiCoreV1AzureFilePersistentVolumeSource),
-          capacity: S.optional(IoK8sApiCoreV1PersistentVolumeSpecCapacityMap),
-          cephfs: S.optional(IoK8sApiCoreV1CephFSPersistentVolumeSource),
-          cinder: S.optional(IoK8sApiCoreV1CinderPersistentVolumeSource),
-          claimRef: S.optional(IoK8sApiCoreV1ObjectReference),
-          csi: S.optional(IoK8sApiCoreV1CSIPersistentVolumeSource),
-          fc: S.optional(IoK8sApiCoreV1FCVolumeSource),
-          flexVolume: S.optional(IoK8sApiCoreV1FlexPersistentVolumeSource),
-          flocker: S.optional(IoK8sApiCoreV1FlockerVolumeSource),
-          gcePersistentDisk: S.optional(IoK8sApiCoreV1GCEPersistentDiskVolumeSource),
-          glusterfs: S.optional(IoK8sApiCoreV1GlusterfsPersistentVolumeSource),
-          hostPath: S.optional(IoK8sApiCoreV1HostPathVolumeSource),
-          iscsi: S.optional(IoK8sApiCoreV1ISCSIPersistentVolumeSource),
-          local: S.optional(IoK8sApiCoreV1LocalVolumeSource),
-          mountOptions: S.optional(IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList),
-          nfs: S.optional(IoK8sApiCoreV1NFSVolumeSource),
-          nodeAffinity: S.optional(IoK8sApiCoreV1VolumeNodeAffinity),
+          accessModes: S.optional(__S(1, __c0, 1)),
+          awsElasticBlockStore: S.optional(__S(35, __c4, 3)),
+          azureDisk: S.optional(__S(36, __c4, 4)),
+          azureFile: S.optional(__S(37, __c4, 5)),
+          capacity: S.optional(__S(0, __c0, 0)),
+          cephfs: S.optional(__S(39, __c4, 7)),
+          cinder: S.optional(__S(40, __c5, 0)),
+          claimRef: S.optional(__S(41, __c5, 1)),
+          csi: S.optional(__S(42, __c5, 2)),
+          fc: S.optional(__S(43, __c5, 3)),
+          flexVolume: S.optional(__S(44, __c5, 4)),
+          flocker: S.optional(__S(45, __c5, 5)),
+          gcePersistentDisk: S.optional(__S(46, __c5, 6)),
+          glusterfs: S.optional(__S(47, __c5, 7)),
+          hostPath: S.optional(__S(48, __c6, 0)),
+          iscsi: S.optional(__S(49, __c6, 1)),
+          local: S.optional(__S(50, __c6, 2)),
+          mountOptions: S.optional(__S(1, __c0, 1)),
+          nfs: S.optional(__S(51, __c6, 3)),
+          nodeAffinity: S.optional(__S(57, __c7, 1)),
           persistentVolumeReclaimPolicy: S.optional(S.String),
-          photonPersistentDisk: S.optional(IoK8sApiCoreV1PhotonPersistentDiskVolumeSource),
-          portworxVolume: S.optional(IoK8sApiCoreV1PortworxVolumeSource),
-          quobyte: S.optional(IoK8sApiCoreV1QuobyteVolumeSource),
-          rbd: S.optional(IoK8sApiCoreV1RBDPersistentVolumeSource),
-          scaleIO: S.optional(IoK8sApiCoreV1ScaleIOPersistentVolumeSource),
+          photonPersistentDisk: S.optional(__S(58, __c7, 2)),
+          portworxVolume: S.optional(__S(59, __c7, 3)),
+          quobyte: S.optional(__S(60, __c7, 4)),
+          rbd: S.optional(__S(61, __c7, 5)),
+          scaleIO: S.optional(__S(62, __c7, 6)),
           storageClassName: S.optional(S.String),
-          storageos: S.optional(IoK8sApiCoreV1StorageOSPersistentVolumeSource),
+          storageos: S.optional(__S(63, __c7, 7)),
           volumeAttributesClassName: S.optional(S.String),
           volumeMode: S.optional(S.String),
-          vsphereVolume: S.optional(IoK8sApiCoreV1VsphereVirtualDiskVolumeSource),
+          vsphereVolume: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PersistentVolumeSpec",
@@ -5139,7 +4261,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          inlineVolumeSpec: S.optional(IoK8sApiCoreV1PersistentVolumeSpec),
+          inlineVolumeSpec: S.optional(__S(65, __c8, 1)),
           persistentVolumeName: S.optional(S.String),
         }),
       ).annotate({
@@ -5150,7 +4272,7 @@ function __c8(j: number): any {
         S.Struct({
           attacher: S.String,
           nodeName: S.String,
-          source: IoK8sApiStorageV1VolumeAttachmentSource,
+          source: __S(66, __c8, 2),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttachmentSpec",
@@ -5168,12 +4290,10 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attachError: S.optional(IoK8sApiStorageV1VolumeError),
+          attachError: S.optional(__S(68, __c8, 4)),
           attached: S.optional(S.Boolean),
-          attachmentMetadata: S.optional(
-            IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap,
-          ),
-          detachError: S.optional(IoK8sApiStorageV1VolumeError),
+          attachmentMetadata: S.optional(__S(0, __c0, 0)),
+          detachError: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttachmentStatus",
@@ -5187,9 +4307,9 @@ function __c8(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiStorageV1VolumeAttachmentSpec,
-          status: S.optional(IoK8sApiStorageV1VolumeAttachmentStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: __S(67, __c8, 3),
+          status: S.optional(__S(69, __c8, 5)),
         }).pipe(
           T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/volumeattachments", code: 200 }),
         ),
@@ -5201,9 +4321,9 @@ function __c8(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiStorageV1VolumeAttachmentSpec,
-          status: S.optional(IoK8sApiStorageV1VolumeAttachmentStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: __S(67, __c8, 3),
+          status: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttachment",
@@ -5222,8 +4342,8 @@ function __c9(j: number): any {
           apiVersion: S.optional(S.String),
           driverName: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          parameters: CreateStorageV1VolumeAttributesClassRequestParametersMap,
+          metadata: S.optional(__S(6, __c0, 6)),
+          parameters: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5240,8 +4360,8 @@ function __c9(j: number): any {
           apiVersion: S.optional(S.String),
           driverName: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          parameters: IoK8sApiStorageV1VolumeAttributesClassParametersMap,
+          metadata: S.optional(__S(6, __c0, 6)),
+          parameters: __S(0, __c0, 0),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttributesClass",
@@ -5275,7 +4395,7 @@ function __c9(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csidrivers", code: 200 })),
       ).annotate({
         identifier: "DeleteStorageV1CollectionCSIDriverRequest",
@@ -5291,11 +4411,11 @@ function __c9(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
+          causes: S.optional(__S(77, __c9, 5)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -5324,7 +4444,7 @@ function __c10(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
+          shardInfo: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -5334,10 +4454,10 @@ function __c10(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
+          details: S.optional(__S(78, __c9, 6)),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(80, __c10, 0)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -5364,7 +4484,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csinodes", code: 200 })),
       ).annotate({
         identifier: "DeleteStorageV1CollectionCSINodeRequest",
@@ -5390,7 +4510,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5421,7 +4541,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/storageclasses", code: 200 }),
         ),
@@ -5448,7 +4568,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/volumeattachments", code: 200 }),
         ),
@@ -5475,7 +4595,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5498,7 +4618,7 @@ function __c10(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csidrivers/{name}", code: 200 }),
         ),
@@ -5521,7 +4641,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csinodes/{name}", code: 200 }),
         ),
@@ -5541,7 +4661,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5564,7 +4684,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5587,7 +4707,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5610,7 +4730,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(74, __c9, 2)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5650,20 +4770,18 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(95, __c11, 7));
     case 1:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(94, __c11, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(94, __c11, 6)),
+          serverAddressByClientCIDRs: S.optional(__S(96, __c12, 0)),
+          versions: __S(97, __c12, 1),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -5677,29 +4795,29 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1, __c0, 1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1, __c0, 1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1, __c0, 1),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(101, __c12, 5),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -5728,14 +4846,14 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiStorageV1CSIDriver);
+      return S.Array(__S(11, __c1, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiStorageV1CSIDriverListItemsList,
+          items: __S(104, __c13, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSIDriverList",
@@ -5760,14 +4878,14 @@ function __c13(j: number): any {
         identifier: "ListStorageV1CSINodeRequest",
       });
     case 3:
-      return S.Array(IoK8sApiStorageV1CSINode);
+      return S.Array(__S(22, __c2, 6));
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiStorageV1CSINodeListItemsList,
+          items: __S(107, __c13, 3),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSINodeList",
@@ -5794,14 +4912,14 @@ function __c13(j: number): any {
         identifier: "ListStorageV1CSIStorageCapacityForAllNamespacesRequest",
       });
     case 6:
-      return S.Array(IoK8sApiStorageV1CSIStorageCapacity);
+      return S.Array(__S(28, __c3, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiStorageV1CSIStorageCapacityListItemsList,
+          items: __S(110, __c13, 6),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSIStorageCapacityList",
@@ -5858,14 +4976,14 @@ function __c14(j: number): any {
         identifier: "ListStorageV1StorageClassRequest",
       });
     case 2:
-      return S.Array(IoK8sApiStorageV1StorageClass);
+      return S.Array(__S(34, __c4, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiStorageV1StorageClassListItemsList,
+          items: __S(114, __c14, 2),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1StorageClassList",
@@ -5892,14 +5010,14 @@ function __c14(j: number): any {
         identifier: "ListStorageV1VolumeAttachmentRequest",
       });
     case 5:
-      return S.Array(IoK8sApiStorageV1VolumeAttachment);
+      return S.Array(__S(71, __c8, 7));
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiStorageV1VolumeAttachmentListItemsList,
+          items: __S(117, __c14, 5),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttachmentList",
@@ -5934,14 +5052,14 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiStorageV1VolumeAttributesClass);
+      return S.Array(__S(73, __c9, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiStorageV1VolumeAttributesClassListItemsList,
+          items: __S(120, __c15, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttributesClassList",
@@ -6222,8 +5340,8 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiStorageV1CSIDriverSpec),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: S.optional(__S(9, __c1, 1)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/apis/storage.k8s.io/v1/csidrivers/{name}", code: 200 }),
         ),
@@ -6240,9 +5358,9 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiStorageV1CSINodeSpec),
-          status: S.optional(IoK8sApiStorageV1CSINodeStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: S.optional(__S(15, __c1, 7)),
+          status: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/apis/storage.k8s.io/v1/csinodes/{name}", code: 200 }),
         ),
@@ -6259,9 +5377,9 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiStorageV1CSINodeSpec),
-          status: S.optional(IoK8sApiStorageV1CSINodeStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: S.optional(__S(15, __c1, 7)),
+          status: S.optional(__S(20, __c2, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6285,8 +5403,8 @@ function __c17(j: number): any {
           capacity: S.optional(S.String),
           kind: S.optional(S.String),
           maximumVolumeSize: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          nodeTopology: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
+          metadata: S.optional(__S(6, __c0, 6)),
+          nodeTopology: S.optional(__S(26, __c3, 2)),
           storageClassName: S.String,
         }).pipe(
           T.Http({
@@ -6307,12 +5425,12 @@ function __c17(j: number): any {
           fieldManager: S.optional(S.String.pipe(T.Query())),
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           allowVolumeExpansion: S.optional(S.Boolean),
-          allowedTopologies: S.optional(ReplaceStorageV1StorageClassRequestAllowedTopologiesList),
+          allowedTopologies: S.optional(__S(32, __c4, 0)),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          mountOptions: S.optional(ReplaceStorageV1StorageClassRequestMountOptionsList),
-          parameters: S.optional(ReplaceStorageV1StorageClassRequestParametersMap),
+          metadata: S.optional(__S(6, __c0, 6)),
+          mountOptions: S.optional(__S(1, __c0, 1)),
+          parameters: S.optional(__S(0, __c0, 0)),
           provisioner: S.String,
           reclaimPolicy: S.optional(S.String),
           volumeBindingMode: S.optional(S.String),
@@ -6336,9 +5454,9 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiStorageV1VolumeAttachmentSpec,
-          status: S.optional(IoK8sApiStorageV1VolumeAttachmentStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: __S(67, __c8, 3),
+          status: S.optional(__S(69, __c8, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6363,9 +5481,9 @@ function __c18(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiStorageV1VolumeAttachmentSpec,
-          status: S.optional(IoK8sApiStorageV1VolumeAttachmentStatus),
+          metadata: S.optional(__S(6, __c0, 6)),
+          spec: __S(67, __c8, 3),
+          status: S.optional(__S(69, __c8, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6387,8 +5505,8 @@ function __c18(j: number): any {
           apiVersion: S.optional(S.String),
           driverName: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          parameters: ReplaceStorageV1VolumeAttributesClassRequestParametersMap,
+          metadata: S.optional(__S(6, __c0, 6)),
+          parameters: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6734,4 +5852,9 @@ function __c19(j: number): any {
         identifier: "WatchStorageV1VolumeAttributesClassListRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

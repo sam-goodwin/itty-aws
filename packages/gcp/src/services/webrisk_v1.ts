@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,48 +66,27 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
-
 export interface CancelProjectsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const CancelProjectsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GoogleProtobufEmpty>;
-
 export type ComputeDiffThreatListsConstraints_supportedCompressionsEnum =
   | "COMPRESSION_TYPE_UNSPECIFIED"
   | "RAW"
   | "RICE";
-const ComputeDiffThreatListsConstraints_supportedCompressionsEnum = S.String;
-
 export type ComputeDiffThreatListsConstraints_supportedCompressionsEnumList = Array<
   ComputeDiffThreatListsConstraints_supportedCompressionsEnum | (string & {})
 >;
-const ComputeDiffThreatListsConstraints_supportedCompressionsEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ComputeDiffThreatListsConstraints_supportedCompressionsEnumList>;
-
 export type ComputeDiffThreatListsThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
-const ComputeDiffThreatListsThreatTypeEnum = S.String;
-
 export interface ComputeDiffThreatListsRequest {
   /** The compression types supported by the client. */
   "constraints.supportedCompressions"?: ComputeDiffThreatListsConstraints_supportedCompressionsEnumList;
@@ -118,11 +99,6 @@ export interface ComputeDiffThreatListsRequest {
   /** Required. The threat list to update. Only a single ThreatType should be specified per request. If you want to handle multiple ThreatTypes, you must make one request per ThreatType. */
   threatType?: ComputeDiffThreatListsThreatTypeEnum | (string & {});
 }
-const ComputeDiffThreatListsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ComputeDiffThreatListsRequest>;
-
 /** The uncompressed threat entries in hash format. Hashes can be anywhere from 4 to 32 bytes in size. A large majority are 4 bytes, but some hashes are lengthened if they collide with the hash of a popular URI. Used for sending ThreatEntryAdditons to clients that do not support compression, or when sending non-4-byte hashes to clients that do support compression. */
 export interface GoogleCloudWebriskV1RawHashes {
   /** The number of bytes for each prefix encoded below. This field can be anywhere from 4 (shortest prefix) to 32 (full SHA256 hash). In practice this is almost always 4, except in exceptional circumstances. */
@@ -130,17 +106,7 @@ export interface GoogleCloudWebriskV1RawHashes {
   /** The hashes, in binary format, concatenated into one long string. Hashes are sorted in lexicographic order. For JSON API users, hashes are base64-encoded. */
   rawHashes?: string;
 }
-const GoogleCloudWebriskV1RawHashes = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleCloudWebriskV1RawHashes>;
-
 export type GoogleCloudWebriskV1RawHashesList = Array<GoogleCloudWebriskV1RawHashes>;
-const GoogleCloudWebriskV1RawHashesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleCloudWebriskV1RawHashesList>;
-
 /** The Rice-Golomb encoded data. Used for sending compressed 4-byte hashes or compressed removal indices. */
 export interface GoogleCloudWebriskV1RiceDeltaEncoding {
   /** The number of entries that are delta encoded in the encoded data. If only a single integer was encoded, this will be zero and the single value will be stored in `first_value`. */
@@ -152,11 +118,6 @@ export interface GoogleCloudWebriskV1RiceDeltaEncoding {
   /** The encoded deltas that are encoded using the Golomb-Rice coder. */
   encodedData?: string;
 }
-const GoogleCloudWebriskV1RiceDeltaEncoding = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleCloudWebriskV1RiceDeltaEncoding>;
-
 /** Contains the set of entries to add to a local database. May contain a combination of compressed and raw data in a single response. */
 export interface GoogleCloudWebriskV1ThreatEntryAdditions {
   /** The raw SHA256-formatted entries. Repeated to allow returning sets of hashes with different prefix sizes. */
@@ -164,30 +125,16 @@ export interface GoogleCloudWebriskV1ThreatEntryAdditions {
   /** The encoded 4-byte prefixes of SHA256-formatted entries, using a Golomb-Rice encoding. The hashes are converted to uint32, sorted in ascending order, then delta encoded and stored as encoded_data. */
   riceHashes?: GoogleCloudWebriskV1RiceDeltaEncoding;
 }
-const GoogleCloudWebriskV1ThreatEntryAdditions = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleCloudWebriskV1ThreatEntryAdditions>;
-
 export type GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum =
   | "RESPONSE_TYPE_UNSPECIFIED"
   | "DIFF"
   | "RESET";
-const GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum = S.String;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IntegerList>;
-
 /** A set of raw indices to remove from a local list. */
 export interface GoogleCloudWebriskV1RawIndices {
   /** The indices to remove from a lexicographically-sorted local list. */
   indices?: IntegerList;
 }
-const GoogleCloudWebriskV1RawIndices = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GoogleCloudWebriskV1RawIndices>;
-
 /** Contains the set of entries to remove from a local database. */
 export interface GoogleCloudWebriskV1ThreatEntryRemovals {
   /** The encoded local, lexicographically-sorted list indices, using a Golomb-Rice encoding. Used for sending compressed removal indices. The removal indices (uint32) are sorted in ascending order, then delta encoded and stored as encoded_data. */
@@ -195,21 +142,11 @@ export interface GoogleCloudWebriskV1ThreatEntryRemovals {
   /** The raw removal indices for a local list. */
   rawIndices?: GoogleCloudWebriskV1RawIndices;
 }
-const GoogleCloudWebriskV1ThreatEntryRemovals = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GoogleCloudWebriskV1ThreatEntryRemovals>;
-
 /** The expected state of a client's local database. */
 export interface GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
   /** The SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database. */
   sha256?: string;
 }
-const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum>;
-
 export interface GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /** A set of entries to add to a local threat type's list. */
   additions?: GoogleCloudWebriskV1ThreatEntryAdditions;
@@ -224,56 +161,27 @@ export interface GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /** The expected SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database after applying the provided diff. If the client state doesn't match the expected state, the client must discard this diff and retry later. */
   checksum?: GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum;
 }
-const GoogleCloudWebriskV1ComputeThreatListDiffResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponse>;
-
 /** Wraps a URI that might be displaying malicious content. */
 export interface GoogleCloudWebriskV1Submission {
   /** Required. The URI that is being reported for malicious content to be analyzed. */
   uri?: string;
 }
-const GoogleCloudWebriskV1Submission = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GoogleCloudWebriskV1Submission>;
-
 export interface CreateProjectsSubmissionsRequest {
   /** Required. The name of the project that is making the submission. This string is in the format "projects/{project_number}". */
   parent: string;
   /** Request body */
   body?: GoogleCloudWebriskV1Submission;
 }
-const CreateProjectsSubmissionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateProjectsSubmissionsRequest>;
-
 export interface DeleteProjectsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteProjectsOperationsRequest>;
-
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetProjectsOperationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -283,8 +191,6 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -298,11 +204,6 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 export interface ListProjectsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -315,20 +216,8 @@ export interface ListProjectsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListProjectsOperationsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<StringList>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -338,33 +227,19 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 export type SearchHashesThreatTypesEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
-const SearchHashesThreatTypesEnum = S.String;
-
 export type SearchHashesThreatTypesEnumList = Array<SearchHashesThreatTypesEnum | (string & {})>;
-const SearchHashesThreatTypesEnumList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<SearchHashesThreatTypesEnumList>;
-
 export interface SearchHashesRequest {
   /** A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash. For JSON requests, this field is base64-encoded. Note that if this parameter is provided by a URI, it must be encoded using the web safe base64 variant (RFC 4648). */
   hashPrefix?: string;
   /** Required. The ThreatLists to search in. Multiple ThreatLists may be specified. */
   threatTypes?: SearchHashesThreatTypesEnumList;
 }
-const SearchHashesRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SearchHashesRequest>;
-
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -373,9 +248,6 @@ export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnu
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
   Array<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum>;
-const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
-  ComputeDiffThreatListsConstraints_supportedCompressionsEnumList as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList>;
-
 /** Contains threat information on a matching hash. */
 export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   /** The ThreatList this threat belongs to. This must contain at least one entry. */
@@ -385,29 +257,14 @@ export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   /** The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid false positives. */
   expireTime?: string;
 }
-const GoogleCloudWebriskV1SearchHashesResponseThreatHash = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
-
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashList =
   Array<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
-const GoogleCloudWebriskV1SearchHashesResponseThreatHashList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHashList>;
-
 export interface GoogleCloudWebriskV1SearchHashesResponse {
   /** The full hashes that matched the requested prefixes. The hash will be populated in the key. */
   threats?: GoogleCloudWebriskV1SearchHashesResponseThreatHashList;
   /** For requested entities that did not match the threat list, how long to cache the response until. */
   negativeExpireTime?: string;
 }
-const GoogleCloudWebriskV1SearchHashesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponse>;
-
 export type SearchUrisThreatTypesEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -415,17 +272,12 @@ export type SearchUrisThreatTypesEnum =
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export type SearchUrisThreatTypesEnumList = Array<SearchUrisThreatTypesEnum | (string & {})>;
-const SearchUrisThreatTypesEnumList =
-  SearchHashesThreatTypesEnumList as any as S.Schema<SearchUrisThreatTypesEnumList>;
-
 export interface SearchUrisRequest {
   /** Required. The ThreatLists to search in. Multiple ThreatLists may be specified. */
   threatTypes?: SearchUrisThreatTypesEnumList;
   /** Required. The URI to be checked for matches. */
   uri?: string;
 }
-const SearchUrisRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SearchUrisRequest>;
-
 export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -434,9 +286,6 @@ export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum =
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
   Array<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum>;
-const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
-  ComputeDiffThreatListsConstraints_supportedCompressionsEnumList as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList>;
-
 /** Contains threat information on a matching uri. */
 export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   /** The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid false positives. */
@@ -444,20 +293,10 @@ export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   /** The ThreatList this threat belongs to. */
   threatTypes?: GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList;
 }
-const GoogleCloudWebriskV1SearchUrisResponseThreatUri = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponseThreatUri>;
-
 export interface GoogleCloudWebriskV1SearchUrisResponse {
   /** The threat list matches. This might be empty if the URI is on no list. */
   threat?: GoogleCloudWebriskV1SearchUrisResponseThreatUri;
 }
-const GoogleCloudWebriskV1SearchUrisResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponse>;
-
 export type CancelProjectsOperationsError =
   | NotFound
   | Forbidden
@@ -471,8 +310,8 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -486,8 +325,8 @@ export const computeDiffThreatLists: API.OperationMethod<
   ComputeDiffThreatListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComputeDiffThreatListsRequest,
-  output: GoogleCloudWebriskV1ComputeThreatListDiffResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<ComputeDiffThreatListsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -506,8 +345,8 @@ export const createProjectsSubmissions: API.OperationMethod<
   CreateProjectsSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsSubmissionsRequest,
-  output: GoogleCloudWebriskV1Submission,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateProjectsSubmissionsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudWebriskV1Submission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -526,8 +365,8 @@ export const deleteProjectsOperations: API.OperationMethod<
   DeleteProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteProjectsOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -541,8 +380,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(17, __c2, 1) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -557,8 +396,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ListProjectsOperationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,8 +412,8 @@ export const searchHashes: API.OperationMethod<
   SearchHashesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchHashesRequest,
-  output: GoogleCloudWebriskV1SearchHashesResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<SearchHashesRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -588,8 +427,8 @@ export const searchUris: API.OperationMethod<
   SearchUrisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchUrisRequest,
-  output: GoogleCloudWebriskV1SearchUrisResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<SearchUrisRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -606,7 +445,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -622,17 +461,15 @@ function __c0(j: number): any {
         identifier: "GoogleProtobufEmpty",
       });
     case 3:
-      return S.Array(ComputeDiffThreatListsConstraints_supportedCompressionsEnum);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          "constraints.supportedCompressions": S.optional(
-            ComputeDiffThreatListsConstraints_supportedCompressionsEnumList.pipe(T.Query()),
-          ),
+          "constraints.supportedCompressions": S.optional(__S(3, __c0, 3).pipe(T.Query())),
           versionToken: S.optional(S.String.pipe(T.Query())),
           "constraints.maxDiffEntries": S.optional(S.Number.pipe(T.Query())),
           "constraints.maxDatabaseEntries": S.optional(S.Number.pipe(T.Query())),
-          threatType: S.optional(ComputeDiffThreatListsThreatTypeEnum.pipe(T.Query())),
+          threatType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -653,7 +490,7 @@ function __c0(j: number): any {
         identifier: "GoogleCloudWebriskV1RawHashes",
       });
     case 6:
-      return S.Array(GoogleCloudWebriskV1RawHashes);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -672,8 +509,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rawHashes: S.optional(GoogleCloudWebriskV1RawHashesList),
-          riceHashes: S.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
+          rawHashes: S.optional(__S(6, __c0, 6)),
+          riceHashes: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1ThreatEntryAdditions",
@@ -683,7 +520,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          indices: S.optional(IntegerList),
+          indices: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1RawIndices",
@@ -691,8 +528,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          riceIndices: S.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
-          rawIndices: S.optional(GoogleCloudWebriskV1RawIndices),
+          riceIndices: S.optional(__S(7, __c0, 7)),
+          rawIndices: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1ThreatEntryRemovals",
@@ -708,14 +545,12 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          additions: S.optional(GoogleCloudWebriskV1ThreatEntryAdditions),
+          additions: S.optional(__S(8, __c1, 0)),
           newVersionToken: S.optional(S.String),
           recommendedNextDiff: S.optional(S.String),
-          responseType: S.optional(
-            GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum,
-          ),
-          removals: S.optional(GoogleCloudWebriskV1ThreatEntryRemovals),
-          checksum: S.optional(GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum),
+          responseType: S.optional(S.String),
+          removals: S.optional(__S(11, __c1, 3)),
+          checksum: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponse",
@@ -732,7 +567,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudWebriskV1Submission.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -774,12 +609,12 @@ function __c2(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(19, __c2, 3)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
@@ -787,10 +622,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(GoogleRpcStatus),
+          error: S.optional(__S(20, __c2, 4)),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(18, __c2, 2)),
+          response: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -820,24 +655,24 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(21, __c2, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(23, __c2, 7)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(GoogleLongrunningOperationList),
+          operations: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
     case 2:
-      return S.Array(SearchHashesThreatTypesEnum);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           hashPrefix: S.optional(S.String.pipe(T.Query())),
-          threatTypes: S.optional(SearchHashesThreatTypesEnumList.pipe(T.Query())),
+          threatTypes: S.optional(__S(26, __c3, 2).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -849,9 +684,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          threatTypes: S.optional(
-            GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList,
-          ),
+          threatTypes: S.optional(__S(3, __c0, 3)),
           hash: S.optional(S.String),
           expireTime: S.optional(S.String),
         }),
@@ -859,11 +692,11 @@ function __c3(j: number): any {
         identifier: "GoogleCloudWebriskV1SearchHashesResponseThreatHash",
       });
     case 5:
-      return S.Array(GoogleCloudWebriskV1SearchHashesResponseThreatHash);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          threats: S.optional(GoogleCloudWebriskV1SearchHashesResponseThreatHashList),
+          threats: S.optional(__S(29, __c3, 5)),
           negativeExpireTime: S.optional(S.String),
         }),
       ).annotate({
@@ -872,7 +705,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          threatTypes: S.optional(SearchUrisThreatTypesEnumList.pipe(T.Query())),
+          threatTypes: S.optional(__S(26, __c3, 2).pipe(T.Query())),
           uri: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -890,9 +723,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
-          threatTypes: S.optional(
-            GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList,
-          ),
+          threatTypes: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1SearchUrisResponseThreatUri",
@@ -900,10 +731,15 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          threat: S.optional(GoogleCloudWebriskV1SearchUrisResponseThreatUri),
+          threat: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1SearchUrisResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://swf.amazonaws.com/doc/2015-07-20/");
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SFN", serviceShapeName: "AWSStepFunctions" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "states" });
@@ -169,7 +171,7 @@ export class KmsAccessDeniedException
 export class KmsInvalidStateException
   extends /*@__PURE__*/ S.TaggedError<KmsInvalidStateException>()("KmsInvalidStateException", {
     kmsKeyState: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => KmsKeyState).annotate({ identifier: "KmsKeyState" }),
+      /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "KmsKeyState" }),
     ),
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
@@ -240,7 +242,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
@@ -254,67 +256,45 @@ export interface Tag {
   key?: string;
   value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export type KmsKeyId = string;
 export type KmsDataKeyReusePeriodSeconds = number;
 export type EncryptionType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KMS_KEY" | (string & {});
-const EncryptionType = S.String;
-
 export interface EncryptionConfiguration {
   kmsKeyId?: string;
   kmsDataKeyReusePeriodSeconds?: number;
   type: EncryptionType;
 }
-const EncryptionConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<EncryptionConfiguration>;
 export interface CreateActivityInput {
   name: string;
   tags?: Tag[];
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const CreateActivityInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateActivityInput>;
 export type Arn = string;
 export interface CreateActivityOutput {
   activityArn: string;
   creationDate: Date;
 }
-const CreateActivityOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateActivityOutput>;
 export type Definition = string | redacted.Redacted<string>;
 export type StateMachineType = "STANDARD" | "EXPRESS" | (string & {});
-const StateMachineType = S.String;
-
 export type LogLevel = "ALL" | "ERROR" | "FATAL" | "OFF" | (string & {});
-const LogLevel = S.String;
-
 export type IncludeExecutionData = boolean;
 export interface CloudWatchLogsLogGroup {
   logGroupArn?: string;
 }
-const CloudWatchLogsLogGroup = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CloudWatchLogsLogGroup>;
 export interface LogDestination {
   cloudWatchLogsLogGroup?: CloudWatchLogsLogGroup;
 }
-const LogDestination = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LogDestination>;
 export type LogDestinationList = LogDestination[];
-const LogDestinationList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface LoggingConfiguration {
   level?: LogLevel;
   includeExecutionData?: boolean;
   destinations?: LogDestination[];
 }
-const LoggingConfiguration = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LoggingConfiguration>;
 export type Enabled = boolean;
 export interface TracingConfiguration {
   enabled?: boolean;
 }
-const TracingConfiguration = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TracingConfiguration>;
 export type Publish = boolean;
 export type VersionDescription = string | redacted.Redacted<string>;
 export interface CreateStateMachineInput {
@@ -329,19 +309,11 @@ export interface CreateStateMachineInput {
   versionDescription?: string | redacted.Redacted<string>;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const CreateStateMachineInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateStateMachineInput>;
 export interface CreateStateMachineOutput {
   stateMachineArn: string;
   creationDate: Date;
   stateMachineVersionArn?: string;
 }
-const CreateStateMachineOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateStateMachineOutput>;
 export type AliasDescription = string | redacted.Redacted<string>;
 export type CharacterRestrictedName = string;
 export type VersionWeight = number;
@@ -349,98 +321,47 @@ export interface RoutingConfigurationListItem {
   stateMachineVersionArn: string;
   weight: number;
 }
-const RoutingConfigurationListItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RoutingConfigurationListItem>;
 export type RoutingConfigurationList = RoutingConfigurationListItem[];
-const RoutingConfigurationList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface CreateStateMachineAliasInput {
   description?: string | redacted.Redacted<string>;
   name: string;
   routingConfiguration: RoutingConfigurationListItem[];
 }
-const CreateStateMachineAliasInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateStateMachineAliasInput>;
 export interface CreateStateMachineAliasOutput {
   stateMachineAliasArn: string;
   creationDate: Date;
 }
-const CreateStateMachineAliasOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateStateMachineAliasOutput>;
 export interface DeleteActivityInput {
   activityArn: string;
 }
-const DeleteActivityInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteActivityInput>;
 export interface DeleteActivityOutput {}
-const DeleteActivityOutput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteActivityOutput>;
 export interface DeleteStateMachineInput {
   stateMachineArn: string;
 }
-const DeleteStateMachineInput = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteStateMachineInput>;
 export interface DeleteStateMachineOutput {}
-const DeleteStateMachineOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteStateMachineOutput>;
 export interface DeleteStateMachineAliasInput {
   stateMachineAliasArn: string;
 }
-const DeleteStateMachineAliasInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteStateMachineAliasInput>;
 export interface DeleteStateMachineAliasOutput {}
-const DeleteStateMachineAliasOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteStateMachineAliasOutput>;
 export type LongArn = string;
 export interface DeleteStateMachineVersionInput {
   stateMachineVersionArn: string;
 }
-const DeleteStateMachineVersionInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteStateMachineVersionInput>;
 export interface DeleteStateMachineVersionOutput {}
-const DeleteStateMachineVersionOutput =
-  DeleteStateMachineAliasOutput as any as S.Schema<DeleteStateMachineVersionOutput>;
 export interface DescribeActivityInput {
   activityArn: string;
 }
-const DescribeActivityInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DescribeActivityInput>;
 export interface DescribeActivityOutput {
   activityArn: string;
   name: string;
   creationDate: Date;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const DescribeActivityOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DescribeActivityOutput>;
 export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
-const IncludedData = S.String;
-
 export interface DescribeExecutionInput {
   executionArn: string;
   includedData?: IncludedData;
 }
-const DescribeExecutionInput = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DescribeExecutionInput>;
 export type ExecutionStatus =
   | "RUNNING"
   | "SUCCEEDED"
@@ -449,17 +370,11 @@ export type ExecutionStatus =
   | "ABORTED"
   | "PENDING_REDRIVE"
   | (string & {});
-const ExecutionStatus = S.String;
-
 export type SensitiveData = string | redacted.Redacted<string>;
 export type IncludedDetails = boolean;
 export interface CloudWatchEventsExecutionDataDetails {
   included?: boolean;
 }
-const CloudWatchEventsExecutionDataDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CloudWatchEventsExecutionDataDetails>;
 export type TraceHeader = string;
 export type SensitiveError = string | redacted.Redacted<string>;
 export type SensitiveCause = string | redacted.Redacted<string>;
@@ -469,8 +384,6 @@ export type ExecutionRedriveStatus =
   | "NOT_REDRIVABLE"
   | "REDRIVABLE_BY_MAP_RUN"
   | (string & {});
-const ExecutionRedriveStatus = S.String;
-
 export interface DescribeExecutionOutput {
   executionArn: string;
   stateMachineArn: string;
@@ -493,17 +406,10 @@ export interface DescribeExecutionOutput {
   redriveStatus?: ExecutionRedriveStatus;
   redriveStatusReason?: string | redacted.Redacted<string>;
 }
-const DescribeExecutionOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DescribeExecutionOutput>;
 export interface DescribeMapRunInput {
   mapRunArn: string;
 }
-const DescribeMapRunInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DescribeMapRunInput>;
 export type MapRunStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | "ABORTED" | (string & {});
-const MapRunStatus = S.String;
-
 export type MaxConcurrency = number;
 export type ToleratedFailurePercentage = number;
 export type ToleratedFailureCount = number;
@@ -521,7 +427,6 @@ export interface MapRunItemCounts {
   failuresNotRedrivable?: number;
   pendingRedrive?: number;
 }
-const MapRunItemCounts = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<MapRunItemCounts>;
 export interface MapRunExecutionCounts {
   pending: number;
   running: number;
@@ -534,7 +439,6 @@ export interface MapRunExecutionCounts {
   failuresNotRedrivable?: number;
   pendingRedrive?: number;
 }
-const MapRunExecutionCounts = MapRunItemCounts as any as S.Schema<MapRunExecutionCounts>;
 export interface DescribeMapRunOutput {
   mapRunArn: string;
   executionArn: string;
@@ -549,28 +453,19 @@ export interface DescribeMapRunOutput {
   redriveCount?: number;
   redriveDate?: Date;
 }
-const DescribeMapRunOutput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DescribeMapRunOutput>;
 export interface DescribeStateMachineInput {
   stateMachineArn: string;
   includedData?: IncludedData;
 }
-const DescribeStateMachineInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DescribeStateMachineInput>;
 export type StateMachineStatus = "ACTIVE" | "DELETING" | (string & {});
-const StateMachineStatus = S.String;
-
 export type MapRunLabel = string;
 export type RevisionId = string;
 export type StateName = string;
 export type VariableName = string | redacted.Redacted<string>;
 export type VariableNameList = (string | redacted.Redacted<string>)[];
-const VariableNameList = /*@__PURE__*/ __L.at(__c4, 0);
 export type VariableReferences = {
   [key: string]: (string | redacted.Redacted<string>)[] | undefined;
 };
-const VariableReferences = /*@__PURE__*/ __L.at(__c4, 1);
 export interface DescribeStateMachineOutput {
   stateMachineArn: string;
   name: string;
@@ -587,17 +482,9 @@ export interface DescribeStateMachineOutput {
   encryptionConfiguration?: EncryptionConfiguration;
   variableReferences?: { [key: string]: (string | redacted.Redacted<string>)[] | undefined };
 }
-const DescribeStateMachineOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DescribeStateMachineOutput>;
 export interface DescribeStateMachineAliasInput {
   stateMachineAliasArn: string;
 }
-const DescribeStateMachineAliasInput = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DescribeStateMachineAliasInput>;
 export interface DescribeStateMachineAliasOutput {
   stateMachineAliasArn?: string;
   name?: string;
@@ -606,18 +493,10 @@ export interface DescribeStateMachineAliasOutput {
   creationDate?: Date;
   updateDate?: Date;
 }
-const DescribeStateMachineAliasOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DescribeStateMachineAliasOutput>;
 export interface DescribeStateMachineForExecutionInput {
   executionArn: string;
   includedData?: IncludedData;
 }
-const DescribeStateMachineForExecutionInput = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DescribeStateMachineForExecutionInput>;
 export interface DescribeStateMachineForExecutionOutput {
   stateMachineArn: string;
   name: string;
@@ -632,25 +511,16 @@ export interface DescribeStateMachineForExecutionOutput {
   encryptionConfiguration?: EncryptionConfiguration;
   variableReferences?: { [key: string]: (string | redacted.Redacted<string>)[] | undefined };
 }
-const DescribeStateMachineForExecutionOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DescribeStateMachineForExecutionOutput>;
 export interface GetActivityTaskInput {
   activityArn: string;
   workerName?: string;
 }
-const GetActivityTaskInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetActivityTaskInput>;
 export type TaskToken = string;
 export type SensitiveDataJobInput = string | redacted.Redacted<string>;
 export interface GetActivityTaskOutput {
   taskToken?: string;
   input?: string | redacted.Redacted<string>;
 }
-const GetActivityTaskOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetActivityTaskOutput>;
 export type PageSize = number;
 export type ReverseOrder = boolean;
 export type PageToken = string;
@@ -662,10 +532,6 @@ export interface GetExecutionHistoryInput {
   nextToken?: string;
   includeExecutionData?: boolean;
 }
-const GetExecutionHistoryInput = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetExecutionHistoryInput>;
 export type HistoryEventType =
   | "ActivityFailed"
   | "ActivityScheduled"
@@ -730,31 +596,19 @@ export type HistoryEventType =
   | "MapRunRedriven"
   | "EvaluationFailed"
   | (string & {});
-const HistoryEventType = S.String;
-
 export type EventId = number;
 export interface ActivityFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const ActivityFailedEventDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ActivityFailedEventDetails>;
 export interface ActivityScheduleFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const ActivityScheduleFailedEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<ActivityScheduleFailedEventDetails>;
 export type Truncated = boolean;
 export interface HistoryEventExecutionDataDetails {
   truncated?: boolean;
 }
-const HistoryEventExecutionDataDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<HistoryEventExecutionDataDetails>;
 export type TimeoutInSeconds = number;
 export interface ActivityScheduledEventDetails {
   resource: string;
@@ -763,47 +617,28 @@ export interface ActivityScheduledEventDetails {
   timeoutInSeconds?: number;
   heartbeatInSeconds?: number;
 }
-const ActivityScheduledEventDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ActivityScheduledEventDetails>;
 export type Identity = string;
 export interface ActivityStartedEventDetails {
   workerName?: string;
 }
-const ActivityStartedEventDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ActivityStartedEventDetails>;
 export interface ActivitySucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-const ActivitySucceededEventDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ActivitySucceededEventDetails>;
 export interface ActivityTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const ActivityTimedOutEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<ActivityTimedOutEventDetails>;
 export interface TaskFailedEventDetails {
   resourceType: string;
   resource: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const TaskFailedEventDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<TaskFailedEventDetails>;
 export type ConnectorParameters = string | redacted.Redacted<string>;
 export interface TaskCredentials {
   roleArn?: string;
 }
-const TaskCredentials = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<TaskCredentials>;
 export interface TaskScheduledEventDetails {
   resourceType: string;
   resource: string;
@@ -813,68 +648,44 @@ export interface TaskScheduledEventDetails {
   heartbeatInSeconds?: number;
   taskCredentials?: TaskCredentials;
 }
-const TaskScheduledEventDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<TaskScheduledEventDetails>;
 export interface TaskStartFailedEventDetails {
   resourceType: string;
   resource: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const TaskStartFailedEventDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<TaskStartFailedEventDetails>;
 export interface TaskStartedEventDetails {
   resourceType: string;
   resource: string;
 }
-const TaskStartedEventDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TaskStartedEventDetails>;
 export interface TaskSubmitFailedEventDetails {
   resourceType: string;
   resource: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const TaskSubmitFailedEventDetails =
-  TaskStartFailedEventDetails as any as S.Schema<TaskSubmitFailedEventDetails>;
 export interface TaskSubmittedEventDetails {
   resourceType: string;
   resource: string;
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-const TaskSubmittedEventDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<TaskSubmittedEventDetails>;
 export interface TaskSucceededEventDetails {
   resourceType: string;
   resource: string;
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-const TaskSucceededEventDetails =
-  TaskSubmittedEventDetails as any as S.Schema<TaskSucceededEventDetails>;
 export interface TaskTimedOutEventDetails {
   resourceType: string;
   resource: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const TaskTimedOutEventDetails =
-  TaskFailedEventDetails as any as S.Schema<TaskTimedOutEventDetails>;
 export interface ExecutionFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const ExecutionFailedEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<ExecutionFailedEventDetails>;
 export interface ExecutionStartedEventDetails {
   input?: string | redacted.Redacted<string>;
   inputDetails?: HistoryEventExecutionDataDetails;
@@ -882,63 +693,37 @@ export interface ExecutionStartedEventDetails {
   stateMachineAliasArn?: string;
   stateMachineVersionArn?: string;
 }
-const ExecutionStartedEventDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ExecutionStartedEventDetails>;
 export interface ExecutionSucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-const ExecutionSucceededEventDetails =
-  ActivitySucceededEventDetails as any as S.Schema<ExecutionSucceededEventDetails>;
 export interface ExecutionAbortedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const ExecutionAbortedEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<ExecutionAbortedEventDetails>;
 export interface ExecutionTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const ExecutionTimedOutEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<ExecutionTimedOutEventDetails>;
 export interface ExecutionRedrivenEventDetails {
   redriveCount?: number;
 }
-const ExecutionRedrivenEventDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ExecutionRedrivenEventDetails>;
 export type UnsignedInteger = number;
 export interface MapStateStartedEventDetails {
   length?: number;
 }
-const MapStateStartedEventDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<MapStateStartedEventDetails>;
 export interface MapIterationEventDetails {
   name?: string;
   index?: number;
 }
-const MapIterationEventDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<MapIterationEventDetails>;
 export interface LambdaFunctionFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const LambdaFunctionFailedEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionFailedEventDetails>;
 export interface LambdaFunctionScheduleFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const LambdaFunctionScheduleFailedEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionScheduleFailedEventDetails>;
 export interface LambdaFunctionScheduledEventDetails {
   resource: string;
   input?: string | redacted.Redacted<string>;
@@ -946,47 +731,28 @@ export interface LambdaFunctionScheduledEventDetails {
   timeoutInSeconds?: number;
   taskCredentials?: TaskCredentials;
 }
-const LambdaFunctionScheduledEventDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<LambdaFunctionScheduledEventDetails>;
 export interface LambdaFunctionStartFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const LambdaFunctionStartFailedEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionStartFailedEventDetails>;
 export interface LambdaFunctionSucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-const LambdaFunctionSucceededEventDetails =
-  ActivitySucceededEventDetails as any as S.Schema<LambdaFunctionSucceededEventDetails>;
 export interface LambdaFunctionTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const LambdaFunctionTimedOutEventDetails =
-  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionTimedOutEventDetails>;
 export interface StateEnteredEventDetails {
   name: string;
   input?: string | redacted.Redacted<string>;
   inputDetails?: HistoryEventExecutionDataDetails;
 }
-const StateEnteredEventDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<StateEnteredEventDetails>;
 export type VariableValue = string | redacted.Redacted<string>;
 export type AssignedVariables = { [key: string]: string | redacted.Redacted<string> | undefined };
-const AssignedVariables = /*@__PURE__*/ __L.at(__c7, 3);
 export interface AssignedVariablesDetails {
   truncated?: boolean;
 }
-const AssignedVariablesDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AssignedVariablesDetails>;
 export interface StateExitedEventDetails {
   name: string;
   output?: string | redacted.Redacted<string>;
@@ -994,33 +760,17 @@ export interface StateExitedEventDetails {
   assignedVariables?: { [key: string]: string | redacted.Redacted<string> | undefined };
   assignedVariablesDetails?: AssignedVariablesDetails;
 }
-const StateExitedEventDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<StateExitedEventDetails>;
 export interface MapRunStartedEventDetails {
   mapRunArn?: string;
 }
-const MapRunStartedEventDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<MapRunStartedEventDetails>;
 export interface MapRunFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const MapRunFailedEventDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<MapRunFailedEventDetails>;
 export interface MapRunRedrivenEventDetails {
   mapRunArn?: string;
   redriveCount?: number;
 }
-const MapRunRedrivenEventDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<MapRunRedrivenEventDetails>;
 export type EvaluationFailureLocation = string | redacted.Redacted<string>;
 export interface EvaluationFailedEventDetails {
   error?: string | redacted.Redacted<string>;
@@ -1028,10 +778,6 @@ export interface EvaluationFailedEventDetails {
   location?: string | redacted.Redacted<string>;
   state: string;
 }
-const EvaluationFailedEventDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<EvaluationFailedEventDetails>;
 export interface HistoryEvent {
   timestamp: Date;
   type: HistoryEventType;
@@ -1075,39 +821,27 @@ export interface HistoryEvent {
   mapRunRedrivenEventDetails?: MapRunRedrivenEventDetails;
   evaluationFailedEventDetails?: EvaluationFailedEventDetails;
 }
-const HistoryEvent = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<HistoryEvent>;
 export type HistoryEventList = HistoryEvent[];
-const HistoryEventList = /*@__PURE__*/ __L.at(__c8, 3);
 export interface GetExecutionHistoryOutput {
   events: HistoryEvent[];
   nextToken?: string;
 }
-const GetExecutionHistoryOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetExecutionHistoryOutput>;
 export interface ListActivitiesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListActivitiesInput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListActivitiesInput>;
 export interface ActivityListItem {
   activityArn: string;
   name: string;
   creationDate: Date;
 }
-const ActivityListItem = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ActivityListItem>;
 export type ActivityList = ActivityListItem[];
-const ActivityList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface ListActivitiesOutput {
   activities: ActivityListItem[];
   nextToken?: string;
 }
-const ListActivitiesOutput = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListActivitiesOutput>;
 export type ListExecutionsPageToken = string;
 export type ExecutionRedriveFilter = "REDRIVEN" | "NOT_REDRIVEN" | (string & {});
-const ExecutionRedriveFilter = S.String;
-
 export interface ListExecutionsInput {
   stateMachineArn?: string;
   statusFilter?: ExecutionStatus;
@@ -1116,7 +850,6 @@ export interface ListExecutionsInput {
   mapRunArn?: string;
   redriveFilter?: ExecutionRedriveFilter;
 }
-const ListExecutionsInput = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListExecutionsInput>;
 export interface ExecutionListItem {
   executionArn: string;
   stateMachineArn: string;
@@ -1131,20 +864,16 @@ export interface ExecutionListItem {
   redriveCount?: number;
   redriveDate?: Date;
 }
-const ExecutionListItem = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ExecutionListItem>;
 export type ExecutionList = ExecutionListItem[];
-const ExecutionList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ListExecutionsOutput {
   executions: ExecutionListItem[];
   nextToken?: string;
 }
-const ListExecutionsOutput = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ListExecutionsOutput>;
 export interface ListMapRunsInput {
   executionArn: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListMapRunsInput = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ListMapRunsInput>;
 export interface MapRunListItem {
   executionArn: string;
   mapRunArn: string;
@@ -1152,189 +881,102 @@ export interface MapRunListItem {
   startDate: Date;
   stopDate?: Date;
 }
-const MapRunListItem = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<MapRunListItem>;
 export type MapRunList = MapRunListItem[];
-const MapRunList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ListMapRunsOutput {
   mapRuns: MapRunListItem[];
   nextToken?: string;
 }
-const ListMapRunsOutput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ListMapRunsOutput>;
 export interface ListStateMachineAliasesInput {
   stateMachineArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListStateMachineAliasesInput = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListStateMachineAliasesInput>;
 export interface StateMachineAliasListItem {
   stateMachineAliasArn: string;
   creationDate: Date;
 }
-const StateMachineAliasListItem = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<StateMachineAliasListItem>;
 export type StateMachineAliasList = StateMachineAliasListItem[];
-const StateMachineAliasList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface ListStateMachineAliasesOutput {
   stateMachineAliases: StateMachineAliasListItem[];
   nextToken?: string;
 }
-const ListStateMachineAliasesOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListStateMachineAliasesOutput>;
 export interface ListStateMachinesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListStateMachinesInput = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListStateMachinesInput>;
 export interface StateMachineListItem {
   stateMachineArn: string;
   name: string;
   type: StateMachineType;
   creationDate: Date;
 }
-const StateMachineListItem = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<StateMachineListItem>;
 export type StateMachineList = StateMachineListItem[];
-const StateMachineList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ListStateMachinesOutput {
   stateMachines: StateMachineListItem[];
   nextToken?: string;
 }
-const ListStateMachinesOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListStateMachinesOutput>;
 export interface ListStateMachineVersionsInput {
   stateMachineArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListStateMachineVersionsInput = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListStateMachineVersionsInput>;
 export interface StateMachineVersionListItem {
   stateMachineVersionArn: string;
   creationDate: Date;
 }
-const StateMachineVersionListItem = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<StateMachineVersionListItem>;
 export type StateMachineVersionList = StateMachineVersionListItem[];
-const StateMachineVersionList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface ListStateMachineVersionsOutput {
   stateMachineVersions: StateMachineVersionListItem[];
   nextToken?: string;
 }
-const ListStateMachineVersionsOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListStateMachineVersionsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: Tag[];
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PublishStateMachineVersionInput {
   stateMachineArn: string;
   revisionId?: string;
   description?: string | redacted.Redacted<string>;
 }
-const PublishStateMachineVersionInput = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<PublishStateMachineVersionInput>;
 export interface PublishStateMachineVersionOutput {
   creationDate: Date;
   stateMachineVersionArn: string;
 }
-const PublishStateMachineVersionOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<PublishStateMachineVersionOutput>;
 export type ClientToken = string;
 export interface RedriveExecutionInput {
   executionArn: string;
   clientToken?: string;
 }
-const RedriveExecutionInput = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<RedriveExecutionInput>;
 export interface RedriveExecutionOutput {
   redriveDate: Date;
 }
-const RedriveExecutionOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<RedriveExecutionOutput>;
 export interface SendTaskFailureInput {
   taskToken: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const SendTaskFailureInput = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<SendTaskFailureInput>;
 export interface SendTaskFailureOutput {}
-const SendTaskFailureOutput = DeleteActivityOutput as any as S.Schema<SendTaskFailureOutput>;
 export interface SendTaskHeartbeatInput {
   taskToken: string;
 }
-const SendTaskHeartbeatInput = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<SendTaskHeartbeatInput>;
 export interface SendTaskHeartbeatOutput {}
-const SendTaskHeartbeatOutput =
-  DeleteStateMachineOutput as any as S.Schema<SendTaskHeartbeatOutput>;
 export interface SendTaskSuccessInput {
   taskToken: string;
   output: string | redacted.Redacted<string>;
 }
-const SendTaskSuccessInput = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<SendTaskSuccessInput>;
 export interface SendTaskSuccessOutput {}
-const SendTaskSuccessOutput = DeleteActivityOutput as any as S.Schema<SendTaskSuccessOutput>;
 export interface StartExecutionInput {
   stateMachineArn: string;
   name?: string;
   input?: string | redacted.Redacted<string>;
   traceHeader?: string;
 }
-const StartExecutionInput = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<StartExecutionInput>;
 export interface StartExecutionOutput {
   executionArn: string;
   startDate: Date;
 }
-const StartExecutionOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<StartExecutionOutput>;
 export interface StartSyncExecutionInput {
   stateMachineArn: string;
   name?: string;
@@ -1342,20 +984,13 @@ export interface StartSyncExecutionInput {
   traceHeader?: string;
   includedData?: IncludedData;
 }
-const StartSyncExecutionInput = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<StartSyncExecutionInput>;
 export type SyncExecutionStatus = "SUCCEEDED" | "FAILED" | "TIMED_OUT" | (string & {});
-const SyncExecutionStatus = S.String;
-
 export type BilledMemoryUsed = number;
 export type BilledDuration = number;
 export interface BillingDetails {
   billedMemoryUsedInMB?: number;
   billedDurationInMilliseconds?: number;
 }
-const BillingDetails = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<BillingDetails>;
 export interface StartSyncExecutionOutput {
   executionArn: string;
   stateMachineArn?: string;
@@ -1372,46 +1007,32 @@ export interface StartSyncExecutionOutput {
   traceHeader?: string;
   billingDetails?: BillingDetails;
 }
-const StartSyncExecutionOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<StartSyncExecutionOutput>;
 export interface StopExecutionInput {
   executionArn: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const StopExecutionInput = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<StopExecutionInput>;
 export interface StopExecutionOutput {
   stopDate: Date;
 }
-const StopExecutionOutput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<StopExecutionOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = DeleteActivityOutput as any as S.Schema<TagResourceOutput>;
 export type InspectionLevel = "INFO" | "DEBUG" | "TRACE" | (string & {});
-const InspectionLevel = S.String;
-
 export type RevealSecrets = boolean;
 export type TestStateStateName = string | redacted.Redacted<string>;
 export interface MockErrorOutput {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const MockErrorOutput = MapRunFailedEventDetails as any as S.Schema<MockErrorOutput>;
 export type MockResponseValidationMode = "STRICT" | "PRESENT" | "NONE" | (string & {});
-const MockResponseValidationMode = S.String;
-
 export interface MockInput {
   result?: string | redacted.Redacted<string>;
   errorOutput?: MockErrorOutput;
   fieldValidationMode?: MockResponseValidationMode;
 }
-const MockInput = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<MockInput>;
 export type RetrierRetryCount = number;
 export type MapIterationFailureCount = number;
 export interface TestStateConfiguration {
@@ -1420,10 +1041,6 @@ export interface TestStateConfiguration {
   mapIterationFailureCount?: number;
   mapItemReaderData?: string | redacted.Redacted<string>;
 }
-const TestStateConfiguration = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<TestStateConfiguration>;
 export interface TestStateInput {
   definition: string | redacted.Redacted<string>;
   roleArn?: string;
@@ -1436,7 +1053,6 @@ export interface TestStateInput {
   context?: string | redacted.Redacted<string>;
   stateConfiguration?: TestStateConfiguration;
 }
-const TestStateInput = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<TestStateInput>;
 export type HTTPProtocol = string;
 export type HTTPMethod = string;
 export type URL = string;
@@ -1449,10 +1065,6 @@ export interface InspectionDataRequest {
   headers?: string;
   body?: string;
 }
-const InspectionDataRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<InspectionDataRequest>;
 export type HTTPStatusCode = string;
 export type HTTPStatusMessage = string;
 export interface InspectionDataResponse {
@@ -1462,10 +1074,6 @@ export interface InspectionDataResponse {
   headers?: string;
   body?: string;
 }
-const InspectionDataResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<InspectionDataResponse>;
 export type ExceptionHandlerIndex = number;
 export type RetryBackoffIntervalSeconds = number;
 export interface InspectionErrorDetails {
@@ -1473,10 +1081,6 @@ export interface InspectionErrorDetails {
   retryIndex?: number;
   retryBackoffIntervalSeconds?: number;
 }
-const InspectionErrorDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<InspectionErrorDetails>;
 export type InspectionToleratedFailureCount = number;
 export type InspectionToleratedFailurePercentage = number;
 export type InspectionMaxConcurrency = number;
@@ -1500,15 +1104,12 @@ export interface InspectionData {
   toleratedFailurePercentage?: number;
   maxConcurrency?: number;
 }
-const InspectionData = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<InspectionData>;
 export type TestExecutionStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "RETRIABLE"
   | "CAUGHT_ERROR"
   | (string & {});
-const TestExecutionStatus = S.String;
-
 export interface TestStateOutput {
   output?: string | redacted.Redacted<string>;
   error?: string | redacted.Redacted<string>;
@@ -1517,25 +1118,19 @@ export interface TestStateOutput {
   nextState?: string;
   status?: TestExecutionStatus;
 }
-const TestStateOutput = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<TestStateOutput>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = DeleteActivityOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMapRunInput {
   mapRunArn: string;
   maxConcurrency?: number;
   toleratedFailurePercentage?: number;
   toleratedFailureCount?: number;
 }
-const UpdateMapRunInput = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<UpdateMapRunInput>;
 export interface UpdateMapRunOutput {}
-const UpdateMapRunOutput = DeleteActivityOutput as any as S.Schema<UpdateMapRunOutput>;
 export interface UpdateStateMachineInput {
   stateMachineArn: string;
   definition?: string | redacted.Redacted<string>;
@@ -1546,38 +1141,20 @@ export interface UpdateStateMachineInput {
   versionDescription?: string | redacted.Redacted<string>;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const UpdateStateMachineInput = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<UpdateStateMachineInput>;
 export interface UpdateStateMachineOutput {
   updateDate: Date;
   revisionId?: string;
   stateMachineVersionArn?: string;
 }
-const UpdateStateMachineOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<UpdateStateMachineOutput>;
 export interface UpdateStateMachineAliasInput {
   stateMachineAliasArn: string;
   description?: string | redacted.Redacted<string>;
   routingConfiguration?: RoutingConfigurationListItem[];
 }
-const UpdateStateMachineAliasInput = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<UpdateStateMachineAliasInput>;
 export interface UpdateStateMachineAliasOutput {
   updateDate: Date;
 }
-const UpdateStateMachineAliasOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<UpdateStateMachineAliasOutput>;
 export type ValidateStateMachineDefinitionSeverity = "ERROR" | "WARNING" | (string & {});
-const ValidateStateMachineDefinitionSeverity = S.String;
-
 export type ValidateStateMachineDefinitionMaxResult = number;
 export interface ValidateStateMachineDefinitionInput {
   definition: string | redacted.Redacted<string>;
@@ -1585,13 +1162,7 @@ export interface ValidateStateMachineDefinitionInput {
   severity?: ValidateStateMachineDefinitionSeverity;
   maxResults?: number;
 }
-const ValidateStateMachineDefinitionInput = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ValidateStateMachineDefinitionInput>;
 export type ValidateStateMachineDefinitionResultCode = "OK" | "FAIL" | (string & {});
-const ValidateStateMachineDefinitionResultCode = S.String;
-
 export type ValidateStateMachineDefinitionCode = string | redacted.Redacted<string>;
 export type ValidateStateMachineDefinitionMessage = string | redacted.Redacted<string>;
 export type ValidateStateMachineDefinitionLocation = string | redacted.Redacted<string>;
@@ -1601,23 +1172,14 @@ export interface ValidateStateMachineDefinitionDiagnostic {
   message: string | redacted.Redacted<string>;
   location?: string | redacted.Redacted<string>;
 }
-const ValidateStateMachineDefinitionDiagnostic = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ValidateStateMachineDefinitionDiagnostic>;
 export type ValidateStateMachineDefinitionDiagnosticList =
   ValidateStateMachineDefinitionDiagnostic[];
-const ValidateStateMachineDefinitionDiagnosticList = /*@__PURE__*/ __L.at(__c15, 7);
 export type ValidateStateMachineDefinitionTruncated = boolean;
 export interface ValidateStateMachineDefinitionOutput {
   result: ValidateStateMachineDefinitionResultCode;
   diagnostics: ValidateStateMachineDefinitionDiagnostic[];
   truncated?: boolean;
 }
-const ValidateStateMachineDefinitionOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ValidateStateMachineDefinitionOutput>;
 export type ErrorMessage = string;
 export type ValidationExceptionReason =
   | "API_DOES_NOT_SUPPORT_LABELED_ARNS"
@@ -1625,8 +1187,6 @@ export type ValidationExceptionReason =
   | "CANNOT_UPDATE_COMPLETED_MAP_RUN"
   | "INVALID_ROUTING_CONFIGURATION"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export type KmsKeyState =
   | "DISABLED"
   | "PENDING_DELETION"
@@ -1634,8 +1194,6 @@ export type KmsKeyState =
   | "UNAVAILABLE"
   | "CREATING"
   | (string & {});
-const KmsKeyState = S.String;
-
 export type CreateActivityError =
   | ActivityAlreadyExists
   | ActivityLimitExceeded
@@ -1667,8 +1225,8 @@ export const createActivity: API.OperationMethod<
   CreateActivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActivityInput,
-  output: CreateActivityOutput,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateActivityInput>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateActivityOutput>,
   errors: [
     ActivityAlreadyExists,
     ActivityLimitExceeded,
@@ -1730,8 +1288,8 @@ export const createStateMachine: API.OperationMethod<
   CreateStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStateMachineInput,
-  output: CreateStateMachineOutput,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateStateMachineInput>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateStateMachineOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -1800,8 +1358,8 @@ export const createStateMachineAlias: API.OperationMethod<
   CreateStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStateMachineAliasInput,
-  output: CreateStateMachineAliasOutput,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateStateMachineAliasInput>,
+  output: __S(15, __c1, 7) as any as S.Schema<CreateStateMachineAliasOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -1826,8 +1384,8 @@ export const deleteActivity: API.OperationMethod<
   DeleteActivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActivityInput,
-  output: DeleteActivityOutput,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteActivityInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteActivityOutput>,
   errors: [InvalidArn],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1865,8 +1423,8 @@ export const deleteStateMachine: API.OperationMethod<
   DeleteStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStateMachineInput,
-  output: DeleteStateMachineOutput,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteStateMachineInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<DeleteStateMachineOutput>,
   errors: [InvalidArn, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1902,8 +1460,8 @@ export const deleteStateMachineAlias: API.OperationMethod<
   DeleteStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStateMachineAliasInput,
-  output: DeleteStateMachineAliasOutput,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteStateMachineAliasInput>,
+  output: __S(21, __c2, 5) as any as S.Schema<DeleteStateMachineAliasOutput>,
   errors: [ConflictException, InvalidArn, ResourceNotFound, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1936,8 +1494,8 @@ export const deleteStateMachineVersion: API.OperationMethod<
   DeleteStateMachineVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStateMachineVersionInput,
-  output: DeleteStateMachineVersionOutput,
+  input: __S(22, __c2, 6) as any as S.Schema<DeleteStateMachineVersionInput>,
+  output: __S(21, __c2, 5) as any as S.Schema<DeleteStateMachineVersionOutput>,
   errors: [ConflictException, InvalidArn, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1956,8 +1514,8 @@ export const describeActivity: API.OperationMethod<
   DescribeActivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeActivityInput,
-  output: DescribeActivityOutput,
+  input: __S(23, __c2, 7) as any as S.Schema<DescribeActivityInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<DescribeActivityOutput>,
   errors: [ActivityDoesNotExist, InvalidArn],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1987,8 +1545,8 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeExecutionInput,
-  output: DescribeExecutionOutput,
+  input: __S(25, __c3, 1) as any as S.Schema<DescribeExecutionInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<DescribeExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -2011,8 +1569,8 @@ export const describeMapRun: API.OperationMethod<
   DescribeMapRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeMapRunInput,
-  output: DescribeMapRunOutput,
+  input: __S(28, __c3, 4) as any as S.Schema<DescribeMapRunInput>,
+  output: __S(30, __c3, 6) as any as S.Schema<DescribeMapRunOutput>,
   errors: [InvalidArn, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2060,8 +1618,8 @@ export const describeStateMachine: API.OperationMethod<
   DescribeStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeStateMachineInput,
-  output: DescribeStateMachineOutput,
+  input: __S(31, __c3, 7) as any as S.Schema<DescribeStateMachineInput>,
+  output: __S(34, __c4, 2) as any as S.Schema<DescribeStateMachineOutput>,
   errors: [
     InvalidArn,
     KmsAccessDeniedException,
@@ -2098,8 +1656,8 @@ export const describeStateMachineAlias: API.OperationMethod<
   DescribeStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeStateMachineAliasInput,
-  output: DescribeStateMachineAliasOutput,
+  input: __S(35, __c4, 3) as any as S.Schema<DescribeStateMachineAliasInput>,
+  output: __S(36, __c4, 4) as any as S.Schema<DescribeStateMachineAliasOutput>,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2129,8 +1687,8 @@ export const describeStateMachineForExecution: API.OperationMethod<
   DescribeStateMachineForExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeStateMachineForExecutionInput,
-  output: DescribeStateMachineForExecutionOutput,
+  input: __S(37, __c4, 5) as any as S.Schema<DescribeStateMachineForExecutionInput>,
+  output: __S(38, __c4, 6) as any as S.Schema<DescribeStateMachineForExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -2172,8 +1730,8 @@ export const getActivityTask: API.OperationMethod<
   GetActivityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActivityTaskInput,
-  output: GetActivityTaskOutput,
+  input: __S(39, __c4, 7) as any as S.Schema<GetActivityTaskInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetActivityTaskOutput>,
   errors: [
     ActivityDoesNotExist,
     ActivityWorkerLimitExceeded,
@@ -2212,8 +1770,8 @@ export const getExecutionHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HistoryEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetExecutionHistoryInput,
-  output: GetExecutionHistoryOutput,
+  input: __S(41, __c5, 1) as any as S.Schema<GetExecutionHistoryInput>,
+  output: __S(68, __c8, 4) as any as S.Schema<GetExecutionHistoryOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -2249,8 +1807,8 @@ export const listActivities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActivityListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListActivitiesInput,
-  output: ListActivitiesOutput,
+  input: __S(69, __c8, 5) as any as S.Schema<ListActivitiesInput>,
+  output: __S(72, __c9, 0) as any as S.Schema<ListActivitiesOutput>,
   errors: [InvalidToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2292,8 +1850,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExecutionsInput,
-  output: ListExecutionsOutput,
+  input: __S(73, __c9, 1) as any as S.Schema<ListExecutionsInput>,
+  output: __S(76, __c9, 4) as any as S.Schema<ListExecutionsOutput>,
   errors: [
     InvalidArn,
     InvalidToken,
@@ -2324,8 +1882,8 @@ export const listMapRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MapRunListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMapRunsInput,
-  output: ListMapRunsOutput,
+  input: __S(77, __c9, 5) as any as S.Schema<ListMapRunsInput>,
+  output: __S(80, __c10, 0) as any as S.Schema<ListMapRunsOutput>,
   errors: [ExecutionDoesNotExist, InvalidArn, InvalidToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2369,8 +1927,8 @@ export const listStateMachineAliases: API.OperationMethod<
   ListStateMachineAliasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStateMachineAliasesInput,
-  output: ListStateMachineAliasesOutput,
+  input: __S(81, __c10, 1) as any as S.Schema<ListStateMachineAliasesInput>,
+  output: __S(84, __c10, 4) as any as S.Schema<ListStateMachineAliasesOutput>,
   errors: [
     InvalidArn,
     InvalidToken,
@@ -2399,8 +1957,8 @@ export const listStateMachines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StateMachineListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStateMachinesInput,
-  output: ListStateMachinesOutput,
+  input: __S(85, __c10, 5) as any as S.Schema<ListStateMachinesInput>,
+  output: __S(88, __c11, 0) as any as S.Schema<ListStateMachinesOutput>,
   errors: [InvalidToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2438,8 +1996,8 @@ export const listStateMachineVersions: API.OperationMethod<
   ListStateMachineVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStateMachineVersionsInput,
-  output: ListStateMachineVersionsOutput,
+  input: __S(89, __c11, 1) as any as S.Schema<ListStateMachineVersionsInput>,
+  output: __S(92, __c11, 4) as any as S.Schema<ListStateMachineVersionsOutput>,
   errors: [InvalidArn, InvalidToken, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2458,8 +2016,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(93, __c11, 5) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(94, __c11, 6) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InvalidArn, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2501,8 +2059,8 @@ export const publishStateMachineVersion: API.OperationMethod<
   PublishStateMachineVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishStateMachineVersionInput,
-  output: PublishStateMachineVersionOutput,
+  input: __S(95, __c11, 7) as any as S.Schema<PublishStateMachineVersionInput>,
+  output: __S(96, __c12, 0) as any as S.Schema<PublishStateMachineVersionOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -2550,8 +2108,8 @@ export const redriveExecution: API.OperationMethod<
   RedriveExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedriveExecutionInput,
-  output: RedriveExecutionOutput,
+  input: __S(97, __c12, 1) as any as S.Schema<RedriveExecutionInput>,
+  output: __S(98, __c12, 2) as any as S.Schema<RedriveExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     ExecutionLimitExceeded,
@@ -2586,8 +2144,8 @@ export const sendTaskFailure: API.OperationMethod<
   SendTaskFailureError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendTaskFailureInput,
-  output: SendTaskFailureOutput,
+  input: __S(99, __c12, 3) as any as S.Schema<SendTaskFailureInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<SendTaskFailureOutput>,
   errors: [
     InvalidToken,
     KmsAccessDeniedException,
@@ -2624,8 +2182,8 @@ export const sendTaskHeartbeat: API.OperationMethod<
   SendTaskHeartbeatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendTaskHeartbeatInput,
-  output: SendTaskHeartbeatOutput,
+  input: __S(100, __c12, 4) as any as S.Schema<SendTaskHeartbeatInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<SendTaskHeartbeatOutput>,
   errors: [InvalidToken, TaskDoesNotExist, TaskTimedOut],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2652,8 +2210,8 @@ export const sendTaskSuccess: API.OperationMethod<
   SendTaskSuccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendTaskSuccessInput,
-  output: SendTaskSuccessOutput,
+  input: __S(101, __c12, 5) as any as S.Schema<SendTaskSuccessInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<SendTaskSuccessOutput>,
   errors: [
     InvalidOutput,
     InvalidToken,
@@ -2723,8 +2281,8 @@ export const startExecution: API.OperationMethod<
   StartExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartExecutionInput,
-  output: StartExecutionOutput,
+  input: __S(102, __c12, 6) as any as S.Schema<StartExecutionInput>,
+  output: __S(103, __c12, 7) as any as S.Schema<StartExecutionOutput>,
   errors: [
     ExecutionAlreadyExists,
     ExecutionLimitExceeded,
@@ -2770,8 +2328,8 @@ export const startSyncExecution: API.OperationMethod<
   StartSyncExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSyncExecutionInput,
-  output: StartSyncExecutionOutput,
+  input: __S(104, __c13, 0) as any as S.Schema<StartSyncExecutionInput>,
+  output: __S(106, __c13, 2) as any as S.Schema<StartSyncExecutionOutput>,
   errors: [
     InvalidArn,
     InvalidExecutionInput,
@@ -2812,8 +2370,8 @@ export const stopExecution: API.OperationMethod<
   StopExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopExecutionInput,
-  output: StopExecutionOutput,
+  input: __S(107, __c13, 3) as any as S.Schema<StopExecutionInput>,
+  output: __S(108, __c13, 4) as any as S.Schema<StopExecutionOutput>,
   errors: [
     ExecutionDoesNotExist,
     InvalidArn,
@@ -2844,8 +2402,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(109, __c13, 5) as any as S.Schema<TagResourceInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<TagResourceOutput>,
   errors: [InvalidArn, ResourceNotFound, TooManyTags],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2894,8 +2452,8 @@ export const testState: API.OperationMethod<
   TestStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestStateInput,
-  output: TestStateOutput,
+  input: __S(112, __c14, 0) as any as S.Schema<TestStateInput>,
+  output: __S(117, __c14, 5) as any as S.Schema<TestStateOutput>,
   errors: [InvalidArn, InvalidDefinition, InvalidExecutionInput, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2913,8 +2471,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(119, __c14, 7) as any as S.Schema<UntagResourceInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<UntagResourceOutput>,
   errors: [InvalidArn, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2931,8 +2489,8 @@ export const updateMapRun: API.OperationMethod<
   UpdateMapRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMapRunInput,
-  output: UpdateMapRunOutput,
+  input: __S(120, __c15, 0) as any as S.Schema<UpdateMapRunInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdateMapRunOutput>,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3000,8 +2558,8 @@ export const updateStateMachine: API.OperationMethod<
   UpdateStateMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStateMachineInput,
-  output: UpdateStateMachineOutput,
+  input: __S(121, __c15, 1) as any as S.Schema<UpdateStateMachineInput>,
+  output: __S(122, __c15, 2) as any as S.Schema<UpdateStateMachineOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -3060,8 +2618,8 @@ export const updateStateMachineAlias: API.OperationMethod<
   UpdateStateMachineAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStateMachineAliasInput,
-  output: UpdateStateMachineAliasOutput,
+  input: __S(123, __c15, 3) as any as S.Schema<UpdateStateMachineAliasInput>,
+  output: __S(124, __c15, 4) as any as S.Schema<UpdateStateMachineAliasOutput>,
   errors: [
     ConflictException,
     InvalidArn,
@@ -3115,8 +2673,8 @@ export const validateStateMachineDefinition: API.OperationMethod<
   ValidateStateMachineDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateStateMachineDefinitionInput,
-  output: ValidateStateMachineDefinitionOutput,
+  input: __S(125, __c15, 5) as any as S.Schema<ValidateStateMachineDefinitionInput>,
+  output: __S(128, __c16, 0) as any as S.Schema<ValidateStateMachineDefinitionOutput>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3131,21 +2689,21 @@ function __c0(j: number): any {
         S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kmsKeyId: S.optional(S.String),
           kmsDataKeyReusePeriodSeconds: S.optional(S.Number),
-          type: EncryptionType,
+          type: S.String,
         }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tags: S.optional(TagList),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          tags: S.optional(__S(1, __c0, 1)),
+          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateActivityInput" });
     case 4:
@@ -3161,10 +2719,10 @@ function __c0(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ cloudWatchLogsLogGroup: S.optional(CloudWatchLogsLogGroup) }),
+        S.Struct({ cloudWatchLogsLogGroup: S.optional(__S(5, __c0, 5)) }),
       ).annotate({ identifier: "LogDestination" });
     case 7:
-      return S.Array(LogDestination);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -3172,9 +2730,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          level: S.optional(LogLevel),
+          level: S.optional(S.String),
           includeExecutionData: S.optional(S.Boolean),
-          destinations: S.optional(LogDestinationList),
+          destinations: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "LoggingConfiguration" });
     case 1:
@@ -3187,13 +2745,13 @@ function __c1(j: number): any {
           name: S.String,
           definition: SensitiveString,
           roleArn: S.String,
-          type: S.optional(StateMachineType),
-          loggingConfiguration: S.optional(LoggingConfiguration),
-          tags: S.optional(TagList),
-          tracingConfiguration: S.optional(TracingConfiguration),
+          type: S.optional(S.String),
+          loggingConfiguration: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(1, __c0, 1)),
+          tracingConfiguration: S.optional(__S(9, __c1, 1)),
           publish: S.optional(S.Boolean),
           versionDescription: S.optional(SensitiveString),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateStateMachineInput" });
     case 3:
@@ -3211,13 +2769,13 @@ function __c1(j: number): any {
         identifier: "RoutingConfigurationListItem",
       });
     case 5:
-      return S.Array(RoutingConfigurationListItem);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(SensitiveString),
           name: S.String,
-          routingConfiguration: RoutingConfigurationList,
+          routingConfiguration: __S(13, __c1, 5),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateStateMachineAliasInput",
@@ -3291,12 +2849,12 @@ function __c3(j: number): any {
           activityArn: S.String,
           name: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeActivityOutput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ executionArn: S.String, includedData: S.optional(IncludedData) }).pipe(
+        S.Struct({ executionArn: S.String, includedData: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeExecutionInput" });
@@ -3310,13 +2868,13 @@ function __c3(j: number): any {
           executionArn: S.String,
           stateMachineArn: S.String,
           name: S.optional(S.String),
-          status: ExecutionStatus,
+          status: S.String,
           startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          inputDetails: S.optional(__S(26, __c3, 2)),
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          outputDetails: S.optional(__S(26, __c3, 2)),
           traceHeader: S.optional(S.String),
           mapRunArn: S.optional(S.String),
           error: S.optional(SensitiveString),
@@ -3325,7 +2883,7 @@ function __c3(j: number): any {
           stateMachineAliasArn: S.optional(S.String),
           redriveCount: S.optional(S.Number),
           redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          redriveStatus: S.optional(ExecutionRedriveStatus),
+          redriveStatus: S.optional(S.String),
           redriveStatusReason: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeExecutionOutput" });
@@ -3355,21 +2913,21 @@ function __c3(j: number): any {
         S.Struct({
           mapRunArn: S.String,
           executionArn: S.String,
-          status: MapRunStatus,
+          status: S.String,
           startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           maxConcurrency: S.Number,
           toleratedFailurePercentage: S.Number,
           toleratedFailureCount: S.Number,
-          itemCounts: MapRunItemCounts,
-          executionCounts: MapRunExecutionCounts,
+          itemCounts: __S(29, __c3, 5),
+          executionCounts: __S(29, __c3, 5),
           redriveCount: S.optional(S.Number),
           redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeMapRunOutput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ stateMachineArn: S.String, includedData: S.optional(IncludedData) }).pipe(
+        S.Struct({ stateMachineArn: S.String, includedData: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3382,24 +2940,24 @@ function __c4(j: number): any {
     case 0:
       return S.Array(SensitiveString);
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ VariableNameList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(32, __c4, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.String,
           name: S.String,
-          status: S.optional(StateMachineStatus),
+          status: S.optional(S.String),
           definition: SensitiveString,
           roleArn: S.String,
-          type: StateMachineType,
+          type: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          loggingConfiguration: S.optional(LoggingConfiguration),
-          tracingConfiguration: S.optional(TracingConfiguration),
+          loggingConfiguration: S.optional(__S(8, __c1, 0)),
+          tracingConfiguration: S.optional(__S(9, __c1, 1)),
           label: S.optional(S.String),
           revisionId: S.optional(S.String),
           description: S.optional(SensitiveString),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
-          variableReferences: S.optional(VariableReferences),
+          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
+          variableReferences: S.optional(__S(33, __c4, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeStateMachineOutput",
@@ -3418,7 +2976,7 @@ function __c4(j: number): any {
           stateMachineAliasArn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(SensitiveString),
-          routingConfiguration: S.optional(RoutingConfigurationList),
+          routingConfiguration: S.optional(__S(13, __c1, 5)),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
@@ -3427,7 +2985,7 @@ function __c4(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ executionArn: S.String, includedData: S.optional(IncludedData) }).pipe(
+        S.Struct({ executionArn: S.String, includedData: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3441,13 +2999,13 @@ function __c4(j: number): any {
           definition: SensitiveString,
           roleArn: S.String,
           updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          loggingConfiguration: S.optional(LoggingConfiguration),
-          tracingConfiguration: S.optional(TracingConfiguration),
+          loggingConfiguration: S.optional(__S(8, __c1, 0)),
+          tracingConfiguration: S.optional(__S(9, __c1, 1)),
           mapRunArn: S.optional(S.String),
           label: S.optional(S.String),
           revisionId: S.optional(S.String),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
-          variableReferences: S.optional(VariableReferences),
+          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
+          variableReferences: S.optional(__S(33, __c4, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeStateMachineForExecutionOutput",
@@ -3491,7 +3049,7 @@ function __c5(j: number): any {
         S.Struct({
           resource: S.String,
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+          inputDetails: S.optional(__S(43, __c5, 3)),
           timeoutInSeconds: S.optional(S.Number),
           heartbeatInSeconds: S.optional(S.Number),
         }),
@@ -3506,7 +3064,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(HistoryEventExecutionDataDetails),
+          outputDetails: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "ActivitySucceededEventDetails",
@@ -3537,7 +3095,7 @@ function __c6(j: number): any {
           parameters: SensitiveString,
           timeoutInSeconds: S.optional(S.Number),
           heartbeatInSeconds: S.optional(S.Number),
-          taskCredentials: S.optional(TaskCredentials),
+          taskCredentials: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({
         identifier: "TaskScheduledEventDetails",
@@ -3563,7 +3121,7 @@ function __c6(j: number): any {
           resourceType: S.String,
           resource: S.String,
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(HistoryEventExecutionDataDetails),
+          outputDetails: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "TaskSubmittedEventDetails",
@@ -3572,7 +3130,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+          inputDetails: S.optional(__S(43, __c5, 3)),
           roleArn: S.optional(S.String),
           stateMachineAliasArn: S.optional(S.String),
           stateMachineVersionArn: S.optional(S.String),
@@ -3601,9 +3159,9 @@ function __c7(j: number): any {
         S.Struct({
           resource: S.String,
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+          inputDetails: S.optional(__S(43, __c5, 3)),
           timeoutInSeconds: S.optional(S.Number),
-          taskCredentials: S.optional(TaskCredentials),
+          taskCredentials: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({
         identifier: "LambdaFunctionScheduledEventDetails",
@@ -3613,7 +3171,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String,
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+          inputDetails: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "StateEnteredEventDetails" });
     case 3:
@@ -3627,9 +3185,9 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String,
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(HistoryEventExecutionDataDetails),
-          assignedVariables: S.optional(AssignedVariables),
-          assignedVariablesDetails: S.optional(AssignedVariablesDetails),
+          outputDetails: S.optional(__S(43, __c5, 3)),
+          assignedVariables: S.optional(__S(59, __c7, 3)),
+          assignedVariablesDetails: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "StateExitedEventDetails" });
     case 6:
@@ -3665,55 +3223,53 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          type: HistoryEventType,
+          type: S.String,
           id: S.Number,
           previousEventId: S.optional(S.Number),
-          activityFailedEventDetails: S.optional(ActivityFailedEventDetails),
-          activityScheduleFailedEventDetails: S.optional(ActivityScheduleFailedEventDetails),
-          activityScheduledEventDetails: S.optional(ActivityScheduledEventDetails),
-          activityStartedEventDetails: S.optional(ActivityStartedEventDetails),
-          activitySucceededEventDetails: S.optional(ActivitySucceededEventDetails),
-          activityTimedOutEventDetails: S.optional(ActivityTimedOutEventDetails),
-          taskFailedEventDetails: S.optional(TaskFailedEventDetails),
-          taskScheduledEventDetails: S.optional(TaskScheduledEventDetails),
-          taskStartFailedEventDetails: S.optional(TaskStartFailedEventDetails),
-          taskStartedEventDetails: S.optional(TaskStartedEventDetails),
-          taskSubmitFailedEventDetails: S.optional(TaskSubmitFailedEventDetails),
-          taskSubmittedEventDetails: S.optional(TaskSubmittedEventDetails),
-          taskSucceededEventDetails: S.optional(TaskSucceededEventDetails),
-          taskTimedOutEventDetails: S.optional(TaskTimedOutEventDetails),
-          executionFailedEventDetails: S.optional(ExecutionFailedEventDetails),
-          executionStartedEventDetails: S.optional(ExecutionStartedEventDetails),
-          executionSucceededEventDetails: S.optional(ExecutionSucceededEventDetails),
-          executionAbortedEventDetails: S.optional(ExecutionAbortedEventDetails),
-          executionTimedOutEventDetails: S.optional(ExecutionTimedOutEventDetails),
-          executionRedrivenEventDetails: S.optional(ExecutionRedrivenEventDetails),
-          mapStateStartedEventDetails: S.optional(MapStateStartedEventDetails),
-          mapIterationStartedEventDetails: S.optional(MapIterationEventDetails),
-          mapIterationSucceededEventDetails: S.optional(MapIterationEventDetails),
-          mapIterationFailedEventDetails: S.optional(MapIterationEventDetails),
-          mapIterationAbortedEventDetails: S.optional(MapIterationEventDetails),
-          lambdaFunctionFailedEventDetails: S.optional(LambdaFunctionFailedEventDetails),
-          lambdaFunctionScheduleFailedEventDetails: S.optional(
-            LambdaFunctionScheduleFailedEventDetails,
-          ),
-          lambdaFunctionScheduledEventDetails: S.optional(LambdaFunctionScheduledEventDetails),
-          lambdaFunctionStartFailedEventDetails: S.optional(LambdaFunctionStartFailedEventDetails),
-          lambdaFunctionSucceededEventDetails: S.optional(LambdaFunctionSucceededEventDetails),
-          lambdaFunctionTimedOutEventDetails: S.optional(LambdaFunctionTimedOutEventDetails),
-          stateEnteredEventDetails: S.optional(StateEnteredEventDetails),
-          stateExitedEventDetails: S.optional(StateExitedEventDetails),
-          mapRunStartedEventDetails: S.optional(MapRunStartedEventDetails),
-          mapRunFailedEventDetails: S.optional(MapRunFailedEventDetails),
-          mapRunRedrivenEventDetails: S.optional(MapRunRedrivenEventDetails),
-          evaluationFailedEventDetails: S.optional(EvaluationFailedEventDetails),
+          activityFailedEventDetails: S.optional(__S(42, __c5, 2)),
+          activityScheduleFailedEventDetails: S.optional(__S(42, __c5, 2)),
+          activityScheduledEventDetails: S.optional(__S(44, __c5, 4)),
+          activityStartedEventDetails: S.optional(__S(45, __c5, 5)),
+          activitySucceededEventDetails: S.optional(__S(46, __c5, 6)),
+          activityTimedOutEventDetails: S.optional(__S(42, __c5, 2)),
+          taskFailedEventDetails: S.optional(__S(47, __c5, 7)),
+          taskScheduledEventDetails: S.optional(__S(49, __c6, 1)),
+          taskStartFailedEventDetails: S.optional(__S(50, __c6, 2)),
+          taskStartedEventDetails: S.optional(__S(51, __c6, 3)),
+          taskSubmitFailedEventDetails: S.optional(__S(50, __c6, 2)),
+          taskSubmittedEventDetails: S.optional(__S(52, __c6, 4)),
+          taskSucceededEventDetails: S.optional(__S(52, __c6, 4)),
+          taskTimedOutEventDetails: S.optional(__S(47, __c5, 7)),
+          executionFailedEventDetails: S.optional(__S(42, __c5, 2)),
+          executionStartedEventDetails: S.optional(__S(53, __c6, 5)),
+          executionSucceededEventDetails: S.optional(__S(46, __c5, 6)),
+          executionAbortedEventDetails: S.optional(__S(42, __c5, 2)),
+          executionTimedOutEventDetails: S.optional(__S(42, __c5, 2)),
+          executionRedrivenEventDetails: S.optional(__S(54, __c6, 6)),
+          mapStateStartedEventDetails: S.optional(__S(55, __c6, 7)),
+          mapIterationStartedEventDetails: S.optional(__S(56, __c7, 0)),
+          mapIterationSucceededEventDetails: S.optional(__S(56, __c7, 0)),
+          mapIterationFailedEventDetails: S.optional(__S(56, __c7, 0)),
+          mapIterationAbortedEventDetails: S.optional(__S(56, __c7, 0)),
+          lambdaFunctionFailedEventDetails: S.optional(__S(42, __c5, 2)),
+          lambdaFunctionScheduleFailedEventDetails: S.optional(__S(42, __c5, 2)),
+          lambdaFunctionScheduledEventDetails: S.optional(__S(57, __c7, 1)),
+          lambdaFunctionStartFailedEventDetails: S.optional(__S(42, __c5, 2)),
+          lambdaFunctionSucceededEventDetails: S.optional(__S(46, __c5, 6)),
+          lambdaFunctionTimedOutEventDetails: S.optional(__S(42, __c5, 2)),
+          stateEnteredEventDetails: S.optional(__S(58, __c7, 2)),
+          stateExitedEventDetails: S.optional(__S(61, __c7, 5)),
+          mapRunStartedEventDetails: S.optional(__S(62, __c7, 6)),
+          mapRunFailedEventDetails: S.optional(__S(63, __c7, 7)),
+          mapRunRedrivenEventDetails: S.optional(__S(64, __c8, 0)),
+          evaluationFailedEventDetails: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "HistoryEvent" });
     case 3:
-      return S.Array(HistoryEvent);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ events: HistoryEventList, nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ events: __S(67, __c8, 3), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "GetExecutionHistoryOutput",
       });
@@ -3732,24 +3288,24 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ActivityListItem" });
     case 7:
-      return S.Array(ActivityListItem);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ activities: ActivityList, nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ activities: __S(71, __c8, 7), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListActivitiesOutput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           stateMachineArn: S.optional(S.String),
-          statusFilter: S.optional(ExecutionStatus),
+          statusFilter: S.optional(S.String),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           mapRunArn: S.optional(S.String),
-          redriveFilter: S.optional(ExecutionRedriveFilter),
+          redriveFilter: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListExecutionsInput" });
     case 2:
@@ -3758,7 +3314,7 @@ function __c9(j: number): any {
           executionArn: S.String,
           stateMachineArn: S.String,
           name: S.String,
-          status: ExecutionStatus,
+          status: S.String,
           startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           mapRunArn: S.optional(S.String),
@@ -3770,10 +3326,10 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ExecutionListItem" });
     case 3:
-      return S.Array(ExecutionListItem);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ executions: ExecutionList, nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ executions: __S(75, __c9, 3), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListExecutionsOutput" });
     case 5:
       return S.suspend(() =>
@@ -3794,14 +3350,14 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "MapRunListItem" });
     case 7:
-      return S.Array(MapRunListItem);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ mapRuns: MapRunList, nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ mapRuns: __S(79, __c9, 7), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListMapRunsOutput" });
     case 1:
       return S.suspend(() =>
@@ -3823,11 +3379,11 @@ function __c10(j: number): any {
         identifier: "StateMachineAliasListItem",
       });
     case 3:
-      return S.Array(StateMachineAliasListItem);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stateMachineAliases: StateMachineAliasList,
+          stateMachineAliases: __S(83, __c10, 3),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3844,19 +3400,19 @@ function __c10(j: number): any {
         S.Struct({
           stateMachineArn: S.String,
           name: S.String,
-          type: StateMachineType,
+          type: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "StateMachineListItem" });
     case 7:
-      return S.Array(StateMachineListItem);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ stateMachines: StateMachineList, nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ stateMachines: __S(87, __c10, 7), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListStateMachinesOutput" });
     case 1:
       return S.suspend(() =>
@@ -3878,11 +3434,11 @@ function __c11(j: number): any {
         identifier: "StateMachineVersionListItem",
       });
     case 3:
-      return S.Array(StateMachineVersionListItem);
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stateMachineVersions: StateMachineVersionList,
+          stateMachineVersions: __S(91, __c11, 3),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3895,7 +3451,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 6:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagList) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(1, __c0, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 7:
@@ -3979,7 +3535,7 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           input: S.optional(SensitiveString),
           traceHeader: S.optional(S.String),
-          includedData: S.optional(IncludedData),
+          includedData: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartSyncExecutionInput" });
     case 1:
@@ -3997,15 +3553,15 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: SyncExecutionStatus,
+          status: S.String,
           error: S.optional(SensitiveString),
           cause: S.optional(SensitiveString),
           input: S.optional(SensitiveString),
-          inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          inputDetails: S.optional(__S(26, __c3, 2)),
           output: S.optional(SensitiveString),
-          outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          outputDetails: S.optional(__S(26, __c3, 2)),
           traceHeader: S.optional(S.String),
-          billingDetails: S.optional(BillingDetails),
+          billingDetails: S.optional(__S(105, __c13, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "StartSyncExecutionOutput" });
     case 3:
@@ -4022,7 +3578,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "StopExecutionOutput" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(1, __c0, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -4030,8 +3586,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           result: S.optional(SensitiveString),
-          errorOutput: S.optional(MockErrorOutput),
-          fieldValidationMode: S.optional(MockResponseValidationMode),
+          errorOutput: S.optional(__S(63, __c7, 7)),
+          fieldValidationMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MockInput" });
     case 7:
@@ -4053,13 +3609,13 @@ function __c14(j: number): any {
           definition: SensitiveString,
           roleArn: S.optional(S.String),
           input: S.optional(SensitiveString),
-          inspectionLevel: S.optional(InspectionLevel),
+          inspectionLevel: S.optional(S.String),
           revealSecrets: S.optional(S.Boolean),
           variables: S.optional(SensitiveString),
           stateName: S.optional(SensitiveString),
-          mock: S.optional(MockInput),
+          mock: S.optional(__S(110, __c13, 6)),
           context: S.optional(SensitiveString),
-          stateConfiguration: S.optional(TestStateConfiguration),
+          stateConfiguration: S.optional(__S(111, __c13, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TestStateInput" });
     case 1:
@@ -4100,10 +3656,10 @@ function __c14(j: number): any {
           result: S.optional(SensitiveString),
           afterResultSelector: S.optional(SensitiveString),
           afterResultPath: S.optional(SensitiveString),
-          request: S.optional(InspectionDataRequest),
-          response: S.optional(InspectionDataResponse),
+          request: S.optional(__S(113, __c14, 1)),
+          response: S.optional(__S(114, __c14, 2)),
           variables: S.optional(SensitiveString),
-          errorDetails: S.optional(InspectionErrorDetails),
+          errorDetails: S.optional(__S(115, __c14, 3)),
           afterItemsPath: S.optional(SensitiveString),
           afterItemSelector: S.optional(SensitiveString),
           afterItemBatcher: S.optional(SensitiveString),
@@ -4119,16 +3675,16 @@ function __c14(j: number): any {
           output: S.optional(SensitiveString),
           error: S.optional(SensitiveString),
           cause: S.optional(SensitiveString),
-          inspectionData: S.optional(InspectionData),
+          inspectionData: S.optional(__S(116, __c14, 4)),
           nextState: S.optional(S.String),
-          status: S.optional(TestExecutionStatus),
+          status: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "TestStateOutput" });
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(118, __c14, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
@@ -4151,11 +3707,11 @@ function __c15(j: number): any {
           stateMachineArn: S.String,
           definition: S.optional(SensitiveString),
           roleArn: S.optional(S.String),
-          loggingConfiguration: S.optional(LoggingConfiguration),
-          tracingConfiguration: S.optional(TracingConfiguration),
+          loggingConfiguration: S.optional(__S(8, __c1, 0)),
+          tracingConfiguration: S.optional(__S(9, __c1, 1)),
           publish: S.optional(S.Boolean),
           versionDescription: S.optional(SensitiveString),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          encryptionConfiguration: S.optional(__S(2, __c0, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateStateMachineInput" });
     case 2:
@@ -4171,7 +3727,7 @@ function __c15(j: number): any {
         S.Struct({
           stateMachineAliasArn: S.String,
           description: S.optional(SensitiveString),
-          routingConfiguration: S.optional(RoutingConfigurationList),
+          routingConfiguration: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateStateMachineAliasInput",
@@ -4186,8 +3742,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           definition: SensitiveString,
-          type: S.optional(StateMachineType),
-          severity: S.optional(ValidateStateMachineDefinitionSeverity),
+          type: S.optional(S.String),
+          severity: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4196,7 +3752,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          severity: ValidateStateMachineDefinitionSeverity,
+          severity: S.String,
           code: SensitiveString,
           message: SensitiveString,
           location: S.optional(SensitiveString),
@@ -4205,7 +3761,7 @@ function __c15(j: number): any {
         identifier: "ValidateStateMachineDefinitionDiagnostic",
       });
     case 7:
-      return S.Array(ValidateStateMachineDefinitionDiagnostic);
+      return S.Array(__S(126, __c15, 6));
   }
 }
 function __c16(j: number): any {
@@ -4213,12 +3769,17 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: ValidateStateMachineDefinitionResultCode,
-          diagnostics: ValidateStateMachineDefinitionDiagnosticList,
+          result: S.String,
+          diagnostics: __S(127, __c15, 7),
           truncated: S.optional(S.Boolean),
         }).pipe(ns),
       ).annotate({
         identifier: "ValidateStateMachineDefinitionOutput",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

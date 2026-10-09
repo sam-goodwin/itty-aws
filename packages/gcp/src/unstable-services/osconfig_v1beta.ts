@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,25 +66,13 @@ export class NotFound
 
 /** Message for canceling a patch job. */
 export interface CancelPatchJobRequest {}
-const CancelPatchJobRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelPatchJobRequest>;
-
 export interface CancelProjectsPatchJobsRequest {
   /** Required. Name of the patch in the form `projects/*\/patchJobs/*` */
   name: string;
   /** Request body */
   body?: CancelPatchJobRequest;
 }
-const CancelProjectsPatchJobsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsPatchJobsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
-
 export type WindowsUpdateSettingsClassificationsItemEnum =
   | "CLASSIFICATION_UNSPECIFIED"
   | "CRITICAL"
@@ -94,16 +84,9 @@ export type WindowsUpdateSettingsClassificationsItemEnum =
   | "TOOL"
   | "UPDATE_ROLLUP"
   | "UPDATE";
-const WindowsUpdateSettingsClassificationsItemEnum = S.String;
-
 export type WindowsUpdateSettingsClassificationsItemEnumList = Array<
   WindowsUpdateSettingsClassificationsItemEnum | (string & {})
 >;
-const WindowsUpdateSettingsClassificationsItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<WindowsUpdateSettingsClassificationsItemEnumList>;
-
 /** Windows patching is performed using the Windows Update Agent. */
 export interface WindowsUpdateSettings {
   /** List of KBs to exclude from update. */
@@ -113,11 +96,6 @@ export interface WindowsUpdateSettings {
   /** Only apply updates of these windows update classifications. If empty, all updates are applied. */
   classifications?: WindowsUpdateSettingsClassificationsItemEnumList;
 }
-const WindowsUpdateSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<WindowsUpdateSettings>;
-
 /** Googet patching is performed by running `googet update`. */
 export type GooSettings = CancelPatchJobRequest;
 export type ExecStepConfigInterpreterEnum =
@@ -125,11 +103,7 @@ export type ExecStepConfigInterpreterEnum =
   | "NONE"
   | "SHELL"
   | "POWERSHELL";
-const ExecStepConfigInterpreterEnum = S.String;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<IntegerList>;
-
 /** Google Cloud Storage object representation. */
 export interface GcsObject {
   /** Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change. */
@@ -139,8 +113,6 @@ export interface GcsObject {
   /** Required. Name of the Google Cloud Storage object. */
   object?: string;
 }
-const GcsObject = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GcsObject>;
-
 /** Common configurations for an ExecStep. */
 export interface ExecStepConfig {
   /** An absolute path to the executable on the VM. */
@@ -152,8 +124,6 @@ export interface ExecStepConfig {
   /** A Google Cloud Storage object containing the executable. */
   gcsObject?: GcsObject;
 }
-const ExecStepConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ExecStepConfig>;
-
 /** A step that runs an executable for a PatchJob. */
 export interface ExecStep {
   /** The ExecStepConfig for all Linux VMs targeted by the PatchJob. */
@@ -161,8 +131,6 @@ export interface ExecStep {
   /** The ExecStepConfig for all Windows VMs targeted by the PatchJob. */
   windowsExecStepConfig?: ExecStepConfig;
 }
-const ExecStep = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ExecStep>;
-
 /** Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual. */
 export interface ZypperSettings {
   /** An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields. */
@@ -178,11 +146,7 @@ export interface ZypperSettings {
   /** Install only patches with these categories. Common categories include security, recommended, and feature. */
   categories?: StringList;
 }
-const ZypperSettings = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ZypperSettings>;
-
 export type AptSettingsTypeEnum = "TYPE_UNSPECIFIED" | "DIST" | "UPGRADE";
-const AptSettingsTypeEnum = S.String;
-
 /** Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed. */
 export interface AptSettings {
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields. */
@@ -192,8 +156,6 @@ export interface AptSettings {
   /** By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead. */
   type?: AptSettingsTypeEnum | (string & {});
 }
-const AptSettings = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AptSettings>;
-
 /** Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms. */
 export interface YumSettings {
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields. */
@@ -205,15 +167,11 @@ export interface YumSettings {
   /** List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag. */
   excludes?: StringList;
 }
-const YumSettings = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<YumSettings>;
-
 export type PatchConfigRebootConfigEnum =
   | "REBOOT_CONFIG_UNSPECIFIED"
   | "DEFAULT"
   | "ALWAYS"
   | "NEVER";
-const PatchConfigRebootConfigEnum = S.String;
-
 /** Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance. */
 export interface PatchConfig {
   /** Allows the patch job to run on Managed instance groups (MIGs). */
@@ -237,27 +195,13 @@ export interface PatchConfig {
   /** The `ExecStep` to run before the patch update. */
   preStep?: ExecStep;
 }
-const PatchConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PatchConfig>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringMap>;
-
 /** Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web". */
 export interface PatchInstanceFilterGroupLabel {
   /** Compute Engine instance labels that must be present for a VM instance to be targeted by this filter. */
   labels?: StringMap;
 }
-const PatchInstanceFilterGroupLabel = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PatchInstanceFilterGroupLabel>;
-
 export type PatchInstanceFilterGroupLabelList = Array<PatchInstanceFilterGroupLabel>;
-const PatchInstanceFilterGroupLabelList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PatchInstanceFilterGroupLabelList>;
-
 /** A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones. */
 export interface PatchInstanceFilter {
   /** Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]` */
@@ -271,8 +215,6 @@ export interface PatchInstanceFilter {
   /** Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone. */
   zones?: StringList;
 }
-const PatchInstanceFilter = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PatchInstanceFilter>;
-
 export type PatchJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
@@ -283,11 +225,7 @@ export type PatchJobStateEnum =
   | "COMPLETED_WITH_ERRORS"
   | "CANCELED"
   | "TIMED_OUT";
-const PatchJobStateEnum = S.String;
-
 export type PatchRolloutModeEnum = "MODE_UNSPECIFIED" | "ZONE_BY_ZONE" | "CONCURRENT_ZONES";
-const PatchRolloutModeEnum = S.String;
-
 /** Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value. */
 export interface FixedOrPercent {
   /** Specifies the relative value defined as a percentage, which will be multiplied by a reference value. */
@@ -295,8 +233,6 @@ export interface FixedOrPercent {
   /** Specifies a fixed value. */
   fixed?: number;
 }
-const FixedOrPercent = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<FixedOrPercent>;
-
 /** Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs. */
 export interface PatchRollout {
   /** Mode of the patch rollout. */
@@ -304,8 +240,6 @@ export interface PatchRollout {
   /** The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops. */
   disruptionBudget?: FixedOrPercent;
 }
-const PatchRollout = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PatchRollout>;
-
 /** A summary of the current patch state across all instances that this patch job affects. Contains counts of instances in different states. These states map to `InstancePatchState`. List patch job instance details to see the specific states of each instance. */
 export interface PatchJobInstanceDetailsSummary {
   /** Number of instances that exceeded the time out while applying the patch. */
@@ -341,11 +275,6 @@ export interface PatchJobInstanceDetailsSummary {
   /** Number of instances rebooting. */
   rebootingInstanceCount?: string;
 }
-const PatchJobInstanceDetailsSummary = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PatchJobInstanceDetailsSummary>;
-
 /** A high level representation of a patch job that is either in progress or has completed. Instance details are not included in the job. To paginate through instance details, use `ListPatchJobInstanceDetails`. For more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job). */
 export interface PatchJob {
   /** Display name for this patch job. This is not a unique identifier. */
@@ -379,18 +308,12 @@ export interface PatchJob {
   /** Summary of instance details. */
   instanceDetailsSummary?: PatchJobInstanceDetailsSummary;
 }
-const PatchJob = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PatchJob>;
-
 export type PackageManagerEnum = "MANAGER_UNSPECIFIED" | "ANY" | "APT" | "YUM" | "ZYPPER" | "GOO";
-const PackageManagerEnum = S.String;
-
 export type PackageDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
   | "UPDATED"
   | "REMOVED";
-const PackageDesiredStateEnum = S.String;
-
 /** Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3` */
 export interface Package {
   /** Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets. */
@@ -400,11 +323,7 @@ export interface Package {
   /** The desired_state the agent should maintain for this package. The default is to ensure the package is installed. */
   desiredState?: PackageDesiredStateEnum | (string & {});
 }
-const Package = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Package>;
-
 export type PackageList = Array<Package>;
-const PackageList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PackageList>;
-
 /** Defines the criteria for selecting VM Instances by OS type. */
 export interface AssignmentOsType {
   /** Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows". */
@@ -414,24 +333,13 @@ export interface AssignmentOsType {
   /** Targets VM instances with OS Inventory enabled and having the following OS architecture. */
   osArchitecture?: string;
 }
-const AssignmentOsType = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AssignmentOsType>;
-
 export type AssignmentOsTypeList = Array<AssignmentOsType>;
-const AssignmentOsTypeList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AssignmentOsTypeList>;
-
 /** Represents a group of VM intances that can be identified as having all these labels, for example "env=prod and app=web". */
 export interface AssignmentGroupLabel {
   /** Google Compute Engine instance labels that must be present for an instance to be included in this assignment group. */
   labels?: StringMap;
 }
-const AssignmentGroupLabel = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AssignmentGroupLabel>;
-
 export type AssignmentGroupLabelList = Array<AssignmentGroupLabel>;
-const AssignmentGroupLabelList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AssignmentGroupLabelList>;
-
 /** An assignment represents the group or groups of VM instances that the policy applies to. If an assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all the criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those labels and in those zones. */
 export interface Assignment {
   /** Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level policies. */
@@ -445,11 +353,7 @@ export interface Assignment {
   /** Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone. */
   zones?: StringList;
 }
-const Assignment = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Assignment>;
-
 export type AptRepositoryArchiveTypeEnum = "ARCHIVE_TYPE_UNSPECIFIED" | "DEB" | "DEB_SRC";
-const AptRepositoryArchiveTypeEnum = S.String;
-
 /** Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`. */
 export interface AptRepository {
   /** Type of archive files in this repository. The default behavior is DEB. */
@@ -463,8 +367,6 @@ export interface AptRepository {
   /** Required. List of components for this repository. Must contain at least one item. */
   components?: StringList;
 }
-const AptRepository = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AptRepository>;
-
 /** Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`. */
 export interface ZypperRepository {
   /** Required. The location of the repository directory. */
@@ -476,8 +378,6 @@ export interface ZypperRepository {
   /** The display name of the repository. */
   displayName?: string;
 }
-const ZypperRepository = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ZypperRepository>;
-
 /** Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`. */
 export interface YumRepository {
   /** Required. The location of the repository directory. */
@@ -489,8 +389,6 @@ export interface YumRepository {
   /** The display name of the repository. */
   displayName?: string;
 }
-const YumRepository = ZypperRepository as any as S.Schema<YumRepository>;
-
 /** Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo. */
 export interface GooRepository {
   /** Required. The url of the repository. */
@@ -498,8 +396,6 @@ export interface GooRepository {
   /** Required. The name of the repository. */
   name?: string;
 }
-const GooRepository = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GooRepository>;
-
 /** A package repository. */
 export interface PackageRepository {
   /** An Apt Repository. */
@@ -511,14 +407,7 @@ export interface PackageRepository {
   /** A Goo Repository. */
   goo?: GooRepository;
 }
-const PackageRepository = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PackageRepository>;
-
 export type PackageRepositoryList = Array<PackageRepository>;
-const PackageRepositoryList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PackageRepositoryList>;
-
 /** Specifies an artifact available via some URI. */
 export interface SoftwareRecipeArtifactRemote {
   /** URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}. */
@@ -526,11 +415,6 @@ export interface SoftwareRecipeArtifactRemote {
   /** Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps. */
   checksum?: string;
 }
-const SoftwareRecipeArtifactRemote = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<SoftwareRecipeArtifactRemote>;
-
 /** Specifies an artifact available as a Google Cloud Storage object. */
 export interface SoftwareRecipeArtifactGcs {
   /** Must be provided if allow_insecure is false. Generation number of the Google Cloud Storage object. `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `1234567`. */
@@ -540,11 +424,6 @@ export interface SoftwareRecipeArtifactGcs {
   /** Name of the Google Cloud Storage object. As specified [here] (https://cloud.google.com/storage/docs/naming#objectnames) Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `foo/bar`. */
   object?: string;
 }
-const SoftwareRecipeArtifactGcs = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<SoftwareRecipeArtifactGcs>;
-
 /** Specifies a resource to be used in the recipe. */
 export interface SoftwareRecipeArtifact {
   /** A generic remote artifact. */
@@ -556,24 +435,12 @@ export interface SoftwareRecipeArtifact {
   /** A Google Cloud Storage artifact. */
   gcs?: SoftwareRecipeArtifactGcs;
 }
-const SoftwareRecipeArtifact = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<SoftwareRecipeArtifact>;
-
 export type SoftwareRecipeArtifactList = Array<SoftwareRecipeArtifact>;
-const SoftwareRecipeArtifactList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SoftwareRecipeArtifactList>;
-
 export type SoftwareRecipeDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
   | "UPDATED"
   | "REMOVED";
-const SoftwareRecipeDesiredStateEnum = S.String;
-
 /** Executes an artifact or local file. */
 export interface SoftwareRecipeStepExecFile {
   /** The absolute path of the file on the local filesystem. */
@@ -585,29 +452,17 @@ export interface SoftwareRecipeStepExecFile {
   /** Arguments to be passed to the provided executable. */
   args?: StringList;
 }
-const SoftwareRecipeStepExecFile = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SoftwareRecipeStepExecFile>;
-
 /** Installs an rpm file via the rpm utility. */
 export interface SoftwareRecipeStepInstallRpm {
   /** Required. The id of the relevant artifact in the recipe. */
   artifactId?: string;
 }
-const SoftwareRecipeStepInstallRpm = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<SoftwareRecipeStepInstallRpm>;
-
 /** Installs a deb via dpkg. */
 export type SoftwareRecipeStepInstallDpkg = SoftwareRecipeStepInstallRpm;
 export type SoftwareRecipeStepRunScriptInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "SHELL"
   | "POWERSHELL";
-const SoftwareRecipeStepRunScriptInterpreterEnum = S.String;
-
 /** Runs a script through an interpreter. */
 export interface SoftwareRecipeStepRunScript {
   /** Required. The shell script to be executed. */
@@ -617,11 +472,6 @@ export interface SoftwareRecipeStepRunScript {
   /** The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)). */
   interpreter?: SoftwareRecipeStepRunScriptInterpreterEnum | (string & {});
 }
-const SoftwareRecipeStepRunScript = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SoftwareRecipeStepRunScript>;
-
 /** Copies the artifact to the specified path on the instance. */
 export interface SoftwareRecipeStepCopyFile {
   /** Required. The absolute path on the instance to put the file. */
@@ -633,11 +483,6 @@ export interface SoftwareRecipeStepCopyFile {
   /** Required. The id of the relevant artifact in the recipe. */
   artifactId?: string;
 }
-const SoftwareRecipeStepCopyFile = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<SoftwareRecipeStepCopyFile>;
-
 /** Installs an MSI file. */
 export interface SoftwareRecipeStepInstallMsi {
   /** The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag). */
@@ -647,11 +492,6 @@ export interface SoftwareRecipeStepInstallMsi {
   /** Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0] */
   allowedExitCodes?: IntegerList;
 }
-const SoftwareRecipeStepInstallMsi = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<SoftwareRecipeStepInstallMsi>;
-
 export type SoftwareRecipeStepExtractArchiveTypeEnum =
   | "ARCHIVE_TYPE_UNSPECIFIED"
   | "TAR"
@@ -660,8 +500,6 @@ export type SoftwareRecipeStepExtractArchiveTypeEnum =
   | "TAR_LZMA"
   | "TAR_XZ"
   | "ZIP";
-const SoftwareRecipeStepExtractArchiveTypeEnum = S.String;
-
 /** Extracts an archive of the type specified in the specified directory. */
 export interface SoftwareRecipeStepExtractArchive {
   /** Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows. */
@@ -671,11 +509,6 @@ export interface SoftwareRecipeStepExtractArchive {
   /** Required. The type of the archive to extract. */
   type?: SoftwareRecipeStepExtractArchiveTypeEnum | (string & {});
 }
-const SoftwareRecipeStepExtractArchive = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<SoftwareRecipeStepExtractArchive>;
-
 /** An action that can be taken as part of installing or updating a recipe. */
 export interface SoftwareRecipeStep {
   /** Executes an artifact or local file. */
@@ -693,14 +526,7 @@ export interface SoftwareRecipeStep {
   /** Extracts an archive into the specified directory. */
   archiveExtraction?: SoftwareRecipeStepExtractArchive;
 }
-const SoftwareRecipeStep = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SoftwareRecipeStep>;
-
 export type SoftwareRecipeStepList = Array<SoftwareRecipeStep>;
-const SoftwareRecipeStepList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<SoftwareRecipeStepList>;
-
 /** A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step. */
 export interface SoftwareRecipe {
   /** Resources available to be used in the steps in the recipe. */
@@ -716,11 +542,7 @@ export interface SoftwareRecipe {
   /** Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back. */
   installSteps?: SoftwareRecipeStepList;
 }
-const SoftwareRecipe = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SoftwareRecipe>;
-
 export type SoftwareRecipeList = Array<SoftwareRecipe>;
-const SoftwareRecipeList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SoftwareRecipeList>;
-
 /** An OS Config resource representing a guest configuration policy. These policies represent the desired state for VM instance guest environments including packages to install or remove, package repository configurations, and software to install. */
 export interface GuestPolicy {
   /** The software packages to be managed by this policy. */
@@ -742,8 +564,6 @@ export interface GuestPolicy {
   /** Output only. Time this guest policy was created. */
   createTime?: string;
 }
-const GuestPolicy = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GuestPolicy>;
-
 export interface CreateProjectsGuestPoliciesRequest {
   /** Required. The resource name of the parent using one of the following forms: `projects/{project_number}`. */
   parent: string;
@@ -752,11 +572,6 @@ export interface CreateProjectsGuestPoliciesRequest {
   /** Request body */
   body?: GuestPolicy;
 }
-const CreateProjectsGuestPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateProjectsGuestPoliciesRequest>;
-
 export type WeekDayOfMonthDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -766,8 +581,6 @@ export type WeekDayOfMonthDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-const WeekDayOfMonthDayOfWeekEnum = S.String;
-
 /** Represents one week day in a month. An example is "the 4th Sunday". */
 export interface WeekDayOfMonth {
   /** Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30]. */
@@ -777,8 +590,6 @@ export interface WeekDayOfMonth {
   /** Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month. */
   weekOrdinal?: number;
 }
-const WeekDayOfMonth = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<WeekDayOfMonth>;
-
 /** Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month". */
 export interface MonthlySchedule {
   /** Required. Week day in a month. */
@@ -786,8 +597,6 @@ export interface MonthlySchedule {
   /** Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc. */
   monthDay?: number;
 }
-const MonthlySchedule = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<MonthlySchedule>;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
@@ -795,8 +604,6 @@ export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
-const TimeZone = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TimeZone>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
@@ -808,8 +615,6 @@ export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TimeOfDay>;
-
 export type WeeklyScheduleDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -819,22 +624,16 @@ export type WeeklyScheduleDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-const WeeklyScheduleDayOfWeekEnum = S.String;
-
 /** Represents a weekly schedule. */
 export interface WeeklySchedule {
   /** Required. Day of the week. */
   dayOfWeek?: WeeklyScheduleDayOfWeekEnum | (string & {});
 }
-const WeeklySchedule = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<WeeklySchedule>;
-
 export type RecurringScheduleFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "WEEKLY"
   | "MONTHLY"
   | "DAILY";
-const RecurringScheduleFrequencyEnum = S.String;
-
 /** Sets the time for recurring patch deployments. */
 export interface RecurringSchedule {
   /** Required. Schedule with monthly executions. */
@@ -856,18 +655,12 @@ export interface RecurringSchedule {
   /** Output only. The time the next patch job is scheduled to run. */
   nextExecuteTime?: string;
 }
-const RecurringSchedule = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RecurringSchedule>;
-
 export type PatchDeploymentStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "PAUSED";
-const PatchDeploymentStateEnum = S.String;
-
 /** Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
 export interface OneTimeSchedule {
   /** Required. The desired patch job execution time. */
   executeTime?: string;
 }
-const OneTimeSchedule = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<OneTimeSchedule>;
-
 /** Patch deployments are configurations that individual patch jobs use to complete a patch. These configurations include instance filter, package repository settings, and a schedule. For more information about creating and managing patch deployments, see [Scheduling patch jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs). */
 export interface PatchDeployment {
   /** Output only. Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
@@ -895,8 +688,6 @@ export interface PatchDeployment {
   /** Required. Schedule a one-time execution. */
   oneTimeSchedule?: OneTimeSchedule;
 }
-const PatchDeployment = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<PatchDeployment>;
-
 export interface CreateProjectsPatchDeploymentsRequest {
   /** Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project. */
   patchDeploymentId?: string;
@@ -905,33 +696,16 @@ export interface CreateProjectsPatchDeploymentsRequest {
   /** Request body */
   body?: PatchDeployment;
 }
-const CreateProjectsPatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateProjectsPatchDeploymentsRequest>;
-
 export interface DeleteProjectsGuestPoliciesRequest {
   /** Required. The resource name of the guest policy using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`. */
   name: string;
 }
-const DeleteProjectsGuestPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteProjectsGuestPoliciesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelPatchJobRequest as any as S.Schema<Empty>;
-
 export interface DeleteProjectsPatchDeploymentsRequest {
   /** Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`. */
   name: string;
 }
-const DeleteProjectsPatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteProjectsPatchDeploymentsRequest>;
-
 /** A request message to initiate patching across Compute Engine instances. */
 export interface ExecutePatchJobRequest {
   /** If this patch is a dry-run only, instances are contacted but will do nothing. */
@@ -949,49 +723,24 @@ export interface ExecutePatchJobRequest {
   /** Duration of the patch job. After the duration ends, the patch job times out. */
   duration?: string;
 }
-const ExecutePatchJobRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ExecutePatchJobRequest>;
-
 export interface ExecuteProjectsPatchJobsRequest {
   /** Required. The project in which to run this patch in the form `projects/*` */
   parent: string;
   /** Request body */
   body?: ExecutePatchJobRequest;
 }
-const ExecuteProjectsPatchJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ExecuteProjectsPatchJobsRequest>;
-
 export interface GetProjectsGuestPoliciesRequest {
   /** Required. The resource name of the guest policy using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`. */
   name: string;
 }
-const GetProjectsGuestPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetProjectsGuestPoliciesRequest>;
-
 export interface GetProjectsPatchDeploymentsRequest {
   /** Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`. */
   name: string;
 }
-const GetProjectsPatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetProjectsPatchDeploymentsRequest>;
-
 export interface GetProjectsPatchJobsRequest {
   /** Required. Name of the patch in the form `projects/*\/patchJobs/*` */
   name: string;
 }
-const GetProjectsPatchJobsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetProjectsPatchJobsRequest>;
-
 export interface ListProjectsGuestPoliciesRequest {
   /** Required. The resource name of the parent using one of the following forms: `projects/{project_number}`. */
   parent: string;
@@ -1000,14 +749,7 @@ export interface ListProjectsGuestPoliciesRequest {
   /** The maximum number of guest policies to return. */
   pageSize?: number;
 }
-const ListProjectsGuestPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListProjectsGuestPoliciesRequest>;
-
 export type GuestPolicyList = Array<GuestPolicy>;
-const GuestPolicyList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GuestPolicyList>;
-
 /** A response message for listing guest policies. */
 export interface ListGuestPoliciesResponse {
   /** The list of GuestPolicies. */
@@ -1015,11 +757,6 @@ export interface ListGuestPoliciesResponse {
   /** A pagination token that can be used to get the next page of guest policies. */
   nextPageToken?: string;
 }
-const ListGuestPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListGuestPoliciesResponse>;
-
 export interface ListProjectsPatchDeploymentsRequest {
   /** Required. The resource name of the parent in the form `projects/*`. */
   parent: string;
@@ -1028,14 +765,7 @@ export interface ListProjectsPatchDeploymentsRequest {
   /** Optional. A pagination token returned from a previous call to ListPatchDeployments that indicates where this listing should continue from. */
   pageToken?: string;
 }
-const ListProjectsPatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListProjectsPatchDeploymentsRequest>;
-
 export type PatchDeploymentList = Array<PatchDeployment>;
-const PatchDeploymentList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<PatchDeploymentList>;
-
 /** A response message for listing patch deployments. */
 export interface ListPatchDeploymentsResponse {
   /** A pagination token that can be used to get the next page of patch deployments. */
@@ -1043,11 +773,6 @@ export interface ListPatchDeploymentsResponse {
   /** The list of patch deployments. */
   patchDeployments?: PatchDeploymentList;
 }
-const ListPatchDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListPatchDeploymentsResponse>;
-
 export interface ListProjectsPatchJobsRequest {
   /** Required. In the form of `projects/*` */
   parent: string;
@@ -1058,14 +783,7 @@ export interface ListProjectsPatchJobsRequest {
   /** A pagination token returned from a previous call that indicates where this listing should continue from. */
   pageToken?: string;
 }
-const ListProjectsPatchJobsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListProjectsPatchJobsRequest>;
-
 export type PatchJobList = Array<PatchJob>;
-const PatchJobList = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PatchJobList>;
-
 /** A response message for listing patch jobs. */
 export interface ListPatchJobsResponse {
   /** A pagination token that can be used to get the next page of results. */
@@ -1073,11 +791,6 @@ export interface ListPatchJobsResponse {
   /** The list of patch jobs. */
   patchJobs?: PatchJobList;
 }
-const ListPatchJobsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListPatchJobsResponse>;
-
 export interface ListProjectsPatchJobsInstanceDetailsRequest {
   /** A pagination token returned from a previous call that indicates where this listing should continue from. */
   pageToken?: string;
@@ -1088,11 +801,6 @@ export interface ListProjectsPatchJobsInstanceDetailsRequest {
   /** A filter expression that filters results listed in the response. This field supports filtering results by instance zone, name, state, or `failure_reason`. */
   filter?: string;
 }
-const ListProjectsPatchJobsInstanceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListProjectsPatchJobsInstanceDetailsRequest>;
-
 export type PatchJobInstanceDetailsStateEnum =
   | "PATCH_STATE_UNSPECIFIED"
   | "PENDING"
@@ -1111,8 +819,6 @@ export type PatchJobInstanceDetailsStateEnum =
   | "RUNNING_POST_PATCH_STEP"
   | "NO_AGENT_DETECTED"
   | "SKIPPED";
-const PatchJobInstanceDetailsStateEnum = S.String;
-
 /** Patch details for a VM instance. For more information about reviewing VM instance details, see [Listing all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details). */
 export interface PatchJobInstanceDetails {
   /** The instance name in the form `projects/*\/zones/*\/instances/*` */
@@ -1126,17 +832,7 @@ export interface PatchJobInstanceDetails {
   /** Current state of instance patch. */
   state?: PatchJobInstanceDetailsStateEnum;
 }
-const PatchJobInstanceDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<PatchJobInstanceDetails>;
-
 export type PatchJobInstanceDetailsList = Array<PatchJobInstanceDetails>;
-const PatchJobInstanceDetailsList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<PatchJobInstanceDetailsList>;
-
 /** A response message for listing the instances details for a patch job. */
 export interface ListPatchJobInstanceDetailsResponse {
   /** A pagination token that can be used to get the next page of results. */
@@ -1144,11 +840,6 @@ export interface ListPatchJobInstanceDetailsResponse {
   /** A list of instance status. */
   patchJobInstanceDetails?: PatchJobInstanceDetailsList;
 }
-const ListPatchJobInstanceDetailsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListPatchJobInstanceDetailsResponse>;
-
 /** A request message for getting the effective guest policy assigned to the instance. */
 export interface LookupEffectiveGuestPolicyRequest {
   /** Version of the OS running on the instance. The OS Config agent only provides this field for targeting if OS Inventory is enabled for that VM instance. */
@@ -1158,22 +849,12 @@ export interface LookupEffectiveGuestPolicyRequest {
   /** Short name of the OS running on the instance. The OS Config agent only provides this field for targeting if OS Inventory is enabled for that instance. */
   osShortName?: string;
 }
-const LookupEffectiveGuestPolicyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<LookupEffectiveGuestPolicyRequest>;
-
 export interface LookupEffectiveGuestPolicyProjectsZonesInstancesRequest {
   /** Required. The VM instance whose policies are being looked up. */
   instance: string;
   /** Request body */
   body?: LookupEffectiveGuestPolicyRequest;
 }
-const LookupEffectiveGuestPolicyProjectsZonesInstancesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<LookupEffectiveGuestPolicyProjectsZonesInstancesRequest>;
-
 /** A guest policy recipe including its source. */
 export interface EffectiveGuestPolicySourcedSoftwareRecipe {
   /** A software recipe to configure on the VM instance. */
@@ -1181,18 +862,8 @@ export interface EffectiveGuestPolicySourcedSoftwareRecipe {
   /** Name of the guest policy providing this config. */
   source?: string;
 }
-const EffectiveGuestPolicySourcedSoftwareRecipe = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<EffectiveGuestPolicySourcedSoftwareRecipe>;
-
 export type EffectiveGuestPolicySourcedSoftwareRecipeList =
   Array<EffectiveGuestPolicySourcedSoftwareRecipe>;
-const EffectiveGuestPolicySourcedSoftwareRecipeList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<EffectiveGuestPolicySourcedSoftwareRecipeList>;
-
 /** A guest policy package repository including its source. */
 export interface EffectiveGuestPolicySourcedPackageRepository {
   /** Name of the guest policy providing this config. */
@@ -1200,18 +871,8 @@ export interface EffectiveGuestPolicySourcedPackageRepository {
   /** A software package repository to configure on the VM instance. */
   packageRepository?: PackageRepository;
 }
-const EffectiveGuestPolicySourcedPackageRepository = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<EffectiveGuestPolicySourcedPackageRepository>;
-
 export type EffectiveGuestPolicySourcedPackageRepositoryList =
   Array<EffectiveGuestPolicySourcedPackageRepository>;
-const EffectiveGuestPolicySourcedPackageRepositoryList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<EffectiveGuestPolicySourcedPackageRepositoryList>;
-
 /** A guest policy package including its source. */
 export interface EffectiveGuestPolicySourcedPackage {
   /** A software package to configure on the VM instance. */
@@ -1219,17 +880,7 @@ export interface EffectiveGuestPolicySourcedPackage {
   /** Name of the guest policy providing this config. */
   source?: string;
 }
-const EffectiveGuestPolicySourcedPackage = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<EffectiveGuestPolicySourcedPackage>;
-
 export type EffectiveGuestPolicySourcedPackageList = Array<EffectiveGuestPolicySourcedPackage>;
-const EffectiveGuestPolicySourcedPackageList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<EffectiveGuestPolicySourcedPackageList>;
-
 /** The effective guest policy that applies to a VM instance. */
 export interface EffectiveGuestPolicy {
   /** List of recipes assigned to the VM instance. */
@@ -1239,11 +890,6 @@ export interface EffectiveGuestPolicy {
   /** List of package configurations assigned to the VM instance. */
   packages?: EffectiveGuestPolicySourcedPackageList;
 }
-const EffectiveGuestPolicy = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<EffectiveGuestPolicy>;
-
 export interface PatchProjectsGuestPoliciesRequest {
   /** Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`. */
   name: string;
@@ -1252,11 +898,6 @@ export interface PatchProjectsGuestPoliciesRequest {
   /** Request body */
   body?: GuestPolicy;
 }
-const PatchProjectsGuestPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PatchProjectsGuestPoliciesRequest>;
-
 export interface PatchProjectsPatchDeploymentsRequest {
   /** Optional. Field mask that controls which fields of the patch deployment should be updated. */
   updateMask?: string;
@@ -1265,11 +906,6 @@ export interface PatchProjectsPatchDeploymentsRequest {
   /** Request body */
   body?: PatchDeployment;
 }
-const PatchProjectsPatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PatchProjectsPatchDeploymentsRequest>;
-
 /** A request message for pausing a patch deployment. */
 export type PausePatchDeploymentRequest = CancelPatchJobRequest;
 export interface PauseProjectsPatchDeploymentsRequest {
@@ -1278,11 +914,6 @@ export interface PauseProjectsPatchDeploymentsRequest {
   /** Request body */
   body?: CancelPatchJobRequest;
 }
-const PauseProjectsPatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<PauseProjectsPatchDeploymentsRequest>;
-
 /** A request message for resuming a patch deployment. */
 export type ResumePatchDeploymentRequest = CancelPatchJobRequest;
 export interface ResumeProjectsPatchDeploymentsRequest {
@@ -1291,11 +922,6 @@ export interface ResumeProjectsPatchDeploymentsRequest {
   /** Request body */
   body?: CancelPatchJobRequest;
 }
-const ResumeProjectsPatchDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ResumeProjectsPatchDeploymentsRequest>;
-
 export type CancelProjectsPatchJobsError =
   | NotFound
   | Forbidden
@@ -1309,8 +935,8 @@ export const cancelProjectsPatchJobs: API.OperationMethod<
   CancelProjectsPatchJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsPatchJobsRequest,
-  output: PatchJob,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsPatchJobsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<PatchJob>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1329,8 +955,8 @@ export const createProjectsGuestPolicies: API.OperationMethod<
   CreateProjectsGuestPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsGuestPoliciesRequest,
-  output: GuestPolicy,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateProjectsGuestPoliciesRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GuestPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1349,8 +975,8 @@ export const createProjectsPatchDeployments: API.OperationMethod<
   CreateProjectsPatchDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsPatchDeploymentsRequest,
-  output: PatchDeployment,
+  input: __S(57, __c7, 1) as any as S.Schema<CreateProjectsPatchDeploymentsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PatchDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1369,8 +995,8 @@ export const deleteProjectsGuestPolicies: API.OperationMethod<
   DeleteProjectsGuestPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsGuestPoliciesRequest,
-  output: Empty,
+  input: __S(58, __c7, 2) as any as S.Schema<DeleteProjectsGuestPoliciesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1389,8 +1015,8 @@ export const deleteProjectsPatchDeployments: API.OperationMethod<
   DeleteProjectsPatchDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsPatchDeploymentsRequest,
-  output: Empty,
+  input: __S(59, __c7, 3) as any as S.Schema<DeleteProjectsPatchDeploymentsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1409,8 +1035,8 @@ export const executeProjectsPatchJobs: API.OperationMethod<
   ExecuteProjectsPatchJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteProjectsPatchJobsRequest,
-  output: PatchJob,
+  input: __S(61, __c7, 5) as any as S.Schema<ExecuteProjectsPatchJobsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<PatchJob>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1424,8 +1050,8 @@ export const getProjectsGuestPolicies: API.OperationMethod<
   GetProjectsGuestPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsGuestPoliciesRequest,
-  output: GuestPolicy,
+  input: __S(62, __c7, 6) as any as S.Schema<GetProjectsGuestPoliciesRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GuestPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1065,8 @@ export const getProjectsPatchDeployments: API.OperationMethod<
   GetProjectsPatchDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsPatchDeploymentsRequest,
-  output: PatchDeployment,
+  input: __S(63, __c7, 7) as any as S.Schema<GetProjectsPatchDeploymentsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PatchDeployment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1080,8 @@ export const getProjectsPatchJobs: API.OperationMethod<
   GetProjectsPatchJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsPatchJobsRequest,
-  output: PatchJob,
+  input: __S(64, __c8, 0) as any as S.Schema<GetProjectsPatchJobsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<PatchJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1470,8 +1096,8 @@ export const listProjectsGuestPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGuestPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsGuestPoliciesRequest,
-  output: ListGuestPoliciesResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<ListProjectsGuestPoliciesRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListGuestPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1487,8 +1113,8 @@ export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPatchDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsPatchDeploymentsRequest,
-  output: ListPatchDeploymentsResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<ListProjectsPatchDeploymentsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ListPatchDeploymentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1504,8 +1130,8 @@ export const listProjectsPatchJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPatchJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsPatchJobsRequest,
-  output: ListPatchJobsResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<ListProjectsPatchJobsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ListPatchJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1521,8 +1147,8 @@ export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPatchJobInstanceDetailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsPatchJobsInstanceDetailsRequest,
-  output: ListPatchJobInstanceDetailsResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<ListProjectsPatchJobsInstanceDetailsRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<ListPatchJobInstanceDetailsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1542,8 +1168,12 @@ export const lookupEffectiveGuestPolicyProjectsZonesInstances: API.OperationMeth
   LookupEffectiveGuestPolicyProjectsZonesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupEffectiveGuestPolicyProjectsZonesInstancesRequest,
-  output: EffectiveGuestPolicy,
+  input: __S(
+    79,
+    __c9,
+    7,
+  ) as any as S.Schema<LookupEffectiveGuestPolicyProjectsZonesInstancesRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<EffectiveGuestPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1562,8 +1192,8 @@ export const patchProjectsGuestPolicies: API.OperationMethod<
   PatchProjectsGuestPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsGuestPoliciesRequest,
-  output: GuestPolicy,
+  input: __S(87, __c10, 7) as any as S.Schema<PatchProjectsGuestPoliciesRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GuestPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1582,8 +1212,8 @@ export const patchProjectsPatchDeployments: API.OperationMethod<
   PatchProjectsPatchDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsPatchDeploymentsRequest,
-  output: PatchDeployment,
+  input: __S(88, __c11, 0) as any as S.Schema<PatchProjectsPatchDeploymentsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PatchDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1602,8 +1232,8 @@ export const pauseProjectsPatchDeployments: API.OperationMethod<
   PauseProjectsPatchDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseProjectsPatchDeploymentsRequest,
-  output: PatchDeployment,
+  input: __S(89, __c11, 1) as any as S.Schema<PauseProjectsPatchDeploymentsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PatchDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1252,8 @@ export const resumeProjectsPatchDeployments: API.OperationMethod<
   ResumeProjectsPatchDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeProjectsPatchDeploymentsRequest,
-  output: PatchDeployment,
+  input: __S(90, __c11, 2) as any as S.Schema<ResumeProjectsPatchDeploymentsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<PatchDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1640,7 +1270,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelPatchJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1654,13 +1284,13 @@ function __c0(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Array(WindowsUpdateSettingsClassificationsItemEnum);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          excludes: S.optional(StringList),
-          exclusivePatches: S.optional(StringList),
-          classifications: S.optional(WindowsUpdateSettingsClassificationsItemEnumList),
+          excludes: S.optional(__S(2, __c0, 2)),
+          exclusivePatches: S.optional(__S(2, __c0, 2)),
+          classifications: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "WindowsUpdateSettings" });
     case 5:
@@ -1677,9 +1307,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           localPath: S.optional(S.String),
-          interpreter: S.optional(ExecStepConfigInterpreterEnum),
-          allowedSuccessCodes: S.optional(IntegerList),
-          gcsObject: S.optional(GcsObject),
+          interpreter: S.optional(S.String),
+          allowedSuccessCodes: S.optional(__S(5, __c0, 5)),
+          gcsObject: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ExecStepConfig" });
   }
@@ -1689,51 +1319,51 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          linuxExecStepConfig: S.optional(ExecStepConfig),
-          windowsExecStepConfig: S.optional(ExecStepConfig),
+          linuxExecStepConfig: S.optional(__S(7, __c0, 7)),
+          windowsExecStepConfig: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "ExecStep" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exclusivePatches: S.optional(StringList),
-          severities: S.optional(StringList),
+          exclusivePatches: S.optional(__S(2, __c0, 2)),
+          severities: S.optional(__S(2, __c0, 2)),
           withUpdate: S.optional(S.Boolean),
-          excludes: S.optional(StringList),
+          excludes: S.optional(__S(2, __c0, 2)),
           withOptional: S.optional(S.Boolean),
-          categories: S.optional(StringList),
+          categories: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "ZypperSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          exclusivePackages: S.optional(StringList),
-          excludes: S.optional(StringList),
-          type: S.optional(AptSettingsTypeEnum),
+          exclusivePackages: S.optional(__S(2, __c0, 2)),
+          excludes: S.optional(__S(2, __c0, 2)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AptSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exclusivePackages: S.optional(StringList),
+          exclusivePackages: S.optional(__S(2, __c0, 2)),
           minimal: S.optional(S.Boolean),
           security: S.optional(S.Boolean),
-          excludes: S.optional(StringList),
+          excludes: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "YumSettings" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           migInstancesAllowed: S.optional(S.Boolean),
-          windowsUpdate: S.optional(WindowsUpdateSettings),
-          goo: S.optional(CancelPatchJobRequest),
-          postStep: S.optional(ExecStep),
-          zypper: S.optional(ZypperSettings),
+          windowsUpdate: S.optional(__S(4, __c0, 4)),
+          goo: S.optional(__S(0, __c0, 0)),
+          postStep: S.optional(__S(8, __c1, 0)),
+          zypper: S.optional(__S(9, __c1, 1)),
           skipUnpatchableVms: S.optional(S.Boolean),
-          apt: S.optional(AptSettings),
-          yum: S.optional(YumSettings),
-          rebootConfig: S.optional(PatchConfigRebootConfigEnum),
-          preStep: S.optional(ExecStep),
+          apt: S.optional(__S(10, __c1, 2)),
+          yum: S.optional(__S(11, __c1, 3)),
+          rebootConfig: S.optional(S.String),
+          preStep: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "PatchConfig" });
     case 5:
@@ -1741,13 +1371,13 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "PatchInstanceFilterGroupLabel",
       });
     case 7:
-      return S.Array(PatchInstanceFilterGroupLabel);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1755,11 +1385,11 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          instances: S.optional(StringList),
-          groupLabels: S.optional(PatchInstanceFilterGroupLabelList),
-          instanceNamePrefixes: S.optional(StringList),
+          instances: S.optional(__S(2, __c0, 2)),
+          groupLabels: S.optional(__S(15, __c1, 7)),
+          instanceNamePrefixes: S.optional(__S(2, __c0, 2)),
           all: S.optional(S.Boolean),
-          zones: S.optional(StringList),
+          zones: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "PatchInstanceFilter" });
     case 1:
@@ -1772,8 +1402,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(PatchRolloutModeEnum),
-          disruptionBudget: S.optional(FixedOrPercent),
+          mode: S.optional(S.String),
+          disruptionBudget: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "PatchRollout" });
     case 3:
@@ -1803,32 +1433,32 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          patchConfig: S.optional(PatchConfig),
+          patchConfig: S.optional(__S(12, __c1, 4)),
           createTime: S.optional(S.String),
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
-          instanceFilter: S.optional(PatchInstanceFilter),
+          instanceFilter: S.optional(__S(16, __c2, 0)),
           patchDeployment: S.optional(S.String),
           percentComplete: S.optional(S.Number),
           duration: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          state: S.optional(PatchJobStateEnum),
-          rollout: S.optional(PatchRollout),
+          state: S.optional(S.String),
+          rollout: S.optional(__S(18, __c2, 2)),
           name: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
-          instanceDetailsSummary: S.optional(PatchJobInstanceDetailsSummary),
+          instanceDetailsSummary: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "PatchJob" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          manager: S.optional(PackageManagerEnum),
-          desiredState: S.optional(PackageDesiredStateEnum),
+          manager: S.optional(S.String),
+          desiredState: S.optional(S.String),
         }),
       ).annotate({ identifier: "Package" });
     case 6:
-      return S.Array(Package);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1842,40 +1472,40 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AssignmentOsType);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "AssignmentGroupLabel" });
     case 2:
-      return S.Array(AssignmentGroupLabel);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          instanceNamePrefixes: S.optional(StringList),
-          osTypes: S.optional(AssignmentOsTypeList),
-          instances: S.optional(StringList),
-          groupLabels: S.optional(AssignmentGroupLabelList),
-          zones: S.optional(StringList),
+          instanceNamePrefixes: S.optional(__S(2, __c0, 2)),
+          osTypes: S.optional(__S(24, __c3, 0)),
+          instances: S.optional(__S(2, __c0, 2)),
+          groupLabels: S.optional(__S(26, __c3, 2)),
+          zones: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "Assignment" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          archiveType: S.optional(AptRepositoryArchiveTypeEnum),
+          archiveType: S.optional(S.String),
           gpgKey: S.optional(S.String),
           distribution: S.optional(S.String),
           uri: S.optional(S.String),
-          components: S.optional(StringList),
+          components: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "AptRepository" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           baseUrl: S.optional(S.String),
-          gpgKeys: S.optional(StringList),
+          gpgKeys: S.optional(__S(2, __c0, 2)),
           id: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -1890,10 +1520,10 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          apt: S.optional(AptRepository),
-          zypper: S.optional(ZypperRepository),
-          yum: S.optional(YumRepository),
-          goo: S.optional(GooRepository),
+          apt: S.optional(__S(28, __c3, 4)),
+          zypper: S.optional(__S(29, __c3, 5)),
+          yum: S.optional(__S(29, __c3, 5)),
+          goo: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "PackageRepository" });
   }
@@ -1901,7 +1531,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PackageRepository);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1924,21 +1554,21 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          remote: S.optional(SoftwareRecipeArtifactRemote),
+          remote: S.optional(__S(33, __c4, 1)),
           id: S.optional(S.String),
           allowInsecure: S.optional(S.Boolean),
-          gcs: S.optional(SoftwareRecipeArtifactGcs),
+          gcs: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "SoftwareRecipeArtifact" });
     case 4:
-      return S.Array(SoftwareRecipeArtifact);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           localPath: S.optional(S.String),
           artifactId: S.optional(S.String),
-          allowedExitCodes: S.optional(IntegerList),
-          args: S.optional(StringList),
+          allowedExitCodes: S.optional(__S(5, __c0, 5)),
+          args: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "SoftwareRecipeStepExecFile",
@@ -1955,8 +1585,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           script: S.optional(S.String),
-          allowedExitCodes: S.optional(IntegerList),
-          interpreter: S.optional(SoftwareRecipeStepRunScriptInterpreterEnum),
+          allowedExitCodes: S.optional(__S(5, __c0, 5)),
+          interpreter: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SoftwareRecipeStepRunScript",
@@ -1979,9 +1609,9 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          flags: S.optional(StringList),
+          flags: S.optional(__S(2, __c0, 2)),
           artifactId: S.optional(S.String),
-          allowedExitCodes: S.optional(IntegerList),
+          allowedExitCodes: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "SoftwareRecipeStepInstallMsi",
@@ -1991,7 +1621,7 @@ function __c5(j: number): any {
         S.Struct({
           destination: S.optional(S.String),
           artifactId: S.optional(S.String),
-          type: S.optional(SoftwareRecipeStepExtractArchiveTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SoftwareRecipeStepExtractArchive",
@@ -1999,41 +1629,41 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fileExec: S.optional(SoftwareRecipeStepExecFile),
-          rpmInstallation: S.optional(SoftwareRecipeStepInstallRpm),
-          dpkgInstallation: S.optional(SoftwareRecipeStepInstallRpm),
-          scriptRun: S.optional(SoftwareRecipeStepRunScript),
-          fileCopy: S.optional(SoftwareRecipeStepCopyFile),
-          msiInstallation: S.optional(SoftwareRecipeStepInstallMsi),
-          archiveExtraction: S.optional(SoftwareRecipeStepExtractArchive),
+          fileExec: S.optional(__S(37, __c4, 5)),
+          rpmInstallation: S.optional(__S(38, __c4, 6)),
+          dpkgInstallation: S.optional(__S(38, __c4, 6)),
+          scriptRun: S.optional(__S(39, __c4, 7)),
+          fileCopy: S.optional(__S(40, __c5, 0)),
+          msiInstallation: S.optional(__S(41, __c5, 1)),
+          archiveExtraction: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "SoftwareRecipeStep" });
     case 4:
-      return S.Array(SoftwareRecipeStep);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(SoftwareRecipeArtifactList),
-          desiredState: S.optional(SoftwareRecipeDesiredStateEnum),
-          updateSteps: S.optional(SoftwareRecipeStepList),
+          artifacts: S.optional(__S(36, __c4, 4)),
+          desiredState: S.optional(S.String),
+          updateSteps: S.optional(__S(44, __c5, 4)),
           name: S.optional(S.String),
           version: S.optional(S.String),
-          installSteps: S.optional(SoftwareRecipeStepList),
+          installSteps: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "SoftwareRecipe" });
     case 6:
-      return S.Array(SoftwareRecipe);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          packages: S.optional(PackageList),
+          packages: S.optional(__S(22, __c2, 6)),
           etag: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          assignment: S.optional(Assignment),
+          assignment: S.optional(__S(27, __c3, 3)),
           updateTime: S.optional(S.String),
-          packageRepositories: S.optional(PackageRepositoryList),
-          recipes: S.optional(SoftwareRecipeList),
+          packageRepositories: S.optional(__S(32, __c4, 0)),
+          recipes: S.optional(__S(46, __c5, 6)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestPolicy" });
@@ -2046,7 +1676,7 @@ function __c6(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           guestPolicyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GuestPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2061,14 +1691,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dayOffset: S.optional(S.Number),
-          dayOfWeek: S.optional(WeekDayOfMonthDayOfWeekEnum),
+          dayOfWeek: S.optional(S.String),
           weekOrdinal: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WeekDayOfMonth" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          weekDayOfMonth: S.optional(WeekDayOfMonth),
+          weekDayOfMonth: S.optional(__S(49, __c6, 1)),
           monthDay: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MonthlySchedule" });
@@ -2091,20 +1721,20 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dayOfWeek: S.optional(WeeklyScheduleDayOfWeekEnum),
+          dayOfWeek: S.optional(S.String),
         }),
       ).annotate({ identifier: "WeeklySchedule" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          monthly: S.optional(MonthlySchedule),
+          monthly: S.optional(__S(50, __c6, 2)),
           startTime: S.optional(S.String),
-          timeZone: S.optional(TimeZone),
-          timeOfDay: S.optional(TimeOfDay),
+          timeZone: S.optional(__S(51, __c6, 3)),
+          timeOfDay: S.optional(__S(52, __c6, 4)),
           lastExecuteTime: S.optional(S.String),
-          weekly: S.optional(WeeklySchedule),
+          weekly: S.optional(__S(53, __c6, 5)),
           endTime: S.optional(S.String),
-          frequency: S.optional(RecurringScheduleFrequencyEnum),
+          frequency: S.optional(S.String),
           nextExecuteTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecurringSchedule" });
@@ -2122,17 +1752,17 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          recurringSchedule: S.optional(RecurringSchedule),
-          state: S.optional(PatchDeploymentStateEnum),
+          recurringSchedule: S.optional(__S(54, __c6, 6)),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
           lastExecuteTime: S.optional(S.String),
-          rollout: S.optional(PatchRollout),
-          instanceFilter: S.optional(PatchInstanceFilter),
+          rollout: S.optional(__S(18, __c2, 2)),
+          instanceFilter: S.optional(__S(16, __c2, 0)),
           duration: S.optional(S.String),
-          patchConfig: S.optional(PatchConfig),
+          patchConfig: S.optional(__S(12, __c1, 4)),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          oneTimeSchedule: S.optional(OneTimeSchedule),
+          oneTimeSchedule: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({ identifier: "PatchDeployment" });
     case 1:
@@ -2140,7 +1770,7 @@ function __c7(j: number): any {
         S.Struct({
           patchDeploymentId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(PatchDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2183,9 +1813,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dryRun: S.optional(S.Boolean),
-          instanceFilter: S.optional(PatchInstanceFilter),
-          patchConfig: S.optional(PatchConfig),
-          rollout: S.optional(PatchRollout),
+          instanceFilter: S.optional(__S(16, __c2, 0)),
+          patchConfig: S.optional(__S(12, __c1, 4)),
+          rollout: S.optional(__S(18, __c2, 2)),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           duration: S.optional(S.String),
@@ -2195,7 +1825,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ExecutePatchJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2269,11 +1899,11 @@ function __c8(j: number): any {
         identifier: "ListProjectsGuestPoliciesRequest",
       });
     case 2:
-      return S.Array(GuestPolicy);
+      return S.Array(__S(47, __c5, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          guestPolicies: S.optional(GuestPolicyList),
+          guestPolicies: S.optional(__S(66, __c8, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2296,12 +1926,12 @@ function __c8(j: number): any {
         identifier: "ListProjectsPatchDeploymentsRequest",
       });
     case 5:
-      return S.Array(PatchDeployment);
+      return S.Array(__S(56, __c7, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          patchDeployments: S.optional(PatchDeploymentList),
+          patchDeployments: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({
         identifier: "ListPatchDeploymentsResponse",
@@ -2328,12 +1958,12 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PatchJob);
+      return S.Array(__S(20, __c2, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          patchJobs: S.optional(PatchJobList),
+          patchJobs: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "ListPatchJobsResponse" });
     case 2:
@@ -2360,16 +1990,16 @@ function __c9(j: number): any {
           failureReason: S.optional(S.String),
           instanceSystemId: S.optional(S.String),
           attemptCount: S.optional(S.String),
-          state: S.optional(PatchJobInstanceDetailsStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchJobInstanceDetails" });
     case 4:
-      return S.Array(PatchJobInstanceDetails);
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          patchJobInstanceDetails: S.optional(PatchJobInstanceDetailsList),
+          patchJobInstanceDetails: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "ListPatchJobInstanceDetailsResponse",
@@ -2388,7 +2018,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instance: S.String.pipe(T.Label()),
-          body: S.optional(LookupEffectiveGuestPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2406,42 +2036,42 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          softwareRecipe: S.optional(SoftwareRecipe),
+          softwareRecipe: S.optional(__S(45, __c5, 5)),
           source: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EffectiveGuestPolicySourcedSoftwareRecipe",
       });
     case 1:
-      return S.Array(EffectiveGuestPolicySourcedSoftwareRecipe);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String),
-          packageRepository: S.optional(PackageRepository),
+          packageRepository: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier: "EffectiveGuestPolicySourcedPackageRepository",
       });
     case 3:
-      return S.Array(EffectiveGuestPolicySourcedPackageRepository);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          package: S.optional(Package),
+          package: S.optional(__S(21, __c2, 5)),
           source: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EffectiveGuestPolicySourcedPackage",
       });
     case 5:
-      return S.Array(EffectiveGuestPolicySourcedPackage);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          softwareRecipes: S.optional(EffectiveGuestPolicySourcedSoftwareRecipeList),
-          packageRepositories: S.optional(EffectiveGuestPolicySourcedPackageRepositoryList),
-          packages: S.optional(EffectiveGuestPolicySourcedPackageList),
+          softwareRecipes: S.optional(__S(81, __c10, 1)),
+          packageRepositories: S.optional(__S(83, __c10, 3)),
+          packages: S.optional(__S(85, __c10, 5)),
         }),
       ).annotate({ identifier: "EffectiveGuestPolicy" });
     case 7:
@@ -2449,7 +2079,7 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GuestPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2469,7 +2099,7 @@ function __c11(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(PatchDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2484,7 +2114,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelPatchJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2499,7 +2129,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelPatchJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2511,4 +2141,9 @@ function __c11(j: number): any {
         identifier: "ResumeProjectsPatchDeploymentsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

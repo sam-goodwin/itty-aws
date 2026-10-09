@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -78,42 +80,23 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
-
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Empty>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GCP_REGIONAL_MIG";
-const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeEnum = S.String;
-
 /** Gateway represents a user facing component that serves as an entrance to enable connectivity. */
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   /** Output only. Server-defined URI for this resource. */
@@ -127,14 +110,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   /** Required. AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}` */
   appGateway?: string;
 }
-const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
-
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -142,11 +118,7 @@ export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DOWN";
-const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringMap>;
-
 /** ApplicationEndpoint represents a remote application endpoint. */
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
   /** Required. Hostname or IP address of the remote application endpoint. */
@@ -154,16 +126,9 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEn
   /** Required. Port of the remote application endpoint. */
   port?: number;
 }
-const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint>;
-
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TCP_PROXY";
-const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum = S.String;
-
 /** A BeyondCorp AppConnection resource represents a BeyondCorp protected AppConnection to a remote application. It creates all the necessary GCP components needed for creating a BeyondCorp protected AppConnection. Multiple connectors can be authorized for a single AppConnection. */
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   /** Optional. Gateway used by the AppConnection. */
@@ -193,11 +158,6 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   /** Required. The type of network connectivity used by the AppConnection. */
   type?: GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum | (string & {});
 }
-const GoogleCloudBeyondcorpAppconnectionsV1AppConnection = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>;
-
 export interface CreateProjectsLocationsAppConnectionsRequest {
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
@@ -210,17 +170,8 @@ export interface CreateProjectsLocationsAppConnectionsRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
 }
-const CreateProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateProjectsLocationsAppConnectionsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -230,8 +181,6 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -245,11 +194,6 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 export type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -257,23 +201,14 @@ export type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DOWN";
-const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum = S.String;
-
 export type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusEnum =
   | "HEALTH_STATUS_UNSPECIFIED"
   | "HEALTHY"
   | "UNHEALTHY"
   | "UNRESPONSIVE"
   | "DEGRADED";
-const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusEnum = S.String;
-
 export type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoList =
   Array<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
-const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoList>;
-
 /** ResourceInfo represents the information or status of an app connector resource component that's used to report on various parts of the system. For example, ResourceInfo can be used to convey the status of a remote_agent, including the status of an appgateway for an runtime environment in a container instance. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
   /** Overall health status. Overall status is derived based on the status of each sub level resources. */
@@ -287,32 +222,16 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
   /** Specific details for the resource. This is for internal use only. */
   resource?: DocumentMap;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
-
 /** ServiceAccount represents a GCP service account. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount {
   /** Email address of the service account. */
   email?: string;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    0,
-  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount>;
-
 /** PrincipalInfo represents an Identity oneof. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   /** A GCP service account. */
   serviceAccount?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo>;
-
 /** A BeyondCorp connector resource that represents an application facing component deployed proximal to and with direct access to the application instances. It is used to establish connectivity between the remote enterprise environment and GCP. It initiates connections to the applications and can proxy the data from users over the connection. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
   /** Optional. An arbitrary user-provided name for the AppConnector. Cannot exceed 64 characters. */
@@ -334,11 +253,6 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
   /** Required. Principal information about the Identity of the AppConnector. */
   principalInfo?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1AppConnector = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
-
 export interface CreateProjectsLocationsAppConnectorsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -351,14 +265,7 @@ export interface CreateProjectsLocationsAppConnectorsRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
 }
-const CreateProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateProjectsLocationsAppConnectorsRequest>;
-
 export type AppGatewayHostTypeEnum = "HOST_TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG";
-const AppGatewayHostTypeEnum = S.String;
-
 export type AppGatewayStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -366,11 +273,7 @@ export type AppGatewayStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DOWN";
-const AppGatewayStateEnum = S.String;
-
 export type AppGatewayTypeEnum = "TYPE_UNSPECIFIED" | "TCP_PROXY";
-const AppGatewayTypeEnum = S.String;
-
 /** Allocated connection of the AppGateway. */
 export interface AllocatedConnection {
   /** Required. The ingress port of an allocated connection */
@@ -378,14 +281,7 @@ export interface AllocatedConnection {
   /** Required. The PSC uri of an allocated connection */
   pscUri?: string;
 }
-const AllocatedConnection = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AllocatedConnection>;
-
 export type AllocatedConnectionList = Array<AllocatedConnection>;
-const AllocatedConnectionList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AllocatedConnectionList>;
-
 /** A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates all the necessary GCP components needed for creating a BeyondCorp protected AppGateway. Multiple connectors can be authorised for a single AppGateway. */
 export interface AppGateway {
   /** Required. The type of hosting used by the AppGateway. */
@@ -415,8 +311,6 @@ export interface AppGateway {
   /** Output only. Timestamp when the resource was created. */
   createTime?: string;
 }
-const AppGateway = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AppGateway>;
-
 export interface CreateProjectsLocationsAppGatewaysRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -429,11 +323,6 @@ export interface CreateProjectsLocationsAppGatewaysRequest {
   /** Request body */
   body?: AppGateway;
 }
-const CreateProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateProjectsLocationsAppGatewaysRequest>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -442,36 +331,19 @@ export type GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum =
   | "RUNNING"
   | "DOWN"
   | "ERROR";
-const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum = S.String;
-
 /** Represents the Internet Gateway configuration. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
   /** Output only. List of IP addresses assigned to the Cloud NAT. */
   assignedIps?: StringList;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway>;
-
 /** The Hub message contains information pertaining to the regional data path deployments. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
   /** Optional. Internet Gateway configuration. */
   internetGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1Hub = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Hub>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1HubMap = {
   [key: string]: GoogleCloudBeyondcorpSecuritygatewaysV1Hub | undefined;
 };
-const GoogleCloudBeyondcorpSecuritygatewaysV1HubMap = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1HubMap>;
-
 /** Configuration for Cloud Logging. */
 export type GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig =
   GoogleLongrunningCancelOperationRequest;
@@ -480,45 +352,24 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatew
   /** Optional. Contains the URI path fragment where HTTP request is sent. */
   path?: string;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    3,
-  ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor>;
-
 /** If Service Discovery is done through API, defines its settings. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
   /** Optional. Enables fetching resource model updates to alter service behavior per Chrome profile. */
   resourceOverride?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway>;
-
 /** Settings related to the Service Discovery. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
   /** Optional. External API configuration. */
   apiGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfigGatewayIdentityEnum =
   | "GATEWAY_IDENTITY_UNSPECIFIED"
   | "RESOURCE_NAME";
-const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfigGatewayIdentityEnum = S.String;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum =
   | "OUTPUT_TYPE_UNSPECIFIED"
   | "PROTOBUF"
   | "JSON"
   | "NONE";
-const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum =
-  S.String;
-
 /** The configuration information for the delegated user. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo {
   /** Optional. The delegated user's information. */
@@ -526,19 +377,11 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum
     | (string & {});
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    6,
-  ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersOutputTypeEnum =
   | "OUTPUT_TYPE_UNSPECIFIED"
   | "PROTOBUF"
   | "JSON"
   | "NONE";
-const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersOutputTypeEnum = S.String;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfoOutputTypeEnum =
   | "OUTPUT_TYPE_UNSPECIFIED"
   | "PROTOBUF"
@@ -551,9 +394,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfoOutputTypeEnum
     | (string & {});
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo =
-  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum =
   | "OUTPUT_TYPE_UNSPECIFIED"
   | "PROTOBUF"
@@ -566,9 +406,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum
     | (string & {});
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo =
-  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfoOutputTypeEnum =
   | "OUTPUT_TYPE_UNSPECIFIED"
   | "PROTOBUF"
@@ -581,9 +418,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfoOutputTypeEnum
     | (string & {});
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo =
-  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo>;
-
 /** Contextual headers configuration. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   /** Optional. User details. */
@@ -599,11 +433,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   /** Optional. The dispatch information configuration. */
   dispatchInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders>;
-
 /** The configuration for the proxy. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   /** Optional. The security gateway identity configuration. */
@@ -619,11 +448,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   /** Optional. Client IP configuration. The client IP address is included if true. */
   clientIp?: boolean;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig>;
-
 /** The information about a security gateway resource. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /** Output only. Timestamp when the resource was created. */
@@ -649,11 +473,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /** Optional. Shared proxy configuration for all apps. */
   proxyProtocolConfig?: GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
-
 export interface CreateProjectsLocationsSecurityGatewaysRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. */
   requestId?: string;
@@ -664,21 +483,11 @@ export interface CreateProjectsLocationsSecurityGatewaysRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
 }
-const CreateProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysRequest>;
-
 /** Routing policy information. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
   /** Required. List of the regions where the application sends traffic. */
   regions?: StringList;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy>;
-
 /** Internet Gateway endpoint to forward traffic to. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
   /** Required. Hostname of the endpoint. */
@@ -686,38 +495,18 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
   /** Required. Port of the endpoint. */
   port?: number;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1EndpointList =
   Array<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
-const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointList>;
-
 /** Endpoints to forward traffic to. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal {
   /** Required. List of the endpoints to forward traffic to. */
   endpoints?: GoogleCloudBeyondcorpSecuritygatewaysV1EndpointList;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal>;
-
 /** Network to forward traffic to. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
   /** Required. Network name is of the format: `projects/{project}/global/networks/{network} */
   name?: string;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork>;
-
 /** Which upstream resource to forward traffic to. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
   /** Optional. Routing policy information. */
@@ -729,27 +518,13 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
   /** Optional. Enables proxy protocol configuration for the upstream. */
   proxyProtocol?: GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamList =
   Array<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
-const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamList>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationSchemaEnum =
   | "SCHEMA_UNSPECIFIED"
   | "PROXY_GATEWAY"
   | "API_GATEWAY";
-const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationSchemaEnum = S.String;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<IntegerList>;
-
 /** EndpointMatcher contains the information of the endpoint that will match the application. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
   /** Required. The ports of the application. */
@@ -757,18 +532,8 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
   /** Required. Hostname of the application. */
   hostname?: string;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList =
   Array<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
-const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList>;
-
 /** The information about an application resource. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
   /** Optional. Which upstream resources to forward traffic to. */
@@ -786,11 +551,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
   /** Optional. An arbitrary user-provided name for the application resource. Cannot exceed 64 characters. */
   displayName?: string;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1Application = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
-
 export interface CreateProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Optional. User-settable Application resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or letter. */
   applicationId?: string;
@@ -801,20 +561,10 @@ export interface CreateProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpSecuritygatewaysV1Application;
 }
-const CreateProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsAppConnectionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -823,11 +573,6 @@ export interface DeleteProjectsLocationsAppConnectionsRequest {
   /** Required. BeyondCorp Connector name using the form: `projects/{project_id}/locations/{location_id}/appConnections/{app_connection_id}` */
   name: string;
 }
-const DeleteProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsAppConnectionsRequest>;
-
 export interface DeleteProjectsLocationsAppConnectorsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -836,11 +581,6 @@ export interface DeleteProjectsLocationsAppConnectorsRequest {
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsAppConnectorsRequest>;
-
 export interface DeleteProjectsLocationsAppGatewaysRequest {
   /** Required. BeyondCorp AppGateway name using the form: `projects/{project_id}/locations/{location_id}/appGateways/{app_gateway_id}` */
   name: string;
@@ -849,20 +589,10 @@ export interface DeleteProjectsLocationsAppGatewaysRequest {
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsAppGatewaysRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsSecurityGatewaysRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -871,11 +601,6 @@ export interface DeleteProjectsLocationsSecurityGatewaysRequest {
   /** Required. BeyondCorp SecurityGateway name using the form: `projects/{project_id}/locations/{location_id}/securityGateways/{security_gateway_id}` */
   name: string;
 }
-const DeleteProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>;
-
 export interface DeleteProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Required. Name of the resource. */
   name: string;
@@ -884,29 +609,17 @@ export interface DeleteProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 export interface GetIamPolicyProjectsLocationsAppConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>;
-
 export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -914,17 +627,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
   logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
 }
-const GoogleIamV1AuditLogConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GoogleIamV1AuditLogConfig>;
-
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -932,17 +635,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-const GoogleIamV1AuditConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GoogleIamV1AuditConfig>;
-
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-const GoogleIamV1AuditConfigList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GoogleIamV1AuditConfigList>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -954,8 +647,6 @@ export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-const GoogleTypeExpr = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GoogleTypeExpr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -965,14 +656,7 @@ export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-const GoogleIamV1Binding = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GoogleIamV1Binding>;
-
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-const GoogleIamV1BindingList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GoogleIamV1BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -984,70 +668,38 @@ export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: GoogleIamV1BindingList;
 }
-const GoogleIamV1Policy = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GoogleIamV1Policy>;
-
 export interface GetIamPolicyProjectsLocationsAppConnectorsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>;
-
 export interface GetIamPolicyProjectsLocationsAppGatewaysRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>;
-
 export interface GetIamPolicyProjectsLocationsSecurityGatewaysRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
-
 export interface GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface GoogleCloudLocationLocation {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -1061,65 +713,30 @@ export interface GoogleCloudLocationLocation {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-const GoogleCloudLocationLocation = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GoogleCloudLocationLocation>;
-
 export interface GetProjectsLocationsAppConnectionsRequest {
   /** Required. BeyondCorp AppConnection name using the form: `projects/{project_id}/locations/{location_id}/appConnections/{app_connection_id}` */
   name: string;
 }
-const GetProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetProjectsLocationsAppConnectionsRequest>;
-
 export interface GetProjectsLocationsAppConnectorsRequest {
   /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
   name: string;
 }
-const GetProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetProjectsLocationsAppConnectorsRequest>;
-
 export interface GetProjectsLocationsAppGatewaysRequest {
   /** Required. BeyondCorp AppGateway name using the form: `projects/{project_id}/locations/{location_id}/appGateways/{app_gateway_id}` */
   name: string;
 }
-const GetProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetProjectsLocationsAppGatewaysRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsSecurityGatewaysRequest {
   /** Required. The resource name of the PartnerTenant using the form: `projects/{project_id}/locations/{location_id}/securityGateway/{security_gateway_id}` */
   name: string;
 }
-const GetProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetProjectsLocationsSecurityGatewaysRequest>;
-
 export interface GetProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Required. The resource name of the Application using the form: `projects/{project_id}/locations/global/securityGateway/{security_gateway_id}/applications/{application_id}` */
   name: string;
 }
-const GetProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -1132,17 +749,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -1152,11 +759,6 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -1169,17 +771,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type GoogleCloudLocationLocationList = Array<GoogleCloudLocationLocation>;
-const GoogleCloudLocationLocationList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GoogleCloudLocationLocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1187,11 +779,6 @@ export interface GoogleCloudLocationListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GoogleCloudLocationListLocationsResponse>;
-
 export interface ListProjectsLocationsAppConnectionsRequest {
   /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
   orderBy?: string;
@@ -1204,18 +791,8 @@ export interface ListProjectsLocationsAppConnectionsRequest {
   /** Required. The resource name of the AppConnection location using the form: `projects/{project_id}/locations/{location_id}` */
   parent: string;
 }
-const ListProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListProjectsLocationsAppConnectionsRequest>;
-
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionList =
   Array<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>;
-const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionList>;
-
 /** Response message for BeyondCorp.ListAppConnections. */
 export interface GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -1225,11 +802,6 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
   /** A list of BeyondCorp AppConnections in the project. */
   appConnections?: GoogleCloudBeyondcorpAppconnectionsV1AppConnectionList;
 }
-const GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse>;
-
 export interface ListProjectsLocationsAppConnectorsRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
@@ -1242,18 +814,8 @@ export interface ListProjectsLocationsAppConnectorsRequest {
   /** Optional. A filter specifying constraints of a list operation. */
   filter?: string;
 }
-const ListProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListProjectsLocationsAppConnectorsRequest>;
-
 export type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorList =
   Array<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
-const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorList>;
-
 /** Response message for BeyondCorp.ListAppConnectors. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   /** A list of BeyondCorp AppConnectors in the project. */
@@ -1263,11 +825,6 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse>;
-
 export interface ListProjectsLocationsAppGatewaysRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
@@ -1280,14 +837,7 @@ export interface ListProjectsLocationsAppGatewaysRequest {
   /** Optional. The next_page_token value returned from a previous ListAppGatewaysRequest, if any. */
   pageToken?: string;
 }
-const ListProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListProjectsLocationsAppGatewaysRequest>;
-
 export type AppGatewayList = Array<AppGateway>;
-const AppGatewayList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<AppGatewayList>;
-
 /** Response message for BeyondCorp.ListAppGateways. */
 export interface ListAppGatewaysResponse {
   /** A list of BeyondCorp AppGateways in the project. */
@@ -1297,11 +847,6 @@ export interface ListAppGatewaysResponse {
   /** A list of locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListAppGatewaysResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListAppGatewaysResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -1314,11 +859,6 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsSecurityGatewaysRequest {
   /** Required. The parent location to which the resources belong. `projects/{project_id}/locations/{location_id}/` */
   parent: string;
@@ -1331,18 +871,8 @@ export interface ListProjectsLocationsSecurityGatewaysRequest {
   /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
   orderBy?: string;
 }
-const ListProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListProjectsLocationsSecurityGatewaysRequest>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayList =
   Array<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
-const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayList>;
-
 /** Message for response to listing SecurityGateways. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -1352,11 +882,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResp
   /** A list of BeyondCorp SecurityGateway in the project. */
   securityGateways?: GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayList;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse>;
-
 export interface ListProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Optional. A filter specifying constraints of a list operation. All fields in the Application message are supported. For example, the following query will return the Application with displayName "test-application" For more information, please refer to https://google.aip.dev/160. */
   filter?: string;
@@ -1369,18 +894,8 @@ export interface ListProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Optional. The next_page_token value returned from a previous ListApplicationsRequest, if any. */
   pageToken?: string;
 }
-const ListProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationList =
   Array<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
-const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationList>;
-
 /** Message for response to listing Applications. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse {
   /** A list of locations that could not be reached. */
@@ -1390,11 +905,6 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-const GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse>;
-
 export interface PatchProjectsLocationsAppConnectionsRequest {
   /** Required. Unique resource name of the AppConnection. The name is ignored when creating a AppConnection. */
   name: string;
@@ -1409,11 +919,6 @@ export interface PatchProjectsLocationsAppConnectionsRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
 }
-const PatchProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<PatchProjectsLocationsAppConnectionsRequest>;
-
 export interface PatchProjectsLocationsAppConnectorsRequest {
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
@@ -1426,11 +931,6 @@ export interface PatchProjectsLocationsAppConnectorsRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
 }
-const PatchProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PatchProjectsLocationsAppConnectorsRequest>;
-
 export interface PatchProjectsLocationsSecurityGatewaysRequest {
   /** Identifier. Name of the resource. */
   name: string;
@@ -1441,11 +941,6 @@ export interface PatchProjectsLocationsSecurityGatewaysRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
 }
-const PatchProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<PatchProjectsLocationsSecurityGatewaysRequest>;
-
 export interface PatchProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Identifier. Name of the resource. */
   name: string;
@@ -1456,11 +951,6 @@ export interface PatchProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** Request body */
   body?: GoogleCloudBeyondcorpSecuritygatewaysV1Application;
 }
-const PatchProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 /** Request report the connector status. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1470,31 +960,16 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest>;
-
 export interface ReportStatusProjectsLocationsAppConnectorsRequest {
   /** Required. BeyondCorp Connector name using the form: `projects/{project_id}/locations/{location_id}/connectors/{connector}` */
   appConnector: string;
   /** Request body */
   body?: GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest;
 }
-const ReportStatusProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ReportStatusProjectsLocationsAppConnectorsRequest>;
-
 export interface ResolveInstanceConfigProjectsLocationsAppConnectorsRequest {
   /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector}` */
   appConnector: string;
 }
-const ResolveInstanceConfigProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>;
-
 /** ImageConfig defines the control plane images to run. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
   /** The initial image the remote agent will attempt to run for the control plane. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1 */
@@ -1502,32 +977,16 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
   /** The stable image that the remote agent will fallback to if the target image fails. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1 */
   stableImage?: string;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1ImageConfig = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ImageConfig>;
-
 /** The configuration for Pub/Sub messaging for the AppConnector. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig {
   /** The Pub/Sub subscription the AppConnector uses to receive notifications. */
   pubsubSubscription?: string;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    2,
-  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig>;
-
 /** NotificationConfig defines the mechanisms to notify instance agent. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
   /** Cloud Pub/Sub Configuration to receive notifications. */
   pubsubNotification?: GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig>;
-
 /** AppConnectorInstanceConfig defines the instance config of a AppConnector. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
   /** ImageConfig defines the GCR images to run for the remote agent's control plane. */
@@ -1539,21 +998,11 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig 
   /** The SLM instance agent configuration. */
   instanceConfig?: DocumentMap;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig>;
-
 /** Response message for BeyondCorp.ResolveInstanceConfig. */
 export interface GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse {
   /** AppConnectorInstanceConfig. */
   instanceConfig?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig;
 }
-const GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>;
-
 export interface ResolveProjectsLocationsAppConnectionsRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
@@ -1564,11 +1013,6 @@ export interface ResolveProjectsLocationsAppConnectionsRequest {
   /** Required. BeyondCorp Connector name of the connector associated with those AppConnections using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
   appConnectorId?: string;
 }
-const ResolveProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ResolveProjectsLocationsAppConnectionsRequest>;
-
 /** Details of the AppConnection. */
 export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails {
   /** If type=GCP_REGIONAL_MIG, contains most recent VM instances, like `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone_id}/instances/{instance_id}`. */
@@ -1576,20 +1020,8 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsRespo
   /** A BeyondCorp AppConnection in the project. */
   appConnection?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
 }
-const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    7,
-  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
-
 export type GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetailsList =
   Array<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
-const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetailsList =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    0,
-  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetailsList>;
-
 /** Response message for BeyondCorp.ResolveAppConnections. */
 export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
   /** A list of locations that could not be reached. */
@@ -1599,11 +1031,6 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsRespo
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1611,139 +1038,76 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GoogleIamV1SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsAppConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectionsRequest>;
-
 export interface SetIamPolicyProjectsLocationsAppConnectorsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectorsRequest>;
-
 export interface SetIamPolicyProjectsLocationsAppGatewaysRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<SetIamPolicyProjectsLocationsAppGatewaysRequest>;
-
 export interface SetIamPolicyProjectsLocationsSecurityGatewaysRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
-
 export interface SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GoogleIamV1TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsAppConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsAppConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsAppConnectionsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsResponse =
-  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsLocationsAppConnectorsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsAppConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsAppConnectorsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsAppGatewaysRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsAppGatewaysRequest>;
-
 export interface TestIamPermissionsProjectsLocationsSecurityGatewaysRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsSecurityGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysRequest>;
-
 export interface TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
 export type CancelOrganizationsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -1757,8 +1121,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOrganizationsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1777,8 +1141,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(3, __c0, 3) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1162,8 @@ export const createProjectsLocationsAppConnections: API.OperationMethod<
   CreateProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAppConnectionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateProjectsLocationsAppConnectionsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AppConnectorsNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1819,8 +1183,8 @@ export const createProjectsLocationsAppConnectors: API.OperationMethod<
   CreateProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAppConnectorsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateProjectsLocationsAppConnectorsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AppConnectorsNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1840,8 +1204,8 @@ export const createProjectsLocationsAppGateways: API.OperationMethod<
   CreateProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAppGatewaysRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(23, __c2, 7) as any as S.Schema<CreateProjectsLocationsAppGatewaysRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AppConnectorsNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1224,8 @@ export const createProjectsLocationsSecurityGateways: API.OperationMethod<
   CreateProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(34, __c4, 2) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1880,8 +1244,12 @@ export const createProjectsLocationsSecurityGatewaysApplications: API.OperationM
   CreateProjectsLocationsSecurityGatewaysApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    46,
+    __c5,
+    6,
+  ) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1900,8 +1268,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(47, __c5, 7) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1920,8 +1288,8 @@ export const deleteProjectsLocationsAppConnections: API.OperationMethod<
   DeleteProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAppConnectionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteProjectsLocationsAppConnectionsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1940,8 +1308,8 @@ export const deleteProjectsLocationsAppConnectors: API.OperationMethod<
   DeleteProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAppConnectorsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(49, __c6, 1) as any as S.Schema<DeleteProjectsLocationsAppConnectorsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1960,8 +1328,8 @@ export const deleteProjectsLocationsAppGateways: API.OperationMethod<
   DeleteProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAppGatewaysRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(50, __c6, 2) as any as S.Schema<DeleteProjectsLocationsAppGatewaysRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1980,8 +1348,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(51, __c6, 3) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2000,8 +1368,8 @@ export const deleteProjectsLocationsSecurityGateways: API.OperationMethod<
   DeleteProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(52, __c6, 4) as any as S.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2020,8 +1388,12 @@ export const deleteProjectsLocationsSecurityGatewaysApplications: API.OperationM
   DeleteProjectsLocationsSecurityGatewaysApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    53,
+    __c6,
+    5,
+  ) as any as S.Schema<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2035,8 +1407,8 @@ export const getIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAppConnectionsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(54, __c6, 6) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2050,8 +1422,8 @@ export const getIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAppConnectorsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(63, __c7, 7) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2065,8 +1437,8 @@ export const getIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAppGatewaysRequest,
-  output: GoogleIamV1Policy,
+  input: __S(64, __c8, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2080,8 +1452,8 @@ export const getIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleIamV1Policy,
+  input: __S(65, __c8, 1) as any as S.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2098,8 +1470,12 @@ export const getIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
   GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(
+    66,
+    __c8,
+    2,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2113,8 +1489,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(67, __c8, 3) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2128,8 +1504,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: GoogleCloudLocationLocation,
+  input: __S(68, __c8, 4) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<GoogleCloudLocationLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2143,8 +1519,8 @@ export const getProjectsLocationsAppConnections: API.OperationMethod<
   GetProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAppConnectionsRequest,
-  output: GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
+  input: __S(70, __c8, 6) as any as S.Schema<GetProjectsLocationsAppConnectionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2158,8 +1534,8 @@ export const getProjectsLocationsAppConnectors: API.OperationMethod<
   GetProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAppConnectorsRequest,
-  output: GoogleCloudBeyondcorpAppconnectorsV1AppConnector,
+  input: __S(71, __c8, 7) as any as S.Schema<GetProjectsLocationsAppConnectorsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2173,8 +1549,8 @@ export const getProjectsLocationsAppGateways: API.OperationMethod<
   GetProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAppGatewaysRequest,
-  output: AppGateway,
+  input: __S(72, __c9, 0) as any as S.Schema<GetProjectsLocationsAppGatewaysRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<AppGateway>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2188,8 +1564,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(73, __c9, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2203,8 +1579,12 @@ export const getProjectsLocationsSecurityGateways: API.OperationMethod<
   GetProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway,
+  input: __S(74, __c9, 2) as any as S.Schema<GetProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(
+    33,
+    __c4,
+    1,
+  ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2221,8 +1601,12 @@ export const getProjectsLocationsSecurityGatewaysApplications: API.OperationMeth
   GetProjectsLocationsSecurityGatewaysApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleCloudBeyondcorpSecuritygatewaysV1Application,
+  input: __S(
+    75,
+    __c9,
+    3,
+  ) as any as S.Schema<GetProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Application>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2237,8 +1621,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2254,8 +1638,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: GoogleCloudLocationListLocationsResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2271,8 +1655,12 @@ export const listProjectsLocationsAppConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAppConnectionsRequest,
-  output: GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<ListProjectsLocationsAppConnectionsRequest>,
+  output: __S(
+    84,
+    __c10,
+    4,
+  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2288,8 +1676,12 @@ export const listProjectsLocationsAppConnectors: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAppConnectorsRequest,
-  output: GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<ListProjectsLocationsAppConnectorsRequest>,
+  output: __S(
+    87,
+    __c10,
+    7,
+  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2305,8 +1697,8 @@ export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAppGatewaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAppGatewaysRequest,
-  output: ListAppGatewaysResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<ListProjectsLocationsAppGatewaysRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListAppGatewaysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2322,8 +1714,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2339,8 +1731,12 @@ export const listProjectsLocationsSecurityGateways: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<ListProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(
+    94,
+    __c11,
+    6,
+  ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2359,8 +1755,16 @@ export const listProjectsLocationsSecurityGatewaysApplications: API.PaginatedOpe
   GcpOpContext,
   GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse,
+  input: __S(
+    95,
+    __c11,
+    7,
+  ) as any as S.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(
+    97,
+    __c12,
+    1,
+  ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2380,8 +1784,8 @@ export const patchProjectsLocationsAppConnections: API.OperationMethod<
   PatchProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAppConnectionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(98, __c12, 2) as any as S.Schema<PatchProjectsLocationsAppConnectionsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2400,8 +1804,8 @@ export const patchProjectsLocationsAppConnectors: API.OperationMethod<
   PatchProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAppConnectorsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(99, __c12, 3) as any as S.Schema<PatchProjectsLocationsAppConnectorsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2420,8 +1824,8 @@ export const patchProjectsLocationsSecurityGateways: API.OperationMethod<
   PatchProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(100, __c12, 4) as any as S.Schema<PatchProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2440,8 +1844,12 @@ export const patchProjectsLocationsSecurityGatewaysApplications: API.OperationMe
   PatchProjectsLocationsSecurityGatewaysApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    101,
+    __c12,
+    5,
+  ) as any as S.Schema<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2460,8 +1868,8 @@ export const reportStatusProjectsLocationsAppConnectors: API.OperationMethod<
   ReportStatusProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportStatusProjectsLocationsAppConnectorsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(103, __c12, 7) as any as S.Schema<ReportStatusProjectsLocationsAppConnectorsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2478,8 +1886,16 @@ export const resolveInstanceConfigProjectsLocationsAppConnectors: API.OperationM
   ResolveInstanceConfigProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResolveInstanceConfigProjectsLocationsAppConnectorsRequest,
-  output: GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse,
+  input: __S(
+    104,
+    __c13,
+    0,
+  ) as any as S.Schema<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>,
+  output: __S(
+    109,
+    __c13,
+    5,
+  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2494,8 +1910,12 @@ export const resolveProjectsLocationsAppConnections: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ResolveProjectsLocationsAppConnectionsRequest,
-  output: GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<ResolveProjectsLocationsAppConnectionsRequest>,
+  output: __S(
+    113,
+    __c14,
+    1,
+  ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2515,8 +1935,8 @@ export const setIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAppConnectionsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(115, __c14, 3) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectionsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2535,8 +1955,8 @@ export const setIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAppConnectorsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(116, __c14, 4) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectorsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2555,8 +1975,8 @@ export const setIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAppGatewaysRequest,
-  output: GoogleIamV1Policy,
+  input: __S(117, __c14, 5) as any as S.Schema<SetIamPolicyProjectsLocationsAppGatewaysRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2575,8 +1995,12 @@ export const setIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
   SetIamPolicyProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleIamV1Policy,
+  input: __S(
+    118,
+    __c14,
+    6,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2595,8 +2019,12 @@ export const setIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
   SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(
+    119,
+    __c14,
+    7,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2615,8 +2043,12 @@ export const testIamPermissionsProjectsLocationsAppConnections: API.OperationMet
   TestIamPermissionsProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAppConnectionsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(
+    121,
+    __c15,
+    1,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsAppConnectionsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2635,8 +2067,12 @@ export const testIamPermissionsProjectsLocationsAppConnectors: API.OperationMeth
   TestIamPermissionsProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAppConnectorsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(
+    122,
+    __c15,
+    2,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsAppConnectorsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2091,12 @@ export const testIamPermissionsProjectsLocationsAppGateways: API.OperationMethod
   TestIamPermissionsProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAppGatewaysRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(
+    123,
+    __c15,
+    3,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsAppGatewaysRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2675,8 +2115,12 @@ export const testIamPermissionsProjectsLocationsSecurityGateways: API.OperationM
   TestIamPermissionsProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsSecurityGatewaysRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(
+    124,
+    __c15,
+    4,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2695,8 +2139,12 @@ export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: AP
   TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(
+    125,
+    __c15,
+    5,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2713,7 +2161,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2732,7 +2180,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2749,7 +2197,7 @@ function __c0(j: number): any {
           uri: S.optional(S.String),
           ingressPort: S.optional(S.Number),
           l7psc: S.optional(S.String),
-          type: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeEnum),
+          type: S.optional(S.String),
           appGateway: S.optional(S.String),
         }),
       ).annotate({
@@ -2775,21 +2223,19 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gateway: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway),
-          connectors: S.optional(StringList),
+          gateway: S.optional(__S(4, __c0, 4)),
+          connectors: S.optional(__S(5, __c0, 5)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
           createTime: S.optional(S.String),
-          state: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum),
-          labels: S.optional(StringMap),
+          state: S.optional(S.String),
+          labels: S.optional(__S(6, __c0, 6)),
           uid: S.optional(S.String),
           updateTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          applicationEndpoint: S.optional(
-            GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint,
-          ),
-          type: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum),
+          applicationEndpoint: S.optional(__S(7, __c0, 7)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectionsV1AppConnection",
@@ -2801,7 +2247,7 @@ function __c1(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           appConnectionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnection.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2815,12 +2261,12 @@ function __c1(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(11, __c1, 3)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
@@ -2829,25 +2275,23 @@ function __c1(j: number): any {
         S.Struct({
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          error: S.optional(GoogleRpcStatus),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(12, __c1, 4)),
+          metadata: S.optional(__S(10, __c1, 2)),
+          response: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
     case 6:
-      return S.Array(
-        /*@__PURE__*/ S.suspend(() => GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo),
-      );
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(15, __c1, 7)));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusEnum),
+          status: S.optional(S.String),
           id: S.optional(S.String),
-          sub: S.optional(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoList),
+          sub: S.optional(__S(14, __c1, 6)),
           time: S.optional(S.String),
-          resource: S.optional(DocumentMap),
+          resource: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo",
@@ -2867,9 +2311,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceAccount: S.optional(
-            GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount,
-          ),
+          serviceAccount: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo",
@@ -2878,14 +2320,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(6, __c0, 6)),
           uid: S.optional(S.String),
           createTime: S.optional(S.String),
-          state: S.optional(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
-          resourceInfo: S.optional(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo),
+          resourceInfo: S.optional(__S(15, __c1, 7)),
           name: S.optional(S.String),
-          principalInfo: S.optional(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo),
+          principalInfo: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnector",
@@ -2897,7 +2339,7 @@ function __c2(j: number): any {
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           appConnectorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudBeyondcorpAppconnectorsV1AppConnector.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2916,22 +2358,22 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AllocatedConnection" });
     case 5:
-      return S.Array(AllocatedConnection);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          hostType: S.optional(AppGatewayHostTypeEnum),
+          hostType: S.optional(S.String),
           uid: S.optional(S.String),
-          state: S.optional(AppGatewayStateEnum),
-          type: S.optional(AppGatewayTypeEnum),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
           uri: S.optional(S.String),
-          allocatedConnections: S.optional(AllocatedConnectionList),
+          allocatedConnections: S.optional(__S(21, __c2, 5)),
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
           name: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(6, __c0, 6)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppGateway" });
@@ -2942,7 +2384,7 @@ function __c2(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           appGatewayId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AppGateway.pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2960,7 +2402,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assignedIps: S.optional(StringList),
+          assignedIps: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway",
@@ -2968,13 +2410,13 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          internetGateway: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway),
+          internetGateway: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Hub",
       });
     case 2:
-      return S.Record(S.String, GoogleCloudBeyondcorpSecuritygatewaysV1Hub);
+      return S.Record(S.String, __S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2987,9 +2429,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceOverride: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor,
-          ),
+          resourceOverride: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway",
@@ -2997,7 +2437,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          apiGateway: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway),
+          apiGateway: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery",
@@ -3005,9 +2445,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          outputType: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum,
-          ),
+          outputType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo",
@@ -3015,21 +2453,11 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userInfo: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo,
-          ),
-          outputType: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersOutputTypeEnum,
-          ),
-          deviceInfo: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo,
-          ),
-          groupInfo: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo,
-          ),
-          dispatchInfo: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo,
-          ),
+          userInfo: S.optional(__S(30, __c3, 6)),
+          outputType: S.optional(S.String),
+          deviceInfo: S.optional(__S(30, __c3, 6)),
+          groupInfo: S.optional(__S(30, __c3, 6)),
+          dispatchInfo: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders",
@@ -3041,12 +2469,10 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gatewayIdentity: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfigGatewayIdentityEnum,
-          ),
-          metadataHeaders: S.optional(StringMap),
-          allowedClientHeaders: S.optional(StringList),
-          contextualHeaders: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders),
+          gatewayIdentity: S.optional(S.String),
+          metadataHeaders: S.optional(__S(6, __c0, 6)),
+          allowedClientHeaders: S.optional(__S(5, __c0, 5)),
+          contextualHeaders: S.optional(__S(31, __c3, 7)),
           clientIp: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3056,18 +2482,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          state: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum),
-          externalIps: S.optional(StringList),
-          hubs: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1HubMap),
-          logging: S.optional(GoogleLongrunningCancelOperationRequest),
+          state: S.optional(S.String),
+          externalIps: S.optional(__S(5, __c0, 5)),
+          hubs: S.optional(__S(26, __c3, 2)),
+          logging: S.optional(__S(0, __c0, 0)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          serviceDiscovery: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery),
+          serviceDiscovery: S.optional(__S(29, __c3, 5)),
           delegatingServiceAccount: S.optional(S.String),
-          proxyProtocolConfig: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
-          ),
+          proxyProtocolConfig: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway",
@@ -3078,9 +2502,7 @@ function __c4(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           securityGatewayId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3094,7 +2516,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(StringList),
+          regions: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy",
@@ -3109,11 +2531,11 @@ function __c4(j: number): any {
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint",
       });
     case 5:
-      return S.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1EndpointList),
+          endpoints: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal",
@@ -3133,36 +2555,36 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          egressPolicy: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy),
-          external: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal),
-          network: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork),
-          proxyProtocol: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig),
+          egressPolicy: S.optional(__S(35, __c4, 3)),
+          external: S.optional(__S(38, __c4, 6)),
+          network: S.optional(__S(39, __c4, 7)),
+          proxyProtocol: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream",
       });
     case 1:
-      return S.Array(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.Array(S.Number);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ports: S.optional(IntegerList),
+          ports: S.optional(__S(42, __c5, 2)),
           hostname: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher",
       });
     case 4:
-      return S.Array(GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          upstreams: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamList),
+          upstreams: S.optional(__S(41, __c5, 1)),
           updateTime: S.optional(S.String),
-          schema: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationSchemaEnum),
-          endpointMatchers: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList),
+          schema: S.optional(S.String),
+          endpointMatchers: S.optional(__S(44, __c5, 4)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -3176,7 +2598,7 @@ function __c5(j: number): any {
           applicationId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1Application.pipe(T.HttpBody())),
+          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3317,8 +2739,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(StringList),
-          logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(__S(5, __c0, 5)),
+          logType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
@@ -3328,16 +2750,16 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleIamV1AuditLogConfig);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
     case 2:
-      return S.Array(GoogleIamV1AuditConfig);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3350,20 +2772,20 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(GoogleTypeExpr),
+          condition: S.optional(__S(59, __c7, 3)),
           role: S.optional(S.String),
-          members: S.optional(StringList),
+          members: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
     case 5:
-      return S.Array(GoogleIamV1Binding);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(GoogleIamV1AuditConfigList),
-          bindings: S.optional(GoogleIamV1BindingList),
+          auditConfigs: S.optional(__S(58, __c7, 2)),
+          bindings: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
     case 7:
@@ -3461,8 +2883,8 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          labels: S.optional(StringMap),
+          metadata: S.optional(__S(10, __c1, 2)),
+          labels: S.optional(__S(6, __c0, 6)),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -3577,13 +2999,13 @@ function __c9(j: number): any {
         identifier: "ListOrganizationsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(13, __c1, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          operations: S.optional(GoogleLongrunningOperationList),
+          unreachable: S.optional(__S(5, __c0, 5)),
+          operations: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -3591,7 +3013,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(5, __c0, 5).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -3611,11 +3033,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudLocationLocation);
+      return S.Array(__S(69, __c8, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(GoogleCloudLocationLocationList),
+          locations: S.optional(__S(80, __c10, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3640,13 +3062,13 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsAppConnectionsRequest",
       });
     case 3:
-      return S.Array(GoogleCloudBeyondcorpAppconnectionsV1AppConnection);
+      return S.Array(__S(8, __c1, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          appConnections: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionList),
+          unreachable: S.optional(__S(5, __c0, 5)),
+          appConnections: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse",
@@ -3670,12 +3092,12 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsAppConnectorsRequest",
       });
     case 6:
-      return S.Array(GoogleCloudBeyondcorpAppconnectorsV1AppConnector);
+      return S.Array(__S(18, __c2, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          appConnectors: S.optional(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorList),
-          unreachable: S.optional(StringList),
+          appConnectors: S.optional(__S(86, __c10, 6)),
+          unreachable: S.optional(__S(5, __c0, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3704,13 +3126,13 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsAppGatewaysRequest",
       });
     case 1:
-      return S.Array(AppGateway);
+      return S.Array(__S(22, __c2, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          appGateways: S.optional(AppGatewayList),
+          appGateways: S.optional(__S(89, __c11, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "ListAppGatewaysResponse" });
     case 3:
@@ -3750,13 +3172,13 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsSecurityGatewaysRequest",
       });
     case 5:
-      return S.Array(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway);
+      return S.Array(__S(33, __c4, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          securityGateways: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayList),
+          unreachable: S.optional(__S(5, __c0, 5)),
+          securityGateways: S.optional(__S(93, __c11, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse",
@@ -3784,12 +3206,12 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Application);
+      return S.Array(__S(45, __c5, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          applications: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationList),
+          unreachable: S.optional(__S(5, __c0, 5)),
+          applications: S.optional(__S(96, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3803,7 +3225,7 @@ function __c12(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnection.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3821,7 +3243,7 @@ function __c12(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudBeyondcorpAppconnectorsV1AppConnector.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3838,9 +3260,7 @@ function __c12(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(
-            GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3857,7 +3277,7 @@ function __c12(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudBeyondcorpSecuritygatewaysV1Application.pipe(T.HttpBody())),
+          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3872,7 +3292,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          resourceInfo: S.optional(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo),
+          resourceInfo: S.optional(__S(15, __c1, 7)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3882,9 +3302,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appConnector: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3934,9 +3352,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pubsubNotification: S.optional(
-            GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig,
-          ),
+          pubsubNotification: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig",
@@ -3944,10 +3360,10 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          imageConfig: S.optional(GoogleCloudBeyondcorpAppconnectorsV1ImageConfig),
+          imageConfig: S.optional(__S(105, __c13, 1)),
           sequenceNumber: S.optional(S.String),
-          notificationConfig: S.optional(GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig),
-          instanceConfig: S.optional(DocumentMap),
+          notificationConfig: S.optional(__S(107, __c13, 3)),
+          instanceConfig: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig",
@@ -3955,9 +3371,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          instanceConfig: S.optional(
-            GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig,
-          ),
+          instanceConfig: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse",
@@ -3982,8 +3396,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          recentMigVms: S.optional(StringList),
-          appConnection: S.optional(GoogleCloudBeyondcorpAppconnectionsV1AppConnection),
+          recentMigVms: S.optional(__S(5, __c0, 5)),
+          appConnection: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier:
@@ -3994,16 +3408,12 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails,
-      );
+      return S.Array(__S(111, __c13, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          appConnectionDetails: S.optional(
-            GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetailsList,
-          ),
+          unreachable: S.optional(__S(5, __c0, 5)),
+          appConnectionDetails: S.optional(__S(112, __c14, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4012,7 +3422,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(GoogleIamV1Policy),
+          policy: S.optional(__S(62, __c7, 6)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
@@ -4022,7 +3432,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4037,7 +3447,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4052,7 +3462,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4067,7 +3477,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4082,7 +3492,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4100,7 +3510,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "GoogleIamV1TestIamPermissionsRequest",
@@ -4109,7 +3519,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4124,7 +3534,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4139,7 +3549,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4154,7 +3564,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4169,7 +3579,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4181,4 +3591,9 @@ function __c15(j: number): any {
         identifier: "TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

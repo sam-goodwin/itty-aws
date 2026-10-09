@@ -5,58 +5,34 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 export type GetUserFacetSettingsRequestProduct = "logs" | "tracing";
-const GetUserFacetSettingsRequestProduct = S.String;
-
 export interface GetUserFacetSettingsRequest {
   uuid: string;
   /** Which product's custom facets to read or update. */
   product: GetUserFacetSettingsRequestProduct | (string & {});
 }
-const GetUserFacetSettingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetUserFacetSettingsRequest>;
-
 /** * `attribute` - attribute * `resourceAttribute` - resourceAttribute */
 export type UserFacetSettingsEntrySourceTypeEnum = "attribute" | "resourceAttribute";
-const UserFacetSettingsEntrySourceTypeEnum = S.String;
-
 export interface UserFacetSettingsEntry {
   /** The log or span attribute key this facet is based on -- for example `http.status_code` or `k8s.pod.name`. */
   key: string;
   /** Where the key lives: `attribute` for a plain log/span attribute, `resourceAttribute` for an OpenTelemetry resource attribute. * `attribute` - attribute * `resourceAttribute` - resourceAttribute */
   source_type: UserFacetSettingsEntrySourceTypeEnum | (string & {});
 }
-const UserFacetSettingsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserFacetSettingsEntry>;
-
 /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
 export type UserFacetSettingsCustomFacetsList = Array<UserFacetSettingsEntry>;
-const UserFacetSettingsCustomFacetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UserFacetSettingsCustomFacetsList>;
-
 export interface UserFacetSettings2 {
   /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
   custom_facets: UserFacetSettingsCustomFacetsList;
 }
-const UserFacetSettings2 = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserFacetSettings2>;
-
 export type UpdateUserFacetSettingsPartialRequestProduct = "logs" | "tracing";
-const UpdateUserFacetSettingsPartialRequestProduct = S.String;
-
 /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
 export type UpdateUserFacetSettingsPartialRequestCustomFacetsList = Array<UserFacetSettingsEntry>;
-const UpdateUserFacetSettingsPartialRequestCustomFacetsList =
-  UserFacetSettingsCustomFacetsList as any as S.Schema<UpdateUserFacetSettingsPartialRequestCustomFacetsList>;
-
 export interface UpdateUserFacetSettingsPartialRequest {
   uuid: string;
   /** Which product's custom facets to read or update. */
@@ -64,11 +40,6 @@ export interface UpdateUserFacetSettingsPartialRequest {
   /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
   custom_facets?: UpdateUserFacetSettingsPartialRequestCustomFacetsList;
 }
-const UpdateUserFacetSettingsPartialRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<UpdateUserFacetSettingsPartialRequest>;
-
 export type GetUserFacetSettingsError = PosthogOpError;
 /** Get the authenticated user's custom facets for a product, within the current team. Pass `@me` as the UUID. */
 export const getUserFacetSettings: API.OperationMethod<
@@ -77,8 +48,8 @@ export const getUserFacetSettings: API.OperationMethod<
   GetUserFacetSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserFacetSettingsRequest,
-  output: UserFacetSettings2,
+  input: __S(0, __c0, 0) as any as S.Schema<GetUserFacetSettingsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UserFacetSettings2>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -92,8 +63,8 @@ export const updateUserFacetSettingsPartial: API.OperationMethod<
   UpdateUserFacetSettingsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserFacetSettingsPartialRequest,
-  output: UserFacetSettings2,
+  input: __S(4, __c0, 4) as any as S.Schema<UpdateUserFacetSettingsPartialRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UserFacetSettings2>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -106,7 +77,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          product: GetUserFacetSettingsRequestProduct.pipe(T.Query()),
+          product: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/user_facet_settings/{uuid}/", code: 200 })),
       ).annotate({
         identifier: "GetUserFacetSettingsRequest",
@@ -115,26 +86,31 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          source_type: UserFacetSettingsEntrySourceTypeEnum,
+          source_type: S.String,
         }),
       ).annotate({ identifier: "UserFacetSettingsEntry" });
     case 2:
-      return S.Array(UserFacetSettingsEntry);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          custom_facets: UserFacetSettingsCustomFacetsList,
+          custom_facets: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "UserFacetSettings2" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          product: UpdateUserFacetSettingsPartialRequestProduct.pipe(T.Query()),
-          custom_facets: S.optional(UpdateUserFacetSettingsPartialRequestCustomFacetsList),
+          product: S.String.pipe(T.Query()),
+          custom_facets: S.optional(__S(2, __c0, 2)),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/user_facet_settings/{uuid}/", code: 200 })),
       ).annotate({
         identifier: "UpdateUserFacetSettingsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

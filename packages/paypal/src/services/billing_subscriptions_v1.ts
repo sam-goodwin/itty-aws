@@ -7,6 +7,8 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -50,53 +52,29 @@ export interface ActivatePlanRequest {
   /** The ID of the subscription. */
   id: string;
 }
-const ActivatePlanRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ActivatePlanRequest>;
-
 export interface ActivatePlanResponse {}
-const ActivatePlanResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ActivatePlanResponse>;
-
 export interface ActivateSubscriptionRequest {
   /** The ID of the subscription. */
   id: string;
   /** The reason for activation of a subscription. Required to reactivate the subscription. */
   reason?: string;
 }
-const ActivateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ActivateSubscriptionRequest>;
-
 export interface ActivateSubscriptionResponse {}
-const ActivateSubscriptionResponse =
-  ActivatePlanResponse as any as S.Schema<ActivateSubscriptionResponse>;
-
 export interface CancelSubscriptionRequest {
   /** The ID of the subscription. */
   id: string;
   /** The reason for the cancellation of a subscription. */
   reason: string;
 }
-const CancelSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelSubscriptionRequest>;
-
 export interface CancelSubscriptionResponse {}
-const CancelSubscriptionResponse =
-  ActivatePlanResponse as any as S.Schema<CancelSubscriptionResponse>;
-
 /** The type of capture. */
 export type CaptureSubscriptionRequestCaptureType = "OUTSTANDING_BALANCE";
-const CaptureSubscriptionRequestCaptureType = S.String;
-
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
   currency_code: string;
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-codes/). */
   value: string;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Money>;
-
 export interface CaptureSubscriptionRequest {
   /** The ID of the subscription. */
   id: string;
@@ -109,11 +87,6 @@ export interface CaptureSubscriptionRequest {
   /** The amount of the outstanding balance. This value cannot be greater than the current outstanding balance amount. */
   amount: Money;
 }
-const CaptureSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CaptureSubscriptionRequest>;
-
 /** The status of the captured payment. */
 export type TransactionStatus =
   | "COMPLETED"
@@ -122,8 +95,6 @@ export type TransactionStatus =
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-const TransactionStatus = S.String;
-
 /** The breakdown details for the amount. Includes the gross, tax, fee, and shipping amounts. */
 export interface AmountWithBreakdown {
   /** The amount for this transaction. */
@@ -139,8 +110,6 @@ export interface AmountWithBreakdown {
   /** The net amount that the payee receives for this transaction in their PayPal account. The net amount is computed as <code>gross_amount</code> minus the <code>paypal_fee</code>. */
   net_amount?: Money;
 }
-const AmountWithBreakdown = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AmountWithBreakdown>;
-
 /** The name of the party. */
 export interface Name {
   /** The prefix, or title, to the party's name. */
@@ -156,8 +125,6 @@ export interface Name {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-const Name = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Name>;
-
 /** The transaction details. */
 export interface Transaction {
   /** The status of the captured payment. */
@@ -172,16 +139,10 @@ export interface Transaction {
   /** The date and time when the transaction was processed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   time: string;
 }
-const Transaction = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Transaction>;
-
 /** The initial state of the plan. Allowed input values are CREATED and ACTIVE. */
 export type CreatePlanRequestStatus = "CREATED" | "INACTIVE" | "ACTIVE";
-const CreatePlanRequestStatus = S.String;
-
 /** The pricing model for tiered plan. The `tiers` parameter is required. */
 export type PricingSchemeInputPricingModel = "VOLUME" | "TIERED";
-const PricingSchemeInputPricingModel = S.String;
-
 /** The pricing tier details. */
 export interface PricingTier {
   /** The starting quantity for the tier. */
@@ -191,12 +152,8 @@ export interface PricingTier {
   /** The pricing amount for the tier. */
   amount: Money;
 }
-const PricingTier = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PricingTier>;
-
 /** An array of pricing tiers which are used for billing volume/tiered plans. pricing_model field has to be specified. */
 export type PricingTierList = Array<PricingTier>;
-const PricingTierList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PricingTierList>;
-
 /** The pricing scheme details. */
 export interface PricingSchemeInput {
   /** The fixed amount to charge for the subscription. The changes to fixed amount are applicable to both existing and future subscriptions. For existing subscriptions, payments within 10 days of price change are not affected. */
@@ -205,12 +162,8 @@ export interface PricingSchemeInput {
   pricing_model?: PricingSchemeInputPricingModel | (string & {});
   tiers?: PricingTierList;
 }
-const PricingSchemeInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PricingSchemeInput>;
-
 /** The interval at which the subscription is charged or billed. */
 export type FrequencyIntervalUnit = "DAY" | "WEEK" | "MONTH" | "YEAR";
-const FrequencyIntervalUnit = S.String;
-
 /** The frequency of the billing cycle. */
 export interface Frequency {
   /** The interval at which the subscription is charged or billed. */
@@ -218,12 +171,8 @@ export interface Frequency {
   /** The number of intervals after which a subscriber is billed. For example, if the `interval_unit` is `DAY` with an `interval_count` of `2`, the subscription is billed once every two days. The following table lists the maximum allowed values for the `interval_count` for each `interval_unit`:<table><thead><tr><th><code>Interval unit</code></th><th>Maximum interval count</th></tr></thead><tbody><tr><td><code>DAY</code></td><td align="right">365</td></tr><tr><td><code>WEEK</code></td><td align="right">52</td></tr><tr><td><code>MONTH</code></td><td align="right">12</td></tr><tr><td><code>YEAR</code></td><td align="right">1</td></tr></tbody></table> */
   interval_count?: number;
 }
-const Frequency = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Frequency>;
-
 /** The tenure type of the billing cycle. In case of a plan having trial cycle, only 2 trial cycles are allowed per plan. */
 export type BillingCycleInputTenureType = "REGULAR" | "TRIAL";
-const BillingCycleInputTenureType = S.String;
-
 /** The billing cycle details. */
 export interface BillingCycleInput {
   /** The active pricing scheme for this billing cycle. A free trial billing cycle does not require a pricing scheme. */
@@ -237,19 +186,10 @@ export interface BillingCycleInput {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-const BillingCycleInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BillingCycleInput>;
-
 /** An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle. */
 export type BillingCycleListInput = Array<BillingCycleInput>;
-const BillingCycleListInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BillingCycleListInput>;
-
 /** The action to take on the subscription if the initial payment for the setup fails. */
 export type PaymentPreferencesSetupFeeFailureAction = "CONTINUE" | "CANCEL";
-const PaymentPreferencesSetupFeeFailureAction = S.String;
-
 /** The payment preferences for a subscription. */
 export interface PaymentPreferences {
   /** Indicates whether to automatically bill the outstanding amount in the next billing cycle. */
@@ -261,8 +201,6 @@ export interface PaymentPreferences {
   /** The maximum number of payment failures before a subscription is suspended. For example, if `payment_failure_threshold` is `2`, the subscription automatically updates to the `SUSPEND` state if two consecutive payments fail. */
   payment_failure_threshold?: number;
 }
-const PaymentPreferences = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PaymentPreferences>;
-
 /** The tax details. */
 export interface Taxes {
   /** The tax percentage on the billing amount. */
@@ -270,8 +208,6 @@ export interface Taxes {
   /** Indicates whether the tax was already included in the billing amount. */
   inclusive?: boolean;
 }
-const Taxes = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Taxes>;
-
 export interface CreatePlanRequest {
   /** The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> */
   prefer?: string;
@@ -291,16 +227,10 @@ export interface CreatePlanRequest {
   /** Indicates whether you can subscribe to this plan by providing a quantity for the goods or service. */
   quantity_supported?: boolean;
 }
-const CreatePlanRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreatePlanRequest>;
-
 /** The plan status. */
 export type PlanStatus = "CREATED" | "INACTIVE" | "ACTIVE";
-const PlanStatus = S.String;
-
 /** The pricing model for tiered plan. The `tiers` parameter is required. */
 export type PricingSchemePricingModel = "VOLUME" | "TIERED";
-const PricingSchemePricingModel = S.String;
-
 /** The pricing scheme details. */
 export interface PricingScheme {
   /** The version of the pricing scheme. */
@@ -315,12 +245,8 @@ export interface PricingScheme {
   /** The date and time when this pricing scheme was last updated, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   update_time?: string;
 }
-const PricingScheme = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PricingScheme>;
-
 /** The tenure type of the billing cycle. In case of a plan having trial cycle, only 2 trial cycles are allowed per plan. */
 export type BillingCycleTenureType = "REGULAR" | "TRIAL";
-const BillingCycleTenureType = S.String;
-
 /** The billing cycle details. */
 export interface BillingCycle {
   /** The active pricing scheme for this billing cycle. A free trial billing cycle does not require a pricing scheme. */
@@ -334,12 +260,8 @@ export interface BillingCycle {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-const BillingCycle = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<BillingCycle>;
-
 /** An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle. */
 export type BillingCycleList = Array<BillingCycle>;
-const BillingCycleList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<BillingCycleList>;
-
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
   | "GET"
@@ -350,8 +272,6 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const LinkDescriptionMethod = S.String;
-
 /** The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information. */
 export interface LinkDescription {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -361,12 +281,8 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-const LinkDescription = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<LinkDescription>;
-
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-const LinkDescriptionList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LinkDescriptionList>;
-
 /** The plan details. */
 export interface Plan {
   /** The unique PayPal-generated ID for the plan. */
@@ -390,8 +306,6 @@ export interface Plan {
   update_time?: string;
   links?: LinkDescriptionList;
 }
-const Plan = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Plan>;
-
 /** The name of the party. */
 export interface SubscriberRequestName {
   /** When the party is a person, the party's given, or first, name. */
@@ -399,52 +313,32 @@ export interface SubscriberRequestName {
   /** When the party is a person, the party's surname or family name. Also known as the last name. Required when the party is a person. Use also to store multiple surnames including the matronymic, or mother's, surname. */
   surname?: string;
 }
-const SubscriberRequestName = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<SubscriberRequestName>;
-
 /** The phone type. */
 export type PhoneType = "FAX" | "HOME" | "MOBILE" | "OTHER" | "PAGER";
-const PhoneType = S.String;
-
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export interface PhoneWithTypePhoneNumber {
   /** The national number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the country calling code (CC) and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   national_number: string;
 }
-const PhoneWithTypePhoneNumber = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PhoneWithTypePhoneNumber>;
-
 /** The phone information. */
 export interface PhoneWithType {
   phone_type?: PhoneType | (string & {});
   /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
   phone_number: PhoneWithTypePhoneNumber;
 }
-const PhoneWithType = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PhoneWithType>;
-
 /** The name of the party. */
 export interface ShippingDetailName {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-const ShippingDetailName = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ShippingDetailName>;
-
 /** A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either `type` or `options` may be present, but not both. */
 export type ShippingDetailType =
   | "SHIPPING"
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-const ShippingDetailType = S.String;
-
 /** A classification for the method of purchase fulfillment. */
 export type ShippingType = "SHIPPING" | "PICKUP" | "PICKUP_IN_STORE" | "PICKUP_FROM_PERSON";
-const ShippingType = S.String;
-
 /** The options that the payee or merchant offers to the payer to ship or pick up their items. */
 export interface ShippingOption {
   /** A unique ID that identifies a payer-selected shipping option. */
@@ -458,12 +352,8 @@ export interface ShippingOption {
   /** If the API request sets `selected = true`, it represents the shipping option that the payee or merchant expects to be pre-selected for the payer when they first view the `shipping.options` in the PayPal Checkout experience. As part of the response if a `shipping.option` contains `selected=true`, it represents the shipping option that the payer selected during the course of checkout with PayPal. Only one `shipping.option` can be set to `selected=true`. */
   selected: boolean;
 }
-const ShippingOption = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ShippingOption>;
-
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type ShippingOptionList = Array<ShippingOption>;
-const ShippingOptionList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ShippingOptionList>;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export interface ShippingDetailAddress {
   /** The first line of the address, such as number and street, for example, `173 Drury Lane`. Needed for data entry, and Compliance and Risk checks. This field needs to pass the full address. */
@@ -478,11 +368,6 @@ export interface ShippingDetailAddress {
   postal_code?: string;
   country_code: string;
 }
-const ShippingDetailAddress = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ShippingDetailAddress>;
-
 /** The shipping details. */
 export interface ShippingDetail {
   /** The name of the party. */
@@ -493,12 +378,8 @@ export interface ShippingDetail {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: ShippingDetailAddress;
 }
-const ShippingDetail = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ShippingDetail>;
-
 /** Type of card. i.e Credit, Debit and so on. */
 export type CardType = "CREDIT" | "DEBIT" | "PREPAID" | "STORE" | "UNKNOWN";
-const CardType = S.String;
-
 /** The card network or brand. Applies to credit, debit, gift, and payment cards. */
 export type CardBrand =
   | "VISA"
@@ -525,8 +406,6 @@ export type CardBrand =
   | "GE"
   | "SYNCHRONY"
   | "UNKNOWN";
-const CardBrand = S.String;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type PaymentSourceCardBillingAddress = ShippingDetailAddress;
 /** The details about a customer in PayPal's system of record. */
@@ -537,29 +416,19 @@ export interface Customer {
   /** The phone number of the buyer as provided to the merchant or on file with the merchant. The `phone.phone_number` supports only `national_number`. */
   phone?: PhoneWithType;
 }
-const Customer = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Customer>;
-
 /** Defines how and when the payment source gets vaulted. */
 export type StoreInVaultInstruction = "ON_SUCCESS";
-const StoreInVaultInstruction = S.String;
-
 /** Basic vault instruction specification that can be extended by specific payment sources that supports vaulting. */
 export interface VaultInstructionBase {
   store_in_vault?: StoreInVaultInstruction | (string & {});
 }
-const VaultInstructionBase = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<VaultInstructionBase>;
-
 /** The method used for card verification. */
 export type CardVerificationMethod = "SCA_ALWAYS" | "SCA_WHEN_REQUIRED" | "3D_SECURE" | "AVS_CVV";
-const CardVerificationMethod = S.String;
-
 /** The API caller can opt in to verify the card through PayPal offered verification services (e.g. Smart Dollar Auth, 3DS). */
 export interface CardVerification {
   /** The method used for card verification. */
   method?: CardVerificationMethod | (string & {});
 }
-const CardVerification = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CardVerification>;
-
 /** Additional attributes associated with the use of this card. */
 export interface CardAttributes {
   customer?: Customer;
@@ -568,8 +437,6 @@ export interface CardAttributes {
   /** Instruction to optionally verify the card based on the specified strategy. */
   verification?: CardVerification;
 }
-const CardAttributes = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CardAttributes>;
-
 /** The payment card to use to fund a payment. Can be a credit or debit card. */
 export interface PaymentSourceCard {
   /** The card holder's name as it appears on the card. */
@@ -589,15 +456,11 @@ export interface PaymentSourceCard {
   /** Additional attributes associated with the use of this card. */
   attributes?: CardAttributes;
 }
-const PaymentSourceCard = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PaymentSourceCard>;
-
 /** The payment source definition. To be eligible to create subscription using debit or credit card, you will need to sign up here (https://www.paypal.com/bizsignup/entry/product/ppcp). Please note, its available only for non-3DS cards and for merchants in US and AU regions. */
 export interface PaymentSource {
   /** The payment card to use to fund a payment. Can be a credit or debit card. */
   card?: PaymentSourceCard;
 }
-const PaymentSource = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PaymentSource>;
-
 export interface SubscriberRequest {
   /** The email address of the payer. */
   email_address?: string;
@@ -608,32 +471,19 @@ export interface SubscriberRequest {
   shipping_address?: ShippingDetail;
   payment_source?: PaymentSource;
 }
-const SubscriberRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SubscriberRequest>;
-
 /** The location from which the shipping address is derived. */
 export type ApplicationContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const ApplicationContextShippingPreference = S.String;
-
 /** Configures the label name to `Continue` or `Subscribe Now` for subscription consent experience. */
 export type ApplicationContextUserAction = "CONTINUE" | "SUBSCRIBE_NOW";
-const ApplicationContextUserAction = S.String;
-
 /** The merchant-preferred payment methods. */
 export type PayeePaymentMethodPreference = "UNRESTRICTED" | "IMMEDIATE_PAYMENT_REQUIRED";
-const PayeePaymentMethodPreference = S.String;
-
 /** The customer and merchant payment preferences. */
 export interface ApplicationContextPaymentMethod {
   payee_preferred?: PayeePaymentMethodPreference | (string & {});
 }
-const ApplicationContextPaymentMethod = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ApplicationContextPaymentMethod>;
-
 /** The application context, which customizes the payer experience during the subscription approval process with PayPal. */
 export interface ApplicationContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. */
@@ -651,8 +501,6 @@ export interface ApplicationContext {
   /** The URL where the customer is redirected after the customer cancels the payment. */
   cancel_url: string;
 }
-const ApplicationContext = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ApplicationContext>;
-
 /** The billing cycle details to override at subscription level. The subscription billing cycle definition has to adhere to the plan billing cycle definition. */
 export interface BillingCycleOverrideInput {
   /** The active pricing scheme for this billing cycle. A free trial billing cycle does not require a pricing scheme. */
@@ -662,22 +510,10 @@ export interface BillingCycleOverrideInput {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-const BillingCycleOverrideInput = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<BillingCycleOverrideInput>;
-
 /** An array of billing cycles for trial billing and regular billing. The subscription billing cycle definition has to adhere to the plan billing cycle definition. */
 export type BillingCycleOverrideListInput = Array<BillingCycleOverrideInput>;
-const BillingCycleOverrideListInput = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<BillingCycleOverrideListInput>;
-
 /** The action to take on the subscription if the initial payment for the setup fails. */
 export type PaymentPreferencesOverrideSetupFeeFailureAction = "CONTINUE" | "CANCEL";
-const PaymentPreferencesOverrideSetupFeeFailureAction = S.String;
-
 /** The payment preferences to override at subscription level. */
 export interface PaymentPreferencesOverride {
   /** Indicates whether to automatically bill the outstanding amount in the next billing cycle. */
@@ -689,11 +525,6 @@ export interface PaymentPreferencesOverride {
   /** The maximum number of payment failures before a subscription is suspended. For example, if `payment_failure_threshold` is `2`, the subscription automatically updates to the `SUSPEND` state if two consecutive payments fail. */
   payment_failure_threshold?: number;
 }
-const PaymentPreferencesOverride = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<PaymentPreferencesOverride>;
-
 /** The tax details. */
 export interface TaxesOverride {
   /** The tax percentage on the billing amount. */
@@ -701,16 +532,12 @@ export interface TaxesOverride {
   /** Indicates whether the tax was already included in the billing amount. */
   inclusive?: boolean;
 }
-const TaxesOverride = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TaxesOverride>;
-
 /** An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. */
 export interface PlanOverrideInput {
   billing_cycles?: BillingCycleOverrideListInput;
   payment_preferences?: PaymentPreferencesOverride;
   taxes?: TaxesOverride;
 }
-const PlanOverrideInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<PlanOverrideInput>;
-
 export interface CreateSubscriptionRequest {
   /** The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> */
   prefer?: string;
@@ -735,11 +562,6 @@ export interface CreateSubscriptionRequest {
   /** Merchant's inventory identifier details for the WPS hosted button. */
   merchant_inventory?: unknown;
 }
-const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateSubscriptionRequest>;
-
 /** The status of the subscription. */
 export type CreateSubscriptionResponseStatus =
   | "APPROVAL_PENDING"
@@ -748,26 +570,16 @@ export type CreateSubscriptionResponseStatus =
   | "SUSPENDED"
   | "CANCELLED"
   | "EXPIRED";
-const CreateSubscriptionResponseStatus = S.String;
-
 /** The name of the party. */
 export type SubscriberName = SubscriberRequestName;
 /** Array of brands or networks associated with the card. */
 export type CardBrandList = Array<CardBrand>;
-const CardBrandList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CardBrandList>;
-
 /** Liability shift indicator. The outcome of the issuer's authentication. */
 export type LiabilityShift = "NO" | "POSSIBLE" | "UNKNOWN";
-const LiabilityShift = S.String;
-
 /** Transactions status result identifier. The outcome of the issuer's authentication. */
 export type ParesStatus = "Y" | "N" | "U" | "A" | "C" | "R" | "D" | "I";
-const ParesStatus = S.String;
-
 /** Status of Authentication eligibility. */
 export type Enrolled = "Y" | "N" | "U" | "B";
-const Enrolled = S.String;
-
 /** Results of 3D Secure Authentication. */
 export interface ThreeDSecureAuthenticationResponse {
   /** The outcome of the issuer's authentication. */
@@ -775,39 +587,19 @@ export interface ThreeDSecureAuthenticationResponse {
   /** Status of authentication eligibility. */
   enrollment_status?: Enrolled;
 }
-const ThreeDSecureAuthenticationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ThreeDSecureAuthenticationResponse>;
-
 /** Results of Authentication such as 3D Secure. */
 export interface AuthenticationResponse {
   liability_shift?: LiabilityShift;
   three_d_secure?: ThreeDSecureAuthenticationResponse;
 }
-const AuthenticationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AuthenticationResponse>;
-
 /** The vault status. */
 export type VaultResponseStatus = "VAULTED" | "CREATED" | "APPROVED";
-const VaultResponseStatus = S.String;
-
 /** The details about a customer in PayPal's system of record. */
 export interface VaultResponseCustomer {
   id?: string;
 }
-const VaultResponseCustomer = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<VaultResponseCustomer>;
-
 /** An array of request-related HATEOAS links. */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-const DefinitionsLinkDescriptionList =
-  LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
-
 /** The details about a saved payment source. */
 export interface VaultResponse {
   /** The PayPal-generated ID for the saved payment source. */
@@ -818,17 +610,10 @@ export interface VaultResponse {
   customer?: VaultResponseCustomer;
   links?: DefinitionsLinkDescriptionList;
 }
-const VaultResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<VaultResponse>;
-
 /** Additional attributes associated with the use of this card. */
 export interface CardAttributesResponse {
   vault?: VaultResponse;
 }
-const CardAttributesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CardAttributesResponse>;
-
 /** Representation of card details as received in the request. */
 export interface CardFromRequest {
   /** The card expiration year and month, in [Internet date format](https://tools.ietf.org/html/rfc3339#section-5.6). */
@@ -836,12 +621,8 @@ export interface CardFromRequest {
   /** The last digits of the payment card. */
   last_digits?: string;
 }
-const CardFromRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CardFromRequest>;
-
 /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
 export type ProductsList = Array<string>;
-const ProductsList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ProductsList>;
-
 /** Bank Identification Number (BIN) details used to fund a payment. */
 export interface BinDetails {
   /** The Bank Identification Number (BIN) signifies the number that is being used to identify the granular level details (except the PII information) of the card. */
@@ -852,8 +633,6 @@ export interface BinDetails {
   bin_country_code?: string;
   products?: ProductsList;
 }
-const BinDetails = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<BinDetails>;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type CardResponseWithBillingAddressBillingAddress = ShippingDetailAddress;
 export interface CardResponseWithBillingAddress {
@@ -878,20 +657,10 @@ export interface CardResponseWithBillingAddress {
   /** Currency code of the given instrument */
   currency_code?: string;
 }
-const CardResponseWithBillingAddress = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CardResponseWithBillingAddress>;
-
 /** The payment source used to fund the payment. */
 export interface PaymentSourceResponse {
   card?: CardResponseWithBillingAddress;
 }
-const PaymentSourceResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<PaymentSourceResponse>;
-
 export interface Subscriber {
   /** The email address of the payer. */
   email_address?: string;
@@ -904,12 +673,8 @@ export interface Subscriber {
   shipping_address?: ShippingDetail;
   payment_source?: PaymentSourceResponse;
 }
-const Subscriber = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Subscriber>;
-
 /** The type of the billing cycle. */
 export type CycleExecutionTenureType = "REGULAR" | "TRIAL";
-const CycleExecutionTenureType = S.String;
-
 /** The regular and trial execution details for a billing cycle. */
 export interface CycleExecution {
   /** The type of the billing cycle. */
@@ -925,20 +690,14 @@ export interface CycleExecution {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-const CycleExecution = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CycleExecution>;
-
 /** The trial and regular billing executions. */
 export type CycleExecutionList = Array<CycleExecution>;
-const CycleExecutionList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<CycleExecutionList>;
-
 export interface LastPaymentDetails {
   /** The last payment amount. */
   amount?: Money;
   /** The date and time when the last payment was made, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   time?: string;
 }
-const LastPaymentDetails = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<LastPaymentDetails>;
-
 /** The reason code for the payment failure. */
 export type FailedPaymentDetailsReasonCode =
   | "PAYMENT_DENIED"
@@ -949,8 +708,6 @@ export type FailedPaymentDetailsReasonCode =
   | "SENDING_LIMIT_EXCEEDED"
   | "TRANSACTION_RECEIVING_LIMIT_EXCEEDED"
   | "CURRENCY_MISMATCH";
-const FailedPaymentDetailsReasonCode = S.String;
-
 /** The details for the failed payment of the subscription. */
 export interface FailedPaymentDetails {
   /** The failed payment amount. */
@@ -962,8 +719,6 @@ export interface FailedPaymentDetails {
   /** The time when the retry attempt for the failed payment occurs, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   next_payment_retry_time?: string;
 }
-const FailedPaymentDetails = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FailedPaymentDetails>;
-
 /** The billing details for the subscription. If the subscription was or is active, these fields are populated. */
 export interface SubscriptionBillingInfo {
   /** The total pending bill amount, to be paid by the subscriber. */
@@ -980,11 +735,6 @@ export interface SubscriptionBillingInfo {
   /** The details for the last failed payment of the subscription. */
   last_failed_payment?: FailedPaymentDetails;
 }
-const SubscriptionBillingInfo = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<SubscriptionBillingInfo>;
-
 /** The plan details. */
 export interface CreateSubscriptionResponsePlan {
   /** The ID for the product. */
@@ -999,11 +749,6 @@ export interface CreateSubscriptionResponsePlan {
   /** Indicates whether you can subscribe to this plan by providing a quantity for the goods or service. */
   quantity_supported?: boolean;
 }
-const CreateSubscriptionResponsePlan = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateSubscriptionResponsePlan>;
-
 export interface CreateSubscriptionResponse {
   /** The status of the subscription. */
   status?: CreateSubscriptionResponseStatus;
@@ -1030,40 +775,21 @@ export interface CreateSubscriptionResponse {
   plan?: CreateSubscriptionResponsePlan;
   links?: LinkDescriptionList;
 }
-const CreateSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateSubscriptionResponse>;
-
 export interface DeactivatePlanRequest {
   /** The ID of the subscription. */
   id: string;
 }
-const DeactivatePlanRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeactivatePlanRequest>;
-
 export interface DeactivatePlanResponse {}
-const DeactivatePlanResponse = ActivatePlanResponse as any as S.Schema<DeactivatePlanResponse>;
-
 export interface GetPlanRequest {
   /** The ID of the subscription. */
   id: string;
 }
-const GetPlanRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GetPlanRequest>;
-
 export interface GetSubscriptionRequest {
   /** The ID of the subscription. */
   id: string;
   /** List of fields that are to be returned in the response. Possible value for fields are last_failed_payment and plan. */
   fields?: string;
 }
-const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetSubscriptionRequest>;
-
 /** The status of the subscription. */
 export type GetSubscriptionResponseStatus =
   | "APPROVAL_PENDING"
@@ -1072,8 +798,6 @@ export type GetSubscriptionResponseStatus =
   | "SUSPENDED"
   | "CANCELLED"
   | "EXPIRED";
-const GetSubscriptionResponseStatus = S.String;
-
 /** The plan details. */
 export type GetSubscriptionResponsePlan = CreateSubscriptionResponsePlan;
 export interface GetSubscriptionResponse {
@@ -1102,11 +826,6 @@ export interface GetSubscriptionResponse {
   plan?: CreateSubscriptionResponsePlan;
   links?: LinkDescriptionList;
 }
-const GetSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetSubscriptionResponse>;
-
 export interface ListPlansRequest {
   /** Filters the response by a Product ID. */
   product_id?: string;
@@ -1119,12 +838,8 @@ export interface ListPlansRequest {
   /** The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> */
   prefer?: string;
 }
-const ListPlansRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListPlansRequest>;
-
 /** An array of plans. */
 export type PlanList = Array<Plan>;
-const PlanList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PlanList>;
-
 /** The list of plans with details. */
 export interface PlanCollection {
   plans?: PlanList;
@@ -1134,12 +849,8 @@ export interface PlanCollection {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
-const PlanCollection = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PlanCollection>;
-
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-const PatchOp = S.String;
-
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
   /** The operation. */
@@ -1151,77 +862,39 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-const Patch = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Patch>;
-
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
-const PatchRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<PatchRequest>;
-
 export interface PatchPlanRequest {
   /** The ID of the subscription. */
   id: string;
   body?: PatchRequest;
 }
-const PatchPlanRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<PatchPlanRequest>;
-
 export interface PatchPlanResponse {}
-const PatchPlanResponse = ActivatePlanResponse as any as S.Schema<PatchPlanResponse>;
-
 export interface PatchSubscriptionRequest {
   /** The ID of the subscription. */
   id: string;
   body?: PatchRequest;
 }
-const PatchSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<PatchSubscriptionRequest>;
-
 export interface PatchSubscriptionResponse {}
-const PatchSubscriptionResponse =
-  ActivatePlanResponse as any as S.Schema<PatchSubscriptionResponse>;
-
 /** The update pricing scheme request details. */
 export interface UpdatePricingSchemeRequestInput {
   /** The billing cycle sequence. */
   billing_cycle_sequence: number;
   pricing_scheme: PricingSchemeInput;
 }
-const UpdatePricingSchemeRequestInput = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<UpdatePricingSchemeRequestInput>;
-
 /** An array of pricing schemes. */
 export type UpdatePricingSchemeRequestListInput = Array<UpdatePricingSchemeRequestInput>;
-const UpdatePricingSchemeRequestListInput = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<UpdatePricingSchemeRequestListInput>;
-
 export interface PlansUpdatePricingSchemesRequest {
   /** The ID of the subscription. */
   id: string;
   pricing_schemes: UpdatePricingSchemeRequestListInput;
 }
-const PlansUpdatePricingSchemesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<PlansUpdatePricingSchemesRequest>;
-
 export interface PlansUpdatePricingSchemesResponse {}
-const PlansUpdatePricingSchemesResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PlansUpdatePricingSchemesResponse>;
-
 /** The location from which the shipping address is derived. */
 export type SubscriptionsReviseRequestApplicationContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-const SubscriptionsReviseRequestApplicationContextShippingPreference = S.String;
-
 /** The customer and merchant payment preferences. */
 export type SubscriptionsReviseRequestApplicationContextPaymentMethod =
   ApplicationContextPaymentMethod;
@@ -1242,11 +915,6 @@ export interface SubscriptionsReviseRequestApplicationContext {
   /** The URL where the customer is redirected after the customer cancels the payment. */
   cancel_url: string;
 }
-const SubscriptionsReviseRequestApplicationContext = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<SubscriptionsReviseRequestApplicationContext>;
-
 export interface SubscriptionsReviseRequest {
   /** The ID of the subscription. */
   id: string;
@@ -1263,11 +931,6 @@ export interface SubscriptionsReviseRequest {
   /** An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. Any existing overrides will not be carried forward during subscription revise. */
   plan?: PlanOverrideInput;
 }
-const SubscriptionsReviseRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<SubscriptionsReviseRequest>;
-
 /** The billing cycle details to override at subscription level. The subscription billing cycle definition has to adhere to the plan billing cycle definition. */
 export interface BillingCycleOverride {
   /** The active pricing scheme for this billing cycle. A free trial billing cycle does not require a pricing scheme. */
@@ -1277,31 +940,16 @@ export interface BillingCycleOverride {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-const BillingCycleOverride = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<BillingCycleOverride>;
-
 /** An array of billing cycles for trial billing and regular billing. The subscription billing cycle definition has to adhere to the plan billing cycle definition. */
 export type BillingCycleOverrideList = Array<BillingCycleOverride>;
-const BillingCycleOverrideList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<BillingCycleOverrideList>;
-
 /** An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. */
 export interface PlanOverride {
   billing_cycles?: BillingCycleOverrideList;
   payment_preferences?: PaymentPreferencesOverride;
   taxes?: TaxesOverride;
 }
-const PlanOverride = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<PlanOverride>;
-
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type SubscriptionReviseResponseDefinitionsLinkDescriptionList = Array<LinkDescription>;
-const SubscriptionReviseResponseDefinitionsLinkDescriptionList =
-  LinkDescriptionList as any as S.Schema<SubscriptionReviseResponseDefinitionsLinkDescriptionList>;
-
 /** The response to a request to update the quantity of the product or service in a subscription. You can also use this method to switch the plan and update the `shipping_amount` and `shipping_address` values for the subscription. This type of update requires the buyer's consent. */
 export interface SubscriptionReviseResponse {
   /** The unique PayPal-generated ID for the plan. */
@@ -1318,11 +966,6 @@ export interface SubscriptionReviseResponse {
   plan_overridden?: boolean;
   links?: SubscriptionReviseResponseDefinitionsLinkDescriptionList;
 }
-const SubscriptionReviseResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SubscriptionReviseResponse>;
-
 export interface SubscriptionsTransactionsRequest {
   /** The ID of the subscription. */
   id: string;
@@ -1331,15 +974,8 @@ export interface SubscriptionsTransactionsRequest {
   /** The end time of the range of transactions to list. */
   end_time: string;
 }
-const SubscriptionsTransactionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<SubscriptionsTransactionsRequest>;
-
 /** An array of transactions. */
 export type TransactionList = Array<Transaction>;
-const TransactionList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<TransactionList>;
-
 /** The list transactions for a subscription request details. */
 export interface TransactionsList {
   transactions?: TransactionList;
@@ -1349,23 +985,13 @@ export interface TransactionsList {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
-const TransactionsList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<TransactionsList>;
-
 export interface SuspendSubscriptionRequest {
   /** The ID of the subscription. */
   id: string;
   /** The reason for suspension of the Subscription. */
   reason: string;
 }
-const SuspendSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<SuspendSubscriptionRequest>;
-
 export interface SuspendSubscriptionResponse {}
-const SuspendSubscriptionResponse =
-  ActivatePlanResponse as any as S.Schema<SuspendSubscriptionResponse>;
-
 export type ActivatePlanError = Forbidden | NotFound | UnprocessableEntity | PaypalOpError;
 /** Activate plan Activates a plan, by ID. */
 export const activatePlan: API.OperationMethod<
@@ -1374,8 +1000,8 @@ export const activatePlan: API.OperationMethod<
   ActivatePlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivatePlanRequest,
-  output: ActivatePlanResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ActivatePlanRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ActivatePlanResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1394,8 +1020,8 @@ export const activateSubscription: API.OperationMethod<
   ActivateSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateSubscriptionRequest,
-  output: ActivateSubscriptionResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ActivateSubscriptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ActivateSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1414,8 +1040,8 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelSubscriptionRequest,
-  output: CancelSubscriptionResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CancelSubscriptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1434,8 +1060,8 @@ export const captureSubscription: API.OperationMethod<
   CaptureSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CaptureSubscriptionRequest,
-  output: Transaction,
+  input: __S(5, __c0, 5) as any as S.Schema<CaptureSubscriptionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Transaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1449,8 +1075,8 @@ export const createPlan: API.OperationMethod<
   CreatePlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlanRequest,
-  output: Plan,
+  input: __S(17, __c2, 1) as any as S.Schema<CreatePlanRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<Plan>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1464,8 +1090,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionRequest,
-  output: CreateSubscriptionResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1479,8 +1105,8 @@ export const deactivatePlan: API.OperationMethod<
   DeactivatePlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivatePlanRequest,
-  output: DeactivatePlanResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<DeactivatePlanRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeactivatePlanResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1116,8 @@ export type GetPlanError = Forbidden | NotFound | PaypalOpError;
 /** Show plan details Shows details for a plan, by ID. */
 export const getPlan: API.OperationMethod<GetPlanRequest, Plan, GetPlanError, PaypalOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetPlanRequest,
-    output: Plan,
+    input: __S(67, __c8, 3) as any as S.Schema<GetPlanRequest>,
+    output: __S(23, __c2, 7) as any as S.Schema<Plan>,
     errors: [Forbidden, NotFound, UnknownPaypalError],
     protocol: PaypalProtocol,
     retry: Retry.Retry,
@@ -1505,8 +1131,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionRequest,
-  output: GetSubscriptionResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<GetSubscriptionResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1520,8 +1146,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPlansRequest,
-  output: PlanCollection,
+  input: __S(70, __c8, 6) as any as S.Schema<ListPlansRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<PlanCollection>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1540,8 +1166,8 @@ export const patchPlan: API.OperationMethod<
   PatchPlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchPlanRequest,
-  output: PatchPlanResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<PatchPlanRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PatchPlanResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1560,8 +1186,8 @@ export const patchSubscription: API.OperationMethod<
   PatchSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSubscriptionRequest,
-  output: PatchSubscriptionResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<PatchSubscriptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PatchSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1580,8 +1206,8 @@ export const plansUpdatePricingSchemes: API.OperationMethod<
   PlansUpdatePricingSchemesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PlansUpdatePricingSchemesRequest,
-  output: PlansUpdatePricingSchemesResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<PlansUpdatePricingSchemesRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<PlansUpdatePricingSchemesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1600,8 +1226,8 @@ export const subscriptionsRevise: API.OperationMethod<
   SubscriptionsReviseError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsReviseRequest,
-  output: SubscriptionReviseResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<SubscriptionsReviseRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<SubscriptionReviseResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1615,8 +1241,8 @@ export const subscriptionsTransactions: API.OperationMethod<
   SubscriptionsTransactionsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsTransactionsRequest,
-  output: TransactionsList,
+  input: __S(87, __c10, 7) as any as S.Schema<SubscriptionsTransactionsRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<TransactionsList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1635,8 +1261,8 @@ export const suspendSubscription: API.OperationMethod<
   SuspendSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SuspendSubscriptionRequest,
-  output: SuspendSubscriptionResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<SuspendSubscriptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<SuspendSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1690,8 +1316,8 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
           payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
           note: S.String,
-          capture_type: CaptureSubscriptionRequestCaptureType,
-          amount: Money,
+          capture_type: S.String,
+          amount: __S(4, __c0, 4),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/billing/subscriptions/{id}/capture", code: 200 }),
         ),
@@ -1701,12 +1327,12 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gross_amount: Money,
-          total_item_amount: S.optional(Money),
-          fee_amount: S.optional(Money),
-          shipping_amount: S.optional(Money),
-          tax_amount: S.optional(Money),
-          net_amount: S.optional(Money),
+          gross_amount: __S(4, __c0, 4),
+          total_item_amount: S.optional(__S(4, __c0, 4)),
+          fee_amount: S.optional(__S(4, __c0, 4)),
+          shipping_amount: S.optional(__S(4, __c0, 4)),
+          tax_amount: S.optional(__S(4, __c0, 4)),
+          net_amount: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "AmountWithBreakdown" });
     case 7:
@@ -1727,10 +1353,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TransactionStatus),
+          status: S.optional(S.String),
           id: S.String,
-          amount_with_breakdown: AmountWithBreakdown,
-          payer_name: S.optional(Name),
+          amount_with_breakdown: __S(6, __c0, 6),
+          payer_name: S.optional(__S(7, __c0, 7)),
           payer_email: S.optional(S.String),
           time: S.String,
         }),
@@ -1740,44 +1366,44 @@ function __c1(j: number): any {
         S.Struct({
           starting_quantity: S.String,
           ending_quantity: S.optional(S.String),
-          amount: Money,
+          amount: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "PricingTier" });
     case 2:
-      return S.Array(PricingTier);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fixed_price: S.optional(Money),
-          pricing_model: S.optional(PricingSchemeInputPricingModel),
-          tiers: S.optional(PricingTierList),
+          fixed_price: S.optional(__S(4, __c0, 4)),
+          pricing_model: S.optional(S.String),
+          tiers: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "PricingSchemeInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          interval_unit: FrequencyIntervalUnit,
+          interval_unit: S.String,
           interval_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Frequency" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pricing_scheme: S.optional(PricingSchemeInput),
-          frequency: Frequency,
-          tenure_type: BillingCycleInputTenureType,
+          pricing_scheme: S.optional(__S(11, __c1, 3)),
+          frequency: __S(12, __c1, 4),
+          tenure_type: S.String,
           sequence: S.Number,
           total_cycles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BillingCycleInput" });
     case 6:
-      return S.Array(BillingCycleInput);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           auto_bill_outstanding: S.optional(S.Boolean),
-          setup_fee: S.optional(Money),
-          setup_fee_failure_action: S.optional(PaymentPreferencesSetupFeeFailureAction),
+          setup_fee: S.optional(__S(4, __c0, 4)),
+          setup_fee_failure_action: S.optional(S.String),
           payment_failure_threshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaymentPreferences" });
@@ -1799,11 +1425,11 @@ function __c2(j: number): any {
           payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
           product_id: S.String,
           name: S.String,
-          status: S.optional(CreatePlanRequestStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
-          billing_cycles: BillingCycleListInput,
-          payment_preferences: PaymentPreferences,
-          taxes: S.optional(Taxes),
+          billing_cycles: __S(14, __c1, 6),
+          payment_preferences: __S(15, __c1, 7),
+          taxes: S.optional(__S(16, __c2, 0)),
           quantity_supported: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/billing/plans", code: 200 })),
       ).annotate({ identifier: "CreatePlanRequest" });
@@ -1811,9 +1437,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          fixed_price: S.optional(Money),
-          pricing_model: S.optional(PricingSchemePricingModel),
-          tiers: S.optional(PricingTierList),
+          fixed_price: S.optional(__S(4, __c0, 4)),
+          pricing_model: S.optional(S.String),
+          tiers: S.optional(__S(10, __c1, 2)),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
         }),
@@ -1821,40 +1447,40 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pricing_scheme: S.optional(PricingScheme),
-          frequency: Frequency,
-          tenure_type: BillingCycleTenureType,
+          pricing_scheme: S.optional(__S(18, __c2, 2)),
+          frequency: __S(12, __c1, 4),
+          tenure_type: S.String,
           sequence: S.Number,
           total_cycles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BillingCycle" });
     case 4:
-      return S.Array(BillingCycle);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(LinkDescriptionMethod),
+          method: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDescription" });
     case 6:
-      return S.Array(LinkDescription);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           product_id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(PlanStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
-          billing_cycles: S.optional(BillingCycleList),
-          payment_preferences: S.optional(PaymentPreferences),
-          taxes: S.optional(Taxes),
+          billing_cycles: S.optional(__S(20, __c2, 4)),
+          payment_preferences: S.optional(__S(15, __c1, 7)),
+          taxes: S.optional(__S(16, __c2, 0)),
           quantity_supported: S.optional(S.Boolean),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
-          links: S.optional(LinkDescriptionList),
+          links: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "Plan" });
   }
@@ -1877,8 +1503,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          phone_type: S.optional(PhoneType),
-          phone_number: PhoneWithTypePhoneNumber,
+          phone_type: S.optional(S.String),
+          phone_number: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "PhoneWithType" });
     case 3:
@@ -1892,13 +1518,13 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           label: S.String,
-          type: S.optional(ShippingType),
-          amount: S.optional(Money),
+          type: S.optional(S.String),
+          amount: S.optional(__S(4, __c0, 4)),
           selected: S.Boolean,
         }),
       ).annotate({ identifier: "ShippingOption" });
     case 5:
-      return S.Array(ShippingOption);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1913,10 +1539,10 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(ShippingDetailName),
-          type: S.optional(ShippingDetailType),
-          options: S.optional(ShippingOptionList),
-          address: S.optional(ShippingDetailAddress),
+          name: S.optional(__S(27, __c3, 3)),
+          type: S.optional(S.String),
+          options: S.optional(__S(29, __c3, 5)),
+          address: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "ShippingDetail" });
   }
@@ -1928,27 +1554,27 @@ function __c4(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           email_address: S.optional(S.String),
-          phone: S.optional(PhoneWithType),
+          phone: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "Customer" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          store_in_vault: S.optional(StoreInVaultInstruction),
+          store_in_vault: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultInstructionBase" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(CardVerificationMethod),
+          method: S.optional(S.String),
         }),
       ).annotate({ identifier: "CardVerification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(Customer),
-          vault: S.optional(VaultInstructionBase),
-          verification: S.optional(CardVerification),
+          customer: S.optional(__S(32, __c4, 0)),
+          vault: S.optional(__S(33, __c4, 1)),
+          verification: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "CardAttributes" });
     case 4:
@@ -1958,32 +1584,32 @@ function __c4(j: number): any {
           number: S.optional(S.String),
           expiry: S.optional(S.String),
           security_code: S.optional(S.String),
-          type: S.optional(CardType),
-          brand: S.optional(CardBrand),
-          billing_address: S.optional(ShippingDetailAddress),
-          attributes: S.optional(CardAttributes),
+          type: S.optional(S.String),
+          brand: S.optional(S.String),
+          billing_address: S.optional(__S(30, __c3, 6)),
+          attributes: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "PaymentSourceCard" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          card: S.optional(PaymentSourceCard),
+          card: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "PaymentSource" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           email_address: S.optional(S.String),
-          name: S.optional(SubscriberRequestName),
-          phone: S.optional(PhoneWithType),
-          shipping_address: S.optional(ShippingDetail),
-          payment_source: S.optional(PaymentSource),
+          name: S.optional(__S(24, __c3, 0)),
+          phone: S.optional(__S(26, __c3, 2)),
+          shipping_address: S.optional(__S(31, __c3, 7)),
+          payment_source: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "SubscriberRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          payee_preferred: S.optional(PayeePaymentMethodPreference),
+          payee_preferred: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApplicationContextPaymentMethod",
@@ -1997,9 +1623,9 @@ function __c5(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.String),
-          shipping_preference: S.optional(ApplicationContextShippingPreference),
-          user_action: S.optional(ApplicationContextUserAction),
-          payment_method: S.optional(ApplicationContextPaymentMethod),
+          shipping_preference: S.optional(S.String),
+          user_action: S.optional(S.String),
+          payment_method: S.optional(__S(39, __c4, 7)),
           return_url: S.String,
           cancel_url: S.String,
         }),
@@ -2007,7 +1633,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pricing_scheme: S.optional(PricingSchemeInput),
+          pricing_scheme: S.optional(__S(11, __c1, 3)),
           sequence: S.Number,
           total_cycles: S.optional(S.Number),
         }),
@@ -2015,13 +1641,13 @@ function __c5(j: number): any {
         identifier: "BillingCycleOverrideInput",
       });
     case 2:
-      return S.Array(BillingCycleOverrideInput);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           auto_bill_outstanding: S.optional(S.Boolean),
-          setup_fee: S.optional(Money),
-          setup_fee_failure_action: S.optional(PaymentPreferencesOverrideSetupFeeFailureAction),
+          setup_fee: S.optional(__S(4, __c0, 4)),
+          setup_fee_failure_action: S.optional(S.String),
           payment_failure_threshold: S.optional(S.Number),
         }),
       ).annotate({
@@ -2037,9 +1663,9 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          billing_cycles: S.optional(BillingCycleOverrideListInput),
-          payment_preferences: S.optional(PaymentPreferencesOverride),
-          taxes: S.optional(TaxesOverride),
+          billing_cycles: S.optional(__S(42, __c5, 2)),
+          payment_preferences: S.optional(__S(43, __c5, 3)),
+          taxes: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "PlanOverrideInput" });
     case 6:
@@ -2050,19 +1676,19 @@ function __c5(j: number): any {
           plan_id: S.String,
           start_time: S.optional(S.String),
           quantity: S.optional(S.String),
-          shipping_amount: S.optional(Money),
-          subscriber: S.optional(SubscriberRequest),
+          shipping_amount: S.optional(__S(4, __c0, 4)),
+          subscriber: S.optional(__S(38, __c4, 6)),
           auto_renewal: S.optional(S.Boolean),
-          application_context: S.optional(ApplicationContext),
+          application_context: S.optional(__S(40, __c5, 0)),
           custom_id: S.optional(S.String),
-          plan: S.optional(PlanOverrideInput),
+          plan: S.optional(__S(45, __c5, 5)),
           merchant_inventory: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v1/billing/subscriptions", code: 200 })),
       ).annotate({
         identifier: "CreateSubscriptionRequest",
       });
     case 7:
-      return S.Array(CardBrand);
+      return S.Array(S.String);
   }
 }
 function __c6(j: number): any {
@@ -2070,8 +1696,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authentication_status: S.optional(ParesStatus),
-          enrollment_status: S.optional(Enrolled),
+          authentication_status: S.optional(S.String),
+          enrollment_status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ThreeDSecureAuthenticationResponse",
@@ -2079,8 +1705,8 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          liability_shift: S.optional(LiabilityShift),
-          three_d_secure: S.optional(ThreeDSecureAuthenticationResponse),
+          liability_shift: S.optional(S.String),
+          three_d_secure: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "AuthenticationResponse" });
     case 2:
@@ -2093,15 +1719,15 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(VaultResponseStatus),
-          customer: S.optional(VaultResponseCustomer),
-          links: S.optional(DefinitionsLinkDescriptionList),
+          status: S.optional(S.String),
+          customer: S.optional(__S(50, __c6, 2)),
+          links: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "VaultResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          vault: S.optional(VaultResponse),
+          vault: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "CardAttributesResponse" });
     case 5:
@@ -2119,7 +1745,7 @@ function __c6(j: number): any {
           bin: S.optional(S.String),
           issuing_bank: S.optional(S.String),
           bin_country_code: S.optional(S.String),
-          products: S.optional(ProductsList),
+          products: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({ identifier: "BinDetails" });
   }
@@ -2131,15 +1757,15 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           last_digits: S.optional(S.String),
-          brand: S.optional(CardBrand),
-          available_networks: S.optional(CardBrandList),
-          type: S.optional(CardType),
-          authentication_result: S.optional(AuthenticationResponse),
-          attributes: S.optional(CardAttributesResponse),
-          from_request: S.optional(CardFromRequest),
+          brand: S.optional(S.String),
+          available_networks: S.optional(__S(47, __c5, 7)),
+          type: S.optional(S.String),
+          authentication_result: S.optional(__S(49, __c6, 1)),
+          attributes: S.optional(__S(52, __c6, 4)),
+          from_request: S.optional(__S(53, __c6, 5)),
           expiry: S.optional(S.String),
-          bin_details: S.optional(BinDetails),
-          billing_address: S.optional(ShippingDetailAddress),
+          bin_details: S.optional(__S(55, __c6, 7)),
+          billing_address: S.optional(__S(30, __c3, 6)),
           currency_code: S.optional(S.String),
         }),
       ).annotate({
@@ -2148,7 +1774,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          card: S.optional(CardResponseWithBillingAddress),
+          card: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "PaymentSourceResponse" });
     case 2:
@@ -2156,16 +1782,16 @@ function __c7(j: number): any {
         S.Struct({
           email_address: S.optional(S.String),
           payer_id: S.optional(S.String),
-          name: S.optional(SubscriberRequestName),
-          phone: S.optional(PhoneWithType),
-          shipping_address: S.optional(ShippingDetail),
-          payment_source: S.optional(PaymentSourceResponse),
+          name: S.optional(__S(24, __c3, 0)),
+          phone: S.optional(__S(26, __c3, 2)),
+          shipping_address: S.optional(__S(31, __c3, 7)),
+          payment_source: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "Subscriber" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tenure_type: CycleExecutionTenureType,
+          tenure_type: S.String,
           sequence: S.Number,
           cycles_completed: S.Number,
           cycles_remaining: S.optional(S.Number),
@@ -2174,33 +1800,33 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "CycleExecution" });
     case 4:
-      return S.Array(CycleExecution);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(Money),
+          amount: S.optional(__S(4, __c0, 4)),
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "LastPaymentDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          amount: Money,
+          amount: __S(4, __c0, 4),
           time: S.String,
-          reason_code: S.optional(FailedPaymentDetailsReasonCode),
+          reason_code: S.optional(S.String),
           next_payment_retry_time: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailedPaymentDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          outstanding_balance: Money,
-          cycle_executions: S.optional(CycleExecutionList),
-          last_payment: S.optional(LastPaymentDetails),
+          outstanding_balance: __S(4, __c0, 4),
+          cycle_executions: S.optional(__S(60, __c7, 4)),
+          last_payment: S.optional(__S(61, __c7, 5)),
           next_billing_time: S.optional(S.String),
           final_payment_time: S.optional(S.String),
           failed_payments_count: S.Number,
-          last_failed_payment: S.optional(FailedPaymentDetails),
+          last_failed_payment: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({ identifier: "SubscriptionBillingInfo" });
   }
@@ -2213,9 +1839,9 @@ function __c8(j: number): any {
           product_id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          billing_cycles: S.optional(BillingCycleList),
-          payment_preferences: S.optional(PaymentPreferences),
-          taxes: S.optional(Taxes),
+          billing_cycles: S.optional(__S(20, __c2, 4)),
+          payment_preferences: S.optional(__S(15, __c1, 7)),
+          taxes: S.optional(__S(16, __c2, 0)),
           quantity_supported: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2224,22 +1850,22 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CreateSubscriptionResponseStatus),
+          status: S.optional(S.String),
           status_change_note: S.optional(S.String),
           status_update_time: S.optional(S.String),
           id: S.optional(S.String),
           plan_id: S.optional(S.String),
           start_time: S.optional(S.String),
           quantity: S.optional(S.String),
-          shipping_amount: S.optional(Money),
-          subscriber: S.optional(Subscriber),
-          billing_info: S.optional(SubscriptionBillingInfo),
+          shipping_amount: S.optional(__S(4, __c0, 4)),
+          subscriber: S.optional(__S(58, __c7, 2)),
+          billing_info: S.optional(__S(63, __c7, 7)),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
           custom_id: S.optional(S.String),
           plan_overridden: S.optional(S.Boolean),
-          plan: S.optional(CreateSubscriptionResponsePlan),
-          links: S.optional(LinkDescriptionList),
+          plan: S.optional(__S(64, __c8, 0)),
+          links: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "CreateSubscriptionResponse",
@@ -2266,22 +1892,22 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GetSubscriptionResponseStatus),
+          status: S.optional(S.String),
           status_change_note: S.optional(S.String),
           status_update_time: S.optional(S.String),
           id: S.optional(S.String),
           plan_id: S.optional(S.String),
           start_time: S.optional(S.String),
           quantity: S.optional(S.String),
-          shipping_amount: S.optional(Money),
-          subscriber: S.optional(Subscriber),
-          billing_info: S.optional(SubscriptionBillingInfo),
+          shipping_amount: S.optional(__S(4, __c0, 4)),
+          subscriber: S.optional(__S(58, __c7, 2)),
+          billing_info: S.optional(__S(63, __c7, 7)),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
           custom_id: S.optional(S.String),
           plan_overridden: S.optional(S.Boolean),
-          plan: S.optional(CreateSubscriptionResponsePlan),
-          links: S.optional(LinkDescriptionList),
+          plan: S.optional(__S(64, __c8, 0)),
+          links: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "GetSubscriptionResponse" });
     case 6:
@@ -2295,7 +1921,7 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/billing/plans", code: 200 })),
       ).annotate({ identifier: "ListPlansRequest" });
     case 7:
-      return S.Array(Plan);
+      return S.Array(__S(23, __c2, 7));
   }
 }
 function __c9(j: number): any {
@@ -2303,53 +1929,53 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          plans: S.optional(PlanList),
+          plans: S.optional(__S(71, __c8, 7)),
           total_items: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          links: S.optional(LinkDescriptionList),
+          links: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "PlanCollection" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          op: PatchOp,
+          op: S.String,
           path: S.optional(S.String),
           value: S.optional(S.Unknown),
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "Patch" });
     case 2:
-      return S.Array(Patch);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(PatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/billing/plans/{id}", code: 200 })),
       ).annotate({ identifier: "PatchPlanRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(PatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/billing/subscriptions/{id}", code: 200 })),
       ).annotate({ identifier: "PatchSubscriptionRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           billing_cycle_sequence: S.Number,
-          pricing_scheme: PricingSchemeInput,
+          pricing_scheme: __S(11, __c1, 3),
         }),
       ).annotate({
         identifier: "UpdatePricingSchemeRequestInput",
       });
     case 6:
-      return S.Array(UpdatePricingSchemeRequestInput);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          pricing_schemes: UpdatePricingSchemeRequestListInput,
+          pricing_schemes: __S(78, __c9, 6),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2373,10 +1999,8 @@ function __c10(j: number): any {
         S.Struct({
           brand_name: S.optional(S.String),
           locale: S.optional(S.String),
-          shipping_preference: S.optional(
-            SubscriptionsReviseRequestApplicationContextShippingPreference,
-          ),
-          payment_method: S.optional(ApplicationContextPaymentMethod),
+          shipping_preference: S.optional(S.String),
+          payment_method: S.optional(__S(39, __c4, 7)),
           return_url: S.String,
           cancel_url: S.String,
         }),
@@ -2389,10 +2013,10 @@ function __c10(j: number): any {
           id: S.String.pipe(T.Label()),
           plan_id: S.optional(S.String),
           quantity: S.optional(S.String),
-          shipping_amount: S.optional(Money),
-          shipping_address: S.optional(ShippingDetail),
-          application_context: S.optional(SubscriptionsReviseRequestApplicationContext),
-          plan: S.optional(PlanOverrideInput),
+          shipping_amount: S.optional(__S(4, __c0, 4)),
+          shipping_address: S.optional(__S(31, __c3, 7)),
+          application_context: S.optional(__S(81, __c10, 1)),
+          plan: S.optional(__S(45, __c5, 5)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/billing/subscriptions/{id}/revise", code: 200 }),
         ),
@@ -2402,19 +2026,19 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pricing_scheme: S.optional(PricingScheme),
+          pricing_scheme: S.optional(__S(18, __c2, 2)),
           sequence: S.Number,
           total_cycles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BillingCycleOverride" });
     case 4:
-      return S.Array(BillingCycleOverride);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          billing_cycles: S.optional(BillingCycleOverrideList),
-          payment_preferences: S.optional(PaymentPreferencesOverride),
-          taxes: S.optional(TaxesOverride),
+          billing_cycles: S.optional(__S(84, __c10, 4)),
+          payment_preferences: S.optional(__S(43, __c5, 3)),
+          taxes: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "PlanOverride" });
     case 6:
@@ -2422,11 +2046,11 @@ function __c10(j: number): any {
         S.Struct({
           plan_id: S.optional(S.String),
           quantity: S.optional(S.String),
-          shipping_amount: S.optional(Money),
-          shipping_address: S.optional(ShippingDetail),
-          plan: S.optional(PlanOverride),
+          shipping_amount: S.optional(__S(4, __c0, 4)),
+          shipping_address: S.optional(__S(31, __c3, 7)),
+          plan: S.optional(__S(85, __c10, 5)),
           plan_overridden: S.optional(S.Boolean),
-          links: S.optional(SubscriptionReviseResponseDefinitionsLinkDescriptionList),
+          links: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "SubscriptionReviseResponse",
@@ -2448,14 +2072,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Transaction);
+      return S.Array(__S(8, __c1, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          transactions: S.optional(TransactionList),
+          transactions: S.optional(__S(88, __c11, 0)),
           total_items: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          links: S.optional(LinkDescriptionList),
+          links: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "TransactionsList" });
     case 2:
@@ -2470,4 +2094,9 @@ function __c11(j: number): any {
         identifier: "SuspendSubscriptionRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -85,8 +87,6 @@ export type ParameterTypeEnum =
   | "map"
   | "triggerReference"
   | "tagReference";
-const ParameterTypeEnum = S.String;
-
 /** Represents a Google Tag Manager Parameter. */
 export interface Parameter {
   /** The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name */
@@ -102,11 +102,7 @@ export interface Parameter {
   /** This list parameter's parameters (keys will be ignored). */
   list?: ParameterList;
 }
-const Parameter = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Parameter>;
-
 export type ParameterList = Array<Parameter>;
-const ParameterList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ParameterList>;
-
 /** Represents a Google tag configuration. */
 export interface GtagConfig {
   /** Google tag config's API relative path. */
@@ -128,16 +124,12 @@ export interface GtagConfig {
   /** The fingerprint of the Google tag config as computed at storage time. This value is recomputed whenever the config is modified. */
   fingerprint?: string;
 }
-const GtagConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GtagConfig>;
-
 export type EntityChangeStatusEnum =
   | "changeStatusUnspecified"
   | "none"
   | "added"
   | "deleted"
   | "updated";
-const EntityChangeStatusEnum = S.String;
-
 /** Represents the link between a custom template and an entry on the Community Template Gallery site. */
 export interface GalleryReference {
   /** If a user has manually edited the community gallery template. */
@@ -157,8 +149,6 @@ export interface GalleryReference {
   /** The name of the repository for the community gallery template. */
   repository?: string;
 }
-const GalleryReference = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GalleryReference>;
-
 /** Represents a Google Tag Manager Custom Template's contents. */
 export interface CustomTemplate {
   /** The fingerprint of the GTM Custom Template as computed at storage time. This value is recomputed whenever the template is modified. */
@@ -182,8 +172,6 @@ export interface CustomTemplate {
   /** GTM Account ID. */
   accountId?: string;
 }
-const CustomTemplate = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CustomTemplate>;
-
 /** Represents a Google Tag Manager Folder. */
 export interface Folder {
   /** Folder display name. */
@@ -205,11 +193,7 @@ export interface Folder {
   /** The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder is modified. */
   fingerprint?: string;
 }
-const Folder = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Folder>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
-
 /** Represents a Zone's type restrictions. */
 export interface ZoneTypeRestriction {
   /** True if type restrictions have been enabled for this Zone. */
@@ -217,8 +201,6 @@ export interface ZoneTypeRestriction {
   /** List of type public ids that have been whitelisted for use in this Zone. */
   whitelistedTypeId?: StringList;
 }
-const ZoneTypeRestriction = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ZoneTypeRestriction>;
-
 export type ConditionTypeEnum =
   | "conditionTypeUnspecified"
   | "equals"
@@ -232,8 +214,6 @@ export type ConditionTypeEnum =
   | "lessOrEquals"
   | "cssSelector"
   | "urlMatches";
-const ConditionTypeEnum = S.String;
-
 /** Represents a predicate. */
 export interface Condition {
   /** A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. */
@@ -241,11 +221,7 @@ export interface Condition {
   /** The type of operator for this condition. */
   type?: ConditionTypeEnum | (string & {});
 }
-const Condition = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Condition>;
-
 export type ConditionList = Array<Condition>;
-const ConditionList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ConditionList>;
-
 /** Represents a Zone's boundaries. */
 export interface ZoneBoundary {
   /** The conditions that, when conjoined, make up the boundary. */
@@ -253,8 +229,6 @@ export interface ZoneBoundary {
   /** Custom evaluation trigger IDs. A zone will evaluate its boundary conditions when any of the listed triggers are true. */
   customEvaluationTriggerId?: StringList;
 }
-const ZoneBoundary = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ZoneBoundary>;
-
 /** Represents a child container of a Zone. */
 export interface ZoneChildContainer {
   /** The zone's nickname for the child container. */
@@ -262,14 +236,7 @@ export interface ZoneChildContainer {
   /** The child container's public id. */
   publicId?: string;
 }
-const ZoneChildContainer = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ZoneChildContainer>;
-
 export type ZoneChildContainerList = Array<ZoneChildContainer>;
-const ZoneChildContainerList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ZoneChildContainerList>;
-
 /** Represents a Google Tag Manager Zone's contents. */
 export interface Zone {
   /** GTM Workspace ID. */
@@ -297,8 +264,6 @@ export interface Zone {
   /** Containers that are children of this Zone. */
   childContainer?: ZoneChildContainerList;
 }
-const Zone = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Zone>;
-
 /** Represents a Google Tag Manager Transformation. */
 export interface Transformation {
   /** GTM transformation's API relative path. */
@@ -326,8 +291,6 @@ export interface Transformation {
   /** The Transformation ID uniquely identifies the GTM transformation. */
   transformationId?: string;
 }
-const Transformation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Transformation>;
-
 export interface Client {
   /** GTM Account ID. */
   accountId?: string;
@@ -356,8 +319,6 @@ export interface Client {
   /** Auto generated link to the tag manager UI */
   tagManagerUrl?: string;
 }
-const Client = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Client>;
-
 export type BuiltInVariableTypeEnum =
   | "builtInVariableTypeUnspecified"
   | "pageUrl"
@@ -476,8 +437,6 @@ export type BuiltInVariableTypeEnum =
   | "analyticsClientId"
   | "analyticsSessionId"
   | "analyticsSessionNumber";
-const BuiltInVariableTypeEnum = S.String;
-
 /** Built-in variables are a special category of variables that are pre-created and non-customizable. They provide common functionality like accessing properties of the gtm data layer, monitoring clicks, or accessing elements of a page URL. */
 export interface BuiltInVariable {
   /** GTM Workspace ID. */
@@ -493,18 +452,12 @@ export interface BuiltInVariable {
   /** GTM Container ID. */
   containerId?: string;
 }
-const BuiltInVariable = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<BuiltInVariable>;
-
 export type VariableFormatValueCaseConversionTypeEnum = "none" | "lowercase" | "uppercase";
-const VariableFormatValueCaseConversionTypeEnum = S.String;
-
 export type VariableFormatValueConvertToNumberEnum =
   | "decimalSeparatorTypeUnspecified"
   | "period"
   | "comma"
   | "automatic";
-const VariableFormatValueConvertToNumberEnum = S.String;
-
 export interface VariableFormatValue {
   /** The value to convert if a variable value is undefined. */
   convertUndefinedToValue?: Parameter;
@@ -521,8 +474,6 @@ export interface VariableFormatValue {
   /** The option to convert a variable value to a boolean. */
   convertToBoolean?: boolean;
 }
-const VariableFormatValue = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<VariableFormatValue>;
-
 /** Represents a Google Tag Manager Variable. */
 export interface Variable {
   /** GTM Workspace ID. */
@@ -560,8 +511,6 @@ export interface Variable {
   /** GTM Variable's API relative path. */
   path?: string;
 }
-const Variable = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Variable>;
-
 /** Represents a reference to atag that fires before another tag in order to set up dependencies. */
 export interface SetupTag {
   /** The name of the setup tag. */
@@ -569,29 +518,19 @@ export interface SetupTag {
   /** If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status. */
   stopOnSetupFailure?: boolean;
 }
-const SetupTag = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SetupTag>;
-
 export type SetupTagList = Array<SetupTag>;
-const SetupTagList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SetupTagList>;
-
 export type TagTagFiringOptionEnum =
   | "tagFiringOptionUnspecified"
   | "unlimited"
   | "oncePerEvent"
   | "oncePerLoad";
-const TagTagFiringOptionEnum = S.String;
-
 export type TagConsentSettingConsentStatusEnum = "notSet" | "notNeeded" | "needed";
-const TagConsentSettingConsentStatusEnum = S.String;
-
 export interface TagConsentSetting {
   /** The type of consents to check for during tag firing if in the consent NEEDED state. This parameter must be of type LIST where each list item is of type STRING. */
   consentType?: Parameter;
   /** The tag's consent status. If set to NEEDED, the runtime will check that the consent types specified by the consent_type field have been granted. */
   consentStatus?: TagConsentSettingConsentStatusEnum | (string & {});
 }
-const TagConsentSetting = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TagConsentSetting>;
-
 /** Represents a tag that fires after another tag in order to tear down dependencies. */
 export interface TeardownTag {
   /** If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status. */
@@ -599,11 +538,7 @@ export interface TeardownTag {
   /** The name of the teardown tag. */
   tagName?: string;
 }
-const TeardownTag = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TeardownTag>;
-
 export type TeardownTagList = Array<TeardownTag>;
-const TeardownTagList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TeardownTagList>;
-
 /** Represents a Google Tag Manager Tag. */
 export interface Tag {
   /** GTM Container ID. */
@@ -657,8 +592,6 @@ export interface Tag {
   /** User notes on how to apply this tag in the container. */
   notes?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Tag>;
-
 export type TriggerTypeEnum =
   | "eventTypeUnspecified"
   | "pageview"
@@ -695,8 +628,6 @@ export type TriggerTypeEnum =
   | "youTubeVideo"
   | "scrollDepth"
   | "elementVisibility";
-const TriggerTypeEnum = S.String;
-
 /** Represents a Google Tag Manager Trigger */
 export interface Trigger {
   /** How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers. */
@@ -764,8 +695,6 @@ export interface Trigger {
   /** Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. */
   interval?: Parameter;
 }
-const Trigger = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Trigger>;
-
 /** A workspace entity that may represent a tag, trigger, variable, or folder in addition to its status in the workspace. */
 export interface Entity {
   /** The gtag config being represented by the entity. */
@@ -791,43 +720,25 @@ export interface Entity {
   /** The trigger being represented by the entity. */
   trigger?: Trigger;
 }
-const Entity = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Entity>;
-
 export type EntityList = Array<Entity>;
-const EntityList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<EntityList>;
-
 export interface ProposedChange {
   /** The list of workspace changes to be applied. */
   changes?: EntityList;
 }
-const ProposedChange = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ProposedChange>;
-
 export interface BulkUpdateAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
   /** Request body */
   body?: ProposedChange;
 }
-const BulkUpdateAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<BulkUpdateAccountsContainersWorkspacesRequest>;
-
 export interface BulkUpdateWorkspaceResponse {
   /** The entities that were added or updated during the bulk-update. Does not include entities that were deleted or updated by the system. */
   changes?: EntityList;
 }
-const BulkUpdateWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<BulkUpdateWorkspaceResponse>;
-
 export type CombineAccountsContainersSettingSourceEnum =
   | "settingSourceUnspecified"
   | "current"
   | "other";
-const CombineAccountsContainersSettingSourceEnum = S.String;
-
 export interface CombineAccountsContainersRequest {
   /** GTM Container's API relative path. */
   path: string;
@@ -838,11 +749,6 @@ export interface CombineAccountsContainersRequest {
   /** Specify the source of config setting after combine */
   settingSource?: CombineAccountsContainersSettingSourceEnum | (string & {});
 }
-const CombineAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CombineAccountsContainersRequest>;
-
 export type ContainerUsageContextItemEnum =
   | "usageContextUnspecified"
   | "web"
@@ -852,16 +758,9 @@ export type ContainerUsageContextItemEnum =
   | "iosSdk5"
   | "amp"
   | "server";
-const ContainerUsageContextItemEnum = S.String;
-
 export type ContainerUsageContextItemEnumList = Array<
   ContainerUsageContextItemEnum | (string & {})
 >;
-const ContainerUsageContextItemEnumList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ContainerUsageContextItemEnumList>;
-
 export interface ContainerFeatures {
   /** Whether this Container supports triggers. */
   supportTriggers?: boolean;
@@ -892,8 +791,6 @@ export interface ContainerFeatures {
   /** Whether this Container supports Google tag config. */
   supportGtagConfigs?: boolean;
 }
-const ContainerFeatures = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ContainerFeatures>;
-
 /** Represents a Google Tag Manager Container, which specifies the platform tags will run on, manages workspaces, and retains container versions. */
 export interface Container {
   /** List of Usage Contexts for the Container. Valid values include: web, android, or ios. */
@@ -923,22 +820,13 @@ export interface Container {
   /** GTM Container's API relative path. */
   path?: string;
 }
-const Container = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Container>;
-
 export interface CreateAccountsContainersRequest {
   /** GTM Account's API relative path. */
   parent: string;
   /** Request body */
   body?: Container;
 }
-const CreateAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateAccountsContainersRequest>;
-
 export type EnvironmentTypeEnum = "user" | "live" | "latest" | "workspace";
-const EnvironmentTypeEnum = S.String;
-
 /** Represents a Google Tag Manager Environment. Note that a user can create, delete and update environments of type USER, but can only update the enable_debug and url fields of environments of other types. */
 export interface Environment {
   /** Represents a link to a container version. */
@@ -972,19 +860,12 @@ export interface Environment {
   /** Auto generated link to the tag manager UI */
   tagManagerUrl?: string;
 }
-const Environment = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Environment>;
-
 export interface CreateAccountsContainersEnvironmentsRequest {
   /** GTM Container's API relative path. */
   parent: string;
   /** Request body */
   body?: Environment;
 }
-const CreateAccountsContainersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateAccountsContainersEnvironmentsRequest>;
-
 /** Represents a Google Tag Manager Container Workspace. */
 export interface Workspace {
   /** Auto generated link to the tag manager UI */
@@ -1004,19 +885,12 @@ export interface Workspace {
   /** The fingerprint of the GTM Workspace as computed at storage time. This value is recomputed whenever the workspace is modified. */
   fingerprint?: string;
 }
-const Workspace = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Workspace>;
-
 export interface CreateAccountsContainersWorkspacesRequest {
   /** GTM parent Container's API relative path. */
   parent: string;
   /** Request body */
   body?: Workspace;
 }
-const CreateAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateAccountsContainersWorkspacesRequest>;
-
 export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "builtInVariableTypeUnspecified"
   | "pageUrl"
@@ -1135,152 +1009,84 @@ export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "analyticsClientId"
   | "analyticsSessionId"
   | "analyticsSessionNumber";
-const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = S.String;
-
 export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = Array<
   CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {})
 >;
-const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
-
 export interface CreateAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** The types of built-in variables to enable. */
   type?: CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-const CreateAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesRequest>;
-
 export type BuiltInVariableList = Array<BuiltInVariable>;
-const BuiltInVariableList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<BuiltInVariableList>;
-
 export interface CreateBuiltInVariableResponse {
   /** List of created built-in variables. */
   builtInVariable?: BuiltInVariableList;
 }
-const CreateBuiltInVariableResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateBuiltInVariableResponse>;
-
 export interface CreateAccountsContainersWorkspacesClientsRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: Client;
 }
-const CreateAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateAccountsContainersWorkspacesClientsRequest>;
-
 export interface CreateAccountsContainersWorkspacesFoldersRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: Folder;
 }
-const CreateAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateAccountsContainersWorkspacesFoldersRequest>;
-
 export interface CreateAccountsContainersWorkspacesGtag_configRequest {
   /** Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: GtagConfig;
 }
-const CreateAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateAccountsContainersWorkspacesGtag_configRequest>;
-
 export interface CreateAccountsContainersWorkspacesTagsRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: Tag;
 }
-const CreateAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateAccountsContainersWorkspacesTagsRequest>;
-
 export interface CreateAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: CustomTemplate;
 }
-const CreateAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateAccountsContainersWorkspacesTemplatesRequest>;
-
 export interface CreateAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: Transformation;
 }
-const CreateAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateAccountsContainersWorkspacesTransformationsRequest>;
-
 export interface CreateAccountsContainersWorkspacesTriggersRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: Trigger;
 }
-const CreateAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateAccountsContainersWorkspacesTriggersRequest>;
-
 export interface CreateAccountsContainersWorkspacesVariablesRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: Variable;
 }
-const CreateAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateAccountsContainersWorkspacesVariablesRequest>;
-
 export interface CreateAccountsContainersWorkspacesZonesRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: Zone;
 }
-const CreateAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateAccountsContainersWorkspacesZonesRequest>;
-
 export type AccountAccessPermissionEnum =
   | "accountPermissionUnspecified"
   | "noAccess"
   | "user"
   | "admin";
-const AccountAccessPermissionEnum = S.String;
-
 /** Defines the Google Tag Manager Account access permissions. */
 export interface AccountAccess {
   /** Whether the user has no access, user access, or admin access to an account. */
   permission?: AccountAccessPermissionEnum | (string & {});
 }
-const AccountAccess = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AccountAccess>;
-
 export type ContainerAccessPermissionEnum =
   | "containerPermissionUnspecified"
   | "noAccess"
@@ -1288,8 +1094,6 @@ export type ContainerAccessPermissionEnum =
   | "edit"
   | "approve"
   | "publish";
-const ContainerAccessPermissionEnum = S.String;
-
 /** Defines the Google Tag Manager Container access permissions. */
 export interface ContainerAccess {
   /** List of Container permissions. */
@@ -1297,11 +1101,7 @@ export interface ContainerAccess {
   /** GTM Container ID. */
   containerId?: string;
 }
-const ContainerAccess = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ContainerAccess>;
-
 export type ContainerAccessList = Array<ContainerAccess>;
-const ContainerAccessList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ContainerAccessList>;
-
 /** Represents a user's permissions to an account and its container. */
 export interface UserPermission {
   /** GTM Account access permissions. */
@@ -1315,19 +1115,12 @@ export interface UserPermission {
   /** GTM Container access permissions. */
   containerAccess?: ContainerAccessList;
 }
-const UserPermission = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UserPermission>;
-
 export interface CreateAccountsUser_permissionsRequest {
   /** GTM Account's API relative path. */
   parent: string;
   /** Request body */
   body?: UserPermission;
 }
-const CreateAccountsUser_permissionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateAccountsUser_permissionsRequest>;
-
 /** Options for new container versions. */
 export interface CreateContainerVersionRequestVersionOptions {
   /** The notes of the container version to be created. */
@@ -1335,22 +1128,12 @@ export interface CreateContainerVersionRequestVersionOptions {
   /** The name of the container version to be created. */
   name?: string;
 }
-const CreateContainerVersionRequestVersionOptions = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateContainerVersionRequestVersionOptions>;
-
 export interface CreateVersionAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
   /** Request body */
   body?: CreateContainerVersionRequestVersionOptions;
 }
-const CreateVersionAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateVersionAccountsContainersWorkspacesRequest>;
-
 /** The status of a workspace after synchronization. */
 export interface SyncStatus {
   /** An error occurred during the synchronization operation. */
@@ -1358,35 +1141,15 @@ export interface SyncStatus {
   /** Synchornization operation detected a merge conflict. */
   mergeConflict?: boolean;
 }
-const SyncStatus = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SyncStatus>;
-
 export type ClientList = Array<Client>;
-const ClientList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ClientList>;
-
 export type TransformationList = Array<Transformation>;
-const TransformationList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<TransformationList>;
-
 export type GtagConfigList = Array<GtagConfig>;
-const GtagConfigList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GtagConfigList>;
-
 export type TriggerList = Array<Trigger>;
-const TriggerList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<TriggerList>;
-
 export type ZoneList = Array<Zone>;
-const ZoneList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ZoneList>;
-
 export type FolderList = Array<Folder>;
-const FolderList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<FolderList>;
-
 export type CustomTemplateList = Array<CustomTemplate>;
-const CustomTemplateList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CustomTemplateList>;
-
 export type VariableList = Array<Variable>;
-const VariableList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<VariableList>;
-
 export type TagList = Array<Tag>;
-const TagList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<TagList>;
-
 /** Represents a Google Tag Manager Container Version. */
 export interface ContainerVersion {
   /** A value of true indicates this container version has been deleted. */
@@ -1430,8 +1193,6 @@ export interface ContainerVersion {
   /** The tags in the container that this version was taken from. */
   tag?: TagList;
 }
-const ContainerVersion = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ContainerVersion>;
-
 /** Create container versions response. */
 export interface CreateContainerVersionResponse {
   /** Compiler errors or not. */
@@ -1443,65 +1204,26 @@ export interface CreateContainerVersionResponse {
   /** The container version created. */
   containerVersion?: ContainerVersion;
 }
-const CreateContainerVersionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateContainerVersionResponse>;
-
 export interface DeleteAccountsContainersRequest {
   /** GTM Container's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteAccountsContainersRequest>;
-
 export interface DeleteAccountsContainersResponse {}
-const DeleteAccountsContainersResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteAccountsContainersResponse>;
-
 export interface DeleteAccountsContainersEnvironmentsRequest {
   /** GTM Environment's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteAccountsContainersEnvironmentsRequest>;
-
 export interface DeleteAccountsContainersEnvironmentsResponse {}
-const DeleteAccountsContainersEnvironmentsResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>;
-
 export interface DeleteAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteAccountsContainersVersionsRequest>;
-
 export interface DeleteAccountsContainersVersionsResponse {}
-const DeleteAccountsContainersVersionsResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersVersionsResponse>;
-
 export interface DeleteAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesRequest>;
-
 export interface DeleteAccountsContainersWorkspacesResponse {}
-const DeleteAccountsContainersWorkspacesResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesResponse>;
-
 export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "builtInVariableTypeUnspecified"
   | "pageUrl"
@@ -1623,167 +1345,69 @@ export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
 export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = Array<
   DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {})
 >;
-const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
-  CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
-
 export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** GTM BuiltInVariable's API relative path. */
   path: string;
   /** The types of built-in variables to delete. */
   type?: DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList;
 }
-const DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>;
-
 export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse {}
-const DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>;
-
 export interface DeleteAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsRequest>;
-
 export interface DeleteAccountsContainersWorkspacesClientsResponse {}
-const DeleteAccountsContainersWorkspacesClientsResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesClientsResponse>;
-
 export interface DeleteAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersRequest>;
-
 export interface DeleteAccountsContainersWorkspacesFoldersResponse {}
-const DeleteAccountsContainersWorkspacesFoldersResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
-
 export interface DeleteAccountsContainersWorkspacesGtag_configRequest {
   /** Google tag config's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>;
-
 export interface DeleteAccountsContainersWorkspacesGtag_configResponse {}
-const DeleteAccountsContainersWorkspacesGtag_configResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
-
 export interface DeleteAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsRequest>;
-
 export interface DeleteAccountsContainersWorkspacesTagsResponse {}
-const DeleteAccountsContainersWorkspacesTagsResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTagsResponse>;
-
 export interface DeleteAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesRequest>;
-
 export interface DeleteAccountsContainersWorkspacesTemplatesResponse {}
-const DeleteAccountsContainersWorkspacesTemplatesResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>;
-
 export interface DeleteAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Transformation's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsRequest>;
-
 export interface DeleteAccountsContainersWorkspacesTransformationsResponse {}
-const DeleteAccountsContainersWorkspacesTransformationsResponse =
-  DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>;
-
 export interface DeleteAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersRequest>;
-
 export interface DeleteAccountsContainersWorkspacesTriggersResponse {}
-const DeleteAccountsContainersWorkspacesTriggersResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>;
-
 export interface DeleteAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesRequest>;
-
 export interface DeleteAccountsContainersWorkspacesVariablesResponse {}
-const DeleteAccountsContainersWorkspacesVariablesResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>;
-
 export interface DeleteAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
   path: string;
 }
-const DeleteAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesRequest>;
-
 export interface DeleteAccountsContainersWorkspacesZonesResponse {}
-const DeleteAccountsContainersWorkspacesZonesResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
-
 export interface DeleteAccountsUser_permissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
 }
-const DeleteAccountsUser_permissionsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteAccountsUser_permissionsRequest>;
-
 export interface DeleteAccountsUser_permissionsResponse {}
-const DeleteAccountsUser_permissionsResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsUser_permissionsResponse>;
-
 export interface EntitiesAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
   path: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const EntitiesAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<EntitiesAccountsContainersWorkspacesFoldersRequest>;
-
 /** Represents a Google Tag Manager Folder's contents. */
 export interface FolderEntities {
   /** The list of tags inside the folder. */
@@ -1795,22 +1419,16 @@ export interface FolderEntities {
   /** The list of variables inside the folder. */
   variable?: VariableList;
 }
-const FolderEntities = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<FolderEntities>;
-
 export interface GetAccountsRequest {
   /** GTM Account's API relative path. */
   path: string;
 }
-const GetAccountsRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<GetAccountsRequest>;
-
 export interface AccountFeatures {
   /** Whether this Account supports multiple Containers. */
   supportMultipleContainers?: boolean;
   /** Whether this Account supports user permissions managed by GTM. */
   supportUserPermissions?: boolean;
 }
-const AccountFeatures = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<AccountFeatures>;
-
 /** Represents a Google Tag Manager Account. */
 export interface Account {
   /** The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever the account is modified. */
@@ -1828,26 +1446,14 @@ export interface Account {
   /** Account display name. */
   name?: string;
 }
-const Account = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Account>;
-
 export interface GetAccountsContainersRequest {
   /** GTM Container's API relative path. */
   path: string;
 }
-const GetAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetAccountsContainersRequest>;
-
 export interface GetAccountsContainersDestinationsRequest {
   /** Google Tag Destination's API relative path. */
   path: string;
 }
-const GetAccountsContainersDestinationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetAccountsContainersDestinationsRequest>;
-
 /** Represents a Google Tag Destination. */
 export interface Destination {
   /** The Destination link ID uniquely identifies the Destination. */
@@ -1867,136 +1473,64 @@ export interface Destination {
   /** Destination display name. */
   name?: string;
 }
-const Destination = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Destination>;
-
 export interface GetAccountsContainersEnvironmentsRequest {
   /** GTM Environment's API relative path. */
   path: string;
 }
-const GetAccountsContainersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetAccountsContainersEnvironmentsRequest>;
-
 export interface GetAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
   /** The GTM ContainerVersion ID. Specify published to retrieve the currently published version. */
   containerVersionId?: string;
 }
-const GetAccountsContainersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetAccountsContainersVersionsRequest>;
-
 export interface GetAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetAccountsContainersWorkspacesRequest>;
-
 export interface GetAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetAccountsContainersWorkspacesClientsRequest>;
-
 export interface GetAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetAccountsContainersWorkspacesFoldersRequest>;
-
 export interface GetAccountsContainersWorkspacesGtag_configRequest {
   /** Google tag config's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetAccountsContainersWorkspacesGtag_configRequest>;
-
 export interface GetAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetAccountsContainersWorkspacesTagsRequest>;
-
 export interface GetAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetAccountsContainersWorkspacesTemplatesRequest>;
-
 export interface GetAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Transformation's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetAccountsContainersWorkspacesTransformationsRequest>;
-
 export interface GetAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetAccountsContainersWorkspacesTriggersRequest>;
-
 export interface GetAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetAccountsContainersWorkspacesVariablesRequest>;
-
 export interface GetAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
   path: string;
 }
-const GetAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetAccountsContainersWorkspacesZonesRequest>;
-
 export interface GetAccountsUser_permissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
 }
-const GetAccountsUser_permissionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetAccountsUser_permissionsRequest>;
-
 export interface GetStatusAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-const GetStatusAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetStatusAccountsContainersWorkspacesRequest>;
-
 /** Represents a merge conflict. */
 export interface MergeConflict {
   /** The workspace entity that has conflicting changes compared to the base version. If an entity is deleted in a workspace, it will still appear with a deleted change status. */
@@ -2004,11 +1538,7 @@ export interface MergeConflict {
   /** The base version entity (since the latest sync operation) that has conflicting changes compared to the workspace. If this field is missing, it means the workspace entity is deleted from the base version. */
   entityInBaseVersion?: Entity;
 }
-const MergeConflict = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<MergeConflict>;
-
 export type MergeConflictList = Array<MergeConflict>;
-const MergeConflictList = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<MergeConflictList>;
-
 /** The changes that have occurred in the workspace since the base container version. */
 export interface GetWorkspaceStatusResponse {
   /** The merge conflict after sync. */
@@ -2016,11 +1546,6 @@ export interface GetWorkspaceStatusResponse {
   /** Entities that have been changed in the workspace. */
   workspaceChange?: EntityList;
 }
-const GetWorkspaceStatusResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetWorkspaceStatusResponse>;
-
 export interface ImportFromGalleryAccountsContainersWorkspacesTemplatesRequest {
   /** Repository of the Gallery template to import */
   galleryRepository?: string;
@@ -2033,20 +1558,10 @@ export interface ImportFromGalleryAccountsContainersWorkspacesTemplatesRequest {
   /** Owner of the Gallery template to import */
   galleryOwner?: string;
 }
-const ImportFromGalleryAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ImportFromGalleryAccountsContainersWorkspacesTemplatesRequest>;
-
 export interface LatestAccountsContainersVersion_headersRequest {
   /** GTM Container's API relative path. */
   parent: string;
 }
-const LatestAccountsContainersVersion_headersRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<LatestAccountsContainersVersion_headersRequest>;
-
 /** Represents a Google Tag Manager Container Version Header. */
 export interface ContainerVersionHeader {
   /** Number of zones in the container version. */
@@ -2078,11 +1593,6 @@ export interface ContainerVersionHeader {
   /** Number of custom templates in the container version. */
   numCustomTemplates?: string;
 }
-const ContainerVersionHeader = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ContainerVersionHeader>;
-
 export interface LinkAccountsContainersDestinationsRequest {
   /** GTM parent Container's API relative path. */
   parent: string;
@@ -2091,22 +1601,13 @@ export interface LinkAccountsContainersDestinationsRequest {
   /** Destination ID to be linked to the current container. */
   destinationId?: string;
 }
-const LinkAccountsContainersDestinationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<LinkAccountsContainersDestinationsRequest>;
-
 export interface ListAccountsRequest {
   /** Also retrieve accounts associated with Google Tag when true. */
   includeGoogleTags?: boolean;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListAccountsRequest>;
-
 export type AccountList = Array<Account>;
-const AccountList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<AccountList>;
-
 /** List Accounts Response. */
 export interface ListAccountsResponse {
   /** List of GTM Accounts that a user has access to. */
@@ -2114,25 +1615,13 @@ export interface ListAccountsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListAccountsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListAccountsResponse>;
-
 export interface ListAccountsContainersRequest {
   /** GTM Account's API relative path. */
   parent: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListAccountsContainersRequest>;
-
 export type ContainerList = Array<Container>;
-const ContainerList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ContainerList>;
-
 /** List Containers Response. */
 export interface ListContainersResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2140,48 +1629,24 @@ export interface ListContainersResponse {
   /** All Containers of a GTM Account. */
   container?: ContainerList;
 }
-const ListContainersResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListContainersResponse>;
-
 export interface ListAccountsContainersDestinationsRequest {
   /** GTM parent Container's API relative path. */
   parent: string;
 }
-const ListAccountsContainersDestinationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ListAccountsContainersDestinationsRequest>;
-
 export type DestinationList = Array<Destination>;
-const DestinationList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<DestinationList>;
-
 export interface ListDestinationsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All Destinations linked to a GTM Container. */
   destination?: DestinationList;
 }
-const ListDestinationsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListDestinationsResponse>;
-
 export interface ListAccountsContainersEnvironmentsRequest {
   /** GTM Container's API relative path. */
   parent: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsContainersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListAccountsContainersEnvironmentsRequest>;
-
 export type EnvironmentList = Array<Environment>;
-const EnvironmentList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<EnvironmentList>;
-
 /** List Environments Response. */
 export interface ListEnvironmentsResponse {
   /** All Environments of a GTM Container. */
@@ -2189,11 +1654,6 @@ export interface ListEnvironmentsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListEnvironmentsResponse>;
-
 export interface ListAccountsContainersVersion_headersRequest {
   /** Also retrieve deleted (archived) versions when true. */
   includeDeleted?: boolean;
@@ -2202,17 +1662,7 @@ export interface ListAccountsContainersVersion_headersRequest {
   /** GTM Container's API relative path. */
   parent: string;
 }
-const ListAccountsContainersVersion_headersRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListAccountsContainersVersion_headersRequest>;
-
 export type ContainerVersionHeaderList = Array<ContainerVersionHeader>;
-const ContainerVersionHeaderList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ContainerVersionHeaderList>;
-
 /** List container versions response. */
 export interface ListContainerVersionsResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2220,25 +1670,13 @@ export interface ListContainerVersionsResponse {
   /** All container version headers of a GTM Container. */
   containerVersionHeader?: ContainerVersionHeaderList;
 }
-const ListContainerVersionsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListContainerVersionsResponse>;
-
 export interface ListAccountsContainersWorkspacesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM parent Container's API relative path. */
   parent: string;
 }
-const ListAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListAccountsContainersWorkspacesRequest>;
-
 export type WorkspaceList = Array<Workspace>;
-const WorkspaceList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<WorkspaceList>;
-
 /** A list of workspaces in a container. */
 export interface ListWorkspacesResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2246,22 +1684,12 @@ export interface ListWorkspacesResponse {
   /** All Workspaces of a GTM Container. */
   workspace?: WorkspaceList;
 }
-const ListWorkspacesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListWorkspacesResponse>;
-
 export interface ListAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-const ListAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>;
-
 /** A list of enabled built-in variables. */
 export interface ListEnabledBuiltInVariablesResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2269,41 +1697,24 @@ export interface ListEnabledBuiltInVariablesResponse {
   /** All GTM BuiltInVariables of a GTM container. */
   builtInVariable?: BuiltInVariableList;
 }
-const ListEnabledBuiltInVariablesResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListEnabledBuiltInVariablesResponse>;
-
 export interface ListAccountsContainersWorkspacesClientsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-const ListAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListAccountsContainersWorkspacesClientsRequest>;
-
 export interface ListClientsResponse {
   /** All GTM Clients of a GTM Container. */
   client?: ClientList;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListClientsResponse = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ListClientsResponse>;
-
 export interface ListAccountsContainersWorkspacesFoldersRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-const ListAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListAccountsContainersWorkspacesFoldersRequest>;
-
 /** List Folders Response. */
 export interface ListFoldersResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2311,41 +1722,24 @@ export interface ListFoldersResponse {
   /** All GTM Folders of a GTM Container. */
   folder?: FolderList;
 }
-const ListFoldersResponse = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<ListFoldersResponse>;
-
 export interface ListAccountsContainersWorkspacesGtag_configRequest {
   /** Workspace's API relative path. */
   parent: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListAccountsContainersWorkspacesGtag_configRequest>;
-
 export interface ListGtagConfigResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All Google tag configs in a Container. */
   gtagConfig?: GtagConfigList;
 }
-const ListGtagConfigResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListGtagConfigResponse>;
-
 export interface ListAccountsContainersWorkspacesTagsRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListAccountsContainersWorkspacesTagsRequest>;
-
 /** List Tags Response. */
 export interface ListTagsResponse {
   /** All GTM Tags of a GTM Container. */
@@ -2353,63 +1747,36 @@ export interface ListTagsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListTagsResponse = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ListTagsResponse>;
-
 export interface ListAccountsContainersWorkspacesTemplatesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-const ListAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListAccountsContainersWorkspacesTemplatesRequest>;
-
 export interface ListTemplatesResponse {
   /** All GTM Custom Templates of a GTM Container. */
   template?: CustomTemplateList;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListTemplatesResponse>;
-
 export interface ListAccountsContainersWorkspacesTransformationsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-const ListAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListAccountsContainersWorkspacesTransformationsRequest>;
-
 export interface ListTransformationsResponse {
   /** All GTM Transformations of a GTM Container. */
   transformation?: TransformationList;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListTransformationsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListTransformationsResponse>;
-
 export interface ListAccountsContainersWorkspacesTriggersRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListAccountsContainersWorkspacesTriggersRequest>;
-
 /** List triggers response. */
 export interface ListTriggersResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2417,22 +1784,12 @@ export interface ListTriggersResponse {
   /** All GTM Triggers of a GTM Container. */
   trigger?: TriggerList;
 }
-const ListTriggersResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListTriggersResponse>;
-
 export interface ListAccountsContainersWorkspacesVariablesRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListAccountsContainersWorkspacesVariablesRequest>;
-
 /** List Variables Response. */
 export interface ListVariablesResponse {
   /** All GTM Variables of a GTM Container. */
@@ -2440,44 +1797,25 @@ export interface ListVariablesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListVariablesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListVariablesResponse>;
-
 export interface ListAccountsContainersWorkspacesZonesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-const ListAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListAccountsContainersWorkspacesZonesRequest>;
-
 export interface ListZonesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All GTM Zones of a GTM Container. */
   zone?: ZoneList;
 }
-const ListZonesResponse = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ListZonesResponse>;
-
 export interface ListAccountsUser_permissionsRequest {
   /** GTM Account's API relative path. */
   parent: string;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAccountsUser_permissionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListAccountsUser_permissionsRequest>;
-
 export type UserPermissionList = Array<UserPermission>;
-const UserPermissionList = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<UserPermissionList>;
-
 /** List user permissions response. */
 export interface ListUserPermissionsResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2485,31 +1823,16 @@ export interface ListUserPermissionsResponse {
   /** All GTM UserPermissions of a GTM Account. */
   userPermission?: UserPermissionList;
 }
-const ListUserPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListUserPermissionsResponse>;
-
 export interface LiveAccountsContainersVersionsRequest {
   /** GTM Container's API relative path. */
   parent: string;
 }
-const LiveAccountsContainersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<LiveAccountsContainersVersionsRequest>;
-
 export interface LookupAccountsContainersRequest {
   /** Tag ID for a GTM Container, e.g. GTM-123456789. Only one of destination_id or tag_id should be set. */
   tagId?: string;
   /** Destination ID linked to a GTM Container, e.g. AW-123456789. Only one of destination_id or tag_id should be set. */
   destinationId?: string;
 }
-const LookupAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<LookupAccountsContainersRequest>;
-
 export interface MoveEntitiesToFolderAccountsContainersWorkspacesFoldersRequest {
   /** The variables to be moved to the folder. */
   variableId?: StringList;
@@ -2522,17 +1845,7 @@ export interface MoveEntitiesToFolderAccountsContainersWorkspacesFoldersRequest 
   /** Request body */
   body?: Folder;
 }
-const MoveEntitiesToFolderAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<MoveEntitiesToFolderAccountsContainersWorkspacesFoldersRequest>;
-
 export interface MoveEntitiesToFolderAccountsContainersWorkspacesFoldersResponse {}
-const MoveEntitiesToFolderAccountsContainersWorkspacesFoldersResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<MoveEntitiesToFolderAccountsContainersWorkspacesFoldersResponse>;
-
 export interface MoveTagIdAccountsContainersRequest {
   /** GTM Container's API relative path. */
   path: string;
@@ -2549,20 +1862,10 @@ export interface MoveTagIdAccountsContainersRequest {
   /** Whether or not to copy users from this tag to the new tag. */
   copyUsers?: boolean;
 }
-const MoveTagIdAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<MoveTagIdAccountsContainersRequest>;
-
 export interface PreviewQuickAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-const PreviewQuickAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<PreviewQuickAccountsContainersWorkspacesRequest>;
-
 /** Response to quick previewing a workspace. */
 export interface QuickPreviewResponse {
   /** Whether quick previewing failed when syncing the workspace to the latest container version. */
@@ -2572,22 +1875,12 @@ export interface QuickPreviewResponse {
   /** Were there compiler errors or not. */
   compilerError?: boolean;
 }
-const QuickPreviewResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<QuickPreviewResponse>;
-
 export interface PublishAccountsContainersVersionsRequest {
   /** When provided, this fingerprint must match the fingerprint of the container version in storage. */
   fingerprint?: string;
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-const PublishAccountsContainersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<PublishAccountsContainersVersionsRequest>;
-
 /** Publish container version response. */
 export interface PublishContainerVersionResponse {
   /** Compiler errors or not. */
@@ -2595,22 +1888,12 @@ export interface PublishContainerVersionResponse {
   /** The container version created. */
   containerVersion?: ContainerVersion;
 }
-const PublishContainerVersionResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<PublishContainerVersionResponse>;
-
 export interface ReauthorizeAccountsContainersEnvironmentsRequest {
   /** GTM Environment's API relative path. */
   path: string;
   /** Request body */
   body?: Environment;
 }
-const ReauthorizeAccountsContainersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ReauthorizeAccountsContainersEnvironmentsRequest>;
-
 export interface Resolve_conflictAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
@@ -2619,15 +1902,7 @@ export interface Resolve_conflictAccountsContainersWorkspacesRequest {
   /** Request body */
   body?: Entity;
 }
-const Resolve_conflictAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesRequest>;
-
 export interface Resolve_conflictAccountsContainersWorkspacesResponse {}
-const Resolve_conflictAccountsContainersWorkspacesResponse =
-  DeleteAccountsContainersResponse as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>;
-
 export type RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "builtInVariableTypeUnspecified"
   | "pageUrl"
@@ -2746,229 +2021,123 @@ export type RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "analyticsClientId"
   | "analyticsSessionId"
   | "analyticsSessionNumber";
-const RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = S.String;
-
 export interface RevertAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** GTM BuiltInVariable's API relative path. */
   path: string;
   /** The type of built-in variable to revert. */
   type?: RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {});
 }
-const RevertAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<RevertAccountsContainersWorkspacesBuilt_in_variablesRequest>;
-
 /** The result of reverting a built-in variable in a workspace. */
 export interface RevertBuiltInVariableResponse {
   /** Whether the built-in variable is enabled after reversion. */
   enabled?: boolean;
 }
-const RevertBuiltInVariableResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<RevertBuiltInVariableResponse>;
-
 export interface RevertAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
   path: string;
   /** When provided, this fingerprint must match the fingerprint of the client in storage. */
   fingerprint?: string;
 }
-const RevertAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<RevertAccountsContainersWorkspacesClientsRequest>;
-
 /** The result of reverting a client in a workspace. */
 export interface RevertClientResponse {
   /** Client as it appears in the latest container version since the last workspace synchronization operation. If no client is present, that means the client was deleted in the latest container version. */
   client?: Client;
 }
-const RevertClientResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<RevertClientResponse>;
-
 export interface RevertAccountsContainersWorkspacesFoldersRequest {
   /** When provided, this fingerprint must match the fingerprint of the tag in storage. */
   fingerprint?: string;
   /** GTM Folder's API relative path. */
   path: string;
 }
-const RevertAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<RevertAccountsContainersWorkspacesFoldersRequest>;
-
 /** The result of reverting folder changes in a workspace. */
 export interface RevertFolderResponse {
   /** Folder as it appears in the latest container version since the last workspace synchronization operation. If no folder is present, that means the folder was deleted in the latest container version. */
   folder?: Folder;
 }
-const RevertFolderResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<RevertFolderResponse>;
-
 export interface RevertAccountsContainersWorkspacesTagsRequest {
   /** When provided, this fingerprint must match the fingerprint of thetag in storage. */
   fingerprint?: string;
   /** GTM Tag's API relative path. */
   path: string;
 }
-const RevertAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<RevertAccountsContainersWorkspacesTagsRequest>;
-
 /** The result of reverting a tag in a workspace. */
 export interface RevertTagResponse {
   /** Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was deleted in the latest container version. */
   tag?: Tag;
 }
-const RevertTagResponse = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<RevertTagResponse>;
-
 export interface RevertAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
   path: string;
   /** When provided, this fingerprint must match the fingerprint of the template in storage. */
   fingerprint?: string;
 }
-const RevertAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<RevertAccountsContainersWorkspacesTemplatesRequest>;
-
 /** The result of reverting a template in a workspace. */
 export interface RevertTemplateResponse {
   /** Template as it appears in the latest container version since the last workspace synchronization operation. If no template is present, that means the template was deleted in the latest container version. */
   template?: CustomTemplate;
 }
-const RevertTemplateResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<RevertTemplateResponse>;
-
 export interface RevertAccountsContainersWorkspacesTransformationsRequest {
   /** When provided, this fingerprint must match the fingerprint of the transformation in storage. */
   fingerprint?: string;
   /** GTM Transformation's API relative path. */
   path: string;
 }
-const RevertAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<RevertAccountsContainersWorkspacesTransformationsRequest>;
-
 /** The result of reverting a transformation in a workspace. */
 export interface RevertTransformationResponse {
   /** Transformation as it appears in the latest container version since the last workspace synchronization operation. If no transformation is present, that means the transformation was deleted in the latest container version. */
   transformation?: Transformation;
 }
-const RevertTransformationResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<RevertTransformationResponse>;
-
 export interface RevertAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
   path: string;
   /** When provided, this fingerprint must match the fingerprint of the trigger in storage. */
   fingerprint?: string;
 }
-const RevertAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<RevertAccountsContainersWorkspacesTriggersRequest>;
-
 /** The result of reverting a trigger in a workspace. */
 export interface RevertTriggerResponse {
   /** Trigger as it appears in the latest container version since the last workspace synchronization operation. If no trigger is present, that means the trigger was deleted in the latest container version. */
   trigger?: Trigger;
 }
-const RevertTriggerResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<RevertTriggerResponse>;
-
 export interface RevertAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
   path: string;
   /** When provided, this fingerprint must match the fingerprint of the variable in storage. */
   fingerprint?: string;
 }
-const RevertAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<RevertAccountsContainersWorkspacesVariablesRequest>;
-
 /** The result of reverting a variable in a workspace. */
 export interface RevertVariableResponse {
   /** Variable as it appears in the latest container version since the last workspace synchronization operation. If no variable is present, that means the variable was deleted in the latest container version. */
   variable?: Variable;
 }
-const RevertVariableResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<RevertVariableResponse>;
-
 export interface RevertAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
   path: string;
   /** When provided, this fingerprint must match the fingerprint of the zone in storage. */
   fingerprint?: string;
 }
-const RevertAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<RevertAccountsContainersWorkspacesZonesRequest>;
-
 /** The result of reverting a zone in a workspace. */
 export interface RevertZoneResponse {
   /** Zone as it appears in the latest container version since the last workspace synchronization operation. If no zone is present, that means the zone was deleted in the latest container version. */
   zone?: Zone;
 }
-const RevertZoneResponse = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<RevertZoneResponse>;
-
 export interface Set_latestAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-const Set_latestAccountsContainersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<Set_latestAccountsContainersVersionsRequest>;
-
 export interface SnippetAccountsContainersRequest {
   /** Container snippet's API relative path. */
   path: string;
 }
-const SnippetAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<SnippetAccountsContainersRequest>;
-
 export interface GetContainerSnippetResponse {
   /** Tagging snippet for a Container. */
   snippet?: string;
   /** Server container config param for manually provisioning a tagging server. */
   containerConfig?: string;
 }
-const GetContainerSnippetResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetContainerSnippetResponse>;
-
 export interface SyncAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-const SyncAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<SyncAccountsContainersWorkspacesRequest>;
-
 /** A response after synchronizing the workspace to the latest container version. */
 export interface SyncWorkspaceResponse {
   /** The merge conflict after sync. If this field is not empty, the sync is still treated as successful. But a version cannot be created until all conflicts are resolved. */
@@ -2976,20 +2145,10 @@ export interface SyncWorkspaceResponse {
   /** Indicates whether synchronization caused a merge conflict or sync error. */
   syncStatus?: SyncStatus;
 }
-const SyncWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<SyncWorkspaceResponse>;
-
 export interface UndeleteAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-const UndeleteAccountsContainersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UndeleteAccountsContainersVersionsRequest>;
-
 export interface UpdateAccountsRequest {
   /** GTM Account's API relative path. */
   path: string;
@@ -2998,11 +2157,6 @@ export interface UpdateAccountsRequest {
   /** Request body */
   body?: Account;
 }
-const UpdateAccountsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<UpdateAccountsRequest>;
-
 export interface UpdateAccountsContainersRequest {
   /** When provided, this fingerprint must match the fingerprint of the container in storage. */
   fingerprint?: string;
@@ -3011,11 +2165,6 @@ export interface UpdateAccountsContainersRequest {
   /** Request body */
   body?: Container;
 }
-const UpdateAccountsContainersRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<UpdateAccountsContainersRequest>;
-
 export interface UpdateAccountsContainersEnvironmentsRequest {
   /** When provided, this fingerprint must match the fingerprint of the environment in storage. */
   fingerprint?: string;
@@ -3024,11 +2173,6 @@ export interface UpdateAccountsContainersEnvironmentsRequest {
   /** Request body */
   body?: Environment;
 }
-const UpdateAccountsContainersEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<UpdateAccountsContainersEnvironmentsRequest>;
-
 export interface UpdateAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
@@ -3037,11 +2181,6 @@ export interface UpdateAccountsContainersVersionsRequest {
   /** Request body */
   body?: ContainerVersion;
 }
-const UpdateAccountsContainersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<UpdateAccountsContainersVersionsRequest>;
-
 export interface UpdateAccountsContainersWorkspacesRequest {
   /** When provided, this fingerprint must match the fingerprint of the workspace in storage. */
   fingerprint?: string;
@@ -3050,11 +2189,6 @@ export interface UpdateAccountsContainersWorkspacesRequest {
   /** Request body */
   body?: Workspace;
 }
-const UpdateAccountsContainersWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesRequest>;
-
 export interface UpdateAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
   path: string;
@@ -3063,11 +2197,6 @@ export interface UpdateAccountsContainersWorkspacesClientsRequest {
   /** Request body */
   body?: Client;
 }
-const UpdateAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesClientsRequest>;
-
 export interface UpdateAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
   path: string;
@@ -3076,11 +2205,6 @@ export interface UpdateAccountsContainersWorkspacesFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-const UpdateAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesFoldersRequest>;
-
 export interface UpdateAccountsContainersWorkspacesGtag_configRequest {
   /** Google tag config's API relative path. */
   path: string;
@@ -3089,11 +2213,6 @@ export interface UpdateAccountsContainersWorkspacesGtag_configRequest {
   /** Request body */
   body?: GtagConfig;
 }
-const UpdateAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesGtag_configRequest>;
-
 export interface UpdateAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
   path: string;
@@ -3102,11 +2221,6 @@ export interface UpdateAccountsContainersWorkspacesTagsRequest {
   /** Request body */
   body?: Tag;
 }
-const UpdateAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesTagsRequest>;
-
 export interface UpdateAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
   path: string;
@@ -3115,11 +2229,6 @@ export interface UpdateAccountsContainersWorkspacesTemplatesRequest {
   /** Request body */
   body?: CustomTemplate;
 }
-const UpdateAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesTemplatesRequest>;
-
 export interface UpdateAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Transformation's API relative path. */
   path: string;
@@ -3128,11 +2237,6 @@ export interface UpdateAccountsContainersWorkspacesTransformationsRequest {
   /** Request body */
   body?: Transformation;
 }
-const UpdateAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesTransformationsRequest>;
-
 export interface UpdateAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
   path: string;
@@ -3141,11 +2245,6 @@ export interface UpdateAccountsContainersWorkspacesTriggersRequest {
   /** Request body */
   body?: Trigger;
 }
-const UpdateAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesTriggersRequest>;
-
 export interface UpdateAccountsContainersWorkspacesVariablesRequest {
   /** When provided, this fingerprint must match the fingerprint of the variable in storage. */
   fingerprint?: string;
@@ -3154,11 +2253,6 @@ export interface UpdateAccountsContainersWorkspacesVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-const UpdateAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesVariablesRequest>;
-
 export interface UpdateAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
   path: string;
@@ -3167,22 +2261,12 @@ export interface UpdateAccountsContainersWorkspacesZonesRequest {
   /** Request body */
   body?: Zone;
 }
-const UpdateAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<UpdateAccountsContainersWorkspacesZonesRequest>;
-
 export interface UpdateAccountsUser_permissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
   /** Request body */
   body?: UserPermission;
 }
-const UpdateAccountsUser_permissionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<UpdateAccountsUser_permissionsRequest>;
-
 export type BulkUpdateAccountsContainersWorkspacesError =
   | NotFound
   | Forbidden
@@ -3197,8 +2281,8 @@ export const bulkUpdateAccountsContainersWorkspaces: API.OperationMethod<
   BulkUpdateAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkUpdateAccountsContainersWorkspacesRequest,
-  output: BulkUpdateWorkspaceResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<BulkUpdateAccountsContainersWorkspacesRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<BulkUpdateWorkspaceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3218,8 +2302,8 @@ export const combineAccountsContainers: API.OperationMethod<
   CombineAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CombineAccountsContainersRequest,
-  output: Container,
+  input: __S(31, __c3, 7) as any as S.Schema<CombineAccountsContainersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Container>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3239,8 +2323,8 @@ export const createAccountsContainers: API.OperationMethod<
   CreateAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersRequest,
-  output: Container,
+  input: __S(35, __c4, 3) as any as S.Schema<CreateAccountsContainersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Container>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3260,8 +2344,8 @@ export const createAccountsContainersEnvironments: API.OperationMethod<
   CreateAccountsContainersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersEnvironmentsRequest,
-  output: Environment,
+  input: __S(37, __c4, 5) as any as S.Schema<CreateAccountsContainersEnvironmentsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3281,8 +2365,8 @@ export const createAccountsContainersWorkspaces: API.OperationMethod<
   CreateAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesRequest,
-  output: Workspace,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateAccountsContainersWorkspacesRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Workspace>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3302,8 +2386,12 @@ export const createAccountsContainersWorkspacesBuilt_in_variables: API.Operation
   CreateAccountsContainersWorkspacesBuilt_in_variablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesBuilt_in_variablesRequest,
-  output: CreateBuiltInVariableResponse,
+  input: __S(
+    41,
+    __c5,
+    1,
+  ) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreateBuiltInVariableResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3323,8 +2411,8 @@ export const createAccountsContainersWorkspacesClients: API.OperationMethod<
   CreateAccountsContainersWorkspacesClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesClientsRequest,
-  output: Client,
+  input: __S(44, __c5, 4) as any as S.Schema<CreateAccountsContainersWorkspacesClientsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3344,8 +2432,8 @@ export const createAccountsContainersWorkspacesFolders: API.OperationMethod<
   CreateAccountsContainersWorkspacesFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesFoldersRequest,
-  output: Folder,
+  input: __S(45, __c5, 5) as any as S.Schema<CreateAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3365,8 +2453,8 @@ export const createAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   CreateAccountsContainersWorkspacesGtag_configError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesGtag_configRequest,
-  output: GtagConfig,
+  input: __S(46, __c5, 6) as any as S.Schema<CreateAccountsContainersWorkspacesGtag_configRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GtagConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3386,8 +2474,8 @@ export const createAccountsContainersWorkspacesTags: API.OperationMethod<
   CreateAccountsContainersWorkspacesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesTagsRequest,
-  output: Tag,
+  input: __S(47, __c5, 7) as any as S.Schema<CreateAccountsContainersWorkspacesTagsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<Tag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3407,8 +2495,8 @@ export const createAccountsContainersWorkspacesTemplates: API.OperationMethod<
   CreateAccountsContainersWorkspacesTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesTemplatesRequest,
-  output: CustomTemplate,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateAccountsContainersWorkspacesTemplatesRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CustomTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3428,8 +2516,12 @@ export const createAccountsContainersWorkspacesTransformations: API.OperationMet
   CreateAccountsContainersWorkspacesTransformationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesTransformationsRequest,
-  output: Transformation,
+  input: __S(
+    49,
+    __c6,
+    1,
+  ) as any as S.Schema<CreateAccountsContainersWorkspacesTransformationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Transformation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3449,8 +2541,8 @@ export const createAccountsContainersWorkspacesTriggers: API.OperationMethod<
   CreateAccountsContainersWorkspacesTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesTriggersRequest,
-  output: Trigger,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateAccountsContainersWorkspacesTriggersRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Trigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3470,8 +2562,8 @@ export const createAccountsContainersWorkspacesVariables: API.OperationMethod<
   CreateAccountsContainersWorkspacesVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesVariablesRequest,
-  output: Variable,
+  input: __S(51, __c6, 3) as any as S.Schema<CreateAccountsContainersWorkspacesVariablesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Variable>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3491,8 +2583,8 @@ export const createAccountsContainersWorkspacesZones: API.OperationMethod<
   CreateAccountsContainersWorkspacesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesZonesRequest,
-  output: Zone,
+  input: __S(52, __c6, 4) as any as S.Schema<CreateAccountsContainersWorkspacesZonesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Zone>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3512,8 +2604,8 @@ export const createAccountsUser_permissions: API.OperationMethod<
   CreateAccountsUser_permissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsUser_permissionsRequest,
-  output: UserPermission,
+  input: __S(57, __c7, 1) as any as S.Schema<CreateAccountsUser_permissionsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<UserPermission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3533,8 +2625,8 @@ export const createVersionAccountsContainersWorkspaces: API.OperationMethod<
   CreateVersionAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVersionAccountsContainersWorkspacesRequest,
-  output: CreateContainerVersionResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<CreateVersionAccountsContainersWorkspacesRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<CreateContainerVersionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3554,8 +2646,8 @@ export const deleteAccountsContainers: API.OperationMethod<
   DeleteAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersRequest,
-  output: DeleteAccountsContainersResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteAccountsContainersRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3575,8 +2667,8 @@ export const deleteAccountsContainersEnvironments: API.OperationMethod<
   DeleteAccountsContainersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersEnvironmentsRequest,
-  output: DeleteAccountsContainersEnvironmentsResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<DeleteAccountsContainersEnvironmentsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3596,8 +2688,8 @@ export const deleteAccountsContainersVersions: API.OperationMethod<
   DeleteAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersVersionsRequest,
-  output: DeleteAccountsContainersVersionsResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteAccountsContainersVersionsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersVersionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3617,8 +2709,8 @@ export const deleteAccountsContainersWorkspaces: API.OperationMethod<
   DeleteAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesRequest,
-  output: DeleteAccountsContainersWorkspacesResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DeleteAccountsContainersWorkspacesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3638,8 +2730,16 @@ export const deleteAccountsContainersWorkspacesBuilt_in_variables: API.Operation
   DeleteAccountsContainersWorkspacesBuilt_in_variablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest,
-  output: DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse,
+  input: __S(
+    77,
+    __c9,
+    5,
+  ) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>,
+  output: __S(
+    78,
+    __c9,
+    6,
+  ) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3659,8 +2759,8 @@ export const deleteAccountsContainersWorkspacesClients: API.OperationMethod<
   DeleteAccountsContainersWorkspacesClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesClientsRequest,
-  output: DeleteAccountsContainersWorkspacesClientsResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3680,8 +2780,8 @@ export const deleteAccountsContainersWorkspacesFolders: API.OperationMethod<
   DeleteAccountsContainersWorkspacesFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesFoldersRequest,
-  output: DeleteAccountsContainersWorkspacesFoldersResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3701,8 +2801,12 @@ export const deleteAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   DeleteAccountsContainersWorkspacesGtag_configError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesGtag_configRequest,
-  output: DeleteAccountsContainersWorkspacesGtag_configResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>,
+  output: __S(
+    73,
+    __c9,
+    1,
+  ) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3722,8 +2826,8 @@ export const deleteAccountsContainersWorkspacesTags: API.OperationMethod<
   DeleteAccountsContainersWorkspacesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesTagsRequest,
-  output: DeleteAccountsContainersWorkspacesTagsResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3743,8 +2847,8 @@ export const deleteAccountsContainersWorkspacesTemplates: API.OperationMethod<
   DeleteAccountsContainersWorkspacesTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesTemplatesRequest,
-  output: DeleteAccountsContainersWorkspacesTemplatesResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3764,8 +2868,16 @@ export const deleteAccountsContainersWorkspacesTransformations: API.OperationMet
   DeleteAccountsContainersWorkspacesTransformationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesTransformationsRequest,
-  output: DeleteAccountsContainersWorkspacesTransformationsResponse,
+  input: __S(
+    84,
+    __c10,
+    4,
+  ) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsRequest>,
+  output: __S(
+    78,
+    __c9,
+    6,
+  ) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3785,8 +2897,8 @@ export const deleteAccountsContainersWorkspacesTriggers: API.OperationMethod<
   DeleteAccountsContainersWorkspacesTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesTriggersRequest,
-  output: DeleteAccountsContainersWorkspacesTriggersResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3806,8 +2918,8 @@ export const deleteAccountsContainersWorkspacesVariables: API.OperationMethod<
   DeleteAccountsContainersWorkspacesVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesVariablesRequest,
-  output: DeleteAccountsContainersWorkspacesVariablesResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3827,8 +2939,8 @@ export const deleteAccountsContainersWorkspacesZones: API.OperationMethod<
   DeleteAccountsContainersWorkspacesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesZonesRequest,
-  output: DeleteAccountsContainersWorkspacesZonesResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3848,8 +2960,8 @@ export const deleteAccountsUser_permissions: API.OperationMethod<
   DeleteAccountsUser_permissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsUser_permissionsRequest,
-  output: DeleteAccountsUser_permissionsResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteAccountsUser_permissionsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccountsUser_permissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3870,8 +2982,8 @@ export const entitiesAccountsContainersWorkspacesFolders: API.PaginatedOperation
   GcpOpContext,
   FolderEntities
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: EntitiesAccountsContainersWorkspacesFoldersRequest,
-  output: FolderEntities,
+  input: __S(89, __c11, 1) as any as S.Schema<EntitiesAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<FolderEntities>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3886,8 +2998,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsRequest,
-  output: Account,
+  input: __S(91, __c11, 3) as any as S.Schema<GetAccountsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3901,8 +3013,8 @@ export const getAccountsContainers: API.OperationMethod<
   GetAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersRequest,
-  output: Container,
+  input: __S(94, __c11, 6) as any as S.Schema<GetAccountsContainersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Container>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3920,8 +3032,8 @@ export const getAccountsContainersDestinations: API.OperationMethod<
   GetAccountsContainersDestinationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersDestinationsRequest,
-  output: Destination,
+  input: __S(95, __c11, 7) as any as S.Schema<GetAccountsContainersDestinationsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Destination>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3939,8 +3051,8 @@ export const getAccountsContainersEnvironments: API.OperationMethod<
   GetAccountsContainersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersEnvironmentsRequest,
-  output: Environment,
+  input: __S(97, __c12, 1) as any as S.Schema<GetAccountsContainersEnvironmentsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3958,8 +3070,8 @@ export const getAccountsContainersVersions: API.OperationMethod<
   GetAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersVersionsRequest,
-  output: ContainerVersion,
+  input: __S(98, __c12, 2) as any as S.Schema<GetAccountsContainersVersionsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ContainerVersion>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3977,8 +3089,8 @@ export const getAccountsContainersWorkspaces: API.OperationMethod<
   GetAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesRequest,
-  output: Workspace,
+  input: __S(99, __c12, 3) as any as S.Schema<GetAccountsContainersWorkspacesRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Workspace>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3996,8 +3108,8 @@ export const getAccountsContainersWorkspacesClients: API.OperationMethod<
   GetAccountsContainersWorkspacesClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesClientsRequest,
-  output: Client,
+  input: __S(100, __c12, 4) as any as S.Schema<GetAccountsContainersWorkspacesClientsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4015,8 +3127,8 @@ export const getAccountsContainersWorkspacesFolders: API.OperationMethod<
   GetAccountsContainersWorkspacesFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesFoldersRequest,
-  output: Folder,
+  input: __S(101, __c12, 5) as any as S.Schema<GetAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4034,8 +3146,8 @@ export const getAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   GetAccountsContainersWorkspacesGtag_configError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesGtag_configRequest,
-  output: GtagConfig,
+  input: __S(102, __c12, 6) as any as S.Schema<GetAccountsContainersWorkspacesGtag_configRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GtagConfig>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4053,8 +3165,8 @@ export const getAccountsContainersWorkspacesTags: API.OperationMethod<
   GetAccountsContainersWorkspacesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesTagsRequest,
-  output: Tag,
+  input: __S(103, __c12, 7) as any as S.Schema<GetAccountsContainersWorkspacesTagsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<Tag>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4072,8 +3184,8 @@ export const getAccountsContainersWorkspacesTemplates: API.OperationMethod<
   GetAccountsContainersWorkspacesTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesTemplatesRequest,
-  output: CustomTemplate,
+  input: __S(104, __c13, 0) as any as S.Schema<GetAccountsContainersWorkspacesTemplatesRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CustomTemplate>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4091,8 +3203,12 @@ export const getAccountsContainersWorkspacesTransformations: API.OperationMethod
   GetAccountsContainersWorkspacesTransformationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesTransformationsRequest,
-  output: Transformation,
+  input: __S(
+    105,
+    __c13,
+    1,
+  ) as any as S.Schema<GetAccountsContainersWorkspacesTransformationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Transformation>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4110,8 +3226,8 @@ export const getAccountsContainersWorkspacesTriggers: API.OperationMethod<
   GetAccountsContainersWorkspacesTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesTriggersRequest,
-  output: Trigger,
+  input: __S(106, __c13, 2) as any as S.Schema<GetAccountsContainersWorkspacesTriggersRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Trigger>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4129,8 +3245,8 @@ export const getAccountsContainersWorkspacesVariables: API.OperationMethod<
   GetAccountsContainersWorkspacesVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesVariablesRequest,
-  output: Variable,
+  input: __S(107, __c13, 3) as any as S.Schema<GetAccountsContainersWorkspacesVariablesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Variable>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4148,8 +3264,8 @@ export const getAccountsContainersWorkspacesZones: API.OperationMethod<
   GetAccountsContainersWorkspacesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesZonesRequest,
-  output: Zone,
+  input: __S(108, __c13, 4) as any as S.Schema<GetAccountsContainersWorkspacesZonesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Zone>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4167,8 +3283,8 @@ export const getAccountsUser_permissions: API.OperationMethod<
   GetAccountsUser_permissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsUser_permissionsRequest,
-  output: UserPermission,
+  input: __S(109, __c13, 5) as any as S.Schema<GetAccountsUser_permissionsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<UserPermission>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4186,8 +3302,8 @@ export const getStatusAccountsContainersWorkspaces: API.OperationMethod<
   GetStatusAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatusAccountsContainersWorkspacesRequest,
-  output: GetWorkspaceStatusResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<GetStatusAccountsContainersWorkspacesRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetWorkspaceStatusResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4207,8 +3323,12 @@ export const importFromGalleryAccountsContainersWorkspacesTemplates: API.Operati
   ImportFromGalleryAccountsContainersWorkspacesTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportFromGalleryAccountsContainersWorkspacesTemplatesRequest,
-  output: CustomTemplate,
+  input: __S(
+    114,
+    __c14,
+    2,
+  ) as any as S.Schema<ImportFromGalleryAccountsContainersWorkspacesTemplatesRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CustomTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4226,8 +3346,8 @@ export const latestAccountsContainersVersion_headers: API.OperationMethod<
   LatestAccountsContainersVersion_headersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LatestAccountsContainersVersion_headersRequest,
-  output: ContainerVersionHeader,
+  input: __S(115, __c14, 3) as any as S.Schema<LatestAccountsContainersVersion_headersRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<ContainerVersionHeader>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4247,8 +3367,8 @@ export const linkAccountsContainersDestinations: API.OperationMethod<
   LinkAccountsContainersDestinationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkAccountsContainersDestinationsRequest,
-  output: Destination,
+  input: __S(117, __c14, 5) as any as S.Schema<LinkAccountsContainersDestinationsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Destination>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4263,8 +3383,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsRequest,
-  output: ListAccountsResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<ListAccountsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<ListAccountsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4280,8 +3400,8 @@ export const listAccountsContainers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListContainersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersRequest,
-  output: ListContainersResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<ListAccountsContainersRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<ListContainersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4300,8 +3420,8 @@ export const listAccountsContainersDestinations: API.OperationMethod<
   ListAccountsContainersDestinationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsContainersDestinationsRequest,
-  output: ListDestinationsResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<ListAccountsContainersDestinationsRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<ListDestinationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4320,8 +3440,8 @@ export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersEnvironmentsRequest,
-  output: ListEnvironmentsResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<ListAccountsContainersEnvironmentsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4341,8 +3461,8 @@ export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod
   GcpOpContext,
   ListContainerVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersVersion_headersRequest,
-  output: ListContainerVersionsResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<ListAccountsContainersVersion_headersRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<ListContainerVersionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4362,8 +3482,8 @@ export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWorkspacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesRequest,
-  output: ListWorkspacesResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<ListAccountsContainersWorkspacesRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<ListWorkspacesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4383,8 +3503,12 @@ export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOp
   GcpOpContext,
   ListEnabledBuiltInVariablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesBuilt_in_variablesRequest,
-  output: ListEnabledBuiltInVariablesResponse,
+  input: __S(
+    136,
+    __c17,
+    0,
+  ) as any as S.Schema<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<ListEnabledBuiltInVariablesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4404,8 +3528,8 @@ export const listAccountsContainersWorkspacesClients: API.PaginatedOperationMeth
   GcpOpContext,
   ListClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesClientsRequest,
-  output: ListClientsResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<ListAccountsContainersWorkspacesClientsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListClientsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4425,8 +3549,8 @@ export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMeth
   GcpOpContext,
   ListFoldersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesFoldersRequest,
-  output: ListFoldersResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<ListAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<ListFoldersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4446,8 +3570,8 @@ export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperation
   GcpOpContext,
   ListGtagConfigResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesGtag_configRequest,
-  output: ListGtagConfigResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<ListAccountsContainersWorkspacesGtag_configRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListGtagConfigResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4467,8 +3591,8 @@ export const listAccountsContainersWorkspacesTags: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesTagsRequest,
-  output: ListTagsResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<ListAccountsContainersWorkspacesTagsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListTagsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4488,8 +3612,8 @@ export const listAccountsContainersWorkspacesTemplates: API.PaginatedOperationMe
   GcpOpContext,
   ListTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesTemplatesRequest,
-  output: ListTemplatesResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<ListAccountsContainersWorkspacesTemplatesRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<ListTemplatesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4509,8 +3633,12 @@ export const listAccountsContainersWorkspacesTransformations: API.PaginatedOpera
   GcpOpContext,
   ListTransformationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesTransformationsRequest,
-  output: ListTransformationsResponse,
+  input: __S(
+    148,
+    __c18,
+    4,
+  ) as any as S.Schema<ListAccountsContainersWorkspacesTransformationsRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<ListTransformationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4530,8 +3658,8 @@ export const listAccountsContainersWorkspacesTriggers: API.PaginatedOperationMet
   GcpOpContext,
   ListTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesTriggersRequest,
-  output: ListTriggersResponse,
+  input: __S(150, __c18, 6) as any as S.Schema<ListAccountsContainersWorkspacesTriggersRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<ListTriggersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4551,8 +3679,8 @@ export const listAccountsContainersWorkspacesVariables: API.PaginatedOperationMe
   GcpOpContext,
   ListVariablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesVariablesRequest,
-  output: ListVariablesResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<ListAccountsContainersWorkspacesVariablesRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<ListVariablesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4572,8 +3700,8 @@ export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod
   GcpOpContext,
   ListZonesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesZonesRequest,
-  output: ListZonesResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<ListAccountsContainersWorkspacesZonesRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListZonesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4593,8 +3721,8 @@ export const listAccountsUser_permissions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserPermissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsUser_permissionsRequest,
-  output: ListUserPermissionsResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<ListAccountsUser_permissionsRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<ListUserPermissionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4613,8 +3741,8 @@ export const liveAccountsContainersVersions: API.OperationMethod<
   LiveAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LiveAccountsContainersVersionsRequest,
-  output: ContainerVersion,
+  input: __S(159, __c19, 7) as any as S.Schema<LiveAccountsContainersVersionsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ContainerVersion>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4628,8 +3756,8 @@ export const lookupAccountsContainers: API.OperationMethod<
   LookupAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupAccountsContainersRequest,
-  output: Container,
+  input: __S(160, __c20, 0) as any as S.Schema<LookupAccountsContainersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Container>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4649,8 +3777,16 @@ export const moveEntitiesToFolderAccountsContainersWorkspacesFolders: API.Operat
   MoveEntitiesToFolderAccountsContainersWorkspacesFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveEntitiesToFolderAccountsContainersWorkspacesFoldersRequest,
-  output: MoveEntitiesToFolderAccountsContainersWorkspacesFoldersResponse,
+  input: __S(
+    161,
+    __c20,
+    1,
+  ) as any as S.Schema<MoveEntitiesToFolderAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(
+    162,
+    __c20,
+    2,
+  ) as any as S.Schema<MoveEntitiesToFolderAccountsContainersWorkspacesFoldersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4670,8 +3806,8 @@ export const moveTagIdAccountsContainers: API.OperationMethod<
   MoveTagIdAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveTagIdAccountsContainersRequest,
-  output: Container,
+  input: __S(163, __c20, 3) as any as S.Schema<MoveTagIdAccountsContainersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Container>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4691,8 +3827,8 @@ export const previewQuickAccountsContainersWorkspaces: API.OperationMethod<
   PreviewQuickAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewQuickAccountsContainersWorkspacesRequest,
-  output: QuickPreviewResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<PreviewQuickAccountsContainersWorkspacesRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<QuickPreviewResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4712,8 +3848,8 @@ export const publishAccountsContainersVersions: API.OperationMethod<
   PublishAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishAccountsContainersVersionsRequest,
-  output: PublishContainerVersionResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<PublishAccountsContainersVersionsRequest>,
+  output: __S(167, __c20, 7) as any as S.Schema<PublishContainerVersionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4733,8 +3869,8 @@ export const reauthorizeAccountsContainersEnvironments: API.OperationMethod<
   ReauthorizeAccountsContainersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReauthorizeAccountsContainersEnvironmentsRequest,
-  output: Environment,
+  input: __S(168, __c21, 0) as any as S.Schema<ReauthorizeAccountsContainersEnvironmentsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4754,8 +3890,8 @@ export const resolve_conflictAccountsContainersWorkspaces: API.OperationMethod<
   Resolve_conflictAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Resolve_conflictAccountsContainersWorkspacesRequest,
-  output: Resolve_conflictAccountsContainersWorkspacesResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4775,8 +3911,12 @@ export const revertAccountsContainersWorkspacesBuilt_in_variables: API.Operation
   RevertAccountsContainersWorkspacesBuilt_in_variablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesBuilt_in_variablesRequest,
-  output: RevertBuiltInVariableResponse,
+  input: __S(
+    170,
+    __c21,
+    2,
+  ) as any as S.Schema<RevertAccountsContainersWorkspacesBuilt_in_variablesRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<RevertBuiltInVariableResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4796,8 +3936,8 @@ export const revertAccountsContainersWorkspacesClients: API.OperationMethod<
   RevertAccountsContainersWorkspacesClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesClientsRequest,
-  output: RevertClientResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<RevertAccountsContainersWorkspacesClientsRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<RevertClientResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4817,8 +3957,8 @@ export const revertAccountsContainersWorkspacesFolders: API.OperationMethod<
   RevertAccountsContainersWorkspacesFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesFoldersRequest,
-  output: RevertFolderResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<RevertAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<RevertFolderResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4838,8 +3978,8 @@ export const revertAccountsContainersWorkspacesTags: API.OperationMethod<
   RevertAccountsContainersWorkspacesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesTagsRequest,
-  output: RevertTagResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<RevertAccountsContainersWorkspacesTagsRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<RevertTagResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4859,8 +3999,8 @@ export const revertAccountsContainersWorkspacesTemplates: API.OperationMethod<
   RevertAccountsContainersWorkspacesTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesTemplatesRequest,
-  output: RevertTemplateResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<RevertAccountsContainersWorkspacesTemplatesRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<RevertTemplateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4880,8 +4020,12 @@ export const revertAccountsContainersWorkspacesTransformations: API.OperationMet
   RevertAccountsContainersWorkspacesTransformationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesTransformationsRequest,
-  output: RevertTransformationResponse,
+  input: __S(
+    180,
+    __c22,
+    4,
+  ) as any as S.Schema<RevertAccountsContainersWorkspacesTransformationsRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<RevertTransformationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4901,8 +4045,8 @@ export const revertAccountsContainersWorkspacesTriggers: API.OperationMethod<
   RevertAccountsContainersWorkspacesTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesTriggersRequest,
-  output: RevertTriggerResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<RevertAccountsContainersWorkspacesTriggersRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<RevertTriggerResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4922,8 +4066,8 @@ export const revertAccountsContainersWorkspacesVariables: API.OperationMethod<
   RevertAccountsContainersWorkspacesVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesVariablesRequest,
-  output: RevertVariableResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<RevertAccountsContainersWorkspacesVariablesRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<RevertVariableResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4943,8 +4087,8 @@ export const revertAccountsContainersWorkspacesZones: API.OperationMethod<
   RevertAccountsContainersWorkspacesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertAccountsContainersWorkspacesZonesRequest,
-  output: RevertZoneResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<RevertAccountsContainersWorkspacesZonesRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<RevertZoneResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4964,8 +4108,8 @@ export const set_latestAccountsContainersVersions: API.OperationMethod<
   Set_latestAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Set_latestAccountsContainersVersionsRequest,
-  output: ContainerVersion,
+  input: __S(188, __c23, 4) as any as S.Schema<Set_latestAccountsContainersVersionsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ContainerVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4979,8 +4123,8 @@ export const snippetAccountsContainers: API.OperationMethod<
   SnippetAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SnippetAccountsContainersRequest,
-  output: GetContainerSnippetResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<SnippetAccountsContainersRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<GetContainerSnippetResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5000,8 +4144,8 @@ export const syncAccountsContainersWorkspaces: API.OperationMethod<
   SyncAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncAccountsContainersWorkspacesRequest,
-  output: SyncWorkspaceResponse,
+  input: __S(191, __c23, 7) as any as S.Schema<SyncAccountsContainersWorkspacesRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<SyncWorkspaceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5021,8 +4165,8 @@ export const undeleteAccountsContainersVersions: API.OperationMethod<
   UndeleteAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteAccountsContainersVersionsRequest,
-  output: ContainerVersion,
+  input: __S(193, __c24, 1) as any as S.Schema<UndeleteAccountsContainersVersionsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ContainerVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5042,8 +4186,8 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsRequest,
-  output: Account,
+  input: __S(194, __c24, 2) as any as S.Schema<UpdateAccountsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5063,8 +4207,8 @@ export const updateAccountsContainers: API.OperationMethod<
   UpdateAccountsContainersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersRequest,
-  output: Container,
+  input: __S(195, __c24, 3) as any as S.Schema<UpdateAccountsContainersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Container>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5084,8 +4228,8 @@ export const updateAccountsContainersEnvironments: API.OperationMethod<
   UpdateAccountsContainersEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersEnvironmentsRequest,
-  output: Environment,
+  input: __S(196, __c24, 4) as any as S.Schema<UpdateAccountsContainersEnvironmentsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5105,8 +4249,8 @@ export const updateAccountsContainersVersions: API.OperationMethod<
   UpdateAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersVersionsRequest,
-  output: ContainerVersion,
+  input: __S(197, __c24, 5) as any as S.Schema<UpdateAccountsContainersVersionsRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ContainerVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5126,8 +4270,8 @@ export const updateAccountsContainersWorkspaces: API.OperationMethod<
   UpdateAccountsContainersWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesRequest,
-  output: Workspace,
+  input: __S(198, __c24, 6) as any as S.Schema<UpdateAccountsContainersWorkspacesRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Workspace>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5147,8 +4291,8 @@ export const updateAccountsContainersWorkspacesClients: API.OperationMethod<
   UpdateAccountsContainersWorkspacesClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesClientsRequest,
-  output: Client,
+  input: __S(199, __c24, 7) as any as S.Schema<UpdateAccountsContainersWorkspacesClientsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5168,8 +4312,8 @@ export const updateAccountsContainersWorkspacesFolders: API.OperationMethod<
   UpdateAccountsContainersWorkspacesFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesFoldersRequest,
-  output: Folder,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateAccountsContainersWorkspacesFoldersRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5189,8 +4333,12 @@ export const updateAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   UpdateAccountsContainersWorkspacesGtag_configError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesGtag_configRequest,
-  output: GtagConfig,
+  input: __S(
+    201,
+    __c25,
+    1,
+  ) as any as S.Schema<UpdateAccountsContainersWorkspacesGtag_configRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GtagConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5210,8 +4358,8 @@ export const updateAccountsContainersWorkspacesTags: API.OperationMethod<
   UpdateAccountsContainersWorkspacesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesTagsRequest,
-  output: Tag,
+  input: __S(202, __c25, 2) as any as S.Schema<UpdateAccountsContainersWorkspacesTagsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<Tag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5231,8 +4379,8 @@ export const updateAccountsContainersWorkspacesTemplates: API.OperationMethod<
   UpdateAccountsContainersWorkspacesTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesTemplatesRequest,
-  output: CustomTemplate,
+  input: __S(203, __c25, 3) as any as S.Schema<UpdateAccountsContainersWorkspacesTemplatesRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CustomTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5252,8 +4400,12 @@ export const updateAccountsContainersWorkspacesTransformations: API.OperationMet
   UpdateAccountsContainersWorkspacesTransformationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesTransformationsRequest,
-  output: Transformation,
+  input: __S(
+    204,
+    __c25,
+    4,
+  ) as any as S.Schema<UpdateAccountsContainersWorkspacesTransformationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Transformation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5273,8 +4425,8 @@ export const updateAccountsContainersWorkspacesTriggers: API.OperationMethod<
   UpdateAccountsContainersWorkspacesTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesTriggersRequest,
-  output: Trigger,
+  input: __S(205, __c25, 5) as any as S.Schema<UpdateAccountsContainersWorkspacesTriggersRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Trigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5294,8 +4446,8 @@ export const updateAccountsContainersWorkspacesVariables: API.OperationMethod<
   UpdateAccountsContainersWorkspacesVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesVariablesRequest,
-  output: Variable,
+  input: __S(206, __c25, 6) as any as S.Schema<UpdateAccountsContainersWorkspacesVariablesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Variable>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5315,8 +4467,8 @@ export const updateAccountsContainersWorkspacesZones: API.OperationMethod<
   UpdateAccountsContainersWorkspacesZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesZonesRequest,
-  output: Zone,
+  input: __S(207, __c25, 7) as any as S.Schema<UpdateAccountsContainersWorkspacesZonesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Zone>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5336,8 +4488,8 @@ export const updateAccountsUser_permissions: API.OperationMethod<
   UpdateAccountsUser_permissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsUser_permissionsRequest,
-  output: UserPermission,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateAccountsUser_permissionsRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<UserPermission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5349,16 +4501,16 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ParameterTypeEnum),
+          type: S.optional(S.String),
           isWeakReference: S.optional(S.Boolean),
-          map: S.optional(S.suspend(() => ParameterList)),
+          map: S.optional(S.suspend(() => __S(1, __c0, 1))),
           key: S.optional(S.String),
           value: S.optional(S.String),
-          list: S.optional(S.suspend(() => ParameterList)),
+          list: S.optional(S.suspend(() => __S(1, __c0, 1))),
         }),
       ).annotate({ identifier: "Parameter" });
     case 1:
-      return S.Array(Parameter);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5368,7 +4520,7 @@ function __c0(j: number): any {
           gtagConfigId: S.optional(S.String),
           containerId: S.optional(S.String),
           workspaceId: S.optional(S.String),
-          parameter: S.optional(ParameterList),
+          parameter: S.optional(__S(1, __c0, 1)),
           type: S.optional(S.String),
           fingerprint: S.optional(S.String),
         }),
@@ -5396,7 +4548,7 @@ function __c0(j: number): any {
           path: S.optional(S.String),
           name: S.optional(S.String),
           tagManagerUrl: S.optional(S.String),
-          galleryReference: S.optional(GalleryReference),
+          galleryReference: S.optional(__S(3, __c0, 3)),
           workspaceId: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
@@ -5421,7 +4573,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enable: S.optional(S.Boolean),
-          whitelistedTypeId: S.optional(StringList),
+          whitelistedTypeId: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ZoneTypeRestriction" });
   }
@@ -5431,17 +4583,17 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parameter: S.optional(ParameterList),
-          type: S.optional(ConditionTypeEnum),
+          parameter: S.optional(__S(1, __c0, 1)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Condition" });
     case 1:
-      return S.Array(Condition);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(ConditionList),
-          customEvaluationTriggerId: S.optional(StringList),
+          condition: S.optional(__S(9, __c1, 1)),
+          customEvaluationTriggerId: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ZoneBoundary" });
     case 3:
@@ -5452,13 +4604,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ZoneChildContainer" });
     case 4:
-      return S.Array(ZoneChildContainer);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.optional(S.String),
-          typeRestriction: S.optional(ZoneTypeRestriction),
-          boundary: S.optional(ZoneBoundary),
+          typeRestriction: S.optional(__S(7, __c0, 7)),
+          boundary: S.optional(__S(10, __c1, 2)),
           containerId: S.optional(S.String),
           zoneId: S.optional(S.String),
           accountId: S.optional(S.String),
@@ -5467,14 +4619,14 @@ function __c1(j: number): any {
           path: S.optional(S.String),
           name: S.optional(S.String),
           tagManagerUrl: S.optional(S.String),
-          childContainer: S.optional(ZoneChildContainerList),
+          childContainer: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "Zone" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          parameter: S.optional(ParameterList),
+          parameter: S.optional(__S(1, __c0, 1)),
           name: S.optional(S.String),
           notes: S.optional(S.String),
           fingerprint: S.optional(S.String),
@@ -5491,7 +4643,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          parameter: S.optional(ParameterList),
+          parameter: S.optional(__S(1, __c0, 1)),
           priority: S.optional(S.Number),
           fingerprint: S.optional(S.String),
           notes: S.optional(S.String),
@@ -5516,19 +4668,19 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           accountId: S.optional(S.String),
           path: S.optional(S.String),
-          type: S.optional(BuiltInVariableTypeEnum),
+          type: S.optional(S.String),
           containerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuiltInVariable" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          convertUndefinedToValue: S.optional(Parameter),
-          caseConversionType: S.optional(VariableFormatValueCaseConversionTypeEnum),
-          convertTrueToValue: S.optional(Parameter),
-          convertNullToValue: S.optional(Parameter),
-          convertFalseToValue: S.optional(Parameter),
-          convertToNumber: S.optional(VariableFormatValueConvertToNumberEnum),
+          convertUndefinedToValue: S.optional(__S(0, __c0, 0)),
+          caseConversionType: S.optional(S.String),
+          convertTrueToValue: S.optional(__S(0, __c0, 0)),
+          convertNullToValue: S.optional(__S(0, __c0, 0)),
+          convertFalseToValue: S.optional(__S(0, __c0, 0)),
+          convertToNumber: S.optional(S.String),
           convertToBoolean: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VariableFormatValue" });
@@ -5538,14 +4690,14 @@ function __c2(j: number): any {
           workspaceId: S.optional(S.String),
           notes: S.optional(S.String),
           accountId: S.optional(S.String),
-          disablingTriggerId: S.optional(StringList),
+          disablingTriggerId: S.optional(__S(6, __c0, 6)),
           tagManagerUrl: S.optional(S.String),
           scheduleStartMs: S.optional(S.String),
           containerId: S.optional(S.String),
-          parameter: S.optional(ParameterList),
-          formatValue: S.optional(VariableFormatValue),
+          parameter: S.optional(__S(1, __c0, 1)),
+          formatValue: S.optional(__S(17, __c2, 1)),
           parentFolderId: S.optional(S.String),
-          enablingTriggerId: S.optional(StringList),
+          enablingTriggerId: S.optional(__S(6, __c0, 6)),
           scheduleEndMs: S.optional(S.String),
           type: S.optional(S.String),
           variableId: S.optional(S.String),
@@ -5562,12 +4714,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SetupTag" });
     case 4:
-      return S.Array(SetupTag);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          consentType: S.optional(Parameter),
-          consentStatus: S.optional(TagConsentSettingConsentStatusEnum),
+          consentType: S.optional(__S(0, __c0, 0)),
+          consentStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagConsentSetting" });
     case 6:
@@ -5578,7 +4730,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "TeardownTag" });
     case 7:
-      return S.Array(TeardownTag);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -5591,94 +4743,94 @@ function __c3(j: number): any {
           workspaceId: S.optional(S.String),
           tagManagerUrl: S.optional(S.String),
           scheduleStartMs: S.optional(S.String),
-          parameter: S.optional(ParameterList),
+          parameter: S.optional(__S(1, __c0, 1)),
           path: S.optional(S.String),
           paused: S.optional(S.Boolean),
           parentFolderId: S.optional(S.String),
-          setupTag: S.optional(SetupTagList),
+          setupTag: S.optional(__S(20, __c2, 4)),
           scheduleEndMs: S.optional(S.String),
-          tagFiringOption: S.optional(TagTagFiringOptionEnum),
+          tagFiringOption: S.optional(S.String),
           tagId: S.optional(S.String),
           fingerprint: S.optional(S.String),
-          monitoringMetadata: S.optional(Parameter),
-          blockingTriggerId: S.optional(StringList),
-          firingTriggerId: S.optional(StringList),
-          consentSettings: S.optional(TagConsentSetting),
-          teardownTag: S.optional(TeardownTagList),
+          monitoringMetadata: S.optional(__S(0, __c0, 0)),
+          blockingTriggerId: S.optional(__S(6, __c0, 6)),
+          firingTriggerId: S.optional(__S(6, __c0, 6)),
+          consentSettings: S.optional(__S(21, __c2, 5)),
+          teardownTag: S.optional(__S(23, __c2, 7)),
           name: S.optional(S.String),
           liveOnly: S.optional(S.Boolean),
           type: S.optional(S.String),
           accountId: S.optional(S.String),
-          priority: S.optional(Parameter),
+          priority: S.optional(__S(0, __c0, 0)),
           notes: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tag" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          waitForTagsTimeout: S.optional(Parameter),
+          waitForTagsTimeout: S.optional(__S(0, __c0, 0)),
           tagManagerUrl: S.optional(S.String),
-          intervalSeconds: S.optional(Parameter),
-          limit: S.optional(Parameter),
+          intervalSeconds: S.optional(__S(0, __c0, 0)),
+          limit: S.optional(__S(0, __c0, 0)),
           notes: S.optional(S.String),
           path: S.optional(S.String),
           accountId: S.optional(S.String),
-          totalTimeMinMilliseconds: S.optional(Parameter),
-          selector: S.optional(Parameter),
-          continuousTimeMinMilliseconds: S.optional(Parameter),
-          maxTimerLengthSeconds: S.optional(Parameter),
-          verticalScrollPercentageList: S.optional(Parameter),
-          checkValidation: S.optional(Parameter),
-          autoEventFilter: S.optional(ConditionList),
-          waitForTags: S.optional(Parameter),
+          totalTimeMinMilliseconds: S.optional(__S(0, __c0, 0)),
+          selector: S.optional(__S(0, __c0, 0)),
+          continuousTimeMinMilliseconds: S.optional(__S(0, __c0, 0)),
+          maxTimerLengthSeconds: S.optional(__S(0, __c0, 0)),
+          verticalScrollPercentageList: S.optional(__S(0, __c0, 0)),
+          checkValidation: S.optional(__S(0, __c0, 0)),
+          autoEventFilter: S.optional(__S(9, __c1, 1)),
+          waitForTags: S.optional(__S(0, __c0, 0)),
           workspaceId: S.optional(S.String),
-          parameter: S.optional(ParameterList),
-          type: S.optional(TriggerTypeEnum),
-          visiblePercentageMax: S.optional(Parameter),
+          parameter: S.optional(__S(1, __c0, 1)),
+          type: S.optional(S.String),
+          visiblePercentageMax: S.optional(__S(0, __c0, 0)),
           containerId: S.optional(S.String),
-          uniqueTriggerId: S.optional(Parameter),
+          uniqueTriggerId: S.optional(__S(0, __c0, 0)),
           triggerId: S.optional(S.String),
-          horizontalScrollPercentageList: S.optional(Parameter),
+          horizontalScrollPercentageList: S.optional(__S(0, __c0, 0)),
           name: S.optional(S.String),
-          visiblePercentageMin: S.optional(Parameter),
+          visiblePercentageMin: S.optional(__S(0, __c0, 0)),
           parentFolderId: S.optional(S.String),
-          filter: S.optional(ConditionList),
-          visibilitySelector: S.optional(Parameter),
-          eventName: S.optional(Parameter),
-          customEventFilter: S.optional(ConditionList),
+          filter: S.optional(__S(9, __c1, 1)),
+          visibilitySelector: S.optional(__S(0, __c0, 0)),
+          eventName: S.optional(__S(0, __c0, 0)),
+          customEventFilter: S.optional(__S(9, __c1, 1)),
           fingerprint: S.optional(S.String),
-          interval: S.optional(Parameter),
+          interval: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "Trigger" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          gtagConfig: S.optional(GtagConfig),
-          changeStatus: S.optional(EntityChangeStatusEnum),
-          customTemplate: S.optional(CustomTemplate),
-          folder: S.optional(Folder),
-          zone: S.optional(Zone),
-          transformation: S.optional(Transformation),
-          client: S.optional(Client),
-          builtInVariable: S.optional(BuiltInVariable),
-          variable: S.optional(Variable),
-          tag: S.optional(Tag),
-          trigger: S.optional(Trigger),
+          gtagConfig: S.optional(__S(2, __c0, 2)),
+          changeStatus: S.optional(S.String),
+          customTemplate: S.optional(__S(4, __c0, 4)),
+          folder: S.optional(__S(5, __c0, 5)),
+          zone: S.optional(__S(13, __c1, 5)),
+          transformation: S.optional(__S(14, __c1, 6)),
+          client: S.optional(__S(15, __c1, 7)),
+          builtInVariable: S.optional(__S(16, __c2, 0)),
+          variable: S.optional(__S(18, __c2, 2)),
+          tag: S.optional(__S(24, __c3, 0)),
+          trigger: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "Entity" });
     case 3:
-      return S.Array(Entity);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          changes: S.optional(EntityList),
+          changes: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "ProposedChange" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
-          body: S.optional(ProposedChange.pipe(T.HttpBody())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5692,7 +4844,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          changes: S.optional(EntityList),
+          changes: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "BulkUpdateWorkspaceResponse",
@@ -5703,7 +4855,7 @@ function __c3(j: number): any {
           path: S.String.pipe(T.Label()),
           allowUserPermissionFeatureUpdate: S.optional(S.Boolean.pipe(T.Query())),
           containerId: S.optional(S.String.pipe(T.Query())),
-          settingSource: S.optional(CombineAccountsContainersSettingSourceEnum.pipe(T.Query())),
+          settingSource: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5719,7 +4871,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ContainerUsageContextItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5742,17 +4894,17 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          usageContext: S.optional(ContainerUsageContextItemEnumList),
-          tagIds: S.optional(StringList),
+          usageContext: S.optional(__S(32, __c4, 0)),
+          tagIds: S.optional(__S(6, __c0, 6)),
           tagManagerUrl: S.optional(S.String),
           accountId: S.optional(S.String),
           fingerprint: S.optional(S.String),
-          taggingServerUrls: S.optional(StringList),
+          taggingServerUrls: S.optional(__S(6, __c0, 6)),
           notes: S.optional(S.String),
-          domainName: S.optional(StringList),
+          domainName: S.optional(__S(6, __c0, 6)),
           publicId: S.optional(S.String),
           containerId: S.optional(S.String),
-          features: S.optional(ContainerFeatures),
+          features: S.optional(__S(33, __c4, 1)),
           name: S.optional(S.String),
           path: S.optional(S.String),
         }),
@@ -5761,7 +4913,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Container.pipe(T.HttpBody())),
+          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5786,7 +4938,7 @@ function __c4(j: number): any {
           path: S.optional(S.String),
           containerId: S.optional(S.String),
           authorizationCode: S.optional(S.String),
-          type: S.optional(EnvironmentTypeEnum),
+          type: S.optional(S.String),
           url: S.optional(S.String),
           environmentId: S.optional(S.String),
           tagManagerUrl: S.optional(S.String),
@@ -5796,7 +4948,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Environment.pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5824,7 +4976,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Workspace.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5840,13 +4992,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(
-            CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList.pipe(T.Query()),
-          ),
+          type: S.optional(__S(40, __c5, 0).pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -5859,11 +5009,11 @@ function __c5(j: number): any {
         identifier: "CreateAccountsContainersWorkspacesBuilt_in_variablesRequest",
       });
     case 2:
-      return S.Array(BuiltInVariable);
+      return S.Array(__S(16, __c2, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          builtInVariable: S.optional(BuiltInVariableList),
+          builtInVariable: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
         identifier: "CreateBuiltInVariableResponse",
@@ -5872,7 +5022,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Client.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5887,7 +5037,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Folder.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5902,7 +5052,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GtagConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5917,7 +5067,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Tag.pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5936,7 +5086,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CustomTemplate.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5951,7 +5101,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Transformation.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5966,7 +5116,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Trigger.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5981,7 +5131,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Variable.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5996,7 +5146,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Zone.pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6010,18 +5160,18 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permission: S.optional(AccountAccessPermissionEnum),
+          permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountAccess" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permission: S.optional(ContainerAccessPermissionEnum),
+          permission: S.optional(S.String),
           containerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerAccess" });
     case 7:
-      return S.Array(ContainerAccess);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -6029,18 +5179,18 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountAccess: S.optional(AccountAccess),
+          accountAccess: S.optional(__S(53, __c6, 5)),
           path: S.optional(S.String),
           accountId: S.optional(S.String),
           emailAddress: S.optional(S.String),
-          containerAccess: S.optional(ContainerAccessList),
+          containerAccess: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({ identifier: "UserPermission" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserPermission.pipe(T.HttpBody())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6064,7 +5214,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
-          body: S.optional(CreateContainerVersionRequestVersionOptions.pipe(T.HttpBody())),
+          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6083,50 +5233,50 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "SyncStatus" });
     case 5:
-      return S.Array(Client);
+      return S.Array(__S(15, __c1, 7));
     case 6:
-      return S.Array(Transformation);
+      return S.Array(__S(14, __c1, 6));
     case 7:
-      return S.Array(GtagConfig);
+      return S.Array(__S(2, __c0, 2));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Trigger);
+      return S.Array(__S(25, __c3, 1));
     case 1:
-      return S.Array(Zone);
+      return S.Array(__S(13, __c1, 5));
     case 2:
-      return S.Array(Folder);
+      return S.Array(__S(5, __c0, 5));
     case 3:
-      return S.Array(CustomTemplate);
+      return S.Array(__S(4, __c0, 4));
     case 4:
-      return S.Array(Variable);
+      return S.Array(__S(18, __c2, 2));
     case 5:
-      return S.Array(Tag);
+      return S.Array(__S(24, __c3, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean),
-          client: S.optional(ClientList),
-          transformation: S.optional(TransformationList),
-          container: S.optional(Container),
-          builtInVariable: S.optional(BuiltInVariableList),
-          gtagConfig: S.optional(GtagConfigList),
+          client: S.optional(__S(61, __c7, 5)),
+          transformation: S.optional(__S(62, __c7, 6)),
+          container: S.optional(__S(34, __c4, 2)),
+          builtInVariable: S.optional(__S(42, __c5, 2)),
+          gtagConfig: S.optional(__S(63, __c7, 7)),
           containerId: S.optional(S.String),
           tagManagerUrl: S.optional(S.String),
-          trigger: S.optional(TriggerList),
-          zone: S.optional(ZoneList),
+          trigger: S.optional(__S(64, __c8, 0)),
+          zone: S.optional(__S(65, __c8, 1)),
           containerVersionId: S.optional(S.String),
-          folder: S.optional(FolderList),
+          folder: S.optional(__S(66, __c8, 2)),
           fingerprint: S.optional(S.String),
-          customTemplate: S.optional(CustomTemplateList),
-          variable: S.optional(VariableList),
+          customTemplate: S.optional(__S(67, __c8, 3)),
+          variable: S.optional(__S(68, __c8, 4)),
           path: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
           accountId: S.optional(S.String),
-          tag: S.optional(TagList),
+          tag: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "ContainerVersion" });
     case 7:
@@ -6134,8 +5284,8 @@ function __c8(j: number): any {
         S.Struct({
           compilerError: S.optional(S.Boolean),
           newWorkspacePath: S.optional(S.String),
-          syncStatus: S.optional(SyncStatus),
-          containerVersion: S.optional(ContainerVersion),
+          syncStatus: S.optional(__S(60, __c7, 4)),
+          containerVersion: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({
         identifier: "CreateContainerVersionResponse",
@@ -6208,9 +5358,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
-          type: S.optional(
-            DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList.pipe(T.Query()),
-          ),
+          type: S.optional(__S(40, __c5, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6391,10 +5539,10 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tag: S.optional(TagList),
-          trigger: S.optional(TriggerList),
+          tag: S.optional(__S(69, __c8, 5)),
+          trigger: S.optional(__S(64, __c8, 0)),
           nextPageToken: S.optional(S.String),
-          variable: S.optional(VariableList),
+          variable: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "FolderEntities" });
     case 3:
@@ -6424,7 +5572,7 @@ function __c11(j: number): any {
           path: S.optional(S.String),
           accountId: S.optional(S.String),
           shareData: S.optional(S.Boolean),
-          features: S.optional(AccountFeatures),
+          features: S.optional(__S(92, __c11, 4)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Account" });
@@ -6677,8 +5825,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entityInWorkspace: S.optional(Entity),
-          entityInBaseVersion: S.optional(Entity),
+          entityInWorkspace: S.optional(__S(26, __c3, 2)),
+          entityInBaseVersion: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "MergeConflict" });
   }
@@ -6686,12 +5834,12 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MergeConflict);
+      return S.Array(__S(111, __c13, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mergeConflict: S.optional(MergeConflictList),
-          workspaceChange: S.optional(EntityList),
+          mergeConflict: S.optional(__S(112, __c14, 0)),
+          workspaceChange: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "GetWorkspaceStatusResponse",
@@ -6777,7 +5925,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
     case 7:
-      return S.Array(Account);
+      return S.Array(__S(93, __c11, 5));
   }
 }
 function __c15(j: number): any {
@@ -6785,7 +5933,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(AccountList),
+          account: S.optional(__S(119, __c14, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
@@ -6805,12 +5953,12 @@ function __c15(j: number): any {
         identifier: "ListAccountsContainersRequest",
       });
     case 2:
-      return S.Array(Container);
+      return S.Array(__S(34, __c4, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          container: S.optional(ContainerList),
+          container: S.optional(__S(122, __c15, 2)),
         }),
       ).annotate({ identifier: "ListContainersResponse" });
     case 4:
@@ -6828,12 +5976,12 @@ function __c15(j: number): any {
         identifier: "ListAccountsContainersDestinationsRequest",
       });
     case 5:
-      return S.Array(Destination);
+      return S.Array(__S(96, __c12, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          destination: S.optional(DestinationList),
+          destination: S.optional(__S(125, __c15, 5)),
         }),
       ).annotate({ identifier: "ListDestinationsResponse" });
     case 7:
@@ -6856,11 +6004,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Environment);
+      return S.Array(__S(36, __c4, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(EnvironmentList),
+          environment: S.optional(__S(128, __c16, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
@@ -6881,12 +6029,12 @@ function __c16(j: number): any {
         identifier: "ListAccountsContainersVersion_headersRequest",
       });
     case 3:
-      return S.Array(ContainerVersionHeader);
+      return S.Array(__S(116, __c14, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          containerVersionHeader: S.optional(ContainerVersionHeaderList),
+          containerVersionHeader: S.optional(__S(131, __c16, 3)),
         }),
       ).annotate({
         identifier: "ListContainerVersionsResponse",
@@ -6907,12 +6055,12 @@ function __c16(j: number): any {
         identifier: "ListAccountsContainersWorkspacesRequest",
       });
     case 6:
-      return S.Array(Workspace);
+      return S.Array(__S(38, __c4, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workspace: S.optional(WorkspaceList),
+          workspace: S.optional(__S(134, __c16, 6)),
         }),
       ).annotate({ identifier: "ListWorkspacesResponse" });
   }
@@ -6938,7 +6086,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          builtInVariable: S.optional(BuiltInVariableList),
+          builtInVariable: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
         identifier: "ListEnabledBuiltInVariablesResponse",
@@ -6961,7 +6109,7 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          client: S.optional(ClientList),
+          client: S.optional(__S(61, __c7, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListClientsResponse" });
@@ -6984,7 +6132,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          folder: S.optional(FolderList),
+          folder: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "ListFoldersResponse" });
     case 6:
@@ -7006,7 +6154,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          gtagConfig: S.optional(GtagConfigList),
+          gtagConfig: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({ identifier: "ListGtagConfigResponse" });
   }
@@ -7031,7 +6179,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tag: S.optional(TagList),
+          tag: S.optional(__S(69, __c8, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTagsResponse" });
@@ -7053,7 +6201,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          template: S.optional(CustomTemplateList),
+          template: S.optional(__S(67, __c8, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTemplatesResponse" });
@@ -7075,7 +6223,7 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          transformation: S.optional(TransformationList),
+          transformation: S.optional(__S(62, __c7, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7100,7 +6248,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          trigger: S.optional(TriggerList),
+          trigger: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "ListTriggersResponse" });
   }
@@ -7125,7 +6273,7 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          variable: S.optional(VariableList),
+          variable: S.optional(__S(68, __c8, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVariablesResponse" });
@@ -7148,7 +6296,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          zone: S.optional(ZoneList),
+          zone: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "ListZonesResponse" });
     case 4:
@@ -7167,12 +6315,12 @@ function __c19(j: number): any {
         identifier: "ListAccountsUser_permissionsRequest",
       });
     case 5:
-      return S.Array(UserPermission);
+      return S.Array(__S(56, __c7, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          userPermission: S.optional(UserPermissionList),
+          userPermission: S.optional(__S(157, __c19, 5)),
         }),
       ).annotate({
         identifier: "ListUserPermissionsResponse",
@@ -7213,11 +6361,11 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          variableId: S.optional(StringList.pipe(T.Query())),
-          tagId: S.optional(StringList.pipe(T.Query())),
+          variableId: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          tagId: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           path: S.String.pipe(T.Label()),
-          triggerId: S.optional(StringList.pipe(T.Query())),
-          body: S.optional(Folder.pipe(T.HttpBody())),
+          triggerId: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7269,8 +6417,8 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          syncStatus: S.optional(SyncStatus),
-          containerVersion: S.optional(ContainerVersion),
+          syncStatus: S.optional(__S(60, __c7, 4)),
+          containerVersion: S.optional(__S(70, __c8, 6)),
           compilerError: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "QuickPreviewResponse" });
@@ -7293,7 +6441,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           compilerError: S.optional(S.Boolean),
-          containerVersion: S.optional(ContainerVersion),
+          containerVersion: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({
         identifier: "PublishContainerVersionResponse",
@@ -7306,7 +6454,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
-          body: S.optional(Environment.pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7322,7 +6470,7 @@ function __c21(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Entity.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7337,9 +6485,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
-          type: S.optional(
-            RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum.pipe(T.Query()),
-          ),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7376,7 +6522,7 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          client: S.optional(Client),
+          client: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "RevertClientResponse" });
     case 6:
@@ -7397,7 +6543,7 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(Folder),
+          folder: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "RevertFolderResponse" });
   }
@@ -7422,7 +6568,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tag: S.optional(Tag),
+          tag: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "RevertTagResponse" });
     case 2:
@@ -7443,7 +6589,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          template: S.optional(CustomTemplate),
+          template: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "RevertTemplateResponse" });
     case 4:
@@ -7464,7 +6610,7 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          transformation: S.optional(Transformation),
+          transformation: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "RevertTransformationResponse",
@@ -7487,7 +6633,7 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          trigger: S.optional(Trigger),
+          trigger: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "RevertTriggerResponse" });
   }
@@ -7512,7 +6658,7 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          variable: S.optional(Variable),
+          variable: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "RevertVariableResponse" });
     case 2:
@@ -7533,7 +6679,7 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          zone: S.optional(Zone),
+          zone: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "RevertZoneResponse" });
     case 4:
@@ -7594,8 +6740,8 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mergeConflict: S.optional(MergeConflictList),
-          syncStatus: S.optional(SyncStatus),
+          mergeConflict: S.optional(__S(112, __c14, 0)),
+          syncStatus: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "SyncWorkspaceResponse" });
     case 1:
@@ -7617,7 +6763,7 @@ function __c24(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Account.pipe(T.HttpBody())),
+          body: S.optional(__S(93, __c11, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7631,7 +6777,7 @@ function __c24(j: number): any {
         S.Struct({
           fingerprint: S.optional(S.String.pipe(T.Query())),
           path: S.String.pipe(T.Label()),
-          body: S.optional(Container.pipe(T.HttpBody())),
+          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7647,7 +6793,7 @@ function __c24(j: number): any {
         S.Struct({
           fingerprint: S.optional(S.String.pipe(T.Query())),
           path: S.String.pipe(T.Label()),
-          body: S.optional(Environment.pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7663,7 +6809,7 @@ function __c24(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ContainerVersion.pipe(T.HttpBody())),
+          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7679,7 +6825,7 @@ function __c24(j: number): any {
         S.Struct({
           fingerprint: S.optional(S.String.pipe(T.Query())),
           path: S.String.pipe(T.Label()),
-          body: S.optional(Workspace.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7695,7 +6841,7 @@ function __c24(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Client.pipe(T.HttpBody())),
+          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7715,7 +6861,7 @@ function __c25(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Folder.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7731,7 +6877,7 @@ function __c25(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GtagConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7747,7 +6893,7 @@ function __c25(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Tag.pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7763,7 +6909,7 @@ function __c25(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(CustomTemplate.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7779,7 +6925,7 @@ function __c25(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Transformation.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7795,7 +6941,7 @@ function __c25(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Trigger.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7811,7 +6957,7 @@ function __c25(j: number): any {
         S.Struct({
           fingerprint: S.optional(S.String.pipe(T.Query())),
           path: S.String.pipe(T.Label()),
-          body: S.optional(Variable.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7827,7 +6973,7 @@ function __c25(j: number): any {
         S.Struct({
           path: S.String.pipe(T.Label()),
           fingerprint: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Zone.pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7846,7 +6992,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
-          body: S.optional(UserPermission.pipe(T.HttpBody())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7858,4 +7004,9 @@ function __c26(j: number): any {
         identifier: "UpdateAccountsUser_permissionsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,11 +19,6 @@ export interface CheckProfileTrafficManagerNameAvailabilityV2Request {
   /** The type of the resource. */
   type?: string;
 }
-const CheckProfileTrafficManagerNameAvailabilityV2Request = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckProfileTrafficManagerNameAvailabilityV2Request>;
-
 /** Class representing a Traffic Manager Name Availability response. */
 export interface TrafficManagerNameAvailability {
   /** The relative name. */
@@ -35,28 +32,16 @@ export interface TrafficManagerNameAvailability {
   /** Descriptive message that explains why the name is not available, when applicable. */
   message?: string;
 }
-const TrafficManagerNameAvailability = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<TrafficManagerNameAvailability>;
-
 export interface CheckProfileTrafficManagerRelativeDnsNameAvailabilityRequest {
   /** The name of the resource. */
   name?: string;
   /** The type of the resource. */
   type?: string;
 }
-const CheckProfileTrafficManagerRelativeDnsNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckProfileTrafficManagerRelativeDnsNameAvailabilityRequest>;
-
 export type DeleteEndpointRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
   | "NestedEndpoints";
-const DeleteEndpointRequestEndpointType = S.String;
-
 export interface DeleteEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -69,21 +54,11 @@ export interface DeleteEndpointRequest {
   /** The name of the Traffic Manager endpoint. */
   endpointName: string;
 }
-const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteEndpointRequest>;
-
 /** The result of the request or operation. */
 export interface DeleteOperationResult {
   /** The result of the operation or request. */
   boolean?: boolean;
 }
-const DeleteOperationResult = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteOperationResult>;
-
 export interface DeleteProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -92,27 +67,16 @@ export interface DeleteProfileRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
 }
-const DeleteProfileRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteProfileRequest>;
-
 export interface DeleteTrafficManagerUserMetricsKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const DeleteTrafficManagerUserMetricsKeyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteTrafficManagerUserMetricsKeyRequest>;
-
 export type EndpointsCreateOrUpdateRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
   | "NestedEndpoints";
-const EndpointsCreateOrUpdateRequestEndpointType = S.String;
-
 /** The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method. */
 export type EndpointStatus = "Enabled" | "Disabled";
-const EndpointStatus = S.String;
-
 /** The monitoring status of the endpoint. */
 export type EndpointMonitorStatus =
   | "CheckingEndpoint"
@@ -122,15 +86,8 @@ export type EndpointMonitorStatus =
   | "Inactive"
   | "Stopped"
   | "Unmonitored";
-const EndpointMonitorStatus = S.String;
-
 /** The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values. */
 export type EndpointPropertiesGeoMappingList = Array<string>;
-const EndpointPropertiesGeoMappingList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<EndpointPropertiesGeoMappingList>;
-
 /** Subnet first address, scope, and/or last address. */
 export interface EndpointPropertiesSubnetsItem {
   /** First address in the subnet. */
@@ -140,18 +97,8 @@ export interface EndpointPropertiesSubnetsItem {
   /** Block size (number of leading bits in the subnet mask). */
   scope?: number;
 }
-const EndpointPropertiesSubnetsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<EndpointPropertiesSubnetsItem>;
-
 /** The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints. */
 export type EndpointPropertiesSubnetsList = Array<EndpointPropertiesSubnetsItem>;
-const EndpointPropertiesSubnetsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<EndpointPropertiesSubnetsList>;
-
 /** Custom header name and value. */
 export interface EndpointPropertiesCustomHeadersItem {
   /** Header name. */
@@ -159,22 +106,10 @@ export interface EndpointPropertiesCustomHeadersItem {
   /** Header value. */
   value?: string;
 }
-const EndpointPropertiesCustomHeadersItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<EndpointPropertiesCustomHeadersItem>;
-
 /** List of custom headers. */
 export type EndpointPropertiesCustomHeadersList = Array<EndpointPropertiesCustomHeadersItem>;
-const EndpointPropertiesCustomHeadersList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<EndpointPropertiesCustomHeadersList>;
-
 /** If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. */
 export type AlwaysServe = "Enabled" | "Disabled";
-const AlwaysServe = S.String;
-
 /** Class representing a Traffic Manager endpoint properties. */
 export interface EndpointProperties {
   /** The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'. */
@@ -206,8 +141,6 @@ export interface EndpointProperties {
   /** If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. */
   alwaysServe?: AlwaysServe | (string & {});
 }
-const EndpointProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EndpointProperties>;
-
 export interface EndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -228,11 +161,6 @@ export interface EndpointsCreateOrUpdateRequest {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<EndpointsCreateOrUpdateRequest>;
-
 export interface EndpointsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -243,17 +171,10 @@ export interface EndpointsCreateOrUpdateResponse {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-const EndpointsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<EndpointsCreateOrUpdateResponse>;
-
 export type GetEndpointRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
   | "NestedEndpoints";
-const GetEndpointRequestEndpointType = S.String;
-
 export interface GetEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -266,8 +187,6 @@ export interface GetEndpointRequest {
   /** The name of the Traffic Manager endpoint. */
   endpointName: string;
 }
-const GetEndpointRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetEndpointRequest>;
-
 export interface GetEndpointResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -278,18 +197,9 @@ export interface GetEndpointResponse {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-const GetEndpointResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetEndpointResponse>;
-
 export interface GetGeographicHierarchyDefaultRequest {}
-const GetGeographicHierarchyDefaultRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetGeographicHierarchyDefaultRequest>;
-
 /** The list of Regions grouped under this Region in the Geographic Hierarchy. */
 export type RegionRegionsList = Array<Region>;
-const RegionRegionsList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<RegionRegionsList>;
-
 /** Class representing a region in the Geographic hierarchy used with the Geographic traffic routing method. */
 export interface Region {
   /** The code of the region */
@@ -299,18 +209,11 @@ export interface Region {
   /** The list of Regions grouped under this Region in the Geographic Hierarchy. */
   regions?: RegionRegionsList;
 }
-const Region = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Region>;
-
 /** Class representing the properties of the Geographic hierarchy used with the Geographic traffic routing method. */
 export interface GeographicHierarchyProperties {
   /** The region at the root of the hierarchy from all the regions in the hierarchy can be retrieved. */
   geographicHierarchy?: Region;
 }
-const GeographicHierarchyProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GeographicHierarchyProperties>;
-
 export interface GetGeographicHierarchyDefaultResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -321,24 +224,9 @@ export interface GetGeographicHierarchyDefaultResponse {
   /** The properties of the Geographic Hierarchy resource. */
   properties?: GeographicHierarchyProperties;
 }
-const GetGeographicHierarchyDefaultResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetGeographicHierarchyDefaultResponse>;
-
 export type GetHeatMapRequestHeatMapType = "default";
-const GetHeatMapRequestHeatMapType = S.String;
-
 export type GetHeatMapRequestTopLeftList = Array<number>;
-const GetHeatMapRequestTopLeftList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetHeatMapRequestTopLeftList>;
-
 export type GetHeatMapRequestBotRightList = Array<number>;
-const GetHeatMapRequestBotRightList =
-  GetHeatMapRequestTopLeftList as any as S.Schema<GetHeatMapRequestBotRightList>;
-
 export interface GetHeatMapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -353,8 +241,6 @@ export interface GetHeatMapRequest {
   /** The bottom right latitude,longitude pair of the rectangular viewport to query for. */
   botRight?: GetHeatMapRequestBotRightList;
 }
-const GetHeatMapRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetHeatMapRequest>;
-
 /** Class which is a sparse representation of a Traffic Manager endpoint. */
 export interface HeatMapEndpoint {
   /** The ARM Resource ID of this Traffic Manager endpoint. */
@@ -362,15 +248,8 @@ export interface HeatMapEndpoint {
   /** A number uniquely identifying this endpoint in query experiences. */
   endpointId?: number;
 }
-const HeatMapEndpoint = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<HeatMapEndpoint>;
-
 /** The endpoints used in this HeatMap calculation. */
 export type HeatMapPropertiesEndpointsList = Array<HeatMapEndpoint>;
-const HeatMapPropertiesEndpointsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<HeatMapPropertiesEndpointsList>;
-
 /** Class representing a Traffic Manager HeatMap query experience properties. */
 export interface QueryExperience {
   /** The id of the endpoint from the 'endpoints' array which these queries were routed to. */
@@ -380,15 +259,8 @@ export interface QueryExperience {
   /** The latency experienced by queries originating from this location. */
   latency?: number;
 }
-const QueryExperience = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<QueryExperience>;
-
 /** The query experiences produced in this HeatMap calculation. */
 export type TrafficFlowQueryExperiencesList = Array<QueryExperience>;
-const TrafficFlowQueryExperiencesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<TrafficFlowQueryExperiencesList>;
-
 /** Class representing a Traffic Manager HeatMap traffic flow properties. */
 export interface TrafficFlow {
   /** The IP address that this query experience originated from. */
@@ -400,15 +272,8 @@ export interface TrafficFlow {
   /** The query experiences produced in this HeatMap calculation. */
   queryExperiences?: TrafficFlowQueryExperiencesList;
 }
-const TrafficFlow = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TrafficFlow>;
-
 /** The traffic flows produced in this HeatMap calculation. */
 export type HeatMapPropertiesTrafficFlowsList = Array<TrafficFlow>;
-const HeatMapPropertiesTrafficFlowsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<HeatMapPropertiesTrafficFlowsList>;
-
 /** Class representing a Traffic Manager HeatMap properties. */
 export interface HeatMapProperties {
   /** The beginning of the time window for this HeatMap, inclusive. */
@@ -420,8 +285,6 @@ export interface HeatMapProperties {
   /** The traffic flows produced in this HeatMap calculation. */
   trafficFlows?: HeatMapPropertiesTrafficFlowsList;
 }
-const HeatMapProperties = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<HeatMapProperties>;
-
 export interface GetHeatMapResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -432,8 +295,6 @@ export interface GetHeatMapResponse {
   /** The properties of the Traffic Manager HeatMap. */
   properties?: HeatMapProperties;
 }
-const GetHeatMapResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetHeatMapResponse>;
-
 export interface GetProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -442,19 +303,10 @@ export interface GetProfileRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
 }
-const GetProfileRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetProfileRequest>;
-
 /** Resource tags. */
 export type GetProfileResponseTagsMap = { [key: string]: string | undefined };
-const GetProfileResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetProfileResponseTagsMap>;
-
 /** The status of the Traffic Manager profile. */
 export type ProfileStatus = "Enabled" | "Disabled";
-const ProfileStatus = S.String;
-
 /** The traffic routing method of the Traffic Manager profile. */
 export type TrafficRoutingMethod =
   | "Performance"
@@ -463,8 +315,6 @@ export type TrafficRoutingMethod =
   | "Geographic"
   | "MultiValue"
   | "Subnet";
-const TrafficRoutingMethod = S.String;
-
 /** Class containing DNS settings in a Traffic Manager profile. */
 export interface DnsConfig {
   /** The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile. */
@@ -474,8 +324,6 @@ export interface DnsConfig {
   /** The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile. */
   ttl?: number;
 }
-const DnsConfig = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DnsConfig>;
-
 /** The profile-level monitoring status of the Traffic Manager profile. */
 export type ProfileMonitorStatus =
   | "CheckingEndpoints"
@@ -483,19 +331,12 @@ export type ProfileMonitorStatus =
   | "Degraded"
   | "Disabled"
   | "Inactive";
-const ProfileMonitorStatus = S.String;
-
 /** The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health. */
 export type MonitorProtocol = "HTTP" | "HTTPS" | "TCP";
-const MonitorProtocol = S.String;
-
 /** Custom header name and value. */
 export type MonitorConfigCustomHeadersItem = EndpointPropertiesCustomHeadersItem;
 /** List of custom headers. */
 export type MonitorConfigCustomHeadersList = Array<EndpointPropertiesCustomHeadersItem>;
-const MonitorConfigCustomHeadersList =
-  EndpointPropertiesCustomHeadersList as any as S.Schema<MonitorConfigCustomHeadersList>;
-
 /** Min and max value of a status code range. */
 export interface MonitorConfigExpectedStatusCodeRangesItem {
   /** Min status code. */
@@ -503,19 +344,9 @@ export interface MonitorConfigExpectedStatusCodeRangesItem {
   /** Max status code. */
   max?: number;
 }
-const MonitorConfigExpectedStatusCodeRangesItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<MonitorConfigExpectedStatusCodeRangesItem>;
-
 /** List of expected status code ranges. */
 export type MonitorConfigExpectedStatusCodeRangesList =
   Array<MonitorConfigExpectedStatusCodeRangesItem>;
-const MonitorConfigExpectedStatusCodeRangesList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<MonitorConfigExpectedStatusCodeRangesList>;
-
 /** Class containing endpoint monitoring settings in a Traffic Manager profile. */
 export interface MonitorConfig {
   /** The profile-level monitoring status of the Traffic Manager profile. */
@@ -537,8 +368,6 @@ export interface MonitorConfig {
   /** List of expected status code ranges. */
   expectedStatusCodeRanges?: MonitorConfigExpectedStatusCodeRangesList;
 }
-const MonitorConfig = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<MonitorConfig>;
-
 /** Class representing a Traffic Manager endpoint. */
 export interface Endpoint {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
@@ -550,34 +379,16 @@ export interface Endpoint {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-const Endpoint = GetEndpointResponse as any as S.Schema<Endpoint>;
-
 /** The list of endpoints in the Traffic Manager profile. */
 export type ProfilePropertiesEndpointsList = Array<Endpoint>;
-const ProfilePropertiesEndpointsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ProfilePropertiesEndpointsList>;
-
 /** Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile. */
 export type TrafficViewEnrollmentStatus = "Enabled" | "Disabled";
-const TrafficViewEnrollmentStatus = S.String;
-
 /** The allowed type DNS record types for this profile. */
 export type AllowedEndpointRecordType = "DomainName" | "IPv4Address" | "IPv6Address" | "Any";
-const AllowedEndpointRecordType = S.String;
-
 /** The list of allowed endpoint record types. */
 export type ProfilePropertiesAllowedEndpointRecordTypesList = Array<AllowedEndpointRecordType>;
-const ProfilePropertiesAllowedEndpointRecordTypesList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ProfilePropertiesAllowedEndpointRecordTypesList>;
-
 /** When record type is set, a traffic manager profile will allow only endpoints that match this type. */
 export type RecordType = "A" | "AAAA" | "CNAME";
-const RecordType = S.String;
-
 /** Class representing the Traffic Manager profile properties. */
 export interface ProfileProperties {
   /** The status of the Traffic Manager profile. */
@@ -599,8 +410,6 @@ export interface ProfileProperties {
   /** When record type is set, a traffic manager profile will allow only endpoints that match this type. If it is not set, traffic manager profile will allow adding all types of endpoints. It is returned as null when this is not set. */
   recordType?: RecordType;
 }
-const ProfileProperties = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ProfileProperties>;
-
 export interface GetProfileResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -615,27 +424,15 @@ export interface GetProfileResponse {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfileProperties;
 }
-const GetProfileResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetProfileResponse>;
-
 export interface GetTrafficManagerUserMetricsKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const GetTrafficManagerUserMetricsKeyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetTrafficManagerUserMetricsKeyRequest>;
-
 /** Class representing a Traffic Manager Real User Metrics key response. */
 export interface UserMetricsProperties {
   /** The key returned by the User Metrics operation. */
   key?: string;
 }
-const UserMetricsProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UserMetricsProperties>;
-
 export interface GetTrafficManagerUserMetricsKeyResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -646,22 +443,12 @@ export interface GetTrafficManagerUserMetricsKeyResponse {
   /** The properties of the Traffic Manager User Metrics. */
   properties?: UserMetricsProperties;
 }
-const GetTrafficManagerUserMetricsKeyResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetTrafficManagerUserMetricsKeyResponse>;
-
 export interface ListProfileByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListProfileByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListProfileByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
 /** Class representing a Traffic Manager profile. */
@@ -679,15 +466,8 @@ export interface Profile {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfileProperties;
 }
-const Profile = GetProfileResponse as any as S.Schema<Profile>;
-
 /** The Profile items on this page */
 export type ProfileListResultValueList = Array<Profile>;
-const ProfileListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ProfileListResultValueList>;
-
 /** The response of a Profile list operation. */
 export interface ProfileListResult {
   /** The Profile items on this page */
@@ -695,22 +475,12 @@ export interface ProfileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ProfileListResult = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ProfileListResult>;
-
 export interface ListProfileBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListProfileBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListProfileBySubscriptionRequest>;
-
 /** Resource tags. */
 export type ProfilesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ProfilesCreateOrUpdateRequestTagsMap =
-  GetProfileResponseTagsMap as any as S.Schema<ProfilesCreateOrUpdateRequestTagsMap>;
-
 /** Class containing DNS settings in a Traffic Manager profile. */
 export interface DnsConfigInput {
   /** The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile. */
@@ -718,20 +488,12 @@ export interface DnsConfigInput {
   /** The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile. */
   ttl?: number;
 }
-const DnsConfigInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DnsConfigInput>;
-
 /** The list of endpoints in the Traffic Manager profile. */
 export type ProfilePropertiesInputEndpointsList = Array<Endpoint>;
-const ProfilePropertiesInputEndpointsList =
-  ProfilePropertiesEndpointsList as any as S.Schema<ProfilePropertiesInputEndpointsList>;
-
 /** The list of allowed endpoint record types. */
 export type ProfilePropertiesInputAllowedEndpointRecordTypesList = Array<
   AllowedEndpointRecordType | (string & {})
 >;
-const ProfilePropertiesInputAllowedEndpointRecordTypesList =
-  ProfilePropertiesAllowedEndpointRecordTypesList as any as S.Schema<ProfilePropertiesInputAllowedEndpointRecordTypesList>;
-
 /** Class representing the Traffic Manager profile properties. */
 export interface ProfilePropertiesInput {
   /** The status of the Traffic Manager profile. */
@@ -753,11 +515,6 @@ export interface ProfilePropertiesInput {
   /** When record type is set, a traffic manager profile will allow only endpoints that match this type. If it is not set, traffic manager profile will allow adding all types of endpoints. It is returned as null when this is not set. */
   recordType?: RecordType | (string & {});
 }
-const ProfilePropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ProfilePropertiesInput>;
-
 export interface ProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -778,16 +535,8 @@ export interface ProfilesCreateOrUpdateRequest {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfilePropertiesInput;
 }
-const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ProfilesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ProfilesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ProfilesCreateOrUpdateResponseTagsMap =
-  GetProfileResponseTagsMap as any as S.Schema<ProfilesCreateOrUpdateResponseTagsMap>;
-
 export interface ProfilesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -802,20 +551,10 @@ export interface ProfilesCreateOrUpdateResponse {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfileProperties;
 }
-const ProfilesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ProfilesCreateOrUpdateResponse>;
-
 export interface TrafficManagerUserMetricsKeysCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const TrafficManagerUserMetricsKeysCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateRequest>;
-
 export interface TrafficManagerUserMetricsKeysCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -826,15 +565,10 @@ export interface TrafficManagerUserMetricsKeysCreateOrUpdateResponse {
   /** The properties of the Traffic Manager User Metrics. */
   properties?: UserMetricsProperties;
 }
-const TrafficManagerUserMetricsKeysCreateOrUpdateResponse =
-  GetTrafficManagerUserMetricsKeyResponse as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateResponse>;
-
 export type UpdateEndpointRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
   | "NestedEndpoints";
-const UpdateEndpointRequestEndpointType = S.String;
-
 export interface UpdateEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -855,11 +589,6 @@ export interface UpdateEndpointRequest {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<UpdateEndpointRequest>;
-
 export interface UpdateEndpointResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -870,13 +599,8 @@ export interface UpdateEndpointResponse {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-const UpdateEndpointResponse = GetEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
-
 /** Resource tags. */
 export type UpdateProfileRequestTagsMap = { [key: string]: string | undefined };
-const UpdateProfileRequestTagsMap =
-  GetProfileResponseTagsMap as any as S.Schema<UpdateProfileRequestTagsMap>;
-
 export interface UpdateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -897,8 +621,6 @@ export interface UpdateProfileRequest {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfilePropertiesInput;
 }
-const UpdateProfileRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<UpdateProfileRequest>;
-
 /** Resource tags. */
 export type UpdateProfileResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateProfileResponse {
@@ -915,8 +637,6 @@ export interface UpdateProfileResponse {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfileProperties;
 }
-const UpdateProfileResponse = GetProfileResponse as any as S.Schema<UpdateProfileResponse>;
-
 export type CheckProfileTrafficManagerNameAvailabilityV2Error = AzureOpError;
 /** Checks the availability of a Traffic Manager Relative DNS name. */
 export const CheckProfileTrafficManagerNameAvailabilityV2: API.OperationMethod<
@@ -925,8 +645,8 @@ export const CheckProfileTrafficManagerNameAvailabilityV2: API.OperationMethod<
   CheckProfileTrafficManagerNameAvailabilityV2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckProfileTrafficManagerNameAvailabilityV2Request,
-  output: TrafficManagerNameAvailability,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckProfileTrafficManagerNameAvailabilityV2Request>,
+  output: __S(1, __c0, 1) as any as S.Schema<TrafficManagerNameAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -940,8 +660,12 @@ export const CheckProfileTrafficManagerRelativeDnsNameAvailability: API.Operatio
   CheckProfileTrafficManagerRelativeDnsNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckProfileTrafficManagerRelativeDnsNameAvailabilityRequest,
-  output: TrafficManagerNameAvailability,
+  input: __S(
+    2,
+    __c0,
+    2,
+  ) as any as S.Schema<CheckProfileTrafficManagerRelativeDnsNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TrafficManagerNameAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -955,8 +679,8 @@ export const DeleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEndpointRequest,
-  output: DeleteOperationResult,
+  input: __S(3, __c0, 3) as any as S.Schema<DeleteEndpointRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -970,8 +694,8 @@ export const DeleteProfile: API.OperationMethod<
   DeleteProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileRequest,
-  output: DeleteOperationResult,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -985,8 +709,8 @@ export const DeleteTrafficManagerUserMetricsKey: API.OperationMethod<
   DeleteTrafficManagerUserMetricsKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTrafficManagerUserMetricsKeyRequest,
-  output: DeleteOperationResult,
+  input: __S(6, __c0, 6) as any as S.Schema<DeleteTrafficManagerUserMetricsKeyRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1000,8 +724,8 @@ export const EndpointsCreateOrUpdate: API.OperationMethod<
   EndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsCreateOrUpdateRequest,
-  output: EndpointsCreateOrUpdateResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<EndpointsCreateOrUpdateRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<EndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1015,8 +739,8 @@ export const GetEndpoint: API.OperationMethod<
   GetEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEndpointRequest,
-  output: GetEndpointResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GetEndpointRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1030,8 +754,8 @@ export const GetGeographicHierarchyDefault: API.OperationMethod<
   GetGeographicHierarchyDefaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeographicHierarchyDefaultRequest,
-  output: GetGeographicHierarchyDefaultResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetGeographicHierarchyDefaultRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetGeographicHierarchyDefaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1045,8 +769,8 @@ export const GetHeatMap: API.OperationMethod<
   GetHeatMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHeatMapRequest,
-  output: GetHeatMapResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<GetHeatMapRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetHeatMapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1060,8 +784,8 @@ export const GetProfile: API.OperationMethod<
   GetProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileRequest,
-  output: GetProfileResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1075,8 +799,8 @@ export const GetTrafficManagerUserMetricsKey: API.OperationMethod<
   GetTrafficManagerUserMetricsKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrafficManagerUserMetricsKeyRequest,
-  output: GetTrafficManagerUserMetricsKeyResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<GetTrafficManagerUserMetricsKeyRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetTrafficManagerUserMetricsKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1090,8 +814,8 @@ export const ListProfileByResourceGroup: API.OperationMethod<
   ListProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProfileByResourceGroupRequest,
-  output: ProfileListResult,
+  input: __S(45, __c5, 5) as any as S.Schema<ListProfileByResourceGroupRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1105,8 +829,8 @@ export const ListProfileBySubscription: API.OperationMethod<
   ListProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProfileBySubscriptionRequest,
-  output: ProfileListResult,
+  input: __S(48, __c6, 0) as any as S.Schema<ListProfileBySubscriptionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1120,8 +844,8 @@ export const ProfilesCreateOrUpdate: API.OperationMethod<
   ProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesCreateOrUpdateRequest,
-  output: ProfilesCreateOrUpdateResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ProfilesCreateOrUpdateRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1135,8 +859,8 @@ export const TrafficManagerUserMetricsKeysCreateOrUpdate: API.OperationMethod<
   TrafficManagerUserMetricsKeysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TrafficManagerUserMetricsKeysCreateOrUpdateRequest,
-  output: TrafficManagerUserMetricsKeysCreateOrUpdateResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1150,8 +874,8 @@ export const UpdateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEndpointRequest,
-  output: UpdateEndpointResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<UpdateEndpointRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1165,8 +889,8 @@ export const UpdateProfile: API.OperationMethod<
   UpdateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProfileRequest,
-  output: UpdateProfileResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<UpdateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1226,7 +950,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          endpointType: DeleteEndpointRequestEndpointType.pipe(T.Label()),
+          endpointType: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1290,7 +1014,7 @@ function __c1(j: number): any {
         identifier: "EndpointPropertiesSubnetsItem",
       });
     case 1:
-      return S.Array(EndpointPropertiesSubnetsItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1301,24 +1025,24 @@ function __c1(j: number): any {
         identifier: "EndpointPropertiesCustomHeadersItem",
       });
     case 3:
-      return S.Array(EndpointPropertiesCustomHeadersItem);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           targetResourceId: S.optional(S.String),
           target: S.optional(S.String),
-          endpointStatus: S.optional(EndpointStatus),
+          endpointStatus: S.optional(S.String),
           weight: S.optional(S.Number),
           priority: S.optional(S.Number),
           endpointLocation: S.optional(S.String),
-          endpointMonitorStatus: S.optional(EndpointMonitorStatus),
+          endpointMonitorStatus: S.optional(S.String),
           minChildEndpoints: S.optional(S.Number),
           minChildEndpointsIPv4: S.optional(S.Number),
           minChildEndpointsIPv6: S.optional(S.Number),
-          geoMapping: S.optional(EndpointPropertiesGeoMappingList),
-          subnets: S.optional(EndpointPropertiesSubnetsList),
-          customHeaders: S.optional(EndpointPropertiesCustomHeadersList),
-          alwaysServe: S.optional(AlwaysServe),
+          geoMapping: S.optional(__S(7, __c0, 7)),
+          subnets: S.optional(__S(9, __c1, 1)),
+          customHeaders: S.optional(__S(11, __c1, 3)),
+          alwaysServe: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointProperties" });
     case 5:
@@ -1327,12 +1051,12 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          endpointType: EndpointsCreateOrUpdateRequestEndpointType.pipe(T.Label()),
+          endpointType: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(EndpointProperties),
+          properties: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1350,7 +1074,7 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(EndpointProperties),
+          properties: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "EndpointsCreateOrUpdateResponse",
@@ -1361,7 +1085,7 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          endpointType: GetEndpointRequestEndpointType.pipe(T.Label()),
+          endpointType: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1382,7 +1106,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(EndpointProperties),
+          properties: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "GetEndpointResponse" });
     case 1:
@@ -1399,19 +1123,19 @@ function __c2(j: number): any {
         identifier: "GetGeographicHierarchyDefaultRequest",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => Region));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(19, __c2, 3)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           name: S.optional(S.String),
-          regions: S.optional(RegionRegionsList),
+          regions: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "Region" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          geographicHierarchy: S.optional(Region),
+          geographicHierarchy: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "GeographicHierarchyProperties",
@@ -1422,7 +1146,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(GeographicHierarchyProperties),
+          properties: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "GetGeographicHierarchyDefaultResponse",
@@ -1435,9 +1159,9 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          heatMapType: GetHeatMapRequestHeatMapType.pipe(T.Label()),
-          topLeft: S.optional(GetHeatMapRequestTopLeftList.pipe(T.Query())),
-          botRight: S.optional(GetHeatMapRequestBotRightList.pipe(T.Query())),
+          heatMapType: S.String.pipe(T.Label()),
+          topLeft: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          botRight: S.optional(__S(22, __c2, 6).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1459,7 +1183,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "HeatMapEndpoint" });
     case 1:
-      return S.Array(HeatMapEndpoint);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1469,25 +1193,25 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "QueryExperience" });
     case 3:
-      return S.Array(QueryExperience);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           sourceIp: S.optional(S.String),
           latitude: S.optional(S.Number),
           longitude: S.optional(S.Number),
-          queryExperiences: S.optional(TrafficFlowQueryExperiencesList),
+          queryExperiences: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "TrafficFlow" });
     case 5:
-      return S.Array(TrafficFlow);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          endpoints: S.optional(HeatMapPropertiesEndpointsList),
-          trafficFlows: S.optional(HeatMapPropertiesTrafficFlowsList),
+          endpoints: S.optional(__S(25, __c3, 1)),
+          trafficFlows: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "HeatMapProperties" });
     case 7:
@@ -1496,7 +1220,7 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(HeatMapProperties),
+          properties: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "GetHeatMapResponse" });
   }
@@ -1538,25 +1262,25 @@ function __c4(j: number): any {
         identifier: "MonitorConfigExpectedStatusCodeRangesItem",
       });
     case 4:
-      return S.Array(MonitorConfigExpectedStatusCodeRangesItem);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          profileMonitorStatus: S.optional(ProfileMonitorStatus),
-          protocol: S.optional(MonitorProtocol),
+          profileMonitorStatus: S.optional(S.String),
+          protocol: S.optional(S.String),
           port: S.optional(S.Number),
           path: S.optional(S.String),
           intervalInSeconds: S.optional(S.Number),
           timeoutInSeconds: S.optional(S.Number),
           toleratedNumberOfFailures: S.optional(S.Number),
-          customHeaders: S.optional(MonitorConfigCustomHeadersList),
-          expectedStatusCodeRanges: S.optional(MonitorConfigExpectedStatusCodeRangesList),
+          customHeaders: S.optional(__S(11, __c1, 3)),
+          expectedStatusCodeRanges: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "MonitorConfig" });
     case 6:
-      return S.Array(Endpoint);
+      return S.Array(__S(16, __c2, 0));
     case 7:
-      return S.Array(AllowedEndpointRecordType);
+      return S.Array(S.String);
   }
 }
 function __c5(j: number): any {
@@ -1564,15 +1288,15 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          profileStatus: S.optional(ProfileStatus),
-          trafficRoutingMethod: S.optional(TrafficRoutingMethod),
-          dnsConfig: S.optional(DnsConfig),
-          monitorConfig: S.optional(MonitorConfig),
-          endpoints: S.optional(ProfilePropertiesEndpointsList),
-          trafficViewEnrollmentStatus: S.optional(TrafficViewEnrollmentStatus),
-          allowedEndpointRecordTypes: S.optional(ProfilePropertiesAllowedEndpointRecordTypesList),
+          profileStatus: S.optional(S.String),
+          trafficRoutingMethod: S.optional(S.String),
+          dnsConfig: S.optional(__S(34, __c4, 2)),
+          monitorConfig: S.optional(__S(37, __c4, 5)),
+          endpoints: S.optional(__S(38, __c4, 6)),
+          trafficViewEnrollmentStatus: S.optional(S.String),
+          allowedEndpointRecordTypes: S.optional(__S(39, __c4, 7)),
           maxReturn: S.optional(S.Number),
-          recordType: S.optional(RecordType),
+          recordType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileProperties" });
     case 1:
@@ -1581,9 +1305,9 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(GetProfileResponseTagsMap),
+          tags: S.optional(__S(33, __c4, 1)),
           location: S.optional(S.String),
-          properties: S.optional(ProfileProperties),
+          properties: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "GetProfileResponse" });
     case 2:
@@ -1613,7 +1337,7 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(UserMetricsProperties),
+          properties: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "GetTrafficManagerUserMetricsKeyResponse",
@@ -1635,11 +1359,11 @@ function __c5(j: number): any {
         identifier: "ListProfileByResourceGroupRequest",
       });
     case 6:
-      return S.Array(Profile);
+      return S.Array(__S(41, __c5, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: ProfileListResultValueList,
+          value: __S(46, __c5, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileListResult" });
@@ -1672,17 +1396,15 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          profileStatus: S.optional(ProfileStatus),
-          trafficRoutingMethod: S.optional(TrafficRoutingMethod),
-          dnsConfig: S.optional(DnsConfigInput),
-          monitorConfig: S.optional(MonitorConfig),
-          endpoints: S.optional(ProfilePropertiesInputEndpointsList),
-          trafficViewEnrollmentStatus: S.optional(TrafficViewEnrollmentStatus),
-          allowedEndpointRecordTypes: S.optional(
-            ProfilePropertiesInputAllowedEndpointRecordTypesList,
-          ),
+          profileStatus: S.optional(S.String),
+          trafficRoutingMethod: S.optional(S.String),
+          dnsConfig: S.optional(__S(49, __c6, 1)),
+          monitorConfig: S.optional(__S(37, __c4, 5)),
+          endpoints: S.optional(__S(38, __c4, 6)),
+          trafficViewEnrollmentStatus: S.optional(S.String),
+          allowedEndpointRecordTypes: S.optional(__S(39, __c4, 7)),
           maxReturn: S.optional(S.Number),
-          recordType: S.optional(RecordType),
+          recordType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfilePropertiesInput" });
     case 3:
@@ -1694,9 +1416,9 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ProfilesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(33, __c4, 1)),
           location: S.optional(S.String),
-          properties: S.optional(ProfilePropertiesInput),
+          properties: S.optional(__S(50, __c6, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1714,9 +1436,9 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ProfilesCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(33, __c4, 1)),
           location: S.optional(S.String),
-          properties: S.optional(ProfileProperties),
+          properties: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "ProfilesCreateOrUpdateResponse",
@@ -1742,12 +1464,12 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          endpointType: UpdateEndpointRequestEndpointType.pipe(T.Label()),
+          endpointType: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(EndpointProperties),
+          properties: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1766,9 +1488,9 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(UpdateProfileRequestTagsMap),
+          tags: S.optional(__S(33, __c4, 1)),
           location: S.optional(S.String),
-          properties: S.optional(ProfilePropertiesInput),
+          properties: S.optional(__S(50, __c6, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1779,4 +1501,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "UpdateProfileRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

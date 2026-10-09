@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -29,11 +31,6 @@ export class NotFound
   ) {}
 
 export type CreateCommandRequestParametersMap = { [key: string]: string | undefined };
-const CreateCommandRequestParametersMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCommandRequestParametersMap>;
-
 export interface CreateCommandRequest {
   /** ID of the project */
   projectId: string;
@@ -44,13 +41,9 @@ export interface CreateCommandRequest {
   commandTemplateName: string;
   parameters?: CreateCommandRequestParametersMap;
 }
-const CreateCommandRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateCommandRequest>;
-
 export interface NewCommandResponse {
   id?: number;
 }
-const NewCommandResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<NewCommandResponse>;
-
 export interface GetCommandRequest {
   /** ID of the project */
   projectId: string;
@@ -61,11 +54,7 @@ export interface GetCommandRequest {
   /** ID of the command */
   commandId: string;
 }
-const GetCommandRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetCommandRequest>;
-
 export type CommandDetailsStatus = "pending" | "running" | "completed" | "failed";
-const CommandDetailsStatus = S.String;
-
 export interface CommandDetails {
   commandTemplateName?: string;
   commandTemplateTitle?: string;
@@ -77,8 +66,6 @@ export interface CommandDetails {
   startedAt?: string;
   status?: CommandDetailsStatus;
 }
-const CommandDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CommandDetails>;
-
 export interface GetCommandTemplateRequest {
   /** ID of the project */
   projectId: string;
@@ -89,17 +76,7 @@ export interface GetCommandTemplateRequest {
   /** Name of the template */
   commandTemplateName: string;
 }
-const GetCommandTemplateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetCommandTemplateRequest>;
-
 export type CommandTemplateSchemaOsTypeList = Array<string>;
-const CommandTemplateSchemaOsTypeList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CommandTemplateSchemaOsTypeList>;
-
 export interface Field {
   default?: string;
   description?: string;
@@ -109,12 +86,7 @@ export interface Field {
   title?: string;
   type?: string;
 }
-const Field = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Field>;
-
 export type PropertiesRequiredList = Array<string>;
-const PropertiesRequiredList =
-  CommandTemplateSchemaOsTypeList as any as S.Schema<PropertiesRequiredList>;
-
 export interface Properties {
   ConfirmPassword?: Field;
   Password?: Field;
@@ -123,13 +95,9 @@ export interface Properties {
   required?: PropertiesRequiredList;
   type?: string;
 }
-const Properties = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Properties>;
-
 export interface ParametersSchema {
   properties?: Properties;
 }
-const ParametersSchema = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ParametersSchema>;
-
 export interface CommandTemplateSchema {
   description?: string;
   name?: string;
@@ -137,11 +105,6 @@ export interface CommandTemplateSchema {
   parametersSchema?: ParametersSchema;
   title?: string;
 }
-const CommandTemplateSchema = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CommandTemplateSchema>;
-
 export interface ListCommandsRequest {
   /** ID of the project */
   projectId: string;
@@ -150,11 +113,7 @@ export interface ListCommandsRequest {
   /** Server ID of the machine */
   serverId: string;
 }
-const ListCommandsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListCommandsRequest>;
-
 export type CommandsStatus = "pending" | "running" | "completed" | "failed";
-const CommandsStatus = S.String;
-
 export interface Commands {
   commandTemplateName?: string;
   commandTemplateTitle?: string;
@@ -163,53 +122,24 @@ export interface Commands {
   startedAt?: string;
   status?: CommandsStatus;
 }
-const Commands = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Commands>;
-
 export type GetCommandsResponseItemsList = Array<Commands>;
-const GetCommandsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetCommandsResponseItemsList>;
-
 export interface GetCommandsResponse {
   items?: GetCommandsResponseItemsList;
 }
-const GetCommandsResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetCommandsResponse>;
-
 export interface ListCommandTemplatesRequest {
   /** The type of the Operating System (windows or linux). If not provided will return data for all OS types. */
   osType?: string;
 }
-const ListCommandTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListCommandTemplatesRequest>;
-
 export type CommandTemplateOsTypeList = Array<string>;
-const CommandTemplateOsTypeList =
-  CommandTemplateSchemaOsTypeList as any as S.Schema<CommandTemplateOsTypeList>;
-
 export interface CommandTemplate {
   name?: string;
   osType?: CommandTemplateOsTypeList;
   title?: string;
 }
-const CommandTemplate = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CommandTemplate>;
-
 export type CommandTemplateResponseItemsList = Array<CommandTemplate>;
-const CommandTemplateResponseItemsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CommandTemplateResponseItemsList>;
-
 export interface CommandTemplateResponse {
   items?: CommandTemplateResponseItemsList;
 }
-const CommandTemplateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CommandTemplateResponse>;
-
 export type CreateCommandError = BadRequest | NotFound | StackitOpError;
 /** Creates a new command for execution */
 export const createCommand: API.OperationMethod<
@@ -218,8 +148,8 @@ export const createCommand: API.OperationMethod<
   CreateCommandError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommandRequest,
-  output: NewCommandResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateCommandRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<NewCommandResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -233,8 +163,8 @@ export const getCommand: API.OperationMethod<
   GetCommandError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommandRequest,
-  output: CommandDetails,
+  input: __S(3, __c0, 3) as any as S.Schema<GetCommandRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CommandDetails>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -248,8 +178,8 @@ export const getCommandTemplate: API.OperationMethod<
   GetCommandTemplateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommandTemplateRequest,
-  output: CommandTemplateSchema,
+  input: __S(5, __c0, 5) as any as S.Schema<GetCommandTemplateRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CommandTemplateSchema>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -263,8 +193,8 @@ export const listCommands: API.OperationMethod<
   ListCommandsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommandsRequest,
-  output: GetCommandsResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<ListCommandsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetCommandsResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -278,8 +208,8 @@ export const listCommandTemplates: API.OperationMethod<
   ListCommandTemplatesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommandTemplatesRequest,
-  output: CommandTemplateResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<ListCommandTemplatesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CommandTemplateResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -297,7 +227,7 @@ function __c0(j: number): any {
           region: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
           commandTemplateName: S.String,
-          parameters: S.optional(CreateCommandRequestParametersMap),
+          parameters: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -340,7 +270,7 @@ function __c0(j: number): any {
           output: S.optional(S.String),
           script: S.optional(S.String),
           startedAt: S.optional(S.String),
-          status: S.optional(CommandDetailsStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommandDetails" });
     case 5:
@@ -382,18 +312,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ConfirmPassword: S.optional(Field),
-          Password: S.optional(Field),
-          Script: S.optional(Field),
-          Username: S.optional(Field),
-          required: S.optional(PropertiesRequiredList),
+          ConfirmPassword: S.optional(__S(7, __c0, 7)),
+          Password: S.optional(__S(7, __c0, 7)),
+          Script: S.optional(__S(7, __c0, 7)),
+          Username: S.optional(__S(7, __c0, 7)),
+          required: S.optional(__S(6, __c0, 6)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Properties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(Properties),
+          properties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "ParametersSchema" });
     case 2:
@@ -401,8 +331,8 @@ function __c1(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           name: S.optional(S.String),
-          osType: S.optional(CommandTemplateSchemaOsTypeList),
-          parametersSchema: S.optional(ParametersSchema),
+          osType: S.optional(__S(6, __c0, 6)),
+          parametersSchema: S.optional(__S(9, __c1, 1)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommandTemplateSchema" });
@@ -429,15 +359,15 @@ function __c1(j: number): any {
           finishedAt: S.optional(S.String),
           id: S.optional(S.Number),
           startedAt: S.optional(S.String),
-          status: S.optional(CommandsStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Commands" });
     case 5:
-      return S.Array(Commands);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(GetCommandsResponseItemsList),
+          items: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "GetCommandsResponse" });
     case 7:
@@ -463,17 +393,22 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          osType: S.optional(CommandTemplateOsTypeList),
+          osType: S.optional(__S(6, __c0, 6)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommandTemplate" });
     case 1:
-      return S.Array(CommandTemplate);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(CommandTemplateResponseItemsList),
+          items: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "CommandTemplateResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

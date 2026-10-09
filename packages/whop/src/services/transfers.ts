@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -54,19 +56,10 @@ export type CreateTransferRequestFeedType =
   | "livestream_feed"
   | "universal_post"
   | "user";
-const CreateTransferRequestFeedType = S.String;
-
 /** Ledger transfers only. Custom key-value pairs attached to the transfer. Max 50 keys, 100 chars per key, 500 chars per string value. */
 export type CreateTransferRequestMetadataMap = { [key: string]: unknown | undefined };
-const CreateTransferRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateTransferRequestMetadataMap>;
-
 /** The kind of money movement, which decides what comes back. Defaults to ledger. `ledger` moves credit between two Whop balances and returns a `transfer`; `wallet_send` sends USDT from the origin account's Ethereum wallet and returns a `send`; `claim_link` funds a shareable link anyone with the URL can redeem and returns a `claim_link`. A `ledger` transfer from a stablecoin-rails account settles on-chain when covered, and still returns a `transfer`. */
 export type CreateTransferRequestType = "ledger" | "wallet_send" | "claim_link";
-const CreateTransferRequestType = S.String;
-
 export interface CreateTransferRequest {
   /** The amount to move, in the transfer currency. For example 25.00. */
   amount: number;
@@ -95,11 +88,6 @@ export interface CreateTransferRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateTransferRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateTransferRequest>;
-
 /** The user who initiated the transfer, such as the team member who sent a manual payout. Null if the creator is unavailable. */
 export interface CreateTransferResponseBodyCase0CreatedByUser {
   /** User ID. */
@@ -109,11 +97,6 @@ export interface CreateTransferResponseBodyCase0CreatedByUser {
   /** User's username. */
   username: string;
 }
-const CreateTransferResponseBodyCase0CreatedByUser = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateTransferResponseBodyCase0CreatedByUser>;
-
 export type CreateTransferResponseBodyCase0DestinationCase0Typename = "Company";
 export interface CreateTransferResponseBodyCase0DestinationCase0 {
   /** Account ID. */
@@ -243,20 +226,11 @@ export type CreateTransferResponseBody =
   | CreateTransferResponseBodyCase0
   | CreateTransferResponseBodyCase1
   | CreateTransferResponseBodyCase2;
-const CreateTransferResponseBody = S.Unknown as any as S.Schema<CreateTransferResponseBody>;
-
 export type CreateTransferResponse = CreateTransferResponseBody;
-const CreateTransferResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateTransferResponse>;
-
 export interface GetTransferRequest {
   /** The transfer ID. */
   id: string;
 }
-const GetTransferRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetTransferRequest>;
-
 /** The user who initiated the transfer, such as the team member who sent a manual payout. Null if the creator is unavailable. */
 export type GetTransferResponseCreatedByUser = CreateTransferResponseBodyCase0CreatedByUser;
 export type GetTransferResponseDestinationCase0Typename = "Company";
@@ -283,17 +257,10 @@ export interface GetTransferResponseDestinationCase1 {
 export type GetTransferResponseDestination =
   | GetTransferResponseDestinationCase0
   | GetTransferResponseDestinationCase1;
-const GetTransferResponseDestination = S.Unknown as any as S.Schema<GetTransferResponseDestination>;
-
 /** Custom metadata attached to the transfer. */
 export type GetTransferResponseMetadataMap = { [key: string]: unknown | undefined };
-const GetTransferResponseMetadataMap =
-  CreateTransferRequestMetadataMap as any as S.Schema<GetTransferResponseMetadataMap>;
-
 /** The object type. Discriminates the create response from a send or a claim link. */
 export type GetTransferResponseObject = "transfer";
-const GetTransferResponseObject = S.String;
-
 export type GetTransferResponseOriginCase0Typename = "Company";
 export interface GetTransferResponseOriginCase0 {
   /** Account ID. */
@@ -318,12 +285,8 @@ export interface GetTransferResponseOriginCase1 {
 export type GetTransferResponseOrigin =
   | GetTransferResponseOriginCase0
   | GetTransferResponseOriginCase1;
-const GetTransferResponseOrigin = S.Unknown as any as S.Schema<GetTransferResponseOrigin>;
-
 /** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
 export type GetTransferResponseStatus = "processing" | "succeeded" | "failed";
-const GetTransferResponseStatus = S.String;
-
 export interface GetTransferResponse {
   /** Transfer amount. */
   amount: number;
@@ -360,14 +323,8 @@ export interface GetTransferResponse {
   /** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
   status: GetTransferResponseStatus;
 }
-const GetTransferResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetTransferResponse>;
-
 export type ListTransferRequestOrder = "created_at" | "amount";
-const ListTransferRequestOrder = S.String;
-
 export type ListTransferRequestDirection = "asc" | "desc";
-const ListTransferRequestDirection = S.String;
-
 export interface ListTransferRequest {
   /** Filter to transfers sent from this account. Provide this or destination_id. */
   origin_id?: string;
@@ -390,24 +347,15 @@ export interface ListTransferRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListTransferRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListTransferRequest>;
-
 /** The user who initiated the transfer, such as the team member who sent a manual payout. Null if the creator is unavailable. */
 export type ListTransferResponseDataItemCreatedByUser =
   CreateTransferResponseBodyCase0CreatedByUser;
 /** Custom metadata attached to the transfer. */
 export type ListTransferResponseDataItemMetadataMap = { [key: string]: unknown | undefined };
-const ListTransferResponseDataItemMetadataMap =
-  CreateTransferRequestMetadataMap as any as S.Schema<ListTransferResponseDataItemMetadataMap>;
-
 /** The object type. */
 export type ListTransferResponseDataItemObject = "transfer";
-const ListTransferResponseDataItemObject = S.String;
-
 /** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
 export type ListTransferResponseDataItemStatus = "processing" | "succeeded" | "failed";
-const ListTransferResponseDataItemStatus = S.String;
-
 /** A transfer of credit between two ledger accounts. */
 export interface ListTransferResponseDataItem {
   /** Transfer amount. */
@@ -441,34 +389,17 @@ export interface ListTransferResponseDataItem {
   /** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
   status: ListTransferResponseDataItemStatus;
 }
-const ListTransferResponseDataItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListTransferResponseDataItem>;
-
 export type ListTransferResponseDataList = Array<ListTransferResponseDataItem>;
-const ListTransferResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListTransferResponseDataList>;
-
 export interface ListTransferResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListTransferResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListTransferResponsePageInfo>;
-
 export interface ListTransferResponse {
   data: ListTransferResponseDataList;
   page_info: ListTransferResponsePageInfo;
 }
-const ListTransferResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListTransferResponse>;
-
 export interface ListTransferRecipientsRequest {
   /** The account sending the money: a company account ID (`biz_`), or a user ID (`user_`) for that user's own personal balance. */
   origin_id: string;
@@ -479,11 +410,6 @@ export interface ListTransferRecipientsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-const ListTransferRecipientsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListTransferRecipientsRequest>;
-
 export type ListTransferRecipientsResponseDataItemCase0Object = "user";
 export interface ListTransferRecipientsResponseDataItemCase0 {
   /** User ID. */
@@ -511,25 +437,12 @@ export interface ListTransferRecipientsResponseDataItemCase1 {
 export type ListTransferRecipientsResponseDataItem =
   | ListTransferRecipientsResponseDataItemCase0
   | ListTransferRecipientsResponseDataItemCase1;
-const ListTransferRecipientsResponseDataItem =
-  S.Unknown as any as S.Schema<ListTransferRecipientsResponseDataItem>;
-
 export type ListTransferRecipientsResponseDataList = Array<ListTransferRecipientsResponseDataItem>;
-const ListTransferRecipientsResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListTransferRecipientsResponseDataList>;
-
 export type ListTransferRecipientsResponsePageInfo = ListTransferResponsePageInfo;
 export interface ListTransferRecipientsResponse {
   data: ListTransferRecipientsResponseDataList;
   page_info: ListTransferResponsePageInfo;
 }
-const ListTransferRecipientsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListTransferRecipientsResponse>;
-
 export type CreateTransferError = BadRequest | Forbidden | Conflict | WhopOpError;
 /** Create Transfer Moves money between accounts, or into a claim link anyone with the URL can redeem. */
 export const createTransfer: API.OperationMethod<
@@ -538,8 +451,8 @@ export const createTransfer: API.OperationMethod<
   CreateTransferError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransferRequest,
-  output: CreateTransferResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateTransferRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateTransferResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -553,8 +466,8 @@ export const getTransfer: API.OperationMethod<
   GetTransferError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransferRequest,
-  output: GetTransferResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetTransferRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetTransferResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -570,8 +483,8 @@ export const listTransfer: API.PaginatedOperationMethod<
   ListTransferResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTransferRequest,
-    output: ListTransferResponse,
+    input: __S(6, __c0, 6) as any as S.Schema<ListTransferRequest>,
+    output: __S(10, __c1, 2) as any as S.Schema<ListTransferResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -597,8 +510,8 @@ export const listTransferRecipients: API.PaginatedOperationMethod<
   ListTransferRecipientsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTransferRecipientsRequest,
-    output: ListTransferRecipientsResponse,
+    input: __S(11, __c1, 3) as any as S.Schema<ListTransferRecipientsRequest>,
+    output: __S(13, __c1, 5) as any as S.Schema<ListTransferRecipientsResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -627,13 +540,13 @@ function __c0(j: number): any {
           destination_id: S.optional(S.String),
           expires_at: S.optional(S.NullOr(S.String)),
           feed_id: S.optional(S.NullOr(S.String)),
-          feed_type: S.optional(S.NullOr(CreateTransferRequestFeedType)),
+          feed_type: S.optional(S.NullOr(S.String)),
           idempotence_key: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(CreateTransferRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
           notes: S.optional(S.NullOr(S.String)),
           origin_id: S.String,
           redeemable_count: S.optional(S.Number),
-          type: S.optional(CreateTransferRequestType),
+          type: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/transfers", code: 200 })),
       ).annotate({ identifier: "CreateTransferRequest" });
@@ -648,7 +561,7 @@ function __c0(j: number): any {
         identifier: "CreateTransferResponseBodyCase0CreatedByUser",
       });
     case 3:
-      return S.suspend(() => CreateTransferResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateTransferResponse",
       });
     case 4:
@@ -662,21 +575,21 @@ function __c0(j: number): any {
         S.Struct({
           amount: S.Number,
           created_at: S.String,
-          created_by_user: S.NullOr(CreateTransferResponseBodyCase0CreatedByUser),
+          created_by_user: S.NullOr(__S(2, __c0, 2)),
           currency: S.String,
-          destination: GetTransferResponseDestination,
+          destination: S.Unknown,
           destination_ledger_account_id: S.String,
           failed_at: S.optional(S.NullOr(S.String)),
           failure_code: S.optional(S.NullOr(S.String)),
           failure_reason: S.optional(S.NullOr(S.String)),
           fee_amount: S.optional(S.NullOr(S.Number)),
           id: S.String,
-          metadata: S.optional(S.NullOr(GetTransferResponseMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
           notes: S.optional(S.NullOr(S.String)),
-          object: GetTransferResponseObject,
-          origin: GetTransferResponseOrigin,
+          object: S.String,
+          origin: S.Unknown,
           origin_ledger_account_id: S.String,
-          status: GetTransferResponseStatus,
+          status: S.String,
         }),
       ).annotate({ identifier: "GetTransferResponse" });
     case 6:
@@ -684,8 +597,8 @@ function __c0(j: number): any {
         S.Struct({
           origin_id: S.optional(S.String.pipe(T.Query())),
           destination_id: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListTransferRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListTransferRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
@@ -699,7 +612,7 @@ function __c0(j: number): any {
         S.Struct({
           amount: S.Number,
           created_at: S.String,
-          created_by_user: S.NullOr(CreateTransferResponseBodyCase0CreatedByUser),
+          created_by_user: S.NullOr(__S(2, __c0, 2)),
           currency: S.String,
           destination_ledger_account_id: S.String,
           failed_at: S.optional(S.NullOr(S.String)),
@@ -707,11 +620,11 @@ function __c0(j: number): any {
           failure_reason: S.optional(S.NullOr(S.String)),
           fee_amount: S.optional(S.NullOr(S.Number)),
           id: S.String,
-          metadata: S.optional(S.NullOr(ListTransferResponseDataItemMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
           notes: S.optional(S.NullOr(S.String)),
-          object: ListTransferResponseDataItemObject,
+          object: S.String,
           origin_ledger_account_id: S.String,
-          status: ListTransferResponseDataItemStatus,
+          status: S.String,
         }),
       ).annotate({
         identifier: "ListTransferResponseDataItem",
@@ -721,7 +634,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListTransferResponseDataItem);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -736,8 +649,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: ListTransferResponseDataList,
-          page_info: ListTransferResponsePageInfo,
+          data: __S(8, __c1, 0),
+          page_info: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "ListTransferResponse" });
     case 3:
@@ -752,15 +665,20 @@ function __c1(j: number): any {
         identifier: "ListTransferRecipientsRequest",
       });
     case 4:
-      return S.Array(ListTransferRecipientsResponseDataItem);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListTransferRecipientsResponseDataList,
-          page_info: ListTransferResponsePageInfo,
+          data: __S(12, __c1, 4),
+          page_info: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "ListTransferRecipientsResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

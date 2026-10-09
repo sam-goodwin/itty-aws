@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IoTSecureTunneling",
   serviceShapeName: "IoTSecuredTunneling",
@@ -118,52 +120,36 @@ export interface CloseTunnelRequest {
   tunnelId: string;
   delete?: boolean;
 }
-const CloseTunnelRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CloseTunnelRequest>;
 export interface CloseTunnelResponse {}
-const CloseTunnelResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CloseTunnelResponse>;
 export interface DescribeTunnelRequest {
   tunnelId: string;
 }
-const DescribeTunnelRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DescribeTunnelRequest>;
 export type TunnelArn = string;
 export type TunnelStatus = "OPEN" | "CLOSED" | (string & {});
-const TunnelStatus = S.String;
-
 export type ConnectionStatus = "CONNECTED" | "DISCONNECTED" | (string & {});
-const ConnectionStatus = S.String;
-
 export interface ConnectionState {
   status?: ConnectionStatus;
   lastUpdatedAt?: Date;
 }
-const ConnectionState = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ConnectionState>;
 export type Description = string;
 export type ThingName = string;
 export type Service = string;
 export type ServiceList = string[];
-const ServiceList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface DestinationConfig {
   thingName?: string;
   services: string[];
 }
-const DestinationConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DestinationConfig>;
 export type TimeoutInMin = number;
 export interface TimeoutConfig {
   maxLifetimeTimeoutMinutes?: number;
 }
-const TimeoutConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TimeoutConfig>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface Tunnel {
   tunnelId?: string;
   tunnelArn?: string;
@@ -177,29 +163,16 @@ export interface Tunnel {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-const Tunnel = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Tunnel>;
 export interface DescribeTunnelResponse {
   tunnel?: Tunnel;
 }
-const DescribeTunnelResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DescribeTunnelResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListTunnelsRequest {
@@ -207,7 +180,6 @@ export interface ListTunnelsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListTunnelsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListTunnelsRequest>;
 export interface TunnelSummary {
   tunnelId?: string;
   tunnelArn?: string;
@@ -216,21 +188,17 @@ export interface TunnelSummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-const TunnelSummary = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TunnelSummary>;
 export type TunnelSummaryList = TunnelSummary[];
-const TunnelSummaryList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface ListTunnelsResponse {
   tunnelSummaries?: TunnelSummary[];
   nextToken?: string;
 }
-const ListTunnelsResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListTunnelsResponse>;
 export interface OpenTunnelRequest {
   description?: string;
   tags?: Tag[];
   destinationConfig?: DestinationConfig;
   timeoutConfig?: TimeoutConfig;
 }
-const OpenTunnelRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<OpenTunnelRequest>;
 export type ClientAccessToken = string | redacted.Redacted<string>;
 export interface OpenTunnelResponse {
   tunnelId?: string;
@@ -238,44 +206,28 @@ export interface OpenTunnelResponse {
   sourceAccessToken?: string | redacted.Redacted<string>;
   destinationAccessToken?: string | redacted.Redacted<string>;
 }
-const OpenTunnelResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<OpenTunnelResponse>;
 export type ClientMode = "SOURCE" | "DESTINATION" | "ALL" | (string & {});
-const ClientMode = S.String;
-
 export interface RotateTunnelAccessTokenRequest {
   tunnelId: string;
   clientMode: ClientMode;
   destinationConfig?: DestinationConfig;
 }
-const RotateTunnelAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<RotateTunnelAccessTokenRequest>;
 export interface RotateTunnelAccessTokenResponse {
   tunnelArn?: string;
   sourceAccessToken?: string | redacted.Redacted<string>;
   destinationAccessToken?: string | redacted.Redacted<string>;
 }
-const RotateTunnelAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RotateTunnelAccessTokenResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = CloseTunnelResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ServiceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = CloseTunnelResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type CloseTunnelError = ResourceNotFoundException | CommonErrors;
 /**
@@ -291,8 +243,8 @@ export const closeTunnel: API.OperationMethod<
   CloseTunnelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloseTunnelRequest,
-  output: CloseTunnelResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CloseTunnelRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CloseTunnelResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -311,8 +263,8 @@ export const describeTunnel: API.OperationMethod<
   DescribeTunnelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeTunnelRequest,
-  output: DescribeTunnelResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DescribeTunnelRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DescribeTunnelResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -329,8 +281,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -351,8 +303,8 @@ export const listTunnels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTunnelsRequest,
-  output: ListTunnelsResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<ListTunnelsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ListTunnelsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -377,8 +329,8 @@ export const openTunnel: API.OperationMethod<
   OpenTunnelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: OpenTunnelRequest,
-  output: OpenTunnelResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<OpenTunnelRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<OpenTunnelResponse>,
   errors: [LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -403,8 +355,8 @@ export const rotateTunnelAccessToken: API.OperationMethod<
   RotateTunnelAccessTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateTunnelAccessTokenRequest,
-  output: RotateTunnelAccessTokenResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<RotateTunnelAccessTokenRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<RotateTunnelAccessTokenResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -421,8 +373,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<TagResourceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -439,8 +391,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -486,7 +438,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ConnectionStatus),
+          status: S.optional(S.String),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ConnectionState" });
@@ -494,7 +446,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
-        S.Struct({ thingName: S.optional(S.String), services: ServiceList }),
+        S.Struct({ thingName: S.optional(S.String), services: __S(4, __c0, 4) }),
       ).annotate({ identifier: "DestinationConfig" });
     case 6:
       return S.suspend(() =>
@@ -509,25 +461,25 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Tag);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           tunnelId: S.optional(S.String),
           tunnelArn: S.optional(S.String),
-          status: S.optional(TunnelStatus),
-          sourceConnectionState: S.optional(ConnectionState),
-          destinationConnectionState: S.optional(ConnectionState),
+          status: S.optional(S.String),
+          sourceConnectionState: S.optional(__S(3, __c0, 3)),
+          destinationConnectionState: S.optional(__S(3, __c0, 3)),
           description: S.optional(S.String),
-          destinationConfig: S.optional(DestinationConfig),
-          timeoutConfig: S.optional(TimeoutConfig),
-          tags: S.optional(TagList),
+          destinationConfig: S.optional(__S(5, __c0, 5)),
+          timeoutConfig: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(8, __c1, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Tunnel" });
     case 2:
-      return S.suspend(() => S.Struct({ tunnel: S.optional(Tunnel) })).annotate({
+      return S.suspend(() => S.Struct({ tunnel: S.optional(__S(9, __c1, 1)) })).annotate({
         identifier: "DescribeTunnelResponse",
       });
     case 3:
@@ -539,7 +491,7 @@ function __c1(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(8, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
@@ -555,14 +507,14 @@ function __c1(j: number): any {
         S.Struct({
           tunnelId: S.optional(S.String),
           tunnelArn: S.optional(S.String),
-          status: S.optional(TunnelStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "TunnelSummary" });
     case 7:
-      return S.Array(TunnelSummary);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -570,7 +522,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tunnelSummaries: S.optional(TunnelSummaryList),
+          tunnelSummaries: S.optional(__S(15, __c1, 7)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTunnelsResponse" });
@@ -578,9 +530,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          tags: S.optional(TagList),
-          destinationConfig: S.optional(DestinationConfig),
-          timeoutConfig: S.optional(TimeoutConfig),
+          tags: S.optional(__S(8, __c1, 0)),
+          destinationConfig: S.optional(__S(5, __c0, 5)),
+          timeoutConfig: S.optional(__S(6, __c0, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/tunnels" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "OpenTunnelRequest" });
     case 2:
@@ -596,8 +548,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tunnelId: S.String.pipe(T.HttpLabel("tunnelId")),
-          clientMode: ClientMode,
-          destinationConfig: S.optional(DestinationConfig),
+          clientMode: S.String,
+          destinationConfig: S.optional(__S(5, __c0, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tunnel/{tunnelId}/rotate" }),
@@ -623,15 +575,20 @@ function __c2(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(8, __c1, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(4, __c0, 4) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/untag" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

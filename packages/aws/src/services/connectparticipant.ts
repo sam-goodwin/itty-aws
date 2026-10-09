@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ConnectParticipant",
   serviceShapeName: "AmazonConnectParticipantServiceLambda",
@@ -106,7 +108,7 @@ export class ResourceNotFoundException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceId: /*@__PURE__*/ S.optional(S.String),
       ResourceType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ResourceType" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -135,71 +137,43 @@ export interface CancelParticipantAuthenticationRequest {
   SessionId: string;
   ConnectionToken: string;
 }
-const CancelParticipantAuthenticationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelParticipantAuthenticationRequest>;
 export interface CancelParticipantAuthenticationResponse {}
-const CancelParticipantAuthenticationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelParticipantAuthenticationResponse>;
 export type ArtifactId = string;
 export type AttachmentIdList = string[];
-const AttachmentIdList = /*@__PURE__*/ __L.at(__c0, 2);
 export type NonEmptyClientToken = string;
 export interface CompleteAttachmentUploadRequest {
   AttachmentIds: string[];
   ClientToken: string;
   ConnectionToken: string;
 }
-const CompleteAttachmentUploadRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CompleteAttachmentUploadRequest>;
 export interface CompleteAttachmentUploadResponse {}
-const CompleteAttachmentUploadResponse =
-  CancelParticipantAuthenticationResponse as any as S.Schema<CompleteAttachmentUploadResponse>;
 export type ConnectionType =
   | "WEBSOCKET"
   | "CONNECTION_CREDENTIALS"
   | "WEBRTC_CONNECTION"
   | (string & {});
-const ConnectionType = S.String;
-
 export type ConnectionTypeList = ConnectionType[];
-const ConnectionTypeList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface CreateParticipantConnectionRequest {
   Type?: ConnectionType[];
   ParticipantToken: string;
   ConnectParticipant?: boolean;
 }
-const CreateParticipantConnectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateParticipantConnectionRequest>;
 export type PreSignedConnectionUrl = string;
 export type ISO8601Datetime = string;
 export interface Websocket {
   Url?: string;
   ConnectionExpiry?: string;
 }
-const Websocket = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Websocket>;
 export interface ConnectionCredentials {
   ConnectionToken?: string;
   Expiry?: string;
 }
-const ConnectionCredentials = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ConnectionCredentials>;
 export type AttendeeId = string;
 export type JoinToken = string | redacted.Redacted<string>;
 export interface Attendee {
   AttendeeId?: string;
   JoinToken?: string | redacted.Redacted<string>;
 }
-const Attendee = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Attendee>;
 export type URI = string;
 export interface WebRTCMediaPlacement {
   AudioHostUrl?: string;
@@ -207,48 +181,33 @@ export interface WebRTCMediaPlacement {
   SignalingUrl?: string;
   EventIngestionUrl?: string;
 }
-const WebRTCMediaPlacement = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<WebRTCMediaPlacement>;
 export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE" | (string & {});
-const MeetingFeatureStatus = S.String;
-
 export interface AudioFeatures {
   EchoReduction?: MeetingFeatureStatus;
 }
-const AudioFeatures = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AudioFeatures>;
 export interface MeetingFeaturesConfiguration {
   Audio?: AudioFeatures;
 }
-const MeetingFeaturesConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MeetingFeaturesConfiguration>;
 export type GuidString = string;
 export interface WebRTCMeeting {
   MediaPlacement?: WebRTCMediaPlacement;
   MeetingFeatures?: MeetingFeaturesConfiguration;
   MeetingId?: string;
 }
-const WebRTCMeeting = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<WebRTCMeeting>;
 export interface WebRTCConnection {
   Attendee?: Attendee;
   Meeting?: WebRTCMeeting;
 }
-const WebRTCConnection = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<WebRTCConnection>;
 export interface CreateParticipantConnectionResponse {
   Websocket?: Websocket;
   ConnectionCredentials?: ConnectionCredentials;
   WebRTCConnection?: WebRTCConnection;
 }
-const CreateParticipantConnectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateParticipantConnectionResponse>;
 export type ViewToken = string;
 export interface DescribeViewRequest {
   ViewToken: string;
   ConnectionToken: string;
 }
-const DescribeViewRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DescribeViewRequest>;
 export type ViewId = string;
 export type ARN = string;
 export type ViewName = string | redacted.Redacted<string>;
@@ -257,13 +216,11 @@ export type ViewInputSchema = string | redacted.Redacted<string>;
 export type ViewTemplate = string | redacted.Redacted<string>;
 export type ViewAction = string | redacted.Redacted<string>;
 export type ViewActions = (string | redacted.Redacted<string>)[];
-const ViewActions = /*@__PURE__*/ __L.at(__c2, 0);
 export interface ViewContent {
   InputSchema?: string | redacted.Redacted<string>;
   Template?: string | redacted.Redacted<string>;
   Actions?: (string | redacted.Redacted<string>)[];
 }
-const ViewContent = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ViewContent>;
 export interface View {
   Id?: string;
   Arn?: string;
@@ -271,32 +228,21 @@ export interface View {
   Version?: number;
   Content?: ViewContent;
 }
-const View = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<View>;
 export interface DescribeViewResponse {
   View?: View;
 }
-const DescribeViewResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DescribeViewResponse>;
 export type ClientToken = string;
 export interface DisconnectParticipantRequest {
   ClientToken?: string;
   ConnectionToken: string;
 }
-const DisconnectParticipantRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DisconnectParticipantRequest>;
 export interface DisconnectParticipantResponse {}
-const DisconnectParticipantResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DisconnectParticipantResponse>;
 export type URLExpiryInSeconds = number;
 export interface GetAttachmentRequest {
   AttachmentId: string;
   ConnectionToken: string;
   UrlExpiryInSeconds?: number;
 }
-const GetAttachmentRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetAttachmentRequest>;
 export type PreSignedAttachmentUrl = string;
 export type AttachmentSizeInBytes = number;
 export interface GetAttachmentResponse {
@@ -304,37 +250,21 @@ export interface GetAttachmentResponse {
   UrlExpiry?: string;
   AttachmentSizeInBytes: number;
 }
-const GetAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetAttachmentResponse>;
 export type RedirectURI = string;
 export interface GetAuthenticationUrlRequest {
   SessionId: string;
   RedirectUri: string;
   ConnectionToken: string;
 }
-const GetAuthenticationUrlRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetAuthenticationUrlRequest>;
 export type AuthenticationUrl = string;
 export interface GetAuthenticationUrlResponse {
   AuthenticationUrl?: string;
 }
-const GetAuthenticationUrlResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetAuthenticationUrlResponse>;
 export type ContactId = string;
 export type MaxResults = number;
 export type NextToken = string;
 export type ScanDirection = "FORWARD" | "BACKWARD" | (string & {});
-const ScanDirection = S.String;
-
 export type SortKey = "DESCENDING" | "ASCENDING" | (string & {});
-const SortKey = S.String;
-
 export type ChatItemId = string;
 export type Instant = string;
 export type MostRecent = number;
@@ -343,7 +273,6 @@ export interface StartPosition {
   AbsoluteTime?: string;
   MostRecent?: number;
 }
-const StartPosition = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<StartPosition>;
 export interface GetTranscriptRequest {
   ContactId?: string;
   MaxResults?: number;
@@ -353,7 +282,6 @@ export interface GetTranscriptRequest {
   StartPosition?: StartPosition;
   ConnectionToken: string;
 }
-const GetTranscriptRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetTranscriptRequest>;
 export type ChatContent = string;
 export type ChatContentType = string;
 export type ChatItemType =
@@ -370,8 +298,6 @@ export type ChatItemType =
   | "MESSAGE_DELIVERED"
   | "MESSAGE_READ"
   | (string & {});
-const ChatItemType = S.String;
-
 export type ParticipantId = string;
 export type DisplayName = string;
 export type ParticipantRole =
@@ -381,39 +307,28 @@ export type ParticipantRole =
   | "CUSTOM_BOT"
   | "SUPERVISOR"
   | (string & {});
-const ParticipantRole = S.String;
-
 export type ContentType = string;
 export type AttachmentName = string;
 export type ArtifactStatus = "APPROVED" | "REJECTED" | "IN_PROGRESS" | (string & {});
-const ArtifactStatus = S.String;
-
 export interface AttachmentItem {
   ContentType?: string;
   AttachmentId?: string;
   AttachmentName?: string;
   Status?: ArtifactStatus;
 }
-const AttachmentItem = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AttachmentItem>;
 export type Attachments = AttachmentItem[];
-const Attachments = /*@__PURE__*/ __L.at(__c3, 5);
 export interface Receipt {
   DeliveredTimestamp?: string;
   ReadTimestamp?: string;
   RecipientParticipantId?: string;
 }
-const Receipt = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Receipt>;
 export type Receipts = Receipt[];
-const Receipts = /*@__PURE__*/ __L.at(__c3, 7);
 export type MessageProcessingStatus = "PROCESSING" | "FAILED" | "REJECTED" | (string & {});
-const MessageProcessingStatus = S.String;
-
 export interface MessageMetadata {
   MessageId?: string;
   Receipts?: Receipt[];
   MessageProcessingStatus?: MessageProcessingStatus;
 }
-const MessageMetadata = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MessageMetadata>;
 export interface Item {
   AbsoluteTime?: string;
   Content?: string;
@@ -428,50 +343,36 @@ export interface Item {
   RelatedContactId?: string;
   ContactId?: string;
 }
-const Item = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Item>;
 export type Transcript = Item[];
-const Transcript = /*@__PURE__*/ __L.at(__c4, 2);
 export interface GetTranscriptResponse {
   InitialContactId?: string;
   Transcript?: Item[];
   NextToken?: string;
 }
-const GetTranscriptResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetTranscriptResponse>;
 export interface SendEventRequest {
   ContentType: string;
   Content?: string;
   ClientToken?: string;
   ConnectionToken: string;
 }
-const SendEventRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SendEventRequest>;
 export interface SendEventResponse {
   Id?: string;
   AbsoluteTime?: string;
 }
-const SendEventResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SendEventResponse>;
 export interface SendMessageRequest {
   ContentType: string;
   Content: string;
   ClientToken?: string;
   ConnectionToken: string;
 }
-const SendMessageRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SendMessageRequest>;
 export interface MessageProcessingMetadata {
   MessageProcessingStatus?: MessageProcessingStatus;
 }
-const MessageProcessingMetadata = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<MessageProcessingMetadata>;
 export interface SendMessageResponse {
   Id?: string;
   AbsoluteTime?: string;
   MessageMetadata?: MessageProcessingMetadata;
 }
-const SendMessageResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SendMessageResponse>;
 export interface StartAttachmentUploadRequest {
   ContentType: string;
   AttachmentSizeInBytes: number;
@@ -479,29 +380,19 @@ export interface StartAttachmentUploadRequest {
   ClientToken: string;
   ConnectionToken: string;
 }
-const StartAttachmentUploadRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<StartAttachmentUploadRequest>;
 export type UploadMetadataUrl = string;
 export type UploadMetadataSignedHeadersKey = string;
 export type UploadMetadataSignedHeadersValue = string;
 export type UploadMetadataSignedHeaders = { [key: string]: string | undefined };
-const UploadMetadataSignedHeaders = /*@__PURE__*/ __L.at(__c5, 2);
 export interface UploadMetadata {
   Url?: string;
   UrlExpiry?: string;
   HeadersToInclude?: { [key: string]: string | undefined };
 }
-const UploadMetadata = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<UploadMetadata>;
 export interface StartAttachmentUploadResponse {
   AttachmentId?: string;
   UploadMetadata?: UploadMetadata;
 }
-const StartAttachmentUploadResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<StartAttachmentUploadResponse>;
 export type Message = string;
 export type Reason = string;
 export type ResourceId = string;
@@ -515,8 +406,6 @@ export type ResourceType =
   | "USER"
   | "PHONE_NUMBER"
   | (string & {});
-const ResourceType = S.String;
-
 export type CancelParticipantAuthenticationError =
   | AccessDeniedException
   | InternalServerException
@@ -542,8 +431,8 @@ export const cancelParticipantAuthentication: API.OperationMethod<
   CancelParticipantAuthenticationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelParticipantAuthenticationRequest,
-  output: CancelParticipantAuthenticationResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelParticipantAuthenticationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelParticipantAuthenticationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -582,8 +471,8 @@ export const completeAttachmentUpload: API.OperationMethod<
   CompleteAttachmentUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteAttachmentUploadRequest,
-  output: CompleteAttachmentUploadResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CompleteAttachmentUploadRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CompleteAttachmentUploadResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -675,8 +564,8 @@ export const createParticipantConnection: API.OperationMethod<
   CreateParticipantConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateParticipantConnectionRequest,
-  output: CreateParticipantConnectionResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateParticipantConnectionRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateParticipantConnectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -706,8 +595,8 @@ export const describeView: API.OperationMethod<
   DescribeViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeViewRequest,
-  output: DescribeViewResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DescribeViewRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DescribeViewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -743,8 +632,8 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisconnectParticipantRequest,
-  output: DisconnectParticipantResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DisconnectParticipantRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<DisconnectParticipantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -785,8 +674,8 @@ export const getAttachment: API.OperationMethod<
   GetAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAttachmentRequest,
-  output: GetAttachmentResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetAttachmentRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetAttachmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -828,8 +717,8 @@ export const getAuthenticationUrl: API.OperationMethod<
   GetAuthenticationUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthenticationUrlRequest,
-  output: GetAuthenticationUrlResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAuthenticationUrlRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetAuthenticationUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -883,8 +772,8 @@ export const getTranscript: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetTranscriptRequest,
-  output: GetTranscriptResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<GetTranscriptRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetTranscriptResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -932,8 +821,8 @@ export const sendEvent: API.OperationMethod<
   SendEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendEventRequest,
-  output: SendEventResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<SendEventRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<SendEventResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -969,8 +858,8 @@ export const sendMessage: API.OperationMethod<
   SendMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendMessageRequest,
-  output: SendMessageResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<SendMessageRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<SendMessageResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1007,8 +896,8 @@ export const startAttachmentUpload: API.OperationMethod<
   StartAttachmentUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartAttachmentUploadRequest,
-  output: StartAttachmentUploadResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<StartAttachmentUploadRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<StartAttachmentUploadResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1051,7 +940,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AttachmentIds: AttachmentIdList,
+          AttachmentIds: __S(2, __c0, 2),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
           ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
         }).pipe(
@@ -1068,11 +957,11 @@ function __c0(j: number): any {
         identifier: "CompleteAttachmentUploadRequest",
       });
     case 4:
-      return S.Array(ConnectionType);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(ConnectionTypeList),
+          Type: S.optional(__S(4, __c0, 4)),
           ParticipantToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
           ConnectParticipant: S.optional(S.Boolean),
         }).pipe(
@@ -1114,31 +1003,31 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "WebRTCMediaPlacement" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ EchoReduction: S.optional(MeetingFeatureStatus) }),
-      ).annotate({ identifier: "AudioFeatures" });
+      return S.suspend(() => S.Struct({ EchoReduction: S.optional(S.String) })).annotate({
+        identifier: "AudioFeatures",
+      });
     case 3:
-      return S.suspend(() => S.Struct({ Audio: S.optional(AudioFeatures) })).annotate({
+      return S.suspend(() => S.Struct({ Audio: S.optional(__S(10, __c1, 2)) })).annotate({
         identifier: "MeetingFeaturesConfiguration",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          MediaPlacement: S.optional(WebRTCMediaPlacement),
-          MeetingFeatures: S.optional(MeetingFeaturesConfiguration),
+          MediaPlacement: S.optional(__S(9, __c1, 1)),
+          MeetingFeatures: S.optional(__S(11, __c1, 3)),
           MeetingId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebRTCMeeting" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Attendee: S.optional(Attendee), Meeting: S.optional(WebRTCMeeting) }),
+        S.Struct({ Attendee: S.optional(__S(8, __c1, 0)), Meeting: S.optional(__S(12, __c1, 4)) }),
       ).annotate({ identifier: "WebRTCConnection" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Websocket: S.optional(Websocket),
-          ConnectionCredentials: S.optional(ConnectionCredentials),
-          WebRTCConnection: S.optional(WebRTCConnection),
+          Websocket: S.optional(__S(6, __c0, 6)),
+          ConnectionCredentials: S.optional(__S(7, __c0, 7)),
+          WebRTCConnection: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "CreateParticipantConnectionResponse",
@@ -1170,7 +1059,7 @@ function __c2(j: number): any {
         S.Struct({
           InputSchema: S.optional(SensitiveString),
           Template: S.optional(SensitiveString),
-          Actions: S.optional(ViewActions),
+          Actions: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ViewContent" });
     case 2:
@@ -1180,11 +1069,11 @@ function __c2(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(SensitiveString),
           Version: S.optional(S.Number),
-          Content: S.optional(ViewContent),
+          Content: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "View" });
     case 3:
-      return S.suspend(() => S.Struct({ View: S.optional(View) })).annotate({
+      return S.suspend(() => S.Struct({ View: S.optional(__S(18, __c2, 2)) })).annotate({
         identifier: "DescribeViewResponse",
       });
     case 4:
@@ -1275,9 +1164,9 @@ function __c3(j: number): any {
           ContactId: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          ScanDirection: S.optional(ScanDirection),
-          SortOrder: S.optional(SortKey),
-          StartPosition: S.optional(StartPosition),
+          ScanDirection: S.optional(S.String),
+          SortOrder: S.optional(S.String),
+          StartPosition: S.optional(__S(26, __c3, 2)),
           ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
         }).pipe(
           T.all(
@@ -1296,11 +1185,11 @@ function __c3(j: number): any {
           ContentType: S.optional(S.String),
           AttachmentId: S.optional(S.String),
           AttachmentName: S.optional(S.String),
-          Status: S.optional(ArtifactStatus),
+          Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachmentItem" });
     case 5:
-      return S.Array(AttachmentItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1310,7 +1199,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Receipt" });
     case 7:
-      return S.Array(Receipt);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1319,8 +1208,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MessageId: S.optional(S.String),
-          Receipts: S.optional(Receipts),
-          MessageProcessingStatus: S.optional(MessageProcessingStatus),
+          Receipts: S.optional(__S(31, __c3, 7)),
+          MessageProcessingStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageMetadata" });
     case 1:
@@ -1330,23 +1219,23 @@ function __c4(j: number): any {
           Content: S.optional(S.String),
           ContentType: S.optional(S.String),
           Id: S.optional(S.String),
-          Type: S.optional(ChatItemType),
+          Type: S.optional(S.String),
           ParticipantId: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          ParticipantRole: S.optional(ParticipantRole),
-          Attachments: S.optional(Attachments),
-          MessageMetadata: S.optional(MessageMetadata),
+          ParticipantRole: S.optional(S.String),
+          Attachments: S.optional(__S(29, __c3, 5)),
+          MessageMetadata: S.optional(__S(32, __c4, 0)),
           RelatedContactId: S.optional(S.String),
           ContactId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Item" });
     case 2:
-      return S.Array(Item);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           InitialContactId: S.optional(S.String),
-          Transcript: S.optional(Transcript),
+          Transcript: S.optional(__S(34, __c4, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTranscriptResponse" });
@@ -1391,9 +1280,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "SendMessageRequest" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ MessageProcessingStatus: S.optional(MessageProcessingStatus) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ MessageProcessingStatus: S.optional(S.String) })).annotate({
         identifier: "MessageProcessingMetadata",
       });
   }
@@ -1405,7 +1292,7 @@ function __c5(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           AbsoluteTime: S.optional(S.String),
-          MessageMetadata: S.optional(MessageProcessingMetadata),
+          MessageMetadata: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "SendMessageResponse" });
     case 1:
@@ -1436,17 +1323,22 @@ function __c5(j: number): any {
         S.Struct({
           Url: S.optional(S.String),
           UrlExpiry: S.optional(S.String),
-          HeadersToInclude: S.optional(UploadMetadataSignedHeaders),
+          HeadersToInclude: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "UploadMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           AttachmentId: S.optional(S.String),
-          UploadMetadata: S.optional(UploadMetadata),
+          UploadMetadata: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "StartAttachmentUploadResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

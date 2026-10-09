@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -93,43 +95,17 @@ export interface AccountRulesListForAccountRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const AccountRulesListForAccountRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccountRulesListForAccountRequest>;
-
 export type AccountRulesListResultItemActionsItemType = "drop" | "forward" | "worker";
-const AccountRulesListResultItemActionsItemType = S.String;
-
 export type AccountRulesListResultItemActionsItemValueList = Array<string>;
-const AccountRulesListResultItemActionsItemValueList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AccountRulesListResultItemActionsItemValueList>;
-
 export interface AccountRulesListResultItemActionsItem {
   /** Type of supported action. */
   type: AccountRulesListResultItemActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: AccountRulesListResultItemActionsItemValueList | null;
 }
-const AccountRulesListResultItemActionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccountRulesListResultItemActionsItem>;
-
 export type AccountRulesListResultItemActionsList = Array<AccountRulesListResultItemActionsItem>;
-const AccountRulesListResultItemActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccountRulesListResultItemActionsList>;
-
 export type AccountRulesListResultItemMatchersItemType = "all" | "literal";
-const AccountRulesListResultItemMatchersItemType = S.String;
-
 export type AccountRulesListResultItemMatchersItemField = "to";
-const AccountRulesListResultItemMatchersItemField = S.String;
-
 export interface AccountRulesListResultItemMatchersItem {
   /** Type of matcher. */
   type: AccountRulesListResultItemMatchersItemType;
@@ -138,31 +114,14 @@ export interface AccountRulesListResultItemMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-const AccountRulesListResultItemMatchersItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccountRulesListResultItemMatchersItem>;
-
 export type AccountRulesListResultItemMatchersList = Array<AccountRulesListResultItemMatchersItem>;
-const AccountRulesListResultItemMatchersList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AccountRulesListResultItemMatchersList>;
-
 export type AccountRulesListResultItemSource = "api" | "wrangler";
-const AccountRulesListResultItemSource = S.String;
-
 export interface AccountRulesListResultItemZone {
   /** Zone name. */
   name?: string | null;
   /** Zone tag. */
   tag?: string | null;
 }
-const AccountRulesListResultItemZone = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AccountRulesListResultItemZone>;
-
 export interface AccountRulesListResultItem {
   /** Routing rule identifier. */
   id?: string | null;
@@ -183,23 +142,8 @@ export interface AccountRulesListResultItem {
   /** Zone information for the routing rule. */
   zone?: AccountRulesListResultItemZone | null;
 }
-const AccountRulesListResultItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AccountRulesListResultItem>;
-
 export type AccountRulesListResultList = Array<AccountRulesListResultItem>;
-const AccountRulesListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AccountRulesListResultList>;
-
 export type AccountRulesListResponse = AccountRulesListResultList;
-const AccountRulesListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AccountRulesListResponse>;
-
 export interface AccountRulesListForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -210,19 +154,12 @@ export interface AccountRulesListForZoneRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const AccountRulesListForZoneRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AccountRulesListForZoneRequest>;
-
 export interface CreateAddressRequest {
   /** Identifier. */
   accountId: string;
   /** The contact email address of the user. */
   email: string;
 }
-const CreateAddressRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateAddressRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAddressResponse {
   /** Destination address identifier. */
@@ -238,27 +175,18 @@ export interface CreateAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-const CreateAddressResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateAddressResponse>;
-
 export interface CreateDnsRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
   name?: string;
 }
-const CreateDnsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateDnsRequest>;
-
 export type DnsCreateResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-const DnsCreateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDnsResponse {
   /** Email Routing settings identifier. */
@@ -280,38 +208,17 @@ export interface CreateDnsResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const CreateDnsResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateDnsResponse>;
-
 export type RulesCreateRequestActionsItemType = "drop" | "forward" | "worker";
-const RulesCreateRequestActionsItemType = S.String;
-
 export type RulesCreateRequestActionsItemValueList = Array<string>;
-const RulesCreateRequestActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCreateRequestActionsItemValueList>;
-
 export interface RulesCreateRequestActionsItem {
   /** Type of supported action. */
   type: RulesCreateRequestActionsItemType | (string & {});
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCreateRequestActionsItemValueList;
 }
-const RulesCreateRequestActionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<RulesCreateRequestActionsItem>;
-
 export type RulesCreateRequestActionsList = Array<RulesCreateRequestActionsItem>;
-const RulesCreateRequestActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<RulesCreateRequestActionsList>;
-
 export type RulesCreateRequestMatchersItemType = "all" | "literal";
-const RulesCreateRequestMatchersItemType = S.String;
-
 export type RulesCreateRequestMatchersItemField = "to";
-const RulesCreateRequestMatchersItemField = S.String;
-
 export interface RulesCreateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesCreateRequestMatchersItemType | (string & {});
@@ -320,20 +227,8 @@ export interface RulesCreateRequestMatchersItem {
   /** Value for matcher. */
   value?: string;
 }
-const RulesCreateRequestMatchersItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<RulesCreateRequestMatchersItem>;
-
 export type RulesCreateRequestMatchersList = Array<RulesCreateRequestMatchersItem>;
-const RulesCreateRequestMatchersList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RulesCreateRequestMatchersList>;
-
 export type RulesCreateRequestSource = "api" | "wrangler";
-const RulesCreateRequestSource = S.String;
-
 export interface CreateRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -352,32 +247,15 @@ export interface CreateRuleRequest {
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCreateRequestSource | (string & {});
 }
-const CreateRuleRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateRuleRequest>;
-
 export type RulesCreateResponseActionsItemType = "drop" | "forward" | "worker";
-const RulesCreateResponseActionsItemType = S.String;
-
 export type RulesCreateResponseActionsItemValueList = Array<string>;
-const RulesCreateResponseActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCreateResponseActionsItemValueList>;
-
 export interface RulesCreateResponseActionsItem {
   /** Type of supported action. */
   type: RulesCreateResponseActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCreateResponseActionsItemValueList | null;
 }
-const RulesCreateResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RulesCreateResponseActionsItem>;
-
 export type RulesCreateResponseActionsList = Array<RulesCreateResponseActionsItem>;
-const RulesCreateResponseActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<RulesCreateResponseActionsList>;
-
 export type RulesCreateResponseMatchersItemType = "all" | "literal";
 export type RulesCreateResponseMatchersItemField = "to";
 export interface RulesCreateResponseMatchersItem {
@@ -389,12 +267,7 @@ export interface RulesCreateResponseMatchersItem {
   value?: string | null;
 }
 export type RulesCreateResponseMatchersList = Array<RulesCreateResponseMatchersItem>;
-const RulesCreateResponseMatchersList =
-  AccountRulesListResultItemMatchersList as any as S.Schema<RulesCreateResponseMatchersList>;
-
 export type RulesCreateResponseSource = "api" | "wrangler";
-const RulesCreateResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** Routing rule identifier. */
@@ -414,16 +287,12 @@ export interface CreateRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-const CreateRuleResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateRuleResponse>;
-
 export interface DeleteAddressRequest {
   /** Identifier. */
   accountId: string;
   /** Destination address identifier. */
   destinationAddressIdentifier: string;
 }
-const DeleteAddressRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeleteAddressRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAddressResponse {
   /** Destination address identifier. */
@@ -439,14 +308,10 @@ export interface DeleteAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-const DeleteAddressResponse = CreateAddressResponse as any as S.Schema<DeleteAddressResponse>;
-
 export interface DeleteDnsRequest {
   /** Identifier. */
   zoneId: string;
 }
-const DeleteDnsRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteDnsRequest>;
-
 export type DnsDeleteResponseStatus =
   | "ready"
   | "unconfigured"
@@ -474,40 +339,21 @@ export interface DnsDeleteResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const DnsDeleteResponse = CreateDnsResponse as any as S.Schema<DnsDeleteResponse>;
-
 export interface DeleteRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Routing rule identifier. */
   ruleIdentifier: string;
 }
-const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DeleteRuleRequest>;
-
 export type RulesDeleteResponseActionsItemType = "drop" | "forward" | "worker";
-const RulesDeleteResponseActionsItemType = S.String;
-
 export type RulesDeleteResponseActionsItemValueList = Array<string>;
-const RulesDeleteResponseActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesDeleteResponseActionsItemValueList>;
-
 export interface RulesDeleteResponseActionsItem {
   /** Type of supported action. */
   type: RulesDeleteResponseActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesDeleteResponseActionsItemValueList | null;
 }
-const RulesDeleteResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<RulesDeleteResponseActionsItem>;
-
 export type RulesDeleteResponseActionsList = Array<RulesDeleteResponseActionsItem>;
-const RulesDeleteResponseActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<RulesDeleteResponseActionsList>;
-
 export type RulesDeleteResponseMatchersItemType = "all" | "literal";
 export type RulesDeleteResponseMatchersItemField = "to";
 export interface RulesDeleteResponseMatchersItem {
@@ -519,12 +365,7 @@ export interface RulesDeleteResponseMatchersItem {
   value?: string | null;
 }
 export type RulesDeleteResponseMatchersList = Array<RulesDeleteResponseMatchersItem>;
-const RulesDeleteResponseMatchersList =
-  AccountRulesListResultItemMatchersList as any as S.Schema<RulesDeleteResponseMatchersList>;
-
 export type RulesDeleteResponseSource = "api" | "wrangler";
-const RulesDeleteResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
   /** Routing rule identifier. */
@@ -544,25 +385,16 @@ export interface DeleteRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteRuleResponse>;
-
 export interface DisableEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
 }
-const DisableEmailRoutingRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DisableEmailRoutingRequest>;
-
 export type DisableResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-const DisableResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DisableEmailRoutingResponse {
   /** Email Routing settings identifier. */
@@ -584,11 +416,6 @@ export interface DisableEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const DisableEmailRoutingResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DisableEmailRoutingResponse>;
-
 export interface EditRequest {
   /** Identifier. */
   zoneId: string;
@@ -599,8 +426,6 @@ export interface EditRequest {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean;
 }
-const EditRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EditRequest>;
-
 export type EditResponseStatus =
   | "ready"
   | "unconfigured"
@@ -628,11 +453,7 @@ export interface EditResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const EditResponse = CreateDnsResponse as any as S.Schema<EditResponse>;
-
 export type EditAddressRequestStatus = "unverified" | "verified";
-const EditAddressRequestStatus = S.String;
-
 export interface EditAddressRequest {
   /** Identifier. */
   accountId: string;
@@ -641,8 +462,6 @@ export interface EditAddressRequest {
   /** Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges. */
   status: EditAddressRequestStatus | (string & {});
 }
-const EditAddressRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<EditAddressRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditAddressResponse {
   /** Destination address identifier. */
@@ -658,17 +477,10 @@ export interface EditAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-const EditAddressResponse = CreateAddressResponse as any as S.Schema<EditAddressResponse>;
-
 export interface EnableEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
 }
-const EnableEmailRoutingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<EnableEmailRoutingRequest>;
-
 export type EnableResponseStatus =
   | "ready"
   | "unconfigured"
@@ -696,17 +508,12 @@ export interface EnableEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const EnableEmailRoutingResponse =
-  DisableEmailRoutingResponse as any as S.Schema<EnableEmailRoutingResponse>;
-
 export interface GetAddressRequest {
   /** Identifier. */
   accountId: string;
   /** Destination address identifier. */
   destinationAddressIdentifier: string;
 }
-const GetAddressRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetAddressRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAddressResponse {
   /** Destination address identifier. */
@@ -722,16 +529,12 @@ export interface GetAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-const GetAddressResponse = CreateAddressResponse as any as S.Schema<GetAddressResponse>;
-
 export interface GetDnsRequest {
   /** Identifier. */
   zoneId: string;
   /** Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter. */
   subdomain?: string;
 }
-const GetDnsRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetDnsRequest>;
-
 export type DnsGetResultItemType =
   | "A"
   | "AAAA"
@@ -751,8 +554,6 @@ export type DnsGetResultItemType =
   | "SVCB"
   | "TLSA"
   | "URI";
-const DnsGetResultItemType = S.String;
-
 export interface DnsGetResultItem {
   /** DNS record content. */
   content?: string | null;
@@ -765,23 +566,12 @@ export interface DnsGetResultItem {
   /** DNS record type. */
   type?: DnsGetResultItemType | null;
 }
-const DnsGetResultItem = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DnsGetResultItem>;
-
 export type DnsGetResultList = Array<DnsGetResultItem>;
-const DnsGetResultList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DnsGetResultList>;
-
 export type GetDnsResponse = DnsGetResultList;
-const GetDnsResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetDnsResponse>;
-
 export interface GetEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetEmailRoutingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetEmailRoutingRequest>;
-
 export type GetResponseStatus =
   | "ready"
   | "unconfigured"
@@ -809,40 +599,21 @@ export interface GetEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const GetEmailRoutingResponse = CreateDnsResponse as any as S.Schema<GetEmailRoutingResponse>;
-
 export interface GetRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Routing rule identifier. */
   ruleIdentifier: string;
 }
-const GetRuleRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetRuleRequest>;
-
 export type RulesGetResponseActionsItemType = "drop" | "forward" | "worker";
-const RulesGetResponseActionsItemType = S.String;
-
 export type RulesGetResponseActionsItemValueList = Array<string>;
-const RulesGetResponseActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesGetResponseActionsItemValueList>;
-
 export interface RulesGetResponseActionsItem {
   /** Type of supported action. */
   type: RulesGetResponseActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesGetResponseActionsItemValueList | null;
 }
-const RulesGetResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<RulesGetResponseActionsItem>;
-
 export type RulesGetResponseActionsList = Array<RulesGetResponseActionsItem>;
-const RulesGetResponseActionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<RulesGetResponseActionsList>;
-
 export type RulesGetResponseMatchersItemType = "all" | "literal";
 export type RulesGetResponseMatchersItemField = "to";
 export interface RulesGetResponseMatchersItem {
@@ -854,12 +625,7 @@ export interface RulesGetResponseMatchersItem {
   value?: string | null;
 }
 export type RulesGetResponseMatchersList = Array<RulesGetResponseMatchersItem>;
-const RulesGetResponseMatchersList =
-  AccountRulesListResultItemMatchersList as any as S.Schema<RulesGetResponseMatchersList>;
-
 export type RulesGetResponseSource = "api" | "wrangler";
-const RulesGetResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleResponse {
   /** Routing rule identifier. */
@@ -879,62 +645,26 @@ export interface GetRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-const GetRuleResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetRuleResponse>;
-
 export interface GetRuleCatchAllRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetRuleCatchAllRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetRuleCatchAllRequest>;
-
 export type RulesCatchAllsGetResponseActionsItemType = "drop" | "forward" | "worker";
-const RulesCatchAllsGetResponseActionsItemType = S.String;
-
 export type RulesCatchAllsGetResponseActionsItemValueList = Array<string>;
-const RulesCatchAllsGetResponseActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsGetResponseActionsItemValueList>;
-
 export interface RulesCatchAllsGetResponseActionsItem {
   /** Type of action for catch-all rule. */
   type: RulesCatchAllsGetResponseActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCatchAllsGetResponseActionsItemValueList | null;
 }
-const RulesCatchAllsGetResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<RulesCatchAllsGetResponseActionsItem>;
-
 export type RulesCatchAllsGetResponseActionsList = Array<RulesCatchAllsGetResponseActionsItem>;
-const RulesCatchAllsGetResponseActionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<RulesCatchAllsGetResponseActionsList>;
-
 export type RulesCatchAllsGetResponseMatchersItemType = "all";
-const RulesCatchAllsGetResponseMatchersItemType = S.String;
-
 export interface RulesCatchAllsGetResponseMatchersItem {
   /** Type of matcher. Default is 'all'. */
   type: RulesCatchAllsGetResponseMatchersItemType;
 }
-const RulesCatchAllsGetResponseMatchersItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<RulesCatchAllsGetResponseMatchersItem>;
-
 export type RulesCatchAllsGetResponseMatchersList = Array<RulesCatchAllsGetResponseMatchersItem>;
-const RulesCatchAllsGetResponseMatchersList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<RulesCatchAllsGetResponseMatchersList>;
-
 export type RulesCatchAllsGetResponseSource = "api" | "wrangler";
-const RulesCatchAllsGetResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleCatchAllResponse {
   /** Routing rule identifier. */
@@ -952,14 +682,7 @@ export interface GetRuleCatchAllResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-const GetRuleCatchAllResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetRuleCatchAllResponse>;
-
 export type AddressesListRequestDirection = "asc" | "desc";
-const AddressesListRequestDirection = S.String;
-
 export interface ListAddressesRequest {
   /** Identifier. */
   accountId: string;
@@ -972,8 +695,6 @@ export interface ListAddressesRequest {
   /** Filter by verified destination addresses. */
   verified?: string;
 }
-const ListAddressesRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListAddressesRequest>;
-
 export interface AddressesListResultItem {
   /** Destination address identifier. */
   id?: string | null;
@@ -988,28 +709,13 @@ export interface AddressesListResultItem {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-const AddressesListResultItem = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<AddressesListResultItem>;
-
 export type AddressesListResultList = Array<AddressesListResultItem>;
-const AddressesListResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<AddressesListResultList>;
-
 export interface ListAddressesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AddressesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAddressesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListAddressesResponse>;
-
 export interface ListRulesRequest {
   /** Identifier. */
   zoneId: string;
@@ -1018,30 +724,19 @@ export interface ListRulesRequest {
   /** Filter by enabled routing rules. */
   enabled?: boolean;
 }
-const ListRulesRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ListRulesRequest>;
-
 export type ListRulesResponseResultList = Array<GetRuleResponse>;
-const ListRulesResponseResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListRulesResponseResultList>;
-
 export interface ListRulesResponse {
   /** Routing rules for the zone. */
   result: ListRulesResponseResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListRulesResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListRulesResponse>;
-
 export interface PatchDnsRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
   name?: string;
 }
-const PatchDnsRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<PatchDnsRequest>;
-
 export type DnsEditResponseStatus =
   | "ready"
   | "unconfigured"
@@ -1069,32 +764,15 @@ export interface PatchDnsResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const PatchDnsResponse = CreateDnsResponse as any as S.Schema<PatchDnsResponse>;
-
 export type RulesCatchAllsUpdateRequestActionsItemType = "drop" | "forward" | "worker";
-const RulesCatchAllsUpdateRequestActionsItemType = S.String;
-
 export type RulesCatchAllsUpdateRequestActionsItemValueList = Array<string>;
-const RulesCatchAllsUpdateRequestActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsUpdateRequestActionsItemValueList>;
-
 export interface RulesCatchAllsUpdateRequestActionsItem {
   /** Type of action for catch-all rule. */
   type: RulesCatchAllsUpdateRequestActionsItemType | (string & {});
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCatchAllsUpdateRequestActionsItemValueList;
 }
-const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RulesCatchAllsUpdateRequestActionsItem>;
-
 export type RulesCatchAllsUpdateRequestActionsList = Array<RulesCatchAllsUpdateRequestActionsItem>;
-const RulesCatchAllsUpdateRequestActionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<RulesCatchAllsUpdateRequestActionsList>;
-
 export type RulesCatchAllsUpdateRequestMatchersItemType = "all";
 export interface RulesCatchAllsUpdateRequestMatchersItem {
   /** Type of matcher. Default is 'all'. */
@@ -1102,12 +780,7 @@ export interface RulesCatchAllsUpdateRequestMatchersItem {
 }
 export type RulesCatchAllsUpdateRequestMatchersList =
   Array<RulesCatchAllsUpdateRequestMatchersItem>;
-const RulesCatchAllsUpdateRequestMatchersList =
-  RulesCatchAllsGetResponseMatchersList as any as S.Schema<RulesCatchAllsUpdateRequestMatchersList>;
-
 export type RulesCatchAllsUpdateRequestSource = "api" | "wrangler";
-const RulesCatchAllsUpdateRequestSource = S.String;
-
 export interface PutRuleCatchAllRequest {
   /** Identifier. */
   zoneId: string;
@@ -1124,36 +797,16 @@ export interface PutRuleCatchAllRequest {
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCatchAllsUpdateRequestSource | (string & {});
 }
-const PutRuleCatchAllRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<PutRuleCatchAllRequest>;
-
 export type RulesCatchAllsUpdateResponseActionsItemType = "drop" | "forward" | "worker";
-const RulesCatchAllsUpdateResponseActionsItemType = S.String;
-
 export type RulesCatchAllsUpdateResponseActionsItemValueList = Array<string>;
-const RulesCatchAllsUpdateResponseActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsUpdateResponseActionsItemValueList>;
-
 export interface RulesCatchAllsUpdateResponseActionsItem {
   /** Type of action for catch-all rule. */
   type: RulesCatchAllsUpdateResponseActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCatchAllsUpdateResponseActionsItemValueList | null;
 }
-const RulesCatchAllsUpdateResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<RulesCatchAllsUpdateResponseActionsItem>;
-
 export type RulesCatchAllsUpdateResponseActionsList =
   Array<RulesCatchAllsUpdateResponseActionsItem>;
-const RulesCatchAllsUpdateResponseActionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<RulesCatchAllsUpdateResponseActionsList>;
-
 export type RulesCatchAllsUpdateResponseMatchersItemType = "all";
 export interface RulesCatchAllsUpdateResponseMatchersItem {
   /** Type of matcher. Default is 'all'. */
@@ -1161,12 +814,7 @@ export interface RulesCatchAllsUpdateResponseMatchersItem {
 }
 export type RulesCatchAllsUpdateResponseMatchersList =
   Array<RulesCatchAllsUpdateResponseMatchersItem>;
-const RulesCatchAllsUpdateResponseMatchersList =
-  RulesCatchAllsGetResponseMatchersList as any as S.Schema<RulesCatchAllsUpdateResponseMatchersList>;
-
 export type RulesCatchAllsUpdateResponseSource = "api" | "wrangler";
-const RulesCatchAllsUpdateResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutRuleCatchAllResponse {
   /** Routing rule identifier. */
@@ -1184,11 +832,6 @@ export interface PutRuleCatchAllResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-const PutRuleCatchAllResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PutRuleCatchAllResponse>;
-
 export interface RulesListForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -1199,35 +842,15 @@ export interface RulesListForAccountRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const RulesListForAccountRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<RulesListForAccountRequest>;
-
 export type RulesListResultItemActionsItemType = "drop" | "forward" | "worker";
-const RulesListResultItemActionsItemType = S.String;
-
 export type RulesListResultItemActionsItemValueList = Array<string>;
-const RulesListResultItemActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesListResultItemActionsItemValueList>;
-
 export interface RulesListResultItemActionsItem {
   /** Type of supported action. */
   type: RulesListResultItemActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesListResultItemActionsItemValueList | null;
 }
-const RulesListResultItemActionsItem = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RulesListResultItemActionsItem>;
-
 export type RulesListResultItemActionsList = Array<RulesListResultItemActionsItem>;
-const RulesListResultItemActionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<RulesListResultItemActionsList>;
-
 export type RulesListResultItemMatchersItemType = "all" | "literal";
 export type RulesListResultItemMatchersItemField = "to";
 export interface RulesListResultItemMatchersItem {
@@ -1239,12 +862,7 @@ export interface RulesListResultItemMatchersItem {
   value?: string | null;
 }
 export type RulesListResultItemMatchersList = Array<RulesListResultItemMatchersItem>;
-const RulesListResultItemMatchersList =
-  AccountRulesListResultItemMatchersList as any as S.Schema<RulesListResultItemMatchersList>;
-
 export type RulesListResultItemSource = "api" | "wrangler";
-const RulesListResultItemSource = S.String;
-
 export type RulesListResultItemZone = AccountRulesListResultItemZone;
 export interface RulesListResultItem {
   /** Routing rule identifier. */
@@ -1266,14 +884,8 @@ export interface RulesListResultItem {
   /** Zone information for the routing rule. */
   zone?: AccountRulesListResultItemZone | null;
 }
-const RulesListResultItem = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<RulesListResultItem>;
-
 export type RulesListResultList = Array<RulesListResultItem>;
-const RulesListResultList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RulesListResultList>;
-
 export type RulesListResponse = RulesListResultList;
-const RulesListResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<RulesListResponse>;
-
 export interface RulesListForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -1284,19 +896,12 @@ export interface RulesListForZoneRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const RulesListForZoneRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<RulesListForZoneRequest>;
-
 export interface UnlockRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
   name?: string;
 }
-const UnlockRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<UnlockRequest>;
-
 export type UnlockResponseStatus =
   | "ready"
   | "unconfigured"
@@ -1324,8 +929,6 @@ export interface UnlockResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const UnlockResponse = CreateDnsResponse as any as S.Schema<UnlockResponse>;
-
 export interface UpdateRequest {
   /** Identifier. */
   zoneId: string;
@@ -1336,8 +939,6 @@ export interface UpdateRequest {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean;
 }
-const UpdateRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UpdateRequest>;
-
 export type UpdateResponseStatus =
   | "ready"
   | "unconfigured"
@@ -1365,32 +966,15 @@ export interface UpdateResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-const UpdateResponse = CreateDnsResponse as any as S.Schema<UpdateResponse>;
-
 export type RulesUpdateRequestActionsItemType = "drop" | "forward" | "worker";
-const RulesUpdateRequestActionsItemType = S.String;
-
 export type RulesUpdateRequestActionsItemValueList = Array<string>;
-const RulesUpdateRequestActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesUpdateRequestActionsItemValueList>;
-
 export interface RulesUpdateRequestActionsItem {
   /** Type of supported action. */
   type: RulesUpdateRequestActionsItemType | (string & {});
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesUpdateRequestActionsItemValueList;
 }
-const RulesUpdateRequestActionsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<RulesUpdateRequestActionsItem>;
-
 export type RulesUpdateRequestActionsList = Array<RulesUpdateRequestActionsItem>;
-const RulesUpdateRequestActionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<RulesUpdateRequestActionsList>;
-
 export type RulesUpdateRequestMatchersItemType = "all" | "literal";
 export type RulesUpdateRequestMatchersItemField = "to";
 export interface RulesUpdateRequestMatchersItem {
@@ -1402,12 +986,7 @@ export interface RulesUpdateRequestMatchersItem {
   value?: string;
 }
 export type RulesUpdateRequestMatchersList = Array<RulesUpdateRequestMatchersItem>;
-const RulesUpdateRequestMatchersList =
-  RulesCreateRequestMatchersList as any as S.Schema<RulesUpdateRequestMatchersList>;
-
 export type RulesUpdateRequestSource = "api" | "wrangler";
-const RulesUpdateRequestSource = S.String;
-
 export interface UpdateRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -1428,32 +1007,15 @@ export interface UpdateRuleRequest {
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesUpdateRequestSource | (string & {});
 }
-const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<UpdateRuleRequest>;
-
 export type RulesUpdateResponseActionsItemType = "drop" | "forward" | "worker";
-const RulesUpdateResponseActionsItemType = S.String;
-
 export type RulesUpdateResponseActionsItemValueList = Array<string>;
-const RulesUpdateResponseActionsItemValueList =
-  AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesUpdateResponseActionsItemValueList>;
-
 export interface RulesUpdateResponseActionsItem {
   /** Type of supported action. */
   type: RulesUpdateResponseActionsItemType;
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesUpdateResponseActionsItemValueList | null;
 }
-const RulesUpdateResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<RulesUpdateResponseActionsItem>;
-
 export type RulesUpdateResponseActionsList = Array<RulesUpdateResponseActionsItem>;
-const RulesUpdateResponseActionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<RulesUpdateResponseActionsList>;
-
 export type RulesUpdateResponseMatchersItemType = "all" | "literal";
 export type RulesUpdateResponseMatchersItemField = "to";
 export interface RulesUpdateResponseMatchersItem {
@@ -1465,12 +1027,7 @@ export interface RulesUpdateResponseMatchersItem {
   value?: string | null;
 }
 export type RulesUpdateResponseMatchersList = Array<RulesUpdateResponseMatchersItem>;
-const RulesUpdateResponseMatchersList =
-  AccountRulesListResultItemMatchersList as any as S.Schema<RulesUpdateResponseMatchersList>;
-
 export type RulesUpdateResponseSource = "api" | "wrangler";
-const RulesUpdateResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
   /** Routing rule identifier. */
@@ -1490,8 +1047,6 @@ export interface UpdateRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-const UpdateRuleResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<UpdateRuleResponse>;
-
 export type AccountRulesListForAccountError = CloudflareOpError;
 /** Lists existing routing rules across all zones in the account or zone. */
 export const accountRulesListForAccount: API.OperationMethod<
@@ -1500,8 +1055,8 @@ export const accountRulesListForAccount: API.OperationMethod<
   AccountRulesListForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountRulesListForAccountRequest,
-  output: AccountRulesListResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AccountRulesListForAccountRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<AccountRulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1515,8 +1070,8 @@ export const accountRulesListForZone: API.OperationMethod<
   AccountRulesListForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountRulesListForZoneRequest,
-  output: AccountRulesListResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<AccountRulesListForZoneRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<AccountRulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1530,8 +1085,8 @@ export const createAddress: API.OperationMethod<
   CreateAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAddressRequest,
-  output: CreateAddressResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateAddressRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CreateAddressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1545,8 +1100,8 @@ export const createDns: API.OperationMethod<
   CreateDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDnsRequest,
-  output: CreateDnsResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateDnsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateDnsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1560,8 +1115,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleRequest,
-  output: CreateRuleResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<CreateRuleRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<CreateRuleResponse>,
   errors: [WorkerScriptNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1133,8 @@ export const deleteAddress: API.OperationMethod<
   DeleteAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAddressRequest,
-  output: DeleteAddressResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<DeleteAddressRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DeleteAddressResponse>,
   errors: [
     EmailAddressNotFound,
     EmailAddressCreatedTooRecently,
@@ -1598,8 +1153,8 @@ export const deleteDns: API.OperationMethod<
   DeleteDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDnsRequest,
-  output: DnsDeleteResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteDnsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DnsDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1613,8 +1168,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleRequest,
-  output: DeleteRuleResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteRuleResponse>,
   errors: [EmailRoutingRuleNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1628,8 +1183,8 @@ export const disableEmailRouting: API.OperationMethod<
   DisableEmailRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableEmailRoutingRequest,
-  output: DisableEmailRoutingResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<DisableEmailRoutingRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<DisableEmailRoutingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1639,8 +1194,8 @@ export type EditError = CloudflareOpError;
 /** Update the settings for your Email Routing zone. */
 export const edit: API.OperationMethod<EditRequest, EditResponse, EditError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: EditRequest,
-    output: EditResponse,
+    input: __S(31, __c3, 7) as any as S.Schema<EditRequest>,
+    output: __S(14, __c1, 6) as any as S.Schema<EditResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -1654,8 +1209,8 @@ export const editAddress: API.OperationMethod<
   EditAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditAddressRequest,
-  output: EditAddressResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<EditAddressRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<EditAddressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1669,8 +1224,8 @@ export const enableEmailRouting: API.OperationMethod<
   EnableEmailRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableEmailRoutingRequest,
-  output: EnableEmailRoutingResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<EnableEmailRoutingRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<EnableEmailRoutingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1684,8 +1239,8 @@ export const getAddress: API.OperationMethod<
   GetAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddressRequest,
-  output: GetAddressResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<GetAddressRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<GetAddressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1699,8 +1254,8 @@ export const getDns: API.OperationMethod<
   GetDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDnsRequest,
-  output: GetDnsResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<GetDnsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetDnsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1714,8 +1269,8 @@ export const getEmailRouting: API.OperationMethod<
   GetEmailRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailRoutingRequest,
-  output: GetEmailRoutingResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<GetEmailRoutingRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetEmailRoutingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1729,8 +1284,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRuleRequest,
-  output: GetRuleResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetRuleResponse>,
   errors: [Forbidden, EmailRoutingRuleNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1744,8 +1299,8 @@ export const getRuleCatchAll: API.OperationMethod<
   GetRuleCatchAllError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRuleCatchAllRequest,
-  output: GetRuleCatchAllResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetRuleCatchAllRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetRuleCatchAllResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1316,8 @@ export const listAddresses: API.PaginatedOperationMethod<
   AddressesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAddressesRequest,
-    output: ListAddressesResponse,
+    input: __S(50, __c6, 2) as any as S.Schema<ListAddressesRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<ListAddressesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1787,8 +1342,8 @@ export const listRules: API.PaginatedOperationMethod<
   GetRuleResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRulesRequest,
-    output: ListRulesResponse,
+    input: __S(54, __c6, 6) as any as S.Schema<ListRulesRequest>,
+    output: __S(56, __c7, 0) as any as S.Schema<ListRulesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1811,8 +1366,8 @@ export const patchDns: API.OperationMethod<
   PatchDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchDnsRequest,
-  output: PatchDnsResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<PatchDnsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<PatchDnsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1830,8 +1385,8 @@ export const putRuleCatchAll: API.OperationMethod<
   PutRuleCatchAllError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutRuleCatchAllRequest,
-  output: PutRuleCatchAllResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<PutRuleCatchAllRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<PutRuleCatchAllResponse>,
   errors: [
     Forbidden,
     DestinationNotVerified,
@@ -1851,8 +1406,8 @@ export const rulesListForAccount: API.OperationMethod<
   RulesListForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesListForAccountRequest,
-  output: RulesListResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<RulesListForAccountRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<RulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1866,8 +1421,8 @@ export const rulesListForZone: API.OperationMethod<
   RulesListForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesListForZoneRequest,
-  output: RulesListResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<RulesListForZoneRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<RulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1881,8 +1436,8 @@ export const unlock: API.OperationMethod<
   UnlockError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockRequest,
-  output: UnlockResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<UnlockRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<UnlockResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1451,8 @@ export const update: API.OperationMethod<
   UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<UpdateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1911,8 +1466,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRuleRequest,
-  output: UpdateRuleResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<UpdateRuleRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<UpdateRuleResponse>,
   errors: [WorkerScriptNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1941,26 +1496,26 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: AccountRulesListResultItemActionsItemType,
-          value: S.optional(S.NullOr(AccountRulesListResultItemActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "AccountRulesListResultItemActionsItem",
       });
     case 3:
-      return S.Array(AccountRulesListResultItemActionsItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: AccountRulesListResultItemMatchersItemType,
-          field: S.optional(S.NullOr(AccountRulesListResultItemMatchersItemField)),
+          type: S.String,
+          field: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "AccountRulesListResultItemMatchersItem",
       });
     case 5:
-      return S.Array(AccountRulesListResultItemMatchersItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1974,14 +1529,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(AccountRulesListResultItemActionsList)),
+          actions: S.optional(S.NullOr(__S(3, __c0, 3))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(AccountRulesListResultItemMatchersList)),
+          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
-          source: S.optional(S.NullOr(AccountRulesListResultItemSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
-          zone: S.optional(S.NullOr(AccountRulesListResultItemZone)),
+          zone: S.optional(S.NullOr(__S(6, __c0, 6))),
         }),
       ).annotate({
         identifier: "AccountRulesListResultItem",
@@ -1991,10 +1546,10 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccountRulesListResultItem);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
-        AccountRulesListResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(8, __c1, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "AccountRulesListResponse" });
     case 2:
       return S.suspend(() =>
@@ -2053,7 +1608,7 @@ function __c1(j: number): any {
           created: S.optional(S.NullOr(S.String)),
           modified: S.optional(S.NullOr(S.String)),
           skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-          status: S.optional(S.NullOr(DnsCreateResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2061,8 +1616,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: RulesCreateRequestActionsItemType,
-          value: S.optional(RulesCreateRequestActionsItemValueList),
+          type: S.String,
+          value: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "RulesCreateRequestActionsItem",
@@ -2072,30 +1627,30 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RulesCreateRequestActionsItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: RulesCreateRequestMatchersItemType,
-          field: S.optional(RulesCreateRequestMatchersItemField),
+          type: S.String,
+          field: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RulesCreateRequestMatchersItem",
       });
     case 2:
-      return S.Array(RulesCreateRequestMatchersItem);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          actions: RulesCreateRequestActionsList,
-          matchers: RulesCreateRequestMatchersList,
+          actions: __S(16, __c2, 0),
+          matchers: __S(18, __c2, 2),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
           ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
           priority: S.optional(S.Number),
-          source: S.optional(RulesCreateRequestSource),
+          source: S.optional(S.String),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/email/routing/rules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2103,24 +1658,24 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: RulesCreateResponseActionsItemType,
-          value: S.optional(S.NullOr(RulesCreateResponseActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "RulesCreateResponseActionsItem",
       });
     case 5:
-      return S.Array(RulesCreateResponseActionsItem);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(RulesCreateResponseActionsList)),
+          actions: S.optional(S.NullOr(__S(21, __c2, 5))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(RulesCreateResponseMatchersList)),
+          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
-          source: S.optional(S.NullOr(RulesCreateResponseSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRuleResponse" });
@@ -2169,24 +1724,24 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: RulesDeleteResponseActionsItemType,
-          value: S.optional(S.NullOr(RulesDeleteResponseActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "RulesDeleteResponseActionsItem",
       });
     case 3:
-      return S.Array(RulesDeleteResponseActionsItem);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(RulesDeleteResponseActionsList)),
+          actions: S.optional(S.NullOr(__S(27, __c3, 3))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(RulesDeleteResponseMatchersList)),
+          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
-          source: S.optional(S.NullOr(RulesDeleteResponseSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRuleResponse" });
@@ -2211,7 +1766,7 @@ function __c3(j: number): any {
           created: S.optional(S.NullOr(S.String)),
           modified: S.optional(S.NullOr(S.String)),
           skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-          status: S.optional(S.NullOr(DisableResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2238,7 +1793,7 @@ function __c4(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           destinationAddressIdentifier: S.String.pipe(T.Label("destination_address_identifier")),
-          status: EditAddressRequestStatus,
+          status: S.String,
         })
           .pipe(
             T.Http({
@@ -2290,14 +1845,14 @@ function __c4(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
           ttl: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(DnsGetResultItemType)),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DnsGetResultItem" });
     case 5:
-      return S.Array(DnsGetResultItem);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
-        DnsGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(37, __c4, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnsResponse" });
     case 7:
       return S.suspend(() =>
@@ -2329,24 +1884,24 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: RulesGetResponseActionsItemType,
-          value: S.optional(S.NullOr(RulesGetResponseActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "RulesGetResponseActionsItem",
       });
     case 2:
-      return S.Array(RulesGetResponseActionsItem);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(RulesGetResponseActionsList)),
+          actions: S.optional(S.NullOr(__S(42, __c5, 2))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(RulesGetResponseMatchersList)),
+          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
-          source: S.optional(S.NullOr(RulesGetResponseSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleResponse" });
@@ -2367,18 +1922,18 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: RulesCatchAllsGetResponseActionsItemType,
-          value: S.optional(S.NullOr(RulesCatchAllsGetResponseActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "RulesCatchAllsGetResponseActionsItem",
       });
     case 6:
-      return S.Array(RulesCatchAllsGetResponseActionsItem);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: RulesCatchAllsGetResponseMatchersItemType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "RulesCatchAllsGetResponseMatchersItem",
@@ -2388,16 +1943,16 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RulesCatchAllsGetResponseMatchersItem);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(RulesCatchAllsGetResponseActionsList)),
+          actions: S.optional(S.NullOr(__S(46, __c5, 6))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(RulesCatchAllsGetResponseMatchersList)),
+          matchers: S.optional(S.NullOr(__S(48, __c6, 0))),
           name: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.NullOr(RulesCatchAllsGetResponseSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleCatchAllResponse" });
@@ -2405,7 +1960,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(AddressesListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           verified: S.optional(S.String.pipe(T.Query())),
@@ -2431,11 +1986,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "AddressesListResultItem" });
     case 4:
-      return S.Array(AddressesListResultItem);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: AddressesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(52, __c6, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAddressesResponse" });
@@ -2451,7 +2006,7 @@ function __c6(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesRequest" });
     case 7:
-      return S.Array(GetRuleResponse);
+      return S.Array(__S(43, __c5, 3));
   }
 }
 function __c7(j: number): any {
@@ -2459,7 +2014,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: ListRulesResponseResultList.pipe(T.EnvelopePayload()),
+          result: __S(55, __c6, 7).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesResponse" });
@@ -2475,24 +2030,24 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: RulesCatchAllsUpdateRequestActionsItemType,
-          value: S.optional(RulesCatchAllsUpdateRequestActionsItemValueList),
+          type: S.String,
+          value: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "RulesCatchAllsUpdateRequestActionsItem",
       });
     case 3:
-      return S.Array(RulesCatchAllsUpdateRequestActionsItem);
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          actions: RulesCatchAllsUpdateRequestActionsList,
-          matchers: RulesCatchAllsUpdateRequestMatchersList,
+          actions: __S(59, __c7, 3),
+          matchers: __S(48, __c6, 0),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
           ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
-          source: S.optional(RulesCatchAllsUpdateRequestSource),
+          source: S.optional(S.String),
         })
           .pipe(
             T.Http({
@@ -2506,23 +2061,23 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: RulesCatchAllsUpdateResponseActionsItemType,
-          value: S.optional(S.NullOr(RulesCatchAllsUpdateResponseActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "RulesCatchAllsUpdateResponseActionsItem",
       });
     case 6:
-      return S.Array(RulesCatchAllsUpdateResponseActionsItem);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(RulesCatchAllsUpdateResponseActionsList)),
+          actions: S.optional(S.NullOr(__S(62, __c7, 6))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(RulesCatchAllsUpdateResponseMatchersList)),
+          matchers: S.optional(S.NullOr(__S(48, __c6, 0))),
           name: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.NullOr(RulesCatchAllsUpdateResponseSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutRuleCatchAllResponse" });
@@ -2548,33 +2103,33 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: RulesListResultItemActionsItemType,
-          value: S.optional(S.NullOr(RulesListResultItemActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "RulesListResultItemActionsItem",
       });
     case 2:
-      return S.Array(RulesListResultItemActionsItem);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(RulesListResultItemActionsList)),
+          actions: S.optional(S.NullOr(__S(66, __c8, 2))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(RulesListResultItemMatchersList)),
+          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
-          source: S.optional(S.NullOr(RulesListResultItemSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
-          zone: S.optional(S.NullOr(AccountRulesListResultItemZone)),
+          zone: S.optional(S.NullOr(__S(6, __c0, 6))),
         }),
       ).annotate({ identifier: "RulesListResultItem" });
     case 4:
-      return S.Array(RulesListResultItem);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
-        RulesListResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(68, __c8, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RulesListResponse" });
     case 6:
       return S.suspend(() =>
@@ -2614,26 +2169,26 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: RulesUpdateRequestActionsItemType,
-          value: S.optional(RulesUpdateRequestActionsItemValueList),
+          type: S.String,
+          value: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "RulesUpdateRequestActionsItem",
       });
     case 2:
-      return S.Array(RulesUpdateRequestActionsItem);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
-          actions: RulesUpdateRequestActionsList,
-          matchers: RulesUpdateRequestMatchersList,
+          actions: __S(74, __c9, 2),
+          matchers: __S(18, __c2, 2),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
           ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
           priority: S.optional(S.Number),
-          source: S.optional(RulesUpdateRequestSource),
+          source: S.optional(S.String),
         })
           .pipe(
             T.Http({
@@ -2647,26 +2202,31 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: RulesUpdateResponseActionsItemType,
-          value: S.optional(S.NullOr(RulesUpdateResponseActionsItemValueList)),
+          type: S.String,
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "RulesUpdateResponseActionsItem",
       });
     case 5:
-      return S.Array(RulesUpdateResponseActionsItem);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(RulesUpdateResponseActionsList)),
+          actions: S.optional(S.NullOr(__S(77, __c9, 5))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(RulesUpdateResponseMatchersList)),
+          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
-          source: S.optional(S.NullOr(RulesUpdateResponseSource)),
+          source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRuleResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

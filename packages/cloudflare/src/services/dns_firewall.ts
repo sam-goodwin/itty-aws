@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -64,22 +66,12 @@ export class Forbidden
   ) {}
 
 export type CreateRequestUpstreamIpsList = Array<string>;
-const CreateRequestUpstreamIpsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRequestUpstreamIpsList>;
-
 export interface CreateRequestAttackMitigation {
   /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
   enabled?: boolean;
   /** Only mitigate attacks when upstream servers seem unhealthy */
   onlyWhenUpstreamUnhealthy?: boolean;
 }
-const CreateRequestAttackMitigation = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRequestAttackMitigation>;
-
 export interface CreateDnsFirewallRequest {
   /** Identifier. */
   accountId: string;
@@ -105,30 +97,14 @@ export interface CreateDnsFirewallRequest {
   /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
   retries?: number;
 }
-const CreateDnsFirewallRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDnsFirewallRequest>;
-
 export type CreateResponseDnsFirewallIpsList = Array<string>;
-const CreateResponseDnsFirewallIpsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<CreateResponseDnsFirewallIpsList>;
-
 export type CreateResponseUpstreamIpsList = Array<string>;
-const CreateResponseUpstreamIpsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<CreateResponseUpstreamIpsList>;
-
 export interface CreateResponseAttackMitigation {
   /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
   enabled?: boolean | null;
   /** Only mitigate attacks when upstream servers seem unhealthy */
   onlyWhenUpstreamUnhealthy?: boolean | null;
 }
-const CreateResponseAttackMitigation = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateResponseAttackMitigation>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDnsFirewallResponse {
   /** Identifier. */
@@ -156,32 +132,17 @@ export interface CreateDnsFirewallResponse {
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
 }
-const CreateDnsFirewallResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDnsFirewallResponse>;
-
 export interface DeleteDnsFirewallRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   dnsFirewallId: string;
 }
-const DeleteDnsFirewallRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteDnsFirewallRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteDnsFirewallResponse {
   /** Identifier. */
   id?: string | null;
 }
-const DeleteDnsFirewallResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteDnsFirewallResponse>;
-
 export interface GetAnalyticReportRequest {
   /** Identifier. */
   accountId: string;
@@ -202,50 +163,18 @@ export interface GetAnalyticReportRequest {
   /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
-const GetAnalyticReportRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetAnalyticReportRequest>;
-
 export type AnalyticsReportsGetResponseDataItemDimensionsList = Array<string>;
-const AnalyticsReportsGetResponseDataItemDimensionsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
-
 export type AnalyticsReportsGetResponseDataItemMetricsList = Array<number>;
-const AnalyticsReportsGetResponseDataItemMetricsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AnalyticsReportsGetResponseDataItemMetricsList>;
-
 export interface AnalyticsReportsGetResponseDataItem {
   /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
   dimensions: AnalyticsReportsGetResponseDataItemDimensionsList;
   /** Array with one item per requested metric. Each item is a single value. */
   metrics: AnalyticsReportsGetResponseDataItemMetricsList;
 }
-const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
-
 export type AnalyticsReportsGetResponseDataList = Array<AnalyticsReportsGetResponseDataItem>;
-const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
-
 export type AnalyticsReportsGetResponseQueryDimensionsList = Array<string>;
-const AnalyticsReportsGetResponseQueryDimensionsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
-
 export type AnalyticsReportsGetResponseQueryMetricsList = Array<string>;
-const AnalyticsReportsGetResponseQueryMetricsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
-
 export type AnalyticsReportsGetResponseQuerySortList = Array<string>;
-const AnalyticsReportsGetResponseQuerySortList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
-
 export interface AnalyticsReportsGetResponseQuery {
   /** Array of dimension names. */
   dimensions: AnalyticsReportsGetResponseQueryDimensionsList;
@@ -262,11 +191,6 @@ export interface AnalyticsReportsGetResponseQuery {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: AnalyticsReportsGetResponseQuerySortList | null;
 }
-const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AnalyticsReportsGetResponseQuery>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticReportResponse {
   /** Array with one row per combination of dimension values. */
@@ -283,11 +207,6 @@ export interface GetAnalyticReportResponse {
   /** Total results for metrics across all data (object mapping metric names to values). */
   totals: unknown;
 }
-const GetAnalyticReportResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetAnalyticReportResponse>;
-
 export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "all"
   | "auto"
@@ -299,8 +218,6 @@ export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "hour"
   | "dekaminute"
   | "minute";
-const AnalyticsReportsBytimesGetRequestTimeDelta = S.String;
-
 export interface GetAnalyticReportBytimeRequest {
   /** Identifier. */
   accountId: string;
@@ -323,52 +240,20 @@ export interface GetAnalyticReportBytimeRequest {
   /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
-const GetAnalyticReportBytimeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetAnalyticReportBytimeRequest>;
-
 export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList = Array<string>;
-const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
-
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsItemList = Array<number>;
-const AnalyticsReportsBytimesGetResponseDataItemMetricsItemList =
-  AnalyticsReportsGetResponseDataItemMetricsList as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
-
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsList =
   Array<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
-const AnalyticsReportsBytimesGetResponseDataItemMetricsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsList>;
-
 export interface AnalyticsReportsBytimesGetResponseDataItem {
   /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
   dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList;
   /** Array with one item per requested metric. Each item is an array of values, broken down by time interval. */
   metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList;
 }
-const AnalyticsReportsBytimesGetResponseDataItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItem>;
-
 export type AnalyticsReportsBytimesGetResponseDataList =
   Array<AnalyticsReportsBytimesGetResponseDataItem>;
-const AnalyticsReportsBytimesGetResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataList>;
-
 export type AnalyticsReportsBytimesGetResponseQueryDimensionsList = Array<string>;
-const AnalyticsReportsBytimesGetResponseQueryDimensionsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
-
 export type AnalyticsReportsBytimesGetResponseQueryMetricsList = Array<string>;
-const AnalyticsReportsBytimesGetResponseQueryMetricsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryMetricsList>;
-
 export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "all"
   | "auto"
@@ -380,12 +265,7 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "hour"
   | "dekaminute"
   | "minute";
-const AnalyticsReportsBytimesGetResponseQueryTimeDelta = S.String;
-
 export type AnalyticsReportsBytimesGetResponseQuerySortList = Array<string>;
-const AnalyticsReportsBytimesGetResponseQuerySortList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
-
 export interface AnalyticsReportsBytimesGetResponseQuery {
   /** Array of dimension names. */
   dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList;
@@ -404,22 +284,9 @@ export interface AnalyticsReportsBytimesGetResponseQuery {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: AnalyticsReportsBytimesGetResponseQuerySortList | null;
 }
-const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
-
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsItemList = Array<string>;
-const AnalyticsReportsBytimesGetResponseTimeIntervalsItemList =
-  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
-
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsList =
   Array<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
-const AnalyticsReportsBytimesGetResponseTimeIntervalsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticReportBytimeResponse {
   /** Array with one row per combination of dimension values. */
@@ -438,30 +305,14 @@ export interface GetAnalyticReportBytimeResponse {
   /** Total results for metrics across all data (object mapping metric names to values). */
   totals: unknown;
 }
-const GetAnalyticReportBytimeResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetAnalyticReportBytimeResponse>;
-
 export interface GetDnsFirewallRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   dnsFirewallId: string;
 }
-const GetDnsFirewallRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetDnsFirewallRequest>;
-
 export type GetResponseDnsFirewallIpsList = Array<string>;
-const GetResponseDnsFirewallIpsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<GetResponseDnsFirewallIpsList>;
-
 export type GetResponseUpstreamIpsList = Array<string>;
-const GetResponseUpstreamIpsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<GetResponseUpstreamIpsList>;
-
 export type GetResponseAttackMitigation = CreateResponseAttackMitigation;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDnsFirewallResponse {
@@ -490,32 +341,18 @@ export interface GetDnsFirewallResponse {
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
 }
-const GetDnsFirewallResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetDnsFirewallResponse>;
-
 export interface GetReverseDnRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   dnsFirewallId: string;
 }
-const GetReverseDnRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetReverseDnRequest>;
-
 export type ReverseDnsGetResponsePtrMap = { [key: string]: string | undefined };
-const ReverseDnsGetResponsePtrMap = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ReverseDnsGetResponsePtrMap>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetReverseDnResponse {
   /** Map of cluster IP addresses to PTR record contents */
   ptr: ReverseDnsGetResponsePtrMap;
 }
-const GetReverseDnResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetReverseDnResponse>;
-
 export interface ListDnsFirewallsRequest {
   /** Identifier. */
   accountId: string;
@@ -524,19 +361,8 @@ export interface ListDnsFirewallsRequest {
   /** Number of clusters per page */
   perPage?: number;
 }
-const ListDnsFirewallsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListDnsFirewallsRequest>;
-
 export type ListResultItemDnsFirewallIpsList = Array<string>;
-const ListResultItemDnsFirewallIpsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<ListResultItemDnsFirewallIpsList>;
-
 export type ListResultItemUpstreamIpsList = Array<string>;
-const ListResultItemUpstreamIpsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<ListResultItemUpstreamIpsList>;
-
 export type ListResultItemAttackMitigation = CreateResponseAttackMitigation;
 export interface ListResultItem {
   /** Identifier. */
@@ -564,27 +390,15 @@ export interface ListResultItem {
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListResultList>;
-
 export interface ListDnsFirewallsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDnsFirewallsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListDnsFirewallsResponse>;
-
 export type EditRequestAttackMitigation = CreateRequestAttackMitigation;
 export type EditRequestUpstreamIpsList = Array<string>;
-const EditRequestUpstreamIpsList =
-  CreateRequestUpstreamIpsList as any as S.Schema<EditRequestUpstreamIpsList>;
-
 export interface PatchDnsFirewallRequest {
   /** Identifier. */
   accountId: string;
@@ -610,11 +424,6 @@ export interface PatchDnsFirewallRequest {
   retries?: number;
   upstreamIps?: EditRequestUpstreamIpsList;
 }
-const PatchDnsFirewallRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<PatchDnsFirewallRequest>;
-
 export type EditResponseDnsFirewallIpsList = Array<string>;
 export type EditResponseUpstreamIpsList = Array<string>;
 export type EditResponseAttackMitigation = CreateResponseAttackMitigation;
@@ -645,13 +454,7 @@ export interface PatchDnsFirewallResponse {
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
 }
-const PatchDnsFirewallResponse =
-  GetDnsFirewallResponse as any as S.Schema<PatchDnsFirewallResponse>;
-
 export type ReverseDnsEditRequestPtrMap = { [key: string]: string | undefined };
-const ReverseDnsEditRequestPtrMap =
-  ReverseDnsGetResponsePtrMap as any as S.Schema<ReverseDnsEditRequestPtrMap>;
-
 export interface PatchReverseDnRequest {
   /** Identifier. */
   accountId: string;
@@ -660,19 +463,12 @@ export interface PatchReverseDnRequest {
   /** Map of cluster IP addresses to PTR record contents */
   ptr?: ReverseDnsEditRequestPtrMap;
 }
-const PatchReverseDnRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PatchReverseDnRequest>;
-
 export type ReverseDnsEditResponsePtrMap = { [key: string]: string | undefined };
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchReverseDnResponse {
   /** Map of cluster IP addresses to PTR record contents */
   ptr: ReverseDnsEditResponsePtrMap;
 }
-const PatchReverseDnResponse = GetReverseDnResponse as any as S.Schema<PatchReverseDnResponse>;
-
 export type CreateDnsFirewallError = DnsFirewallNotEntitled | Forbidden | CloudflareOpError;
 /** Create a DNS Firewall cluster */
 export const createDnsFirewall: API.OperationMethod<
@@ -681,8 +477,8 @@ export const createDnsFirewall: API.OperationMethod<
   CreateDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDnsFirewallRequest,
-  output: CreateDnsFirewallResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateDnsFirewallRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateDnsFirewallResponse>,
   errors: [DnsFirewallNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -696,8 +492,8 @@ export const deleteDnsFirewall: API.OperationMethod<
   DeleteDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDnsFirewallRequest,
-  output: DeleteDnsFirewallResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<DeleteDnsFirewallRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DeleteDnsFirewallResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -711,8 +507,8 @@ export const getAnalyticReport: API.OperationMethod<
   GetAnalyticReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnalyticReportRequest,
-  output: GetAnalyticReportResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetAnalyticReportRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<GetAnalyticReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -726,8 +522,8 @@ export const getAnalyticReportBytime: API.OperationMethod<
   GetAnalyticReportBytimeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnalyticReportBytimeRequest,
-  output: GetAnalyticReportBytimeResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetAnalyticReportBytimeRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetAnalyticReportBytimeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -741,8 +537,8 @@ export const getDnsFirewall: API.OperationMethod<
   GetDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDnsFirewallRequest,
-  output: GetDnsFirewallResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<GetDnsFirewallRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetDnsFirewallResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -756,8 +552,8 @@ export const getReverseDn: API.OperationMethod<
   GetReverseDnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReverseDnRequest,
-  output: GetReverseDnResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetReverseDnRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetReverseDnResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -773,8 +569,8 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDnsFirewallsRequest,
-    output: ListDnsFirewallsResponse,
+    input: __S(25, __c3, 1) as any as S.Schema<ListDnsFirewallsRequest>,
+    output: __S(28, __c3, 4) as any as S.Schema<ListDnsFirewallsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -797,8 +593,8 @@ export const patchDnsFirewall: API.OperationMethod<
   PatchDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchDnsFirewallRequest,
-  output: PatchDnsFirewallResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<PatchDnsFirewallRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<PatchDnsFirewallResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -812,8 +608,8 @@ export const patchReverseDn: API.OperationMethod<
   PatchReverseDnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchReverseDnRequest,
-  output: PatchReverseDnResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<PatchReverseDnRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<PatchReverseDnResponse>,
   errors: [DnsFirewallNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -840,10 +636,8 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          upstreamIps: CreateRequestUpstreamIpsList.pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(
-            CreateRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
-          ),
+          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(__S(1, __c0, 1).pipe(T.Body("attack_mitigation"))),
           deprecateAnyRequests: S.optional(S.Boolean.pipe(T.Body("deprecate_any_requests"))),
           dnsFirewallIpCount: S.optional(S.Number.pipe(T.Body("dns_firewall_ip_count"))),
           ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
@@ -872,7 +666,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-          dnsFirewallIps: CreateResponseDnsFirewallIpsList.pipe(T.Body("dns_firewall_ips")),
+          dnsFirewallIps: __S(0, __c0, 0).pipe(T.Body("dns_firewall_ips")),
           ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
           maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
           minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
@@ -881,10 +675,8 @@ function __c0(j: number): any {
           negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
           ratelimit: S.Number,
           retries: S.Number,
-          upstreamIps: CreateResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(
-            S.NullOr(CreateResponseAttackMitigation).pipe(T.Body("attack_mitigation")),
-          ),
+          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("attack_mitigation"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateDnsFirewallResponse",
@@ -943,24 +735,24 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensions: AnalyticsReportsGetResponseDataItemDimensionsList,
-          metrics: AnalyticsReportsGetResponseDataItemMetricsList,
+          dimensions: __S(0, __c0, 0),
+          metrics: __S(8, __c1, 0),
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseDataItem",
       });
     case 2:
-      return S.Array(AnalyticsReportsGetResponseDataItem);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dimensions: AnalyticsReportsGetResponseQueryDimensionsList,
+          dimensions: __S(0, __c0, 0),
           limit: S.Number,
-          metrics: AnalyticsReportsGetResponseQueryMetricsList,
+          metrics: __S(0, __c0, 0),
           since: S.String,
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(AnalyticsReportsGetResponseQuerySortList)),
+          sort: S.optional(S.NullOr(__S(0, __c0, 0))),
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseQuery",
@@ -968,11 +760,11 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: AnalyticsReportsGetResponseDataList,
+          data: __S(10, __c1, 2),
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: AnalyticsReportsGetResponseQuery,
+          query: __S(11, __c1, 3),
           rows: S.Number,
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -990,9 +782,7 @@ function __c1(j: number): any {
           metrics: S.optional(S.String.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
-          timeDelta: S.optional(
-            AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
-          ),
+          timeDelta: S.optional(S.String.pipe(T.Query("time_delta"))),
           until: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -1007,12 +797,12 @@ function __c1(j: number): any {
         identifier: "GetAnalyticReportBytimeRequest",
       });
     case 6:
-      return S.Array(AnalyticsReportsBytimesGetResponseDataItemMetricsItemList);
+      return S.Array(__S(8, __c1, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList,
-          metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList,
+          dimensions: __S(0, __c0, 0),
+          metrics: __S(14, __c1, 6),
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseDataItem",
@@ -1022,36 +812,34 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AnalyticsReportsBytimesGetResponseDataItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList,
+          dimensions: __S(0, __c0, 0),
           limit: S.Number,
-          metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList,
+          metrics: __S(0, __c0, 0),
           since: S.String,
-          timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta.pipe(T.Body("time_delta")),
+          timeDelta: S.String.pipe(T.Body("time_delta")),
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(AnalyticsReportsBytimesGetResponseQuerySortList)),
+          sort: S.optional(S.NullOr(__S(0, __c0, 0))),
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseQuery",
       });
     case 2:
-      return S.Array(AnalyticsReportsBytimesGetResponseTimeIntervalsItemList);
+      return S.Array(__S(0, __c0, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: AnalyticsReportsBytimesGetResponseDataList,
+          data: __S(16, __c2, 0),
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: AnalyticsReportsBytimesGetResponseQuery,
+          query: __S(17, __c2, 1),
           rows: S.Number,
-          timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList.pipe(
-            T.Body("time_intervals"),
-          ),
+          timeIntervals: __S(18, __c2, 2).pipe(T.Body("time_intervals")),
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1077,7 +865,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-          dnsFirewallIps: GetResponseDnsFirewallIpsList.pipe(T.Body("dns_firewall_ips")),
+          dnsFirewallIps: __S(0, __c0, 0).pipe(T.Body("dns_firewall_ips")),
           ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
           maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
           minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
@@ -1086,10 +874,8 @@ function __c2(j: number): any {
           negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
           ratelimit: S.Number,
           retries: S.Number,
-          upstreamIps: GetResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(
-            S.NullOr(CreateResponseAttackMitigation).pipe(T.Body("attack_mitigation")),
-          ),
+          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("attack_mitigation"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnsFirewallResponse" });
     case 6:
@@ -1116,7 +902,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ptr: ReverseDnsGetResponsePtrMap,
+          ptr: __S(23, __c2, 7),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetReverseDnResponse" });
     case 1:
@@ -1134,7 +920,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-          dnsFirewallIps: ListResultItemDnsFirewallIpsList.pipe(T.Body("dns_firewall_ips")),
+          dnsFirewallIps: __S(0, __c0, 0).pipe(T.Body("dns_firewall_ips")),
           ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
           maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
           minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
@@ -1143,18 +929,16 @@ function __c3(j: number): any {
           negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
           ratelimit: S.Number,
           retries: S.Number,
-          upstreamIps: ListResultItemUpstreamIpsList.pipe(T.Body("upstream_ips")),
-          attackMitigation: S.optional(
-            S.NullOr(CreateResponseAttackMitigation).pipe(T.Body("attack_mitigation")),
-          ),
+          upstreamIps: __S(0, __c0, 0).pipe(T.Body("upstream_ips")),
+          attackMitigation: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("attack_mitigation"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 3:
-      return S.Array(ListResultItem);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(27, __c3, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDnsFirewallsResponse" });
@@ -1163,9 +947,7 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-          attackMitigation: S.optional(
-            CreateRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
-          ),
+          attackMitigation: S.optional(__S(1, __c0, 1).pipe(T.Body("attack_mitigation"))),
           deprecateAnyRequests: S.optional(S.Boolean.pipe(T.Body("deprecate_any_requests"))),
           ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
           maximumCacheTtl: S.optional(S.Number.pipe(T.Body("maximum_cache_ttl"))),
@@ -1174,7 +956,7 @@ function __c3(j: number): any {
           negativeCacheTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("negative_cache_ttl"))),
           ratelimit: S.optional(S.NullOr(S.Number)),
           retries: S.optional(S.Number),
-          upstreamIps: S.optional(EditRequestUpstreamIpsList.pipe(T.Body("upstream_ips"))),
+          upstreamIps: S.optional(__S(0, __c0, 0).pipe(T.Body("upstream_ips"))),
         })
           .pipe(
             T.Http({
@@ -1190,7 +972,7 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-          ptr: S.optional(ReverseDnsEditRequestPtrMap),
+          ptr: S.optional(__S(23, __c2, 7)),
         })
           .pipe(
             T.Http({
@@ -1202,4 +984,9 @@ function __c3(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchReverseDnRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

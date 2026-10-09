@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -46,11 +48,6 @@ export class PaymentRequired
   ) {}
 
 export type DangerouslyDeleteBySrcImagesRequestSrcImagesList = Array<string>;
-const DangerouslyDeleteBySrcImagesRequestSrcImagesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DangerouslyDeleteBySrcImagesRequestSrcImagesList>;
-
 export interface DangerouslyDeleteBySrcImagesRequest {
   projectIdOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -60,27 +57,12 @@ export interface DangerouslyDeleteBySrcImagesRequest {
   revalidationDeadlineSeconds?: number;
   srcImages: DangerouslyDeleteBySrcImagesRequestSrcImagesList;
 }
-const DangerouslyDeleteBySrcImagesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DangerouslyDeleteBySrcImagesRequest>;
-
 export interface DangerouslyDeleteBySrcImagesResponse {}
-const DangerouslyDeleteBySrcImagesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DangerouslyDeleteBySrcImagesResponse>;
-
 export type DangerouslyDeleteByTagsRequestTagsCase0List = Array<string>;
 export type DangerouslyDeleteByTagsRequestTags =
   | DangerouslyDeleteByTagsRequestTagsCase0List
   | string;
-const DangerouslyDeleteByTagsRequestTags =
-  S.Unknown as any as S.Schema<DangerouslyDeleteByTagsRequestTags>;
-
 export type DangerouslyDeleteByTagsRequestTarget = "production" | "preview";
-const DangerouslyDeleteByTagsRequestTarget = S.String;
-
 export interface DangerouslyDeleteByTagsRequest {
   projectIdOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -91,21 +73,8 @@ export interface DangerouslyDeleteByTagsRequest {
   tags: DangerouslyDeleteByTagsRequestTags;
   target?: DangerouslyDeleteByTagsRequestTarget | (string & {});
 }
-const DangerouslyDeleteByTagsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DangerouslyDeleteByTagsRequest>;
-
 export interface DangerouslyDeleteByTagsResponse {}
-const DangerouslyDeleteByTagsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DangerouslyDeleteByTagsResponse>;
-
 export type InvalidateBySrcImagesRequestSrcImagesList = Array<string>;
-const InvalidateBySrcImagesRequestSrcImagesList =
-  DangerouslyDeleteBySrcImagesRequestSrcImagesList as any as S.Schema<InvalidateBySrcImagesRequestSrcImagesList>;
-
 export interface InvalidateBySrcImagesRequest {
   projectIdOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -114,24 +83,10 @@ export interface InvalidateBySrcImagesRequest {
   slug?: string;
   srcImages: InvalidateBySrcImagesRequestSrcImagesList;
 }
-const InvalidateBySrcImagesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<InvalidateBySrcImagesRequest>;
-
 export interface InvalidateBySrcImagesResponse {}
-const InvalidateBySrcImagesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<InvalidateBySrcImagesResponse>;
-
 export type InvalidateByTagsRequestTagsCase0List = Array<string>;
 export type InvalidateByTagsRequestTags = InvalidateByTagsRequestTagsCase0List | string;
-const InvalidateByTagsRequestTags = S.Unknown as any as S.Schema<InvalidateByTagsRequestTags>;
-
 export type InvalidateByTagsRequestTarget = "production" | "preview";
-const InvalidateByTagsRequestTarget = S.String;
-
 export interface InvalidateByTagsRequest {
   projectIdOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -141,15 +96,7 @@ export interface InvalidateByTagsRequest {
   tags: InvalidateByTagsRequestTags;
   target?: InvalidateByTagsRequestTarget | (string & {});
 }
-const InvalidateByTagsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<InvalidateByTagsRequest>;
-
 export interface InvalidateByTagsResponse {}
-const InvalidateByTagsResponse =
-  InvalidateBySrcImagesResponse as any as S.Schema<InvalidateByTagsResponse>;
-
 export type DangerouslyDeleteBySrcImagesError =
   | BadRequest
   | PaymentRequired
@@ -163,8 +110,8 @@ export const dangerouslyDeleteBySrcImages: API.OperationMethod<
   DangerouslyDeleteBySrcImagesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DangerouslyDeleteBySrcImagesRequest,
-  output: DangerouslyDeleteBySrcImagesResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<DangerouslyDeleteBySrcImagesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<DangerouslyDeleteBySrcImagesResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -178,8 +125,8 @@ export const dangerouslyDeleteByTags: API.OperationMethod<
   DangerouslyDeleteByTagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DangerouslyDeleteByTagsRequest,
-  output: DangerouslyDeleteByTagsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DangerouslyDeleteByTagsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DangerouslyDeleteByTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -198,8 +145,8 @@ export const invalidateBySrcImages: API.OperationMethod<
   InvalidateBySrcImagesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateBySrcImagesRequest,
-  output: InvalidateBySrcImagesResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<InvalidateBySrcImagesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<InvalidateBySrcImagesResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -213,8 +160,8 @@ export const invalidateByTags: API.OperationMethod<
   InvalidateByTagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateByTagsRequest,
-  output: InvalidateByTagsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<InvalidateByTagsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<InvalidateByTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -232,7 +179,7 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           revalidationDeadlineSeconds: S.optional(S.Number),
-          srcImages: DangerouslyDeleteBySrcImagesRequestSrcImagesList,
+          srcImages: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -254,8 +201,8 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           revalidationDeadlineSeconds: S.optional(S.Number),
-          tags: DangerouslyDeleteByTagsRequestTags,
-          target: S.optional(DangerouslyDeleteByTagsRequestTarget),
+          tags: S.Unknown,
+          target: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/edge-cache/dangerously-delete-by-tags", code: 200 }),
         ),
@@ -272,7 +219,7 @@ function __c0(j: number): any {
           projectIdOrName: S.String.pipe(T.Query()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          srcImages: InvalidateBySrcImagesRequestSrcImagesList,
+          srcImages: __S(0, __c0, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/edge-cache/invalidate-by-src-images", code: 200 }),
         ),
@@ -289,9 +236,14 @@ function __c0(j: number): any {
           projectIdOrName: S.String.pipe(T.Query()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          tags: InvalidateByTagsRequestTags,
-          target: S.optional(InvalidateByTagsRequestTarget),
+          tags: S.Unknown,
+          target: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/edge-cache/invalidate-by-tags", code: 200 })),
       ).annotate({ identifier: "InvalidateByTagsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

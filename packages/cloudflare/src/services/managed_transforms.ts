@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -34,32 +36,12 @@ export interface DeleteManagedTransformRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
-const DeleteManagedTransformRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteManagedTransformRequest>;
-
 export interface DeleteManagedTransformResponse {}
-const DeleteManagedTransformResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteManagedTransformResponse>;
-
 export interface ListManagedTransformsRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
-const ListManagedTransformsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListManagedTransformsRequest>;
-
 export type ListResponseManagedRequestHeadersItemConflictsWithList = Array<string>;
-const ListResponseManagedRequestHeadersItemConflictsWithList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListResponseManagedRequestHeadersItemConflictsWithList>;
-
 export interface ListResponseManagedRequestHeadersItem {
   /** The human-readable identifier of the Managed Transform. */
   id: string;
@@ -70,17 +52,7 @@ export interface ListResponseManagedRequestHeadersItem {
   /** The Managed Transforms that this Managed Transform conflicts with. */
   conflictsWith?: ListResponseManagedRequestHeadersItemConflictsWithList | null;
 }
-const ListResponseManagedRequestHeadersItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListResponseManagedRequestHeadersItem>;
-
 export type ListResponseManagedRequestHeadersList = Array<ListResponseManagedRequestHeadersItem>;
-const ListResponseManagedRequestHeadersList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListResponseManagedRequestHeadersList>;
-
 export type ListResponseManagedResponseHeadersItemConflictsWithList = Array<string>;
 export interface ListResponseManagedResponseHeadersItem {
   /** The human-readable identifier of the Managed Transform. */
@@ -93,9 +65,6 @@ export interface ListResponseManagedResponseHeadersItem {
   conflictsWith?: ListResponseManagedResponseHeadersItemConflictsWithList | null;
 }
 export type ListResponseManagedResponseHeadersList = Array<ListResponseManagedResponseHeadersItem>;
-const ListResponseManagedResponseHeadersList =
-  ListResponseManagedRequestHeadersList as any as S.Schema<ListResponseManagedResponseHeadersList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListManagedTransformsResponse {
   /** The list of Managed Request Transforms. */
@@ -103,15 +72,7 @@ export interface ListManagedTransformsResponse {
   /** The list of Managed Response Transforms. */
   managedResponseHeaders: ListResponseManagedResponseHeadersList;
 }
-const ListManagedTransformsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListManagedTransformsResponse>;
-
 export type EditRequestManagedRequestHeadersItemConflictsWithList = Array<string>;
-const EditRequestManagedRequestHeadersItemConflictsWithList =
-  ListResponseManagedRequestHeadersItemConflictsWithList as any as S.Schema<EditRequestManagedRequestHeadersItemConflictsWithList>;
-
 export interface EditRequestManagedRequestHeadersItem {
   /** The human-readable identifier of the Managed Transform. */
   id: string;
@@ -122,17 +83,7 @@ export interface EditRequestManagedRequestHeadersItem {
   /** The Managed Transforms that this Managed Transform conflicts with. */
   conflictsWith?: EditRequestManagedRequestHeadersItemConflictsWithList;
 }
-const EditRequestManagedRequestHeadersItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<EditRequestManagedRequestHeadersItem>;
-
 export type EditRequestManagedRequestHeadersList = Array<EditRequestManagedRequestHeadersItem>;
-const EditRequestManagedRequestHeadersList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<EditRequestManagedRequestHeadersList>;
-
 export type EditRequestManagedResponseHeadersItemConflictsWithList = Array<string>;
 export interface EditRequestManagedResponseHeadersItem {
   /** The human-readable identifier of the Managed Transform. */
@@ -145,9 +96,6 @@ export interface EditRequestManagedResponseHeadersItem {
   conflictsWith?: EditRequestManagedResponseHeadersItemConflictsWithList;
 }
 export type EditRequestManagedResponseHeadersList = Array<EditRequestManagedResponseHeadersItem>;
-const EditRequestManagedResponseHeadersList =
-  EditRequestManagedRequestHeadersList as any as S.Schema<EditRequestManagedResponseHeadersList>;
-
 export interface PatchManagedTransformRequest {
   /** The unique ID of the zone. */
   zoneId: string;
@@ -156,11 +104,6 @@ export interface PatchManagedTransformRequest {
   /** The list of Managed Response Transforms. */
   managedResponseHeaders?: EditRequestManagedResponseHeadersList;
 }
-const PatchManagedTransformRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PatchManagedTransformRequest>;
-
 export type EditResponseManagedRequestHeadersItemConflictsWithList = Array<string>;
 export interface EditResponseManagedRequestHeadersItem {
   /** The human-readable identifier of the Managed Transform. */
@@ -192,9 +135,6 @@ export interface PatchManagedTransformResponse {
   /** The list of Managed Response Transforms. */
   managedResponseHeaders: EditResponseManagedResponseHeadersList;
 }
-const PatchManagedTransformResponse =
-  ListManagedTransformsResponse as any as S.Schema<PatchManagedTransformResponse>;
-
 export type DeleteManagedTransformError = Forbidden | CloudflareOpError;
 /** Disables all Managed Transforms. */
 export const deleteManagedTransform: API.OperationMethod<
@@ -203,8 +143,8 @@ export const deleteManagedTransform: API.OperationMethod<
   DeleteManagedTransformError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedTransformRequest,
-  output: DeleteManagedTransformResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteManagedTransformRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteManagedTransformResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -218,8 +158,8 @@ export const listManagedTransforms: API.OperationMethod<
   ListManagedTransformsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedTransformsRequest,
-  output: ListManagedTransformsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ListManagedTransformsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ListManagedTransformsResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -233,8 +173,8 @@ export const patchManagedTransform: API.OperationMethod<
   PatchManagedTransformError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchManagedTransformRequest,
-  output: PatchManagedTransformResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<PatchManagedTransformRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<PatchManagedTransformResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -275,26 +215,18 @@ function __c0(j: number): any {
           id: S.String,
           enabled: S.Boolean,
           hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
-          conflictsWith: S.optional(
-            S.NullOr(ListResponseManagedRequestHeadersItemConflictsWithList).pipe(
-              T.Body("conflicts_with"),
-            ),
-          ),
+          conflictsWith: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("conflicts_with"))),
         }),
       ).annotate({
         identifier: "ListResponseManagedRequestHeadersItem",
       });
     case 5:
-      return S.Array(ListResponseManagedRequestHeadersItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          managedRequestHeaders: ListResponseManagedRequestHeadersList.pipe(
-            T.Body("managed_request_headers"),
-          ),
-          managedResponseHeaders: ListResponseManagedResponseHeadersList.pipe(
-            T.Body("managed_response_headers"),
-          ),
+          managedRequestHeaders: __S(5, __c0, 5).pipe(T.Body("managed_request_headers")),
+          managedResponseHeaders: __S(5, __c0, 5).pipe(T.Body("managed_response_headers")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListManagedTransformsResponse",
@@ -305,9 +237,7 @@ function __c0(j: number): any {
           id: S.String,
           enabled: S.Boolean,
           hasConflict: S.optional(S.Boolean.pipe(T.Body("has_conflict"))),
-          conflictsWith: S.optional(
-            EditRequestManagedRequestHeadersItemConflictsWithList.pipe(T.Body("conflicts_with")),
-          ),
+          conflictsWith: S.optional(__S(3, __c0, 3).pipe(T.Body("conflicts_with"))),
         }),
       ).annotate({
         identifier: "EditRequestManagedRequestHeadersItem",
@@ -317,16 +247,16 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EditRequestManagedRequestHeadersItem);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           managedRequestHeaders: S.optional(
-            EditRequestManagedRequestHeadersList.pipe(T.Body("managed_request_headers")),
+            __S(8, __c1, 0).pipe(T.Body("managed_request_headers")),
           ),
           managedResponseHeaders: S.optional(
-            EditRequestManagedResponseHeadersList.pipe(T.Body("managed_response_headers")),
+            __S(8, __c1, 0).pipe(T.Body("managed_response_headers")),
           ),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/managed_headers", code: 200 }))
@@ -335,4 +265,9 @@ function __c1(j: number): any {
         identifier: "PatchManagedTransformRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

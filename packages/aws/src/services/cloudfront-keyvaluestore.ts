@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudFront KeyValueStore",
   serviceShapeName: "CloudFrontKeyValueStore",
@@ -174,20 +176,14 @@ export interface DeleteKeyRequest {
   Key: string;
   IfMatch: string;
 }
-const DeleteKeyRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteKeyRequest>;
 export interface DeleteKeyResponse {
   ItemCount: number;
   TotalSizeInBytes: number;
   ETag: string;
 }
-const DeleteKeyResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteKeyResponse>;
 export interface DescribeKeyValueStoreRequest {
   KvsARN: string;
 }
-const DescribeKeyValueStoreRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DescribeKeyValueStoreRequest>;
 export interface DescribeKeyValueStoreResponse {
   ItemCount: number;
   TotalSizeInBytes: number;
@@ -198,15 +194,10 @@ export interface DescribeKeyValueStoreResponse {
   Status?: string;
   FailureReason?: string;
 }
-const DescribeKeyValueStoreResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DescribeKeyValueStoreResponse>;
 export interface GetKeyRequest {
   KvsARN: string;
   Key: string;
 }
-const GetKeyRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetKeyRequest>;
 export type Value = string | redacted.Redacted<string>;
 export interface GetKeyResponse {
   Key: string;
@@ -214,69 +205,51 @@ export interface GetKeyResponse {
   ItemCount: number;
   TotalSizeInBytes: number;
 }
-const GetKeyResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetKeyResponse>;
 export interface ListKeysRequest {
   KvsARN: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListKeysRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListKeysRequest>;
 export interface ListKeysResponseListItem {
   Key: string;
   Value: string | redacted.Redacted<string>;
 }
-const ListKeysResponseListItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListKeysResponseListItem>;
 export type ListKeysResponseList = ListKeysResponseListItem[];
-const ListKeysResponseList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ListKeysResponse {
   NextToken?: string;
   Items?: ListKeysResponseListItem[];
 }
-const ListKeysResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListKeysResponse>;
 export interface PutKeyRequest {
   Key: string;
   Value: string | redacted.Redacted<string>;
   KvsARN: string;
   IfMatch: string;
 }
-const PutKeyRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PutKeyRequest>;
 export interface PutKeyResponse {
   ItemCount: number;
   TotalSizeInBytes: number;
   ETag: string;
 }
-const PutKeyResponse = DeleteKeyResponse as any as S.Schema<PutKeyResponse>;
 export interface PutKeyRequestListItem {
   Key: string;
   Value: string | redacted.Redacted<string>;
 }
 export type PutKeyRequestsList = PutKeyRequestListItem[];
-const PutKeyRequestsList = ListKeysResponseList as any as S.Schema<PutKeyRequestsList>;
 export interface DeleteKeyRequestListItem {
   Key: string;
 }
-const DeleteKeyRequestListItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteKeyRequestListItem>;
 export type DeleteKeyRequestsList = DeleteKeyRequestListItem[];
-const DeleteKeyRequestsList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface UpdateKeysRequest {
   KvsARN: string;
   IfMatch: string;
   Puts?: PutKeyRequestListItem[];
   Deletes?: DeleteKeyRequestListItem[];
 }
-const UpdateKeysRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UpdateKeysRequest>;
 export interface UpdateKeysResponse {
   ItemCount: number;
   TotalSizeInBytes: number;
   ETag: string;
 }
-const UpdateKeysResponse = DeleteKeyResponse as any as S.Schema<UpdateKeysResponse>;
 export type DeleteKeyError =
   | AccessDeniedException
   | ConflictException
@@ -294,8 +267,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyRequest,
-  output: DeleteKeyResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -324,8 +297,8 @@ export const describeKeyValueStore: API.OperationMethod<
   DescribeKeyValueStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeKeyValueStoreRequest,
-  output: DescribeKeyValueStoreResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DescribeKeyValueStoreRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DescribeKeyValueStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -352,8 +325,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyRequest,
-  output: GetKeyResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetKeyRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -382,8 +355,8 @@ export const listKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListKeysResponseListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListKeysRequest,
-  output: ListKeysResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<ListKeysRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ListKeysResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -419,8 +392,8 @@ export const putKey: API.OperationMethod<
   PutKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutKeyRequest,
-  output: PutKeyResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<PutKeyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PutKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -451,8 +424,8 @@ export const updateKeys: API.OperationMethod<
   UpdateKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeysRequest,
-  output: UpdateKeysResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<UpdateKeysRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateKeysResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -575,10 +548,10 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListKeysResponseListItem);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(ListKeysResponseList) }),
+        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(8, __c1, 0)) }),
       ).annotate({ identifier: "ListKeysResponse" });
     case 2:
       return S.suspend(() =>
@@ -603,14 +576,14 @@ function __c1(j: number): any {
         identifier: "DeleteKeyRequestListItem",
       });
     case 4:
-      return S.Array(DeleteKeyRequestListItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
           IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
-          Puts: S.optional(PutKeyRequestsList),
-          Deletes: S.optional(DeleteKeyRequestsList),
+          Puts: S.optional(__S(8, __c1, 0)),
+          Deletes: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/key-value-stores/{KvsARN}/keys" }),
@@ -623,4 +596,9 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "UpdateKeysRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

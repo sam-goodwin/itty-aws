@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -20,11 +22,6 @@ export interface AttachContainerRequest {
   /** The name of the container instance. */
   containerName: string;
 }
-const AttachContainerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AttachContainerRequest>;
-
 /** The information for the output stream from container attach. */
 export interface ContainerAttachResponse {
   /** The uri for the output stream from the attach. */
@@ -32,15 +29,8 @@ export interface ContainerAttachResponse {
   /** The password to the output stream from the attach. Send as an Authorization header value when connecting to the websocketUri. */
   password?: string | Redacted.Redacted<string>;
 }
-const ContainerAttachResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ContainerAttachResponse>;
-
 /** The container group SKU. */
 export type ContainerGroupSku = "NotSpecified" | "Standard" | "Dedicated" | "Confidential";
-const ContainerGroupSku = S.String;
-
 /** The container group encryption properties. */
 export interface EncryptionProperties {
   /** The keyvault base url. */
@@ -52,19 +42,10 @@ export interface EncryptionProperties {
   /** The keyvault managed identity. */
   identity?: string;
 }
-const EncryptionProperties = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<EncryptionProperties>;
-
 /** The commands to execute within the container instance in exec form. */
 export type ContainerPropertiesInputCommandList = Array<string>;
-const ContainerPropertiesInputCommandList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ContainerPropertiesInputCommandList>;
-
 /** The protocol associated with the port. */
 export type ContainerNetworkProtocol = "TCP" | "UDP";
-const ContainerNetworkProtocol = S.String;
-
 /** The port exposed on the container instance. */
 export interface ContainerPort {
   /** The protocol associated with the port. */
@@ -72,15 +53,8 @@ export interface ContainerPort {
   /** The port number exposed within the container group. */
   port: number;
 }
-const ContainerPort = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ContainerPort>;
-
 /** The exposed ports on the container instance. */
 export type ContainerPropertiesInputPortsList = Array<ContainerPort>;
-const ContainerPropertiesInputPortsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ContainerPropertiesInputPortsList>;
-
 /** The environment variable to set within the container instance. */
 export interface EnvironmentVariable {
   /** The name of the environment variable. */
@@ -92,19 +66,10 @@ export interface EnvironmentVariable {
   /** The reference of the secure environment variable. */
   secureValueReference?: string;
 }
-const EnvironmentVariable = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EnvironmentVariable>;
-
 /** The environment variables to set in the container instance. */
 export type ContainerPropertiesInputEnvironmentVariablesList = Array<EnvironmentVariable>;
-const ContainerPropertiesInputEnvironmentVariablesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ContainerPropertiesInputEnvironmentVariablesList>;
-
 /** The SKU of the GPU resource. */
 export type GpuSku = "K80" | "P100" | "V100";
-const GpuSku = S.String;
-
 /** The GPU resource. */
 export interface GpuResource {
   /** The count of the GPU resource. */
@@ -112,8 +77,6 @@ export interface GpuResource {
   /** The SKU of the GPU resource. */
   sku: GpuSku | (string & {});
 }
-const GpuResource = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GpuResource>;
-
 /** The resource requests. */
 export interface ResourceRequests {
   /** The memory request in GB of this container instance. */
@@ -123,8 +86,6 @@ export interface ResourceRequests {
   /** The GPU request of this container instance. */
   gpu?: GpuResource;
 }
-const ResourceRequests = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ResourceRequests>;
-
 /** The resource limits. */
 export interface ResourceLimits {
   /** The memory limit in GB of this container instance. */
@@ -134,8 +95,6 @@ export interface ResourceLimits {
   /** The GPU limit of this container instance. */
   gpu?: GpuResource;
 }
-const ResourceLimits = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ResourceLimits>;
-
 /** The resource requirements. */
 export interface ResourceRequirements {
   /** The resource requests of this container instance. */
@@ -143,8 +102,6 @@ export interface ResourceRequirements {
   /** The resource limits of this container instance. */
   limits?: ResourceLimits;
 }
-const ResourceRequirements = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ResourceRequirements>;
-
 /** The properties of the volume mount. */
 export interface VolumeMount {
   /** The name of the volume mount. */
@@ -154,31 +111,17 @@ export interface VolumeMount {
   /** The flag indicating whether the volume mount is read-only. */
   readOnly?: boolean;
 }
-const VolumeMount = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<VolumeMount>;
-
 /** The volume mounts available to the container instance. */
 export type ContainerPropertiesInputVolumeMountsList = Array<VolumeMount>;
-const ContainerPropertiesInputVolumeMountsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ContainerPropertiesInputVolumeMountsList>;
-
 /** The commands to execute within the container. */
 export type ContainerExecCommandList = Array<string>;
-const ContainerExecCommandList =
-  ContainerPropertiesInputCommandList as any as S.Schema<ContainerExecCommandList>;
-
 /** The container execution command, for liveness or readiness probe */
 export interface ContainerExec {
   /** The commands to execute within the container. */
   command?: ContainerExecCommandList;
 }
-const ContainerExec = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ContainerExec>;
-
 /** The scheme. */
 export type Scheme = "http" | "https";
-const Scheme = S.String;
-
 /** The HTTP header. */
 export interface HttpHeader {
   /** The header name. */
@@ -186,15 +129,8 @@ export interface HttpHeader {
   /** The header value. */
   value?: string;
 }
-const HttpHeader = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<HttpHeader>;
-
 /** The HTTP headers. */
 export type ContainerHttpGetHttpHeadersList = Array<HttpHeader>;
-const ContainerHttpGetHttpHeadersList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ContainerHttpGetHttpHeadersList>;
-
 /** The container Http Get settings, for liveness or readiness probe */
 export interface ContainerHttpGet {
   /** The path to probe. */
@@ -206,8 +142,6 @@ export interface ContainerHttpGet {
   /** The HTTP headers. */
   httpHeaders?: ContainerHttpGetHttpHeadersList;
 }
-const ContainerHttpGet = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ContainerHttpGet>;
-
 /** The container probe, for liveness or readiness */
 export interface ContainerProbe {
   /** The execution command to probe */
@@ -225,18 +159,10 @@ export interface ContainerProbe {
   /** The timeout seconds. */
   timeoutSeconds?: number;
 }
-const ContainerProbe = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ContainerProbe>;
-
 /** The capabilities to add to the container. */
 export type SecurityContextCapabilitiesDefinitionAddList = Array<string>;
-const SecurityContextCapabilitiesDefinitionAddList =
-  ContainerPropertiesInputCommandList as any as S.Schema<SecurityContextCapabilitiesDefinitionAddList>;
-
 /** The capabilities to drop from the container. */
 export type SecurityContextCapabilitiesDefinitionDropList = Array<string>;
-const SecurityContextCapabilitiesDefinitionDropList =
-  ContainerPropertiesInputCommandList as any as S.Schema<SecurityContextCapabilitiesDefinitionDropList>;
-
 /** The capabilities to add or drop from a container. */
 export interface SecurityContextCapabilitiesDefinition {
   /** The capabilities to add to the container. */
@@ -244,11 +170,6 @@ export interface SecurityContextCapabilitiesDefinition {
   /** The capabilities to drop from the container. */
   drop?: SecurityContextCapabilitiesDefinitionDropList;
 }
-const SecurityContextCapabilitiesDefinition = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SecurityContextCapabilitiesDefinition>;
-
 /** The security context for the container. */
 export interface SecurityContextDefinition {
   /** The flag to determine if the container permissions is elevated to Privileged. */
@@ -264,25 +185,13 @@ export interface SecurityContextDefinition {
   /** a base64 encoded string containing the contents of the JSON in the seccomp profile */
   seccompProfile?: string;
 }
-const SecurityContextDefinition = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SecurityContextDefinition>;
-
 /** The key value pairs dictionary in the config map. */
 export type ConfigMapKeyValuePairsMap = { [key: string]: string | undefined };
-const ConfigMapKeyValuePairsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ConfigMapKeyValuePairsMap>;
-
 /** The container config map. */
 export interface ConfigMap {
   /** The key value pairs dictionary in the config map. */
   keyValuePairs?: ConfigMapKeyValuePairsMap;
 }
-const ConfigMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ConfigMap>;
-
 /** The container instance properties. */
 export interface ContainerPropertiesInput {
   /** The name of the image used to create the container instance. */
@@ -306,11 +215,6 @@ export interface ContainerPropertiesInput {
   /** The config map. */
   configMap?: ConfigMap;
 }
-const ContainerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ContainerPropertiesInput>;
-
 /** A container instance. */
 export interface ContainerInput {
   /** The user-provided name of the container instance. */
@@ -318,31 +222,15 @@ export interface ContainerInput {
   /** The properties of the container instance. */
   properties: ContainerPropertiesInput;
 }
-const ContainerInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ContainerInput>;
-
 /** The containers within the container group. */
 export type ContainerGroupProfilePropertiesInputContainersList = Array<ContainerInput>;
-const ContainerGroupProfilePropertiesInputContainersList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ContainerGroupProfilePropertiesInputContainersList>;
-
 /** The command to execute within the init container in exec form. */
 export type InitContainerPropertiesDefinitionInputCommandList = Array<string>;
-const InitContainerPropertiesDefinitionInputCommandList =
-  ContainerPropertiesInputCommandList as any as S.Schema<InitContainerPropertiesDefinitionInputCommandList>;
-
 /** The environment variables to set in the init container. */
 export type InitContainerPropertiesDefinitionInputEnvironmentVariablesList =
   Array<EnvironmentVariable>;
-const InitContainerPropertiesDefinitionInputEnvironmentVariablesList =
-  ContainerPropertiesInputEnvironmentVariablesList as any as S.Schema<InitContainerPropertiesDefinitionInputEnvironmentVariablesList>;
-
 /** The volume mounts available to the init container. */
 export type InitContainerPropertiesDefinitionInputVolumeMountsList = Array<VolumeMount>;
-const InitContainerPropertiesDefinitionInputVolumeMountsList =
-  ContainerPropertiesInputVolumeMountsList as any as S.Schema<InitContainerPropertiesDefinitionInputVolumeMountsList>;
-
 /** The init container definition properties. */
 export interface InitContainerPropertiesDefinitionInput {
   /** The image of the init container. */
@@ -356,11 +244,6 @@ export interface InitContainerPropertiesDefinitionInput {
   /** The container security properties. */
   securityContext?: SecurityContextDefinition;
 }
-const InitContainerPropertiesDefinitionInput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<InitContainerPropertiesDefinitionInput>;
-
 /** The init container definition. */
 export interface InitContainerDefinitionInput {
   /** The name for the init container. */
@@ -368,19 +251,9 @@ export interface InitContainerDefinitionInput {
   /** The properties for the init container. */
   properties: InitContainerPropertiesDefinitionInput;
 }
-const InitContainerDefinitionInput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<InitContainerDefinitionInput>;
-
 /** The init containers for a container group. */
 export type ContainerGroupProfilePropertiesInputInitContainersList =
   Array<InitContainerDefinitionInput>;
-const ContainerGroupProfilePropertiesInputInitContainersList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ContainerGroupProfilePropertiesInputInitContainersList>;
-
 /** Extension specific properties */
 export interface DeploymentExtensionSpecProperties {
   /** Type of extension to be added. */
@@ -392,11 +265,6 @@ export interface DeploymentExtensionSpecProperties {
   /** Protected settings for the extension. */
   protectedSettings?: unknown;
 }
-const DeploymentExtensionSpecProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeploymentExtensionSpecProperties>;
-
 /** Extension sidecars to be added to the deployment. */
 export interface DeploymentExtensionSpec {
   /** Name of the extension. */
@@ -404,18 +272,8 @@ export interface DeploymentExtensionSpec {
   /** Extension specific properties */
   properties?: DeploymentExtensionSpecProperties;
 }
-const DeploymentExtensionSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeploymentExtensionSpec>;
-
 /** extensions used by virtual kubelet */
 export type ContainerGroupProfilePropertiesInputExtensionsList = Array<DeploymentExtensionSpec>;
-const ContainerGroupProfilePropertiesInputExtensionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ContainerGroupProfilePropertiesInputExtensionsList>;
-
 /** Image registry credential. */
 export interface ImageRegistryCredential {
   /** The Docker image registry server without a protocol such as "http" and "https". */
@@ -431,23 +289,11 @@ export interface ImageRegistryCredential {
   /** The identity URL for the private registry. */
   identityUrl?: string;
 }
-const ImageRegistryCredential = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ImageRegistryCredential>;
-
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupProfilePropertiesInputImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-const ContainerGroupProfilePropertiesInputImageRegistryCredentialsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ContainerGroupProfilePropertiesInputImageRegistryCredentialsList>;
-
 /** Restart policy for all containers within the container group. - `Always` Always restart - `OnFailure` Restart on failure - `Never` Never restart */
 export type ContainerGroupRestartPolicy = "Always" | "OnFailure" | "Never";
-const ContainerGroupRestartPolicy = S.String;
-
 /** The protocol associated with the port. */
 export type ContainerGroupNetworkProtocol = "TCP" | "UDP";
 /** The port exposed on the container group. */
@@ -459,13 +305,8 @@ export interface Port {
 }
 /** The list of ports exposed on the container group. */
 export type IpAddressInputPortsList = Array<Port>;
-const IpAddressInputPortsList =
-  ContainerPropertiesInputPortsList as any as S.Schema<IpAddressInputPortsList>;
-
 /** Specifies if the IP is exposed to the public internet or private VNET. */
 export type ContainerGroupIpAddressType = "Public" | "Private";
-const ContainerGroupIpAddressType = S.String;
-
 /** The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant. */
 export type IpAddressInputAutoGeneratedDomainNameLabelScope =
   | "Unsecure"
@@ -473,8 +314,6 @@ export type IpAddressInputAutoGeneratedDomainNameLabelScope =
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
   | "Noreuse";
-const IpAddressInputAutoGeneratedDomainNameLabelScope = S.String;
-
 /** IP address for the container group. */
 export interface IpAddressInput {
   /** The list of ports exposed on the container group. */
@@ -490,12 +329,8 @@ export interface IpAddressInput {
     | IpAddressInputAutoGeneratedDomainNameLabelScope
     | (string & {});
 }
-const IpAddressInput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<IpAddressInput>;
-
 /** The operating system type required by the containers in the container group. */
 export type OperatingSystemTypes = "Windows" | "Linux";
-const OperatingSystemTypes = S.String;
-
 /** The properties of the Azure File volume. Azure File shares are mounted as volumes. */
 export interface AzureFileVolume {
   /** The name of the Azure File share to be mounted as a volume. */
@@ -511,17 +346,10 @@ export interface AzureFileVolume {
   /** The client id of the user-assigned managed identity that has access to the Azure File share. */
   userAssignedIdentityClientId?: string;
 }
-const AzureFileVolume = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AzureFileVolume>;
-
 /** Defines files for a secret volume. Dictionary keys are file names and values are Base64-encoded secret data used as file contents. The values are sensitive, and the service does not return the contents of this property in GET responses. */
 export type VolumeSecretMap = { [key: string]: string | undefined };
-const VolumeSecretMap = ConfigMapKeyValuePairsMap as any as S.Schema<VolumeSecretMap>;
-
 /** Defines files for a secret reference volume. Dictionary keys are file names and values identify entries in the container group's secretReferences collection. This property contains reference names rather than secret values. */
 export type VolumeSecretReferenceMap = { [key: string]: string | undefined };
-const VolumeSecretReferenceMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<VolumeSecretReferenceMap>;
-
 /** Represents a volume that is populated with the contents of a git repository */
 export interface GitRepoVolume {
   /** Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name. */
@@ -531,8 +359,6 @@ export interface GitRepoVolume {
   /** Commit hash for the specified revision. */
   revision?: string;
 }
-const GitRepoVolume = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GitRepoVolume>;
-
 /** The properties of the volume. */
 export interface Volume {
   /** The name of the volume. */
@@ -548,24 +374,12 @@ export interface Volume {
   /** The git repo volume. */
   gitRepo?: GitRepoVolume;
 }
-const Volume = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Volume>;
-
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupProfilePropertiesInputVolumesList = Array<Volume>;
-const ContainerGroupProfilePropertiesInputVolumesList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ContainerGroupProfilePropertiesInputVolumesList>;
-
 /** The log type to be used. */
 export type LogAnalyticsLogType = "ContainerInsights" | "ContainerInstanceLogs";
-const LogAnalyticsLogType = S.String;
-
 /** Metadata for log analytics. */
 export type LogAnalyticsMetadataMap = { [key: string]: string | undefined };
-const LogAnalyticsMetadataMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<LogAnalyticsMetadataMap>;
-
 /** Container group log analytics information. */
 export interface LogAnalytics {
   /** The workspace id for log analytics */
@@ -579,32 +393,18 @@ export interface LogAnalytics {
   /** The workspace resource id for log analytics */
   workspaceResourceId?: string;
 }
-const LogAnalytics = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<LogAnalytics>;
-
 /** Container group diagnostic information. */
 export interface ContainerGroupDiagnostics {
   /** Container group log analytics information. */
   logAnalytics?: LogAnalytics;
 }
-const ContainerGroupDiagnostics = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ContainerGroupDiagnostics>;
-
 /** The priority of the container group. */
 export type ContainerGroupPriority = "Regular" | "Spot";
-const ContainerGroupPriority = S.String;
-
 /** The properties for confidential container group */
 export interface ConfidentialComputeProperties {
   /** The base64 encoded confidential compute enforcement policy */
   ccePolicy?: string;
 }
-const ConfidentialComputeProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ConfidentialComputeProperties>;
-
 /** The container group profile properties */
 export interface ContainerGroupProfilePropertiesInput {
   /** The SKU for a container group. */
@@ -642,21 +442,10 @@ export interface ContainerGroupProfilePropertiesInput {
   /** Gets or sets Krypton use property. */
   useKrypton?: boolean;
 }
-const ContainerGroupProfilePropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ContainerGroupProfilePropertiesInput>;
-
 /** Resource tags. */
 export type CGProfileCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const CGProfileCreateOrUpdateRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<CGProfileCreateOrUpdateRequestTagsMap>;
-
 /** The availability zones. */
 export type CGProfileCreateOrUpdateRequestZonesList = Array<string>;
-const CGProfileCreateOrUpdateRequestZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<CGProfileCreateOrUpdateRequestZonesList>;
-
 export interface CGProfileCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -673,19 +462,10 @@ export interface CGProfileCreateOrUpdateRequest {
   /** The availability zones. */
   zones?: CGProfileCreateOrUpdateRequestZonesList;
 }
-const CGProfileCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CGProfileCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -701,23 +481,12 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SystemData>;
-
 /** The commands to execute within the container instance in exec form. */
 export type ContainerPropertiesCommandList = Array<string>;
-const ContainerPropertiesCommandList =
-  ContainerPropertiesInputCommandList as any as S.Schema<ContainerPropertiesCommandList>;
-
 /** The exposed ports on the container instance. */
 export type ContainerPropertiesPortsList = Array<ContainerPort>;
-const ContainerPropertiesPortsList =
-  ContainerPropertiesInputPortsList as any as S.Schema<ContainerPropertiesPortsList>;
-
 /** The environment variables to set in the container instance. */
 export type ContainerPropertiesEnvironmentVariablesList = Array<EnvironmentVariable>;
-const ContainerPropertiesEnvironmentVariablesList =
-  ContainerPropertiesInputEnvironmentVariablesList as any as S.Schema<ContainerPropertiesEnvironmentVariablesList>;
-
 /** The container instance state. */
 export interface ContainerState {
   /** The state of the container instance. */
@@ -731,8 +500,6 @@ export interface ContainerState {
   /** The human-readable status of the container instance state. */
   detailStatus?: string;
 }
-const ContainerState = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ContainerState>;
-
 /** A container group or container instance event. */
 export interface Event {
   /** The count of the event. */
@@ -748,15 +515,8 @@ export interface Event {
   /** The event type. */
   type?: string;
 }
-const Event = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Event>;
-
 /** The events of the container instance. */
 export type ContainerPropertiesInstanceViewEventsList = Array<Event>;
-const ContainerPropertiesInstanceViewEventsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ContainerPropertiesInstanceViewEventsList>;
-
 /** The instance view of the container instance. Only valid in response. */
 export interface ContainerPropertiesInstanceView {
   /** The number of times that the container instance has been restarted. */
@@ -768,16 +528,8 @@ export interface ContainerPropertiesInstanceView {
   /** The events of the container instance. */
   events?: ContainerPropertiesInstanceViewEventsList;
 }
-const ContainerPropertiesInstanceView = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ContainerPropertiesInstanceView>;
-
 /** The volume mounts available to the container instance. */
 export type ContainerPropertiesVolumeMountsList = Array<VolumeMount>;
-const ContainerPropertiesVolumeMountsList =
-  ContainerPropertiesInputVolumeMountsList as any as S.Schema<ContainerPropertiesVolumeMountsList>;
-
 /** The container instance properties. */
 export interface ContainerProperties {
   /** The name of the image used to create the container instance. */
@@ -803,8 +555,6 @@ export interface ContainerProperties {
   /** The config map. */
   configMap?: ConfigMap;
 }
-const ContainerProperties = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ContainerProperties>;
-
 /** A container instance. */
 export interface Container {
   /** The user-provided name of the container instance. */
@@ -812,25 +562,12 @@ export interface Container {
   /** The properties of the container instance. */
   properties: ContainerProperties;
 }
-const Container = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Container>;
-
 /** The containers within the container group. */
 export type ContainerGroupProfilePropertiesContainersList = Array<Container>;
-const ContainerGroupProfilePropertiesContainersList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ContainerGroupProfilePropertiesContainersList>;
-
 /** The command to execute within the init container in exec form. */
 export type InitContainerPropertiesDefinitionCommandList = Array<string>;
-const InitContainerPropertiesDefinitionCommandList =
-  ContainerPropertiesInputCommandList as any as S.Schema<InitContainerPropertiesDefinitionCommandList>;
-
 /** The environment variables to set in the init container. */
 export type InitContainerPropertiesDefinitionEnvironmentVariablesList = Array<EnvironmentVariable>;
-const InitContainerPropertiesDefinitionEnvironmentVariablesList =
-  ContainerPropertiesInputEnvironmentVariablesList as any as S.Schema<InitContainerPropertiesDefinitionEnvironmentVariablesList>;
-
 /** The events of the init container. */
 export type InitContainerPropertiesDefinitionInstanceViewEventsList = Array<Event>;
 /** The instance view of the init container. Only valid in response. */
@@ -844,14 +581,8 @@ export interface InitContainerPropertiesDefinitionInstanceView {
   /** The events of the init container. */
   events?: InitContainerPropertiesDefinitionInstanceViewEventsList;
 }
-const InitContainerPropertiesDefinitionInstanceView =
-  ContainerPropertiesInstanceView as any as S.Schema<InitContainerPropertiesDefinitionInstanceView>;
-
 /** The volume mounts available to the init container. */
 export type InitContainerPropertiesDefinitionVolumeMountsList = Array<VolumeMount>;
-const InitContainerPropertiesDefinitionVolumeMountsList =
-  ContainerPropertiesInputVolumeMountsList as any as S.Schema<InitContainerPropertiesDefinitionVolumeMountsList>;
-
 /** The init container definition properties. */
 export interface InitContainerPropertiesDefinition {
   /** The image of the init container. */
@@ -867,11 +598,6 @@ export interface InitContainerPropertiesDefinition {
   /** The container security properties. */
   securityContext?: SecurityContextDefinition;
 }
-const InitContainerPropertiesDefinition = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<InitContainerPropertiesDefinition>;
-
 /** The init container definition. */
 export interface InitContainerDefinition {
   /** The name for the init container. */
@@ -879,35 +605,15 @@ export interface InitContainerDefinition {
   /** The properties for the init container. */
   properties: InitContainerPropertiesDefinition;
 }
-const InitContainerDefinition = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<InitContainerDefinition>;
-
 /** The init containers for a container group. */
 export type ContainerGroupProfilePropertiesInitContainersList = Array<InitContainerDefinition>;
-const ContainerGroupProfilePropertiesInitContainersList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ContainerGroupProfilePropertiesInitContainersList>;
-
 /** extensions used by virtual kubelet */
 export type ContainerGroupProfilePropertiesExtensionsList = Array<DeploymentExtensionSpec>;
-const ContainerGroupProfilePropertiesExtensionsList =
-  ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ContainerGroupProfilePropertiesExtensionsList>;
-
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupProfilePropertiesImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-const ContainerGroupProfilePropertiesImageRegistryCredentialsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ContainerGroupProfilePropertiesImageRegistryCredentialsList>;
-
 /** The list of ports exposed on the container group. */
 export type IpAddressPortsList = Array<Port>;
-const IpAddressPortsList = IpAddressInputPortsList as any as S.Schema<IpAddressPortsList>;
-
 /** The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant. */
 export type IpAddressAutoGeneratedDomainNameLabelScope =
   | "Unsecure"
@@ -915,8 +621,6 @@ export type IpAddressAutoGeneratedDomainNameLabelScope =
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
   | "Noreuse";
-const IpAddressAutoGeneratedDomainNameLabelScope = S.String;
-
 /** IP address for the container group. */
 export interface IpAddress {
   /** The list of ports exposed on the container group. */
@@ -932,20 +636,10 @@ export interface IpAddress {
   /** The FQDN for the IP. */
   fqdn?: string;
 }
-const IpAddress = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<IpAddress>;
-
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupProfilePropertiesVolumesList = Array<Volume>;
-const ContainerGroupProfilePropertiesVolumesList =
-  ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ContainerGroupProfilePropertiesVolumesList>;
-
 /** Registered revisions are calculated at request time based off the records in the table logs. */
 export type ContainerGroupProfilePropertiesRegisteredRevisionsList = Array<number>;
-const ContainerGroupProfilePropertiesRegisteredRevisionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ContainerGroupProfilePropertiesRegisteredRevisionsList>;
-
 /** The container group profile properties */
 export interface ContainerGroupProfileProperties {
   /** The SKU for a container group. */
@@ -987,21 +681,10 @@ export interface ContainerGroupProfileProperties {
   /** Gets or sets Krypton use property. */
   useKrypton?: boolean;
 }
-const ContainerGroupProfileProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ContainerGroupProfileProperties>;
-
 /** Resource tags. */
 export type CGProfileCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const CGProfileCreateOrUpdateResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<CGProfileCreateOrUpdateResponseTagsMap>;
-
 /** The availability zones. */
 export type CGProfileCreateOrUpdateResponseZonesList = Array<string>;
-const CGProfileCreateOrUpdateResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<CGProfileCreateOrUpdateResponseZonesList>;
-
 export interface CGProfileCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1020,11 +703,6 @@ export interface CGProfileCreateOrUpdateResponse {
   /** The availability zones. */
   zones?: CGProfileCreateOrUpdateResponseZonesList;
 }
-const CGProfileCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CGProfileCreateOrUpdateResponse>;
-
 export interface ConnectSandboxGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1033,11 +711,6 @@ export interface ConnectSandboxGroupRequest {
   /** The name of the SandboxGroup. */
   sandboxGroupName: string;
 }
-const ConnectSandboxGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ConnectSandboxGroupRequest>;
-
 /** The result of getting an access token for a SandboxGroup. */
 export interface SandboxGroupAccessToken {
   /** The endpoint URL to use with the access token. */
@@ -1047,45 +720,22 @@ export interface SandboxGroupAccessToken {
   /** The UTC date and time at which the access token expires. */
   notAfter: string;
 }
-const SandboxGroupAccessToken = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<SandboxGroupAccessToken>;
-
 /** The resource tags. */
 export type ContainerGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ContainerGroupsCreateOrUpdateRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<ContainerGroupsCreateOrUpdateRequestTagsMap>;
-
 /** The availability zones. */
 export type ContainerGroupsCreateOrUpdateRequestZonesList = Array<string>;
-const ContainerGroupsCreateOrUpdateRequestZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<ContainerGroupsCreateOrUpdateRequestZonesList>;
-
 /** The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group. */
 export type ResourceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const ResourceIdentityType = S.String;
-
 /** The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export interface UserAssignedIdentitiesInput {}
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** The list of user identities associated with the container group. */
 export type ContainerGroupIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesInput | undefined;
 };
-const ContainerGroupIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ContainerGroupIdentityInputUserAssignedIdentitiesMap>;
-
 /** Identity for the container group. */
 export interface ContainerGroupIdentityInput {
   /** The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group. */
@@ -1093,11 +743,6 @@ export interface ContainerGroupIdentityInput {
   /** The list of user identities associated with the container group. */
   userAssignedIdentities?: ContainerGroupIdentityInputUserAssignedIdentitiesMap;
 }
-const ContainerGroupIdentityInput = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ContainerGroupIdentityInput>;
-
 /** A secret reference */
 export interface SecretReference {
   /** The identifier of the secret reference */
@@ -1107,31 +752,15 @@ export interface SecretReference {
   /** The URI to the secret in key vault */
   secretReferenceUri: string;
 }
-const SecretReference = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SecretReference>;
-
 /** The secret references that will be referenced within the container group. */
 export type ContainerGroupPropertiesPropertiesInputSecretReferencesList = Array<SecretReference>;
-const ContainerGroupPropertiesPropertiesInputSecretReferencesList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ContainerGroupPropertiesPropertiesInputSecretReferencesList>;
-
 /** The containers within the container group. */
 export type ContainerGroupPropertiesPropertiesInputContainersList = Array<ContainerInput>;
-const ContainerGroupPropertiesPropertiesInputContainersList =
-  ContainerGroupProfilePropertiesInputContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesInputContainersList>;
-
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-const ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList =
-  ContainerGroupProfilePropertiesInputImageRegistryCredentialsList as any as S.Schema<ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList>;
-
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupPropertiesPropertiesInputVolumesList = Array<Volume>;
-const ContainerGroupPropertiesPropertiesInputVolumesList =
-  ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ContainerGroupPropertiesPropertiesInputVolumesList>;
-
 /** Container group subnet information. */
 export interface ContainerGroupSubnetId {
   /** Resource ID of virtual network and subnet. */
@@ -1139,23 +768,10 @@ export interface ContainerGroupSubnetId {
   /** Friendly name for the subnet. */
   name?: string;
 }
-const ContainerGroupSubnetId = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ContainerGroupSubnetId>;
-
 /** The subnet resource IDs for a container group. */
 export type ContainerGroupPropertiesPropertiesInputSubnetIdsList = Array<ContainerGroupSubnetId>;
-const ContainerGroupPropertiesPropertiesInputSubnetIdsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ContainerGroupPropertiesPropertiesInputSubnetIdsList>;
-
 /** The DNS servers for the container group. */
 export type DnsConfigurationNameServersList = Array<string>;
-const DnsConfigurationNameServersList =
-  ContainerPropertiesInputCommandList as any as S.Schema<DnsConfigurationNameServersList>;
-
 /** DNS configuration for the container group. */
 export interface DnsConfiguration {
   /** The DNS servers for the container group. */
@@ -1165,23 +781,13 @@ export interface DnsConfiguration {
   /** The DNS options for the container group. */
   options?: string;
 }
-const DnsConfiguration = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DnsConfiguration>;
-
 /** The init containers for a container group. */
 export type ContainerGroupPropertiesPropertiesInputInitContainersList =
   Array<InitContainerDefinitionInput>;
-const ContainerGroupPropertiesPropertiesInputInitContainersList =
-  ContainerGroupProfilePropertiesInputInitContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesInputInitContainersList>;
-
 /** extensions used by virtual kubelet */
 export type ContainerGroupPropertiesPropertiesInputExtensionsList = Array<DeploymentExtensionSpec>;
-const ContainerGroupPropertiesPropertiesInputExtensionsList =
-  ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ContainerGroupPropertiesPropertiesInputExtensionsList>;
-
 /** The access level of an identity. */
 export type IdentityAccessLevel = "All" | "System" | "User";
-const IdentityAccessLevel = S.String;
-
 /** The access control for an identity */
 export interface IdentityAccessControl {
   /** The access level of the identity. */
@@ -1189,15 +795,8 @@ export interface IdentityAccessControl {
   /** An identity. */
   identity?: string;
 }
-const IdentityAccessControl = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<IdentityAccessControl>;
-
 /** The access control levels for each identity. */
 export type IdentityAclsAclsList = Array<IdentityAccessControl>;
-const IdentityAclsAclsList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<IdentityAclsAclsList>;
-
 /** The access control levels of the identities. */
 export interface IdentityAcls {
   /** The default access level. */
@@ -1205,8 +804,6 @@ export interface IdentityAcls {
   /** The access control levels for each identity. */
   acls?: IdentityAclsAclsList;
 }
-const IdentityAcls = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<IdentityAcls>;
-
 /** The container group profile reference. */
 export interface ContainerGroupProfileReferenceDefinition {
   /** The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'. */
@@ -1214,11 +811,6 @@ export interface ContainerGroupProfileReferenceDefinition {
   /** The container group profile reference revision. */
   revision?: number;
 }
-const ContainerGroupProfileReferenceDefinition = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ContainerGroupProfileReferenceDefinition>;
-
 /** The standby pool profile reference. */
 export interface StandbyPoolProfileDefinition {
   /** The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'. */
@@ -1226,11 +818,6 @@ export interface StandbyPoolProfileDefinition {
   /** The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool. */
   failContainerGroupCreateOnReuseFailure?: boolean;
 }
-const StandbyPoolProfileDefinition = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<StandbyPoolProfileDefinition>;
-
 /** The container group properties */
 export interface ContainerGroupPropertiesPropertiesInput {
   /** The secret references that will be referenced within the container group. */
@@ -1272,11 +859,6 @@ export interface ContainerGroupPropertiesPropertiesInput {
   /** The reference standby pool profile properties. */
   standbyPoolProfile?: StandbyPoolProfileDefinition;
 }
-const ContainerGroupPropertiesPropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ContainerGroupPropertiesPropertiesInput>;
-
 export interface ContainerGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1295,21 +877,10 @@ export interface ContainerGroupsCreateOrUpdateRequest {
   /** The container group properties */
   properties: ContainerGroupPropertiesPropertiesInput;
 }
-const ContainerGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ContainerGroupsCreateOrUpdateRequest>;
-
 /** The resource tags. */
 export type ContainerGroupsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ContainerGroupsCreateOrUpdateResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<ContainerGroupsCreateOrUpdateResponseTagsMap>;
-
 /** The availability zones. */
 export type ContainerGroupsCreateOrUpdateResponseZonesList = Array<string>;
-const ContainerGroupsCreateOrUpdateResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<ContainerGroupsCreateOrUpdateResponseZonesList>;
-
 /** The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export interface UserAssignedIdentities {
   /** The principal id of user assigned identity. */
@@ -1317,20 +888,10 @@ export interface UserAssignedIdentities {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** The list of user identities associated with the container group. */
 export type ContainerGroupIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentities | undefined;
 };
-const ContainerGroupIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ContainerGroupIdentityUserAssignedIdentitiesMap>;
-
 /** Identity for the container group. */
 export interface ContainerGroupIdentity {
   /** The principal id of the container group identity. This property will only be provided for a system assigned identity. */
@@ -1342,37 +903,17 @@ export interface ContainerGroupIdentity {
   /** The list of user identities associated with the container group. */
   userAssignedIdentities?: ContainerGroupIdentityUserAssignedIdentitiesMap;
 }
-const ContainerGroupIdentity = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ContainerGroupIdentity>;
-
 /** The secret references that will be referenced within the container group. */
 export type ContainerGroupPropertiesPropertiesSecretReferencesList = Array<SecretReference>;
-const ContainerGroupPropertiesPropertiesSecretReferencesList =
-  ContainerGroupPropertiesPropertiesInputSecretReferencesList as any as S.Schema<ContainerGroupPropertiesPropertiesSecretReferencesList>;
-
 /** The containers within the container group. */
 export type ContainerGroupPropertiesPropertiesContainersList = Array<Container>;
-const ContainerGroupPropertiesPropertiesContainersList =
-  ContainerGroupProfilePropertiesContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesContainersList>;
-
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-const ContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
-  ContainerGroupProfilePropertiesImageRegistryCredentialsList as any as S.Schema<ContainerGroupPropertiesPropertiesImageRegistryCredentialsList>;
-
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupPropertiesPropertiesVolumesList = Array<Volume>;
-const ContainerGroupPropertiesPropertiesVolumesList =
-  ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ContainerGroupPropertiesPropertiesVolumesList>;
-
 /** The events of this container group. */
 export type ContainerGroupPropertiesPropertiesInstanceViewEventsList = Array<Event>;
-const ContainerGroupPropertiesPropertiesInstanceViewEventsList =
-  ContainerPropertiesInstanceViewEventsList as any as S.Schema<ContainerGroupPropertiesPropertiesInstanceViewEventsList>;
-
 /** The instance view of the container group. Only valid in response. */
 export interface ContainerGroupPropertiesPropertiesInstanceView {
   /** The events of this container group. */
@@ -1380,26 +921,12 @@ export interface ContainerGroupPropertiesPropertiesInstanceView {
   /** The state of the container group. Only valid in response. */
   state?: string;
 }
-const ContainerGroupPropertiesPropertiesInstanceView = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ContainerGroupPropertiesPropertiesInstanceView>;
-
 /** The subnet resource IDs for a container group. */
 export type ContainerGroupPropertiesPropertiesSubnetIdsList = Array<ContainerGroupSubnetId>;
-const ContainerGroupPropertiesPropertiesSubnetIdsList =
-  ContainerGroupPropertiesPropertiesInputSubnetIdsList as any as S.Schema<ContainerGroupPropertiesPropertiesSubnetIdsList>;
-
 /** The init containers for a container group. */
 export type ContainerGroupPropertiesPropertiesInitContainersList = Array<InitContainerDefinition>;
-const ContainerGroupPropertiesPropertiesInitContainersList =
-  ContainerGroupProfilePropertiesInitContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesInitContainersList>;
-
 /** extensions used by virtual kubelet */
 export type ContainerGroupPropertiesPropertiesExtensionsList = Array<DeploymentExtensionSpec>;
-const ContainerGroupPropertiesPropertiesExtensionsList =
-  ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ContainerGroupPropertiesPropertiesExtensionsList>;
-
 /** The container group properties */
 export interface ContainerGroupPropertiesProperties {
   /** The provisioning state of the container group. This only appears in the response. */
@@ -1447,11 +974,6 @@ export interface ContainerGroupPropertiesProperties {
   /** The flag to determine whether the container group is created from standby pool. */
   isCreatedFromStandbyPool?: boolean;
 }
-const ContainerGroupPropertiesProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ContainerGroupPropertiesProperties>;
-
 export interface ContainerGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1472,11 +994,6 @@ export interface ContainerGroupsCreateOrUpdateResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-const ContainerGroupsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ContainerGroupsCreateOrUpdateResponse>;
-
 export interface DeleteCGProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1485,15 +1002,7 @@ export interface DeleteCGProfileRequest {
   /** ContainerGroupProfile name. */
   containerGroupProfileName: string;
 }
-const DeleteCGProfileRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteCGProfileRequest>;
-
 export interface DeleteCGProfileResponse {}
-const DeleteCGProfileResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<DeleteCGProfileResponse>;
-
 export interface DeleteContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1502,11 +1011,6 @@ export interface DeleteContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-const DeleteContainerGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteContainerGroupRequest>;
-
 /** The resource tags. */
 export type DeleteContainerGroupResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -1531,9 +1035,6 @@ export interface DeleteContainerGroupResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-const DeleteContainerGroupResponse =
-  ContainerGroupsCreateOrUpdateResponse as any as S.Schema<DeleteContainerGroupResponse>;
-
 export interface DeleteNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1542,11 +1043,7 @@ export interface DeleteNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-const DeleteNGroupRequest = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<DeleteNGroupRequest>;
-
 export interface DeleteNGroupResponse {}
-const DeleteNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<DeleteNGroupResponse>;
-
 export interface DeleteSandboxGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1555,15 +1052,7 @@ export interface DeleteSandboxGroupRequest {
   /** The name of the SandboxGroup. */
   sandboxGroupName: string;
 }
-const DeleteSandboxGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteSandboxGroupRequest>;
-
 export interface DeleteSandboxGroupResponse {}
-const DeleteSandboxGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<DeleteSandboxGroupResponse>;
-
 export interface DeleteSubnetServiceAssociationLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1574,17 +1063,7 @@ export interface DeleteSubnetServiceAssociationLinkRequest {
   /** The name of the subnet. */
   subnetName: string;
 }
-const DeleteSubnetServiceAssociationLinkRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteSubnetServiceAssociationLinkRequest>;
-
 export interface DeleteSubnetServiceAssociationLinkResponse {}
-const DeleteSubnetServiceAssociationLinkResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteSubnetServiceAssociationLinkResponse>;
-
 /** The size of the terminal. */
 export interface ContainerExecRequestTerminalSize {
   /** The row size of the terminal */
@@ -1592,11 +1071,6 @@ export interface ContainerExecRequestTerminalSize {
   /** The column size of the terminal */
   cols?: number;
 }
-const ContainerExecRequestTerminalSize = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ContainerExecRequestTerminalSize>;
-
 export interface ExecuteContainerCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1611,11 +1085,6 @@ export interface ExecuteContainerCommandRequest {
   /** The size of the terminal. */
   terminalSize?: ContainerExecRequestTerminalSize;
 }
-const ExecuteContainerCommandRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ExecuteContainerCommandRequest>;
-
 /** The information for the container exec command. */
 export interface ContainerExecResponse {
   /** The uri for the exec websocket. */
@@ -1623,8 +1092,6 @@ export interface ContainerExecResponse {
   /** The password to start the exec command. */
   password?: string | Redacted.Redacted<string>;
 }
-const ContainerExecResponse = ContainerAttachResponse as any as S.Schema<ContainerExecResponse>;
-
 export interface GetCGProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1633,18 +1100,10 @@ export interface GetCGProfileRequest {
   /** ContainerGroupProfile name. */
   containerGroupProfileName: string;
 }
-const GetCGProfileRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<GetCGProfileRequest>;
-
 /** Resource tags. */
 export type GetCGProfileResponseTagsMap = { [key: string]: string | undefined };
-const GetCGProfileResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<GetCGProfileResponseTagsMap>;
-
 /** The availability zones. */
 export type GetCGProfileResponseZonesList = Array<string>;
-const GetCGProfileResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<GetCGProfileResponseZonesList>;
-
 export interface GetCGProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1663,11 +1122,6 @@ export interface GetCGProfileResponse {
   /** The availability zones. */
   zones?: GetCGProfileResponseZonesList;
 }
-const GetCGProfileResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetCGProfileResponse>;
-
 export interface GetCGProfileByRevisionNumberRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1678,11 +1132,6 @@ export interface GetCGProfileByRevisionNumberRequest {
   /** The revision number of the container group profile. */
   revisionNumber: string;
 }
-const GetCGProfileByRevisionNumberRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetCGProfileByRevisionNumberRequest>;
-
 /** Resource tags. */
 export type GetCGProfileByRevisionNumberResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -1705,9 +1154,6 @@ export interface GetCGProfileByRevisionNumberResponse {
   /** The availability zones. */
   zones?: GetCGProfileByRevisionNumberResponseZonesList;
 }
-const GetCGProfileByRevisionNumberResponse =
-  CGProfileCreateOrUpdateResponse as any as S.Schema<GetCGProfileByRevisionNumberResponse>;
-
 export interface GetContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1716,11 +1162,6 @@ export interface GetContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-const GetContainerGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetContainerGroupRequest>;
-
 /** The resource tags. */
 export type GetContainerGroupResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -1745,9 +1186,6 @@ export interface GetContainerGroupResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-const GetContainerGroupResponse =
-  ContainerGroupsCreateOrUpdateResponse as any as S.Schema<GetContainerGroupResponse>;
-
 export interface GetContainerGroupOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1756,23 +1194,10 @@ export interface GetContainerGroupOutboundNetworkDependenciesEndpointsRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-const GetContainerGroupOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsRequest>;
-
 /** Response for network dependencies, always empty list. */
 export type NetworkDependenciesResponse = Array<string>;
-const NetworkDependenciesResponse =
-  ContainerPropertiesInputCommandList as any as S.Schema<NetworkDependenciesResponse>;
-
 export type GetContainerGroupOutboundNetworkDependenciesEndpointsResponse =
   NetworkDependenciesResponse;
-const GetContainerGroupOutboundNetworkDependenciesEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsResponse>;
-
 export interface GetNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1781,26 +1206,14 @@ export interface GetNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-const GetNGroupRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetNGroupRequest>;
-
 export interface ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy {
   /** The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines. */
   prefix?: string;
 }
-const ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy>;
-
 /** Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation. */
 export interface ElasticProfileContainerGroupNamingPolicy {
   guidNamingPolicy?: ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy;
 }
-const ElasticProfileContainerGroupNamingPolicy = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ElasticProfileContainerGroupNamingPolicy>;
-
 /** Describes the elastic profile of the NGroup */
 export interface ElasticProfile {
   desiredCount?: number;
@@ -1809,46 +1222,28 @@ export interface ElasticProfile {
   /** Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation. */
   containerGroupNamingPolicy?: ElasticProfileContainerGroupNamingPolicy;
 }
-const ElasticProfile = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ElasticProfile>;
-
 /** Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains. */
 export interface PlacementProfile {
   /** The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that. */
   faultDomainCount?: number;
 }
-const PlacementProfile = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PlacementProfile>;
-
 /** The API entity reference. */
 export interface ApiEntityReference {
   /** The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/... */
   id?: string;
 }
-const ApiEntityReference = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ApiEntityReference>;
-
 /** NGroups load balancer backend address pool */
 export interface LoadBalancerBackendAddressPool {
   /** The Load Balancer backend address pool ARM resource Id. */
   resource?: string;
 }
-const LoadBalancerBackendAddressPool = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<LoadBalancerBackendAddressPool>;
-
 /** List of Load Balancer Backend Address Pools. */
 export type LoadBalancerBackendAddressPoolsList = Array<LoadBalancerBackendAddressPool>;
-const LoadBalancerBackendAddressPoolsList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<LoadBalancerBackendAddressPoolsList>;
-
 /** LoadBalancer the CG profile will use to interact with CGs in a backend pool */
 export interface LoadBalancer {
   /** List of Load Balancer Backend Address Pools. */
   backendAddressPools?: LoadBalancerBackendAddressPoolsList;
 }
-const LoadBalancer = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<LoadBalancer>;
-
 /** NGroups application gateway backend address pool */
 export interface ApplicationGatewayBackendAddressPool {
   /** The application gateway backend address pool ARM resource Id. */
@@ -1856,9 +1251,6 @@ export interface ApplicationGatewayBackendAddressPool {
 }
 /** List of Application Gateway Backend Address Pools. */
 export type ApplicationGatewayBackendAddressPoolsList = Array<ApplicationGatewayBackendAddressPool>;
-const ApplicationGatewayBackendAddressPoolsList =
-  LoadBalancerBackendAddressPoolsList as any as S.Schema<ApplicationGatewayBackendAddressPoolsList>;
-
 /** Application Gateway the CG profile will use to interact with CGs in a backend pool */
 export interface ApplicationGateway {
   /** The Application Gateway ARM resource Id. */
@@ -1866,8 +1258,6 @@ export interface ApplicationGateway {
   /** List of Application Gateway Backend Address Pools. */
   backendAddressPools?: ApplicationGatewayBackendAddressPoolsList;
 }
-const ApplicationGateway = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ApplicationGateway>;
-
 /** A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool. */
 export interface NetworkProfile {
   /** LoadBalancer the CG profile will use to interact with CGs in a backend pool */
@@ -1875,28 +1265,20 @@ export interface NetworkProfile {
   /** Application Gateway the CG profile will use to interact with CGs in a backend pool */
   applicationGateway?: ApplicationGateway;
 }
-const NetworkProfile = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<NetworkProfile>;
-
 /** Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share. */
 export type AzureFileShareAccessType = "Shared" | "Exclusive";
-const AzureFileShareAccessType = S.String;
-
 /** Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier */
 export type FileSharePropertiesShareAccessTier =
   | "Cool"
   | "Hot"
   | "Premium"
   | "TransactionOptimized";
-const FileSharePropertiesShareAccessTier = S.String;
-
 export interface FileShareProperties {
   /** Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share. */
   shareAccessType?: AzureFileShareAccessType | (string & {});
   /** Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier */
   shareAccessTier?: FileSharePropertiesShareAccessTier | (string & {});
 }
-const FileShareProperties = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<FileShareProperties>;
-
 /** File shares that can be mounted on container groups. */
 export interface FileShare {
   name?: string;
@@ -1904,25 +1286,13 @@ export interface FileShare {
   storageAccountName?: string;
   properties?: FileShareProperties;
 }
-const FileShare = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<FileShare>;
-
 export type StorageProfileFileSharesList = Array<FileShare>;
-const StorageProfileFileSharesList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<StorageProfileFileSharesList>;
-
 /** Storage profile for storage related settings of a container group profile. */
 export interface StorageProfile {
   fileShares?: StorageProfileFileSharesList;
 }
-const StorageProfile = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<StorageProfile>;
-
 /** Contains information about Virtual Network Subnet ARM Resource */
 export type NGroupContainerGroupPropertiesSubnetIdsList = Array<ContainerGroupSubnetId>;
-const NGroupContainerGroupPropertiesSubnetIdsList =
-  ContainerGroupPropertiesPropertiesInputSubnetIdsList as any as S.Schema<NGroupContainerGroupPropertiesSubnetIdsList>;
-
 /** Contains information about the volumes that can be mounted by Containers in the Container Groups. */
 export interface NGroupCGPropertyVolume {
   /** The name of the volume. */
@@ -1930,31 +1300,13 @@ export interface NGroupCGPropertyVolume {
   /** The Azure File volume. */
   azureFile?: AzureFileVolume;
 }
-const NGroupCGPropertyVolume = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<NGroupCGPropertyVolume>;
-
 /** Contains information about the volumes that can be mounted by Containers in the Container Groups. */
 export type NGroupContainerGroupPropertiesVolumesList = Array<NGroupCGPropertyVolume>;
-const NGroupContainerGroupPropertiesVolumesList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<NGroupContainerGroupPropertiesVolumesList>;
-
 export type NGroupCGPropertyContainerPropertiesVolumeMountsList = Array<VolumeMount>;
-const NGroupCGPropertyContainerPropertiesVolumeMountsList =
-  ContainerPropertiesInputVolumeMountsList as any as S.Schema<NGroupCGPropertyContainerPropertiesVolumeMountsList>;
-
 /** container properties */
 export interface NGroupCGPropertyContainerProperties {
   volumeMounts?: NGroupCGPropertyContainerPropertiesVolumeMountsList;
 }
-const NGroupCGPropertyContainerProperties = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<NGroupCGPropertyContainerProperties>;
-
 /** Container properties that can be provided with NGroups object. */
 export interface NGroupCGPropertyContainer {
   /** container name */
@@ -1962,18 +1314,8 @@ export interface NGroupCGPropertyContainer {
   /** container properties */
   properties?: NGroupCGPropertyContainerProperties;
 }
-const NGroupCGPropertyContainer = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<NGroupCGPropertyContainer>;
-
 /** Contains information about Container which can be set while creating or updating the NGroups. */
 export type NGroupContainerGroupPropertiesContainersList = Array<NGroupCGPropertyContainer>;
-const NGroupContainerGroupPropertiesContainersList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<NGroupContainerGroupPropertiesContainersList>;
-
 /** Container Group properties which can be set while creating or updating the NGroups. */
 export interface NGroupContainerGroupProperties {
   /** Contains information about Virtual Network Subnet ARM Resource */
@@ -1983,11 +1325,6 @@ export interface NGroupContainerGroupProperties {
   /** Contains information about Container which can be set while creating or updating the NGroups. */
   containers?: NGroupContainerGroupPropertiesContainersList;
 }
-const NGroupContainerGroupProperties = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<NGroupContainerGroupProperties>;
-
 /** The object that contains a reference to a Container Group Profile and it's other related properties. */
 export interface ContainerGroupProfileStub {
   /** A reference to the container group profile ARM resource hosted in ACI RP. */
@@ -2001,18 +1338,8 @@ export interface ContainerGroupProfileStub {
   /** Container Group properties which can be set while creating or updating the NGroups. */
   containerGroupProperties?: NGroupContainerGroupProperties;
 }
-const ContainerGroupProfileStub = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ContainerGroupProfileStub>;
-
 /** The Container Group Profiles that could be used in the NGroups resource. */
 export type NGroupPropertiesContainerGroupProfilesList = Array<ContainerGroupProfileStub>;
-const NGroupPropertiesContainerGroupProfilesList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<NGroupPropertiesContainerGroupProfilesList>;
-
 /** The provisioning state, which only appears in the response. */
 export type NGroupProvisioningState =
   | "Creating"
@@ -2022,11 +1349,7 @@ export type NGroupProvisioningState =
   | "Canceled"
   | "Deleting"
   | "Migrating";
-const NGroupProvisioningState = S.String;
-
 export type NGroupUpdateMode = "Manual" | "Rolling";
-const NGroupUpdateMode = S.String;
-
 /** This profile allows the customers to customize the rolling update. */
 export interface UpdateProfileRollingUpdateProfile {
   /** Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch. */
@@ -2038,19 +1361,12 @@ export interface UpdateProfileRollingUpdateProfile {
   /** Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones. */
   inPlaceUpdate?: boolean;
 }
-const UpdateProfileRollingUpdateProfile = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<UpdateProfileRollingUpdateProfile>;
-
 /** Used by the customer to specify the way to update the Container Groups in NGroup. */
 export interface UpdateProfile {
   updateMode?: NGroupUpdateMode | (string & {});
   /** This profile allows the customers to customize the rolling update. */
   rollingUpdateProfile?: UpdateProfileRollingUpdateProfile;
 }
-const UpdateProfile = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<UpdateProfile>;
-
 /** Describes the properties of the NGroups resource. */
 export interface NGroupProperties {
   /** The elastic profile. */
@@ -2064,18 +1380,10 @@ export interface NGroupProperties {
   /** Used by the customer to specify the way to update the Container Groups in NGroup. */
   updateProfile?: UpdateProfile;
 }
-const NGroupProperties = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<NGroupProperties>;
-
 /** Resource tags. */
 export type GetNGroupResponseTagsMap = { [key: string]: string | undefined };
-const GetNGroupResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<GetNGroupResponseTagsMap>;
-
 /** The availability zones. */
 export type GetNGroupResponseZonesList = Array<string>;
-const GetNGroupResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<GetNGroupResponseZonesList>;
-
 /** The list of user identities associated with the NGroup. */
 export type NGroupIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentities | undefined;
@@ -2091,8 +1399,6 @@ export interface NGroupIdentity {
   /** The list of user identities associated with the NGroup. */
   userAssignedIdentities?: NGroupIdentityUserAssignedIdentitiesMap;
 }
-const NGroupIdentity = ContainerGroupIdentity as any as S.Schema<NGroupIdentity>;
-
 export interface GetNGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2113,8 +1419,6 @@ export interface GetNGroupResponse {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-const GetNGroupResponse = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetNGroupResponse>;
-
 export interface GetSandboxGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2123,16 +1427,8 @@ export interface GetSandboxGroupRequest {
   /** The name of the SandboxGroup. */
   sandboxGroupName: string;
 }
-const GetSandboxGroupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetSandboxGroupRequest>;
-
 /** Resource tags. */
 export type GetSandboxGroupResponseTagsMap = { [key: string]: string | undefined };
-const GetSandboxGroupResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<GetSandboxGroupResponseTagsMap>;
-
 /** The provisioning state of a SandboxGroup resource. */
 export type SandboxGroupProvisioningState =
   | "Succeeded"
@@ -2141,32 +1437,18 @@ export type SandboxGroupProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-const SandboxGroupProvisioningState = S.String;
-
 /** A reference to a subnet resource. */
 export interface SubnetReference {
   /** The ARM resource ID of the subnet. The caller must have `Microsoft.Network/virtualNetworks/subnets/join/action` permission on this subnet (enforced via a linked access check at create/update time). */
   id: string;
 }
-const SubnetReference = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<SubnetReference>;
-
 /** The list of subnets associated with the SandboxGroup. */
 export type SandboxGroupNetworkProfileSubnetsList = Array<SubnetReference>;
-const SandboxGroupNetworkProfileSubnetsList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<SandboxGroupNetworkProfileSubnetsList>;
-
 /** The network profile for a SandboxGroup. */
 export interface SandboxGroupNetworkProfile {
   /** The list of subnets associated with the SandboxGroup. */
   subnets?: SandboxGroupNetworkProfileSubnetsList;
 }
-const SandboxGroupNetworkProfile = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<SandboxGroupNetworkProfile>;
-
 /** Properties of a SandboxGroup. */
 export interface SandboxGroupProperties {
   /** The status of the last operation. */
@@ -2176,19 +1458,12 @@ export interface SandboxGroupProperties {
   /** The ARM resource ID of the management resource group associated with this SandboxGroup. */
   managementResourceGroupId?: string;
 }
-const SandboxGroupProperties = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<SandboxGroupProperties>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetSandboxGroupResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2198,11 +1473,6 @@ export interface GetSandboxGroupResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const GetSandboxGroupResponseIdentity = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetSandboxGroupResponseIdentity>;
-
 export interface GetSandboxGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2221,11 +1491,6 @@ export interface GetSandboxGroupResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-const GetSandboxGroupResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetSandboxGroupResponse>;
-
 export interface ListCGProfileAllRevisionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2234,11 +1499,6 @@ export interface ListCGProfileAllRevisionsRequest {
   /** ContainerGroupProfile name. */
   containerGroupProfileName: string;
 }
-const ListCGProfileAllRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListCGProfileAllRevisionsRequest>;
-
 /** Resource tags. */
 export type ContainerGroupProfileTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -2262,15 +1522,8 @@ export interface ContainerGroupProfile {
   /** The availability zones. */
   zones?: ContainerGroupProfileZonesList;
 }
-const ContainerGroupProfile = GetCGProfileResponse as any as S.Schema<ContainerGroupProfile>;
-
 /** The ContainerGroupProfile items on this page */
 export type ContainerGroupProfileListResultValueList = Array<ContainerGroupProfile>;
-const ContainerGroupProfileListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ContainerGroupProfileListResultValueList>;
-
 /** The response of a ContainerGroupProfile list operation. */
 export interface ContainerGroupProfileListResult {
   /** The ContainerGroupProfile items on this page */
@@ -2278,52 +1531,26 @@ export interface ContainerGroupProfileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ContainerGroupProfileListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ContainerGroupProfileListResult>;
-
 export interface ListCGProfileByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListCGProfileByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListCGProfileByResourceGroupRequest>;
-
 export interface ListCGProfileBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListCGProfileBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListCGProfileBySubscriptionRequest>;
-
 export interface ListContainerGroupByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListContainerGroupByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListContainerGroupByResourceGroupRequest>;
-
 /** The resource tags. */
 export type ListResultContainerGroupTagsMap = { [key: string]: string | undefined };
-const ListResultContainerGroupTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<ListResultContainerGroupTagsMap>;
-
 /** The zones for the container group. */
 export type ListResultContainerGroupZonesList = Array<string>;
-const ListResultContainerGroupZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<ListResultContainerGroupZonesList>;
-
 /** The provisioning state of the container group. This only appears in the response. */
 export type ContainerGroupProvisioningState =
   | "NotSpecified"
@@ -2339,50 +1566,25 @@ export type ContainerGroupProvisioningState =
   | "Deleting"
   | "NotAccessible"
   | "PreProvisioned";
-const ContainerGroupProvisioningState = S.String;
-
 /** The secret references that will be referenced within the container group. */
 export type ListResultContainerGroupPropertiesPropertiesSecretReferencesList =
   Array<SecretReference>;
-const ListResultContainerGroupPropertiesPropertiesSecretReferencesList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListResultContainerGroupPropertiesPropertiesSecretReferencesList>;
-
 /** The containers within the container group. */
 export type ListResultContainerGroupPropertiesPropertiesContainersList = Array<Container>;
-const ListResultContainerGroupPropertiesPropertiesContainersList =
-  ContainerGroupProfilePropertiesContainersList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesContainersList>;
-
 /** The image registry credentials by which the container group is created from. */
 export type ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-const ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
-  ContainerGroupProfilePropertiesInputImageRegistryCredentialsList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList>;
-
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ListResultContainerGroupPropertiesPropertiesVolumesList = Array<Volume>;
-const ListResultContainerGroupPropertiesPropertiesVolumesList =
-  ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesVolumesList>;
-
 /** The subnet resource IDs for a container group. */
 export type ListResultContainerGroupPropertiesPropertiesSubnetIdsList =
   Array<ContainerGroupSubnetId>;
-const ListResultContainerGroupPropertiesPropertiesSubnetIdsList =
-  ContainerGroupPropertiesPropertiesInputSubnetIdsList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesSubnetIdsList>;
-
 /** The init containers for a container group. */
 export type ListResultContainerGroupPropertiesPropertiesInitContainersList =
   Array<InitContainerDefinition>;
-const ListResultContainerGroupPropertiesPropertiesInitContainersList =
-  ContainerGroupProfilePropertiesInitContainersList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesInitContainersList>;
-
 /** extensions used by virtual kubelet */
 export type ListResultContainerGroupPropertiesPropertiesExtensionsList =
   Array<DeploymentExtensionSpec>;
-const ListResultContainerGroupPropertiesPropertiesExtensionsList =
-  ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesExtensionsList>;
-
 /** The container group properties */
 export interface ListResultContainerGroupPropertiesProperties {
   /** The provisioning state of the container group. This only appears in the response. */
@@ -2428,11 +1630,6 @@ export interface ListResultContainerGroupPropertiesProperties {
   /** The flag to determine whether the container group is created from standby pool. */
   isCreatedFromStandbyPool?: boolean;
 }
-const ListResultContainerGroupPropertiesProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListResultContainerGroupPropertiesProperties>;
-
 /** A container group part of the list result. */
 export interface ListResultContainerGroup {
   /** The resource id. */
@@ -2452,18 +1649,8 @@ export interface ListResultContainerGroup {
   /** The container group properties */
   properties: ListResultContainerGroupPropertiesProperties;
 }
-const ListResultContainerGroup = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListResultContainerGroup>;
-
 /** The ListResultContainerGroup items on this page */
 export type ContainerGroupListResultValueList = Array<ListResultContainerGroup>;
-const ContainerGroupListResultValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ContainerGroupListResultValueList>;
-
 /** The response of a container group list operation. */
 export interface ContainerGroupListResult {
   /** The ListResultContainerGroup items on this page */
@@ -2471,20 +1658,10 @@ export interface ContainerGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ContainerGroupListResult = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ContainerGroupListResult>;
-
 export interface ListContainerGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListContainerGroupsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListContainerGroupsRequest>;
-
 export interface ListContainerLogsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2499,29 +1676,17 @@ export interface ListContainerLogsRequest {
   /** If true, adds a timestamp at the beginning of every line of log output. If not provided, defaults to false. */
   timestamps?: boolean;
 }
-const ListContainerLogsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListContainerLogsRequest>;
-
 /** The logs. */
 export interface Logs {
   /** The content of the log. */
   content?: string;
 }
-const Logs = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Logs>;
-
 export interface ListLocationCachedImagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const ListLocationCachedImagesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListLocationCachedImagesRequest>;
-
 /** The cached image and OS type. */
 export interface CachedImages {
   /** The OS type of the cached image. */
@@ -2529,15 +1694,8 @@ export interface CachedImages {
   /** The cached image name. */
   image: string;
 }
-const CachedImages = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<CachedImages>;
-
 /** The cached images. */
 export type CachedImagesListResultValueList = Array<CachedImages>;
-const CachedImagesListResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<CachedImagesListResultValueList>;
-
 /** The response containing cached images. */
 export interface CachedImagesListResult {
   /** The cached images. */
@@ -2545,22 +1703,12 @@ export interface CachedImagesListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const CachedImagesListResult = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<CachedImagesListResult>;
-
 export interface ListLocationCapabilitiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const ListLocationCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListLocationCapabilitiesRequest>;
-
 /** The supported capabilities. */
 export interface CapabilitiesCapabilities {
   /** The maximum allowed memory request in GB. */
@@ -2570,11 +1718,6 @@ export interface CapabilitiesCapabilities {
   /** The maximum allowed GPU count. */
   maxGpuCount?: number;
 }
-const CapabilitiesCapabilities = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<CapabilitiesCapabilities>;
-
 /** The regional capabilities. */
 export interface Capabilities {
   /** The resource type that this capability describes. */
@@ -2590,15 +1733,8 @@ export interface Capabilities {
   /** The supported capabilities. */
   capabilities?: CapabilitiesCapabilities;
 }
-const Capabilities = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<Capabilities>;
-
 /** The list of capabilities. */
 export type CapabilitiesListResultValueList = Array<Capabilities>;
-const CapabilitiesListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<CapabilitiesListResultValueList>;
-
 /** The response containing list of capabilities. */
 export interface CapabilitiesListResult {
   /** The list of capabilities. */
@@ -2606,22 +1742,12 @@ export interface CapabilitiesListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const CapabilitiesListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CapabilitiesListResult>;
-
 export interface ListLocationUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const ListLocationUsageRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListLocationUsageRequest>;
-
 /** The name object of the resource */
 export interface UsageName {
   /** The name of the resource */
@@ -2629,8 +1755,6 @@ export interface UsageName {
   /** The localized name of the resource */
   localizedValue?: string;
 }
-const UsageName = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<UsageName>;
-
 /** A single usage result */
 export interface Usage {
   /** Id of the usage result */
@@ -2644,15 +1768,8 @@ export interface Usage {
   /** The name object of the resource */
   name?: UsageName;
 }
-const Usage = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Usage>;
-
 /** The usage data. */
 export type UsageListResultValueList = Array<Usage>;
-const UsageListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<UsageListResultValueList>;
-
 /** The response containing the usage data */
 export interface UsageListResult {
   /** The usage data. */
@@ -2660,27 +1777,16 @@ export interface UsageListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const UsageListResult = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<UsageListResult>;
-
 export interface ListNGroupByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNGroupByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListNGroupByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NGroupTagsMap = { [key: string]: string | undefined };
-const NGroupTagsMap = ConfigMapKeyValuePairsMap as any as S.Schema<NGroupTagsMap>;
-
 /** The availability zones. */
 export type NGroupZonesList = Array<string>;
-const NGroupZonesList = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<NGroupZonesList>;
-
 /** Describes the NGroups resource. */
 export interface NGroup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2702,15 +1808,8 @@ export interface NGroup {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-const NGroup = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<NGroup>;
-
 /** The NGroup items on this page */
 export type NGroupsListResultValueList = Array<NGroup>;
-const NGroupsListResultValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<NGroupsListResultValueList>;
-
 /** The response of a NGroups list operation. */
 export interface NGroupsListResult {
   /** The NGroup items on this page */
@@ -2718,20 +1817,11 @@ export interface NGroupsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NGroupsListResult = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<NGroupsListResult>;
-
 export interface ListNGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNGroupsRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ListNGroupsRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The display information of the operation. */
 export interface OperationDisplay {
   /** The name of the provider of the operation. */
@@ -2743,12 +1833,8 @@ export interface OperationDisplay {
   /** The description of the operation. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation. */
 export type ContainerInstanceOperationsOrigin = "User" | "System";
-const ContainerInstanceOperationsOrigin = S.String;
-
 /** An operation for Azure Container Instance service. */
 export interface Operation {
   /** The name of the operation. */
@@ -2760,15 +1846,8 @@ export interface Operation {
   /** The intended executor of the operation. */
   origin?: ContainerInstanceOperationsOrigin;
 }
-const Operation = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<Operation>;
-
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Paged collection of Operation items */
 export interface OperationListResult {
   /** The Operation items on this page */
@@ -2776,19 +1855,12 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<OperationListResult>;
-
 export interface ListSandboxGroupByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListSandboxGroupByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SandboxGroupTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2812,15 +1884,8 @@ export interface SandboxGroup {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-const SandboxGroup = GetSandboxGroupResponse as any as S.Schema<SandboxGroup>;
-
 /** The SandboxGroup items on this page */
 export type SandboxGroupListResultValueList = Array<SandboxGroup>;
-const SandboxGroupListResultValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<SandboxGroupListResultValueList>;
-
 /** The response of a SandboxGroup list operation. */
 export interface SandboxGroupListResult {
   /** The SandboxGroup items on this page */
@@ -2828,37 +1893,18 @@ export interface SandboxGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SandboxGroupListResult = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<SandboxGroupListResult>;
-
 export interface ListSandboxGroupBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListSandboxGroupBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>;
-
 /** Resource tags. */
 export type NGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const NGroupsCreateOrUpdateRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<NGroupsCreateOrUpdateRequestTagsMap>;
-
 /** The availability zones. */
 export type NGroupsCreateOrUpdateRequestZonesList = Array<string>;
-const NGroupsCreateOrUpdateRequestZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<NGroupsCreateOrUpdateRequestZonesList>;
-
 /** The list of user identities associated with the NGroup. */
 export type NGroupIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesInput | undefined;
 };
-const NGroupIdentityInputUserAssignedIdentitiesMap =
-  ContainerGroupIdentityInputUserAssignedIdentitiesMap as any as S.Schema<NGroupIdentityInputUserAssignedIdentitiesMap>;
-
 /** Identity for the NGroup. */
 export interface NGroupIdentityInput {
   /** The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup. */
@@ -2866,8 +1912,6 @@ export interface NGroupIdentityInput {
   /** The list of user identities associated with the NGroup. */
   userAssignedIdentities?: NGroupIdentityInputUserAssignedIdentitiesMap;
 }
-const NGroupIdentityInput = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<NGroupIdentityInput>;
-
 export interface NGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2886,21 +1930,10 @@ export interface NGroupsCreateOrUpdateRequest {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentityInput;
 }
-const NGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<NGroupsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type NGroupsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const NGroupsCreateOrUpdateResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<NGroupsCreateOrUpdateResponseTagsMap>;
-
 /** The availability zones. */
 export type NGroupsCreateOrUpdateResponseZonesList = Array<string>;
-const NGroupsCreateOrUpdateResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<NGroupsCreateOrUpdateResponseZonesList>;
-
 export interface NGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2921,11 +1954,6 @@ export interface NGroupsCreateOrUpdateResponse {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-const NGroupsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<NGroupsCreateOrUpdateResponse>;
-
 export interface RestartContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2934,15 +1962,7 @@ export interface RestartContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-const RestartContainerGroupRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<RestartContainerGroupRequest>;
-
 export interface RestartContainerGroupResponse {}
-const RestartContainerGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<RestartContainerGroupResponse>;
-
 export interface RestartNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2951,39 +1971,19 @@ export interface RestartNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-const RestartNGroupRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<RestartNGroupRequest>;
-
 export interface RestartNGroupResponse {}
-const RestartNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<RestartNGroupResponse>;
-
 /** Resource tags. */
 export type SandboxGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const SandboxGroupsCreateOrUpdateRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<SandboxGroupsCreateOrUpdateRequestTagsMap>;
-
 /** Properties of a SandboxGroup. */
 export interface SandboxGroupPropertiesInput {
   /** The network profile of the SandboxGroup. */
   networkProfile?: SandboxGroupNetworkProfile;
 }
-const SandboxGroupPropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<SandboxGroupPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface SandboxGroupsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const SandboxGroupsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<SandboxGroupsCreateOrUpdateRequestIdentity>;
-
 export interface SandboxGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3000,16 +2000,8 @@ export interface SandboxGroupsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: SandboxGroupsCreateOrUpdateRequestIdentity;
 }
-const SandboxGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type SandboxGroupsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const SandboxGroupsCreateOrUpdateResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<SandboxGroupsCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SandboxGroupsCreateOrUpdateResponseIdentity = GetSandboxGroupResponseIdentity;
 export interface SandboxGroupsCreateOrUpdateResponse {
@@ -3030,11 +2022,6 @@ export interface SandboxGroupsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-const SandboxGroupsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>;
-
 export interface StartContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3043,15 +2030,7 @@ export interface StartContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-const StartContainerGroupRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<StartContainerGroupRequest>;
-
 export interface StartContainerGroupResponse {}
-const StartContainerGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<StartContainerGroupResponse>;
-
 export interface StartNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3060,11 +2039,7 @@ export interface StartNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-const StartNGroupRequest = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<StartNGroupRequest>;
-
 export interface StartNGroupResponse {}
-const StartNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<StartNGroupResponse>;
-
 export interface StopContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3073,15 +2048,7 @@ export interface StopContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-const StopContainerGroupRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<StopContainerGroupRequest>;
-
 export interface StopContainerGroupResponse {}
-const StopContainerGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<StopContainerGroupResponse>;
-
 export interface StopNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3090,16 +2057,9 @@ export interface StopNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-const StopNGroupRequest = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<StopNGroupRequest>;
-
 export interface StopNGroupResponse {}
-const StopNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<StopNGroupResponse>;
-
 /** Resource tags. */
 export type UpdateCGProfileRequestTagsMap = { [key: string]: string | undefined };
-const UpdateCGProfileRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateCGProfileRequestTagsMap>;
-
 export interface UpdateCGProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3110,11 +2070,6 @@ export interface UpdateCGProfileRequest {
   /** Resource tags. */
   tags?: UpdateCGProfileRequestTagsMap;
 }
-const UpdateCGProfileRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<UpdateCGProfileRequest>;
-
 /** Resource tags. */
 export type UpdateCGProfileResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -3137,18 +2092,10 @@ export interface UpdateCGProfileResponse {
   /** The availability zones. */
   zones?: UpdateCGProfileResponseZonesList;
 }
-const UpdateCGProfileResponse = GetCGProfileResponse as any as S.Schema<UpdateCGProfileResponse>;
-
 /** The resource tags. */
 export type UpdateContainerGroupRequestTagsMap = { [key: string]: string | undefined };
-const UpdateContainerGroupRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateContainerGroupRequestTagsMap>;
-
 /** The zones for the container group. */
 export type UpdateContainerGroupRequestZonesList = Array<string>;
-const UpdateContainerGroupRequestZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<UpdateContainerGroupRequestZonesList>;
-
 export interface UpdateContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3163,11 +2110,6 @@ export interface UpdateContainerGroupRequest {
   /** The zones for the container group. */
   zones?: UpdateContainerGroupRequestZonesList;
 }
-const UpdateContainerGroupRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UpdateContainerGroupRequest>;
-
 /** The resource tags. */
 export type UpdateContainerGroupResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -3192,19 +2134,10 @@ export interface UpdateContainerGroupResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-const UpdateContainerGroupResponse =
-  ContainerGroupsCreateOrUpdateResponse as any as S.Schema<UpdateContainerGroupResponse>;
-
 /** The resource tags. */
 export type UpdateNGroupRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNGroupRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateNGroupRequestTagsMap>;
-
 /** The zones for the NGroup. */
 export type UpdateNGroupRequestZonesList = Array<string>;
-const UpdateNGroupRequestZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<UpdateNGroupRequestZonesList>;
-
 export interface UpdateNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3221,8 +2154,6 @@ export interface UpdateNGroupRequest {
   /** The zones for the NGroup. */
   zones?: UpdateNGroupRequestZonesList;
 }
-const UpdateNGroupRequest = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<UpdateNGroupRequest>;
-
 /** Resource tags. */
 export type UpdateNGroupResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -3247,13 +2178,8 @@ export interface UpdateNGroupResponse {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-const UpdateNGroupResponse = GetNGroupResponse as any as S.Schema<UpdateNGroupResponse>;
-
 /** Resource tags. */
 export type UpdateSandboxGroupRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSandboxGroupRequestTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateSandboxGroupRequestTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateSandboxGroupRequestIdentity = SandboxGroupsCreateOrUpdateRequestIdentity;
 export interface UpdateSandboxGroupRequest {
@@ -3268,11 +2194,6 @@ export interface UpdateSandboxGroupRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: SandboxGroupsCreateOrUpdateRequestIdentity;
 }
-const UpdateSandboxGroupRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<UpdateSandboxGroupRequest>;
-
 /** Resource tags. */
 export type UpdateSandboxGroupResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3295,9 +2216,6 @@ export interface UpdateSandboxGroupResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-const UpdateSandboxGroupResponse =
-  SandboxGroupsCreateOrUpdateResponse as any as S.Schema<UpdateSandboxGroupResponse>;
-
 export type AttachContainerError = AzureOpError;
 /** Attach to the output of a specific container instance. Attach to the output stream of a specific container instance in a specified resource group and container group. */
 export const AttachContainer: API.OperationMethod<
@@ -3306,8 +2224,8 @@ export const AttachContainer: API.OperationMethod<
   AttachContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachContainerRequest,
-  output: ContainerAttachResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AttachContainerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContainerAttachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3321,8 +2239,8 @@ export const CGProfileCreateOrUpdate: API.OperationMethod<
   CGProfileCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CGProfileCreateOrUpdateRequest,
-  output: CGProfileCreateOrUpdateResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<CGProfileCreateOrUpdateRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CGProfileCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3336,8 +2254,8 @@ export const ConnectSandboxGroup: API.OperationMethod<
   ConnectSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectSandboxGroupRequest,
-  output: SandboxGroupAccessToken,
+  input: __S(60, __c7, 4) as any as S.Schema<ConnectSandboxGroupRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<SandboxGroupAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3351,8 +2269,8 @@ export const ContainerGroupsCreateOrUpdate: API.OperationMethod<
   ContainerGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerGroupsCreateOrUpdateRequest,
-  output: ContainerGroupsCreateOrUpdateResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<ContainerGroupsCreateOrUpdateRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ContainerGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3366,8 +2284,8 @@ export const DeleteCGProfile: API.OperationMethod<
   DeleteCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCGProfileRequest,
-  output: DeleteCGProfileResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteCGProfileRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<DeleteCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3381,8 +2299,8 @@ export const DeleteContainerGroup: API.OperationMethod<
   DeleteContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteContainerGroupRequest,
-  output: DeleteContainerGroupResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<DeleteContainerGroupRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<DeleteContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3396,8 +2314,8 @@ export const DeleteNGroup: API.OperationMethod<
   DeleteNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNGroupRequest,
-  output: DeleteNGroupResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteNGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<DeleteNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3411,8 +2329,8 @@ export const DeleteSandboxGroup: API.OperationMethod<
   DeleteSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSandboxGroupRequest,
-  output: DeleteSandboxGroupResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<DeleteSandboxGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<DeleteSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3426,8 +2344,8 @@ export const DeleteSubnetServiceAssociationLink: API.OperationMethod<
   DeleteSubnetServiceAssociationLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubnetServiceAssociationLinkRequest,
-  output: DeleteSubnetServiceAssociationLinkResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteSubnetServiceAssociationLinkRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteSubnetServiceAssociationLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3441,8 +2359,8 @@ export const ExecuteContainerCommand: API.OperationMethod<
   ExecuteContainerCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteContainerCommandRequest,
-  output: ContainerExecResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<ExecuteContainerCommandRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContainerExecResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3456,8 +2374,8 @@ export const GetCGProfile: API.OperationMethod<
   GetCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCGProfileRequest,
-  output: GetCGProfileResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<GetCGProfileRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3471,8 +2389,8 @@ export const GetCGProfileByRevisionNumber: API.OperationMethod<
   GetCGProfileByRevisionNumberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCGProfileByRevisionNumberRequest,
-  output: GetCGProfileByRevisionNumberResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<GetCGProfileByRevisionNumberRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<GetCGProfileByRevisionNumberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3486,8 +2404,8 @@ export const GetContainerGroup: API.OperationMethod<
   GetContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContainerGroupRequest,
-  output: GetContainerGroupResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<GetContainerGroupRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3501,8 +2419,16 @@ export const GetContainerGroupOutboundNetworkDependenciesEndpoints: API.Operatio
   GetContainerGroupOutboundNetworkDependenciesEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContainerGroupOutboundNetworkDependenciesEndpointsRequest,
-  output: GetContainerGroupOutboundNetworkDependenciesEndpointsResponse,
+  input: __S(
+    95,
+    __c11,
+    7,
+  ) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsRequest>,
+  output: __S(
+    96,
+    __c12,
+    0,
+  ) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3516,8 +2442,8 @@ export const GetNGroup: API.OperationMethod<
   GetNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNGroupRequest,
-  output: GetNGroupResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<GetNGroupRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<GetNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3531,8 +2457,8 @@ export const GetSandboxGroup: API.OperationMethod<
   GetSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSandboxGroupRequest,
-  output: GetSandboxGroupResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<GetSandboxGroupRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<GetSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3546,8 +2472,8 @@ export const ListCGProfileAllRevisions: API.OperationMethod<
   ListCGProfileAllRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCGProfileAllRevisionsRequest,
-  output: ContainerGroupProfileListResult,
+  input: __S(131, __c16, 3) as any as S.Schema<ListCGProfileAllRevisionsRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3561,8 +2487,8 @@ export const ListCGProfileByResourceGroup: API.OperationMethod<
   ListCGProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCGProfileByResourceGroupRequest,
-  output: ContainerGroupProfileListResult,
+  input: __S(134, __c16, 6) as any as S.Schema<ListCGProfileByResourceGroupRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3576,8 +2502,8 @@ export const ListCGProfileBySubscription: API.OperationMethod<
   ListCGProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCGProfileBySubscriptionRequest,
-  output: ContainerGroupProfileListResult,
+  input: __S(135, __c16, 7) as any as S.Schema<ListCGProfileBySubscriptionRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3591,8 +2517,8 @@ export const ListContainerGroupByResourceGroup: API.OperationMethod<
   ListContainerGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContainerGroupByResourceGroupRequest,
-  output: ContainerGroupListResult,
+  input: __S(136, __c17, 0) as any as S.Schema<ListContainerGroupByResourceGroupRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3606,8 +2532,8 @@ export const ListContainerGroups: API.OperationMethod<
   ListContainerGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContainerGroupsRequest,
-  output: ContainerGroupListResult,
+  input: __S(142, __c17, 6) as any as S.Schema<ListContainerGroupsRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3621,8 +2547,8 @@ export const ListContainerLogs: API.OperationMethod<
   ListContainerLogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContainerLogsRequest,
-  output: Logs,
+  input: __S(143, __c17, 7) as any as S.Schema<ListContainerLogsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<Logs>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3636,8 +2562,8 @@ export const ListLocationCachedImages: API.OperationMethod<
   ListLocationCachedImagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationCachedImagesRequest,
-  output: CachedImagesListResult,
+  input: __S(145, __c18, 1) as any as S.Schema<ListLocationCachedImagesRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<CachedImagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3651,8 +2577,8 @@ export const ListLocationCapabilities: API.OperationMethod<
   ListLocationCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationCapabilitiesRequest,
-  output: CapabilitiesListResult,
+  input: __S(149, __c18, 5) as any as S.Schema<ListLocationCapabilitiesRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<CapabilitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3666,8 +2592,8 @@ export const ListLocationUsage: API.OperationMethod<
   ListLocationUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationUsageRequest,
-  output: UsageListResult,
+  input: __S(154, __c19, 2) as any as S.Schema<ListLocationUsageRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3681,8 +2607,8 @@ export const ListNGroupByResourceGroup: API.OperationMethod<
   ListNGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNGroupByResourceGroupRequest,
-  output: NGroupsListResult,
+  input: __S(159, __c19, 7) as any as S.Schema<ListNGroupByResourceGroupRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3696,8 +2622,8 @@ export const ListNGroups: API.OperationMethod<
   ListNGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNGroupsRequest,
-  output: NGroupsListResult,
+  input: __S(164, __c20, 4) as any as S.Schema<ListNGroupsRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3711,8 +2637,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(165, __c20, 5) as any as S.Schema<ListOperationsRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3726,8 +2652,8 @@ export const ListSandboxGroupByResourceGroup: API.OperationMethod<
   ListSandboxGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSandboxGroupByResourceGroupRequest,
-  output: SandboxGroupListResult,
+  input: __S(170, __c21, 2) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3741,8 +2667,8 @@ export const ListSandboxGroupBySubscription: API.OperationMethod<
   ListSandboxGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSandboxGroupBySubscriptionRequest,
-  output: SandboxGroupListResult,
+  input: __S(173, __c21, 5) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3756,8 +2682,8 @@ export const NGroupsCreateOrUpdate: API.OperationMethod<
   NGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NGroupsCreateOrUpdateRequest,
-  output: NGroupsCreateOrUpdateResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<NGroupsCreateOrUpdateRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<NGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3771,8 +2697,8 @@ export const RestartContainerGroup: API.OperationMethod<
   RestartContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartContainerGroupRequest,
-  output: RestartContainerGroupResponse,
+  input: __S(177, __c22, 1) as any as S.Schema<RestartContainerGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<RestartContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3786,8 +2712,8 @@ export const RestartNGroup: API.OperationMethod<
   RestartNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartNGroupRequest,
-  output: RestartNGroupResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<RestartNGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<RestartNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3801,8 +2727,8 @@ export const SandboxGroupsCreateOrUpdate: API.OperationMethod<
   SandboxGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsCreateOrUpdateRequest,
-  output: SandboxGroupsCreateOrUpdateResponse,
+  input: __S(181, __c22, 5) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3816,8 +2742,8 @@ export const StartContainerGroup: API.OperationMethod<
   StartContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartContainerGroupRequest,
-  output: StartContainerGroupResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<StartContainerGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<StartContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3831,8 +2757,8 @@ export const StartNGroup: API.OperationMethod<
   StartNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartNGroupRequest,
-  output: StartNGroupResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<StartNGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<StartNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3846,8 +2772,8 @@ export const StopContainerGroup: API.OperationMethod<
   StopContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopContainerGroupRequest,
-  output: StopContainerGroupResponse,
+  input: __S(185, __c23, 1) as any as S.Schema<StopContainerGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<StopContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3861,8 +2787,8 @@ export const StopNGroup: API.OperationMethod<
   StopNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopNGroupRequest,
-  output: StopNGroupResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<StopNGroupRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<StopNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3876,8 +2802,8 @@ export const UpdateCGProfile: API.OperationMethod<
   UpdateCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCGProfileRequest,
-  output: UpdateCGProfileResponse,
+  input: __S(187, __c23, 3) as any as S.Schema<UpdateCGProfileRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<UpdateCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3891,8 +2817,8 @@ export const UpdateContainerGroup: API.OperationMethod<
   UpdateContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateContainerGroupRequest,
-  output: UpdateContainerGroupResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<UpdateContainerGroupRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<UpdateContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3906,8 +2832,8 @@ export const UpdateNGroup: API.OperationMethod<
   UpdateNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNGroupRequest,
-  output: UpdateNGroupResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<UpdateNGroupRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<UpdateNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3921,8 +2847,8 @@ export const UpdateSandboxGroup: API.OperationMethod<
   UpdateSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSandboxGroupRequest,
-  output: UpdateSandboxGroupResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<UpdateSandboxGroupRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<UpdateSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3968,12 +2894,12 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          protocol: S.optional(ContainerNetworkProtocol),
+          protocol: S.optional(S.String),
           port: S.Number,
         }),
       ).annotate({ identifier: "ContainerPort" });
     case 5:
-      return S.Array(ContainerPort);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3984,7 +2910,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentVariable" });
     case 7:
-      return S.Array(EnvironmentVariable);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -3993,7 +2919,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          sku: GpuSku,
+          sku: S.String,
         }),
       ).annotate({ identifier: "GpuResource" });
     case 1:
@@ -4001,7 +2927,7 @@ function __c1(j: number): any {
         S.Struct({
           memoryInGB: S.Number,
           cpu: S.Number,
-          gpu: S.optional(GpuResource),
+          gpu: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "ResourceRequests" });
     case 2:
@@ -4009,14 +2935,14 @@ function __c1(j: number): any {
         S.Struct({
           memoryInGB: S.optional(S.Number),
           cpu: S.optional(S.Number),
-          gpu: S.optional(GpuResource),
+          gpu: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "ResourceLimits" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          requests: ResourceRequests,
-          limits: S.optional(ResourceLimits),
+          requests: __S(9, __c1, 1),
+          limits: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "ResourceRequirements" });
     case 4:
@@ -4028,11 +2954,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "VolumeMount" });
     case 5:
-      return S.Array(VolumeMount);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          command: S.optional(ContainerExecCommandList),
+          command: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ContainerExec" });
     case 7:
@@ -4047,21 +2973,21 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(HttpHeader);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           port: S.Number,
-          scheme: S.optional(Scheme),
-          httpHeaders: S.optional(ContainerHttpGetHttpHeadersList),
+          scheme: S.optional(S.String),
+          httpHeaders: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ContainerHttpGet" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          exec: S.optional(ContainerExec),
-          httpGet: S.optional(ContainerHttpGet),
+          exec: S.optional(__S(14, __c1, 6)),
+          httpGet: S.optional(__S(17, __c2, 1)),
           initialDelaySeconds: S.optional(S.Number),
           periodSeconds: S.optional(S.Number),
           failureThreshold: S.optional(S.Number),
@@ -4072,8 +2998,8 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          add: S.optional(SecurityContextCapabilitiesDefinitionAddList),
-          drop: S.optional(SecurityContextCapabilitiesDefinitionDropList),
+          add: S.optional(__S(3, __c0, 3)),
+          drop: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "SecurityContextCapabilitiesDefinition",
@@ -4083,7 +3009,7 @@ function __c2(j: number): any {
         S.Struct({
           privileged: S.optional(S.Boolean),
           allowPrivilegeEscalation: S.optional(S.Boolean),
-          capabilities: S.optional(SecurityContextCapabilitiesDefinition),
+          capabilities: S.optional(__S(19, __c2, 3)),
           runAsGroup: S.optional(S.Number),
           runAsUser: S.optional(S.Number),
           seccompProfile: S.optional(S.String),
@@ -4096,22 +3022,22 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keyValuePairs: S.optional(ConfigMapKeyValuePairsMap),
+          keyValuePairs: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "ConfigMap" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
-          command: S.optional(ContainerPropertiesInputCommandList),
-          ports: S.optional(ContainerPropertiesInputPortsList),
-          environmentVariables: S.optional(ContainerPropertiesInputEnvironmentVariablesList),
-          resources: S.optional(ResourceRequirements),
-          volumeMounts: S.optional(ContainerPropertiesInputVolumeMountsList),
-          livenessProbe: S.optional(ContainerProbe),
-          readinessProbe: S.optional(ContainerProbe),
-          securityContext: S.optional(SecurityContextDefinition),
-          configMap: S.optional(ConfigMap),
+          command: S.optional(__S(3, __c0, 3)),
+          ports: S.optional(__S(5, __c0, 5)),
+          environmentVariables: S.optional(__S(7, __c0, 7)),
+          resources: S.optional(__S(11, __c1, 3)),
+          volumeMounts: S.optional(__S(13, __c1, 5)),
+          livenessProbe: S.optional(__S(18, __c2, 2)),
+          readinessProbe: S.optional(__S(18, __c2, 2)),
+          securityContext: S.optional(__S(20, __c2, 4)),
+          configMap: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "ContainerPropertiesInput" });
   }
@@ -4122,21 +3048,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: ContainerPropertiesInput,
+          properties: __S(23, __c2, 7),
         }),
       ).annotate({ identifier: "ContainerInput" });
     case 1:
-      return S.Array(ContainerInput);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
-          command: S.optional(InitContainerPropertiesDefinitionInputCommandList),
-          environmentVariables: S.optional(
-            InitContainerPropertiesDefinitionInputEnvironmentVariablesList,
-          ),
-          volumeMounts: S.optional(InitContainerPropertiesDefinitionInputVolumeMountsList),
-          securityContext: S.optional(SecurityContextDefinition),
+          command: S.optional(__S(3, __c0, 3)),
+          environmentVariables: S.optional(__S(7, __c0, 7)),
+          volumeMounts: S.optional(__S(13, __c1, 5)),
+          securityContext: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "InitContainerPropertiesDefinitionInput",
@@ -4145,13 +3069,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: InitContainerPropertiesDefinitionInput,
+          properties: __S(26, __c3, 2),
         }),
       ).annotate({
         identifier: "InitContainerDefinitionInput",
       });
     case 4:
-      return S.Array(InitContainerDefinitionInput);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4167,11 +3091,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(DeploymentExtensionSpecProperties),
+          properties: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "DeploymentExtensionSpec" });
     case 7:
-      return S.Array(DeploymentExtensionSpec);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -4188,17 +3112,15 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ImageRegistryCredential" });
     case 1:
-      return S.Array(ImageRegistryCredential);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ports: IpAddressInputPortsList,
-          type: ContainerGroupIpAddressType,
+          ports: __S(5, __c0, 5),
+          type: S.String,
           ip: S.optional(S.String),
           dnsNameLabel: S.optional(S.String),
-          autoGeneratedDomainNameLabelScope: S.optional(
-            IpAddressInputAutoGeneratedDomainNameLabelScope,
-          ),
+          autoGeneratedDomainNameLabelScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpAddressInput" });
     case 3:
@@ -4224,22 +3146,22 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          azureFile: S.optional(AzureFileVolume),
+          azureFile: S.optional(__S(35, __c4, 3)),
           emptyDir: S.optional(S.Unknown),
-          secret: S.optional(VolumeSecretMap),
-          secretReference: S.optional(VolumeSecretReferenceMap),
-          gitRepo: S.optional(GitRepoVolume),
+          secret: S.optional(__S(21, __c2, 5)),
+          secretReference: S.optional(__S(21, __c2, 5)),
+          gitRepo: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "Volume" });
     case 6:
-      return S.Array(Volume);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
           workspaceKey: S.String,
-          logType: S.optional(LogAnalyticsLogType),
-          metadata: S.optional(LogAnalyticsMetadataMap),
+          logType: S.optional(S.String),
+          metadata: S.optional(__S(21, __c2, 5)),
           workspaceResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogAnalytics" });
@@ -4250,7 +3172,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logAnalytics: S.optional(LogAnalytics),
+          logAnalytics: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "ContainerGroupDiagnostics",
@@ -4266,24 +3188,22 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(ContainerGroupSku),
-          encryptionProperties: S.optional(EncryptionProperties),
-          containers: ContainerGroupProfilePropertiesInputContainersList,
-          initContainers: S.optional(ContainerGroupProfilePropertiesInputInitContainersList),
-          extensions: S.optional(ContainerGroupProfilePropertiesInputExtensionsList),
-          imageRegistryCredentials: S.optional(
-            ContainerGroupProfilePropertiesInputImageRegistryCredentialsList,
-          ),
-          restartPolicy: S.optional(ContainerGroupRestartPolicy),
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(2, __c0, 2)),
+          containers: __S(25, __c3, 1),
+          initContainers: S.optional(__S(28, __c3, 4)),
+          extensions: S.optional(__S(31, __c3, 7)),
+          imageRegistryCredentials: S.optional(__S(33, __c4, 1)),
+          restartPolicy: S.optional(S.String),
           shutdownGracePeriod: S.optional(S.String),
-          ipAddress: S.optional(IpAddressInput),
+          ipAddress: S.optional(__S(34, __c4, 2)),
           timeToLive: S.optional(S.String),
-          osType: OperatingSystemTypes,
-          volumes: S.optional(ContainerGroupProfilePropertiesInputVolumesList),
-          diagnostics: S.optional(ContainerGroupDiagnostics),
-          priority: S.optional(ContainerGroupPriority),
-          confidentialComputeProperties: S.optional(ConfidentialComputeProperties),
-          securityContext: S.optional(SecurityContextDefinition),
+          osType: S.String,
+          volumes: S.optional(__S(38, __c4, 6)),
+          diagnostics: S.optional(__S(40, __c5, 0)),
+          priority: S.optional(S.String),
+          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
+          securityContext: S.optional(__S(20, __c2, 4)),
           useKrypton: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4295,10 +3215,10 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupProfileName: S.String.pipe(T.Label()),
-          properties: S.optional(ContainerGroupProfilePropertiesInput),
-          tags: S.optional(CGProfileCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(42, __c5, 2)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.optional(S.String),
-          zones: S.optional(CGProfileCreateOrUpdateRequestZonesList),
+          zones: S.optional(__S(3, __c0, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4314,10 +3234,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -4343,7 +3263,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Event" });
     case 7:
-      return S.Array(Event);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -4352,9 +3272,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restartCount: S.optional(S.Number),
-          currentState: S.optional(ContainerState),
-          previousState: S.optional(ContainerState),
-          events: S.optional(ContainerPropertiesInstanceViewEventsList),
+          currentState: S.optional(__S(45, __c5, 5)),
+          previousState: S.optional(__S(45, __c5, 5)),
+          events: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "ContainerPropertiesInstanceView",
@@ -4363,38 +3283,36 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
-          command: S.optional(ContainerPropertiesCommandList),
-          ports: S.optional(ContainerPropertiesPortsList),
-          environmentVariables: S.optional(ContainerPropertiesEnvironmentVariablesList),
-          instanceView: S.optional(ContainerPropertiesInstanceView),
-          resources: S.optional(ResourceRequirements),
-          volumeMounts: S.optional(ContainerPropertiesVolumeMountsList),
-          livenessProbe: S.optional(ContainerProbe),
-          readinessProbe: S.optional(ContainerProbe),
-          securityContext: S.optional(SecurityContextDefinition),
-          configMap: S.optional(ConfigMap),
+          command: S.optional(__S(3, __c0, 3)),
+          ports: S.optional(__S(5, __c0, 5)),
+          environmentVariables: S.optional(__S(7, __c0, 7)),
+          instanceView: S.optional(__S(48, __c6, 0)),
+          resources: S.optional(__S(11, __c1, 3)),
+          volumeMounts: S.optional(__S(13, __c1, 5)),
+          livenessProbe: S.optional(__S(18, __c2, 2)),
+          readinessProbe: S.optional(__S(18, __c2, 2)),
+          securityContext: S.optional(__S(20, __c2, 4)),
+          configMap: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "ContainerProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: ContainerProperties,
+          properties: __S(49, __c6, 1),
         }),
       ).annotate({ identifier: "Container" });
     case 3:
-      return S.Array(Container);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
-          command: S.optional(InitContainerPropertiesDefinitionCommandList),
-          environmentVariables: S.optional(
-            InitContainerPropertiesDefinitionEnvironmentVariablesList,
-          ),
-          instanceView: S.optional(InitContainerPropertiesDefinitionInstanceView),
-          volumeMounts: S.optional(InitContainerPropertiesDefinitionVolumeMountsList),
-          securityContext: S.optional(SecurityContextDefinition),
+          command: S.optional(__S(3, __c0, 3)),
+          environmentVariables: S.optional(__S(7, __c0, 7)),
+          instanceView: S.optional(__S(48, __c6, 0)),
+          volumeMounts: S.optional(__S(13, __c1, 5)),
+          securityContext: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "InitContainerPropertiesDefinition",
@@ -4403,13 +3321,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: InitContainerPropertiesDefinition,
+          properties: __S(52, __c6, 4),
         }),
       ).annotate({ identifier: "InitContainerDefinition" });
     case 6:
-      return S.Array(InitContainerDefinition);
+      return S.Array(__S(53, __c6, 5));
     case 7:
-      return S.Array(ImageRegistryCredential);
+      return S.Array(__S(32, __c4, 0));
   }
 }
 function __c7(j: number): any {
@@ -4417,11 +3335,11 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ports: IpAddressPortsList,
-          type: ContainerGroupIpAddressType,
+          ports: __S(5, __c0, 5),
+          type: S.String,
           ip: S.optional(S.String),
           dnsNameLabel: S.optional(S.String),
-          autoGeneratedDomainNameLabelScope: S.optional(IpAddressAutoGeneratedDomainNameLabelScope),
+          autoGeneratedDomainNameLabelScope: S.optional(S.String),
           fqdn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpAddress" });
@@ -4430,26 +3348,24 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(ContainerGroupSku),
-          encryptionProperties: S.optional(EncryptionProperties),
-          containers: ContainerGroupProfilePropertiesContainersList,
-          initContainers: S.optional(ContainerGroupProfilePropertiesInitContainersList),
-          extensions: S.optional(ContainerGroupProfilePropertiesExtensionsList),
-          imageRegistryCredentials: S.optional(
-            ContainerGroupProfilePropertiesImageRegistryCredentialsList,
-          ),
-          restartPolicy: S.optional(ContainerGroupRestartPolicy),
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(2, __c0, 2)),
+          containers: __S(51, __c6, 3),
+          initContainers: S.optional(__S(54, __c6, 6)),
+          extensions: S.optional(__S(31, __c3, 7)),
+          imageRegistryCredentials: S.optional(__S(55, __c6, 7)),
+          restartPolicy: S.optional(S.String),
           shutdownGracePeriod: S.optional(S.String),
-          ipAddress: S.optional(IpAddress),
+          ipAddress: S.optional(__S(56, __c7, 0)),
           timeToLive: S.optional(S.String),
-          osType: OperatingSystemTypes,
-          volumes: S.optional(ContainerGroupProfilePropertiesVolumesList),
-          diagnostics: S.optional(ContainerGroupDiagnostics),
-          priority: S.optional(ContainerGroupPriority),
-          confidentialComputeProperties: S.optional(ConfidentialComputeProperties),
-          securityContext: S.optional(SecurityContextDefinition),
+          osType: S.String,
+          volumes: S.optional(__S(38, __c4, 6)),
+          diagnostics: S.optional(__S(40, __c5, 0)),
+          priority: S.optional(S.String),
+          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
+          securityContext: S.optional(__S(20, __c2, 4)),
           revision: S.optional(S.Number),
-          registeredRevisions: S.optional(ContainerGroupProfilePropertiesRegisteredRevisionsList),
+          registeredRevisions: S.optional(__S(57, __c7, 1)),
           useKrypton: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4461,11 +3377,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ContainerGroupProfileProperties),
-          tags: S.optional(CGProfileCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(58, __c7, 2)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.optional(S.String),
-          zones: S.optional(CGProfileCreateOrUpdateResponseZonesList),
+          zones: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "CGProfileCreateOrUpdateResponse",
@@ -4500,7 +3416,7 @@ function __c7(j: number): any {
         identifier: "UserAssignedIdentitiesInput",
       });
     case 7:
-      return S.Record(S.String, UserAssignedIdentitiesInput);
+      return S.Record(S.String, __S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -4508,8 +3424,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceIdentityType),
-          userAssignedIdentities: S.optional(ContainerGroupIdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "ContainerGroupIdentityInput",
@@ -4523,7 +3439,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "SecretReference" });
     case 2:
-      return S.Array(SecretReference);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4532,11 +3448,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ContainerGroupSubnetId" });
     case 4:
-      return S.Array(ContainerGroupSubnetId);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          nameServers: DnsConfigurationNameServersList,
+          nameServers: __S(3, __c0, 3),
           searchDomains: S.optional(S.String),
           options: S.optional(S.String),
         }),
@@ -4544,12 +3460,12 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          access: S.optional(IdentityAccessLevel),
+          access: S.optional(S.String),
           identity: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityAccessControl" });
     case 7:
-      return S.Array(IdentityAccessControl);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -4557,8 +3473,8 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          defaultAccess: S.optional(IdentityAccessLevel),
-          acls: S.optional(IdentityAclsAclsList),
+          defaultAccess: S.optional(S.String),
+          acls: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "IdentityAcls" });
     case 1:
@@ -4582,27 +3498,25 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          secretReferences: S.optional(ContainerGroupPropertiesPropertiesInputSecretReferencesList),
-          containers: ContainerGroupPropertiesPropertiesInputContainersList,
-          imageRegistryCredentials: S.optional(
-            ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList,
-          ),
-          restartPolicy: S.optional(ContainerGroupRestartPolicy),
-          ipAddress: S.optional(IpAddressInput),
-          osType: S.optional(OperatingSystemTypes),
-          volumes: S.optional(ContainerGroupPropertiesPropertiesInputVolumesList),
-          diagnostics: S.optional(ContainerGroupDiagnostics),
-          subnetIds: S.optional(ContainerGroupPropertiesPropertiesInputSubnetIdsList),
-          dnsConfig: S.optional(DnsConfiguration),
-          sku: S.optional(ContainerGroupSku),
-          encryptionProperties: S.optional(EncryptionProperties),
-          initContainers: S.optional(ContainerGroupPropertiesPropertiesInputInitContainersList),
-          extensions: S.optional(ContainerGroupPropertiesPropertiesInputExtensionsList),
-          confidentialComputeProperties: S.optional(ConfidentialComputeProperties),
-          priority: S.optional(ContainerGroupPriority),
-          identityAcls: S.optional(IdentityAcls),
-          containerGroupProfile: S.optional(ContainerGroupProfileReferenceDefinition),
-          standbyPoolProfile: S.optional(StandbyPoolProfileDefinition),
+          secretReferences: S.optional(__S(66, __c8, 2)),
+          containers: __S(25, __c3, 1),
+          imageRegistryCredentials: S.optional(__S(33, __c4, 1)),
+          restartPolicy: S.optional(S.String),
+          ipAddress: S.optional(__S(34, __c4, 2)),
+          osType: S.optional(S.String),
+          volumes: S.optional(__S(38, __c4, 6)),
+          diagnostics: S.optional(__S(40, __c5, 0)),
+          subnetIds: S.optional(__S(68, __c8, 4)),
+          dnsConfig: S.optional(__S(69, __c8, 5)),
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(2, __c0, 2)),
+          initContainers: S.optional(__S(28, __c3, 4)),
+          extensions: S.optional(__S(31, __c3, 7)),
+          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
+          priority: S.optional(S.String),
+          identityAcls: S.optional(__S(72, __c9, 0)),
+          containerGroupProfile: S.optional(__S(73, __c9, 1)),
+          standbyPoolProfile: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({
         identifier: "ContainerGroupPropertiesPropertiesInput",
@@ -4614,10 +3528,10 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(ContainerGroupsCreateOrUpdateRequestTagsMap),
-          zones: S.optional(ContainerGroupsCreateOrUpdateRequestZonesList),
-          identity: S.optional(ContainerGroupIdentityInput),
-          properties: ContainerGroupPropertiesPropertiesInput,
+          tags: S.optional(__S(21, __c2, 5)),
+          zones: S.optional(__S(3, __c0, 3)),
+          identity: S.optional(__S(64, __c8, 0)),
+          properties: __S(75, __c9, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4637,14 +3551,14 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentities" });
     case 6:
-      return S.Record(S.String, UserAssignedIdentities);
+      return S.Record(S.String, __S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(ResourceIdentityType),
-          userAssignedIdentities: S.optional(ContainerGroupIdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({ identifier: "ContainerGroupIdentity" });
   }
@@ -4654,7 +3568,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(ContainerGroupPropertiesPropertiesInstanceViewEventsList),
+          events: S.optional(__S(47, __c5, 7)),
           state: S.optional(S.String),
         }),
       ).annotate({
@@ -4664,28 +3578,26 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          secretReferences: S.optional(ContainerGroupPropertiesPropertiesSecretReferencesList),
-          containers: ContainerGroupPropertiesPropertiesContainersList,
-          imageRegistryCredentials: S.optional(
-            ContainerGroupPropertiesPropertiesImageRegistryCredentialsList,
-          ),
-          restartPolicy: S.optional(ContainerGroupRestartPolicy),
-          ipAddress: S.optional(IpAddress),
-          osType: S.optional(OperatingSystemTypes),
-          volumes: S.optional(ContainerGroupPropertiesPropertiesVolumesList),
-          instanceView: S.optional(ContainerGroupPropertiesPropertiesInstanceView),
-          diagnostics: S.optional(ContainerGroupDiagnostics),
-          subnetIds: S.optional(ContainerGroupPropertiesPropertiesSubnetIdsList),
-          dnsConfig: S.optional(DnsConfiguration),
-          sku: S.optional(ContainerGroupSku),
-          encryptionProperties: S.optional(EncryptionProperties),
-          initContainers: S.optional(ContainerGroupPropertiesPropertiesInitContainersList),
-          extensions: S.optional(ContainerGroupPropertiesPropertiesExtensionsList),
-          confidentialComputeProperties: S.optional(ConfidentialComputeProperties),
-          priority: S.optional(ContainerGroupPriority),
-          identityAcls: S.optional(IdentityAcls),
-          containerGroupProfile: S.optional(ContainerGroupProfileReferenceDefinition),
-          standbyPoolProfile: S.optional(StandbyPoolProfileDefinition),
+          secretReferences: S.optional(__S(66, __c8, 2)),
+          containers: __S(51, __c6, 3),
+          imageRegistryCredentials: S.optional(__S(55, __c6, 7)),
+          restartPolicy: S.optional(S.String),
+          ipAddress: S.optional(__S(56, __c7, 0)),
+          osType: S.optional(S.String),
+          volumes: S.optional(__S(38, __c4, 6)),
+          instanceView: S.optional(__S(80, __c10, 0)),
+          diagnostics: S.optional(__S(40, __c5, 0)),
+          subnetIds: S.optional(__S(68, __c8, 4)),
+          dnsConfig: S.optional(__S(69, __c8, 5)),
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(2, __c0, 2)),
+          initContainers: S.optional(__S(54, __c6, 6)),
+          extensions: S.optional(__S(31, __c3, 7)),
+          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
+          priority: S.optional(S.String),
+          identityAcls: S.optional(__S(72, __c9, 0)),
+          containerGroupProfile: S.optional(__S(73, __c9, 1)),
+          standbyPoolProfile: S.optional(__S(74, __c9, 2)),
           isCreatedFromStandbyPool: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4697,12 +3609,12 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(44, __c5, 4)),
           location: S.optional(S.String),
-          tags: S.optional(ContainerGroupsCreateOrUpdateResponseTagsMap),
-          zones: S.optional(ContainerGroupsCreateOrUpdateResponseZonesList),
-          identity: S.optional(ContainerGroupIdentity),
-          properties: ContainerGroupPropertiesProperties,
+          tags: S.optional(__S(21, __c2, 5)),
+          zones: S.optional(__S(3, __c0, 3)),
+          identity: S.optional(__S(79, __c9, 7)),
+          properties: __S(81, __c10, 1),
         }),
       ).annotate({
         identifier: "ContainerGroupsCreateOrUpdateResponse",
@@ -4814,7 +3726,7 @@ function __c11(j: number): any {
           containerGroupName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
           command: S.optional(S.String),
-          terminalSize: S.optional(ContainerExecRequestTerminalSize),
+          terminalSize: S.optional(__S(89, __c11, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4847,11 +3759,11 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ContainerGroupProfileProperties),
-          tags: S.optional(GetCGProfileResponseTagsMap),
+          systemData: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(58, __c7, 2)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.optional(S.String),
-          zones: S.optional(GetCGProfileResponseZonesList),
+          zones: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "GetCGProfileResponse" });
     case 5:
@@ -4909,7 +3821,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => NetworkDependenciesResponse.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetContainerGroupOutboundNetworkDependenciesEndpointsResponse",
       });
     case 1:
@@ -4938,7 +3850,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          guidNamingPolicy: S.optional(ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy),
+          guidNamingPolicy: S.optional(__S(98, __c12, 2)),
         }),
       ).annotate({
         identifier: "ElasticProfileContainerGroupNamingPolicy",
@@ -4948,7 +3860,7 @@ function __c12(j: number): any {
         S.Struct({
           desiredCount: S.optional(S.Number),
           maintainDesiredCount: S.optional(S.Boolean),
-          containerGroupNamingPolicy: S.optional(ElasticProfileContainerGroupNamingPolicy),
+          containerGroupNamingPolicy: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({ identifier: "ElasticProfile" });
     case 5:
@@ -4976,32 +3888,32 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LoadBalancerBackendAddressPool);
+      return S.Array(__S(103, __c12, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          backendAddressPools: S.optional(LoadBalancerBackendAddressPoolsList),
+          backendAddressPools: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "LoadBalancer" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.optional(S.String),
-          backendAddressPools: S.optional(ApplicationGatewayBackendAddressPoolsList),
+          backendAddressPools: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "ApplicationGateway" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          loadBalancer: S.optional(LoadBalancer),
-          applicationGateway: S.optional(ApplicationGateway),
+          loadBalancer: S.optional(__S(105, __c13, 1)),
+          applicationGateway: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({ identifier: "NetworkProfile" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          shareAccessType: S.optional(AzureFileShareAccessType),
-          shareAccessTier: S.optional(FileSharePropertiesShareAccessTier),
+          shareAccessType: S.optional(S.String),
+          shareAccessTier: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShareProperties" });
     case 5:
@@ -5010,15 +3922,15 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           resourceGroupName: S.optional(S.String),
           storageAccountName: S.optional(S.String),
-          properties: S.optional(FileShareProperties),
+          properties: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({ identifier: "FileShare" });
     case 6:
-      return S.Array(FileShare);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fileShares: S.optional(StorageProfileFileSharesList),
+          fileShares: S.optional(__S(110, __c13, 6)),
         }),
       ).annotate({ identifier: "StorageProfile" });
   }
@@ -5029,15 +3941,15 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          azureFile: S.optional(AzureFileVolume),
+          azureFile: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "NGroupCGPropertyVolume" });
     case 1:
-      return S.Array(NGroupCGPropertyVolume);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volumeMounts: S.optional(NGroupCGPropertyContainerPropertiesVolumeMountsList),
+          volumeMounts: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "NGroupCGPropertyContainerProperties",
@@ -5046,19 +3958,19 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(NGroupCGPropertyContainerProperties),
+          properties: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({
         identifier: "NGroupCGPropertyContainer",
       });
     case 4:
-      return S.Array(NGroupCGPropertyContainer);
+      return S.Array(__S(115, __c14, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: S.optional(NGroupContainerGroupPropertiesSubnetIdsList),
-          volumes: S.optional(NGroupContainerGroupPropertiesVolumesList),
-          containers: S.optional(NGroupContainerGroupPropertiesContainersList),
+          subnetIds: S.optional(__S(68, __c8, 4)),
+          volumes: S.optional(__S(113, __c14, 1)),
+          containers: S.optional(__S(116, __c14, 4)),
         }),
       ).annotate({
         identifier: "NGroupContainerGroupProperties",
@@ -5066,17 +3978,17 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(ApiEntityReference),
+          resource: S.optional(__S(102, __c12, 6)),
           revision: S.optional(S.Number),
-          networkProfile: S.optional(NetworkProfile),
-          storageProfile: S.optional(StorageProfile),
-          containerGroupProperties: S.optional(NGroupContainerGroupProperties),
+          networkProfile: S.optional(__S(107, __c13, 3)),
+          storageProfile: S.optional(__S(111, __c13, 7)),
+          containerGroupProperties: S.optional(__S(117, __c14, 5)),
         }),
       ).annotate({
         identifier: "ContainerGroupProfileStub",
       });
     case 7:
-      return S.Array(ContainerGroupProfileStub);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -5095,18 +4007,18 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          updateMode: S.optional(NGroupUpdateMode),
-          rollingUpdateProfile: S.optional(UpdateProfileRollingUpdateProfile),
+          updateMode: S.optional(S.String),
+          rollingUpdateProfile: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "UpdateProfile" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          elasticProfile: S.optional(ElasticProfile),
-          placementProfile: S.optional(PlacementProfile),
-          containerGroupProfiles: S.optional(NGroupPropertiesContainerGroupProfilesList),
-          provisioningState: S.optional(NGroupProvisioningState),
-          updateProfile: S.optional(UpdateProfile),
+          elasticProfile: S.optional(__S(100, __c12, 4)),
+          placementProfile: S.optional(__S(101, __c12, 5)),
+          containerGroupProfiles: S.optional(__S(119, __c14, 7)),
+          provisioningState: S.optional(S.String),
+          updateProfile: S.optional(__S(121, __c15, 1)),
         }),
       ).annotate({ identifier: "NGroupProperties" });
     case 3:
@@ -5115,12 +4027,12 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NGroupProperties),
-          tags: S.optional(GetNGroupResponseTagsMap),
+          systemData: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(122, __c15, 2)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.optional(S.String),
-          zones: S.optional(GetNGroupResponseZonesList),
-          identity: S.optional(NGroupIdentity),
+          zones: S.optional(__S(3, __c0, 3)),
+          identity: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({ identifier: "GetNGroupResponse" });
     case 4:
@@ -5145,11 +4057,11 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "SubnetReference" });
     case 6:
-      return S.Array(SubnetReference);
+      return S.Array(__S(125, __c15, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          subnets: S.optional(SandboxGroupNetworkProfileSubnetsList),
+          subnets: S.optional(__S(126, __c15, 6)),
         }),
       ).annotate({
         identifier: "SandboxGroupNetworkProfile",
@@ -5161,8 +4073,8 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(SandboxGroupProvisioningState),
-          networkProfile: S.optional(SandboxGroupNetworkProfile),
+          provisioningState: S.optional(S.String),
+          networkProfile: S.optional(__S(127, __c15, 7)),
           managementResourceGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SandboxGroupProperties" });
@@ -5171,8 +4083,8 @@ function __c16(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({
         identifier: "GetSandboxGroupResponseIdentity",
@@ -5183,11 +4095,11 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetSandboxGroupResponseTagsMap),
+          systemData: S.optional(__S(44, __c5, 4)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.String,
-          properties: S.optional(SandboxGroupProperties),
-          identity: S.optional(GetSandboxGroupResponseIdentity),
+          properties: S.optional(__S(128, __c16, 0)),
+          identity: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({ identifier: "GetSandboxGroupResponse" });
     case 3:
@@ -5208,11 +4120,11 @@ function __c16(j: number): any {
         identifier: "ListCGProfileAllRevisionsRequest",
       });
     case 4:
-      return S.Array(ContainerGroupProfile);
+      return S.Array(__S(92, __c11, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ContainerGroupProfileListResultValueList,
+          value: __S(132, __c16, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5270,36 +4182,30 @@ function __c17(j: number): any {
         identifier: "ListContainerGroupByResourceGroupRequest",
       });
     case 1:
-      return S.Array(SecretReference);
+      return S.Array(__S(65, __c8, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ContainerGroupProvisioningState),
-          secretReferences: S.optional(
-            ListResultContainerGroupPropertiesPropertiesSecretReferencesList,
-          ),
-          containers: ListResultContainerGroupPropertiesPropertiesContainersList,
-          imageRegistryCredentials: S.optional(
-            ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList,
-          ),
-          restartPolicy: S.optional(ContainerGroupRestartPolicy),
-          ipAddress: S.optional(IpAddress),
-          osType: OperatingSystemTypes,
-          volumes: S.optional(ListResultContainerGroupPropertiesPropertiesVolumesList),
-          diagnostics: S.optional(ContainerGroupDiagnostics),
-          subnetIds: S.optional(ListResultContainerGroupPropertiesPropertiesSubnetIdsList),
-          dnsConfig: S.optional(DnsConfiguration),
-          sku: S.optional(ContainerGroupSku),
-          encryptionProperties: S.optional(EncryptionProperties),
-          initContainers: S.optional(
-            ListResultContainerGroupPropertiesPropertiesInitContainersList,
-          ),
-          extensions: S.optional(ListResultContainerGroupPropertiesPropertiesExtensionsList),
-          confidentialComputeProperties: S.optional(ConfidentialComputeProperties),
-          priority: S.optional(ContainerGroupPriority),
-          identityAcls: S.optional(IdentityAcls),
-          containerGroupProfile: S.optional(ContainerGroupProfileReferenceDefinition),
-          standbyPoolProfile: S.optional(StandbyPoolProfileDefinition),
+          provisioningState: S.optional(S.String),
+          secretReferences: S.optional(__S(137, __c17, 1)),
+          containers: __S(51, __c6, 3),
+          imageRegistryCredentials: S.optional(__S(33, __c4, 1)),
+          restartPolicy: S.optional(S.String),
+          ipAddress: S.optional(__S(56, __c7, 0)),
+          osType: S.String,
+          volumes: S.optional(__S(38, __c4, 6)),
+          diagnostics: S.optional(__S(40, __c5, 0)),
+          subnetIds: S.optional(__S(68, __c8, 4)),
+          dnsConfig: S.optional(__S(69, __c8, 5)),
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(2, __c0, 2)),
+          initContainers: S.optional(__S(54, __c6, 6)),
+          extensions: S.optional(__S(31, __c3, 7)),
+          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
+          priority: S.optional(S.String),
+          identityAcls: S.optional(__S(72, __c9, 0)),
+          containerGroupProfile: S.optional(__S(73, __c9, 1)),
+          standbyPoolProfile: S.optional(__S(74, __c9, 2)),
           isCreatedFromStandbyPool: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5312,18 +4218,18 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(ListResultContainerGroupTagsMap),
-          zones: S.optional(ListResultContainerGroupZonesList),
-          identity: S.optional(ContainerGroupIdentity),
-          properties: ListResultContainerGroupPropertiesProperties,
+          tags: S.optional(__S(21, __c2, 5)),
+          zones: S.optional(__S(3, __c0, 3)),
+          identity: S.optional(__S(79, __c9, 7)),
+          properties: __S(138, __c17, 2),
         }),
       ).annotate({ identifier: "ListResultContainerGroup" });
     case 4:
-      return S.Array(ListResultContainerGroup);
+      return S.Array(__S(139, __c17, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ContainerGroupListResultValueList,
+          value: __S(140, __c17, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerGroupListResult" });
@@ -5394,11 +4300,11 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "CachedImages" });
     case 3:
-      return S.Array(CachedImages);
+      return S.Array(__S(146, __c18, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CachedImagesListResultValueList),
+          value: S.optional(__S(147, __c18, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CachedImagesListResult" });
@@ -5434,7 +4340,7 @@ function __c18(j: number): any {
           location: S.optional(S.String),
           ipAddressType: S.optional(S.String),
           gpu: S.optional(S.String),
-          capabilities: S.optional(CapabilitiesCapabilities),
+          capabilities: S.optional(__S(150, __c18, 6)),
         }),
       ).annotate({ identifier: "Capabilities" });
   }
@@ -5442,11 +4348,11 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Capabilities);
+      return S.Array(__S(151, __c18, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CapabilitiesListResultValueList),
+          value: S.optional(__S(152, __c19, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilitiesListResult" });
@@ -5478,15 +4384,15 @@ function __c19(j: number): any {
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(UsageName),
+          name: S.optional(__S(155, __c19, 3)),
         }),
       ).annotate({ identifier: "Usage" });
     case 5:
-      return S.Array(Usage);
+      return S.Array(__S(156, __c19, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(UsageListResultValueList),
+          value: S.optional(__S(157, __c19, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
@@ -5518,20 +4424,20 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NGroupProperties),
-          tags: S.optional(NGroupTagsMap),
+          systemData: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(122, __c15, 2)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.optional(S.String),
-          zones: S.optional(NGroupZonesList),
-          identity: S.optional(NGroupIdentity),
+          zones: S.optional(__S(160, __c20, 0)),
+          identity: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({ identifier: "NGroup" });
     case 2:
-      return S.Array(NGroup);
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: NGroupsListResultValueList,
+          value: __S(162, __c20, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NGroupsListResult" });
@@ -5572,9 +4478,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          display: OperationDisplay,
+          display: __S(166, __c20, 6),
           properties: S.optional(S.Unknown),
-          origin: S.optional(ContainerInstanceOperationsOrigin),
+          origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -5582,11 +4488,11 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(167, __c20, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(168, __c21, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -5607,11 +4513,11 @@ function __c21(j: number): any {
         identifier: "ListSandboxGroupByResourceGroupRequest",
       });
     case 3:
-      return S.Array(SandboxGroup);
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: SandboxGroupListResultValueList,
+          value: __S(171, __c21, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SandboxGroupListResult" });
@@ -5633,8 +4539,8 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceIdentityType),
-          userAssignedIdentities: S.optional(NGroupIdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({ identifier: "NGroupIdentityInput" });
     case 7:
@@ -5643,11 +4549,11 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ngroupsName: S.String.pipe(T.Label()),
-          properties: S.optional(NGroupProperties),
-          tags: S.optional(NGroupsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(122, __c15, 2)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.optional(S.String),
-          zones: S.optional(NGroupsCreateOrUpdateRequestZonesList),
-          identity: S.optional(NGroupIdentityInput),
+          zones: S.optional(__S(3, __c0, 3)),
+          identity: S.optional(__S(174, __c21, 6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5669,12 +4575,12 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NGroupProperties),
-          tags: S.optional(NGroupsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(122, __c15, 2)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.optional(S.String),
-          zones: S.optional(NGroupsCreateOrUpdateResponseZonesList),
-          identity: S.optional(NGroupIdentity),
+          zones: S.optional(__S(3, __c0, 3)),
+          identity: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({
         identifier: "NGroupsCreateOrUpdateResponse",
@@ -5714,7 +4620,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          networkProfile: S.optional(SandboxGroupNetworkProfile),
+          networkProfile: S.optional(__S(127, __c15, 7)),
         }),
       ).annotate({
         identifier: "SandboxGroupPropertiesInput",
@@ -5722,8 +4628,8 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({
         identifier: "SandboxGroupsCreateOrUpdateRequestIdentity",
@@ -5734,10 +4640,10 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sandboxGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(SandboxGroupsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.String,
-          properties: S.optional(SandboxGroupPropertiesInput),
-          identity: S.optional(SandboxGroupsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(179, __c22, 3)),
+          identity: S.optional(__S(180, __c22, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5755,11 +4661,11 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SandboxGroupsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(44, __c5, 4)),
+          tags: S.optional(__S(21, __c2, 5)),
           location: S.String,
-          properties: S.optional(SandboxGroupProperties),
-          identity: S.optional(GetSandboxGroupResponseIdentity),
+          properties: S.optional(__S(128, __c16, 0)),
+          identity: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({
         identifier: "SandboxGroupsCreateOrUpdateResponse",
@@ -5838,7 +4744,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateCGProfileRequestTagsMap),
+          tags: S.optional(__S(21, __c2, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5855,8 +4761,8 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateContainerGroupRequestTagsMap),
-          zones: S.optional(UpdateContainerGroupRequestZonesList),
+          tags: S.optional(__S(21, __c2, 5)),
+          zones: S.optional(__S(3, __c0, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5874,10 +4780,10 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ngroupsName: S.String.pipe(T.Label()),
-          properties: S.optional(NGroupProperties),
-          identity: S.optional(NGroupIdentityInput),
-          tags: S.optional(UpdateNGroupRequestTagsMap),
-          zones: S.optional(UpdateNGroupRequestZonesList),
+          properties: S.optional(__S(122, __c15, 2)),
+          identity: S.optional(__S(174, __c21, 6)),
+          tags: S.optional(__S(21, __c2, 5)),
+          zones: S.optional(__S(3, __c0, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5893,8 +4799,8 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sandboxGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSandboxGroupRequestTagsMap),
-          identity: S.optional(SandboxGroupsCreateOrUpdateRequestIdentity),
+          tags: S.optional(__S(21, __c2, 5)),
+          identity: S.optional(__S(180, __c22, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5907,4 +4813,9 @@ function __c23(j: number): any {
         identifier: "UpdateSandboxGroupRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

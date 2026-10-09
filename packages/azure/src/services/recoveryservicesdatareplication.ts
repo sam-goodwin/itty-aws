@@ -6,16 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Gets or sets the custom email address for sending emails. */
 export type EmailConfigurationModelPropertiesInputCustomEmailAddressesList = Array<string>;
-const EmailConfigurationModelPropertiesInputCustomEmailAddressesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<EmailConfigurationModelPropertiesInputCustomEmailAddressesList>;
-
 /** Email configuration model properties. */
 export interface EmailConfigurationModelPropertiesInput {
   /** Gets or sets a value indicating whether to send email to subscription administrator. */
@@ -25,11 +22,6 @@ export interface EmailConfigurationModelPropertiesInput {
   /** Gets or sets the locale for the email notification. */
   locale?: string;
 }
-const EmailConfigurationModelPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<EmailConfigurationModelPropertiesInput>;
-
 export interface CreateEmailConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42,19 +34,10 @@ export interface CreateEmailConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties?: EmailConfigurationModelPropertiesInput;
 }
-const CreateEmailConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateEmailConfigurationRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -70,13 +53,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
-
 /** Gets or sets the custom email address for sending emails. */
 export type EmailConfigurationModelPropertiesCustomEmailAddressesList = Array<string>;
-const EmailConfigurationModelPropertiesCustomEmailAddressesList =
-  EmailConfigurationModelPropertiesInputCustomEmailAddressesList as any as S.Schema<EmailConfigurationModelPropertiesCustomEmailAddressesList>;
-
 /** Gets or sets the provisioning state of the email configuration. */
 export type ProvisioningState =
   | "Canceled"
@@ -86,8 +64,6 @@ export type ProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
-const ProvisioningState = S.String;
-
 /** Email configuration model properties. */
 export interface EmailConfigurationModelProperties {
   /** Gets or sets a value indicating whether to send email to subscription administrator. */
@@ -99,11 +75,6 @@ export interface EmailConfigurationModelProperties {
   /** Gets or sets the provisioning state of the email configuration. */
   provisioningState?: ProvisioningState;
 }
-const EmailConfigurationModelProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EmailConfigurationModelProperties>;
-
 export interface CreateEmailConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -116,28 +87,13 @@ export interface CreateEmailConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmailConfigurationModelProperties;
 }
-const CreateEmailConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateEmailConfigurationResponse>;
-
 /** Resource tags. */
 export type CreateFabricRequestTagsMap = { [key: string]: string | undefined };
-const CreateFabricRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateFabricRequestTagsMap>;
-
 /** Fabric model properties. */
 export interface FabricModelPropertiesInput {
   /** Fabric model custom properties. Polymorphic on `instanceType` (HyperVMigrate, VMwareMigrate, AzStackHCI). */
   customProperties: unknown;
 }
-const FabricModelPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<FabricModelPropertiesInput>;
-
 export interface CreateFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -152,22 +108,12 @@ export interface CreateFabricRequest {
   /** The resource-specific properties for this resource. */
   properties?: FabricModelPropertiesInput;
 }
-const CreateFabricRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateFabricRequest>;
-
 /** Resource tags. */
 export type CreateFabricResponseTagsMap = { [key: string]: string | undefined };
-const CreateFabricResponseTagsMap =
-  CreateFabricRequestTagsMap as any as S.Schema<CreateFabricResponseTagsMap>;
-
 /** Gets or sets the fabric health. */
 export type HealthStatus = "Normal" | "Warning" | "Critical";
-const HealthStatus = S.String;
-
 /** Gets or sets the list of affected resource correlation Ids. This can be used to uniquely identify the count of items affected by a specific category and severity as well as count of item affected by an specific issue. */
 export type HealthErrorModelAffectedResourceCorrelationIdsList = Array<string>;
-const HealthErrorModelAffectedResourceCorrelationIdsList =
-  EmailConfigurationModelPropertiesInputCustomEmailAddressesList as any as S.Schema<HealthErrorModelAffectedResourceCorrelationIdsList>;
-
 /** Inner health error model. */
 export interface InnerHealthErrorModel {
   /** Gets or sets the error code. */
@@ -193,18 +139,8 @@ export interface InnerHealthErrorModel {
   /** Gets or sets recommended action to resolve the error. */
   recommendation?: string;
 }
-const InnerHealthErrorModel = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<InnerHealthErrorModel>;
-
 /** Gets or sets a list of child health errors associated with this error. */
 export type HealthErrorModelChildErrorsList = Array<InnerHealthErrorModel>;
-const HealthErrorModelChildErrorsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<HealthErrorModelChildErrorsList>;
-
 /** Health error model. */
 export interface HealthErrorModel {
   /** Gets or sets the type of affected resource type. */
@@ -236,15 +172,8 @@ export interface HealthErrorModel {
   /** Gets or sets recommended action to resolve the error. */
   recommendation?: string;
 }
-const HealthErrorModel = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<HealthErrorModel>;
-
 /** Gets or sets the list of health errors. */
 export type FabricModelPropertiesHealthErrorsList = Array<HealthErrorModel>;
-const FabricModelPropertiesHealthErrorsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<FabricModelPropertiesHealthErrorsList>;
-
 /** Fabric model properties. */
 export interface FabricModelProperties {
   /** Gets or sets the provisioning state of the fabric. */
@@ -260,11 +189,6 @@ export interface FabricModelProperties {
   /** Fabric model custom properties. Polymorphic on `instanceType` (HyperVMigrate, VMwareMigrate, AzStackHCI). */
   customProperties: unknown;
 }
-const FabricModelProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<FabricModelProperties>;
-
 export interface CreateFabricResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -281,8 +205,6 @@ export interface CreateFabricResponse {
   /** The resource-specific properties for this resource. */
   properties?: FabricModelProperties;
 }
-const CreateFabricResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateFabricResponse>;
-
 /** Identity model. */
 export interface IdentityModel {
   /** Gets or sets the tenant Id of the SPN with which fabric agent communicates to service. */
@@ -296,8 +218,6 @@ export interface IdentityModel {
   /** Gets or sets the authority of the SPN with which fabric agent communicates to service. */
   aadAuthority: string;
 }
-const IdentityModel = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IdentityModel>;
-
 /** Fabric agent model properties. */
 export interface FabricAgentModelPropertiesInput {
   /** Gets or sets the machine Id where fabric agent is running. */
@@ -311,11 +231,6 @@ export interface FabricAgentModelPropertiesInput {
   /** Fabric agent model custom properties. Polymorphic on `instanceType` (VMware). */
   customProperties: unknown;
 }
-const FabricAgentModelPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<FabricAgentModelPropertiesInput>;
-
 export interface CreateFabricAgentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -328,16 +243,8 @@ export interface CreateFabricAgentRequest {
   /** The resource-specific properties for this resource. */
   properties?: FabricAgentModelPropertiesInput;
 }
-const CreateFabricAgentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateFabricAgentRequest>;
-
 /** Gets or sets the list of health errors. */
 export type FabricAgentModelPropertiesHealthErrorsList = Array<HealthErrorModel>;
-const FabricAgentModelPropertiesHealthErrorsList =
-  FabricModelPropertiesHealthErrorsList as any as S.Schema<FabricAgentModelPropertiesHealthErrorsList>;
-
 /** Fabric agent model properties. */
 export interface FabricAgentModelProperties {
   /** Gets or sets the fabric agent correlation Id. */
@@ -363,11 +270,6 @@ export interface FabricAgentModelProperties {
   /** Fabric agent model custom properties. Polymorphic on `instanceType` (VMware). */
   customProperties: unknown;
 }
-const FabricAgentModelProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<FabricAgentModelProperties>;
-
 export interface CreateFabricAgentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -380,19 +282,11 @@ export interface CreateFabricAgentResponse {
   /** The resource-specific properties for this resource. */
   properties?: FabricAgentModelProperties;
 }
-const CreateFabricAgentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateFabricAgentResponse>;
-
 /** Policy model properties. */
 export interface PolicyModelPropertiesInput {
   /** Policy model custom properties. Polymorphic on `instanceType` (HyperVToAzStackHCI, VMwareToAzStackHCI). */
   customProperties: unknown;
 }
-const PolicyModelPropertiesInput =
-  FabricModelPropertiesInput as any as S.Schema<PolicyModelPropertiesInput>;
-
 export interface CreatePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -405,8 +299,6 @@ export interface CreatePolicyRequest {
   /** The resource-specific properties for this resource. */
   properties?: PolicyModelPropertiesInput;
 }
-const CreatePolicyRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreatePolicyRequest>;
-
 /** Policy model properties. */
 export interface PolicyModelProperties {
   /** Gets or sets the provisioning state of the policy. */
@@ -414,11 +306,6 @@ export interface PolicyModelProperties {
   /** Policy model custom properties. Polymorphic on `instanceType` (HyperVToAzStackHCI, VMwareToAzStackHCI). */
   customProperties: unknown;
 }
-const PolicyModelProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<PolicyModelProperties>;
-
 export interface CreatePolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -431,8 +318,6 @@ export interface CreatePolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PolicyModelProperties;
 }
-const CreatePolicyResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreatePolicyResponse>;
-
 /** Protected item model properties. */
 export interface ProtectedItemModelPropertiesInput {
   /** Gets or sets the policy name. */
@@ -442,11 +327,6 @@ export interface ProtectedItemModelPropertiesInput {
   /** Protected item model custom properties. Polymorphic on `instanceType` (HyperVToAzStackHCI, VMwareToAzStackHCI). */
   customProperties: unknown;
 }
-const ProtectedItemModelPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ProtectedItemModelPropertiesInput>;
-
 export interface CreateProtectedItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -459,11 +339,6 @@ export interface CreateProtectedItemRequest {
   /** The resource-specific properties for this resource. */
   properties?: ProtectedItemModelPropertiesInput;
 }
-const CreateProtectedItemRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateProtectedItemRequest>;
-
 /** Gets or sets the protection state. */
 export type ProtectionState =
   | "UnprotectedStatesBegin"
@@ -518,8 +393,6 @@ export type ProtectionState =
   | "ReprotectInitiated"
   | "ReprotectFailed"
   | "ReprotectStatesEnd";
-const ProtectionState = S.String;
-
 /** Gets or sets the test failover state. */
 export type TestFailoverState =
   | "None"
@@ -531,16 +404,12 @@ export type TestFailoverState =
   | "TestFailoverCleanupInitiated"
   | "TestFailoverCleanupCompleting"
   | "MarkedForDeletion";
-const TestFailoverState = S.String;
-
 /** Gets or sets the resynchronization state. */
 export type ResynchronizationState =
   | "None"
   | "ResynchronizationInitiated"
   | "ResynchronizationCompleted"
   | "ResynchronizationFailed";
-const ResynchronizationState = S.String;
-
 /** Protected item job properties. */
 export interface ProtectedItemJobProperties {
   /** Gets or sets protection scenario name. */
@@ -558,21 +427,10 @@ export interface ProtectedItemJobProperties {
   /** Gets or sets end time of the job. */
   endTime?: string;
 }
-const ProtectedItemJobProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ProtectedItemJobProperties>;
-
 /** Gets or sets the allowed scenarios on the protected item. */
 export type ProtectedItemModelPropertiesAllowedJobsList = Array<string>;
-const ProtectedItemModelPropertiesAllowedJobsList =
-  EmailConfigurationModelPropertiesInputCustomEmailAddressesList as any as S.Schema<ProtectedItemModelPropertiesAllowedJobsList>;
-
 /** Gets or sets the list of health errors. */
 export type ProtectedItemModelPropertiesHealthErrorsList = Array<HealthErrorModel>;
-const ProtectedItemModelPropertiesHealthErrorsList =
-  FabricModelPropertiesHealthErrorsList as any as S.Schema<ProtectedItemModelPropertiesHealthErrorsList>;
-
 /** Protected item model properties. */
 export interface ProtectedItemModelProperties {
   /** Gets or sets the policy name. */
@@ -634,11 +492,6 @@ export interface ProtectedItemModelProperties {
   /** Protected item model custom properties. Polymorphic on `instanceType` (HyperVToAzStackHCI, VMwareToAzStackHCI). */
   customProperties: unknown;
 }
-const ProtectedItemModelProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ProtectedItemModelProperties>;
-
 export interface CreateProtectedItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -651,19 +504,11 @@ export interface CreateProtectedItemResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProtectedItemModelProperties;
 }
-const CreateProtectedItemResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateProtectedItemResponse>;
-
 /** Replication extension model properties. */
 export interface ReplicationExtensionModelPropertiesInput {
   /** Replication extension model custom properties. Polymorphic on `instanceType` (HyperVToAzStackHCI, VMwareToAzStackHCI). */
   customProperties: unknown;
 }
-const ReplicationExtensionModelPropertiesInput =
-  FabricModelPropertiesInput as any as S.Schema<ReplicationExtensionModelPropertiesInput>;
-
 export interface CreateReplicationExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -676,11 +521,6 @@ export interface CreateReplicationExtensionRequest {
   /** The resource-specific properties for this resource. */
   properties?: ReplicationExtensionModelPropertiesInput;
 }
-const CreateReplicationExtensionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateReplicationExtensionRequest>;
-
 /** Replication extension model properties. */
 export interface ReplicationExtensionModelProperties {
   /** Gets or sets the provisioning state of the replication extension. */
@@ -688,11 +528,6 @@ export interface ReplicationExtensionModelProperties {
   /** Replication extension model custom properties. Polymorphic on `instanceType` (HyperVToAzStackHCI, VMwareToAzStackHCI). */
   customProperties: unknown;
 }
-const ReplicationExtensionModelProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ReplicationExtensionModelProperties>;
-
 export interface CreateReplicationExtensionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -705,24 +540,12 @@ export interface CreateReplicationExtensionResponse {
   /** The resource-specific properties for this resource. */
   properties?: ReplicationExtensionModelProperties;
 }
-const CreateReplicationExtensionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateReplicationExtensionResponse>;
-
 /** Resource tags. */
 export type CreateVaultRequestTagsMap = { [key: string]: string | undefined };
-const CreateVaultRequestTagsMap =
-  CreateFabricRequestTagsMap as any as S.Schema<CreateVaultRequestTagsMap>;
-
 /** Gets or sets the type of vault. */
 export type ReplicationVaultType = "DisasterRecovery" | "Migrate";
-const ReplicationVaultType = S.String;
-
 /** Property to enable or disable resource provider inbound network traffic from public clients. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** Vault properties. */
 export interface VaultModelPropertiesInput {
   /** Gets or sets the type of vault. */
@@ -730,46 +553,24 @@ export interface VaultModelPropertiesInput {
   /** Property to enable or disable resource provider inbound network traffic from public clients. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-const VaultModelPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<VaultModelPropertiesInput>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateVaultRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-const CreateVaultRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateVaultRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateVaultRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateVaultRequestIdentityUserAssignedIdentitiesMap;
 }
-const CreateVaultRequestIdentity = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateVaultRequestIdentity>;
-
 export interface CreateVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -786,13 +587,8 @@ export interface CreateVaultRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateVaultRequestIdentity;
 }
-const CreateVaultRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateVaultRequest>;
-
 /** Resource tags. */
 export type CreateVaultResponseTagsMap = { [key: string]: string | undefined };
-const CreateVaultResponseTagsMap =
-  CreateFabricRequestTagsMap as any as S.Schema<CreateVaultResponseTagsMap>;
-
 /** Private endpoint state for the vault. */
 export type VaultPrivateEndpointState =
   | "None"
@@ -801,19 +597,13 @@ export type VaultPrivateEndpointState =
   | "Deleting"
   | "Failed"
   | "Pending";
-const VaultPrivateEndpointState = S.String;
-
 /** Represent private Endpoint network resource that is linked to the Private Endpoint connection. */
 export interface PrivateEndpoint {
   /** Gets or sets the id. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PrivateEndpoint>;
-
 /** Gets or sets the status. */
 export type PrivateEndpointConnectionStatus = "Approved" | "Disconnected" | "Pending" | "Rejected";
-const PrivateEndpointConnectionStatus = S.String;
-
 /** Represents Private link service connection state. */
 export interface PrivateLinkServiceConnectionState {
   /** Gets or sets the status. */
@@ -823,11 +613,6 @@ export interface PrivateLinkServiceConnectionState {
   /** Gets or sets actions required. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** Represents Private endpoint connection response properties. */
 export interface PrivateEndpointConnectionResponseProperties {
   /** Gets or sets provisioning state of the private endpoint connection. */
@@ -837,11 +622,6 @@ export interface PrivateEndpointConnectionResponseProperties {
   /** Represents Private link service connection state. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionResponseProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PrivateEndpointConnectionResponseProperties>;
-
 /** Represents private endpoint connection. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -855,18 +635,8 @@ export interface PrivateEndpointConnection {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionResponseProperties;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** List of private endpoint connection. */
 export type VaultModelPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const VaultModelPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<VaultModelPropertiesPrivateEndpointConnectionsList>;
-
 /** Vault properties. */
 export interface VaultModelProperties {
   /** Gets or sets the provisioning state of the vault. */
@@ -882,8 +652,6 @@ export interface VaultModelProperties {
   /** List of private endpoint connection. */
   privateEndpointConnections?: VaultModelPropertiesPrivateEndpointConnectionsList;
 }
-const VaultModelProperties = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<VaultModelProperties>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -891,17 +659,10 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateVaultResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-const CreateVaultResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateVaultResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateVaultResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -912,11 +673,6 @@ export interface CreateVaultResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateVaultResponseIdentityUserAssignedIdentitiesMap;
 }
-const CreateVaultResponseIdentity = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateVaultResponseIdentity>;
-
 export interface CreateVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -935,8 +691,6 @@ export interface CreateVaultResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateVaultResponseIdentity;
 }
-const CreateVaultResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateVaultResponse>;
-
 export interface DeleteFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -945,11 +699,7 @@ export interface DeleteFabricRequest {
   /** The fabric name. */
   fabricName: string;
 }
-const DeleteFabricRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeleteFabricRequest>;
-
 export interface DeleteFabricResponse {}
-const DeleteFabricResponse = UserAssignedIdentityInput as any as S.Schema<DeleteFabricResponse>;
-
 export interface DeleteFabricAgentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -960,15 +710,7 @@ export interface DeleteFabricAgentRequest {
   /** The fabric agent name. */
   fabricAgentName: string;
 }
-const DeleteFabricAgentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteFabricAgentRequest>;
-
 export interface DeleteFabricAgentResponse {}
-const DeleteFabricAgentResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteFabricAgentResponse>;
-
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -979,11 +721,7 @@ export interface DeletePolicyRequest {
   /** The policy name. */
   policyName: string;
 }
-const DeletePolicyRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DeletePolicyRequest>;
-
 export interface DeletePolicyResponse {}
-const DeletePolicyResponse = UserAssignedIdentityInput as any as S.Schema<DeletePolicyResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -994,17 +732,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteProtectedItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1017,15 +745,7 @@ export interface DeleteProtectedItemRequest {
   /** A flag indicating whether to do force delete or not. */
   forceDelete?: boolean;
 }
-const DeleteProtectedItemRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteProtectedItemRequest>;
-
 export interface DeleteProtectedItemResponse {}
-const DeleteProtectedItemResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteProtectedItemResponse>;
-
 export interface DeleteReplicationExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1036,15 +756,7 @@ export interface DeleteReplicationExtensionRequest {
   /** The replication extension name. */
   replicationExtensionName: string;
 }
-const DeleteReplicationExtensionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteReplicationExtensionRequest>;
-
 export interface DeleteReplicationExtensionResponse {}
-const DeleteReplicationExtensionResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<DeleteReplicationExtensionResponse>;
-
 export interface DeleteVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1053,11 +765,7 @@ export interface DeleteVaultRequest {
   /** The vault name. */
   vaultName: string;
 }
-const DeleteVaultRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DeleteVaultRequest>;
-
 export interface DeleteVaultResponse {}
-const DeleteVaultResponse = UserAssignedIdentityInput as any as S.Schema<DeleteVaultResponse>;
-
 export interface GetEmailConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1068,11 +776,6 @@ export interface GetEmailConfigurationRequest {
   /** The email configuration name. */
   emailConfigurationName: string;
 }
-const GetEmailConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetEmailConfigurationRequest>;
-
 export interface GetEmailConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1085,9 +788,6 @@ export interface GetEmailConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmailConfigurationModelProperties;
 }
-const GetEmailConfigurationResponse =
-  CreateEmailConfigurationResponse as any as S.Schema<GetEmailConfigurationResponse>;
-
 export interface GetEventRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1098,23 +798,13 @@ export interface GetEventRequest {
   /** The event name. */
   eventName: string;
 }
-const GetEventRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetEventRequest>;
-
 /** Gets or sets the errors associated with this event. */
 export type EventModelPropertiesHealthErrorsList = Array<HealthErrorModel>;
-const EventModelPropertiesHealthErrorsList =
-  FabricModelPropertiesHealthErrorsList as any as S.Schema<EventModelPropertiesHealthErrorsList>;
-
 /** Event model custom properties. */
 export interface EventModelCustomProperties {
   /** Discriminator property for EventModelCustomProperties. */
   instanceType: string;
 }
-const EventModelCustomProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<EventModelCustomProperties>;
-
 /** Event model properties. */
 export interface EventModelProperties {
   /** Gets or sets the resource type. */
@@ -1140,8 +830,6 @@ export interface EventModelProperties {
   /** Gets or sets the provisioning state of the event. */
   provisioningState?: ProvisioningState;
 }
-const EventModelProperties = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<EventModelProperties>;
-
 export interface GetEventResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1154,8 +842,6 @@ export interface GetEventResponse {
   /** The resource-specific properties for this resource. */
   properties?: EventModelProperties;
 }
-const GetEventResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetEventResponse>;
-
 export interface GetFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1164,8 +850,6 @@ export interface GetFabricRequest {
   /** The fabric name. */
   fabricName: string;
 }
-const GetFabricRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetFabricRequest>;
-
 /** Resource tags. */
 export type GetFabricResponseTagsMap = { [key: string]: string | undefined };
 export interface GetFabricResponse {
@@ -1184,8 +868,6 @@ export interface GetFabricResponse {
   /** The resource-specific properties for this resource. */
   properties?: FabricModelProperties;
 }
-const GetFabricResponse = CreateFabricResponse as any as S.Schema<GetFabricResponse>;
-
 export interface GetFabricAgentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1196,11 +878,6 @@ export interface GetFabricAgentRequest {
   /** The fabric agent name. */
   fabricAgentName: string;
 }
-const GetFabricAgentRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetFabricAgentRequest>;
-
 export interface GetFabricAgentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1213,11 +890,6 @@ export interface GetFabricAgentResponse {
   /** The resource-specific properties for this resource. */
   properties?: FabricAgentModelProperties;
 }
-const GetFabricAgentResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetFabricAgentResponse>;
-
 export interface GetJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1228,8 +900,6 @@ export interface GetJobRequest {
   /** The job name. */
   jobName: string;
 }
-const GetJobRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetJobRequest>;
-
 /** Gets or sets the job state. */
 export type JobState =
   | "Pending"
@@ -1241,8 +911,6 @@ export type JobState =
   | "CompletedWithInformation"
   | "CompletedWithWarnings"
   | "CompletedWithErrors";
-const JobState = S.String;
-
 /** Gets or sets the object type. */
 export type JobObjectType =
   | "AvsDiskPool"
@@ -1253,25 +921,15 @@ export type JobObjectType =
   | "RecoveryPlan"
   | "ReplicationExtension"
   | "Vault";
-const JobObjectType = S.String;
-
 /** Gets or sets the list of allowed actions on the job. */
 export type JobModelPropertiesAllowedActionsList = Array<string>;
-const JobModelPropertiesAllowedActionsList =
-  EmailConfigurationModelPropertiesInputCustomEmailAddressesList as any as S.Schema<JobModelPropertiesAllowedActionsList>;
-
 /** Gets or sets the task state. */
 export type TaskState = "Pending" | "Started" | "Succeeded" | "Failed" | "Cancelled" | "Skipped";
-const TaskState = S.String;
-
 /** Task model custom properties. */
 export interface TaskModelCustomProperties {
   /** Gets or sets the instance type. */
   instanceType: string;
 }
-const TaskModelCustomProperties =
-  EventModelCustomProperties as any as S.Schema<TaskModelCustomProperties>;
-
 /** Job model. */
 export interface JobModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1285,15 +943,8 @@ export interface JobModel {
   /** The resource-specific properties for this resource. */
   properties?: JobModelProperties;
 }
-const JobModel = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<JobModel>;
-
 /** Gets or sets the list of children job models. */
 export type TaskModelChildrenJobsList = Array<JobModel>;
-const TaskModelChildrenJobsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<TaskModelChildrenJobsList>;
-
 /** Task model. */
 export interface TaskModel {
   /** Gets or sets the task name. */
@@ -1309,15 +960,8 @@ export interface TaskModel {
   /** Gets or sets the list of children job models. */
   childrenJobs?: TaskModelChildrenJobsList;
 }
-const TaskModel = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<TaskModel>;
-
 /** Gets or sets the list of tasks. */
 export type JobModelPropertiesTasksList = Array<TaskModel>;
-const JobModelPropertiesTasksList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<JobModelPropertiesTasksList>;
-
 /** Error model. */
 export interface ErrorModel {
   /** Gets or sets the error code. */
@@ -1335,19 +979,10 @@ export interface ErrorModel {
   /** Gets or sets the recommended action to resolve error. */
   recommendation?: string;
 }
-const ErrorModel = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ErrorModel>;
-
 /** Gets or sets the list of errors. */
 export type JobModelPropertiesErrorsList = Array<ErrorModel>;
-const JobModelPropertiesErrorsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<JobModelPropertiesErrorsList>;
-
 /** Type of the affected object details. */
 export type AffectedObjectDetailsType = "object";
-const AffectedObjectDetailsType = S.String;
-
 /** Details of the affected object. */
 export interface AffectedObjectDetails {
   /** Description of the affected object details. */
@@ -1355,11 +990,6 @@ export interface AffectedObjectDetails {
   /** Type of the affected object details. */
   type?: AffectedObjectDetailsType;
 }
-const AffectedObjectDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<AffectedObjectDetails>;
-
 /** Job model custom properties. */
 export interface JobModelCustomProperties {
   /** Discriminator property for JobModelCustomProperties. */
@@ -1367,11 +997,6 @@ export interface JobModelCustomProperties {
   /** Gets or sets any custom properties of the affected object. */
   affectedObjectDetails?: AffectedObjectDetails;
 }
-const JobModelCustomProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<JobModelCustomProperties>;
-
 /** Job model properties. */
 export interface JobModelProperties {
   /** Gets or sets the friendly display name. */
@@ -1411,8 +1036,6 @@ export interface JobModelProperties {
   /** Gets or sets the provisioning state of the job. */
   provisioningState?: ProvisioningState;
 }
-const JobModelProperties = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<JobModelProperties>;
-
 export interface GetJobResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1425,8 +1048,6 @@ export interface GetJobResponse {
   /** The resource-specific properties for this resource. */
   properties?: JobModelProperties;
 }
-const GetJobResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<GetJobResponse>;
-
 export interface GetLocationBasedOperationResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1437,11 +1058,6 @@ export interface GetLocationBasedOperationResultRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
-const GetLocationBasedOperationResultRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetLocationBasedOperationResultRequest>;
-
 /** Defines the operation status. */
 export interface OperationStatus {
   /** Gets or sets the Id. */
@@ -1455,8 +1071,6 @@ export interface OperationStatus {
   /** Gets or sets the end time. */
   endTime?: string;
 }
-const OperationStatus = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<OperationStatus>;
-
 export interface GetOperationResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1465,11 +1079,6 @@ export interface GetOperationResultRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
-const GetOperationResultRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetOperationResultRequest>;
-
 export interface GetPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1480,8 +1089,6 @@ export interface GetPolicyRequest {
   /** The policy name. */
   policyName: string;
 }
-const GetPolicyRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetPolicyRequest>;
-
 export interface GetPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1494,8 +1101,6 @@ export interface GetPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PolicyModelProperties;
 }
-const GetPolicyResponse = CreatePolicyResponse as any as S.Schema<GetPolicyResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1506,11 +1111,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1523,9 +1123,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionResponseProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1536,21 +1133,10 @@ export interface GetPrivateLinkResourceRequest {
   /** The private link name. */
   privateLinkResourceName: string;
 }
-const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetPrivateLinkResourceRequest>;
-
 /** Gets or sets the required member. This translates to how many Private IPs should be created for each privately linkable resource. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  EmailConfigurationModelPropertiesInputCustomEmailAddressesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** Gets or sets the private DNS zone names. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  EmailConfigurationModelPropertiesInputCustomEmailAddressesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Represents private link resource properties. */
 export interface PrivateLinkResourceProperties {
   /** Gets or sets the group id. */
@@ -1562,11 +1148,6 @@ export interface PrivateLinkResourceProperties {
   /** Gets or sets the provisioning state of the private link resource. */
   provisioningState?: ProvisioningState;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1579,11 +1160,6 @@ export interface GetPrivateLinkResourceResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateLinkResourceProperties;
 }
-const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetPrivateLinkResourceResponse>;
-
 export interface GetProtectedItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1594,11 +1170,6 @@ export interface GetProtectedItemRequest {
   /** The protected item name. */
   protectedItemName: string;
 }
-const GetProtectedItemRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetProtectedItemRequest>;
-
 export interface GetProtectedItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1611,11 +1182,6 @@ export interface GetProtectedItemResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProtectedItemModelProperties;
 }
-const GetProtectedItemResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetProtectedItemResponse>;
-
 export interface GetRecoveryPointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1628,23 +1194,13 @@ export interface GetRecoveryPointRequest {
   /** The recovery point name. */
   recoveryPointName: string;
 }
-const GetRecoveryPointRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetRecoveryPointRequest>;
-
 /** Gets or sets the recovery point type. */
 export type RecoveryPointType = "ApplicationConsistent" | "CrashConsistent";
-const RecoveryPointType = S.String;
-
 /** Recovery point model custom properties. */
 export interface RecoveryPointModelCustomProperties {
   /** Discriminator property for RecoveryPointModelCustomProperties. */
   instanceType: string;
 }
-const RecoveryPointModelCustomProperties =
-  EventModelCustomProperties as any as S.Schema<RecoveryPointModelCustomProperties>;
-
 /** Recovery point model properties. */
 export interface RecoveryPointModelProperties {
   /** Gets or sets the recovery point time. */
@@ -1656,11 +1212,6 @@ export interface RecoveryPointModelProperties {
   /** Gets or sets the provisioning state of the recovery point item. */
   provisioningState?: ProvisioningState;
 }
-const RecoveryPointModelProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<RecoveryPointModelProperties>;
-
 export interface GetRecoveryPointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1673,11 +1224,6 @@ export interface GetRecoveryPointResponse {
   /** The resource-specific properties for this resource. */
   properties?: RecoveryPointModelProperties;
 }
-const GetRecoveryPointResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetRecoveryPointResponse>;
-
 export interface GetReplicationExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1688,11 +1234,6 @@ export interface GetReplicationExtensionRequest {
   /** The replication extension name. */
   replicationExtensionName: string;
 }
-const GetReplicationExtensionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetReplicationExtensionRequest>;
-
 export interface GetReplicationExtensionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1705,9 +1246,6 @@ export interface GetReplicationExtensionResponse {
   /** The resource-specific properties for this resource. */
   properties?: ReplicationExtensionModelProperties;
 }
-const GetReplicationExtensionResponse =
-  CreateReplicationExtensionResponse as any as S.Schema<GetReplicationExtensionResponse>;
-
 export interface GetVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1716,20 +1254,12 @@ export interface GetVaultRequest {
   /** The vault name. */
   vaultName: string;
 }
-const GetVaultRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetVaultRequest>;
-
 /** Resource tags. */
 export type GetVaultResponseTagsMap = { [key: string]: string | undefined };
-const GetVaultResponseTagsMap =
-  CreateFabricRequestTagsMap as any as S.Schema<GetVaultResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetVaultResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-const GetVaultResponseIdentityUserAssignedIdentitiesMap =
-  CreateVaultResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetVaultResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetVaultResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1740,11 +1270,6 @@ export interface GetVaultResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetVaultResponseIdentityUserAssignedIdentitiesMap;
 }
-const GetVaultResponseIdentity = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetVaultResponseIdentity>;
-
 export interface GetVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1763,8 +1288,6 @@ export interface GetVaultResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetVaultResponseIdentity;
 }
-const GetVaultResponse = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<GetVaultResponse>;
-
 export interface ListEmailConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1773,11 +1296,6 @@ export interface ListEmailConfigurationRequest {
   /** The vault name. */
   vaultName: string;
 }
-const ListEmailConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListEmailConfigurationRequest>;
-
 /** Email configuration model. */
 export interface EmailConfigurationModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1791,18 +1309,8 @@ export interface EmailConfigurationModel {
   /** The resource-specific properties for this resource. */
   properties?: EmailConfigurationModelProperties;
 }
-const EmailConfigurationModel = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<EmailConfigurationModel>;
-
 /** The EmailConfigurationModel items on this page */
 export type EmailConfigurationModelListResultValueList = Array<EmailConfigurationModel>;
-const EmailConfigurationModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<EmailConfigurationModelListResultValueList>;
-
 /** The response of a EmailConfigurationModel list operation. */
 export interface EmailConfigurationModelListResult {
   /** The EmailConfigurationModel items on this page */
@@ -1810,11 +1318,6 @@ export interface EmailConfigurationModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EmailConfigurationModelListResult = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<EmailConfigurationModelListResult>;
-
 export interface ListEventRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1829,8 +1332,6 @@ export interface ListEventRequest {
   /** Page size. */
   pageSize?: number;
 }
-const ListEventRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ListEventRequest>;
-
 /** Event model. */
 export interface EventModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1844,15 +1345,8 @@ export interface EventModel {
   /** The resource-specific properties for this resource. */
   properties?: EventModelProperties;
 }
-const EventModel = GetEventResponse as any as S.Schema<EventModel>;
-
 /** The EventModel items on this page */
 export type EventModelListResultValueList = Array<EventModel>;
-const EventModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<EventModelListResultValueList>;
-
 /** The response of a EventModel list operation. */
 export interface EventModelListResult {
   /** The EventModel items on this page */
@@ -1860,11 +1354,6 @@ export interface EventModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EventModelListResult = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<EventModelListResult>;
-
 export interface ListFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1873,8 +1362,6 @@ export interface ListFabricRequest {
   /** Continuation token from the previous call. */
   continuationToken?: string;
 }
-const ListFabricRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ListFabricRequest>;
-
 /** Resource tags. */
 export type FabricModelTagsMap = { [key: string]: string | undefined };
 /** Fabric model. */
@@ -1894,15 +1381,8 @@ export interface FabricModel {
   /** The resource-specific properties for this resource. */
   properties?: FabricModelProperties;
 }
-const FabricModel = CreateFabricResponse as any as S.Schema<FabricModel>;
-
 /** The FabricModel items on this page */
 export type FabricModelListResultValueList = Array<FabricModel>;
-const FabricModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<FabricModelListResultValueList>;
-
 /** The response of a FabricModel list operation. */
 export interface FabricModelListResult {
   /** The FabricModel items on this page */
@@ -1910,11 +1390,6 @@ export interface FabricModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FabricModelListResult = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<FabricModelListResult>;
-
 export interface ListFabricAgentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1923,11 +1398,6 @@ export interface ListFabricAgentRequest {
   /** The fabric name. */
   fabricName: string;
 }
-const ListFabricAgentRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListFabricAgentRequest>;
-
 /** Fabric agent model. */
 export interface FabricAgentModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1941,15 +1411,8 @@ export interface FabricAgentModel {
   /** The resource-specific properties for this resource. */
   properties?: FabricAgentModelProperties;
 }
-const FabricAgentModel = GetFabricAgentResponse as any as S.Schema<FabricAgentModel>;
-
 /** The FabricAgentModel items on this page */
 export type FabricAgentModelListResultValueList = Array<FabricAgentModel>;
-const FabricAgentModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<FabricAgentModelListResultValueList>;
-
 /** The response of a FabricAgentModel list operation. */
 export interface FabricAgentModelListResult {
   /** The FabricAgentModel items on this page */
@@ -1957,20 +1420,10 @@ export interface FabricAgentModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FabricAgentModelListResult = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<FabricAgentModelListResult>;
-
 export interface ListFabricBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListFabricBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListFabricBySubscriptionRequest>;
-
 export interface ListJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1985,13 +1438,8 @@ export interface ListJobRequest {
   /** Page size. */
   pageSize?: number;
 }
-const ListJobRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ListJobRequest>;
-
 /** The JobModel items on this page */
 export type JobModelListResultValueList = Array<JobModel>;
-const JobModelListResultValueList =
-  TaskModelChildrenJobsList as any as S.Schema<JobModelListResultValueList>;
-
 /** The response of a JobModel list operation. */
 export interface JobModelListResult {
   /** The JobModel items on this page */
@@ -1999,14 +1447,7 @@ export interface JobModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const JobModelListResult = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<JobModelListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2018,16 +1459,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -2041,26 +1476,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2069,8 +1492,6 @@ export interface ListPolicyRequest {
   /** The vault name. */
   vaultName: string;
 }
-const ListPolicyRequest = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ListPolicyRequest>;
-
 /** Policy model. */
 export interface PolicyModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2084,15 +1505,8 @@ export interface PolicyModel {
   /** The resource-specific properties for this resource. */
   properties?: PolicyModelProperties;
 }
-const PolicyModel = CreatePolicyResponse as any as S.Schema<PolicyModel>;
-
 /** The PolicyModel items on this page */
 export type PolicyModelListResultValueList = Array<PolicyModel>;
-const PolicyModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<PolicyModelListResultValueList>;
-
 /** The response of a PolicyModel list operation. */
 export interface PolicyModelListResult {
   /** The PolicyModel items on this page */
@@ -2100,11 +1514,6 @@ export interface PolicyModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PolicyModelListResult = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<PolicyModelListResult>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2113,16 +1522,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The vault name. */
   vaultName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList =
-  VaultModelPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -2130,11 +1531,6 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2143,11 +1539,6 @@ export interface ListPrivateLinkResourcesRequest {
   /** The vault name. */
   vaultName: string;
 }
-const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListPrivateLinkResourcesRequest>;
-
 /** Represents private link resource. */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2161,15 +1552,8 @@ export interface PrivateLinkResource {
   /** The resource-specific properties for this resource. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<PrivateLinkResource>;
-
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** The response of a PrivateLinkResource list operation. */
 export interface PrivateLinkResourceListResult {
   /** The PrivateLinkResource items on this page */
@@ -2177,11 +1561,6 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 export interface ListProtectedItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2196,11 +1575,6 @@ export interface ListProtectedItemRequest {
   /** Page size. */
   pageSize?: number;
 }
-const ListProtectedItemRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListProtectedItemRequest>;
-
 /** Protected item model. */
 export interface ProtectedItemModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2214,15 +1588,8 @@ export interface ProtectedItemModel {
   /** The resource-specific properties for this resource. */
   properties?: ProtectedItemModelProperties;
 }
-const ProtectedItemModel = GetProtectedItemResponse as any as S.Schema<ProtectedItemModel>;
-
 /** The ProtectedItemModel items on this page */
 export type ProtectedItemModelListResultValueList = Array<ProtectedItemModel>;
-const ProtectedItemModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ProtectedItemModelListResultValueList>;
-
 /** The response of a ProtectedItemModel list operation. */
 export interface ProtectedItemModelListResult {
   /** The ProtectedItemModel items on this page */
@@ -2230,11 +1597,6 @@ export interface ProtectedItemModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ProtectedItemModelListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ProtectedItemModelListResult>;
-
 export interface ListRecoveryPointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2245,11 +1607,6 @@ export interface ListRecoveryPointRequest {
   /** The protected item name. */
   protectedItemName: string;
 }
-const ListRecoveryPointRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListRecoveryPointRequest>;
-
 /** Recovery point model. */
 export interface RecoveryPointModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2263,15 +1620,8 @@ export interface RecoveryPointModel {
   /** The resource-specific properties for this resource. */
   properties?: RecoveryPointModelProperties;
 }
-const RecoveryPointModel = GetRecoveryPointResponse as any as S.Schema<RecoveryPointModel>;
-
 /** The RecoveryPointModel items on this page */
 export type RecoveryPointModelListResultValueList = Array<RecoveryPointModel>;
-const RecoveryPointModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<RecoveryPointModelListResultValueList>;
-
 /** The response of a RecoveryPointModel list operation. */
 export interface RecoveryPointModelListResult {
   /** The RecoveryPointModel items on this page */
@@ -2279,11 +1629,6 @@ export interface RecoveryPointModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const RecoveryPointModelListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<RecoveryPointModelListResult>;
-
 export interface ListReplicationExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2292,11 +1637,6 @@ export interface ListReplicationExtensionRequest {
   /** The vault name. */
   vaultName: string;
 }
-const ListReplicationExtensionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListReplicationExtensionRequest>;
-
 /** Replication extension model. */
 export interface ReplicationExtensionModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2310,16 +1650,8 @@ export interface ReplicationExtensionModel {
   /** The resource-specific properties for this resource. */
   properties?: ReplicationExtensionModelProperties;
 }
-const ReplicationExtensionModel =
-  CreateReplicationExtensionResponse as any as S.Schema<ReplicationExtensionModel>;
-
 /** The ReplicationExtensionModel items on this page */
 export type ReplicationExtensionModelListResultValueList = Array<ReplicationExtensionModel>;
-const ReplicationExtensionModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ReplicationExtensionModelListResultValueList>;
-
 /** The response of a ReplicationExtensionModel list operation. */
 export interface ReplicationExtensionModelListResult {
   /** The ReplicationExtensionModel items on this page */
@@ -2327,11 +1659,6 @@ export interface ReplicationExtensionModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ReplicationExtensionModelListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ReplicationExtensionModelListResult>;
-
 export interface ListVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2340,8 +1667,6 @@ export interface ListVaultRequest {
   /** Continuation token from the previous call. */
   continuationToken?: string;
 }
-const ListVaultRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ListVaultRequest>;
-
 /** Resource tags. */
 export type VaultModelTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -2377,15 +1702,8 @@ export interface VaultModel {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: VaultModelIdentity;
 }
-const VaultModel = GetVaultResponse as any as S.Schema<VaultModel>;
-
 /** The VaultModel items on this page */
 export type VaultModelListResultValueList = Array<VaultModel>;
-const VaultModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<VaultModelListResultValueList>;
-
 /** The response of a VaultModel list operation. */
 export interface VaultModelListResult {
   /** The VaultModel items on this page */
@@ -2393,20 +1711,10 @@ export interface VaultModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const VaultModelListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<VaultModelListResult>;
-
 export interface ListVaultBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListVaultBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListVaultBySubscriptionRequest>;
-
 export interface PostCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2417,11 +1725,6 @@ export interface PostCheckNameAvailabilityRequest {
   /** Gets or sets the resource type. */
   type?: string;
 }
-const PostCheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<PostCheckNameAvailabilityRequest>;
-
 /** Check name availability response model. */
 export interface CheckNameAvailabilityResponseModel {
   /** Gets or sets a value indicating whether resource name is available or not. */
@@ -2431,11 +1734,6 @@ export interface CheckNameAvailabilityResponseModel {
   /** Gets or sets the message for resource name unavailability. */
   message?: string;
 }
-const CheckNameAvailabilityResponseModel = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<CheckNameAvailabilityResponseModel>;
-
 /** Deployment preflight resource. */
 export interface DeploymentPreflightResource {
   /** Gets or sets the resource name. */
@@ -2449,18 +1747,8 @@ export interface DeploymentPreflightResource {
   /** Gets or sets the properties of the resource. */
   properties?: unknown;
 }
-const DeploymentPreflightResource = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DeploymentPreflightResource>;
-
 /** Gets or sets the list of resources. */
 export type PostDeploymentPreflightRequestResourcesList = Array<DeploymentPreflightResource>;
-const PostDeploymentPreflightRequestResourcesList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<PostDeploymentPreflightRequestResourcesList>;
-
 export interface PostDeploymentPreflightRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2471,44 +1759,23 @@ export interface PostDeploymentPreflightRequest {
   /** Gets or sets the list of resources. */
   resources?: PostDeploymentPreflightRequestResourcesList;
 }
-const PostDeploymentPreflightRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<PostDeploymentPreflightRequest>;
-
 /** Gets or sets the list of resources. */
 export type DeploymentPreflightModelResourcesList = Array<DeploymentPreflightResource>;
-const DeploymentPreflightModelResourcesList =
-  PostDeploymentPreflightRequestResourcesList as any as S.Schema<DeploymentPreflightModelResourcesList>;
-
 /** Deployment preflight model. */
 export interface DeploymentPreflightModel {
   /** Gets or sets the list of resources. */
   resources?: DeploymentPreflightModelResourcesList;
 }
-const DeploymentPreflightModel = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DeploymentPreflightModel>;
-
 /** Planned failover model custom properties. */
 export interface PlannedFailoverModelCustomProperties {
   /** Discriminator property for PlannedFailoverModelCustomProperties. */
   instanceType: string;
 }
-const PlannedFailoverModelCustomProperties =
-  EventModelCustomProperties as any as S.Schema<PlannedFailoverModelCustomProperties>;
-
 /** Planned failover model properties. */
 export interface PlannedFailoverModelProperties {
   /** Planned failover model custom properties. */
   customProperties: PlannedFailoverModelCustomProperties;
 }
-const PlannedFailoverModelProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<PlannedFailoverModelProperties>;
-
 export interface ProtectedItemPlannedFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2521,26 +1788,13 @@ export interface ProtectedItemPlannedFailoverRequest {
   /** Planned failover model properties. */
   properties: PlannedFailoverModelProperties;
 }
-const ProtectedItemPlannedFailoverRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ProtectedItemPlannedFailoverRequest>;
-
 /** Planned failover model. */
 export interface PlannedFailoverModel {
   /** Planned failover model properties. */
   properties: PlannedFailoverModelProperties;
 }
-const PlannedFailoverModel = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<PlannedFailoverModel>;
-
 /** Gets or sets the resource tags. */
 export type UpdateFabricRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFabricRequestTagsMap =
-  CreateFabricRequestTagsMap as any as S.Schema<UpdateFabricRequestTagsMap>;
-
 export interface UpdateFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2553,8 +1807,6 @@ export interface UpdateFabricRequest {
   /** Fabric model properties. */
   properties?: FabricModelPropertiesInput;
 }
-const UpdateFabricRequest = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<UpdateFabricRequest>;
-
 /** Resource tags. */
 export type UpdateFabricResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateFabricResponse {
@@ -2573,8 +1825,6 @@ export interface UpdateFabricResponse {
   /** The resource-specific properties for this resource. */
   properties?: FabricModelProperties;
 }
-const UpdateFabricResponse = CreateFabricResponse as any as S.Schema<UpdateFabricResponse>;
-
 /** Represents Private endpoint connection response properties. */
 export interface PrivateEndpointConnectionResponsePropertiesInput {
   /** Represent private Endpoint network resource that is linked to the Private Endpoint connection. */
@@ -2582,11 +1832,6 @@ export interface PrivateEndpointConnectionResponsePropertiesInput {
   /** Represents Private link service connection state. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionResponsePropertiesInput = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<PrivateEndpointConnectionResponsePropertiesInput>;
-
 export interface UpdatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2599,11 +1844,6 @@ export interface UpdatePrivateEndpointConnectionRequest {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionResponsePropertiesInput;
 }
-const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>;
-
 export interface UpdatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2616,19 +1856,11 @@ export interface UpdatePrivateEndpointConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionResponseProperties;
 }
-const UpdatePrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
-
 /** Protected item model properties update. */
 export interface ProtectedItemModelPropertiesUpdate {
   /** Protected item model custom properties. Polymorphic on `instanceType` (HyperVToAzStackHCI, VMwareToAzStackHCI). */
   customProperties?: unknown;
 }
-const ProtectedItemModelPropertiesUpdate = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ProtectedItemModelPropertiesUpdate>;
-
 export interface UpdateProtectedItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2641,11 +1873,6 @@ export interface UpdateProtectedItemRequest {
   /** Protected item model properties. */
   properties?: ProtectedItemModelPropertiesUpdate;
 }
-const UpdateProtectedItemRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<UpdateProtectedItemRequest>;
-
 export interface UpdateProtectedItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2658,28 +1885,15 @@ export interface UpdateProtectedItemResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProtectedItemModelProperties;
 }
-const UpdateProtectedItemResponse =
-  CreateProtectedItemResponse as any as S.Schema<UpdateProtectedItemResponse>;
-
 /** Gets or sets the resource tags. */
 export type UpdateVaultRequestTagsMap = { [key: string]: string | undefined };
-const UpdateVaultRequestTagsMap =
-  CreateFabricRequestTagsMap as any as S.Schema<UpdateVaultRequestTagsMap>;
-
 /** Gets or sets the identityType which can be either SystemAssigned or None. */
 export type VaultIdentityType = "None" | "SystemAssigned" | "UserAssigned";
-const VaultIdentityType = S.String;
-
 /** Vault model. */
 export interface VaultIdentityModelInput {
   /** Gets or sets the identityType which can be either SystemAssigned or None. */
   type: VaultIdentityType | (string & {});
 }
-const VaultIdentityModelInput = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<VaultIdentityModelInput>;
-
 export interface UpdateVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2694,8 +1908,6 @@ export interface UpdateVaultRequest {
   /** Vault identity. */
   identity?: VaultIdentityModelInput;
 }
-const UpdateVaultRequest = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<UpdateVaultRequest>;
-
 /** Resource tags. */
 export type UpdateVaultResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -2730,8 +1942,6 @@ export interface UpdateVaultResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateVaultResponseIdentity;
 }
-const UpdateVaultResponse = CreateVaultResponse as any as S.Schema<UpdateVaultResponse>;
-
 export type CreateEmailConfigurationError = AzureOpError;
 /** Creates an alert configuration setting for the given vault. */
 export const CreateEmailConfiguration: API.OperationMethod<
@@ -2740,8 +1950,8 @@ export const CreateEmailConfiguration: API.OperationMethod<
   CreateEmailConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailConfigurationRequest,
-  output: CreateEmailConfigurationResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateEmailConfigurationRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateEmailConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2755,8 +1965,8 @@ export const CreateFabric: API.OperationMethod<
   CreateFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFabricRequest,
-  output: CreateFabricResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateFabricRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2770,8 +1980,8 @@ export const CreateFabricAgent: API.OperationMethod<
   CreateFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFabricAgentRequest,
-  output: CreateFabricAgentResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateFabricAgentRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2785,8 +1995,8 @@ export const CreatePolicy: API.OperationMethod<
   CreatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePolicyRequest,
-  output: CreatePolicyResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<CreatePolicyRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<CreatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2800,8 +2010,8 @@ export const CreateProtectedItem: API.OperationMethod<
   CreateProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProtectedItemRequest,
-  output: CreateProtectedItemResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateProtectedItemRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CreateProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2815,8 +2025,8 @@ export const CreateReplicationExtension: API.OperationMethod<
   CreateReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReplicationExtensionRequest,
-  output: CreateReplicationExtensionResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<CreateReplicationExtensionRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<CreateReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2040,8 @@ export const CreateVault: API.OperationMethod<
   CreateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVaultRequest,
-  output: CreateVaultResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<CreateVaultRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<CreateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2845,8 +2055,8 @@ export const DeleteFabric: API.OperationMethod<
   DeleteFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFabricRequest,
-  output: DeleteFabricResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<DeleteFabricRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2860,8 +2070,8 @@ export const DeleteFabricAgent: API.OperationMethod<
   DeleteFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFabricAgentRequest,
-  output: DeleteFabricAgentResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<DeleteFabricAgentRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2875,8 +2085,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePolicyRequest,
-  output: DeletePolicyResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2100,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2905,8 +2115,8 @@ export const DeleteProtectedItem: API.OperationMethod<
   DeleteProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProtectedItemRequest,
-  output: DeleteProtectedItemResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<DeleteProtectedItemRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2920,8 +2130,8 @@ export const DeleteReplicationExtension: API.OperationMethod<
   DeleteReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReplicationExtensionRequest,
-  output: DeleteReplicationExtensionResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<DeleteReplicationExtensionRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<DeleteReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2935,8 +2145,8 @@ export const DeleteVault: API.OperationMethod<
   DeleteVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVaultRequest,
-  output: DeleteVaultResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<DeleteVaultRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2950,8 +2160,8 @@ export const GetEmailConfiguration: API.OperationMethod<
   GetEmailConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailConfigurationRequest,
-  output: GetEmailConfigurationResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<GetEmailConfigurationRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetEmailConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2965,8 +2175,8 @@ export const GetEvent: API.OperationMethod<
   GetEventError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventRequest,
-  output: GetEventResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<GetEventRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetEventResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2980,8 +2190,8 @@ export const GetFabric: API.OperationMethod<
   GetFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFabricRequest,
-  output: GetFabricResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<GetFabricRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2995,8 +2205,8 @@ export const GetFabricAgent: API.OperationMethod<
   GetFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFabricAgentRequest,
-  output: GetFabricAgentResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<GetFabricAgentRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3010,8 +2220,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobRequest,
-  output: GetJobResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<GetJobRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3025,8 +2235,8 @@ export const GetLocationBasedOperationResult: API.OperationMethod<
   GetLocationBasedOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationBasedOperationResultRequest,
-  output: OperationStatus,
+  input: __S(73, __c9, 1) as any as S.Schema<GetLocationBasedOperationResultRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3040,8 +2250,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationResultRequest,
-  output: OperationStatus,
+  input: __S(75, __c9, 3) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3055,8 +2265,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyRequest,
-  output: GetPolicyResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<GetPolicyRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<GetPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3070,8 +2280,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3085,8 +2295,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkResourceRequest,
-  output: GetPrivateLinkResourceResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3100,8 +2310,8 @@ export const GetProtectedItem: API.OperationMethod<
   GetProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProtectedItemRequest,
-  output: GetProtectedItemResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<GetProtectedItemRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3115,8 +2325,8 @@ export const GetRecoveryPoint: API.OperationMethod<
   GetRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecoveryPointRequest,
-  output: GetRecoveryPointResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<GetRecoveryPointRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetRecoveryPointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3130,8 +2340,8 @@ export const GetReplicationExtension: API.OperationMethod<
   GetReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReplicationExtensionRequest,
-  output: GetReplicationExtensionResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<GetReplicationExtensionRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3145,8 +2355,8 @@ export const GetVault: API.OperationMethod<
   GetVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultRequest,
-  output: GetVaultResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<GetVaultRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<GetVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3160,8 +2370,8 @@ export const ListEmailConfiguration: API.OperationMethod<
   ListEmailConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailConfigurationRequest,
-  output: EmailConfigurationModelListResult,
+  input: __S(90, __c11, 2) as any as S.Schema<ListEmailConfigurationRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<EmailConfigurationModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3175,8 +2385,8 @@ export const ListEvent: API.OperationMethod<
   ListEventError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventRequest,
-  output: EventModelListResult,
+  input: __S(94, __c11, 6) as any as S.Schema<ListEventRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<EventModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3190,8 +2400,8 @@ export const ListFabric: API.OperationMethod<
   ListFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFabricRequest,
-  output: FabricModelListResult,
+  input: __S(97, __c12, 1) as any as S.Schema<ListFabricRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<FabricModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3205,8 +2415,8 @@ export const ListFabricAgent: API.OperationMethod<
   ListFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFabricAgentRequest,
-  output: FabricAgentModelListResult,
+  input: __S(100, __c12, 4) as any as S.Schema<ListFabricAgentRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<FabricAgentModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3220,8 +2430,8 @@ export const ListFabricBySubscription: API.OperationMethod<
   ListFabricBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFabricBySubscriptionRequest,
-  output: FabricModelListResult,
+  input: __S(103, __c12, 7) as any as S.Schema<ListFabricBySubscriptionRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<FabricModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3235,8 +2445,8 @@ export const ListJob: API.OperationMethod<
   ListJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListJobRequest,
-  output: JobModelListResult,
+  input: __S(104, __c13, 0) as any as S.Schema<ListJobRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<JobModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3250,8 +2460,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<ListOperationsRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3265,8 +2475,8 @@ export const ListPolicy: API.OperationMethod<
   ListPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPolicyRequest,
-  output: PolicyModelListResult,
+  input: __S(111, __c13, 7) as any as S.Schema<ListPolicyRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<PolicyModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3280,8 +2490,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(114, __c14, 2) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3295,8 +2505,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourcesRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(116, __c14, 4) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3310,8 +2520,8 @@ export const ListProtectedItem: API.OperationMethod<
   ListProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProtectedItemRequest,
-  output: ProtectedItemModelListResult,
+  input: __S(120, __c15, 0) as any as S.Schema<ListProtectedItemRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<ProtectedItemModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3325,8 +2535,8 @@ export const ListRecoveryPoint: API.OperationMethod<
   ListRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRecoveryPointRequest,
-  output: RecoveryPointModelListResult,
+  input: __S(123, __c15, 3) as any as S.Schema<ListRecoveryPointRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<RecoveryPointModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3340,8 +2550,8 @@ export const ListReplicationExtension: API.OperationMethod<
   ListReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReplicationExtensionRequest,
-  output: ReplicationExtensionModelListResult,
+  input: __S(126, __c15, 6) as any as S.Schema<ListReplicationExtensionRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<ReplicationExtensionModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3355,8 +2565,8 @@ export const ListVault: API.OperationMethod<
   ListVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultRequest,
-  output: VaultModelListResult,
+  input: __S(129, __c16, 1) as any as S.Schema<ListVaultRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<VaultModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3370,8 +2580,8 @@ export const ListVaultBySubscription: API.OperationMethod<
   ListVaultBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultBySubscriptionRequest,
-  output: VaultModelListResult,
+  input: __S(132, __c16, 4) as any as S.Schema<ListVaultBySubscriptionRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<VaultModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3385,8 +2595,8 @@ export const PostCheckNameAvailability: API.OperationMethod<
   PostCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostCheckNameAvailabilityRequest,
-  output: CheckNameAvailabilityResponseModel,
+  input: __S(133, __c16, 5) as any as S.Schema<PostCheckNameAvailabilityRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<CheckNameAvailabilityResponseModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3400,8 +2610,8 @@ export const PostDeploymentPreflight: API.OperationMethod<
   PostDeploymentPreflightError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostDeploymentPreflightRequest,
-  output: DeploymentPreflightModel,
+  input: __S(137, __c17, 1) as any as S.Schema<PostDeploymentPreflightRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<DeploymentPreflightModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3415,8 +2625,8 @@ export const ProtectedItemPlannedFailover: API.OperationMethod<
   ProtectedItemPlannedFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProtectedItemPlannedFailoverRequest,
-  output: PlannedFailoverModel,
+  input: __S(140, __c17, 4) as any as S.Schema<ProtectedItemPlannedFailoverRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<PlannedFailoverModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3430,8 +2640,8 @@ export const UpdateFabric: API.OperationMethod<
   UpdateFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFabricRequest,
-  output: UpdateFabricResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<UpdateFabricRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<UpdateFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3445,8 +2655,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePrivateEndpointConnectionRequest,
-  output: UpdatePrivateEndpointConnectionResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3460,8 +2670,8 @@ export const UpdateProtectedItem: API.OperationMethod<
   UpdateProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProtectedItemRequest,
-  output: UpdateProtectedItemResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<UpdateProtectedItemRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<UpdateProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3475,8 +2685,8 @@ export const UpdateVault: API.OperationMethod<
   UpdateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVaultRequest,
-  output: UpdateVaultResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<UpdateVaultRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<UpdateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3491,9 +2701,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sendToOwners: S.Boolean,
-          customEmailAddresses: S.optional(
-            EmailConfigurationModelPropertiesInputCustomEmailAddressesList,
-          ),
+          customEmailAddresses: S.optional(__S(0, __c0, 0)),
           locale: S.optional(S.String),
         }),
       ).annotate({
@@ -3506,7 +2714,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           emailConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(EmailConfigurationModelPropertiesInput),
+          properties: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3522,10 +2730,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -3533,11 +2741,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sendToOwners: S.Boolean,
-          customEmailAddresses: S.optional(
-            EmailConfigurationModelPropertiesCustomEmailAddressesList,
-          ),
+          customEmailAddresses: S.optional(__S(0, __c0, 0)),
           locale: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EmailConfigurationModelProperties",
@@ -3548,8 +2754,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EmailConfigurationModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "CreateEmailConfigurationResponse",
@@ -3574,9 +2780,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateFabricRequestTagsMap),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(FabricModelPropertiesInput),
+          properties: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3603,15 +2809,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "InnerHealthErrorModel" });
     case 2:
-      return S.Array(InnerHealthErrorModel);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           affectedResourceType: S.optional(S.String),
-          affectedResourceCorrelationIds: S.optional(
-            HealthErrorModelAffectedResourceCorrelationIdsList,
-          ),
-          childErrors: S.optional(HealthErrorModelChildErrorsList),
+          affectedResourceCorrelationIds: S.optional(__S(0, __c0, 0)),
+          childErrors: S.optional(__S(10, __c1, 2)),
           code: S.optional(S.String),
           healthCategory: S.optional(S.String),
           category: S.optional(S.String),
@@ -3626,15 +2830,15 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "HealthErrorModel" });
     case 4:
-      return S.Array(HealthErrorModel);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           serviceEndpoint: S.optional(S.String),
           serviceResourceId: S.optional(S.String),
-          health: S.optional(HealthStatus),
-          healthErrors: S.optional(FabricModelPropertiesHealthErrorsList),
+          health: S.optional(S.String),
+          healthErrors: S.optional(__S(12, __c1, 4)),
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "FabricModelProperties" });
@@ -3644,10 +2848,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateFabricResponseTagsMap),
+          systemData: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(FabricModelProperties),
+          properties: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "CreateFabricResponse" });
     case 7:
@@ -3669,8 +2873,8 @@ function __c2(j: number): any {
         S.Struct({
           machineId: S.String,
           machineName: S.String,
-          authenticationIdentity: IdentityModel,
-          resourceAccessIdentity: IdentityModel,
+          authenticationIdentity: __S(15, __c1, 7),
+          resourceAccessIdentity: __S(15, __c1, 7),
           customProperties: S.Unknown,
         }),
       ).annotate({
@@ -3683,7 +2887,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           fabricAgentName: S.String.pipe(T.Label()),
-          properties: S.optional(FabricAgentModelPropertiesInput),
+          properties: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3699,13 +2903,13 @@ function __c2(j: number): any {
           correlationId: S.optional(S.String),
           machineId: S.String,
           machineName: S.String,
-          authenticationIdentity: IdentityModel,
-          resourceAccessIdentity: IdentityModel,
+          authenticationIdentity: __S(15, __c1, 7),
+          resourceAccessIdentity: __S(15, __c1, 7),
           isResponsive: S.optional(S.Boolean),
           lastHeartbeat: S.optional(S.String),
           versionNumber: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
-          healthErrors: S.optional(FabricAgentModelPropertiesHealthErrorsList),
+          provisioningState: S.optional(S.String),
+          healthErrors: S.optional(__S(12, __c1, 4)),
           customProperties: S.Unknown,
         }),
       ).annotate({
@@ -3717,8 +2921,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FabricAgentModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "CreateFabricAgentResponse",
@@ -3730,7 +2934,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          properties: S.optional(PolicyModelPropertiesInput),
+          properties: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3743,7 +2947,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "PolicyModelProperties" });
@@ -3753,8 +2957,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PolicyModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "CreatePolicyResponse" });
     case 7:
@@ -3778,7 +2982,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: S.optional(ProtectedItemModelPropertiesInput),
+          properties: S.optional(__S(23, __c2, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3810,12 +3014,12 @@ function __c3(j: number): any {
           policyName: S.String,
           replicationExtensionName: S.String,
           correlationId: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
-          protectionState: S.optional(ProtectionState),
+          provisioningState: S.optional(S.String),
+          protectionState: S.optional(S.String),
           protectionStateDescription: S.optional(S.String),
-          testFailoverState: S.optional(TestFailoverState),
+          testFailoverState: S.optional(S.String),
           testFailoverStateDescription: S.optional(S.String),
-          resynchronizationState: S.optional(ResynchronizationState),
+          resynchronizationState: S.optional(S.String),
           fabricObjectId: S.optional(S.String),
           fabricObjectName: S.optional(S.String),
           sourceFabricProviderId: S.optional(S.String),
@@ -3828,13 +3032,13 @@ function __c3(j: number): any {
           lastSuccessfulPlannedFailoverTime: S.optional(S.String),
           lastSuccessfulUnplannedFailoverTime: S.optional(S.String),
           lastSuccessfulTestFailoverTime: S.optional(S.String),
-          currentJob: S.optional(ProtectedItemJobProperties),
-          allowedJobs: S.optional(ProtectedItemModelPropertiesAllowedJobsList),
-          lastFailedEnableProtectionJob: S.optional(ProtectedItemJobProperties),
-          lastFailedPlannedFailoverJob: S.optional(ProtectedItemJobProperties),
-          lastTestFailoverJob: S.optional(ProtectedItemJobProperties),
-          replicationHealth: S.optional(HealthStatus),
-          healthErrors: S.optional(ProtectedItemModelPropertiesHealthErrorsList),
+          currentJob: S.optional(__S(25, __c3, 1)),
+          allowedJobs: S.optional(__S(0, __c0, 0)),
+          lastFailedEnableProtectionJob: S.optional(__S(25, __c3, 1)),
+          lastFailedPlannedFailoverJob: S.optional(__S(25, __c3, 1)),
+          lastTestFailoverJob: S.optional(__S(25, __c3, 1)),
+          replicationHealth: S.optional(S.String),
+          healthErrors: S.optional(__S(12, __c1, 4)),
           customProperties: S.Unknown,
         }),
       ).annotate({
@@ -3846,8 +3050,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProtectedItemModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "CreateProtectedItemResponse",
@@ -3859,7 +3063,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           replicationExtensionName: S.String.pipe(T.Label()),
-          properties: S.optional(ReplicationExtensionModelPropertiesInput),
+          properties: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3874,7 +3078,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           customProperties: S.Unknown,
         }),
       ).annotate({
@@ -3886,8 +3090,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ReplicationExtensionModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "CreateReplicationExtensionResponse",
@@ -3895,8 +3099,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vaultType: S.optional(ReplicationVaultType),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          vaultType: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VaultModelPropertiesInput",
@@ -3910,12 +3114,12 @@ function __c4(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c4, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(CreateVaultRequestIdentityUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "CreateVaultRequestIdentity",
@@ -3926,10 +3130,10 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateVaultRequestTagsMap),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(VaultModelPropertiesInput),
-          identity: S.optional(CreateVaultRequestIdentity),
+          properties: S.optional(__S(31, __c3, 7)),
+          identity: S.optional(__S(34, __c4, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3948,7 +3152,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -3958,9 +3162,9 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(36, __c4, 4)),
+          privateLinkServiceConnectionState: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionResponseProperties",
@@ -3971,8 +3175,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionResponseProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
@@ -3982,18 +3186,16 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           serviceResourceId: S.optional(S.String),
-          vaultType: S.optional(ReplicationVaultType),
-          privateEndpointState: S.optional(VaultPrivateEndpointState),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          privateEndpointConnections: S.optional(
-            VaultModelPropertiesPrivateEndpointConnectionsList,
-          ),
+          vaultType: S.optional(S.String),
+          privateEndpointState: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "VaultModelProperties" });
     case 2:
@@ -4004,14 +3206,14 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(42, __c5, 2)));
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(CreateVaultResponseIdentityUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "CreateVaultResponseIdentity",
@@ -4022,11 +3224,11 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateVaultResponseTagsMap),
+          systemData: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(VaultModelProperties),
-          identity: S.optional(CreateVaultResponseIdentity),
+          properties: S.optional(__S(41, __c5, 1)),
+          identity: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({ identifier: "CreateVaultResponse" });
     case 6:
@@ -4211,9 +3413,9 @@ function __c7(j: number): any {
           severity: S.optional(S.String),
           description: S.optional(S.String),
           correlationId: S.optional(S.String),
-          healthErrors: S.optional(EventModelPropertiesHealthErrorsList),
-          customProperties: EventModelCustomProperties,
-          provisioningState: S.optional(ProvisioningState),
+          healthErrors: S.optional(__S(12, __c1, 4)),
+          customProperties: __S(56, __c7, 0),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventModelProperties" });
     case 2:
@@ -4222,8 +3424,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "GetEventResponse" });
     case 3:
@@ -4263,8 +3465,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FabricAgentModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "GetFabricAgentResponse" });
     case 6:
@@ -4289,8 +3491,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(S.suspend(() => JobModelProperties)),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(S.suspend(() => __S(71, __c8, 7))),
         }),
       ).annotate({ identifier: "JobModel" });
   }
@@ -4298,20 +3500,20 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(JobModel);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           taskName: S.optional(S.String),
-          state: S.optional(TaskState),
+          state: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          customProperties: S.optional(TaskModelCustomProperties),
-          childrenJobs: S.optional(TaskModelChildrenJobsList),
+          customProperties: S.optional(__S(56, __c7, 0)),
+          childrenJobs: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "TaskModel" });
     case 2:
-      return S.Array(TaskModel);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4325,42 +3527,42 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ErrorModel" });
     case 4:
-      return S.Array(ErrorModel);
+      return S.Array(__S(67, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          type: S.optional(AffectedObjectDetailsType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AffectedObjectDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           instanceType: S.String,
-          affectedObjectDetails: S.optional(AffectedObjectDetails),
+          affectedObjectDetails: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "JobModelCustomProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          state: S.optional(JobState),
+          state: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           objectId: S.optional(S.String),
           objectName: S.optional(S.String),
           objectInternalId: S.optional(S.String),
           objectInternalName: S.optional(S.String),
-          objectType: S.optional(JobObjectType),
+          objectType: S.optional(S.String),
           replicationProviderId: S.optional(S.String),
           sourceFabricProviderId: S.optional(S.String),
           targetFabricProviderId: S.optional(S.String),
-          allowedActions: S.optional(JobModelPropertiesAllowedActionsList),
+          allowedActions: S.optional(__S(0, __c0, 0)),
           activityId: S.optional(S.String),
-          tasks: S.optional(JobModelPropertiesTasksList),
-          errors: S.optional(JobModelPropertiesErrorsList),
-          customProperties: JobModelCustomProperties,
-          provisioningState: S.optional(ProvisioningState),
+          tasks: S.optional(__S(66, __c8, 2)),
+          errors: S.optional(__S(68, __c8, 4)),
+          customProperties: __S(70, __c8, 6),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobModelProperties" });
   }
@@ -4373,8 +3575,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(JobModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "GetJobResponse" });
     case 1:
@@ -4478,9 +3680,9 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
-          provisioningState: S.optional(ProvisioningState),
+          requiredMembers: S.optional(__S(0, __c0, 0)),
+          requiredZoneNames: S.optional(__S(0, __c0, 0)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -4495,8 +3697,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -4523,8 +3725,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProtectedItemModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "GetProtectedItemResponse" });
     case 3:
@@ -4548,9 +3750,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           recoveryPointTime: S.String,
-          recoveryPointType: RecoveryPointType,
-          customProperties: RecoveryPointModelCustomProperties,
-          provisioningState: S.optional(ProvisioningState),
+          recoveryPointType: S.String,
+          customProperties: __S(56, __c7, 0),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecoveryPointModelProperties",
@@ -4561,8 +3763,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RecoveryPointModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({ identifier: "GetRecoveryPointResponse" });
     case 6:
@@ -4607,8 +3809,8 @@ function __c11(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(GetVaultResponseIdentityUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "GetVaultResponseIdentity" });
     case 1:
@@ -4617,11 +3819,11 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetVaultResponseTagsMap),
+          systemData: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(6, __c0, 6)),
           location: S.String,
-          properties: S.optional(VaultModelProperties),
-          identity: S.optional(GetVaultResponseIdentity),
+          properties: S.optional(__S(41, __c5, 1)),
+          identity: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "GetVaultResponse" });
     case 2:
@@ -4647,16 +3849,16 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EmailConfigurationModelProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "EmailConfigurationModel" });
     case 4:
-      return S.Array(EmailConfigurationModel);
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: EmailConfigurationModelListResultValueList,
+          value: __S(92, __c11, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4681,7 +3883,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListEventRequest" });
     case 7:
-      return S.Array(EventModel);
+      return S.Array(__S(58, __c7, 2));
   }
 }
 function __c12(j: number): any {
@@ -4689,7 +3891,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: EventModelListResultValueList,
+          value: __S(95, __c11, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventModelListResult" });
@@ -4709,11 +3911,11 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListFabricRequest" });
     case 2:
-      return S.Array(FabricModel);
+      return S.Array(__S(14, __c1, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: FabricModelListResultValueList,
+          value: __S(98, __c12, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FabricModelListResult" });
@@ -4733,11 +3935,11 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListFabricAgentRequest" });
     case 5:
-      return S.Array(FabricAgentModel);
+      return S.Array(__S(61, __c7, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: FabricAgentModelListResultValueList,
+          value: __S(101, __c12, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4783,7 +3985,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: JobModelListResultValueList,
+          value: __S(64, __c8, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobModelListResult" });
@@ -4812,17 +4014,17 @@ function __c13(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(107, __c13, 3)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(108, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(109, __c13, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -4846,11 +4048,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PolicyModel);
+      return S.Array(__S(22, __c2, 6));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: PolicyModelListResultValueList,
+          value: __S(112, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyModelListResult" });
@@ -4874,7 +4076,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateEndpointConnectionListResultValueList,
+          value: __S(40, __c5, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4903,16 +4105,16 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 6:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(117, __c14, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateLinkResourceListResultValueList,
+          value: __S(118, __c14, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4941,11 +4143,11 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListProtectedItemRequest" });
     case 1:
-      return S.Array(ProtectedItemModel);
+      return S.Array(__S(82, __c10, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ProtectedItemModelListResultValueList,
+          value: __S(121, __c15, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4968,11 +4170,11 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListRecoveryPointRequest" });
     case 4:
-      return S.Array(RecoveryPointModel);
+      return S.Array(__S(85, __c10, 5));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: RecoveryPointModelListResultValueList,
+          value: __S(124, __c15, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4996,7 +4198,7 @@ function __c15(j: number): any {
         identifier: "ListReplicationExtensionRequest",
       });
     case 7:
-      return S.Array(ReplicationExtensionModel);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c16(j: number): any {
@@ -5004,7 +4206,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ReplicationExtensionModelListResultValueList,
+          value: __S(127, __c15, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5026,11 +4228,11 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListVaultRequest" });
     case 2:
-      return S.Array(VaultModel);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: VaultModelListResultValueList,
+          value: __S(130, __c16, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultModelListResult" });
@@ -5094,14 +4296,14 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeploymentPreflightResource);
+      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deploymentId: S.String.pipe(T.Label()),
-          resources: S.optional(PostDeploymentPreflightRequestResourcesList),
+          resources: S.optional(__S(136, __c17, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5116,13 +4318,13 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(DeploymentPreflightModelResourcesList),
+          resources: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({ identifier: "DeploymentPreflightModel" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customProperties: PlannedFailoverModelCustomProperties,
+          customProperties: __S(56, __c7, 0),
         }),
       ).annotate({
         identifier: "PlannedFailoverModelProperties",
@@ -5134,7 +4336,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: PlannedFailoverModelProperties,
+          properties: __S(139, __c17, 3),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5149,7 +4351,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: PlannedFailoverModelProperties,
+          properties: __S(139, __c17, 3),
         }),
       ).annotate({ identifier: "PlannedFailoverModel" });
     case 6:
@@ -5158,8 +4360,8 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateFabricRequestTagsMap),
-          properties: S.optional(FabricModelPropertiesInput),
+          tags: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5172,8 +4374,8 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          privateEndpoint: S.optional(__S(36, __c4, 4)),
+          privateLinkServiceConnectionState: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionResponsePropertiesInput",
@@ -5189,7 +4391,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionResponsePropertiesInput),
+          properties: S.optional(__S(143, __c17, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5216,7 +4418,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: S.optional(ProtectedItemModelPropertiesUpdate),
+          properties: S.optional(__S(145, __c18, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5231,7 +4433,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: VaultIdentityType,
+          type: S.String,
         }),
       ).annotate({ identifier: "VaultIdentityModelInput" });
     case 4:
@@ -5240,9 +4442,9 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateVaultRequestTagsMap),
-          properties: S.optional(VaultModelPropertiesInput),
-          identity: S.optional(VaultIdentityModelInput),
+          tags: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(31, __c3, 7)),
+          identity: S.optional(__S(147, __c18, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5253,4 +4455,9 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "UpdateVaultRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

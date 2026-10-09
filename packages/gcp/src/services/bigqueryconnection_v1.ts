@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,11 +69,6 @@ export interface CrossCloudCacheOptions {
   /** Optional. Whether cross-cloud caching is enabled. This only affects queries through BigQuery. If this value is `true`, read data and metadata are stored in a cache, which can increase performance and decrease network egress costs for cross-cloud queries. If this value is `false`, cross-cloud caching is disabled. */
   enabled?: boolean;
 }
-const CrossCloudCacheOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CrossCloudCacheOptions>;
-
 /** Connection properties specific to Salesforce DataCloud. This is intended for use only by Salesforce partner projects. */
 export interface SalesforceDataCloudProperties {
   /** The URL to the user's Salesforce DataCloud instance. */
@@ -83,14 +80,7 @@ export interface SalesforceDataCloudProperties {
   /** Optional. Configuration options for cross-cloud caching of data and metadata files. */
   crossCloudCacheOptions?: CrossCloudCacheOptions;
 }
-const SalesforceDataCloudProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SalesforceDataCloudProperties>;
-
 export type CloudSqlPropertiesTypeEnum = "DATABASE_TYPE_UNSPECIFIED" | "POSTGRES" | "MYSQL";
-const CloudSqlPropertiesTypeEnum = S.String;
-
 /** Credential info for the Cloud SQL. */
 export interface CloudSqlCredential {
   /** The username for the credential. */
@@ -98,8 +88,6 @@ export interface CloudSqlCredential {
   /** The password for the credential. */
   password?: string;
 }
-const CloudSqlCredential = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CloudSqlCredential>;
-
 /** Connection properties specific to the Cloud SQL. */
 export interface CloudSqlProperties {
   /** Cloud SQL instance ID in the form `project:location:instance`. */
@@ -113,28 +101,16 @@ export interface CloudSqlProperties {
   /** Output only. The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection. */
   serviceAccountId?: string;
 }
-const CloudSqlProperties = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CloudSqlProperties>;
-
 /** Configuration of the Dataproc Metastore Service. */
 export interface MetastoreServiceConfig {
   /** Optional. Resource name of an existing Dataproc Metastore service. Example: * `projects/[project_id]/locations/[region]/services/[service_id]` */
   metastoreService?: string;
 }
-const MetastoreServiceConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<MetastoreServiceConfig>;
-
 /** Configuration of the Spark History Server. */
 export interface SparkHistoryServerConfig {
   /** Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection. Example: * `projects/[project_id]/regions/[region]/clusters/[cluster_name]` */
   dataprocCluster?: string;
 }
-const SparkHistoryServerConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SparkHistoryServerConfig>;
-
 /** Container for connection properties to execute stored procedures for Apache Spark. */
 export interface SparkProperties {
   /** Output only. The account ID of the service created for the purpose of this connection. The service account does not have any permissions associated with it when it is created. After creation, customers delegate permissions to the service account. When the connection is used in the context of a stored procedure for Apache Spark in BigQuery, the service account is used to connect to the desired resources in Google Cloud. The account ID is in the form of: bqcx--@gcp-sa-bigquery-consp.iam.gserviceaccount.com */
@@ -144,8 +120,6 @@ export interface SparkProperties {
   /** Optional. Spark History Server configuration for the connection. */
   sparkHistoryServerConfig?: SparkHistoryServerConfig;
 }
-const SparkProperties = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SparkProperties>;
-
 /** Container for connection properties specific to Azure. */
 export interface AzureProperties {
   /** Output only. The client id of the Azure Active Directory Application. */
@@ -165,8 +139,6 @@ export interface AzureProperties {
   /** The URL user will be redirected to after granting consent during connection setup. */
   redirectUri?: string;
 }
-const AzureProperties = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AzureProperties>;
-
 /** Authentication method for Amazon Web Services (AWS) that uses Google owned Google service account to assume into customer's AWS IAM Role. */
 export interface AwsAccessRole {
   /** The user's AWS IAM Role that trusts the Google-owned AWS IAM user Connection. */
@@ -174,8 +146,6 @@ export interface AwsAccessRole {
   /** A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role. */
   identity?: string;
 }
-const AwsAccessRole = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AwsAccessRole>;
-
 /** Connection properties specific to Amazon Web Services (AWS). */
 export interface AwsProperties {
   /** Optional. Configuration options for cross-cloud caching of data and metadata files. */
@@ -183,8 +153,6 @@ export interface AwsProperties {
   /** Authentication using Google owned service account to assume into customer's AWS IAM Role. */
   accessRole?: AwsAccessRole;
 }
-const AwsProperties = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AwsProperties>;
-
 /** Connection properties specific to Cloud Spanner. */
 export interface CloudSpannerProperties {
   /** Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. REQUIRES: `use_parallelism` must be set. REQUIRES: `use_data_boost` must be set. */
@@ -200,24 +168,12 @@ export interface CloudSpannerProperties {
   /** Optional. Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. For more details, see [About fine-grained access control] (https://cloud.google.com/spanner/docs/fgac-about). REQUIRES: The database role name must start with a letter, and can only contain letters, numbers, and underscores. */
   databaseRole?: string;
 }
-const CloudSpannerProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CloudSpannerProperties>;
-
 /** Remote endpoint specification. */
 export interface ConnectorConfigurationEndpoint {
   /** Host and port in a format of `hostname:port` as defined in https://www.ietf.org/rfc/rfc3986.html#section-3.2.2 and https://www.ietf.org/rfc/rfc3986.html#section-3.2.3. */
   hostPort?: string;
 }
-const ConnectorConfigurationEndpoint = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConnectorConfigurationEndpoint>;
-
 export type ConnectorConfigurationSecretSecretTypeEnum = "SECRET_TYPE_UNSPECIFIED" | "PLAINTEXT";
-const ConnectorConfigurationSecretSecretTypeEnum = S.String;
-
 /** Secret value parameter. */
 export interface ConnectorConfigurationSecret {
   /** Input only. Secret as plaintext. */
@@ -225,11 +181,6 @@ export interface ConnectorConfigurationSecret {
   /** Output only. Indicates type of secret. Can be used to check type of stored secret value even if it's `INPUT_ONLY`. */
   secretType?: ConnectorConfigurationSecretSecretTypeEnum | (string & {});
 }
-const ConnectorConfigurationSecret = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ConnectorConfigurationSecret>;
-
 /** Represents a value for a connector parameter. */
 export interface ConnectorConfigurationParameterValue {
   /** A boolean parameter value. */
@@ -243,19 +194,9 @@ export interface ConnectorConfigurationParameterValue {
   /** A secret parameter value. Allowed only for Authentication parameters. */
   secretValue?: ConnectorConfigurationSecret;
 }
-const ConnectorConfigurationParameterValue = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ConnectorConfigurationParameterValue>;
-
 export type ConnectorConfigurationParameterValueMap = {
   [key: string]: ConnectorConfigurationParameterValue | undefined;
 };
-const ConnectorConfigurationParameterValueMap = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ConnectorConfigurationParameterValueMap>;
-
 /** Username and Password authentication. */
 export interface ConnectorConfigurationUsernamePassword {
   /** Required. Username. */
@@ -263,11 +204,6 @@ export interface ConnectorConfigurationUsernamePassword {
   /** Required. Password. */
   password?: ConnectorConfigurationSecret;
 }
-const ConnectorConfigurationUsernamePassword = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ConnectorConfigurationUsernamePassword>;
-
 /** Client authentication. */
 export interface ConnectorConfigurationAuthentication {
   /** Output only. Google-managed service account associated with this connection, e.g., `service-{project_number}@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`. BigQuery jobs using this connection will act as `service_account` identity while connecting to the datasource. */
@@ -277,56 +213,29 @@ export interface ConnectorConfigurationAuthentication {
   /** Optional. A map of name-value pairs for connector-specific parameters. These extra configuration parameters aren't standardized in the configuration sections. To update a single parameter value, call ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with backticks--for example, ``configuration.parameters.`parameter id` ``. */
   parameters?: ConnectorConfigurationParameterValueMap;
 }
-const ConnectorConfigurationAuthentication = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ConnectorConfigurationAuthentication>;
-
 /** Private Service Connect configuration. */
 export interface ConnectorConfigurationPrivateServiceConnect {
   /** Required. Network Attachment name in the format of `projects/{project}/regions/{region}/networkAttachments/{networkattachment}`. */
   networkAttachment?: string;
 }
-const ConnectorConfigurationPrivateServiceConnect = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ConnectorConfigurationPrivateServiceConnect>;
-
 /** Network related configuration. */
 export interface ConnectorConfigurationNetwork {
   /** Private Service Connect networking configuration. */
   privateServiceConnect?: ConnectorConfigurationPrivateServiceConnect;
 }
-const ConnectorConfigurationNetwork = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ConnectorConfigurationNetwork>;
-
 /** Web PKI. */
 export interface ConnectorConfigurationTlsWebPki {}
-const ConnectorConfigurationTlsWebPki = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ConnectorConfigurationTlsWebPki>;
-
 /** Private PKI. */
 export interface ConnectorConfigurationTlsPrivatePki {
   /** Optional. a PEM-encoded list of certificates to trust */
   trustedCertificatesPem?: string;
 }
-const ConnectorConfigurationTlsPrivatePki = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ConnectorConfigurationTlsPrivatePki>;
-
 export type ConnectorConfigurationTlsModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLE"
   | "ENCRYPT_VERIFY_NONE"
   | "ENCRYPT_VERIFY_CA"
   | "ENCRYPT_VERIFY_CA_AND_HOST";
-const ConnectorConfigurationTlsModeEnum = S.String;
-
 /** TLS configuration options. */
 export interface ConnectorConfigurationTls {
   /** Optional. Web PKI. */
@@ -336,11 +245,6 @@ export interface ConnectorConfigurationTls {
   /** Optional. The mode of TLS configuration. */
   mode?: ConnectorConfigurationTlsModeEnum | (string & {});
 }
-const ConnectorConfigurationTls = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ConnectorConfigurationTls>;
-
 /** Data Asset - a resource within instance of the system, reachable under specified endpoint. For example a database name in a SQL DB. */
 export interface ConnectorConfigurationAsset {
   /** Name of the database. */
@@ -348,11 +252,6 @@ export interface ConnectorConfigurationAsset {
   /** Full Google Cloud resource name - https://cloud.google.com/apis/design/resource_names#full_resource_name. Example: `//library.googleapis.com/shelves/shelf1/books/book2` */
   googleCloudResource?: string;
 }
-const ConnectorConfigurationAsset = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ConnectorConfigurationAsset>;
-
 /** Represents concrete parameter values for Connector Configuration. */
 export interface ConnectorConfiguration {
   /** Specifies how to reach the remote system this connection is pointing to. */
@@ -370,21 +269,11 @@ export interface ConnectorConfiguration {
   /** Data asset. */
   asset?: ConnectorConfigurationAsset;
 }
-const ConnectorConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ConnectorConfiguration>;
-
 /** Container for connection properties for delegation of access to GCP resources. */
 export interface CloudResourceProperties {
   /** Output only. The account ID of the service created for the purpose of this connection. The service account does not have any permissions associated with it when it is created. After creation, customers delegate permissions to the service account. When the connection is used in the context of an operation in BigQuery, the service account will be used to connect to the desired resources in GCP. The account ID is in the form of: @gcp-sa-bigquery-cloudresource.iam.gserviceaccount.com */
   serviceAccountId?: string;
 }
-const CloudResourceProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CloudResourceProperties>;
-
 /** Configuration parameters to establish connection with an external data source, except the credential attributes. */
 export interface Connection {
   /** Optional. The Cloud KMS key that is used for credentials encryption. If omitted, internal Google owned encryption keys are used. Example: `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]` */
@@ -418,8 +307,6 @@ export interface Connection {
   /** Output only. The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
   name?: string;
 }
-const Connection = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Connection>;
-
 export interface CreateProjectsLocationsConnectionsRequest {
   /** Optional. Connection id that should be assigned to the created connection. */
   connectionId?: string;
@@ -428,59 +315,34 @@ export interface CreateProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>;
-
 export interface DeleteProjectsLocationsConnectionsRequest {
   /** Required. Name of the deleted connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
   name: string;
 }
-const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Empty>;
-
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-const GetPolicyOptions = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetPolicyOptions>;
-
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetIamPolicyRequest>;
-
 export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
-
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const AuditLogConfigLogTypeEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<StringList>;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -488,11 +350,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const AuditLogConfig = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AuditLogConfig>;
-
 export type AuditLogConfigList = Array<AuditLogConfig>;
-const AuditLogConfigList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -500,11 +358,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-const AuditConfig = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AuditConfig>;
-
 export type AuditConfigList = Array<AuditConfig>;
-const AuditConfigList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AuditConfigList>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -516,8 +370,6 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -527,11 +379,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-const Binding = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -543,17 +391,10 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-const Policy = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Policy>;
-
 export interface GetProjectsLocationsConnectionsRequest {
   /** Required. Name of the requested connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
   name: string;
 }
-const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetProjectsLocationsConnectionsRequest>;
-
 export interface ListProjectsLocationsConnectionsRequest {
   /** Page token. */
   pageToken?: string;
@@ -562,14 +403,7 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Required. Page size. */
   pageSize?: number;
 }
-const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
-
 export type ConnectionList = Array<Connection>;
-const ConnectionList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ConnectionList>;
-
 /** The response for ConnectionService.ListConnections. */
 export interface ListConnectionsResponse {
   /** List of connections. */
@@ -577,11 +411,6 @@ export interface ListConnectionsResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-const ListConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListConnectionsResponse>;
-
 export interface PatchProjectsLocationsConnectionsRequest {
   /** Required. Name of the connection to update, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
   name: string;
@@ -590,11 +419,6 @@ export interface PatchProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -602,48 +426,28 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export type CreateProjectsLocationsConnectionsError =
   | NotFound
   | Forbidden
@@ -657,8 +461,8 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectionsRequest,
-  output: Connection,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -677,8 +481,8 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectionsRequest,
-  output: Empty,
+  input: __S(27, __c3, 3) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -697,8 +501,8 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsConnectionsRequest,
-  output: Policy,
+  input: __S(31, __c3, 7) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -712,8 +516,8 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsRequest,
-  output: Connection,
+  input: __S(41, __c5, 1) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -728,8 +532,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsRequest,
-  output: ListConnectionsResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -749,8 +553,8 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectionsRequest,
-  output: Connection,
+  input: __S(45, __c5, 5) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -769,8 +573,8 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsConnectionsRequest,
-  output: Policy,
+  input: __S(47, __c5, 7) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -789,8 +593,8 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
   TestIamPermissionsProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsConnectionsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -811,7 +615,7 @@ function __c0(j: number): any {
           instanceUri: S.optional(S.String),
           identity: S.optional(S.String),
           tenantId: S.optional(S.String),
-          crossCloudCacheOptions: S.optional(CrossCloudCacheOptions),
+          crossCloudCacheOptions: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "SalesforceDataCloudProperties",
@@ -827,9 +631,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instanceId: S.optional(S.String),
-          type: S.optional(CloudSqlPropertiesTypeEnum),
+          type: S.optional(S.String),
           database: S.optional(S.String),
-          credential: S.optional(CloudSqlCredential),
+          credential: S.optional(__S(2, __c0, 2)),
           serviceAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudSqlProperties" });
@@ -849,8 +653,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAccountId: S.optional(S.String),
-          metastoreServiceConfig: S.optional(MetastoreServiceConfig),
-          sparkHistoryServerConfig: S.optional(SparkHistoryServerConfig),
+          metastoreServiceConfig: S.optional(__S(4, __c0, 4)),
+          sparkHistoryServerConfig: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "SparkProperties" });
     case 7:
@@ -862,7 +666,7 @@ function __c0(j: number): any {
           identity: S.optional(S.String),
           customerTenantId: S.optional(S.String),
           application: S.optional(S.String),
-          crossCloudCacheOptions: S.optional(CrossCloudCacheOptions),
+          crossCloudCacheOptions: S.optional(__S(0, __c0, 0)),
           redirectUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureProperties" });
@@ -880,8 +684,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          crossCloudCacheOptions: S.optional(CrossCloudCacheOptions),
-          accessRole: S.optional(AwsAccessRole),
+          crossCloudCacheOptions: S.optional(__S(0, __c0, 0)),
+          accessRole: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "AwsProperties" });
     case 2:
@@ -907,7 +711,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           plaintext: S.optional(S.String),
-          secretType: S.optional(ConnectorConfigurationSecretSecretTypeEnum),
+          secretType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationSecret",
@@ -919,18 +723,18 @@ function __c1(j: number): any {
           stringValue: S.optional(S.String),
           doubleValue: S.optional(S.Number),
           int32Value: S.optional(S.Number),
-          secretValue: S.optional(ConnectorConfigurationSecret),
+          secretValue: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationParameterValue",
       });
     case 6:
-      return S.Record(S.String, ConnectorConfigurationParameterValue);
+      return S.Record(S.String, __S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          password: S.optional(ConnectorConfigurationSecret),
+          password: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationUsernamePassword",
@@ -943,8 +747,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
-          usernamePassword: S.optional(ConnectorConfigurationUsernamePassword),
-          parameters: S.optional(ConnectorConfigurationParameterValueMap),
+          usernamePassword: S.optional(__S(15, __c1, 7)),
+          parameters: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationAuthentication",
@@ -960,7 +764,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateServiceConnect: S.optional(ConnectorConfigurationPrivateServiceConnect),
+          privateServiceConnect: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationNetwork",
@@ -980,9 +784,9 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          webPki: S.optional(ConnectorConfigurationTlsWebPki),
-          privatePki: S.optional(ConnectorConfigurationTlsPrivatePki),
-          mode: S.optional(ConnectorConfigurationTlsModeEnum),
+          webPki: S.optional(__S(19, __c2, 3)),
+          privatePki: S.optional(__S(20, __c2, 4)),
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationTls",
@@ -999,13 +803,13 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          endpoint: S.optional(ConnectorConfigurationEndpoint),
-          parameters: S.optional(ConnectorConfigurationParameterValueMap),
-          authentication: S.optional(ConnectorConfigurationAuthentication),
+          endpoint: S.optional(__S(11, __c1, 3)),
+          parameters: S.optional(__S(14, __c1, 6)),
+          authentication: S.optional(__S(16, __c2, 0)),
           connectorId: S.optional(S.String),
-          network: S.optional(ConnectorConfigurationNetwork),
-          tls: S.optional(ConnectorConfigurationTls),
-          asset: S.optional(ConnectorConfigurationAsset),
+          network: S.optional(__S(18, __c2, 2)),
+          tls: S.optional(__S(21, __c2, 5)),
+          asset: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "ConnectorConfiguration" });
   }
@@ -1022,19 +826,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kmsKeyName: S.optional(S.String),
-          salesforceDataCloud: S.optional(SalesforceDataCloudProperties),
+          salesforceDataCloud: S.optional(__S(1, __c0, 1)),
           creationTime: S.optional(S.String),
           description: S.optional(S.String),
           hasCredential: S.optional(S.Boolean),
           friendlyName: S.optional(S.String),
-          cloudSql: S.optional(CloudSqlProperties),
-          spark: S.optional(SparkProperties),
-          azure: S.optional(AzureProperties),
-          aws: S.optional(AwsProperties),
+          cloudSql: S.optional(__S(3, __c0, 3)),
+          spark: S.optional(__S(6, __c0, 6)),
+          azure: S.optional(__S(7, __c0, 7)),
+          aws: S.optional(__S(9, __c1, 1)),
           lastModifiedTime: S.optional(S.String),
-          cloudSpanner: S.optional(CloudSpannerProperties),
-          configuration: S.optional(ConnectorConfiguration),
-          cloudResource: S.optional(CloudResourceProperties),
+          cloudSpanner: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(23, __c2, 7)),
+          cloudResource: S.optional(__S(24, __c3, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Connection" });
@@ -1043,7 +847,7 @@ function __c3(j: number): any {
         S.Struct({
           connectionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Connection.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1081,14 +885,14 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(GetPolicyOptions),
+          options: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1108,21 +912,21 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 2:
-      return S.Array(AuditLogConfig);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 4:
-      return S.Array(AuditConfig);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1136,12 +940,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(Expr),
-          members: S.optional(StringList),
+          condition: S.optional(__S(37, __c4, 5)),
+          members: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Binding" });
     case 7:
-      return S.Array(Binding);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1150,8 +954,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          auditConfigs: S.optional(AuditConfigList),
-          bindings: S.optional(BindingList),
+          auditConfigs: S.optional(__S(36, __c4, 4)),
+          bindings: S.optional(__S(39, __c4, 7)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
@@ -1186,11 +990,11 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsConnectionsRequest",
       });
     case 3:
-      return S.Array(Connection);
+      return S.Array(__S(25, __c3, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(ConnectionList),
+          connections: S.optional(__S(43, __c5, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
@@ -1199,7 +1003,7 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Connection.pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1214,14 +1018,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(Policy),
+          policy: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1239,7 +1043,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1248,7 +1052,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1260,4 +1064,9 @@ function __c6(j: number): any {
         identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

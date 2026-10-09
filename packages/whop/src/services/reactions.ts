@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -54,11 +56,6 @@ export interface CreateReactionRequest {
   /** The unique identifier of the message or forum post to react to. */
   resource_id: string;
 }
-const CreateReactionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateReactionRequest>;
-
 /** The user who left this reaction on the post. */
 export interface ReactionUser {
   /** The unique identifier for the user. */
@@ -68,8 +65,6 @@ export interface ReactionUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const ReactionUser = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ReactionUser>;
-
 /** A single reaction left by a user on a feed post, such as a like or emoji. */
 export interface Reaction {
   /** The emoji used for this reaction in shortcode format. Null if the reaction type is not emoji. */
@@ -81,30 +76,16 @@ export interface Reaction {
   /** The user who left this reaction on the post. */
   user: ReactionUser;
 }
-const Reaction = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Reaction>;
-
 export interface DeleteReactionRequest {
   /** The unique identifier of the reaction to remove, or the identifier of the message or forum post to remove a reaction from. When passing a message or post ID, you must also provide the emoji argument. */
   id: string;
   emoji?: string;
 }
-const DeleteReactionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteReactionRequest>;
-
 export type DeleteReactionResponse = boolean;
-const DeleteReactionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteReactionResponse>;
-
 export interface GetReactionRequest {
   /** The unique identifier of the reaction to retrieve. */
   id: string;
 }
-const GetReactionRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetReactionRequest>;
-
 export interface ListReactionRequest {
   after?: string;
   before?: string;
@@ -112,8 +93,6 @@ export interface ListReactionRequest {
   last?: number;
   resource_id: string;
 }
-const ListReactionRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListReactionRequest>;
-
 /** The user who left this reaction on the post. */
 export type ReactionListItemUser = ReactionUser;
 /** A single reaction left by a user on a feed post, such as a like or emoji. */
@@ -127,15 +106,8 @@ export interface ReactionListItem {
   /** The user who left this reaction on the post. */
   user: ReactionUser;
 }
-const ReactionListItem = Reaction as any as S.Schema<ReactionListItem>;
-
 /** A list of nodes. */
 export type ListReactionResponseDataList = Array<ReactionListItem>;
-const ListReactionResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListReactionResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -147,16 +119,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PageInfo>;
-
 export interface ListReactionResponse {
   /** A list of nodes. */
   data: ListReactionResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListReactionResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListReactionResponse>;
-
 export type CreateReactionError =
   | BadRequest
   | Forbidden
@@ -170,8 +138,8 @@ export const createReaction: API.OperationMethod<
   CreateReactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReactionRequest,
-  output: Reaction,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateReactionRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -190,8 +158,8 @@ export const deleteReaction: API.OperationMethod<
   DeleteReactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReactionRequest,
-  output: DeleteReactionResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DeleteReactionRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteReactionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -210,8 +178,8 @@ export const getReaction: API.OperationMethod<
   GetReactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReactionRequest,
-  output: Reaction,
+  input: __S(5, __c0, 5) as any as S.Schema<GetReactionRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -232,8 +200,8 @@ export const listReaction: API.PaginatedOperationMethod<
   ReactionListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListReactionRequest,
-    output: ListReactionResponse,
+    input: __S(6, __c0, 6) as any as S.Schema<ListReactionRequest>,
+    output: __S(9, __c1, 1) as any as S.Schema<ListReactionResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -274,7 +242,7 @@ function __c0(j: number): any {
           emoji: S.NullOr(S.String),
           id: S.String,
           resource_id: S.String,
-          user: ReactionUser,
+          user: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "Reaction" });
     case 3:
@@ -305,7 +273,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/reactions", code: 200 })),
       ).annotate({ identifier: "ListReactionRequest" });
     case 7:
-      return S.Array(ReactionListItem);
+      return S.Array(__S(2, __c0, 2));
   }
 }
 function __c1(j: number): any {
@@ -322,9 +290,14 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListReactionResponseDataList,
-          page_info: PageInfo,
+          data: __S(7, __c0, 7),
+          page_info: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "ListReactionResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

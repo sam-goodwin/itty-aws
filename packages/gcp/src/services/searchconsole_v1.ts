@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,42 +68,25 @@ export interface AddSitesRequest {
   /** The URL of the site to add. */
   siteUrl: string;
 }
-const AddSitesRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddSitesRequest>;
-
 export interface AddSitesResponse {}
-const AddSitesResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddSitesResponse>;
-
 export interface DeleteSitemapsRequest {
   /** The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. */
   feedpath: string;
   /** The site's URL, including protocol. For example: `http://www.example.com/`. */
   siteUrl: string;
 }
-const DeleteSitemapsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteSitemapsRequest>;
-
 export interface DeleteSitemapsResponse {}
-const DeleteSitemapsResponse = AddSitesResponse as any as S.Schema<DeleteSitemapsResponse>;
-
 export interface DeleteSitesRequest {
   /** The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. */
   siteUrl: string;
 }
-const DeleteSitesRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteSitesRequest>;
-
 export interface DeleteSitesResponse {}
-const DeleteSitesResponse = AddSitesResponse as any as S.Schema<DeleteSitesResponse>;
-
 export interface GetSitemapsRequest {
   /** The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. */
   feedpath: string;
   /** The site's URL, including protocol. For example: `http://www.example.com/`. */
   siteUrl: string;
 }
-const GetSitemapsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetSitemapsRequest>;
-
 export type WmxSitemapContentTypeEnum =
   | "WEB"
   | "IMAGE"
@@ -112,8 +97,6 @@ export type WmxSitemapContentTypeEnum =
   | "PATTERN"
   | "IOS_APP"
   | "DATA_FEED_ELEMENT";
-const WmxSitemapContentTypeEnum = S.String;
-
 /** Information about the various content types in the sitemap. */
 export interface WmxSitemapContent {
   /** The number of URLs in the sitemap (of the content type). */
@@ -123,14 +106,7 @@ export interface WmxSitemapContent {
   /** The specific type of content in this sitemap. For example: `web`. */
   type?: WmxSitemapContentTypeEnum;
 }
-const WmxSitemapContent = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<WmxSitemapContent>;
-
 export type WmxSitemapContentList = Array<WmxSitemapContent>;
-const WmxSitemapContentList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<WmxSitemapContentList>;
-
 export type WmxSitemapTypeEnum =
   | "NOT_SITEMAP"
   | "URL_LIST"
@@ -139,8 +115,6 @@ export type WmxSitemapTypeEnum =
   | "ATOM_FEED"
   | "PATTERN_SITEMAP"
   | "OCEANFRONT";
-const WmxSitemapTypeEnum = S.String;
-
 /** Contains detailed information about a specific URL submitted as a [sitemap](https://support.google.com/webmasters/answer/156184). */
 export interface WmxSitemap {
   /** The url of the sitemap. */
@@ -162,22 +136,16 @@ export interface WmxSitemap {
   /** Number of warnings for the sitemap. These are generally non-critical issues with URLs in the sitemaps. */
   warnings?: string;
 }
-const WmxSitemap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<WmxSitemap>;
-
 export interface GetSitesRequest {
   /** The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. */
   siteUrl: string;
 }
-const GetSitesRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetSitesRequest>;
-
 export type WmxSitePermissionLevelEnum =
   | "SITE_PERMISSION_LEVEL_UNSPECIFIED"
   | "SITE_OWNER"
   | "SITE_FULL_USER"
   | "SITE_RESTRICTED_USER"
   | "SITE_UNVERIFIED_USER";
-const WmxSitePermissionLevelEnum = S.String;
-
 /** Contains permission level information about a Search Console site. For more information, see [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999). */
 export interface WmxSite {
   /** The URL of the site. */
@@ -185,8 +153,6 @@ export interface WmxSite {
   /** The user's permission level for the site. */
   permissionLevel?: WmxSitePermissionLevelEnum;
 }
-const WmxSite = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<WmxSite>;
-
 /** Index inspection request. */
 export interface InspectUrlIndexRequest {
   /** Required. URL to inspect. Must be under the property specified in "site_url". */
@@ -196,45 +162,27 @@ export interface InspectUrlIndexRequest {
   /** Optional. An [IETF BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag) language code representing the requested language for translated issue messages, e.g. "en-US", "or "de-CH". Default value is "en-US". */
   languageCode?: string;
 }
-const InspectUrlIndexRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<InspectUrlIndexRequest>;
-
 export interface InspectUrlInspectionIndexRequest {
   /** Request body */
   body?: InspectUrlIndexRequest;
 }
-const InspectUrlInspectionIndexRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<InspectUrlInspectionIndexRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
-
 export type IndexStatusInspectionResultVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "PASS"
   | "PARTIAL"
   | "FAIL"
   | "NEUTRAL";
-const IndexStatusInspectionResultVerdictEnum = S.String;
-
 export type IndexStatusInspectionResultCrawledAsEnum =
   | "CRAWLING_USER_AGENT_UNSPECIFIED"
   | "DESKTOP"
   | "MOBILE";
-const IndexStatusInspectionResultCrawledAsEnum = S.String;
-
 export type IndexStatusInspectionResultIndexingStateEnum =
   | "INDEXING_STATE_UNSPECIFIED"
   | "INDEXING_ALLOWED"
   | "BLOCKED_BY_META_TAG"
   | "BLOCKED_BY_HTTP_HEADER"
   | "BLOCKED_BY_ROBOTS_TXT";
-const IndexStatusInspectionResultIndexingStateEnum = S.String;
-
 export type IndexStatusInspectionResultPageFetchStateEnum =
   | "PAGE_FETCH_STATE_UNSPECIFIED"
   | "SUCCESSFUL"
@@ -248,14 +196,10 @@ export type IndexStatusInspectionResultPageFetchStateEnum =
   | "BLOCKED_4XX"
   | "INTERNAL_CRAWL_ERROR"
   | "INVALID_URL";
-const IndexStatusInspectionResultPageFetchStateEnum = S.String;
-
 export type IndexStatusInspectionResultRobotsTxtStateEnum =
   | "ROBOTS_TXT_STATE_UNSPECIFIED"
   | "ALLOWED"
   | "DISALLOWED";
-const IndexStatusInspectionResultRobotsTxtStateEnum = S.String;
-
 /** Results of index status inspection for either the live page or the version in Google's index, depending on whether you requested a live inspection or not. For more information, see the [Index coverage report documentation](https://support.google.com/webmasters/answer/7440203). */
 export interface IndexStatusInspectionResult {
   /** The URL that your page or site [declares as canonical](https://developers.google.com/search/docs/advanced/crawling/consolidate-duplicate-urls?#define-canonical). If you did not declare a canonical URL, this field is absent. */
@@ -281,22 +225,13 @@ export interface IndexStatusInspectionResult {
   /** Whether or not the page is blocked to Google by a robots.txt rule. */
   robotsTxtState?: IndexStatusInspectionResultRobotsTxtStateEnum;
 }
-const IndexStatusInspectionResult = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IndexStatusInspectionResult>;
-
 export type AmpInspectionResultAmpIndexStatusVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "PASS"
   | "PARTIAL"
   | "FAIL"
   | "NEUTRAL";
-const AmpInspectionResultAmpIndexStatusVerdictEnum = S.String;
-
 export type AmpIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
-const AmpIssueSeverityEnum = S.String;
-
 /** AMP issue. */
 export interface AmpIssue {
   /** Brief description of this issue. */
@@ -304,11 +239,7 @@ export interface AmpIssue {
   /** Severity of this issue: WARNING or ERROR. */
   severity?: AmpIssueSeverityEnum;
 }
-const AmpIssue = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AmpIssue>;
-
 export type AmpIssueList = Array<AmpIssue>;
-const AmpIssueList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AmpIssueList>;
-
 export type AmpInspectionResultPageFetchStateEnum =
   | "PAGE_FETCH_STATE_UNSPECIFIED"
   | "SUCCESSFUL"
@@ -322,29 +253,21 @@ export type AmpInspectionResultPageFetchStateEnum =
   | "BLOCKED_4XX"
   | "INTERNAL_CRAWL_ERROR"
   | "INVALID_URL";
-const AmpInspectionResultPageFetchStateEnum = S.String;
-
 export type AmpInspectionResultRobotsTxtStateEnum =
   | "ROBOTS_TXT_STATE_UNSPECIFIED"
   | "ALLOWED"
   | "DISALLOWED";
-const AmpInspectionResultRobotsTxtStateEnum = S.String;
-
 export type AmpInspectionResultVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "PASS"
   | "PARTIAL"
   | "FAIL"
   | "NEUTRAL";
-const AmpInspectionResultVerdictEnum = S.String;
-
 export type AmpInspectionResultIndexingStateEnum =
   | "AMP_INDEXING_STATE_UNSPECIFIED"
   | "AMP_INDEXING_ALLOWED"
   | "BLOCKED_DUE_TO_NOINDEX"
   | "BLOCKED_DUE_TO_EXPIRED_UNAVAILABLE_AFTER";
-const AmpInspectionResultIndexingStateEnum = S.String;
-
 /** AMP inspection result of the live page or the current information from Google's index, depending on whether you requested a live inspection or not. */
 export interface AmpInspectionResult {
   /** URL of the AMP that was inspected. If the submitted URL is a desktop page that refers to an AMP version, the AMP version will be inspected. */
@@ -364,8 +287,6 @@ export interface AmpInspectionResult {
   /** Last time this AMP version was crawled by Google. Absent if the URL was never crawled successfully. */
   lastCrawlTime?: string;
 }
-const AmpInspectionResult = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AmpInspectionResult>;
-
 export type RichResultsIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
 /** Severity and status of a single issue affecting a single rich result instance on a page. */
 export interface RichResultsIssue {
@@ -374,11 +295,7 @@ export interface RichResultsIssue {
   /** Severity of this issue: WARNING, or ERROR. Items with an issue of status ERROR cannot appear with rich result features in Google Search results. */
   severity?: RichResultsIssueSeverityEnum;
 }
-const RichResultsIssue = AmpIssue as any as S.Schema<RichResultsIssue>;
-
 export type RichResultsIssueList = Array<RichResultsIssue>;
-const RichResultsIssueList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<RichResultsIssueList>;
-
 /** A specific rich result found on the page. */
 export interface Item {
   /** A list of zero or more rich result issues found for this instance. */
@@ -386,11 +303,7 @@ export interface Item {
   /** The user-provided name of this item. */
   name?: string;
 }
-const Item = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Item>;
-
 export type ItemList = Array<Item>;
-const ItemList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ItemList>;
-
 /** Rich Results items grouped by type. */
 export interface DetectedItems {
   /** List of Rich Results items. */
@@ -398,19 +311,13 @@ export interface DetectedItems {
   /** Rich Results type */
   richResultType?: string;
 }
-const DetectedItems = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DetectedItems>;
-
 export type DetectedItemsList = Array<DetectedItems>;
-const DetectedItemsList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DetectedItemsList>;
-
 export type RichResultsInspectionResultVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "PASS"
   | "PARTIAL"
   | "FAIL"
   | "NEUTRAL";
-const RichResultsInspectionResultVerdictEnum = S.String;
-
 /** Rich-Results inspection result, including any rich results found at this URL. */
 export interface RichResultsInspectionResult {
   /** A list of zero or more rich results detected on this page. Rich results that cannot even be parsed due to syntactic issues will not be listed here. */
@@ -418,22 +325,13 @@ export interface RichResultsInspectionResult {
   /** High-level rich results inspection result for this URL. */
   verdict?: RichResultsInspectionResultVerdictEnum;
 }
-const RichResultsInspectionResult = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<RichResultsInspectionResult>;
-
 export type MobileUsabilityInspectionResultVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "PASS"
   | "PARTIAL"
   | "FAIL"
   | "NEUTRAL";
-const MobileUsabilityInspectionResultVerdictEnum = S.String;
-
 export type MobileUsabilityIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
-const MobileUsabilityIssueSeverityEnum = S.String;
-
 export type MobileUsabilityIssueIssueTypeEnum =
   | "MOBILE_USABILITY_ISSUE_TYPE_UNSPECIFIED"
   | "USES_INCOMPATIBLE_PLUGINS"
@@ -442,8 +340,6 @@ export type MobileUsabilityIssueIssueTypeEnum =
   | "SIZE_CONTENT_TO_VIEWPORT"
   | "USE_LEGIBLE_FONT_SIZES"
   | "TAP_TARGETS_TOO_CLOSE";
-const MobileUsabilityIssueIssueTypeEnum = S.String;
-
 /** Mobile-usability issue. */
 export interface MobileUsabilityIssue {
   /** Not returned; reserved for future use. */
@@ -453,14 +349,7 @@ export interface MobileUsabilityIssue {
   /** Mobile-usability issue type. */
   issueType?: MobileUsabilityIssueIssueTypeEnum;
 }
-const MobileUsabilityIssue = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<MobileUsabilityIssue>;
-
 export type MobileUsabilityIssueList = Array<MobileUsabilityIssue>;
-const MobileUsabilityIssueList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<MobileUsabilityIssueList>;
-
 /** Mobile-usability inspection results. */
 export interface MobileUsabilityInspectionResult {
   /** High-level mobile-usability inspection result for this URL. */
@@ -468,11 +357,6 @@ export interface MobileUsabilityInspectionResult {
   /** A list of zero or more mobile-usability issues detected for this URL. */
   issues?: MobileUsabilityIssueList;
 }
-const MobileUsabilityInspectionResult = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MobileUsabilityInspectionResult>;
-
 /** URL inspection result, including all inspection results. */
 export interface UrlInspectionResult {
   /** Link to Search Console URL inspection. */
@@ -486,52 +370,31 @@ export interface UrlInspectionResult {
   /** Result of the Mobile usability analysis. */
   mobileUsabilityResult?: MobileUsabilityInspectionResult;
 }
-const UrlInspectionResult = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UrlInspectionResult>;
-
 /** Index-Status inspection response. */
 export interface InspectUrlIndexResponse {
   /** URL inspection results. */
   inspectionResult?: UrlInspectionResult;
 }
-const InspectUrlIndexResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<InspectUrlIndexResponse>;
-
 export interface ListSitemapsRequest {
   /** The site's URL, including protocol. For example: `http://www.example.com/`. */
   siteUrl: string;
   /** A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`. */
   sitemapIndex?: string;
 }
-const ListSitemapsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListSitemapsRequest>;
-
 export type WmxSitemapList = Array<WmxSitemap>;
-const WmxSitemapList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<WmxSitemapList>;
-
 /** List of sitemaps. */
 export interface SitemapsListResponse {
   /** Contains detailed information about a specific URL submitted as a [sitemap](https://support.google.com/webmasters/answer/156184). */
   sitemap?: WmxSitemapList;
 }
-const SitemapsListResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SitemapsListResponse>;
-
 export interface ListSitesRequest {}
-const ListSitesRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListSitesRequest>;
-
 export type WmxSiteList = Array<WmxSite>;
-const WmxSiteList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<WmxSiteList>;
-
 /** List of sites with access level information. */
 export interface SitesListResponse {
   /** Contains permission level information about a Search Console site. For more information, see [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999). */
   siteEntry?: WmxSiteList;
 }
-const SitesListResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SitesListResponse>;
-
 export type ApiDimensionFilterGroupGroupTypeEnum = "AND";
-const ApiDimensionFilterGroupGroupTypeEnum = S.String;
-
 export type ApiDimensionFilterOperatorEnum =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -539,30 +402,19 @@ export type ApiDimensionFilterOperatorEnum =
   | "NOT_CONTAINS"
   | "INCLUDING_REGEX"
   | "EXCLUDING_REGEX";
-const ApiDimensionFilterOperatorEnum = S.String;
-
 export type ApiDimensionFilterDimensionEnum =
   | "QUERY"
   | "PAGE"
   | "COUNTRY"
   | "DEVICE"
   | "SEARCH_APPEARANCE";
-const ApiDimensionFilterDimensionEnum = S.String;
-
 /** A filter test to be applied to each row in the data set, where a match can return the row. Filters are string comparisons, and values and dimension names are not case-sensitive. Individual filters are either AND'ed or OR'ed within their parent filter group, according to the group's group type. You do not need to group by a specified dimension to filter against it. */
 export interface ApiDimensionFilter {
   operator?: ApiDimensionFilterOperatorEnum | (string & {});
   dimension?: ApiDimensionFilterDimensionEnum | (string & {});
   expression?: string;
 }
-const ApiDimensionFilter = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ApiDimensionFilter>;
-
 export type ApiDimensionFilterList = Array<ApiDimensionFilter>;
-const ApiDimensionFilterList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ApiDimensionFilterList>;
-
 /** A set of `dimension` value filters to test against each row. Only rows that pass all filter groups will be returned. All results within a filter group are either AND'ed or OR'ed together, depending on the group type selected. All filter groups are AND'ed together. */
 export interface ApiDimensionFilterGroup {
   /** Optional. The logic operator between filters of the same group. */
@@ -570,17 +422,7 @@ export interface ApiDimensionFilterGroup {
   /** Optional. A list of single-value filters in this group. */
   filters?: ApiDimensionFilterList;
 }
-const ApiDimensionFilterGroup = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ApiDimensionFilterGroup>;
-
 export type ApiDimensionFilterGroupList = Array<ApiDimensionFilterGroup>;
-const ApiDimensionFilterGroupList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ApiDimensionFilterGroupList>;
-
 export type SearchAnalyticsQueryRequestSearchTypeEnum =
   | "WEB"
   | "IMAGE"
@@ -588,15 +430,11 @@ export type SearchAnalyticsQueryRequestSearchTypeEnum =
   | "NEWS"
   | "DISCOVER"
   | "GOOGLE_NEWS";
-const SearchAnalyticsQueryRequestSearchTypeEnum = S.String;
-
 export type SearchAnalyticsQueryRequestAggregationTypeEnum =
   | "AUTO"
   | "BY_PROPERTY"
   | "BY_PAGE"
   | "BY_NEWS_SHOWCASE_PANEL";
-const SearchAnalyticsQueryRequestAggregationTypeEnum = S.String;
-
 export type SearchAnalyticsQueryRequestDimensionsItemEnum =
   | "DATE"
   | "QUERY"
@@ -605,16 +443,9 @@ export type SearchAnalyticsQueryRequestDimensionsItemEnum =
   | "DEVICE"
   | "SEARCH_APPEARANCE"
   | "HOUR";
-const SearchAnalyticsQueryRequestDimensionsItemEnum = S.String;
-
 export type SearchAnalyticsQueryRequestDimensionsItemEnumList = Array<
   SearchAnalyticsQueryRequestDimensionsItemEnum | (string & {})
 >;
-const SearchAnalyticsQueryRequestDimensionsItemEnumList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<SearchAnalyticsQueryRequestDimensionsItemEnumList>;
-
 export type SearchAnalyticsQueryRequestTypeEnum =
   | "WEB"
   | "IMAGE"
@@ -622,15 +453,11 @@ export type SearchAnalyticsQueryRequestTypeEnum =
   | "NEWS"
   | "DISCOVER"
   | "GOOGLE_NEWS";
-const SearchAnalyticsQueryRequestTypeEnum = S.String;
-
 export type SearchAnalyticsQueryRequestDataStateEnum =
   | "DATA_STATE_UNSPECIFIED"
   | "FINAL"
   | "ALL"
   | "HOURLY_ALL";
-const SearchAnalyticsQueryRequestDataStateEnum = S.String;
-
 export interface SearchAnalyticsQueryRequest {
   /** [Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be greater than or equal to the start date. This value is included in the range. */
   endDate?: string;
@@ -653,29 +480,17 @@ export interface SearchAnalyticsQueryRequest {
   /** The data state to be fetched, can be full or all, the latter including full and partial data. */
   dataState?: SearchAnalyticsQueryRequestDataStateEnum | (string & {});
 }
-const SearchAnalyticsQueryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SearchAnalyticsQueryRequest>;
-
 export interface QuerySearchanalyticsRequest {
   /** The site's URL, including protocol. For example: `http://www.example.com/`. */
   siteUrl: string;
   /** Request body */
   body?: SearchAnalyticsQueryRequest;
 }
-const QuerySearchanalyticsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<QuerySearchanalyticsRequest>;
-
 export type SearchAnalyticsQueryResponseResponseAggregationTypeEnum =
   | "AUTO"
   | "BY_PROPERTY"
   | "BY_PAGE"
   | "BY_NEWS_SHOWCASE_PANEL";
-const SearchAnalyticsQueryResponseResponseAggregationTypeEnum = S.String;
-
 /** An object that may be returned with your query results, providing context about the state of the data. When you request recent data (using `all` or `hourly_all` for `dataState`), some of the rows returned may represent data that is incomplete, which means that the data is still being collected and processed. This metadata object helps you identify exactly when this starts and ends. All dates and times provided in this object are in the `America/Los_Angeles` time zone. The specific field returned within this object depends on how you've grouped your data in the request. See details in inner fields. */
 export interface Metadata {
   /** The first date for which the data is still being collected and processed, presented in `YYYY-MM-DD` format (ISO-8601 extended local date format). This field is populated only when the request's `dataState` is "`all`", data is grouped by "`DATE`", and the requested date range contains incomplete data points. All values after the `first_incomplete_date` may still change noticeably. */
@@ -683,8 +498,6 @@ export interface Metadata {
   /** The first hour for which the data is still being collected and processed, presented in `YYYY-MM-DDThh:mm:ss[+|-]hh:mm` format (ISO-8601 extended offset date-time format). This field is populated only when the request's `dataState` is "`hourly_all`", data is grouped by "`HOUR`" and the requested date range contains incomplete data points. All values after the `first_incomplete_hour` may still change noticeably. */
   firstIncompleteHour?: string;
 }
-const Metadata = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Metadata>;
-
 export interface ApiDataRow {
   impressions?: number;
   ctr?: number;
@@ -692,11 +505,7 @@ export interface ApiDataRow {
   position?: number;
   keys?: StringList;
 }
-const ApiDataRow = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ApiDataRow>;
-
 export type ApiDataRowList = Array<ApiDataRow>;
-const ApiDataRowList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ApiDataRowList>;
-
 /** A list of rows, one per result, grouped by key. Metrics in each row are aggregated for all data grouped by that key either by page or property, as specified by the aggregation type parameter. */
 export interface SearchAnalyticsQueryResponse {
   /** How the results were aggregated. */
@@ -706,11 +515,6 @@ export interface SearchAnalyticsQueryResponse {
   /** A list of rows grouped by the key values in the order given in the query. */
   rows?: ApiDataRowList;
 }
-const SearchAnalyticsQueryResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<SearchAnalyticsQueryResponse>;
-
 /** Mobile-friendly test request. */
 export interface RunMobileFriendlyTestRequest {
   /** Whether or not screenshot is requested. Default is false. */
@@ -718,20 +522,10 @@ export interface RunMobileFriendlyTestRequest {
   /** URL for inspection. */
   url?: string;
 }
-const RunMobileFriendlyTestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<RunMobileFriendlyTestRequest>;
-
 export interface RunUrlTestingToolsMobileFriendlyTestRequest {
   /** Request body */
   body?: RunMobileFriendlyTestRequest;
 }
-const RunUrlTestingToolsMobileFriendlyTestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<RunUrlTestingToolsMobileFriendlyTestRequest>;
-
 /** Describe image data. */
 export interface Image {
   /** The mime-type of the image data. */
@@ -739,25 +533,17 @@ export interface Image {
   /** Image data in format determined by the mime type. Currently, the format will always be "image/png", but this might change in the future. */
   data?: string;
 }
-const Image = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Image>;
-
 /** Blocked resource. */
 export interface BlockedResource {
   /** URL of the blocked resource. */
   url?: string;
 }
-const BlockedResource = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<BlockedResource>;
-
 /** Information about a resource with issue. */
 export interface ResourceIssue {
   /** Describes a blocked resource issue. */
   blockedResource?: BlockedResource;
 }
-const ResourceIssue = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ResourceIssue>;
-
 export type ResourceIssueList = Array<ResourceIssue>;
-const ResourceIssueList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ResourceIssueList>;
-
 export type MobileFriendlyIssueRuleEnum =
   | "MOBILE_FRIENDLY_RULE_UNSPECIFIED"
   | "USES_INCOMPATIBLE_PLUGINS"
@@ -766,34 +552,21 @@ export type MobileFriendlyIssueRuleEnum =
   | "SIZE_CONTENT_TO_VIEWPORT"
   | "USE_LEGIBLE_FONT_SIZES"
   | "TAP_TARGETS_TOO_CLOSE";
-const MobileFriendlyIssueRuleEnum = S.String;
-
 /** Mobile-friendly issue. */
 export interface MobileFriendlyIssue {
   /** Rule violated. */
   rule?: MobileFriendlyIssueRuleEnum;
 }
-const MobileFriendlyIssue = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<MobileFriendlyIssue>;
-
 export type MobileFriendlyIssueList = Array<MobileFriendlyIssue>;
-const MobileFriendlyIssueList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<MobileFriendlyIssueList>;
-
 export type RunMobileFriendlyTestResponseMobileFriendlinessEnum =
   | "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED"
   | "MOBILE_FRIENDLY"
   | "NOT_MOBILE_FRIENDLY";
-const RunMobileFriendlyTestResponseMobileFriendlinessEnum = S.String;
-
 export type TestStatusStatusEnum =
   | "TEST_STATUS_UNSPECIFIED"
   | "COMPLETE"
   | "INTERNAL_ERROR"
   | "PAGE_UNREACHABLE";
-const TestStatusStatusEnum = S.String;
-
 /** Final state of the test, including error details if necessary. */
 export interface TestStatus {
   /** Status of the test. */
@@ -801,8 +574,6 @@ export interface TestStatus {
   /** Error details if applicable. */
   details?: string;
 }
-const TestStatus = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TestStatus>;
-
 /** Mobile-friendly test response, including mobile-friendly issues and resource issues. */
 export interface RunMobileFriendlyTestResponse {
   /** Screenshot of the requested URL. */
@@ -816,25 +587,13 @@ export interface RunMobileFriendlyTestResponse {
   /** Final state of the test, can be either complete or an error. */
   testStatus?: TestStatus;
 }
-const RunMobileFriendlyTestResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<RunMobileFriendlyTestResponse>;
-
 export interface SubmitSitemapsRequest {
   /** The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. */
   feedpath: string;
   /** The site's URL, including protocol. For example: `http://www.example.com/`. */
   siteUrl: string;
 }
-const SubmitSitemapsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<SubmitSitemapsRequest>;
-
 export interface SubmitSitemapsResponse {}
-const SubmitSitemapsResponse = AddSitesResponse as any as S.Schema<SubmitSitemapsResponse>;
-
 export type AddSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a site to the set of the user's sites in Search Console. */
 export const addSites: API.OperationMethod<
@@ -843,8 +602,8 @@ export const addSites: API.OperationMethod<
   AddSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSitesRequest,
-  output: AddSitesResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddSitesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -858,8 +617,8 @@ export const deleteSitemaps: API.OperationMethod<
   DeleteSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSitemapsRequest,
-  output: DeleteSitemapsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteSitemapsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSitemapsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -873,8 +632,8 @@ export const deleteSites: API.OperationMethod<
   DeleteSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSitesRequest,
-  output: DeleteSitesResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DeleteSitesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -888,8 +647,8 @@ export const getSitemaps: API.OperationMethod<
   GetSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSitemapsRequest,
-  output: WmxSitemap,
+  input: __S(4, __c0, 4) as any as S.Schema<GetSitemapsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<WmxSitemap>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -899,8 +658,8 @@ export type GetSitesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves information about specific site. */
 export const getSites: API.OperationMethod<GetSitesRequest, WmxSite, GetSitesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetSitesRequest,
-    output: WmxSite,
+    input: __S(8, __c1, 0) as any as S.Schema<GetSitesRequest>,
+    output: __S(9, __c1, 1) as any as S.Schema<WmxSite>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -919,8 +678,8 @@ export const inspectUrlInspectionIndex: API.OperationMethod<
   InspectUrlInspectionIndexError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InspectUrlInspectionIndexRequest,
-  output: InspectUrlIndexResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<InspectUrlInspectionIndexRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<InspectUrlIndexResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -934,8 +693,8 @@ export const listSitemaps: API.OperationMethod<
   ListSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSitemapsRequest,
-  output: SitemapsListResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<ListSitemapsRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<SitemapsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -949,8 +708,8 @@ export const listSites: API.OperationMethod<
   ListSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSitesRequest,
-  output: SitesListResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<ListSitesRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<SitesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -964,8 +723,8 @@ export const querySearchanalytics: API.OperationMethod<
   QuerySearchanalyticsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QuerySearchanalyticsRequest,
-  output: SearchAnalyticsQueryResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<QuerySearchanalyticsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<SearchAnalyticsQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -984,8 +743,8 @@ export const runUrlTestingToolsMobileFriendlyTest: API.OperationMethod<
   RunUrlTestingToolsMobileFriendlyTestError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunUrlTestingToolsMobileFriendlyTestRequest,
-  output: RunMobileFriendlyTestResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<RunUrlTestingToolsMobileFriendlyTestRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<RunMobileFriendlyTestResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -999,8 +758,8 @@ export const submitSitemaps: API.OperationMethod<
   SubmitSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitSitemapsRequest,
-  output: SubmitSitemapsResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<SubmitSitemapsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<SubmitSitemapsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1068,11 +827,11 @@ function __c0(j: number): any {
         S.Struct({
           submitted: S.optional(S.String),
           indexed: S.optional(S.String),
-          type: S.optional(WmxSitemapContentTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "WmxSitemapContent" });
     case 6:
-      return S.Array(WmxSitemapContent);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1082,8 +841,8 @@ function __c0(j: number): any {
           errors: S.optional(S.String),
           isPending: S.optional(S.Boolean),
           isSitemapsIndex: S.optional(S.Boolean),
-          contents: S.optional(WmxSitemapContentList),
-          type: S.optional(WmxSitemapTypeEnum),
+          contents: S.optional(__S(6, __c0, 6)),
+          type: S.optional(S.String),
           warnings: S.optional(S.String),
         }),
       ).annotate({ identifier: "WmxSitemap" });
@@ -1107,7 +866,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           siteUrl: S.optional(S.String),
-          permissionLevel: S.optional(WmxSitePermissionLevelEnum),
+          permissionLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "WmxSite" });
     case 2:
@@ -1121,7 +880,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(InspectUrlIndexRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1139,15 +898,15 @@ function __c1(j: number): any {
         S.Struct({
           userCanonical: S.optional(S.String),
           googleCanonical: S.optional(S.String),
-          referringUrls: S.optional(StringList),
-          verdict: S.optional(IndexStatusInspectionResultVerdictEnum),
-          crawledAs: S.optional(IndexStatusInspectionResultCrawledAsEnum),
-          indexingState: S.optional(IndexStatusInspectionResultIndexingStateEnum),
+          referringUrls: S.optional(__S(12, __c1, 4)),
+          verdict: S.optional(S.String),
+          crawledAs: S.optional(S.String),
+          indexingState: S.optional(S.String),
           lastCrawlTime: S.optional(S.String),
-          sitemap: S.optional(StringList),
-          pageFetchState: S.optional(IndexStatusInspectionResultPageFetchStateEnum),
+          sitemap: S.optional(__S(12, __c1, 4)),
+          pageFetchState: S.optional(S.String),
           coverageState: S.optional(S.String),
-          robotsTxtState: S.optional(IndexStatusInspectionResultRobotsTxtStateEnum),
+          robotsTxtState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IndexStatusInspectionResult",
@@ -1156,11 +915,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           issueMessage: S.optional(S.String),
-          severity: S.optional(AmpIssueSeverityEnum),
+          severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmpIssue" });
     case 7:
-      return S.Array(AmpIssue);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1169,40 +928,40 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ampUrl: S.optional(S.String),
-          ampIndexStatusVerdict: S.optional(AmpInspectionResultAmpIndexStatusVerdictEnum),
-          issues: S.optional(AmpIssueList),
-          pageFetchState: S.optional(AmpInspectionResultPageFetchStateEnum),
-          robotsTxtState: S.optional(AmpInspectionResultRobotsTxtStateEnum),
-          verdict: S.optional(AmpInspectionResultVerdictEnum),
-          indexingState: S.optional(AmpInspectionResultIndexingStateEnum),
+          ampIndexStatusVerdict: S.optional(S.String),
+          issues: S.optional(__S(15, __c1, 7)),
+          pageFetchState: S.optional(S.String),
+          robotsTxtState: S.optional(S.String),
+          verdict: S.optional(S.String),
+          indexingState: S.optional(S.String),
           lastCrawlTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmpInspectionResult" });
     case 1:
-      return S.Array(RichResultsIssue);
+      return S.Array(__S(14, __c1, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(RichResultsIssueList),
+          issues: S.optional(__S(17, __c2, 1)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Item" });
     case 3:
-      return S.Array(Item);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ItemList),
+          items: S.optional(__S(19, __c2, 3)),
           richResultType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DetectedItems" });
     case 5:
-      return S.Array(DetectedItems);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          detectedItems: S.optional(DetectedItemsList),
-          verdict: S.optional(RichResultsInspectionResultVerdictEnum),
+          detectedItems: S.optional(__S(21, __c2, 5)),
+          verdict: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RichResultsInspectionResult",
@@ -1210,9 +969,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(MobileUsabilityIssueSeverityEnum),
+          severity: S.optional(S.String),
           message: S.optional(S.String),
-          issueType: S.optional(MobileUsabilityIssueIssueTypeEnum),
+          issueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileUsabilityIssue" });
   }
@@ -1220,12 +979,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MobileUsabilityIssue);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          verdict: S.optional(MobileUsabilityInspectionResultVerdictEnum),
-          issues: S.optional(MobileUsabilityIssueList),
+          verdict: S.optional(S.String),
+          issues: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "MobileUsabilityInspectionResult",
@@ -1234,16 +993,16 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           inspectionResultLink: S.optional(S.String),
-          indexStatusResult: S.optional(IndexStatusInspectionResult),
-          ampResult: S.optional(AmpInspectionResult),
-          richResultsResult: S.optional(RichResultsInspectionResult),
-          mobileUsabilityResult: S.optional(MobileUsabilityInspectionResult),
+          indexStatusResult: S.optional(__S(13, __c1, 5)),
+          ampResult: S.optional(__S(16, __c2, 0)),
+          richResultsResult: S.optional(__S(22, __c2, 6)),
+          mobileUsabilityResult: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "UrlInspectionResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          inspectionResult: S.optional(UrlInspectionResult),
+          inspectionResult: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "InspectUrlIndexResponse" });
     case 4:
@@ -1260,11 +1019,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListSitemapsRequest" });
     case 5:
-      return S.Array(WmxSitemap);
+      return S.Array(__S(7, __c0, 7));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sitemap: S.optional(WmxSitemapList),
+          sitemap: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "SitemapsListResponse" });
     case 7:
@@ -1282,47 +1041,47 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WmxSite);
+      return S.Array(__S(9, __c1, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          siteEntry: S.optional(WmxSiteList),
+          siteEntry: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "SitesListResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operator: S.optional(ApiDimensionFilterOperatorEnum),
-          dimension: S.optional(ApiDimensionFilterDimensionEnum),
+          operator: S.optional(S.String),
+          dimension: S.optional(S.String),
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiDimensionFilter" });
     case 3:
-      return S.Array(ApiDimensionFilter);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          groupType: S.optional(ApiDimensionFilterGroupGroupTypeEnum),
-          filters: S.optional(ApiDimensionFilterList),
+          groupType: S.optional(S.String),
+          filters: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "ApiDimensionFilterGroup" });
     case 5:
-      return S.Array(ApiDimensionFilterGroup);
+      return S.Array(__S(36, __c4, 4));
     case 6:
-      return S.Array(SearchAnalyticsQueryRequestDimensionsItemEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           endDate: S.optional(S.String),
           rowLimit: S.optional(S.Number),
           startDate: S.optional(S.String),
-          dimensionFilterGroups: S.optional(ApiDimensionFilterGroupList),
-          searchType: S.optional(SearchAnalyticsQueryRequestSearchTypeEnum),
-          aggregationType: S.optional(SearchAnalyticsQueryRequestAggregationTypeEnum),
-          dimensions: S.optional(SearchAnalyticsQueryRequestDimensionsItemEnumList),
+          dimensionFilterGroups: S.optional(__S(37, __c4, 5)),
+          searchType: S.optional(S.String),
+          aggregationType: S.optional(S.String),
+          dimensions: S.optional(__S(38, __c4, 6)),
           startRow: S.optional(S.Number),
-          type: S.optional(SearchAnalyticsQueryRequestTypeEnum),
-          dataState: S.optional(SearchAnalyticsQueryRequestDataStateEnum),
+          type: S.optional(S.String),
+          dataState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchAnalyticsQueryRequest",
@@ -1335,7 +1094,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           siteUrl: S.String.pipe(T.Label()),
-          body: S.optional(SearchAnalyticsQueryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1360,19 +1119,17 @@ function __c5(j: number): any {
           ctr: S.optional(S.Number),
           clicks: S.optional(S.Number),
           position: S.optional(S.Number),
-          keys: S.optional(StringList),
+          keys: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "ApiDataRow" });
     case 3:
-      return S.Array(ApiDataRow);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          responseAggregationType: S.optional(
-            SearchAnalyticsQueryResponseResponseAggregationTypeEnum,
-          ),
-          metadata: S.optional(Metadata),
-          rows: S.optional(ApiDataRowList),
+          responseAggregationType: S.optional(S.String),
+          metadata: S.optional(__S(41, __c5, 1)),
+          rows: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "SearchAnalyticsQueryResponse",
@@ -1389,7 +1146,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(RunMobileFriendlyTestRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1420,34 +1177,34 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          blockedResource: S.optional(BlockedResource),
+          blockedResource: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "ResourceIssue" });
     case 2:
-      return S.Array(ResourceIssue);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(MobileFriendlyIssueRuleEnum),
+          rule: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileFriendlyIssue" });
     case 4:
-      return S.Array(MobileFriendlyIssue);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TestStatusStatusEnum),
+          status: S.optional(S.String),
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          screenshot: S.optional(Image),
-          resourceIssues: S.optional(ResourceIssueList),
-          mobileFriendlyIssues: S.optional(MobileFriendlyIssueList),
-          mobileFriendliness: S.optional(RunMobileFriendlyTestResponseMobileFriendlinessEnum),
-          testStatus: S.optional(TestStatus),
+          screenshot: S.optional(__S(47, __c5, 7)),
+          resourceIssues: S.optional(__S(50, __c6, 2)),
+          mobileFriendlyIssues: S.optional(__S(52, __c6, 4)),
+          mobileFriendliness: S.optional(S.String),
+          testStatus: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "RunMobileFriendlyTestResponse",
@@ -1466,4 +1223,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "SubmitSitemapsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

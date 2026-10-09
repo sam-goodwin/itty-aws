@@ -8,6 +8,8 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -17,18 +19,8 @@ export interface CreateCommentRequestAttachmentsItem {
   /** Always `file_upload` */
   type?: string;
 }
-const CreateCommentRequestAttachmentsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCommentRequestAttachmentsItem>;
-
 /** An array of files to attach to the comment. Maximum of 3 allowed. */
 export type CreateCommentRequestAttachmentsList = Array<CreateCommentRequestAttachmentsItem>;
-const CreateCommentRequestAttachmentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateCommentRequestAttachmentsList>;
-
 export interface CreateCommentRequestDisplayNameCase0 {
   /** Always `integration` */
   type: string;
@@ -51,9 +43,6 @@ export type CreateCommentRequestDisplayName =
   | CreateCommentRequestDisplayNameCase0
   | CreateCommentRequestDisplayNameCase1
   | CreateCommentRequestDisplayNameCase2;
-const CreateCommentRequestDisplayName =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateCommentRequestDisplayName>;
-
 export interface CreateCommentRequestParentCase0 {
   /** The ID of the parent page (with or without dashes), for example, 195de9221179449fab8075a27c979105 */
   page_id: string;
@@ -70,9 +59,6 @@ export interface CreateCommentRequestParentCase1 {
 export type CreateCommentRequestParent =
   | CreateCommentRequestParentCase0
   | CreateCommentRequestParentCase1;
-const CreateCommentRequestParent =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateCommentRequestParent>;
-
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`, `default_background`, `gray_background`, `brown_background`, `orange_background`, `yellow_background`, `green_background`, `blue_background`, `purple_background`, `pink_background`, `red_background` */
 export type ApiColor =
   | "default"
@@ -95,8 +81,6 @@ export type ApiColor =
   | "purple_background"
   | "pink_background"
   | "red_background";
-const ApiColor = S.String;
-
 export interface AnnotationRequest {
   /** Whether the text is formatted as bold. */
   bold?: boolean;
@@ -111,17 +95,10 @@ export interface AnnotationRequest {
   /** The color of the text. */
   color?: ApiColor | (string & {});
 }
-const AnnotationRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AnnotationRequest>;
-
 export interface RichTextItemRequestTextLink {
   /** The URL of the link. */
   url: string;
 }
-const RichTextItemRequestTextLink = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<RichTextItemRequestTextLink>;
-
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemRequestText {
   /** The actual text content of the text. */
@@ -129,11 +106,6 @@ export interface RichTextItemRequestText {
   /** An object with information about any inline link in this text, if included. */
   link?: RichTextItemRequestTextLink | null;
 }
-const RichTextItemRequestText = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<RichTextItemRequestText>;
-
 export interface PartialUserObjectRequest {
   /** The ID of the user. */
   id: string;
@@ -230,19 +202,11 @@ export type RichTextItemRequestMention =
   | RichTextItemRequestMentionCase3
   | RichTextItemRequestMentionCase4
   | RichTextItemRequestMentionCase5;
-const RichTextItemRequestMention =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemRequestMention>;
-
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
 export interface RichTextItemRequestEquation {
   /** A KaTeX compatible string. */
   expression: string;
 }
-const RichTextItemRequestEquation = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<RichTextItemRequestEquation>;
-
 export interface RichTextItemRequest {
   /** All rich text objects contain an annotations object that sets the styling for the rich text. */
   annotations?: AnnotationRequest;
@@ -255,15 +219,8 @@ export interface RichTextItemRequest {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-const RichTextItemRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RichTextItemRequest>;
-
 /** An array of rich text objects that represent the content of the comment. */
 export type CreateCommentRequestRichTextList = Array<RichTextItemRequest>;
-const CreateCommentRequestRichTextList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateCommentRequestRichTextList>;
-
 export interface CreateCommentRequest {
   /** An array of files to attach to the comment. Maximum of 3 allowed. */
   attachments?: CreateCommentRequestAttachmentsList;
@@ -278,8 +235,6 @@ export interface CreateCommentRequest {
   /** The ID of the discussion to comment on. */
   discussion_id?: string;
 }
-const CreateCommentRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateCommentRequest>;
-
 export interface PartialCommentObjectResponse {
   /** The comment object type name. */
   object: string;
@@ -297,18 +252,11 @@ export interface BlockIdCommentParentResponse {
   block_id: string;
 }
 export type CommentParentResponse = PageIdCommentParentResponse | BlockIdCommentParentResponse;
-const CommentParentResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<CommentParentResponse>;
-
 export interface PartialUserObjectResponse {
   id: string;
   /** Always `user` */
   object: string;
 }
-const PartialUserObjectResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PartialUserObjectResponse>;
-
 export interface AnnotationResponse {
   bold: boolean;
   italic: boolean;
@@ -317,8 +265,6 @@ export interface AnnotationResponse {
   code: boolean;
   color: ApiColor;
 }
-const AnnotationResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AnnotationResponse>;
-
 export type RichTextItemResponseTextLink = RichTextItemRequestTextLink;
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemResponseText {
@@ -327,11 +273,6 @@ export interface RichTextItemResponseText {
   /** An object with information about any inline link in this text, if included. */
   link: RichTextItemRequestTextLink | null;
 }
-const RichTextItemResponseText = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RichTextItemResponseText>;
-
 /** Details about the person, when the `type` of the user is `person`. */
 export interface UserObjectResponsePerson {
   /** The email of the person. */
@@ -530,9 +471,6 @@ export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase5
   | RichTextItemResponseMentionCase6
   | RichTextItemResponseMentionCase7;
-const RichTextItemResponseMention =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemResponseMention>;
-
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
 export type RichTextItemResponseEquation = RichTextItemRequestEquation;
 export interface RichTextItemResponse {
@@ -551,30 +489,16 @@ export interface RichTextItemResponse {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-const RichTextItemResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RichTextItemResponse>;
-
 /** The rich text content of the comment. */
 export type CommentObjectResponseRichTextList = Array<RichTextItemResponse>;
-const CommentObjectResponseRichTextList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CommentObjectResponseRichTextList>;
-
 /** One of: `custom`, `user`, `integration` */
 export type CommentObjectResponseDisplayNameType = "custom" | "user" | "integration";
-const CommentObjectResponseDisplayNameType = S.String;
-
 /** The display name of the comment. */
 export interface CommentObjectResponseDisplayName {
   /** One of: `custom`, `user`, `integration` */
   type: CommentObjectResponseDisplayNameType;
   resolved_name: string | null;
 }
-const CommentObjectResponseDisplayName = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CommentObjectResponseDisplayName>;
-
 /** One of: `audio`, `image`, `pdf`, `productivity`, `video` */
 export type CommentObjectResponseAttachmentsItemCategory =
   | "audio"
@@ -582,33 +506,19 @@ export type CommentObjectResponseAttachmentsItemCategory =
   | "pdf"
   | "productivity"
   | "video";
-const CommentObjectResponseAttachmentsItemCategory = S.String;
-
 export interface InternalFileResponse {
   /** The URL of the file. */
   url: string;
   /** The time when the URL will expire. */
   expiry_time: string;
 }
-const InternalFileResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<InternalFileResponse>;
-
 export interface CommentObjectResponseAttachmentsItem {
   /** One of: `audio`, `image`, `pdf`, `productivity`, `video` */
   category: CommentObjectResponseAttachmentsItemCategory;
   file: InternalFileResponse;
 }
-const CommentObjectResponseAttachmentsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CommentObjectResponseAttachmentsItem>;
-
 /** Any file attachments associated with the comment. */
 export type CommentObjectResponseAttachmentsList = Array<CommentObjectResponseAttachmentsItem>;
-const CommentObjectResponseAttachmentsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CommentObjectResponseAttachmentsList>;
-
 export interface CommentObjectResponse {
   /** The comment object type name. */
   object: string;
@@ -635,75 +545,32 @@ export interface CommentObjectResponse {
   /** Any file attachments associated with the comment. */
   attachments?: CommentObjectResponseAttachmentsList;
 }
-const CommentObjectResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CommentObjectResponse>;
-
 export type CreateCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-const CreateCommentResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateCommentResponseBody>;
-
 export type CreateCommentResponse = CreateCommentResponseBody;
-const CreateCommentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateCommentResponse>;
-
 export interface DeleteCommentRequest {
   comment_id: string;
 }
-const DeleteCommentRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteCommentRequest>;
-
 export type DeleteCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-const DeleteCommentResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DeleteCommentResponseBody>;
-
 export type DeleteCommentResponse = DeleteCommentResponseBody;
-const DeleteCommentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteCommentResponse>;
-
 export interface GetCommentRequest {
   comment_id: string;
 }
-const GetCommentRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetCommentRequest>;
-
 export type GetCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-const GetCommentResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetCommentResponseBody>;
-
 export type GetCommentResponse = GetCommentResponseBody;
-const GetCommentResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetCommentResponse>;
-
 export interface ListCommentsRequest {
   block_id: string;
   start_cursor?: string;
   page_size?: number;
 }
-const ListCommentsRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListCommentsRequest>;
-
 export type ListCommentsResponseResultsList = Array<CommentObjectResponse>;
-const ListCommentsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListCommentsResponseResultsList>;
-
 /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
 export type RequestStatusResponseType = "complete" | "incomplete";
-const RequestStatusResponseType = S.String;
-
 export interface RequestStatusResponse {
   /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
   type: RequestStatusResponseType;
   /** Why the result set is incomplete. Only present when `type` is `incomplete`. */
   incomplete_reason?: string;
 }
-const RequestStatusResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<RequestStatusResponse>;
-
 export interface ListCommentsResponse {
   /** Always `list` */
   object: string;
@@ -715,8 +582,6 @@ export interface ListCommentsResponse {
   comment: unknown;
   request_status?: RequestStatusResponse;
 }
-const ListCommentsResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListCommentsResponse>;
-
 /** An array of rich text objects that represent the updated content of the comment. */
 export type UpdateCommentRequestBodyCase0RichTextList = Array<RichTextItemRequest>;
 export interface UpdateCommentRequestBodyCase0 {
@@ -730,25 +595,12 @@ export interface UpdateCommentRequestBodyCase1 {
 export type UpdateCommentRequestBody =
   | UpdateCommentRequestBodyCase0
   | UpdateCommentRequestBodyCase1;
-const UpdateCommentRequestBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateCommentRequestBody>;
-
 export interface UpdateCommentRequest {
   comment_id: string;
   body: UpdateCommentRequestBody;
 }
-const UpdateCommentRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UpdateCommentRequest>;
-
 export type UpdateCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-const UpdateCommentResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateCommentResponseBody>;
-
 export type UpdateCommentResponse = UpdateCommentResponseBody;
-const UpdateCommentResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateCommentResponse>;
-
 export type CreateCommentError = NotionOpError;
 /** Create a comment */
 export const createComment: API.OperationMethod<
@@ -757,8 +609,8 @@ export const createComment: API.OperationMethod<
   CreateCommentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommentRequest,
-  output: CreateCommentResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateCommentRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateCommentResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -772,8 +624,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommentRequest,
-  output: DeleteCommentResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteCommentRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<DeleteCommentResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -787,8 +639,8 @@ export const getComment: API.OperationMethod<
   GetCommentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommentRequest,
-  output: GetCommentResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetCommentRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetCommentResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -804,8 +656,8 @@ export const listComments: API.PaginatedOperationMethod<
   CommentObjectResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCommentsRequest,
-    output: ListCommentsResponse,
+    input: __S(24, __c3, 0) as any as S.Schema<ListCommentsRequest>,
+    output: __S(27, __c3, 3) as any as S.Schema<ListCommentsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -827,8 +679,8 @@ export const updateComment: API.OperationMethod<
   UpdateCommentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCommentRequest,
-  output: UpdateCommentResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<UpdateCommentRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<UpdateCommentResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -847,7 +699,7 @@ function __c0(j: number): any {
         identifier: "CreateCommentRequestAttachmentsItem",
       });
     case 1:
-      return S.Array(CreateCommentRequestAttachmentsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -856,7 +708,7 @@ function __c0(j: number): any {
           strikethrough: S.optional(S.Boolean),
           underline: S.optional(S.Boolean),
           code: S.optional(S.Boolean),
-          color: S.optional(ApiColor),
+          color: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnnotationRequest" });
     case 3:
@@ -871,7 +723,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.optional(S.NullOr(RichTextItemRequestTextLink)),
+          link: S.optional(S.NullOr(__S(3, __c0, 3))),
         }),
       ).annotate({ identifier: "RichTextItemRequestText" });
     case 5:
@@ -885,15 +737,15 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(AnnotationRequest),
+          annotations: S.optional(__S(2, __c0, 2)),
           type: S.optional(S.String),
-          text: S.optional(RichTextItemRequestText),
-          mention: S.optional(RichTextItemRequestMention),
-          equation: S.optional(RichTextItemRequestEquation),
+          text: S.optional(__S(4, __c0, 4)),
+          mention: S.optional(S.Unknown),
+          equation: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "RichTextItemRequest" });
     case 7:
-      return S.Array(RichTextItemRequest);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -901,10 +753,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(CreateCommentRequestAttachmentsList),
-          display_name: S.optional(CreateCommentRequestDisplayName),
-          parent: S.optional(CreateCommentRequestParent),
-          rich_text: S.optional(CreateCommentRequestRichTextList),
+          attachments: S.optional(__S(1, __c0, 1)),
+          display_name: S.optional(S.Unknown),
+          parent: S.optional(S.Unknown),
+          rich_text: S.optional(__S(7, __c0, 7)),
           markdown: S.optional(S.String),
           discussion_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/comments", code: 200 })),
@@ -926,14 +778,14 @@ function __c1(j: number): any {
           strikethrough: S.Boolean,
           underline: S.Boolean,
           code: S.Boolean,
-          color: ApiColor,
+          color: S.String,
         }),
       ).annotate({ identifier: "AnnotationResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.NullOr(RichTextItemRequestTextLink),
+          link: S.NullOr(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "RichTextItemResponseText" });
     case 4:
@@ -941,19 +793,19 @@ function __c1(j: number): any {
         S.Struct({
           plain_text: S.String.pipe(T.SensitiveValue({})),
           href: S.NullOr(S.String),
-          annotations: AnnotationResponse,
+          annotations: __S(10, __c1, 2),
           type: S.optional(S.String),
-          text: S.optional(RichTextItemResponseText),
-          mention: S.optional(RichTextItemResponseMention),
-          equation: S.optional(RichTextItemRequestEquation),
+          text: S.optional(__S(11, __c1, 3)),
+          mention: S.optional(S.Unknown),
+          equation: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "RichTextItemResponse" });
     case 5:
-      return S.Array(RichTextItemResponse);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: CommentObjectResponseDisplayNameType,
+          type: S.String,
           resolved_name: S.NullOr(S.String),
         }),
       ).annotate({
@@ -973,33 +825,33 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: CommentObjectResponseAttachmentsItemCategory,
-          file: InternalFileResponse,
+          category: S.String,
+          file: __S(15, __c1, 7),
         }),
       ).annotate({
         identifier: "CommentObjectResponseAttachmentsItem",
       });
     case 1:
-      return S.Array(CommentObjectResponseAttachmentsItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
-          parent: CommentParentResponse,
+          parent: S.Unknown,
           discussion_id: S.String,
           created_time: S.String,
           last_edited_time: S.String,
-          created_by: PartialUserObjectResponse,
-          rich_text: CommentObjectResponseRichTextList,
-          display_name: CommentObjectResponseDisplayName,
+          created_by: __S(9, __c1, 1),
+          rich_text: __S(13, __c1, 5),
+          display_name: __S(14, __c1, 6),
           original_content_deleted: S.Boolean,
           has_pending_attachments: S.Boolean,
-          attachments: S.optional(CommentObjectResponseAttachmentsList),
+          attachments: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "CommentObjectResponse" });
     case 3:
-      return S.suspend(() => CreateCommentResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateCommentResponse",
       });
     case 4:
@@ -1009,7 +861,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/comments/{comment_id}", code: 200 })),
       ).annotate({ identifier: "DeleteCommentRequest" });
     case 5:
-      return S.suspend(() => DeleteCommentResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteCommentResponse",
       });
     case 6:
@@ -1019,7 +871,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/comments/{comment_id}", code: 200 })),
       ).annotate({ identifier: "GetCommentRequest" });
     case 7:
-      return S.suspend(() => GetCommentResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCommentResponse",
       });
   }
@@ -1035,11 +887,11 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/comments", code: 200 })),
       ).annotate({ identifier: "ListCommentsRequest" });
     case 1:
-      return S.Array(CommentObjectResponse);
+      return S.Array(__S(18, __c2, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: RequestStatusResponseType,
+          type: S.String,
           incomplete_reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestStatusResponse" });
@@ -1049,22 +901,27 @@ function __c3(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: ListCommentsResponseResultsList,
+          results: __S(25, __c3, 1),
           type: S.String,
           comment: S.Unknown,
-          request_status: S.optional(RequestStatusResponse),
+          request_status: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "ListCommentsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           comment_id: S.String.pipe(T.Label()),
-          body: UpdateCommentRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/comments/{comment_id}", code: 200 })),
       ).annotate({ identifier: "UpdateCommentRequest" });
     case 5:
-      return S.suspend(() => UpdateCommentResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateCommentResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

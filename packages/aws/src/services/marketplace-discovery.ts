@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Discovery",
   serviceShapeName: "AWSMarketplaceDiscovery",
@@ -61,7 +63,6 @@ export interface GetListingInput {
   locale?: string;
   listingId: string;
 }
-const GetListingInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetListingInput>;
 export type ProductId = string;
 export type NonEmptyString = string;
 export type SellerProfileId = string;
@@ -69,13 +70,11 @@ export interface SellerInformation {
   sellerProfileId: string;
   displayName: string;
 }
-const SellerInformation = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SellerInformation>;
 export interface ProductInformation {
   productId: string;
   productName: string;
   manufacturer: SellerInformation;
 }
-const ProductInformation = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ProductInformation>;
 export type OfferId = string;
 export type NullableString = string;
 export interface OfferInformation {
@@ -83,17 +82,11 @@ export interface OfferInformation {
   offerName?: string;
   sellerOfRecord: SellerInformation;
 }
-const OfferInformation = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<OfferInformation>;
 export interface ListingAssociatedEntity {
   product?: ProductInformation;
   offer?: OfferInformation;
 }
-const ListingAssociatedEntity = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListingAssociatedEntity>;
 export type ListingAssociatedEntityList = ListingAssociatedEntity[];
-const ListingAssociatedEntityList = /*@__PURE__*/ __L.at(__c0, 5);
 export type ListingBadgeType =
   | "AWS_FREE_TIER"
   | "FREE_TRIAL"
@@ -101,23 +94,17 @@ export type ListingBadgeType =
   | "QUICK_LAUNCH"
   | "MULTI_PRODUCT"
   | (string & {});
-const ListingBadgeType = S.String;
-
 export interface ListingBadge {
   displayName: string;
   badgeType: ListingBadgeType;
 }
-const ListingBadge = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListingBadge>;
 export type ListingBadgeList = ListingBadge[];
-const ListingBadgeList = /*@__PURE__*/ __L.at(__c0, 7);
 export type Catalog = string;
 export interface Category {
   categoryId: string;
   displayName: string;
 }
-const Category = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Category>;
 export type CategoryList = Category[];
-const CategoryList = /*@__PURE__*/ __L.at(__c1, 1);
 export type FulfillmentOptionType =
   | "AMAZON_MACHINE_IMAGE"
   | "API"
@@ -132,31 +119,19 @@ export type FulfillmentOptionType =
   | "SAGEMAKER_ALGORITHM"
   | "SAGEMAKER_MODEL"
   | (string & {});
-const FulfillmentOptionType = S.String;
-
 export interface FulfillmentOptionSummary {
   fulfillmentOptionType: FulfillmentOptionType;
   displayName: string;
 }
-const FulfillmentOptionSummary = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<FulfillmentOptionSummary>;
 export type FulfillmentOptionSummaryList = FulfillmentOptionSummary[];
-const FulfillmentOptionSummaryList = /*@__PURE__*/ __L.at(__c1, 3);
 export type HighlightList = string[];
-const HighlightList = /*@__PURE__*/ __L.at(__c1, 4);
 export type URL = string;
 export type PricingModelType = "USAGE" | "CONTRACT" | "BYOL" | "FREE" | (string & {});
-const PricingModelType = S.String;
-
 export interface PricingModel {
   pricingModelType: PricingModelType;
   displayName: string;
 }
-const PricingModel = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PricingModel>;
 export type PricingModelList = PricingModel[];
-const PricingModelList = /*@__PURE__*/ __L.at(__c1, 6);
 export type PricingUnitType =
   | "USERS"
   | "HOSTS"
@@ -166,24 +141,16 @@ export type PricingUnitType =
   | "REQUESTS"
   | "UNITS"
   | (string & {});
-const PricingUnitType = S.String;
-
 export interface PricingUnit {
   pricingUnitType: PricingUnitType;
   displayName: string;
 }
-const PricingUnit = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PricingUnit>;
 export type PricingUnitList = PricingUnit[];
-const PricingUnitList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface PromotionalEmbeddedImage {
   title: string;
   url: string;
   description?: string;
 }
-const PromotionalEmbeddedImage = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PromotionalEmbeddedImage>;
 export interface PromotionalEmbeddedVideo {
   title: string;
   url: string;
@@ -191,34 +158,20 @@ export interface PromotionalEmbeddedVideo {
   thumbnail: string;
   description?: string;
 }
-const PromotionalEmbeddedVideo = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PromotionalEmbeddedVideo>;
 export type PromotionalMedia =
   | { embeddedImage: PromotionalEmbeddedImage; embeddedVideo?: never }
   | { embeddedImage?: never; embeddedVideo: PromotionalEmbeddedVideo };
-const PromotionalMedia = /*@__PURE__*/ __L.at(__c2, 3);
 export type PromotionalMediaList = PromotionalMedia[];
-const PromotionalMediaList = /*@__PURE__*/ __L.at(__c2, 4);
 export type ResourceType = "MANUFACTURER_SUPPORT" | "MANUFACTURER_INSTRUCTIONS" | (string & {});
-const ResourceType = S.String;
-
 export type ResourceContentType = "EMAIL" | "PHONE_NUMBER" | "LINK" | "OTHER" | (string & {});
-const ResourceContentType = S.String;
-
 export interface Resource {
   resourceType: ResourceType;
   contentType: ResourceContentType;
   value: string;
   displayName?: string;
 }
-const Resource = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
-const ResourceList = /*@__PURE__*/ __L.at(__c2, 6);
 export type ReviewSourceId = "AWS_MARKETPLACE" | (string & {});
-const ReviewSourceId = S.String;
-
 export type NonNegativeCount = number;
 export interface ReviewSourceSummary {
   sourceName: string;
@@ -227,39 +180,27 @@ export interface ReviewSourceSummary {
   averageRating: string;
   totalReviews: number;
 }
-const ReviewSourceSummary = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ReviewSourceSummary>;
 export type ReviewSourceSummaryList = ReviewSourceSummary[];
-const ReviewSourceSummaryList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface ReviewSummary {
   reviewSourceSummaries: ReviewSourceSummary[];
 }
-const ReviewSummary = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ReviewSummary>;
 export type SellerEngagementType = "REQUEST_FOR_PRIVATE_OFFER" | "REQUEST_FOR_DEMO" | (string & {});
-const SellerEngagementType = S.String;
-
 export type SellerEngagementContentType = "LINK" | (string & {});
-const SellerEngagementContentType = S.String;
-
 export interface SellerEngagement {
   engagementType: SellerEngagementType;
   contentType: SellerEngagementContentType;
   value: string;
 }
-const SellerEngagement = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<SellerEngagement>;
 export type SellerEngagementList = SellerEngagement[];
-const SellerEngagementList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface UseCase {
   description: string;
   displayName: string;
   value: string;
 }
-const UseCase = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UseCase>;
 export interface UseCaseEntry {
   useCase: UseCase;
 }
-const UseCaseEntry = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UseCaseEntry>;
 export type UseCaseList = UseCaseEntry[];
-const UseCaseList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface GetListingOutput {
   locale?: string;
   associatedEntities: ListingAssociatedEntity[];
@@ -283,28 +224,20 @@ export interface GetListingOutput {
   shortDescription: string;
   useCases: UseCaseEntry[];
 }
-const GetListingOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetListingOutput>;
 export interface GetOfferInput {
   locale?: string;
   offerId: string;
 }
-const GetOfferInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetOfferInput>;
 export type OfferSetId = string;
 export interface OfferSetInformation {
   offerSetId: string;
   sellerOfRecord: SellerInformation;
 }
-const OfferSetInformation = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OfferSetInformation>;
 export interface OfferAssociatedEntity {
   product: ProductInformation;
   offerSet?: OfferSetInformation;
 }
-const OfferAssociatedEntity = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<OfferAssociatedEntity>;
 export type OfferAssociatedEntityList = OfferAssociatedEntity[];
-const OfferAssociatedEntityList = /*@__PURE__*/ __L.at(__c4, 3);
 export type AgreementResourceId = string;
 export type PurchaseOptionBadgeType =
   | "PRIVATE_PRICING"
@@ -317,7 +250,6 @@ export interface PurchaseOptionBadge {
   badgeType: PurchaseOptionBadgeType;
 }
 export type PurchaseOptionBadgeList = PurchaseOptionBadge[];
-const PurchaseOptionBadgeList = ListingBadgeList as any as S.Schema<PurchaseOptionBadgeList>;
 export interface GetOfferOutput {
   locale?: string;
   offerId: string;
@@ -332,22 +264,15 @@ export interface GetOfferOutput {
   pricingModel: PricingModel;
   badges: PurchaseOptionBadge[];
 }
-const GetOfferOutput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetOfferOutput>;
 export interface GetOfferSetInput {
   locale?: string;
   offerSetId: string;
 }
-const GetOfferSetInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetOfferSetInput>;
 export interface OfferSetAssociatedEntity {
   product: ProductInformation;
   offer: OfferInformation;
 }
-const OfferSetAssociatedEntity = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<OfferSetAssociatedEntity>;
 export type OfferSetAssociatedEntityList = OfferSetAssociatedEntity[];
-const OfferSetAssociatedEntityList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface GetOfferSetOutput {
   locale?: string;
   offerSetId: string;
@@ -360,7 +285,6 @@ export interface GetOfferSetOutput {
   badges: PurchaseOptionBadge[];
   associatedEntities: OfferSetAssociatedEntity[];
 }
-const GetOfferSetOutput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetOfferSetOutput>;
 export type NextToken = string;
 export interface GetOfferTermsInput {
   locale?: string;
@@ -368,7 +292,6 @@ export interface GetOfferTermsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const GetOfferTermsInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetOfferTermsInput>;
 export type TermId = string;
 export type TermType =
   | "ByolPricingTerm"
@@ -385,42 +308,29 @@ export type TermType =
   | "VariablePaymentTerm"
   | "NetPaymentTerm"
   | (string & {});
-const TermType = S.String;
-
 export interface ByolPricingTerm {
   id: string;
   type: TermType;
 }
-const ByolPricingTerm = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ByolPricingTerm>;
 export type CurrencyCode = string;
 export type SelectorType = "Duration" | (string & {});
-const SelectorType = S.String;
-
 export type BoundedString = string;
 export interface Selector {
   type: SelectorType;
   value: string;
 }
-const Selector = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Selector>;
 export type RateCardConstraintType = "Allowed" | "Disallowed" | (string & {});
-const RateCardConstraintType = S.String;
-
 export interface Constraints {
   multipleDimensionSelection: RateCardConstraintType;
   quantityConfiguration: RateCardConstraintType;
 }
-const Constraints = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Constraints>;
 export type DimensionLabelType = "Region" | "SagemakerOption" | (string & {});
-const DimensionLabelType = S.String;
-
 export interface DimensionLabel {
   labelType: DimensionLabelType;
   labelValue: string;
   displayName?: string;
 }
-const DimensionLabel = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DimensionLabel>;
 export type DimensionLabelList = DimensionLabel[];
-const DimensionLabelList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface RateCardItem {
   dimensionKey: string;
   displayName: string;
@@ -429,30 +339,19 @@ export interface RateCardItem {
   unit: string;
   price: string;
 }
-const RateCardItem = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RateCardItem>;
 export type RateCardList = RateCardItem[];
-const RateCardList = /*@__PURE__*/ __L.at(__c6, 0);
 export interface ConfigurableUpfrontRateCardItem {
   selector: Selector;
   constraints: Constraints;
   rateCard: RateCardItem[];
 }
-const ConfigurableUpfrontRateCardItem = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ConfigurableUpfrontRateCardItem>;
 export type ConfigurableUpfrontRateCardList = ConfigurableUpfrontRateCardItem[];
-const ConfigurableUpfrontRateCardList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ConfigurableUpfrontPricingTerm {
   id: string;
   type: TermType;
   currencyCode: string;
   rateCards?: ConfigurableUpfrontRateCardItem[];
 }
-const ConfigurableUpfrontPricingTerm = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ConfigurableUpfrontPricingTerm>;
 export interface GrantItem {
   dimensionKey: string;
   displayName: string;
@@ -461,9 +360,7 @@ export interface GrantItem {
   unit: string;
   maxQuantity?: number;
 }
-const GrantItem = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GrantItem>;
 export type GrantList = GrantItem[];
-const GrantList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface FixedUpfrontPricingTerm {
   id: string;
   type: TermType;
@@ -472,17 +369,12 @@ export interface FixedUpfrontPricingTerm {
   price: string;
   grants: GrantItem[];
 }
-const FixedUpfrontPricingTerm = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<FixedUpfrontPricingTerm>;
 export interface FreeTrialPricingTerm {
   id: string;
   type: TermType;
   duration?: string;
   grants: GrantItem[];
 }
-const FreeTrialPricingTerm = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<FreeTrialPricingTerm>;
 export type LegalDocumentType =
   | "CustomEula"
   | "CustomDsa"
@@ -490,39 +382,29 @@ export type LegalDocumentType =
   | "StandardEula"
   | "StandardDsa"
   | (string & {});
-const LegalDocumentType = S.String;
-
 export interface DocumentItem {
   type: LegalDocumentType;
   url: string;
   version?: string;
 }
-const DocumentItem = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DocumentItem>;
 export type DocumentList = DocumentItem[];
-const DocumentList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface LegalTerm {
   id: string;
   type: TermType;
   documents: DocumentItem[];
 }
-const LegalTerm = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<LegalTerm>;
 export interface ScheduleItem {
   chargeDate: Date;
   chargeAmount: string;
 }
-const ScheduleItem = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ScheduleItem>;
 export type ScheduleList = ScheduleItem[];
-const ScheduleList = /*@__PURE__*/ __L.at(__c7, 4);
 export interface PaymentScheduleTerm {
   id: string;
   type: TermType;
   currencyCode: string;
   schedule: ScheduleItem[];
 }
-const PaymentScheduleTerm = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<PaymentScheduleTerm>;
 export type BillingPeriodType = "Monthly" | (string & {});
-const BillingPeriodType = S.String;
-
 export interface RecurringPaymentTerm {
   id: string;
   type: TermType;
@@ -530,40 +412,28 @@ export interface RecurringPaymentTerm {
   billingPeriod: BillingPeriodType;
   price: string;
 }
-const RecurringPaymentTerm = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<RecurringPaymentTerm>;
 export interface FixedPercentage {
   percentageValue: string;
 }
-const FixedPercentage = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<FixedPercentage>;
 export interface PercentageRange {
   minimumValue: string;
   maximumValue: string;
   defaultValue: string;
 }
-const PercentageRange = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<PercentageRange>;
 export type PriceIncrease =
   | { fixedPercentage: FixedPercentage; percentageRange?: never }
   | { fixedPercentage?: never; percentageRange: PercentageRange };
-const PriceIncrease = /*@__PURE__*/ __L.at(__c8, 1);
 export interface PaymentScheduleEntry {
   chargeDateOffset: string;
   chargePercentage: string;
   dayOfMonth?: number;
 }
-const PaymentScheduleEntry = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<PaymentScheduleEntry>;
 export type PaymentScheduleEntryList = PaymentScheduleEntry[];
-const PaymentScheduleEntryList = /*@__PURE__*/ __L.at(__c8, 3);
 export interface PaymentScheduleTermTemplate {
   schedule: PaymentScheduleEntry[];
 }
-const PaymentScheduleTermTemplate = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<PaymentScheduleTermTemplate>;
 export type TermTemplate = { paymentScheduleTermTemplate: PaymentScheduleTermTemplate };
-const TermTemplate = /*@__PURE__*/ __L.at(__c8, 5);
 export type TermTemplateList = TermTemplate[];
-const TermTemplateList = /*@__PURE__*/ __L.at(__c8, 6);
 export interface RenewalTerm {
   id: string;
   type: TermType;
@@ -573,32 +443,21 @@ export interface RenewalTerm {
   priceIncrease?: PriceIncrease;
   termTemplates?: TermTemplate[];
 }
-const RenewalTerm = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<RenewalTerm>;
 export interface SupportTerm {
   id: string;
   type: TermType;
   refundPolicy: string;
 }
-const SupportTerm = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<SupportTerm>;
 export interface UsageBasedRateCardItem {
   rateCard: RateCardItem[];
 }
-const UsageBasedRateCardItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UsageBasedRateCardItem>;
 export type UsageBasedRateCardList = UsageBasedRateCardItem[];
-const UsageBasedRateCardList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface UsageBasedPricingTerm {
   id: string;
   type: TermType;
   currencyCode: string;
   rateCards: UsageBasedRateCardItem[];
 }
-const UsageBasedPricingTerm = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UsageBasedPricingTerm>;
 export interface ValidityTerm {
   id: string;
   type: TermType;
@@ -606,20 +465,17 @@ export interface ValidityTerm {
   agreementEndDate?: Date;
   agreementStartDate?: Date;
 }
-const ValidityTerm = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ValidityTerm>;
 export interface VariablePaymentTerm {
   id: string;
   type: TermType;
   currencyCode: string;
   maxTotalChargeAmount: string;
 }
-const VariablePaymentTerm = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<VariablePaymentTerm>;
 export interface NetPaymentTerm {
   id: string;
   type: TermType;
   paymentDuePeriod: string;
 }
-const NetPaymentTerm = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<NetPaymentTerm>;
 export type OfferTerm =
   | {
       byolPricingTerm: ByolPricingTerm;
@@ -816,23 +672,17 @@ export type OfferTerm =
       variablePaymentTerm?: never;
       netPaymentTerm: NetPaymentTerm;
     };
-const OfferTerm = /*@__PURE__*/ __L.at(__c9, 7);
 export type OfferTermsList = OfferTerm[];
-const OfferTermsList = /*@__PURE__*/ __L.at(__c10, 0);
 export interface GetOfferTermsOutput {
   locale?: string;
   offerTerms: OfferTerm[];
   nextToken?: string;
 }
-const GetOfferTermsOutput = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GetOfferTermsOutput>;
 export interface GetProductInput {
   locale?: string;
   productId: string;
 }
-const GetProductInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetProductInput>;
 export type DeployedOnAwsStatus = "DEPLOYED" | "NOT_DEPLOYED" | "NOT_APPLICABLE" | (string & {});
-const DeployedOnAwsStatus = S.String;
-
 export interface GetProductOutput {
   locale?: string;
   productId: string;
@@ -851,62 +701,35 @@ export interface GetProductOutput {
   sellerEngagements: SellerEngagement[];
   listingId: string;
 }
-const GetProductOutput = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<GetProductOutput>;
 export interface ListFulfillmentOptionsInput {
   locale?: string;
   productId: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListFulfillmentOptionsInput = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListFulfillmentOptionsInput>;
 export interface AmazonMachineImageOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
   operatingSystemVersion?: string;
 }
-const AmazonMachineImageOperatingSystem = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<AmazonMachineImageOperatingSystem>;
 export type AmazonMachineImageOperatingSystemList = AmazonMachineImageOperatingSystem[];
-const AmazonMachineImageOperatingSystemList = /*@__PURE__*/ __L.at(__c10, 6);
 export type AmazonMachineImageCidrIpAddressList = string[];
-const AmazonMachineImageCidrIpAddressList =
-  HighlightList as any as S.Schema<AmazonMachineImageCidrIpAddressList>;
 export interface AmazonMachineImageSecurityGroup {
   protocol: string;
   fromPort: number;
   toPort: number;
   cidrIpAddresses: string[];
 }
-const AmazonMachineImageSecurityGroup = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<AmazonMachineImageSecurityGroup>;
 export type AmazonMachineImageSecurityGroupList = AmazonMachineImageSecurityGroup[];
-const AmazonMachineImageSecurityGroupList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface AmazonMachineImageRecommendation {
   instanceType: string;
   securityGroups?: AmazonMachineImageSecurityGroup[];
 }
-const AmazonMachineImageRecommendation = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<AmazonMachineImageRecommendation>;
 export type AmazonMachineImageEbsVolumeTypeList = string[];
-const AmazonMachineImageEbsVolumeTypeList =
-  HighlightList as any as S.Schema<AmazonMachineImageEbsVolumeTypeList>;
 export interface AmazonMachineImageEbsVolume {
   volumeTypes: string[];
   iops?: number;
 }
-const AmazonMachineImageEbsVolume = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<AmazonMachineImageEbsVolume>;
 export interface AmazonMachineImageFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -924,18 +747,12 @@ export interface AmazonMachineImageFulfillmentOption {
   ebsVolume?: AmazonMachineImageEbsVolume;
   shortDescription?: string;
 }
-const AmazonMachineImageFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<AmazonMachineImageFulfillmentOption>;
 export interface AwsSupportedService {
   supportedServiceType: string;
   displayName: string;
   description: string;
 }
-const AwsSupportedService = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<AwsSupportedService>;
 export type AwsSupportedServiceList = AwsSupportedService[];
-const AwsSupportedServiceList = /*@__PURE__*/ __L.at(__c11, 5);
 export interface ApiFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
@@ -943,10 +760,6 @@ export interface ApiFulfillmentOption {
   usageInstructions?: string;
   awsSupportedServices: AwsSupportedService[];
 }
-const ApiFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ApiFulfillmentOption>;
 export interface CloudFormationFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -959,20 +772,11 @@ export interface CloudFormationFulfillmentOption {
   shortDescription?: string;
   longDescription?: string;
 }
-const CloudFormationFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CloudFormationFulfillmentOption>;
 export interface ContainerOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
-const ContainerOperatingSystem = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ContainerOperatingSystem>;
 export type ContainerOperatingSystemList = ContainerOperatingSystem[];
-const ContainerOperatingSystemList = /*@__PURE__*/ __L.at(__c12, 1);
 export interface ContainerFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -984,17 +788,11 @@ export interface ContainerFulfillmentOption {
   releaseNotes?: string;
   usageInstructions?: string;
 }
-const ContainerFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ContainerFulfillmentOption>;
 export interface HelmOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
 export type HelmOperatingSystemList = HelmOperatingSystem[];
-const HelmOperatingSystemList =
-  ContainerOperatingSystemList as any as S.Schema<HelmOperatingSystemList>;
 export interface HelmFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -1006,17 +804,11 @@ export interface HelmFulfillmentOption {
   awsSupportedServices?: AwsSupportedService[];
   usageInstructions?: string;
 }
-const HelmFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<HelmFulfillmentOption>;
 export interface EksAddOnOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
 export type EksAddOnOperatingSystemList = EksAddOnOperatingSystem[];
-const EksAddOnOperatingSystemList =
-  ContainerOperatingSystemList as any as S.Schema<EksAddOnOperatingSystemList>;
 export interface EksAddOnFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -1028,10 +820,6 @@ export interface EksAddOnFulfillmentOption {
   usageInstructions?: string;
   awsSupportedServices?: AwsSupportedService[];
 }
-const EksAddOnFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<EksAddOnFulfillmentOption>;
 export interface Ec2ImageBuilderComponentFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -1043,39 +831,25 @@ export interface Ec2ImageBuilderComponentFulfillmentOption {
   releaseNotes?: string;
   usageInstructions?: string;
 }
-const Ec2ImageBuilderComponentFulfillmentOption =
-  ContainerFulfillmentOption as any as S.Schema<Ec2ImageBuilderComponentFulfillmentOption>;
 export interface DataArtifact {
   description?: string;
   resourceArn?: string;
   resourceType: string;
   dataClassification: string;
 }
-const DataArtifact = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<DataArtifact>;
 export type DataArtifactList = DataArtifact[];
-const DataArtifactList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface DataExchangeFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
   fulfillmentOptionDisplayName: string;
   dataArtifacts?: DataArtifact[];
 }
-const DataExchangeFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DataExchangeFulfillmentOption>;
 export interface ProfessionalServicesFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
   fulfillmentOptionDisplayName: string;
 }
-const ProfessionalServicesFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ProfessionalServicesFulfillmentOption>;
 export type SaasQuickLaunchStatus = "ENABLED" | "DISABLED" | (string & {});
-const SaasQuickLaunchStatus = S.String;
-
 export interface SaasFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
@@ -1086,19 +860,11 @@ export interface SaasFulfillmentOption {
   launchUrl?: string;
   quickLaunch: SaasQuickLaunchStatus;
 }
-const SaasFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<SaasFulfillmentOption>;
 export interface SageMakerAlgorithmRecommendation {
   recommendedBatchTransformInstanceType: string;
   recommendedRealtimeInferenceInstanceType?: string;
   recommendedTrainingInstanceType: string;
 }
-const SageMakerAlgorithmRecommendation = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<SageMakerAlgorithmRecommendation>;
 export interface SageMakerAlgorithmFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
@@ -1108,24 +874,12 @@ export interface SageMakerAlgorithmFulfillmentOption {
   usageInstructions?: string;
   recommendation?: SageMakerAlgorithmRecommendation;
 }
-const SageMakerAlgorithmFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<SageMakerAlgorithmFulfillmentOption>;
 export interface SageMakerModelRecommendation {
   recommendedBatchTransformInstanceType: string;
   recommendedRealtimeInferenceInstanceType?: string;
 }
-const SageMakerModelRecommendation = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<SageMakerModelRecommendation>;
 export type SageMakerModelContentTypeList = string[];
-const SageMakerModelContentTypeList =
-  HighlightList as any as S.Schema<SageMakerModelContentTypeList>;
 export type SageMakerModelResponseMimeTypeList = string[];
-const SageMakerModelResponseMimeTypeList =
-  HighlightList as any as S.Schema<SageMakerModelResponseMimeTypeList>;
 export interface SageMakerModelFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
@@ -1137,10 +891,6 @@ export interface SageMakerModelFulfillmentOption {
   supportedContentTypes?: string[];
   supportedResponseMimeTypes?: string[];
 }
-const SageMakerModelFulfillmentOption = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<SageMakerModelFulfillmentOption>;
 export type FulfillmentOption =
   | {
       amazonMachineImageFulfillmentOption: AmazonMachineImageFulfillmentOption;
@@ -1310,18 +1060,12 @@ export type FulfillmentOption =
       sageMakerAlgorithmFulfillmentOption?: never;
       sageMakerModelFulfillmentOption: SageMakerModelFulfillmentOption;
     };
-const FulfillmentOption = /*@__PURE__*/ __L.at(__c13, 6);
 export type FulfillmentOptionsList = FulfillmentOption[];
-const FulfillmentOptionsList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface ListFulfillmentOptionsOutput {
   locale?: string;
   fulfillmentOptions: FulfillmentOption[];
   nextToken?: string;
 }
-const ListFulfillmentOptionsOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListFulfillmentOptionsOutput>;
 export type PurchaseOptionFilterType =
   | "PRODUCT_ID"
   | "SELLER_OF_RECORD_PROFILE_ID"
@@ -1329,22 +1073,13 @@ export type PurchaseOptionFilterType =
   | "VISIBILITY_SCOPE"
   | "AVAILABILITY_STATUS"
   | (string & {});
-const PurchaseOptionFilterType = S.String;
-
 export type PurchaseOptionFilterValue = string;
 export type PurchaseOptionFilterValueList = string[];
-const PurchaseOptionFilterValueList =
-  HighlightList as any as S.Schema<PurchaseOptionFilterValueList>;
 export interface PurchaseOptionFilter {
   filterType: PurchaseOptionFilterType;
   filterValues: string[];
 }
-const PurchaseOptionFilter = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<PurchaseOptionFilter>;
 export type PurchaseOptionFilterList = PurchaseOptionFilter[];
-const PurchaseOptionFilterList = /*@__PURE__*/ __L.at(__c14, 2);
 export type MaxResults = number;
 export interface ListPurchaseOptionsInput {
   locale?: string;
@@ -1352,24 +1087,13 @@ export interface ListPurchaseOptionsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListPurchaseOptionsInput = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListPurchaseOptionsInput>;
 export type PurchaseOptionType = "OFFER" | "OFFERSET" | (string & {});
-const PurchaseOptionType = S.String;
-
 export interface PurchaseOptionAssociatedEntity {
   product: ProductInformation;
   offer: OfferInformation;
   offerSet?: OfferSetInformation;
 }
-const PurchaseOptionAssociatedEntity = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<PurchaseOptionAssociatedEntity>;
 export type PurchaseOptionAssociatedEntityList = PurchaseOptionAssociatedEntity[];
-const PurchaseOptionAssociatedEntityList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface PurchaseOptionSummary {
   purchaseOptionId: string;
   catalog: string;
@@ -1381,20 +1105,11 @@ export interface PurchaseOptionSummary {
   badges?: PurchaseOptionBadge[];
   associatedEntities: PurchaseOptionAssociatedEntity[];
 }
-const PurchaseOptionSummary = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<PurchaseOptionSummary>;
 export type PurchaseOptionSummaryList = PurchaseOptionSummary[];
-const PurchaseOptionSummaryList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface ListPurchaseOptionsOutput {
   purchaseOptions?: PurchaseOptionSummary[];
   nextToken?: string;
 }
-const ListPurchaseOptionsOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListPurchaseOptionsOutput>;
 export type SearchText = string;
 export type SearchFilterType =
   | "MIN_AVERAGE_CUSTOMER_RATING"
@@ -1407,18 +1122,13 @@ export type SearchFilterType =
   | "DEPLOYED_ON_AWS"
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
-const SearchFilterType = S.String;
-
 export type SearchFilterValue = string;
 export type SearchFilterValueList = string[];
-const SearchFilterValueList = HighlightList as any as S.Schema<SearchFilterValueList>;
 export interface SearchFilter {
   filterType: SearchFilterType;
   filterValues: string[];
 }
-const SearchFilter = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<SearchFilter>;
 export type SearchFilterList = SearchFilter[];
-const SearchFilterList = /*@__PURE__*/ __L.at(__c15, 2);
 export type SearchFacetType =
   | "AVERAGE_CUSTOMER_RATING"
   | "CATEGORY"
@@ -1429,10 +1139,7 @@ export type SearchFacetType =
   | "DEPLOYED_ON_AWS"
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
-const SearchFacetType = S.String;
-
 export type FacetTypeList = SearchFacetType[];
-const FacetTypeList = /*@__PURE__*/ __L.at(__c15, 3);
 export interface SearchFacetsInput {
   locale?: string;
   searchText?: string;
@@ -1440,30 +1147,21 @@ export interface SearchFacetsInput {
   facetTypes?: SearchFacetType[];
   nextToken?: string;
 }
-const SearchFacetsInput = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<SearchFacetsInput>;
 export interface ListingFacet {
   value: string;
   displayName: string;
   parent?: string;
   count: number;
 }
-const ListingFacet = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ListingFacet>;
 export type ListingFacetList = ListingFacet[];
-const ListingFacetList = /*@__PURE__*/ __L.at(__c15, 6);
 export type TypeToFacetMap = { [key in SearchFacetType]?: ListingFacet[] };
-const TypeToFacetMap = /*@__PURE__*/ __L.at(__c15, 7);
 export interface SearchFacetsOutput {
   totalResults: number;
   listingFacets: { [key: string]: ListingFacet[] | undefined };
   nextToken?: string;
 }
-const SearchFacetsOutput = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<SearchFacetsOutput>;
 export type SearchListingsSortBy = "RELEVANCE" | "AVERAGE_CUSTOMER_RATING" | (string & {});
-const SearchListingsSortBy = S.String;
-
 export type SearchListingsSortOrder = "DESCENDING" | "ASCENDING" | (string & {});
-const SearchListingsSortOrder = S.String;
-
 export interface SearchListingsInput {
   locale?: string;
   searchText?: string;
@@ -1473,16 +1171,10 @@ export interface SearchListingsInput {
   sortOrder?: SearchListingsSortOrder;
   nextToken?: string;
 }
-const SearchListingsInput = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<SearchListingsInput>;
 export interface ListingSummaryAssociatedEntity {
   product?: ProductInformation;
 }
-const ListingSummaryAssociatedEntity = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListingSummaryAssociatedEntity>;
 export type ListingSummaryAssociatedEntityList = ListingSummaryAssociatedEntity[];
-const ListingSummaryAssociatedEntityList = /*@__PURE__*/ __L.at(__c16, 3);
 export interface ListingSummary {
   listingId: string;
   listingName: string;
@@ -1498,18 +1190,12 @@ export interface ListingSummary {
   pricingUnits: PricingUnit[];
   associatedEntities: ListingSummaryAssociatedEntity[];
 }
-const ListingSummary = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListingSummary>;
 export type ListingSummaryList = ListingSummary[];
-const ListingSummaryList = /*@__PURE__*/ __L.at(__c16, 5);
 export interface SearchListingsOutput {
   totalResults: number;
   listingSummaries: ListingSummary[];
   nextToken?: string;
 }
-const SearchListingsOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<SearchListingsOutput>;
 export type ExceptionMessage = string;
 export type GetListingError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1521,8 +1207,8 @@ export const getListing: API.OperationMethod<
   GetListingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetListingInput,
-  output: GetListingOutput,
+  input: __S(0, __c0, 0) as any as S.Schema<GetListingInput>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetListingOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1539,8 +1225,8 @@ export const getOffer: API.OperationMethod<
   GetOfferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOfferInput,
-  output: GetOfferOutput,
+  input: __S(32, __c4, 0) as any as S.Schema<GetOfferInput>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetOfferOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1557,8 +1243,8 @@ export const getOfferSet: API.OperationMethod<
   GetOfferSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOfferSetInput,
-  output: GetOfferSetOutput,
+  input: __S(37, __c4, 5) as any as S.Schema<GetOfferSetInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetOfferSetOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1576,8 +1262,8 @@ export const getOfferTerms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OfferTerm
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetOfferTermsInput,
-  output: GetOfferTermsOutput,
+  input: __S(41, __c5, 1) as any as S.Schema<GetOfferTermsInput>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetOfferTermsOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1600,8 +1286,8 @@ export const getProduct: API.OperationMethod<
   GetProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductInput,
-  output: GetProductOutput,
+  input: __S(82, __c10, 2) as any as S.Schema<GetProductInput>,
+  output: __S(83, __c10, 3) as any as S.Schema<GetProductOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1619,8 +1305,8 @@ export const listFulfillmentOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FulfillmentOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFulfillmentOptionsInput,
-  output: ListFulfillmentOptionsOutput,
+  input: __S(84, __c10, 4) as any as S.Schema<ListFulfillmentOptionsInput>,
+  output: __S(112, __c14, 0) as any as S.Schema<ListFulfillmentOptionsOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1646,8 +1332,8 @@ export const listPurchaseOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PurchaseOptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPurchaseOptionsInput,
-  output: ListPurchaseOptionsOutput,
+  input: __S(115, __c14, 3) as any as S.Schema<ListPurchaseOptionsInput>,
+  output: __S(120, __c15, 0) as any as S.Schema<ListPurchaseOptionsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1670,8 +1356,8 @@ export const searchFacets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchFacetsInput,
-  output: SearchFacetsOutput,
+  input: __S(124, __c15, 4) as any as S.Schema<SearchFacetsInput>,
+  output: __S(128, __c16, 0) as any as S.Schema<SearchFacetsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1694,8 +1380,8 @@ export const searchListings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchListingsInput,
-  output: SearchListingsOutput,
+  input: __S(129, __c16, 1) as any as S.Schema<SearchListingsInput>,
+  output: __S(134, __c16, 6) as any as S.Schema<SearchListingsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1730,28 +1416,28 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SellerInformation" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ productId: S.String, productName: S.String, manufacturer: SellerInformation }),
+        S.Struct({ productId: S.String, productName: S.String, manufacturer: __S(1, __c0, 1) }),
       ).annotate({ identifier: "ProductInformation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           offerId: S.String,
           offerName: S.optional(S.String),
-          sellerOfRecord: SellerInformation,
+          sellerOfRecord: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "OfferInformation" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ product: S.optional(ProductInformation), offer: S.optional(OfferInformation) }),
+        S.Struct({ product: S.optional(__S(2, __c0, 2)), offer: S.optional(__S(3, __c0, 3)) }),
       ).annotate({ identifier: "ListingAssociatedEntity" });
     case 5:
-      return S.Array(ListingAssociatedEntity);
+      return S.Array(__S(4, __c0, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({ displayName: S.String, badgeType: ListingBadgeType }),
-      ).annotate({ identifier: "ListingBadge" });
+      return S.suspend(() => S.Struct({ displayName: S.String, badgeType: S.String })).annotate({
+        identifier: "ListingBadge",
+      });
     case 7:
-      return S.Array(ListingBadge);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -1761,31 +1447,31 @@ function __c1(j: number): any {
         identifier: "Category",
       });
     case 1:
-      return S.Array(Category);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ fulfillmentOptionType: FulfillmentOptionType, displayName: S.String }),
+        S.Struct({ fulfillmentOptionType: S.String, displayName: S.String }),
       ).annotate({ identifier: "FulfillmentOptionSummary" });
     case 3:
-      return S.Array(FulfillmentOptionSummary);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
-        S.Struct({ pricingModelType: PricingModelType, displayName: S.String }),
+        S.Struct({ pricingModelType: S.String, displayName: S.String }),
       ).annotate({ identifier: "PricingModel" });
     case 6:
-      return S.Array(PricingModel);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ pricingUnitType: PricingUnitType, displayName: S.String }),
+        S.Struct({ pricingUnitType: S.String, displayName: S.String }),
       ).annotate({ identifier: "PricingUnit" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PricingUnit);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({ title: S.String, url: S.String, description: S.optional(S.String) }),
@@ -1802,27 +1488,27 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PromotionalEmbeddedVideo" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ embeddedImage: PromotionalEmbeddedImage }),
-        /*@__PURE__*/ S.Struct({ embeddedVideo: PromotionalEmbeddedVideo }),
+        /*@__PURE__*/ S.Struct({ embeddedImage: __S(17, __c2, 1) }),
+        /*@__PURE__*/ S.Struct({ embeddedVideo: __S(18, __c2, 2) }),
       ]);
     case 4:
-      return S.Array(PromotionalMedia);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceType: ResourceType,
-          contentType: ResourceContentType,
+          resourceType: S.String,
+          contentType: S.String,
           value: S.String,
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
     case 6:
-      return S.Array(Resource);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           sourceName: S.String,
-          sourceId: ReviewSourceId,
+          sourceId: S.String,
           sourceUrl: S.optional(S.String),
           averageRating: S.String,
           totalReviews: S.Number,
@@ -1833,55 +1519,55 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ReviewSourceSummary);
+      return S.Array(__S(23, __c2, 7));
     case 1:
-      return S.suspend(() => S.Struct({ reviewSourceSummaries: ReviewSourceSummaryList })).annotate(
-        { identifier: "ReviewSummary" },
-      );
+      return S.suspend(() => S.Struct({ reviewSourceSummaries: __S(24, __c3, 0) })).annotate({
+        identifier: "ReviewSummary",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          engagementType: SellerEngagementType,
-          contentType: SellerEngagementContentType,
+          engagementType: S.String,
+          contentType: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "SellerEngagement" });
     case 3:
-      return S.Array(SellerEngagement);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({ description: S.String, displayName: S.String, value: S.String }),
       ).annotate({ identifier: "UseCase" });
     case 5:
-      return S.suspend(() => S.Struct({ useCase: UseCase })).annotate({
+      return S.suspend(() => S.Struct({ useCase: __S(28, __c3, 4) })).annotate({
         identifier: "UseCaseEntry",
       });
     case 6:
-      return S.Array(UseCaseEntry);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          associatedEntities: ListingAssociatedEntityList,
-          badges: ListingBadgeList,
+          associatedEntities: __S(5, __c0, 5),
+          badges: __S(7, __c0, 7),
           catalog: S.String,
-          categories: CategoryList,
-          fulfillmentOptionSummaries: FulfillmentOptionSummaryList,
-          highlights: HighlightList,
+          categories: __S(9, __c1, 1),
+          fulfillmentOptionSummaries: __S(11, __c1, 3),
+          highlights: __S(12, __c1, 4),
           integrationGuide: S.optional(S.String),
           listingId: S.String,
           listingName: S.String,
           logoThumbnailUrl: S.String,
           longDescription: S.String,
-          pricingModels: PricingModelList,
-          pricingUnits: PricingUnitList,
-          promotionalMedia: PromotionalMediaList,
-          publisher: SellerInformation,
-          resources: ResourceList,
-          reviewSummary: S.optional(ReviewSummary),
-          sellerEngagements: SellerEngagementList,
+          pricingModels: __S(14, __c1, 6),
+          pricingUnits: __S(16, __c2, 0),
+          promotionalMedia: __S(20, __c2, 4),
+          publisher: __S(1, __c0, 1),
+          resources: __S(22, __c2, 6),
+          reviewSummary: S.optional(__S(25, __c3, 1)),
+          sellerEngagements: __S(27, __c3, 3),
           shortDescription: S.String,
-          useCases: UseCaseList,
+          useCases: __S(30, __c3, 6),
         }),
       ).annotate({ identifier: "GetListingOutput" });
   }
@@ -1903,14 +1589,14 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetOfferInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ offerSetId: S.String, sellerOfRecord: SellerInformation }),
+        S.Struct({ offerSetId: S.String, sellerOfRecord: __S(1, __c0, 1) }),
       ).annotate({ identifier: "OfferSetInformation" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ product: ProductInformation, offerSet: S.optional(OfferSetInformation) }),
+        S.Struct({ product: __S(2, __c0, 2), offerSet: S.optional(__S(33, __c4, 1)) }),
       ).annotate({ identifier: "OfferAssociatedEntity" });
     case 3:
-      return S.Array(OfferAssociatedEntity);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1920,12 +1606,12 @@ function __c4(j: number): any {
           offerName: S.optional(S.String),
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          sellerOfRecord: SellerInformation,
-          associatedEntities: OfferAssociatedEntityList,
+          sellerOfRecord: __S(1, __c0, 1),
+          associatedEntities: __S(35, __c4, 3),
           agreementProposalId: S.String,
           replacementAgreementId: S.optional(S.String),
-          pricingModel: PricingModel,
-          badges: PurchaseOptionBadgeList,
+          pricingModel: __S(13, __c1, 5),
+          badges: __S(7, __c0, 7),
         }),
       ).annotate({ identifier: "GetOfferOutput" });
     case 5:
@@ -1943,10 +1629,10 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetOfferSetInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ product: ProductInformation, offer: OfferInformation }),
+        S.Struct({ product: __S(2, __c0, 2), offer: __S(3, __c0, 3) }),
       ).annotate({ identifier: "OfferSetAssociatedEntity" });
     case 7:
-      return S.Array(OfferSetAssociatedEntity);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1961,9 +1647,9 @@ function __c5(j: number): any {
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           buyerNotes: S.optional(S.String),
-          sellerOfRecord: SellerInformation,
-          badges: PurchaseOptionBadgeList,
-          associatedEntities: OfferSetAssociatedEntityList,
+          sellerOfRecord: __S(1, __c0, 1),
+          badges: __S(7, __c0, 7),
+          associatedEntities: __S(39, __c4, 7),
         }),
       ).annotate({ identifier: "GetOfferSetOutput" });
     case 1:
@@ -1985,37 +1671,37 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "GetOfferTermsInput" });
     case 2:
-      return S.suspend(() => S.Struct({ id: S.String, type: TermType })).annotate({
+      return S.suspend(() => S.Struct({ id: S.String, type: S.String })).annotate({
         identifier: "ByolPricingTerm",
       });
     case 3:
-      return S.suspend(() => S.Struct({ type: SelectorType, value: S.String })).annotate({
+      return S.suspend(() => S.Struct({ type: S.String, value: S.String })).annotate({
         identifier: "Selector",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          multipleDimensionSelection: RateCardConstraintType,
-          quantityConfiguration: RateCardConstraintType,
+          multipleDimensionSelection: S.String,
+          quantityConfiguration: S.String,
         }),
       ).annotate({ identifier: "Constraints" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labelType: DimensionLabelType,
+          labelType: S.String,
           labelValue: S.String,
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionLabel" });
     case 6:
-      return S.Array(DimensionLabel);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           dimensionKey: S.String,
           displayName: S.String,
           description: S.optional(S.String),
-          dimensionLabels: S.optional(DimensionLabelList),
+          dimensionLabels: S.optional(__S(46, __c5, 6)),
           unit: S.String,
           price: S.String,
         }),
@@ -2025,22 +1711,26 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RateCardItem);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ selector: Selector, constraints: Constraints, rateCard: RateCardList }),
+        S.Struct({
+          selector: __S(43, __c5, 3),
+          constraints: __S(44, __c5, 4),
+          rateCard: __S(48, __c6, 0),
+        }),
       ).annotate({
         identifier: "ConfigurableUpfrontRateCardItem",
       });
     case 2:
-      return S.Array(ConfigurableUpfrontRateCardItem);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           currencyCode: S.String,
-          rateCards: S.optional(ConfigurableUpfrontRateCardList),
+          rateCards: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({
         identifier: "ConfigurableUpfrontPricingTerm",
@@ -2051,31 +1741,31 @@ function __c6(j: number): any {
           dimensionKey: S.String,
           displayName: S.String,
           description: S.optional(S.String),
-          dimensionLabels: S.optional(DimensionLabelList),
+          dimensionLabels: S.optional(__S(46, __c5, 6)),
           unit: S.String,
           maxQuantity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GrantItem" });
     case 5:
-      return S.Array(GrantItem);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           currencyCode: S.String,
           duration: S.optional(S.String),
           price: S.String,
-          grants: GrantList,
+          grants: __S(53, __c6, 5),
         }),
       ).annotate({ identifier: "FixedUpfrontPricingTerm" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           duration: S.optional(S.String),
-          grants: GrantList,
+          grants: __S(53, __c6, 5),
         }),
       ).annotate({ identifier: "FreeTrialPricingTerm" });
   }
@@ -2084,13 +1774,13 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ type: LegalDocumentType, url: S.String, version: S.optional(S.String) }),
+        S.Struct({ type: S.String, url: S.String, version: S.optional(S.String) }),
       ).annotate({ identifier: "DocumentItem" });
     case 1:
-      return S.Array(DocumentItem);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ id: S.String, type: TermType, documents: DocumentList }),
+        S.Struct({ id: S.String, type: S.String, documents: __S(57, __c7, 1) }),
       ).annotate({ identifier: "LegalTerm" });
     case 3:
       return S.suspend(() =>
@@ -2100,18 +1790,23 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ScheduleItem" });
     case 4:
-      return S.Array(ScheduleItem);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ id: S.String, type: TermType, currencyCode: S.String, schedule: ScheduleList }),
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          currencyCode: S.String,
+          schedule: __S(60, __c7, 4),
+        }),
       ).annotate({ identifier: "PaymentScheduleTerm" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           currencyCode: S.String,
-          billingPeriod: BillingPeriodType,
+          billingPeriod: S.String,
           price: S.String,
         }),
       ).annotate({ identifier: "RecurringPaymentTerm" });
@@ -2129,8 +1824,8 @@ function __c8(j: number): any {
       ).annotate({ identifier: "PercentageRange" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ fixedPercentage: FixedPercentage }),
-        /*@__PURE__*/ S.Struct({ percentageRange: PercentageRange }),
+        /*@__PURE__*/ S.Struct({ fixedPercentage: __S(63, __c7, 7) }),
+        /*@__PURE__*/ S.Struct({ percentageRange: __S(64, __c8, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
@@ -2141,27 +1836,25 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "PaymentScheduleEntry" });
     case 3:
-      return S.Array(PaymentScheduleEntry);
+      return S.Array(__S(66, __c8, 2));
     case 4:
-      return S.suspend(() => S.Struct({ schedule: PaymentScheduleEntryList })).annotate({
+      return S.suspend(() => S.Struct({ schedule: __S(67, __c8, 3) })).annotate({
         identifier: "PaymentScheduleTermTemplate",
       });
     case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: PaymentScheduleTermTemplate }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: __S(68, __c8, 4) })]);
     case 6:
-      return S.Array(TermTemplate);
+      return S.Array(__S(69, __c8, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           maxRenewals: S.optional(S.Number),
           lockoutPeriod: S.optional(S.String),
           adjustmentDeadline: S.optional(S.String),
-          priceIncrease: S.optional(PriceIncrease),
-          termTemplates: S.optional(TermTemplateList),
+          priceIncrease: S.optional(__S(65, __c8, 1)),
+          termTemplates: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({ identifier: "RenewalTerm" });
   }
@@ -2170,28 +1863,28 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.String, type: TermType, refundPolicy: S.String }),
+        S.Struct({ id: S.String, type: S.String, refundPolicy: S.String }),
       ).annotate({ identifier: "SupportTerm" });
     case 1:
-      return S.suspend(() => S.Struct({ rateCard: RateCardList })).annotate({
+      return S.suspend(() => S.Struct({ rateCard: __S(48, __c6, 0) })).annotate({
         identifier: "UsageBasedRateCardItem",
       });
     case 2:
-      return S.Array(UsageBasedRateCardItem);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           currencyCode: S.String,
-          rateCards: UsageBasedRateCardList,
+          rateCards: __S(74, __c9, 2),
         }),
       ).annotate({ identifier: "UsageBasedPricingTerm" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           agreementDuration: S.optional(S.String),
           agreementEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           agreementStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2201,42 +1894,42 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: TermType,
+          type: S.String,
           currencyCode: S.String,
           maxTotalChargeAmount: S.String,
         }),
       ).annotate({ identifier: "VariablePaymentTerm" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ id: S.String, type: TermType, paymentDuePeriod: S.String }),
+        S.Struct({ id: S.String, type: S.String, paymentDuePeriod: S.String }),
       ).annotate({ identifier: "NetPaymentTerm" });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ byolPricingTerm: ByolPricingTerm }),
-        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: ConfigurableUpfrontPricingTerm }),
-        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
-        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: FreeTrialPricingTerm }),
-        /*@__PURE__*/ S.Struct({ legalTerm: LegalTerm }),
-        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: PaymentScheduleTerm }),
-        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: RecurringPaymentTerm }),
-        /*@__PURE__*/ S.Struct({ renewalTerm: RenewalTerm }),
-        /*@__PURE__*/ S.Struct({ supportTerm: SupportTerm }),
-        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: UsageBasedPricingTerm }),
-        /*@__PURE__*/ S.Struct({ validityTerm: ValidityTerm }),
-        /*@__PURE__*/ S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
-        /*@__PURE__*/ S.Struct({ netPaymentTerm: NetPaymentTerm }),
+        /*@__PURE__*/ S.Struct({ byolPricingTerm: __S(42, __c5, 2) }),
+        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: __S(51, __c6, 3) }),
+        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: __S(54, __c6, 6) }),
+        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: __S(55, __c6, 7) }),
+        /*@__PURE__*/ S.Struct({ legalTerm: __S(58, __c7, 2) }),
+        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: __S(61, __c7, 5) }),
+        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: __S(62, __c7, 6) }),
+        /*@__PURE__*/ S.Struct({ renewalTerm: __S(71, __c8, 7) }),
+        /*@__PURE__*/ S.Struct({ supportTerm: __S(72, __c9, 0) }),
+        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: __S(75, __c9, 3) }),
+        /*@__PURE__*/ S.Struct({ validityTerm: __S(76, __c9, 4) }),
+        /*@__PURE__*/ S.Struct({ variablePaymentTerm: __S(77, __c9, 5) }),
+        /*@__PURE__*/ S.Struct({ netPaymentTerm: __S(78, __c9, 6) }),
       ]);
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OfferTerm);
+      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          offerTerms: OfferTermsList,
+          offerTerms: __S(80, __c10, 0),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetOfferTermsOutput" });
@@ -2260,17 +1953,17 @@ function __c10(j: number): any {
           productId: S.String,
           catalog: S.String,
           productName: S.String,
-          manufacturer: SellerInformation,
-          deployedOnAws: DeployedOnAwsStatus,
+          manufacturer: __S(1, __c0, 1),
+          deployedOnAws: S.String,
           shortDescription: S.String,
           longDescription: S.String,
           logoThumbnailUrl: S.String,
-          fulfillmentOptionSummaries: FulfillmentOptionSummaryList,
-          categories: CategoryList,
-          highlights: HighlightList,
-          promotionalMedia: PromotionalMediaList,
-          resources: ResourceList,
-          sellerEngagements: SellerEngagementList,
+          fulfillmentOptionSummaries: __S(11, __c1, 3),
+          categories: __S(9, __c1, 1),
+          highlights: __S(12, __c1, 4),
+          promotionalMedia: __S(20, __c2, 4),
+          resources: __S(22, __c2, 6),
+          sellerEngagements: __S(27, __c3, 3),
           listingId: S.String,
         }),
       ).annotate({ identifier: "GetProductOutput" });
@@ -2305,14 +1998,14 @@ function __c10(j: number): any {
         identifier: "AmazonMachineImageOperatingSystem",
       });
     case 6:
-      return S.Array(AmazonMachineImageOperatingSystem);
+      return S.Array(__S(85, __c10, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           protocol: S.String,
           fromPort: S.Number,
           toPort: S.Number,
-          cidrIpAddresses: AmazonMachineImageCidrIpAddressList,
+          cidrIpAddresses: __S(12, __c1, 4),
         }),
       ).annotate({
         identifier: "AmazonMachineImageSecurityGroup",
@@ -2322,19 +2015,19 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AmazonMachineImageSecurityGroup);
+      return S.Array(__S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           instanceType: S.String,
-          securityGroups: S.optional(AmazonMachineImageSecurityGroupList),
+          securityGroups: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({
         identifier: "AmazonMachineImageRecommendation",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ volumeTypes: AmazonMachineImageEbsVolumeTypeList, iops: S.optional(S.Number) }),
+        S.Struct({ volumeTypes: __S(12, __c1, 4), iops: S.optional(S.Number) }),
       ).annotate({
         identifier: "AmazonMachineImageEbsVolume",
       });
@@ -2344,17 +2037,17 @@ function __c11(j: number): any {
           fulfillmentOptionId: S.String,
           fulfillmentOptionName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
-          operatingSystems: AmazonMachineImageOperatingSystemList,
-          recommendation: S.optional(AmazonMachineImageRecommendation),
+          operatingSystems: __S(86, __c10, 6),
+          recommendation: S.optional(__S(89, __c11, 1)),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           accessUrlTemplate: S.optional(S.String),
           architecture: S.String,
           amiAlias: S.optional(S.String),
-          ebsVolume: S.optional(AmazonMachineImageEbsVolume),
+          ebsVolume: S.optional(__S(90, __c11, 2)),
           shortDescription: S.optional(S.String),
         }),
       ).annotate({
@@ -2365,15 +2058,15 @@ function __c11(j: number): any {
         S.Struct({ supportedServiceType: S.String, displayName: S.String, description: S.String }),
       ).annotate({ identifier: "AwsSupportedService" });
     case 5:
-      return S.Array(AwsSupportedService);
+      return S.Array(__S(92, __c11, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           usageInstructions: S.optional(S.String),
-          awsSupportedServices: AwsSupportedServiceList,
+          awsSupportedServices: __S(93, __c11, 5),
         }),
       ).annotate({ identifier: "ApiFulfillmentOption" });
     case 7:
@@ -2381,7 +2074,7 @@ function __c11(j: number): any {
         S.Struct({
           fulfillmentOptionId: S.String,
           fulfillmentOptionName: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
           releaseNotes: S.optional(S.String),
@@ -2402,17 +2095,17 @@ function __c12(j: number): any {
         S.Struct({ operatingSystemFamilyName: S.String, operatingSystemName: S.String }),
       ).annotate({ identifier: "ContainerOperatingSystem" });
     case 1:
-      return S.Array(ContainerOperatingSystem);
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
           fulfillmentOptionName: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
-          operatingSystems: S.optional(ContainerOperatingSystemList),
-          awsSupportedServices: S.optional(AwsSupportedServiceList),
+          operatingSystems: S.optional(__S(97, __c12, 1)),
+          awsSupportedServices: S.optional(__S(93, __c11, 5)),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
         }),
@@ -2424,12 +2117,12 @@ function __c12(j: number): any {
         S.Struct({
           fulfillmentOptionId: S.String,
           fulfillmentOptionName: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
-          operatingSystems: S.optional(HelmOperatingSystemList),
+          operatingSystems: S.optional(__S(97, __c12, 1)),
           releaseNotes: S.optional(S.String),
-          awsSupportedServices: S.optional(AwsSupportedServiceList),
+          awsSupportedServices: S.optional(__S(93, __c11, 5)),
           usageInstructions: S.optional(S.String),
         }),
       ).annotate({ identifier: "HelmFulfillmentOption" });
@@ -2438,13 +2131,13 @@ function __c12(j: number): any {
         S.Struct({
           fulfillmentOptionId: S.String,
           fulfillmentOptionName: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
-          operatingSystems: S.optional(EksAddOnOperatingSystemList),
+          operatingSystems: S.optional(__S(97, __c12, 1)),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
-          awsSupportedServices: S.optional(AwsSupportedServiceList),
+          awsSupportedServices: S.optional(__S(93, __c11, 5)),
         }),
       ).annotate({
         identifier: "EksAddOnFulfillmentOption",
@@ -2459,14 +2152,14 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "DataArtifact" });
     case 6:
-      return S.Array(DataArtifact);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
-          dataArtifacts: S.optional(DataArtifactList),
+          dataArtifacts: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({
         identifier: "DataExchangeFulfillmentOption",
@@ -2479,7 +2172,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
         }),
       ).annotate({
@@ -2489,13 +2182,13 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentUrl: S.optional(S.String),
           usageInstructions: S.optional(S.String),
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           launchUrl: S.optional(S.String),
-          quickLaunch: SaasQuickLaunchStatus,
+          quickLaunch: S.String,
         }),
       ).annotate({ identifier: "SaasFulfillmentOption" });
     case 2:
@@ -2512,12 +2205,12 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
-          recommendation: S.optional(SageMakerAlgorithmRecommendation),
+          recommendation: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({
         identifier: "SageMakerAlgorithmFulfillmentOption",
@@ -2535,14 +2228,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fulfillmentOptionId: S.String,
-          fulfillmentOptionType: FulfillmentOptionType,
+          fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
           fulfillmentOptionVersion: S.optional(S.String),
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
-          recommendation: S.optional(SageMakerModelRecommendation),
-          supportedContentTypes: S.optional(SageMakerModelContentTypeList),
-          supportedResponseMimeTypes: S.optional(SageMakerModelResponseMimeTypeList),
+          recommendation: S.optional(__S(108, __c13, 4)),
+          supportedContentTypes: S.optional(__S(12, __c1, 4)),
+          supportedResponseMimeTypes: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "SageMakerModelFulfillmentOption",
@@ -2550,32 +2243,32 @@ function __c13(j: number): any {
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          amazonMachineImageFulfillmentOption: AmazonMachineImageFulfillmentOption,
+          amazonMachineImageFulfillmentOption: __S(91, __c11, 3),
         }),
-        /*@__PURE__*/ S.Struct({ apiFulfillmentOption: ApiFulfillmentOption }),
+        /*@__PURE__*/ S.Struct({ apiFulfillmentOption: __S(94, __c11, 6) }),
         /*@__PURE__*/ S.Struct({
-          cloudFormationFulfillmentOption: CloudFormationFulfillmentOption,
+          cloudFormationFulfillmentOption: __S(95, __c11, 7),
         }),
-        /*@__PURE__*/ S.Struct({ containerFulfillmentOption: ContainerFulfillmentOption }),
-        /*@__PURE__*/ S.Struct({ helmFulfillmentOption: HelmFulfillmentOption }),
-        /*@__PURE__*/ S.Struct({ eksAddOnFulfillmentOption: EksAddOnFulfillmentOption }),
+        /*@__PURE__*/ S.Struct({ containerFulfillmentOption: __S(98, __c12, 2) }),
+        /*@__PURE__*/ S.Struct({ helmFulfillmentOption: __S(99, __c12, 3) }),
+        /*@__PURE__*/ S.Struct({ eksAddOnFulfillmentOption: __S(100, __c12, 4) }),
         /*@__PURE__*/ S.Struct({
-          ec2ImageBuilderComponentFulfillmentOption: Ec2ImageBuilderComponentFulfillmentOption,
+          ec2ImageBuilderComponentFulfillmentOption: __S(98, __c12, 2),
         }),
-        /*@__PURE__*/ S.Struct({ dataExchangeFulfillmentOption: DataExchangeFulfillmentOption }),
+        /*@__PURE__*/ S.Struct({ dataExchangeFulfillmentOption: __S(103, __c12, 7) }),
         /*@__PURE__*/ S.Struct({
-          professionalServicesFulfillmentOption: ProfessionalServicesFulfillmentOption,
+          professionalServicesFulfillmentOption: __S(104, __c13, 0),
         }),
-        /*@__PURE__*/ S.Struct({ saasFulfillmentOption: SaasFulfillmentOption }),
+        /*@__PURE__*/ S.Struct({ saasFulfillmentOption: __S(105, __c13, 1) }),
         /*@__PURE__*/ S.Struct({
-          sageMakerAlgorithmFulfillmentOption: SageMakerAlgorithmFulfillmentOption,
+          sageMakerAlgorithmFulfillmentOption: __S(107, __c13, 3),
         }),
         /*@__PURE__*/ S.Struct({
-          sageMakerModelFulfillmentOption: SageMakerModelFulfillmentOption,
+          sageMakerModelFulfillmentOption: __S(109, __c13, 5),
         }),
       ]);
     case 7:
-      return S.Array(FulfillmentOption);
+      return S.Array(__S(110, __c13, 6));
   }
 }
 function __c14(j: number): any {
@@ -2584,7 +2277,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          fulfillmentOptions: FulfillmentOptionsList,
+          fulfillmentOptions: __S(111, __c13, 7),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2593,17 +2286,17 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filterType: PurchaseOptionFilterType,
-          filterValues: PurchaseOptionFilterValueList,
+          filterType: S.String,
+          filterValues: __S(12, __c1, 4),
         }),
       ).annotate({ identifier: "PurchaseOptionFilter" });
     case 2:
-      return S.Array(PurchaseOptionFilter);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          filters: S.optional(PurchaseOptionFilterList),
+          filters: S.optional(__S(114, __c14, 2)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2620,31 +2313,31 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          product: ProductInformation,
-          offer: OfferInformation,
-          offerSet: S.optional(OfferSetInformation),
+          product: __S(2, __c0, 2),
+          offer: __S(3, __c0, 3),
+          offerSet: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "PurchaseOptionAssociatedEntity",
       });
     case 5:
-      return S.Array(PurchaseOptionAssociatedEntity);
+      return S.Array(__S(116, __c14, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           purchaseOptionId: S.String,
           catalog: S.String,
-          purchaseOptionType: PurchaseOptionType,
+          purchaseOptionType: S.String,
           purchaseOptionName: S.optional(S.String),
           availableFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          sellerOfRecord: SellerInformation,
-          badges: S.optional(PurchaseOptionBadgeList),
-          associatedEntities: PurchaseOptionAssociatedEntityList,
+          sellerOfRecord: __S(1, __c0, 1),
+          badges: S.optional(__S(7, __c0, 7)),
+          associatedEntities: __S(117, __c14, 5),
         }),
       ).annotate({ identifier: "PurchaseOptionSummary" });
     case 7:
-      return S.Array(PurchaseOptionSummary);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -2652,7 +2345,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          purchaseOptions: S.optional(PurchaseOptionSummaryList),
+          purchaseOptions: S.optional(__S(119, __c14, 7)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2660,19 +2353,19 @@ function __c15(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ filterType: SearchFilterType, filterValues: SearchFilterValueList }),
+        S.Struct({ filterType: S.String, filterValues: __S(12, __c1, 4) }),
       ).annotate({ identifier: "SearchFilter" });
     case 2:
-      return S.Array(SearchFilter);
+      return S.Array(__S(121, __c15, 1));
     case 3:
-      return S.Array(SearchFacetType);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
           searchText: S.optional(S.String),
-          filters: S.optional(SearchFilterList),
-          facetTypes: S.optional(FacetTypeList),
+          filters: S.optional(__S(122, __c15, 2)),
+          facetTypes: S.optional(__S(123, __c15, 3)),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2695,9 +2388,9 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "ListingFacet" });
     case 6:
-      return S.Array(ListingFacet);
+      return S.Array(__S(125, __c15, 5));
     case 7:
-      return S.Record(SearchFacetType, /*@__PURE__*/ ListingFacetList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(126, __c15, 6).pipe(S.optional));
   }
 }
 function __c16(j: number): any {
@@ -2706,7 +2399,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalResults: S.Number,
-          listingFacets: TypeToFacetMap,
+          listingFacets: __S(127, __c15, 7),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchFacetsOutput" });
@@ -2715,10 +2408,10 @@ function __c16(j: number): any {
         S.Struct({
           locale: S.optional(S.String),
           searchText: S.optional(S.String),
-          filters: S.optional(SearchFilterList),
+          filters: S.optional(__S(122, __c15, 2)),
           maxResults: S.optional(S.Number),
-          sortBy: S.optional(SearchListingsSortBy),
-          sortOrder: S.optional(SearchListingsSortOrder),
+          sortBy: S.optional(S.String),
+          sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2732,38 +2425,43 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "SearchListingsInput" });
     case 2:
-      return S.suspend(() => S.Struct({ product: S.optional(ProductInformation) })).annotate({
+      return S.suspend(() => S.Struct({ product: S.optional(__S(2, __c0, 2)) })).annotate({
         identifier: "ListingSummaryAssociatedEntity",
       });
     case 3:
-      return S.Array(ListingSummaryAssociatedEntity);
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           listingId: S.String,
           listingName: S.String,
-          publisher: SellerInformation,
-          fulfillmentOptionSummaries: FulfillmentOptionSummaryList,
+          publisher: __S(1, __c0, 1),
+          fulfillmentOptionSummaries: __S(11, __c1, 3),
           catalog: S.String,
           shortDescription: S.String,
           logoThumbnailUrl: S.String,
-          categories: CategoryList,
-          badges: ListingBadgeList,
-          reviewSummary: ReviewSummary,
-          pricingModels: PricingModelList,
-          pricingUnits: PricingUnitList,
-          associatedEntities: ListingSummaryAssociatedEntityList,
+          categories: __S(9, __c1, 1),
+          badges: __S(7, __c0, 7),
+          reviewSummary: __S(25, __c3, 1),
+          pricingModels: __S(14, __c1, 6),
+          pricingUnits: __S(16, __c2, 0),
+          associatedEntities: __S(131, __c16, 3),
         }),
       ).annotate({ identifier: "ListingSummary" });
     case 5:
-      return S.Array(ListingSummary);
+      return S.Array(__S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           totalResults: S.Number,
-          listingSummaries: ListingSummaryList,
+          listingSummaries: __S(133, __c16, 5),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchListingsOutput" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

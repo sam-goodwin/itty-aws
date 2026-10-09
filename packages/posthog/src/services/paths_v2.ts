@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -24,15 +26,8 @@ export interface PathsV2SegmentItem {
   /** Label value from the source's naming property, after path cleaning. Null or omitted for sources without a naming property; an empty string means the property was missing on the event. */
   label?: string | null;
 }
-const PathsV2SegmentItem = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PathsV2SegmentItem>;
-
 /** The segment's path items in displayed order. In open mode exactly two items - a single edge, source then target. In anchored mode the concrete chain as shown, starting at the anchor. */
 export type CreatePathsV2SegmentToFunnelRequestItemsList = Array<PathsV2SegmentItem>;
-const CreatePathsV2SegmentToFunnelRequestItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreatePathsV2SegmentToFunnelRequestItemsList>;
-
 export interface CreatePathsV2SegmentToFunnelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -41,20 +36,10 @@ export interface CreatePathsV2SegmentToFunnelRequest {
   /** The segment's path items in displayed order. In open mode exactly two items - a single edge, source then target. In anchored mode the concrete chain as shown, starting at the anchor. */
   items: CreatePathsV2SegmentToFunnelRequestItemsList;
 }
-const CreatePathsV2SegmentToFunnelRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreatePathsV2SegmentToFunnelRequest>;
-
 export interface PathsV2SegmentToFunnelResponse {
   /** The FunnelsQuery (JSON object with kind `FunnelsQuery`) that reproduces the segment's displayed unique-actor count exactly. Wrap it in an InsightVizNode to open it as a funnel insight. */
   funnels_query: unknown;
 }
-const PathsV2SegmentToFunnelResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PathsV2SegmentToFunnelResponse>;
-
 export type CreatePathsV2SegmentToFunnelError = BadRequest | PosthogOpError;
 /** Convert a journey segment to a funnel Converts a displayed journeys segment into the funnel query that reproduces its unique-actor count exactly. In open mode only a single edge converts (a two-step funnel with the inactivity gap as conversion window); in anchored mode any anchor-rooted chain converts (window W). The funnel is returned as JSON and is not executed or persisted here. */
 export const createPathsV2SegmentToFunnel: API.OperationMethod<
@@ -63,8 +48,8 @@ export const createPathsV2SegmentToFunnel: API.OperationMethod<
   CreatePathsV2SegmentToFunnelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePathsV2SegmentToFunnelRequest,
-  output: PathsV2SegmentToFunnelResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreatePathsV2SegmentToFunnelRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<PathsV2SegmentToFunnelResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -81,13 +66,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PathsV2SegmentItem" });
     case 1:
-      return S.Array(PathsV2SegmentItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           query: S.Unknown,
-          items: CreatePathsV2SegmentToFunnelRequestItemsList,
+          items: __S(1, __c0, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -107,4 +92,9 @@ function __c0(j: number): any {
         identifier: "PathsV2SegmentToFunnelResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -28,24 +30,12 @@ export class Forbidden
   ) {}
 
 export interface GetUserToolbarEntitlementRequest {}
-const GetUserToolbarEntitlementRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetUserToolbarEntitlementRequest>;
-
 /** Whether the current organization has each toolbar plan entitlement, keyed by feature name. */
 export type ToolbarEntitlementsEntitlementsMap = { [key: string]: boolean | undefined };
-const ToolbarEntitlementsEntitlementsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ToolbarEntitlementsEntitlementsMap>;
-
 export interface ToolbarEntitlements {
   /** Whether the current organization has each toolbar plan entitlement, keyed by feature name. */
   entitlements: ToolbarEntitlementsEntitlementsMap;
 }
-const ToolbarEntitlements = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ToolbarEntitlements>;
-
 export type GetUserToolbarEntitlementError = BadRequest | Forbidden | PosthogOpError;
 export const getUserToolbarEntitlement: API.OperationMethod<
   GetUserToolbarEntitlementRequest,
@@ -53,8 +43,8 @@ export const getUserToolbarEntitlement: API.OperationMethod<
   GetUserToolbarEntitlementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserToolbarEntitlementRequest,
-  output: ToolbarEntitlements,
+  input: __S(0, __c0, 0) as any as S.Schema<GetUserToolbarEntitlementRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ToolbarEntitlements>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -76,8 +66,13 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entitlements: ToolbarEntitlementsEntitlementsMap,
+          entitlements: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "ToolbarEntitlements" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Translates to IAM Policy bindings (without auditing at this level) */
 export interface PolicyBinding {
   /** Role. (https://cloud.google.com/iam/docs/understanding-roles) For example, `roles/viewer`, `roles/editor`, or `roles/owner`. */
@@ -72,18 +72,12 @@ export interface PolicyBinding {
   /** Uses the same format as in IAM policy. `member` must include both a prefix and ID. For example, `user:{emailId}`, `serviceAccount:{emailId}`, `group:{emailId}`. */
   members?: StringList;
 }
-const PolicyBinding = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PolicyBinding>;
-
 export type PolicyBindingList = Array<PolicyBinding>;
-const PolicyBindingList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PolicyBindingList>;
-
 /** Describes policy settings that can be applied to a newly created tenant project. */
 export interface TenantProjectPolicy {
   /** Policy bindings to be applied to the tenant project, in addition to the 'roles/owner' role granted to the Service Consumer Management service account. */
   policyBindings?: PolicyBindingList;
 }
-const TenantProjectPolicy = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TenantProjectPolicy>;
-
 /** Describes the service account configuration for the tenant project. */
 export interface ServiceAccountConfig {
   /** ID of the IAM service account to be created in tenant project. The email format of the service account is "@.iam.gserviceaccount.com". This account ID must be unique within tenant project and service producers have to guarantee it. The ID must be 6-30 characters long, and match the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])`. */
@@ -91,18 +85,12 @@ export interface ServiceAccountConfig {
   /** Roles for the associated service account for the tenant project. */
   tenantProjectRoles?: StringList;
 }
-const ServiceAccountConfig = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ServiceAccountConfig>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringMap>;
-
 /** Describes the billing configuration for a new tenant project. */
 export interface BillingConfig {
   /** Name of the billing account. For example `billingAccounts/012345-567890-ABCDEF`. */
   billingAccount?: string;
 }
-const BillingConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BillingConfig>;
-
 /** This structure defines a tenant project to be added to the specified tenancy unit and its initial configuration and properties. A project lien is created for the tenant project to prevent the tenant project from being deleted accidentally. The lien is deleted as part of tenant project removal. */
 export interface TenantProjectConfig {
   /** Describes ownership and policies for the new tenant project. */
@@ -118,8 +106,6 @@ export interface TenantProjectConfig {
   /** Billing account properties. The billing account must be specified. */
   billingConfig?: BillingConfig;
 }
-const TenantProjectConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TenantProjectConfig>;
-
 /** Request to add a newly created and configured tenant project to a tenancy unit. */
 export interface AddTenantProjectRequest {
   /** Required. Tag of the added project. Must be less than 128 characters. Required. */
@@ -127,28 +113,14 @@ export interface AddTenantProjectRequest {
   /** Configuration of the new tenant project to be added to tenancy unit resources. */
   projectConfig?: TenantProjectConfig;
 }
-const AddTenantProjectRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddTenantProjectRequest>;
-
 export interface AddProjectServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'. */
   parent: string;
   /** Request body */
   body?: AddTenantProjectRequest;
 }
-const AddProjectServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AddProjectServicesTenancyUnitsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -158,8 +130,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -173,8 +143,6 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Operation>;
-
 /** Request to apply configuration to an existing tenant project. */
 export interface ApplyTenantProjectConfigRequest {
   /** Configuration that should be applied to the existing tenant project. */
@@ -182,22 +150,12 @@ export interface ApplyTenantProjectConfigRequest {
   /** Required. Tag of the project. Must be less than 128 characters. Required. */
   tag?: string;
 }
-const ApplyTenantProjectConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ApplyTenantProjectConfigRequest>;
-
 export interface ApplyProjectConfigServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'. */
   name: string;
   /** Request body */
   body?: ApplyTenantProjectConfigRequest;
 }
-const ApplyProjectConfigServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ApplyProjectConfigServicesTenancyUnitsRequest>;
-
 /** Request to attach an existing project to the tenancy unit as a new tenant resource. */
 export interface AttachTenantProjectRequest {
   /** Required. Tag of the tenant resource after attachment. Must be less than 128 characters. Required. */
@@ -207,65 +165,33 @@ export interface AttachTenantProjectRequest {
   /** When attaching a reserved project already in tenancy units, this is the tag of a tenant resource under the tenancy unit for the managed service's service producer project. The reserved tenant resource must be in an active state. */
   reservedResource?: string;
 }
-const AttachTenantProjectRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AttachTenantProjectRequest>;
-
 export interface AttachProjectServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit that the project will be attached to. Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'. */
   name: string;
   /** Request body */
   body?: AttachTenantProjectRequest;
 }
-const AttachProjectServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AttachProjectServicesTenancyUnitsRequest>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CancelOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 /** Request to create a tenancy unit for a service consumer of a managed service. */
 export interface CreateTenancyUnitRequest {
   /** Optional. Optional service producer-provided identifier of the tenancy unit. Must be no longer than 40 characters and preferably URI friendly. If it isn't provided, a UID for the tenancy unit is automatically generated. The identifier must be unique across a managed service. If the tenancy unit already exists for the managed service and service consumer pair, calling `CreateTenancyUnit` returns the existing tenancy unit if the provided identifier is identical or empty, otherwise the call fails. */
   tenancyUnitId?: string;
 }
-const CreateTenancyUnitRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateTenancyUnitRequest>;
-
 export interface CreateServicesTenancyUnitsRequest {
   /** Required. services/{service}/{collection id}/{resource id} {collection id} is the cloud resource collection type representing the service consumer, for example 'projects', or 'organizations'. {resource id} is the consumer numeric id, such as project number: '123456'. {service} the name of a managed service, such as 'service.googleapis.com'. Enables service binding using the new tenancy unit. */
   parent: string;
   /** Request body */
   body?: CreateTenancyUnitRequest;
 }
-const CreateServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateServicesTenancyUnitsRequest>;
-
 export type TenantResourceStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "PENDING_CREATE"
@@ -273,8 +199,6 @@ export type TenantResourceStatusEnum =
   | "PENDING_DELETE"
   | "FAILED"
   | "DELETED";
-const TenantResourceStatusEnum = S.String;
-
 /** Resource constituting the TenancyUnit. */
 export interface TenantResource {
   /** Output only. The resource name of the tenant project from which this active regional tenant project was migrated. This field is only set for active regional migrated mapping tenant projects. Format: `services//{collection_id}/{RESOURCE_ID}/locations/{LOCATION}/tenantProjects/{TENANT_ID}`. */
@@ -288,11 +212,7 @@ export interface TenantResource {
   /** Status of tenant resource. */
   status?: TenantResourceStatusEnum;
 }
-const TenantResource = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TenantResource>;
-
 export type TenantResourceList = Array<TenantResource>;
-const TenantResourceList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TenantResourceList>;
-
 /** Representation of a tenancy unit. */
 export interface TenancyUnit {
   /** Output only. @OutputOnly Cloud resource name of the consumer of this service. For example 'projects/123456'. */
@@ -306,53 +226,29 @@ export interface TenancyUnit {
   /** Globally unique identifier of this tenancy unit "services/{service}/{collection id}/{resource id}/tenancyUnits/{unit}" */
   name?: string;
 }
-const TenancyUnit = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TenancyUnit>;
-
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteOperationsRequest>;
-
 /** Request message to delete tenant project resource from the tenancy unit. */
 export interface DeleteTenantProjectRequest {
   /** Required. Tag of the resource within the tenancy unit. */
   tag?: string;
 }
-const DeleteTenantProjectRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteTenantProjectRequest>;
-
 export interface DeleteProjectServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'. */
   name: string;
   /** Request body */
   body?: DeleteTenantProjectRequest;
 }
-const DeleteProjectServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteProjectServicesTenancyUnitsRequest>;
-
 export interface DeleteServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit to be deleted. */
   name: string;
 }
-const DeleteServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteServicesTenancyUnitsRequest>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetOperationsRequest>;
-
 export interface ListOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -365,14 +261,7 @@ export interface ListOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -382,11 +271,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListServicesTenancyUnitsRequest {
   /** Optional. Filter expression over tenancy resources field. Optional. */
   filter?: string;
@@ -397,14 +281,7 @@ export interface ListServicesTenancyUnitsRequest {
   /** Required. Managed service and service consumer. Required. services/{service}/{collection id}/{resource id} {collection id} is the cloud resource collection type representing the service consumer, for example 'projects', or 'organizations'. {resource id} is the consumer numeric id, such as project number: '123456'. {service} the name of a service, such as 'service.googleapis.com'. */
   parent: string;
 }
-const ListServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListServicesTenancyUnitsRequest>;
-
 export type TenancyUnitList = Array<TenancyUnit>;
-const TenancyUnitList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TenancyUnitList>;
-
 /** Response for the list request. */
 export interface ListTenancyUnitsResponse {
   /** Tenancy units matching the request. */
@@ -412,11 +289,6 @@ export interface ListTenancyUnitsResponse {
   /** Pagination token for large results. */
   nextPageToken?: string;
 }
-const ListTenancyUnitsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListTenancyUnitsResponse>;
-
 /** Request message to remove a tenant project resource from the tenancy unit. */
 export type RemoveTenantProjectRequest = DeleteTenantProjectRequest;
 export interface RemoveProjectServicesTenancyUnitsRequest {
@@ -425,11 +297,6 @@ export interface RemoveProjectServicesTenancyUnitsRequest {
   /** Request body */
   body?: DeleteTenantProjectRequest;
 }
-const RemoveProjectServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<RemoveProjectServicesTenancyUnitsRequest>;
-
 export interface SearchServicesRequest {
   /** Optional. The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of `nextPageToken` from the previous response. */
   pageToken?: string;
@@ -440,11 +307,6 @@ export interface SearchServicesRequest {
   /** Optional. The maximum number of results returned by this request. Currently, the default maximum is set to 256. If `page_size` <= 256, the request proceeds. Else, the request fails with an `TU_INVALID_PAGE_SIZE` error. */
   pageSize?: number;
 }
-const SearchServicesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SearchServicesRequest>;
-
 /** Response for the search query. */
 export interface SearchTenancyUnitsResponse {
   /** Tenancy Units matching the request. */
@@ -452,11 +314,6 @@ export interface SearchTenancyUnitsResponse {
   /** Pagination token for large results. */
   nextPageToken?: string;
 }
-const SearchTenancyUnitsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<SearchTenancyUnitsResponse>;
-
 /** Request message to undelete tenant project resource previously deleted from the tenancy unit. */
 export type UndeleteTenantProjectRequest = DeleteTenantProjectRequest;
 export interface UndeleteProjectServicesTenancyUnitsRequest {
@@ -465,11 +322,6 @@ export interface UndeleteProjectServicesTenancyUnitsRequest {
   /** Request body */
   body?: DeleteTenantProjectRequest;
 }
-const UndeleteProjectServicesTenancyUnitsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UndeleteProjectServicesTenancyUnitsRequest>;
-
 export type AddProjectServicesTenancyUnitsError =
   | NotFound
   | Forbidden
@@ -483,8 +335,8 @@ export const addProjectServicesTenancyUnits: API.OperationMethod<
   AddProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddProjectServicesTenancyUnitsRequest,
-  output: Operation,
+  input: __S(9, __c1, 1) as any as S.Schema<AddProjectServicesTenancyUnitsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -503,8 +355,8 @@ export const applyProjectConfigServicesTenancyUnits: API.OperationMethod<
   ApplyProjectConfigServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyProjectConfigServicesTenancyUnitsRequest,
-  output: Operation,
+  input: __S(15, __c1, 7) as any as S.Schema<ApplyProjectConfigServicesTenancyUnitsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -523,8 +375,8 @@ export const attachProjectServicesTenancyUnits: API.OperationMethod<
   AttachProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachProjectServicesTenancyUnitsRequest,
-  output: Operation,
+  input: __S(17, __c2, 1) as any as S.Schema<AttachProjectServicesTenancyUnitsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -538,8 +390,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOperationsRequest,
-  output: Empty,
+  input: __S(19, __c2, 3) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -558,8 +410,8 @@ export const createServicesTenancyUnits: API.OperationMethod<
   CreateServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServicesTenancyUnitsRequest,
-  output: TenancyUnit,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateServicesTenancyUnitsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<TenancyUnit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,8 +425,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOperationsRequest,
-  output: Empty,
+  input: __S(25, __c3, 1) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -593,8 +445,8 @@ export const deleteProjectServicesTenancyUnits: API.OperationMethod<
   DeleteProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectServicesTenancyUnitsRequest,
-  output: Operation,
+  input: __S(27, __c3, 3) as any as S.Schema<DeleteProjectServicesTenancyUnitsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -613,8 +465,8 @@ export const deleteServicesTenancyUnits: API.OperationMethod<
   DeleteServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServicesTenancyUnitsRequest,
-  output: Operation,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteServicesTenancyUnitsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +480,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(29, __c3, 5) as any as S.Schema<GetOperationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -644,8 +496,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(30, __c3, 6) as any as S.Schema<ListOperationsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -661,8 +513,8 @@ export const listServicesTenancyUnits: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTenancyUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesTenancyUnitsRequest,
-  output: ListTenancyUnitsResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<ListServicesTenancyUnitsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListTenancyUnitsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -682,8 +534,8 @@ export const removeProjectServicesTenancyUnits: API.OperationMethod<
   RemoveProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveProjectServicesTenancyUnitsRequest,
-  output: Operation,
+  input: __S(36, __c4, 4) as any as S.Schema<RemoveProjectServicesTenancyUnitsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -698,8 +550,8 @@ export const searchServices: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchTenancyUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchServicesRequest,
-  output: SearchTenancyUnitsResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<SearchServicesRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<SearchTenancyUnitsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -719,8 +571,8 @@ export const undeleteProjectServicesTenancyUnits: API.OperationMethod<
   UndeleteProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteProjectServicesTenancyUnitsRequest,
-  output: Operation,
+  input: __S(39, __c4, 7) as any as S.Schema<UndeleteProjectServicesTenancyUnitsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -735,22 +587,22 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(StringList),
+          members: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "PolicyBinding" });
     case 2:
-      return S.Array(PolicyBinding);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policyBindings: S.optional(PolicyBindingList),
+          policyBindings: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "TenantProjectPolicy" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          tenantProjectRoles: S.optional(StringList),
+          tenantProjectRoles: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ServiceAccountConfig" });
     case 5:
@@ -764,12 +616,12 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tenantProjectPolicy: S.optional(TenantProjectPolicy),
+          tenantProjectPolicy: S.optional(__S(3, __c0, 3)),
           folder: S.optional(S.String),
-          serviceAccountConfig: S.optional(ServiceAccountConfig),
-          labels: S.optional(StringMap),
-          services: S.optional(StringList),
-          billingConfig: S.optional(BillingConfig),
+          serviceAccountConfig: S.optional(__S(4, __c0, 4)),
+          labels: S.optional(__S(5, __c0, 5)),
+          services: S.optional(__S(0, __c0, 0)),
+          billingConfig: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "TenantProjectConfig" });
   }
@@ -780,14 +632,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tag: S.optional(S.String),
-          projectConfig: S.optional(TenantProjectConfig),
+          projectConfig: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "AddTenantProjectRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AddTenantProjectRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -801,29 +653,29 @@ function __c1(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(11, __c1, 3)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(10, __c1, 2)),
           done: S.optional(S.Boolean),
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          response: S.optional(__S(10, __c1, 2)),
+          error: S.optional(__S(12, __c1, 4)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          projectConfig: S.optional(TenantProjectConfig),
+          projectConfig: S.optional(__S(7, __c0, 7)),
           tag: S.optional(S.String),
         }),
       ).annotate({
@@ -833,7 +685,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ApplyTenantProjectConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -862,7 +714,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AttachTenantProjectRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -881,7 +733,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -900,7 +752,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateTenancyUnitRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -918,11 +770,11 @@ function __c2(j: number): any {
           migratedTenantProject: S.optional(S.String),
           tag: S.optional(S.String),
           resource: S.optional(S.String),
-          status: S.optional(TenantResourceStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TenantResource" });
     case 7:
-      return S.Array(TenantResource);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -933,7 +785,7 @@ function __c3(j: number): any {
           consumer: S.optional(S.String),
           createTime: S.optional(S.String),
           service: S.optional(S.String),
-          tenantResources: S.optional(TenantResourceList),
+          tenantResources: S.optional(__S(23, __c2, 7)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "TenancyUnit" });
@@ -961,7 +813,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DeleteTenantProjectRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1015,7 +867,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(13, __c1, 5));
   }
 }
 function __c4(j: number): any {
@@ -1023,8 +875,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(0, __c0, 0)),
+          operations: S.optional(__S(31, __c3, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1046,11 +898,11 @@ function __c4(j: number): any {
         identifier: "ListServicesTenancyUnitsRequest",
       });
     case 2:
-      return S.Array(TenancyUnit);
+      return S.Array(__S(24, __c3, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tenancyUnits: S.optional(TenancyUnitList),
+          tenancyUnits: S.optional(__S(34, __c4, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTenancyUnitsResponse" });
@@ -1058,7 +910,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DeleteTenantProjectRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1087,7 +939,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tenancyUnits: S.optional(TenancyUnitList),
+          tenancyUnits: S.optional(__S(34, __c4, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1097,7 +949,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DeleteTenantProjectRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1109,4 +961,9 @@ function __c4(j: number): any {
         identifier: "UndeleteProjectServicesTenancyUnitsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

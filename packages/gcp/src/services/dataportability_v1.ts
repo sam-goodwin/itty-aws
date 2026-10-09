@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request to kick off an Archive job. */
 export interface ArchiveInitiatePortabilityRequest {
   /** The resources from which you're exporting data. These values have a 1:1 correspondence with the OAuth scopes. */
@@ -74,26 +74,14 @@ export interface ArchiveInitiatePortabilityRequest {
   /** Optional. The timestamp that represents the end point for the data you are exporting. If the end_time is not specified in the InitiatePortabilityArchiveRequest, this field is set to the latest available data. */
   endTime?: string;
 }
-const ArchiveInitiatePortabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ArchiveInitiatePortabilityRequest>;
-
 export interface ArchiveInitiatePortabilityRequest_ {
   /** Request body */
   body?: ArchiveInitiatePortabilityRequest;
 }
-const ArchiveInitiatePortabilityRequest_ = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ArchiveInitiatePortabilityRequest_>;
-
 export type ArchiveInitiatePortabilityResponseAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "ACCESS_TYPE_ONE_TIME"
   | "ACCESS_TYPE_TIME_BASED";
-const ArchiveInitiatePortabilityResponseAccessTypeEnum = S.String;
-
 /** Response from initiating an Archive job. */
 export interface ArchiveInitiatePortabilityResponse {
   /** The archive job ID that is initiated in the API. This can be used to get the state of the job. */
@@ -101,47 +89,22 @@ export interface ArchiveInitiatePortabilityResponse {
   /** The access type of the Archive job initiated by the API. */
   accessType?: ArchiveInitiatePortabilityResponseAccessTypeEnum;
 }
-const ArchiveInitiatePortabilityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ArchiveInitiatePortabilityResponse>;
-
 /** Request to cancel a Portability Archive job. */
 export interface CancelPortabilityArchiveRequest {}
-const CancelPortabilityArchiveRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CancelPortabilityArchiveRequest>;
-
 export interface CancelArchiveJobsRequest {
   /** Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. */
   name: string;
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-const CancelArchiveJobsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelArchiveJobsRequest>;
-
 /** Response to canceling a Data Portability Archive job. */
 export interface CancelPortabilityArchiveResponse {}
-const CancelPortabilityArchiveResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelPortabilityArchiveResponse>;
-
 /** Request to check the token's access type. All required information is derived from the attached OAuth token. */
 export type CheckAccessTypeRequest = CancelPortabilityArchiveRequest;
 export interface CheckAccessTypeRequest_ {
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-const CheckAccessTypeRequest_ = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CheckAccessTypeRequest_>;
-
 /** Response to checking the token's access type. */
 export interface CheckAccessTypeResponse {
   /** Jobs initiated with this token will be one-time if any requested resources have one-time access. */
@@ -149,28 +112,16 @@ export interface CheckAccessTypeResponse {
   /** Jobs initiated with this token will be time-based if all requested resources have time-based access. */
   timeBasedResources?: StringList;
 }
-const CheckAccessTypeResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CheckAccessTypeResponse>;
-
 export interface GetPortabilityArchiveStateArchiveJobsRequest {
   /** Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse. */
   name: string;
 }
-const GetPortabilityArchiveStateArchiveJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetPortabilityArchiveStateArchiveJobsRequest>;
-
 export type PortabilityArchiveStateStateEnum =
   | "STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "COMPLETE"
   | "FAILED"
   | "CANCELLED";
-const PortabilityArchiveStateStateEnum = S.String;
-
 /** Resource that contains the state of an Archive job. */
 export interface PortabilityArchiveState {
   /** If the state is complete, this method returns the signed URLs of the objects in the Cloud Storage bucket. */
@@ -184,26 +135,14 @@ export interface PortabilityArchiveState {
   /** The timestamp that represents the end point for the data you are exporting. If the end_time value is set in the InitiatePortabilityArchiveRequest, this field is set to that value. If end_time is not set, this value is set to the time the export was requested. */
   exportTime?: string;
 }
-const PortabilityArchiveState = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PortabilityArchiveState>;
-
 /** Request to reset exhausted OAuth scopes. */
 export type ResetAuthorizationRequest = CancelPortabilityArchiveRequest;
 export interface ResetAuthorizationRequest_ {
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-const ResetAuthorizationRequest_ = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ResetAuthorizationRequest_>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Empty>;
-
 /** Request to retry a failed Portability Archive job. */
 export type RetryPortabilityArchiveRequest = CancelPortabilityArchiveRequest;
 export interface RetryArchiveJobsRequest {
@@ -212,21 +151,11 @@ export interface RetryArchiveJobsRequest {
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-const RetryArchiveJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<RetryArchiveJobsRequest>;
-
 /** Response from retrying a Portability Archive. */
 export interface RetryPortabilityArchiveResponse {
   /** The archive job ID that is initiated by the retry endpoint. This can be used to get the state of the new job. */
   archiveJobId?: string;
 }
-const RetryPortabilityArchiveResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<RetryPortabilityArchiveResponse>;
-
 export type ArchiveInitiatePortabilityError =
   | NotFound
   | Forbidden
@@ -240,8 +169,8 @@ export const archiveInitiatePortability: API.OperationMethod<
   ArchiveInitiatePortabilityError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ArchiveInitiatePortabilityRequest_,
-  output: ArchiveInitiatePortabilityResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ArchiveInitiatePortabilityRequest_>,
+  output: __S(3, __c0, 3) as any as S.Schema<ArchiveInitiatePortabilityResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -255,8 +184,8 @@ export const cancelArchiveJobs: API.OperationMethod<
   CancelArchiveJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelArchiveJobsRequest,
-  output: CancelPortabilityArchiveResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CancelArchiveJobsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CancelPortabilityArchiveResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -270,8 +199,8 @@ export const checkAccessType: API.OperationMethod<
   CheckAccessTypeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAccessTypeRequest_,
-  output: CheckAccessTypeResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CheckAccessTypeRequest_>,
+  output: __S(8, __c1, 0) as any as S.Schema<CheckAccessTypeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -285,8 +214,8 @@ export const getPortabilityArchiveStateArchiveJobs: API.OperationMethod<
   GetPortabilityArchiveStateArchiveJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPortabilityArchiveStateArchiveJobsRequest,
-  output: PortabilityArchiveState,
+  input: __S(9, __c1, 1) as any as S.Schema<GetPortabilityArchiveStateArchiveJobsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PortabilityArchiveState>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,8 +229,8 @@ export const resetAuthorization: API.OperationMethod<
   ResetAuthorizationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetAuthorizationRequest_,
-  output: Empty,
+  input: __S(11, __c1, 3) as any as S.Schema<ResetAuthorizationRequest_>,
+  output: __S(12, __c1, 4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -315,8 +244,8 @@ export const retryArchiveJobs: API.OperationMethod<
   RetryArchiveJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RetryArchiveJobsRequest,
-  output: RetryPortabilityArchiveResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<RetryArchiveJobsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<RetryPortabilityArchiveResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -330,7 +259,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(StringList),
+          resources: S.optional(__S(0, __c0, 0)),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
@@ -340,7 +269,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ArchiveInitiatePortabilityRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -355,7 +284,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           archiveJobId: S.optional(S.String),
-          accessType: S.optional(ArchiveInitiatePortabilityResponseAccessTypeEnum),
+          accessType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ArchiveInitiatePortabilityResponse",
@@ -368,7 +297,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -384,7 +313,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -400,8 +329,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          oneTimeResources: S.optional(StringList),
-          timeBasedResources: S.optional(StringList),
+          oneTimeResources: S.optional(__S(0, __c0, 0)),
+          timeBasedResources: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "CheckAccessTypeResponse" });
     case 1:
@@ -421,9 +350,9 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          urls: S.optional(StringList),
+          urls: S.optional(__S(0, __c0, 0)),
           startTime: S.optional(S.String),
-          state: S.optional(PortabilityArchiveStateStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           exportTime: S.optional(S.String),
         }),
@@ -431,7 +360,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -450,7 +379,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -468,4 +397,9 @@ function __c1(j: number): any {
         identifier: "RetryPortabilityArchiveResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

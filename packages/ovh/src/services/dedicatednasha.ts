@@ -6,6 +6,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -16,8 +18,6 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-const ServiceTerminationFutureUseEnum = S.String;
-
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
   | "FEATURES_DONT_SUIT_ME"
@@ -34,8 +34,6 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-const ServiceTerminationReasonEnum = S.String;
-
 export interface ConfirmDedicatedNashaTerminationRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -48,17 +46,7 @@ export interface ConfirmDedicatedNashaTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-const ConfirmDedicatedNashaTerminationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConfirmDedicatedNashaTerminationRequest>;
-
 export type ConfirmDedicatedNashaTerminationResponse = string;
-const ConfirmDedicatedNashaTerminationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConfirmDedicatedNashaTerminationResponse>;
-
 export interface CreateDedicatedNashaChangeContactRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -69,28 +57,11 @@ export interface CreateDedicatedNashaChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateDedicatedNashaChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDedicatedNashaChangeContactRequest>;
-
 export type CreateDedicatedNashaChangeContactResponseBodyList = Array<number>;
-const CreateDedicatedNashaChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateDedicatedNashaChangeContactResponseBodyList>;
-
 export type CreateDedicatedNashaChangeContactResponse =
   CreateDedicatedNashaChangeContactResponseBodyList;
-const CreateDedicatedNashaChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDedicatedNashaChangeContactResponse>;
-
 /** Partition Protocol */
 export type DedicatedStorageProtocolEnum = "CIFS" | "NFS" | "NFS_CIFS";
-const DedicatedStorageProtocolEnum = S.String;
-
 export interface CreateDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -103,11 +74,6 @@ export interface CreateDedicatedNashaPartitionRequest {
   /** Partition size */
   size: number;
 }
-const CreateDedicatedNashaPartitionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateDedicatedNashaPartitionRequest>;
-
 /** Distincts task */
 export type DedicatedStorageTaskFunctionEnum =
   | "backupRecursiveDestroy"
@@ -131,8 +97,6 @@ export type DedicatedStorageTaskFunctionEnum =
   | "nasPartitionUpdate"
   | "nasQuotaUpdate"
   | "remoteBackupRecursiveDestroy";
-const DedicatedStorageTaskFunctionEnum = S.String;
-
 /** different task status */
 export type DedicatedTaskStatusEnum =
   | "cancelled"
@@ -142,8 +106,6 @@ export type DedicatedTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-const DedicatedTaskStatusEnum = S.String;
-
 /** Storage task */
 export interface DedicatedNasTaskTask {
   /** information about operation */
@@ -165,12 +127,8 @@ export interface DedicatedNasTaskTask {
   /** Insertion of task in the todo */
   todoDate?: string | null;
 }
-const DedicatedNasTaskTask = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DedicatedNasTaskTask>;
-
 /** Acl Type */
 export type DedicatedStorageAclTypeEnum = "readonly" | "readwrite";
-const DedicatedStorageAclTypeEnum = S.String;
-
 export interface CreateDedicatedNashaPartitionAccessRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -183,11 +141,6 @@ export interface CreateDedicatedNashaPartitionAccessRequest {
   /** ACL type */
   type?: DedicatedStorageAclTypeEnum | (string & {});
 }
-const CreateDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateDedicatedNashaPartitionAccessRequest>;
-
 export interface CreateDedicatedNashaPartitionCustomSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -198,15 +151,8 @@ export interface CreateDedicatedNashaPartitionCustomSnapshotRequest {
   /** the name of the snapshot */
   name: string;
 }
-const CreateDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateDedicatedNashaPartitionCustomSnapshotRequest>;
-
 /** Atime values */
 export type DedicatedStorageAtimeEnum = "off" | "on";
-const DedicatedStorageAtimeEnum = S.String;
-
 /** Recordsize values */
 export type DedicatedStorageRecordSizeEnum =
   | "1048576"
@@ -216,20 +162,14 @@ export type DedicatedStorageRecordSizeEnum =
   | "4096"
   | "65536"
   | "8192";
-const DedicatedStorageRecordSizeEnum = S.String;
-
 /** Sync values */
 export type DedicatedStorageSyncEnum = "always" | "disabled" | "standard";
-const DedicatedStorageSyncEnum = S.String;
-
 /** The template enumeration available for your partition. */
 export type DedicatedStorageTemplateUsageOptionsEnum =
   | "Databases"
   | "Default"
   | "File Systems (big files)"
   | "Virtual machines";
-const DedicatedStorageTemplateUsageOptionsEnum = S.String;
-
 export interface CreateDedicatedNashaPartitionOptionRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -244,11 +184,6 @@ export interface CreateDedicatedNashaPartitionOptionRequest {
   /** The name of the usage template to apply for this partition. */
   templateName?: DedicatedStorageTemplateUsageOptionsEnum | (string & {});
 }
-const CreateDedicatedNashaPartitionOptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateDedicatedNashaPartitionOptionRequest>;
-
 export interface CreateDedicatedNashaPartitionQuotaRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -259,11 +194,6 @@ export interface CreateDedicatedNashaPartitionQuotaRequest {
   /** the uid to set quota on */
   uid: number;
 }
-const CreateDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateDedicatedNashaPartitionQuotaRequest>;
-
 /** Partition snapshot allowed */
 export type DedicatedStorageSnapshotEnum =
   | "day-1"
@@ -272,8 +202,6 @@ export type DedicatedStorageSnapshotEnum =
   | "day-7"
   | "hour-1"
   | "hour-6";
-const DedicatedStorageSnapshotEnum = S.String;
-
 export interface CreateDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -282,22 +210,12 @@ export interface CreateDedicatedNashaPartitionSnapshotRequest {
   /** Snapshot interval to add */
   snapshotType: DedicatedStorageSnapshotEnum | (string & {});
 }
-const CreateDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateDedicatedNashaPartitionSnapshotRequest>;
-
 export interface DeleteDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const DeleteDedicatedNashaPartitionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteDedicatedNashaPartitionRequest>;
-
 export interface DeleteDedicatedNashaPartitionAccessRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -306,11 +224,6 @@ export interface DeleteDedicatedNashaPartitionAccessRequest {
   /** the ip in root on storage */
   ip: string;
 }
-const DeleteDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteDedicatedNashaPartitionAccessRequest>;
-
 export interface DeleteDedicatedNashaPartitionCustomSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -319,11 +232,6 @@ export interface DeleteDedicatedNashaPartitionCustomSnapshotRequest {
   /** name of the snapshot */
   name: string;
 }
-const DeleteDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteDedicatedNashaPartitionCustomSnapshotRequest>;
-
 export interface DeleteDedicatedNashaPartitionQuotaRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -332,11 +240,6 @@ export interface DeleteDedicatedNashaPartitionQuotaRequest {
   /** the uid to set quota on */
   uid: number;
 }
-const DeleteDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteDedicatedNashaPartitionQuotaRequest>;
-
 /** Partition snapshot allowed */
 export type DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType =
   | "day-1"
@@ -345,8 +248,6 @@ export type DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType =
   | "day-7"
   | "hour-1"
   | "hour-6";
-const DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType = S.String;
-
 export interface DeleteDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -355,31 +256,14 @@ export interface DeleteDedicatedNashaPartitionSnapshotRequest {
   /** the interval of snapshot */
   snapshotType: DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType | (string & {});
 }
-const DeleteDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteDedicatedNashaPartitionSnapshotRequest>;
-
 export interface GetDedicatedNashaRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-const GetDedicatedNashaRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetDedicatedNashaRequest>;
-
 /** the disk type of the nasHa */
 export type DedicatedStorageDiskTypeEnum = "hdd" | "nvme" | "ssd";
-const DedicatedStorageDiskTypeEnum = S.String;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -391,8 +275,6 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<IamResourceMetadata>;
-
 /** Storage nas HA */
 export interface DedicatedNashaStorageWithIAM {
   /** True, if partition creation is allowed on this nas HA */
@@ -416,20 +298,10 @@ export interface DedicatedNashaStorageWithIAM {
   /** the size of the nas */
   zpoolSize?: number;
 }
-const DedicatedNashaStorageWithIAM = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DedicatedNashaStorageWithIAM>;
-
 export interface GetDedicatedNashaMetricsTokenRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-const GetDedicatedNashaMetricsTokenRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetDedicatedNashaMetricsTokenRequest>;
-
 /** A structure describing the metrics token result */
 export interface DedicatedStorageMetricsTokenResult {
   /** The url of the endpoint */
@@ -437,22 +309,12 @@ export interface DedicatedStorageMetricsTokenResult {
   /** The token value */
   token?: string;
 }
-const DedicatedStorageMetricsTokenResult = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DedicatedStorageMetricsTokenResult>;
-
 export interface GetDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const GetDedicatedNashaPartitionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetDedicatedNashaPartitionRequest>;
-
 /** Storage zpool partition */
 export interface DedicatedNashaPartition {
   /** percentage of partition space used in % */
@@ -468,11 +330,6 @@ export interface DedicatedNashaPartition {
   /** percentage of partition space used by snapshots, in % */
   usedBySnapshots?: number | null;
 }
-const DedicatedNashaPartition = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DedicatedNashaPartition>;
-
 export interface GetDedicatedNashaPartitionAccessRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -481,11 +338,6 @@ export interface GetDedicatedNashaPartitionAccessRequest {
   /** the ip in root on storage */
   ip: string;
 }
-const GetDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetDedicatedNashaPartitionAccessRequest>;
-
 /** Define Acl for partition */
 export interface DedicatedNashaAccess {
   /** the id of the access */
@@ -497,8 +349,6 @@ export interface DedicatedNashaAccess {
   /** ACL type */
   type?: DedicatedStorageAclTypeEnum;
 }
-const DedicatedNashaAccess = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DedicatedNashaAccess>;
-
 export interface GetDedicatedNashaPartitionCustomSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -507,11 +357,6 @@ export interface GetDedicatedNashaPartitionCustomSnapshotRequest {
   /** name of the snapshot */
   name: string;
 }
-const GetDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetDedicatedNashaPartitionCustomSnapshotRequest>;
-
 /** Custom Snapshot */
 export interface DedicatedNashaCustomSnap {
   /** date and time at which snapshot will be automatically destroyed */
@@ -519,22 +364,12 @@ export interface DedicatedNashaCustomSnap {
   /** name of the snapshot */
   name?: string;
 }
-const DedicatedNashaCustomSnap = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DedicatedNashaCustomSnap>;
-
 export interface GetDedicatedNashaPartitionOptionsRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const GetDedicatedNashaPartitionOptionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetDedicatedNashaPartitionOptionsRequest>;
-
 /** Partition options */
 export interface DedicatedNashaOptions {
   /** atime setting */
@@ -548,11 +383,6 @@ export interface DedicatedNashaOptions {
   /** the template name */
   templateName?: DedicatedStorageTemplateUsageOptionsEnum | null;
 }
-const DedicatedNashaOptions = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DedicatedNashaOptions>;
-
 export interface GetDedicatedNashaPartitionQuotaRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -561,11 +391,6 @@ export interface GetDedicatedNashaPartitionQuotaRequest {
   /** the uid to set quota on */
   uid: number;
 }
-const GetDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetDedicatedNashaPartitionQuotaRequest>;
-
 /** Partition Quota */
 export interface DedicatedNashaQuota {
   /** the size to set in MB */
@@ -573,8 +398,6 @@ export interface DedicatedNashaQuota {
   /** the uid to set quota on */
   uid?: number;
 }
-const DedicatedNashaQuota = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DedicatedNashaQuota>;
-
 /** Partition snapshot allowed */
 export type GetDedicatedNashaPartitionSnapshotRequestSnapshotType =
   | "day-1"
@@ -583,8 +406,6 @@ export type GetDedicatedNashaPartitionSnapshotRequestSnapshotType =
   | "day-7"
   | "hour-1"
   | "hour-6";
-const GetDedicatedNashaPartitionSnapshotRequestSnapshotType = S.String;
-
 export interface GetDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -593,25 +414,13 @@ export interface GetDedicatedNashaPartitionSnapshotRequest {
   /** the interval of snapshot */
   snapshotType: GetDedicatedNashaPartitionSnapshotRequestSnapshotType | (string & {});
 }
-const GetDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetDedicatedNashaPartitionSnapshotRequest>;
-
 /** Partition Snapshot */
 export interface DedicatedNashaSnapshot {
   /** the interval of snapshot */
   snapshotType?: DedicatedStorageSnapshotEnum;
 }
-const DedicatedNashaSnapshot = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DedicatedNashaSnapshot>;
-
 /** Available types for NAS partition usage */
 export type DedicatedStoragePartitionUsageTypeEnum = "size" | "used" | "usedbysnapshots";
-const DedicatedStoragePartitionUsageTypeEnum = S.String;
-
 export interface GetDedicatedNashaPartitionUseRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -620,35 +429,17 @@ export interface GetDedicatedNashaPartitionUseRequest {
   /** The type of statistic to be fetched */
   type: DedicatedStoragePartitionUsageTypeEnum | (string & {});
 }
-const GetDedicatedNashaPartitionUseRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetDedicatedNashaPartitionUseRequest>;
-
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueDouble {
   unit?: string;
   value?: number;
 }
-const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ComplexTypeUnitAndValueDouble>;
-
 export interface GetDedicatedNashaServiceInfosRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-const GetDedicatedNashaServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetDedicatedNashaServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  CreateDedicatedNashaChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -662,8 +453,6 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ServiceRenewType>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -674,8 +463,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -683,8 +470,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -704,211 +489,99 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ServicesService>;
-
 export interface GetDedicatedNashaTaskRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** id of the task */
   taskId: number;
 }
-const GetDedicatedNashaTaskRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetDedicatedNashaTaskRequest>;
-
 /** Available types for NAS usage */
 export type DedicatedStorageNasUsageTypeEnum = "size" | "used" | "usedbysnapshots";
-const DedicatedStorageNasUsageTypeEnum = S.String;
-
 export interface GetDedicatedNashaUseRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** The type of statistic to be fetched */
   type: DedicatedStorageNasUsageTypeEnum | (string & {});
 }
-const GetDedicatedNashaUseRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetDedicatedNashaUseRequest>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListDedicatedNashaRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListDedicatedNashaRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListDedicatedNashaRequestIamTagsValueList>;
-
 export type ListDedicatedNashaRequestIamTagsMap = {
   [key: string]: ListDedicatedNashaRequestIamTagsValueList | undefined;
 };
-const ListDedicatedNashaRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListDedicatedNashaRequestIamTagsMap>;
-
 export interface ListDedicatedNashaRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListDedicatedNashaRequestIamTagsMap;
 }
-const ListDedicatedNashaRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListDedicatedNashaRequest>;
-
 export type ListDedicatedNashaResponseBodyList = Array<string>;
-const ListDedicatedNashaResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListDedicatedNashaResponseBodyList>;
-
 export type ListDedicatedNashaResponse = ListDedicatedNashaResponseBodyList;
-const ListDedicatedNashaResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListDedicatedNashaResponse>;
-
 export interface ListDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-const ListDedicatedNashaPartitionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListDedicatedNashaPartitionRequest>;
-
 export type ListDedicatedNashaPartitionResponseBodyList = Array<string>;
 export type ListDedicatedNashaPartitionResponse = ListDedicatedNashaPartitionResponseBodyList;
-const ListDedicatedNashaPartitionResponse =
-  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionResponse>;
-
 export interface ListDedicatedNashaPartitionAccessRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const ListDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListDedicatedNashaPartitionAccessRequest>;
-
 export type ListDedicatedNashaPartitionAccessResponseBodyList = Array<string>;
 export type ListDedicatedNashaPartitionAccessResponse =
   ListDedicatedNashaPartitionAccessResponseBodyList;
-const ListDedicatedNashaPartitionAccessResponse =
-  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAccessResponse>;
-
 export interface ListDedicatedNashaPartitionAuthorizableBlocksRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const ListDedicatedNashaPartitionAuthorizableBlocksRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksRequest>;
-
 export type ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList = Array<string>;
 export type ListDedicatedNashaPartitionAuthorizableBlocksResponse =
   ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList;
-const ListDedicatedNashaPartitionAuthorizableBlocksResponse =
-  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponse>;
-
 export interface ListDedicatedNashaPartitionAuthorizableIpsRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const ListDedicatedNashaPartitionAuthorizableIpsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsRequest>;
-
 export type ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList = Array<string>;
 export type ListDedicatedNashaPartitionAuthorizableIpsResponse =
   ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList;
-const ListDedicatedNashaPartitionAuthorizableIpsResponse =
-  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponse>;
-
 export interface ListDedicatedNashaPartitionCustomSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const ListDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotRequest>;
-
 export type ListDedicatedNashaPartitionCustomSnapshotResponseBodyList = Array<string>;
 export type ListDedicatedNashaPartitionCustomSnapshotResponse =
   ListDedicatedNashaPartitionCustomSnapshotResponseBodyList;
-const ListDedicatedNashaPartitionCustomSnapshotResponse =
-  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponse>;
-
 export interface ListDedicatedNashaPartitionQuotaRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const ListDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListDedicatedNashaPartitionQuotaRequest>;
-
 export type ListDedicatedNashaPartitionQuotaResponseBodyList = Array<number>;
 export type ListDedicatedNashaPartitionQuotaResponse =
   ListDedicatedNashaPartitionQuotaResponseBodyList;
-const ListDedicatedNashaPartitionQuotaResponse =
-  CreateDedicatedNashaChangeContactResponse as any as S.Schema<ListDedicatedNashaPartitionQuotaResponse>;
-
 export interface ListDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const ListDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListDedicatedNashaPartitionSnapshotRequest>;
-
 export type ListDedicatedNashaPartitionSnapshotResponseBodyList =
   Array<DedicatedStorageSnapshotEnum>;
-const ListDedicatedNashaPartitionSnapshotResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListDedicatedNashaPartitionSnapshotResponseBodyList>;
-
 export type ListDedicatedNashaPartitionSnapshotResponse =
   ListDedicatedNashaPartitionSnapshotResponseBodyList;
-const ListDedicatedNashaPartitionSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListDedicatedNashaPartitionSnapshotResponse>;
-
 export interface ListDedicatedNashaPartitionTemplateUsageRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** the given name of partition */
   partitionName: string;
 }
-const ListDedicatedNashaPartitionTemplateUsageRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageRequest>;
-
 /** A structure describing the template usage result */
 export interface DedicatedStorageTemplateUsageOptionsDetails {
   /** The description of the template. */
@@ -916,25 +589,10 @@ export interface DedicatedStorageTemplateUsageOptionsDetails {
   /** The name of the template */
   name?: string;
 }
-const DedicatedStorageTemplateUsageOptionsDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DedicatedStorageTemplateUsageOptionsDetails>;
-
 export type ListDedicatedNashaPartitionTemplateUsageResponseBodyList =
   Array<DedicatedStorageTemplateUsageOptionsDetails>;
-const ListDedicatedNashaPartitionTemplateUsageResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageResponseBodyList>;
-
 export type ListDedicatedNashaPartitionTemplateUsageResponse =
   ListDedicatedNashaPartitionTemplateUsageResponseBodyList;
-const ListDedicatedNashaPartitionTemplateUsageResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageResponse>;
-
 export interface ListDedicatedNashaTaskRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -943,16 +601,8 @@ export interface ListDedicatedNashaTaskRequest {
   /** Filter the value of status property (=) */
   status?: DedicatedTaskStatusEnum | (string & {});
 }
-const ListDedicatedNashaTaskRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListDedicatedNashaTaskRequest>;
-
 export type ListDedicatedNashaTaskResponseBodyList = Array<number>;
 export type ListDedicatedNashaTaskResponse = ListDedicatedNashaTaskResponseBodyList;
-const ListDedicatedNashaTaskResponse =
-  CreateDedicatedNashaChangeContactResponse as any as S.Schema<ListDedicatedNashaTaskResponse>;
-
 export interface PutDedicatedNashaRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -961,15 +611,7 @@ export interface PutDedicatedNashaRequest {
   /** Send an email to customer if any issue is detected */
   monitored?: boolean;
 }
-const PutDedicatedNashaRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<PutDedicatedNashaRequest>;
-
 export interface PutDedicatedNashaResponse {}
-const PutDedicatedNashaResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutDedicatedNashaResponse>;
-
 export interface PutDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
   serviceName: string;
@@ -980,45 +622,19 @@ export interface PutDedicatedNashaPartitionRequest {
   /** Partition size */
   size?: number;
 }
-const PutDedicatedNashaPartitionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PutDedicatedNashaPartitionRequest>;
-
 export interface PutDedicatedNashaPartitionResponse {}
-const PutDedicatedNashaPartitionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<PutDedicatedNashaPartitionResponse>;
-
 export interface PutDedicatedNashaServiceInfosRequest {
   /** The internal name of your storage */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutDedicatedNashaServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PutDedicatedNashaServiceInfosRequest>;
-
 export interface PutDedicatedNashaServiceInfosResponse {}
-const PutDedicatedNashaServiceInfosResponse =
-  PutDedicatedNashaPartitionResponse as any as S.Schema<PutDedicatedNashaServiceInfosResponse>;
-
 export interface TerminateDedicatedNashaRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-const TerminateDedicatedNashaRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<TerminateDedicatedNashaRequest>;
-
 export type TerminateDedicatedNashaResponse = string;
-const TerminateDedicatedNashaResponse =
-  ConfirmDedicatedNashaTerminationResponse as any as S.Schema<TerminateDedicatedNashaResponse>;
-
 export type ConfirmDedicatedNashaTerminationError = OvhOpError;
 /** Confirm service termination */
 export const confirmDedicatedNashaTermination: API.OperationMethod<
@@ -1027,8 +643,8 @@ export const confirmDedicatedNashaTermination: API.OperationMethod<
   ConfirmDedicatedNashaTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmDedicatedNashaTerminationRequest,
-  output: ConfirmDedicatedNashaTerminationResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ConfirmDedicatedNashaTerminationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ConfirmDedicatedNashaTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1042,8 +658,8 @@ export const createDedicatedNashaChangeContact: API.OperationMethod<
   CreateDedicatedNashaChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedNashaChangeContactRequest,
-  output: CreateDedicatedNashaChangeContactResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateDedicatedNashaChangeContactRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateDedicatedNashaChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1057,8 +673,8 @@ export const createDedicatedNashaPartition: API.OperationMethod<
   CreateDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedNashaPartitionRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateDedicatedNashaPartitionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1072,8 +688,8 @@ export const createDedicatedNashaPartitionAccess: API.OperationMethod<
   CreateDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedNashaPartitionAccessRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateDedicatedNashaPartitionAccessRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1087,8 +703,8 @@ export const createDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   CreateDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedNashaPartitionCustomSnapshotRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1102,8 +718,8 @@ export const createDedicatedNashaPartitionOption: API.OperationMethod<
   CreateDedicatedNashaPartitionOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedNashaPartitionOptionRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateDedicatedNashaPartitionOptionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1117,8 +733,8 @@ export const createDedicatedNashaPartitionQuota: API.OperationMethod<
   CreateDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedNashaPartitionQuotaRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateDedicatedNashaPartitionQuotaRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1132,8 +748,8 @@ export const createDedicatedNashaPartitionSnapshot: API.OperationMethod<
   CreateDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedNashaPartitionSnapshotRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1147,8 +763,8 @@ export const deleteDedicatedNashaPartition: API.OperationMethod<
   DeleteDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedNashaPartitionRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteDedicatedNashaPartitionRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1162,8 +778,8 @@ export const deleteDedicatedNashaPartitionAccess: API.OperationMethod<
   DeleteDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedNashaPartitionAccessRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteDedicatedNashaPartitionAccessRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1177,8 +793,8 @@ export const deleteDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   DeleteDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedNashaPartitionCustomSnapshotRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(14, __c1, 6) as any as S.Schema<DeleteDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1192,8 +808,8 @@ export const deleteDedicatedNashaPartitionQuota: API.OperationMethod<
   DeleteDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedNashaPartitionQuotaRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteDedicatedNashaPartitionQuotaRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1207,8 +823,8 @@ export const deleteDedicatedNashaPartitionSnapshot: API.OperationMethod<
   DeleteDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedNashaPartitionSnapshotRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1222,8 +838,8 @@ export const getDedicatedNasha: API.OperationMethod<
   GetDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaRequest,
-  output: DedicatedNashaStorageWithIAM,
+  input: __S(17, __c2, 1) as any as S.Schema<GetDedicatedNashaRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DedicatedNashaStorageWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1237,8 +853,8 @@ export const getDedicatedNashaMetricsToken: API.OperationMethod<
   GetDedicatedNashaMetricsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaMetricsTokenRequest,
-  output: DedicatedStorageMetricsTokenResult,
+  input: __S(21, __c2, 5) as any as S.Schema<GetDedicatedNashaMetricsTokenRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<DedicatedStorageMetricsTokenResult>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1252,8 +868,8 @@ export const getDedicatedNashaPartition: API.OperationMethod<
   GetDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaPartitionRequest,
-  output: DedicatedNashaPartition,
+  input: __S(23, __c2, 7) as any as S.Schema<GetDedicatedNashaPartitionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DedicatedNashaPartition>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1267,8 +883,8 @@ export const getDedicatedNashaPartitionAccess: API.OperationMethod<
   GetDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaPartitionAccessRequest,
-  output: DedicatedNashaAccess,
+  input: __S(25, __c3, 1) as any as S.Schema<GetDedicatedNashaPartitionAccessRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<DedicatedNashaAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1282,8 +898,8 @@ export const getDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   GetDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaPartitionCustomSnapshotRequest,
-  output: DedicatedNashaCustomSnap,
+  input: __S(27, __c3, 3) as any as S.Schema<GetDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DedicatedNashaCustomSnap>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1297,8 +913,8 @@ export const getDedicatedNashaPartitionOptions: API.OperationMethod<
   GetDedicatedNashaPartitionOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaPartitionOptionsRequest,
-  output: DedicatedNashaOptions,
+  input: __S(29, __c3, 5) as any as S.Schema<GetDedicatedNashaPartitionOptionsRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<DedicatedNashaOptions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1312,8 +928,8 @@ export const getDedicatedNashaPartitionQuota: API.OperationMethod<
   GetDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaPartitionQuotaRequest,
-  output: DedicatedNashaQuota,
+  input: __S(31, __c3, 7) as any as S.Schema<GetDedicatedNashaPartitionQuotaRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DedicatedNashaQuota>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1327,8 +943,8 @@ export const getDedicatedNashaPartitionSnapshot: API.OperationMethod<
   GetDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaPartitionSnapshotRequest,
-  output: DedicatedNashaSnapshot,
+  input: __S(33, __c4, 1) as any as S.Schema<GetDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DedicatedNashaSnapshot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1342,8 +958,8 @@ export const getDedicatedNashaPartitionUse: API.OperationMethod<
   GetDedicatedNashaPartitionUseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaPartitionUseRequest,
-  output: ComplexTypeUnitAndValueDouble,
+  input: __S(35, __c4, 3) as any as S.Schema<GetDedicatedNashaPartitionUseRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1357,8 +973,8 @@ export const getDedicatedNashaServiceInfos: API.OperationMethod<
   GetDedicatedNashaServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaServiceInfosRequest,
-  output: ServicesService,
+  input: __S(37, __c4, 5) as any as S.Schema<GetDedicatedNashaServiceInfosRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1372,8 +988,8 @@ export const getDedicatedNashaTask: API.OperationMethod<
   GetDedicatedNashaTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaTaskRequest,
-  output: DedicatedNasTaskTask,
+  input: __S(40, __c5, 0) as any as S.Schema<GetDedicatedNashaTaskRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1387,8 +1003,8 @@ export const getDedicatedNashaUse: API.OperationMethod<
   GetDedicatedNashaUseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedNashaUseRequest,
-  output: ComplexTypeUnitAndValueDouble,
+  input: __S(41, __c5, 1) as any as S.Schema<GetDedicatedNashaUseRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1018,8 @@ export const listDedicatedNasha: API.OperationMethod<
   ListDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaRequest,
-  output: ListDedicatedNashaResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<ListDedicatedNashaRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1033,8 @@ export const listDedicatedNashaPartition: API.OperationMethod<
   ListDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionRequest,
-  output: ListDedicatedNashaPartitionResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<ListDedicatedNashaPartitionRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1048,8 @@ export const listDedicatedNashaPartitionAccess: API.OperationMethod<
   ListDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionAccessRequest,
-  output: ListDedicatedNashaPartitionAccessResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<ListDedicatedNashaPartitionAccessRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1063,12 @@ export const listDedicatedNashaPartitionAuthorizableBlocks: API.OperationMethod<
   ListDedicatedNashaPartitionAuthorizableBlocksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionAuthorizableBlocksRequest,
-  output: ListDedicatedNashaPartitionAuthorizableBlocksResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksRequest>,
+  output: __S(
+    47,
+    __c5,
+    7,
+  ) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1082,8 @@ export const listDedicatedNashaPartitionAuthorizableIps: API.OperationMethod<
   ListDedicatedNashaPartitionAuthorizableIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionAuthorizableIpsRequest,
-  output: ListDedicatedNashaPartitionAuthorizableIpsResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1097,8 @@ export const listDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   ListDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionCustomSnapshotRequest,
-  output: ListDedicatedNashaPartitionCustomSnapshotResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1112,8 @@ export const listDedicatedNashaPartitionQuota: API.OperationMethod<
   ListDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionQuotaRequest,
-  output: ListDedicatedNashaPartitionQuotaResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<ListDedicatedNashaPartitionQuotaRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListDedicatedNashaPartitionQuotaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1507,8 +1127,8 @@ export const listDedicatedNashaPartitionSnapshot: API.OperationMethod<
   ListDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionSnapshotRequest,
-  output: ListDedicatedNashaPartitionSnapshotResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<ListDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<ListDedicatedNashaPartitionSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1522,8 +1142,8 @@ export const listDedicatedNashaPartitionTemplateUsage: API.OperationMethod<
   ListDedicatedNashaPartitionTemplateUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaPartitionTemplateUsageRequest,
-  output: ListDedicatedNashaPartitionTemplateUsageResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1537,8 +1157,8 @@ export const listDedicatedNashaTask: API.OperationMethod<
   ListDedicatedNashaTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedNashaTaskRequest,
-  output: ListDedicatedNashaTaskResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<ListDedicatedNashaTaskRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListDedicatedNashaTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1172,8 @@ export const putDedicatedNasha: API.OperationMethod<
   PutDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedNashaRequest,
-  output: PutDedicatedNashaResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<PutDedicatedNashaRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<PutDedicatedNashaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1187,8 @@ export const putDedicatedNashaPartition: API.OperationMethod<
   PutDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedNashaPartitionRequest,
-  output: PutDedicatedNashaPartitionResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<PutDedicatedNashaPartitionRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<PutDedicatedNashaPartitionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1582,8 +1202,8 @@ export const putDedicatedNashaServiceInfos: API.OperationMethod<
   PutDedicatedNashaServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedNashaServiceInfosRequest,
-  output: PutDedicatedNashaServiceInfosResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<PutDedicatedNashaServiceInfosRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<PutDedicatedNashaServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1597,8 +1217,8 @@ export const terminateDedicatedNasha: API.OperationMethod<
   TerminateDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateDedicatedNashaRequest,
-  output: TerminateDedicatedNashaResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<TerminateDedicatedNashaRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TerminateDedicatedNashaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1612,8 +1232,8 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          futureUse: S.optional(ServiceTerminationFutureUseEnum),
-          reason: S.optional(ServiceTerminationReasonEnum),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
           token: S.String,
         }).pipe(
           T.Http({
@@ -1649,9 +1269,7 @@ function __c0(j: number): any {
     case 3:
       return S.Array(S.Number);
     case 4:
-      return S.suspend(() =>
-        CreateDedicatedNashaChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDedicatedNashaChangeContactResponse",
       });
     case 5:
@@ -1660,7 +1278,7 @@ function __c0(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           partitionDescription: S.optional(S.String),
           partitionName: S.String,
-          protocol: DedicatedStorageProtocolEnum,
+          protocol: S.String,
           size: S.Number,
         }).pipe(
           T.Http({ method: "POST", uri: "/dedicated/nasha/{serviceName}/partition", code: 200 }),
@@ -1674,9 +1292,9 @@ function __c0(j: number): any {
           details: S.optional(S.NullOr(S.String)),
           doneDate: S.optional(S.NullOr(S.String)),
           lastUpdate: S.optional(S.NullOr(S.String)),
-          operation: S.optional(DedicatedStorageTaskFunctionEnum),
+          operation: S.optional(S.String),
           partitionName: S.optional(S.NullOr(S.String)),
-          status: S.optional(DedicatedTaskStatusEnum),
+          status: S.optional(S.String),
           storageName: S.optional(S.NullOr(S.String)),
           taskId: S.optional(S.Number),
           todoDate: S.optional(S.NullOr(S.String)),
@@ -1689,7 +1307,7 @@ function __c0(j: number): any {
           partitionName: S.String.pipe(T.Label()),
           aclDescription: S.optional(S.String),
           ip: S.String,
-          type: S.optional(DedicatedStorageAclTypeEnum),
+          type: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1726,10 +1344,10 @@ function __c1(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           partitionName: S.String.pipe(T.Label()),
-          atime: S.optional(DedicatedStorageAtimeEnum),
-          recordsize: S.optional(DedicatedStorageRecordSizeEnum),
-          sync: S.optional(DedicatedStorageSyncEnum),
-          templateName: S.optional(DedicatedStorageTemplateUsageOptionsEnum),
+          atime: S.optional(S.String),
+          recordsize: S.optional(S.String),
+          sync: S.optional(S.String),
+          templateName: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1762,7 +1380,7 @@ function __c1(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           partitionName: S.String.pipe(T.Label()),
-          snapshotType: DedicatedStorageSnapshotEnum,
+          snapshotType: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1845,7 +1463,7 @@ function __c2(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           partitionName: S.String.pipe(T.Label()),
-          snapshotType: DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType.pipe(T.Label()),
+          snapshotType: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1869,7 +1487,7 @@ function __c2(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(18, __c2, 2))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -1879,8 +1497,8 @@ function __c2(j: number): any {
           canCreatePartition: S.optional(S.Boolean),
           customName: S.optional(S.NullOr(S.String)),
           datacenter: S.optional(S.NullOr(S.String)),
-          diskType: S.optional(DedicatedStorageDiskTypeEnum),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          diskType: S.optional(S.String),
+          iam: S.optional(S.NullOr(__S(19, __c2, 3))),
           ip: S.optional(S.NullOr(S.String)),
           monitored: S.optional(S.Boolean),
           serviceName: S.optional(S.String),
@@ -1934,7 +1552,7 @@ function __c3(j: number): any {
           partitionCapacity: S.optional(S.NullOr(S.Number)),
           partitionDescription: S.optional(S.NullOr(S.String)),
           partitionName: S.optional(S.String),
-          protocol: S.optional(DedicatedStorageProtocolEnum),
+          protocol: S.optional(S.String),
           size: S.optional(S.Number),
           usedBySnapshots: S.optional(S.NullOr(S.Number)),
         }),
@@ -1961,7 +1579,7 @@ function __c3(j: number): any {
           accessId: S.optional(S.Number),
           aclDescription: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
-          type: S.optional(DedicatedStorageAclTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedNashaAccess" });
     case 3:
@@ -2009,7 +1627,7 @@ function __c3(j: number): any {
           id: S.optional(S.Number),
           recordsize: S.optional(S.String),
           sync: S.optional(S.String),
-          templateName: S.optional(S.NullOr(DedicatedStorageTemplateUsageOptionsEnum)),
+          templateName: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DedicatedNashaOptions" });
     case 7:
@@ -2044,7 +1662,7 @@ function __c4(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           partitionName: S.String.pipe(T.Label()),
-          snapshotType: GetDedicatedNashaPartitionSnapshotRequestSnapshotType.pipe(T.Label()),
+          snapshotType: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2058,7 +1676,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          snapshotType: S.optional(DedicatedStorageSnapshotEnum),
+          snapshotType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedNashaSnapshot" });
     case 3:
@@ -2066,7 +1684,7 @@ function __c4(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           partitionName: S.String.pipe(T.Label()),
-          type: DedicatedStoragePartitionUsageTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2117,11 +1735,11 @@ function __c4(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(3, __c0, 3))),
+          renew: S.optional(S.NullOr(__S(38, __c4, 6))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
   }
@@ -2143,7 +1761,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          type: DedicatedStorageNasUsageTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/use", code: 200 })),
       ).annotate({
         identifier: "GetDedicatedNashaUseRequest",
@@ -2153,13 +1771,13 @@ function __c5(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 3:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(42, __c5, 2));
     case 4:
-      return S.Record(S.String, ListDedicatedNashaRequestIamTagsValueList);
+      return S.Record(S.String, __S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListDedicatedNashaRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(44, __c5, 4).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha", code: 200 })),
       ).annotate({
         identifier: "ListDedicatedNashaRequest",
@@ -2167,11 +1785,9 @@ function __c5(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.suspend(() => ListDedicatedNashaResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListDedicatedNashaResponse",
-        },
-      );
+      return S.suspend(() => __S(46, __c5, 6).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedNashaResponse",
+      });
   }
 }
 function __c6(j: number): any {
@@ -2277,15 +1893,13 @@ function __c6(j: number): any {
         identifier: "ListDedicatedNashaPartitionSnapshotRequest",
       });
     case 7:
-      return S.Array(DedicatedStorageSnapshotEnum);
+      return S.Array(S.String);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListDedicatedNashaPartitionSnapshotResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(55, __c6, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedNashaPartitionSnapshotResponse",
       });
     case 1:
@@ -2313,19 +1927,17 @@ function __c7(j: number): any {
         identifier: "DedicatedStorageTemplateUsageOptionsDetails",
       });
     case 3:
-      return S.Array(DedicatedStorageTemplateUsageOptionsDetails);
+      return S.Array(__S(58, __c7, 2));
     case 4:
-      return S.suspend(() =>
-        ListDedicatedNashaPartitionTemplateUsageResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(59, __c7, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedNashaPartitionTemplateUsageResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          operation: S.optional(DedicatedStorageTaskFunctionEnum.pipe(T.Query())),
-          status: S.optional(DedicatedTaskStatusEnum.pipe(T.Query())),
+          operation: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/task", code: 200 })),
       ).annotate({
         identifier: "ListDedicatedNashaTaskRequest",
@@ -2367,7 +1979,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(38, __c4, 6))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/dedicated/nasha/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -2385,4 +1997,9 @@ function __c8(j: number): any {
         identifier: "TerminateDedicatedNashaRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

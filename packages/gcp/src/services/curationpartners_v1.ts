@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,25 +66,13 @@ export class NotFound
 
 /** Request message for ActivateCuratedPackage. */
 export interface ActivateCuratedPackageRequest {}
-const ActivateCuratedPackageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateCuratedPackageRequest>;
-
 export interface ActivateCuratorsCuratedPackagesRequest {
   /** Required. The name of the curated package to activate. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
   name: string;
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>;
-
 export type CuratedPackageStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
-const CuratedPackageStateEnum = S.String;
-
 /** Represents an amount of money with its currency type. */
 export interface Money {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
@@ -92,24 +82,13 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Money>;
-
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   | "OPEN_MEASUREMENT_TYPE_UNSPECIFIED"
   | "OPEN_MEASUREMENT_TYPE_OMID_V1";
-const PackageTargetingIncludedOpenMeasurementTypesItemEnum = S.String;
-
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnumList = Array<
   PackageTargetingIncludedOpenMeasurementTypesItemEnum | (string & {})
 >;
-const PackageTargetingIncludedOpenMeasurementTypesItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PackageTargetingIncludedOpenMeasurementTypesItemEnumList>;
-
 export type StringList_ = Array<string>;
-const StringList_ = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringList_>;
-
 /** Represents the size of the video player that can be targeted. Both width and height are required to be set to non-zero values. */
 export interface VideoPlayerSizeTargeting {
   /** Required. The minimum width of the video player in pixels. */
@@ -117,11 +96,6 @@ export interface VideoPlayerSizeTargeting {
   /** Required. The minimum height of the video player in pixels. */
   minimumHeight?: string;
 }
-const VideoPlayerSizeTargeting = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<VideoPlayerSizeTargeting>;
-
 export type PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   | "MAXIMUM_VIDEO_AD_DURATION_UNSPECIFIED"
   | "MAXIMUM_VIDEO_AD_DURATION_FIFTEEN_SECONDS"
@@ -130,8 +104,6 @@ export type PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   | "MAXIMUM_VIDEO_AD_DURATION_SIXTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_NINETY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS";
-const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum = S.String;
-
 export type PackageVideoTargetingIncludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "POSITION_TYPE_MIDROLL"
@@ -140,21 +112,14 @@ export type PackageVideoTargetingIncludedPositionTypesItemEnum =
 export type PackageVideoTargetingIncludedPositionTypesItemEnumList = Array<
   PackageVideoTargetingIncludedPositionTypesItemEnum | (string & {})
 >;
-const PackageVideoTargetingIncludedPositionTypesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPositionTypesItemEnumList>;
-
 export type PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   | "CONTENT_DELIVERY_METHOD_UNSPECIFIED"
   | "CONTENT_DELIVERY_METHOD_STREAMING"
   | "CONTENT_DELIVERY_METHOD_PROGRESSIVE";
-const PackageVideoTargetingIncludedContentDeliveryMethodEnum = S.String;
-
 export type VideoPlcmtTargetingSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
   | "SELECTION_TYPE_EXCLUDE";
-const VideoPlcmtTargetingSelectionTypeEnum = S.String;
-
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "VIDEO_PLCMT_TYPE_UNSPECIFIED"
   | "INSTREAM"
@@ -164,9 +129,6 @@ export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnumList = Array<
   VideoPlcmtTargetingVideoPlcmtTypesItemEnum | (string & {})
 >;
-const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<VideoPlcmtTargetingVideoPlcmtTypesItemEnumList>;
-
 /** Defines targeting criteria based on the video placement type, often corresponding to the IAB OpenRTB 'plcmt' field. */
 export interface VideoPlcmtTargeting {
   /** Required. The selection type for the list of video plcmts. */
@@ -174,8 +136,6 @@ export interface VideoPlcmtTargeting {
   /** Required. The list of targeted video plcmts types. If empty, inventory will be targeted regardless of video plcmt type. */
   videoPlcmtTypes?: VideoPlcmtTargetingVideoPlcmtTypesItemEnumList;
 }
-const VideoPlcmtTargeting = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<VideoPlcmtTargeting>;
-
 export type PackageVideoTargetingIncludedMimeTypesItemEnum =
   | "VIDEO_MIME_TYPE_UNSPECIFIED"
   | "VIDEO_MIME_TYPE_THREEGPP"
@@ -187,9 +147,6 @@ export type PackageVideoTargetingIncludedMimeTypesItemEnum =
 export type PackageVideoTargetingIncludedMimeTypesItemEnumList = Array<
   PackageVideoTargetingIncludedMimeTypesItemEnum | (string & {})
 >;
-const PackageVideoTargetingIncludedMimeTypesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedMimeTypesItemEnumList>;
-
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   | "PLAYBACK_METHOD_UNSPECIFIED"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_ON"
@@ -198,9 +155,6 @@ export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnumList = Array<
   PackageVideoTargetingIncludedPlaybackMethodsItemEnum | (string & {})
 >;
-const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPlaybackMethodsItemEnumList>;
-
 /** Video specific targeting criteria. */
 export interface PackageVideoTargeting {
   /** Optional. The targeted video player size. If unset, inventory will be targeted regardless of video player size. */
@@ -224,11 +178,6 @@ export interface PackageVideoTargeting {
   /** Optional. The list of targeted video playback methods. If empty, inventory will be targeted regardless of video playback method. */
   includedPlaybackMethods?: PackageVideoTargetingIncludedPlaybackMethodsItemEnumList;
 }
-const PackageVideoTargeting = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PackageVideoTargeting>;
-
 /** Defines targeting criteria for handling the IAB audience and content Taxonomy ID space. */
 export interface TaxonomyTargeting {
   /** Optional. The list of excluded content taxonomy IDs. */
@@ -236,14 +185,10 @@ export interface TaxonomyTargeting {
   /** Optional. The list of targeted content taxonomy IDs. */
   targetedTaxonomyIds?: StringList_;
 }
-const TaxonomyTargeting = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TaxonomyTargeting>;
-
 export type StringTargetingDimensionSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
   | "SELECTION_TYPE_EXCLUDE";
-const StringTargetingDimensionSelectionTypeEnum = S.String;
-
 /** Generic targeting with string values. */
 export interface StringTargetingDimension {
   /** Required. How the items in this list should be targeted. */
@@ -251,11 +196,6 @@ export interface StringTargetingDimension {
   /** Required. The values specified. */
   values?: StringList_;
 }
-const StringTargetingDimension = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<StringTargetingDimension>;
-
 /** Represents targeting about publisher provided signals. Different publisher provided signals types will be logically OR'ed. */
 export interface PackagePublisherProvidedSignalsTargeting {
   /** Optional. The list of targeted or excluded audience IDs. Based off of IAB Audience Taxonomy version 1.1 (https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Audience%20Taxonomies/Audience%20Taxonomy%201.1.tsv) */
@@ -265,11 +205,6 @@ export interface PackagePublisherProvidedSignalsTargeting {
   /** Optional. The list of targeted and excluded video and audio signals IDs. These are additional signals supported by publisher provided signals. */
   videoAndAudioSignalsTargeting?: StringTargetingDimension;
 }
-const PackagePublisherProvidedSignalsTargeting = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PackagePublisherProvidedSignalsTargeting>;
-
 /** Generic targeting used for targeting dimensions that contains a list of included and excluded numeric IDs. This cannot be filtered using list filter syntax. */
 export interface CriteriaTargeting {
   /** A list of numeric IDs to be included. */
@@ -277,8 +212,6 @@ export interface CriteriaTargeting {
   /** A list of numeric IDs to be excluded. */
   excludedCriteriaIds?: StringList_;
 }
-const CriteriaTargeting = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CriteriaTargeting>;
-
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_DIRECT"
@@ -286,16 +219,11 @@ export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList = Array<
   PackageTargetingIncludedAuthorizedSellerStatusesItemEnum | (string & {})
 >;
-const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList>;
-
 export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   | "ACCELERATED_MOBILE_PAGE_TYPE_UNSPECIFIED"
   | "ACCELERATED_MOBILE_PAGE_TYPE_NON_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY";
-const PackageTargetingIncludedAcceleratedMobilePageTypeEnum = S.String;
-
 export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
   | "RESTRICTED_CATEGORY_UNSPECIFIED"
   | "RESTRICTED_CATEGORY_ALCOHOL"
@@ -303,9 +231,6 @@ export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
 export type PackageTargetingIncludedRestrictedCategoriesItemEnumList = Array<
   PackageTargetingIncludedRestrictedCategoriesItemEnum | (string & {})
 >;
-const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedRestrictedCategoriesItemEnumList>;
-
 export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
   | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
   | "NATIVE_INVENTORY_TYPE_NATIVE_ONLY"
@@ -313,22 +238,15 @@ export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
 export type PackageTargetingIncludedNativeInventoryTypesItemEnumList = Array<
   PackageTargetingIncludedNativeInventoryTypesItemEnum | (string & {})
 >;
-const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedNativeInventoryTypesItemEnumList>;
-
 export type PackageTargetingIncludedRewardedTypeEnum =
   | "REWARDED_TYPE_UNSPECIFIED"
   | "REWARDED_TYPE_NON_REWARDED"
   | "REWARDED_TYPE_REWARDED";
-const PackageTargetingIncludedRewardedTypeEnum = S.String;
-
 export type PackageTargetingIncludedCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "CREATIVE_FORMAT_DISPLAY"
   | "CREATIVE_FORMAT_VIDEO"
   | "CREATIVE_FORMAT_AUDIO";
-const PackageTargetingIncludedCreativeFormatEnum = S.String;
-
 export type PackageTargetingIncludedDeviceTypesItemEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "DEVICE_TYPE_PERSONAL_COMPUTER"
@@ -338,9 +256,6 @@ export type PackageTargetingIncludedDeviceTypesItemEnum =
 export type PackageTargetingIncludedDeviceTypesItemEnumList = Array<
   PackageTargetingIncludedDeviceTypesItemEnum | (string & {})
 >;
-const PackageTargetingIncludedDeviceTypesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedDeviceTypesItemEnumList>;
-
 /** Represents targeting about where the ads can appear, for example, certain sites or mobile applications. Different placement targeting types will be logically OR'ed. */
 export interface PackagePlacementTargeting {
   /** Optional. The list of targeted or excluded URLs. The domains should have the http/https stripped (for example, google.com), and can contain a max of 5 paths per url. */
@@ -350,14 +265,7 @@ export interface PackagePlacementTargeting {
   /** Optional. The list of targeted mobile app categories. */
   includedMobileAppCategoryTargeting?: StringList_;
 }
-const PackagePlacementTargeting = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PackagePlacementTargeting>;
-
 export type AdSizeTypeEnum = "TYPE_UNSPECIFIED" | "PIXEL" | "INTERSTITIAL" | "NATIVE" | "FLUID";
-const AdSizeTypeEnum = S.String;
-
 /** Represents size of a single ad slot, or a creative. */
 export interface AdSize {
   /** The width of the ad slot in pixels. This field will be present only when size type is `PIXEL`. */
@@ -367,17 +275,11 @@ export interface AdSize {
   /** The type of the ad slot size. */
   type?: AdSizeTypeEnum | (string & {});
 }
-const AdSize = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AdSize>;
-
 export type AdSizeList = Array<AdSize>;
-const AdSizeList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AdSizeList>;
-
 export type PackageTargetingIncludedEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_SITE"
   | "ENVIRONMENT_APP";
-const PackageTargetingIncludedEnvironmentEnum = S.String;
-
 /** Targeting criteria for curated and auction packages. */
 export interface PackageTargeting {
   /** Optional. The list of targeted open measurement types. If empty, inventory will be targeted regardless of Open Measurement support. */
@@ -423,24 +325,15 @@ export interface PackageTargeting {
   /** Optional. The environment to target. If unspecified, all environments are targeted. */
   includedEnvironment?: PackageTargetingIncludedEnvironmentEnum | (string & {});
 }
-const PackageTargeting = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PackageTargeting>;
-
 export type CuratedPackageCurationFeeVisibilityEnum =
   | "CURATION_FEE_VISIBILITY_UNSPECIFIED"
   | "DISCLOSED"
   | "NON_DISCLOSED";
-const CuratedPackageCurationFeeVisibilityEnum = S.String;
-
 /** Settings for controlling access to a curated package. */
 export interface AccessControlSettings {
   /** Required. Immutable. The list of media planners that are explicitly granted access to the curated package. Eligible media planners can be found in the mediaPlanners.list method. Only a single media planner may be allowlisted at this time. Format: `mediaPlanners/{mediaPlannerAccountId}` */
   allowlistedMediaPlanners?: StringList_;
 }
-const AccessControlSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AccessControlSettings>;
-
 /** Represents a curated package of inventory created and managed by a Curator. */
 export interface CuratedPackage {
   /** Required. The display name assigned to the curated package by the curator. Can be used to filter the response of the curatedPackages.list method. */
@@ -468,8 +361,6 @@ export interface CuratedPackage {
   /** Required. Settings for controlling access to the curated package. Access to this curated package is limited to the allowlisted media planners and the creator. Buyers and bidders can not be allowlisted for or have direct access to this resource. */
   accessSettings?: AccessControlSettings;
 }
-const CuratedPackage = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CuratedPackage>;
-
 /** Request message for activating a data segment */
 export type ActivateDataSegmentRequest = ActivateCuratedPackageRequest;
 export interface ActivateCuratorsDataSegmentsRequest {
@@ -478,14 +369,7 @@ export interface ActivateCuratorsDataSegmentsRequest {
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-const ActivateCuratorsDataSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ActivateCuratorsDataSegmentsRequest>;
-
 export type DataSegmentStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "SUSPENDED";
-const DataSegmentStateEnum = S.String;
-
 /** Defines an identifier for a segment of inventory that can be targeted by curators or media planners in the deals or auction packages UI. Curation of inventory is done by curators on external platforms. -- Next ID: 9 -- */
 export interface DataSegment {
   /** Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the account ID that created the segment. Format: `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}` */
@@ -503,30 +387,18 @@ export interface DataSegment {
   /** Optional. A fixed fee charged per thousand impressions. Once set, the currency code cannot be changed. */
   cpmFee?: Money;
 }
-const DataSegment = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DataSegment>;
-
 export interface CreateCuratorsCuratedPackagesRequest {
   /** Required. The parent curator account where this curated package will be created. Format: `curators/{accountId}` */
   parent: string;
   /** Request body */
   body?: CuratedPackage;
 }
-const CreateCuratorsCuratedPackagesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateCuratorsCuratedPackagesRequest>;
-
 export interface CreateCuratorsDataSegmentsRequest {
   /** Required. The parent resource where this data segment will be created. Format: `curators/{accountId}` */
   parent: string;
   /** Request body */
   body?: DataSegment;
 }
-const CreateCuratorsDataSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateCuratorsDataSegmentsRequest>;
-
 export type FieldMetricEnum =
   | "METRIC_UNSPECIFIED"
   | "ACTIVE_VIEW_MEASURABILITY_RATE"
@@ -542,8 +414,6 @@ export type FieldMetricEnum =
   | "DATA_SEGMENT_REQUESTS"
   | "IMPRESSIONS"
   | "SPEND";
-const FieldMetricEnum = S.String;
-
 export type FieldDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ADVERTISER_DOMAIN"
@@ -572,8 +442,6 @@ export type FieldDimensionEnum =
   | "PUBLISHER_ID"
   | "PUBLISHER_NAME"
   | "WEEK";
-const FieldDimensionEnum = S.String;
-
 /** A dimension or a metric in a report. */
 export interface Field {
   /** The metric this field represents. */
@@ -581,8 +449,6 @@ export interface Field {
   /** The dimension this field represents. */
   dimension?: FieldDimensionEnum | (string & {});
 }
-const Field = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Field>;
-
 /** Represents a sorting in a report. */
 export interface Sort {
   /** Optional. The sort order. If true the sort will be descending. */
@@ -590,11 +456,7 @@ export interface Sort {
   /** Required. A field (dimension or metric) to sort by. */
   field?: Field;
 }
-const Sort = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Sort>;
-
 export type SortList = Array<Sort>;
-const SortList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SortList>;
-
 export type ReportDefinitionDimensionsItemEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ADVERTISER_DOMAIN"
@@ -626,9 +488,6 @@ export type ReportDefinitionDimensionsItemEnum =
 export type ReportDefinitionDimensionsItemEnumList = Array<
   ReportDefinitionDimensionsItemEnum | (string & {})
 >;
-const ReportDefinitionDimensionsItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<ReportDefinitionDimensionsItemEnumList>;
-
 export type ReportDefinitionMetricsItemEnum =
   | "METRIC_UNSPECIFIED"
   | "ACTIVE_VIEW_MEASURABILITY_RATE"
@@ -647,9 +506,6 @@ export type ReportDefinitionMetricsItemEnum =
 export type ReportDefinitionMetricsItemEnumList = Array<
   ReportDefinitionMetricsItemEnum | (string & {})
 >;
-const ReportDefinitionMetricsItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<ReportDefinitionMetricsItemEnumList>;
-
 export type DateRangeRelativeEnum =
   | "RELATIVE_DATE_RANGE_UNSPECIFIED"
   | "TODAY"
@@ -679,8 +535,6 @@ export type DateRangeRelativeEnum =
   | "LAST_6_MONTHS"
   | "LAST_12_MONTHS"
   | "ALL_AVAILABLE";
-const DateRangeRelativeEnum = S.String;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Curationpartners_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -690,11 +544,6 @@ export interface Curationpartners_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-const Curationpartners_Date = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<Curationpartners_Date>;
-
 /** A date range between two fixed dates (inclusive of end date). */
 export interface FixedDateRange {
   /** Required. The start date of this date range. */
@@ -702,8 +551,6 @@ export interface FixedDateRange {
   /** Required. The end date (inclusive) of this date range. */
   endDate?: Curationpartners_Date;
 }
-const FixedDateRange = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<FixedDateRange>;
-
 /** A date range for a report. */
 export interface DateRange {
   /** A relative date range. */
@@ -711,15 +558,11 @@ export interface DateRange {
   /** A fixed date range. */
   fixed?: FixedDateRange;
 }
-const DateRange = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DateRange>;
-
 /** A list of filters. */
 export interface FilterList {
   /** Required. A list of filters. */
   filters?: FilterList_;
 }
-const FilterList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<FilterList>;
-
 export type FieldFilterOperationEnum =
   | "IN"
   | "NOT_IN"
@@ -732,25 +575,17 @@ export type FieldFilterOperationEnum =
   | "BETWEEN"
   | "MATCHES"
   | "NOT_MATCHES";
-const FieldFilterOperationEnum = S.String;
-
 export type DoubleList_ = Array<number>;
-const DoubleList_ = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DoubleList_>;
-
 /** A list of double values. */
 export interface DoubleList {
   /** The values */
   values?: DoubleList_;
 }
-const DoubleList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DoubleList>;
-
 /** A list of integer values. */
 export interface IntList {
   /** The values */
   values?: StringList_;
 }
-const IntList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<IntList>;
-
 /** A list of string values. */
 export type StringList = IntList;
 /** Represents a single value in a report. */
@@ -772,11 +607,7 @@ export interface ReportValue {
   /** For integer values. */
   intValue?: string;
 }
-const ReportValue = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ReportValue>;
-
 export type ReportValueList = Array<ReportValue>;
-const ReportValueList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ReportValueList>;
-
 /** A filter on a specific field. */
 export interface FieldFilter {
   /** Required. The operation of this filter. */
@@ -786,8 +617,6 @@ export interface FieldFilter {
   /** Required. The field to filter on. */
   field?: Field;
 }
-const FieldFilter = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<FieldFilter>;
-
 /** A filter over one or more fields. */
 export interface Filter {
   /** A filter whose result is negated. */
@@ -799,18 +628,12 @@ export interface Filter {
   /** A filter on a single field. */
   fieldFilter?: FieldFilter;
 }
-const Filter = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Filter>;
-
 export type FilterList_ = Array<Filter>;
-const FilterList_ = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<FilterList_>;
-
 export type ReportDefinitionTimeZoneSourceEnum =
   | "TIME_ZONE_SOURCE_UNSPECIFIED"
   | "AD_EXCHANGE"
   | "UTC"
   | "PROVIDED";
-const ReportDefinitionTimeZoneSourceEnum = S.String;
-
 /** The definition of how a report should be run. */
 export interface ReportDefinition {
   /** Optional. Default sorts to apply to this report. */
@@ -830,8 +653,6 @@ export interface ReportDefinition {
   /** Optional. The ISO 4217 currency code for this report. Defaults to account currency code if not specified. */
   currencyCode?: string;
 }
-const ReportDefinition = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ReportDefinition>;
-
 /** The `Report` resource. */
 export interface Report {
   /** Output only. The instant this report was created. */
@@ -849,19 +670,12 @@ export interface Report {
   /** Output only. Report ID. */
   reportId?: string;
 }
-const Report = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Report>;
-
 export interface CreateCuratorsReportsRequest {
   /** Required. The parent resource where this `Report` will be created. Format: `curators/{account_id}` */
   parent: string;
   /** Request body */
   body?: Report;
 }
-const CreateCuratorsReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateCuratorsReportsRequest>;
-
 /** Request message for DeactivateCuratedPackage. */
 export type DeactivateCuratedPackageRequest = ActivateCuratedPackageRequest;
 export interface DeactivateCuratorsCuratedPackagesRequest {
@@ -870,11 +684,6 @@ export interface DeactivateCuratorsCuratedPackagesRequest {
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-const DeactivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeactivateCuratorsCuratedPackagesRequest>;
-
 /** Request message for deactivating a data segment */
 export type DeactivateDataSegmentRequest = ActivateCuratedPackageRequest;
 export interface DeactivateCuratorsDataSegmentsRequest {
@@ -883,24 +692,12 @@ export interface DeactivateCuratorsDataSegmentsRequest {
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-const DeactivateCuratorsDataSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeactivateCuratorsDataSegmentsRequest>;
-
 export interface DeleteCuratorsReportsRequest {
   /** Required. Resource name of the report to delete. Format: `curators/{account_id}/reports/{report_id}` */
   name: string;
 }
-const DeleteCuratorsReportsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteCuratorsReportsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = ActivateCuratedPackageRequest as any as S.Schema<Empty>;
-
 export interface FetchRowsCuratorsReportsResultsRequest {
   /** Optional. A page token, received from a previous `FetchReportResultRows` call. Provide this to retrieve the second and subsequent batches of rows. */
   pageToken?: string;
@@ -909,21 +706,12 @@ export interface FetchRowsCuratorsReportsResultsRequest {
   /** The report result being fetched. Format: `curators/{account_id}/reports/{report_id}/results/{report_result_id}` */
   name: string;
 }
-const FetchRowsCuratorsReportsResultsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<FetchRowsCuratorsReportsResultsRequest>;
-
 /** Contains all metric values requested for a single date range and set of column dimension values (returned in the columns field of the response). The order of the metrics in each field corresponds to the order of the metrics specified in the request. */
 export interface MetricValueGroup {
   /** Data for the PRIMARY MetricValueType. */
   primaryValues?: ReportValueList;
 }
-const MetricValueGroup = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<MetricValueGroup>;
-
 export type MetricValueGroupList = Array<MetricValueGroup>;
-const MetricValueGroupList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<MetricValueGroupList>;
-
 /** A row of report data. */
 export interface Row {
   /** The length of the metric_value_groups field will be equal to the length of the date_ranges field in the fetch response. The metric_value_groups field is ordered such that each index corresponds to the date_range at the same index. For example, given date_ranges [x, y], metric_value_groups will have a length of two. The first entry in metric_value_groups represents the metrics for date x and the second entry in metric_value_groups represents the metrics for date y. */
@@ -931,14 +719,8 @@ export interface Row {
   /** The order of the dimension values is the same as the order of the dimensions specified in the request. */
   dimensionValues?: ReportValueList;
 }
-const Row = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Row>;
-
 export type RowList = Array<Row>;
-const RowList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RowList>;
-
 export type FixedDateRangeList = Array<FixedDateRange>;
-const FixedDateRangeList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<FixedDateRangeList>;
-
 /** The response message for the fetch report result rows endpoint. */
 export interface FetchReportResultRowsResponse {
   /** The total number of rows available from this report. Useful for pagination. Only returned with the first page of results (when page_token is not included in the request). */
@@ -952,53 +734,24 @@ export interface FetchReportResultRowsResponse {
   /** The computed fixed date ranges this report includes. Only returned with the first page of results (when page_token is not included in the request). */
   dateRanges?: FixedDateRangeList;
 }
-const FetchReportResultRowsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<FetchReportResultRowsResponse>;
-
 export interface GetCuratorsCuratedPackagesRequest {
   /** Required. The name of the curated package to retrieve. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
   name: string;
 }
-const GetCuratorsCuratedPackagesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetCuratorsCuratedPackagesRequest>;
-
 export interface GetCuratorsDataSegmentsRequest {
   /** Required. Name of data segment to get. Format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
 }
-const GetCuratorsDataSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetCuratorsDataSegmentsRequest>;
-
 export interface GetCuratorsReportsRequest {
   /** Required. The resource name of the report. Format: `curators/{account_id}/reports/{report_id}` */
   name: string;
 }
-const GetCuratorsReportsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetCuratorsReportsRequest>;
-
 export interface GetCuratorsReportsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetCuratorsReportsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetCuratorsReportsOperationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1008,8 +761,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -1023,8 +774,6 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Operation>;
-
 export interface ListCuratorsCuratedPackagesRequest {
   /** Optional. Optional query string using the [Cloud API list filtering syntax](/authorized-buyers/apis/guides/list-filters). Supported columns for filtering are: * displayName * createTime * updateTime * state * feeCpm.currencyCode * feeCpm.units * feeCpm.nanos * floorPriceCpm.currencyCode * floorPriceCpm.units * floorPriceCpm.nanos */
   filter?: string;
@@ -1035,14 +784,7 @@ export interface ListCuratorsCuratedPackagesRequest {
   /** Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500. */
   pageSize?: number;
 }
-const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListCuratorsCuratedPackagesRequest>;
-
 export type CuratedPackageList = Array<CuratedPackage>;
-const CuratedPackageList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CuratedPackageList>;
-
 /** Response message for ListCuratedPackages. */
 export interface ListCuratedPackagesResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListCuratedPackagesRequest.pageToken field in the subsequent call to `ListCuratedPackages` method to retrieve the next page of results. If empty, then there are no more results. */
@@ -1050,11 +792,6 @@ export interface ListCuratedPackagesResponse {
   /** The list of curated packages. */
   curatedPackages?: CuratedPackageList;
 }
-const ListCuratedPackagesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListCuratedPackagesResponse>;
-
 export interface ListCuratorsDataSegmentsRequest {
   /** Required. Name of the parent curator that can access the data segment. Format: `curators/{accountId}` */
   parent: string;
@@ -1063,14 +800,7 @@ export interface ListCuratorsDataSegmentsRequest {
   /** Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500. */
   pageSize?: number;
 }
-const ListCuratorsDataSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListCuratorsDataSegmentsRequest>;
-
 export type DataSegmentList = Array<DataSegment>;
-const DataSegmentList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DataSegmentList>;
-
 /** Response message for listing data segments. */
 export interface ListDataSegmentsResponse {
   /** Continuation token for fetching the next page of results. Pass this value in the ListDataSegmentsRequest.pageToken field in the subsequent call to the `ListDataSegments` method to retrieve the next page of results. */
@@ -1078,11 +808,6 @@ export interface ListDataSegmentsResponse {
   /** The list of data segments. */
   dataSegments?: DataSegmentList;
 }
-const ListDataSegmentsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListDataSegmentsResponse>;
-
 export interface ListCuratorsReportsRequest {
   /** Optional. Expression to specify sorting order. See syntax details at https://developers.google.com/ad-manager/api/beta/filters#order */
   orderBy?: string;
@@ -1097,14 +822,7 @@ export interface ListCuratorsReportsRequest {
   /** Optional. Expression to filter the response. See syntax details at https://developers.google.com/ad-manager/api/beta/filters */
   filter?: string;
 }
-const ListCuratorsReportsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListCuratorsReportsRequest>;
-
 export type ReportList = Array<Report>;
-const ReportList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ReportList>;
-
 /** Response object for `ListReportsResponse` containing matching `Report` objects. */
 export interface ListReportsResponse {
   /** Total number of `Report` objects. If a filter was included in the request, this reflects the total number after the filtering is applied. `total_size` won't be calculated in the response unless it has been included in a response field mask. The response field mask can be provided to the method by using the URL parameter `$fields` or `fields`, or by using the HTTP/gRPC header `X-Goog-FieldMask`. For more information, see https://developers.google.com/ad-manager/api/beta/field-masks */
@@ -1114,8 +832,6 @@ export interface ListReportsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListReportsResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListReportsResponse>;
-
 export interface ListMediaPlannersRequest {
   /** Optional. A token identifying a page of results the server should return.This value is received from a previous `ListMediaPlanners` call in ListMediaPlannersResponse.nextPageToken. */
   pageToken?: string;
@@ -1124,11 +840,6 @@ export interface ListMediaPlannersRequest {
   /** Optional query string using the [Cloud API list filtering syntax](/authorized-buyers/apis/guides/list-filters). Supported columns for filtering are: * `name` * `displayName` * `ancestorNames` */
   filter?: string;
 }
-const ListMediaPlannersRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListMediaPlannersRequest>;
-
 /** Represents a media planner account. */
 export interface MediaPlanner {
   /** Output only. The display name of the media planner. Can be used to filter the response of the mediaPlanners.list method. */
@@ -1140,11 +851,7 @@ export interface MediaPlanner {
   /** Output only. The ancestor names of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}`. Can be used to filter the response of the mediaPlanners.list method. */
   ancestorNames?: StringList_;
 }
-const MediaPlanner = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<MediaPlanner>;
-
 export type MediaPlannerList = Array<MediaPlanner>;
-const MediaPlannerList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<MediaPlannerList>;
-
 /** A response containing media planner account information. */
 export interface ListMediaPlannersResponse {
   /** A token which can be passed to a subsequent call to the ListMediaPlanners method to retrieve the next page of results in ListMediaPlannersRequest.page_token. */
@@ -1152,11 +859,6 @@ export interface ListMediaPlannersResponse {
   /** List of media planners. */
   mediaPlanners?: MediaPlannerList;
 }
-const ListMediaPlannersResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListMediaPlannersResponse>;
-
 export interface PatchCuratorsCuratedPackagesRequest {
   /** Optional. List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement (the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. */
   updateMask?: string;
@@ -1165,11 +867,6 @@ export interface PatchCuratorsCuratedPackagesRequest {
   /** Request body */
   body?: CuratedPackage;
 }
-const PatchCuratorsCuratedPackagesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<PatchCuratorsCuratedPackagesRequest>;
-
 export interface PatchCuratorsDataSegmentsRequest {
   /** Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the account ID that created the segment. Format: `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
@@ -1178,11 +875,6 @@ export interface PatchCuratorsDataSegmentsRequest {
   /** Request body */
   body?: DataSegment;
 }
-const PatchCuratorsDataSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<PatchCuratorsDataSegmentsRequest>;
-
 export interface PatchCuratorsReportsRequest {
   /** Identifier. The resource name of the report. Report resource name have the form: `curators/{account_id}/reports/{report_id}` */
   name: string;
@@ -1191,11 +883,6 @@ export interface PatchCuratorsReportsRequest {
   /** Request body */
   body?: Report;
 }
-const PatchCuratorsReportsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PatchCuratorsReportsRequest>;
-
 /** Request message for a running a report. */
 export type RunReportRequest = ActivateCuratedPackageRequest;
 export interface RunCuratorsReportsRequest {
@@ -1204,11 +891,6 @@ export interface RunCuratorsReportsRequest {
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-const RunCuratorsReportsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<RunCuratorsReportsRequest>;
-
 export type ActivateCuratorsCuratedPackagesError =
   | NotFound
   | Forbidden
@@ -1222,8 +904,8 @@ export const activateCuratorsCuratedPackages: API.OperationMethod<
   ActivateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateCuratorsCuratedPackagesRequest,
-  output: CuratedPackage,
+  input: __S(1, __c0, 1) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1242,8 +924,8 @@ export const activateCuratorsDataSegments: API.OperationMethod<
   ActivateCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateCuratorsDataSegmentsRequest,
-  output: DataSegment,
+  input: __S(18, __c2, 2) as any as S.Schema<ActivateCuratorsDataSegmentsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1262,8 +944,8 @@ export const createCuratorsCuratedPackages: API.OperationMethod<
   CreateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCuratorsCuratedPackagesRequest,
-  output: CuratedPackage,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateCuratorsCuratedPackagesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1282,8 +964,8 @@ export const createCuratorsDataSegments: API.OperationMethod<
   CreateCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCuratorsDataSegmentsRequest,
-  output: DataSegment,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateCuratorsDataSegmentsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1297,8 +979,8 @@ export const createCuratorsReports: API.OperationMethod<
   CreateCuratorsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCuratorsReportsRequest,
-  output: Report,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateCuratorsReportsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +999,8 @@ export const deactivateCuratorsCuratedPackages: API.OperationMethod<
   DeactivateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivateCuratorsCuratedPackagesRequest,
-  output: CuratedPackage,
+  input: __S(40, __c5, 0) as any as S.Schema<DeactivateCuratorsCuratedPackagesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1019,8 @@ export const deactivateCuratorsDataSegments: API.OperationMethod<
   DeactivateCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivateCuratorsDataSegmentsRequest,
-  output: DataSegment,
+  input: __S(41, __c5, 1) as any as S.Schema<DeactivateCuratorsDataSegmentsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1352,8 +1034,8 @@ export const deleteCuratorsReports: API.OperationMethod<
   DeleteCuratorsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCuratorsReportsRequest,
-  output: Empty,
+  input: __S(42, __c5, 2) as any as S.Schema<DeleteCuratorsReportsRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1368,8 +1050,8 @@ export const fetchRowsCuratorsReportsResults: API.PaginatedOperationMethod<
   GcpOpContext,
   FetchReportResultRowsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchRowsCuratorsReportsResultsRequest,
-  output: FetchReportResultRowsResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<FetchRowsCuratorsReportsResultsRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<FetchReportResultRowsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1384,8 +1066,8 @@ export const getCuratorsCuratedPackages: API.OperationMethod<
   GetCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCuratorsCuratedPackagesRequest,
-  output: CuratedPackage,
+  input: __S(50, __c6, 2) as any as S.Schema<GetCuratorsCuratedPackagesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1081,8 @@ export const getCuratorsDataSegments: API.OperationMethod<
   GetCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCuratorsDataSegmentsRequest,
-  output: DataSegment,
+  input: __S(51, __c6, 3) as any as S.Schema<GetCuratorsDataSegmentsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1414,8 +1096,8 @@ export const getCuratorsReports: API.OperationMethod<
   GetCuratorsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCuratorsReportsRequest,
-  output: Report,
+  input: __S(52, __c6, 4) as any as S.Schema<GetCuratorsReportsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1429,8 +1111,8 @@ export const getCuratorsReportsOperations: API.OperationMethod<
   GetCuratorsReportsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCuratorsReportsOperationsRequest,
-  output: Operation,
+  input: __S(53, __c6, 5) as any as S.Schema<GetCuratorsReportsOperationsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1127,8 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCuratedPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCuratorsCuratedPackagesRequest,
-  output: ListCuratedPackagesResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<ListCuratorsCuratedPackagesRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListCuratedPackagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1144,8 @@ export const listCuratorsDataSegments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataSegmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCuratorsDataSegmentsRequest,
-  output: ListDataSegmentsResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<ListCuratorsDataSegmentsRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<ListDataSegmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1479,8 +1161,8 @@ export const listCuratorsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCuratorsReportsRequest,
-  output: ListReportsResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<ListCuratorsReportsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1496,8 +1178,8 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMediaPlannersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMediaPlannersRequest,
-  output: ListMediaPlannersResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<ListMediaPlannersRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ListMediaPlannersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1517,8 +1199,8 @@ export const patchCuratorsCuratedPackages: API.OperationMethod<
   PatchCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCuratorsCuratedPackagesRequest,
-  output: CuratedPackage,
+  input: __S(71, __c8, 7) as any as S.Schema<PatchCuratorsCuratedPackagesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1537,8 +1219,8 @@ export const patchCuratorsDataSegments: API.OperationMethod<
   PatchCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCuratorsDataSegmentsRequest,
-  output: DataSegment,
+  input: __S(72, __c9, 0) as any as S.Schema<PatchCuratorsDataSegmentsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1234,8 @@ export const patchCuratorsReports: API.OperationMethod<
   PatchCuratorsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCuratorsReportsRequest,
-  output: Report,
+  input: __S(73, __c9, 1) as any as S.Schema<PatchCuratorsReportsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1249,8 @@ export const runCuratorsReports: API.OperationMethod<
   RunCuratorsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunCuratorsReportsRequest,
-  output: Operation,
+  input: __S(74, __c9, 2) as any as S.Schema<RunCuratorsReportsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1585,7 +1267,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1605,7 +1287,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Money" });
     case 3:
-      return S.Array(PackageTargetingIncludedOpenMeasurementTypesItemEnum);
+      return S.Array(S.String);
     case 4:
       return S.Array(S.String);
     case 5:
@@ -1618,27 +1300,21 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          selectionType: S.optional(VideoPlcmtTargetingSelectionTypeEnum),
-          videoPlcmtTypes: S.optional(VideoPlcmtTargetingVideoPlcmtTypesItemEnumList),
+          selectionType: S.optional(S.String),
+          videoPlcmtTypes: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "VideoPlcmtTargeting" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          includedPlayerSizeTargeting: S.optional(VideoPlayerSizeTargeting),
+          includedPlayerSizeTargeting: S.optional(__S(5, __c0, 5)),
           minimumPredictedCompletionRatePercentage: S.optional(S.String),
-          includedMaximumAdDurationTargeting: S.optional(
-            PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum,
-          ),
-          includedPositionTypes: S.optional(PackageVideoTargetingIncludedPositionTypesItemEnumList),
-          includedContentDeliveryMethod: S.optional(
-            PackageVideoTargetingIncludedContentDeliveryMethodEnum,
-          ),
-          plcmtTargeting: S.optional(VideoPlcmtTargeting),
-          includedMimeTypes: S.optional(PackageVideoTargetingIncludedMimeTypesItemEnumList),
-          includedPlaybackMethods: S.optional(
-            PackageVideoTargetingIncludedPlaybackMethodsItemEnumList,
-          ),
+          includedMaximumAdDurationTargeting: S.optional(S.String),
+          includedPositionTypes: S.optional(__S(3, __c0, 3)),
+          includedContentDeliveryMethod: S.optional(S.String),
+          plcmtTargeting: S.optional(__S(6, __c0, 6)),
+          includedMimeTypes: S.optional(__S(3, __c0, 3)),
+          includedPlaybackMethods: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "PackageVideoTargeting" });
   }
@@ -1648,23 +1324,23 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          excludedTaxonomyIds: S.optional(StringList_),
-          targetedTaxonomyIds: S.optional(StringList_),
+          excludedTaxonomyIds: S.optional(__S(4, __c0, 4)),
+          targetedTaxonomyIds: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "TaxonomyTargeting" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          selectionType: S.optional(StringTargetingDimensionSelectionTypeEnum),
-          values: S.optional(StringList_),
+          selectionType: S.optional(S.String),
+          values: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "StringTargetingDimension" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          audienceTargeting: S.optional(TaxonomyTargeting),
-          contentTargeting: S.optional(TaxonomyTargeting),
-          videoAndAudioSignalsTargeting: S.optional(StringTargetingDimension),
+          audienceTargeting: S.optional(__S(8, __c1, 0)),
+          contentTargeting: S.optional(__S(8, __c1, 0)),
+          videoAndAudioSignalsTargeting: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "PackagePublisherProvidedSignalsTargeting",
@@ -1672,16 +1348,16 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetedCriteriaIds: S.optional(StringList_),
-          excludedCriteriaIds: S.optional(StringList_),
+          targetedCriteriaIds: S.optional(__S(4, __c0, 4)),
+          excludedCriteriaIds: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "CriteriaTargeting" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          uriTargeting: S.optional(StringTargetingDimension),
-          mobileAppTargeting: S.optional(StringTargetingDimension),
-          includedMobileAppCategoryTargeting: S.optional(StringList_),
+          uriTargeting: S.optional(__S(9, __c1, 1)),
+          mobileAppTargeting: S.optional(__S(9, __c1, 1)),
+          includedMobileAppCategoryTargeting: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "PackagePlacementTargeting",
@@ -1691,44 +1367,34 @@ function __c1(j: number): any {
         S.Struct({
           width: S.optional(S.String),
           height: S.optional(S.String),
-          type: S.optional(AdSizeTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdSize" });
     case 6:
-      return S.Array(AdSize);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          includedOpenMeasurementTypes: S.optional(
-            PackageTargetingIncludedOpenMeasurementTypesItemEnumList,
-          ),
-          includedDataSegments: S.optional(StringList_),
-          videoTargeting: S.optional(PackageVideoTargeting),
+          includedOpenMeasurementTypes: S.optional(__S(3, __c0, 3)),
+          includedDataSegments: S.optional(__S(4, __c0, 4)),
+          videoTargeting: S.optional(__S(7, __c0, 7)),
           minimumPredictedViewabilityPercentage: S.optional(S.String),
-          publisherProvidedSignalsTargeting: S.optional(PackagePublisherProvidedSignalsTargeting),
-          geoTargeting: S.optional(CriteriaTargeting),
-          languageTargeting: S.optional(StringTargetingDimension),
-          includedAuthorizedSellerStatuses: S.optional(
-            PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList,
-          ),
-          verticalTargeting: S.optional(CriteriaTargeting),
-          includedAcceleratedMobilePageType: S.optional(
-            PackageTargetingIncludedAcceleratedMobilePageTypeEnum,
-          ),
-          includedRestrictedCategories: S.optional(
-            PackageTargetingIncludedRestrictedCategoriesItemEnumList,
-          ),
-          publisherTargeting: S.optional(StringTargetingDimension),
-          includedNativeInventoryTypes: S.optional(
-            PackageTargetingIncludedNativeInventoryTypesItemEnumList,
-          ),
-          includedRewardedType: S.optional(PackageTargetingIncludedRewardedTypeEnum),
+          publisherProvidedSignalsTargeting: S.optional(__S(10, __c1, 2)),
+          geoTargeting: S.optional(__S(11, __c1, 3)),
+          languageTargeting: S.optional(__S(9, __c1, 1)),
+          includedAuthorizedSellerStatuses: S.optional(__S(3, __c0, 3)),
+          verticalTargeting: S.optional(__S(11, __c1, 3)),
+          includedAcceleratedMobilePageType: S.optional(S.String),
+          includedRestrictedCategories: S.optional(__S(3, __c0, 3)),
+          publisherTargeting: S.optional(__S(9, __c1, 1)),
+          includedNativeInventoryTypes: S.optional(__S(3, __c0, 3)),
+          includedRewardedType: S.optional(S.String),
           minimumPredictedClickThroughRatePercentageMillis: S.optional(S.String),
-          includedCreativeFormat: S.optional(PackageTargetingIncludedCreativeFormatEnum),
-          includedDeviceTypes: S.optional(PackageTargetingIncludedDeviceTypesItemEnumList),
-          placementTargeting: S.optional(PackagePlacementTargeting),
-          includedAdSizes: S.optional(AdSizeList),
-          includedEnvironment: S.optional(PackageTargetingIncludedEnvironmentEnum),
+          includedCreativeFormat: S.optional(S.String),
+          includedDeviceTypes: S.optional(__S(3, __c0, 3)),
+          placementTargeting: S.optional(__S(12, __c1, 4)),
+          includedAdSizes: S.optional(__S(14, __c1, 6)),
+          includedEnvironment: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageTargeting" });
   }
@@ -1738,7 +1404,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowlistedMediaPlanners: S.optional(StringList_),
+          allowlistedMediaPlanners: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "AccessControlSettings" });
     case 1:
@@ -1746,23 +1412,23 @@ function __c2(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
-          state: S.optional(CuratedPackageStateEnum),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
           millipercentOfMediaFee: S.optional(S.String),
-          feeCpm: S.optional(Money),
+          feeCpm: S.optional(__S(2, __c0, 2)),
           name: S.optional(S.String),
-          targeting: S.optional(PackageTargeting),
-          curationFeeVisibility: S.optional(CuratedPackageCurationFeeVisibilityEnum),
+          targeting: S.optional(__S(15, __c1, 7)),
+          curationFeeVisibility: S.optional(S.String),
           description: S.optional(S.String),
-          floorPriceCpm: S.optional(Money),
-          accessSettings: S.optional(AccessControlSettings),
+          floorPriceCpm: S.optional(__S(2, __c0, 2)),
+          accessSettings: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "CuratedPackage" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1777,19 +1443,19 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          state: S.optional(DataSegmentStateEnum),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
           millipercentOfMediaFee: S.optional(S.String),
           updateTime: S.optional(S.String),
           userListId: S.optional(S.String),
-          cpmFee: S.optional(Money),
+          cpmFee: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "DataSegment" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CuratedPackage.pipe(T.HttpBody())),
+          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1804,7 +1470,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DataSegment.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1818,15 +1484,15 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(FieldMetricEnum),
-          dimension: S.optional(FieldDimensionEnum),
+          metric: S.optional(S.String),
+          dimension: S.optional(S.String),
         }),
       ).annotate({ identifier: "Field" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           descending: S.optional(S.Boolean),
-          field: S.optional(Field),
+          field: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "Sort" });
   }
@@ -1834,7 +1500,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Sort);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1846,21 +1512,21 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          startDate: S.optional(Curationpartners_Date),
-          endDate: S.optional(Curationpartners_Date),
+          startDate: S.optional(__S(25, __c3, 1)),
+          endDate: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "FixedDateRange" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          relative: S.optional(DateRangeRelativeEnum),
-          fixed: S.optional(FixedDateRange),
+          relative: S.optional(S.String),
+          fixed: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "DateRange" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(S.suspend(() => FilterList_)),
+          filters: S.optional(S.suspend(() => __S(36, __c4, 4))),
         }),
       ).annotate({ identifier: "FilterList" });
     case 5:
@@ -1868,13 +1534,13 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(DoubleList_),
+          values: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "DoubleList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList_),
+          values: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "IntList" });
   }
@@ -1887,44 +1553,44 @@ function __c4(j: number): any {
           bytesValue: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
           doubleValue: S.optional(S.Number),
-          doubleListValue: S.optional(DoubleList),
-          intListValue: S.optional(IntList),
-          stringListValue: S.optional(IntList),
+          doubleListValue: S.optional(__S(30, __c3, 6)),
+          intListValue: S.optional(__S(31, __c3, 7)),
+          stringListValue: S.optional(__S(31, __c3, 7)),
           stringValue: S.optional(S.String),
           intValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportValue" });
     case 1:
-      return S.Array(ReportValue);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(FieldFilterOperationEnum),
-          values: S.optional(ReportValueList),
-          field: S.optional(Field),
+          operation: S.optional(S.String),
+          values: S.optional(__S(33, __c4, 1)),
+          field: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "FieldFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          notFilter: S.optional(Filter),
-          orFilter: S.optional(FilterList),
-          andFilter: S.optional(FilterList),
-          fieldFilter: S.optional(FieldFilter),
+          notFilter: S.optional(__S(35, __c4, 3)),
+          orFilter: S.optional(__S(28, __c3, 4)),
+          andFilter: S.optional(__S(28, __c3, 4)),
+          fieldFilter: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "Filter" });
     case 4:
-      return S.Array(Filter);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sorts: S.optional(SortList),
-          dimensions: S.optional(ReportDefinitionDimensionsItemEnumList),
+          sorts: S.optional(__S(24, __c3, 0)),
+          dimensions: S.optional(__S(3, __c0, 3)),
           timeZone: S.optional(S.String),
-          metrics: S.optional(ReportDefinitionMetricsItemEnumList),
-          dateRange: S.optional(DateRange),
-          filters: S.optional(FilterList_),
-          timeZoneSource: S.optional(ReportDefinitionTimeZoneSourceEnum),
+          metrics: S.optional(__S(3, __c0, 3)),
+          dateRange: S.optional(__S(27, __c3, 3)),
+          filters: S.optional(__S(36, __c4, 4)),
+          timeZoneSource: S.optional(S.String),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportDefinition" });
@@ -1934,7 +1600,7 @@ function __c4(j: number): any {
           createTime: S.optional(S.String),
           locale: S.optional(S.String),
           updateTime: S.optional(S.String),
-          reportDefinition: S.optional(ReportDefinition),
+          reportDefinition: S.optional(__S(37, __c4, 5)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           reportId: S.optional(S.String),
@@ -1944,7 +1610,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Report.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1963,7 +1629,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1978,7 +1644,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2022,34 +1688,34 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          primaryValues: S.optional(ReportValueList),
+          primaryValues: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "MetricValueGroup" });
     case 5:
-      return S.Array(MetricValueGroup);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricValueGroups: S.optional(MetricValueGroupList),
-          dimensionValues: S.optional(ReportValueList),
+          metricValueGroups: S.optional(__S(45, __c5, 5)),
+          dimensionValues: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "Row" });
     case 7:
-      return S.Array(Row);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FixedDateRange);
+      return S.Array(__S(26, __c3, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
           totalRowCount: S.optional(S.Number),
-          rows: S.optional(RowList),
+          rows: S.optional(__S(47, __c5, 7)),
           nextPageToken: S.optional(S.String),
           runTime: S.optional(S.String),
-          dateRanges: S.optional(FixedDateRangeList),
+          dateRanges: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({
         identifier: "FetchReportResultRowsResponse",
@@ -2113,7 +1779,7 @@ function __c6(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -2122,18 +1788,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(55, __c6, 7)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          response: S.optional(__S(54, __c6, 6)),
+          error: S.optional(__S(56, __c7, 0)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
@@ -2154,12 +1820,12 @@ function __c7(j: number): any {
         identifier: "ListCuratorsCuratedPackagesRequest",
       });
     case 3:
-      return S.Array(CuratedPackage);
+      return S.Array(__S(17, __c2, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          curatedPackages: S.optional(CuratedPackageList),
+          curatedPackages: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({
         identifier: "ListCuratedPackagesResponse",
@@ -2181,12 +1847,12 @@ function __c7(j: number): any {
         identifier: "ListCuratorsDataSegmentsRequest",
       });
     case 6:
-      return S.Array(DataSegment);
+      return S.Array(__S(19, __c2, 3));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dataSegments: S.optional(DataSegmentList),
+          dataSegments: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({ identifier: "ListDataSegmentsResponse" });
   }
@@ -2213,12 +1879,12 @@ function __c8(j: number): any {
         identifier: "ListCuratorsReportsRequest",
       });
     case 1:
-      return S.Array(Report);
+      return S.Array(__S(38, __c4, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          reports: S.optional(ReportList),
+          reports: S.optional(__S(65, __c8, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
@@ -2242,16 +1908,16 @@ function __c8(j: number): any {
           displayName: S.optional(S.String),
           accountId: S.optional(S.String),
           name: S.optional(S.String),
-          ancestorNames: S.optional(StringList_),
+          ancestorNames: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "MediaPlanner" });
     case 5:
-      return S.Array(MediaPlanner);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mediaPlanners: S.optional(MediaPlannerList),
+          mediaPlanners: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({
         identifier: "ListMediaPlannersResponse",
@@ -2261,7 +1927,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(CuratedPackage.pipe(T.HttpBody())),
+          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2281,7 +1947,7 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(DataSegment.pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2297,7 +1963,7 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Report.pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2312,7 +1978,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2324,4 +1990,9 @@ function __c9(j: number): any {
         identifier: "RunCuratorsReportsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

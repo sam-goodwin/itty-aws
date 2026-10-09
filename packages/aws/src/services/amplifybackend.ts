@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "AmplifyBackend",
   serviceShapeName: "AmplifyBackend",
@@ -109,7 +111,6 @@ export interface CloneBackendRequest {
   BackendEnvironmentName: string;
   TargetEnvironmentName?: string;
 }
-const CloneBackendRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CloneBackendRequest>;
 export interface CloneBackendResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -118,9 +119,7 @@ export interface CloneBackendResponse {
   Operation?: string;
   Status?: string;
 }
-const CloneBackendResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CloneBackendResponse>;
 export interface ResourceConfig {}
-const ResourceConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ResourceConfig>;
 export interface CreateBackendRequest {
   AppId?: string;
   AppName?: string;
@@ -128,7 +127,6 @@ export interface CreateBackendRequest {
   ResourceConfig?: ResourceConfig;
   ResourceName?: string;
 }
-const CreateBackendRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateBackendRequest>;
 export interface CreateBackendResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -137,15 +135,12 @@ export interface CreateBackendResponse {
   Operation?: string;
   Status?: string;
 }
-const CreateBackendResponse = CloneBackendResponse as any as S.Schema<CreateBackendResponse>;
 export type Mode =
   | "API_KEY"
   | "AWS_IAM"
   | "AMAZON_COGNITO_USER_POOLS"
   | "OPENID_CONNECT"
   | (string & {});
-const Mode = S.String;
-
 export interface BackendAPIAppSyncAuthSettings {
   CognitoUserPoolId?: string;
   Description?: string;
@@ -156,32 +151,20 @@ export interface BackendAPIAppSyncAuthSettings {
   OpenIDIssueURL?: string;
   OpenIDProviderName?: string;
 }
-const BackendAPIAppSyncAuthSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BackendAPIAppSyncAuthSettings>;
 export interface BackendAPIAuthType {
   Mode?: Mode;
   Settings?: BackendAPIAppSyncAuthSettings;
 }
-const BackendAPIAuthType = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BackendAPIAuthType>;
 export type ListOfBackendAPIAuthType = BackendAPIAuthType[];
-const ListOfBackendAPIAuthType = /*@__PURE__*/ __L.at(__c0, 6);
 export type ResolutionStrategy =
   | "OPTIMISTIC_CONCURRENCY"
   | "LAMBDA"
   | "AUTOMERGE"
   | "NONE"
   | (string & {});
-const ResolutionStrategy = S.String;
-
 export interface BackendAPIConflictResolution {
   ResolutionStrategy?: ResolutionStrategy;
 }
-const BackendAPIConflictResolution = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BackendAPIConflictResolution>;
 export interface BackendAPIResourceConfig {
   AdditionalAuthTypes?: BackendAPIAuthType[];
   ApiName?: string;
@@ -190,20 +173,12 @@ export interface BackendAPIResourceConfig {
   Service?: string;
   TransformSchema?: string;
 }
-const BackendAPIResourceConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BackendAPIResourceConfig>;
 export interface CreateBackendAPIRequest {
   AppId: string;
   BackendEnvironmentName?: string;
   ResourceConfig?: BackendAPIResourceConfig;
   ResourceName?: string;
 }
-const CreateBackendAPIRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateBackendAPIRequest>;
 export interface CreateBackendAPIResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -212,66 +187,37 @@ export interface CreateBackendAPIResponse {
   Operation?: string;
   Status?: string;
 }
-const CreateBackendAPIResponse = CloneBackendResponse as any as S.Schema<CreateBackendAPIResponse>;
 export type AuthResources = "USER_POOL_ONLY" | "IDENTITY_POOL_AND_USER_POOL" | (string & {});
-const AuthResources = S.String;
-
 export interface CreateBackendAuthIdentityPoolConfig {
   IdentityPoolName?: string;
   UnauthenticatedLogin?: boolean;
 }
-const CreateBackendAuthIdentityPoolConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateBackendAuthIdentityPoolConfig>;
 export type Service = "COGNITO" | (string & {});
-const Service = S.String;
-
 export type DeliveryMethod = "EMAIL" | "SMS" | (string & {});
-const DeliveryMethod = S.String;
-
 export interface EmailSettings {
   EmailMessage?: string;
   EmailSubject?: string;
 }
-const EmailSettings = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EmailSettings>;
 export interface SmsSettings {
   SmsMessage?: string;
 }
-const SmsSettings = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SmsSettings>;
 export interface CreateBackendAuthForgotPasswordConfig {
   DeliveryMethod?: DeliveryMethod;
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
-const CreateBackendAuthForgotPasswordConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateBackendAuthForgotPasswordConfig>;
 export type MFAMode = "ON" | "OFF" | "OPTIONAL" | (string & {});
-const MFAMode = S.String;
-
 export type MfaTypesElement = "SMS" | "TOTP" | (string & {});
-const MfaTypesElement = S.String;
-
 export type ListOfMfaTypesElement = MfaTypesElement[];
-const ListOfMfaTypesElement = /*@__PURE__*/ __L.at(__c1, 6);
 export interface Settings {
   MfaTypes?: MfaTypesElement[];
   SmsMessage?: string;
 }
-const Settings = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Settings>;
 export interface CreateBackendAuthMFAConfig {
   MFAMode?: MFAMode;
   Settings?: Settings;
 }
-const CreateBackendAuthMFAConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateBackendAuthMFAConfig>;
 export type OAuthGrantType = "CODE" | "IMPLICIT" | (string & {});
-const OAuthGrantType = S.String;
-
 export type OAuthScopesElement =
   | "PHONE"
   | "EMAIL"
@@ -280,37 +226,23 @@ export type OAuthScopesElement =
   | "AWS_COGNITO_SIGNIN_USER_ADMIN"
   | (string & {});
 export type ListOfOAuthScopesElement = OAuthScopesElement[];
-const ListOfOAuthScopesElement = ListOfMfaTypesElement as any as S.Schema<ListOfOAuthScopesElement>;
 export type ListOf__string = string[];
-const ListOf__string = /*@__PURE__*/ __L.at(__c2, 1);
 export interface BackendAuthSocialProviderConfig {
   ClientId?: string;
   ClientSecret?: string;
 }
-const BackendAuthSocialProviderConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BackendAuthSocialProviderConfig>;
 export interface BackendAuthAppleProviderConfig {
   ClientId?: string;
   KeyId?: string;
   PrivateKey?: string;
   TeamId?: string;
 }
-const BackendAuthAppleProviderConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BackendAuthAppleProviderConfig>;
 export interface SocialProviderSettings {
   Facebook?: BackendAuthSocialProviderConfig;
   Google?: BackendAuthSocialProviderConfig;
   LoginWithAmazon?: BackendAuthSocialProviderConfig;
   SignInWithApple?: BackendAuthAppleProviderConfig;
 }
-const SocialProviderSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SocialProviderSettings>;
 export interface CreateBackendAuthOAuthConfig {
   DomainPrefix?: string;
   OAuthGrantType?: OAuthGrantType;
@@ -319,28 +251,17 @@ export interface CreateBackendAuthOAuthConfig {
   RedirectSignOutURIs?: string[];
   SocialProviderSettings?: SocialProviderSettings;
 }
-const CreateBackendAuthOAuthConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateBackendAuthOAuthConfig>;
 export type AdditionalConstraintsElement =
   | "REQUIRE_DIGIT"
   | "REQUIRE_LOWERCASE"
   | "REQUIRE_SYMBOL"
   | "REQUIRE_UPPERCASE"
   | (string & {});
-const AdditionalConstraintsElement = S.String;
-
 export type ListOfAdditionalConstraintsElement = AdditionalConstraintsElement[];
-const ListOfAdditionalConstraintsElement = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateBackendAuthPasswordPolicyConfig {
   AdditionalConstraints?: AdditionalConstraintsElement[];
   MinimumLength?: number;
 }
-const CreateBackendAuthPasswordPolicyConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateBackendAuthPasswordPolicyConfig>;
 export type RequiredSignUpAttributesElement =
   | "ADDRESS"
   | "BIRTHDATE"
@@ -361,23 +282,17 @@ export type RequiredSignUpAttributesElement =
   | "ZONE_INFO"
   | (string & {});
 export type ListOfRequiredSignUpAttributesElement = RequiredSignUpAttributesElement[];
-const ListOfRequiredSignUpAttributesElement =
-  ListOfAdditionalConstraintsElement as any as S.Schema<ListOfRequiredSignUpAttributesElement>;
 export type SignInMethod =
   | "EMAIL"
   | "EMAIL_AND_PHONE_NUMBER"
   | "PHONE_NUMBER"
   | "USERNAME"
   | (string & {});
-const SignInMethod = S.String;
-
 export interface CreateBackendAuthVerificationMessageConfig {
   DeliveryMethod?: DeliveryMethod;
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
-const CreateBackendAuthVerificationMessageConfig =
-  CreateBackendAuthForgotPasswordConfig as any as S.Schema<CreateBackendAuthVerificationMessageConfig>;
 export interface CreateBackendAuthUserPoolConfig {
   ForgotPassword?: CreateBackendAuthForgotPasswordConfig;
   Mfa?: CreateBackendAuthMFAConfig;
@@ -388,30 +303,18 @@ export interface CreateBackendAuthUserPoolConfig {
   UserPoolName?: string;
   VerificationMessage?: CreateBackendAuthVerificationMessageConfig;
 }
-const CreateBackendAuthUserPoolConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateBackendAuthUserPoolConfig>;
 export interface CreateBackendAuthResourceConfig {
   AuthResources?: AuthResources;
   IdentityPoolConfigs?: CreateBackendAuthIdentityPoolConfig;
   Service?: Service;
   UserPoolConfigs?: CreateBackendAuthUserPoolConfig;
 }
-const CreateBackendAuthResourceConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateBackendAuthResourceConfig>;
 export interface CreateBackendAuthRequest {
   AppId: string;
   BackendEnvironmentName?: string;
   ResourceConfig?: CreateBackendAuthResourceConfig;
   ResourceName?: string;
 }
-const CreateBackendAuthRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateBackendAuthRequest>;
 export interface CreateBackendAuthResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -420,90 +323,55 @@ export interface CreateBackendAuthResponse {
   Operation?: string;
   Status?: string;
 }
-const CreateBackendAuthResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateBackendAuthResponse>;
 export interface CreateBackendConfigRequest {
   AppId: string;
   BackendManagerAppId?: string;
 }
-const CreateBackendConfigRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateBackendConfigRequest>;
 export interface CreateBackendConfigResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
   JobId?: string;
   Status?: string;
 }
-const CreateBackendConfigResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateBackendConfigResponse>;
 export type AuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE" | (string & {});
 export type ListOfAuthenticatedElement = AuthenticatedElement[];
-const ListOfAuthenticatedElement =
-  ListOfMfaTypesElement as any as S.Schema<ListOfAuthenticatedElement>;
 export type UnAuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE" | (string & {});
 export type ListOfUnAuthenticatedElement = UnAuthenticatedElement[];
-const ListOfUnAuthenticatedElement =
-  ListOfMfaTypesElement as any as S.Schema<ListOfUnAuthenticatedElement>;
 export interface BackendStoragePermissions {
   Authenticated?: AuthenticatedElement[];
   UnAuthenticated?: UnAuthenticatedElement[];
 }
-const BackendStoragePermissions = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<BackendStoragePermissions>;
 export type ServiceName = "S3" | (string & {});
-const ServiceName = S.String;
-
 export interface CreateBackendStorageResourceConfig {
   BucketName?: string;
   Permissions?: BackendStoragePermissions;
   ServiceName?: ServiceName;
 }
-const CreateBackendStorageResourceConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateBackendStorageResourceConfig>;
 export interface CreateBackendStorageRequest {
   AppId: string;
   BackendEnvironmentName?: string;
   ResourceConfig?: CreateBackendStorageResourceConfig;
   ResourceName?: string;
 }
-const CreateBackendStorageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateBackendStorageRequest>;
 export interface CreateBackendStorageResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
   JobId?: string;
   Status?: string;
 }
-const CreateBackendStorageResponse =
-  CreateBackendConfigResponse as any as S.Schema<CreateBackendStorageResponse>;
 export interface CreateTokenRequest {
   AppId: string;
 }
-const CreateTokenRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CreateTokenRequest>;
 export interface CreateTokenResponse {
   AppId?: string;
   ChallengeCode?: string;
   SessionId?: string;
   Ttl?: string;
 }
-const CreateTokenResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CreateTokenResponse>;
 export interface DeleteBackendRequest {
   AppId: string;
   BackendEnvironmentName: string;
 }
-const DeleteBackendRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DeleteBackendRequest>;
 export interface DeleteBackendResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -512,17 +380,12 @@ export interface DeleteBackendResponse {
   Operation?: string;
   Status?: string;
 }
-const DeleteBackendResponse = CloneBackendResponse as any as S.Schema<DeleteBackendResponse>;
 export interface DeleteBackendAPIRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceConfig?: BackendAPIResourceConfig;
   ResourceName?: string;
 }
-const DeleteBackendAPIRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteBackendAPIRequest>;
 export interface DeleteBackendAPIResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -531,16 +394,11 @@ export interface DeleteBackendAPIResponse {
   Operation?: string;
   Status?: string;
 }
-const DeleteBackendAPIResponse = CloneBackendResponse as any as S.Schema<DeleteBackendAPIResponse>;
 export interface DeleteBackendAuthRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceName?: string;
 }
-const DeleteBackendAuthRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteBackendAuthRequest>;
 export interface DeleteBackendAuthResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -549,44 +407,30 @@ export interface DeleteBackendAuthResponse {
   Operation?: string;
   Status?: string;
 }
-const DeleteBackendAuthResponse =
-  CreateBackendAuthResponse as any as S.Schema<DeleteBackendAuthResponse>;
 export interface DeleteBackendStorageRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceName?: string;
   ServiceName?: ServiceName;
 }
-const DeleteBackendStorageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteBackendStorageRequest>;
 export interface DeleteBackendStorageResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
   JobId?: string;
   Status?: string;
 }
-const DeleteBackendStorageResponse =
-  CreateBackendConfigResponse as any as S.Schema<DeleteBackendStorageResponse>;
 export interface DeleteTokenRequest {
   AppId: string;
   SessionId: string;
 }
-const DeleteTokenRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DeleteTokenRequest>;
 export interface DeleteTokenResponse {
   IsSuccess?: boolean;
 }
-const DeleteTokenResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DeleteTokenResponse>;
 export interface GenerateBackendAPIModelsRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceName?: string;
 }
-const GenerateBackendAPIModelsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GenerateBackendAPIModelsRequest>;
 export interface GenerateBackendAPIModelsResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -595,13 +439,10 @@ export interface GenerateBackendAPIModelsResponse {
   Operation?: string;
   Status?: string;
 }
-const GenerateBackendAPIModelsResponse =
-  CreateBackendAuthResponse as any as S.Schema<GenerateBackendAPIModelsResponse>;
 export interface GetBackendRequest {
   AppId: string;
   BackendEnvironmentName?: string;
 }
-const GetBackendRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetBackendRequest>;
 export interface GetBackendResponse {
   AmplifyFeatureFlags?: string;
   AmplifyMetaConfig?: string;
@@ -611,14 +452,12 @@ export interface GetBackendResponse {
   BackendEnvironmentName?: string;
   Error?: string;
 }
-const GetBackendResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetBackendResponse>;
 export interface GetBackendAPIRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceConfig?: BackendAPIResourceConfig;
   ResourceName?: string;
 }
-const GetBackendAPIRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetBackendAPIRequest>;
 export interface GetBackendAPIResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -626,40 +465,22 @@ export interface GetBackendAPIResponse {
   ResourceConfig?: BackendAPIResourceConfig;
   ResourceName?: string;
 }
-const GetBackendAPIResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetBackendAPIResponse>;
 export interface GetBackendAPIModelsRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceName?: string;
 }
-const GetBackendAPIModelsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetBackendAPIModelsRequest>;
 export type Status = "LATEST" | "STALE" | (string & {});
-const Status = S.String;
-
 export interface GetBackendAPIModelsResponse {
   Models?: string;
   Status?: Status;
   ModelIntrospectionSchema?: string;
 }
-const GetBackendAPIModelsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetBackendAPIModelsResponse>;
 export interface GetBackendAuthRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceName?: string;
 }
-const GetBackendAuthRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetBackendAuthRequest>;
 export interface GetBackendAuthResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -691,16 +512,11 @@ export interface GetBackendAuthResponse {
   };
   ResourceName?: string;
 }
-const GetBackendAuthResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetBackendAuthResponse>;
 export interface GetBackendJobRequest {
   AppId: string;
   BackendEnvironmentName: string;
   JobId: string;
 }
-const GetBackendJobRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetBackendJobRequest>;
 export interface GetBackendJobResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -711,29 +527,17 @@ export interface GetBackendJobResponse {
   Status?: string;
   UpdateTime?: string;
 }
-const GetBackendJobResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetBackendJobResponse>;
 export interface GetBackendStorageRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceName?: string;
 }
-const GetBackendStorageRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetBackendStorageRequest>;
 export interface GetBackendStorageResourceConfig {
   BucketName?: string;
   Imported?: boolean;
   Permissions?: BackendStoragePermissions;
   ServiceName?: ServiceName;
 }
-const GetBackendStorageResourceConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetBackendStorageResourceConfig>;
 export interface GetBackendStorageResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -744,22 +548,16 @@ export interface GetBackendStorageResponse {
   };
   ResourceName?: string;
 }
-const GetBackendStorageResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetBackendStorageResponse>;
 export interface GetTokenRequest {
   AppId: string;
   SessionId: string;
 }
-const GetTokenRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetTokenRequest>;
 export interface GetTokenResponse {
   AppId?: string;
   ChallengeCode?: string;
   SessionId?: string;
   Ttl?: string;
 }
-const GetTokenResponse = CreateTokenResponse as any as S.Schema<GetTokenResponse>;
 export interface ImportBackendAuthRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -768,10 +566,6 @@ export interface ImportBackendAuthRequest {
   UserPoolId?: string;
   WebClientId?: string;
 }
-const ImportBackendAuthRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ImportBackendAuthRequest>;
 export interface ImportBackendAuthResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -780,26 +574,18 @@ export interface ImportBackendAuthResponse {
   Operation?: string;
   Status?: string;
 }
-const ImportBackendAuthResponse =
-  CreateBackendAuthResponse as any as S.Schema<ImportBackendAuthResponse>;
 export interface ImportBackendStorageRequest {
   AppId: string;
   BackendEnvironmentName: string;
   BucketName?: string;
   ServiceName?: ServiceName;
 }
-const ImportBackendStorageRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ImportBackendStorageRequest>;
 export interface ImportBackendStorageResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
   JobId?: string;
   Status?: string;
 }
-const ImportBackendStorageResponse =
-  CreateBackendConfigResponse as any as S.Schema<ImportBackendStorageResponse>;
 export type __integerMin1Max25 = number;
 export interface ListBackendJobsRequest {
   AppId: string;
@@ -810,10 +596,6 @@ export interface ListBackendJobsRequest {
   Operation?: string;
   Status?: string;
 }
-const ListBackendJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListBackendJobsRequest>;
 export interface BackendJobRespObj {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -824,44 +606,27 @@ export interface BackendJobRespObj {
   Status?: string;
   UpdateTime?: string;
 }
-const BackendJobRespObj = GetBackendJobResponse as any as S.Schema<BackendJobRespObj>;
 export type ListOfBackendJobRespObj = BackendJobRespObj[];
-const ListOfBackendJobRespObj = /*@__PURE__*/ __L.at(__c7, 3);
 export interface ListBackendJobsResponse {
   Jobs?: (BackendJobRespObj & { AppId: string; BackendEnvironmentName: string })[];
   NextToken?: string;
 }
-const ListBackendJobsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListBackendJobsResponse>;
 export interface ListS3BucketsRequest {
   NextToken?: string;
 }
-const ListS3BucketsRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListS3BucketsRequest>;
 export interface S3BucketInfo {
   CreationDate?: string;
   Name?: string;
 }
-const S3BucketInfo = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<S3BucketInfo>;
 export type ListOfS3BucketInfo = S3BucketInfo[];
-const ListOfS3BucketInfo = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ListS3BucketsResponse {
   Buckets?: S3BucketInfo[];
   NextToken?: string;
 }
-const ListS3BucketsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListS3BucketsResponse>;
 export interface RemoveAllBackendsRequest {
   AppId: string;
   CleanAmplifyApp?: boolean;
 }
-const RemoveAllBackendsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RemoveAllBackendsRequest>;
 export interface RemoveAllBackendsResponse {
   AppId?: string;
   Error?: string;
@@ -869,34 +634,18 @@ export interface RemoveAllBackendsResponse {
   Operation?: string;
   Status?: string;
 }
-const RemoveAllBackendsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<RemoveAllBackendsResponse>;
 export interface RemoveBackendConfigRequest {
   AppId: string;
 }
-const RemoveBackendConfigRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<RemoveBackendConfigRequest>;
 export interface RemoveBackendConfigResponse {
   Error?: string;
 }
-const RemoveBackendConfigResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<RemoveBackendConfigResponse>;
 export interface UpdateBackendAPIRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceConfig?: BackendAPIResourceConfig;
   ResourceName?: string;
 }
-const UpdateBackendAPIRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<UpdateBackendAPIRequest>;
 export interface UpdateBackendAPIResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -905,27 +654,18 @@ export interface UpdateBackendAPIResponse {
   Operation?: string;
   Status?: string;
 }
-const UpdateBackendAPIResponse = CloneBackendResponse as any as S.Schema<UpdateBackendAPIResponse>;
 export interface UpdateBackendAuthIdentityPoolConfig {
   UnauthenticatedLogin?: boolean;
 }
-const UpdateBackendAuthIdentityPoolConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UpdateBackendAuthIdentityPoolConfig>;
 export interface UpdateBackendAuthForgotPasswordConfig {
   DeliveryMethod?: DeliveryMethod;
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
-const UpdateBackendAuthForgotPasswordConfig =
-  CreateBackendAuthForgotPasswordConfig as any as S.Schema<UpdateBackendAuthForgotPasswordConfig>;
 export interface UpdateBackendAuthMFAConfig {
   MFAMode?: MFAMode;
   Settings?: Settings;
 }
-const UpdateBackendAuthMFAConfig =
-  CreateBackendAuthMFAConfig as any as S.Schema<UpdateBackendAuthMFAConfig>;
 export interface UpdateBackendAuthOAuthConfig {
   DomainPrefix?: string;
   OAuthGrantType?: OAuthGrantType;
@@ -934,21 +674,15 @@ export interface UpdateBackendAuthOAuthConfig {
   RedirectSignOutURIs?: string[];
   SocialProviderSettings?: SocialProviderSettings;
 }
-const UpdateBackendAuthOAuthConfig =
-  CreateBackendAuthOAuthConfig as any as S.Schema<UpdateBackendAuthOAuthConfig>;
 export interface UpdateBackendAuthPasswordPolicyConfig {
   AdditionalConstraints?: AdditionalConstraintsElement[];
   MinimumLength?: number;
 }
-const UpdateBackendAuthPasswordPolicyConfig =
-  CreateBackendAuthPasswordPolicyConfig as any as S.Schema<UpdateBackendAuthPasswordPolicyConfig>;
 export interface UpdateBackendAuthVerificationMessageConfig {
   DeliveryMethod?: DeliveryMethod;
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
-const UpdateBackendAuthVerificationMessageConfig =
-  CreateBackendAuthForgotPasswordConfig as any as S.Schema<UpdateBackendAuthVerificationMessageConfig>;
 export interface UpdateBackendAuthUserPoolConfig {
   ForgotPassword?: UpdateBackendAuthForgotPasswordConfig;
   Mfa?: UpdateBackendAuthMFAConfig;
@@ -956,30 +690,18 @@ export interface UpdateBackendAuthUserPoolConfig {
   PasswordPolicy?: UpdateBackendAuthPasswordPolicyConfig;
   VerificationMessage?: UpdateBackendAuthVerificationMessageConfig;
 }
-const UpdateBackendAuthUserPoolConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UpdateBackendAuthUserPoolConfig>;
 export interface UpdateBackendAuthResourceConfig {
   AuthResources?: AuthResources;
   IdentityPoolConfigs?: UpdateBackendAuthIdentityPoolConfig;
   Service?: Service;
   UserPoolConfigs?: UpdateBackendAuthUserPoolConfig;
 }
-const UpdateBackendAuthResourceConfig = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UpdateBackendAuthResourceConfig>;
 export interface UpdateBackendAuthRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceConfig?: UpdateBackendAuthResourceConfig;
   ResourceName?: string;
 }
-const UpdateBackendAuthRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateBackendAuthRequest>;
 export interface UpdateBackendAuthResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -988,36 +710,22 @@ export interface UpdateBackendAuthResponse {
   Operation?: string;
   Status?: string;
 }
-const UpdateBackendAuthResponse =
-  CreateBackendAuthResponse as any as S.Schema<UpdateBackendAuthResponse>;
 export interface LoginAuthConfigReqObj {
   AwsCognitoIdentityPoolId?: string;
   AwsCognitoRegion?: string;
   AwsUserPoolsId?: string;
   AwsUserPoolsWebClientId?: string;
 }
-const LoginAuthConfigReqObj = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<LoginAuthConfigReqObj>;
 export interface UpdateBackendConfigRequest {
   AppId: string;
   LoginAuthConfig?: LoginAuthConfigReqObj;
 }
-const UpdateBackendConfigRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UpdateBackendConfigRequest>;
 export interface UpdateBackendConfigResponse {
   AppId?: string;
   BackendManagerAppId?: string;
   Error?: string;
   LoginAuthConfig?: LoginAuthConfigReqObj;
 }
-const UpdateBackendConfigResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<UpdateBackendConfigResponse>;
 export interface UpdateBackendJobRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -1025,10 +733,6 @@ export interface UpdateBackendJobRequest {
   Operation?: string;
   Status?: string;
 }
-const UpdateBackendJobRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<UpdateBackendJobRequest>;
 export interface UpdateBackendJobResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
@@ -1039,33 +743,22 @@ export interface UpdateBackendJobResponse {
   Status?: string;
   UpdateTime?: string;
 }
-const UpdateBackendJobResponse = GetBackendJobResponse as any as S.Schema<UpdateBackendJobResponse>;
 export interface UpdateBackendStorageResourceConfig {
   Permissions?: BackendStoragePermissions;
   ServiceName?: ServiceName;
 }
-const UpdateBackendStorageResourceConfig = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<UpdateBackendStorageResourceConfig>;
 export interface UpdateBackendStorageRequest {
   AppId: string;
   BackendEnvironmentName: string;
   ResourceConfig?: UpdateBackendStorageResourceConfig;
   ResourceName?: string;
 }
-const UpdateBackendStorageRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<UpdateBackendStorageRequest>;
 export interface UpdateBackendStorageResponse {
   AppId?: string;
   BackendEnvironmentName?: string;
   JobId?: string;
   Status?: string;
 }
-const UpdateBackendStorageResponse =
-  CreateBackendConfigResponse as any as S.Schema<UpdateBackendStorageResponse>;
 export type CloneBackendError =
   | BadRequestException
   | GatewayTimeoutException
@@ -1081,8 +774,8 @@ export const cloneBackend: API.OperationMethod<
   CloneBackendError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloneBackendRequest,
-  output: CloneBackendResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CloneBackendRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CloneBackendResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1109,8 +802,8 @@ export const createBackend: API.OperationMethod<
   CreateBackendError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackendRequest,
-  output: CreateBackendResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateBackendRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBackendResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1137,8 +830,8 @@ export const createBackendAPI: API.OperationMethod<
   CreateBackendAPIError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackendAPIRequest,
-  output: CreateBackendAPIResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateBackendAPIRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBackendAPIResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1165,8 +858,8 @@ export const createBackendAuth: API.OperationMethod<
   CreateBackendAuthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackendAuthRequest,
-  output: CreateBackendAuthResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateBackendAuthRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CreateBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1193,8 +886,8 @@ export const createBackendConfig: API.OperationMethod<
   CreateBackendConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackendConfigRequest,
-  output: CreateBackendConfigResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<CreateBackendConfigRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<CreateBackendConfigResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1221,8 +914,8 @@ export const createBackendStorage: API.OperationMethod<
   CreateBackendStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackendStorageRequest,
-  output: CreateBackendStorageResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateBackendStorageRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<CreateBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1249,8 +942,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTokenRequest,
-  output: CreateTokenResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateTokenRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CreateTokenResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1277,8 +970,8 @@ export const deleteBackend: API.OperationMethod<
   DeleteBackendError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBackendRequest,
-  output: DeleteBackendResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<DeleteBackendRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteBackendResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1305,8 +998,8 @@ export const deleteBackendAPI: API.OperationMethod<
   DeleteBackendAPIError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBackendAPIRequest,
-  output: DeleteBackendAPIResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<DeleteBackendAPIRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteBackendAPIResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1333,8 +1026,8 @@ export const deleteBackendAuth: API.OperationMethod<
   DeleteBackendAuthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBackendAuthRequest,
-  output: DeleteBackendAuthResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<DeleteBackendAuthRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1361,8 +1054,8 @@ export const deleteBackendStorage: API.OperationMethod<
   DeleteBackendStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBackendStorageRequest,
-  output: DeleteBackendStorageResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<DeleteBackendStorageRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<DeleteBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1389,8 +1082,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTokenRequest,
-  output: DeleteTokenResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteTokenResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1417,8 +1110,8 @@ export const generateBackendAPIModels: API.OperationMethod<
   GenerateBackendAPIModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateBackendAPIModelsRequest,
-  output: GenerateBackendAPIModelsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<GenerateBackendAPIModelsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GenerateBackendAPIModelsResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1445,8 +1138,8 @@ export const getBackend: API.OperationMethod<
   GetBackendError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackendRequest,
-  output: GetBackendResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<GetBackendRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetBackendResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1473,8 +1166,8 @@ export const getBackendAPI: API.OperationMethod<
   GetBackendAPIError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackendAPIRequest,
-  output: GetBackendAPIResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetBackendAPIRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GetBackendAPIResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1501,8 +1194,8 @@ export const getBackendAPIModels: API.OperationMethod<
   GetBackendAPIModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackendAPIModelsRequest,
-  output: GetBackendAPIModelsResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<GetBackendAPIModelsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetBackendAPIModelsResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1529,8 +1222,8 @@ export const getBackendAuth: API.OperationMethod<
   GetBackendAuthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackendAuthRequest,
-  output: GetBackendAuthResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<GetBackendAuthRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1557,8 +1250,8 @@ export const getBackendJob: API.OperationMethod<
   GetBackendJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackendJobRequest,
-  output: GetBackendJobResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<GetBackendJobRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetBackendJobResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1585,8 +1278,8 @@ export const getBackendStorage: API.OperationMethod<
   GetBackendStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackendStorageRequest,
-  output: GetBackendStorageResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<GetBackendStorageRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<GetBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1613,8 +1306,8 @@ export const getToken: API.OperationMethod<
   GetTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTokenRequest,
-  output: GetTokenResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<GetTokenRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetTokenResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1641,8 +1334,8 @@ export const importBackendAuth: API.OperationMethod<
   ImportBackendAuthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportBackendAuthRequest,
-  output: ImportBackendAuthResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<ImportBackendAuthRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<ImportBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1669,8 +1362,8 @@ export const importBackendStorage: API.OperationMethod<
   ImportBackendStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportBackendStorageRequest,
-  output: ImportBackendStorageResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<ImportBackendStorageRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ImportBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1697,8 +1390,8 @@ export const listBackendJobs: API.OperationMethod<
   ListBackendJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBackendJobsRequest,
-  output: ListBackendJobsResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<ListBackendJobsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListBackendJobsResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1725,8 +1418,8 @@ export const listS3Buckets: API.OperationMethod<
   ListS3BucketsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListS3BucketsRequest,
-  output: ListS3BucketsResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<ListS3BucketsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ListS3BucketsResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1753,8 +1446,8 @@ export const removeAllBackends: API.OperationMethod<
   RemoveAllBackendsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAllBackendsRequest,
-  output: RemoveAllBackendsResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<RemoveAllBackendsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<RemoveAllBackendsResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1781,8 +1474,8 @@ export const removeBackendConfig: API.OperationMethod<
   RemoveBackendConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveBackendConfigRequest,
-  output: RemoveBackendConfigResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<RemoveBackendConfigRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<RemoveBackendConfigResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1809,8 +1502,8 @@ export const updateBackendAPI: API.OperationMethod<
   UpdateBackendAPIError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBackendAPIRequest,
-  output: UpdateBackendAPIResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<UpdateBackendAPIRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateBackendAPIResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1837,8 +1530,8 @@ export const updateBackendAuth: API.OperationMethod<
   UpdateBackendAuthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBackendAuthRequest,
-  output: UpdateBackendAuthResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<UpdateBackendAuthRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<UpdateBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1865,8 +1558,8 @@ export const updateBackendConfig: API.OperationMethod<
   UpdateBackendConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBackendConfigRequest,
-  output: UpdateBackendConfigResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<UpdateBackendConfigRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<UpdateBackendConfigResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1893,8 +1586,8 @@ export const updateBackendJob: API.OperationMethod<
   UpdateBackendJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBackendJobRequest,
-  output: UpdateBackendJobResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<UpdateBackendJobRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<UpdateBackendJobResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1921,8 +1614,8 @@ export const updateBackendStorage: API.OperationMethod<
   UpdateBackendStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBackendStorageRequest,
-  output: UpdateBackendStorageResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<UpdateBackendStorageRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<UpdateBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1989,7 +1682,7 @@ function __c0(j: number): any {
           AppId: S.optional(S.String),
           AppName: S.optional(S.String),
           BackendEnvironmentName: S.optional(S.String),
-          ResourceConfig: S.optional(ResourceConfig),
+          ResourceConfig: S.optional(__S(2, __c0, 2)),
           ResourceName: S.optional(S.String),
         })
           .pipe(
@@ -2032,15 +1725,15 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Mode: S.optional(Mode),
-          Settings: S.optional(BackendAPIAppSyncAuthSettings),
+          Mode: S.optional(S.String),
+          Settings: S.optional(__S(4, __c0, 4)),
         }).pipe(S.encodeKeys({ Mode: "mode", Settings: "settings" })),
       ).annotate({ identifier: "BackendAPIAuthType" });
     case 6:
-      return S.Array(BackendAPIAuthType);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResolutionStrategy: S.optional(ResolutionStrategy) }).pipe(
+        S.Struct({ ResolutionStrategy: S.optional(S.String) }).pipe(
           S.encodeKeys({ ResolutionStrategy: "resolutionStrategy" }),
         ),
       ).annotate({
@@ -2053,10 +1746,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AdditionalAuthTypes: S.optional(ListOfBackendAPIAuthType),
+          AdditionalAuthTypes: S.optional(__S(6, __c0, 6)),
           ApiName: S.optional(S.String),
-          ConflictResolution: S.optional(BackendAPIConflictResolution),
-          DefaultAuthType: S.optional(BackendAPIAuthType),
+          ConflictResolution: S.optional(__S(7, __c0, 7)),
+          DefaultAuthType: S.optional(__S(5, __c0, 5)),
           Service: S.optional(S.String),
           TransformSchema: S.optional(S.String),
         }).pipe(
@@ -2075,7 +1768,7 @@ function __c1(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.optional(S.String),
-          ResourceConfig: S.optional(BackendAPIResourceConfig),
+          ResourceConfig: S.optional(__S(8, __c1, 0)),
           ResourceName: S.optional(S.String),
         })
           .pipe(
@@ -2125,9 +1818,9 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DeliveryMethod: S.optional(DeliveryMethod),
-          EmailSettings: S.optional(EmailSettings),
-          SmsSettings: S.optional(SmsSettings),
+          DeliveryMethod: S.optional(S.String),
+          EmailSettings: S.optional(__S(11, __c1, 3)),
+          SmsSettings: S.optional(__S(12, __c1, 4)),
         }).pipe(
           S.encodeKeys({
             DeliveryMethod: "deliveryMethod",
@@ -2139,11 +1832,11 @@ function __c1(j: number): any {
         identifier: "CreateBackendAuthForgotPasswordConfig",
       });
     case 6:
-      return S.Array(MfaTypesElement);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          MfaTypes: S.optional(ListOfMfaTypesElement),
+          MfaTypes: S.optional(__S(14, __c1, 6)),
           SmsMessage: S.optional(S.String),
         }).pipe(S.encodeKeys({ MfaTypes: "mfaTypes", SmsMessage: "smsMessage" })),
       ).annotate({ identifier: "Settings" });
@@ -2153,7 +1846,7 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MFAMode: S.optional(MFAMode), Settings: S.optional(Settings) }).pipe(
+        S.Struct({ MFAMode: S.optional(S.String), Settings: S.optional(__S(15, __c1, 7)) }).pipe(
           S.encodeKeys({ Settings: "settings" }),
         ),
       ).annotate({
@@ -2190,21 +1883,21 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Facebook: S.optional(BackendAuthSocialProviderConfig),
-          Google: S.optional(BackendAuthSocialProviderConfig),
-          LoginWithAmazon: S.optional(BackendAuthSocialProviderConfig),
-          SignInWithApple: S.optional(BackendAuthAppleProviderConfig),
+          Facebook: S.optional(__S(18, __c2, 2)),
+          Google: S.optional(__S(18, __c2, 2)),
+          LoginWithAmazon: S.optional(__S(18, __c2, 2)),
+          SignInWithApple: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "SocialProviderSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           DomainPrefix: S.optional(S.String),
-          OAuthGrantType: S.optional(OAuthGrantType),
-          OAuthScopes: S.optional(ListOfOAuthScopesElement),
-          RedirectSignInURIs: S.optional(ListOf__string),
-          RedirectSignOutURIs: S.optional(ListOf__string),
-          SocialProviderSettings: S.optional(SocialProviderSettings),
+          OAuthGrantType: S.optional(S.String),
+          OAuthScopes: S.optional(__S(14, __c1, 6)),
+          RedirectSignInURIs: S.optional(__S(17, __c2, 1)),
+          RedirectSignOutURIs: S.optional(__S(17, __c2, 1)),
+          SocialProviderSettings: S.optional(__S(20, __c2, 4)),
         }).pipe(
           S.encodeKeys({
             DomainPrefix: "domainPrefix",
@@ -2219,11 +1912,11 @@ function __c2(j: number): any {
         identifier: "CreateBackendAuthOAuthConfig",
       });
     case 6:
-      return S.Array(AdditionalConstraintsElement);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AdditionalConstraints: S.optional(ListOfAdditionalConstraintsElement),
+          AdditionalConstraints: S.optional(__S(22, __c2, 6)),
           MinimumLength: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -2241,14 +1934,14 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ForgotPassword: S.optional(CreateBackendAuthForgotPasswordConfig),
-          Mfa: S.optional(CreateBackendAuthMFAConfig),
-          OAuth: S.optional(CreateBackendAuthOAuthConfig),
-          PasswordPolicy: S.optional(CreateBackendAuthPasswordPolicyConfig),
-          RequiredSignUpAttributes: S.optional(ListOfRequiredSignUpAttributesElement),
-          SignInMethod: S.optional(SignInMethod),
+          ForgotPassword: S.optional(__S(13, __c1, 5)),
+          Mfa: S.optional(__S(16, __c2, 0)),
+          OAuth: S.optional(__S(21, __c2, 5)),
+          PasswordPolicy: S.optional(__S(23, __c2, 7)),
+          RequiredSignUpAttributes: S.optional(__S(22, __c2, 6)),
+          SignInMethod: S.optional(S.String),
           UserPoolName: S.optional(S.String),
-          VerificationMessage: S.optional(CreateBackendAuthVerificationMessageConfig),
+          VerificationMessage: S.optional(__S(13, __c1, 5)),
         }).pipe(
           S.encodeKeys({
             ForgotPassword: "forgotPassword",
@@ -2267,10 +1960,10 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AuthResources: S.optional(AuthResources),
-          IdentityPoolConfigs: S.optional(CreateBackendAuthIdentityPoolConfig),
-          Service: S.optional(Service),
-          UserPoolConfigs: S.optional(CreateBackendAuthUserPoolConfig),
+          AuthResources: S.optional(S.String),
+          IdentityPoolConfigs: S.optional(__S(10, __c1, 2)),
+          Service: S.optional(S.String),
+          UserPoolConfigs: S.optional(__S(24, __c3, 0)),
         }).pipe(
           S.encodeKeys({
             AuthResources: "authResources",
@@ -2287,7 +1980,7 @@ function __c3(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.optional(S.String),
-          ResourceConfig: S.optional(CreateBackendAuthResourceConfig),
+          ResourceConfig: S.optional(__S(25, __c3, 1)),
           ResourceName: S.optional(S.String),
         })
           .pipe(
@@ -2371,8 +2064,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Authenticated: S.optional(ListOfAuthenticatedElement),
-          UnAuthenticated: S.optional(ListOfUnAuthenticatedElement),
+          Authenticated: S.optional(__S(14, __c1, 6)),
+          UnAuthenticated: S.optional(__S(14, __c1, 6)),
         }).pipe(
           S.encodeKeys({ Authenticated: "authenticated", UnAuthenticated: "unAuthenticated" }),
         ),
@@ -2383,8 +2076,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BucketName: S.optional(S.String),
-          Permissions: S.optional(BackendStoragePermissions),
-          ServiceName: S.optional(ServiceName),
+          Permissions: S.optional(__S(30, __c3, 6)),
+          ServiceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
             BucketName: "bucketName",
@@ -2404,7 +2097,7 @@ function __c4(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.optional(S.String),
-          ResourceConfig: S.optional(CreateBackendStorageResourceConfig),
+          ResourceConfig: S.optional(__S(31, __c3, 7)),
           ResourceName: S.optional(S.String),
         })
           .pipe(
@@ -2480,7 +2173,7 @@ function __c4(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.String.pipe(T.HttpLabel("BackendEnvironmentName")),
-          ResourceConfig: S.optional(BackendAPIResourceConfig),
+          ResourceConfig: S.optional(__S(8, __c1, 0)),
           ResourceName: S.optional(S.String),
         })
           .pipe(S.encodeKeys({ ResourceConfig: "resourceConfig", ResourceName: "resourceName" }))
@@ -2526,7 +2219,7 @@ function __c4(j: number): any {
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.String.pipe(T.HttpLabel("BackendEnvironmentName")),
           ResourceName: S.optional(S.String),
-          ServiceName: S.optional(ServiceName),
+          ServiceName: S.optional(S.String),
         })
           .pipe(S.encodeKeys({ ResourceName: "resourceName", ServiceName: "serviceName" }))
           .pipe(
@@ -2620,7 +2313,7 @@ function __c5(j: number): any {
           AmplifyMetaConfig: S.optional(S.String),
           AppId: S.optional(S.String),
           AppName: S.optional(S.String),
-          BackendEnvironmentList: S.optional(ListOf__string),
+          BackendEnvironmentList: S.optional(__S(17, __c2, 1)),
           BackendEnvironmentName: S.optional(S.String),
           Error: S.optional(S.String),
         }).pipe(
@@ -2640,7 +2333,7 @@ function __c5(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.String.pipe(T.HttpLabel("BackendEnvironmentName")),
-          ResourceConfig: S.optional(BackendAPIResourceConfig),
+          ResourceConfig: S.optional(__S(8, __c1, 0)),
           ResourceName: S.optional(S.String),
         })
           .pipe(S.encodeKeys({ ResourceConfig: "resourceConfig", ResourceName: "resourceName" }))
@@ -2664,7 +2357,7 @@ function __c5(j: number): any {
           AppId: S.optional(S.String),
           BackendEnvironmentName: S.optional(S.String),
           Error: S.optional(S.String),
-          ResourceConfig: S.optional(BackendAPIResourceConfig),
+          ResourceConfig: S.optional(__S(8, __c1, 0)),
           ResourceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2704,7 +2397,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Models: S.optional(S.String),
-          Status: S.optional(Status),
+          Status: S.optional(S.String),
           ModelIntrospectionSchema: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2748,7 +2441,7 @@ function __c6(j: number): any {
           AppId: S.optional(S.String),
           BackendEnvironmentName: S.optional(S.String),
           Error: S.optional(S.String),
-          ResourceConfig: S.optional(CreateBackendAuthResourceConfig),
+          ResourceConfig: S.optional(__S(25, __c3, 1)),
           ResourceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2828,8 +2521,8 @@ function __c6(j: number): any {
         S.Struct({
           BucketName: S.optional(S.String),
           Imported: S.optional(S.Boolean),
-          Permissions: S.optional(BackendStoragePermissions),
-          ServiceName: S.optional(ServiceName),
+          Permissions: S.optional(__S(30, __c3, 6)),
+          ServiceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
             BucketName: "bucketName",
@@ -2846,7 +2539,7 @@ function __c6(j: number): any {
         S.Struct({
           AppId: S.optional(S.String),
           BackendEnvironmentName: S.optional(S.String),
-          ResourceConfig: S.optional(GetBackendStorageResourceConfig),
+          ResourceConfig: S.optional(__S(53, __c6, 5)),
           ResourceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2917,7 +2610,7 @@ function __c7(j: number): any {
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.String.pipe(T.HttpLabel("BackendEnvironmentName")),
           BucketName: S.optional(S.String),
-          ServiceName: S.optional(ServiceName),
+          ServiceName: S.optional(S.String),
         })
           .pipe(S.encodeKeys({ BucketName: "bucketName", ServiceName: "serviceName" }))
           .pipe(
@@ -2968,11 +2661,11 @@ function __c7(j: number): any {
           ),
       ).annotate({ identifier: "ListBackendJobsRequest" });
     case 3:
-      return S.Array(BackendJobRespObj);
+      return S.Array(__S(51, __c6, 3));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Jobs: S.optional(ListOfBackendJobRespObj),
+          Jobs: S.optional(__S(59, __c7, 3)),
           NextToken: S.optional(S.String),
         }).pipe(S.encodeKeys({ Jobs: "jobs", NextToken: "nextToken" })),
       ).annotate({ identifier: "ListBackendJobsResponse" });
@@ -2989,14 +2682,14 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "S3BucketInfo" });
     case 7:
-      return S.Array(S3BucketInfo);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Buckets: S.optional(ListOfS3BucketInfo), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Buckets: S.optional(__S(63, __c7, 7)), NextToken: S.optional(S.String) }).pipe(
           S.encodeKeys({ Buckets: "buckets", NextToken: "nextToken" }),
         ),
       ).annotate({ identifier: "ListS3BucketsResponse" });
@@ -3064,7 +2757,7 @@ function __c8(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.String.pipe(T.HttpLabel("BackendEnvironmentName")),
-          ResourceConfig: S.optional(BackendAPIResourceConfig),
+          ResourceConfig: S.optional(__S(8, __c1, 0)),
           ResourceName: S.optional(S.String),
         })
           .pipe(S.encodeKeys({ ResourceConfig: "resourceConfig", ResourceName: "resourceName" }))
@@ -3090,11 +2783,11 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ForgotPassword: S.optional(UpdateBackendAuthForgotPasswordConfig),
-          Mfa: S.optional(UpdateBackendAuthMFAConfig),
-          OAuth: S.optional(UpdateBackendAuthOAuthConfig),
-          PasswordPolicy: S.optional(UpdateBackendAuthPasswordPolicyConfig),
-          VerificationMessage: S.optional(UpdateBackendAuthVerificationMessageConfig),
+          ForgotPassword: S.optional(__S(13, __c1, 5)),
+          Mfa: S.optional(__S(16, __c2, 0)),
+          OAuth: S.optional(__S(21, __c2, 5)),
+          PasswordPolicy: S.optional(__S(23, __c2, 7)),
+          VerificationMessage: S.optional(__S(13, __c1, 5)),
         }).pipe(
           S.encodeKeys({
             ForgotPassword: "forgotPassword",
@@ -3114,10 +2807,10 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AuthResources: S.optional(AuthResources),
-          IdentityPoolConfigs: S.optional(UpdateBackendAuthIdentityPoolConfig),
-          Service: S.optional(Service),
-          UserPoolConfigs: S.optional(UpdateBackendAuthUserPoolConfig),
+          AuthResources: S.optional(S.String),
+          IdentityPoolConfigs: S.optional(__S(70, __c8, 6)),
+          Service: S.optional(S.String),
+          UserPoolConfigs: S.optional(__S(71, __c8, 7)),
         }).pipe(
           S.encodeKeys({
             AuthResources: "authResources",
@@ -3134,7 +2827,7 @@ function __c9(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.String.pipe(T.HttpLabel("BackendEnvironmentName")),
-          ResourceConfig: S.optional(UpdateBackendAuthResourceConfig),
+          ResourceConfig: S.optional(__S(72, __c9, 0)),
           ResourceName: S.optional(S.String),
         })
           .pipe(S.encodeKeys({ ResourceConfig: "resourceConfig", ResourceName: "resourceName" }))
@@ -3169,7 +2862,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
-          LoginAuthConfig: S.optional(LoginAuthConfigReqObj),
+          LoginAuthConfig: S.optional(__S(74, __c9, 2)),
         })
           .pipe(S.encodeKeys({ LoginAuthConfig: "loginAuthConfig" }))
           .pipe(
@@ -3191,7 +2884,7 @@ function __c9(j: number): any {
           AppId: S.optional(S.String),
           BackendManagerAppId: S.optional(S.String),
           Error: S.optional(S.String),
-          LoginAuthConfig: S.optional(LoginAuthConfigReqObj),
+          LoginAuthConfig: S.optional(__S(74, __c9, 2)),
         }).pipe(
           S.encodeKeys({
             AppId: "appId",
@@ -3230,8 +2923,8 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Permissions: S.optional(BackendStoragePermissions),
-          ServiceName: S.optional(ServiceName),
+          Permissions: S.optional(__S(30, __c3, 6)),
+          ServiceName: S.optional(S.String),
         }).pipe(S.encodeKeys({ Permissions: "permissions", ServiceName: "serviceName" })),
       ).annotate({
         identifier: "UpdateBackendStorageResourceConfig",
@@ -3241,7 +2934,7 @@ function __c9(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.String.pipe(T.HttpLabel("BackendEnvironmentName")),
-          ResourceConfig: S.optional(UpdateBackendStorageResourceConfig),
+          ResourceConfig: S.optional(__S(78, __c9, 6)),
           ResourceName: S.optional(S.String),
         })
           .pipe(S.encodeKeys({ ResourceConfig: "resourceConfig", ResourceName: "resourceName" }))
@@ -3259,4 +2952,9 @@ function __c9(j: number): any {
         identifier: "UpdateBackendStorageRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://ssm.amazonaws.com/doc/2014-11-06/");
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SSM", serviceShapeName: "AmazonSSM" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ssm" });
@@ -685,7 +687,7 @@ export class OpsItemInvalidParameterException
     "OpsItemInvalidParameterException",
     {
       ParameterNames: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => OpsItemParameterNamesList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(6, __c0, 6)).annotate({
           identifier: "OpsItemParameterNamesList",
         }),
       ),
@@ -701,7 +703,7 @@ export class OpsItemLimitExceededException
     "OpsItemLimitExceededException",
     {
       ResourceTypes: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => OpsItemParameterNamesList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(6, __c0, 6)).annotate({
           identifier: "OpsItemParameterNamesList",
         }),
       ),
@@ -928,7 +930,7 @@ export class ResourcePolicyInvalidParameterException
     "ResourcePolicyInvalidParameterException",
     {
       ParameterNames: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ResourcePolicyParameterNamesList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(6, __c0, 6)).annotate({
           identifier: "ResourcePolicyParameterNamesList",
         }),
       ),
@@ -1107,8 +1109,6 @@ export type ResourceTypeForTagging =
   | "Association"
   | "CloudConnector"
   | (string & {});
-const ResourceTypeForTagging = S.String;
-
 export type ResourceId = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -1116,23 +1116,13 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AddTagsToResourceRequest {
   ResourceType: ResourceTypeForTagging;
   ResourceId: string;
   Tags: Tag[];
 }
-const AddTagsToResourceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddTagsToResourceRequest>;
 export interface AddTagsToResourceResult {}
-const AddTagsToResourceResult = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddTagsToResourceResult>;
 export type OpsItemId = string;
 export type OpsItemRelatedItemAssociationType = string;
 export type OpsItemRelatedItemAssociationResourceType = string;
@@ -1143,44 +1133,25 @@ export interface AssociateOpsItemRelatedItemRequest {
   ResourceType: string;
   ResourceUri: string;
 }
-const AssociateOpsItemRelatedItemRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssociateOpsItemRelatedItemRequest>;
 export type OpsItemRelatedItemAssociationId = string;
 export interface AssociateOpsItemRelatedItemResponse {
   AssociationId?: string;
 }
-const AssociateOpsItemRelatedItemResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssociateOpsItemRelatedItemResponse>;
 export type CommandId = string;
 export type InstanceId = string;
 export type InstanceIdList = string[];
-const InstanceIdList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface CancelCommandRequest {
   CommandId: string;
   InstanceIds?: string[];
 }
-const CancelCommandRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CancelCommandRequest>;
 export interface CancelCommandResult {}
-const CancelCommandResult = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CancelCommandResult>;
 export type MaintenanceWindowExecutionId = string;
 export interface CancelMaintenanceWindowExecutionRequest {
   WindowExecutionId: string;
 }
-const CancelMaintenanceWindowExecutionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelMaintenanceWindowExecutionRequest>;
 export interface CancelMaintenanceWindowExecutionResult {
   WindowExecutionId?: string;
 }
-const CancelMaintenanceWindowExecutionResult = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CancelMaintenanceWindowExecutionResult>;
 export type ActivationDescription = string;
 export type DefaultInstanceName = string;
 export type IamRole = string;
@@ -1193,7 +1164,6 @@ export interface RegistrationMetadataItem {
   Value: string;
 }
 export type RegistrationMetadataList = RegistrationMetadataItem[];
-const RegistrationMetadataList = TagList as any as S.Schema<RegistrationMetadataList>;
 export interface CreateActivationRequest {
   Description?: string;
   DefaultInstanceName?: string;
@@ -1203,39 +1173,26 @@ export interface CreateActivationRequest {
   Tags?: Tag[];
   RegistrationMetadata?: RegistrationMetadataItem[];
 }
-const CreateActivationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateActivationRequest>;
 export type ActivationId = string;
 export type ActivationCode = string;
 export interface CreateActivationResult {
   ActivationId?: string;
   ActivationCode?: string;
 }
-const CreateActivationResult = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateActivationResult>;
 export type DocumentARN = string;
 export type DocumentVersion = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type ParameterValueList = string[];
-const ParameterValueList = InstanceIdList as any as S.Schema<ParameterValueList>;
 export type Parameters = { [key: string]: string[] | undefined };
-const Parameters = /*@__PURE__*/ __L.at(__c1, 5);
 export type TargetKey = string;
 export type TargetValue = string;
 export type TargetValues = string[];
-const TargetValues = InstanceIdList as any as S.Schema<TargetValues>;
 export interface Target {
   Key?: string;
   Values?: string[];
 }
-const Target = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Target>;
 export type Targets = Target[];
-const Targets = /*@__PURE__*/ __L.at(__c1, 7);
 export type ScheduleExpression = string;
 export type S3Region = string;
 export type S3BucketName = string;
@@ -1245,14 +1202,9 @@ export interface S3OutputLocation {
   OutputS3BucketName?: string;
   OutputS3KeyPrefix?: string;
 }
-const S3OutputLocation = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<S3OutputLocation>;
 export interface InstanceAssociationOutputLocation {
   S3Location?: S3OutputLocation;
 }
-const InstanceAssociationOutputLocation = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<InstanceAssociationOutputLocation>;
 export type AssociationName = string;
 export type AutomationTargetParameterName = string;
 export type MaxErrors = string;
@@ -1264,39 +1216,27 @@ export type AssociationComplianceSeverity =
   | "LOW"
   | "UNSPECIFIED"
   | (string & {});
-const AssociationComplianceSeverity = S.String;
-
 export type AssociationSyncCompliance = "AUTO" | "MANUAL" | (string & {});
-const AssociationSyncCompliance = S.String;
-
 export type ApplyOnlyAtCronInterval = boolean;
 export type CalendarNameOrARN = string;
 export type CalendarNameOrARNList = string[];
-const CalendarNameOrARNList = InstanceIdList as any as S.Schema<CalendarNameOrARNList>;
 export type Account = string;
 export type Accounts = string[];
-const Accounts = InstanceIdList as any as S.Schema<Accounts>;
 export type Region = string;
 export type Regions = string[];
-const Regions = InstanceIdList as any as S.Schema<Regions>;
 export type ExecutionRoleName = string;
 export type AlarmName = string;
 export interface Alarm {
   Name: string;
 }
-const Alarm = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Alarm>;
 export type AlarmList = Alarm[];
-const AlarmList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface AlarmConfiguration {
   IgnorePollAlarmFailure?: boolean;
   Alarms: Alarm[];
 }
-const AlarmConfiguration = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AlarmConfiguration>;
 export type ExcludeAccount = string;
 export type ExcludeAccounts = string[];
-const ExcludeAccounts = InstanceIdList as any as S.Schema<ExcludeAccounts>;
 export type AutomationTargets = Target[];
-const AutomationTargets = Targets as any as S.Schema<AutomationTargets>;
 export interface TargetLocation {
   Accounts?: string[];
   Regions?: string[];
@@ -1310,18 +1250,14 @@ export interface TargetLocation {
   TargetsMaxConcurrency?: string;
   TargetsMaxErrors?: string;
 }
-const TargetLocation = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TargetLocation>;
 export type TargetLocations = TargetLocation[];
-const TargetLocations = /*@__PURE__*/ __L.at(__c2, 6);
 export type ScheduleOffset = number;
 export type Duration = number;
 export type TargetMapKey = string;
 export type TargetMapValue = string;
 export type TargetMapValueList = string[];
 export type TargetMap = { [key: string]: string[] | undefined };
-const TargetMap = Parameters as any as S.Schema<TargetMap>;
 export type TargetMaps = { [key: string]: string[] | undefined }[];
-const TargetMaps = /*@__PURE__*/ __L.at(__c2, 7);
 export type AssociationDispatchAssumeRoleArn = string;
 export interface CreateAssociationRequest {
   Name: string;
@@ -1347,14 +1283,8 @@ export interface CreateAssociationRequest {
   AlarmConfiguration?: AlarmConfiguration;
   AssociationDispatchAssumeRole?: string;
 }
-const CreateAssociationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateAssociationRequest>;
 export type AssociationVersion = string;
 export type AssociationStatusName = "Pending" | "Success" | "Failed" | (string & {});
-const AssociationStatusName = S.String;
-
 export type StatusMessage = string;
 export type StatusAdditionalInfo = string;
 export interface AssociationStatus {
@@ -1363,31 +1293,21 @@ export interface AssociationStatus {
   Message: string;
   AdditionalInfo?: string;
 }
-const AssociationStatus = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AssociationStatus>;
 export type StatusName = string;
 export type InstanceCount = number;
 export type AssociationStatusAggregatedCount = { [key: string]: number | undefined };
-const AssociationStatusAggregatedCount = /*@__PURE__*/ __L.at(__c3, 2);
 export interface AssociationOverview {
   Status?: string;
   DetailedStatus?: string;
   AssociationStatusAggregatedCount?: { [key: string]: number | undefined };
 }
-const AssociationOverview = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AssociationOverview>;
 export type AssociationId = string;
 export type ExternalAlarmState = "UNKNOWN" | "ALARM" | (string & {});
-const ExternalAlarmState = S.String;
-
 export interface AlarmStateInformation {
   Name: string;
   State: ExternalAlarmState;
 }
-const AlarmStateInformation = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AlarmStateInformation>;
 export type AlarmStateInformationList = AlarmStateInformation[];
-const AlarmStateInformationList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface AssociationDescription {
   Name?: string;
   InstanceId?: string;
@@ -1420,17 +1340,9 @@ export interface AssociationDescription {
   TriggeredAlarms?: AlarmStateInformation[];
   AssociationDispatchAssumeRole?: string;
 }
-const AssociationDescription = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AssociationDescription>;
 export interface CreateAssociationResult {
   AssociationDescription?: AssociationDescription;
 }
-const CreateAssociationResult = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateAssociationResult>;
 export interface CreateAssociationBatchRequestEntry {
   Name: string;
   InstanceId?: string;
@@ -1453,45 +1365,24 @@ export interface CreateAssociationBatchRequestEntry {
   TargetMaps?: { [key: string]: string[] | undefined }[];
   AlarmConfiguration?: AlarmConfiguration;
 }
-const CreateAssociationBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateAssociationBatchRequestEntry>;
 export type CreateAssociationBatchRequestEntries = CreateAssociationBatchRequestEntry[];
-const CreateAssociationBatchRequestEntries = /*@__PURE__*/ __L.at(__c4, 1);
 export interface CreateAssociationBatchRequest {
   Entries: CreateAssociationBatchRequestEntry[];
   AssociationDispatchAssumeRole?: string;
 }
-const CreateAssociationBatchRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateAssociationBatchRequest>;
 export type AssociationDescriptionList = AssociationDescription[];
-const AssociationDescriptionList = /*@__PURE__*/ __L.at(__c4, 3);
 export type BatchErrorMessage = string;
 export type Fault = "Client" | "Server" | "Unknown" | (string & {});
-const Fault = S.String;
-
 export interface FailedCreateAssociation {
   Entry?: CreateAssociationBatchRequestEntry;
   Message?: string;
   Fault?: Fault;
 }
-const FailedCreateAssociation = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<FailedCreateAssociation>;
 export type FailedCreateAssociationList = FailedCreateAssociation[];
-const FailedCreateAssociationList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface CreateAssociationBatchResult {
   Successful?: AssociationDescription[];
   Failed?: FailedCreateAssociation[];
 }
-const CreateAssociationBatchResult = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateAssociationBatchResult>;
 export type DisplayName = string;
 export type CloudConnectorIamRoleArn = string;
 export type CloudConnectorDescription = string;
@@ -1505,11 +1396,8 @@ export interface AzureSubscription {
   Id: string;
   DisplayName?: string;
 }
-const AzureSubscription = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AzureSubscription>;
 export type AzureSubscriptionList = AzureSubscription[];
-const AzureSubscriptionList = /*@__PURE__*/ __L.at(__c5, 0);
 export type ConfigurationTargets = { Subscriptions: AzureSubscription[] };
-const ConfigurationTargets = /*@__PURE__*/ __L.at(__c5, 1);
 export interface AzureConfiguration {
   TenantId: string;
   TenantDisplayName?: string;
@@ -1517,9 +1405,7 @@ export interface AzureConfiguration {
   ApplicationDisplayName?: string;
   Targets?: ConfigurationTargets;
 }
-const AzureConfiguration = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AzureConfiguration>;
 export type CloudConnectorConfiguration = { AzureConfiguration: AzureConfiguration };
-const CloudConnectorConfiguration = /*@__PURE__*/ __L.at(__c5, 3);
 export type ConfigConnectorArn = string;
 export interface CreateCloudConnectorRequest {
   DisplayName: string;
@@ -1529,18 +1415,10 @@ export interface CreateCloudConnectorRequest {
   ConfigConnectorArn: string;
   Tags?: Tag[];
 }
-const CreateCloudConnectorRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateCloudConnectorRequest>;
 export type CloudConnectorId = string;
 export interface CreateCloudConnectorResult {
   CloudConnectorId?: string;
 }
-const CreateCloudConnectorResult = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateCloudConnectorResult>;
 export type DocumentContent = string;
 export type RequireType = string;
 export type DocumentVersionName = string;
@@ -1550,28 +1428,21 @@ export interface DocumentRequires {
   RequireType?: string;
   VersionName?: string;
 }
-const DocumentRequires = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DocumentRequires>;
 export type DocumentRequiresList = DocumentRequires[];
-const DocumentRequiresList = /*@__PURE__*/ __L.at(__c5, 7);
 export type AttachmentsSourceKey =
   | "SourceUrl"
   | "S3FileUrl"
   | "AttachmentReference"
   | (string & {});
-const AttachmentsSourceKey = S.String;
-
 export type AttachmentsSourceValue = string;
 export type AttachmentsSourceValues = string[];
-const AttachmentsSourceValues = InstanceIdList as any as S.Schema<AttachmentsSourceValues>;
 export type AttachmentIdentifier = string;
 export interface AttachmentsSource {
   Key?: AttachmentsSourceKey;
   Values?: string[];
   Name?: string;
 }
-const AttachmentsSource = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AttachmentsSource>;
 export type AttachmentsSourceList = AttachmentsSource[];
-const AttachmentsSourceList = /*@__PURE__*/ __L.at(__c6, 1);
 export type DocumentName = string;
 export type DocumentDisplayName = string;
 export type DocumentType =
@@ -1593,11 +1464,7 @@ export type DocumentType =
   | "ManualApprovalPolicy"
   | "AutoApprovalPolicy"
   | (string & {});
-const DocumentType = S.String;
-
 export type DocumentFormat = "YAML" | "JSON" | "TEXT" | (string & {});
-const DocumentFormat = S.String;
-
 export type TargetType = string;
 export interface CreateDocumentRequest {
   Content: string;
@@ -1611,15 +1478,9 @@ export interface CreateDocumentRequest {
   TargetType?: string;
   Tags?: Tag[];
 }
-const CreateDocumentRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateDocumentRequest>;
 export type DocumentSha1 = string;
 export type DocumentHash = string;
 export type DocumentHashType = "Sha256" | "Sha1" | (string & {});
-const DocumentHashType = S.String;
-
 export type DocumentOwner = string;
 export type DocumentStatus =
   | "Creating"
@@ -1628,14 +1489,10 @@ export type DocumentStatus =
   | "Deleting"
   | "Failed"
   | (string & {});
-const DocumentStatus = S.String;
-
 export type DocumentStatusInformation = string;
 export type DescriptionInDocument = string;
 export type DocumentParameterName = string;
 export type DocumentParameterType = "String" | "StringList" | (string & {});
-const DocumentParameterType = S.String;
-
 export type DocumentParameterDescrption = string;
 export type DocumentParameterDefaultValue = string;
 export interface DocumentParameter {
@@ -1644,43 +1501,27 @@ export interface DocumentParameter {
   Description?: string;
   DefaultValue?: string;
 }
-const DocumentParameter = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DocumentParameter>;
 export type DocumentParameterList = DocumentParameter[];
-const DocumentParameterList = /*@__PURE__*/ __L.at(__c6, 4);
 export type PlatformType = "Windows" | "Linux" | "MacOS" | (string & {});
-const PlatformType = S.String;
-
 export type PlatformTypeList = PlatformType[];
-const PlatformTypeList = /*@__PURE__*/ __L.at(__c6, 5);
 export type DocumentSchemaVersion = string;
 export type AttachmentName = string;
 export interface AttachmentInformation {
   Name?: string;
 }
-const AttachmentInformation = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AttachmentInformation>;
 export type AttachmentInformationList = AttachmentInformation[];
-const AttachmentInformationList = /*@__PURE__*/ __L.at(__c6, 7);
 export type DocumentAuthor = string;
 export type ReviewStatus = "APPROVED" | "NOT_REVIEWED" | "PENDING" | "REJECTED" | (string & {});
-const ReviewStatus = S.String;
-
 export type Reviewer = string;
 export interface ReviewInformation {
   ReviewedTime?: Date;
   Status?: ReviewStatus;
   Reviewer?: string;
 }
-const ReviewInformation = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ReviewInformation>;
 export type ReviewInformationList = ReviewInformation[];
-const ReviewInformationList = /*@__PURE__*/ __L.at(__c7, 1);
 export type Category = string;
 export type CategoryList = string[];
-const CategoryList = InstanceIdList as any as S.Schema<CategoryList>;
 export type CategoryEnumList = string[];
-const CategoryEnumList = InstanceIdList as any as S.Schema<CategoryEnumList>;
 export interface DocumentDescription {
   Sha1?: string;
   Hash?: string;
@@ -1713,11 +1554,9 @@ export interface DocumentDescription {
   Category?: string[];
   CategoryEnum?: string[];
 }
-const DocumentDescription = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DocumentDescription>;
 export interface CreateDocumentResult {
   DocumentDescription?: DocumentDescription;
 }
-const CreateDocumentResult = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CreateDocumentResult>;
 export type MaintenanceWindowName = string;
 export type MaintenanceWindowDescription = string | redacted.Redacted<string>;
 export type MaintenanceWindowStringDateTime = string;
@@ -1742,45 +1581,29 @@ export interface CreateMaintenanceWindowRequest {
   ClientToken?: string;
   Tags?: Tag[];
 }
-const CreateMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateMaintenanceWindowRequest>;
 export type MaintenanceWindowId = string;
 export interface CreateMaintenanceWindowResult {
   WindowId?: string;
 }
-const CreateMaintenanceWindowResult = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateMaintenanceWindowResult>;
 export type OpsItemDescription = string;
 export type OpsItemType = string;
 export type OpsItemDataKey = string;
 export type OpsItemDataValueString = string;
 export type OpsItemDataType = "SearchableString" | "String" | (string & {});
-const OpsItemDataType = S.String;
-
 export interface OpsItemDataValue {
   Value?: string;
   Type?: OpsItemDataType;
 }
-const OpsItemDataValue = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<OpsItemDataValue>;
 export type OpsItemOperationalData = { [key: string]: OpsItemDataValue | undefined };
-const OpsItemOperationalData = /*@__PURE__*/ __L.at(__c7, 7);
 export interface OpsItemNotification {
   Arn?: string;
 }
-const OpsItemNotification = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<OpsItemNotification>;
 export type OpsItemNotifications = OpsItemNotification[];
-const OpsItemNotifications = /*@__PURE__*/ __L.at(__c8, 1);
 export type OpsItemPriority = number;
 export interface RelatedOpsItem {
   OpsItemId: string;
 }
-const RelatedOpsItem = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<RelatedOpsItem>;
 export type RelatedOpsItems = RelatedOpsItem[];
-const RelatedOpsItems = /*@__PURE__*/ __L.at(__c8, 3);
 export type OpsItemSource = string;
 export type OpsItemTitle = string;
 export type OpsItemCategory = string;
@@ -1804,42 +1627,27 @@ export interface CreateOpsItemRequest {
   PlannedEndTime?: Date;
   AccountId?: string;
 }
-const CreateOpsItemRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<CreateOpsItemRequest>;
 export type OpsItemArn = string;
 export interface CreateOpsItemResponse {
   OpsItemId?: string;
   OpsItemArn?: string;
 }
-const CreateOpsItemResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateOpsItemResponse>;
 export type OpsMetadataResourceId = string;
 export type MetadataKey = string;
 export type MetadataValueString = string;
 export interface MetadataValue {
   Value?: string;
 }
-const MetadataValue = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MetadataValue>;
 export type MetadataMap = { [key: string]: MetadataValue | undefined };
-const MetadataMap = /*@__PURE__*/ __L.at(__c8, 7);
 export interface CreateOpsMetadataRequest {
   ResourceId: string;
   Metadata?: { [key: string]: MetadataValue | undefined };
   Tags?: Tag[];
 }
-const CreateOpsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateOpsMetadataRequest>;
 export type OpsMetadataArn = string;
 export interface CreateOpsMetadataResult {
   OpsMetadataArn?: string;
 }
-const CreateOpsMetadataResult = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateOpsMetadataResult>;
 export type OperatingSystem =
   | "WINDOWS"
   | "AMAZON_LINUX"
@@ -1857,8 +1665,6 @@ export type OperatingSystem =
   | "ALMA_LINUX"
   | "AMAZON_LINUX_2023"
   | (string & {});
-const OperatingSystem = S.String;
-
 export type BaselineName = string;
 export type PatchFilterKey =
   | "ARCH"
@@ -1881,22 +1687,16 @@ export type PatchFilterKey =
   | "SECURITY"
   | "VERSION"
   | (string & {});
-const PatchFilterKey = S.String;
-
 export type PatchFilterValue = string;
 export type PatchFilterValueList = string[];
-const PatchFilterValueList = InstanceIdList as any as S.Schema<PatchFilterValueList>;
 export interface PatchFilter {
   Key: PatchFilterKey;
   Values: string[];
 }
-const PatchFilter = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<PatchFilter>;
 export type PatchFilterList = PatchFilter[];
-const PatchFilterList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface PatchFilterGroup {
   PatchFilters: PatchFilter[];
 }
-const PatchFilterGroup = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<PatchFilterGroup>;
 export type PatchComplianceLevel =
   | "CRITICAL"
   | "HIGH"
@@ -1905,8 +1705,6 @@ export type PatchComplianceLevel =
   | "INFORMATIONAL"
   | "UNSPECIFIED"
   | (string & {});
-const PatchComplianceLevel = S.String;
-
 export type ApproveAfterDays = number;
 export type PatchStringDateTime = string;
 export interface PatchRule {
@@ -1916,36 +1714,25 @@ export interface PatchRule {
   ApproveUntilDate?: string;
   EnableNonSecurity?: boolean;
 }
-const PatchRule = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PatchRule>;
 export type PatchRuleList = PatchRule[];
-const PatchRuleList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface PatchRuleGroup {
   PatchRules: PatchRule[];
 }
-const PatchRuleGroup = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<PatchRuleGroup>;
 export type PatchId = string;
 export type PatchIdList = string[];
-const PatchIdList = InstanceIdList as any as S.Schema<PatchIdList>;
 export type PatchAction = "ALLOW_AS_DEPENDENCY" | "BLOCK" | (string & {});
-const PatchAction = S.String;
-
 export type BaselineDescription = string;
 export type PatchSourceName = string;
 export type PatchSourceProduct = string;
 export type PatchSourceProductList = string[];
-const PatchSourceProductList = InstanceIdList as any as S.Schema<PatchSourceProductList>;
 export type PatchSourceConfiguration = string | redacted.Redacted<string>;
 export interface PatchSource {
   Name: string;
   Products: string[];
   Configuration: string | redacted.Redacted<string>;
 }
-const PatchSource = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<PatchSource>;
 export type PatchSourceList = PatchSource[];
-const PatchSourceList = /*@__PURE__*/ __L.at(__c10, 1);
 export type PatchComplianceStatus = "COMPLIANT" | "NON_COMPLIANT" | (string & {});
-const PatchComplianceStatus = S.String;
-
 export interface CreatePatchBaselineRequest {
   OperatingSystem?: OperatingSystem;
   Name: string;
@@ -1962,34 +1749,20 @@ export interface CreatePatchBaselineRequest {
   ClientToken?: string;
   Tags?: Tag[];
 }
-const CreatePatchBaselineRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreatePatchBaselineRequest>;
 export type BaselineId = string;
 export interface CreatePatchBaselineResult {
   BaselineId?: string;
 }
-const CreatePatchBaselineResult = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreatePatchBaselineResult>;
 export type ResourceDataSyncName = string;
 export type ResourceDataSyncS3BucketName = string;
 export type ResourceDataSyncS3Prefix = string;
 export type ResourceDataSyncS3Format = "JsonSerDe" | (string & {});
-const ResourceDataSyncS3Format = S.String;
-
 export type ResourceDataSyncS3Region = string;
 export type ResourceDataSyncAWSKMSKeyARN = string;
 export type ResourceDataSyncDestinationDataSharingType = string;
 export interface ResourceDataSyncDestinationDataSharing {
   DestinationDataSharingType?: string;
 }
-const ResourceDataSyncDestinationDataSharing = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ResourceDataSyncDestinationDataSharing>;
 export interface ResourceDataSyncS3Destination {
   BucketName: string;
   Prefix?: string;
@@ -1998,10 +1771,6 @@ export interface ResourceDataSyncS3Destination {
   AWSKMSKeyARN?: string;
   DestinationDataSharing?: ResourceDataSyncDestinationDataSharing;
 }
-const ResourceDataSyncS3Destination = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ResourceDataSyncS3Destination>;
 export type ResourceDataSyncType = string;
 export type ResourceDataSyncSourceType = string;
 export type ResourceDataSyncOrganizationSourceType = string;
@@ -2009,24 +1778,13 @@ export type ResourceDataSyncOrganizationalUnitId = string;
 export interface ResourceDataSyncOrganizationalUnit {
   OrganizationalUnitId?: string;
 }
-const ResourceDataSyncOrganizationalUnit = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ResourceDataSyncOrganizationalUnit>;
 export type ResourceDataSyncOrganizationalUnitList = ResourceDataSyncOrganizationalUnit[];
-const ResourceDataSyncOrganizationalUnitList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ResourceDataSyncAwsOrganizationsSource {
   OrganizationSourceType: string;
   OrganizationalUnits?: ResourceDataSyncOrganizationalUnit[];
 }
-const ResourceDataSyncAwsOrganizationsSource = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ResourceDataSyncAwsOrganizationsSource>;
 export type ResourceDataSyncSourceRegion = string;
 export type ResourceDataSyncSourceRegionList = string[];
-const ResourceDataSyncSourceRegionList =
-  InstanceIdList as any as S.Schema<ResourceDataSyncSourceRegionList>;
 export type ResourceDataSyncIncludeFutureRegions = boolean;
 export type ResourceDataSyncEnableAllOpsDataSources = boolean;
 export interface ResourceDataSyncSource {
@@ -2036,76 +1794,38 @@ export interface ResourceDataSyncSource {
   IncludeFutureRegions?: boolean;
   EnableAllOpsDataSources?: boolean;
 }
-const ResourceDataSyncSource = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ResourceDataSyncSource>;
 export interface CreateResourceDataSyncRequest {
   SyncName: string;
   S3Destination?: ResourceDataSyncS3Destination;
   SyncType?: string;
   SyncSource?: ResourceDataSyncSource;
 }
-const CreateResourceDataSyncRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateResourceDataSyncRequest>;
 export interface CreateResourceDataSyncResult {}
-const CreateResourceDataSyncResult = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CreateResourceDataSyncResult>;
 export interface DeleteActivationRequest {
   ActivationId: string;
 }
-const DeleteActivationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteActivationRequest>;
 export interface DeleteActivationResult {}
-const DeleteActivationResult = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteActivationResult>;
 export interface DeleteAssociationRequest {
   Name?: string;
   InstanceId?: string;
   AssociationId?: string;
 }
-const DeleteAssociationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteAssociationRequest>;
 export interface DeleteAssociationResult {}
-const DeleteAssociationResult = AddTagsToResourceResult as any as S.Schema<DeleteAssociationResult>;
 export interface DeleteCloudConnectorRequest {
   CloudConnectorId: string;
 }
-const DeleteCloudConnectorRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteCloudConnectorRequest>;
 export interface DeleteCloudConnectorResult {
   CloudConnectorId?: string;
 }
-const DeleteCloudConnectorResult =
-  CreateCloudConnectorResult as any as S.Schema<DeleteCloudConnectorResult>;
 export interface DeleteDocumentRequest {
   Name: string;
   DocumentVersion?: string;
   VersionName?: string;
   Force?: boolean;
 }
-const DeleteDocumentRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DeleteDocumentRequest>;
 export interface DeleteDocumentResult {}
-const DeleteDocumentResult = CancelCommandResult as any as S.Schema<DeleteDocumentResult>;
 export type InventoryItemTypeName = string;
 export type InventorySchemaDeleteOption = "DisableSchema" | "DeleteSchema" | (string & {});
-const InventorySchemaDeleteOption = S.String;
-
 export type DryRun = boolean;
 export type UUID = string;
 export interface DeleteInventoryRequest {
@@ -2114,10 +1834,6 @@ export interface DeleteInventoryRequest {
   DryRun?: boolean;
   ClientToken?: string;
 }
-const DeleteInventoryRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DeleteInventoryRequest>;
 export type TotalCount = number;
 export type RemainingCount = number;
 export type InventoryItemSchemaVersion = string;
@@ -2127,211 +1843,110 @@ export interface InventoryDeletionSummaryItem {
   Count?: number;
   RemainingCount?: number;
 }
-const InventoryDeletionSummaryItem = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<InventoryDeletionSummaryItem>;
 export type InventoryDeletionSummaryItems = InventoryDeletionSummaryItem[];
-const InventoryDeletionSummaryItems = /*@__PURE__*/ __L.at(__c12, 3);
 export interface InventoryDeletionSummary {
   TotalCount?: number;
   RemainingCount?: number;
   SummaryItems?: InventoryDeletionSummaryItem[];
 }
-const InventoryDeletionSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<InventoryDeletionSummary>;
 export interface DeleteInventoryResult {
   DeletionId?: string;
   TypeName?: string;
   DeletionSummary?: InventoryDeletionSummary;
 }
-const DeleteInventoryResult = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DeleteInventoryResult>;
 export interface DeleteMaintenanceWindowRequest {
   WindowId: string;
 }
-const DeleteMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DeleteMaintenanceWindowRequest>;
 export interface DeleteMaintenanceWindowResult {
   WindowId?: string;
 }
-const DeleteMaintenanceWindowResult =
-  CreateMaintenanceWindowResult as any as S.Schema<DeleteMaintenanceWindowResult>;
 export interface DeleteOpsItemRequest {
   OpsItemId: string;
 }
-const DeleteOpsItemRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteOpsItemRequest>;
 export interface DeleteOpsItemResponse {}
-const DeleteOpsItemResponse = CancelCommandResult as any as S.Schema<DeleteOpsItemResponse>;
 export interface DeleteOpsMetadataRequest {
   OpsMetadataArn: string;
 }
-const DeleteOpsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteOpsMetadataRequest>;
 export interface DeleteOpsMetadataResult {}
-const DeleteOpsMetadataResult = AddTagsToResourceResult as any as S.Schema<DeleteOpsMetadataResult>;
 export type PSParameterName = string;
 export interface DeleteParameterRequest {
   Name: string;
 }
-const DeleteParameterRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteParameterRequest>;
 export interface DeleteParameterResult {}
-const DeleteParameterResult = CancelCommandResult as any as S.Schema<DeleteParameterResult>;
 export type ParameterNameList = string[];
-const ParameterNameList = InstanceIdList as any as S.Schema<ParameterNameList>;
 export interface DeleteParametersRequest {
   Names: string[];
 }
-const DeleteParametersRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteParametersRequest>;
 export interface DeleteParametersResult {
   DeletedParameters?: string[];
   InvalidParameters?: string[];
 }
-const DeleteParametersResult = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteParametersResult>;
 export interface DeletePatchBaselineRequest {
   BaselineId: string;
 }
-const DeletePatchBaselineRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeletePatchBaselineRequest>;
 export interface DeletePatchBaselineResult {
   BaselineId?: string;
 }
-const DeletePatchBaselineResult =
-  CreatePatchBaselineResult as any as S.Schema<DeletePatchBaselineResult>;
 export interface DeleteResourceDataSyncRequest {
   SyncName: string;
   SyncType?: string;
 }
-const DeleteResourceDataSyncRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DeleteResourceDataSyncRequest>;
 export interface DeleteResourceDataSyncResult {}
-const DeleteResourceDataSyncResult =
-  CreateResourceDataSyncResult as any as S.Schema<DeleteResourceDataSyncResult>;
 export type ResourceArnString = string;
 export type PolicyId = string;
 export type PolicyHash = string;
 export type DeletionMode = "RemoveSharing" | "RollbackMigration" | (string & {});
-const DeletionMode = S.String;
-
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
   PolicyId: string;
   PolicyHash: string;
   DeletionMode?: DeletionMode;
 }
-const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-const DeleteResourcePolicyResponse =
-  CreateResourceDataSyncResult as any as S.Schema<DeleteResourcePolicyResponse>;
 export type ManagedInstanceId = string;
 export interface DeregisterManagedInstanceRequest {
   InstanceId: string;
 }
-const DeregisterManagedInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DeregisterManagedInstanceRequest>;
 export interface DeregisterManagedInstanceResult {}
-const DeregisterManagedInstanceResult =
-  CreateResourceDataSyncResult as any as S.Schema<DeregisterManagedInstanceResult>;
 export type PatchGroup = string;
 export interface DeregisterPatchBaselineForPatchGroupRequest {
   BaselineId: string;
   PatchGroup: string;
 }
-const DeregisterPatchBaselineForPatchGroupRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeregisterPatchBaselineForPatchGroupRequest>;
 export interface DeregisterPatchBaselineForPatchGroupResult {
   BaselineId?: string;
   PatchGroup?: string;
 }
-const DeregisterPatchBaselineForPatchGroupResult = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeregisterPatchBaselineForPatchGroupResult>;
 export type MaintenanceWindowTargetId = string;
 export interface DeregisterTargetFromMaintenanceWindowRequest {
   WindowId: string;
   WindowTargetId: string;
   Safe?: boolean;
 }
-const DeregisterTargetFromMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeregisterTargetFromMaintenanceWindowRequest>;
 export interface DeregisterTargetFromMaintenanceWindowResult {
   WindowId?: string;
   WindowTargetId?: string;
 }
-const DeregisterTargetFromMaintenanceWindowResult = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeregisterTargetFromMaintenanceWindowResult>;
 export type MaintenanceWindowTaskId = string;
 export interface DeregisterTaskFromMaintenanceWindowRequest {
   WindowId: string;
   WindowTaskId: string;
 }
-const DeregisterTaskFromMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<DeregisterTaskFromMaintenanceWindowRequest>;
 export interface DeregisterTaskFromMaintenanceWindowResult {
   WindowId?: string;
   WindowTaskId?: string;
 }
-const DeregisterTaskFromMaintenanceWindowResult = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DeregisterTaskFromMaintenanceWindowResult>;
 export type DescribeActivationsFilterKeys =
   | "ActivationIds"
   | "DefaultInstanceName"
   | "IamRole"
   | (string & {});
-const DescribeActivationsFilterKeys = S.String;
-
 export type StringList = string[];
-const StringList = InstanceIdList as any as S.Schema<StringList>;
 export interface DescribeActivationsFilter {
   FilterKey?: DescribeActivationsFilterKeys;
   FilterValues?: string[];
 }
-const DescribeActivationsFilter = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DescribeActivationsFilter>;
 export type DescribeActivationsFilterList = DescribeActivationsFilter[];
-const DescribeActivationsFilterList = /*@__PURE__*/ __L.at(__c14, 7);
 export type MaxResults = number;
 export type NextToken = string;
 export interface DescribeActivationsRequest {
@@ -2339,10 +1954,6 @@ export interface DescribeActivationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeActivationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<DescribeActivationsRequest>;
 export type RegistrationsCount = number;
 export type CreatedDate = Date;
 export interface Activation {
@@ -2357,66 +1968,39 @@ export interface Activation {
   CreatedDate?: Date;
   Tags?: Tag[];
 }
-const Activation = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<Activation>;
 export type ActivationList = Activation[];
-const ActivationList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface DescribeActivationsResult {
   ActivationList?: Activation[];
   NextToken?: string;
 }
-const DescribeActivationsResult = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DescribeActivationsResult>;
 export interface DescribeAssociationRequest {
   Name?: string;
   InstanceId?: string;
   AssociationId?: string;
   AssociationVersion?: string;
 }
-const DescribeAssociationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DescribeAssociationRequest>;
 export interface DescribeAssociationResult {
   AssociationDescription?: AssociationDescription;
 }
-const DescribeAssociationResult = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DescribeAssociationResult>;
 export type AssociationExecutionFilterKey =
   | "ExecutionId"
   | "Status"
   | "CreatedTime"
   | (string & {});
-const AssociationExecutionFilterKey = S.String;
-
 export type AssociationExecutionFilterValue = string;
 export type AssociationFilterOperatorType = "EQUAL" | "LESS_THAN" | "GREATER_THAN" | (string & {});
-const AssociationFilterOperatorType = S.String;
-
 export interface AssociationExecutionFilter {
   Key: AssociationExecutionFilterKey;
   Value: string;
   Type: AssociationFilterOperatorType;
 }
-const AssociationExecutionFilter = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<AssociationExecutionFilter>;
 export type AssociationExecutionFilterList = AssociationExecutionFilter[];
-const AssociationExecutionFilterList = /*@__PURE__*/ __L.at(__c15, 7);
 export interface DescribeAssociationExecutionsRequest {
   AssociationId: string;
   Filters?: AssociationExecutionFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeAssociationExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DescribeAssociationExecutionsRequest>;
 export type AssociationExecutionId = string;
 export type ResourceCountByStatus = string;
 export interface AssociationExecution {
@@ -2431,38 +2015,22 @@ export interface AssociationExecution {
   AlarmConfiguration?: AlarmConfiguration;
   TriggeredAlarms?: AlarmStateInformation[];
 }
-const AssociationExecution = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<AssociationExecution>;
 export type AssociationExecutionsList = AssociationExecution[];
-const AssociationExecutionsList = /*@__PURE__*/ __L.at(__c16, 2);
 export interface DescribeAssociationExecutionsResult {
   AssociationExecutions?: AssociationExecution[];
   NextToken?: string;
 }
-const DescribeAssociationExecutionsResult = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DescribeAssociationExecutionsResult>;
 export type AssociationExecutionTargetsFilterKey =
   | "Status"
   | "ResourceId"
   | "ResourceType"
   | (string & {});
-const AssociationExecutionTargetsFilterKey = S.String;
-
 export type AssociationExecutionTargetsFilterValue = string;
 export interface AssociationExecutionTargetsFilter {
   Key: AssociationExecutionTargetsFilterKey;
   Value: string;
 }
-const AssociationExecutionTargetsFilter = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<AssociationExecutionTargetsFilter>;
 export type AssociationExecutionTargetsFilterList = AssociationExecutionTargetsFilter[];
-const AssociationExecutionTargetsFilterList = /*@__PURE__*/ __L.at(__c16, 5);
 export interface DescribeAssociationExecutionTargetsRequest {
   AssociationId: string;
   ExecutionId: string;
@@ -2470,10 +2038,6 @@ export interface DescribeAssociationExecutionTargetsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeAssociationExecutionTargetsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DescribeAssociationExecutionTargetsRequest>;
 export type AssociationResourceId = string;
 export type AssociationResourceType = string;
 export type OutputSourceId = string;
@@ -2482,7 +2046,6 @@ export interface OutputSource {
   OutputSourceId?: string;
   OutputSourceType?: string;
 }
-const OutputSource = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<OutputSource>;
 export interface AssociationExecutionTarget {
   AssociationId?: string;
   AssociationVersion?: string;
@@ -2494,20 +2057,11 @@ export interface AssociationExecutionTarget {
   LastExecutionDate?: Date;
   OutputSource?: OutputSource;
 }
-const AssociationExecutionTarget = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<AssociationExecutionTarget>;
 export type AssociationExecutionTargetsList = AssociationExecutionTarget[];
-const AssociationExecutionTargetsList = /*@__PURE__*/ __L.at(__c17, 1);
 export interface DescribeAssociationExecutionTargetsResult {
   AssociationExecutionTargets?: AssociationExecutionTarget[];
   NextToken?: string;
 }
-const DescribeAssociationExecutionTargetsResult = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DescribeAssociationExecutionTargetsResult>;
 export type AutomationExecutionFilterKey =
   | "DocumentNamePrefix"
   | "ExecutionStatus"
@@ -2522,31 +2076,18 @@ export type AutomationExecutionFilterKey =
   | "AutomationSubtype"
   | "OpsItemId"
   | (string & {});
-const AutomationExecutionFilterKey = S.String;
-
 export type AutomationExecutionFilterValue = string;
 export type AutomationExecutionFilterValueList = string[];
-const AutomationExecutionFilterValueList =
-  InstanceIdList as any as S.Schema<AutomationExecutionFilterValueList>;
 export interface AutomationExecutionFilter {
   Key: AutomationExecutionFilterKey;
   Values: string[];
 }
-const AutomationExecutionFilter = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<AutomationExecutionFilter>;
 export type AutomationExecutionFilterList = AutomationExecutionFilter[];
-const AutomationExecutionFilterList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface DescribeAutomationExecutionsRequest {
   Filters?: AutomationExecutionFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeAutomationExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<DescribeAutomationExecutionsRequest>;
 export type AutomationExecutionId = string;
 export type AutomationExecutionStatus =
   | "Pending"
@@ -2569,30 +2110,19 @@ export type AutomationExecutionStatus =
   | "CompletedWithFailure"
   | "Exited"
   | (string & {});
-const AutomationExecutionStatus = S.String;
-
 export type AutomationParameterKey = string;
 export type AutomationParameterValue = string;
 export type AutomationParameterValueList = string[];
 export type AutomationParameterMap = { [key: string]: string[] | undefined };
-const AutomationParameterMap = Parameters as any as S.Schema<AutomationParameterMap>;
 export type ExecutionMode = "Auto" | "Interactive" | (string & {});
-const ExecutionMode = S.String;
-
 export type TargetParameterList = string[];
-const TargetParameterList = InstanceIdList as any as S.Schema<TargetParameterList>;
 export interface ResolvedTargets {
   ParameterValues?: string[];
   Truncated?: boolean;
 }
-const ResolvedTargets = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ResolvedTargets>;
 export type AutomationType = "CrossAccount" | "Local" | (string & {});
-const AutomationType = S.String;
-
 export type TargetLocationsURL = string;
 export type AutomationSubtype = "ChangeRequest" | "AccessRequest" | (string & {});
-const AutomationSubtype = S.String;
-
 export interface Runbook {
   DocumentName: string;
   DocumentVersion?: string;
@@ -2604,9 +2134,7 @@ export interface Runbook {
   MaxErrors?: string;
   TargetLocations?: TargetLocation[];
 }
-const Runbook = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<Runbook>;
 export type Runbooks = Runbook[];
-const Runbooks = /*@__PURE__*/ __L.at(__c18, 0);
 export type ChangeRequestName = string;
 export interface AutomationExecutionMetadata {
   AutomationExecutionId?: string;
@@ -2642,20 +2170,11 @@ export interface AutomationExecutionMetadata {
   AssociationId?: string;
   ChangeRequestName?: string;
 }
-const AutomationExecutionMetadata = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<AutomationExecutionMetadata>;
 export type AutomationExecutionMetadataList = AutomationExecutionMetadata[];
-const AutomationExecutionMetadataList = /*@__PURE__*/ __L.at(__c18, 2);
 export interface DescribeAutomationExecutionsResult {
   AutomationExecutionMetadataList?: AutomationExecutionMetadata[];
   NextToken?: string;
 }
-const DescribeAutomationExecutionsResult = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<DescribeAutomationExecutionsResult>;
 export type StepExecutionFilterKey =
   | "StartTimeBefore"
   | "StartTimeAfter"
@@ -2667,19 +2186,13 @@ export type StepExecutionFilterKey =
   | "ParentStepIteration"
   | "ParentStepIteratorValue"
   | (string & {});
-const StepExecutionFilterKey = S.String;
-
 export type StepExecutionFilterValue = string;
 export type StepExecutionFilterValueList = string[];
-const StepExecutionFilterValueList =
-  InstanceIdList as any as S.Schema<StepExecutionFilterValueList>;
 export interface StepExecutionFilter {
   Key: StepExecutionFilterKey;
   Values: string[];
 }
-const StepExecutionFilter = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<StepExecutionFilter>;
 export type StepExecutionFilterList = StepExecutionFilter[];
-const StepExecutionFilterList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface DescribeAutomationStepExecutionsRequest {
   AutomationExecutionId: string;
   Filters?: StepExecutionFilter[];
@@ -2687,22 +2200,15 @@ export interface DescribeAutomationStepExecutionsRequest {
   MaxResults?: number;
   ReverseOrder?: boolean;
 }
-const DescribeAutomationStepExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<DescribeAutomationStepExecutionsRequest>;
 export type AutomationActionName = string;
 export type NormalStringMap = { [key: string]: string | undefined };
-const NormalStringMap = /*@__PURE__*/ __L.at(__c18, 7);
 export interface FailureDetails {
   FailureStage?: string;
   FailureType?: string;
   Details?: { [key: string]: string[] | undefined };
 }
-const FailureDetails = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<FailureDetails>;
 export type ValidNextStep = string;
 export type ValidNextStepList = string[];
-const ValidNextStepList = InstanceIdList as any as S.Schema<ValidNextStepList>;
 export interface ParentStepDetails {
   StepExecutionId?: string;
   StepName?: string;
@@ -2710,7 +2216,6 @@ export interface ParentStepDetails {
   Iteration?: number;
   IteratorValue?: string;
 }
-const ParentStepDetails = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ParentStepDetails>;
 export interface StepExecution {
   StepName?: string;
   Action?: string;
@@ -2738,17 +2243,11 @@ export interface StepExecution {
   TriggeredAlarms?: AlarmStateInformation[];
   ParentStepDetails?: ParentStepDetails;
 }
-const StepExecution = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<StepExecution>;
 export type StepExecutionList = StepExecution[];
-const StepExecutionList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface DescribeAutomationStepExecutionsResult {
   StepExecutions?: StepExecution[];
   NextToken?: string;
 }
-const DescribeAutomationStepExecutionsResult = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DescribeAutomationStepExecutionsResult>;
 export type PatchOrchestratorFilterKey = string;
 export type PatchOrchestratorFilterValue = string;
 export type PatchOrchestratorFilterValues = string[];
@@ -2757,17 +2256,12 @@ export interface PatchOrchestratorFilter {
   Values?: string[];
 }
 export type PatchOrchestratorFilterList = PatchOrchestratorFilter[];
-const PatchOrchestratorFilterList = Targets as any as S.Schema<PatchOrchestratorFilterList>;
 export type PatchBaselineMaxResults = number;
 export interface DescribeAvailablePatchesRequest {
   Filters?: PatchOrchestratorFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeAvailablePatchesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DescribeAvailablePatchesRequest>;
 export type PatchTitle = string;
 export type PatchDescription = string;
 export type PatchContentUrl = string;
@@ -2781,13 +2275,10 @@ export type PatchMsrcNumber = string;
 export type PatchLanguage = string;
 export type PatchAdvisoryId = string;
 export type PatchAdvisoryIdList = string[];
-const PatchAdvisoryIdList = InstanceIdList as any as S.Schema<PatchAdvisoryIdList>;
 export type PatchBugzillaId = string;
 export type PatchBugzillaIdList = string[];
-const PatchBugzillaIdList = InstanceIdList as any as S.Schema<PatchBugzillaIdList>;
 export type PatchCVEId = string;
 export type PatchCVEIdList = string[];
-const PatchCVEIdList = InstanceIdList as any as S.Schema<PatchCVEIdList>;
 export type PatchName = string;
 export type PatchEpoch = number;
 export type PatchVersion = string;
@@ -2820,36 +2311,20 @@ export interface Patch {
   Severity?: string;
   Repository?: string;
 }
-const Patch = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<Patch>;
 export type PatchList = Patch[];
-const PatchList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface DescribeAvailablePatchesResult {
   Patches?: Patch[];
   NextToken?: string;
 }
-const DescribeAvailablePatchesResult = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DescribeAvailablePatchesResult>;
 export interface DescribeDocumentRequest {
   Name: string;
   DocumentVersion?: string;
   VersionName?: string;
 }
-const DescribeDocumentRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DescribeDocumentRequest>;
 export interface DescribeDocumentResult {
   Document?: DocumentDescription;
 }
-const DescribeDocumentResult = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DescribeDocumentResult>;
 export type DocumentPermissionType = "Share" | (string & {});
-const DocumentPermissionType = S.String;
-
 export type DocumentPermissionMaxResults = number;
 export interface DescribeDocumentPermissionRequest {
   Name: string;
@@ -2857,118 +2332,75 @@ export interface DescribeDocumentPermissionRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeDocumentPermissionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DescribeDocumentPermissionRequest>;
 export type AccountId = string;
 export type AccountIdList = string[];
-const AccountIdList = /*@__PURE__*/ __L.at(__c20, 4);
 export type SharedDocumentVersion = string;
 export interface AccountSharingInfo {
   AccountId?: string;
   SharedDocumentVersion?: string;
 }
-const AccountSharingInfo = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<AccountSharingInfo>;
 export type AccountSharingInfoList = AccountSharingInfo[];
-const AccountSharingInfoList = /*@__PURE__*/ __L.at(__c20, 6);
 export interface DescribeDocumentPermissionResponse {
   AccountIds?: string[];
   AccountSharingInfoList?: AccountSharingInfo[];
   NextToken?: string;
 }
-const DescribeDocumentPermissionResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<DescribeDocumentPermissionResponse>;
 export type EffectiveInstanceAssociationMaxResults = number;
 export interface DescribeEffectiveInstanceAssociationsRequest {
   InstanceId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeEffectiveInstanceAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<DescribeEffectiveInstanceAssociationsRequest>;
 export interface InstanceAssociation {
   AssociationId?: string;
   InstanceId?: string;
   Content?: string;
   AssociationVersion?: string;
 }
-const InstanceAssociation = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<InstanceAssociation>;
 export type InstanceAssociationList = InstanceAssociation[];
-const InstanceAssociationList = /*@__PURE__*/ __L.at(__c21, 2);
 export interface DescribeEffectiveInstanceAssociationsResult {
   Associations?: InstanceAssociation[];
   NextToken?: string;
 }
-const DescribeEffectiveInstanceAssociationsResult = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<DescribeEffectiveInstanceAssociationsResult>;
 export interface DescribeEffectivePatchesForPatchBaselineRequest {
   BaselineId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeEffectivePatchesForPatchBaselineRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DescribeEffectivePatchesForPatchBaselineRequest>;
 export type PatchDeploymentStatus =
   | "APPROVED"
   | "PENDING_APPROVAL"
   | "EXPLICIT_APPROVED"
   | "EXPLICIT_REJECTED"
   | (string & {});
-const PatchDeploymentStatus = S.String;
-
 export interface PatchStatus {
   DeploymentStatus?: PatchDeploymentStatus;
   ComplianceLevel?: PatchComplianceLevel;
   ApprovalDate?: Date;
 }
-const PatchStatus = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<PatchStatus>;
 export interface EffectivePatch {
   Patch?: Patch;
   PatchStatus?: PatchStatus;
 }
-const EffectivePatch = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<EffectivePatch>;
 export type EffectivePatchList = EffectivePatch[];
-const EffectivePatchList = /*@__PURE__*/ __L.at(__c21, 7);
 export interface DescribeEffectivePatchesForPatchBaselineResult {
   EffectivePatches?: EffectivePatch[];
   NextToken?: string;
 }
-const DescribeEffectivePatchesForPatchBaselineResult = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DescribeEffectivePatchesForPatchBaselineResult>;
 export interface DescribeInstanceAssociationsStatusRequest {
   InstanceId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeInstanceAssociationsStatusRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<DescribeInstanceAssociationsStatusRequest>;
 export type InstanceAssociationExecutionSummary = string;
 export type AgentErrorCode = string;
 export type Url = string;
 export interface S3OutputUrl {
   OutputUrl?: string;
 }
-const S3OutputUrl = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<S3OutputUrl>;
 export interface InstanceAssociationOutputUrl {
   S3OutputUrl?: S3OutputUrl;
 }
-const InstanceAssociationOutputUrl = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<InstanceAssociationOutputUrl>;
 export interface InstanceAssociationStatusInfo {
   AssociationId?: string;
   Name?: string;
@@ -2983,20 +2415,11 @@ export interface InstanceAssociationStatusInfo {
   OutputUrl?: InstanceAssociationOutputUrl;
   AssociationName?: string;
 }
-const InstanceAssociationStatusInfo = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<InstanceAssociationStatusInfo>;
 export type InstanceAssociationStatusInfos = InstanceAssociationStatusInfo[];
-const InstanceAssociationStatusInfos = /*@__PURE__*/ __L.at(__c22, 5);
 export interface DescribeInstanceAssociationsStatusResult {
   InstanceAssociationStatusInfos?: InstanceAssociationStatusInfo[];
   NextToken?: string;
 }
-const DescribeInstanceAssociationsStatusResult = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<DescribeInstanceAssociationsStatusResult>;
 export type InstanceInformationFilterKey =
   | "InstanceIds"
   | "AgentVersion"
@@ -3007,32 +2430,19 @@ export type InstanceInformationFilterKey =
   | "ResourceType"
   | "AssociationStatus"
   | (string & {});
-const InstanceInformationFilterKey = S.String;
-
 export type InstanceInformationFilterValue = string;
 export type InstanceInformationFilterValueSet = string[];
-const InstanceInformationFilterValueSet = /*@__PURE__*/ __L.at(__c22, 7);
 export interface InstanceInformationFilter {
   key: InstanceInformationFilterKey;
   valueSet: string[];
 }
-const InstanceInformationFilter = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<InstanceInformationFilter>;
 export type InstanceInformationFilterList = InstanceInformationFilter[];
-const InstanceInformationFilterList = /*@__PURE__*/ __L.at(__c23, 1);
 export type InstanceInformationStringFilterKey = string;
 export interface InstanceInformationStringFilter {
   Key: string;
   Values: string[];
 }
-const InstanceInformationStringFilter = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<InstanceInformationStringFilter>;
 export type InstanceInformationStringFilterList = InstanceInformationStringFilter[];
-const InstanceInformationStringFilterList = /*@__PURE__*/ __L.at(__c23, 3);
 export type MaxResultsEC2Compatible = number;
 export interface DescribeInstanceInformationRequest {
   InstanceInformationFilterList?: InstanceInformationFilter[];
@@ -3040,30 +2450,16 @@ export interface DescribeInstanceInformationRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeInstanceInformationRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<DescribeInstanceInformationRequest>;
 export type PingStatus = "Online" | "ConnectionLost" | "Inactive" | (string & {});
-const PingStatus = S.String;
-
 export type Version = string;
 export type ResourceType = "ManagedInstance" | "EC2Instance" | (string & {});
-const ResourceType = S.String;
-
 export type IPAddress = string | redacted.Redacted<string>;
 export type ComputerName = string;
 export type InstanceAssociationStatusAggregatedCount = { [key: string]: number | undefined };
-const InstanceAssociationStatusAggregatedCount =
-  AssociationStatusAggregatedCount as any as S.Schema<InstanceAssociationStatusAggregatedCount>;
 export interface InstanceAggregatedAssociationOverview {
   DetailedStatus?: string;
   InstanceAssociationStatusAggregatedCount?: { [key: string]: number | undefined };
 }
-const InstanceAggregatedAssociationOverview = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<InstanceAggregatedAssociationOverview>;
 export type SourceId = string;
 export type SourceType =
   | "AWS::EC2::Instance"
@@ -3071,8 +2467,6 @@ export type SourceType =
   | "AWS::SSM::ManagedInstance"
   | "Microsoft.Compute/virtualMachines"
   | (string & {});
-const SourceType = S.String;
-
 export type SourceLocation = string;
 export interface InstanceInformation {
   InstanceId?: string;
@@ -3098,17 +2492,11 @@ export interface InstanceInformation {
   SourceType?: SourceType;
   SourceLocation?: string;
 }
-const InstanceInformation = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<InstanceInformation>;
 export type InstanceInformationList = InstanceInformation[];
-const InstanceInformationList = /*@__PURE__*/ __L.at(__c23, 7);
 export interface DescribeInstanceInformationResult {
   InstanceInformationList?: InstanceInformation[];
   NextToken?: string;
 }
-const DescribeInstanceInformationResult = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<DescribeInstanceInformationResult>;
 export type PatchComplianceMaxResults = number;
 export interface DescribeInstancePatchesRequest {
   InstanceId: string;
@@ -3116,10 +2504,6 @@ export interface DescribeInstancePatchesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeInstancePatchesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<DescribeInstancePatchesRequest>;
 export type PatchComplianceDataState =
   | "INSTALLED"
   | "INSTALLED_OTHER"
@@ -3130,8 +2514,6 @@ export type PatchComplianceDataState =
   | "FAILED"
   | "AVAILABLE_SECURITY_UPDATE"
   | (string & {});
-const PatchComplianceDataState = S.String;
-
 export type PatchCVEIds = string;
 export interface PatchComplianceData {
   Title: string;
@@ -3142,26 +2524,16 @@ export interface PatchComplianceData {
   InstalledTime: Date;
   CVEIds?: string;
 }
-const PatchComplianceData = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<PatchComplianceData>;
 export type PatchComplianceDataList = PatchComplianceData[];
-const PatchComplianceDataList = /*@__PURE__*/ __L.at(__c24, 3);
 export interface DescribeInstancePatchesResult {
   Patches?: PatchComplianceData[];
   NextToken?: string;
 }
-const DescribeInstancePatchesResult = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<DescribeInstancePatchesResult>;
 export interface DescribeInstancePatchStatesRequest {
   InstanceIds: string[];
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeInstancePatchStatesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<DescribeInstancePatchStatesRequest>;
 export type SnapshotId = string;
 export type InstallOverrideList = string;
 export type OwnerInformation = string | redacted.Redacted<string>;
@@ -3175,11 +2547,7 @@ export type PatchUnreportedNotApplicableCount = number;
 export type PatchNotApplicableCount = number;
 export type PatchAvailableSecurityUpdateCount = number;
 export type PatchOperationType = "Scan" | "Install" | (string & {});
-const PatchOperationType = S.String;
-
 export type RebootOption = "RebootIfNeeded" | "NoReboot" | (string & {});
-const RebootOption = S.String;
-
 export type PatchCriticalNonCompliantCount = number;
 export type PatchSecurityNonCompliantCount = number;
 export type PatchOtherNonCompliantCount = number;
@@ -3208,58 +2576,37 @@ export interface InstancePatchState {
   SecurityNonCompliantCount?: number;
   OtherNonCompliantCount?: number;
 }
-const InstancePatchState = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<InstancePatchState>;
 export type InstancePatchStateList = InstancePatchState[];
-const InstancePatchStateList = /*@__PURE__*/ __L.at(__c24, 7);
 export interface DescribeInstancePatchStatesResult {
   InstancePatchStates?: InstancePatchState[];
   NextToken?: string;
 }
-const DescribeInstancePatchStatesResult = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<DescribeInstancePatchStatesResult>;
 export type InstancePatchStateFilterKey = string;
 export type InstancePatchStateFilterValue = string;
 export type InstancePatchStateFilterValues = string[];
-const InstancePatchStateFilterValues =
-  InstanceIdList as any as S.Schema<InstancePatchStateFilterValues>;
 export type InstancePatchStateOperatorType =
   | "Equal"
   | "NotEqual"
   | "LessThan"
   | "GreaterThan"
   | (string & {});
-const InstancePatchStateOperatorType = S.String;
-
 export interface InstancePatchStateFilter {
   Key: string;
   Values: string[];
   Type: InstancePatchStateOperatorType;
 }
-const InstancePatchStateFilter = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<InstancePatchStateFilter>;
 export type InstancePatchStateFilterList = InstancePatchStateFilter[];
-const InstancePatchStateFilterList = /*@__PURE__*/ __L.at(__c25, 2);
 export interface DescribeInstancePatchStatesForPatchGroupRequest {
   PatchGroup: string;
   Filters?: InstancePatchStateFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeInstancePatchStatesForPatchGroupRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<DescribeInstancePatchStatesForPatchGroupRequest>;
 export type InstancePatchStatesList = InstancePatchState[];
 export interface DescribeInstancePatchStatesForPatchGroupResult {
   InstancePatchStates?: InstancePatchState[];
   NextToken?: string;
 }
-const DescribeInstancePatchStatesForPatchGroupResult =
-  DescribeInstancePatchStatesResult as any as S.Schema<DescribeInstancePatchStatesForPatchGroupResult>;
 export type InstancePropertyFilterKey =
   | "InstanceIds"
   | "AgentVersion"
@@ -3271,21 +2618,13 @@ export type InstancePropertyFilterKey =
   | "ResourceType"
   | "AssociationStatus"
   | (string & {});
-const InstancePropertyFilterKey = S.String;
-
 export type InstancePropertyFilterValue = string;
 export type InstancePropertyFilterValueSet = string[];
-const InstancePropertyFilterValueSet = /*@__PURE__*/ __L.at(__c25, 4);
 export interface InstancePropertyFilter {
   key: InstancePropertyFilterKey;
   valueSet: string[];
 }
-const InstancePropertyFilter = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<InstancePropertyFilter>;
 export type InstancePropertyFilterList = InstancePropertyFilter[];
-const InstancePropertyFilterList = /*@__PURE__*/ __L.at(__c25, 6);
 export type InstancePropertyStringFilterKey = string;
 export type InstancePropertyFilterOperator =
   | "Equal"
@@ -3294,19 +2633,12 @@ export type InstancePropertyFilterOperator =
   | "LessThan"
   | "GreaterThan"
   | (string & {});
-const InstancePropertyFilterOperator = S.String;
-
 export interface InstancePropertyStringFilter {
   Key: string;
   Values: string[];
   Operator?: InstancePropertyFilterOperator;
 }
-const InstancePropertyStringFilter = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<InstancePropertyStringFilter>;
 export type InstancePropertyStringFilterList = InstancePropertyStringFilter[];
-const InstancePropertyStringFilterList = /*@__PURE__*/ __L.at(__c26, 0);
 export type DescribeInstancePropertiesMaxResults = number;
 export interface DescribeInstancePropertiesRequest {
   InstancePropertyFilterList?: InstancePropertyFilter[];
@@ -3314,10 +2646,6 @@ export interface DescribeInstancePropertiesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeInstancePropertiesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DescribeInstancePropertiesRequest>;
 export type InstanceName = string;
 export type InstanceType = string;
 export type InstanceRole = string;
@@ -3357,30 +2685,18 @@ export interface InstanceProperty {
   SourceLocation?: string;
   AvailabilityZone?: string;
 }
-const InstanceProperty = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<InstanceProperty>;
 export type InstanceProperties = InstanceProperty[];
-const InstanceProperties = /*@__PURE__*/ __L.at(__c26, 3);
 export interface DescribeInstancePropertiesResult {
   InstanceProperties?: InstanceProperty[];
   NextToken?: string;
 }
-const DescribeInstancePropertiesResult = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DescribeInstancePropertiesResult>;
 export interface DescribeInventoryDeletionsRequest {
   DeletionId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeInventoryDeletionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<DescribeInventoryDeletionsRequest>;
 export type InventoryDeletionStartTime = Date;
 export type InventoryDeletionStatus = "InProgress" | "Complete" | (string & {});
-const InventoryDeletionStatus = S.String;
-
 export type InventoryDeletionLastStatusMessage = string;
 export type InventoryDeletionLastStatusUpdateTime = Date;
 export interface InventoryDeletionStatusItem {
@@ -3392,20 +2708,11 @@ export interface InventoryDeletionStatusItem {
   DeletionSummary?: InventoryDeletionSummary;
   LastStatusUpdateTime?: Date;
 }
-const InventoryDeletionStatusItem = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<InventoryDeletionStatusItem>;
 export type InventoryDeletionsList = InventoryDeletionStatusItem[];
-const InventoryDeletionsList = /*@__PURE__*/ __L.at(__c26, 7);
 export interface DescribeInventoryDeletionsResult {
   InventoryDeletions?: InventoryDeletionStatusItem[];
   NextToken?: string;
 }
-const DescribeInventoryDeletionsResult = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<DescribeInventoryDeletionsResult>;
 export type MaintenanceWindowFilterKey = string;
 export type MaintenanceWindowFilterValue = string;
 export type MaintenanceWindowFilterValues = string[];
@@ -3414,7 +2721,6 @@ export interface MaintenanceWindowFilter {
   Values?: string[];
 }
 export type MaintenanceWindowFilterList = MaintenanceWindowFilter[];
-const MaintenanceWindowFilterList = Targets as any as S.Schema<MaintenanceWindowFilterList>;
 export type MaintenanceWindowMaxResults = number;
 export interface DescribeMaintenanceWindowExecutionsRequest {
   WindowId: string;
@@ -3422,10 +2728,6 @@ export interface DescribeMaintenanceWindowExecutionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<DescribeMaintenanceWindowExecutionsRequest>;
 export type MaintenanceWindowExecutionStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -3436,8 +2738,6 @@ export type MaintenanceWindowExecutionStatus =
   | "CANCELLED"
   | "SKIPPED_OVERLAPPING"
   | (string & {});
-const MaintenanceWindowExecutionStatus = S.String;
-
 export type MaintenanceWindowExecutionStatusDetails = string;
 export interface MaintenanceWindowExecution {
   WindowId?: string;
@@ -3447,20 +2747,11 @@ export interface MaintenanceWindowExecution {
   StartTime?: Date;
   EndTime?: Date;
 }
-const MaintenanceWindowExecution = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<MaintenanceWindowExecution>;
 export type MaintenanceWindowExecutionList = MaintenanceWindowExecution[];
-const MaintenanceWindowExecutionList = /*@__PURE__*/ __L.at(__c27, 3);
 export interface DescribeMaintenanceWindowExecutionsResult {
   WindowExecutions?: MaintenanceWindowExecution[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowExecutionsResult = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<DescribeMaintenanceWindowExecutionsResult>;
 export type MaintenanceWindowExecutionTaskId = string;
 export interface DescribeMaintenanceWindowExecutionTaskInvocationsRequest {
   WindowExecutionId: string;
@@ -3469,10 +2760,6 @@ export interface DescribeMaintenanceWindowExecutionTaskInvocationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowExecutionTaskInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DescribeMaintenanceWindowExecutionTaskInvocationsRequest>;
 export type MaintenanceWindowExecutionTaskInvocationId = string;
 export type MaintenanceWindowExecutionTaskExecutionId = string;
 export type MaintenanceWindowTaskType =
@@ -3481,8 +2768,6 @@ export type MaintenanceWindowTaskType =
   | "STEP_FUNCTIONS"
   | "LAMBDA"
   | (string & {});
-const MaintenanceWindowTaskType = S.String;
-
 export type MaintenanceWindowExecutionTaskInvocationParameters = string | redacted.Redacted<string>;
 export type MaintenanceWindowTaskTargetId = string;
 export interface MaintenanceWindowExecutionTaskInvocationIdentity {
@@ -3499,31 +2784,18 @@ export interface MaintenanceWindowExecutionTaskInvocationIdentity {
   OwnerInformation?: string | redacted.Redacted<string>;
   WindowTargetId?: string;
 }
-const MaintenanceWindowExecutionTaskInvocationIdentity = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<MaintenanceWindowExecutionTaskInvocationIdentity>;
 export type MaintenanceWindowExecutionTaskInvocationIdentityList =
   MaintenanceWindowExecutionTaskInvocationIdentity[];
-const MaintenanceWindowExecutionTaskInvocationIdentityList = /*@__PURE__*/ __L.at(__c27, 7);
 export interface DescribeMaintenanceWindowExecutionTaskInvocationsResult {
   WindowExecutionTaskInvocationIdentities?: MaintenanceWindowExecutionTaskInvocationIdentity[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowExecutionTaskInvocationsResult = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<DescribeMaintenanceWindowExecutionTaskInvocationsResult>;
 export interface DescribeMaintenanceWindowExecutionTasksRequest {
   WindowExecutionId: string;
   Filters?: MaintenanceWindowFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowExecutionTasksRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<DescribeMaintenanceWindowExecutionTasksRequest>;
 export type MaintenanceWindowTaskArn = string;
 export interface MaintenanceWindowExecutionTaskIdentity {
   WindowExecutionId?: string;
@@ -3537,29 +2809,16 @@ export interface MaintenanceWindowExecutionTaskIdentity {
   AlarmConfiguration?: AlarmConfiguration;
   TriggeredAlarms?: AlarmStateInformation[];
 }
-const MaintenanceWindowExecutionTaskIdentity = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<MaintenanceWindowExecutionTaskIdentity>;
 export type MaintenanceWindowExecutionTaskIdentityList = MaintenanceWindowExecutionTaskIdentity[];
-const MaintenanceWindowExecutionTaskIdentityList = /*@__PURE__*/ __L.at(__c28, 3);
 export interface DescribeMaintenanceWindowExecutionTasksResult {
   WindowExecutionTaskIdentities?: MaintenanceWindowExecutionTaskIdentity[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowExecutionTasksResult = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<DescribeMaintenanceWindowExecutionTasksResult>;
 export interface DescribeMaintenanceWindowsRequest {
   Filters?: MaintenanceWindowFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<DescribeMaintenanceWindowsRequest>;
 export type MaintenanceWindowEnabled = boolean;
 export interface MaintenanceWindowIdentity {
   WindowId?: string;
@@ -3575,23 +2834,12 @@ export interface MaintenanceWindowIdentity {
   StartDate?: string;
   NextExecutionTime?: string;
 }
-const MaintenanceWindowIdentity = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<MaintenanceWindowIdentity>;
 export type MaintenanceWindowIdentityList = MaintenanceWindowIdentity[];
-const MaintenanceWindowIdentityList = /*@__PURE__*/ __L.at(__c28, 7);
 export interface DescribeMaintenanceWindowsResult {
   WindowIdentities?: MaintenanceWindowIdentity[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowsResult = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<DescribeMaintenanceWindowsResult>;
 export type MaintenanceWindowResourceType = "INSTANCE" | "RESOURCE_GROUP" | (string & {});
-const MaintenanceWindowResourceType = S.String;
-
 export type MaintenanceWindowSearchMaxResults = number;
 export interface DescribeMaintenanceWindowScheduleRequest {
   WindowId?: string;
@@ -3601,67 +2849,37 @@ export interface DescribeMaintenanceWindowScheduleRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowScheduleRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<DescribeMaintenanceWindowScheduleRequest>;
 export interface ScheduledWindowExecution {
   WindowId?: string;
   Name?: string;
   ExecutionTime?: string;
 }
-const ScheduledWindowExecution = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ScheduledWindowExecution>;
 export type ScheduledWindowExecutionList = ScheduledWindowExecution[];
-const ScheduledWindowExecutionList = /*@__PURE__*/ __L.at(__c29, 3);
 export interface DescribeMaintenanceWindowScheduleResult {
   ScheduledWindowExecutions?: ScheduledWindowExecution[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowScheduleResult = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<DescribeMaintenanceWindowScheduleResult>;
 export interface DescribeMaintenanceWindowsForTargetRequest {
   Targets: Target[];
   ResourceType: MaintenanceWindowResourceType;
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowsForTargetRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<DescribeMaintenanceWindowsForTargetRequest>;
 export interface MaintenanceWindowIdentityForTarget {
   WindowId?: string;
   Name?: string;
 }
-const MaintenanceWindowIdentityForTarget = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<MaintenanceWindowIdentityForTarget>;
 export type MaintenanceWindowsForTargetList = MaintenanceWindowIdentityForTarget[];
-const MaintenanceWindowsForTargetList = /*@__PURE__*/ __L.at(__c29, 7);
 export interface DescribeMaintenanceWindowsForTargetResult {
   WindowIdentities?: MaintenanceWindowIdentityForTarget[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowsForTargetResult = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<DescribeMaintenanceWindowsForTargetResult>;
 export interface DescribeMaintenanceWindowTargetsRequest {
   WindowId: string;
   Filters?: MaintenanceWindowFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowTargetsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<DescribeMaintenanceWindowTargetsRequest>;
 export interface MaintenanceWindowTarget {
   WindowId?: string;
   WindowTargetId?: string;
@@ -3671,56 +2889,34 @@ export interface MaintenanceWindowTarget {
   Name?: string;
   Description?: string | redacted.Redacted<string>;
 }
-const MaintenanceWindowTarget = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<MaintenanceWindowTarget>;
 export type MaintenanceWindowTargetList = MaintenanceWindowTarget[];
-const MaintenanceWindowTargetList = /*@__PURE__*/ __L.at(__c30, 3);
 export interface DescribeMaintenanceWindowTargetsResult {
   Targets?: MaintenanceWindowTarget[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowTargetsResult = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<DescribeMaintenanceWindowTargetsResult>;
 export interface DescribeMaintenanceWindowTasksRequest {
   WindowId: string;
   Filters?: MaintenanceWindowFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeMaintenanceWindowTasksRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<DescribeMaintenanceWindowTasksRequest>;
 export type MaintenanceWindowTaskParameterName = string;
 export type MaintenanceWindowTaskParameterValue = string | redacted.Redacted<string>;
 export type MaintenanceWindowTaskParameterValueList = (string | redacted.Redacted<string>)[];
-const MaintenanceWindowTaskParameterValueList = /*@__PURE__*/ __L.at(__c30, 6);
 export interface MaintenanceWindowTaskParameterValueExpression {
   Values?: (string | redacted.Redacted<string>)[];
 }
-const MaintenanceWindowTaskParameterValueExpression = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<MaintenanceWindowTaskParameterValueExpression>;
 export type MaintenanceWindowTaskParameters = {
   [key: string]: MaintenanceWindowTaskParameterValueExpression | undefined;
 };
-const MaintenanceWindowTaskParameters = /*@__PURE__*/ __L.at(__c31, 0);
 export type MaintenanceWindowTaskPriority = number;
 export interface LoggingInfo {
   S3BucketName: string;
   S3KeyPrefix?: string;
   S3Region: string;
 }
-const LoggingInfo = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<LoggingInfo>;
 export type ServiceRole = string;
 export type MaintenanceWindowTaskCutoffBehavior = "CONTINUE_TASK" | "CANCEL_TASK" | (string & {});
-const MaintenanceWindowTaskCutoffBehavior = S.String;
-
 export interface MaintenanceWindowTask {
   WindowId?: string;
   WindowTaskId?: string;
@@ -3738,20 +2934,11 @@ export interface MaintenanceWindowTask {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-const MaintenanceWindowTask = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<MaintenanceWindowTask>;
 export type MaintenanceWindowTaskList = MaintenanceWindowTask[];
-const MaintenanceWindowTaskList = /*@__PURE__*/ __L.at(__c31, 3);
 export interface DescribeMaintenanceWindowTasksResult {
   Tasks?: MaintenanceWindowTask[];
   NextToken?: string;
 }
-const DescribeMaintenanceWindowTasksResult = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<DescribeMaintenanceWindowTasksResult>;
 export type OpsItemFilterKey =
   | "Status"
   | "CreatedBy"
@@ -3791,37 +2978,26 @@ export type OpsItemFilterKey =
   | "InsightByType"
   | "AccountId"
   | (string & {});
-const OpsItemFilterKey = S.String;
-
 export type OpsItemFilterValue = string;
 export type OpsItemFilterValues = string[];
-const OpsItemFilterValues = InstanceIdList as any as S.Schema<OpsItemFilterValues>;
 export type OpsItemFilterOperator =
   | "Equal"
   | "Contains"
   | "GreaterThan"
   | "LessThan"
   | (string & {});
-const OpsItemFilterOperator = S.String;
-
 export interface OpsItemFilter {
   Key: OpsItemFilterKey;
   Values: string[];
   Operator: OpsItemFilterOperator;
 }
-const OpsItemFilter = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<OpsItemFilter>;
 export type OpsItemFilters = OpsItemFilter[];
-const OpsItemFilters = /*@__PURE__*/ __L.at(__c31, 6);
 export type OpsItemMaxResults = number;
 export interface DescribeOpsItemsRequest {
   OpsItemFilters?: OpsItemFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeOpsItemsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<DescribeOpsItemsRequest>;
 export type OpsItemStatus =
   | "Open"
   | "InProgress"
@@ -3844,8 +3020,6 @@ export type OpsItemStatus =
   | "Rejected"
   | "Closed"
   | (string & {});
-const OpsItemStatus = S.String;
-
 export interface OpsItemSummary {
   CreatedBy?: string;
   CreatedTime?: Date;
@@ -3865,47 +3039,29 @@ export interface OpsItemSummary {
   PlannedStartTime?: Date;
   PlannedEndTime?: Date;
 }
-const OpsItemSummary = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<OpsItemSummary>;
 export type OpsItemSummaries = OpsItemSummary[];
-const OpsItemSummaries = /*@__PURE__*/ __L.at(__c32, 1);
 export interface DescribeOpsItemsResponse {
   NextToken?: string;
   OpsItemSummaries?: OpsItemSummary[];
 }
-const DescribeOpsItemsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<DescribeOpsItemsResponse>;
 export type ParametersFilterKey = "Name" | "Type" | "KeyId" | (string & {});
-const ParametersFilterKey = S.String;
-
 export type ParametersFilterValue = string;
 export type ParametersFilterValueList = string[];
-const ParametersFilterValueList = InstanceIdList as any as S.Schema<ParametersFilterValueList>;
 export interface ParametersFilter {
   Key: ParametersFilterKey;
   Values: string[];
 }
-const ParametersFilter = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<ParametersFilter>;
 export type ParametersFilterList = ParametersFilter[];
-const ParametersFilterList = /*@__PURE__*/ __L.at(__c32, 4);
 export type ParameterStringFilterKey = string;
 export type ParameterStringQueryOption = string;
 export type ParameterStringFilterValue = string;
 export type ParameterStringFilterValueList = string[];
-const ParameterStringFilterValueList =
-  InstanceIdList as any as S.Schema<ParameterStringFilterValueList>;
 export interface ParameterStringFilter {
   Key: string;
   Option?: string;
   Values?: string[];
 }
-const ParameterStringFilter = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ParameterStringFilter>;
 export type ParameterStringFilterList = ParameterStringFilter[];
-const ParameterStringFilterList = /*@__PURE__*/ __L.at(__c32, 6);
 export interface DescribeParametersRequest {
   Filters?: ParametersFilter[];
   ParameterFilters?: ParameterStringFilter[];
@@ -3913,31 +3069,18 @@ export interface DescribeParametersRequest {
   NextToken?: string;
   Shared?: boolean;
 }
-const DescribeParametersRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<DescribeParametersRequest>;
 export type ParameterType = "String" | "StringList" | "SecureString" | (string & {});
-const ParameterType = S.String;
-
 export type ParameterKeyId = string;
 export type ParameterDescription = string;
 export type AllowedPattern = string;
 export type PSParameterVersion = number;
 export type ParameterTier = "Standard" | "Advanced" | "Intelligent-Tiering" | (string & {});
-const ParameterTier = S.String;
-
 export interface ParameterInlinePolicy {
   PolicyText?: string;
   PolicyType?: string;
   PolicyStatus?: string;
 }
-const ParameterInlinePolicy = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ParameterInlinePolicy>;
 export type ParameterPolicyList = ParameterInlinePolicy[];
-const ParameterPolicyList = /*@__PURE__*/ __L.at(__c33, 1);
 export type ParameterDataType = string;
 export interface ParameterMetadata {
   Name?: string;
@@ -3953,26 +3096,16 @@ export interface ParameterMetadata {
   Policies?: ParameterInlinePolicy[];
   DataType?: string;
 }
-const ParameterMetadata = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<ParameterMetadata>;
 export type ParameterMetadataList = ParameterMetadata[];
-const ParameterMetadataList = /*@__PURE__*/ __L.at(__c33, 3);
 export interface DescribeParametersResult {
   Parameters?: ParameterMetadata[];
   NextToken?: string;
 }
-const DescribeParametersResult = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<DescribeParametersResult>;
 export interface DescribePatchBaselinesRequest {
   Filters?: PatchOrchestratorFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribePatchBaselinesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<DescribePatchBaselinesRequest>;
 export type DefaultBaseline = boolean;
 export interface PatchBaselineIdentity {
   BaselineId?: string;
@@ -3981,54 +3114,28 @@ export interface PatchBaselineIdentity {
   BaselineDescription?: string;
   DefaultBaseline?: boolean;
 }
-const PatchBaselineIdentity = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<PatchBaselineIdentity>;
 export type PatchBaselineIdentityList = PatchBaselineIdentity[];
-const PatchBaselineIdentityList = /*@__PURE__*/ __L.at(__c33, 7);
 export interface DescribePatchBaselinesResult {
   BaselineIdentities?: PatchBaselineIdentity[];
   NextToken?: string;
 }
-const DescribePatchBaselinesResult = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<DescribePatchBaselinesResult>;
 export interface DescribePatchGroupsRequest {
   MaxResults?: number;
   Filters?: PatchOrchestratorFilter[];
   NextToken?: string;
 }
-const DescribePatchGroupsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<DescribePatchGroupsRequest>;
 export interface PatchGroupPatchBaselineMapping {
   PatchGroup?: string;
   BaselineIdentity?: PatchBaselineIdentity;
 }
-const PatchGroupPatchBaselineMapping = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<PatchGroupPatchBaselineMapping>;
 export type PatchGroupPatchBaselineMappingList = PatchGroupPatchBaselineMapping[];
-const PatchGroupPatchBaselineMappingList = /*@__PURE__*/ __L.at(__c34, 3);
 export interface DescribePatchGroupsResult {
   Mappings?: PatchGroupPatchBaselineMapping[];
   NextToken?: string;
 }
-const DescribePatchGroupsResult = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<DescribePatchGroupsResult>;
 export interface DescribePatchGroupStateRequest {
   PatchGroup: string;
 }
-const DescribePatchGroupStateRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<DescribePatchGroupStateRequest>;
 export type InstancesCount = number;
 export interface DescribePatchGroupStateResult {
   Instances?: number;
@@ -4045,10 +3152,6 @@ export interface DescribePatchGroupStateResult {
   InstancesWithOtherNonCompliantPatches?: number;
   InstancesWithAvailableSecurityUpdates?: number;
 }
-const DescribePatchGroupStateResult = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<DescribePatchGroupStateResult>;
 export type PatchProperty =
   | "PRODUCT"
   | "PRODUCT_FAMILY"
@@ -4057,11 +3160,7 @@ export type PatchProperty =
   | "PRIORITY"
   | "SEVERITY"
   | (string & {});
-const PatchProperty = S.String;
-
 export type PatchSet = "OS" | "APPLICATION" | (string & {});
-const PatchSet = S.String;
-
 export interface DescribePatchPropertiesRequest {
   OperatingSystem: OperatingSystem;
   Property: PatchProperty;
@@ -4069,27 +3168,15 @@ export interface DescribePatchPropertiesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribePatchPropertiesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<DescribePatchPropertiesRequest>;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type PatchPropertyEntry = { [key: string]: string | undefined };
-const PatchPropertyEntry = NormalStringMap as any as S.Schema<PatchPropertyEntry>;
 export type PatchPropertiesList = { [key: string]: string | undefined }[];
-const PatchPropertiesList = /*@__PURE__*/ __L.at(__c35, 0);
 export interface DescribePatchPropertiesResult {
   Properties?: { [key: string]: string | undefined }[];
   NextToken?: string;
 }
-const DescribePatchPropertiesResult = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<DescribePatchPropertiesResult>;
 export type SessionState = "Active" | "History" | (string & {});
-const SessionState = S.String;
-
 export type SessionMaxResults = number;
 export type SessionFilterKey =
   | "InvokedAfter"
@@ -4100,26 +3187,18 @@ export type SessionFilterKey =
   | "SessionId"
   | "AccessType"
   | (string & {});
-const SessionFilterKey = S.String;
-
 export type SessionFilterValue = string;
 export interface SessionFilter {
   key: SessionFilterKey;
   value: string;
 }
-const SessionFilter = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<SessionFilter>;
 export type SessionFilterList = SessionFilter[];
-const SessionFilterList = /*@__PURE__*/ __L.at(__c35, 3);
 export interface DescribeSessionsRequest {
   State: SessionState;
   MaxResults?: number;
   NextToken?: string;
   Filters?: SessionFilter[];
 }
-const DescribeSessionsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<DescribeSessionsRequest>;
 export type SessionId = string;
 export type SessionTarget = string;
 export type SessionStatus =
@@ -4130,8 +3209,6 @@ export type SessionStatus =
   | "Terminating"
   | "Failed"
   | (string & {});
-const SessionStatus = S.String;
-
 export type SessionOwner = string;
 export type SessionReason = string;
 export type SessionDetails = string;
@@ -4141,14 +3218,8 @@ export interface SessionManagerOutputUrl {
   S3OutputUrl?: string;
   CloudWatchOutputUrl?: string;
 }
-const SessionManagerOutputUrl = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<SessionManagerOutputUrl>;
 export type MaxSessionDuration = string;
 export type AccessType = "Standard" | "JustInTime" | (string & {});
-const AccessType = S.String;
-
 export interface Session {
   SessionId?: string;
   Target?: string;
@@ -4163,36 +3234,20 @@ export interface Session {
   MaxSessionDuration?: string;
   AccessType?: AccessType;
 }
-const Session = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<Session>;
 export type SessionList = Session[];
-const SessionList = /*@__PURE__*/ __L.at(__c35, 7);
 export interface DescribeSessionsResponse {
   Sessions?: Session[];
   NextToken?: string;
 }
-const DescribeSessionsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<DescribeSessionsResponse>;
 export interface DisassociateOpsItemRelatedItemRequest {
   OpsItemId: string;
   AssociationId: string;
 }
-const DisassociateOpsItemRelatedItemRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<DisassociateOpsItemRelatedItemRequest>;
 export interface DisassociateOpsItemRelatedItemResponse {}
-const DisassociateOpsItemRelatedItemResponse =
-  CreateResourceDataSyncResult as any as S.Schema<DisassociateOpsItemRelatedItemResponse>;
 export type AccessRequestId = string;
 export interface GetAccessTokenRequest {
   AccessRequestId: string;
 }
-const GetAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<GetAccessTokenRequest>;
 export type AccessKeyIdType = string;
 export type AccessKeySecretType = string | redacted.Redacted<string>;
 export type SessionTokenType = string | redacted.Redacted<string>;
@@ -4202,7 +3257,6 @@ export interface Credentials {
   SessionToken: string | redacted.Redacted<string>;
   ExpirationTime: Date;
 }
-const Credentials = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<Credentials>;
 export type AccessRequestStatus =
   | "Approved"
   | "Rejected"
@@ -4210,23 +3264,13 @@ export type AccessRequestStatus =
   | "Expired"
   | "Pending"
   | (string & {});
-const AccessRequestStatus = S.String;
-
 export interface GetAccessTokenResponse {
   Credentials?: Credentials;
   AccessRequestStatus?: AccessRequestStatus;
 }
-const GetAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<GetAccessTokenResponse>;
 export interface GetAutomationExecutionRequest {
   AutomationExecutionId: string;
 }
-const GetAutomationExecutionRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<GetAutomationExecutionRequest>;
 export interface ProgressCounters {
   TotalSteps?: number;
   SuccessSteps?: number;
@@ -4234,7 +3278,6 @@ export interface ProgressCounters {
   CancelledSteps?: number;
   TimedOutSteps?: number;
 }
-const ProgressCounters = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<ProgressCounters>;
 export interface AutomationExecution {
   AutomationExecutionId?: string;
   DocumentName?: string;
@@ -4273,42 +3316,23 @@ export interface AutomationExecution {
   ChangeRequestName?: string;
   Variables?: { [key: string]: string[] | undefined };
 }
-const AutomationExecution = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<AutomationExecution>;
 export interface GetAutomationExecutionResult {
   AutomationExecution?: AutomationExecution;
 }
-const GetAutomationExecutionResult = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GetAutomationExecutionResult>;
 export type ISO8601String = string;
 export interface GetCalendarStateRequest {
   CalendarNames: string[];
   AtTime?: string;
 }
-const GetCalendarStateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetCalendarStateRequest>;
 export type CalendarState = "OPEN" | "CLOSED" | (string & {});
-const CalendarState = S.String;
-
 export interface GetCalendarStateResponse {
   State?: CalendarState;
   AtTime?: string;
   NextTransitionTime?: string;
 }
-const GetCalendarStateResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetCalendarStateResponse>;
 export interface GetCloudConnectorRequest {
   CloudConnectorId: string;
 }
-const GetCloudConnectorRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<GetCloudConnectorRequest>;
 export type CloudConnectorArn = string;
 export interface GetCloudConnectorResult {
   CloudConnectorArn?: string;
@@ -4320,20 +3344,12 @@ export interface GetCloudConnectorResult {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const GetCloudConnectorResult = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<GetCloudConnectorResult>;
 export type CommandPluginName = string;
 export interface GetCommandInvocationRequest {
   CommandId: string;
   InstanceId: string;
   PluginName?: string;
 }
-const GetCommandInvocationRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetCommandInvocationRequest>;
 export type Comment = string;
 export type ResponseCode = number;
 export type StringDateTime = string;
@@ -4347,8 +3363,6 @@ export type CommandInvocationStatus =
   | "Failed"
   | "Cancelling"
   | (string & {});
-const CommandInvocationStatus = S.String;
-
 export type StatusDetails = string;
 export type StandardOutputContent = string;
 export type StandardErrorContent = string;
@@ -4358,10 +3372,6 @@ export interface CloudWatchOutputConfig {
   CloudWatchLogGroupName?: string;
   CloudWatchOutputEnabled?: boolean;
 }
-const CloudWatchOutputConfig = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<CloudWatchOutputConfig>;
 export interface GetCommandInvocationResult {
   CommandId?: string;
   InstanceId?: string;
@@ -4381,43 +3391,21 @@ export interface GetCommandInvocationResult {
   StandardErrorUrl?: string;
   CloudWatchOutputConfig?: CloudWatchOutputConfig;
 }
-const GetCommandInvocationResult = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetCommandInvocationResult>;
 export interface GetConnectionStatusRequest {
   Target: string;
 }
-const GetConnectionStatusRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetConnectionStatusRequest>;
 export type ConnectionStatus = "connected" | "notconnected" | (string & {});
-const ConnectionStatus = S.String;
-
 export interface GetConnectionStatusResponse {
   Target?: string;
   Status?: ConnectionStatus;
 }
-const GetConnectionStatusResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetConnectionStatusResponse>;
 export interface GetDefaultPatchBaselineRequest {
   OperatingSystem?: OperatingSystem;
 }
-const GetDefaultPatchBaselineRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetDefaultPatchBaselineRequest>;
 export interface GetDefaultPatchBaselineResult {
   BaselineId?: string;
   OperatingSystem?: OperatingSystem;
 }
-const GetDefaultPatchBaselineResult = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<GetDefaultPatchBaselineResult>;
 export interface BaselineOverride {
   OperatingSystem?: OperatingSystem;
   GlobalFilters?: PatchFilterGroup;
@@ -4430,17 +3418,12 @@ export interface BaselineOverride {
   Sources?: PatchSource[];
   AvailableSecurityUpdatesComplianceStatus?: PatchComplianceStatus;
 }
-const BaselineOverride = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<BaselineOverride>;
 export interface GetDeployablePatchSnapshotForInstanceRequest {
   InstanceId: string;
   SnapshotId: string;
   BaselineOverride?: BaselineOverride;
   UseS3DualStackEndpoint?: boolean;
 }
-const GetDeployablePatchSnapshotForInstanceRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetDeployablePatchSnapshotForInstanceRequest>;
 export type SnapshotDownloadUrl = string;
 export type Product = string;
 export interface GetDeployablePatchSnapshotForInstanceResult {
@@ -4449,22 +3432,15 @@ export interface GetDeployablePatchSnapshotForInstanceResult {
   SnapshotDownloadUrl?: string;
   Product?: string;
 }
-const GetDeployablePatchSnapshotForInstanceResult = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetDeployablePatchSnapshotForInstanceResult>;
 export interface GetDocumentRequest {
   Name: string;
   VersionName?: string;
   DocumentVersion?: string;
   DocumentFormat?: DocumentFormat;
 }
-const GetDocumentRequest = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<GetDocumentRequest>;
 export type ContentLength = number;
 export type AttachmentHash = string;
 export type AttachmentHashType = "Sha256" | (string & {});
-const AttachmentHashType = S.String;
-
 export type AttachmentUrl = string;
 export interface AttachmentContent {
   Name?: string;
@@ -4473,9 +3449,7 @@ export interface AttachmentContent {
   HashType?: AttachmentHashType;
   Url?: string;
 }
-const AttachmentContent = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<AttachmentContent>;
 export type AttachmentContentList = AttachmentContent[];
-const AttachmentContentList = /*@__PURE__*/ __L.at(__c39, 1);
 export interface GetDocumentResult {
   Name?: string;
   CreatedDate?: Date;
@@ -4491,49 +3465,31 @@ export interface GetDocumentResult {
   AttachmentsContent?: AttachmentContent[];
   ReviewStatus?: ReviewStatus;
 }
-const GetDocumentResult = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<GetDocumentResult>;
 export type ExecutionPreviewId = string;
 export interface GetExecutionPreviewRequest {
   ExecutionPreviewId: string;
 }
-const GetExecutionPreviewRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetExecutionPreviewRequest>;
 export type ExecutionPreviewStatus =
   | "Pending"
   | "InProgress"
   | "Success"
   | "Failed"
   | (string & {});
-const ExecutionPreviewStatus = S.String;
-
 export type ImpactType = "Mutating" | "NonMutating" | "Undetermined" | (string & {});
-const ImpactType = S.String;
-
 export type StepPreviewMap = { [key in ImpactType]?: number };
-const StepPreviewMap = /*@__PURE__*/ __L.at(__c39, 4);
 export type RegionList = string[];
-const RegionList = InstanceIdList as any as S.Schema<RegionList>;
 export interface TargetPreview {
   Count?: number;
   TargetType?: string;
 }
-const TargetPreview = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<TargetPreview>;
 export type TargetPreviewList = TargetPreview[];
-const TargetPreviewList = /*@__PURE__*/ __L.at(__c39, 6);
 export interface AutomationExecutionPreview {
   StepPreviews?: { [key: string]: number | undefined };
   Regions?: string[];
   TargetPreviews?: TargetPreview[];
   TotalAccounts?: number;
 }
-const AutomationExecutionPreview = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<AutomationExecutionPreview>;
 export type ExecutionPreview = { Automation: AutomationExecutionPreview };
-const ExecutionPreview = /*@__PURE__*/ __L.at(__c40, 0);
 export interface GetExecutionPreviewResponse {
   ExecutionPreviewId?: string;
   EndedAt?: Date;
@@ -4541,14 +3497,9 @@ export interface GetExecutionPreviewResponse {
   StatusMessage?: string;
   ExecutionPreview?: ExecutionPreview;
 }
-const GetExecutionPreviewResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<GetExecutionPreviewResponse>;
 export type InventoryFilterKey = string;
 export type InventoryFilterValue = string;
 export type InventoryFilterValueList = string[];
-const InventoryFilterValueList = /*@__PURE__*/ __L.at(__c40, 2);
 export type InventoryQueryOperatorType =
   | "Equal"
   | "NotEqual"
@@ -4557,42 +3508,29 @@ export type InventoryQueryOperatorType =
   | "GreaterThan"
   | "Exists"
   | (string & {});
-const InventoryQueryOperatorType = S.String;
-
 export interface InventoryFilter {
   Key: string;
   Values: string[];
   Type?: InventoryQueryOperatorType;
 }
-const InventoryFilter = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<InventoryFilter>;
 export type InventoryFilterList = InventoryFilter[];
-const InventoryFilterList = /*@__PURE__*/ __L.at(__c40, 4);
 export type InventoryAggregatorExpression = string;
 export type InventoryGroupName = string;
 export interface InventoryGroup {
   Name: string;
   Filters: InventoryFilter[];
 }
-const InventoryGroup = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<InventoryGroup>;
 export type InventoryGroupList = InventoryGroup[];
-const InventoryGroupList = /*@__PURE__*/ __L.at(__c40, 6);
 export interface InventoryAggregator {
   Expression?: string;
   Aggregators?: InventoryAggregator[];
   Groups?: InventoryGroup[];
 }
-const InventoryAggregator = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<InventoryAggregator>;
 export type InventoryAggregatorList = InventoryAggregator[];
-const InventoryAggregatorList = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<InventoryAggregatorList>;
 export interface ResultAttribute {
   TypeName: string;
 }
-const ResultAttribute = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<ResultAttribute>;
 export type ResultAttributeList = ResultAttribute[];
-const ResultAttributeList = /*@__PURE__*/ __L.at(__c41, 2);
 export interface GetInventoryRequest {
   Filters?: InventoryFilter[];
   Aggregators?: InventoryAggregator[];
@@ -4600,14 +3538,12 @@ export interface GetInventoryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetInventoryRequest = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<GetInventoryRequest>;
 export type InventoryResultEntityId = string;
 export type InventoryResultItemKey = string;
 export type InventoryItemCaptureTime = string;
 export type InventoryItemContentHash = string;
 export type InventoryItemEntry = { [key: string]: string | undefined };
 export type InventoryItemEntryList = { [key: string]: string | undefined }[];
-const InventoryItemEntryList = PatchPropertiesList as any as S.Schema<InventoryItemEntryList>;
 export interface InventoryResultItem {
   TypeName: string;
   SchemaVersion: string;
@@ -4615,24 +3551,16 @@ export interface InventoryResultItem {
   ContentHash?: string;
   Content: { [key: string]: string | undefined }[];
 }
-const InventoryResultItem = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<InventoryResultItem>;
 export type InventoryResultItemMap = { [key: string]: InventoryResultItem | undefined };
-const InventoryResultItemMap = /*@__PURE__*/ __L.at(__c41, 5);
 export interface InventoryResultEntity {
   Id?: string;
   Data?: { [key: string]: InventoryResultItem | undefined };
 }
-const InventoryResultEntity = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<InventoryResultEntity>;
 export type InventoryResultEntityList = InventoryResultEntity[];
-const InventoryResultEntityList = /*@__PURE__*/ __L.at(__c41, 7);
 export interface GetInventoryResult {
   Entities?: InventoryResultEntity[];
   NextToken?: string;
 }
-const GetInventoryResult = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<GetInventoryResult>;
 export type InventoryItemTypeNameFilter = string;
 export type GetInventorySchemaMaxResults = number;
 export type AggregatorSchemaOnly = boolean;
@@ -4644,24 +3572,13 @@ export interface GetInventorySchemaRequest {
   Aggregator?: boolean;
   SubType?: boolean;
 }
-const GetInventorySchemaRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<GetInventorySchemaRequest>;
 export type InventoryItemAttributeName = string;
 export type InventoryAttributeDataType = "string" | "number" | (string & {});
-const InventoryAttributeDataType = S.String;
-
 export interface InventoryItemAttribute {
   Name: string;
   DataType: InventoryAttributeDataType;
 }
-const InventoryItemAttribute = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<InventoryItemAttribute>;
 export type InventoryItemAttributeList = InventoryItemAttribute[];
-const InventoryItemAttributeList = /*@__PURE__*/ __L.at(__c42, 3);
 export type InventoryTypeDisplayName = string;
 export interface InventoryItemSchema {
   TypeName: string;
@@ -4669,24 +3586,14 @@ export interface InventoryItemSchema {
   Attributes: InventoryItemAttribute[];
   DisplayName?: string;
 }
-const InventoryItemSchema = /*@__PURE__*/ __L.at(__c42, 4) as any as S.Schema<InventoryItemSchema>;
 export type InventoryItemSchemaResultList = InventoryItemSchema[];
-const InventoryItemSchemaResultList = /*@__PURE__*/ __L.at(__c42, 5);
 export interface GetInventorySchemaResult {
   Schemas?: InventoryItemSchema[];
   NextToken?: string;
 }
-const GetInventorySchemaResult = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<GetInventorySchemaResult>;
 export interface GetMaintenanceWindowRequest {
   WindowId: string;
 }
-const GetMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<GetMaintenanceWindowRequest>;
 export interface GetMaintenanceWindowResult {
   WindowId?: string;
   Name?: string;
@@ -4704,20 +3611,10 @@ export interface GetMaintenanceWindowResult {
   CreatedDate?: Date;
   ModifiedDate?: Date;
 }
-const GetMaintenanceWindowResult = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<GetMaintenanceWindowResult>;
 export interface GetMaintenanceWindowExecutionRequest {
   WindowExecutionId: string;
 }
-const GetMaintenanceWindowExecutionRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<GetMaintenanceWindowExecutionRequest>;
 export type MaintenanceWindowExecutionTaskIdList = string[];
-const MaintenanceWindowExecutionTaskIdList =
-  InstanceIdList as any as S.Schema<MaintenanceWindowExecutionTaskIdList>;
 export interface GetMaintenanceWindowExecutionResult {
   WindowExecutionId?: string;
   TaskIds?: string[];
@@ -4726,22 +3623,13 @@ export interface GetMaintenanceWindowExecutionResult {
   StartTime?: Date;
   EndTime?: Date;
 }
-const GetMaintenanceWindowExecutionResult = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<GetMaintenanceWindowExecutionResult>;
 export interface GetMaintenanceWindowExecutionTaskRequest {
   WindowExecutionId: string;
   TaskId: string;
 }
-const GetMaintenanceWindowExecutionTaskRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<GetMaintenanceWindowExecutionTaskRequest>;
 export type MaintenanceWindowTaskParametersList = {
   [key: string]: MaintenanceWindowTaskParameterValueExpression | undefined;
 }[];
-const MaintenanceWindowTaskParametersList = /*@__PURE__*/ __L.at(__c43, 4);
 export interface GetMaintenanceWindowExecutionTaskResult {
   WindowExecutionId?: string;
   TaskExecutionId?: string;
@@ -4759,19 +3647,11 @@ export interface GetMaintenanceWindowExecutionTaskResult {
   AlarmConfiguration?: AlarmConfiguration;
   TriggeredAlarms?: AlarmStateInformation[];
 }
-const GetMaintenanceWindowExecutionTaskResult = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<GetMaintenanceWindowExecutionTaskResult>;
 export interface GetMaintenanceWindowExecutionTaskInvocationRequest {
   WindowExecutionId: string;
   TaskId: string;
   InvocationId: string;
 }
-const GetMaintenanceWindowExecutionTaskInvocationRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<GetMaintenanceWindowExecutionTaskInvocationRequest>;
 export interface GetMaintenanceWindowExecutionTaskInvocationResult {
   WindowExecutionId?: string;
   TaskExecutionId?: string;
@@ -4786,18 +3666,10 @@ export interface GetMaintenanceWindowExecutionTaskInvocationResult {
   OwnerInformation?: string | redacted.Redacted<string>;
   WindowTargetId?: string;
 }
-const GetMaintenanceWindowExecutionTaskInvocationResult = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<GetMaintenanceWindowExecutionTaskInvocationResult>;
 export interface GetMaintenanceWindowTaskRequest {
   WindowId: string;
   WindowTaskId: string;
 }
-const GetMaintenanceWindowTaskRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<GetMaintenanceWindowTaskRequest>;
 export type NotificationArn = string;
 export type NotificationEvent =
   | "All"
@@ -4807,19 +3679,13 @@ export type NotificationEvent =
   | "Cancelled"
   | "Failed"
   | (string & {});
-const NotificationEvent = S.String;
-
 export type NotificationEventList = NotificationEvent[];
-const NotificationEventList = /*@__PURE__*/ __L.at(__c44, 1);
 export type NotificationType = "Command" | "Invocation" | (string & {});
-const NotificationType = S.String;
-
 export interface NotificationConfig {
   NotificationArn?: string;
   NotificationEvents?: NotificationEvent[];
   NotificationType?: NotificationType;
 }
-const NotificationConfig = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<NotificationConfig>;
 export type TimeoutSeconds = number;
 export interface MaintenanceWindowRunCommandParameters {
   Comment?: string;
@@ -4834,28 +3700,16 @@ export interface MaintenanceWindowRunCommandParameters {
   ServiceRoleArn?: string;
   TimeoutSeconds?: number;
 }
-const MaintenanceWindowRunCommandParameters = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<MaintenanceWindowRunCommandParameters>;
 export interface MaintenanceWindowAutomationParameters {
   DocumentVersion?: string;
   Parameters?: { [key: string]: string[] | undefined };
 }
-const MaintenanceWindowAutomationParameters = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<MaintenanceWindowAutomationParameters>;
 export type MaintenanceWindowStepFunctionsInput = string | redacted.Redacted<string>;
 export type MaintenanceWindowStepFunctionsName = string;
 export interface MaintenanceWindowStepFunctionsParameters {
   Input?: string | redacted.Redacted<string>;
   Name?: string;
 }
-const MaintenanceWindowStepFunctionsParameters = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<MaintenanceWindowStepFunctionsParameters>;
 export type MaintenanceWindowLambdaClientContext = string;
 export type MaintenanceWindowLambdaQualifier = string;
 export type MaintenanceWindowLambdaPayload = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -4864,20 +3718,12 @@ export interface MaintenanceWindowLambdaParameters {
   Qualifier?: string;
   Payload?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-const MaintenanceWindowLambdaParameters = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<MaintenanceWindowLambdaParameters>;
 export interface MaintenanceWindowTaskInvocationParameters {
   RunCommand?: MaintenanceWindowRunCommandParameters;
   Automation?: MaintenanceWindowAutomationParameters;
   StepFunctions?: MaintenanceWindowStepFunctionsParameters;
   Lambda?: MaintenanceWindowLambdaParameters;
 }
-const MaintenanceWindowTaskInvocationParameters = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<MaintenanceWindowTaskInvocationParameters>;
 export interface GetMaintenanceWindowTaskResult {
   WindowId?: string;
   WindowTaskId?: string;
@@ -4896,15 +3742,10 @@ export interface GetMaintenanceWindowTaskResult {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-const GetMaintenanceWindowTaskResult = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<GetMaintenanceWindowTaskResult>;
 export interface GetOpsItemRequest {
   OpsItemId: string;
   OpsItemArn?: string;
 }
-const GetOpsItemRequest = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<GetOpsItemRequest>;
 export interface OpsItem {
   CreatedBy?: string;
   OpsItemType?: string;
@@ -4929,34 +3770,23 @@ export interface OpsItem {
   PlannedEndTime?: Date;
   OpsItemArn?: string;
 }
-const OpsItem = /*@__PURE__*/ __L.at(__c45, 2) as any as S.Schema<OpsItem>;
 export interface GetOpsItemResponse {
   OpsItem?: OpsItem;
 }
-const GetOpsItemResponse = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<GetOpsItemResponse>;
 export type GetOpsMetadataMaxResults = number;
 export interface GetOpsMetadataRequest {
   OpsMetadataArn: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetOpsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<GetOpsMetadataRequest>;
 export interface GetOpsMetadataResult {
   ResourceId?: string;
   Metadata?: { [key: string]: MetadataValue | undefined };
   NextToken?: string;
 }
-const GetOpsMetadataResult = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<GetOpsMetadataResult>;
 export type OpsFilterKey = string;
 export type OpsFilterValue = string;
 export type OpsFilterValueList = string[];
-const OpsFilterValueList = InventoryFilterValueList as any as S.Schema<OpsFilterValueList>;
 export type OpsFilterOperatorType =
   | "Equal"
   | "NotEqual"
@@ -4965,23 +3795,18 @@ export type OpsFilterOperatorType =
   | "GreaterThan"
   | "Exists"
   | (string & {});
-const OpsFilterOperatorType = S.String;
-
 export interface OpsFilter {
   Key: string;
   Values: string[];
   Type?: OpsFilterOperatorType;
 }
-const OpsFilter = /*@__PURE__*/ __L.at(__c45, 6) as any as S.Schema<OpsFilter>;
 export type OpsFilterList = OpsFilter[];
-const OpsFilterList = /*@__PURE__*/ __L.at(__c45, 7);
 export type OpsAggregatorType = string;
 export type OpsDataTypeName = string;
 export type OpsDataAttributeName = string;
 export type OpsAggregatorValueKey = string;
 export type OpsAggregatorValue = string;
 export type OpsAggregatorValueMap = { [key: string]: string | undefined };
-const OpsAggregatorValueMap = NormalStringMap as any as S.Schema<OpsAggregatorValueMap>;
 export interface OpsAggregator {
   AggregatorType?: string;
   TypeName?: string;
@@ -4990,15 +3815,11 @@ export interface OpsAggregator {
   Filters?: OpsFilter[];
   Aggregators?: OpsAggregator[];
 }
-const OpsAggregator = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<OpsAggregator>;
 export type OpsAggregatorList = OpsAggregator[];
-const OpsAggregatorList = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<OpsAggregatorList>;
 export interface OpsResultAttribute {
   TypeName: string;
 }
-const OpsResultAttribute = ResultAttribute as any as S.Schema<OpsResultAttribute>;
 export type OpsResultAttributeList = OpsResultAttribute[];
-const OpsResultAttributeList = /*@__PURE__*/ __L.at(__c46, 2);
 export interface GetOpsSummaryRequest {
   SyncName?: string;
   Filters?: OpsFilter[];
@@ -5007,40 +3828,29 @@ export interface GetOpsSummaryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetOpsSummaryRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<GetOpsSummaryRequest>;
 export type OpsEntityId = string;
 export type OpsEntityItemKey = string;
 export type OpsEntityItemCaptureTime = string;
 export type OpsEntityItemEntry = { [key: string]: string | undefined };
 export type OpsEntityItemEntryList = { [key: string]: string | undefined }[];
-const OpsEntityItemEntryList = PatchPropertiesList as any as S.Schema<OpsEntityItemEntryList>;
 export interface OpsEntityItem {
   CaptureTime?: string;
   Content?: { [key: string]: string | undefined }[];
 }
-const OpsEntityItem = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<OpsEntityItem>;
 export type OpsEntityItemMap = { [key: string]: OpsEntityItem | undefined };
-const OpsEntityItemMap = /*@__PURE__*/ __L.at(__c46, 5);
 export interface OpsEntity {
   Id?: string;
   Data?: { [key: string]: OpsEntityItem | undefined };
 }
-const OpsEntity = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<OpsEntity>;
 export type OpsEntityList = OpsEntity[];
-const OpsEntityList = /*@__PURE__*/ __L.at(__c46, 7);
 export interface GetOpsSummaryResult {
   Entities?: OpsEntity[];
   NextToken?: string;
 }
-const GetOpsSummaryResult = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<GetOpsSummaryResult>;
 export interface GetParameterRequest {
   Name: string;
   WithDecryption?: boolean;
 }
-const GetParameterRequest = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<GetParameterRequest>;
 export type PSParameterValue = string | redacted.Redacted<string>;
 export type PSParameterSelector = string;
 export interface Parameter {
@@ -5054,24 +3864,17 @@ export interface Parameter {
   ARN?: string;
   DataType?: string;
 }
-const Parameter = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<Parameter>;
 export interface GetParameterResult {
   Parameter?: Parameter;
 }
-const GetParameterResult = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<GetParameterResult>;
 export interface GetParameterHistoryRequest {
   Name: string;
   WithDecryption?: boolean;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetParameterHistoryRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<GetParameterHistoryRequest>;
 export type ParameterLabel = string;
 export type ParameterLabelList = string[];
-const ParameterLabelList = InstanceIdList as any as S.Schema<ParameterLabelList>;
 export interface ParameterHistory {
   Name?: string;
   Type?: ParameterType;
@@ -5087,32 +3890,20 @@ export interface ParameterHistory {
   Policies?: ParameterInlinePolicy[];
   DataType?: string;
 }
-const ParameterHistory = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<ParameterHistory>;
 export type ParameterHistoryList = ParameterHistory[];
-const ParameterHistoryList = /*@__PURE__*/ __L.at(__c47, 6);
 export interface GetParameterHistoryResult {
   Parameters?: ParameterHistory[];
   NextToken?: string;
 }
-const GetParameterHistoryResult = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<GetParameterHistoryResult>;
 export interface GetParametersRequest {
   Names: string[];
   WithDecryption?: boolean;
 }
-const GetParametersRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<GetParametersRequest>;
 export type ParameterList = Parameter[];
-const ParameterList = /*@__PURE__*/ __L.at(__c48, 1);
 export interface GetParametersResult {
   Parameters?: Parameter[];
   InvalidParameters?: string[];
 }
-const GetParametersResult = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<GetParametersResult>;
 export type GetParametersByPathMaxResults = number;
 export interface GetParametersByPathRequest {
   Path: string;
@@ -5122,27 +3913,14 @@ export interface GetParametersByPathRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetParametersByPathRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<GetParametersByPathRequest>;
 export interface GetParametersByPathResult {
   Parameters?: Parameter[];
   NextToken?: string;
 }
-const GetParametersByPathResult = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<GetParametersByPathResult>;
 export interface GetPatchBaselineRequest {
   BaselineId: string;
 }
-const GetPatchBaselineRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<GetPatchBaselineRequest>;
 export type PatchGroupList = string[];
-const PatchGroupList = InstanceIdList as any as S.Schema<PatchGroupList>;
 export interface GetPatchBaselineResult {
   BaselineId?: string;
   Name?: string;
@@ -5161,65 +3939,36 @@ export interface GetPatchBaselineResult {
   Sources?: PatchSource[];
   AvailableSecurityUpdatesComplianceStatus?: PatchComplianceStatus;
 }
-const GetPatchBaselineResult = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<GetPatchBaselineResult>;
 export interface GetPatchBaselineForPatchGroupRequest {
   PatchGroup: string;
   OperatingSystem?: OperatingSystem;
 }
-const GetPatchBaselineForPatchGroupRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<GetPatchBaselineForPatchGroupRequest>;
 export interface GetPatchBaselineForPatchGroupResult {
   BaselineId?: string;
   PatchGroup?: string;
   OperatingSystem?: OperatingSystem;
 }
-const GetPatchBaselineForPatchGroupResult = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<GetPatchBaselineForPatchGroupResult>;
 export type ResourcePolicyMaxResults = number;
 export interface GetResourcePoliciesRequest {
   ResourceArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const GetResourcePoliciesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<GetResourcePoliciesRequest>;
 export type Policy = string;
 export interface GetResourcePoliciesResponseEntry {
   PolicyId?: string;
   PolicyHash?: string;
   Policy?: string;
 }
-const GetResourcePoliciesResponseEntry = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<GetResourcePoliciesResponseEntry>;
 export type GetResourcePoliciesResponseEntries = GetResourcePoliciesResponseEntry[];
-const GetResourcePoliciesResponseEntries = /*@__PURE__*/ __L.at(__c49, 3);
 export interface GetResourcePoliciesResponse {
   NextToken?: string;
   Policies?: GetResourcePoliciesResponseEntry[];
 }
-const GetResourcePoliciesResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<GetResourcePoliciesResponse>;
 export type ServiceSettingId = string;
 export interface GetServiceSettingRequest {
   SettingId: string;
 }
-const GetServiceSettingRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<GetServiceSettingRequest>;
 export type ServiceSettingValue = string;
 export interface ServiceSetting {
   SettingId?: string;
@@ -5229,31 +3978,18 @@ export interface ServiceSetting {
   ARN?: string;
   Status?: string;
 }
-const ServiceSetting = /*@__PURE__*/ __L.at(__c49, 6) as any as S.Schema<ServiceSetting>;
 export interface GetServiceSettingResult {
   ServiceSetting?: ServiceSetting;
 }
-const GetServiceSettingResult = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<GetServiceSettingResult>;
 export interface LabelParameterVersionRequest {
   Name: string;
   ParameterVersion?: number;
   Labels: string[];
 }
-const LabelParameterVersionRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<LabelParameterVersionRequest>;
 export interface LabelParameterVersionResult {
   InvalidLabels?: string[];
   ParameterVersion?: number;
 }
-const LabelParameterVersionResult = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<LabelParameterVersionResult>;
 export type AssociationFilterKey =
   | "InstanceId"
   | "Name"
@@ -5270,18 +4006,12 @@ export interface AssociationFilter {
   key: AssociationFilterKey;
   value: string;
 }
-const AssociationFilter = SessionFilter as any as S.Schema<AssociationFilter>;
 export type AssociationFilterList = AssociationFilter[];
-const AssociationFilterList = /*@__PURE__*/ __L.at(__c50, 2);
 export interface ListAssociationsRequest {
   AssociationFilterList?: AssociationFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListAssociationsRequest>;
 export interface Association {
   Name?: string;
   InstanceId?: string;
@@ -5297,26 +4027,16 @@ export interface Association {
   Duration?: number;
   TargetMaps?: { [key: string]: string[] | undefined }[];
 }
-const Association = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<Association>;
 export type AssociationList = Association[];
-const AssociationList = /*@__PURE__*/ __L.at(__c50, 5);
 export interface ListAssociationsResult {
   Associations?: Association[];
   NextToken?: string;
 }
-const ListAssociationsResult = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListAssociationsResult>;
 export interface ListAssociationVersionsRequest {
   AssociationId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAssociationVersionsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListAssociationVersionsRequest>;
 export interface AssociationVersionInfo {
   AssociationId?: string;
   AssociationVersion?: string;
@@ -5340,46 +4060,25 @@ export interface AssociationVersionInfo {
   TargetMaps?: { [key: string]: string[] | undefined }[];
   AssociationDispatchAssumeRole?: string;
 }
-const AssociationVersionInfo = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<AssociationVersionInfo>;
 export type AssociationVersionList = AssociationVersionInfo[];
-const AssociationVersionList = /*@__PURE__*/ __L.at(__c51, 1);
 export interface ListAssociationVersionsResult {
   AssociationVersions?: AssociationVersionInfo[];
   NextToken?: string;
 }
-const ListAssociationVersionsResult = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<ListAssociationVersionsResult>;
 export type CloudConnectorMaxResults = number;
 export type CloudConnectorFilterKey = "SubscriptionId" | "TenantId" | (string & {});
-const CloudConnectorFilterKey = S.String;
-
 export type CloudConnectorFilterValue = string;
 export type CloudConnectorFilterValues = string[];
-const CloudConnectorFilterValues = InstanceIdList as any as S.Schema<CloudConnectorFilterValues>;
 export interface CloudConnectorFilter {
   FilterKey?: CloudConnectorFilterKey;
   FilterValues?: string[];
 }
-const CloudConnectorFilter = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<CloudConnectorFilter>;
 export type CloudConnectorFilterList = CloudConnectorFilter[];
-const CloudConnectorFilterList = /*@__PURE__*/ __L.at(__c51, 4);
 export interface ListCloudConnectorsRequest {
   MaxResults?: number;
   NextToken?: string;
   Filters?: CloudConnectorFilter[];
 }
-const ListCloudConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ListCloudConnectorsRequest>;
 export interface CloudConnectorSummary {
   CloudConnectorId?: string;
   DisplayName?: string;
@@ -5388,20 +4087,11 @@ export interface CloudConnectorSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const CloudConnectorSummary = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<CloudConnectorSummary>;
 export type CloudConnectorSummaryList = CloudConnectorSummary[];
-const CloudConnectorSummaryList = /*@__PURE__*/ __L.at(__c51, 7);
 export interface ListCloudConnectorsResult {
   CloudConnectors?: CloudConnectorSummary[];
   NextToken?: string;
 }
-const ListCloudConnectorsResult = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListCloudConnectorsResult>;
 export type CommandMaxResults = number;
 export type CommandFilterKey =
   | "InvokedAfter"
@@ -5416,7 +4106,6 @@ export interface CommandFilter {
   value: string;
 }
 export type CommandFilterList = CommandFilter[];
-const CommandFilterList = SessionFilterList as any as S.Schema<CommandFilterList>;
 export interface ListCommandInvocationsRequest {
   CommandId?: string;
   InstanceId?: string;
@@ -5425,10 +4114,6 @@ export interface ListCommandInvocationsRequest {
   Filters?: CommandFilter[];
   Details?: boolean;
 }
-const ListCommandInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<ListCommandInvocationsRequest>;
 export type InstanceTagName = string;
 export type InvocationTraceOutput = string;
 export type CommandPluginStatus =
@@ -5439,8 +4124,6 @@ export type CommandPluginStatus =
   | "Cancelled"
   | "Failed"
   | (string & {});
-const CommandPluginStatus = S.String;
-
 export type CommandPluginOutput = string;
 export interface CommandPlugin {
   Name?: string;
@@ -5456,9 +4139,7 @@ export interface CommandPlugin {
   OutputS3BucketName?: string;
   OutputS3KeyPrefix?: string;
 }
-const CommandPlugin = /*@__PURE__*/ __L.at(__c52, 2) as any as S.Schema<CommandPlugin>;
 export type CommandPluginList = CommandPlugin[];
-const CommandPluginList = /*@__PURE__*/ __L.at(__c52, 3);
 export interface CommandInvocation {
   CommandId?: string;
   InstanceId?: string;
@@ -5477,17 +4158,11 @@ export interface CommandInvocation {
   NotificationConfig?: NotificationConfig;
   CloudWatchOutputConfig?: CloudWatchOutputConfig;
 }
-const CommandInvocation = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<CommandInvocation>;
 export type CommandInvocationList = CommandInvocation[];
-const CommandInvocationList = /*@__PURE__*/ __L.at(__c52, 5);
 export interface ListCommandInvocationsResult {
   CommandInvocations?: CommandInvocation[];
   NextToken?: string;
 }
-const ListCommandInvocationsResult = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ListCommandInvocationsResult>;
 export interface ListCommandsRequest {
   CommandId?: string;
   InstanceId?: string;
@@ -5495,7 +4170,6 @@ export interface ListCommandsRequest {
   NextToken?: string;
   Filters?: CommandFilter[];
 }
-const ListCommandsRequest = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<ListCommandsRequest>;
 export type CommandStatus =
   | "Pending"
   | "InProgress"
@@ -5505,8 +4179,6 @@ export type CommandStatus =
   | "TimedOut"
   | "Cancelling"
   | (string & {});
-const CommandStatus = S.String;
-
 export type TargetCount = number;
 export type CompletedCount = number;
 export type ErrorCount = number;
@@ -5539,19 +4211,14 @@ export interface Command {
   AlarmConfiguration?: AlarmConfiguration;
   TriggeredAlarms?: AlarmStateInformation[];
 }
-const Command = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<Command>;
 export type CommandList = Command[];
-const CommandList = /*@__PURE__*/ __L.at(__c53, 1);
 export interface ListCommandsResult {
   Commands?: Command[];
   NextToken?: string;
 }
-const ListCommandsResult = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<ListCommandsResult>;
 export type ComplianceStringFilterKey = string;
 export type ComplianceFilterValue = string;
 export type ComplianceStringFilterValueList = string[];
-const ComplianceStringFilterValueList =
-  InventoryFilterValueList as any as S.Schema<ComplianceStringFilterValueList>;
 export type ComplianceQueryOperatorType =
   | "EQUAL"
   | "NOT_EQUAL"
@@ -5559,25 +4226,16 @@ export type ComplianceQueryOperatorType =
   | "LESS_THAN"
   | "GREATER_THAN"
   | (string & {});
-const ComplianceQueryOperatorType = S.String;
-
 export interface ComplianceStringFilter {
   Key?: string;
   Values?: string[];
   Type?: ComplianceQueryOperatorType;
 }
-const ComplianceStringFilter = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<ComplianceStringFilter>;
 export type ComplianceStringFilterList = ComplianceStringFilter[];
-const ComplianceStringFilterList = /*@__PURE__*/ __L.at(__c53, 4);
 export type ComplianceResourceId = string;
 export type ComplianceResourceIdList = string[];
-const ComplianceResourceIdList = InstanceIdList as any as S.Schema<ComplianceResourceIdList>;
 export type ComplianceResourceType = string;
 export type ComplianceResourceTypeList = string[];
-const ComplianceResourceTypeList = InstanceIdList as any as S.Schema<ComplianceResourceTypeList>;
 export interface ListComplianceItemsRequest {
   Filters?: ComplianceStringFilter[];
   ResourceIds?: string[];
@@ -5585,16 +4243,10 @@ export interface ListComplianceItemsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListComplianceItemsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<ListComplianceItemsRequest>;
 export type ComplianceTypeName = string;
 export type ComplianceItemId = string;
 export type ComplianceItemTitle = string;
 export type ComplianceStatus = "COMPLIANT" | "NON_COMPLIANT" | (string & {});
-const ComplianceStatus = S.String;
-
 export type ComplianceSeverity =
   | "CRITICAL"
   | "HIGH"
@@ -5603,8 +4255,6 @@ export type ComplianceSeverity =
   | "INFORMATIONAL"
   | "UNSPECIFIED"
   | (string & {});
-const ComplianceSeverity = S.String;
-
 export type ComplianceExecutionId = string;
 export type ComplianceExecutionType = string;
 export interface ComplianceExecutionSummary {
@@ -5612,12 +4262,7 @@ export interface ComplianceExecutionSummary {
   ExecutionId?: string;
   ExecutionType?: string;
 }
-const ComplianceExecutionSummary = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<ComplianceExecutionSummary>;
 export type ComplianceItemDetails = { [key: string]: string | undefined };
-const ComplianceItemDetails = NormalStringMap as any as S.Schema<ComplianceItemDetails>;
 export interface ComplianceItem {
   ComplianceType?: string;
   ResourceType?: string;
@@ -5629,26 +4274,16 @@ export interface ComplianceItem {
   ExecutionSummary?: ComplianceExecutionSummary;
   Details?: { [key: string]: string | undefined };
 }
-const ComplianceItem = /*@__PURE__*/ __L.at(__c53, 7) as any as S.Schema<ComplianceItem>;
 export type ComplianceItemList = ComplianceItem[];
-const ComplianceItemList = /*@__PURE__*/ __L.at(__c54, 0);
 export interface ListComplianceItemsResult {
   ComplianceItems?: ComplianceItem[];
   NextToken?: string;
 }
-const ListComplianceItemsResult = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<ListComplianceItemsResult>;
 export interface ListComplianceSummariesRequest {
   Filters?: ComplianceStringFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
-const ListComplianceSummariesRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<ListComplianceSummariesRequest>;
 export type ComplianceSummaryCount = number;
 export interface SeveritySummary {
   CriticalCount?: number;
@@ -5658,39 +4293,25 @@ export interface SeveritySummary {
   InformationalCount?: number;
   UnspecifiedCount?: number;
 }
-const SeveritySummary = /*@__PURE__*/ __L.at(__c54, 3) as any as S.Schema<SeveritySummary>;
 export interface CompliantSummary {
   CompliantCount?: number;
   SeveritySummary?: SeveritySummary;
 }
-const CompliantSummary = /*@__PURE__*/ __L.at(__c54, 4) as any as S.Schema<CompliantSummary>;
 export interface NonCompliantSummary {
   NonCompliantCount?: number;
   SeveritySummary?: SeveritySummary;
 }
-const NonCompliantSummary = /*@__PURE__*/ __L.at(__c54, 5) as any as S.Schema<NonCompliantSummary>;
 export interface ComplianceSummaryItem {
   ComplianceType?: string;
   CompliantSummary?: CompliantSummary;
   NonCompliantSummary?: NonCompliantSummary;
 }
-const ComplianceSummaryItem = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ComplianceSummaryItem>;
 export type ComplianceSummaryItemList = ComplianceSummaryItem[];
-const ComplianceSummaryItemList = /*@__PURE__*/ __L.at(__c54, 7);
 export interface ListComplianceSummariesResult {
   ComplianceSummaryItems?: ComplianceSummaryItem[];
   NextToken?: string;
 }
-const ListComplianceSummariesResult = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<ListComplianceSummariesResult>;
 export type DocumentMetadataEnum = "DocumentReviews" | (string & {});
-const DocumentMetadataEnum = S.String;
-
 export interface ListDocumentMetadataHistoryRequest {
   Name: string;
   DocumentVersion?: string;
@@ -5698,24 +4319,13 @@ export interface ListDocumentMetadataHistoryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListDocumentMetadataHistoryRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ListDocumentMetadataHistoryRequest>;
 export type DocumentReviewCommentType = "Comment" | (string & {});
-const DocumentReviewCommentType = S.String;
-
 export type DocumentReviewComment = string;
 export interface DocumentReviewCommentSource {
   Type?: DocumentReviewCommentType;
   Content?: string;
 }
-const DocumentReviewCommentSource = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<DocumentReviewCommentSource>;
 export type DocumentReviewCommentList = DocumentReviewCommentSource[];
-const DocumentReviewCommentList = /*@__PURE__*/ __L.at(__c55, 3);
 export interface DocumentReviewerResponseSource {
   CreateTime?: Date;
   UpdatedTime?: Date;
@@ -5723,19 +4333,10 @@ export interface DocumentReviewerResponseSource {
   Comment?: DocumentReviewCommentSource[];
   Reviewer?: string;
 }
-const DocumentReviewerResponseSource = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<DocumentReviewerResponseSource>;
 export type DocumentReviewerResponseList = DocumentReviewerResponseSource[];
-const DocumentReviewerResponseList = /*@__PURE__*/ __L.at(__c55, 5);
 export interface DocumentMetadataResponseInfo {
   ReviewerResponse?: DocumentReviewerResponseSource[];
 }
-const DocumentMetadataResponseInfo = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<DocumentMetadataResponseInfo>;
 export interface ListDocumentMetadataHistoryResponse {
   Name?: string;
   DocumentVersion?: string;
@@ -5743,19 +4344,13 @@ export interface ListDocumentMetadataHistoryResponse {
   Metadata?: DocumentMetadataResponseInfo;
   NextToken?: string;
 }
-const ListDocumentMetadataHistoryResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<ListDocumentMetadataHistoryResponse>;
 export type DocumentFilterKey = "Name" | "Owner" | "PlatformTypes" | "DocumentType" | (string & {});
 export type DocumentFilterValue = string;
 export interface DocumentFilter {
   key: DocumentFilterKey;
   value: string;
 }
-const DocumentFilter = SessionFilter as any as S.Schema<DocumentFilter>;
 export type DocumentFilterList = DocumentFilter[];
-const DocumentFilterList = /*@__PURE__*/ __L.at(__c56, 0);
 export type DocumentKeyValuesFilterKey = string;
 export type DocumentKeyValuesFilterValue = string;
 export type DocumentKeyValuesFilterValues = string[];
@@ -5764,17 +4359,12 @@ export interface DocumentKeyValuesFilter {
   Values?: string[];
 }
 export type DocumentKeyValuesFilterList = DocumentKeyValuesFilter[];
-const DocumentKeyValuesFilterList = Targets as any as S.Schema<DocumentKeyValuesFilterList>;
 export interface ListDocumentsRequest {
   DocumentFilterList?: DocumentFilter[];
   Filters?: DocumentKeyValuesFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ListDocumentsRequest>;
 export interface DocumentIdentifier {
   Name?: string;
   CreatedDate?: Date;
@@ -5792,23 +4382,16 @@ export interface DocumentIdentifier {
   ReviewStatus?: ReviewStatus;
   Author?: string;
 }
-const DocumentIdentifier = /*@__PURE__*/ __L.at(__c56, 2) as any as S.Schema<DocumentIdentifier>;
 export type DocumentIdentifierList = DocumentIdentifier[];
-const DocumentIdentifierList = /*@__PURE__*/ __L.at(__c56, 3);
 export interface ListDocumentsResult {
   DocumentIdentifiers?: DocumentIdentifier[];
   NextToken?: string;
 }
-const ListDocumentsResult = /*@__PURE__*/ __L.at(__c56, 4) as any as S.Schema<ListDocumentsResult>;
 export interface ListDocumentVersionsRequest {
   Name: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListDocumentVersionsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<ListDocumentVersionsRequest>;
 export interface DocumentVersionInfo {
   Name?: string;
   DisplayName?: string;
@@ -5821,17 +4404,11 @@ export interface DocumentVersionInfo {
   StatusInformation?: string;
   ReviewStatus?: ReviewStatus;
 }
-const DocumentVersionInfo = /*@__PURE__*/ __L.at(__c56, 6) as any as S.Schema<DocumentVersionInfo>;
 export type DocumentVersionList = DocumentVersionInfo[];
-const DocumentVersionList = /*@__PURE__*/ __L.at(__c56, 7);
 export interface ListDocumentVersionsResult {
   DocumentVersions?: DocumentVersionInfo[];
   NextToken?: string;
 }
-const ListDocumentVersionsResult = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<ListDocumentVersionsResult>;
 export interface ListInventoryEntriesRequest {
   InstanceId: string;
   TypeName: string;
@@ -5839,10 +4416,6 @@ export interface ListInventoryEntriesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListInventoryEntriesRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<ListInventoryEntriesRequest>;
 export interface ListInventoryEntriesResult {
   TypeName?: string;
   InstanceId?: string;
@@ -5851,10 +4424,6 @@ export interface ListInventoryEntriesResult {
   Entries?: { [key: string]: string | undefined }[];
   NextToken?: string;
 }
-const ListInventoryEntriesResult = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<ListInventoryEntriesResult>;
 export type NodeFilterKey =
   | "AgentType"
   | "AgentVersion"
@@ -5877,29 +4446,21 @@ export type NodeFilterKey =
   | "AvailabilityZone"
   | "AvailabilityZoneId"
   | (string & {});
-const NodeFilterKey = S.String;
-
 export type NodeFilterValue = string;
 export type NodeFilterValueList = string[];
-const NodeFilterValueList = InventoryFilterValueList as any as S.Schema<NodeFilterValueList>;
 export type NodeFilterOperatorType = "Equal" | "NotEqual" | "BeginWith" | (string & {});
-const NodeFilterOperatorType = S.String;
-
 export interface NodeFilter {
   Key: NodeFilterKey;
   Values: string[];
   Type?: NodeFilterOperatorType;
 }
-const NodeFilter = /*@__PURE__*/ __L.at(__c57, 3) as any as S.Schema<NodeFilter>;
 export type NodeFilterList = NodeFilter[];
-const NodeFilterList = /*@__PURE__*/ __L.at(__c57, 4);
 export interface ListNodesRequest {
   SyncName?: string;
   Filters?: NodeFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
-const ListNodesRequest = /*@__PURE__*/ __L.at(__c57, 5) as any as S.Schema<ListNodesRequest>;
 export type NodeCaptureTime = Date;
 export type NodeId = string;
 export type NodeAccountId = string;
@@ -5910,14 +4471,11 @@ export interface NodeOwnerInfo {
   OrganizationalUnitId?: string;
   OrganizationalUnitPath?: string;
 }
-const NodeOwnerInfo = /*@__PURE__*/ __L.at(__c57, 6) as any as S.Schema<NodeOwnerInfo>;
 export type NodeRegion = string;
 export type AgentType = string;
 export type AgentVersion = string;
 export type InstanceStatus = string;
 export type ManagedStatus = "All" | "Managed" | "Unmanaged" | (string & {});
-const ManagedStatus = S.String;
-
 export type NodeName = string;
 export type AvailabilityZoneId = string;
 export interface InstanceInfo {
@@ -5938,9 +4496,7 @@ export interface InstanceInfo {
   AvailabilityZone?: string;
   AvailabilityZoneId?: string;
 }
-const InstanceInfo = /*@__PURE__*/ __L.at(__c57, 7) as any as S.Schema<InstanceInfo>;
 export type NodeType = { Instance: InstanceInfo };
-const NodeType = /*@__PURE__*/ __L.at(__c58, 0);
 export interface Node {
   CaptureTime?: Date;
   Id?: string;
@@ -5948,20 +4504,13 @@ export interface Node {
   Region?: string;
   NodeType?: NodeType;
 }
-const Node = /*@__PURE__*/ __L.at(__c58, 1) as any as S.Schema<Node>;
 export type NodeList = Node[];
-const NodeList = /*@__PURE__*/ __L.at(__c58, 2);
 export interface ListNodesResult {
   Nodes?: Node[];
   NextToken?: string;
 }
-const ListNodesResult = /*@__PURE__*/ __L.at(__c58, 3) as any as S.Schema<ListNodesResult>;
 export type NodeAggregatorType = "Count" | (string & {});
-const NodeAggregatorType = S.String;
-
 export type NodeTypeName = "Instance" | (string & {});
-const NodeTypeName = S.String;
-
 export type NodeAttributeName =
   | "AgentVersion"
   | "PlatformName"
@@ -5972,17 +4521,13 @@ export type NodeAttributeName =
   | "SourceType"
   | "AvailabilityZone"
   | (string & {});
-const NodeAttributeName = S.String;
-
 export interface NodeAggregator {
   AggregatorType: NodeAggregatorType;
   TypeName: NodeTypeName;
   AttributeName: NodeAttributeName;
   Aggregators?: NodeAggregator[];
 }
-const NodeAggregator = /*@__PURE__*/ __L.at(__c58, 4) as any as S.Schema<NodeAggregator>;
 export type NodeAggregatorList = NodeAggregator[];
-const NodeAggregatorList = /*@__PURE__*/ __L.at(__c58, 5) as any as S.Schema<NodeAggregatorList>;
 export interface ListNodesSummaryRequest {
   SyncName?: string;
   Filters?: NodeFilter[];
@@ -5990,52 +4535,31 @@ export interface ListNodesSummaryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListNodesSummaryRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<ListNodesSummaryRequest>;
 export type NodeSummary = { [key: string]: string | undefined };
 export type NodeSummaryList = { [key: string]: string | undefined }[];
-const NodeSummaryList = PatchPropertiesList as any as S.Schema<NodeSummaryList>;
 export interface ListNodesSummaryResult {
   Summary?: { [key: string]: string | undefined }[];
   NextToken?: string;
 }
-const ListNodesSummaryResult = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<ListNodesSummaryResult>;
 export type OpsItemEventFilterKey = "OpsItemId" | (string & {});
-const OpsItemEventFilterKey = S.String;
-
 export type OpsItemEventFilterValue = string;
 export type OpsItemEventFilterValues = string[];
-const OpsItemEventFilterValues = InstanceIdList as any as S.Schema<OpsItemEventFilterValues>;
 export type OpsItemEventFilterOperator = "Equal" | (string & {});
-const OpsItemEventFilterOperator = S.String;
-
 export interface OpsItemEventFilter {
   Key: OpsItemEventFilterKey;
   Values: string[];
   Operator: OpsItemEventFilterOperator;
 }
-const OpsItemEventFilter = /*@__PURE__*/ __L.at(__c59, 0) as any as S.Schema<OpsItemEventFilter>;
 export type OpsItemEventFilters = OpsItemEventFilter[];
-const OpsItemEventFilters = /*@__PURE__*/ __L.at(__c59, 1);
 export type OpsItemEventMaxResults = number;
 export interface ListOpsItemEventsRequest {
   Filters?: OpsItemEventFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListOpsItemEventsRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<ListOpsItemEventsRequest>;
 export interface OpsItemIdentity {
   Arn?: string;
 }
-const OpsItemIdentity = OpsItemNotification as any as S.Schema<OpsItemIdentity>;
 export interface OpsItemEventSummary {
   OpsItemId?: string;
   EventId?: string;
@@ -6045,42 +4569,25 @@ export interface OpsItemEventSummary {
   CreatedBy?: OpsItemIdentity;
   CreatedTime?: Date;
 }
-const OpsItemEventSummary = /*@__PURE__*/ __L.at(__c59, 3) as any as S.Schema<OpsItemEventSummary>;
 export type OpsItemEventSummaries = OpsItemEventSummary[];
-const OpsItemEventSummaries = /*@__PURE__*/ __L.at(__c59, 4);
 export interface ListOpsItemEventsResponse {
   NextToken?: string;
   Summaries?: OpsItemEventSummary[];
 }
-const ListOpsItemEventsResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<ListOpsItemEventsResponse>;
 export type OpsItemRelatedItemsFilterKey =
   | "ResourceType"
   | "AssociationId"
   | "ResourceUri"
   | (string & {});
-const OpsItemRelatedItemsFilterKey = S.String;
-
 export type OpsItemRelatedItemsFilterValue = string;
 export type OpsItemRelatedItemsFilterValues = string[];
-const OpsItemRelatedItemsFilterValues =
-  InstanceIdList as any as S.Schema<OpsItemRelatedItemsFilterValues>;
 export type OpsItemRelatedItemsFilterOperator = "Equal" | (string & {});
-const OpsItemRelatedItemsFilterOperator = S.String;
-
 export interface OpsItemRelatedItemsFilter {
   Key: OpsItemRelatedItemsFilterKey;
   Values: string[];
   Operator: OpsItemRelatedItemsFilterOperator;
 }
-const OpsItemRelatedItemsFilter = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<OpsItemRelatedItemsFilter>;
 export type OpsItemRelatedItemsFilters = OpsItemRelatedItemsFilter[];
-const OpsItemRelatedItemsFilters = /*@__PURE__*/ __L.at(__c59, 7);
 export type OpsItemRelatedItemsMaxResults = number;
 export interface ListOpsItemRelatedItemsRequest {
   OpsItemId?: string;
@@ -6088,10 +4595,6 @@ export interface ListOpsItemRelatedItemsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListOpsItemRelatedItemsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<ListOpsItemRelatedItemsRequest>;
 export interface OpsItemRelatedItemSummary {
   OpsItemId?: string;
   AssociationId?: string;
@@ -6103,41 +4606,25 @@ export interface OpsItemRelatedItemSummary {
   LastModifiedBy?: OpsItemIdentity;
   LastModifiedTime?: Date;
 }
-const OpsItemRelatedItemSummary = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<OpsItemRelatedItemSummary>;
 export type OpsItemRelatedItemSummaries = OpsItemRelatedItemSummary[];
-const OpsItemRelatedItemSummaries = /*@__PURE__*/ __L.at(__c60, 2);
 export interface ListOpsItemRelatedItemsResponse {
   NextToken?: string;
   Summaries?: OpsItemRelatedItemSummary[];
 }
-const ListOpsItemRelatedItemsResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<ListOpsItemRelatedItemsResponse>;
 export type OpsMetadataFilterKey = string;
 export type OpsMetadataFilterValue = string;
 export type OpsMetadataFilterValueList = string[];
-const OpsMetadataFilterValueList = InstanceIdList as any as S.Schema<OpsMetadataFilterValueList>;
 export interface OpsMetadataFilter {
   Key: string;
   Values: string[];
 }
-const OpsMetadataFilter = /*@__PURE__*/ __L.at(__c60, 4) as any as S.Schema<OpsMetadataFilter>;
 export type OpsMetadataFilterList = OpsMetadataFilter[];
-const OpsMetadataFilterList = /*@__PURE__*/ __L.at(__c60, 5);
 export type ListOpsMetadataMaxResults = number;
 export interface ListOpsMetadataRequest {
   Filters?: OpsMetadataFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListOpsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<ListOpsMetadataRequest>;
 export interface OpsMetadata {
   ResourceId?: string;
   OpsMetadataArn?: string;
@@ -6145,26 +4632,16 @@ export interface OpsMetadata {
   LastModifiedUser?: string;
   CreationDate?: Date;
 }
-const OpsMetadata = /*@__PURE__*/ __L.at(__c60, 7) as any as S.Schema<OpsMetadata>;
 export type OpsMetadataList = OpsMetadata[];
-const OpsMetadataList = /*@__PURE__*/ __L.at(__c61, 0);
 export interface ListOpsMetadataResult {
   OpsMetadataList?: OpsMetadata[];
   NextToken?: string;
 }
-const ListOpsMetadataResult = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<ListOpsMetadataResult>;
 export interface ListResourceComplianceSummariesRequest {
   Filters?: ComplianceStringFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
-const ListResourceComplianceSummariesRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<ListResourceComplianceSummariesRequest>;
 export interface ResourceComplianceSummaryItem {
   ComplianceType?: string;
   ResourceType?: string;
@@ -6175,29 +4652,16 @@ export interface ResourceComplianceSummaryItem {
   CompliantSummary?: CompliantSummary;
   NonCompliantSummary?: NonCompliantSummary;
 }
-const ResourceComplianceSummaryItem = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<ResourceComplianceSummaryItem>;
 export type ResourceComplianceSummaryItemList = ResourceComplianceSummaryItem[];
-const ResourceComplianceSummaryItemList = /*@__PURE__*/ __L.at(__c61, 4);
 export interface ListResourceComplianceSummariesResult {
   ResourceComplianceSummaryItems?: ResourceComplianceSummaryItem[];
   NextToken?: string;
 }
-const ListResourceComplianceSummariesResult = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<ListResourceComplianceSummariesResult>;
 export interface ListResourceDataSyncRequest {
   SyncType?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListResourceDataSyncRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<ListResourceDataSyncRequest>;
 export type ResourceDataSyncState = string;
 export interface ResourceDataSyncSourceWithState {
   SourceType?: string;
@@ -6207,16 +4671,10 @@ export interface ResourceDataSyncSourceWithState {
   State?: string;
   EnableAllOpsDataSources?: boolean;
 }
-const ResourceDataSyncSourceWithState = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<ResourceDataSyncSourceWithState>;
 export type LastResourceDataSyncTime = Date;
 export type LastSuccessfulResourceDataSyncTime = Date;
 export type ResourceDataSyncLastModifiedTime = Date;
 export type LastResourceDataSyncStatus = "Successful" | "Failed" | "InProgress" | (string & {});
-const LastResourceDataSyncStatus = S.String;
-
 export type ResourceDataSyncCreatedTime = Date;
 export type LastResourceDataSyncMessage = string;
 export interface ResourceDataSyncItem {
@@ -6231,35 +4689,18 @@ export interface ResourceDataSyncItem {
   SyncCreatedTime?: Date;
   LastSyncStatusMessage?: string;
 }
-const ResourceDataSyncItem = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<ResourceDataSyncItem>;
 export type ResourceDataSyncItemList = ResourceDataSyncItem[];
-const ResourceDataSyncItemList = /*@__PURE__*/ __L.at(__c62, 1);
 export interface ListResourceDataSyncResult {
   ResourceDataSyncItems?: ResourceDataSyncItem[];
   NextToken?: string;
 }
-const ListResourceDataSyncResult = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<ListResourceDataSyncResult>;
 export interface ListTagsForResourceRequest {
   ResourceType: ResourceTypeForTagging;
   ResourceId: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   TagList?: Tag[];
 }
-const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<ListTagsForResourceResult>;
 export interface ModifyDocumentPermissionRequest {
   Name: string;
   PermissionType: DocumentPermissionType;
@@ -6267,13 +4708,7 @@ export interface ModifyDocumentPermissionRequest {
   AccountIdsToRemove?: string[];
   SharedDocumentVersion?: string;
 }
-const ModifyDocumentPermissionRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<ModifyDocumentPermissionRequest>;
 export interface ModifyDocumentPermissionResponse {}
-const ModifyDocumentPermissionResponse =
-  CreateResourceDataSyncResult as any as S.Schema<ModifyDocumentPermissionResponse>;
 export interface ComplianceItemEntry {
   Id?: string;
   Title?: string;
@@ -6281,13 +4716,9 @@ export interface ComplianceItemEntry {
   Status: ComplianceStatus;
   Details?: { [key: string]: string | undefined };
 }
-const ComplianceItemEntry = /*@__PURE__*/ __L.at(__c62, 6) as any as S.Schema<ComplianceItemEntry>;
 export type ComplianceItemEntryList = ComplianceItemEntry[];
-const ComplianceItemEntryList = /*@__PURE__*/ __L.at(__c62, 7);
 export type ComplianceItemContentHash = string;
 export type ComplianceUploadType = "COMPLETE" | "PARTIAL" | (string & {});
-const ComplianceUploadType = S.String;
-
 export interface PutComplianceItemsRequest {
   ResourceId: string;
   ResourceType: string;
@@ -6297,15 +4728,8 @@ export interface PutComplianceItemsRequest {
   ItemContentHash?: string;
   UploadType?: ComplianceUploadType;
 }
-const PutComplianceItemsRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<PutComplianceItemsRequest>;
 export interface PutComplianceItemsResult {}
-const PutComplianceItemsResult =
-  AddTagsToResourceResult as any as S.Schema<PutComplianceItemsResult>;
 export type InventoryItemContentContext = { [key: string]: string | undefined };
-const InventoryItemContentContext = NormalStringMap as any as S.Schema<InventoryItemContentContext>;
 export interface InventoryItem {
   TypeName: string;
   SchemaVersion: string;
@@ -6314,19 +4738,15 @@ export interface InventoryItem {
   Content?: { [key: string]: string | undefined }[];
   Context?: { [key: string]: string | undefined };
 }
-const InventoryItem = /*@__PURE__*/ __L.at(__c63, 1) as any as S.Schema<InventoryItem>;
 export type InventoryItemList = InventoryItem[];
-const InventoryItemList = /*@__PURE__*/ __L.at(__c63, 2);
 export interface PutInventoryRequest {
   InstanceId: string;
   Items: InventoryItem[];
 }
-const PutInventoryRequest = /*@__PURE__*/ __L.at(__c63, 3) as any as S.Schema<PutInventoryRequest>;
 export type PutInventoryMessage = string;
 export interface PutInventoryResult {
   Message?: string;
 }
-const PutInventoryResult = /*@__PURE__*/ __L.at(__c63, 4) as any as S.Schema<PutInventoryResult>;
 export type ParameterPolicies = string;
 export interface PutParameterRequest {
   Name: string;
@@ -6341,56 +4761,34 @@ export interface PutParameterRequest {
   Policies?: string;
   DataType?: string;
 }
-const PutParameterRequest = /*@__PURE__*/ __L.at(__c63, 5) as any as S.Schema<PutParameterRequest>;
 export interface PutParameterResult {
   Version?: number;
   Tier?: ParameterTier;
 }
-const PutParameterResult = /*@__PURE__*/ __L.at(__c63, 6) as any as S.Schema<PutParameterResult>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   Policy: string;
   PolicyId?: string;
   PolicyHash?: string;
 }
-const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {
   PolicyId?: string;
   PolicyHash?: string;
 }
-const PutResourcePolicyResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<PutResourcePolicyResponse>;
 export interface RegisterDefaultPatchBaselineRequest {
   BaselineId: string;
 }
-const RegisterDefaultPatchBaselineRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<RegisterDefaultPatchBaselineRequest>;
 export interface RegisterDefaultPatchBaselineResult {
   BaselineId?: string;
 }
-const RegisterDefaultPatchBaselineResult =
-  CreatePatchBaselineResult as any as S.Schema<RegisterDefaultPatchBaselineResult>;
 export interface RegisterPatchBaselineForPatchGroupRequest {
   BaselineId: string;
   PatchGroup: string;
 }
-const RegisterPatchBaselineForPatchGroupRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<RegisterPatchBaselineForPatchGroupRequest>;
 export interface RegisterPatchBaselineForPatchGroupResult {
   BaselineId?: string;
   PatchGroup?: string;
 }
-const RegisterPatchBaselineForPatchGroupResult =
-  DeregisterPatchBaselineForPatchGroupResult as any as S.Schema<RegisterPatchBaselineForPatchGroupResult>;
 export interface RegisterTargetWithMaintenanceWindowRequest {
   WindowId: string;
   ResourceType: MaintenanceWindowResourceType;
@@ -6400,17 +4798,9 @@ export interface RegisterTargetWithMaintenanceWindowRequest {
   Description?: string | redacted.Redacted<string>;
   ClientToken?: string;
 }
-const RegisterTargetWithMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<RegisterTargetWithMaintenanceWindowRequest>;
 export interface RegisterTargetWithMaintenanceWindowResult {
   WindowTargetId?: string;
 }
-const RegisterTargetWithMaintenanceWindowResult = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<RegisterTargetWithMaintenanceWindowResult>;
 export interface RegisterTaskWithMaintenanceWindowRequest {
   WindowId: string;
   Targets?: Target[];
@@ -6429,52 +4819,25 @@ export interface RegisterTaskWithMaintenanceWindowRequest {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-const RegisterTaskWithMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<RegisterTaskWithMaintenanceWindowRequest>;
 export interface RegisterTaskWithMaintenanceWindowResult {
   WindowTaskId?: string;
 }
-const RegisterTaskWithMaintenanceWindowResult = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<RegisterTaskWithMaintenanceWindowResult>;
 export type KeyList = string[];
-const KeyList = InstanceIdList as any as S.Schema<KeyList>;
 export interface RemoveTagsFromResourceRequest {
   ResourceType: ResourceTypeForTagging;
   ResourceId: string;
   TagKeys: string[];
 }
-const RemoveTagsFromResourceRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<RemoveTagsFromResourceRequest>;
 export interface RemoveTagsFromResourceResult {}
-const RemoveTagsFromResourceResult =
-  CreateResourceDataSyncResult as any as S.Schema<RemoveTagsFromResourceResult>;
 export interface ResetServiceSettingRequest {
   SettingId: string;
 }
-const ResetServiceSettingRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<ResetServiceSettingRequest>;
 export interface ResetServiceSettingResult {
   ServiceSetting?: ServiceSetting;
 }
-const ResetServiceSettingResult = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<ResetServiceSettingResult>;
 export interface ResumeSessionRequest {
   SessionId: string;
 }
-const ResumeSessionRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<ResumeSessionRequest>;
 export type TokenValue = string;
 export type StreamUrl = string;
 export interface ResumeSessionResponse {
@@ -6482,10 +4845,6 @@ export interface ResumeSessionResponse {
   TokenValue?: string;
   StreamUrl?: string;
 }
-const ResumeSessionResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<ResumeSessionResponse>;
 export type SignalType =
   | "Approve"
   | "Reject"
@@ -6494,20 +4853,12 @@ export type SignalType =
   | "Resume"
   | "Revoke"
   | (string & {});
-const SignalType = S.String;
-
 export interface SendAutomationSignalRequest {
   AutomationExecutionId: string;
   SignalType: SignalType;
   Payload?: { [key: string]: string[] | undefined };
 }
-const SendAutomationSignalRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<SendAutomationSignalRequest>;
 export interface SendAutomationSignalResult {}
-const SendAutomationSignalResult =
-  CreateResourceDataSyncResult as any as S.Schema<SendAutomationSignalResult>;
 export interface SendCommandRequest {
   InstanceIds?: string[];
   Targets?: Target[];
@@ -6528,40 +4879,23 @@ export interface SendCommandRequest {
   CloudWatchOutputConfig?: CloudWatchOutputConfig;
   AlarmConfiguration?: AlarmConfiguration;
 }
-const SendCommandRequest = /*@__PURE__*/ __L.at(__c65, 5) as any as S.Schema<SendCommandRequest>;
 export interface SendCommandResult {
   Command?: Command;
 }
-const SendCommandResult = /*@__PURE__*/ __L.at(__c65, 6) as any as S.Schema<SendCommandResult>;
 export type String1to256 = string;
 export interface StartAccessRequestRequest {
   Reason: string;
   Targets: Target[];
   Tags?: Tag[];
 }
-const StartAccessRequestRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<StartAccessRequestRequest>;
 export interface StartAccessRequestResponse {
   AccessRequestId?: string;
 }
-const StartAccessRequestResponse = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<StartAccessRequestResponse>;
 export type AssociationIdList = string[];
-const AssociationIdList = InstanceIdList as any as S.Schema<AssociationIdList>;
 export interface StartAssociationsOnceRequest {
   AssociationIds: string[];
 }
-const StartAssociationsOnceRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<StartAssociationsOnceRequest>;
 export interface StartAssociationsOnceResult {}
-const StartAssociationsOnceResult =
-  CreateResourceDataSyncResult as any as S.Schema<StartAssociationsOnceResult>;
 export type IdempotencyToken = string;
 export interface StartAutomationExecutionRequest {
   DocumentName: string;
@@ -6579,17 +4913,9 @@ export interface StartAutomationExecutionRequest {
   AlarmConfiguration?: AlarmConfiguration;
   TargetLocationsURL?: string;
 }
-const StartAutomationExecutionRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<StartAutomationExecutionRequest>;
 export interface StartAutomationExecutionResult {
   AutomationExecutionId?: string;
 }
-const StartAutomationExecutionResult = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<StartAutomationExecutionResult>;
 export type ChangeDetailsValue = string;
 export interface StartChangeRequestExecutionRequest {
   ScheduledTime?: Date;
@@ -6604,15 +4930,9 @@ export interface StartChangeRequestExecutionRequest {
   ScheduledEndTime?: Date;
   ChangeDetails?: string;
 }
-const StartChangeRequestExecutionRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<StartChangeRequestExecutionRequest>;
 export interface StartChangeRequestExecutionResult {
   AutomationExecutionId?: string;
 }
-const StartChangeRequestExecutionResult =
-  StartAutomationExecutionResult as any as S.Schema<StartChangeRequestExecutionResult>;
 export interface AutomationExecutionInputs {
   Parameters?: { [key: string]: string[] | undefined };
   TargetParameterName?: string;
@@ -6621,91 +4941,51 @@ export interface AutomationExecutionInputs {
   TargetLocations?: TargetLocation[];
   TargetLocationsURL?: string;
 }
-const AutomationExecutionInputs = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<AutomationExecutionInputs>;
 export type ExecutionInputs = { Automation: AutomationExecutionInputs };
-const ExecutionInputs = /*@__PURE__*/ __L.at(__c66, 6);
 export interface StartExecutionPreviewRequest {
   DocumentName: string;
   DocumentVersion?: string;
   ExecutionInputs?: ExecutionInputs;
 }
-const StartExecutionPreviewRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<StartExecutionPreviewRequest>;
 export interface StartExecutionPreviewResponse {
   ExecutionPreviewId?: string;
 }
-const StartExecutionPreviewResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<StartExecutionPreviewResponse>;
 export type SessionManagerParameterName = string;
 export type SessionManagerParameterValue = string;
 export type SessionManagerParameterValueList = string[];
 export type SessionManagerParameters = { [key: string]: string[] | undefined };
-const SessionManagerParameters = Parameters as any as S.Schema<SessionManagerParameters>;
 export interface StartSessionRequest {
   Target: string;
   DocumentName?: string;
   Reason?: string;
   Parameters?: { [key: string]: string[] | undefined };
 }
-const StartSessionRequest = /*@__PURE__*/ __L.at(__c67, 1) as any as S.Schema<StartSessionRequest>;
 export interface StartSessionResponse {
   SessionId?: string;
   TokenValue?: string;
   StreamUrl?: string;
 }
-const StartSessionResponse = ResumeSessionResponse as any as S.Schema<StartSessionResponse>;
 export type StopType = "Complete" | "Cancel" | (string & {});
-const StopType = S.String;
-
 export interface StopAutomationExecutionRequest {
   AutomationExecutionId: string;
   Type?: StopType;
 }
-const StopAutomationExecutionRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<StopAutomationExecutionRequest>;
 export interface StopAutomationExecutionResult {}
-const StopAutomationExecutionResult =
-  CreateResourceDataSyncResult as any as S.Schema<StopAutomationExecutionResult>;
 export interface TerminateSessionRequest {
   SessionId: string;
 }
-const TerminateSessionRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<TerminateSessionRequest>;
 export interface TerminateSessionResponse {
   SessionId?: string;
 }
-const TerminateSessionResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<TerminateSessionResponse>;
 export interface UnlabelParameterVersionRequest {
   Name: string;
   ParameterVersion: number;
   Labels: string[];
 }
-const UnlabelParameterVersionRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<UnlabelParameterVersionRequest>;
 export interface UnlabelParameterVersionResult {
   RemovedLabels?: string[];
   InvalidLabels?: string[];
 }
-const UnlabelParameterVersionResult = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<UnlabelParameterVersionResult>;
 export interface UpdateAssociationRequest {
   AssociationId: string;
   Parameters?: { [key: string]: string[] | undefined };
@@ -6730,43 +5010,26 @@ export interface UpdateAssociationRequest {
   AlarmConfiguration?: AlarmConfiguration;
   AssociationDispatchAssumeRole?: string;
 }
-const UpdateAssociationRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<UpdateAssociationRequest>;
 export interface UpdateAssociationResult {
   AssociationDescription?: AssociationDescription;
 }
-const UpdateAssociationResult = CreateAssociationResult as any as S.Schema<UpdateAssociationResult>;
 export interface UpdateAssociationStatusRequest {
   Name: string;
   InstanceId: string;
   AssociationStatus: AssociationStatus;
 }
-const UpdateAssociationStatusRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<UpdateAssociationStatusRequest>;
 export interface UpdateAssociationStatusResult {
   AssociationDescription?: AssociationDescription;
 }
-const UpdateAssociationStatusResult =
-  DescribeAssociationResult as any as S.Schema<UpdateAssociationStatusResult>;
 export interface UpdateCloudConnectorRequest {
   CloudConnectorId: string;
   DisplayName?: string;
   Configuration?: CloudConnectorConfiguration;
   Description?: string;
 }
-const UpdateCloudConnectorRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<UpdateCloudConnectorRequest>;
 export interface UpdateCloudConnectorResult {
   CloudConnectorId?: string;
 }
-const UpdateCloudConnectorResult =
-  CreateCloudConnectorResult as any as S.Schema<UpdateCloudConnectorResult>;
 export interface UpdateDocumentRequest {
   Content: string;
   Attachments?: AttachmentsSource[];
@@ -6777,64 +5040,38 @@ export interface UpdateDocumentRequest {
   DocumentFormat?: DocumentFormat;
   TargetType?: string;
 }
-const UpdateDocumentRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<UpdateDocumentRequest>;
 export interface UpdateDocumentResult {
   DocumentDescription?: DocumentDescription;
 }
-const UpdateDocumentResult = CreateDocumentResult as any as S.Schema<UpdateDocumentResult>;
 export type DocumentVersionNumber = string;
 export interface UpdateDocumentDefaultVersionRequest {
   Name: string;
   DocumentVersion: string;
 }
-const UpdateDocumentDefaultVersionRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<UpdateDocumentDefaultVersionRequest>;
 export interface DocumentDefaultVersionDescription {
   Name?: string;
   DefaultVersion?: string;
   DefaultVersionName?: string;
 }
-const DocumentDefaultVersionDescription = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<DocumentDefaultVersionDescription>;
 export interface UpdateDocumentDefaultVersionResult {
   Description?: DocumentDefaultVersionDescription;
 }
-const UpdateDocumentDefaultVersionResult = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<UpdateDocumentDefaultVersionResult>;
 export type DocumentReviewAction =
   | "SendForReview"
   | "UpdateReview"
   | "Approve"
   | "Reject"
   | (string & {});
-const DocumentReviewAction = S.String;
-
 export interface DocumentReviews {
   Action: DocumentReviewAction;
   Comment?: DocumentReviewCommentSource[];
 }
-const DocumentReviews = /*@__PURE__*/ __L.at(__c68, 6) as any as S.Schema<DocumentReviews>;
 export interface UpdateDocumentMetadataRequest {
   Name: string;
   DocumentVersion?: string;
   DocumentReviews: DocumentReviews;
 }
-const UpdateDocumentMetadataRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<UpdateDocumentMetadataRequest>;
 export interface UpdateDocumentMetadataResponse {}
-const UpdateDocumentMetadataResponse =
-  CreateResourceDataSyncResult as any as S.Schema<UpdateDocumentMetadataResponse>;
 export interface UpdateMaintenanceWindowRequest {
   WindowId: string;
   Name?: string;
@@ -6850,10 +5087,6 @@ export interface UpdateMaintenanceWindowRequest {
   Enabled?: boolean;
   Replace?: boolean;
 }
-const UpdateMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<UpdateMaintenanceWindowRequest>;
 export interface UpdateMaintenanceWindowResult {
   WindowId?: string;
   Name?: string;
@@ -6868,10 +5101,6 @@ export interface UpdateMaintenanceWindowResult {
   AllowUnassociatedTargets?: boolean;
   Enabled?: boolean;
 }
-const UpdateMaintenanceWindowResult = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<UpdateMaintenanceWindowResult>;
 export interface UpdateMaintenanceWindowTargetRequest {
   WindowId: string;
   WindowTargetId: string;
@@ -6881,10 +5110,6 @@ export interface UpdateMaintenanceWindowTargetRequest {
   Description?: string | redacted.Redacted<string>;
   Replace?: boolean;
 }
-const UpdateMaintenanceWindowTargetRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<UpdateMaintenanceWindowTargetRequest>;
 export interface UpdateMaintenanceWindowTargetResult {
   WindowId?: string;
   WindowTargetId?: string;
@@ -6893,10 +5118,6 @@ export interface UpdateMaintenanceWindowTargetResult {
   Name?: string;
   Description?: string | redacted.Redacted<string>;
 }
-const UpdateMaintenanceWindowTargetResult = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<UpdateMaintenanceWindowTargetResult>;
 export interface UpdateMaintenanceWindowTaskRequest {
   WindowId: string;
   WindowTaskId: string;
@@ -6915,10 +5136,6 @@ export interface UpdateMaintenanceWindowTaskRequest {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-const UpdateMaintenanceWindowTaskRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<UpdateMaintenanceWindowTaskRequest>;
 export interface UpdateMaintenanceWindowTaskResult {
   WindowId?: string;
   WindowTaskId?: string;
@@ -6936,23 +5153,12 @@ export interface UpdateMaintenanceWindowTaskResult {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-const UpdateMaintenanceWindowTaskResult = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<UpdateMaintenanceWindowTaskResult>;
 export interface UpdateManagedInstanceRoleRequest {
   InstanceId: string;
   IamRole: string;
 }
-const UpdateManagedInstanceRoleRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  6,
-) as any as S.Schema<UpdateManagedInstanceRoleRequest>;
 export interface UpdateManagedInstanceRoleResult {}
-const UpdateManagedInstanceRoleResult =
-  CreateResourceDataSyncResult as any as S.Schema<UpdateManagedInstanceRoleResult>;
 export type OpsItemOpsDataKeysList = string[];
-const OpsItemOpsDataKeysList = InstanceIdList as any as S.Schema<OpsItemOpsDataKeysList>;
 export interface UpdateOpsItemRequest {
   Description?: string;
   OperationalData?: { [key: string]: OpsItemDataValue | undefined };
@@ -6971,27 +5177,16 @@ export interface UpdateOpsItemRequest {
   PlannedEndTime?: Date;
   OpsItemArn?: string;
 }
-const UpdateOpsItemRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<UpdateOpsItemRequest>;
 export interface UpdateOpsItemResponse {}
-const UpdateOpsItemResponse = CancelCommandResult as any as S.Schema<UpdateOpsItemResponse>;
 export type MetadataKeysToDeleteList = string[];
-const MetadataKeysToDeleteList = InstanceIdList as any as S.Schema<MetadataKeysToDeleteList>;
 export interface UpdateOpsMetadataRequest {
   OpsMetadataArn: string;
   MetadataToUpdate?: { [key: string]: MetadataValue | undefined };
   KeysToDelete?: string[];
 }
-const UpdateOpsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<UpdateOpsMetadataRequest>;
 export interface UpdateOpsMetadataResult {
   OpsMetadataArn?: string;
 }
-const UpdateOpsMetadataResult = CreateOpsMetadataResult as any as S.Schema<UpdateOpsMetadataResult>;
 export interface UpdatePatchBaselineRequest {
   BaselineId: string;
   Name?: string;
@@ -7007,10 +5202,6 @@ export interface UpdatePatchBaselineRequest {
   AvailableSecurityUpdatesComplianceStatus?: PatchComplianceStatus;
   Replace?: boolean;
 }
-const UpdatePatchBaselineRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<UpdatePatchBaselineRequest>;
 export interface UpdatePatchBaselineResult {
   BaselineId?: string;
   Name?: string;
@@ -7028,46 +5219,24 @@ export interface UpdatePatchBaselineResult {
   Sources?: PatchSource[];
   AvailableSecurityUpdatesComplianceStatus?: PatchComplianceStatus;
 }
-const UpdatePatchBaselineResult = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<UpdatePatchBaselineResult>;
 export interface UpdateResourceDataSyncRequest {
   SyncName: string;
   SyncType: string;
   SyncSource: ResourceDataSyncSource;
 }
-const UpdateResourceDataSyncRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<UpdateResourceDataSyncRequest>;
 export interface UpdateResourceDataSyncResult {}
-const UpdateResourceDataSyncResult =
-  CreateResourceDataSyncResult as any as S.Schema<UpdateResourceDataSyncResult>;
 export interface UpdateServiceSettingRequest {
   SettingId: string;
   SettingValue: string;
 }
-const UpdateServiceSettingRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<UpdateServiceSettingRequest>;
 export interface UpdateServiceSettingResult {}
-const UpdateServiceSettingResult =
-  CreateResourceDataSyncResult as any as S.Schema<UpdateServiceSettingResult>;
 export type ValidateCloudConnectorMaxResults = number;
 export interface ValidateCloudConnectorRequest {
   CloudConnectorId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ValidateCloudConnectorRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<ValidateCloudConnectorRequest>;
 export type ValidationFindingType = "INFO" | "WARN" | "ERROR" | (string & {});
-const ValidationFindingType = S.String;
-
 export type ValidationFindingCode =
   | "TargetInaccessible"
   | "TargetUnusable"
@@ -7079,19 +5248,11 @@ export type ValidationFindingCode =
   | "TenantSummary"
   | "SubscriptionAccessible"
   | (string & {});
-const ValidationFindingCode = S.String;
-
 export type ValidationFindingScopeType = "azure:tenant" | "azure:subscription" | (string & {});
-const ValidationFindingScopeType = S.String;
-
 export interface ValidationFindingScope {
   Type?: ValidationFindingScopeType;
   Id?: string;
 }
-const ValidationFindingScope = /*@__PURE__*/ __L.at(
-  __c70,
-  6,
-) as any as S.Schema<ValidationFindingScope>;
 export interface ValidationFinding {
   Type?: ValidationFindingType;
   Code?: ValidationFindingCode;
@@ -7099,22 +5260,13 @@ export interface ValidationFinding {
   ProviderMessage?: string;
   Scope?: ValidationFindingScope;
 }
-const ValidationFinding = /*@__PURE__*/ __L.at(__c70, 7) as any as S.Schema<ValidationFinding>;
 export type ValidationFindingList = ValidationFinding[];
-const ValidationFindingList = /*@__PURE__*/ __L.at(__c71, 0);
 export interface ValidateCloudConnectorResult {
   ValidationFindings?: ValidationFinding[];
   NextToken?: string;
 }
-const ValidateCloudConnectorResult = /*@__PURE__*/ __L.at(
-  __c71,
-  1,
-) as any as S.Schema<ValidateCloudConnectorResult>;
 export type OpsItemParameterNamesList = string[];
-const OpsItemParameterNamesList = InstanceIdList as any as S.Schema<OpsItemParameterNamesList>;
 export type ResourcePolicyParameterNamesList = string[];
-const ResourcePolicyParameterNamesList =
-  InstanceIdList as any as S.Schema<ResourcePolicyParameterNamesList>;
 export type AddTagsToResourceError =
   | InternalServerError
   | InvalidResourceId
@@ -7160,8 +5312,8 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddTagsToResourceRequest,
-  output: AddTagsToResourceResult,
+  input: __S(2, __c0, 2) as any as S.Schema<AddTagsToResourceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AddTagsToResourceResult>,
   errors: [
     InternalServerError,
     InvalidResourceId,
@@ -7193,8 +5345,8 @@ export const associateOpsItemRelatedItem: API.OperationMethod<
   AssociateOpsItemRelatedItemError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateOpsItemRelatedItemRequest,
-  output: AssociateOpsItemRelatedItemResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<AssociateOpsItemRelatedItemRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AssociateOpsItemRelatedItemResponse>,
   errors: [
     InternalServerError,
     OpsItemConflictException,
@@ -7224,8 +5376,8 @@ export const cancelCommand: API.OperationMethod<
   CancelCommandError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelCommandRequest,
-  output: CancelCommandResult,
+  input: __S(7, __c0, 7) as any as S.Schema<CancelCommandRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CancelCommandResult>,
   errors: [DuplicateInstanceId, InternalServerError, InvalidCommandId, InvalidInstanceId],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7247,8 +5399,8 @@ export const cancelMaintenanceWindowExecution: API.OperationMethod<
   CancelMaintenanceWindowExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelMaintenanceWindowExecutionRequest,
-  output: CancelMaintenanceWindowExecutionResult,
+  input: __S(9, __c1, 1) as any as S.Schema<CancelMaintenanceWindowExecutionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CancelMaintenanceWindowExecutionResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7273,8 +5425,8 @@ export const createActivation: API.OperationMethod<
   CreateActivationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActivationRequest,
-  output: CreateActivationResult,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateActivationRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CreateActivationResult>,
   errors: [InternalServerError, InvalidParameters],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7314,8 +5466,8 @@ export const createAssociation: API.OperationMethod<
   CreateAssociationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssociationRequest,
-  output: CreateAssociationResult,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateAssociationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<CreateAssociationResult>,
   errors: [
     AssociationAlreadyExists,
     AssociationLimitExceeded,
@@ -7367,8 +5519,8 @@ export const createAssociationBatch: API.OperationMethod<
   CreateAssociationBatchError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssociationBatchRequest,
-  output: CreateAssociationBatchResult,
+  input: __S(34, __c4, 2) as any as S.Schema<CreateAssociationBatchRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<CreateAssociationBatchResult>,
   errors: [
     AssociationLimitExceeded,
     DuplicateInstanceId,
@@ -7403,8 +5555,8 @@ export const createCloudConnector: API.OperationMethod<
   CreateCloudConnectorError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCloudConnectorRequest,
-  output: CreateCloudConnectorResult,
+  input: __S(44, __c5, 4) as any as S.Schema<CreateCloudConnectorRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<CreateCloudConnectorResult>,
   errors: [ConflictException, InternalServerError, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7433,8 +5585,8 @@ export const createDocument: API.OperationMethod<
   CreateDocumentError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDocumentRequest,
-  output: CreateDocumentResult,
+  input: __S(50, __c6, 2) as any as S.Schema<CreateDocumentRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CreateDocumentResult>,
   errors: [
     DocumentAlreadyExists,
     DocumentLimitExceeded,
@@ -7471,8 +5623,8 @@ export const createMaintenanceWindow: API.OperationMethod<
   CreateMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMaintenanceWindowRequest,
-  output: CreateMaintenanceWindowResult,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateMaintenanceWindowRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateMaintenanceWindowResult>,
   errors: [IdempotentParameterMismatch, InternalServerError, ResourceLimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7501,8 +5653,8 @@ export const createOpsItem: API.OperationMethod<
   CreateOpsItemError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOpsItemRequest,
-  output: CreateOpsItemResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<CreateOpsItemRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<CreateOpsItemResponse>,
   errors: [
     InternalServerError,
     OpsItemAccessDeniedException,
@@ -7532,8 +5684,8 @@ export const createOpsMetadata: API.OperationMethod<
   CreateOpsMetadataError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOpsMetadataRequest,
-  output: CreateOpsMetadataResult,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateOpsMetadataRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<CreateOpsMetadataResult>,
   errors: [
     InternalServerError,
     OpsMetadataAlreadyExistsException,
@@ -7563,8 +5715,8 @@ export const createPatchBaseline: API.OperationMethod<
   CreatePatchBaselineError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePatchBaselineRequest,
-  output: CreatePatchBaselineResult,
+  input: __S(82, __c10, 2) as any as S.Schema<CreatePatchBaselineRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<CreatePatchBaselineResult>,
   errors: [IdempotentParameterMismatch, InternalServerError, ResourceLimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7608,8 +5760,8 @@ export const createResourceDataSync: API.OperationMethod<
   CreateResourceDataSyncError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourceDataSyncRequest,
-  output: CreateResourceDataSyncResult,
+  input: __S(90, __c11, 2) as any as S.Schema<CreateResourceDataSyncRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<CreateResourceDataSyncResult>,
   errors: [
     InternalServerError,
     ResourceDataSyncAlreadyExistsException,
@@ -7638,8 +5790,8 @@ export const deleteActivation: API.OperationMethod<
   DeleteActivationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActivationRequest,
-  output: DeleteActivationResult,
+  input: __S(92, __c11, 4) as any as S.Schema<DeleteActivationRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<DeleteActivationResult>,
   errors: [InternalServerError, InvalidActivation, InvalidActivationId, TooManyUpdates],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7669,8 +5821,8 @@ export const deleteAssociation: API.OperationMethod<
   DeleteAssociationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssociationRequest,
-  output: DeleteAssociationResult,
+  input: __S(94, __c11, 6) as any as S.Schema<DeleteAssociationRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteAssociationResult>,
   errors: [
     AssociationDoesNotExist,
     InternalServerError,
@@ -7697,8 +5849,8 @@ export const deleteCloudConnector: API.OperationMethod<
   DeleteCloudConnectorError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCloudConnectorRequest,
-  output: DeleteCloudConnectorResult,
+  input: __S(95, __c11, 7) as any as S.Schema<DeleteCloudConnectorRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<DeleteCloudConnectorResult>,
   errors: [ConflictException, InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7724,8 +5876,8 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDocumentRequest,
-  output: DeleteDocumentResult,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteDocumentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteDocumentResult>,
   errors: [
     AssociatedInstances,
     InternalServerError,
@@ -7755,8 +5907,8 @@ export const deleteInventory: API.OperationMethod<
   DeleteInventoryError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInventoryRequest,
-  output: DeleteInventoryResult,
+  input: __S(97, __c12, 1) as any as S.Schema<DeleteInventoryRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<DeleteInventoryResult>,
   errors: [
     InternalServerError,
     InvalidDeleteInventoryParametersException,
@@ -7779,8 +5931,8 @@ export const deleteMaintenanceWindow: API.OperationMethod<
   DeleteMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMaintenanceWindowRequest,
-  output: DeleteMaintenanceWindowResult,
+  input: __S(102, __c12, 6) as any as S.Schema<DeleteMaintenanceWindowRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<DeleteMaintenanceWindowResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7820,8 +5972,8 @@ export const deleteOpsItem: API.OperationMethod<
   DeleteOpsItemError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOpsItemRequest,
-  output: DeleteOpsItemResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<DeleteOpsItemRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteOpsItemResponse>,
   errors: [InternalServerError, OpsItemInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7842,8 +5994,8 @@ export const deleteOpsMetadata: API.OperationMethod<
   DeleteOpsMetadataError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOpsMetadataRequest,
-  output: DeleteOpsMetadataResult,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteOpsMetadataRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteOpsMetadataResult>,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException, OpsMetadataNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7861,8 +6013,8 @@ export const deleteParameter: API.OperationMethod<
   DeleteParameterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteParameterRequest,
-  output: DeleteParameterResult,
+  input: __S(105, __c13, 1) as any as S.Schema<DeleteParameterRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteParameterResult>,
   errors: [InternalServerError, ParameterNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7880,8 +6032,8 @@ export const deleteParameters: API.OperationMethod<
   DeleteParametersError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteParametersRequest,
-  output: DeleteParametersResult,
+  input: __S(106, __c13, 2) as any as S.Schema<DeleteParametersRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<DeleteParametersResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7898,8 +6050,8 @@ export const deletePatchBaseline: API.OperationMethod<
   DeletePatchBaselineError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePatchBaselineRequest,
-  output: DeletePatchBaselineResult,
+  input: __S(108, __c13, 4) as any as S.Schema<DeletePatchBaselineRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<DeletePatchBaselineResult>,
   errors: [InternalServerError, ResourceInUseException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7922,8 +6074,8 @@ export const deleteResourceDataSync: API.OperationMethod<
   DeleteResourceDataSyncError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourceDataSyncRequest,
-  output: DeleteResourceDataSyncResult,
+  input: __S(109, __c13, 5) as any as S.Schema<DeleteResourceDataSyncRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<DeleteResourceDataSyncResult>,
   errors: [
     InternalServerError,
     ResourceDataSyncInvalidConfigurationException,
@@ -7963,8 +6115,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePolicyRequest,
-  output: DeleteResourcePolicyResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     InternalServerError,
     MalformedResourcePolicyDocumentException,
@@ -7995,8 +6147,8 @@ export const deregisterManagedInstance: API.OperationMethod<
   DeregisterManagedInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterManagedInstanceRequest,
-  output: DeregisterManagedInstanceResult,
+  input: __S(111, __c13, 7) as any as S.Schema<DeregisterManagedInstanceRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<DeregisterManagedInstanceResult>,
   errors: [InternalServerError, InvalidInstanceId],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8016,8 +6168,8 @@ export const deregisterPatchBaselineForPatchGroup: API.OperationMethod<
   DeregisterPatchBaselineForPatchGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterPatchBaselineForPatchGroupRequest,
-  output: DeregisterPatchBaselineForPatchGroupResult,
+  input: __S(112, __c14, 0) as any as S.Schema<DeregisterPatchBaselineForPatchGroupRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<DeregisterPatchBaselineForPatchGroupResult>,
   errors: [InternalServerError, InvalidResourceId],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8038,8 +6190,8 @@ export const deregisterTargetFromMaintenanceWindow: API.OperationMethod<
   DeregisterTargetFromMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterTargetFromMaintenanceWindowRequest,
-  output: DeregisterTargetFromMaintenanceWindowResult,
+  input: __S(114, __c14, 2) as any as S.Schema<DeregisterTargetFromMaintenanceWindowRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<DeregisterTargetFromMaintenanceWindowResult>,
   errors: [DoesNotExistException, InternalServerError, TargetInUseException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8059,8 +6211,8 @@ export const deregisterTaskFromMaintenanceWindow: API.OperationMethod<
   DeregisterTaskFromMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterTaskFromMaintenanceWindowRequest,
-  output: DeregisterTaskFromMaintenanceWindowResult,
+  input: __S(116, __c14, 4) as any as S.Schema<DeregisterTaskFromMaintenanceWindowRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<DeregisterTaskFromMaintenanceWindowResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8085,8 +6237,8 @@ export const describeActivations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Activation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeActivationsRequest,
-  output: DescribeActivationsResult,
+  input: __S(120, __c15, 0) as any as S.Schema<DescribeActivationsRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<DescribeActivationsResult>,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8117,8 +6269,8 @@ export const describeAssociation: API.OperationMethod<
   DescribeAssociationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAssociationRequest,
-  output: DescribeAssociationResult,
+  input: __S(124, __c15, 4) as any as S.Schema<DescribeAssociationRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<DescribeAssociationResult>,
   errors: [
     AssociationDoesNotExist,
     InternalServerError,
@@ -8146,8 +6298,8 @@ export const describeAssociationExecutions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   AssociationExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeAssociationExecutionsRequest,
-  output: DescribeAssociationExecutionsResult,
+  input: __S(128, __c16, 0) as any as S.Schema<DescribeAssociationExecutionsRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<DescribeAssociationExecutionsResult>,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8176,8 +6328,8 @@ export const describeAssociationExecutionTargets: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   AssociationExecutionTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeAssociationExecutionTargetsRequest,
-  output: DescribeAssociationExecutionTargetsResult,
+  input: __S(134, __c16, 6) as any as S.Schema<DescribeAssociationExecutionTargetsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<DescribeAssociationExecutionTargetsResult>,
   errors: [
     AssociationDoesNotExist,
     AssociationExecutionDoesNotExist,
@@ -8211,8 +6363,8 @@ export const describeAutomationExecutions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   AutomationExecutionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeAutomationExecutionsRequest,
-  output: DescribeAutomationExecutionsResult,
+  input: __S(141, __c17, 5) as any as S.Schema<DescribeAutomationExecutionsRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<DescribeAutomationExecutionsResult>,
   errors: [InternalServerError, InvalidFilterKey, InvalidFilterValue, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8243,8 +6395,8 @@ export const describeAutomationStepExecutions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   StepExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeAutomationStepExecutionsRequest,
-  output: DescribeAutomationStepExecutionsResult,
+  input: __S(150, __c18, 6) as any as S.Schema<DescribeAutomationStepExecutionsRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<DescribeAutomationStepExecutionsResult>,
   errors: [
     AutomationExecutionNotFoundException,
     InternalServerError,
@@ -8277,8 +6429,8 @@ export const describeAvailablePatches: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Patch
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeAvailablePatchesRequest,
-  output: DescribeAvailablePatchesResult,
+  input: __S(157, __c19, 5) as any as S.Schema<DescribeAvailablePatchesRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DescribeAvailablePatchesResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8305,8 +6457,8 @@ export const describeDocument: API.OperationMethod<
   DescribeDocumentError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDocumentRequest,
-  output: DescribeDocumentResult,
+  input: __S(161, __c20, 1) as any as S.Schema<DescribeDocumentRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<DescribeDocumentResult>,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8331,8 +6483,8 @@ export const describeDocumentPermission: API.OperationMethod<
   DescribeDocumentPermissionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDocumentPermissionRequest,
-  output: DescribeDocumentPermissionResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<DescribeDocumentPermissionRequest>,
+  output: __S(167, __c20, 7) as any as S.Schema<DescribeDocumentPermissionResponse>,
   errors: [
     InternalServerError,
     InvalidDocument,
@@ -8360,8 +6512,8 @@ export const describeEffectiveInstanceAssociations: API.PaginatedOperationMethod
   Creds | HttpClient.HttpClient,
   InstanceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeEffectiveInstanceAssociationsRequest,
-  output: DescribeEffectiveInstanceAssociationsResult,
+  input: __S(168, __c21, 0) as any as S.Schema<DescribeEffectiveInstanceAssociationsRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<DescribeEffectiveInstanceAssociationsResult>,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8391,8 +6543,8 @@ export const describeEffectivePatchesForPatchBaseline: API.PaginatedOperationMet
   Creds | HttpClient.HttpClient,
   EffectivePatch
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeEffectivePatchesForPatchBaselineRequest,
-  output: DescribeEffectivePatchesForPatchBaselineResult,
+  input: __S(172, __c21, 4) as any as S.Schema<DescribeEffectivePatchesForPatchBaselineRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DescribeEffectivePatchesForPatchBaselineResult>,
   errors: [
     DoesNotExistException,
     InternalServerError,
@@ -8425,8 +6577,8 @@ export const describeInstanceAssociationsStatus: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InstanceAssociationStatusInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInstanceAssociationsStatusRequest,
-  output: DescribeInstanceAssociationsStatusResult,
+  input: __S(177, __c22, 1) as any as S.Schema<DescribeInstanceAssociationsStatusRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<DescribeInstanceAssociationsStatusResult>,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8466,8 +6618,8 @@ export const describeInstanceInformation: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InstanceInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInstanceInformationRequest,
-  output: DescribeInstanceInformationResult,
+  input: __S(188, __c23, 4) as any as S.Schema<DescribeInstanceInformationRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<DescribeInstanceInformationResult>,
   errors: [
     InternalServerError,
     InvalidFilterKey,
@@ -8503,8 +6655,8 @@ export const describeInstancePatches: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   PatchComplianceData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInstancePatchesRequest,
-  output: DescribeInstancePatchesResult,
+  input: __S(193, __c24, 1) as any as S.Schema<DescribeInstancePatchesRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<DescribeInstancePatchesResult>,
   errors: [InternalServerError, InvalidFilter, InvalidInstanceId, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8531,8 +6683,8 @@ export const describeInstancePatchStates: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InstancePatchState
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInstancePatchStatesRequest,
-  output: DescribeInstancePatchStatesResult,
+  input: __S(197, __c24, 5) as any as S.Schema<DescribeInstancePatchStatesRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DescribeInstancePatchStatesResult>,
   errors: [InternalServerError, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8561,8 +6713,8 @@ export const describeInstancePatchStatesForPatchGroup: API.PaginatedOperationMet
   Creds | HttpClient.HttpClient,
   InstancePatchState
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInstancePatchStatesForPatchGroupRequest,
-  output: DescribeInstancePatchStatesForPatchGroupResult,
+  input: __S(203, __c25, 3) as any as S.Schema<DescribeInstancePatchStatesForPatchGroupRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DescribeInstancePatchStatesForPatchGroupResult>,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8595,8 +6747,8 @@ export const describeInstanceProperties: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InstanceProperty
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInstancePropertiesRequest,
-  output: DescribeInstancePropertiesResult,
+  input: __S(209, __c26, 1) as any as S.Schema<DescribeInstancePropertiesRequest>,
+  output: __S(212, __c26, 4) as any as S.Schema<DescribeInstancePropertiesResult>,
   errors: [
     InternalServerError,
     InvalidActivationId,
@@ -8632,8 +6784,8 @@ export const describeInventoryDeletions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InventoryDeletionStatusItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeInventoryDeletionsRequest,
-  output: DescribeInventoryDeletionsResult,
+  input: __S(213, __c26, 5) as any as S.Schema<DescribeInventoryDeletionsRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DescribeInventoryDeletionsResult>,
   errors: [InternalServerError, InvalidDeletionIdException, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8659,8 +6811,8 @@ export const describeMaintenanceWindowExecutions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   MaintenanceWindowExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowExecutionsRequest,
-  output: DescribeMaintenanceWindowExecutionsResult,
+  input: __S(217, __c27, 1) as any as S.Schema<DescribeMaintenanceWindowExecutionsRequest>,
+  output: __S(220, __c27, 4) as any as S.Schema<DescribeMaintenanceWindowExecutionsResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8688,8 +6840,16 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.PaginatedOpe
   Creds | HttpClient.HttpClient,
   MaintenanceWindowExecutionTaskInvocationIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
-  output: DescribeMaintenanceWindowExecutionTaskInvocationsResult,
+  input: __S(
+    221,
+    __c27,
+    5,
+  ) as any as S.Schema<DescribeMaintenanceWindowExecutionTaskInvocationsRequest>,
+  output: __S(
+    224,
+    __c28,
+    0,
+  ) as any as S.Schema<DescribeMaintenanceWindowExecutionTaskInvocationsResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8716,8 +6876,8 @@ export const describeMaintenanceWindowExecutionTasks: API.PaginatedOperationMeth
   Creds | HttpClient.HttpClient,
   MaintenanceWindowExecutionTaskIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowExecutionTasksRequest,
-  output: DescribeMaintenanceWindowExecutionTasksResult,
+  input: __S(225, __c28, 1) as any as S.Schema<DescribeMaintenanceWindowExecutionTasksRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<DescribeMaintenanceWindowExecutionTasksResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8741,8 +6901,8 @@ export const describeMaintenanceWindows: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   MaintenanceWindowIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowsRequest,
-  output: DescribeMaintenanceWindowsResult,
+  input: __S(229, __c28, 5) as any as S.Schema<DescribeMaintenanceWindowsRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<DescribeMaintenanceWindowsResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8769,8 +6929,8 @@ export const describeMaintenanceWindowSchedule: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ScheduledWindowExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowScheduleRequest,
-  output: DescribeMaintenanceWindowScheduleResult,
+  input: __S(233, __c29, 1) as any as S.Schema<DescribeMaintenanceWindowScheduleRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<DescribeMaintenanceWindowScheduleResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8795,8 +6955,8 @@ export const describeMaintenanceWindowsForTarget: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   MaintenanceWindowIdentityForTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowsForTargetRequest,
-  output: DescribeMaintenanceWindowsForTargetResult,
+  input: __S(237, __c29, 5) as any as S.Schema<DescribeMaintenanceWindowsForTargetRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<DescribeMaintenanceWindowsForTargetResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8823,8 +6983,8 @@ export const describeMaintenanceWindowTargets: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   MaintenanceWindowTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowTargetsRequest,
-  output: DescribeMaintenanceWindowTargetsResult,
+  input: __S(241, __c30, 1) as any as S.Schema<DescribeMaintenanceWindowTargetsRequest>,
+  output: __S(244, __c30, 4) as any as S.Schema<DescribeMaintenanceWindowTargetsResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8856,8 +7016,8 @@ export const describeMaintenanceWindowTasks: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   MaintenanceWindowTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeMaintenanceWindowTasksRequest,
-  output: DescribeMaintenanceWindowTasksResult,
+  input: __S(245, __c30, 5) as any as S.Schema<DescribeMaintenanceWindowTasksRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<DescribeMaintenanceWindowTasksResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8887,8 +7047,8 @@ export const describeOpsItems: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   OpsItemSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeOpsItemsRequest,
-  output: DescribeOpsItemsResponse,
+  input: __S(255, __c31, 7) as any as S.Schema<DescribeOpsItemsRequest>,
+  output: __S(258, __c32, 2) as any as S.Schema<DescribeOpsItemsResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8935,8 +7095,8 @@ export const describeParameters: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeParametersRequest,
-  output: DescribeParametersResult,
+  input: __S(263, __c32, 7) as any as S.Schema<DescribeParametersRequest>,
+  output: __S(268, __c33, 4) as any as S.Schema<DescribeParametersResult>,
   errors: [
     InternalServerError,
     InvalidFilterKey,
@@ -8965,8 +7125,8 @@ export const describePatchBaselines: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   PatchBaselineIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribePatchBaselinesRequest,
-  output: DescribePatchBaselinesResult,
+  input: __S(269, __c33, 5) as any as S.Schema<DescribePatchBaselinesRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DescribePatchBaselinesResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8990,8 +7150,8 @@ export const describePatchGroups: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   PatchGroupPatchBaselineMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribePatchGroupsRequest,
-  output: DescribePatchGroupsResult,
+  input: __S(273, __c34, 1) as any as S.Schema<DescribePatchGroupsRequest>,
+  output: __S(276, __c34, 4) as any as S.Schema<DescribePatchGroupsResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9014,8 +7174,8 @@ export const describePatchGroupState: API.OperationMethod<
   DescribePatchGroupStateError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePatchGroupStateRequest,
-  output: DescribePatchGroupStateResult,
+  input: __S(277, __c34, 5) as any as S.Schema<DescribePatchGroupStateRequest>,
+  output: __S(278, __c34, 6) as any as S.Schema<DescribePatchGroupStateResult>,
   errors: [InternalServerError, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9090,8 +7250,8 @@ export const describePatchProperties: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   { [key: string]: string | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribePatchPropertiesRequest,
-  output: DescribePatchPropertiesResult,
+  input: __S(279, __c34, 7) as any as S.Schema<DescribePatchPropertiesRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<DescribePatchPropertiesResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9120,8 +7280,8 @@ export const describeSessions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Session
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeSessionsRequest,
-  output: DescribeSessionsResponse,
+  input: __S(284, __c35, 4) as any as S.Schema<DescribeSessionsRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<DescribeSessionsResponse>,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9152,8 +7312,8 @@ export const disassociateOpsItemRelatedItem: API.OperationMethod<
   DisassociateOpsItemRelatedItemError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateOpsItemRelatedItemRequest,
-  output: DisassociateOpsItemRelatedItemResponse,
+  input: __S(289, __c36, 1) as any as S.Schema<DisassociateOpsItemRelatedItemRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<DisassociateOpsItemRelatedItemResponse>,
   errors: [
     InternalServerError,
     OpsItemConflictException,
@@ -9182,8 +7342,8 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessTokenRequest,
-  output: GetAccessTokenResponse,
+  input: __S(290, __c36, 2) as any as S.Schema<GetAccessTokenRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<GetAccessTokenResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -9209,8 +7369,8 @@ export const getAutomationExecution: API.OperationMethod<
   GetAutomationExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomationExecutionRequest,
-  output: GetAutomationExecutionResult,
+  input: __S(293, __c36, 5) as any as S.Schema<GetAutomationExecutionRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<GetAutomationExecutionResult>,
   errors: [AutomationExecutionNotFoundException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9242,8 +7402,8 @@ export const getCalendarState: API.OperationMethod<
   GetCalendarStateError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCalendarStateRequest,
-  output: GetCalendarStateResponse,
+  input: __S(297, __c37, 1) as any as S.Schema<GetCalendarStateRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<GetCalendarStateResponse>,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentType, UnsupportedCalendarException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9260,8 +7420,8 @@ export const getCloudConnector: API.OperationMethod<
   GetCloudConnectorError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCloudConnectorRequest,
-  output: GetCloudConnectorResult,
+  input: __S(299, __c37, 3) as any as S.Schema<GetCloudConnectorRequest>,
+  output: __S(300, __c37, 4) as any as S.Schema<GetCloudConnectorResult>,
   errors: [InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9293,8 +7453,8 @@ export const getCommandInvocation: API.OperationMethod<
   GetCommandInvocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommandInvocationRequest,
-  output: GetCommandInvocationResult,
+  input: __S(301, __c37, 5) as any as S.Schema<GetCommandInvocationRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<GetCommandInvocationResult>,
   errors: [
     InternalServerError,
     InvalidCommandId,
@@ -9318,8 +7478,8 @@ export const getConnectionStatus: API.OperationMethod<
   GetConnectionStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionStatusRequest,
-  output: GetConnectionStatusResponse,
+  input: __S(304, __c38, 0) as any as S.Schema<GetConnectionStatusRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<GetConnectionStatusResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9340,8 +7500,8 @@ export const getDefaultPatchBaseline: API.OperationMethod<
   GetDefaultPatchBaselineError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultPatchBaselineRequest,
-  output: GetDefaultPatchBaselineResult,
+  input: __S(306, __c38, 2) as any as S.Schema<GetDefaultPatchBaselineRequest>,
+  output: __S(307, __c38, 3) as any as S.Schema<GetDefaultPatchBaselineResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9369,8 +7529,8 @@ export const getDeployablePatchSnapshotForInstance: API.OperationMethod<
   GetDeployablePatchSnapshotForInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeployablePatchSnapshotForInstanceRequest,
-  output: GetDeployablePatchSnapshotForInstanceResult,
+  input: __S(309, __c38, 5) as any as S.Schema<GetDeployablePatchSnapshotForInstanceRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<GetDeployablePatchSnapshotForInstanceResult>,
   errors: [InternalServerError, UnsupportedFeatureRequiredException, UnsupportedOperatingSystem],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9391,8 +7551,8 @@ export const getDocument: API.OperationMethod<
   GetDocumentError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentRequest,
-  output: GetDocumentResult,
+  input: __S(311, __c38, 7) as any as S.Schema<GetDocumentRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<GetDocumentResult>,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9413,8 +7573,8 @@ export const getExecutionPreview: API.OperationMethod<
   GetExecutionPreviewError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExecutionPreviewRequest,
-  output: GetExecutionPreviewResponse,
+  input: __S(315, __c39, 3) as any as S.Schema<GetExecutionPreviewRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<GetExecutionPreviewResponse>,
   errors: [InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9441,8 +7601,8 @@ export const getInventory: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InventoryResultEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetInventoryRequest,
-  output: GetInventoryResult,
+  input: __S(331, __c41, 3) as any as S.Schema<GetInventoryRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<GetInventoryResult>,
   errors: [
     InternalServerError,
     InvalidAggregatorException,
@@ -9479,8 +7639,8 @@ export const getInventorySchema: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   InventoryItemSchema
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetInventorySchemaRequest,
-  output: GetInventorySchemaResult,
+  input: __S(337, __c42, 1) as any as S.Schema<GetInventorySchemaRequest>,
+  output: __S(342, __c42, 6) as any as S.Schema<GetInventorySchemaResult>,
   errors: [InternalServerError, InvalidNextToken, InvalidTypeNameException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9503,8 +7663,8 @@ export const getMaintenanceWindow: API.OperationMethod<
   GetMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMaintenanceWindowRequest,
-  output: GetMaintenanceWindowResult,
+  input: __S(343, __c42, 7) as any as S.Schema<GetMaintenanceWindowRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<GetMaintenanceWindowResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9524,8 +7684,8 @@ export const getMaintenanceWindowExecution: API.OperationMethod<
   GetMaintenanceWindowExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMaintenanceWindowExecutionRequest,
-  output: GetMaintenanceWindowExecutionResult,
+  input: __S(345, __c43, 1) as any as S.Schema<GetMaintenanceWindowExecutionRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<GetMaintenanceWindowExecutionResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9546,8 +7706,8 @@ export const getMaintenanceWindowExecutionTask: API.OperationMethod<
   GetMaintenanceWindowExecutionTaskError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMaintenanceWindowExecutionTaskRequest,
-  output: GetMaintenanceWindowExecutionTaskResult,
+  input: __S(347, __c43, 3) as any as S.Schema<GetMaintenanceWindowExecutionTaskRequest>,
+  output: __S(349, __c43, 5) as any as S.Schema<GetMaintenanceWindowExecutionTaskResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9567,8 +7727,8 @@ export const getMaintenanceWindowExecutionTaskInvocation: API.OperationMethod<
   GetMaintenanceWindowExecutionTaskInvocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMaintenanceWindowExecutionTaskInvocationRequest,
-  output: GetMaintenanceWindowExecutionTaskInvocationResult,
+  input: __S(350, __c43, 6) as any as S.Schema<GetMaintenanceWindowExecutionTaskInvocationRequest>,
+  output: __S(351, __c43, 7) as any as S.Schema<GetMaintenanceWindowExecutionTaskInvocationResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9595,8 +7755,8 @@ export const getMaintenanceWindowTask: API.OperationMethod<
   GetMaintenanceWindowTaskError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMaintenanceWindowTaskRequest,
-  output: GetMaintenanceWindowTaskResult,
+  input: __S(352, __c44, 0) as any as S.Schema<GetMaintenanceWindowTaskRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<GetMaintenanceWindowTaskResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9624,8 +7784,8 @@ export const getOpsItem: API.OperationMethod<
   GetOpsItemError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOpsItemRequest,
-  output: GetOpsItemResponse,
+  input: __S(361, __c45, 1) as any as S.Schema<GetOpsItemRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<GetOpsItemResponse>,
   errors: [InternalServerError, OpsItemAccessDeniedException, OpsItemNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9646,8 +7806,8 @@ export const getOpsMetadata: API.OperationMethod<
   GetOpsMetadataError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOpsMetadataRequest,
-  output: GetOpsMetadataResult,
+  input: __S(364, __c45, 4) as any as S.Schema<GetOpsMetadataRequest>,
+  output: __S(365, __c45, 5) as any as S.Schema<GetOpsMetadataResult>,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException, OpsMetadataNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9675,8 +7835,8 @@ export const getOpsSummary: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   OpsEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetOpsSummaryRequest,
-  output: GetOpsSummaryResult,
+  input: __S(371, __c46, 3) as any as S.Schema<GetOpsSummaryRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<GetOpsSummaryResult>,
   errors: [
     InternalServerError,
     InvalidAggregatorException,
@@ -9731,8 +7891,8 @@ export const getParameter: API.OperationMethod<
   GetParameterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetParameterRequest,
-  output: GetParameterResult,
+  input: __S(377, __c47, 1) as any as S.Schema<GetParameterRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<GetParameterResult>,
   errors: [InternalServerError, InvalidKeyId, ParameterNotFound, ParameterVersionNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9764,8 +7924,8 @@ export const getParameterHistory: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetParameterHistoryRequest,
-  output: GetParameterHistoryResult,
+  input: __S(380, __c47, 4) as any as S.Schema<GetParameterHistoryRequest>,
+  output: __S(383, __c47, 7) as any as S.Schema<GetParameterHistoryResult>,
   errors: [InternalServerError, InvalidKeyId, InvalidNextToken, ParameterNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9808,8 +7968,8 @@ export const getParameters: API.OperationMethod<
   GetParametersError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetParametersRequest,
-  output: GetParametersResult,
+  input: __S(384, __c48, 0) as any as S.Schema<GetParametersRequest>,
+  output: __S(386, __c48, 2) as any as S.Schema<GetParametersResult>,
   errors: [InternalServerError, InvalidKeyId],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9845,8 +8005,8 @@ export const getParametersByPath: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetParametersByPathRequest,
-  output: GetParametersByPathResult,
+  input: __S(387, __c48, 3) as any as S.Schema<GetParametersByPathRequest>,
+  output: __S(388, __c48, 4) as any as S.Schema<GetParametersByPathResult>,
   errors: [
     InternalServerError,
     InvalidFilterKey,
@@ -9879,8 +8039,8 @@ export const getPatchBaseline: API.OperationMethod<
   GetPatchBaselineError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPatchBaselineRequest,
-  output: GetPatchBaselineResult,
+  input: __S(389, __c48, 5) as any as S.Schema<GetPatchBaselineRequest>,
+  output: __S(390, __c48, 6) as any as S.Schema<GetPatchBaselineResult>,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9897,8 +8057,8 @@ export const getPatchBaselineForPatchGroup: API.OperationMethod<
   GetPatchBaselineForPatchGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPatchBaselineForPatchGroupRequest,
-  output: GetPatchBaselineForPatchGroupResult,
+  input: __S(391, __c48, 7) as any as S.Schema<GetPatchBaselineForPatchGroupRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<GetPatchBaselineForPatchGroupResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9920,8 +8080,8 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   GetResourcePoliciesResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetResourcePoliciesRequest,
-  output: GetResourcePoliciesResponse,
+  input: __S(393, __c49, 1) as any as S.Schema<GetResourcePoliciesRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<GetResourcePoliciesResponse>,
   errors: [InternalServerError, ResourceNotFoundException, ResourcePolicyInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9958,8 +8118,8 @@ export const getServiceSetting: API.OperationMethod<
   GetServiceSettingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceSettingRequest,
-  output: GetServiceSettingResult,
+  input: __S(397, __c49, 5) as any as S.Schema<GetServiceSettingRequest>,
+  output: __S(399, __c49, 7) as any as S.Schema<GetServiceSettingResult>,
   errors: [InternalServerError, ServiceSettingNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10013,8 +8173,8 @@ export const labelParameterVersion: API.OperationMethod<
   LabelParameterVersionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: LabelParameterVersionRequest,
-  output: LabelParameterVersionResult,
+  input: __S(400, __c50, 0) as any as S.Schema<LabelParameterVersionRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<LabelParameterVersionResult>,
   errors: [
     InternalServerError,
     ParameterNotFound,
@@ -10040,8 +8200,8 @@ export const listAssociations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssociationsRequest,
-  output: ListAssociationsResult,
+  input: __S(403, __c50, 3) as any as S.Schema<ListAssociationsRequest>,
+  output: __S(406, __c50, 6) as any as S.Schema<ListAssociationsResult>,
   errors: [InternalServerError, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10069,8 +8229,8 @@ export const listAssociationVersions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   AssociationVersionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssociationVersionsRequest,
-  output: ListAssociationVersionsResult,
+  input: __S(407, __c50, 7) as any as S.Schema<ListAssociationVersionsRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<ListAssociationVersionsResult>,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10094,8 +8254,8 @@ export const listCloudConnectors: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   CloudConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCloudConnectorsRequest,
-  output: ListCloudConnectorsResult,
+  input: __S(413, __c51, 5) as any as S.Schema<ListCloudConnectorsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<ListCloudConnectorsResult>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10129,8 +8289,8 @@ export const listCommandInvocations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   CommandInvocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCommandInvocationsRequest,
-  output: ListCommandInvocationsResult,
+  input: __S(417, __c52, 1) as any as S.Schema<ListCommandInvocationsRequest>,
+  output: __S(422, __c52, 6) as any as S.Schema<ListCommandInvocationsResult>,
   errors: [
     InternalServerError,
     InvalidCommandId,
@@ -10166,8 +8326,8 @@ export const listCommands: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Command
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCommandsRequest,
-  output: ListCommandsResult,
+  input: __S(423, __c52, 7) as any as S.Schema<ListCommandsRequest>,
+  output: __S(426, __c53, 2) as any as S.Schema<ListCommandsResult>,
   errors: [
     InternalServerError,
     InvalidCommandId,
@@ -10205,8 +8365,8 @@ export const listComplianceItems: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ComplianceItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListComplianceItemsRequest,
-  output: ListComplianceItemsResult,
+  input: __S(429, __c53, 5) as any as S.Schema<ListComplianceItemsRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<ListComplianceItemsResult>,
   errors: [
     InternalServerError,
     InvalidFilter,
@@ -10242,8 +8402,8 @@ export const listComplianceSummaries: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ComplianceSummaryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListComplianceSummariesRequest,
-  output: ListComplianceSummariesResult,
+  input: __S(434, __c54, 2) as any as S.Schema<ListComplianceSummariesRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<ListComplianceSummariesResult>,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10275,8 +8435,8 @@ export const listDocumentMetadataHistory: API.OperationMethod<
   ListDocumentMetadataHistoryError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDocumentMetadataHistoryRequest,
-  output: ListDocumentMetadataHistoryResponse,
+  input: __S(441, __c55, 1) as any as S.Schema<ListDocumentMetadataHistoryRequest>,
+  output: __S(447, __c55, 7) as any as S.Schema<ListDocumentMetadataHistoryResponse>,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10299,8 +8459,8 @@ export const listDocuments: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   DocumentIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDocumentsRequest,
-  output: ListDocumentsResult,
+  input: __S(449, __c56, 1) as any as S.Schema<ListDocumentsRequest>,
+  output: __S(452, __c56, 4) as any as S.Schema<ListDocumentsResult>,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10328,8 +8488,8 @@ export const listDocumentVersions: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   DocumentVersionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDocumentVersionsRequest,
-  output: ListDocumentVersionsResult,
+  input: __S(453, __c56, 5) as any as S.Schema<ListDocumentVersionsRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<ListDocumentVersionsResult>,
   errors: [InternalServerError, InvalidDocument, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10358,8 +8518,8 @@ export const listInventoryEntries: API.OperationMethod<
   ListInventoryEntriesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInventoryEntriesRequest,
-  output: ListInventoryEntriesResult,
+  input: __S(457, __c57, 1) as any as S.Schema<ListInventoryEntriesRequest>,
+  output: __S(458, __c57, 2) as any as S.Schema<ListInventoryEntriesResult>,
   errors: [
     InternalServerError,
     InvalidFilter,
@@ -10389,8 +8549,8 @@ export const listNodes: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNodesRequest,
-  output: ListNodesResult,
+  input: __S(461, __c57, 5) as any as S.Schema<ListNodesRequest>,
+  output: __S(467, __c58, 3) as any as S.Schema<ListNodesResult>,
   errors: [
     InternalServerError,
     InvalidFilter,
@@ -10428,8 +8588,8 @@ export const listNodesSummary: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   { [key: string]: string | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNodesSummaryRequest,
-  output: ListNodesSummaryResult,
+  input: __S(470, __c58, 6) as any as S.Schema<ListNodesSummaryRequest>,
+  output: __S(471, __c58, 7) as any as S.Schema<ListNodesSummaryResult>,
   errors: [
     InternalServerError,
     InvalidAggregatorException,
@@ -10466,8 +8626,8 @@ export const listOpsItemEvents: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   OpsItemEventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOpsItemEventsRequest,
-  output: ListOpsItemEventsResponse,
+  input: __S(474, __c59, 2) as any as S.Schema<ListOpsItemEventsRequest>,
+  output: __S(477, __c59, 5) as any as S.Schema<ListOpsItemEventsResponse>,
   errors: [
     InternalServerError,
     OpsItemInvalidParameterException,
@@ -10500,8 +8660,8 @@ export const listOpsItemRelatedItems: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   OpsItemRelatedItemSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOpsItemRelatedItemsRequest,
-  output: ListOpsItemRelatedItemsResponse,
+  input: __S(480, __c60, 0) as any as S.Schema<ListOpsItemRelatedItemsRequest>,
+  output: __S(483, __c60, 3) as any as S.Schema<ListOpsItemRelatedItemsResponse>,
   errors: [InternalServerError, OpsItemInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10529,8 +8689,8 @@ export const listOpsMetadata: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   OpsMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOpsMetadataRequest,
-  output: ListOpsMetadataResult,
+  input: __S(486, __c60, 6) as any as S.Schema<ListOpsMetadataRequest>,
+  output: __S(489, __c61, 1) as any as S.Schema<ListOpsMetadataResult>,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10560,8 +8720,8 @@ export const listResourceComplianceSummaries: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ResourceComplianceSummaryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListResourceComplianceSummariesRequest,
-  output: ListResourceComplianceSummariesResult,
+  input: __S(490, __c61, 2) as any as S.Schema<ListResourceComplianceSummariesRequest>,
+  output: __S(493, __c61, 5) as any as S.Schema<ListResourceComplianceSummariesResult>,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10598,8 +8758,8 @@ export const listResourceDataSync: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ResourceDataSyncItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListResourceDataSyncRequest,
-  output: ListResourceDataSyncResult,
+  input: __S(494, __c61, 6) as any as S.Schema<ListResourceDataSyncRequest>,
+  output: __S(498, __c62, 2) as any as S.Schema<ListResourceDataSyncResult>,
   errors: [InternalServerError, InvalidNextToken, ResourceDataSyncInvalidConfigurationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10628,8 +8788,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResult,
+  input: __S(499, __c62, 3) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<ListTagsForResourceResult>,
   errors: [InternalServerError, InvalidResourceId, InvalidResourceType],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10655,8 +8815,8 @@ export const modifyDocumentPermission: API.OperationMethod<
   ModifyDocumentPermissionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyDocumentPermissionRequest,
-  output: ModifyDocumentPermissionResponse,
+  input: __S(501, __c62, 5) as any as S.Schema<ModifyDocumentPermissionRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ModifyDocumentPermissionResponse>,
   errors: [
     DocumentLimitExceeded,
     DocumentPermissionLimit,
@@ -10733,8 +8893,8 @@ export const putComplianceItems: API.OperationMethod<
   PutComplianceItemsError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutComplianceItemsRequest,
-  output: PutComplianceItemsResult,
+  input: __S(504, __c63, 0) as any as S.Schema<PutComplianceItemsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<PutComplianceItemsResult>,
   errors: [
     ComplianceTypeCountLimitExceededException,
     InternalServerError,
@@ -10774,8 +8934,8 @@ export const putInventory: API.OperationMethod<
   PutInventoryError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutInventoryRequest,
-  output: PutInventoryResult,
+  input: __S(507, __c63, 3) as any as S.Schema<PutInventoryRequest>,
+  output: __S(508, __c63, 4) as any as S.Schema<PutInventoryResult>,
   errors: [
     CustomSchemaCountLimitExceededException,
     InternalServerError,
@@ -10835,8 +8995,8 @@ export const putParameter: API.OperationMethod<
   PutParameterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutParameterRequest,
-  output: PutParameterResult,
+  input: __S(509, __c63, 5) as any as S.Schema<PutParameterRequest>,
+  output: __S(510, __c63, 6) as any as S.Schema<PutParameterResult>,
   errors: [
     HierarchyLevelLimitExceededException,
     HierarchyTypeMismatchException,
@@ -10912,8 +9072,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutResourcePolicyRequest,
-  output: PutResourcePolicyResponse,
+  input: __S(511, __c63, 7) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     InternalServerError,
     MalformedResourcePolicyDocumentException,
@@ -10947,8 +9107,8 @@ export const registerDefaultPatchBaseline: API.OperationMethod<
   RegisterDefaultPatchBaselineError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterDefaultPatchBaselineRequest,
-  output: RegisterDefaultPatchBaselineResult,
+  input: __S(513, __c64, 1) as any as S.Schema<RegisterDefaultPatchBaselineRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<RegisterDefaultPatchBaselineResult>,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10971,8 +9131,8 @@ export const registerPatchBaselineForPatchGroup: API.OperationMethod<
   RegisterPatchBaselineForPatchGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterPatchBaselineForPatchGroupRequest,
-  output: RegisterPatchBaselineForPatchGroupResult,
+  input: __S(514, __c64, 2) as any as S.Schema<RegisterPatchBaselineForPatchGroupRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<RegisterPatchBaselineForPatchGroupResult>,
   errors: [
     AlreadyExistsException,
     DoesNotExistException,
@@ -11000,8 +9160,8 @@ export const registerTargetWithMaintenanceWindow: API.OperationMethod<
   RegisterTargetWithMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterTargetWithMaintenanceWindowRequest,
-  output: RegisterTargetWithMaintenanceWindowResult,
+  input: __S(515, __c64, 3) as any as S.Schema<RegisterTargetWithMaintenanceWindowRequest>,
+  output: __S(516, __c64, 4) as any as S.Schema<RegisterTargetWithMaintenanceWindowResult>,
   errors: [
     DoesNotExistException,
     IdempotentParameterMismatch,
@@ -11029,8 +9189,8 @@ export const registerTaskWithMaintenanceWindow: API.OperationMethod<
   RegisterTaskWithMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterTaskWithMaintenanceWindowRequest,
-  output: RegisterTaskWithMaintenanceWindowResult,
+  input: __S(517, __c64, 5) as any as S.Schema<RegisterTaskWithMaintenanceWindowRequest>,
+  output: __S(518, __c64, 6) as any as S.Schema<RegisterTaskWithMaintenanceWindowResult>,
   errors: [
     DoesNotExistException,
     FeatureNotAvailableException,
@@ -11058,8 +9218,8 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveTagsFromResourceRequest,
-  output: RemoveTagsFromResourceResult,
+  input: __S(519, __c64, 7) as any as S.Schema<RemoveTagsFromResourceRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<RemoveTagsFromResourceResult>,
   errors: [InternalServerError, InvalidResourceId, InvalidResourceType, TooManyUpdates],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11095,8 +9255,8 @@ export const resetServiceSetting: API.OperationMethod<
   ResetServiceSettingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetServiceSettingRequest,
-  output: ResetServiceSettingResult,
+  input: __S(520, __c65, 0) as any as S.Schema<ResetServiceSettingRequest>,
+  output: __S(521, __c65, 1) as any as S.Schema<ResetServiceSettingResult>,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11117,8 +9277,8 @@ export const resumeSession: API.OperationMethod<
   ResumeSessionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeSessionRequest,
-  output: ResumeSessionResponse,
+  input: __S(522, __c65, 2) as any as S.Schema<ResumeSessionRequest>,
+  output: __S(523, __c65, 3) as any as S.Schema<ResumeSessionResponse>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11141,8 +9301,8 @@ export const sendAutomationSignal: API.OperationMethod<
   SendAutomationSignalError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendAutomationSignalRequest,
-  output: SendAutomationSignalResult,
+  input: __S(524, __c65, 4) as any as S.Schema<SendAutomationSignalRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<SendAutomationSignalResult>,
   errors: [
     AutomationExecutionNotFoundException,
     AutomationStepNotFoundException,
@@ -11176,8 +9336,8 @@ export const sendCommand: API.OperationMethod<
   SendCommandError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendCommandRequest,
-  output: SendCommandResult,
+  input: __S(525, __c65, 5) as any as S.Schema<SendCommandRequest>,
+  output: __S(526, __c65, 6) as any as S.Schema<SendCommandResult>,
   errors: [
     DuplicateInstanceId,
     InternalServerError,
@@ -11213,8 +9373,8 @@ export const startAccessRequest: API.OperationMethod<
   StartAccessRequestError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartAccessRequestRequest,
-  output: StartAccessRequestResponse,
+  input: __S(527, __c65, 7) as any as S.Schema<StartAccessRequestRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<StartAccessRequestResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -11242,8 +9402,8 @@ export const startAssociationsOnce: API.OperationMethod<
   StartAssociationsOnceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartAssociationsOnceRequest,
-  output: StartAssociationsOnceResult,
+  input: __S(529, __c66, 1) as any as S.Schema<StartAssociationsOnceRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<StartAssociationsOnceResult>,
   errors: [AssociationDoesNotExist, InvalidAssociation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11268,8 +9428,8 @@ export const startAutomationExecution: API.OperationMethod<
   StartAutomationExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartAutomationExecutionRequest,
-  output: StartAutomationExecutionResult,
+  input: __S(530, __c66, 2) as any as S.Schema<StartAutomationExecutionRequest>,
+  output: __S(531, __c66, 3) as any as S.Schema<StartAutomationExecutionResult>,
   errors: [
     AutomationDefinitionNotFoundException,
     AutomationDefinitionVersionNotFoundException,
@@ -11309,8 +9469,8 @@ export const startChangeRequestExecution: API.OperationMethod<
   StartChangeRequestExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartChangeRequestExecutionRequest,
-  output: StartChangeRequestExecutionResult,
+  input: __S(532, __c66, 4) as any as S.Schema<StartChangeRequestExecutionRequest>,
+  output: __S(531, __c66, 3) as any as S.Schema<StartChangeRequestExecutionResult>,
   errors: [
     AutomationDefinitionNotApprovedException,
     AutomationDefinitionNotFoundException,
@@ -11337,8 +9497,8 @@ export const startExecutionPreview: API.OperationMethod<
   StartExecutionPreviewError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartExecutionPreviewRequest,
-  output: StartExecutionPreviewResponse,
+  input: __S(535, __c66, 7) as any as S.Schema<StartExecutionPreviewRequest>,
+  output: __S(536, __c67, 0) as any as S.Schema<StartExecutionPreviewResponse>,
   errors: [InternalServerError, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11368,8 +9528,8 @@ export const startSession: API.OperationMethod<
   StartSessionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSessionRequest,
-  output: StartSessionResponse,
+  input: __S(537, __c67, 1) as any as S.Schema<StartSessionRequest>,
+  output: __S(523, __c65, 3) as any as S.Schema<StartSessionResponse>,
   errors: [InternalServerError, InvalidDocument, TargetNotConnected],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11390,8 +9550,8 @@ export const stopAutomationExecution: API.OperationMethod<
   StopAutomationExecutionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopAutomationExecutionRequest,
-  output: StopAutomationExecutionResult,
+  input: __S(538, __c67, 2) as any as S.Schema<StopAutomationExecutionRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<StopAutomationExecutionResult>,
   errors: [
     AutomationExecutionNotFoundException,
     InternalServerError,
@@ -11413,8 +9573,8 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateSessionRequest,
-  output: TerminateSessionResponse,
+  input: __S(539, __c67, 3) as any as S.Schema<TerminateSessionRequest>,
+  output: __S(540, __c67, 4) as any as S.Schema<TerminateSessionResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11440,8 +9600,8 @@ export const unlabelParameterVersion: API.OperationMethod<
   UnlabelParameterVersionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlabelParameterVersionRequest,
-  output: UnlabelParameterVersionResult,
+  input: __S(541, __c67, 5) as any as S.Schema<UnlabelParameterVersionRequest>,
+  output: __S(542, __c67, 6) as any as S.Schema<UnlabelParameterVersionResult>,
   errors: [InternalServerError, ParameterNotFound, ParameterVersionNotFound, TooManyUpdates],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11489,8 +9649,8 @@ export const updateAssociation: API.OperationMethod<
   UpdateAssociationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssociationRequest,
-  output: UpdateAssociationResult,
+  input: __S(543, __c67, 7) as any as S.Schema<UpdateAssociationRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<UpdateAssociationResult>,
   errors: [
     AssociationDoesNotExist,
     AssociationVersionLimitExceeded,
@@ -11533,8 +9693,8 @@ export const updateAssociationStatus: API.OperationMethod<
   UpdateAssociationStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssociationStatusRequest,
-  output: UpdateAssociationStatusResult,
+  input: __S(544, __c68, 0) as any as S.Schema<UpdateAssociationStatusRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<UpdateAssociationStatusResult>,
   errors: [
     AssociationDoesNotExist,
     InternalServerError,
@@ -11562,8 +9722,8 @@ export const updateCloudConnector: API.OperationMethod<
   UpdateCloudConnectorError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCloudConnectorRequest,
-  output: UpdateCloudConnectorResult,
+  input: __S(545, __c68, 1) as any as S.Schema<UpdateCloudConnectorRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<UpdateCloudConnectorResult>,
   errors: [ConflictException, InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11591,8 +9751,8 @@ export const updateDocument: API.OperationMethod<
   UpdateDocumentError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDocumentRequest,
-  output: UpdateDocumentResult,
+  input: __S(546, __c68, 2) as any as S.Schema<UpdateDocumentRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<UpdateDocumentResult>,
   errors: [
     DocumentVersionLimitExceeded,
     DuplicateDocumentContent,
@@ -11629,8 +9789,8 @@ export const updateDocumentDefaultVersion: API.OperationMethod<
   UpdateDocumentDefaultVersionError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDocumentDefaultVersionRequest,
-  output: UpdateDocumentDefaultVersionResult,
+  input: __S(547, __c68, 3) as any as S.Schema<UpdateDocumentDefaultVersionRequest>,
+  output: __S(549, __c68, 5) as any as S.Schema<UpdateDocumentDefaultVersionResult>,
   errors: [
     InternalServerError,
     InvalidDocument,
@@ -11663,8 +9823,8 @@ export const updateDocumentMetadata: API.OperationMethod<
   UpdateDocumentMetadataError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDocumentMetadataRequest,
-  output: UpdateDocumentMetadataResponse,
+  input: __S(551, __c68, 7) as any as S.Schema<UpdateDocumentMetadataRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<UpdateDocumentMetadataResponse>,
   errors: [
     InternalServerError,
     InvalidDocument,
@@ -11697,8 +9857,8 @@ export const updateMaintenanceWindow: API.OperationMethod<
   UpdateMaintenanceWindowError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMaintenanceWindowRequest,
-  output: UpdateMaintenanceWindowResult,
+  input: __S(552, __c69, 0) as any as S.Schema<UpdateMaintenanceWindowRequest>,
+  output: __S(553, __c69, 1) as any as S.Schema<UpdateMaintenanceWindowResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11734,8 +9894,8 @@ export const updateMaintenanceWindowTarget: API.OperationMethod<
   UpdateMaintenanceWindowTargetError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMaintenanceWindowTargetRequest,
-  output: UpdateMaintenanceWindowTargetResult,
+  input: __S(554, __c69, 2) as any as S.Schema<UpdateMaintenanceWindowTargetRequest>,
+  output: __S(555, __c69, 3) as any as S.Schema<UpdateMaintenanceWindowTargetResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11790,8 +9950,8 @@ export const updateMaintenanceWindowTask: API.OperationMethod<
   UpdateMaintenanceWindowTaskError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMaintenanceWindowTaskRequest,
-  output: UpdateMaintenanceWindowTaskResult,
+  input: __S(556, __c69, 4) as any as S.Schema<UpdateMaintenanceWindowTaskRequest>,
+  output: __S(557, __c69, 5) as any as S.Schema<UpdateMaintenanceWindowTaskResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11810,8 +9970,8 @@ export const updateManagedInstanceRole: API.OperationMethod<
   UpdateManagedInstanceRoleError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedInstanceRoleRequest,
-  output: UpdateManagedInstanceRoleResult,
+  input: __S(558, __c69, 6) as any as S.Schema<UpdateManagedInstanceRoleRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<UpdateManagedInstanceRoleResult>,
   errors: [InternalServerError, InvalidInstanceId],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11842,8 +10002,8 @@ export const updateOpsItem: API.OperationMethod<
   UpdateOpsItemError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOpsItemRequest,
-  output: UpdateOpsItemResponse,
+  input: __S(559, __c69, 7) as any as S.Schema<UpdateOpsItemRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateOpsItemResponse>,
   errors: [
     InternalServerError,
     OpsItemAccessDeniedException,
@@ -11874,8 +10034,8 @@ export const updateOpsMetadata: API.OperationMethod<
   UpdateOpsMetadataError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOpsMetadataRequest,
-  output: UpdateOpsMetadataResult,
+  input: __S(560, __c70, 0) as any as S.Schema<UpdateOpsMetadataRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<UpdateOpsMetadataResult>,
   errors: [
     InternalServerError,
     OpsMetadataInvalidArgumentException,
@@ -11902,8 +10062,8 @@ export const updatePatchBaseline: API.OperationMethod<
   UpdatePatchBaselineError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePatchBaselineRequest,
-  output: UpdatePatchBaselineResult,
+  input: __S(561, __c70, 1) as any as S.Schema<UpdatePatchBaselineRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<UpdatePatchBaselineResult>,
   errors: [DoesNotExistException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11933,8 +10093,8 @@ export const updateResourceDataSync: API.OperationMethod<
   UpdateResourceDataSyncError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceDataSyncRequest,
-  output: UpdateResourceDataSyncResult,
+  input: __S(563, __c70, 3) as any as S.Schema<UpdateResourceDataSyncRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<UpdateResourceDataSyncResult>,
   errors: [
     InternalServerError,
     ResourceDataSyncConflictException,
@@ -11974,8 +10134,8 @@ export const updateServiceSetting: API.OperationMethod<
   UpdateServiceSettingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceSettingRequest,
-  output: UpdateServiceSettingResult,
+  input: __S(564, __c70, 4) as any as S.Schema<UpdateServiceSettingRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<UpdateServiceSettingResult>,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11996,8 +10156,8 @@ export const validateCloudConnector: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ValidationFinding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ValidateCloudConnectorRequest,
-  output: ValidateCloudConnectorResult,
+  input: __S(565, __c70, 5) as any as S.Schema<ValidateCloudConnectorRequest>,
+  output: __S(569, __c71, 1) as any as S.Schema<ValidateCloudConnectorResult>,
   errors: [InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12018,13 +10178,13 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: ResourceTypeForTagging,
+          ResourceType: S.String,
           ResourceId: S.String,
-          Tags: TagList,
+          Tags: __S(1, __c0, 1),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddTagsToResourceRequest" });
     case 3:
@@ -12050,7 +10210,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ CommandId: S.String, InstanceIds: S.optional(InstanceIdList) }).pipe(
+        S.Struct({ CommandId: S.String, InstanceIds: S.optional(__S(6, __c0, 6)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CancelCommandRequest" });
@@ -12084,8 +10244,8 @@ function __c1(j: number): any {
           IamRole: S.String,
           RegistrationLimit: S.optional(S.Number),
           ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagList),
-          RegistrationMetadata: S.optional(RegistrationMetadataList),
+          Tags: S.optional(__S(1, __c0, 1)),
+          RegistrationMetadata: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateActivationRequest" });
     case 4:
@@ -12095,13 +10255,13 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "CreateActivationResult" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ ParameterValueList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(6, __c0, 6).pipe(S.optional));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Values: S.optional(TargetValues) }),
+        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(6, __c0, 6)) }),
       ).annotate({ identifier: "Target" });
     case 7:
-      return S.Array(Target);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -12115,7 +10275,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "S3OutputLocation" });
     case 1:
-      return S.suspend(() => S.Struct({ S3Location: S.optional(S3OutputLocation) })).annotate({
+      return S.suspend(() => S.Struct({ S3Location: S.optional(__S(16, __c2, 0)) })).annotate({
         identifier: "InstanceAssociationOutputLocation",
       });
     case 2:
@@ -12123,31 +10283,31 @@ function __c2(j: number): any {
         identifier: "Alarm",
       });
     case 3:
-      return S.Array(Alarm);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ IgnorePollAlarmFailure: S.optional(S.Boolean), Alarms: AlarmList }),
+        S.Struct({ IgnorePollAlarmFailure: S.optional(S.Boolean), Alarms: __S(19, __c2, 3) }),
       ).annotate({ identifier: "AlarmConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Accounts: S.optional(Accounts),
-          Regions: S.optional(Regions),
+          Accounts: S.optional(__S(6, __c0, 6)),
+          Regions: S.optional(__S(6, __c0, 6)),
           TargetLocationMaxConcurrency: S.optional(S.String),
           TargetLocationMaxErrors: S.optional(S.String),
           ExecutionRoleName: S.optional(S.String),
-          TargetLocationAlarmConfiguration: S.optional(AlarmConfiguration),
+          TargetLocationAlarmConfiguration: S.optional(__S(20, __c2, 4)),
           IncludeChildOrganizationUnits: S.optional(S.Boolean),
-          ExcludeAccounts: S.optional(ExcludeAccounts),
-          Targets: S.optional(AutomationTargets),
+          ExcludeAccounts: S.optional(__S(6, __c0, 6)),
+          Targets: S.optional(__S(15, __c1, 7)),
           TargetsMaxConcurrency: S.optional(S.String),
           TargetsMaxErrors: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetLocation" });
     case 6:
-      return S.Array(TargetLocation);
+      return S.Array(__S(21, __c2, 5));
     case 7:
-      return S.Array(TargetMap);
+      return S.Array(__S(13, __c1, 5));
   }
 }
 function __c3(j: number): any {
@@ -12158,24 +10318,24 @@ function __c3(j: number): any {
           Name: S.String,
           DocumentVersion: S.optional(S.String),
           InstanceId: S.optional(S.String),
-          Parameters: S.optional(Parameters),
-          Targets: S.optional(Targets),
+          Parameters: S.optional(__S(13, __c1, 5)),
+          Targets: S.optional(__S(15, __c1, 7)),
           ScheduleExpression: S.optional(S.String),
-          OutputLocation: S.optional(InstanceAssociationOutputLocation),
+          OutputLocation: S.optional(__S(17, __c2, 1)),
           AssociationName: S.optional(S.String),
           AutomationTargetParameterName: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           MaxConcurrency: S.optional(S.String),
-          ComplianceSeverity: S.optional(AssociationComplianceSeverity),
-          SyncCompliance: S.optional(AssociationSyncCompliance),
+          ComplianceSeverity: S.optional(S.String),
+          SyncCompliance: S.optional(S.String),
           ApplyOnlyAtCronInterval: S.optional(S.Boolean),
-          CalendarNames: S.optional(CalendarNameOrARNList),
-          TargetLocations: S.optional(TargetLocations),
+          CalendarNames: S.optional(__S(6, __c0, 6)),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
           ScheduleOffset: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          TargetMaps: S.optional(TargetMaps),
-          Tags: S.optional(TagList),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
+          Tags: S.optional(__S(1, __c0, 1)),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
           AssociationDispatchAssumeRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateAssociationRequest" });
@@ -12183,7 +10343,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Date: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Name: AssociationStatusName,
+          Name: S.String,
           Message: S.String,
           AdditionalInfo: S.optional(S.String),
         }),
@@ -12195,15 +10355,15 @@ function __c3(j: number): any {
         S.Struct({
           Status: S.optional(S.String),
           DetailedStatus: S.optional(S.String),
-          AssociationStatusAggregatedCount: S.optional(AssociationStatusAggregatedCount),
+          AssociationStatusAggregatedCount: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "AssociationOverview" });
     case 4:
-      return S.suspend(() => S.Struct({ Name: S.String, State: ExternalAlarmState })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, State: S.String })).annotate({
         identifier: "AlarmStateInformation",
       });
     case 5:
-      return S.Array(AlarmStateInformation);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -12212,36 +10372,36 @@ function __c3(j: number): any {
           AssociationVersion: S.optional(S.String),
           Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateAssociationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(AssociationStatus),
-          Overview: S.optional(AssociationOverview),
+          Status: S.optional(__S(25, __c3, 1)),
+          Overview: S.optional(__S(27, __c3, 3)),
           DocumentVersion: S.optional(S.String),
           AutomationTargetParameterName: S.optional(S.String),
-          Parameters: S.optional(Parameters),
+          Parameters: S.optional(__S(13, __c1, 5)),
           AssociationId: S.optional(S.String),
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           ScheduleExpression: S.optional(S.String),
-          OutputLocation: S.optional(InstanceAssociationOutputLocation),
+          OutputLocation: S.optional(__S(17, __c2, 1)),
           LastExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastSuccessfulExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AssociationName: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           MaxConcurrency: S.optional(S.String),
-          ComplianceSeverity: S.optional(AssociationComplianceSeverity),
-          SyncCompliance: S.optional(AssociationSyncCompliance),
+          ComplianceSeverity: S.optional(S.String),
+          SyncCompliance: S.optional(S.String),
           ApplyOnlyAtCronInterval: S.optional(S.Boolean),
-          CalendarNames: S.optional(CalendarNameOrARNList),
-          TargetLocations: S.optional(TargetLocations),
+          CalendarNames: S.optional(__S(6, __c0, 6)),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
           ScheduleOffset: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          TargetMaps: S.optional(TargetMaps),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
           AssociationDispatchAssumeRole: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociationDescription" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(ns),
+        S.Struct({ AssociationDescription: S.optional(__S(30, __c3, 6)) }).pipe(ns),
       ).annotate({ identifier: "CreateAssociationResult" });
   }
 }
@@ -12252,40 +10412,38 @@ function __c4(j: number): any {
         S.Struct({
           Name: S.String,
           InstanceId: S.optional(S.String),
-          Parameters: S.optional(Parameters),
+          Parameters: S.optional(__S(13, __c1, 5)),
           AutomationTargetParameterName: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           ScheduleExpression: S.optional(S.String),
-          OutputLocation: S.optional(InstanceAssociationOutputLocation),
+          OutputLocation: S.optional(__S(17, __c2, 1)),
           AssociationName: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           MaxConcurrency: S.optional(S.String),
-          ComplianceSeverity: S.optional(AssociationComplianceSeverity),
-          SyncCompliance: S.optional(AssociationSyncCompliance),
+          ComplianceSeverity: S.optional(S.String),
+          SyncCompliance: S.optional(S.String),
           ApplyOnlyAtCronInterval: S.optional(S.Boolean),
-          CalendarNames: S.optional(CalendarNameOrARNList),
-          TargetLocations: S.optional(TargetLocations),
+          CalendarNames: S.optional(__S(6, __c0, 6)),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
           ScheduleOffset: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          TargetMaps: S.optional(TargetMaps),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "CreateAssociationBatchRequestEntry",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ CreateAssociationBatchRequestEntry.pipe(
-          /*@__PURE__*/ T.XmlName("entries"),
-        ).annotate({
+        /*@__PURE__*/ __S(32, __c4, 0).pipe(/*@__PURE__*/ T.XmlName("entries")).annotate({
           identifier: "CreateAssociationBatchRequestEntry",
         }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Entries: CreateAssociationBatchRequestEntries,
+          Entries: __S(33, __c4, 1),
           AssociationDispatchAssumeRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -12293,33 +10451,33 @@ function __c4(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ AssociationDescription.pipe(
-          /*@__PURE__*/ T.XmlName("AssociationDescription"),
-        ).annotate({
-          identifier: "AssociationDescription",
-        }),
+        /*@__PURE__*/ __S(30, __c3, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("AssociationDescription"))
+          .annotate({
+            identifier: "AssociationDescription",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Entry: S.optional(CreateAssociationBatchRequestEntry),
+          Entry: S.optional(__S(32, __c4, 0)),
           Message: S.optional(S.String),
-          Fault: S.optional(Fault),
+          Fault: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailedCreateAssociation" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ FailedCreateAssociation.pipe(
-          /*@__PURE__*/ T.XmlName("FailedCreateAssociationEntry"),
-        ).annotate({
-          identifier: "FailedCreateAssociation",
-        }),
+        /*@__PURE__*/ __S(36, __c4, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("FailedCreateAssociationEntry"))
+          .annotate({
+            identifier: "FailedCreateAssociation",
+          }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Successful: S.optional(AssociationDescriptionList),
-          Failed: S.optional(FailedCreateAssociationList),
+          Successful: S.optional(__S(35, __c4, 3)),
+          Failed: S.optional(__S(37, __c4, 5)),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateAssociationBatchResult",
@@ -12333,9 +10491,9 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AzureSubscription);
+      return S.Array(__S(39, __c4, 7));
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ Subscriptions: AzureSubscriptionList })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Subscriptions: __S(40, __c5, 0) })]);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -12343,20 +10501,20 @@ function __c5(j: number): any {
           TenantDisplayName: S.optional(S.String),
           ApplicationId: S.String,
           ApplicationDisplayName: S.optional(S.String),
-          Targets: S.optional(ConfigurationTargets),
+          Targets: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "AzureConfiguration" });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ AzureConfiguration: AzureConfiguration })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ AzureConfiguration: __S(42, __c5, 2) })]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           DisplayName: S.String,
           RoleArn: S.String,
           Description: S.optional(S.String),
-          Configuration: CloudConnectorConfiguration,
+          Configuration: __S(43, __c5, 3),
           ConfigConnectorArn: S.String,
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateCloudConnectorRequest",
@@ -12377,7 +10535,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "DocumentRequires" });
     case 7:
-      return S.Array(DocumentRequires);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -12385,58 +10543,56 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Key: S.optional(AttachmentsSourceKey),
-          Values: S.optional(AttachmentsSourceValues),
+          Key: S.optional(S.String),
+          Values: S.optional(__S(6, __c0, 6)),
           Name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachmentsSource" });
     case 1:
-      return S.Array(AttachmentsSource);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Content: S.String,
-          Requires: S.optional(DocumentRequiresList),
-          Attachments: S.optional(AttachmentsSourceList),
+          Requires: S.optional(__S(47, __c5, 7)),
+          Attachments: S.optional(__S(49, __c6, 1)),
           Name: S.String,
           DisplayName: S.optional(S.String),
           VersionName: S.optional(S.String),
-          DocumentType: S.optional(DocumentType),
-          DocumentFormat: S.optional(DocumentFormat),
+          DocumentType: S.optional(S.String),
+          DocumentFormat: S.optional(S.String),
           TargetType: S.optional(S.String),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDocumentRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Type: S.optional(DocumentParameterType),
+          Type: S.optional(S.String),
           Description: S.optional(S.String),
           DefaultValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentParameter" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ DocumentParameter.pipe(/*@__PURE__*/ T.XmlName("DocumentParameter")).annotate(
-          {
-            identifier: "DocumentParameter",
-          },
-        ),
+        /*@__PURE__*/ __S(51, __c6, 3).pipe(/*@__PURE__*/ T.XmlName("DocumentParameter")).annotate({
+          identifier: "DocumentParameter",
+        }),
       );
     case 5:
-      return S.Array(/*@__PURE__*/ PlatformType.pipe(/*@__PURE__*/ T.XmlName("PlatformType")));
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("PlatformType")));
     case 6:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "AttachmentInformation",
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ AttachmentInformation.pipe(
-          /*@__PURE__*/ T.XmlName("AttachmentInformation"),
-        ).annotate({
-          identifier: "AttachmentInformation",
-        }),
+        /*@__PURE__*/ __S(54, __c6, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("AttachmentInformation"))
+          .annotate({
+            identifier: "AttachmentInformation",
+          }),
       );
   }
 }
@@ -12446,56 +10602,54 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ReviewedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(ReviewStatus),
+          Status: S.optional(S.String),
           Reviewer: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReviewInformation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ ReviewInformation.pipe(/*@__PURE__*/ T.XmlName("ReviewInformation")).annotate(
-          {
-            identifier: "ReviewInformation",
-          },
-        ),
+        /*@__PURE__*/ __S(56, __c7, 0).pipe(/*@__PURE__*/ T.XmlName("ReviewInformation")).annotate({
+          identifier: "ReviewInformation",
+        }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           Sha1: S.optional(S.String),
           Hash: S.optional(S.String),
-          HashType: S.optional(DocumentHashType),
+          HashType: S.optional(S.String),
           Name: S.optional(S.String),
           DisplayName: S.optional(S.String),
           VersionName: S.optional(S.String),
           Owner: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(DocumentStatus),
+          Status: S.optional(S.String),
           StatusInformation: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
           Description: S.optional(S.String),
-          Parameters: S.optional(DocumentParameterList),
-          PlatformTypes: S.optional(PlatformTypeList),
-          DocumentType: S.optional(DocumentType),
+          Parameters: S.optional(__S(52, __c6, 4)),
+          PlatformTypes: S.optional(__S(53, __c6, 5)),
+          DocumentType: S.optional(S.String),
           SchemaVersion: S.optional(S.String),
           LatestVersion: S.optional(S.String),
           DefaultVersion: S.optional(S.String),
-          DocumentFormat: S.optional(DocumentFormat),
+          DocumentFormat: S.optional(S.String),
           TargetType: S.optional(S.String),
-          Tags: S.optional(TagList),
-          AttachmentsInformation: S.optional(AttachmentInformationList),
-          Requires: S.optional(DocumentRequiresList),
+          Tags: S.optional(__S(1, __c0, 1)),
+          AttachmentsInformation: S.optional(__S(55, __c6, 7)),
+          Requires: S.optional(__S(47, __c5, 7)),
           Author: S.optional(S.String),
-          ReviewInformation: S.optional(ReviewInformationList),
+          ReviewInformation: S.optional(__S(57, __c7, 1)),
           ApprovedVersion: S.optional(S.String),
           PendingReviewVersion: S.optional(S.String),
-          ReviewStatus: S.optional(ReviewStatus),
-          Category: S.optional(CategoryList),
-          CategoryEnum: S.optional(CategoryEnumList),
+          ReviewStatus: S.optional(S.String),
+          Category: S.optional(__S(6, __c0, 6)),
+          CategoryEnum: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "DocumentDescription" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ DocumentDescription: S.optional(DocumentDescription) }).pipe(ns),
+        S.Struct({ DocumentDescription: S.optional(__S(58, __c7, 2)) }).pipe(ns),
       ).annotate({ identifier: "CreateDocumentResult" });
     case 4:
       return S.suspend(() =>
@@ -12511,7 +10665,7 @@ function __c7(j: number): any {
           Cutoff: S.Number,
           AllowUnassociatedTargets: S.Boolean,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateMaintenanceWindowRequest",
@@ -12522,10 +10676,10 @@ function __c7(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Value: S.optional(S.String), Type: S.optional(OpsItemDataType) }),
+        S.Struct({ Value: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "OpsItemDataValue" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ OpsItemDataValue.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(62, __c7, 6).pipe(S.optional));
   }
 }
 function __c8(j: number): any {
@@ -12535,25 +10689,25 @@ function __c8(j: number): any {
         identifier: "OpsItemNotification",
       });
     case 1:
-      return S.Array(OpsItemNotification);
+      return S.Array(__S(64, __c8, 0));
     case 2:
       return S.suspend(() => S.Struct({ OpsItemId: S.String })).annotate({
         identifier: "RelatedOpsItem",
       });
     case 3:
-      return S.Array(RelatedOpsItem);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Description: S.String,
           OpsItemType: S.optional(S.String),
-          OperationalData: S.optional(OpsItemOperationalData),
-          Notifications: S.optional(OpsItemNotifications),
+          OperationalData: S.optional(__S(63, __c7, 7)),
+          Notifications: S.optional(__S(65, __c8, 1)),
           Priority: S.optional(S.Number),
-          RelatedOpsItems: S.optional(RelatedOpsItems),
+          RelatedOpsItems: S.optional(__S(67, __c8, 3)),
           Source: S.String,
           Title: S.String,
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1, __c0, 1)),
           Category: S.optional(S.String),
           Severity: S.optional(S.String),
           ActualStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -12572,7 +10726,7 @@ function __c8(j: number): any {
         identifier: "MetadataValue",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ MetadataValue.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(70, __c8, 6).pipe(S.optional));
   }
 }
 function __c9(j: number): any {
@@ -12581,8 +10735,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String,
-          Metadata: S.optional(MetadataMap),
-          Tags: S.optional(TagList),
+          Metadata: S.optional(__S(71, __c8, 7)),
+          Tags: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateOpsMetadataRequest" });
     case 1:
@@ -12590,29 +10744,29 @@ function __c9(j: number): any {
         identifier: "CreateOpsMetadataResult",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Key: PatchFilterKey, Values: PatchFilterValueList }),
-      ).annotate({ identifier: "PatchFilter" });
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(6, __c0, 6) })).annotate({
+        identifier: "PatchFilter",
+      });
     case 3:
-      return S.Array(PatchFilter);
+      return S.Array(__S(74, __c9, 2));
     case 4:
-      return S.suspend(() => S.Struct({ PatchFilters: PatchFilterList })).annotate({
+      return S.suspend(() => S.Struct({ PatchFilters: __S(75, __c9, 3) })).annotate({
         identifier: "PatchFilterGroup",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PatchFilterGroup: PatchFilterGroup,
-          ComplianceLevel: S.optional(PatchComplianceLevel),
+          PatchFilterGroup: __S(76, __c9, 4),
+          ComplianceLevel: S.optional(S.String),
           ApproveAfterDays: S.optional(S.Number),
           ApproveUntilDate: S.optional(S.String),
           EnableNonSecurity: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PatchRule" });
     case 6:
-      return S.Array(PatchRule);
+      return S.Array(__S(77, __c9, 5));
     case 7:
-      return S.suspend(() => S.Struct({ PatchRules: PatchRuleList })).annotate({
+      return S.suspend(() => S.Struct({ PatchRules: __S(78, __c9, 6) })).annotate({
         identifier: "PatchRuleGroup",
       });
   }
@@ -12623,29 +10777,29 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Products: PatchSourceProductList,
+          Products: __S(6, __c0, 6),
           Configuration: SensitiveString,
         }),
       ).annotate({ identifier: "PatchSource" });
     case 1:
-      return S.Array(PatchSource);
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          OperatingSystem: S.optional(OperatingSystem),
+          OperatingSystem: S.optional(S.String),
           Name: S.String,
-          GlobalFilters: S.optional(PatchFilterGroup),
-          ApprovalRules: S.optional(PatchRuleGroup),
-          ApprovedPatches: S.optional(PatchIdList),
-          ApprovedPatchesComplianceLevel: S.optional(PatchComplianceLevel),
+          GlobalFilters: S.optional(__S(76, __c9, 4)),
+          ApprovalRules: S.optional(__S(79, __c9, 7)),
+          ApprovedPatches: S.optional(__S(6, __c0, 6)),
+          ApprovedPatchesComplianceLevel: S.optional(S.String),
           ApprovedPatchesEnableNonSecurity: S.optional(S.Boolean),
-          RejectedPatches: S.optional(PatchIdList),
-          RejectedPatchesAction: S.optional(PatchAction),
+          RejectedPatches: S.optional(__S(6, __c0, 6)),
+          RejectedPatchesAction: S.optional(S.String),
           Description: S.optional(S.String),
-          Sources: S.optional(PatchSourceList),
-          AvailableSecurityUpdatesComplianceStatus: S.optional(PatchComplianceStatus),
+          Sources: S.optional(__S(81, __c10, 1)),
+          AvailableSecurityUpdatesComplianceStatus: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1, __c0, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePatchBaselineRequest",
@@ -12665,10 +10819,10 @@ function __c10(j: number): any {
         S.Struct({
           BucketName: S.String,
           Prefix: S.optional(S.String),
-          SyncFormat: ResourceDataSyncS3Format,
+          SyncFormat: S.String,
           Region: S.String,
           AWSKMSKeyARN: S.optional(S.String),
-          DestinationDataSharing: S.optional(ResourceDataSyncDestinationDataSharing),
+          DestinationDataSharing: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({
         identifier: "ResourceDataSyncS3Destination",
@@ -12678,7 +10832,7 @@ function __c10(j: number): any {
         identifier: "ResourceDataSyncOrganizationalUnit",
       });
     case 7:
-      return S.Array(ResourceDataSyncOrganizationalUnit);
+      return S.Array(__S(86, __c10, 6));
   }
 }
 function __c11(j: number): any {
@@ -12687,7 +10841,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OrganizationSourceType: S.String,
-          OrganizationalUnits: S.optional(ResourceDataSyncOrganizationalUnitList),
+          OrganizationalUnits: S.optional(__S(87, __c10, 7)),
         }),
       ).annotate({
         identifier: "ResourceDataSyncAwsOrganizationsSource",
@@ -12696,8 +10850,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SourceType: S.String,
-          AwsOrganizationsSource: S.optional(ResourceDataSyncAwsOrganizationsSource),
-          SourceRegions: ResourceDataSyncSourceRegionList,
+          AwsOrganizationsSource: S.optional(__S(88, __c11, 0)),
+          SourceRegions: __S(6, __c0, 6),
           IncludeFutureRegions: S.optional(S.Boolean),
           EnableAllOpsDataSources: S.optional(S.Boolean),
         }),
@@ -12706,9 +10860,9 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SyncName: S.String,
-          S3Destination: S.optional(ResourceDataSyncS3Destination),
+          S3Destination: S.optional(__S(85, __c10, 5)),
           SyncType: S.optional(S.String),
-          SyncSource: S.optional(ResourceDataSyncSource),
+          SyncSource: S.optional(__S(89, __c11, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateResourceDataSyncRequest",
@@ -12760,7 +10914,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TypeName: S.String,
-          SchemaDeleteOption: S.optional(InventorySchemaDeleteOption),
+          SchemaDeleteOption: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -12776,13 +10930,13 @@ function __c12(j: number): any {
         identifier: "InventoryDeletionSummaryItem",
       });
     case 3:
-      return S.Array(InventoryDeletionSummaryItem);
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           TotalCount: S.optional(S.Number),
           RemainingCount: S.optional(S.Number),
-          SummaryItems: S.optional(InventoryDeletionSummaryItems),
+          SummaryItems: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({ identifier: "InventoryDeletionSummary" });
     case 5:
@@ -12790,7 +10944,7 @@ function __c12(j: number): any {
         S.Struct({
           DeletionId: S.optional(S.String),
           TypeName: S.optional(S.String),
-          DeletionSummary: S.optional(InventoryDeletionSummary),
+          DeletionSummary: S.optional(__S(100, __c12, 4)),
         }).pipe(ns),
       ).annotate({ identifier: "DeleteInventoryResult" });
     case 6:
@@ -12825,15 +10979,15 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteParameterRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Names: ParameterNameList }).pipe(
+        S.Struct({ Names: __S(6, __c0, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteParametersRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DeletedParameters: S.optional(ParameterNameList),
-          InvalidParameters: S.optional(ParameterNameList),
+          DeletedParameters: S.optional(__S(6, __c0, 6)),
+          InvalidParameters: S.optional(__S(6, __c0, 6)),
         }).pipe(ns),
       ).annotate({ identifier: "DeleteParametersResult" });
     case 4:
@@ -12858,7 +11012,7 @@ function __c13(j: number): any {
           ResourceArn: S.String,
           PolicyId: S.String,
           PolicyHash: S.String,
-          DeletionMode: S.optional(DeletionMode),
+          DeletionMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DeleteResourcePolicyRequest",
@@ -12922,14 +11076,14 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          FilterKey: S.optional(DescribeActivationsFilterKeys),
-          FilterValues: S.optional(StringList),
+          FilterKey: S.optional(S.String),
+          FilterValues: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "DescribeActivationsFilter",
       });
     case 7:
-      return S.Array(DescribeActivationsFilter);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -12937,7 +11091,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(DescribeActivationsFilterList),
+          Filters: S.optional(__S(119, __c14, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -12956,15 +11110,15 @@ function __c15(j: number): any {
           ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Expired: S.optional(S.Boolean),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "Activation" });
     case 2:
-      return S.Array(Activation);
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ActivationList: S.optional(ActivationList),
+          ActivationList: S.optional(__S(122, __c15, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -12983,27 +11137,27 @@ function __c15(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(ns),
+        S.Struct({ AssociationDescription: S.optional(__S(30, __c3, 6)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeAssociationResult",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Key: AssociationExecutionFilterKey,
+          Key: S.String,
           Value: S.String,
-          Type: AssociationFilterOperatorType,
+          Type: S.String,
         }),
       ).annotate({
         identifier: "AssociationExecutionFilter",
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ AssociationExecutionFilter.pipe(
-          /*@__PURE__*/ T.XmlName("AssociationExecutionFilter"),
-        ).annotate({
-          identifier: "AssociationExecutionFilter",
-        }),
+        /*@__PURE__*/ __S(126, __c15, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("AssociationExecutionFilter"))
+          .annotate({
+            identifier: "AssociationExecutionFilter",
+          }),
       );
   }
 }
@@ -13013,7 +11167,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AssociationId: S.String,
-          Filters: S.optional(AssociationExecutionFilterList),
+          Filters: S.optional(__S(127, __c15, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13031,47 +11185,45 @@ function __c16(j: number): any {
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ResourceCountByStatus: S.optional(S.String),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "AssociationExecution" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ AssociationExecution.pipe(
-          /*@__PURE__*/ T.XmlName("AssociationExecution"),
-        ).annotate({
-          identifier: "AssociationExecution",
-        }),
+        /*@__PURE__*/ __S(129, __c16, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("AssociationExecution"))
+          .annotate({
+            identifier: "AssociationExecution",
+          }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AssociationExecutions: S.optional(AssociationExecutionsList),
+          AssociationExecutions: S.optional(__S(130, __c16, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAssociationExecutionsResult",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Key: AssociationExecutionTargetsFilterKey, Value: S.String }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "AssociationExecutionTargetsFilter",
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ AssociationExecutionTargetsFilter.pipe(
-          /*@__PURE__*/ T.XmlName("AssociationExecutionTargetsFilter"),
-        ).annotate({
-          identifier: "AssociationExecutionTargetsFilter",
-        }),
+        /*@__PURE__*/ __S(132, __c16, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("AssociationExecutionTargetsFilter"))
+          .annotate({
+            identifier: "AssociationExecutionTargetsFilter",
+          }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
           AssociationId: S.String,
           ExecutionId: S.String,
-          Filters: S.optional(AssociationExecutionTargetsFilterList),
+          Filters: S.optional(__S(133, __c16, 5)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13097,40 +11249,38 @@ function __c17(j: number): any {
           Status: S.optional(S.String),
           DetailedStatus: S.optional(S.String),
           LastExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          OutputSource: S.optional(OutputSource),
+          OutputSource: S.optional(__S(135, __c16, 7)),
         }),
       ).annotate({
         identifier: "AssociationExecutionTarget",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ AssociationExecutionTarget.pipe(
-          /*@__PURE__*/ T.XmlName("AssociationExecutionTarget"),
-        ).annotate({
-          identifier: "AssociationExecutionTarget",
-        }),
+        /*@__PURE__*/ __S(136, __c17, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("AssociationExecutionTarget"))
+          .annotate({
+            identifier: "AssociationExecutionTarget",
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AssociationExecutionTargets: S.optional(AssociationExecutionTargetsList),
+          AssociationExecutionTargets: S.optional(__S(137, __c17, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAssociationExecutionTargetsResult",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ Key: AutomationExecutionFilterKey, Values: AutomationExecutionFilterValueList }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(6, __c0, 6) })).annotate({
         identifier: "AutomationExecutionFilter",
       });
     case 4:
-      return S.Array(AutomationExecutionFilter);
+      return S.Array(__S(139, __c17, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(AutomationExecutionFilterList),
+          Filters: S.optional(__S(140, __c17, 4)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13140,7 +11290,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ParameterValues: S.optional(TargetParameterList),
+          ParameterValues: S.optional(__S(6, __c0, 6)),
           Truncated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ResolvedTargets" });
@@ -13149,13 +11299,13 @@ function __c17(j: number): any {
         S.Struct({
           DocumentName: S.String,
           DocumentVersion: S.optional(S.String),
-          Parameters: S.optional(AutomationParameterMap),
+          Parameters: S.optional(__S(13, __c1, 5)),
           TargetParameterName: S.optional(S.String),
-          Targets: S.optional(Targets),
-          TargetMaps: S.optional(TargetMaps),
+          Targets: S.optional(__S(15, __c1, 7)),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
-          TargetLocations: S.optional(TargetLocations),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "Runbook" });
   }
@@ -13163,39 +11313,39 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Runbook);
+      return S.Array(__S(143, __c17, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           AutomationExecutionId: S.optional(S.String),
           DocumentName: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          AutomationExecutionStatus: S.optional(AutomationExecutionStatus),
+          AutomationExecutionStatus: S.optional(S.String),
           ExecutionStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExecutionEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExecutedBy: S.optional(S.String),
           LogFile: S.optional(S.String),
-          Outputs: S.optional(AutomationParameterMap),
-          Mode: S.optional(ExecutionMode),
+          Outputs: S.optional(__S(13, __c1, 5)),
+          Mode: S.optional(S.String),
           ParentAutomationExecutionId: S.optional(S.String),
           CurrentStepName: S.optional(S.String),
           CurrentAction: S.optional(S.String),
           FailureMessage: S.optional(S.String),
           WarningMessage: S.optional(S.String),
           TargetParameterName: S.optional(S.String),
-          Targets: S.optional(Targets),
-          TargetMaps: S.optional(TargetMaps),
-          ResolvedTargets: S.optional(ResolvedTargets),
+          Targets: S.optional(__S(15, __c1, 7)),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
+          ResolvedTargets: S.optional(__S(142, __c17, 6)),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           Target: S.optional(S.String),
-          AutomationType: S.optional(AutomationType),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
+          AutomationType: S.optional(S.String),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
           TargetLocationsURL: S.optional(S.String),
-          AutomationSubtype: S.optional(AutomationSubtype),
+          AutomationSubtype: S.optional(S.String),
           ScheduledTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Runbooks: S.optional(Runbooks),
+          Runbooks: S.optional(__S(144, __c18, 0)),
           OpsItemId: S.optional(S.String),
           AssociationId: S.optional(S.String),
           ChangeRequestName: S.optional(S.String),
@@ -13204,27 +11354,27 @@ function __c18(j: number): any {
         identifier: "AutomationExecutionMetadata",
       });
     case 2:
-      return S.Array(AutomationExecutionMetadata);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AutomationExecutionMetadataList: S.optional(AutomationExecutionMetadataList),
+          AutomationExecutionMetadataList: S.optional(__S(146, __c18, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAutomationExecutionsResult",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Key: StepExecutionFilterKey, Values: StepExecutionFilterValueList }),
-      ).annotate({ identifier: "StepExecutionFilter" });
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(6, __c0, 6) })).annotate({
+        identifier: "StepExecutionFilter",
+      });
     case 5:
-      return S.Array(StepExecutionFilter);
+      return S.Array(__S(148, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           AutomationExecutionId: S.String,
-          Filters: S.optional(StepExecutionFilterList),
+          Filters: S.optional(__S(149, __c18, 5)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           ReverseOrder: S.optional(S.Boolean),
@@ -13243,7 +11393,7 @@ function __c19(j: number): any {
         S.Struct({
           FailureStage: S.optional(S.String),
           FailureType: S.optional(S.String),
-          Details: S.optional(AutomationParameterMap),
+          Details: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "FailureDetails" });
     case 1:
@@ -13266,32 +11416,32 @@ function __c19(j: number): any {
           MaxAttempts: S.optional(S.Number),
           ExecutionStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExecutionEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StepStatus: S.optional(AutomationExecutionStatus),
+          StepStatus: S.optional(S.String),
           ResponseCode: S.optional(S.String),
-          Inputs: S.optional(NormalStringMap),
-          Outputs: S.optional(AutomationParameterMap),
+          Inputs: S.optional(__S(151, __c18, 7)),
+          Outputs: S.optional(__S(13, __c1, 5)),
           Response: S.optional(S.String),
           FailureMessage: S.optional(S.String),
           WarningMessage: S.optional(S.String),
-          FailureDetails: S.optional(FailureDetails),
+          FailureDetails: S.optional(__S(152, __c19, 0)),
           StepExecutionId: S.optional(S.String),
-          OverriddenParameters: S.optional(AutomationParameterMap),
+          OverriddenParameters: S.optional(__S(13, __c1, 5)),
           IsEnd: S.optional(S.Boolean),
           NextStep: S.optional(S.String),
           IsCritical: S.optional(S.Boolean),
-          ValidNextSteps: S.optional(ValidNextStepList),
-          Targets: S.optional(Targets),
-          TargetLocation: S.optional(TargetLocation),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
-          ParentStepDetails: S.optional(ParentStepDetails),
+          ValidNextSteps: S.optional(__S(6, __c0, 6)),
+          Targets: S.optional(__S(15, __c1, 7)),
+          TargetLocation: S.optional(__S(21, __c2, 5)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
+          ParentStepDetails: S.optional(__S(153, __c19, 1)),
         }),
       ).annotate({ identifier: "StepExecution" });
     case 3:
-      return S.Array(StepExecution);
+      return S.Array(__S(154, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          StepExecutions: S.optional(StepExecutionList),
+          StepExecutions: S.optional(__S(155, __c19, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13300,7 +11450,7 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(PatchOrchestratorFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13323,9 +11473,9 @@ function __c19(j: number): any {
           KbNumber: S.optional(S.String),
           MsrcNumber: S.optional(S.String),
           Language: S.optional(S.String),
-          AdvisoryIds: S.optional(PatchAdvisoryIdList),
-          BugzillaIds: S.optional(PatchBugzillaIdList),
-          CVEIds: S.optional(PatchCVEIdList),
+          AdvisoryIds: S.optional(__S(6, __c0, 6)),
+          BugzillaIds: S.optional(__S(6, __c0, 6)),
+          CVEIds: S.optional(__S(6, __c0, 6)),
           Name: S.optional(S.String),
           Epoch: S.optional(S.Number),
           Version: S.optional(S.String),
@@ -13336,14 +11486,16 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "Patch" });
     case 7:
-      return S.Array(Patch);
+      return S.Array(__S(158, __c19, 6));
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Patches: S.optional(PatchList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Patches: S.optional(__S(159, __c19, 7)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeAvailablePatchesResult",
       });
@@ -13357,13 +11509,13 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DescribeDocumentRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Document: S.optional(DocumentDescription) }).pipe(ns),
+        S.Struct({ Document: S.optional(__S(58, __c7, 2)) }).pipe(ns),
       ).annotate({ identifier: "DescribeDocumentResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          PermissionType: DocumentPermissionType,
+          PermissionType: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13378,17 +11530,17 @@ function __c20(j: number): any {
       ).annotate({ identifier: "AccountSharingInfo" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ AccountSharingInfo.pipe(
-          /*@__PURE__*/ T.XmlName("AccountSharingInfo"),
-        ).annotate({
-          identifier: "AccountSharingInfo",
-        }),
+        /*@__PURE__*/ __S(165, __c20, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("AccountSharingInfo"))
+          .annotate({
+            identifier: "AccountSharingInfo",
+          }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AccountIds: S.optional(AccountIdList),
-          AccountSharingInfoList: S.optional(AccountSharingInfoList),
+          AccountIds: S.optional(__S(164, __c20, 4)),
+          AccountSharingInfoList: S.optional(__S(166, __c20, 6)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13418,11 +11570,11 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "InstanceAssociation" });
     case 2:
-      return S.Array(InstanceAssociation);
+      return S.Array(__S(169, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Associations: S.optional(InstanceAssociationList),
+          Associations: S.optional(__S(170, __c21, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13441,17 +11593,20 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DeploymentStatus: S.optional(PatchDeploymentStatus),
-          ComplianceLevel: S.optional(PatchComplianceLevel),
+          DeploymentStatus: S.optional(S.String),
+          ComplianceLevel: S.optional(S.String),
           ApprovalDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "PatchStatus" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Patch: S.optional(Patch), PatchStatus: S.optional(PatchStatus) }),
+        S.Struct({
+          Patch: S.optional(__S(158, __c19, 6)),
+          PatchStatus: S.optional(__S(173, __c21, 5)),
+        }),
       ).annotate({ identifier: "EffectivePatch" });
     case 7:
-      return S.Array(EffectivePatch);
+      return S.Array(__S(174, __c21, 6));
   }
 }
 function __c22(j: number): any {
@@ -13459,7 +11614,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          EffectivePatches: S.optional(EffectivePatchList),
+          EffectivePatches: S.optional(__S(175, __c21, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13480,7 +11635,7 @@ function __c22(j: number): any {
         identifier: "S3OutputUrl",
       });
     case 3:
-      return S.suspend(() => S.Struct({ S3OutputUrl: S.optional(S3OutputUrl) })).annotate({
+      return S.suspend(() => S.Struct({ S3OutputUrl: S.optional(__S(178, __c22, 2)) })).annotate({
         identifier: "InstanceAssociationOutputUrl",
       });
     case 4:
@@ -13496,18 +11651,18 @@ function __c22(j: number): any {
           DetailedStatus: S.optional(S.String),
           ExecutionSummary: S.optional(S.String),
           ErrorCode: S.optional(S.String),
-          OutputUrl: S.optional(InstanceAssociationOutputUrl),
+          OutputUrl: S.optional(__S(179, __c22, 3)),
           AssociationName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InstanceAssociationStatusInfo",
       });
     case 5:
-      return S.Array(InstanceAssociationStatusInfo);
+      return S.Array(__S(180, __c22, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InstanceAssociationStatusInfos: S.optional(InstanceAssociationStatusInfos),
+          InstanceAssociationStatusInfos: S.optional(__S(181, __c22, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13524,39 +11679,37 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          key: InstanceInformationFilterKey,
-          valueSet: InstanceInformationFilterValueSet,
+          key: S.String,
+          valueSet: __S(183, __c22, 7),
         }),
       ).annotate({
         identifier: "InstanceInformationFilter",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ InstanceInformationFilter.pipe(
-          /*@__PURE__*/ T.XmlName("InstanceInformationFilter"),
-        ).annotate({
-          identifier: "InstanceInformationFilter",
-        }),
+        /*@__PURE__*/ __S(184, __c23, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("InstanceInformationFilter"))
+          .annotate({
+            identifier: "InstanceInformationFilter",
+          }),
       );
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Key: S.String, Values: InstanceInformationFilterValueSet }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(183, __c22, 7) })).annotate({
         identifier: "InstanceInformationStringFilter",
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ InstanceInformationStringFilter.pipe(
-          /*@__PURE__*/ T.XmlName("InstanceInformationStringFilter"),
-        ).annotate({
-          identifier: "InstanceInformationStringFilter",
-        }),
+        /*@__PURE__*/ __S(186, __c23, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("InstanceInformationStringFilter"))
+          .annotate({
+            identifier: "InstanceInformationStringFilter",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          InstanceInformationFilterList: S.optional(InstanceInformationFilterList),
-          Filters: S.optional(InstanceInformationStringFilterList),
+          InstanceInformationFilterList: S.optional(__S(185, __c23, 1)),
+          Filters: S.optional(__S(187, __c23, 3)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13567,9 +11720,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DetailedStatus: S.optional(S.String),
-          InstanceAssociationStatusAggregatedCount: S.optional(
-            InstanceAssociationStatusAggregatedCount,
-          ),
+          InstanceAssociationStatusAggregatedCount: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "InstanceAggregatedAssociationOverview",
@@ -13578,17 +11729,17 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           InstanceId: S.optional(S.String),
-          PingStatus: S.optional(PingStatus),
+          PingStatus: S.optional(S.String),
           LastPingDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AgentVersion: S.optional(S.String),
           IsLatestVersion: S.optional(S.Boolean),
-          PlatformType: S.optional(PlatformType),
+          PlatformType: S.optional(S.String),
           PlatformName: S.optional(S.String),
           PlatformVersion: S.optional(S.String),
           ActivationId: S.optional(S.String),
           IamRole: S.optional(S.String),
           RegistrationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ResourceType: S.optional(ResourceType),
+          ResourceType: S.optional(S.String),
           Name: S.optional(S.String),
           IPAddress: S.optional(SensitiveString),
           ComputerName: S.optional(S.String),
@@ -13597,19 +11748,19 @@ function __c23(j: number): any {
           LastSuccessfulAssociationExecutionDate: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
-          AssociationOverview: S.optional(InstanceAggregatedAssociationOverview),
+          AssociationOverview: S.optional(__S(189, __c23, 5)),
           SourceId: S.optional(S.String),
-          SourceType: S.optional(SourceType),
+          SourceType: S.optional(S.String),
           SourceLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceInformation" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ InstanceInformation.pipe(
-          /*@__PURE__*/ T.XmlName("InstanceInformation"),
-        ).annotate({
-          identifier: "InstanceInformation",
-        }),
+        /*@__PURE__*/ __S(190, __c23, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("InstanceInformation"))
+          .annotate({
+            identifier: "InstanceInformation",
+          }),
       );
   }
 }
@@ -13618,7 +11769,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InstanceInformationList: S.optional(InstanceInformationList),
+          InstanceInformationList: S.optional(__S(191, __c23, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13628,7 +11779,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           InstanceId: S.String,
-          Filters: S.optional(PatchOrchestratorFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13642,17 +11793,17 @@ function __c24(j: number): any {
           KBId: S.String,
           Classification: S.String,
           Severity: S.String,
-          State: PatchComplianceDataState,
+          State: S.String,
           InstalledTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           CVEIds: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchComplianceData" });
     case 3:
-      return S.Array(PatchComplianceData);
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Patches: S.optional(PatchComplianceDataList),
+          Patches: S.optional(__S(195, __c24, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13661,7 +11812,7 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          InstanceIds: InstanceIdList,
+          InstanceIds: __S(6, __c0, 6),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13688,18 +11839,18 @@ function __c24(j: number): any {
           AvailableSecurityUpdateCount: S.optional(S.Number),
           OperationStartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           OperationEndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Operation: PatchOperationType,
+          Operation: S.String,
           LastNoRebootInstallOperationTime: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
-          RebootOption: S.optional(RebootOption),
+          RebootOption: S.optional(S.String),
           CriticalNonCompliantCount: S.optional(S.Number),
           SecurityNonCompliantCount: S.optional(S.Number),
           OtherNonCompliantCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InstancePatchState" });
     case 7:
-      return S.Array(InstancePatchState);
+      return S.Array(__S(198, __c24, 6));
   }
 }
 function __c25(j: number): any {
@@ -13707,7 +11858,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InstancePatchStates: S.optional(InstancePatchStateList),
+          InstancePatchStates: S.optional(__S(199, __c24, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13717,17 +11868,17 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Key: S.String,
-          Values: InstancePatchStateFilterValues,
-          Type: InstancePatchStateOperatorType,
+          Values: __S(6, __c0, 6),
+          Type: S.String,
         }),
       ).annotate({ identifier: "InstancePatchStateFilter" });
     case 2:
-      return S.Array(InstancePatchStateFilter);
+      return S.Array(__S(201, __c25, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           PatchGroup: S.String,
-          Filters: S.optional(InstancePatchStateFilterList),
+          Filters: S.optional(__S(202, __c25, 2)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13739,23 +11890,23 @@ function __c25(j: number): any {
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("InstancePropertyFilterValue")),
       );
     case 5:
-      return S.suspend(() =>
-        S.Struct({ key: InstancePropertyFilterKey, valueSet: InstancePropertyFilterValueSet }),
-      ).annotate({ identifier: "InstancePropertyFilter" });
+      return S.suspend(() => S.Struct({ key: S.String, valueSet: __S(204, __c25, 4) })).annotate({
+        identifier: "InstancePropertyFilter",
+      });
     case 6:
       return S.Array(
-        /*@__PURE__*/ InstancePropertyFilter.pipe(
-          /*@__PURE__*/ T.XmlName("InstancePropertyFilter"),
-        ).annotate({
-          identifier: "InstancePropertyFilter",
-        }),
+        /*@__PURE__*/ __S(205, __c25, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("InstancePropertyFilter"))
+          .annotate({
+            identifier: "InstancePropertyFilter",
+          }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
           Key: S.String,
-          Values: InstancePropertyFilterValueSet,
-          Operator: S.optional(InstancePropertyFilterOperator),
+          Values: __S(204, __c25, 4),
+          Operator: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InstancePropertyStringFilter",
@@ -13766,17 +11917,17 @@ function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ InstancePropertyStringFilter.pipe(
-          /*@__PURE__*/ T.XmlName("InstancePropertyStringFilter"),
-        ).annotate({
-          identifier: "InstancePropertyStringFilter",
-        }),
+        /*@__PURE__*/ __S(207, __c25, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("InstancePropertyStringFilter"))
+          .annotate({
+            identifier: "InstancePropertyStringFilter",
+          }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          InstancePropertyFilterList: S.optional(InstancePropertyFilterList),
-          FiltersWithOperator: S.optional(InstancePropertyStringFilterList),
+          InstancePropertyFilterList: S.optional(__S(206, __c25, 6)),
+          FiltersWithOperator: S.optional(__S(208, __c26, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13795,10 +11946,10 @@ function __c26(j: number): any {
           Architecture: S.optional(S.String),
           IPAddress: S.optional(SensitiveString),
           LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          PingStatus: S.optional(PingStatus),
+          PingStatus: S.optional(S.String),
           LastPingDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AgentVersion: S.optional(S.String),
-          PlatformType: S.optional(PlatformType),
+          PlatformType: S.optional(S.String),
           PlatformName: S.optional(S.String),
           PlatformVersion: S.optional(S.String),
           ActivationId: S.optional(S.String),
@@ -13811,23 +11962,25 @@ function __c26(j: number): any {
           LastSuccessfulAssociationExecutionDate: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
-          AssociationOverview: S.optional(InstanceAggregatedAssociationOverview),
+          AssociationOverview: S.optional(__S(189, __c23, 5)),
           SourceId: S.optional(S.String),
-          SourceType: S.optional(SourceType),
+          SourceType: S.optional(S.String),
           SourceLocation: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceProperty" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ InstanceProperty.pipe(/*@__PURE__*/ T.XmlName("InstanceProperty")).annotate({
-          identifier: "InstanceProperty",
-        }),
+        /*@__PURE__*/ __S(210, __c26, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("InstanceProperty"))
+          .annotate({
+            identifier: "InstanceProperty",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          InstanceProperties: S.optional(InstanceProperties),
+          InstanceProperties: S.optional(__S(211, __c26, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13849,16 +12002,16 @@ function __c26(j: number): any {
           DeletionId: S.optional(S.String),
           TypeName: S.optional(S.String),
           DeletionStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastStatus: S.optional(InventoryDeletionStatus),
+          LastStatus: S.optional(S.String),
           LastStatusMessage: S.optional(S.String),
-          DeletionSummary: S.optional(InventoryDeletionSummary),
+          DeletionSummary: S.optional(__S(100, __c12, 4)),
           LastStatusUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "InventoryDeletionStatusItem",
       });
     case 7:
-      return S.Array(InventoryDeletionStatusItem);
+      return S.Array(__S(214, __c26, 6));
   }
 }
 function __c27(j: number): any {
@@ -13866,7 +12019,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InventoryDeletions: S.optional(InventoryDeletionsList),
+          InventoryDeletions: S.optional(__S(215, __c26, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13876,7 +12029,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowId: S.String,
-          Filters: S.optional(MaintenanceWindowFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13888,7 +12041,7 @@ function __c27(j: number): any {
         S.Struct({
           WindowId: S.optional(S.String),
           WindowExecutionId: S.optional(S.String),
-          Status: S.optional(MaintenanceWindowExecutionStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -13897,11 +12050,11 @@ function __c27(j: number): any {
         identifier: "MaintenanceWindowExecution",
       });
     case 3:
-      return S.Array(MaintenanceWindowExecution);
+      return S.Array(__S(218, __c27, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          WindowExecutions: S.optional(MaintenanceWindowExecutionList),
+          WindowExecutions: S.optional(__S(219, __c27, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13912,7 +12065,7 @@ function __c27(j: number): any {
         S.Struct({
           WindowExecutionId: S.String,
           TaskId: S.String,
-          Filters: S.optional(MaintenanceWindowFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13926,9 +12079,9 @@ function __c27(j: number): any {
           TaskExecutionId: S.optional(S.String),
           InvocationId: S.optional(S.String),
           ExecutionId: S.optional(S.String),
-          TaskType: S.optional(MaintenanceWindowTaskType),
+          TaskType: S.optional(S.String),
           Parameters: S.optional(SensitiveString),
-          Status: S.optional(MaintenanceWindowExecutionStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -13939,7 +12092,7 @@ function __c27(j: number): any {
         identifier: "MaintenanceWindowExecutionTaskInvocationIdentity",
       });
     case 7:
-      return S.Array(MaintenanceWindowExecutionTaskInvocationIdentity);
+      return S.Array(__S(222, __c27, 6));
   }
 }
 function __c28(j: number): any {
@@ -13947,9 +12100,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          WindowExecutionTaskInvocationIdentities: S.optional(
-            MaintenanceWindowExecutionTaskInvocationIdentityList,
-          ),
+          WindowExecutionTaskInvocationIdentities: S.optional(__S(223, __c27, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13959,7 +12110,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowExecutionId: S.String,
-          Filters: S.optional(MaintenanceWindowFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13971,24 +12122,24 @@ function __c28(j: number): any {
         S.Struct({
           WindowExecutionId: S.optional(S.String),
           TaskExecutionId: S.optional(S.String),
-          Status: S.optional(MaintenanceWindowExecutionStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TaskArn: S.optional(S.String),
-          TaskType: S.optional(MaintenanceWindowTaskType),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
+          TaskType: S.optional(S.String),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "MaintenanceWindowExecutionTaskIdentity",
       });
     case 3:
-      return S.Array(MaintenanceWindowExecutionTaskIdentity);
+      return S.Array(__S(226, __c28, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          WindowExecutionTaskIdentities: S.optional(MaintenanceWindowExecutionTaskIdentityList),
+          WindowExecutionTaskIdentities: S.optional(__S(227, __c28, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13997,7 +12148,7 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(MaintenanceWindowFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14024,7 +12175,7 @@ function __c28(j: number): any {
         identifier: "MaintenanceWindowIdentity",
       });
     case 7:
-      return S.Array(MaintenanceWindowIdentity);
+      return S.Array(__S(230, __c28, 6));
   }
 }
 function __c29(j: number): any {
@@ -14032,7 +12183,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          WindowIdentities: S.optional(MaintenanceWindowIdentityList),
+          WindowIdentities: S.optional(__S(231, __c28, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -14042,9 +12193,9 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowId: S.optional(S.String),
-          Targets: S.optional(Targets),
-          ResourceType: S.optional(MaintenanceWindowResourceType),
-          Filters: S.optional(PatchOrchestratorFilterList),
+          Targets: S.optional(__S(15, __c1, 7)),
+          ResourceType: S.optional(S.String),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14060,11 +12211,11 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "ScheduledWindowExecution" });
     case 3:
-      return S.Array(ScheduledWindowExecution);
+      return S.Array(__S(234, __c29, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ScheduledWindowExecutions: S.optional(ScheduledWindowExecutionList),
+          ScheduledWindowExecutions: S.optional(__S(235, __c29, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -14073,8 +12224,8 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Targets: Targets,
-          ResourceType: MaintenanceWindowResourceType,
+          Targets: __S(15, __c1, 7),
+          ResourceType: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14088,7 +12239,7 @@ function __c29(j: number): any {
         identifier: "MaintenanceWindowIdentityForTarget",
       });
     case 7:
-      return S.Array(MaintenanceWindowIdentityForTarget);
+      return S.Array(__S(238, __c29, 6));
   }
 }
 function __c30(j: number): any {
@@ -14096,7 +12247,7 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          WindowIdentities: S.optional(MaintenanceWindowsForTargetList),
+          WindowIdentities: S.optional(__S(239, __c29, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -14106,7 +12257,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowId: S.String,
-          Filters: S.optional(MaintenanceWindowFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14118,19 +12269,19 @@ function __c30(j: number): any {
         S.Struct({
           WindowId: S.optional(S.String),
           WindowTargetId: S.optional(S.String),
-          ResourceType: S.optional(MaintenanceWindowResourceType),
-          Targets: S.optional(Targets),
+          ResourceType: S.optional(S.String),
+          Targets: S.optional(__S(15, __c1, 7)),
           OwnerInformation: S.optional(SensitiveString),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "MaintenanceWindowTarget" });
     case 3:
-      return S.Array(MaintenanceWindowTarget);
+      return S.Array(__S(242, __c30, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Targets: S.optional(MaintenanceWindowTargetList),
+          Targets: S.optional(__S(243, __c30, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -14140,7 +12291,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowId: S.String,
-          Filters: S.optional(MaintenanceWindowFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14150,9 +12301,7 @@ function __c30(j: number): any {
     case 6:
       return S.Array(SensitiveString);
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Values: S.optional(MaintenanceWindowTaskParameterValueList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Values: S.optional(__S(246, __c30, 6)) })).annotate({
         identifier: "MaintenanceWindowTaskParameterValueExpression",
       });
   }
@@ -14160,10 +12309,7 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ MaintenanceWindowTaskParameterValueExpression.pipe(S.optional),
-      );
+      return S.Record(S.String, /*@__PURE__*/ __S(247, __c30, 7).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({ S3BucketName: S.String, S3KeyPrefix: S.optional(S.String), S3Region: S.String }),
@@ -14174,26 +12320,26 @@ function __c31(j: number): any {
           WindowId: S.optional(S.String),
           WindowTaskId: S.optional(S.String),
           TaskArn: S.optional(S.String),
-          Type: S.optional(MaintenanceWindowTaskType),
-          Targets: S.optional(Targets),
-          TaskParameters: S.optional(MaintenanceWindowTaskParameters),
+          Type: S.optional(S.String),
+          Targets: S.optional(__S(15, __c1, 7)),
+          TaskParameters: S.optional(__S(248, __c31, 0)),
           Priority: S.optional(S.Number),
-          LoggingInfo: S.optional(LoggingInfo),
+          LoggingInfo: S.optional(__S(249, __c31, 1)),
           ServiceRoleArn: S.optional(S.String),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          CutoffBehavior: S.optional(S.String),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "MaintenanceWindowTask" });
     case 3:
-      return S.Array(MaintenanceWindowTask);
+      return S.Array(__S(250, __c31, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Tasks: S.optional(MaintenanceWindowTaskList),
+          Tasks: S.optional(__S(251, __c31, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -14202,17 +12348,17 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Key: OpsItemFilterKey,
-          Values: OpsItemFilterValues,
-          Operator: OpsItemFilterOperator,
+          Key: S.String,
+          Values: __S(6, __c0, 6),
+          Operator: S.String,
         }),
       ).annotate({ identifier: "OpsItemFilter" });
     case 6:
-      return S.Array(OpsItemFilter);
+      return S.Array(__S(253, __c31, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          OpsItemFilters: S.optional(OpsItemFilters),
+          OpsItemFilters: S.optional(__S(254, __c31, 6)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14230,10 +12376,10 @@ function __c32(j: number): any {
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Priority: S.optional(S.Number),
           Source: S.optional(S.String),
-          Status: S.optional(OpsItemStatus),
+          Status: S.optional(S.String),
           OpsItemId: S.optional(S.String),
           Title: S.optional(S.String),
-          OperationalData: S.optional(OpsItemOperationalData),
+          OperationalData: S.optional(__S(63, __c7, 7)),
           Category: S.optional(S.String),
           Severity: S.optional(S.String),
           OpsItemType: S.optional(S.String),
@@ -14244,35 +12390,35 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "OpsItemSummary" });
     case 1:
-      return S.Array(OpsItemSummary);
+      return S.Array(__S(256, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          OpsItemSummaries: S.optional(OpsItemSummaries),
+          OpsItemSummaries: S.optional(__S(257, __c32, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeOpsItemsResponse" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ Key: ParametersFilterKey, Values: ParametersFilterValueList }),
-      ).annotate({ identifier: "ParametersFilter" });
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(6, __c0, 6) })).annotate({
+        identifier: "ParametersFilter",
+      });
     case 4:
-      return S.Array(ParametersFilter);
+      return S.Array(__S(259, __c32, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           Key: S.String,
           Option: S.optional(S.String),
-          Values: S.optional(ParameterStringFilterValueList),
+          Values: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "ParameterStringFilter" });
     case 6:
-      return S.Array(ParameterStringFilter);
+      return S.Array(__S(261, __c32, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ParametersFilterList),
-          ParameterFilters: S.optional(ParameterStringFilterList),
+          Filters: S.optional(__S(260, __c32, 4)),
+          ParameterFilters: S.optional(__S(262, __c32, 6)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           Shared: S.optional(S.Boolean),
@@ -14293,37 +12439,37 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "ParameterInlinePolicy" });
     case 1:
-      return S.Array(ParameterInlinePolicy);
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           ARN: S.optional(S.String),
-          Type: S.optional(ParameterType),
+          Type: S.optional(S.String),
           KeyId: S.optional(S.String),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedUser: S.optional(S.String),
           Description: S.optional(S.String),
           AllowedPattern: S.optional(S.String),
           Version: S.optional(S.Number),
-          Tier: S.optional(ParameterTier),
-          Policies: S.optional(ParameterPolicyList),
+          Tier: S.optional(S.String),
+          Policies: S.optional(__S(265, __c33, 1)),
           DataType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParameterMetadata" });
     case 3:
-      return S.Array(ParameterMetadata);
+      return S.Array(__S(266, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Parameters: S.optional(ParameterMetadataList),
+          Parameters: S.optional(__S(267, __c33, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeParametersResult" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(PatchOrchestratorFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14335,13 +12481,13 @@ function __c33(j: number): any {
         S.Struct({
           BaselineId: S.optional(S.String),
           BaselineName: S.optional(S.String),
-          OperatingSystem: S.optional(OperatingSystem),
+          OperatingSystem: S.optional(S.String),
           BaselineDescription: S.optional(S.String),
           DefaultBaseline: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PatchBaselineIdentity" });
     case 7:
-      return S.Array(PatchBaselineIdentity);
+      return S.Array(__S(270, __c33, 6));
   }
 }
 function __c34(j: number): any {
@@ -14349,7 +12495,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          BaselineIdentities: S.optional(PatchBaselineIdentityList),
+          BaselineIdentities: S.optional(__S(271, __c33, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -14359,7 +12505,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(PatchOrchestratorFilterList),
+          Filters: S.optional(__S(15, __c1, 7)),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -14369,17 +12515,17 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PatchGroup: S.optional(S.String),
-          BaselineIdentity: S.optional(PatchBaselineIdentity),
+          BaselineIdentity: S.optional(__S(270, __c33, 6)),
         }),
       ).annotate({
         identifier: "PatchGroupPatchBaselineMapping",
       });
     case 3:
-      return S.Array(PatchGroupPatchBaselineMapping);
+      return S.Array(__S(274, __c34, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Mappings: S.optional(PatchGroupPatchBaselineMappingList),
+          Mappings: S.optional(__S(275, __c34, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -14416,9 +12562,9 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          OperatingSystem: OperatingSystem,
-          Property: PatchProperty,
-          PatchSet: S.optional(PatchSet),
+          OperatingSystem: S.String,
+          Property: S.String,
+          PatchSet: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14430,29 +12576,29 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PatchPropertyEntry);
+      return S.Array(__S(151, __c18, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Properties: S.optional(PatchPropertiesList),
+          Properties: S.optional(__S(280, __c35, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribePatchPropertiesResult",
       });
     case 2:
-      return S.suspend(() => S.Struct({ key: SessionFilterKey, value: S.String })).annotate({
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "SessionFilter",
       });
     case 3:
-      return S.Array(SessionFilter);
+      return S.Array(__S(282, __c35, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          State: SessionState,
+          State: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(SessionFilterList),
+          Filters: S.optional(__S(283, __c35, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeSessionsRequest" });
     case 5:
@@ -14464,27 +12610,30 @@ function __c35(j: number): any {
         S.Struct({
           SessionId: S.optional(S.String),
           Target: S.optional(S.String),
-          Status: S.optional(SessionStatus),
+          Status: S.optional(S.String),
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DocumentName: S.optional(S.String),
           Owner: S.optional(S.String),
           Reason: S.optional(S.String),
           Details: S.optional(S.String),
-          OutputUrl: S.optional(SessionManagerOutputUrl),
+          OutputUrl: S.optional(__S(285, __c35, 5)),
           MaxSessionDuration: S.optional(S.String),
-          AccessType: S.optional(AccessType),
+          AccessType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Session" });
     case 7:
-      return S.Array(Session);
+      return S.Array(__S(286, __c35, 6));
   }
 }
 function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Sessions: S.optional(SessionList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          Sessions: S.optional(__S(287, __c35, 7)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "DescribeSessionsResponse" });
     case 1:
       return S.suspend(() =>
@@ -14512,8 +12661,8 @@ function __c36(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(Credentials),
-          AccessRequestStatus: S.optional(AccessRequestStatus),
+          Credentials: S.optional(__S(291, __c36, 3)),
+          AccessRequestStatus: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetAccessTokenResponse" });
     case 5:
@@ -14542,37 +12691,37 @@ function __c36(j: number): any {
           DocumentVersion: S.optional(S.String),
           ExecutionStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExecutionEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AutomationExecutionStatus: S.optional(AutomationExecutionStatus),
-          StepExecutions: S.optional(StepExecutionList),
+          AutomationExecutionStatus: S.optional(S.String),
+          StepExecutions: S.optional(__S(155, __c19, 3)),
           StepExecutionsTruncated: S.optional(S.Boolean),
-          Parameters: S.optional(AutomationParameterMap),
-          Outputs: S.optional(AutomationParameterMap),
+          Parameters: S.optional(__S(13, __c1, 5)),
+          Outputs: S.optional(__S(13, __c1, 5)),
           FailureMessage: S.optional(S.String),
           WarningMessage: S.optional(S.String),
-          Mode: S.optional(ExecutionMode),
+          Mode: S.optional(S.String),
           ParentAutomationExecutionId: S.optional(S.String),
           ExecutedBy: S.optional(S.String),
           CurrentStepName: S.optional(S.String),
           CurrentAction: S.optional(S.String),
           TargetParameterName: S.optional(S.String),
-          Targets: S.optional(Targets),
-          TargetMaps: S.optional(TargetMaps),
-          ResolvedTargets: S.optional(ResolvedTargets),
+          Targets: S.optional(__S(15, __c1, 7)),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
+          ResolvedTargets: S.optional(__S(142, __c17, 6)),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           Target: S.optional(S.String),
-          TargetLocations: S.optional(TargetLocations),
-          ProgressCounters: S.optional(ProgressCounters),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
+          ProgressCounters: S.optional(__S(294, __c36, 6)),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
           TargetLocationsURL: S.optional(S.String),
-          AutomationSubtype: S.optional(AutomationSubtype),
+          AutomationSubtype: S.optional(S.String),
           ScheduledTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Runbooks: S.optional(Runbooks),
+          Runbooks: S.optional(__S(144, __c18, 0)),
           OpsItemId: S.optional(S.String),
           AssociationId: S.optional(S.String),
           ChangeRequestName: S.optional(S.String),
-          Variables: S.optional(AutomationParameterMap),
+          Variables: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "AutomationExecution" });
   }
@@ -14581,20 +12730,20 @@ function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AutomationExecution: S.optional(AutomationExecution) }).pipe(ns),
+        S.Struct({ AutomationExecution: S.optional(__S(295, __c36, 7)) }).pipe(ns),
       ).annotate({
         identifier: "GetAutomationExecutionResult",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ CalendarNames: CalendarNameOrARNList, AtTime: S.optional(S.String) }).pipe(
+        S.Struct({ CalendarNames: __S(6, __c0, 6), AtTime: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetCalendarStateRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(CalendarState),
+          State: S.optional(S.String),
           AtTime: S.optional(S.String),
           NextTransitionTime: S.optional(S.String),
         }).pipe(ns),
@@ -14612,7 +12761,7 @@ function __c37(j: number): any {
           DisplayName: S.optional(S.String),
           Description: S.optional(S.String),
           RoleArn: S.optional(S.String),
-          Configuration: S.optional(CloudConnectorConfiguration),
+          Configuration: S.optional(__S(43, __c5, 3)),
           ConfigConnectorArn: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -14648,13 +12797,13 @@ function __c37(j: number): any {
           ExecutionStartDateTime: S.optional(S.String),
           ExecutionElapsedTime: S.optional(S.String),
           ExecutionEndDateTime: S.optional(S.String),
-          Status: S.optional(CommandInvocationStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           StandardOutputContent: S.optional(S.String),
           StandardOutputUrl: S.optional(S.String),
           StandardErrorContent: S.optional(S.String),
           StandardErrorUrl: S.optional(S.String),
-          CloudWatchOutputConfig: S.optional(CloudWatchOutputConfig),
+          CloudWatchOutputConfig: S.optional(__S(302, __c37, 6)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetCommandInvocationResult",
@@ -14673,13 +12822,13 @@ function __c38(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Target: S.optional(S.String), Status: S.optional(ConnectionStatus) }).pipe(ns),
+        S.Struct({ Target: S.optional(S.String), Status: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "GetConnectionStatusResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ OperatingSystem: S.optional(OperatingSystem) }).pipe(
+        S.Struct({ OperatingSystem: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -14689,7 +12838,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BaselineId: S.optional(S.String),
-          OperatingSystem: S.optional(OperatingSystem),
+          OperatingSystem: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetDefaultPatchBaselineResult",
@@ -14697,16 +12846,16 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          OperatingSystem: S.optional(OperatingSystem),
-          GlobalFilters: S.optional(PatchFilterGroup),
-          ApprovalRules: S.optional(PatchRuleGroup),
-          ApprovedPatches: S.optional(PatchIdList),
-          ApprovedPatchesComplianceLevel: S.optional(PatchComplianceLevel),
-          RejectedPatches: S.optional(PatchIdList),
-          RejectedPatchesAction: S.optional(PatchAction),
+          OperatingSystem: S.optional(S.String),
+          GlobalFilters: S.optional(__S(76, __c9, 4)),
+          ApprovalRules: S.optional(__S(79, __c9, 7)),
+          ApprovedPatches: S.optional(__S(6, __c0, 6)),
+          ApprovedPatchesComplianceLevel: S.optional(S.String),
+          RejectedPatches: S.optional(__S(6, __c0, 6)),
+          RejectedPatchesAction: S.optional(S.String),
           ApprovedPatchesEnableNonSecurity: S.optional(S.Boolean),
-          Sources: S.optional(PatchSourceList),
-          AvailableSecurityUpdatesComplianceStatus: S.optional(PatchComplianceStatus),
+          Sources: S.optional(__S(81, __c10, 1)),
+          AvailableSecurityUpdatesComplianceStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "BaselineOverride" });
     case 5:
@@ -14714,7 +12863,7 @@ function __c38(j: number): any {
         S.Struct({
           InstanceId: S.String,
           SnapshotId: S.String,
-          BaselineOverride: S.optional(BaselineOverride),
+          BaselineOverride: S.optional(__S(308, __c38, 4)),
           UseS3DualStackEndpoint: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -14737,7 +12886,7 @@ function __c38(j: number): any {
           Name: S.String,
           VersionName: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          DocumentFormat: S.optional(DocumentFormat),
+          DocumentFormat: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetDocumentRequest" });
   }
@@ -14750,17 +12899,17 @@ function __c39(j: number): any {
           Name: S.optional(S.String),
           Size: S.optional(S.Number),
           Hash: S.optional(S.String),
-          HashType: S.optional(AttachmentHashType),
+          HashType: S.optional(S.String),
           Url: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachmentContent" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ AttachmentContent.pipe(/*@__PURE__*/ T.XmlName("AttachmentContent")).annotate(
-          {
+        /*@__PURE__*/ __S(312, __c39, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("AttachmentContent"))
+          .annotate({
             identifier: "AttachmentContent",
-          },
-        ),
+          }),
       );
     case 2:
       return S.suspend(() =>
@@ -14770,14 +12919,14 @@ function __c39(j: number): any {
           DisplayName: S.optional(S.String),
           VersionName: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          Status: S.optional(DocumentStatus),
+          Status: S.optional(S.String),
           StatusInformation: S.optional(S.String),
           Content: S.optional(S.String),
-          DocumentType: S.optional(DocumentType),
-          DocumentFormat: S.optional(DocumentFormat),
-          Requires: S.optional(DocumentRequiresList),
-          AttachmentsContent: S.optional(AttachmentContentList),
-          ReviewStatus: S.optional(ReviewStatus),
+          DocumentType: S.optional(S.String),
+          DocumentFormat: S.optional(S.String),
+          Requires: S.optional(__S(47, __c5, 7)),
+          AttachmentsContent: S.optional(__S(313, __c39, 1)),
+          ReviewStatus: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetDocumentResult" });
     case 3:
@@ -14789,19 +12938,19 @@ function __c39(j: number): any {
         identifier: "GetExecutionPreviewRequest",
       });
     case 4:
-      return S.Record(ImpactType, /*@__PURE__*/ S.Number.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({ Count: S.optional(S.Number), TargetType: S.optional(S.String) }),
       ).annotate({ identifier: "TargetPreview" });
     case 6:
-      return S.Array(TargetPreview);
+      return S.Array(__S(317, __c39, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          StepPreviews: S.optional(StepPreviewMap),
-          Regions: S.optional(RegionList),
-          TargetPreviews: S.optional(TargetPreviewList),
+          StepPreviews: S.optional(__S(316, __c39, 4)),
+          Regions: S.optional(__S(6, __c0, 6)),
+          TargetPreviews: S.optional(__S(318, __c39, 6)),
           TotalAccounts: S.optional(S.Number),
         }),
       ).annotate({
@@ -14812,15 +12961,15 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ Automation: AutomationExecutionPreview })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Automation: __S(319, __c39, 7) })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           ExecutionPreviewId: S.optional(S.String),
           EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(ExecutionPreviewStatus),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
-          ExecutionPreview: S.optional(ExecutionPreview),
+          ExecutionPreview: S.optional(__S(320, __c40, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetExecutionPreviewResponse",
@@ -14831,23 +12980,23 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Key: S.String,
-          Values: InventoryFilterValueList,
-          Type: S.optional(InventoryQueryOperatorType),
+          Values: __S(322, __c40, 2),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "InventoryFilter" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ InventoryFilter.pipe(/*@__PURE__*/ T.XmlName("InventoryFilter")).annotate({
+        /*@__PURE__*/ __S(323, __c40, 3).pipe(/*@__PURE__*/ T.XmlName("InventoryFilter")).annotate({
           identifier: "InventoryFilter",
         }),
       );
     case 5:
-      return S.suspend(() => S.Struct({ Name: S.String, Filters: InventoryFilterList })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, Filters: __S(324, __c40, 4) })).annotate({
         identifier: "InventoryGroup",
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ InventoryGroup.pipe(/*@__PURE__*/ T.XmlName("InventoryGroup")).annotate({
+        /*@__PURE__*/ __S(325, __c40, 5).pipe(/*@__PURE__*/ T.XmlName("InventoryGroup")).annotate({
           identifier: "InventoryGroup",
         }),
       );
@@ -14856,11 +13005,11 @@ function __c40(j: number): any {
         S.Struct({
           Expression: S.optional(S.String),
           Aggregators: S.optional(
-            S.suspend(() => InventoryAggregatorList).annotate({
+            S.suspend(() => __S(328, __c41, 0)).annotate({
               identifier: "InventoryAggregatorList",
             }),
           ),
-          Groups: S.optional(InventoryGroupList),
+          Groups: S.optional(__S(326, __c40, 6)),
         }),
       ).annotate({ identifier: "InventoryAggregator" });
   }
@@ -14869,7 +13018,7 @@ function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<InventoryAggregator> => InventoryAggregator)
+        /*@__PURE__*/ S.suspend((): S.Schema<InventoryAggregator> => __S(327, __c40, 7))
           .annotate({ identifier: "InventoryAggregator" })
           .pipe(/*@__PURE__*/ T.XmlName("Aggregator"))
           .annotate({ identifier: "InventoryAggregator" }),
@@ -14880,16 +13029,16 @@ function __c41(j: number): any {
       });
     case 2:
       return S.Array(
-        /*@__PURE__*/ ResultAttribute.pipe(/*@__PURE__*/ T.XmlName("ResultAttribute")).annotate({
+        /*@__PURE__*/ __S(329, __c41, 1).pipe(/*@__PURE__*/ T.XmlName("ResultAttribute")).annotate({
           identifier: "ResultAttribute",
         }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(InventoryFilterList),
-          Aggregators: S.optional(InventoryAggregatorList),
-          ResultAttributes: S.optional(ResultAttributeList),
+          Filters: S.optional(__S(324, __c40, 4)),
+          Aggregators: S.optional(__S(328, __c41, 0)),
+          ResultAttributes: S.optional(__S(330, __c41, 2)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14901,18 +13050,18 @@ function __c41(j: number): any {
           SchemaVersion: S.String,
           CaptureTime: S.optional(S.String),
           ContentHash: S.optional(S.String),
-          Content: InventoryItemEntryList,
+          Content: __S(280, __c35, 0),
         }),
       ).annotate({ identifier: "InventoryResultItem" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ InventoryResultItem.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(332, __c41, 4).pipe(S.optional));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String), Data: S.optional(InventoryResultItemMap) }),
+        S.Struct({ Id: S.optional(S.String), Data: S.optional(__S(333, __c41, 5)) }),
       ).annotate({ identifier: "InventoryResultEntity" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ InventoryResultEntity.pipe(/*@__PURE__*/ T.XmlName("Entity")).annotate({
+        /*@__PURE__*/ __S(334, __c41, 6).pipe(/*@__PURE__*/ T.XmlName("Entity")).annotate({
           identifier: "InventoryResultEntity",
         }),
       );
@@ -14923,7 +13072,7 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Entities: S.optional(InventoryResultEntityList),
+          Entities: S.optional(__S(335, __c41, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetInventoryResult" });
@@ -14940,12 +13089,12 @@ function __c42(j: number): any {
         identifier: "GetInventorySchemaRequest",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, DataType: InventoryAttributeDataType }),
-      ).annotate({ identifier: "InventoryItemAttribute" });
+      return S.suspend(() => S.Struct({ Name: S.String, DataType: S.String })).annotate({
+        identifier: "InventoryItemAttribute",
+      });
     case 3:
       return S.Array(
-        /*@__PURE__*/ InventoryItemAttribute.pipe(/*@__PURE__*/ T.XmlName("Attribute")).annotate({
+        /*@__PURE__*/ __S(338, __c42, 2).pipe(/*@__PURE__*/ T.XmlName("Attribute")).annotate({
           identifier: "InventoryItemAttribute",
         }),
       );
@@ -14954,16 +13103,16 @@ function __c42(j: number): any {
         S.Struct({
           TypeName: S.String,
           Version: S.optional(S.String),
-          Attributes: InventoryItemAttributeList,
+          Attributes: __S(339, __c42, 3),
           DisplayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "InventoryItemSchema" });
     case 5:
-      return S.Array(InventoryItemSchema);
+      return S.Array(__S(340, __c42, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Schemas: S.optional(InventoryItemSchemaResultList),
+          Schemas: S.optional(__S(341, __c42, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetInventorySchemaResult" });
@@ -15013,8 +13162,8 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowExecutionId: S.optional(S.String),
-          TaskIds: S.optional(MaintenanceWindowExecutionTaskIdList),
-          Status: S.optional(MaintenanceWindowExecutionStatus),
+          TaskIds: S.optional(__S(6, __c0, 6)),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -15031,7 +13180,7 @@ function __c43(j: number): any {
         identifier: "GetMaintenanceWindowExecutionTaskRequest",
       });
     case 4:
-      return S.Array(MaintenanceWindowTaskParameters);
+      return S.Array(__S(248, __c31, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -15039,17 +13188,17 @@ function __c43(j: number): any {
           TaskExecutionId: S.optional(S.String),
           TaskArn: S.optional(S.String),
           ServiceRole: S.optional(S.String),
-          Type: S.optional(MaintenanceWindowTaskType),
-          TaskParameters: S.optional(MaintenanceWindowTaskParametersList),
+          Type: S.optional(S.String),
+          TaskParameters: S.optional(__S(348, __c43, 4)),
           Priority: S.optional(S.Number),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
-          Status: S.optional(MaintenanceWindowExecutionStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetMaintenanceWindowExecutionTaskResult",
@@ -15069,9 +13218,9 @@ function __c43(j: number): any {
           TaskExecutionId: S.optional(S.String),
           InvocationId: S.optional(S.String),
           ExecutionId: S.optional(S.String),
-          TaskType: S.optional(MaintenanceWindowTaskType),
+          TaskType: S.optional(S.String),
           Parameters: S.optional(SensitiveString),
-          Status: S.optional(MaintenanceWindowExecutionStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -15094,27 +13243,27 @@ function __c44(j: number): any {
         identifier: "GetMaintenanceWindowTaskRequest",
       });
     case 1:
-      return S.Array(NotificationEvent);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           NotificationArn: S.optional(S.String),
-          NotificationEvents: S.optional(NotificationEventList),
-          NotificationType: S.optional(NotificationType),
+          NotificationEvents: S.optional(__S(353, __c44, 1)),
+          NotificationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Comment: S.optional(S.String),
-          CloudWatchOutputConfig: S.optional(CloudWatchOutputConfig),
+          CloudWatchOutputConfig: S.optional(__S(302, __c37, 6)),
           DocumentHash: S.optional(S.String),
-          DocumentHashType: S.optional(DocumentHashType),
+          DocumentHashType: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          NotificationConfig: S.optional(NotificationConfig),
+          NotificationConfig: S.optional(__S(354, __c44, 2)),
           OutputS3BucketName: S.optional(S.String),
           OutputS3KeyPrefix: S.optional(S.String),
-          Parameters: S.optional(Parameters),
+          Parameters: S.optional(__S(13, __c1, 5)),
           ServiceRoleArn: S.optional(S.String),
           TimeoutSeconds: S.optional(S.Number),
         }),
@@ -15125,7 +13274,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DocumentVersion: S.optional(S.String),
-          Parameters: S.optional(AutomationParameterMap),
+          Parameters: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "MaintenanceWindowAutomationParameters",
@@ -15149,10 +13298,10 @@ function __c44(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          RunCommand: S.optional(MaintenanceWindowRunCommandParameters),
-          Automation: S.optional(MaintenanceWindowAutomationParameters),
-          StepFunctions: S.optional(MaintenanceWindowStepFunctionsParameters),
-          Lambda: S.optional(MaintenanceWindowLambdaParameters),
+          RunCommand: S.optional(__S(355, __c44, 3)),
+          Automation: S.optional(__S(356, __c44, 4)),
+          StepFunctions: S.optional(__S(357, __c44, 5)),
+          Lambda: S.optional(__S(358, __c44, 6)),
         }),
       ).annotate({
         identifier: "MaintenanceWindowTaskInvocationParameters",
@@ -15166,20 +13315,20 @@ function __c45(j: number): any {
         S.Struct({
           WindowId: S.optional(S.String),
           WindowTaskId: S.optional(S.String),
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           TaskArn: S.optional(S.String),
           ServiceRoleArn: S.optional(S.String),
-          TaskType: S.optional(MaintenanceWindowTaskType),
-          TaskParameters: S.optional(MaintenanceWindowTaskParameters),
-          TaskInvocationParameters: S.optional(MaintenanceWindowTaskInvocationParameters),
+          TaskType: S.optional(S.String),
+          TaskParameters: S.optional(__S(248, __c31, 0)),
+          TaskInvocationParameters: S.optional(__S(359, __c44, 7)),
           Priority: S.optional(S.Number),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
-          LoggingInfo: S.optional(LoggingInfo),
+          LoggingInfo: S.optional(__S(249, __c31, 1)),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          CutoffBehavior: S.optional(S.String),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetMaintenanceWindowTaskResult",
@@ -15199,15 +13348,15 @@ function __c45(j: number): any {
           Description: S.optional(S.String),
           LastModifiedBy: S.optional(S.String),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Notifications: S.optional(OpsItemNotifications),
+          Notifications: S.optional(__S(65, __c8, 1)),
           Priority: S.optional(S.Number),
-          RelatedOpsItems: S.optional(RelatedOpsItems),
-          Status: S.optional(OpsItemStatus),
+          RelatedOpsItems: S.optional(__S(67, __c8, 3)),
+          Status: S.optional(S.String),
           OpsItemId: S.optional(S.String),
           Version: S.optional(S.String),
           Title: S.optional(S.String),
           Source: S.optional(S.String),
-          OperationalData: S.optional(OpsItemOperationalData),
+          OperationalData: S.optional(__S(63, __c7, 7)),
           Category: S.optional(S.String),
           Severity: S.optional(S.String),
           ActualStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -15218,7 +13367,9 @@ function __c45(j: number): any {
         }),
       ).annotate({ identifier: "OpsItem" });
     case 3:
-      return S.suspend(() => S.Struct({ OpsItem: S.optional(OpsItem) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ OpsItem: S.optional(__S(362, __c45, 2)) }).pipe(ns),
+      ).annotate({
         identifier: "GetOpsItemResponse",
       });
     case 4:
@@ -15233,7 +13384,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
-          Metadata: S.optional(MetadataMap),
+          Metadata: S.optional(__S(71, __c8, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetOpsMetadataResult" });
@@ -15241,13 +13392,13 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Key: S.String,
-          Values: OpsFilterValueList,
-          Type: S.optional(OpsFilterOperatorType),
+          Values: __S(322, __c40, 2),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "OpsFilter" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ OpsFilter.pipe(/*@__PURE__*/ T.XmlName("OpsFilter")).annotate({
+        /*@__PURE__*/ __S(366, __c45, 6).pipe(/*@__PURE__*/ T.XmlName("OpsFilter")).annotate({
           identifier: "OpsFilter",
         }),
       );
@@ -15261,35 +13412,35 @@ function __c46(j: number): any {
           AggregatorType: S.optional(S.String),
           TypeName: S.optional(S.String),
           AttributeName: S.optional(S.String),
-          Values: S.optional(OpsAggregatorValueMap),
-          Filters: S.optional(OpsFilterList),
+          Values: S.optional(__S(151, __c18, 7)),
+          Filters: S.optional(__S(367, __c45, 7)),
           Aggregators: S.optional(
-            S.suspend(() => OpsAggregatorList).annotate({ identifier: "OpsAggregatorList" }),
+            S.suspend(() => __S(369, __c46, 1)).annotate({ identifier: "OpsAggregatorList" }),
           ),
         }),
       ).annotate({ identifier: "OpsAggregator" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<OpsAggregator> => OpsAggregator)
+        /*@__PURE__*/ S.suspend((): S.Schema<OpsAggregator> => __S(368, __c46, 0))
           .annotate({ identifier: "OpsAggregator" })
           .pipe(/*@__PURE__*/ T.XmlName("Aggregator"))
           .annotate({ identifier: "OpsAggregator" }),
       );
     case 2:
       return S.Array(
-        /*@__PURE__*/ OpsResultAttribute.pipe(
-          /*@__PURE__*/ T.XmlName("OpsResultAttribute"),
-        ).annotate({
-          identifier: "OpsResultAttribute",
-        }),
+        /*@__PURE__*/ __S(329, __c41, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("OpsResultAttribute"))
+          .annotate({
+            identifier: "OpsResultAttribute",
+          }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
           SyncName: S.optional(S.String),
-          Filters: S.optional(OpsFilterList),
-          Aggregators: S.optional(OpsAggregatorList),
-          ResultAttributes: S.optional(OpsResultAttributeList),
+          Filters: S.optional(__S(367, __c45, 7)),
+          Aggregators: S.optional(__S(369, __c46, 1)),
+          ResultAttributes: S.optional(__S(370, __c46, 2)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -15298,18 +13449,18 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CaptureTime: S.optional(S.String),
-          Content: S.optional(OpsEntityItemEntryList),
+          Content: S.optional(__S(280, __c35, 0)),
         }),
       ).annotate({ identifier: "OpsEntityItem" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ OpsEntityItem.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(372, __c46, 4).pipe(S.optional));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String), Data: S.optional(OpsEntityItemMap) }),
+        S.Struct({ Id: S.optional(S.String), Data: S.optional(__S(373, __c46, 5)) }),
       ).annotate({ identifier: "OpsEntity" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ OpsEntity.pipe(/*@__PURE__*/ T.XmlName("Entity")).annotate({
+        /*@__PURE__*/ __S(374, __c46, 6).pipe(/*@__PURE__*/ T.XmlName("Entity")).annotate({
           identifier: "OpsEntity",
         }),
       );
@@ -15319,7 +13470,10 @@ function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Entities: S.optional(OpsEntityList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          Entities: S.optional(__S(375, __c46, 7)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "GetOpsSummaryResult" });
     case 1:
       return S.suspend(() =>
@@ -15331,7 +13485,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Type: S.optional(ParameterType),
+          Type: S.optional(S.String),
           Value: S.optional(SensitiveString),
           Version: S.optional(S.Number),
           Selector: S.optional(S.String),
@@ -15342,7 +13496,9 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "Parameter" });
     case 3:
-      return S.suspend(() => S.Struct({ Parameter: S.optional(Parameter) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Parameter: S.optional(__S(378, __c47, 2)) }).pipe(ns),
+      ).annotate({
         identifier: "GetParameterResult",
       });
     case 4:
@@ -15360,7 +13516,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Type: S.optional(ParameterType),
+          Type: S.optional(S.String),
           KeyId: S.optional(S.String),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedUser: S.optional(S.String),
@@ -15368,18 +13524,18 @@ function __c47(j: number): any {
           Value: S.optional(SensitiveString),
           AllowedPattern: S.optional(S.String),
           Version: S.optional(S.Number),
-          Labels: S.optional(ParameterLabelList),
-          Tier: S.optional(ParameterTier),
-          Policies: S.optional(ParameterPolicyList),
+          Labels: S.optional(__S(6, __c0, 6)),
+          Tier: S.optional(S.String),
+          Policies: S.optional(__S(265, __c33, 1)),
           DataType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParameterHistory" });
     case 6:
-      return S.Array(ParameterHistory);
+      return S.Array(__S(381, __c47, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Parameters: S.optional(ParameterHistoryList),
+          Parameters: S.optional(__S(382, __c47, 6)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -15391,17 +13547,17 @@ function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Names: ParameterNameList, WithDecryption: S.optional(S.Boolean) }).pipe(
+        S.Struct({ Names: __S(6, __c0, 6), WithDecryption: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetParametersRequest" });
     case 1:
-      return S.Array(Parameter);
+      return S.Array(__S(378, __c47, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Parameters: S.optional(ParameterList),
-          InvalidParameters: S.optional(ParameterNameList),
+          Parameters: S.optional(__S(385, __c48, 1)),
+          InvalidParameters: S.optional(__S(6, __c0, 6)),
         }).pipe(ns),
       ).annotate({ identifier: "GetParametersResult" });
     case 3:
@@ -15409,7 +13565,7 @@ function __c48(j: number): any {
         S.Struct({
           Path: S.String,
           Recursive: S.optional(S.Boolean),
-          ParameterFilters: S.optional(ParameterStringFilterList),
+          ParameterFilters: S.optional(__S(262, __c32, 6)),
           WithDecryption: S.optional(S.Boolean),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -15419,9 +13575,10 @@ function __c48(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Parameters: S.optional(ParameterList), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Parameters: S.optional(__S(385, __c48, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({
         identifier: "GetParametersByPathResult",
       });
@@ -15436,25 +13593,25 @@ function __c48(j: number): any {
         S.Struct({
           BaselineId: S.optional(S.String),
           Name: S.optional(S.String),
-          OperatingSystem: S.optional(OperatingSystem),
-          GlobalFilters: S.optional(PatchFilterGroup),
-          ApprovalRules: S.optional(PatchRuleGroup),
-          ApprovedPatches: S.optional(PatchIdList),
-          ApprovedPatchesComplianceLevel: S.optional(PatchComplianceLevel),
+          OperatingSystem: S.optional(S.String),
+          GlobalFilters: S.optional(__S(76, __c9, 4)),
+          ApprovalRules: S.optional(__S(79, __c9, 7)),
+          ApprovedPatches: S.optional(__S(6, __c0, 6)),
+          ApprovedPatchesComplianceLevel: S.optional(S.String),
           ApprovedPatchesEnableNonSecurity: S.optional(S.Boolean),
-          RejectedPatches: S.optional(PatchIdList),
-          RejectedPatchesAction: S.optional(PatchAction),
-          PatchGroups: S.optional(PatchGroupList),
+          RejectedPatches: S.optional(__S(6, __c0, 6)),
+          RejectedPatchesAction: S.optional(S.String),
+          PatchGroups: S.optional(__S(6, __c0, 6)),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          Sources: S.optional(PatchSourceList),
-          AvailableSecurityUpdatesComplianceStatus: S.optional(PatchComplianceStatus),
+          Sources: S.optional(__S(81, __c10, 1)),
+          AvailableSecurityUpdatesComplianceStatus: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetPatchBaselineResult" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ PatchGroup: S.String, OperatingSystem: S.optional(OperatingSystem) }).pipe(
+        S.Struct({ PatchGroup: S.String, OperatingSystem: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -15469,7 +13626,7 @@ function __c49(j: number): any {
         S.Struct({
           BaselineId: S.optional(S.String),
           PatchGroup: S.optional(S.String),
-          OperatingSystem: S.optional(OperatingSystem),
+          OperatingSystem: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetPatchBaselineForPatchGroupResult",
@@ -15495,12 +13652,12 @@ function __c49(j: number): any {
         identifier: "GetResourcePoliciesResponseEntry",
       });
     case 3:
-      return S.Array(GetResourcePoliciesResponseEntry);
+      return S.Array(__S(394, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Policies: S.optional(GetResourcePoliciesResponseEntries),
+          Policies: S.optional(__S(395, __c49, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetResourcePoliciesResponse",
@@ -15524,7 +13681,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ServiceSetting" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ServiceSetting: S.optional(ServiceSetting) }).pipe(ns),
+        S.Struct({ ServiceSetting: S.optional(__S(398, __c49, 6)) }).pipe(ns),
       ).annotate({ identifier: "GetServiceSettingResult" });
   }
 }
@@ -15535,7 +13692,7 @@ function __c50(j: number): any {
         S.Struct({
           Name: S.String,
           ParameterVersion: S.optional(S.Number),
-          Labels: ParameterLabelList,
+          Labels: __S(6, __c0, 6),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "LabelParameterVersionRequest",
@@ -15543,7 +13700,7 @@ function __c50(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          InvalidLabels: S.optional(ParameterLabelList),
+          InvalidLabels: S.optional(__S(6, __c0, 6)),
           ParameterVersion: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({
@@ -15551,16 +13708,16 @@ function __c50(j: number): any {
       });
     case 2:
       return S.Array(
-        /*@__PURE__*/ AssociationFilter.pipe(/*@__PURE__*/ T.XmlName("AssociationFilter")).annotate(
-          {
+        /*@__PURE__*/ __S(282, __c35, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("AssociationFilter"))
+          .annotate({
             identifier: "AssociationFilter",
-          },
-        ),
+          }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AssociationFilterList: S.optional(AssociationFilterList),
+          AssociationFilterList: S.optional(__S(402, __c50, 2)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -15573,26 +13730,26 @@ function __c50(j: number): any {
           AssociationId: S.optional(S.String),
           AssociationVersion: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           LastExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Overview: S.optional(AssociationOverview),
+          Overview: S.optional(__S(27, __c3, 3)),
           ScheduleExpression: S.optional(S.String),
           AssociationName: S.optional(S.String),
           ScheduleOffset: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          TargetMaps: S.optional(TargetMaps),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "Association" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ Association.pipe(/*@__PURE__*/ T.XmlName("Association")).annotate({
+        /*@__PURE__*/ __S(404, __c50, 4).pipe(/*@__PURE__*/ T.XmlName("Association")).annotate({
           identifier: "Association",
         }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Associations: S.optional(AssociationList),
+          Associations: S.optional(__S(405, __c50, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAssociationsResult" });
@@ -15618,30 +13775,30 @@ function __c51(j: number): any {
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          Parameters: S.optional(Parameters),
-          Targets: S.optional(Targets),
+          Parameters: S.optional(__S(13, __c1, 5)),
+          Targets: S.optional(__S(15, __c1, 7)),
           ScheduleExpression: S.optional(S.String),
-          OutputLocation: S.optional(InstanceAssociationOutputLocation),
+          OutputLocation: S.optional(__S(17, __c2, 1)),
           AssociationName: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           MaxConcurrency: S.optional(S.String),
-          ComplianceSeverity: S.optional(AssociationComplianceSeverity),
-          SyncCompliance: S.optional(AssociationSyncCompliance),
+          ComplianceSeverity: S.optional(S.String),
+          SyncCompliance: S.optional(S.String),
           ApplyOnlyAtCronInterval: S.optional(S.Boolean),
-          CalendarNames: S.optional(CalendarNameOrARNList),
-          TargetLocations: S.optional(TargetLocations),
+          CalendarNames: S.optional(__S(6, __c0, 6)),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
           ScheduleOffset: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          TargetMaps: S.optional(TargetMaps),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
           AssociationDispatchAssumeRole: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociationVersionInfo" });
     case 1:
-      return S.Array(AssociationVersionInfo);
+      return S.Array(__S(408, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AssociationVersions: S.optional(AssociationVersionList),
+          AssociationVersions: S.optional(__S(409, __c51, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -15650,18 +13807,18 @@ function __c51(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FilterKey: S.optional(CloudConnectorFilterKey),
-          FilterValues: S.optional(CloudConnectorFilterValues),
+          FilterKey: S.optional(S.String),
+          FilterValues: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CloudConnectorFilter" });
     case 4:
-      return S.Array(CloudConnectorFilter);
+      return S.Array(__S(411, __c51, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(CloudConnectorFilterList),
+          Filters: S.optional(__S(412, __c51, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListCloudConnectorsRequest",
@@ -15678,7 +13835,7 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "CloudConnectorSummary" });
     case 7:
-      return S.Array(CloudConnectorSummary);
+      return S.Array(__S(414, __c51, 6));
   }
 }
 function __c52(j: number): any {
@@ -15686,7 +13843,7 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CloudConnectors: S.optional(CloudConnectorSummaryList),
+          CloudConnectors: S.optional(__S(415, __c51, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -15699,7 +13856,7 @@ function __c52(j: number): any {
           InstanceId: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(CommandFilterList),
+          Filters: S.optional(__S(283, __c35, 3)),
           Details: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -15709,7 +13866,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Status: S.optional(CommandPluginStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           ResponseCode: S.optional(S.Number),
           ResponseStartDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -15723,7 +13880,7 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "CommandPlugin" });
     case 3:
-      return S.Array(CommandPlugin);
+      return S.Array(__S(418, __c52, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15734,23 +13891,23 @@ function __c52(j: number): any {
           DocumentName: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
           RequestedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(CommandInvocationStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           TraceOutput: S.optional(S.String),
           StandardOutputUrl: S.optional(S.String),
           StandardErrorUrl: S.optional(S.String),
-          CommandPlugins: S.optional(CommandPluginList),
+          CommandPlugins: S.optional(__S(419, __c52, 3)),
           ServiceRole: S.optional(S.String),
-          NotificationConfig: S.optional(NotificationConfig),
-          CloudWatchOutputConfig: S.optional(CloudWatchOutputConfig),
+          NotificationConfig: S.optional(__S(354, __c44, 2)),
+          CloudWatchOutputConfig: S.optional(__S(302, __c37, 6)),
         }),
       ).annotate({ identifier: "CommandInvocation" });
     case 5:
-      return S.Array(CommandInvocation);
+      return S.Array(__S(420, __c52, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          CommandInvocations: S.optional(CommandInvocationList),
+          CommandInvocations: S.optional(__S(421, __c52, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -15763,7 +13920,7 @@ function __c52(j: number): any {
           InstanceId: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(CommandFilterList),
+          Filters: S.optional(__S(283, __c35, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListCommandsRequest" });
   }
@@ -15778,11 +13935,11 @@ function __c53(j: number): any {
           DocumentVersion: S.optional(S.String),
           Comment: S.optional(S.String),
           ExpiresAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Parameters: S.optional(Parameters),
-          InstanceIds: S.optional(InstanceIdList),
-          Targets: S.optional(Targets),
+          Parameters: S.optional(__S(13, __c1, 5)),
+          InstanceIds: S.optional(__S(6, __c0, 6)),
+          Targets: S.optional(__S(15, __c1, 7)),
           RequestedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(CommandStatus),
+          Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           OutputS3Region: S.optional(S.String),
           OutputS3BucketName: S.optional(S.String),
@@ -15794,41 +13951,44 @@ function __c53(j: number): any {
           ErrorCount: S.optional(S.Number),
           DeliveryTimedOutCount: S.optional(S.Number),
           ServiceRole: S.optional(S.String),
-          NotificationConfig: S.optional(NotificationConfig),
-          CloudWatchOutputConfig: S.optional(CloudWatchOutputConfig),
+          NotificationConfig: S.optional(__S(354, __c44, 2)),
+          CloudWatchOutputConfig: S.optional(__S(302, __c37, 6)),
           TimeoutSeconds: S.optional(S.Number),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
-          TriggeredAlarms: S.optional(AlarmStateInformationList),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
+          TriggeredAlarms: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "Command" });
     case 1:
-      return S.Array(Command);
+      return S.Array(__S(424, __c53, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Commands: S.optional(CommandList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          Commands: S.optional(__S(425, __c53, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListCommandsResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
-          Values: S.optional(ComplianceStringFilterValueList),
-          Type: S.optional(ComplianceQueryOperatorType),
+          Values: S.optional(__S(322, __c40, 2)),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceStringFilter" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ ComplianceStringFilter.pipe(
-          /*@__PURE__*/ T.XmlName("ComplianceFilter"),
-        ).annotate({
-          identifier: "ComplianceStringFilter",
-        }),
+        /*@__PURE__*/ __S(427, __c53, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("ComplianceFilter"))
+          .annotate({
+            identifier: "ComplianceStringFilter",
+          }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ComplianceStringFilterList),
-          ResourceIds: S.optional(ComplianceResourceIdList),
-          ResourceTypes: S.optional(ComplianceResourceTypeList),
+          Filters: S.optional(__S(428, __c53, 4)),
+          ResourceIds: S.optional(__S(6, __c0, 6)),
+          ResourceTypes: S.optional(__S(6, __c0, 6)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -15853,10 +14013,10 @@ function __c53(j: number): any {
           ResourceId: S.optional(S.String),
           Id: S.optional(S.String),
           Title: S.optional(S.String),
-          Status: S.optional(ComplianceStatus),
-          Severity: S.optional(ComplianceSeverity),
-          ExecutionSummary: S.optional(ComplianceExecutionSummary),
-          Details: S.optional(ComplianceItemDetails),
+          Status: S.optional(S.String),
+          Severity: S.optional(S.String),
+          ExecutionSummary: S.optional(__S(430, __c53, 6)),
+          Details: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({ identifier: "ComplianceItem" });
   }
@@ -15865,14 +14025,14 @@ function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ ComplianceItem.pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
+        /*@__PURE__*/ __S(431, __c53, 7).pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
           identifier: "ComplianceItem",
         }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ComplianceItems: S.optional(ComplianceItemList),
+          ComplianceItems: S.optional(__S(432, __c54, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -15881,7 +14041,7 @@ function __c54(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ComplianceStringFilterList),
+          Filters: S.optional(__S(428, __c53, 4)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -15903,27 +14063,27 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CompliantCount: S.optional(S.Number),
-          SeveritySummary: S.optional(SeveritySummary),
+          SeveritySummary: S.optional(__S(435, __c54, 3)),
         }),
       ).annotate({ identifier: "CompliantSummary" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           NonCompliantCount: S.optional(S.Number),
-          SeveritySummary: S.optional(SeveritySummary),
+          SeveritySummary: S.optional(__S(435, __c54, 3)),
         }),
       ).annotate({ identifier: "NonCompliantSummary" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ComplianceType: S.optional(S.String),
-          CompliantSummary: S.optional(CompliantSummary),
-          NonCompliantSummary: S.optional(NonCompliantSummary),
+          CompliantSummary: S.optional(__S(436, __c54, 4)),
+          NonCompliantSummary: S.optional(__S(437, __c54, 5)),
         }),
       ).annotate({ identifier: "ComplianceSummaryItem" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ ComplianceSummaryItem.pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
+        /*@__PURE__*/ __S(438, __c54, 6).pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
           identifier: "ComplianceSummaryItem",
         }),
       );
@@ -15934,7 +14094,7 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ComplianceSummaryItems: S.optional(ComplianceSummaryItemList),
+          ComplianceSummaryItems: S.optional(__S(439, __c54, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -15945,7 +14105,7 @@ function __c55(j: number): any {
         S.Struct({
           Name: S.String,
           DocumentVersion: S.optional(S.String),
-          Metadata: DocumentMetadataEnum,
+          Metadata: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -15954,29 +14114,29 @@ function __c55(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(DocumentReviewCommentType), Content: S.optional(S.String) }),
+        S.Struct({ Type: S.optional(S.String), Content: S.optional(S.String) }),
       ).annotate({
         identifier: "DocumentReviewCommentSource",
       });
     case 3:
-      return S.Array(DocumentReviewCommentSource);
+      return S.Array(__S(442, __c55, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ReviewStatus: S.optional(ReviewStatus),
-          Comment: S.optional(DocumentReviewCommentList),
+          ReviewStatus: S.optional(S.String),
+          Comment: S.optional(__S(443, __c55, 3)),
           Reviewer: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DocumentReviewerResponseSource",
       });
     case 5:
-      return S.Array(DocumentReviewerResponseSource);
+      return S.Array(__S(444, __c55, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ ReviewerResponse: S.optional(DocumentReviewerResponseList) }),
+        S.Struct({ ReviewerResponse: S.optional(__S(445, __c55, 5)) }),
       ).annotate({
         identifier: "DocumentMetadataResponseInfo",
       });
@@ -15986,7 +14146,7 @@ function __c55(j: number): any {
           Name: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
           Author: S.optional(S.String),
-          Metadata: S.optional(DocumentMetadataResponseInfo),
+          Metadata: S.optional(__S(446, __c55, 6)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -15998,15 +14158,15 @@ function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ DocumentFilter.pipe(/*@__PURE__*/ T.XmlName("DocumentFilter")).annotate({
+        /*@__PURE__*/ __S(282, __c35, 2).pipe(/*@__PURE__*/ T.XmlName("DocumentFilter")).annotate({
           identifier: "DocumentFilter",
         }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DocumentFilterList: S.optional(DocumentFilterList),
-          Filters: S.optional(DocumentKeyValuesFilterList),
+          DocumentFilterList: S.optional(__S(448, __c56, 0)),
+          Filters: S.optional(__S(15, __c1, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16019,30 +14179,30 @@ function __c56(j: number): any {
           DisplayName: S.optional(S.String),
           Owner: S.optional(S.String),
           VersionName: S.optional(S.String),
-          PlatformTypes: S.optional(PlatformTypeList),
+          PlatformTypes: S.optional(__S(53, __c6, 5)),
           DocumentVersion: S.optional(S.String),
-          DocumentType: S.optional(DocumentType),
+          DocumentType: S.optional(S.String),
           SchemaVersion: S.optional(S.String),
-          DocumentFormat: S.optional(DocumentFormat),
+          DocumentFormat: S.optional(S.String),
           TargetType: S.optional(S.String),
-          Tags: S.optional(TagList),
-          Requires: S.optional(DocumentRequiresList),
-          ReviewStatus: S.optional(ReviewStatus),
+          Tags: S.optional(__S(1, __c0, 1)),
+          Requires: S.optional(__S(47, __c5, 7)),
+          ReviewStatus: S.optional(S.String),
           Author: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentIdentifier" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ DocumentIdentifier.pipe(
-          /*@__PURE__*/ T.XmlName("DocumentIdentifier"),
-        ).annotate({
-          identifier: "DocumentIdentifier",
-        }),
+        /*@__PURE__*/ __S(450, __c56, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("DocumentIdentifier"))
+          .annotate({
+            identifier: "DocumentIdentifier",
+          }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DocumentIdentifiers: S.optional(DocumentIdentifierList),
+          DocumentIdentifiers: S.optional(__S(451, __c56, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDocumentsResult" });
@@ -16065,14 +14225,14 @@ function __c56(j: number): any {
           VersionName: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IsDefaultVersion: S.optional(S.Boolean),
-          DocumentFormat: S.optional(DocumentFormat),
-          Status: S.optional(DocumentStatus),
+          DocumentFormat: S.optional(S.String),
+          Status: S.optional(S.String),
           StatusInformation: S.optional(S.String),
-          ReviewStatus: S.optional(ReviewStatus),
+          ReviewStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentVersionInfo" });
     case 7:
-      return S.Array(DocumentVersionInfo);
+      return S.Array(__S(454, __c56, 6));
   }
 }
 function __c57(j: number): any {
@@ -16080,7 +14240,7 @@ function __c57(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DocumentVersions: S.optional(DocumentVersionList),
+          DocumentVersions: S.optional(__S(455, __c56, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -16091,7 +14251,7 @@ function __c57(j: number): any {
         S.Struct({
           InstanceId: S.String,
           TypeName: S.String,
-          Filters: S.optional(InventoryFilterList),
+          Filters: S.optional(__S(324, __c40, 4)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16105,7 +14265,7 @@ function __c57(j: number): any {
           InstanceId: S.optional(S.String),
           SchemaVersion: S.optional(S.String),
           CaptureTime: S.optional(S.String),
-          Entries: S.optional(InventoryItemEntryList),
+          Entries: S.optional(__S(280, __c35, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -16114,14 +14274,14 @@ function __c57(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Key: NodeFilterKey,
-          Values: NodeFilterValueList,
-          Type: S.optional(NodeFilterOperatorType),
+          Key: S.String,
+          Values: __S(322, __c40, 2),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeFilter" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ NodeFilter.pipe(/*@__PURE__*/ T.XmlName("NodeFilter")).annotate({
+        /*@__PURE__*/ __S(459, __c57, 3).pipe(/*@__PURE__*/ T.XmlName("NodeFilter")).annotate({
           identifier: "NodeFilter",
         }),
       );
@@ -16129,7 +14289,7 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SyncName: S.optional(S.String),
-          Filters: S.optional(NodeFilterList),
+          Filters: S.optional(__S(460, __c57, 4)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16150,13 +14310,13 @@ function __c57(j: number): any {
           ComputerName: S.optional(S.String),
           InstanceStatus: S.optional(S.String),
           IpAddress: S.optional(SensitiveString),
-          ManagedStatus: S.optional(ManagedStatus),
+          ManagedStatus: S.optional(S.String),
           Name: S.optional(S.String),
-          PlatformType: S.optional(PlatformType),
+          PlatformType: S.optional(S.String),
           PlatformName: S.optional(S.String),
           PlatformVersion: S.optional(S.String),
-          ResourceType: S.optional(ResourceType),
-          SourceType: S.optional(SourceType),
+          ResourceType: S.optional(S.String),
+          SourceType: S.optional(S.String),
           SourceId: S.optional(S.String),
           SourceLocation: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
@@ -16168,37 +14328,39 @@ function __c57(j: number): any {
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ Instance: InstanceInfo })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Instance: __S(463, __c57, 7) })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           CaptureTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Id: S.optional(S.String),
-          Owner: S.optional(NodeOwnerInfo),
+          Owner: S.optional(__S(462, __c57, 6)),
           Region: S.optional(S.String),
-          NodeType: S.optional(NodeType),
+          NodeType: S.optional(__S(464, __c58, 0)),
         }),
       ).annotate({ identifier: "Node" });
     case 2:
-      return S.Array(Node);
+      return S.Array(__S(465, __c58, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Nodes: S.optional(NodeList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Nodes: S.optional(__S(466, __c58, 2)), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListNodesResult" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AggregatorType: NodeAggregatorType,
-          TypeName: NodeTypeName,
-          AttributeName: NodeAttributeName,
+          AggregatorType: S.String,
+          TypeName: S.String,
+          AttributeName: S.String,
           Aggregators: S.optional(
-            S.suspend(() => NodeAggregatorList).annotate({ identifier: "NodeAggregatorList" }),
+            S.suspend(() => __S(469, __c58, 5)).annotate({ identifier: "NodeAggregatorList" }),
           ),
         }),
       ).annotate({ identifier: "NodeAggregator" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<NodeAggregator> => NodeAggregator)
+        /*@__PURE__*/ S.suspend((): S.Schema<NodeAggregator> => __S(468, __c58, 4))
           .annotate({ identifier: "NodeAggregator" })
           .pipe(/*@__PURE__*/ T.XmlName("NodeAggregator"))
           .annotate({ identifier: "NodeAggregator" }),
@@ -16207,15 +14369,15 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SyncName: S.optional(S.String),
-          Filters: S.optional(NodeFilterList),
-          Aggregators: NodeAggregatorList,
+          Filters: S.optional(__S(460, __c57, 4)),
+          Aggregators: __S(469, __c58, 5),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListNodesSummaryRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Summary: S.optional(NodeSummaryList), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Summary: S.optional(__S(280, __c35, 0)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListNodesSummaryResult" });
@@ -16226,17 +14388,17 @@ function __c59(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Key: OpsItemEventFilterKey,
-          Values: OpsItemEventFilterValues,
-          Operator: OpsItemEventFilterOperator,
+          Key: S.String,
+          Values: __S(6, __c0, 6),
+          Operator: S.String,
         }),
       ).annotate({ identifier: "OpsItemEventFilter" });
     case 1:
-      return S.Array(OpsItemEventFilter);
+      return S.Array(__S(472, __c59, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(OpsItemEventFilters),
+          Filters: S.optional(__S(473, __c59, 1)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16249,17 +14411,17 @@ function __c59(j: number): any {
           Source: S.optional(S.String),
           DetailType: S.optional(S.String),
           Detail: S.optional(S.String),
-          CreatedBy: S.optional(OpsItemIdentity),
+          CreatedBy: S.optional(__S(64, __c8, 0)),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "OpsItemEventSummary" });
     case 4:
-      return S.Array(OpsItemEventSummary);
+      return S.Array(__S(475, __c59, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Summaries: S.optional(OpsItemEventSummaries),
+          Summaries: S.optional(__S(476, __c59, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListOpsItemEventsResponse",
@@ -16267,15 +14429,15 @@ function __c59(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Key: OpsItemRelatedItemsFilterKey,
-          Values: OpsItemRelatedItemsFilterValues,
-          Operator: OpsItemRelatedItemsFilterOperator,
+          Key: S.String,
+          Values: __S(6, __c0, 6),
+          Operator: S.String,
         }),
       ).annotate({
         identifier: "OpsItemRelatedItemsFilter",
       });
     case 7:
-      return S.Array(OpsItemRelatedItemsFilter);
+      return S.Array(__S(478, __c59, 6));
   }
 }
 function __c60(j: number): any {
@@ -16284,7 +14446,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OpsItemId: S.optional(S.String),
-          Filters: S.optional(OpsItemRelatedItemsFilters),
+          Filters: S.optional(__S(479, __c59, 7)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16299,35 +14461,35 @@ function __c60(j: number): any {
           ResourceType: S.optional(S.String),
           AssociationType: S.optional(S.String),
           ResourceUri: S.optional(S.String),
-          CreatedBy: S.optional(OpsItemIdentity),
+          CreatedBy: S.optional(__S(64, __c8, 0)),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastModifiedBy: S.optional(OpsItemIdentity),
+          LastModifiedBy: S.optional(__S(64, __c8, 0)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "OpsItemRelatedItemSummary",
       });
     case 2:
-      return S.Array(OpsItemRelatedItemSummary);
+      return S.Array(__S(481, __c60, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Summaries: S.optional(OpsItemRelatedItemSummaries),
+          Summaries: S.optional(__S(482, __c60, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListOpsItemRelatedItemsResponse",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Key: S.String, Values: OpsMetadataFilterValueList }),
-      ).annotate({ identifier: "OpsMetadataFilter" });
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(6, __c0, 6) })).annotate({
+        identifier: "OpsMetadataFilter",
+      });
     case 5:
-      return S.Array(OpsMetadataFilter);
+      return S.Array(__S(484, __c60, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(OpsMetadataFilterList),
+          Filters: S.optional(__S(485, __c60, 5)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16347,18 +14509,18 @@ function __c60(j: number): any {
 function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OpsMetadata);
+      return S.Array(__S(487, __c60, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          OpsMetadataList: S.optional(OpsMetadataList),
+          OpsMetadataList: S.optional(__S(488, __c61, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListOpsMetadataResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ComplianceStringFilterList),
+          Filters: S.optional(__S(428, __c53, 4)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16371,25 +14533,25 @@ function __c61(j: number): any {
           ComplianceType: S.optional(S.String),
           ResourceType: S.optional(S.String),
           ResourceId: S.optional(S.String),
-          Status: S.optional(ComplianceStatus),
-          OverallSeverity: S.optional(ComplianceSeverity),
-          ExecutionSummary: S.optional(ComplianceExecutionSummary),
-          CompliantSummary: S.optional(CompliantSummary),
-          NonCompliantSummary: S.optional(NonCompliantSummary),
+          Status: S.optional(S.String),
+          OverallSeverity: S.optional(S.String),
+          ExecutionSummary: S.optional(__S(430, __c53, 6)),
+          CompliantSummary: S.optional(__S(436, __c54, 4)),
+          NonCompliantSummary: S.optional(__S(437, __c54, 5)),
         }),
       ).annotate({
         identifier: "ResourceComplianceSummaryItem",
       });
     case 4:
       return S.Array(
-        /*@__PURE__*/ ResourceComplianceSummaryItem.pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
+        /*@__PURE__*/ __S(491, __c61, 3).pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
           identifier: "ResourceComplianceSummaryItem",
         }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ResourceComplianceSummaryItems: S.optional(ResourceComplianceSummaryItemList),
+          ResourceComplianceSummaryItems: S.optional(__S(492, __c61, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -16409,8 +14571,8 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SourceType: S.optional(S.String),
-          AwsOrganizationsSource: S.optional(ResourceDataSyncAwsOrganizationsSource),
-          SourceRegions: S.optional(ResourceDataSyncSourceRegionList),
+          AwsOrganizationsSource: S.optional(__S(88, __c11, 0)),
+          SourceRegions: S.optional(__S(6, __c0, 6)),
           IncludeFutureRegions: S.optional(S.Boolean),
           State: S.optional(S.String),
           EnableAllOpsDataSources: S.optional(S.Boolean),
@@ -16427,22 +14589,22 @@ function __c62(j: number): any {
         S.Struct({
           SyncName: S.optional(S.String),
           SyncType: S.optional(S.String),
-          SyncSource: S.optional(ResourceDataSyncSourceWithState),
-          S3Destination: S.optional(ResourceDataSyncS3Destination),
+          SyncSource: S.optional(__S(495, __c61, 7)),
+          S3Destination: S.optional(__S(85, __c10, 5)),
           LastSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastSuccessfulSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SyncLastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastStatus: S.optional(LastResourceDataSyncStatus),
+          LastStatus: S.optional(S.String),
           SyncCreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastSyncStatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceDataSyncItem" });
     case 1:
-      return S.Array(ResourceDataSyncItem);
+      return S.Array(__S(496, __c62, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ResourceDataSyncItems: S.optional(ResourceDataSyncItemList),
+          ResourceDataSyncItems: S.optional(__S(497, __c62, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -16450,23 +14612,23 @@ function __c62(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceType: ResourceTypeForTagging, ResourceId: S.String }).pipe(
+        S.Struct({ ResourceType: S.String, ResourceId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ TagList: S.optional(TagList) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ TagList: S.optional(__S(1, __c0, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResult",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          PermissionType: DocumentPermissionType,
-          AccountIdsToAdd: S.optional(AccountIdList),
-          AccountIdsToRemove: S.optional(AccountIdList),
+          PermissionType: S.String,
+          AccountIdsToAdd: S.optional(__S(164, __c20, 4)),
+          AccountIdsToRemove: S.optional(__S(164, __c20, 4)),
           SharedDocumentVersion: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -16477,13 +14639,13 @@ function __c62(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Title: S.optional(S.String),
-          Severity: ComplianceSeverity,
-          Status: ComplianceStatus,
-          Details: S.optional(ComplianceItemDetails),
+          Severity: S.String,
+          Status: S.String,
+          Details: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({ identifier: "ComplianceItemEntry" });
     case 7:
-      return S.Array(ComplianceItemEntry);
+      return S.Array(__S(502, __c62, 6));
   }
 }
 function __c63(j: number): any {
@@ -16494,10 +14656,10 @@ function __c63(j: number): any {
           ResourceId: S.String,
           ResourceType: S.String,
           ComplianceType: S.String,
-          ExecutionSummary: ComplianceExecutionSummary,
-          Items: ComplianceItemEntryList,
+          ExecutionSummary: __S(430, __c53, 6),
+          Items: __S(503, __c62, 7),
           ItemContentHash: S.optional(S.String),
-          UploadType: S.optional(ComplianceUploadType),
+          UploadType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutComplianceItemsRequest",
@@ -16509,19 +14671,19 @@ function __c63(j: number): any {
           SchemaVersion: S.String,
           CaptureTime: S.String,
           ContentHash: S.optional(S.String),
-          Content: S.optional(InventoryItemEntryList),
-          Context: S.optional(InventoryItemContentContext),
+          Content: S.optional(__S(280, __c35, 0)),
+          Context: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({ identifier: "InventoryItem" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ InventoryItem.pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
+        /*@__PURE__*/ __S(505, __c63, 1).pipe(/*@__PURE__*/ T.XmlName("Item")).annotate({
           identifier: "InventoryItem",
         }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ InstanceId: S.String, Items: InventoryItemList }).pipe(
+        S.Struct({ InstanceId: S.String, Items: __S(506, __c63, 2) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutInventoryRequest" });
@@ -16535,19 +14697,19 @@ function __c63(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           Value: SensitiveString,
-          Type: S.optional(ParameterType),
+          Type: S.optional(S.String),
           KeyId: S.optional(S.String),
           Overwrite: S.optional(S.Boolean),
           AllowedPattern: S.optional(S.String),
-          Tags: S.optional(TagList),
-          Tier: S.optional(ParameterTier),
+          Tags: S.optional(__S(1, __c0, 1)),
+          Tier: S.optional(S.String),
           Policies: S.optional(S.String),
           DataType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutParameterRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Version: S.optional(S.Number), Tier: S.optional(ParameterTier) }).pipe(ns),
+        S.Struct({ Version: S.optional(S.Number), Tier: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "PutParameterResult" });
     case 7:
       return S.suspend(() =>
@@ -16588,8 +14750,8 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowId: S.String,
-          ResourceType: MaintenanceWindowResourceType,
-          Targets: Targets,
+          ResourceType: S.String,
+          Targets: __S(15, __c1, 7),
           OwnerInformation: S.optional(SensitiveString),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
@@ -16606,21 +14768,21 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WindowId: S.String,
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           TaskArn: S.String,
           ServiceRoleArn: S.optional(S.String),
-          TaskType: MaintenanceWindowTaskType,
-          TaskParameters: S.optional(MaintenanceWindowTaskParameters),
-          TaskInvocationParameters: S.optional(MaintenanceWindowTaskInvocationParameters),
+          TaskType: S.String,
+          TaskParameters: S.optional(__S(248, __c31, 0)),
+          TaskInvocationParameters: S.optional(__S(359, __c44, 7)),
           Priority: S.optional(S.Number),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
-          LoggingInfo: S.optional(LoggingInfo),
+          LoggingInfo: S.optional(__S(249, __c31, 1)),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          CutoffBehavior: S.optional(S.String),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RegisterTaskWithMaintenanceWindowRequest",
@@ -16632,9 +14794,9 @@ function __c64(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: ResourceTypeForTagging,
+          ResourceType: S.String,
           ResourceId: S.String,
-          TagKeys: KeyList,
+          TagKeys: __S(6, __c0, 6),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RemoveTagsFromResourceRequest",
@@ -16653,7 +14815,7 @@ function __c65(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ServiceSetting: S.optional(ServiceSetting) }).pipe(ns),
+        S.Struct({ ServiceSetting: S.optional(__S(398, __c49, 6)) }).pipe(ns),
       ).annotate({
         identifier: "ResetServiceSettingResult",
       });
@@ -16675,8 +14837,8 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AutomationExecutionId: S.String,
-          SignalType: SignalType,
-          Payload: S.optional(AutomationParameterMap),
+          SignalType: S.String,
+          Payload: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SendAutomationSignalRequest",
@@ -16684,35 +14846,39 @@ function __c65(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          InstanceIds: S.optional(InstanceIdList),
-          Targets: S.optional(Targets),
+          InstanceIds: S.optional(__S(6, __c0, 6)),
+          Targets: S.optional(__S(15, __c1, 7)),
           DocumentName: S.String,
           DocumentVersion: S.optional(S.String),
           DocumentHash: S.optional(S.String),
-          DocumentHashType: S.optional(DocumentHashType),
+          DocumentHashType: S.optional(S.String),
           TimeoutSeconds: S.optional(S.Number),
           Comment: S.optional(S.String),
-          Parameters: S.optional(Parameters),
+          Parameters: S.optional(__S(13, __c1, 5)),
           OutputS3Region: S.optional(S.String),
           OutputS3BucketName: S.optional(S.String),
           OutputS3KeyPrefix: S.optional(S.String),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           ServiceRoleArn: S.optional(S.String),
-          NotificationConfig: S.optional(NotificationConfig),
-          CloudWatchOutputConfig: S.optional(CloudWatchOutputConfig),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          NotificationConfig: S.optional(__S(354, __c44, 2)),
+          CloudWatchOutputConfig: S.optional(__S(302, __c37, 6)),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendCommandRequest" });
     case 6:
-      return S.suspend(() => S.Struct({ Command: S.optional(Command) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Command: S.optional(__S(424, __c53, 0)) }).pipe(ns),
+      ).annotate({
         identifier: "SendCommandResult",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Reason: S.String, Targets: Targets, Tags: S.optional(TagList) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
+        S.Struct({
+          Reason: S.String,
+          Targets: __S(15, __c1, 7),
+          Tags: S.optional(__S(1, __c0, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartAccessRequestRequest",
       });
@@ -16728,7 +14894,7 @@ function __c66(j: number): any {
       );
     case 1:
       return S.suspend(() =>
-        S.Struct({ AssociationIds: AssociationIdList }).pipe(
+        S.Struct({ AssociationIds: __S(6, __c0, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -16739,17 +14905,17 @@ function __c66(j: number): any {
         S.Struct({
           DocumentName: S.String,
           DocumentVersion: S.optional(S.String),
-          Parameters: S.optional(AutomationParameterMap),
+          Parameters: S.optional(__S(13, __c1, 5)),
           ClientToken: S.optional(S.String),
-          Mode: S.optional(ExecutionMode),
+          Mode: S.optional(S.String),
           TargetParameterName: S.optional(S.String),
-          Targets: S.optional(AutomationTargets),
-          TargetMaps: S.optional(TargetMaps),
+          Targets: S.optional(__S(15, __c1, 7)),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
-          TargetLocations: S.optional(TargetLocations),
-          Tags: S.optional(TagList),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
+          Tags: S.optional(__S(1, __c0, 1)),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
           TargetLocationsURL: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -16767,12 +14933,12 @@ function __c66(j: number): any {
           ScheduledTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DocumentName: S.String,
           DocumentVersion: S.optional(S.String),
-          Parameters: S.optional(AutomationParameterMap),
+          Parameters: S.optional(__S(13, __c1, 5)),
           ChangeRequestName: S.optional(S.String),
           ClientToken: S.optional(S.String),
           AutoApprove: S.optional(S.Boolean),
-          Runbooks: Runbooks,
-          Tags: S.optional(TagList),
+          Runbooks: __S(144, __c18, 0),
+          Tags: S.optional(__S(1, __c0, 1)),
           ScheduledEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ChangeDetails: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -16782,24 +14948,24 @@ function __c66(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Parameters: S.optional(AutomationParameterMap),
+          Parameters: S.optional(__S(13, __c1, 5)),
           TargetParameterName: S.optional(S.String),
-          Targets: S.optional(AutomationTargets),
-          TargetMaps: S.optional(TargetMaps),
-          TargetLocations: S.optional(TargetLocations),
+          Targets: S.optional(__S(15, __c1, 7)),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
           TargetLocationsURL: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AutomationExecutionInputs",
       });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ Automation: AutomationExecutionInputs })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Automation: __S(533, __c66, 5) })]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           DocumentName: S.String,
           DocumentVersion: S.optional(S.String),
-          ExecutionInputs: S.optional(ExecutionInputs),
+          ExecutionInputs: S.optional(__S(534, __c66, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartExecutionPreviewRequest",
@@ -16820,12 +14986,12 @@ function __c67(j: number): any {
           Target: S.String,
           DocumentName: S.optional(S.String),
           Reason: S.optional(S.String),
-          Parameters: S.optional(SessionManagerParameters),
+          Parameters: S.optional(__S(13, __c1, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartSessionRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AutomationExecutionId: S.String, Type: S.optional(StopType) }).pipe(
+        S.Struct({ AutomationExecutionId: S.String, Type: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -16843,7 +15009,7 @@ function __c67(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, ParameterVersion: S.Number, Labels: ParameterLabelList }).pipe(
+        S.Struct({ Name: S.String, ParameterVersion: S.Number, Labels: __S(6, __c0, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -16852,8 +15018,8 @@ function __c67(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RemovedLabels: S.optional(ParameterLabelList),
-          InvalidLabels: S.optional(ParameterLabelList),
+          RemovedLabels: S.optional(__S(6, __c0, 6)),
+          InvalidLabels: S.optional(__S(6, __c0, 6)),
         }).pipe(ns),
       ).annotate({
         identifier: "UnlabelParameterVersionResult",
@@ -16862,26 +15028,26 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AssociationId: S.String,
-          Parameters: S.optional(Parameters),
+          Parameters: S.optional(__S(13, __c1, 5)),
           DocumentVersion: S.optional(S.String),
           ScheduleExpression: S.optional(S.String),
-          OutputLocation: S.optional(InstanceAssociationOutputLocation),
+          OutputLocation: S.optional(__S(17, __c2, 1)),
           Name: S.optional(S.String),
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           AssociationName: S.optional(S.String),
           AssociationVersion: S.optional(S.String),
           AutomationTargetParameterName: S.optional(S.String),
           MaxErrors: S.optional(S.String),
           MaxConcurrency: S.optional(S.String),
-          ComplianceSeverity: S.optional(AssociationComplianceSeverity),
-          SyncCompliance: S.optional(AssociationSyncCompliance),
+          ComplianceSeverity: S.optional(S.String),
+          SyncCompliance: S.optional(S.String),
           ApplyOnlyAtCronInterval: S.optional(S.Boolean),
-          CalendarNames: S.optional(CalendarNameOrARNList),
-          TargetLocations: S.optional(TargetLocations),
+          CalendarNames: S.optional(__S(6, __c0, 6)),
+          TargetLocations: S.optional(__S(22, __c2, 6)),
           ScheduleOffset: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          TargetMaps: S.optional(TargetMaps),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          TargetMaps: S.optional(__S(23, __c2, 7)),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
           AssociationDispatchAssumeRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateAssociationRequest" });
@@ -16894,7 +15060,7 @@ function __c68(j: number): any {
         S.Struct({
           Name: S.String,
           InstanceId: S.String,
-          AssociationStatus: AssociationStatus,
+          AssociationStatus: __S(25, __c3, 1),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateAssociationStatusRequest",
@@ -16904,7 +15070,7 @@ function __c68(j: number): any {
         S.Struct({
           CloudConnectorId: S.String,
           DisplayName: S.optional(S.String),
-          Configuration: S.optional(CloudConnectorConfiguration),
+          Configuration: S.optional(__S(43, __c5, 3)),
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -16914,12 +15080,12 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Content: S.String,
-          Attachments: S.optional(AttachmentsSourceList),
+          Attachments: S.optional(__S(49, __c6, 1)),
           Name: S.String,
           DisplayName: S.optional(S.String),
           VersionName: S.optional(S.String),
           DocumentVersion: S.optional(S.String),
-          DocumentFormat: S.optional(DocumentFormat),
+          DocumentFormat: S.optional(S.String),
           TargetType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDocumentRequest" });
@@ -16943,20 +15109,20 @@ function __c68(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Description: S.optional(DocumentDefaultVersionDescription) }).pipe(ns),
+        S.Struct({ Description: S.optional(__S(548, __c68, 4)) }).pipe(ns),
       ).annotate({
         identifier: "UpdateDocumentDefaultVersionResult",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Action: DocumentReviewAction, Comment: S.optional(DocumentReviewCommentList) }),
+        S.Struct({ Action: S.String, Comment: S.optional(__S(443, __c55, 3)) }),
       ).annotate({ identifier: "DocumentReviews" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           DocumentVersion: S.optional(S.String),
-          DocumentReviews: DocumentReviews,
+          DocumentReviews: __S(550, __c68, 6),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateDocumentMetadataRequest",
@@ -17009,7 +15175,7 @@ function __c69(j: number): any {
         S.Struct({
           WindowId: S.String,
           WindowTargetId: S.String,
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           OwnerInformation: S.optional(SensitiveString),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
@@ -17023,7 +15189,7 @@ function __c69(j: number): any {
         S.Struct({
           WindowId: S.optional(S.String),
           WindowTargetId: S.optional(S.String),
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           OwnerInformation: S.optional(SensitiveString),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
@@ -17036,20 +15202,20 @@ function __c69(j: number): any {
         S.Struct({
           WindowId: S.String,
           WindowTaskId: S.String,
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           TaskArn: S.optional(S.String),
           ServiceRoleArn: S.optional(S.String),
-          TaskParameters: S.optional(MaintenanceWindowTaskParameters),
-          TaskInvocationParameters: S.optional(MaintenanceWindowTaskInvocationParameters),
+          TaskParameters: S.optional(__S(248, __c31, 0)),
+          TaskInvocationParameters: S.optional(__S(359, __c44, 7)),
           Priority: S.optional(S.Number),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
-          LoggingInfo: S.optional(LoggingInfo),
+          LoggingInfo: S.optional(__S(249, __c31, 1)),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
           Replace: S.optional(S.Boolean),
-          CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          CutoffBehavior: S.optional(S.String),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateMaintenanceWindowTaskRequest",
@@ -17059,19 +15225,19 @@ function __c69(j: number): any {
         S.Struct({
           WindowId: S.optional(S.String),
           WindowTaskId: S.optional(S.String),
-          Targets: S.optional(Targets),
+          Targets: S.optional(__S(15, __c1, 7)),
           TaskArn: S.optional(S.String),
           ServiceRoleArn: S.optional(S.String),
-          TaskParameters: S.optional(MaintenanceWindowTaskParameters),
-          TaskInvocationParameters: S.optional(MaintenanceWindowTaskInvocationParameters),
+          TaskParameters: S.optional(__S(248, __c31, 0)),
+          TaskInvocationParameters: S.optional(__S(359, __c44, 7)),
           Priority: S.optional(S.Number),
           MaxConcurrency: S.optional(S.String),
           MaxErrors: S.optional(S.String),
-          LoggingInfo: S.optional(LoggingInfo),
+          LoggingInfo: S.optional(__S(249, __c31, 1)),
           Name: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-          AlarmConfiguration: S.optional(AlarmConfiguration),
+          CutoffBehavior: S.optional(S.String),
+          AlarmConfiguration: S.optional(__S(20, __c2, 4)),
         }).pipe(ns),
       ).annotate({
         identifier: "UpdateMaintenanceWindowTaskResult",
@@ -17088,12 +15254,12 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          OperationalData: S.optional(OpsItemOperationalData),
-          OperationalDataToDelete: S.optional(OpsItemOpsDataKeysList),
-          Notifications: S.optional(OpsItemNotifications),
+          OperationalData: S.optional(__S(63, __c7, 7)),
+          OperationalDataToDelete: S.optional(__S(6, __c0, 6)),
+          Notifications: S.optional(__S(65, __c8, 1)),
           Priority: S.optional(S.Number),
-          RelatedOpsItems: S.optional(RelatedOpsItems),
-          Status: S.optional(OpsItemStatus),
+          RelatedOpsItems: S.optional(__S(67, __c8, 3)),
+          Status: S.optional(S.String),
           OpsItemId: S.String,
           Title: S.optional(S.String),
           Category: S.optional(S.String),
@@ -17113,8 +15279,8 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OpsMetadataArn: S.String,
-          MetadataToUpdate: S.optional(MetadataMap),
-          KeysToDelete: S.optional(MetadataKeysToDeleteList),
+          MetadataToUpdate: S.optional(__S(71, __c8, 7)),
+          KeysToDelete: S.optional(__S(6, __c0, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateOpsMetadataRequest" });
     case 1:
@@ -17122,16 +15288,16 @@ function __c70(j: number): any {
         S.Struct({
           BaselineId: S.String,
           Name: S.optional(S.String),
-          GlobalFilters: S.optional(PatchFilterGroup),
-          ApprovalRules: S.optional(PatchRuleGroup),
-          ApprovedPatches: S.optional(PatchIdList),
-          ApprovedPatchesComplianceLevel: S.optional(PatchComplianceLevel),
+          GlobalFilters: S.optional(__S(76, __c9, 4)),
+          ApprovalRules: S.optional(__S(79, __c9, 7)),
+          ApprovedPatches: S.optional(__S(6, __c0, 6)),
+          ApprovedPatchesComplianceLevel: S.optional(S.String),
           ApprovedPatchesEnableNonSecurity: S.optional(S.Boolean),
-          RejectedPatches: S.optional(PatchIdList),
-          RejectedPatchesAction: S.optional(PatchAction),
+          RejectedPatches: S.optional(__S(6, __c0, 6)),
+          RejectedPatchesAction: S.optional(S.String),
           Description: S.optional(S.String),
-          Sources: S.optional(PatchSourceList),
-          AvailableSecurityUpdatesComplianceStatus: S.optional(PatchComplianceStatus),
+          Sources: S.optional(__S(81, __c10, 1)),
+          AvailableSecurityUpdatesComplianceStatus: S.optional(S.String),
           Replace: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -17142,19 +15308,19 @@ function __c70(j: number): any {
         S.Struct({
           BaselineId: S.optional(S.String),
           Name: S.optional(S.String),
-          OperatingSystem: S.optional(OperatingSystem),
-          GlobalFilters: S.optional(PatchFilterGroup),
-          ApprovalRules: S.optional(PatchRuleGroup),
-          ApprovedPatches: S.optional(PatchIdList),
-          ApprovedPatchesComplianceLevel: S.optional(PatchComplianceLevel),
+          OperatingSystem: S.optional(S.String),
+          GlobalFilters: S.optional(__S(76, __c9, 4)),
+          ApprovalRules: S.optional(__S(79, __c9, 7)),
+          ApprovedPatches: S.optional(__S(6, __c0, 6)),
+          ApprovedPatchesComplianceLevel: S.optional(S.String),
           ApprovedPatchesEnableNonSecurity: S.optional(S.Boolean),
-          RejectedPatches: S.optional(PatchIdList),
-          RejectedPatchesAction: S.optional(PatchAction),
+          RejectedPatches: S.optional(__S(6, __c0, 6)),
+          RejectedPatchesAction: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          Sources: S.optional(PatchSourceList),
-          AvailableSecurityUpdatesComplianceStatus: S.optional(PatchComplianceStatus),
+          Sources: S.optional(__S(81, __c10, 1)),
+          AvailableSecurityUpdatesComplianceStatus: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "UpdatePatchBaselineResult",
@@ -17164,7 +15330,7 @@ function __c70(j: number): any {
         S.Struct({
           SyncName: S.String,
           SyncType: S.String,
-          SyncSource: ResourceDataSyncSource,
+          SyncSource: __S(89, __c11, 1),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateResourceDataSyncRequest",
@@ -17189,16 +15355,16 @@ function __c70(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(ValidationFindingScopeType), Id: S.optional(S.String) }),
+        S.Struct({ Type: S.optional(S.String), Id: S.optional(S.String) }),
       ).annotate({ identifier: "ValidationFindingScope" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(ValidationFindingType),
-          Code: S.optional(ValidationFindingCode),
+          Type: S.optional(S.String),
+          Code: S.optional(S.String),
           Message: S.optional(S.String),
           ProviderMessage: S.optional(S.String),
-          Scope: S.optional(ValidationFindingScope),
+          Scope: S.optional(__S(566, __c70, 6)),
         }),
       ).annotate({ identifier: "ValidationFinding" });
   }
@@ -17206,15 +15372,20 @@ function __c70(j: number): any {
 function __c71(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ValidationFinding);
+      return S.Array(__S(567, __c70, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ValidationFindings: S.optional(ValidationFindingList),
+          ValidationFindings: S.optional(__S(568, __c71, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ValidateCloudConnectorResult",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

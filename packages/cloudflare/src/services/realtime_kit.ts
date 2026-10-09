@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -220,11 +222,6 @@ export interface AddParticipantMeetingRequest {
   /** (Optional) A URL to a picture to be used for the participant. */
   picture?: string;
 }
-const AddParticipantMeetingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddParticipantMeetingRequest>;
-
 export interface MeetingsAddParticipantResponseData {
   /** ID of the participant. */
   id: string;
@@ -243,21 +240,11 @@ export interface MeetingsAddParticipantResponseData {
   /** URL to a picture of the participant. */
   picture?: string | null;
 }
-const MeetingsAddParticipantResponseData = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<MeetingsAddParticipantResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface AddParticipantMeetingResponse {
   /** Represents a participant. */
   data?: MeetingsAddParticipantResponseData | null;
 }
-const AddParticipantMeetingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddParticipantMeetingResponse>;
-
 export interface CreateIndependentLivestreamLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -266,18 +253,11 @@ export interface CreateIndependentLivestreamLivestreamRequest {
   /** Name of the livestream */
   name?: string;
 }
-const CreateIndependentLivestreamLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateIndependentLivestreamLivestreamRequest>;
-
 export type LivestreamsCreateIndependentLivestreamResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
   | "INVOKED";
-const LivestreamsCreateIndependentLivestreamResponseDataStatus = S.String;
-
 export interface LivestreamsCreateIndependentLivestreamResponseData {
   /** The livestream ID. */
   id?: string | null;
@@ -293,20 +273,10 @@ export interface LivestreamsCreateIndependentLivestreamResponseData {
   /** Unique key for accessing each livestream. */
   streamKey?: string | null;
 }
-const LivestreamsCreateIndependentLivestreamResponseData = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<LivestreamsCreateIndependentLivestreamResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateIndependentLivestreamLivestreamResponse {
   data?: LivestreamsCreateIndependentLivestreamResponseData | null;
 }
-const CreateIndependentLivestreamLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateIndependentLivestreamLivestreamResponse>;
-
 export type MeetingsCreateRequestAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
@@ -317,11 +287,7 @@ export type MeetingsCreateRequestAiConfigSummarizationSummaryType =
   | "one_on_one_meeting"
   | "lecture"
   | "code_review";
-const MeetingsCreateRequestAiConfigSummarizationSummaryType = S.String;
-
 export type MeetingsCreateRequestAiConfigSummarizationTextFormat = "plain_text" | "markdown";
-const MeetingsCreateRequestAiConfigSummarizationTextFormat = S.String;
-
 export interface MeetingsCreateRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?: MeetingsCreateRequestAiConfigSummarizationSummaryType | (string & {});
@@ -330,17 +296,7 @@ export interface MeetingsCreateRequestAiConfigSummarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number;
 }
-const MeetingsCreateRequestAiConfigSummarization = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<MeetingsCreateRequestAiConfigSummarization>;
-
 export type MeetingsCreateRequestAiConfigTranscriptionKeywordsList = Array<string>;
-const MeetingsCreateRequestAiConfigTranscriptionKeywordsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<MeetingsCreateRequestAiConfigTranscriptionKeywordsList>;
-
 export type MeetingsCreateRequestAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
@@ -352,8 +308,6 @@ export type MeetingsCreateRequestAiConfigTranscriptionLanguage =
   | "el"
   | "fr"
   | "nl";
-const MeetingsCreateRequestAiConfigTranscriptionLanguage = S.String;
-
 export interface MeetingsCreateRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsCreateRequestAiConfigTranscriptionKeywordsList;
@@ -362,28 +316,14 @@ export interface MeetingsCreateRequestAiConfigTranscription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
 }
-const MeetingsCreateRequestAiConfigTranscription = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<MeetingsCreateRequestAiConfigTranscription>;
-
 export interface MeetingsCreateRequestAiConfig {
   /** Summary Config */
   summarization?: MeetingsCreateRequestAiConfigSummarization;
   /** Transcription Configurations */
   transcription?: MeetingsCreateRequestAiConfigTranscription;
 }
-const MeetingsCreateRequestAiConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<MeetingsCreateRequestAiConfig>;
-
 export type MeetingsCreateRequestRecordingConfigAudioConfigChannel = "mono" | "stereo";
-const MeetingsCreateRequestRecordingConfigAudioConfigChannel = S.String;
-
 export type MeetingsCreateRequestRecordingConfigAudioConfigCodec = "MP3" | "AAC";
-const MeetingsCreateRequestRecordingConfigAudioConfigCodec = S.String;
-
 export interface MeetingsCreateRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?: MeetingsCreateRequestRecordingConfigAudioConfigChannel | (string & {});
@@ -392,29 +332,14 @@ export interface MeetingsCreateRequestRecordingConfigAudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
-const MeetingsCreateRequestRecordingConfigAudioConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MeetingsCreateRequestRecordingConfigAudioConfig>;
-
 export interface MeetingsCreateRequestRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
   rtmpUrl?: string;
 }
-const MeetingsCreateRequestRecordingConfigLiveStreamingConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MeetingsCreateRequestRecordingConfigLiveStreamingConfig>;
-
 export interface MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig {
   /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
   enabled: boolean;
 }
-const MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig>;
-
 export type MeetingsCreateRequestRecordingConfigStorageConfigCase0AuthMethod = "KEY" | "PASSWORD";
 export type MeetingsCreateRequestRecordingConfigStorageConfigCase0Type = "gcs";
 export interface MeetingsCreateRequestRecordingConfigStorageConfigCase0 {
@@ -539,29 +464,18 @@ export type MeetingsCreateRequestRecordingConfigStorageConfig =
   | MeetingsCreateRequestRecordingConfigStorageConfigCase1
   | MeetingsCreateRequestRecordingConfigStorageConfigCase2
   | MeetingsCreateRequestRecordingConfigStorageConfigCase3;
-const MeetingsCreateRequestRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(__c1, 5);
-
 export type MeetingsCreateRequestRecordingConfigVideoConfigCodec = "H264" | "VP8" | "VP9";
-const MeetingsCreateRequestRecordingConfigVideoConfigCodec = S.String;
-
 export type MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
   | "right bottom";
-const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition = S.String;
-
 export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
   height?: number;
   /** Width of the watermark in px */
   width?: number;
 }
-const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize>;
-
 export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
   position?: MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition | (string & {});
@@ -570,11 +484,6 @@ export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermark {
   /** URL of the watermark image */
   url?: string;
 }
-const MeetingsCreateRequestRecordingConfigVideoConfigWatermark = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<MeetingsCreateRequestRecordingConfigVideoConfigWatermark>;
-
 export interface MeetingsCreateRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?: MeetingsCreateRequestRecordingConfigVideoConfigCodec | (string & {});
@@ -587,11 +496,6 @@ export interface MeetingsCreateRequestRecordingConfigVideoConfig {
   /** Width of the recording video in pixels */
   width?: number;
 }
-const MeetingsCreateRequestRecordingConfigVideoConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<MeetingsCreateRequestRecordingConfigVideoConfig>;
-
 export interface MeetingsCreateRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsCreateRequestRecordingConfigAudioConfig;
@@ -604,11 +508,6 @@ export interface MeetingsCreateRequestRecordingConfig {
   storageConfig?: MeetingsCreateRequestRecordingConfigStorageConfig;
   videoConfig?: MeetingsCreateRequestRecordingConfigVideoConfig;
 }
-const MeetingsCreateRequestRecordingConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<MeetingsCreateRequestRecordingConfig>;
-
 export interface CreateMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -633,8 +532,6 @@ export interface CreateMeetingRequest {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean;
 }
-const CreateMeetingRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateMeetingRequest>;
-
 export type MeetingsCreateResponseDataAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
@@ -645,11 +542,7 @@ export type MeetingsCreateResponseDataAiConfigSummarizationSummaryType =
   | "one_on_one_meeting"
   | "lecture"
   | "code_review";
-const MeetingsCreateResponseDataAiConfigSummarizationSummaryType = S.String;
-
 export type MeetingsCreateResponseDataAiConfigSummarizationTextFormat = "plain_text" | "markdown";
-const MeetingsCreateResponseDataAiConfigSummarizationTextFormat = S.String;
-
 export interface MeetingsCreateResponseDataAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?: MeetingsCreateResponseDataAiConfigSummarizationSummaryType | null;
@@ -658,15 +551,7 @@ export interface MeetingsCreateResponseDataAiConfigSummarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number | null;
 }
-const MeetingsCreateResponseDataAiConfigSummarization = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<MeetingsCreateResponseDataAiConfigSummarization>;
-
 export type MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList = Array<string>;
-const MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList =
-  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList>;
-
 export type MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
@@ -678,8 +563,6 @@ export type MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
   | "el"
   | "fr"
   | "nl";
-const MeetingsCreateResponseDataAiConfigTranscriptionLanguage = S.String;
-
 export interface MeetingsCreateResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList | null;
@@ -688,28 +571,14 @@ export interface MeetingsCreateResponseDataAiConfigTranscription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
 }
-const MeetingsCreateResponseDataAiConfigTranscription = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<MeetingsCreateResponseDataAiConfigTranscription>;
-
 export interface MeetingsCreateResponseDataAiConfig {
   /** Summary Config */
   summarization?: MeetingsCreateResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
   transcription?: MeetingsCreateResponseDataAiConfigTranscription | null;
 }
-const MeetingsCreateResponseDataAiConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<MeetingsCreateResponseDataAiConfig>;
-
 export type MeetingsCreateResponseDataRecordingConfigAudioConfigChannel = "mono" | "stereo";
-const MeetingsCreateResponseDataRecordingConfigAudioConfigChannel = S.String;
-
 export type MeetingsCreateResponseDataRecordingConfigAudioConfigCodec = "MP3" | "AAC";
-const MeetingsCreateResponseDataRecordingConfigAudioConfigCodec = S.String;
-
 export interface MeetingsCreateResponseDataRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?: MeetingsCreateResponseDataRecordingConfigAudioConfigChannel | null;
@@ -718,20 +587,10 @@ export interface MeetingsCreateResponseDataRecordingConfigAudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean | null;
 }
-const MeetingsCreateResponseDataRecordingConfigAudioConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<MeetingsCreateResponseDataRecordingConfigAudioConfig>;
-
 export interface MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
   rtmpUrl?: string | null;
 }
-const MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig>;
-
 export type MeetingsCreateResponseDataRecordingConfigRealtimekitBucketConfig =
   MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig;
 export type MeetingsCreateResponseDataRecordingConfigStorageConfigCase0AuthMethod =
@@ -862,29 +721,18 @@ export type MeetingsCreateResponseDataRecordingConfigStorageConfig =
   | MeetingsCreateResponseDataRecordingConfigStorageConfigCase1
   | MeetingsCreateResponseDataRecordingConfigStorageConfigCase2
   | MeetingsCreateResponseDataRecordingConfigStorageConfigCase3;
-const MeetingsCreateResponseDataRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(__c3, 0);
-
 export type MeetingsCreateResponseDataRecordingConfigVideoConfigCodec = "H264" | "VP8" | "VP9";
-const MeetingsCreateResponseDataRecordingConfigVideoConfigCodec = S.String;
-
 export type MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
   | "right bottom";
-const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition = S.String;
-
 export interface MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
   height?: number | null;
   /** Width of the watermark in px */
   width?: number | null;
 }
-const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize>;
-
 export interface MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
   position?: MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition | null;
@@ -893,11 +741,6 @@ export interface MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark {
   /** URL of the watermark image */
   url?: string | null;
 }
-const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark>;
-
 export interface MeetingsCreateResponseDataRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?: MeetingsCreateResponseDataRecordingConfigVideoConfigCodec | null;
@@ -910,11 +753,6 @@ export interface MeetingsCreateResponseDataRecordingConfigVideoConfig {
   /** Width of the recording video in pixels */
   width?: number | null;
 }
-const MeetingsCreateResponseDataRecordingConfigVideoConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MeetingsCreateResponseDataRecordingConfigVideoConfig>;
-
 export interface MeetingsCreateResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsCreateResponseDataRecordingConfigAudioConfig | null;
@@ -927,14 +765,7 @@ export interface MeetingsCreateResponseDataRecordingConfig {
   storageConfig?: MeetingsCreateResponseDataRecordingConfigStorageConfig | null;
   videoConfig?: MeetingsCreateResponseDataRecordingConfigVideoConfig | null;
 }
-const MeetingsCreateResponseDataRecordingConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<MeetingsCreateResponseDataRecordingConfig>;
-
 export type MeetingsCreateResponseDataStatus = "ACTIVE" | "INACTIVE";
-const MeetingsCreateResponseDataStatus = S.String;
-
 export interface MeetingsCreateResponseData {
   /** ID of the meeting. */
   id: string;
@@ -963,25 +794,12 @@ export interface MeetingsCreateResponseData {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const MeetingsCreateResponseData = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<MeetingsCreateResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateMeetingResponse {
   /** Data returned by the operation */
   data?: MeetingsCreateResponseData | null;
 }
-const CreateMeetingResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateMeetingResponse>;
-
 export type ActiveSessionCreatePollRequestOptionsList = Array<string>;
-const ActiveSessionCreatePollRequestOptionsList =
-  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionCreatePollRequestOptionsList>;
-
 export interface CreatePollActiveSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -997,49 +815,21 @@ export interface CreatePollActiveSessionRequest {
   /** if votes on an option are visible before a person votes */
   hideVotes?: boolean;
 }
-const CreatePollActiveSessionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreatePollActiveSessionRequest>;
-
 export interface ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem {
   id: string;
   name: string;
 }
-const ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
-
 export type ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
   Array<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
-const ActiveSessionCreatePollResponseDataPollOptionsItemVotesList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesList>;
-
 export interface ActiveSessionCreatePollResponseDataPollOptionsItem {
   count: number;
   /** Text of the answer option */
   text: string;
   votes: ActiveSessionCreatePollResponseDataPollOptionsItemVotesList;
 }
-const ActiveSessionCreatePollResponseDataPollOptionsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItem>;
-
 export type ActiveSessionCreatePollResponseDataPollOptionsList =
   Array<ActiveSessionCreatePollResponseDataPollOptionsItem>;
-const ActiveSessionCreatePollResponseDataPollOptionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsList>;
-
 export type ActiveSessionCreatePollResponseDataPollVotedList = Array<string>;
-const ActiveSessionCreatePollResponseDataPollVotedList =
-  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionCreatePollResponseDataPollVotedList>;
-
 export interface ActiveSessionCreatePollResponseDataPoll {
   /** ID of the poll */
   id: string;
@@ -1052,62 +842,33 @@ export interface ActiveSessionCreatePollResponseDataPoll {
   hideVotes?: boolean | null;
   voted?: ActiveSessionCreatePollResponseDataPollVotedList | null;
 }
-const ActiveSessionCreatePollResponseDataPoll = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ActiveSessionCreatePollResponseDataPoll>;
-
 export interface ActiveSessionCreatePollResponseData {
   action?: string | null;
   poll?: ActiveSessionCreatePollResponseDataPoll | null;
 }
-const ActiveSessionCreatePollResponseData = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ActiveSessionCreatePollResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreatePollActiveSessionResponse {
   data?: ActiveSessionCreatePollResponseData | null;
 }
-const CreatePollActiveSessionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreatePollActiveSessionResponse>;
-
 export interface PresetsCreateRequestConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
   desktop: number;
   /** Maximum number of streams visible on mobile devices */
   mobile: number;
 }
-const PresetsCreateRequestConfigMaxVideoStreams = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PresetsCreateRequestConfigMaxVideoStreams>;
-
 export type PresetsCreateRequestConfigMediaScreenshareQuality =
   | "hd"
   | "vga"
   | "qvga"
   | "fhd"
   | "uhd";
-const PresetsCreateRequestConfigMediaScreenshareQuality = S.String;
-
 export interface PresetsCreateRequestConfigMediaScreenshare {
   /** Frame rate of screen share */
   frameRate: number;
   /** Quality of screen share */
   quality: PresetsCreateRequestConfigMediaScreenshareQuality | (string & {});
 }
-const PresetsCreateRequestConfigMediaScreenshare = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PresetsCreateRequestConfigMediaScreenshare>;
-
 export type PresetsCreateRequestConfigMediaVideoQuality = "hd" | "vga" | "qvga" | "fhd" | "uhd";
-const PresetsCreateRequestConfigMediaVideoQuality = S.String;
-
 export interface PresetsCreateRequestConfigMediaVideo {
   /** Frame rate of participants' video */
   frameRate: number;
@@ -1116,22 +877,12 @@ export interface PresetsCreateRequestConfigMediaVideo {
   /** Enable simulcast for participant videos. */
   simulcast?: boolean;
 }
-const PresetsCreateRequestConfigMediaVideo = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<PresetsCreateRequestConfigMediaVideo>;
-
 export interface PresetsCreateRequestConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
   enableHighBitrate?: boolean;
   /** Enable Stereo for your meetings */
   enableStereo?: boolean;
 }
-const PresetsCreateRequestConfigMediaAudio = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<PresetsCreateRequestConfigMediaAudio>;
-
 export interface PresetsCreateRequestConfigMedia {
   /** Configuration options for participant screen shares */
   screenshare: PresetsCreateRequestConfigMediaScreenshare;
@@ -1140,24 +891,12 @@ export interface PresetsCreateRequestConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateRequestConfigMediaAudio;
 }
-const PresetsCreateRequestConfigMedia = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<PresetsCreateRequestConfigMedia>;
-
 export type PresetsCreateRequestConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const PresetsCreateRequestConfigViewType = S.String;
-
 export type PresetsCreateRequestConfigLivestreamViewerQualitiesList = Array<number>;
-const PresetsCreateRequestConfigLivestreamViewerQualitiesList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PresetsCreateRequestConfigLivestreamViewerQualitiesList>;
-
 export interface PresetsCreateRequestConfig {
   /** Maximum number of screen shares that can be active at a given time */
   maxScreenshareCount: number;
@@ -1170,22 +909,12 @@ export interface PresetsCreateRequestConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: PresetsCreateRequestConfigLivestreamViewerQualitiesList;
 }
-const PresetsCreateRequestConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PresetsCreateRequestConfig>;
-
 export interface PresetsCreateRequestPermissionsChatPrivate {
   canReceive: boolean;
   canSend: boolean;
   files: boolean;
   text: boolean;
 }
-const PresetsCreateRequestPermissionsChatPrivate = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PresetsCreateRequestPermissionsChatPrivate>;
-
 export interface PresetsCreateRequestPermissionsChatPublic {
   /** Can send messages in general */
   canSend: boolean;
@@ -1194,60 +923,31 @@ export interface PresetsCreateRequestPermissionsChatPublic {
   /** Can send text messages */
   text: boolean;
 }
-const PresetsCreateRequestPermissionsChatPublic = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<PresetsCreateRequestPermissionsChatPublic>;
-
 export interface PresetsCreateRequestPermissionsChat {
   private: PresetsCreateRequestPermissionsChatPrivate;
   public: PresetsCreateRequestPermissionsChatPublic;
 }
-const PresetsCreateRequestPermissionsChat = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<PresetsCreateRequestPermissionsChat>;
-
 export interface PresetsCreateRequestPermissionsConnectedMeetings {
   canAlterConnectedMeetings: boolean;
   canSwitchConnectedMeetings: boolean;
   canSwitchToParentMeeting: boolean;
 }
-const PresetsCreateRequestPermissionsConnectedMeetings = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<PresetsCreateRequestPermissionsConnectedMeetings>;
-
 export type PresetsCreateRequestPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const PresetsCreateRequestPermissionsMediaAudioCanProduce = S.String;
-
 export interface PresetsCreateRequestPermissionsMediaAudio {
   /** Can produce audio */
   canProduce: PresetsCreateRequestPermissionsMediaAudioCanProduce | (string & {});
 }
-const PresetsCreateRequestPermissionsMediaAudio = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<PresetsCreateRequestPermissionsMediaAudio>;
-
 export type PresetsCreateRequestPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const PresetsCreateRequestPermissionsMediaScreenshareCanProduce = S.String;
-
 export interface PresetsCreateRequestPermissionsMediaScreenshare {
   /** Can produce screen share video */
   canProduce: PresetsCreateRequestPermissionsMediaScreenshareCanProduce | (string & {});
 }
-const PresetsCreateRequestPermissionsMediaScreenshare = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<PresetsCreateRequestPermissionsMediaScreenshare>;
-
 export type PresetsCreateRequestPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
@@ -1256,9 +956,6 @@ export interface PresetsCreateRequestPermissionsMediaVideo {
   /** Can produce video */
   canProduce: PresetsCreateRequestPermissionsMediaVideoCanProduce | (string & {});
 }
-const PresetsCreateRequestPermissionsMediaVideo =
-  PresetsCreateRequestPermissionsMediaAudio as any as S.Schema<PresetsCreateRequestPermissionsMediaVideo>;
-
 export interface PresetsCreateRequestPermissionsMedia {
   /** Audio permissions */
   audio: PresetsCreateRequestPermissionsMediaAudio;
@@ -1267,11 +964,6 @@ export interface PresetsCreateRequestPermissionsMedia {
   /** Video permissions */
   video: PresetsCreateRequestPermissionsMediaVideo;
 }
-const PresetsCreateRequestPermissionsMedia = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PresetsCreateRequestPermissionsMedia>;
-
 export interface PresetsCreateRequestPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -1282,11 +974,6 @@ export interface PresetsCreateRequestPermissionsPlugins {
   /** Plugin configuration keyed by plugin UUID. */
   config: unknown;
 }
-const PresetsCreateRequestPermissionsPlugins = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<PresetsCreateRequestPermissionsPlugins>;
-
 export interface PresetsCreateRequestPermissionsPolls {
   /** Can create polls */
   canCreate: boolean;
@@ -1295,23 +982,12 @@ export interface PresetsCreateRequestPermissionsPolls {
   /** Can vote on polls */
   canVote: boolean;
 }
-const PresetsCreateRequestPermissionsPolls = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<PresetsCreateRequestPermissionsPolls>;
-
 export type PresetsCreateRequestPermissionsRecorderType = "RECORDER" | "LIVESTREAMER" | "NONE";
-const PresetsCreateRequestPermissionsRecorderType = S.String;
-
 export type PresetsCreateRequestPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
   | "SKIP_ON_ACCEPT";
-const PresetsCreateRequestPermissionsWaitingRoomType = S.String;
-
 export type PresetsCreateRequestPermissionsStageAccess = "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST";
-const PresetsCreateRequestPermissionsStageAccess = S.String;
-
 export interface PresetsCreateRequestPermissions {
   /** Whether this participant can accept waiting requests */
   acceptWaitingRequests: boolean;
@@ -1347,21 +1023,12 @@ export interface PresetsCreateRequestPermissions {
   stageEnabled?: boolean;
   transcriptionEnabled?: boolean;
 }
-const PresetsCreateRequestPermissions = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<PresetsCreateRequestPermissions>;
-
 export type PresetsCreateRequestUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
   | "circular";
-const PresetsCreateRequestUiDesignTokensBorderRadius = S.String;
-
 export type PresetsCreateRequestUiDesignTokensBorderWidth = "none" | "thin" | "fat";
-const PresetsCreateRequestUiDesignTokensBorderWidth = S.String;
-
 export interface PresetsCreateRequestUiDesignTokensColorsBackground {
   "1000": string;
   "600": string;
@@ -1369,11 +1036,6 @@ export interface PresetsCreateRequestUiDesignTokensColorsBackground {
   "800": string;
   "900": string;
 }
-const PresetsCreateRequestUiDesignTokensColorsBackground = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PresetsCreateRequestUiDesignTokensColorsBackground>;
-
 export interface PresetsCreateRequestUiDesignTokensColorsBrand {
   "300": string;
   "400": string;
@@ -1381,11 +1043,6 @@ export interface PresetsCreateRequestUiDesignTokensColorsBrand {
   "600": string;
   "700": string;
 }
-const PresetsCreateRequestUiDesignTokensColorsBrand = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<PresetsCreateRequestUiDesignTokensColorsBrand>;
-
 export interface PresetsCreateRequestUiDesignTokensColors {
   background: PresetsCreateRequestUiDesignTokensColorsBackground;
   brand: PresetsCreateRequestUiDesignTokensColorsBrand;
@@ -1396,14 +1053,7 @@ export interface PresetsCreateRequestUiDesignTokensColors {
   videoBg: string;
   warning: string;
 }
-const PresetsCreateRequestUiDesignTokensColors = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<PresetsCreateRequestUiDesignTokensColors>;
-
 export type PresetsCreateRequestUiDesignTokensTheme = "darkest" | "dark" | "light";
-const PresetsCreateRequestUiDesignTokensTheme = S.String;
-
 export interface PresetsCreateRequestUiDesignTokens {
   borderRadius: PresetsCreateRequestUiDesignTokensBorderRadius | (string & {});
   borderWidth: PresetsCreateRequestUiDesignTokensBorderWidth | (string & {});
@@ -1414,19 +1064,9 @@ export interface PresetsCreateRequestUiDesignTokens {
   googleFont?: string;
   logo?: string;
 }
-const PresetsCreateRequestUiDesignTokens = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<PresetsCreateRequestUiDesignTokens>;
-
 export interface PresetsCreateRequestUi {
   designTokens: PresetsCreateRequestUiDesignTokens;
 }
-const PresetsCreateRequestUi = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<PresetsCreateRequestUi>;
-
 export interface CreatePresetRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -1438,8 +1078,6 @@ export interface CreatePresetRequest {
   permissions: PresetsCreateRequestPermissions;
   ui: PresetsCreateRequestUi;
 }
-const CreatePresetRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<CreatePresetRequest>;
-
 export type PresetsCreateResponseDataConfigMaxVideoStreams =
   PresetsCreateRequestConfigMaxVideoStreams;
 export type PresetsCreateResponseDataConfigMediaScreenshareQuality =
@@ -1454,17 +1092,12 @@ export interface PresetsCreateResponseDataConfigMediaScreenshare {
   /** Quality of screen share */
   quality: PresetsCreateResponseDataConfigMediaScreenshareQuality;
 }
-const PresetsCreateResponseDataConfigMediaScreenshare =
-  PresetsCreateRequestConfigMediaScreenshare as any as S.Schema<PresetsCreateResponseDataConfigMediaScreenshare>;
-
 export type PresetsCreateResponseDataConfigMediaVideoQuality =
   | "hd"
   | "vga"
   | "qvga"
   | "fhd"
   | "uhd";
-const PresetsCreateResponseDataConfigMediaVideoQuality = S.String;
-
 export interface PresetsCreateResponseDataConfigMediaVideo {
   /** Frame rate of participants' video */
   frameRate: number;
@@ -1473,22 +1106,12 @@ export interface PresetsCreateResponseDataConfigMediaVideo {
   /** Enable simulcast for participant videos. */
   simulcast?: boolean | null;
 }
-const PresetsCreateResponseDataConfigMediaVideo = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<PresetsCreateResponseDataConfigMediaVideo>;
-
 export interface PresetsCreateResponseDataConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
   enableHighBitrate?: boolean | null;
   /** Enable Stereo for your meetings */
   enableStereo?: boolean | null;
 }
-const PresetsCreateResponseDataConfigMediaAudio = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PresetsCreateResponseDataConfigMediaAudio>;
-
 export interface PresetsCreateResponseDataConfigMedia {
   /** Configuration options for participant screen shares */
   screenshare: PresetsCreateResponseDataConfigMediaScreenshare;
@@ -1497,22 +1120,12 @@ export interface PresetsCreateResponseDataConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateResponseDataConfigMediaAudio | null;
 }
-const PresetsCreateResponseDataConfigMedia = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<PresetsCreateResponseDataConfigMedia>;
-
 export type PresetsCreateResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const PresetsCreateResponseDataConfigViewType = S.String;
-
 export type PresetsCreateResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-const PresetsCreateResponseDataConfigLivestreamViewerQualitiesList =
-  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsCreateResponseDataConfigLivestreamViewerQualitiesList>;
-
 export interface PresetsCreateResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
   maxScreenshareCount: number;
@@ -1525,11 +1138,6 @@ export interface PresetsCreateResponseDataConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: PresetsCreateResponseDataConfigLivestreamViewerQualitiesList | null;
 }
-const PresetsCreateResponseDataConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PresetsCreateResponseDataConfig>;
-
 export type PresetsCreateResponseDataPermissionsChatPrivate =
   PresetsCreateRequestPermissionsChatPrivate;
 export type PresetsCreateResponseDataPermissionsChatPublic =
@@ -1545,9 +1153,6 @@ export interface PresetsCreateResponseDataPermissionsMediaAudio {
   /** Can produce audio */
   canProduce: PresetsCreateResponseDataPermissionsMediaAudioCanProduce;
 }
-const PresetsCreateResponseDataPermissionsMediaAudio =
-  PresetsCreateRequestPermissionsMediaScreenshare as any as S.Schema<PresetsCreateResponseDataPermissionsMediaAudio>;
-
 export type PresetsCreateResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
@@ -1556,9 +1161,6 @@ export interface PresetsCreateResponseDataPermissionsMediaScreenshare {
   /** Can produce screen share video */
   canProduce: PresetsCreateResponseDataPermissionsMediaScreenshareCanProduce;
 }
-const PresetsCreateResponseDataPermissionsMediaScreenshare =
-  PresetsCreateRequestPermissionsMediaScreenshare as any as S.Schema<PresetsCreateResponseDataPermissionsMediaScreenshare>;
-
 export type PresetsCreateResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
@@ -1567,9 +1169,6 @@ export interface PresetsCreateResponseDataPermissionsMediaVideo {
   /** Can produce video */
   canProduce: PresetsCreateResponseDataPermissionsMediaVideoCanProduce;
 }
-const PresetsCreateResponseDataPermissionsMediaVideo =
-  PresetsCreateRequestPermissionsMediaScreenshare as any as S.Schema<PresetsCreateResponseDataPermissionsMediaVideo>;
-
 export interface PresetsCreateResponseDataPermissionsMedia {
   /** Audio permissions */
   audio: PresetsCreateResponseDataPermissionsMediaAudio;
@@ -1578,28 +1177,17 @@ export interface PresetsCreateResponseDataPermissionsMedia {
   /** Video permissions */
   video: PresetsCreateResponseDataPermissionsMediaVideo;
 }
-const PresetsCreateResponseDataPermissionsMedia = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<PresetsCreateResponseDataPermissionsMedia>;
-
 export type PresetsCreateResponseDataPermissionsPlugins = PresetsCreateRequestPermissionsPlugins;
 export type PresetsCreateResponseDataPermissionsPolls = PresetsCreateRequestPermissionsPolls;
 export type PresetsCreateResponseDataPermissionsRecorderType = "RECORDER" | "LIVESTREAMER" | "NONE";
-const PresetsCreateResponseDataPermissionsRecorderType = S.String;
-
 export type PresetsCreateResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
   | "SKIP_ON_ACCEPT";
-const PresetsCreateResponseDataPermissionsWaitingRoomType = S.String;
-
 export type PresetsCreateResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const PresetsCreateResponseDataPermissionsStageAccess = S.String;
-
 export interface PresetsCreateResponseDataPermissions {
   /** Whether this participant can accept waiting requests */
   acceptWaitingRequests: boolean;
@@ -1635,21 +1223,12 @@ export interface PresetsCreateResponseDataPermissions {
   stageEnabled?: boolean | null;
   transcriptionEnabled?: boolean | null;
 }
-const PresetsCreateResponseDataPermissions = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<PresetsCreateResponseDataPermissions>;
-
 export type PresetsCreateResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
   | "circular";
-const PresetsCreateResponseDataUiDesignTokensBorderRadius = S.String;
-
 export type PresetsCreateResponseDataUiDesignTokensBorderWidth = "none" | "thin" | "fat";
-const PresetsCreateResponseDataUiDesignTokensBorderWidth = S.String;
-
 export type PresetsCreateResponseDataUiDesignTokensColorsBackground =
   PresetsCreateRequestUiDesignTokensColorsBackground;
 export type PresetsCreateResponseDataUiDesignTokensColorsBrand =
@@ -1657,8 +1236,6 @@ export type PresetsCreateResponseDataUiDesignTokensColorsBrand =
 export type PresetsCreateResponseDataUiDesignTokensColors =
   PresetsCreateRequestUiDesignTokensColors;
 export type PresetsCreateResponseDataUiDesignTokensTheme = "darkest" | "dark" | "light";
-const PresetsCreateResponseDataUiDesignTokensTheme = S.String;
-
 export interface PresetsCreateResponseDataUiDesignTokens {
   borderRadius: PresetsCreateResponseDataUiDesignTokensBorderRadius;
   borderWidth: PresetsCreateResponseDataUiDesignTokensBorderWidth;
@@ -1669,19 +1246,9 @@ export interface PresetsCreateResponseDataUiDesignTokens {
   googleFont?: string | null;
   logo?: string | null;
 }
-const PresetsCreateResponseDataUiDesignTokens = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<PresetsCreateResponseDataUiDesignTokens>;
-
 export interface PresetsCreateResponseDataUi {
   designTokens: PresetsCreateResponseDataUiDesignTokens;
 }
-const PresetsCreateResponseDataUi = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<PresetsCreateResponseDataUi>;
-
 export interface PresetsCreateResponseData {
   /** ID of the preset */
   id: string;
@@ -1695,18 +1262,11 @@ export interface PresetsCreateResponseData {
   /** Timestamp this preset was last updated */
   updatedAt: string;
 }
-const PresetsCreateResponseData = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<PresetsCreateResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreatePresetResponse {
   /** Data returned by the operation */
   data: PresetsCreateResponseData;
 }
-const CreatePresetResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CreatePresetResponse>;
-
 export type WebhooksCreateWebhookRequestEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -1717,16 +1277,9 @@ export type WebhooksCreateWebhookRequestEventsItem =
   | "livestreaming.statusUpdate"
   | "meeting.transcript"
   | "meeting.summary";
-const WebhooksCreateWebhookRequestEventsItem = S.String;
-
 export type WebhooksCreateWebhookRequestEventsList = Array<
   WebhooksCreateWebhookRequestEventsItem | (string & {})
 >;
-const WebhooksCreateWebhookRequestEventsList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<WebhooksCreateWebhookRequestEventsList>;
-
 export interface CreateWebhookWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -1741,11 +1294,6 @@ export interface CreateWebhookWebhookRequest {
   /** Set whether or not the webhook should be active when created */
   enabled?: boolean;
 }
-const CreateWebhookWebhookRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateWebhookWebhookRequest>;
-
 export type WebhooksCreateWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -1758,9 +1306,6 @@ export type WebhooksCreateWebhookResponseDataEventsItem =
   | "meeting.summary";
 export type WebhooksCreateWebhookResponseDataEventsList =
   Array<WebhooksCreateWebhookResponseDataEventsItem>;
-const WebhooksCreateWebhookResponseDataEventsList =
-  WebhooksCreateWebhookRequestEventsList as any as S.Schema<WebhooksCreateWebhookResponseDataEventsList>;
-
 export interface WebhooksCreateWebhookResponseData {
   /** ID of the webhook */
   id: string;
@@ -1777,20 +1322,10 @@ export interface WebhooksCreateWebhookResponseData {
   /** URL the webhook will send events to */
   url: string;
 }
-const WebhooksCreateWebhookResponseData = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<WebhooksCreateWebhookResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateWebhookWebhookResponse {
   data: WebhooksCreateWebhookResponseData;
 }
-const CreateWebhookWebhookResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateWebhookWebhookResponse>;
-
 export interface DeleteMeetingParticipantMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -1799,11 +1334,6 @@ export interface DeleteMeetingParticipantMeetingRequest {
   meetingId: string;
   participantId: string;
 }
-const DeleteMeetingParticipantMeetingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteMeetingParticipantMeetingRequest>;
-
 export interface MeetingsDeleteMeetingParticipantResponseData {
   /** Timestamp this object was created at. The time is returned in ISO format. */
   createdAt: string;
@@ -1814,21 +1344,11 @@ export interface MeetingsDeleteMeetingParticipantResponseData {
   /** Timestamp this object was updated at. The time is returned in ISO format. */
   updatedAt: string;
 }
-const MeetingsDeleteMeetingParticipantResponseData = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<MeetingsDeleteMeetingParticipantResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteMeetingParticipantMeetingResponse {
   /** Data returned by the operation */
   data?: MeetingsDeleteMeetingParticipantResponseData | null;
 }
-const DeleteMeetingParticipantMeetingResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteMeetingParticipantMeetingResponse>;
-
 export interface DeletePresetRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -1836,8 +1356,6 @@ export interface DeletePresetRequest {
   appId: string;
   presetId: string;
 }
-const DeletePresetRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<DeletePresetRequest>;
-
 export type PresetsDeleteResponseDataConfigMaxVideoStreams =
   PresetsCreateRequestConfigMaxVideoStreams;
 export type PresetsDeleteResponseDataConfigMediaScreenshareQuality =
@@ -1875,20 +1393,12 @@ export interface PresetsDeleteResponseDataConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateResponseDataConfigMediaAudio | null;
 }
-const PresetsDeleteResponseDataConfigMedia =
-  PresetsCreateResponseDataConfigMedia as any as S.Schema<PresetsDeleteResponseDataConfigMedia>;
-
 export type PresetsDeleteResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const PresetsDeleteResponseDataConfigViewType = S.String;
-
 export type PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-const PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList =
-  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList>;
-
 export interface PresetsDeleteResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
   maxScreenshareCount: number;
@@ -1901,11 +1411,6 @@ export interface PresetsDeleteResponseDataConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList | null;
 }
-const PresetsDeleteResponseDataConfig = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PresetsDeleteResponseDataConfig>;
-
 export type PresetsDeleteResponseDataPermissionsChatPrivate =
   PresetsCreateRequestPermissionsChatPrivate;
 export type PresetsDeleteResponseDataPermissionsChatPublic =
@@ -1991,9 +1496,6 @@ export interface PresetsDeleteResponseDataPermissions {
   stageEnabled?: boolean | null;
   transcriptionEnabled?: boolean | null;
 }
-const PresetsDeleteResponseDataPermissions =
-  PresetsCreateResponseDataPermissions as any as S.Schema<PresetsDeleteResponseDataPermissions>;
-
 export type PresetsDeleteResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
@@ -2020,9 +1522,6 @@ export interface PresetsDeleteResponseDataUiDesignTokens {
 export interface PresetsDeleteResponseDataUi {
   designTokens: PresetsDeleteResponseDataUiDesignTokens;
 }
-const PresetsDeleteResponseDataUi =
-  PresetsCreateResponseDataUi as any as S.Schema<PresetsDeleteResponseDataUi>;
-
 export interface PresetsDeleteResponseData {
   /** ID of the preset */
   id: string;
@@ -2036,21 +1535,11 @@ export interface PresetsDeleteResponseData {
   /** Timestamp this preset was last updated */
   updatedAt: string;
 }
-const PresetsDeleteResponseData = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<PresetsDeleteResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeletePresetResponse {
   /** Data returned by the operation */
   data: PresetsDeleteResponseData;
 }
-const DeletePresetResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeletePresetResponse>;
-
 export interface DeleteWebhookWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2058,11 +1547,6 @@ export interface DeleteWebhookWebhookRequest {
   appId: string;
   webhookId: string;
 }
-const DeleteWebhookWebhookRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteWebhookWebhookRequest>;
-
 export type WebhooksDeleteWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -2095,9 +1579,6 @@ export interface WebhooksDeleteWebhookResponseData {
 export interface DeleteWebhookWebhookResponse {
   data: WebhooksDeleteWebhookResponseData;
 }
-const DeleteWebhookWebhookResponse =
-  CreateWebhookWebhookResponse as any as S.Schema<DeleteWebhookWebhookResponse>;
-
 export interface EditParticipantMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2112,20 +1593,12 @@ export interface EditParticipantMeetingRequest {
   /** (Optional) Name of the preset to apply to this participant. */
   presetName?: string;
 }
-const EditParticipantMeetingRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<EditParticipantMeetingRequest>;
-
 export type MeetingsEditParticipantResponseData = MeetingsAddParticipantResponseData;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface EditParticipantMeetingResponse {
   /** Represents a participant. */
   data?: MeetingsAddParticipantResponseData | null;
 }
-const EditParticipantMeetingResponse =
-  AddParticipantMeetingResponse as any as S.Schema<EditParticipantMeetingResponse>;
-
 export type WebhooksEditWebhookRequestEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -2139,9 +1612,6 @@ export type WebhooksEditWebhookRequestEventsItem =
 export type WebhooksEditWebhookRequestEventsList = Array<
   WebhooksEditWebhookRequestEventsItem | (string & {})
 >;
-const WebhooksEditWebhookRequestEventsList =
-  WebhooksCreateWebhookRequestEventsList as any as S.Schema<WebhooksEditWebhookRequestEventsList>;
-
 export interface EditWebhookWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2156,11 +1626,6 @@ export interface EditWebhookWebhookRequest {
   /** URL the webhook will send events to */
   url?: string;
 }
-const EditWebhookWebhookRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<EditWebhookWebhookRequest>;
-
 export type WebhooksEditWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -2193,9 +1658,6 @@ export interface WebhooksEditWebhookResponseData {
 export interface EditWebhookWebhookResponse {
   data: WebhooksEditWebhookResponseData;
 }
-const EditWebhookWebhookResponse =
-  CreateWebhookWebhookResponse as any as S.Schema<EditWebhookWebhookResponse>;
-
 export interface GenerateSummaryOfTranscriptsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2203,29 +1665,14 @@ export interface GenerateSummaryOfTranscriptsSessionRequest {
   appId: string;
   sessionId: string;
 }
-const GenerateSummaryOfTranscriptsSessionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GenerateSummaryOfTranscriptsSessionRequest>;
-
 export interface SessionsGenerateSummaryOfTranscriptsResponseData {
   sessionId?: string | null;
   status?: string | null;
 }
-const SessionsGenerateSummaryOfTranscriptsResponseData = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<SessionsGenerateSummaryOfTranscriptsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GenerateSummaryOfTranscriptsSessionResponse {
   data?: SessionsGenerateSummaryOfTranscriptsResponseData | null;
 }
-const GenerateSummaryOfTranscriptsSessionResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GenerateSummaryOfTranscriptsSessionResponse>;
-
 export interface GetActiveLivestreamsForLivestreamIdLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2233,18 +1680,11 @@ export interface GetActiveLivestreamsForLivestreamIdLivestreamRequest {
   appId: string;
   livestreamId: string;
 }
-const GetActiveLivestreamsForLivestreamIdLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>;
-
 export type LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
   | "INVOKED";
-const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus = S.String;
-
 export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream {
   id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
@@ -2265,11 +1705,6 @@ export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLives
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt?: string | null;
 }
-const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream>;
-
 export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession {
   id?: string | null;
   /** Timestamp the object was created at. The time is returned in ISO format. */
@@ -2289,29 +1724,14 @@ export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSessi
   /** The total view time for which the viewers watched the stream. */
   viewerSeconds?: string | null;
 }
-const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession>;
-
 export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseData {
   livestream?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream | null;
   session?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession | null;
 }
-const LivestreamsGetActiveLivestreamsForLivestreamIdResponseData = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetActiveLivestreamsForLivestreamIdLivestreamResponse {
   data?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseData | null;
 }
-const GetActiveLivestreamsForLivestreamIdLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamResponse>;
-
 export interface GetActiveRecordingsRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2319,11 +1739,6 @@ export interface GetActiveRecordingsRecordingRequest {
   appId: string;
   meetingId: string;
 }
-const GetActiveRecordingsRecordingRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetActiveRecordingsRecordingRequest>;
-
 export type RecordingsGetActiveRecordingsResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
@@ -2331,8 +1746,6 @@ export type RecordingsGetActiveRecordingsResponseDataStatus =
   | "UPLOADED"
   | "ERRORED"
   | "PAUSED";
-const RecordingsGetActiveRecordingsResponseDataStatus = S.String;
-
 export interface RecordingsGetActiveRecordingsResponseData {
   /** ID of the recording */
   id: string;
@@ -2359,21 +1772,11 @@ export interface RecordingsGetActiveRecordingsResponseData {
   /** Total recording time in seconds. */
   recordingDuration?: number | null;
 }
-const RecordingsGetActiveRecordingsResponseData = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<RecordingsGetActiveRecordingsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetActiveRecordingsRecordingResponse {
   /** Data returned by the operation */
   data: RecordingsGetActiveRecordingsResponseData;
 }
-const GetActiveRecordingsRecordingResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetActiveRecordingsRecordingResponse>;
-
 export interface GetActiveSessionActiveSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2381,26 +1784,12 @@ export interface GetActiveSessionActiveSessionRequest {
   appId: string;
   meetingId: string;
 }
-const GetActiveSessionActiveSessionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetActiveSessionActiveSessionRequest>;
-
 export type ActiveSessionGetActiveSessionResponseDataStatus = "LIVE" | "ENDED";
-const ActiveSessionGetActiveSessionResponseDataStatus = S.String;
-
 export type ActiveSessionGetActiveSessionResponseDataType =
   | "meeting"
   | "livestream"
   | "participant";
-const ActiveSessionGetActiveSessionResponseDataType = S.String;
-
 export type ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList = Array<unknown>;
-const ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList>;
-
 export interface ActiveSessionGetActiveSessionResponseData {
   /** ID of the session */
   id: string;
@@ -2430,26 +1819,12 @@ export interface ActiveSessionGetActiveSessionResponseData {
   /** timestamp when session ended */
   endedAt?: string | null;
 }
-const ActiveSessionGetActiveSessionResponseData = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ActiveSessionGetActiveSessionResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetActiveSessionActiveSessionResponse {
   data?: ActiveSessionGetActiveSessionResponseData | null;
 }
-const GetActiveSessionActiveSessionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetActiveSessionActiveSessionResponse>;
-
 export type LivestreamsGetAllLivestreamsRequestSortOrder = "ASC" | "DSC";
-const LivestreamsGetAllLivestreamsRequestSortOrder = S.String;
-
 export type LivestreamsGetAllLivestreamsRequestStatus = "LIVE" | "IDLE" | "ERRORED" | "INVOKED";
-const LivestreamsGetAllLivestreamsRequestStatus = S.String;
-
 export interface GetAllLivestreamsLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2470,28 +1845,16 @@ export interface GetAllLivestreamsLivestreamRequest {
   /** Specifies the status of the operation. */
   status?: LivestreamsGetAllLivestreamsRequestStatus | (string & {});
 }
-const GetAllLivestreamsLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetAllLivestreamsLivestreamRequest>;
-
 export interface LivestreamsGetAllLivestreamsResponseDataPaging {
   endOffset?: number | null;
   startOffset?: number | null;
   totalCount?: number | null;
 }
-const LivestreamsGetAllLivestreamsResponseDataPaging = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<LivestreamsGetAllLivestreamsResponseDataPaging>;
-
 export type LivestreamsGetAllLivestreamsResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
   | "INVOKED";
-const LivestreamsGetAllLivestreamsResponseDataStatus = S.String;
-
 export interface LivestreamsGetAllLivestreamsResponseData {
   /** The ID of the livestream. */
   id?: string | null;
@@ -2514,23 +1877,11 @@ export interface LivestreamsGetAllLivestreamsResponseData {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt?: string | null;
 }
-const LivestreamsGetAllLivestreamsResponseData = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<LivestreamsGetAllLivestreamsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetAllLivestreamsLivestreamResponse {
   data?: LivestreamsGetAllLivestreamsResponseData | null;
 }
-const GetAllLivestreamsLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetAllLivestreamsLivestreamResponse>;
-
 export type AppsGetRequestSortOrder = "ASC" | "DESC";
-const AppsGetRequestSortOrder = S.String;
-
 export interface GetAppRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2543,32 +1894,18 @@ export interface GetAppRequest {
   /** Sort order for apps by creation time. */
   sortOrder?: AppsGetRequestSortOrder | (string & {});
 }
-const GetAppRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GetAppRequest>;
-
 export interface AppsGetResponseDataItem {
   id?: string | null;
   createdAt?: string | null;
   name?: string | null;
 }
-const AppsGetResponseDataItem = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<AppsGetResponseDataItem>;
-
 export type AppsGetResponseDataList = Array<AppsGetResponseDataItem>;
-const AppsGetResponseDataList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<AppsGetResponseDataList>;
-
 export type AppsGetResponsePaging = LivestreamsGetAllLivestreamsResponseDataPaging;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetAppResponse {
   data?: AppsGetResponseDataList | null;
   paging?: LivestreamsGetAllLivestreamsResponseDataPaging | null;
 }
-const GetAppResponse = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetAppResponse>;
-
 export interface GetLivestreamAnalyticsCompleteLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2581,11 +1918,6 @@ export interface GetLivestreamAnalyticsCompleteLivestreamRequest {
   /** Specify the start time as a Unix timestamp in seconds to access the livestream analytics. */
   startTime?: number;
 }
-const GetLivestreamAnalyticsCompleteLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamRequest>;
-
 export interface LivestreamsGetLivestreamAnalyticsCompleteResponseData {
   /** Count of total livestreams. */
   count?: number | null;
@@ -2594,20 +1926,10 @@ export interface LivestreamsGetLivestreamAnalyticsCompleteResponseData {
   /** Total view time for which the viewers watched the stream. */
   totalViewerSeconds?: number | null;
 }
-const LivestreamsGetLivestreamAnalyticsCompleteResponseData = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<LivestreamsGetLivestreamAnalyticsCompleteResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamAnalyticsCompleteLivestreamResponse {
   data?: LivestreamsGetLivestreamAnalyticsCompleteResponseData | null;
 }
-const GetLivestreamAnalyticsCompleteLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamResponse>;
-
 export interface GetLivestreamAnalyticsDaywiseLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2620,11 +1942,6 @@ export interface GetLivestreamAnalyticsDaywiseLivestreamRequest {
   /** Specify the start time as a Unix timestamp in seconds to access the livestream analytics. */
   startTime?: number;
 }
-const GetLivestreamAnalyticsDaywiseLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamRequest>;
-
 export interface LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem {
   /** Count of total livestream sessions. */
   count?: number | null;
@@ -2635,27 +1952,12 @@ export interface LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem {
   /** Total view time for which the viewers watched the stream. */
   totalViewerSeconds?: number | null;
 }
-const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
-
 export type LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
   Array<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
-const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamAnalyticsDaywiseLivestreamResponse {
   data?: LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList | null;
 }
-const GetLivestreamAnalyticsDaywiseLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamResponse>;
-
 export interface GetLivestreamSessionDetailsForSessionIdLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2663,11 +1965,6 @@ export interface GetLivestreamSessionDetailsForSessionIdLivestreamRequest {
   appId: string;
   livestreamSessionId: string;
 }
-const GetLivestreamSessionDetailsForSessionIdLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamRequest>;
-
 export interface LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData {
   /** The livestream ID. */
   id?: string | null;
@@ -2687,20 +1984,10 @@ export interface LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData 
   /** Specifies if the livestream was disabled. */
   viewerSeconds?: number | null;
 }
-const LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamSessionDetailsForSessionIdLivestreamResponse {
   data?: LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData | null;
 }
-const GetLivestreamSessionDetailsForSessionIdLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamResponse>;
-
 export interface GetLivestreamSessionForLivestreamIdLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2712,11 +1999,6 @@ export interface GetLivestreamSessionForLivestreamIdLivestreamRequest {
   /** Number of results per page. */
   perPage?: number;
 }
-const GetLivestreamSessionForLivestreamIdLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamRequest>;
-
 export type LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
   | "LIVE"
   | "IDLE"
@@ -2743,9 +2025,6 @@ export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLives
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt?: string | null;
 }
-const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream =
-  LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream>;
-
 export type LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging =
   LivestreamsGetAllLivestreamsResponseDataPaging;
 export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession {
@@ -2768,33 +2047,16 @@ export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSessi
   /** The total view time for which the viewers watched the stream. */
   viewerSeconds?: number | null;
 }
-const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession>;
-
 export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseData {
   livestream?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream | null;
   paging?: LivestreamsGetAllLivestreamsResponseDataPaging | null;
   session?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession | null;
 }
-const LivestreamsGetLivestreamSessionForLivestreamIdResponseData = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLivestreamSessionForLivestreamIdLivestreamResponse {
   data?: LivestreamsGetLivestreamSessionForLivestreamIdResponseData | null;
 }
-const GetLivestreamSessionForLivestreamIdLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamResponse>;
-
 export type MeetingsGetRequestStatus = "ACTIVE" | "INACTIVE";
-const MeetingsGetRequestStatus = S.String;
-
 export interface GetMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -2813,8 +2075,6 @@ export interface GetMeetingRequest {
   /** Filter meetings by status. */
   status?: MeetingsGetRequestStatus | (string & {});
 }
-const GetMeetingRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetMeetingRequest>;
-
 export type MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel = "mono" | "stereo";
 export type MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec = "MP3" | "AAC";
 export interface MeetingsGetResponseDataItemRecordingConfigAudioConfig {
@@ -2825,9 +2085,6 @@ export interface MeetingsGetResponseDataItemRecordingConfigAudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean | null;
 }
-const MeetingsGetResponseDataItemRecordingConfigAudioConfig =
-  MeetingsCreateResponseDataRecordingConfigAudioConfig as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigAudioConfig>;
-
 export type MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig =
   MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig;
 export type MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig =
@@ -2960,8 +2217,6 @@ export type MeetingsGetResponseDataItemRecordingConfigStorageConfig =
   | MeetingsGetResponseDataItemRecordingConfigStorageConfigCase1
   | MeetingsGetResponseDataItemRecordingConfigStorageConfigCase2
   | MeetingsGetResponseDataItemRecordingConfigStorageConfigCase3;
-const MeetingsGetResponseDataItemRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(__c15, 4);
-
 export type MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec = "H264" | "VP8" | "VP9";
 export type MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
@@ -2990,9 +2245,6 @@ export interface MeetingsGetResponseDataItemRecordingConfigVideoConfig {
   /** Width of the recording video in pixels */
   width?: number | null;
 }
-const MeetingsGetResponseDataItemRecordingConfigVideoConfig =
-  MeetingsCreateResponseDataRecordingConfigVideoConfig as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigVideoConfig>;
-
 export interface MeetingsGetResponseDataItemRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsGetResponseDataItemRecordingConfigAudioConfig | null;
@@ -3005,14 +2257,7 @@ export interface MeetingsGetResponseDataItemRecordingConfig {
   storageConfig?: MeetingsGetResponseDataItemRecordingConfigStorageConfig | null;
   videoConfig?: MeetingsGetResponseDataItemRecordingConfigVideoConfig | null;
 }
-const MeetingsGetResponseDataItemRecordingConfig = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfig>;
-
 export type MeetingsGetResponseDataItemStatus = "ACTIVE" | "INACTIVE";
-const MeetingsGetResponseDataItemStatus = S.String;
-
 export interface MeetingsGetResponseDataItem {
   /** ID of the meeting. */
   id: string;
@@ -3039,34 +2284,17 @@ export interface MeetingsGetResponseDataItem {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const MeetingsGetResponseDataItem = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<MeetingsGetResponseDataItem>;
-
 export type MeetingsGetResponseDataList = Array<MeetingsGetResponseDataItem>;
-const MeetingsGetResponseDataList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<MeetingsGetResponseDataList>;
-
 export interface MeetingsGetResponsePaging {
   endOffset: number;
   startOffset: number;
   totalCount: number;
 }
-const MeetingsGetResponsePaging = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<MeetingsGetResponsePaging>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMeetingResponse {
   data: MeetingsGetResponseDataList;
   paging: MeetingsGetResponsePaging;
 }
-const GetMeetingResponse = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GetMeetingResponse>;
-
 export interface GetMeetingActiveLivestreamsLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -3074,18 +2302,11 @@ export interface GetMeetingActiveLivestreamsLivestreamRequest {
   appId: string;
   meetingId: string;
 }
-const GetMeetingActiveLivestreamsLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamRequest>;
-
 export type LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
   | "INVOKED";
-const LivestreamsGetMeetingActiveLivestreamsResponseDataStatus = S.String;
-
 export interface LivestreamsGetMeetingActiveLivestreamsResponseData {
   /** The livestream ID. */
   id?: string | null;
@@ -3106,20 +2327,10 @@ export interface LivestreamsGetMeetingActiveLivestreamsResponseData {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt?: string | null;
 }
-const LivestreamsGetMeetingActiveLivestreamsResponseData = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<LivestreamsGetMeetingActiveLivestreamsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMeetingActiveLivestreamsLivestreamResponse {
   data?: LivestreamsGetMeetingActiveLivestreamsResponseData | null;
 }
-const GetMeetingActiveLivestreamsLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamResponse>;
-
 export interface GetMeetingByIdMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -3128,11 +2339,6 @@ export interface GetMeetingByIdMeetingRequest {
   meetingId: string;
   name?: string;
 }
-const GetMeetingByIdMeetingRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetMeetingByIdMeetingRequest>;
-
 export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
@@ -3154,15 +2360,7 @@ export interface MeetingsGetMeetingByIdResponseDataAiConfigSummarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number | null;
 }
-const MeetingsGetMeetingByIdResponseDataAiConfigSummarization =
-  MeetingsCreateResponseDataAiConfigSummarization as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigSummarization>;
-
 export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList = Array<string>;
-const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
-
 export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
@@ -3174,8 +2372,6 @@ export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "el"
   | "fr"
   | "nl";
-const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage = S.String;
-
 export interface MeetingsGetMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
@@ -3184,28 +2380,14 @@ export interface MeetingsGetMeetingByIdResponseDataAiConfigTranscription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
 }
-const MeetingsGetMeetingByIdResponseDataAiConfigTranscription = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigTranscription>;
-
 export interface MeetingsGetMeetingByIdResponseDataAiConfig {
   /** Summary Config */
   summarization?: MeetingsGetMeetingByIdResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
   transcription?: MeetingsGetMeetingByIdResponseDataAiConfigTranscription | null;
 }
-const MeetingsGetMeetingByIdResponseDataAiConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfig>;
-
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel = "mono" | "stereo";
-const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel = S.String;
-
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec = "MP3" | "AAC";
-const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec = S.String;
-
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel | null;
@@ -3214,11 +2396,6 @@ export interface MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean | null;
 }
-const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig>;
-
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
   MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig;
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
@@ -3352,17 +2529,10 @@ export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
   | MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigCase1
   | MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigCase2
   | MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigCase3;
-const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-);
-
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   | "H264"
   | "VP8"
   | "VP9";
-const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec = S.String;
-
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
@@ -3378,9 +2548,6 @@ export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWat
   /** URL of the watermark image */
   url?: string | null;
 }
-const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
-  MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
-
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec | null;
@@ -3393,11 +2560,6 @@ export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig {
   /** Width of the recording video in pixels */
   width?: number | null;
 }
-const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig>;
-
 export interface MeetingsGetMeetingByIdResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig | null;
@@ -3410,14 +2572,7 @@ export interface MeetingsGetMeetingByIdResponseDataRecordingConfig {
   storageConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig | null;
   videoConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig | null;
 }
-const MeetingsGetMeetingByIdResponseDataRecordingConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfig>;
-
 export type MeetingsGetMeetingByIdResponseDataStatus = "ACTIVE" | "INACTIVE";
-const MeetingsGetMeetingByIdResponseDataStatus = S.String;
-
 export interface MeetingsGetMeetingByIdResponseData {
   /** ID of the meeting. */
   id: string;
@@ -3446,21 +2601,11 @@ export interface MeetingsGetMeetingByIdResponseData {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const MeetingsGetMeetingByIdResponseData = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<MeetingsGetMeetingByIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMeetingByIdMeetingResponse {
   /** Data returned by the operation */
   data?: MeetingsGetMeetingByIdResponseData | null;
 }
-const GetMeetingByIdMeetingResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetMeetingByIdMeetingResponse>;
-
 export interface GetMeetingParticipantMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -3469,11 +2614,6 @@ export interface GetMeetingParticipantMeetingRequest {
   meetingId: string;
   participantId: string;
 }
-const GetMeetingParticipantMeetingRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetMeetingParticipantMeetingRequest>;
-
 export interface MeetingsGetMeetingParticipantResponseData {
   /** ID of the participant. */
   id: string;
@@ -3490,21 +2630,11 @@ export interface MeetingsGetMeetingParticipantResponseData {
   /** URL to a picture of the participant. */
   picture?: string | null;
 }
-const MeetingsGetMeetingParticipantResponseData = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<MeetingsGetMeetingParticipantResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMeetingParticipantMeetingResponse {
   /** Data returned by the operation */
   data: MeetingsGetMeetingParticipantResponseData;
 }
-const GetMeetingParticipantMeetingResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetMeetingParticipantMeetingResponse>;
-
 export interface GetMeetingParticipantsMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -3516,31 +2646,16 @@ export interface GetMeetingParticipantsMeetingRequest {
   /** Number of results per page */
   perPage?: number;
 }
-const GetMeetingParticipantsMeetingRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetMeetingParticipantsMeetingRequest>;
-
 export type MeetingsGetMeetingParticipantsResponseDataItem =
   MeetingsGetMeetingParticipantResponseData;
 export type MeetingsGetMeetingParticipantsResponseDataList =
   Array<MeetingsGetMeetingParticipantResponseData>;
-const MeetingsGetMeetingParticipantsResponseDataList = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<MeetingsGetMeetingParticipantsResponseDataList>;
-
 export type MeetingsGetMeetingParticipantsResponsePaging = MeetingsGetResponsePaging;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMeetingParticipantsMeetingResponse {
   data: MeetingsGetMeetingParticipantsResponseDataList;
   paging: MeetingsGetResponsePaging;
 }
-const GetMeetingParticipantsMeetingResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetMeetingParticipantsMeetingResponse>;
-
 export interface GetOneRecordingRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -3548,11 +2663,6 @@ export interface GetOneRecordingRecordingRequest {
   appId: string;
   recordingId: string;
 }
-const GetOneRecordingRecordingRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetOneRecordingRecordingRequest>;
-
 export type RecordingsGetOneRecordingResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
@@ -3560,11 +2670,7 @@ export type RecordingsGetOneRecordingResponseDataStatus =
   | "UPLOADED"
   | "ERRORED"
   | "PAUSED";
-const RecordingsGetOneRecordingResponseDataStatus = S.String;
-
 export type RecordingsGetOneRecordingResponseDataStartReasonCallerType = "ORGANIZATION" | "USER";
-const RecordingsGetOneRecordingResponseDataStartReasonCallerType = S.String;
-
 export interface RecordingsGetOneRecordingResponseDataStartReasonCaller {
   /** Name of the user who started the recording. */
   name?: string | null;
@@ -3573,24 +2679,12 @@ export interface RecordingsGetOneRecordingResponseDataStartReasonCaller {
   /** The user ID of the person who started the recording. */
   userId?: string | null;
 }
-const RecordingsGetOneRecordingResponseDataStartReasonCaller = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<RecordingsGetOneRecordingResponseDataStartReasonCaller>;
-
 export type RecordingsGetOneRecordingResponseDataStartReasonReason = "API_CALL" | "RECORD_ON_START";
-const RecordingsGetOneRecordingResponseDataStartReasonReason = S.String;
-
 export interface RecordingsGetOneRecordingResponseDataStartReason {
   caller?: RecordingsGetOneRecordingResponseDataStartReasonCaller | null;
   /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
   reason?: RecordingsGetOneRecordingResponseDataStartReasonReason | null;
 }
-const RecordingsGetOneRecordingResponseDataStartReason = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<RecordingsGetOneRecordingResponseDataStartReason>;
-
 export type RecordingsGetOneRecordingResponseDataStopReasonCallerType = "ORGANIZATION" | "USER";
 export interface RecordingsGetOneRecordingResponseDataStopReasonCaller {
   /** Name of the user who stopped the recording. */
@@ -3609,9 +2703,6 @@ export interface RecordingsGetOneRecordingResponseDataStopReason {
   /** Specifies the reason why the recording stopped. */
   reason?: RecordingsGetOneRecordingResponseDataStopReasonReason | null;
 }
-const RecordingsGetOneRecordingResponseDataStopReason =
-  RecordingsGetOneRecordingResponseDataStartReason as any as S.Schema<RecordingsGetOneRecordingResponseDataStopReason>;
-
 export type RecordingsGetOneRecordingResponseDataStorageConfigCase0AuthMethod = "KEY" | "PASSWORD";
 export type RecordingsGetOneRecordingResponseDataStorageConfigCase0Type = "gcs";
 export interface RecordingsGetOneRecordingResponseDataStorageConfigCase0 {
@@ -3736,8 +2827,6 @@ export type RecordingsGetOneRecordingResponseDataStorageConfig =
   | RecordingsGetOneRecordingResponseDataStorageConfigCase1
   | RecordingsGetOneRecordingResponseDataStorageConfigCase2
   | RecordingsGetOneRecordingResponseDataStorageConfigCase3;
-const RecordingsGetOneRecordingResponseDataStorageConfig = /*@__PURE__*/ __L.at(__c19, 0);
-
 export interface RecordingsGetOneRecordingResponseData {
   /** ID of the recording */
   id: string;
@@ -3767,21 +2856,11 @@ export interface RecordingsGetOneRecordingResponseData {
   stopReason?: RecordingsGetOneRecordingResponseDataStopReason | null;
   storageConfig?: RecordingsGetOneRecordingResponseDataStorageConfig | null;
 }
-const RecordingsGetOneRecordingResponseData = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<RecordingsGetOneRecordingResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetOneRecordingRecordingResponse {
   /** Data returned by the operation */
   data?: RecordingsGetOneRecordingResponseData | null;
 }
-const GetOneRecordingRecordingResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetOneRecordingRecordingResponse>;
-
 export interface GetOrgAnalyticsAnalyticRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -3792,11 +2871,6 @@ export interface GetOrgAnalyticsAnalyticRequest {
   /** start date in YYYY-MM-DD format */
   startDate?: string;
 }
-const GetOrgAnalyticsAnalyticRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetOrgAnalyticsAnalyticRequest>;
-
 export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem {
   day?: string | null;
   /** Total recording minutes for a specific day */
@@ -3804,18 +2878,8 @@ export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem 
   /** Total number of recordings for a specific day */
   totalRecordings?: number | null;
 }
-const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
-
 export type AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
   Array<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
-const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList>;
-
 export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStats {
   /** Day wise recording stats */
   dayStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList | null;
@@ -3824,11 +2888,6 @@ export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStats {
   /** Total recording minutes during the range specified */
   recordingMinutesConsumed?: number | null;
 }
-const AnalyticsGetOrgAnalyticsResponseDataRecordingStats = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStats>;
-
 export interface AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
   day?: string | null;
   /** Total session minutes for a specific day */
@@ -3836,18 +2895,8 @@ export interface AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
   /** Total number of sessions for a specific day */
   totalSessions?: number | null;
 }
-const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
-
 export type AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
   Array<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
-const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList>;
-
 export interface AnalyticsGetOrgAnalyticsResponseDataSessionStats {
   /** Day wise session stats */
   dayStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList | null;
@@ -3856,39 +2905,22 @@ export interface AnalyticsGetOrgAnalyticsResponseDataSessionStats {
   /** Total session minutes during the range specified */
   sessionsMinutesConsumed?: number | null;
 }
-const AnalyticsGetOrgAnalyticsResponseDataSessionStats = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStats>;
-
 export interface AnalyticsGetOrgAnalyticsResponseData {
   /** Recording statistics of an App during the range specified */
   recordingStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStats | null;
   /** Session statistics of an App during the range specified */
   sessionStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStats | null;
 }
-const AnalyticsGetOrgAnalyticsResponseData = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetOrgAnalyticsAnalyticResponse {
   data?: AnalyticsGetOrgAnalyticsResponseData | null;
 }
-const GetOrgAnalyticsAnalyticResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetOrgAnalyticsAnalyticResponse>;
-
 export type SessionsGetParticipantDataFromPeerIdRequestFilters =
   | "device_info"
   | "ip_information"
   | "precall_network_information"
   | "events"
   | "quality_stats";
-const SessionsGetParticipantDataFromPeerIdRequestFilters = S.String;
-
 export interface GetParticipantDataFromPeerIdSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -3900,26 +2932,16 @@ export interface GetParticipantDataFromPeerIdSessionRequest {
   /** if true, response includes all the peer events of participant. */
   includePeerEvents?: boolean;
 }
-const GetParticipantDataFromPeerIdSessionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
   | "PEER_CREATED"
   | "PEER_JOINING"
   | "PEER_LEAVING";
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName = S.String;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM"
   | "CHAT";
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
-  S.String;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem {
   /** ID of the peer event. */
   id?: string | null;
@@ -3942,20 +2964,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Timestamp when this peer event was last updated. */
   updatedAt?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    5,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    6,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem {
   /** ID of the device. */
   deviceId?: string | null;
@@ -3964,27 +2974,12 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Human-readable label of the device. */
   label?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    7,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    0,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem {
   /** Devices that became available. */
   added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList | null;
@@ -3993,20 +2988,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Timestamp of the device update. */
   timestamp?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    1,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    2,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata {
   browser?: string | null;
   browserVersion?: string | null;
@@ -4014,12 +2997,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   userAgent?: string | null;
   webglSupport?: boolean | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    3,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem {
   availableIncomingBitrate?: number | null;
   availableOutgoingBitrate?: number | null;
@@ -4052,68 +3029,32 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   remoteCandidateUrl?: string | null;
   totalRoundTripTime?: number | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    4,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    5,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs {
   consumingTransport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList | null;
   producingTransport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    6,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo {
   cpus?: number | null;
   isMobile?: boolean | null;
   os?: string | null;
   osVersion?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    7,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataValue =
   | string
   | number
   | boolean;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataValue =
-  /*@__PURE__*/ __L.at(__c22, 0);
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap =
   {
     [key: string]:
       | SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataValue
       | undefined;
   };
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    1,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem {
   /** Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null). */
   metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap | null;
@@ -4122,20 +3063,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Timestamp when the event occurred. */
   timestamp?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    2,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    3,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn {
   asn?: string | null;
   domain?: string | null;
@@ -4143,12 +3072,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   route?: string | null;
   type?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    4,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation {
   asn?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn | null;
   city?: string | null;
@@ -4158,27 +3081,12 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   region?: string | null;
   timezone?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    5,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata {
   audioEncoder?: string | null;
   videoEncoder?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    6,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
   Array<string>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
-  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem {
   effectiveNetworkType?: string | null;
   reflexiveConnectivity?: boolean | null;
@@ -4187,20 +3095,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   timestamp?: string | null;
   turnConnectivity?: boolean | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    7,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    0,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem;
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem {
@@ -4208,20 +3104,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   device?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem | null;
   timestamp?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    1,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    2,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
@@ -4240,9 +3124,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
 }
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
@@ -4261,9 +3142,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
 }
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata {
   audioDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList | null;
   browserMetadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata | null;
@@ -4281,12 +3159,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   speakerDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList | null;
   videoDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    3,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem {
   bytesReceived?: number | null;
   concealmentEvents?: number | null;
@@ -4303,32 +3175,14 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   ssrc?: number | null;
   timestamp?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    4,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    5,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay {
   "100msOrGreaterEventFraction"?: number | null;
   "250msOrGreaterEventFraction"?: number | null;
   "500msOrGreaterEventFraction"?: number | null;
   avg?: number | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    6,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss {
   "10OrGreaterEventFraction"?: number | null;
   "25OrGreaterEventFraction"?: number | null;
@@ -4336,24 +3190,12 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   "50OrGreaterEventFraction"?: number | null;
   avg?: number | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    7,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos {
   avg?: number | null;
   p50?: number | null;
   p75?: number | null;
   p90?: number | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    0,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative {
   /** Cumulative latency distribution (milliseconds-based thresholds). */
   jitterBufferDelay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay | null;
@@ -4362,12 +3204,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Distribution summary with average and percentiles. */
   qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    1,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem {
   bytesSent?: number | null;
   jitter?: number | null;
@@ -4380,20 +3216,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   ssrc?: number | null;
   timestamp?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    2,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    3,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos =
@@ -4408,19 +3232,10 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Cumulative latency distribution (milliseconds-based thresholds). */
   rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    4,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss =
@@ -4433,9 +3248,6 @@ export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepor
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos =
@@ -4466,20 +3278,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   ssrc?: number | null;
   timestamp?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    5,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    6,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth =
@@ -4489,12 +3289,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   noVideoFraction?: number | null;
   poorResolutionFraction?: number | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    7,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss =
@@ -4515,32 +3309,17 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Distribution summary with average and percentiles. */
   qualityMos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    0,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations {
   bandwidth?: number | null;
   cpu?: number | null;
   none?: number | null;
   other?: number | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    1,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
   | "cpu"
   | "bandwidth"
   | "none"
   | "other";
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
-  S.String;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem {
   bytesSent?: number | null;
   firCount?: number | null;
@@ -4563,20 +3342,8 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   ssrc?: number | null;
   timestamp?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    2,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    3,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth =
@@ -4588,12 +3355,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   poorResolutionFraction?: number | null;
   qualityLimitationFraction?: number | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    4,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos =
@@ -4615,19 +3376,10 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Cumulative latency distribution (milliseconds-based thresholds). */
   rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    5,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth =
@@ -4673,9 +3425,6 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
 }
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem>;
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList>;
-
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos;
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth =
@@ -4716,23 +3465,12 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   /** Aggregated outbound (producer) video statistics for the session. */
   videoProducerCumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    6,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport {
   /** Connection and device metadata for the participant. */
   metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata | null;
   /** Media quality statistics for the participant. */
   quality?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipant {
   /** ID of the participant. */
   id?: string | null;
@@ -4760,28 +3498,13 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipant {
   /** User id for this participant. */
   userId?: string | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseDataParticipant = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipant>;
-
 export interface SessionsGetParticipantDataFromPeerIdResponseData {
   participant?: SessionsGetParticipantDataFromPeerIdResponseDataParticipant | null;
 }
-const SessionsGetParticipantDataFromPeerIdResponseData = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetParticipantDataFromPeerIdSessionResponse {
   data?: SessionsGetParticipantDataFromPeerIdResponseData | null;
 }
-const GetParticipantDataFromPeerIdSessionResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetParticipantDataFromPeerIdSessionResponse>;
-
 export interface GetPresetRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -4794,8 +3517,6 @@ export interface GetPresetRequest {
   /** Search presets by name. */
   search?: string;
 }
-const GetPresetRequest = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<GetPresetRequest>;
-
 export interface PresetsGetResponseDataItem {
   /** ID of the preset */
   id?: string | null;
@@ -4806,25 +3527,13 @@ export interface PresetsGetResponseDataItem {
   /** Timestamp this preset was last updated */
   updatedAt?: string | null;
 }
-const PresetsGetResponseDataItem = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<PresetsGetResponseDataItem>;
-
 export type PresetsGetResponseDataList = Array<PresetsGetResponseDataItem>;
-const PresetsGetResponseDataList = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<PresetsGetResponseDataList>;
-
 export type PresetsGetResponsePaging = MeetingsGetResponsePaging;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetPresetResponse {
   data: PresetsGetResponseDataList;
   paging: MeetingsGetResponsePaging;
 }
-const GetPresetResponse = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<GetPresetResponse>;
-
 export interface GetPresetByIdPresetRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -4832,11 +3541,6 @@ export interface GetPresetByIdPresetRequest {
   appId: string;
   presetId: string;
 }
-const GetPresetByIdPresetRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<GetPresetByIdPresetRequest>;
-
 export type PresetsGetPresetByIdResponseDataConfigMaxVideoStreams =
   PresetsCreateRequestConfigMaxVideoStreams;
 export type PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
@@ -4875,22 +3579,12 @@ export interface PresetsGetPresetByIdResponseDataConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateResponseDataConfigMediaAudio | null;
 }
-const PresetsGetPresetByIdResponseDataConfigMedia =
-  PresetsCreateResponseDataConfigMedia as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMedia>;
-
 export type PresetsGetPresetByIdResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const PresetsGetPresetByIdResponseDataConfigViewType = S.String;
-
 export type PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-const PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList>;
-
 export interface PresetsGetPresetByIdResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
   maxScreenshareCount: number;
@@ -4903,11 +3597,6 @@ export interface PresetsGetPresetByIdResponseDataConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList | null;
 }
-const PresetsGetPresetByIdResponseDataConfig = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<PresetsGetPresetByIdResponseDataConfig>;
-
 export type PresetsGetPresetByIdResponseDataPermissionsChatPrivate =
   PresetsCreateRequestPermissionsChatPrivate;
 export type PresetsGetPresetByIdResponseDataPermissionsChatPublic =
@@ -4923,24 +3612,14 @@ export interface PresetsGetPresetByIdResponseDataPermissionsMediaAudio {
   /** Can produce audio */
   canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce;
 }
-const PresetsGetPresetByIdResponseDataPermissionsMediaAudio =
-  PresetsCreateRequestPermissionsMediaScreenshare as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaAudio>;
-
 export type PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce = S.String;
-
 export interface PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare {
   /** Can produce screen share video */
   canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce;
 }
-const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare>;
-
 export type PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
@@ -4949,9 +3628,6 @@ export interface PresetsGetPresetByIdResponseDataPermissionsMediaVideo {
   /** Can produce video */
   canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce;
 }
-const PresetsGetPresetByIdResponseDataPermissionsMediaVideo =
-  PresetsCreateRequestPermissionsMediaScreenshare as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaVideo>;
-
 export interface PresetsGetPresetByIdResponseDataPermissionsMedia {
   /** Audio permissions */
   audio: PresetsGetPresetByIdResponseDataPermissionsMediaAudio;
@@ -4960,11 +3636,6 @@ export interface PresetsGetPresetByIdResponseDataPermissionsMedia {
   /** Video permissions */
   video: PresetsGetPresetByIdResponseDataPermissionsMediaVideo;
 }
-const PresetsGetPresetByIdResponseDataPermissionsMedia = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMedia>;
-
 export type PresetsGetPresetByIdResponseDataPermissionsPlugins =
   PresetsCreateRequestPermissionsPlugins;
 export type PresetsGetPresetByIdResponseDataPermissionsPolls = PresetsCreateRequestPermissionsPolls;
@@ -4972,20 +3643,14 @@ export type PresetsGetPresetByIdResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
   | "NONE";
-const PresetsGetPresetByIdResponseDataPermissionsRecorderType = S.String;
-
 export type PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
   | "SKIP_ON_ACCEPT";
-const PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType = S.String;
-
 export type PresetsGetPresetByIdResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const PresetsGetPresetByIdResponseDataPermissionsStageAccess = S.String;
-
 export interface PresetsGetPresetByIdResponseDataPermissions {
   /** Whether this participant can accept waiting requests */
   acceptWaitingRequests: boolean;
@@ -5021,21 +3686,12 @@ export interface PresetsGetPresetByIdResponseDataPermissions {
   stageEnabled?: boolean | null;
   transcriptionEnabled?: boolean | null;
 }
-const PresetsGetPresetByIdResponseDataPermissions = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissions>;
-
 export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
   | "circular";
-const PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius = S.String;
-
 export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth = "none" | "thin" | "fat";
-const PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth = S.String;
-
 export type PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground =
   PresetsCreateRequestUiDesignTokensColorsBackground;
 export type PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand =
@@ -5043,8 +3699,6 @@ export type PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand =
 export type PresetsGetPresetByIdResponseDataUiDesignTokensColors =
   PresetsCreateRequestUiDesignTokensColors;
 export type PresetsGetPresetByIdResponseDataUiDesignTokensTheme = "darkest" | "dark" | "light";
-const PresetsGetPresetByIdResponseDataUiDesignTokensTheme = S.String;
-
 export interface PresetsGetPresetByIdResponseDataUiDesignTokens {
   borderRadius: PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius;
   borderWidth: PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth;
@@ -5055,21 +3709,11 @@ export interface PresetsGetPresetByIdResponseDataUiDesignTokens {
   googleFont?: string | null;
   logo?: string | null;
 }
-const PresetsGetPresetByIdResponseDataUiDesignTokens = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokens>;
-
 export interface PresetsGetPresetByIdResponseDataUi {
   designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens;
   /** Difference between the preset's UI config and the defaults. */
   configDiff?: unknown | null;
 }
-const PresetsGetPresetByIdResponseDataUi = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<PresetsGetPresetByIdResponseDataUi>;
-
 export interface PresetsGetPresetByIdResponseData {
   /** ID of the preset */
   id: string;
@@ -5083,27 +3727,13 @@ export interface PresetsGetPresetByIdResponseData {
   /** Timestamp this preset was last updated */
   updatedAt: string;
 }
-const PresetsGetPresetByIdResponseData = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<PresetsGetPresetByIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetPresetByIdPresetResponse {
   /** Data returned by the operation */
   data: PresetsGetPresetByIdResponseData;
 }
-const GetPresetByIdPresetResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GetPresetByIdPresetResponse>;
-
 export type RecordingsGetRecordingsRequestSortBy = "invokedTime";
-const RecordingsGetRecordingsRequestSortBy = S.String;
-
 export type RecordingsGetRecordingsRequestSortOrder = "ASC" | "DESC";
-const RecordingsGetRecordingsRequestSortOrder = S.String;
-
 export type RecordingsGetRecordingsRequestStatus =
   | "INVOKED"
   | "RECORDING"
@@ -5114,9 +3744,6 @@ export type RecordingsGetRecordingsRequestStatus =
 export type RecordingsGetRecordingsRequestStatusList = Array<
   RecordingsGetRecordingsRequestStatus | (string & {})
 >;
-const RecordingsGetRecordingsRequestStatusList =
-  WebhooksCreateWebhookRequestEventsList as any as S.Schema<RecordingsGetRecordingsRequestStatusList>;
-
 export interface GetRecordingsRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -5141,11 +3768,6 @@ export interface GetRecordingsRecordingRequest {
   /** Filter by one or more recording status */
   status?: RecordingsGetRecordingsRequestStatusList;
 }
-const GetRecordingsRecordingRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GetRecordingsRecordingRequest>;
-
 export type RecordingsGetRecordingsResponseDataItemStatus =
   | "INVOKED"
   | "RECORDING"
@@ -5153,18 +3775,12 @@ export type RecordingsGetRecordingsResponseDataItemStatus =
   | "UPLOADED"
   | "ERRORED"
   | "PAUSED";
-const RecordingsGetRecordingsResponseDataItemStatus = S.String;
-
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
   | "mono"
   | "stereo";
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel = S.String;
-
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
   | "MP3"
   | "AAC";
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec = S.String;
-
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel | null;
@@ -5173,12 +3789,6 @@ export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAu
   /** Controls whether to export audio file seperately */
   exportFile?: boolean | null;
 }
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig =
-  /*@__PURE__*/ __L.at(
-    __c28,
-    2,
-  ) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig>;
-
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig =
   MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig;
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig =
@@ -5314,23 +3924,15 @@ export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorage
   | RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigCase1
   | RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigCase2
   | RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigCase3;
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig =
-  /*@__PURE__*/ __L.at(__c28, 3);
-
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
   | "H264"
   | "VP8"
   | "VP9";
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec = S.String;
-
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
   | "right bottom";
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
-  S.String;
-
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize =
   MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize;
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark {
@@ -5341,12 +3943,6 @@ export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVi
   /** URL of the watermark image */
   url?: string | null;
 }
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ __L.at(
-    __c28,
-    4,
-  ) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark>;
-
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec | null;
@@ -5359,12 +3955,6 @@ export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVi
   /** Width of the recording video in pixels */
   width?: number | null;
 }
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig =
-  /*@__PURE__*/ __L.at(
-    __c28,
-    5,
-  ) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig>;
-
 export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig | null;
@@ -5377,14 +3967,7 @@ export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig {
   storageConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig | null;
   videoConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig | null;
 }
-const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig>;
-
 export type RecordingsGetRecordingsResponseDataItemMeetingStatus = "ACTIVE" | "INACTIVE";
-const RecordingsGetRecordingsResponseDataItemMeetingStatus = S.String;
-
 export interface RecordingsGetRecordingsResponseDataItemMeeting {
   /** ID of the meeting. */
   id: string;
@@ -5411,11 +3994,6 @@ export interface RecordingsGetRecordingsResponseDataItemMeeting {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const RecordingsGetRecordingsResponseDataItemMeeting = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeeting>;
-
 export type RecordingsGetRecordingsResponseDataItemStorageConfigCase0AuthMethod =
   | "KEY"
   | "PASSWORD";
@@ -5544,8 +4122,6 @@ export type RecordingsGetRecordingsResponseDataItemStorageConfig =
   | RecordingsGetRecordingsResponseDataItemStorageConfigCase1
   | RecordingsGetRecordingsResponseDataItemStorageConfigCase2
   | RecordingsGetRecordingsResponseDataItemStorageConfigCase3;
-const RecordingsGetRecordingsResponseDataItemStorageConfig = /*@__PURE__*/ __L.at(__c29, 0);
-
 export interface RecordingsGetRecordingsResponseDataItem {
   /** ID of the recording */
   id: string;
@@ -5574,29 +4150,14 @@ export interface RecordingsGetRecordingsResponseDataItem {
   recordingDuration?: number | null;
   storageConfig?: RecordingsGetRecordingsResponseDataItemStorageConfig | null;
 }
-const RecordingsGetRecordingsResponseDataItem = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<RecordingsGetRecordingsResponseDataItem>;
-
 export type RecordingsGetRecordingsResponseDataList =
   Array<RecordingsGetRecordingsResponseDataItem>;
-const RecordingsGetRecordingsResponseDataList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<RecordingsGetRecordingsResponseDataList>;
-
 export type RecordingsGetRecordingsResponsePaging = MeetingsGetResponsePaging;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetRecordingsRecordingResponse {
   data: RecordingsGetRecordingsResponseDataList;
   paging: MeetingsGetResponsePaging;
 }
-const GetRecordingsRecordingResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<GetRecordingsRecordingResponse>;
-
 export interface GetSessionChatSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -5604,31 +4165,16 @@ export interface GetSessionChatSessionRequest {
   appId: string;
   sessionId: string;
 }
-const GetSessionChatSessionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GetSessionChatSessionRequest>;
-
 export interface SessionsGetSessionChatResponseData {
   /** URL where the chat logs can be downloaded */
   chatDownloadUrl: string;
   /** Time when the download URL will expire */
   chatDownloadUrlExpiry: string;
 }
-const SessionsGetSessionChatResponseData = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<SessionsGetSessionChatResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionChatSessionResponse {
   data?: SessionsGetSessionChatResponseData | null;
 }
-const GetSessionChatSessionResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetSessionChatSessionResponse>;
-
 export interface GetSessionDetailsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -5638,21 +4184,9 @@ export interface GetSessionDetailsSessionRequest {
   /** List all breakout rooms */
   includeBreakoutRooms?: boolean;
 }
-const GetSessionDetailsSessionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<GetSessionDetailsSessionRequest>;
-
 export type SessionsGetSessionDetailsResponseDataStatus = "LIVE" | "ENDED";
-const SessionsGetSessionDetailsResponseDataStatus = S.String;
-
 export type SessionsGetSessionDetailsResponseDataType = "meeting" | "livestream" | "participant";
-const SessionsGetSessionDetailsResponseDataType = S.String;
-
 export type SessionsGetSessionDetailsResponseDataBreakoutRoomsList = Array<unknown>;
-const SessionsGetSessionDetailsResponseDataBreakoutRoomsList =
-  ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList as any as S.Schema<SessionsGetSessionDetailsResponseDataBreakoutRoomsList>;
-
 export interface SessionsGetSessionDetailsResponseData {
   /** ID of the session */
   id: string;
@@ -5682,20 +4216,10 @@ export interface SessionsGetSessionDetailsResponseData {
   /** timestamp when session ended */
   endedAt?: string | null;
 }
-const SessionsGetSessionDetailsResponseData = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<SessionsGetSessionDetailsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionDetailsSessionResponse {
   data?: SessionsGetSessionDetailsResponseData | null;
 }
-const GetSessionDetailsSessionResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GetSessionDetailsSessionResponse>;
-
 export interface GetSessionParticipantDetailsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -5706,11 +4230,6 @@ export interface GetSessionParticipantDetailsSessionRequest {
   /** if true, response includes all the peer events of participant. */
   includePeerEvents?: boolean;
 }
-const GetSessionParticipantDetailsSessionRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>;
-
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
   | "PEER_CREATED"
   | "PEER_JOINING"
@@ -5745,9 +4264,6 @@ export interface SessionsGetSessionParticipantDetailsResponseDataParticipantPeer
 }
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
   Array<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem>;
-const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList as any as S.Schema<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList>;
-
 export interface SessionsGetSessionParticipantDetailsResponseDataParticipant {
   /** Participant ID. This maps to the corresponding peerId. */
   id?: string | null;
@@ -5772,37 +4288,16 @@ export interface SessionsGetSessionParticipantDetailsResponseDataParticipant {
   /** User id for this participant. */
   userId?: string | null;
 }
-const SessionsGetSessionParticipantDetailsResponseDataParticipant = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseDataParticipant>;
-
 export interface SessionsGetSessionParticipantDetailsResponseData {
   participant?: SessionsGetSessionParticipantDetailsResponseDataParticipant | null;
 }
-const SessionsGetSessionParticipantDetailsResponseData = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionParticipantDetailsSessionResponse {
   data?: SessionsGetSessionParticipantDetailsResponseData | null;
 }
-const GetSessionParticipantDetailsSessionResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<GetSessionParticipantDetailsSessionResponse>;
-
 export type SessionsGetSessionParticipantsRequestSortBy = "joinedAt" | "duration";
-const SessionsGetSessionParticipantsRequestSortBy = S.String;
-
 export type SessionsGetSessionParticipantsRequestSortOrder = "ASC" | "DESC";
-const SessionsGetSessionParticipantsRequestSortOrder = S.String;
-
 export type SessionsGetSessionParticipantsRequestView = "raw" | "consolidated";
-const SessionsGetSessionParticipantsRequestView = S.String;
-
 export interface GetSessionParticipantsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -5822,11 +4317,6 @@ export interface GetSessionParticipantsSessionRequest {
   /** In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations. */
   view?: SessionsGetSessionParticipantsRequestView | (string & {});
 }
-const GetSessionParticipantsSessionRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetSessionParticipantsSessionRequest>;
-
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
   | "PEER_CREATED"
   | "PEER_JOINING"
@@ -5885,42 +4375,18 @@ export interface SessionsGetSessionParticipantsResponseDataParticipantsItem {
   /** User id for this participant. */
   userId?: string | null;
 }
-const SessionsGetSessionParticipantsResponseDataParticipantsItem =
-  SessionsGetSessionParticipantDetailsResponseDataParticipant as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsItem>;
-
 export type SessionsGetSessionParticipantsResponseDataParticipantsList =
   Array<SessionsGetSessionParticipantsResponseDataParticipantsItem>;
-const SessionsGetSessionParticipantsResponseDataParticipantsList = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsList>;
-
 export interface SessionsGetSessionParticipantsResponseData {
   participants?: SessionsGetSessionParticipantsResponseDataParticipantsList | null;
 }
-const SessionsGetSessionParticipantsResponseData = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<SessionsGetSessionParticipantsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionParticipantsSessionResponse {
   data?: SessionsGetSessionParticipantsResponseData | null;
 }
-const GetSessionParticipantsSessionResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetSessionParticipantsSessionResponse>;
-
 export type SessionsGetSessionsRequestSortBy = "minutesConsumed" | "createdAt";
-const SessionsGetSessionsRequestSortBy = S.String;
-
 export type SessionsGetSessionsRequestSortOrder = "ASC" | "DESC";
-const SessionsGetSessionsRequestSortOrder = S.String;
-
 export type SessionsGetSessionsRequestStatus = "LIVE" | "ENDED";
-const SessionsGetSessionsRequestStatus = S.String;
-
 export interface GetSessionsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -5943,24 +4409,12 @@ export interface GetSessionsSessionRequest {
   startTime?: string;
   status?: SessionsGetSessionsRequestStatus | (string & {});
 }
-const GetSessionsSessionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GetSessionsSessionRequest>;
-
 export type SessionsGetSessionsResponseDataSessionsItemStatus = "LIVE" | "ENDED";
-const SessionsGetSessionsResponseDataSessionsItemStatus = S.String;
-
 export type SessionsGetSessionsResponseDataSessionsItemType =
   | "meeting"
   | "livestream"
   | "participant";
-const SessionsGetSessionsResponseDataSessionsItemType = S.String;
-
 export type SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList = Array<unknown>;
-const SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList =
-  ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList as any as S.Schema<SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList>;
-
 export interface SessionsGetSessionsResponseDataSessionsItem {
   /** ID of the session */
   id: string;
@@ -5990,37 +4444,17 @@ export interface SessionsGetSessionsResponseDataSessionsItem {
   /** timestamp when session ended */
   endedAt?: string | null;
 }
-const SessionsGetSessionsResponseDataSessionsItem = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<SessionsGetSessionsResponseDataSessionsItem>;
-
 export type SessionsGetSessionsResponseDataSessionsList =
   Array<SessionsGetSessionsResponseDataSessionsItem>;
-const SessionsGetSessionsResponseDataSessionsList = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<SessionsGetSessionsResponseDataSessionsList>;
-
 export interface SessionsGetSessionsResponseData {
   sessions?: SessionsGetSessionsResponseDataSessionsList | null;
 }
-const SessionsGetSessionsResponseData = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<SessionsGetSessionsResponseData>;
-
 export type SessionsGetSessionsResponsePaging = LivestreamsGetAllLivestreamsResponseDataPaging;
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionsSessionResponse {
   data?: SessionsGetSessionsResponseData | null;
   paging?: LivestreamsGetAllLivestreamsResponseDataPaging | null;
 }
-const GetSessionsSessionResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GetSessionsSessionResponse>;
-
 export interface GetSessionSummarySessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6028,11 +4462,6 @@ export interface GetSessionSummarySessionRequest {
   appId: string;
   sessionId: string;
 }
-const GetSessionSummarySessionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GetSessionSummarySessionRequest>;
-
 export interface SessionsGetSessionSummaryResponseData {
   sessionId: string;
   /** URL where the summary of transcripts can be downloaded */
@@ -6040,23 +4469,11 @@ export interface SessionsGetSessionSummaryResponseData {
   /** Time of Expiry before when you need to download the csv file. */
   summaryDownloadUrlExpiry: string;
 }
-const SessionsGetSessionSummaryResponseData = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<SessionsGetSessionSummaryResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionSummarySessionResponse {
   data?: SessionsGetSessionSummaryResponseData | null;
 }
-const GetSessionSummarySessionResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GetSessionSummarySessionResponse>;
-
 export type SessionsGetSessionTranscriptsRequestFormat = "SRT" | "VTT" | "JSON" | "CSV";
-const SessionsGetSessionTranscriptsRequestFormat = S.String;
-
 export interface GetSessionTranscriptsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6066,11 +4483,6 @@ export interface GetSessionTranscriptsSessionRequest {
   /** Transcript file format to fetch. */
   format?: SessionsGetSessionTranscriptsRequestFormat | (string & {});
 }
-const GetSessionTranscriptsSessionRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GetSessionTranscriptsSessionRequest>;
-
 export interface SessionsGetSessionTranscriptsResponseData {
   sessionId: string;
   /** URL where the transcript can be downloaded */
@@ -6078,20 +4490,10 @@ export interface SessionsGetSessionTranscriptsResponseData {
   /** Time when the download URL will expire */
   transcriptDownloadUrlExpiry: string;
 }
-const SessionsGetSessionTranscriptsResponseData = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<SessionsGetSessionTranscriptsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSessionTranscriptsSessionResponse {
   data?: SessionsGetSessionTranscriptsResponseData | null;
 }
-const GetSessionTranscriptsSessionResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GetSessionTranscriptsSessionResponse>;
-
 export interface GetWebhookByIdWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6099,11 +4501,6 @@ export interface GetWebhookByIdWebhookRequest {
   appId: string;
   webhookId: string;
 }
-const GetWebhookByIdWebhookRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GetWebhookByIdWebhookRequest>;
-
 export type WebhooksGetWebhookByIdResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -6136,20 +4533,12 @@ export interface WebhooksGetWebhookByIdResponseData {
 export interface GetWebhookByIdWebhookResponse {
   data: WebhooksGetWebhookByIdResponseData;
 }
-const GetWebhookByIdWebhookResponse =
-  CreateWebhookWebhookResponse as any as S.Schema<GetWebhookByIdWebhookResponse>;
-
 export interface GetWebhooksWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
 }
-const GetWebhooksWebhookRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetWebhooksWebhookRequest>;
-
 export type WebhooksGetWebhooksResponseDataItemEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -6178,24 +4567,11 @@ export interface WebhooksGetWebhooksResponseDataItem {
   /** URL the webhook will send events to */
   url: string;
 }
-const WebhooksGetWebhooksResponseDataItem =
-  WebhooksCreateWebhookResponseData as any as S.Schema<WebhooksGetWebhooksResponseDataItem>;
-
 export type WebhooksGetWebhooksResponseDataList = Array<WebhooksGetWebhooksResponseDataItem>;
-const WebhooksGetWebhooksResponseDataList = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<WebhooksGetWebhooksResponseDataList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetWebhooksWebhookResponse {
   data: WebhooksGetWebhooksResponseDataList;
 }
-const GetWebhooksWebhookResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<GetWebhooksWebhookResponse>;
-
 export interface KickAllParticipantsActiveSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6203,37 +4579,16 @@ export interface KickAllParticipantsActiveSessionRequest {
   appId: string;
   meetingId: string;
 }
-const KickAllParticipantsActiveSessionRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<KickAllParticipantsActiveSessionRequest>;
-
 export interface ActiveSessionKickAllParticipantsResponseData {
   action?: string | null;
   kickedParticipantsCount?: number | null;
 }
-const ActiveSessionKickAllParticipantsResponseData = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<ActiveSessionKickAllParticipantsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface KickAllParticipantsActiveSessionResponse {
   data?: ActiveSessionKickAllParticipantsResponseData | null;
 }
-const KickAllParticipantsActiveSessionResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<KickAllParticipantsActiveSessionResponse>;
-
 export type ActiveSessionKickParticipantsRequestCustomParticipantIdsList = Array<string>;
-const ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
-  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionKickParticipantsRequestCustomParticipantIdsList>;
-
 export type ActiveSessionKickParticipantsRequestParticipantIdsList = Array<string>;
-const ActiveSessionKickParticipantsRequestParticipantIdsList =
-  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionKickParticipantsRequestParticipantIdsList>;
-
 export interface KickParticipantsActiveSessionRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6243,11 +4598,6 @@ export interface KickParticipantsActiveSessionRequest {
   customParticipantIds?: ActiveSessionKickParticipantsRequestCustomParticipantIdsList;
   participantIds?: ActiveSessionKickParticipantsRequestParticipantIdsList;
 }
-const KickParticipantsActiveSessionRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<KickParticipantsActiveSessionRequest>;
-
 export interface ActiveSessionKickParticipantsResponseDataParticipantsItem {
   /** ID of the session participant */
   id: string;
@@ -6260,36 +4610,16 @@ export interface ActiveSessionKickParticipantsResponseDataParticipantsItem {
   /** A URL pointing to a picture of the participant. */
   picture?: string | null;
 }
-const ActiveSessionKickParticipantsResponseDataParticipantsItem = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
-
 export type ActiveSessionKickParticipantsResponseDataParticipantsList =
   Array<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
-const ActiveSessionKickParticipantsResponseDataParticipantsList = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsList>;
-
 export interface ActiveSessionKickParticipantsResponseData {
   action?: string | null;
   participants?: ActiveSessionKickParticipantsResponseDataParticipantsList | null;
 }
-const ActiveSessionKickParticipantsResponseData = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ActiveSessionKickParticipantsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface KickParticipantsActiveSessionResponse {
   data?: ActiveSessionKickParticipantsResponseData | null;
 }
-const KickParticipantsActiveSessionResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<KickParticipantsActiveSessionResponse>;
-
 export interface LivestreamsGetOrgAnalyticsRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6300,20 +4630,10 @@ export interface LivestreamsGetOrgAnalyticsRequest {
   /** start date in YYYY-MM-DD format */
   startDate?: string;
 }
-const LivestreamsGetOrgAnalyticsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>;
-
 export type LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem;
 export type LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
   Array<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
-const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList>;
-
 export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStats {
   /** Day wise recording stats */
   dayStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList | null;
@@ -6322,11 +4642,6 @@ export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStats {
   /** Total recording minutes during the range specified */
   recordingMinutesConsumed?: number | null;
 }
-const LivestreamsGetOrgAnalyticsResponseDataRecordingStats = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStats>;
-
 export type LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem;
 export type LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
@@ -6339,44 +4654,23 @@ export interface LivestreamsGetOrgAnalyticsResponseDataSessionStats {
   /** Total session minutes during the range specified */
   sessionsMinutesConsumed?: number | null;
 }
-const LivestreamsGetOrgAnalyticsResponseDataSessionStats =
-  AnalyticsGetOrgAnalyticsResponseDataSessionStats as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStats>;
-
 export interface LivestreamsGetOrgAnalyticsResponseData {
   /** Recording statistics of an App during the range specified */
   recordingStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStats | null;
   /** Session statistics of an App during the range specified */
   sessionStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStats | null;
 }
-const LivestreamsGetOrgAnalyticsResponseData = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface LivestreamsGetOrgAnalyticsResponse {
   data?: LivestreamsGetOrgAnalyticsResponseData | null;
 }
-const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>;
-
 export type PresetsUpdateRequestConfigLivestreamViewerQualitiesList = Array<number>;
-const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
-  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsUpdateRequestConfigLivestreamViewerQualitiesList>;
-
 export interface PresetsUpdateRequestConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
   desktop?: number;
   /** Maximum number of streams visible on mobile devices */
   mobile?: number;
 }
-const PresetsUpdateRequestConfigMaxVideoStreams = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<PresetsUpdateRequestConfigMaxVideoStreams>;
-
 export type PresetsUpdateRequestConfigMediaAudio = PresetsCreateRequestConfigMediaAudio;
 export type PresetsUpdateRequestConfigMediaScreenshareQuality =
   | "hd"
@@ -6384,22 +4678,13 @@ export type PresetsUpdateRequestConfigMediaScreenshareQuality =
   | "qvga"
   | "fhd"
   | "uhd";
-const PresetsUpdateRequestConfigMediaScreenshareQuality = S.String;
-
 export interface PresetsUpdateRequestConfigMediaScreenshare {
   /** Frame rate of screen share */
   frameRate?: number;
   /** Quality of screen share */
   quality?: PresetsUpdateRequestConfigMediaScreenshareQuality | (string & {});
 }
-const PresetsUpdateRequestConfigMediaScreenshare = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<PresetsUpdateRequestConfigMediaScreenshare>;
-
 export type PresetsUpdateRequestConfigMediaVideoQuality = "hd" | "vga" | "qvga" | "fhd" | "uhd";
-const PresetsUpdateRequestConfigMediaVideoQuality = S.String;
-
 export interface PresetsUpdateRequestConfigMediaVideo {
   /** Frame rate of participants' video */
   frameRate?: number;
@@ -6408,11 +4693,6 @@ export interface PresetsUpdateRequestConfigMediaVideo {
   /** Enable simulcast for participant videos. */
   simulcast?: boolean;
 }
-const PresetsUpdateRequestConfigMediaVideo = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<PresetsUpdateRequestConfigMediaVideo>;
-
 export interface PresetsUpdateRequestConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateRequestConfigMediaAudio;
@@ -6421,18 +4701,11 @@ export interface PresetsUpdateRequestConfigMedia {
   /** Configuration options for participant videos */
   video?: PresetsUpdateRequestConfigMediaVideo;
 }
-const PresetsUpdateRequestConfigMedia = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<PresetsUpdateRequestConfigMedia>;
-
 export type PresetsUpdateRequestConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const PresetsUpdateRequestConfigViewType = S.String;
-
 export interface PresetsUpdateRequestConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: PresetsUpdateRequestConfigLivestreamViewerQualitiesList;
@@ -6445,22 +4718,12 @@ export interface PresetsUpdateRequestConfig {
   /** Type of the meeting */
   viewType?: PresetsUpdateRequestConfigViewType | (string & {});
 }
-const PresetsUpdateRequestConfig = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<PresetsUpdateRequestConfig>;
-
 export interface PresetsUpdateRequestPermissionsChatPrivate {
   canReceive?: boolean;
   canSend?: boolean;
   files?: boolean;
   text?: boolean;
 }
-const PresetsUpdateRequestPermissionsChatPrivate = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<PresetsUpdateRequestPermissionsChatPrivate>;
-
 export interface PresetsUpdateRequestPermissionsChatPublic {
   /** Can send messages in general */
   canSend?: boolean;
@@ -6469,45 +4732,23 @@ export interface PresetsUpdateRequestPermissionsChatPublic {
   /** Can send text messages */
   text?: boolean;
 }
-const PresetsUpdateRequestPermissionsChatPublic = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<PresetsUpdateRequestPermissionsChatPublic>;
-
 export interface PresetsUpdateRequestPermissionsChat {
   private?: PresetsUpdateRequestPermissionsChatPrivate;
   public?: PresetsUpdateRequestPermissionsChatPublic;
 }
-const PresetsUpdateRequestPermissionsChat = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<PresetsUpdateRequestPermissionsChat>;
-
 export interface PresetsUpdateRequestPermissionsConnectedMeetings {
   canAlterConnectedMeetings?: boolean;
   canSwitchConnectedMeetings?: boolean;
   canSwitchToParentMeeting?: boolean;
 }
-const PresetsUpdateRequestPermissionsConnectedMeetings = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<PresetsUpdateRequestPermissionsConnectedMeetings>;
-
 export type PresetsUpdateRequestPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const PresetsUpdateRequestPermissionsMediaAudioCanProduce = S.String;
-
 export interface PresetsUpdateRequestPermissionsMediaAudio {
   /** Can produce audio */
   canProduce?: PresetsUpdateRequestPermissionsMediaAudioCanProduce | (string & {});
 }
-const PresetsUpdateRequestPermissionsMediaAudio = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<PresetsUpdateRequestPermissionsMediaAudio>;
-
 export type PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
@@ -6516,9 +4757,6 @@ export interface PresetsUpdateRequestPermissionsMediaScreenshare {
   /** Can produce screen share video */
   canProduce?: PresetsUpdateRequestPermissionsMediaScreenshareCanProduce | (string & {});
 }
-const PresetsUpdateRequestPermissionsMediaScreenshare =
-  PresetsUpdateRequestPermissionsMediaAudio as any as S.Schema<PresetsUpdateRequestPermissionsMediaScreenshare>;
-
 export type PresetsUpdateRequestPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
@@ -6527,9 +4765,6 @@ export interface PresetsUpdateRequestPermissionsMediaVideo {
   /** Can produce video */
   canProduce?: PresetsUpdateRequestPermissionsMediaVideoCanProduce | (string & {});
 }
-const PresetsUpdateRequestPermissionsMediaVideo =
-  PresetsUpdateRequestPermissionsMediaAudio as any as S.Schema<PresetsUpdateRequestPermissionsMediaVideo>;
-
 export interface PresetsUpdateRequestPermissionsMedia {
   /** Audio permissions */
   audio?: PresetsUpdateRequestPermissionsMediaAudio;
@@ -6538,11 +4773,6 @@ export interface PresetsUpdateRequestPermissionsMedia {
   /** Video permissions */
   video?: PresetsUpdateRequestPermissionsMediaVideo;
 }
-const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<PresetsUpdateRequestPermissionsMedia>;
-
 export interface PresetsUpdateRequestPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose?: boolean;
@@ -6553,11 +4783,6 @@ export interface PresetsUpdateRequestPermissionsPlugins {
   /** Plugin configuration keyed by plugin UUID. */
   config?: unknown;
 }
-const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<PresetsUpdateRequestPermissionsPlugins>;
-
 export interface PresetsUpdateRequestPermissionsPolls {
   /** Can create polls */
   canCreate?: boolean;
@@ -6566,23 +4791,12 @@ export interface PresetsUpdateRequestPermissionsPolls {
   /** Can vote on polls */
   canVote?: boolean;
 }
-const PresetsUpdateRequestPermissionsPolls = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<PresetsUpdateRequestPermissionsPolls>;
-
 export type PresetsUpdateRequestPermissionsRecorderType = "RECORDER" | "LIVESTREAMER" | "NONE";
-const PresetsUpdateRequestPermissionsRecorderType = S.String;
-
 export type PresetsUpdateRequestPermissionsStageAccess = "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST";
-const PresetsUpdateRequestPermissionsStageAccess = S.String;
-
 export type PresetsUpdateRequestPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
   | "SKIP_ON_ACCEPT";
-const PresetsUpdateRequestPermissionsWaitingRoomType = S.String;
-
 export interface PresetsUpdateRequestPermissions {
   acceptStageRequests?: boolean;
   /** Whether this participant can accept waiting requests */
@@ -6618,21 +4832,12 @@ export interface PresetsUpdateRequestPermissions {
   /** Waiting room type */
   waitingRoomType?: PresetsUpdateRequestPermissionsWaitingRoomType | (string & {});
 }
-const PresetsUpdateRequestPermissions = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<PresetsUpdateRequestPermissions>;
-
 export type PresetsUpdateRequestUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
   | "circular";
-const PresetsUpdateRequestUiDesignTokensBorderRadius = S.String;
-
 export type PresetsUpdateRequestUiDesignTokensBorderWidth = "none" | "thin" | "fat";
-const PresetsUpdateRequestUiDesignTokensBorderWidth = S.String;
-
 export interface PresetsUpdateRequestUiDesignTokensColorsBackground {
   "1000"?: string;
   "600"?: string;
@@ -6640,11 +4845,6 @@ export interface PresetsUpdateRequestUiDesignTokensColorsBackground {
   "800"?: string;
   "900"?: string;
 }
-const PresetsUpdateRequestUiDesignTokensColorsBackground = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBackground>;
-
 export interface PresetsUpdateRequestUiDesignTokensColorsBrand {
   "300"?: string;
   "400"?: string;
@@ -6652,11 +4852,6 @@ export interface PresetsUpdateRequestUiDesignTokensColorsBrand {
   "600"?: string;
   "700"?: string;
 }
-const PresetsUpdateRequestUiDesignTokensColorsBrand = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBrand>;
-
 export interface PresetsUpdateRequestUiDesignTokensColors {
   background?: PresetsUpdateRequestUiDesignTokensColorsBackground;
   brand?: PresetsUpdateRequestUiDesignTokensColorsBrand;
@@ -6667,14 +4862,7 @@ export interface PresetsUpdateRequestUiDesignTokensColors {
   videoBg?: string;
   warning?: string;
 }
-const PresetsUpdateRequestUiDesignTokensColors = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColors>;
-
 export type PresetsUpdateRequestUiDesignTokensTheme = "darkest" | "dark" | "light";
-const PresetsUpdateRequestUiDesignTokensTheme = S.String;
-
 export interface PresetsUpdateRequestUiDesignTokens {
   borderRadius?: PresetsUpdateRequestUiDesignTokensBorderRadius | (string & {});
   borderWidth?: PresetsUpdateRequestUiDesignTokensBorderWidth | (string & {});
@@ -6685,19 +4873,9 @@ export interface PresetsUpdateRequestUiDesignTokens {
   spacingBase?: number;
   theme?: PresetsUpdateRequestUiDesignTokensTheme | (string & {});
 }
-const PresetsUpdateRequestUiDesignTokens = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<PresetsUpdateRequestUiDesignTokens>;
-
 export interface PresetsUpdateRequestUi {
   designTokens?: PresetsUpdateRequestUiDesignTokens;
 }
-const PresetsUpdateRequestUi = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<PresetsUpdateRequestUi>;
-
 export interface PatchPresetRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6710,8 +4888,6 @@ export interface PatchPresetRequest {
   permissions?: PresetsUpdateRequestPermissions;
   ui?: PresetsUpdateRequestUi;
 }
-const PatchPresetRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<PatchPresetRequest>;
-
 export type PresetsUpdateResponseDataConfigMaxVideoStreams =
   PresetsCreateRequestConfigMaxVideoStreams;
 export type PresetsUpdateResponseDataConfigMediaScreenshareQuality =
@@ -6749,20 +4925,12 @@ export interface PresetsUpdateResponseDataConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateResponseDataConfigMediaAudio | null;
 }
-const PresetsUpdateResponseDataConfigMedia =
-  PresetsCreateResponseDataConfigMedia as any as S.Schema<PresetsUpdateResponseDataConfigMedia>;
-
 export type PresetsUpdateResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const PresetsUpdateResponseDataConfigViewType = S.String;
-
 export type PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-const PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
-  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList>;
-
 export interface PresetsUpdateResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
   maxScreenshareCount: number;
@@ -6775,11 +4943,6 @@ export interface PresetsUpdateResponseDataConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList | null;
 }
-const PresetsUpdateResponseDataConfig = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<PresetsUpdateResponseDataConfig>;
-
 export type PresetsUpdateResponseDataPermissionsChatPrivate =
   PresetsCreateRequestPermissionsChatPrivate;
 export type PresetsUpdateResponseDataPermissionsChatPublic =
@@ -6865,9 +5028,6 @@ export interface PresetsUpdateResponseDataPermissions {
   stageEnabled?: boolean | null;
   transcriptionEnabled?: boolean | null;
 }
-const PresetsUpdateResponseDataPermissions =
-  PresetsCreateResponseDataPermissions as any as S.Schema<PresetsUpdateResponseDataPermissions>;
-
 export type PresetsUpdateResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
@@ -6894,9 +5054,6 @@ export interface PresetsUpdateResponseDataUiDesignTokens {
 export interface PresetsUpdateResponseDataUi {
   designTokens: PresetsUpdateResponseDataUiDesignTokens;
 }
-const PresetsUpdateResponseDataUi =
-  PresetsCreateResponseDataUi as any as S.Schema<PresetsUpdateResponseDataUi>;
-
 export interface PresetsUpdateResponseData {
   /** ID of the preset */
   id: string;
@@ -6910,21 +5067,12 @@ export interface PresetsUpdateResponseData {
   /** Timestamp this preset was last updated */
   updatedAt: string;
 }
-const PresetsUpdateResponseData = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<PresetsUpdateResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PatchPresetResponse {
   /** Data returned by the operation */
   data: PresetsUpdateResponseData;
 }
-const PatchPresetResponse = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<PatchPresetResponse>;
-
 export type RecordingsPauseResumeStopRecordingRequestAction = "stop" | "pause" | "resume";
-const RecordingsPauseResumeStopRecordingRequestAction = S.String;
-
 export interface PauseResumeStopRecordingRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -6933,11 +5081,6 @@ export interface PauseResumeStopRecordingRecordingRequest {
   recordingId: string;
   action: RecordingsPauseResumeStopRecordingRequestAction | (string & {});
 }
-const PauseResumeStopRecordingRecordingRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<PauseResumeStopRecordingRecordingRequest>;
-
 export type RecordingsPauseResumeStopRecordingResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
@@ -6945,13 +5088,9 @@ export type RecordingsPauseResumeStopRecordingResponseDataStatus =
   | "UPLOADED"
   | "ERRORED"
   | "PAUSED";
-const RecordingsPauseResumeStopRecordingResponseDataStatus = S.String;
-
 export type RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
   | "ORGANIZATION"
   | "USER";
-const RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType = S.String;
-
 export interface RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller {
   /** Name of the user who started the recording. */
   name?: string | null;
@@ -6960,26 +5099,14 @@ export interface RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller
   /** The user ID of the person who started the recording. */
   userId?: string | null;
 }
-const RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller>;
-
 export type RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
   | "API_CALL"
   | "RECORD_ON_START";
-const RecordingsPauseResumeStopRecordingResponseDataStartReasonReason = S.String;
-
 export interface RecordingsPauseResumeStopRecordingResponseDataStartReason {
   caller?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller | null;
   /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
   reason?: RecordingsPauseResumeStopRecordingResponseDataStartReasonReason | null;
 }
-const RecordingsPauseResumeStopRecordingResponseDataStartReason = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReason>;
-
 export type RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
   | "ORGANIZATION"
   | "USER";
@@ -7000,9 +5127,6 @@ export interface RecordingsPauseResumeStopRecordingResponseDataStopReason {
   /** Specifies the reason why the recording stopped. */
   reason?: RecordingsPauseResumeStopRecordingResponseDataStopReasonReason | null;
 }
-const RecordingsPauseResumeStopRecordingResponseDataStopReason =
-  RecordingsPauseResumeStopRecordingResponseDataStartReason as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStopReason>;
-
 export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigCase0AuthMethod =
   | "KEY"
   | "PASSWORD";
@@ -7131,8 +5255,6 @@ export type RecordingsPauseResumeStopRecordingResponseDataStorageConfig =
   | RecordingsPauseResumeStopRecordingResponseDataStorageConfigCase1
   | RecordingsPauseResumeStopRecordingResponseDataStorageConfigCase2
   | RecordingsPauseResumeStopRecordingResponseDataStorageConfigCase3;
-const RecordingsPauseResumeStopRecordingResponseDataStorageConfig = /*@__PURE__*/ __L.at(__c38, 0);
-
 export interface RecordingsPauseResumeStopRecordingResponseData {
   /** ID of the recording */
   id: string;
@@ -7162,43 +5284,24 @@ export interface RecordingsPauseResumeStopRecordingResponseData {
   stopReason?: RecordingsPauseResumeStopRecordingResponseDataStopReason | null;
   storageConfig?: RecordingsPauseResumeStopRecordingResponseDataStorageConfig | null;
 }
-const RecordingsPauseResumeStopRecordingResponseData = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PauseResumeStopRecordingRecordingResponse {
   /** Data returned by the operation */
   data?: RecordingsPauseResumeStopRecordingResponseData | null;
 }
-const PauseResumeStopRecordingRecordingResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<PauseResumeStopRecordingRecordingResponse>;
-
 export interface PostAppRequest {
   /** The account identifier tag. */
   accountId: string;
   name: string;
 }
-const PostAppRequest = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<PostAppRequest>;
-
 export type AppsPostResponseDataApp = AppsGetResponseDataItem;
 export interface AppsPostResponseData {
   app?: AppsGetResponseDataItem | null;
 }
-const AppsPostResponseData = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<AppsPostResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PostAppResponse {
   data?: AppsPostResponseData | null;
 }
-const PostAppResponse = /*@__PURE__*/ __L.at(__c38, 5) as any as S.Schema<PostAppResponse>;
-
 export interface RefreshParticipantTokenMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -7207,30 +5310,15 @@ export interface RefreshParticipantTokenMeetingRequest {
   meetingId: string;
   participantId: string;
 }
-const RefreshParticipantTokenMeetingRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<RefreshParticipantTokenMeetingRequest>;
-
 export interface MeetingsRefreshParticipantTokenResponseData {
   /** Regenerated participant's authentication token. */
   token: string;
 }
-const MeetingsRefreshParticipantTokenResponseData = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<MeetingsRefreshParticipantTokenResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface RefreshParticipantTokenMeetingResponse {
   /** Data returned by the operation */
   data: MeetingsRefreshParticipantTokenResponseData;
 }
-const RefreshParticipantTokenMeetingResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<RefreshParticipantTokenMeetingResponse>;
-
 export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
@@ -7241,13 +5329,9 @@ export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
   | "one_on_one_meeting"
   | "lecture"
   | "code_review";
-const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType = S.String;
-
 export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
   | "plain_text"
   | "markdown";
-const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat = S.String;
-
 export interface MeetingsReplaceMeetingByIdRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?: MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType | (string & {});
@@ -7256,15 +5340,7 @@ export interface MeetingsReplaceMeetingByIdRequestAiConfigSummarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number;
 }
-const MeetingsReplaceMeetingByIdRequestAiConfigSummarization = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigSummarization>;
-
 export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList = Array<string>;
-const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
-
 export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
@@ -7276,8 +5352,6 @@ export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "el"
   | "fr"
   | "nl";
-const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage = S.String;
-
 export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList;
@@ -7286,28 +5360,14 @@ export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
 }
-const MeetingsReplaceMeetingByIdRequestAiConfigTranscription = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscription>;
-
 export interface MeetingsReplaceMeetingByIdRequestAiConfig {
   /** Summary Config */
   summarization?: MeetingsReplaceMeetingByIdRequestAiConfigSummarization;
   /** Transcription Configurations */
   transcription?: MeetingsReplaceMeetingByIdRequestAiConfigTranscription;
 }
-const MeetingsReplaceMeetingByIdRequestAiConfig = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfig>;
-
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel = "mono" | "stereo";
-const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel = S.String;
-
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec = "MP3" | "AAC";
-const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec = S.String;
-
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel | (string & {});
@@ -7316,11 +5376,6 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
-const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig>;
-
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig =
   MeetingsCreateRequestRecordingConfigLiveStreamingConfig;
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig =
@@ -7462,24 +5517,15 @@ export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
   | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigCase1
   | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigCase2
   | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigCase3;
-const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-);
-
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
   | "H264"
   | "VP8"
   | "VP9";
-const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec = S.String;
-
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
   | "right bottom";
-const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition = S.String;
-
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
   MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize;
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark {
@@ -7492,11 +5538,6 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWate
   /** URL of the watermark image */
   url?: string;
 }
-const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark>;
-
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec | (string & {});
@@ -7509,11 +5550,6 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig {
   /** Width of the recording video in pixels */
   width?: number;
 }
-const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig>;
-
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig;
@@ -7526,11 +5562,6 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfig {
   storageConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig;
   videoConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig;
 }
-const MeetingsReplaceMeetingByIdRequestRecordingConfig = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfig>;
-
 export interface ReplaceMeetingByIdMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -7556,11 +5587,6 @@ export interface ReplaceMeetingByIdMeetingRequest {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean;
 }
-const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<ReplaceMeetingByIdMeetingRequest>;
-
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
@@ -7571,13 +5597,9 @@ export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryTy
   | "one_on_one_meeting"
   | "lecture"
   | "code_review";
-const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType = S.String;
-
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   | "plain_text"
   | "markdown";
-const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat = S.String;
-
 export interface MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType | null;
@@ -7586,15 +5608,7 @@ export interface MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number | null;
 }
-const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization>;
-
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList = Array<string>;
-const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
-
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
@@ -7606,8 +5620,6 @@ export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage 
   | "el"
   | "fr"
   | "nl";
-const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage = S.String;
-
 export interface MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
@@ -7616,22 +5628,12 @@ export interface MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
 }
-const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription>;
-
 export interface MeetingsReplaceMeetingByIdResponseDataAiConfig {
   /** Summary Config */
   summarization?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
   transcription?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription | null;
 }
-const MeetingsReplaceMeetingByIdResponseDataAiConfig = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfig>;
-
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   | "mono"
   | "stereo";
@@ -7644,9 +5646,6 @@ export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfi
   /** Controls whether to export audio file seperately */
   exportFile?: boolean | null;
 }
-const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig =
-  RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig>;
-
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
   MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig;
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
@@ -7781,17 +5780,10 @@ export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig =
   | MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigCase1
   | MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigCase2
   | MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigCase3;
-const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-);
-
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   | "H264"
   | "VP8"
   | "VP9";
-const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec = S.String;
-
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
@@ -7807,9 +5799,6 @@ export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfi
   /** URL of the watermark image */
   url?: string | null;
 }
-const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
-  MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
-
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec | null;
@@ -7822,11 +5811,6 @@ export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfi
   /** Width of the recording video in pixels */
   width?: number | null;
 }
-const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig>;
-
 export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig | null;
@@ -7839,14 +5823,7 @@ export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfig {
   storageConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig | null;
   videoConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig | null;
 }
-const MeetingsReplaceMeetingByIdResponseDataRecordingConfig = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfig>;
-
 export type MeetingsReplaceMeetingByIdResponseDataStatus = "ACTIVE" | "INACTIVE";
-const MeetingsReplaceMeetingByIdResponseDataStatus = S.String;
-
 export interface MeetingsReplaceMeetingByIdResponseData {
   /** ID of the meeting. */
   id: string;
@@ -7875,21 +5852,11 @@ export interface MeetingsReplaceMeetingByIdResponseData {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const MeetingsReplaceMeetingByIdResponseData = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<MeetingsReplaceMeetingByIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ReplaceMeetingByIdMeetingResponse {
   /** Data returned by the operation */
   data?: MeetingsReplaceMeetingByIdResponseData | null;
 }
-const ReplaceMeetingByIdMeetingResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<ReplaceMeetingByIdMeetingResponse>;
-
 export type ReplacePresetByIdRequestConfigMaxVideoStreams =
   PresetsCreateRequestConfigMaxVideoStreams;
 export type ReplacePresetByIdRequestConfigMediaScreenshareQuality =
@@ -7922,20 +5889,12 @@ export interface ReplacePresetByIdRequestConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateRequestConfigMediaAudio;
 }
-const ReplacePresetByIdRequestConfigMedia =
-  PresetsCreateRequestConfigMedia as any as S.Schema<ReplacePresetByIdRequestConfigMedia>;
-
 export type ReplacePresetByIdRequestConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const ReplacePresetByIdRequestConfigViewType = S.String;
-
 export type ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList = Array<number>;
-const ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList =
-  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList>;
-
 export interface ReplacePresetByIdRequestConfig {
   /** Maximum number of screen shares that can be active at a given time */
   maxScreenshareCount: number;
@@ -7948,11 +5907,6 @@ export interface ReplacePresetByIdRequestConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList;
 }
-const ReplacePresetByIdRequestConfig = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<ReplacePresetByIdRequestConfig>;
-
 export type ReplacePresetByIdRequestPermissionsChatPrivate =
   PresetsCreateRequestPermissionsChatPrivate;
 export type ReplacePresetByIdRequestPermissionsChatPublic =
@@ -7992,33 +5946,18 @@ export interface ReplacePresetByIdRequestPermissionsMedia {
   /** Video permissions */
   video: ReplacePresetByIdRequestPermissionsMediaVideo;
 }
-const ReplacePresetByIdRequestPermissionsMedia =
-  PresetsCreateRequestPermissionsMedia as any as S.Schema<ReplacePresetByIdRequestPermissionsMedia>;
-
 export type ReplacePresetByIdRequestPermissionsPluginsConfigValueAccessControl =
   | "FULL_ACCESS"
   | "VIEW_ONLY";
-const ReplacePresetByIdRequestPermissionsPluginsConfigValueAccessControl = S.String;
-
 export interface ReplacePresetByIdRequestPermissionsPluginsConfigValue {
   accessControl?:
     | ReplacePresetByIdRequestPermissionsPluginsConfigValueAccessControl
     | (string & {});
   handlesViewOnly?: boolean;
 }
-const ReplacePresetByIdRequestPermissionsPluginsConfigValue = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<ReplacePresetByIdRequestPermissionsPluginsConfigValue>;
-
 export type ReplacePresetByIdRequestPermissionsPluginsConfigMap = {
   [key: string]: ReplacePresetByIdRequestPermissionsPluginsConfigValue | undefined;
 };
-const ReplacePresetByIdRequestPermissionsPluginsConfigMap = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<ReplacePresetByIdRequestPermissionsPluginsConfigMap>;
-
 export interface ReplacePresetByIdRequestPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -8029,27 +5968,16 @@ export interface ReplacePresetByIdRequestPermissionsPlugins {
   /** Plugin configuration keyed by plugin UUID. */
   config: ReplacePresetByIdRequestPermissionsPluginsConfigMap;
 }
-const ReplacePresetByIdRequestPermissionsPlugins = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<ReplacePresetByIdRequestPermissionsPlugins>;
-
 export type ReplacePresetByIdRequestPermissionsPolls = PresetsCreateRequestPermissionsPolls;
 export type ReplacePresetByIdRequestPermissionsRecorderType = "RECORDER" | "LIVESTREAMER" | "NONE";
-const ReplacePresetByIdRequestPermissionsRecorderType = S.String;
-
 export type ReplacePresetByIdRequestPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
   | "SKIP_ON_ACCEPT";
-const ReplacePresetByIdRequestPermissionsWaitingRoomType = S.String;
-
 export type ReplacePresetByIdRequestPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const ReplacePresetByIdRequestPermissionsStageAccess = S.String;
-
 export interface ReplacePresetByIdRequestPermissions {
   /** Whether this participant can accept waiting requests */
   acceptWaitingRequests: boolean;
@@ -8085,11 +6013,6 @@ export interface ReplacePresetByIdRequestPermissions {
   stageEnabled?: boolean;
   transcriptionEnabled?: boolean;
 }
-const ReplacePresetByIdRequestPermissions = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<ReplacePresetByIdRequestPermissions>;
-
 export type ReplacePresetByIdRequestUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
@@ -8112,17 +6035,9 @@ export interface ReplacePresetByIdRequestUiDesignTokens {
   googleFont?: string;
   logo?: string;
 }
-const ReplacePresetByIdRequestUiDesignTokens =
-  PresetsCreateRequestUiDesignTokens as any as S.Schema<ReplacePresetByIdRequestUiDesignTokens>;
-
 export interface ReplacePresetByIdRequestUi {
   designTokens: ReplacePresetByIdRequestUiDesignTokens;
 }
-const ReplacePresetByIdRequestUi = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<ReplacePresetByIdRequestUi>;
-
 export interface ReplacePresetByIdRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -8135,11 +6050,6 @@ export interface ReplacePresetByIdRequest {
   permissions: ReplacePresetByIdRequestPermissions;
   ui: ReplacePresetByIdRequestUi;
 }
-const ReplacePresetByIdRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<ReplacePresetByIdRequest>;
-
 export type ReplacePresetByIdResponseDataConfigMaxVideoStreams =
   PresetsCreateRequestConfigMaxVideoStreams;
 export type ReplacePresetByIdResponseDataConfigMediaScreenshareQuality =
@@ -8178,20 +6088,12 @@ export interface ReplacePresetByIdResponseDataConfigMedia {
   /** Control options for Audio quality. */
   audio?: PresetsCreateResponseDataConfigMediaAudio | null;
 }
-const ReplacePresetByIdResponseDataConfigMedia =
-  PresetsCreateResponseDataConfigMedia as any as S.Schema<ReplacePresetByIdResponseDataConfigMedia>;
-
 export type ReplacePresetByIdResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
   | "LIVESTREAM";
-const ReplacePresetByIdResponseDataConfigViewType = S.String;
-
 export type ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-const ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList =
-  PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList as any as S.Schema<ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList>;
-
 export interface ReplacePresetByIdResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
   maxScreenshareCount: number;
@@ -8204,11 +6106,6 @@ export interface ReplacePresetByIdResponseDataConfig {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList | null;
 }
-const ReplacePresetByIdResponseDataConfig = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ReplacePresetByIdResponseDataConfig>;
-
 export type ReplacePresetByIdResponseDataPermissionsChatPrivate =
   PresetsCreateRequestPermissionsChatPrivate;
 export type ReplacePresetByIdResponseDataPermissionsChatPublic =
@@ -8248,31 +6145,16 @@ export interface ReplacePresetByIdResponseDataPermissionsMedia {
   /** Video permissions */
   video: ReplacePresetByIdResponseDataPermissionsMediaVideo;
 }
-const ReplacePresetByIdResponseDataPermissionsMedia =
-  PresetsGetPresetByIdResponseDataPermissionsMedia as any as S.Schema<ReplacePresetByIdResponseDataPermissionsMedia>;
-
 export type ReplacePresetByIdResponseDataPermissionsPluginsConfigValueAccessControl =
   | "FULL_ACCESS"
   | "VIEW_ONLY";
-const ReplacePresetByIdResponseDataPermissionsPluginsConfigValueAccessControl = S.String;
-
 export interface ReplacePresetByIdResponseDataPermissionsPluginsConfigValue {
   accessControl?: ReplacePresetByIdResponseDataPermissionsPluginsConfigValueAccessControl | null;
   handlesViewOnly?: boolean | null;
 }
-const ReplacePresetByIdResponseDataPermissionsPluginsConfigValue = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<ReplacePresetByIdResponseDataPermissionsPluginsConfigValue>;
-
 export type ReplacePresetByIdResponseDataPermissionsPluginsConfigMap = {
   [key: string]: ReplacePresetByIdResponseDataPermissionsPluginsConfigValue | undefined;
 };
-const ReplacePresetByIdResponseDataPermissionsPluginsConfigMap = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<ReplacePresetByIdResponseDataPermissionsPluginsConfigMap>;
-
 export interface ReplacePresetByIdResponseDataPermissionsPlugins {
   /** Can close plugins that are already open */
   canClose: boolean;
@@ -8283,30 +6165,19 @@ export interface ReplacePresetByIdResponseDataPermissionsPlugins {
   /** Plugin configuration keyed by plugin UUID. */
   config: ReplacePresetByIdResponseDataPermissionsPluginsConfigMap;
 }
-const ReplacePresetByIdResponseDataPermissionsPlugins = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<ReplacePresetByIdResponseDataPermissionsPlugins>;
-
 export type ReplacePresetByIdResponseDataPermissionsPolls = PresetsCreateRequestPermissionsPolls;
 export type ReplacePresetByIdResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
   | "NONE";
-const ReplacePresetByIdResponseDataPermissionsRecorderType = S.String;
-
 export type ReplacePresetByIdResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
   | "SKIP_ON_ACCEPT";
-const ReplacePresetByIdResponseDataPermissionsWaitingRoomType = S.String;
-
 export type ReplacePresetByIdResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
   | "CAN_REQUEST";
-const ReplacePresetByIdResponseDataPermissionsStageAccess = S.String;
-
 export interface ReplacePresetByIdResponseDataPermissions {
   /** Whether this participant can accept waiting requests */
   acceptWaitingRequests: boolean;
@@ -8342,11 +6213,6 @@ export interface ReplacePresetByIdResponseDataPermissions {
   stageEnabled?: boolean | null;
   transcriptionEnabled?: boolean | null;
 }
-const ReplacePresetByIdResponseDataPermissions = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ReplacePresetByIdResponseDataPermissions>;
-
 export type ReplacePresetByIdResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
@@ -8370,17 +6236,9 @@ export interface ReplacePresetByIdResponseDataUiDesignTokens {
   googleFont?: string | null;
   logo?: string | null;
 }
-const ReplacePresetByIdResponseDataUiDesignTokens =
-  PresetsGetPresetByIdResponseDataUiDesignTokens as any as S.Schema<ReplacePresetByIdResponseDataUiDesignTokens>;
-
 export interface ReplacePresetByIdResponseDataUi {
   designTokens: ReplacePresetByIdResponseDataUiDesignTokens;
 }
-const ReplacePresetByIdResponseDataUi = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ReplacePresetByIdResponseDataUi>;
-
 export interface ReplacePresetByIdResponseData {
   /** ID of the preset */
   id: string;
@@ -8394,21 +6252,11 @@ export interface ReplacePresetByIdResponseData {
   /** Timestamp this preset was last updated */
   updatedAt: string;
 }
-const ReplacePresetByIdResponseData = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<ReplacePresetByIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ReplacePresetByIdResponse {
   /** Data returned by the operation */
   data: ReplacePresetByIdResponseData;
 }
-const ReplacePresetByIdResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ReplacePresetByIdResponse>;
-
 export type WebhooksReplaceWebhookRequestEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -8422,9 +6270,6 @@ export type WebhooksReplaceWebhookRequestEventsItem =
 export type WebhooksReplaceWebhookRequestEventsList = Array<
   WebhooksReplaceWebhookRequestEventsItem | (string & {})
 >;
-const WebhooksReplaceWebhookRequestEventsList =
-  WebhooksCreateWebhookRequestEventsList as any as S.Schema<WebhooksReplaceWebhookRequestEventsList>;
-
 export interface ReplaceWebhookWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -8440,11 +6285,6 @@ export interface ReplaceWebhookWebhookRequest {
   /** Set whether or not the webhook should be active when created */
   enabled?: boolean;
 }
-const ReplaceWebhookWebhookRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<ReplaceWebhookWebhookRequest>;
-
 export type WebhooksReplaceWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
@@ -8477,20 +6317,12 @@ export interface WebhooksReplaceWebhookResponseData {
 export interface ReplaceWebhookWebhookResponse {
   data: WebhooksReplaceWebhookResponseData;
 }
-const ReplaceWebhookWebhookResponse =
-  CreateWebhookWebhookResponse as any as S.Schema<ReplaceWebhookWebhookResponse>;
-
 export interface LivestreamsStartLivestreamingAMeetingRequestVideoConfig {
   /** Height of the livestreaming video in pixels */
   height?: number;
   /** Width of the livestreaming video in pixels */
   width?: number;
 }
-const LivestreamsStartLivestreamingAMeetingRequestVideoConfig = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<LivestreamsStartLivestreamingAMeetingRequestVideoConfig>;
-
 export interface StartLivestreamingAMeetingLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -8500,18 +6332,11 @@ export interface StartLivestreamingAMeetingLivestreamRequest {
   name?: string;
   videoConfig?: LivestreamsStartLivestreamingAMeetingRequestVideoConfig;
 }
-const StartLivestreamingAMeetingLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<StartLivestreamingAMeetingLivestreamRequest>;
-
 export type LivestreamsStartLivestreamingAMeetingResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
   | "INVOKED";
-const LivestreamsStartLivestreamingAMeetingResponseDataStatus = S.String;
-
 export interface LivestreamsStartLivestreamingAMeetingResponseData {
   /** The livestream ID. */
   id?: string | null;
@@ -8523,20 +6348,10 @@ export interface LivestreamsStartLivestreamingAMeetingResponseData {
   /** Unique key for accessing each livestream. */
   streamKey?: string | null;
 }
-const LivestreamsStartLivestreamingAMeetingResponseData = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<LivestreamsStartLivestreamingAMeetingResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StartLivestreamingAMeetingLivestreamResponse {
   data?: LivestreamsStartLivestreamingAMeetingResponseData | null;
 }
-const StartLivestreamingAMeetingLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<StartLivestreamingAMeetingLivestreamResponse>;
-
 export type RecordingsStartRecordingsRequestAudioConfigChannel = "mono" | "stereo";
 export type RecordingsStartRecordingsRequestAudioConfigCodec = "MP3" | "AAC";
 export interface RecordingsStartRecordingsRequestAudioConfig {
@@ -8547,21 +6362,11 @@ export interface RecordingsStartRecordingsRequestAudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
-const RecordingsStartRecordingsRequestAudioConfig =
-  MeetingsCreateRequestRecordingConfigAudioConfig as any as S.Schema<RecordingsStartRecordingsRequestAudioConfig>;
-
 export type RecordingsStartRecordingsRequestInteractiveConfigType = "ID3";
-const RecordingsStartRecordingsRequestInteractiveConfigType = S.String;
-
 export interface RecordingsStartRecordingsRequestInteractiveConfig {
   /** The metadata is presented in the form of ID3 tags. */
   type?: RecordingsStartRecordingsRequestInteractiveConfigType | (string & {});
 }
-const RecordingsStartRecordingsRequestInteractiveConfig = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<RecordingsStartRecordingsRequestInteractiveConfig>;
-
 export type RecordingsStartRecordingsRequestRealtimekitBucketConfig =
   MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig;
 export type RecordingsStartRecordingsRequestRtmpOutConfig =
@@ -8690,18 +6495,12 @@ export type RecordingsStartRecordingsRequestStorageConfig =
   | RecordingsStartRecordingsRequestStorageConfigCase1
   | RecordingsStartRecordingsRequestStorageConfigCase2
   | RecordingsStartRecordingsRequestStorageConfigCase3;
-const RecordingsStartRecordingsRequestStorageConfig = /*@__PURE__*/ __L.at(__c43, 7);
-
 export type RecordingsStartRecordingsRequestVideoConfigCodec = "H264" | "VP8" | "VP9";
-const RecordingsStartRecordingsRequestVideoConfigCodec = S.String;
-
 export type RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
   | "right bottom";
-const RecordingsStartRecordingsRequestVideoConfigWatermarkPosition = S.String;
-
 export type RecordingsStartRecordingsRequestVideoConfigWatermarkSize =
   MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize;
 export interface RecordingsStartRecordingsRequestVideoConfigWatermark {
@@ -8712,11 +6511,6 @@ export interface RecordingsStartRecordingsRequestVideoConfigWatermark {
   /** URL of the watermark image */
   url?: string;
 }
-const RecordingsStartRecordingsRequestVideoConfigWatermark = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfigWatermark>;
-
 export interface RecordingsStartRecordingsRequestVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?: RecordingsStartRecordingsRequestVideoConfigCodec | (string & {});
@@ -8729,11 +6523,6 @@ export interface RecordingsStartRecordingsRequestVideoConfig {
   /** Width of the recording video in pixels */
   width?: number;
 }
-const RecordingsStartRecordingsRequestVideoConfig = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfig>;
-
 export interface StartRecordingsRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -8758,11 +6547,6 @@ export interface StartRecordingsRecordingRequest {
   url?: string;
   videoConfig?: RecordingsStartRecordingsRequestVideoConfig;
 }
-const StartRecordingsRecordingRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<StartRecordingsRecordingRequest>;
-
 export type RecordingsStartRecordingsResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
@@ -8770,8 +6554,6 @@ export type RecordingsStartRecordingsResponseDataStatus =
   | "UPLOADED"
   | "ERRORED"
   | "PAUSED";
-const RecordingsStartRecordingsResponseDataStatus = S.String;
-
 export type RecordingsStartRecordingsResponseDataStartReasonCallerType = "ORGANIZATION" | "USER";
 export interface RecordingsStartRecordingsResponseDataStartReasonCaller {
   /** Name of the user who started the recording. */
@@ -8787,9 +6569,6 @@ export interface RecordingsStartRecordingsResponseDataStartReason {
   /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
   reason?: RecordingsStartRecordingsResponseDataStartReasonReason | null;
 }
-const RecordingsStartRecordingsResponseDataStartReason =
-  RecordingsGetOneRecordingResponseDataStartReason as any as S.Schema<RecordingsStartRecordingsResponseDataStartReason>;
-
 export type RecordingsStartRecordingsResponseDataStopReasonCallerType = "ORGANIZATION" | "USER";
 export interface RecordingsStartRecordingsResponseDataStopReasonCaller {
   /** Name of the user who stopped the recording. */
@@ -8808,9 +6587,6 @@ export interface RecordingsStartRecordingsResponseDataStopReason {
   /** Specifies the reason why the recording stopped. */
   reason?: RecordingsStartRecordingsResponseDataStopReasonReason | null;
 }
-const RecordingsStartRecordingsResponseDataStopReason =
-  RecordingsGetOneRecordingResponseDataStartReason as any as S.Schema<RecordingsStartRecordingsResponseDataStopReason>;
-
 export type RecordingsStartRecordingsResponseDataStorageConfigCase0AuthMethod = "KEY" | "PASSWORD";
 export type RecordingsStartRecordingsResponseDataStorageConfigCase0Type = "gcs";
 export interface RecordingsStartRecordingsResponseDataStorageConfigCase0 {
@@ -8935,8 +6711,6 @@ export type RecordingsStartRecordingsResponseDataStorageConfig =
   | RecordingsStartRecordingsResponseDataStorageConfigCase1
   | RecordingsStartRecordingsResponseDataStorageConfigCase2
   | RecordingsStartRecordingsResponseDataStorageConfigCase3;
-const RecordingsStartRecordingsResponseDataStorageConfig = /*@__PURE__*/ __L.at(__c44, 3);
-
 export interface RecordingsStartRecordingsResponseData {
   /** ID of the recording */
   id: string;
@@ -8966,47 +6740,22 @@ export interface RecordingsStartRecordingsResponseData {
   stopReason?: RecordingsStartRecordingsResponseDataStopReason | null;
   storageConfig?: RecordingsStartRecordingsResponseDataStorageConfig | null;
 }
-const RecordingsStartRecordingsResponseData = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<RecordingsStartRecordingsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StartRecordingsRecordingResponse {
   /** Data returned by the operation */
   data?: RecordingsStartRecordingsResponseData | null;
 }
-const StartRecordingsRecordingResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<StartRecordingsRecordingResponse>;
-
 export type RecordingsStartTrackRecordingRequestLayersValueMediaKind = "audio";
-const RecordingsStartTrackRecordingRequestLayersValueMediaKind = S.String;
-
 export interface RecordingsStartTrackRecordingRequestLayersValue {
   /** A file name prefix to apply for files generated from this layer */
   fileNamePrefix?: string;
   /** Media kind to record. Track recording currently supports audio only. */
   mediaKind?: RecordingsStartTrackRecordingRequestLayersValueMediaKind | (string & {});
 }
-const RecordingsStartTrackRecordingRequestLayersValue = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersValue>;
-
 export type RecordingsStartTrackRecordingRequestLayersMap = {
   [key: string]: RecordingsStartTrackRecordingRequestLayersValue | undefined;
 };
-const RecordingsStartTrackRecordingRequestLayersMap = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersMap>;
-
 export type RecordingsStartTrackRecordingRequestUserIdsList = Array<string>;
-const RecordingsStartTrackRecordingRequestUserIdsList =
-  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<RecordingsStartTrackRecordingRequestUserIdsList>;
-
 export interface StartTrackRecordingRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -9019,11 +6768,6 @@ export interface StartTrackRecordingRecordingRequest {
   /** Optional list of participant user IDs to record. Selective track recording (`user_ids`) is in early beta contact support to use this feature. */
   userIds?: RecordingsStartTrackRecordingRequestUserIdsList;
 }
-const StartTrackRecordingRecordingRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<StartTrackRecordingRecordingRequest>;
-
 export type RecordingsStartTrackRecordingResponseDataRecordingStatus =
   | "INVOKED"
   | "RECORDING"
@@ -9057,27 +6801,14 @@ export interface RecordingsStartTrackRecordingResponseDataRecording {
   /** Total recording time in seconds. */
   recordingDuration?: number | null;
 }
-const RecordingsStartTrackRecordingResponseDataRecording =
-  RecordingsGetActiveRecordingsResponseData as any as S.Schema<RecordingsStartTrackRecordingResponseDataRecording>;
-
 export interface RecordingsStartTrackRecordingResponseData {
   recording: RecordingsStartTrackRecordingResponseDataRecording;
 }
-const RecordingsStartTrackRecordingResponseData = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<RecordingsStartTrackRecordingResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StartTrackRecordingRecordingResponse {
   /** Data returned by the operation */
   data?: RecordingsStartTrackRecordingResponseData | null;
 }
-const StartTrackRecordingRecordingResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<StartTrackRecordingRecordingResponse>;
-
 export interface StopLivestreamingAMeetingLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -9085,28 +6816,13 @@ export interface StopLivestreamingAMeetingLivestreamRequest {
   appId: string;
   meetingId: string;
 }
-const StopLivestreamingAMeetingLivestreamRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<StopLivestreamingAMeetingLivestreamRequest>;
-
 export interface LivestreamsStopLivestreamingAMeetingResponseData {
   message?: string | null;
 }
-const LivestreamsStopLivestreamingAMeetingResponseData = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<LivestreamsStopLivestreamingAMeetingResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StopLivestreamingAMeetingLivestreamResponse {
   data?: LivestreamsStopLivestreamingAMeetingResponseData | null;
 }
-const StopLivestreamingAMeetingLivestreamResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<StopLivestreamingAMeetingLivestreamResponse>;
-
 export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
@@ -9128,13 +6844,7 @@ export interface MeetingsUpdateMeetingByIdRequestAiConfigSummarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number;
 }
-const MeetingsUpdateMeetingByIdRequestAiConfigSummarization =
-  MeetingsCreateRequestAiConfigSummarization as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigSummarization>;
-
 export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList = Array<string>;
-const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
-
 export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
@@ -9146,8 +6856,6 @@ export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "el"
   | "fr"
   | "nl";
-const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage = S.String;
-
 export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList;
@@ -9156,22 +6864,12 @@ export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
 }
-const MeetingsUpdateMeetingByIdRequestAiConfigTranscription = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscription>;
-
 export interface MeetingsUpdateMeetingByIdRequestAiConfig {
   /** Summary Config */
   summarization?: MeetingsUpdateMeetingByIdRequestAiConfigSummarization;
   /** Transcription Configurations */
   transcription?: MeetingsUpdateMeetingByIdRequestAiConfigTranscription;
 }
-const MeetingsUpdateMeetingByIdRequestAiConfig = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfig>;
-
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel = "mono" | "stereo";
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec = "MP3" | "AAC";
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig {
@@ -9182,9 +6880,6 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean;
 }
-const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig =
-  MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig>;
-
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig =
   MeetingsCreateRequestRecordingConfigLiveStreamingConfig;
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig =
@@ -9326,8 +7021,6 @@ export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
   | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigCase1
   | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigCase2
   | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigCase3;
-const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(__c46, 0);
-
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
   | "H264"
   | "VP8"
@@ -9361,9 +7054,6 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig {
   /** Width of the recording video in pixels */
   width?: number;
 }
-const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig =
-  MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig>;
-
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig;
@@ -9376,14 +7066,7 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfig {
   storageConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig;
   videoConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig;
 }
-const MeetingsUpdateMeetingByIdRequestRecordingConfig = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfig>;
-
 export type MeetingsUpdateMeetingByIdRequestStatus = "ACTIVE" | "INACTIVE";
-const MeetingsUpdateMeetingByIdRequestStatus = S.String;
-
 export interface UpdateMeetingByIdMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -9411,11 +7094,6 @@ export interface UpdateMeetingByIdMeetingRequest {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean;
 }
-const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<UpdateMeetingByIdMeetingRequest>;
-
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
@@ -9437,13 +7115,7 @@ export interface MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number | null;
 }
-const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization =
-  MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization>;
-
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList = Array<string>;
-const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
-
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
@@ -9455,8 +7127,6 @@ export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "el"
   | "fr"
   | "nl";
-const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage = S.String;
-
 export interface MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
@@ -9465,22 +7135,12 @@ export interface MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
 }
-const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription>;
-
 export interface MeetingsUpdateMeetingByIdResponseDataAiConfig {
   /** Summary Config */
   summarization?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization | null;
   /** Transcription Configurations */
   transcription?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription | null;
 }
-const MeetingsUpdateMeetingByIdResponseDataAiConfig = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfig>;
-
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   | "mono"
   | "stereo";
@@ -9493,9 +7153,6 @@ export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig
   /** Controls whether to export audio file seperately */
   exportFile?: boolean | null;
 }
-const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig =
-  RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig>;
-
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
   MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig;
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
@@ -9630,11 +7287,6 @@ export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
   | MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigCase1
   | MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigCase2
   | MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigCase3;
-const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-);
-
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   | "H264"
   | "VP8"
@@ -9666,9 +7318,6 @@ export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig
   /** Width of the recording video in pixels */
   width?: number | null;
 }
-const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig =
-  MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig>;
-
 export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig | null;
@@ -9681,14 +7330,7 @@ export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfig {
   storageConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig | null;
   videoConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig | null;
 }
-const MeetingsUpdateMeetingByIdResponseDataRecordingConfig = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfig>;
-
 export type MeetingsUpdateMeetingByIdResponseDataStatus = "ACTIVE" | "INACTIVE";
-const MeetingsUpdateMeetingByIdResponseDataStatus = S.String;
-
 export interface MeetingsUpdateMeetingByIdResponseData {
   /** ID of the meeting. */
   id: string;
@@ -9717,21 +7359,11 @@ export interface MeetingsUpdateMeetingByIdResponseData {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const MeetingsUpdateMeetingByIdResponseData = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<MeetingsUpdateMeetingByIdResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface UpdateMeetingByIdMeetingResponse {
   /** Data returned by the operation */
   data?: MeetingsUpdateMeetingByIdResponseData | null;
 }
-const UpdateMeetingByIdMeetingResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<UpdateMeetingByIdMeetingResponse>;
-
 export type AddParticipantMeetingError = CloudflareOpError;
 /** Adds a participant to the given meeting ID. */
 export const addParticipantMeeting: API.OperationMethod<
@@ -9740,8 +7372,8 @@ export const addParticipantMeeting: API.OperationMethod<
   AddParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddParticipantMeetingRequest,
-  output: AddParticipantMeetingResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddParticipantMeetingRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AddParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9755,8 +7387,8 @@ export const createIndependentLivestreamLivestream: API.OperationMethod<
   CreateIndependentLivestreamLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIndependentLivestreamLivestreamRequest,
-  output: CreateIndependentLivestreamLivestreamResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateIndependentLivestreamLivestreamRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateIndependentLivestreamLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9770,8 +7402,8 @@ export const createMeeting: API.OperationMethod<
   CreateMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMeetingRequest,
-  output: CreateMeetingResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateMeetingRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<CreateMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9785,8 +7417,8 @@ export const createPollActiveSession: API.OperationMethod<
   CreatePollActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePollActiveSessionRequest,
-  output: CreatePollActiveSessionResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<CreatePollActiveSessionRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<CreatePollActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9800,8 +7432,8 @@ export const createPreset: API.OperationMethod<
   CreatePresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePresetRequest,
-  output: CreatePresetResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<CreatePresetRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<CreatePresetResponse>,
   errors: [RealtimeKitPresetExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9815,8 +7447,8 @@ export const createWebhookWebhook: API.OperationMethod<
   CreateWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookWebhookRequest,
-  output: CreateWebhookWebhookResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<CreateWebhookWebhookRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<CreateWebhookWebhookResponse>,
   errors: [RealtimeKitWebhookExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9830,8 +7462,8 @@ export const deleteMeetingParticipantMeeting: API.OperationMethod<
   DeleteMeetingParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMeetingParticipantMeetingRequest,
-  output: DeleteMeetingParticipantMeetingResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DeleteMeetingParticipantMeetingRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<DeleteMeetingParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9845,8 +7477,8 @@ export const deletePreset: API.OperationMethod<
   DeletePresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePresetRequest,
-  output: DeletePresetResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DeletePresetRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<DeletePresetResponse>,
   errors: [RealtimeKitPresetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9860,8 +7492,8 @@ export const deleteWebhookWebhook: API.OperationMethod<
   DeleteWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookWebhookRequest,
-  output: DeleteWebhookWebhookResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteWebhookWebhookRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<DeleteWebhookWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9875,8 +7507,8 @@ export const editParticipantMeeting: API.OperationMethod<
   EditParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditParticipantMeetingRequest,
-  output: EditParticipantMeetingResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<EditParticipantMeetingRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<EditParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9890,8 +7522,8 @@ export const editWebhookWebhook: API.OperationMethod<
   EditWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditWebhookWebhookRequest,
-  output: EditWebhookWebhookResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<EditWebhookWebhookRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<EditWebhookWebhookResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9905,8 +7537,8 @@ export const generateSummaryOfTranscriptsSession: API.OperationMethod<
   GenerateSummaryOfTranscriptsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateSummaryOfTranscriptsSessionRequest,
-  output: GenerateSummaryOfTranscriptsSessionResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<GenerateSummaryOfTranscriptsSessionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GenerateSummaryOfTranscriptsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9920,8 +7552,12 @@ export const getActiveLivestreamsForLivestreamIdLivestream: API.OperationMethod<
   GetActiveLivestreamsForLivestreamIdLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveLivestreamsForLivestreamIdLivestreamRequest,
-  output: GetActiveLivestreamsForLivestreamIdLivestreamResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>,
+  output: __S(
+    93,
+    __c11,
+    5,
+  ) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9935,8 +7571,8 @@ export const getActiveRecordingsRecording: API.OperationMethod<
   GetActiveRecordingsRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveRecordingsRecordingRequest,
-  output: GetActiveRecordingsRecordingResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<GetActiveRecordingsRecordingRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetActiveRecordingsRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9950,8 +7586,8 @@ export const getActiveSessionActiveSession: API.OperationMethod<
   GetActiveSessionActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveSessionActiveSessionRequest,
-  output: GetActiveSessionActiveSessionResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<GetActiveSessionActiveSessionRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<GetActiveSessionActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9965,8 +7601,8 @@ export const getAllLivestreamsLivestream: API.OperationMethod<
   GetAllLivestreamsLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllLivestreamsLivestreamRequest,
-  output: GetAllLivestreamsLivestreamResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<GetAllLivestreamsLivestreamRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetAllLivestreamsLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9980,8 +7616,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppRequest,
-  output: GetAppResponse,
+  input: __S(105, __c13, 1) as any as S.Schema<GetAppRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<GetAppResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9995,8 +7631,8 @@ export const getLivestreamAnalyticsCompleteLivestream: API.OperationMethod<
   GetLivestreamAnalyticsCompleteLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLivestreamAnalyticsCompleteLivestreamRequest,
-  output: GetLivestreamAnalyticsCompleteLivestreamResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10010,8 +7646,8 @@ export const getLivestreamAnalyticsDaywiseLivestream: API.OperationMethod<
   GetLivestreamAnalyticsDaywiseLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLivestreamAnalyticsDaywiseLivestreamRequest,
-  output: GetLivestreamAnalyticsDaywiseLivestreamResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10025,8 +7661,16 @@ export const getLivestreamSessionDetailsForSessionIdLivestream: API.OperationMet
   GetLivestreamSessionDetailsForSessionIdLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLivestreamSessionDetailsForSessionIdLivestreamRequest,
-  output: GetLivestreamSessionDetailsForSessionIdLivestreamResponse,
+  input: __S(
+    116,
+    __c14,
+    4,
+  ) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamRequest>,
+  output: __S(
+    118,
+    __c14,
+    6,
+  ) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10040,8 +7684,16 @@ export const getLivestreamSessionForLivestreamIdLivestream: API.OperationMethod<
   GetLivestreamSessionForLivestreamIdLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLivestreamSessionForLivestreamIdLivestreamRequest,
-  output: GetLivestreamSessionForLivestreamIdLivestreamResponse,
+  input: __S(
+    119,
+    __c14,
+    7,
+  ) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamRequest>,
+  output: __S(
+    122,
+    __c15,
+    2,
+  ) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10055,8 +7707,8 @@ export const getMeeting: API.OperationMethod<
   GetMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeetingRequest,
-  output: GetMeetingResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<GetMeetingRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10070,8 +7722,8 @@ export const getMeetingActiveLivestreamsLivestream: API.OperationMethod<
   GetMeetingActiveLivestreamsLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeetingActiveLivestreamsLivestreamRequest,
-  output: GetMeetingActiveLivestreamsLivestreamResponse,
+  input: __S(130, __c16, 2) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10085,8 +7737,8 @@ export const getMeetingByIdMeeting: API.OperationMethod<
   GetMeetingByIdMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeetingByIdMeetingRequest,
-  output: GetMeetingByIdMeetingResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<GetMeetingByIdMeetingRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<GetMeetingByIdMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10100,8 +7752,8 @@ export const getMeetingParticipantMeeting: API.OperationMethod<
   GetMeetingParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeetingParticipantMeetingRequest,
-  output: GetMeetingParticipantMeetingResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<GetMeetingParticipantMeetingRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetMeetingParticipantMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10115,8 +7767,8 @@ export const getMeetingParticipantsMeeting: API.OperationMethod<
   GetMeetingParticipantsMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeetingParticipantsMeetingRequest,
-  output: GetMeetingParticipantsMeetingResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<GetMeetingParticipantsMeetingRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetMeetingParticipantsMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10130,8 +7782,8 @@ export const getOneRecordingRecording: API.OperationMethod<
   GetOneRecordingRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOneRecordingRecordingRequest,
-  output: GetOneRecordingRecordingResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<GetOneRecordingRecordingRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<GetOneRecordingRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10145,8 +7797,8 @@ export const getOrgAnalyticsAnalytic: API.OperationMethod<
   GetOrgAnalyticsAnalyticError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgAnalyticsAnalyticRequest,
-  output: GetOrgAnalyticsAnalyticResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<GetOrgAnalyticsAnalyticRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<GetOrgAnalyticsAnalyticResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10160,8 +7812,8 @@ export const getParticipantDataFromPeerIdSession: API.OperationMethod<
   GetParticipantDataFromPeerIdSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetParticipantDataFromPeerIdSessionRequest,
-  output: GetParticipantDataFromPeerIdSessionResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<GetParticipantDataFromPeerIdSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10175,8 +7827,8 @@ export const getPreset: API.OperationMethod<
   GetPresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPresetRequest,
-  output: GetPresetResponse,
+  input: __S(211, __c26, 3) as any as S.Schema<GetPresetRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<GetPresetResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10190,8 +7842,8 @@ export const getPresetByIdPreset: API.OperationMethod<
   GetPresetByIdPresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPresetByIdPresetRequest,
-  output: GetPresetByIdPresetResponse,
+  input: __S(215, __c26, 7) as any as S.Schema<GetPresetByIdPresetRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<GetPresetByIdPresetResponse>,
   errors: [RealtimeKitPresetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10205,8 +7857,8 @@ export const getRecordingsRecording: API.OperationMethod<
   GetRecordingsRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecordingsRecordingRequest,
-  output: GetRecordingsRecordingResponse,
+  input: __S(225, __c28, 1) as any as S.Schema<GetRecordingsRecordingRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<GetRecordingsRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10220,8 +7872,8 @@ export const getSessionChatSession: API.OperationMethod<
   GetSessionChatSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionChatSessionRequest,
-  output: GetSessionChatSessionResponse,
+  input: __S(236, __c29, 4) as any as S.Schema<GetSessionChatSessionRequest>,
+  output: __S(238, __c29, 6) as any as S.Schema<GetSessionChatSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10235,8 +7887,8 @@ export const getSessionDetailsSession: API.OperationMethod<
   GetSessionDetailsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionDetailsSessionRequest,
-  output: GetSessionDetailsSessionResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<GetSessionDetailsSessionRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<GetSessionDetailsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10250,8 +7902,8 @@ export const getSessionParticipantDetailsSession: API.OperationMethod<
   GetSessionParticipantDetailsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionParticipantDetailsSessionRequest,
-  output: GetSessionParticipantDetailsSessionResponse,
+  input: __S(242, __c30, 2) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>,
+  output: __S(245, __c30, 5) as any as S.Schema<GetSessionParticipantDetailsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10265,8 +7917,8 @@ export const getSessionParticipantsSession: API.OperationMethod<
   GetSessionParticipantsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionParticipantsSessionRequest,
-  output: GetSessionParticipantsSessionResponse,
+  input: __S(246, __c30, 6) as any as S.Schema<GetSessionParticipantsSessionRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<GetSessionParticipantsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10280,8 +7932,8 @@ export const getSessionsSession: API.OperationMethod<
   GetSessionsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionsSessionRequest,
-  output: GetSessionsSessionResponse,
+  input: __S(250, __c31, 2) as any as S.Schema<GetSessionsSessionRequest>,
+  output: __S(254, __c31, 6) as any as S.Schema<GetSessionsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10295,8 +7947,8 @@ export const getSessionSummarySession: API.OperationMethod<
   GetSessionSummarySessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionSummarySessionRequest,
-  output: GetSessionSummarySessionResponse,
+  input: __S(255, __c31, 7) as any as S.Schema<GetSessionSummarySessionRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<GetSessionSummarySessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10310,8 +7962,8 @@ export const getSessionTranscriptsSession: API.OperationMethod<
   GetSessionTranscriptsSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionTranscriptsSessionRequest,
-  output: GetSessionTranscriptsSessionResponse,
+  input: __S(258, __c32, 2) as any as S.Schema<GetSessionTranscriptsSessionRequest>,
+  output: __S(260, __c32, 4) as any as S.Schema<GetSessionTranscriptsSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10325,8 +7977,8 @@ export const getWebhookByIdWebhook: API.OperationMethod<
   GetWebhookByIdWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookByIdWebhookRequest,
-  output: GetWebhookByIdWebhookResponse,
+  input: __S(261, __c32, 5) as any as S.Schema<GetWebhookByIdWebhookRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetWebhookByIdWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10340,8 +7992,8 @@ export const getWebhooksWebhook: API.OperationMethod<
   GetWebhooksWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhooksWebhookRequest,
-  output: GetWebhooksWebhookResponse,
+  input: __S(262, __c32, 6) as any as S.Schema<GetWebhooksWebhookRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<GetWebhooksWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10355,8 +8007,8 @@ export const kickAllParticipantsActiveSession: API.OperationMethod<
   KickAllParticipantsActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KickAllParticipantsActiveSessionRequest,
-  output: KickAllParticipantsActiveSessionResponse,
+  input: __S(265, __c33, 1) as any as S.Schema<KickAllParticipantsActiveSessionRequest>,
+  output: __S(267, __c33, 3) as any as S.Schema<KickAllParticipantsActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10370,8 +8022,8 @@ export const kickParticipantsActiveSession: API.OperationMethod<
   KickParticipantsActiveSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KickParticipantsActiveSessionRequest,
-  output: KickParticipantsActiveSessionResponse,
+  input: __S(268, __c33, 4) as any as S.Schema<KickParticipantsActiveSessionRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<KickParticipantsActiveSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10385,8 +8037,8 @@ export const livestreamsGetOrgAnalytics: API.OperationMethod<
   LivestreamsGetOrgAnalyticsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetOrgAnalyticsRequest,
-  output: LivestreamsGetOrgAnalyticsResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>,
+  output: __S(277, __c34, 5) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10400,8 +8052,8 @@ export const patchPreset: API.OperationMethod<
   PatchPresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchPresetRequest,
-  output: PatchPresetResponse,
+  input: __S(297, __c37, 1) as any as S.Schema<PatchPresetRequest>,
+  output: __S(300, __c37, 4) as any as S.Schema<PatchPresetResponse>,
   errors: [RealtimeKitPresetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10415,8 +8067,8 @@ export const pauseResumeStopRecordingRecording: API.OperationMethod<
   PauseResumeStopRecordingRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseResumeStopRecordingRecordingRequest,
-  output: PauseResumeStopRecordingRecordingResponse,
+  input: __S(301, __c37, 5) as any as S.Schema<PauseResumeStopRecordingRecordingRequest>,
+  output: __S(306, __c38, 2) as any as S.Schema<PauseResumeStopRecordingRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10430,8 +8082,8 @@ export const postApp: API.OperationMethod<
   PostAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostAppRequest,
-  output: PostAppResponse,
+  input: __S(307, __c38, 3) as any as S.Schema<PostAppRequest>,
+  output: __S(309, __c38, 5) as any as S.Schema<PostAppResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10445,8 +8097,8 @@ export const refreshParticipantTokenMeeting: API.OperationMethod<
   RefreshParticipantTokenMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshParticipantTokenMeetingRequest,
-  output: RefreshParticipantTokenMeetingResponse,
+  input: __S(310, __c38, 6) as any as S.Schema<RefreshParticipantTokenMeetingRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<RefreshParticipantTokenMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10460,8 +8112,8 @@ export const replaceMeetingByIdMeeting: API.OperationMethod<
   ReplaceMeetingByIdMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceMeetingByIdMeetingRequest,
-  output: ReplaceMeetingByIdMeetingResponse,
+  input: __S(321, __c40, 1) as any as S.Schema<ReplaceMeetingByIdMeetingRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<ReplaceMeetingByIdMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10475,8 +8127,8 @@ export const replacePresetById: API.OperationMethod<
   ReplacePresetByIdError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplacePresetByIdRequest,
-  output: ReplacePresetByIdResponse,
+  input: __S(336, __c42, 0) as any as S.Schema<ReplacePresetByIdRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<ReplacePresetByIdResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10490,8 +8142,8 @@ export const replaceWebhookWebhook: API.OperationMethod<
   ReplaceWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceWebhookWebhookRequest,
-  output: ReplaceWebhookWebhookResponse,
+  input: __S(345, __c43, 1) as any as S.Schema<ReplaceWebhookWebhookRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<ReplaceWebhookWebhookResponse>,
   errors: [RealtimeKitWebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10505,8 +8157,8 @@ export const startLivestreamingAMeetingLivestream: API.OperationMethod<
   StartLivestreamingAMeetingLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartLivestreamingAMeetingLivestreamRequest,
-  output: StartLivestreamingAMeetingLivestreamResponse,
+  input: __S(347, __c43, 3) as any as S.Schema<StartLivestreamingAMeetingLivestreamRequest>,
+  output: __S(349, __c43, 5) as any as S.Schema<StartLivestreamingAMeetingLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10520,8 +8172,8 @@ export const startRecordingsRecording: API.OperationMethod<
   StartRecordingsRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartRecordingsRecordingRequest,
-  output: StartRecordingsRecordingResponse,
+  input: __S(354, __c44, 2) as any as S.Schema<StartRecordingsRecordingRequest>,
+  output: __S(357, __c44, 5) as any as S.Schema<StartRecordingsRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10535,8 +8187,8 @@ export const startTrackRecordingRecording: API.OperationMethod<
   StartTrackRecordingRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartTrackRecordingRecordingRequest,
-  output: StartTrackRecordingRecordingResponse,
+  input: __S(360, __c45, 0) as any as S.Schema<StartTrackRecordingRecordingRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<StartTrackRecordingRecordingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10550,8 +8202,8 @@ export const stopLivestreamingAMeetingLivestream: API.OperationMethod<
   StopLivestreamingAMeetingLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopLivestreamingAMeetingLivestreamRequest,
-  output: StopLivestreamingAMeetingLivestreamResponse,
+  input: __S(363, __c45, 3) as any as S.Schema<StopLivestreamingAMeetingLivestreamRequest>,
+  output: __S(365, __c45, 5) as any as S.Schema<StopLivestreamingAMeetingLivestreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10565,8 +8217,8 @@ export const updateMeetingByIdMeeting: API.OperationMethod<
   UpdateMeetingByIdMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMeetingByIdMeetingRequest,
-  output: UpdateMeetingByIdMeetingResponse,
+  input: __S(370, __c46, 2) as any as S.Schema<UpdateMeetingByIdMeetingRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<UpdateMeetingByIdMeetingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10620,7 +8272,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(MeetingsAddParticipantResponseData)),
+          data: S.optional(S.NullOr(__S(1, __c0, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "AddParticipantMeetingResponse",
@@ -10652,7 +8304,7 @@ function __c0(j: number): any {
           meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
           name: S.optional(S.NullOr(S.String)),
           playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(S.NullOr(LivestreamsCreateIndependentLivestreamResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
         }),
       ).annotate({
@@ -10661,7 +8313,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsCreateIndependentLivestreamResponseData)),
+          data: S.optional(S.NullOr(__S(4, __c0, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateIndependentLivestreamLivestreamResponse",
@@ -10669,12 +8321,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          summaryType: S.optional(
-            MeetingsCreateRequestAiConfigSummarizationSummaryType.pipe(T.Body("summary_type")),
-          ),
-          textFormat: S.optional(
-            MeetingsCreateRequestAiConfigSummarizationTextFormat.pipe(T.Body("text_format")),
-          ),
+          summaryType: S.optional(S.String.pipe(T.Body("summary_type"))),
+          textFormat: S.optional(S.String.pipe(T.Body("text_format"))),
           wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
         }),
       ).annotate({
@@ -10689,8 +8337,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(MeetingsCreateRequestAiConfigTranscriptionKeywordsList),
-          language: S.optional(MeetingsCreateRequestAiConfigTranscriptionLanguage),
+          keywords: S.optional(__S(7, __c0, 7)),
+          language: S.optional(S.String),
           profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
@@ -10699,8 +8347,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(MeetingsCreateRequestAiConfigSummarization),
-          transcription: S.optional(MeetingsCreateRequestAiConfigTranscription),
+          summarization: S.optional(__S(6, __c0, 6)),
+          transcription: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "MeetingsCreateRequestAiConfig",
@@ -10708,8 +8356,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channel: S.optional(MeetingsCreateRequestRecordingConfigAudioConfigChannel),
-          codec: S.optional(MeetingsCreateRequestRecordingConfigAudioConfigCodec),
+          channel: S.optional(S.String),
+          codec: S.optional(S.String),
           exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
         }),
       ).annotate({
@@ -10804,8 +8452,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition),
-          size: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize),
+          position: S.optional(S.String),
+          size: S.optional(__S(14, __c1, 6)),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -10818,10 +8466,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigCodec),
+          codec: S.optional(S.String),
           exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
           height: S.optional(S.Number),
-          watermark: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigWatermark),
+          watermark: S.optional(__S(15, __c1, 7)),
           width: S.optional(S.Number),
         }),
       ).annotate({
@@ -10830,27 +8478,15 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigAudioConfig.pipe(T.Body("audio_config")),
-          ),
+          audioConfig: S.optional(__S(10, __c1, 2).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          liveStreamingConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigLiveStreamingConfig.pipe(
-              T.Body("live_streaming_config"),
-            ),
-          ),
+          liveStreamingConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("live_streaming_config"))),
           maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig.pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigStorageConfig.pipe(T.Body("storage_config")),
-          ),
-          videoConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigVideoConfig.pipe(T.Body("video_config")),
-          ),
+          storageConfig: S.optional(__S(13, __c1, 5).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(__S(16, __c2, 0).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsCreateRequestRecordingConfig",
@@ -10860,13 +8496,11 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
-          aiConfig: S.optional(MeetingsCreateRequestAiConfig.pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(__S(9, __c1, 1).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.Boolean.pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(
-            MeetingsCreateRequestRecordingConfig.pipe(T.Body("recording_config")),
-          ),
+          recordingConfig: S.optional(__S(17, __c2, 1).pipe(T.Body("recording_config"))),
           sessionKeepAliveTimeInSecs: S.optional(
             S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
@@ -10886,16 +8520,8 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          summaryType: S.optional(
-            S.NullOr(MeetingsCreateResponseDataAiConfigSummarizationSummaryType).pipe(
-              T.Body("summary_type"),
-            ),
-          ),
-          textFormat: S.optional(
-            S.NullOr(MeetingsCreateResponseDataAiConfigSummarizationTextFormat).pipe(
-              T.Body("text_format"),
-            ),
-          ),
+          summaryType: S.optional(S.NullOr(S.String).pipe(T.Body("summary_type"))),
+          textFormat: S.optional(S.NullOr(S.String).pipe(T.Body("text_format"))),
           wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
         }),
       ).annotate({
@@ -10904,10 +8530,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(
-            S.NullOr(MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList),
-          ),
-          language: S.optional(S.NullOr(MeetingsCreateResponseDataAiConfigTranscriptionLanguage)),
+          keywords: S.optional(S.NullOr(__S(7, __c0, 7))),
+          language: S.optional(S.NullOr(S.String)),
           profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
@@ -10916,8 +8540,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(S.NullOr(MeetingsCreateResponseDataAiConfigSummarization)),
-          transcription: S.optional(S.NullOr(MeetingsCreateResponseDataAiConfigTranscription)),
+          summarization: S.optional(S.NullOr(__S(19, __c2, 3))),
+          transcription: S.optional(S.NullOr(__S(20, __c2, 4))),
         }),
       ).annotate({
         identifier: "MeetingsCreateResponseDataAiConfig",
@@ -10925,10 +8549,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          channel: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigAudioConfigChannel),
-          ),
-          codec: S.optional(S.NullOr(MeetingsCreateResponseDataRecordingConfigAudioConfigCodec)),
+          channel: S.optional(S.NullOr(S.String)),
+          codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
         }),
       ).annotate({
@@ -11019,12 +8641,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition),
-          ),
-          size: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize),
-          ),
+          position: S.optional(S.NullOr(S.String)),
+          size: S.optional(S.NullOr(__S(25, __c3, 1))),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -11033,12 +8651,10 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfigCodec)),
+          codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
           height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfigWatermark),
-          ),
+          watermark: S.optional(S.NullOr(__S(26, __c3, 2))),
           width: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -11047,33 +8663,17 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigAudioConfig).pipe(
-              T.Body("audio_config"),
-            ),
-          ),
+          audioConfig: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig).pipe(
-              T.Body("live_streaming_config"),
-            ),
+            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig).pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
-          videoConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfig).pipe(
-              T.Body("video_config"),
-            ),
-          ),
+          storageConfig: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsCreateResponseDataRecordingConfig",
@@ -11084,19 +8684,15 @@ function __c3(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataAiConfig).pipe(T.Body("ai_config")),
-          ),
+          aiConfig: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfig).pipe(T.Body("recording_config")),
-          ),
+          recordingConfig: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("recording_config"))),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
-          status: S.optional(S.NullOr(MeetingsCreateResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
           title: S.optional(S.NullOr(S.String)),
           transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
@@ -11107,7 +8703,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(MeetingsCreateResponseData)),
+          data: S.optional(S.NullOr(__S(29, __c3, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateMeetingResponse" });
     case 7:
@@ -11116,7 +8712,7 @@ function __c3(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
-          options: ActiveSessionCreatePollRequestOptionsList,
+          options: __S(7, __c0, 7),
           question: S.String,
           anonymous: S.optional(S.Boolean),
           hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
@@ -11146,29 +8742,29 @@ function __c4(j: number): any {
         identifier: "ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem",
       });
     case 1:
-      return S.Array(ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           text: S.String,
-          votes: ActiveSessionCreatePollResponseDataPollOptionsItemVotesList,
+          votes: __S(33, __c4, 1),
         }),
       ).annotate({
         identifier: "ActiveSessionCreatePollResponseDataPollOptionsItem",
       });
     case 3:
-      return S.Array(ActiveSessionCreatePollResponseDataPollOptionsItem);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          options: ActiveSessionCreatePollResponseDataPollOptionsList,
+          options: __S(35, __c4, 3),
           question: S.String,
           anonymous: S.optional(S.NullOr(S.Boolean)),
           createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
           hideVotes: S.optional(S.NullOr(S.Boolean).pipe(T.Body("hide_votes"))),
-          voted: S.optional(S.NullOr(ActiveSessionCreatePollResponseDataPollVotedList)),
+          voted: S.optional(S.NullOr(__S(7, __c0, 7))),
         }),
       ).annotate({
         identifier: "ActiveSessionCreatePollResponseDataPoll",
@@ -11177,7 +8773,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.NullOr(S.String)),
-          poll: S.optional(S.NullOr(ActiveSessionCreatePollResponseDataPoll)),
+          poll: S.optional(S.NullOr(__S(36, __c4, 4))),
         }),
       ).annotate({
         identifier: "ActiveSessionCreatePollResponseData",
@@ -11185,7 +8781,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(ActiveSessionCreatePollResponseData)),
+          data: S.optional(S.NullOr(__S(37, __c4, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreatePollActiveSessionResponse",
@@ -11207,7 +8803,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           frameRate: S.Number.pipe(T.Body("frame_rate")),
-          quality: PresetsCreateRequestConfigMediaScreenshareQuality,
+          quality: S.String,
         }),
       ).annotate({
         identifier: "PresetsCreateRequestConfigMediaScreenshare",
@@ -11216,7 +8812,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           frameRate: S.Number.pipe(T.Body("frame_rate")),
-          quality: PresetsCreateRequestConfigMediaVideoQuality,
+          quality: S.String,
           simulcast: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -11234,9 +8830,9 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          screenshare: PresetsCreateRequestConfigMediaScreenshare,
-          video: PresetsCreateRequestConfigMediaVideo,
-          audio: S.optional(PresetsCreateRequestConfigMediaAudio),
+          screenshare: __S(40, __c5, 0),
+          video: __S(41, __c5, 1),
+          audio: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
         identifier: "PresetsCreateRequestConfigMedia",
@@ -11247,15 +8843,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: PresetsCreateRequestConfigMaxVideoStreams.pipe(
-            T.Body("max_video_streams"),
-          ),
-          media: PresetsCreateRequestConfigMedia,
-          viewType: PresetsCreateRequestConfigViewType.pipe(T.Body("view_type")),
+          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
+          media: __S(43, __c5, 3),
+          viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            PresetsCreateRequestConfigLivestreamViewerQualitiesList.pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            __S(44, __c5, 4).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
@@ -11289,8 +8881,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          private: PresetsCreateRequestPermissionsChatPrivate,
-          public: PresetsCreateRequestPermissionsChatPublic,
+          private: __S(46, __c5, 6),
+          public: __S(47, __c5, 7),
         }),
       ).annotate({
         identifier: "PresetsCreateRequestPermissionsChat",
@@ -11308,9 +8900,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          canProduce: PresetsCreateRequestPermissionsMediaAudioCanProduce.pipe(
-            T.Body("can_produce"),
-          ),
+          canProduce: S.String.pipe(T.Body("can_produce")),
         }),
       ).annotate({
         identifier: "PresetsCreateRequestPermissionsMediaAudio",
@@ -11318,9 +8908,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          canProduce: PresetsCreateRequestPermissionsMediaScreenshareCanProduce.pipe(
-            T.Body("can_produce"),
-          ),
+          canProduce: S.String.pipe(T.Body("can_produce")),
         }),
       ).annotate({
         identifier: "PresetsCreateRequestPermissionsMediaScreenshare",
@@ -11328,9 +8916,9 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          audio: PresetsCreateRequestPermissionsMediaAudio,
-          screenshare: PresetsCreateRequestPermissionsMediaScreenshare,
-          video: PresetsCreateRequestPermissionsMediaVideo,
+          audio: __S(50, __c6, 2),
+          screenshare: __S(51, __c6, 3),
+          video: __S(50, __c6, 2),
         }),
       ).annotate({
         identifier: "PresetsCreateRequestPermissionsMedia",
@@ -11368,10 +8956,8 @@ function __c6(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: PresetsCreateRequestPermissionsChat,
-          connectedMeetings: PresetsCreateRequestPermissionsConnectedMeetings.pipe(
-            T.Body("connected_meetings"),
-          ),
+          chat: __S(48, __c6, 0),
+          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -11379,20 +8965,16 @@ function __c6(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: PresetsCreateRequestPermissionsMedia,
+          media: __S(52, __c6, 4),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: PresetsCreateRequestPermissionsPlugins,
-          polls: PresetsCreateRequestPermissionsPolls,
-          recorderType: PresetsCreateRequestPermissionsRecorderType.pipe(T.Body("recorder_type")),
+          plugins: __S(53, __c6, 5),
+          polls: __S(54, __c6, 6),
+          recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-          waitingRoomType: PresetsCreateRequestPermissionsWaitingRoomType.pipe(
-            T.Body("waiting_room_type"),
-          ),
+          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
           acceptStageRequests: S.optional(S.Boolean.pipe(T.Body("accept_stage_requests"))),
           isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
-          stageAccess: S.optional(
-            PresetsCreateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
-          ),
+          stageAccess: S.optional(S.String.pipe(T.Body("stage_access"))),
           stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
           transcriptionEnabled: S.optional(S.Boolean.pipe(T.Body("transcription_enabled"))),
         }),
@@ -11430,8 +9012,8 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          background: PresetsCreateRequestUiDesignTokensColorsBackground,
-          brand: PresetsCreateRequestUiDesignTokensColorsBrand,
+          background: __S(56, __c7, 0),
+          brand: __S(57, __c7, 1),
           danger: S.String,
           success: S.String,
           text: S.String,
@@ -11445,13 +9027,11 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          borderRadius: PresetsCreateRequestUiDesignTokensBorderRadius.pipe(
-            T.Body("border_radius"),
-          ),
-          borderWidth: PresetsCreateRequestUiDesignTokensBorderWidth.pipe(T.Body("border_width")),
-          colors: PresetsCreateRequestUiDesignTokensColors,
+          borderRadius: S.String.pipe(T.Body("border_radius")),
+          borderWidth: S.String.pipe(T.Body("border_width")),
+          colors: __S(58, __c7, 2),
           spacingBase: S.Number.pipe(T.Body("spacing_base")),
-          theme: PresetsCreateRequestUiDesignTokensTheme,
+          theme: S.String,
           fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
           googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
           logo: S.optional(S.String),
@@ -11462,7 +9042,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          designTokens: PresetsCreateRequestUiDesignTokens.pipe(T.Body("design_tokens")),
+          designTokens: __S(59, __c7, 3).pipe(T.Body("design_tokens")),
         }),
       ).annotate({ identifier: "PresetsCreateRequestUi" });
     case 5:
@@ -11470,10 +9050,10 @@ function __c7(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
-          config: PresetsCreateRequestConfig,
+          config: __S(45, __c5, 5),
           name: S.String,
-          permissions: PresetsCreateRequestPermissions,
-          ui: PresetsCreateRequestUi,
+          permissions: __S(55, __c6, 7),
+          ui: __S(60, __c7, 4),
         })
           .pipe(
             T.Http({
@@ -11488,7 +9068,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           frameRate: S.Number.pipe(T.Body("frame_rate")),
-          quality: PresetsCreateResponseDataConfigMediaVideoQuality,
+          quality: S.String,
           simulcast: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -11510,9 +9090,9 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          screenshare: PresetsCreateResponseDataConfigMediaScreenshare,
-          video: PresetsCreateResponseDataConfigMediaVideo,
-          audio: S.optional(S.NullOr(PresetsCreateResponseDataConfigMediaAudio)),
+          screenshare: __S(40, __c5, 0),
+          video: __S(62, __c7, 6),
+          audio: S.optional(S.NullOr(__S(63, __c7, 7))),
         }),
       ).annotate({
         identifier: "PresetsCreateResponseDataConfigMedia",
@@ -11521,15 +9101,11 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: PresetsCreateRequestConfigMaxVideoStreams.pipe(
-            T.Body("max_video_streams"),
-          ),
-          media: PresetsCreateResponseDataConfigMedia,
-          viewType: PresetsCreateResponseDataConfigViewType.pipe(T.Body("view_type")),
+          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
+          media: __S(64, __c8, 0),
+          viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(PresetsCreateResponseDataConfigLivestreamViewerQualitiesList).pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            S.NullOr(__S(44, __c5, 4)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
@@ -11538,9 +9114,9 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          audio: PresetsCreateResponseDataPermissionsMediaAudio,
-          screenshare: PresetsCreateResponseDataPermissionsMediaScreenshare,
-          video: PresetsCreateResponseDataPermissionsMediaVideo,
+          audio: __S(51, __c6, 3),
+          screenshare: __S(51, __c6, 3),
+          video: __S(51, __c6, 3),
         }),
       ).annotate({
         identifier: "PresetsCreateResponseDataPermissionsMedia",
@@ -11557,10 +9133,8 @@ function __c8(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: PresetsCreateRequestPermissionsChat,
-          connectedMeetings: PresetsCreateRequestPermissionsConnectedMeetings.pipe(
-            T.Body("connected_meetings"),
-          ),
+          chat: __S(48, __c6, 0),
+          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -11568,24 +9142,18 @@ function __c8(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: PresetsCreateResponseDataPermissionsMedia,
+          media: __S(66, __c8, 2),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: PresetsCreateRequestPermissionsPlugins,
-          polls: PresetsCreateRequestPermissionsPolls,
-          recorderType: PresetsCreateResponseDataPermissionsRecorderType.pipe(
-            T.Body("recorder_type"),
-          ),
+          plugins: __S(53, __c6, 5),
+          polls: __S(54, __c6, 6),
+          recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-          waitingRoomType: PresetsCreateResponseDataPermissionsWaitingRoomType.pipe(
-            T.Body("waiting_room_type"),
-          ),
+          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
           acceptStageRequests: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
           ),
           isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
-          stageAccess: S.optional(
-            S.NullOr(PresetsCreateResponseDataPermissionsStageAccess).pipe(T.Body("stage_access")),
-          ),
+          stageAccess: S.optional(S.NullOr(S.String).pipe(T.Body("stage_access"))),
           stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
           transcriptionEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
@@ -11597,15 +9165,11 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          borderRadius: PresetsCreateResponseDataUiDesignTokensBorderRadius.pipe(
-            T.Body("border_radius"),
-          ),
-          borderWidth: PresetsCreateResponseDataUiDesignTokensBorderWidth.pipe(
-            T.Body("border_width"),
-          ),
-          colors: PresetsCreateRequestUiDesignTokensColors,
+          borderRadius: S.String.pipe(T.Body("border_radius")),
+          borderWidth: S.String.pipe(T.Body("border_width")),
+          colors: __S(58, __c7, 2),
           spacingBase: S.Number.pipe(T.Body("spacing_base")),
-          theme: PresetsCreateResponseDataUiDesignTokensTheme,
+          theme: S.String,
           fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
           googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
           logo: S.optional(S.NullOr(S.String)),
@@ -11616,7 +9180,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          designTokens: PresetsCreateResponseDataUiDesignTokens.pipe(T.Body("design_tokens")),
+          designTokens: __S(68, __c8, 4).pipe(T.Body("design_tokens")),
         }),
       ).annotate({
         identifier: "PresetsCreateResponseDataUi",
@@ -11625,11 +9189,11 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: PresetsCreateResponseDataConfig,
+          config: __S(65, __c8, 1),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: PresetsCreateResponseDataPermissions,
-          ui: PresetsCreateResponseDataUi,
+          permissions: __S(67, __c8, 3),
+          ui: __S(69, __c8, 5),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
@@ -11638,7 +9202,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: PresetsCreateResponseData,
+          data: __S(70, __c8, 6),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePresetResponse" });
   }
@@ -11646,13 +9210,13 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WebhooksCreateWebhookRequestEventsItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
-          events: WebhooksCreateWebhookRequestEventsList,
+          events: __S(72, __c9, 0),
           name: S.String,
           url: S.String,
           enabled: S.optional(S.Boolean),
@@ -11674,7 +9238,7 @@ function __c9(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enabled: S.Boolean,
-          events: WebhooksCreateWebhookResponseDataEventsList,
+          events: __S(72, __c9, 0),
           name: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
           url: S.String,
@@ -11685,7 +9249,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: WebhooksCreateWebhookResponseData,
+          data: __S(74, __c9, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateWebhookWebhookResponse",
@@ -11723,7 +9287,7 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(MeetingsDeleteMeetingParticipantResponseData)),
+          data: S.optional(S.NullOr(__S(77, __c9, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteMeetingParticipantMeetingResponse",
@@ -11752,15 +9316,11 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: PresetsCreateRequestConfigMaxVideoStreams.pipe(
-            T.Body("max_video_streams"),
-          ),
-          media: PresetsDeleteResponseDataConfigMedia,
-          viewType: PresetsDeleteResponseDataConfigViewType.pipe(T.Body("view_type")),
+          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
+          media: __S(64, __c8, 0),
+          viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList).pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            S.NullOr(__S(44, __c5, 4)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
@@ -11770,11 +9330,11 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: PresetsDeleteResponseDataConfig,
+          config: __S(80, __c10, 0),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: PresetsDeleteResponseDataPermissions,
-          ui: PresetsDeleteResponseDataUi,
+          permissions: __S(67, __c8, 3),
+          ui: __S(69, __c8, 5),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
@@ -11783,7 +9343,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: PresetsDeleteResponseData,
+          data: __S(81, __c10, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePresetResponse" });
     case 3:
@@ -11833,7 +9393,7 @@ function __c10(j: number): any {
           appId: S.String.pipe(T.Label("app_id")),
           webhookId: S.String.pipe(T.Label("webhook_id")),
           enabled: S.optional(S.Boolean),
-          events: S.optional(WebhooksEditWebhookRequestEventsList),
+          events: S.optional(__S(72, __c9, 0)),
           name: S.optional(S.String),
           url: S.optional(S.String),
         })
@@ -11882,7 +9442,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGenerateSummaryOfTranscriptsResponseData)),
+          data: S.optional(S.NullOr(__S(87, __c10, 7))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GenerateSummaryOfTranscriptsSessionResponse",
@@ -11915,9 +9475,7 @@ function __c11(j: number): any {
           meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
           name: S.optional(S.NullOr(S.String)),
           playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(
-            S.NullOr(LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus),
-          ),
+          status: S.optional(S.NullOr(S.String)),
           streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }),
@@ -11944,12 +9502,8 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          livestream: S.optional(
-            S.NullOr(LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream),
-          ),
-          session: S.optional(
-            S.NullOr(LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession),
-          ),
+          livestream: S.optional(S.NullOr(__S(90, __c11, 2))),
+          session: S.optional(S.NullOr(__S(91, __c11, 3))),
         }),
       ).annotate({
         identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponseData",
@@ -11957,7 +9511,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsGetActiveLivestreamsForLivestreamIdResponseData)),
+          data: S.optional(S.NullOr(__S(92, __c11, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetActiveLivestreamsForLivestreamIdLivestreamResponse",
@@ -11992,7 +9546,7 @@ function __c11(j: number): any {
           outputFileName: S.String.pipe(T.Body("output_file_name")),
           sessionId: S.String.pipe(T.Body("session_id")),
           startedTime: S.String.pipe(T.Body("started_time")),
-          status: RecordingsGetActiveRecordingsResponseDataStatus,
+          status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
         }),
@@ -12006,7 +9560,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: RecordingsGetActiveRecordingsResponseData,
+          data: __S(95, __c11, 7),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetActiveRecordingsRecordingResponse",
@@ -12043,14 +9597,10 @@ function __c12(j: number): any {
           minutesConsumed: S.Number.pipe(T.Body("minutes_consumed")),
           organizationId: S.String.pipe(T.Body("organization_id")),
           startedAt: S.String.pipe(T.Body("started_at")),
-          status: ActiveSessionGetActiveSessionResponseDataStatus,
-          type: ActiveSessionGetActiveSessionResponseDataType,
+          status: S.String,
+          type: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          breakoutRooms: S.optional(
-            S.NullOr(ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList).pipe(
-              T.Body("breakout_rooms"),
-            ),
-          ),
+          breakoutRooms: S.optional(S.NullOr(__S(98, __c12, 2)).pipe(T.Body("breakout_rooms"))),
           endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
         }),
       ).annotate({
@@ -12059,7 +9609,7 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(ActiveSessionGetActiveSessionResponseData)),
+          data: S.optional(S.NullOr(__S(99, __c12, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetActiveSessionActiveSessionResponse",
@@ -12073,11 +9623,9 @@ function __c12(j: number): any {
           excludeMeetings: S.optional(S.Boolean.pipe(T.Query("exclude_meetings"))),
           pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          sortOrder: S.optional(
-            LivestreamsGetAllLivestreamsRequestSortOrder.pipe(T.Query("sort_order")),
-          ),
+          sortOrder: S.optional(S.String.pipe(T.Query("sort_order"))),
           startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-          status: S.optional(LivestreamsGetAllLivestreamsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -12109,9 +9657,9 @@ function __c12(j: number): any {
           ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
           meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
           name: S.optional(S.NullOr(S.String)),
-          paging: S.optional(S.NullOr(LivestreamsGetAllLivestreamsResponseDataPaging)),
+          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
           playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(S.NullOr(LivestreamsGetAllLivestreamsResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }),
@@ -12125,7 +9673,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsGetAllLivestreamsResponseData)),
+          data: S.optional(S.NullOr(__S(103, __c12, 7))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAllLivestreamsLivestreamResponse",
@@ -12137,7 +9685,7 @@ function __c13(j: number): any {
           pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           search: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(AppsGetRequestSortOrder.pipe(T.Query("sort_order"))),
+          sortOrder: S.optional(S.String.pipe(T.Query("sort_order"))),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/accounts/{account_id}/realtime/kit/apps", code: 200 }),
@@ -12153,12 +9701,12 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "AppsGetResponseDataItem" });
     case 3:
-      return S.Array(AppsGetResponseDataItem);
+      return S.Array(__S(106, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(AppsGetResponseDataList)),
-          paging: S.optional(S.NullOr(LivestreamsGetAllLivestreamsResponseDataPaging)),
+          data: S.optional(S.NullOr(__S(107, __c13, 3))),
+          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAppResponse" });
     case 5:
@@ -12194,7 +9742,7 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsGetLivestreamAnalyticsCompleteResponseData)),
+          data: S.optional(S.NullOr(__S(110, __c13, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamAnalyticsCompleteLivestreamResponse",
@@ -12235,11 +9783,11 @@ function __c14(j: number): any {
         identifier: "LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem",
       });
     case 2:
-      return S.Array(LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList)),
+          data: S.optional(S.NullOr(__S(114, __c14, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamAnalyticsDaywiseLivestreamResponse",
@@ -12281,9 +9829,7 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(
-            S.NullOr(LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData),
-          ),
+          data: S.optional(S.NullOr(__S(117, __c14, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamSessionDetailsForSessionIdLivestreamResponse",
@@ -12332,13 +9878,9 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          livestream: S.optional(
-            S.NullOr(LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream),
-          ),
-          paging: S.optional(S.NullOr(LivestreamsGetAllLivestreamsResponseDataPaging)),
-          session: S.optional(
-            S.NullOr(LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession),
-          ),
+          livestream: S.optional(S.NullOr(__S(90, __c11, 2))),
+          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
+          session: S.optional(S.NullOr(__S(120, __c15, 0))),
         }),
       ).annotate({
         identifier: "LivestreamsGetLivestreamSessionForLivestreamIdResponseData",
@@ -12346,7 +9888,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsGetLivestreamSessionForLivestreamIdResponseData)),
+          data: S.optional(S.NullOr(__S(121, __c15, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetLivestreamSessionForLivestreamIdLivestreamResponse",
@@ -12361,7 +9903,7 @@ function __c15(j: number): any {
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           search: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-          status: S.optional(MeetingsGetRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -12436,33 +9978,17 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            S.NullOr(MeetingsGetResponseDataItemRecordingConfigAudioConfig).pipe(
-              T.Body("audio_config"),
-            ),
-          ),
+          audioConfig: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig).pipe(
-              T.Body("live_streaming_config"),
-            ),
+            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig).pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            S.NullOr(MeetingsGetResponseDataItemRecordingConfigStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
-          videoConfig: S.optional(
-            S.NullOr(MeetingsGetResponseDataItemRecordingConfigVideoConfig).pipe(
-              T.Body("video_config"),
-            ),
-          ),
+          storageConfig: S.optional(S.NullOr(__S(124, __c15, 4)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsGetResponseDataItemRecordingConfig",
@@ -12477,12 +10003,12 @@ function __c15(j: number): any {
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(MeetingsGetResponseDataItemRecordingConfig).pipe(T.Body("recording_config")),
+            S.NullOr(__S(125, __c15, 5)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
-          status: S.optional(S.NullOr(MeetingsGetResponseDataItemStatus)),
+          status: S.optional(S.NullOr(S.String)),
           summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
           title: S.optional(S.NullOr(S.String)),
           transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
@@ -12491,7 +10017,7 @@ function __c15(j: number): any {
         identifier: "MeetingsGetResponseDataItem",
       });
     case 7:
-      return S.Array(MeetingsGetResponseDataItem);
+      return S.Array(__S(126, __c15, 6));
   }
 }
 function __c16(j: number): any {
@@ -12509,8 +10035,8 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: MeetingsGetResponseDataList,
-          paging: MeetingsGetResponsePaging,
+          data: __S(127, __c15, 7),
+          paging: __S(128, __c16, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMeetingResponse" });
     case 2:
@@ -12541,7 +10067,7 @@ function __c16(j: number): any {
           meetingId: S.optional(S.NullOr(S.String).pipe(T.Body("meeting_id"))),
           name: S.optional(S.NullOr(S.String)),
           playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(S.NullOr(LivestreamsGetMeetingActiveLivestreamsResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }),
@@ -12551,7 +10077,7 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsGetMeetingActiveLivestreamsResponseData)),
+          data: S.optional(S.NullOr(__S(131, __c16, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMeetingActiveLivestreamsLivestreamResponse",
@@ -12580,12 +10106,8 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList),
-          ),
-          language: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage),
-          ),
+          keywords: S.optional(S.NullOr(__S(134, __c16, 6))),
+          language: S.optional(S.NullOr(S.String)),
           profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
@@ -12598,12 +10120,8 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfigSummarization),
-          ),
-          transcription: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfigTranscription),
-          ),
+          summarization: S.optional(S.NullOr(__S(19, __c2, 3))),
+          transcription: S.optional(S.NullOr(__S(135, __c16, 7))),
         }),
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseDataAiConfig",
@@ -12611,12 +10129,8 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          channel: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel),
-          ),
-          codec: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec),
-          ),
+          channel: S.optional(S.NullOr(S.String)),
+          codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
         }),
       ).annotate({
@@ -12686,14 +10200,10 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec),
-          ),
+          codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
           height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark),
-          ),
+          watermark: S.optional(S.NullOr(__S(26, __c3, 2))),
           width: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -12702,33 +10212,17 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig).pipe(
-              T.Body("audio_config"),
-            ),
-          ),
+          audioConfig: S.optional(S.NullOr(__S(137, __c17, 1)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig).pipe(
-              T.Body("live_streaming_config"),
-            ),
+            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig).pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
-          videoConfig: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig).pipe(
-              T.Body("video_config"),
-            ),
-          ),
+          storageConfig: S.optional(S.NullOr(__S(138, __c17, 2)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(139, __c17, 3)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfig",
@@ -12739,21 +10233,17 @@ function __c17(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataAiConfig).pipe(T.Body("ai_config")),
-          ),
+          aiConfig: S.optional(S.NullOr(__S(136, __c17, 0)).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(MeetingsGetMeetingByIdResponseDataRecordingConfig).pipe(
-              T.Body("recording_config"),
-            ),
+            S.NullOr(__S(140, __c17, 4)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
-          status: S.optional(S.NullOr(MeetingsGetMeetingByIdResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
           title: S.optional(S.NullOr(S.String)),
           transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
@@ -12764,7 +10254,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(MeetingsGetMeetingByIdResponseData)),
+          data: S.optional(S.NullOr(__S(141, __c17, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMeetingByIdMeetingResponse",
@@ -12809,7 +10299,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: MeetingsGetMeetingParticipantResponseData,
+          data: __S(144, __c18, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMeetingParticipantMeetingResponse",
@@ -12835,12 +10325,12 @@ function __c18(j: number): any {
         identifier: "GetMeetingParticipantsMeetingRequest",
       });
     case 3:
-      return S.Array(MeetingsGetMeetingParticipantResponseData);
+      return S.Array(__S(144, __c18, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: MeetingsGetMeetingParticipantsResponseDataList,
-          paging: MeetingsGetResponsePaging,
+          data: __S(147, __c18, 3),
+          paging: __S(128, __c16, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMeetingParticipantsMeetingResponse",
@@ -12867,7 +10357,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(RecordingsGetOneRecordingResponseDataStartReasonCallerType)),
+          type: S.optional(S.NullOr(S.String)),
           userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
         }),
       ).annotate({
@@ -12876,8 +10366,8 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          caller: S.optional(S.NullOr(RecordingsGetOneRecordingResponseDataStartReasonCaller)),
-          reason: S.optional(S.NullOr(RecordingsGetOneRecordingResponseDataStartReasonReason)),
+          caller: S.optional(S.NullOr(__S(150, __c18, 6))),
+          reason: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "RecordingsGetOneRecordingResponseDataStartReason",
@@ -12959,20 +10449,12 @@ function __c19(j: number): any {
           outputFileName: S.String.pipe(T.Body("output_file_name")),
           sessionId: S.String.pipe(T.Body("session_id")),
           startedTime: S.String.pipe(T.Body("started_time")),
-          status: RecordingsGetOneRecordingResponseDataStatus,
+          status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          startReason: S.optional(
-            S.NullOr(RecordingsGetOneRecordingResponseDataStartReason).pipe(T.Body("start_reason")),
-          ),
-          stopReason: S.optional(
-            S.NullOr(RecordingsGetOneRecordingResponseDataStopReason).pipe(T.Body("stop_reason")),
-          ),
-          storageConfig: S.optional(
-            S.NullOr(RecordingsGetOneRecordingResponseDataStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
+          startReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("start_reason"))),
+          stopReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("stop_reason"))),
+          storageConfig: S.optional(S.NullOr(__S(152, __c19, 0)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsGetOneRecordingResponseData",
@@ -12980,7 +10462,7 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(RecordingsGetOneRecordingResponseData)),
+          data: S.optional(S.NullOr(__S(153, __c19, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetOneRecordingRecordingResponse",
@@ -13017,15 +10499,11 @@ function __c19(j: number): any {
         identifier: "AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem",
       });
     case 5:
-      return S.Array(AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem);
+      return S.Array(__S(156, __c19, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dayStats: S.optional(
-            S.NullOr(AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList).pipe(
-              T.Body("day_stats"),
-            ),
-          ),
+          dayStats: S.optional(S.NullOr(__S(157, __c19, 5)).pipe(T.Body("day_stats"))),
           recordingCount: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_count"))),
           recordingMinutesConsumed: S.optional(
             S.NullOr(S.Number).pipe(T.Body("recording_minutes_consumed")),
@@ -13049,15 +10527,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem);
+      return S.Array(__S(159, __c19, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dayStats: S.optional(
-            S.NullOr(AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList).pipe(
-              T.Body("day_stats"),
-            ),
-          ),
+          dayStats: S.optional(S.NullOr(__S(160, __c20, 0)).pipe(T.Body("day_stats"))),
           sessionsCount: S.optional(S.NullOr(S.Number).pipe(T.Body("sessions_count"))),
           sessionsMinutesConsumed: S.optional(
             S.NullOr(S.Number).pipe(T.Body("sessions_minutes_consumed")),
@@ -13069,16 +10543,8 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recordingStats: S.optional(
-            S.NullOr(AnalyticsGetOrgAnalyticsResponseDataRecordingStats).pipe(
-              T.Body("recording_stats"),
-            ),
-          ),
-          sessionStats: S.optional(
-            S.NullOr(AnalyticsGetOrgAnalyticsResponseDataSessionStats).pipe(
-              T.Body("session_stats"),
-            ),
-          ),
+          recordingStats: S.optional(S.NullOr(__S(158, __c19, 6)).pipe(T.Body("recording_stats"))),
+          sessionStats: S.optional(S.NullOr(__S(161, __c20, 1)).pipe(T.Body("session_stats"))),
         }),
       ).annotate({
         identifier: "AnalyticsGetOrgAnalyticsResponseData",
@@ -13086,7 +10552,7 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(AnalyticsGetOrgAnalyticsResponseData)),
+          data: S.optional(S.NullOr(__S(162, __c20, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetOrgAnalyticsAnalyticResponse",
@@ -13097,7 +10563,7 @@ function __c20(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           peerId: S.String.pipe(T.Label("peer_id")),
-          filters: S.optional(SessionsGetParticipantDataFromPeerIdRequestFilters.pipe(T.Query())),
+          filters: S.optional(S.String.pipe(T.Query())),
           includePeerEvents: S.optional(S.Boolean.pipe(T.Query("include_peer_events"))),
         })
           .pipe(
@@ -13116,19 +10582,11 @@ function __c20(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          eventName: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName,
-            ).pipe(T.Body("event_name")),
-          ),
+          eventName: S.optional(S.NullOr(S.String).pipe(T.Body("event_name"))),
           minutesConsumed: S.optional(S.NullOr(S.Number).pipe(T.Body("minutes_consumed"))),
           participantId: S.optional(S.NullOr(S.String).pipe(T.Body("participant_id"))),
           peerId: S.optional(S.NullOr(S.String).pipe(T.Body("peer_id"))),
-          presetViewType: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType,
-            ).pipe(T.Body("preset_view_type")),
-          ),
+          presetViewType: S.optional(S.NullOr(S.String).pipe(T.Body("preset_view_type"))),
           sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
           socketSessionId: S.optional(S.NullOr(S.String).pipe(T.Body("socket_session_id"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -13137,7 +10595,7 @@ function __c20(j: number): any {
         identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem",
       });
     case 6:
-      return S.Array(SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem);
+      return S.Array(__S(165, __c20, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -13154,22 +10612,12 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
-      );
+      return S.Array(__S(167, __c20, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          added: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList,
-            ),
-          ),
-          removed: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList,
-            ),
-          ),
+          added: S.optional(S.NullOr(__S(168, __c21, 0))),
+          removed: S.optional(S.NullOr(__S(168, __c21, 0))),
           timestamp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -13177,9 +10625,7 @@ function __c21(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem",
       });
     case 2:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem,
-      );
+      return S.Array(__S(169, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13258,21 +10704,15 @@ function __c21(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem",
       });
     case 5:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem,
-      );
+      return S.Array(__S(172, __c21, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           consumingTransport: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList,
-            ).pipe(T.Body("consuming_transport")),
+            S.NullOr(__S(173, __c21, 5)).pipe(T.Body("consuming_transport")),
           ),
           producingTransport: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList,
-            ).pipe(T.Body("producing_transport")),
+            S.NullOr(__S(173, __c21, 5)).pipe(T.Body("producing_transport")),
           ),
         }),
       ).annotate({
@@ -13298,18 +10738,11 @@ function __c22(j: number): any {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Record(
-        S.String,
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataValue,
-      );
+      return S.Record(S.String, __S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap,
-            ),
-          ),
+          metadata: S.optional(S.NullOr(__S(177, __c22, 1))),
           name: S.optional(S.NullOr(S.String)),
           timestamp: S.optional(S.NullOr(S.String)),
         }),
@@ -13318,9 +10751,7 @@ function __c22(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem",
       });
     case 3:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem,
-      );
+      return S.Array(__S(178, __c22, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13337,11 +10768,7 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          asn: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn,
-            ),
-          ),
+          asn: S.optional(S.NullOr(__S(180, __c22, 4))),
           city: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
           ipv4: S.optional(S.NullOr(S.String)),
@@ -13373,11 +10800,7 @@ function __c22(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("reflexive_connectivity")),
           ),
           relayConnectivity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("relay_connectivity"))),
-          sdp: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList,
-            ),
-          ),
+          sdp: S.optional(S.NullOr(__S(134, __c16, 6))),
           timestamp: S.optional(S.NullOr(S.String)),
           turnConnectivity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("turn_connectivity"))),
         }),
@@ -13390,17 +10813,11 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem,
-      );
+      return S.Array(__S(183, __c22, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
-            ),
-          ),
+          device: S.optional(S.NullOr(__S(167, __c20, 7))),
           timestamp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -13408,70 +10825,34 @@ function __c23(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem",
       });
     case 2:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem,
-      );
+      return S.Array(__S(185, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           audioDevicesUpdates: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList,
-            ).pipe(T.Body("audio_devices_updates")),
+            S.NullOr(__S(170, __c21, 2)).pipe(T.Body("audio_devices_updates")),
           ),
           browserMetadata: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata,
-            ).pipe(T.Body("browser_metadata")),
+            S.NullOr(__S(171, __c21, 3)).pipe(T.Body("browser_metadata")),
           ),
-          candidatePairs: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs,
-            ).pipe(T.Body("candidate_pairs")),
-          ),
-          deviceInfo: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo,
-            ).pipe(T.Body("device_info")),
-          ),
-          events: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList,
-            ),
-          ),
-          ipInformation: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation,
-            ).pipe(T.Body("ip_information")),
-          ),
-          nativeMetadata: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata,
-            ).pipe(T.Body("native_metadata")),
-          ),
-          pcMetadata: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList,
-            ).pipe(T.Body("pc_metadata")),
-          ),
+          candidatePairs: S.optional(S.NullOr(__S(174, __c21, 6)).pipe(T.Body("candidate_pairs"))),
+          deviceInfo: S.optional(S.NullOr(__S(175, __c21, 7)).pipe(T.Body("device_info"))),
+          events: S.optional(S.NullOr(__S(179, __c22, 3))),
+          ipInformation: S.optional(S.NullOr(__S(181, __c22, 5)).pipe(T.Body("ip_information"))),
+          nativeMetadata: S.optional(S.NullOr(__S(182, __c22, 6)).pipe(T.Body("native_metadata"))),
+          pcMetadata: S.optional(S.NullOr(__S(184, __c23, 0)).pipe(T.Body("pc_metadata"))),
           roomViewType: S.optional(S.NullOr(S.String).pipe(T.Body("room_view_type"))),
           sdkName: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_name"))),
           sdkType: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_type"))),
           sdkVersion: S.optional(S.NullOr(S.String).pipe(T.Body("sdk_version"))),
           selectedDeviceUpdates: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList,
-            ).pipe(T.Body("selected_device_updates")),
+            S.NullOr(__S(186, __c23, 2)).pipe(T.Body("selected_device_updates")),
           ),
           speakerDevicesUpdates: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList,
-            ).pipe(T.Body("speaker_devices_updates")),
+            S.NullOr(__S(170, __c21, 2)).pipe(T.Body("speaker_devices_updates")),
           ),
           videoDevicesUpdates: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList,
-            ).pipe(T.Body("video_devices_updates")),
+            S.NullOr(__S(170, __c21, 2)).pipe(T.Body("video_devices_updates")),
           ),
         }),
       ).annotate({
@@ -13502,9 +10883,7 @@ function __c23(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem",
       });
     case 5:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem,
-      );
+      return S.Array(__S(188, __c23, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -13564,20 +10943,10 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jitterBufferDelay: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay,
-            ).pipe(T.Body("jitter_buffer_delay")),
+            S.NullOr(__S(190, __c23, 6)).pipe(T.Body("jitter_buffer_delay")),
           ),
-          packetLoss: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss,
-            ).pipe(T.Body("packet_loss")),
-          ),
-          qualityMos: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("quality_mos")),
-          ),
+          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
         }),
       ).annotate({
         identifier:
@@ -13602,27 +10971,13 @@ function __c24(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem",
       });
     case 3:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem,
-      );
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          packetLoss: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss,
-            ).pipe(T.Body("packet_loss")),
-          ),
-          qualityMos: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("quality_mos")),
-          ),
-          rtt: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay,
-            ),
-          ),
+          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
+          rtt: S.optional(S.NullOr(__S(190, __c23, 6))),
         }),
       ).annotate({
         identifier:
@@ -13659,9 +11014,7 @@ function __c24(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem",
       });
     case 6:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem,
-      );
+      return S.Array(__S(197, __c24, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -13682,39 +11035,17 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          framePerSecond: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("frame_per_second")),
-          ),
-          frameWidth: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("frame_width")),
-          ),
-          issues: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues,
-            ),
-          ),
+          framePerSecond: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_per_second"))),
+          frameWidth: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_width"))),
+          issues: S.optional(S.NullOr(__S(199, __c24, 7))),
           jitterBufferDelay: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay,
-            ).pipe(T.Body("jitter_buffer_delay")),
+            S.NullOr(__S(190, __c23, 6)).pipe(T.Body("jitter_buffer_delay")),
           ),
           keyFramesDecodedFraction: S.optional(
             S.NullOr(S.Number).pipe(T.Body("key_frames_decoded_fraction")),
           ),
-          packetLoss: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss,
-            ).pipe(T.Body("packet_loss")),
-          ),
-          qualityMos: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("quality_mos")),
-          ),
+          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
         }),
       ).annotate({
         identifier:
@@ -13750,14 +11081,10 @@ function __c25(j: number): any {
           pliCount: S.optional(S.NullOr(S.Number).pipe(T.Body("pli_count"))),
           producerId: S.optional(S.NullOr(S.String).pipe(T.Body("producer_id"))),
           qualityLimitationDurations: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations,
-            ).pipe(T.Body("quality_limitation_durations")),
+            S.NullOr(__S(201, __c25, 1)).pipe(T.Body("quality_limitation_durations")),
           ),
           qualityLimitationReason: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason,
-            ).pipe(T.Body("quality_limitation_reason")),
+            S.NullOr(S.String).pipe(T.Body("quality_limitation_reason")),
           ),
           qualityLimitationResolutionChanges: S.optional(
             S.NullOr(S.Number).pipe(T.Body("quality_limitation_resolution_changes")),
@@ -13771,9 +11098,7 @@ function __c25(j: number): any {
           "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem",
       });
     case 3:
-      return S.Array(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem,
-      );
+      return S.Array(__S(202, __c25, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13798,42 +11123,18 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          framePerSecond: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("frame_per_second")),
-          ),
-          frameWidth: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("frame_width")),
-          ),
+          framePerSecond: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_per_second"))),
+          frameWidth: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("frame_width"))),
           highNegativeFeedbackFraction: S.optional(
             S.NullOr(S.Number).pipe(T.Body("high_negative_feedback_fraction")),
           ),
-          issues: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues,
-            ),
-          ),
+          issues: S.optional(S.NullOr(__S(204, __c25, 4))),
           keyFramesEncodedFraction: S.optional(
             S.NullOr(S.Number).pipe(T.Body("key_frames_encoded_fraction")),
           ),
-          packetLoss: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss,
-            ).pipe(T.Body("packet_loss")),
-          ),
-          qualityMos: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
-            ).pipe(T.Body("quality_mos")),
-          ),
-          rtt: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay,
-            ),
-          ),
+          packetLoss: S.optional(S.NullOr(__S(191, __c23, 7)).pipe(T.Body("packet_loss"))),
+          qualityMos: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("quality_mos"))),
+          rtt: S.optional(S.NullOr(__S(190, __c23, 6))),
         }),
       ).annotate({
         identifier:
@@ -13842,85 +11143,45 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          audioConsumer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList,
-            ).pipe(T.Body("audio_consumer")),
-          ),
+          audioConsumer: S.optional(S.NullOr(__S(189, __c23, 5)).pipe(T.Body("audio_consumer"))),
           audioConsumerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative,
-            ).pipe(T.Body("audio_consumer_cumulative")),
+            S.NullOr(__S(193, __c24, 1)).pipe(T.Body("audio_consumer_cumulative")),
           ),
-          audioProducer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList,
-            ).pipe(T.Body("audio_producer")),
-          ),
+          audioProducer: S.optional(S.NullOr(__S(195, __c24, 3)).pipe(T.Body("audio_producer"))),
           audioProducerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative,
-            ).pipe(T.Body("audio_producer_cumulative")),
+            S.NullOr(__S(196, __c24, 4)).pipe(T.Body("audio_producer_cumulative")),
           ),
           screenshareAudioConsumer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList,
-            ).pipe(T.Body("screenshare_audio_consumer")),
+            S.NullOr(__S(189, __c23, 5)).pipe(T.Body("screenshare_audio_consumer")),
           ),
           screenshareAudioConsumerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative,
-            ).pipe(T.Body("screenshare_audio_consumer_cumulative")),
+            S.NullOr(__S(193, __c24, 1)).pipe(T.Body("screenshare_audio_consumer_cumulative")),
           ),
           screenshareAudioProducer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList,
-            ).pipe(T.Body("screenshare_audio_producer")),
+            S.NullOr(__S(195, __c24, 3)).pipe(T.Body("screenshare_audio_producer")),
           ),
           screenshareAudioProducerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative,
-            ).pipe(T.Body("screenshare_audio_producer_cumulative")),
+            S.NullOr(__S(196, __c24, 4)).pipe(T.Body("screenshare_audio_producer_cumulative")),
           ),
           screenshareVideoConsumer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList,
-            ).pipe(T.Body("screenshare_video_consumer")),
+            S.NullOr(__S(198, __c24, 6)).pipe(T.Body("screenshare_video_consumer")),
           ),
           screenshareVideoConsumerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative,
-            ).pipe(T.Body("screenshare_video_consumer_cumulative")),
+            S.NullOr(__S(200, __c25, 0)).pipe(T.Body("screenshare_video_consumer_cumulative")),
           ),
           screenshareVideoProducer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList,
-            ).pipe(T.Body("screenshare_video_producer")),
+            S.NullOr(__S(203, __c25, 3)).pipe(T.Body("screenshare_video_producer")),
           ),
           screenshareVideoProducerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative,
-            ).pipe(T.Body("screenshare_video_producer_cumulative")),
+            S.NullOr(__S(205, __c25, 5)).pipe(T.Body("screenshare_video_producer_cumulative")),
           ),
-          videoConsumer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList,
-            ).pipe(T.Body("video_consumer")),
-          ),
+          videoConsumer: S.optional(S.NullOr(__S(198, __c24, 6)).pipe(T.Body("video_consumer"))),
           videoConsumerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative,
-            ).pipe(T.Body("video_consumer_cumulative")),
+            S.NullOr(__S(200, __c25, 0)).pipe(T.Body("video_consumer_cumulative")),
           ),
-          videoProducer: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList,
-            ).pipe(T.Body("video_producer")),
-          ),
+          videoProducer: S.optional(S.NullOr(__S(203, __c25, 3)).pipe(T.Body("video_producer"))),
           videoProducerCumulative: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative,
-            ).pipe(T.Body("video_producer_cumulative")),
+            S.NullOr(__S(205, __c25, 5)).pipe(T.Body("video_producer_cumulative")),
           ),
         }),
       ).annotate({
@@ -13929,12 +11190,8 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(
-            S.NullOr(SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata),
-          ),
-          quality: S.optional(
-            S.NullOr(SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality),
-          ),
+          metadata: S.optional(S.NullOr(__S(187, __c23, 3))),
+          quality: S.optional(S.NullOr(__S(206, __c25, 6))),
         }),
       ).annotate({
         identifier: "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport",
@@ -13953,16 +11210,8 @@ function __c26(j: number): any {
           duration: S.optional(S.NullOr(S.Number)),
           joinedAt: S.optional(S.NullOr(S.String).pipe(T.Body("joined_at"))),
           leftAt: S.optional(S.NullOr(S.String).pipe(T.Body("left_at"))),
-          peerEvents: S.optional(
-            S.NullOr(
-              SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList,
-            ).pipe(T.Body("peer_events")),
-          ),
-          peerReport: S.optional(
-            S.NullOr(SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport).pipe(
-              T.Body("peer_report"),
-            ),
-          ),
+          peerEvents: S.optional(S.NullOr(__S(166, __c20, 6)).pipe(T.Body("peer_events"))),
+          peerReport: S.optional(S.NullOr(__S(207, __c25, 7)).pipe(T.Body("peer_report"))),
           role: S.optional(S.NullOr(S.String)),
           sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -13974,9 +11223,7 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          participant: S.optional(
-            S.NullOr(SessionsGetParticipantDataFromPeerIdResponseDataParticipant),
-          ),
+          participant: S.optional(S.NullOr(__S(208, __c26, 0))),
         }),
       ).annotate({
         identifier: "SessionsGetParticipantDataFromPeerIdResponseData",
@@ -13984,7 +11231,7 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetParticipantDataFromPeerIdResponseData)),
+          data: S.optional(S.NullOr(__S(209, __c26, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetParticipantDataFromPeerIdSessionResponse",
@@ -14019,12 +11266,12 @@ function __c26(j: number): any {
         identifier: "PresetsGetResponseDataItem",
       });
     case 5:
-      return S.Array(PresetsGetResponseDataItem);
+      return S.Array(__S(212, __c26, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: PresetsGetResponseDataList,
-          paging: MeetingsGetResponsePaging,
+          data: __S(213, __c26, 5),
+          paging: __S(128, __c16, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPresetResponse" });
     case 7:
@@ -14055,15 +11302,11 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: PresetsCreateRequestConfigMaxVideoStreams.pipe(
-            T.Body("max_video_streams"),
-          ),
-          media: PresetsGetPresetByIdResponseDataConfigMedia,
-          viewType: PresetsGetPresetByIdResponseDataConfigViewType.pipe(T.Body("view_type")),
+          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
+          media: __S(64, __c8, 0),
+          viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList).pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            S.NullOr(__S(216, __c27, 0)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
@@ -14072,9 +11315,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce.pipe(
-            T.Body("can_produce"),
-          ),
+          canProduce: S.String.pipe(T.Body("can_produce")),
         }),
       ).annotate({
         identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare",
@@ -14082,9 +11323,9 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          audio: PresetsGetPresetByIdResponseDataPermissionsMediaAudio,
-          screenshare: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare,
-          video: PresetsGetPresetByIdResponseDataPermissionsMediaVideo,
+          audio: __S(51, __c6, 3),
+          screenshare: __S(218, __c27, 2),
+          video: __S(51, __c6, 3),
         }),
       ).annotate({
         identifier: "PresetsGetPresetByIdResponseDataPermissionsMedia",
@@ -14101,10 +11342,8 @@ function __c27(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: PresetsCreateRequestPermissionsChat,
-          connectedMeetings: PresetsCreateRequestPermissionsConnectedMeetings.pipe(
-            T.Body("connected_meetings"),
-          ),
+          chat: __S(48, __c6, 0),
+          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -14112,26 +11351,18 @@ function __c27(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: PresetsGetPresetByIdResponseDataPermissionsMedia,
+          media: __S(219, __c27, 3),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: PresetsCreateRequestPermissionsPlugins,
-          polls: PresetsCreateRequestPermissionsPolls,
-          recorderType: PresetsGetPresetByIdResponseDataPermissionsRecorderType.pipe(
-            T.Body("recorder_type"),
-          ),
+          plugins: __S(53, __c6, 5),
+          polls: __S(54, __c6, 6),
+          recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-          waitingRoomType: PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType.pipe(
-            T.Body("waiting_room_type"),
-          ),
+          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
           acceptStageRequests: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
           ),
           isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
-          stageAccess: S.optional(
-            S.NullOr(PresetsGetPresetByIdResponseDataPermissionsStageAccess).pipe(
-              T.Body("stage_access"),
-            ),
-          ),
+          stageAccess: S.optional(S.NullOr(S.String).pipe(T.Body("stage_access"))),
           stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
           transcriptionEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
@@ -14143,15 +11374,11 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          borderRadius: PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius.pipe(
-            T.Body("border_radius"),
-          ),
-          borderWidth: PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth.pipe(
-            T.Body("border_width"),
-          ),
-          colors: PresetsCreateRequestUiDesignTokensColors,
+          borderRadius: S.String.pipe(T.Body("border_radius")),
+          borderWidth: S.String.pipe(T.Body("border_width")),
+          colors: __S(58, __c7, 2),
           spacingBase: S.Number.pipe(T.Body("spacing_base")),
-          theme: PresetsGetPresetByIdResponseDataUiDesignTokensTheme,
+          theme: S.String,
           fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
           googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
           logo: S.optional(S.NullOr(S.String)),
@@ -14162,9 +11389,7 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens.pipe(
-            T.Body("design_tokens"),
-          ),
+          designTokens: __S(221, __c27, 5).pipe(T.Body("design_tokens")),
           configDiff: S.optional(S.NullOr(S.Unknown).pipe(T.Body("config_diff"))),
         }),
       ).annotate({
@@ -14174,11 +11399,11 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: PresetsGetPresetByIdResponseDataConfig,
+          config: __S(217, __c27, 1),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: PresetsGetPresetByIdResponseDataPermissions,
-          ui: PresetsGetPresetByIdResponseDataUi,
+          permissions: __S(220, __c27, 4),
+          ui: __S(222, __c27, 6),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
@@ -14191,7 +11416,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: PresetsGetPresetByIdResponseData,
+          data: __S(223, __c27, 7),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetPresetByIdPresetResponse",
@@ -14207,12 +11432,10 @@ function __c28(j: number): any {
           pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           search: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(RecordingsGetRecordingsRequestSortBy.pipe(T.Query("sort_by"))),
-          sortOrder: S.optional(
-            RecordingsGetRecordingsRequestSortOrder.pipe(T.Query("sort_order")),
-          ),
+          sortBy: S.optional(S.String.pipe(T.Query("sort_by"))),
+          sortOrder: S.optional(S.String.pipe(T.Query("sort_order"))),
           startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-          status: S.optional(RecordingsGetRecordingsRequestStatusList.pipe(T.Query())),
+          status: S.optional(__S(72, __c9, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -14228,14 +11451,8 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channel: S.optional(
-            S.NullOr(
-              RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel,
-            ),
-          ),
-          codec: S.optional(
-            S.NullOr(RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec),
-          ),
+          channel: S.optional(S.NullOr(S.String)),
+          codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
         }),
       ).annotate({
@@ -14305,14 +11522,8 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(
-            S.NullOr(
-              RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition,
-            ),
-          ),
-          size: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkSize),
-          ),
+          position: S.optional(S.NullOr(S.String)),
+          size: S.optional(S.NullOr(__S(25, __c3, 1))),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -14322,16 +11533,10 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(
-            S.NullOr(RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec),
-          ),
+          codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
           height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(
-            S.NullOr(
-              RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark,
-            ),
-          ),
+          watermark: S.optional(S.NullOr(__S(228, __c28, 4))),
           width: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -14340,33 +11545,17 @@ function __c28(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            S.NullOr(RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig).pipe(
-              T.Body("audio_config"),
-            ),
-          ),
+          audioConfig: S.optional(S.NullOr(__S(226, __c28, 2)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig).pipe(
-              T.Body("live_streaming_config"),
-            ),
+            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig).pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            S.NullOr(
-              RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig,
-            ).pipe(T.Body("storage_config")),
-          ),
-          videoConfig: S.optional(
-            S.NullOr(RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig).pipe(
-              T.Body("video_config"),
-            ),
-          ),
+          storageConfig: S.optional(S.NullOr(__S(227, __c28, 3)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(229, __c28, 5)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig",
@@ -14381,14 +11570,12 @@ function __c28(j: number): any {
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig).pipe(
-              T.Body("recording_config"),
-            ),
+            S.NullOr(__S(230, __c28, 6)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
-          status: S.optional(S.NullOr(RecordingsGetRecordingsResponseDataItemMeetingStatus)),
+          status: S.optional(S.NullOr(S.String)),
           summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
           title: S.optional(S.NullOr(S.String)),
           transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
@@ -14473,26 +11660,22 @@ function __c29(j: number): any {
           outputFileName: S.String.pipe(T.Body("output_file_name")),
           sessionId: S.String.pipe(T.Body("session_id")),
           startedTime: S.String.pipe(T.Body("started_time")),
-          status: RecordingsGetRecordingsResponseDataItemStatus,
+          status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
-          meeting: S.optional(S.NullOr(RecordingsGetRecordingsResponseDataItemMeeting)),
+          meeting: S.optional(S.NullOr(__S(231, __c28, 7))),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          storageConfig: S.optional(
-            S.NullOr(RecordingsGetRecordingsResponseDataItemStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
+          storageConfig: S.optional(S.NullOr(__S(232, __c29, 0)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsGetRecordingsResponseDataItem",
       });
     case 2:
-      return S.Array(RecordingsGetRecordingsResponseDataItem);
+      return S.Array(__S(233, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: RecordingsGetRecordingsResponseDataList,
-          paging: MeetingsGetResponsePaging,
+          data: __S(234, __c29, 2),
+          paging: __S(128, __c16, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetRecordingsRecordingResponse",
@@ -14527,7 +11710,7 @@ function __c29(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetSessionChatResponseData)),
+          data: S.optional(S.NullOr(__S(237, __c29, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionChatSessionResponse",
@@ -14567,14 +11750,10 @@ function __c30(j: number): any {
           minutesConsumed: S.Number.pipe(T.Body("minutes_consumed")),
           organizationId: S.String.pipe(T.Body("organization_id")),
           startedAt: S.String.pipe(T.Body("started_at")),
-          status: SessionsGetSessionDetailsResponseDataStatus,
-          type: SessionsGetSessionDetailsResponseDataType,
+          status: S.String,
+          type: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          breakoutRooms: S.optional(
-            S.NullOr(SessionsGetSessionDetailsResponseDataBreakoutRoomsList).pipe(
-              T.Body("breakout_rooms"),
-            ),
-          ),
+          breakoutRooms: S.optional(S.NullOr(__S(98, __c12, 2)).pipe(T.Body("breakout_rooms"))),
           endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
         }),
       ).annotate({
@@ -14583,7 +11762,7 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetSessionDetailsResponseData)),
+          data: S.optional(S.NullOr(__S(240, __c30, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionDetailsSessionResponse",
@@ -14618,11 +11797,7 @@ function __c30(j: number): any {
           duration: S.optional(S.NullOr(S.Number)),
           joinedAt: S.optional(S.NullOr(S.String).pipe(T.Body("joined_at"))),
           leftAt: S.optional(S.NullOr(S.String).pipe(T.Body("left_at"))),
-          peerEvents: S.optional(
-            S.NullOr(
-              SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList,
-            ).pipe(T.Body("peer_events")),
-          ),
+          peerEvents: S.optional(S.NullOr(__S(166, __c20, 6)).pipe(T.Body("peer_events"))),
           presetName: S.optional(S.NullOr(S.String).pipe(T.Body("preset_name"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_id"))),
@@ -14633,9 +11808,7 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          participant: S.optional(
-            S.NullOr(SessionsGetSessionParticipantDetailsResponseDataParticipant),
-          ),
+          participant: S.optional(S.NullOr(__S(243, __c30, 3))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionParticipantDetailsResponseData",
@@ -14643,7 +11816,7 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetSessionParticipantDetailsResponseData)),
+          data: S.optional(S.NullOr(__S(244, __c30, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionParticipantDetailsSessionResponse",
@@ -14658,11 +11831,9 @@ function __c30(j: number): any {
           pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           search: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(SessionsGetSessionParticipantsRequestSortBy.pipe(T.Query("sort_by"))),
-          sortOrder: S.optional(
-            SessionsGetSessionParticipantsRequestSortOrder.pipe(T.Query("sort_order")),
-          ),
-          view: S.optional(SessionsGetSessionParticipantsRequestView.pipe(T.Query())),
+          sortBy: S.optional(S.String.pipe(T.Query("sort_by"))),
+          sortOrder: S.optional(S.String.pipe(T.Query("sort_order"))),
+          view: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -14676,7 +11847,7 @@ function __c30(j: number): any {
         identifier: "GetSessionParticipantsSessionRequest",
       });
     case 7:
-      return S.Array(SessionsGetSessionParticipantsResponseDataParticipantsItem);
+      return S.Array(__S(243, __c30, 3));
   }
 }
 function __c31(j: number): any {
@@ -14684,9 +11855,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          participants: S.optional(
-            S.NullOr(SessionsGetSessionParticipantsResponseDataParticipantsList),
-          ),
+          participants: S.optional(S.NullOr(__S(247, __c30, 7))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionParticipantsResponseData",
@@ -14694,7 +11863,7 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetSessionParticipantsResponseData)),
+          data: S.optional(S.NullOr(__S(248, __c31, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionParticipantsSessionResponse",
@@ -14710,10 +11879,10 @@ function __c31(j: number): any {
           participants: S.optional(S.String.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           search: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(SessionsGetSessionsRequestSortBy.pipe(T.Query("sort_by"))),
-          sortOrder: S.optional(SessionsGetSessionsRequestSortOrder.pipe(T.Query("sort_order"))),
+          sortBy: S.optional(S.String.pipe(T.Query("sort_by"))),
+          sortOrder: S.optional(S.String.pipe(T.Query("sort_order"))),
           startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-          status: S.optional(SessionsGetSessionsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -14738,25 +11907,21 @@ function __c31(j: number): any {
           minutesConsumed: S.Number.pipe(T.Body("minutes_consumed")),
           organizationId: S.String.pipe(T.Body("organization_id")),
           startedAt: S.String.pipe(T.Body("started_at")),
-          status: SessionsGetSessionsResponseDataSessionsItemStatus,
-          type: SessionsGetSessionsResponseDataSessionsItemType,
+          status: S.String,
+          type: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          breakoutRooms: S.optional(
-            S.NullOr(SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList).pipe(
-              T.Body("breakout_rooms"),
-            ),
-          ),
+          breakoutRooms: S.optional(S.NullOr(__S(98, __c12, 2)).pipe(T.Body("breakout_rooms"))),
           endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionsResponseDataSessionsItem",
       });
     case 4:
-      return S.Array(SessionsGetSessionsResponseDataSessionsItem);
+      return S.Array(__S(251, __c31, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sessions: S.optional(S.NullOr(SessionsGetSessionsResponseDataSessionsList)),
+          sessions: S.optional(S.NullOr(__S(252, __c31, 4))),
         }),
       ).annotate({
         identifier: "SessionsGetSessionsResponseData",
@@ -14764,8 +11929,8 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetSessionsResponseData)),
-          paging: S.optional(S.NullOr(LivestreamsGetAllLivestreamsResponseDataPaging)),
+          data: S.optional(S.NullOr(__S(253, __c31, 5))),
+          paging: S.optional(S.NullOr(__S(102, __c12, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionsSessionResponse",
@@ -14805,7 +11970,7 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetSessionSummaryResponseData)),
+          data: S.optional(S.NullOr(__S(256, __c32, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionSummarySessionResponse",
@@ -14816,7 +11981,7 @@ function __c32(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           sessionId: S.String.pipe(T.Label("session_id")),
-          format: S.optional(SessionsGetSessionTranscriptsRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -14842,7 +12007,7 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(SessionsGetSessionTranscriptsResponseData)),
+          data: S.optional(S.NullOr(__S(259, __c32, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSessionTranscriptsSessionResponse",
@@ -14883,7 +12048,7 @@ function __c32(j: number): any {
         identifier: "GetWebhooksWebhookRequest",
       });
     case 7:
-      return S.Array(WebhooksGetWebhooksResponseDataItem);
+      return S.Array(__S(74, __c9, 2));
   }
 }
 function __c33(j: number): any {
@@ -14891,7 +12056,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: WebhooksGetWebhooksResponseDataList,
+          data: __S(263, __c32, 7),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetWebhooksWebhookResponse",
@@ -14928,7 +12093,7 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(ActiveSessionKickAllParticipantsResponseData)),
+          data: S.optional(S.NullOr(__S(266, __c33, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "KickAllParticipantsActiveSessionResponse",
@@ -14939,14 +12104,8 @@ function __c33(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
-          customParticipantIds: S.optional(
-            ActiveSessionKickParticipantsRequestCustomParticipantIdsList.pipe(
-              T.Body("custom_participant_ids"),
-            ),
-          ),
-          participantIds: S.optional(
-            ActiveSessionKickParticipantsRequestParticipantIdsList.pipe(T.Body("participant_ids")),
-          ),
+          customParticipantIds: S.optional(__S(7, __c0, 7).pipe(T.Body("custom_participant_ids"))),
+          participantIds: S.optional(__S(7, __c0, 7).pipe(T.Body("participant_ids"))),
         })
           .pipe(
             T.Http({
@@ -14973,14 +12132,12 @@ function __c33(j: number): any {
         identifier: "ActiveSessionKickParticipantsResponseDataParticipantsItem",
       });
     case 6:
-      return S.Array(ActiveSessionKickParticipantsResponseDataParticipantsItem);
+      return S.Array(__S(269, __c33, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.NullOr(S.String)),
-          participants: S.optional(
-            S.NullOr(ActiveSessionKickParticipantsResponseDataParticipantsList),
-          ),
+          participants: S.optional(S.NullOr(__S(270, __c33, 6))),
         }),
       ).annotate({
         identifier: "ActiveSessionKickParticipantsResponseData",
@@ -14992,7 +12149,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(ActiveSessionKickParticipantsResponseData)),
+          data: S.optional(S.NullOr(__S(271, __c33, 7))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "KickParticipantsActiveSessionResponse",
@@ -15017,15 +12174,11 @@ function __c34(j: number): any {
         identifier: "LivestreamsGetOrgAnalyticsRequest",
       });
     case 2:
-      return S.Array(AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem);
+      return S.Array(__S(156, __c19, 4));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dayStats: S.optional(
-            S.NullOr(LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList).pipe(
-              T.Body("day_stats"),
-            ),
-          ),
+          dayStats: S.optional(S.NullOr(__S(274, __c34, 2)).pipe(T.Body("day_stats"))),
           recordingCount: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_count"))),
           recordingMinutesConsumed: S.optional(
             S.NullOr(S.Number).pipe(T.Body("recording_minutes_consumed")),
@@ -15037,16 +12190,8 @@ function __c34(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          recordingStats: S.optional(
-            S.NullOr(LivestreamsGetOrgAnalyticsResponseDataRecordingStats).pipe(
-              T.Body("recording_stats"),
-            ),
-          ),
-          sessionStats: S.optional(
-            S.NullOr(LivestreamsGetOrgAnalyticsResponseDataSessionStats).pipe(
-              T.Body("session_stats"),
-            ),
-          ),
+          recordingStats: S.optional(S.NullOr(__S(275, __c34, 3)).pipe(T.Body("recording_stats"))),
+          sessionStats: S.optional(S.NullOr(__S(161, __c20, 1)).pipe(T.Body("session_stats"))),
         }),
       ).annotate({
         identifier: "LivestreamsGetOrgAnalyticsResponseData",
@@ -15054,7 +12199,7 @@ function __c34(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsGetOrgAnalyticsResponseData)),
+          data: S.optional(S.NullOr(__S(276, __c34, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "LivestreamsGetOrgAnalyticsResponse",
@@ -15072,7 +12217,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
-          quality: S.optional(PresetsUpdateRequestConfigMediaScreenshareQuality),
+          quality: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestConfigMediaScreenshare",
@@ -15085,7 +12230,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
-          quality: S.optional(PresetsUpdateRequestConfigMediaVideoQuality),
+          quality: S.optional(S.String),
           simulcast: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -15094,9 +12239,9 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(PresetsCreateRequestConfigMediaAudio),
-          screenshare: S.optional(PresetsUpdateRequestConfigMediaScreenshare),
-          video: S.optional(PresetsUpdateRequestConfigMediaVideo),
+          audio: S.optional(__S(42, __c5, 2)),
+          screenshare: S.optional(__S(279, __c34, 7)),
+          video: S.optional(__S(280, __c35, 0)),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestConfigMedia",
@@ -15105,16 +12250,12 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           livestreamViewerQualities: S.optional(
-            PresetsUpdateRequestConfigLivestreamViewerQualitiesList.pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            __S(44, __c5, 4).pipe(T.Body("livestream_viewer_qualities")),
           ),
           maxScreenshareCount: S.optional(S.Number.pipe(T.Body("max_screenshare_count"))),
-          maxVideoStreams: S.optional(
-            PresetsUpdateRequestConfigMaxVideoStreams.pipe(T.Body("max_video_streams")),
-          ),
-          media: S.optional(PresetsUpdateRequestConfigMedia),
-          viewType: S.optional(PresetsUpdateRequestConfigViewType.pipe(T.Body("view_type"))),
+          maxVideoStreams: S.optional(__S(278, __c34, 6).pipe(T.Body("max_video_streams"))),
+          media: S.optional(__S(281, __c35, 1)),
+          viewType: S.optional(S.String.pipe(T.Body("view_type"))),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestConfig",
@@ -15143,8 +12284,8 @@ function __c35(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          private: S.optional(PresetsUpdateRequestPermissionsChatPrivate),
-          public: S.optional(PresetsUpdateRequestPermissionsChatPublic),
+          private: S.optional(__S(283, __c35, 3)),
+          public: S.optional(__S(284, __c35, 4)),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsChat",
@@ -15168,9 +12309,7 @@ function __c35(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          canProduce: S.optional(
-            PresetsUpdateRequestPermissionsMediaAudioCanProduce.pipe(T.Body("can_produce")),
-          ),
+          canProduce: S.optional(S.String.pipe(T.Body("can_produce"))),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsMediaAudio",
@@ -15182,9 +12321,9 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(PresetsUpdateRequestPermissionsMediaAudio),
-          screenshare: S.optional(PresetsUpdateRequestPermissionsMediaScreenshare),
-          video: S.optional(PresetsUpdateRequestPermissionsMediaVideo),
+          audio: S.optional(__S(287, __c35, 7)),
+          screenshare: S.optional(__S(287, __c35, 7)),
+          video: S.optional(__S(287, __c35, 7)),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestPermissionsMedia",
@@ -15225,10 +12364,8 @@ function __c36(j: number): any {
           canLivestream: S.optional(S.Boolean.pipe(T.Body("can_livestream"))),
           canRecord: S.optional(S.Boolean.pipe(T.Body("can_record"))),
           canSpotlight: S.optional(S.Boolean.pipe(T.Body("can_spotlight"))),
-          chat: S.optional(PresetsUpdateRequestPermissionsChat),
-          connectedMeetings: S.optional(
-            PresetsUpdateRequestPermissionsConnectedMeetings.pipe(T.Body("connected_meetings")),
-          ),
+          chat: S.optional(__S(285, __c35, 5)),
+          connectedMeetings: S.optional(__S(286, __c35, 6).pipe(T.Body("connected_meetings"))),
           disableParticipantAudio: S.optional(S.Boolean.pipe(T.Body("disable_participant_audio"))),
           disableParticipantScreensharing: S.optional(
             S.Boolean.pipe(T.Body("disable_participant_screensharing")),
@@ -15237,22 +12374,16 @@ function __c36(j: number): any {
           hiddenParticipant: S.optional(S.Boolean.pipe(T.Body("hidden_participant"))),
           isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
           kickParticipant: S.optional(S.Boolean.pipe(T.Body("kick_participant"))),
-          media: S.optional(PresetsUpdateRequestPermissionsMedia),
+          media: S.optional(__S(288, __c36, 0)),
           pinParticipant: S.optional(S.Boolean.pipe(T.Body("pin_participant"))),
-          plugins: S.optional(PresetsUpdateRequestPermissionsPlugins),
-          polls: S.optional(PresetsUpdateRequestPermissionsPolls),
-          recorderType: S.optional(
-            PresetsUpdateRequestPermissionsRecorderType.pipe(T.Body("recorder_type")),
-          ),
+          plugins: S.optional(__S(289, __c36, 1)),
+          polls: S.optional(__S(290, __c36, 2)),
+          recorderType: S.optional(S.String.pipe(T.Body("recorder_type"))),
           showParticipantList: S.optional(S.Boolean.pipe(T.Body("show_participant_list"))),
-          stageAccess: S.optional(
-            PresetsUpdateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
-          ),
+          stageAccess: S.optional(S.String.pipe(T.Body("stage_access"))),
           stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
           transcriptionEnabled: S.optional(S.Boolean.pipe(T.Body("transcription_enabled"))),
-          waitingRoomType: S.optional(
-            PresetsUpdateRequestPermissionsWaitingRoomType.pipe(T.Body("waiting_room_type")),
-          ),
+          waitingRoomType: S.optional(S.String.pipe(T.Body("waiting_room_type"))),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestPermissions",
@@ -15284,8 +12415,8 @@ function __c36(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          background: S.optional(PresetsUpdateRequestUiDesignTokensColorsBackground),
-          brand: S.optional(PresetsUpdateRequestUiDesignTokensColorsBrand),
+          background: S.optional(__S(292, __c36, 4)),
+          brand: S.optional(__S(293, __c36, 5)),
           danger: S.optional(S.String),
           success: S.optional(S.String),
           text: S.optional(S.String),
@@ -15299,18 +12430,14 @@ function __c36(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          borderRadius: S.optional(
-            PresetsUpdateRequestUiDesignTokensBorderRadius.pipe(T.Body("border_radius")),
-          ),
-          borderWidth: S.optional(
-            PresetsUpdateRequestUiDesignTokensBorderWidth.pipe(T.Body("border_width")),
-          ),
-          colors: S.optional(PresetsUpdateRequestUiDesignTokensColors),
+          borderRadius: S.optional(S.String.pipe(T.Body("border_radius"))),
+          borderWidth: S.optional(S.String.pipe(T.Body("border_width"))),
+          colors: S.optional(__S(294, __c36, 6)),
           fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
           googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
           logo: S.optional(S.String),
           spacingBase: S.optional(S.Number.pipe(T.Body("spacing_base"))),
-          theme: S.optional(PresetsUpdateRequestUiDesignTokensTheme),
+          theme: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PresetsUpdateRequestUiDesignTokens",
@@ -15322,9 +12449,7 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          designTokens: S.optional(
-            PresetsUpdateRequestUiDesignTokens.pipe(T.Body("design_tokens")),
-          ),
+          designTokens: S.optional(__S(295, __c36, 7).pipe(T.Body("design_tokens"))),
         }),
       ).annotate({ identifier: "PresetsUpdateRequestUi" });
     case 1:
@@ -15333,10 +12458,10 @@ function __c37(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           presetId: S.String.pipe(T.Label("preset_id")),
-          config: S.optional(PresetsUpdateRequestConfig),
+          config: S.optional(__S(282, __c35, 2)),
           name: S.optional(S.String),
-          permissions: S.optional(PresetsUpdateRequestPermissions),
-          ui: S.optional(PresetsUpdateRequestUi),
+          permissions: S.optional(__S(291, __c36, 3)),
+          ui: S.optional(__S(296, __c37, 0)),
         })
           .pipe(
             T.Http({
@@ -15351,15 +12476,11 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: PresetsCreateRequestConfigMaxVideoStreams.pipe(
-            T.Body("max_video_streams"),
-          ),
-          media: PresetsUpdateResponseDataConfigMedia,
-          viewType: PresetsUpdateResponseDataConfigViewType.pipe(T.Body("view_type")),
+          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
+          media: __S(64, __c8, 0),
+          viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList).pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            S.NullOr(__S(44, __c5, 4)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
@@ -15369,11 +12490,11 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: PresetsUpdateResponseDataConfig,
+          config: __S(298, __c37, 2),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: PresetsUpdateResponseDataPermissions,
-          ui: PresetsUpdateResponseDataUi,
+          permissions: __S(67, __c8, 3),
+          ui: __S(69, __c8, 5),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
@@ -15382,7 +12503,7 @@ function __c37(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: PresetsUpdateResponseData,
+          data: __S(299, __c37, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPresetResponse" });
     case 5:
@@ -15391,7 +12512,7 @@ function __c37(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           recordingId: S.String.pipe(T.Label("recording_id")),
-          action: RecordingsPauseResumeStopRecordingRequestAction,
+          action: S.String,
         })
           .pipe(
             T.Http({
@@ -15408,9 +12529,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
-          type: S.optional(
-            S.NullOr(RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType),
-          ),
+          type: S.optional(S.NullOr(S.String)),
           userId: S.optional(S.NullOr(S.String).pipe(T.Body("user_Id"))),
         }),
       ).annotate({
@@ -15419,12 +12538,8 @@ function __c37(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          caller: S.optional(
-            S.NullOr(RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller),
-          ),
-          reason: S.optional(
-            S.NullOr(RecordingsPauseResumeStopRecordingResponseDataStartReasonReason),
-          ),
+          caller: S.optional(S.NullOr(__S(302, __c37, 6))),
+          reason: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "RecordingsPauseResumeStopRecordingResponseDataStartReason",
@@ -15506,24 +12621,12 @@ function __c38(j: number): any {
           outputFileName: S.String.pipe(T.Body("output_file_name")),
           sessionId: S.String.pipe(T.Body("session_id")),
           startedTime: S.String.pipe(T.Body("started_time")),
-          status: RecordingsPauseResumeStopRecordingResponseDataStatus,
+          status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          startReason: S.optional(
-            S.NullOr(RecordingsPauseResumeStopRecordingResponseDataStartReason).pipe(
-              T.Body("start_reason"),
-            ),
-          ),
-          stopReason: S.optional(
-            S.NullOr(RecordingsPauseResumeStopRecordingResponseDataStopReason).pipe(
-              T.Body("stop_reason"),
-            ),
-          ),
-          storageConfig: S.optional(
-            S.NullOr(RecordingsPauseResumeStopRecordingResponseDataStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
+          startReason: S.optional(S.NullOr(__S(303, __c37, 7)).pipe(T.Body("start_reason"))),
+          stopReason: S.optional(S.NullOr(__S(303, __c37, 7)).pipe(T.Body("stop_reason"))),
+          storageConfig: S.optional(S.NullOr(__S(304, __c38, 0)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsPauseResumeStopRecordingResponseData",
@@ -15531,7 +12634,7 @@ function __c38(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(RecordingsPauseResumeStopRecordingResponseData)),
+          data: S.optional(S.NullOr(__S(305, __c38, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PauseResumeStopRecordingRecordingResponse",
@@ -15550,13 +12653,13 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          app: S.optional(S.NullOr(AppsGetResponseDataItem)),
+          app: S.optional(S.NullOr(__S(106, __c13, 2))),
         }),
       ).annotate({ identifier: "AppsPostResponseData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(AppsPostResponseData)),
+          data: S.optional(S.NullOr(__S(308, __c38, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PostAppResponse" });
     case 6:
@@ -15593,7 +12696,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: MeetingsRefreshParticipantTokenResponseData,
+          data: __S(311, __c38, 7),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "RefreshParticipantTokenMeetingResponse",
@@ -15601,16 +12704,8 @@ function __c39(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          summaryType: S.optional(
-            MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
-              T.Body("summary_type"),
-            ),
-          ),
-          textFormat: S.optional(
-            MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
-              T.Body("text_format"),
-            ),
-          ),
+          summaryType: S.optional(S.String.pipe(T.Body("summary_type"))),
+          textFormat: S.optional(S.String.pipe(T.Body("text_format"))),
           wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
         }),
       ).annotate({
@@ -15619,8 +12714,8 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList),
-          language: S.optional(MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage),
+          keywords: S.optional(__S(134, __c16, 6)),
+          language: S.optional(S.String),
           profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
@@ -15629,8 +12724,8 @@ function __c39(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(MeetingsReplaceMeetingByIdRequestAiConfigSummarization),
-          transcription: S.optional(MeetingsReplaceMeetingByIdRequestAiConfigTranscription),
+          summarization: S.optional(__S(313, __c39, 1)),
+          transcription: S.optional(__S(314, __c39, 2)),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdRequestAiConfig",
@@ -15638,8 +12733,8 @@ function __c39(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          channel: S.optional(MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel),
-          codec: S.optional(MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec),
+          channel: S.optional(S.String),
+          codec: S.optional(S.String),
           exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
         }),
       ).annotate({
@@ -15709,10 +12804,8 @@ function __c39(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(
-            MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
-          ),
-          size: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize),
+          position: S.optional(S.String),
+          size: S.optional(__S(14, __c1, 6)),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -15721,12 +12814,10 @@ function __c39(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec),
+          codec: S.optional(S.String),
           exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
           height: S.optional(S.Number),
-          watermark: S.optional(
-            MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark,
-          ),
+          watermark: S.optional(__S(318, __c39, 6)),
           width: S.optional(S.Number),
         }),
       ).annotate({
@@ -15739,33 +12830,15 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig.pipe(
-              T.Body("audio_config"),
-            ),
-          ),
+          audioConfig: S.optional(__S(316, __c39, 4).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          liveStreamingConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigLiveStreamingConfig.pipe(
-              T.Body("live_streaming_config"),
-            ),
-          ),
+          liveStreamingConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("live_streaming_config"))),
           maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig.pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig.pipe(
-              T.Body("storage_config"),
-            ),
-          ),
-          videoConfig: S.optional(
-            MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig.pipe(
-              T.Body("video_config"),
-            ),
-          ),
+          storageConfig: S.optional(__S(317, __c39, 5).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(__S(319, __c39, 7).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfig",
@@ -15776,13 +12849,11 @@ function __c40(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
-          aiConfig: S.optional(MeetingsReplaceMeetingByIdRequestAiConfig.pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(__S(315, __c39, 3).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.Boolean.pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(
-            MeetingsReplaceMeetingByIdRequestRecordingConfig.pipe(T.Body("recording_config")),
-          ),
+          recordingConfig: S.optional(__S(320, __c40, 0).pipe(T.Body("recording_config"))),
           sessionKeepAliveTimeInSecs: S.optional(
             S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
@@ -15804,16 +12875,8 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          summaryType: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType).pipe(
-              T.Body("summary_type"),
-            ),
-          ),
-          textFormat: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat).pipe(
-              T.Body("text_format"),
-            ),
-          ),
+          summaryType: S.optional(S.NullOr(S.String).pipe(T.Body("summary_type"))),
+          textFormat: S.optional(S.NullOr(S.String).pipe(T.Body("text_format"))),
           wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
         }),
       ).annotate({
@@ -15822,12 +12885,8 @@ function __c40(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList),
-          ),
-          language: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage),
-          ),
+          keywords: S.optional(S.NullOr(__S(134, __c16, 6))),
+          language: S.optional(S.NullOr(S.String)),
           profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
@@ -15836,12 +12895,8 @@ function __c40(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization),
-          ),
-          transcription: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription),
-          ),
+          summarization: S.optional(S.NullOr(__S(322, __c40, 2))),
+          transcription: S.optional(S.NullOr(__S(323, __c40, 3))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfig",
@@ -15910,14 +12965,10 @@ function __c40(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec),
-          ),
+          codec: S.optional(S.NullOr(S.String)),
           exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
           height: S.optional(S.NullOr(S.Number)),
-          watermark: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark),
-          ),
+          watermark: S.optional(S.NullOr(__S(26, __c3, 2))),
           width: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -15926,33 +12977,17 @@ function __c40(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig).pipe(
-              T.Body("audio_config"),
-            ),
-          ),
+          audioConfig: S.optional(S.NullOr(__S(226, __c28, 2)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig).pipe(
-              T.Body("live_streaming_config"),
-            ),
+            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig).pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
-          videoConfig: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig).pipe(
-              T.Body("video_config"),
-            ),
-          ),
+          storageConfig: S.optional(S.NullOr(__S(325, __c40, 5)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(326, __c40, 6)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsReplaceMeetingByIdResponseDataRecordingConfig",
@@ -15967,21 +13002,17 @@ function __c41(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataAiConfig).pipe(T.Body("ai_config")),
-          ),
+          aiConfig: S.optional(S.NullOr(__S(324, __c40, 4)).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(MeetingsReplaceMeetingByIdResponseDataRecordingConfig).pipe(
-              T.Body("recording_config"),
-            ),
+            S.NullOr(__S(327, __c40, 7)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
-          status: S.optional(S.NullOr(MeetingsReplaceMeetingByIdResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
           title: S.optional(S.NullOr(S.String)),
           transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
@@ -15992,7 +13023,7 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(MeetingsReplaceMeetingByIdResponseData)),
+          data: S.optional(S.NullOr(__S(328, __c41, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ReplaceMeetingByIdMeetingResponse",
@@ -16001,15 +13032,11 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: PresetsCreateRequestConfigMaxVideoStreams.pipe(
-            T.Body("max_video_streams"),
-          ),
-          media: ReplacePresetByIdRequestConfigMedia,
-          viewType: ReplacePresetByIdRequestConfigViewType.pipe(T.Body("view_type")),
+          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
+          media: __S(43, __c5, 3),
+          viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList.pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            __S(44, __c5, 4).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
@@ -16018,25 +13045,21 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessControl: S.optional(
-            ReplacePresetByIdRequestPermissionsPluginsConfigValueAccessControl.pipe(
-              T.Body("access_control"),
-            ),
-          ),
+          accessControl: S.optional(S.String.pipe(T.Body("access_control"))),
           handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdRequestPermissionsPluginsConfigValue",
       });
     case 4:
-      return S.Record(S.String, ReplacePresetByIdRequestPermissionsPluginsConfigValue);
+      return S.Record(S.String, __S(331, __c41, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           canClose: S.Boolean.pipe(T.Body("can_close")),
           canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
           canStart: S.Boolean.pipe(T.Body("can_start")),
-          config: ReplacePresetByIdRequestPermissionsPluginsConfigMap,
+          config: __S(332, __c41, 4),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdRequestPermissionsPlugins",
@@ -16053,10 +13076,8 @@ function __c41(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: PresetsCreateRequestPermissionsChat,
-          connectedMeetings: PresetsCreateRequestPermissionsConnectedMeetings.pipe(
-            T.Body("connected_meetings"),
-          ),
+          chat: __S(48, __c6, 0),
+          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -16064,22 +13085,16 @@ function __c41(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: ReplacePresetByIdRequestPermissionsMedia,
+          media: __S(52, __c6, 4),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: ReplacePresetByIdRequestPermissionsPlugins,
-          polls: PresetsCreateRequestPermissionsPolls,
-          recorderType: ReplacePresetByIdRequestPermissionsRecorderType.pipe(
-            T.Body("recorder_type"),
-          ),
+          plugins: __S(333, __c41, 5),
+          polls: __S(54, __c6, 6),
+          recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-          waitingRoomType: ReplacePresetByIdRequestPermissionsWaitingRoomType.pipe(
-            T.Body("waiting_room_type"),
-          ),
+          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
           acceptStageRequests: S.optional(S.Boolean.pipe(T.Body("accept_stage_requests"))),
           isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
-          stageAccess: S.optional(
-            ReplacePresetByIdRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
-          ),
+          stageAccess: S.optional(S.String.pipe(T.Body("stage_access"))),
           stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
           transcriptionEnabled: S.optional(S.Boolean.pipe(T.Body("transcription_enabled"))),
         }),
@@ -16089,7 +13104,7 @@ function __c41(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          designTokens: ReplacePresetByIdRequestUiDesignTokens.pipe(T.Body("design_tokens")),
+          designTokens: __S(59, __c7, 3).pipe(T.Body("design_tokens")),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdRequestUi",
@@ -16104,10 +13119,10 @@ function __c42(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           presetId: S.String.pipe(T.Label("preset_id")),
-          config: ReplacePresetByIdRequestConfig,
+          config: __S(330, __c41, 2),
           name: S.String,
-          permissions: ReplacePresetByIdRequestPermissions,
-          ui: ReplacePresetByIdRequestUi,
+          permissions: __S(334, __c41, 6),
+          ui: __S(335, __c41, 7),
         })
           .pipe(
             T.Http({
@@ -16122,15 +13137,11 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-          maxVideoStreams: PresetsCreateRequestConfigMaxVideoStreams.pipe(
-            T.Body("max_video_streams"),
-          ),
-          media: ReplacePresetByIdResponseDataConfigMedia,
-          viewType: ReplacePresetByIdResponseDataConfigViewType.pipe(T.Body("view_type")),
+          maxVideoStreams: __S(39, __c4, 7).pipe(T.Body("max_video_streams")),
+          media: __S(64, __c8, 0),
+          viewType: S.String.pipe(T.Body("view_type")),
           livestreamViewerQualities: S.optional(
-            S.NullOr(ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList).pipe(
-              T.Body("livestream_viewer_qualities"),
-            ),
+            S.NullOr(__S(216, __c27, 0)).pipe(T.Body("livestream_viewer_qualities")),
           ),
         }),
       ).annotate({
@@ -16139,25 +13150,21 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessControl: S.optional(
-            S.NullOr(ReplacePresetByIdResponseDataPermissionsPluginsConfigValueAccessControl).pipe(
-              T.Body("access_control"),
-            ),
-          ),
+          accessControl: S.optional(S.NullOr(S.String).pipe(T.Body("access_control"))),
           handlesViewOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("handles_view_only"))),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataPermissionsPluginsConfigValue",
       });
     case 3:
-      return S.Record(S.String, ReplacePresetByIdResponseDataPermissionsPluginsConfigValue);
+      return S.Record(S.String, __S(338, __c42, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           canClose: S.Boolean.pipe(T.Body("can_close")),
           canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
           canStart: S.Boolean.pipe(T.Body("can_start")),
-          config: ReplacePresetByIdResponseDataPermissionsPluginsConfigMap,
+          config: __S(339, __c42, 3),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataPermissionsPlugins",
@@ -16174,10 +13181,8 @@ function __c42(j: number): any {
           canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
           canRecord: S.Boolean.pipe(T.Body("can_record")),
           canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-          chat: PresetsCreateRequestPermissionsChat,
-          connectedMeetings: PresetsCreateRequestPermissionsConnectedMeetings.pipe(
-            T.Body("connected_meetings"),
-          ),
+          chat: __S(48, __c6, 0),
+          connectedMeetings: __S(49, __c6, 1).pipe(T.Body("connected_meetings")),
           disableParticipantAudio: S.Boolean.pipe(T.Body("disable_participant_audio")),
           disableParticipantScreensharing: S.Boolean.pipe(
             T.Body("disable_participant_screensharing"),
@@ -16185,26 +13190,18 @@ function __c42(j: number): any {
           disableParticipantVideo: S.Boolean.pipe(T.Body("disable_participant_video")),
           hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
           kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-          media: ReplacePresetByIdResponseDataPermissionsMedia,
+          media: __S(219, __c27, 3),
           pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-          plugins: ReplacePresetByIdResponseDataPermissionsPlugins,
-          polls: PresetsCreateRequestPermissionsPolls,
-          recorderType: ReplacePresetByIdResponseDataPermissionsRecorderType.pipe(
-            T.Body("recorder_type"),
-          ),
+          plugins: __S(340, __c42, 4),
+          polls: __S(54, __c6, 6),
+          recorderType: S.String.pipe(T.Body("recorder_type")),
           showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-          waitingRoomType: ReplacePresetByIdResponseDataPermissionsWaitingRoomType.pipe(
-            T.Body("waiting_room_type"),
-          ),
+          waitingRoomType: S.String.pipe(T.Body("waiting_room_type")),
           acceptStageRequests: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
           ),
           isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
-          stageAccess: S.optional(
-            S.NullOr(ReplacePresetByIdResponseDataPermissionsStageAccess).pipe(
-              T.Body("stage_access"),
-            ),
-          ),
+          stageAccess: S.optional(S.NullOr(S.String).pipe(T.Body("stage_access"))),
           stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
           transcriptionEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
@@ -16216,7 +13213,7 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          designTokens: ReplacePresetByIdResponseDataUiDesignTokens.pipe(T.Body("design_tokens")),
+          designTokens: __S(221, __c27, 5).pipe(T.Body("design_tokens")),
         }),
       ).annotate({
         identifier: "ReplacePresetByIdResponseDataUi",
@@ -16225,11 +13222,11 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          config: ReplacePresetByIdResponseDataConfig,
+          config: __S(337, __c42, 1),
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          permissions: ReplacePresetByIdResponseDataPermissions,
-          ui: ReplacePresetByIdResponseDataUi,
+          permissions: __S(341, __c42, 5),
+          ui: __S(342, __c42, 6),
           updatedAt: S.String.pipe(T.Body("updated_at")),
         }),
       ).annotate({
@@ -16242,7 +13239,7 @@ function __c43(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ReplacePresetByIdResponseData,
+          data: __S(343, __c42, 7),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ReplacePresetByIdResponse",
@@ -16253,7 +13250,7 @@ function __c43(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           webhookId: S.String.pipe(T.Label("webhook_id")),
-          events: WebhooksReplaceWebhookRequestEventsList,
+          events: __S(72, __c9, 0),
           name: S.String,
           url: S.String,
           enabled: S.optional(S.Boolean),
@@ -16285,9 +13282,7 @@ function __c43(j: number): any {
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
           name: S.optional(S.String),
-          videoConfig: S.optional(
-            LivestreamsStartLivestreamingAMeetingRequestVideoConfig.pipe(T.Body("video_config")),
-          ),
+          videoConfig: S.optional(__S(346, __c43, 2).pipe(T.Body("video_config"))),
         })
           .pipe(
             T.Http({
@@ -16306,7 +13301,7 @@ function __c43(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           ingestServer: S.optional(S.NullOr(S.String).pipe(T.Body("ingest_server"))),
           playbackUrl: S.optional(S.NullOr(S.String).pipe(T.Body("playback_url"))),
-          status: S.optional(S.NullOr(LivestreamsStartLivestreamingAMeetingResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           streamKey: S.optional(S.NullOr(S.String).pipe(T.Body("stream_key"))),
         }),
       ).annotate({
@@ -16315,7 +13310,7 @@ function __c43(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsStartLivestreamingAMeetingResponseData)),
+          data: S.optional(S.NullOr(__S(348, __c43, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StartLivestreamingAMeetingLivestreamResponse",
@@ -16323,7 +13318,7 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(RecordingsStartRecordingsRequestInteractiveConfigType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecordingsStartRecordingsRequestInteractiveConfig",
@@ -16396,8 +13391,8 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(RecordingsStartRecordingsRequestVideoConfigWatermarkPosition),
-          size: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize),
+          position: S.optional(S.String),
+          size: S.optional(__S(14, __c1, 6)),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -16406,10 +13401,10 @@ function __c44(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(RecordingsStartRecordingsRequestVideoConfigCodec),
+          codec: S.optional(S.String),
           exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
           height: S.optional(S.Number),
-          watermark: S.optional(RecordingsStartRecordingsRequestVideoConfigWatermark),
+          watermark: S.optional(__S(352, __c44, 0)),
           width: S.optional(S.Number),
         }),
       ).annotate({
@@ -16422,29 +13417,17 @@ function __c44(j: number): any {
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Body("meeting_id")),
           allowMultipleRecordings: S.optional(S.Boolean.pipe(T.Body("allow_multiple_recordings"))),
-          audioConfig: S.optional(
-            RecordingsStartRecordingsRequestAudioConfig.pipe(T.Body("audio_config")),
-          ),
+          audioConfig: S.optional(__S(10, __c1, 2).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          interactiveConfig: S.optional(
-            RecordingsStartRecordingsRequestInteractiveConfig.pipe(T.Body("interactive_config")),
-          ),
+          interactiveConfig: S.optional(__S(350, __c43, 6).pipe(T.Body("interactive_config"))),
           maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig.pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          rtmpOutConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigLiveStreamingConfig.pipe(T.Body("rtmp_out_config")),
-          ),
-          storageConfig: S.optional(
-            RecordingsStartRecordingsRequestStorageConfig.pipe(T.Body("storage_config")),
-          ),
+          rtmpOutConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("rtmp_out_config"))),
+          storageConfig: S.optional(__S(351, __c43, 7).pipe(T.Body("storage_config"))),
           url: S.optional(S.String),
-          videoConfig: S.optional(
-            RecordingsStartRecordingsRequestVideoConfig.pipe(T.Body("video_config")),
-          ),
+          videoConfig: S.optional(__S(353, __c44, 1).pipe(T.Body("video_config"))),
         })
           .pipe(
             T.Http({
@@ -16530,20 +13513,12 @@ function __c44(j: number): any {
           outputFileName: S.String.pipe(T.Body("output_file_name")),
           sessionId: S.String.pipe(T.Body("session_id")),
           startedTime: S.String.pipe(T.Body("started_time")),
-          status: RecordingsStartRecordingsResponseDataStatus,
+          status: S.String,
           stoppedTime: S.String.pipe(T.Body("stopped_time")),
           recordingDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("recording_duration"))),
-          startReason: S.optional(
-            S.NullOr(RecordingsStartRecordingsResponseDataStartReason).pipe(T.Body("start_reason")),
-          ),
-          stopReason: S.optional(
-            S.NullOr(RecordingsStartRecordingsResponseDataStopReason).pipe(T.Body("stop_reason")),
-          ),
-          storageConfig: S.optional(
-            S.NullOr(RecordingsStartRecordingsResponseDataStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
+          startReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("start_reason"))),
+          stopReason: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("stop_reason"))),
+          storageConfig: S.optional(S.NullOr(__S(355, __c44, 3)).pipe(T.Body("storage_config"))),
         }),
       ).annotate({
         identifier: "RecordingsStartRecordingsResponseData",
@@ -16551,7 +13526,7 @@ function __c44(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(RecordingsStartRecordingsResponseData)),
+          data: S.optional(S.NullOr(__S(356, __c44, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StartRecordingsRecordingResponse",
@@ -16560,15 +13535,13 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          mediaKind: S.optional(
-            RecordingsStartTrackRecordingRequestLayersValueMediaKind.pipe(T.Body("media_kind")),
-          ),
+          mediaKind: S.optional(S.String.pipe(T.Body("media_kind"))),
         }),
       ).annotate({
         identifier: "RecordingsStartTrackRecordingRequestLayersValue",
       });
     case 7:
-      return S.Record(S.String, RecordingsStartTrackRecordingRequestLayersValue);
+      return S.Record(S.String, __S(358, __c44, 6));
   }
 }
 function __c45(j: number): any {
@@ -16579,10 +13552,8 @@ function __c45(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Body("meeting_id")),
-          layers: S.optional(RecordingsStartTrackRecordingRequestLayersMap),
-          userIds: S.optional(
-            RecordingsStartTrackRecordingRequestUserIdsList.pipe(T.Body("user_ids")),
-          ),
+          layers: S.optional(__S(359, __c44, 7)),
+          userIds: S.optional(__S(7, __c0, 7).pipe(T.Body("user_ids"))),
         })
           .pipe(
             T.Http({
@@ -16598,7 +13569,7 @@ function __c45(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          recording: RecordingsStartTrackRecordingResponseDataRecording,
+          recording: __S(95, __c11, 7),
         }),
       ).annotate({
         identifier: "RecordingsStartTrackRecordingResponseData",
@@ -16606,7 +13577,7 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(RecordingsStartTrackRecordingResponseData)),
+          data: S.optional(S.NullOr(__S(361, __c45, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StartTrackRecordingRecordingResponse",
@@ -16640,7 +13611,7 @@ function __c45(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(LivestreamsStopLivestreamingAMeetingResponseData)),
+          data: S.optional(S.NullOr(__S(364, __c45, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StopLivestreamingAMeetingLivestreamResponse",
@@ -16648,8 +13619,8 @@ function __c45(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList),
-          language: S.optional(MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage),
+          keywords: S.optional(__S(134, __c16, 6)),
+          language: S.optional(S.String),
           profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
@@ -16658,8 +13629,8 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(MeetingsUpdateMeetingByIdRequestAiConfigSummarization),
-          transcription: S.optional(MeetingsUpdateMeetingByIdRequestAiConfigTranscription),
+          summarization: S.optional(__S(6, __c0, 6)),
+          transcription: S.optional(__S(366, __c45, 6)),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdRequestAiConfig",
@@ -16732,29 +13703,15 @@ function __c46(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig.pipe(T.Body("audio_config")),
-          ),
+          audioConfig: S.optional(__S(316, __c39, 4).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-          liveStreamingConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigLiveStreamingConfig.pipe(
-              T.Body("live_streaming_config"),
-            ),
-          ),
+          liveStreamingConfig: S.optional(__S(11, __c1, 3).pipe(T.Body("live_streaming_config"))),
           maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig.pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            __S(12, __c1, 4).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig.pipe(
-              T.Body("storage_config"),
-            ),
-          ),
-          videoConfig: S.optional(
-            MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig.pipe(T.Body("video_config")),
-          ),
+          storageConfig: S.optional(__S(368, __c46, 0).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(__S(319, __c39, 7).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfig",
@@ -16765,17 +13722,15 @@ function __c46(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           appId: S.String.pipe(T.Label("app_id")),
           meetingId: S.String.pipe(T.Label("meeting_id")),
-          aiConfig: S.optional(MeetingsUpdateMeetingByIdRequestAiConfig.pipe(T.Body("ai_config"))),
+          aiConfig: S.optional(__S(367, __c45, 7).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.Boolean.pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-          recordingConfig: S.optional(
-            MeetingsUpdateMeetingByIdRequestRecordingConfig.pipe(T.Body("recording_config")),
-          ),
+          recordingConfig: S.optional(__S(369, __c46, 1).pipe(T.Body("recording_config"))),
           sessionKeepAliveTimeInSecs: S.optional(
             S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
-          status: S.optional(MeetingsUpdateMeetingByIdRequestStatus),
+          status: S.optional(S.String),
           summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
           title: S.optional(S.String),
           transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
@@ -16794,12 +13749,8 @@ function __c46(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList),
-          ),
-          language: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage),
-          ),
+          keywords: S.optional(S.NullOr(__S(134, __c16, 6))),
+          language: S.optional(S.NullOr(S.String)),
           profanityFilter: S.optional(S.NullOr(S.Boolean).pipe(T.Body("profanity_filter"))),
         }),
       ).annotate({
@@ -16808,12 +13759,8 @@ function __c46(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          summarization: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization),
-          ),
-          transcription: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription),
-          ),
+          summarization: S.optional(S.NullOr(__S(322, __c40, 2))),
+          transcription: S.optional(S.NullOr(__S(371, __c46, 3))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfig",
@@ -16882,33 +13829,17 @@ function __c46(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          audioConfig: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig).pipe(
-              T.Body("audio_config"),
-            ),
-          ),
+          audioConfig: S.optional(S.NullOr(__S(226, __c28, 2)).pipe(T.Body("audio_config"))),
           fileNamePrefix: S.optional(S.NullOr(S.String).pipe(T.Body("file_name_prefix"))),
           liveStreamingConfig: S.optional(
-            S.NullOr(MeetingsCreateResponseDataRecordingConfigLiveStreamingConfig).pipe(
-              T.Body("live_streaming_config"),
-            ),
+            S.NullOr(__S(23, __c2, 7)).pipe(T.Body("live_streaming_config")),
           ),
           maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
           realtimekitBucketConfig: S.optional(
-            S.NullOr(MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig).pipe(
-              T.Body("realtimekit_bucket_config"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("realtimekit_bucket_config")),
           ),
-          storageConfig: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig).pipe(
-              T.Body("storage_config"),
-            ),
-          ),
-          videoConfig: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig).pipe(
-              T.Body("video_config"),
-            ),
-          ),
+          storageConfig: S.optional(S.NullOr(__S(373, __c46, 5)).pipe(T.Body("storage_config"))),
+          videoConfig: S.optional(S.NullOr(__S(326, __c40, 6)).pipe(T.Body("video_config"))),
         }),
       ).annotate({
         identifier: "MeetingsUpdateMeetingByIdResponseDataRecordingConfig",
@@ -16919,21 +13850,17 @@ function __c46(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          aiConfig: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataAiConfig).pipe(T.Body("ai_config")),
-          ),
+          aiConfig: S.optional(S.NullOr(__S(372, __c46, 4)).pipe(T.Body("ai_config"))),
           liveStreamOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start"))),
           persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
           recordOnStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("record_on_start"))),
           recordingConfig: S.optional(
-            S.NullOr(MeetingsUpdateMeetingByIdResponseDataRecordingConfig).pipe(
-              T.Body("recording_config"),
-            ),
+            S.NullOr(__S(374, __c46, 6)).pipe(T.Body("recording_config")),
           ),
           sessionKeepAliveTimeInSecs: S.optional(
             S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
           ),
-          status: S.optional(S.NullOr(MeetingsUpdateMeetingByIdResponseDataStatus)),
+          status: S.optional(S.NullOr(S.String)),
           summarizeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end"))),
           title: S.optional(S.NullOr(S.String)),
           transcribeOnEnd: S.optional(S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end"))),
@@ -16948,10 +13875,15 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(S.NullOr(MeetingsUpdateMeetingByIdResponseData)),
+          data: S.optional(S.NullOr(__S(375, __c46, 7))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateMeetingByIdMeetingResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

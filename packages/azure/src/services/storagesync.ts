@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,17 +21,8 @@ export interface AbortWorkflowRequest {
   /** workflow Id */
   workflowId: string;
 }
-const AbortWorkflowRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AbortWorkflowRequest>;
-
 export interface AbortWorkflowResponse {}
-const AbortWorkflowResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AbortWorkflowResponse>;
-
 export type Type = "Microsoft.StorageSync/storageSyncServices";
-const Type = S.String;
-
 export interface CheckStorageSyncServiceNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -40,15 +33,8 @@ export interface CheckStorageSyncServiceNameAvailabilityRequest {
   /** The resource type. Must be set to Microsoft.StorageSync/storageSyncServices */
   type: Type | (string & {});
 }
-const CheckStorageSyncServiceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckStorageSyncServiceNameAvailabilityRequest>;
-
 /** Gets the reason that a Storage Sync Service name could not be used. The Reason element is only returned if NameAvailable is false. */
 export type NameAvailabilityReason = "Invalid" | "AlreadyExists";
-const NameAvailabilityReason = S.String;
-
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
   /** Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or invalid and cannot be used. */
@@ -58,11 +44,6 @@ export interface CheckNameAvailabilityResult {
   /** Gets an error message explaining the Reason value in more detail. */
   message?: string;
 }
-const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckNameAvailabilityResult>;
-
 export interface CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -75,11 +56,6 @@ export interface CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-const CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest>;
-
 /** Cloud endpoint AFS file share metadata signing certificate public keys. */
 export interface CloudEndpointAfsShareMetadataCertificatePublicKeys {
   /** The first public key. */
@@ -87,11 +63,6 @@ export interface CloudEndpointAfsShareMetadataCertificatePublicKeys {
   /** The second public key. */
   secondKey?: string;
 }
-const CloudEndpointAfsShareMetadataCertificatePublicKeys = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CloudEndpointAfsShareMetadataCertificatePublicKeys>;
-
 /** Restore file spec. */
 export interface RestoreFileSpec {
   /** Restore file spec path */
@@ -99,15 +70,8 @@ export interface RestoreFileSpec {
   /** Restore file spec isdir */
   isdir?: boolean;
 }
-const RestoreFileSpec = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RestoreFileSpec>;
-
 /** Post Restore restore file spec array. */
 export type CloudEndpointsPostRestoreRequestRestoreFileSpecList = Array<RestoreFileSpec>;
-const CloudEndpointsPostRestoreRequestRestoreFileSpecList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CloudEndpointsPostRestoreRequestRestoreFileSpecList>;
-
 export interface CloudEndpointsPostRestoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -136,17 +100,7 @@ export interface CloudEndpointsPostRestoreRequest {
   /** Post Restore restore file spec array. */
   restoreFileSpec?: CloudEndpointsPostRestoreRequestRestoreFileSpecList;
 }
-const CloudEndpointsPostRestoreRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CloudEndpointsPostRestoreRequest>;
-
 export interface CloudEndpointsPostRestoreResponse {}
-const CloudEndpointsPostRestoreResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CloudEndpointsPostRestoreResponse>;
-
 export interface CloudEndpointsPreBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -161,17 +115,7 @@ export interface CloudEndpointsPreBackupRequest {
   /** Azure File Share. */
   azureFileShare?: string;
 }
-const CloudEndpointsPreBackupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CloudEndpointsPreBackupRequest>;
-
 export interface CloudEndpointsPreBackupResponse {}
-const CloudEndpointsPreBackupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CloudEndpointsPreBackupResponse>;
-
 export interface CloudEndpointsRestoreheartbeatRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -184,15 +128,7 @@ export interface CloudEndpointsRestoreheartbeatRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-const CloudEndpointsRestoreheartbeatRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CloudEndpointsRestoreheartbeatRequest>;
-
 export interface CloudEndpointsRestoreheartbeatResponse {}
-const CloudEndpointsRestoreheartbeatResponse =
-  CloudEndpointsPostRestoreResponse as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>;
-
 /** CloudEndpoint Properties object. */
 export interface CloudEndpointCreateParametersProperties {
   /** Storage Account Resource Id */
@@ -206,11 +142,6 @@ export interface CloudEndpointCreateParametersProperties {
   /** The interval for enumerating changes on the cloud endpoint. */
   changeEnumerationIntervalDays?: number;
 }
-const CloudEndpointCreateParametersProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CloudEndpointCreateParametersProperties>;
-
 export interface CreateCloudEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -225,19 +156,10 @@ export interface CreateCloudEndpointRequest {
   /** The parameters used to create the cloud endpoint. */
   properties?: CloudEndpointCreateParametersProperties;
 }
-const CreateCloudEndpointRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateCloudEndpointRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -253,8 +175,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SystemData>;
-
 /** Cloud endpoint change enumeration status object */
 export interface CloudEndpointLastChangeEnumerationStatus {
   /** Timestamp when change enumeration started */
@@ -270,21 +190,12 @@ export interface CloudEndpointLastChangeEnumerationStatus {
   /** Timestamp of when change enumeration is expected to run again */
   nextRunTimestamp?: string;
 }
-const CloudEndpointLastChangeEnumerationStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CloudEndpointLastChangeEnumerationStatus>;
-
 /** State of change enumeration activity */
 export type CloudEndpointChangeEnumerationActivityState =
   | "InitialEnumerationInProgress"
   | "EnumerationInProgress";
-const CloudEndpointChangeEnumerationActivityState = S.String;
-
 /** State of the total counts of change enumeration activity */
 export type CloudEndpointChangeEnumerationTotalCountsState = "Calculating" | "Final";
-const CloudEndpointChangeEnumerationTotalCountsState = S.String;
-
 /** Cloud endpoint change enumeration activity object */
 export interface CloudEndpointChangeEnumerationActivity {
   /** Last updated timestamp */
@@ -314,11 +225,6 @@ export interface CloudEndpointChangeEnumerationActivity {
   /** Progress percentage for processing deletes. This is done separately from the rest of the enumeration run */
   deletesProgressPercent?: number;
 }
-const CloudEndpointChangeEnumerationActivity = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CloudEndpointChangeEnumerationActivity>;
-
 /** Cloud endpoint change enumeration status object */
 export interface CloudEndpointChangeEnumerationStatus {
   /** Last updated timestamp */
@@ -328,11 +234,6 @@ export interface CloudEndpointChangeEnumerationStatus {
   /** Change enumeration activity */
   activity?: CloudEndpointChangeEnumerationActivity;
 }
-const CloudEndpointChangeEnumerationStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CloudEndpointChangeEnumerationStatus>;
-
 /** CloudEndpoint Properties object. */
 export interface CloudEndpointProperties {
   /** Storage Account Resource Id */
@@ -358,11 +259,6 @@ export interface CloudEndpointProperties {
   /** The interval for enumerating changes on the cloud endpoint. */
   changeEnumerationIntervalDays?: number;
 }
-const CloudEndpointProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CloudEndpointProperties>;
-
 export interface CreateCloudEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -375,19 +271,10 @@ export interface CreateCloudEndpointResponse {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-const CreateCloudEndpointResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateCloudEndpointResponse>;
-
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-const PrivateEndpointInput = AbortWorkflowResponse as any as S.Schema<PrivateEndpointInput>;
-
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-const PrivateEndpointServiceConnectionStatus = S.String;
-
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -397,11 +284,6 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The private endpoint resource. */
@@ -409,11 +291,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface CreatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -426,33 +303,19 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
-
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PrivateEndpoint>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
-const PrivateEndpointConnectionProvisioningState = S.String;
-
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -464,11 +327,6 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -481,11 +339,6 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
-
 /** RegisteredServer Create Properties object. */
 export interface RegisteredServerCreateParametersProperties {
   /** Registered Server Certificate */
@@ -511,11 +364,6 @@ export interface RegisteredServerCreateParametersProperties {
   /** Apply server with newly discovered ApplicationId if available. */
   identity?: boolean;
 }
-const RegisteredServerCreateParametersProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<RegisteredServerCreateParametersProperties>;
-
 export interface CreateRegisteredServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -528,19 +376,10 @@ export interface CreateRegisteredServerRequest {
   /** The parameters used to create the registered server. */
   properties?: RegisteredServerCreateParametersProperties;
 }
-const CreateRegisteredServerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateRegisteredServerRequest>;
-
 /** Type of the registered server agent version status */
 export type RegisteredServerAgentVersionStatus = "Ok" | "NearExpiry" | "Expired" | "Blocked";
-const RegisteredServerAgentVersionStatus = S.String;
-
 /** Type of the Server Auth type */
 export type ServerAuthType = "Certificate" | "ManagedIdentity";
-const ServerAuthType = S.String;
-
 /** RegisteredServer Properties object. */
 export interface RegisteredServerProperties {
   /** Registered Server Certificate */
@@ -598,11 +437,6 @@ export interface RegisteredServerProperties {
   /** Server auth type. */
   activeAuthType?: ServerAuthType;
 }
-const RegisteredServerProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<RegisteredServerProperties>;
-
 export interface CreateRegisteredServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -615,34 +449,21 @@ export interface CreateRegisteredServerResponse {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-const CreateRegisteredServerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateRegisteredServerResponse>;
-
 /** Type of the Feature Status */
 export type FeatureStatus = "on" | "off";
-const FeatureStatus = S.String;
-
 /** Policy for how namespace and files are recalled during FastDr. */
 export type ServerEndpointCreateParametersPropertiesInitialDownloadPolicy =
   | "NamespaceOnly"
   | "NamespaceThenModifiedFiles"
   | "AvoidTieredFiles";
-const ServerEndpointCreateParametersPropertiesInitialDownloadPolicy = S.String;
-
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointCreateParametersPropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
   | "UpdateLocallyCachedFiles";
-const ServerEndpointCreateParametersPropertiesLocalCacheMode = S.String;
-
 /** Policy for how the initial upload sync session is performed. */
 export type ServerEndpointCreateParametersPropertiesInitialUploadPolicy =
   | "ServerAuthoritative"
   | "Merge";
-const ServerEndpointCreateParametersPropertiesInitialUploadPolicy = S.String;
-
 /** ServerEndpoint Properties object. */
 export interface ServerEndpointCreateParametersProperties {
   /** Server Local path. */
@@ -670,11 +491,6 @@ export interface ServerEndpointCreateParametersProperties {
   /** Policy for how the initial upload sync session is performed. */
   initialUploadPolicy?: ServerEndpointCreateParametersPropertiesInitialUploadPolicy | (string & {});
 }
-const ServerEndpointCreateParametersProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ServerEndpointCreateParametersProperties>;
-
 export interface CreateServerEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -689,19 +505,10 @@ export interface CreateServerEndpointRequest {
   /** The parameters used to create the server endpoint. */
   properties?: ServerEndpointCreateParametersProperties;
 }
-const CreateServerEndpointRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateServerEndpointRequest>;
-
 /** Type of the server endpoint health state */
 export type ServerEndpointHealthState = "Unavailable" | "Healthy" | "Error";
-const ServerEndpointHealthState = S.String;
-
 /** Type of the sync activity state */
 export type ServerEndpointSyncActivityState = "Upload" | "Download" | "UploadAndDownload";
-const ServerEndpointSyncActivityState = S.String;
-
 /** Files not syncing error object */
 export interface ServerEndpointFilesNotSyncingError {
   /** Error code (HResult) */
@@ -711,19 +518,9 @@ export interface ServerEndpointFilesNotSyncingError {
   /** Count of transient files not syncing with the specified error code */
   transientCount?: number;
 }
-const ServerEndpointFilesNotSyncingError = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ServerEndpointFilesNotSyncingError>;
-
 /** Array of per-item errors coming from the last sync session. */
 export type ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList =
   Array<ServerEndpointFilesNotSyncingError>;
-const ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList>;
-
 /** Sync mode for the server endpoint. */
 export type ServerEndpointSyncMode =
   | "Regular"
@@ -731,8 +528,6 @@ export type ServerEndpointSyncMode =
   | "InitialUpload"
   | "SnapshotUpload"
   | "InitialFullDownload";
-const ServerEndpointSyncMode = S.String;
-
 /** Sync Session status object. */
 export interface ServerEndpointSyncSessionStatus {
   /** Last sync result (HResult) */
@@ -752,15 +547,8 @@ export interface ServerEndpointSyncSessionStatus {
   /** Sync mode */
   lastSyncMode?: ServerEndpointSyncMode;
 }
-const ServerEndpointSyncSessionStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ServerEndpointSyncSessionStatus>;
-
 /** Warning types for sync sessions. */
 export type ServerEndpointSyncSessionWarningType = "NoWarning" | "BlockedByLargeFile";
-const ServerEndpointSyncSessionWarningType = S.String;
-
 /** Sync Session status object. */
 export interface ServerEndpointSyncActivityStatus {
   /** Timestamp when properties were updated */
@@ -802,19 +590,12 @@ export interface ServerEndpointSyncActivityStatus {
   /** Warning type (if any) */
   warning?: ServerEndpointSyncSessionWarningType;
 }
-const ServerEndpointSyncActivityStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ServerEndpointSyncActivityStatus>;
-
 /** Type of the Health state */
 export type ServerEndpointOfflineDataTransferState =
   | "InProgress"
   | "Stopping"
   | "NotRunning"
   | "Complete";
-const ServerEndpointOfflineDataTransferState = S.String;
-
 /** Background data download activity object */
 export interface ServerEndpointBackgroundDataDownloadActivity {
   /** Timestamp when properties were updated */
@@ -826,11 +607,6 @@ export interface ServerEndpointBackgroundDataDownloadActivity {
   /** Running count of bytes downloaded */
   downloadedBytes?: number;
 }
-const ServerEndpointBackgroundDataDownloadActivity = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ServerEndpointBackgroundDataDownloadActivity>;
-
 /** Server Endpoint sync status */
 export interface ServerEndpointSyncStatus {
   /** Download Health Status. */
@@ -858,11 +634,6 @@ export interface ServerEndpointSyncStatus {
   /** Background data download activity */
   backgroundDataDownloadActivity?: ServerEndpointBackgroundDataDownloadActivity;
 }
-const ServerEndpointSyncStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ServerEndpointSyncStatus>;
-
 /** Server endpoint cloud tiering status object. */
 export interface CloudTieringSpaceSavings {
   /** Last updated timestamp */
@@ -878,11 +649,6 @@ export interface CloudTieringSpaceSavings {
   /** Count of bytes saved on the server */
   spaceSavingsBytes?: number;
 }
-const CloudTieringSpaceSavings = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CloudTieringSpaceSavings>;
-
 /** Server endpoint cloud tiering status object. */
 export interface CloudTieringCachePerformance {
   /** Last updated timestamp */
@@ -894,11 +660,6 @@ export interface CloudTieringCachePerformance {
   /** Percentage of total bytes (hit + miss) that were served from the local server */
   cacheHitBytesPercent?: number;
 }
-const CloudTieringCachePerformance = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CloudTieringCachePerformance>;
-
 /** Files not tiering error object */
 export interface FilesNotTieringError {
   /** Error code (HResult) */
@@ -906,15 +667,8 @@ export interface FilesNotTieringError {
   /** Count of files with this error */
   fileCount?: number;
 }
-const FilesNotTieringError = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<FilesNotTieringError>;
-
 /** Array of tiering errors */
 export type CloudTieringFilesNotTieringErrorsList = Array<FilesNotTieringError>;
-const CloudTieringFilesNotTieringErrorsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CloudTieringFilesNotTieringErrorsList>;
-
 /** Server endpoint cloud tiering status object. */
 export interface CloudTieringFilesNotTiering {
   /** Last updated timestamp */
@@ -924,11 +678,6 @@ export interface CloudTieringFilesNotTiering {
   /** Array of tiering errors */
   errors?: CloudTieringFilesNotTieringErrorsList;
 }
-const CloudTieringFilesNotTiering = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CloudTieringFilesNotTiering>;
-
 /** Status of the volume free space policy */
 export interface CloudTieringVolumeFreeSpacePolicyStatus {
   /** Last updated timestamp */
@@ -938,11 +687,6 @@ export interface CloudTieringVolumeFreeSpacePolicyStatus {
   /** Current volume free space percentage. */
   currentVolumeFreeSpacePercent?: number;
 }
-const CloudTieringVolumeFreeSpacePolicyStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CloudTieringVolumeFreeSpacePolicyStatus>;
-
 /** Status of the date policy */
 export interface CloudTieringDatePolicyStatus {
   /** Last updated timestamp */
@@ -950,15 +694,8 @@ export interface CloudTieringDatePolicyStatus {
   /** Most recent access time of tiered files */
   tieredFilesMostRecentAccessTimestamp?: string;
 }
-const CloudTieringDatePolicyStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CloudTieringDatePolicyStatus>;
-
 /** Type of the cloud tiering low disk mode state */
 export type CloudTieringLowDiskModeState = "Enabled" | "Disabled";
-const CloudTieringLowDiskModeState = S.String;
-
 /** Information regarding the low disk mode state */
 export interface CloudTieringLowDiskMode {
   /** Last updated timestamp */
@@ -966,11 +703,6 @@ export interface CloudTieringLowDiskMode {
   /** Low disk mode state */
   state?: CloudTieringLowDiskModeState;
 }
-const CloudTieringLowDiskMode = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CloudTieringLowDiskMode>;
-
 /** Server endpoint cloud tiering status object. */
 export interface ServerEndpointCloudTieringStatus {
   /** Last updated timestamp */
@@ -996,11 +728,6 @@ export interface ServerEndpointCloudTieringStatus {
   /** Information regarding the low disk mode state */
   lowDiskMode?: CloudTieringLowDiskMode;
 }
-const ServerEndpointCloudTieringStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ServerEndpointCloudTieringStatus>;
-
 /** Server endpoint recall error object */
 export interface ServerEndpointRecallError {
   /** Error code (HResult) */
@@ -1008,18 +735,8 @@ export interface ServerEndpointRecallError {
   /** Count of occurences of the error */
   count?: number;
 }
-const ServerEndpointRecallError = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ServerEndpointRecallError>;
-
 /** Array of recall errors */
 export type ServerEndpointRecallStatusRecallErrorsList = Array<ServerEndpointRecallError>;
-const ServerEndpointRecallStatusRecallErrorsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ServerEndpointRecallStatusRecallErrorsList>;
-
 /** Server endpoint recall status object. */
 export interface ServerEndpointRecallStatus {
   /** Last updated timestamp */
@@ -1029,28 +746,17 @@ export interface ServerEndpointRecallStatus {
   /** Array of recall errors */
   recallErrors?: ServerEndpointRecallStatusRecallErrorsList;
 }
-const ServerEndpointRecallStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ServerEndpointRecallStatus>;
-
 /** Policy for how namespace and files are recalled during FastDr. */
 export type ServerEndpointPropertiesInitialDownloadPolicy =
   | "NamespaceOnly"
   | "NamespaceThenModifiedFiles"
   | "AvoidTieredFiles";
-const ServerEndpointPropertiesInitialDownloadPolicy = S.String;
-
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointPropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
   | "UpdateLocallyCachedFiles";
-const ServerEndpointPropertiesLocalCacheMode = S.String;
-
 /** Policy for how the initial upload sync session is performed. */
 export type ServerEndpointPropertiesInitialUploadPolicy = "ServerAuthoritative" | "Merge";
-const ServerEndpointPropertiesInitialUploadPolicy = S.String;
-
 /** Server provisioning status */
 export type ServerProvisioningStatus =
   | "NotStarted"
@@ -1058,17 +764,10 @@ export type ServerProvisioningStatus =
   | "Ready_SyncNotFunctional"
   | "Ready_SyncFunctional"
   | "Error";
-const ServerProvisioningStatus = S.String;
-
 /** Additional information for the provisioning step */
 export type ServerEndpointProvisioningStepStatusAdditionalInformationMap = {
   [key: string]: string | undefined;
 };
-const ServerEndpointProvisioningStepStatusAdditionalInformationMap = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ServerEndpointProvisioningStepStatusAdditionalInformationMap>;
-
 /** Server endpoint provisioning step status object. */
 export interface ServerEndpointProvisioningStepStatus {
   /** Name of the provisioning step */
@@ -1088,19 +787,9 @@ export interface ServerEndpointProvisioningStepStatus {
   /** Additional information for the provisioning step */
   additionalInformation?: ServerEndpointProvisioningStepStatusAdditionalInformationMap;
 }
-const ServerEndpointProvisioningStepStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ServerEndpointProvisioningStepStatus>;
-
 /** Provisioning Step status information for each step in the provisioning process */
 export type ServerEndpointProvisioningStatusProvisioningStepStatusesList =
   Array<ServerEndpointProvisioningStepStatus>;
-const ServerEndpointProvisioningStatusProvisioningStepStatusesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ServerEndpointProvisioningStatusProvisioningStepStatusesList>;
-
 /** Server endpoint provisioning status information */
 export interface ServerEndpointProvisioningStatus {
   /** Server Endpoint provisioning status */
@@ -1110,11 +799,6 @@ export interface ServerEndpointProvisioningStatus {
   /** Provisioning Step status information for each step in the provisioning process */
   provisioningStepStatuses?: ServerEndpointProvisioningStatusProvisioningStepStatusesList;
 }
-const ServerEndpointProvisioningStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ServerEndpointProvisioningStatus>;
-
 /** ServerEndpoint Properties object. */
 export interface ServerEndpointProperties {
   /** Server Local path. */
@@ -1160,11 +844,6 @@ export interface ServerEndpointProperties {
   /** Server Endpoint provisioning status */
   serverEndpointProvisioningStatus?: ServerEndpointProvisioningStatus;
 }
-const ServerEndpointProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ServerEndpointProperties>;
-
 export interface CreateServerEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1177,49 +856,27 @@ export interface CreateServerEndpointResponse {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-const CreateServerEndpointResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateServerEndpointResponse>;
-
 /** Resource tags. */
 export type CreateStorageSyncServiceRequestTagsMap = { [key: string]: string | undefined };
-const CreateStorageSyncServiceRequestTagsMap =
-  ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<CreateStorageSyncServiceRequestTagsMap>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = PrivateEndpointInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: PrivateEndpointInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateStorageSyncServiceRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const CreateStorageSyncServiceRequestIdentity = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateStorageSyncServiceRequestIdentity>;
-
 /** Type of the Incoming Traffic Policy */
 export type IncomingTrafficPolicy = "AllowAllTraffic" | "AllowVirtualNetworksOnly";
-const IncomingTrafficPolicy = S.String;
-
 /** StorageSyncService Properties object. */
 export interface StorageSyncServiceCreateParametersProperties {
   /** Incoming Traffic Policy */
@@ -1227,11 +884,6 @@ export interface StorageSyncServiceCreateParametersProperties {
   /** Use Identity authorization when customer have finished setup RBAC permissions. */
   useIdentity?: boolean;
 }
-const StorageSyncServiceCreateParametersProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<StorageSyncServiceCreateParametersProperties>;
-
 export interface CreateStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1248,16 +900,8 @@ export interface CreateStorageSyncServiceRequest {
   /** The parameters used to create the storage sync service. */
   properties?: StorageSyncServiceCreateParametersProperties;
 }
-const CreateStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateStorageSyncServiceRequest>;
-
 /** Resource tags. */
 export type CreateStorageSyncServiceResponseTagsMap = { [key: string]: string | undefined };
-const CreateStorageSyncServiceResponseTagsMap =
-  ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<CreateStorageSyncServiceResponseTagsMap>;
-
 /** The private endpoint connection resource. */
 export interface StorageSyncServicePropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1271,19 +915,9 @@ export interface StorageSyncServicePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const StorageSyncServicePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
-
 /** List of private endpoint connection associated with the specified storage sync service */
 export type StorageSyncServicePropertiesPrivateEndpointConnectionsList =
   Array<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
-const StorageSyncServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<StorageSyncServicePropertiesPrivateEndpointConnectionsList>;
-
 /** Storage Sync Service Properties object. */
 export interface StorageSyncServiceProperties {
   /** Incoming Traffic Policy */
@@ -1303,11 +937,6 @@ export interface StorageSyncServiceProperties {
   /** List of private endpoint connection associated with the specified storage sync service */
   privateEndpointConnections?: StorageSyncServicePropertiesPrivateEndpointConnectionsList;
 }
-const StorageSyncServiceProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<StorageSyncServiceProperties>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -1315,15 +944,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateStorageSyncServiceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1333,11 +955,6 @@ export interface CreateStorageSyncServiceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const CreateStorageSyncServiceResponseIdentity = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateStorageSyncServiceResponseIdentity>;
-
 export interface CreateStorageSyncServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1356,11 +973,6 @@ export interface CreateStorageSyncServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-const CreateStorageSyncServiceResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateStorageSyncServiceResponse>;
-
 export interface CreateSyncGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1373,11 +985,6 @@ export interface CreateSyncGroupRequest {
   /** The parameters used to create the sync group */
   properties?: unknown;
 }
-const CreateSyncGroupRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateSyncGroupRequest>;
-
 /** SyncGroup Properties object. */
 export interface SyncGroupProperties {
   /** Unique Id */
@@ -1385,8 +992,6 @@ export interface SyncGroupProperties {
   /** Sync group status */
   syncGroupStatus?: string;
 }
-const SyncGroupProperties = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<SyncGroupProperties>;
-
 export interface CreateSyncGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1399,11 +1004,6 @@ export interface CreateSyncGroupResponse {
   /** SyncGroup properties. */
   properties?: SyncGroupProperties;
 }
-const CreateSyncGroupResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateSyncGroupResponse>;
-
 export interface DeleteCloudEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1416,15 +1016,7 @@ export interface DeleteCloudEndpointRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-const DeleteCloudEndpointRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteCloudEndpointRequest>;
-
 export interface DeleteCloudEndpointResponse {}
-const DeleteCloudEndpointResponse =
-  AbortWorkflowResponse as any as S.Schema<DeleteCloudEndpointResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1435,15 +1027,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  CloudEndpointsPostRestoreResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteRegisteredServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1454,15 +1038,7 @@ export interface DeleteRegisteredServerRequest {
   /** GUID identifying the on-premises server. */
   serverId: string;
 }
-const DeleteRegisteredServerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteRegisteredServerRequest>;
-
 export interface DeleteRegisteredServerResponse {}
-const DeleteRegisteredServerResponse =
-  AbortWorkflowResponse as any as S.Schema<DeleteRegisteredServerResponse>;
-
 export interface DeleteServerEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1475,15 +1051,7 @@ export interface DeleteServerEndpointRequest {
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
 }
-const DeleteServerEndpointRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteServerEndpointRequest>;
-
 export interface DeleteServerEndpointResponse {}
-const DeleteServerEndpointResponse =
-  AbortWorkflowResponse as any as S.Schema<DeleteServerEndpointResponse>;
-
 export interface DeleteStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1492,15 +1060,7 @@ export interface DeleteStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-const DeleteStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteStorageSyncServiceRequest>;
-
 export interface DeleteStorageSyncServiceResponse {}
-const DeleteStorageSyncServiceResponse =
-  CloudEndpointsPostRestoreResponse as any as S.Schema<DeleteStorageSyncServiceResponse>;
-
 export interface DeleteSyncGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1511,14 +1071,7 @@ export interface DeleteSyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-const DeleteSyncGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteSyncGroupRequest>;
-
 export interface DeleteSyncGroupResponse {}
-const DeleteSyncGroupResponse = AbortWorkflowResponse as any as S.Schema<DeleteSyncGroupResponse>;
-
 export interface GetCloudEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1531,11 +1084,6 @@ export interface GetCloudEndpointRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-const GetCloudEndpointRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetCloudEndpointRequest>;
-
 export interface GetCloudEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1548,11 +1096,6 @@ export interface GetCloudEndpointResponse {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-const GetCloudEndpointResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetCloudEndpointResponse>;
-
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1565,11 +1108,6 @@ export interface GetOperationStatusRequest {
   /** operation Id */
   operationId: string;
 }
-const GetOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetOperationStatusRequest>;
-
 /** Error Details object. */
 export interface StorageSyncErrorDetails {
   /** Error code of the given entry. */
@@ -1589,11 +1127,6 @@ export interface StorageSyncErrorDetails {
   /** HTTP error code of the given entry. */
   httpErrorCode?: string;
 }
-const StorageSyncErrorDetails = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<StorageSyncErrorDetails>;
-
 /** Error Details object. */
 export interface StorageSyncInnerErrorDetails {
   /** Call stack of the error. */
@@ -1605,11 +1138,6 @@ export interface StorageSyncInnerErrorDetails {
   /** Call stack of the inner error. */
   innerExceptionCallStack?: string;
 }
-const StorageSyncInnerErrorDetails = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<StorageSyncInnerErrorDetails>;
-
 /** Error type */
 export interface StorageSyncApiError {
   /** Error code of the given entry. */
@@ -1623,8 +1151,6 @@ export interface StorageSyncApiError {
   /** Inner error details of the given entry. */
   innererror?: StorageSyncInnerErrorDetails;
 }
-const StorageSyncApiError = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<StorageSyncApiError>;
-
 /** Operation status object */
 export interface OperationStatus {
   /** Operation Id */
@@ -1638,8 +1164,6 @@ export interface OperationStatus {
   /** Error details. */
   error?: StorageSyncApiError;
 }
-const OperationStatus = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<OperationStatus>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1650,11 +1174,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1667,9 +1186,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetRegisteredServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1680,11 +1196,6 @@ export interface GetRegisteredServerRequest {
   /** GUID identifying the on-premises server. */
   serverId: string;
 }
-const GetRegisteredServerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetRegisteredServerRequest>;
-
 export interface GetRegisteredServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1697,9 +1208,6 @@ export interface GetRegisteredServerResponse {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-const GetRegisteredServerResponse =
-  CreateRegisteredServerResponse as any as S.Schema<GetRegisteredServerResponse>;
-
 export interface GetServerEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1712,11 +1220,6 @@ export interface GetServerEndpointRequest {
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
 }
-const GetServerEndpointRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetServerEndpointRequest>;
-
 export interface GetServerEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1729,9 +1232,6 @@ export interface GetServerEndpointResponse {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-const GetServerEndpointResponse =
-  CreateServerEndpointResponse as any as S.Schema<GetServerEndpointResponse>;
-
 export interface GetStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1740,11 +1240,6 @@ export interface GetStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-const GetStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetStorageSyncServiceRequest>;
-
 /** Resource tags. */
 export type GetStorageSyncServiceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1767,9 +1262,6 @@ export interface GetStorageSyncServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-const GetStorageSyncServiceResponse =
-  CreateStorageSyncServiceResponse as any as S.Schema<GetStorageSyncServiceResponse>;
-
 export interface GetSyncGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1780,8 +1272,6 @@ export interface GetSyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-const GetSyncGroupRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<GetSyncGroupRequest>;
-
 export interface GetSyncGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1794,8 +1284,6 @@ export interface GetSyncGroupResponse {
   /** SyncGroup properties. */
   properties?: SyncGroupProperties;
 }
-const GetSyncGroupResponse = CreateSyncGroupResponse as any as S.Schema<GetSyncGroupResponse>;
-
 export interface GetWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1806,16 +1294,10 @@ export interface GetWorkflowRequest {
   /** workflow Id */
   workflowId: string;
 }
-const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetWorkflowRequest>;
-
 /** Type of the Workflow Status */
 export type WorkflowStatus = "active" | "expired" | "succeeded" | "aborted" | "failed";
-const WorkflowStatus = S.String;
-
 /** Type of the Operation Direction */
 export type OperationDirection = "do" | "undo" | "cancel";
-const OperationDirection = S.String;
-
 /** Workflow Properties object. */
 export interface WorkflowProperties {
   /** last step name */
@@ -1835,8 +1317,6 @@ export interface WorkflowProperties {
   /** workflow last status timestamp. */
   lastStatusTimestamp?: string;
 }
-const WorkflowProperties = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<WorkflowProperties>;
-
 export interface GetWorkflowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1849,8 +1329,6 @@ export interface GetWorkflowResponse {
   /** Workflow properties. */
   properties?: WorkflowProperties;
 }
-const GetWorkflowResponse = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetWorkflowResponse>;
-
 export interface ListCloudEndpointBySyncGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1861,11 +1339,6 @@ export interface ListCloudEndpointBySyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-const ListCloudEndpointBySyncGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListCloudEndpointBySyncGroupRequest>;
-
 /** Cloud Endpoint object. */
 export interface CloudEndpoint {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1879,15 +1352,8 @@ export interface CloudEndpoint {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-const CloudEndpoint = GetCloudEndpointResponse as any as S.Schema<CloudEndpoint>;
-
 /** Collection of CloudEndpoint. */
 export type CloudEndpointArrayValueList = Array<CloudEndpoint>;
-const CloudEndpointArrayValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CloudEndpointArrayValueList>;
-
 /** Array of CloudEndpoint */
 export interface CloudEndpointArray {
   /** Collection of CloudEndpoint. */
@@ -1895,14 +1361,7 @@ export interface CloudEndpointArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const CloudEndpointArray = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CloudEndpointArray>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The operation supported by storage sync. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -1914,18 +1373,8 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
-const OperationDisplayInfo = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<OperationDisplayInfo>;
-
 /** Supported aggregation types for the metric. */
 export type OperationResourceMetricSpecificationSupportedAggregationTypesList = Array<string>;
-const OperationResourceMetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<OperationResourceMetricSpecificationSupportedAggregationTypesList>;
-
 /** OperationResourceMetricSpecificationDimension object. */
 export interface OperationResourceMetricSpecificationDimension {
   /** Name of the dimension. */
@@ -1935,19 +1384,9 @@ export interface OperationResourceMetricSpecificationDimension {
   /** Indicates metric should be exported for Shoebox. */
   toBeExportedForShoebox?: boolean;
 }
-const OperationResourceMetricSpecificationDimension = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<OperationResourceMetricSpecificationDimension>;
-
 /** Dimensions for the metric specification. */
 export type OperationResourceMetricSpecificationDimensionsList =
   Array<OperationResourceMetricSpecificationDimension>;
-const OperationResourceMetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<OperationResourceMetricSpecificationDimensionsList>;
-
 /** Operation Display Resource object. */
 export interface OperationResourceMetricSpecification {
   /** Name of the metric. */
@@ -1969,36 +1408,19 @@ export interface OperationResourceMetricSpecification {
   /** Dimensions for the metric specification. */
   dimensions?: OperationResourceMetricSpecificationDimensionsList;
 }
-const OperationResourceMetricSpecification = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<OperationResourceMetricSpecification>;
-
 /** List of metric specifications. */
 export type OperationResourceServiceSpecificationMetricSpecificationsList =
   Array<OperationResourceMetricSpecification>;
-const OperationResourceServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<OperationResourceServiceSpecificationMetricSpecificationsList>;
-
 /** Service specification. */
 export interface OperationResourceServiceSpecification {
   /** List of metric specifications. */
   metricSpecifications?: OperationResourceServiceSpecificationMetricSpecificationsList;
 }
-const OperationResourceServiceSpecification = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<OperationResourceServiceSpecification>;
-
 /** Properties of the operations resource. */
 export interface OperationProperties {
   /** Service specification for the operations resource. */
   serviceSpecification?: OperationResourceServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<OperationProperties>;
-
 /** The operation supported by storage sync. */
 export interface OperationEntity {
   /** Operation name: {provider}/{resource}/{operation}. */
@@ -2010,15 +1432,8 @@ export interface OperationEntity {
   /** Properties of the operations resource. */
   properties?: OperationProperties;
 }
-const OperationEntity = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<OperationEntity>;
-
 /** The OperationEntity items on this page */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
-const OperationEntityListResultValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<OperationEntityListResultValueList>;
-
 /** Paged collection of OperationEntity items */
 export interface OperationEntityListResult {
   /** The OperationEntity items on this page */
@@ -2026,11 +1441,6 @@ export interface OperationEntityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OperationEntityListResult = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<OperationEntityListResult>;
-
 export interface ListPrivateEndpointConnectionByStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2039,20 +1449,12 @@ export interface ListPrivateEndpointConnectionByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-const ListPrivateEndpointConnectionByStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListPrivateEndpointConnectionByStorageSyncServiceRequest>;
-
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   StorageSyncServicePropertiesPrivateEndpointConnectionsItem;
 /** List of private endpoint connections associated with the specified resource. */
 export type PrivateEndpointConnectionListResultValueList =
   Array<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
-const PrivateEndpointConnectionListResultValueList =
-  StorageSyncServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** List of private endpoint connections associated with the specified resource. */
 export interface PrivateEndpointConnectionListResult {
   /** List of private endpoint connections associated with the specified resource. */
@@ -2060,11 +1462,6 @@ export interface PrivateEndpointConnectionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourceByStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2073,21 +1470,10 @@ export interface ListPrivateLinkResourceByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-const ListPrivateLinkResourceByStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -2097,11 +1483,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** A private link resource. */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2115,25 +1496,13 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<PrivateLinkResource>;
-
 /** Array of private link resources */
 export type ListPrivateLinkResourceByStorageSyncServiceResponseValueList =
   Array<PrivateLinkResource>;
-const ListPrivateLinkResourceByStorageSyncServiceResponseValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceResponseValueList>;
-
 export interface ListPrivateLinkResourceByStorageSyncServiceResponse {
   /** Array of private link resources */
   value?: ListPrivateLinkResourceByStorageSyncServiceResponseValueList;
 }
-const ListPrivateLinkResourceByStorageSyncServiceResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceResponse>;
-
 export interface ListRegisteredServerByStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2142,11 +1511,6 @@ export interface ListRegisteredServerByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-const ListRegisteredServerByStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListRegisteredServerByStorageSyncServiceRequest>;
-
 /** Registered Server resource. */
 export interface RegisteredServer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2160,15 +1524,8 @@ export interface RegisteredServer {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-const RegisteredServer = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<RegisteredServer>;
-
 /** Collection of Registered Server. */
 export type RegisteredServerArrayValueList = Array<RegisteredServer>;
-const RegisteredServerArrayValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<RegisteredServerArrayValueList>;
-
 /** Array of RegisteredServer */
 export interface RegisteredServerArray {
   /** Collection of Registered Server. */
@@ -2176,11 +1533,6 @@ export interface RegisteredServerArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const RegisteredServerArray = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<RegisteredServerArray>;
-
 export interface ListServerEndpointBySyncGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2191,11 +1543,6 @@ export interface ListServerEndpointBySyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-const ListServerEndpointBySyncGroupRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListServerEndpointBySyncGroupRequest>;
-
 /** Server Endpoint object. */
 export interface ServerEndpoint {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2209,15 +1556,8 @@ export interface ServerEndpoint {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-const ServerEndpoint = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ServerEndpoint>;
-
 /** Collection of ServerEndpoint. */
 export type ServerEndpointArrayValueList = Array<ServerEndpoint>;
-const ServerEndpointArrayValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ServerEndpointArrayValueList>;
-
 /** Array of ServerEndpoint */
 export interface ServerEndpointArray {
   /** Collection of ServerEndpoint. */
@@ -2225,24 +1565,14 @@ export interface ServerEndpointArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const ServerEndpointArray = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ServerEndpointArray>;
-
 export interface ListStorageSyncServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListStorageSyncServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListStorageSyncServiceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type StorageSyncServiceTagsMap = { [key: string]: string | undefined };
-const StorageSyncServiceTagsMap =
-  ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<StorageSyncServiceTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type StorageSyncServiceIdentity = CreateStorageSyncServiceResponseIdentity;
 /** Storage Sync Service object. */
@@ -2264,15 +1594,8 @@ export interface StorageSyncService {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-const StorageSyncService = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<StorageSyncService>;
-
 /** Collection of StorageSyncServices. */
 export type StorageSyncServiceArrayValueList = Array<StorageSyncService>;
-const StorageSyncServiceArrayValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<StorageSyncServiceArrayValueList>;
-
 /** Array of StorageSyncServices */
 export interface StorageSyncServiceArray {
   /** Collection of StorageSyncServices. */
@@ -2280,20 +1603,10 @@ export interface StorageSyncServiceArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const StorageSyncServiceArray = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<StorageSyncServiceArray>;
-
 export interface ListStorageSyncServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListStorageSyncServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListStorageSyncServiceBySubscriptionRequest>;
-
 export interface ListSyncGroupByStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2302,11 +1615,6 @@ export interface ListSyncGroupByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-const ListSyncGroupByStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ListSyncGroupByStorageSyncServiceRequest>;
-
 /** Sync Group object. */
 export interface SyncGroup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2320,15 +1628,8 @@ export interface SyncGroup {
   /** SyncGroup properties. */
   properties?: SyncGroupProperties;
 }
-const SyncGroup = CreateSyncGroupResponse as any as S.Schema<SyncGroup>;
-
 /** Collection of SyncGroup. */
 export type SyncGroupArrayValueList = Array<SyncGroup>;
-const SyncGroupArrayValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<SyncGroupArrayValueList>;
-
 /** Array of SyncGroup */
 export interface SyncGroupArray {
   /** Collection of SyncGroup. */
@@ -2336,8 +1637,6 @@ export interface SyncGroupArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const SyncGroupArray = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<SyncGroupArray>;
-
 export interface ListWorkflowByStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2346,11 +1645,6 @@ export interface ListWorkflowByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-const ListWorkflowByStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListWorkflowByStorageSyncServiceRequest>;
-
 /** Workflow resource. */
 export interface Workflow {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2364,15 +1658,8 @@ export interface Workflow {
   /** Workflow properties. */
   properties?: WorkflowProperties;
 }
-const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
-
 /** Collection of workflow items. */
 export type WorkflowArrayValueList = Array<Workflow>;
-const WorkflowArrayValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<WorkflowArrayValueList>;
-
 /** Array of Workflow */
 export interface WorkflowArray {
   /** Collection of workflow items. */
@@ -2380,8 +1667,6 @@ export interface WorkflowArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-const WorkflowArray = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<WorkflowArray>;
-
 export interface LocationOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2390,11 +1675,6 @@ export interface LocationOperationStatusRequest {
   /** operation Id */
   operationId: string;
 }
-const LocationOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<LocationOperationStatusRequest>;
-
 /** Operation status object */
 export interface LocationOperationStatus {
   /** Operation resource Id */
@@ -2412,11 +1692,6 @@ export interface LocationOperationStatus {
   /** Percent complete. */
   percentComplete?: number;
 }
-const LocationOperationStatus = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<LocationOperationStatus>;
-
 export interface PostCloudEndpointBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2431,33 +1706,18 @@ export interface PostCloudEndpointBackupRequest {
   /** Azure File Share. */
   azureFileShare?: string;
 }
-const PostCloudEndpointBackupRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<PostCloudEndpointBackupRequest>;
-
 /** Post Backup Response Properties object. */
 export interface PostBackupResponseProperties {
   /** cloud endpoint Name. */
   cloudEndpointName?: string;
 }
-const PostBackupResponseProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<PostBackupResponseProperties>;
-
 /** Post Backup Response */
 export interface PostBackupResponse {
   /** Post Backup Response Properties */
   backupMetadata?: PostBackupResponseProperties;
 }
-const PostBackupResponse = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<PostBackupResponse>;
-
 /** Pre Restore restore file spec array. */
 export type RestoreCloudEndpointsPreRequestRestoreFileSpecList = Array<RestoreFileSpec>;
-const RestoreCloudEndpointsPreRequestRestoreFileSpecList =
-  CloudEndpointsPostRestoreRequestRestoreFileSpecList as any as S.Schema<RestoreCloudEndpointsPreRequestRestoreFileSpecList>;
-
 export interface RestoreCloudEndpointsPreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2488,15 +1748,7 @@ export interface RestoreCloudEndpointsPreRequest {
   /** Pre Restore pause wait for sync drain time period in seconds. */
   pauseWaitForSyncDrainTimePeriodInSeconds?: number;
 }
-const RestoreCloudEndpointsPreRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<RestoreCloudEndpointsPreRequest>;
-
 export interface RestoreCloudEndpointsPreResponse {}
-const RestoreCloudEndpointsPreResponse =
-  CloudEndpointsPostRestoreResponse as any as S.Schema<RestoreCloudEndpointsPreResponse>;
-
 export interface ServerEndpointsRecallActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2513,24 +1765,11 @@ export interface ServerEndpointsRecallActionRequest {
   /** Recall path. */
   recallPath?: string;
 }
-const ServerEndpointsRecallActionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ServerEndpointsRecallActionRequest>;
-
 export interface ServerEndpointsRecallActionResponse {}
-const ServerEndpointsRecallActionResponse =
-  CloudEndpointsPostRestoreResponse as any as S.Schema<ServerEndpointsRecallActionResponse>;
-
 /** Change Detection Mode. Applies to a directory specified in directoryPath parameter. */
 export type ChangeDetectionMode = "Default" | "Recursive";
-const ChangeDetectionMode = S.String;
-
 /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
 export type TriggerCloudEndpointChangeDetectionRequestPathsList = Array<string>;
-const TriggerCloudEndpointChangeDetectionRequestPathsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TriggerCloudEndpointChangeDetectionRequestPathsList>;
-
 export interface TriggerCloudEndpointChangeDetectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2549,15 +1788,7 @@ export interface TriggerCloudEndpointChangeDetectionRequest {
   /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
   paths?: TriggerCloudEndpointChangeDetectionRequestPathsList;
 }
-const TriggerCloudEndpointChangeDetectionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<TriggerCloudEndpointChangeDetectionRequest>;
-
 export interface TriggerCloudEndpointChangeDetectionResponse {}
-const TriggerCloudEndpointChangeDetectionResponse =
-  CloudEndpointsPostRestoreResponse as any as S.Schema<TriggerCloudEndpointChangeDetectionResponse>;
-
 export interface TriggerRegisteredServerRolloverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2570,25 +1801,12 @@ export interface TriggerRegisteredServerRolloverRequest {
   /** Certificate Data */
   serverCertificate?: string;
 }
-const TriggerRegisteredServerRolloverRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<TriggerRegisteredServerRolloverRequest>;
-
 export interface TriggerRegisteredServerRolloverResponse {}
-const TriggerRegisteredServerRolloverResponse =
-  CloudEndpointsPostRestoreResponse as any as S.Schema<TriggerRegisteredServerRolloverResponse>;
-
 /** CloudEndpoint Update Properties object. */
 export interface CloudEndpointUpdateProperties {
   /** The interval for enumerating changes on the cloud endpoint. */
   changeEnumerationIntervalDays?: number;
 }
-const CloudEndpointUpdateProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<CloudEndpointUpdateProperties>;
-
 export interface UpdateCloudEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2603,11 +1821,6 @@ export interface UpdateCloudEndpointRequest {
   /** The properties of the cloud endpoint. */
   properties?: CloudEndpointUpdateProperties;
 }
-const UpdateCloudEndpointRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<UpdateCloudEndpointRequest>;
-
 export interface UpdateCloudEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2620,9 +1833,6 @@ export interface UpdateCloudEndpointResponse {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-const UpdateCloudEndpointResponse =
-  CreateCloudEndpointResponse as any as S.Schema<UpdateCloudEndpointResponse>;
-
 /** RegisteredServer Update Properties object. */
 export interface RegisteredServerUpdateProperties {
   /** Apply server with newly discovered ApplicationId if available. */
@@ -2630,11 +1840,6 @@ export interface RegisteredServerUpdateProperties {
   /** Apply server with new ServicePrincipal Id */
   applicationId?: string;
 }
-const RegisteredServerUpdateProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<RegisteredServerUpdateProperties>;
-
 export interface UpdateRegisteredServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2647,11 +1852,6 @@ export interface UpdateRegisteredServerRequest {
   /** The parameters used to update the registered server. */
   properties?: RegisteredServerUpdateProperties;
 }
-const UpdateRegisteredServerRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<UpdateRegisteredServerRequest>;
-
 export interface UpdateRegisteredServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2664,15 +1864,10 @@ export interface UpdateRegisteredServerResponse {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-const UpdateRegisteredServerResponse =
-  CreateRegisteredServerResponse as any as S.Schema<UpdateRegisteredServerResponse>;
-
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointUpdatePropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
   | "UpdateLocallyCachedFiles";
-const ServerEndpointUpdatePropertiesLocalCacheMode = S.String;
-
 /** ServerEndpoint Update Properties object. */
 export interface ServerEndpointUpdateProperties {
   /** Cloud Tiering. */
@@ -2688,11 +1883,6 @@ export interface ServerEndpointUpdateProperties {
   /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
   localCacheMode?: ServerEndpointUpdatePropertiesLocalCacheMode | (string & {});
 }
-const ServerEndpointUpdateProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ServerEndpointUpdateProperties>;
-
 export interface UpdateServerEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2707,11 +1897,6 @@ export interface UpdateServerEndpointRequest {
   /** The properties of the server endpoint. */
   properties?: ServerEndpointUpdateProperties;
 }
-const UpdateServerEndpointRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<UpdateServerEndpointRequest>;
-
 export interface UpdateServerEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2724,14 +1909,8 @@ export interface UpdateServerEndpointResponse {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-const UpdateServerEndpointResponse =
-  CreateServerEndpointResponse as any as S.Schema<UpdateServerEndpointResponse>;
-
 /** The user-specified tags associated with the storage sync service. */
 export type UpdateStorageSyncServiceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateStorageSyncServiceRequestTagsMap =
-  ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<UpdateStorageSyncServiceRequestTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateStorageSyncServiceRequestIdentity = CreateStorageSyncServiceRequestIdentity;
 /** StorageSyncService Properties object. */
@@ -2750,11 +1929,6 @@ export interface UpdateStorageSyncServiceRequest {
   /** The properties of the server endpoint. */
   properties?: StorageSyncServiceCreateParametersProperties;
 }
-const UpdateStorageSyncServiceRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<UpdateStorageSyncServiceRequest>;
-
 /** Resource tags. */
 export type UpdateStorageSyncServiceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2777,9 +1951,6 @@ export interface UpdateStorageSyncServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-const UpdateStorageSyncServiceResponse =
-  CreateStorageSyncServiceResponse as any as S.Schema<UpdateStorageSyncServiceResponse>;
-
 export type AbortWorkflowError = AzureOpError;
 /** Abort the given workflow. */
 export const AbortWorkflow: API.OperationMethod<
@@ -2788,8 +1959,8 @@ export const AbortWorkflow: API.OperationMethod<
   AbortWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AbortWorkflowRequest,
-  output: AbortWorkflowResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AbortWorkflowRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AbortWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2803,8 +1974,8 @@ export const CheckStorageSyncServiceNameAvailability: API.OperationMethod<
   CheckStorageSyncServiceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckStorageSyncServiceNameAvailabilityRequest,
-  output: CheckNameAvailabilityResult,
+  input: __S(2, __c0, 2) as any as S.Schema<CheckStorageSyncServiceNameAvailabilityRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2818,8 +1989,12 @@ export const CloudEndpointsAfsShareMetadataCertificatePublicKeys: API.OperationM
   CloudEndpointsAfsShareMetadataCertificatePublicKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest,
-  output: CloudEndpointAfsShareMetadataCertificatePublicKeys,
+  input: __S(
+    4,
+    __c0,
+    4,
+  ) as any as S.Schema<CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CloudEndpointAfsShareMetadataCertificatePublicKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2833,8 +2008,8 @@ export const CloudEndpointsPostRestore: API.OperationMethod<
   CloudEndpointsPostRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloudEndpointsPostRestoreRequest,
-  output: CloudEndpointsPostRestoreResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CloudEndpointsPostRestoreRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CloudEndpointsPostRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2848,8 +2023,8 @@ export const CloudEndpointsPreBackup: API.OperationMethod<
   CloudEndpointsPreBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloudEndpointsPreBackupRequest,
-  output: CloudEndpointsPreBackupResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<CloudEndpointsPreBackupRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CloudEndpointsPreBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2038,8 @@ export const CloudEndpointsRestoreheartbeat: API.OperationMethod<
   CloudEndpointsRestoreheartbeatError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloudEndpointsRestoreheartbeatRequest,
-  output: CloudEndpointsRestoreheartbeatResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<CloudEndpointsRestoreheartbeatRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2878,8 +2053,8 @@ export const CreateCloudEndpoint: API.OperationMethod<
   CreateCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCloudEndpointRequest,
-  output: CreateCloudEndpointResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateCloudEndpointRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2893,8 +2068,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateEndpointConnectionRequest,
-  output: CreatePrivateEndpointConnectionResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2908,8 +2083,8 @@ export const CreateRegisteredServer: API.OperationMethod<
   CreateRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegisteredServerRequest,
-  output: CreateRegisteredServerResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateRegisteredServerRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<CreateRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2923,8 +2098,8 @@ export const CreateServerEndpoint: API.OperationMethod<
   CreateServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServerEndpointRequest,
-  output: CreateServerEndpointResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateServerEndpointRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<CreateServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2938,8 +2113,8 @@ export const CreateStorageSyncService: API.OperationMethod<
   CreateStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageSyncServiceRequest,
-  output: CreateStorageSyncServiceResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<CreateStorageSyncServiceRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<CreateStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2953,8 +2128,8 @@ export const CreateSyncGroup: API.OperationMethod<
   CreateSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSyncGroupRequest,
-  output: CreateSyncGroupResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<CreateSyncGroupRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<CreateSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2968,8 +2143,8 @@ export const DeleteCloudEndpoint: API.OperationMethod<
   DeleteCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCloudEndpointRequest,
-  output: DeleteCloudEndpointResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteCloudEndpointRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2983,8 +2158,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2998,8 +2173,8 @@ export const DeleteRegisteredServer: API.OperationMethod<
   DeleteRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegisteredServerRequest,
-  output: DeleteRegisteredServerResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<DeleteRegisteredServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3013,8 +2188,8 @@ export const DeleteServerEndpoint: API.OperationMethod<
   DeleteServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServerEndpointRequest,
-  output: DeleteServerEndpointResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteServerEndpointRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3028,8 +2203,8 @@ export const DeleteStorageSyncService: API.OperationMethod<
   DeleteStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageSyncServiceRequest,
-  output: DeleteStorageSyncServiceResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DeleteStorageSyncServiceRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3043,8 +2218,8 @@ export const DeleteSyncGroup: API.OperationMethod<
   DeleteSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSyncGroupRequest,
-  output: DeleteSyncGroupResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DeleteSyncGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3058,8 +2233,8 @@ export const GetCloudEndpoint: API.OperationMethod<
   GetCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCloudEndpointRequest,
-  output: GetCloudEndpointResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetCloudEndpointRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3073,8 +2248,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationStatusRequest,
-  output: OperationStatus,
+  input: __S(80, __c10, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3088,8 +2263,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3103,8 +2278,8 @@ export const GetRegisteredServer: API.OperationMethod<
   GetRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegisteredServerRequest,
-  output: GetRegisteredServerResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<GetRegisteredServerRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3118,8 +2293,8 @@ export const GetServerEndpoint: API.OperationMethod<
   GetServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServerEndpointRequest,
-  output: GetServerEndpointResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<GetServerEndpointRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<GetServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3133,8 +2308,8 @@ export const GetStorageSyncService: API.OperationMethod<
   GetStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageSyncServiceRequest,
-  output: GetStorageSyncServiceResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<GetStorageSyncServiceRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<GetStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3148,8 +2323,8 @@ export const GetSyncGroup: API.OperationMethod<
   GetSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSyncGroupRequest,
-  output: GetSyncGroupResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<GetSyncGroupRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<GetSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3163,8 +2338,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkflowRequest,
-  output: GetWorkflowResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3178,8 +2353,8 @@ export const ListCloudEndpointBySyncGroup: API.OperationMethod<
   ListCloudEndpointBySyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCloudEndpointBySyncGroupRequest,
-  output: CloudEndpointArray,
+  input: __S(93, __c11, 5) as any as S.Schema<ListCloudEndpointBySyncGroupRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<CloudEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3193,8 +2368,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationEntityListResult,
+  input: __S(96, __c12, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3208,8 +2383,12 @@ export const ListPrivateEndpointConnectionByStorageSyncService: API.OperationMet
   ListPrivateEndpointConnectionByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionByStorageSyncServiceRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(
+    108,
+    __c13,
+    4,
+  ) as any as S.Schema<ListPrivateEndpointConnectionByStorageSyncServiceRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3223,8 +2402,12 @@ export const ListPrivateLinkResourceByStorageSyncService: API.OperationMethod<
   ListPrivateLinkResourceByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourceByStorageSyncServiceRequest,
-  output: ListPrivateLinkResourceByStorageSyncServiceResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceRequest>,
+  output: __S(
+    114,
+    __c14,
+    2,
+  ) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3238,8 +2421,8 @@ export const ListRegisteredServerByStorageSyncService: API.OperationMethod<
   ListRegisteredServerByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegisteredServerByStorageSyncServiceRequest,
-  output: RegisteredServerArray,
+  input: __S(115, __c14, 3) as any as S.Schema<ListRegisteredServerByStorageSyncServiceRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<RegisteredServerArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3253,8 +2436,8 @@ export const ListServerEndpointBySyncGroup: API.OperationMethod<
   ListServerEndpointBySyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerEndpointBySyncGroupRequest,
-  output: ServerEndpointArray,
+  input: __S(119, __c14, 7) as any as S.Schema<ListServerEndpointBySyncGroupRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<ServerEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3268,8 +2451,8 @@ export const ListStorageSyncServiceByResourceGroup: API.OperationMethod<
   ListStorageSyncServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageSyncServiceByResourceGroupRequest,
-  output: StorageSyncServiceArray,
+  input: __S(123, __c15, 3) as any as S.Schema<ListStorageSyncServiceByResourceGroupRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3283,8 +2466,8 @@ export const ListStorageSyncServiceBySubscription: API.OperationMethod<
   ListStorageSyncServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageSyncServiceBySubscriptionRequest,
-  output: StorageSyncServiceArray,
+  input: __S(127, __c15, 7) as any as S.Schema<ListStorageSyncServiceBySubscriptionRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3298,8 +2481,8 @@ export const ListSyncGroupByStorageSyncService: API.OperationMethod<
   ListSyncGroupByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSyncGroupByStorageSyncServiceRequest,
-  output: SyncGroupArray,
+  input: __S(128, __c16, 0) as any as S.Schema<ListSyncGroupByStorageSyncServiceRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<SyncGroupArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3313,8 +2496,8 @@ export const ListWorkflowByStorageSyncService: API.OperationMethod<
   ListWorkflowByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkflowByStorageSyncServiceRequest,
-  output: WorkflowArray,
+  input: __S(131, __c16, 3) as any as S.Schema<ListWorkflowByStorageSyncServiceRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<WorkflowArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3328,8 +2511,8 @@ export const LocationOperationStatus2: API.OperationMethod<
   LocationOperationStatus2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LocationOperationStatusRequest,
-  output: LocationOperationStatus,
+  input: __S(134, __c16, 6) as any as S.Schema<LocationOperationStatusRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<LocationOperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3343,8 +2526,8 @@ export const PostCloudEndpointBackup: API.OperationMethod<
   PostCloudEndpointBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostCloudEndpointBackupRequest,
-  output: PostBackupResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<PostCloudEndpointBackupRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<PostBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3358,8 +2541,8 @@ export const RestoreCloudEndpointsPre: API.OperationMethod<
   RestoreCloudEndpointsPreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreCloudEndpointsPreRequest,
-  output: RestoreCloudEndpointsPreResponse,
+  input: __S(139, __c17, 3) as any as S.Schema<RestoreCloudEndpointsPreRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<RestoreCloudEndpointsPreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3373,8 +2556,8 @@ export const ServerEndpointsRecallAction: API.OperationMethod<
   ServerEndpointsRecallActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServerEndpointsRecallActionRequest,
-  output: ServerEndpointsRecallActionResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<ServerEndpointsRecallActionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ServerEndpointsRecallActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3388,8 +2571,8 @@ export const TriggerCloudEndpointChangeDetection: API.OperationMethod<
   TriggerCloudEndpointChangeDetectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerCloudEndpointChangeDetectionRequest,
-  output: TriggerCloudEndpointChangeDetectionResponse,
+  input: __S(141, __c17, 5) as any as S.Schema<TriggerCloudEndpointChangeDetectionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<TriggerCloudEndpointChangeDetectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3403,8 +2586,8 @@ export const TriggerRegisteredServerRollover: API.OperationMethod<
   TriggerRegisteredServerRolloverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerRegisteredServerRolloverRequest,
-  output: TriggerRegisteredServerRolloverResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<TriggerRegisteredServerRolloverRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<TriggerRegisteredServerRolloverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3418,8 +2601,8 @@ export const UpdateCloudEndpoint: API.OperationMethod<
   UpdateCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCloudEndpointRequest,
-  output: UpdateCloudEndpointResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<UpdateCloudEndpointRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<UpdateCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3433,8 +2616,8 @@ export const UpdateRegisteredServer: API.OperationMethod<
   UpdateRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRegisteredServerRequest,
-  output: UpdateRegisteredServerResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<UpdateRegisteredServerRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<UpdateRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3448,8 +2631,8 @@ export const UpdateServerEndpoint: API.OperationMethod<
   UpdateServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServerEndpointRequest,
-  output: UpdateServerEndpointResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<UpdateServerEndpointRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<UpdateServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3463,8 +2646,8 @@ export const UpdateStorageSyncService: API.OperationMethod<
   UpdateStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStorageSyncServiceRequest,
-  output: UpdateStorageSyncServiceResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<UpdateStorageSyncServiceRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<UpdateStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3499,7 +2682,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           locationName: S.String.pipe(T.Label()),
           name: S.String,
-          type: Type,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3515,7 +2698,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(NameAvailabilityReason),
+          reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -3557,7 +2740,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RestoreFileSpec" });
     case 7:
-      return S.Array(RestoreFileSpec);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -3577,7 +2760,7 @@ function __c1(j: number): any {
           status: S.optional(S.String),
           sourceAzureFileShareUri: S.optional(S.String),
           failedFileList: S.optional(S.String),
-          restoreFileSpec: S.optional(CloudEndpointsPostRestoreRequestRestoreFileSpecList),
+          restoreFileSpec: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3656,7 +2839,7 @@ function __c1(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           cloudEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(CloudEndpointCreateParametersProperties),
+          properties: S.optional(__S(13, __c1, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3672,10 +2855,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -3700,7 +2883,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
-          operationState: S.optional(CloudEndpointChangeEnumerationActivityState),
+          operationState: S.optional(S.String),
           statusCode: S.optional(S.Number),
           startedTimestamp: S.optional(S.String),
           processedFilesCount: S.optional(S.Number),
@@ -3710,7 +2893,7 @@ function __c2(j: number): any {
           totalSizeBytes: S.optional(S.Number),
           progressPercent: S.optional(S.Number),
           minutesRemaining: S.optional(S.Number),
-          totalCountsState: S.optional(CloudEndpointChangeEnumerationTotalCountsState),
+          totalCountsState: S.optional(S.String),
           deletesProgressPercent: S.optional(S.Number),
         }),
       ).annotate({
@@ -3720,8 +2903,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
-          lastEnumerationStatus: S.optional(CloudEndpointLastChangeEnumerationStatus),
-          activity: S.optional(CloudEndpointChangeEnumerationActivity),
+          lastEnumerationStatus: S.optional(__S(16, __c2, 0)),
+          activity: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "CloudEndpointChangeEnumerationStatus",
@@ -3738,7 +2921,7 @@ function __c2(j: number): any {
           provisioningState: S.optional(S.String),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          changeEnumerationStatus: S.optional(CloudEndpointChangeEnumerationStatus),
+          changeEnumerationStatus: S.optional(__S(18, __c2, 2)),
           changeEnumerationIntervalDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudEndpointProperties" });
@@ -3748,8 +2931,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CloudEndpointProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "CreateCloudEndpointResponse",
@@ -3757,7 +2940,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -3767,8 +2950,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpointInput),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          privateEndpoint: S.optional(__S(1, __c0, 1)),
+          privateLinkServiceConnectionState: __S(21, __c2, 5),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -3780,7 +2963,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(22, __c2, 6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3807,10 +2990,10 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+          groupIds: S.optional(__S(24, __c3, 0)),
+          privateEndpoint: S.optional(__S(25, __c3, 1)),
+          privateLinkServiceConnectionState: __S(21, __c2, 5),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -3821,8 +3004,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionResponse",
@@ -3852,7 +3035,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
-          properties: S.optional(RegisteredServerCreateParametersProperties),
+          properties: S.optional(__S(28, __c3, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3869,7 +3052,7 @@ function __c3(j: number): any {
         S.Struct({
           serverCertificate: S.optional(S.String),
           agentVersion: S.optional(S.String),
-          agentVersionStatus: S.optional(RegisteredServerAgentVersionStatus),
+          agentVersionStatus: S.optional(S.String),
           agentVersionExpirationDate: S.optional(S.String),
           serverOSVersion: S.optional(S.String),
           serverManagementErrorCode: S.optional(S.Number),
@@ -3893,7 +3076,7 @@ function __c3(j: number): any {
           applicationId: S.optional(S.String),
           identity: S.optional(S.Boolean),
           latestApplicationId: S.optional(S.String),
-          activeAuthType: S.optional(ServerAuthType),
+          activeAuthType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RegisteredServerProperties",
@@ -3904,8 +3087,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RegisteredServerProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({
         identifier: "CreateRegisteredServerResponse",
@@ -3918,20 +3101,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serverLocalPath: S.optional(S.String),
-          cloudTiering: S.optional(FeatureStatus),
+          cloudTiering: S.optional(S.String),
           volumeFreeSpacePercent: S.optional(S.Number),
           tierFilesOlderThanDays: S.optional(S.Number),
           friendlyName: S.optional(S.String),
           serverResourceId: S.optional(S.String),
-          offlineDataTransfer: S.optional(FeatureStatus),
+          offlineDataTransfer: S.optional(S.String),
           offlineDataTransferShareName: S.optional(S.String),
-          initialDownloadPolicy: S.optional(
-            ServerEndpointCreateParametersPropertiesInitialDownloadPolicy,
-          ),
-          localCacheMode: S.optional(ServerEndpointCreateParametersPropertiesLocalCacheMode),
-          initialUploadPolicy: S.optional(
-            ServerEndpointCreateParametersPropertiesInitialUploadPolicy,
-          ),
+          initialDownloadPolicy: S.optional(S.String),
+          localCacheMode: S.optional(S.String),
+          initialUploadPolicy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerEndpointCreateParametersProperties",
@@ -3944,7 +3123,7 @@ function __c4(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           serverEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(ServerEndpointCreateParametersProperties),
+          properties: S.optional(__S(32, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3967,7 +3146,7 @@ function __c4(j: number): any {
         identifier: "ServerEndpointFilesNotSyncingError",
       });
     case 3:
-      return S.Array(ServerEndpointFilesNotSyncingError);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3977,10 +3156,8 @@ function __c4(j: number): any {
           lastSyncPerItemErrorCount: S.optional(S.Number),
           persistentFilesNotSyncingCount: S.optional(S.Number),
           transientFilesNotSyncingCount: S.optional(S.Number),
-          filesNotSyncingErrors: S.optional(
-            ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList,
-          ),
-          lastSyncMode: S.optional(ServerEndpointSyncMode),
+          filesNotSyncingErrors: S.optional(__S(35, __c4, 3)),
+          lastSyncMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerEndpointSyncSessionStatus",
@@ -3994,7 +3171,7 @@ function __c4(j: number): any {
           totalItemCount: S.optional(S.Number),
           appliedBytes: S.optional(S.Number),
           totalBytes: S.optional(S.Number),
-          syncMode: S.optional(ServerEndpointSyncMode),
+          syncMode: S.optional(S.String),
           sessionMinutesRemaining: S.optional(S.Number),
           remainingFileCount: S.optional(S.Number),
           remainingDirectoryCount: S.optional(S.Number),
@@ -4006,7 +3183,7 @@ function __c4(j: number): any {
           inProgressLargeFilePath: S.optional(S.String),
           inProgressLargeFileSizeBytes: S.optional(S.Number),
           inProgressLargeFilePercentComplete: S.optional(S.Number),
-          warning: S.optional(ServerEndpointSyncSessionWarningType),
+          warning: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerEndpointSyncActivityStatus",
@@ -4025,18 +3202,18 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          downloadHealth: S.optional(ServerEndpointHealthState),
-          uploadHealth: S.optional(ServerEndpointHealthState),
-          combinedHealth: S.optional(ServerEndpointHealthState),
-          syncActivity: S.optional(ServerEndpointSyncActivityState),
+          downloadHealth: S.optional(S.String),
+          uploadHealth: S.optional(S.String),
+          combinedHealth: S.optional(S.String),
+          syncActivity: S.optional(S.String),
           totalPersistentFilesNotSyncingCount: S.optional(S.Number),
           lastUpdatedTimestamp: S.optional(S.String),
-          uploadStatus: S.optional(ServerEndpointSyncSessionStatus),
-          downloadStatus: S.optional(ServerEndpointSyncSessionStatus),
-          uploadActivity: S.optional(ServerEndpointSyncActivityStatus),
-          downloadActivity: S.optional(ServerEndpointSyncActivityStatus),
-          offlineDataTransferStatus: S.optional(ServerEndpointOfflineDataTransferState),
-          backgroundDataDownloadActivity: S.optional(ServerEndpointBackgroundDataDownloadActivity),
+          uploadStatus: S.optional(__S(36, __c4, 4)),
+          downloadStatus: S.optional(__S(36, __c4, 4)),
+          uploadActivity: S.optional(__S(37, __c4, 5)),
+          downloadActivity: S.optional(__S(37, __c4, 5)),
+          offlineDataTransferStatus: S.optional(S.String),
+          backgroundDataDownloadActivity: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "ServerEndpointSyncStatus" });
   }
@@ -4073,13 +3250,13 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "FilesNotTieringError" });
     case 3:
-      return S.Array(FilesNotTieringError);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
           totalFileCount: S.optional(S.Number),
-          errors: S.optional(CloudTieringFilesNotTieringErrorsList),
+          errors: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "CloudTieringFilesNotTiering",
@@ -4107,7 +3284,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
-          state: S.optional(CloudTieringLowDiskModeState),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudTieringLowDiskMode" });
   }
@@ -4118,16 +3295,16 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
-          health: S.optional(ServerEndpointHealthState),
+          health: S.optional(S.String),
           healthLastUpdatedTimestamp: S.optional(S.String),
           lastCloudTieringResult: S.optional(S.Number),
           lastSuccessTimestamp: S.optional(S.String),
-          spaceSavings: S.optional(CloudTieringSpaceSavings),
-          cachePerformance: S.optional(CloudTieringCachePerformance),
-          filesNotTiering: S.optional(CloudTieringFilesNotTiering),
-          volumeFreeSpacePolicyStatus: S.optional(CloudTieringVolumeFreeSpacePolicyStatus),
-          datePolicyStatus: S.optional(CloudTieringDatePolicyStatus),
-          lowDiskMode: S.optional(CloudTieringLowDiskMode),
+          spaceSavings: S.optional(__S(40, __c5, 0)),
+          cachePerformance: S.optional(__S(41, __c5, 1)),
+          filesNotTiering: S.optional(__S(44, __c5, 4)),
+          volumeFreeSpacePolicyStatus: S.optional(__S(45, __c5, 5)),
+          datePolicyStatus: S.optional(__S(46, __c5, 6)),
+          lowDiskMode: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "ServerEndpointCloudTieringStatus",
@@ -4142,13 +3319,13 @@ function __c6(j: number): any {
         identifier: "ServerEndpointRecallError",
       });
     case 2:
-      return S.Array(ServerEndpointRecallError);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
           totalRecallErrorsCount: S.optional(S.Number),
-          recallErrors: S.optional(ServerEndpointRecallStatusRecallErrorsList),
+          recallErrors: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({
         identifier: "ServerEndpointRecallStatus",
@@ -4165,23 +3342,19 @@ function __c6(j: number): any {
           progressPercentage: S.optional(S.Number),
           endTime: S.optional(S.String),
           errorCode: S.optional(S.Number),
-          additionalInformation: S.optional(
-            ServerEndpointProvisioningStepStatusAdditionalInformationMap,
-          ),
+          additionalInformation: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "ServerEndpointProvisioningStepStatus",
       });
     case 6:
-      return S.Array(ServerEndpointProvisioningStepStatus);
+      return S.Array(__S(53, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningStatus: S.optional(ServerProvisioningStatus),
+          provisioningStatus: S.optional(S.String),
           provisioningType: S.optional(S.String),
-          provisioningStepStatuses: S.optional(
-            ServerEndpointProvisioningStatusProvisioningStepStatusesList,
-          ),
+          provisioningStepStatuses: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({
         identifier: "ServerEndpointProvisioningStatus",
@@ -4194,7 +3367,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serverLocalPath: S.optional(S.String),
-          cloudTiering: S.optional(FeatureStatus),
+          cloudTiering: S.optional(S.String),
           volumeFreeSpacePercent: S.optional(S.Number),
           tierFilesOlderThanDays: S.optional(S.Number),
           friendlyName: S.optional(S.String),
@@ -4202,18 +3375,18 @@ function __c7(j: number): any {
           provisioningState: S.optional(S.String),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          syncStatus: S.optional(ServerEndpointSyncStatus),
-          offlineDataTransfer: S.optional(FeatureStatus),
+          syncStatus: S.optional(__S(39, __c4, 7)),
+          offlineDataTransfer: S.optional(S.String),
           offlineDataTransferStorageAccountResourceId: S.optional(S.String),
           offlineDataTransferStorageAccountTenantId: S.optional(S.String),
           offlineDataTransferShareName: S.optional(S.String),
-          cloudTieringStatus: S.optional(ServerEndpointCloudTieringStatus),
-          recallStatus: S.optional(ServerEndpointRecallStatus),
-          initialDownloadPolicy: S.optional(ServerEndpointPropertiesInitialDownloadPolicy),
-          localCacheMode: S.optional(ServerEndpointPropertiesLocalCacheMode),
-          initialUploadPolicy: S.optional(ServerEndpointPropertiesInitialUploadPolicy),
+          cloudTieringStatus: S.optional(__S(48, __c6, 0)),
+          recallStatus: S.optional(__S(51, __c6, 3)),
+          initialDownloadPolicy: S.optional(S.String),
+          localCacheMode: S.optional(S.String),
+          initialUploadPolicy: S.optional(S.String),
           serverName: S.optional(S.String),
-          serverEndpointProvisioningStatus: S.optional(ServerEndpointProvisioningStatus),
+          serverEndpointProvisioningStatus: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({ identifier: "ServerEndpointProperties" });
     case 1:
@@ -4222,19 +3395,19 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ServerEndpointProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "CreateServerEndpointResponse",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(PrivateEndpointInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1, __c0, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "CreateStorageSyncServiceRequestIdentity",
@@ -4242,7 +3415,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          incomingTrafficPolicy: S.optional(IncomingTrafficPolicy),
+          incomingTrafficPolicy: S.optional(S.String),
           useIdentity: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4254,10 +3427,10 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateStorageSyncServiceRequestTagsMap),
+          tags: S.optional(__S(52, __c6, 4)),
           location: S.String,
-          identity: S.optional(CreateStorageSyncServiceRequestIdentity),
-          properties: S.optional(StorageSyncServiceCreateParametersProperties),
+          identity: S.optional(__S(59, __c7, 3)),
+          properties: S.optional(__S(60, __c7, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4275,14 +3448,14 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "StorageSyncServicePropertiesPrivateEndpointConnectionsItem",
       });
     case 7:
-      return S.Array(StorageSyncServicePropertiesPrivateEndpointConnectionsItem);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -4290,16 +3463,14 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          incomingTrafficPolicy: S.optional(IncomingTrafficPolicy),
+          incomingTrafficPolicy: S.optional(S.String),
           storageSyncServiceStatus: S.optional(S.Number),
           storageSyncServiceUid: S.optional(S.String),
           provisioningState: S.optional(S.String),
           useIdentity: S.optional(S.Boolean),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          privateEndpointConnections: S.optional(
-            StorageSyncServicePropertiesPrivateEndpointConnectionsList,
-          ),
+          privateEndpointConnections: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "StorageSyncServiceProperties",
@@ -4312,14 +3483,14 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(65, __c8, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({
         identifier: "CreateStorageSyncServiceResponseIdentity",
@@ -4330,11 +3501,11 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateStorageSyncServiceResponseTagsMap),
+          systemData: S.optional(__S(15, __c1, 7)),
+          tags: S.optional(__S(52, __c6, 4)),
           location: S.String,
-          properties: S.optional(StorageSyncServiceProperties),
-          identity: S.optional(CreateStorageSyncServiceResponseIdentity),
+          properties: S.optional(__S(64, __c8, 0)),
+          identity: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({
         identifier: "CreateStorageSyncServiceResponse",
@@ -4369,8 +3540,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SyncGroupProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({ identifier: "CreateSyncGroupResponse" });
   }
@@ -4507,8 +3678,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CloudEndpointProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "GetCloudEndpointResponse" });
   }
@@ -4564,8 +3735,8 @@ function __c10(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(StorageSyncErrorDetails),
-          innererror: S.optional(StorageSyncInnerErrorDetails),
+          details: S.optional(__S(81, __c10, 1)),
+          innererror: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "StorageSyncApiError" });
     case 4:
@@ -4575,7 +3746,7 @@ function __c10(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(StorageSyncApiError),
+          error: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "OperationStatus" });
     case 5:
@@ -4688,8 +3859,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastStepName: S.optional(S.String),
-          status: S.optional(WorkflowStatus),
-          operation: S.optional(OperationDirection),
+          status: S.optional(S.String),
+          operation: S.optional(S.String),
           steps: S.optional(S.String),
           lastOperationId: S.optional(S.String),
           commandName: S.optional(S.String),
@@ -4703,8 +3874,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(WorkflowProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(91, __c11, 3)),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
     case 5:
@@ -4726,11 +3897,11 @@ function __c11(j: number): any {
         identifier: "ListCloudEndpointBySyncGroupRequest",
       });
     case 6:
-      return S.Array(CloudEndpoint);
+      return S.Array(__S(79, __c9, 7));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CloudEndpointArrayValueList),
+          value: S.optional(__S(94, __c11, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudEndpointArray" });
@@ -4771,7 +3942,7 @@ function __c12(j: number): any {
         identifier: "OperationResourceMetricSpecificationDimension",
       });
     case 4:
-      return S.Array(OperationResourceMetricSpecificationDimension);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4780,24 +3951,20 @@ function __c12(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(
-            OperationResourceMetricSpecificationSupportedAggregationTypesList,
-          ),
+          supportedAggregationTypes: S.optional(__S(98, __c12, 2)),
           fillGapWithZero: S.optional(S.Boolean),
           lockAggregationType: S.optional(S.String),
-          dimensions: S.optional(OperationResourceMetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(100, __c12, 4)),
         }),
       ).annotate({
         identifier: "OperationResourceMetricSpecification",
       });
     case 6:
-      return S.Array(OperationResourceMetricSpecification);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(
-            OperationResourceServiceSpecificationMetricSpecificationsList,
-          ),
+          metricSpecifications: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({
         identifier: "OperationResourceServiceSpecification",
@@ -4809,24 +3976,24 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(OperationResourceServiceSpecification),
+          serviceSpecification: S.optional(__S(103, __c12, 7)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplayInfo),
+          display: S.optional(__S(97, __c12, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(OperationProperties),
+          properties: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "OperationEntity" });
     case 2:
-      return S.Array(OperationEntity);
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: OperationEntityListResultValueList,
+          value: __S(106, __c13, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4852,7 +4019,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListResultValueList),
+          value: S.optional(__S(63, __c7, 7)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4879,8 +4046,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(24, __c3, 0)),
+          requiredZoneNames: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -4895,16 +4062,16 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 1:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListPrivateLinkResourceByStorageSyncServiceResponseValueList),
+          value: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({
         identifier: "ListPrivateLinkResourceByStorageSyncServiceResponse",
@@ -4932,16 +4099,16 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RegisteredServerProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "RegisteredServer" });
     case 5:
-      return S.Array(RegisteredServer);
+      return S.Array(__S(116, __c14, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RegisteredServerArrayValueList),
+          value: S.optional(__S(117, __c14, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegisteredServerArray" });
@@ -4973,16 +4140,16 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ServerEndpointProperties),
+          systemData: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "ServerEndpoint" });
     case 1:
-      return S.Array(ServerEndpoint);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ServerEndpointArrayValueList),
+          value: S.optional(__S(121, __c15, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerEndpointArray" });
@@ -5008,19 +4175,19 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(StorageSyncServiceTagsMap),
+          systemData: S.optional(__S(15, __c1, 7)),
+          tags: S.optional(__S(52, __c6, 4)),
           location: S.String,
-          properties: S.optional(StorageSyncServiceProperties),
-          identity: S.optional(CreateStorageSyncServiceResponseIdentity),
+          properties: S.optional(__S(64, __c8, 0)),
+          identity: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "StorageSyncService" });
     case 5:
-      return S.Array(StorageSyncService);
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(StorageSyncServiceArrayValueList),
+          value: S.optional(__S(125, __c15, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageSyncServiceArray" });
@@ -5061,11 +4228,11 @@ function __c16(j: number): any {
         identifier: "ListSyncGroupByStorageSyncServiceRequest",
       });
     case 1:
-      return S.Array(SyncGroup);
+      return S.Array(__S(71, __c8, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SyncGroupArrayValueList),
+          value: S.optional(__S(129, __c16, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncGroupArray" });
@@ -5087,11 +4254,11 @@ function __c16(j: number): any {
         identifier: "ListWorkflowByStorageSyncServiceRequest",
       });
     case 4:
-      return S.Array(Workflow);
+      return S.Array(__S(92, __c11, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WorkflowArrayValueList),
+          value: S.optional(__S(132, __c16, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowArray" });
@@ -5120,7 +4287,7 @@ function __c16(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(StorageSyncApiError),
+          error: S.optional(__S(83, __c10, 3)),
           percentComplete: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LocationOperationStatus" });
@@ -5159,7 +4326,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          backupMetadata: S.optional(PostBackupResponseProperties),
+          backupMetadata: S.optional(__S(137, __c17, 1)),
         }),
       ).annotate({ identifier: "PostBackupResponse" });
     case 3:
@@ -5177,7 +4344,7 @@ function __c17(j: number): any {
           status: S.optional(S.String),
           sourceAzureFileShareUri: S.optional(S.String),
           backupMetadataPropertyBag: S.optional(S.String),
-          restoreFileSpec: S.optional(RestoreCloudEndpointsPreRequestRestoreFileSpecList),
+          restoreFileSpec: S.optional(__S(7, __c0, 7)),
           pauseWaitForSyncDrainTimePeriodInSeconds: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -5220,8 +4387,8 @@ function __c17(j: number): any {
           syncGroupName: S.String.pipe(T.Label()),
           cloudEndpointName: S.String.pipe(T.Label()),
           directoryPath: S.optional(S.String),
-          changeDetectionMode: S.optional(ChangeDetectionMode),
-          paths: S.optional(TriggerCloudEndpointChangeDetectionRequestPathsList),
+          changeDetectionMode: S.optional(S.String),
+          paths: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5272,7 +4439,7 @@ function __c18(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           cloudEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(CloudEndpointUpdateProperties),
+          properties: S.optional(__S(143, __c17, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5300,7 +4467,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
-          properties: S.optional(RegisteredServerUpdateProperties),
+          properties: S.optional(__S(145, __c18, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5315,12 +4482,12 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cloudTiering: S.optional(FeatureStatus),
+          cloudTiering: S.optional(S.String),
           volumeFreeSpacePercent: S.optional(S.Number),
           tierFilesOlderThanDays: S.optional(S.Number),
-          offlineDataTransfer: S.optional(FeatureStatus),
+          offlineDataTransfer: S.optional(S.String),
           offlineDataTransferShareName: S.optional(S.String),
-          localCacheMode: S.optional(ServerEndpointUpdatePropertiesLocalCacheMode),
+          localCacheMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerEndpointUpdateProperties",
@@ -5333,7 +4500,7 @@ function __c18(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           serverEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(ServerEndpointUpdateProperties),
+          properties: S.optional(__S(147, __c18, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5351,9 +4518,9 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateStorageSyncServiceRequestTagsMap),
-          identity: S.optional(CreateStorageSyncServiceRequestIdentity),
-          properties: S.optional(StorageSyncServiceCreateParametersProperties),
+          tags: S.optional(__S(52, __c6, 4)),
+          identity: S.optional(__S(59, __c7, 3)),
+          properties: S.optional(__S(60, __c7, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5366,4 +4533,9 @@ function __c18(j: number): any {
         identifier: "UpdateStorageSyncServiceRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

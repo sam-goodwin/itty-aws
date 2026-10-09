@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,8 +73,6 @@ export type ManagedCertificateStatusEnum =
   | "FAILED_PERMANENTLY_NOT_VISIBLE"
   | "FAILED_RETRYING_CAA_FORBIDDEN"
   | "FAILED_RETRYING_CAA_CHECKING";
-const ManagedCertificateStatusEnum = S.String;
-
 /** A certificate managed by App Engine. */
 export interface ManagedCertificate {
   /** Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly */
@@ -80,11 +80,7 @@ export interface ManagedCertificate {
   /** Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly */
   status?: ManagedCertificateStatusEnum | (string & {});
 }
-const ManagedCertificate = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ManagedCertificate>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** An SSL certificate obtained from a certificate authority. */
 export interface CertificateRawData {
   /** Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly */
@@ -92,8 +88,6 @@ export interface CertificateRawData {
   /** PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- */
   publicCertificate?: string;
 }
-const CertificateRawData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CertificateRawData>;
-
 /** An SSL certificate that a user has been authorized to administer. A user is authorized to administer any certificate that applies to one of their authorized domains. */
 export interface AuthorizedCertificate {
   /** The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate. */
@@ -115,31 +109,17 @@ export interface AuthorizedCertificate {
   /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
   visibleDomainMappings?: StringList;
 }
-const AuthorizedCertificate = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AuthorizedCertificate>;
-
 export interface CreateAppsAuthorizedCertificatesRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   appsId: string;
   /** Request body */
   body?: AuthorizedCertificate;
 }
-const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>;
-
 export type CreateAppsDomainMappingsOverrideStrategyEnum =
   | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
   | "STRICT"
   | "OVERRIDE";
-const CreateAppsDomainMappingsOverrideStrategyEnum = S.String;
-
 export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
-const ResourceRecordTypeEnum = S.String;
-
 /** A DNS resource record. */
 export interface ResourceRecord {
   /** Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'. */
@@ -149,11 +129,7 @@ export interface ResourceRecord {
   /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
   rrdata?: string;
 }
-const ResourceRecord = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ResourceRecord>;
-
 export type ResourceRecordList = Array<ResourceRecord>;
-const ResourceRecordList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ResourceRecordList>;
-
 /** SSL configuration for a DomainMapping resource. */
 export interface SslSettings {
   /** Output only. Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly */
@@ -161,8 +137,6 @@ export interface SslSettings {
   /** ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345. */
   certificateId?: string;
 }
-const SslSettings = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SslSettings>;
-
 /** A domain serving an App Engine application. */
 export interface DomainMapping {
   /** Output only. The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly */
@@ -174,8 +148,6 @@ export interface DomainMapping {
   /** Output only. Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly */
   name?: string;
 }
-const DomainMapping = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DomainMapping>;
-
 export interface CreateAppsDomainMappingsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   appsId: string;
@@ -186,17 +158,8 @@ export interface CreateAppsDomainMappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
-const CreateAppsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateAppsDomainMappingsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMapList>;
-
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -206,8 +169,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
@@ -221,8 +182,6 @@ export interface Operation {
   /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
   done?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Operation>;
-
 export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
@@ -233,17 +192,10 @@ export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesReques
   /** Request body */
   body?: AuthorizedCertificate;
 }
-const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
 export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
   | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
   | "STRICT"
   | "OVERRIDE";
-const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum = S.String;
-
 export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
   locationsId: string;
@@ -260,37 +212,20 @@ export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
-const CreateProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>;
-
 export interface DeleteAppsAuthorizedCertificatesRequest {
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. */
   appsId: string;
   /** Part of `name`. See documentation of `appsId`. */
   authorizedCertificatesId: string;
 }
-const DeleteAppsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Empty>;
-
 export interface DeleteAppsDomainMappingsRequest {
   /** Part of `name`. See documentation of `appsId`. */
   domainMappingsId: string;
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
   appsId: string;
 }
-const DeleteAppsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteAppsDomainMappingsRequest>;
-
 export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   authorizedCertificatesId: string;
@@ -301,11 +236,6 @@ export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesReques
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
 }
-const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
 export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   domainMappingsId: string;
@@ -316,14 +246,7 @@ export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
 }
-const DeleteProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>;
-
 export type GetAppsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
-const GetAppsAuthorizedCertificatesViewEnum = S.String;
-
 export interface GetAppsAuthorizedCertificatesRequest {
   /** Controls the set of fields returned in the GET response. */
   view?: GetAppsAuthorizedCertificatesViewEnum | (string & {});
@@ -332,36 +255,19 @@ export interface GetAppsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `appsId`. */
   authorizedCertificatesId: string;
 }
-const GetAppsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>;
-
 export interface GetAppsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
   appsId: string;
   /** Part of `name`. See documentation of `appsId`. */
   domainMappingsId: string;
 }
-const GetAppsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetAppsDomainMappingsRequest>;
-
 export interface GetAppsLocationsRequest {
   /** Part of `name`. Resource name for the location. */
   appsId: string;
   /** Part of `name`. See documentation of `appsId`. */
   locationsId: string;
 }
-const GetAppsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetAppsLocationsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<StringMap>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: "us-east1". */
@@ -375,35 +281,21 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Location>;
-
 export interface GetAppsOperationsRequest {
   /** Part of `name`. The name of the operation resource. */
   appsId: string;
   /** Part of `name`. See documentation of `appsId`. */
   operationsId: string;
 }
-const GetAppsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetAppsOperationsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Part of `name`. Resource name for the location. */
   projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
   | "FULL_CERTIFICATE";
-const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = S.String;
-
 export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
@@ -416,11 +308,6 @@ export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
 }
-const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
 export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
@@ -431,11 +318,6 @@ export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
 }
-const GetProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   operationsId: string;
@@ -444,14 +326,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. The name of the operation resource. */
   projectsId: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export type ListAppsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
-const ListAppsAuthorizedCertificatesViewEnum = S.String;
-
 export interface ListAppsAuthorizedCertificatesRequest {
   /** Controls the set of fields returned in the LIST response. */
   view?: ListAppsAuthorizedCertificatesViewEnum | (string & {});
@@ -462,17 +337,7 @@ export interface ListAppsAuthorizedCertificatesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
-
 export type AuthorizedCertificateList = Array<AuthorizedCertificate>;
-const AuthorizedCertificateList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AuthorizedCertificateList>;
-
 /** Response message for AuthorizedCertificates.ListAuthorizedCertificates. */
 export interface ListAuthorizedCertificatesResponse {
   /** The SSL certificates the user is authorized to administer. */
@@ -480,11 +345,6 @@ export interface ListAuthorizedCertificatesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListAuthorizedCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListAuthorizedCertificatesResponse>;
-
 export interface ListAppsAuthorizedDomainsRequest {
   /** Maximum results to return per page. */
   pageSize?: number;
@@ -493,11 +353,6 @@ export interface ListAppsAuthorizedDomainsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListAppsAuthorizedDomainsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListAppsAuthorizedDomainsRequest>;
-
 /** A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via Search Console (https://search.google.com/search-console/welcome). */
 export interface AuthorizedDomain {
   /** Full path to the AuthorizedDomain resource in the API. Example: apps/myapp/authorizedDomains/example.com.@OutputOnly */
@@ -505,11 +360,7 @@ export interface AuthorizedDomain {
   /** Fully qualified domain name of the domain authorized for use. Example: example.com. */
   id?: string;
 }
-const AuthorizedDomain = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AuthorizedDomain>;
-
 export type AuthorizedDomainList = Array<AuthorizedDomain>;
-const AuthorizedDomainList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AuthorizedDomainList>;
-
 /** Response message for AuthorizedDomains.ListAuthorizedDomains. */
 export interface ListAuthorizedDomainsResponse {
   /** The authorized domains belonging to the user. */
@@ -517,11 +368,6 @@ export interface ListAuthorizedDomainsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-const ListAuthorizedDomainsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListAuthorizedDomainsResponse>;
-
 export interface ListAppsDomainMappingsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
@@ -530,14 +376,7 @@ export interface ListAppsDomainMappingsRequest {
   /** Maximum results to return per page. */
   pageSize?: number;
 }
-const ListAppsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListAppsDomainMappingsRequest>;
-
 export type DomainMappingList = Array<DomainMapping>;
-const DomainMappingList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DomainMappingList>;
-
 /** Response message for DomainMappings.ListDomainMappings. */
 export interface ListDomainMappingsResponse {
   /** Continuation token for fetching the next page of results. */
@@ -545,11 +384,6 @@ export interface ListDomainMappingsResponse {
   /** The domain mappings for the application. */
   domainMappings?: DomainMappingList;
 }
-const ListDomainMappingsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListDomainMappingsResponse>;
-
 export interface ListAppsLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -562,14 +396,7 @@ export interface ListAppsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-const ListAppsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListAppsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -577,11 +404,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListAppsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -594,14 +416,7 @@ export interface ListAppsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListAppsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListAppsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -611,11 +426,6 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -628,16 +438,9 @@ export interface ListProjectsLocationsRequest {
   /** Part of `name`. The resource that owns the locations collection, if applicable. */
   projectsId: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
   | "FULL_CERTIFICATE";
-const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = S.String;
-
 export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Maximum results to return per page. */
   pageSize?: number;
@@ -652,11 +455,6 @@ export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest 
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
 export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
   /** Maximum results to return per page. */
   pageSize?: number;
@@ -669,11 +467,6 @@ export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
 }
-const ListProjectsLocationsApplicationsAuthorizedDomainsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
-
 export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
   applicationsId: string;
@@ -686,11 +479,6 @@ export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-const ListProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -705,11 +493,6 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export interface PatchAppsAuthorizedCertificatesRequest {
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. */
   appsId: string;
@@ -720,11 +503,6 @@ export interface PatchAppsAuthorizedCertificatesRequest {
   /** Request body */
   body?: AuthorizedCertificate;
 }
-const PatchAppsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>;
-
 export interface PatchAppsDomainMappingsRequest {
   /** Required. Standard field mask for the set of fields to be updated. */
   updateMask?: string;
@@ -737,11 +515,6 @@ export interface PatchAppsDomainMappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
-const PatchAppsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<PatchAppsDomainMappingsRequest>;
-
 export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
@@ -756,11 +529,6 @@ export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest
   /** Request body */
   body?: AuthorizedCertificate;
 }
-const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
 export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   domainMappingsId: string;
@@ -777,11 +545,6 @@ export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
-const PatchProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>;
-
 export type CreateAppsAuthorizedCertificatesError =
   | NotFound
   | Forbidden
@@ -795,8 +558,8 @@ export const createAppsAuthorizedCertificates: API.OperationMethod<
   CreateAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAppsAuthorizedCertificatesRequest,
-  output: AuthorizedCertificate,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -815,8 +578,8 @@ export const createAppsDomainMappings: API.OperationMethod<
   CreateAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAppsDomainMappingsRequest,
-  output: Operation,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateAppsDomainMappingsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -835,8 +598,12 @@ export const createProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   CreateProjectsLocationsApplicationsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: AuthorizedCertificate,
+  input: __S(
+    14,
+    __c1,
+    6,
+  ) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -855,8 +622,12 @@ export const createProjectsLocationsApplicationsDomainMappings: API.OperationMet
   CreateProjectsLocationsApplicationsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApplicationsDomainMappingsRequest,
-  output: Operation,
+  input: __S(
+    15,
+    __c1,
+    7,
+  ) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -875,8 +646,8 @@ export const deleteAppsAuthorizedCertificates: API.OperationMethod<
   DeleteAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppsAuthorizedCertificatesRequest,
-  output: Empty,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +666,8 @@ export const deleteAppsDomainMappings: API.OperationMethod<
   DeleteAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppsDomainMappingsRequest,
-  output: Operation,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteAppsDomainMappingsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -915,8 +686,12 @@ export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   DeleteProjectsLocationsApplicationsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: Empty,
+  input: __S(
+    19,
+    __c2,
+    3,
+  ) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -935,8 +710,12 @@ export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMet
   DeleteProjectsLocationsApplicationsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsDomainMappingsRequest,
-  output: Operation,
+  input: __S(
+    20,
+    __c2,
+    4,
+  ) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -950,8 +729,8 @@ export const getAppsAuthorizedCertificates: API.OperationMethod<
   GetAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppsAuthorizedCertificatesRequest,
-  output: AuthorizedCertificate,
+  input: __S(21, __c2, 5) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -965,8 +744,8 @@ export const getAppsDomainMappings: API.OperationMethod<
   GetAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppsDomainMappingsRequest,
-  output: DomainMapping,
+  input: __S(22, __c2, 6) as any as S.Schema<GetAppsDomainMappingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DomainMapping>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -980,8 +759,8 @@ export const getAppsLocations: API.OperationMethod<
   GetAppsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppsLocationsRequest,
-  output: Location,
+  input: __S(23, __c2, 7) as any as S.Schema<GetAppsLocationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -995,8 +774,8 @@ export const getAppsOperations: API.OperationMethod<
   GetAppsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppsOperationsRequest,
-  output: Operation,
+  input: __S(26, __c3, 2) as any as S.Schema<GetAppsOperationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1010,8 +789,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(27, __c3, 3) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1028,8 +807,12 @@ export const getProjectsLocationsApplicationsAuthorizedCertificates: API.Operati
   GetProjectsLocationsApplicationsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: AuthorizedCertificate,
+  input: __S(
+    28,
+    __c3,
+    4,
+  ) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1043,8 +826,8 @@ export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod
   GetProjectsLocationsApplicationsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApplicationsDomainMappingsRequest,
-  output: DomainMapping,
+  input: __S(29, __c3, 5) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DomainMapping>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1058,8 +841,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(30, __c3, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1074,8 +857,8 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsAuthorizedCertificatesRequest,
-  output: ListAuthorizedCertificatesResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1091,8 +874,8 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsAuthorizedDomainsRequest,
-  output: ListAuthorizedDomainsResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<ListAppsAuthorizedDomainsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<ListAuthorizedDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1108,8 +891,8 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsDomainMappingsRequest,
-  output: ListDomainMappingsResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<ListAppsDomainMappingsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ListDomainMappingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1125,8 +908,8 @@ export const listAppsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<ListAppsLocationsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1142,8 +925,8 @@ export const listAppsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<ListAppsOperationsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1159,8 +942,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1179,8 +962,12 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
   GcpOpContext,
   ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: ListAuthorizedCertificatesResponse,
+  input: __S(
+    48,
+    __c6,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1199,8 +986,12 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
   GcpOpContext,
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
-  output: ListAuthorizedDomainsResponse,
+  input: __S(
+    49,
+    __c6,
+    1,
+  ) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<ListAuthorizedDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1219,8 +1010,12 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
   GcpOpContext,
   ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsDomainMappingsRequest,
-  output: ListDomainMappingsResponse,
+  input: __S(
+    50,
+    __c6,
+    2,
+  ) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ListDomainMappingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1236,8 +1031,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1257,8 +1052,8 @@ export const patchAppsAuthorizedCertificates: API.OperationMethod<
   PatchAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAppsAuthorizedCertificatesRequest,
-  output: AuthorizedCertificate,
+  input: __S(52, __c6, 4) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1277,8 +1072,8 @@ export const patchAppsDomainMappings: API.OperationMethod<
   PatchAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAppsDomainMappingsRequest,
-  output: Operation,
+  input: __S(53, __c6, 5) as any as S.Schema<PatchAppsDomainMappingsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1297,8 +1092,12 @@ export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.Opera
   PatchProjectsLocationsApplicationsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: AuthorizedCertificate,
+  input: __S(
+    54,
+    __c6,
+    6,
+  ) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1116,12 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
   PatchProjectsLocationsApplicationsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApplicationsDomainMappingsRequest,
-  output: Operation,
+  input: __S(
+    55,
+    __c6,
+    7,
+  ) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1331,7 +1134,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastRenewalTime: S.optional(S.String),
-          status: S.optional(ManagedCertificateStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedCertificate" });
     case 1:
@@ -1347,21 +1150,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          managedCertificate: S.optional(ManagedCertificate),
+          managedCertificate: S.optional(__S(0, __c0, 0)),
           id: S.optional(S.String),
-          domainNames: S.optional(StringList),
+          domainNames: S.optional(__S(1, __c0, 1)),
           expireTime: S.optional(S.String),
           name: S.optional(S.String),
-          certificateRawData: S.optional(CertificateRawData),
+          certificateRawData: S.optional(__S(2, __c0, 2)),
           domainMappingsCount: S.optional(S.Number),
-          visibleDomainMappings: S.optional(StringList),
+          visibleDomainMappings: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "AuthorizedCertificate" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
-          body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1376,12 +1179,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(ResourceRecordTypeEnum),
+          type: S.optional(S.String),
           rrdata: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceRecord" });
     case 6:
-      return S.Array(ResourceRecord);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1396,9 +1199,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceRecords: S.optional(ResourceRecordList),
+          resourceRecords: S.optional(__S(6, __c0, 6)),
           id: S.optional(S.String),
-          sslSettings: S.optional(SslSettings),
+          sslSettings: S.optional(__S(7, __c0, 7)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainMapping" });
@@ -1407,10 +1210,8 @@ function __c1(j: number): any {
         S.Struct({
           appsId: S.String.pipe(T.Label()),
           noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-          overrideStrategy: S.optional(
-            CreateAppsDomainMappingsOverrideStrategyEnum.pipe(T.Query()),
-          ),
-          body: S.optional(DomainMapping.pipe(T.HttpBody())),
+          overrideStrategy: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1424,12 +1225,12 @@ function __c1(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(11, __c1, 3)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -1437,9 +1238,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(10, __c1, 2)),
+          error: S.optional(__S(12, __c1, 4)),
+          response: S.optional(__S(10, __c1, 2)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1449,7 +1250,7 @@ function __c1(j: number): any {
           projectsId: S.String.pipe(T.Label()),
           locationsId: S.String.pipe(T.Label()),
           applicationsId: S.String.pipe(T.Label()),
-          body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1467,10 +1268,8 @@ function __c1(j: number): any {
           applicationsId: S.String.pipe(T.Label()),
           noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
           projectsId: S.String.pipe(T.Label()),
-          overrideStrategy: S.optional(
-            CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum.pipe(T.Query()),
-          ),
-          body: S.optional(DomainMapping.pipe(T.HttpBody())),
+          overrideStrategy: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1556,7 +1355,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(GetAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           appsId: S.String.pipe(T.Label()),
           authorizedCertificatesId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1607,10 +1406,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(10, __c1, 2)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "Location" });
     case 2:
@@ -1647,9 +1446,7 @@ function __c3(j: number): any {
           applicationsId: S.String.pipe(T.Label()),
           authorizedCertificatesId: S.String.pipe(T.Label()),
           projectsId: S.String.pipe(T.Label()),
-          view: S.optional(
-            GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(T.Query()),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
           locationsId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1697,7 +1494,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(ListAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           appsId: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1716,11 +1513,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AuthorizedCertificate);
+      return S.Array(__S(3, __c0, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(AuthorizedCertificateList),
+          certificates: S.optional(__S(32, __c4, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1750,11 +1547,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizedDomain" });
     case 4:
-      return S.Array(AuthorizedDomain);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(AuthorizedDomainList),
+          domains: S.optional(__S(36, __c4, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1777,7 +1574,7 @@ function __c4(j: number): any {
         identifier: "ListAppsDomainMappingsRequest",
       });
     case 7:
-      return S.Array(DomainMapping);
+      return S.Array(__S(8, __c1, 0));
   }
 }
 function __c5(j: number): any {
@@ -1786,7 +1583,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          domainMappings: S.optional(DomainMappingList),
+          domainMappings: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "ListDomainMappingsResponse",
@@ -1798,7 +1595,7 @@ function __c5(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           appsId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1, __c0, 1).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1808,12 +1605,12 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListAppsLocationsRequest" });
     case 2:
-      return S.Array(Location);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 4:
@@ -1835,13 +1632,13 @@ function __c5(j: number): any {
         identifier: "ListAppsOperationsRequest",
       });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(13, __c1, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(45, __c5, 5)),
+          unreachable: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 7:
@@ -1850,7 +1647,7 @@ function __c5(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           projectsId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1873,9 +1670,7 @@ function __c6(j: number): any {
           projectsId: S.String.pipe(T.Label()),
           applicationsId: S.String.pipe(T.Label()),
           locationsId: S.String.pipe(T.Label()),
-          view: S.optional(
-            ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(T.Query()),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1948,7 +1743,7 @@ function __c6(j: number): any {
           appsId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           authorizedCertificatesId: S.String.pipe(T.Label()),
-          body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1966,7 +1761,7 @@ function __c6(j: number): any {
           domainMappingsId: S.String.pipe(T.Label()),
           appsId: S.String.pipe(T.Label()),
           noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(DomainMapping.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1985,7 +1780,7 @@ function __c6(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           applicationsId: S.String.pipe(T.Label()),
           authorizedCertificatesId: S.String.pipe(T.Label()),
-          body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2005,7 +1800,7 @@ function __c6(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           locationsId: S.String.pipe(T.Label()),
           noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(DomainMapping.pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2017,4 +1812,9 @@ function __c6(j: number): any {
         identifier: "PatchProjectsLocationsApplicationsDomainMappingsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

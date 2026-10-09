@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -12,11 +14,6 @@ export interface ListQuotaLimitsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListQuotaLimitsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListQuotaLimitsRequest>;
-
 export interface QuotaResourceLimit {
   /** True when the team is currently over its quota for this resource and limits are in effect. A deactivated organization additionally reads as limited on the two credit buckets `ai_credits` and `posthog_code_credits`, regardless of usage. */
   limited: boolean;
@@ -25,35 +22,16 @@ export interface QuotaResourceLimit {
   /** The organization's limit for this resource in the same unit. Null when unlimited or unknown. */
   limit: number | null;
 }
-const QuotaResourceLimit = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<QuotaResourceLimit>;
-
 /** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false -- they are never quota-enforced; only the combined `posthog_code_credits` is. */
 export type QuotaLimitsResponseLimitedMap = { [key: string]: QuotaResourceLimit | undefined };
-const QuotaLimitsResponseLimitedMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<QuotaLimitsResponseLimitedMap>;
-
 export interface QuotaLimitsResponse {
   /** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false -- they are never quota-enforced; only the combined `posthog_code_credits` is. */
   limited: QuotaLimitsResponseLimitedMap;
   /** Whether the team's organization pays for PostHog Desktop usage: billing grants the `posthog_code_usage` product feature only on the Desktop usage product's paid plan, synced into the organization's available features. Consumers gate paid-tier Desktop behavior on this; an org unknown to billing reads as not paying. Always false for deactivated organizations. */
   code_usage_billing_active: boolean;
 }
-const QuotaLimitsResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<QuotaLimitsResponse>;
-
 export type ListQuotaLimitsResponseBodyList = Array<QuotaLimitsResponse>;
-const ListQuotaLimitsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListQuotaLimitsResponseBodyList>;
-
 export type ListQuotaLimitsResponse = ListQuotaLimitsResponseBodyList;
-const ListQuotaLimitsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListQuotaLimitsResponse>;
-
 export type ListQuotaLimitsError = PosthogOpError;
 /** Get a team's quota-limit state Return the current quota-limit state for the team identified in the URL, keyed by `QuotaResource` value. Used by the LLM gateway to gate billable products on AI credits exhaustion. */
 export const listQuotaLimits: API.OperationMethod<
@@ -62,8 +40,8 @@ export const listQuotaLimits: API.OperationMethod<
   ListQuotaLimitsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQuotaLimitsRequest,
-  output: ListQuotaLimitsResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ListQuotaLimitsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ListQuotaLimitsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -89,19 +67,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "QuotaResourceLimit" });
     case 2:
-      return S.Record(S.String, QuotaResourceLimit);
+      return S.Record(S.String, __S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          limited: QuotaLimitsResponseLimitedMap,
+          limited: __S(2, __c0, 2),
           code_usage_billing_active: S.Boolean,
         }),
       ).annotate({ identifier: "QuotaLimitsResponse" });
     case 4:
-      return S.Array(QuotaLimitsResponse);
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.suspend(() => ListQuotaLimitsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListQuotaLimitsResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

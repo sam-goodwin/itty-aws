@@ -6,36 +6,28 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface ClientHelloRequest {}
-const ClientHelloRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ClientHelloRequest>;
-
 export type WarningWarningType =
   | "WARNING_TYPE_UNSPECIFIED"
   | "WARNING_TYPE_CLIENT_DEPRECATION"
   | "WARNING_TYPE_RESOURCE_LIMIT"
   | "WARNING_TYPE_FUNCTION_CONFIGURATION";
-const WarningWarningType = S.String;
-
 export interface Warning {
   type?: WarningWarningType;
   message?: string;
 }
-const Warning = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Warning>;
-
 export type WarningList = Array<Warning>;
-const WarningList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<WarningList>;
-
 export interface ClientHelloResponse {
   warning?: string;
   imageBuilderVersion?: string;
   /** Deprecated, no longer used in client */
   serverWarnings?: WarningList;
 }
-const ClientHelloResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ClientHelloResponse>;
-
 export type ClientHelloError = ModalOpError;
 /** Clients */
 export const clientHello: API.OperationMethod<
@@ -44,8 +36,8 @@ export const clientHello: API.OperationMethod<
   ClientHelloError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClientHelloRequest,
-  output: ClientHelloResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<ClientHelloRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ClientHelloResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -63,19 +55,24 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(WarningWarningType),
+          type: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Warning" });
     case 2:
-      return S.Array(Warning);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           warning: S.optional(S.String),
           imageBuilderVersion: S.optional(S.String),
-          serverWarnings: S.optional(WarningList),
+          serverWarnings: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "ClientHelloResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

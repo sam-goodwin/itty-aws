@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -24,11 +26,6 @@ export interface GetConfirmationTokenRequest {
   /** The account (biz_) the token was minted for. */
   account_id: string;
 }
-const GetConfirmationTokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetConfirmationTokenRequest>;
-
 export interface PaymentAddress {
   /** The city. */
   city: string | null;
@@ -45,8 +42,6 @@ export interface PaymentAddress {
   /** The state, province or region. */
   state: string | null;
 }
-const PaymentAddress = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PaymentAddress>;
-
 export interface PaymentBillingDetailsPreview {
   /** ISO 3166-1 alpha-2 country code. */
   country: string | null;
@@ -57,11 +52,6 @@ export interface PaymentBillingDetailsPreview {
   /** Postal or ZIP code. */
   postal_code: string | null;
 }
-const PaymentBillingDetailsPreview = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PaymentBillingDetailsPreview>;
-
 export interface PaymentMethodDisplayPreview {
   /** Lowercase card brand, such as `visa` or `mastercard`. */
   brand?: string;
@@ -70,11 +60,6 @@ export interface PaymentMethodDisplayPreview {
   /** The last four digits of the card. */
   last4?: string;
 }
-const PaymentMethodDisplayPreview = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PaymentMethodDisplayPreview>;
-
 /** The family the type belongs to. */
 export type PaymentMethodDisplayCategory =
   | "card"
@@ -87,8 +72,6 @@ export type PaymentMethodDisplayCategory =
   | "balance"
   | "in_app_purchase"
   | "saved";
-const PaymentMethodDisplayCategory = S.String;
-
 export interface PaymentMethodDisplay {
   /** Present when the category is `bank_debit`. Empty until the account is charged. */
   bank_debit?: PaymentMethodDisplayPreview;
@@ -107,12 +90,8 @@ export interface PaymentMethodDisplay {
   /** Details of the network token the wallet supplied, when the category is `wallet`. */
   wallet?: PaymentMethodDisplayPreview;
 }
-const PaymentMethodDisplay = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PaymentMethodDisplay>;
-
 /** `pending` until it is used, then `consumed`; `expired` once its short lifetime elapses. Only a `pending` token can be charged. */
 export type ConfirmationTokenStatus = "pending" | "consumed" | "expired";
-const ConfirmationTokenStatus = S.String;
-
 export interface ConfirmationToken {
   /** The collected billing address, including the name on the address. Null when not collected or without bearer authentication with payment:basic:read on the token's account. */
   billing_address: PaymentAddress | null;
@@ -132,8 +111,6 @@ export interface ConfirmationToken {
   /** `pending` until it is used, then `consumed`; `expired` once its short lifetime elapses. Only a `pending` token can be charged. */
   status: ConfirmationTokenStatus;
 }
-const ConfirmationToken = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ConfirmationToken>;
-
 export type GetConfirmationTokenError = NotFound | WhopOpError;
 /** Retrieve Confirmation Token Retrieves a token's payment method and billing details -- never the underlying payment credential. Public and rate-limited: the account_id query param must match the account the token was minted for. A bearer credential with payment:basic:read on that account also receives the collected billing address. */
 export const getConfirmationToken: API.OperationMethod<
@@ -142,8 +119,8 @@ export const getConfirmationToken: API.OperationMethod<
   GetConfirmationTokenError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfirmationTokenRequest,
-  output: ConfirmationToken,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConfirmationTokenRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ConfirmationToken>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -197,29 +174,34 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bank_debit: S.optional(PaymentMethodDisplayPreview),
-          card: S.optional(PaymentMethodDisplayPreview),
-          category: PaymentMethodDisplayCategory,
+          bank_debit: S.optional(__S(3, __c0, 3)),
+          card: S.optional(__S(3, __c0, 3)),
+          category: S.String,
           display_name: S.String,
           id: S.NullOr(S.String),
-          saved: S.optional(PaymentMethodDisplayPreview),
+          saved: S.optional(__S(3, __c0, 3)),
           type: S.String,
-          wallet: S.optional(PaymentMethodDisplayPreview),
+          wallet: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "PaymentMethodDisplay" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          billing_address: S.NullOr(PaymentAddress),
-          billing_details: S.NullOr(PaymentBillingDetailsPreview),
+          billing_address: S.NullOr(__S(1, __c0, 1)),
+          billing_details: S.NullOr(__S(2, __c0, 2)),
           created_at: S.String,
           expires_at: S.String,
           id: S.String,
           object: S.String,
-          payment_method_preview: PaymentMethodDisplay,
+          payment_method_preview: __S(4, __c0, 4),
           setup_future_usage: S.NullOr(S.String),
-          status: ConfirmationTokenStatus,
+          status: S.String,
         }),
       ).annotate({ identifier: "ConfirmationToken" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

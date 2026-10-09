@@ -7,24 +7,17 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
-
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type AccountsCreateOrUpdateRequestPropertiesConfiguration = "Free" | "Capacity";
-const AccountsCreateOrUpdateRequestPropertiesConfiguration = S.String;
-
 /** AAD principal type. */
 export type EndpointAuthenticationPrincipalType = "Application" | "User";
-const EndpointAuthenticationPrincipalType = S.String;
-
 /** Service endpoints authentication details. */
 export interface EndpointAuthentication {
   /** AAD tenant ID. */
@@ -34,40 +27,16 @@ export interface EndpointAuthentication {
   /** AAD principal type. */
   principalType?: EndpointAuthenticationPrincipalType | (string & {});
 }
-const EndpointAuthentication = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<EndpointAuthentication>;
-
 /** The list of service endpoints authentication details. */
 export type EndpointAuthenticationsList = Array<EndpointAuthentication>;
-const EndpointAuthenticationsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<EndpointAuthenticationsList>;
-
 /** The origin domains that are permitted to make a request against the service via CORS. */
 export type CorsRuleAllowedOriginsList = Array<string>;
-const CorsRuleAllowedOriginsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CorsRuleAllowedOriginsList>;
-
 /** The methods (HTTP request verbs) that the origin domain may use for a CORS request. */
 export type CorsRuleAllowedMethodsList = Array<string>;
-const CorsRuleAllowedMethodsList =
-  CorsRuleAllowedOriginsList as any as S.Schema<CorsRuleAllowedMethodsList>;
-
 /** The request headers that the origin domain may specify on the CORS request. */
 export type CorsRuleAllowedHeadersList = Array<string>;
-const CorsRuleAllowedHeadersList =
-  CorsRuleAllowedOriginsList as any as S.Schema<CorsRuleAllowedHeadersList>;
-
 /** The response headers to expose to CORS clients. */
 export type CorsRuleExposedHeadersList = Array<string>;
-const CorsRuleExposedHeadersList =
-  CorsRuleAllowedOriginsList as any as S.Schema<CorsRuleExposedHeadersList>;
-
 /** CORS details. */
 export interface CorsRule {
   /** The origin domains that are permitted to make a request against the service via CORS. */
@@ -81,12 +50,8 @@ export interface CorsRule {
   /** The number of seconds that the client/browser should cache a preflight response. */
   maxAgeInSeconds?: number;
 }
-const CorsRule = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CorsRule>;
-
 /** The list of CORS details. */
 export type CorsRuleList = Array<CorsRule>;
-const CorsRuleList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CorsRuleList>;
-
 /** Account resource properties. */
 export interface AccountsCreateOrUpdateRequestProperties {
   /** Account configuration. This can only be set at RecommendationsService Account creation. */
@@ -98,11 +63,6 @@ export interface AccountsCreateOrUpdateRequestProperties {
   /** Connection string to write Accounts reports to. */
   reportsConnectionString?: string;
 }
-const AccountsCreateOrUpdateRequestProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AccountsCreateOrUpdateRequestProperties>;
-
 export interface AccountsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -117,20 +77,10 @@ export interface AccountsCreateOrUpdateRequest {
   /** Account resource properties. */
   properties?: AccountsCreateOrUpdateRequestProperties;
 }
-const AccountsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AccountsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const AccountsCreateOrUpdateResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
-
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type AccountsCreateOrUpdateResponsePropertiesConfiguration = "Free" | "Capacity";
-const AccountsCreateOrUpdateResponsePropertiesConfiguration = S.String;
-
 /** Account resource properties. */
 export interface AccountsCreateOrUpdateResponseProperties {
   /** Account configuration. This can only be set at RecommendationsService Account creation. */
@@ -144,27 +94,18 @@ export interface AccountsCreateOrUpdateResponseProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const AccountsCreateOrUpdateResponseProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AccountsCreateOrUpdateResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type AccountsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const AccountsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const AccountsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AccountsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -180,11 +121,6 @@ export interface AccountsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const AccountsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AccountsCreateOrUpdateResponseSystemData>;
-
 export interface AccountsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -201,11 +137,6 @@ export interface AccountsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: AccountsCreateOrUpdateResponseSystemData;
 }
-const AccountsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AccountsCreateOrUpdateResponse>;
-
 export interface CheckAccountNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -214,15 +145,8 @@ export interface CheckAccountNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
-const CheckAccountNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CheckAccountNameAvailabilityRequest>;
-
 /** The reason why the given name is not available. */
 export type CheckAccountNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
-const CheckAccountNameAvailabilityResponseReason = S.String;
-
 export interface CheckAccountNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -231,11 +155,6 @@ export interface CheckAccountNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-const CheckAccountNameAvailabilityResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CheckAccountNameAvailabilityResponse>;
-
 export interface DeleteAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -244,14 +163,7 @@ export interface DeleteAccountRequest {
   /** The name of the RecommendationsService Account resource. */
   accountName: string;
 }
-const DeleteAccountRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteAccountRequest>;
-
 export interface DeleteAccountResponse {}
-const DeleteAccountResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteAccountResponse>;
-
 export interface DeleteModelingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -262,14 +174,7 @@ export interface DeleteModelingRequest {
   /** The name of the Modeling resource. */
   modelingName: string;
 }
-const DeleteModelingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteModelingRequest>;
-
 export interface DeleteModelingResponse {}
-const DeleteModelingResponse = DeleteAccountResponse as any as S.Schema<DeleteModelingResponse>;
-
 export interface DeleteServiceEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -280,15 +185,7 @@ export interface DeleteServiceEndpointRequest {
   /** The name of the ServiceEndpoint resource. */
   serviceEndpointName: string;
 }
-const DeleteServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteServiceEndpointRequest>;
-
 export interface DeleteServiceEndpointResponse {}
-const DeleteServiceEndpointResponse =
-  DeleteAccountResponse as any as S.Schema<DeleteServiceEndpointResponse>;
-
 export interface GetAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -297,13 +194,8 @@ export interface GetAccountRequest {
   /** The name of the RecommendationsService Account resource. */
   accountName: string;
 }
-const GetAccountRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetAccountRequest>;
-
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-const GetAccountResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
-
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type GetAccountResponsePropertiesConfiguration = "Free" | "Capacity";
 /** Account resource properties. */
@@ -319,9 +211,6 @@ export interface GetAccountResponseProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const GetAccountResponseProperties =
-  AccountsCreateOrUpdateResponseProperties as any as S.Schema<GetAccountResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type GetAccountResponseSystemDataCreatedByType =
   | "User"
@@ -349,9 +238,6 @@ export interface GetAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetAccountResponseSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetAccountResponseSystemData>;
-
 export interface GetAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -368,8 +254,6 @@ export interface GetAccountResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetAccountResponseSystemData;
 }
-const GetAccountResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetAccountResponse>;
-
 export interface GetAccountStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -378,11 +262,6 @@ export interface GetAccountStatusRequest {
   /** The name of the RecommendationsService Account resource. */
   accountName: string;
 }
-const GetAccountStatusRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetAccountStatusRequest>;
-
 /** Stage status. */
 export interface StageStatus {
   /** The stage name. */
@@ -392,15 +271,8 @@ export interface StageStatus {
   /** The time of the status. */
   time?: string;
 }
-const StageStatus = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<StageStatus>;
-
 /** Scope stage statuses. */
 export type ScopeStatusesStatusesList = Array<StageStatus>;
-const ScopeStatusesStatusesList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ScopeStatusesStatusesList>;
-
 /** Scope statuses. */
 export interface ScopeStatuses {
   /** The scope that the statuses refers to. */
@@ -408,22 +280,13 @@ export interface ScopeStatuses {
   /** Scope stage statuses. */
   statuses?: ScopeStatusesStatusesList;
 }
-const ScopeStatuses = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ScopeStatuses>;
-
 /** The list of scopes statuses. */
 export type AccountStatusScopesStatusesList = Array<ScopeStatuses>;
-const AccountStatusScopesStatusesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AccountStatusScopesStatusesList>;
-
 /** Account status. */
 export interface AccountStatus {
   /** The list of scopes statuses. */
   scopesStatuses?: AccountStatusScopesStatusesList;
 }
-const AccountStatus = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AccountStatus>;
-
 export interface GetModelingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -434,32 +297,19 @@ export interface GetModelingRequest {
   /** The name of the Modeling resource. */
   modelingName: string;
 }
-const GetModelingRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetModelingRequest>;
-
 /** Resource tags. */
 export type GetModelingResponseTagsMap = { [key: string]: string | undefined };
-const GetModelingResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetModelingResponseTagsMap>;
-
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type GetModelingResponsePropertiesFeatures = "Basic" | "Standard" | "Premium";
-const GetModelingResponsePropertiesFeatures = S.String;
-
 /** Modeling frequency controls the modeling compute frequency. */
 export type GetModelingResponsePropertiesFrequency = "Low" | "Medium" | "High";
-const GetModelingResponsePropertiesFrequency = S.String;
-
 /** Modeling size controls the maximum supported input data size. */
 export type GetModelingResponsePropertiesSize = "Small" | "Medium" | "Large";
-const GetModelingResponsePropertiesSize = S.String;
-
 /** The configuration to raw CDM data to be used as Modeling resource input. */
 export interface ModelingInputData {
   /** Connection string to raw input data. */
   connectionString?: string | Redacted.Redacted<string>;
 }
-const ModelingInputData = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ModelingInputData>;
-
 /** Modeling resource properties. */
 export interface GetModelingResponseProperties {
   /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
@@ -473,11 +323,6 @@ export interface GetModelingResponseProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const GetModelingResponseProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetModelingResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type GetModelingResponseSystemDataCreatedByType =
   | "User"
@@ -505,9 +350,6 @@ export interface GetModelingResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetModelingResponseSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetModelingResponseSystemData>;
-
 export interface GetModelingResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -524,33 +366,16 @@ export interface GetModelingResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetModelingResponseSystemData;
 }
-const GetModelingResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetModelingResponse>;
-
 export interface GetOperationStatusRequest {
   /** The name of Azure region. */
   location: string;
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
-const GetOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetOperationStatusRequest>;
-
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
-const OperationStatusResultOperationsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<OperationStatusResultOperationsList>;
-
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ErrorDetailDetailsList>;
-
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -558,15 +383,8 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ErrorAdditionalInfo>;
-
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ErrorDetailAdditionalInfoList>;
-
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -580,8 +398,6 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ErrorDetail>;
-
 /** The current status of an async operation. */
 export interface OperationStatusResult {
   /** Fully qualified ID for the async operation. */
@@ -603,18 +419,8 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const OperationStatusResult = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<OperationStatusResult>;
-
 /** The operations list. */
 export type GetOperationStatusResponseOperationsList = Array<OperationStatusResult>;
-const GetOperationStatusResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetOperationStatusResponseOperationsList>;
-
 export interface GetOperationStatusResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -637,11 +443,6 @@ export interface GetOperationStatusResponse {
   /** Custom operation properties, populated only for a successful operation. */
   properties?: unknown;
 }
-const GetOperationStatusResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetOperationStatusResponse>;
-
 export interface GetServiceEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -652,16 +453,8 @@ export interface GetServiceEndpointRequest {
   /** The name of the ServiceEndpoint resource. */
   serviceEndpointName: string;
 }
-const GetServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetServiceEndpointRequest>;
-
 /** Resource tags. */
 export type GetServiceEndpointResponseTagsMap = { [key: string]: string | undefined };
-const GetServiceEndpointResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceEndpointResponseTagsMap>;
-
 /** ServiceEndpoint resource properties. */
 export interface GetServiceEndpointResponseProperties {
   /** ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity. */
@@ -673,11 +466,6 @@ export interface GetServiceEndpointResponseProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const GetServiceEndpointResponseProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetServiceEndpointResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type GetServiceEndpointResponseSystemDataCreatedByType =
   | "User"
@@ -705,9 +493,6 @@ export interface GetServiceEndpointResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetServiceEndpointResponseSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetServiceEndpointResponseSystemData>;
-
 export interface GetServiceEndpointResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -724,27 +509,14 @@ export interface GetServiceEndpointResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetServiceEndpointResponseSystemData;
 }
-const GetServiceEndpointResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetServiceEndpointResponse>;
-
 export interface ListAccountByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListAccountByResourceGroupRequest>;
-
 /** Resource tags. */
 export type AccountResourceTagsMap = { [key: string]: string | undefined };
-const AccountResourceTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountResourceTagsMap>;
-
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type AccountResourcePropertiesConfiguration = "Free" | "Capacity";
 /** Account resource properties. */
@@ -760,9 +532,6 @@ export interface AccountResourceProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const AccountResourceProperties =
-  AccountsCreateOrUpdateResponseProperties as any as S.Schema<AccountResourceProperties>;
-
 /** The type of identity that created the resource. */
 export type AccountResourceSystemDataCreatedByType =
   | "User"
@@ -790,9 +559,6 @@ export interface AccountResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const AccountResourceSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<AccountResourceSystemData>;
-
 /** Account resource details. */
 export interface AccountResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -810,15 +576,8 @@ export interface AccountResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: AccountResourceSystemData;
 }
-const AccountResource = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AccountResource>;
-
 /** The list of RecommendationsService Account resources. */
 export type AccountResourceListValueList = Array<AccountResource>;
-const AccountResourceListValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<AccountResourceListValueList>;
-
 /** The list of RecommendationsService Account resources. */
 export interface AccountResourceList {
   /** The link used to get the next page of RecommendationsService Account resources list. */
@@ -826,17 +585,10 @@ export interface AccountResourceList {
   /** The list of RecommendationsService Account resources. */
   value?: AccountResourceListValueList;
 }
-const AccountResourceList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AccountResourceList>;
-
 export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListAccountBySubscriptionRequest>;
-
 export interface ListModelingByAccountResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -845,16 +597,8 @@ export interface ListModelingByAccountResourceRequest {
   /** The name of the RecommendationsService Account resource. */
   accountName: string;
 }
-const ListModelingByAccountResourceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListModelingByAccountResourceRequest>;
-
 /** Resource tags. */
 export type ModelingResourceTagsMap = { [key: string]: string | undefined };
-const ModelingResourceTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ModelingResourceTagsMap>;
-
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type ModelingResourcePropertiesFeatures = "Basic" | "Standard" | "Premium";
 /** Modeling frequency controls the modeling compute frequency. */
@@ -874,9 +618,6 @@ export interface ModelingResourceProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const ModelingResourceProperties =
-  GetModelingResponseProperties as any as S.Schema<ModelingResourceProperties>;
-
 /** The type of identity that created the resource. */
 export type ModelingResourceSystemDataCreatedByType =
   | "User"
@@ -904,9 +645,6 @@ export interface ModelingResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ModelingResourceSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<ModelingResourceSystemData>;
-
 /** Modeling resource details. */
 export interface ModelingResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -924,15 +662,8 @@ export interface ModelingResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ModelingResourceSystemData;
 }
-const ModelingResource = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ModelingResource>;
-
 /** The list of Modeling resources. */
 export type ModelingResourceListValueList = Array<ModelingResource>;
-const ModelingResourceListValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ModelingResourceListValueList>;
-
 /** The list of Modeling resources. */
 export interface ModelingResourceList {
   /** The link used to get the next page of Modeling resources list. */
@@ -940,14 +671,7 @@ export interface ModelingResourceList {
   /** The list of Modeling resources. */
   value?: ModelingResourceListValueList;
 }
-const ModelingResourceList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ModelingResourceList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -959,16 +683,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -982,26 +700,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListServiceEndpointByAccountResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1010,16 +716,8 @@ export interface ListServiceEndpointByAccountResourceRequest {
   /** The name of the RecommendationsService Account resource. */
   accountName: string;
 }
-const ListServiceEndpointByAccountResourceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListServiceEndpointByAccountResourceRequest>;
-
 /** Resource tags. */
 export type ServiceEndpointResourceTagsMap = { [key: string]: string | undefined };
-const ServiceEndpointResourceTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceEndpointResourceTagsMap>;
-
 /** ServiceEndpoint resource properties. */
 export type ServiceEndpointResourceProperties = GetServiceEndpointResponseProperties;
 /** The type of identity that created the resource. */
@@ -1049,9 +747,6 @@ export interface ServiceEndpointResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ServiceEndpointResourceSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<ServiceEndpointResourceSystemData>;
-
 /** ServiceEndpoint resource details. */
 export interface ServiceEndpointResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1069,18 +764,8 @@ export interface ServiceEndpointResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ServiceEndpointResourceSystemData;
 }
-const ServiceEndpointResource = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ServiceEndpointResource>;
-
 /** The list of ServiceEndpoint resources. */
 export type ServiceEndpointResourceListValueList = Array<ServiceEndpointResource>;
-const ServiceEndpointResourceListValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ServiceEndpointResourceListValueList>;
-
 /** The list of ServiceEndpoint resources. */
 export interface ServiceEndpointResourceList {
   /** The link used to get the next page of ServiceEndpoint resources list. */
@@ -1088,28 +773,14 @@ export interface ServiceEndpointResourceList {
   /** The list of ServiceEndpoint resources. */
   value?: ServiceEndpointResourceListValueList;
 }
-const ServiceEndpointResourceList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ServiceEndpointResourceList>;
-
 /** Resource tags. */
 export type ModelingCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ModelingCreateOrUpdateRequestTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ModelingCreateOrUpdateRequestTagsMap>;
-
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type ModelingCreateOrUpdateRequestPropertiesFeatures = "Basic" | "Standard" | "Premium";
-const ModelingCreateOrUpdateRequestPropertiesFeatures = S.String;
-
 /** Modeling frequency controls the modeling compute frequency. */
 export type ModelingCreateOrUpdateRequestPropertiesFrequency = "Low" | "Medium" | "High";
-const ModelingCreateOrUpdateRequestPropertiesFrequency = S.String;
-
 /** Modeling size controls the maximum supported input data size. */
 export type ModelingCreateOrUpdateRequestPropertiesSize = "Small" | "Medium" | "Large";
-const ModelingCreateOrUpdateRequestPropertiesSize = S.String;
-
 /** Modeling resource properties. */
 export interface ModelingCreateOrUpdateRequestProperties {
   /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
@@ -1121,11 +792,6 @@ export interface ModelingCreateOrUpdateRequestProperties {
   /** The configuration to raw CDM data to be used as Modeling resource input. */
   inputData?: ModelingInputData;
 }
-const ModelingCreateOrUpdateRequestProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ModelingCreateOrUpdateRequestProperties>;
-
 export interface ModelingCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1142,16 +808,8 @@ export interface ModelingCreateOrUpdateRequest {
   /** Modeling resource properties. */
   properties?: ModelingCreateOrUpdateRequestProperties;
 }
-const ModelingCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ModelingCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ModelingCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ModelingCreateOrUpdateResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ModelingCreateOrUpdateResponseTagsMap>;
-
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type ModelingCreateOrUpdateResponsePropertiesFeatures = "Basic" | "Standard" | "Premium";
 /** Modeling frequency controls the modeling compute frequency. */
@@ -1171,9 +829,6 @@ export interface ModelingCreateOrUpdateResponseProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const ModelingCreateOrUpdateResponseProperties =
-  GetModelingResponseProperties as any as S.Schema<ModelingCreateOrUpdateResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type ModelingCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -1201,9 +856,6 @@ export interface ModelingCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ModelingCreateOrUpdateResponseSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<ModelingCreateOrUpdateResponseSystemData>;
-
 export interface ModelingCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1220,26 +872,13 @@ export interface ModelingCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ModelingCreateOrUpdateResponseSystemData;
 }
-const ModelingCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ModelingCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type ServiceEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServiceEndpointsCreateOrUpdateRequestTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceEndpointsCreateOrUpdateRequestTagsMap>;
-
 /** ServiceEndpoint resource properties. */
 export interface ServiceEndpointsCreateOrUpdateRequestProperties {
   /** ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity. */
   preAllocatedCapacity?: number;
 }
-const ServiceEndpointsCreateOrUpdateRequestProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequestProperties>;
-
 export interface ServiceEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1256,16 +895,8 @@ export interface ServiceEndpointsCreateOrUpdateRequest {
   /** ServiceEndpoint resource properties. */
   properties?: ServiceEndpointsCreateOrUpdateRequestProperties;
 }
-const ServiceEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServiceEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ServiceEndpointsCreateOrUpdateResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceEndpointsCreateOrUpdateResponseTagsMap>;
-
 /** ServiceEndpoint resource properties. */
 export type ServiceEndpointsCreateOrUpdateResponseProperties = GetServiceEndpointResponseProperties;
 /** The type of identity that created the resource. */
@@ -1274,16 +905,12 @@ export type ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ServiceEndpointsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -1299,11 +926,6 @@ export interface ServiceEndpointsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ServiceEndpointsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ServiceEndpointsCreateOrUpdateResponseSystemData>;
-
 export interface ServiceEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1320,15 +942,8 @@ export interface ServiceEndpointsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ServiceEndpointsCreateOrUpdateResponseSystemData;
 }
-const ServiceEndpointsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ServiceEndpointsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Tags>;
-
 /** Account resource patch properties. */
 export interface UpdateAccountRequestProperties {
   /** The list of service endpoints authentication details. */
@@ -1338,11 +953,6 @@ export interface UpdateAccountRequestProperties {
   /** Connection string to write Accounts reports to. */
   reportsConnectionString?: string;
 }
-const UpdateAccountRequestProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<UpdateAccountRequestProperties>;
-
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1355,13 +965,8 @@ export interface UpdateAccountRequest {
   /** Account resource patch properties. */
   properties?: UpdateAccountRequestProperties;
 }
-const UpdateAccountRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<UpdateAccountRequest>;
-
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-const UpdateAccountResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
-
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type UpdateAccountResponsePropertiesConfiguration = "Free" | "Capacity";
 /** Account resource properties. */
@@ -1377,9 +982,6 @@ export interface UpdateAccountResponseProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const UpdateAccountResponseProperties =
-  AccountsCreateOrUpdateResponseProperties as any as S.Schema<UpdateAccountResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type UpdateAccountResponseSystemDataCreatedByType =
   | "User"
@@ -1407,9 +1009,6 @@ export interface UpdateAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const UpdateAccountResponseSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateAccountResponseSystemData>;
-
 export interface UpdateAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1426,21 +1025,11 @@ export interface UpdateAccountResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateAccountResponseSystemData;
 }
-const UpdateAccountResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<UpdateAccountResponse>;
-
 /** Modeling resource properties to update. */
 export interface UpdateModelingRequestProperties {
   /** The configuration to raw CDM data to be used as Modeling resource input. */
   inputData?: ModelingInputData;
 }
-const UpdateModelingRequestProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UpdateModelingRequestProperties>;
-
 export interface UpdateModelingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1455,16 +1044,8 @@ export interface UpdateModelingRequest {
   /** Modeling resource properties to update. */
   properties?: UpdateModelingRequestProperties;
 }
-const UpdateModelingRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UpdateModelingRequest>;
-
 /** Resource tags. */
 export type UpdateModelingResponseTagsMap = { [key: string]: string | undefined };
-const UpdateModelingResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateModelingResponseTagsMap>;
-
 /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
 export type UpdateModelingResponsePropertiesFeatures = "Basic" | "Standard" | "Premium";
 /** Modeling frequency controls the modeling compute frequency. */
@@ -1484,9 +1065,6 @@ export interface UpdateModelingResponseProperties {
   /** The resource provisioning state. */
   provisioningState?: string;
 }
-const UpdateModelingResponseProperties =
-  GetModelingResponseProperties as any as S.Schema<UpdateModelingResponseProperties>;
-
 /** The type of identity that created the resource. */
 export type UpdateModelingResponseSystemDataCreatedByType =
   | "User"
@@ -1514,9 +1092,6 @@ export interface UpdateModelingResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const UpdateModelingResponseSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateModelingResponseSystemData>;
-
 export interface UpdateModelingResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1533,11 +1108,6 @@ export interface UpdateModelingResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateModelingResponseSystemData;
 }
-const UpdateModelingResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UpdateModelingResponse>;
-
 export interface UpdateServiceEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1550,16 +1120,8 @@ export interface UpdateServiceEndpointRequest {
   /** Resource tags. */
   tags?: Tags;
 }
-const UpdateServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateServiceEndpointRequest>;
-
 /** Resource tags. */
 export type UpdateServiceEndpointResponseTagsMap = { [key: string]: string | undefined };
-const UpdateServiceEndpointResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceEndpointResponseTagsMap>;
-
 /** ServiceEndpoint resource properties. */
 export type UpdateServiceEndpointResponseProperties = GetServiceEndpointResponseProperties;
 /** The type of identity that created the resource. */
@@ -1589,9 +1151,6 @@ export interface UpdateServiceEndpointResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const UpdateServiceEndpointResponseSystemData =
-  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateServiceEndpointResponseSystemData>;
-
 export interface UpdateServiceEndpointResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1608,11 +1167,6 @@ export interface UpdateServiceEndpointResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateServiceEndpointResponseSystemData;
 }
-const UpdateServiceEndpointResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateServiceEndpointResponse>;
-
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Creates or updates RecommendationsService Account resource. */
 export const AccountsCreateOrUpdate: API.OperationMethod<
@@ -1621,8 +1175,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountsCreateOrUpdateRequest,
-  output: AccountsCreateOrUpdateResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<AccountsCreateOrUpdateRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<AccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1190,8 @@ export const CheckAccountNameAvailability: API.OperationMethod<
   CheckAccountNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAccountNameAvailabilityRequest,
-  output: CheckAccountNameAvailabilityResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<CheckAccountNameAvailabilityRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CheckAccountNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1205,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountRequest,
-  output: DeleteAccountResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1220,8 @@ export const DeleteModeling: API.OperationMethod<
   DeleteModelingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelingRequest,
-  output: DeleteModelingResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteModelingRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteModelingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1235,8 @@ export const DeleteServiceEndpoint: API.OperationMethod<
   DeleteServiceEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceEndpointRequest,
-  output: DeleteServiceEndpointResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteServiceEndpointRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteServiceEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1250,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountRequest,
-  output: GetAccountResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetAccountRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1265,8 @@ export const GetAccountStatus: API.OperationMethod<
   GetAccountStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountStatusRequest,
-  output: AccountStatus,
+  input: __S(19, __c2, 3) as any as S.Schema<GetAccountStatusRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<AccountStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1280,8 @@ export const GetModeling: API.OperationMethod<
   GetModelingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelingRequest,
-  output: GetModelingResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<GetModelingRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<GetModelingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1295,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationStatusRequest,
-  output: GetOperationStatusResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<GetOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1310,8 @@ export const GetServiceEndpoint: API.OperationMethod<
   GetServiceEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceEndpointRequest,
-  output: GetServiceEndpointResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<GetServiceEndpointRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetServiceEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1325,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountByResourceGroupRequest,
-  output: AccountResourceList,
+  input: __S(41, __c5, 1) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<AccountResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1340,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountBySubscriptionRequest,
-  output: AccountResourceList,
+  input: __S(45, __c5, 5) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<AccountResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1355,8 @@ export const ListModelingByAccountResource: API.OperationMethod<
   ListModelingByAccountResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListModelingByAccountResourceRequest,
-  output: ModelingResourceList,
+  input: __S(46, __c5, 6) as any as S.Schema<ListModelingByAccountResourceRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ModelingResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1370,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<ListOperationsRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1385,8 @@ export const ListServiceEndpointByAccountResource: API.OperationMethod<
   ListServiceEndpointByAccountResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceEndpointByAccountResourceRequest,
-  output: ServiceEndpointResourceList,
+  input: __S(55, __c6, 7) as any as S.Schema<ListServiceEndpointByAccountResourceRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ServiceEndpointResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1400,8 @@ export const ModelingCreateOrUpdate: API.OperationMethod<
   ModelingCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModelingCreateOrUpdateRequest,
-  output: ModelingCreateOrUpdateResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<ModelingCreateOrUpdateRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ModelingCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1415,8 @@ export const ServiceEndpointsCreateOrUpdate: API.OperationMethod<
   ServiceEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceEndpointsCreateOrUpdateRequest,
-  output: ServiceEndpointsCreateOrUpdateResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ServiceEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1430,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountRequest,
-  output: UpdateAccountResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1445,8 @@ export const UpdateModeling: API.OperationMethod<
   UpdateModelingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateModelingRequest,
-  output: UpdateModelingResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<UpdateModelingRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateModelingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1460,8 @@ export const UpdateServiceEndpoint: API.OperationMethod<
   UpdateServiceEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceEndpointRequest,
-  output: UpdateServiceEndpointResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<UpdateServiceEndpointRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<UpdateServiceEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1923,31 +1477,31 @@ function __c0(j: number): any {
         S.Struct({
           aadTenantID: S.optional(S.String),
           principalID: S.optional(S.String),
-          principalType: S.optional(EndpointAuthenticationPrincipalType),
+          principalType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointAuthentication" });
     case 2:
-      return S.Array(EndpointAuthentication);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: CorsRuleAllowedOriginsList,
-          allowedMethods: S.optional(CorsRuleAllowedMethodsList),
-          allowedHeaders: S.optional(CorsRuleAllowedHeadersList),
-          exposedHeaders: S.optional(CorsRuleExposedHeadersList),
+          allowedOrigins: __S(3, __c0, 3),
+          allowedMethods: S.optional(__S(3, __c0, 3)),
+          allowedHeaders: S.optional(__S(3, __c0, 3)),
+          exposedHeaders: S.optional(__S(3, __c0, 3)),
           maxAgeInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CorsRule" });
     case 5:
-      return S.Array(CorsRule);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(AccountsCreateOrUpdateRequestPropertiesConfiguration),
-          endpointAuthentications: S.optional(EndpointAuthenticationsList),
-          cors: S.optional(CorsRuleList),
+          configuration: S.optional(S.String),
+          endpointAuthentications: S.optional(__S(2, __c0, 2)),
+          cors: S.optional(__S(5, __c0, 5)),
           reportsConnectionString: S.optional(S.String),
         }),
       ).annotate({
@@ -1959,9 +1513,9 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(AccountsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(AccountsCreateOrUpdateRequestProperties),
+          properties: S.optional(__S(6, __c0, 6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1980,9 +1534,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(AccountsCreateOrUpdateResponsePropertiesConfiguration),
-          endpointAuthentications: S.optional(EndpointAuthenticationsList),
-          cors: S.optional(CorsRuleList),
+          configuration: S.optional(S.String),
+          endpointAuthentications: S.optional(__S(2, __c0, 2)),
+          cors: S.optional(__S(5, __c0, 5)),
           reportsConnectionString: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
@@ -1993,12 +1547,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(AccountsCreateOrUpdateResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            AccountsCreateOrUpdateResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2010,10 +1562,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(AccountsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(AccountsCreateOrUpdateResponseProperties),
-          systemData: S.optional(AccountsCreateOrUpdateResponseSystemData),
+          properties: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponse",
@@ -2039,7 +1591,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(CheckAccountNameAvailabilityResponseReason),
+          reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -2123,10 +1675,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(GetAccountResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(GetAccountResponseProperties),
-          systemData: S.optional(GetAccountResponseSystemData),
+          properties: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
     case 3:
@@ -2153,16 +1705,16 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "StageStatus" });
     case 5:
-      return S.Array(StageStatus);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String),
-          statuses: S.optional(ScopeStatusesStatusesList),
+          statuses: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "ScopeStatuses" });
     case 7:
-      return S.Array(ScopeStatuses);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -2170,7 +1722,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scopesStatuses: S.optional(AccountStatusScopesStatusesList),
+          scopesStatuses: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "AccountStatus" });
     case 1:
@@ -2198,10 +1750,10 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(GetModelingResponsePropertiesFeatures),
-          frequency: S.optional(GetModelingResponsePropertiesFrequency),
-          size: S.optional(GetModelingResponsePropertiesSize),
-          inputData: S.optional(ModelingInputData),
+          features: S.optional(S.String),
+          frequency: S.optional(S.String),
+          size: S.optional(S.String),
+          inputData: S.optional(__S(26, __c3, 2)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
@@ -2213,10 +1765,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(GetModelingResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(GetModelingResponseProperties),
-          systemData: S.optional(GetModelingResponseSystemData),
+          properties: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "GetModelingResponse" });
     case 5:
@@ -2236,9 +1788,9 @@ function __c3(j: number): any {
         identifier: "GetOperationStatusRequest",
       });
     case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(35, __c4, 3)));
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(34, __c4, 2)));
   }
 }
 function __c4(j: number): any {
@@ -2251,15 +1803,15 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 1:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ErrorDetailDetailsList),
-          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
+          details: S.optional(__S(31, __c3, 7)),
+          additionalInfo: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 3:
@@ -2272,12 +1824,12 @@ function __c4(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(OperationStatusResultOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(30, __c3, 6)),
+          error: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 4:
-      return S.Array(OperationStatusResult);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2288,8 +1840,8 @@ function __c4(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(GetOperationStatusResponseOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(36, __c4, 4)),
+          error: S.optional(__S(34, __c4, 2)),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -2334,10 +1886,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(GetServiceEndpointResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(GetServiceEndpointResponseProperties),
-          systemData: S.optional(GetServiceEndpointResponseSystemData),
+          properties: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "GetServiceEndpointResponse",
@@ -2364,19 +1916,19 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(AccountResourceTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(AccountResourceProperties),
-          systemData: S.optional(AccountResourceSystemData),
+          properties: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "AccountResource" });
     case 3:
-      return S.Array(AccountResource);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AccountResourceListValueList),
+          value: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "AccountResourceList" });
     case 5:
@@ -2417,10 +1969,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ModelingResourceTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(ModelingResourceProperties),
-          systemData: S.optional(ModelingResourceSystemData),
+          properties: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "ModelingResource" });
   }
@@ -2428,12 +1980,12 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ModelingResource);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ModelingResourceListValueList),
+          value: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "ModelingResourceList" });
     case 2:
@@ -2461,17 +2013,17 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(51, __c6, 3)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(53, __c6, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2502,19 +2054,19 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ServiceEndpointResourceTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(GetServiceEndpointResponseProperties),
-          systemData: S.optional(ServiceEndpointResourceSystemData),
+          properties: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "ServiceEndpointResource" });
     case 1:
-      return S.Array(ServiceEndpointResource);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ServiceEndpointResourceListValueList),
+          value: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({
         identifier: "ServiceEndpointResourceList",
@@ -2522,10 +2074,10 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(ModelingCreateOrUpdateRequestPropertiesFeatures),
-          frequency: S.optional(ModelingCreateOrUpdateRequestPropertiesFrequency),
-          size: S.optional(ModelingCreateOrUpdateRequestPropertiesSize),
-          inputData: S.optional(ModelingInputData),
+          features: S.optional(S.String),
+          frequency: S.optional(S.String),
+          size: S.optional(S.String),
+          inputData: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "ModelingCreateOrUpdateRequestProperties",
@@ -2537,9 +2089,9 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           modelingName: S.String.pipe(T.Label()),
-          tags: S.optional(ModelingCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(ModelingCreateOrUpdateRequestProperties),
+          properties: S.optional(__S(59, __c7, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2557,10 +2109,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ModelingCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(ModelingCreateOrUpdateResponseProperties),
-          systemData: S.optional(ModelingCreateOrUpdateResponseSystemData),
+          properties: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "ModelingCreateOrUpdateResponse",
@@ -2580,9 +2132,9 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           serviceEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(ServiceEndpointsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(ServiceEndpointsCreateOrUpdateRequestProperties),
+          properties: S.optional(__S(62, __c7, 6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2602,12 +2154,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2619,10 +2169,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ServiceEndpointsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(GetServiceEndpointResponseProperties),
-          systemData: S.optional(ServiceEndpointsCreateOrUpdateResponseSystemData),
+          properties: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "ServiceEndpointsCreateOrUpdateResponse",
@@ -2632,8 +2182,8 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          endpointAuthentications: S.optional(EndpointAuthenticationsList),
-          cors: S.optional(CorsRuleList),
+          endpointAuthentications: S.optional(__S(2, __c0, 2)),
+          cors: S.optional(__S(5, __c0, 5)),
           reportsConnectionString: S.optional(S.String),
         }),
       ).annotate({
@@ -2645,8 +2195,8 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(Tags),
-          properties: S.optional(UpdateAccountRequestProperties),
+          tags: S.optional(__S(66, __c8, 2)),
+          properties: S.optional(__S(67, __c8, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2662,16 +2212,16 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(UpdateAccountResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(UpdateAccountResponseProperties),
-          systemData: S.optional(UpdateAccountResponseSystemData),
+          properties: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "UpdateAccountResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inputData: S.optional(ModelingInputData),
+          inputData: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "UpdateModelingRequestProperties",
@@ -2683,8 +2233,8 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           modelingName: S.String.pipe(T.Label()),
-          tags: S.optional(Tags),
-          properties: S.optional(UpdateModelingRequestProperties),
+          tags: S.optional(__S(66, __c8, 2)),
+          properties: S.optional(__S(70, __c8, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2704,10 +2254,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(UpdateModelingResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(UpdateModelingResponseProperties),
-          systemData: S.optional(UpdateModelingResponseSystemData),
+          properties: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "UpdateModelingResponse" });
     case 1:
@@ -2717,7 +2267,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           serviceEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(66, __c8, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2735,13 +2285,18 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(UpdateServiceEndpointResponseTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(GetServiceEndpointResponseProperties),
-          systemData: S.optional(UpdateServiceEndpointResponseSystemData),
+          properties: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "UpdateServiceEndpointResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

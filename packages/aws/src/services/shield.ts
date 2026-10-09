@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://ddp.amazonaws.com/doc/2016-06-02/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Shield",
@@ -116,12 +118,12 @@ export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     reason: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+      /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "ValidationExceptionReason",
       }),
     ),
     fields: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(99, __c12, 3)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -178,41 +180,19 @@ export type LogBucket = string;
 export interface AssociateDRTLogBucketRequest {
   LogBucket: string;
 }
-const AssociateDRTLogBucketRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateDRTLogBucketRequest>;
 export interface AssociateDRTLogBucketResponse {}
-const AssociateDRTLogBucketResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateDRTLogBucketResponse>;
 export type RoleArn = string;
 export interface AssociateDRTRoleRequest {
   RoleArn: string;
 }
-const AssociateDRTRoleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AssociateDRTRoleRequest>;
 export interface AssociateDRTRoleResponse {}
-const AssociateDRTRoleResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AssociateDRTRoleResponse>;
 export type ProtectionId = string;
 export type HealthCheckArn = string;
 export interface AssociateHealthCheckRequest {
   ProtectionId: string;
   HealthCheckArn: string;
 }
-const AssociateHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssociateHealthCheckRequest>;
 export interface AssociateHealthCheckResponse {}
-const AssociateHealthCheckResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<AssociateHealthCheckResponse>;
 export type EmailAddress = string;
 export type PhoneNumber = string;
 export type ContactNotes = string;
@@ -221,19 +201,11 @@ export interface EmergencyContact {
   PhoneNumber?: string;
   ContactNotes?: string;
 }
-const EmergencyContact = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EmergencyContact>;
 export type EmergencyContactList = EmergencyContact[];
-const EmergencyContactList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface AssociateProactiveEngagementDetailsRequest {
   EmergencyContactList: EmergencyContact[];
 }
-const AssociateProactiveEngagementDetailsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AssociateProactiveEngagementDetailsRequest>;
 export interface AssociateProactiveEngagementDetailsResponse {}
-const AssociateProactiveEngagementDetailsResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<AssociateProactiveEngagementDetailsResponse>;
 export type ProtectionName = string;
 export type ResourceArn = string;
 export type TagKey = string;
@@ -242,32 +214,18 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface CreateProtectionRequest {
   Name: string;
   ResourceArn: string;
   Tags?: Tag[];
 }
-const CreateProtectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateProtectionRequest>;
 export interface CreateProtectionResponse {
   ProtectionId?: string;
 }
-const CreateProtectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateProtectionResponse>;
 export type ProtectionGroupId = string;
 export type ProtectionGroupAggregation = "SUM" | "MEAN" | "MAX" | (string & {});
-const ProtectionGroupAggregation = S.String;
-
 export type ProtectionGroupPattern = "ALL" | "ARBITRARY" | "BY_RESOURCE_TYPE" | (string & {});
-const ProtectionGroupPattern = S.String;
-
 export type ProtectedResourceType =
   | "CLOUDFRONT_DISTRIBUTION"
   | "ROUTE_53_HOSTED_ZONE"
@@ -276,10 +234,7 @@ export type ProtectedResourceType =
   | "APPLICATION_LOAD_BALANCER"
   | "GLOBAL_ACCELERATOR"
   | (string & {});
-const ProtectedResourceType = S.String;
-
 export type ProtectionGroupMembers = string[];
-const ProtectionGroupMembers = /*@__PURE__*/ __L.at(__c1, 4);
 export interface CreateProtectionGroupRequest {
   ProtectionGroupId: string;
   Aggregation: ProtectionGroupAggregation;
@@ -288,60 +243,24 @@ export interface CreateProtectionGroupRequest {
   Members?: string[];
   Tags?: Tag[];
 }
-const CreateProtectionGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateProtectionGroupRequest>;
 export interface CreateProtectionGroupResponse {}
-const CreateProtectionGroupResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<CreateProtectionGroupResponse>;
 export interface CreateSubscriptionRequest {}
-const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateSubscriptionRequest>;
 export interface CreateSubscriptionResponse {}
-const CreateSubscriptionResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<CreateSubscriptionResponse>;
 export interface DeleteProtectionRequest {
   ProtectionId: string;
 }
-const DeleteProtectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteProtectionRequest>;
 export interface DeleteProtectionResponse {}
-const DeleteProtectionResponse =
-  AssociateDRTRoleResponse as any as S.Schema<DeleteProtectionResponse>;
 export interface DeleteProtectionGroupRequest {
   ProtectionGroupId: string;
 }
-const DeleteProtectionGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteProtectionGroupRequest>;
 export interface DeleteProtectionGroupResponse {}
-const DeleteProtectionGroupResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<DeleteProtectionGroupResponse>;
 export interface DeleteSubscriptionRequest {}
-const DeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteSubscriptionRequest>;
 export interface DeleteSubscriptionResponse {}
-const DeleteSubscriptionResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<DeleteSubscriptionResponse>;
 export type AttackId = string;
 export interface DescribeAttackRequest {
   AttackId: string;
 }
-const DescribeAttackRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DescribeAttackRequest>;
 export type SubResourceType = "IP" | "URL" | (string & {});
-const SubResourceType = S.String;
-
 export interface SummarizedCounter {
   Name?: string;
   Max?: number;
@@ -350,32 +269,21 @@ export interface SummarizedCounter {
   N?: number;
   Unit?: string;
 }
-const SummarizedCounter = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SummarizedCounter>;
 export type SummarizedCounterList = SummarizedCounter[];
-const SummarizedCounterList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface SummarizedAttackVector {
   VectorType: string;
   VectorCounters?: SummarizedCounter[];
 }
-const SummarizedAttackVector = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SummarizedAttackVector>;
 export type SummarizedAttackVectorList = SummarizedAttackVector[];
-const SummarizedAttackVectorList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface SubResourceSummary {
   Type?: SubResourceType;
   Id?: string;
   AttackVectors?: SummarizedAttackVector[];
   Counters?: SummarizedCounter[];
 }
-const SubResourceSummary = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SubResourceSummary>;
 export type SubResourceSummaryList = SubResourceSummary[];
-const SubResourceSummaryList = /*@__PURE__*/ __L.at(__c3, 0);
 export type AttackTimestamp = Date;
 export type AttackLayer = "NETWORK" | "APPLICATION" | (string & {});
-const AttackLayer = S.String;
-
 export type AttackPropertyIdentifier =
   | "DESTINATION_URL"
   | "REFERRER"
@@ -386,18 +294,12 @@ export type AttackPropertyIdentifier =
   | "WORDPRESS_PINGBACK_REFLECTOR"
   | "WORDPRESS_PINGBACK_SOURCE"
   | (string & {});
-const AttackPropertyIdentifier = S.String;
-
 export interface Contributor {
   Name?: string;
   Value?: number;
 }
-const Contributor = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Contributor>;
 export type TopContributors = Contributor[];
-const TopContributors = /*@__PURE__*/ __L.at(__c3, 2);
 export type Unit = "BITS" | "BYTES" | "PACKETS" | "REQUESTS" | (string & {});
-const Unit = S.String;
-
 export interface AttackProperty {
   AttackLayer?: AttackLayer;
   AttackPropertyIdentifier?: AttackPropertyIdentifier;
@@ -405,15 +307,11 @@ export interface AttackProperty {
   Unit?: Unit;
   Total?: number;
 }
-const AttackProperty = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AttackProperty>;
 export type AttackProperties = AttackProperty[];
-const AttackProperties = /*@__PURE__*/ __L.at(__c3, 4);
 export interface Mitigation {
   MitigationName?: string;
 }
-const Mitigation = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Mitigation>;
 export type MitigationList = Mitigation[];
-const MitigationList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface AttackDetail {
   AttackId?: string;
   ResourceArn?: string;
@@ -424,113 +322,58 @@ export interface AttackDetail {
   AttackProperties?: AttackProperty[];
   Mitigations?: Mitigation[];
 }
-const AttackDetail = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AttackDetail>;
 export interface DescribeAttackResponse {
   Attack?: AttackDetail;
 }
-const DescribeAttackResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DescribeAttackResponse>;
 export interface DescribeAttackStatisticsRequest {}
-const DescribeAttackStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DescribeAttackStatisticsRequest>;
 export interface TimeRange {
   FromInclusive?: Date;
   ToExclusive?: Date;
 }
-const TimeRange = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TimeRange>;
 export interface AttackVolumeStatistics {
   Max: number;
 }
-const AttackVolumeStatistics = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AttackVolumeStatistics>;
 export interface AttackVolume {
   BitsPerSecond?: AttackVolumeStatistics;
   PacketsPerSecond?: AttackVolumeStatistics;
   RequestsPerSecond?: AttackVolumeStatistics;
 }
-const AttackVolume = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AttackVolume>;
 export interface AttackStatisticsDataItem {
   AttackVolume?: AttackVolume;
   AttackCount: number;
 }
-const AttackStatisticsDataItem = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AttackStatisticsDataItem>;
 export type AttackStatisticsDataList = AttackStatisticsDataItem[];
-const AttackStatisticsDataList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface DescribeAttackStatisticsResponse {
   TimeRange: TimeRange;
   DataItems: AttackStatisticsDataItem[];
 }
-const DescribeAttackStatisticsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DescribeAttackStatisticsResponse>;
 export interface DescribeDRTAccessRequest {}
-const DescribeDRTAccessRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DescribeDRTAccessRequest>;
 export type LogBucketList = string[];
-const LogBucketList = ProtectionGroupMembers as any as S.Schema<LogBucketList>;
 export interface DescribeDRTAccessResponse {
   RoleArn?: string;
   LogBucketList?: string[];
 }
-const DescribeDRTAccessResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DescribeDRTAccessResponse>;
 export interface DescribeEmergencyContactSettingsRequest {}
-const DescribeEmergencyContactSettingsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DescribeEmergencyContactSettingsRequest>;
 export interface DescribeEmergencyContactSettingsResponse {
   EmergencyContactList?: EmergencyContact[];
 }
-const DescribeEmergencyContactSettingsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DescribeEmergencyContactSettingsResponse>;
 export interface DescribeProtectionRequest {
   ProtectionId?: string;
   ResourceArn?: string;
 }
-const DescribeProtectionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DescribeProtectionRequest>;
 export type HealthCheckId = string;
 export type HealthCheckIds = string[];
-const HealthCheckIds = ProtectionGroupMembers as any as S.Schema<HealthCheckIds>;
 export type ApplicationLayerAutomaticResponseStatus = "ENABLED" | "DISABLED" | (string & {});
-const ApplicationLayerAutomaticResponseStatus = S.String;
-
 export interface BlockAction {}
-const BlockAction = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<BlockAction>;
 export interface CountAction {}
-const CountAction = BlockAction as any as S.Schema<CountAction>;
 export interface ResponseAction {
   Block?: BlockAction;
   Count?: CountAction;
 }
-const ResponseAction = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ResponseAction>;
 export interface ApplicationLayerAutomaticResponseConfiguration {
   Status: ApplicationLayerAutomaticResponseStatus;
   Action: ResponseAction;
 }
-const ApplicationLayerAutomaticResponseConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ApplicationLayerAutomaticResponseConfiguration>;
 export interface Protection {
   Id?: string;
   Name?: string;
@@ -539,21 +382,12 @@ export interface Protection {
   ProtectionArn?: string;
   ApplicationLayerAutomaticResponseConfiguration?: ApplicationLayerAutomaticResponseConfiguration;
 }
-const Protection = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Protection>;
 export interface DescribeProtectionResponse {
   Protection?: Protection;
 }
-const DescribeProtectionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DescribeProtectionResponse>;
 export interface DescribeProtectionGroupRequest {
   ProtectionGroupId: string;
 }
-const DescribeProtectionGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DescribeProtectionGroupRequest>;
 export interface ProtectionGroup {
   ProtectionGroupId: string;
   Aggregation: ProtectionGroupAggregation;
@@ -562,64 +396,35 @@ export interface ProtectionGroup {
   Members: string[];
   ProtectionGroupArn?: string;
 }
-const ProtectionGroup = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ProtectionGroup>;
 export interface DescribeProtectionGroupResponse {
   ProtectionGroup: ProtectionGroup;
 }
-const DescribeProtectionGroupResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DescribeProtectionGroupResponse>;
 export interface DescribeSubscriptionRequest {}
-const DescribeSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DescribeSubscriptionRequest>;
 export type DurationInSeconds = number;
 export type AutoRenew = "ENABLED" | "DISABLED" | (string & {});
-const AutoRenew = S.String;
-
 export interface Limit {
   Type?: string;
   Max?: number;
 }
-const Limit = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Limit>;
 export type Limits = Limit[];
-const Limits = /*@__PURE__*/ __L.at(__c6, 7);
 export type ProactiveEngagementStatus = "ENABLED" | "DISABLED" | "PENDING" | (string & {});
-const ProactiveEngagementStatus = S.String;
-
 export interface ProtectionLimits {
   ProtectedResourceTypeLimits: Limit[];
 }
-const ProtectionLimits = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ProtectionLimits>;
 export interface ProtectionGroupArbitraryPatternLimits {
   MaxMembers: number;
 }
-const ProtectionGroupArbitraryPatternLimits = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ProtectionGroupArbitraryPatternLimits>;
 export interface ProtectionGroupPatternTypeLimits {
   ArbitraryPatternLimits: ProtectionGroupArbitraryPatternLimits;
 }
-const ProtectionGroupPatternTypeLimits = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ProtectionGroupPatternTypeLimits>;
 export interface ProtectionGroupLimits {
   MaxProtectionGroups: number;
   PatternTypeLimits: ProtectionGroupPatternTypeLimits;
 }
-const ProtectionGroupLimits = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ProtectionGroupLimits>;
 export interface SubscriptionLimits {
   ProtectionLimits: ProtectionLimits;
   ProtectionGroupLimits: ProtectionGroupLimits;
 }
-const SubscriptionLimits = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SubscriptionLimits>;
 export interface Subscription {
   StartTime?: Date;
   EndTime?: Date;
@@ -630,97 +435,39 @@ export interface Subscription {
   SubscriptionLimits: SubscriptionLimits;
   SubscriptionArn?: string;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Subscription>;
 export interface DescribeSubscriptionResponse {
   Subscription?: Subscription;
 }
-const DescribeSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DescribeSubscriptionResponse>;
 export interface DisableApplicationLayerAutomaticResponseRequest {
   ResourceArn: string;
 }
-const DisableApplicationLayerAutomaticResponseRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DisableApplicationLayerAutomaticResponseRequest>;
 export interface DisableApplicationLayerAutomaticResponseResponse {}
-const DisableApplicationLayerAutomaticResponseResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<DisableApplicationLayerAutomaticResponseResponse>;
 export interface DisableProactiveEngagementRequest {}
-const DisableProactiveEngagementRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DisableProactiveEngagementRequest>;
 export interface DisableProactiveEngagementResponse {}
-const DisableProactiveEngagementResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<DisableProactiveEngagementResponse>;
 export interface DisassociateDRTLogBucketRequest {
   LogBucket: string;
 }
-const DisassociateDRTLogBucketRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DisassociateDRTLogBucketRequest>;
 export interface DisassociateDRTLogBucketResponse {}
-const DisassociateDRTLogBucketResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<DisassociateDRTLogBucketResponse>;
 export interface DisassociateDRTRoleRequest {}
-const DisassociateDRTRoleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DisassociateDRTRoleRequest>;
 export interface DisassociateDRTRoleResponse {}
-const DisassociateDRTRoleResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<DisassociateDRTRoleResponse>;
 export interface DisassociateHealthCheckRequest {
   ProtectionId: string;
   HealthCheckArn: string;
 }
-const DisassociateHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DisassociateHealthCheckRequest>;
 export interface DisassociateHealthCheckResponse {}
-const DisassociateHealthCheckResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<DisassociateHealthCheckResponse>;
 export interface EnableApplicationLayerAutomaticResponseRequest {
   ResourceArn: string;
   Action: ResponseAction;
 }
-const EnableApplicationLayerAutomaticResponseRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<EnableApplicationLayerAutomaticResponseRequest>;
 export interface EnableApplicationLayerAutomaticResponseResponse {}
-const EnableApplicationLayerAutomaticResponseResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<EnableApplicationLayerAutomaticResponseResponse>;
 export interface EnableProactiveEngagementRequest {}
-const EnableProactiveEngagementRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<EnableProactiveEngagementRequest>;
 export interface EnableProactiveEngagementResponse {}
-const EnableProactiveEngagementResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<EnableProactiveEngagementResponse>;
 export interface GetSubscriptionStateRequest {}
-const GetSubscriptionStateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetSubscriptionStateRequest>;
 export type SubscriptionState = "ACTIVE" | "INACTIVE" | (string & {});
-const SubscriptionState = S.String;
-
 export interface GetSubscriptionStateResponse {
   SubscriptionState: SubscriptionState;
 }
-const GetSubscriptionStateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetSubscriptionStateResponse>;
 export type ResourceArnFilterList = string[];
-const ResourceArnFilterList = ProtectionGroupMembers as any as S.Schema<ResourceArnFilterList>;
 export type Token = string;
 export type MaxResults = number;
 export interface ListAttacksRequest {
@@ -730,16 +477,10 @@ export interface ListAttacksRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAttacksRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListAttacksRequest>;
 export interface AttackVectorDescription {
   VectorType: string;
 }
-const AttackVectorDescription = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<AttackVectorDescription>;
 export type AttackVectorDescriptionList = AttackVectorDescription[];
-const AttackVectorDescriptionList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface AttackSummary {
   AttackId?: string;
   ResourceArn?: string;
@@ -747,159 +488,84 @@ export interface AttackSummary {
   EndTime?: Date;
   AttackVectors?: AttackVectorDescription[];
 }
-const AttackSummary = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AttackSummary>;
 export type AttackSummaries = AttackSummary[];
-const AttackSummaries = /*@__PURE__*/ __L.at(__c9, 4);
 export interface ListAttacksResponse {
   AttackSummaries?: AttackSummary[];
   NextToken?: string;
 }
-const ListAttacksResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ListAttacksResponse>;
 export type ProtectionGroupIdFilters = string[];
-const ProtectionGroupIdFilters =
-  ProtectionGroupMembers as any as S.Schema<ProtectionGroupIdFilters>;
 export type ProtectionGroupPatternFilters = ProtectionGroupPattern[];
-const ProtectionGroupPatternFilters = /*@__PURE__*/ __L.at(__c9, 6);
 export type ProtectedResourceTypeFilters = ProtectedResourceType[];
-const ProtectedResourceTypeFilters =
-  ProtectionGroupPatternFilters as any as S.Schema<ProtectedResourceTypeFilters>;
 export type ProtectionGroupAggregationFilters = ProtectionGroupAggregation[];
-const ProtectionGroupAggregationFilters =
-  ProtectionGroupPatternFilters as any as S.Schema<ProtectionGroupAggregationFilters>;
 export interface InclusionProtectionGroupFilters {
   ProtectionGroupIds?: string[];
   Patterns?: ProtectionGroupPattern[];
   ResourceTypes?: ProtectedResourceType[];
   Aggregations?: ProtectionGroupAggregation[];
 }
-const InclusionProtectionGroupFilters = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<InclusionProtectionGroupFilters>;
 export interface ListProtectionGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
   InclusionFilters?: InclusionProtectionGroupFilters;
 }
-const ListProtectionGroupsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListProtectionGroupsRequest>;
 export type ProtectionGroups = ProtectionGroup[];
-const ProtectionGroups = /*@__PURE__*/ __L.at(__c10, 1);
 export interface ListProtectionGroupsResponse {
   ProtectionGroups: ProtectionGroup[];
   NextToken?: string;
 }
-const ListProtectionGroupsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListProtectionGroupsResponse>;
 export type ResourceArnFilters = string[];
-const ResourceArnFilters = ProtectionGroupMembers as any as S.Schema<ResourceArnFilters>;
 export type ProtectionNameFilters = string[];
-const ProtectionNameFilters = ProtectionGroupMembers as any as S.Schema<ProtectionNameFilters>;
 export interface InclusionProtectionFilters {
   ResourceArns?: string[];
   ProtectionNames?: string[];
   ResourceTypes?: ProtectedResourceType[];
 }
-const InclusionProtectionFilters = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<InclusionProtectionFilters>;
 export interface ListProtectionsRequest {
   NextToken?: string;
   MaxResults?: number;
   InclusionFilters?: InclusionProtectionFilters;
 }
-const ListProtectionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListProtectionsRequest>;
 export type Protections = Protection[];
-const Protections = /*@__PURE__*/ __L.at(__c10, 5);
 export interface ListProtectionsResponse {
   Protections?: Protection[];
   NextToken?: string;
 }
-const ListProtectionsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListProtectionsResponse>;
 export interface ListResourcesInProtectionGroupRequest {
   ProtectionGroupId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListResourcesInProtectionGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListResourcesInProtectionGroupRequest>;
 export type ResourceArnList = string[];
-const ResourceArnList = ProtectionGroupMembers as any as S.Schema<ResourceArnList>;
 export interface ListResourcesInProtectionGroupResponse {
   ResourceArns: string[];
   NextToken?: string;
 }
-const ListResourcesInProtectionGroupResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListResourcesInProtectionGroupResponse>;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ProtectionGroupMembers as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationLayerAutomaticResponseRequest {
   ResourceArn: string;
   Action: ResponseAction;
 }
-const UpdateApplicationLayerAutomaticResponseRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<UpdateApplicationLayerAutomaticResponseRequest>;
 export interface UpdateApplicationLayerAutomaticResponseResponse {}
-const UpdateApplicationLayerAutomaticResponseResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<UpdateApplicationLayerAutomaticResponseResponse>;
 export interface UpdateEmergencyContactSettingsRequest {
   EmergencyContactList?: EmergencyContact[];
 }
-const UpdateEmergencyContactSettingsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UpdateEmergencyContactSettingsRequest>;
 export interface UpdateEmergencyContactSettingsResponse {}
-const UpdateEmergencyContactSettingsResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<UpdateEmergencyContactSettingsResponse>;
 export interface UpdateProtectionGroupRequest {
   ProtectionGroupId: string;
   Aggregation: ProtectionGroupAggregation;
@@ -907,37 +573,18 @@ export interface UpdateProtectionGroupRequest {
   ResourceType?: ProtectedResourceType;
   Members?: string[];
 }
-const UpdateProtectionGroupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UpdateProtectionGroupRequest>;
 export interface UpdateProtectionGroupResponse {}
-const UpdateProtectionGroupResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<UpdateProtectionGroupResponse>;
 export interface UpdateSubscriptionRequest {
   AutoRenew?: AutoRenew;
 }
-const UpdateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<UpdateSubscriptionRequest>;
 export interface UpdateSubscriptionResponse {}
-const UpdateSubscriptionResponse =
-  AssociateDRTLogBucketResponse as any as S.Schema<UpdateSubscriptionResponse>;
 export type ErrorMessage = string;
 export type ValidationExceptionReason = "FIELD_VALIDATION_FAILED" | "OTHER" | (string & {});
-const ValidationExceptionReason = S.String;
-
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c12, 3);
 export type LimitType = string;
 export type LimitNumber = number;
 export type AssociateDRTLogBucketError =
@@ -961,8 +608,8 @@ export const associateDRTLogBucket: API.OperationMethod<
   AssociateDRTLogBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateDRTLogBucketRequest,
-  output: AssociateDRTLogBucketResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateDRTLogBucketRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateDRTLogBucketResponse>,
   errors: [
     AccessDeniedForDependencyException,
     InternalErrorException,
@@ -1006,8 +653,8 @@ export const associateDRTRole: API.OperationMethod<
   AssociateDRTRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateDRTRoleRequest,
-  output: AssociateDRTRoleResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AssociateDRTRoleRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AssociateDRTRoleResponse>,
   errors: [
     AccessDeniedForDependencyException,
     InternalErrorException,
@@ -1040,8 +687,8 @@ export const associateHealthCheck: API.OperationMethod<
   AssociateHealthCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateHealthCheckRequest,
-  output: AssociateHealthCheckResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<AssociateHealthCheckRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateHealthCheckResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1077,8 +724,8 @@ export const associateProactiveEngagementDetails: API.OperationMethod<
   AssociateProactiveEngagementDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateProactiveEngagementDetailsRequest,
-  output: AssociateProactiveEngagementDetailsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<AssociateProactiveEngagementDetailsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateProactiveEngagementDetailsResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1117,8 +764,8 @@ export const createProtection: API.OperationMethod<
   CreateProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProtectionRequest,
-  output: CreateProtectionResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateProtectionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateProtectionResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1153,8 +800,8 @@ export const createProtectionGroup: API.OperationMethod<
   CreateProtectionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProtectionGroupRequest,
-  output: CreateProtectionGroupResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateProtectionGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateProtectionGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1187,8 +834,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionRequest,
-  output: CreateSubscriptionResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [InternalErrorException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1210,8 +857,8 @@ export const deleteProtection: API.OperationMethod<
   DeleteProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProtectionRequest,
-  output: DeleteProtectionResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteProtectionRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteProtectionResponse>,
   errors: [
     InternalErrorException,
     OptimisticLockException,
@@ -1238,8 +885,8 @@ export const deleteProtectionGroup: API.OperationMethod<
   DeleteProtectionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProtectionGroupRequest,
-  output: DeleteProtectionGroupResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteProtectionGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteProtectionGroupResponse>,
   errors: [
     InternalErrorException,
     OptimisticLockException,
@@ -1266,8 +913,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionRequest,
-  output: DeleteSubscriptionResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [
     InternalErrorException,
     LockedSubscriptionException,
@@ -1289,8 +936,8 @@ export const describeAttack: API.OperationMethod<
   DescribeAttackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAttackRequest,
-  output: DescribeAttackResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DescribeAttackRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DescribeAttackResponse>,
   errors: [AccessDeniedException, InternalErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1311,8 +958,8 @@ export const describeAttackStatistics: API.OperationMethod<
   DescribeAttackStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAttackStatisticsRequest,
-  output: DescribeAttackStatisticsResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<DescribeAttackStatisticsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<DescribeAttackStatisticsResponse>,
   errors: [InternalErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1332,8 +979,8 @@ export const describeDRTAccess: API.OperationMethod<
   DescribeDRTAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDRTAccessRequest,
-  output: DescribeDRTAccessResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<DescribeDRTAccessRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<DescribeDRTAccessResponse>,
   errors: [InternalErrorException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1353,8 +1000,8 @@ export const describeEmergencyContactSettings: API.OperationMethod<
   DescribeEmergencyContactSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeEmergencyContactSettingsRequest,
-  output: DescribeEmergencyContactSettingsResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<DescribeEmergencyContactSettingsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<DescribeEmergencyContactSettingsResponse>,
   errors: [InternalErrorException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1376,8 +1023,8 @@ export const describeProtection: API.OperationMethod<
   DescribeProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeProtectionRequest,
-  output: DescribeProtectionResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<DescribeProtectionRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DescribeProtectionResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1403,8 +1050,8 @@ export const describeProtectionGroup: API.OperationMethod<
   DescribeProtectionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeProtectionGroupRequest,
-  output: DescribeProtectionGroupResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<DescribeProtectionGroupRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<DescribeProtectionGroupResponse>,
   errors: [InternalErrorException, ResourceNotFoundException, SubscriptionNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1425,8 +1072,8 @@ export const describeSubscription: API.OperationMethod<
   DescribeSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSubscriptionRequest,
-  output: DescribeSubscriptionResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<DescribeSubscriptionRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<DescribeSubscriptionResponse>,
   errors: [InternalErrorException, ResourceNotFoundException, SubscriptionNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1450,8 +1097,8 @@ export const disableApplicationLayerAutomaticResponse: API.OperationMethod<
   DisableApplicationLayerAutomaticResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableApplicationLayerAutomaticResponseRequest,
-  output: DisableApplicationLayerAutomaticResponseResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<DisableApplicationLayerAutomaticResponseRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisableApplicationLayerAutomaticResponseResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1480,8 +1127,8 @@ export const disableProactiveEngagement: API.OperationMethod<
   DisableProactiveEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableProactiveEngagementRequest,
-  output: DisableProactiveEngagementResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<DisableProactiveEngagementRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisableProactiveEngagementResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1511,8 +1158,8 @@ export const disassociateDRTLogBucket: API.OperationMethod<
   DisassociateDRTLogBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateDRTLogBucketRequest,
-  output: DisassociateDRTLogBucketResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<DisassociateDRTLogBucketRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisassociateDRTLogBucketResponse>,
   errors: [
     AccessDeniedForDependencyException,
     InternalErrorException,
@@ -1541,8 +1188,8 @@ export const disassociateDRTRole: API.OperationMethod<
   DisassociateDRTRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateDRTRoleRequest,
-  output: DisassociateDRTRoleResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<DisassociateDRTRoleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisassociateDRTRoleResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1572,8 +1219,8 @@ export const disassociateHealthCheck: API.OperationMethod<
   DisassociateHealthCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateHealthCheckRequest,
-  output: DisassociateHealthCheckResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<DisassociateHealthCheckRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DisassociateHealthCheckResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1617,8 +1264,8 @@ export const enableApplicationLayerAutomaticResponse: API.OperationMethod<
   EnableApplicationLayerAutomaticResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableApplicationLayerAutomaticResponseRequest,
-  output: EnableApplicationLayerAutomaticResponseResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<EnableApplicationLayerAutomaticResponseRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EnableApplicationLayerAutomaticResponseResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1648,8 +1295,8 @@ export const enableProactiveEngagement: API.OperationMethod<
   EnableProactiveEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableProactiveEngagementRequest,
-  output: EnableProactiveEngagementResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<EnableProactiveEngagementRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EnableProactiveEngagementResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1672,8 +1319,8 @@ export const getSubscriptionState: API.OperationMethod<
   GetSubscriptionStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionStateRequest,
-  output: GetSubscriptionStateResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<GetSubscriptionStateRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<GetSubscriptionStateResponse>,
   errors: [InternalErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1696,8 +1343,8 @@ export const listAttacks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttackSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAttacksRequest,
-  output: ListAttacksResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<ListAttacksRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<ListAttacksResponse>,
   errors: [InternalErrorException, InvalidOperationException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1727,8 +1374,8 @@ export const listProtectionGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProtectionGroupsRequest,
-  output: ListProtectionGroupsResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<ListProtectionGroupsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ListProtectionGroupsResponse>,
   errors: [
     InternalErrorException,
     InvalidPaginationTokenException,
@@ -1762,8 +1409,8 @@ export const listProtections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Protection
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProtectionsRequest,
-  output: ListProtectionsResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<ListProtectionsRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<ListProtectionsResponse>,
   errors: [
     InternalErrorException,
     InvalidPaginationTokenException,
@@ -1796,8 +1443,8 @@ export const listResourcesInProtectionGroup: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListResourcesInProtectionGroupRequest,
-  output: ListResourcesInProtectionGroupResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<ListResourcesInProtectionGroupRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ListResourcesInProtectionGroupResponse>,
   errors: [InternalErrorException, InvalidPaginationTokenException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1824,8 +1471,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidResourceException,
@@ -1853,8 +1500,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<TagResourceRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1883,8 +1530,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<UntagResourceRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1913,8 +1560,8 @@ export const updateApplicationLayerAutomaticResponse: API.OperationMethod<
   UpdateApplicationLayerAutomaticResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationLayerAutomaticResponseRequest,
-  output: UpdateApplicationLayerAutomaticResponseResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<UpdateApplicationLayerAutomaticResponseRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateApplicationLayerAutomaticResponseResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1942,8 +1589,8 @@ export const updateEmergencyContactSettings: API.OperationMethod<
   UpdateEmergencyContactSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmergencyContactSettingsRequest,
-  output: UpdateEmergencyContactSettingsResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<UpdateEmergencyContactSettingsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateEmergencyContactSettingsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1971,8 +1618,8 @@ export const updateProtectionGroup: API.OperationMethod<
   UpdateProtectionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProtectionGroupRequest,
-  output: UpdateProtectionGroupResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateProtectionGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateProtectionGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -2005,8 +1652,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionRequest,
-  output: UpdateSubscriptionResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateSubscriptionResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -2062,10 +1709,10 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EmergencyContact" });
     case 6:
-      return S.Array(EmergencyContact);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ EmergencyContactList: EmergencyContactList }).pipe(
+        S.Struct({ EmergencyContactList: __S(6, __c0, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2080,10 +1727,10 @@ function __c1(j: number): any {
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, ResourceArn: S.String, Tags: S.optional(TagList) }).pipe(
+        S.Struct({ Name: S.String, ResourceArn: S.String, Tags: S.optional(__S(9, __c1, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateProtectionRequest" });
@@ -2097,11 +1744,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ProtectionGroupId: S.String,
-          Aggregation: ProtectionGroupAggregation,
-          Pattern: ProtectionGroupPattern,
-          ResourceType: S.optional(ProtectedResourceType),
-          Members: S.optional(ProtectionGroupMembers),
-          Tags: S.optional(TagList),
+          Aggregation: S.String,
+          Pattern: S.String,
+          ResourceType: S.optional(S.String),
+          Members: S.optional(__S(12, __c1, 4)),
+          Tags: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateProtectionGroupRequest",
@@ -2158,20 +1805,20 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SummarizedCounter" });
     case 4:
-      return S.Array(SummarizedCounter);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ VectorType: S.String, VectorCounters: S.optional(SummarizedCounterList) }),
+        S.Struct({ VectorType: S.String, VectorCounters: S.optional(__S(20, __c2, 4)) }),
       ).annotate({ identifier: "SummarizedAttackVector" });
     case 6:
-      return S.Array(SummarizedAttackVector);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(SubResourceType),
+          Type: S.optional(S.String),
           Id: S.optional(S.String),
-          AttackVectors: S.optional(SummarizedAttackVectorList),
-          Counters: S.optional(SummarizedCounterList),
+          AttackVectors: S.optional(__S(22, __c2, 6)),
+          Counters: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "SubResourceSummary" });
   }
@@ -2179,42 +1826,42 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SubResourceSummary);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.Number) }),
       ).annotate({ identifier: "Contributor" });
     case 2:
-      return S.Array(Contributor);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AttackLayer: S.optional(AttackLayer),
-          AttackPropertyIdentifier: S.optional(AttackPropertyIdentifier),
-          TopContributors: S.optional(TopContributors),
-          Unit: S.optional(Unit),
+          AttackLayer: S.optional(S.String),
+          AttackPropertyIdentifier: S.optional(S.String),
+          TopContributors: S.optional(__S(26, __c3, 2)),
+          Unit: S.optional(S.String),
           Total: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AttackProperty" });
     case 4:
-      return S.Array(AttackProperty);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() => S.Struct({ MitigationName: S.optional(S.String) })).annotate({
         identifier: "Mitigation",
       });
     case 6:
-      return S.Array(Mitigation);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           AttackId: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          SubResources: S.optional(SubResourceSummaryList),
+          SubResources: S.optional(__S(24, __c3, 0)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AttackCounters: S.optional(SummarizedCounterList),
-          AttackProperties: S.optional(AttackProperties),
-          Mitigations: S.optional(MitigationList),
+          AttackCounters: S.optional(__S(20, __c2, 4)),
+          AttackProperties: S.optional(__S(28, __c3, 4)),
+          Mitigations: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "AttackDetail" });
   }
@@ -2222,7 +1869,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Attack: S.optional(AttackDetail) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Attack: S.optional(__S(31, __c3, 7)) }).pipe(ns)).annotate({
         identifier: "DescribeAttackResponse",
       });
     case 1:
@@ -2247,20 +1894,20 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          BitsPerSecond: S.optional(AttackVolumeStatistics),
-          PacketsPerSecond: S.optional(AttackVolumeStatistics),
-          RequestsPerSecond: S.optional(AttackVolumeStatistics),
+          BitsPerSecond: S.optional(__S(35, __c4, 3)),
+          PacketsPerSecond: S.optional(__S(35, __c4, 3)),
+          RequestsPerSecond: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "AttackVolume" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ AttackVolume: S.optional(AttackVolume), AttackCount: S.Number }),
+        S.Struct({ AttackVolume: S.optional(__S(36, __c4, 4)), AttackCount: S.Number }),
       ).annotate({ identifier: "AttackStatisticsDataItem" });
     case 6:
-      return S.Array(AttackStatisticsDataItem);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ TimeRange: TimeRange, DataItems: AttackStatisticsDataList }).pipe(ns),
+        S.Struct({ TimeRange: __S(34, __c4, 2), DataItems: __S(38, __c4, 6) }).pipe(ns),
       ).annotate({
         identifier: "DescribeAttackStatisticsResponse",
       });
@@ -2276,9 +1923,10 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DescribeDRTAccessRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ RoleArn: S.optional(S.String), LogBucketList: S.optional(LogBucketList) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          RoleArn: S.optional(S.String),
+          LogBucketList: S.optional(__S(12, __c1, 4)),
+        }).pipe(ns),
       ).annotate({
         identifier: "DescribeDRTAccessResponse",
       });
@@ -2292,7 +1940,7 @@ function __c5(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ EmergencyContactList: S.optional(EmergencyContactList) }).pipe(ns),
+        S.Struct({ EmergencyContactList: S.optional(__S(6, __c0, 6)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeEmergencyContactSettingsResponse",
       });
@@ -2310,12 +1958,10 @@ function __c5(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Block: S.optional(BlockAction), Count: S.optional(CountAction) }),
+        S.Struct({ Block: S.optional(__S(45, __c5, 5)), Count: S.optional(__S(45, __c5, 5)) }),
       ).annotate({ identifier: "ResponseAction" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Status: ApplicationLayerAutomaticResponseStatus, Action: ResponseAction }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Status: S.String, Action: __S(46, __c5, 6) })).annotate({
         identifier: "ApplicationLayerAutomaticResponseConfiguration",
       });
   }
@@ -2328,15 +1974,15 @@ function __c6(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          HealthCheckIds: S.optional(HealthCheckIds),
+          HealthCheckIds: S.optional(__S(12, __c1, 4)),
           ProtectionArn: S.optional(S.String),
-          ApplicationLayerAutomaticResponseConfiguration: S.optional(
-            ApplicationLayerAutomaticResponseConfiguration,
-          ),
+          ApplicationLayerAutomaticResponseConfiguration: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "Protection" });
     case 1:
-      return S.suspend(() => S.Struct({ Protection: S.optional(Protection) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Protection: S.optional(__S(48, __c6, 0)) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeProtectionResponse",
       });
     case 2:
@@ -2351,15 +1997,15 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ProtectionGroupId: S.String,
-          Aggregation: ProtectionGroupAggregation,
-          Pattern: ProtectionGroupPattern,
-          ResourceType: S.optional(ProtectedResourceType),
-          Members: ProtectionGroupMembers,
+          Aggregation: S.String,
+          Pattern: S.String,
+          ResourceType: S.optional(S.String),
+          Members: __S(12, __c1, 4),
           ProtectionGroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProtectionGroup" });
     case 4:
-      return S.suspend(() => S.Struct({ ProtectionGroup: ProtectionGroup }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ProtectionGroup: __S(51, __c6, 3) }).pipe(ns)).annotate({
         identifier: "DescribeProtectionGroupResponse",
       });
     case 5:
@@ -2375,13 +2021,13 @@ function __c6(j: number): any {
         S.Struct({ Type: S.optional(S.String), Max: S.optional(S.Number) }),
       ).annotate({ identifier: "Limit" });
     case 7:
-      return S.Array(Limit);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ProtectedResourceTypeLimits: Limits })).annotate({
+      return S.suspend(() => S.Struct({ ProtectedResourceTypeLimits: __S(55, __c6, 7) })).annotate({
         identifier: "ProtectionLimits",
       });
     case 1:
@@ -2389,23 +2035,21 @@ function __c7(j: number): any {
         identifier: "ProtectionGroupArbitraryPatternLimits",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ ArbitraryPatternLimits: ProtectionGroupArbitraryPatternLimits }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ArbitraryPatternLimits: __S(57, __c7, 1) })).annotate({
         identifier: "ProtectionGroupPatternTypeLimits",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           MaxProtectionGroups: S.Number,
-          PatternTypeLimits: ProtectionGroupPatternTypeLimits,
+          PatternTypeLimits: __S(58, __c7, 2),
         }),
       ).annotate({ identifier: "ProtectionGroupLimits" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProtectionLimits: ProtectionLimits,
-          ProtectionGroupLimits: ProtectionGroupLimits,
+          ProtectionLimits: __S(56, __c7, 0),
+          ProtectionGroupLimits: __S(59, __c7, 3),
         }),
       ).annotate({ identifier: "SubscriptionLimits" });
     case 5:
@@ -2414,16 +2058,16 @@ function __c7(j: number): any {
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeCommitmentInSeconds: S.optional(S.Number),
-          AutoRenew: S.optional(AutoRenew),
-          Limits: S.optional(Limits),
-          ProactiveEngagementStatus: S.optional(ProactiveEngagementStatus),
-          SubscriptionLimits: SubscriptionLimits,
+          AutoRenew: S.optional(S.String),
+          Limits: S.optional(__S(55, __c6, 7)),
+          ProactiveEngagementStatus: S.optional(S.String),
+          SubscriptionLimits: __S(60, __c7, 4),
           SubscriptionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subscription" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Subscription: S.optional(Subscription) }).pipe(ns),
+        S.Struct({ Subscription: S.optional(__S(61, __c7, 5)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeSubscriptionResponse",
       });
@@ -2473,7 +2117,7 @@ function __c8(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Action: ResponseAction }).pipe(
+        S.Struct({ ResourceArn: S.String, Action: __S(46, __c5, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2496,7 +2140,7 @@ function __c8(j: number): any {
         identifier: "GetSubscriptionStateRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ SubscriptionState: SubscriptionState }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ SubscriptionState: S.String }).pipe(ns)).annotate({
         identifier: "GetSubscriptionStateResponse",
       });
   }
@@ -2506,9 +2150,9 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ResourceArns: S.optional(ResourceArnFilterList),
-          StartTime: S.optional(TimeRange),
-          EndTime: S.optional(TimeRange),
+          ResourceArns: S.optional(__S(12, __c1, 4)),
+          StartTime: S.optional(__S(34, __c4, 2)),
+          EndTime: S.optional(__S(34, __c4, 2)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2518,7 +2162,7 @@ function __c9(j: number): any {
         identifier: "AttackVectorDescription",
       });
     case 2:
-      return S.Array(AttackVectorDescription);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2526,27 +2170,27 @@ function __c9(j: number): any {
           ResourceArn: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AttackVectors: S.optional(AttackVectorDescriptionList),
+          AttackVectors: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({ identifier: "AttackSummary" });
     case 4:
-      return S.Array(AttackSummary);
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AttackSummaries: S.optional(AttackSummaries),
+          AttackSummaries: S.optional(__S(76, __c9, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAttacksResponse" });
     case 6:
-      return S.Array(ProtectionGroupPattern);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ProtectionGroupIds: S.optional(ProtectionGroupIdFilters),
-          Patterns: S.optional(ProtectionGroupPatternFilters),
-          ResourceTypes: S.optional(ProtectedResourceTypeFilters),
-          Aggregations: S.optional(ProtectionGroupAggregationFilters),
+          ProtectionGroupIds: S.optional(__S(12, __c1, 4)),
+          Patterns: S.optional(__S(78, __c9, 6)),
+          ResourceTypes: S.optional(__S(78, __c9, 6)),
+          Aggregations: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({
         identifier: "InclusionProtectionGroupFilters",
@@ -2560,25 +2204,25 @@ function __c10(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          InclusionFilters: S.optional(InclusionProtectionGroupFilters),
+          InclusionFilters: S.optional(__S(79, __c9, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListProtectionGroupsRequest",
       });
     case 1:
-      return S.Array(ProtectionGroup);
+      return S.Array(__S(51, __c6, 3));
     case 2:
       return S.suspend(() =>
-        S.Struct({ ProtectionGroups: ProtectionGroups, NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ ProtectionGroups: __S(81, __c10, 1), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListProtectionGroupsResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceArns: S.optional(ResourceArnFilters),
-          ProtectionNames: S.optional(ProtectionNameFilters),
-          ResourceTypes: S.optional(ProtectedResourceTypeFilters),
+          ResourceArns: S.optional(__S(12, __c1, 4)),
+          ProtectionNames: S.optional(__S(12, __c1, 4)),
+          ResourceTypes: S.optional(__S(78, __c9, 6)),
         }),
       ).annotate({
         identifier: "InclusionProtectionFilters",
@@ -2588,16 +2232,17 @@ function __c10(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          InclusionFilters: S.optional(InclusionProtectionFilters),
+          InclusionFilters: S.optional(__S(83, __c10, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListProtectionsRequest" });
     case 5:
-      return S.Array(Protection);
+      return S.Array(__S(48, __c6, 0));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Protections: S.optional(Protections), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Protections: S.optional(__S(85, __c10, 5)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListProtectionsResponse" });
     case 7:
       return S.suspend(() =>
@@ -2615,7 +2260,7 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArns: ResourceArnList, NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ ResourceArns: __S(12, __c1, 4), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListResourcesInProtectionGroupResponse",
       });
@@ -2628,12 +2273,12 @@ function __c11(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(9, __c1, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(9, __c1, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -2643,13 +2288,13 @@ function __c11(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(12, __c1, 4) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Action: ResponseAction }).pipe(
+        S.Struct({ ResourceArn: S.String, Action: __S(46, __c5, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2657,7 +2302,7 @@ function __c11(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ EmergencyContactList: S.optional(EmergencyContactList) }).pipe(
+        S.Struct({ EmergencyContactList: S.optional(__S(6, __c0, 6)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2671,17 +2316,17 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ProtectionGroupId: S.String,
-          Aggregation: ProtectionGroupAggregation,
-          Pattern: ProtectionGroupPattern,
-          ResourceType: S.optional(ProtectedResourceType),
-          Members: S.optional(ProtectionGroupMembers),
+          Aggregation: S.String,
+          Pattern: S.String,
+          ResourceType: S.optional(S.String),
+          Members: S.optional(__S(12, __c1, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateProtectionGroupRequest",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AutoRenew: S.optional(AutoRenew) }).pipe(
+        S.Struct({ AutoRenew: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2692,6 +2337,11 @@ function __c12(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 3:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(98, __c12, 2));
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

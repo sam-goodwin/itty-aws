@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Customer Profiles",
   serviceShapeName: "CustomerProfiles_20200815",
@@ -108,22 +110,16 @@ export type Uuid = string;
 export type Name = string;
 export type String1To255 = string;
 export type RequestValueList = string[];
-const RequestValueList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface AddProfileKeyRequest {
   ProfileId: string;
   KeyName: string;
   Values: string[];
   DomainName: string;
 }
-const AddProfileKeyRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddProfileKeyRequest>;
 export interface AddProfileKeyResponse {
   KeyName?: string;
   Values?: string[];
 }
-const AddProfileKeyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddProfileKeyResponse>;
 export type DestinationArnString = string;
 export type DestinationRoleArn = string;
 export interface AssociateStreamForSegmentsRequest {
@@ -131,57 +127,34 @@ export interface AssociateStreamForSegmentsRequest {
   DestinationArn: string;
   DestinationRoleArn: string;
 }
-const AssociateStreamForSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AssociateStreamForSegmentsRequest>;
 export interface AssociateStreamForSegmentsResponse {}
-const AssociateStreamForSegmentsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssociateStreamForSegmentsResponse>;
 export type TypeName = string;
 export type BatchGetCalculatedAttributeForProfileIdList = string[];
-const BatchGetCalculatedAttributeForProfileIdList =
-  RequestValueList as any as S.Schema<BatchGetCalculatedAttributeForProfileIdList>;
 export type Start = number;
 export type End = number;
 export type RangeUnit = "DAYS" | (string & {});
-const RangeUnit = S.String;
-
 export interface RangeOverride {
   Start: number;
   End?: number;
   Unit: RangeUnit;
 }
-const RangeOverride = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<RangeOverride>;
 export interface ConditionOverrides {
   Range?: RangeOverride;
 }
-const ConditionOverrides = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ConditionOverrides>;
 export interface BatchGetCalculatedAttributeForProfileRequest {
   CalculatedAttributeName: string;
   DomainName: string;
   ProfileIds: string[];
   ConditionOverrides?: ConditionOverrides;
 }
-const BatchGetCalculatedAttributeForProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchGetCalculatedAttributeForProfileRequest>;
 export type String1To1000 = string;
 export interface BatchGetCalculatedAttributeForProfileError_ {
   Code: string;
   Message: string;
   ProfileId: string;
 }
-const BatchGetCalculatedAttributeForProfileError_ = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchGetCalculatedAttributeForProfileError_>;
 export type BatchGetCalculatedAttributeForProfileErrorList =
   BatchGetCalculatedAttributeForProfileError_[];
-const BatchGetCalculatedAttributeForProfileErrorList = /*@__PURE__*/ __L.at(__c1, 1);
 export type DisplayName = string;
 export interface CalculatedAttributeValue {
   CalculatedAttributeName?: string;
@@ -191,50 +164,27 @@ export interface CalculatedAttributeValue {
   Value?: string;
   LastObjectTimestamp?: Date;
 }
-const CalculatedAttributeValue = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CalculatedAttributeValue>;
 export type CalculatedAttributeValueList = CalculatedAttributeValue[];
-const CalculatedAttributeValueList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchGetCalculatedAttributeForProfileResponse {
   Errors?: BatchGetCalculatedAttributeForProfileError_[];
   CalculatedAttributeValues?: CalculatedAttributeValue[];
   ConditionOverrides?: ConditionOverrides;
 }
-const BatchGetCalculatedAttributeForProfileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BatchGetCalculatedAttributeForProfileResponse>;
 export type BatchGetProfileIdList = string[];
-const BatchGetProfileIdList = RequestValueList as any as S.Schema<BatchGetProfileIdList>;
 export interface BatchGetProfileRequest {
   DomainName: string;
   ProfileIds: string[];
 }
-const BatchGetProfileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchGetProfileRequest>;
 export interface BatchGetProfileError_ {
   Code: string;
   Message: string;
   ProfileId: string;
 }
-const BatchGetProfileError_ = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BatchGetProfileError_>;
 export type BatchGetProfileErrorList = BatchGetProfileError_[];
-const BatchGetProfileErrorList = /*@__PURE__*/ __L.at(__c1, 7);
 export type SensitiveString1To255 = string | redacted.Redacted<string>;
 export type SensitiveString1To1000 = string | redacted.Redacted<string>;
 export type PartyType = "INDIVIDUAL" | "BUSINESS" | "OTHER" | (string & {});
-const PartyType = S.String;
-
 export type Gender = "MALE" | "FEMALE" | "UNSPECIFIED" | (string & {});
-const Gender = S.String;
-
 export interface Address {
   Address1?: string;
   Address2?: string;
@@ -247,19 +197,13 @@ export interface Address {
   Country?: string;
   PostalCode?: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Address>;
 export type Attributes = { [key: string]: string | undefined };
-const Attributes = /*@__PURE__*/ __L.at(__c2, 1);
 export interface FoundByKeyValue {
   KeyName?: string;
   Values?: string[];
 }
-const FoundByKeyValue = AddProfileKeyResponse as any as S.Schema<FoundByKeyValue>;
 export type FoundByList = FoundByKeyValue[];
-const FoundByList = /*@__PURE__*/ __L.at(__c2, 2);
 export type ProfileType = "ACCOUNT_PROFILE" | "PROFILE" | (string & {});
-const ProfileType = S.String;
-
 export type ContactType =
   | "PhoneNumber"
   | "MobilePhoneNumber"
@@ -269,27 +213,18 @@ export type ContactType =
   | "PersonalEmailAddress"
   | "BusinessEmailAddress"
   | (string & {});
-const ContactType = S.String;
-
 export interface ContactPreference {
   KeyName?: string;
   KeyValue?: string;
   ProfileId?: string;
   ContactType?: ContactType;
 }
-const ContactPreference = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ContactPreference>;
 export type PhonePreferenceList = ContactPreference[];
-const PhonePreferenceList = /*@__PURE__*/ __L.at(__c2, 4);
 export type EmailPreferenceList = ContactPreference[];
-const EmailPreferenceList = PhonePreferenceList as any as S.Schema<EmailPreferenceList>;
 export interface EngagementPreferences {
   Phone?: ContactPreference[];
   Email?: ContactPreference[];
 }
-const EngagementPreferences = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<EngagementPreferences>;
 export interface Profile {
   ProfileId?: string;
   AccountNumber?: string | redacted.Redacted<string>;
@@ -319,47 +254,27 @@ export interface Profile {
   ProfileType?: ProfileType;
   EngagementPreferences?: EngagementPreferences;
 }
-const Profile = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Profile>;
 export type ProfileList = Profile[];
-const ProfileList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface BatchGetProfileResponse {
   Errors?: BatchGetProfileError_[];
   Profiles?: Profile[];
 }
-const BatchGetProfileResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BatchGetProfileResponse>;
 export type StringifiedJson = string | redacted.Redacted<string>;
 export interface BatchPutProfileObjectRequestItem {
   Id: string;
   Object: string | redacted.Redacted<string>;
 }
-const BatchPutProfileObjectRequestItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BatchPutProfileObjectRequestItem>;
 export type BatchPutProfileObjectRequestItemList = BatchPutProfileObjectRequestItem[];
-const BatchPutProfileObjectRequestItemList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface BatchPutProfileObjectRequest {
   DomainName: string;
   ObjectTypeName: string;
   Items: BatchPutProfileObjectRequestItem[];
 }
-const BatchPutProfileObjectRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BatchPutProfileObjectRequest>;
 export interface BatchPutProfileObjectResponseItem {
   Id: string;
   ProfileObjectUniqueKey: string;
 }
-const BatchPutProfileObjectResponseItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<BatchPutProfileObjectResponseItem>;
 export type BatchPutProfileObjectResponseList = BatchPutProfileObjectResponseItem[];
-const BatchPutProfileObjectResponseList = /*@__PURE__*/ __L.at(__c3, 5);
 export type ResponseCode = number;
 export type Text = string;
 export interface BatchPutProfileObjectErrorItem {
@@ -367,44 +282,29 @@ export interface BatchPutProfileObjectErrorItem {
   Code: number;
   Message?: string;
 }
-const BatchPutProfileObjectErrorItem = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<BatchPutProfileObjectErrorItem>;
 export type BatchPutProfileObjectErrorList = BatchPutProfileObjectErrorItem[];
-const BatchPutProfileObjectErrorList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface BatchPutProfileObjectResponse {
   Successful?: BatchPutProfileObjectResponseItem[];
   Failed?: BatchPutProfileObjectErrorItem[];
 }
-const BatchPutProfileObjectResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<BatchPutProfileObjectResponse>;
 export type SensitiveText = string | redacted.Redacted<string>;
 export type AttributeName = string;
 export interface AttributeItem {
   Name: string;
 }
-const AttributeItem = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AttributeItem>;
 export type AttributeList = AttributeItem[];
-const AttributeList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface AttributeDetails {
   Attributes: AttributeItem[];
   Expression: string;
 }
-const AttributeDetails = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AttributeDetails>;
 export type Value = number;
 export type Unit = "DAYS" | (string & {});
-const Unit = S.String;
-
 export type ValueRangeStart = number;
 export type ValueRangeEnd = number;
 export interface ValueRange {
   Start: number;
   End: number;
 }
-const ValueRange = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ValueRange>;
 export interface Range {
   Value?: number;
   Unit?: Unit;
@@ -412,28 +312,19 @@ export interface Range {
   TimestampSource?: string;
   TimestampFormat?: string;
 }
-const Range = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Range>;
 export type ObjectCount = number;
 export type Operator = "EQUAL_TO" | "GREATER_THAN" | "LESS_THAN" | "NOT_EQUAL_TO" | (string & {});
-const Operator = S.String;
-
 export interface Threshold {
   Value: string;
   Operator: Operator;
 }
-const Threshold = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Threshold>;
 export interface Conditions {
   Range?: Range;
   ObjectCount?: number;
   Threshold?: Threshold;
 }
-const Conditions = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Conditions>;
 export type Include = "ALL" | "ANY" | "NONE" | (string & {});
-const Include = S.String;
-
 export type Type = "ALL" | "ANY" | "NONE" | (string & {});
-const Type = S.String;
-
 export type FilterDimensionType =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -451,38 +342,25 @@ export type FilterDimensionType =
   | "LESS_THAN_OR_EQUAL"
   | "EQUAL"
   | (string & {});
-const FilterDimensionType = S.String;
-
 export type ValueList = string[];
-const ValueList = RequestValueList as any as S.Schema<ValueList>;
 export interface FilterAttributeDimension {
   DimensionType: FilterDimensionType;
   Values: string[];
 }
-const FilterAttributeDimension = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<FilterAttributeDimension>;
 export type AttributeMap = { [key: string]: FilterAttributeDimension | undefined };
-const AttributeMap = /*@__PURE__*/ __L.at(__c5, 1);
 export interface FilterDimension {
   Attributes: { [key: string]: FilterAttributeDimension | undefined };
 }
-const FilterDimension = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<FilterDimension>;
 export type FilterDimensionList = FilterDimension[];
-const FilterDimensionList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface FilterGroup {
   Type: Type;
   Dimensions: FilterDimension[];
 }
-const FilterGroup = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<FilterGroup>;
 export type GroupList = FilterGroup[];
-const GroupList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface Filter {
   Include: Include;
   Groups: FilterGroup[];
 }
-const Filter = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Filter>;
 export type Statistic =
   | "FIRST_OCCURRENCE"
   | "LAST_OCCURRENCE"
@@ -494,13 +372,10 @@ export type Statistic =
   | "MAX_OCCURRENCE"
   | "RECENT_OCCURRENCES"
   | (string & {});
-const Statistic = S.String;
-
 export type OptionalBoolean = boolean;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = Attributes as any as S.Schema<TagMap>;
 export interface CreateCalculatedAttributeDefinitionRequest {
   DomainName: string;
   CalculatedAttributeName: string;
@@ -513,19 +388,12 @@ export interface CreateCalculatedAttributeDefinitionRequest {
   UseHistoricalData?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateCalculatedAttributeDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateCalculatedAttributeDefinitionRequest>;
 export type ReadinessStatus = "PREPARING" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | (string & {});
-const ReadinessStatus = S.String;
-
 export type PercentageInteger = number;
 export interface Readiness {
   ProgressPercentage?: number;
   Message?: string;
 }
-const Readiness = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Readiness>;
 export interface CreateCalculatedAttributeDefinitionResponse {
   CalculatedAttributeName?: string;
   DisplayName?: string;
@@ -541,10 +409,6 @@ export interface CreateCalculatedAttributeDefinitionResponse {
   Readiness?: Readiness;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateCalculatedAttributeDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateCalculatedAttributeDefinitionResponse>;
 export type ExpirationDaysInteger = number;
 export type EncryptionKey = string;
 export type SqsQueueUrl = string;
@@ -557,30 +421,21 @@ export type JobScheduleDayOfTheWeek =
   | "FRIDAY"
   | "SATURDAY"
   | (string & {});
-const JobScheduleDayOfTheWeek = S.String;
-
 export type JobScheduleTime = string;
 export interface JobSchedule {
   DayOfTheWeek: JobScheduleDayOfTheWeek;
   Time: string;
 }
-const JobSchedule = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<JobSchedule>;
 export type MatchingAttributes = string[];
-const MatchingAttributes = RequestValueList as any as S.Schema<MatchingAttributes>;
 export type MatchingAttributesList = string[][];
-const MatchingAttributesList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface Consolidation {
   MatchingAttributesList: string[][];
 }
-const Consolidation = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Consolidation>;
 export type ConflictResolvingModel = "RECENCY" | "SOURCE" | (string & {});
-const ConflictResolvingModel = S.String;
-
 export interface ConflictResolution {
   ConflictResolvingModel: ConflictResolvingModel;
   SourceName?: string;
 }
-const ConflictResolution = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ConflictResolution>;
 export type Double0To1 = number;
 export interface AutoMerging {
   Enabled: boolean;
@@ -588,54 +443,38 @@ export interface AutoMerging {
   ConflictResolution?: ConflictResolution;
   MinAllowedConfidenceScoreForMerging?: number;
 }
-const AutoMerging = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<AutoMerging>;
 export type S3BucketName = string;
 export type S3KeyNameCustomerOutputConfig = string;
 export interface S3ExportingConfig {
   S3BucketName: string;
   S3KeyName?: string;
 }
-const S3ExportingConfig = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<S3ExportingConfig>;
 export interface ExportingConfig {
   S3Exporting?: S3ExportingConfig;
 }
-const ExportingConfig = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ExportingConfig>;
 export interface MatchingRequest {
   Enabled: boolean;
   JobSchedule?: JobSchedule;
   AutoMerging?: AutoMerging;
   ExportingConfig?: ExportingConfig;
 }
-const MatchingRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<MatchingRequest>;
 export type MatchingRuleAttributeList = string[];
-const MatchingRuleAttributeList = RequestValueList as any as S.Schema<MatchingRuleAttributeList>;
 export interface MatchingRule {
   Rule: string[];
 }
-const MatchingRule = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<MatchingRule>;
 export type MatchingRules = MatchingRule[];
-const MatchingRules = /*@__PURE__*/ __L.at(__c7, 3);
 export type MaxAllowedRuleLevelForMerging = number;
 export type MaxAllowedRuleLevelForMatching = number;
 export type AttributeMatchingModel = "ONE_TO_ONE" | "MANY_TO_MANY" | (string & {});
-const AttributeMatchingModel = S.String;
-
 export type AddressList = string[];
-const AddressList = RequestValueList as any as S.Schema<AddressList>;
 export type PhoneNumberList = string[];
-const PhoneNumberList = RequestValueList as any as S.Schema<PhoneNumberList>;
 export type EmailList = string[];
-const EmailList = RequestValueList as any as S.Schema<EmailList>;
 export interface AttributeTypesSelector {
   AttributeMatchingModel: AttributeMatchingModel;
   Address?: string[];
   PhoneNumber?: string[];
   EmailAddress?: string[];
 }
-const AttributeTypesSelector = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AttributeTypesSelector>;
 export interface RuleBasedMatchingRequest {
   Enabled: boolean;
   MatchingRules?: MatchingRule[];
@@ -645,14 +484,9 @@ export interface RuleBasedMatchingRequest {
   ConflictResolution?: ConflictResolution;
   ExportingConfig?: ExportingConfig;
 }
-const RuleBasedMatchingRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<RuleBasedMatchingRequest>;
 export interface DataStoreRequest {
   Enabled?: boolean;
 }
-const DataStoreRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DataStoreRequest>;
 export interface CreateDomainRequest {
   DomainName: string;
   DefaultExpirationDays: number;
@@ -663,17 +497,13 @@ export interface CreateDomainRequest {
   DataStore?: DataStoreRequest;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateDomainRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CreateDomainRequest>;
 export interface MatchingResponse {
   Enabled?: boolean;
   JobSchedule?: JobSchedule;
   AutoMerging?: AutoMerging;
   ExportingConfig?: ExportingConfig;
 }
-const MatchingResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<MatchingResponse>;
 export type RuleBasedMatchingStatus = "PENDING" | "IN_PROGRESS" | "ACTIVE" | (string & {});
-const RuleBasedMatchingStatus = S.String;
-
 export interface RuleBasedMatchingResponse {
   Enabled?: boolean;
   MatchingRules?: MatchingRule[];
@@ -684,15 +514,10 @@ export interface RuleBasedMatchingResponse {
   ConflictResolution?: ConflictResolution;
   ExportingConfig?: ExportingConfig;
 }
-const RuleBasedMatchingResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RuleBasedMatchingResponse>;
 export interface DataStoreResponse {
   Enabled?: boolean;
   Readiness?: Readiness;
 }
-const DataStoreResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DataStoreResponse>;
 export interface CreateDomainResponse {
   DomainName: string;
   DefaultExpirationDays: number;
@@ -705,10 +530,7 @@ export interface CreateDomainResponse {
   LastUpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateDomainResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CreateDomainResponse>;
 export type LayoutType = "PROFILE_EXPLORER" | (string & {});
-const LayoutType = S.String;
-
 export type SensitiveString1To2000000 = string | redacted.Redacted<string>;
 export interface CreateDomainLayoutRequest {
   DomainName: string;
@@ -720,10 +542,6 @@ export interface CreateDomainLayoutRequest {
   Layout: string | redacted.Redacted<string>;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateDomainLayoutRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateDomainLayoutRequest>;
 export interface CreateDomainLayoutResponse {
   LayoutDefinitionName: string;
   Description: string | redacted.Redacted<string>;
@@ -736,28 +554,16 @@ export interface CreateDomainLayoutResponse {
   CreatedAt: Date;
   LastUpdatedAt?: Date;
 }
-const CreateDomainLayoutResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateDomainLayoutResponse>;
 export interface CreateEventStreamRequest {
   DomainName: string;
   Uri: string;
   EventStreamName: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateEventStreamRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateEventStreamRequest>;
 export interface CreateEventStreamResponse {
   EventStreamArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateEventStreamResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateEventStreamResponse>;
 export type FieldName = string;
 export type ComparisonOperator =
   | "INCLUSIVE"
@@ -776,45 +582,26 @@ export type ComparisonOperator =
   | "BETWEEN"
   | "NOT_BETWEEN"
   | (string & {});
-const ComparisonOperator = S.String;
-
 export type EventTriggerValues = string[];
-const EventTriggerValues = RequestValueList as any as S.Schema<EventTriggerValues>;
 export interface ObjectAttribute {
   Source?: string;
   FieldName?: string;
   ComparisonOperator: ComparisonOperator;
   Values: string[];
 }
-const ObjectAttribute = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ObjectAttribute>;
 export type ObjectAttributes = ObjectAttribute[];
-const ObjectAttributes = /*@__PURE__*/ __L.at(__c9, 1);
 export interface EventTriggerDimension {
   ObjectAttributes: ObjectAttribute[];
 }
-const EventTriggerDimension = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EventTriggerDimension>;
 export type EventTriggerDimensions = EventTriggerDimension[];
-const EventTriggerDimensions = /*@__PURE__*/ __L.at(__c9, 3);
 export type EventTriggerLogicalOperator = "ANY" | "ALL" | "NONE" | (string & {});
-const EventTriggerLogicalOperator = S.String;
-
 export interface EventTriggerCondition {
   EventTriggerDimensions: EventTriggerDimension[];
   LogicalOperator: EventTriggerLogicalOperator;
 }
-const EventTriggerCondition = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<EventTriggerCondition>;
 export type EventTriggerConditions = EventTriggerCondition[];
-const EventTriggerConditions = /*@__PURE__*/ __L.at(__c9, 5);
 export type OptionalLong = number;
 export type PeriodUnit = "MINUTES" | "HOURS" | "DAYS" | "WEEKS" | "MONTHS" | (string & {});
-const PeriodUnit = S.String;
-
 export type MaxSize60 = number;
 export type MaxSize1000 = number;
 export interface Period {
@@ -823,14 +610,11 @@ export interface Period {
   MaxInvocationsPerProfile?: number;
   Unlimited?: boolean;
 }
-const Period = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Period>;
 export type Periods = Period[];
-const Periods = /*@__PURE__*/ __L.at(__c9, 7);
 export interface EventTriggerLimits {
   EventExpiration?: number;
   Periods?: Period[];
 }
-const EventTriggerLimits = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<EventTriggerLimits>;
 export interface CreateEventTriggerRequest {
   DomainName: string;
   EventTriggerName: string;
@@ -841,10 +625,6 @@ export interface CreateEventTriggerRequest {
   EventTriggerLimits?: EventTriggerLimits;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateEventTriggerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateEventTriggerRequest>;
 export interface CreateEventTriggerResponse {
   EventTriggerName?: string;
   ObjectTypeName?: string;
@@ -856,13 +636,7 @@ export interface CreateEventTriggerResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateEventTriggerResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateEventTriggerResponse>;
 export type WorkflowType = "APPFLOW_INTEGRATION" | (string & {});
-const WorkflowType = S.String;
-
 export type FlowDescription = string;
 export type FlowName = string;
 export type KmsArn = string;
@@ -874,50 +648,30 @@ export type SourceConnectorType =
   | "Servicenow"
   | "S3"
   | (string & {});
-const SourceConnectorType = S.String;
-
 export type DatetimeTypeFieldName = string;
 export interface IncrementalPullConfig {
   DatetimeTypeFieldName?: string;
 }
-const IncrementalPullConfig = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<IncrementalPullConfig>;
 export interface MarketoSourceProperties {
   Object: string;
 }
-const MarketoSourceProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<MarketoSourceProperties>;
 export type BucketName = string;
 export type BucketPrefix = string;
 export interface S3SourceProperties {
   BucketName: string;
   BucketPrefix?: string;
 }
-const S3SourceProperties = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<S3SourceProperties>;
 export interface SalesforceSourceProperties {
   Object: string;
   EnableDynamicFieldUpdate?: boolean;
   IncludeDeletedRecords?: boolean;
 }
-const SalesforceSourceProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SalesforceSourceProperties>;
 export interface ServiceNowSourceProperties {
   Object: string;
 }
-const ServiceNowSourceProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ServiceNowSourceProperties>;
 export interface ZendeskSourceProperties {
   Object: string;
 }
-const ZendeskSourceProperties = MarketoSourceProperties as any as S.Schema<ZendeskSourceProperties>;
 export interface SourceConnectorProperties {
   Marketo?: MarketoSourceProperties;
   S3?: S3SourceProperties;
@@ -925,17 +679,12 @@ export interface SourceConnectorProperties {
   ServiceNow?: ServiceNowSourceProperties;
   Zendesk?: ZendeskSourceProperties;
 }
-const SourceConnectorProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<SourceConnectorProperties>;
 export interface SourceFlowConfig {
   ConnectorProfileName?: string;
   ConnectorType: SourceConnectorType;
   IncrementalPullConfig?: IncrementalPullConfig;
   SourceConnectorProperties: SourceConnectorProperties;
 }
-const SourceFlowConfig = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<SourceFlowConfig>;
 export type MarketoConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -954,8 +703,6 @@ export type MarketoConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-const MarketoConnectorOperator = S.String;
-
 export type S3ConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -978,8 +725,6 @@ export type S3ConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-const S3ConnectorOperator = S.String;
-
 export type SalesforceConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1003,8 +748,6 @@ export type SalesforceConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-const SalesforceConnectorOperator = S.String;
-
 export type ServiceNowConnectorOperator =
   | "PROJECTION"
   | "CONTAINS"
@@ -1028,8 +771,6 @@ export type ServiceNowConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-const ServiceNowConnectorOperator = S.String;
-
 export type ZendeskConnectorOperator =
   | "PROJECTION"
   | "GREATER_THAN"
@@ -1046,8 +787,6 @@ export type ZendeskConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-const ZendeskConnectorOperator = S.String;
-
 export interface ConnectorOperator {
   Marketo?: MarketoConnectorOperator;
   S3?: S3ConnectorOperator;
@@ -1055,11 +794,9 @@ export interface ConnectorOperator {
   ServiceNow?: ServiceNowConnectorOperator;
   Zendesk?: ZendeskConnectorOperator;
 }
-const ConnectorOperator = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ConnectorOperator>;
 export type DestinationField = string;
 export type StringTo2048 = string;
 export type SourceFields = string[];
-const SourceFields = RequestValueList as any as S.Schema<SourceFields>;
 export type OperatorPropertiesKeys =
   | "VALUE"
   | "VALUES"
@@ -1076,11 +813,8 @@ export type OperatorPropertiesKeys =
   | "CONCAT_FORMAT"
   | "SUBFIELD_CATEGORY_MAP"
   | (string & {});
-const OperatorPropertiesKeys = S.String;
-
 export type Property = string;
 export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
-const TaskPropertiesMap = /*@__PURE__*/ __L.at(__c11, 3);
 export type TaskType =
   | "Arithmetic"
   | "Filter"
@@ -1090,8 +824,6 @@ export type TaskType =
   | "Truncate"
   | "Validate"
   | (string & {});
-const TaskType = S.String;
-
 export interface Task {
   ConnectorOperator?: ConnectorOperator;
   DestinationField?: string;
@@ -1099,16 +831,10 @@ export interface Task {
   TaskProperties?: { [key: string]: string | undefined };
   TaskType: TaskType;
 }
-const Task = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Task>;
 export type Tasks = Task[];
-const Tasks = /*@__PURE__*/ __L.at(__c11, 5);
 export type TriggerType = "Scheduled" | "Event" | "OnDemand" | (string & {});
-const TriggerType = S.String;
-
 export type ScheduleExpression = string;
 export type DataPullMode = "Incremental" | "Complete" | (string & {});
-const DataPullMode = S.String;
-
 export type Timezone = string;
 export type ScheduleOffset = number;
 export interface ScheduledTriggerProperties {
@@ -1120,19 +846,13 @@ export interface ScheduledTriggerProperties {
   ScheduleOffset?: number;
   FirstExecutionFrom?: Date;
 }
-const ScheduledTriggerProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ScheduledTriggerProperties>;
 export interface TriggerProperties {
   Scheduled?: ScheduledTriggerProperties;
 }
-const TriggerProperties = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<TriggerProperties>;
 export interface TriggerConfig {
   TriggerType: TriggerType;
   TriggerProperties?: TriggerProperties;
 }
-const TriggerConfig = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TriggerConfig>;
 export interface FlowDefinition {
   Description?: string;
   FlowName: string;
@@ -1141,23 +861,18 @@ export interface FlowDefinition {
   Tasks: Task[];
   TriggerConfig: TriggerConfig;
 }
-const FlowDefinition = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<FlowDefinition>;
 export interface Batch {
   StartTime: Date;
   EndTime: Date;
 }
-const Batch = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Batch>;
 export type Batches = Batch[];
-const Batches = /*@__PURE__*/ __L.at(__c12, 3);
 export interface AppflowIntegration {
   FlowDefinition: FlowDefinition;
   Batches?: Batch[];
 }
-const AppflowIntegration = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<AppflowIntegration>;
 export interface IntegrationConfig {
   AppflowIntegration?: AppflowIntegration;
 }
-const IntegrationConfig = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<IntegrationConfig>;
 export type RoleArn = string;
 export interface CreateIntegrationWorkflowRequest {
   DomainName: string;
@@ -1167,18 +882,10 @@ export interface CreateIntegrationWorkflowRequest {
   RoleArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateIntegrationWorkflowRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CreateIntegrationWorkflowRequest>;
 export interface CreateIntegrationWorkflowResponse {
   WorkflowId: string;
   Message: string;
 }
-const CreateIntegrationWorkflowResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateIntegrationWorkflowResponse>;
 export interface CreateProfileRequest {
   DomainName: string;
   AccountNumber?: string | redacted.Redacted<string>;
@@ -1207,17 +914,9 @@ export interface CreateProfileRequest {
   ProfileType?: ProfileType;
   EngagementPreferences?: EngagementPreferences;
 }
-const CreateProfileRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CreateProfileRequest>;
 export interface CreateProfileResponse {
   ProfileId: string;
 }
-const CreateProfileResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateProfileResponse>;
 export type RecommenderRecipeName =
   | "recommended-for-you"
   | "similar-items"
@@ -1226,8 +925,6 @@ export type RecommenderRecipeName =
   | "trending-now"
   | "personalized-ranking"
   | (string & {});
-const RecommenderRecipeName = S.String;
-
 export type EventParametersEventTypeString = string;
 export type EventParametersEventWeightDouble = number;
 export interface EventParameters {
@@ -1235,39 +932,28 @@ export interface EventParameters {
   EventValueThreshold?: number;
   EventWeight?: number;
 }
-const EventParameters = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<EventParameters>;
 export type EventParametersList = EventParameters[];
-const EventParametersList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface EventsConfig {
   EventParametersList: EventParameters[];
 }
-const EventsConfig = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<EventsConfig>;
 export type RecommenderConfigTrainingFrequencyInteger = number;
 export type InferenceConfigMinProvisionedTPSInteger = number;
 export interface InferenceConfig {
   MinProvisionedTPS?: number;
 }
-const InferenceConfig = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<InferenceConfig>;
 export type ColumnNamesList = string[];
-const ColumnNamesList = RequestValueList as any as S.Schema<ColumnNamesList>;
 export type IncludedColumns = { [key: string]: string[] | undefined };
-const IncludedColumns = /*@__PURE__*/ __L.at(__c13, 6);
 export type DiversityCapType = "PERCENTAGE" | "VALUE" | (string & {});
-const DiversityCapType = S.String;
-
 export type DiversityTargetExpression = string;
 export interface DiversityColumn {
   Name: string;
   CapType: DiversityCapType;
   Target: string;
 }
-const DiversityColumn = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<DiversityColumn>;
 export type DiversityColumnsList = DiversityColumn[];
-const DiversityColumnsList = /*@__PURE__*/ __L.at(__c14, 0);
 export interface DiversityConfig {
   DiversityColumns?: DiversityColumn[];
 }
-const DiversityConfig = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<DiversityConfig>;
 export interface RecommenderConfig {
   EventsConfig?: EventsConfig;
   TrainingFrequency?: number;
@@ -1276,7 +962,6 @@ export interface RecommenderConfig {
   ExcludedColumns?: { [key: string]: string[] | undefined };
   DiversityConfig?: DiversityConfig;
 }
-const RecommenderConfig = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<RecommenderConfig>;
 export interface CreateRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
@@ -1286,19 +971,11 @@ export interface CreateRecommenderRequest {
   RecommenderSchemaName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateRecommenderRequest>;
 export type Arn = string;
 export interface CreateRecommenderResponse {
   RecommenderArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRecommenderResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateRecommenderResponse>;
 export type RecommenderFilterName = string;
 export type RecommenderFilterExpression = string | redacted.Redacted<string>;
 export interface CreateRecommenderFilterRequest {
@@ -1309,50 +986,26 @@ export interface CreateRecommenderFilterRequest {
   Description?: string | redacted.Redacted<string>;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRecommenderFilterRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateRecommenderFilterRequest>;
 export interface CreateRecommenderFilterResponse {
   RecommenderFilterArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRecommenderFilterResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<CreateRecommenderFilterResponse>;
 export type ContentType = "STRING" | "NUMBER" | (string & {});
-const ContentType = S.String;
-
 export type FeatureType = "TEXTUAL" | "CATEGORICAL" | (string & {});
-const FeatureType = S.String;
-
 export interface RecommenderSchemaField {
   TargetFieldName: string;
   ContentType?: ContentType;
   FeatureType?: FeatureType;
 }
-const RecommenderSchemaField = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<RecommenderSchemaField>;
 export type RecommenderSchemaFieldList = RecommenderSchemaField[];
-const RecommenderSchemaFieldList = /*@__PURE__*/ __L.at(__c15, 0);
 export type RecommenderSchemaFields = { [key: string]: RecommenderSchemaField[] | undefined };
-const RecommenderSchemaFields = /*@__PURE__*/ __L.at(__c15, 1);
 export interface CreateRecommenderSchemaRequest {
   DomainName: string;
   RecommenderSchemaName: string;
   Fields: { [key: string]: RecommenderSchemaField[] | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRecommenderSchemaRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CreateRecommenderSchemaRequest>;
 export type RecommenderSchemaStatus = "ACTIVE" | "DELETING" | (string & {});
-const RecommenderSchemaStatus = S.String;
-
 export interface CreateRecommenderSchemaResponse {
   RecommenderSchemaArn: string;
   RecommenderSchemaName: string;
@@ -1361,10 +1014,6 @@ export interface CreateRecommenderSchemaResponse {
   Status: RecommenderSchemaStatus;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateRecommenderSchemaResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<CreateRecommenderSchemaResponse>;
 export type SensitiveString1To4000 = string | redacted.Redacted<string>;
 export type StringDimensionType =
   | "INCLUSIVE"
@@ -1373,25 +1022,16 @@ export type StringDimensionType =
   | "BEGINS_WITH"
   | "ENDS_WITH"
   | (string & {});
-const StringDimensionType = S.String;
-
 export type Values = string[];
-const Values = RequestValueList as any as S.Schema<Values>;
 export interface ProfileDimension {
   DimensionType: StringDimensionType;
   Values: string[];
 }
-const ProfileDimension = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ProfileDimension>;
 export type ExtraLengthValues = string[];
-const ExtraLengthValues = RequestValueList as any as S.Schema<ExtraLengthValues>;
 export interface ExtraLengthValueProfileDimension {
   DimensionType: StringDimensionType;
   Values: string[];
 }
-const ExtraLengthValueProfileDimension = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ExtraLengthValueProfileDimension>;
 export type DateDimensionType =
   | "BEFORE"
   | "AFTER"
@@ -1399,15 +1039,11 @@ export type DateDimensionType =
   | "NOT_BETWEEN"
   | "ON"
   | (string & {});
-const DateDimensionType = S.String;
-
 export type DateValues = string[];
-const DateValues = RequestValueList as any as S.Schema<DateValues>;
 export interface DateDimension {
   DimensionType: DateDimensionType;
   Values: string[];
 }
-const DateDimension = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<DateDimension>;
 export interface AddressDimension {
   City?: ProfileDimension;
   Country?: ProfileDimension;
@@ -1416,7 +1052,6 @@ export interface AddressDimension {
   Province?: ProfileDimension;
   State?: ProfileDimension;
 }
-const AddressDimension = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<AddressDimension>;
 export type AttributeDimensionType =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -1436,28 +1071,17 @@ export type AttributeDimensionType =
   | "LIST_CONTAINS"
   | "LIST_CONTAINS_ALL"
   | (string & {});
-const AttributeDimensionType = S.String;
-
 export interface AttributeDimension {
   DimensionType: AttributeDimensionType;
   Values: string[];
 }
-const AttributeDimension = ProfileDimension as any as S.Schema<AttributeDimension>;
 export type CustomAttributes = { [key: string]: AttributeDimension | undefined };
-const CustomAttributes = /*@__PURE__*/ __L.at(__c16, 0);
 export type ProfileTypeDimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
-const ProfileTypeDimensionType = S.String;
-
 export type ProfileTypeValues = ProfileType[];
-const ProfileTypeValues = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ProfileTypeDimension {
   DimensionType: ProfileTypeDimensionType;
   Values: ProfileType[];
 }
-const ProfileTypeDimension = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ProfileTypeDimension>;
 export interface ProfileAttributes {
   AccountNumber?: ProfileDimension;
   AdditionalInformation?: ExtraLengthValueProfileDimension;
@@ -1482,75 +1106,51 @@ export interface ProfileAttributes {
   Attributes?: { [key: string]: AttributeDimension | undefined };
   ProfileType?: ProfileTypeDimension;
 }
-const ProfileAttributes = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ProfileAttributes>;
 export interface CalculatedAttributeDimension {
   DimensionType: AttributeDimensionType;
   Values: string[];
   ConditionOverrides?: ConditionOverrides;
 }
-const CalculatedAttributeDimension = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CalculatedAttributeDimension>;
 export type CalculatedCustomAttributes = {
   [key: string]: CalculatedAttributeDimension | undefined;
 };
-const CalculatedCustomAttributes = /*@__PURE__*/ __L.at(__c16, 5);
 export type Dimension =
   | { ProfileAttributes: ProfileAttributes; CalculatedAttributes?: never }
   | {
       ProfileAttributes?: never;
       CalculatedAttributes: { [key: string]: CalculatedAttributeDimension | undefined };
     };
-const Dimension = /*@__PURE__*/ __L.at(__c16, 6);
 export type DimensionList = Dimension[];
-const DimensionList = /*@__PURE__*/ __L.at(__c16, 7);
 export interface SourceSegment {
   SegmentDefinitionName?: string;
 }
-const SourceSegment = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<SourceSegment>;
 export type SourceSegmentList = SourceSegment[];
-const SourceSegmentList = /*@__PURE__*/ __L.at(__c17, 1);
 export type IncludeOptions = "ALL" | "ANY" | "NONE" | (string & {});
-const IncludeOptions = S.String;
-
 export interface Group {
   Dimensions?: Dimension[];
   SourceSegments?: SourceSegment[];
   SourceType?: IncludeOptions;
   Type?: IncludeOptions;
 }
-const Group = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<Group>;
 export type SegmentGroupList = Group[];
-const SegmentGroupList = /*@__PURE__*/ __L.at(__c17, 3);
 export interface SegmentGroup {
   Groups?: Group[];
   Include?: IncludeOptions;
 }
-const SegmentGroup = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<SegmentGroup>;
 export type SensitiveString1To50000 = string | redacted.Redacted<string>;
 export type SegmentSortDataType = "STRING" | "NUMBER" | "DATE" | (string & {});
-const SegmentSortDataType = S.String;
-
 export type SegmentSortOrder = "ASC" | "DESC" | (string & {});
-const SegmentSortOrder = S.String;
-
 export type SortAttributeType = "PROFILE" | "CALCULATED" | (string & {});
-const SortAttributeType = S.String;
-
 export interface SortAttribute {
   Name: string;
   DataType?: SegmentSortDataType;
   Order: SegmentSortOrder;
   Type?: SortAttributeType;
 }
-const SortAttribute = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<SortAttribute>;
 export type SortAttributeList = SortAttribute[];
-const SortAttributeList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface SegmentSort {
   Attributes: SortAttribute[];
 }
-const SegmentSort = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<SegmentSort>;
 export interface CreateSegmentDefinitionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
@@ -1561,10 +1161,6 @@ export interface CreateSegmentDefinitionRequest {
   SegmentSort?: SegmentSort;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateSegmentDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<CreateSegmentDefinitionRequest>;
 export type SegmentDefinitionArn = string;
 export interface CreateSegmentDefinitionResponse {
   SegmentDefinitionName: string;
@@ -1574,37 +1170,22 @@ export interface CreateSegmentDefinitionResponse {
   SegmentDefinitionArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateSegmentDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<CreateSegmentDefinitionResponse>;
 export interface SegmentGroupStructure {
   Groups?: Group[];
   Include?: IncludeOptions;
 }
-const SegmentGroupStructure = SegmentGroup as any as S.Schema<SegmentGroupStructure>;
 export interface CreateSegmentEstimateRequest {
   DomainName: string;
   SegmentQuery?: SegmentGroupStructure;
   SegmentSqlQuery?: string | redacted.Redacted<string>;
 }
-const CreateSegmentEstimateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CreateSegmentEstimateRequest>;
 export type StatusCode = number;
 export interface CreateSegmentEstimateResponse {
   DomainName?: string;
   EstimateId?: string;
   StatusCode?: number;
 }
-const CreateSegmentEstimateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<CreateSegmentEstimateResponse>;
 export type DataFormat = "CSV" | "JSONL" | "ORC" | (string & {});
-const DataFormat = S.String;
-
 export interface CreateSegmentSnapshotRequest {
   DomainName: string;
   SegmentDefinitionName: string;
@@ -1613,17 +1194,9 @@ export interface CreateSegmentSnapshotRequest {
   RoleArn?: string;
   DestinationUri?: string;
 }
-const CreateSegmentSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<CreateSegmentSnapshotRequest>;
 export interface CreateSegmentSnapshotResponse {
   SnapshotId: string;
 }
-const CreateSegmentSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<CreateSegmentSnapshotResponse>;
 export type FieldContentType =
   | "STRING"
   | "NUMBER"
@@ -1631,16 +1204,12 @@ export type FieldContentType =
   | "EMAIL_ADDRESS"
   | "NAME"
   | (string & {});
-const FieldContentType = S.String;
-
 export interface ObjectTypeField {
   Source?: string;
   Target?: string;
   ContentType?: FieldContentType;
 }
-const ObjectTypeField = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ObjectTypeField>;
 export type FieldMap = { [key: string]: ObjectTypeField | undefined };
-const FieldMap = /*@__PURE__*/ __L.at(__c18, 7);
 export interface CreateUploadJobRequest {
   DomainName: string;
   DisplayName: string;
@@ -1648,248 +1217,125 @@ export interface CreateUploadJobRequest {
   UniqueKey: string;
   DataExpiry?: number;
 }
-const CreateUploadJobRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<CreateUploadJobRequest>;
 export interface CreateUploadJobResponse {
   JobId: string;
 }
-const CreateUploadJobResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateUploadJobResponse>;
 export interface DeleteCalculatedAttributeDefinitionRequest {
   DomainName: string;
   CalculatedAttributeName: string;
 }
-const DeleteCalculatedAttributeDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<DeleteCalculatedAttributeDefinitionRequest>;
 export interface DeleteCalculatedAttributeDefinitionResponse {}
-const DeleteCalculatedAttributeDefinitionResponse =
-  AssociateStreamForSegmentsResponse as any as S.Schema<DeleteCalculatedAttributeDefinitionResponse>;
 export interface DeleteDomainRequest {
   DomainName: string;
 }
-const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<DeleteDomainRequest>;
 export type Message = string;
 export interface DeleteDomainResponse {
   Message: string;
 }
-const DeleteDomainResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DeleteDomainResponse>;
 export interface DeleteDomainLayoutRequest {
   DomainName: string;
   LayoutDefinitionName: string;
 }
-const DeleteDomainLayoutRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DeleteDomainLayoutRequest>;
 export interface DeleteDomainLayoutResponse {
   Message: string;
 }
-const DeleteDomainLayoutResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DeleteDomainLayoutResponse>;
 export interface DeleteDomainObjectTypeRequest {
   DomainName: string;
   ObjectTypeName: string;
 }
-const DeleteDomainObjectTypeRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<DeleteDomainObjectTypeRequest>;
 export interface DeleteDomainObjectTypeResponse {}
-const DeleteDomainObjectTypeResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DeleteDomainObjectTypeResponse>;
 export interface DeleteEventStreamRequest {
   DomainName: string;
   EventStreamName: string;
 }
-const DeleteEventStreamRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DeleteEventStreamRequest>;
 export interface DeleteEventStreamResponse {}
-const DeleteEventStreamResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<DeleteEventStreamResponse>;
 export interface DeleteEventTriggerRequest {
   DomainName: string;
   EventTriggerName: string;
 }
-const DeleteEventTriggerRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DeleteEventTriggerRequest>;
 export interface DeleteEventTriggerResponse {
   Message: string;
 }
-const DeleteEventTriggerResponse =
-  DeleteDomainLayoutResponse as any as S.Schema<DeleteEventTriggerResponse>;
 export interface DeleteIntegrationRequest {
   DomainName: string;
   Uri: string;
 }
-const DeleteIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DeleteIntegrationRequest>;
 export interface DeleteIntegrationResponse {
   Message: string;
 }
-const DeleteIntegrationResponse =
-  DeleteDomainLayoutResponse as any as S.Schema<DeleteIntegrationResponse>;
 export interface DeleteProfileRequest {
   ProfileId: string;
   DomainName: string;
 }
-const DeleteProfileRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<DeleteProfileRequest>;
 export interface DeleteProfileResponse {
   Message?: string;
 }
-const DeleteProfileResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<DeleteProfileResponse>;
 export interface DeleteProfileKeyRequest {
   ProfileId: string;
   KeyName: string;
   Values: string[];
   DomainName: string;
 }
-const DeleteProfileKeyRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<DeleteProfileKeyRequest>;
 export interface DeleteProfileKeyResponse {
   Message?: string;
 }
-const DeleteProfileKeyResponse = DeleteProfileResponse as any as S.Schema<DeleteProfileKeyResponse>;
 export interface DeleteProfileObjectRequest {
   ProfileId: string;
   ProfileObjectUniqueKey: string;
   ObjectTypeName: string;
   DomainName: string;
 }
-const DeleteProfileObjectRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<DeleteProfileObjectRequest>;
 export interface DeleteProfileObjectResponse {
   Message?: string;
 }
-const DeleteProfileObjectResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<DeleteProfileObjectResponse>;
 export interface DeleteProfileObjectTypeRequest {
   DomainName: string;
   ObjectTypeName: string;
 }
-const DeleteProfileObjectTypeRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<DeleteProfileObjectTypeRequest>;
 export interface DeleteProfileObjectTypeResponse {
   Message: string;
 }
-const DeleteProfileObjectTypeResponse =
-  DeleteDomainLayoutResponse as any as S.Schema<DeleteProfileObjectTypeResponse>;
 export interface DeleteRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
 }
-const DeleteRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<DeleteRecommenderRequest>;
 export interface DeleteRecommenderResponse {}
-const DeleteRecommenderResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<DeleteRecommenderResponse>;
 export interface DeleteRecommenderFilterRequest {
   DomainName: string;
   RecommenderFilterName: string;
 }
-const DeleteRecommenderFilterRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<DeleteRecommenderFilterRequest>;
 export interface DeleteRecommenderFilterResponse {
   Message: string;
 }
-const DeleteRecommenderFilterResponse =
-  DeleteDomainLayoutResponse as any as S.Schema<DeleteRecommenderFilterResponse>;
 export interface DeleteRecommenderSchemaRequest {
   DomainName: string;
   RecommenderSchemaName: string;
 }
-const DeleteRecommenderSchemaRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DeleteRecommenderSchemaRequest>;
 export interface DeleteRecommenderSchemaResponse {}
-const DeleteRecommenderSchemaResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DeleteRecommenderSchemaResponse>;
 export interface DeleteSegmentDefinitionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
 }
-const DeleteSegmentDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DeleteSegmentDefinitionRequest>;
 export interface DeleteSegmentDefinitionResponse {
   Message?: string;
 }
-const DeleteSegmentDefinitionResponse =
-  DeleteProfileObjectResponse as any as S.Schema<DeleteSegmentDefinitionResponse>;
 export interface DeleteSegmentSubscriptionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
 }
-const DeleteSegmentSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<DeleteSegmentSubscriptionRequest>;
 export interface DeleteSegmentSubscriptionResponse {
   Message?: string;
 }
-const DeleteSegmentSubscriptionResponse =
-  DeleteProfileObjectResponse as any as S.Schema<DeleteSegmentSubscriptionResponse>;
 export interface DeleteWorkflowRequest {
   DomainName: string;
   WorkflowId: string;
 }
-const DeleteWorkflowRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DeleteWorkflowRequest>;
 export interface DeleteWorkflowResponse {}
-const DeleteWorkflowResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<DeleteWorkflowResponse>;
 export type Objects = (string | redacted.Redacted<string>)[];
-const Objects = /*@__PURE__*/ __L.at(__c22, 1);
 export interface DetectProfileObjectTypeRequest {
   Objects: (string | redacted.Redacted<string>)[];
   DomainName: string;
 }
-const DetectProfileObjectTypeRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<DetectProfileObjectTypeRequest>;
 export type StandardIdentifier =
   | "PROFILE"
   | "ASSET"
@@ -1913,76 +1359,44 @@ export type StandardIdentifier =
   | "NEW_ONLY"
   | (string & {});
 export type StandardIdentifierList = StandardIdentifier[];
-const StandardIdentifierList = ProfileTypeValues as any as S.Schema<StandardIdentifierList>;
 export type FieldNameList = string[];
-const FieldNameList = RequestValueList as any as S.Schema<FieldNameList>;
 export interface ObjectTypeKey {
   StandardIdentifiers?: StandardIdentifier[];
   FieldNames?: string[];
 }
-const ObjectTypeKey = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<ObjectTypeKey>;
 export type ObjectTypeKeyList = ObjectTypeKey[];
-const ObjectTypeKeyList = /*@__PURE__*/ __L.at(__c22, 4);
 export type KeyMap = { [key: string]: ObjectTypeKey[] | undefined };
-const KeyMap = /*@__PURE__*/ __L.at(__c22, 5);
 export interface DetectedProfileObjectType {
   SourceLastUpdatedTimestampFormat?: string;
   Fields?: { [key: string]: ObjectTypeField | undefined };
   Keys?: { [key: string]: ObjectTypeKey[] | undefined };
 }
-const DetectedProfileObjectType = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<DetectedProfileObjectType>;
 export type DetectedProfileObjectTypes = DetectedProfileObjectType[];
-const DetectedProfileObjectTypes = /*@__PURE__*/ __L.at(__c22, 7);
 export interface DetectProfileObjectTypeResponse {
   DetectedProfileObjectTypes?: DetectedProfileObjectType[];
 }
-const DetectProfileObjectTypeResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<DetectProfileObjectTypeResponse>;
 export interface DisassociateStreamForSegmentsRequest {
   DomainName: string;
 }
-const DisassociateStreamForSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<DisassociateStreamForSegmentsRequest>;
 export interface DisassociateStreamForSegmentsResponse {
   Message?: string;
 }
-const DisassociateStreamForSegmentsResponse =
-  DeleteProfileObjectResponse as any as S.Schema<DisassociateStreamForSegmentsResponse>;
 export interface GetAutoMergingPreviewRequest {
   DomainName: string;
   Consolidation: Consolidation;
   ConflictResolution: ConflictResolution;
   MinAllowedConfidenceScoreForMerging?: number;
 }
-const GetAutoMergingPreviewRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetAutoMergingPreviewRequest>;
 export interface GetAutoMergingPreviewResponse {
   DomainName: string;
   NumberOfMatchesInSample?: number;
   NumberOfProfilesInSample?: number;
   NumberOfProfilesWillBeMerged?: number;
 }
-const GetAutoMergingPreviewResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetAutoMergingPreviewResponse>;
 export interface GetCalculatedAttributeDefinitionRequest {
   DomainName: string;
   CalculatedAttributeName: string;
 }
-const GetCalculatedAttributeDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetCalculatedAttributeDefinitionRequest>;
 export interface GetCalculatedAttributeDefinitionResponse {
   CalculatedAttributeName?: string;
   DisplayName?: string;
@@ -1998,19 +1412,11 @@ export interface GetCalculatedAttributeDefinitionResponse {
   Readiness?: Readiness;
   Tags?: { [key: string]: string | undefined };
 }
-const GetCalculatedAttributeDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetCalculatedAttributeDefinitionResponse>;
 export interface GetCalculatedAttributeForProfileRequest {
   DomainName: string;
   ProfileId: string;
   CalculatedAttributeName: string;
 }
-const GetCalculatedAttributeForProfileRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetCalculatedAttributeForProfileRequest>;
 export interface GetCalculatedAttributeForProfileResponse {
   CalculatedAttributeName?: string;
   DisplayName?: string;
@@ -2018,21 +1424,15 @@ export interface GetCalculatedAttributeForProfileResponse {
   Value?: string;
   LastObjectTimestamp?: Date;
 }
-const GetCalculatedAttributeForProfileResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GetCalculatedAttributeForProfileResponse>;
 export interface GetDomainRequest {
   DomainName: string;
 }
-const GetDomainRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<GetDomainRequest>;
 export interface DomainStats {
   ProfileCount?: number;
   MeteringProfileCount?: number;
   ObjectCount?: number;
   TotalSize?: number;
 }
-const DomainStats = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<DomainStats>;
 export interface GetDomainResponse {
   DomainName: string;
   DefaultExpirationDays?: number;
@@ -2046,15 +1446,10 @@ export interface GetDomainResponse {
   LastUpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const GetDomainResponse = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<GetDomainResponse>;
 export interface GetDomainLayoutRequest {
   DomainName: string;
   LayoutDefinitionName: string;
 }
-const GetDomainLayoutRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GetDomainLayoutRequest>;
 export interface GetDomainLayoutResponse {
   LayoutDefinitionName: string;
   Description: string | redacted.Redacted<string>;
@@ -2067,18 +1462,10 @@ export interface GetDomainLayoutResponse {
   LastUpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const GetDomainLayoutResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<GetDomainLayoutResponse>;
 export interface GetDomainObjectTypeRequest {
   DomainName: string;
   ObjectTypeName: string;
 }
-const GetDomainObjectTypeRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GetDomainObjectTypeRequest>;
 export type SensitiveString1To10000 = string | redacted.Redacted<string>;
 export type DomainObjectTypeFieldName = string;
 export interface DomainObjectTypeField {
@@ -2087,12 +1474,7 @@ export interface DomainObjectTypeField {
   ContentType?: ContentType;
   FeatureType?: FeatureType;
 }
-const DomainObjectTypeField = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<DomainObjectTypeField>;
 export type DomainObjectTypeFields = { [key: string]: DomainObjectTypeField | undefined };
-const DomainObjectTypeFields = /*@__PURE__*/ __L.at(__c24, 7);
 export interface GetDomainObjectTypeResponse {
   ObjectTypeName: string;
   Description?: string | redacted.Redacted<string>;
@@ -2102,34 +1484,18 @@ export interface GetDomainObjectTypeResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const GetDomainObjectTypeResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<GetDomainObjectTypeResponse>;
 export interface GetEventStreamRequest {
   DomainName: string;
   EventStreamName: string;
 }
-const GetEventStreamRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GetEventStreamRequest>;
 export type EventStreamState = "RUNNING" | "STOPPED" | (string & {});
-const EventStreamState = S.String;
-
 export type EventStreamDestinationStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
-const EventStreamDestinationStatus = S.String;
-
 export interface EventStreamDestinationDetails {
   Uri: string;
   Status: EventStreamDestinationStatus;
   UnhealthySince?: Date;
   Message?: string;
 }
-const EventStreamDestinationDetails = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<EventStreamDestinationDetails>;
 export interface GetEventStreamResponse {
   DomainName: string;
   EventStreamArn: string;
@@ -2139,18 +1505,10 @@ export interface GetEventStreamResponse {
   DestinationDetails: EventStreamDestinationDetails;
   Tags?: { [key: string]: string | undefined };
 }
-const GetEventStreamResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<GetEventStreamResponse>;
 export interface GetEventTriggerRequest {
   DomainName: string;
   EventTriggerName: string;
 }
-const GetEventTriggerRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<GetEventTriggerRequest>;
 export interface GetEventTriggerResponse {
   EventTriggerName?: string;
   ObjectTypeName?: string;
@@ -2162,18 +1520,10 @@ export interface GetEventTriggerResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const GetEventTriggerResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GetEventTriggerResponse>;
 export interface GetIdentityResolutionJobRequest {
   DomainName: string;
   JobId: string;
 }
-const GetIdentityResolutionJobRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<GetIdentityResolutionJobRequest>;
 export type IdentityResolutionJobStatus =
   | "PENDING"
   | "PREPROCESSING"
@@ -2183,24 +1533,19 @@ export type IdentityResolutionJobStatus =
   | "PARTIAL_SUCCESS"
   | "FAILED"
   | (string & {});
-const IdentityResolutionJobStatus = S.String;
-
 export type S3KeyName = string;
 export interface S3ExportingLocation {
   S3BucketName?: string;
   S3KeyName?: string;
 }
-const S3ExportingLocation = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<S3ExportingLocation>;
 export interface ExportingLocation {
   S3Exporting?: S3ExportingLocation;
 }
-const ExportingLocation = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ExportingLocation>;
 export interface JobStats {
   NumberOfProfilesReviewed?: number;
   NumberOfMatchesFound?: number;
   NumberOfMergesDone?: number;
 }
-const JobStats = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<JobStats>;
 export interface GetIdentityResolutionJobResponse {
   DomainName?: string;
   JobId?: string;
@@ -2214,25 +1559,13 @@ export interface GetIdentityResolutionJobResponse {
   ExportingLocation?: ExportingLocation;
   JobStats?: JobStats;
 }
-const GetIdentityResolutionJobResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetIdentityResolutionJobResponse>;
 export interface GetIntegrationRequest {
   DomainName: string;
   Uri: string;
 }
-const GetIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GetIntegrationRequest>;
 export type ObjectTypeNames = { [key: string]: string | undefined };
-const ObjectTypeNames = /*@__PURE__*/ __L.at(__c26, 4);
 export type EventTriggerNames = string[];
-const EventTriggerNames = RequestValueList as any as S.Schema<EventTriggerNames>;
 export type Scope = "PROFILE" | "DOMAIN" | (string & {});
-const Scope = S.String;
-
 export interface GetIntegrationResponse {
   DomainName: string;
   Uri: string;
@@ -2247,10 +1580,6 @@ export interface GetIntegrationResponse {
   EventTriggerNames?: string[];
   Scope?: Scope;
 }
-const GetIntegrationResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GetIntegrationResponse>;
 export type Token = string;
 export type MaxSize100 = number;
 export interface GetMatchesRequest {
@@ -2258,34 +1587,25 @@ export interface GetMatchesRequest {
   MaxResults?: number;
   DomainName: string;
 }
-const GetMatchesRequest = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<GetMatchesRequest>;
 export type MatchesNumber = number;
 export type ProfileIdList = string[];
-const ProfileIdList = RequestValueList as any as S.Schema<ProfileIdList>;
 export interface MatchItem {
   MatchId?: string;
   ProfileIds?: string[];
   ConfidenceScore?: number;
 }
-const MatchItem = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<MatchItem>;
 export type MatchesList = MatchItem[];
-const MatchesList = /*@__PURE__*/ __L.at(__c27, 0);
 export interface GetMatchesResponse {
   NextToken?: string;
   MatchGenerationDate?: Date;
   PotentialMatches?: number;
   Matches?: MatchItem[];
 }
-const GetMatchesResponse = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<GetMatchesResponse>;
 export interface GetObjectTypeAttributeStatisticsRequest {
   DomainName: string;
   ObjectTypeName: string;
   AttributeName: string;
 }
-const GetObjectTypeAttributeStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GetObjectTypeAttributeStatisticsRequest>;
 export interface GetObjectTypeAttributeStatisticsPercentiles {
   P5: number;
   P25: number;
@@ -2293,10 +1613,6 @@ export interface GetObjectTypeAttributeStatisticsPercentiles {
   P75: number;
   P95: number;
 }
-const GetObjectTypeAttributeStatisticsPercentiles = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<GetObjectTypeAttributeStatisticsPercentiles>;
 export interface GetObjectTypeAttributeStatisticsStats {
   Maximum: number;
   Minimum: number;
@@ -2304,27 +1620,15 @@ export interface GetObjectTypeAttributeStatisticsStats {
   StandardDeviation: number;
   Percentiles: GetObjectTypeAttributeStatisticsPercentiles;
 }
-const GetObjectTypeAttributeStatisticsStats = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<GetObjectTypeAttributeStatisticsStats>;
 export interface GetObjectTypeAttributeStatisticsResponse {
   Statistics: GetObjectTypeAttributeStatisticsStats;
   CalculatedAt: Date;
 }
-const GetObjectTypeAttributeStatisticsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<GetObjectTypeAttributeStatisticsResponse>;
 export interface GetProfileHistoryRecordRequest {
   DomainName: string;
   ProfileId: string;
   Id: string;
 }
-const GetProfileHistoryRecordRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<GetProfileHistoryRecordRequest>;
 export type ActionType =
   | "ADDED_PROFILE_KEY"
   | "DELETED_PROFILE_KEY"
@@ -2336,8 +1640,6 @@ export type ActionType =
   | "MERGED"
   | "DELETED_BY_MERGE"
   | (string & {});
-const ActionType = S.String;
-
 export interface GetProfileHistoryRecordResponse {
   Id: string;
   ObjectTypeName: string;
@@ -2348,18 +1650,10 @@ export interface GetProfileHistoryRecordResponse {
   Content?: string | redacted.Redacted<string>;
   PerformedBy?: string;
 }
-const GetProfileHistoryRecordResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<GetProfileHistoryRecordResponse>;
 export interface GetProfileObjectTypeRequest {
   DomainName: string;
   ObjectTypeName: string;
 }
-const GetProfileObjectTypeRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GetProfileObjectTypeRequest>;
 export type MinSize0 = number;
 export type MinSize1 = number;
 export interface GetProfileObjectTypeResponse {
@@ -2379,17 +1673,9 @@ export interface GetProfileObjectTypeResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const GetProfileObjectTypeResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GetProfileObjectTypeResponse>;
 export interface GetProfileObjectTypeTemplateRequest {
   TemplateId: string;
 }
-const GetProfileObjectTypeTemplateRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GetProfileObjectTypeTemplateRequest>;
 export interface GetProfileObjectTypeTemplateResponse {
   TemplateId?: string;
   SourceName?: string;
@@ -2399,26 +1685,18 @@ export interface GetProfileObjectTypeTemplateResponse {
   Fields?: { [key: string]: ObjectTypeField | undefined };
   Keys?: { [key: string]: ObjectTypeKey[] | undefined };
 }
-const GetProfileObjectTypeTemplateResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<GetProfileObjectTypeTemplateResponse>;
 export type ContextKey = string;
 export type RecommenderContext = { [key: string]: string | undefined };
-const RecommenderContext = ObjectTypeNames as any as S.Schema<RecommenderContext>;
 export type RecommenderFilterAttributeName = string;
 export type RecommenderFilterAttributeValue = string | redacted.Redacted<string>;
 export type RecommenderFilterValues = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-const RecommenderFilterValues = /*@__PURE__*/ __L.at(__c28, 4);
 export interface RecommenderFilter {
   Name?: string;
   Values?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const RecommenderFilter = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<RecommenderFilter>;
 export type RecommenderFilters = RecommenderFilter[];
-const RecommenderFilters = /*@__PURE__*/ __L.at(__c28, 6);
 export type PercentPromotedItems = number;
 export interface RecommenderPromotionalFilter {
   Name?: string;
@@ -2426,34 +1704,21 @@ export interface RecommenderPromotionalFilter {
   PromotionName?: string;
   PercentPromotedItems?: number;
 }
-const RecommenderPromotionalFilter = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<RecommenderPromotionalFilter>;
 export type RecommenderPromotionalFilters = RecommenderPromotionalFilter[];
-const RecommenderPromotionalFilters = /*@__PURE__*/ __L.at(__c29, 0);
 export type CandidateIdList = string[];
-const CandidateIdList = RequestValueList as any as S.Schema<CandidateIdList>;
 export type MaxSize500 = number;
 export type MetadataColumnName = string;
 export type MetadataColumnsList = string[];
-const MetadataColumnsList = RequestValueList as any as S.Schema<MetadataColumnsList>;
 export interface MetadataConfig {
   MetadataColumns?: string[];
 }
-const MetadataConfig = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<MetadataConfig>;
 export type DiversityPlaceholderName = string;
 export type DiversityCapValue = number;
 export type DiversityValuesMap = { [key: string]: number | undefined };
-const DiversityValuesMap = /*@__PURE__*/ __L.at(__c29, 2);
 export interface RecommendationDiversityConfig {
   Enabled: boolean;
   Values?: { [key: string]: number | undefined };
 }
-const RecommendationDiversityConfig = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<RecommendationDiversityConfig>;
 export interface GetProfileRecommendationsRequest {
   DomainName: string;
   ProfileId: string;
@@ -2466,10 +1731,6 @@ export interface GetProfileRecommendationsRequest {
   MetadataConfig?: MetadataConfig;
   DiversityConfig?: RecommendationDiversityConfig;
 }
-const GetProfileRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GetProfileRecommendationsRequest>;
 export interface CatalogItem {
   Id?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
@@ -2485,31 +1746,20 @@ export interface CatalogItem {
   Price?: string | redacted.Redacted<string>;
   Attributes?: { [key: string]: string | undefined };
 }
-const CatalogItem = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<CatalogItem>;
 export interface Recommendation {
   CatalogItem?: CatalogItem;
   Score?: number;
 }
-const Recommendation = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<Recommendation>;
 export type Recommendations = Recommendation[];
-const Recommendations = /*@__PURE__*/ __L.at(__c29, 7);
 export interface GetProfileRecommendationsResponse {
   Recommendations?: Recommendation[];
 }
-const GetProfileRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GetProfileRecommendationsResponse>;
 export type GetRecommenderRequestTrainingMetricsCountInteger = number;
 export interface GetRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
   TrainingMetricsCount?: number;
 }
-const GetRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GetRecommenderRequest>;
 export type RecommenderStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -2520,8 +1770,6 @@ export type RecommenderStatus =
   | "STARTING"
   | "DELETING"
   | (string & {});
-const RecommenderStatus = S.String;
-
 export type RecommenderVersionName = string;
 export interface RecommenderUpdate {
   RecommenderConfig?: RecommenderConfig;
@@ -2531,7 +1779,6 @@ export interface RecommenderUpdate {
   FailureReason?: string;
   RecommenderVersionName?: string;
 }
-const RecommenderUpdate = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<RecommenderUpdate>;
 export type TrainingMetricName =
   | "hit"
   | "coverage"
@@ -2547,18 +1794,13 @@ export type TrainingMetricName =
   | "precision_at_10"
   | "precision_at_25"
   | (string & {});
-const TrainingMetricName = S.String;
-
 export type Metrics = { [key in TrainingMetricName]?: number };
-const Metrics = /*@__PURE__*/ __L.at(__c30, 3);
 export interface TrainingMetrics {
   Time?: Date;
   Metrics?: { [key: string]: number | undefined };
   RecommenderVersionName?: string;
 }
-const TrainingMetrics = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<TrainingMetrics>;
 export type TrainingMetricsList = TrainingMetrics[];
-const TrainingMetricsList = /*@__PURE__*/ __L.at(__c30, 5);
 export interface GetRecommenderResponse {
   RecommenderName: string;
   RecommenderRecipeName: RecommenderRecipeName;
@@ -2574,18 +1816,10 @@ export interface GetRecommenderResponse {
   TrainingMetrics?: TrainingMetrics[];
   Tags?: { [key: string]: string | undefined };
 }
-const GetRecommenderResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetRecommenderResponse>;
 export interface GetRecommenderFilterRequest {
   DomainName: string;
   RecommenderFilterName: string;
 }
-const GetRecommenderFilterRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetRecommenderFilterRequest>;
 export type RecommenderFilterStatus =
   | "ACTIVE"
   | "PENDING"
@@ -2593,8 +1827,6 @@ export type RecommenderFilterStatus =
   | "FAILED"
   | "DELETING"
   | (string & {});
-const RecommenderFilterStatus = S.String;
-
 export interface GetRecommenderFilterResponse {
   RecommenderFilterName: string;
   RecommenderFilterExpression: string | redacted.Redacted<string>;
@@ -2605,39 +1837,21 @@ export interface GetRecommenderFilterResponse {
   FailureReason?: string;
   Tags: { [key: string]: string | undefined };
 }
-const GetRecommenderFilterResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GetRecommenderFilterResponse>;
 export interface GetRecommenderSchemaRequest {
   DomainName: string;
   RecommenderSchemaName: string;
 }
-const GetRecommenderSchemaRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetRecommenderSchemaRequest>;
 export interface GetRecommenderSchemaResponse {
   RecommenderSchemaName: string;
   Fields: { [key: string]: RecommenderSchemaField[] | undefined };
   CreatedAt: Date;
   Status: RecommenderSchemaStatus;
 }
-const GetRecommenderSchemaResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GetRecommenderSchemaResponse>;
 export interface GetSegmentDefinitionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
 }
-const GetSegmentDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GetSegmentDefinitionRequest>;
 export type SegmentType = "CLASSIC" | "ENHANCED" | (string & {});
-const SegmentType = S.String;
-
 export interface GetSegmentDefinitionResponse {
   SegmentDefinitionName?: string;
   DisplayName?: string;
@@ -2650,21 +1864,11 @@ export interface GetSegmentDefinitionResponse {
   SegmentSqlQuery?: string | redacted.Redacted<string>;
   SegmentType?: SegmentType;
 }
-const GetSegmentDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetSegmentDefinitionResponse>;
 export interface GetSegmentEstimateRequest {
   DomainName: string;
   EstimateId: string;
 }
-const GetSegmentEstimateRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GetSegmentEstimateRequest>;
 export type EstimateStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | (string & {});
-const EstimateStatus = S.String;
-
 export interface GetSegmentEstimateResponse {
   DomainName?: string;
   EstimateId?: string;
@@ -2673,33 +1877,20 @@ export interface GetSegmentEstimateResponse {
   Message?: string;
   StatusCode?: number;
 }
-const GetSegmentEstimateResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GetSegmentEstimateResponse>;
 export type ProfileIds = string[];
-const ProfileIds = RequestValueList as any as S.Schema<ProfileIds>;
 export interface GetSegmentMembershipRequest {
   DomainName: string;
   SegmentDefinitionName: string;
   ProfileIds: string[];
 }
-const GetSegmentMembershipRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GetSegmentMembershipRequest>;
 export type ProfileId = string;
 export type QueryResult = "PRESENT" | "ABSENT" | (string & {});
-const QueryResult = S.String;
-
 export interface ProfileQueryResult {
   ProfileId: string;
   QueryResult: QueryResult;
   Profile?: Profile;
 }
-const ProfileQueryResult = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<ProfileQueryResult>;
 export type Profiles = ProfileQueryResult[];
-const Profiles = /*@__PURE__*/ __L.at(__c32, 1);
 export type GetSegmentMembershipMessage = string;
 export type GetSegmentMembershipStatus = number;
 export interface ProfileQueryFailures {
@@ -2707,34 +1898,19 @@ export interface ProfileQueryFailures {
   Message: string;
   Status?: number;
 }
-const ProfileQueryFailures = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ProfileQueryFailures>;
 export type Failures = ProfileQueryFailures[];
-const Failures = /*@__PURE__*/ __L.at(__c32, 3);
 export interface GetSegmentMembershipResponse {
   SegmentDefinitionName?: string;
   Profiles?: ProfileQueryResult[];
   Failures?: ProfileQueryFailures[];
   LastComputedAt?: Date;
 }
-const GetSegmentMembershipResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GetSegmentMembershipResponse>;
 export interface GetSegmentSnapshotRequest {
   DomainName: string;
   SegmentDefinitionName: string;
   SnapshotId: string;
 }
-const GetSegmentSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GetSegmentSnapshotRequest>;
 export type SegmentSnapshotStatus = "COMPLETED" | "IN_PROGRESS" | "FAILED" | (string & {});
-const SegmentSnapshotStatus = S.String;
-
 export interface GetSegmentSnapshotResponse {
   SnapshotId: string;
   Status: SegmentSnapshotStatus;
@@ -2744,43 +1920,26 @@ export interface GetSegmentSnapshotResponse {
   RoleArn?: string;
   DestinationUri?: string;
 }
-const GetSegmentSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetSegmentSnapshotResponse>;
 export interface GetSegmentSubscriptionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
 }
-const GetSegmentSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetSegmentSubscriptionRequest>;
 export type SegmentSubscriptionStatus =
   | "STARTING"
   | "RUNNING"
   | "STOPPED"
   | "FAILED"
   | (string & {});
-const SegmentSubscriptionStatus = S.String;
-
 export type IntervalValue = number;
 export type ScheduleConfigurationUnit = "HOURLY" | (string & {});
-const ScheduleConfigurationUnit = S.String;
-
 export interface ScheduleConfiguration {
   Interval: number;
   Unit?: ScheduleConfigurationUnit;
 }
-const ScheduleConfiguration = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ScheduleConfiguration>;
 export interface ScheduledExecutions {
   NextExecutedAt?: Date;
   LastExecutedAt?: Date;
 }
-const ScheduledExecutions = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<ScheduledExecutions>;
 export interface GetSegmentSubscriptionResponse {
   Status?: SegmentSubscriptionStatus;
   Message?: string;
@@ -2789,13 +1948,7 @@ export interface GetSegmentSubscriptionResponse {
   StartedAt?: Date;
   LastUpdatedAt?: Date;
 }
-const GetSegmentSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GetSegmentSubscriptionResponse>;
 export type MatchType = "RULE_BASED_MATCHING" | "ML_BASED_MATCHING" | (string & {});
-const MatchType = S.String;
-
 export interface GetSimilarProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2804,10 +1957,6 @@ export interface GetSimilarProfilesRequest {
   SearchKey: string;
   SearchValue: string;
 }
-const GetSimilarProfilesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GetSimilarProfilesRequest>;
 export type RuleLevel = number;
 export interface GetSimilarProfilesResponse {
   ProfileIds?: string[];
@@ -2817,36 +1966,22 @@ export interface GetSimilarProfilesResponse {
   ConfidenceScore?: number;
   NextToken?: string;
 }
-const GetSimilarProfilesResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<GetSimilarProfilesResponse>;
 export interface GetStreamForSegmentsRequest {
   DomainName: string;
 }
-const GetStreamForSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GetStreamForSegmentsRequest>;
 export type EventSubscriptionSegmentStatus =
   | "STARTING"
   | "RUNNING"
   | "STOPPED"
   | "FAILED"
   | (string & {});
-const EventSubscriptionSegmentStatus = S.String;
-
 export interface AssociatedSegment {
   SegmentName?: string;
   Status?: EventSubscriptionSegmentStatus;
   Message?: string;
 }
-const AssociatedSegment = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<AssociatedSegment>;
 export type AssociatedSegmentsList = AssociatedSegment[];
-const AssociatedSegmentsList = /*@__PURE__*/ __L.at(__c33, 7);
 export type EventSubscriptionState = "RUNNING" | "UNHEALTHY" | "STOPPED" | (string & {});
-const EventSubscriptionState = S.String;
-
 export interface GetStreamForSegmentsResponse {
   AssociatedAt?: Date;
   AssociatedSegments?: AssociatedSegment[];
@@ -2857,15 +1992,10 @@ export interface GetStreamForSegmentsResponse {
   DisassociatedAt?: Date;
   FailureReason?: string;
 }
-const GetStreamForSegmentsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<GetStreamForSegmentsResponse>;
 export interface GetUploadJobRequest {
   DomainName: string;
   JobId: string;
 }
-const GetUploadJobRequest = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<GetUploadJobRequest>;
 export type UploadJobStatus =
   | "CREATED"
   | "IN_PROGRESS"
@@ -2874,17 +2004,12 @@ export type UploadJobStatus =
   | "FAILED"
   | "STOPPED"
   | (string & {});
-const UploadJobStatus = S.String;
-
 export type StatusReason = "VALIDATION_FAILURE" | "INTERNAL_FAILURE" | (string & {});
-const StatusReason = S.String;
-
 export interface ResultsSummary {
   UpdatedRecords?: number;
   CreatedRecords?: number;
   FailedRecords?: number;
 }
-const ResultsSummary = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<ResultsSummary>;
 export interface GetUploadJobResponse {
   JobId?: string;
   DisplayName?: string;
@@ -2897,32 +2022,19 @@ export interface GetUploadJobResponse {
   ResultsSummary?: ResultsSummary;
   DataExpiry?: number;
 }
-const GetUploadJobResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<GetUploadJobResponse>;
 export interface GetUploadJobPathRequest {
   DomainName: string;
   JobId: string;
 }
-const GetUploadJobPathRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetUploadJobPathRequest>;
 export interface GetUploadJobPathResponse {
   Url: string;
   ClientToken?: string;
   ValidUntil?: Date;
 }
-const GetUploadJobPathResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<GetUploadJobPathResponse>;
 export interface GetWorkflowRequest {
   DomainName: string;
   WorkflowId: string;
 }
-const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<GetWorkflowRequest>;
 export type Status =
   | "NOT_STARTED"
   | "IN_PROGRESS"
@@ -2932,34 +2044,22 @@ export type Status =
   | "RETRY"
   | "CANCELLED"
   | (string & {});
-const Status = S.String;
-
 export interface AppflowIntegrationWorkflowAttributes {
   SourceConnectorType: SourceConnectorType;
   ConnectorProfileName: string;
   RoleArn?: string;
 }
-const AppflowIntegrationWorkflowAttributes = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<AppflowIntegrationWorkflowAttributes>;
 export interface WorkflowAttributes {
   AppflowIntegration?: AppflowIntegrationWorkflowAttributes;
 }
-const WorkflowAttributes = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<WorkflowAttributes>;
 export interface AppflowIntegrationWorkflowMetrics {
   RecordsProcessed: number;
   StepsCompleted: number;
   TotalSteps: number;
 }
-const AppflowIntegrationWorkflowMetrics = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<AppflowIntegrationWorkflowMetrics>;
 export interface WorkflowMetrics {
   AppflowIntegration?: AppflowIntegrationWorkflowMetrics;
 }
-const WorkflowMetrics = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<WorkflowMetrics>;
 export interface GetWorkflowResponse {
   WorkflowId?: string;
   WorkflowType?: WorkflowType;
@@ -2970,17 +2070,12 @@ export interface GetWorkflowResponse {
   Attributes?: WorkflowAttributes;
   Metrics?: WorkflowMetrics;
 }
-const GetWorkflowResponse = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<GetWorkflowResponse>;
 export interface GetWorkflowStepsRequest {
   DomainName: string;
   WorkflowId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const GetWorkflowStepsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<GetWorkflowStepsRequest>;
 export interface AppflowIntegrationWorkflowStep {
   FlowName: string;
   Status: Status;
@@ -2991,36 +2086,22 @@ export interface AppflowIntegrationWorkflowStep {
   CreatedAt: Date;
   LastUpdatedAt: Date;
 }
-const AppflowIntegrationWorkflowStep = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<AppflowIntegrationWorkflowStep>;
 export interface WorkflowStepItem {
   AppflowIntegration?: AppflowIntegrationWorkflowStep;
 }
-const WorkflowStepItem = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<WorkflowStepItem>;
 export type WorkflowStepsList = WorkflowStepItem[];
-const WorkflowStepsList = /*@__PURE__*/ __L.at(__c35, 7);
 export interface GetWorkflowStepsResponse {
   WorkflowId?: string;
   WorkflowType?: WorkflowType;
   Items?: WorkflowStepItem[];
   NextToken?: string;
 }
-const GetWorkflowStepsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GetWorkflowStepsResponse>;
 export interface ListAccountIntegrationsRequest {
   Uri: string;
   NextToken?: string;
   MaxResults?: number;
   IncludeHidden?: boolean;
 }
-const ListAccountIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<ListAccountIntegrationsRequest>;
 export interface ListIntegrationItem {
   DomainName: string;
   Uri: string;
@@ -3035,26 +2116,16 @@ export interface ListIntegrationItem {
   EventTriggerNames?: string[];
   Scope?: Scope;
 }
-const ListIntegrationItem = GetIntegrationResponse as any as S.Schema<ListIntegrationItem>;
 export type IntegrationList = ListIntegrationItem[];
-const IntegrationList = /*@__PURE__*/ __L.at(__c36, 2);
 export interface ListAccountIntegrationsResponse {
   Items?: ListIntegrationItem[];
   NextToken?: string;
 }
-const ListAccountIntegrationsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ListAccountIntegrationsResponse>;
 export interface ListCalculatedAttributeDefinitionsRequest {
   DomainName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCalculatedAttributeDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<ListCalculatedAttributeDefinitionsRequest>;
 export interface ListCalculatedAttributeDefinitionItem {
   CalculatedAttributeName?: string;
   DisplayName?: string;
@@ -3065,30 +2136,17 @@ export interface ListCalculatedAttributeDefinitionItem {
   Status?: ReadinessStatus;
   Tags?: { [key: string]: string | undefined };
 }
-const ListCalculatedAttributeDefinitionItem = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<ListCalculatedAttributeDefinitionItem>;
 export type CalculatedAttributeDefinitionsList = ListCalculatedAttributeDefinitionItem[];
-const CalculatedAttributeDefinitionsList = /*@__PURE__*/ __L.at(__c36, 6);
 export interface ListCalculatedAttributeDefinitionsResponse {
   Items?: ListCalculatedAttributeDefinitionItem[];
   NextToken?: string;
 }
-const ListCalculatedAttributeDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<ListCalculatedAttributeDefinitionsResponse>;
 export interface ListCalculatedAttributesForProfileRequest {
   NextToken?: string;
   MaxResults?: number;
   DomainName: string;
   ProfileId: string;
 }
-const ListCalculatedAttributesForProfileRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<ListCalculatedAttributesForProfileRequest>;
 export interface ListCalculatedAttributeForProfileItem {
   CalculatedAttributeName?: string;
   DisplayName?: string;
@@ -3096,27 +2154,16 @@ export interface ListCalculatedAttributeForProfileItem {
   Value?: string;
   LastObjectTimestamp?: Date;
 }
-const ListCalculatedAttributeForProfileItem =
-  GetCalculatedAttributeForProfileResponse as any as S.Schema<ListCalculatedAttributeForProfileItem>;
 export type CalculatedAttributesForProfileList = ListCalculatedAttributeForProfileItem[];
-const CalculatedAttributesForProfileList = /*@__PURE__*/ __L.at(__c37, 1);
 export interface ListCalculatedAttributesForProfileResponse {
   Items?: ListCalculatedAttributeForProfileItem[];
   NextToken?: string;
 }
-const ListCalculatedAttributesForProfileResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<ListCalculatedAttributesForProfileResponse>;
 export interface ListDomainLayoutsRequest {
   DomainName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListDomainLayoutsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<ListDomainLayoutsRequest>;
 export interface LayoutItem {
   LayoutDefinitionName: string;
   Description: string | redacted.Redacted<string>;
@@ -3127,26 +2174,16 @@ export interface LayoutItem {
   CreatedAt: Date;
   LastUpdatedAt: Date;
 }
-const LayoutItem = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<LayoutItem>;
 export type LayoutList = LayoutItem[];
-const LayoutList = /*@__PURE__*/ __L.at(__c37, 5);
 export interface ListDomainLayoutsResponse {
   Items?: LayoutItem[];
   NextToken?: string;
 }
-const ListDomainLayoutsResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<ListDomainLayoutsResponse>;
 export interface ListDomainObjectTypesRequest {
   DomainName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListDomainObjectTypesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<ListDomainObjectTypesRequest>;
 export interface DomainObjectTypesListItem {
   ObjectTypeName: string;
   Description?: string | redacted.Redacted<string>;
@@ -3154,54 +2191,36 @@ export interface DomainObjectTypesListItem {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const DomainObjectTypesListItem = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<DomainObjectTypesListItem>;
 export type DomainObjectTypesList = DomainObjectTypesListItem[];
-const DomainObjectTypesList = /*@__PURE__*/ __L.at(__c38, 1);
 export interface ListDomainObjectTypesResponse {
   Items?: DomainObjectTypesListItem[];
   NextToken?: string;
 }
-const ListDomainObjectTypesResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<ListDomainObjectTypesResponse>;
 export interface ListDomainsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<ListDomainsRequest>;
 export interface ListDomainItem {
   DomainName: string;
   CreatedAt: Date;
   LastUpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const ListDomainItem = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<ListDomainItem>;
 export type DomainList = ListDomainItem[];
-const DomainList = /*@__PURE__*/ __L.at(__c38, 5);
 export interface ListDomainsResponse {
   Items?: ListDomainItem[];
   NextToken?: string;
 }
-const ListDomainsResponse = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<ListDomainsResponse>;
 export interface ListEventStreamsRequest {
   DomainName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListEventStreamsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<ListEventStreamsRequest>;
 export interface DestinationSummary {
   Uri: string;
   Status: EventStreamDestinationStatus;
   UnhealthySince?: Date;
 }
-const DestinationSummary = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<DestinationSummary>;
 export interface EventStreamSummary {
   DomainName: string;
   EventStreamName: string;
@@ -3211,26 +2230,16 @@ export interface EventStreamSummary {
   DestinationSummary?: DestinationSummary;
   Tags?: { [key: string]: string | undefined };
 }
-const EventStreamSummary = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<EventStreamSummary>;
 export type EventStreamSummaryList = EventStreamSummary[];
-const EventStreamSummaryList = /*@__PURE__*/ __L.at(__c39, 2);
 export interface ListEventStreamsResponse {
   Items?: EventStreamSummary[];
   NextToken?: string;
 }
-const ListEventStreamsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<ListEventStreamsResponse>;
 export interface ListEventTriggersRequest {
   DomainName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListEventTriggersRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<ListEventTriggersRequest>;
 export interface EventTriggerSummaryItem {
   ObjectTypeName?: string;
   EventTriggerName?: string;
@@ -3239,29 +2248,16 @@ export interface EventTriggerSummaryItem {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const EventTriggerSummaryItem = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<EventTriggerSummaryItem>;
 export type EventTriggerSummaryList = EventTriggerSummaryItem[];
-const EventTriggerSummaryList = /*@__PURE__*/ __L.at(__c39, 6);
 export interface ListEventTriggersResponse {
   Items?: EventTriggerSummaryItem[];
   NextToken?: string;
 }
-const ListEventTriggersResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<ListEventTriggersResponse>;
 export interface ListIdentityResolutionJobsRequest {
   DomainName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListIdentityResolutionJobsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<ListIdentityResolutionJobsRequest>;
 export interface IdentityResolutionJob {
   DomainName?: string;
   JobId?: string;
@@ -3272,66 +2268,36 @@ export interface IdentityResolutionJob {
   ExportingLocation?: ExportingLocation;
   Message?: string;
 }
-const IdentityResolutionJob = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<IdentityResolutionJob>;
 export type IdentityResolutionJobsList = IdentityResolutionJob[];
-const IdentityResolutionJobsList = /*@__PURE__*/ __L.at(__c40, 2);
 export interface ListIdentityResolutionJobsResponse {
   IdentityResolutionJobsList?: IdentityResolutionJob[];
   NextToken?: string;
 }
-const ListIdentityResolutionJobsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<ListIdentityResolutionJobsResponse>;
 export interface ListIntegrationsRequest {
   DomainName: string;
   NextToken?: string;
   MaxResults?: number;
   IncludeHidden?: boolean;
 }
-const ListIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<ListIntegrationsRequest>;
 export interface ListIntegrationsResponse {
   Items?: ListIntegrationItem[];
   NextToken?: string;
 }
-const ListIntegrationsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<ListIntegrationsResponse>;
 export interface ListObjectTypeAttributesRequest {
   NextToken?: string;
   MaxResults?: number;
   DomainName: string;
   ObjectTypeName: string;
 }
-const ListObjectTypeAttributesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<ListObjectTypeAttributesRequest>;
 export interface ListObjectTypeAttributeItem {
   AttributeName: string;
   LastUpdatedAt: Date;
 }
-const ListObjectTypeAttributeItem = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<ListObjectTypeAttributeItem>;
 export type ListObjectTypeAttributesList = ListObjectTypeAttributeItem[];
-const ListObjectTypeAttributesList = /*@__PURE__*/ __L.at(__c41, 0);
 export interface ListObjectTypeAttributesResponse {
   Items?: ListObjectTypeAttributeItem[];
   NextToken?: string;
 }
-const ListObjectTypeAttributesResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<ListObjectTypeAttributesResponse>;
 export interface ListObjectTypeAttributeValuesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3339,52 +2305,29 @@ export interface ListObjectTypeAttributeValuesRequest {
   ObjectTypeName: string;
   AttributeName: string;
 }
-const ListObjectTypeAttributeValuesRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<ListObjectTypeAttributeValuesRequest>;
 export interface ListObjectTypeAttributeValuesItem {
   Value: string | redacted.Redacted<string>;
   LastUpdatedAt: Date;
 }
-const ListObjectTypeAttributeValuesItem = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<ListObjectTypeAttributeValuesItem>;
 export type ListObjectTypeAttributeValuesList = ListObjectTypeAttributeValuesItem[];
-const ListObjectTypeAttributeValuesList = /*@__PURE__*/ __L.at(__c41, 4);
 export interface ListObjectTypeAttributeValuesResponse {
   Items?: ListObjectTypeAttributeValuesItem[];
   NextToken?: string;
 }
-const ListObjectTypeAttributeValuesResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<ListObjectTypeAttributeValuesResponse>;
 export interface ProfileAttributeValuesRequest {
   DomainName: string;
   AttributeName: string;
 }
-const ProfileAttributeValuesRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<ProfileAttributeValuesRequest>;
 export interface AttributeValueItem {
   Value?: string;
 }
-const AttributeValueItem = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<AttributeValueItem>;
 export type AttributeValueItemList = AttributeValueItem[];
-const AttributeValueItemList = /*@__PURE__*/ __L.at(__c42, 0);
 export interface ProfileAttributeValuesResponse {
   DomainName?: string;
   AttributeName?: string;
   Items?: AttributeValueItem[];
   StatusCode?: number;
 }
-const ProfileAttributeValuesResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ProfileAttributeValuesResponse>;
 export interface ListProfileHistoryRecordsRequest {
   DomainName: string;
   ProfileId: string;
@@ -3394,10 +2337,6 @@ export interface ListProfileHistoryRecordsRequest {
   ActionType?: ActionType;
   PerformedBy?: string;
 }
-const ListProfileHistoryRecordsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<ListProfileHistoryRecordsRequest>;
 export interface ProfileHistoryRecord {
   Id: string;
   ObjectTypeName: string;
@@ -3407,25 +2346,15 @@ export interface ProfileHistoryRecord {
   ProfileObjectUniqueKey?: string;
   PerformedBy?: string;
 }
-const ProfileHistoryRecord = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<ProfileHistoryRecord>;
 export type ProfileHistoryRecords = ProfileHistoryRecord[];
-const ProfileHistoryRecords = /*@__PURE__*/ __L.at(__c42, 4);
 export interface ListProfileHistoryRecordsResponse {
   ProfileHistoryRecords?: ProfileHistoryRecord[];
   NextToken?: string;
 }
-const ListProfileHistoryRecordsResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListProfileHistoryRecordsResponse>;
 export interface ObjectFilter {
   KeyName: string;
   Values: string[];
 }
-const ObjectFilter = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<ObjectFilter>;
 export interface ListProfileObjectsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3434,38 +2363,21 @@ export interface ListProfileObjectsRequest {
   ProfileId: string;
   ObjectFilter?: ObjectFilter;
 }
-const ListProfileObjectsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<ListProfileObjectsRequest>;
 export interface ListProfileObjectsItem {
   ObjectTypeName?: string;
   ProfileObjectUniqueKey?: string;
   Object?: string | redacted.Redacted<string>;
 }
-const ListProfileObjectsItem = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ListProfileObjectsItem>;
 export type ProfileObjectList = ListProfileObjectsItem[];
-const ProfileObjectList = /*@__PURE__*/ __L.at(__c43, 1);
 export interface ListProfileObjectsResponse {
   Items?: ListProfileObjectsItem[];
   NextToken?: string;
 }
-const ListProfileObjectsResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<ListProfileObjectsResponse>;
 export interface ListProfileObjectTypesRequest {
   DomainName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListProfileObjectTypesRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<ListProfileObjectTypesRequest>;
 export interface ListProfileObjectTypeItem {
   ObjectTypeName: string;
   Description: string;
@@ -3476,56 +2388,30 @@ export interface ListProfileObjectTypeItem {
   SourcePriority?: number;
   Tags?: { [key: string]: string | undefined };
 }
-const ListProfileObjectTypeItem = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<ListProfileObjectTypeItem>;
 export type ProfileObjectTypeList = ListProfileObjectTypeItem[];
-const ProfileObjectTypeList = /*@__PURE__*/ __L.at(__c43, 5);
 export interface ListProfileObjectTypesResponse {
   Items?: ListProfileObjectTypeItem[];
   NextToken?: string;
 }
-const ListProfileObjectTypesResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<ListProfileObjectTypesResponse>;
 export interface ListProfileObjectTypeTemplatesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListProfileObjectTypeTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<ListProfileObjectTypeTemplatesRequest>;
 export interface ListProfileObjectTypeTemplateItem {
   TemplateId?: string;
   SourceName?: string;
   SourceObject?: string;
 }
-const ListProfileObjectTypeTemplateItem = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<ListProfileObjectTypeTemplateItem>;
 export type ProfileObjectTypeTemplateList = ListProfileObjectTypeTemplateItem[];
-const ProfileObjectTypeTemplateList = /*@__PURE__*/ __L.at(__c44, 1);
 export interface ListProfileObjectTypeTemplatesResponse {
   Items?: ListProfileObjectTypeTemplateItem[];
   NextToken?: string;
 }
-const ListProfileObjectTypeTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<ListProfileObjectTypeTemplatesResponse>;
 export interface ListRecommenderFiltersRequest {
   DomainName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRecommenderFiltersRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<ListRecommenderFiltersRequest>;
 export interface RecommenderFilterSummary {
   RecommenderFilterName?: string;
   RecommenderSchemaName?: string;
@@ -3536,54 +2422,31 @@ export interface RecommenderFilterSummary {
   FailureReason?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const RecommenderFilterSummary = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<RecommenderFilterSummary>;
 export type RecommenderFilterSummaryList = RecommenderFilterSummary[];
-const RecommenderFilterSummaryList = /*@__PURE__*/ __L.at(__c44, 5);
 export interface ListRecommenderFiltersResponse {
   NextToken?: string;
   RecommenderFilters?: RecommenderFilterSummary[];
 }
-const ListRecommenderFiltersResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<ListRecommenderFiltersResponse>;
 export type ListRecommenderRecipesRequestMaxResultsInteger = number;
 export interface ListRecommenderRecipesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRecommenderRecipesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<ListRecommenderRecipesRequest>;
 export interface RecommenderRecipe {
   name?: RecommenderRecipeName;
   description?: string;
 }
-const RecommenderRecipe = /*@__PURE__*/ __L.at(__c45, 0) as any as S.Schema<RecommenderRecipe>;
 export type RecommenderRecipesList = RecommenderRecipe[];
-const RecommenderRecipesList = /*@__PURE__*/ __L.at(__c45, 1);
 export interface ListRecommenderRecipesResponse {
   NextToken?: string;
   RecommenderRecipes?: RecommenderRecipe[];
 }
-const ListRecommenderRecipesResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<ListRecommenderRecipesResponse>;
 export type ListRecommendersRequestMaxResultsInteger = number;
 export interface ListRecommendersRequest {
   DomainName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRecommendersRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<ListRecommendersRequest>;
 export interface RecommenderSummary {
   RecommenderName?: string;
   RecipeName?: RecommenderRecipeName;
@@ -3597,74 +2460,42 @@ export interface RecommenderSummary {
   FailureReason?: string;
   LatestRecommenderUpdate?: RecommenderUpdate;
 }
-const RecommenderSummary = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<RecommenderSummary>;
 export type RecommenderSummaryList = RecommenderSummary[];
-const RecommenderSummaryList = /*@__PURE__*/ __L.at(__c45, 5);
 export interface ListRecommendersResponse {
   NextToken?: string;
   Recommenders?: RecommenderSummary[];
 }
-const ListRecommendersResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<ListRecommendersResponse>;
 export interface ListRecommenderSchemasRequest {
   DomainName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRecommenderSchemasRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<ListRecommenderSchemasRequest>;
 export interface RecommenderSchemaSummary {
   RecommenderSchemaName: string;
   Fields: { [key: string]: RecommenderSchemaField[] | undefined };
   CreatedAt: Date;
   Status: RecommenderSchemaStatus;
 }
-const RecommenderSchemaSummary = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<RecommenderSchemaSummary>;
 export type RecommenderSchemaSummaryList = RecommenderSchemaSummary[];
-const RecommenderSchemaSummaryList = /*@__PURE__*/ __L.at(__c46, 1);
 export interface ListRecommenderSchemasResponse {
   NextToken?: string;
   RecommenderSchemas?: RecommenderSchemaSummary[];
 }
-const ListRecommenderSchemasResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<ListRecommenderSchemasResponse>;
 export interface ListRuleBasedMatchesRequest {
   NextToken?: string;
   MaxResults?: number;
   DomainName: string;
 }
-const ListRuleBasedMatchesRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<ListRuleBasedMatchesRequest>;
 export type MatchIdList = string[];
-const MatchIdList = RequestValueList as any as S.Schema<MatchIdList>;
 export interface ListRuleBasedMatchesResponse {
   MatchIds?: string[];
   NextToken?: string;
 }
-const ListRuleBasedMatchesResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<ListRuleBasedMatchesResponse>;
 export interface ListSegmentDefinitionsRequest {
   DomainName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListSegmentDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<ListSegmentDefinitionsRequest>;
 export interface SegmentDefinitionItem {
   SegmentDefinitionName?: string;
   DisplayName?: string;
@@ -3674,80 +2505,42 @@ export interface SegmentDefinitionItem {
   Tags?: { [key: string]: string | undefined };
   SegmentType?: SegmentType;
 }
-const SegmentDefinitionItem = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<SegmentDefinitionItem>;
 export type SegmentDefinitionsList = SegmentDefinitionItem[];
-const SegmentDefinitionsList = /*@__PURE__*/ __L.at(__c46, 7);
 export interface ListSegmentDefinitionsResponse {
   NextToken?: string;
   Items?: SegmentDefinitionItem[];
 }
-const ListSegmentDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<ListSegmentDefinitionsResponse>;
 export interface ListSegmentSubscriptionEventsRequest {
   DomainName: string;
   SegmentDefinitionName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListSegmentSubscriptionEventsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<ListSegmentSubscriptionEventsRequest>;
 export type SubscriptionEventType = "LIVE" | "SCHEDULE" | (string & {});
-const SubscriptionEventType = S.String;
-
 export type SubscriptionEvent = "JOINED" | "LEFT" | (string & {});
-const SubscriptionEvent = S.String;
-
 export interface SubscriptionEventItem {
   ProfileId?: string;
   UpdatedAt?: Date;
   EventType?: SubscriptionEventType;
   Event?: SubscriptionEvent;
 }
-const SubscriptionEventItem = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<SubscriptionEventItem>;
 export type SubscriptionEventsList = SubscriptionEventItem[];
-const SubscriptionEventsList = /*@__PURE__*/ __L.at(__c47, 3);
 export interface ListSegmentSubscriptionEventsResponse {
   Events?: SubscriptionEventItem[];
   NextToken?: string;
 }
-const ListSegmentSubscriptionEventsResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<ListSegmentSubscriptionEventsResponse>;
 export type TagArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListUploadJobsRequest {
   DomainName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListUploadJobsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ListUploadJobsRequest>;
 export interface UploadJobItem {
   JobId?: string;
   DisplayName?: string;
@@ -3757,17 +2550,11 @@ export interface UploadJobItem {
   CompletedAt?: Date;
   DataExpiry?: number;
 }
-const UploadJobItem = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<UploadJobItem>;
 export type UploadJobsList = UploadJobItem[];
-const UploadJobsList = /*@__PURE__*/ __L.at(__c48, 1);
 export interface ListUploadJobsResponse {
   NextToken?: string;
   Items?: UploadJobItem[];
 }
-const ListUploadJobsResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<ListUploadJobsResponse>;
 export interface ListWorkflowsRequest {
   DomainName: string;
   WorkflowType?: WorkflowType;
@@ -3777,10 +2564,6 @@ export interface ListWorkflowsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListWorkflowsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<ListWorkflowsRequest>;
 export interface ListWorkflowsItem {
   WorkflowType: WorkflowType;
   WorkflowId: string;
@@ -3789,21 +2572,13 @@ export interface ListWorkflowsItem {
   CreatedAt: Date;
   LastUpdatedAt: Date;
 }
-const ListWorkflowsItem = /*@__PURE__*/ __L.at(__c48, 4) as any as S.Schema<ListWorkflowsItem>;
 export type WorkflowList = ListWorkflowsItem[];
-const WorkflowList = /*@__PURE__*/ __L.at(__c48, 5);
 export interface ListWorkflowsResponse {
   Items?: ListWorkflowsItem[];
   NextToken?: string;
 }
-const ListWorkflowsResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<ListWorkflowsResponse>;
 export type ProfileIdToBeMergedList = string[];
-const ProfileIdToBeMergedList = RequestValueList as any as S.Schema<ProfileIdToBeMergedList>;
 export type AttributeSourceIdMap = { [key: string]: string | undefined };
-const AttributeSourceIdMap = ObjectTypeNames as any as S.Schema<AttributeSourceIdMap>;
 export interface FieldSourceProfileIds {
   AccountNumber?: string;
   AdditionalInformation?: string;
@@ -3829,24 +2604,15 @@ export interface FieldSourceProfileIds {
   ProfileType?: string;
   EngagementPreferences?: string;
 }
-const FieldSourceProfileIds = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<FieldSourceProfileIds>;
 export interface MergeProfilesRequest {
   DomainName: string;
   MainProfileId: string;
   ProfileIdsToBeMerged: string[];
   FieldSourceProfileIds?: FieldSourceProfileIds;
 }
-const MergeProfilesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<MergeProfilesRequest>;
 export interface MergeProfilesResponse {
   Message?: string;
 }
-const MergeProfilesResponse = DeleteProfileResponse as any as S.Schema<MergeProfilesResponse>;
 export interface PutDomainObjectTypeRequest {
   DomainName: string;
   ObjectTypeName: string;
@@ -3855,10 +2621,6 @@ export interface PutDomainObjectTypeRequest {
   Fields: { [key: string]: DomainObjectTypeField | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-const PutDomainObjectTypeRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<PutDomainObjectTypeRequest>;
 export interface PutDomainObjectTypeResponse {
   ObjectTypeName?: string;
   Description?: string | redacted.Redacted<string>;
@@ -3868,10 +2630,6 @@ export interface PutDomainObjectTypeResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const PutDomainObjectTypeResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<PutDomainObjectTypeResponse>;
 export interface PutIntegrationRequest {
   DomainName: string;
   Uri?: string;
@@ -3883,10 +2641,6 @@ export interface PutIntegrationRequest {
   EventTriggerNames?: string[];
   Scope?: Scope;
 }
-const PutIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<PutIntegrationRequest>;
 export interface PutIntegrationResponse {
   DomainName: string;
   Uri: string;
@@ -3901,23 +2655,14 @@ export interface PutIntegrationResponse {
   EventTriggerNames?: string[];
   Scope?: Scope;
 }
-const PutIntegrationResponse = GetIntegrationResponse as any as S.Schema<PutIntegrationResponse>;
 export interface PutProfileObjectRequest {
   ObjectTypeName: string;
   Object: string | redacted.Redacted<string>;
   DomainName: string;
 }
-const PutProfileObjectRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<PutProfileObjectRequest>;
 export interface PutProfileObjectResponse {
   ProfileObjectUniqueKey?: string;
 }
-const PutProfileObjectResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<PutProfileObjectResponse>;
 export interface PutProfileObjectTypeRequest {
   DomainName: string;
   ObjectTypeName: string;
@@ -3933,10 +2678,6 @@ export interface PutProfileObjectTypeRequest {
   Keys?: { [key: string]: ObjectTypeKey[] | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-const PutProfileObjectTypeRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<PutProfileObjectTypeRequest>;
 export interface PutProfileObjectTypeResponse {
   ObjectTypeName: string;
   Description: string | redacted.Redacted<string>;
@@ -3954,38 +2695,22 @@ export interface PutProfileObjectTypeResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const PutProfileObjectTypeResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<PutProfileObjectTypeResponse>;
 export interface PutSegmentSubscriptionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
   ScheduleConfiguration?: ScheduleConfiguration;
 }
-const PutSegmentSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<PutSegmentSubscriptionRequest>;
 export interface PutSegmentSubscriptionResponse {
   Status?: SegmentSubscriptionStatus;
   ScheduleConfiguration?: ScheduleConfiguration;
   StartedAt?: Date;
 }
-const PutSegmentSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<PutSegmentSubscriptionResponse>;
 export interface AdditionalSearchKey {
   KeyName: string;
   Values: string[];
 }
-const AdditionalSearchKey = ObjectFilter as any as S.Schema<AdditionalSearchKey>;
 export type AdditionalSearchKeysList = AdditionalSearchKey[];
-const AdditionalSearchKeysList = /*@__PURE__*/ __L.at(__c50, 2);
 export type LogicalOperator = "AND" | "OR" | (string & {});
-const LogicalOperator = S.String;
-
 export interface SearchProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3995,33 +2720,19 @@ export interface SearchProfilesRequest {
   AdditionalSearchKeys?: AdditionalSearchKey[];
   LogicalOperator?: LogicalOperator;
 }
-const SearchProfilesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<SearchProfilesRequest>;
 export interface SearchProfilesResponse {
   Items?: Profile[];
   NextToken?: string;
 }
-const SearchProfilesResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<SearchProfilesResponse>;
 export type KeyValuesList = string[];
-const KeyValuesList = RequestValueList as any as S.Schema<KeyValuesList>;
 export interface Recommender {
   Name: string;
   Filters?: RecommenderFilter[];
   PromotionalFilters?: RecommenderPromotionalFilter[];
 }
-const Recommender = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<Recommender>;
 export interface RecommendationMetadata {
   Columns?: string[];
 }
-const RecommendationMetadata = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<RecommendationMetadata>;
 export interface SearchRecommendationsRequest {
   DomainName: string;
   KeyName: string;
@@ -4033,82 +2744,41 @@ export interface SearchRecommendationsRequest {
   Metadata?: RecommendationMetadata;
   MaxRecommendations?: number;
 }
-const SearchRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<SearchRecommendationsRequest>;
 export interface SearchRecommendationsResponse {
   ProfileId?: string;
   Recommendations?: Recommendation[];
 }
-const SearchRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<SearchRecommendationsResponse>;
 export interface StartRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
 }
-const StartRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<StartRecommenderRequest>;
 export interface StartRecommenderResponse {}
-const StartRecommenderResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<StartRecommenderResponse>;
 export interface StartUploadJobRequest {
   DomainName: string;
   JobId: string;
 }
-const StartUploadJobRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<StartUploadJobRequest>;
 export interface StartUploadJobResponse {}
-const StartUploadJobResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<StartUploadJobResponse>;
 export interface StopRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
 }
-const StopRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<StopRecommenderRequest>;
 export interface StopRecommenderResponse {}
-const StopRecommenderResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<StopRecommenderResponse>;
 export interface StopUploadJobRequest {
   DomainName: string;
   JobId: string;
 }
-const StopUploadJobRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<StopUploadJobRequest>;
 export interface StopUploadJobResponse {}
-const StopUploadJobResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<StopUploadJobResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteDomainObjectTypeResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = RequestValueList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  DeleteDomainObjectTypeResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCalculatedAttributeDefinitionRequest {
   DomainName: string;
   CalculatedAttributeName: string;
@@ -4116,10 +2786,6 @@ export interface UpdateCalculatedAttributeDefinitionRequest {
   Description?: string | redacted.Redacted<string>;
   Conditions?: Conditions;
 }
-const UpdateCalculatedAttributeDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<UpdateCalculatedAttributeDefinitionRequest>;
 export interface UpdateCalculatedAttributeDefinitionResponse {
   CalculatedAttributeName?: string;
   DisplayName?: string;
@@ -4134,10 +2800,6 @@ export interface UpdateCalculatedAttributeDefinitionResponse {
   Readiness?: Readiness;
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateCalculatedAttributeDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<UpdateCalculatedAttributeDefinitionResponse>;
 export interface UpdateDomainRequest {
   DomainName: string;
   DefaultExpirationDays?: number;
@@ -4148,7 +2810,6 @@ export interface UpdateDomainRequest {
   DataStore?: DataStoreRequest;
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c52, 1) as any as S.Schema<UpdateDomainRequest>;
 export interface UpdateDomainResponse {
   DomainName: string;
   DefaultExpirationDays?: number;
@@ -4161,10 +2822,6 @@ export interface UpdateDomainResponse {
   LastUpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateDomainResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<UpdateDomainResponse>;
 export interface UpdateDomainLayoutRequest {
   DomainName: string;
   LayoutDefinitionName: string;
@@ -4174,10 +2831,6 @@ export interface UpdateDomainLayoutRequest {
   LayoutType?: LayoutType;
   Layout?: string | redacted.Redacted<string>;
 }
-const UpdateDomainLayoutRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<UpdateDomainLayoutRequest>;
 export interface UpdateDomainLayoutResponse {
   LayoutDefinitionName?: string;
   Description?: string | redacted.Redacted<string>;
@@ -4190,10 +2843,6 @@ export interface UpdateDomainLayoutResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateDomainLayoutResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<UpdateDomainLayoutResponse>;
 export interface UpdateEventTriggerRequest {
   DomainName: string;
   EventTriggerName: string;
@@ -4203,10 +2852,6 @@ export interface UpdateEventTriggerRequest {
   SegmentFilter?: string;
   EventTriggerLimits?: EventTriggerLimits;
 }
-const UpdateEventTriggerRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<UpdateEventTriggerRequest>;
 export interface UpdateEventTriggerResponse {
   EventTriggerName?: string;
   ObjectTypeName?: string;
@@ -4218,8 +2863,6 @@ export interface UpdateEventTriggerResponse {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateEventTriggerResponse =
-  CreateEventTriggerResponse as any as S.Schema<UpdateEventTriggerResponse>;
 export type SensitiveString0To1000 = string | redacted.Redacted<string>;
 export type SensitiveString0To255 = string | redacted.Redacted<string>;
 export type String0To255 = string;
@@ -4235,9 +2878,7 @@ export interface UpdateAddress {
   Country?: string;
   PostalCode?: string;
 }
-const UpdateAddress = Address as any as S.Schema<UpdateAddress>;
 export type UpdateAttributes = { [key: string]: string | undefined };
-const UpdateAttributes = ObjectTypeNames as any as S.Schema<UpdateAttributes>;
 export interface UpdateProfileRequest {
   DomainName: string;
   ProfileId: string;
@@ -4267,14 +2908,9 @@ export interface UpdateProfileRequest {
   ProfileType?: ProfileType;
   EngagementPreferences?: EngagementPreferences;
 }
-const UpdateProfileRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<UpdateProfileRequest>;
 export interface UpdateProfileResponse {
   ProfileId: string;
 }
-const UpdateProfileResponse = CreateProfileResponse as any as S.Schema<UpdateProfileResponse>;
 export interface UpdateRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
@@ -4282,17 +2918,9 @@ export interface UpdateRecommenderRequest {
   RecommenderConfig?: RecommenderConfig;
   RecommenderVersionName?: string;
 }
-const UpdateRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<UpdateRecommenderRequest>;
 export interface UpdateRecommenderResponse {
   RecommenderName: string;
 }
-const UpdateRecommenderResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<UpdateRecommenderResponse>;
 export type AddProfileKeyError =
   | AccessDeniedException
   | BadRequestException
@@ -4313,8 +2941,8 @@ export const addProfileKey: API.OperationMethod<
   AddProfileKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddProfileKeyRequest,
-  output: AddProfileKeyResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<AddProfileKeyRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AddProfileKeyResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4345,8 +2973,8 @@ export const associateStreamForSegments: API.OperationMethod<
   AssociateStreamForSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateStreamForSegmentsRequest,
-  output: AssociateStreamForSegmentsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<AssociateStreamForSegmentsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AssociateStreamForSegmentsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4375,8 +3003,8 @@ export const batchGetCalculatedAttributeForProfile: API.OperationMethod<
   BatchGetCalculatedAttributeForProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetCalculatedAttributeForProfileRequest,
-  output: BatchGetCalculatedAttributeForProfileResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<BatchGetCalculatedAttributeForProfileRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<BatchGetCalculatedAttributeForProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4405,8 +3033,8 @@ export const batchGetProfile: API.OperationMethod<
   BatchGetProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetProfileRequest,
-  output: BatchGetProfileResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<BatchGetProfileRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<BatchGetProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4447,8 +3075,8 @@ export const batchPutProfileObject: API.OperationMethod<
   BatchPutProfileObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchPutProfileObjectRequest,
-  output: BatchPutProfileObjectResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<BatchPutProfileObjectRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<BatchPutProfileObjectResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4482,8 +3110,8 @@ export const createCalculatedAttributeDefinition: API.OperationMethod<
   CreateCalculatedAttributeDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCalculatedAttributeDefinitionRequest,
-  output: CreateCalculatedAttributeDefinitionResponse,
+  input: __S(47, __c5, 7) as any as S.Schema<CreateCalculatedAttributeDefinitionRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreateCalculatedAttributeDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4531,8 +3159,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainRequest,
-  output: CreateDomainResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<CreateDomainRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<CreateDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4562,8 +3190,8 @@ export const createDomainLayout: API.OperationMethod<
   CreateDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainLayoutRequest,
-  output: CreateDomainLayoutResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<CreateDomainLayoutRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<CreateDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4596,8 +3224,8 @@ export const createEventStream: API.OperationMethod<
   CreateEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventStreamRequest,
-  output: CreateEventStreamResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<CreateEventStreamRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<CreateEventStreamResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4630,8 +3258,8 @@ export const createEventTrigger: API.OperationMethod<
   CreateEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventTriggerRequest,
-  output: CreateEventTriggerResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<CreateEventTriggerRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<CreateEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4661,8 +3289,8 @@ export const createIntegrationWorkflow: API.OperationMethod<
   CreateIntegrationWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationWorkflowRequest,
-  output: CreateIntegrationWorkflowResponse,
+  input: __S(102, __c12, 6) as any as S.Schema<CreateIntegrationWorkflowRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<CreateIntegrationWorkflowResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4694,8 +3322,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProfileRequest,
-  output: CreateProfileResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateProfileRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4724,8 +3352,8 @@ export const createRecommender: API.OperationMethod<
   CreateRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRecommenderRequest,
-  output: CreateRecommenderResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<CreateRecommenderRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<CreateRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4754,8 +3382,8 @@ export const createRecommenderFilter: API.OperationMethod<
   CreateRecommenderFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRecommenderFilterRequest,
-  output: CreateRecommenderFilterResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<CreateRecommenderFilterRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<CreateRecommenderFilterResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4784,8 +3412,8 @@ export const createRecommenderSchema: API.OperationMethod<
   CreateRecommenderSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRecommenderSchemaRequest,
-  output: CreateRecommenderSchemaResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<CreateRecommenderSchemaRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<CreateRecommenderSchemaResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4814,8 +3442,8 @@ export const createSegmentDefinition: API.OperationMethod<
   CreateSegmentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSegmentDefinitionRequest,
-  output: CreateSegmentDefinitionResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateSegmentDefinitionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<CreateSegmentDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4844,8 +3472,8 @@ export const createSegmentEstimate: API.OperationMethod<
   CreateSegmentEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSegmentEstimateRequest,
-  output: CreateSegmentEstimateResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<CreateSegmentEstimateRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<CreateSegmentEstimateResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4874,8 +3502,8 @@ export const createSegmentSnapshot: API.OperationMethod<
   CreateSegmentSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSegmentSnapshotRequest,
-  output: CreateSegmentSnapshotResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<CreateSegmentSnapshotRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<CreateSegmentSnapshotResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4905,8 +3533,8 @@ export const createUploadJob: API.OperationMethod<
   CreateUploadJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUploadJobRequest,
-  output: CreateUploadJobResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateUploadJobRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<CreateUploadJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4938,8 +3566,8 @@ export const deleteCalculatedAttributeDefinition: API.OperationMethod<
   DeleteCalculatedAttributeDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCalculatedAttributeDefinitionRequest,
-  output: DeleteCalculatedAttributeDefinitionResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<DeleteCalculatedAttributeDefinitionRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DeleteCalculatedAttributeDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4969,8 +3597,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainRequest,
-  output: DeleteDomainResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<DeleteDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5000,8 +3628,8 @@ export const deleteDomainLayout: API.OperationMethod<
   DeleteDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainLayoutRequest,
-  output: DeleteDomainLayoutResponse,
+  input: __S(157, __c19, 5) as any as S.Schema<DeleteDomainLayoutRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<DeleteDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5030,8 +3658,8 @@ export const deleteDomainObjectType: API.OperationMethod<
   DeleteDomainObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainObjectTypeRequest,
-  output: DeleteDomainObjectTypeResponse,
+  input: __S(159, __c19, 7) as any as S.Schema<DeleteDomainObjectTypeRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteDomainObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5060,8 +3688,8 @@ export const deleteEventStream: API.OperationMethod<
   DeleteEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventStreamRequest,
-  output: DeleteEventStreamResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<DeleteEventStreamRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteEventStreamResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5092,8 +3720,8 @@ export const deleteEventTrigger: API.OperationMethod<
   DeleteEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventTriggerRequest,
-  output: DeleteEventTriggerResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<DeleteEventTriggerRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<DeleteEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5122,8 +3750,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationRequest,
-  output: DeleteIntegrationResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<DeleteIntegrationRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<DeleteIntegrationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5152,8 +3780,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileRequest,
-  output: DeleteProfileResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<DeleteProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5182,8 +3810,8 @@ export const deleteProfileKey: API.OperationMethod<
   DeleteProfileKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileKeyRequest,
-  output: DeleteProfileKeyResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<DeleteProfileKeyRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<DeleteProfileKeyResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5212,8 +3840,8 @@ export const deleteProfileObject: API.OperationMethod<
   DeleteProfileObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileObjectRequest,
-  output: DeleteProfileObjectResponse,
+  input: __S(167, __c20, 7) as any as S.Schema<DeleteProfileObjectRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteProfileObjectResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5245,8 +3873,8 @@ export const deleteProfileObjectType: API.OperationMethod<
   DeleteProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileObjectTypeRequest,
-  output: DeleteProfileObjectTypeResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<DeleteProfileObjectTypeRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<DeleteProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5275,8 +3903,8 @@ export const deleteRecommender: API.OperationMethod<
   DeleteRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecommenderRequest,
-  output: DeleteRecommenderResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<DeleteRecommenderRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5305,8 +3933,8 @@ export const deleteRecommenderFilter: API.OperationMethod<
   DeleteRecommenderFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecommenderFilterRequest,
-  output: DeleteRecommenderFilterResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<DeleteRecommenderFilterRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<DeleteRecommenderFilterResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5335,8 +3963,8 @@ export const deleteRecommenderSchema: API.OperationMethod<
   DeleteRecommenderSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecommenderSchemaRequest,
-  output: DeleteRecommenderSchemaResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<DeleteRecommenderSchemaRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<DeleteRecommenderSchemaResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5365,8 +3993,8 @@ export const deleteSegmentDefinition: API.OperationMethod<
   DeleteSegmentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSegmentDefinitionRequest,
-  output: DeleteSegmentDefinitionResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<DeleteSegmentDefinitionRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteSegmentDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5396,8 +4024,8 @@ export const deleteSegmentSubscription: API.OperationMethod<
   DeleteSegmentSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSegmentSubscriptionRequest,
-  output: DeleteSegmentSubscriptionResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<DeleteSegmentSubscriptionRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteSegmentSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5427,8 +4055,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkflowRequest,
-  output: DeleteWorkflowResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5457,8 +4085,8 @@ export const detectProfileObjectType: API.OperationMethod<
   DetectProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetectProfileObjectTypeRequest,
-  output: DetectProfileObjectTypeResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<DetectProfileObjectTypeRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<DetectProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5488,8 +4116,8 @@ export const disassociateStreamForSegments: API.OperationMethod<
   DisassociateStreamForSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateStreamForSegmentsRequest,
-  output: DisassociateStreamForSegmentsResponse,
+  input: __S(185, __c23, 1) as any as S.Schema<DisassociateStreamForSegmentsRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DisassociateStreamForSegmentsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5530,8 +4158,8 @@ export const getAutoMergingPreview: API.OperationMethod<
   GetAutoMergingPreviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoMergingPreviewRequest,
-  output: GetAutoMergingPreviewResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<GetAutoMergingPreviewRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<GetAutoMergingPreviewResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5561,8 +4189,8 @@ export const getCalculatedAttributeDefinition: API.OperationMethod<
   GetCalculatedAttributeDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCalculatedAttributeDefinitionRequest,
-  output: GetCalculatedAttributeDefinitionResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<GetCalculatedAttributeDefinitionRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<GetCalculatedAttributeDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5591,8 +4219,8 @@ export const getCalculatedAttributeForProfile: API.OperationMethod<
   GetCalculatedAttributeForProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCalculatedAttributeForProfileRequest,
-  output: GetCalculatedAttributeForProfileResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<GetCalculatedAttributeForProfileRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<GetCalculatedAttributeForProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5621,8 +4249,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainRequest,
-  output: GetDomainResponse,
+  input: __S(192, __c24, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<GetDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5652,8 +4280,8 @@ export const getDomainLayout: API.OperationMethod<
   GetDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainLayoutRequest,
-  output: GetDomainLayoutResponse,
+  input: __S(195, __c24, 3) as any as S.Schema<GetDomainLayoutRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<GetDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5682,8 +4310,8 @@ export const getDomainObjectType: API.OperationMethod<
   GetDomainObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainObjectTypeRequest,
-  output: GetDomainObjectTypeResponse,
+  input: __S(197, __c24, 5) as any as S.Schema<GetDomainObjectTypeRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<GetDomainObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5712,8 +4340,8 @@ export const getEventStream: API.OperationMethod<
   GetEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventStreamRequest,
-  output: GetEventStreamResponse,
+  input: __S(201, __c25, 1) as any as S.Schema<GetEventStreamRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<GetEventStreamResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5742,8 +4370,8 @@ export const getEventTrigger: API.OperationMethod<
   GetEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventTriggerRequest,
-  output: GetEventTriggerResponse,
+  input: __S(204, __c25, 4) as any as S.Schema<GetEventTriggerRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<GetEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5775,8 +4403,8 @@ export const getIdentityResolutionJob: API.OperationMethod<
   GetIdentityResolutionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityResolutionJobRequest,
-  output: GetIdentityResolutionJobResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<GetIdentityResolutionJobRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<GetIdentityResolutionJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5805,8 +4433,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRequest,
-  output: GetIntegrationResponse,
+  input: __S(211, __c26, 3) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<GetIntegrationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5872,8 +4500,8 @@ export const getMatches: API.OperationMethod<
   GetMatchesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMatchesRequest,
-  output: GetMatchesResponse,
+  input: __S(214, __c26, 6) as any as S.Schema<GetMatchesRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetMatchesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5908,8 +4536,8 @@ export const getObjectTypeAttributeStatistics: API.OperationMethod<
   GetObjectTypeAttributeStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectTypeAttributeStatisticsRequest,
-  output: GetObjectTypeAttributeStatisticsResponse,
+  input: __S(218, __c27, 2) as any as S.Schema<GetObjectTypeAttributeStatisticsRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<GetObjectTypeAttributeStatisticsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5938,8 +4566,8 @@ export const getProfileHistoryRecord: API.OperationMethod<
   GetProfileHistoryRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileHistoryRecordRequest,
-  output: GetProfileHistoryRecordResponse,
+  input: __S(222, __c27, 6) as any as S.Schema<GetProfileHistoryRecordRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<GetProfileHistoryRecordResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5968,8 +4596,8 @@ export const getProfileObjectType: API.OperationMethod<
   GetProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileObjectTypeRequest,
-  output: GetProfileObjectTypeResponse,
+  input: __S(224, __c28, 0) as any as S.Schema<GetProfileObjectTypeRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6003,8 +4631,8 @@ export const getProfileObjectTypeTemplate: API.OperationMethod<
   GetProfileObjectTypeTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileObjectTypeTemplateRequest,
-  output: GetProfileObjectTypeTemplateResponse,
+  input: __S(226, __c28, 2) as any as S.Schema<GetProfileObjectTypeTemplateRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<GetProfileObjectTypeTemplateResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6033,8 +4661,8 @@ export const getProfileRecommendations: API.OperationMethod<
   GetProfileRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileRecommendationsRequest,
-  output: GetProfileRecommendationsResponse,
+  input: __S(236, __c29, 4) as any as S.Schema<GetProfileRecommendationsRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<GetProfileRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6063,8 +4691,8 @@ export const getRecommender: API.OperationMethod<
   GetRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecommenderRequest,
-  output: GetRecommenderResponse,
+  input: __S(241, __c30, 1) as any as S.Schema<GetRecommenderRequest>,
+  output: __S(246, __c30, 6) as any as S.Schema<GetRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6093,8 +4721,8 @@ export const getRecommenderFilter: API.OperationMethod<
   GetRecommenderFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecommenderFilterRequest,
-  output: GetRecommenderFilterResponse,
+  input: __S(247, __c30, 7) as any as S.Schema<GetRecommenderFilterRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<GetRecommenderFilterResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6123,8 +4751,8 @@ export const getRecommenderSchema: API.OperationMethod<
   GetRecommenderSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRecommenderSchemaRequest,
-  output: GetRecommenderSchemaResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<GetRecommenderSchemaRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<GetRecommenderSchemaResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6153,8 +4781,8 @@ export const getSegmentDefinition: API.OperationMethod<
   GetSegmentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentDefinitionRequest,
-  output: GetSegmentDefinitionResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<GetSegmentDefinitionRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<GetSegmentDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6183,8 +4811,8 @@ export const getSegmentEstimate: API.OperationMethod<
   GetSegmentEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentEstimateRequest,
-  output: GetSegmentEstimateResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<GetSegmentEstimateRequest>,
+  output: __S(254, __c31, 6) as any as S.Schema<GetSegmentEstimateResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6213,8 +4841,8 @@ export const getSegmentMembership: API.OperationMethod<
   GetSegmentMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentMembershipRequest,
-  output: GetSegmentMembershipResponse,
+  input: __S(255, __c31, 7) as any as S.Schema<GetSegmentMembershipRequest>,
+  output: __S(260, __c32, 4) as any as S.Schema<GetSegmentMembershipResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6243,8 +4871,8 @@ export const getSegmentSnapshot: API.OperationMethod<
   GetSegmentSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentSnapshotRequest,
-  output: GetSegmentSnapshotResponse,
+  input: __S(261, __c32, 5) as any as S.Schema<GetSegmentSnapshotRequest>,
+  output: __S(262, __c32, 6) as any as S.Schema<GetSegmentSnapshotResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6274,8 +4902,8 @@ export const getSegmentSubscription: API.OperationMethod<
   GetSegmentSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentSubscriptionRequest,
-  output: GetSegmentSubscriptionResponse,
+  input: __S(263, __c32, 7) as any as S.Schema<GetSegmentSubscriptionRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<GetSegmentSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6308,8 +4936,8 @@ export const getSimilarProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Uuid
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetSimilarProfilesRequest,
-  output: GetSimilarProfilesResponse,
+  input: __S(267, __c33, 3) as any as S.Schema<GetSimilarProfilesRequest>,
+  output: __S(268, __c33, 4) as any as S.Schema<GetSimilarProfilesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6345,8 +4973,8 @@ export const getStreamForSegments: API.OperationMethod<
   GetStreamForSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamForSegmentsRequest,
-  output: GetStreamForSegmentsResponse,
+  input: __S(269, __c33, 5) as any as S.Schema<GetStreamForSegmentsRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<GetStreamForSegmentsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6375,8 +5003,8 @@ export const getUploadJob: API.OperationMethod<
   GetUploadJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUploadJobRequest,
-  output: GetUploadJobResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<GetUploadJobRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<GetUploadJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6406,8 +5034,8 @@ export const getUploadJobPath: API.OperationMethod<
   GetUploadJobPathError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUploadJobPathRequest,
-  output: GetUploadJobPathResponse,
+  input: __S(276, __c34, 4) as any as S.Schema<GetUploadJobPathRequest>,
+  output: __S(277, __c34, 5) as any as S.Schema<GetUploadJobPathResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6436,8 +5064,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkflowRequest,
-  output: GetWorkflowResponse,
+  input: __S(278, __c34, 6) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<GetWorkflowResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6466,8 +5094,8 @@ export const getWorkflowSteps: API.OperationMethod<
   GetWorkflowStepsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkflowStepsRequest,
-  output: GetWorkflowStepsResponse,
+  input: __S(284, __c35, 4) as any as S.Schema<GetWorkflowStepsRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<GetWorkflowStepsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6496,8 +5124,8 @@ export const listAccountIntegrations: API.OperationMethod<
   ListAccountIntegrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountIntegrationsRequest,
-  output: ListAccountIntegrationsResponse,
+  input: __S(289, __c36, 1) as any as S.Schema<ListAccountIntegrationsRequest>,
+  output: __S(291, __c36, 3) as any as S.Schema<ListAccountIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6526,8 +5154,8 @@ export const listCalculatedAttributeDefinitions: API.OperationMethod<
   ListCalculatedAttributeDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCalculatedAttributeDefinitionsRequest,
-  output: ListCalculatedAttributeDefinitionsResponse,
+  input: __S(292, __c36, 4) as any as S.Schema<ListCalculatedAttributeDefinitionsRequest>,
+  output: __S(295, __c36, 7) as any as S.Schema<ListCalculatedAttributeDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6556,8 +5184,8 @@ export const listCalculatedAttributesForProfile: API.OperationMethod<
   ListCalculatedAttributesForProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCalculatedAttributesForProfileRequest,
-  output: ListCalculatedAttributesForProfileResponse,
+  input: __S(296, __c37, 0) as any as S.Schema<ListCalculatedAttributesForProfileRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<ListCalculatedAttributesForProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6588,8 +5216,8 @@ export const listDomainLayouts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LayoutItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDomainLayoutsRequest,
-  output: ListDomainLayoutsResponse,
+  input: __S(299, __c37, 3) as any as S.Schema<ListDomainLayoutsRequest>,
+  output: __S(302, __c37, 6) as any as S.Schema<ListDomainLayoutsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6625,8 +5253,8 @@ export const listDomainObjectTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainObjectTypesListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDomainObjectTypesRequest,
-  output: ListDomainObjectTypesResponse,
+  input: __S(303, __c37, 7) as any as S.Schema<ListDomainObjectTypesRequest>,
+  output: __S(306, __c38, 2) as any as S.Schema<ListDomainObjectTypesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6661,8 +5289,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainsRequest,
-  output: ListDomainsResponse,
+  input: __S(307, __c38, 3) as any as S.Schema<ListDomainsRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<ListDomainsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6692,8 +5320,8 @@ export const listEventStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventStreamSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEventStreamsRequest,
-  output: ListEventStreamsResponse,
+  input: __S(311, __c38, 7) as any as S.Schema<ListEventStreamsRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<ListEventStreamsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6729,8 +5357,8 @@ export const listEventTriggers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventTriggerSummaryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEventTriggersRequest,
-  output: ListEventTriggersResponse,
+  input: __S(316, __c39, 4) as any as S.Schema<ListEventTriggersRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<ListEventTriggersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6766,8 +5394,8 @@ export const listIdentityResolutionJobs: API.OperationMethod<
   ListIdentityResolutionJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIdentityResolutionJobsRequest,
-  output: ListIdentityResolutionJobsResponse,
+  input: __S(320, __c40, 0) as any as S.Schema<ListIdentityResolutionJobsRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<ListIdentityResolutionJobsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6796,8 +5424,8 @@ export const listIntegrations: API.OperationMethod<
   ListIntegrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntegrationsRequest,
-  output: ListIntegrationsResponse,
+  input: __S(324, __c40, 4) as any as S.Schema<ListIntegrationsRequest>,
+  output: __S(325, __c40, 5) as any as S.Schema<ListIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6827,8 +5455,8 @@ export const listObjectTypeAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListObjectTypeAttributeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListObjectTypeAttributesRequest,
-  output: ListObjectTypeAttributesResponse,
+  input: __S(326, __c40, 6) as any as S.Schema<ListObjectTypeAttributesRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<ListObjectTypeAttributesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6863,8 +5491,8 @@ export const listObjectTypeAttributeValues: API.OperationMethod<
   ListObjectTypeAttributeValuesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListObjectTypeAttributeValuesRequest,
-  output: ListObjectTypeAttributeValuesResponse,
+  input: __S(330, __c41, 2) as any as S.Schema<ListObjectTypeAttributeValuesRequest>,
+  output: __S(333, __c41, 5) as any as S.Schema<ListObjectTypeAttributeValuesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6893,8 +5521,8 @@ export const listProfileAttributeValues: API.OperationMethod<
   ListProfileAttributeValuesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProfileAttributeValuesRequest,
-  output: ProfileAttributeValuesResponse,
+  input: __S(334, __c41, 6) as any as S.Schema<ProfileAttributeValuesRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<ProfileAttributeValuesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6923,8 +5551,8 @@ export const listProfileHistoryRecords: API.OperationMethod<
   ListProfileHistoryRecordsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProfileHistoryRecordsRequest,
-  output: ListProfileHistoryRecordsResponse,
+  input: __S(338, __c42, 2) as any as S.Schema<ListProfileHistoryRecordsRequest>,
+  output: __S(341, __c42, 5) as any as S.Schema<ListProfileHistoryRecordsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6953,8 +5581,8 @@ export const listProfileObjects: API.OperationMethod<
   ListProfileObjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProfileObjectsRequest,
-  output: ListProfileObjectsResponse,
+  input: __S(343, __c42, 7) as any as S.Schema<ListProfileObjectsRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<ListProfileObjectsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6983,8 +5611,8 @@ export const listProfileObjectTypes: API.OperationMethod<
   ListProfileObjectTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProfileObjectTypesRequest,
-  output: ListProfileObjectTypesResponse,
+  input: __S(347, __c43, 3) as any as S.Schema<ListProfileObjectTypesRequest>,
+  output: __S(350, __c43, 6) as any as S.Schema<ListProfileObjectTypesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7013,8 +5641,8 @@ export const listProfileObjectTypeTemplates: API.OperationMethod<
   ListProfileObjectTypeTemplatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProfileObjectTypeTemplatesRequest,
-  output: ListProfileObjectTypeTemplatesResponse,
+  input: __S(351, __c43, 7) as any as S.Schema<ListProfileObjectTypeTemplatesRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<ListProfileObjectTypeTemplatesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7044,8 +5672,8 @@ export const listRecommenderFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderFilterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommenderFiltersRequest,
-  output: ListRecommenderFiltersResponse,
+  input: __S(355, __c44, 3) as any as S.Schema<ListRecommenderFiltersRequest>,
+  output: __S(358, __c44, 6) as any as S.Schema<ListRecommenderFiltersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7080,8 +5708,8 @@ export const listRecommenderRecipes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderRecipe
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommenderRecipesRequest,
-  output: ListRecommenderRecipesResponse,
+  input: __S(359, __c44, 7) as any as S.Schema<ListRecommenderRecipesRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<ListRecommenderRecipesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7116,8 +5744,8 @@ export const listRecommenders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommendersRequest,
-  output: ListRecommendersResponse,
+  input: __S(363, __c45, 3) as any as S.Schema<ListRecommendersRequest>,
+  output: __S(366, __c45, 6) as any as S.Schema<ListRecommendersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7153,8 +5781,8 @@ export const listRecommenderSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderSchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommenderSchemasRequest,
-  output: ListRecommenderSchemasResponse,
+  input: __S(367, __c45, 7) as any as S.Schema<ListRecommenderSchemasRequest>,
+  output: __S(370, __c46, 2) as any as S.Schema<ListRecommenderSchemasResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7190,8 +5818,8 @@ export const listRuleBasedMatches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   String1To255
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRuleBasedMatchesRequest,
-  output: ListRuleBasedMatchesResponse,
+  input: __S(371, __c46, 3) as any as S.Schema<ListRuleBasedMatchesRequest>,
+  output: __S(372, __c46, 4) as any as S.Schema<ListRuleBasedMatchesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7227,8 +5855,8 @@ export const listSegmentDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SegmentDefinitionItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSegmentDefinitionsRequest,
-  output: ListSegmentDefinitionsResponse,
+  input: __S(373, __c46, 5) as any as S.Schema<ListSegmentDefinitionsRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<ListSegmentDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7267,8 +5895,8 @@ export const listSegmentSubscriptionEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriptionEventItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSegmentSubscriptionEventsRequest,
-  output: ListSegmentSubscriptionEventsResponse,
+  input: __S(377, __c47, 1) as any as S.Schema<ListSegmentSubscriptionEventsRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<ListSegmentSubscriptionEventsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7302,8 +5930,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(381, __c47, 5) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(382, __c47, 6) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7327,8 +5955,8 @@ export const listUploadJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UploadJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUploadJobsRequest,
-  output: ListUploadJobsResponse,
+  input: __S(383, __c47, 7) as any as S.Schema<ListUploadJobsRequest>,
+  output: __S(386, __c48, 2) as any as S.Schema<ListUploadJobsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7363,8 +5991,8 @@ export const listWorkflows: API.OperationMethod<
   ListWorkflowsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkflowsRequest,
-  output: ListWorkflowsResponse,
+  input: __S(387, __c48, 3) as any as S.Schema<ListWorkflowsRequest>,
+  output: __S(390, __c48, 6) as any as S.Schema<ListWorkflowsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7420,8 +6048,8 @@ export const mergeProfiles: API.OperationMethod<
   MergeProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: MergeProfilesRequest,
-  output: MergeProfilesResponse,
+  input: __S(392, __c49, 0) as any as S.Schema<MergeProfilesRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<MergeProfilesResponse>,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -7449,8 +6077,8 @@ export const putDomainObjectType: API.OperationMethod<
   PutDomainObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDomainObjectTypeRequest,
-  output: PutDomainObjectTypeResponse,
+  input: __S(393, __c49, 1) as any as S.Schema<PutDomainObjectTypeRequest>,
+  output: __S(394, __c49, 2) as any as S.Schema<PutDomainObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7486,8 +6114,8 @@ export const putIntegration: API.OperationMethod<
   PutIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIntegrationRequest,
-  output: PutIntegrationResponse,
+  input: __S(395, __c49, 3) as any as S.Schema<PutIntegrationRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<PutIntegrationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7528,8 +6156,8 @@ export const putProfileObject: API.OperationMethod<
   PutProfileObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutProfileObjectRequest,
-  output: PutProfileObjectResponse,
+  input: __S(396, __c49, 4) as any as S.Schema<PutProfileObjectRequest>,
+  output: __S(397, __c49, 5) as any as S.Schema<PutProfileObjectResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7561,8 +6189,8 @@ export const putProfileObjectType: API.OperationMethod<
   PutProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutProfileObjectTypeRequest,
-  output: PutProfileObjectTypeResponse,
+  input: __S(398, __c49, 6) as any as S.Schema<PutProfileObjectTypeRequest>,
+  output: __S(399, __c49, 7) as any as S.Schema<PutProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7604,8 +6232,8 @@ export const putSegmentSubscription: API.OperationMethod<
   PutSegmentSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSegmentSubscriptionRequest,
-  output: PutSegmentSubscriptionResponse,
+  input: __S(400, __c50, 0) as any as S.Schema<PutSegmentSubscriptionRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<PutSegmentSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7640,8 +6268,8 @@ export const searchProfiles: API.OperationMethod<
   SearchProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchProfilesRequest,
-  output: SearchProfilesResponse,
+  input: __S(403, __c50, 3) as any as S.Schema<SearchProfilesRequest>,
+  output: __S(404, __c50, 4) as any as S.Schema<SearchProfilesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7678,8 +6306,8 @@ export const searchRecommendations: API.OperationMethod<
   SearchRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchRecommendationsRequest,
-  output: SearchRecommendationsResponse,
+  input: __S(407, __c50, 7) as any as S.Schema<SearchRecommendationsRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<SearchRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7708,8 +6336,8 @@ export const startRecommender: API.OperationMethod<
   StartRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartRecommenderRequest,
-  output: StartRecommenderResponse,
+  input: __S(409, __c51, 1) as any as S.Schema<StartRecommenderRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7738,8 +6366,8 @@ export const startUploadJob: API.OperationMethod<
   StartUploadJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartUploadJobRequest,
-  output: StartUploadJobResponse,
+  input: __S(410, __c51, 2) as any as S.Schema<StartUploadJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartUploadJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7768,8 +6396,8 @@ export const stopRecommender: API.OperationMethod<
   StopRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopRecommenderRequest,
-  output: StopRecommenderResponse,
+  input: __S(411, __c51, 3) as any as S.Schema<StopRecommenderRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7798,8 +6426,8 @@ export const stopUploadJob: API.OperationMethod<
   StopUploadJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopUploadJobRequest,
-  output: StopUploadJobResponse,
+  input: __S(412, __c51, 4) as any as S.Schema<StopUploadJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopUploadJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7840,8 +6468,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(413, __c51, 5) as any as S.Schema<TagResourceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7863,8 +6491,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(414, __c51, 6) as any as S.Schema<UntagResourceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7889,8 +6517,8 @@ export const updateCalculatedAttributeDefinition: API.OperationMethod<
   UpdateCalculatedAttributeDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCalculatedAttributeDefinitionRequest,
-  output: UpdateCalculatedAttributeDefinitionResponse,
+  input: __S(415, __c51, 7) as any as S.Schema<UpdateCalculatedAttributeDefinitionRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<UpdateCalculatedAttributeDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7931,8 +6559,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainRequest,
-  output: UpdateDomainResponse,
+  input: __S(417, __c52, 1) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(418, __c52, 2) as any as S.Schema<UpdateDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7962,8 +6590,8 @@ export const updateDomainLayout: API.OperationMethod<
   UpdateDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainLayoutRequest,
-  output: UpdateDomainLayoutResponse,
+  input: __S(419, __c52, 3) as any as S.Schema<UpdateDomainLayoutRequest>,
+  output: __S(420, __c52, 4) as any as S.Schema<UpdateDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -7992,8 +6620,8 @@ export const updateEventTrigger: API.OperationMethod<
   UpdateEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventTriggerRequest,
-  output: UpdateEventTriggerResponse,
+  input: __S(421, __c52, 5) as any as S.Schema<UpdateEventTriggerRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<UpdateEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -8027,8 +6655,8 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProfileRequest,
-  output: UpdateProfileResponse,
+  input: __S(422, __c52, 6) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<UpdateProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -8057,8 +6685,8 @@ export const updateRecommender: API.OperationMethod<
   UpdateRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRecommenderRequest,
-  output: UpdateRecommenderResponse,
+  input: __S(423, __c52, 7) as any as S.Schema<UpdateRecommenderRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<UpdateRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -8081,7 +6709,7 @@ function __c0(j: number): any {
         S.Struct({
           ProfileId: S.String,
           KeyName: S.String,
-          Values: RequestValueList,
+          Values: __S(0, __c0, 0),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
         }).pipe(
           T.all(
@@ -8096,7 +6724,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "AddProfileKeyRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ KeyName: S.optional(S.String), Values: S.optional(RequestValueList) }),
+        S.Struct({ KeyName: S.optional(S.String), Values: S.optional(__S(0, __c0, 0)) }),
       ).annotate({ identifier: "AddProfileKeyResponse" });
     case 3:
       return S.suspend(() =>
@@ -8123,10 +6751,10 @@ function __c0(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Start: S.Number, End: S.optional(S.Number), Unit: RangeUnit }),
+        S.Struct({ Start: S.Number, End: S.optional(S.Number), Unit: S.String }),
       ).annotate({ identifier: "RangeOverride" });
     case 6:
-      return S.suspend(() => S.Struct({ Range: S.optional(RangeOverride) })).annotate({
+      return S.suspend(() => S.Struct({ Range: S.optional(__S(5, __c0, 5)) })).annotate({
         identifier: "ConditionOverrides",
       });
     case 7:
@@ -8134,8 +6762,8 @@ function __c0(j: number): any {
         S.Struct({
           CalculatedAttributeName: S.String.pipe(T.HttpLabel("CalculatedAttributeName")),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          ProfileIds: BatchGetCalculatedAttributeForProfileIdList,
-          ConditionOverrides: S.optional(ConditionOverrides),
+          ProfileIds: __S(0, __c0, 0),
+          ConditionOverrides: S.optional(__S(6, __c0, 6)),
         }).pipe(
           T.all(
             T.Http({
@@ -8163,7 +6791,7 @@ function __c1(j: number): any {
         identifier: "BatchGetCalculatedAttributeForProfileError",
       });
     case 1:
-      return S.Array(BatchGetCalculatedAttributeForProfileError_);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8176,13 +6804,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CalculatedAttributeValue" });
     case 3:
-      return S.Array(CalculatedAttributeValue);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Errors: S.optional(BatchGetCalculatedAttributeForProfileErrorList),
-          CalculatedAttributeValues: S.optional(CalculatedAttributeValueList),
-          ConditionOverrides: S.optional(ConditionOverrides),
+          Errors: S.optional(__S(9, __c1, 1)),
+          CalculatedAttributeValues: S.optional(__S(11, __c1, 3)),
+          ConditionOverrides: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "BatchGetCalculatedAttributeForProfileResponse",
@@ -8191,7 +6819,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          ProfileIds: BatchGetProfileIdList,
+          ProfileIds: __S(0, __c0, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/batch-get-profiles" }),
@@ -8208,7 +6836,7 @@ function __c1(j: number): any {
         S.Struct({ Code: S.String, Message: S.String, ProfileId: S.String }),
       ).annotate({ identifier: "BatchGetProfileError" });
     case 7:
-      return S.Array(BatchGetProfileError_);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -8231,23 +6859,23 @@ function __c2(j: number): any {
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
-      return S.Array(FoundByKeyValue);
+      return S.Array(__S(2, __c0, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
           KeyName: S.optional(S.String),
           KeyValue: S.optional(S.String),
           ProfileId: S.optional(S.String),
-          ContactType: S.optional(ContactType),
+          ContactType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactPreference" });
     case 4:
-      return S.Array(ContactPreference);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Phone: S.optional(PhonePreferenceList),
-          Email: S.optional(EmailPreferenceList),
+          Phone: S.optional(__S(20, __c2, 4)),
+          Email: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "EngagementPreferences" });
     case 6:
@@ -8256,13 +6884,13 @@ function __c2(j: number): any {
           ProfileId: S.optional(S.String),
           AccountNumber: S.optional(SensitiveString),
           AdditionalInformation: S.optional(SensitiveString),
-          PartyType: S.optional(PartyType),
+          PartyType: S.optional(S.String),
           BusinessName: S.optional(SensitiveString),
           FirstName: S.optional(SensitiveString),
           MiddleName: S.optional(SensitiveString),
           LastName: S.optional(SensitiveString),
           BirthDate: S.optional(SensitiveString),
-          Gender: S.optional(Gender),
+          Gender: S.optional(S.String),
           PhoneNumber: S.optional(SensitiveString),
           MobilePhoneNumber: S.optional(SensitiveString),
           HomePhoneNumber: S.optional(SensitiveString),
@@ -8270,20 +6898,20 @@ function __c2(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           PersonalEmailAddress: S.optional(SensitiveString),
           BusinessEmailAddress: S.optional(SensitiveString),
-          Address: S.optional(Address),
-          ShippingAddress: S.optional(Address),
-          MailingAddress: S.optional(Address),
-          BillingAddress: S.optional(Address),
-          Attributes: S.optional(Attributes),
-          FoundByItems: S.optional(FoundByList),
+          Address: S.optional(__S(16, __c2, 0)),
+          ShippingAddress: S.optional(__S(16, __c2, 0)),
+          MailingAddress: S.optional(__S(16, __c2, 0)),
+          BillingAddress: S.optional(__S(16, __c2, 0)),
+          Attributes: S.optional(__S(17, __c2, 1)),
+          FoundByItems: S.optional(__S(18, __c2, 2)),
           PartyTypeString: S.optional(SensitiveString),
           GenderString: S.optional(SensitiveString),
-          ProfileType: S.optional(ProfileType),
-          EngagementPreferences: S.optional(EngagementPreferences),
+          ProfileType: S.optional(S.String),
+          EngagementPreferences: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "Profile" });
     case 7:
-      return S.Array(Profile);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -8291,8 +6919,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Errors: S.optional(BatchGetProfileErrorList),
-          Profiles: S.optional(ProfileList),
+          Errors: S.optional(__S(15, __c1, 7)),
+          Profiles: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "BatchGetProfileResponse" });
     case 1:
@@ -8300,13 +6928,13 @@ function __c3(j: number): any {
         identifier: "BatchPutProfileObjectRequestItem",
       });
     case 2:
-      return S.Array(BatchPutProfileObjectRequestItem);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           ObjectTypeName: S.String,
-          Items: BatchPutProfileObjectRequestItemList,
+          Items: __S(26, __c3, 2),
         }).pipe(
           T.all(
             T.Http({
@@ -8330,7 +6958,7 @@ function __c3(j: number): any {
         },
       );
     case 5:
-      return S.Array(BatchPutProfileObjectResponseItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({ Id: S.String, Code: S.Number, Message: S.optional(S.String) }),
@@ -8338,7 +6966,7 @@ function __c3(j: number): any {
         identifier: "BatchPutProfileObjectErrorItem",
       });
     case 7:
-      return S.Array(BatchPutProfileObjectErrorItem);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -8346,8 +6974,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Successful: S.optional(BatchPutProfileObjectResponseList),
-          Failed: S.optional(BatchPutProfileObjectErrorList),
+          Successful: S.optional(__S(29, __c3, 5)),
+          Failed: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({
         identifier: "BatchPutProfileObjectResponse",
@@ -8357,10 +6985,10 @@ function __c4(j: number): any {
         identifier: "AttributeItem",
       });
     case 2:
-      return S.Array(AttributeItem);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Attributes: AttributeList, Expression: S.String }),
+        S.Struct({ Attributes: __S(34, __c4, 2), Expression: S.String }),
       ).annotate({ identifier: "AttributeDetails" });
     case 4:
       return S.suspend(() => S.Struct({ Start: S.Number, End: S.Number })).annotate({
@@ -8370,22 +6998,22 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Value: S.optional(S.Number),
-          Unit: S.optional(Unit),
-          ValueRange: S.optional(ValueRange),
+          Unit: S.optional(S.String),
+          ValueRange: S.optional(__S(36, __c4, 4)),
           TimestampSource: S.optional(S.String),
           TimestampFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "Range" });
     case 6:
-      return S.suspend(() => S.Struct({ Value: S.String, Operator: Operator })).annotate({
+      return S.suspend(() => S.Struct({ Value: S.String, Operator: S.String })).annotate({
         identifier: "Threshold",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Range: S.optional(Range),
+          Range: S.optional(__S(37, __c4, 5)),
           ObjectCount: S.optional(S.Number),
-          Threshold: S.optional(Threshold),
+          Threshold: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "Conditions" });
   }
@@ -8394,24 +7022,24 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DimensionType: FilterDimensionType, Values: ValueList }),
+        S.Struct({ DimensionType: S.String, Values: __S(0, __c0, 0) }),
       ).annotate({ identifier: "FilterAttributeDimension" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ FilterAttributeDimension.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(40, __c5, 0).pipe(S.optional));
     case 2:
-      return S.suspend(() => S.Struct({ Attributes: AttributeMap })).annotate({
+      return S.suspend(() => S.Struct({ Attributes: __S(41, __c5, 1) })).annotate({
         identifier: "FilterDimension",
       });
     case 3:
-      return S.Array(FilterDimension);
+      return S.Array(__S(42, __c5, 2));
     case 4:
-      return S.suspend(() => S.Struct({ Type: Type, Dimensions: FilterDimensionList })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String, Dimensions: __S(43, __c5, 3) })).annotate({
         identifier: "FilterGroup",
       });
     case 5:
-      return S.Array(FilterGroup);
+      return S.Array(__S(44, __c5, 4));
     case 6:
-      return S.suspend(() => S.Struct({ Include: Include, Groups: GroupList })).annotate({
+      return S.suspend(() => S.Struct({ Include: S.String, Groups: __S(45, __c5, 5) })).annotate({
         identifier: "Filter",
       });
     case 7:
@@ -8421,12 +7049,12 @@ function __c5(j: number): any {
           CalculatedAttributeName: S.String.pipe(T.HttpLabel("CalculatedAttributeName")),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          AttributeDetails: AttributeDetails,
-          Conditions: S.optional(Conditions),
-          Filter: S.optional(Filter),
-          Statistic: Statistic,
+          AttributeDetails: __S(35, __c4, 3),
+          Conditions: S.optional(__S(39, __c4, 7)),
+          Filter: S.optional(__S(46, __c5, 6)),
+          Statistic: S.String,
           UseHistoricalData: S.optional(S.Boolean),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -8457,34 +7085,34 @@ function __c6(j: number): any {
           CalculatedAttributeName: S.optional(S.String),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          AttributeDetails: S.optional(AttributeDetails),
-          Conditions: S.optional(Conditions),
-          Filter: S.optional(Filter),
-          Statistic: S.optional(Statistic),
+          AttributeDetails: S.optional(__S(35, __c4, 3)),
+          Conditions: S.optional(__S(39, __c4, 7)),
+          Filter: S.optional(__S(46, __c5, 6)),
+          Statistic: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UseHistoricalData: S.optional(S.Boolean),
-          Status: S.optional(ReadinessStatus),
-          Readiness: S.optional(Readiness),
-          Tags: S.optional(TagMap),
+          Status: S.optional(S.String),
+          Readiness: S.optional(__S(48, __c6, 0)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "CreateCalculatedAttributeDefinitionResponse",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ DayOfTheWeek: JobScheduleDayOfTheWeek, Time: S.String }),
-      ).annotate({ identifier: "JobSchedule" });
+      return S.suspend(() => S.Struct({ DayOfTheWeek: S.String, Time: S.String })).annotate({
+        identifier: "JobSchedule",
+      });
     case 3:
-      return S.Array(MatchingAttributes);
+      return S.Array(__S(0, __c0, 0));
     case 4:
-      return S.suspend(() => S.Struct({ MatchingAttributesList: MatchingAttributesList })).annotate(
-        { identifier: "Consolidation" },
-      );
+      return S.suspend(() => S.Struct({ MatchingAttributesList: __S(51, __c6, 3) })).annotate({
+        identifier: "Consolidation",
+      });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ConflictResolvingModel: ConflictResolvingModel,
+          ConflictResolvingModel: S.String,
           SourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConflictResolution" });
@@ -8492,8 +7120,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
-          Consolidation: S.optional(Consolidation),
-          ConflictResolution: S.optional(ConflictResolution),
+          Consolidation: S.optional(__S(52, __c6, 4)),
+          ConflictResolution: S.optional(__S(53, __c6, 5)),
           MinAllowedConfidenceScoreForMerging: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoMerging" });
@@ -8506,43 +7134,43 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ S3Exporting: S.optional(S3ExportingConfig) })).annotate({
+      return S.suspend(() => S.Struct({ S3Exporting: S.optional(__S(55, __c6, 7)) })).annotate({
         identifier: "ExportingConfig",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
-          JobSchedule: S.optional(JobSchedule),
-          AutoMerging: S.optional(AutoMerging),
-          ExportingConfig: S.optional(ExportingConfig),
+          JobSchedule: S.optional(__S(50, __c6, 2)),
+          AutoMerging: S.optional(__S(54, __c6, 6)),
+          ExportingConfig: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "MatchingRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ Rule: MatchingRuleAttributeList })).annotate({
+      return S.suspend(() => S.Struct({ Rule: __S(0, __c0, 0) })).annotate({
         identifier: "MatchingRule",
       });
     case 3:
-      return S.Array(MatchingRule);
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AttributeMatchingModel: AttributeMatchingModel,
-          Address: S.optional(AddressList),
-          PhoneNumber: S.optional(PhoneNumberList),
-          EmailAddress: S.optional(EmailList),
+          AttributeMatchingModel: S.String,
+          Address: S.optional(__S(0, __c0, 0)),
+          PhoneNumber: S.optional(__S(0, __c0, 0)),
+          EmailAddress: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "AttributeTypesSelector" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
-          MatchingRules: S.optional(MatchingRules),
+          MatchingRules: S.optional(__S(59, __c7, 3)),
           MaxAllowedRuleLevelForMerging: S.optional(S.Number),
           MaxAllowedRuleLevelForMatching: S.optional(S.Number),
-          AttributeTypesSelector: S.optional(AttributeTypesSelector),
-          ConflictResolution: S.optional(ConflictResolution),
-          ExportingConfig: S.optional(ExportingConfig),
+          AttributeTypesSelector: S.optional(__S(60, __c7, 4)),
+          ConflictResolution: S.optional(__S(53, __c6, 5)),
+          ExportingConfig: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "RuleBasedMatchingRequest" });
     case 6:
@@ -8556,10 +7184,10 @@ function __c7(j: number): any {
           DefaultExpirationDays: S.Number,
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(MatchingRequest),
-          RuleBasedMatching: S.optional(RuleBasedMatchingRequest),
-          DataStore: S.optional(DataStoreRequest),
-          Tags: S.optional(TagMap),
+          Matching: S.optional(__S(57, __c7, 1)),
+          RuleBasedMatching: S.optional(__S(61, __c7, 5)),
+          DataStore: S.optional(__S(62, __c7, 6)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}" }),
@@ -8579,29 +7207,29 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          JobSchedule: S.optional(JobSchedule),
-          AutoMerging: S.optional(AutoMerging),
-          ExportingConfig: S.optional(ExportingConfig),
+          JobSchedule: S.optional(__S(50, __c6, 2)),
+          AutoMerging: S.optional(__S(54, __c6, 6)),
+          ExportingConfig: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "MatchingResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          MatchingRules: S.optional(MatchingRules),
-          Status: S.optional(RuleBasedMatchingStatus),
+          MatchingRules: S.optional(__S(59, __c7, 3)),
+          Status: S.optional(S.String),
           MaxAllowedRuleLevelForMerging: S.optional(S.Number),
           MaxAllowedRuleLevelForMatching: S.optional(S.Number),
-          AttributeTypesSelector: S.optional(AttributeTypesSelector),
-          ConflictResolution: S.optional(ConflictResolution),
-          ExportingConfig: S.optional(ExportingConfig),
+          AttributeTypesSelector: S.optional(__S(60, __c7, 4)),
+          ConflictResolution: S.optional(__S(53, __c6, 5)),
+          ExportingConfig: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "RuleBasedMatchingResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Enabled: S.optional(S.Boolean), Readiness: S.optional(Readiness) }),
+        S.Struct({ Enabled: S.optional(S.Boolean), Readiness: S.optional(__S(48, __c6, 0)) }),
       ).annotate({ identifier: "DataStoreResponse" });
     case 3:
       return S.suspend(() =>
@@ -8610,12 +7238,12 @@ function __c8(j: number): any {
           DefaultExpirationDays: S.Number,
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(MatchingResponse),
-          RuleBasedMatching: S.optional(RuleBasedMatchingResponse),
-          DataStore: S.optional(DataStoreResponse),
+          Matching: S.optional(__S(64, __c8, 0)),
+          RuleBasedMatching: S.optional(__S(65, __c8, 1)),
+          DataStore: S.optional(__S(66, __c8, 2)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "CreateDomainResponse" });
     case 4:
@@ -8626,9 +7254,9 @@ function __c8(j: number): any {
           Description: SensitiveString,
           DisplayName: S.String,
           IsDefault: S.optional(S.Boolean),
-          LayoutType: LayoutType,
+          LayoutType: S.String,
           Layout: SensitiveString,
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/layouts/{LayoutDefinitionName}" }),
@@ -8649,10 +7277,10 @@ function __c8(j: number): any {
           Description: SensitiveString,
           DisplayName: S.String,
           IsDefault: S.optional(S.Boolean),
-          LayoutType: LayoutType,
+          LayoutType: S.String,
           Layout: SensitiveString,
           Version: S.String,
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -8665,7 +7293,7 @@ function __c8(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           Uri: S.String,
           EventStreamName: S.String.pipe(T.HttpLabel("EventStreamName")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -8682,7 +7310,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreateEventStreamRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ EventStreamArn: S.String, Tags: S.optional(TagMap) }),
+        S.Struct({ EventStreamArn: S.String, Tags: S.optional(__S(17, __c2, 1)) }),
       ).annotate({
         identifier: "CreateEventStreamResponse",
       });
@@ -8695,45 +7323,45 @@ function __c9(j: number): any {
         S.Struct({
           Source: S.optional(S.String),
           FieldName: S.optional(S.String),
-          ComparisonOperator: ComparisonOperator,
-          Values: EventTriggerValues,
+          ComparisonOperator: S.String,
+          Values: __S(0, __c0, 0),
         }),
       ).annotate({ identifier: "ObjectAttribute" });
     case 1:
-      return S.Array(ObjectAttribute);
+      return S.Array(__S(72, __c9, 0));
     case 2:
-      return S.suspend(() => S.Struct({ ObjectAttributes: ObjectAttributes })).annotate({
+      return S.suspend(() => S.Struct({ ObjectAttributes: __S(73, __c9, 1) })).annotate({
         identifier: "EventTriggerDimension",
       });
     case 3:
-      return S.Array(EventTriggerDimension);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EventTriggerDimensions: EventTriggerDimensions,
-          LogicalOperator: EventTriggerLogicalOperator,
+          EventTriggerDimensions: __S(75, __c9, 3),
+          LogicalOperator: S.String,
         }),
       ).annotate({ identifier: "EventTriggerCondition" });
     case 5:
-      return S.Array(EventTriggerCondition);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Unit: PeriodUnit,
+          Unit: S.String,
           Value: S.Number,
           MaxInvocationsPerProfile: S.optional(S.Number),
           Unlimited: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Period" });
     case 7:
-      return S.Array(Period);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ EventExpiration: S.optional(S.Number), Periods: S.optional(Periods) }),
+        S.Struct({ EventExpiration: S.optional(S.Number), Periods: S.optional(__S(79, __c9, 7)) }),
       ).annotate({ identifier: "EventTriggerLimits" });
     case 1:
       return S.suspend(() =>
@@ -8742,10 +7370,10 @@ function __c10(j: number): any {
           EventTriggerName: S.String.pipe(T.HttpLabel("EventTriggerName")),
           ObjectTypeName: S.String,
           Description: S.optional(SensitiveString),
-          EventTriggerConditions: EventTriggerConditions,
+          EventTriggerConditions: __S(77, __c9, 5),
           SegmentFilter: S.optional(S.String),
-          EventTriggerLimits: S.optional(EventTriggerLimits),
-          Tags: S.optional(TagMap),
+          EventTriggerLimits: S.optional(__S(80, __c10, 0)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -8768,12 +7396,12 @@ function __c10(j: number): any {
           EventTriggerName: S.optional(S.String),
           ObjectTypeName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          EventTriggerConditions: S.optional(EventTriggerConditions),
+          EventTriggerConditions: S.optional(__S(77, __c9, 5)),
           SegmentFilter: S.optional(S.String),
-          EventTriggerLimits: S.optional(EventTriggerLimits),
+          EventTriggerLimits: S.optional(__S(80, __c10, 0)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "CreateEventTriggerResponse",
@@ -8811,11 +7439,11 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Marketo: S.optional(MarketoSourceProperties),
-          S3: S.optional(S3SourceProperties),
-          Salesforce: S.optional(SalesforceSourceProperties),
-          ServiceNow: S.optional(ServiceNowSourceProperties),
-          Zendesk: S.optional(ZendeskSourceProperties),
+          Marketo: S.optional(__S(84, __c10, 4)),
+          S3: S.optional(__S(85, __c10, 5)),
+          Salesforce: S.optional(__S(86, __c10, 6)),
+          ServiceNow: S.optional(__S(87, __c10, 7)),
+          Zendesk: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({
         identifier: "SourceConnectorProperties",
@@ -8824,40 +7452,40 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConnectorProfileName: S.optional(S.String),
-          ConnectorType: SourceConnectorType,
-          IncrementalPullConfig: S.optional(IncrementalPullConfig),
-          SourceConnectorProperties: SourceConnectorProperties,
+          ConnectorType: S.String,
+          IncrementalPullConfig: S.optional(__S(83, __c10, 3)),
+          SourceConnectorProperties: __S(88, __c11, 0),
         }),
       ).annotate({ identifier: "SourceFlowConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Marketo: S.optional(MarketoConnectorOperator),
-          S3: S.optional(S3ConnectorOperator),
-          Salesforce: S.optional(SalesforceConnectorOperator),
-          ServiceNow: S.optional(ServiceNowConnectorOperator),
-          Zendesk: S.optional(ZendeskConnectorOperator),
+          Marketo: S.optional(S.String),
+          S3: S.optional(S.String),
+          Salesforce: S.optional(S.String),
+          ServiceNow: S.optional(S.String),
+          Zendesk: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorOperator" });
     case 3:
-      return S.Record(OperatorPropertiesKeys, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ConnectorOperator: S.optional(ConnectorOperator),
+          ConnectorOperator: S.optional(__S(90, __c11, 2)),
           DestinationField: S.optional(S.String),
-          SourceFields: SourceFields,
-          TaskProperties: S.optional(TaskPropertiesMap),
-          TaskType: TaskType,
+          SourceFields: __S(0, __c0, 0),
+          TaskProperties: S.optional(__S(91, __c11, 3)),
+          TaskType: S.String,
         }),
       ).annotate({ identifier: "Task" });
     case 5:
-      return S.Array(Task);
+      return S.Array(__S(92, __c11, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ScheduleExpression: S.String,
-          DataPullMode: S.optional(DataPullMode),
+          DataPullMode: S.optional(S.String),
           ScheduleStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ScheduleEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Timezone: S.optional(S.String),
@@ -8868,16 +7496,16 @@ function __c11(j: number): any {
         identifier: "ScheduledTriggerProperties",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Scheduled: S.optional(ScheduledTriggerProperties) }),
-      ).annotate({ identifier: "TriggerProperties" });
+      return S.suspend(() => S.Struct({ Scheduled: S.optional(__S(94, __c11, 6)) })).annotate({
+        identifier: "TriggerProperties",
+      });
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TriggerType: TriggerType, TriggerProperties: S.optional(TriggerProperties) }),
+        S.Struct({ TriggerType: S.String, TriggerProperties: S.optional(__S(95, __c11, 7)) }),
       ).annotate({ identifier: "TriggerConfig" });
     case 1:
       return S.suspend(() =>
@@ -8885,9 +7513,9 @@ function __c12(j: number): any {
           Description: S.optional(S.String),
           FlowName: S.String,
           KmsArn: S.String,
-          SourceFlowConfig: SourceFlowConfig,
-          Tasks: Tasks,
-          TriggerConfig: TriggerConfig,
+          SourceFlowConfig: __S(89, __c11, 1),
+          Tasks: __S(93, __c11, 5),
+          TriggerConfig: __S(96, __c12, 0),
         }),
       ).annotate({ identifier: "FlowDefinition" });
     case 2:
@@ -8898,24 +7526,24 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Batch" });
     case 3:
-      return S.Array(Batch);
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ FlowDefinition: FlowDefinition, Batches: S.optional(Batches) }),
+        S.Struct({ FlowDefinition: __S(97, __c12, 1), Batches: S.optional(__S(99, __c12, 3)) }),
       ).annotate({ identifier: "AppflowIntegration" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ AppflowIntegration: S.optional(AppflowIntegration) }),
+        S.Struct({ AppflowIntegration: S.optional(__S(100, __c12, 4)) }),
       ).annotate({ identifier: "IntegrationConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          WorkflowType: WorkflowType,
-          IntegrationConfig: IntegrationConfig,
+          WorkflowType: S.String,
+          IntegrationConfig: __S(101, __c12, 5),
           ObjectTypeName: S.String,
           RoleArn: S.String,
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/workflows/integrations" }),
@@ -8943,13 +7571,13 @@ function __c13(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           AccountNumber: S.optional(SensitiveString),
           AdditionalInformation: S.optional(SensitiveString),
-          PartyType: S.optional(PartyType),
+          PartyType: S.optional(S.String),
           BusinessName: S.optional(SensitiveString),
           FirstName: S.optional(SensitiveString),
           MiddleName: S.optional(SensitiveString),
           LastName: S.optional(SensitiveString),
           BirthDate: S.optional(SensitiveString),
-          Gender: S.optional(Gender),
+          Gender: S.optional(S.String),
           PhoneNumber: S.optional(SensitiveString),
           MobilePhoneNumber: S.optional(SensitiveString),
           HomePhoneNumber: S.optional(SensitiveString),
@@ -8957,15 +7585,15 @@ function __c13(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           PersonalEmailAddress: S.optional(SensitiveString),
           BusinessEmailAddress: S.optional(SensitiveString),
-          Address: S.optional(Address),
-          ShippingAddress: S.optional(Address),
-          MailingAddress: S.optional(Address),
-          BillingAddress: S.optional(Address),
-          Attributes: S.optional(Attributes),
+          Address: S.optional(__S(16, __c2, 0)),
+          ShippingAddress: S.optional(__S(16, __c2, 0)),
+          MailingAddress: S.optional(__S(16, __c2, 0)),
+          BillingAddress: S.optional(__S(16, __c2, 0)),
+          Attributes: S.optional(__S(17, __c2, 1)),
           PartyTypeString: S.optional(SensitiveString),
           GenderString: S.optional(SensitiveString),
-          ProfileType: S.optional(ProfileType),
-          EngagementPreferences: S.optional(EngagementPreferences),
+          ProfileType: S.optional(S.String),
+          EngagementPreferences: S.optional(__S(21, __c2, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/profiles" }),
@@ -8990,9 +7618,9 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "EventParameters" });
     case 3:
-      return S.Array(EventParameters);
+      return S.Array(__S(106, __c13, 2));
     case 4:
-      return S.suspend(() => S.Struct({ EventParametersList: EventParametersList })).annotate({
+      return S.suspend(() => S.Struct({ EventParametersList: __S(107, __c13, 3) })).annotate({
         identifier: "EventsConfig",
       });
     case 5:
@@ -9000,30 +7628,30 @@ function __c13(j: number): any {
         identifier: "InferenceConfig",
       });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ ColumnNamesList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(0, __c0, 0).pipe(S.optional));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, CapType: DiversityCapType, Target: S.String }),
+        S.Struct({ Name: S.String, CapType: S.String, Target: S.String }),
       ).annotate({ identifier: "DiversityColumn" });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DiversityColumn);
+      return S.Array(__S(111, __c13, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ DiversityColumns: S.optional(DiversityColumnsList) }),
+        S.Struct({ DiversityColumns: S.optional(__S(112, __c14, 0)) }),
       ).annotate({ identifier: "DiversityConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          EventsConfig: S.optional(EventsConfig),
+          EventsConfig: S.optional(__S(108, __c13, 4)),
           TrainingFrequency: S.optional(S.Number),
-          InferenceConfig: S.optional(InferenceConfig),
-          IncludedColumns: S.optional(IncludedColumns),
-          ExcludedColumns: S.optional(IncludedColumns),
-          DiversityConfig: S.optional(DiversityConfig),
+          InferenceConfig: S.optional(__S(109, __c13, 5)),
+          IncludedColumns: S.optional(__S(110, __c13, 6)),
+          ExcludedColumns: S.optional(__S(110, __c13, 6)),
+          DiversityConfig: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({ identifier: "RecommenderConfig" });
     case 3:
@@ -9031,11 +7659,11 @@ function __c14(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           RecommenderName: S.String.pipe(T.HttpLabel("RecommenderName")),
-          RecommenderRecipeName: RecommenderRecipeName,
-          RecommenderConfig: S.optional(RecommenderConfig),
+          RecommenderRecipeName: S.String,
+          RecommenderConfig: S.optional(__S(114, __c14, 2)),
           Description: S.optional(SensitiveString),
           RecommenderSchemaName: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/recommenders/{RecommenderName}" }),
@@ -9049,7 +7677,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "CreateRecommenderRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ RecommenderArn: S.String, Tags: S.optional(TagMap) }),
+        S.Struct({ RecommenderArn: S.String, Tags: S.optional(__S(17, __c2, 1)) }),
       ).annotate({
         identifier: "CreateRecommenderResponse",
       });
@@ -9061,7 +7689,7 @@ function __c14(j: number): any {
           RecommenderFilterExpression: SensitiveString,
           RecommenderSchemaName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -9080,7 +7708,7 @@ function __c14(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ RecommenderFilterArn: S.String, Tags: S.optional(TagMap) }),
+        S.Struct({ RecommenderFilterArn: S.String, Tags: S.optional(__S(17, __c2, 1)) }),
       ).annotate({
         identifier: "CreateRecommenderFilterResponse",
       });
@@ -9088,8 +7716,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TargetFieldName: S.String,
-          ContentType: S.optional(ContentType),
-          FeatureType: S.optional(FeatureType),
+          ContentType: S.optional(S.String),
+          FeatureType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommenderSchemaField" });
   }
@@ -9097,16 +7725,16 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RecommenderSchemaField);
+      return S.Array(__S(119, __c14, 7));
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ RecommenderSchemaFieldList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(120, __c15, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           RecommenderSchemaName: S.String.pipe(T.HttpLabel("RecommenderSchemaName")),
-          Fields: RecommenderSchemaFields,
-          Tags: S.optional(TagMap),
+          Fields: __S(121, __c15, 1),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -9128,37 +7756,37 @@ function __c15(j: number): any {
         S.Struct({
           RecommenderSchemaArn: S.String,
           RecommenderSchemaName: S.String,
-          Fields: RecommenderSchemaFields,
+          Fields: __S(121, __c15, 1),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: RecommenderSchemaStatus,
-          Tags: S.optional(TagMap),
+          Status: S.String,
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "CreateRecommenderSchemaResponse",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ DimensionType: StringDimensionType, Values: Values }),
+        S.Struct({ DimensionType: S.String, Values: __S(0, __c0, 0) }),
       ).annotate({ identifier: "ProfileDimension" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ DimensionType: StringDimensionType, Values: ExtraLengthValues }),
+        S.Struct({ DimensionType: S.String, Values: __S(0, __c0, 0) }),
       ).annotate({
         identifier: "ExtraLengthValueProfileDimension",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ DimensionType: DateDimensionType, Values: DateValues }),
+        S.Struct({ DimensionType: S.String, Values: __S(0, __c0, 0) }),
       ).annotate({ identifier: "DateDimension" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          City: S.optional(ProfileDimension),
-          Country: S.optional(ProfileDimension),
-          County: S.optional(ProfileDimension),
-          PostalCode: S.optional(ProfileDimension),
-          Province: S.optional(ProfileDimension),
-          State: S.optional(ProfileDimension),
+          City: S.optional(__S(124, __c15, 4)),
+          Country: S.optional(__S(124, __c15, 4)),
+          County: S.optional(__S(124, __c15, 4)),
+          PostalCode: S.optional(__S(124, __c15, 4)),
+          Province: S.optional(__S(124, __c15, 4)),
+          State: S.optional(__S(124, __c15, 4)),
         }),
       ).annotate({ identifier: "AddressDimension" });
   }
@@ -9166,59 +7794,59 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ AttributeDimension.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(124, __c15, 4).pipe(S.optional));
     case 1:
-      return S.Array(ProfileType);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
-        S.Struct({ DimensionType: ProfileTypeDimensionType, Values: ProfileTypeValues }),
+        S.Struct({ DimensionType: S.String, Values: __S(129, __c16, 1) }),
       ).annotate({ identifier: "ProfileTypeDimension" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AccountNumber: S.optional(ProfileDimension),
-          AdditionalInformation: S.optional(ExtraLengthValueProfileDimension),
-          FirstName: S.optional(ProfileDimension),
-          LastName: S.optional(ProfileDimension),
-          MiddleName: S.optional(ProfileDimension),
-          GenderString: S.optional(ProfileDimension),
-          PartyTypeString: S.optional(ProfileDimension),
-          BirthDate: S.optional(DateDimension),
-          PhoneNumber: S.optional(ProfileDimension),
-          BusinessName: S.optional(ProfileDimension),
-          BusinessPhoneNumber: S.optional(ProfileDimension),
-          HomePhoneNumber: S.optional(ProfileDimension),
-          MobilePhoneNumber: S.optional(ProfileDimension),
-          EmailAddress: S.optional(ProfileDimension),
-          PersonalEmailAddress: S.optional(ProfileDimension),
-          BusinessEmailAddress: S.optional(ProfileDimension),
-          Address: S.optional(AddressDimension),
-          ShippingAddress: S.optional(AddressDimension),
-          MailingAddress: S.optional(AddressDimension),
-          BillingAddress: S.optional(AddressDimension),
-          Attributes: S.optional(CustomAttributes),
-          ProfileType: S.optional(ProfileTypeDimension),
+          AccountNumber: S.optional(__S(124, __c15, 4)),
+          AdditionalInformation: S.optional(__S(125, __c15, 5)),
+          FirstName: S.optional(__S(124, __c15, 4)),
+          LastName: S.optional(__S(124, __c15, 4)),
+          MiddleName: S.optional(__S(124, __c15, 4)),
+          GenderString: S.optional(__S(124, __c15, 4)),
+          PartyTypeString: S.optional(__S(124, __c15, 4)),
+          BirthDate: S.optional(__S(126, __c15, 6)),
+          PhoneNumber: S.optional(__S(124, __c15, 4)),
+          BusinessName: S.optional(__S(124, __c15, 4)),
+          BusinessPhoneNumber: S.optional(__S(124, __c15, 4)),
+          HomePhoneNumber: S.optional(__S(124, __c15, 4)),
+          MobilePhoneNumber: S.optional(__S(124, __c15, 4)),
+          EmailAddress: S.optional(__S(124, __c15, 4)),
+          PersonalEmailAddress: S.optional(__S(124, __c15, 4)),
+          BusinessEmailAddress: S.optional(__S(124, __c15, 4)),
+          Address: S.optional(__S(127, __c15, 7)),
+          ShippingAddress: S.optional(__S(127, __c15, 7)),
+          MailingAddress: S.optional(__S(127, __c15, 7)),
+          BillingAddress: S.optional(__S(127, __c15, 7)),
+          Attributes: S.optional(__S(128, __c16, 0)),
+          ProfileType: S.optional(__S(130, __c16, 2)),
         }),
       ).annotate({ identifier: "ProfileAttributes" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DimensionType: AttributeDimensionType,
-          Values: Values,
-          ConditionOverrides: S.optional(ConditionOverrides),
+          DimensionType: S.String,
+          Values: __S(0, __c0, 0),
+          ConditionOverrides: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "CalculatedAttributeDimension",
       });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ CalculatedAttributeDimension.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(132, __c16, 4).pipe(S.optional));
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ProfileAttributes: ProfileAttributes }),
-        /*@__PURE__*/ S.Struct({ CalculatedAttributes: CalculatedCustomAttributes }),
+        /*@__PURE__*/ S.Struct({ ProfileAttributes: __S(131, __c16, 3) }),
+        /*@__PURE__*/ S.Struct({ CalculatedAttributes: __S(133, __c16, 5) }),
       ]);
     case 7:
-      return S.Array(Dimension);
+      return S.Array(__S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
@@ -9228,35 +7856,35 @@ function __c17(j: number): any {
         identifier: "SourceSegment",
       });
     case 1:
-      return S.Array(SourceSegment);
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(DimensionList),
-          SourceSegments: S.optional(SourceSegmentList),
-          SourceType: S.optional(IncludeOptions),
-          Type: S.optional(IncludeOptions),
+          Dimensions: S.optional(__S(135, __c16, 7)),
+          SourceSegments: S.optional(__S(137, __c17, 1)),
+          SourceType: S.optional(S.String),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Group" });
     case 3:
-      return S.Array(Group);
+      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(SegmentGroupList), Include: S.optional(IncludeOptions) }),
+        S.Struct({ Groups: S.optional(__S(139, __c17, 3)), Include: S.optional(S.String) }),
       ).annotate({ identifier: "SegmentGroup" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          DataType: S.optional(SegmentSortDataType),
-          Order: SegmentSortOrder,
-          Type: S.optional(SortAttributeType),
+          DataType: S.optional(S.String),
+          Order: S.String,
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SortAttribute" });
     case 6:
-      return S.Array(SortAttribute);
+      return S.Array(__S(141, __c17, 5));
     case 7:
-      return S.suspend(() => S.Struct({ Attributes: SortAttributeList })).annotate({
+      return S.suspend(() => S.Struct({ Attributes: __S(142, __c17, 6) })).annotate({
         identifier: "SegmentSort",
       });
   }
@@ -9270,10 +7898,10 @@ function __c18(j: number): any {
           SegmentDefinitionName: S.String.pipe(T.HttpLabel("SegmentDefinitionName")),
           DisplayName: S.String,
           Description: S.optional(SensitiveString),
-          SegmentGroups: S.optional(SegmentGroup),
+          SegmentGroups: S.optional(__S(140, __c17, 4)),
           SegmentSqlQuery: S.optional(SensitiveString),
-          SegmentSort: S.optional(SegmentSort),
-          Tags: S.optional(TagMap),
+          SegmentSort: S.optional(__S(143, __c17, 7)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -9298,7 +7926,7 @@ function __c18(j: number): any {
           Description: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SegmentDefinitionArn: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "CreateSegmentDefinitionResponse",
@@ -9307,7 +7935,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          SegmentQuery: S.optional(SegmentGroupStructure),
+          SegmentQuery: S.optional(__S(140, __c17, 4)),
           SegmentSqlQuery: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -9337,7 +7965,7 @@ function __c18(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           SegmentDefinitionName: S.String.pipe(T.HttpLabel("SegmentDefinitionName")),
-          DataFormat: DataFormat,
+          DataFormat: S.String,
           EncryptionKey: S.optional(S.String),
           RoleArn: S.optional(S.String),
           DestinationUri: S.optional(S.String),
@@ -9366,11 +7994,11 @@ function __c18(j: number): any {
         S.Struct({
           Source: S.optional(S.String),
           Target: S.optional(S.String),
-          ContentType: S.optional(FieldContentType),
+          ContentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectTypeField" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ObjectTypeField.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(150, __c18, 6).pipe(S.optional));
   }
 }
 function __c19(j: number): any {
@@ -9380,7 +8008,7 @@ function __c19(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           DisplayName: S.String,
-          Fields: FieldMap,
+          Fields: __S(151, __c18, 7),
           UniqueKey: S.String,
           DataExpiry: S.optional(S.Number),
         }).pipe(
@@ -9568,7 +8196,7 @@ function __c20(j: number): any {
         S.Struct({
           ProfileId: S.String,
           KeyName: S.String,
-          Values: RequestValueList,
+          Values: __S(0, __c0, 0),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
         }).pipe(
           T.all(
@@ -9761,7 +8389,10 @@ function __c22(j: number): any {
       return S.Array(SensitiveString);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Objects: Objects, DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
+        S.Struct({
+          Objects: __S(177, __c22, 1),
+          DomainName: S.String.pipe(T.HttpLabel("DomainName")),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/detect/object-types" }),
             svc,
@@ -9777,33 +8408,33 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          StandardIdentifiers: S.optional(StandardIdentifierList),
-          FieldNames: S.optional(FieldNameList),
+          StandardIdentifiers: S.optional(__S(129, __c16, 1)),
+          FieldNames: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ObjectTypeKey" });
     case 4:
-      return S.Array(ObjectTypeKey);
+      return S.Array(__S(179, __c22, 3));
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ ObjectTypeKeyList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(180, __c22, 4).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
           SourceLastUpdatedTimestampFormat: S.optional(S.String),
-          Fields: S.optional(FieldMap),
-          Keys: S.optional(KeyMap),
+          Fields: S.optional(__S(151, __c18, 7)),
+          Keys: S.optional(__S(181, __c22, 5)),
         }),
       ).annotate({
         identifier: "DetectedProfileObjectType",
       });
     case 7:
-      return S.Array(DetectedProfileObjectType);
+      return S.Array(__S(182, __c22, 6));
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DetectedProfileObjectTypes: S.optional(DetectedProfileObjectTypes) }),
+        S.Struct({ DetectedProfileObjectTypes: S.optional(__S(183, __c22, 7)) }),
       ).annotate({
         identifier: "DetectProfileObjectTypeResponse",
       });
@@ -9826,8 +8457,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          Consolidation: Consolidation,
-          ConflictResolution: ConflictResolution,
+          Consolidation: __S(52, __c6, 4),
+          ConflictResolution: __S(53, __c6, 5),
           MinAllowedConfidenceScoreForMerging: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -9885,14 +8516,14 @@ function __c23(j: number): any {
           Description: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Statistic: S.optional(Statistic),
-          Filter: S.optional(Filter),
-          Conditions: S.optional(Conditions),
-          AttributeDetails: S.optional(AttributeDetails),
+          Statistic: S.optional(S.String),
+          Filter: S.optional(__S(46, __c5, 6)),
+          Conditions: S.optional(__S(39, __c4, 7)),
+          AttributeDetails: S.optional(__S(35, __c4, 3)),
           UseHistoricalData: S.optional(S.Boolean),
-          Status: S.optional(ReadinessStatus),
-          Readiness: S.optional(Readiness),
-          Tags: S.optional(TagMap),
+          Status: S.optional(S.String),
+          Readiness: S.optional(__S(48, __c6, 0)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "GetCalculatedAttributeDefinitionResponse",
@@ -9964,13 +8595,13 @@ function __c24(j: number): any {
           DefaultExpirationDays: S.optional(S.Number),
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Stats: S.optional(DomainStats),
-          Matching: S.optional(MatchingResponse),
-          RuleBasedMatching: S.optional(RuleBasedMatchingResponse),
-          DataStore: S.optional(DataStoreResponse),
+          Stats: S.optional(__S(193, __c24, 1)),
+          Matching: S.optional(__S(64, __c8, 0)),
+          RuleBasedMatching: S.optional(__S(65, __c8, 1)),
+          DataStore: S.optional(__S(66, __c8, 2)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
     case 3:
@@ -9996,12 +8627,12 @@ function __c24(j: number): any {
           Description: SensitiveString,
           DisplayName: S.String,
           IsDefault: S.optional(S.Boolean),
-          LayoutType: LayoutType,
+          LayoutType: S.String,
           Layout: SensitiveString,
           Version: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "GetDomainLayoutResponse" });
     case 5:
@@ -10030,12 +8661,12 @@ function __c24(j: number): any {
         S.Struct({
           Source: S.String,
           Target: S.String,
-          ContentType: S.optional(ContentType),
-          FeatureType: S.optional(FeatureType),
+          ContentType: S.optional(S.String),
+          FeatureType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainObjectTypeField" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ DomainObjectTypeField.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(198, __c24, 6).pipe(S.optional));
   }
 }
 function __c25(j: number): any {
@@ -10046,10 +8677,10 @@ function __c25(j: number): any {
           ObjectTypeName: S.String,
           Description: S.optional(SensitiveString),
           EncryptionKey: S.optional(S.String),
-          Fields: S.optional(DomainObjectTypeFields),
+          Fields: S.optional(__S(199, __c24, 7)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "GetDomainObjectTypeResponse",
@@ -10074,7 +8705,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Uri: S.String,
-          Status: EventStreamDestinationStatus,
+          Status: S.String,
           UnhealthySince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Message: S.optional(S.String),
         }),
@@ -10087,10 +8718,10 @@ function __c25(j: number): any {
           DomainName: S.String,
           EventStreamArn: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          State: EventStreamState,
+          State: S.String,
           StoppedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DestinationDetails: EventStreamDestinationDetails,
-          Tags: S.optional(TagMap),
+          DestinationDetails: __S(202, __c25, 2),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "GetEventStreamResponse" });
     case 4:
@@ -10118,12 +8749,12 @@ function __c25(j: number): any {
           EventTriggerName: S.optional(S.String),
           ObjectTypeName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          EventTriggerConditions: S.optional(EventTriggerConditions),
+          EventTriggerConditions: S.optional(__S(77, __c9, 5)),
           SegmentFilter: S.optional(S.String),
-          EventTriggerLimits: S.optional(EventTriggerLimits),
+          EventTriggerLimits: S.optional(__S(80, __c10, 0)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "GetEventTriggerResponse" });
     case 6:
@@ -10156,7 +8787,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ S3Exporting: S.optional(S3ExportingLocation) })).annotate({
+      return S.suspend(() => S.Struct({ S3Exporting: S.optional(__S(207, __c25, 7)) })).annotate({
         identifier: "ExportingLocation",
       });
     case 1:
@@ -10172,15 +8803,15 @@ function __c26(j: number): any {
         S.Struct({
           DomainName: S.optional(S.String),
           JobId: S.optional(S.String),
-          Status: S.optional(IdentityResolutionJobStatus),
+          Status: S.optional(S.String),
           Message: S.optional(S.String),
           JobStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           JobEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           JobExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AutoMerging: S.optional(AutoMerging),
-          ExportingLocation: S.optional(ExportingLocation),
-          JobStats: S.optional(JobStats),
+          AutoMerging: S.optional(__S(54, __c6, 6)),
+          ExportingLocation: S.optional(__S(208, __c26, 0)),
+          JobStats: S.optional(__S(209, __c26, 1)),
         }),
       ).annotate({
         identifier: "GetIdentityResolutionJobResponse",
@@ -10208,13 +8839,13 @@ function __c26(j: number): any {
           ObjectTypeName: S.optional(S.String),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(TagMap),
-          ObjectTypeNames: S.optional(ObjectTypeNames),
+          Tags: S.optional(__S(17, __c2, 1)),
+          ObjectTypeNames: S.optional(__S(212, __c26, 4)),
           WorkflowId: S.optional(S.String),
           IsUnstructured: S.optional(S.Boolean),
           RoleArn: S.optional(S.String),
-          EventTriggerNames: S.optional(EventTriggerNames),
-          Scope: S.optional(Scope),
+          EventTriggerNames: S.optional(__S(0, __c0, 0)),
+          Scope: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIntegrationResponse" });
     case 6:
@@ -10238,7 +8869,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MatchId: S.optional(S.String),
-          ProfileIds: S.optional(ProfileIdList),
+          ProfileIds: S.optional(__S(0, __c0, 0)),
           ConfidenceScore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MatchItem" });
@@ -10247,14 +8878,14 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MatchItem);
+      return S.Array(__S(215, __c26, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MatchGenerationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           PotentialMatches: S.optional(S.Number),
-          Matches: S.optional(MatchesList),
+          Matches: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "GetMatchesResponse" });
     case 2:
@@ -10292,7 +8923,7 @@ function __c27(j: number): any {
           Minimum: S.Number,
           Average: S.Number,
           StandardDeviation: S.Number,
-          Percentiles: GetObjectTypeAttributeStatisticsPercentiles,
+          Percentiles: __S(219, __c27, 3),
         }),
       ).annotate({
         identifier: "GetObjectTypeAttributeStatisticsStats",
@@ -10300,7 +8931,7 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Statistics: GetObjectTypeAttributeStatisticsStats,
+          Statistics: __S(220, __c27, 4),
           CalculatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
@@ -10335,7 +8966,7 @@ function __c27(j: number): any {
           ObjectTypeName: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ActionType: ActionType,
+          ActionType: S.String,
           ProfileObjectUniqueKey: S.optional(S.String),
           Content: S.optional(SensitiveString),
           PerformedBy: S.optional(S.String),
@@ -10378,11 +9009,11 @@ function __c28(j: number): any {
           MaxAvailableProfileObjectCount: S.optional(S.Number),
           MaxProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
-          Fields: S.optional(FieldMap),
-          Keys: S.optional(KeyMap),
+          Fields: S.optional(__S(151, __c18, 7)),
+          Keys: S.optional(__S(181, __c22, 5)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "GetProfileObjectTypeResponse",
@@ -10410,8 +9041,8 @@ function __c28(j: number): any {
           SourceObject: S.optional(S.String),
           AllowProfileCreation: S.optional(S.Boolean),
           SourceLastUpdatedTimestampFormat: S.optional(S.String),
-          Fields: S.optional(FieldMap),
-          Keys: S.optional(KeyMap),
+          Fields: S.optional(__S(151, __c18, 7)),
+          Keys: S.optional(__S(181, __c22, 5)),
         }),
       ).annotate({
         identifier: "GetProfileObjectTypeTemplateResponse",
@@ -10420,15 +9051,15 @@ function __c28(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(RecommenderFilterValues) }),
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(228, __c28, 4)) }),
       ).annotate({ identifier: "RecommenderFilter" });
     case 6:
-      return S.Array(RecommenderFilter);
+      return S.Array(__S(229, __c28, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Values: S.optional(RecommenderFilterValues),
+          Values: S.optional(__S(228, __c28, 4)),
           PromotionName: S.optional(S.String),
           PercentPromotedItems: S.optional(S.Number),
         }),
@@ -10440,16 +9071,16 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RecommenderPromotionalFilter);
+      return S.Array(__S(231, __c28, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({ MetadataColumns: S.optional(MetadataColumnsList) }),
-      ).annotate({ identifier: "MetadataConfig" });
+      return S.suspend(() => S.Struct({ MetadataColumns: S.optional(__S(0, __c0, 0)) })).annotate({
+        identifier: "MetadataConfig",
+      });
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Enabled: S.Boolean, Values: S.optional(DiversityValuesMap) }),
+        S.Struct({ Enabled: S.Boolean, Values: S.optional(__S(234, __c29, 2)) }),
       ).annotate({
         identifier: "RecommendationDiversityConfig",
       });
@@ -10459,13 +9090,13 @@ function __c29(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           ProfileId: S.String.pipe(T.HttpLabel("ProfileId")),
           RecommenderName: S.String,
-          Context: S.optional(RecommenderContext),
-          RecommenderFilters: S.optional(RecommenderFilters),
-          RecommenderPromotionalFilters: S.optional(RecommenderPromotionalFilters),
-          CandidateIds: S.optional(CandidateIdList),
+          Context: S.optional(__S(212, __c26, 4)),
+          RecommenderFilters: S.optional(__S(230, __c28, 6)),
+          RecommenderPromotionalFilters: S.optional(__S(232, __c29, 0)),
+          CandidateIds: S.optional(__S(0, __c0, 0)),
           MaxResults: S.optional(S.Number),
-          MetadataConfig: S.optional(MetadataConfig),
-          DiversityConfig: S.optional(RecommendationDiversityConfig),
+          MetadataConfig: S.optional(__S(233, __c29, 1)),
+          DiversityConfig: S.optional(__S(235, __c29, 3)),
         }).pipe(
           T.all(
             T.Http({
@@ -10497,21 +9128,23 @@ function __c29(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Price: S.optional(SensitiveString),
-          Attributes: S.optional(Attributes),
+          Attributes: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "CatalogItem" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ CatalogItem: S.optional(CatalogItem), Score: S.optional(S.Number) }),
+        S.Struct({ CatalogItem: S.optional(__S(237, __c29, 5)), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "Recommendation" });
     case 7:
-      return S.Array(Recommendation);
+      return S.Array(__S(238, __c29, 6));
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Recommendations: S.optional(Recommendations) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Recommendations: S.optional(__S(239, __c29, 7)) }),
+      ).annotate({
         identifier: "GetProfileRecommendationsResponse",
       });
     case 1:
@@ -10534,8 +9167,8 @@ function __c30(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          RecommenderConfig: S.optional(RecommenderConfig),
-          Status: S.optional(RecommenderStatus),
+          RecommenderConfig: S.optional(__S(114, __c14, 2)),
+          Status: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           FailureReason: S.optional(S.String),
@@ -10543,33 +9176,33 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "RecommenderUpdate" });
     case 3:
-      return S.Record(TrainingMetricName, /*@__PURE__*/ S.Number.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Metrics: S.optional(Metrics),
+          Metrics: S.optional(__S(243, __c30, 3)),
           RecommenderVersionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrainingMetrics" });
     case 5:
-      return S.Array(TrainingMetrics);
+      return S.Array(__S(244, __c30, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           RecommenderName: S.String,
-          RecommenderRecipeName: RecommenderRecipeName,
+          RecommenderRecipeName: S.String,
           RecommenderSchemaName: S.optional(S.String),
-          RecommenderConfig: S.optional(RecommenderConfig),
+          RecommenderConfig: S.optional(__S(114, __c14, 2)),
           Description: S.optional(SensitiveString),
-          Status: S.optional(RecommenderStatus),
+          Status: S.optional(S.String),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           FailureReason: S.optional(S.String),
-          LatestRecommenderUpdate: S.optional(RecommenderUpdate),
+          LatestRecommenderUpdate: S.optional(__S(242, __c30, 2)),
           ActiveRecommenderVersionName: S.optional(S.String),
-          TrainingMetrics: S.optional(TrainingMetricsList),
-          Tags: S.optional(TagMap),
+          TrainingMetrics: S.optional(__S(245, __c30, 5)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "GetRecommenderResponse" });
     case 7:
@@ -10604,10 +9237,10 @@ function __c31(j: number): any {
           RecommenderFilterExpression: SensitiveString,
           RecommenderSchemaName: S.optional(S.String),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: RecommenderFilterStatus,
+          Status: S.String,
           Description: S.optional(SensitiveString),
           FailureReason: S.optional(S.String),
-          Tags: TagMap,
+          Tags: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "GetRecommenderFilterResponse",
@@ -10637,9 +9270,9 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RecommenderSchemaName: S.String,
-          Fields: RecommenderSchemaFields,
+          Fields: __S(121, __c15, 1),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: RecommenderSchemaStatus,
+          Status: S.String,
         }),
       ).annotate({
         identifier: "GetRecommenderSchemaResponse",
@@ -10671,13 +9304,13 @@ function __c31(j: number): any {
           SegmentDefinitionName: S.optional(S.String),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          SegmentGroups: S.optional(SegmentGroup),
-          SegmentSort: S.optional(SegmentSort),
+          SegmentGroups: S.optional(__S(140, __c17, 4)),
+          SegmentSort: S.optional(__S(143, __c17, 7)),
           SegmentDefinitionArn: S.String,
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
           SegmentSqlQuery: S.optional(SensitiveString),
-          SegmentType: S.optional(SegmentType),
+          SegmentType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetSegmentDefinitionResponse",
@@ -10705,7 +9338,7 @@ function __c31(j: number): any {
         S.Struct({
           DomainName: S.optional(S.String),
           EstimateId: S.optional(S.String),
-          Status: S.optional(EstimateStatus),
+          Status: S.optional(S.String),
           Estimate: S.optional(S.String),
           Message: S.optional(S.String),
           StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
@@ -10718,7 +9351,7 @@ function __c31(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           SegmentDefinitionName: S.String.pipe(T.HttpLabel("SegmentDefinitionName")),
-          ProfileIds: ProfileIds,
+          ProfileIds: __S(0, __c0, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -10741,22 +9374,26 @@ function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ProfileId: S.String, QueryResult: QueryResult, Profile: S.optional(Profile) }),
+        S.Struct({
+          ProfileId: S.String,
+          QueryResult: S.String,
+          Profile: S.optional(__S(22, __c2, 6)),
+        }),
       ).annotate({ identifier: "ProfileQueryResult" });
     case 1:
-      return S.Array(ProfileQueryResult);
+      return S.Array(__S(256, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ ProfileId: S.String, Message: S.String, Status: S.optional(S.Number) }),
       ).annotate({ identifier: "ProfileQueryFailures" });
     case 3:
-      return S.Array(ProfileQueryFailures);
+      return S.Array(__S(258, __c32, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           SegmentDefinitionName: S.optional(S.String),
-          Profiles: S.optional(Profiles),
-          Failures: S.optional(Failures),
+          Profiles: S.optional(__S(257, __c32, 1)),
+          Failures: S.optional(__S(259, __c32, 3)),
           LastComputedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -10788,9 +9425,9 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SnapshotId: S.String,
-          Status: SegmentSnapshotStatus,
+          Status: S.String,
           StatusMessage: S.optional(S.String),
-          DataFormat: DataFormat,
+          DataFormat: S.String,
           EncryptionKey: S.optional(S.String),
           RoleArn: S.optional(S.String),
           DestinationUri: S.optional(S.String),
@@ -10824,9 +9461,9 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Interval: S.Number, Unit: S.optional(ScheduleConfigurationUnit) }),
-      ).annotate({ identifier: "ScheduleConfiguration" });
+      return S.suspend(() => S.Struct({ Interval: S.Number, Unit: S.optional(S.String) })).annotate(
+        { identifier: "ScheduleConfiguration" },
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10837,10 +9474,10 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(SegmentSubscriptionStatus),
+          Status: S.optional(S.String),
           Message: S.optional(S.String),
-          ScheduleConfiguration: S.optional(ScheduleConfiguration),
-          ScheduledExecutions: S.optional(ScheduledExecutions),
+          ScheduleConfiguration: S.optional(__S(264, __c33, 0)),
+          ScheduledExecutions: S.optional(__S(265, __c33, 1)),
           StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -10853,7 +9490,7 @@ function __c33(j: number): any {
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          MatchType: MatchType,
+          MatchType: S.String,
           SearchKey: S.String,
           SearchValue: S.String,
         }).pipe(
@@ -10872,9 +9509,9 @@ function __c33(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProfileIds: S.optional(ProfileIdList),
+          ProfileIds: S.optional(__S(0, __c0, 0)),
           MatchId: S.optional(S.String),
-          MatchType: S.optional(MatchType),
+          MatchType: S.optional(S.String),
           RuleLevel: S.optional(S.Number),
           ConfidenceScore: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -10901,12 +9538,12 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SegmentName: S.optional(S.String),
-          Status: S.optional(EventSubscriptionSegmentStatus),
+          Status: S.optional(S.String),
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedSegment" });
     case 7:
-      return S.Array(AssociatedSegment);
+      return S.Array(__S(270, __c33, 6));
   }
 }
 function __c34(j: number): any {
@@ -10915,11 +9552,11 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AssociatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AssociatedSegments: S.optional(AssociatedSegmentsList),
+          AssociatedSegments: S.optional(__S(271, __c33, 7)),
           DomainName: S.optional(S.String),
           DestinationArn: S.optional(S.String),
           DestinationRoleArn: S.optional(S.String),
-          State: S.optional(EventSubscriptionState),
+          State: S.optional(S.String),
           DisassociatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           FailureReason: S.optional(S.String),
         }),
@@ -10955,13 +9592,13 @@ function __c34(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          Status: S.optional(UploadJobStatus),
-          StatusReason: S.optional(StatusReason),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Fields: S.optional(FieldMap),
+          Fields: S.optional(__S(151, __c18, 7)),
           UniqueKey: S.optional(S.String),
-          ResultsSummary: S.optional(ResultsSummary),
+          ResultsSummary: S.optional(__S(274, __c34, 2)),
           DataExpiry: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetUploadJobResponse" });
@@ -11008,7 +9645,7 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          SourceConnectorType: SourceConnectorType,
+          SourceConnectorType: S.String,
           ConnectorProfileName: S.String,
           RoleArn: S.optional(S.String),
         }),
@@ -11021,7 +9658,7 @@ function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AppflowIntegration: S.optional(AppflowIntegrationWorkflowAttributes) }),
+        S.Struct({ AppflowIntegration: S.optional(__S(279, __c34, 7)) }),
       ).annotate({ identifier: "WorkflowAttributes" });
     case 1:
       return S.suspend(() =>
@@ -11031,19 +9668,19 @@ function __c35(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AppflowIntegration: S.optional(AppflowIntegrationWorkflowMetrics) }),
+        S.Struct({ AppflowIntegration: S.optional(__S(281, __c35, 1)) }),
       ).annotate({ identifier: "WorkflowMetrics" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           WorkflowId: S.optional(S.String),
-          WorkflowType: S.optional(WorkflowType),
-          Status: S.optional(Status),
+          WorkflowType: S.optional(S.String),
+          Status: S.optional(S.String),
           ErrorDescription: S.optional(S.String),
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Attributes: S.optional(WorkflowAttributes),
-          Metrics: S.optional(WorkflowMetrics),
+          Attributes: S.optional(__S(280, __c35, 0)),
+          Metrics: S.optional(__S(282, __c35, 2)),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
     case 4:
@@ -11068,7 +9705,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FlowName: S.String,
-          Status: Status,
+          Status: S.String,
           ExecutionMessage: S.String,
           RecordsProcessed: S.Number,
           BatchRecordsStartTime: S.String,
@@ -11081,10 +9718,10 @@ function __c35(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AppflowIntegration: S.optional(AppflowIntegrationWorkflowStep) }),
+        S.Struct({ AppflowIntegration: S.optional(__S(285, __c35, 5)) }),
       ).annotate({ identifier: "WorkflowStepItem" });
     case 7:
-      return S.Array(WorkflowStepItem);
+      return S.Array(__S(286, __c35, 6));
   }
 }
 function __c36(j: number): any {
@@ -11093,8 +9730,8 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WorkflowId: S.optional(S.String),
-          WorkflowType: S.optional(WorkflowType),
-          Items: S.optional(WorkflowStepsList),
+          WorkflowType: S.optional(S.String),
+          Items: S.optional(__S(287, __c35, 7)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWorkflowStepsResponse" });
@@ -11112,10 +9749,10 @@ function __c36(j: number): any {
         identifier: "ListAccountIntegrationsRequest",
       });
     case 2:
-      return S.Array(ListIntegrationItem);
+      return S.Array(__S(213, __c26, 5));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(IntegrationList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(290, __c36, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAccountIntegrationsResponse",
       });
@@ -11147,18 +9784,18 @@ function __c36(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UseHistoricalData: S.optional(S.Boolean),
-          Status: S.optional(ReadinessStatus),
-          Tags: S.optional(TagMap),
+          Status: S.optional(S.String),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "ListCalculatedAttributeDefinitionItem",
       });
     case 6:
-      return S.Array(ListCalculatedAttributeDefinitionItem);
+      return S.Array(__S(293, __c36, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(CalculatedAttributeDefinitionsList),
+          Items: S.optional(__S(294, __c36, 6)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -11192,11 +9829,11 @@ function __c37(j: number): any {
         identifier: "ListCalculatedAttributesForProfileRequest",
       });
     case 1:
-      return S.Array(ListCalculatedAttributeForProfileItem);
+      return S.Array(__S(191, __c23, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(CalculatedAttributesForProfileList),
+          Items: S.optional(__S(297, __c37, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -11226,17 +9863,17 @@ function __c37(j: number): any {
           Description: SensitiveString,
           DisplayName: S.String,
           IsDefault: S.optional(S.Boolean),
-          LayoutType: LayoutType,
-          Tags: S.optional(TagMap),
+          LayoutType: S.String,
+          Tags: S.optional(__S(17, __c2, 1)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "LayoutItem" });
     case 5:
-      return S.Array(LayoutItem);
+      return S.Array(__S(300, __c37, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(LayoutList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(301, __c37, 5)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDomainLayoutsResponse",
       });
@@ -11270,16 +9907,16 @@ function __c38(j: number): any {
           Description: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "DomainObjectTypesListItem",
       });
     case 1:
-      return S.Array(DomainObjectTypesListItem);
+      return S.Array(__S(304, __c38, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(DomainObjectTypesList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(305, __c38, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDomainObjectTypesResponse",
       });
@@ -11296,14 +9933,14 @@ function __c38(j: number): any {
           DomainName: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "ListDomainItem" });
     case 5:
-      return S.Array(ListDomainItem);
+      return S.Array(__S(308, __c38, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(DomainList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(309, __c38, 5)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDomainsResponse" });
     case 7:
       return S.suspend(() =>
@@ -11330,7 +9967,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Uri: S.String,
-          Status: EventStreamDestinationStatus,
+          Status: S.String,
           UnhealthySince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DestinationSummary" });
@@ -11340,17 +9977,17 @@ function __c39(j: number): any {
           DomainName: S.String,
           EventStreamName: S.String,
           EventStreamArn: S.String,
-          State: EventStreamState,
+          State: S.String,
           StoppedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DestinationSummary: S.optional(DestinationSummary),
-          Tags: S.optional(TagMap),
+          DestinationSummary: S.optional(__S(312, __c39, 0)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "EventStreamSummary" });
     case 2:
-      return S.Array(EventStreamSummary);
+      return S.Array(__S(313, __c39, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(EventStreamSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(314, __c39, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEventStreamsResponse" });
     case 4:
       return S.suspend(() =>
@@ -11377,14 +10014,14 @@ function __c39(j: number): any {
           Description: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "EventTriggerSummaryItem" });
     case 6:
-      return S.Array(EventTriggerSummaryItem);
+      return S.Array(__S(317, __c39, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(EventTriggerSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(318, __c39, 6)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListEventTriggersResponse",
       });
@@ -11416,20 +10053,20 @@ function __c40(j: number): any {
         S.Struct({
           DomainName: S.optional(S.String),
           JobId: S.optional(S.String),
-          Status: S.optional(IdentityResolutionJobStatus),
+          Status: S.optional(S.String),
           JobStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           JobEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          JobStats: S.optional(JobStats),
-          ExportingLocation: S.optional(ExportingLocation),
+          JobStats: S.optional(__S(209, __c26, 1)),
+          ExportingLocation: S.optional(__S(208, __c26, 0)),
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityResolutionJob" });
     case 2:
-      return S.Array(IdentityResolutionJob);
+      return S.Array(__S(321, __c40, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          IdentityResolutionJobsList: S.optional(IdentityResolutionJobsList),
+          IdentityResolutionJobsList: S.optional(__S(322, __c40, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -11455,7 +10092,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "ListIntegrationsRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(IntegrationList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(290, __c36, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListIntegrationsResponse" });
     case 6:
       return S.suspend(() =>
@@ -11494,11 +10131,11 @@ function __c40(j: number): any {
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListObjectTypeAttributeItem);
+      return S.Array(__S(327, __c40, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(ListObjectTypeAttributesList),
+          Items: S.optional(__S(328, __c41, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -11538,11 +10175,11 @@ function __c41(j: number): any {
         identifier: "ListObjectTypeAttributeValuesItem",
       });
     case 4:
-      return S.Array(ListObjectTypeAttributeValuesItem);
+      return S.Array(__S(331, __c41, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(ListObjectTypeAttributeValuesList),
+          Items: S.optional(__S(332, __c41, 4)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -11578,13 +10215,13 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AttributeValueItem);
+      return S.Array(__S(335, __c41, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.optional(S.String),
           AttributeName: S.optional(S.String),
-          Items: S.optional(AttributeValueItemList),
+          Items: S.optional(__S(336, __c42, 0)),
           StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
         }),
       ).annotate({
@@ -11598,7 +10235,7 @@ function __c42(j: number): any {
           ObjectTypeName: S.optional(S.String),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-          ActionType: S.optional(ActionType),
+          ActionType: S.optional(S.String),
           PerformedBy: S.optional(S.String),
         }).pipe(
           T.all(
@@ -11620,24 +10257,24 @@ function __c42(j: number): any {
           ObjectTypeName: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ActionType: ActionType,
+          ActionType: S.String,
           ProfileObjectUniqueKey: S.optional(S.String),
           PerformedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileHistoryRecord" });
     case 4:
-      return S.Array(ProfileHistoryRecord);
+      return S.Array(__S(339, __c42, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ProfileHistoryRecords: S.optional(ProfileHistoryRecords),
+          ProfileHistoryRecords: S.optional(__S(340, __c42, 4)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProfileHistoryRecordsResponse",
       });
     case 6:
-      return S.suspend(() => S.Struct({ KeyName: S.String, Values: RequestValueList })).annotate({
+      return S.suspend(() => S.Struct({ KeyName: S.String, Values: __S(0, __c0, 0) })).annotate({
         identifier: "ObjectFilter",
       });
     case 7:
@@ -11648,7 +10285,7 @@ function __c42(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           ObjectTypeName: S.String,
           ProfileId: S.String,
-          ObjectFilter: S.optional(ObjectFilter),
+          ObjectFilter: S.optional(__S(342, __c42, 6)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/profiles/objects" }),
@@ -11675,10 +10312,10 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "ListProfileObjectsItem" });
     case 1:
-      return S.Array(ListProfileObjectsItem);
+      return S.Array(__S(344, __c43, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(ProfileObjectList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(345, __c43, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListProfileObjectsResponse",
       });
@@ -11711,16 +10348,16 @@ function __c43(j: number): any {
           MaxProfileObjectCount: S.optional(S.Number),
           MaxAvailableProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "ListProfileObjectTypeItem",
       });
     case 5:
-      return S.Array(ListProfileObjectTypeItem);
+      return S.Array(__S(348, __c43, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(ProfileObjectTypeList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(349, __c43, 5)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListProfileObjectTypesResponse",
       });
@@ -11748,11 +10385,11 @@ function __c44(j: number): any {
         identifier: "ListProfileObjectTypeTemplateItem",
       });
     case 1:
-      return S.Array(ListProfileObjectTypeTemplateItem);
+      return S.Array(__S(352, __c44, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(ProfileObjectTypeTemplateList),
+          Items: S.optional(__S(353, __c44, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -11785,18 +10422,18 @@ function __c44(j: number): any {
           RecommenderFilterExpression: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(SensitiveString),
-          Status: S.optional(RecommenderFilterStatus),
+          Status: S.optional(S.String),
           FailureReason: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "RecommenderFilterSummary" });
     case 5:
-      return S.Array(RecommenderFilterSummary);
+      return S.Array(__S(356, __c44, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecommenderFilters: S.optional(RecommenderFilterSummaryList),
+          RecommenderFilters: S.optional(__S(357, __c44, 5)),
         }),
       ).annotate({
         identifier: "ListRecommenderFiltersResponse",
@@ -11825,15 +10462,15 @@ function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(RecommenderRecipeName), description: S.optional(S.String) }),
+        S.Struct({ name: S.optional(S.String), description: S.optional(S.String) }),
       ).annotate({ identifier: "RecommenderRecipe" });
     case 1:
-      return S.Array(RecommenderRecipe);
+      return S.Array(__S(360, __c45, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecommenderRecipes: S.optional(RecommenderRecipesList),
+          RecommenderRecipes: S.optional(__S(361, __c45, 1)),
         }),
       ).annotate({
         identifier: "ListRecommenderRecipesResponse",
@@ -11859,25 +10496,25 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RecommenderName: S.optional(S.String),
-          RecipeName: S.optional(RecommenderRecipeName),
+          RecipeName: S.optional(S.String),
           RecommenderSchemaName: S.optional(S.String),
-          RecommenderConfig: S.optional(RecommenderConfig),
+          RecommenderConfig: S.optional(__S(114, __c14, 2)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(SensitiveString),
-          Status: S.optional(RecommenderStatus),
+          Status: S.optional(S.String),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
           FailureReason: S.optional(S.String),
-          LatestRecommenderUpdate: S.optional(RecommenderUpdate),
+          LatestRecommenderUpdate: S.optional(__S(242, __c30, 2)),
         }),
       ).annotate({ identifier: "RecommenderSummary" });
     case 5:
-      return S.Array(RecommenderSummary);
+      return S.Array(__S(364, __c45, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Recommenders: S.optional(RecommenderSummaryList),
+          Recommenders: S.optional(__S(365, __c45, 5)),
         }),
       ).annotate({ identifier: "ListRecommendersResponse" });
     case 7:
@@ -11907,18 +10544,18 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RecommenderSchemaName: S.String,
-          Fields: RecommenderSchemaFields,
+          Fields: __S(121, __c15, 1),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: RecommenderSchemaStatus,
+          Status: S.String,
         }),
       ).annotate({ identifier: "RecommenderSchemaSummary" });
     case 1:
-      return S.Array(RecommenderSchemaSummary);
+      return S.Array(__S(368, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecommenderSchemas: S.optional(RecommenderSchemaSummaryList),
+          RecommenderSchemas: S.optional(__S(369, __c46, 1)),
         }),
       ).annotate({
         identifier: "ListRecommenderSchemasResponse",
@@ -11944,7 +10581,7 @@ function __c46(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ MatchIds: S.optional(MatchIdList), NextToken: S.optional(S.String) }),
+        S.Struct({ MatchIds: S.optional(__S(0, __c0, 0)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRuleBasedMatchesResponse",
       });
@@ -11975,19 +10612,19 @@ function __c46(j: number): any {
           Description: S.optional(SensitiveString),
           SegmentDefinitionArn: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
-          SegmentType: S.optional(SegmentType),
+          Tags: S.optional(__S(17, __c2, 1)),
+          SegmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SegmentDefinitionItem" });
     case 7:
-      return S.Array(SegmentDefinitionItem);
+      return S.Array(__S(374, __c46, 6));
   }
 }
 function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(SegmentDefinitionsList) }),
+        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(375, __c46, 7)) }),
       ).annotate({
         identifier: "ListSegmentDefinitionsResponse",
       });
@@ -12019,15 +10656,15 @@ function __c47(j: number): any {
         S.Struct({
           ProfileId: S.optional(S.String),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EventType: S.optional(SubscriptionEventType),
-          Event: S.optional(SubscriptionEvent),
+          EventType: S.optional(S.String),
+          Event: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionEventItem" });
     case 3:
-      return S.Array(SubscriptionEventItem);
+      return S.Array(__S(378, __c47, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Events: S.optional(SubscriptionEventsList), NextToken: S.optional(S.String) }),
+        S.Struct({ Events: S.optional(__S(379, __c47, 3)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSegmentSubscriptionEventsResponse",
       });
@@ -12047,7 +10684,7 @@ function __c47(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(17, __c2, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 7:
@@ -12076,25 +10713,25 @@ function __c48(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          Status: S.optional(UploadJobStatus),
-          StatusReason: S.optional(StatusReason),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DataExpiry: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UploadJobItem" });
     case 1:
-      return S.Array(UploadJobItem);
+      return S.Array(__S(384, __c48, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(UploadJobsList) }),
+        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(385, __c48, 1)) }),
       ).annotate({ identifier: "ListUploadJobsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          WorkflowType: S.optional(WorkflowType),
-          Status: S.optional(Status),
+          WorkflowType: S.optional(S.String),
+          Status: S.optional(S.String),
           QueryStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           QueryEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
@@ -12113,19 +10750,19 @@ function __c48(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          WorkflowType: WorkflowType,
+          WorkflowType: S.String,
           WorkflowId: S.String,
-          Status: Status,
+          Status: S.String,
           StatusDescription: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ListWorkflowsItem" });
     case 5:
-      return S.Array(ListWorkflowsItem);
+      return S.Array(__S(388, __c48, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(WorkflowList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(389, __c48, 5)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
     case 7:
       return S.suspend(() =>
@@ -12150,7 +10787,7 @@ function __c48(j: number): any {
           ShippingAddress: S.optional(S.String),
           MailingAddress: S.optional(S.String),
           BillingAddress: S.optional(S.String),
-          Attributes: S.optional(AttributeSourceIdMap),
+          Attributes: S.optional(__S(212, __c26, 4)),
           ProfileType: S.optional(S.String),
           EngagementPreferences: S.optional(S.String),
         }),
@@ -12164,8 +10801,8 @@ function __c49(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           MainProfileId: S.String,
-          ProfileIdsToBeMerged: ProfileIdToBeMergedList,
-          FieldSourceProfileIds: S.optional(FieldSourceProfileIds),
+          ProfileIdsToBeMerged: __S(0, __c0, 0),
+          FieldSourceProfileIds: S.optional(__S(391, __c48, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/profiles/objects/merge" }),
@@ -12184,8 +10821,8 @@ function __c49(j: number): any {
           ObjectTypeName: S.String.pipe(T.HttpLabel("ObjectTypeName")),
           Description: S.optional(SensitiveString),
           EncryptionKey: S.optional(S.String),
-          Fields: DomainObjectTypeFields,
-          Tags: S.optional(TagMap),
+          Fields: __S(199, __c24, 7),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -12208,10 +10845,10 @@ function __c49(j: number): any {
           ObjectTypeName: S.optional(S.String),
           Description: S.optional(SensitiveString),
           EncryptionKey: S.optional(S.String),
-          Fields: S.optional(DomainObjectTypeFields),
+          Fields: S.optional(__S(199, __c24, 7)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "PutDomainObjectTypeResponse",
@@ -12222,12 +10859,12 @@ function __c49(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           Uri: S.optional(S.String),
           ObjectTypeName: S.optional(S.String),
-          ObjectTypeNames: S.optional(ObjectTypeNames),
-          Tags: S.optional(TagMap),
-          FlowDefinition: S.optional(FlowDefinition),
+          ObjectTypeNames: S.optional(__S(212, __c26, 4)),
+          Tags: S.optional(__S(17, __c2, 1)),
+          FlowDefinition: S.optional(__S(97, __c12, 1)),
           RoleArn: S.optional(S.String),
-          EventTriggerNames: S.optional(EventTriggerNames),
-          Scope: S.optional(Scope),
+          EventTriggerNames: S.optional(__S(0, __c0, 0)),
+          Scope: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domains/{DomainName}/integrations" }),
@@ -12273,9 +10910,9 @@ function __c49(j: number): any {
           SourceLastUpdatedTimestampFormat: S.optional(S.String),
           MaxProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
-          Fields: S.optional(FieldMap),
-          Keys: S.optional(KeyMap),
-          Tags: S.optional(TagMap),
+          Fields: S.optional(__S(151, __c18, 7)),
+          Keys: S.optional(__S(181, __c22, 5)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domains/{DomainName}/object-types/{ObjectTypeName}" }),
@@ -12302,11 +10939,11 @@ function __c49(j: number): any {
           MaxProfileObjectCount: S.optional(S.Number),
           MaxAvailableProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
-          Fields: S.optional(FieldMap),
-          Keys: S.optional(KeyMap),
+          Fields: S.optional(__S(151, __c18, 7)),
+          Keys: S.optional(__S(181, __c22, 5)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "PutProfileObjectTypeResponse",
@@ -12320,7 +10957,7 @@ function __c50(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           SegmentDefinitionName: S.String.pipe(T.HttpLabel("SegmentDefinitionName")),
-          ScheduleConfiguration: S.optional(ScheduleConfiguration),
+          ScheduleConfiguration: S.optional(__S(264, __c33, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -12340,15 +10977,15 @@ function __c50(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(SegmentSubscriptionStatus),
-          ScheduleConfiguration: S.optional(ScheduleConfiguration),
+          Status: S.optional(S.String),
+          ScheduleConfiguration: S.optional(__S(264, __c33, 0)),
           StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "PutSegmentSubscriptionResponse",
       });
     case 2:
-      return S.Array(AdditionalSearchKey);
+      return S.Array(__S(342, __c42, 6));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -12356,9 +10993,9 @@ function __c50(j: number): any {
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           KeyName: S.String,
-          Values: RequestValueList,
-          AdditionalSearchKeys: S.optional(AdditionalSearchKeysList),
-          LogicalOperator: S.optional(LogicalOperator),
+          Values: __S(0, __c0, 0),
+          AdditionalSearchKeys: S.optional(__S(402, __c50, 2)),
+          LogicalOperator: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/profiles/search" }),
@@ -12372,18 +11009,18 @@ function __c50(j: number): any {
       ).annotate({ identifier: "SearchProfilesRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(ProfileList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(23, __c2, 7)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "SearchProfilesResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Filters: S.optional(RecommenderFilters),
-          PromotionalFilters: S.optional(RecommenderPromotionalFilters),
+          Filters: S.optional(__S(230, __c28, 6)),
+          PromotionalFilters: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({ identifier: "Recommender" });
     case 6:
-      return S.suspend(() => S.Struct({ Columns: S.optional(MetadataColumnsList) })).annotate({
+      return S.suspend(() => S.Struct({ Columns: S.optional(__S(0, __c0, 0)) })).annotate({
         identifier: "RecommendationMetadata",
       });
     case 7:
@@ -12391,12 +11028,12 @@ function __c50(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           KeyName: S.String,
-          KeyValues: KeyValuesList,
-          Recommender: Recommender,
-          CandidateIds: S.optional(CandidateIdList),
-          Context: S.optional(RecommenderContext),
-          Diversity: S.optional(RecommendationDiversityConfig),
-          Metadata: S.optional(RecommendationMetadata),
+          KeyValues: __S(0, __c0, 0),
+          Recommender: __S(405, __c50, 5),
+          CandidateIds: S.optional(__S(0, __c0, 0)),
+          Context: S.optional(__S(212, __c26, 4)),
+          Diversity: S.optional(__S(235, __c29, 3)),
+          Metadata: S.optional(__S(406, __c50, 6)),
           MaxRecommendations: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -12417,7 +11054,10 @@ function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ProfileId: S.optional(S.String), Recommendations: S.optional(Recommendations) }),
+        S.Struct({
+          ProfileId: S.optional(S.String),
+          Recommendations: S.optional(__S(239, __c29, 7)),
+        }),
       ).annotate({
         identifier: "SearchRecommendationsResponse",
       });
@@ -12493,7 +11133,10 @@ function __c51(j: number): any {
       ).annotate({ identifier: "StopUploadJobRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(17, __c2, 1),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -12508,7 +11151,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -12527,7 +11170,7 @@ function __c51(j: number): any {
           CalculatedAttributeName: S.String.pipe(T.HttpLabel("CalculatedAttributeName")),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          Conditions: S.optional(Conditions),
+          Conditions: S.optional(__S(39, __c4, 7)),
         }).pipe(
           T.all(
             T.Http({
@@ -12556,13 +11199,13 @@ function __c52(j: number): any {
           Description: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Statistic: S.optional(Statistic),
-          Conditions: S.optional(Conditions),
-          AttributeDetails: S.optional(AttributeDetails),
+          Statistic: S.optional(S.String),
+          Conditions: S.optional(__S(39, __c4, 7)),
+          AttributeDetails: S.optional(__S(35, __c4, 3)),
           UseHistoricalData: S.optional(S.Boolean),
-          Status: S.optional(ReadinessStatus),
-          Readiness: S.optional(Readiness),
-          Tags: S.optional(TagMap),
+          Status: S.optional(S.String),
+          Readiness: S.optional(__S(48, __c6, 0)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "UpdateCalculatedAttributeDefinitionResponse",
@@ -12574,10 +11217,10 @@ function __c52(j: number): any {
           DefaultExpirationDays: S.optional(S.Number),
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(MatchingRequest),
-          RuleBasedMatching: S.optional(RuleBasedMatchingRequest),
-          DataStore: S.optional(DataStoreRequest),
-          Tags: S.optional(TagMap),
+          Matching: S.optional(__S(57, __c7, 1)),
+          RuleBasedMatching: S.optional(__S(61, __c7, 5)),
+          DataStore: S.optional(__S(62, __c7, 6)),
+          Tags: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domains/{DomainName}" }),
@@ -12596,12 +11239,12 @@ function __c52(j: number): any {
           DefaultExpirationDays: S.optional(S.Number),
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(MatchingResponse),
-          RuleBasedMatching: S.optional(RuleBasedMatchingResponse),
-          DataStore: S.optional(DataStoreResponse),
+          Matching: S.optional(__S(64, __c8, 0)),
+          RuleBasedMatching: S.optional(__S(65, __c8, 1)),
+          DataStore: S.optional(__S(66, __c8, 2)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "UpdateDomainResponse" });
     case 3:
@@ -12612,7 +11255,7 @@ function __c52(j: number): any {
           Description: S.optional(SensitiveString),
           DisplayName: S.optional(S.String),
           IsDefault: S.optional(S.Boolean),
-          LayoutType: S.optional(LayoutType),
+          LayoutType: S.optional(S.String),
           Layout: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -12634,12 +11277,12 @@ function __c52(j: number): any {
           Description: S.optional(SensitiveString),
           DisplayName: S.optional(S.String),
           IsDefault: S.optional(S.Boolean),
-          LayoutType: S.optional(LayoutType),
+          LayoutType: S.optional(S.String),
           Layout: S.optional(SensitiveString),
           Version: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "UpdateDomainLayoutResponse",
@@ -12651,9 +11294,9 @@ function __c52(j: number): any {
           EventTriggerName: S.String.pipe(T.HttpLabel("EventTriggerName")),
           ObjectTypeName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          EventTriggerConditions: S.optional(EventTriggerConditions),
+          EventTriggerConditions: S.optional(__S(77, __c9, 5)),
           SegmentFilter: S.optional(S.String),
-          EventTriggerLimits: S.optional(EventTriggerLimits),
+          EventTriggerLimits: S.optional(__S(80, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -12677,13 +11320,13 @@ function __c52(j: number): any {
           ProfileId: S.String,
           AdditionalInformation: S.optional(SensitiveString),
           AccountNumber: S.optional(SensitiveString),
-          PartyType: S.optional(PartyType),
+          PartyType: S.optional(S.String),
           BusinessName: S.optional(SensitiveString),
           FirstName: S.optional(SensitiveString),
           MiddleName: S.optional(SensitiveString),
           LastName: S.optional(SensitiveString),
           BirthDate: S.optional(SensitiveString),
-          Gender: S.optional(Gender),
+          Gender: S.optional(S.String),
           PhoneNumber: S.optional(SensitiveString),
           MobilePhoneNumber: S.optional(SensitiveString),
           HomePhoneNumber: S.optional(SensitiveString),
@@ -12691,15 +11334,15 @@ function __c52(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           PersonalEmailAddress: S.optional(SensitiveString),
           BusinessEmailAddress: S.optional(SensitiveString),
-          Address: S.optional(UpdateAddress),
-          ShippingAddress: S.optional(UpdateAddress),
-          MailingAddress: S.optional(UpdateAddress),
-          BillingAddress: S.optional(UpdateAddress),
-          Attributes: S.optional(UpdateAttributes),
+          Address: S.optional(__S(16, __c2, 0)),
+          ShippingAddress: S.optional(__S(16, __c2, 0)),
+          MailingAddress: S.optional(__S(16, __c2, 0)),
+          BillingAddress: S.optional(__S(16, __c2, 0)),
+          Attributes: S.optional(__S(212, __c26, 4)),
           PartyTypeString: S.optional(SensitiveString),
           GenderString: S.optional(SensitiveString),
-          ProfileType: S.optional(ProfileType),
-          EngagementPreferences: S.optional(EngagementPreferences),
+          ProfileType: S.optional(S.String),
+          EngagementPreferences: S.optional(__S(21, __c2, 5)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domains/{DomainName}/profiles" }),
@@ -12717,7 +11360,7 @@ function __c52(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           RecommenderName: S.String.pipe(T.HttpLabel("RecommenderName")),
           Description: S.optional(SensitiveString),
-          RecommenderConfig: S.optional(RecommenderConfig),
+          RecommenderConfig: S.optional(__S(114, __c14, 2)),
           RecommenderVersionName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -12742,4 +11385,9 @@ function __c53(j: number): any {
         identifier: "UpdateRecommenderResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

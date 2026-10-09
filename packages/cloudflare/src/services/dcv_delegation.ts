@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -17,21 +19,11 @@ export interface GetDcvDelegationRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetDcvDelegationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetDcvDelegationRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDcvDelegationResponse {
   /** The DCV Delegation unique identifier. */
   uuid?: string | null;
 }
-const GetDcvDelegationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetDcvDelegationResponse>;
-
 export type GetDcvDelegationError = CloudflareOpError;
 /** Retrieve the account and zone specific unique identifier used as part of the CNAME target for DCV Delegation. */
 export const getDcvDelegation: API.OperationMethod<
@@ -40,8 +32,8 @@ export const getDcvDelegation: API.OperationMethod<
   GetDcvDelegationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDcvDelegationRequest,
-  output: GetDcvDelegationResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDcvDelegationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetDcvDelegationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -63,4 +55,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "GetDcvDelegationResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

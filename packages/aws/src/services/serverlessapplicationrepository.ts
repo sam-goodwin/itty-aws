@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ServerlessApplicationRepository",
   serviceShapeName: "ServerlessApplicationRepository",
@@ -150,10 +152,6 @@ export interface CreateApplicationRequest {
   TemplateBody?: string;
   TemplateUrl?: string;
 }
-const CreateApplicationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateApplicationRequest>;
 export interface ParameterDefinition {
   AllowedPattern?: string;
   AllowedValues?: string[];
@@ -169,7 +167,6 @@ export interface ParameterDefinition {
   ReferencedByResources?: string[];
   Type?: string;
 }
-const ParameterDefinition = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ParameterDefinition>;
 export type __listOfParameterDefinition = ParameterDefinition[];
 const __listOfParameterDefinition = /*@__PURE__*/ __L.at(__c0, 3);
 export type Capability =
@@ -178,8 +175,6 @@ export type Capability =
   | "CAPABILITY_AUTO_EXPAND"
   | "CAPABILITY_RESOURCE_POLICY"
   | (string & {});
-const Capability = S.String;
-
 export type __listOfCapability = Capability[];
 const __listOfCapability = /*@__PURE__*/ __L.at(__c0, 4);
 export interface Version {
@@ -193,7 +188,6 @@ export interface Version {
   SourceCodeUrl?: string;
   TemplateUrl?: string;
 }
-const Version = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Version>;
 export interface CreateApplicationResponse {
   ApplicationId?: string;
   Author?: string;
@@ -220,10 +214,6 @@ export interface CreateApplicationResponse {
     TemplateUrl: string;
   };
 }
-const CreateApplicationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateApplicationResponse>;
 export interface CreateApplicationVersionRequest {
   ApplicationId: string;
   SemanticVersion: string;
@@ -232,10 +222,6 @@ export interface CreateApplicationVersionRequest {
   TemplateBody?: string;
   TemplateUrl?: string;
 }
-const CreateApplicationVersionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateApplicationVersionRequest>;
 export interface CreateApplicationVersionResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -250,37 +236,26 @@ export interface CreateApplicationVersionResponse {
   SourceCodeUrl?: string;
   TemplateUrl?: string;
 }
-const CreateApplicationVersionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateApplicationVersionResponse>;
 export interface ParameterValue {
   Name?: string;
   Value?: string;
 }
-const ParameterValue = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ParameterValue>;
 export type __listOfParameterValue = ParameterValue[];
 const __listOfParameterValue = /*@__PURE__*/ __L.at(__c1, 2);
 export interface RollbackTrigger {
   Arn?: string;
   Type?: string;
 }
-const RollbackTrigger = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RollbackTrigger>;
 export type __listOfRollbackTrigger = RollbackTrigger[];
 const __listOfRollbackTrigger = /*@__PURE__*/ __L.at(__c1, 4);
 export interface RollbackConfiguration {
   MonitoringTimeInMinutes?: number;
   RollbackTriggers?: RollbackTrigger[];
 }
-const RollbackConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<RollbackConfiguration>;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Tag>;
 export type __listOfTag = Tag[];
 const __listOfTag = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateCloudFormationChangeSetRequest {
@@ -298,31 +273,17 @@ export interface CreateCloudFormationChangeSetRequest {
   Tags?: Tag[];
   TemplateId?: string;
 }
-const CreateCloudFormationChangeSetRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateCloudFormationChangeSetRequest>;
 export interface CreateCloudFormationChangeSetResponse {
   ApplicationId?: string;
   ChangeSetId?: string;
   SemanticVersion?: string;
   StackId?: string;
 }
-const CreateCloudFormationChangeSetResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateCloudFormationChangeSetResponse>;
 export interface CreateCloudFormationTemplateRequest {
   ApplicationId: string;
   SemanticVersion?: string;
 }
-const CreateCloudFormationTemplateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateCloudFormationTemplateRequest>;
 export type Status = "PREPARING" | "ACTIVE" | "EXPIRED" | (string & {});
-const Status = S.String;
-
 export interface CreateCloudFormationTemplateResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -332,30 +293,14 @@ export interface CreateCloudFormationTemplateResponse {
   TemplateId?: string;
   TemplateUrl?: string;
 }
-const CreateCloudFormationTemplateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateCloudFormationTemplateResponse>;
 export interface DeleteApplicationRequest {
   ApplicationId: string;
 }
-const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteApplicationResponse>;
 export interface GetApplicationRequest {
   ApplicationId: string;
   SemanticVersion?: string;
 }
-const GetApplicationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetApplicationRequest>;
 export interface GetApplicationResponse {
   ApplicationId?: string;
   Author?: string;
@@ -382,27 +327,15 @@ export interface GetApplicationResponse {
     TemplateUrl: string;
   };
 }
-const GetApplicationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetApplicationResponse>;
 export interface GetApplicationPolicyRequest {
   ApplicationId: string;
 }
-const GetApplicationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetApplicationPolicyRequest>;
 export interface ApplicationPolicyStatement {
   Actions?: string[];
   PrincipalOrgIDs?: string[];
   Principals?: string[];
   StatementId?: string;
 }
-const ApplicationPolicyStatement = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ApplicationPolicyStatement>;
 export type __listOfApplicationPolicyStatement = ApplicationPolicyStatement[];
 const __listOfApplicationPolicyStatement = /*@__PURE__*/ __L.at(__c3, 2);
 export interface GetApplicationPolicyResponse {
@@ -411,18 +344,10 @@ export interface GetApplicationPolicyResponse {
     Principals: __listOf__string;
   })[];
 }
-const GetApplicationPolicyResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetApplicationPolicyResponse>;
 export interface GetCloudFormationTemplateRequest {
   ApplicationId: string;
   TemplateId: string;
 }
-const GetCloudFormationTemplateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetCloudFormationTemplateRequest>;
 export interface GetCloudFormationTemplateResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -432,8 +357,6 @@ export interface GetCloudFormationTemplateResponse {
   TemplateId?: string;
   TemplateUrl?: string;
 }
-const GetCloudFormationTemplateResponse =
-  CreateCloudFormationTemplateResponse as any as S.Schema<GetCloudFormationTemplateResponse>;
 export type MaxItems = number;
 export interface ListApplicationDependenciesRequest {
   ApplicationId: string;
@@ -441,18 +364,10 @@ export interface ListApplicationDependenciesRequest {
   NextToken?: string;
   SemanticVersion?: string;
 }
-const ListApplicationDependenciesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListApplicationDependenciesRequest>;
 export interface ApplicationDependencySummary {
   ApplicationId?: string;
   SemanticVersion?: string;
 }
-const ApplicationDependencySummary = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ApplicationDependencySummary>;
 export type __listOfApplicationDependencySummary = ApplicationDependencySummary[];
 const __listOfApplicationDependencySummary = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListApplicationDependenciesResponse {
@@ -462,18 +377,10 @@ export interface ListApplicationDependenciesResponse {
   })[];
   NextToken?: string;
 }
-const ListApplicationDependenciesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListApplicationDependenciesResponse>;
 export interface ListApplicationsRequest {
   MaxItems?: number;
   NextToken?: string;
 }
-const ListApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListApplicationsRequest>;
 export interface ApplicationSummary {
   ApplicationId?: string;
   Author?: string;
@@ -484,7 +391,6 @@ export interface ApplicationSummary {
   Name?: string;
   SpdxLicenseId?: string;
 }
-const ApplicationSummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ApplicationSummary>;
 export type __listOfApplicationSummary = ApplicationSummary[];
 const __listOfApplicationSummary = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListApplicationsResponse {
@@ -496,26 +402,17 @@ export interface ListApplicationsResponse {
   })[];
   NextToken?: string;
 }
-const ListApplicationsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListApplicationsResponse>;
 export interface ListApplicationVersionsRequest {
   ApplicationId: string;
   MaxItems?: number;
   NextToken?: string;
 }
-const ListApplicationVersionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListApplicationVersionsRequest>;
 export interface VersionSummary {
   ApplicationId?: string;
   CreationTime?: string;
   SemanticVersion?: string;
   SourceCodeUrl?: string;
 }
-const VersionSummary = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<VersionSummary>;
 export type __listOfVersionSummary = VersionSummary[];
 const __listOfVersionSummary = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListApplicationVersionsResponse {
@@ -526,37 +423,21 @@ export interface ListApplicationVersionsResponse {
     SemanticVersion: string;
   })[];
 }
-const ListApplicationVersionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListApplicationVersionsResponse>;
 export interface PutApplicationPolicyRequest {
   ApplicationId: string;
   Statements?: ApplicationPolicyStatement[];
 }
-const PutApplicationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<PutApplicationPolicyRequest>;
 export interface PutApplicationPolicyResponse {
   Statements?: (ApplicationPolicyStatement & {
     Actions: __listOf__string;
     Principals: __listOf__string;
   })[];
 }
-const PutApplicationPolicyResponse =
-  GetApplicationPolicyResponse as any as S.Schema<PutApplicationPolicyResponse>;
 export interface UnshareApplicationRequest {
   ApplicationId: string;
   OrganizationId?: string;
 }
-const UnshareApplicationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UnshareApplicationRequest>;
 export interface UnshareApplicationResponse {}
-const UnshareApplicationResponse =
-  DeleteApplicationResponse as any as S.Schema<UnshareApplicationResponse>;
 export interface UpdateApplicationRequest {
   ApplicationId: string;
   Author?: string;
@@ -566,10 +447,6 @@ export interface UpdateApplicationRequest {
   ReadmeBody?: string;
   ReadmeUrl?: string;
 }
-const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   ApplicationId?: string;
   Author?: string;
@@ -596,8 +473,6 @@ export interface UpdateApplicationResponse {
     TemplateUrl: string;
   };
 }
-const UpdateApplicationResponse =
-  CreateApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export type CreateApplicationError =
   | BadRequestException
   | ConflictException
@@ -614,8 +489,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationRequest,
-  output: CreateApplicationResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -644,8 +519,8 @@ export const createApplicationVersion: API.OperationMethod<
   CreateApplicationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationVersionRequest,
-  output: CreateApplicationVersionResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateApplicationVersionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateApplicationVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -673,8 +548,8 @@ export const createCloudFormationChangeSet: API.OperationMethod<
   CreateCloudFormationChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCloudFormationChangeSetRequest,
-  output: CreateCloudFormationChangeSetResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateCloudFormationChangeSetRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateCloudFormationChangeSetResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -702,8 +577,8 @@ export const createCloudFormationTemplate: API.OperationMethod<
   CreateCloudFormationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCloudFormationTemplateRequest,
-  output: CreateCloudFormationTemplateResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateCloudFormationTemplateRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateCloudFormationTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -733,8 +608,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationRequest,
-  output: DeleteApplicationResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -764,8 +639,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationRequest,
-  output: GetApplicationResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetApplicationRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetApplicationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -794,8 +669,8 @@ export const getApplicationPolicy: API.OperationMethod<
   GetApplicationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationPolicyRequest,
-  output: GetApplicationPolicyResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<GetApplicationPolicyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetApplicationPolicyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -824,8 +699,8 @@ export const getCloudFormationTemplate: API.OperationMethod<
   GetCloudFormationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCloudFormationTemplateRequest,
-  output: GetCloudFormationTemplateResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<GetCloudFormationTemplateRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetCloudFormationTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -855,8 +730,8 @@ export const listApplicationDependencies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationDependenciesRequest,
-  output: ListApplicationDependenciesResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<ListApplicationDependenciesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ListApplicationDependenciesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -886,8 +761,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationsRequest,
-  output: ListApplicationsResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -917,8 +792,8 @@ export const listApplicationVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationVersionsRequest,
-  output: ListApplicationVersionsResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<ListApplicationVersionsRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ListApplicationVersionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -951,8 +826,8 @@ export const putApplicationPolicy: API.OperationMethod<
   PutApplicationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutApplicationPolicyRequest,
-  output: PutApplicationPolicyResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<PutApplicationPolicyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<PutApplicationPolicyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -983,8 +858,8 @@ export const unshareApplication: API.OperationMethod<
   UnshareApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnshareApplicationRequest,
-  output: UnshareApplicationResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<UnshareApplicationRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<UnshareApplicationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1014,8 +889,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationRequest,
-  output: UpdateApplicationResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1111,9 +986,9 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "ParameterDefinition" });
     case 3:
-      return S.Array(ParameterDefinition);
+      return S.Array(__S(2, __c0, 2));
     case 4:
-      return S.Array(Capability);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1155,7 +1030,7 @@ function __c0(j: number): any {
           ReadmeUrl: S.optional(S.String),
           SpdxLicenseId: S.optional(S.String),
           VerifiedAuthorUrl: S.optional(S.String),
-          Version: S.optional(Version),
+          Version: S.optional(__S(5, __c0, 5)),
         }).pipe(
           S.encodeKeys({
             ApplicationId: "applicationId",
@@ -1249,7 +1124,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ParameterValue" });
     case 2:
-      return S.Array(ParameterValue);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Type: S.optional(S.String) }).pipe(
@@ -1257,7 +1132,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "RollbackTrigger" });
     case 4:
-      return S.Array(RollbackTrigger);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1277,7 +1152,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "Tag" });
     case 7:
-      return S.Array(Tag);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1293,7 +1168,7 @@ function __c2(j: number): any {
           NotificationArns: S.optional(__listOf__string),
           ParameterOverrides: S.optional(__listOfParameterValue),
           ResourceTypes: S.optional(__listOf__string),
-          RollbackConfiguration: S.optional(RollbackConfiguration),
+          RollbackConfiguration: S.optional(__S(13, __c1, 5)),
           SemanticVersion: S.optional(S.String),
           StackName: S.optional(S.String),
           Tags: S.optional(__listOfTag),
@@ -1373,7 +1248,7 @@ function __c2(j: number): any {
           CreationTime: S.optional(S.String),
           ExpirationTime: S.optional(S.String),
           SemanticVersion: S.optional(S.String),
-          Status: S.optional(Status),
+          Status: S.optional(S.String),
           TemplateId: S.optional(S.String),
           TemplateUrl: S.optional(S.String),
         }).pipe(
@@ -1438,7 +1313,7 @@ function __c2(j: number): any {
           ReadmeUrl: S.optional(S.String),
           SpdxLicenseId: S.optional(S.String),
           VerifiedAuthorUrl: S.optional(S.String),
-          Version: S.optional(Version),
+          Version: S.optional(__S(5, __c0, 5)),
         }).pipe(
           S.encodeKeys({
             ApplicationId: "applicationId",
@@ -1495,7 +1370,7 @@ function __c3(j: number): any {
         identifier: "ApplicationPolicyStatement",
       });
     case 2:
-      return S.Array(ApplicationPolicyStatement);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ Statements: S.optional(__listOfApplicationPolicyStatement) }).pipe(
@@ -1554,7 +1429,7 @@ function __c3(j: number): any {
         identifier: "ApplicationDependencySummary",
       });
     case 7:
-      return S.Array(ApplicationDependencySummary);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -1602,7 +1477,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ApplicationSummary" });
     case 3:
-      return S.Array(ApplicationSummary);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1646,7 +1521,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "VersionSummary" });
     case 7:
-      return S.Array(VersionSummary);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1733,4 +1608,9 @@ function __c5(j: number): any {
           ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

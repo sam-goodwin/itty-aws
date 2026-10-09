@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,8 +71,6 @@ export interface OffsetPosition {
   /** Offset distance from top side of an asset or a window. */
   top?: number;
 }
-const OffsetPosition = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<OffsetPosition>;
-
 /** Represents the dimensions of ads, placements, creatives, or creative assets. */
 export interface Size {
   /** IAB standard size. This is a read-only, auto-generated field. */
@@ -84,11 +84,7 @@ export interface Size {
   /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
   width?: number;
 }
-const Size = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Size>;
-
 export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
-const PopupWindowPropertiesPositionTypeEnum = S.String;
-
 /** Popup Window Properties. */
 export interface PopupWindowProperties {
   /** Whether to display the browser tool bar. */
@@ -110,24 +106,15 @@ export interface PopupWindowProperties {
   /** Popup window position either centered or at specific coordinate. */
   positionType?: PopupWindowPropertiesPositionTypeEnum | (string & {});
 }
-const PopupWindowProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PopupWindowProperties>;
-
 export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
   | "ADVERTISER_EVENT_TIMER"
   | "ADVERTISER_EVENT_EXIT"
   | "ADVERTISER_EVENT_COUNTER";
-const CreativeCustomEventAdvertiserCustomEventTypeEnum = S.String;
-
 export type CreativeCustomEventArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
   | "ARTWORK_TYPE_IMAGE";
-const CreativeCustomEventArtworkTypeEnum = S.String;
-
 /** Click-through URL */
 export interface CreativeClickThroughUrl {
   /** Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: - If landingPageId is specified then that landing page's URL is assigned to this field. - Otherwise, the customClickThroughUrl is assigned to this field. */
@@ -137,19 +124,12 @@ export interface CreativeClickThroughUrl {
   /** Custom click-through URL. Applicable if the landingPageId field is left unset. */
   customClickThroughUrl?: string;
 }
-const CreativeClickThroughUrl = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreativeClickThroughUrl>;
-
 export type CreativeCustomEventTargetTypeEnum =
   | "TARGET_BLANK"
   | "TARGET_TOP"
   | "TARGET_SELF"
   | "TARGET_PARENT"
   | "TARGET_POPUP";
-const CreativeCustomEventTargetTypeEnum = S.String;
-
 /** Creative Custom Event. */
 export interface CreativeCustomEvent {
   /** User-entered name for the event. */
@@ -173,21 +153,12 @@ export interface CreativeCustomEvent {
   /** Unique ID of this event used by Reporting and Data Transfer. This is a read-only field. */
   advertiserCustomEventId?: string;
 }
-const CreativeCustomEvent = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreativeCustomEvent>;
-
 export type CreativeCustomEventList = Array<CreativeCustomEvent>;
-const CreativeCustomEventList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreativeCustomEventList>;
-
 export type DimensionValueMatchTypeEnum =
   | "EXACT"
   | "BEGINS_WITH"
   | "CONTAINS"
   | "WILDCARD_EXPRESSION";
-const DimensionValueMatchTypeEnum = S.String;
-
 /** Represents a DimensionValue resource. */
 export interface DimensionValue {
   /** Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT. */
@@ -203,8 +174,6 @@ export interface DimensionValue {
   /** The eTag of this response for caching purposes. */
   etag?: string;
 }
-const DimensionValue = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DimensionValue>;
-
 export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "CLICK_TAG_NON_TOP_LEVEL"
   | "CLICK_TAG_MISSING"
@@ -232,16 +201,9 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "SVG_INVALID"
   | "CLICK_TAG_IN_RICH_MEDIA"
   | "MISSING_ENABLER_REFERENCE";
-const CreativeAssetMetadataWarnedValidationRulesItemEnum = S.String;
-
 export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = Array<
   CreativeAssetMetadataWarnedValidationRulesItemEnum | (string & {})
 >;
-const CreativeAssetMetadataWarnedValidationRulesItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
-
 /** Creative Click Tag. */
 export interface ClickTag {
   /** Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
@@ -251,11 +213,7 @@ export interface ClickTag {
   /** Parameter value for the specified click tag. This field contains a click-through url. */
   clickThroughUrl?: CreativeClickThroughUrl;
 }
-const ClickTag = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ClickTag>;
-
 export type ClickTagList = Array<ClickTag>;
-const ClickTagList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ClickTagList>;
-
 export type CreativeAssetMetadataDetectedFeaturesItemEnum =
   | "CSS_FONT_FACE"
   | "CSS_BACKGROUND_SIZE"
@@ -326,12 +284,7 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
 export type CreativeAssetMetadataDetectedFeaturesItemEnumList = Array<
   CreativeAssetMetadataDetectedFeaturesItemEnum | (string & {})
 >;
-const CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  CreativeAssetMetadataWarnedValidationRulesItemEnumList as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
-
 export type CreativeAssetIdTypeEnum = "IMAGE" | "FLASH" | "VIDEO" | "HTML" | "HTML_IMAGE" | "AUDIO";
-const CreativeAssetIdTypeEnum = S.String;
-
 /** Creative Asset ID. */
 export interface CreativeAssetId {
   /** Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE. */
@@ -339,8 +292,6 @@ export interface CreativeAssetId {
   /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
   name?: string;
 }
-const CreativeAssetId = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreativeAssetId>;
-
 /** CreativeAssets contains properties of a creative asset file which will be uploaded or has already been uploaded. Refer to the creative sample code for how to upload assets and insert a creative. */
 export interface CreativeAssetMetadata {
   /** List of counter events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
@@ -366,11 +317,6 @@ export interface CreativeAssetMetadata {
   /** List of timer events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
   timerCustomEvents?: CreativeCustomEventList;
 }
-const CreativeAssetMetadata = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreativeAssetMetadata>;
-
 export interface UploadMediaRequest {
   /** Advertiser ID of this creative. This is a required field. */
   advertiserId: string;
@@ -379,8 +325,6 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: CreativeAssetMetadata;
 }
-const UploadMediaRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UploadMediaRequest>;
-
 export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Inserts a new creative asset. */
 export const uploadMedia: API.OperationMethod<
@@ -389,8 +333,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadMediaRequest,
-  output: CreativeAssetMetadata,
+  input: __S(12, __c1, 4) as any as S.Schema<UploadMediaRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreativeAssetMetadata>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -420,14 +364,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           showToolBar: S.optional(S.Boolean),
-          offset: S.optional(OffsetPosition),
-          dimension: S.optional(Size),
+          offset: S.optional(__S(0, __c0, 0)),
+          dimension: S.optional(__S(1, __c0, 1)),
           title: S.optional(S.String),
           showScrollBar: S.optional(S.Boolean),
           showStatusBar: S.optional(S.Boolean),
           showMenuBar: S.optional(S.Boolean),
           showAddressBar: S.optional(S.Boolean),
-          positionType: S.optional(PopupWindowPropertiesPositionTypeEnum),
+          positionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PopupWindowProperties" });
     case 3:
@@ -443,22 +387,22 @@ function __c0(j: number): any {
         S.Struct({
           advertiserCustomEventName: S.optional(S.String),
           artworkLabel: S.optional(S.String),
-          popupWindowProperties: S.optional(PopupWindowProperties),
+          popupWindowProperties: S.optional(__S(2, __c0, 2)),
           id: S.optional(S.String),
-          advertiserCustomEventType: S.optional(CreativeCustomEventAdvertiserCustomEventTypeEnum),
-          artworkType: S.optional(CreativeCustomEventArtworkTypeEnum),
-          exitClickThroughUrl: S.optional(CreativeClickThroughUrl),
-          targetType: S.optional(CreativeCustomEventTargetTypeEnum),
+          advertiserCustomEventType: S.optional(S.String),
+          artworkType: S.optional(S.String),
+          exitClickThroughUrl: S.optional(__S(3, __c0, 3)),
+          targetType: S.optional(S.String),
           videoReportingId: S.optional(S.String),
           advertiserCustomEventId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeCustomEvent" });
     case 5:
-      return S.Array(CreativeCustomEvent);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          matchType: S.optional(DimensionValueMatchTypeEnum),
+          matchType: S.optional(S.String),
           kind: S.optional(S.String),
           id: S.optional(S.String),
           dimensionName: S.optional(S.String),
@@ -467,7 +411,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DimensionValue" });
     case 7:
-      return S.Array(CreativeAssetMetadataWarnedValidationRulesItemEnum);
+      return S.Array(S.String);
   }
 }
 function __c1(j: number): any {
@@ -477,32 +421,32 @@ function __c1(j: number): any {
         S.Struct({
           eventName: S.optional(S.String),
           name: S.optional(S.String),
-          clickThroughUrl: S.optional(CreativeClickThroughUrl),
+          clickThroughUrl: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ClickTag" });
     case 1:
-      return S.Array(ClickTag);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CreativeAssetIdTypeEnum),
+          type: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeAssetId" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          counterCustomEvents: S.optional(CreativeCustomEventList),
+          counterCustomEvents: S.optional(__S(5, __c0, 5)),
           kind: S.optional(S.String),
-          exitCustomEvents: S.optional(CreativeCustomEventList),
-          idDimensionValue: S.optional(DimensionValue),
-          warnedValidationRules: S.optional(CreativeAssetMetadataWarnedValidationRulesItemEnumList),
+          exitCustomEvents: S.optional(__S(5, __c0, 5)),
+          idDimensionValue: S.optional(__S(6, __c0, 6)),
+          warnedValidationRules: S.optional(__S(7, __c0, 7)),
           richMedia: S.optional(S.Boolean),
-          clickTags: S.optional(ClickTagList),
+          clickTags: S.optional(__S(9, __c1, 1)),
           id: S.optional(S.String),
-          detectedFeatures: S.optional(CreativeAssetMetadataDetectedFeaturesItemEnumList),
-          assetIdentifier: S.optional(CreativeAssetId),
-          timerCustomEvents: S.optional(CreativeCustomEventList),
+          detectedFeatures: S.optional(__S(7, __c0, 7)),
+          assetIdentifier: S.optional(__S(10, __c1, 2)),
+          timerCustomEvents: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "CreativeAssetMetadata" });
     case 4:
@@ -510,7 +454,7 @@ function __c1(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(CreativeAssetMetadata.pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -520,4 +464,9 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "UploadMediaRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

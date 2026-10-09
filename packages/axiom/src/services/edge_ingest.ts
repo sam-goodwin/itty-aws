@@ -7,6 +7,8 @@ import { UnknownAxiomError } from "../errors.ts";
 import { AxiomProtocol, type AxiomOpError, type AxiomOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AxiomOpError, AxiomOpContext };
 
@@ -47,23 +49,11 @@ export interface IngestToDatasetRequest {
   csv_delimiter?: string;
   body: string;
 }
-const IngestToDatasetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IngestToDatasetRequest>;
-
 export interface IngestFailure {
   error: string;
   timestamp: string;
 }
-const IngestFailure = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<IngestFailure>;
-
 export type IngestStatusFailuresList = Array<IngestFailure>;
-const IngestStatusFailuresList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IngestStatusFailuresList>;
-
 export interface IngestStatus {
   blocksCreated: number;
   failed: number;
@@ -72,8 +62,6 @@ export interface IngestStatus {
   processedBytes: number;
   walLength: number;
 }
-const IngestStatus = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<IngestStatus>;
-
 export type IngestToDatasetError = BadRequest | NotFound | UnprocessableEntity | AxiomOpError;
 export const ingestToDataset: API.OperationMethod<
   IngestToDatasetRequest,
@@ -81,8 +69,8 @@ export const ingestToDataset: API.OperationMethod<
   IngestToDatasetError,
   AxiomOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestToDatasetRequest,
-  output: IngestStatus,
+  input: __S(0, __c0, 0) as any as S.Schema<IngestToDatasetRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<IngestStatus>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownAxiomError],
   protocol: AxiomProtocol,
   retry: Retry.Retry,
@@ -109,17 +97,22 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "IngestFailure" });
     case 2:
-      return S.Array(IngestFailure);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           blocksCreated: S.Number,
           failed: S.Number,
-          failures: S.optional(IngestStatusFailuresList),
+          failures: S.optional(__S(2, __c0, 2)),
           ingested: S.Number,
           processedBytes: S.Number,
           walLength: S.Number,
         }),
       ).annotate({ identifier: "IngestStatus" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,13 +6,13 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** The level that we are setting the file's permission to (read or write) */
 export type AddBookmarkRequestAccessLevel = "read" | "write";
-const AddBookmarkRequestAccessLevel = S.String;
-
 export interface AddBookmarkRequest {
   /** Channel to add bookmark in. Required for public channels. */
   channel_id?: string;
@@ -31,15 +31,11 @@ export interface AddBookmarkRequest {
   /** Id of this bookmark's parent */
   parent_id?: string;
 }
-const AddBookmarkRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddBookmarkRequest>;
-
 export interface AddBookmarkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   bookmark: unknown;
 }
-const AddBookmarkResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddBookmarkResponse>;
-
 export interface EditBookmarkRequest {
   /** Channel to update bookmark in. Required for public channels. */
   channel_id?: string;
@@ -52,37 +48,21 @@ export interface EditBookmarkRequest {
   /** Emoji tag to apply to the link. */
   emoji?: string;
 }
-const EditBookmarkRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<EditBookmarkRequest>;
-
 export interface EditBookmarkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   bookmark: unknown;
 }
-const EditBookmarkResponse = AddBookmarkResponse as any as S.Schema<EditBookmarkResponse>;
-
 export interface ListBookmarksRequest {
   /** Channel to list bookmarks in. Required for public channels. */
   channel_id?: string;
 }
-const ListBookmarksRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListBookmarksRequest>;
-
 export type ListBookmarksResponseBookmarksList = Array<unknown>;
-const ListBookmarksResponseBookmarksList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListBookmarksResponseBookmarksList>;
-
 export interface ListBookmarksResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   bookmarks: ListBookmarksResponseBookmarksList;
 }
-const ListBookmarksResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListBookmarksResponse>;
-
 export interface RemoveBookmarkRequest {
   /** Channel to remove bookmark. Required for public channels. */
   channel_id?: string;
@@ -91,20 +71,10 @@ export interface RemoveBookmarkRequest {
   /** Quip section ID to unbookmark */
   quip_section_id?: string;
 }
-const RemoveBookmarkRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<RemoveBookmarkRequest>;
-
 export interface RemoveBookmarkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const RemoveBookmarkResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<RemoveBookmarkResponse>;
-
 export type AddBookmarkError = SlackOpError;
 /** Add bookmark to a channel. Required scopes -- bot: `bookmarks:write`; user: `bookmarks:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `access_denied` -- Actor lacks access to the requested resource. - `cannot_bookmark_from_external_org` -- File is an external file and cannot be bookmarked. - `cannot_bookmark_restricted_sharing_enabled` -- File has restricted sharing enabled and cannot be bookmarked. - `channel_not_found` -- Channel cannot be found. - `file_already_added` -- The file has already been added to the folder. - `file_not_found` -- File cannot be found. - `invalid_bookmark_type` -- Bookmark type is not valid. - `invalid_app_action_type` -- App action type is not valid. - `invalid_shortcut_type` -- Shortcut type is not valid. - `invalid_child_type` -- Child type is not valid. - `invalid_emoji` -- Invalid emoji, does not follow the pattern of a valid emoji name. - `invalid_entity_id` -- Invalid entity_id, file or message type bookmark should have original file or message ID. - `invalid_link` -- Invalid link, link should begin with either http:// or https://. - `invalid_parent_type` -- Parent type is not valid. - `not_implemented` -- bookmarking not available for the user. - `parent_bookmark_disabled` -- Parent bookmark feature flag is off. - `parent_with_link` -- Parent bookmark should not have link. - `permission_denied` -- No permission to perform this operation. - `restricted_action` -- Members from an external organization cannot add workflow bookmarks to this channel. - `slack_connect_file_upload_sharing_blocked` -- Admin has disabled File uploads in all Slack Connect communications - `slack_connect_clip_sharing_blocked` -- Admin has disabled Clip sharing in Slack Connect channels - `slack_connect_blocked_file_type` -- Files with certain extensions are blocked from being uploaded in all Slack Connect communications - `too_many_bookmarks` -- Bookmark limit reached for channel. - `too_many_tabs` -- tab limit reached for channel. - `too_many_requests` -- Too many concurrent requests. Please retry. See https://docs.slack.dev/reference/methods/bookmarks.add */
 export const addBookmark: API.OperationMethod<
@@ -113,8 +83,8 @@ export const addBookmark: API.OperationMethod<
   AddBookmarkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddBookmarkRequest,
-  output: AddBookmarkResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddBookmarkRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddBookmarkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -128,8 +98,8 @@ export const editBookmark: API.OperationMethod<
   EditBookmarkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditBookmarkRequest,
-  output: EditBookmarkResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<EditBookmarkRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EditBookmarkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -143,8 +113,8 @@ export const listBookmarks: API.OperationMethod<
   ListBookmarksError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBookmarksRequest,
-  output: ListBookmarksResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<ListBookmarksRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ListBookmarksResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -158,8 +128,8 @@ export const removeBookmark: API.OperationMethod<
   RemoveBookmarkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveBookmarkRequest,
-  output: RemoveBookmarkResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<RemoveBookmarkRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<RemoveBookmarkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -177,7 +147,7 @@ function __c0(j: number): any {
           type: S.String,
           emoji: S.optional(S.String),
           entity_id: S.optional(S.String),
-          access_level: S.optional(AddBookmarkRequestAccessLevel),
+          access_level: S.optional(S.String),
           parent_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/bookmarks.add", code: 200 })),
       ).annotate({ identifier: "AddBookmarkRequest" });
@@ -210,7 +180,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          bookmarks: ListBookmarksResponseBookmarksList,
+          bookmarks: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "ListBookmarksResponse" });
     case 6:
@@ -228,4 +198,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RemoveBookmarkResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

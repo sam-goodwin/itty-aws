@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,8 +22,6 @@ export class NotFound
 
 /** * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
 export type CustomerTaskStatusEnum = "open" | "in_progress" | "completed" | "canceled";
-const CustomerTaskStatusEnum = S.String;
-
 export interface CreateCustomerTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -38,19 +38,12 @@ export interface CreateCustomerTaskRequest {
   /** Initial task status. * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
   status?: CustomerTaskStatusEnum | (string & {});
 }
-const CreateCustomerTaskRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCustomerTaskRequest>;
-
 export interface CustomerTaskAccount {
   /** UUID of the linked account. */
   id: string;
   /** Name of the linked account. */
   name: string;
 }
-const CustomerTaskAccount = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CustomerTaskAccount>;
-
 export interface CustomerTaskUser {
   /** PostHog user ID. */
   id: number;
@@ -61,8 +54,6 @@ export interface CustomerTaskUser {
   /** Last name of the user. */
   last_name: string;
 }
-const CustomerTaskUser = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CustomerTaskUser>;
-
 export interface CustomerTask {
   /** UUID of the task. */
   id: string;
@@ -95,41 +86,22 @@ export interface CustomerTask {
   /** Whether the current user can restore this task. */
   can_restore: boolean;
 }
-const CustomerTask = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CustomerTask>;
-
 export interface CustomerTasksArchiveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const CustomerTasksArchiveCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CustomerTasksArchiveCreateRequest>;
-
 export interface CustomerTasksRestoreCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const CustomerTasksRestoreCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CustomerTasksRestoreCreateRequest>;
-
 export interface GetCustomerTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetCustomerTaskRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetCustomerTaskRequest>;
-
 export type ListCustomerTasksRequestArchiveState = "active" | "archived" | "all";
-const ListCustomerTasksRequestArchiveState = S.String;
-
 export type ListCustomerTasksRequestOrdering =
   | "name"
   | "-name"
@@ -145,8 +117,6 @@ export type ListCustomerTasksRequestOrdering =
   | "-account"
   | "created_at"
   | "-created_at";
-const ListCustomerTasksRequestOrdering = S.String;
-
 export interface ListCustomerTasksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -173,18 +143,8 @@ export interface ListCustomerTasksRequest {
   /** Comma-separated task statuses. */
   statuses?: string;
 }
-const ListCustomerTasksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListCustomerTasksRequest>;
-
 /** Tasks in this page. */
 export type CustomerTaskPageResultsList = Array<CustomerTask>;
-const CustomerTaskPageResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CustomerTaskPageResultsList>;
-
 export interface CustomerTaskPage {
   /** Total number of matching tasks. */
   count: number;
@@ -195,8 +155,6 @@ export interface CustomerTaskPage {
   /** Tasks in this page. */
   results: CustomerTaskPageResultsList;
 }
-const CustomerTaskPage = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CustomerTaskPage>;
-
 export interface ListCustomerTasksActivitiesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -206,23 +164,12 @@ export interface ListCustomerTasksActivitiesRequest {
   /** Number of rows to skip. */
   offset?: number;
 }
-const ListCustomerTasksActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListCustomerTasksActivitiesRequest>;
-
 /** * `created` - Created * `updated` - Updated * `archived` - Archived * `restored` - Restored */
 export type CustomerTaskActivityTypeEnum = "created" | "updated" | "archived" | "restored";
-const CustomerTaskActivityTypeEnum = S.String;
-
 /** Value before the change. */
 export type CustomerTaskChangeBefore = string | number | boolean | unknown;
-const CustomerTaskChangeBefore = S.Unknown as any as S.Schema<CustomerTaskChangeBefore>;
-
 /** Value after the change. */
 export type CustomerTaskChangeAfter = string | number | boolean | unknown;
-const CustomerTaskChangeAfter = S.Unknown as any as S.Schema<CustomerTaskChangeAfter>;
-
 export interface CustomerTaskChange {
   /** Semantic task field that changed. */
   field: string;
@@ -231,15 +178,8 @@ export interface CustomerTaskChange {
   /** Value after the change. */
   after: CustomerTaskChangeAfter | null;
 }
-const CustomerTaskChange = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CustomerTaskChange>;
-
 /** Semantic field changes in this action. */
 export type CustomerTaskActivityChangesList = Array<CustomerTaskChange>;
-const CustomerTaskActivityChangesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CustomerTaskActivityChangesList>;
-
 export interface CustomerTaskActivity {
   /** UUID of the activity. */
   id: string;
@@ -252,15 +192,8 @@ export interface CustomerTaskActivity {
   /** When the activity was recorded. */
   created_at: string;
 }
-const CustomerTaskActivity = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CustomerTaskActivity>;
-
 /** Activities in this page. */
 export type CustomerTaskActivityPageResultsList = Array<CustomerTaskActivity>;
-const CustomerTaskActivityPageResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CustomerTaskActivityPageResultsList>;
-
 export interface CustomerTaskActivityPage {
   /** Total number of matching activities. */
   count: number;
@@ -271,11 +204,6 @@ export interface CustomerTaskActivityPage {
   /** Activities in this page. */
   results: CustomerTaskActivityPageResultsList;
 }
-const CustomerTaskActivityPage = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CustomerTaskActivityPage>;
-
 export interface UpdateCustomerTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -293,11 +221,6 @@ export interface UpdateCustomerTaskRequest {
   /** Replacement task status. * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
   status?: CustomerTaskStatusEnum | (string & {});
 }
-const UpdateCustomerTaskRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UpdateCustomerTaskRequest>;
-
 export interface UpdateCustomerTasksPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -315,11 +238,6 @@ export interface UpdateCustomerTasksPartialRequest {
   /** Replacement task status. * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
   status?: CustomerTaskStatusEnum | (string & {});
 }
-const UpdateCustomerTasksPartialRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<UpdateCustomerTasksPartialRequest>;
-
 export type CreateCustomerTaskError = PosthogOpError;
 export const createCustomerTask: API.OperationMethod<
   CreateCustomerTaskRequest,
@@ -327,8 +245,8 @@ export const createCustomerTask: API.OperationMethod<
   CreateCustomerTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomerTaskRequest,
-  output: CustomerTask,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCustomerTaskRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -341,8 +259,8 @@ export const customerTasksArchiveCreate: API.OperationMethod<
   CustomerTasksArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerTasksArchiveCreateRequest,
-  output: CustomerTask,
+  input: __S(4, __c0, 4) as any as S.Schema<CustomerTasksArchiveCreateRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -355,8 +273,8 @@ export const customerTasksRestoreCreate: API.OperationMethod<
   CustomerTasksRestoreCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerTasksRestoreCreateRequest,
-  output: CustomerTask,
+  input: __S(5, __c0, 5) as any as S.Schema<CustomerTasksRestoreCreateRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -369,8 +287,8 @@ export const getCustomerTask: API.OperationMethod<
   GetCustomerTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomerTaskRequest,
-  output: CustomerTask,
+  input: __S(6, __c0, 6) as any as S.Schema<GetCustomerTaskRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -383,8 +301,8 @@ export const listCustomerTasks: API.OperationMethod<
   ListCustomerTasksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomerTasksRequest,
-  output: CustomerTaskPage,
+  input: __S(7, __c0, 7) as any as S.Schema<ListCustomerTasksRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CustomerTaskPage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -397,8 +315,8 @@ export const listCustomerTasksActivities: API.OperationMethod<
   ListCustomerTasksActivitiesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomerTasksActivitiesRequest,
-  output: CustomerTaskActivityPage,
+  input: __S(10, __c1, 2) as any as S.Schema<ListCustomerTasksActivitiesRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CustomerTaskActivityPage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -411,8 +329,8 @@ export const updateCustomerTask: API.OperationMethod<
   UpdateCustomerTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomerTaskRequest,
-  output: CustomerTask,
+  input: __S(16, __c2, 0) as any as S.Schema<UpdateCustomerTaskRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -425,8 +343,8 @@ export const updateCustomerTasksPartial: API.OperationMethod<
   UpdateCustomerTasksPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomerTasksPartialRequest,
-  output: CustomerTask,
+  input: __S(17, __c2, 1) as any as S.Schema<UpdateCustomerTasksPartialRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -444,7 +362,7 @@ function __c0(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           assigned_to_id: S.optional(S.NullOr(S.Number)),
           due_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(CustomerTaskStatusEnum),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/customer_tasks/", code: 200 }),
         ),
@@ -471,15 +389,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: S.NullOr(CustomerTaskAccount),
+          account: S.NullOr(__S(1, __c0, 1)),
           name: S.String,
           description: S.NullOr(S.String),
-          status: CustomerTaskStatusEnum,
-          assigned_to: S.NullOr(CustomerTaskUser),
+          status: S.String,
+          assigned_to: S.NullOr(__S(2, __c0, 2)),
           due_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
-          completed_by: S.NullOr(CustomerTaskUser),
-          created_by: S.NullOr(CustomerTaskUser),
+          completed_by: S.NullOr(__S(2, __c0, 2)),
+          created_by: S.NullOr(__S(2, __c0, 2)),
           archived_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
@@ -535,14 +453,14 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
-          archive_state: S.optional(ListCustomerTasksRequestArchiveState.pipe(T.Query())),
+          archive_state: S.optional(S.String.pipe(T.Query())),
           assigned_to: S.optional(S.String.pipe(T.Query())),
           due_after: S.optional(S.String.pipe(T.Query())),
           due_before: S.optional(S.String.pipe(T.Query())),
           has_due_at: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(ListCustomerTasksRequestOrdering.pipe(T.Query())),
+          ordering: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           statuses: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -554,14 +472,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomerTask);
+      return S.Array(__S(3, __c0, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: CustomerTaskPageResultsList,
+          results: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "CustomerTaskPage" });
     case 2:
@@ -585,31 +503,31 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           field: S.String,
-          before: S.NullOr(CustomerTaskChangeBefore),
-          after: S.NullOr(CustomerTaskChangeAfter),
+          before: S.NullOr(S.Unknown),
+          after: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "CustomerTaskChange" });
     case 4:
-      return S.Array(CustomerTaskChange);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          activity_type: CustomerTaskActivityTypeEnum,
-          changes: CustomerTaskActivityChangesList,
-          actor: S.NullOr(CustomerTaskUser),
+          activity_type: S.String,
+          changes: __S(12, __c1, 4),
+          actor: S.NullOr(__S(2, __c0, 2)),
           created_at: S.String,
         }),
       ).annotate({ identifier: "CustomerTaskActivity" });
     case 6:
-      return S.Array(CustomerTaskActivity);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: CustomerTaskActivityPageResultsList,
+          results: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "CustomerTaskActivityPage" });
   }
@@ -626,7 +544,7 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           assigned_to_id: S.optional(S.NullOr(S.Number)),
           due_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(CustomerTaskStatusEnum),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -647,7 +565,7 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           assigned_to_id: S.optional(S.NullOr(S.Number)),
           due_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(CustomerTaskStatusEnum),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -659,4 +577,9 @@ function __c2(j: number): any {
         identifier: "UpdateCustomerTasksPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

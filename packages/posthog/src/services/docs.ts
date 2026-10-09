@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,14 +16,10 @@ export interface SearchDocRequest {
   /** Natural-language description of what to find in the PostHog documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question. */
   query: string;
 }
-const SearchDocRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SearchDocRequest>;
-
 export interface DocsSearchResponse {
   /** Markdown-formatted documentation results. Each block has a title, URL and excerpt; an empty result set returns guidance to navigate to https://posthog.com/docs. */
   content: string;
 }
-const DocsSearchResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DocsSearchResponse>;
-
 export type SearchDocError = PosthogOpError;
 /** Search PostHog documentation Run a hybrid (semantic + full-text) RAG search over the PostHog documentation via Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the agent to cite back to the user. */
 export const searchDoc: API.OperationMethod<
@@ -30,8 +28,8 @@ export const searchDoc: API.OperationMethod<
   SearchDocError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchDocRequest,
-  output: DocsSearchResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<SearchDocRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DocsSearchResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -60,4 +58,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DocsSearchResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

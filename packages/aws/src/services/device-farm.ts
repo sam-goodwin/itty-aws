@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://devicefarm.amazonaws.com/doc/2015-06-23/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Device Farm",
@@ -162,8 +164,6 @@ export type DeviceAttribute =
   | "MODEL"
   | "AVAILABILITY"
   | (string & {});
-const DeviceAttribute = S.String;
-
 export type RuleOperator =
   | "EQUALS"
   | "LESS_THAN"
@@ -174,16 +174,12 @@ export type RuleOperator =
   | "NOT_IN"
   | "CONTAINS"
   | (string & {});
-const RuleOperator = S.String;
-
 export interface Rule {
   attribute?: DeviceAttribute;
   operator?: RuleOperator;
   value?: string;
 }
-const Rule = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Rule>;
 export type Rules = Rule[];
-const Rules = /*@__PURE__*/ __L.at(__c0, 1);
 export interface CreateDevicePoolRequest {
   projectArn: string;
   name: string;
@@ -191,13 +187,7 @@ export interface CreateDevicePoolRequest {
   rules: Rule[];
   maxDevices?: number;
 }
-const CreateDevicePoolRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDevicePoolRequest>;
 export type DevicePoolType = "CURATED" | "PRIVATE" | (string & {});
-const DevicePoolType = S.String;
-
 export interface DevicePool {
   arn?: string;
   name?: string;
@@ -206,16 +196,10 @@ export interface DevicePool {
   rules?: Rule[];
   maxDevices?: number;
 }
-const DevicePool = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DevicePool>;
 export interface CreateDevicePoolResult {
   devicePool?: DevicePool;
 }
-const CreateDevicePoolResult = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDevicePoolResult>;
 export type PackageIds = string[];
-const PackageIds = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CreateInstanceProfileRequest {
   name: string;
   description?: string;
@@ -223,10 +207,6 @@ export interface CreateInstanceProfileRequest {
   excludeAppPackagesFromCleanup?: string[];
   rebootAfterUse?: boolean;
 }
-const CreateInstanceProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateInstanceProfileRequest>;
 export interface InstanceProfile {
   arn?: string;
   packageCleanup?: boolean;
@@ -235,17 +215,10 @@ export interface InstanceProfile {
   name?: string;
   description?: string;
 }
-const InstanceProfile = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<InstanceProfile>;
 export interface CreateInstanceProfileResult {
   instanceProfile?: InstanceProfile;
 }
-const CreateInstanceProfileResult = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateInstanceProfileResult>;
 export type NetworkProfileType = "CURATED" | "PRIVATE" | (string & {});
-const NetworkProfileType = S.String;
-
 export type PercentInteger = number;
 export interface CreateNetworkProfileRequest {
   projectArn: string;
@@ -261,10 +234,6 @@ export interface CreateNetworkProfileRequest {
   uplinkLossPercent?: number;
   downlinkLossPercent?: number;
 }
-const CreateNetworkProfileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateNetworkProfileRequest>;
 export interface NetworkProfile {
   arn?: string;
   name?: string;
@@ -279,37 +248,27 @@ export interface NetworkProfile {
   uplinkLossPercent?: number;
   downlinkLossPercent?: number;
 }
-const NetworkProfile = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<NetworkProfile>;
 export interface CreateNetworkProfileResult {
   networkProfile?: NetworkProfile;
 }
-const CreateNetworkProfileResult = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateNetworkProfileResult>;
 export type JobTimeoutMinutes = number;
 export type SecurityGroupId = string;
 export type VpcSecurityGroupIds = string[];
-const VpcSecurityGroupIds = PackageIds as any as S.Schema<VpcSecurityGroupIds>;
 export type SubnetId = string;
 export type VpcSubnetIds = string[];
-const VpcSubnetIds = PackageIds as any as S.Schema<VpcSubnetIds>;
 export type NonEmptyString = string;
 export interface VpcConfig {
   securityGroupIds: string[];
   subnetIds: string[];
   vpcId: string;
 }
-const VpcConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<VpcConfig>;
 export type EnvironmentVariableName = string;
 export type EnvironmentVariableValue = string;
 export interface EnvironmentVariable {
   name: string;
   value: string;
 }
-const EnvironmentVariable = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EnvironmentVariable>;
 export type EnvironmentVariables = EnvironmentVariable[];
-const EnvironmentVariables = /*@__PURE__*/ __L.at(__c1, 6);
 export type AmazonRoleResourceName = string;
 export interface CreateProjectRequest {
   name: string;
@@ -318,7 +277,6 @@ export interface CreateProjectRequest {
   environmentVariables?: EnvironmentVariable[];
   executionRoleArn?: string;
 }
-const CreateProjectRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateProjectRequest>;
 export interface Project {
   arn?: string;
   name?: string;
@@ -328,29 +286,21 @@ export interface Project {
   environmentVariables?: EnvironmentVariable[];
   executionRoleArn?: string;
 }
-const Project = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Project>;
 export interface CreateProjectResult {
   project?: Project;
 }
-const CreateProjectResult = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateProjectResult>;
 export type AuxiliaryAppArnList = string[];
-const AuxiliaryAppArnList = PackageIds as any as S.Schema<AuxiliaryAppArnList>;
 export type BillingMethod = "METERED" | "UNMETERED" | (string & {});
-const BillingMethod = S.String;
-
 export type AmazonResourceNames = string[];
-const AmazonResourceNames = PackageIds as any as S.Schema<AmazonResourceNames>;
 export type DeviceProxyHost = string;
 export type DeviceProxyPort = number;
 export interface DeviceProxy {
   host: string;
   port: number;
 }
-const DeviceProxy = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeviceProxy>;
 export type RemoteAccessParameterKey = string;
 export type RemoteAccessParameterValue = string;
 export type RemoteAccessParameters = { [key: string]: string | undefined };
-const RemoteAccessParameters = /*@__PURE__*/ __L.at(__c2, 3);
 export interface CreateRemoteAccessSessionConfiguration {
   auxiliaryApps?: string[];
   billingMethod?: BillingMethod;
@@ -358,13 +308,7 @@ export interface CreateRemoteAccessSessionConfiguration {
   deviceProxy?: DeviceProxy;
   parameters?: { [key: string]: string | undefined };
 }
-const CreateRemoteAccessSessionConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateRemoteAccessSessionConfiguration>;
 export type InteractionMode = "INTERACTIVE" | "NO_VIDEO" | "VIDEO_ONLY" | (string & {});
-const InteractionMode = S.String;
-
 export interface CreateRemoteAccessSessionRequest {
   projectArn: string;
   deviceArn: string;
@@ -375,10 +319,6 @@ export interface CreateRemoteAccessSessionRequest {
   interactionMode?: InteractionMode;
   skipAppResign?: boolean;
 }
-const CreateRemoteAccessSessionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateRemoteAccessSessionRequest>;
 export type ExecutionStatus =
   | "PENDING"
   | "PENDING_CONCURRENCY"
@@ -390,8 +330,6 @@ export type ExecutionStatus =
   | "COMPLETED"
   | "STOPPING"
   | (string & {});
-const ExecutionStatus = S.String;
-
 export type ExecutionResult =
   | "PENDING"
   | "PASSED"
@@ -401,30 +339,19 @@ export type ExecutionResult =
   | "ERRORED"
   | "STOPPED"
   | (string & {});
-const ExecutionResult = S.String;
-
 export type DeviceFormFactor = "PHONE" | "TABLET" | (string & {});
-const DeviceFormFactor = S.String;
-
 export type DevicePlatform = "ANDROID" | "IOS" | (string & {});
-const DevicePlatform = S.String;
-
 export interface CPU {
   frequency?: string;
   architecture?: string;
   clock?: number;
 }
-const CPU = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CPU>;
 export interface Resolution {
   width?: number;
   height?: number;
 }
-const Resolution = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Resolution>;
 export type InstanceLabels = string[];
-const InstanceLabels = PackageIds as any as S.Schema<InstanceLabels>;
 export type InstanceStatus = "IN_USE" | "PREPARING" | "AVAILABLE" | "NOT_AVAILABLE" | (string & {});
-const InstanceStatus = S.String;
-
 export interface DeviceInstance {
   arn?: string;
   deviceArn?: string;
@@ -433,17 +360,13 @@ export interface DeviceInstance {
   udid?: string;
   instanceProfile?: InstanceProfile;
 }
-const DeviceInstance = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeviceInstance>;
 export type DeviceInstances = DeviceInstance[];
-const DeviceInstances = /*@__PURE__*/ __L.at(__c3, 1);
 export type DeviceAvailability =
   | "TEMPORARY_NOT_AVAILABLE"
   | "BUSY"
   | "AVAILABLE"
   | "HIGHLY_AVAILABLE"
   | (string & {});
-const DeviceAvailability = S.String;
-
 export interface Device {
   arn?: string;
   name?: string;
@@ -467,23 +390,17 @@ export interface Device {
   instances?: DeviceInstance[];
   availability?: DeviceAvailability;
 }
-const Device = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Device>;
 export interface DeviceMinutes {
   total?: number;
   metered?: number;
   unmetered?: number;
 }
-const DeviceMinutes = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeviceMinutes>;
 export type SkipAppResign = boolean;
 export type SensitiveURL = string | redacted.Redacted<string>;
 export interface RemoteAccessEndpoints {
   remoteDriverEndpoint?: string | redacted.Redacted<string>;
   interactiveEndpoint?: string | redacted.Redacted<string>;
 }
-const RemoteAccessEndpoints = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<RemoteAccessEndpoints>;
 export interface RemoteAccessSession {
   arn?: string;
   name?: string;
@@ -506,14 +423,9 @@ export interface RemoteAccessSession {
   appUpload?: string;
   endpoints?: RemoteAccessEndpoints;
 }
-const RemoteAccessSession = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<RemoteAccessSession>;
 export interface CreateRemoteAccessSessionResult {
   remoteAccessSession?: RemoteAccessSession;
 }
-const CreateRemoteAccessSessionResult = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateRemoteAccessSessionResult>;
 export type ResourceName = string;
 export type ResourceDescription = string;
 export type SecurityGroupIds = string[];
@@ -523,16 +435,11 @@ export interface TestGridVpcConfig {
   subnetIds: string[];
   vpcId: string;
 }
-const TestGridVpcConfig = VpcConfig as any as S.Schema<TestGridVpcConfig>;
 export interface CreateTestGridProjectRequest {
   name: string;
   description?: string;
   vpcConfig?: TestGridVpcConfig;
 }
-const CreateTestGridProjectRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateTestGridProjectRequest>;
 export type DeviceFarmArn = string;
 export interface TestGridProject {
   arn?: string;
@@ -541,32 +448,19 @@ export interface TestGridProject {
   vpcConfig?: TestGridVpcConfig;
   created?: Date;
 }
-const TestGridProject = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TestGridProject>;
 export interface CreateTestGridProjectResult {
   testGridProject?: TestGridProject;
 }
-const CreateTestGridProjectResult = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateTestGridProjectResult>;
 export type TestGridUrlExpiresInSecondsInput = number;
 export interface CreateTestGridUrlRequest {
   projectArn: string;
   expiresInSeconds: number;
 }
-const CreateTestGridUrlRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateTestGridUrlRequest>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface CreateTestGridUrlResult {
   url?: string | redacted.Redacted<string>;
   expires?: Date;
 }
-const CreateTestGridUrlResult = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateTestGridUrlResult>;
 export type UploadType =
   | "ANDROID_APP"
   | "IOS_APP"
@@ -601,8 +495,6 @@ export type UploadType =
   | "INSTRUMENTATION_TEST_SPEC"
   | "XCTEST_UI_TEST_SPEC"
   | (string & {});
-const UploadType = S.String;
-
 export type ContentType = string;
 export interface CreateUploadRequest {
   projectArn: string;
@@ -610,14 +502,9 @@ export interface CreateUploadRequest {
   type: UploadType;
   contentType?: string;
 }
-const CreateUploadRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateUploadRequest>;
 export type UploadStatus = "INITIALIZED" | "PROCESSING" | "SUCCEEDED" | "FAILED" | (string & {});
-const UploadStatus = S.String;
-
 export type Metadata = string;
 export type UploadCategory = "CURATED" | "PRIVATE" | (string & {});
-const UploadCategory = S.String;
-
 export interface Upload {
   arn?: string;
   name?: string;
@@ -630,11 +517,9 @@ export interface Upload {
   message?: string;
   category?: UploadCategory;
 }
-const Upload = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Upload>;
 export interface CreateUploadResult {
   upload?: Upload;
 }
-const CreateUploadResult = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CreateUploadResult>;
 export type VPCEConfigurationName = string;
 export type VPCEServiceName = string;
 export type ServiceDnsName = string;
@@ -645,10 +530,6 @@ export interface CreateVPCEConfigurationRequest {
   serviceDnsName: string;
   vpceConfigurationDescription?: string;
 }
-const CreateVPCEConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateVPCEConfigurationRequest>;
 export interface VPCEConfiguration {
   arn?: string;
   vpceConfigurationName?: string;
@@ -656,111 +537,53 @@ export interface VPCEConfiguration {
   serviceDnsName?: string;
   vpceConfigurationDescription?: string;
 }
-const VPCEConfiguration = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<VPCEConfiguration>;
 export interface CreateVPCEConfigurationResult {
   vpceConfiguration?: VPCEConfiguration;
 }
-const CreateVPCEConfigurationResult = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateVPCEConfigurationResult>;
 export interface DeleteDevicePoolRequest {
   arn: string;
 }
-const DeleteDevicePoolRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteDevicePoolRequest>;
 export interface DeleteDevicePoolResult {}
-const DeleteDevicePoolResult = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteDevicePoolResult>;
 export interface DeleteInstanceProfileRequest {
   arn: string;
 }
-const DeleteInstanceProfileRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteInstanceProfileRequest>;
 export interface DeleteInstanceProfileResult {}
-const DeleteInstanceProfileResult = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteInstanceProfileResult>;
 export interface DeleteNetworkProfileRequest {
   arn: string;
 }
-const DeleteNetworkProfileRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DeleteNetworkProfileRequest>;
 export interface DeleteNetworkProfileResult {}
-const DeleteNetworkProfileResult =
-  DeleteInstanceProfileResult as any as S.Schema<DeleteNetworkProfileResult>;
 export interface DeleteProjectRequest {
   arn: string;
 }
-const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DeleteProjectRequest>;
 export interface DeleteProjectResult {}
-const DeleteProjectResult = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DeleteProjectResult>;
 export interface DeleteRemoteAccessSessionRequest {
   arn: string;
 }
-const DeleteRemoteAccessSessionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteRemoteAccessSessionRequest>;
 export interface DeleteRemoteAccessSessionResult {}
-const DeleteRemoteAccessSessionResult =
-  DeleteInstanceProfileResult as any as S.Schema<DeleteRemoteAccessSessionResult>;
 export interface DeleteRunRequest {
   arn: string;
 }
-const DeleteRunRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DeleteRunRequest>;
 export interface DeleteRunResult {}
-const DeleteRunResult = DeleteProjectResult as any as S.Schema<DeleteRunResult>;
 export interface DeleteTestGridProjectRequest {
   projectArn: string;
 }
-const DeleteTestGridProjectRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteTestGridProjectRequest>;
 export interface DeleteTestGridProjectResult {}
-const DeleteTestGridProjectResult =
-  DeleteInstanceProfileResult as any as S.Schema<DeleteTestGridProjectResult>;
 export interface DeleteUploadRequest {
   arn: string;
 }
-const DeleteUploadRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DeleteUploadRequest>;
 export interface DeleteUploadResult {}
-const DeleteUploadResult = DeleteProjectResult as any as S.Schema<DeleteUploadResult>;
 export interface DeleteVPCEConfigurationRequest {
   arn: string;
 }
-const DeleteVPCEConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteVPCEConfigurationRequest>;
 export interface DeleteVPCEConfigurationResult {}
-const DeleteVPCEConfigurationResult =
-  DeleteInstanceProfileResult as any as S.Schema<DeleteVPCEConfigurationResult>;
 export interface GetAccountSettingsRequest {}
-const GetAccountSettingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetAccountSettingsRequest>;
 export type AWSAccountNumber = string;
 export type PurchasedDevicesMap = { [key in DevicePlatform]?: number };
-const PurchasedDevicesMap = /*@__PURE__*/ __L.at(__c6, 7);
 export interface TrialMinutes {
   total?: number;
   remaining?: number;
 }
-const TrialMinutes = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TrialMinutes>;
 export type MaxSlotMap = { [key: string]: number | undefined };
-const MaxSlotMap = /*@__PURE__*/ __L.at(__c7, 1);
 export interface AccountSettings {
   awsAccountNumber?: string;
   unmeteredDevices?: { [key: string]: number | undefined };
@@ -771,44 +594,27 @@ export interface AccountSettings {
   defaultJobTimeoutMinutes?: number;
   skipAppResign?: boolean;
 }
-const AccountSettings = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AccountSettings>;
 export interface GetAccountSettingsResult {
   accountSettings?: AccountSettings;
 }
-const GetAccountSettingsResult = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetAccountSettingsResult>;
 export interface GetDeviceRequest {
   arn: string;
 }
-const GetDeviceRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetDeviceRequest>;
 export interface GetDeviceResult {
   device?: Device;
 }
-const GetDeviceResult = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetDeviceResult>;
 export interface GetDeviceInstanceRequest {
   arn: string;
 }
-const GetDeviceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetDeviceInstanceRequest>;
 export interface GetDeviceInstanceResult {
   deviceInstance?: DeviceInstance;
 }
-const GetDeviceInstanceResult = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetDeviceInstanceResult>;
 export interface GetDevicePoolRequest {
   arn: string;
 }
-const GetDevicePoolRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetDevicePoolRequest>;
 export interface GetDevicePoolResult {
   devicePool?: DevicePool;
 }
-const GetDevicePoolResult = CreateDevicePoolResult as any as S.Schema<GetDevicePoolResult>;
 export type TestType =
   | "BUILTIN_FUZZ"
   | "APPIUM_JAVA_JUNIT"
@@ -825,11 +631,8 @@ export type TestType =
   | "XCTEST"
   | "XCTEST_UI"
   | (string & {});
-const TestType = S.String;
-
 export type Filter = string;
 export type TestParameters = { [key: string]: string | undefined };
-const TestParameters = RemoteAccessParameters as any as S.Schema<TestParameters>;
 export interface ScheduleRunTest {
   type: TestType;
   testPackageArn?: string;
@@ -837,39 +640,26 @@ export interface ScheduleRunTest {
   filter?: string;
   parameters?: { [key: string]: string | undefined };
 }
-const ScheduleRunTest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ScheduleRunTest>;
 export interface Location {
   latitude: number;
   longitude: number;
 }
-const Location = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Location>;
 export type IosPaths = string[];
-const IosPaths = PackageIds as any as S.Schema<IosPaths>;
 export type AndroidPaths = string[];
-const AndroidPaths = PackageIds as any as S.Schema<AndroidPaths>;
 export type DeviceHostPaths = string[];
-const DeviceHostPaths = PackageIds as any as S.Schema<DeviceHostPaths>;
 export interface CustomerArtifactPaths {
   iosPaths?: string[];
   androidPaths?: string[];
   deviceHostPaths?: string[];
 }
-const CustomerArtifactPaths = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CustomerArtifactPaths>;
 export interface Radios {
   wifi?: boolean;
   bluetooth?: boolean;
   nfc?: boolean;
   gps?: boolean;
 }
-const Radios = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Radios>;
 export type InsightsType = "TEST_REPORT" | (string & {});
-const InsightsType = S.String;
-
 export type InsightsTypes = InsightsType[];
-const InsightsTypes = /*@__PURE__*/ __L.at(__c8, 5);
 export interface ScheduleRunConfiguration {
   extraDataPackageArn?: string;
   networkProfileArn?: string;
@@ -885,10 +675,6 @@ export interface ScheduleRunConfiguration {
   executionRoleArn?: string;
   insightsTypes?: InsightsType[];
 }
-const ScheduleRunConfiguration = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ScheduleRunConfiguration>;
 export interface GetDevicePoolCompatibilityRequest {
   devicePoolArn: string;
   appArn?: string;
@@ -897,57 +683,30 @@ export interface GetDevicePoolCompatibilityRequest {
   configuration?: ScheduleRunConfiguration;
   projectArn?: string;
 }
-const GetDevicePoolCompatibilityRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetDevicePoolCompatibilityRequest>;
 export interface IncompatibilityMessage {
   message?: string;
   type?: DeviceAttribute;
 }
-const IncompatibilityMessage = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<IncompatibilityMessage>;
 export type IncompatibilityMessages = IncompatibilityMessage[];
-const IncompatibilityMessages = /*@__PURE__*/ __L.at(__c9, 1);
 export interface DevicePoolCompatibilityResult {
   device?: Device;
   compatible?: boolean;
   incompatibilityMessages?: IncompatibilityMessage[];
 }
-const DevicePoolCompatibilityResult = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DevicePoolCompatibilityResult>;
 export type DevicePoolCompatibilityResults = DevicePoolCompatibilityResult[];
-const DevicePoolCompatibilityResults = /*@__PURE__*/ __L.at(__c9, 3);
 export interface GetDevicePoolCompatibilityResult {
   compatibleDevices?: DevicePoolCompatibilityResult[];
   incompatibleDevices?: DevicePoolCompatibilityResult[];
 }
-const GetDevicePoolCompatibilityResult = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetDevicePoolCompatibilityResult>;
 export interface GetInstanceProfileRequest {
   arn: string;
 }
-const GetInstanceProfileRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetInstanceProfileRequest>;
 export interface GetInstanceProfileResult {
   instanceProfile?: InstanceProfile;
 }
-const GetInstanceProfileResult = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetInstanceProfileResult>;
 export interface GetJobRequest {
   arn: string;
 }
-const GetJobRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetJobRequest>;
 export interface Counters {
   total?: number;
   passed?: number;
@@ -957,7 +716,6 @@ export interface Counters {
   stopped?: number;
   skipped?: number;
 }
-const Counters = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Counters>;
 export type VideoCapture = boolean;
 export type ReportStatus =
   | "PENDING"
@@ -966,8 +724,6 @@ export type ReportStatus =
   | "SKIPPED"
   | "ERRORED"
   | (string & {});
-const ReportStatus = S.String;
-
 export type ReportMessage = string;
 export interface TestReportMetrics {
   testsTotal?: number;
@@ -980,18 +736,15 @@ export interface TestReportMetrics {
   totalTestExecutionDurationSeconds?: number;
   medianTestExecutionDurationSeconds?: number;
 }
-const TestReportMetrics = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TestReportMetrics>;
 export interface TestReport {
   message?: string;
   metrics?: TestReportMetrics;
   testDetailsUrl?: string | redacted.Redacted<string>;
 }
-const TestReport = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<TestReport>;
 export interface JobInsights {
   status?: ReportStatus;
   testReport?: TestReport;
 }
-const JobInsights = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<JobInsights>;
 export interface Job {
   arn?: string;
   name?: string;
@@ -1010,58 +763,33 @@ export interface Job {
   videoCapture?: boolean;
   insights?: JobInsights;
 }
-const Job = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Job>;
 export interface GetJobResult {
   job?: Job;
 }
-const GetJobResult = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetJobResult>;
 export interface GetNetworkProfileRequest {
   arn: string;
 }
-const GetNetworkProfileRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetNetworkProfileRequest>;
 export interface GetNetworkProfileResult {
   networkProfile?: NetworkProfile;
 }
-const GetNetworkProfileResult = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetNetworkProfileResult>;
 export type PaginationToken = string;
 export interface GetOfferingStatusRequest {
   nextToken?: string;
 }
-const GetOfferingStatusRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetOfferingStatusRequest>;
 export type OfferingIdentifier = string;
 export type OfferingTransactionType = "PURCHASE" | "RENEW" | "SYSTEM" | (string & {});
-const OfferingTransactionType = S.String;
-
 export type OfferingType = "RECURRING" | (string & {});
-const OfferingType = S.String;
-
 export type CurrencyCode = "USD" | (string & {});
-const CurrencyCode = S.String;
-
 export interface MonetaryAmount {
   amount?: number;
   currencyCode?: CurrencyCode;
 }
-const MonetaryAmount = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<MonetaryAmount>;
 export type RecurringChargeFrequency = "MONTHLY" | (string & {});
-const RecurringChargeFrequency = S.String;
-
 export interface RecurringCharge {
   cost?: MonetaryAmount;
   frequency?: RecurringChargeFrequency;
 }
-const RecurringCharge = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<RecurringCharge>;
 export type RecurringCharges = RecurringCharge[];
-const RecurringCharges = /*@__PURE__*/ __L.at(__c11, 3);
 export interface Offering {
   id?: string;
   description?: string;
@@ -1069,52 +797,34 @@ export interface Offering {
   platform?: DevicePlatform;
   recurringCharges?: RecurringCharge[];
 }
-const Offering = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Offering>;
 export interface OfferingStatus {
   type?: OfferingTransactionType;
   offering?: Offering;
   quantity?: number;
   effectiveOn?: Date;
 }
-const OfferingStatus = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<OfferingStatus>;
 export type OfferingStatusMap = { [key: string]: OfferingStatus | undefined };
-const OfferingStatusMap = /*@__PURE__*/ __L.at(__c11, 6);
 export interface GetOfferingStatusResult {
   current?: { [key: string]: OfferingStatus | undefined };
   nextPeriod?: { [key: string]: OfferingStatus | undefined };
   nextToken?: string;
 }
-const GetOfferingStatusResult = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetOfferingStatusResult>;
 export interface GetProjectRequest {
   arn: string;
 }
-const GetProjectRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetProjectRequest>;
 export interface GetProjectResult {
   project?: Project;
 }
-const GetProjectResult = CreateProjectResult as any as S.Schema<GetProjectResult>;
 export interface GetRemoteAccessSessionRequest {
   arn: string;
 }
-const GetRemoteAccessSessionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetRemoteAccessSessionRequest>;
 export interface GetRemoteAccessSessionResult {
   remoteAccessSession?: RemoteAccessSession;
 }
-const GetRemoteAccessSessionResult =
-  CreateRemoteAccessSessionResult as any as S.Schema<GetRemoteAccessSessionResult>;
 export interface GetRunRequest {
   arn: string;
 }
-const GetRunRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetRunRequest>;
 export type ExecutionResultCode = "PARSING_FAILED" | "VPC_ENDPOINT_SETUP_FAILED" | (string & {});
-const ExecutionResultCode = S.String;
-
 export type DeviceFilterAttribute =
   | "ARN"
   | "PLATFORM"
@@ -1129,27 +839,18 @@ export type DeviceFilterAttribute =
   | "INSTANCE_LABELS"
   | "FLEET_TYPE"
   | (string & {});
-const DeviceFilterAttribute = S.String;
-
 export type DeviceFilterValues = string[];
-const DeviceFilterValues = PackageIds as any as S.Schema<DeviceFilterValues>;
 export interface DeviceFilter {
   attribute: DeviceFilterAttribute;
   operator: RuleOperator;
   values: string[];
 }
-const DeviceFilter = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<DeviceFilter>;
 export type DeviceFilters = DeviceFilter[];
-const DeviceFilters = /*@__PURE__*/ __L.at(__c12, 4);
 export interface DeviceSelectionResult {
   filters?: DeviceFilter[];
   matchedDevicesCount?: number;
   maxDevices?: number;
 }
-const DeviceSelectionResult = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DeviceSelectionResult>;
 export interface JobReportMetrics {
   jobsTotal?: number;
   jobsPassed?: number;
@@ -1162,18 +863,15 @@ export interface JobReportMetrics {
   averageJobExecutionDurationSeconds?: number;
   medianJobExecutionDurationSeconds?: number;
 }
-const JobReportMetrics = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<JobReportMetrics>;
 export interface JobReport {
   message?: string;
   metrics?: JobReportMetrics;
   jobDetailsUrl?: string | redacted.Redacted<string>;
 }
-const JobReport = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<JobReport>;
 export interface RunInsights {
   status?: ReportStatus;
   jobReport?: JobReport;
 }
-const RunInsights = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<RunInsights>;
 export interface Run {
   arn?: string;
   name?: string;
@@ -1213,15 +911,12 @@ export interface Run {
   insightsTypes?: InsightsType[];
   insights?: RunInsights;
 }
-const Run = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Run>;
 export interface GetRunResult {
   run?: Run;
 }
-const GetRunResult = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetRunResult>;
 export interface GetSuiteRequest {
   arn: string;
 }
-const GetSuiteRequest = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetSuiteRequest>;
 export interface Suite {
   arn?: string;
   name?: string;
@@ -1235,15 +930,12 @@ export interface Suite {
   message?: string;
   deviceMinutes?: DeviceMinutes;
 }
-const Suite = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Suite>;
 export interface GetSuiteResult {
   suite?: Suite;
 }
-const GetSuiteResult = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetSuiteResult>;
 export interface GetTestRequest {
   arn: string;
 }
-const GetTestRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GetTestRequest>;
 export interface Test {
   arn?: string;
   name?: string;
@@ -1257,38 +949,22 @@ export interface Test {
   message?: string;
   deviceMinutes?: DeviceMinutes;
 }
-const Test = Suite as any as S.Schema<Test>;
 export interface GetTestResult {
   test?: Test;
 }
-const GetTestResult = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GetTestResult>;
 export interface GetTestGridProjectRequest {
   projectArn: string;
 }
-const GetTestGridProjectRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetTestGridProjectRequest>;
 export interface GetTestGridProjectResult {
   testGridProject?: TestGridProject;
 }
-const GetTestGridProjectResult = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetTestGridProjectResult>;
 export type ResourceId = string;
 export interface GetTestGridSessionRequest {
   projectArn?: string;
   sessionId?: string;
   sessionArn?: string;
 }
-const GetTestGridSessionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetTestGridSessionRequest>;
 export type TestGridSessionStatus = "ACTIVE" | "CLOSED" | "ERRORED" | (string & {});
-const TestGridSessionStatus = S.String;
-
 export interface TestGridSession {
   arn?: string;
   status?: TestGridSessionStatus;
@@ -1297,61 +973,34 @@ export interface TestGridSession {
   billingMinutes?: number;
   seleniumProperties?: string;
 }
-const TestGridSession = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<TestGridSession>;
 export interface GetTestGridSessionResult {
   testGridSession?: TestGridSession;
 }
-const GetTestGridSessionResult = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetTestGridSessionResult>;
 export interface GetUploadRequest {
   arn: string;
 }
-const GetUploadRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetUploadRequest>;
 export interface GetUploadResult {
   upload?: Upload;
 }
-const GetUploadResult = CreateUploadResult as any as S.Schema<GetUploadResult>;
 export interface GetVPCEConfigurationRequest {
   arn: string;
 }
-const GetVPCEConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetVPCEConfigurationRequest>;
 export interface GetVPCEConfigurationResult {
   vpceConfiguration?: VPCEConfiguration;
 }
-const GetVPCEConfigurationResult =
-  CreateVPCEConfigurationResult as any as S.Schema<GetVPCEConfigurationResult>;
 export interface InstallToRemoteAccessSessionRequest {
   remoteAccessSessionArn: string;
   appArn: string;
 }
-const InstallToRemoteAccessSessionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<InstallToRemoteAccessSessionRequest>;
 export interface InstallToRemoteAccessSessionResult {
   appUpload?: Upload;
 }
-const InstallToRemoteAccessSessionResult = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<InstallToRemoteAccessSessionResult>;
 export type ArtifactCategory = "SCREENSHOT" | "FILE" | "LOG" | (string & {});
-const ArtifactCategory = S.String;
-
 export interface ListArtifactsRequest {
   arn: string;
   type: ArtifactCategory;
   nextToken?: string;
 }
-const ListArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListArtifactsRequest>;
 export type ArtifactType =
   | "UNKNOWN"
   | "SCREENSHOT"
@@ -1382,8 +1031,6 @@ export type ArtifactType =
   | "CUSTOMER_ARTIFACT_LOG"
   | "TESTSPEC_OUTPUT"
   | (string & {});
-const ArtifactType = S.String;
-
 export type URL = string;
 export interface Artifact {
   arn?: string;
@@ -1392,155 +1039,91 @@ export interface Artifact {
   extension?: string;
   url?: string;
 }
-const Artifact = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Artifact>;
 export type Artifacts = Artifact[];
-const Artifacts = /*@__PURE__*/ __L.at(__c15, 3);
 export interface ListArtifactsResult {
   artifacts?: Artifact[];
   nextToken?: string;
 }
-const ListArtifactsResult = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ListArtifactsResult>;
 export interface ListDeviceInstancesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListDeviceInstancesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ListDeviceInstancesRequest>;
 export interface ListDeviceInstancesResult {
   deviceInstances?: DeviceInstance[];
   nextToken?: string;
 }
-const ListDeviceInstancesResult = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListDeviceInstancesResult>;
 export interface ListDevicePoolsRequest {
   arn: string;
   type?: DevicePoolType;
   nextToken?: string;
 }
-const ListDevicePoolsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListDevicePoolsRequest>;
 export type DevicePools = DevicePool[];
-const DevicePools = /*@__PURE__*/ __L.at(__c16, 0);
 export interface ListDevicePoolsResult {
   devicePools?: DevicePool[];
   nextToken?: string;
 }
-const ListDevicePoolsResult = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListDevicePoolsResult>;
 export interface ListDevicesRequest {
   arn?: string;
   nextToken?: string;
   filters?: DeviceFilter[];
 }
-const ListDevicesRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListDevicesRequest>;
 export type Devices = Device[];
-const Devices = /*@__PURE__*/ __L.at(__c16, 3);
 export interface ListDevicesResult {
   devices?: Device[];
   nextToken?: string;
 }
-const ListDevicesResult = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListDevicesResult>;
 export interface ListInstanceProfilesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListInstanceProfilesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListInstanceProfilesRequest>;
 export type InstanceProfiles = InstanceProfile[];
-const InstanceProfiles = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ListInstanceProfilesResult {
   instanceProfiles?: InstanceProfile[];
   nextToken?: string;
 }
-const ListInstanceProfilesResult = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListInstanceProfilesResult>;
 export interface ListJobsRequest {
   arn: string;
   nextToken?: string;
 }
-const ListJobsRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ListJobsRequest>;
 export type Jobs = Job[];
-const Jobs = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ListJobsResult {
   jobs?: Job[];
   nextToken?: string;
 }
-const ListJobsResult = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ListJobsResult>;
 export interface ListNetworkProfilesRequest {
   arn: string;
   type?: NetworkProfileType;
   nextToken?: string;
 }
-const ListNetworkProfilesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListNetworkProfilesRequest>;
 export type NetworkProfiles = NetworkProfile[];
-const NetworkProfiles = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListNetworkProfilesResult {
   networkProfiles?: NetworkProfile[];
   nextToken?: string;
 }
-const ListNetworkProfilesResult = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListNetworkProfilesResult>;
 export interface ListOfferingPromotionsRequest {
   nextToken?: string;
 }
-const ListOfferingPromotionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListOfferingPromotionsRequest>;
 export type OfferingPromotionIdentifier = string;
 export interface OfferingPromotion {
   id?: string;
   description?: string;
 }
-const OfferingPromotion = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<OfferingPromotion>;
 export type OfferingPromotions = OfferingPromotion[];
-const OfferingPromotions = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ListOfferingPromotionsResult {
   offeringPromotions?: OfferingPromotion[];
   nextToken?: string;
 }
-const ListOfferingPromotionsResult = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListOfferingPromotionsResult>;
 export interface ListOfferingsRequest {
   nextToken?: string;
 }
-const ListOfferingsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListOfferingsRequest>;
 export type Offerings = Offering[];
-const Offerings = /*@__PURE__*/ __L.at(__c18, 3);
 export interface ListOfferingsResult {
   offerings?: Offering[];
   nextToken?: string;
 }
-const ListOfferingsResult = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<ListOfferingsResult>;
 export interface ListOfferingTransactionsRequest {
   nextToken?: string;
 }
-const ListOfferingTransactionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListOfferingTransactionsRequest>;
 export type TransactionIdentifier = string;
 export interface OfferingTransaction {
   offeringStatus?: OfferingStatus;
@@ -1549,64 +1132,42 @@ export interface OfferingTransaction {
   createdOn?: Date;
   cost?: MonetaryAmount;
 }
-const OfferingTransaction = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<OfferingTransaction>;
 export type OfferingTransactions = OfferingTransaction[];
-const OfferingTransactions = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListOfferingTransactionsResult {
   offeringTransactions?: OfferingTransaction[];
   nextToken?: string;
 }
-const ListOfferingTransactionsResult = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListOfferingTransactionsResult>;
 export interface ListProjectsRequest {
   arn?: string;
   nextToken?: string;
 }
-const ListProjectsRequest = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ListProjectsRequest>;
 export type Projects = Project[];
-const Projects = /*@__PURE__*/ __L.at(__c19, 2);
 export interface ListProjectsResult {
   projects?: Project[];
   nextToken?: string;
 }
-const ListProjectsResult = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ListProjectsResult>;
 export interface ListRemoteAccessSessionsRequest {
   arn: string;
   nextToken?: string;
 }
-const ListRemoteAccessSessionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListRemoteAccessSessionsRequest>;
 export type RemoteAccessSessions = RemoteAccessSession[];
-const RemoteAccessSessions = /*@__PURE__*/ __L.at(__c19, 5);
 export interface ListRemoteAccessSessionsResult {
   remoteAccessSessions?: RemoteAccessSession[];
   nextToken?: string;
 }
-const ListRemoteAccessSessionsResult = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListRemoteAccessSessionsResult>;
 export interface ListRunsRequest {
   arn: string;
   nextToken?: string;
 }
-const ListRunsRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ListRunsRequest>;
 export type Runs = Run[];
-const Runs = /*@__PURE__*/ __L.at(__c20, 0);
 export interface ListRunsResult {
   runs?: Run[];
   nextToken?: string;
 }
-const ListRunsResult = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListRunsResult>;
 export interface ListSamplesRequest {
   arn: string;
   nextToken?: string;
 }
-const ListSamplesRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ListSamplesRequest>;
 export type SampleType =
   | "CPU"
   | "MEMORY"
@@ -1626,84 +1187,53 @@ export type SampleType =
   | "OPENGL_AVG_DRAWTIME"
   | "OPENGL_MAX_DRAWTIME"
   | (string & {});
-const SampleType = S.String;
-
 export interface Sample {
   arn?: string;
   type?: SampleType;
   url?: string;
 }
-const Sample = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<Sample>;
 export type Samples = Sample[];
-const Samples = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListSamplesResult {
   samples?: Sample[];
   nextToken?: string;
 }
-const ListSamplesResult = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ListSamplesResult>;
 export interface ListSuitesRequest {
   arn: string;
   nextToken?: string;
 }
-const ListSuitesRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<ListSuitesRequest>;
 export type Suites = Suite[];
-const Suites = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListSuitesResult {
   suites?: Suite[];
   nextToken?: string;
 }
-const ListSuitesResult = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ListSuitesResult>;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c21, 3);
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type MaxPageSize = number;
 export interface ListTestGridProjectsRequest {
   maxResult?: number;
   nextToken?: string;
 }
-const ListTestGridProjectsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListTestGridProjectsRequest>;
 export type TestGridProjects = TestGridProject[];
-const TestGridProjects = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListTestGridProjectsResult {
   testGridProjects?: TestGridProject[];
   nextToken?: string;
 }
-const ListTestGridProjectsResult = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListTestGridProjectsResult>;
 export interface ListTestGridSessionActionsRequest {
   sessionArn: string;
   maxResult?: number;
   nextToken?: string;
 }
-const ListTestGridSessionActionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListTestGridSessionActionsRequest>;
 export interface TestGridSessionAction {
   action?: string;
   started?: Date;
@@ -1711,55 +1241,29 @@ export interface TestGridSessionAction {
   statusCode?: string;
   requestMethod?: string;
 }
-const TestGridSessionAction = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<TestGridSessionAction>;
 export type TestGridSessionActions = TestGridSessionAction[];
-const TestGridSessionActions = /*@__PURE__*/ __L.at(__c22, 2);
 export interface ListTestGridSessionActionsResult {
   actions?: TestGridSessionAction[];
   nextToken?: string;
 }
-const ListTestGridSessionActionsResult = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListTestGridSessionActionsResult>;
 export type TestGridSessionArtifactCategory = "VIDEO" | "LOG" | (string & {});
-const TestGridSessionArtifactCategory = S.String;
-
 export interface ListTestGridSessionArtifactsRequest {
   sessionArn: string;
   type?: TestGridSessionArtifactCategory;
   maxResult?: number;
   nextToken?: string;
 }
-const ListTestGridSessionArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<ListTestGridSessionArtifactsRequest>;
 export type TestGridSessionArtifactType = "UNKNOWN" | "VIDEO" | "SELENIUM_LOG" | (string & {});
-const TestGridSessionArtifactType = S.String;
-
 export interface TestGridSessionArtifact {
   filename?: string;
   type?: TestGridSessionArtifactType;
   url?: string | redacted.Redacted<string>;
 }
-const TestGridSessionArtifact = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<TestGridSessionArtifact>;
 export type TestGridSessionArtifacts = TestGridSessionArtifact[];
-const TestGridSessionArtifacts = /*@__PURE__*/ __L.at(__c22, 6);
 export interface ListTestGridSessionArtifactsResult {
   artifacts?: TestGridSessionArtifact[];
   nextToken?: string;
 }
-const ListTestGridSessionArtifactsResult = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListTestGridSessionArtifactsResult>;
 export interface ListTestGridSessionsRequest {
   projectArn: string;
   status?: TestGridSessionStatus;
@@ -1770,45 +1274,28 @@ export interface ListTestGridSessionsRequest {
   maxResult?: number;
   nextToken?: string;
 }
-const ListTestGridSessionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ListTestGridSessionsRequest>;
 export type TestGridSessions = TestGridSession[];
-const TestGridSessions = /*@__PURE__*/ __L.at(__c23, 1);
 export interface ListTestGridSessionsResult {
   testGridSessions?: TestGridSession[];
   nextToken?: string;
 }
-const ListTestGridSessionsResult = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListTestGridSessionsResult>;
 export interface ListTestsRequest {
   arn: string;
   nextToken?: string;
 }
-const ListTestsRequest = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<ListTestsRequest>;
 export type Tests = Test[];
-const Tests = Suites as any as S.Schema<Tests>;
 export interface ListTestsResult {
   tests?: Test[];
   nextToken?: string;
 }
-const ListTestsResult = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<ListTestsResult>;
 export interface ListUniqueProblemsRequest {
   arn: string;
   nextToken?: string;
 }
-const ListUniqueProblemsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListUniqueProblemsRequest>;
 export interface ProblemDetail {
   arn?: string;
   name?: string;
 }
-const ProblemDetail = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ProblemDetail>;
 export interface Problem {
   run?: ProblemDetail;
   job?: ProblemDetail;
@@ -1818,93 +1305,55 @@ export interface Problem {
   result?: ExecutionResult;
   message?: string;
 }
-const Problem = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<Problem>;
 export type Problems = Problem[];
-const Problems = /*@__PURE__*/ __L.at(__c24, 0);
 export interface UniqueProblem {
   message?: string;
   problems?: Problem[];
 }
-const UniqueProblem = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<UniqueProblem>;
 export type UniqueProblems = UniqueProblem[];
-const UniqueProblems = /*@__PURE__*/ __L.at(__c24, 2);
 export type UniqueProblemsByExecutionResultMap = { [key in ExecutionResult]?: UniqueProblem[] };
-const UniqueProblemsByExecutionResultMap = /*@__PURE__*/ __L.at(__c24, 3);
 export interface ListUniqueProblemsResult {
   uniqueProblems?: { [key: string]: UniqueProblem[] | undefined };
   nextToken?: string;
 }
-const ListUniqueProblemsResult = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListUniqueProblemsResult>;
 export interface ListUploadsRequest {
   arn: string;
   type?: UploadType;
   nextToken?: string;
 }
-const ListUploadsRequest = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<ListUploadsRequest>;
 export type Uploads = Upload[];
-const Uploads = /*@__PURE__*/ __L.at(__c24, 6);
 export interface ListUploadsResult {
   uploads?: Upload[];
   nextToken?: string;
 }
-const ListUploadsResult = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<ListUploadsResult>;
 export interface ListVPCEConfigurationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListVPCEConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListVPCEConfigurationsRequest>;
 export type VPCEConfigurations = VPCEConfiguration[];
-const VPCEConfigurations = /*@__PURE__*/ __L.at(__c25, 1);
 export interface ListVPCEConfigurationsResult {
   vpceConfigurations?: VPCEConfiguration[];
   nextToken?: string;
 }
-const ListVPCEConfigurationsResult = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListVPCEConfigurationsResult>;
 export interface PurchaseOfferingRequest {
   offeringId: string;
   quantity: number;
   offeringPromotionId?: string;
 }
-const PurchaseOfferingRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<PurchaseOfferingRequest>;
 export interface PurchaseOfferingResult {
   offeringTransaction?: OfferingTransaction;
 }
-const PurchaseOfferingResult = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<PurchaseOfferingResult>;
 export interface RenewOfferingRequest {
   offeringId: string;
   quantity: number;
 }
-const RenewOfferingRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<RenewOfferingRequest>;
 export interface RenewOfferingResult {
   offeringTransaction?: OfferingTransaction;
 }
-const RenewOfferingResult = PurchaseOfferingResult as any as S.Schema<RenewOfferingResult>;
 export interface DeviceSelectionConfiguration {
   filters: DeviceFilter[];
   maxDevices: number;
 }
-const DeviceSelectionConfiguration = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<DeviceSelectionConfiguration>;
 export type AccountsCleanup = boolean;
 export type AppPackagesCleanup = boolean;
 export interface ExecutionConfiguration {
@@ -1914,10 +1363,6 @@ export interface ExecutionConfiguration {
   videoCapture?: boolean;
   skipAppResign?: boolean;
 }
-const ExecutionConfiguration = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ExecutionConfiguration>;
 export interface ScheduleRunRequest {
   projectArn: string;
   appArn?: string;
@@ -1928,74 +1373,46 @@ export interface ScheduleRunRequest {
   configuration?: ScheduleRunConfiguration;
   executionConfiguration?: ExecutionConfiguration;
 }
-const ScheduleRunRequest = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ScheduleRunRequest>;
 export interface ScheduleRunResult {
   run?: Run;
 }
-const ScheduleRunResult = GetRunResult as any as S.Schema<ScheduleRunResult>;
 export interface StopJobRequest {
   arn: string;
 }
-const StopJobRequest = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<StopJobRequest>;
 export interface StopJobResult {
   job?: Job;
 }
-const StopJobResult = GetJobResult as any as S.Schema<StopJobResult>;
 export interface StopRemoteAccessSessionRequest {
   arn: string;
 }
-const StopRemoteAccessSessionRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<StopRemoteAccessSessionRequest>;
 export interface StopRemoteAccessSessionResult {
   remoteAccessSession?: RemoteAccessSession;
 }
-const StopRemoteAccessSessionResult =
-  CreateRemoteAccessSessionResult as any as S.Schema<StopRemoteAccessSessionResult>;
 export interface StopRunRequest {
   arn: string;
 }
-const StopRunRequest = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<StopRunRequest>;
 export interface StopRunResult {
   run?: Run;
 }
-const StopRunResult = GetRunResult as any as S.Schema<StopRunResult>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteProjectResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = PackageIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteProjectResult as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeviceInstanceRequest {
   arn: string;
   profileArn?: string;
   labels?: string[];
 }
-const UpdateDeviceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<UpdateDeviceInstanceRequest>;
 export interface UpdateDeviceInstanceResult {
   deviceInstance?: DeviceInstance;
 }
-const UpdateDeviceInstanceResult = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<UpdateDeviceInstanceResult>;
 export interface UpdateDevicePoolRequest {
   arn: string;
   name?: string;
@@ -2004,14 +1421,9 @@ export interface UpdateDevicePoolRequest {
   maxDevices?: number;
   clearMaxDevices?: boolean;
 }
-const UpdateDevicePoolRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<UpdateDevicePoolRequest>;
 export interface UpdateDevicePoolResult {
   devicePool?: DevicePool;
 }
-const UpdateDevicePoolResult = CreateDevicePoolResult as any as S.Schema<UpdateDevicePoolResult>;
 export interface UpdateInstanceProfileRequest {
   arn: string;
   name?: string;
@@ -2020,15 +1432,9 @@ export interface UpdateInstanceProfileRequest {
   excludeAppPackagesFromCleanup?: string[];
   rebootAfterUse?: boolean;
 }
-const UpdateInstanceProfileRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<UpdateInstanceProfileRequest>;
 export interface UpdateInstanceProfileResult {
   instanceProfile?: InstanceProfile;
 }
-const UpdateInstanceProfileResult =
-  CreateInstanceProfileResult as any as S.Schema<UpdateInstanceProfileResult>;
 export interface UpdateNetworkProfileRequest {
   arn: string;
   name?: string;
@@ -2043,15 +1449,9 @@ export interface UpdateNetworkProfileRequest {
   uplinkLossPercent?: number;
   downlinkLossPercent?: number;
 }
-const UpdateNetworkProfileRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<UpdateNetworkProfileRequest>;
 export interface UpdateNetworkProfileResult {
   networkProfile?: NetworkProfile;
 }
-const UpdateNetworkProfileResult =
-  CreateNetworkProfileResult as any as S.Schema<UpdateNetworkProfileResult>;
 export interface UpdateProjectRequest {
   arn: string;
   name?: string;
@@ -2060,40 +1460,27 @@ export interface UpdateProjectRequest {
   environmentVariables?: EnvironmentVariable[];
   executionRoleArn?: string;
 }
-const UpdateProjectRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<UpdateProjectRequest>;
 export interface UpdateProjectResult {
   project?: Project;
 }
-const UpdateProjectResult = CreateProjectResult as any as S.Schema<UpdateProjectResult>;
 export interface UpdateTestGridProjectRequest {
   projectArn: string;
   name?: string;
   description?: string;
   vpcConfig?: TestGridVpcConfig;
 }
-const UpdateTestGridProjectRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<UpdateTestGridProjectRequest>;
 export interface UpdateTestGridProjectResult {
   testGridProject?: TestGridProject;
 }
-const UpdateTestGridProjectResult =
-  CreateTestGridProjectResult as any as S.Schema<UpdateTestGridProjectResult>;
 export interface UpdateUploadRequest {
   arn: string;
   name?: string;
   contentType?: string;
   editContent?: boolean;
 }
-const UpdateUploadRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<UpdateUploadRequest>;
 export interface UpdateUploadResult {
   upload?: Upload;
 }
-const UpdateUploadResult = CreateUploadResult as any as S.Schema<UpdateUploadResult>;
 export interface UpdateVPCEConfigurationRequest {
   arn: string;
   vpceConfigurationName?: string;
@@ -2101,15 +1488,9 @@ export interface UpdateVPCEConfigurationRequest {
   serviceDnsName?: string;
   vpceConfigurationDescription?: string;
 }
-const UpdateVPCEConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<UpdateVPCEConfigurationRequest>;
 export interface UpdateVPCEConfigurationResult {
   vpceConfiguration?: VPCEConfiguration;
 }
-const UpdateVPCEConfigurationResult =
-  CreateVPCEConfigurationResult as any as S.Schema<UpdateVPCEConfigurationResult>;
 export type ExceptionMessage = string;
 export type CreateDevicePoolError =
   | ArgumentException
@@ -2126,8 +1507,8 @@ export const createDevicePool: API.OperationMethod<
   CreateDevicePoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDevicePoolRequest,
-  output: CreateDevicePoolResult,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateDevicePoolRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateDevicePoolResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2150,8 +1531,8 @@ export const createInstanceProfile: API.OperationMethod<
   CreateInstanceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInstanceProfileRequest,
-  output: CreateInstanceProfileResult,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateInstanceProfileRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateInstanceProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2173,8 +1554,8 @@ export const createNetworkProfile: API.OperationMethod<
   CreateNetworkProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkProfileRequest,
-  output: CreateNetworkProfileResult,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateNetworkProfileRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateNetworkProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2197,8 +1578,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectRequest,
-  output: CreateProjectResult,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateProjectRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateProjectResult>,
   errors: [
     ArgumentException,
     LimitExceededException,
@@ -2226,8 +1607,8 @@ export const createRemoteAccessSession: API.OperationMethod<
   CreateRemoteAccessSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRemoteAccessSessionRequest,
-  output: CreateRemoteAccessSessionResult,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateRemoteAccessSessionRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<CreateRemoteAccessSessionResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2249,8 +1630,8 @@ export const createTestGridProject: API.OperationMethod<
   CreateTestGridProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTestGridProjectRequest,
-  output: CreateTestGridProjectResult,
+  input: __S(31, __c3, 7) as any as S.Schema<CreateTestGridProjectRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CreateTestGridProjectResult>,
   errors: [ArgumentException, InternalServiceException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2272,8 +1653,8 @@ export const createTestGridUrl: API.OperationMethod<
   CreateTestGridUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTestGridUrlRequest,
-  output: CreateTestGridUrlResult,
+  input: __S(34, __c4, 2) as any as S.Schema<CreateTestGridUrlRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<CreateTestGridUrlResult>,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2295,8 +1676,8 @@ export const createUpload: API.OperationMethod<
   CreateUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUploadRequest,
-  output: CreateUploadResult,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateUploadRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<CreateUploadResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2318,8 +1699,8 @@ export const createVPCEConfiguration: API.OperationMethod<
   CreateVPCEConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVPCEConfigurationRequest,
-  output: CreateVPCEConfigurationResult,
+  input: __S(39, __c4, 7) as any as S.Schema<CreateVPCEConfigurationRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CreateVPCEConfigurationResult>,
   errors: [ArgumentException, LimitExceededException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2342,8 +1723,8 @@ export const deleteDevicePool: API.OperationMethod<
   DeleteDevicePoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDevicePoolRequest,
-  output: DeleteDevicePoolResult,
+  input: __S(42, __c5, 2) as any as S.Schema<DeleteDevicePoolRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<DeleteDevicePoolResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2365,8 +1746,8 @@ export const deleteInstanceProfile: API.OperationMethod<
   DeleteInstanceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInstanceProfileRequest,
-  output: DeleteInstanceProfileResult,
+  input: __S(44, __c5, 4) as any as S.Schema<DeleteInstanceProfileRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<DeleteInstanceProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2388,8 +1769,8 @@ export const deleteNetworkProfile: API.OperationMethod<
   DeleteNetworkProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkProfileRequest,
-  output: DeleteNetworkProfileResult,
+  input: __S(46, __c5, 6) as any as S.Schema<DeleteNetworkProfileRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<DeleteNetworkProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2413,8 +1794,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectRequest,
-  output: DeleteProjectResult,
+  input: __S(47, __c5, 7) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteProjectResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2438,8 +1819,8 @@ export const deleteRemoteAccessSession: API.OperationMethod<
   DeleteRemoteAccessSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRemoteAccessSessionRequest,
-  output: DeleteRemoteAccessSessionResult,
+  input: __S(49, __c6, 1) as any as S.Schema<DeleteRemoteAccessSessionRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<DeleteRemoteAccessSessionResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2463,8 +1844,8 @@ export const deleteRun: API.OperationMethod<
   DeleteRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRunRequest,
-  output: DeleteRunResult,
+  input: __S(50, __c6, 2) as any as S.Schema<DeleteRunRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteRunResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2488,8 +1869,8 @@ export const deleteTestGridProject: API.OperationMethod<
   DeleteTestGridProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTestGridProjectRequest,
-  output: DeleteTestGridProjectResult,
+  input: __S(51, __c6, 3) as any as S.Schema<DeleteTestGridProjectRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<DeleteTestGridProjectResult>,
   errors: [ArgumentException, CannotDeleteException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2511,8 +1892,8 @@ export const deleteUpload: API.OperationMethod<
   DeleteUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUploadRequest,
-  output: DeleteUploadResult,
+  input: __S(52, __c6, 4) as any as S.Schema<DeleteUploadRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteUploadResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2534,8 +1915,8 @@ export const deleteVPCEConfiguration: API.OperationMethod<
   DeleteVPCEConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVPCEConfigurationRequest,
-  output: DeleteVPCEConfigurationResult,
+  input: __S(53, __c6, 5) as any as S.Schema<DeleteVPCEConfigurationRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<DeleteVPCEConfigurationResult>,
   errors: [
     ArgumentException,
     InvalidOperationException,
@@ -2563,8 +1944,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountSettingsRequest,
-  output: GetAccountSettingsResult,
+  input: __S(54, __c6, 6) as any as S.Schema<GetAccountSettingsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<GetAccountSettingsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2586,8 +1967,8 @@ export const getDevice: API.OperationMethod<
   GetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceRequest,
-  output: GetDeviceResult,
+  input: __S(60, __c7, 4) as any as S.Schema<GetDeviceRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetDeviceResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2609,8 +1990,8 @@ export const getDeviceInstance: API.OperationMethod<
   GetDeviceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceInstanceRequest,
-  output: GetDeviceInstanceResult,
+  input: __S(62, __c7, 6) as any as S.Schema<GetDeviceInstanceRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<GetDeviceInstanceResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2632,8 +2013,8 @@ export const getDevicePool: API.OperationMethod<
   GetDevicePoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePoolRequest,
-  output: GetDevicePoolResult,
+  input: __S(64, __c8, 0) as any as S.Schema<GetDevicePoolRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetDevicePoolResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2655,8 +2036,8 @@ export const getDevicePoolCompatibility: API.OperationMethod<
   GetDevicePoolCompatibilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePoolCompatibilityRequest,
-  output: GetDevicePoolCompatibilityResult,
+  input: __S(71, __c8, 7) as any as S.Schema<GetDevicePoolCompatibilityRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GetDevicePoolCompatibilityResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2678,8 +2059,8 @@ export const getInstanceProfile: API.OperationMethod<
   GetInstanceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceProfileRequest,
-  output: GetInstanceProfileResult,
+  input: __S(77, __c9, 5) as any as S.Schema<GetInstanceProfileRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<GetInstanceProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2701,8 +2082,8 @@ export const getJob: API.OperationMethod<
   GetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobRequest,
-  output: GetJobResult,
+  input: __S(79, __c9, 7) as any as S.Schema<GetJobRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetJobResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2724,8 +2105,8 @@ export const getNetworkProfile: API.OperationMethod<
   GetNetworkProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkProfileRequest,
-  output: GetNetworkProfileResult,
+  input: __S(86, __c10, 6) as any as S.Schema<GetNetworkProfileRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<GetNetworkProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2752,8 +2133,8 @@ export const getOfferingStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetOfferingStatusRequest,
-  output: GetOfferingStatusResult,
+  input: __S(88, __c11, 0) as any as S.Schema<GetOfferingStatusRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GetOfferingStatusResult>,
   errors: [
     ArgumentException,
     LimitExceededException,
@@ -2782,8 +2163,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectRequest,
-  output: GetProjectResult,
+  input: __S(96, __c12, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetProjectResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2805,8 +2186,8 @@ export const getRemoteAccessSession: API.OperationMethod<
   GetRemoteAccessSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRemoteAccessSessionRequest,
-  output: GetRemoteAccessSessionResult,
+  input: __S(97, __c12, 1) as any as S.Schema<GetRemoteAccessSessionRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetRemoteAccessSessionResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2828,8 +2209,8 @@ export const getRun: API.OperationMethod<
   GetRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRunRequest,
-  output: GetRunResult,
+  input: __S(98, __c12, 2) as any as S.Schema<GetRunRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetRunResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2851,8 +2232,8 @@ export const getSuite: API.OperationMethod<
   GetSuiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSuiteRequest,
-  output: GetSuiteResult,
+  input: __S(107, __c13, 3) as any as S.Schema<GetSuiteRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<GetSuiteResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2874,8 +2255,8 @@ export const getTest: API.OperationMethod<
   GetTestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTestRequest,
-  output: GetTestResult,
+  input: __S(110, __c13, 6) as any as S.Schema<GetTestRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetTestResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2896,8 +2277,8 @@ export const getTestGridProject: API.OperationMethod<
   GetTestGridProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTestGridProjectRequest,
-  output: GetTestGridProjectResult,
+  input: __S(112, __c14, 0) as any as S.Schema<GetTestGridProjectRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetTestGridProjectResult>,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2923,8 +2304,8 @@ export const getTestGridSession: API.OperationMethod<
   GetTestGridSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTestGridSessionRequest,
-  output: GetTestGridSessionResult,
+  input: __S(114, __c14, 2) as any as S.Schema<GetTestGridSessionRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GetTestGridSessionResult>,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2946,8 +2327,8 @@ export const getUpload: API.OperationMethod<
   GetUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUploadRequest,
-  output: GetUploadResult,
+  input: __S(117, __c14, 5) as any as S.Schema<GetUploadRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetUploadResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2969,8 +2350,8 @@ export const getVPCEConfiguration: API.OperationMethod<
   GetVPCEConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVPCEConfigurationRequest,
-  output: GetVPCEConfigurationResult,
+  input: __S(118, __c14, 6) as any as S.Schema<GetVPCEConfigurationRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetVPCEConfigurationResult>,
   errors: [ArgumentException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2994,8 +2375,8 @@ export const installToRemoteAccessSession: API.OperationMethod<
   InstallToRemoteAccessSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstallToRemoteAccessSessionRequest,
-  output: InstallToRemoteAccessSessionResult,
+  input: __S(119, __c14, 7) as any as S.Schema<InstallToRemoteAccessSessionRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<InstallToRemoteAccessSessionResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3018,8 +2399,8 @@ export const listArtifacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Artifact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListArtifactsRequest,
-  output: ListArtifactsResult,
+  input: __S(121, __c15, 1) as any as S.Schema<ListArtifactsRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<ListArtifactsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3043,8 +2424,8 @@ export const listDeviceInstances: API.OperationMethod<
   ListDeviceInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceInstancesRequest,
-  output: ListDeviceInstancesResult,
+  input: __S(125, __c15, 5) as any as S.Schema<ListDeviceInstancesRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<ListDeviceInstancesResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3067,8 +2448,8 @@ export const listDevicePools: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DevicePool
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicePoolsRequest,
-  output: ListDevicePoolsResult,
+  input: __S(127, __c15, 7) as any as S.Schema<ListDevicePoolsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<ListDevicePoolsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3092,8 +2473,8 @@ export const listDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Device
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicesRequest,
-  output: ListDevicesResult,
+  input: __S(130, __c16, 2) as any as S.Schema<ListDevicesRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<ListDevicesResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3116,8 +2497,8 @@ export const listInstanceProfiles: API.OperationMethod<
   ListInstanceProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInstanceProfilesRequest,
-  output: ListInstanceProfilesResult,
+  input: __S(133, __c16, 5) as any as S.Schema<ListInstanceProfilesRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<ListInstanceProfilesResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3140,8 +2521,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Job
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListJobsRequest,
-  output: ListJobsResult,
+  input: __S(136, __c17, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListJobsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3164,8 +2545,8 @@ export const listNetworkProfiles: API.OperationMethod<
   ListNetworkProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkProfilesRequest,
-  output: ListNetworkProfilesResult,
+  input: __S(139, __c17, 3) as any as S.Schema<ListNetworkProfilesRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<ListNetworkProfilesResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3190,8 +2571,8 @@ export const listOfferingPromotions: API.OperationMethod<
   ListOfferingPromotionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOfferingPromotionsRequest,
-  output: ListOfferingPromotionsResult,
+  input: __S(142, __c17, 6) as any as S.Schema<ListOfferingPromotionsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListOfferingPromotionsResult>,
   errors: [
     ArgumentException,
     LimitExceededException,
@@ -3224,8 +2605,8 @@ export const listOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Offering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOfferingsRequest,
-  output: ListOfferingsResult,
+  input: __S(146, __c18, 2) as any as S.Schema<ListOfferingsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<ListOfferingsResult>,
   errors: [
     ArgumentException,
     LimitExceededException,
@@ -3259,8 +2640,8 @@ export const listOfferingTransactions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OfferingTransaction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOfferingTransactionsRequest,
-  output: ListOfferingTransactionsResult,
+  input: __S(149, __c18, 5) as any as S.Schema<ListOfferingTransactionsRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<ListOfferingTransactionsResult>,
   errors: [
     ArgumentException,
     LimitExceededException,
@@ -3294,8 +2675,8 @@ export const listProjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Project
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsRequest,
-  output: ListProjectsResult,
+  input: __S(153, __c19, 1) as any as S.Schema<ListProjectsRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListProjectsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3318,8 +2699,8 @@ export const listRemoteAccessSessions: API.OperationMethod<
   ListRemoteAccessSessionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRemoteAccessSessionsRequest,
-  output: ListRemoteAccessSessionsResult,
+  input: __S(156, __c19, 4) as any as S.Schema<ListRemoteAccessSessionsRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<ListRemoteAccessSessionsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3342,8 +2723,8 @@ export const listRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Run
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRunsRequest,
-  output: ListRunsResult,
+  input: __S(159, __c19, 7) as any as S.Schema<ListRunsRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListRunsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3369,8 +2750,8 @@ export const listSamples: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Sample
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSamplesRequest,
-  output: ListSamplesResult,
+  input: __S(162, __c20, 2) as any as S.Schema<ListSamplesRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<ListSamplesResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3394,8 +2775,8 @@ export const listSuites: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Suite
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSuitesRequest,
-  output: ListSuitesResult,
+  input: __S(166, __c20, 6) as any as S.Schema<ListSuitesRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<ListSuitesResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3417,8 +2798,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(169, __c21, 1) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ArgumentException, NotFoundException, TagOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3436,8 +2817,8 @@ export const listTestGridProjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTestGridProjectsRequest,
-  output: ListTestGridProjectsResult,
+  input: __S(173, __c21, 5) as any as S.Schema<ListTestGridProjectsRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<ListTestGridProjectsResult>,
   errors: [ArgumentException, InternalServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3460,8 +2841,8 @@ export const listTestGridSessionActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTestGridSessionActionsRequest,
-  output: ListTestGridSessionActionsResult,
+  input: __S(176, __c22, 0) as any as S.Schema<ListTestGridSessionActionsRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListTestGridSessionActionsResult>,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3484,8 +2865,8 @@ export const listTestGridSessionArtifacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTestGridSessionArtifactsRequest,
-  output: ListTestGridSessionArtifactsResult,
+  input: __S(180, __c22, 4) as any as S.Schema<ListTestGridSessionArtifactsRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<ListTestGridSessionArtifactsResult>,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3508,8 +2889,8 @@ export const listTestGridSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTestGridSessionsRequest,
-  output: ListTestGridSessionsResult,
+  input: __S(184, __c23, 0) as any as S.Schema<ListTestGridSessionsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListTestGridSessionsResult>,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3533,8 +2914,8 @@ export const listTests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Test
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTestsRequest,
-  output: ListTestsResult,
+  input: __S(187, __c23, 3) as any as S.Schema<ListTestsRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<ListTestsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3563,8 +2944,8 @@ export const listUniqueProblems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUniqueProblemsRequest,
-  output: ListUniqueProblemsResult,
+  input: __S(189, __c23, 5) as any as S.Schema<ListUniqueProblemsRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<ListUniqueProblemsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3592,8 +2973,8 @@ export const listUploads: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Upload
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUploadsRequest,
-  output: ListUploadsResult,
+  input: __S(197, __c24, 5) as any as S.Schema<ListUploadsRequest>,
+  output: __S(199, __c24, 7) as any as S.Schema<ListUploadsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3615,8 +2996,8 @@ export const listVPCEConfigurations: API.OperationMethod<
   ListVPCEConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVPCEConfigurationsRequest,
-  output: ListVPCEConfigurationsResult,
+  input: __S(200, __c25, 0) as any as S.Schema<ListVPCEConfigurationsRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<ListVPCEConfigurationsResult>,
   errors: [ArgumentException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3642,8 +3023,8 @@ export const purchaseOffering: API.OperationMethod<
   PurchaseOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurchaseOfferingRequest,
-  output: PurchaseOfferingResult,
+  input: __S(203, __c25, 3) as any as S.Schema<PurchaseOfferingRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<PurchaseOfferingResult>,
   errors: [
     ArgumentException,
     LimitExceededException,
@@ -3674,8 +3055,8 @@ export const renewOffering: API.OperationMethod<
   RenewOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenewOfferingRequest,
-  output: RenewOfferingResult,
+  input: __S(205, __c25, 5) as any as S.Schema<RenewOfferingRequest>,
+  output: __S(204, __c25, 4) as any as S.Schema<RenewOfferingResult>,
   errors: [
     ArgumentException,
     LimitExceededException,
@@ -3704,8 +3085,8 @@ export const scheduleRun: API.OperationMethod<
   ScheduleRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScheduleRunRequest,
-  output: ScheduleRunResult,
+  input: __S(208, __c26, 0) as any as S.Schema<ScheduleRunRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ScheduleRunResult>,
   errors: [
     ArgumentException,
     IdempotencyException,
@@ -3736,8 +3117,8 @@ export const stopJob: API.OperationMethod<
   StopJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopJobRequest,
-  output: StopJobResult,
+  input: __S(209, __c26, 1) as any as S.Schema<StopJobRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<StopJobResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3759,8 +3140,8 @@ export const stopRemoteAccessSession: API.OperationMethod<
   StopRemoteAccessSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopRemoteAccessSessionRequest,
-  output: StopRemoteAccessSessionResult,
+  input: __S(210, __c26, 2) as any as S.Schema<StopRemoteAccessSessionRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<StopRemoteAccessSessionResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3785,8 +3166,8 @@ export const stopRun: API.OperationMethod<
   StopRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopRunRequest,
-  output: StopRunResult,
+  input: __S(211, __c26, 3) as any as S.Schema<StopRunRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<StopRunResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3811,8 +3192,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(212, __c26, 4) as any as S.Schema<TagResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ArgumentException,
     NotFoundException,
@@ -3839,8 +3220,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(213, __c26, 5) as any as S.Schema<UntagResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ArgumentException, NotFoundException, TagOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3862,8 +3243,8 @@ export const updateDeviceInstance: API.OperationMethod<
   UpdateDeviceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceInstanceRequest,
-  output: UpdateDeviceInstanceResult,
+  input: __S(214, __c26, 6) as any as S.Schema<UpdateDeviceInstanceRequest>,
+  output: __S(215, __c26, 7) as any as S.Schema<UpdateDeviceInstanceResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3887,8 +3268,8 @@ export const updateDevicePool: API.OperationMethod<
   UpdateDevicePoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDevicePoolRequest,
-  output: UpdateDevicePoolResult,
+  input: __S(216, __c27, 0) as any as S.Schema<UpdateDevicePoolRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<UpdateDevicePoolResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3910,8 +3291,8 @@ export const updateInstanceProfile: API.OperationMethod<
   UpdateInstanceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceProfileRequest,
-  output: UpdateInstanceProfileResult,
+  input: __S(217, __c27, 1) as any as S.Schema<UpdateInstanceProfileRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateInstanceProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3933,8 +3314,8 @@ export const updateNetworkProfile: API.OperationMethod<
   UpdateNetworkProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkProfileRequest,
-  output: UpdateNetworkProfileResult,
+  input: __S(218, __c27, 2) as any as S.Schema<UpdateNetworkProfileRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<UpdateNetworkProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3957,8 +3338,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectRequest,
-  output: UpdateProjectResult,
+  input: __S(219, __c27, 3) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdateProjectResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3980,8 +3361,8 @@ export const updateTestGridProject: API.OperationMethod<
   UpdateTestGridProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTestGridProjectRequest,
-  output: UpdateTestGridProjectResult,
+  input: __S(220, __c27, 4) as any as S.Schema<UpdateTestGridProjectRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<UpdateTestGridProjectResult>,
   errors: [ArgumentException, InternalServiceException, LimitExceededException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4003,8 +3384,8 @@ export const updateUpload: API.OperationMethod<
   UpdateUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUploadRequest,
-  output: UpdateUploadResult,
+  input: __S(221, __c27, 5) as any as S.Schema<UpdateUploadRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<UpdateUploadResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4026,8 +3407,8 @@ export const updateVPCEConfiguration: API.OperationMethod<
   UpdateVPCEConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVPCEConfigurationRequest,
-  output: UpdateVPCEConfigurationResult,
+  input: __S(222, __c27, 6) as any as S.Schema<UpdateVPCEConfigurationRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<UpdateVPCEConfigurationResult>,
   errors: [
     ArgumentException,
     InvalidOperationException,
@@ -4045,20 +3426,20 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attribute: S.optional(DeviceAttribute),
-          operator: S.optional(RuleOperator),
+          attribute: S.optional(S.String),
+          operator: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Rule" });
     case 1:
-      return S.Array(Rule);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectArn: S.String,
           name: S.String,
           description: S.optional(S.String),
-          rules: Rules,
+          rules: __S(1, __c0, 1),
           maxDevices: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDevicePoolRequest" });
@@ -4068,13 +3449,15 @@ function __c0(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(DevicePoolType),
-          rules: S.optional(Rules),
+          type: S.optional(S.String),
+          rules: S.optional(__S(1, __c0, 1)),
           maxDevices: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DevicePool" });
     case 4:
-      return S.suspend(() => S.Struct({ devicePool: S.optional(DevicePool) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ devicePool: S.optional(__S(3, __c0, 3)) }).pipe(ns),
+      ).annotate({
         identifier: "CreateDevicePoolResult",
       });
     case 5:
@@ -4085,7 +3468,7 @@ function __c0(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           packageCleanup: S.optional(S.Boolean),
-          excludeAppPackagesFromCleanup: S.optional(PackageIds),
+          excludeAppPackagesFromCleanup: S.optional(__S(5, __c0, 5)),
           rebootAfterUse: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4096,7 +3479,7 @@ function __c0(j: number): any {
         S.Struct({
           arn: S.optional(S.String),
           packageCleanup: S.optional(S.Boolean),
-          excludeAppPackagesFromCleanup: S.optional(PackageIds),
+          excludeAppPackagesFromCleanup: S.optional(__S(5, __c0, 5)),
           rebootAfterUse: S.optional(S.Boolean),
           name: S.optional(S.String),
           description: S.optional(S.String),
@@ -4108,7 +3491,7 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ instanceProfile: S.optional(InstanceProfile) }).pipe(ns),
+        S.Struct({ instanceProfile: S.optional(__S(7, __c0, 7)) }).pipe(ns),
       ).annotate({
         identifier: "CreateInstanceProfileResult",
       });
@@ -4118,7 +3501,7 @@ function __c1(j: number): any {
           projectArn: S.String,
           name: S.String,
           description: S.optional(S.String),
-          type: S.optional(NetworkProfileType),
+          type: S.optional(S.String),
           uplinkBandwidthBits: S.optional(S.Number),
           downlinkBandwidthBits: S.optional(S.Number),
           uplinkDelayMs: S.optional(S.Number),
@@ -4137,7 +3520,7 @@ function __c1(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(NetworkProfileType),
+          type: S.optional(S.String),
           uplinkBandwidthBits: S.optional(S.Number),
           downlinkBandwidthBits: S.optional(S.Number),
           uplinkDelayMs: S.optional(S.Number),
@@ -4150,15 +3533,15 @@ function __c1(j: number): any {
       ).annotate({ identifier: "NetworkProfile" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ networkProfile: S.optional(NetworkProfile) }).pipe(ns),
+        S.Struct({ networkProfile: S.optional(__S(10, __c1, 2)) }).pipe(ns),
       ).annotate({
         identifier: "CreateNetworkProfileResult",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          securityGroupIds: VpcSecurityGroupIds,
-          subnetIds: VpcSubnetIds,
+          securityGroupIds: __S(5, __c0, 5),
+          subnetIds: __S(5, __c0, 5),
           vpcId: S.String,
         }),
       ).annotate({ identifier: "VpcConfig" });
@@ -4167,14 +3550,14 @@ function __c1(j: number): any {
         identifier: "EnvironmentVariable",
       });
     case 6:
-      return S.Array(EnvironmentVariable);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           defaultJobTimeoutMinutes: S.optional(S.Number),
-          vpcConfig: S.optional(VpcConfig),
-          environmentVariables: S.optional(EnvironmentVariables),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
+          environmentVariables: S.optional(__S(14, __c1, 6)),
           executionRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateProjectRequest" });
@@ -4189,15 +3572,17 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           defaultJobTimeoutMinutes: S.optional(S.Number),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          vpcConfig: S.optional(VpcConfig),
-          environmentVariables: S.optional(EnvironmentVariables),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
+          environmentVariables: S.optional(__S(14, __c1, 6)),
           executionRoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Project" });
     case 1:
-      return S.suspend(() => S.Struct({ project: S.optional(Project) }).pipe(ns)).annotate({
-        identifier: "CreateProjectResult",
-      });
+      return S.suspend(() => S.Struct({ project: S.optional(__S(16, __c2, 0)) }).pipe(ns)).annotate(
+        {
+          identifier: "CreateProjectResult",
+        },
+      );
     case 2:
       return S.suspend(() => S.Struct({ host: S.String, port: S.Number })).annotate({
         identifier: "DeviceProxy",
@@ -4207,11 +3592,11 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          auxiliaryApps: S.optional(AuxiliaryAppArnList),
-          billingMethod: S.optional(BillingMethod),
-          vpceConfigurationArns: S.optional(AmazonResourceNames),
-          deviceProxy: S.optional(DeviceProxy),
-          parameters: S.optional(RemoteAccessParameters),
+          auxiliaryApps: S.optional(__S(5, __c0, 5)),
+          billingMethod: S.optional(S.String),
+          vpceConfigurationArns: S.optional(__S(5, __c0, 5)),
+          deviceProxy: S.optional(__S(18, __c2, 2)),
+          parameters: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "CreateRemoteAccessSessionConfiguration",
@@ -4224,8 +3609,8 @@ function __c2(j: number): any {
           appArn: S.optional(S.String),
           instanceArn: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(CreateRemoteAccessSessionConfiguration),
-          interactionMode: S.optional(InteractionMode),
+          configuration: S.optional(__S(20, __c2, 4)),
+          interactionMode: S.optional(S.String),
           skipAppResign: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4252,14 +3637,14 @@ function __c3(j: number): any {
         S.Struct({
           arn: S.optional(S.String),
           deviceArn: S.optional(S.String),
-          labels: S.optional(InstanceLabels),
-          status: S.optional(InstanceStatus),
+          labels: S.optional(__S(5, __c0, 5)),
+          status: S.optional(S.String),
           udid: S.optional(S.String),
-          instanceProfile: S.optional(InstanceProfile),
+          instanceProfile: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "DeviceInstance" });
     case 1:
-      return S.Array(DeviceInstance);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4268,11 +3653,11 @@ function __c3(j: number): any {
           manufacturer: S.optional(S.String),
           model: S.optional(S.String),
           modelId: S.optional(S.String),
-          formFactor: S.optional(DeviceFormFactor),
-          platform: S.optional(DevicePlatform),
+          formFactor: S.optional(S.String),
+          platform: S.optional(S.String),
           os: S.optional(S.String),
-          cpu: S.optional(CPU),
-          resolution: S.optional(Resolution),
+          cpu: S.optional(__S(22, __c2, 6)),
+          resolution: S.optional(__S(23, __c2, 7)),
           heapSize: S.optional(S.Number),
           memory: S.optional(S.Number),
           image: S.optional(S.String),
@@ -4282,8 +3667,8 @@ function __c3(j: number): any {
           remoteDebugEnabled: S.optional(S.Boolean),
           fleetType: S.optional(S.String),
           fleetName: S.optional(S.String),
-          instances: S.optional(DeviceInstances),
-          availability: S.optional(DeviceAvailability),
+          instances: S.optional(__S(25, __c3, 1)),
+          availability: S.optional(S.String),
         }),
       ).annotate({ identifier: "Device" });
     case 3:
@@ -4307,28 +3692,28 @@ function __c3(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(ExecutionStatus),
-          result: S.optional(ExecutionResult),
+          status: S.optional(S.String),
+          result: S.optional(S.String),
           message: S.optional(S.String),
           started: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stopped: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          device: S.optional(Device),
+          device: S.optional(__S(26, __c3, 2)),
           instanceArn: S.optional(S.String),
-          billingMethod: S.optional(BillingMethod),
-          deviceMinutes: S.optional(DeviceMinutes),
+          billingMethod: S.optional(S.String),
+          deviceMinutes: S.optional(__S(27, __c3, 3)),
           endpoint: S.optional(S.String),
           deviceUdid: S.optional(S.String),
-          interactionMode: S.optional(InteractionMode),
+          interactionMode: S.optional(S.String),
           skipAppResign: S.optional(S.Boolean),
-          vpcConfig: S.optional(VpcConfig),
-          deviceProxy: S.optional(DeviceProxy),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
+          deviceProxy: S.optional(__S(18, __c2, 2)),
           appUpload: S.optional(S.String),
-          endpoints: S.optional(RemoteAccessEndpoints),
+          endpoints: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "RemoteAccessSession" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ remoteAccessSession: S.optional(RemoteAccessSession) }).pipe(ns),
+        S.Struct({ remoteAccessSession: S.optional(__S(29, __c3, 5)) }).pipe(ns),
       ).annotate({
         identifier: "CreateRemoteAccessSessionResult",
       });
@@ -4337,7 +3722,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          vpcConfig: S.optional(TestGridVpcConfig),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateTestGridProjectRequest",
@@ -4352,13 +3737,13 @@ function __c4(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          vpcConfig: S.optional(TestGridVpcConfig),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "TestGridProject" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ testGridProject: S.optional(TestGridProject) }).pipe(ns),
+        S.Struct({ testGridProject: S.optional(__S(32, __c4, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateTestGridProjectResult",
       });
@@ -4380,7 +3765,7 @@ function __c4(j: number): any {
         S.Struct({
           projectArn: S.String,
           name: S.String,
-          type: UploadType,
+          type: S.String,
           contentType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUploadRequest" });
@@ -4390,17 +3775,17 @@ function __c4(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          type: S.optional(UploadType),
-          status: S.optional(UploadStatus),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
           url: S.optional(SensitiveString),
           metadata: S.optional(S.String),
           contentType: S.optional(S.String),
           message: S.optional(S.String),
-          category: S.optional(UploadCategory),
+          category: S.optional(S.String),
         }),
       ).annotate({ identifier: "Upload" });
     case 6:
-      return S.suspend(() => S.Struct({ upload: S.optional(Upload) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ upload: S.optional(__S(37, __c4, 5)) }).pipe(ns)).annotate({
         identifier: "CreateUploadResult",
       });
     case 7:
@@ -4430,7 +3815,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "VPCEConfiguration" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ vpceConfiguration: S.optional(VPCEConfiguration) }).pipe(ns),
+        S.Struct({ vpceConfiguration: S.optional(__S(40, __c5, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateVPCEConfigurationResult",
       });
@@ -4523,7 +3908,7 @@ function __c6(j: number): any {
         identifier: "GetAccountSettingsRequest",
       });
     case 7:
-      return S.Record(DevicePlatform, /*@__PURE__*/ S.Number.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
   }
 }
 function __c7(j: number): any {
@@ -4538,18 +3923,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           awsAccountNumber: S.optional(S.String),
-          unmeteredDevices: S.optional(PurchasedDevicesMap),
-          unmeteredRemoteAccessDevices: S.optional(PurchasedDevicesMap),
+          unmeteredDevices: S.optional(__S(55, __c6, 7)),
+          unmeteredRemoteAccessDevices: S.optional(__S(55, __c6, 7)),
           maxJobTimeoutMinutes: S.optional(S.Number),
-          trialMinutes: S.optional(TrialMinutes),
-          maxSlots: S.optional(MaxSlotMap),
+          trialMinutes: S.optional(__S(56, __c7, 0)),
+          maxSlots: S.optional(__S(57, __c7, 1)),
           defaultJobTimeoutMinutes: S.optional(S.Number),
           skipAppResign: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AccountSettings" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ accountSettings: S.optional(AccountSettings) }).pipe(ns),
+        S.Struct({ accountSettings: S.optional(__S(58, __c7, 2)) }).pipe(ns),
       ).annotate({ identifier: "GetAccountSettingsResult" });
     case 4:
       return S.suspend(() =>
@@ -4558,7 +3943,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "GetDeviceRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ device: S.optional(Device) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ device: S.optional(__S(26, __c3, 2)) }).pipe(ns)).annotate({
         identifier: "GetDeviceResult",
       });
     case 6:
@@ -4569,7 +3954,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetDeviceInstanceRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ deviceInstance: S.optional(DeviceInstance) }).pipe(ns),
+        S.Struct({ deviceInstance: S.optional(__S(24, __c3, 0)) }).pipe(ns),
       ).annotate({ identifier: "GetDeviceInstanceResult" });
   }
 }
@@ -4584,11 +3969,11 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: TestType,
+          type: S.String,
           testPackageArn: S.optional(S.String),
           testSpecArn: S.optional(S.String),
           filter: S.optional(S.String),
-          parameters: S.optional(TestParameters),
+          parameters: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "ScheduleRunTest" });
     case 2:
@@ -4598,9 +3983,9 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          iosPaths: S.optional(IosPaths),
-          androidPaths: S.optional(AndroidPaths),
-          deviceHostPaths: S.optional(DeviceHostPaths),
+          iosPaths: S.optional(__S(5, __c0, 5)),
+          androidPaths: S.optional(__S(5, __c0, 5)),
+          deviceHostPaths: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "CustomerArtifactPaths" });
     case 4:
@@ -4613,23 +3998,23 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Radios" });
     case 5:
-      return S.Array(InsightsType);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
           extraDataPackageArn: S.optional(S.String),
           networkProfileArn: S.optional(S.String),
           locale: S.optional(S.String),
-          location: S.optional(Location),
-          vpceConfigurationArns: S.optional(AmazonResourceNames),
-          deviceProxy: S.optional(DeviceProxy),
-          customerArtifactPaths: S.optional(CustomerArtifactPaths),
-          radios: S.optional(Radios),
-          auxiliaryApps: S.optional(AmazonResourceNames),
-          billingMethod: S.optional(BillingMethod),
-          environmentVariables: S.optional(EnvironmentVariables),
+          location: S.optional(__S(66, __c8, 2)),
+          vpceConfigurationArns: S.optional(__S(5, __c0, 5)),
+          deviceProxy: S.optional(__S(18, __c2, 2)),
+          customerArtifactPaths: S.optional(__S(67, __c8, 3)),
+          radios: S.optional(__S(68, __c8, 4)),
+          auxiliaryApps: S.optional(__S(5, __c0, 5)),
+          billingMethod: S.optional(S.String),
+          environmentVariables: S.optional(__S(14, __c1, 6)),
           executionRoleArn: S.optional(S.String),
-          insightsTypes: S.optional(InsightsTypes),
+          insightsTypes: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "ScheduleRunConfiguration" });
     case 7:
@@ -4637,9 +4022,9 @@ function __c8(j: number): any {
         S.Struct({
           devicePoolArn: S.String,
           appArn: S.optional(S.String),
-          testType: S.optional(TestType),
-          test: S.optional(ScheduleRunTest),
-          configuration: S.optional(ScheduleRunConfiguration),
+          testType: S.optional(S.String),
+          test: S.optional(__S(65, __c8, 1)),
+          configuration: S.optional(__S(70, __c8, 6)),
           projectArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4651,27 +4036,27 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ message: S.optional(S.String), type: S.optional(DeviceAttribute) }),
+        S.Struct({ message: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "IncompatibilityMessage" });
     case 1:
-      return S.Array(IncompatibilityMessage);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(Device),
+          device: S.optional(__S(26, __c3, 2)),
           compatible: S.optional(S.Boolean),
-          incompatibilityMessages: S.optional(IncompatibilityMessages),
+          incompatibilityMessages: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({
         identifier: "DevicePoolCompatibilityResult",
       });
     case 3:
-      return S.Array(DevicePoolCompatibilityResult);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          compatibleDevices: S.optional(DevicePoolCompatibilityResults),
-          incompatibleDevices: S.optional(DevicePoolCompatibilityResults),
+          compatibleDevices: S.optional(__S(75, __c9, 3)),
+          incompatibleDevices: S.optional(__S(75, __c9, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetDevicePoolCompatibilityResult",
@@ -4686,7 +4071,7 @@ function __c9(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ instanceProfile: S.optional(InstanceProfile) }).pipe(ns),
+        S.Struct({ instanceProfile: S.optional(__S(7, __c0, 7)) }).pipe(ns),
       ).annotate({ identifier: "GetInstanceProfileResult" });
     case 7:
       return S.suspend(() =>
@@ -4728,37 +4113,37 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          metrics: S.optional(TestReportMetrics),
+          metrics: S.optional(__S(81, __c10, 1)),
           testDetailsUrl: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "TestReport" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ status: S.optional(ReportStatus), testReport: S.optional(TestReport) }),
+        S.Struct({ status: S.optional(S.String), testReport: S.optional(__S(82, __c10, 2)) }),
       ).annotate({ identifier: "JobInsights" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(TestType),
+          type: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(ExecutionStatus),
-          result: S.optional(ExecutionResult),
+          status: S.optional(S.String),
+          result: S.optional(S.String),
           started: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stopped: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          counters: S.optional(Counters),
+          counters: S.optional(__S(80, __c10, 0)),
           message: S.optional(S.String),
-          device: S.optional(Device),
+          device: S.optional(__S(26, __c3, 2)),
           instanceArn: S.optional(S.String),
-          deviceMinutes: S.optional(DeviceMinutes),
+          deviceMinutes: S.optional(__S(27, __c3, 3)),
           videoEndpoint: S.optional(S.String),
           videoCapture: S.optional(S.Boolean),
-          insights: S.optional(JobInsights),
+          insights: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "Job" });
     case 5:
-      return S.suspend(() => S.Struct({ job: S.optional(Job) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ job: S.optional(__S(84, __c10, 4)) }).pipe(ns)).annotate({
         identifier: "GetJobResult",
       });
     case 6:
@@ -4769,7 +4154,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetNetworkProfileRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ networkProfile: S.optional(NetworkProfile) }).pipe(ns),
+        S.Struct({ networkProfile: S.optional(__S(10, __c1, 2)) }).pipe(ns),
       ).annotate({ identifier: "GetNetworkProfileResult" });
   }
 }
@@ -4783,43 +4168,43 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetOfferingStatusRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ amount: S.optional(S.Number), currencyCode: S.optional(CurrencyCode) }),
+        S.Struct({ amount: S.optional(S.Number), currencyCode: S.optional(S.String) }),
       ).annotate({ identifier: "MonetaryAmount" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cost: S.optional(MonetaryAmount),
-          frequency: S.optional(RecurringChargeFrequency),
+          cost: S.optional(__S(89, __c11, 1)),
+          frequency: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecurringCharge" });
     case 3:
-      return S.Array(RecurringCharge);
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(OfferingType),
-          platform: S.optional(DevicePlatform),
-          recurringCharges: S.optional(RecurringCharges),
+          type: S.optional(S.String),
+          platform: S.optional(S.String),
+          recurringCharges: S.optional(__S(91, __c11, 3)),
         }),
       ).annotate({ identifier: "Offering" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(OfferingTransactionType),
-          offering: S.optional(Offering),
+          type: S.optional(S.String),
+          offering: S.optional(__S(92, __c11, 4)),
           quantity: S.optional(S.Number),
           effectiveOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "OfferingStatus" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ OfferingStatus.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(93, __c11, 5).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          current: S.optional(OfferingStatusMap),
-          nextPeriod: S.optional(OfferingStatusMap),
+          current: S.optional(__S(94, __c11, 6)),
+          nextPeriod: S.optional(__S(94, __c11, 6)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetOfferingStatusResult" });
@@ -4850,17 +4235,17 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attribute: DeviceFilterAttribute,
-          operator: RuleOperator,
-          values: DeviceFilterValues,
+          attribute: S.String,
+          operator: S.String,
+          values: __S(5, __c0, 5),
         }),
       ).annotate({ identifier: "DeviceFilter" });
     case 4:
-      return S.Array(DeviceFilter);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(DeviceFilters),
+          filters: S.optional(__S(100, __c12, 4)),
           matchedDevicesCount: S.optional(S.Number),
           maxDevices: S.optional(S.Number),
         }),
@@ -4884,7 +4269,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          metrics: S.optional(JobReportMetrics),
+          metrics: S.optional(__S(102, __c12, 6)),
           jobDetailsUrl: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "JobReport" });
@@ -4894,52 +4279,52 @@ function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ status: S.optional(ReportStatus), jobReport: S.optional(JobReport) }),
+        S.Struct({ status: S.optional(S.String), jobReport: S.optional(__S(103, __c12, 7)) }),
       ).annotate({ identifier: "RunInsights" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(TestType),
-          platform: S.optional(DevicePlatform),
+          type: S.optional(S.String),
+          platform: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(ExecutionStatus),
-          result: S.optional(ExecutionResult),
+          status: S.optional(S.String),
+          result: S.optional(S.String),
           started: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stopped: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          counters: S.optional(Counters),
+          counters: S.optional(__S(80, __c10, 0)),
           message: S.optional(S.String),
           totalJobs: S.optional(S.Number),
           completedJobs: S.optional(S.Number),
-          billingMethod: S.optional(BillingMethod),
-          deviceMinutes: S.optional(DeviceMinutes),
-          networkProfile: S.optional(NetworkProfile),
-          deviceProxy: S.optional(DeviceProxy),
+          billingMethod: S.optional(S.String),
+          deviceMinutes: S.optional(__S(27, __c3, 3)),
+          networkProfile: S.optional(__S(10, __c1, 2)),
+          deviceProxy: S.optional(__S(18, __c2, 2)),
           parsingResultUrl: S.optional(S.String),
-          resultCode: S.optional(ExecutionResultCode),
+          resultCode: S.optional(S.String),
           seed: S.optional(S.Number),
           appUpload: S.optional(S.String),
           eventCount: S.optional(S.Number),
           jobTimeoutMinutes: S.optional(S.Number),
           devicePoolArn: S.optional(S.String),
           locale: S.optional(S.String),
-          radios: S.optional(Radios),
-          location: S.optional(Location),
-          customerArtifactPaths: S.optional(CustomerArtifactPaths),
+          radios: S.optional(__S(68, __c8, 4)),
+          location: S.optional(__S(66, __c8, 2)),
+          customerArtifactPaths: S.optional(__S(67, __c8, 3)),
           webUrl: S.optional(S.String),
           skipAppResign: S.optional(S.Boolean),
           testSpecArn: S.optional(S.String),
-          deviceSelectionResult: S.optional(DeviceSelectionResult),
-          vpcConfig: S.optional(VpcConfig),
+          deviceSelectionResult: S.optional(__S(101, __c12, 5)),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
           executionRoleArn: S.optional(S.String),
-          environmentVariables: S.optional(EnvironmentVariables),
-          insightsTypes: S.optional(InsightsTypes),
-          insights: S.optional(RunInsights),
+          environmentVariables: S.optional(__S(14, __c1, 6)),
+          insightsTypes: S.optional(__S(69, __c8, 5)),
+          insights: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "Run" });
     case 2:
-      return S.suspend(() => S.Struct({ run: S.optional(Run) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ run: S.optional(__S(105, __c13, 1)) }).pipe(ns)).annotate({
         identifier: "GetRunResult",
       });
     case 3:
@@ -4953,21 +4338,23 @@ function __c13(j: number): any {
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(TestType),
+          type: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(ExecutionStatus),
-          result: S.optional(ExecutionResult),
+          status: S.optional(S.String),
+          result: S.optional(S.String),
           started: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stopped: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          counters: S.optional(Counters),
+          counters: S.optional(__S(80, __c10, 0)),
           message: S.optional(S.String),
-          deviceMinutes: S.optional(DeviceMinutes),
+          deviceMinutes: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "Suite" });
     case 5:
-      return S.suspend(() => S.Struct({ suite: S.optional(Suite) }).pipe(ns)).annotate({
-        identifier: "GetSuiteResult",
-      });
+      return S.suspend(() => S.Struct({ suite: S.optional(__S(108, __c13, 4)) }).pipe(ns)).annotate(
+        {
+          identifier: "GetSuiteResult",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
@@ -4975,7 +4362,7 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "GetTestRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ test: S.optional(Test) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ test: S.optional(__S(108, __c13, 4)) }).pipe(ns)).annotate({
         identifier: "GetTestResult",
       });
   }
@@ -4992,7 +4379,7 @@ function __c14(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ testGridProject: S.optional(TestGridProject) }).pipe(ns),
+        S.Struct({ testGridProject: S.optional(__S(32, __c4, 0)) }).pipe(ns),
       ).annotate({ identifier: "GetTestGridProjectResult" });
     case 2:
       return S.suspend(() =>
@@ -5008,7 +4395,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
-          status: S.optional(TestGridSessionStatus),
+          status: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ended: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           billingMinutes: S.optional(S.Number),
@@ -5017,7 +4404,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "TestGridSession" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ testGridSession: S.optional(TestGridSession) }).pipe(ns),
+        S.Struct({ testGridSession: S.optional(__S(115, __c14, 3)) }).pipe(ns),
       ).annotate({ identifier: "GetTestGridSessionResult" });
     case 5:
       return S.suspend(() =>
@@ -5046,12 +4433,14 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ appUpload: S.optional(Upload) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ appUpload: S.optional(__S(37, __c4, 5)) }).pipe(ns),
+      ).annotate({
         identifier: "InstallToRemoteAccessSessionResult",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, type: ArtifactCategory, nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ arn: S.String, type: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListArtifactsRequest" });
@@ -5060,16 +4449,19 @@ function __c15(j: number): any {
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(ArtifactType),
+          type: S.optional(S.String),
           extension: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Artifact" });
     case 3:
-      return S.Array(Artifact);
+      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ artifacts: S.optional(Artifacts), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          artifacts: S.optional(__S(123, __c15, 3)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListArtifactsResult" });
     case 5:
       return S.suspend(() =>
@@ -5082,7 +4474,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deviceInstances: S.optional(DeviceInstances),
+          deviceInstances: S.optional(__S(25, __c3, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5092,7 +4484,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          type: S.optional(DevicePoolType),
+          type: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDevicePoolsRequest" });
@@ -5101,26 +4493,29 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DevicePool);
+      return S.Array(__S(3, __c0, 3));
     case 1:
       return S.suspend(() =>
-        S.Struct({ devicePools: S.optional(DevicePools), nextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          devicePools: S.optional(__S(128, __c16, 0)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListDevicePoolsResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           nextToken: S.optional(S.String),
-          filters: S.optional(DeviceFilters),
+          filters: S.optional(__S(100, __c12, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDevicesRequest" });
     case 3:
-      return S.Array(Device);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ devices: S.optional(Devices), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ devices: S.optional(__S(131, __c16, 3)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListDevicesResult" });
     case 5:
       return S.suspend(() =>
@@ -5131,11 +4526,11 @@ function __c16(j: number): any {
         identifier: "ListInstanceProfilesRequest",
       });
     case 6:
-      return S.Array(InstanceProfile);
+      return S.Array(__S(7, __c0, 7));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          instanceProfiles: S.optional(InstanceProfiles),
+          instanceProfiles: S.optional(__S(134, __c16, 6)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5152,27 +4547,29 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListJobsRequest" });
     case 1:
-      return S.Array(Job);
+      return S.Array(__S(84, __c10, 4));
     case 2:
       return S.suspend(() =>
-        S.Struct({ jobs: S.optional(Jobs), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ jobs: S.optional(__S(137, __c17, 1)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListJobsResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          type: S.optional(NetworkProfileType),
+          type: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListNetworkProfilesRequest",
       });
     case 4:
-      return S.Array(NetworkProfile);
+      return S.Array(__S(10, __c1, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          networkProfiles: S.optional(NetworkProfiles),
+          networkProfiles: S.optional(__S(140, __c17, 4)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5195,11 +4592,11 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OfferingPromotion);
+      return S.Array(__S(143, __c17, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          offeringPromotions: S.optional(OfferingPromotions),
+          offeringPromotions: S.optional(__S(144, __c18, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5212,10 +4609,13 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListOfferingsRequest" });
     case 3:
-      return S.Array(Offering);
+      return S.Array(__S(92, __c11, 4));
     case 4:
       return S.suspend(() =>
-        S.Struct({ offerings: S.optional(Offerings), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          offerings: S.optional(__S(147, __c18, 3)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListOfferingsResult" });
     case 5:
       return S.suspend(() =>
@@ -5228,15 +4628,15 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          offeringStatus: S.optional(OfferingStatus),
+          offeringStatus: S.optional(__S(93, __c11, 5)),
           transactionId: S.optional(S.String),
           offeringPromotionId: S.optional(S.String),
           createdOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          cost: S.optional(MonetaryAmount),
+          cost: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "OfferingTransaction" });
     case 7:
-      return S.Array(OfferingTransaction);
+      return S.Array(__S(150, __c18, 6));
   }
 }
 function __c19(j: number): any {
@@ -5244,7 +4644,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          offeringTransactions: S.optional(OfferingTransactions),
+          offeringTransactions: S.optional(__S(151, __c18, 7)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5257,10 +4657,13 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
     case 2:
-      return S.Array(Project);
+      return S.Array(__S(16, __c2, 0));
     case 3:
       return S.suspend(() =>
-        S.Struct({ projects: S.optional(Projects), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({
+          projects: S.optional(__S(154, __c19, 2)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListProjectsResult" });
     case 4:
       return S.suspend(() =>
@@ -5271,11 +4674,11 @@ function __c19(j: number): any {
         identifier: "ListRemoteAccessSessionsRequest",
       });
     case 5:
-      return S.Array(RemoteAccessSession);
+      return S.Array(__S(29, __c3, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          remoteAccessSessions: S.optional(RemoteAccessSessions),
+          remoteAccessSessions: S.optional(__S(157, __c19, 5)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5292,10 +4695,12 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Run);
+      return S.Array(__S(105, __c13, 1));
     case 1:
       return S.suspend(() =>
-        S.Struct({ runs: S.optional(Runs), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ runs: S.optional(__S(160, __c20, 0)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListRunsResult" });
     case 2:
       return S.suspend(() =>
@@ -5307,15 +4712,17 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
-          type: S.optional(SampleType),
+          type: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sample" });
     case 4:
-      return S.Array(Sample);
+      return S.Array(__S(163, __c20, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ samples: S.optional(Samples), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ samples: S.optional(__S(164, __c20, 4)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListSamplesResult" });
     case 6:
       return S.suspend(() =>
@@ -5324,14 +4731,16 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListSuitesRequest" });
     case 7:
-      return S.Array(Suite);
+      return S.Array(__S(108, __c13, 4));
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ suites: S.optional(Suites), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ suites: S.optional(__S(167, __c20, 7)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListSuitesResult" });
     case 1:
       return S.suspend(() =>
@@ -5346,9 +4755,9 @@ function __c21(j: number): any {
         identifier: "Tag",
       });
     case 3:
-      return S.Array(Tag);
+      return S.Array(__S(170, __c21, 2));
     case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(171, __c21, 3)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
@@ -5360,11 +4769,11 @@ function __c21(j: number): any {
         identifier: "ListTestGridProjectsRequest",
       });
     case 6:
-      return S.Array(TestGridProject);
+      return S.Array(__S(32, __c4, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          testGridProjects: S.optional(TestGridProjects),
+          testGridProjects: S.optional(__S(174, __c21, 6)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5395,11 +4804,11 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "TestGridSessionAction" });
     case 2:
-      return S.Array(TestGridSessionAction);
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(TestGridSessionActions),
+          actions: S.optional(__S(178, __c22, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5409,7 +4818,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionArn: S.String,
-          type: S.optional(TestGridSessionArtifactCategory),
+          type: S.optional(S.String),
           maxResult: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5420,16 +4829,16 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
-          type: S.optional(TestGridSessionArtifactType),
+          type: S.optional(S.String),
           url: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "TestGridSessionArtifact" });
     case 6:
-      return S.Array(TestGridSessionArtifact);
+      return S.Array(__S(181, __c22, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(TestGridSessionArtifacts),
+          artifacts: S.optional(__S(182, __c22, 6)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5443,7 +4852,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectArn: S.String,
-          status: S.optional(TestGridSessionStatus),
+          status: S.optional(S.String),
           creationTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           creationTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5455,11 +4864,11 @@ function __c23(j: number): any {
         identifier: "ListTestGridSessionsRequest",
       });
     case 1:
-      return S.Array(TestGridSession);
+      return S.Array(__S(115, __c14, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          testGridSessions: S.optional(TestGridSessions),
+          testGridSessions: S.optional(__S(185, __c23, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5473,7 +4882,9 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ListTestsRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ tests: S.optional(Tests), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ tests: S.optional(__S(167, __c20, 7)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListTestsResult" });
     case 5:
       return S.suspend(() =>
@@ -5490,12 +4901,12 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          run: S.optional(ProblemDetail),
-          job: S.optional(ProblemDetail),
-          suite: S.optional(ProblemDetail),
-          test: S.optional(ProblemDetail),
-          device: S.optional(Device),
-          result: S.optional(ExecutionResult),
+          run: S.optional(__S(190, __c23, 6)),
+          job: S.optional(__S(190, __c23, 6)),
+          suite: S.optional(__S(190, __c23, 6)),
+          test: S.optional(__S(190, __c23, 6)),
+          device: S.optional(__S(26, __c3, 2)),
+          result: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Problem" });
@@ -5504,19 +4915,19 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Problem);
+      return S.Array(__S(191, __c23, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ message: S.optional(S.String), problems: S.optional(Problems) }),
+        S.Struct({ message: S.optional(S.String), problems: S.optional(__S(192, __c24, 0)) }),
       ).annotate({ identifier: "UniqueProblem" });
     case 2:
-      return S.Array(UniqueProblem);
+      return S.Array(__S(193, __c24, 1));
     case 3:
-      return S.Record(ExecutionResult, /*@__PURE__*/ UniqueProblems.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(194, __c24, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          uniqueProblems: S.optional(UniqueProblemsByExecutionResultMap),
+          uniqueProblems: S.optional(__S(195, __c24, 3)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListUniqueProblemsResult" });
@@ -5524,15 +4935,17 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          type: S.optional(UploadType),
+          type: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListUploadsRequest" });
     case 6:
-      return S.Array(Upload);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ uploads: S.optional(Uploads), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ uploads: S.optional(__S(198, __c24, 6)), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListUploadsResult" });
   }
 }
@@ -5547,11 +4960,11 @@ function __c25(j: number): any {
         identifier: "ListVPCEConfigurationsRequest",
       });
     case 1:
-      return S.Array(VPCEConfiguration);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          vpceConfigurations: S.optional(VPCEConfigurations),
+          vpceConfigurations: S.optional(__S(201, __c25, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5567,7 +4980,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "PurchaseOfferingRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ offeringTransaction: S.optional(OfferingTransaction) }).pipe(ns),
+        S.Struct({ offeringTransaction: S.optional(__S(150, __c18, 6)) }).pipe(ns),
       ).annotate({ identifier: "PurchaseOfferingResult" });
     case 5:
       return S.suspend(() =>
@@ -5576,7 +4989,9 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "RenewOfferingRequest" });
     case 6:
-      return S.suspend(() => S.Struct({ filters: DeviceFilters, maxDevices: S.Number })).annotate({
+      return S.suspend(() =>
+        S.Struct({ filters: __S(100, __c12, 4), maxDevices: S.Number }),
+      ).annotate({
         identifier: "DeviceSelectionConfiguration",
       });
     case 7:
@@ -5599,11 +5014,11 @@ function __c26(j: number): any {
           projectArn: S.String,
           appArn: S.optional(S.String),
           devicePoolArn: S.optional(S.String),
-          deviceSelectionConfiguration: S.optional(DeviceSelectionConfiguration),
+          deviceSelectionConfiguration: S.optional(__S(206, __c25, 6)),
           name: S.optional(S.String),
-          test: ScheduleRunTest,
-          configuration: S.optional(ScheduleRunConfiguration),
-          executionConfiguration: S.optional(ExecutionConfiguration),
+          test: __S(65, __c8, 1),
+          configuration: S.optional(__S(70, __c8, 6)),
+          executionConfiguration: S.optional(__S(207, __c25, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ScheduleRunRequest" });
     case 1:
@@ -5628,13 +5043,13 @@ function __c26(j: number): any {
       ).annotate({ identifier: "StopRunRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(171, __c21, 3) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(5, __c0, 5) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -5643,14 +5058,14 @@ function __c26(j: number): any {
         S.Struct({
           arn: S.String,
           profileArn: S.optional(S.String),
-          labels: S.optional(InstanceLabels),
+          labels: S.optional(__S(5, __c0, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateDeviceInstanceRequest",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ deviceInstance: S.optional(DeviceInstance) }).pipe(ns),
+        S.Struct({ deviceInstance: S.optional(__S(24, __c3, 0)) }).pipe(ns),
       ).annotate({
         identifier: "UpdateDeviceInstanceResult",
       });
@@ -5664,7 +5079,7 @@ function __c27(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          rules: S.optional(Rules),
+          rules: S.optional(__S(1, __c0, 1)),
           maxDevices: S.optional(S.Number),
           clearMaxDevices: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5676,7 +5091,7 @@ function __c27(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           packageCleanup: S.optional(S.Boolean),
-          excludeAppPackagesFromCleanup: S.optional(PackageIds),
+          excludeAppPackagesFromCleanup: S.optional(__S(5, __c0, 5)),
           rebootAfterUse: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5688,7 +5103,7 @@ function __c27(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(NetworkProfileType),
+          type: S.optional(S.String),
           uplinkBandwidthBits: S.optional(S.Number),
           downlinkBandwidthBits: S.optional(S.Number),
           uplinkDelayMs: S.optional(S.Number),
@@ -5707,8 +5122,8 @@ function __c27(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           defaultJobTimeoutMinutes: S.optional(S.Number),
-          vpcConfig: S.optional(VpcConfig),
-          environmentVariables: S.optional(EnvironmentVariables),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
+          environmentVariables: S.optional(__S(14, __c1, 6)),
           executionRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateProjectRequest" });
@@ -5718,7 +5133,7 @@ function __c27(j: number): any {
           projectArn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          vpcConfig: S.optional(TestGridVpcConfig),
+          vpcConfig: S.optional(__S(12, __c1, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateTestGridProjectRequest",
@@ -5745,4 +5160,9 @@ function __c27(j: number): any {
         identifier: "UpdateVPCEConfigurationRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

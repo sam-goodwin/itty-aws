@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -45,25 +47,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -81,19 +70,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -109,19 +88,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -155,11 +124,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 /** Describes the state of the storageVersion at a certain point. */
 export interface IoK8sApiApiserverinternalV1alpha1StorageVersionCondition {
   /** lastTransitionTime is the last time the condition transitioned from one status to another. */
@@ -175,33 +139,14 @@ export interface IoK8sApiApiserverinternalV1alpha1StorageVersionCondition {
   /** type of the condition. */
   type: string;
 }
-const IoK8sApiApiserverinternalV1alpha1StorageVersionCondition = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersionCondition>;
-
 /** conditions lists the latest available observations of the storageVersion's state. */
 export type IoK8sApiApiserverinternalV1alpha1StorageVersionStatusConditionsList =
   Array<IoK8sApiApiserverinternalV1alpha1StorageVersionCondition>;
-const IoK8sApiApiserverinternalV1alpha1StorageVersionStatusConditionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersionStatusConditionsList>;
-
 /** decodableVersions are the encoding versions the API server can handle to decode. The API server can decode objects encoded in these versions. The encodingVersion must be included in the decodableVersions. */
 export type IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersionsList =
   Array<string>;
-const IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersionsList =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    1,
-  ) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersionsList>;
-
 /** servedVersions lists all versions the API server can serve. DecodableVersions must include all ServedVersions. */
 export type IoK8sApiApiserverinternalV1alpha1ServerStorageVersionServedVersionsList = Array<string>;
-const IoK8sApiApiserverinternalV1alpha1ServerStorageVersionServedVersionsList =
-  IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersionsList as any as S.Schema<IoK8sApiApiserverinternalV1alpha1ServerStorageVersionServedVersionsList>;
-
 /** An API server instance reports the version it can decode and the version it encodes objects to when persisting objects in the backend. */
 export interface IoK8sApiApiserverinternalV1alpha1ServerStorageVersion {
   /** apiServerID is the ID of the reporting API server. */
@@ -213,20 +158,9 @@ export interface IoK8sApiApiserverinternalV1alpha1ServerStorageVersion {
   /** servedVersions lists all versions the API server can serve. DecodableVersions must include all ServedVersions. */
   servedVersions?: IoK8sApiApiserverinternalV1alpha1ServerStorageVersionServedVersionsList;
 }
-const IoK8sApiApiserverinternalV1alpha1ServerStorageVersion = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1ServerStorageVersion>;
-
 /** storageVersions lists the reported versions per API server instance. */
 export type IoK8sApiApiserverinternalV1alpha1StorageVersionStatusStorageVersionsList =
   Array<IoK8sApiApiserverinternalV1alpha1ServerStorageVersion>;
-const IoK8sApiApiserverinternalV1alpha1StorageVersionStatusStorageVersionsList =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    3,
-  ) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersionStatusStorageVersionsList>;
-
 /** API server instances report the versions they can decode and the version they encode objects to when persisting objects in the backend. */
 export interface IoK8sApiApiserverinternalV1alpha1StorageVersionStatus {
   /** commonEncodingVersion is set to an encoding storage version if all API server instances share that same version. If they don't share one storage version, this field is left empty. API servers should finish updating its storageVersionStatus entry before serving write operations, so that this field will be in sync with the reality. */
@@ -236,11 +170,6 @@ export interface IoK8sApiApiserverinternalV1alpha1StorageVersionStatus {
   /** storageVersions lists the reported versions per API server instance. */
   storageVersions?: IoK8sApiApiserverinternalV1alpha1StorageVersionStatusStorageVersionsList;
 }
-const IoK8sApiApiserverinternalV1alpha1StorageVersionStatus = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersionStatus>;
-
 export interface CreateInternalApiserverV1alpha1StorageVersionRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -261,11 +190,6 @@ export interface CreateInternalApiserverV1alpha1StorageVersionRequest {
   /** status on the version the API server instance can decode from and encode objects to when persisting objects in the backend. */
   status?: IoK8sApiApiserverinternalV1alpha1StorageVersionStatus;
 }
-const CreateInternalApiserverV1alpha1StorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateInternalApiserverV1alpha1StorageVersionRequest>;
-
 /** Storage version of a specific resource. */
 export interface IoK8sApiApiserverinternalV1alpha1StorageVersion {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -279,11 +203,6 @@ export interface IoK8sApiApiserverinternalV1alpha1StorageVersion {
   /** status on the version the API server instance can decode from and encode objects to when persisting objects in the backend. */
   status?: IoK8sApiApiserverinternalV1alpha1StorageVersionStatus;
 }
-const IoK8sApiApiserverinternalV1alpha1StorageVersion = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>;
-
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -291,11 +210,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
-
 export interface DeleteInternalApiserverV1alpha1CollectionStorageVersionRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -334,11 +248,6 @@ export interface DeleteInternalApiserverV1alpha1CollectionStorageVersionRequest 
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteInternalApiserverV1alpha1CollectionStorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteInternalApiserverV1alpha1CollectionStorageVersionRequest>;
-
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -348,19 +257,9 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
-
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -376,21 +275,11 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
-
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
-
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -404,11 +293,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
-
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -428,11 +312,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
-
 export interface DeleteInternalApiserverV1alpha1StorageVersionRequest {
   /** name of the StorageVersion */
   name: string;
@@ -455,17 +334,7 @@ export interface DeleteInternalApiserverV1alpha1StorageVersionRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteInternalApiserverV1alpha1StorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteInternalApiserverV1alpha1StorageVersionRequest>;
-
 export interface GetInternalApiserverAPIGroupRequest {}
-const GetInternalApiserverAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetInternalApiserverAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -473,11 +342,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -485,27 +349,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -521,32 +370,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetInternalApiserverV1alpha1APIResourcesRequest {}
-const GetInternalApiserverV1alpha1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetInternalApiserverV1alpha1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -570,19 +400,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -594,11 +414,6 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export interface ListInternalApiserverV1alpha1StorageVersionRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -625,19 +440,9 @@ export interface ListInternalApiserverV1alpha1StorageVersionRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListInternalApiserverV1alpha1StorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListInternalApiserverV1alpha1StorageVersionRequest>;
-
 /** Items holds a list of StorageVersion */
 export type IoK8sApiApiserverinternalV1alpha1StorageVersionListItemsList =
   Array<IoK8sApiApiserverinternalV1alpha1StorageVersion>;
-const IoK8sApiApiserverinternalV1alpha1StorageVersionListItemsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersionListItemsList>;
-
 /** A list of StorageVersions. */
 export interface IoK8sApiApiserverinternalV1alpha1StorageVersionList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -649,11 +454,6 @@ export interface IoK8sApiApiserverinternalV1alpha1StorageVersionList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiApiserverinternalV1alpha1StorageVersionList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersionList>;
-
 export interface PatchInternalApiserverV1alpha1StorageVersionRequest {
   /** name of the StorageVersion */
   name: string;
@@ -668,11 +468,6 @@ export interface PatchInternalApiserverV1alpha1StorageVersionRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchInternalApiserverV1alpha1StorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PatchInternalApiserverV1alpha1StorageVersionRequest>;
-
 export interface PatchInternalApiserverV1alpha1StorageVersionStatusRequest {
   /** name of the StorageVersion */
   name: string;
@@ -687,33 +482,18 @@ export interface PatchInternalApiserverV1alpha1StorageVersionStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchInternalApiserverV1alpha1StorageVersionStatusRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PatchInternalApiserverV1alpha1StorageVersionStatusRequest>;
-
 export interface ReadInternalApiserverV1alpha1StorageVersionRequest {
   /** name of the StorageVersion */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadInternalApiserverV1alpha1StorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ReadInternalApiserverV1alpha1StorageVersionRequest>;
-
 export interface ReadInternalApiserverV1alpha1StorageVersionStatusRequest {
   /** name of the StorageVersion */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadInternalApiserverV1alpha1StorageVersionStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ReadInternalApiserverV1alpha1StorageVersionStatusRequest>;
-
 export interface ReplaceInternalApiserverV1alpha1StorageVersionRequest {
   /** name of the StorageVersion */
   name: string;
@@ -736,11 +516,6 @@ export interface ReplaceInternalApiserverV1alpha1StorageVersionRequest {
   /** status on the version the API server instance can decode from and encode objects to when persisting objects in the backend. */
   status?: IoK8sApiApiserverinternalV1alpha1StorageVersionStatus;
 }
-const ReplaceInternalApiserverV1alpha1StorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ReplaceInternalApiserverV1alpha1StorageVersionRequest>;
-
 export interface ReplaceInternalApiserverV1alpha1StorageVersionStatusRequest {
   /** name of the StorageVersion */
   name: string;
@@ -763,11 +538,6 @@ export interface ReplaceInternalApiserverV1alpha1StorageVersionStatusRequest {
   /** status on the version the API server instance can decode from and encode objects to when persisting objects in the backend. */
   status?: IoK8sApiApiserverinternalV1alpha1StorageVersionStatus;
 }
-const ReplaceInternalApiserverV1alpha1StorageVersionStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ReplaceInternalApiserverV1alpha1StorageVersionStatusRequest>;
-
 export interface WatchInternalApiserverV1alpha1StorageVersionRequest {
   /** name of the StorageVersion */
   name: string;
@@ -796,22 +566,12 @@ export interface WatchInternalApiserverV1alpha1StorageVersionRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchInternalApiserverV1alpha1StorageVersionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<WatchInternalApiserverV1alpha1StorageVersionRequest>;
-
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
-
 export interface WatchInternalApiserverV1alpha1StorageVersionListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -838,11 +598,6 @@ export interface WatchInternalApiserverV1alpha1StorageVersionListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchInternalApiserverV1alpha1StorageVersionListRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<WatchInternalApiserverV1alpha1StorageVersionListRequest>;
-
 export type CreateInternalApiserverV1alpha1StorageVersionError =
   | Conflict
   | UnprocessableEntity
@@ -854,8 +609,8 @@ export const createInternalApiserverV1alpha1StorageVersion: API.OperationMethod<
   CreateInternalApiserverV1alpha1StorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInternalApiserverV1alpha1StorageVersionRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersion,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateInternalApiserverV1alpha1StorageVersionRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -869,8 +624,12 @@ export const deleteInternalApiserverV1alpha1CollectionStorageVersion: API.Operat
   DeleteInternalApiserverV1alpha1CollectionStorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInternalApiserverV1alpha1CollectionStorageVersionRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    16,
+    __c2,
+    0,
+  ) as any as S.Schema<DeleteInternalApiserverV1alpha1CollectionStorageVersionRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -887,8 +646,8 @@ export const deleteInternalApiserverV1alpha1StorageVersion: API.OperationMethod<
   DeleteInternalApiserverV1alpha1StorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInternalApiserverV1alpha1StorageVersionRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(23, __c2, 7) as any as S.Schema<DeleteInternalApiserverV1alpha1StorageVersionRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -902,8 +661,8 @@ export const getInternalApiserverAPIGroup: API.OperationMethod<
   GetInternalApiserverAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInternalApiserverAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(24, __c3, 0) as any as S.Schema<GetInternalApiserverAPIGroupRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -917,8 +676,8 @@ export const getInternalApiserverV1alpha1APIResources: API.OperationMethod<
   GetInternalApiserverV1alpha1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInternalApiserverV1alpha1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(30, __c3, 6) as any as S.Schema<GetInternalApiserverV1alpha1APIResourcesRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -932,8 +691,8 @@ export const listInternalApiserverV1alpha1StorageVersion: API.OperationMethod<
   ListInternalApiserverV1alpha1StorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInternalApiserverV1alpha1StorageVersionRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersionList,
+  input: __S(34, __c4, 2) as any as S.Schema<ListInternalApiserverV1alpha1StorageVersionRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersionList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -951,8 +710,8 @@ export const patchInternalApiserverV1alpha1StorageVersion: API.OperationMethod<
   PatchInternalApiserverV1alpha1StorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchInternalApiserverV1alpha1StorageVersionRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersion,
+  input: __S(37, __c4, 5) as any as S.Schema<PatchInternalApiserverV1alpha1StorageVersionRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -970,8 +729,12 @@ export const patchInternalApiserverV1alpha1StorageVersionStatus: API.OperationMe
   PatchInternalApiserverV1alpha1StorageVersionStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchInternalApiserverV1alpha1StorageVersionStatusRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersion,
+  input: __S(
+    38,
+    __c4,
+    6,
+  ) as any as S.Schema<PatchInternalApiserverV1alpha1StorageVersionStatusRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -985,8 +748,8 @@ export const readInternalApiserverV1alpha1StorageVersion: API.OperationMethod<
   ReadInternalApiserverV1alpha1StorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadInternalApiserverV1alpha1StorageVersionRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersion,
+  input: __S(39, __c4, 7) as any as S.Schema<ReadInternalApiserverV1alpha1StorageVersionRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1000,8 +763,12 @@ export const readInternalApiserverV1alpha1StorageVersionStatus: API.OperationMet
   ReadInternalApiserverV1alpha1StorageVersionStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadInternalApiserverV1alpha1StorageVersionStatusRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersion,
+  input: __S(
+    40,
+    __c5,
+    0,
+  ) as any as S.Schema<ReadInternalApiserverV1alpha1StorageVersionStatusRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1019,8 +786,8 @@ export const replaceInternalApiserverV1alpha1StorageVersion: API.OperationMethod
   ReplaceInternalApiserverV1alpha1StorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceInternalApiserverV1alpha1StorageVersionRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersion,
+  input: __S(41, __c5, 1) as any as S.Schema<ReplaceInternalApiserverV1alpha1StorageVersionRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1038,8 +805,12 @@ export const replaceInternalApiserverV1alpha1StorageVersionStatus: API.Operation
   ReplaceInternalApiserverV1alpha1StorageVersionStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceInternalApiserverV1alpha1StorageVersionStatusRequest,
-  output: IoK8sApiApiserverinternalV1alpha1StorageVersion,
+  input: __S(
+    42,
+    __c5,
+    2,
+  ) as any as S.Schema<ReplaceInternalApiserverV1alpha1StorageVersionStatusRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiApiserverinternalV1alpha1StorageVersion>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1053,8 +824,8 @@ export const watchInternalApiserverV1alpha1StorageVersion: API.OperationMethod<
   WatchInternalApiserverV1alpha1StorageVersionError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchInternalApiserverV1alpha1StorageVersionRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(43, __c5, 3) as any as S.Schema<WatchInternalApiserverV1alpha1StorageVersionRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1068,8 +839,12 @@ export const watchInternalApiserverV1alpha1StorageVersionList: API.OperationMeth
   WatchInternalApiserverV1alpha1StorageVersionListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchInternalApiserverV1alpha1StorageVersionListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    45,
+    __c5,
+    5,
+  ) as any as S.Schema<WatchInternalApiserverV1alpha1StorageVersionListRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1097,7 +872,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1112,22 +887,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0, __c0, 0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1, __c0, 1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0, __c0, 0)),
+          managedFields: S.optional(__S(3, __c0, 3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5, __c0, 5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -1153,35 +928,28 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiApiserverinternalV1alpha1StorageVersionCondition);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiServerID: S.String,
-          decodableVersions:
-            IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersionsList,
+          decodableVersions: __S(9, __c1, 1),
           encodingVersion: S.String,
-          servedVersions: S.optional(
-            IoK8sApiApiserverinternalV1alpha1ServerStorageVersionServedVersionsList,
-          ),
+          servedVersions: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiApiserverinternalV1alpha1ServerStorageVersion",
       });
     case 3:
-      return S.Array(IoK8sApiApiserverinternalV1alpha1ServerStorageVersion);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           commonEncodingVersion: S.optional(S.String),
-          conditions: S.optional(
-            IoK8sApiApiserverinternalV1alpha1StorageVersionStatusConditionsList,
-          ),
-          storageVersions: S.optional(
-            IoK8sApiApiserverinternalV1alpha1StorageVersionStatusStorageVersionsList,
-          ),
+          conditions: S.optional(__S(8, __c1, 0)),
+          storageVersions: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "IoK8sApiApiserverinternalV1alpha1StorageVersionStatus",
@@ -1195,9 +963,9 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: IoK8sApimachineryPkgApisMetaV1ObjectMeta,
+          metadata: __S(6, __c0, 6),
           spec: S.optional(S.Unknown),
-          status: S.optional(IoK8sApiApiserverinternalV1alpha1StorageVersionStatus),
+          status: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1213,9 +981,9 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: IoK8sApimachineryPkgApisMetaV1ObjectMeta,
+          metadata: __S(6, __c0, 6),
           spec: S.optional(S.Unknown),
-          status: S.optional(IoK8sApiApiserverinternalV1alpha1StorageVersionStatus),
+          status: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "IoK8sApiApiserverinternalV1alpha1StorageVersion",
@@ -1253,7 +1021,7 @@ function __c2(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(15, __c1, 7)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1275,11 +1043,11 @@ function __c2(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
     case 2:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
+          causes: S.optional(__S(18, __c2, 2)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -1304,7 +1072,7 @@ function __c2(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
+          shardInfo: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -1314,10 +1082,10 @@ function __c2(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
+          details: S.optional(__S(19, __c2, 3)),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(21, __c2, 5)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -1336,7 +1104,7 @@ function __c2(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(15, __c1, 7)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1378,20 +1146,18 @@ function __c3(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(26, __c3, 2));
     case 4:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(25, __c3, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(25, __c3, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(27, __c3, 3)),
+          versions: __S(28, __c3, 4),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -1407,15 +1173,15 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1, __c0, 1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1, __c0, 1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1, __c0, 1),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -1426,14 +1192,14 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(32, __c4, 0),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -1464,14 +1230,14 @@ function __c4(j: number): any {
         identifier: "ListInternalApiserverV1alpha1StorageVersionRequest",
       });
     case 3:
-      return S.Array(IoK8sApiApiserverinternalV1alpha1StorageVersion);
+      return S.Array(__S(14, __c1, 6));
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiApiserverinternalV1alpha1StorageVersionListItemsList,
+          items: __S(35, __c4, 3),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({
         identifier: "IoK8sApiApiserverinternalV1alpha1StorageVersionList",
@@ -1558,9 +1324,9 @@ function __c5(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: IoK8sApimachineryPkgApisMetaV1ObjectMeta,
+          metadata: __S(6, __c0, 6),
           spec: S.optional(S.Unknown),
-          status: S.optional(IoK8sApiApiserverinternalV1alpha1StorageVersionStatus),
+          status: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1581,9 +1347,9 @@ function __c5(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: IoK8sApimachineryPkgApisMetaV1ObjectMeta,
+          metadata: __S(6, __c0, 6),
           spec: S.optional(S.Unknown),
-          status: S.optional(IoK8sApiApiserverinternalV1alpha1StorageVersionStatus),
+          status: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1655,4 +1421,9 @@ function __c5(j: number): any {
         identifier: "WatchInternalApiserverV1alpha1StorageVersionListRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,8 +22,6 @@ export class BadRequest
 
 /** * `certified` - certified * `deprecated` - deprecated */
 export type ProposedStatusEnum = "certified" | "deprecated";
-const ProposedStatusEnum = S.String;
-
 export interface CreateDataCatalogCertificationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -38,17 +38,7 @@ export interface CreateDataCatalogCertificationRequest {
   /** Intent of the proposal: 'certified' to propose trusting this source, 'deprecated' to propose avoiding it (e.g. a stale or wrong source). * `certified` - certified * `deprecated` - deprecated */
   proposed_status?: ProposedStatusEnum | (string & {});
 }
-const CreateDataCatalogCertificationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDataCatalogCertificationRequest>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -62,8 +52,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -75,8 +63,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
-
 export interface DataCatalogCertification {
   id: string;
   /** The warehouse table this mark applies to (XOR saved_query). */
@@ -99,42 +85,22 @@ export interface DataCatalogCertification {
   created_by: number | null;
   created_at: string;
 }
-const DataCatalogCertification = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DataCatalogCertification>;
-
 export interface CreateDataCatalogCertificationsCertifyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this table certification. */
   id: string;
 }
-const CreateDataCatalogCertificationsCertifyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDataCatalogCertificationsCertifyRequest>;
-
 export interface CreateDataCatalogCertificationsDeprecateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this table certification. */
   id: string;
 }
-const CreateDataCatalogCertificationsDeprecateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateDataCatalogCertificationsDeprecateRequest>;
-
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type CreateDataCatalogMetricsRequestDefinitionMap = { [key: string]: unknown | undefined };
-const CreateDataCatalogMetricsRequestDefinitionMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<CreateDataCatalogMetricsRequestDefinitionMap>;
-
 /** * `user` - user * `ai_generated` - ai_generated */
 export type CreatedSourceEnum = "user" | "ai_generated";
-const CreatedSourceEnum = S.String;
-
 export interface CreateDataCatalogMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -159,16 +125,8 @@ export interface CreateDataCatalogMetricsRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-const CreateDataCatalogMetricsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDataCatalogMetricsRequest>;
-
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type DataCatalogMetricDefinitionMap = { [key: string]: unknown | undefined };
-const DataCatalogMetricDefinitionMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DataCatalogMetricDefinitionMap>;
-
 export interface DataCatalogMetric {
   id: string;
   /** Identifier-safe run handle, unique among the team's live metrics. Renaming or deleting a metric frees its name for reuse, and anything referencing the old name (SQL over information_schema.metrics, run URLs, links) stops resolving. */
@@ -211,8 +169,6 @@ export interface DataCatalogMetric {
   created_at: string;
   updated_at: string | null;
 }
-const DataCatalogMetric = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DataCatalogMetric>;
-
 export type CreateDataCatalogMetricsRunRequestRefresh =
   | "blocking"
   | "async"
@@ -220,8 +176,6 @@ export type CreateDataCatalogMetricsRunRequestRefresh =
   | "force_blocking"
   | "force_async"
   | "force_cache";
-const CreateDataCatalogMetricsRunRequestRefresh = S.String;
-
 /** * `second` - second * `minute` - minute * `hour` - hour * `day` - day * `week` - week * `month` - month * `quarter` - quarter * `year` - year */
 export type DataCatalogMetricRunRequestIntervalEnum =
   | "second"
@@ -232,8 +186,6 @@ export type DataCatalogMetricRunRequestIntervalEnum =
   | "month"
   | "quarter"
   | "year";
-const DataCatalogMetricRunRequestIntervalEnum = S.String;
-
 export interface CreateDataCatalogMetricsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -249,18 +201,8 @@ export interface CreateDataCatalogMetricsRunRequest {
   /** Client-supplied id to correlate or cancel the run. */
   query_id?: string;
 }
-const CreateDataCatalogMetricsRunRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateDataCatalogMetricsRunRequest>;
-
 /** Names of the result columns, in the order of the values in each positional result row. Null when the results are already labeled, or the query kind returns no column names. */
 export type DataCatalogMetricRunColumnsList = Array<string>;
-const DataCatalogMetricRunColumnsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DataCatalogMetricRunColumnsList>;
-
 /** Normalized envelope returned by the metric-run endpoint. */
 export interface DataCatalogMetricRun {
   /** Lifecycle state of the metric that produced these results. */
@@ -288,8 +230,6 @@ export interface DataCatalogMetricRun {
   /** For a markdown (agent-calculated) metric, the steps to follow to compute it. Null for an executable metric. */
   instructions: string | null;
 }
-const DataCatalogMetricRun = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DataCatalogMetricRun>;
-
 export interface CreateDataCatalogRelationshipProposalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -312,11 +252,6 @@ export interface CreateDataCatalogRelationshipProposalRequest {
   /** Sampling evidence: match rates, sample values. */
   evidence?: unknown;
 }
-const CreateDataCatalogRelationshipProposalRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateDataCatalogRelationshipProposalRequest>;
-
 export interface DataCatalogRelationshipProposal {
   id: string;
   /** Name of the table the join starts from. */
@@ -349,61 +284,28 @@ export interface DataCatalogRelationshipProposal {
   created_by: number | null;
   created_at: string;
 }
-const DataCatalogRelationshipProposal = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DataCatalogRelationshipProposal>;
-
 export interface DataCatalogCertificationsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this table certification. */
   id: string;
 }
-const DataCatalogCertificationsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DataCatalogCertificationsDestroyRequest>;
-
 export interface DataCatalogCertificationsDestroyResponse {}
-const DataCatalogCertificationsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DataCatalogCertificationsDestroyResponse>;
-
 export interface DataCatalogMetricsApproveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
 }
-const DataCatalogMetricsApproveCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DataCatalogMetricsApproveCreateRequest>;
-
 /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
 export type DataCatalogMetricsBulkApproveCreateRequestNamesList = Array<string>;
-const DataCatalogMetricsBulkApproveCreateRequestNamesList =
-  DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequestNamesList>;
-
 export interface DataCatalogMetricsBulkApproveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
   names: DataCatalogMetricsBulkApproveCreateRequestNamesList;
 }
-const DataCatalogMetricsBulkApproveCreateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequest>;
-
 /** The metrics that are now approved, freshly serialized. */
 export type DataCatalogMetricBulkApproveApprovedList = Array<DataCatalogMetric>;
-const DataCatalogMetricBulkApproveApprovedList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DataCatalogMetricBulkApproveApprovedList>;
-
 /** A metric the bulk action did not act on, and why. */
 export interface DataCatalogMetricBulkSkip {
   /** Name of the metric that was skipped. */
@@ -411,18 +313,8 @@ export interface DataCatalogMetricBulkSkip {
   /** Why it was skipped, e.g. 'Not found', 'Already approved', 'Drifted from its source insight'. */
   reason: string;
 }
-const DataCatalogMetricBulkSkip = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DataCatalogMetricBulkSkip>;
-
 /** Requested metrics that were not approved, with reasons. */
 export type DataCatalogMetricBulkApproveSkippedList = Array<DataCatalogMetricBulkSkip>;
-const DataCatalogMetricBulkApproveSkippedList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DataCatalogMetricBulkApproveSkippedList>;
-
 /** Outcome of a bulk approve: what changed, and what was left alone. */
 export interface DataCatalogMetricBulkApprove {
   /** The metrics that are now approved, freshly serialized. */
@@ -430,37 +322,18 @@ export interface DataCatalogMetricBulkApprove {
   /** Requested metrics that were not approved, with reasons. */
   skipped: DataCatalogMetricBulkApproveSkippedList;
 }
-const DataCatalogMetricBulkApprove = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DataCatalogMetricBulkApprove>;
-
 /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
 export type DataCatalogMetricsBulkDeleteCreateRequestNamesList = Array<string>;
-const DataCatalogMetricsBulkDeleteCreateRequestNamesList =
-  DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequestNamesList>;
-
 export interface DataCatalogMetricsBulkDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
   names: DataCatalogMetricsBulkDeleteCreateRequestNamesList;
 }
-const DataCatalogMetricsBulkDeleteCreateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequest>;
-
 /** Names of the metrics that were deleted, now free for reuse. */
 export type DataCatalogMetricBulkDeleteDeletedList = Array<string>;
-const DataCatalogMetricBulkDeleteDeletedList =
-  DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricBulkDeleteDeletedList>;
-
 /** Requested metrics that were not deleted, with reasons. */
 export type DataCatalogMetricBulkDeleteSkippedList = Array<DataCatalogMetricBulkSkip>;
-const DataCatalogMetricBulkDeleteSkippedList =
-  DataCatalogMetricBulkApproveSkippedList as any as S.Schema<DataCatalogMetricBulkDeleteSkippedList>;
-
 /** Outcome of a bulk delete: which names are gone, and what was left alone. */
 export interface DataCatalogMetricBulkDelete {
   /** Names of the metrics that were deleted, now free for reuse. */
@@ -468,46 +341,23 @@ export interface DataCatalogMetricBulkDelete {
   /** Requested metrics that were not deleted, with reasons. */
   skipped: DataCatalogMetricBulkDeleteSkippedList;
 }
-const DataCatalogMetricBulkDelete = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DataCatalogMetricBulkDelete>;
-
 export interface DataCatalogMetricsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
 }
-const DataCatalogMetricsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DataCatalogMetricsDestroyRequest>;
-
 export interface DataCatalogMetricsDestroyResponse {}
-const DataCatalogMetricsDestroyResponse =
-  DataCatalogCertificationsDestroyResponse as any as S.Schema<DataCatalogMetricsDestroyResponse>;
-
 export interface DataCatalogMetricsRefreshFromInsightCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
 }
-const DataCatalogMetricsRefreshFromInsightCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DataCatalogMetricsRefreshFromInsightCreateRequest>;
-
 export interface DataCatalogRelationshipProposalsAcceptCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this relationship proposal. */
   id: string;
 }
-const DataCatalogRelationshipProposalsAcceptCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DataCatalogRelationshipProposalsAcceptCreateRequest>;
-
 export interface DataCatalogRelationshipProposalsRejectCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -516,43 +366,23 @@ export interface DataCatalogRelationshipProposalsRejectCreateRequest {
   /** Why the proposal is rejected. Persisted so it is never re-proposed. */
   rejection_reason?: string;
 }
-const DataCatalogRelationshipProposalsRejectCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DataCatalogRelationshipProposalsRejectCreateRequest>;
-
 export interface GetDataCatalogCertificationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this table certification. */
   id: string;
 }
-const GetDataCatalogCertificationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetDataCatalogCertificationRequest>;
-
 export interface GetDataCatalogMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
 }
-const GetDataCatalogMetricsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetDataCatalogMetricsRequest>;
-
 export interface GetDataCatalogRelationshipProposalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this relationship proposal. */
   id: string;
 }
-const GetDataCatalogRelationshipProposalRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetDataCatalogRelationshipProposalRequest>;
-
 export interface ListDataCatalogCertificationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -561,28 +391,13 @@ export interface ListDataCatalogCertificationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListDataCatalogCertificationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListDataCatalogCertificationsRequest>;
-
 export type PaginatedDataCatalogCertificationListResultsList = Array<DataCatalogCertification>;
-const PaginatedDataCatalogCertificationListResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<PaginatedDataCatalogCertificationListResultsList>;
-
 export interface PaginatedDataCatalogCertificationList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataCatalogCertificationListResultsList;
 }
-const PaginatedDataCatalogCertificationList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PaginatedDataCatalogCertificationList>;
-
 export interface ListDataCatalogMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -591,26 +406,13 @@ export interface ListDataCatalogMetricsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListDataCatalogMetricsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListDataCatalogMetricsRequest>;
-
 export type PaginatedDataCatalogMetricListResultsList = Array<DataCatalogMetric>;
-const PaginatedDataCatalogMetricListResultsList =
-  DataCatalogMetricBulkApproveApprovedList as any as S.Schema<PaginatedDataCatalogMetricListResultsList>;
-
 export interface PaginatedDataCatalogMetricList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataCatalogMetricListResultsList;
 }
-const PaginatedDataCatalogMetricList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PaginatedDataCatalogMetricList>;
-
 export interface ListDataCatalogRelationshipProposalsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -621,34 +423,16 @@ export interface ListDataCatalogRelationshipProposalsRequest {
   /** Filter by proposed/accepted/rejected. */
   status?: string;
 }
-const ListDataCatalogRelationshipProposalsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListDataCatalogRelationshipProposalsRequest>;
-
 export type PaginatedDataCatalogRelationshipProposalListResultsList =
   Array<DataCatalogRelationshipProposal>;
-const PaginatedDataCatalogRelationshipProposalListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PaginatedDataCatalogRelationshipProposalListResultsList>;
-
 export interface PaginatedDataCatalogRelationshipProposalList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataCatalogRelationshipProposalListResultsList;
 }
-const PaginatedDataCatalogRelationshipProposalList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PaginatedDataCatalogRelationshipProposalList>;
-
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type UpdateDataCatalogMetricsRequestDefinitionMap = { [key: string]: unknown | undefined };
-const UpdateDataCatalogMetricsRequestDefinitionMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<UpdateDataCatalogMetricsRequestDefinitionMap>;
-
 export interface UpdateDataCatalogMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -672,18 +456,10 @@ export interface UpdateDataCatalogMetricsRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-const UpdateDataCatalogMetricsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateDataCatalogMetricsRequest>;
-
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type UpdateDataCatalogMetricsPartialRequestDefinitionMap = {
   [key: string]: unknown | undefined;
 };
-const UpdateDataCatalogMetricsPartialRequestDefinitionMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<UpdateDataCatalogMetricsPartialRequestDefinitionMap>;
-
 export interface UpdateDataCatalogMetricsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -707,11 +483,6 @@ export interface UpdateDataCatalogMetricsPartialRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-const UpdateDataCatalogMetricsPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UpdateDataCatalogMetricsPartialRequest>;
-
 export type CreateDataCatalogCertificationError = PosthogOpError;
 /** Trust marks on warehouse tables and views. Reads exclude soft-deleted targets. */
 export const createDataCatalogCertification: API.OperationMethod<
@@ -720,8 +491,8 @@ export const createDataCatalogCertification: API.OperationMethod<
   CreateDataCatalogCertificationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataCatalogCertificationRequest,
-  output: DataCatalogCertification,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDataCatalogCertificationRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -735,8 +506,8 @@ export const createDataCatalogCertificationsCertify: API.OperationMethod<
   CreateDataCatalogCertificationsCertifyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataCatalogCertificationsCertifyRequest,
-  output: DataCatalogCertification,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateDataCatalogCertificationsCertifyRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -750,8 +521,8 @@ export const createDataCatalogCertificationsDeprecate: API.OperationMethod<
   CreateDataCatalogCertificationsDeprecateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataCatalogCertificationsDeprecateRequest,
-  output: DataCatalogCertification,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateDataCatalogCertificationsDeprecateRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -765,8 +536,8 @@ export const createDataCatalogMetrics: API.OperationMethod<
   CreateDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataCatalogMetricsRequest,
-  output: DataCatalogMetric,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateDataCatalogMetricsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -780,8 +551,8 @@ export const createDataCatalogMetricsRun: API.OperationMethod<
   CreateDataCatalogMetricsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataCatalogMetricsRunRequest,
-  output: DataCatalogMetricRun,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateDataCatalogMetricsRunRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DataCatalogMetricRun>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -795,8 +566,8 @@ export const createDataCatalogRelationshipProposal: API.OperationMethod<
   CreateDataCatalogRelationshipProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataCatalogRelationshipProposalRequest,
-  output: DataCatalogRelationshipProposal,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateDataCatalogRelationshipProposalRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -810,8 +581,8 @@ export const dataCatalogCertificationsDestroy: API.OperationMethod<
   DataCatalogCertificationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogCertificationsDestroyRequest,
-  output: DataCatalogCertificationsDestroyResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<DataCatalogCertificationsDestroyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DataCatalogCertificationsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -825,8 +596,8 @@ export const dataCatalogMetricsApproveCreate: API.OperationMethod<
   DataCatalogMetricsApproveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogMetricsApproveCreateRequest,
-  output: DataCatalogMetric,
+  input: __S(15, __c1, 7) as any as S.Schema<DataCatalogMetricsApproveCreateRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -840,8 +611,8 @@ export const dataCatalogMetricsBulkApproveCreate: API.OperationMethod<
   DataCatalogMetricsBulkApproveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogMetricsBulkApproveCreateRequest,
-  output: DataCatalogMetricBulkApprove,
+  input: __S(16, __c2, 0) as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DataCatalogMetricBulkApprove>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -855,8 +626,8 @@ export const dataCatalogMetricsBulkDeleteCreate: API.OperationMethod<
   DataCatalogMetricsBulkDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogMetricsBulkDeleteCreateRequest,
-  output: DataCatalogMetricBulkDelete,
+  input: __S(21, __c2, 5) as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<DataCatalogMetricBulkDelete>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -870,8 +641,8 @@ export const dataCatalogMetricsDestroy: API.OperationMethod<
   DataCatalogMetricsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogMetricsDestroyRequest,
-  output: DataCatalogMetricsDestroyResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<DataCatalogMetricsDestroyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DataCatalogMetricsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -885,8 +656,8 @@ export const dataCatalogMetricsRefreshFromInsightCreate: API.OperationMethod<
   DataCatalogMetricsRefreshFromInsightCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogMetricsRefreshFromInsightCreateRequest,
-  output: DataCatalogMetric,
+  input: __S(24, __c3, 0) as any as S.Schema<DataCatalogMetricsRefreshFromInsightCreateRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -900,8 +671,8 @@ export const dataCatalogRelationshipProposalsAcceptCreate: API.OperationMethod<
   DataCatalogRelationshipProposalsAcceptCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogRelationshipProposalsAcceptCreateRequest,
-  output: DataCatalogRelationshipProposal,
+  input: __S(25, __c3, 1) as any as S.Schema<DataCatalogRelationshipProposalsAcceptCreateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -915,8 +686,8 @@ export const dataCatalogRelationshipProposalsRejectCreate: API.OperationMethod<
   DataCatalogRelationshipProposalsRejectCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataCatalogRelationshipProposalsRejectCreateRequest,
-  output: DataCatalogRelationshipProposal,
+  input: __S(26, __c3, 2) as any as S.Schema<DataCatalogRelationshipProposalsRejectCreateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -930,8 +701,8 @@ export const getDataCatalogCertification: API.OperationMethod<
   GetDataCatalogCertificationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataCatalogCertificationRequest,
-  output: DataCatalogCertification,
+  input: __S(27, __c3, 3) as any as S.Schema<GetDataCatalogCertificationRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DataCatalogCertification>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -945,8 +716,8 @@ export const getDataCatalogMetrics: API.OperationMethod<
   GetDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataCatalogMetricsRequest,
-  output: DataCatalogMetric,
+  input: __S(28, __c3, 4) as any as S.Schema<GetDataCatalogMetricsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -960,8 +731,8 @@ export const getDataCatalogRelationshipProposal: API.OperationMethod<
   GetDataCatalogRelationshipProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataCatalogRelationshipProposalRequest,
-  output: DataCatalogRelationshipProposal,
+  input: __S(29, __c3, 5) as any as S.Schema<GetDataCatalogRelationshipProposalRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DataCatalogRelationshipProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -975,8 +746,8 @@ export const listDataCatalogCertifications: API.OperationMethod<
   ListDataCatalogCertificationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataCatalogCertificationsRequest,
-  output: PaginatedDataCatalogCertificationList,
+  input: __S(30, __c3, 6) as any as S.Schema<ListDataCatalogCertificationsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PaginatedDataCatalogCertificationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -990,8 +761,8 @@ export const listDataCatalogMetrics: API.OperationMethod<
   ListDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataCatalogMetricsRequest,
-  output: PaginatedDataCatalogMetricList,
+  input: __S(33, __c4, 1) as any as S.Schema<ListDataCatalogMetricsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PaginatedDataCatalogMetricList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1005,8 +776,8 @@ export const listDataCatalogRelationshipProposals: API.OperationMethod<
   ListDataCatalogRelationshipProposalsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataCatalogRelationshipProposalsRequest,
-  output: PaginatedDataCatalogRelationshipProposalList,
+  input: __S(35, __c4, 3) as any as S.Schema<ListDataCatalogRelationshipProposalsRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<PaginatedDataCatalogRelationshipProposalList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1020,8 +791,8 @@ export const updateDataCatalogMetrics: API.OperationMethod<
   UpdateDataCatalogMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataCatalogMetricsRequest,
-  output: DataCatalogMetric,
+  input: __S(38, __c4, 6) as any as S.Schema<UpdateDataCatalogMetricsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1035,8 +806,8 @@ export const updateDataCatalogMetricsPartial: API.OperationMethod<
   UpdateDataCatalogMetricsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataCatalogMetricsPartialRequest,
-  output: DataCatalogMetric,
+  input: __S(39, __c4, 7) as any as S.Schema<UpdateDataCatalogMetricsPartialRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DataCatalogMetric>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1054,7 +825,7 @@ function __c0(j: number): any {
           table_name: S.optional(S.String),
           view_name: S.optional(S.String),
           notes: S.optional(S.String),
-          proposed_status: S.optional(ProposedStatusEnum),
+          proposed_status: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1077,8 +848,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -1092,7 +863,7 @@ function __c0(j: number): any {
           status: S.String,
           proposed_status: S.String,
           notes: S.optional(S.String),
-          certified_by: S.NullOr(UserBasic),
+          certified_by: S.NullOr(__S(2, __c0, 2)),
           certified_at: S.NullOr(S.String),
           created_by: S.NullOr(S.Number),
           created_at: S.String,
@@ -1136,9 +907,9 @@ function __c0(j: number): any {
           display_name: S.optional(S.String),
           description: S.String,
           unit: S.optional(S.String),
-          definition: S.optional(S.NullOr(CreateDataCatalogMetricsRequestDefinitionMap)),
+          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
           source_insight_short_id: S.optional(S.NullOr(S.String)),
-          created_source: S.optional(CreatedSourceEnum),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
@@ -1161,20 +932,20 @@ function __c0(j: number): any {
           description: S.String,
           unit: S.optional(S.String),
           owner: S.NullOr(S.String),
-          definition: S.optional(S.NullOr(DataCatalogMetricDefinitionMap)),
+          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
           definition_kind: S.NullOr(S.String),
           referenced_table_names: S.Unknown,
           status: S.String,
           is_drifted: S.Boolean,
           approved_at: S.NullOr(S.String),
-          approved_by: S.NullOr(UserBasic),
+          approved_by: S.NullOr(__S(2, __c0, 2)),
           source_insight_short_id: S.optional(S.NullOr(S.String)),
           last_run_at: S.NullOr(S.String),
-          created_source: S.optional(CreatedSourceEnum),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
-          created_by: UserBasic,
+          created_by: __S(2, __c0, 2),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
@@ -1188,10 +959,10 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          refresh: S.optional(CreateDataCatalogMetricsRunRequestRefresh.pipe(T.Query())),
+          refresh: S.optional(S.String.pipe(T.Query())),
           date_from: S.optional(S.String),
           date_to: S.optional(S.String),
-          interval: S.optional(DataCatalogMetricRunRequestIntervalEnum),
+          interval: S.optional(S.String),
           query_id: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1213,7 +984,7 @@ function __c1(j: number): any {
           unit: S.NullOr(S.String),
           kind: S.NullOr(S.String),
           results: S.Unknown,
-          columns: S.NullOr(DataCatalogMetricRunColumnsList),
+          columns: S.NullOr(__S(9, __c1, 1)),
           compiled_query: S.NullOr(S.String),
           query_status: S.Unknown,
           has_more: S.Boolean,
@@ -1259,7 +1030,7 @@ function __c1(j: number): any {
           reasoning: S.optional(S.String),
           evidence: S.optional(S.Unknown),
           status: S.String,
-          reviewed_by: S.NullOr(UserBasic),
+          reviewed_by: S.NullOr(__S(2, __c0, 2)),
           reviewed_at: S.NullOr(S.String),
           rejection_reason: S.String,
           created_join: S.NullOr(S.String),
@@ -1311,7 +1082,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          names: DataCatalogMetricsBulkApproveCreateRequestNamesList,
+          names: __S(9, __c1, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1323,7 +1094,7 @@ function __c2(j: number): any {
         identifier: "DataCatalogMetricsBulkApproveCreateRequest",
       });
     case 1:
-      return S.Array(DataCatalogMetric);
+      return S.Array(__S(7, __c0, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1334,12 +1105,12 @@ function __c2(j: number): any {
         identifier: "DataCatalogMetricBulkSkip",
       });
     case 3:
-      return S.Array(DataCatalogMetricBulkSkip);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          approved: DataCatalogMetricBulkApproveApprovedList,
-          skipped: DataCatalogMetricBulkApproveSkippedList,
+          approved: __S(17, __c2, 1),
+          skipped: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "DataCatalogMetricBulkApprove",
@@ -1348,7 +1119,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          names: DataCatalogMetricsBulkDeleteCreateRequestNamesList,
+          names: __S(9, __c1, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1362,8 +1133,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deleted: DataCatalogMetricBulkDeleteDeletedList,
-          skipped: DataCatalogMetricBulkDeleteSkippedList,
+          deleted: __S(9, __c1, 1),
+          skipped: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "DataCatalogMetricBulkDelete",
@@ -1495,7 +1266,7 @@ function __c3(j: number): any {
         identifier: "ListDataCatalogCertificationsRequest",
       });
     case 7:
-      return S.Array(DataCatalogCertification);
+      return S.Array(__S(3, __c0, 3));
   }
 }
 function __c4(j: number): any {
@@ -1506,7 +1277,7 @@ function __c4(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedDataCatalogCertificationListResultsList,
+          results: __S(31, __c3, 7),
         }),
       ).annotate({
         identifier: "PaginatedDataCatalogCertificationList",
@@ -1533,7 +1304,7 @@ function __c4(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedDataCatalogMetricListResultsList,
+          results: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "PaginatedDataCatalogMetricList",
@@ -1556,14 +1327,14 @@ function __c4(j: number): any {
         identifier: "ListDataCatalogRelationshipProposalsRequest",
       });
     case 4:
-      return S.Array(DataCatalogRelationshipProposal);
+      return S.Array(__S(12, __c1, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedDataCatalogRelationshipProposalListResultsList,
+          results: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "PaginatedDataCatalogRelationshipProposalList",
@@ -1576,9 +1347,9 @@ function __c4(j: number): any {
           display_name: S.optional(S.String),
           description: S.String,
           unit: S.optional(S.String),
-          definition: S.optional(S.NullOr(UpdateDataCatalogMetricsRequestDefinitionMap)),
+          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
           source_insight_short_id: S.optional(S.NullOr(S.String)),
-          created_source: S.optional(CreatedSourceEnum),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
@@ -1600,9 +1371,9 @@ function __c4(j: number): any {
           display_name: S.optional(S.String),
           description: S.optional(S.String),
           unit: S.optional(S.String),
-          definition: S.optional(S.NullOr(UpdateDataCatalogMetricsPartialRequestDefinitionMap)),
+          definition: S.optional(S.NullOr(__S(1, __c0, 1))),
           source_insight_short_id: S.optional(S.NullOr(S.String)),
-          created_source: S.optional(CreatedSourceEnum),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
@@ -1617,4 +1388,9 @@ function __c4(j: number): any {
         identifier: "UpdateDataCatalogMetricsPartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

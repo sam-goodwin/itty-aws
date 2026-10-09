@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -49,27 +51,15 @@ export interface ContextLayerEnableCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-const ContextLayerEnableCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ContextLayerEnableCreateRequest>;
-
 /** Response shape for the wiki's current state. */
 export interface ContextLayerStatus {
   /** Commit sha of the wiki's current head. */
   head_sha: string;
 }
-const ContextLayerStatus = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ContextLayerStatus>;
-
 export interface ContextLayerExportRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-const ContextLayerExportRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ContextLayerExportRetrieveRequest>;
-
 /** Response shape for a wiki bundle export. */
 export interface WikiExport {
   /** Short-lived download URL for the wiki's current bundle. */
@@ -77,18 +67,11 @@ export interface WikiExport {
   /** Commit sha of the bundle behind the URL. */
   head_sha: string;
 }
-const WikiExport = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<WikiExport>;
-
 export interface ContextLayerProposalsApplyCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   proposal_id: string;
 }
-const ContextLayerProposalsApplyCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ContextLayerProposalsApplyCreateRequest>;
-
 export interface CreateContextLayerCommitRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -99,21 +82,11 @@ export interface CreateContextLayerCommitRequest {
   /** Land a dated dreaming branch (`dream/<YYYY-MM-DD>`) as one merge commit instead of rebasing onto `main`. Omit for ordinary commits on `main`. */
   branch?: string | null;
 }
-const CreateContextLayerCommitRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateContextLayerCommitRequest>;
-
 export interface GetContextLayerChannelPageRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   channel_id: string;
 }
-const GetContextLayerChannelPageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetContextLayerChannelPageRequest>;
-
 /** Response shape for a channel's page identity in the wiki. */
 export interface ChannelWikiPage {
   /** Repo-relative path of the wiki page whose frontmatter names the channel. */
@@ -121,18 +94,11 @@ export interface ChannelWikiPage {
   /** Whether a page exists at this path. False when the path is a proposal for a channel whose page has not been created yet. */
   exists?: boolean;
 }
-const ChannelWikiPage = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ChannelWikiPage>;
-
 export interface GetContextLayerDreamRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   sha: string;
 }
-const GetContextLayerDreamRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetContextLayerDreamRequest>;
-
 /** One dreaming run: the merge commit it landed as, plus what it changed. */
 export interface DreamRun {
   /** Merge commit sha the run landed as; pass back as `sha` on the detail read. */
@@ -150,12 +116,8 @@ export interface DreamRun {
   /** Pages the run removed. */
   pages_deleted: number;
 }
-const DreamRun = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DreamRun>;
-
 /** * `added` - added * `modified` - modified * `deleted` - deleted */
 export type DreamFileDiffStatusEnum = "added" | "modified" | "deleted";
-const DreamFileDiffStatusEnum = S.String;
-
 /** One file a dream run changed, with its unified patch. */
 export interface DreamFileDiff {
   /** Repo-relative path of the changed page. */
@@ -167,23 +129,14 @@ export interface DreamFileDiff {
   /** Whether the patch was cut off for size. */
   truncated: boolean;
 }
-const DreamFileDiff = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DreamFileDiff>;
-
 /** Per-file patches, in diff order. */
 export type DreamRunDetailFilesList = Array<DreamFileDiff>;
-const DreamRunDetailFilesList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DreamRunDetailFilesList>;
-
 /** Response shape for one dream run: the run plus the diff it landed. */
 export interface DreamRunDetail {
   run: DreamRun;
   /** Per-file patches, in diff order. */
   files: DreamRunDetailFilesList;
 }
-const DreamRunDetail = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DreamRunDetail>;
-
 export interface GetContextLayerPageRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -196,11 +149,6 @@ export interface GetContextLayerPageRequest {
   /** Repo-relative Markdown path of the page to read. */
   path: string;
 }
-const GetContextLayerPageRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetContextLayerPageRequest>;
-
 /** Response shape for one wiki page. */
 export interface WikiPage {
   /** Repo-relative path of the page, for example `areas/analytics.md`. */
@@ -220,30 +168,16 @@ export interface WikiPage {
   /** True when no further chunks remain. Do not write a page until all chunks are read. */
   complete: boolean;
 }
-const WikiPage = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<WikiPage>;
-
 export interface GetContextLayerStatusRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-const GetContextLayerStatusRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetContextLayerStatusRequest>;
-
 export interface GetContextLayerTreeRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-const GetContextLayerTreeRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetContextLayerTreeRequest>;
-
 /** Repo-relative path of every Markdown page at the current head. */
 export type WikiTreePathsList = Array<string>;
-const WikiTreePathsList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<WikiTreePathsList>;
-
 /** Response shape for the wiki's page listing. */
 export interface WikiTree {
   /** Commit sha of the wiki's current head. */
@@ -251,17 +185,10 @@ export interface WikiTree {
   /** Repo-relative path of every Markdown page at the current head. */
   paths: WikiTreePathsList;
 }
-const WikiTree = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<WikiTree>;
-
 export interface GetContextLayerWikiReportRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-const GetContextLayerWikiReportRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetContextLayerWikiReportRequest>;
-
 export interface WikiHealthFinding {
   /** Stable category used to group this finding. */
   category: string;
@@ -270,36 +197,20 @@ export interface WikiHealthFinding {
   /** Human-readable explanation of the finding. */
   message: string;
 }
-const WikiHealthFinding = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<WikiHealthFinding>;
-
 /** Health findings for the current wiki head. */
 export type WikiHealthReportFindingsList = Array<WikiHealthFinding>;
-const WikiHealthReportFindingsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<WikiHealthReportFindingsList>;
-
 export interface WikiHealthReport {
   /** Commit sha inspected by the report. */
   head_sha: string;
   /** Health findings for the current wiki head. */
   findings: WikiHealthReportFindingsList;
 }
-const WikiHealthReport = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<WikiHealthReport>;
-
 export interface ListContextLayerDreamsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-const ListContextLayerDreamsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListContextLayerDreamsRequest>;
-
 /** * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress */
 export type ActiveDreamRunRunStatusEnum = "not_started" | "queued" | "in_progress";
-const ActiveDreamRunRunStatusEnum = S.String;
-
 /** A dreaming task that has not reached a terminal state yet. */
 export interface ActiveDreamRun {
   /** The current task-run state for the active dream. * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress */
@@ -307,8 +218,6 @@ export interface ActiveDreamRun {
   /** When the active dream task was created. */
   started_at: string;
 }
-const ActiveDreamRun = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ActiveDreamRun>;
-
 export interface UnpublishedDreamRun {
   /** Task URL in its project for the unpublished dream outcome and logs. */
   task_url: string;
@@ -317,15 +226,8 @@ export interface UnpublishedDreamRun {
   /** When the unpublished dream task was created. */
   started_at: string;
 }
-const UnpublishedDreamRun = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UnpublishedDreamRun>;
-
 /** Every landed dream run, newest first. */
 export type DreamRunListDreamsList = Array<DreamRun>;
-const DreamRunListDreamsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DreamRunListDreamsList>;
-
 /** Response shape for the wiki's dream run listing. */
 export interface DreamRunList {
   /** Commit sha of the wiki's current head. */
@@ -337,8 +239,6 @@ export interface DreamRunList {
   /** Every landed dream run, newest first. */
   dreams: DreamRunListDreamsList;
 }
-const DreamRunList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DreamRunList>;
-
 export interface ListContextLayerProposalsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -347,11 +247,6 @@ export interface ListContextLayerProposalsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListContextLayerProposalsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListContextLayerProposalsRequest>;
-
 export interface WikiPageProposal {
   /** Immutable suggested edit ID. Only its author can apply it through the user API. */
   id: string;
@@ -368,25 +263,13 @@ export interface WikiPageProposal {
   /** When the edit was proposed. */
   created_at: string;
 }
-const WikiPageProposal = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<WikiPageProposal>;
-
 export type PaginatedWikiPageProposalListResultsList = Array<WikiPageProposal>;
-const PaginatedWikiPageProposalListResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PaginatedWikiPageProposalListResultsList>;
-
 export interface PaginatedWikiPageProposalList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedWikiPageProposalListResultsList;
 }
-const PaginatedWikiPageProposalList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<PaginatedWikiPageProposalList>;
-
 export interface UpdateContextLayerPageRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -397,11 +280,6 @@ export interface UpdateContextLayerPageRequest {
   /** Optimistic-concurrency guard: the head sha the edit is based on. A moved head is rejected with 409 and the current head; omit to write unguarded. */
   base_head?: string | null;
 }
-const UpdateContextLayerPageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UpdateContextLayerPageRequest>;
-
 export type ContextLayerEnableCreateError = PosthogOpError;
 /** Enable the context layer Create the organization's wiki with the default structure and import existing channel CONTEXT.md documents once. Idempotent. */
 export const contextLayerEnableCreate: API.OperationMethod<
@@ -410,8 +288,8 @@ export const contextLayerEnableCreate: API.OperationMethod<
   ContextLayerEnableCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContextLayerEnableCreateRequest,
-  output: ContextLayerStatus,
+  input: __S(0, __c0, 0) as any as S.Schema<ContextLayerEnableCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -425,8 +303,8 @@ export const contextLayerExportRetrieve: API.OperationMethod<
   ContextLayerExportRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContextLayerExportRetrieveRequest,
-  output: WikiExport,
+  input: __S(2, __c0, 2) as any as S.Schema<ContextLayerExportRetrieveRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<WikiExport>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -440,8 +318,8 @@ export const contextLayerProposalsApplyCreate: API.OperationMethod<
   ContextLayerProposalsApplyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContextLayerProposalsApplyCreateRequest,
-  output: ContextLayerStatus,
+  input: __S(4, __c0, 4) as any as S.Schema<ContextLayerProposalsApplyCreateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -455,8 +333,8 @@ export const createContextLayerCommit: API.OperationMethod<
   CreateContextLayerCommitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateContextLayerCommitRequest,
-  output: ContextLayerStatus,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateContextLayerCommitRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -470,8 +348,8 @@ export const getContextLayerChannelPage: API.OperationMethod<
   GetContextLayerChannelPageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContextLayerChannelPageRequest,
-  output: ChannelWikiPage,
+  input: __S(6, __c0, 6) as any as S.Schema<GetContextLayerChannelPageRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ChannelWikiPage>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -485,8 +363,8 @@ export const getContextLayerDream: API.OperationMethod<
   GetContextLayerDreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContextLayerDreamRequest,
-  output: DreamRunDetail,
+  input: __S(8, __c1, 0) as any as S.Schema<GetContextLayerDreamRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DreamRunDetail>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -500,8 +378,8 @@ export const getContextLayerPage: API.OperationMethod<
   GetContextLayerPageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContextLayerPageRequest,
-  output: WikiPage,
+  input: __S(13, __c1, 5) as any as S.Schema<GetContextLayerPageRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<WikiPage>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -515,8 +393,8 @@ export const getContextLayerStatus: API.OperationMethod<
   GetContextLayerStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContextLayerStatusRequest,
-  output: ContextLayerStatus,
+  input: __S(15, __c1, 7) as any as S.Schema<GetContextLayerStatusRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -530,8 +408,8 @@ export const getContextLayerTree: API.OperationMethod<
   GetContextLayerTreeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContextLayerTreeRequest,
-  output: WikiTree,
+  input: __S(16, __c2, 0) as any as S.Schema<GetContextLayerTreeRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<WikiTree>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -545,8 +423,8 @@ export const getContextLayerWikiReport: API.OperationMethod<
   GetContextLayerWikiReportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContextLayerWikiReportRequest,
-  output: WikiHealthReport,
+  input: __S(19, __c2, 3) as any as S.Schema<GetContextLayerWikiReportRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<WikiHealthReport>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -560,8 +438,8 @@ export const listContextLayerDreams: API.OperationMethod<
   ListContextLayerDreamsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContextLayerDreamsRequest,
-  output: DreamRunList,
+  input: __S(23, __c2, 7) as any as S.Schema<ListContextLayerDreamsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DreamRunList>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -575,8 +453,8 @@ export const listContextLayerProposals: API.OperationMethod<
   ListContextLayerProposalsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContextLayerProposalsRequest,
-  output: PaginatedWikiPageProposalList,
+  input: __S(28, __c3, 4) as any as S.Schema<ListContextLayerProposalsRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<PaginatedWikiPageProposalList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -590,8 +468,8 @@ export const updateContextLayerPage: API.OperationMethod<
   UpdateContextLayerPageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateContextLayerPageRequest,
-  output: ContextLayerStatus,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateContextLayerPageRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -731,18 +609,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String,
-          status: DreamFileDiffStatusEnum,
+          status: S.String,
           patch: S.String,
           truncated: S.Boolean,
         }),
       ).annotate({ identifier: "DreamFileDiff" });
     case 3:
-      return S.Array(DreamFileDiff);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          run: DreamRun,
-          files: DreamRunDetailFilesList,
+          run: __S(9, __c1, 1),
+          files: __S(11, __c1, 3),
         }),
       ).annotate({ identifier: "DreamRunDetail" });
     case 5:
@@ -814,7 +692,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           head_sha: S.String,
-          paths: WikiTreePathsList,
+          paths: __S(17, __c2, 1),
         }),
       ).annotate({ identifier: "WikiTree" });
     case 3:
@@ -840,12 +718,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "WikiHealthFinding" });
     case 5:
-      return S.Array(WikiHealthFinding);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           head_sha: S.String,
-          findings: WikiHealthReportFindingsList,
+          findings: __S(21, __c2, 5),
         }),
       ).annotate({ identifier: "WikiHealthReport" });
     case 7:
@@ -869,7 +747,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          run_status: ActiveDreamRunRunStatusEnum,
+          run_status: S.String,
           started_at: S.String,
         }),
       ).annotate({ identifier: "ActiveDreamRun" });
@@ -882,14 +760,14 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UnpublishedDreamRun" });
     case 2:
-      return S.Array(DreamRun);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           head_sha: S.String,
-          active_run: S.NullOr(ActiveDreamRun),
-          unpublished_run: S.NullOr(UnpublishedDreamRun),
-          dreams: DreamRunListDreamsList,
+          active_run: S.NullOr(__S(24, __c3, 0)),
+          unpublished_run: S.NullOr(__S(25, __c3, 1)),
+          dreams: __S(26, __c3, 2),
         }),
       ).annotate({ identifier: "DreamRunList" });
     case 4:
@@ -921,14 +799,14 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "WikiPageProposal" });
     case 6:
-      return S.Array(WikiPageProposal);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedWikiPageProposalListResultsList,
+          results: __S(30, __c3, 6),
         }),
       ).annotate({
         identifier: "PaginatedWikiPageProposalList",
@@ -955,4 +833,9 @@ function __c4(j: number): any {
         identifier: "UpdateContextLayerPageRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

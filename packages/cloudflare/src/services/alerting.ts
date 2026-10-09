@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -168,21 +170,11 @@ export interface CreateDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
 }
-const CreateDestinationPagerdutyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDestinationPagerdutyRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDestinationPagerdutyResponse {
   /** token in form of UUID */
   id?: string | null;
 }
-const CreateDestinationPagerdutyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDestinationPagerdutyResponse>;
-
 export interface CreateDestinationWebhookRequest {
   /** The account id */
   accountId: string;
@@ -193,19 +185,11 @@ export interface CreateDestinationWebhookRequest {
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
   secret?: string;
 }
-const CreateDestinationWebhookRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDestinationWebhookRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDestinationWebhookResponse {
   /** UUID */
   id?: string | null;
 }
-const CreateDestinationWebhookResponse =
-  CreateDestinationPagerdutyResponse as any as S.Schema<CreateDestinationWebhookResponse>;
-
 export type PoliciesCreateRequestAlertType =
   | "abuse_report_alert"
   | "access_custom_certificate_expiration_type"
@@ -276,242 +260,81 @@ export type PoliciesCreateRequestAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-const PoliciesCreateRequestAlertType = S.String;
-
 export interface PoliciesCreateRequestMechanismsEmailItem {
   /** The email address */
   id?: string;
 }
-const PoliciesCreateRequestMechanismsEmailItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PoliciesCreateRequestMechanismsEmailItem>;
-
 export type PoliciesCreateRequestMechanismsEmailList =
   Array<PoliciesCreateRequestMechanismsEmailItem>;
-const PoliciesCreateRequestMechanismsEmailList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PoliciesCreateRequestMechanismsEmailList>;
-
 export interface PoliciesCreateRequestMechanismsPagerdutyItem {
   /** UUID */
   id?: string;
 }
 export type PoliciesCreateRequestMechanismsPagerdutyList =
   Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-const PoliciesCreateRequestMechanismsPagerdutyList =
-  PoliciesCreateRequestMechanismsEmailList as any as S.Schema<PoliciesCreateRequestMechanismsPagerdutyList>;
-
 export type PoliciesCreateRequestMechanismsWebhooksItem =
   PoliciesCreateRequestMechanismsPagerdutyItem;
 export type PoliciesCreateRequestMechanismsWebhooksList =
   Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-const PoliciesCreateRequestMechanismsWebhooksList =
-  PoliciesCreateRequestMechanismsEmailList as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksList>;
-
 export interface PoliciesCreateRequestMechanisms {
   email?: PoliciesCreateRequestMechanismsEmailList;
   pagerduty?: PoliciesCreateRequestMechanismsPagerdutyList;
   webhooks?: PoliciesCreateRequestMechanismsWebhooksList;
 }
-const PoliciesCreateRequestMechanisms = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PoliciesCreateRequestMechanisms>;
-
 export type PoliciesCreateRequestFiltersActionsList = Array<string>;
-const PoliciesCreateRequestFiltersActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PoliciesCreateRequestFiltersActionsList>;
-
 export type PoliciesCreateRequestFiltersAffectedAsnsList = Array<string>;
-const PoliciesCreateRequestFiltersAffectedAsnsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAffectedAsnsList>;
-
 export type PoliciesCreateRequestFiltersAffectedComponentsList = Array<string>;
-const PoliciesCreateRequestFiltersAffectedComponentsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAffectedComponentsList>;
-
 export type PoliciesCreateRequestFiltersAffectedLocationsList = Array<string>;
-const PoliciesCreateRequestFiltersAffectedLocationsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAffectedLocationsList>;
-
 export type PoliciesCreateRequestFiltersAirportCodeList = Array<string>;
-const PoliciesCreateRequestFiltersAirportCodeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAirportCodeList>;
-
 export type PoliciesCreateRequestFiltersAlertTriggerPreferencesList = Array<string>;
-const PoliciesCreateRequestFiltersAlertTriggerPreferencesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesList>;
-
 export type PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList = Array<string>;
-const PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList>;
-
 export type PoliciesCreateRequestFiltersEnabledList = Array<string>;
-const PoliciesCreateRequestFiltersEnabledList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEnabledList>;
-
 export type PoliciesCreateRequestFiltersEnvironmentList = Array<string>;
-const PoliciesCreateRequestFiltersEnvironmentList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEnvironmentList>;
-
 export type PoliciesCreateRequestFiltersEventList = Array<string>;
-const PoliciesCreateRequestFiltersEventList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEventList>;
-
 export type PoliciesCreateRequestFiltersEventSourceList = Array<string>;
-const PoliciesCreateRequestFiltersEventSourceList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEventSourceList>;
-
 export type PoliciesCreateRequestFiltersEventTypeList = Array<string>;
-const PoliciesCreateRequestFiltersEventTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEventTypeList>;
-
 export type PoliciesCreateRequestFiltersGroupByList = Array<string>;
-const PoliciesCreateRequestFiltersGroupByList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersGroupByList>;
-
 export type PoliciesCreateRequestFiltersHealthCheckIdList = Array<string>;
-const PoliciesCreateRequestFiltersHealthCheckIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersHealthCheckIdList>;
-
 export type PoliciesCreateRequestFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
   | "INCIDENT_IMPACT_CRITICAL";
-const PoliciesCreateRequestFiltersIncidentImpactItem = S.String;
-
 export type PoliciesCreateRequestFiltersIncidentImpactList = Array<
   PoliciesCreateRequestFiltersIncidentImpactItem | (string & {})
 >;
-const PoliciesCreateRequestFiltersIncidentImpactList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PoliciesCreateRequestFiltersIncidentImpactList>;
-
 export type PoliciesCreateRequestFiltersInputIdList = Array<string>;
-const PoliciesCreateRequestFiltersInputIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersInputIdList>;
-
 export type PoliciesCreateRequestFiltersInsightClassList = Array<string>;
-const PoliciesCreateRequestFiltersInsightClassList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersInsightClassList>;
-
 export type PoliciesCreateRequestFiltersLimitList = Array<string>;
-const PoliciesCreateRequestFiltersLimitList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersLimitList>;
-
 export type PoliciesCreateRequestFiltersLogoTagList = Array<string>;
-const PoliciesCreateRequestFiltersLogoTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersLogoTagList>;
-
 export type PoliciesCreateRequestFiltersMegabitsPerSecondList = Array<string>;
-const PoliciesCreateRequestFiltersMegabitsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersMegabitsPerSecondList>;
-
 export type PoliciesCreateRequestFiltersNewHealthList = Array<string>;
-const PoliciesCreateRequestFiltersNewHealthList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersNewHealthList>;
-
 export type PoliciesCreateRequestFiltersNewStatusList = Array<string>;
-const PoliciesCreateRequestFiltersNewStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersNewStatusList>;
-
 export type PoliciesCreateRequestFiltersPacketsPerSecondList = Array<string>;
-const PoliciesCreateRequestFiltersPacketsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersPacketsPerSecondList>;
-
 export type PoliciesCreateRequestFiltersPoolIdList = Array<string>;
-const PoliciesCreateRequestFiltersPoolIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersPoolIdList>;
-
 export type PoliciesCreateRequestFiltersPopNamesList = Array<string>;
-const PoliciesCreateRequestFiltersPopNamesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersPopNamesList>;
-
 export type PoliciesCreateRequestFiltersProductList = Array<string>;
-const PoliciesCreateRequestFiltersProductList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersProductList>;
-
 export type PoliciesCreateRequestFiltersProjectIdList = Array<string>;
-const PoliciesCreateRequestFiltersProjectIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersProjectIdList>;
-
 export type PoliciesCreateRequestFiltersProtocolList = Array<string>;
-const PoliciesCreateRequestFiltersProtocolList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersProtocolList>;
-
 export type PoliciesCreateRequestFiltersQueryTagList = Array<string>;
-const PoliciesCreateRequestFiltersQueryTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersQueryTagList>;
-
 export type PoliciesCreateRequestFiltersRequestsPerSecondList = Array<string>;
-const PoliciesCreateRequestFiltersRequestsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersRequestsPerSecondList>;
-
 export type PoliciesCreateRequestFiltersSelectorsList = Array<string>;
-const PoliciesCreateRequestFiltersSelectorsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersSelectorsList>;
-
 export type PoliciesCreateRequestFiltersServicesList = Array<string>;
-const PoliciesCreateRequestFiltersServicesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersServicesList>;
-
 export type PoliciesCreateRequestFiltersSloList = Array<string>;
-const PoliciesCreateRequestFiltersSloList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersSloList>;
-
 export type PoliciesCreateRequestFiltersStatusList = Array<string>;
-const PoliciesCreateRequestFiltersStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersStatusList>;
-
 export type PoliciesCreateRequestFiltersTargetHostnameList = Array<string>;
-const PoliciesCreateRequestFiltersTargetHostnameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTargetHostnameList>;
-
 export type PoliciesCreateRequestFiltersTargetIpList = Array<string>;
-const PoliciesCreateRequestFiltersTargetIpList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTargetIpList>;
-
 export type PoliciesCreateRequestFiltersTargetZoneNameList = Array<string>;
-const PoliciesCreateRequestFiltersTargetZoneNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTargetZoneNameList>;
-
 export type PoliciesCreateRequestFiltersTokenIdList = Array<string>;
-const PoliciesCreateRequestFiltersTokenIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTokenIdList>;
-
 export type PoliciesCreateRequestFiltersTrafficExclusionsItem = "security_events";
 export type PoliciesCreateRequestFiltersTrafficExclusionsList = Array<
   PoliciesCreateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
-const PoliciesCreateRequestFiltersTrafficExclusionsList =
-  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesCreateRequestFiltersTrafficExclusionsList>;
-
 export type PoliciesCreateRequestFiltersTunnelIdList = Array<string>;
-const PoliciesCreateRequestFiltersTunnelIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTunnelIdList>;
-
 export type PoliciesCreateRequestFiltersTunnelNameList = Array<string>;
-const PoliciesCreateRequestFiltersTunnelNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTunnelNameList>;
-
 export type PoliciesCreateRequestFiltersTypeList = Array<string>;
-const PoliciesCreateRequestFiltersTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTypeList>;
-
 export type PoliciesCreateRequestFiltersWhereList = Array<string>;
-const PoliciesCreateRequestFiltersWhereList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersWhereList>;
-
 export type PoliciesCreateRequestFiltersZonesList = Array<string>;
-const PoliciesCreateRequestFiltersZonesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersZonesList>;
-
 export interface PoliciesCreateRequestFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesCreateRequestFiltersActionsList;
@@ -602,11 +425,6 @@ export interface PoliciesCreateRequestFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesCreateRequestFiltersZonesList;
 }
-const PoliciesCreateRequestFilters = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PoliciesCreateRequestFilters>;
-
 export interface CreatePolicyRequest {
   /** The account id */
   accountId: string;
@@ -625,15 +443,11 @@ export interface CreatePolicyRequest {
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
   filters?: PoliciesCreateRequestFilters;
 }
-const CreatePolicyRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreatePolicyRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePolicyResponse {
   /** UUID */
   id?: string | null;
 }
-const CreatePolicyResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreatePolicyResponse>;
-
 export interface SilencesCreateRequestBodyItem {
   /** When the silence ends. */
   endTime?: string;
@@ -642,94 +456,44 @@ export interface SilencesCreateRequestBodyItem {
   /** When the silence starts. */
   startTime?: string;
 }
-const SilencesCreateRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<SilencesCreateRequestBodyItem>;
-
 export type SilencesCreateRequestBodyList = Array<SilencesCreateRequestBodyItem>;
-const SilencesCreateRequestBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<SilencesCreateRequestBodyList>;
-
 export interface CreateSilenceRequest {
   /** The account id */
   accountId: string;
   body: SilencesCreateRequestBodyList;
 }
-const CreateSilenceRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateSilenceRequest>;
-
 export interface CreateSilenceResponse {}
-const CreateSilenceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateSilenceResponse>;
-
 export interface DeleteDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
 }
-const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteDestinationPagerdutyRequest>;
-
 export interface DeleteDestinationPagerdutyResponse {}
-const DeleteDestinationPagerdutyResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteDestinationPagerdutyResponse>;
-
 export interface DeleteDestinationWebhookRequest {
   /** The account id */
   accountId: string;
   /** The unique identifier of a webhook */
   webhookId: string;
 }
-const DeleteDestinationWebhookRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteDestinationWebhookRequest>;
-
 export interface DeleteDestinationWebhookResponse {}
-const DeleteDestinationWebhookResponse =
-  DeleteDestinationPagerdutyResponse as any as S.Schema<DeleteDestinationWebhookResponse>;
-
 export interface DeletePolicyRequest {
   /** The account id */
   accountId: string;
   /** The unique identifier of a notification policy */
   policyId: string;
 }
-const DeletePolicyRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeletePolicyRequest>;
-
 export interface DeletePolicyResponse {}
-const DeletePolicyResponse = CreateSilenceResponse as any as S.Schema<DeletePolicyResponse>;
-
 export interface DeleteSilenceRequest {
   /** The account id */
   accountId: string;
   /** Silence ID */
   silenceId: string;
 }
-const DeleteSilenceRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteSilenceRequest>;
-
 export interface DeleteSilenceResponse {}
-const DeleteSilenceResponse = CreateSilenceResponse as any as S.Schema<DeleteSilenceResponse>;
-
 export interface GetDestinationEligibleRequest {
   /** The account id */
   accountId: string;
 }
-const GetDestinationEligibleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetDestinationEligibleRequest>;
-
 export type DestinationsEligibleGetResultValueItemType = "email" | "pagerduty" | "webhook";
-const DestinationsEligibleGetResultValueItemType = S.String;
-
 export interface DestinationsEligibleGetResultValueItem {
   /** Determines whether or not the account is eligible for the delivery mechanism. */
   eligible?: boolean | null;
@@ -738,79 +502,34 @@ export interface DestinationsEligibleGetResultValueItem {
   /** Determines type of delivery mechanism. */
   type?: DestinationsEligibleGetResultValueItemType | null;
 }
-const DestinationsEligibleGetResultValueItem = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DestinationsEligibleGetResultValueItem>;
-
 export type DestinationsEligibleGetResultValueList = Array<DestinationsEligibleGetResultValueItem>;
-const DestinationsEligibleGetResultValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DestinationsEligibleGetResultValueList>;
-
 export type DestinationsEligibleGetResultMap = {
   [key: string]: DestinationsEligibleGetResultValueList | undefined;
 };
-const DestinationsEligibleGetResultMap = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DestinationsEligibleGetResultMap>;
-
 export type GetDestinationEligibleResponse = DestinationsEligibleGetResultMap;
-const GetDestinationEligibleResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetDestinationEligibleResponse>;
-
 export interface GetDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
 }
-const GetDestinationPagerdutyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetDestinationPagerdutyRequest>;
-
 export interface DestinationsPagerdutyGetResultItem {
   /** UUID */
   id?: string | null;
   /** The name of the pagerduty service. */
   name?: string | null;
 }
-const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DestinationsPagerdutyGetResultItem>;
-
 export type DestinationsPagerdutyGetResultList = Array<DestinationsPagerdutyGetResultItem>;
-const DestinationsPagerdutyGetResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DestinationsPagerdutyGetResultList>;
-
 export interface GetDestinationPagerdutyResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DestinationsPagerdutyGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetDestinationPagerdutyResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetDestinationPagerdutyResponse>;
-
 export interface GetDestinationWebhookRequest {
   /** The account id */
   accountId: string;
   /** The unique identifier of a webhook */
   webhookId: string;
 }
-const GetDestinationWebhookRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetDestinationWebhookRequest>;
-
 export type DestinationsWebhooksGetResponseType =
   | "datadog"
   | "discord"
@@ -820,8 +539,6 @@ export type DestinationsWebhooksGetResponseType =
   | "opsgenie"
   | "slack"
   | "splunk";
-const DestinationsWebhooksGetResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDestinationWebhookResponse {
   /** The unique identifier of a webhook */
@@ -841,19 +558,12 @@ export interface GetDestinationWebhookResponse {
   /** The POST endpoint to call when dispatching a notification. */
   url?: string | null;
 }
-const GetDestinationWebhookResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetDestinationWebhookResponse>;
-
 export interface GetPolicyRequest {
   /** The account id */
   accountId: string;
   /** The unique identifier of a notification policy */
   policyId: string;
 }
-const GetPolicyRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetPolicyRequest>;
-
 export type PoliciesGetResponseAlertType =
   | "abuse_report_alert"
   | "access_custom_certificate_expiration_type"
@@ -924,64 +634,20 @@ export type PoliciesGetResponseAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-const PoliciesGetResponseAlertType = S.String;
-
 export type PoliciesGetResponseFiltersActionsList = Array<string>;
-const PoliciesGetResponseFiltersActionsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersActionsList>;
-
 export type PoliciesGetResponseFiltersAffectedAsnsList = Array<string>;
-const PoliciesGetResponseFiltersAffectedAsnsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAffectedAsnsList>;
-
 export type PoliciesGetResponseFiltersAffectedComponentsList = Array<string>;
-const PoliciesGetResponseFiltersAffectedComponentsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAffectedComponentsList>;
-
 export type PoliciesGetResponseFiltersAffectedLocationsList = Array<string>;
-const PoliciesGetResponseFiltersAffectedLocationsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAffectedLocationsList>;
-
 export type PoliciesGetResponseFiltersAirportCodeList = Array<string>;
-const PoliciesGetResponseFiltersAirportCodeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAirportCodeList>;
-
 export type PoliciesGetResponseFiltersAlertTriggerPreferencesList = Array<string>;
-const PoliciesGetResponseFiltersAlertTriggerPreferencesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesList>;
-
 export type PoliciesGetResponseFiltersAlertTriggerPreferencesValueList = Array<string>;
-const PoliciesGetResponseFiltersAlertTriggerPreferencesValueList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesValueList>;
-
 export type PoliciesGetResponseFiltersEnabledList = Array<string>;
-const PoliciesGetResponseFiltersEnabledList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEnabledList>;
-
 export type PoliciesGetResponseFiltersEnvironmentList = Array<string>;
-const PoliciesGetResponseFiltersEnvironmentList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEnvironmentList>;
-
 export type PoliciesGetResponseFiltersEventList = Array<string>;
-const PoliciesGetResponseFiltersEventList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEventList>;
-
 export type PoliciesGetResponseFiltersEventSourceList = Array<string>;
-const PoliciesGetResponseFiltersEventSourceList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEventSourceList>;
-
 export type PoliciesGetResponseFiltersEventTypeList = Array<string>;
-const PoliciesGetResponseFiltersEventTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEventTypeList>;
-
 export type PoliciesGetResponseFiltersGroupByList = Array<string>;
-const PoliciesGetResponseFiltersGroupByList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersGroupByList>;
-
 export type PoliciesGetResponseFiltersHealthCheckIdList = Array<string>;
-const PoliciesGetResponseFiltersHealthCheckIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersHealthCheckIdList>;
-
 export type PoliciesGetResponseFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
@@ -989,127 +655,37 @@ export type PoliciesGetResponseFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_CRITICAL";
 export type PoliciesGetResponseFiltersIncidentImpactList =
   Array<PoliciesGetResponseFiltersIncidentImpactItem>;
-const PoliciesGetResponseFiltersIncidentImpactList =
-  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesGetResponseFiltersIncidentImpactList>;
-
 export type PoliciesGetResponseFiltersInputIdList = Array<string>;
-const PoliciesGetResponseFiltersInputIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersInputIdList>;
-
 export type PoliciesGetResponseFiltersInsightClassList = Array<string>;
-const PoliciesGetResponseFiltersInsightClassList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersInsightClassList>;
-
 export type PoliciesGetResponseFiltersLimitList = Array<string>;
-const PoliciesGetResponseFiltersLimitList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersLimitList>;
-
 export type PoliciesGetResponseFiltersLogoTagList = Array<string>;
-const PoliciesGetResponseFiltersLogoTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersLogoTagList>;
-
 export type PoliciesGetResponseFiltersMegabitsPerSecondList = Array<string>;
-const PoliciesGetResponseFiltersMegabitsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersMegabitsPerSecondList>;
-
 export type PoliciesGetResponseFiltersNewHealthList = Array<string>;
-const PoliciesGetResponseFiltersNewHealthList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersNewHealthList>;
-
 export type PoliciesGetResponseFiltersNewStatusList = Array<string>;
-const PoliciesGetResponseFiltersNewStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersNewStatusList>;
-
 export type PoliciesGetResponseFiltersPacketsPerSecondList = Array<string>;
-const PoliciesGetResponseFiltersPacketsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersPacketsPerSecondList>;
-
 export type PoliciesGetResponseFiltersPoolIdList = Array<string>;
-const PoliciesGetResponseFiltersPoolIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersPoolIdList>;
-
 export type PoliciesGetResponseFiltersPopNamesList = Array<string>;
-const PoliciesGetResponseFiltersPopNamesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersPopNamesList>;
-
 export type PoliciesGetResponseFiltersProductList = Array<string>;
-const PoliciesGetResponseFiltersProductList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersProductList>;
-
 export type PoliciesGetResponseFiltersProjectIdList = Array<string>;
-const PoliciesGetResponseFiltersProjectIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersProjectIdList>;
-
 export type PoliciesGetResponseFiltersProtocolList = Array<string>;
-const PoliciesGetResponseFiltersProtocolList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersProtocolList>;
-
 export type PoliciesGetResponseFiltersQueryTagList = Array<string>;
-const PoliciesGetResponseFiltersQueryTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersQueryTagList>;
-
 export type PoliciesGetResponseFiltersRequestsPerSecondList = Array<string>;
-const PoliciesGetResponseFiltersRequestsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersRequestsPerSecondList>;
-
 export type PoliciesGetResponseFiltersSelectorsList = Array<string>;
-const PoliciesGetResponseFiltersSelectorsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersSelectorsList>;
-
 export type PoliciesGetResponseFiltersServicesList = Array<string>;
-const PoliciesGetResponseFiltersServicesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersServicesList>;
-
 export type PoliciesGetResponseFiltersSloList = Array<string>;
-const PoliciesGetResponseFiltersSloList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersSloList>;
-
 export type PoliciesGetResponseFiltersStatusList = Array<string>;
-const PoliciesGetResponseFiltersStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersStatusList>;
-
 export type PoliciesGetResponseFiltersTargetHostnameList = Array<string>;
-const PoliciesGetResponseFiltersTargetHostnameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTargetHostnameList>;
-
 export type PoliciesGetResponseFiltersTargetIpList = Array<string>;
-const PoliciesGetResponseFiltersTargetIpList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTargetIpList>;
-
 export type PoliciesGetResponseFiltersTargetZoneNameList = Array<string>;
-const PoliciesGetResponseFiltersTargetZoneNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTargetZoneNameList>;
-
 export type PoliciesGetResponseFiltersTokenIdList = Array<string>;
-const PoliciesGetResponseFiltersTokenIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTokenIdList>;
-
 export type PoliciesGetResponseFiltersTrafficExclusionsItem = "security_events";
 export type PoliciesGetResponseFiltersTrafficExclusionsList =
   Array<PoliciesGetResponseFiltersTrafficExclusionsItem>;
-const PoliciesGetResponseFiltersTrafficExclusionsList =
-  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesGetResponseFiltersTrafficExclusionsList>;
-
 export type PoliciesGetResponseFiltersTunnelIdList = Array<string>;
-const PoliciesGetResponseFiltersTunnelIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTunnelIdList>;
-
 export type PoliciesGetResponseFiltersTunnelNameList = Array<string>;
-const PoliciesGetResponseFiltersTunnelNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTunnelNameList>;
-
 export type PoliciesGetResponseFiltersTypeList = Array<string>;
-const PoliciesGetResponseFiltersTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTypeList>;
-
 export type PoliciesGetResponseFiltersWhereList = Array<string>;
-const PoliciesGetResponseFiltersWhereList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersWhereList>;
-
 export type PoliciesGetResponseFiltersZonesList = Array<string>;
-const PoliciesGetResponseFiltersZonesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersZonesList>;
-
 export interface PoliciesGetResponseFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesGetResponseFiltersActionsList | null;
@@ -1200,51 +776,25 @@ export interface PoliciesGetResponseFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesGetResponseFiltersZonesList | null;
 }
-const PoliciesGetResponseFilters = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PoliciesGetResponseFilters>;
-
 export interface PoliciesGetResponseMechanismsEmailItem {
   /** The email address */
   id?: string | null;
 }
-const PoliciesGetResponseMechanismsEmailItem = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<PoliciesGetResponseMechanismsEmailItem>;
-
 export type PoliciesGetResponseMechanismsEmailList = Array<PoliciesGetResponseMechanismsEmailItem>;
-const PoliciesGetResponseMechanismsEmailList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PoliciesGetResponseMechanismsEmailList>;
-
 export interface PoliciesGetResponseMechanismsPagerdutyItem {
   /** UUID */
   id?: string | null;
 }
 export type PoliciesGetResponseMechanismsPagerdutyList =
   Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-const PoliciesGetResponseMechanismsPagerdutyList =
-  PoliciesGetResponseMechanismsEmailList as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyList>;
-
 export type PoliciesGetResponseMechanismsWebhooksItem = PoliciesGetResponseMechanismsPagerdutyItem;
 export type PoliciesGetResponseMechanismsWebhooksList =
   Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-const PoliciesGetResponseMechanismsWebhooksList =
-  PoliciesGetResponseMechanismsEmailList as any as S.Schema<PoliciesGetResponseMechanismsWebhooksList>;
-
 export interface PoliciesGetResponseMechanisms {
   email?: PoliciesGetResponseMechanismsEmailList | null;
   pagerduty?: PoliciesGetResponseMechanismsPagerdutyList | null;
   webhooks?: PoliciesGetResponseMechanismsWebhooksList | null;
 }
-const PoliciesGetResponseMechanisms = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<PoliciesGetResponseMechanisms>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPolicyResponse {
   /** The unique identifier of a notification policy */
@@ -1266,16 +816,12 @@ export interface GetPolicyResponse {
   /** Name of the policy. */
   name?: string | null;
 }
-const GetPolicyResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetPolicyResponse>;
-
 export interface GetSilenceRequest {
   /** The account id */
   accountId: string;
   /** Silence ID */
   silenceId: string;
 }
-const GetSilenceRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetSilenceRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSilenceResponse {
   /** Silence ID */
@@ -1291,42 +837,22 @@ export interface GetSilenceResponse {
   /** When the silence was modified. */
   updatedAt?: string | null;
 }
-const GetSilenceResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetSilenceResponse>;
-
 export interface LinkDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
   /** The token integration key */
   tokenId: string;
 }
-const LinkDestinationPagerdutyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<LinkDestinationPagerdutyRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface LinkDestinationPagerdutyResponse {
   /** UUID */
   id?: string | null;
 }
-const LinkDestinationPagerdutyResponse =
-  CreateDestinationPagerdutyResponse as any as S.Schema<LinkDestinationPagerdutyResponse>;
-
 export interface ListAvailableAlertsRequest {
   /** The account id */
   accountId: string;
 }
-const ListAvailableAlertsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListAvailableAlertsRequest>;
-
 export type AvailableAlertsListResultValueItemFilterOptionsList = Array<unknown>;
-const AvailableAlertsListResultValueItemFilterOptionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AvailableAlertsListResultValueItemFilterOptionsList>;
-
 export interface AvailableAlertsListResultValueItem {
   /** Describes the alert type. */
   description?: string | null;
@@ -1337,40 +863,15 @@ export interface AvailableAlertsListResultValueItem {
   /** Use this value when creating and updating a notification policy. */
   type?: string | null;
 }
-const AvailableAlertsListResultValueItem = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<AvailableAlertsListResultValueItem>;
-
 export type AvailableAlertsListResultValueList = Array<AvailableAlertsListResultValueItem>;
-const AvailableAlertsListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<AvailableAlertsListResultValueList>;
-
 export type AvailableAlertsListResultMap = {
   [key: string]: AvailableAlertsListResultValueList | undefined;
 };
-const AvailableAlertsListResultMap = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<AvailableAlertsListResultMap>;
-
 export type ListAvailableAlertsResponse = AvailableAlertsListResultMap;
-const ListAvailableAlertsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListAvailableAlertsResponse>;
-
 export interface ListDestinationWebhooksRequest {
   /** The account id */
   accountId: string;
 }
-const ListDestinationWebhooksRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListDestinationWebhooksRequest>;
-
 export type DestinationsWebhooksListResultItemType =
   | "datadog"
   | "discord"
@@ -1380,8 +881,6 @@ export type DestinationsWebhooksListResultItemType =
   | "opsgenie"
   | "slack"
   | "splunk";
-const DestinationsWebhooksListResultItemType = S.String;
-
 export interface DestinationsWebhooksListResultItem {
   /** The unique identifier of a webhook */
   id?: string | null;
@@ -1400,28 +899,13 @@ export interface DestinationsWebhooksListResultItem {
   /** The POST endpoint to call when dispatching a notification. */
   url?: string | null;
 }
-const DestinationsWebhooksListResultItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DestinationsWebhooksListResultItem>;
-
 export type DestinationsWebhooksListResultList = Array<DestinationsWebhooksListResultItem>;
-const DestinationsWebhooksListResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DestinationsWebhooksListResultList>;
-
 export interface ListDestinationWebhooksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DestinationsWebhooksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDestinationWebhooksResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListDestinationWebhooksResponse>;
-
 export interface ListHistoriesRequest {
   /** The account id */
   accountId: string;
@@ -1434,11 +918,7 @@ export interface ListHistoriesRequest {
   /** Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339. */
   since?: string;
 }
-const ListHistoriesRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListHistoriesRequest>;
-
 export type HistoryListResultItemMechanismType = "email" | "pagerduty" | "webhook";
-const HistoryListResultItemMechanismType = S.String;
-
 export interface HistoryListResultItem {
   /** UUID */
   id?: string | null;
@@ -1459,34 +939,17 @@ export interface HistoryListResultItem {
   /** Timestamp of when the notification was dispatched in ISO 8601 format. */
   sent?: string | null;
 }
-const HistoryListResultItem = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<HistoryListResultItem>;
-
 export type HistoryListResultList = Array<HistoryListResultItem>;
-const HistoryListResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<HistoryListResultList>;
-
 export interface ListHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: HistoryListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListHistoriesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListHistoriesResponse>;
-
 export interface ListPoliciesRequest {
   /** The account id */
   accountId: string;
 }
-const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ListPoliciesRequest>;
-
 export type PoliciesListResultItemAlertType =
   | "abuse_report_alert"
   | "access_custom_certificate_expiration_type"
@@ -1557,64 +1020,20 @@ export type PoliciesListResultItemAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-const PoliciesListResultItemAlertType = S.String;
-
 export type PoliciesListResultItemFiltersActionsList = Array<string>;
-const PoliciesListResultItemFiltersActionsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersActionsList>;
-
 export type PoliciesListResultItemFiltersAffectedAsnsList = Array<string>;
-const PoliciesListResultItemFiltersAffectedAsnsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAffectedAsnsList>;
-
 export type PoliciesListResultItemFiltersAffectedComponentsList = Array<string>;
-const PoliciesListResultItemFiltersAffectedComponentsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAffectedComponentsList>;
-
 export type PoliciesListResultItemFiltersAffectedLocationsList = Array<string>;
-const PoliciesListResultItemFiltersAffectedLocationsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAffectedLocationsList>;
-
 export type PoliciesListResultItemFiltersAirportCodeList = Array<string>;
-const PoliciesListResultItemFiltersAirportCodeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAirportCodeList>;
-
 export type PoliciesListResultItemFiltersAlertTriggerPreferencesList = Array<string>;
-const PoliciesListResultItemFiltersAlertTriggerPreferencesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesList>;
-
 export type PoliciesListResultItemFiltersAlertTriggerPreferencesValueList = Array<string>;
-const PoliciesListResultItemFiltersAlertTriggerPreferencesValueList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesValueList>;
-
 export type PoliciesListResultItemFiltersEnabledList = Array<string>;
-const PoliciesListResultItemFiltersEnabledList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEnabledList>;
-
 export type PoliciesListResultItemFiltersEnvironmentList = Array<string>;
-const PoliciesListResultItemFiltersEnvironmentList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEnvironmentList>;
-
 export type PoliciesListResultItemFiltersEventList = Array<string>;
-const PoliciesListResultItemFiltersEventList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEventList>;
-
 export type PoliciesListResultItemFiltersEventSourceList = Array<string>;
-const PoliciesListResultItemFiltersEventSourceList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEventSourceList>;
-
 export type PoliciesListResultItemFiltersEventTypeList = Array<string>;
-const PoliciesListResultItemFiltersEventTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEventTypeList>;
-
 export type PoliciesListResultItemFiltersGroupByList = Array<string>;
-const PoliciesListResultItemFiltersGroupByList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersGroupByList>;
-
 export type PoliciesListResultItemFiltersHealthCheckIdList = Array<string>;
-const PoliciesListResultItemFiltersHealthCheckIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersHealthCheckIdList>;
-
 export type PoliciesListResultItemFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
@@ -1622,127 +1041,37 @@ export type PoliciesListResultItemFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_CRITICAL";
 export type PoliciesListResultItemFiltersIncidentImpactList =
   Array<PoliciesListResultItemFiltersIncidentImpactItem>;
-const PoliciesListResultItemFiltersIncidentImpactList =
-  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesListResultItemFiltersIncidentImpactList>;
-
 export type PoliciesListResultItemFiltersInputIdList = Array<string>;
-const PoliciesListResultItemFiltersInputIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersInputIdList>;
-
 export type PoliciesListResultItemFiltersInsightClassList = Array<string>;
-const PoliciesListResultItemFiltersInsightClassList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersInsightClassList>;
-
 export type PoliciesListResultItemFiltersLimitList = Array<string>;
-const PoliciesListResultItemFiltersLimitList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersLimitList>;
-
 export type PoliciesListResultItemFiltersLogoTagList = Array<string>;
-const PoliciesListResultItemFiltersLogoTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersLogoTagList>;
-
 export type PoliciesListResultItemFiltersMegabitsPerSecondList = Array<string>;
-const PoliciesListResultItemFiltersMegabitsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersMegabitsPerSecondList>;
-
 export type PoliciesListResultItemFiltersNewHealthList = Array<string>;
-const PoliciesListResultItemFiltersNewHealthList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersNewHealthList>;
-
 export type PoliciesListResultItemFiltersNewStatusList = Array<string>;
-const PoliciesListResultItemFiltersNewStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersNewStatusList>;
-
 export type PoliciesListResultItemFiltersPacketsPerSecondList = Array<string>;
-const PoliciesListResultItemFiltersPacketsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersPacketsPerSecondList>;
-
 export type PoliciesListResultItemFiltersPoolIdList = Array<string>;
-const PoliciesListResultItemFiltersPoolIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersPoolIdList>;
-
 export type PoliciesListResultItemFiltersPopNamesList = Array<string>;
-const PoliciesListResultItemFiltersPopNamesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersPopNamesList>;
-
 export type PoliciesListResultItemFiltersProductList = Array<string>;
-const PoliciesListResultItemFiltersProductList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersProductList>;
-
 export type PoliciesListResultItemFiltersProjectIdList = Array<string>;
-const PoliciesListResultItemFiltersProjectIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersProjectIdList>;
-
 export type PoliciesListResultItemFiltersProtocolList = Array<string>;
-const PoliciesListResultItemFiltersProtocolList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersProtocolList>;
-
 export type PoliciesListResultItemFiltersQueryTagList = Array<string>;
-const PoliciesListResultItemFiltersQueryTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersQueryTagList>;
-
 export type PoliciesListResultItemFiltersRequestsPerSecondList = Array<string>;
-const PoliciesListResultItemFiltersRequestsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersRequestsPerSecondList>;
-
 export type PoliciesListResultItemFiltersSelectorsList = Array<string>;
-const PoliciesListResultItemFiltersSelectorsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersSelectorsList>;
-
 export type PoliciesListResultItemFiltersServicesList = Array<string>;
-const PoliciesListResultItemFiltersServicesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersServicesList>;
-
 export type PoliciesListResultItemFiltersSloList = Array<string>;
-const PoliciesListResultItemFiltersSloList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersSloList>;
-
 export type PoliciesListResultItemFiltersStatusList = Array<string>;
-const PoliciesListResultItemFiltersStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersStatusList>;
-
 export type PoliciesListResultItemFiltersTargetHostnameList = Array<string>;
-const PoliciesListResultItemFiltersTargetHostnameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTargetHostnameList>;
-
 export type PoliciesListResultItemFiltersTargetIpList = Array<string>;
-const PoliciesListResultItemFiltersTargetIpList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTargetIpList>;
-
 export type PoliciesListResultItemFiltersTargetZoneNameList = Array<string>;
-const PoliciesListResultItemFiltersTargetZoneNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTargetZoneNameList>;
-
 export type PoliciesListResultItemFiltersTokenIdList = Array<string>;
-const PoliciesListResultItemFiltersTokenIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTokenIdList>;
-
 export type PoliciesListResultItemFiltersTrafficExclusionsItem = "security_events";
 export type PoliciesListResultItemFiltersTrafficExclusionsList =
   Array<PoliciesListResultItemFiltersTrafficExclusionsItem>;
-const PoliciesListResultItemFiltersTrafficExclusionsList =
-  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesListResultItemFiltersTrafficExclusionsList>;
-
 export type PoliciesListResultItemFiltersTunnelIdList = Array<string>;
-const PoliciesListResultItemFiltersTunnelIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTunnelIdList>;
-
 export type PoliciesListResultItemFiltersTunnelNameList = Array<string>;
-const PoliciesListResultItemFiltersTunnelNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTunnelNameList>;
-
 export type PoliciesListResultItemFiltersTypeList = Array<string>;
-const PoliciesListResultItemFiltersTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTypeList>;
-
 export type PoliciesListResultItemFiltersWhereList = Array<string>;
-const PoliciesListResultItemFiltersWhereList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersWhereList>;
-
 export type PoliciesListResultItemFiltersZonesList = Array<string>;
-const PoliciesListResultItemFiltersZonesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersZonesList>;
-
 export interface PoliciesListResultItemFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesListResultItemFiltersActionsList | null;
@@ -1833,11 +1162,6 @@ export interface PoliciesListResultItemFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesListResultItemFiltersZonesList | null;
 }
-const PoliciesListResultItemFilters = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<PoliciesListResultItemFilters>;
-
 export type PoliciesListResultItemMechanismsEmailItem = PoliciesGetResponseMechanismsEmailItem;
 export type PoliciesListResultItemMechanismsEmailList =
   Array<PoliciesGetResponseMechanismsEmailItem>;
@@ -1854,9 +1178,6 @@ export interface PoliciesListResultItemMechanisms {
   pagerduty?: PoliciesListResultItemMechanismsPagerdutyList | null;
   webhooks?: PoliciesListResultItemMechanismsWebhooksList | null;
 }
-const PoliciesListResultItemMechanisms =
-  PoliciesGetResponseMechanisms as any as S.Schema<PoliciesListResultItemMechanisms>;
-
 export interface PoliciesListResultItem {
   /** The unique identifier of a notification policy */
   id?: string | null;
@@ -1877,31 +1198,17 @@ export interface PoliciesListResultItem {
   /** Name of the policy. */
   name?: string | null;
 }
-const PoliciesListResultItem = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PoliciesListResultItem>;
-
 export type PoliciesListResultList = Array<PoliciesListResultItem>;
-const PoliciesListResultList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<PoliciesListResultList>;
-
 export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PoliciesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListPoliciesResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListPoliciesResponse>;
-
 export interface ListSilencesRequest {
   /** The account id */
   accountId: string;
 }
-const ListSilencesRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListSilencesRequest>;
-
 export interface SilencesListResultItem {
   /** Silence ID */
   id?: string | null;
@@ -1916,25 +1223,13 @@ export interface SilencesListResultItem {
   /** When the silence was modified. */
   updatedAt?: string | null;
 }
-const SilencesListResultItem = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<SilencesListResultItem>;
-
 export type SilencesListResultList = Array<SilencesListResultItem>;
-const SilencesListResultList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<SilencesListResultList>;
-
 export interface ListSilencesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SilencesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSilencesResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListSilencesResponse>;
-
 export interface UpdateDestinationWebhookRequest {
   /** The account id */
   accountId: string;
@@ -1947,19 +1242,11 @@ export interface UpdateDestinationWebhookRequest {
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
   secret?: string;
 }
-const UpdateDestinationWebhookRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<UpdateDestinationWebhookRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDestinationWebhookResponse {
   /** UUID */
   id?: string | null;
 }
-const UpdateDestinationWebhookResponse =
-  CreateDestinationPagerdutyResponse as any as S.Schema<UpdateDestinationWebhookResponse>;
-
 export type PoliciesUpdateRequestAlertType =
   | "abuse_report_alert"
   | "access_custom_certificate_expiration_type"
@@ -2030,64 +1317,20 @@ export type PoliciesUpdateRequestAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-const PoliciesUpdateRequestAlertType = S.String;
-
 export type PoliciesUpdateRequestFiltersActionsList = Array<string>;
-const PoliciesUpdateRequestFiltersActionsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersActionsList>;
-
 export type PoliciesUpdateRequestFiltersAffectedAsnsList = Array<string>;
-const PoliciesUpdateRequestFiltersAffectedAsnsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAffectedAsnsList>;
-
 export type PoliciesUpdateRequestFiltersAffectedComponentsList = Array<string>;
-const PoliciesUpdateRequestFiltersAffectedComponentsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAffectedComponentsList>;
-
 export type PoliciesUpdateRequestFiltersAffectedLocationsList = Array<string>;
-const PoliciesUpdateRequestFiltersAffectedLocationsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAffectedLocationsList>;
-
 export type PoliciesUpdateRequestFiltersAirportCodeList = Array<string>;
-const PoliciesUpdateRequestFiltersAirportCodeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAirportCodeList>;
-
 export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesList = Array<string>;
-const PoliciesUpdateRequestFiltersAlertTriggerPreferencesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesList>;
-
 export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList = Array<string>;
-const PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList>;
-
 export type PoliciesUpdateRequestFiltersEnabledList = Array<string>;
-const PoliciesUpdateRequestFiltersEnabledList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEnabledList>;
-
 export type PoliciesUpdateRequestFiltersEnvironmentList = Array<string>;
-const PoliciesUpdateRequestFiltersEnvironmentList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEnvironmentList>;
-
 export type PoliciesUpdateRequestFiltersEventList = Array<string>;
-const PoliciesUpdateRequestFiltersEventList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEventList>;
-
 export type PoliciesUpdateRequestFiltersEventSourceList = Array<string>;
-const PoliciesUpdateRequestFiltersEventSourceList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEventSourceList>;
-
 export type PoliciesUpdateRequestFiltersEventTypeList = Array<string>;
-const PoliciesUpdateRequestFiltersEventTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEventTypeList>;
-
 export type PoliciesUpdateRequestFiltersGroupByList = Array<string>;
-const PoliciesUpdateRequestFiltersGroupByList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersGroupByList>;
-
 export type PoliciesUpdateRequestFiltersHealthCheckIdList = Array<string>;
-const PoliciesUpdateRequestFiltersHealthCheckIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersHealthCheckIdList>;
-
 export type PoliciesUpdateRequestFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_NONE"
   | "INCIDENT_IMPACT_MINOR"
@@ -2096,128 +1339,38 @@ export type PoliciesUpdateRequestFiltersIncidentImpactItem =
 export type PoliciesUpdateRequestFiltersIncidentImpactList = Array<
   PoliciesUpdateRequestFiltersIncidentImpactItem | (string & {})
 >;
-const PoliciesUpdateRequestFiltersIncidentImpactList =
-  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesUpdateRequestFiltersIncidentImpactList>;
-
 export type PoliciesUpdateRequestFiltersInputIdList = Array<string>;
-const PoliciesUpdateRequestFiltersInputIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersInputIdList>;
-
 export type PoliciesUpdateRequestFiltersInsightClassList = Array<string>;
-const PoliciesUpdateRequestFiltersInsightClassList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersInsightClassList>;
-
 export type PoliciesUpdateRequestFiltersLimitList = Array<string>;
-const PoliciesUpdateRequestFiltersLimitList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersLimitList>;
-
 export type PoliciesUpdateRequestFiltersLogoTagList = Array<string>;
-const PoliciesUpdateRequestFiltersLogoTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersLogoTagList>;
-
 export type PoliciesUpdateRequestFiltersMegabitsPerSecondList = Array<string>;
-const PoliciesUpdateRequestFiltersMegabitsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersMegabitsPerSecondList>;
-
 export type PoliciesUpdateRequestFiltersNewHealthList = Array<string>;
-const PoliciesUpdateRequestFiltersNewHealthList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersNewHealthList>;
-
 export type PoliciesUpdateRequestFiltersNewStatusList = Array<string>;
-const PoliciesUpdateRequestFiltersNewStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersNewStatusList>;
-
 export type PoliciesUpdateRequestFiltersPacketsPerSecondList = Array<string>;
-const PoliciesUpdateRequestFiltersPacketsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersPacketsPerSecondList>;
-
 export type PoliciesUpdateRequestFiltersPoolIdList = Array<string>;
-const PoliciesUpdateRequestFiltersPoolIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersPoolIdList>;
-
 export type PoliciesUpdateRequestFiltersPopNamesList = Array<string>;
-const PoliciesUpdateRequestFiltersPopNamesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersPopNamesList>;
-
 export type PoliciesUpdateRequestFiltersProductList = Array<string>;
-const PoliciesUpdateRequestFiltersProductList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersProductList>;
-
 export type PoliciesUpdateRequestFiltersProjectIdList = Array<string>;
-const PoliciesUpdateRequestFiltersProjectIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersProjectIdList>;
-
 export type PoliciesUpdateRequestFiltersProtocolList = Array<string>;
-const PoliciesUpdateRequestFiltersProtocolList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersProtocolList>;
-
 export type PoliciesUpdateRequestFiltersQueryTagList = Array<string>;
-const PoliciesUpdateRequestFiltersQueryTagList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersQueryTagList>;
-
 export type PoliciesUpdateRequestFiltersRequestsPerSecondList = Array<string>;
-const PoliciesUpdateRequestFiltersRequestsPerSecondList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersRequestsPerSecondList>;
-
 export type PoliciesUpdateRequestFiltersSelectorsList = Array<string>;
-const PoliciesUpdateRequestFiltersSelectorsList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersSelectorsList>;
-
 export type PoliciesUpdateRequestFiltersServicesList = Array<string>;
-const PoliciesUpdateRequestFiltersServicesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersServicesList>;
-
 export type PoliciesUpdateRequestFiltersSloList = Array<string>;
-const PoliciesUpdateRequestFiltersSloList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersSloList>;
-
 export type PoliciesUpdateRequestFiltersStatusList = Array<string>;
-const PoliciesUpdateRequestFiltersStatusList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersStatusList>;
-
 export type PoliciesUpdateRequestFiltersTargetHostnameList = Array<string>;
-const PoliciesUpdateRequestFiltersTargetHostnameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTargetHostnameList>;
-
 export type PoliciesUpdateRequestFiltersTargetIpList = Array<string>;
-const PoliciesUpdateRequestFiltersTargetIpList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTargetIpList>;
-
 export type PoliciesUpdateRequestFiltersTargetZoneNameList = Array<string>;
-const PoliciesUpdateRequestFiltersTargetZoneNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTargetZoneNameList>;
-
 export type PoliciesUpdateRequestFiltersTokenIdList = Array<string>;
-const PoliciesUpdateRequestFiltersTokenIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTokenIdList>;
-
 export type PoliciesUpdateRequestFiltersTrafficExclusionsItem = "security_events";
 export type PoliciesUpdateRequestFiltersTrafficExclusionsList = Array<
   PoliciesUpdateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
-const PoliciesUpdateRequestFiltersTrafficExclusionsList =
-  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesUpdateRequestFiltersTrafficExclusionsList>;
-
 export type PoliciesUpdateRequestFiltersTunnelIdList = Array<string>;
-const PoliciesUpdateRequestFiltersTunnelIdList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTunnelIdList>;
-
 export type PoliciesUpdateRequestFiltersTunnelNameList = Array<string>;
-const PoliciesUpdateRequestFiltersTunnelNameList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTunnelNameList>;
-
 export type PoliciesUpdateRequestFiltersTypeList = Array<string>;
-const PoliciesUpdateRequestFiltersTypeList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTypeList>;
-
 export type PoliciesUpdateRequestFiltersWhereList = Array<string>;
-const PoliciesUpdateRequestFiltersWhereList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersWhereList>;
-
 export type PoliciesUpdateRequestFiltersZonesList = Array<string>;
-const PoliciesUpdateRequestFiltersZonesList =
-  PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersZonesList>;
-
 export interface PoliciesUpdateRequestFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesUpdateRequestFiltersActionsList;
@@ -2308,11 +1461,6 @@ export interface PoliciesUpdateRequestFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesUpdateRequestFiltersZonesList;
 }
-const PoliciesUpdateRequestFilters = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<PoliciesUpdateRequestFilters>;
-
 export type PoliciesUpdateRequestMechanismsEmailItem = PoliciesCreateRequestMechanismsEmailItem;
 export type PoliciesUpdateRequestMechanismsEmailList =
   Array<PoliciesCreateRequestMechanismsEmailItem>;
@@ -2329,9 +1477,6 @@ export interface PoliciesUpdateRequestMechanisms {
   pagerduty?: PoliciesUpdateRequestMechanismsPagerdutyList;
   webhooks?: PoliciesUpdateRequestMechanismsWebhooksList;
 }
-const PoliciesUpdateRequestMechanisms =
-  PoliciesCreateRequestMechanisms as any as S.Schema<PoliciesUpdateRequestMechanisms>;
-
 export interface UpdatePolicyRequest {
   /** The account id */
   accountId: string;
@@ -2352,15 +1497,11 @@ export interface UpdatePolicyRequest {
   /** Name of the policy. */
   name?: string;
 }
-const UpdatePolicyRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<UpdatePolicyRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdatePolicyResponse {
   /** UUID */
   id?: string | null;
 }
-const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
-
 export interface SilencesUpdateRequestBodyItem {
   /** Silence ID */
   id?: string;
@@ -2369,24 +1510,12 @@ export interface SilencesUpdateRequestBodyItem {
   /** When the silence starts. */
   startTime?: string;
 }
-const SilencesUpdateRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<SilencesUpdateRequestBodyItem>;
-
 export type SilencesUpdateRequestBodyList = Array<SilencesUpdateRequestBodyItem>;
-const SilencesUpdateRequestBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<SilencesUpdateRequestBodyList>;
-
 export interface UpdateSilenceRequest {
   /** The account id */
   accountId: string;
   body: SilencesUpdateRequestBodyList;
 }
-const UpdateSilenceRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<UpdateSilenceRequest>;
-
 export type SilencesUpdateResultItem = SilencesListResultItem;
 export type SilencesUpdateResultList = Array<SilencesListResultItem>;
 export interface UpdateSilenceResponse {
@@ -2395,8 +1524,6 @@ export interface UpdateSilenceResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const UpdateSilenceResponse = ListSilencesResponse as any as S.Schema<UpdateSilenceResponse>;
-
 export type CreateDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
 /** Creates a new token for integrating with PagerDuty. */
 export const createDestinationPagerduty: API.OperationMethod<
@@ -2405,8 +1532,8 @@ export const createDestinationPagerduty: API.OperationMethod<
   CreateDestinationPagerdutyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDestinationPagerdutyRequest,
-  output: CreateDestinationPagerdutyResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDestinationPagerdutyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateDestinationPagerdutyResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2420,8 +1547,8 @@ export const createDestinationWebhook: API.OperationMethod<
   CreateDestinationWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDestinationWebhookRequest,
-  output: CreateDestinationWebhookResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateDestinationWebhookRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateDestinationWebhookResponse>,
   errors: [InvalidRoute, WebhookTestFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2439,8 +1566,8 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePolicyRequest,
-  output: CreatePolicyResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreatePolicyRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreatePolicyResponse>,
   errors: [
     InvalidRoute,
     FiltersRequired,
@@ -2464,8 +1591,8 @@ export const createSilence: API.OperationMethod<
   CreateSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSilenceRequest,
-  output: CreateSilenceResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<CreateSilenceRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateSilenceResponse>,
   errors: [
     InvalidRoute,
     InvalidSilence,
@@ -2485,8 +1612,8 @@ export const deleteDestinationPagerduty: API.OperationMethod<
   DeleteDestinationPagerdutyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDestinationPagerdutyRequest,
-  output: DeleteDestinationPagerdutyResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteDestinationPagerdutyRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDestinationPagerdutyResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2500,8 +1627,8 @@ export const deleteDestinationWebhook: API.OperationMethod<
   DeleteDestinationWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDestinationWebhookRequest,
-  output: DeleteDestinationWebhookResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteDestinationWebhookRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDestinationWebhookResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2515,8 +1642,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePolicyRequest,
-  output: DeletePolicyResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeletePolicyResponse>,
   errors: [InvalidRoute, PolicyNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2530,8 +1657,8 @@ export const deleteSilence: API.OperationMethod<
   DeleteSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSilenceRequest,
-  output: DeleteSilenceResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteSilenceRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteSilenceResponse>,
   errors: [InvalidRoute, SilenceNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2545,8 +1672,8 @@ export const getDestinationEligible: API.OperationMethod<
   GetDestinationEligibleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDestinationEligibleRequest,
-  output: GetDestinationEligibleResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<GetDestinationEligibleRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetDestinationEligibleResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2562,8 +1689,8 @@ export const getDestinationPagerduty: API.PaginatedOperationMethod<
   DestinationsPagerdutyGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetDestinationPagerdutyRequest,
-    output: GetDestinationPagerdutyResponse,
+    input: __S(25, __c3, 1) as any as S.Schema<GetDestinationPagerdutyRequest>,
+    output: __S(28, __c3, 4) as any as S.Schema<GetDestinationPagerdutyResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2580,8 +1707,8 @@ export const getDestinationWebhook: API.OperationMethod<
   GetDestinationWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDestinationWebhookRequest,
-  output: GetDestinationWebhookResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<GetDestinationWebhookRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetDestinationWebhookResponse>,
   errors: [InvalidRoute, WebhookNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2595,8 +1722,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyRequest,
-  output: GetPolicyResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<GetPolicyRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetPolicyResponse>,
   errors: [InvalidRoute, PolicyNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2610,8 +1737,8 @@ export const getSilence: API.OperationMethod<
   GetSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSilenceRequest,
-  output: GetSilenceResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<GetSilenceRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetSilenceResponse>,
   errors: [InvalidRoute, SilenceNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2625,8 +1752,8 @@ export const linkDestinationPagerduty: API.OperationMethod<
   LinkDestinationPagerdutyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkDestinationPagerdutyRequest,
-  output: LinkDestinationPagerdutyResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<LinkDestinationPagerdutyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<LinkDestinationPagerdutyResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2640,8 +1767,8 @@ export const listAvailableAlerts: API.OperationMethod<
   ListAvailableAlertsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAvailableAlertsRequest,
-  output: ListAvailableAlertsResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<ListAvailableAlertsRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<ListAvailableAlertsResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2657,8 +1784,8 @@ export const listDestinationWebhooks: API.PaginatedOperationMethod<
   DestinationsWebhooksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDestinationWebhooksRequest,
-    output: ListDestinationWebhooksResponse,
+    input: __S(46, __c5, 6) as any as S.Schema<ListDestinationWebhooksRequest>,
+    output: __S(49, __c6, 1) as any as S.Schema<ListDestinationWebhooksResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2677,8 +1804,8 @@ export const listHistories: API.PaginatedOperationMethod<
   HistoryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListHistoriesRequest,
-    output: ListHistoriesResponse,
+    input: __S(50, __c6, 2) as any as S.Schema<ListHistoriesRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<ListHistoriesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2703,8 +1830,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   PoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPoliciesRequest,
-    output: ListPoliciesResponse,
+    input: __S(54, __c6, 6) as any as S.Schema<ListPoliciesRequest>,
+    output: __S(58, __c7, 2) as any as S.Schema<ListPoliciesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2723,8 +1850,8 @@ export const listSilences: API.PaginatedOperationMethod<
   SilencesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSilencesRequest,
-    output: ListSilencesResponse,
+    input: __S(59, __c7, 3) as any as S.Schema<ListSilencesRequest>,
+    output: __S(62, __c7, 6) as any as S.Schema<ListSilencesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2745,8 +1872,8 @@ export const updateDestinationWebhook: API.OperationMethod<
   UpdateDestinationWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDestinationWebhookRequest,
-  output: UpdateDestinationWebhookResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<UpdateDestinationWebhookRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateDestinationWebhookResponse>,
   errors: [
     InvalidRoute,
     InvalidWebhookId,
@@ -2771,8 +1898,8 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePolicyRequest,
-  output: UpdatePolicyResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<UpdatePolicyRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<UpdatePolicyResponse>,
   errors: [
     InvalidRoute,
     PolicyNotFound,
@@ -2795,8 +1922,8 @@ export const updateSilence: API.PaginatedOperationMethod<
   SilencesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: UpdateSilenceRequest,
-    output: UpdateSilenceResponse,
+    input: __S(68, __c8, 4) as any as S.Schema<UpdateSilenceRequest>,
+    output: __S(62, __c7, 6) as any as S.Schema<UpdateSilenceResponse>,
     errors: [SilenceNotFound, InvalidSilence, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2860,13 +1987,13 @@ function __c0(j: number): any {
         identifier: "PoliciesCreateRequestMechanismsEmailItem",
       });
     case 4:
-      return S.Array(PoliciesCreateRequestMechanismsEmailItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(PoliciesCreateRequestMechanismsEmailList),
-          pagerduty: S.optional(PoliciesCreateRequestMechanismsPagerdutyList),
-          webhooks: S.optional(PoliciesCreateRequestMechanismsWebhooksList),
+          email: S.optional(__S(4, __c0, 4)),
+          pagerduty: S.optional(__S(4, __c0, 4)),
+          webhooks: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "PoliciesCreateRequestMechanisms",
@@ -2874,7 +2001,7 @@ function __c0(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Array(PoliciesCreateRequestFiltersIncidentImpactItem);
+      return S.Array(S.String);
   }
 }
 function __c1(j: number): any {
@@ -2882,96 +2009,54 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(PoliciesCreateRequestFiltersActionsList),
-          affectedAsns: S.optional(
-            PoliciesCreateRequestFiltersAffectedAsnsList.pipe(T.Body("affected_asns")),
-          ),
-          affectedComponents: S.optional(
-            PoliciesCreateRequestFiltersAffectedComponentsList.pipe(T.Body("affected_components")),
-          ),
-          affectedLocations: S.optional(
-            PoliciesCreateRequestFiltersAffectedLocationsList.pipe(T.Body("affected_locations")),
-          ),
-          airportCode: S.optional(
-            PoliciesCreateRequestFiltersAirportCodeList.pipe(T.Body("airport_code")),
-          ),
+          actions: S.optional(__S(6, __c0, 6)),
+          affectedAsns: S.optional(__S(6, __c0, 6).pipe(T.Body("affected_asns"))),
+          affectedComponents: S.optional(__S(6, __c0, 6).pipe(T.Body("affected_components"))),
+          affectedLocations: S.optional(__S(6, __c0, 6).pipe(T.Body("affected_locations"))),
+          airportCode: S.optional(__S(6, __c0, 6).pipe(T.Body("airport_code"))),
           alertTriggerPreferences: S.optional(
-            PoliciesCreateRequestFiltersAlertTriggerPreferencesList.pipe(
-              T.Body("alert_trigger_preferences"),
-            ),
+            __S(6, __c0, 6).pipe(T.Body("alert_trigger_preferences")),
           ),
           alertTriggerPreferencesValue: S.optional(
-            PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList.pipe(
-              T.Body("alert_trigger_preferences_value"),
-            ),
+            __S(6, __c0, 6).pipe(T.Body("alert_trigger_preferences_value")),
           ),
-          enabled: S.optional(PoliciesCreateRequestFiltersEnabledList),
-          environment: S.optional(PoliciesCreateRequestFiltersEnvironmentList),
-          event: S.optional(PoliciesCreateRequestFiltersEventList),
-          eventSource: S.optional(
-            PoliciesCreateRequestFiltersEventSourceList.pipe(T.Body("event_source")),
-          ),
-          eventType: S.optional(
-            PoliciesCreateRequestFiltersEventTypeList.pipe(T.Body("event_type")),
-          ),
-          groupBy: S.optional(PoliciesCreateRequestFiltersGroupByList.pipe(T.Body("group_by"))),
-          healthCheckId: S.optional(
-            PoliciesCreateRequestFiltersHealthCheckIdList.pipe(T.Body("health_check_id")),
-          ),
-          incidentImpact: S.optional(
-            PoliciesCreateRequestFiltersIncidentImpactList.pipe(T.Body("incident_impact")),
-          ),
-          inputId: S.optional(PoliciesCreateRequestFiltersInputIdList.pipe(T.Body("input_id"))),
-          insightClass: S.optional(
-            PoliciesCreateRequestFiltersInsightClassList.pipe(T.Body("insight_class")),
-          ),
-          limit: S.optional(PoliciesCreateRequestFiltersLimitList),
-          logoTag: S.optional(PoliciesCreateRequestFiltersLogoTagList.pipe(T.Body("logo_tag"))),
-          megabitsPerSecond: S.optional(
-            PoliciesCreateRequestFiltersMegabitsPerSecondList.pipe(T.Body("megabits_per_second")),
-          ),
-          newHealth: S.optional(
-            PoliciesCreateRequestFiltersNewHealthList.pipe(T.Body("new_health")),
-          ),
-          newStatus: S.optional(
-            PoliciesCreateRequestFiltersNewStatusList.pipe(T.Body("new_status")),
-          ),
-          packetsPerSecond: S.optional(
-            PoliciesCreateRequestFiltersPacketsPerSecondList.pipe(T.Body("packets_per_second")),
-          ),
-          poolId: S.optional(PoliciesCreateRequestFiltersPoolIdList.pipe(T.Body("pool_id"))),
-          popNames: S.optional(PoliciesCreateRequestFiltersPopNamesList.pipe(T.Body("pop_names"))),
-          product: S.optional(PoliciesCreateRequestFiltersProductList),
-          projectId: S.optional(
-            PoliciesCreateRequestFiltersProjectIdList.pipe(T.Body("project_id")),
-          ),
-          protocol: S.optional(PoliciesCreateRequestFiltersProtocolList),
-          queryTag: S.optional(PoliciesCreateRequestFiltersQueryTagList.pipe(T.Body("query_tag"))),
-          requestsPerSecond: S.optional(
-            PoliciesCreateRequestFiltersRequestsPerSecondList.pipe(T.Body("requests_per_second")),
-          ),
-          selectors: S.optional(PoliciesCreateRequestFiltersSelectorsList),
-          services: S.optional(PoliciesCreateRequestFiltersServicesList),
-          slo: S.optional(PoliciesCreateRequestFiltersSloList),
-          status: S.optional(PoliciesCreateRequestFiltersStatusList),
-          targetHostname: S.optional(
-            PoliciesCreateRequestFiltersTargetHostnameList.pipe(T.Body("target_hostname")),
-          ),
-          targetIp: S.optional(PoliciesCreateRequestFiltersTargetIpList.pipe(T.Body("target_ip"))),
-          targetZoneName: S.optional(
-            PoliciesCreateRequestFiltersTargetZoneNameList.pipe(T.Body("target_zone_name")),
-          ),
-          tokenId: S.optional(PoliciesCreateRequestFiltersTokenIdList.pipe(T.Body("token_id"))),
-          trafficExclusions: S.optional(
-            PoliciesCreateRequestFiltersTrafficExclusionsList.pipe(T.Body("traffic_exclusions")),
-          ),
-          tunnelId: S.optional(PoliciesCreateRequestFiltersTunnelIdList.pipe(T.Body("tunnel_id"))),
-          tunnelName: S.optional(
-            PoliciesCreateRequestFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
-          ),
-          type: S.optional(PoliciesCreateRequestFiltersTypeList),
-          where: S.optional(PoliciesCreateRequestFiltersWhereList),
-          zones: S.optional(PoliciesCreateRequestFiltersZonesList),
+          enabled: S.optional(__S(6, __c0, 6)),
+          environment: S.optional(__S(6, __c0, 6)),
+          event: S.optional(__S(6, __c0, 6)),
+          eventSource: S.optional(__S(6, __c0, 6).pipe(T.Body("event_source"))),
+          eventType: S.optional(__S(6, __c0, 6).pipe(T.Body("event_type"))),
+          groupBy: S.optional(__S(6, __c0, 6).pipe(T.Body("group_by"))),
+          healthCheckId: S.optional(__S(6, __c0, 6).pipe(T.Body("health_check_id"))),
+          incidentImpact: S.optional(__S(7, __c0, 7).pipe(T.Body("incident_impact"))),
+          inputId: S.optional(__S(6, __c0, 6).pipe(T.Body("input_id"))),
+          insightClass: S.optional(__S(6, __c0, 6).pipe(T.Body("insight_class"))),
+          limit: S.optional(__S(6, __c0, 6)),
+          logoTag: S.optional(__S(6, __c0, 6).pipe(T.Body("logo_tag"))),
+          megabitsPerSecond: S.optional(__S(6, __c0, 6).pipe(T.Body("megabits_per_second"))),
+          newHealth: S.optional(__S(6, __c0, 6).pipe(T.Body("new_health"))),
+          newStatus: S.optional(__S(6, __c0, 6).pipe(T.Body("new_status"))),
+          packetsPerSecond: S.optional(__S(6, __c0, 6).pipe(T.Body("packets_per_second"))),
+          poolId: S.optional(__S(6, __c0, 6).pipe(T.Body("pool_id"))),
+          popNames: S.optional(__S(6, __c0, 6).pipe(T.Body("pop_names"))),
+          product: S.optional(__S(6, __c0, 6)),
+          projectId: S.optional(__S(6, __c0, 6).pipe(T.Body("project_id"))),
+          protocol: S.optional(__S(6, __c0, 6)),
+          queryTag: S.optional(__S(6, __c0, 6).pipe(T.Body("query_tag"))),
+          requestsPerSecond: S.optional(__S(6, __c0, 6).pipe(T.Body("requests_per_second"))),
+          selectors: S.optional(__S(6, __c0, 6)),
+          services: S.optional(__S(6, __c0, 6)),
+          slo: S.optional(__S(6, __c0, 6)),
+          status: S.optional(__S(6, __c0, 6)),
+          targetHostname: S.optional(__S(6, __c0, 6).pipe(T.Body("target_hostname"))),
+          targetIp: S.optional(__S(6, __c0, 6).pipe(T.Body("target_ip"))),
+          targetZoneName: S.optional(__S(6, __c0, 6).pipe(T.Body("target_zone_name"))),
+          tokenId: S.optional(__S(6, __c0, 6).pipe(T.Body("token_id"))),
+          trafficExclusions: S.optional(__S(7, __c0, 7).pipe(T.Body("traffic_exclusions"))),
+          tunnelId: S.optional(__S(6, __c0, 6).pipe(T.Body("tunnel_id"))),
+          tunnelName: S.optional(__S(6, __c0, 6).pipe(T.Body("tunnel_name"))),
+          type: S.optional(__S(6, __c0, 6)),
+          where: S.optional(__S(6, __c0, 6)),
+          zones: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "PoliciesCreateRequestFilters",
@@ -2980,13 +2065,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          alertType: PoliciesCreateRequestAlertType.pipe(T.Body("alert_type")),
+          alertType: S.String.pipe(T.Body("alert_type")),
           enabled: S.Boolean,
-          mechanisms: PoliciesCreateRequestMechanisms,
+          mechanisms: __S(5, __c0, 5),
           name: S.String,
           alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
           description: S.optional(S.String),
-          filters: S.optional(PoliciesCreateRequestFilters),
+          filters: S.optional(__S(8, __c1, 0)),
         })
           .pipe(
             T.Http({
@@ -3014,12 +2099,12 @@ function __c1(j: number): any {
         identifier: "SilencesCreateRequestBodyItem",
       });
     case 4:
-      return S.Array(SilencesCreateRequestBodyItem);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          body: SilencesCreateRequestBodyList.pipe(T.HttpBody()),
+          body: __S(12, __c1, 4).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -3126,25 +2211,22 @@ function __c2(j: number): any {
         S.Struct({
           eligible: S.optional(S.NullOr(S.Boolean)),
           ready: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(DestinationsEligibleGetResultValueItemType)),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DestinationsEligibleGetResultValueItem",
       });
     case 6:
-      return S.Array(DestinationsEligibleGetResultValueItem);
+      return S.Array(__S(21, __c2, 5));
     case 7:
-      return S.Record(S.String, DestinationsEligibleGetResultValueList);
+      return S.Record(S.String, __S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        DestinationsEligibleGetResultMap.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(23, __c2, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetDestinationEligibleResponse",
       });
@@ -3174,11 +2256,11 @@ function __c3(j: number): any {
         identifier: "DestinationsPagerdutyGetResultItem",
       });
     case 3:
-      return S.Array(DestinationsPagerdutyGetResultItem);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
+          result: __S(27, __c3, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3210,7 +2292,7 @@ function __c3(j: number): any {
           lastSuccess: S.optional(S.NullOr(S.String).pipe(T.Body("last_success"))),
           name: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(DestinationsWebhooksGetResponseType)),
+          type: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3238,126 +2320,66 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(S.NullOr(PoliciesGetResponseFiltersActionsList)),
-          affectedAsns: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersAffectedAsnsList).pipe(T.Body("affected_asns")),
-          ),
+          actions: S.optional(S.NullOr(__S(6, __c0, 6))),
+          affectedAsns: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("affected_asns"))),
           affectedComponents: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersAffectedComponentsList).pipe(
-              T.Body("affected_components"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("affected_components")),
           ),
           affectedLocations: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersAffectedLocationsList).pipe(
-              T.Body("affected_locations"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("affected_locations")),
           ),
-          airportCode: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersAirportCodeList).pipe(T.Body("airport_code")),
-          ),
+          airportCode: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("airport_code"))),
           alertTriggerPreferences: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersAlertTriggerPreferencesList).pipe(
-              T.Body("alert_trigger_preferences"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("alert_trigger_preferences")),
           ),
           alertTriggerPreferencesValue: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersAlertTriggerPreferencesValueList).pipe(
-              T.Body("alert_trigger_preferences_value"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("alert_trigger_preferences_value")),
           ),
-          enabled: S.optional(S.NullOr(PoliciesGetResponseFiltersEnabledList)),
-          environment: S.optional(S.NullOr(PoliciesGetResponseFiltersEnvironmentList)),
-          event: S.optional(S.NullOr(PoliciesGetResponseFiltersEventList)),
-          eventSource: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersEventSourceList).pipe(T.Body("event_source")),
-          ),
-          eventType: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersEventTypeList).pipe(T.Body("event_type")),
-          ),
-          groupBy: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersGroupByList).pipe(T.Body("group_by")),
-          ),
-          healthCheckId: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersHealthCheckIdList).pipe(T.Body("health_check_id")),
-          ),
-          incidentImpact: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersIncidentImpactList).pipe(T.Body("incident_impact")),
-          ),
-          inputId: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersInputIdList).pipe(T.Body("input_id")),
-          ),
-          insightClass: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersInsightClassList).pipe(T.Body("insight_class")),
-          ),
-          limit: S.optional(S.NullOr(PoliciesGetResponseFiltersLimitList)),
-          logoTag: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersLogoTagList).pipe(T.Body("logo_tag")),
-          ),
+          enabled: S.optional(S.NullOr(__S(6, __c0, 6))),
+          environment: S.optional(S.NullOr(__S(6, __c0, 6))),
+          event: S.optional(S.NullOr(__S(6, __c0, 6))),
+          eventSource: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("event_source"))),
+          eventType: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("event_type"))),
+          groupBy: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("group_by"))),
+          healthCheckId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("health_check_id"))),
+          incidentImpact: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("incident_impact"))),
+          inputId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("input_id"))),
+          insightClass: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("insight_class"))),
+          limit: S.optional(S.NullOr(__S(6, __c0, 6))),
+          logoTag: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("logo_tag"))),
           megabitsPerSecond: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersMegabitsPerSecondList).pipe(
-              T.Body("megabits_per_second"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("megabits_per_second")),
           ),
-          newHealth: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersNewHealthList).pipe(T.Body("new_health")),
-          ),
-          newStatus: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersNewStatusList).pipe(T.Body("new_status")),
-          ),
+          newHealth: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("new_health"))),
+          newStatus: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("new_status"))),
           packetsPerSecond: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersPacketsPerSecondList).pipe(
-              T.Body("packets_per_second"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("packets_per_second")),
           ),
-          poolId: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersPoolIdList).pipe(T.Body("pool_id")),
-          ),
-          popNames: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersPopNamesList).pipe(T.Body("pop_names")),
-          ),
-          product: S.optional(S.NullOr(PoliciesGetResponseFiltersProductList)),
-          projectId: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersProjectIdList).pipe(T.Body("project_id")),
-          ),
-          protocol: S.optional(S.NullOr(PoliciesGetResponseFiltersProtocolList)),
-          queryTag: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersQueryTagList).pipe(T.Body("query_tag")),
-          ),
+          poolId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("pool_id"))),
+          popNames: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("pop_names"))),
+          product: S.optional(S.NullOr(__S(6, __c0, 6))),
+          projectId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("project_id"))),
+          protocol: S.optional(S.NullOr(__S(6, __c0, 6))),
+          queryTag: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("query_tag"))),
           requestsPerSecond: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersRequestsPerSecondList).pipe(
-              T.Body("requests_per_second"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("requests_per_second")),
           ),
-          selectors: S.optional(S.NullOr(PoliciesGetResponseFiltersSelectorsList)),
-          services: S.optional(S.NullOr(PoliciesGetResponseFiltersServicesList)),
-          slo: S.optional(S.NullOr(PoliciesGetResponseFiltersSloList)),
-          status: S.optional(S.NullOr(PoliciesGetResponseFiltersStatusList)),
-          targetHostname: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersTargetHostnameList).pipe(T.Body("target_hostname")),
-          ),
-          targetIp: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersTargetIpList).pipe(T.Body("target_ip")),
-          ),
-          targetZoneName: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersTargetZoneNameList).pipe(T.Body("target_zone_name")),
-          ),
-          tokenId: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersTokenIdList).pipe(T.Body("token_id")),
-          ),
+          selectors: S.optional(S.NullOr(__S(6, __c0, 6))),
+          services: S.optional(S.NullOr(__S(6, __c0, 6))),
+          slo: S.optional(S.NullOr(__S(6, __c0, 6))),
+          status: S.optional(S.NullOr(__S(6, __c0, 6))),
+          targetHostname: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("target_hostname"))),
+          targetIp: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("target_ip"))),
+          targetZoneName: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("target_zone_name"))),
+          tokenId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("token_id"))),
           trafficExclusions: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersTrafficExclusionsList).pipe(
-              T.Body("traffic_exclusions"),
-            ),
+            S.NullOr(__S(7, __c0, 7)).pipe(T.Body("traffic_exclusions")),
           ),
-          tunnelId: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersTunnelIdList).pipe(T.Body("tunnel_id")),
-          ),
-          tunnelName: S.optional(
-            S.NullOr(PoliciesGetResponseFiltersTunnelNameList).pipe(T.Body("tunnel_name")),
-          ),
-          type: S.optional(S.NullOr(PoliciesGetResponseFiltersTypeList)),
-          where: S.optional(S.NullOr(PoliciesGetResponseFiltersWhereList)),
-          zones: S.optional(S.NullOr(PoliciesGetResponseFiltersZonesList)),
+          tunnelId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("tunnel_id"))),
+          tunnelName: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("tunnel_name"))),
+          type: S.optional(S.NullOr(__S(6, __c0, 6))),
+          where: S.optional(S.NullOr(__S(6, __c0, 6))),
+          zones: S.optional(S.NullOr(__S(6, __c0, 6))),
         }),
       ).annotate({
         identifier: "PoliciesGetResponseFilters",
@@ -3371,13 +2393,13 @@ function __c4(j: number): any {
         identifier: "PoliciesGetResponseMechanismsEmailItem",
       });
     case 2:
-      return S.Array(PoliciesGetResponseMechanismsEmailItem);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(S.NullOr(PoliciesGetResponseMechanismsEmailList)),
-          pagerduty: S.optional(S.NullOr(PoliciesGetResponseMechanismsPagerdutyList)),
-          webhooks: S.optional(S.NullOr(PoliciesGetResponseMechanismsWebhooksList)),
+          email: S.optional(S.NullOr(__S(34, __c4, 2))),
+          pagerduty: S.optional(S.NullOr(__S(34, __c4, 2))),
+          webhooks: S.optional(S.NullOr(__S(34, __c4, 2))),
         }),
       ).annotate({
         identifier: "PoliciesGetResponseMechanisms",
@@ -3387,12 +2409,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           alertInterval: S.optional(S.NullOr(S.String).pipe(T.Body("alert_interval"))),
-          alertType: S.optional(S.NullOr(PoliciesGetResponseAlertType).pipe(T.Body("alert_type"))),
+          alertType: S.optional(S.NullOr(S.String).pipe(T.Body("alert_type"))),
           created: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          filters: S.optional(S.NullOr(PoliciesGetResponseFilters)),
-          mechanisms: S.optional(S.NullOr(PoliciesGetResponseMechanisms)),
+          filters: S.optional(S.NullOr(__S(32, __c4, 0))),
+          mechanisms: S.optional(S.NullOr(__S(35, __c4, 3))),
           modified: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3467,23 +2489,19 @@ function __c5(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.NullOr(S.String).pipe(T.Body("display_name"))),
-          filterOptions: S.optional(
-            S.NullOr(AvailableAlertsListResultValueItemFilterOptionsList).pipe(
-              T.Body("filter_options"),
-            ),
-          ),
+          filterOptions: S.optional(S.NullOr(__S(41, __c5, 1)).pipe(T.Body("filter_options"))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "AvailableAlertsListResultValueItem",
       });
     case 3:
-      return S.Array(AvailableAlertsListResultValueItem);
+      return S.Array(__S(42, __c5, 2));
     case 4:
-      return S.Record(S.String, AvailableAlertsListResultValueList);
+      return S.Record(S.String, __S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
-        AvailableAlertsListResultMap.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(44, __c5, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListAvailableAlertsResponse",
       });
@@ -3512,7 +2530,7 @@ function __c5(j: number): any {
           lastSuccess: S.optional(S.NullOr(S.String).pipe(T.Body("last_success"))),
           name: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(DestinationsWebhooksListResultItemType)),
+          type: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -3523,11 +2541,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DestinationsWebhooksListResultItem);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
+          result: __S(48, __c6, 0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3555,20 +2573,18 @@ function __c6(j: number): any {
           alertType: S.optional(S.NullOr(S.String).pipe(T.Body("alert_type"))),
           description: S.optional(S.NullOr(S.String)),
           mechanism: S.optional(S.NullOr(S.String)),
-          mechanismType: S.optional(
-            S.NullOr(HistoryListResultItemMechanismType).pipe(T.Body("mechanism_type")),
-          ),
+          mechanismType: S.optional(S.NullOr(S.String).pipe(T.Body("mechanism_type"))),
           name: S.optional(S.NullOr(S.String)),
           policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
           sent: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "HistoryListResultItem" });
     case 4:
-      return S.Array(HistoryListResultItem);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: HistoryListResultList.pipe(T.EnvelopePayload()),
+          result: __S(52, __c6, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHistoriesResponse" });
@@ -3589,134 +2605,66 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(S.NullOr(PoliciesListResultItemFiltersActionsList)),
-          affectedAsns: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersAffectedAsnsList).pipe(T.Body("affected_asns")),
-          ),
+          actions: S.optional(S.NullOr(__S(6, __c0, 6))),
+          affectedAsns: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("affected_asns"))),
           affectedComponents: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersAffectedComponentsList).pipe(
-              T.Body("affected_components"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("affected_components")),
           ),
           affectedLocations: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersAffectedLocationsList).pipe(
-              T.Body("affected_locations"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("affected_locations")),
           ),
-          airportCode: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersAirportCodeList).pipe(T.Body("airport_code")),
-          ),
+          airportCode: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("airport_code"))),
           alertTriggerPreferences: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersAlertTriggerPreferencesList).pipe(
-              T.Body("alert_trigger_preferences"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("alert_trigger_preferences")),
           ),
           alertTriggerPreferencesValue: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersAlertTriggerPreferencesValueList).pipe(
-              T.Body("alert_trigger_preferences_value"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("alert_trigger_preferences_value")),
           ),
-          enabled: S.optional(S.NullOr(PoliciesListResultItemFiltersEnabledList)),
-          environment: S.optional(S.NullOr(PoliciesListResultItemFiltersEnvironmentList)),
-          event: S.optional(S.NullOr(PoliciesListResultItemFiltersEventList)),
-          eventSource: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersEventSourceList).pipe(T.Body("event_source")),
-          ),
-          eventType: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersEventTypeList).pipe(T.Body("event_type")),
-          ),
-          groupBy: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersGroupByList).pipe(T.Body("group_by")),
-          ),
-          healthCheckId: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersHealthCheckIdList).pipe(
-              T.Body("health_check_id"),
-            ),
-          ),
-          incidentImpact: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersIncidentImpactList).pipe(
-              T.Body("incident_impact"),
-            ),
-          ),
-          inputId: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersInputIdList).pipe(T.Body("input_id")),
-          ),
-          insightClass: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersInsightClassList).pipe(T.Body("insight_class")),
-          ),
-          limit: S.optional(S.NullOr(PoliciesListResultItemFiltersLimitList)),
-          logoTag: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersLogoTagList).pipe(T.Body("logo_tag")),
-          ),
+          enabled: S.optional(S.NullOr(__S(6, __c0, 6))),
+          environment: S.optional(S.NullOr(__S(6, __c0, 6))),
+          event: S.optional(S.NullOr(__S(6, __c0, 6))),
+          eventSource: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("event_source"))),
+          eventType: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("event_type"))),
+          groupBy: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("group_by"))),
+          healthCheckId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("health_check_id"))),
+          incidentImpact: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("incident_impact"))),
+          inputId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("input_id"))),
+          insightClass: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("insight_class"))),
+          limit: S.optional(S.NullOr(__S(6, __c0, 6))),
+          logoTag: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("logo_tag"))),
           megabitsPerSecond: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersMegabitsPerSecondList).pipe(
-              T.Body("megabits_per_second"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("megabits_per_second")),
           ),
-          newHealth: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersNewHealthList).pipe(T.Body("new_health")),
-          ),
-          newStatus: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersNewStatusList).pipe(T.Body("new_status")),
-          ),
+          newHealth: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("new_health"))),
+          newStatus: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("new_status"))),
           packetsPerSecond: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersPacketsPerSecondList).pipe(
-              T.Body("packets_per_second"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("packets_per_second")),
           ),
-          poolId: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersPoolIdList).pipe(T.Body("pool_id")),
-          ),
-          popNames: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersPopNamesList).pipe(T.Body("pop_names")),
-          ),
-          product: S.optional(S.NullOr(PoliciesListResultItemFiltersProductList)),
-          projectId: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersProjectIdList).pipe(T.Body("project_id")),
-          ),
-          protocol: S.optional(S.NullOr(PoliciesListResultItemFiltersProtocolList)),
-          queryTag: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersQueryTagList).pipe(T.Body("query_tag")),
-          ),
+          poolId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("pool_id"))),
+          popNames: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("pop_names"))),
+          product: S.optional(S.NullOr(__S(6, __c0, 6))),
+          projectId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("project_id"))),
+          protocol: S.optional(S.NullOr(__S(6, __c0, 6))),
+          queryTag: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("query_tag"))),
           requestsPerSecond: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersRequestsPerSecondList).pipe(
-              T.Body("requests_per_second"),
-            ),
+            S.NullOr(__S(6, __c0, 6)).pipe(T.Body("requests_per_second")),
           ),
-          selectors: S.optional(S.NullOr(PoliciesListResultItemFiltersSelectorsList)),
-          services: S.optional(S.NullOr(PoliciesListResultItemFiltersServicesList)),
-          slo: S.optional(S.NullOr(PoliciesListResultItemFiltersSloList)),
-          status: S.optional(S.NullOr(PoliciesListResultItemFiltersStatusList)),
-          targetHostname: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersTargetHostnameList).pipe(
-              T.Body("target_hostname"),
-            ),
-          ),
-          targetIp: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersTargetIpList).pipe(T.Body("target_ip")),
-          ),
-          targetZoneName: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersTargetZoneNameList).pipe(
-              T.Body("target_zone_name"),
-            ),
-          ),
-          tokenId: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersTokenIdList).pipe(T.Body("token_id")),
-          ),
+          selectors: S.optional(S.NullOr(__S(6, __c0, 6))),
+          services: S.optional(S.NullOr(__S(6, __c0, 6))),
+          slo: S.optional(S.NullOr(__S(6, __c0, 6))),
+          status: S.optional(S.NullOr(__S(6, __c0, 6))),
+          targetHostname: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("target_hostname"))),
+          targetIp: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("target_ip"))),
+          targetZoneName: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("target_zone_name"))),
+          tokenId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("token_id"))),
           trafficExclusions: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersTrafficExclusionsList).pipe(
-              T.Body("traffic_exclusions"),
-            ),
+            S.NullOr(__S(7, __c0, 7)).pipe(T.Body("traffic_exclusions")),
           ),
-          tunnelId: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersTunnelIdList).pipe(T.Body("tunnel_id")),
-          ),
-          tunnelName: S.optional(
-            S.NullOr(PoliciesListResultItemFiltersTunnelNameList).pipe(T.Body("tunnel_name")),
-          ),
-          type: S.optional(S.NullOr(PoliciesListResultItemFiltersTypeList)),
-          where: S.optional(S.NullOr(PoliciesListResultItemFiltersWhereList)),
-          zones: S.optional(S.NullOr(PoliciesListResultItemFiltersZonesList)),
+          tunnelId: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("tunnel_id"))),
+          tunnelName: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("tunnel_name"))),
+          type: S.optional(S.NullOr(__S(6, __c0, 6))),
+          where: S.optional(S.NullOr(__S(6, __c0, 6))),
+          zones: S.optional(S.NullOr(__S(6, __c0, 6))),
         }),
       ).annotate({
         identifier: "PoliciesListResultItemFilters",
@@ -3730,24 +2678,22 @@ function __c7(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           alertInterval: S.optional(S.NullOr(S.String).pipe(T.Body("alert_interval"))),
-          alertType: S.optional(
-            S.NullOr(PoliciesListResultItemAlertType).pipe(T.Body("alert_type")),
-          ),
+          alertType: S.optional(S.NullOr(S.String).pipe(T.Body("alert_type"))),
           created: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          filters: S.optional(S.NullOr(PoliciesListResultItemFilters)),
-          mechanisms: S.optional(S.NullOr(PoliciesListResultItemMechanisms)),
+          filters: S.optional(S.NullOr(__S(55, __c6, 7))),
+          mechanisms: S.optional(S.NullOr(__S(35, __c4, 3))),
           modified: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PoliciesListResultItem" });
     case 1:
-      return S.Array(PoliciesListResultItem);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: PoliciesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(57, __c7, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPoliciesResponse" });
@@ -3777,11 +2723,11 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "SilencesListResultItem" });
     case 5:
-      return S.Array(SilencesListResultItem);
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: SilencesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(61, __c7, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSilencesResponse" });
@@ -3812,96 +2758,54 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(PoliciesUpdateRequestFiltersActionsList),
-          affectedAsns: S.optional(
-            PoliciesUpdateRequestFiltersAffectedAsnsList.pipe(T.Body("affected_asns")),
-          ),
-          affectedComponents: S.optional(
-            PoliciesUpdateRequestFiltersAffectedComponentsList.pipe(T.Body("affected_components")),
-          ),
-          affectedLocations: S.optional(
-            PoliciesUpdateRequestFiltersAffectedLocationsList.pipe(T.Body("affected_locations")),
-          ),
-          airportCode: S.optional(
-            PoliciesUpdateRequestFiltersAirportCodeList.pipe(T.Body("airport_code")),
-          ),
+          actions: S.optional(__S(6, __c0, 6)),
+          affectedAsns: S.optional(__S(6, __c0, 6).pipe(T.Body("affected_asns"))),
+          affectedComponents: S.optional(__S(6, __c0, 6).pipe(T.Body("affected_components"))),
+          affectedLocations: S.optional(__S(6, __c0, 6).pipe(T.Body("affected_locations"))),
+          airportCode: S.optional(__S(6, __c0, 6).pipe(T.Body("airport_code"))),
           alertTriggerPreferences: S.optional(
-            PoliciesUpdateRequestFiltersAlertTriggerPreferencesList.pipe(
-              T.Body("alert_trigger_preferences"),
-            ),
+            __S(6, __c0, 6).pipe(T.Body("alert_trigger_preferences")),
           ),
           alertTriggerPreferencesValue: S.optional(
-            PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList.pipe(
-              T.Body("alert_trigger_preferences_value"),
-            ),
+            __S(6, __c0, 6).pipe(T.Body("alert_trigger_preferences_value")),
           ),
-          enabled: S.optional(PoliciesUpdateRequestFiltersEnabledList),
-          environment: S.optional(PoliciesUpdateRequestFiltersEnvironmentList),
-          event: S.optional(PoliciesUpdateRequestFiltersEventList),
-          eventSource: S.optional(
-            PoliciesUpdateRequestFiltersEventSourceList.pipe(T.Body("event_source")),
-          ),
-          eventType: S.optional(
-            PoliciesUpdateRequestFiltersEventTypeList.pipe(T.Body("event_type")),
-          ),
-          groupBy: S.optional(PoliciesUpdateRequestFiltersGroupByList.pipe(T.Body("group_by"))),
-          healthCheckId: S.optional(
-            PoliciesUpdateRequestFiltersHealthCheckIdList.pipe(T.Body("health_check_id")),
-          ),
-          incidentImpact: S.optional(
-            PoliciesUpdateRequestFiltersIncidentImpactList.pipe(T.Body("incident_impact")),
-          ),
-          inputId: S.optional(PoliciesUpdateRequestFiltersInputIdList.pipe(T.Body("input_id"))),
-          insightClass: S.optional(
-            PoliciesUpdateRequestFiltersInsightClassList.pipe(T.Body("insight_class")),
-          ),
-          limit: S.optional(PoliciesUpdateRequestFiltersLimitList),
-          logoTag: S.optional(PoliciesUpdateRequestFiltersLogoTagList.pipe(T.Body("logo_tag"))),
-          megabitsPerSecond: S.optional(
-            PoliciesUpdateRequestFiltersMegabitsPerSecondList.pipe(T.Body("megabits_per_second")),
-          ),
-          newHealth: S.optional(
-            PoliciesUpdateRequestFiltersNewHealthList.pipe(T.Body("new_health")),
-          ),
-          newStatus: S.optional(
-            PoliciesUpdateRequestFiltersNewStatusList.pipe(T.Body("new_status")),
-          ),
-          packetsPerSecond: S.optional(
-            PoliciesUpdateRequestFiltersPacketsPerSecondList.pipe(T.Body("packets_per_second")),
-          ),
-          poolId: S.optional(PoliciesUpdateRequestFiltersPoolIdList.pipe(T.Body("pool_id"))),
-          popNames: S.optional(PoliciesUpdateRequestFiltersPopNamesList.pipe(T.Body("pop_names"))),
-          product: S.optional(PoliciesUpdateRequestFiltersProductList),
-          projectId: S.optional(
-            PoliciesUpdateRequestFiltersProjectIdList.pipe(T.Body("project_id")),
-          ),
-          protocol: S.optional(PoliciesUpdateRequestFiltersProtocolList),
-          queryTag: S.optional(PoliciesUpdateRequestFiltersQueryTagList.pipe(T.Body("query_tag"))),
-          requestsPerSecond: S.optional(
-            PoliciesUpdateRequestFiltersRequestsPerSecondList.pipe(T.Body("requests_per_second")),
-          ),
-          selectors: S.optional(PoliciesUpdateRequestFiltersSelectorsList),
-          services: S.optional(PoliciesUpdateRequestFiltersServicesList),
-          slo: S.optional(PoliciesUpdateRequestFiltersSloList),
-          status: S.optional(PoliciesUpdateRequestFiltersStatusList),
-          targetHostname: S.optional(
-            PoliciesUpdateRequestFiltersTargetHostnameList.pipe(T.Body("target_hostname")),
-          ),
-          targetIp: S.optional(PoliciesUpdateRequestFiltersTargetIpList.pipe(T.Body("target_ip"))),
-          targetZoneName: S.optional(
-            PoliciesUpdateRequestFiltersTargetZoneNameList.pipe(T.Body("target_zone_name")),
-          ),
-          tokenId: S.optional(PoliciesUpdateRequestFiltersTokenIdList.pipe(T.Body("token_id"))),
-          trafficExclusions: S.optional(
-            PoliciesUpdateRequestFiltersTrafficExclusionsList.pipe(T.Body("traffic_exclusions")),
-          ),
-          tunnelId: S.optional(PoliciesUpdateRequestFiltersTunnelIdList.pipe(T.Body("tunnel_id"))),
-          tunnelName: S.optional(
-            PoliciesUpdateRequestFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
-          ),
-          type: S.optional(PoliciesUpdateRequestFiltersTypeList),
-          where: S.optional(PoliciesUpdateRequestFiltersWhereList),
-          zones: S.optional(PoliciesUpdateRequestFiltersZonesList),
+          enabled: S.optional(__S(6, __c0, 6)),
+          environment: S.optional(__S(6, __c0, 6)),
+          event: S.optional(__S(6, __c0, 6)),
+          eventSource: S.optional(__S(6, __c0, 6).pipe(T.Body("event_source"))),
+          eventType: S.optional(__S(6, __c0, 6).pipe(T.Body("event_type"))),
+          groupBy: S.optional(__S(6, __c0, 6).pipe(T.Body("group_by"))),
+          healthCheckId: S.optional(__S(6, __c0, 6).pipe(T.Body("health_check_id"))),
+          incidentImpact: S.optional(__S(7, __c0, 7).pipe(T.Body("incident_impact"))),
+          inputId: S.optional(__S(6, __c0, 6).pipe(T.Body("input_id"))),
+          insightClass: S.optional(__S(6, __c0, 6).pipe(T.Body("insight_class"))),
+          limit: S.optional(__S(6, __c0, 6)),
+          logoTag: S.optional(__S(6, __c0, 6).pipe(T.Body("logo_tag"))),
+          megabitsPerSecond: S.optional(__S(6, __c0, 6).pipe(T.Body("megabits_per_second"))),
+          newHealth: S.optional(__S(6, __c0, 6).pipe(T.Body("new_health"))),
+          newStatus: S.optional(__S(6, __c0, 6).pipe(T.Body("new_status"))),
+          packetsPerSecond: S.optional(__S(6, __c0, 6).pipe(T.Body("packets_per_second"))),
+          poolId: S.optional(__S(6, __c0, 6).pipe(T.Body("pool_id"))),
+          popNames: S.optional(__S(6, __c0, 6).pipe(T.Body("pop_names"))),
+          product: S.optional(__S(6, __c0, 6)),
+          projectId: S.optional(__S(6, __c0, 6).pipe(T.Body("project_id"))),
+          protocol: S.optional(__S(6, __c0, 6)),
+          queryTag: S.optional(__S(6, __c0, 6).pipe(T.Body("query_tag"))),
+          requestsPerSecond: S.optional(__S(6, __c0, 6).pipe(T.Body("requests_per_second"))),
+          selectors: S.optional(__S(6, __c0, 6)),
+          services: S.optional(__S(6, __c0, 6)),
+          slo: S.optional(__S(6, __c0, 6)),
+          status: S.optional(__S(6, __c0, 6)),
+          targetHostname: S.optional(__S(6, __c0, 6).pipe(T.Body("target_hostname"))),
+          targetIp: S.optional(__S(6, __c0, 6).pipe(T.Body("target_ip"))),
+          targetZoneName: S.optional(__S(6, __c0, 6).pipe(T.Body("target_zone_name"))),
+          tokenId: S.optional(__S(6, __c0, 6).pipe(T.Body("token_id"))),
+          trafficExclusions: S.optional(__S(7, __c0, 7).pipe(T.Body("traffic_exclusions"))),
+          tunnelId: S.optional(__S(6, __c0, 6).pipe(T.Body("tunnel_id"))),
+          tunnelName: S.optional(__S(6, __c0, 6).pipe(T.Body("tunnel_name"))),
+          type: S.optional(__S(6, __c0, 6)),
+          where: S.optional(__S(6, __c0, 6)),
+          zones: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "PoliciesUpdateRequestFilters",
@@ -3912,11 +2816,11 @@ function __c8(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           policyId: S.String.pipe(T.Label("policy_id")),
           alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
-          alertType: S.optional(PoliciesUpdateRequestAlertType.pipe(T.Body("alert_type"))),
+          alertType: S.optional(S.String.pipe(T.Body("alert_type"))),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          filters: S.optional(PoliciesUpdateRequestFilters),
-          mechanisms: S.optional(PoliciesUpdateRequestMechanisms),
+          filters: S.optional(__S(64, __c8, 0)),
+          mechanisms: S.optional(__S(5, __c0, 5)),
           name: S.optional(S.String),
         })
           .pipe(
@@ -3939,12 +2843,12 @@ function __c8(j: number): any {
         identifier: "SilencesUpdateRequestBodyItem",
       });
     case 3:
-      return S.Array(SilencesUpdateRequestBodyItem);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          body: SilencesUpdateRequestBodyList.pipe(T.HttpBody()),
+          body: __S(67, __c8, 3).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -3956,4 +2860,9 @@ function __c8(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateSilenceRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

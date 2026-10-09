@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,21 +70,12 @@ export interface AccessibilityClustersProjectsHistoriesExecutionsStepsRequest {
   /** The accepted format is the canonical Unicode format with hyphen as a delimiter. Language must be lowercase, Language Script - Capitalized, Region - UPPERCASE. See http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for details. Required. */
   locale?: string;
 }
-const AccessibilityClustersProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>;
-
 export type SuggestionProtoPriorityEnum = "unknownPriority" | "error" | "warning" | "info";
-const SuggestionProtoPriorityEnum = S.String;
-
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
 export interface SafeHtmlProto {
   /** IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the top of .proto file for programming language packages with which to create or read this message. */
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
-const SafeHtmlProto = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SafeHtmlProto>;
-
 /** A rectangular region. */
 export interface RegionProto {
   /** The width, in pixels. Always set. */
@@ -94,8 +87,6 @@ export interface RegionProto {
   /** The top of the rectangle, in pixels. Always set. */
   topPx?: number;
 }
-const RegionProto = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RegionProto>;
-
 export interface SuggestionProto {
   /** Reference to a view element, identified by its resource name, if it has one. */
   resourceName?: string;
@@ -118,19 +109,13 @@ export interface SuggestionProto {
   /** Region within the screenshot that is relevant to this suggestion. Optional. */
   region?: RegionProto;
 }
-const SuggestionProto = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SuggestionProto>;
-
 export type SuggestionProtoList = Array<SuggestionProto>;
-const SuggestionProtoList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SuggestionProtoList>;
-
 export type SuggestionClusterProtoCategoryEnum =
   | "unknownCategory"
   | "contentLabeling"
   | "touchTargetSize"
   | "lowContrast"
   | "implementation";
-const SuggestionClusterProtoCategoryEnum = S.String;
-
 /** A set of similar suggestions that we suspect are closely related. This proto and most of the nested protos are branched from foxandcrown.prelaunchreport.service.SuggestionClusterProto, replacing PLR's dependencies with FTL's. */
 export interface SuggestionClusterProto {
   /** A sequence of suggestions. All of the suggestions within a cluster must have the same SuggestionPriority and belong to the same SuggestionCategory. Suggestions with the same screenshot URL should be adjacent. */
@@ -138,17 +123,7 @@ export interface SuggestionClusterProto {
   /** Category in which these types of suggestions should appear. Always set. */
   category?: SuggestionClusterProtoCategoryEnum;
 }
-const SuggestionClusterProto = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SuggestionClusterProto>;
-
 export type SuggestionClusterProtoList = Array<SuggestionClusterProto>;
-const SuggestionClusterProtoList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<SuggestionClusterProtoList>;
-
 /** Response message for AccessibilityService.ListStepAccessibilityClusters. */
 export interface ListStepAccessibilityClustersResponse {
   /** A full resource name of the step. For example, projects/my-project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef Always presents. */
@@ -156,11 +131,6 @@ export interface ListStepAccessibilityClustersResponse {
   /** A sequence of accessibility suggestions, grouped into clusters. Within the sequence, clusters that belong to the same SuggestionCategory should be adjacent. Within each category, clusters should be ordered by their SuggestionPriority (ERRORs first). The categories should be ordered by their highest priority cluster. */
   clusters?: SuggestionClusterProtoList;
 }
-const ListStepAccessibilityClustersResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListStepAccessibilityClustersResponse>;
-
 /** A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear). The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings. */
 export interface Timestamp {
   /** Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive. */
@@ -168,8 +138,6 @@ export interface Timestamp {
   /** Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. */
   nanos?: number;
 }
-const Timestamp = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Timestamp>;
-
 /** Resource representing a single performance measure or data point */
 export interface PerfSample {
   /** Timestamp of collection. */
@@ -177,21 +145,12 @@ export interface PerfSample {
   /** Value observed */
   value?: number;
 }
-const PerfSample = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PerfSample>;
-
 export type PerfSampleList = Array<PerfSample>;
-const PerfSampleList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PerfSampleList>;
-
 /** The request must provide up to a maximum of 5000 samples to be created; a larger sample size will cause an INVALID_ARGUMENT error */
 export interface BatchCreatePerfSamplesRequest {
   /** The set of PerfSamples to create should not include existing timestamps */
   perfSamples?: PerfSampleList;
 }
-const BatchCreatePerfSamplesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BatchCreatePerfSamplesRequest>;
-
 export interface BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest {
   /** The cloud project */
   projectId: string;
@@ -206,21 +165,10 @@ export interface BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamp
   /** Request body */
   body?: BatchCreatePerfSamplesRequest;
 }
-const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    4,
-  ) as any as S.Schema<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
-
 export interface BatchCreatePerfSamplesResponse {
   perfSamples?: PerfSampleList;
 }
-const BatchCreatePerfSamplesResponse =
-  BatchCreatePerfSamplesRequest as any as S.Schema<BatchCreatePerfSamplesResponse>;
-
 export type HistoryTestPlatformEnum = "unknownPlatform" | "android" | "ios";
-const HistoryTestPlatformEnum = S.String;
-
 /** A History represents a sorted list of Executions ordered by the start_timestamp_millis field (descending). It can be used to group all the Executions of a continuous build. Note that the ordering only operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to be used in order to order Executions per branch. */
 export interface History {
   /** A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set */
@@ -232,8 +180,6 @@ export interface History {
   /** The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown. */
   testPlatform?: HistoryTestPlatformEnum | (string & {});
 }
-const History = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<History>;
-
 export interface CreateProjectsHistoriesRequest {
   /** A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. */
   requestId?: string;
@@ -242,11 +188,6 @@ export interface CreateProjectsHistoriesRequest {
   /** Request body */
   body?: History;
 }
-const CreateProjectsHistoriesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateProjectsHistoriesRequest>;
-
 /** A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years. */
 export interface Duration {
   /** Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive. */
@@ -254,11 +195,7 @@ export interface Duration {
   /** Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years */
   seconds?: string;
 }
-const Duration = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Duration>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<StringList>;
-
 /** A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests. */
 export interface AndroidInstrumentationTest {
   /** The java package for the test to be executed. Required */
@@ -270,11 +207,6 @@ export interface AndroidInstrumentationTest {
   /** Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run. */
   testTargets?: StringList;
 }
-const AndroidInstrumentationTest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AndroidInstrumentationTest>;
-
 /** A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes. */
 export interface AndroidRoboTest {
   /** The runner class for the bootstrap. Optional */
@@ -288,8 +220,6 @@ export interface AndroidRoboTest {
   /** The max depth of the traversal stack Robo can explore. Optional */
   maxDepth?: number;
 }
-const AndroidRoboTest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AndroidRoboTest>;
-
 /** Android app information. */
 export interface AndroidAppInfo {
   /** The package name of the app. Required. */
@@ -301,12 +231,8 @@ export interface AndroidAppInfo {
   /** The name of the app. Optional */
   name?: string;
 }
-const AndroidAppInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AndroidAppInfo>;
-
 /** Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent. */
 export interface AndroidTestLoop {}
-const AndroidTestLoop = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AndroidTestLoop>;
-
 /** An Android mobile test specification. */
 export interface AndroidTest {
   /** Max time a test is allowed to run before it is automatically cancelled. */
@@ -320,8 +246,6 @@ export interface AndroidTest {
   /** An Android test loop. */
   androidTestLoop?: AndroidTestLoop;
 }
-const AndroidTest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AndroidTest>;
-
 /** A Robo test for an iOS application. */
 export type IosRoboTest = AndroidTestLoop;
 /** A test of an iOS application that uses the XCTest framework. */
@@ -331,22 +255,16 @@ export interface IosXcTest {
   /** Bundle ID of the app. */
   bundleId?: string;
 }
-const IosXcTest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<IosXcTest>;
-
 /** A game loop test of an iOS application. */
 export interface IosTestLoop {
   /** Bundle ID of the app. */
   bundleId?: string;
 }
-const IosTestLoop = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<IosTestLoop>;
-
 /** iOS app information */
 export interface IosAppInfo {
   /** The name of the app. Required */
   name?: string;
 }
-const IosAppInfo = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<IosAppInfo>;
-
 /** A iOS mobile test specification */
 export interface IosTest {
   /** Max time a test is allowed to run before it is automatically cancelled. */
@@ -360,8 +278,6 @@ export interface IosTest {
   /** Information about the application under test. */
   iosAppInfo?: IosAppInfo;
 }
-const IosTest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<IosTest>;
-
 /** The details about how to run the execution. */
 export interface Specification {
   /** An Android mobile test execution specification. */
@@ -369,26 +285,15 @@ export interface Specification {
   /** An iOS mobile test execution specification. */
   iosTest?: IosTest;
 }
-const Specification = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Specification>;
-
 export type ExecutionStateEnum = "unknownState" | "pending" | "inProgress" | "complete";
-const ExecutionStateEnum = S.String;
-
 /** One dimension of the matrix of different runs of a step. */
 export type MatrixDimensionDefinition = AndroidTestLoop;
 export type MatrixDimensionDefinitionList = Array<AndroidTestLoop>;
-const MatrixDimensionDefinitionList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MatrixDimensionDefinitionList>;
-
 /** Details for an outcome with a SUCCESS outcome summary. LINT.IfChange */
 export interface SuccessDetail {
   /** If a native process other than the app crashed. */
   otherNativeCrash?: boolean;
 }
-const SuccessDetail = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SuccessDetail>;
-
 /** Details for an outcome with a FAILURE outcome summary. */
 export interface FailureDetail {
   /** If the failure was severe because the system (app) under test crashed. */
@@ -406,8 +311,6 @@ export interface FailureDetail {
   /** If the device ran out of memory during a test, causing the test to crash. */
   deviceOutOfMemory?: boolean;
 }
-const FailureDetail = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<FailureDetail>;
-
 /** Details for an outcome with a SKIPPED outcome summary. */
 export interface SkippedDetail {
   /** Indicates that the test could not be scheduled in the requested time because no suitable device was available. */
@@ -419,8 +322,6 @@ export interface SkippedDetail {
   /** If the requested OS version doesn't run on the specific device model. */
   incompatibleDevice?: boolean;
 }
-const SkippedDetail = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SkippedDetail>;
-
 export type OutcomeSummaryEnum =
   | "unset"
   | "success"
@@ -428,8 +329,6 @@ export type OutcomeSummaryEnum =
   | "inconclusive"
   | "skipped"
   | "flaky";
-const OutcomeSummaryEnum = S.String;
-
 /** Details for an outcome with an INCONCLUSIVE outcome summary. */
 export interface InconclusiveDetail {
   /** If the test runner could not determine success or failure because the test depends on a component other than the system under test which failed. For example, a mobile test requires provisioning a device where the test executes, and that provisioning can fail. */
@@ -439,8 +338,6 @@ export interface InconclusiveDetail {
   /** If results are being provided to the user in certain cases of infrastructure failures */
   hasErrorLogs?: boolean;
 }
-const InconclusiveDetail = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<InconclusiveDetail>;
-
 /** Interprets a result so that humans and machines can act on it. */
 export interface Outcome {
   /** More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional */
@@ -454,8 +351,6 @@ export interface Outcome {
   /** More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional */
   inconclusiveDetail?: InconclusiveDetail;
 }
-const Outcome = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Outcome>;
-
 /** An Execution represents a collection of Steps. For instance, it could represent: - a mobile test executed across a range of device configurations - a jenkins job with a build step followed by a test step The maximum size of an execution message is 1 MiB. An Execution can be updated until its state is set to COMPLETE at which point it becomes immutable. */
 export interface Execution {
   /** Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional */
@@ -475,8 +370,6 @@ export interface Execution {
   /** Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional */
   outcome?: Outcome;
 }
-const Execution = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Execution>;
-
 export interface CreateProjectsHistoriesExecutionsRequest {
   /** A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. */
   requestId?: string;
@@ -487,18 +380,11 @@ export interface CreateProjectsHistoriesExecutionsRequest {
   /** Request body */
   body?: Execution;
 }
-const CreateProjectsHistoriesExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateProjectsHistoriesExecutionsRequest>;
-
 /** A reference to a file. */
 export interface FileReference {
   /** The URI of a file stored in Google Cloud Storage. For example: `http://storage.googleapis.com/mybucket/path/to/test.xml` or in Cloud Storage URI format: `gs://mybucket/path/to/test.xml` with version-specific info, `gs://mybucket/path/to/test.xml#1360383693690000` An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set */
   fileUri?: string;
 }
-const FileReference = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<FileReference>;
-
 /** A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step. */
 export interface TestSuiteOverview {
   /** Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never */
@@ -518,25 +404,14 @@ export interface TestSuiteOverview {
   /** Number of flaky test cases, set by the service by rolling up flaky test attempts. Present only for rollup test suite overview at environment level. A step cannot have flaky test cases. */
   flakyCount?: number;
 }
-const TestSuiteOverview = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<TestSuiteOverview>;
-
 export type TestSuiteOverviewList = Array<TestSuiteOverview>;
-const TestSuiteOverviewList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<TestSuiteOverviewList>;
-
 export type TestIssueCategoryEnum = "unspecifiedCategory" | "common" | "robo";
-const TestIssueCategoryEnum = S.String;
-
 export type TestIssueSeverityEnum =
   | "unspecifiedSeverity"
   | "info"
   | "suggestion"
   | "warning"
   | "severe";
-const TestIssueSeverityEnum = S.String;
-
 /** `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" } */
 export interface Any {
   /** Must be a valid serialized protocol buffer of the above specified type. */
@@ -544,8 +419,6 @@ export interface Any {
   /** A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics. */
   typeUrl?: string;
 }
-const Any = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Any>;
-
 export type TestIssueTypeEnum =
   | "unspecifiedType"
   | "fatalException"
@@ -582,15 +455,11 @@ export type TestIssueTypeEnum =
   | "assetIssue"
   | "licensingProtectionTermination"
   | "antiTamperingTermination";
-const TestIssueTypeEnum = S.String;
-
 /** A stacktrace. */
 export interface StackTrace {
   /** The stack trace message. Required */
   exception?: string;
 }
-const StackTrace = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<StackTrace>;
-
 /** An issue detected occurring during a test execution. */
 export interface TestIssue {
   /** Category of issue. Required. */
@@ -606,28 +475,18 @@ export interface TestIssue {
   /** Deprecated in favor of stack trace fields inside specific warnings. */
   stackTrace?: StackTrace;
 }
-const TestIssue = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<TestIssue>;
-
 export type TestIssueList = Array<TestIssue>;
-const TestIssueList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TestIssueList>;
-
 /** Testing timing break down to know phases. */
 export interface TestTiming {
   /** How long it took to run the test process. - In response: present if previously set. - In create/update request: optional */
   testProcessDuration?: Duration;
 }
-const TestTiming = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TestTiming>;
-
 export type FileReferenceList = Array<FileReference>;
-const FileReferenceList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<FileReferenceList>;
-
 /** Exit code from a tool execution. */
 export interface ToolExitCode {
   /** Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set */
   number?: number;
 }
-const ToolExitCode = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ToolExitCode>;
-
 /** A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name. */
 export interface TestCaseReference {
   /** The name of the test case. Required. */
@@ -637,8 +496,6 @@ export interface TestCaseReference {
   /** The name of the test suite to which this test case belongs. */
   testSuiteName?: string;
 }
-const TestCaseReference = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TestCaseReference>;
-
 /** A reference to a ToolExecution output file. */
 export interface ToolOutputReference {
   /** The creation time of the file. - In response: present if set by create/update request - In create/update request: optional */
@@ -648,14 +505,7 @@ export interface ToolOutputReference {
   /** The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional */
   testCase?: TestCaseReference;
 }
-const ToolOutputReference = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ToolOutputReference>;
-
 export type ToolOutputReferenceList = Array<ToolOutputReference>;
-const ToolOutputReferenceList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ToolOutputReferenceList>;
-
 /** An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code. */
 export interface ToolExecution {
   /** References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list */
@@ -667,8 +517,6 @@ export interface ToolExecution {
   /** The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set */
   commandLineArguments?: StringList;
 }
-const ToolExecution = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ToolExecution>;
-
 /** A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field. */
 export interface TestExecutionStep {
   /** List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead) */
@@ -680,8 +528,6 @@ export interface TestExecutionStep {
   /** Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional */
   toolExecution?: ToolExecution;
 }
-const TestExecutionStep = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TestExecutionStep>;
-
 export type PrimaryStepRollUpEnum =
   | "unset"
   | "success"
@@ -689,8 +535,6 @@ export type PrimaryStepRollUpEnum =
   | "inconclusive"
   | "skipped"
   | "flaky";
-const PrimaryStepRollUpEnum = S.String;
-
 export type IndividualOutcomeOutcomeSummaryEnum =
   | "unset"
   | "success"
@@ -698,8 +542,6 @@ export type IndividualOutcomeOutcomeSummaryEnum =
   | "inconclusive"
   | "skipped"
   | "flaky";
-const IndividualOutcomeOutcomeSummaryEnum = S.String;
-
 /** Step Id and outcome of each individual step that was run as a group with other steps with the same configuration. */
 export interface IndividualOutcome {
   /** Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0. */
@@ -709,14 +551,7 @@ export interface IndividualOutcome {
   runDuration?: Duration;
   outcomeSummary?: IndividualOutcomeOutcomeSummaryEnum | (string & {});
 }
-const IndividualOutcome = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<IndividualOutcome>;
-
 export type IndividualOutcomeList = Array<IndividualOutcome>;
-const IndividualOutcomeList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<IndividualOutcomeList>;
-
 /** Stores rollup test status of multiple steps that were run as a group and outcome of each individual step. */
 export interface PrimaryStep {
   /** Rollup test status of multiple steps that were run with the same configuration as a group. */
@@ -724,8 +559,6 @@ export interface PrimaryStep {
   /** Step Id and outcome of each individual step. */
   individualOutcome?: IndividualOutcomeList;
 }
-const PrimaryStep = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<PrimaryStep>;
-
 /** Details when multiple steps are run with the same configuration as a group. */
 export interface MultiStep {
   /** Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0. */
@@ -735,42 +568,22 @@ export interface MultiStep {
   /** Step Id of the primary (original) step, which might be this step. */
   primaryStepId?: string;
 }
-const MultiStep = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<MultiStep>;
-
 /** Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another. */
 export interface ToolExecutionStep {
   /** A Tool execution. - In response: present if set by create/update request - In create/update request: optional */
   toolExecution?: ToolExecution;
 }
-const ToolExecutionStep = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ToolExecutionStep>;
-
 export interface StepLabelsEntry {
   value?: string;
   key?: string;
 }
-const StepLabelsEntry = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<StepLabelsEntry>;
-
 export type StepLabelsEntryList = Array<StepLabelsEntry>;
-const StepLabelsEntryList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<StepLabelsEntryList>;
-
 export interface StepDimensionValueEntry {
   key?: string;
   value?: string;
 }
-const StepDimensionValueEntry = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<StepDimensionValueEntry>;
-
 export type StepDimensionValueEntryList = Array<StepDimensionValueEntry>;
-const StepDimensionValueEntryList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<StepDimensionValueEntryList>;
-
 export type StepStateEnum = "unknownState" | "pending" | "inProgress" | "complete";
-const StepStateEnum = S.String;
-
 /** A Step represents a single operation performed as part of Execution. A step can be used to represent the execution of a tool ( for example a test runner execution or an execution of a compiler). Steps can overlap (for instance two steps might have the same start time if some operations are done in parallel). Here is an example, let's consider that we have a continuous build is executing a test runner for each iteration. The workflow would look like: - user creates a Execution with id 1 - user creates a TestExecutionStep with id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep with id 100 to COMPLETE A Step can be updated until its state is set to COMPLETE at which points it becomes immutable. */
 export interface Step {
   /** An execution of a test runner. */
@@ -804,8 +617,6 @@ export interface Step {
   /** A description of this tool For example: mvn clean package -D skipTests=true - In response: present if set by create/update request - In create/update request: optional */
   description?: string;
 }
-const Step = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Step>;
-
 export interface CreateProjectsHistoriesExecutionsStepsRequest {
   /** A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. */
   requestId?: string;
@@ -818,19 +629,12 @@ export interface CreateProjectsHistoriesExecutionsStepsRequest {
   /** Request body */
   body?: Step;
 }
-const CreateProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsRequest>;
-
 export interface MemoryInfo {
   /** Maximum memory that can be allocated to the process in KiB */
   memoryCapInKibibyte?: string;
   /** Total memory available on the device in KiB */
   memoryTotalInKibibyte?: string;
 }
-const MemoryInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<MemoryInfo>;
-
 export interface CPUInfo {
   /** the CPU clock speed in GHz */
   cpuSpeedInGhz?: number;
@@ -839,8 +643,6 @@ export interface CPUInfo {
   /** description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A' */
   cpuProcessor?: string;
 }
-const CPUInfo = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CPUInfo>;
-
 /** Encapsulates performance environment info */
 export interface PerfEnvironment {
   /** Memory related environment info */
@@ -848,46 +650,28 @@ export interface PerfEnvironment {
   /** CPU related environment info */
   cpuInfo?: CPUInfo;
 }
-const PerfEnvironment = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<PerfEnvironment>;
-
 export interface AppStartTime {
   /** Optional. The time from app start to reaching the developer-reported "fully drawn" time. This is only stored if the app includes a call to Activity.reportFullyDrawn(). See https://developer.android.com/topic/performance/launch-time.html#time-full */
   fullyDrawnTime?: Duration;
   /** The time from app start to the first displayed activity being drawn, as reported in Logcat. See https://developer.android.com/topic/performance/launch-time.html#time-initial */
   initialDisplayTime?: Duration;
 }
-const AppStartTime = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<AppStartTime>;
-
 export type PerfMetricsSummaryPerfMetricsItemEnum =
   | "perfMetricTypeUnspecified"
   | "memory"
   | "cpu"
   | "network"
   | "graphics";
-const PerfMetricsSummaryPerfMetricsItemEnum = S.String;
-
 export type PerfMetricsSummaryPerfMetricsItemEnumList = Array<
   PerfMetricsSummaryPerfMetricsItemEnum | (string & {})
 >;
-const PerfMetricsSummaryPerfMetricsItemEnumList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PerfMetricsSummaryPerfMetricsItemEnumList>;
-
 export interface GraphicsStatsBucket {
   /** Number of frames in the bucket. */
   frameCount?: string;
   /** Lower bound of render time in milliseconds. */
   renderMillis?: string;
 }
-const GraphicsStatsBucket = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GraphicsStatsBucket>;
-
 export type GraphicsStatsBucketList = Array<GraphicsStatsBucket>;
-const GraphicsStatsBucketList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GraphicsStatsBucketList>;
-
 /** Graphics statistics for the App. The information is collected from 'adb shell dumpsys graphicsstats'. For more info see: https://developer.android.com/training/testing/performance.html Statistics will only be present for API 23+. */
 export interface GraphicsStats {
   /** Total "slow draw" events. */
@@ -915,8 +699,6 @@ export interface GraphicsStats {
   /** Total "slow bitmap upload" events. */
   slowBitmapUploadCount?: string;
 }
-const GraphicsStats = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GraphicsStats>;
-
 /** A summary of perf metrics collected and performance environment info */
 export interface PerfMetricsSummary {
   /** A tool results execution ID. @OutputOnly */
@@ -935,8 +717,6 @@ export interface PerfMetricsSummary {
   /** Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run. */
   graphicsStats?: GraphicsStats;
 }
-const PerfMetricsSummary = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<PerfMetricsSummary>;
-
 export interface CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest {
   /** A tool results execution ID. */
   executionId: string;
@@ -949,11 +729,6 @@ export interface CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest
   /** Request body */
   body?: PerfMetricsSummary;
 }
-const CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest>;
-
 export type BasicPerfSampleSeriesPerfUnitEnum =
   | "perfUnitUnspecified"
   | "kibibyte"
@@ -961,8 +736,6 @@ export type BasicPerfSampleSeriesPerfUnitEnum =
   | "bytesPerSecond"
   | "framesPerSecond"
   | "byte";
-const BasicPerfSampleSeriesPerfUnitEnum = S.String;
-
 export type BasicPerfSampleSeriesSampleSeriesLabelEnum =
   | "sampleSeriesTypeUnspecified"
   | "memoryRssPrivate"
@@ -977,27 +750,18 @@ export type BasicPerfSampleSeriesSampleSeriesLabelEnum =
   | "networkSent"
   | "networkReceived"
   | "graphicsFrameRate";
-const BasicPerfSampleSeriesSampleSeriesLabelEnum = S.String;
-
 export type BasicPerfSampleSeriesPerfMetricTypeEnum =
   | "perfMetricTypeUnspecified"
   | "memory"
   | "cpu"
   | "network"
   | "graphics";
-const BasicPerfSampleSeriesPerfMetricTypeEnum = S.String;
-
 /** Encapsulates the metadata for basic sample series represented by a line chart */
 export interface BasicPerfSampleSeries {
   perfUnit?: BasicPerfSampleSeriesPerfUnitEnum | (string & {});
   sampleSeriesLabel?: BasicPerfSampleSeriesSampleSeriesLabelEnum | (string & {});
   perfMetricType?: BasicPerfSampleSeriesPerfMetricTypeEnum | (string & {});
 }
-const BasicPerfSampleSeries = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<BasicPerfSampleSeries>;
-
 /** Resource representing a collection of performance samples (or data points) */
 export interface PerfSampleSeries {
   /** A tool results step ID. @OutputOnly */
@@ -1013,8 +777,6 @@ export interface PerfSampleSeries {
   /** A tool results history ID. @OutputOnly */
   historyId?: string;
 }
-const PerfSampleSeries = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PerfSampleSeries>;
-
 export interface CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results step ID. */
   stepId: string;
@@ -1027,11 +789,6 @@ export interface CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** Request body */
   body?: PerfSampleSeries;
 }
-const CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
-
 export interface GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest {
   /** A tool results step ID. */
   stepId: string;
@@ -1042,22 +799,12 @@ export interface GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest {
   /** A tool results execution ID. */
   executionId: string;
 }
-const GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest>;
-
 export interface GetProjectsHistoriesRequest {
   /** A Project id. Required. */
   projectId: string;
   /** A History id. Required. */
   historyId: string;
 }
-const GetProjectsHistoriesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetProjectsHistoriesRequest>;
-
 export interface GetProjectsHistoriesExecutionsRequest {
   /** A Project id. Required. */
   projectId: string;
@@ -1066,11 +813,6 @@ export interface GetProjectsHistoriesExecutionsRequest {
   /** An Execution id. Required. */
   executionId: string;
 }
-const GetProjectsHistoriesExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetProjectsHistoriesExecutionsRequest>;
-
 export interface GetProjectsHistoriesExecutionsClustersRequest {
   /** A Cluster id Required. */
   clusterId: string;
@@ -1081,11 +823,6 @@ export interface GetProjectsHistoriesExecutionsClustersRequest {
   /** An Execution id. Required. */
   executionId: string;
 }
-const GetProjectsHistoriesExecutionsClustersRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetProjectsHistoriesExecutionsClustersRequest>;
-
 export interface Screen {
   /** OS version of the device that the screenshot was taken on. Required. */
   version?: string;
@@ -1096,11 +833,7 @@ export interface Screen {
   /** Locale of the device that the screenshot was taken on. Required. */
   locale?: string;
 }
-const Screen = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Screen>;
-
 export type ScreenList = Array<Screen>;
-const ScreenList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ScreenList>;
-
 export interface ScreenshotCluster {
   /** A unique identifier for the cluster. @OutputOnly */
   clusterId?: string;
@@ -1111,8 +844,6 @@ export interface ScreenshotCluster {
   /** Full list of screens. */
   screens?: ScreenList;
 }
-const ScreenshotCluster = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ScreenshotCluster>;
-
 export interface GetProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. An Environment id. */
   environmentId: string;
@@ -1123,14 +854,7 @@ export interface GetProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. A History id. */
   historyId: string;
 }
-const GetProjectsHistoriesExecutionsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetProjectsHistoriesExecutionsEnvironmentsRequest>;
-
 export type MergedResultStateEnum = "unknownState" | "pending" | "inProgress" | "complete";
-const MergedResultStateEnum = S.String;
-
 /** Merged test result for environment. If the environment has only one step (no reruns or shards), then the merged result is the same as the step result. If the environment has multiple shards and/or reruns, then the results of shards and reruns that belong to the same environment are merged into one environment result. */
 export interface MergedResult {
   /** State of the resource */
@@ -1140,18 +864,11 @@ export interface MergedResult {
   /** Outcome of the resource */
   outcome?: Outcome;
 }
-const MergedResult = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<MergedResult>;
-
 export type EnvironmentDimensionValueEntry = StepDimensionValueEntry;
 export type EnvironmentDimensionValueEntryList = Array<StepDimensionValueEntry>;
-const EnvironmentDimensionValueEntryList =
-  StepDimensionValueEntryList as any as S.Schema<EnvironmentDimensionValueEntryList>;
-
 /** Lightweight summary of a step within this execution. */
 export type StepSummary = AndroidTestLoop;
 export type StepSummaryList = Array<AndroidTestLoop>;
-const StepSummaryList = MatrixDimensionDefinitionList as any as S.Schema<StepSummaryList>;
-
 /** Result summary for a shard in an environment. */
 export interface ShardSummary {
   /** Merged result of the shard. */
@@ -1159,11 +876,7 @@ export interface ShardSummary {
   /** Summaries of the steps belonging to the shard. With flaky_test_attempts enabled from TestExecutionService, more than one run (Step) can present. And the runs will be sorted by multistep_number. */
   runs?: StepSummaryList;
 }
-const ShardSummary = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ShardSummary>;
-
 export type ShardSummaryList = Array<ShardSummary>;
-const ShardSummaryList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ShardSummaryList>;
-
 /** The storage for test results. */
 export interface ResultsStorage {
   /** The path to the Xunit XML file. */
@@ -1171,8 +884,6 @@ export interface ResultsStorage {
   /** The root directory for test results. */
   resultsStoragePath?: FileReference;
 }
-const ResultsStorage = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ResultsStorage>;
-
 /** An Environment represents the set of test runs (Steps) from the parent Execution that are configured with the same set of dimensions (Model, Version, Locale, and Orientation). Multiple such runs occur particularly because of features like sharding (splitting up a test suite to run in parallel across devices) and reruns (running a test multiple times to check for different outcomes). */
 export interface Environment {
   /** A short human-readable name to display in the UI. Maximum of 100 characters. For example: Nexus 5, API 27. */
@@ -1198,8 +909,6 @@ export interface Environment {
   /** Output only. The time when the Environment was created. */
   creationTime?: Timestamp;
 }
-const Environment = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Environment>;
-
 export interface GetProjectsHistoriesExecutionsStepsRequest {
   /** A Execution id. Required. */
   executionId: string;
@@ -1210,11 +919,6 @@ export interface GetProjectsHistoriesExecutionsStepsRequest {
   /** A History id. Required. */
   historyId: string;
 }
-const GetProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetProjectsHistoriesExecutionsStepsRequest>;
-
 export interface GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results step ID. */
   stepId: string;
@@ -1227,11 +931,6 @@ export interface GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results history ID. */
   historyId: string;
 }
-const GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
-
 export interface GetProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A Execution id Required. */
   executionId: string;
@@ -1244,17 +943,8 @@ export interface GetProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A History id. Required. */
   historyId: string;
 }
-const GetProjectsHistoriesExecutionsStepsTestCasesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>;
-
 export type TestCaseStatusEnum = "passed" | "failed" | "error" | "skipped" | "flaky";
-const TestCaseStatusEnum = S.String;
-
 export type StackTraceList = Array<StackTrace>;
-const StackTraceList = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<StackTraceList>;
-
 export interface TestCase {
   /** The elapsed run time of the test case. Required. */
   elapsedTime?: Duration;
@@ -1275,17 +965,10 @@ export interface TestCase {
   /** The stack trace details if the test case failed or encountered an error. The maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated. Zero if the test case passed. */
   stackTraces?: StackTraceList;
 }
-const TestCase = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<TestCase>;
-
 export interface GetSettingsProjectsRequest {
   /** A Project id. Required. */
   projectId: string;
 }
-const GetSettingsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetSettingsProjectsRequest>;
-
 /** Per-project settings for the Tool Results service. */
 export interface ProjectSettings {
   /** The name of the Google Cloud Storage bucket to which results are written. By default, this is unset. In update request: optional In response: optional */
@@ -1293,17 +976,10 @@ export interface ProjectSettings {
   /** The name of the project's settings. Always of the form: projects/{project-id}/settings In update request: never set In response: always set */
   name?: string;
 }
-const ProjectSettings = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ProjectSettings>;
-
 export interface InitializeSettingsProjectsRequest {
   /** A Project id. Required. */
   projectId: string;
 }
-const InitializeSettingsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<InitializeSettingsProjectsRequest>;
-
 export interface ListProjectsHistoriesRequest {
   /** A continuation token to resume the query at the next item. Optional. */
   pageToken?: string;
@@ -1314,14 +990,7 @@ export interface ListProjectsHistoriesRequest {
   /** If set, only return histories with the given name. Optional. */
   filterByName?: string;
 }
-const ListProjectsHistoriesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListProjectsHistoriesRequest>;
-
 export type HistoryList = Array<History>;
-const HistoryList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<HistoryList>;
-
 /** Response message for HistoryService.List */
 export interface ListHistoriesResponse {
   /** Histories. */
@@ -1329,11 +998,6 @@ export interface ListHistoriesResponse {
   /** A continuation token to resume the query at the next item. Will only be set if there are more histories to fetch. Tokens are valid for up to one hour from the time of the first list request. For instance, if you make a list request at 1PM and use the token from this first request 10 minutes later, the token from this second response will only be valid for 50 minutes. */
   nextPageToken?: string;
 }
-const ListHistoriesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListHistoriesResponse>;
-
 export interface ListProjectsHistoriesExecutionsRequest {
   /** The maximum number of Executions to fetch. Default value: 25. The server will use this default if the field is not set or has a value of 0. Optional. */
   pageSize?: number;
@@ -1344,25 +1008,13 @@ export interface ListProjectsHistoriesExecutionsRequest {
   /** A continuation token to resume the query at the next item. Optional. */
   pageToken?: string;
 }
-const ListProjectsHistoriesExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>;
-
 export type ExecutionList = Array<Execution>;
-const ExecutionList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ExecutionList>;
-
 export interface ListExecutionsResponse {
   /** Executions. Always set. */
   executions?: ExecutionList;
   /** A continuation token to resume the query at the next item. Will only be set if there are more Executions to fetch. */
   nextPageToken?: string;
 }
-const ListExecutionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListExecutionsResponse>;
-
 export interface ListProjectsHistoriesExecutionsClustersRequest {
   /** A Project id. Required. */
   projectId: string;
@@ -1371,26 +1023,11 @@ export interface ListProjectsHistoriesExecutionsClustersRequest {
   /** An Execution id. Required. */
   executionId: string;
 }
-const ListProjectsHistoriesExecutionsClustersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>;
-
 export type ScreenshotClusterList = Array<ScreenshotCluster>;
-const ScreenshotClusterList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ScreenshotClusterList>;
-
 export interface ListScreenshotClustersResponse {
   /** The set of clusters associated with an execution Always set */
   clusters?: ScreenshotClusterList;
 }
-const ListScreenshotClustersResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListScreenshotClustersResponse>;
-
 export interface ListProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. A History id. */
   historyId: string;
@@ -1403,14 +1040,7 @@ export interface ListProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. A Project id. */
   projectId: string;
 }
-const ListProjectsHistoriesExecutionsEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>;
-
 export type EnvironmentList = Array<Environment>;
-const EnvironmentList = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<EnvironmentList>;
-
 /** Response message for EnvironmentService.ListEnvironments. */
 export interface ListEnvironmentsResponse {
   /** Environments. Always set. */
@@ -1424,11 +1054,6 @@ export interface ListEnvironmentsResponse {
   /** A History id. Always set. */
   historyId?: string;
 }
-const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListEnvironmentsResponse>;
-
 export interface ListProjectsHistoriesExecutionsStepsRequest {
   /** A History id. Required. */
   historyId: string;
@@ -1441,14 +1066,7 @@ export interface ListProjectsHistoriesExecutionsStepsRequest {
   /** A continuation token to resume the query at the next item. Optional. */
   pageToken?: string;
 }
-const ListProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>;
-
 export type StepList = Array<Step>;
-const StepList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<StepList>;
-
 /** Response message for StepService.List. */
 export interface ListStepsResponse {
   /** A continuation token to resume the query at the next item. If set, indicates that there are more steps to read, by calling list again with this value in the page_token field. */
@@ -1456,24 +1074,15 @@ export interface ListStepsResponse {
   /** Steps. */
   steps?: StepList;
 }
-const ListStepsResponse = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ListStepsResponse>;
-
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
   | "perfMetricTypeUnspecified"
   | "memory"
   | "cpu"
   | "network"
   | "graphics";
-const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum = S.String;
-
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList = Array<
   ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum | (string & {})
 >;
-const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList>;
-
 export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** The cloud project */
   projectId: string;
@@ -1486,26 +1095,11 @@ export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results history ID. */
   historyId: string;
 }
-const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
-
 export type PerfSampleSeriesList = Array<PerfSampleSeries>;
-const PerfSampleSeriesList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<PerfSampleSeriesList>;
-
 export interface ListPerfSampleSeriesResponse {
   /** The resulting PerfSampleSeries sorted by id */
   perfSampleSeries?: PerfSampleSeriesList;
 }
-const ListPerfSampleSeriesResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListPerfSampleSeriesResponse>;
-
 export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest {
   /** Optional, the next_page_token returned in the previous response */
   pageToken?: string;
@@ -1522,21 +1116,11 @@ export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequ
   /** A sample series id */
   sampleSeriesId: string;
 }
-const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
-
 export interface ListPerfSamplesResponse {
   perfSamples?: PerfSampleList;
   /** Optional, returned if result size exceeds the page size specified in the request (or the default page size, 500, if unspecified). It indicates the last sample timestamp to be used as page_token in subsequent request */
   nextPageToken?: string;
 }
-const ListPerfSamplesResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListPerfSamplesResponse>;
-
 export interface ListProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A History id. Required. */
   historyId: string;
@@ -1551,25 +1135,13 @@ export interface ListProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A Step id. Note: This step must include a TestExecutionStep. Required. */
   stepId: string;
 }
-const ListProjectsHistoriesExecutionsStepsTestCasesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>;
-
 export type TestCaseList = Array<TestCase>;
-const TestCaseList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<TestCaseList>;
-
 /** Response message for StepService.ListTestCases. */
 export interface ListTestCasesResponse {
   /** List of test cases. */
   testCases?: TestCaseList;
   nextPageToken?: string;
 }
-const ListTestCasesResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListTestCasesResponse>;
-
 export interface ListProjectsHistoriesExecutionsStepsThumbnailsRequest {
   /** A continuation token to resume the query at the next item. Optional. */
   pageToken?: string;
@@ -1584,11 +1156,6 @@ export interface ListProjectsHistoriesExecutionsStepsThumbnailsRequest {
   /** A History id. Required. */
   historyId: string;
 }
-const ListProjectsHistoriesExecutionsStepsThumbnailsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListProjectsHistoriesExecutionsStepsThumbnailsRequest>;
-
 /** A single thumbnail, with its size and format. */
 export interface Thumbnail {
   /** The height of the thumbnail, in pixels. Always set. */
@@ -1600,14 +1167,8 @@ export interface Thumbnail {
   /** The width of the thumbnail, in pixels. Always set. */
   widthPx?: number;
 }
-const Thumbnail = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<Thumbnail>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1617,8 +1178,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<Status>;
-
 /** An image, with a link to the main image and a thumbnail. */
 export interface Image {
   /** The thumbnail. */
@@ -1630,11 +1189,7 @@ export interface Image {
   /** The step to which the image is attached. Always set. */
   stepId?: string;
 }
-const Image = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<Image>;
-
 export type ImageList = Array<Image>;
-const ImageList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ImageList>;
-
 /** A response containing the thumbnails in a step. */
 export interface ListStepThumbnailsResponse {
   /** A continuation token to resume the query at the next item. If set, indicates that there are more thumbnails to read, by calling list again with this value in the page_token field. */
@@ -1642,11 +1197,6 @@ export interface ListStepThumbnailsResponse {
   /** A list of image data. Images are returned in a deterministic order; they are ordered by these factors, in order of importance: * First, by their associated test case. Images without a test case are considered greater than images with one. * Second, by their creation time. Images without a creation time are greater than images with one. * Third, by the order in which they were added to the step (by calls to CreateStep or UpdateStep). */
   thumbnails?: ImageList;
 }
-const ListStepThumbnailsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListStepThumbnailsResponse>;
-
 export interface PatchProjectsHistoriesExecutionsRequest {
   /** A Project id. Required. */
   projectId: string;
@@ -1659,11 +1209,6 @@ export interface PatchProjectsHistoriesExecutionsRequest {
   /** Request body */
   body?: Execution;
 }
-const PatchProjectsHistoriesExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<PatchProjectsHistoriesExecutionsRequest>;
-
 export interface PatchProjectsHistoriesExecutionsStepsRequest {
   /** A Execution id. Required. */
   executionId: string;
@@ -1678,21 +1223,11 @@ export interface PatchProjectsHistoriesExecutionsStepsRequest {
   /** Request body */
   body?: Step;
 }
-const PatchProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<PatchProjectsHistoriesExecutionsStepsRequest>;
-
 /** Request message for StepService.PublishXunitXmlFiles. */
 export interface PublishXunitXmlFilesRequest {
   /** URI of the Xunit XML files to publish. The maximum size of the file this reference is pointing to is 50MB. Required. */
   xunitXmlFiles?: FileReferenceList;
 }
-const PublishXunitXmlFilesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<PublishXunitXmlFilesRequest>;
-
 export interface PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest {
   /** A Execution id. Required. */
   executionId: string;
@@ -1705,11 +1240,6 @@ export interface PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest {
   /** Request body */
   body?: PublishXunitXmlFilesRequest;
 }
-const PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest>;
-
 export type AccessibilityClustersProjectsHistoriesExecutionsStepsError =
   | NotFound
   | Forbidden
@@ -1721,8 +1251,12 @@ export const accessibilityClustersProjectsHistoriesExecutionsSteps: API.Operatio
   AccessibilityClustersProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccessibilityClustersProjectsHistoriesExecutionsStepsRequest,
-  output: ListStepAccessibilityClustersResponse,
+  input: __S(
+    0,
+    __c0,
+    0,
+  ) as any as S.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ListStepAccessibilityClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1275,12 @@ export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples:
   BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
-  output: BatchCreatePerfSamplesResponse,
+  input: __S(
+    12,
+    __c1,
+    4,
+  ) as any as S.Schema<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<BatchCreatePerfSamplesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1299,8 @@ export const createProjectsHistories: API.OperationMethod<
   CreateProjectsHistoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsHistoriesRequest,
-  output: History,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateProjectsHistoriesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<History>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1319,8 @@ export const createProjectsHistoriesExecutions: API.OperationMethod<
   CreateProjectsHistoriesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsHistoriesExecutionsRequest,
-  output: Execution,
+  input: __S(34, __c4, 2) as any as S.Schema<CreateProjectsHistoriesExecutionsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1339,8 @@ export const createProjectsHistoriesExecutionsSteps: API.OperationMethod<
   CreateProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsHistoriesExecutionsStepsRequest,
-  output: Step,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1821,8 +1359,12 @@ export const createProjectsHistoriesExecutionsStepsPerfMetricsSummary: API.Opera
   CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest,
-  output: PerfMetricsSummary,
+  input: __S(
+    70,
+    __c8,
+    6,
+  ) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<PerfMetricsSummary>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1383,12 @@ export const createProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operati
   CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
-  output: PerfSampleSeries,
+  input: __S(
+    73,
+    __c9,
+    1,
+  ) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<PerfSampleSeries>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1859,8 +1405,12 @@ export const getPerfMetricsSummaryProjectsHistoriesExecutionsSteps: API.Operatio
   GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest,
-  output: PerfMetricsSummary,
+  input: __S(
+    74,
+    __c9,
+    2,
+  ) as any as S.Schema<GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<PerfMetricsSummary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1874,8 +1424,8 @@ export const getProjectsHistories: API.OperationMethod<
   GetProjectsHistoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsHistoriesRequest,
-  output: History,
+  input: __S(75, __c9, 3) as any as S.Schema<GetProjectsHistoriesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<History>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1889,8 +1439,8 @@ export const getProjectsHistoriesExecutions: API.OperationMethod<
   GetProjectsHistoriesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsHistoriesExecutionsRequest,
-  output: Execution,
+  input: __S(76, __c9, 4) as any as S.Schema<GetProjectsHistoriesExecutionsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1904,8 +1454,8 @@ export const getProjectsHistoriesExecutionsClusters: API.OperationMethod<
   GetProjectsHistoriesExecutionsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsHistoriesExecutionsClustersRequest,
-  output: ScreenshotCluster,
+  input: __S(77, __c9, 5) as any as S.Schema<GetProjectsHistoriesExecutionsClustersRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<ScreenshotCluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1919,8 +1469,8 @@ export const getProjectsHistoriesExecutionsEnvironments: API.OperationMethod<
   GetProjectsHistoriesExecutionsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsHistoriesExecutionsEnvironmentsRequest,
-  output: Environment,
+  input: __S(81, __c10, 1) as any as S.Schema<GetProjectsHistoriesExecutionsEnvironmentsRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1934,8 +1484,8 @@ export const getProjectsHistoriesExecutionsSteps: API.OperationMethod<
   GetProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsHistoriesExecutionsStepsRequest,
-  output: Step,
+  input: __S(87, __c10, 7) as any as S.Schema<GetProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1952,8 +1502,12 @@ export const getProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationM
   GetProjectsHistoriesExecutionsStepsPerfSampleSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
-  output: PerfSampleSeries,
+  input: __S(
+    88,
+    __c11,
+    0,
+  ) as any as S.Schema<GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<PerfSampleSeries>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1967,8 +1521,8 @@ export const getProjectsHistoriesExecutionsStepsTestCases: API.OperationMethod<
   GetProjectsHistoriesExecutionsStepsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsHistoriesExecutionsStepsTestCasesRequest,
-  output: TestCase,
+  input: __S(89, __c11, 1) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<TestCase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1982,8 +1536,8 @@ export const getSettingsProjects: API.OperationMethod<
   GetSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsProjectsRequest,
-  output: ProjectSettings,
+  input: __S(92, __c11, 4) as any as S.Schema<GetSettingsProjectsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<ProjectSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2002,8 +1556,8 @@ export const initializeSettingsProjects: API.OperationMethod<
   InitializeSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InitializeSettingsProjectsRequest,
-  output: ProjectSettings,
+  input: __S(94, __c11, 6) as any as S.Schema<InitializeSettingsProjectsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<ProjectSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2018,8 +1572,8 @@ export const listProjectsHistories: API.PaginatedOperationMethod<
   GcpOpContext,
   ListHistoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsHistoriesRequest,
-  output: ListHistoriesResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<ListProjectsHistoriesRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ListHistoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2035,8 +1589,8 @@ export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsHistoriesExecutionsRequest,
-  output: ListExecutionsResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<ListExecutionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2051,8 +1605,8 @@ export const listProjectsHistoriesExecutionsClusters: API.OperationMethod<
   ListProjectsHistoriesExecutionsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsHistoriesExecutionsClustersRequest,
-  output: ListScreenshotClustersResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<ListScreenshotClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2067,8 +1621,8 @@ export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperation
   GcpOpContext,
   ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsHistoriesExecutionsEnvironmentsRequest,
-  output: ListEnvironmentsResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2084,8 +1638,8 @@ export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListStepsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsHistoriesExecutionsStepsRequest,
-  output: ListStepsResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<ListStepsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2103,8 +1657,12 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operation
   ListProjectsHistoriesExecutionsStepsPerfSampleSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
-  output: ListPerfSampleSeriesResponse,
+  input: __S(
+    111,
+    __c13,
+    7,
+  ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListPerfSampleSeriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2122,8 +1680,12 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.Pa
   GcpOpContext,
   ListPerfSamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
-  output: ListPerfSamplesResponse,
+  input: __S(
+    114,
+    __c14,
+    2,
+  ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<ListPerfSamplesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2139,8 +1701,12 @@ export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperati
   GcpOpContext,
   ListTestCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsHistoriesExecutionsStepsTestCasesRequest,
-  output: ListTestCasesResponse,
+  input: __S(
+    116,
+    __c14,
+    4,
+  ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<ListTestCasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2156,8 +1722,12 @@ export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperat
   GcpOpContext,
   ListStepThumbnailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsHistoriesExecutionsStepsThumbnailsRequest,
-  output: ListStepThumbnailsResponse,
+  input: __S(
+    119,
+    __c14,
+    7,
+  ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsThumbnailsRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<ListStepThumbnailsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2177,8 +1747,8 @@ export const patchProjectsHistoriesExecutions: API.OperationMethod<
   PatchProjectsHistoriesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsHistoriesExecutionsRequest,
-  output: Execution,
+  input: __S(127, __c15, 7) as any as S.Schema<PatchProjectsHistoriesExecutionsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2197,8 +1767,8 @@ export const patchProjectsHistoriesExecutionsSteps: API.OperationMethod<
   PatchProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsHistoriesExecutionsStepsRequest,
-  output: Step,
+  input: __S(128, __c16, 0) as any as S.Schema<PatchProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2217,8 +1787,12 @@ export const publishXunitXmlFilesProjectsHistoriesExecutionsSteps: API.Operation
   PublishXunitXmlFilesProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest,
-  output: Step,
+  input: __S(
+    130,
+    __c16,
+    2,
+  ) as any as S.Schema<PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2261,33 +1835,33 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
-          priority: S.optional(SuggestionProtoPriorityEnum),
+          priority: S.optional(S.String),
           screenId: S.optional(S.String),
-          shortMessage: S.optional(SafeHtmlProto),
-          longMessage: S.optional(SafeHtmlProto),
+          shortMessage: S.optional(__S(1, __c0, 1)),
+          longMessage: S.optional(__S(1, __c0, 1)),
           helpUrl: S.optional(S.String),
           title: S.optional(S.String),
           pseudoResourceId: S.optional(S.String),
           secondaryPriority: S.optional(S.Number),
-          region: S.optional(RegionProto),
+          region: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "SuggestionProto" });
     case 4:
-      return S.Array(SuggestionProto);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          suggestions: S.optional(SuggestionProtoList),
-          category: S.optional(SuggestionClusterProtoCategoryEnum),
+          suggestions: S.optional(__S(4, __c0, 4)),
+          category: S.optional(S.String),
         }),
       ).annotate({ identifier: "SuggestionClusterProto" });
     case 6:
-      return S.Array(SuggestionClusterProto);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          clusters: S.optional(SuggestionClusterProtoList),
+          clusters: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "ListStepAccessibilityClustersResponse",
@@ -2306,16 +1880,16 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(Timestamp),
+          sampleTime: S.optional(__S(8, __c1, 0)),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PerfSample" });
     case 2:
-      return S.Array(PerfSample);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          perfSamples: S.optional(PerfSampleList),
+          perfSamples: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "BatchCreatePerfSamplesRequest",
@@ -2328,7 +1902,7 @@ function __c1(j: number): any {
           executionId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
           stepId: S.String.pipe(T.Label()),
-          body: S.optional(BatchCreatePerfSamplesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2345,7 +1919,7 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           historyId: S.optional(S.String),
           displayName: S.optional(S.String),
-          testPlatform: S.optional(HistoryTestPlatformEnum),
+          testPlatform: S.optional(S.String),
         }),
       ).annotate({ identifier: "History" });
     case 6:
@@ -2353,7 +1927,7 @@ function __c1(j: number): any {
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(History.pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2383,7 +1957,7 @@ function __c2(j: number): any {
           testPackageId: S.optional(S.String),
           useOrchestrator: S.optional(S.Boolean),
           testRunnerClass: S.optional(S.String),
-          testTargets: S.optional(StringList),
+          testTargets: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "AndroidInstrumentationTest",
@@ -2414,11 +1988,11 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          testTimeout: S.optional(Duration),
-          androidInstrumentationTest: S.optional(AndroidInstrumentationTest),
-          androidRoboTest: S.optional(AndroidRoboTest),
-          androidAppInfo: S.optional(AndroidAppInfo),
-          androidTestLoop: S.optional(AndroidTestLoop),
+          testTimeout: S.optional(__S(15, __c1, 7)),
+          androidInstrumentationTest: S.optional(__S(17, __c2, 1)),
+          androidRoboTest: S.optional(__S(18, __c2, 2)),
+          androidAppInfo: S.optional(__S(19, __c2, 3)),
+          androidTestLoop: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "AndroidTest" });
     case 6:
@@ -2447,22 +2021,22 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          testTimeout: S.optional(Duration),
-          iosRoboTest: S.optional(AndroidTestLoop),
-          iosXcTest: S.optional(IosXcTest),
-          iosTestLoop: S.optional(IosTestLoop),
-          iosAppInfo: S.optional(IosAppInfo),
+          testTimeout: S.optional(__S(15, __c1, 7)),
+          iosRoboTest: S.optional(__S(20, __c2, 4)),
+          iosXcTest: S.optional(__S(22, __c2, 6)),
+          iosTestLoop: S.optional(__S(23, __c2, 7)),
+          iosAppInfo: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "IosTest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          androidTest: S.optional(AndroidTest),
-          iosTest: S.optional(IosTest),
+          androidTest: S.optional(__S(21, __c2, 5)),
+          iosTest: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "Specification" });
     case 3:
-      return S.Array(AndroidTestLoop);
+      return S.Array(__S(20, __c2, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2505,24 +2079,24 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          successDetail: S.optional(SuccessDetail),
-          failureDetail: S.optional(FailureDetail),
-          skippedDetail: S.optional(SkippedDetail),
-          summary: S.optional(OutcomeSummaryEnum),
-          inconclusiveDetail: S.optional(InconclusiveDetail),
+          successDetail: S.optional(__S(28, __c3, 4)),
+          failureDetail: S.optional(__S(29, __c3, 5)),
+          skippedDetail: S.optional(__S(30, __c3, 6)),
+          summary: S.optional(S.String),
+          inconclusiveDetail: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "Outcome" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          specification: S.optional(Specification),
+          specification: S.optional(__S(26, __c3, 2)),
           testExecutionMatrixId: S.optional(S.String),
           executionId: S.optional(S.String),
-          state: S.optional(ExecutionStateEnum),
-          completionTime: S.optional(Timestamp),
-          dimensionDefinitions: S.optional(MatrixDimensionDefinitionList),
-          creationTime: S.optional(Timestamp),
-          outcome: S.optional(Outcome),
+          state: S.optional(S.String),
+          completionTime: S.optional(__S(8, __c1, 0)),
+          dimensionDefinitions: S.optional(__S(27, __c3, 3)),
+          creationTime: S.optional(__S(8, __c1, 0)),
+          outcome: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Execution" });
     case 2:
@@ -2531,7 +2105,7 @@ function __c4(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
-          body: S.optional(Execution.pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2553,16 +2127,16 @@ function __c4(j: number): any {
         S.Struct({
           errorCount: S.optional(S.Number),
           skippedCount: S.optional(S.Number),
-          xmlSource: S.optional(FileReference),
+          xmlSource: S.optional(__S(35, __c4, 3)),
           failureCount: S.optional(S.Number),
           name: S.optional(S.String),
-          elapsedTime: S.optional(Duration),
+          elapsedTime: S.optional(__S(15, __c1, 7)),
           totalCount: S.optional(S.Number),
           flakyCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TestSuiteOverview" });
     case 5:
-      return S.Array(TestSuiteOverview);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2583,24 +2157,24 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(TestIssueCategoryEnum),
-          severity: S.optional(TestIssueSeverityEnum),
-          warning_migration: S.optional(Any),
+          category: S.optional(S.String),
+          severity: S.optional(S.String),
+          warning_migration: S.optional(__S(38, __c4, 6)),
           errorMessage: S.optional(S.String),
-          type: S.optional(TestIssueTypeEnum),
-          stackTrace: S.optional(StackTrace),
+          type: S.optional(S.String),
+          stackTrace: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "TestIssue" });
     case 1:
-      return S.Array(TestIssue);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          testProcessDuration: S.optional(Duration),
+          testProcessDuration: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "TestTiming" });
     case 3:
-      return S.Array(FileReference);
+      return S.Array(__S(35, __c4, 3));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2618,13 +2192,13 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          creationTime: S.optional(Timestamp),
-          output: S.optional(FileReference),
-          testCase: S.optional(TestCaseReference),
+          creationTime: S.optional(__S(8, __c1, 0)),
+          output: S.optional(__S(35, __c4, 3)),
+          testCase: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "ToolOutputReference" });
     case 7:
-      return S.Array(ToolOutputReference);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -2632,19 +2206,19 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          toolLogs: S.optional(FileReferenceList),
-          exitCode: S.optional(ToolExitCode),
-          toolOutputs: S.optional(ToolOutputReferenceList),
-          commandLineArguments: S.optional(StringList),
+          toolLogs: S.optional(__S(43, __c5, 3)),
+          exitCode: S.optional(__S(44, __c5, 4)),
+          toolOutputs: S.optional(__S(47, __c5, 7)),
+          commandLineArguments: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ToolExecution" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          testSuiteOverviews: S.optional(TestSuiteOverviewList),
-          testIssues: S.optional(TestIssueList),
-          testTiming: S.optional(TestTiming),
-          toolExecution: S.optional(ToolExecution),
+          testSuiteOverviews: S.optional(__S(37, __c4, 5)),
+          testIssues: S.optional(__S(41, __c5, 1)),
+          testTiming: S.optional(__S(42, __c5, 2)),
+          toolExecution: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "TestExecutionStep" });
     case 2:
@@ -2652,31 +2226,31 @@ function __c6(j: number): any {
         S.Struct({
           multistepNumber: S.optional(S.Number),
           stepId: S.optional(S.String),
-          runDuration: S.optional(Duration),
-          outcomeSummary: S.optional(IndividualOutcomeOutcomeSummaryEnum),
+          runDuration: S.optional(__S(15, __c1, 7)),
+          outcomeSummary: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndividualOutcome" });
     case 3:
-      return S.Array(IndividualOutcome);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rollUp: S.optional(PrimaryStepRollUpEnum),
-          individualOutcome: S.optional(IndividualOutcomeList),
+          rollUp: S.optional(S.String),
+          individualOutcome: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "PrimaryStep" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           multistepNumber: S.optional(S.Number),
-          primaryStep: S.optional(PrimaryStep),
+          primaryStep: S.optional(__S(52, __c6, 4)),
           primaryStepId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MultiStep" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          toolExecution: S.optional(ToolExecution),
+          toolExecution: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "ToolExecutionStep" });
     case 7:
@@ -2691,7 +2265,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StepLabelsEntry);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2700,24 +2274,24 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "StepDimensionValueEntry" });
     case 2:
-      return S.Array(StepDimensionValueEntry);
+      return S.Array(__S(57, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          testExecutionStep: S.optional(TestExecutionStep),
+          testExecutionStep: S.optional(__S(49, __c6, 1)),
           name: S.optional(S.String),
           stepId: S.optional(S.String),
-          multiStep: S.optional(MultiStep),
-          toolExecutionStep: S.optional(ToolExecutionStep),
-          outcome: S.optional(Outcome),
-          runDuration: S.optional(Duration),
+          multiStep: S.optional(__S(53, __c6, 5)),
+          toolExecutionStep: S.optional(__S(54, __c6, 6)),
+          outcome: S.optional(__S(32, __c4, 0)),
+          runDuration: S.optional(__S(15, __c1, 7)),
           hasImages: S.optional(S.Boolean),
-          labels: S.optional(StepLabelsEntryList),
-          dimensionValue: S.optional(StepDimensionValueEntryList),
-          deviceUsageDuration: S.optional(Duration),
-          completionTime: S.optional(Timestamp),
-          state: S.optional(StepStateEnum),
-          creationTime: S.optional(Timestamp),
+          labels: S.optional(__S(56, __c7, 0)),
+          dimensionValue: S.optional(__S(58, __c7, 2)),
+          deviceUsageDuration: S.optional(__S(15, __c1, 7)),
+          completionTime: S.optional(__S(8, __c1, 0)),
+          state: S.optional(S.String),
+          creationTime: S.optional(__S(8, __c1, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Step" });
@@ -2728,7 +2302,7 @@ function __c7(j: number): any {
           projectId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
           executionId: S.String.pipe(T.Label()),
-          body: S.optional(Step.pipe(T.HttpBody())),
+          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2757,8 +2331,8 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          memoryInfo: S.optional(MemoryInfo),
-          cpuInfo: S.optional(CPUInfo),
+          memoryInfo: S.optional(__S(61, __c7, 5)),
+          cpuInfo: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({ identifier: "PerfEnvironment" });
   }
@@ -2768,12 +2342,12 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fullyDrawnTime: S.optional(Duration),
-          initialDisplayTime: S.optional(Duration),
+          fullyDrawnTime: S.optional(__S(15, __c1, 7)),
+          initialDisplayTime: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({ identifier: "AppStartTime" });
     case 1:
-      return S.Array(PerfMetricsSummaryPerfMetricsItemEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2782,7 +2356,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "GraphicsStatsBucket" });
     case 3:
-      return S.Array(GraphicsStatsBucket);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2794,7 +2368,7 @@ function __c8(j: number): any {
           missedVsyncCount: S.optional(S.String),
           highInputLatencyCount: S.optional(S.String),
           jankyFrames: S.optional(S.String),
-          buckets: S.optional(GraphicsStatsBucketList),
+          buckets: S.optional(__S(67, __c8, 3)),
           p95Millis: S.optional(S.String),
           p99Millis: S.optional(S.String),
           slowBitmapUploadCount: S.optional(S.String),
@@ -2805,12 +2379,12 @@ function __c8(j: number): any {
         S.Struct({
           executionId: S.optional(S.String),
           projectId: S.optional(S.String),
-          perfEnvironment: S.optional(PerfEnvironment),
-          appStartTime: S.optional(AppStartTime),
+          perfEnvironment: S.optional(__S(63, __c7, 7)),
+          appStartTime: S.optional(__S(64, __c8, 0)),
           stepId: S.optional(S.String),
-          perfMetrics: S.optional(PerfMetricsSummaryPerfMetricsItemEnumList),
+          perfMetrics: S.optional(__S(65, __c8, 1)),
           historyId: S.optional(S.String),
-          graphicsStats: S.optional(GraphicsStats),
+          graphicsStats: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "PerfMetricsSummary" });
     case 6:
@@ -2820,7 +2394,7 @@ function __c8(j: number): any {
           stepId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
-          body: S.optional(PerfMetricsSummary.pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2834,9 +2408,9 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          perfUnit: S.optional(BasicPerfSampleSeriesPerfUnitEnum),
-          sampleSeriesLabel: S.optional(BasicPerfSampleSeriesSampleSeriesLabelEnum),
-          perfMetricType: S.optional(BasicPerfSampleSeriesPerfMetricTypeEnum),
+          perfUnit: S.optional(S.String),
+          sampleSeriesLabel: S.optional(S.String),
+          perfMetricType: S.optional(S.String),
         }),
       ).annotate({ identifier: "BasicPerfSampleSeries" });
   }
@@ -2849,7 +2423,7 @@ function __c9(j: number): any {
           stepId: S.optional(S.String),
           sampleSeriesId: S.optional(S.String),
           projectId: S.optional(S.String),
-          basicPerfSampleSeries: S.optional(BasicPerfSampleSeries),
+          basicPerfSampleSeries: S.optional(__S(71, __c8, 7)),
           executionId: S.optional(S.String),
           historyId: S.optional(S.String),
         }),
@@ -2861,7 +2435,7 @@ function __c9(j: number): any {
           executionId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
-          body: S.optional(PerfSampleSeries.pipe(T.HttpBody())),
+          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2947,7 +2521,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Screen" });
     case 7:
-      return S.Array(Screen);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -2957,8 +2531,8 @@ function __c10(j: number): any {
         S.Struct({
           clusterId: S.optional(S.String),
           activity: S.optional(S.String),
-          keyScreen: S.optional(Screen),
-          screens: S.optional(ScreenList),
+          keyScreen: S.optional(__S(78, __c9, 6)),
+          screens: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({ identifier: "ScreenshotCluster" });
     case 1:
@@ -2981,41 +2555,41 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(MergedResultStateEnum),
-          testSuiteOverviews: S.optional(TestSuiteOverviewList),
-          outcome: S.optional(Outcome),
+          state: S.optional(S.String),
+          testSuiteOverviews: S.optional(__S(37, __c4, 5)),
+          outcome: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "MergedResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          shardResult: S.optional(MergedResult),
-          runs: S.optional(StepSummaryList),
+          shardResult: S.optional(__S(82, __c10, 2)),
+          runs: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "ShardSummary" });
     case 4:
-      return S.Array(ShardSummary);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          xunitXmlFile: S.optional(FileReference),
-          resultsStoragePath: S.optional(FileReference),
+          xunitXmlFile: S.optional(__S(35, __c4, 3)),
+          resultsStoragePath: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "ResultsStorage" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          completionTime: S.optional(Timestamp),
+          completionTime: S.optional(__S(8, __c1, 0)),
           projectId: S.optional(S.String),
-          environmentResult: S.optional(MergedResult),
-          dimensionValue: S.optional(EnvironmentDimensionValueEntryList),
-          shardSummaries: S.optional(ShardSummaryList),
+          environmentResult: S.optional(__S(82, __c10, 2)),
+          dimensionValue: S.optional(__S(58, __c7, 2)),
+          shardSummaries: S.optional(__S(84, __c10, 4)),
           historyId: S.optional(S.String),
           executionId: S.optional(S.String),
           environmentId: S.optional(S.String),
-          resultsStorage: S.optional(ResultsStorage),
-          creationTime: S.optional(Timestamp),
+          resultsStorage: S.optional(__S(85, __c10, 5)),
+          creationTime: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Environment" });
     case 7:
@@ -3076,19 +2650,19 @@ function __c11(j: number): any {
         identifier: "GetProjectsHistoriesExecutionsStepsTestCasesRequest",
       });
     case 2:
-      return S.Array(StackTrace);
+      return S.Array(__S(39, __c4, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          elapsedTime: S.optional(Duration),
-          toolOutputs: S.optional(ToolOutputReferenceList),
-          testCaseReference: S.optional(TestCaseReference),
-          status: S.optional(TestCaseStatusEnum),
+          elapsedTime: S.optional(__S(15, __c1, 7)),
+          toolOutputs: S.optional(__S(47, __c5, 7)),
+          testCaseReference: S.optional(__S(45, __c5, 5)),
+          status: S.optional(S.String),
           testCaseId: S.optional(S.String),
           skippedMessage: S.optional(S.String),
-          endTime: S.optional(Timestamp),
-          startTime: S.optional(Timestamp),
-          stackTraces: S.optional(StackTraceList),
+          endTime: S.optional(__S(8, __c1, 0)),
+          startTime: S.optional(__S(8, __c1, 0)),
+          stackTraces: S.optional(__S(90, __c11, 2)),
         }),
       ).annotate({ identifier: "TestCase" });
     case 4:
@@ -3148,11 +2722,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(History);
+      return S.Array(__S(13, __c1, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          histories: S.optional(HistoryList),
+          histories: S.optional(__S(96, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListHistoriesResponse" });
@@ -3174,11 +2748,11 @@ function __c12(j: number): any {
         identifier: "ListProjectsHistoriesExecutionsRequest",
       });
     case 3:
-      return S.Array(Execution);
+      return S.Array(__S(33, __c4, 1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          executions: S.optional(ExecutionList),
+          executions: S.optional(__S(99, __c12, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListExecutionsResponse" });
@@ -3199,11 +2773,11 @@ function __c12(j: number): any {
         identifier: "ListProjectsHistoriesExecutionsClustersRequest",
       });
     case 6:
-      return S.Array(ScreenshotCluster);
+      return S.Array(__S(80, __c10, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          clusters: S.optional(ScreenshotClusterList),
+          clusters: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({
         identifier: "ListScreenshotClustersResponse",
@@ -3231,11 +2805,11 @@ function __c13(j: number): any {
         identifier: "ListProjectsHistoriesExecutionsEnvironmentsRequest",
       });
     case 1:
-      return S.Array(Environment);
+      return S.Array(__S(86, __c10, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          environments: S.optional(EnvironmentList),
+          environments: S.optional(__S(105, __c13, 1)),
           nextPageToken: S.optional(S.String),
           projectId: S.optional(S.String),
           executionId: S.optional(S.String),
@@ -3261,25 +2835,23 @@ function __c13(j: number): any {
         identifier: "ListProjectsHistoriesExecutionsStepsRequest",
       });
     case 4:
-      return S.Array(Step);
+      return S.Array(__S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          steps: S.optional(StepList),
+          steps: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({ identifier: "ListStepsResponse" });
     case 6:
-      return S.Array(ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           executionId: S.String.pipe(T.Label()),
           stepId: S.String.pipe(T.Label()),
-          filter: S.optional(
-            ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList.pipe(T.Query()),
-          ),
+          filter: S.optional(__S(110, __c13, 6).pipe(T.Query())),
           historyId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -3296,11 +2868,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PerfSampleSeries);
+      return S.Array(__S(72, __c9, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          perfSampleSeries: S.optional(PerfSampleSeriesList),
+          perfSampleSeries: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({
         identifier: "ListPerfSampleSeriesResponse",
@@ -3328,7 +2900,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          perfSamples: S.optional(PerfSampleList),
+          perfSamples: S.optional(__S(10, __c1, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPerfSamplesResponse" });
@@ -3352,11 +2924,11 @@ function __c14(j: number): any {
         identifier: "ListProjectsHistoriesExecutionsStepsTestCasesRequest",
       });
     case 5:
-      return S.Array(TestCase);
+      return S.Array(__S(91, __c11, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          testCases: S.optional(TestCaseList),
+          testCases: S.optional(__S(117, __c14, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTestCasesResponse" });
@@ -3395,11 +2967,11 @@ function __c15(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(DocumentMap);
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(122, __c15, 2)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -3407,19 +2979,19 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          thumbnail: S.optional(Thumbnail),
-          error: S.optional(Status),
-          sourceImage: S.optional(ToolOutputReference),
+          thumbnail: S.optional(__S(120, __c15, 0)),
+          error: S.optional(__S(123, __c15, 3)),
+          sourceImage: S.optional(__S(46, __c5, 6)),
           stepId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image" });
     case 5:
-      return S.Array(Image);
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          thumbnails: S.optional(ImageList),
+          thumbnails: S.optional(__S(125, __c15, 5)),
         }),
       ).annotate({
         identifier: "ListStepThumbnailsResponse",
@@ -3431,7 +3003,7 @@ function __c15(j: number): any {
           historyId: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           executionId: S.String.pipe(T.Label()),
-          body: S.optional(Execution.pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3454,7 +3026,7 @@ function __c16(j: number): any {
           stepId: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           historyId: S.String.pipe(T.Label()),
-          body: S.optional(Step.pipe(T.HttpBody())),
+          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3468,7 +3040,7 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          xunitXmlFiles: S.optional(FileReferenceList),
+          xunitXmlFiles: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({
         identifier: "PublishXunitXmlFilesRequest",
@@ -3480,7 +3052,7 @@ function __c16(j: number): any {
           projectId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
           stepId: S.String.pipe(T.Label()),
-          body: S.optional(PublishXunitXmlFilesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3492,4 +3064,9 @@ function __c16(j: number): any {
         identifier: "PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

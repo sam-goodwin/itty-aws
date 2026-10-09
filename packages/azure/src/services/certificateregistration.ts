@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -13,11 +15,6 @@ export type { AzureOpError, AzureOpContext };
 export type AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap>;
-
 /** Status of the Key Vault secret. */
 export type KeyVaultSecretStatus =
   | "Initialized"
@@ -31,8 +28,6 @@ export type KeyVaultSecretStatus =
   | "UnknownError"
   | "ExternalPrivateKey"
   | "Unknown";
-const KeyVaultSecretStatus = S.String;
-
 /** Key Vault container for a certificate that is purchased through Azure. */
 export interface AppServiceCertificate {
   /** Key Vault resource Id. */
@@ -42,26 +37,14 @@ export interface AppServiceCertificate {
   /** Status of the Key Vault secret. */
   provisioningState?: KeyVaultSecretStatus | (string & {});
 }
-const AppServiceCertificate = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AppServiceCertificate>;
-
 /** State of the Key Vault secret. */
 export type AppServiceCertificateOrderPropertiesInputCertificatesMap = {
   [key: string]: AppServiceCertificate | undefined;
 };
-const AppServiceCertificateOrderPropertiesInputCertificatesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AppServiceCertificateOrderPropertiesInputCertificatesMap>;
-
 /** Certificate product type. */
 export type CertificateProductType =
   | "StandardDomainValidatedSsl"
   | "StandardDomainValidatedWildCardSsl";
-const CertificateProductType = S.String;
-
 /** AppServiceCertificateOrder resource specific properties */
 export interface AppServiceCertificateOrderPropertiesInput {
   /** State of the Key Vault secret. */
@@ -79,11 +62,6 @@ export interface AppServiceCertificateOrderPropertiesInput {
   /** Last CSR that was created for this order. */
   csr?: string;
 }
-const AppServiceCertificateOrderPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AppServiceCertificateOrderPropertiesInput>;
-
 export interface AppServiceCertificateOrdersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -100,19 +78,10 @@ export interface AppServiceCertificateOrdersCreateOrUpdateRequest {
   /** Kind of resource */
   kind?: string;
 }
-const AppServiceCertificateOrdersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -128,26 +97,16 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap =
-  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap>;
-
 /** State of the Key Vault secret. */
 export type AppServiceCertificateOrderPropertiesCertificatesMap = {
   [key: string]: AppServiceCertificate | undefined;
 };
-const AppServiceCertificateOrderPropertiesCertificatesMap =
-  AppServiceCertificateOrderPropertiesInputCertificatesMap as any as S.Schema<AppServiceCertificateOrderPropertiesCertificatesMap>;
-
 /** Status of certificate order. */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "InProgress" | "Deleting";
-const ProvisioningState = S.String;
-
 /** Current order status. */
 export type CertificateOrderStatus =
   | "Pendingissuance"
@@ -160,8 +119,6 @@ export type CertificateOrderStatus =
   | "Unused"
   | "Expired"
   | "NotSubmitted";
-const CertificateOrderStatus = S.String;
-
 /** SSL certificate details. */
 export interface CertificateDetails {
   /** Certificate Version. */
@@ -183,34 +140,19 @@ export interface CertificateDetails {
   /** Raw certificate data. */
   rawData?: string;
 }
-const CertificateDetails = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CertificateDetails>;
-
 export type ResourceNotRenewableReason =
   | "RegistrationStatusNotSupportedForRenewal"
   | "ExpirationNotInRenewalTimeRange"
   | "SubscriptionNotActive";
-const ResourceNotRenewableReason = S.String;
-
 /** Reasons why App Service Certificate is not renewable at the current moment. */
 export type AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList =
   Array<ResourceNotRenewableReason>;
-const AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    7,
-  ) as any as S.Schema<AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList>;
-
 export interface CertificateOrderContact {
   email?: string;
   nameFirst?: string;
   nameLast?: string;
   phone?: string;
 }
-const CertificateOrderContact = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CertificateOrderContact>;
-
 /** AppServiceCertificateOrder resource specific properties */
 export interface AppServiceCertificateOrderProperties {
   /** State of the Key Vault secret. */
@@ -254,11 +196,6 @@ export interface AppServiceCertificateOrderProperties {
   /** Contact info */
   contact?: CertificateOrderContact;
 }
-const AppServiceCertificateOrderProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AppServiceCertificateOrderProperties>;
-
 export interface AppServiceCertificateOrdersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -277,20 +214,10 @@ export interface AppServiceCertificateOrdersCreateOrUpdateResponse {
   /** Kind of resource */
   kind?: string;
 }
-const AppServiceCertificateOrdersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap>;
-
 export interface AppServiceCertificateOrdersCreateOrUpdateCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -309,18 +236,10 @@ export interface AppServiceCertificateOrdersCreateOrUpdateCertificateRequest {
   /** Kind of resource */
   kind?: string;
 }
-const AppServiceCertificateOrdersCreateOrUpdateCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateRequest>;
-
 /** Resource tags. */
 export type AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap =
-  AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap>;
-
 export interface AppServiceCertificateOrdersCreateOrUpdateCertificateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -339,11 +258,6 @@ export interface AppServiceCertificateOrdersCreateOrUpdateCertificateResponse {
   /** Kind of resource */
   kind?: string;
 }
-const AppServiceCertificateOrdersCreateOrUpdateCertificateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateResponse>;
-
 /** ReissueCertificateOrderRequest resource specific properties */
 export interface ReissueCertificateOrderRequestProperties {
   /** Certificate Key Size. */
@@ -355,11 +269,6 @@ export interface ReissueCertificateOrderRequestProperties {
   /** Should we change the ASC type (from managed private key to external private key and vice versa). */
   isPrivateKeyExternal?: boolean;
 }
-const ReissueCertificateOrderRequestProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ReissueCertificateOrderRequestProperties>;
-
 export interface AppServiceCertificateOrdersReissueRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -372,17 +281,7 @@ export interface AppServiceCertificateOrdersReissueRequest {
   /** ReissueCertificateOrderRequest resource specific properties */
   properties?: ReissueCertificateOrderRequestProperties;
 }
-const AppServiceCertificateOrdersReissueRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AppServiceCertificateOrdersReissueRequest>;
-
 export interface AppServiceCertificateOrdersReissueResponse {}
-const AppServiceCertificateOrdersReissueResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AppServiceCertificateOrdersReissueResponse>;
-
 export interface DeleteAppServiceCertificateOrderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -391,15 +290,7 @@ export interface DeleteAppServiceCertificateOrderRequest {
   /** Name of the certificate order.. */
   certificateOrderName: string;
 }
-const DeleteAppServiceCertificateOrderRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteAppServiceCertificateOrderRequest>;
-
 export interface DeleteAppServiceCertificateOrderResponse {}
-const DeleteAppServiceCertificateOrderResponse =
-  AppServiceCertificateOrdersReissueResponse as any as S.Schema<DeleteAppServiceCertificateOrderResponse>;
-
 export interface DeleteAppServiceCertificateOrderCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -410,15 +301,7 @@ export interface DeleteAppServiceCertificateOrderCertificateRequest {
   /** Name of the certificate. */
   name: string;
 }
-const DeleteAppServiceCertificateOrderCertificateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateRequest>;
-
 export interface DeleteAppServiceCertificateOrderCertificateResponse {}
-const DeleteAppServiceCertificateOrderCertificateResponse =
-  AppServiceCertificateOrdersReissueResponse as any as S.Schema<DeleteAppServiceCertificateOrderCertificateResponse>;
-
 export interface GetAppServiceCertificateOrderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -427,11 +310,6 @@ export interface GetAppServiceCertificateOrderRequest {
   /** Name of the certificate order.. */
   certificateOrderName: string;
 }
-const GetAppServiceCertificateOrderRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetAppServiceCertificateOrderRequest>;
-
 /** Resource tags. */
 export type GetAppServiceCertificateOrderResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAppServiceCertificateOrderResponse {
@@ -452,9 +330,6 @@ export interface GetAppServiceCertificateOrderResponse {
   /** Kind of resource */
   kind?: string;
 }
-const GetAppServiceCertificateOrderResponse =
-  AppServiceCertificateOrdersCreateOrUpdateResponse as any as S.Schema<GetAppServiceCertificateOrderResponse>;
-
 export interface GetAppServiceCertificateOrderCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -465,18 +340,10 @@ export interface GetAppServiceCertificateOrderCertificateRequest {
   /** Name of the certificate. */
   name: string;
 }
-const GetAppServiceCertificateOrderCertificateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateRequest>;
-
 /** Resource tags. */
 export type GetAppServiceCertificateOrderCertificateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const GetAppServiceCertificateOrderCertificateResponseTagsMap =
-  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppServiceCertificateOrderCertificateResponseTagsMap>;
-
 export interface GetAppServiceCertificateOrderCertificateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -495,11 +362,6 @@ export interface GetAppServiceCertificateOrderCertificateResponse {
   /** Kind of resource */
   kind?: string;
 }
-const GetAppServiceCertificateOrderCertificateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateResponse>;
-
 export interface GetAppServiceCertificateOrderCertificateActionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -508,11 +370,6 @@ export interface GetAppServiceCertificateOrderCertificateActionsRequest {
   /** Name of the certificate order.. */
   name: string;
 }
-const GetAppServiceCertificateOrderCertificateActionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateActionsRequest>;
-
 /** Action type. */
 export type CertificateOrderActionType =
   | "CertificateIssued"
@@ -529,8 +386,6 @@ export type CertificateOrderActionType =
   | "CertificateExpirationWarning"
   | "FraudDocumentationRequired"
   | "Unknown";
-const CertificateOrderActionType = S.String;
-
 /** Certificate order action. */
 export interface CertificateOrderAction {
   /** Action type. */
@@ -538,25 +393,10 @@ export interface CertificateOrderAction {
   /** Time at which the certificate action was performed. */
   createdAt?: string;
 }
-const CertificateOrderAction = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CertificateOrderAction>;
-
 export type GetAppServiceCertificateOrderCertificateActionsResponseBodyList =
   Array<CertificateOrderAction>;
-const GetAppServiceCertificateOrderCertificateActionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateActionsResponseBodyList>;
-
 export type GetAppServiceCertificateOrderCertificateActionsResponse =
   GetAppServiceCertificateOrderCertificateActionsResponseBodyList;
-const GetAppServiceCertificateOrderCertificateActionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateActionsResponse>;
-
 export interface GetAppServiceCertificateOrderCertificateEmailHistoryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -565,11 +405,6 @@ export interface GetAppServiceCertificateOrderCertificateEmailHistoryRequest {
   /** Name of the certificate order.. */
   name: string;
 }
-const GetAppServiceCertificateOrderCertificateEmailHistoryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateEmailHistoryRequest>;
-
 /** SSL certificate email. */
 export interface CertificateEmail {
   /** Email id. */
@@ -577,22 +412,10 @@ export interface CertificateEmail {
   /** Time stamp. */
   timeStamp?: string;
 }
-const CertificateEmail = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CertificateEmail>;
-
 export type GetAppServiceCertificateOrderCertificateEmailHistoryResponseBodyList =
   Array<CertificateEmail>;
-const GetAppServiceCertificateOrderCertificateEmailHistoryResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateEmailHistoryResponseBodyList>;
-
 export type GetAppServiceCertificateOrderCertificateEmailHistoryResponse =
   GetAppServiceCertificateOrderCertificateEmailHistoryResponseBodyList;
-const GetAppServiceCertificateOrderCertificateEmailHistoryResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetAppServiceCertificateOrderCertificateEmailHistoryResponse>;
-
 export interface GetAppServiceCertificateOrderSiteSealRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -605,18 +428,11 @@ export interface GetAppServiceCertificateOrderSiteSealRequest {
   /** Locale of site seal. */
   locale?: string;
 }
-const GetAppServiceCertificateOrderSiteSealRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetAppServiceCertificateOrderSiteSealRequest>;
-
 /** Site seal */
 export interface SiteSeal {
   /** HTML snippet */
   html: string;
 }
-const SiteSeal = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SiteSeal>;
-
 export interface GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -633,12 +449,6 @@ export interface GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetecto
   /** The time grain for the detector response. */
   timeGrain?: string;
 }
-const GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    0,
-  ) as any as S.Schema<GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest>;
-
 /** Defines a unique Support Topic */
 export interface SupportTopic {
   /** Support Topic Id */
@@ -646,26 +456,12 @@ export interface SupportTopic {
   /** Unique resource Id */
   pesId?: string;
 }
-const SupportTopic = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SupportTopic>;
-
 /** List of Support Topics for which this detector is enabled. */
 export type DetectorInfoSupportTopicListList = Array<SupportTopic>;
-const DetectorInfoSupportTopicListList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DetectorInfoSupportTopicListList>;
-
 /** Analysis Types for which this detector should apply to. */
 export type DetectorInfoAnalysisTypeList = Array<string>;
-const DetectorInfoAnalysisTypeList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DetectorInfoAnalysisTypeList>;
-
 /** Whether this detector is an Analysis Detector or not. */
 export type DetectorType = "Detector" | "Analysis" | "CategoryOverview";
-const DetectorType = S.String;
-
 /** Definition of Detector */
 export interface DetectorInfo {
   /** Id of detector */
@@ -687,8 +483,6 @@ export interface DetectorInfo {
   /** Defines score of a detector to power ML based matching. */
   score?: number;
 }
-const DetectorInfo = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DetectorInfo>;
-
 /** Column definition */
 export interface DataTableResponseColumn {
   /** Name of the column */
@@ -698,29 +492,11 @@ export interface DataTableResponseColumn {
   /** Column Type */
   columnType?: string;
 }
-const DataTableResponseColumn = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DataTableResponseColumn>;
-
 /** List of columns with data types */
 export type DataTableResponseObjectColumnsList = Array<DataTableResponseColumn>;
-const DataTableResponseObjectColumnsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DataTableResponseObjectColumnsList>;
-
 export type DataTableResponseObjectRowsItemList = Array<string>;
-const DataTableResponseObjectRowsItemList =
-  DetectorInfoAnalysisTypeList as any as S.Schema<DataTableResponseObjectRowsItemList>;
-
 /** Raw row values */
 export type DataTableResponseObjectRowsList = Array<DataTableResponseObjectRowsItemList>;
-const DataTableResponseObjectRowsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DataTableResponseObjectRowsList>;
-
 /** Data Table which defines columns and raw row values */
 export interface DataTableResponseObject {
   /** Name of the table */
@@ -730,11 +506,6 @@ export interface DataTableResponseObject {
   /** Raw row values */
   rows?: DataTableResponseObjectRowsList;
 }
-const DataTableResponseObject = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DataTableResponseObject>;
-
 /** Rendering Type */
 export type RenderingType =
   | "NoGraph"
@@ -762,8 +533,6 @@ export type RenderingType =
   | "SummaryCard"
   | "SearchComponent"
   | "AppInsightEnablement";
-const RenderingType = S.String;
-
 /** Instructions for rendering the data */
 export interface Rendering {
   /** Rendering Type */
@@ -773,8 +542,6 @@ export interface Rendering {
   /** Description of the data that will help it be interpreted */
   description?: string;
 }
-const Rendering = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Rendering>;
-
 /** Set of data with rendering instructions */
 export interface DiagnosticData {
   /** Data in table form */
@@ -782,19 +549,10 @@ export interface DiagnosticData {
   /** Properties that describe how the table should be rendered */
   renderingProperties?: Rendering;
 }
-const DiagnosticData = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DiagnosticData>;
-
 /** Data Set */
 export type DetectorResponsePropertiesDatasetList = Array<DiagnosticData>;
-const DetectorResponsePropertiesDatasetList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DetectorResponsePropertiesDatasetList>;
-
 /** Level of the most severe insight generated by the detector. */
 export type InsightStatus = "Critical" | "Warning" | "Info" | "Success" | "None";
-const InsightStatus = S.String;
-
 /** Identify the status of the most severe insight generated by the detector. */
 export interface Status {
   /** Descriptive message. */
@@ -802,50 +560,25 @@ export interface Status {
   /** Level of the most severe insight generated by the detector. */
   statusId?: InsightStatus;
 }
-const Status = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Status>;
-
 /** Any object */
 export type KeyValuePairStringObjectValueMap = { [key: string]: string | undefined };
-const KeyValuePairStringObjectValueMap =
-  AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap as any as S.Schema<KeyValuePairStringObjectValueMap>;
-
 export interface KeyValuePairStringObject {
   key?: string;
   /** Any object */
   value?: KeyValuePairStringObjectValueMap;
 }
-const KeyValuePairStringObject = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<KeyValuePairStringObject>;
-
 /** Settings for the data provider */
 export type DataProviderMetadataPropertyBagList = Array<KeyValuePairStringObject>;
-const DataProviderMetadataPropertyBagList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DataProviderMetadataPropertyBagList>;
-
 /** Additional configuration for a data providers */
 export interface DataProviderMetadata {
   providerName?: string;
   /** Settings for the data provider */
   propertyBag?: DataProviderMetadataPropertyBagList;
 }
-const DataProviderMetadata = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DataProviderMetadata>;
-
 /** Additional configuration for different data providers to be used by the UI */
 export type DetectorResponsePropertiesDataProvidersMetadataList = Array<DataProviderMetadata>;
-const DetectorResponsePropertiesDataProvidersMetadataList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DetectorResponsePropertiesDataProvidersMetadataList>;
-
 /** Links attribute of sample utterance. */
 export type SampleUtteranceLinksList = Array<string>;
-const SampleUtteranceLinksList =
-  DetectorInfoAnalysisTypeList as any as S.Schema<SampleUtteranceLinksList>;
-
 /** Sample utterance. */
 export interface SampleUtterance {
   /** Text attribute of sample utterance. */
@@ -855,8 +588,6 @@ export interface SampleUtterance {
   /** Question id of sample utterance (for stackoverflow questions titles). */
   qid?: string;
 }
-const SampleUtterance = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SampleUtterance>;
-
 /** Result for utterances query. */
 export interface QueryUtterancesResult {
   /** A sample utterance. */
@@ -864,18 +595,8 @@ export interface QueryUtterancesResult {
   /** Score of a sample utterance. */
   score?: number;
 }
-const QueryUtterancesResult = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<QueryUtterancesResult>;
-
 /** Array of utterance results for search query. */
 export type QueryUtterancesResultsResultsList = Array<QueryUtterancesResult>;
-const QueryUtterancesResultsResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<QueryUtterancesResultsResultsList>;
-
 /** Suggested utterances where the detector can be applicable */
 export interface QueryUtterancesResults {
   /** Search Query. */
@@ -883,11 +604,6 @@ export interface QueryUtterancesResults {
   /** Array of utterance results for search query. */
   results?: QueryUtterancesResultsResultsList;
 }
-const QueryUtterancesResults = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<QueryUtterancesResults>;
-
 /** DetectorResponse resource specific properties */
 export interface DetectorResponseProperties {
   /** metadata for the detector */
@@ -901,11 +617,6 @@ export interface DetectorResponseProperties {
   /** Suggested utterances where the detector can be applicable. */
   suggestedUtterances?: QueryUtterancesResults;
 }
-const DetectorResponseProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DetectorResponseProperties>;
-
 export interface GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -920,23 +631,12 @@ export interface GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetecto
   /** Kind of resource */
   kind?: string;
 }
-const GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseResponse =
-  /*@__PURE__*/ __L.at(
-    __c6,
-    6,
-  ) as any as S.Schema<GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseResponse>;
-
 export interface ListAppServiceCertificateOrderByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListAppServiceCertificateOrderByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListAppServiceCertificateOrderByResourceGroupRequest>;
-
 /** Resource tags. */
 export type AppServiceCertificateOrderTagsMap = { [key: string]: string | undefined };
 /** SSL certificate purchase order. */
@@ -958,16 +658,8 @@ export interface AppServiceCertificateOrder {
   /** Kind of resource */
   kind?: string;
 }
-const AppServiceCertificateOrder =
-  AppServiceCertificateOrdersCreateOrUpdateResponse as any as S.Schema<AppServiceCertificateOrder>;
-
 /** Collection of resources. */
 export type AppServiceCertificateOrderCollectionValueList = Array<AppServiceCertificateOrder>;
-const AppServiceCertificateOrderCollectionValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<AppServiceCertificateOrderCollectionValueList>;
-
 /** Collection of certificate orders. */
 export interface AppServiceCertificateOrderCollection {
   /** Collection of resources. */
@@ -975,11 +667,6 @@ export interface AppServiceCertificateOrderCollection {
   /** Link to next page of resources. */
   nextLink?: string;
 }
-const AppServiceCertificateOrderCollection = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<AppServiceCertificateOrderCollection>;
-
 export interface ListAppServiceCertificateOrderCertificatesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -988,11 +675,6 @@ export interface ListAppServiceCertificateOrderCertificatesRequest {
   /** Name of the certificate order.. */
   certificateOrderName: string;
 }
-const ListAppServiceCertificateOrderCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListAppServiceCertificateOrderCertificatesRequest>;
-
 /** Resource tags. */
 export type AppServiceCertificateResourceTagsMap = { [key: string]: string | undefined };
 /** Key Vault container ARM resource for a certificate that is purchased through Azure. */
@@ -1014,16 +696,8 @@ export interface AppServiceCertificateResource {
   /** Kind of resource */
   kind?: string;
 }
-const AppServiceCertificateResource =
-  GetAppServiceCertificateOrderCertificateResponse as any as S.Schema<AppServiceCertificateResource>;
-
 /** The AppServiceCertificateResource items on this page */
 export type AppServiceCertificateCollectionValueList = Array<AppServiceCertificateResource>;
-const AppServiceCertificateCollectionValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<AppServiceCertificateCollectionValueList>;
-
 /** Collection of certificate order certificates. */
 export interface AppServiceCertificateCollection {
   /** The AppServiceCertificateResource items on this page */
@@ -1031,20 +705,10 @@ export interface AppServiceCertificateCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AppServiceCertificateCollection = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AppServiceCertificateCollection>;
-
 export interface ListAppServiceCertificateOrdersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListAppServiceCertificateOrdersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListAppServiceCertificateOrdersRequest>;
-
 export interface ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1053,12 +717,6 @@ export interface ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetect
   /** Name of the certificate order.. */
   certificateOrderName: string;
 }
-const ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    6,
-  ) as any as S.Schema<ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest>;
-
 /** Class representing Response from Detector */
 export interface DetectorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1074,15 +732,8 @@ export interface DetectorResponse {
   /** Kind of resource */
   kind?: string;
 }
-const DetectorResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DetectorResponse>;
-
 /** The DetectorResponse items on this page */
 export type DetectorResponseCollectionValueList = Array<DetectorResponse>;
-const DetectorResponseCollectionValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DetectorResponseCollectionValueList>;
-
 /** Collection of detector responses */
 export interface DetectorResponseCollection {
   /** The DetectorResponse items on this page */
@@ -1090,17 +741,7 @@ export interface DetectorResponseCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DetectorResponseCollection = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DetectorResponseCollection>;
-
 export interface ListCertificateRegistrationProviderOperationsRequest {}
-const ListCertificateRegistrationProviderOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListCertificateRegistrationProviderOperationsRequest>;
-
 /** Meta data about operation used for display in portal. */
 export interface CsmOperationDisplay {
   provider?: string;
@@ -1108,8 +749,6 @@ export interface CsmOperationDisplay {
   operation?: string;
   description?: string;
 }
-const CsmOperationDisplay = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CsmOperationDisplay>;
-
 /** Dimension of a resource metric. For e.g. instance specific HTTP requests for a web app, where instance name is dimension of the metric HTTP request */
 export interface Dimension {
   name?: string;
@@ -1117,35 +756,15 @@ export interface Dimension {
   internalName?: string;
   toBeExportedForShoebox?: boolean;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Dimension>;
-
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<MetricSpecificationDimensionsList>;
-
 /** Retention policy of a resource metric. */
 export interface MetricAvailability {
   timeGrain?: string;
   blobDuration?: string;
 }
-const MetricAvailability = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MetricAvailability>;
-
 export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
-const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
-
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-const MetricSpecificationSupportedTimeGrainTypesList =
-  DetectorInfoAnalysisTypeList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
-
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-const MetricSpecificationSupportedAggregationTypesList =
-  DetectorInfoAnalysisTypeList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
-
 /** Definition of a single resource metric. */
 export interface MetricSpecification {
   name?: string;
@@ -1166,14 +785,7 @@ export interface MetricSpecification {
   supportedTimeGrainTypes?: MetricSpecificationSupportedTimeGrainTypesList;
   supportedAggregationTypes?: MetricSpecificationSupportedAggregationTypesList;
 }
-const MetricSpecification = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<MetricSpecification>;
-
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
 /** Log Definition of a single resource metric. */
 export interface LogSpecification {
   name?: string;
@@ -1181,31 +793,17 @@ export interface LogSpecification {
   blobDuration?: string;
   logFilterPattern?: string;
 }
-const LogSpecification = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<LogSpecification>;
-
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
-
 /** Resource metrics service provided by Microsoft.Insights resource provider. */
 export interface ServiceSpecification {
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-const ServiceSpecification = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ServiceSpecification>;
-
 /** Properties available for a Microsoft.Web resource provider operation. */
 export interface CsmOperationDescriptionProperties {
   /** Resource metrics service provided by Microsoft.Insights resource provider. */
   serviceSpecification?: ServiceSpecification;
 }
-const CsmOperationDescriptionProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CsmOperationDescriptionProperties>;
-
 /** Description of an operation available for Microsoft.Web resource provider. */
 export interface CsmOperationDescription {
   name?: string;
@@ -1216,18 +814,8 @@ export interface CsmOperationDescription {
   /** Properties available for a Microsoft.Web resource provider operation. */
   properties?: CsmOperationDescriptionProperties;
 }
-const CsmOperationDescription = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CsmOperationDescription>;
-
 /** Collection of resources. */
 export type CsmOperationCollectionValueList = Array<CsmOperationDescription>;
-const CsmOperationCollectionValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CsmOperationCollectionValueList>;
-
 /** Collection of Azure resource manager operation metadata. */
 export interface CsmOperationCollection {
   /** Collection of resources. */
@@ -1235,11 +823,6 @@ export interface CsmOperationCollection {
   /** Link to next page of resources. */
   nextLink?: string;
 }
-const CsmOperationCollection = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CsmOperationCollection>;
-
 /** RenewCertificateOrderRequest resource specific properties */
 export interface RenewCertificateOrderRequestProperties {
   /** Certificate Key Size. */
@@ -1249,11 +832,6 @@ export interface RenewCertificateOrderRequestProperties {
   /** Should we change the ASC type (from managed private key to external private key and vice versa). */
   isPrivateKeyExternal?: boolean;
 }
-const RenewCertificateOrderRequestProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<RenewCertificateOrderRequestProperties>;
-
 export interface RenewAppServiceCertificateOrderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1266,15 +844,7 @@ export interface RenewAppServiceCertificateOrderRequest {
   /** RenewCertificateOrderRequest resource specific properties */
   properties?: RenewCertificateOrderRequestProperties;
 }
-const RenewAppServiceCertificateOrderRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<RenewAppServiceCertificateOrderRequest>;
-
 export interface RenewAppServiceCertificateOrderResponse {}
-const RenewAppServiceCertificateOrderResponse =
-  AppServiceCertificateOrdersReissueResponse as any as S.Schema<RenewAppServiceCertificateOrderResponse>;
-
 export interface ResendAppServiceCertificateOrderEmailRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1283,15 +853,7 @@ export interface ResendAppServiceCertificateOrderEmailRequest {
   /** Name of the certificate order.. */
   certificateOrderName: string;
 }
-const ResendAppServiceCertificateOrderEmailRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ResendAppServiceCertificateOrderEmailRequest>;
-
 export interface ResendAppServiceCertificateOrderEmailResponse {}
-const ResendAppServiceCertificateOrderEmailResponse =
-  AppServiceCertificateOrdersReissueResponse as any as S.Schema<ResendAppServiceCertificateOrderEmailResponse>;
-
 export interface ResendAppServiceCertificateOrderRequestEmailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1302,24 +864,11 @@ export interface ResendAppServiceCertificateOrderRequestEmailsRequest {
   /** Name of the object. */
   name?: string;
 }
-const ResendAppServiceCertificateOrderRequestEmailsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsRequest>;
-
 export interface ResendAppServiceCertificateOrderRequestEmailsResponse {}
-const ResendAppServiceCertificateOrderRequestEmailsResponse =
-  AppServiceCertificateOrdersReissueResponse as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsResponse>;
-
 /** State of the Key Vault secret. */
 export type AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap = {
   [key: string]: AppServiceCertificate | undefined;
 };
-const AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap>;
-
 /** AppServiceCertificateOrderPatchResource resource specific properties */
 export interface AppServiceCertificateOrderPatchResourcePropertiesInput {
   /** State of the Key Vault secret. */
@@ -1337,11 +886,6 @@ export interface AppServiceCertificateOrderPatchResourcePropertiesInput {
   /** Last CSR that was created for this order. */
   csr?: string;
 }
-const AppServiceCertificateOrderPatchResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<AppServiceCertificateOrderPatchResourcePropertiesInput>;
-
 export interface UpdateAppServiceCertificateOrderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1354,11 +898,6 @@ export interface UpdateAppServiceCertificateOrderRequest {
   /** AppServiceCertificateOrderPatchResource resource specific properties */
   properties?: AppServiceCertificateOrderPatchResourcePropertiesInput;
 }
-const UpdateAppServiceCertificateOrderRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<UpdateAppServiceCertificateOrderRequest>;
-
 /** Resource tags. */
 export type UpdateAppServiceCertificateOrderResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAppServiceCertificateOrderResponse {
@@ -1379,9 +918,6 @@ export interface UpdateAppServiceCertificateOrderResponse {
   /** Kind of resource */
   kind?: string;
 }
-const UpdateAppServiceCertificateOrderResponse =
-  AppServiceCertificateOrdersCreateOrUpdateResponse as any as S.Schema<UpdateAppServiceCertificateOrderResponse>;
-
 export interface UpdateAppServiceCertificateOrderCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1396,11 +932,6 @@ export interface UpdateAppServiceCertificateOrderCertificateRequest {
   /** Core resource properties */
   properties?: AppServiceCertificate;
 }
-const UpdateAppServiceCertificateOrderCertificateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateRequest>;
-
 /** Resource tags. */
 export type UpdateAppServiceCertificateOrderCertificateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1423,16 +954,10 @@ export interface UpdateAppServiceCertificateOrderCertificateResponse {
   /** Kind of resource */
   kind?: string;
 }
-const UpdateAppServiceCertificateOrderCertificateResponse =
-  GetAppServiceCertificateOrderCertificateResponse as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponse>;
-
 /** Resource tags. */
 export type ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap =
-  AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap>;
-
 export interface ValidateAppServiceCertificateOrderPurchaseInformationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1445,17 +970,7 @@ export interface ValidateAppServiceCertificateOrderPurchaseInformationRequest {
   /** Kind of resource */
   kind?: string;
 }
-const ValidateAppServiceCertificateOrderPurchaseInformationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationRequest>;
-
 export interface ValidateAppServiceCertificateOrderPurchaseInformationResponse {}
-const ValidateAppServiceCertificateOrderPurchaseInformationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationResponse>;
-
 export interface VerifyAppServiceCertificateOrderDomainOwnershipRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1464,15 +979,7 @@ export interface VerifyAppServiceCertificateOrderDomainOwnershipRequest {
   /** Name of the certificate order.. */
   certificateOrderName: string;
 }
-const VerifyAppServiceCertificateOrderDomainOwnershipRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipRequest>;
-
 export interface VerifyAppServiceCertificateOrderDomainOwnershipResponse {}
-const VerifyAppServiceCertificateOrderDomainOwnershipResponse =
-  AppServiceCertificateOrdersReissueResponse as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipResponse>;
-
 export type AppServiceCertificateOrdersCreateOrUpdateError = AzureOpError;
 /** Create or update a certificate purchase order. Description for Create or update a certificate purchase order. */
 export const AppServiceCertificateOrdersCreateOrUpdate: API.OperationMethod<
@@ -1481,8 +988,8 @@ export const AppServiceCertificateOrdersCreateOrUpdate: API.OperationMethod<
   AppServiceCertificateOrdersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppServiceCertificateOrdersCreateOrUpdateRequest,
-  output: AppServiceCertificateOrdersCreateOrUpdateResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1496,8 +1003,16 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificate: API.Operation
   AppServiceCertificateOrdersCreateOrUpdateCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppServiceCertificateOrdersCreateOrUpdateCertificateRequest,
-  output: AppServiceCertificateOrdersCreateOrUpdateCertificateResponse,
+  input: __S(
+    12,
+    __c1,
+    4,
+  ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateRequest>,
+  output: __S(
+    13,
+    __c1,
+    5,
+  ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1511,8 +1026,8 @@ export const AppServiceCertificateOrdersReissue: API.OperationMethod<
   AppServiceCertificateOrdersReissueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppServiceCertificateOrdersReissueRequest,
-  output: AppServiceCertificateOrdersReissueResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<AppServiceCertificateOrdersReissueRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<AppServiceCertificateOrdersReissueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1041,8 @@ export const DeleteAppServiceCertificateOrder: API.OperationMethod<
   DeleteAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppServiceCertificateOrderRequest,
-  output: DeleteAppServiceCertificateOrderResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteAppServiceCertificateOrderRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1056,8 @@ export const DeleteAppServiceCertificateOrderCertificate: API.OperationMethod<
   DeleteAppServiceCertificateOrderCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppServiceCertificateOrderCertificateRequest,
-  output: DeleteAppServiceCertificateOrderCertificateResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1071,8 @@ export const GetAppServiceCertificateOrder: API.OperationMethod<
   GetAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppServiceCertificateOrderRequest,
-  output: GetAppServiceCertificateOrderResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<GetAppServiceCertificateOrderRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1086,8 @@ export const GetAppServiceCertificateOrderCertificate: API.OperationMethod<
   GetAppServiceCertificateOrderCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppServiceCertificateOrderCertificateRequest,
-  output: GetAppServiceCertificateOrderCertificateResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<GetAppServiceCertificateOrderCertificateRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetAppServiceCertificateOrderCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1101,16 @@ export const GetAppServiceCertificateOrderCertificateActions: API.OperationMetho
   GetAppServiceCertificateOrderCertificateActionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppServiceCertificateOrderCertificateActionsRequest,
-  output: GetAppServiceCertificateOrderCertificateActionsResponse,
+  input: __S(
+    22,
+    __c2,
+    6,
+  ) as any as S.Schema<GetAppServiceCertificateOrderCertificateActionsRequest>,
+  output: __S(
+    25,
+    __c3,
+    1,
+  ) as any as S.Schema<GetAppServiceCertificateOrderCertificateActionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1601,8 +1124,16 @@ export const GetAppServiceCertificateOrderCertificateEmailHistory: API.Operation
   GetAppServiceCertificateOrderCertificateEmailHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppServiceCertificateOrderCertificateEmailHistoryRequest,
-  output: GetAppServiceCertificateOrderCertificateEmailHistoryResponse,
+  input: __S(
+    26,
+    __c3,
+    2,
+  ) as any as S.Schema<GetAppServiceCertificateOrderCertificateEmailHistoryRequest>,
+  output: __S(
+    29,
+    __c3,
+    5,
+  ) as any as S.Schema<GetAppServiceCertificateOrderCertificateEmailHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1147,8 @@ export const GetAppServiceCertificateOrderSiteSeal: API.OperationMethod<
   GetAppServiceCertificateOrderSiteSealError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppServiceCertificateOrderSiteSealRequest,
-  output: SiteSeal,
+  input: __S(30, __c3, 6) as any as S.Schema<GetAppServiceCertificateOrderSiteSealRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<SiteSeal>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1632,8 +1163,16 @@ export const GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorRes
   GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest,
-  output: GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseResponse,
+  input: __S(
+    32,
+    __c4,
+    0,
+  ) as any as S.Schema<GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest>,
+  output: __S(
+    54,
+    __c6,
+    6,
+  ) as any as S.Schema<GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1647,8 +1186,8 @@ export const ListAppServiceCertificateOrderByResourceGroup: API.OperationMethod<
   ListAppServiceCertificateOrderByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAppServiceCertificateOrderByResourceGroupRequest,
-  output: AppServiceCertificateOrderCollection,
+  input: __S(55, __c6, 7) as any as S.Schema<ListAppServiceCertificateOrderByResourceGroupRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<AppServiceCertificateOrderCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1662,8 +1201,8 @@ export const ListAppServiceCertificateOrderCertificates: API.OperationMethod<
   ListAppServiceCertificateOrderCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAppServiceCertificateOrderCertificatesRequest,
-  output: AppServiceCertificateCollection,
+  input: __S(58, __c7, 2) as any as S.Schema<ListAppServiceCertificateOrderCertificatesRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<AppServiceCertificateCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1677,8 +1216,8 @@ export const ListAppServiceCertificateOrders: API.OperationMethod<
   ListAppServiceCertificateOrdersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAppServiceCertificateOrdersRequest,
-  output: AppServiceCertificateOrderCollection,
+  input: __S(61, __c7, 5) as any as S.Schema<ListAppServiceCertificateOrdersRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<AppServiceCertificateOrderCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1232,12 @@ export const ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorRe
   ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest,
-  output: DetectorResponseCollection,
+  input: __S(
+    62,
+    __c7,
+    6,
+  ) as any as S.Schema<ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DetectorResponseCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1251,8 @@ export const ListCertificateRegistrationProviderOperations: API.OperationMethod<
   ListCertificateRegistrationProviderOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificateRegistrationProviderOperationsRequest,
-  output: CsmOperationCollection,
+  input: __S(66, __c8, 2) as any as S.Schema<ListCertificateRegistrationProviderOperationsRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<CsmOperationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1266,8 @@ export const RenewAppServiceCertificateOrder: API.OperationMethod<
   RenewAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenewAppServiceCertificateOrderRequest,
-  output: RenewAppServiceCertificateOrderResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<RenewAppServiceCertificateOrderRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<RenewAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1281,8 @@ export const ResendAppServiceCertificateOrderEmail: API.OperationMethod<
   ResendAppServiceCertificateOrderEmailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResendAppServiceCertificateOrderEmailRequest,
-  output: ResendAppServiceCertificateOrderEmailResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<ResendAppServiceCertificateOrderEmailRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ResendAppServiceCertificateOrderEmailResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1296,12 @@ export const ResendAppServiceCertificateOrderRequestEmails: API.OperationMethod<
   ResendAppServiceCertificateOrderRequestEmailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResendAppServiceCertificateOrderRequestEmailsRequest,
-  output: ResendAppServiceCertificateOrderRequestEmailsResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsRequest>,
+  output: __S(
+    16,
+    __c2,
+    0,
+  ) as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1768,8 +1315,8 @@ export const UpdateAppServiceCertificateOrder: API.OperationMethod<
   UpdateAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAppServiceCertificateOrderRequest,
-  output: UpdateAppServiceCertificateOrderResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<UpdateAppServiceCertificateOrderRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<UpdateAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1330,8 @@ export const UpdateAppServiceCertificateOrderCertificate: API.OperationMethod<
   UpdateAppServiceCertificateOrderCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAppServiceCertificateOrderCertificateRequest,
-  output: UpdateAppServiceCertificateOrderCertificateResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1345,16 @@ export const ValidateAppServiceCertificateOrderPurchaseInformation: API.Operatio
   ValidateAppServiceCertificateOrderPurchaseInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateAppServiceCertificateOrderPurchaseInformationRequest,
-  output: ValidateAppServiceCertificateOrderPurchaseInformationResponse,
+  input: __S(
+    89,
+    __c11,
+    1,
+  ) as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationRequest>,
+  output: __S(
+    90,
+    __c11,
+    2,
+  ) as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1368,16 @@ export const VerifyAppServiceCertificateOrderDomainOwnership: API.OperationMetho
   VerifyAppServiceCertificateOrderDomainOwnershipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyAppServiceCertificateOrderDomainOwnershipRequest,
-  output: VerifyAppServiceCertificateOrderDomainOwnershipResponse,
+  input: __S(
+    91,
+    __c11,
+    3,
+  ) as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipRequest>,
+  output: __S(
+    16,
+    __c2,
+    0,
+  ) as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1830,19 +1393,19 @@ function __c0(j: number): any {
         S.Struct({
           keyVaultId: S.optional(S.String),
           keyVaultSecretName: S.optional(S.String),
-          provisioningState: S.optional(KeyVaultSecretStatus),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppServiceCertificate" });
     case 2:
-      return S.Record(S.String, AppServiceCertificate);
+      return S.Record(S.String, __S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(AppServiceCertificateOrderPropertiesInputCertificatesMap),
+          certificates: S.optional(__S(2, __c0, 2)),
           distinguishedName: S.optional(S.String),
           validityInYears: S.optional(S.Number),
           keySize: S.optional(S.Number),
-          productType: CertificateProductType,
+          productType: S.String,
           autoRenew: S.optional(S.Boolean),
           csr: S.optional(S.String),
         }),
@@ -1855,9 +1418,9 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
-          tags: S.optional(AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(AppServiceCertificateOrderPropertiesInput),
+          properties: S.optional(__S(3, __c0, 3)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1874,10 +1437,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1896,7 +1459,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CertificateDetails" });
     case 7:
-      return S.Array(ResourceNotRenewableReason);
+      return S.Array(S.String);
   }
 }
 function __c1(j: number): any {
@@ -1913,28 +1476,26 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(AppServiceCertificateOrderPropertiesCertificatesMap),
+          certificates: S.optional(__S(2, __c0, 2)),
           distinguishedName: S.optional(S.String),
           domainVerificationToken: S.optional(S.String),
           validityInYears: S.optional(S.Number),
           keySize: S.optional(S.Number),
-          productType: CertificateProductType,
+          productType: S.String,
           autoRenew: S.optional(S.Boolean),
-          provisioningState: S.optional(ProvisioningState),
-          status: S.optional(CertificateOrderStatus),
-          signedCertificate: S.optional(CertificateDetails),
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
+          signedCertificate: S.optional(__S(6, __c0, 6)),
           csr: S.optional(S.String),
-          intermediate: S.optional(CertificateDetails),
-          root: S.optional(CertificateDetails),
+          intermediate: S.optional(__S(6, __c0, 6)),
+          root: S.optional(__S(6, __c0, 6)),
           serialNumber: S.optional(S.String),
           lastCertificateIssuanceTime: S.optional(S.String),
           expirationTime: S.optional(S.String),
           isPrivateKeyExternal: S.optional(S.Boolean),
-          appServiceCertificateNotRenewableReasons: S.optional(
-            AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList,
-          ),
+          appServiceCertificateNotRenewableReasons: S.optional(__S(7, __c0, 7)),
           nextAutoRenewalTimeStamp: S.optional(S.String),
-          contact: S.optional(CertificateOrderContact),
+          contact: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "AppServiceCertificateOrderProperties",
@@ -1945,10 +1506,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(AppServiceCertificateOrderProperties),
+          properties: S.optional(__S(9, __c1, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -1963,9 +1524,9 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.String,
-          properties: S.optional(AppServiceCertificate),
+          properties: S.optional(__S(1, __c0, 1)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1984,10 +1545,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(AppServiceCertificateOrdersCreateOrUpdateCertificateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.String,
-          properties: S.optional(AppServiceCertificate),
+          properties: S.optional(__S(1, __c0, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -2011,7 +1572,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(ReissueCertificateOrderRequestProperties),
+          properties: S.optional(__S(14, __c1, 6)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2107,10 +1668,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetAppServiceCertificateOrderCertificateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          properties: S.optional(AppServiceCertificate),
+          properties: S.optional(__S(1, __c0, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -2136,7 +1697,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actionType: S.optional(CertificateOrderActionType),
+          actionType: S.optional(S.String),
           createdAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateOrderAction" });
@@ -2145,11 +1706,9 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CertificateOrderAction);
+      return S.Array(__S(23, __c2, 7));
     case 1:
-      return S.suspend(() =>
-        GetAppServiceCertificateOrderCertificateActionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAppServiceCertificateOrderCertificateActionsResponse",
       });
     case 2:
@@ -2177,13 +1736,9 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CertificateEmail" });
     case 4:
-      return S.Array(CertificateEmail);
+      return S.Array(__S(27, __c3, 3));
     case 5:
-      return S.suspend(() =>
-        GetAppServiceCertificateOrderCertificateEmailHistoryResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(28, __c3, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAppServiceCertificateOrderCertificateEmailHistoryResponse",
       });
     case 6:
@@ -2245,7 +1800,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SupportTopic" });
     case 2:
-      return S.Array(SupportTopic);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.Array(S.String);
     case 4:
@@ -2256,9 +1811,9 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           author: S.optional(S.String),
           category: S.optional(S.String),
-          supportTopicList: S.optional(DetectorInfoSupportTopicListList),
-          analysisType: S.optional(DetectorInfoAnalysisTypeList),
-          type: S.optional(DetectorType),
+          supportTopicList: S.optional(__S(34, __c4, 2)),
+          analysisType: S.optional(__S(35, __c4, 3)),
+          type: S.optional(S.String),
           score: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DetectorInfo" });
@@ -2271,9 +1826,9 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DataTableResponseColumn" });
     case 6:
-      return S.Array(DataTableResponseColumn);
+      return S.Array(__S(37, __c4, 5));
     case 7:
-      return S.Array(DataTableResponseObjectRowsItemList);
+      return S.Array(__S(35, __c4, 3));
   }
 }
 function __c5(j: number): any {
@@ -2282,14 +1837,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tableName: S.optional(S.String),
-          columns: S.optional(DataTableResponseObjectColumnsList),
-          rows: S.optional(DataTableResponseObjectRowsList),
+          columns: S.optional(__S(38, __c4, 6)),
+          rows: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "DataTableResponseObject" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(RenderingType),
+          type: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -2297,33 +1852,33 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          table: S.optional(DataTableResponseObject),
-          renderingProperties: S.optional(Rendering),
+          table: S.optional(__S(40, __c5, 0)),
+          renderingProperties: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "DiagnosticData" });
     case 3:
-      return S.Array(DiagnosticData);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          statusId: S.optional(InsightStatus),
+          statusId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(KeyValuePairStringObjectValueMap),
+          value: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "KeyValuePairStringObject" });
     case 6:
-      return S.Array(KeyValuePairStringObject);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           providerName: S.optional(S.String),
-          propertyBag: S.optional(DataProviderMetadataPropertyBagList),
+          propertyBag: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "DataProviderMetadata" });
   }
@@ -2331,39 +1886,39 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataProviderMetadata);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          links: S.optional(SampleUtteranceLinksList),
+          links: S.optional(__S(35, __c4, 3)),
           qid: S.optional(S.String),
         }),
       ).annotate({ identifier: "SampleUtterance" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sampleUtterance: S.optional(SampleUtterance),
+          sampleUtterance: S.optional(__S(49, __c6, 1)),
           score: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryUtterancesResult" });
     case 3:
-      return S.Array(QueryUtterancesResult);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          results: S.optional(QueryUtterancesResultsResultsList),
+          results: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "QueryUtterancesResults" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DetectorInfo),
-          dataset: S.optional(DetectorResponsePropertiesDatasetList),
-          status: S.optional(Status),
-          dataProvidersMetadata: S.optional(DetectorResponsePropertiesDataProvidersMetadataList),
-          suggestedUtterances: S.optional(QueryUtterancesResults),
+          metadata: S.optional(__S(36, __c4, 4)),
+          dataset: S.optional(__S(43, __c5, 3)),
+          status: S.optional(__S(44, __c5, 4)),
+          dataProvidersMetadata: S.optional(__S(48, __c6, 0)),
+          suggestedUtterances: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({
         identifier: "DetectorResponseProperties",
@@ -2374,8 +1929,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DetectorResponseProperties),
+          systemData: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(53, __c6, 5)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -2403,11 +1958,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AppServiceCertificateOrder);
+      return S.Array(__S(10, __c1, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: AppServiceCertificateOrderCollectionValueList,
+          value: __S(56, __c7, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2431,11 +1986,11 @@ function __c7(j: number): any {
         identifier: "ListAppServiceCertificateOrderCertificatesRequest",
       });
     case 3:
-      return S.Array(AppServiceCertificateResource);
+      return S.Array(__S(21, __c2, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: AppServiceCertificateCollectionValueList,
+          value: __S(59, __c7, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2480,8 +2035,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DetectorResponseProperties),
+          systemData: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(53, __c6, 5)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "DetectorResponse" });
@@ -2490,11 +2045,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DetectorResponse);
+      return S.Array(__S(63, __c7, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: DetectorResponseCollectionValueList,
+          value: __S(64, __c8, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2532,7 +2087,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 5:
-      return S.Array(Dimension);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2541,7 +2096,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "MetricAvailability" });
     case 7:
-      return S.Array(MetricAvailability);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -2561,15 +2116,15 @@ function __c9(j: number): any {
           metricFilterPattern: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           isInternal: S.optional(S.Boolean),
-          dimensions: S.optional(MetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(69, __c8, 5)),
           category: S.optional(S.String),
-          availabilities: S.optional(MetricSpecificationAvailabilitiesList),
-          supportedTimeGrainTypes: S.optional(MetricSpecificationSupportedTimeGrainTypesList),
-          supportedAggregationTypes: S.optional(MetricSpecificationSupportedAggregationTypesList),
+          availabilities: S.optional(__S(71, __c8, 7)),
+          supportedTimeGrainTypes: S.optional(__S(35, __c4, 3)),
+          supportedAggregationTypes: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 1:
-      return S.Array(MetricSpecification);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2580,18 +2135,18 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 3:
-      return S.Array(LogSpecification);
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
-          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
+          metricSpecifications: S.optional(__S(73, __c9, 1)),
+          logSpecifications: S.optional(__S(75, __c9, 3)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ServiceSpecification),
+          serviceSpecification: S.optional(__S(76, __c9, 4)),
         }),
       ).annotate({
         identifier: "CsmOperationDescriptionProperties",
@@ -2601,13 +2156,13 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(CsmOperationDisplay),
+          display: S.optional(__S(67, __c8, 3)),
           origin: S.optional(S.String),
-          properties: S.optional(CsmOperationDescriptionProperties),
+          properties: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({ identifier: "CsmOperationDescription" });
     case 7:
-      return S.Array(CsmOperationDescription);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -2615,7 +2170,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: CsmOperationCollectionValueList,
+          value: __S(79, __c9, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CsmOperationCollection" });
@@ -2636,7 +2191,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(RenewCertificateOrderRequestProperties),
+          properties: S.optional(__S(81, __c10, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2684,17 +2239,15 @@ function __c10(j: number): any {
         identifier: "ResendAppServiceCertificateOrderRequestEmailsRequest",
       });
     case 5:
-      return S.Record(S.String, AppServiceCertificate);
+      return S.Record(S.String, __S(1, __c0, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(
-            AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap,
-          ),
+          certificates: S.optional(__S(85, __c10, 5)),
           distinguishedName: S.optional(S.String),
           validityInYears: S.optional(S.Number),
           keySize: S.optional(S.Number),
-          productType: CertificateProductType,
+          productType: S.String,
           autoRenew: S.optional(S.Boolean),
           csr: S.optional(S.String),
         }),
@@ -2708,7 +2261,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(AppServiceCertificateOrderPatchResourcePropertiesInput),
+          properties: S.optional(__S(86, __c10, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2732,7 +2285,7 @@ function __c11(j: number): any {
           certificateOrderName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(AppServiceCertificate),
+          properties: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2748,9 +2301,9 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          tags: S.optional(ValidateAppServiceCertificateOrderPurchaseInformationRequestTagsMap),
+          tags: S.optional(__S(11, __c1, 3)),
           location: S.String,
-          properties: S.optional(AppServiceCertificateOrderPropertiesInput),
+          properties: S.optional(__S(3, __c0, 3)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2785,4 +2338,9 @@ function __c11(j: number): any {
         identifier: "VerifyAppServiceCertificateOrderDomainOwnershipRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

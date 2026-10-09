@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://ses.amazonaws.com/doc/2010-12-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SES", serviceShapeName: "SimpleEmailService" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ses" });
@@ -517,32 +519,15 @@ export interface CloneReceiptRuleSetRequest {
   RuleSetName: string;
   OriginalRuleSetName: string;
 }
-const CloneReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CloneReceiptRuleSetRequest>;
 export interface CloneReceiptRuleSetResponse {}
-const CloneReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CloneReceiptRuleSetResponse>;
 export type ConfigurationSetName = string;
 export interface ConfigurationSet {
   Name: string;
 }
-const ConfigurationSet = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ConfigurationSet>;
 export interface CreateConfigurationSetRequest {
   ConfigurationSet: ConfigurationSet;
 }
-const CreateConfigurationSetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateConfigurationSetRequest>;
 export interface CreateConfigurationSetResponse {}
-const CreateConfigurationSetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateConfigurationSetResponse>;
 export type EventDestinationName = string;
 export type Enabled = boolean;
 export type EventType =
@@ -555,46 +540,27 @@ export type EventType =
   | "click"
   | "renderingFailure"
   | (string & {});
-const EventType = S.String;
-
 export type EventTypes = EventType[];
-const EventTypes = /*@__PURE__*/ __L.at(__c0, 5);
 export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
   IAMRoleARN: string;
   DeliveryStreamARN: string;
 }
-const KinesisFirehoseDestination = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<KinesisFirehoseDestination>;
 export type DimensionName = string;
 export type DimensionValueSource = "messageTag" | "emailHeader" | "linkTag" | (string & {});
-const DimensionValueSource = S.String;
-
 export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
   DimensionValueSource: DimensionValueSource;
   DefaultDimensionValue: string;
 }
-const CloudWatchDimensionConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CloudWatchDimensionConfiguration>;
 export type CloudWatchDimensionConfigurations = CloudWatchDimensionConfiguration[];
-const CloudWatchDimensionConfigurations = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CloudWatchDestination {
   DimensionConfigurations: CloudWatchDimensionConfiguration[];
 }
-const CloudWatchDestination = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CloudWatchDestination>;
 export interface SNSDestination {
   TopicARN: string;
 }
-const SNSDestination = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SNSDestination>;
 export interface EventDestination {
   Name: string;
   Enabled?: boolean;
@@ -603,38 +569,20 @@ export interface EventDestination {
   CloudWatchDestination?: CloudWatchDestination;
   SNSDestination?: SNSDestination;
 }
-const EventDestination = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EventDestination>;
 export interface CreateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination: EventDestination;
 }
-const CreateConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>;
 export interface CreateConfigurationSetEventDestinationResponse {}
-const CreateConfigurationSetEventDestinationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>;
 export type CustomRedirectDomain = string;
 export interface TrackingOptions {
   CustomRedirectDomain?: string;
 }
-const TrackingOptions = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TrackingOptions>;
 export interface CreateConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   TrackingOptions: TrackingOptions;
 }
-const CreateConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateConfigurationSetTrackingOptionsRequest>;
 export interface CreateConfigurationSetTrackingOptionsResponse {}
-const CreateConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateConfigurationSetTrackingOptionsResponse>;
 export type TemplateName = string;
 export type FromAddress = string;
 export type Subject = string;
@@ -649,49 +597,26 @@ export interface CreateCustomVerificationEmailTemplateRequest {
   SuccessRedirectionURL: string;
   FailureRedirectionURL: string;
 }
-const CreateCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateCustomVerificationEmailTemplateRequest>;
 export interface CreateCustomVerificationEmailTemplateResponse {}
-const CreateCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>;
 export type ReceiptFilterName = string;
 export type ReceiptFilterPolicy = "Block" | "Allow" | (string & {});
-const ReceiptFilterPolicy = S.String;
-
 export type Cidr = string;
 export interface ReceiptIpFilter {
   Policy: ReceiptFilterPolicy;
   Cidr: string;
 }
-const ReceiptIpFilter = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ReceiptIpFilter>;
 export interface ReceiptFilter {
   Name: string;
   IpFilter: ReceiptIpFilter;
 }
-const ReceiptFilter = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ReceiptFilter>;
 export interface CreateReceiptFilterRequest {
   Filter: ReceiptFilter;
 }
-const CreateReceiptFilterRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateReceiptFilterRequest>;
 export interface CreateReceiptFilterResponse {}
-const CreateReceiptFilterResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateReceiptFilterResponse>;
 export type ReceiptRuleName = string;
 export type TlsPolicy = "Require" | "Optional" | (string & {});
-const TlsPolicy = S.String;
-
 export type Recipient = string;
 export type RecipientsList = string[];
-const RecipientsList = /*@__PURE__*/ __L.at(__c2, 7);
 export type S3BucketName = string;
 export type S3KeyPrefix = string;
 export type IAMRoleARN = string;
@@ -702,7 +627,6 @@ export interface S3Action {
   KmsKeyArn?: string;
   IamRoleArn?: string;
 }
-const S3Action = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<S3Action>;
 export type BounceSmtpReplyCode = string;
 export type BounceStatusCode = string;
 export type BounceMessage = string;
@@ -714,50 +638,37 @@ export interface BounceAction {
   Message: string;
   Sender: string;
 }
-const BounceAction = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BounceAction>;
 export interface WorkmailAction {
   TopicArn?: string;
   OrganizationArn: string;
 }
-const WorkmailAction = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<WorkmailAction>;
 export type InvocationType = "Event" | "RequestResponse" | (string & {});
-const InvocationType = S.String;
-
 export interface LambdaAction {
   TopicArn?: string;
   FunctionArn: string;
   InvocationType?: InvocationType;
 }
-const LambdaAction = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<LambdaAction>;
 export type StopScope = "RuleSet" | (string & {});
-const StopScope = S.String;
-
 export interface StopAction {
   Scope: StopScope;
   TopicArn?: string;
 }
-const StopAction = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StopAction>;
 export type HeaderName = string;
 export type HeaderValue = string;
 export interface AddHeaderAction {
   HeaderName: string;
   HeaderValue: string;
 }
-const AddHeaderAction = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AddHeaderAction>;
 export type SNSActionEncoding = "UTF-8" | "Base64" | (string & {});
-const SNSActionEncoding = S.String;
-
 export interface SNSAction {
   TopicArn: string;
   Encoding?: SNSActionEncoding;
 }
-const SNSAction = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SNSAction>;
 export type ConnectInstanceArn = string;
 export interface ConnectAction {
   InstanceARN: string;
   IAMRoleARN: string;
 }
-const ConnectAction = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ConnectAction>;
 export interface ReceiptAction {
   S3Action?: S3Action;
   BounceAction?: BounceAction;
@@ -768,9 +679,7 @@ export interface ReceiptAction {
   SNSAction?: SNSAction;
   ConnectAction?: ConnectAction;
 }
-const ReceiptAction = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ReceiptAction>;
 export type ReceiptActionsList = ReceiptAction[];
-const ReceiptActionsList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ReceiptRule {
   Name: string;
   Enabled?: boolean;
@@ -779,33 +688,16 @@ export interface ReceiptRule {
   Actions?: ReceiptAction[];
   ScanEnabled?: boolean;
 }
-const ReceiptRule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ReceiptRule>;
 export interface CreateReceiptRuleRequest {
   RuleSetName: string;
   After?: string;
   Rule: ReceiptRule;
 }
-const CreateReceiptRuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateReceiptRuleRequest>;
 export interface CreateReceiptRuleResponse {}
-const CreateReceiptRuleResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateReceiptRuleResponse>;
 export interface CreateReceiptRuleSetRequest {
   RuleSetName: string;
 }
-const CreateReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateReceiptRuleSetRequest>;
 export interface CreateReceiptRuleSetResponse {}
-const CreateReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateReceiptRuleSetResponse>;
 export type SubjectPart = string;
 export type TextPart = string;
 export type HtmlPart = string;
@@ -815,210 +707,90 @@ export interface Template {
   TextPart?: string;
   HtmlPart?: string;
 }
-const Template = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Template>;
 export interface CreateTemplateRequest {
   Template: Template;
 }
-const CreateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateTemplateRequest>;
 export interface CreateTemplateResponse {}
-const CreateTemplateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateTemplateResponse>;
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
-const DeleteConfigurationSetRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteConfigurationSetRequest>;
 export interface DeleteConfigurationSetResponse {}
-const DeleteConfigurationSetResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteConfigurationSetResponse>;
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
 }
-const DeleteConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>;
 export interface DeleteConfigurationSetEventDestinationResponse {}
-const DeleteConfigurationSetEventDestinationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
 export interface DeleteConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
 }
-const DeleteConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DeleteConfigurationSetTrackingOptionsRequest>;
 export interface DeleteConfigurationSetTrackingOptionsResponse {}
-const DeleteConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteConfigurationSetTrackingOptionsResponse>;
 export interface DeleteCustomVerificationEmailTemplateRequest {
   TemplateName: string;
 }
-const DeleteCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteCustomVerificationEmailTemplateRequest>;
 export interface DeleteCustomVerificationEmailTemplateResponse {}
-const DeleteCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteCustomVerificationEmailTemplateResponse>;
 export type Identity = string;
 export interface DeleteIdentityRequest {
   Identity: string;
 }
-const DeleteIdentityRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteIdentityRequest>;
 export interface DeleteIdentityResponse {}
-const DeleteIdentityResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteIdentityResponse>;
 export type PolicyName = string;
 export interface DeleteIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
 }
-const DeleteIdentityPolicyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteIdentityPolicyRequest>;
 export interface DeleteIdentityPolicyResponse {}
-const DeleteIdentityPolicyResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteIdentityPolicyResponse>;
 export interface DeleteReceiptFilterRequest {
   FilterName: string;
 }
-const DeleteReceiptFilterRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeleteReceiptFilterRequest>;
 export interface DeleteReceiptFilterResponse {}
-const DeleteReceiptFilterResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DeleteReceiptFilterResponse>;
 export interface DeleteReceiptRuleRequest {
   RuleSetName: string;
   RuleName: string;
 }
-const DeleteReceiptRuleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteReceiptRuleRequest>;
 export interface DeleteReceiptRuleResponse {}
-const DeleteReceiptRuleResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DeleteReceiptRuleResponse>;
 export interface DeleteReceiptRuleSetRequest {
   RuleSetName: string;
 }
-const DeleteReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteReceiptRuleSetRequest>;
 export interface DeleteReceiptRuleSetResponse {}
-const DeleteReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteReceiptRuleSetResponse>;
 export interface DeleteTemplateRequest {
   TemplateName: string;
 }
-const DeleteTemplateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteTemplateRequest>;
 export interface DeleteTemplateResponse {}
-const DeleteTemplateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteTemplateResponse>;
 export interface DeleteVerifiedEmailAddressRequest {
   EmailAddress: string;
 }
-const DeleteVerifiedEmailAddressRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteVerifiedEmailAddressRequest>;
 export interface DeleteVerifiedEmailAddressResponse {}
-const DeleteVerifiedEmailAddressResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteVerifiedEmailAddressResponse>;
 export interface DescribeActiveReceiptRuleSetRequest {}
-const DescribeActiveReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DescribeActiveReceiptRuleSetRequest>;
 export interface ReceiptRuleSetMetadata {
   Name?: string;
   CreatedTimestamp?: Date;
 }
-const ReceiptRuleSetMetadata = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ReceiptRuleSetMetadata>;
 export type ReceiptRulesList = ReceiptRule[];
-const ReceiptRulesList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface DescribeActiveReceiptRuleSetResponse {
   Metadata?: ReceiptRuleSetMetadata;
   Rules?: ReceiptRule[];
 }
-const DescribeActiveReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DescribeActiveReceiptRuleSetResponse>;
 export type ConfigurationSetAttribute =
   | "eventDestinations"
   | "trackingOptions"
   | "deliveryOptions"
   | "reputationOptions"
   | (string & {});
-const ConfigurationSetAttribute = S.String;
-
 export type ConfigurationSetAttributeList = ConfigurationSetAttribute[];
-const ConfigurationSetAttributeList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface DescribeConfigurationSetRequest {
   ConfigurationSetName: string;
   ConfigurationSetAttributeNames?: ConfigurationSetAttribute[];
 }
-const DescribeConfigurationSetRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DescribeConfigurationSetRequest>;
 export type EventDestinations = EventDestination[];
-const EventDestinations = /*@__PURE__*/ __L.at(__c8, 6);
 export interface DeliveryOptions {
   TlsPolicy?: TlsPolicy;
 }
-const DeliveryOptions = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DeliveryOptions>;
 export type LastFreshStart = Date;
 export interface ReputationOptions {
   SendingEnabled?: boolean;
   ReputationMetricsEnabled?: boolean;
   LastFreshStart?: Date;
 }
-const ReputationOptions = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ReputationOptions>;
 export interface DescribeConfigurationSetResponse {
   ConfigurationSet?: ConfigurationSet;
   EventDestinations?: EventDestination[];
@@ -1026,59 +798,27 @@ export interface DescribeConfigurationSetResponse {
   DeliveryOptions?: DeliveryOptions;
   ReputationOptions?: ReputationOptions;
 }
-const DescribeConfigurationSetResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DescribeConfigurationSetResponse>;
 export interface DescribeReceiptRuleRequest {
   RuleSetName: string;
   RuleName: string;
 }
-const DescribeReceiptRuleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DescribeReceiptRuleRequest>;
 export interface DescribeReceiptRuleResponse {
   Rule?: ReceiptRule;
 }
-const DescribeReceiptRuleResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DescribeReceiptRuleResponse>;
 export interface DescribeReceiptRuleSetRequest {
   RuleSetName: string;
 }
-const DescribeReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DescribeReceiptRuleSetRequest>;
 export interface DescribeReceiptRuleSetResponse {
   Metadata?: ReceiptRuleSetMetadata;
   Rules?: ReceiptRule[];
 }
-const DescribeReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DescribeReceiptRuleSetResponse>;
 export interface GetAccountSendingEnabledRequest {}
-const GetAccountSendingEnabledRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetAccountSendingEnabledRequest>;
 export interface GetAccountSendingEnabledResponse {
   Enabled?: boolean;
 }
-const GetAccountSendingEnabledResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetAccountSendingEnabledResponse>;
 export interface GetCustomVerificationEmailTemplateRequest {
   TemplateName: string;
 }
-const GetCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetCustomVerificationEmailTemplateRequest>;
 export interface GetCustomVerificationEmailTemplateResponse {
   TemplateName?: string;
   FromEmailAddress?: string;
@@ -1087,19 +827,10 @@ export interface GetCustomVerificationEmailTemplateResponse {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-const GetCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetCustomVerificationEmailTemplateResponse>;
 export type IdentityList = string[];
-const IdentityList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface GetIdentityDkimAttributesRequest {
   Identities: string[];
 }
-const GetIdentityDkimAttributesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetIdentityDkimAttributesRequest>;
 export type VerificationStatus =
   | "Pending"
   | "Success"
@@ -1107,36 +838,20 @@ export type VerificationStatus =
   | "TemporaryFailure"
   | "NotStarted"
   | (string & {});
-const VerificationStatus = S.String;
-
 export type VerificationToken = string;
 export type VerificationTokenList = string[];
-const VerificationTokenList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface IdentityDkimAttributes {
   DkimEnabled: boolean;
   DkimVerificationStatus: VerificationStatus;
   DkimTokens?: string[];
 }
-const IdentityDkimAttributes = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<IdentityDkimAttributes>;
 export type DkimAttributes = { [key: string]: IdentityDkimAttributes | undefined };
-const DkimAttributes = /*@__PURE__*/ __L.at(__c10, 6);
 export interface GetIdentityDkimAttributesResponse {
   DkimAttributes: { [key: string]: IdentityDkimAttributes | undefined };
 }
-const GetIdentityDkimAttributesResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetIdentityDkimAttributesResponse>;
 export interface GetIdentityMailFromDomainAttributesRequest {
   Identities: string[];
 }
-const GetIdentityMailFromDomainAttributesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetIdentityMailFromDomainAttributesRequest>;
 export type MailFromDomainName = string;
 export type CustomMailFromStatus =
   | "Pending"
@@ -1144,38 +859,21 @@ export type CustomMailFromStatus =
   | "Failed"
   | "TemporaryFailure"
   | (string & {});
-const CustomMailFromStatus = S.String;
-
 export type BehaviorOnMXFailure = "UseDefaultValue" | "RejectMessage" | (string & {});
-const BehaviorOnMXFailure = S.String;
-
 export interface IdentityMailFromDomainAttributes {
   MailFromDomain: string;
   MailFromDomainStatus: CustomMailFromStatus;
   BehaviorOnMXFailure: BehaviorOnMXFailure;
 }
-const IdentityMailFromDomainAttributes = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<IdentityMailFromDomainAttributes>;
 export type MailFromDomainAttributes = {
   [key: string]: IdentityMailFromDomainAttributes | undefined;
 };
-const MailFromDomainAttributes = /*@__PURE__*/ __L.at(__c11, 2);
 export interface GetIdentityMailFromDomainAttributesResponse {
   MailFromDomainAttributes: { [key: string]: IdentityMailFromDomainAttributes | undefined };
 }
-const GetIdentityMailFromDomainAttributesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetIdentityMailFromDomainAttributesResponse>;
 export interface GetIdentityNotificationAttributesRequest {
   Identities: string[];
 }
-const GetIdentityNotificationAttributesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetIdentityNotificationAttributesRequest>;
 export type NotificationTopic = string;
 export interface IdentityNotificationAttributes {
   BounceTopic: string;
@@ -1186,65 +884,32 @@ export interface IdentityNotificationAttributes {
   HeadersInComplaintNotificationsEnabled?: boolean;
   HeadersInDeliveryNotificationsEnabled?: boolean;
 }
-const IdentityNotificationAttributes = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<IdentityNotificationAttributes>;
 export type NotificationAttributes = { [key: string]: IdentityNotificationAttributes | undefined };
-const NotificationAttributes = /*@__PURE__*/ __L.at(__c11, 6);
 export interface GetIdentityNotificationAttributesResponse {
   NotificationAttributes: { [key: string]: IdentityNotificationAttributes | undefined };
 }
-const GetIdentityNotificationAttributesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetIdentityNotificationAttributesResponse>;
 export type PolicyNameList = string[];
-const PolicyNameList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface GetIdentityPoliciesRequest {
   Identity: string;
   PolicyNames: string[];
 }
-const GetIdentityPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetIdentityPoliciesRequest>;
 export type Policy = string;
 export type PolicyMap = { [key: string]: string | undefined };
-const PolicyMap = /*@__PURE__*/ __L.at(__c12, 2);
 export interface GetIdentityPoliciesResponse {
   Policies: { [key: string]: string | undefined };
 }
-const GetIdentityPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetIdentityPoliciesResponse>;
 export interface GetIdentityVerificationAttributesRequest {
   Identities: string[];
 }
-const GetIdentityVerificationAttributesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetIdentityVerificationAttributesRequest>;
 export interface IdentityVerificationAttributes {
   VerificationStatus: VerificationStatus;
   VerificationToken?: string;
 }
-const IdentityVerificationAttributes = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<IdentityVerificationAttributes>;
 export type VerificationAttributes = { [key: string]: IdentityVerificationAttributes | undefined };
-const VerificationAttributes = /*@__PURE__*/ __L.at(__c12, 6);
 export interface GetIdentityVerificationAttributesResponse {
   VerificationAttributes: { [key: string]: IdentityVerificationAttributes | undefined };
 }
-const GetIdentityVerificationAttributesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetIdentityVerificationAttributesResponse>;
 export interface GetSendQuotaRequest {}
-const GetSendQuotaRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<GetSendQuotaRequest>;
 export type Max24HourSend = number;
 export type MaxSendRate = number;
 export type SentLast24Hours = number;
@@ -1253,15 +918,7 @@ export interface GetSendQuotaResponse {
   MaxSendRate?: number;
   SentLast24Hours?: number;
 }
-const GetSendQuotaResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetSendQuotaResponse>;
 export interface GetSendStatisticsRequest {}
-const GetSendStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetSendStatisticsRequest>;
 export type Counter = number;
 export interface SendDataPoint {
   Timestamp?: Date;
@@ -1270,53 +927,32 @@ export interface SendDataPoint {
   Complaints?: number;
   Rejects?: number;
 }
-const SendDataPoint = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<SendDataPoint>;
 export type SendDataPointList = SendDataPoint[];
-const SendDataPointList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface GetSendStatisticsResponse {
   SendDataPoints?: SendDataPoint[];
 }
-const GetSendStatisticsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetSendStatisticsResponse>;
 export interface GetTemplateRequest {
   TemplateName: string;
 }
-const GetTemplateRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GetTemplateRequest>;
 export interface GetTemplateResponse {
   Template?: Template;
 }
-const GetTemplateResponse = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GetTemplateResponse>;
 export type NextToken = string;
 export type MaxItems = number;
 export interface ListConfigurationSetsRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const ListConfigurationSetsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListConfigurationSetsRequest>;
 export type ConfigurationSets = ConfigurationSet[];
-const ConfigurationSets = /*@__PURE__*/ __L.at(__c14, 1);
 export interface ListConfigurationSetsResponse {
   ConfigurationSets?: ConfigurationSet[];
   NextToken?: string;
 }
-const ListConfigurationSetsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListConfigurationSetsResponse>;
 export type MaxResults = number;
 export interface ListCustomVerificationEmailTemplatesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCustomVerificationEmailTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListCustomVerificationEmailTemplatesRequest>;
 export interface CustomVerificationEmailTemplate {
   TemplateName?: string;
   FromEmailAddress?: string;
@@ -1324,164 +960,75 @@ export interface CustomVerificationEmailTemplate {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-const CustomVerificationEmailTemplate = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CustomVerificationEmailTemplate>;
 export type CustomVerificationEmailTemplates = CustomVerificationEmailTemplate[];
-const CustomVerificationEmailTemplates = /*@__PURE__*/ __L.at(__c14, 5);
 export interface ListCustomVerificationEmailTemplatesResponse {
   CustomVerificationEmailTemplates?: CustomVerificationEmailTemplate[];
   NextToken?: string;
 }
-const ListCustomVerificationEmailTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>;
 export type IdentityType = "EmailAddress" | "Domain" | (string & {});
-const IdentityType = S.String;
-
 export interface ListIdentitiesRequest {
   IdentityType?: IdentityType;
   NextToken?: string;
   MaxItems?: number;
 }
-const ListIdentitiesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListIdentitiesRequest>;
 export interface ListIdentitiesResponse {
   Identities: string[];
   NextToken?: string;
 }
-const ListIdentitiesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListIdentitiesResponse>;
 export interface ListIdentityPoliciesRequest {
   Identity: string;
 }
-const ListIdentityPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListIdentityPoliciesRequest>;
 export interface ListIdentityPoliciesResponse {
   PolicyNames: string[];
 }
-const ListIdentityPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ListIdentityPoliciesResponse>;
 export interface ListReceiptFiltersRequest {}
-const ListReceiptFiltersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListReceiptFiltersRequest>;
 export type ReceiptFilterList = ReceiptFilter[];
-const ReceiptFilterList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListReceiptFiltersResponse {
   Filters?: ReceiptFilter[];
 }
-const ListReceiptFiltersResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ListReceiptFiltersResponse>;
 export interface ListReceiptRuleSetsRequest {
   NextToken?: string;
 }
-const ListReceiptRuleSetsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListReceiptRuleSetsRequest>;
 export type ReceiptRuleSetsLists = ReceiptRuleSetMetadata[];
-const ReceiptRuleSetsLists = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ListReceiptRuleSetsResponse {
   RuleSets?: ReceiptRuleSetMetadata[];
   NextToken?: string;
 }
-const ListReceiptRuleSetsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ListReceiptRuleSetsResponse>;
 export interface ListTemplatesRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const ListTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListTemplatesRequest>;
 export interface TemplateMetadata {
   Name?: string;
   CreatedTimestamp?: Date;
 }
-const TemplateMetadata = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<TemplateMetadata>;
 export type TemplateMetadataList = TemplateMetadata[];
-const TemplateMetadataList = /*@__PURE__*/ __L.at(__c16, 3);
 export interface ListTemplatesResponse {
   TemplatesMetadata?: TemplateMetadata[];
   NextToken?: string;
 }
-const ListTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListTemplatesResponse>;
 export interface ListVerifiedEmailAddressesRequest {}
-const ListVerifiedEmailAddressesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListVerifiedEmailAddressesRequest>;
 export type AddressList = string[];
-const AddressList = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ListVerifiedEmailAddressesResponse {
   VerifiedEmailAddresses?: string[];
 }
-const ListVerifiedEmailAddressesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListVerifiedEmailAddressesResponse>;
 export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
   DeliveryOptions?: DeliveryOptions;
 }
-const PutConfigurationSetDeliveryOptionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<PutConfigurationSetDeliveryOptionsRequest>;
 export interface PutConfigurationSetDeliveryOptionsResponse {}
-const PutConfigurationSetDeliveryOptionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>;
 export interface PutIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
   Policy: string;
 }
-const PutIdentityPolicyRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<PutIdentityPolicyRequest>;
 export interface PutIdentityPolicyResponse {}
-const PutIdentityPolicyResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<PutIdentityPolicyResponse>;
 export type ReceiptRuleNamesList = string[];
-const ReceiptRuleNamesList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ReorderReceiptRuleSetRequest {
   RuleSetName: string;
   RuleNames: string[];
 }
-const ReorderReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ReorderReceiptRuleSetRequest>;
 export interface ReorderReceiptRuleSetResponse {}
-const ReorderReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ReorderReceiptRuleSetResponse>;
 export type MessageId = string;
 export type Explanation = string;
 export type ReportingMta = string;
@@ -1492,15 +1039,12 @@ export interface ExtensionField {
   Name: string;
   Value: string;
 }
-const ExtensionField = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ExtensionField>;
 export type ExtensionFieldList = ExtensionField[];
-const ExtensionFieldList = /*@__PURE__*/ __L.at(__c18, 0);
 export interface MessageDsn {
   ReportingMta: string;
   ArrivalDate?: Date;
   ExtensionFields?: ExtensionField[];
 }
-const MessageDsn = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<MessageDsn>;
 export type BounceType =
   | "DoesNotExist"
   | "MessageTooLarge"
@@ -1509,11 +1053,7 @@ export type BounceType =
   | "Undefined"
   | "TemporaryFailure"
   | (string & {});
-const BounceType = S.String;
-
 export type DsnAction = "failed" | "delayed" | "delivered" | "relayed" | "expanded" | (string & {});
-const DsnAction = S.String;
-
 export type RemoteMta = string;
 export type DsnStatus = string;
 export type DiagnosticCode = string;
@@ -1527,19 +1067,13 @@ export interface RecipientDsnFields {
   LastAttemptDate?: Date;
   ExtensionFields?: ExtensionField[];
 }
-const RecipientDsnFields = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<RecipientDsnFields>;
 export interface BouncedRecipientInfo {
   Recipient: string;
   RecipientArn?: string;
   BounceType?: BounceType;
   RecipientDsnFields?: RecipientDsnFields;
 }
-const BouncedRecipientInfo = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<BouncedRecipientInfo>;
 export type BouncedRecipientInfoList = BouncedRecipientInfo[];
-const BouncedRecipientInfoList = /*@__PURE__*/ __L.at(__c18, 4);
 export interface SendBounceRequest {
   OriginalMessageId: string;
   BounceSender: string;
@@ -1548,38 +1082,28 @@ export interface SendBounceRequest {
   BouncedRecipientInfoList: BouncedRecipientInfo[];
   BounceSenderArn?: string;
 }
-const SendBounceRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<SendBounceRequest>;
 export interface SendBounceResponse {
   MessageId?: string;
 }
-const SendBounceResponse = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<SendBounceResponse>;
 export type MessageTagName = string;
 export type MessageTagValue = string;
 export interface MessageTag {
   Name: string;
   Value: string;
 }
-const MessageTag = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<MessageTag>;
 export type MessageTagList = MessageTag[];
-const MessageTagList = /*@__PURE__*/ __L.at(__c19, 0);
 export type TemplateData = string;
 export interface Destination {
   ToAddresses?: string[];
   CcAddresses?: string[];
   BccAddresses?: string[];
 }
-const Destination = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<Destination>;
 export interface BulkEmailDestination {
   Destination: Destination;
   ReplacementTags?: MessageTag[];
   ReplacementTemplateData?: string;
 }
-const BulkEmailDestination = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<BulkEmailDestination>;
 export type BulkEmailDestinationList = BulkEmailDestination[];
-const BulkEmailDestinationList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface SendBulkTemplatedEmailRequest {
   Source: string;
   SourceArn?: string;
@@ -1593,10 +1117,6 @@ export interface SendBulkTemplatedEmailRequest {
   DefaultTemplateData: string;
   Destinations: BulkEmailDestination[];
 }
-const SendBulkTemplatedEmailRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<SendBulkTemplatedEmailRequest>;
 export type BulkEmailStatus =
   | "Success"
   | "MessageRejected"
@@ -1613,59 +1133,37 @@ export type BulkEmailStatus =
   | "TransientFailure"
   | "Failed"
   | (string & {});
-const BulkEmailStatus = S.String;
-
 export interface BulkEmailDestinationStatus {
   Status?: BulkEmailStatus;
   Error?: string;
   MessageId?: string;
 }
-const BulkEmailDestinationStatus = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<BulkEmailDestinationStatus>;
 export type BulkEmailDestinationStatusList = BulkEmailDestinationStatus[];
-const BulkEmailDestinationStatusList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface SendBulkTemplatedEmailResponse {
   Status: BulkEmailDestinationStatus[];
 }
-const SendBulkTemplatedEmailResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<SendBulkTemplatedEmailResponse>;
 export interface SendCustomVerificationEmailRequest {
   EmailAddress: string;
   TemplateName: string;
   ConfigurationSetName?: string;
 }
-const SendCustomVerificationEmailRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<SendCustomVerificationEmailRequest>;
 export interface SendCustomVerificationEmailResponse {
   MessageId?: string;
 }
-const SendCustomVerificationEmailResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<SendCustomVerificationEmailResponse>;
 export type MessageData = string;
 export type Charset = string;
 export interface Content {
   Data: string;
   Charset?: string;
 }
-const Content = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<Content>;
 export interface Body {
   Text?: Content;
   Html?: Content;
 }
-const Body = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<Body>;
 export interface Message {
   Subject: Content;
   Body: Body;
 }
-const Message = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<Message>;
 export interface SendEmailRequest {
   Source: string;
   Destination: Destination;
@@ -1677,16 +1175,13 @@ export interface SendEmailRequest {
   Tags?: MessageTag[];
   ConfigurationSetName?: string;
 }
-const SendEmailRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<SendEmailRequest>;
 export interface SendEmailResponse {
   MessageId: string;
 }
-const SendEmailResponse = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<SendEmailResponse>;
 export type RawMessageData = Uint8Array;
 export interface RawMessage {
   Data: Uint8Array;
 }
-const RawMessage = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<RawMessage>;
 export interface SendRawEmailRequest {
   Source?: string;
   Destinations?: string[];
@@ -1697,14 +1192,9 @@ export interface SendRawEmailRequest {
   Tags?: MessageTag[];
   ConfigurationSetName?: string;
 }
-const SendRawEmailRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<SendRawEmailRequest>;
 export interface SendRawEmailResponse {
   MessageId: string;
 }
-const SendRawEmailResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<SendRawEmailResponse>;
 export interface SendTemplatedEmailRequest {
   Source: string;
   Destination: Destination;
@@ -1718,194 +1208,80 @@ export interface SendTemplatedEmailRequest {
   TemplateArn?: string;
   TemplateData: string;
 }
-const SendTemplatedEmailRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<SendTemplatedEmailRequest>;
 export interface SendTemplatedEmailResponse {
   MessageId: string;
 }
-const SendTemplatedEmailResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<SendTemplatedEmailResponse>;
 export interface SetActiveReceiptRuleSetRequest {
   RuleSetName?: string;
 }
-const SetActiveReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<SetActiveReceiptRuleSetRequest>;
 export interface SetActiveReceiptRuleSetResponse {}
-const SetActiveReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<SetActiveReceiptRuleSetResponse>;
 export interface SetIdentityDkimEnabledRequest {
   Identity: string;
   DkimEnabled: boolean;
 }
-const SetIdentityDkimEnabledRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<SetIdentityDkimEnabledRequest>;
 export interface SetIdentityDkimEnabledResponse {}
-const SetIdentityDkimEnabledResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<SetIdentityDkimEnabledResponse>;
 export interface SetIdentityFeedbackForwardingEnabledRequest {
   Identity: string;
   ForwardingEnabled: boolean;
 }
-const SetIdentityFeedbackForwardingEnabledRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<SetIdentityFeedbackForwardingEnabledRequest>;
 export interface SetIdentityFeedbackForwardingEnabledResponse {}
-const SetIdentityFeedbackForwardingEnabledResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<SetIdentityFeedbackForwardingEnabledResponse>;
 export type NotificationType = "Bounce" | "Complaint" | "Delivery" | (string & {});
-const NotificationType = S.String;
-
 export interface SetIdentityHeadersInNotificationsEnabledRequest {
   Identity: string;
   NotificationType: NotificationType;
   Enabled: boolean;
 }
-const SetIdentityHeadersInNotificationsEnabledRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledRequest>;
 export interface SetIdentityHeadersInNotificationsEnabledResponse {}
-const SetIdentityHeadersInNotificationsEnabledResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledResponse>;
 export interface SetIdentityMailFromDomainRequest {
   Identity: string;
   MailFromDomain?: string;
   BehaviorOnMXFailure?: BehaviorOnMXFailure;
 }
-const SetIdentityMailFromDomainRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<SetIdentityMailFromDomainRequest>;
 export interface SetIdentityMailFromDomainResponse {}
-const SetIdentityMailFromDomainResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<SetIdentityMailFromDomainResponse>;
 export interface SetIdentityNotificationTopicRequest {
   Identity: string;
   NotificationType: NotificationType;
   SnsTopic?: string;
 }
-const SetIdentityNotificationTopicRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<SetIdentityNotificationTopicRequest>;
 export interface SetIdentityNotificationTopicResponse {}
-const SetIdentityNotificationTopicResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<SetIdentityNotificationTopicResponse>;
 export interface SetReceiptRulePositionRequest {
   RuleSetName: string;
   RuleName: string;
   After?: string;
 }
-const SetReceiptRulePositionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<SetReceiptRulePositionRequest>;
 export interface SetReceiptRulePositionResponse {}
-const SetReceiptRulePositionResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<SetReceiptRulePositionResponse>;
 export interface TestRenderTemplateRequest {
   TemplateName: string;
   TemplateData: string;
 }
-const TestRenderTemplateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<TestRenderTemplateRequest>;
 export type RenderedTemplate = string;
 export interface TestRenderTemplateResponse {
   RenderedTemplate?: string;
 }
-const TestRenderTemplateResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<TestRenderTemplateResponse>;
 export interface UpdateAccountSendingEnabledRequest {
   Enabled?: boolean;
 }
-const UpdateAccountSendingEnabledRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UpdateAccountSendingEnabledRequest>;
 export interface UpdateAccountSendingEnabledResponse {}
-const UpdateAccountSendingEnabledResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<UpdateAccountSendingEnabledResponse>;
 export interface UpdateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination: EventDestination;
 }
-const UpdateConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>;
 export interface UpdateConfigurationSetEventDestinationResponse {}
-const UpdateConfigurationSetEventDestinationResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
 export interface UpdateConfigurationSetReputationMetricsEnabledRequest {
   ConfigurationSetName: string;
   Enabled: boolean;
 }
-const UpdateConfigurationSetReputationMetricsEnabledRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledRequest>;
 export interface UpdateConfigurationSetReputationMetricsEnabledResponse {}
-const UpdateConfigurationSetReputationMetricsEnabledResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledResponse>;
 export interface UpdateConfigurationSetSendingEnabledRequest {
   ConfigurationSetName: string;
   Enabled: boolean;
 }
-const UpdateConfigurationSetSendingEnabledRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<UpdateConfigurationSetSendingEnabledRequest>;
 export interface UpdateConfigurationSetSendingEnabledResponse {}
-const UpdateConfigurationSetSendingEnabledResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<UpdateConfigurationSetSendingEnabledResponse>;
 export interface UpdateConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   TrackingOptions: TrackingOptions;
 }
-const UpdateConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<UpdateConfigurationSetTrackingOptionsRequest>;
 export interface UpdateConfigurationSetTrackingOptionsResponse {}
-const UpdateConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<UpdateConfigurationSetTrackingOptionsResponse>;
 export interface UpdateCustomVerificationEmailTemplateRequest {
   TemplateName: string;
   FromEmailAddress?: string;
@@ -1914,93 +1290,37 @@ export interface UpdateCustomVerificationEmailTemplateRequest {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-const UpdateCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UpdateCustomVerificationEmailTemplateRequest>;
 export interface UpdateCustomVerificationEmailTemplateResponse {}
-const UpdateCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<UpdateCustomVerificationEmailTemplateResponse>;
 export interface UpdateReceiptRuleRequest {
   RuleSetName: string;
   Rule: ReceiptRule;
 }
-const UpdateReceiptRuleRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<UpdateReceiptRuleRequest>;
 export interface UpdateReceiptRuleResponse {}
-const UpdateReceiptRuleResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<UpdateReceiptRuleResponse>;
 export interface UpdateTemplateRequest {
   Template: Template;
 }
-const UpdateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<UpdateTemplateRequest>;
 export interface UpdateTemplateResponse {}
-const UpdateTemplateResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<UpdateTemplateResponse>;
 export type Domain = string;
 export interface VerifyDomainDkimRequest {
   Domain: string;
 }
-const VerifyDomainDkimRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<VerifyDomainDkimRequest>;
 export interface VerifyDomainDkimResponse {
   DkimTokens: string[];
 }
-const VerifyDomainDkimResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<VerifyDomainDkimResponse>;
 export interface VerifyDomainIdentityRequest {
   Domain: string;
 }
-const VerifyDomainIdentityRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<VerifyDomainIdentityRequest>;
 export interface VerifyDomainIdentityResponse {
   VerificationToken: string;
 }
-const VerifyDomainIdentityResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<VerifyDomainIdentityResponse>;
 export interface VerifyEmailAddressRequest {
   EmailAddress: string;
 }
-const VerifyEmailAddressRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<VerifyEmailAddressRequest>;
 export interface VerifyEmailAddressResponse {}
-const VerifyEmailAddressResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<VerifyEmailAddressResponse>;
 export interface VerifyEmailIdentityRequest {
   EmailAddress: string;
 }
-const VerifyEmailIdentityRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<VerifyEmailIdentityRequest>;
 export interface VerifyEmailIdentityResponse {}
-const VerifyEmailIdentityResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<VerifyEmailIdentityResponse>;
 export type RuleOrRuleSetName = string;
 export type ErrorMessage = string;
 export type CloneReceiptRuleSetError =
@@ -2023,8 +1343,8 @@ export const cloneReceiptRuleSet: API.OperationMethod<
   CloneReceiptRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloneReceiptRuleSetRequest,
-  output: CloneReceiptRuleSetResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CloneReceiptRuleSetRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CloneReceiptRuleSetResponse>,
   errors: [AlreadyExistsException, LimitExceededException, RuleSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2051,8 +1371,8 @@ export const createConfigurationSet: API.OperationMethod<
   CreateConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigurationSetRequest,
-  output: CreateConfigurationSetResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateConfigurationSetRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateConfigurationSetResponse>,
   errors: [
     ConfigurationSetAlreadyExistsException,
     InvalidConfigurationSetException,
@@ -2090,8 +1410,8 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   CreateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigurationSetEventDestinationRequest,
-  output: CreateConfigurationSetEventDestinationResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
   errors: [
     ConfigurationSetDoesNotExistException,
     EventDestinationAlreadyExistsException,
@@ -2124,8 +1444,8 @@ export const createConfigurationSetTrackingOptions: API.OperationMethod<
   CreateConfigurationSetTrackingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigurationSetTrackingOptionsRequest,
-  output: CreateConfigurationSetTrackingOptionsResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateConfigurationSetTrackingOptionsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateConfigurationSetTrackingOptionsResponse>,
   errors: [
     ConfigurationSetDoesNotExistException,
     InvalidTrackingOptionsException,
@@ -2157,8 +1477,8 @@ export const createCustomVerificationEmailTemplate: API.OperationMethod<
   CreateCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomVerificationEmailTemplateRequest,
-  output: CreateCustomVerificationEmailTemplateResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateCustomVerificationEmailTemplateRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>,
   errors: [
     CustomVerificationEmailInvalidContentException,
     CustomVerificationEmailTemplateAlreadyExistsException,
@@ -2188,8 +1508,8 @@ export const createReceiptFilter: API.OperationMethod<
   CreateReceiptFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReceiptFilterRequest,
-  output: CreateReceiptFilterResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateReceiptFilterRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<CreateReceiptFilterResponse>,
   errors: [AlreadyExistsException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2222,8 +1542,8 @@ export const createReceiptRule: API.OperationMethod<
   CreateReceiptRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReceiptRuleRequest,
-  output: CreateReceiptRuleResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<CreateReceiptRuleRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<CreateReceiptRuleResponse>,
   errors: [
     AlreadyExistsException,
     InvalidLambdaFunctionException,
@@ -2258,8 +1578,8 @@ export const createReceiptRuleSet: API.OperationMethod<
   CreateReceiptRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReceiptRuleSetRequest,
-  output: CreateReceiptRuleSetResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<CreateReceiptRuleSetRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<CreateReceiptRuleSetResponse>,
   errors: [AlreadyExistsException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2284,8 +1604,8 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTemplateRequest,
-  output: CreateTemplateResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateTemplateRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CreateTemplateResponse>,
   errors: [AlreadyExistsException, InvalidTemplateException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2306,8 +1626,8 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationSetRequest,
-  output: DeleteConfigurationSetResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<DeleteConfigurationSetRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<DeleteConfigurationSetResponse>,
   errors: [ConfigurationSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2332,8 +1652,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   DeleteConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationSetEventDestinationRequest,
-  output: DeleteConfigurationSetEventDestinationResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
   errors: [ConfigurationSetDoesNotExistException, EventDestinationDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2362,8 +1682,8 @@ export const deleteConfigurationSetTrackingOptions: API.OperationMethod<
   DeleteConfigurationSetTrackingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationSetTrackingOptionsRequest,
-  output: DeleteConfigurationSetTrackingOptionsResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<DeleteConfigurationSetTrackingOptionsRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<DeleteConfigurationSetTrackingOptionsResponse>,
   errors: [ConfigurationSetDoesNotExistException, TrackingOptionsDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2386,8 +1706,8 @@ export const deleteCustomVerificationEmailTemplate: API.OperationMethod<
   DeleteCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomVerificationEmailTemplateRequest,
-  output: DeleteCustomVerificationEmailTemplateResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteCustomVerificationEmailTemplateRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteCustomVerificationEmailTemplateResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2407,8 +1727,8 @@ export const deleteIdentity: API.OperationMethod<
   DeleteIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIdentityRequest,
-  output: DeleteIdentityResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<DeleteIdentityRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<DeleteIdentityResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2437,8 +1757,8 @@ export const deleteIdentityPolicy: API.OperationMethod<
   DeleteIdentityPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIdentityPolicyRequest,
-  output: DeleteIdentityPolicyResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<DeleteIdentityPolicyRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<DeleteIdentityPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2460,8 +1780,8 @@ export const deleteReceiptFilter: API.OperationMethod<
   DeleteReceiptFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReceiptFilterRequest,
-  output: DeleteReceiptFilterResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<DeleteReceiptFilterRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<DeleteReceiptFilterResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2483,8 +1803,8 @@ export const deleteReceiptRule: API.OperationMethod<
   DeleteReceiptRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReceiptRuleRequest,
-  output: DeleteReceiptRuleResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteReceiptRuleRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeleteReceiptRuleResponse>,
   errors: [RuleSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2509,8 +1829,8 @@ export const deleteReceiptRuleSet: API.OperationMethod<
   DeleteReceiptRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReceiptRuleSetRequest,
-  output: DeleteReceiptRuleSetResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<DeleteReceiptRuleSetRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<DeleteReceiptRuleSetResponse>,
   errors: [CannotDeleteException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2529,8 +1849,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTemplateRequest,
-  output: DeleteTemplateResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<DeleteTemplateRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<DeleteTemplateResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2548,8 +1868,8 @@ export const deleteVerifiedEmailAddress: API.OperationMethod<
   DeleteVerifiedEmailAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVerifiedEmailAddressRequest,
-  output: DeleteVerifiedEmailAddressResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<DeleteVerifiedEmailAddressRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<DeleteVerifiedEmailAddressResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2571,8 +1891,8 @@ export const describeActiveReceiptRuleSet: API.OperationMethod<
   DescribeActiveReceiptRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeActiveReceiptRuleSetRequest,
-  output: DescribeActiveReceiptRuleSetResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<DescribeActiveReceiptRuleSetRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<DescribeActiveReceiptRuleSetResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2593,8 +1913,8 @@ export const describeConfigurationSet: API.OperationMethod<
   DescribeConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeConfigurationSetRequest,
-  output: DescribeConfigurationSetResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<DescribeConfigurationSetRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DescribeConfigurationSetResponse>,
   errors: [ConfigurationSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2619,8 +1939,8 @@ export const describeReceiptRule: API.OperationMethod<
   DescribeReceiptRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeReceiptRuleRequest,
-  output: DescribeReceiptRuleResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<DescribeReceiptRuleRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<DescribeReceiptRuleResponse>,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2642,8 +1962,8 @@ export const describeReceiptRuleSet: API.OperationMethod<
   DescribeReceiptRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeReceiptRuleSetRequest,
-  output: DescribeReceiptRuleSetResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DescribeReceiptRuleSetRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<DescribeReceiptRuleSetResponse>,
   errors: [RuleSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2662,8 +1982,8 @@ export const getAccountSendingEnabled: API.OperationMethod<
   GetAccountSendingEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountSendingEnabledRequest,
-  output: GetAccountSendingEnabledResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<GetAccountSendingEnabledRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<GetAccountSendingEnabledResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2689,8 +2009,8 @@ export const getCustomVerificationEmailTemplate: API.OperationMethod<
   GetCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomVerificationEmailTemplateRequest,
-  output: GetCustomVerificationEmailTemplateResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<GetCustomVerificationEmailTemplateRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetCustomVerificationEmailTemplateResponse>,
   errors: [CustomVerificationEmailTemplateDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2728,8 +2048,8 @@ export const getIdentityDkimAttributes: API.OperationMethod<
   GetIdentityDkimAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityDkimAttributesRequest,
-  output: GetIdentityDkimAttributesResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<GetIdentityDkimAttributesRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<GetIdentityDkimAttributesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2750,8 +2070,8 @@ export const getIdentityMailFromDomainAttributes: API.OperationMethod<
   GetIdentityMailFromDomainAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityMailFromDomainAttributesRequest,
-  output: GetIdentityMailFromDomainAttributesResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<GetIdentityMailFromDomainAttributesRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<GetIdentityMailFromDomainAttributesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2775,8 +2095,8 @@ export const getIdentityNotificationAttributes: API.OperationMethod<
   GetIdentityNotificationAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityNotificationAttributesRequest,
-  output: GetIdentityNotificationAttributesResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<GetIdentityNotificationAttributesRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GetIdentityNotificationAttributesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2805,8 +2125,8 @@ export const getIdentityPolicies: API.OperationMethod<
   GetIdentityPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityPoliciesRequest,
-  output: GetIdentityPoliciesResponse,
+  input: __S(97, __c12, 1) as any as S.Schema<GetIdentityPoliciesRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetIdentityPoliciesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2841,8 +2161,8 @@ export const getIdentityVerificationAttributes: API.OperationMethod<
   GetIdentityVerificationAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityVerificationAttributesRequest,
-  output: GetIdentityVerificationAttributesResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<GetIdentityVerificationAttributesRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<GetIdentityVerificationAttributesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2861,8 +2181,8 @@ export const getSendQuota: API.OperationMethod<
   GetSendQuotaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSendQuotaRequest,
-  output: GetSendQuotaResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<GetSendQuotaRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetSendQuotaResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2883,8 +2203,8 @@ export const getSendStatistics: API.OperationMethod<
   GetSendStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSendStatisticsRequest,
-  output: GetSendStatisticsResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<GetSendStatisticsRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<GetSendStatisticsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2904,8 +2224,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTemplateRequest,
-  output: GetTemplateResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<GetTemplateRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetTemplateResponse>,
   errors: [TemplateDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2932,8 +2252,8 @@ export const listConfigurationSets: API.OperationMethod<
   ListConfigurationSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigurationSetsRequest,
-  output: ListConfigurationSetsResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<ListConfigurationSetsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListConfigurationSetsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2958,8 +2278,8 @@ export const listCustomVerificationEmailTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomVerificationEmailTemplatesRequest,
-  output: ListCustomVerificationEmailTemplatesResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<ListCustomVerificationEmailTemplatesRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2994,8 +2314,8 @@ export const listIdentities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Identity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListIdentitiesRequest,
-  output: ListIdentitiesResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<ListIdentitiesRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<ListIdentitiesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3030,8 +2350,8 @@ export const listIdentityPolicies: API.OperationMethod<
   ListIdentityPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIdentityPoliciesRequest,
-  output: ListIdentityPoliciesResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<ListIdentityPoliciesRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<ListIdentityPoliciesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3054,8 +2374,8 @@ export const listReceiptFilters: API.OperationMethod<
   ListReceiptFiltersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReceiptFiltersRequest,
-  output: ListReceiptFiltersResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<ListReceiptFiltersRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<ListReceiptFiltersResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3080,8 +2400,8 @@ export const listReceiptRuleSets: API.OperationMethod<
   ListReceiptRuleSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReceiptRuleSetsRequest,
-  output: ListReceiptRuleSetsResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<ListReceiptRuleSetsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<ListReceiptRuleSetsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3101,8 +2421,8 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTemplatesRequest,
-  output: ListTemplatesResponse,
+  input: __S(129, __c16, 1) as any as S.Schema<ListTemplatesRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<ListTemplatesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3120,8 +2440,8 @@ export const listVerifiedEmailAddresses: API.OperationMethod<
   ListVerifiedEmailAddressesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVerifiedEmailAddressesRequest,
-  output: ListVerifiedEmailAddressesResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<ListVerifiedEmailAddressesRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<ListVerifiedEmailAddressesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3141,8 +2461,8 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   PutConfigurationSetDeliveryOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutConfigurationSetDeliveryOptionsRequest,
-  output: PutConfigurationSetDeliveryOptionsResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<PutConfigurationSetDeliveryOptionsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>,
   errors: [ConfigurationSetDoesNotExistException, InvalidDeliveryOptionsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3170,8 +2490,8 @@ export const putIdentityPolicy: API.OperationMethod<
   PutIdentityPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIdentityPolicyRequest,
-  output: PutIdentityPolicyResponse,
+  input: __S(138, __c17, 2) as any as S.Schema<PutIdentityPolicyRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<PutIdentityPolicyResponse>,
   errors: [InvalidPolicyException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3199,8 +2519,8 @@ export const reorderReceiptRuleSet: API.OperationMethod<
   ReorderReceiptRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReorderReceiptRuleSetRequest,
-  output: ReorderReceiptRuleSetResponse,
+  input: __S(141, __c17, 5) as any as S.Schema<ReorderReceiptRuleSetRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<ReorderReceiptRuleSetResponse>,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3227,8 +2547,8 @@ export const sendBounce: API.OperationMethod<
   SendBounceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendBounceRequest,
-  output: SendBounceResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<SendBounceRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<SendBounceResponse>,
   errors: [MessageRejected],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3285,8 +2605,8 @@ export const sendBulkTemplatedEmail: API.OperationMethod<
   SendBulkTemplatedEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendBulkTemplatedEmailRequest,
-  output: SendBulkTemplatedEmailResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<SendBulkTemplatedEmailRequest>,
+  output: __S(159, __c19, 7) as any as S.Schema<SendBulkTemplatedEmailResponse>,
   errors: [
     AccountSendingPausedException,
     ConfigurationSetDoesNotExistException,
@@ -3326,8 +2646,8 @@ export const sendCustomVerificationEmail: API.OperationMethod<
   SendCustomVerificationEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendCustomVerificationEmailRequest,
-  output: SendCustomVerificationEmailResponse,
+  input: __S(160, __c20, 0) as any as S.Schema<SendCustomVerificationEmailRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<SendCustomVerificationEmailResponse>,
   errors: [
     ConfigurationSetDoesNotExistException,
     CustomVerificationEmailTemplateDoesNotExistException,
@@ -3388,8 +2708,8 @@ export const sendEmail: API.OperationMethod<
   SendEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendEmailRequest,
-  output: SendEmailResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<SendEmailRequest>,
+  output: __S(166, __c20, 6) as any as S.Schema<SendEmailResponse>,
   errors: [
     AccountSendingPausedException,
     ConfigurationSetDoesNotExistException,
@@ -3495,8 +2815,8 @@ export const sendRawEmail: API.OperationMethod<
   SendRawEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendRawEmailRequest,
-  output: SendRawEmailResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<SendRawEmailRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<SendRawEmailResponse>,
   errors: [
     AccountSendingPausedException,
     ConfigurationSetDoesNotExistException,
@@ -3566,8 +2886,8 @@ export const sendTemplatedEmail: API.OperationMethod<
   SendTemplatedEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendTemplatedEmailRequest,
-  output: SendTemplatedEmailResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<SendTemplatedEmailRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<SendTemplatedEmailResponse>,
   errors: [
     AccountSendingPausedException,
     ConfigurationSetDoesNotExistException,
@@ -3599,8 +2919,8 @@ export const setActiveReceiptRuleSet: API.OperationMethod<
   SetActiveReceiptRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetActiveReceiptRuleSetRequest,
-  output: SetActiveReceiptRuleSetResponse,
+  input: __S(172, __c21, 4) as any as S.Schema<SetActiveReceiptRuleSetRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<SetActiveReceiptRuleSetResponse>,
   errors: [RuleSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3632,8 +2952,8 @@ export const setIdentityDkimEnabled: API.OperationMethod<
   SetIdentityDkimEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIdentityDkimEnabledRequest,
-  output: SetIdentityDkimEnabledResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<SetIdentityDkimEnabledRequest>,
+  output: __S(175, __c21, 7) as any as S.Schema<SetIdentityDkimEnabledResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3661,8 +2981,8 @@ export const setIdentityFeedbackForwardingEnabled: API.OperationMethod<
   SetIdentityFeedbackForwardingEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIdentityFeedbackForwardingEnabledRequest,
-  output: SetIdentityFeedbackForwardingEnabledResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<SetIdentityFeedbackForwardingEnabledRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<SetIdentityFeedbackForwardingEnabledResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3686,8 +3006,8 @@ export const setIdentityHeadersInNotificationsEnabled: API.OperationMethod<
   SetIdentityHeadersInNotificationsEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIdentityHeadersInNotificationsEnabledRequest,
-  output: SetIdentityHeadersInNotificationsEnabledResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3712,8 +3032,8 @@ export const setIdentityMailFromDomain: API.OperationMethod<
   SetIdentityMailFromDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIdentityMailFromDomainRequest,
-  output: SetIdentityMailFromDomainResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<SetIdentityMailFromDomainRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<SetIdentityMailFromDomainResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3740,8 +3060,8 @@ export const setIdentityNotificationTopic: API.OperationMethod<
   SetIdentityNotificationTopicError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIdentityNotificationTopicRequest,
-  output: SetIdentityNotificationTopicResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<SetIdentityNotificationTopicRequest>,
+  output: __S(183, __c22, 7) as any as S.Schema<SetIdentityNotificationTopicResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3766,8 +3086,8 @@ export const setReceiptRulePosition: API.OperationMethod<
   SetReceiptRulePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetReceiptRulePositionRequest,
-  output: SetReceiptRulePositionResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<SetReceiptRulePositionRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<SetReceiptRulePositionResponse>,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3791,8 +3111,8 @@ export const testRenderTemplate: API.OperationMethod<
   TestRenderTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestRenderTemplateRequest,
-  output: TestRenderTemplateResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<TestRenderTemplateRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<TestRenderTemplateResponse>,
   errors: [
     InvalidRenderingParameterException,
     MissingRenderingAttributeException,
@@ -3819,8 +3139,8 @@ export const updateAccountSendingEnabled: API.OperationMethod<
   UpdateAccountSendingEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountSendingEnabledRequest,
-  output: UpdateAccountSendingEnabledResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<UpdateAccountSendingEnabledRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<UpdateAccountSendingEnabledResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3853,8 +3173,8 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   UpdateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationSetEventDestinationRequest,
-  output: UpdateConfigurationSetEventDestinationResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
   errors: [
     ConfigurationSetDoesNotExistException,
     EventDestinationDoesNotExistException,
@@ -3884,8 +3204,16 @@ export const updateConfigurationSetReputationMetricsEnabled: API.OperationMethod
   UpdateConfigurationSetReputationMetricsEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationSetReputationMetricsEnabledRequest,
-  output: UpdateConfigurationSetReputationMetricsEnabledResponse,
+  input: __S(
+    192,
+    __c24,
+    0,
+  ) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledRequest>,
+  output: __S(
+    193,
+    __c24,
+    1,
+  ) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledResponse>,
   errors: [ConfigurationSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3910,8 +3238,8 @@ export const updateConfigurationSetSendingEnabled: API.OperationMethod<
   UpdateConfigurationSetSendingEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationSetSendingEnabledRequest,
-  output: UpdateConfigurationSetSendingEnabledResponse,
+  input: __S(194, __c24, 2) as any as S.Schema<UpdateConfigurationSetSendingEnabledRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<UpdateConfigurationSetSendingEnabledResponse>,
   errors: [ConfigurationSetDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3937,8 +3265,8 @@ export const updateConfigurationSetTrackingOptions: API.OperationMethod<
   UpdateConfigurationSetTrackingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationSetTrackingOptionsRequest,
-  output: UpdateConfigurationSetTrackingOptionsResponse,
+  input: __S(196, __c24, 4) as any as S.Schema<UpdateConfigurationSetTrackingOptionsRequest>,
+  output: __S(197, __c24, 5) as any as S.Schema<UpdateConfigurationSetTrackingOptionsResponse>,
   errors: [
     ConfigurationSetDoesNotExistException,
     InvalidTrackingOptionsException,
@@ -3969,8 +3297,8 @@ export const updateCustomVerificationEmailTemplate: API.OperationMethod<
   UpdateCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomVerificationEmailTemplateRequest,
-  output: UpdateCustomVerificationEmailTemplateResponse,
+  input: __S(198, __c24, 6) as any as S.Schema<UpdateCustomVerificationEmailTemplateRequest>,
+  output: __S(199, __c24, 7) as any as S.Schema<UpdateCustomVerificationEmailTemplateResponse>,
   errors: [
     CustomVerificationEmailInvalidContentException,
     CustomVerificationEmailTemplateDoesNotExistException,
@@ -4006,8 +3334,8 @@ export const updateReceiptRule: API.OperationMethod<
   UpdateReceiptRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReceiptRuleRequest,
-  output: UpdateReceiptRuleResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateReceiptRuleRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<UpdateReceiptRuleResponse>,
   errors: [
     InvalidLambdaFunctionException,
     InvalidS3ConfigurationException,
@@ -4041,8 +3369,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTemplateRequest,
-  output: UpdateTemplateResponse,
+  input: __S(202, __c25, 2) as any as S.Schema<UpdateTemplateRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<UpdateTemplateResponse>,
   errors: [InvalidTemplateException, TemplateDoesNotExistException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4091,8 +3419,8 @@ export const verifyDomainDkim: API.OperationMethod<
   VerifyDomainDkimError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyDomainDkimRequest,
-  output: VerifyDomainDkimResponse,
+  input: __S(204, __c25, 4) as any as S.Schema<VerifyDomainDkimRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<VerifyDomainDkimResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4114,8 +3442,8 @@ export const verifyDomainIdentity: API.OperationMethod<
   VerifyDomainIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyDomainIdentityRequest,
-  output: VerifyDomainIdentityResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<VerifyDomainIdentityRequest>,
+  output: __S(207, __c25, 7) as any as S.Schema<VerifyDomainIdentityResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4133,8 +3461,8 @@ export const verifyEmailAddress: API.OperationMethod<
   VerifyEmailAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyEmailAddressRequest,
-  output: VerifyEmailAddressResponse,
+  input: __S(208, __c26, 0) as any as S.Schema<VerifyEmailAddressRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<VerifyEmailAddressResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4155,8 +3483,8 @@ export const verifyEmailIdentity: API.OperationMethod<
   VerifyEmailIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyEmailIdentityRequest,
-  output: VerifyEmailIdentityResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<VerifyEmailIdentityRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<VerifyEmailIdentityResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4184,7 +3512,7 @@ function __c0(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ConfigurationSet: ConfigurationSet }).pipe(
+        S.Struct({ ConfigurationSet: __S(2, __c0, 2) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4195,7 +3523,7 @@ function __c0(j: number): any {
         identifier: "CreateConfigurationSetResponse",
       });
     case 5:
-      return S.Array(EventType);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({ IAMRoleARN: S.String, DeliveryStreamARN: S.String }),
@@ -4206,7 +3534,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DimensionName: S.String,
-          DimensionValueSource: DimensionValueSource,
+          DimensionValueSource: S.String,
           DefaultDimensionValue: S.String,
         }),
       ).annotate({
@@ -4217,11 +3545,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CloudWatchDimensionConfiguration);
+      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({ DimensionConfigurations: CloudWatchDimensionConfigurations }),
-      ).annotate({ identifier: "CloudWatchDestination" });
+      return S.suspend(() => S.Struct({ DimensionConfigurations: __S(8, __c1, 0) })).annotate({
+        identifier: "CloudWatchDestination",
+      });
     case 2:
       return S.suspend(() => S.Struct({ TopicARN: S.String })).annotate({
         identifier: "SNSDestination",
@@ -4231,15 +3559,15 @@ function __c1(j: number): any {
         S.Struct({
           Name: S.String,
           Enabled: S.optional(S.Boolean),
-          MatchingEventTypes: EventTypes,
-          KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
-          CloudWatchDestination: S.optional(CloudWatchDestination),
-          SNSDestination: S.optional(SNSDestination),
+          MatchingEventTypes: __S(5, __c0, 5),
+          KinesisFirehoseDestination: S.optional(__S(6, __c0, 6)),
+          CloudWatchDestination: S.optional(__S(9, __c1, 1)),
+          SNSDestination: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "EventDestination" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ConfigurationSetName: S.String, EventDestination: EventDestination }).pipe(
+        S.Struct({ ConfigurationSetName: S.String, EventDestination: __S(11, __c1, 3) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4255,7 +3583,7 @@ function __c1(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ConfigurationSetName: S.String, TrackingOptions: TrackingOptions }).pipe(
+        S.Struct({ ConfigurationSetName: S.String, TrackingOptions: __S(14, __c1, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4287,16 +3615,16 @@ function __c2(j: number): any {
         identifier: "CreateCustomVerificationEmailTemplateResponse",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Policy: ReceiptFilterPolicy, Cidr: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Policy: S.String, Cidr: S.String })).annotate({
         identifier: "ReceiptIpFilter",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Name: S.String, IpFilter: ReceiptIpFilter })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, IpFilter: __S(19, __c2, 3) })).annotate({
         identifier: "ReceiptFilter",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Filter: ReceiptFilter }).pipe(
+        S.Struct({ Filter: __S(20, __c2, 4) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4341,12 +3669,12 @@ function __c3(j: number): any {
         S.Struct({
           TopicArn: S.optional(S.String),
           FunctionArn: S.String,
-          InvocationType: S.optional(InvocationType),
+          InvocationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "LambdaAction" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Scope: StopScope, TopicArn: S.optional(S.String) }),
+        S.Struct({ Scope: S.String, TopicArn: S.optional(S.String) }),
       ).annotate({ identifier: "StopAction" });
     case 5:
       return S.suspend(() => S.Struct({ HeaderName: S.String, HeaderValue: S.String })).annotate({
@@ -4354,7 +3682,7 @@ function __c3(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ TopicArn: S.String, Encoding: S.optional(SNSActionEncoding) }),
+        S.Struct({ TopicArn: S.String, Encoding: S.optional(S.String) }),
       ).annotate({ identifier: "SNSAction" });
     case 7:
       return S.suspend(() => S.Struct({ InstanceARN: S.String, IAMRoleARN: S.String })).annotate({
@@ -4367,34 +3695,36 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          S3Action: S.optional(S3Action),
-          BounceAction: S.optional(BounceAction),
-          WorkmailAction: S.optional(WorkmailAction),
-          LambdaAction: S.optional(LambdaAction),
-          StopAction: S.optional(StopAction),
-          AddHeaderAction: S.optional(AddHeaderAction),
-          SNSAction: S.optional(SNSAction),
-          ConnectAction: S.optional(ConnectAction),
+          S3Action: S.optional(__S(24, __c3, 0)),
+          BounceAction: S.optional(__S(25, __c3, 1)),
+          WorkmailAction: S.optional(__S(26, __c3, 2)),
+          LambdaAction: S.optional(__S(27, __c3, 3)),
+          StopAction: S.optional(__S(28, __c3, 4)),
+          AddHeaderAction: S.optional(__S(29, __c3, 5)),
+          SNSAction: S.optional(__S(30, __c3, 6)),
+          ConnectAction: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "ReceiptAction" });
     case 1:
-      return S.Array(ReceiptAction);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Enabled: S.optional(S.Boolean),
-          TlsPolicy: S.optional(TlsPolicy),
-          Recipients: S.optional(RecipientsList),
-          Actions: S.optional(ReceiptActionsList),
+          TlsPolicy: S.optional(S.String),
+          Recipients: S.optional(__S(23, __c2, 7)),
+          Actions: S.optional(__S(33, __c4, 1)),
           ScanEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReceiptRule" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ RuleSetName: S.String, After: S.optional(S.String), Rule: ReceiptRule }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
+        S.Struct({
+          RuleSetName: S.String,
+          After: S.optional(S.String),
+          Rule: __S(34, __c4, 2),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateReceiptRuleRequest" });
     case 4:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
@@ -4427,7 +3757,7 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Template: Template }).pipe(
+        S.Struct({ Template: __S(39, __c4, 7) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateTemplateRequest" });
@@ -4589,31 +3919,31 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ReceiptRuleSetMetadata" });
     case 2:
-      return S.Array(ReceiptRule);
+      return S.Array(__S(34, __c4, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(ReceiptRuleSetMetadata),
-          Rules: S.optional(ReceiptRulesList),
+          Metadata: S.optional(__S(65, __c8, 1)),
+          Rules: S.optional(__S(66, __c8, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeActiveReceiptRuleSetResponse",
       });
     case 4:
-      return S.Array(ConfigurationSetAttribute);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String,
-          ConfigurationSetAttributeNames: S.optional(ConfigurationSetAttributeList),
+          ConfigurationSetAttributeNames: S.optional(__S(68, __c8, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeConfigurationSetRequest",
       });
     case 6:
-      return S.Array(EventDestination);
+      return S.Array(__S(11, __c1, 3));
     case 7:
-      return S.suspend(() => S.Struct({ TlsPolicy: S.optional(TlsPolicy) })).annotate({
+      return S.suspend(() => S.Struct({ TlsPolicy: S.optional(S.String) })).annotate({
         identifier: "DeliveryOptions",
       });
   }
@@ -4631,11 +3961,11 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationSet: S.optional(ConfigurationSet),
-          EventDestinations: S.optional(EventDestinations),
-          TrackingOptions: S.optional(TrackingOptions),
-          DeliveryOptions: S.optional(DeliveryOptions),
-          ReputationOptions: S.optional(ReputationOptions),
+          ConfigurationSet: S.optional(__S(2, __c0, 2)),
+          EventDestinations: S.optional(__S(70, __c8, 6)),
+          TrackingOptions: S.optional(__S(14, __c1, 6)),
+          DeliveryOptions: S.optional(__S(71, __c8, 7)),
+          ReputationOptions: S.optional(__S(72, __c9, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeConfigurationSetResponse",
@@ -4649,7 +3979,7 @@ function __c9(j: number): any {
         identifier: "DescribeReceiptRuleRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Rule: S.optional(ReceiptRule) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Rule: S.optional(__S(34, __c4, 2)) }).pipe(ns)).annotate({
         identifier: "DescribeReceiptRuleResponse",
       });
     case 4:
@@ -4663,8 +3993,8 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(ReceiptRuleSetMetadata),
-          Rules: S.optional(ReceiptRulesList),
+          Metadata: S.optional(__S(65, __c8, 1)),
+          Rules: S.optional(__S(66, __c8, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeReceiptRuleSetResponse",
@@ -4710,7 +4040,7 @@ function __c10(j: number): any {
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Identities: IdentityList }).pipe(
+        S.Struct({ Identities: __S(82, __c10, 2) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4722,14 +4052,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DkimEnabled: S.Boolean,
-          DkimVerificationStatus: VerificationStatus,
-          DkimTokens: S.optional(VerificationTokenList),
+          DkimVerificationStatus: S.String,
+          DkimTokens: S.optional(__S(84, __c10, 4)),
         }),
       ).annotate({ identifier: "IdentityDkimAttributes" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ IdentityDkimAttributes.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(85, __c10, 5).pipe(S.optional));
     case 7:
-      return S.suspend(() => S.Struct({ DkimAttributes: DkimAttributes }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ DkimAttributes: __S(86, __c10, 6) }).pipe(ns)).annotate({
         identifier: "GetIdentityDkimAttributesResponse",
       });
   }
@@ -4738,7 +4068,7 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Identities: IdentityList }).pipe(
+        S.Struct({ Identities: __S(82, __c10, 2) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4748,23 +4078,23 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MailFromDomain: S.String,
-          MailFromDomainStatus: CustomMailFromStatus,
-          BehaviorOnMXFailure: BehaviorOnMXFailure,
+          MailFromDomainStatus: S.String,
+          BehaviorOnMXFailure: S.String,
         }),
       ).annotate({
         identifier: "IdentityMailFromDomainAttributes",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ IdentityMailFromDomainAttributes.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(89, __c11, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
-        S.Struct({ MailFromDomainAttributes: MailFromDomainAttributes }).pipe(ns),
+        S.Struct({ MailFromDomainAttributes: __S(90, __c11, 2) }).pipe(ns),
       ).annotate({
         identifier: "GetIdentityMailFromDomainAttributesResponse",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Identities: IdentityList }).pipe(
+        S.Struct({ Identities: __S(82, __c10, 2) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4785,10 +4115,10 @@ function __c11(j: number): any {
         identifier: "IdentityNotificationAttributes",
       });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ IdentityNotificationAttributes.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(93, __c11, 5).pipe(S.optional));
     case 7:
       return S.suspend(() =>
-        S.Struct({ NotificationAttributes: NotificationAttributes }).pipe(ns),
+        S.Struct({ NotificationAttributes: __S(94, __c11, 6) }).pipe(ns),
       ).annotate({
         identifier: "GetIdentityNotificationAttributesResponse",
       });
@@ -4800,7 +4130,7 @@ function __c12(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ Identity: S.String, PolicyNames: PolicyNameList }).pipe(
+        S.Struct({ Identity: S.String, PolicyNames: __S(96, __c12, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4809,12 +4139,12 @@ function __c12(j: number): any {
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
-      return S.suspend(() => S.Struct({ Policies: PolicyMap }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Policies: __S(98, __c12, 2) }).pipe(ns)).annotate({
         identifier: "GetIdentityPoliciesResponse",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Identities: IdentityList }).pipe(
+        S.Struct({ Identities: __S(82, __c10, 2) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4823,17 +4153,17 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          VerificationStatus: VerificationStatus,
+          VerificationStatus: S.String,
           VerificationToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IdentityVerificationAttributes",
       });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ IdentityVerificationAttributes.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(101, __c12, 5).pipe(S.optional));
     case 7:
       return S.suspend(() =>
-        S.Struct({ VerificationAttributes: VerificationAttributes }).pipe(ns),
+        S.Struct({ VerificationAttributes: __S(102, __c12, 6) }).pipe(ns),
       ).annotate({
         identifier: "GetIdentityVerificationAttributesResponse",
       });
@@ -4872,10 +4202,10 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "SendDataPoint" });
     case 4:
-      return S.Array(SendDataPoint);
+      return S.Array(__S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ SendDataPoints: S.optional(SendDataPointList) }).pipe(ns),
+        S.Struct({ SendDataPoints: S.optional(__S(108, __c13, 4)) }).pipe(ns),
       ).annotate({
         identifier: "GetSendStatisticsResponse",
       });
@@ -4886,7 +4216,9 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "GetTemplateRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Template: S.optional(Template) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Template: S.optional(__S(39, __c4, 7)) }).pipe(ns),
+      ).annotate({
         identifier: "GetTemplateResponse",
       });
   }
@@ -4902,11 +4234,11 @@ function __c14(j: number): any {
         identifier: "ListConfigurationSetsRequest",
       });
     case 1:
-      return S.Array(ConfigurationSet);
+      return S.Array(__S(2, __c0, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationSets: S.optional(ConfigurationSets),
+          ConfigurationSets: S.optional(__S(113, __c14, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -4933,11 +4265,11 @@ function __c14(j: number): any {
         identifier: "CustomVerificationEmailTemplate",
       });
     case 5:
-      return S.Array(CustomVerificationEmailTemplate);
+      return S.Array(__S(116, __c14, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          CustomVerificationEmailTemplates: S.optional(CustomVerificationEmailTemplates),
+          CustomVerificationEmailTemplates: S.optional(__S(117, __c14, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -4946,7 +4278,7 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          IdentityType: S.optional(IdentityType),
+          IdentityType: S.optional(S.String),
           NextToken: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4957,7 +4289,7 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Identities: IdentityList, NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Identities: __S(82, __c10, 2), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListIdentitiesResponse" });
     case 1:
       return S.suspend(() =>
@@ -4968,7 +4300,7 @@ function __c15(j: number): any {
         identifier: "ListIdentityPoliciesRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ PolicyNames: PolicyNameList }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ PolicyNames: __S(96, __c12, 0) }).pipe(ns)).annotate({
         identifier: "ListIdentityPoliciesResponse",
       });
     case 3:
@@ -4980,10 +4312,10 @@ function __c15(j: number): any {
         identifier: "ListReceiptFiltersRequest",
       });
     case 4:
-      return S.Array(ReceiptFilter);
+      return S.Array(__S(20, __c2, 4));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Filters: S.optional(ReceiptFilterList) }).pipe(ns),
+        S.Struct({ Filters: S.optional(__S(124, __c15, 4)) }).pipe(ns),
       ).annotate({
         identifier: "ListReceiptFiltersResponse",
       });
@@ -4996,7 +4328,7 @@ function __c15(j: number): any {
         identifier: "ListReceiptRuleSetsRequest",
       });
     case 7:
-      return S.Array(ReceiptRuleSetMetadata);
+      return S.Array(__S(65, __c8, 1));
   }
 }
 function __c16(j: number): any {
@@ -5004,7 +4336,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RuleSets: S.optional(ReceiptRuleSetsLists),
+          RuleSets: S.optional(__S(127, __c15, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5024,11 +4356,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "TemplateMetadata" });
     case 3:
-      return S.Array(TemplateMetadata);
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TemplatesMetadata: S.optional(TemplateMetadataList),
+          TemplatesMetadata: S.optional(__S(131, __c16, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListTemplatesResponse" });
@@ -5044,7 +4376,7 @@ function __c16(j: number): any {
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ VerifiedEmailAddresses: S.optional(AddressList) }).pipe(ns),
+        S.Struct({ VerifiedEmailAddresses: S.optional(__S(134, __c16, 6)) }).pipe(ns),
       ).annotate({
         identifier: "ListVerifiedEmailAddressesResponse",
       });
@@ -5056,7 +4388,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String,
-          DeliveryOptions: S.optional(DeliveryOptions),
+          DeliveryOptions: S.optional(__S(71, __c8, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutConfigurationSetDeliveryOptionsRequest",
@@ -5079,7 +4411,7 @@ function __c17(j: number): any {
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
-        S.Struct({ RuleSetName: S.String, RuleNames: ReceiptRuleNamesList }).pipe(
+        S.Struct({ RuleSetName: S.String, RuleNames: __S(140, __c17, 4) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5098,25 +4430,25 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExtensionField);
+      return S.Array(__S(143, __c17, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReportingMta: S.String,
           ArrivalDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ExtensionFields: S.optional(ExtensionFieldList),
+          ExtensionFields: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({ identifier: "MessageDsn" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           FinalRecipient: S.optional(S.String),
-          Action: DsnAction,
+          Action: S.String,
           RemoteMta: S.optional(S.String),
           Status: S.String,
           DiagnosticCode: S.optional(S.String),
           LastAttemptDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ExtensionFields: S.optional(ExtensionFieldList),
+          ExtensionFields: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({ identifier: "RecipientDsnFields" });
     case 3:
@@ -5124,20 +4456,20 @@ function __c18(j: number): any {
         S.Struct({
           Recipient: S.String,
           RecipientArn: S.optional(S.String),
-          BounceType: S.optional(BounceType),
-          RecipientDsnFields: S.optional(RecipientDsnFields),
+          BounceType: S.optional(S.String),
+          RecipientDsnFields: S.optional(__S(146, __c18, 2)),
         }),
       ).annotate({ identifier: "BouncedRecipientInfo" });
     case 4:
-      return S.Array(BouncedRecipientInfo);
+      return S.Array(__S(147, __c18, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           OriginalMessageId: S.String,
           BounceSender: S.String,
           Explanation: S.optional(S.String),
-          MessageDsn: S.optional(MessageDsn),
-          BouncedRecipientInfoList: BouncedRecipientInfoList,
+          MessageDsn: S.optional(__S(145, __c18, 1)),
+          BouncedRecipientInfoList: __S(148, __c18, 4),
           BounceSenderArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendBounceRequest" });
@@ -5154,39 +4486,39 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MessageTag);
+      return S.Array(__S(151, __c18, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ToAddresses: S.optional(AddressList),
-          CcAddresses: S.optional(AddressList),
-          BccAddresses: S.optional(AddressList),
+          ToAddresses: S.optional(__S(134, __c16, 6)),
+          CcAddresses: S.optional(__S(134, __c16, 6)),
+          BccAddresses: S.optional(__S(134, __c16, 6)),
         }),
       ).annotate({ identifier: "Destination" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Destination: Destination,
-          ReplacementTags: S.optional(MessageTagList),
+          Destination: __S(153, __c19, 1),
+          ReplacementTags: S.optional(__S(152, __c19, 0)),
           ReplacementTemplateData: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkEmailDestination" });
     case 3:
-      return S.Array(BulkEmailDestination);
+      return S.Array(__S(154, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Source: S.String,
           SourceArn: S.optional(S.String),
-          ReplyToAddresses: S.optional(AddressList),
+          ReplyToAddresses: S.optional(__S(134, __c16, 6)),
           ReturnPath: S.optional(S.String),
           ReturnPathArn: S.optional(S.String),
           ConfigurationSetName: S.optional(S.String),
-          DefaultTags: S.optional(MessageTagList),
+          DefaultTags: S.optional(__S(152, __c19, 0)),
           Template: S.String,
           TemplateArn: S.optional(S.String),
           DefaultTemplateData: S.String,
-          Destinations: BulkEmailDestinationList,
+          Destinations: __S(155, __c19, 3),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SendBulkTemplatedEmailRequest",
@@ -5194,7 +4526,7 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(BulkEmailStatus),
+          Status: S.optional(S.String),
           Error: S.optional(S.String),
           MessageId: S.optional(S.String),
         }),
@@ -5202,11 +4534,9 @@ function __c19(j: number): any {
         identifier: "BulkEmailDestinationStatus",
       });
     case 6:
-      return S.Array(BulkEmailDestinationStatus);
+      return S.Array(__S(157, __c19, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Status: BulkEmailDestinationStatusList }).pipe(ns),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Status: __S(158, __c19, 6) }).pipe(ns)).annotate({
         identifier: "SendBulkTemplatedEmailResponse",
       });
   }
@@ -5233,23 +4563,25 @@ function __c20(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Text: S.optional(Content), Html: S.optional(Content) }),
+        S.Struct({ Text: S.optional(__S(162, __c20, 2)), Html: S.optional(__S(162, __c20, 2)) }),
       ).annotate({ identifier: "Body" });
     case 4:
-      return S.suspend(() => S.Struct({ Subject: Content, Body: Body })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Subject: __S(162, __c20, 2), Body: __S(163, __c20, 3) }),
+      ).annotate({
         identifier: "Message",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Source: S.String,
-          Destination: Destination,
-          Message: Message,
-          ReplyToAddresses: S.optional(AddressList),
+          Destination: __S(153, __c19, 1),
+          Message: __S(164, __c20, 4),
+          ReplyToAddresses: S.optional(__S(134, __c16, 6)),
           ReturnPath: S.optional(S.String),
           SourceArn: S.optional(S.String),
           ReturnPathArn: S.optional(S.String),
-          Tags: S.optional(MessageTagList),
+          Tags: S.optional(__S(152, __c19, 0)),
           ConfigurationSetName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendEmailRequest" });
@@ -5269,12 +4601,12 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Source: S.optional(S.String),
-          Destinations: S.optional(AddressList),
-          RawMessage: RawMessage,
+          Destinations: S.optional(__S(134, __c16, 6)),
+          RawMessage: __S(167, __c20, 7),
           FromArn: S.optional(S.String),
           SourceArn: S.optional(S.String),
           ReturnPathArn: S.optional(S.String),
-          Tags: S.optional(MessageTagList),
+          Tags: S.optional(__S(152, __c19, 0)),
           ConfigurationSetName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendRawEmailRequest" });
@@ -5286,12 +4618,12 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Source: S.String,
-          Destination: Destination,
-          ReplyToAddresses: S.optional(AddressList),
+          Destination: __S(153, __c19, 1),
+          ReplyToAddresses: S.optional(__S(134, __c16, 6)),
           ReturnPath: S.optional(S.String),
           SourceArn: S.optional(S.String),
           ReturnPathArn: S.optional(S.String),
-          Tags: S.optional(MessageTagList),
+          Tags: S.optional(__S(152, __c19, 0)),
           ConfigurationSetName: S.optional(S.String),
           Template: S.String,
           TemplateArn: S.optional(S.String),
@@ -5348,7 +4680,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identity: S.String,
-          NotificationType: NotificationType,
+          NotificationType: S.String,
           Enabled: S.Boolean,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5363,7 +4695,7 @@ function __c22(j: number): any {
         S.Struct({
           Identity: S.String,
           MailFromDomain: S.optional(S.String),
-          BehaviorOnMXFailure: S.optional(BehaviorOnMXFailure),
+          BehaviorOnMXFailure: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetIdentityMailFromDomainRequest",
@@ -5376,7 +4708,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identity: S.String,
-          NotificationType: NotificationType,
+          NotificationType: S.String,
           SnsTopic: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5430,7 +4762,7 @@ function __c23(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ConfigurationSetName: S.String, EventDestination: EventDestination }).pipe(
+        S.Struct({ ConfigurationSetName: S.String, EventDestination: __S(11, __c1, 3) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5470,7 +4802,7 @@ function __c24(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ConfigurationSetName: S.String, TrackingOptions: TrackingOptions }).pipe(
+        S.Struct({ ConfigurationSetName: S.String, TrackingOptions: __S(14, __c1, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5503,7 +4835,7 @@ function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ RuleSetName: S.String, Rule: ReceiptRule }).pipe(
+        S.Struct({ RuleSetName: S.String, Rule: __S(34, __c4, 2) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateReceiptRuleRequest" });
@@ -5513,7 +4845,7 @@ function __c25(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Template: Template }).pipe(
+        S.Struct({ Template: __S(39, __c4, 7) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateTemplateRequest" });
@@ -5528,7 +4860,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "VerifyDomainDkimRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ DkimTokens: VerificationTokenList }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ DkimTokens: __S(84, __c10, 4) }).pipe(ns)).annotate({
         identifier: "VerifyDomainDkimResponse",
       });
     case 6:
@@ -5572,4 +4904,9 @@ function __c26(j: number): any {
         identifier: "VerifyEmailIdentityResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

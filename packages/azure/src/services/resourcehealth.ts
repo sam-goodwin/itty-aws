@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,20 +17,10 @@ export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTracki
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
 }
-const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    0,
-  ) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -44,8 +36,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SystemData>;
-
 /** Type of event. */
 export type EventTypeValues =
   | "ServiceIssue"
@@ -55,8 +45,6 @@ export type EventTypeValues =
   | "EmergingIssues"
   | "SecurityAdvisory"
   | "Billing";
-const EventTypeValues = S.String;
-
 /** Sub-type of event. */
 export type EventSubTypeValues =
   | "Retirement"
@@ -67,24 +55,14 @@ export type EventSubTypeValues =
   | "TaxChanges"
   | "MeterIDChanges"
   | "UnauthorizedPartyAbuse";
-const EventSubTypeValues = S.String;
-
 /** Source of event. */
 export type EventSourceValues = "ResourceHealth" | "ServiceHealth";
-const EventSourceValues = S.String;
-
 /** Current status of event. */
 export type EventStatusValues = "Active" | "Resolved";
-const EventStatusValues = S.String;
-
 /** Level of insight. */
 export type LevelValues = "Critical" | "Warning";
-const LevelValues = S.String;
-
 /** Level of event. */
 export type EventLevelValues = "Critical" | "Error" | "Warning" | "Informational";
-const EventLevelValues = S.String;
-
 /** Article of event. */
 export interface EventPropertiesArticle {
   /** Article content of event. */
@@ -94,15 +72,8 @@ export interface EventPropertiesArticle {
   /** It provides a map of parameter name and value */
   parameters?: unknown;
 }
-const EventPropertiesArticle = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<EventPropertiesArticle>;
-
 /** Type of link. */
 export type LinkTypeValues = "Button" | "Hyperlink";
-const LinkTypeValues = S.String;
-
 /** Display text of link. */
 export interface LinkDisplayText {
   /** Display text of link. */
@@ -110,8 +81,6 @@ export interface LinkDisplayText {
   /** Localized display text of link. */
   localizedValue?: string;
 }
-const LinkDisplayText = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LinkDisplayText>;
-
 /** Useful links for service health event. */
 export interface Link {
   /** Type of link. */
@@ -125,32 +94,14 @@ export interface Link {
   /** It provides a map of parameter name and value for portal extension blade to produce lik for given service health event. */
   parameters?: unknown;
 }
-const Link = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Link>;
-
 /** Useful links of event. */
 export type EventPropertiesLinksList = Array<Link>;
-const EventPropertiesLinksList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<EventPropertiesLinksList>;
-
 /** List subscription impacted by the service health event. */
 export type ImpactedServiceRegionImpactedSubscriptionsList = Array<string>;
-const ImpactedServiceRegionImpactedSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ImpactedServiceRegionImpactedSubscriptionsList>;
-
 /** List tenant impacted by the service health event. */
 export type ImpactedServiceRegionImpactedTenantsList = Array<string>;
-const ImpactedServiceRegionImpactedTenantsList =
-  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<ImpactedServiceRegionImpactedTenantsList>;
-
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
 export type UpdateEventTagsList = Array<string>;
-const UpdateEventTagsList =
-  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<UpdateEventTagsList>;
-
 /** Update for service health event. */
 export interface Update {
   /** Summary text for the given update for the service health event. */
@@ -160,15 +111,8 @@ export interface Update {
   /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
   eventTags?: UpdateEventTagsList;
 }
-const Update = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Update>;
-
 /** List of updates for given service health event. Use fetchEventDetails endpoint to get updates of sensitive events. */
 export type ImpactedServiceRegionUpdatesList = Array<Update>;
-const ImpactedServiceRegionUpdatesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ImpactedServiceRegionUpdatesList>;
-
 /** Azure region impacted by the service health event. */
 export interface ImpactedServiceRegion {
   /** Impacted region name. */
@@ -184,18 +128,8 @@ export interface ImpactedServiceRegion {
   /** List of updates for given service health event. Use fetchEventDetails endpoint to get updates of sensitive events. */
   updates?: ImpactedServiceRegionUpdatesList;
 }
-const ImpactedServiceRegion = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ImpactedServiceRegion>;
-
 /** List regions impacted by the service health event. */
 export type ImpactImpactedRegionsList = Array<ImpactedServiceRegion>;
-const ImpactImpactedRegionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ImpactImpactedRegionsList>;
-
 /** Azure service impacted by the service health event. */
 export interface Impact {
   /** Impacted service name. */
@@ -205,15 +139,8 @@ export interface Impact {
   /** List regions impacted by the service health event. */
   impactedRegions?: ImpactImpactedRegionsList;
 }
-const Impact = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Impact>;
-
 /** List services impacted by the service health event. */
 export type EventPropertiesImpactList = Array<Impact>;
-const EventPropertiesImpactList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<EventPropertiesImpactList>;
-
 /** Recommended action for the service health event. */
 export interface EventPropertiesRecommendedActionsActionsItem {
   /** Recommended action group Id for the service health event. */
@@ -221,19 +148,9 @@ export interface EventPropertiesRecommendedActionsActionsItem {
   /** Recommended action text */
   actionText?: string;
 }
-const EventPropertiesRecommendedActionsActionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<EventPropertiesRecommendedActionsActionsItem>;
-
 /** Recommended actions for the service health event. */
 export type EventPropertiesRecommendedActionsActionsList =
   Array<EventPropertiesRecommendedActionsActionsItem>;
-const EventPropertiesRecommendedActionsActionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<EventPropertiesRecommendedActionsActionsList>;
-
 /** Recommended actions of event. */
 export interface EventPropertiesRecommendedActions {
   /** Recommended action title for the service health event. */
@@ -243,11 +160,6 @@ export interface EventPropertiesRecommendedActions {
   /** Recommended action locale for the service health event. */
   localeCode?: string;
 }
-const EventPropertiesRecommendedActions = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<EventPropertiesRecommendedActions>;
-
 /** Frequently asked question for the service health event */
 export interface Faq {
   /** FAQ question for the service health event. */
@@ -257,30 +169,15 @@ export interface Faq {
   /** FAQ locale for the service health event. */
   localeCode?: string;
 }
-const Faq = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Faq>;
-
 /** Frequently asked questions for the service health event. */
 export type EventPropertiesFaqsList = Array<Faq>;
-const EventPropertiesFaqsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<EventPropertiesFaqsList>;
-
 /** Additional information */
 export interface EventPropertiesAdditionalInformation {
   /** Additional information Message */
   message?: string;
 }
-const EventPropertiesAdditionalInformation = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<EventPropertiesAdditionalInformation>;
-
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
 export type EventPropertiesEventTagsList = Array<string>;
-const EventPropertiesEventTagsList =
-  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<EventPropertiesEventTagsList>;
-
 /** Properties of event. */
 export interface EventProperties {
   /** Type of event. */
@@ -354,8 +251,6 @@ export interface EventProperties {
   /** Billing identifier information. */
   billingId?: string;
 }
-const EventProperties = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<EventProperties>;
-
 export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -368,23 +263,12 @@ export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTracki
   /** Properties of event. */
   properties?: EventProperties;
 }
-const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    4,
-  ) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse>;
-
 export interface EventFetchDetailsBySubscriptionIdAndTrackingIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
 }
-const EventFetchDetailsBySubscriptionIdAndTrackingIdRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<EventFetchDetailsBySubscriptionIdAndTrackingIdRequest>;
-
 export interface EventFetchDetailsBySubscriptionIdAndTrackingIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -397,20 +281,10 @@ export interface EventFetchDetailsBySubscriptionIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-const EventFetchDetailsBySubscriptionIdAndTrackingIdResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<EventFetchDetailsBySubscriptionIdAndTrackingIdResponse>;
-
 export interface EventFetchDetailsByTenantIdAndTrackingIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
 }
-const EventFetchDetailsByTenantIdAndTrackingIdRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdRequest>;
-
 export interface EventFetchDetailsByTenantIdAndTrackingIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -423,9 +297,6 @@ export interface EventFetchDetailsByTenantIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-const EventFetchDetailsByTenantIdAndTrackingIdResponse =
-  EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>;
-
 export interface EventGetBySubscriptionIdAndTrackingIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -436,11 +307,6 @@ export interface EventGetBySubscriptionIdAndTrackingIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-const EventGetBySubscriptionIdAndTrackingIdRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdRequest>;
-
 export interface EventGetBySubscriptionIdAndTrackingIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -453,9 +319,6 @@ export interface EventGetBySubscriptionIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-const EventGetBySubscriptionIdAndTrackingIdResponse =
-  EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>;
-
 export interface EventGetByTenantIdAndTrackingIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
@@ -464,11 +327,6 @@ export interface EventGetByTenantIdAndTrackingIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-const EventGetByTenantIdAndTrackingIdRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<EventGetByTenantIdAndTrackingIdRequest>;
-
 export interface EventGetByTenantIdAndTrackingIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -481,9 +339,6 @@ export interface EventGetByTenantIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-const EventGetByTenantIdAndTrackingIdResponse =
-  EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>;
-
 export interface GetAvailabilityStatusByResourceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -492,19 +347,10 @@ export interface GetAvailabilityStatusByResourceRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-const GetAvailabilityStatusByResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetAvailabilityStatusByResourceRequest>;
-
 /** Impacted resource status of the resource. */
 export type AvailabilityStateValues = "Available" | "Unavailable" | "Degraded" | "Unknown";
-const AvailabilityStateValues = S.String;
-
 /** Chronicity of the availability transition. */
 export type ReasonChronicityTypes = "Transient" | "Persistent";
-const ReasonChronicityTypes = S.String;
-
 /** An annotation describing a change in the availabilityState to Available from Unavailable with a reasonType of type Unplanned */
 export interface AvailabilityStatusPropertiesRecentlyResolved {
   /** Timestamp for when the availabilityState changed to Unavailable */
@@ -514,11 +360,6 @@ export interface AvailabilityStatusPropertiesRecentlyResolved {
   /** Brief description of cause of the resource becoming unavailable. */
   unavailableSummary?: string;
 }
-const AvailabilityStatusPropertiesRecentlyResolved = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<AvailabilityStatusPropertiesRecentlyResolved>;
-
 /** Lists actions the user can take based on the current availabilityState of the resource. */
 export interface RecommendedAction {
   /** Recommended action. */
@@ -530,25 +371,13 @@ export interface RecommendedAction {
   /** Substring of action, it describes which text should host the action URL. */
   actionUrlText?: string;
 }
-const RecommendedAction = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<RecommendedAction>;
-
 /** Lists actions the user can take based on the current availabilityState of the resource. */
 export type AvailabilityStatusPropertiesRecommendedActionsList = Array<RecommendedAction>;
-const AvailabilityStatusPropertiesRecommendedActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AvailabilityStatusPropertiesRecommendedActionsList>;
-
 /** Status of the service impacting event. */
 export interface ServiceImpactingEventStatus {
   /** Current status of the event */
   value?: string;
 }
-const ServiceImpactingEventStatus = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ServiceImpactingEventStatus>;
-
 /** Properties of the service impacting event. */
 export interface ServiceImpactingEventIncidentProperties {
   /** Title of the incident. */
@@ -560,11 +389,6 @@ export interface ServiceImpactingEventIncidentProperties {
   /** Type of Event. */
   incidentType?: string;
 }
-const ServiceImpactingEventIncidentProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ServiceImpactingEventIncidentProperties>;
-
 /** Lists the service impacting events that may be affecting the health of the resource. */
 export interface ServiceImpactingEvent {
   /** Timestamp for when the event started. */
@@ -578,18 +402,8 @@ export interface ServiceImpactingEvent {
   /** Properties of the service impacting event. */
   incidentProperties?: ServiceImpactingEventIncidentProperties;
 }
-const ServiceImpactingEvent = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ServiceImpactingEvent>;
-
 /** Lists the service impacting events that may be affecting the health of the resource. */
 export type AvailabilityStatusPropertiesServiceImpactingEventsList = Array<ServiceImpactingEvent>;
-const AvailabilityStatusPropertiesServiceImpactingEventsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AvailabilityStatusPropertiesServiceImpactingEventsList>;
-
 /** Properties of availability state. */
 export interface AvailabilityStatusProperties {
   /** Availability status of the resource. When it is null, this availabilityStatus object represents an availability impacting event */
@@ -633,11 +447,6 @@ export interface AvailabilityStatusProperties {
   /** Lists the service impacting events that may be affecting the health of the resource. */
   serviceImpactingEvents?: AvailabilityStatusPropertiesServiceImpactingEventsList;
 }
-const AvailabilityStatusProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<AvailabilityStatusProperties>;
-
 export interface GetAvailabilityStatusByResourceResponse {
   /** Azure Resource Manager Identity for the availabilityStatuses resource. */
   id?: string;
@@ -649,11 +458,6 @@ export interface GetAvailabilityStatusByResourceResponse {
   /** Properties of availability state. */
   properties?: AvailabilityStatusProperties;
 }
-const GetAvailabilityStatusByResourceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetAvailabilityStatusByResourceResponse>;
-
 export interface GetChildAvailabilityStatusByResourceRequest {
   /** undefined */
   resourceUri: string;
@@ -662,11 +466,6 @@ export interface GetChildAvailabilityStatusByResourceRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-const GetChildAvailabilityStatusByResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetChildAvailabilityStatusByResourceRequest>;
-
 export interface GetChildAvailabilityStatusByResourceResponse {
   /** Azure Resource Manager Identity for the availabilityStatuses resource. */
   id?: string;
@@ -678,21 +477,11 @@ export interface GetChildAvailabilityStatusByResourceResponse {
   /** Properties of availability state. */
   properties?: AvailabilityStatusProperties;
 }
-const GetChildAvailabilityStatusByResourceResponse =
-  GetAvailabilityStatusByResourceResponse as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>;
-
 export type GetEmergingIssueRequestIssueName = "default";
-const GetEmergingIssueRequestIssueName = S.String;
-
 export interface GetEmergingIssueRequest {
   /** The name of the emerging issue. */
   issueName: GetEmergingIssueRequestIssueName | (string & {});
 }
-const GetEmergingIssueRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetEmergingIssueRequest>;
-
 /** Banner type of emerging issue. */
 export interface StatusBanner {
   /** The banner title. */
@@ -704,23 +493,12 @@ export interface StatusBanner {
   /** The last time modified on this banner. */
   lastModifiedTime?: string;
 }
-const StatusBanner = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<StatusBanner>;
-
 /** The list of emerging issues of banner type. */
 export type EmergingIssueStatusBannersList = Array<StatusBanner>;
-const EmergingIssueStatusBannersList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<EmergingIssueStatusBannersList>;
-
 /** The severity level of this active event. */
 export type SeverityValues = "Information" | "Warning" | "Error";
-const SeverityValues = S.String;
-
 /** The stage of this active event. */
 export type StageValues = "Active" | "Resolve" | "Archived";
-const StageValues = S.String;
-
 /** Object of impacted region. */
 export interface ImpactedRegion {
   /** The impacted region id. */
@@ -728,15 +506,8 @@ export interface ImpactedRegion {
   /** The impacted region name. */
   name?: string;
 }
-const ImpactedRegion = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ImpactedRegion>;
-
 /** The list of impacted regions for corresponding emerging issues. */
 export type EmergingIssueImpactRegionsList = Array<ImpactedRegion>;
-const EmergingIssueImpactRegionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<EmergingIssueImpactRegionsList>;
-
 /** Object of the emerging issue impact on services and regions. */
 export interface EmergingIssueImpact {
   /** The impacted service id. */
@@ -746,15 +517,8 @@ export interface EmergingIssueImpact {
   /** The list of impacted regions for corresponding emerging issues. */
   regions?: EmergingIssueImpactRegionsList;
 }
-const EmergingIssueImpact = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<EmergingIssueImpact>;
-
 /** The list of emerging issues impacts. */
 export type StatusActiveEventImpactsList = Array<EmergingIssueImpact>;
-const StatusActiveEventImpactsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<StatusActiveEventImpactsList>;
-
 /** Active event type of emerging issue. */
 export interface StatusActiveEvent {
   /** The active event title. */
@@ -778,15 +542,8 @@ export interface StatusActiveEvent {
   /** The list of emerging issues impacts. */
   impacts?: StatusActiveEventImpactsList;
 }
-const StatusActiveEvent = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<StatusActiveEvent>;
-
 /** The list of emerging issues of active event type. */
 export type EmergingIssueStatusActiveEventsList = Array<StatusActiveEvent>;
-const EmergingIssueStatusActiveEventsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<EmergingIssueStatusActiveEventsList>;
-
 /** On-going emerging issue from azure status. */
 export interface EmergingIssue {
   /** Timestamp for when last time refreshed for ongoing emerging issue. */
@@ -796,8 +553,6 @@ export interface EmergingIssue {
   /** The list of emerging issues of active event type. */
   statusActiveEvents?: EmergingIssueStatusActiveEventsList;
 }
-const EmergingIssue = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<EmergingIssue>;
-
 export interface GetEmergingIssueResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -810,11 +565,6 @@ export interface GetEmergingIssueResponse {
   /** The emerging issue entity properties. */
   properties?: EmergingIssue;
 }
-const GetEmergingIssueResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetEmergingIssueResponse>;
-
 export interface GetImpactedResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -823,11 +573,6 @@ export interface GetImpactedResourceRequest {
   /** Name of the Impacted Resource. */
   impactedResourceName: string;
 }
-const GetImpactedResourceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetImpactedResourceRequest>;
-
 /** Key value tuple. */
 export interface KeyValueItem {
   /** Key of tuple. */
@@ -835,15 +580,8 @@ export interface KeyValueItem {
   /** Value of tuple. */
   value?: string;
 }
-const KeyValueItem = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<KeyValueItem>;
-
 /** Additional information. */
 export type EventImpactedResourcePropertiesInfoList = Array<KeyValueItem>;
-const EventImpactedResourcePropertiesInfoList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<EventImpactedResourcePropertiesInfoList>;
-
 /** Properties of impacted resource. */
 export interface EventImpactedResourceProperties {
   /** Resource type within Microsoft cloud. */
@@ -855,11 +593,6 @@ export interface EventImpactedResourceProperties {
   /** Additional information. */
   info?: EventImpactedResourcePropertiesInfoList;
 }
-const EventImpactedResourceProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<EventImpactedResourceProperties>;
-
 export interface GetImpactedResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -872,22 +605,12 @@ export interface GetImpactedResourceResponse {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-const GetImpactedResourceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetImpactedResourceResponse>;
-
 export interface GetImpactedResourceByTenantIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
   /** Name of the Impacted Resource. */
   impactedResourceName: string;
 }
-const GetImpactedResourceByTenantIdRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetImpactedResourceByTenantIdRequest>;
-
 export interface GetImpactedResourceByTenantIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -900,38 +623,17 @@ export interface GetImpactedResourceByTenantIdResponse {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-const GetImpactedResourceByTenantIdResponse =
-  GetImpactedResourceResponse as any as S.Schema<GetImpactedResourceByTenantIdResponse>;
-
 export interface GetMetadataEntityRequest {
   /** Name of metadata entity. */
   name: string;
 }
-const GetMetadataEntityRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetMetadataEntityRequest>;
-
 /** The list of keys on which this entity depends on. */
 export type MetadataEntityPropertiesDependsOnList = Array<string>;
-const MetadataEntityPropertiesDependsOnList =
-  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
-
 export type Scenario = "Alerts";
-const Scenario = S.String;
-
 /** The list of scenarios applicable to this metadata entity. */
 export type MetadataEntityPropertiesApplicableScenariosList = Array<Scenario>;
-const MetadataEntityPropertiesApplicableScenariosList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<MetadataEntityPropertiesApplicableScenariosList>;
-
 /** The list of associated resource types. */
 export type MetadataSupportedValueDetailResourceTypesList = Array<string>;
-const MetadataSupportedValueDetailResourceTypesList =
-  ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<MetadataSupportedValueDetailResourceTypesList>;
-
 /** The metadata supported value detail. */
 export interface MetadataSupportedValueDetail {
   /** The id of the metadata value */
@@ -947,18 +649,8 @@ export interface MetadataSupportedValueDetail {
   /** Priority of this metadata supported value. Lower number is given higher preference. */
   priority?: number;
 }
-const MetadataSupportedValueDetail = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<MetadataSupportedValueDetail>;
-
 /** The list of supported values. */
 export type MetadataEntityPropertiesSupportedValuesList = Array<MetadataSupportedValueDetail>;
-const MetadataEntityPropertiesSupportedValuesList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<MetadataEntityPropertiesSupportedValuesList>;
-
 /** The metadata entity properties */
 export interface MetadataEntityProperties {
   /** The display name. */
@@ -970,11 +662,6 @@ export interface MetadataEntityProperties {
   /** The list of supported values. */
   supportedValues?: MetadataEntityPropertiesSupportedValuesList;
 }
-const MetadataEntityProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<MetadataEntityProperties>;
-
 export interface GetMetadataEntityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -987,11 +674,6 @@ export interface GetMetadataEntityResponse {
   /** The metadata entity properties. */
   properties?: MetadataEntityProperties;
 }
-const GetMetadataEntityResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetMetadataEntityResponse>;
-
 export interface ImpactedResourcesListBySubscriptionIdAndEventIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1000,11 +682,6 @@ export interface ImpactedResourcesListBySubscriptionIdAndEventIdRequest {
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-const ImpactedResourcesListBySubscriptionIdAndEventIdRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ImpactedResourcesListBySubscriptionIdAndEventIdRequest>;
-
 /** Impacted resource for an event. */
 export interface EventImpactedResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1018,18 +695,8 @@ export interface EventImpactedResource {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-const EventImpactedResource = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<EventImpactedResource>;
-
 /** The list of eventImpactedResources. */
 export type EventImpactedResourceListResultValueList = Array<EventImpactedResource>;
-const EventImpactedResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<EventImpactedResourceListResultValueList>;
-
 /** The List of eventImpactedResources operation response. */
 export interface EventImpactedResourceListResult {
   /** The list of eventImpactedResources. */
@@ -1037,22 +704,12 @@ export interface EventImpactedResourceListResult {
   /** The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource. */
   nextLink?: string;
 }
-const EventImpactedResourceListResult = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<EventImpactedResourceListResult>;
-
 export interface ImpactedResourcesListByTenantIdAndEventIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-const ImpactedResourcesListByTenantIdAndEventIdRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ImpactedResourcesListByTenantIdAndEventIdRequest>;
-
 export interface ListAvailabilityStatusByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1063,11 +720,6 @@ export interface ListAvailabilityStatusByResourceGroupRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-const ListAvailabilityStatusByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListAvailabilityStatusByResourceGroupRequest>;
-
 /** availabilityStatus of a resource. */
 export interface AvailabilityStatus {
   /** Azure Resource Manager Identity for the availabilityStatuses resource. */
@@ -1080,15 +732,8 @@ export interface AvailabilityStatus {
   /** Properties of availability state. */
   properties?: AvailabilityStatusProperties;
 }
-const AvailabilityStatus = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<AvailabilityStatus>;
-
 /** The list of availabilityStatuses. */
 export type AvailabilityStatusListResultValueList = Array<AvailabilityStatus>;
-const AvailabilityStatusListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<AvailabilityStatusListResultValueList>;
-
 /** The List availabilityStatus operation response. */
 export interface AvailabilityStatusListResult {
   /** The list of availabilityStatuses. */
@@ -1096,11 +741,6 @@ export interface AvailabilityStatusListResult {
   /** The URI to fetch the next page of availabilityStatuses. Call ListNext() with this URI to fetch the next page of availabilityStatuses. */
   nextLink?: string;
 }
-const AvailabilityStatusListResult = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<AvailabilityStatusListResult>;
-
 export interface ListAvailabilityStatusBySubscriptionIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1109,11 +749,6 @@ export interface ListAvailabilityStatusBySubscriptionIdRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-const ListAvailabilityStatusBySubscriptionIdRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListAvailabilityStatusBySubscriptionIdRequest>;
-
 export interface ListAvailabilityStatusesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -1122,11 +757,6 @@ export interface ListAvailabilityStatusesRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-const ListAvailabilityStatusesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListAvailabilityStatusesRequest>;
-
 export interface ListChildAvailabilityStatusesRequest {
   /** undefined */
   resourceUri: string;
@@ -1135,11 +765,6 @@ export interface ListChildAvailabilityStatusesRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-const ListChildAvailabilityStatusesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListChildAvailabilityStatusesRequest>;
-
 export interface ListChildResourcesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -1148,17 +773,7 @@ export interface ListChildResourcesRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-const ListChildResourcesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListChildResourcesRequest>;
-
 export interface ListEmergingIssuesRequest {}
-const ListEmergingIssuesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListEmergingIssuesRequest>;
-
 /** The Get EmergingIssues operation response. */
 export interface EmergingIssuesGetResult {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1172,16 +787,8 @@ export interface EmergingIssuesGetResult {
   /** The emerging issue entity properties. */
   properties?: EmergingIssue;
 }
-const EmergingIssuesGetResult =
-  GetEmergingIssueResponse as any as S.Schema<EmergingIssuesGetResult>;
-
 /** The list of emerging issues. */
 export type EmergingIssueListResultValueList = Array<EmergingIssuesGetResult>;
-const EmergingIssueListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EmergingIssueListResultValueList>;
-
 /** The list of emerging issues. */
 export interface EmergingIssueListResult {
   /** The list of emerging issues. */
@@ -1189,22 +796,12 @@ export interface EmergingIssueListResult {
   /** The link used to get the next page of emerging issues. */
   nextLink?: string;
 }
-const EmergingIssueListResult = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<EmergingIssueListResult>;
-
 export interface ListEventBySingleResourceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-const ListEventBySingleResourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListEventBySingleResourceRequest>;
-
 /** Service health event */
 export interface Event {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1218,12 +815,8 @@ export interface Event {
   /** Properties of event. */
   properties?: EventProperties;
 }
-const Event = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Event>;
-
 /** The Event items on this page */
 export type EventsValueList = Array<Event>;
-const EventsValueList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<EventsValueList>;
-
 /** The List events operation response. */
 export interface Events {
   /** The Event items on this page */
@@ -1231,8 +824,6 @@ export interface Events {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const Events = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<Events>;
-
 export interface ListEventBySubscriptionIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1241,25 +832,13 @@ export interface ListEventBySubscriptionIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-const ListEventBySubscriptionIdRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListEventBySubscriptionIdRequest>;
-
 export interface ListEventByTenantIdRequest {
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-const ListEventByTenantIdRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListEventByTenantIdRequest>;
-
 export interface ListMetadataRequest {}
-const ListMetadataRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ListMetadataRequest>;
-
 /** The metadata entity contract. */
 export interface MetadataEntity {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1273,15 +852,8 @@ export interface MetadataEntity {
   /** The metadata entity properties. */
   properties?: MetadataEntityProperties;
 }
-const MetadataEntity = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<MetadataEntity>;
-
 /** The list of metadata entities. */
 export type MetadataEntityListResultValueList = Array<MetadataEntity>;
-const MetadataEntityListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<MetadataEntityListResultValueList>;
-
 /** The list of metadata entities */
 export interface MetadataEntityListResult {
   /** The list of metadata entities. */
@@ -1289,17 +861,7 @@ export interface MetadataEntityListResult {
   /** The link used to get the next page of metadata. */
   nextLink?: string;
 }
-const MetadataEntityListResult = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<MetadataEntityListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Properties of the operation. */
 export interface OperationDisplay {
   /** Provider name. */
@@ -1311,8 +873,6 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<OperationDisplay>;
-
 /** Operation available in the Microsoft.ResourceHealth resource provider. */
 export interface Operation {
   /** Name of the operation. */
@@ -1320,22 +880,13 @@ export interface Operation {
   /** Properties of the operation. */
   display?: OperationDisplay;
 }
-const Operation = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Operation>;
-
 /** List of operations available in the Microsoft.ResourceHealth resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Lists the operations response. */
 export interface OperationListResult {
   /** List of operations available in the Microsoft.ResourceHealth resource provider. */
   value: OperationListResultValueList;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<OperationListResult>;
-
 export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1344,22 +895,12 @@ export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest>;
-
 export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest>;
-
 export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdError = AzureOpError;
 /** Service health event details specific in the subscription by event tracking id. This can be used to fetch sensitive properties for Billing event type. */
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId: API.OperationMethod<
@@ -1368,8 +909,16 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
   EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest,
-  output: EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse,
+  input: __S(
+    0,
+    __c0,
+    0,
+  ) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest>,
+  output: __S(
+    20,
+    __c2,
+    4,
+  ) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1383,8 +932,12 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingId: API.OperationMethod
   EventFetchDetailsBySubscriptionIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventFetchDetailsBySubscriptionIdAndTrackingIdRequest,
-  output: EventFetchDetailsBySubscriptionIdAndTrackingIdResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<EventFetchDetailsBySubscriptionIdAndTrackingIdRequest>,
+  output: __S(
+    22,
+    __c2,
+    6,
+  ) as any as S.Schema<EventFetchDetailsBySubscriptionIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1398,8 +951,8 @@ export const EventFetchDetailsByTenantIdAndTrackingId: API.OperationMethod<
   EventFetchDetailsByTenantIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventFetchDetailsByTenantIdAndTrackingIdRequest,
-  output: EventFetchDetailsByTenantIdAndTrackingIdResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1413,8 +966,8 @@ export const EventGetBySubscriptionIdAndTrackingId: API.OperationMethod<
   EventGetBySubscriptionIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventGetBySubscriptionIdAndTrackingIdRequest,
-  output: EventGetBySubscriptionIdAndTrackingIdResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1428,8 +981,8 @@ export const EventGetByTenantIdAndTrackingId: API.OperationMethod<
   EventGetByTenantIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventGetByTenantIdAndTrackingIdRequest,
-  output: EventGetByTenantIdAndTrackingIdResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<EventGetByTenantIdAndTrackingIdRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1443,8 +996,8 @@ export const GetAvailabilityStatusByResource: API.OperationMethod<
   GetAvailabilityStatusByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAvailabilityStatusByResourceRequest,
-  output: GetAvailabilityStatusByResourceResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<GetAvailabilityStatusByResourceRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetAvailabilityStatusByResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1011,8 @@ export const GetChildAvailabilityStatusByResource: API.OperationMethod<
   GetChildAvailabilityStatusByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChildAvailabilityStatusByResourceRequest,
-  output: GetChildAvailabilityStatusByResourceResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<GetChildAvailabilityStatusByResourceRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1026,8 @@ export const GetEmergingIssue: API.OperationMethod<
   GetEmergingIssueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmergingIssueRequest,
-  output: GetEmergingIssueResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<GetEmergingIssueRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetEmergingIssueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1041,8 @@ export const GetImpactedResource: API.OperationMethod<
   GetImpactedResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImpactedResourceRequest,
-  output: GetImpactedResourceResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<GetImpactedResourceRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GetImpactedResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1056,8 @@ export const GetImpactedResourceByTenantId: API.OperationMethod<
   GetImpactedResourceByTenantIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImpactedResourceByTenantIdRequest,
-  output: GetImpactedResourceByTenantIdResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<GetImpactedResourceByTenantIdRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GetImpactedResourceByTenantIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1071,8 @@ export const GetMetadataEntity: API.OperationMethod<
   GetMetadataEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetadataEntityRequest,
-  output: GetMetadataEntityResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<GetMetadataEntityRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<GetMetadataEntityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1086,12 @@ export const ImpactedResourcesListBySubscriptionIdAndEventId: API.OperationMetho
   ImpactedResourcesListBySubscriptionIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImpactedResourcesListBySubscriptionIdAndEventIdRequest,
-  output: EventImpactedResourceListResult,
+  input: __S(
+    60,
+    __c7,
+    4,
+  ) as any as S.Schema<ImpactedResourcesListBySubscriptionIdAndEventIdRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1105,8 @@ export const ImpactedResourcesListByTenantIdAndEventId: API.OperationMethod<
   ImpactedResourcesListByTenantIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImpactedResourcesListByTenantIdAndEventIdRequest,
-  output: EventImpactedResourceListResult,
+  input: __S(64, __c8, 0) as any as S.Schema<ImpactedResourcesListByTenantIdAndEventIdRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1120,8 @@ export const ListAvailabilityStatusByResourceGroup: API.OperationMethod<
   ListAvailabilityStatusByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAvailabilityStatusByResourceGroupRequest,
-  output: AvailabilityStatusListResult,
+  input: __S(65, __c8, 1) as any as S.Schema<ListAvailabilityStatusByResourceGroupRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1135,8 @@ export const ListAvailabilityStatusBySubscriptionId: API.OperationMethod<
   ListAvailabilityStatusBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAvailabilityStatusBySubscriptionIdRequest,
-  output: AvailabilityStatusListResult,
+  input: __S(69, __c8, 5) as any as S.Schema<ListAvailabilityStatusBySubscriptionIdRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1150,8 @@ export const ListAvailabilityStatuses: API.OperationMethod<
   ListAvailabilityStatusesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAvailabilityStatusesRequest,
-  output: AvailabilityStatusListResult,
+  input: __S(70, __c8, 6) as any as S.Schema<ListAvailabilityStatusesRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1165,8 @@ export const ListChildAvailabilityStatuses: API.OperationMethod<
   ListChildAvailabilityStatusesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChildAvailabilityStatusesRequest,
-  output: AvailabilityStatusListResult,
+  input: __S(71, __c8, 7) as any as S.Schema<ListChildAvailabilityStatusesRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1180,8 @@ export const ListChildResources: API.OperationMethod<
   ListChildResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChildResourcesRequest,
-  output: AvailabilityStatusListResult,
+  input: __S(72, __c9, 0) as any as S.Schema<ListChildResourcesRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1195,8 @@ export const ListEmergingIssues: API.OperationMethod<
   ListEmergingIssuesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmergingIssuesRequest,
-  output: EmergingIssueListResult,
+  input: __S(73, __c9, 1) as any as S.Schema<ListEmergingIssuesRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<EmergingIssueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1210,8 @@ export const ListEventBySingleResource: API.OperationMethod<
   ListEventBySingleResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventBySingleResourceRequest,
-  output: Events,
+  input: __S(76, __c9, 4) as any as S.Schema<ListEventBySingleResourceRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1225,8 @@ export const ListEventBySubscriptionId: API.OperationMethod<
   ListEventBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventBySubscriptionIdRequest,
-  output: Events,
+  input: __S(80, __c10, 0) as any as S.Schema<ListEventBySubscriptionIdRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1240,8 @@ export const ListEventByTenantId: API.OperationMethod<
   ListEventByTenantIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventByTenantIdRequest,
-  output: Events,
+  input: __S(81, __c10, 1) as any as S.Schema<ListEventByTenantIdRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1255,8 @@ export const ListMetadata: API.OperationMethod<
   ListMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMetadataRequest,
-  output: MetadataEntityListResult,
+  input: __S(82, __c10, 2) as any as S.Schema<ListMetadataRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<MetadataEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1270,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(86, __c10, 6) as any as S.Schema<ListOperationsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1285,12 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId: AP
   SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest,
-  output: EventImpactedResourceListResult,
+  input: __S(
+    91,
+    __c11,
+    3,
+  ) as any as S.Schema<SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1743,8 +1304,12 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId: API.Oper
   SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest,
-  output: EventImpactedResourceListResult,
+  input: __S(
+    92,
+    __c11,
+    4,
+  ) as any as S.Schema<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1773,10 +1338,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1798,15 +1363,15 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(LinkTypeValues),
-          displayText: S.optional(LinkDisplayText),
+          type: S.optional(S.String),
+          displayText: S.optional(__S(3, __c0, 3)),
           extensionName: S.optional(S.String),
           bladeName: S.optional(S.String),
           parameters: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Link" });
     case 5:
-      return S.Array(Link);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.Array(S.String);
     case 7:
@@ -1814,7 +1379,7 @@ function __c0(j: number): any {
         S.Struct({
           summary: S.optional(S.String),
           updateDateTime: S.optional(S.String),
-          eventTags: S.optional(UpdateEventTagsList),
+          eventTags: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Update" });
   }
@@ -1822,30 +1387,30 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Update);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           impactedRegion: S.optional(S.String),
-          status: S.optional(EventStatusValues),
-          impactedSubscriptions: S.optional(ImpactedServiceRegionImpactedSubscriptionsList),
-          impactedTenants: S.optional(ImpactedServiceRegionImpactedTenantsList),
+          status: S.optional(S.String),
+          impactedSubscriptions: S.optional(__S(6, __c0, 6)),
+          impactedTenants: S.optional(__S(6, __c0, 6)),
           lastUpdateTime: S.optional(S.String),
-          updates: S.optional(ImpactedServiceRegionUpdatesList),
+          updates: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "ImpactedServiceRegion" });
     case 2:
-      return S.Array(ImpactedServiceRegion);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           impactedService: S.optional(S.String),
           impactedServiceGuid: S.optional(S.String),
-          impactedRegions: S.optional(ImpactImpactedRegionsList),
+          impactedRegions: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Impact" });
     case 4:
-      return S.Array(Impact);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1856,12 +1421,12 @@ function __c1(j: number): any {
         identifier: "EventPropertiesRecommendedActionsActionsItem",
       });
     case 6:
-      return S.Array(EventPropertiesRecommendedActionsActionsItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          actions: S.optional(EventPropertiesRecommendedActionsActionsList),
+          actions: S.optional(__S(14, __c1, 6)),
           localeCode: S.optional(S.String),
         }),
       ).annotate({
@@ -1880,7 +1445,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Faq" });
     case 1:
-      return S.Array(Faq);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1892,25 +1457,25 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          eventType: S.optional(EventTypeValues),
-          eventSubType: S.optional(EventSubTypeValues),
-          eventSource: S.optional(EventSourceValues),
-          status: S.optional(EventStatusValues),
+          eventType: S.optional(S.String),
+          eventSubType: S.optional(S.String),
+          eventSource: S.optional(S.String),
+          status: S.optional(S.String),
           title: S.optional(S.String),
           summary: S.optional(S.String),
           header: S.optional(S.String),
-          level: S.optional(LevelValues),
-          eventLevel: S.optional(EventLevelValues),
+          level: S.optional(S.String),
+          eventLevel: S.optional(S.String),
           isEventSensitive: S.optional(S.Boolean),
           externalIncidentId: S.optional(S.String),
           reason: S.optional(S.String),
-          article: S.optional(EventPropertiesArticle),
-          links: S.optional(EventPropertiesLinksList),
+          article: S.optional(__S(2, __c0, 2)),
+          links: S.optional(__S(5, __c0, 5)),
           impactStartTime: S.optional(S.String),
           impactMitigationTime: S.optional(S.String),
-          impact: S.optional(EventPropertiesImpactList),
-          recommendedActions: S.optional(EventPropertiesRecommendedActions),
-          faqs: S.optional(EventPropertiesFaqsList),
+          impact: S.optional(__S(12, __c1, 4)),
+          recommendedActions: S.optional(__S(15, __c1, 7)),
+          faqs: S.optional(__S(17, __c2, 1)),
           isHIR: S.optional(S.Boolean),
           enableMicrosoftSupport: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -1919,10 +1484,10 @@ function __c2(j: number): any {
           priority: S.optional(S.Number),
           lastUpdateTime: S.optional(S.String),
           hirStage: S.optional(S.String),
-          additionalInformation: S.optional(EventPropertiesAdditionalInformation),
+          additionalInformation: S.optional(__S(18, __c2, 2)),
           duration: S.optional(S.Number),
           impactType: S.optional(S.String),
-          eventTags: S.optional(EventPropertiesEventTagsList),
+          eventTags: S.optional(__S(6, __c0, 6)),
           newRate: S.optional(S.Number),
           oldRate: S.optional(S.Number),
           currencyType: S.optional(S.String),
@@ -1935,8 +1500,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse",
@@ -1963,8 +1528,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "EventFetchDetailsBySubscriptionIdAndTrackingIdResponse",
@@ -2060,7 +1625,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "RecommendedAction" });
     case 5:
-      return S.Array(RecommendedAction);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2090,16 +1655,16 @@ function __c4(j: number): any {
           eventStartTime: S.optional(S.String),
           eventStatusLastModifiedTime: S.optional(S.String),
           correlationId: S.optional(S.String),
-          status: S.optional(ServiceImpactingEventStatus),
-          incidentProperties: S.optional(ServiceImpactingEventIncidentProperties),
+          status: S.optional(__S(30, __c3, 6)),
+          incidentProperties: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "ServiceImpactingEvent" });
     case 1:
-      return S.Array(ServiceImpactingEvent);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          availabilityState: S.optional(AvailabilityStateValues),
+          availabilityState: S.optional(S.String),
           title: S.optional(S.String),
           summary: S.optional(S.String),
           detailedStatus: S.optional(S.String),
@@ -2114,13 +1679,11 @@ function __c4(j: number): any {
           healthEventId: S.optional(S.String),
           resolutionETA: S.optional(S.String),
           occuredTime: S.optional(S.String),
-          reasonChronicity: S.optional(ReasonChronicityTypes),
+          reasonChronicity: S.optional(S.String),
           reportedTime: S.optional(S.String),
-          recentlyResolved: S.optional(AvailabilityStatusPropertiesRecentlyResolved),
-          recommendedActions: S.optional(AvailabilityStatusPropertiesRecommendedActionsList),
-          serviceImpactingEvents: S.optional(
-            AvailabilityStatusPropertiesServiceImpactingEventsList,
-          ),
+          recentlyResolved: S.optional(__S(27, __c3, 3)),
+          recommendedActions: S.optional(__S(29, __c3, 5)),
+          serviceImpactingEvents: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "AvailabilityStatusProperties",
@@ -2132,7 +1695,7 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(AvailabilityStatusProperties),
+          properties: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({
         identifier: "GetAvailabilityStatusByResourceResponse",
@@ -2157,7 +1720,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          issueName: GetEmergingIssueRequestIssueName.pipe(T.Label()),
+          issueName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2177,7 +1740,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "StatusBanner" });
     case 7:
-      return S.Array(StatusBanner);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -2190,17 +1753,17 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ImpactedRegion" });
     case 1:
-      return S.Array(ImpactedRegion);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          regions: S.optional(EmergingIssueImpactRegionsList),
+          regions: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "EmergingIssueImpact" });
     case 3:
-      return S.Array(EmergingIssueImpact);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2209,21 +1772,21 @@ function __c5(j: number): any {
           trackingId: S.optional(S.String),
           startTime: S.optional(S.String),
           cloud: S.optional(S.String),
-          severity: S.optional(SeverityValues),
-          stage: S.optional(StageValues),
+          severity: S.optional(S.String),
+          stage: S.optional(S.String),
           published: S.optional(S.Boolean),
           lastModifiedTime: S.optional(S.String),
-          impacts: S.optional(StatusActiveEventImpactsList),
+          impacts: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "StatusActiveEvent" });
     case 5:
-      return S.Array(StatusActiveEvent);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           refreshTimestamp: S.optional(S.String),
-          statusBanners: S.optional(EmergingIssueStatusBannersList),
-          statusActiveEvents: S.optional(EmergingIssueStatusActiveEventsList),
+          statusBanners: S.optional(__S(39, __c4, 7)),
+          statusActiveEvents: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "EmergingIssue" });
     case 7:
@@ -2232,8 +1795,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EmergingIssue),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "GetEmergingIssueResponse" });
   }
@@ -2265,14 +1828,14 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "KeyValueItem" });
     case 2:
-      return S.Array(KeyValueItem);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           targetResourceType: S.optional(S.String),
           targetResourceId: S.optional(S.String),
           targetRegion: S.optional(S.String),
-          info: S.optional(EventImpactedResourcePropertiesInfoList),
+          info: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({
         identifier: "EventImpactedResourceProperties",
@@ -2283,8 +1846,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventImpactedResourceProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({
         identifier: "GetImpactedResourceResponse",
@@ -2319,7 +1882,7 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "GetMetadataEntityRequest" });
     case 7:
-      return S.Array(Scenario);
+      return S.Array(S.String);
   }
 }
 function __c7(j: number): any {
@@ -2331,21 +1894,21 @@ function __c7(j: number): any {
           previousId: S.optional(S.String),
           serviceGuid: S.optional(S.String),
           displayName: S.optional(S.String),
-          resourceTypes: S.optional(MetadataSupportedValueDetailResourceTypesList),
+          resourceTypes: S.optional(__S(6, __c0, 6)),
           priority: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "MetadataSupportedValueDetail",
       });
     case 1:
-      return S.Array(MetadataSupportedValueDetail);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          dependsOn: S.optional(MetadataEntityPropertiesDependsOnList),
-          applicableScenarios: S.optional(MetadataEntityPropertiesApplicableScenariosList),
-          supportedValues: S.optional(MetadataEntityPropertiesSupportedValuesList),
+          dependsOn: S.optional(__S(6, __c0, 6)),
+          applicableScenarios: S.optional(__S(55, __c6, 7)),
+          supportedValues: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "MetadataEntityProperties" });
     case 3:
@@ -2354,8 +1917,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MetadataEntityProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "GetMetadataEntityResponse",
@@ -2383,16 +1946,16 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventImpactedResourceProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "EventImpactedResource" });
     case 6:
-      return S.Array(EventImpactedResource);
+      return S.Array(__S(61, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: EventImpactedResourceListResultValueList,
+          value: __S(62, __c7, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2443,15 +2006,15 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(AvailabilityStatusProperties),
+          properties: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "AvailabilityStatus" });
     case 3:
-      return S.Array(AvailabilityStatus);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: AvailabilityStatusListResultValueList,
+          value: __S(67, __c8, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2543,11 +2106,11 @@ function __c9(j: number): any {
         identifier: "ListEmergingIssuesRequest",
       });
     case 2:
-      return S.Array(EmergingIssuesGetResult);
+      return S.Array(__S(47, __c5, 7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(EmergingIssueListResultValueList),
+          value: S.optional(__S(74, __c9, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmergingIssueListResult" });
@@ -2573,16 +2136,16 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "Event" });
     case 6:
-      return S.Array(Event);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: EventsValueList,
+          value: __S(78, __c9, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Events" });
@@ -2640,16 +2203,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MetadataEntityProperties),
+          systemData: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "MetadataEntity" });
     case 4:
-      return S.Array(MetadataEntity);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(MetadataEntityListResultValueList),
+          value: S.optional(__S(84, __c10, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataEntityListResult" });
@@ -2681,15 +2244,15 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(87, __c10, 7)),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(89, __c11, 1),
         }),
       ).annotate({ identifier: "OperationListResult" });
     case 3:
@@ -2726,4 +2289,9 @@ function __c11(j: number): any {
         identifier: "SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

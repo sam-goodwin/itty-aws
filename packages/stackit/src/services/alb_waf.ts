@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -48,8 +50,6 @@ export class NotFound
 
 /** The protective stance action. ACTION_DENY forces a 403 status response code. */
 export type Action = "ACTION_DENY" | "ACTION_PASS" | "ACTION_ALLOW";
-const Action = S.String;
-
 export interface Behavior {
   action: Action | (string & {});
   /** Determines whether an entry should be generated in the security ledger upon a rule hit. */
@@ -57,8 +57,6 @@ export interface Behavior {
   /** Custom notification message string mapped to underlying logdata contexts. */
   logMsg?: string;
 }
-const Behavior = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Behavior>;
-
 /** The operational evaluation type definition macro. */
 export type Operator =
   | "OPERATOR_BEGINS_WITH"
@@ -77,15 +75,11 @@ export type Operator =
   | "OPERATOR_VALIDATE_URL_ENCODING"
   | "OPERATOR_VALIDATE_UTF8_ENCODING"
   | "OPERATOR_WITHIN";
-const Operator = S.String;
-
 export interface ConditionOperator {
   type: Operator | (string & {});
   /** The text or rule regex pattern arguments applied inside the operator execution loop. */
   value?: string;
 }
-const ConditionOperator = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ConditionOperator>;
-
 export type Transformation =
   | "TRANSFORMATION_LENGTH"
   | "TRANSFORMATION_LOWERCASE"
@@ -93,15 +87,8 @@ export type Transformation =
   | "TRANSFORMATION_TRIM"
   | "TRANSFORMATION_UPPERCASE"
   | "TRANSFORMATION_UTF8_TO_UNICODE";
-const Transformation = S.String;
-
 /** [HINT] Ordered processing adjustments applied to clean inputs before match checking. */
 export type ConditionTransformationsList = Array<Transformation | (string & {})>;
-const ConditionTransformationsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ConditionTransformationsList>;
-
 /** The targeted validation engine variable macro. */
 export type Variable =
   | "VARIABLE_ARGS_GET"
@@ -131,23 +118,14 @@ export interface ConditionVariable {
   /** Optional key element context for map variables (e.g., matching a 'Host' header key). */
   value?: string;
 }
-const ConditionVariable = ConditionOperator as any as S.Schema<ConditionVariable>;
-
 export interface Condition {
   operator: ConditionOperator;
   /** [HINT] Ordered processing adjustments applied to clean inputs before match checking. */
   transformations?: ConditionTransformationsList;
   variable: ConditionVariable;
 }
-const Condition = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Condition>;
-
 /** [HINT] Order matters! First condition match triggers execution. */
 export type CreateCustomRuleConditionsList = Array<Condition>;
-const CreateCustomRuleConditionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateCustomRuleConditionsList>;
-
 export interface CreateCustomRule {
   behavior: Behavior;
   /** [HINT] Order matters! First condition match triggers execution. */
@@ -155,15 +133,8 @@ export interface CreateCustomRule {
   /** A clear description explaining the threat vector or criteria addressed by this rule. */
   description?: string;
 }
-const CreateCustomRule = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateCustomRule>;
-
 /** The collection of custom rule group SecLang parameters forming this execution group. */
 export type CreateCustomRuleGroupRequestRulesList = Array<CreateCustomRule>;
-const CreateCustomRuleGroupRequestRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateCustomRuleGroupRequestRulesList>;
-
 export interface CreateCustomRuleGroupRequest {
   projectId: string;
   region: string;
@@ -172,11 +143,6 @@ export interface CreateCustomRuleGroupRequest {
   /** The collection of custom rule group SecLang parameters forming this execution group. */
   rules: CreateCustomRuleGroupRequestRulesList;
 }
-const CreateCustomRuleGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateCustomRuleGroupRequest>;
-
 /** Severity classification metric used by internal analytics graphs. */
 export type Severity =
   | "SEVERITY_EMERGENCY"
@@ -187,8 +153,6 @@ export type Severity =
   | "SEVERITY_NOTICE"
   | "SEVERITY_INFO"
   | "SEVERITY_DEBUG";
-const Severity = S.String;
-
 export interface GetBehavior {
   action: Action;
   /** Determines whether an entry should be generated in the security ledger upon a rule hit. */
@@ -197,13 +161,8 @@ export interface GetBehavior {
   logMsg?: string;
   severity: Severity;
 }
-const GetBehavior = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetBehavior>;
-
 /** [HINT] Order matters! First condition match triggers execution. */
 export type GetCustomRuleConditionsList = Array<Condition>;
-const GetCustomRuleConditionsList =
-  CreateCustomRuleConditionsList as any as S.Schema<GetCustomRuleConditionsList>;
-
 export interface GetCustomRule {
   behavior: GetBehavior;
   /** [HINT] Order matters! First condition match triggers execution. */
@@ -213,19 +172,10 @@ export interface GetCustomRule {
   /** Backend auto-allocated unique rule ID within the valid 1-99999 threshold. */
   id: number;
 }
-const GetCustomRule = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetCustomRule>;
-
 /** Enriched rules containing auto-generated IDs and computed severity values. */
 export type GetCustomRuleGroupResponseRulesList = Array<GetCustomRule>;
-const GetCustomRuleGroupResponseRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetCustomRuleGroupResponseRulesList>;
-
 /** List of individual WAF configuration names that bind this rule group. */
 export type CRGUsageItemsList = Array<string>;
-const CRGUsageItemsList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CRGUsageItemsList>;
-
 /** Tracking metrics for CRG resource utilization */
 export interface CRGUsage {
   /** Number of WAF configurations actively using this rule group. */
@@ -233,8 +183,6 @@ export interface CRGUsage {
   /** List of individual WAF configuration names that bind this rule group. */
   items?: CRGUsageItemsList;
 }
-const CRGUsage = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CRGUsage>;
-
 /** Response payload delivering the detailed CRG configuration name and it's rule content. */
 export interface GetCustomRuleGroupResponse {
   /** Custom rule group configuration name. */
@@ -243,15 +191,8 @@ export interface GetCustomRuleGroupResponse {
   rules: GetCustomRuleGroupResponseRulesList;
   usage?: CRGUsage;
 }
-const GetCustomRuleGroupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetCustomRuleGroupResponse>;
-
 /** Set the managed rule set type. */
 export type Type = "TYPE_OWASP_CRS";
-const Type = S.String;
-
 export interface CreateManagedRuleSetRequest {
   projectId: string;
   region: string;
@@ -259,15 +200,8 @@ export interface CreateManagedRuleSetRequest {
   name: string;
   type: Type | (string & {});
 }
-const CreateManagedRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateManagedRuleSetRequest>;
-
 /** The current mode of the rule. */
 export type Mode = "MODE_ENABLED" | "MODE_DISABLED" | "MODE_LOG_ONLY";
-const Mode = S.String;
-
 /** Rule represents an individual security or validation rule. */
 export interface MRSRule {
   /** A description of what this rule covers. */
@@ -276,11 +210,7 @@ export interface MRSRule {
   /** Impact level. */
   severity: string;
 }
-const MRSRule = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<MRSRule>;
-
 export type MRSRuleGroupRulesMap = { [key: string]: MRSRule | undefined };
-const MRSRuleGroupRulesMap = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MRSRuleGroupRulesMap>;
-
 /** RuleGroup represents a collection of rules associated with a specific group. */
 export interface MRSRuleGroup {
   /** A description of what this group covers. */
@@ -289,15 +219,8 @@ export interface MRSRuleGroup {
   groupName: string;
   rules?: MRSRuleGroupRulesMap;
 }
-const MRSRuleGroup = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<MRSRuleGroup>;
-
 /** Inventory of all available Managed Rule Set groups and their current configuration. The key is the unique Group ID. */
 export type GetManagedRuleSetResponseGroupsMap = { [key: string]: MRSRuleGroup | undefined };
-const GetManagedRuleSetResponseGroupsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetManagedRuleSetResponseGroupsMap>;
-
 /** List of WAFs that use this Managed Rule Set. */
 export type MRSUsageItemsList = Array<string>;
 export interface MRSUsage {
@@ -306,8 +229,6 @@ export interface MRSUsage {
   /** List of WAFs that use this Managed Rule Set. */
   items?: MRSUsageItemsList;
 }
-const MRSUsage = CRGUsage as any as S.Schema<MRSUsage>;
-
 /** GetManagedRuleSetResponse returns rule configuration name and it's rules. */
 export interface GetManagedRuleSetResponse {
   /** Inventory of all available Managed Rule Set groups and their current configuration. The key is the unique Group ID. */
@@ -319,18 +240,8 @@ export interface GetManagedRuleSetResponse {
   /** Managed rule set version. */
   version: string;
 }
-const GetManagedRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetManagedRuleSetResponse>;
-
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type CreateWAFRequestLabelsMap = { [key: string]: string | undefined };
-const CreateWAFRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateWAFRequestLabelsMap>;
-
 export interface CreateWAFRequest {
   projectId: string;
   region: string;
@@ -343,38 +254,24 @@ export interface CreateWAFRequest {
   /** WAF name */
   name: string;
 }
-const CreateWAFRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateWAFRequest>;
-
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetWAFResponseLabelsMap = { [key: string]: string | undefined };
-const GetWAFResponseLabelsMap =
-  CreateWAFRequestLabelsMap as any as S.Schema<GetWAFResponseLabelsMap>;
-
 /** The list of listener names in this Load Balancer, that are using the WAF. */
 export type WAFUsageItemListenerNamesList = Array<string>;
-const WAFUsageItemListenerNamesList =
-  CRGUsageItemsList as any as S.Schema<WAFUsageItemListenerNamesList>;
-
 export interface WAFUsageItem {
   /** The list of listener names in this Load Balancer, that are using the WAF. */
   listenerNames?: WAFUsageItemListenerNamesList;
   /** The display name of the Load Balancer. */
   loadBalancerName: string;
 }
-const WAFUsageItem = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<WAFUsageItem>;
-
 /** List of Application Load Balancers with their associated listeners that use this WAF configuration. */
 export type WAFUsageItemsList = Array<WAFUsageItem>;
-const WAFUsageItemsList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<WAFUsageItemsList>;
-
 export interface WAFUsage {
   /** Number of listeners using this WAF configuration. */
   count?: number;
   /** List of Application Load Balancers with their associated listeners that use this WAF configuration. */
   items?: WAFUsageItemsList;
 }
-const WAFUsage = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<WAFUsage>;
-
 /** GetWAFResponse returns detailed information about the WAF, which includes the identifying name, references to MRS/CRG and usage. */
 export interface GetWAFResponse {
   /** Name of the CRG configuration for that WAF. */
@@ -387,74 +284,38 @@ export interface GetWAFResponse {
   name: string;
   usage?: WAFUsage;
 }
-const GetWAFResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetWAFResponse>;
-
 export interface DeleteCustomRuleGroupRequest {
   projectId: string;
   region: string;
   name: string;
 }
-const DeleteCustomRuleGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteCustomRuleGroupRequest>;
-
 export type DeleteCustomRuleGroupResponse2 = unknown;
-const DeleteCustomRuleGroupResponse2 = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteCustomRuleGroupResponse2>;
-
 export interface DeleteManagedRuleSetRequest {
   projectId: string;
   region: string;
   name: string;
 }
-const DeleteManagedRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteManagedRuleSetRequest>;
-
 export type DeleteManagedRuleSetResponse2 = unknown;
-const DeleteManagedRuleSetResponse2 =
-  DeleteCustomRuleGroupResponse2 as any as S.Schema<DeleteManagedRuleSetResponse2>;
-
 export interface DeleteWAFRequest {
   projectId: string;
   region: string;
   name: string;
 }
-const DeleteWAFRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DeleteWAFRequest>;
-
 export type DeleteWAFResponse2 = unknown;
-const DeleteWAFResponse2 = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DeleteWAFResponse2>;
-
 export interface GetCustomRuleGroupRequest {
   projectId: string;
   region: string;
   name: string;
 }
-const GetCustomRuleGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetCustomRuleGroupRequest>;
-
 export interface GetManagedRuleSetRequest {
   projectId: string;
   region: string;
   name: string;
 }
-const GetManagedRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetManagedRuleSetRequest>;
-
 export interface GetQuotaRequest {
   projectId: string;
   region: string;
 }
-const GetQuotaRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetQuotaRequest>;
-
 /** CRG quotas holds the limit and usage for CRG resources */
 export interface CRGConfigQuota {
   /** The maximum number of custom rule groups in this project. */
@@ -462,8 +323,6 @@ export interface CRGConfigQuota {
   /** The number of custom rule groups that are currently existing in this project. */
   usage?: number;
 }
-const CRGConfigQuota = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CRGConfigQuota>;
-
 /** MRS Config quota holds the limit and usage for Managed Rule Set configuration resources */
 export interface MRSConfigQuota {
   /** The maximum number of Managed Rule Set configurations in this project. */
@@ -471,8 +330,6 @@ export interface MRSConfigQuota {
   /** The number of Managed Rule Set configurations that are currently existing in this project. */
   usage?: number;
 }
-const MRSConfigQuota = CRGConfigQuota as any as S.Schema<MRSConfigQuota>;
-
 /** WAF Config quota holds the limit and usage for Web Application Firewall configuration resources */
 export interface WAFConfigQuota {
   /** The maximum number of Web Application Firewall configurations in this project. */
@@ -480,16 +337,12 @@ export interface WAFConfigQuota {
   /** The number of Web Application Firewall configurations that are currently existing in this project. */
   usage?: number;
 }
-const WAFConfigQuota = CRGConfigQuota as any as S.Schema<WAFConfigQuota>;
-
 /** Quotas holds the specific quota elements for different resources */
 export interface Quotas {
   customRuleGroup: CRGConfigQuota;
   managedRuleSet: MRSConfigQuota;
   webApplicationFirewall: WAFConfigQuota;
 }
-const Quotas = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Quotas>;
-
 export interface GetQuotaResponse {
   /** Project identifier */
   projectId?: string;
@@ -497,15 +350,11 @@ export interface GetQuotaResponse {
   /** Region */
   region?: string;
 }
-const GetQuotaResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetQuotaResponse>;
-
 export interface GetWAFRequest {
   projectId: string;
   region: string;
   name: string;
 }
-const GetWAFRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetWAFRequest>;
-
 export interface ListCustomRuleGroupRequest {
   projectId: string;
   region: string;
@@ -514,28 +363,13 @@ export interface ListCustomRuleGroupRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-const ListCustomRuleGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListCustomRuleGroupRequest>;
-
 export type ListCustomRuleGroupResponseItemsList = Array<GetCustomRuleGroupResponse>;
-const ListCustomRuleGroupResponseItemsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListCustomRuleGroupResponseItemsList>;
-
 /** ListCustomRuleGroupResponse returns a list of Custom Rule Group responses. */
 export interface ListCustomRuleGroupResponse {
   items?: ListCustomRuleGroupResponseItemsList;
   /** Continue token from the ListCustomRuleGroupResponse with Limit option */
   nextPageId?: string;
 }
-const ListCustomRuleGroupResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListCustomRuleGroupResponse>;
-
 export interface ListManagedRuleSetsRequest {
   projectId: string;
   region: string;
@@ -544,11 +378,6 @@ export interface ListManagedRuleSetsRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-const ListManagedRuleSetsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListManagedRuleSetsRequest>;
-
 export interface GetLimitedManagedRuleSetResponse {
   /** Managed rule set configuration name. */
   name: string;
@@ -557,28 +386,13 @@ export interface GetLimitedManagedRuleSetResponse {
   /** Managed rule set version. */
   version: string;
 }
-const GetLimitedManagedRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetLimitedManagedRuleSetResponse>;
-
 export type ListManagedRuleSetResponseItemsList = Array<GetLimitedManagedRuleSetResponse>;
-const ListManagedRuleSetResponseItemsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListManagedRuleSetResponseItemsList>;
-
 /** ListManagedRuleSetResponse returns a list of rule configuration responses. */
 export interface ListManagedRuleSetResponse {
   items?: ListManagedRuleSetResponseItemsList;
   /** Continue token from the ListManagedRuleSetResponse with Limit option */
   nextPageId?: string;
 }
-const ListManagedRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListManagedRuleSetResponse>;
-
 export interface ListWAFRequest {
   projectId: string;
   region: string;
@@ -587,45 +401,22 @@ export interface ListWAFRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-const ListWAFRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListWAFRequest>;
-
 export type ListWAFResponseItemsList = Array<GetWAFResponse>;
-const ListWAFResponseItemsList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListWAFResponseItemsList>;
-
 /** ListWAFResponse returns a list of WAF responses. */
 export interface ListWAFResponse {
   items?: ListWAFResponseItemsList;
   /** Continue token from the ListWAFResponse with Limit option */
   nextPageId?: string;
 }
-const ListWAFResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ListWAFResponse>;
-
 export interface PatchMRSRule {
   mode?: Mode | (string & {});
 }
-const PatchMRSRule = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PatchMRSRule>;
-
 export type PatchMRSRuleGroupRulesMap = { [key: string]: PatchMRSRule | undefined };
-const PatchMRSRuleGroupRulesMap = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<PatchMRSRuleGroupRulesMap>;
-
 export interface PatchMRSRuleGroup {
   rules: PatchMRSRuleGroupRulesMap;
 }
-const PatchMRSRuleGroup = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<PatchMRSRuleGroup>;
-
 /** Map of Managed Rule Set groups to be patched. The key is the Group ID (e.g., 942 for SQL Injection). Only provided rules within the group will be updated; others remain unchanged. */
 export type PatchManagedRuleSetRequestGroupsMap = { [key: string]: PatchMRSRuleGroup | undefined };
-const PatchManagedRuleSetRequestGroupsMap = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<PatchManagedRuleSetRequestGroupsMap>;
-
 export interface PatchManagedRuleSetRequest {
   projectId: string;
   region: string;
@@ -633,16 +424,8 @@ export interface PatchManagedRuleSetRequest {
   /** Map of Managed Rule Set groups to be patched. The key is the Group ID (e.g., 942 for SQL Injection). Only provided rules within the group will be updated; others remain unchanged. */
   groups: PatchManagedRuleSetRequestGroupsMap;
 }
-const PatchManagedRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PatchManagedRuleSetRequest>;
-
 /** The collection of custom rule group SecLang parameters forming this execution group. Replaces the existing rules atomically. */
 export type UpdateCustomRuleGroupRequestRulesList = Array<CreateCustomRule>;
-const UpdateCustomRuleGroupRequestRulesList =
-  CreateCustomRuleGroupRequestRulesList as any as S.Schema<UpdateCustomRuleGroupRequestRulesList>;
-
 export interface UpdateCustomRuleGroupRequest {
   projectId: string;
   region: string;
@@ -650,16 +433,8 @@ export interface UpdateCustomRuleGroupRequest {
   /** The collection of custom rule group SecLang parameters forming this execution group. Replaces the existing rules atomically. */
   rules: UpdateCustomRuleGroupRequestRulesList;
 }
-const UpdateCustomRuleGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<UpdateCustomRuleGroupRequest>;
-
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type UpdateWAFRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateWAFRequestLabelsMap =
-  CreateWAFRequestLabelsMap as any as S.Schema<UpdateWAFRequestLabelsMap>;
-
 export interface UpdateWAFRequest {
   projectId: string;
   region: string;
@@ -671,8 +446,6 @@ export interface UpdateWAFRequest {
   /** Name of the managed rule set configuration for that WAF. */
   managedRuleSetName?: string;
 }
-const UpdateWAFRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<UpdateWAFRequest>;
-
 export type CreateCustomRuleGroupError = BadRequest | Forbidden | StackitOpError;
 /** Create a CRG configuration Creates a structured rule configuration using the abstract CRG. It can be referenced by any number of WAF configurations in the same project. */
 export const createCustomRuleGroup: API.OperationMethod<
@@ -681,8 +454,8 @@ export const createCustomRuleGroup: API.OperationMethod<
   CreateCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomRuleGroupRequest,
-  output: GetCustomRuleGroupResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateCustomRuleGroupRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -696,8 +469,8 @@ export const createManagedRuleSet: API.OperationMethod<
   CreateManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateManagedRuleSetRequest,
-  output: GetManagedRuleSetResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateManagedRuleSetRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -711,8 +484,8 @@ export const createWAF: API.OperationMethod<
   CreateWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWAFRequest,
-  output: GetWAFResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateWAFRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetWAFResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -726,8 +499,8 @@ export const deleteCustomRuleGroup: API.OperationMethod<
   DeleteCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomRuleGroupRequest,
-  output: DeleteCustomRuleGroupResponse2,
+  input: __S(26, __c3, 2) as any as S.Schema<DeleteCustomRuleGroupRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteCustomRuleGroupResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -741,8 +514,8 @@ export const deleteManagedRuleSet: API.OperationMethod<
   DeleteManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedRuleSetRequest,
-  output: DeleteManagedRuleSetResponse2,
+  input: __S(28, __c3, 4) as any as S.Schema<DeleteManagedRuleSetRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DeleteManagedRuleSetResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -756,8 +529,8 @@ export const deleteWAF: API.OperationMethod<
   DeleteWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWAFRequest,
-  output: DeleteWAFResponse2,
+  input: __S(29, __c3, 5) as any as S.Schema<DeleteWAFRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<DeleteWAFResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -771,8 +544,8 @@ export const getCustomRuleGroup: API.OperationMethod<
   GetCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomRuleGroupRequest,
-  output: GetCustomRuleGroupResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<GetCustomRuleGroupRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -786,8 +559,8 @@ export const getManagedRuleSet: API.OperationMethod<
   GetManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedRuleSetRequest,
-  output: GetManagedRuleSetResponse,
+  input: __S(32, __c4, 0) as any as S.Schema<GetManagedRuleSetRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -801,8 +574,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQuotaRequest,
-  output: GetQuotaResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<GetQuotaRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GetQuotaResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -816,8 +589,8 @@ export const getWAF: API.OperationMethod<
   GetWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWAFRequest,
-  output: GetWAFResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<GetWAFRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetWAFResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -831,8 +604,8 @@ export const listCustomRuleGroup: API.OperationMethod<
   ListCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomRuleGroupRequest,
-  output: ListCustomRuleGroupResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<ListCustomRuleGroupRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ListCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -846,8 +619,8 @@ export const listManagedRuleSets: API.OperationMethod<
   ListManagedRuleSetsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedRuleSetsRequest,
-  output: ListManagedRuleSetResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<ListManagedRuleSetsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ListManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -861,8 +634,8 @@ export const listWAF: API.OperationMethod<
   ListWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWAFRequest,
-  output: ListWAFResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<ListWAFRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<ListWAFResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -876,8 +649,8 @@ export const patchManagedRuleSet: API.OperationMethod<
   PatchManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchManagedRuleSetRequest,
-  output: GetManagedRuleSetResponse,
+  input: __S(52, __c6, 4) as any as S.Schema<PatchManagedRuleSetRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -891,8 +664,8 @@ export const updateCustomRuleGroup: API.OperationMethod<
   UpdateCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomRuleGroupRequest,
-  output: GetCustomRuleGroupResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<UpdateCustomRuleGroupRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -906,8 +679,8 @@ export const updateWAF: API.OperationMethod<
   UpdateWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWAFRequest,
-  output: GetWAFResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<UpdateWAFRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetWAFResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -919,7 +692,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: Action,
+          action: S.String,
           log: S.optional(S.Boolean),
           logMsg: S.optional(S.String),
         }),
@@ -927,39 +700,39 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: Operator,
+          type: S.String,
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConditionOperator" });
     case 2:
-      return S.Array(Transformation);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operator: ConditionOperator,
-          transformations: S.optional(ConditionTransformationsList),
-          variable: ConditionVariable,
+          operator: __S(1, __c0, 1),
+          transformations: S.optional(__S(2, __c0, 2)),
+          variable: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "Condition" });
     case 4:
-      return S.Array(Condition);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          behavior: Behavior,
-          conditions: CreateCustomRuleConditionsList,
+          behavior: __S(0, __c0, 0),
+          conditions: __S(4, __c0, 4),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateCustomRule" });
     case 6:
-      return S.Array(CreateCustomRule);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String,
-          rules: CreateCustomRuleGroupRequestRulesList,
+          rules: __S(6, __c0, 6),
         }).pipe(
           T.Http({
             method: "POST",
@@ -978,38 +751,38 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: Action,
+          action: S.String,
           log: S.Boolean,
           logMsg: S.optional(S.String),
-          severity: Severity,
+          severity: S.String,
         }),
       ).annotate({ identifier: "GetBehavior" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          behavior: GetBehavior,
-          conditions: GetCustomRuleConditionsList,
+          behavior: __S(8, __c1, 0),
+          conditions: __S(4, __c0, 4),
           description: S.optional(S.String),
           id: S.Number,
         }),
       ).annotate({ identifier: "GetCustomRule" });
     case 2:
-      return S.Array(GetCustomRule);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          items: S.optional(CRGUsageItemsList),
+          items: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "CRGUsage" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          rules: GetCustomRuleGroupResponseRulesList,
-          usage: S.optional(CRGUsage),
+          rules: __S(10, __c1, 2),
+          usage: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GetCustomRuleGroupResponse",
@@ -1020,7 +793,7 @@ function __c1(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String,
-          type: Type,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1036,7 +809,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          mode: Mode,
+          mode: S.String,
           severity: S.String,
         }),
       ).annotate({ identifier: "MRSRule" });
@@ -1045,24 +818,24 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, MRSRule);
+      return S.Record(S.String, __S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
           groupName: S.String,
-          rules: S.optional(MRSRuleGroupRulesMap),
+          rules: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "MRSRuleGroup" });
     case 2:
-      return S.Record(S.String, MRSRuleGroup);
+      return S.Record(S.String, __S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(GetManagedRuleSetResponseGroupsMap),
+          groups: S.optional(__S(18, __c2, 2)),
           name: S.String,
-          type: Type,
-          usage: S.optional(MRSUsage),
+          type: S.String,
+          usage: S.optional(__S(12, __c1, 4)),
           version: S.String,
         }),
       ).annotate({
@@ -1076,7 +849,7 @@ function __c2(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           customRuleGroupName: S.optional(S.String),
-          labels: S.optional(CreateWAFRequestLabelsMap),
+          labels: S.optional(__S(20, __c2, 4)),
           managedRuleSetName: S.optional(S.String),
           name: S.String,
         }).pipe(
@@ -1091,12 +864,12 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          listenerNames: S.optional(WAFUsageItemListenerNamesList),
+          listenerNames: S.optional(__S(11, __c1, 3)),
           loadBalancerName: S.String,
         }),
       ).annotate({ identifier: "WAFUsageItem" });
     case 7:
-      return S.Array(WAFUsageItem);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1105,17 +878,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          items: S.optional(WAFUsageItemsList),
+          items: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({ identifier: "WAFUsage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           customRuleGroupName: S.optional(S.String),
-          labels: S.optional(GetWAFResponseLabelsMap),
+          labels: S.optional(__S(20, __c2, 4)),
           managedRuleSetName: S.optional(S.String),
           name: S.String,
-          usage: S.optional(WAFUsage),
+          usage: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "GetWAFResponse" });
     case 2:
@@ -1235,16 +1008,16 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customRuleGroup: CRGConfigQuota,
-          managedRuleSet: MRSConfigQuota,
-          webApplicationFirewall: WAFConfigQuota,
+          customRuleGroup: __S(34, __c4, 2),
+          managedRuleSet: __S(34, __c4, 2),
+          webApplicationFirewall: __S(34, __c4, 2),
         }),
       ).annotate({ identifier: "Quotas" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
-          quotas: Quotas,
+          quotas: __S(35, __c4, 3),
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQuotaResponse" });
@@ -1282,7 +1055,7 @@ function __c4(j: number): any {
         identifier: "ListCustomRuleGroupRequest",
       });
     case 7:
-      return S.Array(GetCustomRuleGroupResponse);
+      return S.Array(__S(13, __c1, 5));
   }
 }
 function __c5(j: number): any {
@@ -1290,7 +1063,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListCustomRuleGroupResponseItemsList),
+          items: S.optional(__S(39, __c4, 7)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({
@@ -1318,19 +1091,19 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: Type,
-          usage: S.optional(MRSUsage),
+          type: S.String,
+          usage: S.optional(__S(12, __c1, 4)),
           version: S.String,
         }),
       ).annotate({
         identifier: "GetLimitedManagedRuleSetResponse",
       });
     case 3:
-      return S.Array(GetLimitedManagedRuleSetResponse);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListManagedRuleSetResponseItemsList),
+          items: S.optional(__S(43, __c5, 3)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({
@@ -1353,11 +1126,11 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListWAFRequest" });
     case 6:
-      return S.Array(GetWAFResponse);
+      return S.Array(__S(25, __c3, 1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListWAFResponseItemsList),
+          items: S.optional(__S(46, __c5, 6)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWAFResponse" });
@@ -1368,26 +1141,26 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(Mode),
+          mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchMRSRule" });
     case 1:
-      return S.Record(S.String, PatchMRSRule);
+      return S.Record(S.String, __S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: PatchMRSRuleGroupRulesMap,
+          rules: __S(49, __c6, 1),
         }),
       ).annotate({ identifier: "PatchMRSRuleGroup" });
     case 3:
-      return S.Record(S.String, PatchMRSRuleGroup);
+      return S.Record(S.String, __S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          groups: PatchManagedRuleSetRequestGroupsMap,
+          groups: __S(51, __c6, 3),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1405,7 +1178,7 @@ function __c6(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          rules: UpdateCustomRuleGroupRequestRulesList,
+          rules: __S(6, __c0, 6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1424,7 +1197,7 @@ function __c6(j: number): any {
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           customRuleGroupName: S.optional(S.String),
-          labels: S.optional(UpdateWAFRequestLabelsMap),
+          labels: S.optional(__S(20, __c2, 4)),
           managedRuleSetName: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1436,4 +1209,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "UpdateWAFRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

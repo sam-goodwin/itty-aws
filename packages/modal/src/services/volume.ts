@@ -6,6 +6,8 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -15,56 +17,38 @@ export interface CommitVolumeRequest {
   /** Set by the runtime when committing a volume mounted in a sandbox sidecar container (used for runtime-driven commit-on-exit). Unset targets the task's main container. */
   containerId?: string;
 }
-const CommitVolumeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CommitVolumeRequest>;
-
 export interface CommitVolumeResponse {
   skipReload?: boolean;
 }
-const CommitVolumeResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CommitVolumeResponse>;
-
 export interface DeleteVolumeRequest {
   volumeId?: string;
   environmentName?: string;
 }
-const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteVolumeRequest>;
-
 export interface DeleteVolumeResponse {}
-const DeleteVolumeResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteVolumeResponse>;
-
 export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
-const ListPagination = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListPagination>;
-
 export interface ListVolumeRequest {
   environmentName?: string;
   pagination?: ListPagination;
 }
-const ListVolumeRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListVolumeRequest>;
-
 /** HTTP/2 tunnel */
 export type VolumeFsVersion =
   | "VOLUME_FS_VERSION_UNSPECIFIED"
   | "VOLUME_FS_VERSION_V1"
   | "VOLUME_FS_VERSION_V2";
-const VolumeFsVersion = S.String;
-
 export interface CreationInfo {
   /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
   createdAt?: number;
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-const CreationInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreationInfo>;
-
 export interface VolumeMetadata {
   version?: VolumeFsVersion;
   name?: string;
   creationInfo?: CreationInfo;
 }
-const VolumeMetadata = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<VolumeMetadata>;
-
 export interface VolumeListItem {
   label?: string;
   /** app name of object entity app */
@@ -73,79 +57,44 @@ export interface VolumeListItem {
   /** Superseded by metadata, used by clients up to 1.1.2 */
   metadata?: VolumeMetadata;
 }
-const VolumeListItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<VolumeListItem>;
-
 export type VolumeListItemList = Array<VolumeListItem>;
-const VolumeListItemList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<VolumeListItemList>;
-
 export interface ListVolumeResponse {
   items?: VolumeListItemList;
   environmentName?: string;
 }
-const ListVolumeResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListVolumeResponse>;
-
 export interface RenameVolumeRequest {
   volumeId?: string;
   name?: string;
 }
-const RenameVolumeRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RenameVolumeRequest>;
-
 export interface RenameVolumeResponse {}
-const RenameVolumeResponse = DeleteVolumeResponse as any as S.Schema<RenameVolumeResponse>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
-
 export interface VolumeCopyFilesRequest {
   volumeId?: string;
   srcPaths?: StringList;
   dstPath?: string;
   recursive?: boolean;
 }
-const VolumeCopyFilesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<VolumeCopyFilesRequest>;
-
 export interface VolumeCopyFilesResponse {}
-const VolumeCopyFilesResponse = DeleteVolumeResponse as any as S.Schema<VolumeCopyFilesResponse>;
-
 export interface VolumeCopyFiles2Request {
   volumeId?: string;
   srcPaths?: StringList;
   dstPath?: string;
   recursive?: boolean;
 }
-const VolumeCopyFiles2Request = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<VolumeCopyFiles2Request>;
-
 export interface VolumeCopyFiles2Response {}
-const VolumeCopyFiles2Response = DeleteVolumeResponse as any as S.Schema<VolumeCopyFiles2Response>;
-
 export interface VolumeGetByIdRequest {
   volumeId?: string;
 }
-const VolumeGetByIdRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<VolumeGetByIdRequest>;
-
 export interface VolumeGetByIdResponse {
   volumeId?: string;
   metadata?: VolumeMetadata;
 }
-const VolumeGetByIdResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<VolumeGetByIdResponse>;
-
 export interface VolumeGetFileRequest {
   volumeId?: string;
   path?: string;
   start?: string;
   len?: string;
 }
-const VolumeGetFileRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<VolumeGetFileRequest>;
-
 export interface VolumeGetFileResponse {
   data?: string;
   dataBlobId?: string;
@@ -155,11 +104,6 @@ export interface VolumeGetFileResponse {
   /** file position of first byte returned */
   len?: string;
 }
-const VolumeGetFileResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<VolumeGetFileResponse>;
-
 export interface VolumeGetFile2Request {
   volumeId?: string;
   path?: string;
@@ -168,11 +112,6 @@ export interface VolumeGetFile2Request {
   /** 0 is interpreted as 'read to end' The client extends each block body it downloads with zero bytes up to the block's expected length, so responses may omit trailing zero bytes. */
   clientPadsBlocks?: boolean;
 }
-const VolumeGetFile2Request = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<VolumeGetFile2Request>;
-
 export interface VolumeGetFile2Response {
   getUrls?: StringList;
   size?: string;
@@ -181,11 +120,6 @@ export interface VolumeGetFile2Response {
   /** file position of first byte returned */
   len?: string;
 }
-const VolumeGetFile2Response = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<VolumeGetFile2Response>;
-
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
   | "OBJECT_CREATION_TYPE_CREATE_IF_MISSING"
@@ -193,16 +127,10 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-const ObjectCreationType = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<StringMap>;
-
 export interface VolumeCreateOptions {
   experimentalOptions?: StringMap;
 }
-const VolumeCreateOptions = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<VolumeCreateOptions>;
-
 export interface VolumeGetOrCreateRequest {
   deploymentName?: string;
   /** removed namespace */
@@ -213,33 +141,16 @@ export interface VolumeGetOrCreateRequest {
   version?: VolumeFsVersion | (string & {});
   createOptions?: VolumeCreateOptions;
 }
-const VolumeGetOrCreateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<VolumeGetOrCreateRequest>;
-
 export interface VolumeGetOrCreateResponse {
   volumeId?: string;
   version?: VolumeFsVersion;
   /** Not used directly; version is part of the metadata */
   metadata?: VolumeMetadata;
 }
-const VolumeGetOrCreateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<VolumeGetOrCreateResponse>;
-
 export interface VolumeHeartbeatRequest {
   volumeId?: string;
 }
-const VolumeHeartbeatRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<VolumeHeartbeatRequest>;
-
 export interface VolumeHeartbeatResponse {}
-const VolumeHeartbeatResponse = DeleteVolumeResponse as any as S.Schema<VolumeHeartbeatResponse>;
-
 export interface MountFile {
   filename?: string;
   sha256Hex?: string;
@@ -248,11 +159,7 @@ export interface MountFile {
   /** Size of the file in bytes -- ignored in MountBuild(). */
   mode?: number;
 }
-const MountFile = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MountFile>;
-
 export type MountFileList = Array<MountFile>;
-const MountFileList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<MountFileList>;
-
 export interface VolumePutFilesRequest {
   volumeId?: string;
   /** TODO(staffan): This is obviously unfortunately named, but provides what we need - consider renaming. */
@@ -260,31 +167,14 @@ export interface VolumePutFilesRequest {
   /** If set to true, prevent overwriting existing files. (Note that we don't allow overwriting existing directories with uploaded files regardless.) */
   disallowOverwriteExistingFiles?: boolean;
 }
-const VolumePutFilesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<VolumePutFilesRequest>;
-
 export interface VolumePutFilesResponse {}
-const VolumePutFilesResponse = DeleteVolumeResponse as any as S.Schema<VolumePutFilesResponse>;
-
 export interface VolumePutFiles2RequestBlock {
   /** The SHA256 digest of the contents of this block, in raw (ie. 32 bytes) form for compactness. */
   contentsSha256?: string;
   /** From a previous call to `VolumePutFiles2`, we might have gotten a response indicating that this block was missing. For such a block, this field contains the raw bytes of the body that was returned from the HTTP PUT request when the client made a request for the `put_url` returned in the previous `VolumePutFiles2Response`. */
   putResponse?: string;
 }
-const VolumePutFiles2RequestBlock = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<VolumePutFiles2RequestBlock>;
-
 export type VolumePutFiles2RequestBlockList = Array<VolumePutFiles2RequestBlock>;
-const VolumePutFiles2RequestBlockList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<VolumePutFiles2RequestBlockList>;
-
 export interface VolumePutFiles2RequestFile {
   /** Destination path of the file to be uploaded, including any parent dirs etc.; for example "foo/bar/baz.txt" */
   path?: string;
@@ -295,17 +185,7 @@ export interface VolumePutFiles2RequestFile {
   /** Unix file permission bits `st_mode`. */
   mode?: number;
 }
-const VolumePutFiles2RequestFile = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<VolumePutFiles2RequestFile>;
-
 export type VolumePutFiles2RequestFileList = Array<VolumePutFiles2RequestFile>;
-const VolumePutFiles2RequestFileList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<VolumePutFiles2RequestFileList>;
-
 export interface VolumePutFiles2Request {
   /** The ID of the volume to put/upload files into. */
   volumeId?: string;
@@ -314,11 +194,6 @@ export interface VolumePutFiles2Request {
   /** If set to true, prevent overwriting existing files. (Note that we don't allow overwriting existing directories with uploaded files regardless.) */
   disallowOverwriteExistingFiles?: boolean;
 }
-const VolumePutFiles2Request = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<VolumePutFiles2Request>;
-
 export interface VolumePutFiles2ResponseMissingBlock {
   /** Index of the file in the original `files` field of the request. */
   fileIndex?: string;
@@ -327,62 +202,28 @@ export interface VolumePutFiles2ResponseMissingBlock {
   /** Make a HTTP PUT request to this endpoint with the blocks' contents as the body. */
   putUrl?: string;
 }
-const VolumePutFiles2ResponseMissingBlock = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<VolumePutFiles2ResponseMissingBlock>;
-
 export type VolumePutFiles2ResponseMissingBlockList = Array<VolumePutFiles2ResponseMissingBlock>;
-const VolumePutFiles2ResponseMissingBlockList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<VolumePutFiles2ResponseMissingBlockList>;
-
 export interface VolumePutFiles2Response {
   /** Blocks that are currently missing in the volume, because the file did not exist, or because the block checksum from `blocks_sha256` in the request did not match the current contents of the file. Values will be returned sorted by `(file_index, block_index)`. If this field is empty, it means that the files were uploaded successfully and/or that the request was an idempotent no-op. */
   missingBlocks?: VolumePutFiles2ResponseMissingBlockList;
 }
-const VolumePutFiles2Response = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<VolumePutFiles2Response>;
-
 export interface VolumeReloadRequest {
   /** NOTE(staffan): Mounting a volume in multiple locations is not supported, so volume_id alone uniquely identifies a volume mount. */
   volumeId?: string;
 }
-const VolumeReloadRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<VolumeReloadRequest>;
-
 export interface VolumeReloadResponse {}
-const VolumeReloadResponse = DeleteVolumeResponse as any as S.Schema<VolumeReloadResponse>;
-
 export interface VolumeRemoveFileRequest {
   volumeId?: string;
   path?: string;
   recursive?: boolean;
 }
-const VolumeRemoveFileRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<VolumeRemoveFileRequest>;
-
 export interface VolumeRemoveFileResponse {}
-const VolumeRemoveFileResponse = DeleteVolumeResponse as any as S.Schema<VolumeRemoveFileResponse>;
-
 export interface VolumeRemoveFile2Request {
   volumeId?: string;
   path?: string;
   recursive?: boolean;
 }
-const VolumeRemoveFile2Request = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<VolumeRemoveFile2Request>;
-
 export interface VolumeRemoveFile2Response {}
-const VolumeRemoveFile2Response =
-  DeleteVolumeResponse as any as S.Schema<VolumeRemoveFile2Response>;
-
 export type CommitVolumeError = ModalOpError;
 /** Volumes */
 export const commitVolume: API.OperationMethod<
@@ -391,8 +232,8 @@ export const commitVolume: API.OperationMethod<
   CommitVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitVolumeRequest,
-  output: CommitVolumeResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CommitVolumeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CommitVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -405,8 +246,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVolumeRequest,
-  output: DeleteVolumeResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -419,8 +260,8 @@ export const listVolume: API.OperationMethod<
   ListVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumeRequest,
-  output: ListVolumeResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<ListVolumeRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -433,8 +274,8 @@ export const renameVolume: API.OperationMethod<
   RenameVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenameVolumeRequest,
-  output: RenameVolumeResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<RenameVolumeRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<RenameVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -447,8 +288,8 @@ export const volumeCopyFiles: API.OperationMethod<
   VolumeCopyFilesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeCopyFilesRequest,
-  output: VolumeCopyFilesResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<VolumeCopyFilesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<VolumeCopyFilesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -461,8 +302,8 @@ export const volumeCopyFiles2: API.OperationMethod<
   VolumeCopyFiles2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeCopyFiles2Request,
-  output: VolumeCopyFiles2Response,
+  input: __S(14, __c1, 6) as any as S.Schema<VolumeCopyFiles2Request>,
+  output: __S(3, __c0, 3) as any as S.Schema<VolumeCopyFiles2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -475,8 +316,8 @@ export const volumeGetById: API.OperationMethod<
   VolumeGetByIdError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeGetByIdRequest,
-  output: VolumeGetByIdResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<VolumeGetByIdRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<VolumeGetByIdResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -489,8 +330,8 @@ export const volumeGetFile: API.OperationMethod<
   VolumeGetFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeGetFileRequest,
-  output: VolumeGetFileResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<VolumeGetFileRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<VolumeGetFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -503,8 +344,8 @@ export const volumeGetFile2: API.OperationMethod<
   VolumeGetFile2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeGetFile2Request,
-  output: VolumeGetFile2Response,
+  input: __S(19, __c2, 3) as any as S.Schema<VolumeGetFile2Request>,
+  output: __S(20, __c2, 4) as any as S.Schema<VolumeGetFile2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -517,8 +358,8 @@ export const volumeGetOrCreate: API.OperationMethod<
   VolumeGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeGetOrCreateRequest,
-  output: VolumeGetOrCreateResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<VolumeGetOrCreateRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<VolumeGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -531,8 +372,8 @@ export const volumeHeartbeat: API.OperationMethod<
   VolumeHeartbeatError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeHeartbeatRequest,
-  output: VolumeHeartbeatResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<VolumeHeartbeatRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<VolumeHeartbeatResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -545,8 +386,8 @@ export const volumePutFiles: API.OperationMethod<
   VolumePutFilesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumePutFilesRequest,
-  output: VolumePutFilesResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<VolumePutFilesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<VolumePutFilesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -559,8 +400,8 @@ export const volumePutFiles2: API.OperationMethod<
   VolumePutFiles2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumePutFiles2Request,
-  output: VolumePutFiles2Response,
+  input: __S(33, __c4, 1) as any as S.Schema<VolumePutFiles2Request>,
+  output: __S(36, __c4, 4) as any as S.Schema<VolumePutFiles2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -573,8 +414,8 @@ export const volumeReload: API.OperationMethod<
   VolumeReloadError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeReloadRequest,
-  output: VolumeReloadResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<VolumeReloadRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<VolumeReloadResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -587,8 +428,8 @@ export const volumeRemoveFile: API.OperationMethod<
   VolumeRemoveFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeRemoveFileRequest,
-  output: VolumeRemoveFileResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<VolumeRemoveFileRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<VolumeRemoveFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -601,8 +442,8 @@ export const volumeRemoveFile2: API.OperationMethod<
   VolumeRemoveFile2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeRemoveFile2Request,
-  output: VolumeRemoveFile2Response,
+  input: __S(39, __c4, 7) as any as S.Schema<VolumeRemoveFile2Request>,
+  output: __S(3, __c0, 3) as any as S.Schema<VolumeRemoveFile2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -650,7 +491,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environmentName: S.optional(S.String),
-          pagination: S.optional(ListPagination),
+          pagination: S.optional(__S(4, __c0, 4)),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeList", code: 200 })),
       ).annotate({ identifier: "ListVolumeRequest" });
     case 6:
@@ -663,9 +504,9 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(VolumeFsVersion),
+          version: S.optional(S.String),
           name: S.optional(S.String),
-          creationInfo: S.optional(CreationInfo),
+          creationInfo: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "VolumeMetadata" });
   }
@@ -678,15 +519,15 @@ function __c1(j: number): any {
           label: S.optional(S.String),
           volumeId: S.optional(S.String),
           createdAt: S.optional(S.Number),
-          metadata: S.optional(VolumeMetadata),
+          metadata: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "VolumeListItem" });
     case 1:
-      return S.Array(VolumeListItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(VolumeListItemList),
+          items: S.optional(__S(9, __c1, 1)),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVolumeResponse" });
@@ -705,7 +546,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          srcPaths: S.optional(StringList),
+          srcPaths: S.optional(__S(12, __c1, 4)),
           dstPath: S.optional(S.String),
           recursive: S.optional(S.Boolean),
         }).pipe(
@@ -716,7 +557,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          srcPaths: S.optional(StringList),
+          srcPaths: S.optional(__S(12, __c1, 4)),
           dstPath: S.optional(S.String),
           recursive: S.optional(S.Boolean),
         }).pipe(
@@ -739,7 +580,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          metadata: S.optional(VolumeMetadata),
+          metadata: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "VolumeGetByIdResponse" });
     case 1:
@@ -778,7 +619,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          getUrls: S.optional(StringList),
+          getUrls: S.optional(__S(12, __c1, 4)),
           size: S.optional(S.String),
           start: S.optional(S.String),
           len: S.optional(S.String),
@@ -789,7 +630,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          experimentalOptions: S.optional(StringMap),
+          experimentalOptions: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "VolumeCreateOptions" });
     case 7:
@@ -797,10 +638,10 @@ function __c2(j: number): any {
         S.Struct({
           deploymentName: S.optional(S.String),
           environmentName: S.optional(S.String),
-          objectCreationType: S.optional(ObjectCreationType),
+          objectCreationType: S.optional(S.String),
           appId: S.optional(S.String),
-          version: S.optional(VolumeFsVersion),
-          createOptions: S.optional(VolumeCreateOptions),
+          version: S.optional(S.String),
+          createOptions: S.optional(__S(22, __c2, 6)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetOrCreate", code: 200 }),
         ),
@@ -813,8 +654,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          version: S.optional(VolumeFsVersion),
-          metadata: S.optional(VolumeMetadata),
+          version: S.optional(S.String),
+          metadata: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "VolumeGetOrCreateResponse",
@@ -837,12 +678,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "MountFile" });
     case 3:
-      return S.Array(MountFile);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          files: S.optional(MountFileList),
+          files: S.optional(__S(27, __c3, 3)),
           disallowOverwriteExistingFiles: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumePutFiles", code: 200 }),
@@ -858,13 +699,13 @@ function __c3(j: number): any {
         identifier: "VolumePutFiles2RequestBlock",
       });
     case 6:
-      return S.Array(VolumePutFiles2RequestBlock);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           size: S.optional(S.String),
-          blocks: S.optional(VolumePutFiles2RequestBlockList),
+          blocks: S.optional(__S(30, __c3, 6)),
           mode: S.optional(S.Number),
         }),
       ).annotate({
@@ -875,12 +716,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VolumePutFiles2RequestFile);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          files: S.optional(VolumePutFiles2RequestFileList),
+          files: S.optional(__S(32, __c4, 0)),
           disallowOverwriteExistingFiles: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumePutFiles2", code: 200 }),
@@ -897,11 +738,11 @@ function __c4(j: number): any {
         identifier: "VolumePutFiles2ResponseMissingBlock",
       });
     case 3:
-      return S.Array(VolumePutFiles2ResponseMissingBlock);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          missingBlocks: S.optional(VolumePutFiles2ResponseMissingBlockList),
+          missingBlocks: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "VolumePutFiles2Response" });
     case 5:
@@ -933,4 +774,9 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "VolumeRemoveFile2Request" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

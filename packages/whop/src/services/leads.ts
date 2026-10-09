@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -48,11 +50,6 @@ export class UnprocessableEntity
 
 /** A JSON object of custom metadata to attach to the lead for tracking purposes. */
 export type CreateLeadRequestMetadataMap = { [key: string]: unknown | undefined };
-const CreateLeadRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateLeadRequestMetadataMap>;
-
 export interface CreateLeadRequest {
   /** The unique identifier of the company to create the lead for, starting with 'biz_'. */
   account_id: string;
@@ -65,19 +62,13 @@ export interface CreateLeadRequest {
   /** The unique identifier of the user to record as the lead. If authenticated as a user, that user is used automatically. */
   user_id?: string | null;
 }
-const CreateLeadRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateLeadRequest>;
-
 /** The company member record if this lead has converted into a paying customer. Null if the lead has not converted. */
 export interface LeadMember {
   /** The unique identifier for the company member. */
   id: string;
 }
-const LeadMember = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LeadMember>;
-
 /** Custom key-value pairs attached to this lead. Null if no metadata was provided. */
 export type LeadMetadataMap = { [key: string]: unknown | undefined };
-const LeadMetadataMap = CreateLeadRequestMetadataMap as any as S.Schema<LeadMetadataMap>;
-
 /** The product the lead expressed interest in. Null if the lead is not associated with a specific product. */
 export interface LeadProduct {
   /** The unique identifier for the product. */
@@ -85,8 +76,6 @@ export interface LeadProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-const LeadProduct = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LeadProduct>;
-
 /** The user account associated with this lead. */
 export interface LeadUser {
   /** The user's email address. Requires the member:email:read permission to access. Null if not authorized. */
@@ -98,8 +87,6 @@ export interface LeadUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const LeadUser = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LeadUser>;
-
 /** A prospective customer who has expressed interest in a company or product but has not yet purchased. */
 export interface Lead {
   /** The datetime the lead was created. */
@@ -119,21 +106,12 @@ export interface Lead {
   /** The user account associated with this lead. */
   user: LeadUser;
 }
-const Lead = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Lead>;
-
 export interface GetLeadRequest {
   /** The unique identifier of the lead to retrieve. */
   id: string;
 }
-const GetLeadRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetLeadRequest>;
-
 /** Filter leads to only those associated with these specific product identifiers. */
 export type ListLeadRequestProductIdsList = Array<string>;
-const ListLeadRequestProductIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListLeadRequestProductIdsList>;
-
 export interface ListLeadRequest {
   after?: string;
   before?: string;
@@ -144,8 +122,6 @@ export interface ListLeadRequest {
   product_ids?: ListLeadRequestProductIdsList;
   account_id: string;
 }
-const ListLeadRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListLeadRequest>;
-
 /** The company member record if this lead has converted into a paying customer. Null if the lead has not converted. */
 export type LeadListItemMember = LeadMember;
 /** Custom key-value pairs attached to this lead. Null if no metadata was provided. */
@@ -173,15 +149,8 @@ export interface LeadListItem {
   /** The user account associated with this lead. */
   user: LeadUser;
 }
-const LeadListItem = Lead as any as S.Schema<LeadListItem>;
-
 /** A list of nodes. */
 export type ListLeadResponseDataList = Array<LeadListItem>;
-const ListLeadResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListLeadResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -193,21 +162,14 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PageInfo>;
-
 export interface ListLeadResponse {
   /** A list of nodes. */
   data: ListLeadResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListLeadResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListLeadResponse>;
-
 /** A JSON object of custom metadata to set on the lead, replacing any existing metadata. */
 export type UpdateLeadRequestMetadataMap = { [key: string]: unknown | undefined };
-const UpdateLeadRequestMetadataMap =
-  CreateLeadRequestMetadataMap as any as S.Schema<UpdateLeadRequestMetadataMap>;
-
 export interface UpdateLeadRequest {
   /** The unique identifier of the lead to update, starting with 'lead_'. */
   id: string;
@@ -216,8 +178,6 @@ export interface UpdateLeadRequest {
   /** The updated referral URL for the lead, such as 'https://example.com/landing'. */
   referrer?: string | null;
 }
-const UpdateLeadRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UpdateLeadRequest>;
-
 export type CreateLeadError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
 /** Create lead [Legacy API -- https://docs.whop.com/api-reference] Record a new lead for a company, capturing a potential customer's interest in a specific product. Required permissions: - `lead:manage` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
 export const createLead: API.OperationMethod<
@@ -226,8 +186,8 @@ export const createLead: API.OperationMethod<
   CreateLeadError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLeadRequest,
-  output: Lead,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateLeadRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Lead>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -237,8 +197,8 @@ export type GetLeadError = BadRequest | Forbidden | NotFound | UnprocessableEnti
 /** Retrieve lead [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing lead. Required permissions: - `lead:basic:read` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
 export const getLead: API.OperationMethod<GetLeadRequest, Lead, GetLeadError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetLeadRequest,
-    output: Lead,
+    input: __S(6, __c0, 6) as any as S.Schema<GetLeadRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<Lead>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -254,8 +214,8 @@ export const listLead: API.PaginatedOperationMethod<
   LeadListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLeadRequest,
-    output: ListLeadResponse,
+    input: __S(8, __c1, 0) as any as S.Schema<ListLeadRequest>,
+    output: __S(11, __c1, 3) as any as S.Schema<ListLeadResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -279,8 +239,8 @@ export const updateLead: API.OperationMethod<
   UpdateLeadError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLeadRequest,
-  output: Lead,
+  input: __S(12, __c1, 4) as any as S.Schema<UpdateLeadRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Lead>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -295,7 +255,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          metadata: S.optional(S.NullOr(CreateLeadRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
           product_id: S.optional(S.NullOr(S.String)),
           referrer: S.optional(S.NullOr(S.String)),
           user_id: S.optional(S.NullOr(S.String)),
@@ -328,12 +288,12 @@ function __c0(j: number): any {
         S.Struct({
           created_at: S.String,
           id: S.String,
-          member: S.NullOr(LeadMember),
-          metadata: S.NullOr(LeadMetadataMap),
-          product: S.NullOr(LeadProduct),
+          member: S.NullOr(__S(2, __c0, 2)),
+          metadata: S.NullOr(__S(0, __c0, 0)),
+          product: S.NullOr(__S(3, __c0, 3)),
           referrer: S.NullOr(S.String),
           updated_at: S.String,
-          user: LeadUser,
+          user: __S(4, __c0, 4),
         }),
       ).annotate({ identifier: "Lead" });
     case 6:
@@ -357,12 +317,12 @@ function __c1(j: number): any {
           last: S.optional(S.Number.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
-          product_ids: S.optional(ListLeadRequestProductIdsList.pipe(T.Query())),
+          product_ids: S.optional(__S(7, __c0, 7).pipe(T.Query())),
           account_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/leads", code: 200 })),
       ).annotate({ identifier: "ListLeadRequest" });
     case 1:
-      return S.Array(LeadListItem);
+      return S.Array(__S(5, __c0, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -375,17 +335,22 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: ListLeadResponseDataList,
-          page_info: PageInfo,
+          data: __S(9, __c1, 1),
+          page_info: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ListLeadResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(S.NullOr(UpdateLeadRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
           referrer: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/leads/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateLeadRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

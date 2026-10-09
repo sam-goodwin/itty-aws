@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -80,15 +82,11 @@ export class WorkspaceEventsScopeInsufficient
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** The endpoint where the subscription delivers events. */
 export interface NotificationEndpoint {
   /** Immutable. The Pub/Sub topic that receives events for the subscription. Format: `projects/{project}/topics/{topic}` You must create the topic in the same Google Cloud project where you create this subscription. Note: The Google Workspace Events API uses [ordering keys](https://cloud.google.com/pubsub/docs/ordering) for the benefit of sequential events. If the Cloud Pub/Sub topic has a [message storage policy](https://cloud.google.com/pubsub/docs/resource-location-restriction#exceptions) configured to exclude the nearest Google Cloud region, publishing events with ordering keys will fail. When the topic receives events, the events are encoded as Pub/Sub messages. For details, see the [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md). */
   pubsubTopic?: string;
 }
-const NotificationEndpoint = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<NotificationEndpoint>;
-
 /** Options about what data to include in the event payload. Only supported for Google Chat and Google Drive events. */
 export interface PayloadOptions {
   /** Optional. If `include_resource` is set to `true`, the list of fields to include in the event payload. Separate fields with a comma. For example, to include a Google Chat message's sender and create time, enter `message.sender,message.createTime`. If omitted, the payload includes all fields for the resource. If you specify a field that doesn't exist for the resource, the system ignores the field. */
@@ -96,8 +94,6 @@ export interface PayloadOptions {
   /** Optional. Whether the event payload includes data about the resource that changed. For example, for an event where a Google Chat message was created, whether the payload contains data about the [`Message`](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages) resource. If false, the event payload only includes the name of the changed resource. */
   includeResource?: boolean;
 }
-const PayloadOptions = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PayloadOptions>;
-
 export type SubscriptionSuspensionReasonEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "USER_SCOPE_REVOKED"
@@ -109,18 +105,12 @@ export type SubscriptionSuspensionReasonEnum =
   | "ENDPOINT_NOT_FOUND"
   | "ENDPOINT_RESOURCE_EXHAUSTED"
   | "OTHER";
-const SubscriptionSuspensionReasonEnum = S.String;
-
 export type SubscriptionStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED" | "DELETED";
-const SubscriptionStateEnum = S.String;
-
 /** Additional supported options for serving Drive events. */
 export interface DriveOptions {
   /** Optional. Immutable. For subscriptions to Google Drive events, whether to receive events about Drive files that are children of the target folder or shared drive. This field must be `true` for subscriptions on shared drives. * If `false`, the subscription only receives events about changes to the folder or shared drive that's specified as the `targetResource`. * If `true`, the `mimeType` field of the `file` resource must be set to `application/vnd.google-apps.folder`. For details, see [Google Drive event types](https://developers.google.com/workspace/events/guides/events-drive#event-types). */
   includeDescendants?: boolean;
 }
-const DriveOptions = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DriveOptions>;
-
 /** A subscription to receive events about a Google Workspace resource. To learn more about subscriptions, see the [Google Workspace Events API overview](https://developers.google.com/workspace/events). */
 export interface Subscription {
   /** Non-empty default. The timestamp in UTC when the subscription expires. Always displayed on output, regardless of what was used on input. */
@@ -160,25 +150,14 @@ export interface Subscription {
   /** Output only. The service account that was used to authorize the creation of the subscription. This service account must be owned by the same Google Cloud project where you created this subscription. Format: `projects/{project_id}/serviceAccounts/{service_account_id}` */
   serviceAccountAuthority?: string;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Subscription>;
-
 export interface CreateSubscriptionsRequest {
   /** Optional. If set to `true`, validates and previews the request, but doesn't create the subscription. */
   validateOnly?: boolean;
   /** Request body */
   body?: Subscription;
 }
-const CreateSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateSubscriptionsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -188,8 +167,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -203,8 +180,6 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Operation>;
-
 export interface DeleteSubscriptionsRequest {
   /** Optional. If set to `true`, validates and previews the request, but doesn't delete the subscription. */
   validateOnly?: boolean;
@@ -215,26 +190,14 @@ export interface DeleteSubscriptionsRequest {
   /** Optional. Etag of the subscription. If present, it must match with the server's etag. Otherwise, request fails with the status `ABORTED`. */
   etag?: string;
 }
-const DeleteSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteSubscriptionsRequest>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */
   name: string;
 }
-const GetSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetSubscriptionsRequest>;
-
 export interface ListSubscriptionsRequest {
   /** Optional. The maximum number of subscriptions to return. The service might return fewer than this value. If unspecified or set to `0`, up to 50 subscriptions are returned. The maximum value is 100. If you specify a value more than 100, the system only returns 100 subscriptions. */
   pageSize?: number;
@@ -243,14 +206,7 @@ export interface ListSubscriptionsRequest {
   /** Optional. A page token, received from a previous list subscriptions call. Provide this parameter to retrieve the subsequent page. When paginating, the filter value should match the call that provided the page token. Passing a different value might lead to unexpected results. */
   pageToken?: string;
 }
-const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListSubscriptionsRequest>;
-
 export type SubscriptionList = Array<Subscription>;
-const SubscriptionList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SubscriptionList>;
-
 /** The response message for SubscriptionsService.ListSubscriptions. */
 export interface ListSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -258,11 +214,6 @@ export interface ListSubscriptionsResponse {
   /** List of subscriptions. */
   subscriptions?: SubscriptionList;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListSubscriptionsResponse>;
-
 export interface PatchSubscriptionsRequest {
   /** Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}` */
   name: string;
@@ -273,29 +224,14 @@ export interface PatchSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const PatchSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<PatchSubscriptionsRequest>;
-
 /** The request message for SubscriptionsService.ReactivateSubscription. */
 export interface ReactivateSubscriptionRequest {}
-const ReactivateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ReactivateSubscriptionRequest>;
-
 export interface ReactivateSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */
   name: string;
   /** Request body */
   body?: ReactivateSubscriptionRequest;
 }
-const ReactivateSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ReactivateSubscriptionsRequest>;
-
 export type CreateSubscriptionsError =
   | NotFound
   | Forbidden
@@ -310,8 +246,8 @@ export const createSubscriptions: API.OperationMethod<
   CreateSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionsRequest,
-  output: Operation,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateSubscriptionsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -338,8 +274,8 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionsRequest,
-  output: Operation,
+  input: __S(10, __c1, 2) as any as S.Schema<DeleteSubscriptionsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -360,8 +296,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(11, __c1, 3) as any as S.Schema<GetOperationsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -379,8 +315,8 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionsRequest,
-  output: Subscription,
+  input: __S(12, __c1, 4) as any as S.Schema<GetSubscriptionsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, WorkspaceEventsScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -399,8 +335,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, WorkspaceEventsScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -421,8 +357,8 @@ export const patchSubscriptions: API.OperationMethod<
   PatchSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSubscriptionsRequest,
-  output: Operation,
+  input: __S(16, __c2, 0) as any as S.Schema<PatchSubscriptionsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -449,8 +385,8 @@ export const reactivateSubscriptions: API.OperationMethod<
   ReactivateSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReactivateSubscriptionsRequest,
-  output: Operation,
+  input: __S(18, __c2, 2) as any as S.Schema<ReactivateSubscriptionsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -491,19 +427,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
-          eventTypes: S.optional(StringList),
+          eventTypes: S.optional(__S(0, __c0, 0)),
           ttl: S.optional(S.String),
           createTime: S.optional(S.String),
-          notificationEndpoint: S.optional(NotificationEndpoint),
-          payloadOptions: S.optional(PayloadOptions),
+          notificationEndpoint: S.optional(__S(1, __c0, 1)),
+          payloadOptions: S.optional(__S(2, __c0, 2)),
           name: S.optional(S.String),
           uid: S.optional(S.String),
           userAuthority: S.optional(S.String),
-          suspensionReason: S.optional(SubscriptionSuspensionReasonEnum),
+          suspensionReason: S.optional(S.String),
           targetResource: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          state: S.optional(SubscriptionStateEnum),
-          driveOptions: S.optional(DriveOptions),
+          state: S.optional(S.String),
+          driveOptions: S.optional(__S(3, __c0, 3)),
           etag: S.optional(S.String),
           authority: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -514,7 +450,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -528,7 +464,7 @@ function __c0(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -538,17 +474,17 @@ function __c1(j: number): any {
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
+          error: S.optional(__S(8, __c1, 0)),
+          metadata: S.optional(__S(6, __c0, 6)),
           name: S.optional(S.String),
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
@@ -607,12 +543,12 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
     case 6:
-      return S.Array(Subscription);
+      return S.Array(__S(4, __c0, 4));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          subscriptions: S.optional(SubscriptionList),
+          subscriptions: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
@@ -627,7 +563,7 @@ function __c2(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -646,7 +582,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ReactivateSubscriptionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -658,4 +594,9 @@ function __c2(j: number): any {
         identifier: "ReactivateSubscriptionsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -40,78 +42,32 @@ export interface DeleteArchiveForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-const DeleteArchiveForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteArchiveForAuthenticatedUserRequest>;
-
 export interface DeleteArchiveForAuthenticatedUserResponse {}
-const DeleteArchiveForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteArchiveForAuthenticatedUserResponse>;
-
 export interface DeleteArchiveForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-const DeleteArchiveForOrgRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteArchiveForOrgRequest>;
-
 export interface DeleteArchiveForOrgResponse {}
-const DeleteArchiveForOrgResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteArchiveForOrgResponse>;
-
 export interface DownloadArchiveForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-const DownloadArchiveForOrgRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DownloadArchiveForOrgRequest>;
-
 export interface DownloadArchiveForOrgResponse {}
-const DownloadArchiveForOrgResponse =
-  DeleteArchiveForOrgResponse as any as S.Schema<DownloadArchiveForOrgResponse>;
-
 export interface GetArchiveForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-const GetArchiveForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetArchiveForAuthenticatedUserRequest>;
-
 export interface GetArchiveForAuthenticatedUserResponse {}
-const GetArchiveForAuthenticatedUserResponse =
-  DeleteArchiveForAuthenticatedUserResponse as any as S.Schema<GetArchiveForAuthenticatedUserResponse>;
-
 export type GetStatusForAuthenticatedUserRequestExcludeList = Array<string>;
-const GetStatusForAuthenticatedUserRequestExcludeList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetStatusForAuthenticatedUserRequestExcludeList>;
-
 export interface GetStatusForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
   exclude?: GetStatusForAuthenticatedUserRequestExcludeList;
 }
-const GetStatusForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetStatusForAuthenticatedUserRequest>;
-
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -137,8 +93,6 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const NullableSimpleUser = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<NullableSimpleUser>;
-
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -148,11 +102,6 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-const NullableLicenseSimple = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<NullableLicenseSimple>;
-
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -160,47 +109,24 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-const RepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<RepositoryPermissions>;
-
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList =
-  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<RepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const RepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const RepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const RepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const RepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const RepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
-
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -333,20 +259,10 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-const Repository = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Repository>;
-
 /** The repositories included in the migration. Only returned for export migrations. */
 export type MigrationRepositoriesList = Array<Repository>;
-const MigrationRepositoriesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<MigrationRepositoriesList>;
-
 /** Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`. */
 export type MigrationExcludeList = Array<string>;
-const MigrationExcludeList =
-  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<MigrationExcludeList>;
-
 /** A migration. */
 export interface Migration {
   id: number;
@@ -370,20 +286,11 @@ export interface Migration {
   /** Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`. */
   exclude?: MigrationExcludeList;
 }
-const Migration = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Migration>;
-
 /** Allowed values that can be passed to the exclude param. */
 export type GetStatusForOrgRequestExcludeItem = "repositories";
-const GetStatusForOrgRequestExcludeItem = S.String;
-
 export type GetStatusForOrgRequestExcludeList = Array<
   GetStatusForOrgRequestExcludeItem | (string & {})
 >;
-const GetStatusForOrgRequestExcludeList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetStatusForOrgRequestExcludeList>;
-
 export interface GetStatusForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -392,40 +299,17 @@ export interface GetStatusForOrgRequest {
   /** Exclude attributes from the API response to improve performance */
   exclude?: GetStatusForOrgRequestExcludeList;
 }
-const GetStatusForOrgRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetStatusForOrgRequest>;
-
 export interface ListForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListForAuthenticatedUserRequest>;
-
 export type ListForAuthenticatedUserResponseBodyList = Array<Migration>;
-const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
-
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-const ListForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListForAuthenticatedUserResponse>;
-
 /** Allowed values that can be passed to the exclude param. */
 export type ListForOrgRequestExcludeItem = "repositories";
 export type ListForOrgRequestExcludeList = Array<ListForOrgRequestExcludeItem | (string & {})>;
-const ListForOrgRequestExcludeList =
-  GetStatusForOrgRequestExcludeList as any as S.Schema<ListForOrgRequestExcludeList>;
-
 export interface ListForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -436,15 +320,8 @@ export interface ListForOrgRequest {
   /** Exclude attributes from the API response to improve performance */
   exclude?: ListForOrgRequestExcludeList;
 }
-const ListForOrgRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListForOrgRequest>;
-
 export type ListForOrgResponseBodyList = Array<Migration>;
-const ListForOrgResponseBodyList =
-  ListForAuthenticatedUserResponseBodyList as any as S.Schema<ListForOrgResponseBodyList>;
-
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-const ListForOrgResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListForOrgResponse>;
-
 export interface ListReposForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
@@ -453,19 +330,9 @@ export interface ListReposForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListReposForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListReposForAuthenticatedUserRequest>;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-const MinimalRepositoryTopicsList =
-  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<MinimalRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const MinimalRepositoryPullRequestCreationPolicy = S.String;
-
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -473,11 +340,6 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<MinimalRepositoryPermissions>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -486,8 +348,6 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CodeOfConduct>;
-
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -495,30 +355,15 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MinimalRepositoryLicense>;
-
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
-
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
-
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-const SecurityAndAnalysisCodeSecurity =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
-
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -526,67 +371,38 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-const SecurityAndAnalysisDependabotSecurityUpdates =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
-
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-const SecurityAndAnalysisSecretScanning =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
-
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-const SecurityAndAnalysisSecretScanningPushProtection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
-
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-const SecurityAndAnalysisSecretScanningNonProviderPatterns =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
-
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-const SecurityAndAnalysisSecretScanningAiDetection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypass =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
-
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
-
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -595,28 +411,13 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -631,15 +432,8 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SecurityAndAnalysis>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
-
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -736,20 +530,8 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-const MinimalRepository = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MinimalRepository>;
-
 export type ListReposForAuthenticatedUserResponseBodyList = Array<MinimalRepository>;
-const ListReposForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListReposForAuthenticatedUserResponseBodyList>;
-
 export type ListReposForAuthenticatedUserResponse = ListReposForAuthenticatedUserResponseBodyList;
-const ListReposForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListReposForAuthenticatedUserResponse>;
-
 export interface ListReposForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -760,34 +542,15 @@ export interface ListReposForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListReposForOrgRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListReposForOrgRequest>;
-
 export type ListReposForOrgResponseBodyList = Array<MinimalRepository>;
-const ListReposForOrgResponseBodyList =
-  ListReposForAuthenticatedUserResponseBodyList as any as S.Schema<ListReposForOrgResponseBodyList>;
-
 export type ListReposForOrgResponse = ListReposForOrgResponseBodyList;
-const ListReposForOrgResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListReposForOrgResponse>;
-
 /** Allowed values that can be passed to the exclude param. */
 export type StartForAuthenticatedUserRequestExcludeItem = "repositories";
 /** Exclude attributes from the API response to improve performance */
 export type StartForAuthenticatedUserRequestExcludeList = Array<
   StartForAuthenticatedUserRequestExcludeItem | (string & {})
 >;
-const StartForAuthenticatedUserRequestExcludeList =
-  GetStatusForOrgRequestExcludeList as any as S.Schema<StartForAuthenticatedUserRequestExcludeList>;
-
 export type StartForAuthenticatedUserRequestRepositoriesList = Array<string>;
-const StartForAuthenticatedUserRequestRepositoriesList =
-  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<StartForAuthenticatedUserRequestRepositoriesList>;
-
 export interface StartForAuthenticatedUserRequest {
   /** Lock the repositories being migrated at the start of the migration */
   lock_repositories?: boolean;
@@ -807,22 +570,11 @@ export interface StartForAuthenticatedUserRequest {
   exclude?: StartForAuthenticatedUserRequestExcludeList;
   repositories: StartForAuthenticatedUserRequestRepositoriesList;
 }
-const StartForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<StartForAuthenticatedUserRequest>;
-
 /** A list of arrays indicating which repositories should be migrated. */
 export type StartForOrgRequestRepositoriesList = Array<string>;
-const StartForOrgRequestRepositoriesList =
-  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<StartForOrgRequestRepositoriesList>;
-
 export type StartForOrgRequestExcludeItem = "repositories";
 /** Exclude related items from being returned in the response in order to improve performance of the request. */
 export type StartForOrgRequestExcludeList = Array<StartForOrgRequestExcludeItem | (string & {})>;
-const StartForOrgRequestExcludeList =
-  GetStatusForOrgRequestExcludeList as any as S.Schema<StartForOrgRequestExcludeList>;
-
 export interface StartForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -845,23 +597,13 @@ export interface StartForOrgRequest {
   /** Exclude related items from being returned in the response in order to improve performance of the request. */
   exclude?: StartForOrgRequestExcludeList;
 }
-const StartForOrgRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<StartForOrgRequest>;
-
 export interface UnlockRepoForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
   /** repo_name parameter */
   repo_name: string;
 }
-const UnlockRepoForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UnlockRepoForAuthenticatedUserRequest>;
-
 export interface UnlockRepoForAuthenticatedUserResponse {}
-const UnlockRepoForAuthenticatedUserResponse =
-  DeleteArchiveForAuthenticatedUserResponse as any as S.Schema<UnlockRepoForAuthenticatedUserResponse>;
-
 export interface UnlockRepoForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -870,15 +612,7 @@ export interface UnlockRepoForOrgRequest {
   /** repo_name parameter */
   repo_name: string;
 }
-const UnlockRepoForOrgRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UnlockRepoForOrgRequest>;
-
 export interface UnlockRepoForOrgResponse {}
-const UnlockRepoForOrgResponse =
-  DeleteArchiveForOrgResponse as any as S.Schema<UnlockRepoForOrgResponse>;
-
 export type DeleteArchiveForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Delete a user migration archive Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/rest/migrations/users#list-user-migrations) and [Get a user migration status](https://docs.github.com/rest/migrations/users#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted. */
 export const deleteArchiveForAuthenticatedUser: API.OperationMethod<
@@ -887,8 +621,8 @@ export const deleteArchiveForAuthenticatedUser: API.OperationMethod<
   DeleteArchiveForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteArchiveForAuthenticatedUserRequest,
-  output: DeleteArchiveForAuthenticatedUserResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteArchiveForAuthenticatedUserRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteArchiveForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -902,8 +636,8 @@ export const deleteArchiveForOrg: API.OperationMethod<
   DeleteArchiveForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteArchiveForOrgRequest,
-  output: DeleteArchiveForOrgResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteArchiveForOrgRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteArchiveForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -917,8 +651,8 @@ export const downloadArchiveForOrg: API.OperationMethod<
   DownloadArchiveForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadArchiveForOrgRequest,
-  output: DownloadArchiveForOrgResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<DownloadArchiveForOrgRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DownloadArchiveForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -932,8 +666,8 @@ export const getArchiveForAuthenticatedUser: API.OperationMethod<
   GetArchiveForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetArchiveForAuthenticatedUserRequest,
-  output: GetArchiveForAuthenticatedUserResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<GetArchiveForAuthenticatedUserRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetArchiveForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -947,8 +681,8 @@ export const getStatusForAuthenticatedUser: API.OperationMethod<
   GetStatusForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatusForAuthenticatedUserRequest,
-  output: Migration,
+  input: __S(7, __c0, 7) as any as S.Schema<GetStatusForAuthenticatedUserRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -962,8 +696,8 @@ export const getStatusForOrg: API.OperationMethod<
   GetStatusForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatusForOrgRequest,
-  output: Migration,
+  input: __S(16, __c2, 0) as any as S.Schema<GetStatusForOrgRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -977,8 +711,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForAuthenticatedUserRequest,
-  output: ListForAuthenticatedUserResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<ListForAuthenticatedUserRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -992,8 +726,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForOrgRequest,
-  output: ListForOrgResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<ListForOrgRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ListForOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1007,8 +741,8 @@ export const listReposForAuthenticatedUser: API.OperationMethod<
   ListReposForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReposForAuthenticatedUserRequest,
-  output: ListReposForAuthenticatedUserResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ListReposForAuthenticatedUserRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListReposForAuthenticatedUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1022,8 +756,8 @@ export const listReposForOrg: API.OperationMethod<
   ListReposForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReposForOrgRequest,
-  output: ListReposForOrgResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<ListReposForOrgRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<ListReposForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1037,8 +771,8 @@ export const startForAuthenticatedUser: API.OperationMethod<
   StartForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartForAuthenticatedUserRequest,
-  output: Migration,
+  input: __S(38, __c4, 6) as any as S.Schema<StartForAuthenticatedUserRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1052,8 +786,8 @@ export const startForOrg: API.OperationMethod<
   StartForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartForOrgRequest,
-  output: Migration,
+  input: __S(39, __c4, 7) as any as S.Schema<StartForOrgRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Migration>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1067,8 +801,8 @@ export const unlockRepoForAuthenticatedUser: API.OperationMethod<
   UnlockRepoForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockRepoForAuthenticatedUserRequest,
-  output: UnlockRepoForAuthenticatedUserResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<UnlockRepoForAuthenticatedUserRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UnlockRepoForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1082,8 +816,8 @@ export const unlockRepoForOrg: API.OperationMethod<
   UnlockRepoForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockRepoForOrgRequest,
-  output: UnlockRepoForOrgResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<UnlockRepoForOrgRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<UnlockRepoForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1156,7 +890,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           migration_id: S.Number.pipe(T.Label()),
-          exclude: S.optional(GetStatusForAuthenticatedUserRequestExcludeList.pipe(T.Query())),
+          exclude: S.optional(__S(6, __c0, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user/migrations/{migration_id}", code: 200 })),
       ).annotate({
         identifier: "GetStatusForAuthenticatedUserRequest",
@@ -1229,10 +963,10 @@ function __c1(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(NullableLicenseSimple),
+          license: S.NullOr(__S(9, __c1, 1)),
           forks: S.Number,
-          permissions: S.optional(RepositoryPermissions),
-          owner: NullableSimpleUser,
+          permissions: S.optional(__S(10, __c1, 2)),
+          owner: __S(8, __c1, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1288,7 +1022,7 @@ function __c1(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(6, __c0, 6)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -1296,7 +1030,7 @@ function __c1(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -1310,10 +1044,10 @@ function __c1(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -1322,16 +1056,16 @@ function __c1(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
+          code_search_index_status: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "Repository" });
     case 5:
-      return S.Array(Repository);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          owner: S.NullOr(NullableSimpleUser),
+          owner: S.NullOr(__S(8, __c1, 0)),
           guid: S.String,
           state: S.String,
           lock_repositories: S.Boolean,
@@ -1341,17 +1075,17 @@ function __c1(j: number): any {
           exclude_releases: S.Boolean,
           exclude_owner_projects: S.Boolean,
           org_metadata_only: S.Boolean,
-          repositories: MigrationRepositoriesList,
+          repositories: __S(13, __c1, 5),
           url: S.String,
           created_at: S.String,
           updated_at: S.String,
           node_id: S.String,
           archive_url: S.optional(S.String),
-          exclude: S.optional(MigrationExcludeList),
+          exclude: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Migration" });
     case 7:
-      return S.Array(GetStatusForOrgRequestExcludeItem);
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -1361,7 +1095,7 @@ function __c2(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           migration_id: S.Number.pipe(T.Label()),
-          exclude: S.optional(GetStatusForOrgRequestExcludeList.pipe(T.Query())),
+          exclude: S.optional(__S(15, __c1, 7).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/migrations/{migration_id}", code: 200 })),
       ).annotate({ identifier: "GetStatusForOrgRequest" });
     case 1:
@@ -1374,11 +1108,9 @@ function __c2(j: number): any {
         identifier: "ListForAuthenticatedUserRequest",
       });
     case 2:
-      return S.Array(Migration);
+      return S.Array(__S(14, __c1, 6));
     case 3:
-      return S.suspend(() =>
-        ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForAuthenticatedUserResponse",
       });
     case 4:
@@ -1387,11 +1119,11 @@ function __c2(j: number): any {
           org: S.String.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
-          exclude: S.optional(ListForOrgRequestExcludeList.pipe(T.Query())),
+          exclude: S.optional(__S(15, __c1, 7).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/migrations", code: 200 })),
       ).annotate({ identifier: "ListForOrgRequest" });
     case 5:
-      return S.suspend(() => ListForOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForOrgResponse",
       });
     case 6:
@@ -1445,7 +1177,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -1453,7 +1185,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -1462,23 +1194,18 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 5:
-      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -1486,26 +1213,16 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
-          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
-          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            SecurityAndAnalysisSecretScanningPushProtection,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            SecurityAndAnalysisSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(26, __c3, 2)),
+          code_security: S.optional(__S(26, __c3, 2)),
+          dependabot_security_updates: S.optional(__S(26, __c3, 2)),
+          secret_scanning: S.optional(__S(26, __c3, 2)),
+          secret_scanning_push_protection: S.optional(__S(26, __c3, 2)),
+          secret_scanning_non_provider_patterns: S.optional(__S(26, __c3, 2)),
+          secret_scanning_ai_detection: S.optional(__S(26, __c3, 2)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(27, __c3, 3)),
+          secret_scanning_delegated_bypass: S.optional(__S(26, __c3, 2)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
   }
@@ -1521,7 +1238,7 @@ function __c4(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: NullableSimpleUser,
+          owner: __S(8, __c1, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1577,7 +1294,7 @@ function __c4(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(MinimalRepositoryTopicsList),
+          topics: S.optional(__S(6, __c0, 6)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1585,36 +1302,34 @@ function __c4(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(MinimalRepositoryPermissions),
+          permissions: S.optional(__S(23, __c2, 7)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(CodeOfConduct),
-          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
+          code_of_conduct: S.optional(__S(24, __c3, 0)),
+          license: S.optional(S.NullOr(__S(25, __c3, 1))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
+          security_and_analysis: S.optional(S.NullOr(__S(31, __c3, 7))),
+          custom_properties: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
     case 2:
-      return S.Array(MinimalRepository);
+      return S.Array(__S(33, __c4, 1));
     case 3:
-      return S.suspend(() =>
-        ListReposForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(34, __c4, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReposForAuthenticatedUserResponse",
       });
     case 4:
@@ -1633,7 +1348,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListReposForOrgRequest" });
     case 5:
-      return S.suspend(() => ListReposForOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(34, __c4, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReposForOrgResponse",
       });
     case 6:
@@ -1646,8 +1361,8 @@ function __c4(j: number): any {
           exclude_releases: S.optional(S.Boolean),
           exclude_owner_projects: S.optional(S.Boolean),
           org_metadata_only: S.optional(S.Boolean),
-          exclude: S.optional(StartForAuthenticatedUserRequestExcludeList),
-          repositories: StartForAuthenticatedUserRequestRepositoriesList,
+          exclude: S.optional(__S(15, __c1, 7)),
+          repositories: __S(6, __c0, 6),
         }).pipe(T.Http({ method: "POST", uri: "/user/migrations", code: 200 })),
       ).annotate({
         identifier: "StartForAuthenticatedUserRequest",
@@ -1656,7 +1371,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          repositories: StartForOrgRequestRepositoriesList,
+          repositories: __S(6, __c0, 6),
           lock_repositories: S.optional(S.Boolean),
           exclude_metadata: S.optional(S.Boolean),
           exclude_git_data: S.optional(S.Boolean),
@@ -1664,7 +1379,7 @@ function __c4(j: number): any {
           exclude_releases: S.optional(S.Boolean),
           exclude_owner_projects: S.optional(S.Boolean),
           org_metadata_only: S.optional(S.Boolean),
-          exclude: S.optional(StartForOrgRequestExcludeList),
+          exclude: S.optional(__S(15, __c1, 7)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/migrations", code: 200 })),
       ).annotate({ identifier: "StartForOrgRequest" });
   }
@@ -1701,4 +1416,9 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "UnlockRepoForOrgRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -18,11 +20,6 @@ export interface CreateEmailProAccountAliasRequest {
   /** Alias */
   alias: string;
 }
-const CreateEmailProAccountAliasRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateEmailProAccountAliasRequest>;
-
 /** function enumeration for task */
 export type EmailProTaskFunctionEnum =
   | "addAccount"
@@ -74,12 +71,8 @@ export type EmailProTaskFunctionEnum =
   | "unknown"
   | "unsuspendAccount"
   | "unsuspendService";
-const EmailProTaskFunctionEnum = S.String;
-
 /** Task status */
 export type EmailProTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo";
-const EmailProTaskStatusEnum = S.String;
-
 /** Organization task details */
 export interface EmailProTask {
   /** Completion date */
@@ -93,8 +86,6 @@ export interface EmailProTask {
   /** Creation date */
   todoDate?: string;
 }
-const EmailProTask = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EmailProTask>;
-
 export interface CreateEmailProAccountChangePasswordRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -103,11 +94,6 @@ export interface CreateEmailProAccountChangePasswordRequest {
   /** new password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateEmailProAccountChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateEmailProAccountChangePasswordRequest>;
-
 export interface CreateEmailProAccountDiagnosticRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -116,11 +102,6 @@ export interface CreateEmailProAccountDiagnosticRequest {
   /** Account password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateEmailProAccountDiagnosticRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateEmailProAccountDiagnosticRequest>;
-
 export interface CreateEmailProAccountFullAccessRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -129,11 +110,6 @@ export interface CreateEmailProAccountFullAccessRequest {
   /** User to give full access */
   allowedAccountId: number;
 }
-const CreateEmailProAccountFullAccessRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateEmailProAccountFullAccessRequest>;
-
 export interface CreateEmailProChangeContactRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -144,27 +120,10 @@ export interface CreateEmailProChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateEmailProChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateEmailProChangeContactRequest>;
-
 export type CreateEmailProChangeContactResponseBodyList = Array<number>;
-const CreateEmailProChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateEmailProChangeContactResponseBodyList>;
-
 export type CreateEmailProChangeContactResponse = CreateEmailProChangeContactResponseBodyList;
-const CreateEmailProChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateEmailProChangeContactResponse>;
-
 /** Domain type */
 export type EmailProDomainTypeEnum = "authoritative" | "nonAuthoritative";
-const EmailProDomainTypeEnum = S.String;
-
 export interface CreateEmailProDomainRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -185,11 +144,6 @@ export interface CreateEmailProDomainRequest {
   /** Type of domain that You want to install */
   type: EmailProDomainTypeEnum | (string & {});
 }
-const CreateEmailProDomainRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateEmailProDomainRequest>;
-
 export interface CreateEmailProDomainDisclaimerRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -200,11 +154,6 @@ export interface CreateEmailProDomainDisclaimerRequest {
   /** Activate the disclaimer only for external emails */
   outsideOnly?: boolean;
 }
-const CreateEmailProDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateEmailProDomainDisclaimerRequest>;
-
 export interface CreateEmailProDomainDkimRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -217,11 +166,6 @@ export interface CreateEmailProDomainDkimRequest {
   /** selector name for DKIM */
   selectorName: string;
 }
-const CreateEmailProDomainDkimRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateEmailProDomainDkimRequest>;
-
 export interface CreateEmailProExternalContactRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -238,22 +182,12 @@ export interface CreateEmailProExternalContactRequest {
   /** Contact last name */
   lastName?: string;
 }
-const CreateEmailProExternalContactRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateEmailProExternalContactRequest>;
-
 export interface DeleteEmailProAccountRequest {
   /** The internal name of your pro organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
-const DeleteEmailProAccountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteEmailProAccountRequest>;
-
 export interface DeleteEmailProAccountAliasRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -262,11 +196,6 @@ export interface DeleteEmailProAccountAliasRequest {
   /** Alias */
   alias: string;
 }
-const DeleteEmailProAccountAliasRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteEmailProAccountAliasRequest>;
-
 export interface DeleteEmailProAccountFullAccessRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -275,11 +204,6 @@ export interface DeleteEmailProAccountFullAccessRequest {
   /** Account id to give full access */
   allowedAccountId: number;
 }
-const DeleteEmailProAccountFullAccessRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteEmailProAccountFullAccessRequest>;
-
 export interface DeleteEmailProAccountSendAsRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -288,11 +212,6 @@ export interface DeleteEmailProAccountSendAsRequest {
   /** Account id to give send as */
   allowedAccountId: number;
 }
-const DeleteEmailProAccountSendAsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteEmailProAccountSendAsRequest>;
-
 export interface DeleteEmailProAccountSendOnBehalfToRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -301,33 +220,18 @@ export interface DeleteEmailProAccountSendOnBehalfToRequest {
   /** Account id to give send on behalf to */
   allowedAccountId: number;
 }
-const DeleteEmailProAccountSendOnBehalfToRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteEmailProAccountSendOnBehalfToRequest>;
-
 export interface DeleteEmailProDomainRequest {
   /** The internal name of your pro organization */
   service: string;
   /** Domain name */
   domainName: string;
 }
-const DeleteEmailProDomainRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteEmailProDomainRequest>;
-
 export interface DeleteEmailProDomainDisclaimerRequest {
   /** The internal name of your pro organization */
   service: string;
   /** Domain name */
   domainName: string;
 }
-const DeleteEmailProDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteEmailProDomainDisclaimerRequest>;
-
 export interface DeleteEmailProDomainDkimRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -336,22 +240,12 @@ export interface DeleteEmailProDomainDkimRequest {
   /** selectorName */
   selectorName: string;
 }
-const DeleteEmailProDomainDkimRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteEmailProDomainDkimRequest>;
-
 export interface DeleteEmailProExternalContactRequest {
   /** The internal name of your pro organization */
   service: string;
   /** Contact email */
   externalEmailAddress: string;
 }
-const DeleteEmailProExternalContactRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteEmailProExternalContactRequest>;
-
 export interface DisableEmailProDomainDkimRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -360,11 +254,6 @@ export interface DisableEmailProDomainDkimRequest {
   /** selectorName */
   selectorName: string;
 }
-const DisableEmailProDomainDkimRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DisableEmailProDomainDkimRequest>;
-
 export interface EnableEmailProDomainDkimRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -373,24 +262,12 @@ export interface EnableEmailProDomainDkimRequest {
   /** selectorName */
   selectorName: string;
 }
-const EnableEmailProDomainDkimRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<EnableEmailProDomainDkimRequest>;
-
 export interface GetEmailProRequest {
   /** Service */
   service: string;
 }
-const GetEmailProRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetEmailProRequest>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -402,12 +279,8 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<IamResourceMetadata>;
-
 /** Service Offer name */
 export type EmailProServiceOfferEnum = "emailpro";
-const EmailProServiceOfferEnum = S.String;
-
 /** Spam and Antyvirus configuration */
 export interface EmailProSpamAndVirusConfiguration {
   /** Check DKIM of message */
@@ -425,11 +298,6 @@ export interface EmailProSpamAndVirusConfiguration {
   /** If message is a virus change its subject */
   tagVirus?: boolean;
 }
-const EmailProSpamAndVirusConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<EmailProSpamAndVirusConfiguration>;
-
 /** Service State */
 export type EmailProServiceStateEnum =
   | "creating"
@@ -439,8 +307,6 @@ export type EmailProServiceStateEnum =
   | "reopening"
   | "suspended"
   | "suspending";
-const EmailProServiceStateEnum = S.String;
-
 /** Email pro service */
 export interface EmailProServiceNativeWithIAM {
   /** enable policy for strong and secure passwords */
@@ -482,37 +348,18 @@ export interface EmailProServiceNativeWithIAM {
   /** URL for web interface */
   webUrl?: string | null;
 }
-const EmailProServiceNativeWithIAM = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<EmailProServiceNativeWithIAM>;
-
 export interface GetEmailProAccountRequest {
   /** Service */
   service: string;
   /** Email */
   email: string;
 }
-const GetEmailProAccountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetEmailProAccountRequest>;
-
 /** Mailing filter options availlable */
 export type EmailProMailingFilterEnum = "vaderetro";
-const EmailProMailingFilterEnum = S.String;
-
 /** Enable or disable anti-virus and anti-spam */
 export type EmailProAccountNativeMailingFilterList = Array<EmailProMailingFilterEnum>;
-const EmailProAccountNativeMailingFilterList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<EmailProAccountNativeMailingFilterList>;
-
 /** Renew period */
 export type EmailProRenewPeriodEnum = "monthly" | "yearly";
-const EmailProRenewPeriodEnum = S.String;
-
 /** Current object state */
 export type EmailProObjectStateEnum =
   | "creating"
@@ -522,8 +369,6 @@ export type EmailProObjectStateEnum =
   | "suspended"
   | "suspending"
   | "unknown";
-const EmailProObjectStateEnum = S.String;
-
 /** Mailbox */
 export interface EmailProAccountNative {
   /** SAM account name */
@@ -583,11 +428,6 @@ export interface EmailProAccountNative {
   /** Pending tasks for this account */
   taskPendingId?: number | null;
 }
-const EmailProAccountNative = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<EmailProAccountNative>;
-
 export interface GetEmailProAccountAliasRequest {
   /** Service */
   service: string;
@@ -596,11 +436,6 @@ export interface GetEmailProAccountAliasRequest {
   /** Alias */
   alias: string;
 }
-const GetEmailProAccountAliasRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetEmailProAccountAliasRequest>;
-
 /** Aliases on this mailbox */
 export interface EmailProAccountAlias {
   /** Alias */
@@ -610,19 +445,12 @@ export interface EmailProAccountAlias {
   /** Pending task id */
   taskPendingId?: number;
 }
-const EmailProAccountAlias = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<EmailProAccountAlias>;
-
 export interface GetEmailProAccountDiagnosticsRequest {
   /** Service */
   service: string;
   /** Email */
   email: string;
 }
-const GetEmailProAccountDiagnosticsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetEmailProAccountDiagnosticsRequest>;
-
 /** Account Diagnosis */
 export interface EmailProAccountDiagnosis {
   /** Determines if ingoing message has been received */
@@ -644,11 +472,6 @@ export interface EmailProAccountDiagnosis {
   /** Last performed diagnostics date */
   lastCheck?: string;
 }
-const EmailProAccountDiagnosis = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<EmailProAccountDiagnosis>;
-
 export interface GetEmailProAccountFullAccessRequest {
   /** Service */
   service: string;
@@ -657,11 +480,6 @@ export interface GetEmailProAccountFullAccessRequest {
   /** Allowed account ID */
   allowedAccountId: number;
 }
-const GetEmailProAccountFullAccessRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetEmailProAccountFullAccessRequest>;
-
 /** Users having full access on this mailbox */
 export interface EmailProAccountFullAccess {
   /** Account id to give full access */
@@ -671,11 +489,6 @@ export interface EmailProAccountFullAccess {
   /** Pending task id */
   taskPendingId?: number;
 }
-const EmailProAccountFullAccess = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<EmailProAccountFullAccess>;
-
 export interface GetEmailProAccountSendAsRequest {
   /** Service */
   service: string;
@@ -684,11 +497,6 @@ export interface GetEmailProAccountSendAsRequest {
   /** Allowed account ID */
   allowedAccountId: number;
 }
-const GetEmailProAccountSendAsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetEmailProAccountSendAsRequest>;
-
 /** Users authorized to send mails from this mailbox */
 export interface EmailProAccountSendAs {
   /** Account id to give send as */
@@ -698,11 +506,6 @@ export interface EmailProAccountSendAs {
   /** Pending task id */
   taskPendingId?: number;
 }
-const EmailProAccountSendAs = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<EmailProAccountSendAs>;
-
 export interface GetEmailProAccountSendOnBehalfToRequest {
   /** Service */
   service: string;
@@ -711,11 +514,6 @@ export interface GetEmailProAccountSendOnBehalfToRequest {
   /** Allowed account ID */
   allowedAccountId: number;
 }
-const GetEmailProAccountSendOnBehalfToRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetEmailProAccountSendOnBehalfToRequest>;
-
 /** Get users authorized to Send On Behalf To mails from this mailbox */
 export interface EmailProAccountSendOnBehalfTo {
   /** Account id to give send on behalf to */
@@ -725,9 +523,6 @@ export interface EmailProAccountSendOnBehalfTo {
   /** Pending task id */
   taskPendingId?: number;
 }
-const EmailProAccountSendOnBehalfTo =
-  EmailProAccountFullAccess as any as S.Schema<EmailProAccountSendOnBehalfTo>;
-
 export interface GetEmailProAccountTaskRequest {
   /** Service */
   service: string;
@@ -736,52 +531,22 @@ export interface GetEmailProAccountTaskRequest {
   /** Id */
   id: number;
 }
-const GetEmailProAccountTaskRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetEmailProAccountTaskRequest>;
-
 export interface GetEmailProBillingMigratedRequest {
   /** Service */
   service: string;
 }
-const GetEmailProBillingMigratedRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetEmailProBillingMigratedRequest>;
-
 export type GetEmailProBillingMigratedResponse = boolean;
-const GetEmailProBillingMigratedResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetEmailProBillingMigratedResponse>;
-
 export interface GetEmailProBillingPlanRequest {
   /** Service */
   service: string;
 }
-const GetEmailProBillingPlanRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetEmailProBillingPlanRequest>;
-
 export type GetEmailProBillingPlanResponse = string;
-const GetEmailProBillingPlanResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetEmailProBillingPlanResponse>;
-
 export interface GetEmailProDomainRequest {
   /** Service */
   service: string;
   /** Domain name */
   domainName: string;
 }
-const GetEmailProDomainRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetEmailProDomainRequest>;
-
 /** DKIM status */
 export type EmailProDomainDkimDiagnosticsStateEnum =
   | "active"
@@ -789,8 +554,6 @@ export type EmailProDomainDkimDiagnosticsStateEnum =
   | "error"
   | "inProgress"
   | "toConfigure";
-const EmailProDomainDkimDiagnosticsStateEnum = S.String;
-
 /** Dkim selectors and DNS configuration state */
 export interface EmailProDomainDkimDiagnostics {
   /** Error code related to misconfiguration of DKIM, if exists */
@@ -800,38 +563,16 @@ export interface EmailProDomainDkimDiagnostics {
   /** State of DKIM selectors */
   state?: EmailProDomainDkimDiagnosticsStateEnum | null;
 }
-const EmailProDomainDkimDiagnostics = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<EmailProDomainDkimDiagnostics>;
-
 /** List of aliases for this domain */
 export type EmailProDomainNativeDomainAliasesList = Array<string>;
-const EmailProDomainNativeDomainAliasesList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<EmailProDomainNativeDomainAliasesList>;
-
 /** Expected MX record(s) on this domain */
 export type EmailProDomainNativeExpectedMXList = Array<string>;
-const EmailProDomainNativeExpectedMXList =
-  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeExpectedMXList>;
-
 /** Domain MX record configured in DNS */
 export type EmailProDomainNativeMxRecordList = Array<string>;
-const EmailProDomainNativeMxRecordList =
-  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeMxRecordList>;
-
 /** Domain's SPF record configured in the DNS */
 export type EmailProDomainNativeSpfRecordList = Array<string>;
-const EmailProDomainNativeSpfRecordList =
-  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeSpfRecordList>;
-
 /** Domain SRV record configured in DNS */
 export type EmailProDomainNativeSrvRecordList = Array<string>;
-const EmailProDomainNativeSrvRecordList =
-  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeSrvRecordList>;
-
 /** Domain */
 export interface EmailProDomainNative {
   /** Cname that will be checked to prove the domain ownership */
@@ -873,19 +614,12 @@ export interface EmailProDomainNative {
   /** Domain type */
   type?: EmailProDomainTypeEnum;
 }
-const EmailProDomainNative = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<EmailProDomainNative>;
-
 export interface GetEmailProDomainDisclaimerRequest {
   /** Service */
   service: string;
   /** Domain name */
   domainName: string;
 }
-const GetEmailProDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetEmailProDomainDisclaimerRequest>;
-
 /** disclaimer */
 export interface EmailProDisclaimerNative {
   /** Signature, added at the bottom of your organization emails */
@@ -899,11 +633,6 @@ export interface EmailProDisclaimerNative {
   /** task pending id */
   taskPendingId?: number;
 }
-const EmailProDisclaimerNative = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<EmailProDisclaimerNative>;
-
 export interface GetEmailProDomainDkimRequest {
   /** Service */
   service: string;
@@ -912,15 +641,8 @@ export interface GetEmailProDomainDkimRequest {
   /** Selector name */
   selectorName: string;
 }
-const GetEmailProDomainDkimRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetEmailProDomainDkimRequest>;
-
 /** Record type of the customer record */
 export type EmailProDkimRecordTypeEnum = "CNAME";
-const EmailProDkimRecordTypeEnum = S.String;
-
 /** DKIM status */
 export type EmailProDkimStatusEnum =
   | "deleting"
@@ -930,8 +652,6 @@ export type EmailProDkimStatusEnum =
   | "ready"
   | "todo"
   | "waitingRecord";
-const EmailProDkimStatusEnum = S.String;
-
 /** DKIM for a domain */
 export interface EmailProDkim {
   /** DNS CNAME validation passed */
@@ -953,19 +673,12 @@ export interface EmailProDkim {
   /** Pending task for this DKIM */
   taskPendingId?: number | null;
 }
-const EmailProDkim = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<EmailProDkim>;
-
 export interface GetEmailProExternalContactRequest {
   /** Service */
   service: string;
   /** External email address */
   externalEmailAddress: string;
 }
-const GetEmailProExternalContactRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetEmailProExternalContactRequest>;
-
 /** External contact for this pro service */
 export interface EmailProExternalContactNative {
   /** Creation date */
@@ -989,24 +702,12 @@ export interface EmailProExternalContactNative {
   /** Task pending id */
   taskPendingId?: number;
 }
-const EmailProExternalContactNative = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<EmailProExternalContactNative>;
-
 export interface GetEmailProServerRequest {
   /** Service */
   service: string;
 }
-const GetEmailProServerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetEmailProServerRequest>;
-
 /** Server State */
 export type EmailProServerStateEnum = "configurationPending" | "notConfigured" | "ok";
-const EmailProServerStateEnum = S.String;
-
 /** Server */
 export interface EmailProServer {
   /** Current disk usage in MB */
@@ -1032,22 +733,12 @@ export interface EmailProServer {
   /** Server version */
   version?: string | null;
 }
-const EmailProServer = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<EmailProServer>;
-
 export interface GetEmailProServiceInfosRequest {
   /** The internal name of your pro organization */
   service: string;
 }
-const GetEmailProServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetEmailProServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -1061,8 +752,6 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ServiceRenewType>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -1073,8 +762,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -1082,8 +769,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -1103,53 +788,24 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ServicesService>;
-
 export interface GetEmailProTaskRequest {
   /** Service */
   service: string;
   /** Id */
   id: number;
 }
-const GetEmailProTaskRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetEmailProTaskRequest>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListEmailProRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListEmailProRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListEmailProRequestIamTagsValueList>;
-
 export type ListEmailProRequestIamTagsMap = {
   [key: string]: ListEmailProRequestIamTagsValueList | undefined;
 };
-const ListEmailProRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListEmailProRequestIamTagsMap>;
-
 export interface ListEmailProRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListEmailProRequestIamTagsMap;
 }
-const ListEmailProRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListEmailProRequest>;
-
 export type ListEmailProResponseBodyList = Array<string>;
-const ListEmailProResponseBodyList =
-  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProResponseBodyList>;
-
 export type ListEmailProResponse = ListEmailProResponseBodyList;
-const ListEmailProResponse = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ListEmailProResponse>;
-
 export interface ListEmailProAccountRequest {
   /** Service */
   service: string;
@@ -1158,129 +814,63 @@ export interface ListEmailProAccountRequest {
   /** Filter the value of primaryEmailAddress property (like) */
   primaryEmailAddress?: string;
 }
-const ListEmailProAccountRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListEmailProAccountRequest>;
-
 export type ListEmailProAccountResponseBodyList = Array<string>;
-const ListEmailProAccountResponseBodyList =
-  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProAccountResponseBodyList>;
-
 export type ListEmailProAccountResponse = ListEmailProAccountResponseBodyList;
-const ListEmailProAccountResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListEmailProAccountResponse>;
-
 export interface ListEmailProAccountAliasRequest {
   /** Service */
   service: string;
   /** Email */
   email: string;
 }
-const ListEmailProAccountAliasRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListEmailProAccountAliasRequest>;
-
 export type ListEmailProAccountAliasResponseBodyList = Array<string>;
 export type ListEmailProAccountAliasResponse = ListEmailProAccountAliasResponseBodyList;
-const ListEmailProAccountAliasResponse =
-  ListEmailProAccountResponse as any as S.Schema<ListEmailProAccountAliasResponse>;
-
 export interface ListEmailProAccountFullAccessRequest {
   /** Service */
   service: string;
   /** Email */
   email: string;
 }
-const ListEmailProAccountFullAccessRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListEmailProAccountFullAccessRequest>;
-
 export type ListEmailProAccountFullAccessResponseBodyList = Array<number>;
 export type ListEmailProAccountFullAccessResponse = ListEmailProAccountFullAccessResponseBodyList;
-const ListEmailProAccountFullAccessResponse =
-  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountFullAccessResponse>;
-
 export interface ListEmailProAccountSendAsRequest {
   /** Service */
   service: string;
   /** Email */
   email: string;
 }
-const ListEmailProAccountSendAsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListEmailProAccountSendAsRequest>;
-
 export type ListEmailProAccountSendAsResponseBodyList = Array<number>;
 export type ListEmailProAccountSendAsResponse = ListEmailProAccountSendAsResponseBodyList;
-const ListEmailProAccountSendAsResponse =
-  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountSendAsResponse>;
-
 export interface ListEmailProAccountSendOnBehalfToRequest {
   /** Service */
   service: string;
   /** Email */
   email: string;
 }
-const ListEmailProAccountSendOnBehalfToRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListEmailProAccountSendOnBehalfToRequest>;
-
 export type ListEmailProAccountSendOnBehalfToResponseBodyList = Array<number>;
 export type ListEmailProAccountSendOnBehalfToResponse =
   ListEmailProAccountSendOnBehalfToResponseBodyList;
-const ListEmailProAccountSendOnBehalfToResponse =
-  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountSendOnBehalfToResponse>;
-
 export interface ListEmailProAccountTasksRequest {
   /** Service */
   service: string;
   /** Email */
   email: string;
 }
-const ListEmailProAccountTasksRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListEmailProAccountTasksRequest>;
-
 export type ListEmailProAccountTasksResponseBodyList = Array<number>;
 export type ListEmailProAccountTasksResponse = ListEmailProAccountTasksResponseBodyList;
-const ListEmailProAccountTasksResponse =
-  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountTasksResponse>;
-
 export interface ListEmailProDomainRequest {
   /** Service */
   service: string;
   /** Filter the value of state property (=) */
   state?: EmailProObjectStateEnum | (string & {});
 }
-const ListEmailProDomainRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListEmailProDomainRequest>;
-
 export type ListEmailProDomainResponseBodyList = Array<string>;
 export type ListEmailProDomainResponse = ListEmailProDomainResponseBodyList;
-const ListEmailProDomainResponse =
-  ListEmailProAccountResponse as any as S.Schema<ListEmailProDomainResponse>;
-
 export interface ListEmailProDomainDisclaimerAttributeRequest {
   /** Service */
   service: string;
   /** Domain name */
   domainName: string;
 }
-const ListEmailProDomainDisclaimerAttributeRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListEmailProDomainDisclaimerAttributeRequest>;
-
 /** Disclaimer attributes list */
 export type EmailProDisclaimerAttributeEnum =
   | "City"
@@ -1310,48 +900,24 @@ export type EmailProDisclaimerAttributeEnum =
   | "ZipCode";
 export type ListEmailProDomainDisclaimerAttributeResponseBodyList =
   Array<EmailProDisclaimerAttributeEnum>;
-const ListEmailProDomainDisclaimerAttributeResponseBodyList =
-  EmailProAccountNativeMailingFilterList as any as S.Schema<ListEmailProDomainDisclaimerAttributeResponseBodyList>;
-
 export type ListEmailProDomainDisclaimerAttributeResponse =
   ListEmailProDomainDisclaimerAttributeResponseBodyList;
-const ListEmailProDomainDisclaimerAttributeResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListEmailProDomainDisclaimerAttributeResponse>;
-
 export interface ListEmailProDomainDkimRequest {
   /** Service */
   service: string;
   /** Domain name */
   domainName: string;
 }
-const ListEmailProDomainDkimRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListEmailProDomainDkimRequest>;
-
 export type ListEmailProDomainDkimResponseBodyList = Array<string>;
 export type ListEmailProDomainDkimResponse = ListEmailProDomainDkimResponseBodyList;
-const ListEmailProDomainDkimResponse =
-  ListEmailProAccountResponse as any as S.Schema<ListEmailProDomainDkimResponse>;
-
 export interface ListEmailProDomainDkimSelectorRequest {
   /** The internal name of your pro organization */
   service: string;
   /** Domain name */
   domainName: string;
 }
-const ListEmailProDomainDkimSelectorRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListEmailProDomainDkimSelectorRequest>;
-
 export type ListEmailProDomainDkimSelectorResponseBodyList = Array<string>;
 export type ListEmailProDomainDkimSelectorResponse = ListEmailProDomainDkimSelectorResponseBodyList;
-const ListEmailProDomainDkimSelectorResponse =
-  ListEmailProAccountResponse as any as S.Schema<ListEmailProDomainDkimSelectorResponse>;
-
 export interface ListEmailProExternalContactRequest {
   /** Service */
   service: string;
@@ -1366,35 +932,14 @@ export interface ListEmailProExternalContactRequest {
   /** Filter the value of lastName property (like) */
   lastName?: string;
 }
-const ListEmailProExternalContactRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListEmailProExternalContactRequest>;
-
 export type ListEmailProExternalContactResponseBodyList = Array<string>;
 export type ListEmailProExternalContactResponse = ListEmailProExternalContactResponseBodyList;
-const ListEmailProExternalContactResponse =
-  ListEmailProAccountResponse as any as S.Schema<ListEmailProExternalContactResponse>;
-
 export interface ListEmailProTaskRequest {
   /** Service */
   service: string;
 }
-const ListEmailProTaskRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListEmailProTaskRequest>;
-
 export type ListEmailProTaskResponseBodyList = Array<number>;
-const ListEmailProTaskResponseBodyList =
-  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ListEmailProTaskResponseBodyList>;
-
 export type ListEmailProTaskResponse = ListEmailProTaskResponseBodyList;
-const ListEmailProTaskResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListEmailProTaskResponse>;
-
 /** Spam and Antyvirus configuration */
 export type EmailProSpamAndVirusConfigurationInput = IamResourceTagFilterInput;
 export interface PutEmailProRequest {
@@ -1423,18 +968,11 @@ export interface PutEmailProRequest {
   /** Spam and Antivirus configuration */
   spamAndVirusConfiguration?: IamResourceTagFilterInput;
 }
-const PutEmailProRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<PutEmailProRequest>;
-
 export interface PutEmailProResponse {}
-const PutEmailProResponse = IamResourceTagFilterInput as any as S.Schema<PutEmailProResponse>;
-
 /** Enable or disable anti-virus and anti-spam */
 export type PutEmailProAccountRequestMailingFilterList = Array<
   EmailProMailingFilterEnum | (string & {})
 >;
-const PutEmailProAccountRequestMailingFilterList =
-  EmailProAccountNativeMailingFilterList as any as S.Schema<PutEmailProAccountRequestMailingFilterList>;
-
 export interface PutEmailProAccountRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -1465,15 +1003,7 @@ export interface PutEmailProAccountRequest {
   /** Spam and Antivirus configuration */
   spamAndVirusConfiguration?: IamResourceTagFilterInput;
 }
-const PutEmailProAccountRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<PutEmailProAccountRequest>;
-
 export interface PutEmailProAccountResponse {}
-const PutEmailProAccountResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutEmailProAccountResponse>;
-
 export interface PutEmailProDomainRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -1484,15 +1014,7 @@ export interface PutEmailProDomainRequest {
   /** Domain type */
   type?: EmailProDomainTypeEnum | (string & {});
 }
-const PutEmailProDomainRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PutEmailProDomainRequest>;
-
 export interface PutEmailProDomainResponse {}
-const PutEmailProDomainResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutEmailProDomainResponse>;
-
 export interface PutEmailProDomainDisclaimerRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -1503,17 +1025,7 @@ export interface PutEmailProDomainDisclaimerRequest {
   /** Activate the disclaimer only for external emails */
   outsideOnly?: boolean;
 }
-const PutEmailProDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<PutEmailProDomainDisclaimerRequest>;
-
 export interface PutEmailProDomainDisclaimerResponse {}
-const PutEmailProDomainDisclaimerResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<PutEmailProDomainDisclaimerResponse>;
-
 export interface PutEmailProExternalContactRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -1530,32 +1042,14 @@ export interface PutEmailProExternalContactRequest {
   /** Contact last name */
   lastName?: string | null;
 }
-const PutEmailProExternalContactRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<PutEmailProExternalContactRequest>;
-
 export interface PutEmailProExternalContactResponse {}
-const PutEmailProExternalContactResponse =
-  PutEmailProDomainDisclaimerResponse as any as S.Schema<PutEmailProExternalContactResponse>;
-
 export interface PutEmailProServiceInfosRequest {
   /** The internal name of your pro organization */
   service: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutEmailProServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PutEmailProServiceInfosRequest>;
-
 export interface PutEmailProServiceInfosResponse {}
-const PutEmailProServiceInfosResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PutEmailProServiceInfosResponse>;
-
 export interface SendEmailProAccountAsRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -1564,11 +1058,6 @@ export interface SendEmailProAccountAsRequest {
   /** Account id to allow to send mails from this mailbox */
   allowAccountId: number;
 }
-const SendEmailProAccountAsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<SendEmailProAccountAsRequest>;
-
 export interface SendEmailProAccountOnBehalfToRequest {
   /** The internal name of your pro organization */
   service: string;
@@ -1577,39 +1066,18 @@ export interface SendEmailProAccountOnBehalfToRequest {
   /** Account id to allow to send On Behalf To mails from this mailbox */
   allowAccountId: number;
 }
-const SendEmailProAccountOnBehalfToRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<SendEmailProAccountOnBehalfToRequest>;
-
 export interface TerminateEmailProAccountRequest {
   /** The internal name of your pro organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
-const TerminateEmailProAccountRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<TerminateEmailProAccountRequest>;
-
 export type TerminateEmailProAccountResponse = string;
-const TerminateEmailProAccountResponse =
-  GetEmailProBillingPlanResponse as any as S.Schema<TerminateEmailProAccountResponse>;
-
 export interface UpdateEmailProFlagsOnAllAccountsRequest {
   /** The internal name of your pro organization */
   service: string;
 }
-const UpdateEmailProFlagsOnAllAccountsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsRequest>;
-
 export interface UpdateEmailProFlagsOnAllAccountsResponse {}
-const UpdateEmailProFlagsOnAllAccountsResponse =
-  PutEmailProDomainDisclaimerResponse as any as S.Schema<UpdateEmailProFlagsOnAllAccountsResponse>;
-
 export type CreateEmailProAccountAliasError = OvhOpError;
 /** Create new alias */
 export const createEmailProAccountAlias: API.OperationMethod<
@@ -1618,8 +1086,8 @@ export const createEmailProAccountAlias: API.OperationMethod<
   CreateEmailProAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProAccountAliasRequest,
-  output: EmailProTask,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateEmailProAccountAliasRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1633,8 +1101,8 @@ export const createEmailProAccountChangePassword: API.OperationMethod<
   CreateEmailProAccountChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProAccountChangePasswordRequest,
-  output: EmailProTask,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateEmailProAccountChangePasswordRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1648,8 +1116,8 @@ export const createEmailProAccountDiagnostic: API.OperationMethod<
   CreateEmailProAccountDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProAccountDiagnosticRequest,
-  output: EmailProTask,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateEmailProAccountDiagnosticRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1663,8 +1131,8 @@ export const createEmailProAccountFullAccess: API.OperationMethod<
   CreateEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProAccountFullAccessRequest,
-  output: EmailProTask,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateEmailProAccountFullAccessRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1146,8 @@ export const createEmailProChangeContact: API.OperationMethod<
   CreateEmailProChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProChangeContactRequest,
-  output: CreateEmailProChangeContactResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateEmailProChangeContactRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateEmailProChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1161,8 @@ export const createEmailProDomain: API.OperationMethod<
   CreateEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProDomainRequest,
-  output: EmailProTask,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateEmailProDomainRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1176,8 @@ export const createEmailProDomainDisclaimer: API.OperationMethod<
   CreateEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProDomainDisclaimerRequest,
-  output: EmailProTask,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateEmailProDomainDisclaimerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1191,8 @@ export const createEmailProDomainDkim: API.OperationMethod<
   CreateEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProDomainDkimRequest,
-  output: EmailProTask,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateEmailProDomainDkimRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1206,8 @@ export const createEmailProExternalContact: API.OperationMethod<
   CreateEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailProExternalContactRequest,
-  output: EmailProTask,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateEmailProExternalContactRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1221,8 @@ export const deleteEmailProAccount: API.OperationMethod<
   DeleteEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProAccountRequest,
-  output: EmailProTask,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteEmailProAccountRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1768,8 +1236,8 @@ export const deleteEmailProAccountAlias: API.OperationMethod<
   DeleteEmailProAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProAccountAliasRequest,
-  output: EmailProTask,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteEmailProAccountAliasRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1251,8 @@ export const deleteEmailProAccountFullAccess: API.OperationMethod<
   DeleteEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProAccountFullAccessRequest,
-  output: EmailProTask,
+  input: __S(14, __c1, 6) as any as S.Schema<DeleteEmailProAccountFullAccessRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1266,8 @@ export const deleteEmailProAccountSendAs: API.OperationMethod<
   DeleteEmailProAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProAccountSendAsRequest,
-  output: EmailProTask,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteEmailProAccountSendAsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1281,8 @@ export const deleteEmailProAccountSendOnBehalfTo: API.OperationMethod<
   DeleteEmailProAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProAccountSendOnBehalfToRequest,
-  output: EmailProTask,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteEmailProAccountSendOnBehalfToRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1296,8 @@ export const deleteEmailProDomain: API.OperationMethod<
   DeleteEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProDomainRequest,
-  output: EmailProTask,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteEmailProDomainRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1843,8 +1311,8 @@ export const deleteEmailProDomainDisclaimer: API.OperationMethod<
   DeleteEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProDomainDisclaimerRequest,
-  output: EmailProTask,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteEmailProDomainDisclaimerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1326,8 @@ export const deleteEmailProDomainDkim: API.OperationMethod<
   DeleteEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProDomainDkimRequest,
-  output: EmailProTask,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteEmailProDomainDkimRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1341,8 @@ export const deleteEmailProExternalContact: API.OperationMethod<
   DeleteEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailProExternalContactRequest,
-  output: EmailProTask,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteEmailProExternalContactRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1356,8 @@ export const disableEmailProDomainDkim: API.OperationMethod<
   DisableEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableEmailProDomainDkimRequest,
-  output: EmailProTask,
+  input: __S(21, __c2, 5) as any as S.Schema<DisableEmailProDomainDkimRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1903,8 +1371,8 @@ export const enableEmailProDomainDkim: API.OperationMethod<
   EnableEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableEmailProDomainDkimRequest,
-  output: EmailProTask,
+  input: __S(22, __c2, 6) as any as S.Schema<EnableEmailProDomainDkimRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1386,8 @@ export const getEmailPro: API.OperationMethod<
   GetEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProRequest,
-  output: EmailProServiceNativeWithIAM,
+  input: __S(23, __c2, 7) as any as S.Schema<GetEmailProRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<EmailProServiceNativeWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1933,8 +1401,8 @@ export const getEmailProAccount: API.OperationMethod<
   GetEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProAccountRequest,
-  output: EmailProAccountNative,
+  input: __S(28, __c3, 4) as any as S.Schema<GetEmailProAccountRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<EmailProAccountNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1416,8 @@ export const getEmailProAccountAlias: API.OperationMethod<
   GetEmailProAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProAccountAliasRequest,
-  output: EmailProAccountAlias,
+  input: __S(31, __c3, 7) as any as S.Schema<GetEmailProAccountAliasRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<EmailProAccountAlias>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1963,8 +1431,8 @@ export const getEmailProAccountDiagnostics: API.OperationMethod<
   GetEmailProAccountDiagnosticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProAccountDiagnosticsRequest,
-  output: EmailProAccountDiagnosis,
+  input: __S(33, __c4, 1) as any as S.Schema<GetEmailProAccountDiagnosticsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<EmailProAccountDiagnosis>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1978,8 +1446,8 @@ export const getEmailProAccountFullAccess: API.OperationMethod<
   GetEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProAccountFullAccessRequest,
-  output: EmailProAccountFullAccess,
+  input: __S(35, __c4, 3) as any as S.Schema<GetEmailProAccountFullAccessRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<EmailProAccountFullAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1461,8 @@ export const getEmailProAccountSendAs: API.OperationMethod<
   GetEmailProAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProAccountSendAsRequest,
-  output: EmailProAccountSendAs,
+  input: __S(37, __c4, 5) as any as S.Schema<GetEmailProAccountSendAsRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<EmailProAccountSendAs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2008,8 +1476,8 @@ export const getEmailProAccountSendOnBehalfTo: API.OperationMethod<
   GetEmailProAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProAccountSendOnBehalfToRequest,
-  output: EmailProAccountSendOnBehalfTo,
+  input: __S(39, __c4, 7) as any as S.Schema<GetEmailProAccountSendOnBehalfToRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<EmailProAccountSendOnBehalfTo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2023,8 +1491,8 @@ export const getEmailProAccountTask: API.OperationMethod<
   GetEmailProAccountTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProAccountTaskRequest,
-  output: EmailProTask,
+  input: __S(40, __c5, 0) as any as S.Schema<GetEmailProAccountTaskRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2038,8 +1506,8 @@ export const getEmailProBillingMigrated: API.OperationMethod<
   GetEmailProBillingMigratedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProBillingMigratedRequest,
-  output: GetEmailProBillingMigratedResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<GetEmailProBillingMigratedRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetEmailProBillingMigratedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2053,8 +1521,8 @@ export const getEmailProBillingPlan: API.OperationMethod<
   GetEmailProBillingPlanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProBillingPlanRequest,
-  output: GetEmailProBillingPlanResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<GetEmailProBillingPlanRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetEmailProBillingPlanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2068,8 +1536,8 @@ export const getEmailProDomain: API.OperationMethod<
   GetEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProDomainRequest,
-  output: EmailProDomainNative,
+  input: __S(45, __c5, 5) as any as S.Schema<GetEmailProDomainRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<EmailProDomainNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2083,8 +1551,8 @@ export const getEmailProDomainDisclaimer: API.OperationMethod<
   GetEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProDomainDisclaimerRequest,
-  output: EmailProDisclaimerNative,
+  input: __S(49, __c6, 1) as any as S.Schema<GetEmailProDomainDisclaimerRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<EmailProDisclaimerNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2098,8 +1566,8 @@ export const getEmailProDomainDkim: API.OperationMethod<
   GetEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProDomainDkimRequest,
-  output: EmailProDkim,
+  input: __S(51, __c6, 3) as any as S.Schema<GetEmailProDomainDkimRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<EmailProDkim>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2113,8 +1581,8 @@ export const getEmailProExternalContact: API.OperationMethod<
   GetEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProExternalContactRequest,
-  output: EmailProExternalContactNative,
+  input: __S(53, __c6, 5) as any as S.Schema<GetEmailProExternalContactRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<EmailProExternalContactNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2128,8 +1596,8 @@ export const getEmailProServer: API.OperationMethod<
   GetEmailProServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProServerRequest,
-  output: EmailProServer,
+  input: __S(55, __c6, 7) as any as S.Schema<GetEmailProServerRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<EmailProServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2143,8 +1611,8 @@ export const getEmailProServiceInfos: API.OperationMethod<
   GetEmailProServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProServiceInfosRequest,
-  output: ServicesService,
+  input: __S(57, __c7, 1) as any as S.Schema<GetEmailProServiceInfosRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2158,8 +1626,8 @@ export const getEmailProTask: API.OperationMethod<
   GetEmailProTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailProTaskRequest,
-  output: EmailProTask,
+  input: __S(60, __c7, 4) as any as S.Schema<GetEmailProTaskRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2173,8 +1641,8 @@ export const listEmailPro: API.OperationMethod<
   ListEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProRequest,
-  output: ListEmailProResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<ListEmailProRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListEmailProResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2188,8 +1656,8 @@ export const listEmailProAccount: API.OperationMethod<
   ListEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProAccountRequest,
-  output: ListEmailProAccountResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<ListEmailProAccountRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2203,8 +1671,8 @@ export const listEmailProAccountAlias: API.OperationMethod<
   ListEmailProAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProAccountAliasRequest,
-  output: ListEmailProAccountAliasResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<ListEmailProAccountAliasRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProAccountAliasResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2218,8 +1686,8 @@ export const listEmailProAccountFullAccess: API.OperationMethod<
   ListEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProAccountFullAccessRequest,
-  output: ListEmailProAccountFullAccessResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<ListEmailProAccountFullAccessRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountFullAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2233,8 +1701,8 @@ export const listEmailProAccountSendAs: API.OperationMethod<
   ListEmailProAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProAccountSendAsRequest,
-  output: ListEmailProAccountSendAsResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<ListEmailProAccountSendAsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountSendAsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2248,8 +1716,8 @@ export const listEmailProAccountSendOnBehalfTo: API.OperationMethod<
   ListEmailProAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProAccountSendOnBehalfToRequest,
-  output: ListEmailProAccountSendOnBehalfToResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<ListEmailProAccountSendOnBehalfToRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountSendOnBehalfToResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2263,8 +1731,8 @@ export const listEmailProAccountTasks: API.OperationMethod<
   ListEmailProAccountTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProAccountTasksRequest,
-  output: ListEmailProAccountTasksResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<ListEmailProAccountTasksRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountTasksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2278,8 +1746,8 @@ export const listEmailProDomain: API.OperationMethod<
   ListEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProDomainRequest,
-  output: ListEmailProDomainResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<ListEmailProDomainRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2293,8 +1761,8 @@ export const listEmailProDomainDisclaimerAttribute: API.OperationMethod<
   ListEmailProDomainDisclaimerAttributeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProDomainDisclaimerAttributeRequest,
-  output: ListEmailProDomainDisclaimerAttributeResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<ListEmailProDomainDisclaimerAttributeRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<ListEmailProDomainDisclaimerAttributeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2308,8 +1776,8 @@ export const listEmailProDomainDkim: API.OperationMethod<
   ListEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProDomainDkimRequest,
-  output: ListEmailProDomainDkimResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<ListEmailProDomainDkimRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProDomainDkimResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2323,8 +1791,8 @@ export const listEmailProDomainDkimSelector: API.OperationMethod<
   ListEmailProDomainDkimSelectorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProDomainDkimSelectorRequest,
-  output: ListEmailProDomainDkimSelectorResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<ListEmailProDomainDkimSelectorRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProDomainDkimSelectorResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2338,8 +1806,8 @@ export const listEmailProExternalContact: API.OperationMethod<
   ListEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProExternalContactRequest,
-  output: ListEmailProExternalContactResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<ListEmailProExternalContactRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProExternalContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2353,8 +1821,8 @@ export const listEmailProTask: API.OperationMethod<
   ListEmailProTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailProTaskRequest,
-  output: ListEmailProTaskResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<ListEmailProTaskRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<ListEmailProTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2368,8 +1836,8 @@ export const putEmailPro: API.OperationMethod<
   PutEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmailProRequest,
-  output: PutEmailProResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<PutEmailProRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<PutEmailProResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2383,8 +1851,8 @@ export const putEmailProAccount: API.OperationMethod<
   PutEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmailProAccountRequest,
-  output: PutEmailProAccountResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<PutEmailProAccountRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<PutEmailProAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2398,8 +1866,8 @@ export const putEmailProDomain: API.OperationMethod<
   PutEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmailProDomainRequest,
-  output: PutEmailProDomainResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<PutEmailProDomainRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<PutEmailProDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2413,8 +1881,8 @@ export const putEmailProDomainDisclaimer: API.OperationMethod<
   PutEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmailProDomainDisclaimerRequest,
-  output: PutEmailProDomainDisclaimerResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<PutEmailProDomainDisclaimerRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<PutEmailProDomainDisclaimerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2428,8 +1896,8 @@ export const putEmailProExternalContact: API.OperationMethod<
   PutEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmailProExternalContactRequest,
-  output: PutEmailProExternalContactResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<PutEmailProExternalContactRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<PutEmailProExternalContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2443,8 +1911,8 @@ export const putEmailProServiceInfos: API.OperationMethod<
   PutEmailProServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmailProServiceInfosRequest,
-  output: PutEmailProServiceInfosResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<PutEmailProServiceInfosRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PutEmailProServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2458,8 +1926,8 @@ export const sendEmailProAccountAs: API.OperationMethod<
   SendEmailProAccountAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendEmailProAccountAsRequest,
-  output: EmailProTask,
+  input: __S(89, __c11, 1) as any as S.Schema<SendEmailProAccountAsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2473,8 +1941,8 @@ export const sendEmailProAccountOnBehalfTo: API.OperationMethod<
   SendEmailProAccountOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendEmailProAccountOnBehalfToRequest,
-  output: EmailProTask,
+  input: __S(90, __c11, 2) as any as S.Schema<SendEmailProAccountOnBehalfToRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2488,8 +1956,8 @@ export const terminateEmailProAccount: API.OperationMethod<
   TerminateEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateEmailProAccountRequest,
-  output: TerminateEmailProAccountResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<TerminateEmailProAccountRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<TerminateEmailProAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2503,8 +1971,8 @@ export const updateEmailProFlagsOnAllAccounts: API.OperationMethod<
   UpdateEmailProFlagsOnAllAccountsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmailProFlagsOnAllAccountsRequest,
-  output: UpdateEmailProFlagsOnAllAccountsResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2529,9 +1997,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           finishDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(EmailProTaskFunctionEnum),
+          function: S.optional(S.String),
           id: S.optional(S.Number),
-          status: S.optional(EmailProTaskStatusEnum),
+          status: S.optional(S.String),
           todoDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailProTask" });
@@ -2597,9 +2065,7 @@ function __c0(j: number): any {
     case 6:
       return S.Array(S.Number);
     case 7:
-      return S.suspend(() =>
-        CreateEmailProChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateEmailProChangeContactResponse",
       });
   }
@@ -2617,7 +2083,7 @@ function __c1(j: number): any {
           configureSPF: S.optional(S.Boolean),
           mxRelay: S.optional(S.String),
           name: S.String,
-          type: EmailProDomainTypeEnum,
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/email/pro/{service}/domain", code: 200 })),
       ).annotate({
         identifier: "CreateEmailProDomainRequest",
@@ -2856,7 +2322,7 @@ function __c3(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(24, __c3, 0))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -2881,7 +2347,7 @@ function __c3(j: number): any {
           displayName: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.String),
           hostname: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(25, __c3, 1))),
           lastUpdateDate: S.optional(S.NullOr(S.String)),
           lockoutDuration: S.optional(S.Number),
           lockoutObservationWindow: S.optional(S.Number),
@@ -2891,9 +2357,9 @@ function __c3(j: number): any {
           maxSendSize: S.optional(S.Number),
           minPasswordAge: S.optional(S.NullOr(S.Number)),
           minPasswordLength: S.optional(S.NullOr(S.Number)),
-          offer: S.optional(EmailProServiceOfferEnum),
-          spamAndVirusConfiguration: S.optional(EmailProSpamAndVirusConfiguration),
-          state: S.optional(EmailProServiceStateEnum),
+          offer: S.optional(S.String),
+          spamAndVirusConfiguration: S.optional(__S(26, __c3, 2)),
+          state: S.optional(S.String),
           taskPendingId: S.optional(S.Number),
           webUrl: S.optional(S.NullOr(S.String)),
         }),
@@ -2910,7 +2376,7 @@ function __c3(j: number): any {
         identifier: "GetEmailProAccountRequest",
       });
     case 5:
-      return S.Array(EmailProMailingFilterEnum);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2932,15 +2398,15 @@ function __c3(j: number): any {
           lastName: S.optional(S.NullOr(S.String)),
           lastUpdateDate: S.optional(S.NullOr(S.String)),
           login: S.optional(S.String),
-          mailingFilter: S.optional(S.NullOr(EmailProAccountNativeMailingFilterList)),
+          mailingFilter: S.optional(S.NullOr(__S(29, __c3, 5))),
           passwordLastUpdate: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           primaryEmailAddress: S.optional(S.String),
           quota: S.optional(S.Number),
-          renewPeriod: S.optional(S.NullOr(EmailProRenewPeriodEnum)),
-          spamAndVirusConfiguration: S.optional(EmailProSpamAndVirusConfiguration),
+          renewPeriod: S.optional(S.NullOr(S.String)),
+          spamAndVirusConfiguration: S.optional(__S(26, __c3, 2)),
           spamDetected: S.optional(S.Boolean),
           spamTicketNumber: S.optional(S.NullOr(S.Number)),
-          state: S.optional(EmailProObjectStateEnum),
+          state: S.optional(S.String),
           taskPendingId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "EmailProAccountNative" });
@@ -3125,7 +2591,7 @@ function __c5(j: number): any {
         S.Struct({
           errorCode: S.optional(S.NullOr(S.Number)),
           message: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(EmailProDomainDkimDiagnosticsStateEnum)),
+          state: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "EmailProDomainDkimDiagnostics",
@@ -3140,24 +2606,24 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cnameToCheck: S.optional(S.NullOr(S.String)),
-          dkimDiagnostics: S.optional(S.NullOr(EmailProDomainDkimDiagnostics)),
-          domainAliases: S.optional(EmailProDomainNativeDomainAliasesList),
+          dkimDiagnostics: S.optional(S.NullOr(__S(46, __c5, 6))),
+          domainAliases: S.optional(__S(47, __c5, 7)),
           domainValidated: S.optional(S.Boolean),
           expectedAutodiscoverSRV: S.optional(S.String),
-          expectedMX: S.optional(EmailProDomainNativeExpectedMXList),
+          expectedMX: S.optional(__S(47, __c5, 7)),
           expectedSPF: S.optional(S.String),
           isAliasDomain: S.optional(S.Boolean),
           mxIsValid: S.optional(S.Boolean),
-          mxRecord: S.optional(S.NullOr(EmailProDomainNativeMxRecordList)),
+          mxRecord: S.optional(S.NullOr(__S(47, __c5, 7))),
           mxRelay: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
           spfIsValid: S.optional(S.Boolean),
-          spfRecord: S.optional(S.NullOr(EmailProDomainNativeSpfRecordList)),
+          spfRecord: S.optional(S.NullOr(__S(47, __c5, 7))),
           srvIsValid: S.optional(S.Boolean),
-          srvRecord: S.optional(S.NullOr(EmailProDomainNativeSrvRecordList)),
-          state: S.optional(EmailProObjectStateEnum),
+          srvRecord: S.optional(S.NullOr(__S(47, __c5, 7))),
+          state: S.optional(S.String),
           taskPendingId: S.optional(S.Number),
-          type: S.optional(EmailProDomainTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailProDomainNative" });
     case 1:
@@ -3208,9 +2674,9 @@ function __c6(j: number): any {
           customerRecord: S.optional(S.String),
           header: S.optional(S.String),
           lastUpdate: S.optional(S.NullOr(S.String)),
-          recordType: S.optional(EmailProDkimRecordTypeEnum),
+          recordType: S.optional(S.String),
           selectorName: S.optional(S.String),
-          status: S.optional(EmailProDkimStatusEnum),
+          status: S.optional(S.String),
           targetRecord: S.optional(S.NullOr(S.String)),
           taskPendingId: S.optional(S.NullOr(S.Number)),
         }),
@@ -3241,7 +2707,7 @@ function __c6(j: number): any {
           id: S.optional(S.Number),
           initials: S.optional(S.NullOr(S.String)),
           lastName: S.optional(S.NullOr(S.String)),
-          state: S.optional(EmailProObjectStateEnum),
+          state: S.optional(S.String),
           taskPendingId: S.optional(S.Number),
         }),
       ).annotate({
@@ -3268,7 +2734,7 @@ function __c7(j: number): any {
           isAaaaValid: S.optional(S.Boolean),
           isPtrV6Valid: S.optional(S.Boolean),
           isPtrValid: S.optional(S.Boolean),
-          state: S.optional(EmailProServerStateEnum),
+          state: S.optional(S.String),
           taskPendingId: S.optional(S.Number),
           version: S.optional(S.NullOr(S.String)),
         }),
@@ -3302,11 +2768,11 @@ function __c7(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(6, __c0, 6))),
+          renew: S.optional(S.NullOr(__S(58, __c7, 2))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 4:
@@ -3321,9 +2787,9 @@ function __c7(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 6:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(61, __c7, 5));
     case 7:
-      return S.Record(S.String, ListEmailProRequestIamTagsValueList);
+      return S.Record(S.String, __S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -3331,11 +2797,11 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListEmailProRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(63, __c7, 7).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/email/pro", code: 200 })),
       ).annotate({ identifier: "ListEmailProRequest" });
     case 1:
-      return S.suspend(() => ListEmailProResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(47, __c5, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailProResponse",
       });
     case 2:
@@ -3349,9 +2815,7 @@ function __c8(j: number): any {
         identifier: "ListEmailProAccountRequest",
       });
     case 3:
-      return S.suspend(() =>
-        ListEmailProAccountResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(47, __c5, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailProAccountResponse",
       });
     case 4:
@@ -3425,7 +2889,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
-          state: S.optional(EmailProObjectStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/email/pro/{service}/domain", code: 200 })),
       ).annotate({
         identifier: "ListEmailProDomainRequest",
@@ -3446,9 +2910,7 @@ function __c9(j: number): any {
         identifier: "ListEmailProDomainDisclaimerAttributeRequest",
       });
     case 3:
-      return S.suspend(() =>
-        ListEmailProDomainDisclaimerAttributeResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(29, __c3, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailProDomainDisclaimerAttributeResponse",
       });
     case 4:
@@ -3505,7 +2967,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListEmailProTaskResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailProTaskResponse",
       });
     case 1:
@@ -3522,7 +2984,7 @@ function __c10(j: number): any {
           maxSendSize: S.optional(S.Number),
           minPasswordAge: S.optional(S.NullOr(S.Number)),
           minPasswordLength: S.optional(S.NullOr(S.Number)),
-          spamAndVirusConfiguration: S.optional(IamResourceTagFilterInput),
+          spamAndVirusConfiguration: S.optional(__S(61, __c7, 5)),
         }).pipe(T.Http({ method: "PUT", uri: "/email/pro/{service}", code: 200 })),
       ).annotate({ identifier: "PutEmailProRequest" });
     case 2:
@@ -3538,10 +3000,10 @@ function __c10(j: number): any {
           initial: S.optional(S.NullOr(S.String)),
           lastName: S.optional(S.NullOr(S.String)),
           login: S.optional(S.String),
-          mailingFilter: S.optional(S.NullOr(PutEmailProAccountRequestMailingFilterList)),
+          mailingFilter: S.optional(S.NullOr(__S(29, __c3, 5))),
           quota: S.optional(S.Number),
-          renewPeriod: S.optional(S.NullOr(EmailProRenewPeriodEnum)),
-          spamAndVirusConfiguration: S.optional(IamResourceTagFilterInput),
+          renewPeriod: S.optional(S.NullOr(S.String)),
+          spamAndVirusConfiguration: S.optional(__S(61, __c7, 5)),
         }).pipe(T.Http({ method: "PUT", uri: "/email/pro/{service}/account/{email}", code: 200 })),
       ).annotate({
         identifier: "PutEmailProAccountRequest",
@@ -3552,7 +3014,7 @@ function __c10(j: number): any {
           service: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           mxRelay: S.optional(S.NullOr(S.String)),
-          type: S.optional(EmailProDomainTypeEnum),
+          type: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/email/pro/{service}/domain/{domainName}", code: 200 }),
         ),
@@ -3602,7 +3064,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(58, __c7, 2))),
         }).pipe(T.Http({ method: "PUT", uri: "/email/pro/{service}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutEmailProServiceInfosRequest",
@@ -3673,4 +3135,9 @@ function __c11(j: number): any {
         identifier: "UpdateEmailProFlagsOnAllAccountsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -41,32 +43,15 @@ export type CreateAccessGroupRequestProjectsItemRole =
   | "ADMIN"
   | "PROJECT_VIEWER"
   | "PROJECT_DEVELOPER";
-const CreateAccessGroupRequestProjectsItemRole = S.String;
-
 export interface CreateAccessGroupRequestProjectsItem {
   /** The ID of the project. */
   projectId: string;
   /** The project role that will be added to this Access Group. "null" will remove this project level role. */
   role: CreateAccessGroupRequestProjectsItemRole | (string & {}) | null;
 }
-const CreateAccessGroupRequestProjectsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateAccessGroupRequestProjectsItem>;
-
 export type CreateAccessGroupRequestProjectsList = Array<CreateAccessGroupRequestProjectsItem>;
-const CreateAccessGroupRequestProjectsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateAccessGroupRequestProjectsList>;
-
 /** List of members to add to the access group. */
 export type CreateAccessGroupRequestMembersToAddList = Array<string>;
-const CreateAccessGroupRequestMembersToAddList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateAccessGroupRequestMembersToAddList>;
-
 export interface CreateAccessGroupRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -78,31 +63,13 @@ export interface CreateAccessGroupRequest {
   /** List of members to add to the access group. */
   membersToAdd?: CreateAccessGroupRequestMembersToAddList;
 }
-const CreateAccessGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateAccessGroupRequest>;
-
 export type CreateAccessGroupResponseEntitlementsItem = "v0";
-const CreateAccessGroupResponseEntitlementsItem = S.String;
-
 export type CreateAccessGroupResponseEntitlementsList =
   Array<CreateAccessGroupResponseEntitlementsItem>;
-const CreateAccessGroupResponseEntitlementsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateAccessGroupResponseEntitlementsList>;
-
 /** Permissions that the team has in the access group. */
 export type CreateAccessGroupResponseTeamPermissionsList = Array<string>;
-const CreateAccessGroupResponseTeamPermissionsList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<CreateAccessGroupResponseTeamPermissionsList>;
-
 /** Roles that the team has in the access group. */
 export type CreateAccessGroupResponseTeamRolesList = Array<string>;
-const CreateAccessGroupResponseTeamRolesList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<CreateAccessGroupResponseTeamRolesList>;
-
 export interface CreateAccessGroupResponse {
   /** ID of the access group. */
   accessGroupId: string;
@@ -122,15 +89,8 @@ export interface CreateAccessGroupResponse {
   /** Timestamp in milliseconds when the access group was last updated. */
   updatedAt: string;
 }
-const CreateAccessGroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateAccessGroupResponse>;
-
 /** The project role that will be added to this Access Group. */
 export type CreateAccessGroupProjectRequestRole = "ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER";
-const CreateAccessGroupProjectRequestRole = S.String;
-
 export interface CreateAccessGroupProjectRequest {
   accessGroupIdOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -142,18 +102,11 @@ export interface CreateAccessGroupProjectRequest {
   /** The project role that will be added to this Access Group. */
   role: CreateAccessGroupProjectRequestRole | (string & {});
 }
-const CreateAccessGroupProjectRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAccessGroupProjectRequest>;
-
 export type CreateAccessGroupProjectResponseRole =
   | "ADMIN"
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-const CreateAccessGroupProjectResponseRole = S.String;
-
 export interface CreateAccessGroupProjectResponse {
   accessGroupId: string;
   createdAt: string;
@@ -162,11 +115,6 @@ export interface CreateAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-const CreateAccessGroupProjectResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateAccessGroupProjectResponse>;
-
 export interface DeleteAccessGroupRequest {
   idOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -174,17 +122,7 @@ export interface DeleteAccessGroupRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteAccessGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteAccessGroupRequest>;
-
 export interface DeleteAccessGroupResponse {}
-const DeleteAccessGroupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteAccessGroupResponse>;
-
 export interface DeleteAccessGroupProjectRequest {
   accessGroupIdOrName: string;
   projectId: string;
@@ -193,17 +131,7 @@ export interface DeleteAccessGroupProjectRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteAccessGroupProjectRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteAccessGroupProjectRequest>;
-
 export interface DeleteAccessGroupProjectResponse {}
-const DeleteAccessGroupProjectResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteAccessGroupProjectResponse>;
-
 export interface ListAccessGroupMembersRequest {
   /** The ID or name of the Access Group. */
   idOrName: string;
@@ -218,11 +146,6 @@ export interface ListAccessGroupMembersRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListAccessGroupMembersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListAccessGroupMembersRequest>;
-
 export type ListAccessGroupMembersResponseMembersItemTeamRole =
   | "BILLING"
   | "CONTRIBUTOR"
@@ -232,8 +155,6 @@ export type ListAccessGroupMembersResponseMembersItemTeamRole =
   | "SECURITY"
   | "VIEWER"
   | "VIEWER_FOR_PLUS";
-const ListAccessGroupMembersResponseMembersItemTeamRole = S.String;
-
 export interface ListAccessGroupMembersResponseMembersItem {
   avatar?: string;
   createdAt?: string;
@@ -243,36 +164,16 @@ export interface ListAccessGroupMembersResponseMembersItem {
   uid: string;
   username: string;
 }
-const ListAccessGroupMembersResponseMembersItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListAccessGroupMembersResponseMembersItem>;
-
 export type ListAccessGroupMembersResponseMembersList =
   Array<ListAccessGroupMembersResponseMembersItem>;
-const ListAccessGroupMembersResponseMembersList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListAccessGroupMembersResponseMembersList>;
-
 export interface ListAccessGroupMembersResponsePagination {
   count: number;
   next: string | null;
 }
-const ListAccessGroupMembersResponsePagination = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListAccessGroupMembersResponsePagination>;
-
 export interface ListAccessGroupMembersResponse {
   members: ListAccessGroupMembersResponseMembersList;
   pagination: ListAccessGroupMembersResponsePagination;
 }
-const ListAccessGroupMembersResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListAccessGroupMembersResponse>;
-
 export interface ListAccessGroupProjectsRequest {
   /** The ID or name of the Access Group. */
   idOrName: string;
@@ -285,29 +186,17 @@ export interface ListAccessGroupProjectsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListAccessGroupProjectsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListAccessGroupProjectsRequest>;
-
 export type ListAccessGroupProjectsResponsePagination = ListAccessGroupMembersResponsePagination;
 export interface ListAccessGroupProjectsResponseProjectsItemProject {
   framework?: string | null;
   latestDeploymentId?: string;
   name?: string;
 }
-const ListAccessGroupProjectsResponseProjectsItemProject = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListAccessGroupProjectsResponseProjectsItemProject>;
-
 export type ListAccessGroupProjectsResponseProjectsItemRole =
   | "ADMIN"
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-const ListAccessGroupProjectsResponseProjectsItemRole = S.String;
-
 export interface ListAccessGroupProjectsResponseProjectsItem {
   createdAt: string;
   project: ListAccessGroupProjectsResponseProjectsItemProject;
@@ -315,27 +204,12 @@ export interface ListAccessGroupProjectsResponseProjectsItem {
   role: ListAccessGroupProjectsResponseProjectsItemRole;
   updatedAt: string;
 }
-const ListAccessGroupProjectsResponseProjectsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListAccessGroupProjectsResponseProjectsItem>;
-
 export type ListAccessGroupProjectsResponseProjectsList =
   Array<ListAccessGroupProjectsResponseProjectsItem>;
-const ListAccessGroupProjectsResponseProjectsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListAccessGroupProjectsResponseProjectsList>;
-
 export interface ListAccessGroupProjectsResponse {
   pagination: ListAccessGroupMembersResponsePagination;
   projects: ListAccessGroupProjectsResponseProjectsList;
 }
-const ListAccessGroupProjectsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListAccessGroupProjectsResponse>;
-
 export interface ListAccessGroupsRequest {
   /** Filter access groups by project. */
   projectId?: string;
@@ -354,11 +228,6 @@ export interface ListAccessGroupsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListAccessGroupsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListAccessGroupsRequest>;
-
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList = Array<string>;
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList = Array<string>;
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList = Array<string>;
@@ -396,14 +265,7 @@ export interface ListAccessGroupsResponseBodyCase1 {
   pagination: ListAccessGroupMembersResponsePagination;
 }
 export type ListAccessGroupsResponseBody = unknown | ListAccessGroupsResponseBodyCase1;
-const ListAccessGroupsResponseBody = S.Unknown as any as S.Schema<ListAccessGroupsResponseBody>;
-
 export type ListAccessGroupsResponse = ListAccessGroupsResponseBody;
-const ListAccessGroupsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListAccessGroupsResponse>;
-
 export interface ReadAccessGroupRequest {
   idOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -411,17 +273,9 @@ export interface ReadAccessGroupRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ReadAccessGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ReadAccessGroupRequest>;
-
 export type ReadAccessGroupResponseEntitlementsItem = "v0";
 export type ReadAccessGroupResponseEntitlementsList =
   Array<ReadAccessGroupResponseEntitlementsItem>;
-const ReadAccessGroupResponseEntitlementsList =
-  CreateAccessGroupResponseEntitlementsList as any as S.Schema<ReadAccessGroupResponseEntitlementsList>;
-
 export type ReadAccessGroupResponseTeamPermissionsItem =
   | "AiGatewayBudgetManager"
   | "AiGatewayCredits"
@@ -444,14 +298,8 @@ export type ReadAccessGroupResponseTeamPermissionsItem =
   | "WorkflowDecryptor";
 export type ReadAccessGroupResponseTeamPermissionsList =
   Array<ReadAccessGroupResponseTeamPermissionsItem>;
-const ReadAccessGroupResponseTeamPermissionsList =
-  CreateAccessGroupResponseEntitlementsList as any as S.Schema<ReadAccessGroupResponseTeamPermissionsList>;
-
 /** Roles that the team has in the access group. */
 export type ReadAccessGroupResponseTeamRolesList = Array<string>;
-const ReadAccessGroupResponseTeamRolesList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ReadAccessGroupResponseTeamRolesList>;
-
 export interface ReadAccessGroupResponse {
   /** ID of the access group. */
   accessGroupId: string;
@@ -473,11 +321,6 @@ export interface ReadAccessGroupResponse {
   /** Timestamp in milliseconds when the access group was last updated. */
   updatedAt: string;
 }
-const ReadAccessGroupResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ReadAccessGroupResponse>;
-
 export interface ReadAccessGroupProjectRequest {
   accessGroupIdOrName: string;
   projectId: string;
@@ -486,11 +329,6 @@ export interface ReadAccessGroupProjectRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ReadAccessGroupProjectRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ReadAccessGroupProjectRequest>;
-
 export type ReadAccessGroupProjectResponseRole =
   | "ADMIN"
   | "PROJECT_DEVELOPER"
@@ -504,9 +342,6 @@ export interface ReadAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-const ReadAccessGroupProjectResponse =
-  CreateAccessGroupProjectResponse as any as S.Schema<ReadAccessGroupProjectResponse>;
-
 /** The project role that will be added to this Access Group. "null" will remove this project level role. */
 export type UpdateAccessGroupRequestProjectsItemRole =
   | "ADMIN"
@@ -519,19 +354,10 @@ export interface UpdateAccessGroupRequestProjectsItem {
   role: UpdateAccessGroupRequestProjectsItemRole | (string & {}) | null;
 }
 export type UpdateAccessGroupRequestProjectsList = Array<UpdateAccessGroupRequestProjectsItem>;
-const UpdateAccessGroupRequestProjectsList =
-  CreateAccessGroupRequestProjectsList as any as S.Schema<UpdateAccessGroupRequestProjectsList>;
-
 /** List of members to add to the access group. */
 export type UpdateAccessGroupRequestMembersToAddList = Array<string>;
-const UpdateAccessGroupRequestMembersToAddList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupRequestMembersToAddList>;
-
 /** List of members to remove from the access group. */
 export type UpdateAccessGroupRequestMembersToRemoveList = Array<string>;
-const UpdateAccessGroupRequestMembersToRemoveList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupRequestMembersToRemoveList>;
-
 export interface UpdateAccessGroupRequest {
   idOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -546,27 +372,13 @@ export interface UpdateAccessGroupRequest {
   /** List of members to remove from the access group. */
   membersToRemove?: UpdateAccessGroupRequestMembersToRemoveList;
 }
-const UpdateAccessGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UpdateAccessGroupRequest>;
-
 export type UpdateAccessGroupResponseEntitlementsItem = "v0";
 export type UpdateAccessGroupResponseEntitlementsList =
   Array<UpdateAccessGroupResponseEntitlementsItem>;
-const UpdateAccessGroupResponseEntitlementsList =
-  CreateAccessGroupResponseEntitlementsList as any as S.Schema<UpdateAccessGroupResponseEntitlementsList>;
-
 /** Permissions that the team has in the access group. */
 export type UpdateAccessGroupResponseTeamPermissionsList = Array<string>;
-const UpdateAccessGroupResponseTeamPermissionsList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupResponseTeamPermissionsList>;
-
 /** Roles that the team has in the access group. */
 export type UpdateAccessGroupResponseTeamRolesList = Array<string>;
-const UpdateAccessGroupResponseTeamRolesList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupResponseTeamRolesList>;
-
 export interface UpdateAccessGroupResponse {
   /** ID of the access group. */
   accessGroupId: string;
@@ -588,15 +400,8 @@ export interface UpdateAccessGroupResponse {
   /** Timestamp in milliseconds when the access group was last updated. */
   updatedAt: string;
 }
-const UpdateAccessGroupResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<UpdateAccessGroupResponse>;
-
 /** The project role that will be added to this Access Group. */
 export type UpdateAccessGroupProjectRequestRole = "ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER";
-const UpdateAccessGroupProjectRequestRole = S.String;
-
 export interface UpdateAccessGroupProjectRequest {
   accessGroupIdOrName: string;
   projectId: string;
@@ -607,11 +412,6 @@ export interface UpdateAccessGroupProjectRequest {
   /** The project role that will be added to this Access Group. */
   role: UpdateAccessGroupProjectRequestRole | (string & {});
 }
-const UpdateAccessGroupProjectRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateAccessGroupProjectRequest>;
-
 export type UpdateAccessGroupProjectResponseRole =
   | "ADMIN"
   | "PROJECT_DEVELOPER"
@@ -625,9 +425,6 @@ export interface UpdateAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-const UpdateAccessGroupProjectResponse =
-  CreateAccessGroupProjectResponse as any as S.Schema<UpdateAccessGroupProjectResponse>;
-
 export type CreateAccessGroupError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Creates an access group Allows to create an access group */
 export const createAccessGroup: API.OperationMethod<
@@ -636,8 +433,8 @@ export const createAccessGroup: API.OperationMethod<
   CreateAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessGroupRequest,
-  output: CreateAccessGroupResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateAccessGroupRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -651,8 +448,8 @@ export const createAccessGroupProject: API.OperationMethod<
   CreateAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessGroupProjectRequest,
-  output: CreateAccessGroupProjectResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateAccessGroupProjectRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -666,8 +463,8 @@ export const deleteAccessGroup: API.OperationMethod<
   DeleteAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessGroupRequest,
-  output: DeleteAccessGroupResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteAccessGroupRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -681,8 +478,8 @@ export const deleteAccessGroupProject: API.OperationMethod<
   DeleteAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessGroupProjectRequest,
-  output: DeleteAccessGroupProjectResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<DeleteAccessGroupProjectRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<DeleteAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -696,8 +493,8 @@ export const listAccessGroupMembers: API.OperationMethod<
   ListAccessGroupMembersError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessGroupMembersRequest,
-  output: ListAccessGroupMembersResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<ListAccessGroupMembersRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ListAccessGroupMembersResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -711,8 +508,8 @@ export const listAccessGroupProjects: API.OperationMethod<
   ListAccessGroupProjectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessGroupProjectsRequest,
-  output: ListAccessGroupProjectsResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<ListAccessGroupProjectsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<ListAccessGroupProjectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -726,8 +523,8 @@ export const listAccessGroups: API.OperationMethod<
   ListAccessGroupsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessGroupsRequest,
-  output: ListAccessGroupsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ListAccessGroupsRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ListAccessGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -741,8 +538,8 @@ export const readAccessGroup: API.OperationMethod<
   ReadAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadAccessGroupRequest,
-  output: ReadAccessGroupResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<ReadAccessGroupRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ReadAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -756,8 +553,8 @@ export const readAccessGroupProject: API.OperationMethod<
   ReadAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadAccessGroupProjectRequest,
-  output: ReadAccessGroupProjectResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<ReadAccessGroupProjectRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<ReadAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -771,8 +568,8 @@ export const updateAccessGroup: API.OperationMethod<
   UpdateAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessGroupRequest,
-  output: UpdateAccessGroupResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<UpdateAccessGroupRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<UpdateAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -786,8 +583,8 @@ export const updateAccessGroupProject: API.OperationMethod<
   UpdateAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessGroupProjectRequest,
-  output: UpdateAccessGroupProjectResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<UpdateAccessGroupProjectRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<UpdateAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -800,13 +597,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String,
-          role: S.NullOr(CreateAccessGroupRequestProjectsItemRole),
+          role: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "CreateAccessGroupRequestProjectsItem",
       });
     case 1:
-      return S.Array(CreateAccessGroupRequestProjectsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.Array(S.String);
     case 3:
@@ -815,24 +612,24 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.String,
-          projects: S.optional(CreateAccessGroupRequestProjectsList),
-          membersToAdd: S.optional(CreateAccessGroupRequestMembersToAddList),
+          projects: S.optional(__S(1, __c0, 1)),
+          membersToAdd: S.optional(__S(2, __c0, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/access-groups", code: 200 })),
       ).annotate({ identifier: "CreateAccessGroupRequest" });
     case 4:
-      return S.Array(CreateAccessGroupResponseEntitlementsItem);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           accessGroupId: S.String,
           createdAt: S.String,
-          entitlements: CreateAccessGroupResponseEntitlementsList,
+          entitlements: __S(4, __c0, 4),
           membersCount: S.Number,
           name: S.String,
           projectsCount: S.Number,
           teamId: S.String,
-          teamPermissions: S.optional(CreateAccessGroupResponseTeamPermissionsList),
-          teamRoles: S.optional(CreateAccessGroupResponseTeamRolesList),
+          teamPermissions: S.optional(__S(2, __c0, 2)),
+          teamRoles: S.optional(__S(2, __c0, 2)),
           updatedAt: S.String,
         }),
       ).annotate({
@@ -845,7 +642,7 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           projectId: S.String,
-          role: CreateAccessGroupProjectRequestRole,
+          role: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -862,7 +659,7 @@ function __c0(j: number): any {
           accessGroupId: S.String,
           createdAt: S.String,
           projectId: S.String,
-          role: CreateAccessGroupProjectResponseRole,
+          role: S.String,
           teamId: S.String,
           updatedAt: S.String,
         }),
@@ -926,7 +723,7 @@ function __c1(j: number): any {
           createdAt: S.optional(S.String),
           email: S.String,
           name: S.optional(S.String),
-          teamRole: ListAccessGroupMembersResponseMembersItemTeamRole,
+          teamRole: S.String,
           uid: S.String,
           username: S.String,
         }),
@@ -934,7 +731,7 @@ function __c1(j: number): any {
         identifier: "ListAccessGroupMembersResponseMembersItem",
       });
     case 6:
-      return S.Array(ListAccessGroupMembersResponseMembersItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -951,8 +748,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          members: ListAccessGroupMembersResponseMembersList,
-          pagination: ListAccessGroupMembersResponsePagination,
+          members: __S(14, __c1, 6),
+          pagination: __S(15, __c1, 7),
         }),
       ).annotate({
         identifier: "ListAccessGroupMembersResponse",
@@ -983,21 +780,21 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
-          project: ListAccessGroupProjectsResponseProjectsItemProject,
+          project: __S(18, __c2, 2),
           projectId: S.String,
-          role: ListAccessGroupProjectsResponseProjectsItemRole,
+          role: S.String,
           updatedAt: S.String,
         }),
       ).annotate({
         identifier: "ListAccessGroupProjectsResponseProjectsItem",
       });
     case 4:
-      return S.Array(ListAccessGroupProjectsResponseProjectsItem);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListAccessGroupMembersResponsePagination,
-          projects: ListAccessGroupProjectsResponseProjectsList,
+          pagination: __S(15, __c1, 7),
+          projects: __S(20, __c2, 4),
         }),
       ).annotate({
         identifier: "ListAccessGroupProjectsResponse",
@@ -1016,7 +813,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/access-groups", code: 200 })),
       ).annotate({ identifier: "ListAccessGroupsRequest" });
     case 7:
-      return S.suspend(() => ListAccessGroupsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccessGroupsResponse",
       });
   }
@@ -1036,14 +833,14 @@ function __c3(j: number): any {
         S.Struct({
           accessGroupId: S.String,
           createdAt: S.String,
-          entitlements: S.optional(ReadAccessGroupResponseEntitlementsList),
+          entitlements: S.optional(__S(4, __c0, 4)),
           isDsyncManaged: S.Boolean,
           membersCount: S.Number,
           name: S.String,
           projectsCount: S.Number,
           teamId: S.String,
-          teamPermissions: S.optional(ReadAccessGroupResponseTeamPermissionsList),
-          teamRoles: S.optional(ReadAccessGroupResponseTeamRolesList),
+          teamPermissions: S.optional(__S(4, __c0, 4)),
+          teamRoles: S.optional(__S(2, __c0, 2)),
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "ReadAccessGroupResponse" });
@@ -1071,9 +868,9 @@ function __c3(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
-          projects: S.optional(UpdateAccessGroupRequestProjectsList),
-          membersToAdd: S.optional(UpdateAccessGroupRequestMembersToAddList),
-          membersToRemove: S.optional(UpdateAccessGroupRequestMembersToRemoveList),
+          projects: S.optional(__S(1, __c0, 1)),
+          membersToAdd: S.optional(__S(2, __c0, 2)),
+          membersToRemove: S.optional(__S(2, __c0, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/access-groups/{idOrName}", code: 200 })),
       ).annotate({ identifier: "UpdateAccessGroupRequest" });
     case 4:
@@ -1081,13 +878,13 @@ function __c3(j: number): any {
         S.Struct({
           accessGroupId: S.String,
           createdAt: S.String,
-          entitlements: UpdateAccessGroupResponseEntitlementsList,
+          entitlements: __S(4, __c0, 4),
           membersCount: S.Number,
           name: S.String,
           projectsCount: S.Number,
           teamId: S.String,
-          teamPermissions: S.optional(UpdateAccessGroupResponseTeamPermissionsList),
-          teamRoles: S.optional(UpdateAccessGroupResponseTeamRolesList),
+          teamPermissions: S.optional(__S(2, __c0, 2)),
+          teamRoles: S.optional(__S(2, __c0, 2)),
           updatedAt: S.String,
         }),
       ).annotate({
@@ -1100,7 +897,7 @@ function __c3(j: number): any {
           projectId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          role: UpdateAccessGroupProjectRequestRole,
+          role: S.String,
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1112,4 +909,9 @@ function __c3(j: number): any {
         identifier: "UpdateAccessGroupProjectRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

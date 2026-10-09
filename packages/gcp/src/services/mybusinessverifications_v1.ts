@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,22 +69,12 @@ export interface CompleteVerificationRequest {
   /** Required. PIN code received by the merchant to complete the verification. */
   pin?: string;
 }
-const CompleteVerificationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CompleteVerificationRequest>;
-
 export interface CompleteLocationsVerificationsRequest {
   /** Required. Resource name of the verification to complete. */
   name: string;
   /** Request body */
   body?: CompleteVerificationRequest;
 }
-const CompleteLocationsVerificationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CompleteLocationsVerificationsRequest>;
-
 export type VerificationMethodEnum =
   | "VERIFICATION_METHOD_UNSPECIFIED"
   | "ADDRESS"
@@ -91,11 +83,7 @@ export type VerificationMethodEnum =
   | "SMS"
   | "AUTO"
   | "TRUSTED_PARTNER";
-const VerificationMethodEnum = S.String;
-
 export type VerificationStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "COMPLETED" | "FAILED";
-const VerificationStateEnum = S.String;
-
 /** A verification represents a verification attempt on a location. */
 export interface Verification {
   /** The method of the verification. */
@@ -109,21 +97,12 @@ export interface Verification {
   /** The state of the verification. */
   state?: VerificationStateEnum;
 }
-const Verification = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Verification>;
-
 /** Response message for Verifications.CompleteVerificationAction. */
 export interface CompleteVerificationResponse {
   /** The completed verification. */
   verification?: Verification;
 }
-const CompleteVerificationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CompleteVerificationResponse>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringList>;
-
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
@@ -149,18 +128,11 @@ export interface PostalAddress {
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
 }
-const PostalAddress = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PostalAddress>;
-
 /** Additional data for service business verification. */
 export interface ServiceBusinessContext {
   /** The verification address of the location. It is used to either enable more verification options or send a postcard. */
   address?: PostalAddress;
 }
-const ServiceBusinessContext = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ServiceBusinessContext>;
-
 /** Request message for Verifications.FetchVerificationOptions. */
 export interface FetchVerificationOptionsRequest {
   /** Required. The BCP 47 language code representing the language that is to be used for the verification process. Available options vary by language. */
@@ -168,22 +140,12 @@ export interface FetchVerificationOptionsRequest {
   /** Optional. Extra context information for the verification of service businesses. Can only be applied to the locations whose business type is CUSTOMER_LOCATION_ONLY. Specifying an accurate address could enable more options. INVALID_ARGUMENT will be thrown if it is set for other business types of locations. */
   context?: ServiceBusinessContext;
 }
-const FetchVerificationOptionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<FetchVerificationOptionsRequest>;
-
 export interface FetchVerificationOptionsLocationsRequest {
   /** Required. The location to verify. */
   location: string;
   /** Request body */
   body?: FetchVerificationOptionsRequest;
 }
-const FetchVerificationOptionsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<FetchVerificationOptionsLocationsRequest>;
-
 export type VerificationOptionVerificationMethodEnum =
   | "VERIFICATION_METHOD_UNSPECIFIED"
   | "ADDRESS"
@@ -192,8 +154,6 @@ export type VerificationOptionVerificationMethodEnum =
   | "SMS"
   | "AUTO"
   | "TRUSTED_PARTNER";
-const VerificationOptionVerificationMethodEnum = S.String;
-
 /** Display data for verifications through postcard. */
 export interface AddressVerificationData {
   /** Address that a postcard can be sent to. */
@@ -203,11 +163,6 @@ export interface AddressVerificationData {
   /** Merchant's business name. */
   business?: string;
 }
-const AddressVerificationData = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AddressVerificationData>;
-
 /** Display data for verifications through email. */
 export interface EmailVerificationData {
   /** Whether client is allowed to provide a different user name. */
@@ -217,11 +172,6 @@ export interface EmailVerificationData {
   /** User name in the email address. e.g. "foo" in foo@gmail.com */
   user?: string;
 }
-const EmailVerificationData = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<EmailVerificationData>;
-
 /** The verification option represents how to verify the location (indicated by verification method) and where the verification will be sent to (indicated by display data). */
 export interface VerificationOption {
   /** Set only if the method is VETTED_PARTNER. */
@@ -235,49 +185,25 @@ export interface VerificationOption {
   /** Set only if the method is EMAIL. */
   emailData?: EmailVerificationData;
 }
-const VerificationOption = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<VerificationOption>;
-
 export type VerificationOptionList = Array<VerificationOption>;
-const VerificationOptionList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<VerificationOptionList>;
-
 /** Response message for Verifications.FetchVerificationOptions. */
 export interface FetchVerificationOptionsResponse {
   /** The available verification options. */
   options?: VerificationOptionList;
 }
-const FetchVerificationOptionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<FetchVerificationOptionsResponse>;
-
 /** Request message for Verifications.GenerateInstantVerificationToken. */
 export interface GenerateInstantVerificationTokenRequest {
   /** The location identifier associated with an unverified listing. This is the location id generated at the time that the listing was originally created. It is the final portion of a location resource name as generated by the Google My Business API. Note: the caller must be an owner or manager of this listing in order to generate a verification token. See the [location resource](/my-business/reference/rest/v4/accounts.locations) documentation for more information. */
   locationId?: string;
 }
-const GenerateInstantVerificationTokenRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GenerateInstantVerificationTokenRequest>;
-
 export interface GenerateVerificationTokensRequest {
   /** Request body */
   body?: GenerateInstantVerificationTokenRequest;
 }
-const GenerateVerificationTokensRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GenerateVerificationTokensRequest>;
-
 export type GenerateInstantVerificationTokenResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
-const GenerateInstantVerificationTokenResponseResultEnum = S.String;
-
 /** Response message for Verifications.GenerateInstantVerificationToken. */
 export interface GenerateInstantVerificationTokenResponse {
   /** Output only. The result of the instant verification token generation. */
@@ -285,49 +211,28 @@ export interface GenerateInstantVerificationTokenResponse {
   /** The generated instant verification token. */
   instantVerificationToken?: string;
 }
-const GenerateInstantVerificationTokenResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GenerateInstantVerificationTokenResponse>;
-
 export interface GetVoiceOfMerchantStateLocationsRequest {
   /** Required. Resource name of the location. */
   name: string;
 }
-const GetVoiceOfMerchantStateLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetVoiceOfMerchantStateLocationsRequest>;
-
 /** Indicates that the location duplicates another location that is in good standing. */
 export interface ResolveOwnershipConflict {}
-const ResolveOwnershipConflict = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ResolveOwnershipConflict>;
-
 /** Indicates that the location will gain voice of merchant after passing review. */
 export type WaitForVoiceOfMerchant = ResolveOwnershipConflict;
 export type ComplyWithGuidelinesRecommendationReasonEnum =
   | "RECOMMENDATION_REASON_UNSPECIFIED"
   | "BUSINESS_LOCATION_SUSPENDED"
   | "BUSINESS_LOCATION_DISABLED";
-const ComplyWithGuidelinesRecommendationReasonEnum = S.String;
-
 /** Indicates that the location fails to comply with our [guidelines](https://support.google.com/business/answer/3038177). */
 export interface ComplyWithGuidelines {
   /** The reason why the location is being recommended to comply with guidelines. */
   recommendationReason?: ComplyWithGuidelinesRecommendationReasonEnum;
 }
-const ComplyWithGuidelines = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ComplyWithGuidelines>;
-
 /** Indicates that the location requires verification. Contains information about the current verification actions performed on the location. */
 export interface Verify {
   /** Indicates whether a verification process has already started, and can be completed by the location. */
   hasPendingVerification?: boolean;
 }
-const Verify = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Verify>;
-
 /** Response message for VoiceOfMerchant.GetVoiceOfMerchantState. */
 export interface VoiceOfMerchantState {
   /** This location duplicates another location that is in good standing. If you have access to the location in good standing, use that location's id to perform operations. Otherwise, request access from the current owner. */
@@ -343,8 +248,6 @@ export interface VoiceOfMerchantState {
   /** Start or continue the verification process. */
   verify?: Verify;
 }
-const VoiceOfMerchantState = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<VoiceOfMerchantState>;
-
 export interface ListLocationsVerificationsRequest {
   /** If specified, returns the next page of verifications. */
   pageToken?: string;
@@ -353,14 +256,7 @@ export interface ListLocationsVerificationsRequest {
   /** Required. Resource name of the location that verification requests belong to. */
   parent: string;
 }
-const ListLocationsVerificationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListLocationsVerificationsRequest>;
-
 export type VerificationList = Array<Verification>;
-const VerificationList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<VerificationList>;
-
 /** Response message for Verifications.ListVerifications. */
 export interface ListVerificationsResponse {
   /** List of the verifications. */
@@ -368,18 +264,11 @@ export interface ListVerificationsResponse {
   /** If the number of verifications exceeded the requested page size, this field will be populated with a token to fetch the next page of verification on a subsequent call. If there are no more attributes, this field will not be present in the response. */
   nextPageToken?: string;
 }
-const ListVerificationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListVerificationsResponse>;
-
 /** Token generated by a vetted [partner](https://support.google.com/business/answer/7674102). */
 export interface VerificationToken {
   /** The token string. */
   tokenString?: string;
 }
-const VerificationToken = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<VerificationToken>;
-
 export type VerifyLocationRequestMethodEnum =
   | "VERIFICATION_METHOD_UNSPECIFIED"
   | "ADDRESS"
@@ -388,8 +277,6 @@ export type VerifyLocationRequestMethodEnum =
   | "SMS"
   | "AUTO"
   | "TRUSTED_PARTNER";
-const VerifyLocationRequestMethodEnum = S.String;
-
 /** Request message for Verifications.VerifyLocation. */
 export interface VerifyLocationRequest {
   /** Optional. The BCP 47 language code representing the language that is to be used for the verification process. */
@@ -409,32 +296,17 @@ export interface VerifyLocationRequest {
   /** Optional. The input for EMAIL method. Email address where the PIN should be sent to. An email address is accepted only if it is one of the addresses provided by FetchVerificationOptions. If the EmailVerificationData has is_user_name_editable set to true, the client may specify a different user name (local-part) but must match the domain name. */
   emailAddress?: string;
 }
-const VerifyLocationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<VerifyLocationRequest>;
-
 export interface VerifyLocationsRequest {
   /** Required. Resource name of the location to verify. */
   name: string;
   /** Request body */
   body?: VerifyLocationRequest;
 }
-const VerifyLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<VerifyLocationsRequest>;
-
 /** Response message for Verifications.VerifyLocation. */
 export interface VerifyLocationResponse {
   /** The created verification request. */
   verification?: Verification;
 }
-const VerifyLocationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<VerifyLocationResponse>;
-
 export type CompleteLocationsVerificationsError =
   | NotFound
   | Forbidden
@@ -448,8 +320,8 @@ export const completeLocationsVerifications: API.OperationMethod<
   CompleteLocationsVerificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteLocationsVerificationsRequest,
-  output: CompleteVerificationResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CompleteLocationsVerificationsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CompleteVerificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -468,8 +340,8 @@ export const fetchVerificationOptionsLocations: API.OperationMethod<
   FetchVerificationOptionsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchVerificationOptionsLocationsRequest,
-  output: FetchVerificationOptionsResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<FetchVerificationOptionsLocationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<FetchVerificationOptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -488,8 +360,8 @@ export const generateVerificationTokens: API.OperationMethod<
   GenerateVerificationTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateVerificationTokensRequest,
-  output: GenerateInstantVerificationTokenResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<GenerateVerificationTokensRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GenerateInstantVerificationTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -503,8 +375,8 @@ export const getVoiceOfMerchantStateLocations: API.OperationMethod<
   GetVoiceOfMerchantStateLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVoiceOfMerchantStateLocationsRequest,
-  output: VoiceOfMerchantState,
+  input: __S(17, __c2, 1) as any as S.Schema<GetVoiceOfMerchantStateLocationsRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<VoiceOfMerchantState>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -519,8 +391,8 @@ export const listLocationsVerifications: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVerificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLocationsVerificationsRequest,
-  output: ListVerificationsResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<ListLocationsVerificationsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<ListVerificationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -535,8 +407,8 @@ export const verifyLocations: API.OperationMethod<
   VerifyLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyLocationsRequest,
-  output: VerifyLocationResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<VerifyLocationsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<VerifyLocationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -557,7 +429,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CompleteVerificationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -571,17 +443,17 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(VerificationMethodEnum),
+          method: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           announcement: S.optional(S.String),
-          state: S.optional(VerificationStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Verification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          verification: S.optional(Verification),
+          verification: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "CompleteVerificationResponse",
@@ -596,9 +468,9 @@ function __c0(j: number): any {
           organization: S.optional(S.String),
           administrativeArea: S.optional(S.String),
           sortingCode: S.optional(S.String),
-          recipients: S.optional(StringList),
+          recipients: S.optional(__S(4, __c0, 4)),
           languageCode: S.optional(S.String),
-          addressLines: S.optional(StringList),
+          addressLines: S.optional(__S(4, __c0, 4)),
           locality: S.optional(S.String),
           sublocality: S.optional(S.String),
           regionCode: S.optional(S.String),
@@ -607,14 +479,14 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(PostalAddress),
+          address: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "ServiceBusinessContext" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
-          context: S.optional(ServiceBusinessContext),
+          context: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "FetchVerificationOptionsRequest",
@@ -627,7 +499,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(FetchVerificationOptionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -641,7 +513,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(PostalAddress),
+          address: S.optional(__S(5, __c0, 5)),
           expectedDeliveryDaysRegion: S.optional(S.Number),
           business: S.optional(S.String),
         }),
@@ -658,18 +530,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           announcement: S.optional(S.String),
-          verificationMethod: S.optional(VerificationOptionVerificationMethodEnum),
+          verificationMethod: S.optional(S.String),
           phoneNumber: S.optional(S.String),
-          addressData: S.optional(AddressVerificationData),
-          emailData: S.optional(EmailVerificationData),
+          addressData: S.optional(__S(9, __c1, 1)),
+          emailData: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "VerificationOption" });
     case 4:
-      return S.Array(VerificationOption);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(VerificationOptionList),
+          options: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "FetchVerificationOptionsResponse",
@@ -685,7 +557,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(GenerateInstantVerificationTokenRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -703,7 +575,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GenerateInstantVerificationTokenResponseResultEnum),
+          result: S.optional(S.String),
           instantVerificationToken: S.optional(S.String),
         }),
       ).annotate({
@@ -730,7 +602,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          recommendationReason: S.optional(ComplyWithGuidelinesRecommendationReasonEnum),
+          recommendationReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplyWithGuidelines" });
     case 4:
@@ -742,12 +614,12 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resolveOwnershipConflict: S.optional(ResolveOwnershipConflict),
+          resolveOwnershipConflict: S.optional(__S(18, __c2, 2)),
           hasBusinessAuthority: S.optional(S.Boolean),
           hasVoiceOfMerchant: S.optional(S.Boolean),
-          waitForVoiceOfMerchant: S.optional(ResolveOwnershipConflict),
-          complyWithGuidelines: S.optional(ComplyWithGuidelines),
-          verify: S.optional(Verify),
+          waitForVoiceOfMerchant: S.optional(__S(18, __c2, 2)),
+          complyWithGuidelines: S.optional(__S(19, __c2, 3)),
+          verify: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "VoiceOfMerchantState" });
     case 6:
@@ -767,7 +639,7 @@ function __c2(j: number): any {
         identifier: "ListLocationsVerificationsRequest",
       });
     case 7:
-      return S.Array(Verification);
+      return S.Array(__S(2, __c0, 2));
   }
 }
 function __c3(j: number): any {
@@ -775,7 +647,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          verifications: S.optional(VerificationList),
+          verifications: S.optional(__S(23, __c2, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -791,12 +663,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
-          token: S.optional(VerificationToken),
+          token: S.optional(__S(25, __c3, 1)),
           phoneNumber: S.optional(S.String),
-          context: S.optional(ServiceBusinessContext),
+          context: S.optional(__S(6, __c0, 6)),
           trustedPartnerToken: S.optional(S.String),
           mailerContact: S.optional(S.String),
-          method: S.optional(VerifyLocationRequestMethodEnum),
+          method: S.optional(S.String),
           emailAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerifyLocationRequest" });
@@ -804,7 +676,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(VerifyLocationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -816,8 +688,13 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          verification: S.optional(Verification),
+          verification: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "VerifyLocationResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

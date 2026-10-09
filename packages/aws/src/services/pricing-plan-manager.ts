@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Pricing Plan Manager",
   serviceShapeName: "AWSPricingPlanManager",
@@ -82,25 +84,15 @@ export interface ApprovePaidSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-const ApprovePaidSubscriptionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApprovePaidSubscriptionInput>;
 export type ScheduledChangeType = "DOWNGRADE" | "CANCELLATION" | (string & {});
-const ScheduledChangeType = S.String;
-
 export interface ScheduledChange {
   changeType: ScheduledChangeType;
   effectiveDate?: Date;
   planTier?: string;
   usageLevel?: string;
 }
-const ScheduledChange = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ScheduledChange>;
 export type Status = "PENDING_APPROVAL" | "ACTIVE" | "SYNC_IN_PROGRESS" | "FAILED" | (string & {});
-const Status = S.String;
-
 export type ResourceArns = string[];
-const ResourceArns = /*@__PURE__*/ __L.at(__c0, 2);
 export interface Subscription {
   arn: string;
   planFamily: string;
@@ -113,66 +105,39 @@ export interface Subscription {
   createdAt: Date;
   updatedAt: Date;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Subscription>;
 export interface ApprovePaidSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const ApprovePaidSubscriptionOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ApprovePaidSubscriptionOutput>;
 export interface AssociateResourcesToSubscriptionInput {
   arn: string;
   resourceArns: string[];
   ifMatch: string;
   clientToken?: string;
 }
-const AssociateResourcesToSubscriptionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssociateResourcesToSubscriptionInput>;
 export interface AssociateResourcesToSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const AssociateResourcesToSubscriptionOutput =
-  ApprovePaidSubscriptionOutput as any as S.Schema<AssociateResourcesToSubscriptionOutput>;
 export interface CancelSubscriptionInput {
   arn: string;
   ifMatch: string;
   clientToken?: string;
 }
-const CancelSubscriptionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelSubscriptionInput>;
 export interface CancelSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const CancelSubscriptionOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CancelSubscriptionOutput>;
 export interface CancelSubscriptionChangeInput {
   arn: string;
   ifMatch: string;
   clientToken?: string;
 }
-const CancelSubscriptionChangeInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelSubscriptionChangeInput>;
 export interface CancelSubscriptionChangeOutput {
   subscription: Subscription;
   eTag: string;
 }
-const CancelSubscriptionChangeOutput =
-  ApprovePaidSubscriptionOutput as any as S.Schema<CancelSubscriptionChangeOutput>;
 export type ApprovalMode = "MANUAL" | "IMMEDIATE" | (string & {});
-const ApprovalMode = S.String;
-
 export interface CreateSubscriptionInput {
   planFamily: string;
   planTier: string;
@@ -181,48 +146,30 @@ export interface CreateSubscriptionInput {
   approvalMode?: ApprovalMode;
   clientToken?: string;
 }
-const CreateSubscriptionInput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateSubscriptionInput>;
 export interface CreateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const CreateSubscriptionOutput =
-  CancelSubscriptionOutput as any as S.Schema<CreateSubscriptionOutput>;
 export interface DisassociateResourcesFromSubscriptionInput {
   arn: string;
   resourceArns: string[];
   ifMatch: string;
   clientToken?: string;
 }
-const DisassociateResourcesFromSubscriptionInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DisassociateResourcesFromSubscriptionInput>;
 export interface DisassociateResourcesFromSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const DisassociateResourcesFromSubscriptionOutput =
-  ApprovePaidSubscriptionOutput as any as S.Schema<DisassociateResourcesFromSubscriptionOutput>;
 export interface GetSubscriptionInput {
   arn: string;
 }
-const GetSubscriptionInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetSubscriptionInput>;
 export interface GetSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const GetSubscriptionOutput = CancelSubscriptionOutput as any as S.Schema<GetSubscriptionOutput>;
 export interface ListSubscriptionsInput {
   nextToken?: string;
 }
-const ListSubscriptionsInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListSubscriptionsInput>;
 export interface SubscriptionSummary {
   arn: string;
   planFamily: string;
@@ -236,17 +183,11 @@ export interface SubscriptionSummary {
   updatedAt: Date;
   eTag: string;
 }
-const SubscriptionSummary = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SubscriptionSummary>;
 export type SubscriptionSummaryList = SubscriptionSummary[];
-const SubscriptionSummaryList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface ListSubscriptionsOutput {
   subscriptionSummaries: SubscriptionSummary[];
   nextToken?: string;
 }
-const ListSubscriptionsOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListSubscriptionsOutput>;
 export interface UpdateSubscriptionInput {
   arn: string;
   planTier: string;
@@ -254,16 +195,10 @@ export interface UpdateSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-const UpdateSubscriptionInput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UpdateSubscriptionInput>;
 export interface UpdateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const UpdateSubscriptionOutput =
-  CancelSubscriptionOutput as any as S.Schema<UpdateSubscriptionOutput>;
 export type ApprovePaidSubscriptionError =
   | AccessDeniedException
   | ConflictException
@@ -283,8 +218,8 @@ export const approvePaidSubscription: API.OperationMethod<
   ApprovePaidSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApprovePaidSubscriptionInput,
-  output: ApprovePaidSubscriptionOutput,
+  input: __S(0, __c0, 0) as any as S.Schema<ApprovePaidSubscriptionInput>,
+  output: __S(4, __c0, 4) as any as S.Schema<ApprovePaidSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -317,8 +252,8 @@ export const associateResourcesToSubscription: API.OperationMethod<
   AssociateResourcesToSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateResourcesToSubscriptionInput,
-  output: AssociateResourcesToSubscriptionOutput,
+  input: __S(5, __c0, 5) as any as S.Schema<AssociateResourcesToSubscriptionInput>,
+  output: __S(4, __c0, 4) as any as S.Schema<AssociateResourcesToSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -353,8 +288,8 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelSubscriptionInput,
-  output: CancelSubscriptionOutput,
+  input: __S(6, __c0, 6) as any as S.Schema<CancelSubscriptionInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<CancelSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -387,8 +322,8 @@ export const cancelSubscriptionChange: API.OperationMethod<
   CancelSubscriptionChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelSubscriptionChangeInput,
-  output: CancelSubscriptionChangeOutput,
+  input: __S(8, __c1, 0) as any as S.Schema<CancelSubscriptionChangeInput>,
+  output: __S(4, __c0, 4) as any as S.Schema<CancelSubscriptionChangeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -424,8 +359,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionInput,
-  output: CreateSubscriptionOutput,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateSubscriptionInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -459,8 +394,8 @@ export const disassociateResourcesFromSubscription: API.OperationMethod<
   DisassociateResourcesFromSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateResourcesFromSubscriptionInput,
-  output: DisassociateResourcesFromSubscriptionOutput,
+  input: __S(10, __c1, 2) as any as S.Schema<DisassociateResourcesFromSubscriptionInput>,
+  output: __S(4, __c0, 4) as any as S.Schema<DisassociateResourcesFromSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -490,8 +425,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionInput,
-  output: GetSubscriptionOutput,
+  input: __S(11, __c1, 3) as any as S.Schema<GetSubscriptionInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<GetSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -521,8 +456,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSubscriptionsInput,
-  output: ListSubscriptionsOutput,
+  input: __S(12, __c1, 4) as any as S.Schema<ListSubscriptionsInput>,
+  output: __S(15, __c1, 7) as any as S.Schema<ListSubscriptionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -562,8 +497,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionInput,
-  output: UpdateSubscriptionOutput,
+  input: __S(16, __c2, 0) as any as S.Schema<UpdateSubscriptionInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<UpdateSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -603,7 +538,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          changeType: ScheduledChangeType,
+          changeType: S.String,
           effectiveDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           planTier: S.optional(S.String),
           usageLevel: S.optional(S.String),
@@ -618,10 +553,10 @@ function __c0(j: number): any {
           planFamily: S.String,
           planTier: S.String,
           usageLevel: S.optional(S.String),
-          scheduledChange: S.optional(ScheduledChange),
-          status: Status,
+          scheduledChange: S.optional(__S(1, __c0, 1)),
+          status: S.String,
           statusReason: S.optional(S.String),
-          resourceArns: ResourceArns,
+          resourceArns: __S(2, __c0, 2),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
@@ -629,7 +564,9 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
+          subscription: __S(3, __c0, 3)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "Subscription" }),
           eTag: S.String.pipe(T.HttpHeader("ETag")),
         }),
       ).annotate({
@@ -639,7 +576,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          resourceArns: ResourceArns,
+          resourceArns: __S(2, __c0, 2),
           ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -675,7 +612,9 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
+          subscription: __S(3, __c0, 3)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "Subscription" }),
           eTag: S.String.pipe(T.HttpHeader("ETag")),
         }),
       ).annotate({ identifier: "CancelSubscriptionOutput" });
@@ -708,8 +647,8 @@ function __c1(j: number): any {
           planFamily: S.String,
           planTier: S.String,
           usageLevel: S.optional(S.String),
-          resourceArns: ResourceArns,
-          approvalMode: S.optional(ApprovalMode),
+          resourceArns: __S(2, __c0, 2),
+          approvalMode: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -726,7 +665,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          resourceArns: ResourceArns,
+          resourceArns: __S(2, __c0, 2),
           ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -775,21 +714,21 @@ function __c1(j: number): any {
           planFamily: S.String,
           planTier: S.String,
           usageLevel: S.optional(S.String),
-          scheduledChange: S.optional(ScheduledChange),
-          status: Status,
+          scheduledChange: S.optional(__S(1, __c0, 1)),
+          status: S.String,
           statusReason: S.optional(S.String),
-          resourceArns: ResourceArns,
+          resourceArns: __S(2, __c0, 2),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           eTag: S.String,
         }),
       ).annotate({ identifier: "SubscriptionSummary" });
     case 6:
-      return S.Array(SubscriptionSummary);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          subscriptionSummaries: SubscriptionSummaryList,
+          subscriptionSummaries: __S(14, __c1, 6),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSubscriptionsOutput" });
@@ -817,4 +756,9 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "UpdateSubscriptionInput" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

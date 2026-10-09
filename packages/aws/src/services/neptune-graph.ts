@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Neptune Graph",
   serviceShapeName: "AmazonNeptuneGraph",
@@ -110,7 +112,7 @@ export class ConflictException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ConflictExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ConflictExceptionReason",
         }),
       ),
@@ -155,7 +157,7 @@ export class UnprocessableException
     "UnprocessableException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => UnprocessableExceptionReason).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "UnprocessableExceptionReason",
       }),
     },
@@ -167,7 +169,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
@@ -178,10 +180,6 @@ export type ExportTaskId = string;
 export interface CancelExportTaskInput {
   taskIdentifier: string;
 }
-const CancelExportTaskInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelExportTaskInput>;
 export type GraphId = string;
 export type RoleArn = string;
 export type ExportTaskStatus =
@@ -193,15 +191,9 @@ export type ExportTaskStatus =
   | "CANCELLED"
   | "DELETED"
   | (string & {});
-const ExportTaskStatus = S.String;
-
 export type ExportFormat = "PARQUET" | "CSV" | (string & {});
-const ExportFormat = S.String;
-
 export type KmsKeyArn = string;
 export type ParquetType = "COLUMNAR" | (string & {});
-const ParquetType = S.String;
-
 export interface CancelExportTaskOutput {
   graphId: string;
   roleArn: string;
@@ -213,21 +205,11 @@ export interface CancelExportTaskOutput {
   parquetType?: ParquetType;
   statusReason?: string;
 }
-const CancelExportTaskOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelExportTaskOutput>;
 export type TaskId = string;
 export interface CancelImportTaskInput {
   taskIdentifier: string;
 }
-const CancelImportTaskInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelImportTaskInput>;
 export type Format = "CSV" | "OPEN_CYPHER" | "PARQUET" | "NTRIPLES" | (string & {});
-const Format = S.String;
-
 export type ImportTaskStatus =
   | "INITIALIZING"
   | "EXPORTING"
@@ -241,8 +223,6 @@ export type ImportTaskStatus =
   | "CANCELLED"
   | "DELETED"
   | (string & {});
-const ImportTaskStatus = S.String;
-
 export interface CancelImportTaskOutput {
   graphId?: string;
   taskId: string;
@@ -252,31 +232,20 @@ export interface CancelImportTaskOutput {
   roleArn: string;
   status: ImportTaskStatus;
 }
-const CancelImportTaskOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelImportTaskOutput>;
 export type GraphIdentifier = string;
 export interface CancelQueryInput {
   graphIdentifier: string;
   queryId: string;
 }
-const CancelQueryInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CancelQueryInput>;
 export interface CancelQueryResponse {}
-const CancelQueryResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CancelQueryResponse>;
 export type GraphName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 6);
 export type VectorSearchDimension = number;
 export interface VectorSearchConfiguration {
   dimension: number;
 }
-const VectorSearchConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<VectorSearchConfiguration>;
 export type ReplicaCount = number;
 export type ProvisionedMemory = number;
 export interface CreateGraphInput {
@@ -289,7 +258,6 @@ export interface CreateGraphInput {
   deletionProtection?: boolean;
   provisionedMemory: number;
 }
-const CreateGraphInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateGraphInput>;
 export type GraphStatus =
   | "CREATING"
   | "AVAILABLE"
@@ -303,8 +271,6 @@ export type GraphStatus =
   | "STOPPING"
   | "STOPPED"
   | (string & {});
-const GraphStatus = S.String;
-
 export type SnapshotId = string;
 export interface CreateGraphOutput {
   id: string;
@@ -323,20 +289,13 @@ export interface CreateGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const CreateGraphOutput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateGraphOutput>;
 export type SnapshotName = string;
 export interface CreateGraphSnapshotInput {
   graphIdentifier: string;
   snapshotName: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateGraphSnapshotInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateGraphSnapshotInput>;
 export type SnapshotStatus = "CREATING" | "AVAILABLE" | "DELETING" | "FAILED" | (string & {});
-const SnapshotStatus = S.String;
-
 export interface CreateGraphSnapshotOutput {
   id: string;
   name: string;
@@ -346,22 +305,14 @@ export interface CreateGraphSnapshotOutput {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-const CreateGraphSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateGraphSnapshotOutput>;
 export interface NeptuneImportOptions {
   s3ExportPath: string;
   s3ExportKmsKeyId: string;
   preserveDefaultVertexLabels?: boolean;
   preserveEdgeIds?: boolean;
 }
-const NeptuneImportOptions = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<NeptuneImportOptions>;
 export type ImportOptions = { neptune: NeptuneImportOptions };
-const ImportOptions = /*@__PURE__*/ __L.at(__c1, 5);
 export type BlankNodeHandling = "convertToIri" | (string & {});
-const BlankNodeHandling = S.String;
-
 export interface CreateGraphUsingImportTaskInput {
   graphName: string;
   tags?: { [key: string]: string | undefined };
@@ -380,10 +331,6 @@ export interface CreateGraphUsingImportTaskInput {
   blankNodeHandling?: BlankNodeHandling;
   roleArn: string;
 }
-const CreateGraphUsingImportTaskInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateGraphUsingImportTaskInput>;
 export interface CreateGraphUsingImportTaskOutput {
   graphId?: string;
   taskId: string;
@@ -394,35 +341,23 @@ export interface CreateGraphUsingImportTaskOutput {
   status: ImportTaskStatus;
   importOptions?: ImportOptions;
 }
-const CreateGraphUsingImportTaskOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateGraphUsingImportTaskOutput>;
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetIds = string[];
-const SubnetIds = /*@__PURE__*/ __L.at(__c2, 0);
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
 export interface CreatePrivateGraphEndpointInput {
   graphIdentifier: string;
   vpcId?: string;
   subnetIds?: string[];
   vpcSecurityGroupIds?: string[];
 }
-const CreatePrivateGraphEndpointInput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreatePrivateGraphEndpointInput>;
 export type PrivateGraphEndpointStatus =
   | "CREATING"
   | "AVAILABLE"
   | "DELETING"
   | "FAILED"
   | (string & {});
-const PrivateGraphEndpointStatus = S.String;
-
 export type VpcEndpointId = string;
 export interface CreatePrivateGraphEndpointOutput {
   vpcId: string;
@@ -430,15 +365,10 @@ export interface CreatePrivateGraphEndpointOutput {
   status: PrivateGraphEndpointStatus;
   vpcEndpointId?: string;
 }
-const CreatePrivateGraphEndpointOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreatePrivateGraphEndpointOutput>;
 export interface DeleteGraphInput {
   graphIdentifier: string;
   skipSnapshot: boolean;
 }
-const DeleteGraphInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteGraphInput>;
 export interface DeleteGraphOutput {
   id: string;
   name: string;
@@ -456,15 +386,10 @@ export interface DeleteGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const DeleteGraphOutput = CreateGraphOutput as any as S.Schema<DeleteGraphOutput>;
 export type SnapshotIdentifier = string;
 export interface DeleteGraphSnapshotInput {
   snapshotIdentifier: string;
 }
-const DeleteGraphSnapshotInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteGraphSnapshotInput>;
 export interface DeleteGraphSnapshotOutput {
   id: string;
   name: string;
@@ -474,35 +399,20 @@ export interface DeleteGraphSnapshotOutput {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-const DeleteGraphSnapshotOutput =
-  CreateGraphSnapshotOutput as any as S.Schema<DeleteGraphSnapshotOutput>;
 export interface DeletePrivateGraphEndpointInput {
   graphIdentifier: string;
   vpcId: string;
 }
-const DeletePrivateGraphEndpointInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeletePrivateGraphEndpointInput>;
 export interface DeletePrivateGraphEndpointOutput {
   vpcId: string;
   subnetIds: string[];
   status: PrivateGraphEndpointStatus;
   vpcEndpointId?: string;
 }
-const DeletePrivateGraphEndpointOutput =
-  CreatePrivateGraphEndpointOutput as any as S.Schema<DeletePrivateGraphEndpointOutput>;
 export type QueryLanguage = "OPEN_CYPHER" | (string & {});
-const QueryLanguage = S.String;
-
 export type DocumentValuedMap = { [key: string]: any | undefined };
-const DocumentValuedMap = /*@__PURE__*/ __L.at(__c2, 6);
 export type PlanCacheType = "ENABLED" | "DISABLED" | "AUTO" | (string & {});
-const PlanCacheType = S.String;
-
 export type ExplainMode = "STATIC" | "DETAILS" | (string & {});
-const ExplainMode = S.String;
-
 export interface ExecuteQueryInput {
   graphIdentifier: string;
   queryString: string;
@@ -512,15 +422,12 @@ export interface ExecuteQueryInput {
   explainMode?: ExplainMode;
   queryTimeoutMilliseconds?: number;
 }
-const ExecuteQueryInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ExecuteQueryInput>;
 export interface ExecuteQueryOutput {
   payload: T.StreamingOutputBody;
 }
-const ExecuteQueryOutput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ExecuteQueryOutput>;
 export interface GetExportTaskInput {
   taskIdentifier: string;
 }
-const GetExportTaskInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetExportTaskInput>;
 export interface ExportTaskDetails {
   startTime: Date;
   timeElapsedSeconds: number;
@@ -528,36 +435,25 @@ export interface ExportTaskDetails {
   numVerticesWritten?: number;
   numEdgesWritten?: number;
 }
-const ExportTaskDetails = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ExportTaskDetails>;
 export type ExportFilterLabel = string;
 export type ExportFilterOutputPropertyName = string;
 export type ExportFilterOutputDataType = string;
 export type ExportFilterSourcePropertyName = string;
 export type MultiValueHandlingType = "TO_LIST" | "PICK_FIRST" | (string & {});
-const MultiValueHandlingType = S.String;
-
 export interface ExportFilterPropertyAttributes {
   outputType?: string;
   sourcePropertyName?: string;
   multiValueHandling?: MultiValueHandlingType;
 }
-const ExportFilterPropertyAttributes = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ExportFilterPropertyAttributes>;
 export type ExportFilterPropertyMap = { [key: string]: ExportFilterPropertyAttributes | undefined };
-const ExportFilterPropertyMap = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ExportFilterElement {
   properties?: { [key: string]: ExportFilterPropertyAttributes | undefined };
 }
-const ExportFilterElement = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ExportFilterElement>;
 export type ExportFilterPerLabelMap = { [key: string]: ExportFilterElement | undefined };
-const ExportFilterPerLabelMap = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ExportFilter {
   vertexFilter?: { [key: string]: ExportFilterElement | undefined };
   edgeFilter?: { [key: string]: ExportFilterElement | undefined };
 }
-const ExportFilter = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ExportFilter>;
 export interface GetExportTaskOutput {
   graphId: string;
   roleArn: string;
@@ -571,11 +467,9 @@ export interface GetExportTaskOutput {
   exportTaskDetails?: ExportTaskDetails;
   exportFilter?: ExportFilter;
 }
-const GetExportTaskOutput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetExportTaskOutput>;
 export interface GetGraphInput {
   graphIdentifier: string;
 }
-const GetGraphInput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetGraphInput>;
 export interface GetGraphOutput {
   id: string;
   name: string;
@@ -593,14 +487,9 @@ export interface GetGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const GetGraphOutput = CreateGraphOutput as any as S.Schema<GetGraphOutput>;
 export interface GetGraphSnapshotInput {
   snapshotIdentifier: string;
 }
-const GetGraphSnapshotInput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetGraphSnapshotInput>;
 export interface GetGraphSnapshotOutput {
   id: string;
   name: string;
@@ -610,47 +499,29 @@ export interface GetGraphSnapshotOutput {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-const GetGraphSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetGraphSnapshotOutput>;
 export type GraphSummaryMode = "BASIC" | "DETAILED" | (string & {});
-const GraphSummaryMode = S.String;
-
 export interface GetGraphSummaryInput {
   graphIdentifier: string;
   mode?: GraphSummaryMode;
 }
-const GetGraphSummaryInput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetGraphSummaryInput>;
 export type NodeLabels = string[];
-const NodeLabels = SubnetIds as any as S.Schema<NodeLabels>;
 export type EdgeLabels = string[];
-const EdgeLabels = SubnetIds as any as S.Schema<EdgeLabels>;
 export type LongValuedMap = { [key: string]: number | undefined };
-const LongValuedMap = /*@__PURE__*/ __L.at(__c4, 5);
 export type LongValuedMapList = { [key: string]: number | undefined }[];
-const LongValuedMapList = /*@__PURE__*/ __L.at(__c4, 6);
 export type NodeProperties = string[];
-const NodeProperties = SubnetIds as any as S.Schema<NodeProperties>;
 export type OutgoingEdgeLabels = string[];
-const OutgoingEdgeLabels = SubnetIds as any as S.Schema<OutgoingEdgeLabels>;
 export interface NodeStructure {
   count?: number;
   nodeProperties?: string[];
   distinctOutgoingEdgeLabels?: string[];
 }
-const NodeStructure = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<NodeStructure>;
 export type NodeStructures = NodeStructure[];
-const NodeStructures = /*@__PURE__*/ __L.at(__c5, 0);
 export type EdgeProperties = string[];
-const EdgeProperties = SubnetIds as any as S.Schema<EdgeProperties>;
 export interface EdgeStructure {
   count?: number;
   edgeProperties?: string[];
 }
-const EdgeStructure = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<EdgeStructure>;
 export type EdgeStructures = EdgeStructure[];
-const EdgeStructures = /*@__PURE__*/ __L.at(__c5, 2);
 export interface GraphDataSummary {
   numNodes?: number;
   numEdges?: number;
@@ -667,20 +538,14 @@ export interface GraphDataSummary {
   nodeStructures?: NodeStructure[];
   edgeStructures?: EdgeStructure[];
 }
-const GraphDataSummary = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GraphDataSummary>;
 export interface GetGraphSummaryOutput {
   version?: string;
   lastStatisticsComputationTime?: Date;
   graphSummary?: GraphDataSummary;
 }
-const GetGraphSummaryOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetGraphSummaryOutput>;
 export interface GetImportTaskInput {
   taskIdentifier: string;
 }
-const GetImportTaskInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GetImportTaskInput>;
 export interface ImportTaskDetails {
   status: string;
   startTime: Date;
@@ -691,7 +556,6 @@ export interface ImportTaskDetails {
   statementCount: number;
   dictionaryEntryCount: number;
 }
-const ImportTaskDetails = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ImportTaskDetails>;
 export interface GetImportTaskOutput {
   graphId?: string;
   taskId: string;
@@ -705,31 +569,21 @@ export interface GetImportTaskOutput {
   attemptNumber?: number;
   statusReason?: string;
 }
-const GetImportTaskOutput = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetImportTaskOutput>;
 export interface GetPrivateGraphEndpointInput {
   graphIdentifier: string;
   vpcId: string;
 }
-const GetPrivateGraphEndpointInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetPrivateGraphEndpointInput>;
 export interface GetPrivateGraphEndpointOutput {
   vpcId: string;
   subnetIds: string[];
   status: PrivateGraphEndpointStatus;
   vpcEndpointId?: string;
 }
-const GetPrivateGraphEndpointOutput =
-  CreatePrivateGraphEndpointOutput as any as S.Schema<GetPrivateGraphEndpointOutput>;
 export interface GetQueryInput {
   graphIdentifier: string;
   queryId: string;
 }
-const GetQueryInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetQueryInput>;
 export type QueryState = "RUNNING" | "WAITING" | "CANCELLING" | (string & {});
-const QueryState = S.String;
-
 export interface GetQueryOutput {
   id?: string;
   queryString?: string;
@@ -737,7 +591,6 @@ export interface GetQueryOutput {
   elapsed?: number;
   state?: QueryState;
 }
-const GetQueryOutput = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetQueryOutput>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface ListExportTasksInput {
@@ -745,7 +598,6 @@ export interface ListExportTasksInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListExportTasksInput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ListExportTasksInput>;
 export interface ExportTaskSummary {
   graphId: string;
   roleArn: string;
@@ -757,22 +609,15 @@ export interface ExportTaskSummary {
   parquetType?: ParquetType;
   statusReason?: string;
 }
-const ExportTaskSummary = CancelExportTaskOutput as any as S.Schema<ExportTaskSummary>;
 export type ExportTaskSummaryList = ExportTaskSummary[];
-const ExportTaskSummaryList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface ListExportTasksOutput {
   tasks: ExportTaskSummary[];
   nextToken?: string;
 }
-const ListExportTasksOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListExportTasksOutput>;
 export interface ListGraphsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListGraphsInput = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ListGraphsInput>;
 export interface GraphSummary {
   id: string;
   name: string;
@@ -785,23 +630,16 @@ export interface GraphSummary {
   kmsKeyIdentifier?: string;
   deletionProtection?: boolean;
 }
-const GraphSummary = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GraphSummary>;
 export type GraphSummaryList = GraphSummary[];
-const GraphSummaryList = /*@__PURE__*/ __L.at(__c7, 0);
 export interface ListGraphsOutput {
   graphs: GraphSummary[];
   nextToken?: string;
 }
-const ListGraphsOutput = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ListGraphsOutput>;
 export interface ListGraphSnapshotsInput {
   graphIdentifier?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListGraphSnapshotsInput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListGraphSnapshotsInput>;
 export interface GraphSnapshotSummary {
   id: string;
   name: string;
@@ -811,23 +649,16 @@ export interface GraphSnapshotSummary {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-const GraphSnapshotSummary = GetGraphSnapshotOutput as any as S.Schema<GraphSnapshotSummary>;
 export type GraphSnapshotSummaryList = GraphSnapshotSummary[];
-const GraphSnapshotSummaryList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface ListGraphSnapshotsOutput {
   graphSnapshots: GraphSnapshotSummary[];
   nextToken?: string;
 }
-const ListGraphSnapshotsOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListGraphSnapshotsOutput>;
 export interface ListImportTasksInput {
   graphIdentifier?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListImportTasksInput = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListImportTasksInput>;
 export interface ImportTaskSummary {
   graphId?: string;
   taskId: string;
@@ -837,53 +668,33 @@ export interface ImportTaskSummary {
   roleArn: string;
   status: ImportTaskStatus;
 }
-const ImportTaskSummary = CancelImportTaskOutput as any as S.Schema<ImportTaskSummary>;
 export type ImportTaskSummaryList = ImportTaskSummary[];
-const ImportTaskSummaryList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListImportTasksOutput {
   tasks: ImportTaskSummary[];
   nextToken?: string;
 }
-const ListImportTasksOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListImportTasksOutput>;
 export interface ListPrivateGraphEndpointsInput {
   graphIdentifier: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListPrivateGraphEndpointsInput = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListPrivateGraphEndpointsInput>;
 export interface PrivateGraphEndpointSummary {
   vpcId: string;
   subnetIds: string[];
   status: PrivateGraphEndpointStatus;
   vpcEndpointId?: string;
 }
-const PrivateGraphEndpointSummary =
-  CreatePrivateGraphEndpointOutput as any as S.Schema<PrivateGraphEndpointSummary>;
 export type PrivateGraphEndpointSummaryList = PrivateGraphEndpointSummary[];
-const PrivateGraphEndpointSummaryList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface ListPrivateGraphEndpointsOutput {
   privateGraphEndpoints: PrivateGraphEndpointSummary[];
   nextToken?: string;
 }
-const ListPrivateGraphEndpointsOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListPrivateGraphEndpointsOutput>;
 export type QueryStateInput = "ALL" | "RUNNING" | "WAITING" | "CANCELLING" | (string & {});
-const QueryStateInput = S.String;
-
 export interface ListQueriesInput {
   graphIdentifier: string;
   maxResults: number;
   state?: QueryStateInput;
 }
-const ListQueriesInput = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListQueriesInput>;
 export interface QuerySummary {
   id?: string;
   queryString?: string;
@@ -891,33 +702,21 @@ export interface QuerySummary {
   elapsed?: number;
   state?: QueryState;
 }
-const QuerySummary = GetQueryOutput as any as S.Schema<QuerySummary>;
 export type QuerySummaryList = QuerySummary[];
-const QuerySummaryList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ListQueriesOutput {
   queries: QuerySummary[];
 }
-const ListQueriesOutput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListQueriesOutput>;
 export type Arn = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export interface ResetGraphInput {
   graphIdentifier: string;
   skipSnapshot: boolean;
 }
-const ResetGraphInput = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ResetGraphInput>;
 export interface ResetGraphOutput {
   id: string;
   name: string;
@@ -935,7 +734,6 @@ export interface ResetGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const ResetGraphOutput = CreateGraphOutput as any as S.Schema<ResetGraphOutput>;
 export interface RestoreGraphFromSnapshotInput {
   snapshotIdentifier: string;
   graphName: string;
@@ -945,10 +743,6 @@ export interface RestoreGraphFromSnapshotInput {
   replicaCount?: number;
   publicConnectivity?: boolean;
 }
-const RestoreGraphFromSnapshotInput = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<RestoreGraphFromSnapshotInput>;
 export interface RestoreGraphFromSnapshotOutput {
   id: string;
   name: string;
@@ -966,10 +760,6 @@ export interface RestoreGraphFromSnapshotOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const RestoreGraphFromSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<RestoreGraphFromSnapshotOutput>;
 export interface StartExportTaskInput {
   graphIdentifier: string;
   roleArn: string;
@@ -980,7 +770,6 @@ export interface StartExportTaskInput {
   exportFilter?: ExportFilter;
   tags?: { [key: string]: string | undefined };
 }
-const StartExportTaskInput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<StartExportTaskInput>;
 export interface StartExportTaskOutput {
   graphId: string;
   roleArn: string;
@@ -993,14 +782,9 @@ export interface StartExportTaskOutput {
   statusReason?: string;
   exportFilter?: ExportFilter;
 }
-const StartExportTaskOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<StartExportTaskOutput>;
 export interface StartGraphInput {
   graphIdentifier: string;
 }
-const StartGraphInput = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<StartGraphInput>;
 export interface StartGraphOutput {
   id: string;
   name: string;
@@ -1018,7 +802,6 @@ export interface StartGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const StartGraphOutput = CreateGraphOutput as any as S.Schema<StartGraphOutput>;
 export interface StartImportTaskInput {
   importOptions?: ImportOptions;
   failOnError?: boolean;
@@ -1029,7 +812,6 @@ export interface StartImportTaskInput {
   graphIdentifier: string;
   roleArn: string;
 }
-const StartImportTaskInput = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<StartImportTaskInput>;
 export interface StartImportTaskOutput {
   graphId?: string;
   taskId: string;
@@ -1040,14 +822,9 @@ export interface StartImportTaskOutput {
   status: ImportTaskStatus;
   importOptions?: ImportOptions;
 }
-const StartImportTaskOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<StartImportTaskOutput>;
 export interface StopGraphInput {
   graphIdentifier: string;
 }
-const StopGraphInput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<StopGraphInput>;
 export interface StopGraphOutput {
   id: string;
   name: string;
@@ -1065,30 +842,23 @@ export interface StopGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const StopGraphOutput = CreateGraphOutput as any as S.Schema<StopGraphOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = CancelQueryResponse as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-const TagKeyList = SubnetIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = CancelQueryResponse as any as S.Schema<UntagResourceOutput>;
 export interface UpdateGraphInput {
   graphIdentifier: string;
   publicConnectivity?: boolean;
   provisionedMemory?: number;
   deletionProtection?: boolean;
 }
-const UpdateGraphInput = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<UpdateGraphInput>;
 export interface UpdateGraphOutput {
   id: string;
   name: string;
@@ -1106,10 +876,7 @@ export interface UpdateGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-const UpdateGraphOutput = CreateGraphOutput as any as S.Schema<UpdateGraphOutput>;
 export type ConflictExceptionReason = "CONCURRENT_MODIFICATION" | (string & {});
-const ConflictExceptionReason = S.String;
-
 export type ValidationExceptionReason =
   | "CONSTRAINT_VIOLATION"
   | "ILLEGAL_ARGUMENT"
@@ -1119,8 +886,6 @@ export type ValidationExceptionReason =
   | "UNSUPPORTED_OPERATION"
   | "BAD_REQUEST"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export type UnprocessableExceptionReason =
   | "QUERY_TIMEOUT"
   | "INTERNAL_LIMIT_EXCEEDED"
@@ -1128,8 +893,6 @@ export type UnprocessableExceptionReason =
   | "STORAGE_LIMIT_EXCEEDED"
   | "PARTITION_FULL"
   | (string & {});
-const UnprocessableExceptionReason = S.String;
-
 export type CancelExportTaskError =
   | ConflictException
   | InternalServerException
@@ -1146,8 +909,8 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelExportTaskInput,
-  output: CancelExportTaskOutput,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelExportTaskInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelExportTaskOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1176,8 +939,8 @@ export const cancelImportTask: API.OperationMethod<
   CancelImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelImportTaskInput,
-  output: CancelImportTaskOutput,
+  input: __S(2, __c0, 2) as any as S.Schema<CancelImportTaskInput>,
+  output: __S(3, __c0, 3) as any as S.Schema<CancelImportTaskOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1206,8 +969,8 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelQueryInput,
-  output: CancelQueryResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<CancelQueryInput>,
+  output: __S(5, __c0, 5) as any as S.Schema<CancelQueryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1237,8 +1000,8 @@ export const createGraph: API.OperationMethod<
   CreateGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGraphInput,
-  output: CreateGraphOutput,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateGraphInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateGraphOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1268,8 +1031,8 @@ export const createGraphSnapshot: API.OperationMethod<
   CreateGraphSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGraphSnapshotInput,
-  output: CreateGraphSnapshotOutput,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateGraphSnapshotInput>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateGraphSnapshotOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1301,8 +1064,8 @@ export const createGraphUsingImportTask: API.OperationMethod<
   CreateGraphUsingImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGraphUsingImportTaskInput,
-  output: CreateGraphUsingImportTaskOutput,
+  input: __S(14, __c1, 6) as any as S.Schema<CreateGraphUsingImportTaskInput>,
+  output: __S(15, __c1, 7) as any as S.Schema<CreateGraphUsingImportTaskOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1334,8 +1097,8 @@ export const createPrivateGraphEndpoint: API.OperationMethod<
   CreatePrivateGraphEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateGraphEndpointInput,
-  output: CreatePrivateGraphEndpointOutput,
+  input: __S(17, __c2, 1) as any as S.Schema<CreatePrivateGraphEndpointInput>,
+  output: __S(18, __c2, 2) as any as S.Schema<CreatePrivateGraphEndpointOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1365,8 +1128,8 @@ export const deleteGraph: API.OperationMethod<
   DeleteGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGraphInput,
-  output: DeleteGraphOutput,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteGraphInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<DeleteGraphOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1395,8 +1158,8 @@ export const deleteGraphSnapshot: API.OperationMethod<
   DeleteGraphSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGraphSnapshotInput,
-  output: DeleteGraphSnapshotOutput,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteGraphSnapshotInput>,
+  output: __S(11, __c1, 3) as any as S.Schema<DeleteGraphSnapshotOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1425,8 +1188,8 @@ export const deletePrivateGraphEndpoint: API.OperationMethod<
   DeletePrivateGraphEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateGraphEndpointInput,
-  output: DeletePrivateGraphEndpointOutput,
+  input: __S(21, __c2, 5) as any as S.Schema<DeletePrivateGraphEndpointInput>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeletePrivateGraphEndpointOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1464,8 +1227,8 @@ export const executeQuery: API.OperationMethod<
   ExecuteQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteQueryInput,
-  output: ExecuteQueryOutput,
+  input: __S(23, __c2, 7) as any as S.Schema<ExecuteQueryInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<ExecuteQueryOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1495,8 +1258,8 @@ export const getExportTask: API.OperationMethod<
   GetExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportTaskInput,
-  output: GetExportTaskOutput,
+  input: __S(25, __c3, 1) as any as S.Schema<GetExportTaskInput>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetExportTaskOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1523,8 +1286,8 @@ export const getGraph: API.OperationMethod<
   GetGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGraphInput,
-  output: GetGraphOutput,
+  input: __S(33, __c4, 1) as any as S.Schema<GetGraphInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetGraphOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1551,8 +1314,8 @@ export const getGraphSnapshot: API.OperationMethod<
   GetGraphSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGraphSnapshotInput,
-  output: GetGraphSnapshotOutput,
+  input: __S(34, __c4, 2) as any as S.Schema<GetGraphSnapshotInput>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetGraphSnapshotOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1580,8 +1343,8 @@ export const getGraphSummary: API.OperationMethod<
   GetGraphSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGraphSummaryInput,
-  output: GetGraphSummaryOutput,
+  input: __S(36, __c4, 4) as any as S.Schema<GetGraphSummaryInput>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetGraphSummaryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1610,8 +1373,8 @@ export const getImportTask: API.OperationMethod<
   GetImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImportTaskInput,
-  output: GetImportTaskOutput,
+  input: __S(45, __c5, 5) as any as S.Schema<GetImportTaskInput>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetImportTaskOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1638,8 +1401,8 @@ export const getPrivateGraphEndpoint: API.OperationMethod<
   GetPrivateGraphEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateGraphEndpointInput,
-  output: GetPrivateGraphEndpointOutput,
+  input: __S(48, __c6, 0) as any as S.Schema<GetPrivateGraphEndpointInput>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetPrivateGraphEndpointOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1669,8 +1432,8 @@ export const getQuery: API.OperationMethod<
   GetQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryInput,
-  output: GetQueryOutput,
+  input: __S(49, __c6, 1) as any as S.Schema<GetQueryInput>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetQueryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1700,8 +1463,8 @@ export const listExportTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExportTasksInput,
-  output: ListExportTasksOutput,
+  input: __S(51, __c6, 3) as any as S.Schema<ListExportTasksInput>,
+  output: __S(53, __c6, 5) as any as S.Schema<ListExportTasksOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1734,8 +1497,8 @@ export const listGraphs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GraphSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGraphsInput,
-  output: ListGraphsOutput,
+  input: __S(54, __c6, 6) as any as S.Schema<ListGraphsInput>,
+  output: __S(57, __c7, 1) as any as S.Schema<ListGraphsOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1764,8 +1527,8 @@ export const listGraphSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GraphSnapshotSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGraphSnapshotsInput,
-  output: ListGraphSnapshotsOutput,
+  input: __S(58, __c7, 2) as any as S.Schema<ListGraphSnapshotsInput>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListGraphSnapshotsOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1799,8 +1562,8 @@ export const listImportTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListImportTasksInput,
-  output: ListImportTasksOutput,
+  input: __S(61, __c7, 5) as any as S.Schema<ListImportTasksInput>,
+  output: __S(63, __c7, 7) as any as S.Schema<ListImportTasksOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1834,8 +1597,8 @@ export const listPrivateGraphEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrivateGraphEndpointSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPrivateGraphEndpointsInput,
-  output: ListPrivateGraphEndpointsOutput,
+  input: __S(64, __c8, 0) as any as S.Schema<ListPrivateGraphEndpointsInput>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListPrivateGraphEndpointsOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1868,8 +1631,8 @@ export const listQueries: API.OperationMethod<
   ListQueriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQueriesInput,
-  output: ListQueriesOutput,
+  input: __S(67, __c8, 3) as any as S.Schema<ListQueriesInput>,
+  output: __S(69, __c8, 5) as any as S.Schema<ListQueriesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1897,8 +1660,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(70, __c8, 6) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(71, __c8, 7) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1926,8 +1689,8 @@ export const resetGraph: API.OperationMethod<
   ResetGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetGraphInput,
-  output: ResetGraphOutput,
+  input: __S(72, __c9, 0) as any as S.Schema<ResetGraphInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<ResetGraphOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1957,8 +1720,8 @@ export const restoreGraphFromSnapshot: API.OperationMethod<
   RestoreGraphFromSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreGraphFromSnapshotInput,
-  output: RestoreGraphFromSnapshotOutput,
+  input: __S(73, __c9, 1) as any as S.Schema<RestoreGraphFromSnapshotInput>,
+  output: __S(74, __c9, 2) as any as S.Schema<RestoreGraphFromSnapshotOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1988,8 +1751,8 @@ export const startExportTask: API.OperationMethod<
   StartExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartExportTaskInput,
-  output: StartExportTaskOutput,
+  input: __S(75, __c9, 3) as any as S.Schema<StartExportTaskInput>,
+  output: __S(76, __c9, 4) as any as S.Schema<StartExportTaskOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2018,8 +1781,8 @@ export const startGraph: API.OperationMethod<
   StartGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartGraphInput,
-  output: StartGraphOutput,
+  input: __S(77, __c9, 5) as any as S.Schema<StartGraphInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<StartGraphOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2048,8 +1811,8 @@ export const startImportTask: API.OperationMethod<
   StartImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartImportTaskInput,
-  output: StartImportTaskOutput,
+  input: __S(78, __c9, 6) as any as S.Schema<StartImportTaskInput>,
+  output: __S(79, __c9, 7) as any as S.Schema<StartImportTaskOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2078,8 +1841,8 @@ export const stopGraph: API.OperationMethod<
   StopGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopGraphInput,
-  output: StopGraphOutput,
+  input: __S(80, __c10, 0) as any as S.Schema<StopGraphInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<StopGraphOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2107,8 +1870,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(81, __c10, 1) as any as S.Schema<TagResourceInput>,
+  output: __S(5, __c0, 5) as any as S.Schema<TagResourceOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2135,8 +1898,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(82, __c10, 2) as any as S.Schema<UntagResourceInput>,
+  output: __S(5, __c0, 5) as any as S.Schema<UntagResourceOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2164,8 +1927,8 @@ export const updateGraph: API.OperationMethod<
   UpdateGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGraphInput,
-  output: UpdateGraphOutput,
+  input: __S(83, __c10, 3) as any as S.Schema<UpdateGraphInput>,
+  output: __S(9, __c1, 1) as any as S.Schema<UpdateGraphOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2201,11 +1964,11 @@ function __c0(j: number): any {
           graphId: S.String,
           roleArn: S.String,
           taskId: S.String,
-          status: ExportTaskStatus,
-          format: ExportFormat,
+          status: S.String,
+          format: S.String,
           destination: S.String,
           kmsKeyIdentifier: S.String,
-          parquetType: S.optional(ParquetType),
+          parquetType: S.optional(S.String),
           statusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancelExportTaskOutput" });
@@ -2229,10 +1992,10 @@ function __c0(j: number): any {
           graphId: S.optional(S.String),
           taskId: S.String,
           source: S.String,
-          format: S.optional(Format),
-          parquetType: S.optional(ParquetType),
+          format: S.optional(S.String),
+          parquetType: S.optional(S.String),
           roleArn: S.String,
-          status: ImportTaskStatus,
+          status: S.String,
         }),
       ).annotate({ identifier: "CancelImportTaskOutput" });
     case 4:
@@ -2270,10 +2033,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           graphName: S.String,
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(6, __c0, 6)),
           publicConnectivity: S.optional(S.Boolean),
           kmsKeyIdentifier: S.optional(S.String),
-          vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
+          vectorSearchConfiguration: S.optional(__S(7, __c0, 7)),
           replicaCount: S.optional(S.Number),
           deletionProtection: S.optional(S.Boolean),
           provisionedMemory: S.Number,
@@ -2295,13 +2058,13 @@ function __c1(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(GraphStatus),
+          status: S.optional(S.String),
           statusReason: S.optional(S.String),
           createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           provisionedMemory: S.optional(S.Number),
           endpoint: S.optional(S.String),
           publicConnectivity: S.optional(S.Boolean),
-          vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
+          vectorSearchConfiguration: S.optional(__S(7, __c0, 7)),
           replicaCount: S.optional(S.Number),
           kmsKeyIdentifier: S.optional(S.String),
           sourceSnapshotId: S.optional(S.String),
@@ -2314,7 +2077,7 @@ function __c1(j: number): any {
         S.Struct({
           graphIdentifier: S.String,
           snapshotName: S.String,
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(6, __c0, 6)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/snapshots" }),
@@ -2335,7 +2098,7 @@ function __c1(j: number): any {
           arn: S.String,
           sourceGraphId: S.optional(S.String),
           snapshotCreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(SnapshotStatus),
+          status: S.optional(S.String),
           kmsKeyIdentifier: S.optional(S.String),
         }),
       ).annotate({
@@ -2351,25 +2114,25 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "NeptuneImportOptions" });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ neptune: NeptuneImportOptions })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ neptune: __S(12, __c1, 4) })]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           graphName: S.String,
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(6, __c0, 6)),
           publicConnectivity: S.optional(S.Boolean),
           kmsKeyIdentifier: S.optional(S.String),
-          vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
+          vectorSearchConfiguration: S.optional(__S(7, __c0, 7)),
           replicaCount: S.optional(S.Number),
           deletionProtection: S.optional(S.Boolean),
-          importOptions: S.optional(ImportOptions),
+          importOptions: S.optional(__S(13, __c1, 5)),
           maxProvisionedMemory: S.optional(S.Number),
           minProvisionedMemory: S.optional(S.Number),
           failOnError: S.optional(S.Boolean),
           source: S.String,
-          format: S.optional(Format),
-          parquetType: S.optional(ParquetType),
-          blankNodeHandling: S.optional(BlankNodeHandling),
+          format: S.optional(S.String),
+          parquetType: S.optional(S.String),
+          blankNodeHandling: S.optional(S.String),
           roleArn: S.String,
         }).pipe(
           T.all(
@@ -2391,11 +2154,11 @@ function __c1(j: number): any {
           graphId: S.optional(S.String),
           taskId: S.String,
           source: S.String,
-          format: S.optional(Format),
-          parquetType: S.optional(ParquetType),
+          format: S.optional(S.String),
+          parquetType: S.optional(S.String),
           roleArn: S.String,
-          status: ImportTaskStatus,
-          importOptions: S.optional(ImportOptions),
+          status: S.String,
+          importOptions: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({
         identifier: "CreateGraphUsingImportTaskOutput",
@@ -2411,8 +2174,8 @@ function __c2(j: number): any {
         S.Struct({
           graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(SubnetIds),
-          vpcSecurityGroupIds: S.optional(SecurityGroupIds),
+          subnetIds: S.optional(__S(16, __c2, 0)),
+          vpcSecurityGroupIds: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/graphs/{graphIdentifier}/endpoints/" }),
@@ -2431,8 +2194,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vpcId: S.String,
-          subnetIds: SubnetIds,
-          status: PrivateGraphEndpointStatus,
+          subnetIds: __S(16, __c2, 0),
+          status: S.String,
           vpcEndpointId: S.optional(S.String),
         }),
       ).annotate({
@@ -2495,10 +2258,10 @@ function __c2(j: number): any {
         S.Struct({
           graphIdentifier: S.String.pipe(T.HttpHeader("graphIdentifier"), T.HostLabel()),
           queryString: S.String,
-          language: QueryLanguage,
-          parameters: S.optional(DocumentValuedMap),
-          planCache: S.optional(PlanCacheType),
-          explainMode: S.optional(ExplainMode),
+          language: S.String,
+          parameters: S.optional(__S(22, __c2, 6)),
+          planCache: S.optional(S.String),
+          explainMode: S.optional(S.String),
           queryTimeoutMilliseconds: S.optional(S.Number),
         })
           .pipe(S.encodeKeys({ queryString: "query", explainMode: "explain" }))
@@ -2551,24 +2314,24 @@ function __c3(j: number): any {
         S.Struct({
           outputType: S.optional(S.String),
           sourcePropertyName: S.optional(S.String),
-          multiValueHandling: S.optional(MultiValueHandlingType),
+          multiValueHandling: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExportFilterPropertyAttributes",
       });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ ExportFilterPropertyAttributes.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(27, __c3, 3).pipe(S.optional));
     case 5:
-      return S.suspend(() =>
-        S.Struct({ properties: S.optional(ExportFilterPropertyMap) }),
-      ).annotate({ identifier: "ExportFilterElement" });
+      return S.suspend(() => S.Struct({ properties: S.optional(__S(28, __c3, 4)) })).annotate({
+        identifier: "ExportFilterElement",
+      });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ ExportFilterElement.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(29, __c3, 5).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vertexFilter: S.optional(ExportFilterPerLabelMap),
-          edgeFilter: S.optional(ExportFilterPerLabelMap),
+          vertexFilter: S.optional(__S(30, __c3, 6)),
+          edgeFilter: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "ExportFilter" });
   }
@@ -2581,14 +2344,14 @@ function __c4(j: number): any {
           graphId: S.String,
           roleArn: S.String,
           taskId: S.String,
-          status: ExportTaskStatus,
-          format: ExportFormat,
+          status: S.String,
+          format: S.String,
           destination: S.String,
           kmsKeyIdentifier: S.String,
-          parquetType: S.optional(ParquetType),
+          parquetType: S.optional(S.String),
           statusReason: S.optional(S.String),
-          exportTaskDetails: S.optional(ExportTaskDetails),
-          exportFilter: S.optional(ExportFilter),
+          exportTaskDetails: S.optional(__S(26, __c3, 2)),
+          exportFilter: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "GetExportTaskOutput" });
     case 1:
@@ -2627,7 +2390,7 @@ function __c4(j: number): any {
           arn: S.String,
           sourceGraphId: S.optional(S.String),
           snapshotCreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(SnapshotStatus),
+          status: S.optional(S.String),
           kmsKeyIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetGraphSnapshotOutput" });
@@ -2635,7 +2398,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           graphIdentifier: S.String.pipe(T.HttpHeader("graphIdentifier"), T.HostLabel()),
-          mode: S.optional(GraphSummaryMode).pipe(T.HttpQuery("mode")),
+          mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/summary" }),
@@ -2651,13 +2414,13 @@ function __c4(j: number): any {
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 6:
-      return S.Array(LongValuedMap);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          nodeProperties: S.optional(NodeProperties),
-          distinctOutgoingEdgeLabels: S.optional(OutgoingEdgeLabels),
+          nodeProperties: S.optional(__S(16, __c2, 0)),
+          distinctOutgoingEdgeLabels: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "NodeStructure" });
   }
@@ -2665,13 +2428,13 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NodeStructure);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ count: S.optional(S.Number), edgeProperties: S.optional(EdgeProperties) }),
+        S.Struct({ count: S.optional(S.Number), edgeProperties: S.optional(__S(16, __c2, 0)) }),
       ).annotate({ identifier: "EdgeStructure" });
     case 2:
-      return S.Array(EdgeStructure);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2679,16 +2442,16 @@ function __c5(j: number): any {
           numEdges: S.optional(S.Number),
           numNodeLabels: S.optional(S.Number),
           numEdgeLabels: S.optional(S.Number),
-          nodeLabels: S.optional(NodeLabels),
-          edgeLabels: S.optional(EdgeLabels),
+          nodeLabels: S.optional(__S(16, __c2, 0)),
+          edgeLabels: S.optional(__S(16, __c2, 0)),
           numNodeProperties: S.optional(S.Number),
           numEdgeProperties: S.optional(S.Number),
-          nodeProperties: S.optional(LongValuedMapList),
-          edgeProperties: S.optional(LongValuedMapList),
+          nodeProperties: S.optional(__S(38, __c4, 6)),
+          edgeProperties: S.optional(__S(38, __c4, 6)),
           totalNodePropertyValues: S.optional(S.Number),
           totalEdgePropertyValues: S.optional(S.Number),
-          nodeStructures: S.optional(NodeStructures),
-          edgeStructures: S.optional(EdgeStructures),
+          nodeStructures: S.optional(__S(40, __c5, 0)),
+          edgeStructures: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "GraphDataSummary" });
     case 4:
@@ -2698,7 +2461,7 @@ function __c5(j: number): any {
           lastStatisticsComputationTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          graphSummary: S.optional(GraphDataSummary),
+          graphSummary: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "GetGraphSummaryOutput" });
     case 5:
@@ -2734,12 +2497,12 @@ function __c5(j: number): any {
           graphId: S.optional(S.String),
           taskId: S.String,
           source: S.String,
-          format: S.optional(Format),
-          parquetType: S.optional(ParquetType),
+          format: S.optional(S.String),
+          parquetType: S.optional(S.String),
           roleArn: S.String,
-          status: ImportTaskStatus,
-          importOptions: S.optional(ImportOptions),
-          importTaskDetails: S.optional(ImportTaskDetails),
+          status: S.String,
+          importOptions: S.optional(__S(13, __c1, 5)),
+          importTaskDetails: S.optional(__S(46, __c5, 6)),
           attemptNumber: S.optional(S.Number),
           statusReason: S.optional(S.String),
         }),
@@ -2791,7 +2554,7 @@ function __c6(j: number): any {
           queryString: S.optional(S.String),
           waited: S.optional(S.Number),
           elapsed: S.optional(S.Number),
-          state: S.optional(QueryState),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueryOutput" });
     case 3:
@@ -2813,10 +2576,10 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListExportTasksInput" });
     case 4:
-      return S.Array(ExportTaskSummary);
+      return S.Array(__S(1, __c0, 1));
     case 5:
       return S.suspend(() =>
-        S.Struct({ tasks: ExportTaskSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ tasks: __S(52, __c6, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExportTasksOutput" });
     case 6:
       return S.suspend(() =>
@@ -2841,7 +2604,7 @@ function __c6(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(GraphStatus),
+          status: S.optional(S.String),
           provisionedMemory: S.optional(S.Number),
           publicConnectivity: S.optional(S.Boolean),
           endpoint: S.optional(S.String),
@@ -2855,10 +2618,10 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GraphSummary);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
-        S.Struct({ graphs: GraphSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ graphs: __S(56, __c7, 0), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGraphsOutput" });
     case 2:
       return S.suspend(() =>
@@ -2879,10 +2642,10 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListGraphSnapshotsInput" });
     case 3:
-      return S.Array(GraphSnapshotSummary);
+      return S.Array(__S(35, __c4, 3));
     case 4:
       return S.suspend(() =>
-        S.Struct({ graphSnapshots: GraphSnapshotSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ graphSnapshots: __S(59, __c7, 3), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGraphSnapshotsOutput" });
     case 5:
       return S.suspend(() =>
@@ -2903,10 +2666,10 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListImportTasksInput" });
     case 6:
-      return S.Array(ImportTaskSummary);
+      return S.Array(__S(3, __c0, 3));
     case 7:
       return S.suspend(() =>
-        S.Struct({ tasks: ImportTaskSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ tasks: __S(62, __c7, 6), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListImportTasksOutput" });
   }
 }
@@ -2933,11 +2696,11 @@ function __c8(j: number): any {
         identifier: "ListPrivateGraphEndpointsInput",
       });
     case 1:
-      return S.Array(PrivateGraphEndpointSummary);
+      return S.Array(__S(18, __c2, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateGraphEndpoints: PrivateGraphEndpointSummaryList,
+          privateGraphEndpoints: __S(65, __c8, 1),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2948,7 +2711,7 @@ function __c8(j: number): any {
         S.Struct({
           graphIdentifier: S.String.pipe(T.HttpHeader("graphIdentifier"), T.HostLabel()),
           maxResults: S.Number.pipe(T.HttpQuery("maxResults")),
-          state: S.optional(QueryStateInput).pipe(T.HttpQuery("state")),
+          state: S.optional(S.String).pipe(T.HttpQuery("state")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/queries" }),
@@ -2962,9 +2725,9 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListQueriesInput" });
     case 4:
-      return S.Array(QuerySummary);
+      return S.Array(__S(50, __c6, 2));
     case 5:
-      return S.suspend(() => S.Struct({ queries: QuerySummaryList })).annotate({
+      return S.suspend(() => S.Struct({ queries: __S(68, __c8, 4) })).annotate({
         identifier: "ListQueriesOutput",
       });
     case 6:
@@ -2982,7 +2745,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(6, __c0, 6)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
@@ -3013,7 +2776,7 @@ function __c9(j: number): any {
           graphName: S.String,
           provisionedMemory: S.optional(S.Number),
           deletionProtection: S.optional(S.Boolean),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(6, __c0, 6)),
           replicaCount: S.optional(S.Number),
           publicConnectivity: S.optional(S.Boolean),
         }).pipe(
@@ -3036,13 +2799,13 @@ function __c9(j: number): any {
           id: S.String,
           name: S.String,
           arn: S.String,
-          status: S.optional(GraphStatus),
+          status: S.optional(S.String),
           statusReason: S.optional(S.String),
           createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           provisionedMemory: S.optional(S.Number),
           endpoint: S.optional(S.String),
           publicConnectivity: S.optional(S.Boolean),
-          vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
+          vectorSearchConfiguration: S.optional(__S(7, __c0, 7)),
           replicaCount: S.optional(S.Number),
           kmsKeyIdentifier: S.optional(S.String),
           sourceSnapshotId: S.optional(S.String),
@@ -3057,12 +2820,12 @@ function __c9(j: number): any {
         S.Struct({
           graphIdentifier: S.String,
           roleArn: S.String,
-          format: ExportFormat,
+          format: S.String,
           destination: S.String,
           kmsKeyIdentifier: S.String,
-          parquetType: S.optional(ParquetType),
-          exportFilter: S.optional(ExportFilter),
-          tags: S.optional(TagMap),
+          parquetType: S.optional(S.String),
+          exportFilter: S.optional(__S(31, __c3, 7)),
+          tags: S.optional(__S(6, __c0, 6)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/exporttasks" }),
@@ -3081,13 +2844,13 @@ function __c9(j: number): any {
           graphId: S.String,
           roleArn: S.String,
           taskId: S.String,
-          status: ExportTaskStatus,
-          format: ExportFormat,
+          status: S.String,
+          format: S.String,
           destination: S.String,
           kmsKeyIdentifier: S.String,
-          parquetType: S.optional(ParquetType),
+          parquetType: S.optional(S.String),
           statusReason: S.optional(S.String),
-          exportFilter: S.optional(ExportFilter),
+          exportFilter: S.optional(__S(31, __c3, 7)),
         }),
       ).annotate({ identifier: "StartExportTaskOutput" });
     case 5:
@@ -3107,12 +2870,12 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          importOptions: S.optional(ImportOptions),
+          importOptions: S.optional(__S(13, __c1, 5)),
           failOnError: S.optional(S.Boolean),
           source: S.String,
-          format: S.optional(Format),
-          parquetType: S.optional(ParquetType),
-          blankNodeHandling: S.optional(BlankNodeHandling),
+          format: S.optional(S.String),
+          parquetType: S.optional(S.String),
+          blankNodeHandling: S.optional(S.String),
           graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
           roleArn: S.String,
         }).pipe(
@@ -3133,11 +2896,11 @@ function __c9(j: number): any {
           graphId: S.optional(S.String),
           taskId: S.String,
           source: S.String,
-          format: S.optional(Format),
-          parquetType: S.optional(ParquetType),
+          format: S.optional(S.String),
+          parquetType: S.optional(S.String),
           roleArn: S.String,
-          status: ImportTaskStatus,
-          importOptions: S.optional(ImportOptions),
+          status: S.String,
+          importOptions: S.optional(__S(13, __c1, 5)),
         }),
       ).annotate({ identifier: "StartImportTaskOutput" });
   }
@@ -3160,7 +2923,10 @@ function __c10(j: number): any {
       ).annotate({ identifier: "StopGraphInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(6, __c0, 6),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -3176,7 +2942,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(16, __c2, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -3209,4 +2975,9 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "UpdateGraphInput" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

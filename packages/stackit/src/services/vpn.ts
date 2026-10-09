@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -48,48 +50,28 @@ export class NotFound
 
 /** The region in which the resource is located. */
 export type CreateGatewayRequestRegion = "eu01" | "eu02";
-const CreateGatewayRequestRegion = S.String;
-
 export interface CreateGatewayRequestAvailabilityZones {
   tunnel1: string;
   tunnel2: string;
 }
-const CreateGatewayRequestAvailabilityZones = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateGatewayRequestAvailabilityZones>;
-
 /** A list of IPv4 Prefixes to advertise via BGP. If omitted, the SNA network ranges will be advertised. */
 export type BGPGatewayConfigOverrideAdvertisedRoutesList = Array<string>;
-const BGPGatewayConfigOverrideAdvertisedRoutesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BGPGatewayConfigOverrideAdvertisedRoutesList>;
-
 /** BGP configuration effects all connections. (only for routingMode=BGP_ROUTE_BASED) */
 export interface BGPGatewayConfig {
   localAsn: number;
   /** A list of IPv4 Prefixes to advertise via BGP. If omitted, the SNA network ranges will be advertised. */
   overrideAdvertisedRoutes?: BGPGatewayConfigOverrideAdvertisedRoutesList;
 }
-const BGPGatewayConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BGPGatewayConfig>;
-
 /** Map of custom labels. Key and values must be a string with max 63 chars, start/end with alphanumeric. The key of a label follows the same rules as the `LabelValue` except that it cannot be empty. */
 export type Label = { [key: string]: string | undefined };
-const Label = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Label>;
-
 export interface NetworkConfig {
   /** The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Once the gateway is created, is not possible to change this attribute. */
   predefinedNetworkPrefix?: string;
   /** Custom routing table ID for the VPN gateway */
   routingTableId?: string;
 }
-const NetworkConfig = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<NetworkConfig>;
-
 /** Once the gateway is created, it is not possible to change this attribute. */
 export type RoutingType = "POLICY_BASED" | "ROUTE_BASED" | "BGP_ROUTE_BASED";
-const RoutingType = S.String;
-
 export interface CreateGatewayRequest {
   projectId: string;
   region: CreateGatewayRequestRegion | (string & {});
@@ -103,13 +85,9 @@ export interface CreateGatewayRequest {
   planId: string;
   routingType: RoutingType | (string & {});
 }
-const CreateGatewayRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateGatewayRequest>;
-
 export type CreateGatewayResponseAvailabilityZones = CreateGatewayRequestAvailabilityZones;
 /** The current lifecycle state of the gateway infrastructure. - `PENDING`: Provisioning or update is in progress. - `READY`: The gateway is fully operational. - `ERROR`: A failure occurred. - `DELETING`: The resource is being removed. */
 export type GatewayStatus = "PENDING" | "READY" | "ERROR" | "DELETING";
-const GatewayStatus = S.String;
-
 export interface CreateGatewayResponse {
   availabilityZones: CreateGatewayRequestAvailabilityZones;
   bgp?: BGPGatewayConfig;
@@ -124,15 +102,8 @@ export interface CreateGatewayResponse {
   id?: string;
   state?: GatewayStatus;
 }
-const CreateGatewayResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateGatewayResponse>;
-
 /** The region in which the resource is located. */
 export type CreateGatewayBGPFilterRequestRegion = "eu01" | "eu02";
-const CreateGatewayBGPFilterRequestRegion = S.String;
-
 export interface CreateGatewayBGPFilterRequest {
   projectId: string;
   region: CreateGatewayBGPFilterRequestRegion | (string & {});
@@ -140,11 +111,6 @@ export interface CreateGatewayBGPFilterRequest {
   /** A user-friendly name for the filter. Display only -- not enforced unique across a gateway. */
   displayName: string;
 }
-const CreateGatewayBGPFilterRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateGatewayBGPFilterRequest>;
-
 /** A named BGP route filter. Internally a BGPFilter holds an ordered set of rules (managed via the nested /rules sub-resource); a route is evaluated against each rule in 'sequence' order and the first match decides the outcome. An implicit DENY is applied after the last rule, so a route that matches no PERMIT rule is dropped. Attaching an empty filter to a tunnel therefore denies every route. Resource limits: the maximum number of filters per gateway equals the gateway plan's maxConnections value; the maximum number of rules per filter is 10. */
 export interface BGPFilter {
   /** A user-friendly name for the filter. Display only -- not enforced unique across a gateway. */
@@ -152,33 +118,16 @@ export interface BGPFilter {
   /** The server-generated UUID of the filter. */
   id?: string;
 }
-const BGPFilter = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<BGPFilter>;
-
 /** The region in which the resource is located. */
 export type CreateGatewayBGPFilterRuleRequestRegion = "eu01" | "eu02";
-const CreateGatewayBGPFilterRuleRequestRegion = S.String;
-
 /** The action to take if the route matches all criteria. Case-sensitive. */
 export type CreateGatewayBGPFilterRuleRequestAction = "PERMIT" | "DENY";
-const CreateGatewayBGPFilterRuleRequestAction = S.String;
-
 /** Matches if the AS-PATH contains any one of the listed ASNs (logical OR within the list). Treated as an unordered set; ordering is not preserved by the storage layer. When combined with firstASN, both conditions must hold (logical AND, consistent with the rest of the match block). If firstASN is also listed here, its presence as the first hop is sufficient to satisfy this list; no duplicate hop is required. */
 export type CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList = Array<number>;
-const CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList>;
-
 /** Matches if the route carries any one of these BGP standard communities (logical OR within the list). Format is 'asn:value' per RFC 1997 (both halves must fit in a uint32, i.e. 0..4294967295). Extended, large and well-known communities are not supported. */
 export type CreateGatewayBGPFilterRuleRequestMatchCommunitiesList = Array<string>;
-const CreateGatewayBGPFilterRuleRequestMatchCommunitiesList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchCommunitiesList>;
-
 /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type CreateGatewayBGPFilterRuleRequestMatchPrefixesList = Array<string>;
-const CreateGatewayBGPFilterRuleRequestMatchPrefixesList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchPrefixesList>;
-
 /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
 export interface CreateGatewayBGPFilterRuleRequestMatch {
   /** Matches if the AS-PATH contains any one of the listed ASNs (logical OR within the list). Treated as an unordered set; ordering is not preserved by the storage layer. When combined with firstASN, both conditions must hold (logical AND, consistent with the rest of the match block). If firstASN is also listed here, its presence as the first hop is sufficient to satisfy this list; no duplicate hop is required. */
@@ -196,21 +145,11 @@ export interface CreateGatewayBGPFilterRuleRequestMatch {
   /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
   prefixes?: CreateGatewayBGPFilterRuleRequestMatchPrefixesList;
 }
-const CreateGatewayBGPFilterRuleRequestMatch = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatch>;
-
 /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
 export interface CreateGatewayBGPFilterRuleRequestSet {
   /** BGP LOCAL_PREF to set on the route. Higher values are preferred during best-path selection. Default BGP LOCAL_PREF is 100; any value here overrides. */
   localPreference?: number;
 }
-const CreateGatewayBGPFilterRuleRequestSet = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateGatewayBGPFilterRuleRequestSet>;
-
 export interface CreateGatewayBGPFilterRuleRequest {
   projectId: string;
   region: CreateGatewayBGPFilterRuleRequestRegion | (string & {});
@@ -225,30 +164,14 @@ export interface CreateGatewayBGPFilterRuleRequest {
   /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
   set?: CreateGatewayBGPFilterRuleRequestSet;
 }
-const CreateGatewayBGPFilterRuleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateGatewayBGPFilterRuleRequest>;
-
 /** The action to take if the route matches all criteria. Case-sensitive. */
 export type BGPFilterRuleAction = "PERMIT" | "DENY";
-const BGPFilterRuleAction = S.String;
-
 /** Matches if the AS-PATH contains any one of the listed ASNs (logical OR within the list). Treated as an unordered set; ordering is not preserved by the storage layer. When combined with firstASN, both conditions must hold (logical AND, consistent with the rest of the match block). If firstASN is also listed here, its presence as the first hop is sufficient to satisfy this list; no duplicate hop is required. */
 export type BGPFilterRuleMatchAsPathContainsAnyList = Array<number>;
-const BGPFilterRuleMatchAsPathContainsAnyList =
-  CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList as any as S.Schema<BGPFilterRuleMatchAsPathContainsAnyList>;
-
 /** Matches if the route carries any one of these BGP standard communities (logical OR within the list). Format is 'asn:value' per RFC 1997 (both halves must fit in a uint32, i.e. 0..4294967295). Extended, large and well-known communities are not supported. */
 export type BGPFilterRuleMatchCommunitiesList = Array<string>;
-const BGPFilterRuleMatchCommunitiesList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<BGPFilterRuleMatchCommunitiesList>;
-
 /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type BGPFilterRuleMatchPrefixesList = Array<string>;
-const BGPFilterRuleMatchPrefixesList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<BGPFilterRuleMatchPrefixesList>;
-
 /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
 export interface BGPFilterRuleMatch {
   /** Matches if the AS-PATH contains any one of the listed ASNs (logical OR within the list). Treated as an unordered set; ordering is not preserved by the storage layer. When combined with firstASN, both conditions must hold (logical AND, consistent with the rest of the match block). If firstASN is also listed here, its presence as the first hop is sufficient to satisfy this list; no duplicate hop is required. */
@@ -266,8 +189,6 @@ export interface BGPFilterRuleMatch {
   /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
   prefixes?: BGPFilterRuleMatchPrefixesList;
 }
-const BGPFilterRuleMatch = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BGPFilterRuleMatch>;
-
 /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
 export type BGPFilterRuleSet = CreateGatewayBGPFilterRuleRequestSet;
 /** A single rule within a BGPFilter. All non-empty fields within the 'match' block are AND-combined. Rules within a filter are evaluated in 'sequence' order; the first matching rule decides the outcome (logical OR across rules). An implicit DENY follows the last rule. */
@@ -283,58 +204,34 @@ export interface BGPFilterRule {
   /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
   set?: CreateGatewayBGPFilterRuleRequestSet;
 }
-const BGPFilterRule = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<BGPFilterRule>;
-
 /** The region in which the resource is located. */
 export type CreateGatewayConnectionRequestRegion = "eu01" | "eu02";
-const CreateGatewayConnectionRequestRegion = S.String;
-
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type CreateGatewayConnectionRequestLocalSubnetsList = Array<string>;
-const CreateGatewayConnectionRequestLocalSubnetsList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayConnectionRequestLocalSubnetsList>;
-
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type CreateGatewayConnectionRequestRemoteSubnetsList = Array<string>;
-const CreateGatewayConnectionRequestRemoteSubnetsList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayConnectionRequestRemoteSubnetsList>;
-
 /** Optional. Use this for route-based VPN. */
 export type CreateGatewayConnectionRequestStaticRoutesList = Array<string>;
-const CreateGatewayConnectionRequestStaticRoutesList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayConnectionRequestStaticRoutesList>;
-
 export interface BGPTunnelConfig {
   /** UUID of the BGPFilter to apply to incoming routes from this tunnel's BGP neighbor. The filter must exist in the same gateway. Multiple tunnels may reference the same BGPFilter; in that case the rules' 'match.peer' field can be used to scope behavior per neighbor. Outbound filtering is not yet supported; use gateway.bgp.overrideAdvertisedRoutes to control what is advertised. */
   inboundFilterId?: string | null;
   remoteAsn: number;
 }
-const BGPTunnelConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<BGPTunnelConfig>;
-
 /** The peering object defines the point-to-point IP configuration for the Tunnel Interface. These addresses serve as next-hop identifiers and are used for BGP peering sessions and can be used in Static Route-Based connectivity. */
 export interface PeeringConfig {
   localAddress?: string;
   remoteAddress?: string;
 }
-const PeeringConfig = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PeeringConfig>;
-
 export type TunnelConfigurationPhase1DhGroupsItem =
   | "modp1024"
   | "modp2048"
   | "ecp256"
   | "ecp384"
   | "modp2048s256";
-const TunnelConfigurationPhase1DhGroupsItem = S.String;
-
 /** The Diffie-Hellman Group. Required, except if AEAD algorithms are selected. */
 export type TunnelConfigurationPhase1DhGroupsList = Array<
   TunnelConfigurationPhase1DhGroupsItem | (string & {})
 >;
-const TunnelConfigurationPhase1DhGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<TunnelConfigurationPhase1DhGroupsList>;
-
 export type TunnelConfigurationPhase1EncryptionAlgorithmsItem =
   | "aes256"
   | "aes128gcm16"
@@ -342,9 +239,6 @@ export type TunnelConfigurationPhase1EncryptionAlgorithmsItem =
 export type TunnelConfigurationPhase1EncryptionAlgorithmsList = Array<
   TunnelConfigurationPhase1EncryptionAlgorithmsItem | (string & {})
 >;
-const TunnelConfigurationPhase1EncryptionAlgorithmsList =
-  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase1EncryptionAlgorithmsList>;
-
 export type TunnelConfigurationPhase1IntegrityAlgorithmsItem =
   | "sha1"
   | "sha2_256"
@@ -354,9 +248,6 @@ export type TunnelConfigurationPhase1IntegrityAlgorithmsItem =
 export type TunnelConfigurationPhase1IntegrityAlgorithmsList = Array<
   TunnelConfigurationPhase1IntegrityAlgorithmsItem | (string & {})
 >;
-const TunnelConfigurationPhase1IntegrityAlgorithmsList =
-  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase1IntegrityAlgorithmsList>;
-
 export interface TunnelConfigurationPhase1 {
   /** The Diffie-Hellman Group. Required, except if AEAD algorithms are selected. */
   dhGroups?: TunnelConfigurationPhase1DhGroupsList;
@@ -366,11 +257,6 @@ export interface TunnelConfigurationPhase1 {
   /** Time to schedule a IKE re-keying (in seconds). */
   rekeyTime?: number;
 }
-const TunnelConfigurationPhase1 = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<TunnelConfigurationPhase1>;
-
 export type TunnelConfigurationPhase2DhGroupsItem =
   | "modp1024"
   | "modp2048"
@@ -381,9 +267,6 @@ export type TunnelConfigurationPhase2DhGroupsItem =
 export type TunnelConfigurationPhase2DhGroupsList = Array<
   TunnelConfigurationPhase2DhGroupsItem | (string & {})
 >;
-const TunnelConfigurationPhase2DhGroupsList =
-  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase2DhGroupsList>;
-
 export type TunnelConfigurationPhase2EncryptionAlgorithmsItem =
   | "aes256"
   | "aes128gcm16"
@@ -391,9 +274,6 @@ export type TunnelConfigurationPhase2EncryptionAlgorithmsItem =
 export type TunnelConfigurationPhase2EncryptionAlgorithmsList = Array<
   TunnelConfigurationPhase2EncryptionAlgorithmsItem | (string & {})
 >;
-const TunnelConfigurationPhase2EncryptionAlgorithmsList =
-  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase2EncryptionAlgorithmsList>;
-
 export type TunnelConfigurationPhase2IntegrityAlgorithmsItem =
   | "sha1"
   | "sha2_256"
@@ -403,17 +283,10 @@ export type TunnelConfigurationPhase2IntegrityAlgorithmsItem =
 export type TunnelConfigurationPhase2IntegrityAlgorithmsList = Array<
   TunnelConfigurationPhase2IntegrityAlgorithmsItem | (string & {})
 >;
-const TunnelConfigurationPhase2IntegrityAlgorithmsList =
-  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase2IntegrityAlgorithmsList>;
-
 /** Action to perform for this CHILD_SA on DPD timeout. "clear": Closes the CHILD_SA and does not take further action. "restart": immediately tries to re-negotiate the CILD_SA under a fresh IKE_SA. */
 export type TunnelConfigurationPhase2DpdAction = "clear" | "restart";
-const TunnelConfigurationPhase2DpdAction = S.String;
-
 /** Action to perform after loading the connection configuration. "none": The connection will be loaded but needs to be manually initiated. "start": initiates the connection actively. */
 export type TunnelConfigurationPhase2StartAction = "none" | "start";
-const TunnelConfigurationPhase2StartAction = S.String;
-
 export interface TunnelConfigurationPhase2 {
   /** The Diffie-Hellman Group. Required, except if AEAD algorithms are selected. */
   dhGroups?: TunnelConfigurationPhase2DhGroupsList;
@@ -427,11 +300,6 @@ export interface TunnelConfigurationPhase2 {
   /** Action to perform after loading the connection configuration. "none": The connection will be loaded but needs to be manually initiated. "start": initiates the connection actively. */
   startAction?: TunnelConfigurationPhase2StartAction | (string & {});
 }
-const TunnelConfigurationPhase2 = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<TunnelConfigurationPhase2>;
-
 export interface TunnelConfiguration {
   bgp?: BGPTunnelConfig;
   peering?: PeeringConfig;
@@ -441,8 +309,6 @@ export interface TunnelConfiguration {
   preSharedKey?: string;
   remoteAddress: string;
 }
-const TunnelConfiguration = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<TunnelConfiguration>;
-
 export interface CreateGatewayConnectionRequest {
   projectId: string;
   region: CreateGatewayConnectionRequestRegion | (string & {});
@@ -461,26 +327,12 @@ export interface CreateGatewayConnectionRequest {
   tunnel1: TunnelConfiguration;
   tunnel2: TunnelConfiguration;
 }
-const CreateGatewayConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateGatewayConnectionRequest>;
-
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type ConnectionResponseOutputLocalSubnetsList = Array<string>;
-const ConnectionResponseOutputLocalSubnetsList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<ConnectionResponseOutputLocalSubnetsList>;
-
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type ConnectionResponseOutputRemoteSubnetsList = Array<string>;
-const ConnectionResponseOutputRemoteSubnetsList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<ConnectionResponseOutputRemoteSubnetsList>;
-
 /** Optional. Use this for route-based VPN. */
 export type ConnectionResponseOutputStaticRoutesList = Array<string>;
-const ConnectionResponseOutputStaticRoutesList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<ConnectionResponseOutputStaticRoutesList>;
-
 export type TunnelConfigurationOutputPhase1DhGroupsItem =
   | "modp1024"
   | "modp2048"
@@ -513,9 +365,6 @@ export interface TunnelConfigurationOutputPhase1 {
   /** Time to schedule a IKE re-keying (in seconds). */
   rekeyTime?: number;
 }
-const TunnelConfigurationOutputPhase1 =
-  TunnelConfigurationPhase1 as any as S.Schema<TunnelConfigurationOutputPhase1>;
-
 export type TunnelConfigurationOutputPhase2DhGroupsItem =
   | "modp1024"
   | "modp2048"
@@ -556,9 +405,6 @@ export interface TunnelConfigurationOutputPhase2 {
   /** Action to perform after loading the connection configuration. "none": The connection will be loaded but needs to be manually initiated. "start": initiates the connection actively. */
   startAction?: TunnelConfigurationOutputPhase2StartAction;
 }
-const TunnelConfigurationOutputPhase2 =
-  TunnelConfigurationPhase2 as any as S.Schema<TunnelConfigurationOutputPhase2>;
-
 export interface TunnelConfigurationOutput {
   bgp?: BGPTunnelConfig;
   peering?: PeeringConfig;
@@ -566,11 +412,6 @@ export interface TunnelConfigurationOutput {
   phase2: TunnelConfigurationOutputPhase2;
   remoteAddress: string;
 }
-const TunnelConfigurationOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<TunnelConfigurationOutput>;
-
 export interface ConnectionResponseOutput {
   /** A user-friendly name for the connection. */
   displayName: string;
@@ -588,51 +429,25 @@ export interface ConnectionResponseOutput {
   tunnel1: TunnelConfigurationOutput;
   tunnel2: TunnelConfigurationOutput;
 }
-const ConnectionResponseOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ConnectionResponseOutput>;
-
 /** The region in which the resource is located. */
 export type DeleteGatewayRequestRegion = "eu01" | "eu02";
-const DeleteGatewayRequestRegion = S.String;
-
 export interface DeleteGatewayRequest {
   projectId: string;
   region: DeleteGatewayRequestRegion | (string & {});
   gatewayId: string;
 }
-const DeleteGatewayRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteGatewayRequest>;
-
 export interface DeleteGatewayResponse {}
-const DeleteGatewayResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteGatewayResponse>;
-
 /** The region in which the resource is located. */
 export type DeleteGatewayBGPFilterRequestRegion = "eu01" | "eu02";
-const DeleteGatewayBGPFilterRequestRegion = S.String;
-
 export interface DeleteGatewayBGPFilterRequest {
   projectId: string;
   region: DeleteGatewayBGPFilterRequestRegion | (string & {});
   gatewayId: string;
   filterId: string;
 }
-const DeleteGatewayBGPFilterRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteGatewayBGPFilterRequest>;
-
 export interface DeleteGatewayBGPFilterResponse {}
-const DeleteGatewayBGPFilterResponse =
-  DeleteGatewayResponse as any as S.Schema<DeleteGatewayBGPFilterResponse>;
-
 /** The region in which the resource is located. */
 export type DeleteGatewayBGPFilterRuleRequestRegion = "eu01" | "eu02";
-const DeleteGatewayBGPFilterRuleRequestRegion = S.String;
-
 export interface DeleteGatewayBGPFilterRuleRequest {
   projectId: string;
   region: DeleteGatewayBGPFilterRuleRequestRegion | (string & {});
@@ -640,49 +455,23 @@ export interface DeleteGatewayBGPFilterRuleRequest {
   filterId: string;
   ruleId: string;
 }
-const DeleteGatewayBGPFilterRuleRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteGatewayBGPFilterRuleRequest>;
-
 export interface DeleteGatewayBGPFilterRuleResponse {}
-const DeleteGatewayBGPFilterRuleResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteGatewayBGPFilterRuleResponse>;
-
 /** The region in which the resource is located. */
 export type DeleteGatewayConnectionRequestRegion = "eu01" | "eu02";
-const DeleteGatewayConnectionRequestRegion = S.String;
-
 export interface DeleteGatewayConnectionRequest {
   projectId: string;
   region: DeleteGatewayConnectionRequestRegion | (string & {});
   gatewayId: string;
   connectionId: string;
 }
-const DeleteGatewayConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteGatewayConnectionRequest>;
-
 export interface DeleteGatewayConnectionResponse {}
-const DeleteGatewayConnectionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteGatewayConnectionResponse>;
-
 /** The region in which the resource is located. */
 export type GetGatewayRequestRegion = "eu01" | "eu02";
-const GetGatewayRequestRegion = S.String;
-
 export interface GetGatewayRequest {
   projectId: string;
   region: GetGatewayRequestRegion | (string & {});
   gatewayId: string;
 }
-const GetGatewayRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetGatewayRequest>;
-
 export type GetGatewayResponseAvailabilityZones = CreateGatewayRequestAvailabilityZones;
 export interface GetGatewayResponse {
   availabilityZones: CreateGatewayRequestAvailabilityZones;
@@ -698,27 +487,16 @@ export interface GetGatewayResponse {
   id?: string;
   state?: GatewayStatus;
 }
-const GetGatewayResponse = CreateGatewayResponse as any as S.Schema<GetGatewayResponse>;
-
 /** The region in which the resource is located. */
 export type GetGatewayBGPFilterRequestRegion = "eu01" | "eu02";
-const GetGatewayBGPFilterRequestRegion = S.String;
-
 export interface GetGatewayBGPFilterRequest {
   projectId: string;
   region: GetGatewayBGPFilterRequestRegion | (string & {});
   gatewayId: string;
   filterId: string;
 }
-const GetGatewayBGPFilterRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetGatewayBGPFilterRequest>;
-
 /** The region in which the resource is located. */
 export type GetGatewayBGPFilterRuleRequestRegion = "eu01" | "eu02";
-const GetGatewayBGPFilterRuleRequestRegion = S.String;
-
 export interface GetGatewayBGPFilterRuleRequest {
   projectId: string;
   region: GetGatewayBGPFilterRuleRequestRegion | (string & {});
@@ -726,44 +504,23 @@ export interface GetGatewayBGPFilterRuleRequest {
   filterId: string;
   ruleId: string;
 }
-const GetGatewayBGPFilterRuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetGatewayBGPFilterRuleRequest>;
-
 /** The region in which the resource is located. */
 export type GetGatewayConnectionRequestRegion = "eu01" | "eu02";
-const GetGatewayConnectionRequestRegion = S.String;
-
 export interface GetGatewayConnectionRequest {
   projectId: string;
   region: GetGatewayConnectionRequestRegion | (string & {});
   gatewayId: string;
   connectionId: string;
 }
-const GetGatewayConnectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetGatewayConnectionRequest>;
-
 /** The region in which the resource is located. */
 export type GetGatewayConnectionStatusRequestRegion = "eu01" | "eu02";
-const GetGatewayConnectionStatusRequestRegion = S.String;
-
 export interface GetGatewayConnectionStatusRequest {
   projectId: string;
   region: GetGatewayConnectionStatusRequestRegion | (string & {});
   gatewayId: string;
   connectionId: string;
 }
-const GetGatewayConnectionStatusRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetGatewayConnectionStatusRequest>;
-
 export type TunnelStatusName = "tunnel1" | "tunnel2";
-const TunnelStatusName = S.String;
-
 export interface Phase1Status {
   /** The negotiated Diffie-Hellman Group */
   dhGroup?: string;
@@ -773,8 +530,6 @@ export interface Phase1Status {
   integrityAlgorithm?: string;
   state?: string;
 }
-const Phase1Status = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Phase1Status>;
-
 export interface Phase2Status {
   /** The total data volume received through this Security Association, measured in bytes. */
   bytesIn?: string;
@@ -796,8 +551,6 @@ export interface Phase2Status {
   protocol?: string;
   state?: string;
 }
-const Phase2Status = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Phase2Status>;
-
 /** Describes the status of the VPN itself. */
 export interface TunnelStatus {
   established?: boolean;
@@ -805,14 +558,7 @@ export interface TunnelStatus {
   phase1?: Phase1Status;
   phase2?: Phase2Status;
 }
-const TunnelStatus = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<TunnelStatus>;
-
 export type ConnectionStatusResponseTunnelsList = Array<TunnelStatus>;
-const ConnectionStatusResponseTunnelsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ConnectionStatusResponseTunnelsList>;
-
 export interface ConnectionStatusResponse {
   /** The name of the connection. */
   displayName?: string;
@@ -821,31 +567,14 @@ export interface ConnectionStatusResponse {
   id?: string;
   tunnels?: ConnectionStatusResponseTunnelsList;
 }
-const ConnectionStatusResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ConnectionStatusResponse>;
-
 /** The region in which the resource is located. */
 export type GetGatewayStatusRequestRegion = "eu01" | "eu02";
-const GetGatewayStatusRequestRegion = S.String;
-
 export interface GetGatewayStatusRequest {
   projectId: string;
   region: GetGatewayStatusRequestRegion | (string & {});
   gatewayId: string;
 }
-const GetGatewayStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetGatewayStatusRequest>;
-
 export type GatewayStatusResponseConnectionsList = Array<ConnectionStatusResponse>;
-const GatewayStatusResponseConnectionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GatewayStatusResponseConnectionsList>;
-
 export interface BGPStatusPeers {
   /** The ASN of the local STACKIT gateway. */
   localAs: number;
@@ -862,11 +591,7 @@ export interface BGPStatusPeers {
   /** The current BGP session state. */
   state: string;
 }
-const BGPStatusPeers = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<BGPStatusPeers>;
-
 export type BGPStatusPeersList = Array<BGPStatusPeers>;
-const BGPStatusPeersList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<BGPStatusPeersList>;
-
 export interface BGPStatusRoutes {
   /** The destination network */
   network: string;
@@ -877,20 +602,12 @@ export interface BGPStatusRoutes {
   peerId: string;
   weight: number;
 }
-const BGPStatusRoutes = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<BGPStatusRoutes>;
-
 export type BGPStatusRoutesList = Array<BGPStatusRoutes>;
-const BGPStatusRoutesList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<BGPStatusRoutesList>;
-
 export interface BGPStatus {
   peers?: BGPStatusPeersList;
   routes?: BGPStatusRoutesList;
 }
-const BGPStatus = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<BGPStatus>;
-
 export type VPNTunnelsName = "tunnel1" | "tunnel2";
-const VPNTunnelsName = S.String;
-
 /** Status of the underlying tunnel instances. */
 export interface VPNTunnels {
   bgpStatus?: BGPStatus | null;
@@ -901,14 +618,7 @@ export interface VPNTunnels {
   /** The public IPv4 address of this endpoint. */
   publicIP?: string;
 }
-const VPNTunnels = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<VPNTunnels>;
-
 export type GatewayStatusResponseTunnelsList = Array<VPNTunnels>;
-const GatewayStatusResponseTunnelsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GatewayStatusResponseTunnelsList>;
-
 export interface GatewayStatusResponse {
   connections?: GatewayStatusResponseConnectionsList;
   /** Name of the Gateway instance. */
@@ -920,72 +630,35 @@ export interface GatewayStatusResponse {
   id?: string;
   tunnels?: GatewayStatusResponseTunnelsList;
 }
-const GatewayStatusResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GatewayStatusResponse>;
-
 /** The region in which the resource is located. */
 export type ListGatewayBGPFilterRulesRequestRegion = "eu01" | "eu02";
-const ListGatewayBGPFilterRulesRequestRegion = S.String;
-
 export interface ListGatewayBGPFilterRulesRequest {
   projectId: string;
   region: ListGatewayBGPFilterRulesRequestRegion | (string & {});
   gatewayId: string;
   filterId: string;
 }
-const ListGatewayBGPFilterRulesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListGatewayBGPFilterRulesRequest>;
-
 export type BGPFilterRuleListRulesList = Array<BGPFilterRule>;
-const BGPFilterRuleListRulesList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<BGPFilterRuleListRulesList>;
-
 /** Response wrapper for listing rules within a BGP filter. */
 export interface BGPFilterRuleList {
   rules: BGPFilterRuleListRulesList;
 }
-const BGPFilterRuleList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<BGPFilterRuleList>;
-
 /** The region in which the resource is located. */
 export type ListGatewayBGPFiltersRequestRegion = "eu01" | "eu02";
-const ListGatewayBGPFiltersRequestRegion = S.String;
-
 export interface ListGatewayBGPFiltersRequest {
   projectId: string;
   region: ListGatewayBGPFiltersRequestRegion | (string & {});
   gatewayId: string;
 }
-const ListGatewayBGPFiltersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListGatewayBGPFiltersRequest>;
-
 export type BGPFilterListBgpFiltersList = Array<BGPFilter>;
-const BGPFilterListBgpFiltersList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<BGPFilterListBgpFiltersList>;
-
 /** Response wrapper for listing BGP filters. */
 export interface BGPFilterList {
   bgpFilters: BGPFilterListBgpFiltersList;
 }
-const BGPFilterList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<BGPFilterList>;
-
 /** The region in which the resource is located. */
 export type ListGatewayConnectionsRequestRegion = "eu01" | "eu02";
-const ListGatewayConnectionsRequestRegion = S.String;
-
 /** Filter resources by labels. */
 export type LabelSelector = { [key: string]: string | undefined };
-const LabelSelector = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<LabelSelector>;
-
 export interface ListGatewayConnectionsRequest {
   projectId: string;
   region: ListGatewayConnectionsRequestRegion | (string & {});
@@ -993,34 +666,18 @@ export interface ListGatewayConnectionsRequest {
   /** Filter resources by labels. */
   label_selector?: LabelSelector;
 }
-const ListGatewayConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListGatewayConnectionsRequest>;
-
 export type ConnectionListOutputConnectionsList = Array<ConnectionResponseOutput>;
-const ConnectionListOutputConnectionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ConnectionListOutputConnectionsList>;
-
 export interface ConnectionListOutput {
   connections: ConnectionListOutputConnectionsList;
 }
-const ConnectionListOutput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ConnectionListOutput>;
-
 /** The region in which the resource is located. */
 export type ListGatewaysRequestRegion = "eu01" | "eu02";
-const ListGatewaysRequestRegion = S.String;
-
 export interface ListGatewaysRequest {
   projectId: string;
   region: ListGatewaysRequestRegion | (string & {});
   /** Filter resources by labels. */
   label_selector?: LabelSelector;
 }
-const ListGatewaysRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListGatewaysRequest>;
-
 export type GatewayResponseAvailabilityZones = CreateGatewayRequestAvailabilityZones;
 export interface GatewayResponse {
   availabilityZones: CreateGatewayRequestAvailabilityZones;
@@ -1036,28 +693,15 @@ export interface GatewayResponse {
   id?: string;
   state?: GatewayStatus;
 }
-const GatewayResponse = CreateGatewayResponse as any as S.Schema<GatewayResponse>;
-
 export type GatewayListGatewaysList = Array<GatewayResponse>;
-const GatewayListGatewaysList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GatewayListGatewaysList>;
-
 export interface GatewayList {
   gateways: GatewayListGatewaysList;
 }
-const GatewayList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GatewayList>;
-
 /** The region in which the resource is located. */
 export type ListPlansRequestRegion = "eu01" | "eu02";
-const ListPlansRequestRegion = S.String;
-
 export interface ListPlansRequest {
   region: ListPlansRequestRegion | (string & {});
 }
-const ListPlansRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListPlansRequest>;
-
 export interface Plan {
   /** The maximum throughput supported by the gateway in each direction, measured in MBit/s */
   maxBandwidth?: number;
@@ -1069,48 +713,30 @@ export interface Plan {
   /** The SKU identifier used for billing. */
   sku?: string;
 }
-const Plan = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Plan>;
-
 export type PlanListPlansList = Array<Plan>;
-const PlanListPlansList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<PlanListPlansList>;
-
 export interface PlanList {
   defaultPlanId?: string;
   plans?: PlanListPlansList;
 }
-const PlanList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<PlanList>;
-
 /** The region in which the resource is located. */
 export type ListQuotasRequestRegion = "eu01" | "eu02";
-const ListQuotasRequestRegion = S.String;
-
 export interface ListQuotasRequest {
   projectId: string;
   region: ListQuotasRequestRegion | (string & {});
 }
-const ListQuotasRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ListQuotasRequest>;
-
 export interface Quota {
   limit: number;
   usage: number;
 }
-const Quota = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Quota>;
-
 export interface QuotaList {
   /** Current limit and usage for VPN gateways. */
   gateways: Quota;
 }
-const QuotaList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<QuotaList>;
-
 export interface QuotaListResponse {
   quotas: QuotaList;
 }
-const QuotaListResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<QuotaListResponse>;
-
 /** The region in which the resource is located. */
 export type UpdateGatewayRequestRegion = "eu01" | "eu02";
-const UpdateGatewayRequestRegion = S.String;
-
 export type UpdateGatewayRequestAvailabilityZones = CreateGatewayRequestAvailabilityZones;
 export interface UpdateGatewayRequest {
   projectId: string;
@@ -1126,8 +752,6 @@ export interface UpdateGatewayRequest {
   planId: string;
   routingType: RoutingType | (string & {});
 }
-const UpdateGatewayRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UpdateGatewayRequest>;
-
 export type UpdateGatewayResponseAvailabilityZones = CreateGatewayRequestAvailabilityZones;
 export interface UpdateGatewayResponse {
   availabilityZones: CreateGatewayRequestAvailabilityZones;
@@ -1143,12 +767,8 @@ export interface UpdateGatewayResponse {
   id?: string;
   state?: GatewayStatus;
 }
-const UpdateGatewayResponse = CreateGatewayResponse as any as S.Schema<UpdateGatewayResponse>;
-
 /** The region in which the resource is located. */
 export type UpdateGatewayBGPFilterRequestRegion = "eu01" | "eu02";
-const UpdateGatewayBGPFilterRequestRegion = S.String;
-
 export interface UpdateGatewayBGPFilterRequest {
   projectId: string;
   region: UpdateGatewayBGPFilterRequestRegion | (string & {});
@@ -1157,19 +777,10 @@ export interface UpdateGatewayBGPFilterRequest {
   /** A user-friendly name for the filter. Display only -- not enforced unique across a gateway. */
   displayName: string;
 }
-const UpdateGatewayBGPFilterRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateGatewayBGPFilterRequest>;
-
 /** The region in which the resource is located. */
 export type UpdateGatewayBGPFilterRuleRequestRegion = "eu01" | "eu02";
-const UpdateGatewayBGPFilterRuleRequestRegion = S.String;
-
 /** The action to take if the route matches all criteria. Case-sensitive. */
 export type UpdateGatewayBGPFilterRuleRequestAction = "PERMIT" | "DENY";
-const UpdateGatewayBGPFilterRuleRequestAction = S.String;
-
 /** Matches if the AS-PATH contains any one of the listed ASNs (logical OR within the list). Treated as an unordered set; ordering is not preserved by the storage layer. When combined with firstASN, both conditions must hold (logical AND, consistent with the rest of the match block). If firstASN is also listed here, its presence as the first hop is sufficient to satisfy this list; no duplicate hop is required. */
 export type UpdateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList = Array<number>;
 /** Matches if the route carries any one of these BGP standard communities (logical OR within the list). Format is 'asn:value' per RFC 1997 (both halves must fit in a uint32, i.e. 0..4294967295). Extended, large and well-known communities are not supported. */
@@ -1193,9 +804,6 @@ export interface UpdateGatewayBGPFilterRuleRequestMatch {
   /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
   prefixes?: UpdateGatewayBGPFilterRuleRequestMatchPrefixesList;
 }
-const UpdateGatewayBGPFilterRuleRequestMatch =
-  CreateGatewayBGPFilterRuleRequestMatch as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatch>;
-
 /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
 export type UpdateGatewayBGPFilterRuleRequestSet = CreateGatewayBGPFilterRuleRequestSet;
 export interface UpdateGatewayBGPFilterRuleRequest {
@@ -1213,30 +821,14 @@ export interface UpdateGatewayBGPFilterRuleRequest {
   /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
   set?: CreateGatewayBGPFilterRuleRequestSet;
 }
-const UpdateGatewayBGPFilterRuleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateGatewayBGPFilterRuleRequest>;
-
 /** The region in which the resource is located. */
 export type UpdateGatewayConnectionRequestRegion = "eu01" | "eu02";
-const UpdateGatewayConnectionRequestRegion = S.String;
-
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type UpdateGatewayConnectionRequestLocalSubnetsList = Array<string>;
-const UpdateGatewayConnectionRequestLocalSubnetsList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayConnectionRequestLocalSubnetsList>;
-
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type UpdateGatewayConnectionRequestRemoteSubnetsList = Array<string>;
-const UpdateGatewayConnectionRequestRemoteSubnetsList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayConnectionRequestRemoteSubnetsList>;
-
 /** Optional. Use this for route-based VPN. */
 export type UpdateGatewayConnectionRequestStaticRoutesList = Array<string>;
-const UpdateGatewayConnectionRequestStaticRoutesList =
-  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayConnectionRequestStaticRoutesList>;
-
 export interface UpdateGatewayConnectionRequest {
   projectId: string;
   region: UpdateGatewayConnectionRequestRegion | (string & {});
@@ -1256,11 +848,6 @@ export interface UpdateGatewayConnectionRequest {
   tunnel1: TunnelConfiguration;
   tunnel2: TunnelConfiguration;
 }
-const UpdateGatewayConnectionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UpdateGatewayConnectionRequest>;
-
 export type CreateGatewayError = BadRequest | Forbidden | Conflict | StackitOpError;
 /** Create a VPN gateway in a project. Provision a new VPN gateway. */
 export const createGateway: API.OperationMethod<
@@ -1269,8 +856,8 @@ export const createGateway: API.OperationMethod<
   CreateGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGatewayRequest,
-  output: CreateGatewayResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateGatewayRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreateGatewayResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1289,8 +876,8 @@ export const createGatewayBGPFilter: API.OperationMethod<
   CreateGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGatewayBGPFilterRequest,
-  output: BGPFilter,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateGatewayBGPFilterRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BGPFilter>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1309,8 +896,8 @@ export const createGatewayBGPFilterRule: API.OperationMethod<
   CreateGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGatewayBGPFilterRuleRequest,
-  output: BGPFilterRule,
+  input: __S(12, __c1, 4) as any as S.Schema<CreateGatewayBGPFilterRuleRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<BGPFilterRule>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1324,8 +911,8 @@ export const createGatewayConnection: API.OperationMethod<
   CreateGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGatewayConnectionRequest,
-  output: ConnectionResponseOutput,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateGatewayConnectionRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ConnectionResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1339,8 +926,8 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayRequest,
-  output: DeleteGatewayResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteGatewayRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteGatewayResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1359,8 +946,8 @@ export const deleteGatewayBGPFilter: API.OperationMethod<
   DeleteGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayBGPFilterRequest,
-  output: DeleteGatewayBGPFilterResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<DeleteGatewayBGPFilterRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteGatewayBGPFilterResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1374,8 +961,8 @@ export const deleteGatewayBGPFilterRule: API.OperationMethod<
   DeleteGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayBGPFilterRuleRequest,
-  output: DeleteGatewayBGPFilterRuleResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<DeleteGatewayBGPFilterRuleRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<DeleteGatewayBGPFilterRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1389,8 +976,8 @@ export const deleteGatewayConnection: API.OperationMethod<
   DeleteGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayConnectionRequest,
-  output: DeleteGatewayConnectionResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<DeleteGatewayConnectionRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<DeleteGatewayConnectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1404,8 +991,8 @@ export const getGateway: API.OperationMethod<
   GetGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayRequest,
-  output: GetGatewayResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<GetGatewayRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetGatewayResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1419,8 +1006,8 @@ export const getGatewayBGPFilter: API.OperationMethod<
   GetGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayBGPFilterRequest,
-  output: BGPFilter,
+  input: __S(32, __c4, 0) as any as S.Schema<GetGatewayBGPFilterRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BGPFilter>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1434,8 +1021,8 @@ export const getGatewayBGPFilterRule: API.OperationMethod<
   GetGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayBGPFilterRuleRequest,
-  output: BGPFilterRule,
+  input: __S(33, __c4, 1) as any as S.Schema<GetGatewayBGPFilterRuleRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<BGPFilterRule>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1449,8 +1036,8 @@ export const getGatewayConnection: API.OperationMethod<
   GetGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayConnectionRequest,
-  output: ConnectionResponseOutput,
+  input: __S(34, __c4, 2) as any as S.Schema<GetGatewayConnectionRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ConnectionResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1464,8 +1051,8 @@ export const getGatewayConnectionStatus: API.OperationMethod<
   GetGatewayConnectionStatusError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayConnectionStatusRequest,
-  output: ConnectionStatusResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<GetGatewayConnectionStatusRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ConnectionStatusResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1479,8 +1066,8 @@ export const getGatewayStatus: API.OperationMethod<
   GetGatewayStatusError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayStatusRequest,
-  output: GatewayStatusResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<GetGatewayStatusRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GatewayStatusResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1494,8 +1081,8 @@ export const listGatewayBGPFilterRules: API.OperationMethod<
   ListGatewayBGPFilterRulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayBGPFilterRulesRequest,
-  output: BGPFilterRuleList,
+  input: __S(51, __c6, 3) as any as S.Schema<ListGatewayBGPFilterRulesRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<BGPFilterRuleList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1509,8 +1096,8 @@ export const listGatewayBGPFilters: API.OperationMethod<
   ListGatewayBGPFiltersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayBGPFiltersRequest,
-  output: BGPFilterList,
+  input: __S(54, __c6, 6) as any as S.Schema<ListGatewayBGPFiltersRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<BGPFilterList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1524,8 +1111,8 @@ export const listGatewayConnections: API.OperationMethod<
   ListGatewayConnectionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayConnectionsRequest,
-  output: ConnectionListOutput,
+  input: __S(58, __c7, 2) as any as S.Schema<ListGatewayConnectionsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ConnectionListOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1539,8 +1126,8 @@ export const listGateways: API.OperationMethod<
   ListGatewaysError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewaysRequest,
-  output: GatewayList,
+  input: __S(61, __c7, 5) as any as S.Schema<ListGatewaysRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<GatewayList>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1554,8 +1141,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPlansRequest,
-  output: PlanList,
+  input: __S(64, __c8, 0) as any as S.Schema<ListPlansRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<PlanList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1569,8 +1156,8 @@ export const listQuotas: API.OperationMethod<
   ListQuotasError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQuotasRequest,
-  output: QuotaListResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<ListQuotasRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<QuotaListResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1584,8 +1171,8 @@ export const updateGateway: API.OperationMethod<
   UpdateGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayRequest,
-  output: UpdateGatewayResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateGatewayRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<UpdateGatewayResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1604,8 +1191,8 @@ export const updateGatewayBGPFilter: API.OperationMethod<
   UpdateGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayBGPFilterRequest,
-  output: BGPFilter,
+  input: __S(73, __c9, 1) as any as S.Schema<UpdateGatewayBGPFilterRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BGPFilter>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1624,8 +1211,8 @@ export const updateGatewayBGPFilterRule: API.OperationMethod<
   UpdateGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayBGPFilterRuleRequest,
-  output: BGPFilterRule,
+  input: __S(74, __c9, 2) as any as S.Schema<UpdateGatewayBGPFilterRuleRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<BGPFilterRule>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1639,8 +1226,8 @@ export const updateGatewayConnection: API.OperationMethod<
   UpdateGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayConnectionRequest,
-  output: ConnectionResponseOutput,
+  input: __S(75, __c9, 3) as any as S.Schema<UpdateGatewayConnectionRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ConnectionResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1664,7 +1251,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           localAsn: S.Number,
-          overrideAdvertisedRoutes: S.optional(BGPGatewayConfigOverrideAdvertisedRoutesList),
+          overrideAdvertisedRoutes: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "BGPGatewayConfig" });
     case 3:
@@ -1680,14 +1267,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: CreateGatewayRequestRegion.pipe(T.Label()),
-          availabilityZones: CreateGatewayRequestAvailabilityZones,
-          bgp: S.optional(BGPGatewayConfig),
+          region: S.String.pipe(T.Label()),
+          availabilityZones: __S(0, __c0, 0),
+          bgp: S.optional(__S(2, __c0, 2)),
           displayName: S.String,
-          labels: S.optional(Label),
-          networkConfig: S.optional(NetworkConfig),
+          labels: S.optional(__S(3, __c0, 3)),
+          networkConfig: S.optional(__S(4, __c0, 4)),
           planId: S.String,
-          routingType: RoutingType,
+          routingType: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1700,22 +1287,22 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          availabilityZones: CreateGatewayRequestAvailabilityZones,
-          bgp: S.optional(BGPGatewayConfig),
+          availabilityZones: __S(0, __c0, 0),
+          bgp: S.optional(__S(2, __c0, 2)),
           displayName: S.String,
-          labels: S.optional(Label),
-          networkConfig: S.optional(NetworkConfig),
+          labels: S.optional(__S(3, __c0, 3)),
+          networkConfig: S.optional(__S(4, __c0, 4)),
           planId: S.String,
-          routingType: RoutingType,
+          routingType: S.String,
           id: S.optional(S.String),
-          state: S.optional(GatewayStatus),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateGatewayResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: CreateGatewayBGPFilterRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           displayName: S.String,
         }).pipe(
@@ -1745,15 +1332,13 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          asPathContainsAny: S.optional(
-            CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList,
-          ),
-          communities: S.optional(CreateGatewayBGPFilterRuleRequestMatchCommunitiesList),
+          asPathContainsAny: S.optional(__S(9, __c1, 1)),
+          communities: S.optional(__S(1, __c0, 1)),
           firstASN: S.optional(S.Number),
           maxPrefixLength: S.optional(S.Number),
           minPrefixLength: S.optional(S.Number),
           peer: S.optional(S.String),
-          prefixes: S.optional(CreateGatewayBGPFilterRuleRequestMatchPrefixesList),
+          prefixes: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CreateGatewayBGPFilterRuleRequestMatch",
@@ -1770,13 +1355,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: CreateGatewayBGPFilterRuleRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
-          action: CreateGatewayBGPFilterRuleRequestAction,
-          match: S.optional(CreateGatewayBGPFilterRuleRequestMatch),
+          action: S.String,
+          match: S.optional(__S(10, __c1, 2)),
           sequence: S.optional(S.Number),
-          set: S.optional(CreateGatewayBGPFilterRuleRequestSet),
+          set: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1791,23 +1376,23 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          asPathContainsAny: S.optional(BGPFilterRuleMatchAsPathContainsAnyList),
-          communities: S.optional(BGPFilterRuleMatchCommunitiesList),
+          asPathContainsAny: S.optional(__S(9, __c1, 1)),
+          communities: S.optional(__S(1, __c0, 1)),
           firstASN: S.optional(S.Number),
           maxPrefixLength: S.optional(S.Number),
           minPrefixLength: S.optional(S.Number),
           peer: S.optional(S.String),
-          prefixes: S.optional(BGPFilterRuleMatchPrefixesList),
+          prefixes: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "BGPFilterRuleMatch" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: BGPFilterRuleAction,
+          action: S.String,
           id: S.optional(S.String),
-          match: S.optional(BGPFilterRuleMatch),
+          match: S.optional(__S(13, __c1, 5)),
           sequence: S.optional(S.Number),
-          set: S.optional(CreateGatewayBGPFilterRuleRequestSet),
+          set: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "BGPFilterRule" });
     case 7:
@@ -1829,13 +1414,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PeeringConfig" });
     case 1:
-      return S.Array(TunnelConfigurationPhase1DhGroupsItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dhGroups: S.optional(TunnelConfigurationPhase1DhGroupsList),
-          encryptionAlgorithms: TunnelConfigurationPhase1EncryptionAlgorithmsList,
-          integrityAlgorithms: TunnelConfigurationPhase1IntegrityAlgorithmsList,
+          dhGroups: S.optional(__S(17, __c2, 1)),
+          encryptionAlgorithms: __S(17, __c2, 1),
+          integrityAlgorithms: __S(17, __c2, 1),
           rekeyTime: S.optional(S.Number),
         }),
       ).annotate({
@@ -1844,12 +1429,12 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dhGroups: S.optional(TunnelConfigurationPhase2DhGroupsList),
-          encryptionAlgorithms: TunnelConfigurationPhase2EncryptionAlgorithmsList,
-          integrityAlgorithms: TunnelConfigurationPhase2IntegrityAlgorithmsList,
-          dpdAction: S.optional(TunnelConfigurationPhase2DpdAction),
+          dhGroups: S.optional(__S(17, __c2, 1)),
+          encryptionAlgorithms: __S(17, __c2, 1),
+          integrityAlgorithms: __S(17, __c2, 1),
+          dpdAction: S.optional(S.String),
           rekeyTime: S.optional(S.Number),
-          startAction: S.optional(TunnelConfigurationPhase2StartAction),
+          startAction: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TunnelConfigurationPhase2",
@@ -1857,10 +1442,10 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bgp: S.optional(BGPTunnelConfig),
-          peering: S.optional(PeeringConfig),
-          phase1: TunnelConfigurationPhase1,
-          phase2: TunnelConfigurationPhase2,
+          bgp: S.optional(__S(15, __c1, 7)),
+          peering: S.optional(__S(16, __c2, 0)),
+          phase1: __S(18, __c2, 2),
+          phase2: __S(19, __c2, 3),
           preSharedKey: S.optional(S.String),
           remoteAddress: S.String,
         }),
@@ -1869,16 +1454,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: CreateGatewayConnectionRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           displayName: S.String,
           enabled: S.optional(S.Boolean),
-          labels: S.optional(Label),
-          localSubnets: S.optional(CreateGatewayConnectionRequestLocalSubnetsList),
-          remoteSubnets: S.optional(CreateGatewayConnectionRequestRemoteSubnetsList),
-          staticRoutes: S.optional(CreateGatewayConnectionRequestStaticRoutesList),
-          tunnel1: TunnelConfiguration,
-          tunnel2: TunnelConfiguration,
+          labels: S.optional(__S(3, __c0, 3)),
+          localSubnets: S.optional(__S(1, __c0, 1)),
+          remoteSubnets: S.optional(__S(1, __c0, 1)),
+          staticRoutes: S.optional(__S(1, __c0, 1)),
+          tunnel1: __S(20, __c2, 4),
+          tunnel2: __S(20, __c2, 4),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1893,10 +1478,10 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bgp: S.optional(BGPTunnelConfig),
-          peering: S.optional(PeeringConfig),
-          phase1: TunnelConfigurationOutputPhase1,
-          phase2: TunnelConfigurationOutputPhase2,
+          bgp: S.optional(__S(15, __c1, 7)),
+          peering: S.optional(__S(16, __c2, 0)),
+          phase1: __S(18, __c2, 2),
+          phase2: __S(19, __c2, 3),
           remoteAddress: S.String,
         }),
       ).annotate({
@@ -1908,12 +1493,12 @@ function __c2(j: number): any {
           displayName: S.String,
           enabled: S.optional(S.Boolean),
           id: S.optional(S.String),
-          labels: S.optional(Label),
-          localSubnets: S.optional(ConnectionResponseOutputLocalSubnetsList),
-          remoteSubnets: S.optional(ConnectionResponseOutputRemoteSubnetsList),
-          staticRoutes: S.optional(ConnectionResponseOutputStaticRoutesList),
-          tunnel1: TunnelConfigurationOutput,
-          tunnel2: TunnelConfigurationOutput,
+          labels: S.optional(__S(3, __c0, 3)),
+          localSubnets: S.optional(__S(1, __c0, 1)),
+          remoteSubnets: S.optional(__S(1, __c0, 1)),
+          staticRoutes: S.optional(__S(1, __c0, 1)),
+          tunnel1: __S(22, __c2, 6),
+          tunnel2: __S(22, __c2, 6),
         }),
       ).annotate({ identifier: "ConnectionResponseOutput" });
   }
@@ -1924,7 +1509,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: DeleteGatewayRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1943,7 +1528,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: DeleteGatewayBGPFilterRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1961,7 +1546,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: DeleteGatewayBGPFilterRuleRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
@@ -1984,7 +1569,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: DeleteGatewayConnectionRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           connectionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -2006,7 +1591,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: GetGatewayRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2025,7 +1610,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: GetGatewayBGPFilterRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
         }).pipe(
@@ -2043,7 +1628,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: GetGatewayBGPFilterRuleRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
@@ -2062,7 +1647,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: GetGatewayConnectionRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           connectionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -2080,7 +1665,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: GetGatewayConnectionStatusRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           connectionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -2122,13 +1707,13 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           established: S.optional(S.Boolean),
-          name: S.optional(TunnelStatusName),
-          phase1: S.optional(Phase1Status),
-          phase2: S.optional(Phase2Status),
+          name: S.optional(S.String),
+          phase1: S.optional(__S(36, __c4, 4)),
+          phase2: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "TunnelStatus" });
     case 7:
-      return S.Array(TunnelStatus);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -2139,14 +1724,14 @@ function __c5(j: number): any {
           displayName: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           id: S.optional(S.String),
-          tunnels: S.optional(ConnectionStatusResponseTunnelsList),
+          tunnels: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "ConnectionStatusResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: GetGatewayStatusRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2158,7 +1743,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "GetGatewayStatusRequest" });
     case 2:
-      return S.Array(ConnectionStatusResponse);
+      return S.Array(__S(40, __c5, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2172,7 +1757,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "BGPStatusPeers" });
     case 4:
-      return S.Array(BGPStatusPeers);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2184,12 +1769,12 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "BGPStatusRoutes" });
     case 6:
-      return S.Array(BGPStatusRoutes);
+      return S.Array(__S(45, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          peers: S.optional(BGPStatusPeersList),
-          routes: S.optional(BGPStatusRoutesList),
+          peers: S.optional(__S(44, __c5, 4)),
+          routes: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "BGPStatus" });
   }
@@ -2199,31 +1784,31 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bgpStatus: S.optional(S.NullOr(BGPStatus)),
-          instanceState: S.optional(GatewayStatus),
+          bgpStatus: S.optional(S.NullOr(__S(47, __c5, 7))),
+          instanceState: S.optional(S.String),
           internalNextHopIP: S.optional(S.String),
-          name: S.optional(VPNTunnelsName),
+          name: S.optional(S.String),
           publicIP: S.optional(S.String),
         }),
       ).annotate({ identifier: "VPNTunnels" });
     case 1:
-      return S.Array(VPNTunnels);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(GatewayStatusResponseConnectionsList),
+          connections: S.optional(__S(42, __c5, 2)),
           displayName: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          gatewayStatus: S.optional(GatewayStatus),
+          gatewayStatus: S.optional(S.String),
           id: S.optional(S.String),
-          tunnels: S.optional(GatewayStatusResponseTunnelsList),
+          tunnels: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "GatewayStatusResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: ListGatewayBGPFilterRulesRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
         }).pipe(
@@ -2238,18 +1823,18 @@ function __c6(j: number): any {
         identifier: "ListGatewayBGPFilterRulesRequest",
       });
     case 4:
-      return S.Array(BGPFilterRule);
+      return S.Array(__S(14, __c1, 6));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: BGPFilterRuleListRulesList,
+          rules: __S(52, __c6, 4),
         }),
       ).annotate({ identifier: "BGPFilterRuleList" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: ListGatewayBGPFiltersRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2263,7 +1848,7 @@ function __c6(j: number): any {
         identifier: "ListGatewayBGPFiltersRequest",
       });
     case 7:
-      return S.Array(BGPFilter);
+      return S.Array(__S(8, __c1, 0));
   }
 }
 function __c7(j: number): any {
@@ -2271,7 +1856,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bgpFilters: BGPFilterListBgpFiltersList,
+          bgpFilters: __S(55, __c6, 7),
         }),
       ).annotate({ identifier: "BGPFilterList" });
     case 1:
@@ -2280,9 +1865,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: ListGatewayConnectionsRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
-          label_selector: S.optional(LabelSelector.pipe(T.Query())),
+          label_selector: S.optional(__S(57, __c7, 1).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2295,19 +1880,19 @@ function __c7(j: number): any {
         identifier: "ListGatewayConnectionsRequest",
       });
     case 3:
-      return S.Array(ConnectionResponseOutput);
+      return S.Array(__S(23, __c2, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connections: ConnectionListOutputConnectionsList,
+          connections: __S(59, __c7, 3),
         }),
       ).annotate({ identifier: "ConnectionListOutput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: ListGatewaysRequestRegion.pipe(T.Label()),
-          label_selector: S.optional(LabelSelector.pipe(T.Query())),
+          region: S.String.pipe(T.Label()),
+          label_selector: S.optional(__S(57, __c7, 1).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2318,11 +1903,11 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListGatewaysRequest" });
     case 6:
-      return S.Array(GatewayResponse);
+      return S.Array(__S(6, __c0, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          gateways: GatewayListGatewaysList,
+          gateways: __S(62, __c7, 6),
         }),
       ).annotate({ identifier: "GatewayList" });
   }
@@ -2332,7 +1917,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          region: ListPlansRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2353,19 +1938,19 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Plan" });
     case 2:
-      return S.Array(Plan);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           defaultPlanId: S.optional(S.String),
-          plans: S.optional(PlanListPlansList),
+          plans: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "PlanList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: ListQuotasRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2385,13 +1970,13 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gateways: Quota,
+          gateways: __S(69, __c8, 5),
         }),
       ).annotate({ identifier: "QuotaList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          quotas: QuotaList,
+          quotas: __S(70, __c8, 6),
         }),
       ).annotate({ identifier: "QuotaListResponse" });
   }
@@ -2402,15 +1987,15 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: UpdateGatewayRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
-          availabilityZones: CreateGatewayRequestAvailabilityZones,
-          bgp: S.optional(BGPGatewayConfig),
+          availabilityZones: __S(0, __c0, 0),
+          bgp: S.optional(__S(2, __c0, 2)),
           displayName: S.String,
-          labels: S.optional(Label),
-          networkConfig: S.optional(NetworkConfig),
+          labels: S.optional(__S(3, __c0, 3)),
+          networkConfig: S.optional(__S(4, __c0, 4)),
           planId: S.String,
-          routingType: RoutingType,
+          routingType: S.String,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2424,7 +2009,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: UpdateGatewayBGPFilterRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
           displayName: S.String,
@@ -2443,14 +2028,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: UpdateGatewayBGPFilterRuleRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           filterId: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
-          action: UpdateGatewayBGPFilterRuleRequestAction,
-          match: S.optional(UpdateGatewayBGPFilterRuleRequestMatch),
+          action: S.String,
+          match: S.optional(__S(10, __c1, 2)),
           sequence: S.optional(S.Number),
-          set: S.optional(CreateGatewayBGPFilterRuleRequestSet),
+          set: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2466,17 +2051,17 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: UpdateGatewayConnectionRequestRegion.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           connectionId: S.String.pipe(T.Label()),
           displayName: S.String,
           enabled: S.optional(S.Boolean),
-          labels: S.optional(Label),
-          localSubnets: S.optional(UpdateGatewayConnectionRequestLocalSubnetsList),
-          remoteSubnets: S.optional(UpdateGatewayConnectionRequestRemoteSubnetsList),
-          staticRoutes: S.optional(UpdateGatewayConnectionRequestStaticRoutesList),
-          tunnel1: TunnelConfiguration,
-          tunnel2: TunnelConfiguration,
+          labels: S.optional(__S(3, __c0, 3)),
+          localSubnets: S.optional(__S(1, __c0, 1)),
+          remoteSubnets: S.optional(__S(1, __c0, 1)),
+          staticRoutes: S.optional(__S(1, __c0, 1)),
+          tunnel1: __S(20, __c2, 4),
+          tunnel2: __S(20, __c2, 4),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2489,4 +2074,9 @@ function __c9(j: number): any {
         identifier: "UpdateGatewayConnectionRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -78,81 +80,40 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
-
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const CancelOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GoogleProtobufEmpty>;
-
 export interface CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest {
   /** Required. The customer to check the enablement status for. Format: customers/{customer_id} */
   customer: string;
 }
-const CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest>;
-
 export type GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum =
   | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
   | "INSIGHTS_ENABLED"
   | "INSIGHTS_DISABLED";
-const GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum = S.String;
-
 /** Response from checking the enablement status of insights for the customer. */
 export interface GoogleChromeManagementVersionsV1CheckEnablementStatusResponse {
   /** The state of the insights feature. */
   insightsState?: GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum;
 }
-const GoogleChromeManagementVersionsV1CheckEnablementStatusResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1CheckEnablementStatusResponse>;
-
 /** Request message for claiming a certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest {
   /** Required. The instance id of the caller. */
   callerInstanceId?: string;
 }
-const GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    5,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest>;
-
 export interface ClaimCustomersCertificateProvisioningProcessesRequest {
   /** Required. Resource name of the `CertificateProvisioningProcess` to claim. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id. */
   name: string;
   /** Request body */
   body?: GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest;
 }
-const ClaimCustomersCertificateProvisioningProcessesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ClaimCustomersCertificateProvisioningProcessesRequest>;
-
 /** Response message for claiming a certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse {}
-const GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    7,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse>;
-
 export interface CountActiveDevicesCustomersReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "date.month"?: number;
@@ -163,11 +124,6 @@ export interface CountActiveDevicesCustomersReportsRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "date.year"?: number;
 }
-const CountActiveDevicesCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CountActiveDevicesCustomersReportsRequest>;
-
 /** Response containing the number of active devices. */
 export interface GoogleChromeManagementV1CountActiveDevicesResponse {
   /** Number of active devices in the 30 days leading up to the date specified in the request. */
@@ -175,11 +131,6 @@ export interface GoogleChromeManagementV1CountActiveDevicesResponse {
   /** Number of active devices in the 7 days leading up to the date specified in the request. */
   sevenDaysCount?: string;
 }
-const GoogleChromeManagementV1CountActiveDevicesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1CountActiveDevicesResponse>;
-
 export interface CountChromeAppRequestsCustomersAppsRequest {
   /** Token to specify the page of the request to be returned. */
   pageToken?: string;
@@ -192,11 +143,6 @@ export interface CountChromeAppRequestsCustomersAppsRequest {
   /** Maximum number of results to return. Maximum and default are 50, anything above will be coerced to 50. */
   pageSize?: number;
 }
-const CountChromeAppRequestsCustomersAppsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CountChromeAppRequestsCustomersAppsRequest>;
-
 /** Details of an app installation request. */
 export interface GoogleChromeManagementV1ChromeAppRequest {
   /** Output only. Format: app_details=customers/{customer_id}/apps/chrome/{app_id} */
@@ -214,18 +160,8 @@ export interface GoogleChromeManagementV1ChromeAppRequest {
   /** Output only. App's display name. */
   displayName?: string;
 }
-const GoogleChromeManagementV1ChromeAppRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1ChromeAppRequest>;
-
 export type GoogleChromeManagementV1ChromeAppRequestList =
   Array<GoogleChromeManagementV1ChromeAppRequest>;
-const GoogleChromeManagementV1ChromeAppRequestList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1ChromeAppRequestList>;
-
 /** Response containing summary of requested app installations. */
 export interface GoogleChromeManagementV1CountChromeAppRequestsResponse {
   /** Count of requested apps matching request. */
@@ -235,22 +171,12 @@ export interface GoogleChromeManagementV1CountChromeAppRequestsResponse {
   /** Total number of matching app requests. */
   totalSize?: number;
 }
-const GoogleChromeManagementV1CountChromeAppRequestsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeAppRequestsResponse>;
-
 export interface CountChromeBrowsersNeedingAttentionCustomersReportsRequest {
   /** Required. The customer ID or "my_customer" prefixed with "customers/". */
   customer: string;
   /** Optional. The ID of the organizational unit. If omitted, all data will be returned. */
   orgUnitId?: string;
 }
-const CountChromeBrowsersNeedingAttentionCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CountChromeBrowsersNeedingAttentionCustomersReportsRequest>;
-
 /** Response containing counts for browsers that need attention. */
 export interface GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse {
   /** Number of browsers that have been recently enrolled */
@@ -260,11 +186,6 @@ export interface GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResp
   /** Number of browsers that haven't had any recent activity */
   noRecentActivityCount?: string;
 }
-const GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse>;
-
 export interface CountChromeCrashEventsCustomersReportsRequest {
   /** Customer ID. */
   customer: string;
@@ -275,11 +196,6 @@ export interface CountChromeCrashEventsCustomersReportsRequest {
   /** Field used to order results. Supported order by fields: * browser_version * count * date */
   orderBy?: string;
 }
-const CountChromeCrashEventsCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CountChromeCrashEventsCustomersReportsRequest>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -289,8 +205,6 @@ export interface GoogleTypeDate {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-const GoogleTypeDate = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GoogleTypeDate>;
-
 /** The `count` of the Chrome crash events at the `date`. */
 export interface GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount {
   /** Browser version this is counting. */
@@ -300,29 +214,13 @@ export interface GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEven
   /** Total count of crash events. */
   count?: string;
 }
-const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
-
 export type GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList =
   Array<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
-const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    3,
-  ) as any as S.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList>;
-
 /** Response contains a list of CrashEventCountByVersionPerDay which count the chrome crash at the certain date. */
 export interface GoogleChromeManagementV1CountChromeCrashEventsResponse {
   /** Crash event counts grouped by date and browser version. */
   crashEventCounts?: GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList;
 }
-const GoogleChromeManagementV1CountChromeCrashEventsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponse>;
-
 export interface CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest {
   /** Optional. The organizational unit ID, if omitted, will return data for all organizational units. */
   orgUnitId?: string;
@@ -333,11 +231,6 @@ export interface CountChromeDevicesReachingAutoExpirationDateCustomersReportsReq
   /** Required. The customer ID or "my_customer" prefixed with "customers/". */
   customer: string;
 }
-const CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest>;
-
 export type GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum =
   | "MONTH_UNSPECIFIED"
   | "JANUARY"
@@ -352,8 +245,6 @@ export type GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum =
   | "OCTOBER"
   | "NOVEMBER"
   | "DECEMBER";
-const GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum = S.String;
-
 /** Report for CountChromeDevicesPerAueDateResponse, contains the count of devices of a specific model and auto update expiration range. */
 export interface GoogleChromeManagementV1DeviceAueCountReport {
   /** Boolean value for whether or not the device has already expired. */
@@ -367,29 +258,13 @@ export interface GoogleChromeManagementV1DeviceAueCountReport {
   /** Enum value of month corresponding to the auto update expiration date in UTC time zone. If the device is already expired, this field is empty. */
   aueMonth?: GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum;
 }
-const GoogleChromeManagementV1DeviceAueCountReport = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1DeviceAueCountReport>;
-
 export type GoogleChromeManagementV1DeviceAueCountReportList =
   Array<GoogleChromeManagementV1DeviceAueCountReport>;
-const GoogleChromeManagementV1DeviceAueCountReportList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1DeviceAueCountReportList>;
-
 /** Response containing a list of devices expiring in each month of a selected time frame. Counts are grouped by model and Auto Update Expiration date. */
 export interface GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse {
   /** The list of reports sorted by auto update expiration date in ascending order. */
   deviceAueCountReports?: GoogleChromeManagementV1DeviceAueCountReportList;
 }
-const GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    0,
-  ) as any as S.Schema<GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse>;
-
 export interface CountChromeDevicesThatNeedAttentionCustomersReportsRequest {
   /** Optional. The ID of the organizational unit. If omitted, all data will be returned. */
   orgUnitId?: string;
@@ -398,11 +273,6 @@ export interface CountChromeDevicesThatNeedAttentionCustomersReportsRequest {
   /** Required. The customer ID or "my_customer" prefixed with "customers/". */
   customer: string;
 }
-const CountChromeDevicesThatNeedAttentionCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CountChromeDevicesThatNeedAttentionCustomersReportsRequest>;
-
 /** Response containing counts for devices that need attention. */
 export interface GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse {
   /** Number of ChromeOS devices that have not seen any user activity in the past 28 days. */
@@ -416,11 +286,6 @@ export interface GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResp
   /** Number of devices whose OS version is not compliant. */
   osVersionNotCompliantCount?: string;
 }
-const GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse>;
-
 export interface CountChromeHardwareFleetDevicesCustomersReportsRequest {
   /** Required. The customer ID or "my_customer". */
   customer: string;
@@ -429,11 +294,6 @@ export interface CountChromeHardwareFleetDevicesCustomersReportsRequest {
   /** Required. Mask of the fields that should be populated in the returned report. */
   readMask?: string;
 }
-const CountChromeHardwareFleetDevicesCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CountChromeHardwareFleetDevicesCustomersReportsRequest>;
-
 /** Report for CountChromeDevicesPerHardwareSpecResponse, contains the count of devices with a unique hardware specification. */
 export interface GoogleChromeManagementV1DeviceHardwareCountReport {
   /** Count of devices with a unique hardware specification. */
@@ -441,18 +301,8 @@ export interface GoogleChromeManagementV1DeviceHardwareCountReport {
   /** Public name of the hardware specification. */
   bucket?: string;
 }
-const GoogleChromeManagementV1DeviceHardwareCountReport = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1DeviceHardwareCountReport>;
-
 export type GoogleChromeManagementV1DeviceHardwareCountReportList =
   Array<GoogleChromeManagementV1DeviceHardwareCountReport>;
-const GoogleChromeManagementV1DeviceHardwareCountReportList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1DeviceHardwareCountReportList>;
-
 /** Response containing a list of devices with a specific type of hardware specification from the requested hardware type. */
 export interface GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse {
   /** The DeviceHardwareCountReport for device memory amount in gigabytes (for example 16). */
@@ -464,11 +314,6 @@ export interface GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse
   /** The DeviceHardwareCountReport for device cpu type (for example Intel(R) Core(TM) i7-10610U CPU @ 1.80GHz). */
   cpuReports?: GoogleChromeManagementV1DeviceHardwareCountReportList;
 }
-const GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse>;
-
 export interface CountChromeProfileVersionsCustomersReportsRequest {
   /** Required. Customer id or "my_customer" to use the customer associated to the account making the request. */
   customer: string;
@@ -481,11 +326,6 @@ export interface CountChromeProfileVersionsCustomersReportsRequest {
   /** The ID of the organizational unit. If omitted, all data will be returned. */
   orgUnitId?: string;
 }
-const CountChromeProfileVersionsCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CountChromeProfileVersionsCustomersReportsRequest>;
-
 export type GoogleChromeManagementV1BrowserVersionSystemEnum =
   | "DEVICE_SYSTEM_UNSPECIFIED"
   | "SYSTEM_OTHER"
@@ -495,16 +335,12 @@ export type GoogleChromeManagementV1BrowserVersionSystemEnum =
   | "SYSTEM_WINDOWS"
   | "SYSTEM_MAC"
   | "SYSTEM_LINUX";
-const GoogleChromeManagementV1BrowserVersionSystemEnum = S.String;
-
 export type GoogleChromeManagementV1BrowserVersionChannelEnum =
   | "RELEASE_CHANNEL_UNSPECIFIED"
   | "CANARY"
   | "DEV"
   | "BETA"
   | "STABLE";
-const GoogleChromeManagementV1BrowserVersionChannelEnum = S.String;
-
 /** Describes a browser version and its install count. */
 export interface GoogleChromeManagementV1BrowserVersion {
   /** Output only. Count grouped by device_system and major version */
@@ -518,18 +354,8 @@ export interface GoogleChromeManagementV1BrowserVersion {
   /** Output only. Version of the system-specified operating system. */
   deviceOsVersion?: string;
 }
-const GoogleChromeManagementV1BrowserVersion = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1BrowserVersion>;
-
 export type GoogleChromeManagementV1BrowserVersionList =
   Array<GoogleChromeManagementV1BrowserVersion>;
-const GoogleChromeManagementV1BrowserVersionList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1BrowserVersionList>;
-
 /** Response containing requested managed profile versions details and counts. */
 export interface GoogleChromeManagementV1CountChromeProfileVersionsResponse {
   /** Token to specify the next page of the request. */
@@ -539,11 +365,6 @@ export interface GoogleChromeManagementV1CountChromeProfileVersionsResponse {
   /** List of all browser versions reported for profiles and their install counts. */
   profileBrowserVersions?: GoogleChromeManagementV1BrowserVersionList;
 }
-const GoogleChromeManagementV1CountChromeProfileVersionsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeProfileVersionsResponse>;
-
 export interface CountChromeVersionsCustomersReportsRequest {
   /** Required. Customer id or "my_customer" to use the customer associated to the account making the request. */
   customer: string;
@@ -556,11 +377,6 @@ export interface CountChromeVersionsCustomersReportsRequest {
   /** The ID of the organizational unit. */
   orgUnitId?: string;
 }
-const CountChromeVersionsCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CountChromeVersionsCustomersReportsRequest>;
-
 /** Response containing requested browser versions details and counts. */
 export interface GoogleChromeManagementV1CountChromeVersionsResponse {
   /** Token to specify the next page of the request. */
@@ -570,11 +386,6 @@ export interface GoogleChromeManagementV1CountChromeVersionsResponse {
   /** Total number browser versions matching request. */
   totalSize?: number;
 }
-const GoogleChromeManagementV1CountChromeVersionsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1CountChromeVersionsResponse>;
-
 export interface CountDevicesPerBootTypeCustomersReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "date.month"?: number;
@@ -585,11 +396,6 @@ export interface CountDevicesPerBootTypeCustomersReportsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "date.day"?: number;
 }
-const CountDevicesPerBootTypeCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CountDevicesPerBootTypeCustomersReportsRequest>;
-
 /** Response containing the number of devices with the given boot type. */
 export interface GoogleChromeManagementV1CountDevicesPerBootTypeResponse {
   /** Number of devices with dev boot type. */
@@ -599,11 +405,6 @@ export interface GoogleChromeManagementV1CountDevicesPerBootTypeResponse {
   /** Number of devices with unreported boot type. */
   unreportedBootTypeCount?: string;
 }
-const GoogleChromeManagementV1CountDevicesPerBootTypeResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerBootTypeResponse>;
-
 export interface CountDevicesPerReleaseChannelCustomersReportsRequest {
   /** Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer". */
   customer: string;
@@ -614,11 +415,6 @@ export interface CountDevicesPerReleaseChannelCustomersReportsRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "date.year"?: number;
 }
-const CountDevicesPerReleaseChannelCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CountDevicesPerReleaseChannelCustomersReportsRequest>;
-
 /** Response containing the number of devices with the given channel. */
 export interface GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse {
   /** Number of devices with canary release channel. */
@@ -638,11 +434,6 @@ export interface GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse {
   /** Number of devices with stable release channel. */
   stableChannelCount?: string;
 }
-const GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>;
-
 export interface CountInstalledAppsCustomersReportsRequest {
   /** Required. Customer id or "my_customer" to use the customer associated to the account making the request. */
   customer: string;
@@ -657,11 +448,6 @@ export interface CountInstalledAppsCustomersReportsRequest {
   /** Token to specify the page of the request to be returned. */
   pageToken?: string;
 }
-const CountInstalledAppsCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CountInstalledAppsCustomersReportsRequest>;
-
 /** Risk assessment for a Chrome extension. */
 export interface GoogleChromeManagementV1RiskAssessment {
   /** A URL that a user can navigate to for more information about the risk assessment. */
@@ -671,26 +457,17 @@ export interface GoogleChromeManagementV1RiskAssessment {
   /** Risk assessment for the extension. Currently, this is a numerical value, and its interpretation is specific to each risk assessment provider. */
   assessment?: string;
 }
-const GoogleChromeManagementV1RiskAssessment = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1RiskAssessment>;
-
 export type GoogleChromeManagementV1RiskAssessmentEntryRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "RISK_LEVEL_LOW"
   | "RISK_LEVEL_MEDIUM"
   | "RISK_LEVEL_HIGH";
-const GoogleChromeManagementV1RiskAssessmentEntryRiskLevelEnum = S.String;
-
 export type GoogleChromeManagementV1RiskAssessmentEntryProviderEnum =
   | "RISK_ASSESSMENT_PROVIDER_UNSPECIFIED"
   | "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR"
   | "RISK_ASSESSMENT_PROVIDER_SPIN_AI"
   | "RISK_ASSESSMENT_PROVIDER_LAYERX"
   | "RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2";
-const GoogleChromeManagementV1RiskAssessmentEntryProviderEnum = S.String;
-
 /** One risk assessment entry. */
 export interface GoogleChromeManagementV1RiskAssessmentEntry {
   /** Output only. The details of the provider's risk assessment. */
@@ -700,25 +477,13 @@ export interface GoogleChromeManagementV1RiskAssessmentEntry {
   /** Output only. The risk assessment provider from which this entry comes from. */
   provider?: GoogleChromeManagementV1RiskAssessmentEntryProviderEnum;
 }
-const GoogleChromeManagementV1RiskAssessmentEntry = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1RiskAssessmentEntry>;
-
 export type GoogleChromeManagementV1RiskAssessmentEntryList =
   Array<GoogleChromeManagementV1RiskAssessmentEntry>;
-const GoogleChromeManagementV1RiskAssessmentEntryList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1RiskAssessmentEntryList>;
-
 export type GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "RISK_LEVEL_LOW"
   | "RISK_LEVEL_MEDIUM"
   | "RISK_LEVEL_HIGH";
-const GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum = S.String;
-
 /** Risk assessment data about an extension/app. */
 export interface GoogleChromeManagementV1RiskAssessmentData {
   /** Individual risk assessments. */
@@ -726,17 +491,10 @@ export interface GoogleChromeManagementV1RiskAssessmentData {
   /** Overall assessed risk level across all entries. This will be the highest risk level from all entries. */
   overallRiskLevel?: GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum;
 }
-const GoogleChromeManagementV1RiskAssessmentData = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1RiskAssessmentData>;
-
 export type GoogleChromeManagementV1InstalledAppAppSourceEnum =
   | "APP_SOURCE_UNSPECIFIED"
   | "CHROME_WEBSTORE"
   | "PLAY_STORE";
-const GoogleChromeManagementV1InstalledAppAppSourceEnum = S.String;
-
 export type GoogleChromeManagementV1InstalledAppAppTypeEnum =
   | "APP_TYPE_UNSPECIFIED"
   | "EXTENSION"
@@ -744,11 +502,7 @@ export type GoogleChromeManagementV1InstalledAppAppTypeEnum =
   | "THEME"
   | "HOSTED_APP"
   | "ANDROID_APP";
-const GoogleChromeManagementV1InstalledAppAppTypeEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<StringList>;
-
 export type GoogleChromeManagementV1InstalledAppAppInstallTypeEnum =
   | "APP_INSTALL_TYPE_UNSPECIFIED"
   | "MULTIPLE"
@@ -757,8 +511,6 @@ export type GoogleChromeManagementV1InstalledAppAppInstallTypeEnum =
   | "DEVELOPMENT"
   | "SIDELOAD"
   | "OTHER";
-const GoogleChromeManagementV1InstalledAppAppInstallTypeEnum = S.String;
-
 /** Describes an installed app. */
 export interface GoogleChromeManagementV1InstalledApp {
   /** Output only. Count of browser devices with this app installed. */
@@ -788,17 +540,7 @@ export interface GoogleChromeManagementV1InstalledApp {
   /** Output only. How the app was installed. */
   appInstallType?: GoogleChromeManagementV1InstalledAppAppInstallTypeEnum;
 }
-const GoogleChromeManagementV1InstalledApp = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1InstalledApp>;
-
 export type GoogleChromeManagementV1InstalledAppList = Array<GoogleChromeManagementV1InstalledApp>;
-const GoogleChromeManagementV1InstalledAppList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1InstalledAppList>;
-
 /** Response containing details of queried installed apps. */
 export interface GoogleChromeManagementV1CountInstalledAppsResponse {
   /** List of installed apps matching request. */
@@ -808,11 +550,6 @@ export interface GoogleChromeManagementV1CountInstalledAppsResponse {
   /** Token to specify the next page of the request. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementV1CountInstalledAppsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1CountInstalledAppsResponse>;
-
 export interface CountPrintJobsByPrinterCustomersReportsRequest {
   /** Token to specify the page of the response to be returned. */
   pageToken?: string;
@@ -827,11 +564,6 @@ export interface CountPrintJobsByPrinterCustomersReportsRequest {
   /** Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Note: Only >= and <= comparators are supported in this filter. Supported filter fields: * complete_time */
   filter?: string;
 }
-const CountPrintJobsByPrinterCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CountPrintJobsByPrinterCustomersReportsRequest>;
-
 /** Report for CountPrintJobsByPrinter, contains statistics on printer usage. Contains the total number of print jobs initiated with this printer, the number of users and the number of devices that have initiated at least one print job with this printer. */
 export interface GoogleChromeManagementV1PrinterReport {
   /** Printer model. */
@@ -847,18 +579,8 @@ export interface GoogleChromeManagementV1PrinterReport {
   /** Printer name. */
   printer?: string;
 }
-const GoogleChromeManagementV1PrinterReport = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1PrinterReport>;
-
 export type GoogleChromeManagementV1PrinterReportList =
   Array<GoogleChromeManagementV1PrinterReport>;
-const GoogleChromeManagementV1PrinterReportList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1PrinterReportList>;
-
 /** Response containing a summary printing report for each printer from the specified organizational unit for the requested time interval. */
 export interface GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
   /** Total number of printers matching request. */
@@ -868,11 +590,6 @@ export interface GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
   /** Pagination token for requesting the next page. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementV1CountPrintJobsByPrinterResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1CountPrintJobsByPrinterResponse>;
-
 export interface CountPrintJobsByUserCustomersReportsRequest {
   /** Maximum number of results to return. Maximum and default are 100. */
   pageSize?: number;
@@ -887,11 +604,6 @@ export interface CountPrintJobsByUserCustomersReportsRequest {
   /** Token to specify the page of the response to be returned. */
   pageToken?: string;
 }
-const CountPrintJobsByUserCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CountPrintJobsByUserCustomersReportsRequest>;
-
 /** Report for CountPrintJobsByUser, contains printing statistics for a user. Contains the number of printers, the number of devices used to initiate print jobs, and the number of print jobs initiated. */
 export interface GoogleChromeManagementV1UserPrintReport {
   /** Number of printers used by the user. */
@@ -905,18 +617,8 @@ export interface GoogleChromeManagementV1UserPrintReport {
   /** The primary e-mail address of the user. */
   userEmail?: string;
 }
-const GoogleChromeManagementV1UserPrintReport = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1UserPrintReport>;
-
 export type GoogleChromeManagementV1UserPrintReportList =
   Array<GoogleChromeManagementV1UserPrintReport>;
-const GoogleChromeManagementV1UserPrintReportList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1UserPrintReportList>;
-
 /** Response containing a summary printing report for each user that has initiated a print job with a printer from the specified organizational unit during the requested time interval. */
 export interface GoogleChromeManagementV1CountPrintJobsByUserResponse {
   /** Pagination token for requesting the next page. */
@@ -926,11 +628,6 @@ export interface GoogleChromeManagementV1CountPrintJobsByUserResponse {
   /** List of UserPrintReports matching request. */
   userPrintReports?: GoogleChromeManagementV1UserPrintReportList;
 }
-const GoogleChromeManagementV1CountPrintJobsByUserResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1CountPrintJobsByUserResponse>;
-
 export type GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum =
   | "CONNECTOR_TYPE_UNSPECIFIED"
   | "REPORTING"
@@ -941,14 +638,10 @@ export type GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum =
   | "ROOT_STORE"
   | "CONTENT_ANALYSIS"
   | "ENTERPRISE_PROXY";
-const GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum =
   | "CONFIG_STATE_UNKNOWN"
   | "ENABLED"
   | "DISABLED_BY_FAILURES";
-const GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum = S.String;
-
 /** The status of the connector config. */
 export interface GoogleChromeManagementVersionsV1ConnectorConfigStatus {
   /** Output only. Field recording time of most recent modification of the status. For `ENABLED`, this is the time the status was changed to `ENABLED`. For `DISABLED_BY_FAILURES`, this is the time of the most recent failed attempt to send an event to this config. */
@@ -958,11 +651,6 @@ export interface GoogleChromeManagementVersionsV1ConnectorConfigStatus {
   /** Output only. The state of the connector config. The connector state is disabled if the connector has not successfully sent an event in the last 24 hours. */
   state?: GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum | (string & {});
 }
-const GoogleChromeManagementVersionsV1ConnectorConfigStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfigStatus>;
-
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum =
   | "OPT_IN_EVENT_UNSPECIFIED"
   | "ALL_OPT_IN_EVENTS"
@@ -970,17 +658,9 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsI
   | "PASSWORD_BREACH_EVENT"
   | "URL_NAVIGATION_EVENT"
   | "EXTENSION_TELEMETRY_EVENT";
-const GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList = Array<
   GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum | (string & {})
 >;
-const GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    3,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList>;
-
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum =
   | "DEFAULT_EVENT_UNSPECIFIED"
   | "ALL_DEFAULT_EVENTS"
@@ -1000,9 +680,6 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEvent
   Array<
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum | (string & {})
   >;
-const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList>;
-
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum =
   | "DEVICE_EVENT_UNSPECIFIED"
   | "ALL_DEVICE_EVENTS"
@@ -1014,9 +691,6 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEvents
   Array<
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum | (string & {})
   >;
-const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList>;
-
 /** Reporting settings for connector configs. */
 export interface GoogleChromeManagementVersionsV1ReportingSettings {
   /** Optional. The list of opt-in events that are enabled for this config. An empty list disables all opt-in events, and using `ALL_OPT_IN_EVENTS` will enable all opt-in events. */
@@ -1026,11 +700,6 @@ export interface GoogleChromeManagementVersionsV1ReportingSettings {
   /** Optional. The list of device events that are enabled for this config. An empty list disables all device events, and using `ALL_DEVICE_EVENTS` will enable all device events. */
   enabledDeviceEvents?: GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList;
 }
-const GoogleChromeManagementVersionsV1ReportingSettings = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettings>;
-
 /** CrowdStrike connector config. */
 export interface GoogleChromeManagementVersionsV1CrowdStrikeConfig {
   /** Required. Input only. API key to use on the ingestion API. Must be at most 50 characters. */
@@ -1040,11 +709,6 @@ export interface GoogleChromeManagementVersionsV1CrowdStrikeConfig {
   /** Required. The reporting settings for the CrowdStrike config. */
   reportingSettings?: GoogleChromeManagementVersionsV1ReportingSettings;
 }
-const GoogleChromeManagementVersionsV1CrowdStrikeConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GoogleChromeManagementVersionsV1CrowdStrikeConfig>;
-
 /** Google SecOps connector config. */
 export interface GoogleChromeManagementVersionsV1GoogleSecOpsConfig {
   /** Required. Host of ingestion API endpoint. Allows customer to upload events to servers in specific geographical regions. Existing configs that don't have this setting default to US. Must be at most 256 characters. */
@@ -1054,21 +718,11 @@ export interface GoogleChromeManagementVersionsV1GoogleSecOpsConfig {
   /** Required. The reporting settings for the Google SecOps config. */
   reportingSettings?: GoogleChromeManagementVersionsV1ReportingSettings;
 }
-const GoogleChromeManagementVersionsV1GoogleSecOpsConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GoogleChromeManagementVersionsV1GoogleSecOpsConfig>;
-
 /** XDR settings for connector configs. */
 export interface GoogleChromeManagementVersionsV1XdrSettings {
   /** Required. Whether to enable all XDR events. */
   enableAllXdrEvents?: boolean;
 }
-const GoogleChromeManagementVersionsV1XdrSettings = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GoogleChromeManagementVersionsV1XdrSettings>;
-
 /** CrowdStrike XDR connector config. */
 export interface GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig {
   /** Required. The XDR settings for the CrowdStrike XDR config. */
@@ -1078,11 +732,6 @@ export interface GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig {
   /** Required. Input only. API key to use on the ingestion API. Must be at most 256 characters. */
   apiKey?: string;
 }
-const GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig>;
-
 /** MIP label connector config. */
 export interface GoogleChromeManagementVersionsV1MipLabelConfig {
   /** Required. Microsoft tenant ID. */
@@ -1090,11 +739,6 @@ export interface GoogleChromeManagementVersionsV1MipLabelConfig {
   /** Optional. Domain can be used optionally for the corner case where one Dasher customer ID maps to multiple Microsoft tenant ID. Each domain can be verified with at most one Microsoft tenant. */
   domains?: StringList;
 }
-const GoogleChromeManagementVersionsV1MipLabelConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1MipLabelConfig>;
-
 /** Pub/Sub connector config. */
 export interface GoogleChromeManagementVersionsV1PubSubConfig {
   /** Required. The reporting settings for the Pub/Sub config. */
@@ -1102,11 +746,6 @@ export interface GoogleChromeManagementVersionsV1PubSubConfig {
   /** Required. The full path to the topic to send the event to. Must be at most 1000 characters. */
   topicFullPath?: string;
 }
-const GoogleChromeManagementVersionsV1PubSubConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1PubSubConfig>;
-
 /** CrowdStrike Falcon Next Gen connector config. */
 export interface GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig {
   /** Required. The reporting settings for the CrowdStrike Falcon Next Gen config. */
@@ -1116,11 +755,6 @@ export interface GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig 
   /** Required. Host to identify the customer specific server to receive the events. Must be at most 256 characters. */
   host?: string;
 }
-const GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig>;
-
 /** Splunk connector config. */
 export interface GoogleChromeManagementVersionsV1SplunkConfig {
   /** Optional. The port number to use. If not set, the default Splunk port is used. */
@@ -1136,11 +770,6 @@ export interface GoogleChromeManagementVersionsV1SplunkConfig {
   /** Required. Host to identify the customer specific server to receive the events. Must be at most 256 characters. */
   host?: string;
 }
-const GoogleChromeManagementVersionsV1SplunkConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1SplunkConfig>;
-
 /** Palo Alto Networks connector config. */
 export interface GoogleChromeManagementVersionsV1PaloAltoNetworksConfig {
   /** Required. Host to identify the customer specific server to receive the events. Must be at most 256 characters. */
@@ -1150,11 +779,6 @@ export interface GoogleChromeManagementVersionsV1PaloAltoNetworksConfig {
   /** Required. Input only. API key to use on the ingestion API. Must be at most 256 characters. */
   apiKey?: string;
 }
-const GoogleChromeManagementVersionsV1PaloAltoNetworksConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GoogleChromeManagementVersionsV1PaloAltoNetworksConfig>;
-
 /** Pub/Sub XDR connector config. */
 export interface GoogleChromeManagementVersionsV1PubSubXdrConfig {
   /** Required. The full path to the topic to send the event to. Must be at most 1000 characters. */
@@ -1162,18 +786,11 @@ export interface GoogleChromeManagementVersionsV1PubSubXdrConfig {
   /** Required. The XDR settings for the Pub/Sub XDR config. */
   xdrSettings?: GoogleChromeManagementVersionsV1XdrSettings;
 }
-const GoogleChromeManagementVersionsV1PubSubXdrConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GoogleChromeManagementVersionsV1PubSubXdrConfig>;
-
 export type GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum =
   | "BROWSER_ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "BROWSERS_ONLY"
   | "PROFILES_ONLY"
   | "BROWSERS_AND_PROFILES";
-const GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum =
   | "SERVICE_PROVIDER_UNSPECIFIED"
   | "UNIVERSAL_DEVICE_TRUST"
@@ -1184,8 +801,6 @@ export type GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum
   | "ZSCALER"
   | "OMNISSA"
   | "JUMPCLOUD";
-const GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum = S.String;
-
 /** Device trust config for device trust connectors. */
 export interface GoogleChromeManagementVersionsV1DeviceTrustConfig {
   /** Required. The scope at which this configuration will be applied. Note that this only applies to Chrome browser, as in ChromeOS it's always applied. */
@@ -1199,11 +814,6 @@ export interface GoogleChromeManagementVersionsV1DeviceTrustConfig {
     | GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum
     | (string & {});
 }
-const GoogleChromeManagementVersionsV1DeviceTrustConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GoogleChromeManagementVersionsV1DeviceTrustConfig>;
-
 export type GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnum =
   | "PLATFORM_UNSPECIFIED"
   | "ANDROID"
@@ -1211,9 +821,6 @@ export type GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsI
 export type GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnumList = Array<
   GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnum | (string & {})
 >;
-const GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnumList>;
-
 /** Secure gateway connector config. */
 export interface GoogleChromeManagementVersionsV1SecureGatewayConfig {
   /** Optional. The enabled platforms for the secure gateway connector config. */
@@ -1221,11 +828,6 @@ export interface GoogleChromeManagementVersionsV1SecureGatewayConfig {
   /** Required. The resource ID of the secure gateway connector config. Must be at most 256 characters. */
   resourceId?: string;
 }
-const GoogleChromeManagementVersionsV1SecureGatewayConfig = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1SecureGatewayConfig>;
-
 /** The details of the connector config. */
 export interface GoogleChromeManagementVersionsV1ConnectorConfigDetails {
   /** CrowdStrike connector config. */
@@ -1251,11 +853,6 @@ export interface GoogleChromeManagementVersionsV1ConnectorConfigDetails {
   /** Secure gateway connector config. */
   secureGatewayConfig?: GoogleChromeManagementVersionsV1SecureGatewayConfig;
 }
-const GoogleChromeManagementVersionsV1ConnectorConfigDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfigDetails>;
-
 /** A representation of a connector config. */
 export interface GoogleChromeManagementVersionsV1ConnectorConfig {
   /** Required. The display name of the config. Must be at most 100 characters. */
@@ -1269,11 +866,6 @@ export interface GoogleChromeManagementVersionsV1ConnectorConfig {
   /** Required. The details of the connector config. */
   details?: GoogleChromeManagementVersionsV1ConnectorConfigDetails;
 }
-const GoogleChromeManagementVersionsV1ConnectorConfig = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>;
-
 export interface CreateCustomersConnectorConfigsRequest {
   /** Optional. ID to use for the connector config, which becomes the final component of the connector config's resource name. If provided, the ID must be 1-36 characters long, and contain only lowercase letters, digits, and hyphens. It must start with a letter, and end with a letter or number. If not provided, the connector config will be assigned a random UUID. */
   connectorConfigId?: string;
@@ -1282,19 +874,11 @@ export interface CreateCustomersConnectorConfigsRequest {
   /** Request body */
   body?: GoogleChromeManagementVersionsV1ConnectorConfig;
 }
-const CreateCustomersConnectorConfigsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateCustomersConnectorConfigsRequest>;
-
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum =
   | "COMMAND_RESULT_TYPE_UNSPECIFIED"
   | "IGNORED"
   | "FAILURE"
   | "SUCCESS";
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum =
-  S.String;
-
 /** Result of the execution of a command. */
 export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult {
   /** Output only. Result code that indicates the type of error or success of the command. */
@@ -1306,22 +890,12 @@ export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandComm
     | GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum
     | (string & {});
 }
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    4,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult>;
-
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum =
   | "COMMAND_STATE_UNSPECIFIED"
   | "PENDING"
   | "EXPIRED"
   | "EXECUTED_BY_CLIENT";
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum = S.String;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DocumentMap>;
-
 /** A representation of a remote command for a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
   /** Output only. Result of the remote command. */
@@ -1341,22 +915,12 @@ export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
   /** Output only. Timestamp of the issurance of the remote command. */
   issueTime?: string;
 }
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
-
 export interface CreateCustomersProfilesCommandsRequest {
   /** Required. Format: customers/{customer_id}/profiles/{profile_permanent_id} */
   parent: string;
   /** Request body */
   body?: GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand;
 }
-const CreateCustomersProfilesCommandsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateCustomersProfilesCommandsRequest>;
-
 export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "AUDIO_SEVERE_UNDERRUN"
@@ -1376,19 +940,11 @@ export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesIt
 export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList = Array<
   GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum | (string & {})
 >;
-const GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList>;
-
 /** Configures how the telemetry events should be filtered. */
 export interface GoogleChromeManagementV1TelemetryEventNotificationFilter {
   /** Only sends the notifications for events of these types. Must not be empty. */
   eventTypes?: GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList;
 }
-const GoogleChromeManagementV1TelemetryEventNotificationFilter = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryEventNotificationFilter>;
-
 /** Configures how the telemetry data should be filtered. */
 export interface GoogleChromeManagementV1TelemetryNotificationFilter {
   /** Only sends notifications for the telemetry events matching this filter. */
@@ -1402,11 +958,6 @@ export interface GoogleChromeManagementV1TelemetryNotificationFilter {
   /** If set, only sends notifications for telemetry data coming from devices owned by this user. */
   userEmail?: string;
 }
-const GoogleChromeManagementV1TelemetryNotificationFilter = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryNotificationFilter>;
-
 /** Configuration to receive notifications of telemetry data. */
 export interface GoogleChromeManagementV1TelemetryNotificationConfig {
   /** Output only. Google Workspace customer that owns the resource. */
@@ -1418,58 +969,28 @@ export interface GoogleChromeManagementV1TelemetryNotificationConfig {
   /** Output only. Resource name of the notification configuration. */
   name?: string;
 }
-const GoogleChromeManagementV1TelemetryNotificationConfig = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryNotificationConfig>;
-
 export interface CreateCustomersTelemetryNotificationConfigsRequest {
   /** Required. The parent resource where this notification config will be created. Format: `customers/{customer}` */
   parent: string;
   /** Request body */
   body?: GoogleChromeManagementV1TelemetryNotificationConfig;
 }
-const CreateCustomersTelemetryNotificationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateCustomersTelemetryNotificationConfigsRequest>;
-
 export interface DeleteCustomersConnectorConfigsRequest {
   /** Required. Format: customers/{customer}/connectorConfigs/{connector_config} */
   name: string;
 }
-const DeleteCustomersConnectorConfigsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteCustomersConnectorConfigsRequest>;
-
 export interface DeleteCustomersProfilesRequest {
   /** Required. Format: customers/{customer_id}/profiles/{profile_permanent_id} */
   name: string;
 }
-const DeleteCustomersProfilesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteCustomersProfilesRequest>;
-
 export interface DeleteCustomersTelemetryNotificationConfigsRequest {
   /** Required. The name of the notification config to delete. Format: `customers/{customer}/telemetry/notificationConfigs/{notification_config}` */
   name: string;
 }
-const DeleteCustomersTelemetryNotificationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteCustomersTelemetryNotificationConfigsRequest>;
-
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteOperationsRequest>;
-
 /** Request to disable insights for the customer. */
 export type GoogleChromeManagementVersionsV1DisableInsightsRequest =
   GoogleLongrunningCancelOperationRequest;
@@ -1479,48 +1000,26 @@ export interface DisableCustomersEnterpriseSecurityInsightsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const DisableCustomersEnterpriseSecurityInsightsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DisableCustomersEnterpriseSecurityInsightsRequest>;
-
 export type GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum =
   | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
   | "INSIGHTS_ENABLED"
   | "INSIGHTS_DISABLED";
-const GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum = S.String;
-
 /** Response from disabling insights for the customer. */
 export interface GoogleChromeManagementVersionsV1DisableInsightsResponse {
   /** The state of the insights feature. */
   insightsState?: GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum;
 }
-const GoogleChromeManagementVersionsV1DisableInsightsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1DisableInsightsResponse>;
-
 /** Request to enable insights for the customer. */
 export interface GoogleChromeManagementVersionsV1EnableInsightsRequest {
   /** Optional. The Organizational Units to set up required connectors for. Organizational Units are provided as paths relative to root. If this field is not set, connectors will be set up at root OU (as if it were set to ["/"]). Example: ["/corp/sales", "/eng"] */
   targetOus?: StringList;
 }
-const GoogleChromeManagementVersionsV1EnableInsightsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1EnableInsightsRequest>;
-
 export interface EnableCustomersEnterpriseSecurityInsightsRequest {
   /** Required. The customer to enable insights for. Format: customers/{customer} */
   customer: string;
   /** Request body */
   body?: GoogleChromeManagementVersionsV1EnableInsightsRequest;
 }
-const EnableCustomersEnterpriseSecurityInsightsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<EnableCustomersEnterpriseSecurityInsightsRequest>;
-
 export type GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum =
   | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
   | "INSIGHTS_ENABLED"
@@ -1530,9 +1029,6 @@ export interface GoogleChromeManagementVersionsV1EnableInsightsResponse {
   /** The state of the insights feature. */
   insightsState?: GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum;
 }
-const GoogleChromeManagementVersionsV1EnableInsightsResponse =
-  GoogleChromeManagementVersionsV1DisableInsightsResponse as any as S.Schema<GoogleChromeManagementVersionsV1EnableInsightsResponse>;
-
 export interface EnumeratePrintJobsCustomersReportsRequest {
   /** Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request. */
   customer: string;
@@ -1547,31 +1043,20 @@ export interface EnumeratePrintJobsCustomersReportsRequest {
   /** A page token received from a previous `EnumeratePrintJobs` call. Provide this to retrieve the subsequent page. If omitted, the first page of results will be returned. When paginating, all other parameters provided to `EnumeratePrintJobs` must match the call that provided the page token. */
   pageToken?: string;
 }
-const EnumeratePrintJobsCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<EnumeratePrintJobsCustomersReportsRequest>;
-
 export type GoogleChromeManagementV1PrintJobColorModeEnum =
   | "COLOR_MODE_UNSPECIFIED"
   | "BLACK_AND_WHITE"
   | "COLOR";
-const GoogleChromeManagementV1PrintJobColorModeEnum = S.String;
-
 export type GoogleChromeManagementV1PrintJobDuplexModeEnum =
   | "DUPLEX_MODE_UNSPECIFIED"
   | "ONE_SIDED"
   | "TWO_SIDED_LONG_EDGE"
   | "TWO_SIDED_SHORT_EDGE";
-const GoogleChromeManagementV1PrintJobDuplexModeEnum = S.String;
-
 export type GoogleChromeManagementV1PrintJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "PRINTED"
   | "CANCELLED"
   | "FAILED";
-const GoogleChromeManagementV1PrintJobStateEnum = S.String;
-
 /** Represents a request to print a document that has been submitted to a printer. */
 export interface GoogleChromeManagementV1PrintJob {
   /** The primary e-mail address of the user who submitted the print job. */
@@ -1601,17 +1086,7 @@ export interface GoogleChromeManagementV1PrintJob {
   /** The unique Directory API ID of the user who submitted the print job. */
   userId?: string;
 }
-const GoogleChromeManagementV1PrintJob = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1PrintJob>;
-
 export type GoogleChromeManagementV1PrintJobList = Array<GoogleChromeManagementV1PrintJob>;
-const GoogleChromeManagementV1PrintJobList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1PrintJobList>;
-
 /** Response containing a list of print jobs. */
 export interface GoogleChromeManagementV1EnumeratePrintJobsResponse {
   /** List of requested print jobs. */
@@ -1621,11 +1096,6 @@ export interface GoogleChromeManagementV1EnumeratePrintJobsResponse {
   /** Total number of print jobs matching request. */
   totalSize?: string;
 }
-const GoogleChromeManagementV1EnumeratePrintJobsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1EnumeratePrintJobsResponse>;
-
 export interface FetchDevicesRequestingExtensionCustomersAppsRequest {
   /** The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will be returned. */
   orgUnitId?: string;
@@ -1638,11 +1108,6 @@ export interface FetchDevicesRequestingExtensionCustomersAppsRequest {
   /** Optional. Token to specify the page of the request to be returned. Token expires after 1 day. */
   pageToken?: string;
 }
-const FetchDevicesRequestingExtensionCustomersAppsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<FetchDevicesRequestingExtensionCustomersAppsRequest>;
-
 /** Details of a device requesting an extension, including the name of the device and the justification of the request. */
 export interface GoogleChromeManagementV1DeviceRequestingExtensionDetails {
   /** Request justification as entered by the user. */
@@ -1650,18 +1115,8 @@ export interface GoogleChromeManagementV1DeviceRequestingExtensionDetails {
   /** The name of a device that has requested the extension. */
   deviceName?: string;
 }
-const GoogleChromeManagementV1DeviceRequestingExtensionDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
-
 export type GoogleChromeManagementV1DeviceRequestingExtensionDetailsList =
   Array<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
-const GoogleChromeManagementV1DeviceRequestingExtensionDetailsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1DeviceRequestingExtensionDetailsList>;
-
 /** Response containing a list of devices that have requested the queried extension. */
 export interface GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse {
   /** Optional. Total number of devices in response. */
@@ -1671,11 +1126,6 @@ export interface GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
   /** Optional. Token to specify the next page in the list. Token expires after 1 day. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse>;
-
 export interface FetchUsersRequestingExtensionCustomersAppsRequest {
   /** Optional. Token to specify the page of the request to be returned. Token expires after 1 day. */
   pageToken?: string;
@@ -1688,11 +1138,6 @@ export interface FetchUsersRequestingExtensionCustomersAppsRequest {
   /** The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will be returned. */
   orgUnitId?: string;
 }
-const FetchUsersRequestingExtensionCustomersAppsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<FetchUsersRequestingExtensionCustomersAppsRequest>;
-
 /** Details of a user requesting an extension, including the email and the justification. */
 export interface GoogleChromeManagementV1UserRequestingExtensionDetails {
   /** Request justification as entered by the user. */
@@ -1700,18 +1145,8 @@ export interface GoogleChromeManagementV1UserRequestingExtensionDetails {
   /** The e-mail address of a user that has requested the extension. */
   email?: string;
 }
-const GoogleChromeManagementV1UserRequestingExtensionDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1UserRequestingExtensionDetails>;
-
 export type GoogleChromeManagementV1UserRequestingExtensionDetailsList =
   Array<GoogleChromeManagementV1UserRequestingExtensionDetails>;
-const GoogleChromeManagementV1UserRequestingExtensionDetailsList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1UserRequestingExtensionDetailsList>;
-
 /** Response containing a list of users that have requested the queried extension. */
 export interface GoogleChromeManagementV1FetchUsersRequestingExtensionResponse {
   /** Total number of users in response. */
@@ -1721,11 +1156,6 @@ export interface GoogleChromeManagementV1FetchUsersRequestingExtensionResponse {
   /** Details of users that have requested the queried extension. */
   userDetails?: GoogleChromeManagementV1UserRequestingExtensionDetailsList;
 }
-const GoogleChromeManagementV1FetchUsersRequestingExtensionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1FetchUsersRequestingExtensionResponse>;
-
 export type FindInstalledAppDevicesCustomersReportsAppTypeEnum =
   | "APP_TYPE_UNSPECIFIED"
   | "EXTENSION"
@@ -1733,8 +1163,6 @@ export type FindInstalledAppDevicesCustomersReportsAppTypeEnum =
   | "THEME"
   | "HOSTED_APP"
   | "ANDROID_APP";
-const FindInstalledAppDevicesCustomersReportsAppTypeEnum = S.String;
-
 export interface FindInstalledAppDevicesCustomersReportsRequest {
   /** Unique identifier of the app. For Chrome apps and extensions, the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the package name (e.g. com.evernote). */
   appId?: string;
@@ -1753,11 +1181,6 @@ export interface FindInstalledAppDevicesCustomersReportsRequest {
   /** Required. Customer id or "my_customer" to use the customer associated to the account making the request. */
   customer: string;
 }
-const FindInstalledAppDevicesCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<FindInstalledAppDevicesCustomersReportsRequest>;
-
 /** Describes a device reporting Chrome browser information. */
 export interface GoogleChromeManagementV1Device {
   /** Output only. The name of the machine within its local network. */
@@ -1765,17 +1188,7 @@ export interface GoogleChromeManagementV1Device {
   /** Output only. The ID of the device that reported this Chrome browser information. */
   deviceId?: string;
 }
-const GoogleChromeManagementV1Device = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1Device>;
-
 export type GoogleChromeManagementV1DeviceList = Array<GoogleChromeManagementV1Device>;
-const GoogleChromeManagementV1DeviceList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1DeviceList>;
-
 /** Response containing a list of devices with queried app installed. */
 export interface GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   /** Total number of devices matching request. */
@@ -1785,11 +1198,6 @@ export interface GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   /** A list of devices which have the app installed. Sorted in ascending alphabetical order on the Device.machine field. */
   devices?: GoogleChromeManagementV1DeviceList;
 }
-const GoogleChromeManagementV1FindInstalledAppDevicesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1FindInstalledAppDevicesResponse>;
-
 export type FindInstalledAppProfilesCustomersReportsAppTypeEnum =
   | "APP_TYPE_UNSPECIFIED"
   | "EXTENSION"
@@ -1797,8 +1205,6 @@ export type FindInstalledAppProfilesCustomersReportsAppTypeEnum =
   | "THEME"
   | "HOSTED_APP"
   | "ANDROID_APP";
-const FindInstalledAppProfilesCustomersReportsAppTypeEnum = S.String;
-
 export interface FindInstalledAppProfilesCustomersReportsRequest {
   /** Optional. Token to specify the page of the request to be returned. */
   pageToken?: string;
@@ -1817,11 +1223,6 @@ export interface FindInstalledAppProfilesCustomersReportsRequest {
   /** Optional. The ID of the organizational unit. */
   orgUnitId?: string;
 }
-const FindInstalledAppProfilesCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<FindInstalledAppProfilesCustomersReportsRequest>;
-
 /** Describes a profile reporting Chrome Profile information. */
 export interface GoogleChromeManagementV1ProfileAppInstallInstance {
   /** Output only. The Chrome client side profile ID. */
@@ -1833,18 +1234,8 @@ export interface GoogleChromeManagementV1ProfileAppInstallInstance {
   /** Output only. The email of the profile. */
   email?: string;
 }
-const GoogleChromeManagementV1ProfileAppInstallInstance = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1ProfileAppInstallInstance>;
-
 export type GoogleChromeManagementV1ProfileAppInstallInstanceList =
   Array<GoogleChromeManagementV1ProfileAppInstallInstance>;
-const GoogleChromeManagementV1ProfileAppInstallInstanceList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1ProfileAppInstallInstanceList>;
-
 /** Response containing a list of profiles with queried app installed. */
 export interface GoogleChromeManagementV1FindInstalledAppProfilesResponse {
   /** Token to specify the next page of the request. */
@@ -1854,11 +1245,6 @@ export interface GoogleChromeManagementV1FindInstalledAppProfilesResponse {
   /** Total number of profiles matching request. */
   totalSize?: number;
 }
-const GoogleChromeManagementV1FindInstalledAppProfilesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1FindInstalledAppProfilesResponse>;
-
 export interface FindSaasUsageBrowsersCustomersReportsRequest {
   /** Required. The name of the SaaS application (e.g., `ChatGPT`, `Gemini`). */
   app?: string;
@@ -1873,11 +1259,6 @@ export interface FindSaasUsageBrowsersCustomersReportsRequest {
   /** Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer". */
   customer: string;
 }
-const FindSaasUsageBrowsersCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<FindSaasUsageBrowsersCustomersReportsRequest>;
-
 export type GoogleChromeManagementV1SaasUsageBrowserOsPlatformEnum =
   | "DEVICE_SYSTEM_UNSPECIFIED"
   | "SYSTEM_OTHER"
@@ -1887,8 +1268,6 @@ export type GoogleChromeManagementV1SaasUsageBrowserOsPlatformEnum =
   | "SYSTEM_WINDOWS"
   | "SYSTEM_MAC"
   | "SYSTEM_LINUX";
-const GoogleChromeManagementV1SaasUsageBrowserOsPlatformEnum = S.String;
-
 /** Details of a SaaS usage browser. */
 export interface GoogleChromeManagementV1SaasUsageBrowser {
   /** Output only. The ID of the organizational unit. */
@@ -1906,18 +1285,8 @@ export interface GoogleChromeManagementV1SaasUsageBrowser {
   /** Output only. The machine name. */
   machine?: string;
 }
-const GoogleChromeManagementV1SaasUsageBrowser = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1SaasUsageBrowser>;
-
 export type GoogleChromeManagementV1SaasUsageBrowserList =
   Array<GoogleChromeManagementV1SaasUsageBrowser>;
-const GoogleChromeManagementV1SaasUsageBrowserList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1SaasUsageBrowserList>;
-
 /** Response to `FindSaasUsageBrowsers` method. */
 export interface GoogleChromeManagementV1FindSaasUsageBrowsersResponse {
   /** The list of SaaS usage browser reports. */
@@ -1927,11 +1296,6 @@ export interface GoogleChromeManagementV1FindSaasUsageBrowsersResponse {
   /** Total number of SaaS usage browser reports that match the request. */
   totalSize?: string;
 }
-const GoogleChromeManagementV1FindSaasUsageBrowsersResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageBrowsersResponse>;
-
 export interface FindSaasUsageCustomersReportsRequest {
   /** Optional. A page token, received from a previous `FindSaasUsageReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FindSaasUsageReports` must match the call that provided the page token. */
   pageToken?: string;
@@ -1944,21 +1308,11 @@ export interface FindSaasUsageCustomersReportsRequest {
   /** Optional. The order by expression to sort the SaaS reports. Supported fields: * app * category * organization * founded_year * headquarters * primary_domain * visits_count * distinct_users_count * distinct_browsers_count * content_transfer_count Default order is ascending. To specify descending order for a field, append " desc". Example: `visits_count desc` */
   orderBy?: string;
 }
-const FindSaasUsageCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<FindSaasUsageCustomersReportsRequest>;
-
 /** Provides information about content transfer events, if available. */
 export interface GoogleChromeManagementV1SaasUsageReportContentTransferDetails {
   /** Output only. Total number of content transfers associated with the application. */
   contentTransferCount?: string;
 }
-const GoogleChromeManagementV1SaasUsageReportContentTransferDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1SaasUsageReportContentTransferDetails>;
-
 /** Represents a single SaaS report entry. */
 export interface GoogleChromeManagementV1SaasUsageReport {
   /** Output only. The headquarters location of the organization. */
@@ -1992,18 +1346,8 @@ export interface GoogleChromeManagementV1SaasUsageReport {
   /** Output only. Total number of visits to the application. */
   visitsCount?: string;
 }
-const GoogleChromeManagementV1SaasUsageReport = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1SaasUsageReport>;
-
 export type GoogleChromeManagementV1SaasUsageReportList =
   Array<GoogleChromeManagementV1SaasUsageReport>;
-const GoogleChromeManagementV1SaasUsageReportList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1SaasUsageReportList>;
-
 /** Response to `FindSaasUsage` method. */
 export interface GoogleChromeManagementV1FindSaasUsageReportsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2013,11 +1357,6 @@ export interface GoogleChromeManagementV1FindSaasUsageReportsResponse {
   /** Total number of SaaS usage reports that match the request. */
   totalSize?: string;
 }
-const GoogleChromeManagementV1FindSaasUsageReportsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageReportsResponse>;
-
 export interface FindSaasUsageProfilesCustomersReportsRequest {
   /** Optional. A page token, received from a previous `FindSaasUsageProfiles` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
@@ -2032,11 +1371,6 @@ export interface FindSaasUsageProfilesCustomersReportsRequest {
   /** Optional. The maximum number of reports to return. The service may return fewer than this value. If unspecified, at most 100 reports will be returned. The maximum value is 200; values above 200 will be coerced to 200. */
   pageSize?: number;
 }
-const FindSaasUsageProfilesCustomersReportsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<FindSaasUsageProfilesCustomersReportsRequest>;
-
 export type GoogleChromeManagementV1SaasUsageProfileReportOsPlatformEnum =
   | "DEVICE_SYSTEM_UNSPECIFIED"
   | "SYSTEM_OTHER"
@@ -2046,8 +1380,6 @@ export type GoogleChromeManagementV1SaasUsageProfileReportOsPlatformEnum =
   | "SYSTEM_WINDOWS"
   | "SYSTEM_MAC"
   | "SYSTEM_LINUX";
-const GoogleChromeManagementV1SaasUsageProfileReportOsPlatformEnum = S.String;
-
 /** Represents a single SaaS report entry grouped by profile. */
 export interface GoogleChromeManagementV1SaasUsageProfileReport {
   /** Output only. The ID of the organizational unit. */
@@ -2065,18 +1397,8 @@ export interface GoogleChromeManagementV1SaasUsageProfileReport {
   /** Output only. The permanent ID of the profile. */
   profilePermanentId?: string;
 }
-const GoogleChromeManagementV1SaasUsageProfileReport = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1SaasUsageProfileReport>;
-
 export type GoogleChromeManagementV1SaasUsageProfileReportList =
   Array<GoogleChromeManagementV1SaasUsageProfileReport>;
-const GoogleChromeManagementV1SaasUsageProfileReportList = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1SaasUsageProfileReportList>;
-
 /** Response to `FindSaasUsageProfiles` method. */
 export interface GoogleChromeManagementV1FindSaasUsageProfilesResponse {
   /** Total number of SaaS usage profile reports that match the request. */
@@ -2086,37 +1408,17 @@ export interface GoogleChromeManagementV1FindSaasUsageProfilesResponse {
   /** The list of SaaS usage profile reports. */
   profileReports?: GoogleChromeManagementV1SaasUsageProfileReportList;
 }
-const GoogleChromeManagementV1FindSaasUsageProfilesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageProfilesResponse>;
-
 export interface GetCustomersAppsAndroidRequest {
   /** Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version. */
   name: string;
 }
-const GetCustomersAppsAndroidRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetCustomersAppsAndroidRequest>;
-
 /** Represent one host permission. */
 export interface GoogleChromeManagementV1ChromeAppSiteAccess {
   /** Output only. This can contain very specific hosts, or patterns like "*.com" for instance. */
   hostMatch?: string;
 }
-const GoogleChromeManagementV1ChromeAppSiteAccess = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1ChromeAppSiteAccess>;
-
 export type GoogleChromeManagementV1ChromeAppSiteAccessList =
   Array<GoogleChromeManagementV1ChromeAppSiteAccess>;
-const GoogleChromeManagementV1ChromeAppSiteAccessList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1ChromeAppSiteAccessList>;
-
 /** Permission requested by a Chrome app or extension. */
 export interface GoogleChromeManagementV1ChromeAppPermission {
   /** Output only. The type of the permission. */
@@ -2126,24 +1428,12 @@ export interface GoogleChromeManagementV1ChromeAppPermission {
   /** Output only. If available, whether this permissions grants the app/extension access to user data. */
   accessUserData?: boolean;
 }
-const GoogleChromeManagementV1ChromeAppPermission = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1ChromeAppPermission>;
-
 export type GoogleChromeManagementV1ChromeAppPermissionList =
   Array<GoogleChromeManagementV1ChromeAppPermission>;
-const GoogleChromeManagementV1ChromeAppPermissionList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1ChromeAppPermissionList>;
-
 export type GoogleChromeManagementV1ChromeAppInfoTypeEnum =
   | "ITEM_TYPE_UNSPECIFIED"
   | "EXTENSION"
   | "OTHERS";
-const GoogleChromeManagementV1ChromeAppInfoTypeEnum = S.String;
-
 /** Chrome Web Store app information. */
 export interface GoogleChromeManagementV1ChromeAppInfo {
   /** Output only. The version of this extension's manifest. */
@@ -2171,14 +1461,7 @@ export interface GoogleChromeManagementV1ChromeAppInfo {
   /** Output only. Types of an item in the Chrome Web Store */
   type?: GoogleChromeManagementV1ChromeAppInfoTypeEnum;
 }
-const GoogleChromeManagementV1ChromeAppInfo = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1ChromeAppInfo>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -2188,42 +1471,23 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GoogleRpcStatus>;
-
 /** Permission requested by an Android app. */
 export interface GoogleChromeManagementV1AndroidAppPermission {
   /** Output only. The type of the permission. */
   type?: string;
 }
-const GoogleChromeManagementV1AndroidAppPermission = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1AndroidAppPermission>;
-
 export type GoogleChromeManagementV1AndroidAppPermissionList =
   Array<GoogleChromeManagementV1AndroidAppPermission>;
-const GoogleChromeManagementV1AndroidAppPermissionList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1AndroidAppPermissionList>;
-
 /** Android app information. */
 export interface GoogleChromeManagementV1AndroidAppInfo {
   /** Output only. Permissions requested by an Android app. */
   permissions?: GoogleChromeManagementV1AndroidAppPermissionList;
 }
-const GoogleChromeManagementV1AndroidAppInfo = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1AndroidAppInfo>;
-
 export type GoogleChromeManagementV1AppDetailsTypeEnum =
   | "APP_ITEM_TYPE_UNSPECIFIED"
   | "CHROME"
   | "ANDROID"
   | "WEB";
-const GoogleChromeManagementV1AppDetailsTypeEnum = S.String;
-
 /** Resource representing app details. */
 export interface GoogleChromeManagementV1AppDetails {
   /** Output only. The publisher of the item. */
@@ -2267,72 +1531,39 @@ export interface GoogleChromeManagementV1AppDetails {
   /** Output only. First published time. */
   firstPublishTime?: string;
 }
-const GoogleChromeManagementV1AppDetails = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1AppDetails>;
-
 export interface GetCustomersAppsChromeRequest {
   /** Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version. */
   name: string;
 }
-const GetCustomersAppsChromeRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetCustomersAppsChromeRequest>;
-
 export interface GetCustomersAppsWebRequest {
   /** Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version. */
   name: string;
 }
-const GetCustomersAppsWebRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetCustomersAppsWebRequest>;
-
 export interface GetCustomersCertificateProvisioningProcessesRequest {
   /** Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id. */
   name: string;
 }
-const GetCustomersCertificateProvisioningProcessesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetCustomersCertificateProvisioningProcessesRequest>;
-
 export type GoogleChromeManagementVersionsV1CertificateProvisioningProcessSignatureAlgorithmEnum =
   | "SIGNATURE_ALGORITHM_UNSPECIFIED"
   | "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256"
   | "SIGNATURE_ALGORITHM_ECDSA_SHA256";
-const GoogleChromeManagementVersionsV1CertificateProvisioningProcessSignatureAlgorithmEnum =
-  S.String;
-
 /** Describes a generic Certificate Authority Connection. */
 export interface GoogleChromeManagementVersionsV1GenericCaConnection {
   /** Output only. A string that references the administrator-provided configuration for the certification authority service. */
   caConnectionAdapterConfigReference?: string;
 }
-const GoogleChromeManagementVersionsV1GenericCaConnection = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1GenericCaConnection>;
-
 export type GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum =
   | "KEY_USAGE_UNSPECIFIED"
   | "KEY_USAGE_SIGNING"
   | "KEY_USAGE_KEY_ENCIPHERMENT";
 export type GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
   Array<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum>;
-const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList>;
-
 export type GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum =
   | "SUBJECT_ALT_NAME_TYPE_UNSPECIFIED"
   | "RFC822_NAME"
   | "DNS_NAME"
   | "OTHER_NAME_USER_PRINCIPAL_NAME"
   | "UNIFORM_RESOURCE_IDENTIFIER";
-const GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum = S.String;
-
 /** Describes a subject alternative name. */
 export interface GoogleChromeManagementVersionsV1SubjectAltName {
   /** Output only. The type of the SubjectAltName extension. */
@@ -2340,18 +1571,8 @@ export interface GoogleChromeManagementVersionsV1SubjectAltName {
   /** Output only. The value of the subject alternative name with respect to the `type`. */
   value?: string;
 }
-const GoogleChromeManagementVersionsV1SubjectAltName = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GoogleChromeManagementVersionsV1SubjectAltName>;
-
 export type GoogleChromeManagementVersionsV1SubjectAltNameList =
   Array<GoogleChromeManagementVersionsV1SubjectAltName>;
-const GoogleChromeManagementVersionsV1SubjectAltNameList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GoogleChromeManagementVersionsV1SubjectAltNameList>;
-
 /** Describes a SCEP certificate provisioning profile. */
 export interface GoogleChromeManagementVersionsV1ScepProfile {
   /** Output only. The locality of the subject. */
@@ -2373,11 +1594,6 @@ export interface GoogleChromeManagementVersionsV1ScepProfile {
   /** Output only. The certificate template name as defined by the admin on their on-prem infrastructure. The Certificate Authority uses this name to identify the certificate template. */
   certificateTemplateName?: string;
 }
-const GoogleChromeManagementVersionsV1ScepProfile = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ScepProfile>;
-
 /** Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs to. */
 export interface GoogleChromeManagementVersionsV1ChromeOsDevice {
   /** Output only. The unique Directory API ID of the device. This value is the same as the Admin Console's Directory API ID in the ChromeOS Devices tab. */
@@ -2385,11 +1601,6 @@ export interface GoogleChromeManagementVersionsV1ChromeOsDevice {
   /** Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the ChromeOS Devices tab. */
   serialNumber?: string;
 }
-const GoogleChromeManagementVersionsV1ChromeOsDevice = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeOsDevice>;
-
 /** Describes the ChromeOS user session that a `CertificateProvisioningProcess` belongs to. */
 export interface GoogleChromeManagementVersionsV1ChromeOsUserSession {
   /** Output only. The unique Directory API ID of the user. */
@@ -2399,11 +1610,6 @@ export interface GoogleChromeManagementVersionsV1ChromeOsUserSession {
   /** Output only. The primary e-mail address of the user. */
   userPrimaryEmail?: string;
 }
-const GoogleChromeManagementVersionsV1ChromeOsUserSession = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeOsUserSession>;
-
 /** Describes a SCEP Certificate Authority Connection. */
 export type GoogleChromeManagementVersionsV1ScepCaConnection =
   GoogleChromeManagementVersionsV1GenericCaConnection;
@@ -2412,11 +1618,6 @@ export interface GoogleChromeManagementVersionsV1GenericProfile {
   /** Output only. A string that references the administrator-provided configuration for the certificate provisioning profile. */
   profileAdapterConfigReference?: string;
 }
-const GoogleChromeManagementVersionsV1GenericProfile = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1GenericProfile>;
-
 /** A certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1CertificateProvisioningProcess {
   /** Output only. The data that the client was asked to sign. This field is only present after the `SignData` operation has been initiated. */
@@ -2450,20 +1651,10 @@ export interface GoogleChromeManagementVersionsV1CertificateProvisioningProcess 
   /** Output only. The public key for which a certificate should be provisioned. Represented as a DER-encoded X.509 SubjectPublicKeyInfo. */
   subjectPublicKeyInfo?: string;
 }
-const GoogleChromeManagementVersionsV1CertificateProvisioningProcess = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GoogleChromeManagementVersionsV1CertificateProvisioningProcess>;
-
 export interface GetCustomersCertificateProvisioningProcessesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetCustomersCertificateProvisioningProcessesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetCustomersCertificateProvisioningProcessesOperationsRequest>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -2477,34 +1668,17 @@ export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 export interface GetCustomersConnectorConfigsRequest {
   /** Required. Format: customers/{customer}/connectorConfigs/{connector_config} */
   name: string;
 }
-const GetCustomersConnectorConfigsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetCustomersConnectorConfigsRequest>;
-
 export interface GetCustomersProfilesRequest {
   /** Required. Format: customers/{customer_id}/profiles/{profile_permanent_id} */
   name: string;
 }
-const GetCustomersProfilesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetCustomersProfilesRequest>;
-
 export type GoogleChromeManagementVersionsV1DeviceInfoDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "CHROME_BROWSER";
-const GoogleChromeManagementVersionsV1DeviceInfoDeviceTypeEnum = S.String;
-
 /** Information of a device that runs a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1DeviceInfo {
   /** Output only. Machine name of the device on which the profile exists. On platforms which do not report the machine name (currently iOS and Android) this is instead set to the browser's device_id - but note that this is a different device_id than the |affiliated_device_id|. */
@@ -2516,11 +1690,6 @@ export interface GoogleChromeManagementVersionsV1DeviceInfo {
   /** Output only. Hostname of the device on which the profile exists. */
   hostname?: string;
 }
-const GoogleChromeManagementVersionsV1DeviceInfo = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1DeviceInfo>;
-
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationStateEnum =
   | "AFFILIATION_STATE_UNSPECIFIED"
   | "UNAFFILIATED_GENERIC"
@@ -2528,8 +1697,6 @@ export type GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationState
   | "UNAFFILIATED_LOCAL_MACHINE"
   | "UNAFFILIATED_CLOUD_MACHINE"
   | "AFFILIATED_CLOUD_MANAGED";
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationStateEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum =
   | "POLICY_SOURCE_UNSPECIFIED"
   | "MACHINE_PLATFORM"
@@ -2537,8 +1704,6 @@ export type GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum =
   | "MACHINE_LEVEL_USER_CLOUD"
   | "USER_CLOUD"
   | "MACHINE_MERGED";
-const GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSourceEnum =
   | "POLICY_SOURCE_UNSPECIFIED"
   | "MACHINE_PLATFORM"
@@ -2546,25 +1711,13 @@ export type GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSo
   | "MACHINE_LEVEL_USER_CLOUD"
   | "USER_CLOUD"
   | "MACHINE_MERGED";
-const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSourceEnum = S.String;
-
 /** Information of conflicting policy applied on a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData {
   /** Output only. Source of the policy. */
   source?: GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSourceEnum;
 }
-const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
-
 export type GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList =
   Array<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
-const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList>;
-
 /** Information of a policy applied on a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1ReportingDataPolicyData {
   /** Output only. Error message of the policy, if any. */
@@ -2578,18 +1731,8 @@ export interface GoogleChromeManagementVersionsV1ReportingDataPolicyData {
   /** Output only. Conflicting policy information. */
   conflicts?: GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList;
 }
-const GoogleChromeManagementVersionsV1ReportingDataPolicyData = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
-
 export type GoogleChromeManagementVersionsV1ReportingDataPolicyDataList =
   Array<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
-const GoogleChromeManagementVersionsV1ReportingDataPolicyDataList = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataPolicyDataList>;
-
 /** Information of the policies applied on an extension. */
 export interface GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData {
   /** Output only. Name of the extension. */
@@ -2599,18 +1742,8 @@ export interface GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDat
   /** Output only. Information of the policies applied on the extension. */
   policyData?: GoogleChromeManagementVersionsV1ReportingDataPolicyDataList;
 }
-const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
-
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList =
   Array<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
-const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList>;
-
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallationTypeEnum =
   | "INSTALLATION_TYPE_UNSPECIFIED"
   | "MULTIPLE"
@@ -2619,16 +1752,12 @@ export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallati
   | "DEVELOPMENT"
   | "SIDELOAD"
   | "OTHER";
-const GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallationTypeEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataExtensionTypeEnum =
   | "EXTENSION_TYPE_UNSPECIFIED"
   | "EXTENSION"
   | "APP"
   | "THEME"
   | "HOSTED_APP";
-const GoogleChromeManagementVersionsV1ReportingDataExtensionDataExtensionTypeEnum = S.String;
-
 /** Information of an extension installed on a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1ReportingDataExtensionData {
   /** Output only. Version of the extension. */
@@ -2654,18 +1783,8 @@ export interface GoogleChromeManagementVersionsV1ReportingDataExtensionData {
   /** Output only. The URL of the homepage of the extension. */
   homepageUri?: string;
 }
-const GoogleChromeManagementVersionsV1ReportingDataExtensionData = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
-
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataList =
   Array<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
-const GoogleChromeManagementVersionsV1ReportingDataExtensionDataList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionDataList>;
-
 /** Reporting data of a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1ReportingData {
   /** Output only. Information of the policies applied on the profile. */
@@ -2681,29 +1800,18 @@ export interface GoogleChromeManagementVersionsV1ReportingData {
   /** Output only. Executable path of the installed Chrome browser. A valid path is included only in affiliated profiles. */
   browserExecutablePath?: string;
 }
-const GoogleChromeManagementVersionsV1ReportingData = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingData>;
-
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileIdentityProviderEnum =
   | "IDENTITY_PROVIDER_UNSPECIFIED"
   | "GOOGLE_IDENTITY_PROVIDER"
   | "EXTERNAL_IDENTITY_PROVIDER";
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileIdentityProviderEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1AttestationCredentialKeyTrustLevelEnum =
   | "KEY_TRUST_LEVEL_UNSPECIFIED"
   | "CHROME_BROWSER_HW_KEY"
   | "CHROME_BROWSER_OS_KEY";
-const GoogleChromeManagementVersionsV1AttestationCredentialKeyTrustLevelEnum = S.String;
-
 export type GoogleChromeManagementVersionsV1AttestationCredentialKeyTypeEnum =
   | "KEY_TYPE_UNSPECIFIED"
   | "RSA_KEY"
   | "EC_KEY";
-const GoogleChromeManagementVersionsV1AttestationCredentialKeyTypeEnum = S.String;
-
 /** Information of public key associated with a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1AttestationCredential {
   /** Output only. Trust level of the public key. */
@@ -2715,11 +1823,6 @@ export interface GoogleChromeManagementVersionsV1AttestationCredential {
   /** Output only. Value of the public key. */
   publicKey?: string;
 }
-const GoogleChromeManagementVersionsV1AttestationCredential = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1AttestationCredential>;
-
 /** A representation of a Chrome browser profile. */
 export interface GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   /** Output only. Basic information of the device on which the profile exists. This information is only available for the affiliated profiles. */
@@ -2777,31 +1880,16 @@ export interface GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   /** Output only. Timestamp of the latest activity by the profile. */
   lastActivityTime?: string;
 }
-const GoogleChromeManagementVersionsV1ChromeBrowserProfile = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
-
 export interface GetCustomersProfilesCommandsRequest {
   /** Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id} */
   name: string;
 }
-const GetCustomersProfilesCommandsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetCustomersProfilesCommandsRequest>;
-
 export interface GetCustomersTelemetryDevicesRequest {
   /** Required. Name of the `TelemetryDevice` to return. */
   name: string;
   /** Required. Read mask to specify which fields to return. Supported read_mask paths are: - name - org_unit_id - device_id - serial_number - cpu_info - cpu_status_report - memory_info - memory_status_report - network_info - network_diagnostics_report - network_status_report - os_update_status - graphics_info - graphics_status_report - battery_info - battery_status_report - storage_info - storage_status_report - thunderbolt_info - audio_status_report - boot_performance_report - heartbeat_status_report - network_bandwidth_report - peripherals_report - kiosk_app_status_report - app_report - runtime_counters_report */
   readMask?: string;
 }
-const GetCustomersTelemetryDevicesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetCustomersTelemetryDevicesRequest>;
-
 /** CPU temperature of a device. Sampled per CPU core in Celsius. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection Frequency: Every 10 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A */
 export interface GoogleChromeManagementV1CpuTemperatureInfo {
   /** Output only. CPU temperature in Celsius. */
@@ -2809,18 +1897,8 @@ export interface GoogleChromeManagementV1CpuTemperatureInfo {
   /** Output only. CPU label. Example: Core 0 */
   label?: string;
 }
-const GoogleChromeManagementV1CpuTemperatureInfo = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1CpuTemperatureInfo>;
-
 export type GoogleChromeManagementV1CpuTemperatureInfoList =
   Array<GoogleChromeManagementV1CpuTemperatureInfo>;
-const GoogleChromeManagementV1CpuTemperatureInfoList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1CpuTemperatureInfoList>;
-
 /** Provides information about the status of the CPU. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection Frequency: Every 10 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_CPU_REPORT */
 export interface GoogleChromeManagementV1CpuStatusReport {
   /** Output only. Frequency the report is sampled. */
@@ -2832,26 +1910,14 @@ export interface GoogleChromeManagementV1CpuStatusReport {
   /** Output only. Sample of CPU utilization (0-100 percent). */
   cpuUtilizationPct?: number;
 }
-const GoogleChromeManagementV1CpuStatusReport = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1CpuStatusReport>;
-
 export type GoogleChromeManagementV1CpuStatusReportList =
   Array<GoogleChromeManagementV1CpuStatusReport>;
-const GoogleChromeManagementV1CpuStatusReportList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1CpuStatusReportList>;
-
 export type GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum =
   | "SHUTDOWN_REASON_UNSPECIFIED"
   | "USER_REQUEST"
   | "SYSTEM_UPDATE"
   | "LOW_BATTERY"
   | "OTHER";
-const GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum = S.String;
-
 /** Boot performance report of a device. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceBootMode](https://chromeenterprise.google/policies/#ReportDeviceBootMode) * Data Collection Frequency: On every boot up event * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: Yes * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_OS_REPORT */
 export interface GoogleChromeManagementV1BootPerformanceReport {
   /** The timestamp when power came on. */
@@ -2867,18 +1933,8 @@ export interface GoogleChromeManagementV1BootPerformanceReport {
   /** The shutdown reason. */
   shutdownReason?: GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum;
 }
-const GoogleChromeManagementV1BootPerformanceReport = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1BootPerformanceReport>;
-
 export type GoogleChromeManagementV1BootPerformanceReportList =
   Array<GoogleChromeManagementV1BootPerformanceReport>;
-const GoogleChromeManagementV1BootPerformanceReportList = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1BootPerformanceReportList>;
-
 /** Contains samples of memory status reports. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection Frequency: Only at upload, SystemRamFreeByes is collected every 10 minutes * Default Data Reporting Frequency: Every 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_MEMORY_REPORT */
 export interface GoogleChromeManagementV1MemoryStatusReport {
   /** Output only. Amount of free RAM in bytes (unreliable due to Garbage Collection). */
@@ -2890,25 +1946,13 @@ export interface GoogleChromeManagementV1MemoryStatusReport {
   /** Output only. Frequency the report is sampled. */
   sampleFrequency?: string;
 }
-const GoogleChromeManagementV1MemoryStatusReport = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1MemoryStatusReport>;
-
 export type GoogleChromeManagementV1MemoryStatusReportList =
   Array<GoogleChromeManagementV1MemoryStatusReport>;
-const GoogleChromeManagementV1MemoryStatusReportList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1MemoryStatusReportList>;
-
 export type GoogleChromeManagementV1BatteryStatusReportBatteryHealthEnum =
   | "BATTERY_HEALTH_UNSPECIFIED"
   | "BATTERY_HEALTH_NORMAL"
   | "BATTERY_REPLACE_SOON"
   | "BATTERY_REPLACE_NOW";
-const GoogleChromeManagementV1BatteryStatusReportBatteryHealthEnum = S.String;
-
 /** Sampling data for battery. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A */
 export interface GoogleChromeManagementV1BatterySampleReport {
   /** Output only. Battery voltage (millivolt). */
@@ -2928,18 +1972,8 @@ export interface GoogleChromeManagementV1BatterySampleReport {
   /** Output only. Battery charge percentage. */
   chargeRate?: number;
 }
-const GoogleChromeManagementV1BatterySampleReport = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1BatterySampleReport>;
-
 export type GoogleChromeManagementV1BatterySampleReportList =
   Array<GoogleChromeManagementV1BatterySampleReport>;
-const GoogleChromeManagementV1BatterySampleReportList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1BatterySampleReportList>;
-
 /** Status data for battery. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_BATTERY_REPORT */
 export interface GoogleChromeManagementV1BatteryStatusReport {
   /** Output only. Cycle count. */
@@ -2955,18 +1989,8 @@ export interface GoogleChromeManagementV1BatteryStatusReport {
   /** Output only. Sampling data for the battery sorted in a decreasing order of report_time. */
   sample?: GoogleChromeManagementV1BatterySampleReportList;
 }
-const GoogleChromeManagementV1BatteryStatusReport = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1BatteryStatusReport>;
-
 export type GoogleChromeManagementV1BatteryStatusReportList =
   Array<GoogleChromeManagementV1BatteryStatusReport>;
-const GoogleChromeManagementV1BatteryStatusReportList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1BatteryStatusReportList>;
-
 /** USB connected peripheral report. */
 export interface GoogleChromeManagementV1UsbPeripheralReport {
   /** Output only. Vendor ID */
@@ -2986,18 +2010,8 @@ export interface GoogleChromeManagementV1UsbPeripheralReport {
   /** Output only. Class ID https://www.usb.org/defined-class-codes */
   classId?: number;
 }
-const GoogleChromeManagementV1UsbPeripheralReport = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1UsbPeripheralReport>;
-
 export type GoogleChromeManagementV1UsbPeripheralReportList =
   Array<GoogleChromeManagementV1UsbPeripheralReport>;
-const GoogleChromeManagementV1UsbPeripheralReportList = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1UsbPeripheralReportList>;
-
 /** Peripherals report. * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT */
 export interface GoogleChromeManagementV1PeripheralsReport {
   /** Output only. Timestamp of when the report was collected. */
@@ -3005,18 +2019,8 @@ export interface GoogleChromeManagementV1PeripheralsReport {
   /** Reports of all usb connected devices. */
   usbPeripheralReport?: GoogleChromeManagementV1UsbPeripheralReportList;
 }
-const GoogleChromeManagementV1PeripheralsReport = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1PeripheralsReport>;
-
 export type GoogleChromeManagementV1PeripheralsReportList =
   Array<GoogleChromeManagementV1PeripheralsReport>;
-const GoogleChromeManagementV1PeripheralsReportList = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1PeripheralsReportList>;
-
 export type GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum =
   | "THUNDERBOLT_SECURITY_LEVEL_UNSPECIFIED"
   | "THUNDERBOLT_SECURITY_NONE_LEVEL"
@@ -3025,25 +2029,13 @@ export type GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum =
   | "THUNDERBOLT_SECURITY_DP_ONLY_LEVEL"
   | "THUNDERBOLT_SECURITY_USB_ONLY_LEVEL"
   | "THUNDERBOLT_SECURITY_NO_PCIE_LEVEL";
-const GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum = S.String;
-
 /** Thunderbolt bus info. * This field provides device information, which is static and will not change over time. * Data for this field is controlled via policy: [ReportDeviceSecurityStatus](https://chromeenterprise.google/policies/#ReportDeviceSecurityStatus) * Data Collection Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy Controlled: No * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: Yes * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_BUS_DEVICE_INFO */
 export interface GoogleChromeManagementV1ThunderboltInfo {
   /** Security level of the Thunderbolt bus. */
   securityLevel?: GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum;
 }
-const GoogleChromeManagementV1ThunderboltInfo = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1ThunderboltInfo>;
-
 export type GoogleChromeManagementV1ThunderboltInfoList =
   Array<GoogleChromeManagementV1ThunderboltInfo>;
-const GoogleChromeManagementV1ThunderboltInfoList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1ThunderboltInfoList>;
-
 /** Runtime counters retrieved from CPU. Currently the runtime counters telemetry is only supported by Intel vPro PSR on Gen 14+. */
 export interface GoogleChromeManagementV1RuntimeCountersReport {
   /** Number of times that the device has entered into the power-off state. Currently obtained via the PSR, count from S0->S5. */
@@ -3057,18 +2049,8 @@ export interface GoogleChromeManagementV1RuntimeCountersReport {
   /** Number of times that the device has entered into the hibernation state. Currently obtained via the PSR, count from S0->S4. */
   enterHibernationCount?: string;
 }
-const GoogleChromeManagementV1RuntimeCountersReport = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1RuntimeCountersReport>;
-
 export type GoogleChromeManagementV1RuntimeCountersReportList =
   Array<GoogleChromeManagementV1RuntimeCountersReport>;
-const GoogleChromeManagementV1RuntimeCountersReportList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1RuntimeCountersReportList>;
-
 export type GoogleChromeManagementV1AppUsageDataAppTypeEnum =
   | "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED"
   | "APPLICATION_TYPE_ARC"
@@ -3086,8 +2068,6 @@ export type GoogleChromeManagementV1AppUsageDataAppTypeEnum =
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
   | "APPLICATION_TYPE_BRUSCHETTA";
-const GoogleChromeManagementV1AppUsageDataAppTypeEnum = S.String;
-
 /** App usage data. */
 export interface GoogleChromeManagementV1AppUsageData {
   /** Application instance id. This will be unique per window/instance. */
@@ -3099,17 +2079,7 @@ export interface GoogleChromeManagementV1AppUsageData {
   /** Type of app. */
   appType?: GoogleChromeManagementV1AppUsageDataAppTypeEnum;
 }
-const GoogleChromeManagementV1AppUsageData = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1AppUsageData>;
-
 export type GoogleChromeManagementV1AppUsageDataList = Array<GoogleChromeManagementV1AppUsageData>;
-const GoogleChromeManagementV1AppUsageDataList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1AppUsageDataList>;
-
 /** App report. */
 export interface GoogleChromeManagementV1AppReport {
   /** App usage data. */
@@ -3117,32 +2087,18 @@ export interface GoogleChromeManagementV1AppReport {
   /** Timestamp when the report was collected. */
   reportTime?: string;
 }
-const GoogleChromeManagementV1AppReport = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1AppReport>;
-
 export type GoogleChromeManagementV1AppReportList = Array<GoogleChromeManagementV1AppReport>;
-const GoogleChromeManagementV1AppReportList = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1AppReportList>;
-
 export type GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionAlgorithmEnum =
   | "MEMORY_ENCRYPTION_ALGORITHM_UNSPECIFIED"
   | "MEMORY_ENCRYPTION_ALGORITHM_UNKNOWN"
   | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_128"
   | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_256";
-const GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionAlgorithmEnum = S.String;
-
 export type GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionStateEnum =
   | "MEMORY_ENCRYPTION_STATE_UNSPECIFIED"
   | "MEMORY_ENCRYPTION_STATE_UNKNOWN"
   | "MEMORY_ENCRYPTION_STATE_DISABLED"
   | "MEMORY_ENCRYPTION_STATE_TME"
   | "MEMORY_ENCRYPTION_STATE_MKTME";
-const GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionStateEnum = S.String;
-
 /** Memory encryption information of a device. * This field provides device information, which is static and will not change over time. * Data for this field is controlled via policy: [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: Yes * Reported for affiliated users only: N/A */
 export interface GoogleChromeManagementV1TotalMemoryEncryptionInfo {
   /** Memory encryption algorithm. */
@@ -3154,11 +2110,6 @@ export interface GoogleChromeManagementV1TotalMemoryEncryptionInfo {
   /** The length of the encryption keys. */
   keyLength?: string;
 }
-const GoogleChromeManagementV1TotalMemoryEncryptionInfo = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1TotalMemoryEncryptionInfo>;
-
 /** Memory information of a device. * This field has both telemetry and device information: - `totalRamBytes` - Device information - `availableRamBytes` - Telemetry information - `totalMemoryEncryption` - Device information * Data for this field is controlled via policy: [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection Frequency: - `totalRamBytes` - Only at upload - `availableRamBytes` - Every 10 minutes - `totalMemoryEncryption` - at device startup * Default Data Reporting Frequency: - `totalRamBytes` - 3 hours - `availableRamBytes` - 3 hours - `totalMemoryEncryption` - at device startup - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: only for `totalMemoryEncryption` * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_MEMORY_INFO */
 export interface GoogleChromeManagementV1MemoryInfo {
   /** Output only. Amount of available RAM in bytes. */
@@ -3168,11 +2119,6 @@ export interface GoogleChromeManagementV1MemoryInfo {
   /** Output only. Total memory encryption info for the device. */
   totalMemoryEncryption?: GoogleChromeManagementV1TotalMemoryEncryptionInfo;
 }
-const GoogleChromeManagementV1MemoryInfo = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1MemoryInfo>;
-
 /** Network bandwidth report. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT */
 export interface GoogleChromeManagementV1NetworkBandwidthReport {
   /** Output only. Timestamp of when the report was collected. */
@@ -3180,26 +2126,14 @@ export interface GoogleChromeManagementV1NetworkBandwidthReport {
   /** Output only. Download speed in kilobits per second. */
   downloadSpeedKbps?: string;
 }
-const GoogleChromeManagementV1NetworkBandwidthReport = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1NetworkBandwidthReport>;
-
 export type GoogleChromeManagementV1NetworkBandwidthReportList =
   Array<GoogleChromeManagementV1NetworkBandwidthReport>;
-const GoogleChromeManagementV1NetworkBandwidthReportList = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1NetworkBandwidthReportList>;
-
 export type GoogleChromeManagementV1HeartbeatStatusReportStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNKNOWN"
   | "ONLINE"
   | "OFFLINE"
   | "DEVICE_OUTDATED";
-const GoogleChromeManagementV1HeartbeatStatusReportStateEnum = S.String;
-
 /** Heartbeat status report of a device. * Available for Kiosks * This field provides online/offline/unknown status of a device and will only be included if the status has changed (e.g. Online -> Offline) * Data for this field is controlled via policy: [HeartbeatEnabled](https://chromeenterprise.google/policies/#HeartbeatEnabled) [More Info](https://support.google.com/chrome/a/answer/6179663#:~:text=On%20the%20Chrome,device%20status%20alerts) * Heartbeat Frequency: 2 mins * Note: If a device goes offline, it can take up to 12 minutes for the online status of the device to be updated * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: N/A * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT */
 export interface GoogleChromeManagementV1HeartbeatStatusReport {
   /** Timestamp of when status changed was detected */
@@ -3207,18 +2141,8 @@ export interface GoogleChromeManagementV1HeartbeatStatusReport {
   /** State the device changed to */
   state?: GoogleChromeManagementV1HeartbeatStatusReportStateEnum;
 }
-const GoogleChromeManagementV1HeartbeatStatusReport = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1HeartbeatStatusReport>;
-
 export type GoogleChromeManagementV1HeartbeatStatusReportList =
   Array<GoogleChromeManagementV1HeartbeatStatusReport>;
-const GoogleChromeManagementV1HeartbeatStatusReportList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1HeartbeatStatusReportList>;
-
 /** Kiosk app status report of a device. * Available for Kiosks * This field provides the app id and version number running on a kiosk device and the timestamp of when the report was last updated * Data for this field is controlled via policy: [ReportDeviceSessionStatus](https://chromeenterprise.google/policies/#ReportDeviceSessionStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_APPS_REPORT */
 export interface GoogleChromeManagementV1KioskAppStatusReport {
   /** App id of kiosk app for example "mdmkkicfmmkgmpkmkdikhlbggogpicma" */
@@ -3228,18 +2152,8 @@ export interface GoogleChromeManagementV1KioskAppStatusReport {
   /** App version number of kiosk app for example "1.10.118" */
   appVersion?: string;
 }
-const GoogleChromeManagementV1KioskAppStatusReport = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1KioskAppStatusReport>;
-
 export type GoogleChromeManagementV1KioskAppStatusReportList =
   Array<GoogleChromeManagementV1KioskAppStatusReport>;
-const GoogleChromeManagementV1KioskAppStatusReportList = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1KioskAppStatusReportList>;
-
 /** Status data for storage. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceAudioStatus](https://chromeenterprise.google/policies/#ReportDeviceAudioStatus) * Data Collection Frequency: 10 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_AUDIO_REPORT */
 export interface GoogleChromeManagementV1AudioStatusReport {
   /** Output only. Is active input device mute or not. */
@@ -3257,21 +2171,9 @@ export interface GoogleChromeManagementV1AudioStatusReport {
   /** Output only. Active input device's name. */
   inputDevice?: string;
 }
-const GoogleChromeManagementV1AudioStatusReport = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1AudioStatusReport>;
-
 export type GoogleChromeManagementV1AudioStatusReportList =
   Array<GoogleChromeManagementV1AudioStatusReport>;
-const GoogleChromeManagementV1AudioStatusReportList = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1AudioStatusReportList>;
-
 export type GoogleChromeManagementV1CpuInfoArchitectureEnum = "ARCHITECTURE_UNSPECIFIED" | "X64";
-const GoogleChromeManagementV1CpuInfoArchitectureEnum = S.String;
-
 /** CPU specifications for the device * This field provides device information, which is static and will not change over time. * Data for this field is controlled via policy: [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_CPU_INFO */
 export interface GoogleChromeManagementV1CpuInfo {
   /** Output only. The CPU model name. Example: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz */
@@ -3285,17 +2187,7 @@ export interface GoogleChromeManagementV1CpuInfo {
   /** Output only. Whether keylocker is configured.`TRUE` = Enabled; `FALSE` = disabled. Only reported if keylockerSupported = `TRUE`. */
   keylockerConfigured?: boolean;
 }
-const GoogleChromeManagementV1CpuInfo = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1CpuInfo>;
-
 export type GoogleChromeManagementV1CpuInfoList = Array<GoogleChromeManagementV1CpuInfo>;
-const GoogleChromeManagementV1CpuInfoList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1CpuInfoList>;
-
 /** Information for a display. */
 export interface GoogleChromeManagementV1DisplayInfo {
   /** Output only. Serial number. */
@@ -3315,17 +2207,7 @@ export interface GoogleChromeManagementV1DisplayInfo {
   /** Output only. Display device name. */
   displayName?: string;
 }
-const GoogleChromeManagementV1DisplayInfo = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1DisplayInfo>;
-
 export type GoogleChromeManagementV1DisplayInfoList = Array<GoogleChromeManagementV1DisplayInfo>;
-const GoogleChromeManagementV1DisplayInfoList = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1DisplayInfoList>;
-
 /** Information of the graphics subsystem. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceGraphicsInfo](https://chromeenterprise.google/policies/#ReportDeviceGraphicsInfo) * Data Collection Frequency: 3 hours. * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_GRAPHICS_REPORT */
 export interface GoogleChromeManagementV1GraphicsStatusReport {
   /** Output only. Information about the displays for the device. */
@@ -3333,18 +2215,8 @@ export interface GoogleChromeManagementV1GraphicsStatusReport {
   /** Output only. Time at which the graphics data was reported. */
   reportTime?: string;
 }
-const GoogleChromeManagementV1GraphicsStatusReport = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1GraphicsStatusReport>;
-
 export type GoogleChromeManagementV1GraphicsStatusReportList =
   Array<GoogleChromeManagementV1GraphicsStatusReport>;
-const GoogleChromeManagementV1GraphicsStatusReportList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1GraphicsStatusReportList>;
-
 /** Information about the battery. * This field provides device information, which is static and will not change over time. * Data for this field is controlled via policy: [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_BATTERY_INFO */
 export interface GoogleChromeManagementV1BatteryInfo {
   /** Output only. Battery manufacturer. */
@@ -3360,17 +2232,7 @@ export interface GoogleChromeManagementV1BatteryInfo {
   /** Output only. Design capacity (mAmpere-hours). */
   designCapacity?: string;
 }
-const GoogleChromeManagementV1BatteryInfo = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1BatteryInfo>;
-
 export type GoogleChromeManagementV1BatteryInfoList = Array<GoogleChromeManagementV1BatteryInfo>;
-const GoogleChromeManagementV1BatteryInfoList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1BatteryInfoList>;
-
 /** Information for disk volumes */
 export interface GoogleChromeManagementV1StorageInfoDiskVolume {
   /** Disk volume id. */
@@ -3380,18 +2242,8 @@ export interface GoogleChromeManagementV1StorageInfoDiskVolume {
   /** Free storage space in bytes. */
   storageFreeBytes?: string;
 }
-const GoogleChromeManagementV1StorageInfoDiskVolume = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1StorageInfoDiskVolume>;
-
 export type GoogleChromeManagementV1StorageInfoDiskVolumeList =
   Array<GoogleChromeManagementV1StorageInfoDiskVolume>;
-const GoogleChromeManagementV1StorageInfoDiskVolumeList = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1StorageInfoDiskVolumeList>;
-
 /** Status data for storage. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_STORAGE_INFO */
 export interface GoogleChromeManagementV1StorageInfo {
   /** The total space for user data storage in the device in bytes. */
@@ -3401,11 +2253,6 @@ export interface GoogleChromeManagementV1StorageInfo {
   /** Information for disk volumes */
   volume?: GoogleChromeManagementV1StorageInfoDiskVolumeList;
 }
-const GoogleChromeManagementV1StorageInfo = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1StorageInfo>;
-
 export type GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum =
   | "NETWORK_CONNECTION_STATE_UNSPECIFIED"
   | "ONLINE"
@@ -3413,8 +2260,6 @@ export type GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum =
   | "PORTAL"
   | "CONNECTING"
   | "NOT_CONNECTED";
-const GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum = S.String;
-
 export type GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum =
   | "NETWORK_TYPE_UNSPECIFIED"
   | "CELLULAR"
@@ -3422,8 +2267,6 @@ export type GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum =
   | "TETHER"
   | "VPN"
   | "WIFI";
-const GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum = S.String;
-
 /** State of visible/configured networks. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportNetworkStatus](https://chromeenterprise.google/policies/#ReportNetworkStatus) * Data Collection Frequency: 60 minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: Yes * Reported for affiliated users only: Yes * Granular permission needed: TELEMETRY_API_NETWORK_REPORT */
 export interface GoogleChromeManagementV1NetworkStatusReport {
   /** Output only. Wifi power management enabled */
@@ -3463,25 +2306,13 @@ export interface GoogleChromeManagementV1NetworkStatusReport {
   /** Output only. The gateway IPv6 for this interface, if detected */
   gatewayIpv6Address?: string;
 }
-const GoogleChromeManagementV1NetworkStatusReport = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1NetworkStatusReport>;
-
 export type GoogleChromeManagementV1NetworkStatusReportList =
   Array<GoogleChromeManagementV1NetworkStatusReport>;
-const GoogleChromeManagementV1NetworkStatusReportList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1NetworkStatusReportList>;
-
 export type GoogleChromeManagementV1OsUpdateStatusUpdateStateEnum =
   | "UPDATE_STATE_UNSPECIFIED"
   | "OS_IMAGE_DOWNLOAD_NOT_STARTED"
   | "OS_IMAGE_DOWNLOAD_IN_PROGRESS"
   | "OS_UPDATE_NEED_REBOOT";
-const GoogleChromeManagementV1OsUpdateStatusUpdateStateEnum = S.String;
-
 /** Contains information regarding the current OS update status. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceOsUpdateStatus](https://chromeenterprise.google/policies/#ReportDeviceOsUpdateStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_OS_REPORT */
 export interface GoogleChromeManagementV1OsUpdateStatus {
   /** Output only. Timestamp of the last successful update. */
@@ -3497,18 +2328,8 @@ export interface GoogleChromeManagementV1OsUpdateStatus {
   /** Output only. New platform version of the os image being downloaded and applied. It is only set when update status is OS_IMAGE_DOWNLOAD_IN_PROGRESS or OS_UPDATE_NEED_REBOOT. Note this could be a dummy "0.0.0.0" for OS_UPDATE_NEED_REBOOT status for some edge cases, e.g. update engine is restarted without a reboot. */
   newPlatformVersion?: string;
 }
-const GoogleChromeManagementV1OsUpdateStatus = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1OsUpdateStatus>;
-
 export type GoogleChromeManagementV1OsUpdateStatusList =
   Array<GoogleChromeManagementV1OsUpdateStatus>;
-const GoogleChromeManagementV1OsUpdateStatusList = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1OsUpdateStatusList>;
-
 /** Information of a display device. */
 export interface GoogleChromeManagementV1DisplayDevice {
   /** Output only. Serial number. */
@@ -3530,18 +2351,8 @@ export interface GoogleChromeManagementV1DisplayDevice {
   /** Output only. Display height in millimeters. */
   displayHeightMm?: number;
 }
-const GoogleChromeManagementV1DisplayDevice = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1DisplayDevice>;
-
 export type GoogleChromeManagementV1DisplayDeviceList =
   Array<GoogleChromeManagementV1DisplayDevice>;
-const GoogleChromeManagementV1DisplayDeviceList = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1DisplayDeviceList>;
-
 /** Information of an internal touch screen device. */
 export interface GoogleChromeManagementV1TouchScreenDevice {
   /** Output only. Touch screen device is stylus capable or not. */
@@ -3551,18 +2362,8 @@ export interface GoogleChromeManagementV1TouchScreenDevice {
   /** Output only. Touch screen device display name. */
   displayName?: string;
 }
-const GoogleChromeManagementV1TouchScreenDevice = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1TouchScreenDevice>;
-
 export type GoogleChromeManagementV1TouchScreenDeviceList =
   Array<GoogleChromeManagementV1TouchScreenDevice>;
-const GoogleChromeManagementV1TouchScreenDeviceList = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1TouchScreenDeviceList>;
-
 /** Information on the device touch screen. */
 export interface GoogleChromeManagementV1TouchScreenInfo {
   /** Output only. List of the internal touch screen devices. */
@@ -3570,11 +2371,6 @@ export interface GoogleChromeManagementV1TouchScreenInfo {
   /** Output only. Touchpad library name used by the input stack. */
   touchpadLibrary?: string;
 }
-const GoogleChromeManagementV1TouchScreenInfo = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1TouchScreenInfo>;
-
 /** Information of a graphics adapter (GPU). */
 export interface GoogleChromeManagementV1GraphicsAdapterInfo {
   /** Output only. Represents the graphics card device id. */
@@ -3584,11 +2380,6 @@ export interface GoogleChromeManagementV1GraphicsAdapterInfo {
   /** Output only. Version of the GPU driver. */
   driverVersion?: string;
 }
-const GoogleChromeManagementV1GraphicsAdapterInfo = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1GraphicsAdapterInfo>;
-
 /** Information of the graphics subsystem. * This field provides device information, which is static and will not change over time. * Data for this field is controlled via policy: [ReportDeviceGraphicsStatus](https://chromeenterprise.google/policies/#ReportDeviceGraphicsStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_GRAPHICS_INFO */
 export interface GoogleChromeManagementV1GraphicsInfo {
   /** Output only. Information about the display(s) of the device. */
@@ -3600,18 +2391,11 @@ export interface GoogleChromeManagementV1GraphicsInfo {
   /** Output only. Information about the graphics adapter (GPU). */
   adapterInfo?: GoogleChromeManagementV1GraphicsAdapterInfo;
 }
-const GoogleChromeManagementV1GraphicsInfo = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1GraphicsInfo>;
-
 export type GoogleChromeManagementV1NetworkDeviceTypeEnum =
   | "NETWORK_DEVICE_TYPE_UNSPECIFIED"
   | "CELLULAR_DEVICE"
   | "ETHERNET_DEVICE"
   | "WIFI_DEVICE";
-const GoogleChromeManagementV1NetworkDeviceTypeEnum = S.String;
-
 /** Details about the network device. * This field provides device information, which is static and will not change over time. * Data for this field is controlled via policy: [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/policies/#ReportNetworkDeviceConfiguration) * Data Collection Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: Yes * Reported for affiliated users only: N/A */
 export interface GoogleChromeManagementV1NetworkDevice {
   /** Output only. MAC address (if applicable) of the corresponding network device. */
@@ -3627,28 +2411,13 @@ export interface GoogleChromeManagementV1NetworkDevice {
   /** Output only. The mobile directory number associated with the device's sim card. */
   mdn?: string;
 }
-const GoogleChromeManagementV1NetworkDevice = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1NetworkDevice>;
-
 export type GoogleChromeManagementV1NetworkDeviceList =
   Array<GoogleChromeManagementV1NetworkDevice>;
-const GoogleChromeManagementV1NetworkDeviceList = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1NetworkDeviceList>;
-
 /** Network device information. * This field provides device information, which is static and will not change over time. * Data for this field is controlled via policy: [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/policies/#ReportNetworkDeviceConfiguration) * Data Collection Frequency: At device startup * Default Data Reporting Frequency: At device startup - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: Yes * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_NETWORK_INFO */
 export interface GoogleChromeManagementV1NetworkInfo {
   /** Output only. List of network devices. */
   networkDevices?: GoogleChromeManagementV1NetworkDeviceList;
 }
-const GoogleChromeManagementV1NetworkInfo = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1NetworkInfo>;
-
 /** Status of the single storage device. */
 export interface GoogleChromeManagementV1DiskInfo {
   /** Output only. Time spent writing to disk since last boot. */
@@ -3678,17 +2447,7 @@ export interface GoogleChromeManagementV1DiskInfo {
   /** Output only. Disk size. */
   sizeBytes?: string;
 }
-const GoogleChromeManagementV1DiskInfo = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1DiskInfo>;
-
 export type GoogleChromeManagementV1DiskInfoList = Array<GoogleChromeManagementV1DiskInfo>;
-const GoogleChromeManagementV1DiskInfoList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1DiskInfoList>;
-
 /** Status data for storage. * This field is telemetry information and this will change over time as the device is utilized. * Data for this field is controlled via policy: [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus) * Data Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is next online: No * Reported for affiliated users only: N/A * Granular permission needed: TELEMETRY_API_STORAGE_REPORT */
 export interface GoogleChromeManagementV1StorageStatusReport {
   /** Output only. Reports on disk. */
@@ -3696,26 +2455,14 @@ export interface GoogleChromeManagementV1StorageStatusReport {
   /** Output only. Timestamp of when the sample was collected on device */
   reportTime?: string;
 }
-const GoogleChromeManagementV1StorageStatusReport = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1StorageStatusReport>;
-
 export type GoogleChromeManagementV1StorageStatusReportList =
   Array<GoogleChromeManagementV1StorageStatusReport>;
-const GoogleChromeManagementV1StorageStatusReportList = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1StorageStatusReportList>;
-
 export type GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum =
   | "HTTPS_LATENCY_PROBLEM_UNSPECIFIED"
   | "FAILED_DNS_RESOLUTIONS"
   | "FAILED_HTTPS_REQUESTS"
   | "HIGH_LATENCY"
   | "VERY_HIGH_LATENCY";
-const GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum = S.String;
-
 /** Data that describes the result of the HTTPS latency diagnostics routine, with the HTTPS requests issued to Google websites. */
 export interface GoogleChromeManagementV1HttpsLatencyRoutineData {
   /** Output only. HTTPS latency if routine succeeded or failed because of HIGH_LATENCY or VERY_HIGH_LATENCY. */
@@ -3723,11 +2470,6 @@ export interface GoogleChromeManagementV1HttpsLatencyRoutineData {
   /** Output only. HTTPS latency routine problem if a problem occurred. */
   problem?: GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum;
 }
-const GoogleChromeManagementV1HttpsLatencyRoutineData = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1HttpsLatencyRoutineData>;
-
 /** Network testing results to determine the health of the device's network connection, for example whether the HTTPS latency is high or normal. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT */
 export interface GoogleChromeManagementV1NetworkDiagnosticsReport {
   /** Output only. HTTPS latency test data. */
@@ -3735,18 +2477,8 @@ export interface GoogleChromeManagementV1NetworkDiagnosticsReport {
   /** Output only. Timestamp of when the diagnostics were collected. */
   reportTime?: string;
 }
-const GoogleChromeManagementV1NetworkDiagnosticsReport = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1NetworkDiagnosticsReport>;
-
 export type GoogleChromeManagementV1NetworkDiagnosticsReportList =
   Array<GoogleChromeManagementV1NetworkDiagnosticsReport>;
-const GoogleChromeManagementV1NetworkDiagnosticsReportList = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1NetworkDiagnosticsReportList>;
-
 /** Telemetry data collected from a managed device. * Granular permission needed: TELEMETRY_API_DEVICE */
 export interface GoogleChromeManagementV1TelemetryDevice {
   /** Output only. CPU status reports collected periodically sorted in a decreasing order of report_time. */
@@ -3806,29 +2538,17 @@ export interface GoogleChromeManagementV1TelemetryDevice {
   /** Output only. Network diagnostics collected periodically. */
   networkDiagnosticsReport?: GoogleChromeManagementV1NetworkDiagnosticsReportList;
 }
-const GoogleChromeManagementV1TelemetryDevice = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryDevice>;
-
 export interface GetCustomersTelemetryUsersRequest {
   /** Read mask to specify which fields to return. Supported read_mask paths are: - name - org_unit_id - user_id - user_email - user_device.device_id - user_device.audio_status_report - user_device.device_activity_report - user_device.network_bandwidth_report - user_device.peripherals_report - user_device.app_report */
   readMask?: string;
   /** Required. Name of the `TelemetryUser` to return. */
   name: string;
 }
-const GetCustomersTelemetryUsersRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GetCustomersTelemetryUsersRequest>;
-
 export type GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum =
   | "DEVICE_ACTIVITY_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "IDLE"
   | "LOCKED";
-const GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum = S.String;
-
 /** Device activity report. * Granular permission needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT */
 export interface GoogleChromeManagementV1DeviceActivityReport {
   /** Output only. Timestamp of when the report was collected. */
@@ -3836,18 +2556,8 @@ export interface GoogleChromeManagementV1DeviceActivityReport {
   /** Output only. Device activity state. */
   deviceActivityState?: GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum;
 }
-const GoogleChromeManagementV1DeviceActivityReport = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1DeviceActivityReport>;
-
 export type GoogleChromeManagementV1DeviceActivityReportList =
   Array<GoogleChromeManagementV1DeviceActivityReport>;
-const GoogleChromeManagementV1DeviceActivityReportList = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1DeviceActivityReportList>;
-
 /** Telemetry data collected for a managed user and device. * Granular permission needed: TELEMETRY_API_DEVICE */
 export interface GoogleChromeManagementV1TelemetryUserDevice {
   /** Output only. Audio reports collected periodically sorted in a decreasing order of report_time. */
@@ -3863,18 +2573,8 @@ export interface GoogleChromeManagementV1TelemetryUserDevice {
   /** Output only. Network bandwidth reports collected periodically sorted in a decreasing order of report_time. */
   networkBandwidthReport?: GoogleChromeManagementV1NetworkBandwidthReportList;
 }
-const GoogleChromeManagementV1TelemetryUserDevice = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryUserDevice>;
-
 export type GoogleChromeManagementV1TelemetryUserDeviceList =
   Array<GoogleChromeManagementV1TelemetryUserDevice>;
-const GoogleChromeManagementV1TelemetryUserDeviceList = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryUserDeviceList>;
-
 /** Telemetry data collected from a managed user. * Granular permission needed: TELEMETRY_API_USER */
 export interface GoogleChromeManagementV1TelemetryUser {
   /** Resource name of the user. */
@@ -3890,11 +2590,6 @@ export interface GoogleChromeManagementV1TelemetryUser {
   /** Directory ID of the user. */
   userId?: string;
 }
-const GoogleChromeManagementV1TelemetryUser = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryUser>;
-
 export interface ListCustomersConnectorConfigsRequest {
   /** Optional. A page token, received from a previous `ListConnectorConfigs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectorConfigs` must match the call that provided the page token. */
   pageToken?: string;
@@ -3903,18 +2598,8 @@ export interface ListCustomersConnectorConfigsRequest {
   /** Required. Format: customers/{customer} */
   parent: string;
 }
-const ListCustomersConnectorConfigsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ListCustomersConnectorConfigsRequest>;
-
 export type GoogleChromeManagementVersionsV1ConnectorConfigList =
   Array<GoogleChromeManagementVersionsV1ConnectorConfig>;
-const GoogleChromeManagementVersionsV1ConnectorConfigList = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfigList>;
-
 /** Response to ListConnectorConfigs method. */
 export interface GoogleChromeManagementVersionsV1ListConnectorConfigsResponse {
   /** The list of connector configs returned. */
@@ -3922,11 +2607,6 @@ export interface GoogleChromeManagementVersionsV1ListConnectorConfigsResponse {
   /** The page token used to retrieve the next page of the listing request. If the token is empty, there are no more pages to retrieve. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementVersionsV1ListConnectorConfigsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ListConnectorConfigsResponse>;
-
 export interface ListCustomersProfilesRequest {
   /** Required. Format: customers/{customer_id} */
   parent: string;
@@ -3939,18 +2619,8 @@ export interface ListCustomersProfilesRequest {
   /** Optional. The page token used to retrieve a specific page of the listing request. */
   pageToken?: string;
 }
-const ListCustomersProfilesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ListCustomersProfilesRequest>;
-
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileList =
   Array<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileList = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileList>;
-
 /** Response to ListChromeBrowserProfiles method. */
 export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse {
   /** Total size represents an estimated number of resources returned. Not guaranteed to be accurate above 10k profiles. */
@@ -3960,11 +2630,6 @@ export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfilesRespon
   /** The pagination token that can be used to list the next page. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse>;
-
 export interface ListCustomersProfilesCommandsRequest {
   /** Optional. The maximum number of commands to return. The default page size is 100 if page_size is unspecified, and the maximum page size allowed is 100. */
   pageSize?: number;
@@ -3973,18 +2638,8 @@ export interface ListCustomersProfilesCommandsRequest {
   /** Optional. The page token used to retrieve a specific page of the listing request. */
   pageToken?: string;
 }
-const ListCustomersProfilesCommandsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ListCustomersProfilesCommandsRequest>;
-
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList =
   Array<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
-const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList>;
-
 /** Response to ListChromeBrowserProfileCommands method. */
 export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse {
   /** The list of commands returned. */
@@ -3994,12 +2649,6 @@ export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommand
   /** Total size represents an estimated number of resources returned. */
   totalSize?: string;
 }
-const GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    7,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse>;
-
 export interface ListCustomersTelemetryDevicesRequest {
   /** Required. Customer id or "my_customer" to use the customer associated to the account making the request. */
   parent: string;
@@ -4012,29 +2661,14 @@ export interface ListCustomersTelemetryDevicesRequest {
   /** Optional. Only include resources that match the filter. Requests that don't specify a "reports_timestamp" value will default to returning only recent reports. Specify "reports_timestamp>=0" to get all report data. Supported filter fields: - org_unit_id - serial_number - device_id - reports_timestamp The "reports_timestamp" filter accepts either the Unix Epoch milliseconds format or the RFC3339 UTC "Zulu" format with nanosecond resolution and up to nine fractional digits. Both formats should be surrounded by simple double quotes. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z", "1679283943823". */
   filter?: string;
 }
-const ListCustomersTelemetryDevicesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<ListCustomersTelemetryDevicesRequest>;
-
 export type GoogleChromeManagementV1TelemetryDeviceList =
   Array<GoogleChromeManagementV1TelemetryDevice>;
-const GoogleChromeManagementV1TelemetryDeviceList = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryDeviceList>;
-
 export interface GoogleChromeManagementV1ListTelemetryDevicesResponse {
   /** Telemetry devices returned in the response. */
   devices?: GoogleChromeManagementV1TelemetryDeviceList;
   /** Token to specify next page in the list. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementV1ListTelemetryDevicesResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1ListTelemetryDevicesResponse>;
-
 export interface ListCustomersTelemetryEventsRequest {
   /** Optional. Maximum number of results to return. Default value is 100. Maximum value is 1000. */
   pageSize?: number;
@@ -4047,11 +2681,6 @@ export interface ListCustomersTelemetryEventsRequest {
   /** Optional. Token to specify next page in the list. */
   pageToken?: string;
 }
-const ListCustomersTelemetryEventsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ListCustomersTelemetryEventsRequest>;
-
 export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum =
   | "APPLICATION_INSTALL_SOURCE_UNSPECIFIED"
   | "APPLICATION_INSTALL_SOURCE_SYSTEM"
@@ -4059,8 +2688,6 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum
   | "APPLICATION_INSTALL_SOURCE_PLAY_STORE"
   | "APPLICATION_INSTALL_SOURCE_CHROME_WEB_STORE"
   | "APPLICATION_INSTALL_SOURCE_BROWSER";
-const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum = S.String;
-
 export type GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum =
   | "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED"
   | "APPLICATION_TYPE_ARC"
@@ -4078,8 +2705,6 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum =
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
   | "APPLICATION_TYPE_BRUSCHETTA";
-const GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum = S.String;
-
 export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum =
   | "APPLICATION_INSTALL_REASON_UNSPECIFIED"
   | "APPLICATION_INSTALL_REASON_SYSTEM"
@@ -4091,14 +2716,10 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum
   | "APPLICATION_INSTALL_REASON_SUB_APP"
   | "APPLICATION_INSTALL_REASON_KIOSK"
   | "APPLICATION_INSTALL_REASON_COMMAND_LINE";
-const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum = S.String;
-
 export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum =
   | "APPLICATION_INSTALL_TIME_UNSPECIFIED"
   | "APPLICATION_INSTALL_TIME_INIT"
   | "APPLICATION_INSTALL_TIME_RUNNING";
-const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum = S.String;
-
 /** App installation data. */
 export interface GoogleChromeManagementV1TelemetryAppInstallEvent {
   /** App installation source. */
@@ -4112,11 +2733,6 @@ export interface GoogleChromeManagementV1TelemetryAppInstallEvent {
   /** App installation time depending on the app lifecycle. */
   appInstallTime?: GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum;
 }
-const GoogleChromeManagementV1TelemetryAppInstallEvent = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryAppInstallEvent>;
-
 export type GoogleChromeManagementV1TelemetryEventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "AUDIO_SEVERE_UNDERRUN"
@@ -4133,8 +2749,6 @@ export type GoogleChromeManagementV1TelemetryEventEventTypeEnum =
   | "OS_CRASH"
   | "EXTERNAL_DISPLAY_CONNECTED"
   | "EXTERNAL_DISPLAY_DISCONNECTED";
-const GoogleChromeManagementV1TelemetryEventEventTypeEnum = S.String;
-
 /** External display data. */
 export interface GoogleChromeManagementV1TelemetryExternalDisplayData {
   /** The display name. */
@@ -4150,34 +2764,17 @@ export interface GoogleChromeManagementV1TelemetryExternalDisplayData {
   /** The vertical resolution. */
   resolutionVertical?: number;
 }
-const GoogleChromeManagementV1TelemetryExternalDisplayData = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryExternalDisplayData>;
-
 export type GoogleChromeManagementV1TelemetryExternalDisplayDataList =
   Array<GoogleChromeManagementV1TelemetryExternalDisplayData>;
-const GoogleChromeManagementV1TelemetryExternalDisplayDataList = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryExternalDisplayDataList>;
-
 /** External display connected/disconnected event payload. */
 export interface GoogleChromeManagementV1TelemetryExternalDisplayEvent {
   /** List of external displays that were connected/disconnected. */
   externalDisplayData?: GoogleChromeManagementV1TelemetryExternalDisplayDataList;
 }
-const GoogleChromeManagementV1TelemetryExternalDisplayEvent = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryExternalDisplayEvent>;
-
 export type GoogleChromeManagementV1TelemetryHttpsLatencyChangeEventHttpsLatencyStateEnum =
   | "HTTPS_LATENCY_STATE_UNSPECIFIED"
   | "RECOVERY"
   | "PROBLEM";
-const GoogleChromeManagementV1TelemetryHttpsLatencyChangeEventHttpsLatencyStateEnum = S.String;
-
 /** Https latency routine is run periodically and `TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was detected or if the device has recovered from a latency problem. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT */
 export interface GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
   /** Current HTTPS latency state. */
@@ -4185,11 +2782,6 @@ export interface GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
   /** HTTPS latency routine data that triggered the event. */
   httpsLatencyRoutineData?: GoogleChromeManagementV1HttpsLatencyRoutineData;
 }
-const GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent>;
-
 export type GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventConnectionStateEnum =
   | "NETWORK_CONNECTION_STATE_UNSPECIFIED"
   | "ONLINE"
@@ -4197,9 +2789,6 @@ export type GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventCo
   | "PORTAL"
   | "CONNECTING"
   | "NOT_CONNECTED";
-const GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventConnectionStateEnum =
-  S.String;
-
 /** `TelemetryNetworkConnectionStateChangeEvent` is triggered on network connection state changes. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT */
 export interface GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent {
   /** Unique identifier of the network. */
@@ -4207,21 +2796,11 @@ export interface GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEv
   /** Current connection state of the network. */
   connectionState?: GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventConnectionStateEnum;
 }
-const GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent>;
-
 /** `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or removed. * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT */
 export interface GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
   /** List of usb devices that were either added or removed. */
   usbPeripheralReport?: GoogleChromeManagementV1UsbPeripheralReportList;
 }
-const GoogleChromeManagementV1TelemetryUsbPeripheralsEvent = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryUsbPeripheralsEvent>;
-
 export type GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum =
   | "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED"
   | "APPLICATION_TYPE_ARC"
@@ -4239,16 +2818,12 @@ export type GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum =
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
   | "APPLICATION_TYPE_BRUSCHETTA";
-const GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum = S.String;
-
 export type GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSourceEnum =
   | "APPLICATION_UNINSTALL_SOURCE_UNSPECIFIED"
   | "APPLICATION_UNINSTALL_SOURCE_APP_LIST"
   | "APPLICATION_UNINSTALL_SOURCE_APP_MANAGEMENT"
   | "APPLICATION_UNINSTALL_SOURCE_SHELF"
   | "APPLICATION_UNINSTALL_SOURCE_MIGRATION";
-const GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSourceEnum = S.String;
-
 /** App uninstall data. */
 export interface GoogleChromeManagementV1TelemetryAppUninstallEvent {
   /** App id. For PWAs this is the start URL, and for extensions this is the extension id. */
@@ -4258,11 +2833,6 @@ export interface GoogleChromeManagementV1TelemetryAppUninstallEvent {
   /** App uninstall source. */
   appUninstallSource?: GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSourceEnum;
 }
-const GoogleChromeManagementV1TelemetryAppUninstallEvent = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryAppUninstallEvent>;
-
 export type GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum =
   | "APPLICATION_LAUNCH_SOURCE_UNSPECIFIED"
   | "APPLICATION_LAUNCH_SOURCE_APP_LIST_GRID"
@@ -4308,8 +2878,6 @@ export type GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum =
   | "APPLICATION_LAUNCH_SOURCE_SPARKY"
   | "APPLICATION_LAUNCH_SOURCE_NAVIGATION_CAPTURING"
   | "APPLICATION_LAUNCH_SOURCE_WEB_INSTALL_API";
-const GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum = S.String;
-
 export type GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum =
   | "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED"
   | "APPLICATION_TYPE_ARC"
@@ -4327,8 +2895,6 @@ export type GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum =
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
   | "APPLICATION_TYPE_BRUSCHETTA";
-const GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum = S.String;
-
 /** App launch data. */
 export interface GoogleChromeManagementV1TelemetryAppLaunchEvent {
   /** App launch source. */
@@ -4338,11 +2904,6 @@ export interface GoogleChromeManagementV1TelemetryAppLaunchEvent {
   /** App id. For PWAs this is the start URL, and for extensions this is the extension id. */
   appId?: string;
 }
-const GoogleChromeManagementV1TelemetryAppLaunchEvent = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryAppLaunchEvent>;
-
 /** `TelemetryNetworkSignalStrengthEvent` is triggered on WiFi signal strength events. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT */
 export interface GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent {
   /** Unique identifier of the network. */
@@ -4350,25 +2911,16 @@ export interface GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent {
   /** Signal strength RSSI value. */
   signalStrengthDbm?: number;
 }
-const GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent>;
-
 export type GoogleChromeManagementV1TelemetryOsCrashEventSessionTypeEnum =
   | "SESSION_TYPE_UNSPECIFIED"
   | "SESSION_TYPE_SIGNED_IN_USER"
   | "SESSION_TYPE_KIOSK"
   | "SESSION_TYPE_MANAGED_GUEST"
   | "SESSION_TYPE_ACTIVE_DIRECTORY";
-const GoogleChromeManagementV1TelemetryOsCrashEventSessionTypeEnum = S.String;
-
 export type GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum =
   | "CRASH_TYPE_UNSPECIFIED"
   | "CRASH_TYPE_KERNEL"
   | "CRASH_TYPE_EMBEDDED_CONTROLLER";
-const GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum = S.String;
-
 /** OS crash data. */
 export interface GoogleChromeManagementV1TelemetryOsCrashEvent {
   /** Crash id. */
@@ -4378,11 +2930,6 @@ export interface GoogleChromeManagementV1TelemetryOsCrashEvent {
   /** Crash type. */
   crashType?: GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum;
 }
-const GoogleChromeManagementV1TelemetryOsCrashEvent = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryOsCrashEvent>;
-
 /** Information about a device associated with telemetry data. * Granular Permission needed: TELEMETRY_API_DEVICE */
 export interface GoogleChromeManagementV1TelemetryDeviceInfo {
   /** Output only. Organization unit ID of the device. */
@@ -4390,11 +2937,6 @@ export interface GoogleChromeManagementV1TelemetryDeviceInfo {
   /** Output only. The unique Directory API ID of the device. This value is the same as the Admin Console's Directory API ID in the ChromeOS Devices tab. */
   deviceId?: string;
 }
-const GoogleChromeManagementV1TelemetryDeviceInfo = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryDeviceInfo>;
-
 /** `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out of buffer data for more than 5 seconds. * Granular permission needed: TELEMETRY_API_AUDIO_REPORT */
 export type GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent =
   GoogleLongrunningCancelOperationRequest;
@@ -4405,11 +2947,6 @@ export interface GoogleChromeManagementV1TelemetryUserInfo {
   /** Output only. Organization unit ID of the user. */
   orgUnitId?: string;
 }
-const GoogleChromeManagementV1TelemetryUserInfo = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryUserInfo>;
-
 /** Telemetry data reported by a managed device. */
 export interface GoogleChromeManagementV1TelemetryEvent {
   /** Output only. Payload for app install event. Present only when `event_type` is `APP_INSTALLED`. */
@@ -4445,18 +2982,8 @@ export interface GoogleChromeManagementV1TelemetryEvent {
   /** Output only. Information about the user associated with the event. */
   user?: GoogleChromeManagementV1TelemetryUserInfo;
 }
-const GoogleChromeManagementV1TelemetryEvent = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryEvent>;
-
 export type GoogleChromeManagementV1TelemetryEventList =
   Array<GoogleChromeManagementV1TelemetryEvent>;
-const GoogleChromeManagementV1TelemetryEventList = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryEventList>;
-
 /** Response message for listing telemetry events for a customer. */
 export interface GoogleChromeManagementV1ListTelemetryEventsResponse {
   /** Telemetry events returned in the response. */
@@ -4464,11 +2991,6 @@ export interface GoogleChromeManagementV1ListTelemetryEventsResponse {
   /** Token to specify next page in the list. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementV1ListTelemetryEventsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GoogleChromeManagementV1ListTelemetryEventsResponse>;
-
 export interface ListCustomersTelemetryNotificationConfigsRequest {
   /** Required. The parent which owns the notification configs. */
   parent: string;
@@ -4477,18 +2999,8 @@ export interface ListCustomersTelemetryNotificationConfigsRequest {
   /** The maximum number of notification configs to return. The service may return fewer than this value. If unspecified, at most 100 notification configs will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-const ListCustomersTelemetryNotificationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<ListCustomersTelemetryNotificationConfigsRequest>;
-
 export type GoogleChromeManagementV1TelemetryNotificationConfigList =
   Array<GoogleChromeManagementV1TelemetryNotificationConfig>;
-const GoogleChromeManagementV1TelemetryNotificationConfigList = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryNotificationConfigList>;
-
 /** Response message for listing notification configs for a customer. */
 export interface GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse {
   /** The telemetry notification configs from the specified customer. */
@@ -4496,11 +3008,6 @@ export interface GoogleChromeManagementV1ListTelemetryNotificationConfigsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse>;
-
 export interface ListCustomersTelemetryUsersRequest {
   /** Read mask to specify which fields to return. Supported read_mask paths are: - name - org_unit_id - user_id - user_email - user_device.device_id - user_device.audio_status_report - user_device.device_activity_report - user_device.network_bandwidth_report - user_device.peripherals_report - user_device.app_report */
   readMask?: string;
@@ -4513,18 +3020,8 @@ export interface ListCustomersTelemetryUsersRequest {
   /** Token to specify next page in the list. */
   pageToken?: string;
 }
-const ListCustomersTelemetryUsersRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ListCustomersTelemetryUsersRequest>;
-
 export type GoogleChromeManagementV1TelemetryUserList =
   Array<GoogleChromeManagementV1TelemetryUser>;
-const GoogleChromeManagementV1TelemetryUserList = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<GoogleChromeManagementV1TelemetryUserList>;
-
 /** Response message for listing telemetry users for a customer. */
 export interface GoogleChromeManagementV1ListTelemetryUsersResponse {
   /** Telemetry users returned in the response. */
@@ -4532,11 +3029,6 @@ export interface GoogleChromeManagementV1ListTelemetryUsersResponse {
   /** Token to specify next page in the list. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementV1ListTelemetryUsersResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GoogleChromeManagementV1ListTelemetryUsersResponse>;
-
 export interface ListOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -4549,17 +3041,7 @@ export interface ListOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<ListOperationsRequest>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -4569,32 +3051,17 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 /** Request to MoveThirdPartyProfileUser method. */
 export interface GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest {
   /** Required. Destination organizational unit where the third party chrome profile user will be moved to. */
   destinationOrgUnit?: string;
 }
-const GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest>;
-
 export interface MoveCustomersThirdPartyProfileUsersRequest {
   /** Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id} */
   name: string;
   /** Request body */
   body?: GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest;
 }
-const MoveCustomersThirdPartyProfileUsersRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<MoveCustomersThirdPartyProfileUsersRequest>;
-
 /** A representation of non-Google (third party) user that is associated with a managed Chrome profile. */
 export interface GoogleChromeManagementVersionsV1ThirdPartyProfileUser {
   /** Output only. The ID of the organizational unit assigned to the user. */
@@ -4602,21 +3069,11 @@ export interface GoogleChromeManagementVersionsV1ThirdPartyProfileUser {
   /** Identifier. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id} */
   name?: string;
 }
-const GoogleChromeManagementVersionsV1ThirdPartyProfileUser = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ThirdPartyProfileUser>;
-
 /** Response for MoveThirdPartyProfileUser method. */
 export interface GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse {
   /** Output only. The moved third party profile user. */
   thirdPartyProfileUser?: GoogleChromeManagementVersionsV1ThirdPartyProfileUser;
 }
-const GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse>;
-
 export interface PatchCustomersConnectorConfigsRequest {
   /** Identifier. Format: customers/{customer}/connectorConfigs/{connector_config} */
   name: string;
@@ -4625,27 +3082,17 @@ export interface PatchCustomersConnectorConfigsRequest {
   /** Request body */
   body?: GoogleChromeManagementVersionsV1ConnectorConfig;
 }
-const PatchCustomersConnectorConfigsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<PatchCustomersConnectorConfigsRequest>;
-
 export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum =
   | "FIXED_TIME_RANGE_UNSPECIFIED"
   | "FIXED_TIME_RANGE_FOUR_HOURS"
   | "FIXED_TIME_RANGE_ONE_DAY"
   | "FIXED_TIME_RANGE_ONE_WEEK"
   | "FIXED_TIME_RANGE_FOUR_WEEKS";
-const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum =
-  S.String;
-
 export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
   | "CONTENT_TRANSFERS_BREAKDOWN_DIMENSION_UNSPECIFIED"
   | "USER"
   | "EVENT_DOMAIN"
   | "CONTENT_CATEGORY";
-const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum = S.String;
-
 export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum =
   | "CONTENT_TRANSFERS_METRIC_UNSPECIFIED"
   | "CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS"
@@ -4656,8 +3103,6 @@ export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMe
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS";
-const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum = S.String;
-
 export interface QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest {
   /** Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for events older than 180 days or more recent than 48 hours ago. If `event_time` is not specified, results will end 48 hours ago. Supported fields for filtering: - `user` - `event_domain` - `content_category` - `event_time` Filtering by `user` or `event_domain` requires the `breakdown` dimension to be set to the corresponding value (e.g., you must set `breakdown = USER` to filter by `user`). Supported operators: - `=` for `user`, `event_domain`, and `content_category`. - `<=` for `event_time`. Supported conjunctions: - `AND` Example: `user = "testuser" AND event_time <= "2024-01-02T00:00:00Z"` */
   filter?: string;
@@ -4680,12 +3125,6 @@ export interface QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsig
   /** Optional. The maximum number of breakdowns to return. The service may return fewer than this value. If unspecified, at most 50 breakdowns will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    2,
-  ) as any as S.Schema<QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest>;
-
 export type GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum =
   | "CONTENT_TRANSFERS_METRIC_UNSPECIFIED"
   | "CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS"
@@ -4696,8 +3135,6 @@ export type GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum =
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS";
-const GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum = S.String;
-
 /** Summary of content transfers for a given metric. */
 export interface GoogleChromeManagementVersionsV1ContentTransfersSummary {
   /** The count of the content transfers metric. */
@@ -4705,11 +3142,6 @@ export interface GoogleChromeManagementVersionsV1ContentTransfersSummary {
   /** The type of content transfers metric. */
   metric?: GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum;
 }
-const GoogleChromeManagementVersionsV1ContentTransfersSummary = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ContentTransfersSummary>;
-
 /** A content transfers summary for a given breakdown dimension. */
 export interface GoogleChromeManagementVersionsV1ContentTransfersBreakdown {
   /** The summary of content transfers for the breakdown dimension. */
@@ -4721,18 +3153,8 @@ export interface GoogleChromeManagementVersionsV1ContentTransfersBreakdown {
   /** The user that transferred the content. */
   user?: string;
 }
-const GoogleChromeManagementVersionsV1ContentTransfersBreakdown = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>;
-
 export type GoogleChromeManagementVersionsV1ContentTransfersBreakdownList =
   Array<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>;
-const GoogleChromeManagementVersionsV1ContentTransfersBreakdownList = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ContentTransfersBreakdownList>;
-
 /** Response message for QueryContentTransfersBreakdowns. */
 export interface GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -4740,62 +3162,35 @@ export interface GoogleChromeManagementVersionsV1QueryContentTransfersBreakdowns
   /** The content transfer breakdowns from the specified insight. */
   contentTransfersBreakdowns?: GoogleChromeManagementVersionsV1ContentTransfersBreakdownList;
 }
-const GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    6,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse>;
-
 export interface QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest {
   /** Required. The customer ID in the format "customers/{customer_id}". */
   customer: string;
   /** Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for events older than 180 days, and may be unavailable or inaccurate for time ranges less than 4 hours. If `event_time` is not specified, results will be returned for the last 30 days. Supported fields for filtering: - `event_time` Supported operators: - `>=` and `<=` for `event_time` Supported conjunctions: - `AND` Example: `event_time >= "2024-01-01T00:00:00Z" AND event_time <= "2024-01-02T00:00:00Z"` */
   filter?: string;
 }
-const QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest>;
-
 export type GoogleChromeManagementVersionsV1ContentTransfersSummaryList =
   Array<GoogleChromeManagementVersionsV1ContentTransfersSummary>;
-const GoogleChromeManagementVersionsV1ContentTransfersSummaryList = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1ContentTransfersSummaryList>;
-
 /** Response message for QueryContentTransfers. */
 export interface GoogleChromeManagementVersionsV1QueryContentTransfersResponse {
   /** A collection of summaries for various content transfers metrics. */
   summaries?: GoogleChromeManagementVersionsV1ContentTransfersSummaryList;
 }
-const GoogleChromeManagementVersionsV1QueryContentTransfersResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GoogleChromeManagementVersionsV1QueryContentTransfersResponse>;
-
 export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
   | "URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED"
   | "USER"
   | "EVENT_DOMAIN";
-const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum = S.String;
-
 export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum =
   | "FIXED_TIME_RANGE_UNSPECIFIED"
   | "FIXED_TIME_RANGE_FOUR_HOURS"
   | "FIXED_TIME_RANGE_ONE_DAY"
   | "FIXED_TIME_RANGE_ONE_WEEK"
   | "FIXED_TIME_RANGE_FOUR_WEEKS";
-const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum = S.String;
-
 export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum =
   | "URL_VISITS_METRIC_UNSPECIFIED"
   | "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS"
   | "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS"
   | "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS"
   | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS";
-const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum = S.String;
-
 export interface QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest {
   /** Optional. A page token, received from a previous `QueryUrlVisitsBreakdowns` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryUrlVisitsBreakdowns` must match the call that provided the page token. */
   pageToken?: string;
@@ -4816,11 +3211,6 @@ export interface QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequ
   /** Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for events older than 180 days or more recent than 48 hours ago. If `event_time` is not specified, results will end 48 hours ago. Supported fields for filtering: - `user` - `event_domain` - `event_time` Filtering by `user` or `event_domain` requires the `breakdown` dimension to be set to the corresponding value (e.g., you must set `breakdown = USER` to filter by `user`). Supported operators: - `=` for `user` and `event_domain`. - `<=` for `event_time`. Supported conjunctions: - `AND` Example: `user = "testuser" AND event_time <= "2024-01-02T00:00:00Z"` */
   filter?: string;
 }
-const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest>;
-
 export type GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum =
   | "URL_VISITS_METRIC_UNSPECIFIED"
   | "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS"
@@ -4834,9 +3224,6 @@ export interface GoogleChromeManagementVersionsV1UrlVisitsSummary {
   /** The type of URL visits metric. */
   metric?: GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum;
 }
-const GoogleChromeManagementVersionsV1UrlVisitsSummary =
-  GoogleChromeManagementVersionsV1ContentTransfersSummary as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
-
 /** A URL visits summary for a given breakdown dimension. */
 export interface GoogleChromeManagementVersionsV1UrlVisitsBreakdown {
   /** The summary of URL visits for the breakdown dimension. */
@@ -4846,18 +3233,8 @@ export interface GoogleChromeManagementVersionsV1UrlVisitsBreakdown {
   /** The event domain of the URL visits. */
   eventDomain?: string;
 }
-const GoogleChromeManagementVersionsV1UrlVisitsBreakdown = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>;
-
 export type GoogleChromeManagementVersionsV1UrlVisitsBreakdownList =
   Array<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>;
-const GoogleChromeManagementVersionsV1UrlVisitsBreakdownList = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsBreakdownList>;
-
 /** Response message for QueryUrlVisitsBreakdowns. */
 export interface GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse {
   /** The URL visit breakdowns from the specified insight. */
@@ -4865,69 +3242,36 @@ export interface GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse>;
-
 export interface QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest {
   /** Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for events older than 180 days, and may be unavailable or inaccurate for time ranges less than 4 hours. If `event_time` is not specified, results will be returned for the last 30 days. Supported fields for filtering: - `event_time` Supported operators: - `>=` and `<=` for `event_time` Supported conjunctions: - `AND` Example: `event_time >= "2024-01-01T00:00:00Z" AND event_time <= "2024-01-02T00:00:00Z"` */
   filter?: string;
   /** Required. The customer ID in the format "customers/{customer_id}". */
   customer: string;
 }
-const QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest>;
-
 export type GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
   Array<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
-const GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
-  GoogleChromeManagementVersionsV1ContentTransfersSummaryList as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsSummaryList>;
-
 /** Response message for QueryUrlVisits. */
 export interface GoogleChromeManagementVersionsV1QueryUrlVisitsResponse {
   /** A collection of summaries for various URL visit metrics. */
   summaries?: GoogleChromeManagementVersionsV1UrlVisitsSummaryList;
 }
-const GoogleChromeManagementVersionsV1QueryUrlVisitsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GoogleChromeManagementVersionsV1QueryUrlVisitsResponse>;
-
 /** Request message for marking a certificate provisioning process as failed. */
 export interface GoogleChromeManagementVersionsV1SetFailureRequest {
   /** Required. A message describing the failure details. It is displayed on the ChromeOS client device. */
   errorMessage?: string;
 }
-const GoogleChromeManagementVersionsV1SetFailureRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GoogleChromeManagementVersionsV1SetFailureRequest>;
-
 export interface SetFailureCustomersCertificateProvisioningProcessesRequest {
   /** Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id. */
   name: string;
   /** Request body */
   body?: GoogleChromeManagementVersionsV1SetFailureRequest;
 }
-const SetFailureCustomersCertificateProvisioningProcessesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<SetFailureCustomersCertificateProvisioningProcessesRequest>;
-
 /** Response message for publishing a failure for a certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1SetFailureResponse {}
-const GoogleChromeManagementVersionsV1SetFailureResponse =
-  GoogleLongrunningCancelOperationRequest as any as S.Schema<GoogleChromeManagementVersionsV1SetFailureResponse>;
-
 export type GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum =
   | "SIGNATURE_ALGORITHM_UNSPECIFIED"
   | "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256"
   | "SIGNATURE_ALGORITHM_ECDSA_SHA256";
-const GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum = S.String;
-
 /** Request message for requesting a signature from the client that initated a certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1SignDataRequest {
   /** Required. The signature algorithm that the adapter expects the client and backend components to use when processing `sign_data`. */
@@ -4937,50 +3281,25 @@ export interface GoogleChromeManagementVersionsV1SignDataRequest {
   /** Required. The data that the client was asked to sign. */
   signData?: string;
 }
-const GoogleChromeManagementVersionsV1SignDataRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GoogleChromeManagementVersionsV1SignDataRequest>;
-
 export interface SignDataCustomersCertificateProvisioningProcessesRequest {
   /** Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id. */
   name: string;
   /** Request body */
   body?: GoogleChromeManagementVersionsV1SignDataRequest;
 }
-const SignDataCustomersCertificateProvisioningProcessesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<SignDataCustomersCertificateProvisioningProcessesRequest>;
-
 /** Request message for uploading an issued certificate for a certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1UploadCertificateRequest {
   /** Required. The issued certificate in PEM format. */
   certificatePem?: string;
 }
-const GoogleChromeManagementVersionsV1UploadCertificateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<GoogleChromeManagementVersionsV1UploadCertificateRequest>;
-
 export interface UploadCertificateCustomersCertificateProvisioningProcessesRequest {
   /** Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id. */
   name: string;
   /** Request body */
   body?: GoogleChromeManagementVersionsV1UploadCertificateRequest;
 }
-const UploadCertificateCustomersCertificateProvisioningProcessesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<UploadCertificateCustomersCertificateProvisioningProcessesRequest>;
-
 /** Response message for publishing an issued certificate for a certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1UploadCertificateResponse {}
-const GoogleChromeManagementVersionsV1UploadCertificateResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GoogleChromeManagementVersionsV1UploadCertificateResponse>;
-
 export type CancelOperationsError =
   | NotFound
   | Forbidden
@@ -4995,8 +3314,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(1, __c0, 1) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5014,8 +3333,16 @@ export const checkEnablementStatusCustomersEnterpriseSecurityInsights: API.Opera
   CheckEnablementStatusCustomersEnterpriseSecurityInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest,
-  output: GoogleChromeManagementVersionsV1CheckEnablementStatusResponse,
+  input: __S(
+    3,
+    __c0,
+    3,
+  ) as any as S.Schema<CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest>,
+  output: __S(
+    4,
+    __c0,
+    4,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1CheckEnablementStatusResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5035,8 +3362,12 @@ export const claimCustomersCertificateProvisioningProcesses: API.OperationMethod
   ClaimCustomersCertificateProvisioningProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimCustomersCertificateProvisioningProcessesRequest,
-  output: GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<ClaimCustomersCertificateProvisioningProcessesRequest>,
+  output: __S(
+    7,
+    __c0,
+    7,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5054,8 +3385,8 @@ export const countActiveDevicesCustomersReports: API.OperationMethod<
   CountActiveDevicesCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountActiveDevicesCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountActiveDevicesResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CountActiveDevicesCustomersReportsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GoogleChromeManagementV1CountActiveDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5074,8 +3405,12 @@ export const countChromeAppRequestsCustomersApps: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountChromeAppRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: CountChromeAppRequestsCustomersAppsRequest,
-  output: GoogleChromeManagementV1CountChromeAppRequestsResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<CountChromeAppRequestsCustomersAppsRequest>,
+  output: __S(
+    13,
+    __c1,
+    5,
+  ) as any as S.Schema<GoogleChromeManagementV1CountChromeAppRequestsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5094,8 +3429,16 @@ export const countChromeBrowsersNeedingAttentionCustomersReports: API.OperationM
   CountChromeBrowsersNeedingAttentionCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountChromeBrowsersNeedingAttentionCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse,
+  input: __S(
+    14,
+    __c1,
+    6,
+  ) as any as S.Schema<CountChromeBrowsersNeedingAttentionCustomersReportsRequest>,
+  output: __S(
+    15,
+    __c1,
+    7,
+  ) as any as S.Schema<GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5113,8 +3456,12 @@ export const countChromeCrashEventsCustomersReports: API.OperationMethod<
   CountChromeCrashEventsCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountChromeCrashEventsCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountChromeCrashEventsResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<CountChromeCrashEventsCustomersReportsRequest>,
+  output: __S(
+    20,
+    __c2,
+    4,
+  ) as any as S.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5132,8 +3479,16 @@ export const countChromeDevicesReachingAutoExpirationDateCustomersReports: API.O
   CountChromeDevicesReachingAutoExpirationDateCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse,
+  input: __S(
+    21,
+    __c2,
+    5,
+  ) as any as S.Schema<CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest>,
+  output: __S(
+    24,
+    __c3,
+    0,
+  ) as any as S.Schema<GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5151,8 +3506,16 @@ export const countChromeDevicesThatNeedAttentionCustomersReports: API.OperationM
   CountChromeDevicesThatNeedAttentionCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountChromeDevicesThatNeedAttentionCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse,
+  input: __S(
+    25,
+    __c3,
+    1,
+  ) as any as S.Schema<CountChromeDevicesThatNeedAttentionCustomersReportsRequest>,
+  output: __S(
+    26,
+    __c3,
+    2,
+  ) as any as S.Schema<GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5170,8 +3533,16 @@ export const countChromeHardwareFleetDevicesCustomersReports: API.OperationMetho
   CountChromeHardwareFleetDevicesCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountChromeHardwareFleetDevicesCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse,
+  input: __S(
+    27,
+    __c3,
+    3,
+  ) as any as S.Schema<CountChromeHardwareFleetDevicesCustomersReportsRequest>,
+  output: __S(
+    30,
+    __c3,
+    6,
+  ) as any as S.Schema<GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5190,8 +3561,12 @@ export const countChromeProfileVersionsCustomersReports: API.PaginatedOperationM
   GcpOpContext,
   GoogleChromeManagementV1CountChromeProfileVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: CountChromeProfileVersionsCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountChromeProfileVersionsResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<CountChromeProfileVersionsCustomersReportsRequest>,
+  output: __S(
+    34,
+    __c4,
+    2,
+  ) as any as S.Schema<GoogleChromeManagementV1CountChromeProfileVersionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5211,8 +3586,8 @@ export const countChromeVersionsCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountChromeVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: CountChromeVersionsCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountChromeVersionsResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<CountChromeVersionsCustomersReportsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<GoogleChromeManagementV1CountChromeVersionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5231,8 +3606,12 @@ export const countDevicesPerBootTypeCustomersReports: API.OperationMethod<
   CountDevicesPerBootTypeCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountDevicesPerBootTypeCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountDevicesPerBootTypeResponse,
+  input: __S(37, __c4, 5) as any as S.Schema<CountDevicesPerBootTypeCustomersReportsRequest>,
+  output: __S(
+    38,
+    __c4,
+    6,
+  ) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerBootTypeResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5250,8 +3629,12 @@ export const countDevicesPerReleaseChannelCustomersReports: API.OperationMethod<
   CountDevicesPerReleaseChannelCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountDevicesPerReleaseChannelCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse,
+  input: __S(39, __c4, 7) as any as S.Schema<CountDevicesPerReleaseChannelCustomersReportsRequest>,
+  output: __S(
+    40,
+    __c5,
+    0,
+  ) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5270,8 +3653,8 @@ export const countInstalledAppsCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountInstalledAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: CountInstalledAppsCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountInstalledAppsResponse,
+  input: __S(41, __c5, 1) as any as S.Schema<CountInstalledAppsCustomersReportsRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GoogleChromeManagementV1CountInstalledAppsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5291,8 +3674,12 @@ export const countPrintJobsByPrinterCustomersReports: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleChromeManagementV1CountPrintJobsByPrinterResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: CountPrintJobsByPrinterCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountPrintJobsByPrinterResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<CountPrintJobsByPrinterCustomersReportsRequest>,
+  output: __S(
+    53,
+    __c6,
+    5,
+  ) as any as S.Schema<GoogleChromeManagementV1CountPrintJobsByPrinterResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5312,8 +3699,8 @@ export const countPrintJobsByUserCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountPrintJobsByUserResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: CountPrintJobsByUserCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountPrintJobsByUserResponse,
+  input: __S(54, __c6, 6) as any as S.Schema<CountPrintJobsByUserCustomersReportsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<GoogleChromeManagementV1CountPrintJobsByUserResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5334,8 +3721,8 @@ export const createCustomersConnectorConfigs: API.OperationMethod<
   CreateCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomersConnectorConfigsRequest,
-  output: GoogleChromeManagementVersionsV1ConnectorConfig,
+  input: __S(75, __c9, 3) as any as S.Schema<CreateCustomersConnectorConfigsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5355,8 +3742,12 @@ export const createCustomersProfilesCommands: API.OperationMethod<
   CreateCustomersProfilesCommandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomersProfilesCommandsRequest,
-  output: GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand,
+  input: __S(79, __c9, 7) as any as S.Schema<CreateCustomersProfilesCommandsRequest>,
+  output: __S(
+    78,
+    __c9,
+    6,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5376,8 +3767,8 @@ export const createCustomersTelemetryNotificationConfigs: API.OperationMethod<
   CreateCustomersTelemetryNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomersTelemetryNotificationConfigsRequest,
-  output: GoogleChromeManagementV1TelemetryNotificationConfig,
+  input: __S(83, __c10, 3) as any as S.Schema<CreateCustomersTelemetryNotificationConfigsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GoogleChromeManagementV1TelemetryNotificationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5397,8 +3788,8 @@ export const deleteCustomersConnectorConfigs: API.OperationMethod<
   DeleteCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomersConnectorConfigsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(84, __c10, 4) as any as S.Schema<DeleteCustomersConnectorConfigsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5418,8 +3809,8 @@ export const deleteCustomersProfiles: API.OperationMethod<
   DeleteCustomersProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomersProfilesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteCustomersProfilesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5439,8 +3830,8 @@ export const deleteCustomersTelemetryNotificationConfigs: API.OperationMethod<
   DeleteCustomersTelemetryNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomersTelemetryNotificationConfigsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(86, __c10, 6) as any as S.Schema<DeleteCustomersTelemetryNotificationConfigsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5460,8 +3851,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(87, __c10, 7) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5481,8 +3872,12 @@ export const disableCustomersEnterpriseSecurityInsights: API.OperationMethod<
   DisableCustomersEnterpriseSecurityInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableCustomersEnterpriseSecurityInsightsRequest,
-  output: GoogleChromeManagementVersionsV1DisableInsightsResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<DisableCustomersEnterpriseSecurityInsightsRequest>,
+  output: __S(
+    89,
+    __c11,
+    1,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1DisableInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5502,8 +3897,12 @@ export const enableCustomersEnterpriseSecurityInsights: API.OperationMethod<
   EnableCustomersEnterpriseSecurityInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableCustomersEnterpriseSecurityInsightsRequest,
-  output: GoogleChromeManagementVersionsV1EnableInsightsResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<EnableCustomersEnterpriseSecurityInsightsRequest>,
+  output: __S(
+    89,
+    __c11,
+    1,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1EnableInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5522,8 +3921,8 @@ export const enumeratePrintJobsCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1EnumeratePrintJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: EnumeratePrintJobsCustomersReportsRequest,
-  output: GoogleChromeManagementV1EnumeratePrintJobsResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<EnumeratePrintJobsCustomersReportsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GoogleChromeManagementV1EnumeratePrintJobsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5543,8 +3942,12 @@ export const fetchDevicesRequestingExtensionCustomersApps: API.PaginatedOperatio
   GcpOpContext,
   GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchDevicesRequestingExtensionCustomersAppsRequest,
-  output: GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<FetchDevicesRequestingExtensionCustomersAppsRequest>,
+  output: __S(
+    99,
+    __c12,
+    3,
+  ) as any as S.Schema<GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5564,8 +3967,12 @@ export const fetchUsersRequestingExtensionCustomersApps: API.PaginatedOperationM
   GcpOpContext,
   GoogleChromeManagementV1FetchUsersRequestingExtensionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchUsersRequestingExtensionCustomersAppsRequest,
-  output: GoogleChromeManagementV1FetchUsersRequestingExtensionResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<FetchUsersRequestingExtensionCustomersAppsRequest>,
+  output: __S(
+    103,
+    __c12,
+    7,
+  ) as any as S.Schema<GoogleChromeManagementV1FetchUsersRequestingExtensionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5585,8 +3992,12 @@ export const findInstalledAppDevicesCustomersReports: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleChromeManagementV1FindInstalledAppDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindInstalledAppDevicesCustomersReportsRequest,
-  output: GoogleChromeManagementV1FindInstalledAppDevicesResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<FindInstalledAppDevicesCustomersReportsRequest>,
+  output: __S(
+    107,
+    __c13,
+    3,
+  ) as any as S.Schema<GoogleChromeManagementV1FindInstalledAppDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5606,8 +4017,12 @@ export const findInstalledAppProfilesCustomersReports: API.PaginatedOperationMet
   GcpOpContext,
   GoogleChromeManagementV1FindInstalledAppProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindInstalledAppProfilesCustomersReportsRequest,
-  output: GoogleChromeManagementV1FindInstalledAppProfilesResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<FindInstalledAppProfilesCustomersReportsRequest>,
+  output: __S(
+    111,
+    __c13,
+    7,
+  ) as any as S.Schema<GoogleChromeManagementV1FindInstalledAppProfilesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5623,8 +4038,12 @@ export const findSaasUsageBrowsersCustomersReports: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleChromeManagementV1FindSaasUsageBrowsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindSaasUsageBrowsersCustomersReportsRequest,
-  output: GoogleChromeManagementV1FindSaasUsageBrowsersResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<FindSaasUsageBrowsersCustomersReportsRequest>,
+  output: __S(
+    115,
+    __c14,
+    3,
+  ) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageBrowsersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5640,8 +4059,12 @@ export const findSaasUsageCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1FindSaasUsageReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindSaasUsageCustomersReportsRequest,
-  output: GoogleChromeManagementV1FindSaasUsageReportsResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<FindSaasUsageCustomersReportsRequest>,
+  output: __S(
+    120,
+    __c15,
+    0,
+  ) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5657,8 +4080,12 @@ export const findSaasUsageProfilesCustomersReports: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleChromeManagementV1FindSaasUsageProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindSaasUsageProfilesCustomersReportsRequest,
-  output: GoogleChromeManagementV1FindSaasUsageProfilesResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<FindSaasUsageProfilesCustomersReportsRequest>,
+  output: __S(
+    124,
+    __c15,
+    4,
+  ) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5673,8 +4100,8 @@ export const getCustomersAppsAndroid: API.OperationMethod<
   GetCustomersAppsAndroidError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersAppsAndroidRequest,
-  output: GoogleChromeManagementV1AppDetails,
+  input: __S(125, __c15, 5) as any as S.Schema<GetCustomersAppsAndroidRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5688,8 +4115,8 @@ export const getCustomersAppsChrome: API.OperationMethod<
   GetCustomersAppsChromeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersAppsChromeRequest,
-  output: GoogleChromeManagementV1AppDetails,
+  input: __S(137, __c17, 1) as any as S.Schema<GetCustomersAppsChromeRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5703,8 +4130,8 @@ export const getCustomersAppsWeb: API.OperationMethod<
   GetCustomersAppsWebError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersAppsWebRequest,
-  output: GoogleChromeManagementV1AppDetails,
+  input: __S(138, __c17, 2) as any as S.Schema<GetCustomersAppsWebRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5722,8 +4149,12 @@ export const getCustomersCertificateProvisioningProcesses: API.OperationMethod<
   GetCustomersCertificateProvisioningProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersCertificateProvisioningProcessesRequest,
-  output: GoogleChromeManagementVersionsV1CertificateProvisioningProcess,
+  input: __S(139, __c17, 3) as any as S.Schema<GetCustomersCertificateProvisioningProcessesRequest>,
+  output: __S(
+    147,
+    __c18,
+    3,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1CertificateProvisioningProcess>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5741,8 +4172,12 @@ export const getCustomersCertificateProvisioningProcessesOperations: API.Operati
   GetCustomersCertificateProvisioningProcessesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersCertificateProvisioningProcessesOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    148,
+    __c18,
+    4,
+  ) as any as S.Schema<GetCustomersCertificateProvisioningProcessesOperationsRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5760,8 +4195,8 @@ export const getCustomersConnectorConfigs: API.OperationMethod<
   GetCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersConnectorConfigsRequest,
-  output: GoogleChromeManagementVersionsV1ConnectorConfig,
+  input: __S(150, __c18, 6) as any as S.Schema<GetCustomersConnectorConfigsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5775,8 +4210,12 @@ export const getCustomersProfiles: API.OperationMethod<
   GetCustomersProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersProfilesRequest,
-  output: GoogleChromeManagementVersionsV1ChromeBrowserProfile,
+  input: __S(151, __c18, 7) as any as S.Schema<GetCustomersProfilesRequest>,
+  output: __S(
+    163,
+    __c20,
+    3,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfile>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5794,8 +4233,12 @@ export const getCustomersProfilesCommands: API.OperationMethod<
   GetCustomersProfilesCommandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersProfilesCommandsRequest,
-  output: GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand,
+  input: __S(164, __c20, 4) as any as S.Schema<GetCustomersProfilesCommandsRequest>,
+  output: __S(
+    78,
+    __c9,
+    6,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5813,8 +4256,8 @@ export const getCustomersTelemetryDevices: API.OperationMethod<
   GetCustomersTelemetryDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersTelemetryDevicesRequest,
-  output: GoogleChromeManagementV1TelemetryDevice,
+  input: __S(165, __c20, 5) as any as S.Schema<GetCustomersTelemetryDevicesRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GoogleChromeManagementV1TelemetryDevice>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5832,8 +4275,8 @@ export const getCustomersTelemetryUsers: API.OperationMethod<
   GetCustomersTelemetryUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersTelemetryUsersRequest,
-  output: GoogleChromeManagementV1TelemetryUser,
+  input: __S(233, __c29, 1) as any as S.Schema<GetCustomersTelemetryUsersRequest>,
+  output: __S(238, __c29, 6) as any as S.Schema<GoogleChromeManagementV1TelemetryUser>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5852,8 +4295,12 @@ export const listCustomersConnectorConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersConnectorConfigsRequest,
-  output: GoogleChromeManagementVersionsV1ListConnectorConfigsResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<ListCustomersConnectorConfigsRequest>,
+  output: __S(
+    241,
+    __c30,
+    1,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1ListConnectorConfigsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5869,8 +4316,12 @@ export const listCustomersProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersProfilesRequest,
-  output: GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse,
+  input: __S(242, __c30, 2) as any as S.Schema<ListCustomersProfilesRequest>,
+  output: __S(
+    244,
+    __c30,
+    4,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5890,8 +4341,12 @@ export const listCustomersProfilesCommands: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersProfilesCommandsRequest,
-  output: GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse,
+  input: __S(245, __c30, 5) as any as S.Schema<ListCustomersProfilesCommandsRequest>,
+  output: __S(
+    247,
+    __c30,
+    7,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5911,8 +4366,12 @@ export const listCustomersTelemetryDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersTelemetryDevicesRequest,
-  output: GoogleChromeManagementV1ListTelemetryDevicesResponse,
+  input: __S(248, __c31, 0) as any as S.Schema<ListCustomersTelemetryDevicesRequest>,
+  output: __S(
+    250,
+    __c31,
+    2,
+  ) as any as S.Schema<GoogleChromeManagementV1ListTelemetryDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5932,8 +4391,12 @@ export const listCustomersTelemetryEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersTelemetryEventsRequest,
-  output: GoogleChromeManagementV1ListTelemetryEventsResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<ListCustomersTelemetryEventsRequest>,
+  output: __S(
+    267,
+    __c33,
+    3,
+  ) as any as S.Schema<GoogleChromeManagementV1ListTelemetryEventsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5953,8 +4416,12 @@ export const listCustomersTelemetryNotificationConfigs: API.PaginatedOperationMe
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersTelemetryNotificationConfigsRequest,
-  output: GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse,
+  input: __S(268, __c33, 4) as any as S.Schema<ListCustomersTelemetryNotificationConfigsRequest>,
+  output: __S(
+    270,
+    __c33,
+    6,
+  ) as any as S.Schema<GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5974,8 +4441,8 @@ export const listCustomersTelemetryUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersTelemetryUsersRequest,
-  output: GoogleChromeManagementV1ListTelemetryUsersResponse,
+  input: __S(271, __c33, 7) as any as S.Schema<ListCustomersTelemetryUsersRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<GoogleChromeManagementV1ListTelemetryUsersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5991,8 +4458,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(274, __c34, 2) as any as S.Schema<ListOperationsRequest>,
+  output: __S(276, __c34, 4) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6013,8 +4480,12 @@ export const moveCustomersThirdPartyProfileUsers: API.OperationMethod<
   MoveCustomersThirdPartyProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCustomersThirdPartyProfileUsersRequest,
-  output: GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse,
+  input: __S(278, __c34, 6) as any as S.Schema<MoveCustomersThirdPartyProfileUsersRequest>,
+  output: __S(
+    280,
+    __c35,
+    0,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6034,8 +4505,8 @@ export const patchCustomersConnectorConfigs: API.OperationMethod<
   PatchCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCustomersConnectorConfigsRequest,
-  output: GoogleChromeManagementVersionsV1ConnectorConfig,
+  input: __S(281, __c35, 1) as any as S.Schema<PatchCustomersConnectorConfigsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6054,8 +4525,16 @@ export const queryContentTransfersBreakdownsCustomersEnterpriseSecurityInsights:
   GcpOpContext,
   GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest,
-  output: GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse,
+  input: __S(
+    282,
+    __c35,
+    2,
+  ) as any as S.Schema<QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest>,
+  output: __S(
+    286,
+    __c35,
+    6,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6074,8 +4553,16 @@ export const queryContentTransfersCustomersEnterpriseSecurityInsights: API.Opera
   QueryContentTransfersCustomersEnterpriseSecurityInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest,
-  output: GoogleChromeManagementVersionsV1QueryContentTransfersResponse,
+  input: __S(
+    287,
+    __c35,
+    7,
+  ) as any as S.Schema<QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest>,
+  output: __S(
+    289,
+    __c36,
+    1,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryContentTransfersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6094,8 +4581,16 @@ export const queryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsights: API.Pa
   GcpOpContext,
   GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest,
-  output: GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse,
+  input: __S(
+    290,
+    __c36,
+    2,
+  ) as any as S.Schema<QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest>,
+  output: __S(
+    293,
+    __c36,
+    5,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6114,8 +4609,16 @@ export const queryUrlVisitsCustomersEnterpriseSecurityInsights: API.OperationMet
   QueryUrlVisitsCustomersEnterpriseSecurityInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest,
-  output: GoogleChromeManagementVersionsV1QueryUrlVisitsResponse,
+  input: __S(
+    294,
+    __c36,
+    6,
+  ) as any as S.Schema<QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest>,
+  output: __S(
+    295,
+    __c36,
+    7,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryUrlVisitsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6135,8 +4638,12 @@ export const setFailureCustomersCertificateProvisioningProcesses: API.OperationM
   SetFailureCustomersCertificateProvisioningProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetFailureCustomersCertificateProvisioningProcessesRequest,
-  output: GoogleChromeManagementVersionsV1SetFailureResponse,
+  input: __S(
+    297,
+    __c37,
+    1,
+  ) as any as S.Schema<SetFailureCustomersCertificateProvisioningProcessesRequest>,
+  output: __S(0, __c0, 0) as any as S.Schema<GoogleChromeManagementVersionsV1SetFailureResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6156,8 +4663,12 @@ export const signDataCustomersCertificateProvisioningProcesses: API.OperationMet
   SignDataCustomersCertificateProvisioningProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignDataCustomersCertificateProvisioningProcessesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    299,
+    __c37,
+    3,
+  ) as any as S.Schema<SignDataCustomersCertificateProvisioningProcessesRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6177,8 +4688,16 @@ export const uploadCertificateCustomersCertificateProvisioningProcesses: API.Ope
   UploadCertificateCustomersCertificateProvisioningProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadCertificateCustomersCertificateProvisioningProcessesRequest,
-  output: GoogleChromeManagementVersionsV1UploadCertificateResponse,
+  input: __S(
+    301,
+    __c37,
+    5,
+  ) as any as S.Schema<UploadCertificateCustomersCertificateProvisioningProcessesRequest>,
+  output: __S(
+    302,
+    __c37,
+    6,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1UploadCertificateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6195,7 +4714,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6225,9 +4744,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          insightsState: S.optional(
-            GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum,
-          ),
+          insightsState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1CheckEnablementStatusResponse",
@@ -6244,11 +4761,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6326,11 +4839,11 @@ function __c1(j: number): any {
         identifier: "GoogleChromeManagementV1ChromeAppRequest",
       });
     case 4:
-      return S.Array(GoogleChromeManagementV1ChromeAppRequest);
+      return S.Array(__S(11, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          requestedApps: S.optional(GoogleChromeManagementV1ChromeAppRequestList),
+          requestedApps: S.optional(__S(12, __c1, 4)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -6395,20 +4908,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           browserVersion: S.optional(S.String),
-          date: S.optional(GoogleTypeDate),
+          date: S.optional(__S(17, __c2, 1)),
           count: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          crashEventCounts: S.optional(
-            GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList,
-          ),
+          crashEventCounts: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeCrashEventsResponse",
@@ -6437,13 +4948,13 @@ function __c2(j: number): any {
           model: S.optional(S.String),
           count: S.optional(S.String),
           aueYear: S.optional(S.String),
-          aueMonth: S.optional(GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum),
+          aueMonth: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1DeviceAueCountReport",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1DeviceAueCountReport);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -6451,7 +4962,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deviceAueCountReports: S.optional(GoogleChromeManagementV1DeviceAueCountReportList),
+          deviceAueCountReports: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse",
@@ -6510,14 +5021,14 @@ function __c3(j: number): any {
         identifier: "GoogleChromeManagementV1DeviceHardwareCountReport",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1DeviceHardwareCountReport);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          memoryReports: S.optional(GoogleChromeManagementV1DeviceHardwareCountReportList),
-          modelReports: S.optional(GoogleChromeManagementV1DeviceHardwareCountReportList),
-          storageReports: S.optional(GoogleChromeManagementV1DeviceHardwareCountReportList),
-          cpuReports: S.optional(GoogleChromeManagementV1DeviceHardwareCountReportList),
+          memoryReports: S.optional(__S(29, __c3, 5)),
+          modelReports: S.optional(__S(29, __c3, 5)),
+          storageReports: S.optional(__S(29, __c3, 5)),
+          cpuReports: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse",
@@ -6549,21 +5060,21 @@ function __c4(j: number): any {
         S.Struct({
           count: S.optional(S.String),
           version: S.optional(S.String),
-          system: S.optional(GoogleChromeManagementV1BrowserVersionSystemEnum),
-          channel: S.optional(GoogleChromeManagementV1BrowserVersionChannelEnum),
+          system: S.optional(S.String),
+          channel: S.optional(S.String),
           deviceOsVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1BrowserVersion",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1BrowserVersion);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          profileBrowserVersions: S.optional(GoogleChromeManagementV1BrowserVersionList),
+          profileBrowserVersions: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeProfileVersionsResponse",
@@ -6590,7 +5101,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          browserVersions: S.optional(GoogleChromeManagementV1BrowserVersionList),
+          browserVersions: S.optional(__S(33, __c4, 1)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
@@ -6691,22 +5202,20 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          riskAssessment: S.optional(GoogleChromeManagementV1RiskAssessment),
-          riskLevel: S.optional(GoogleChromeManagementV1RiskAssessmentEntryRiskLevelEnum),
-          provider: S.optional(GoogleChromeManagementV1RiskAssessmentEntryProviderEnum),
+          riskAssessment: S.optional(__S(42, __c5, 2)),
+          riskLevel: S.optional(S.String),
+          provider: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1RiskAssessmentEntry",
       });
     case 4:
-      return S.Array(GoogleChromeManagementV1RiskAssessmentEntry);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(GoogleChromeManagementV1RiskAssessmentEntryList),
-          overallRiskLevel: S.optional(
-            GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum,
-          ),
+          entries: S.optional(__S(44, __c5, 4)),
+          overallRiskLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1RiskAssessmentData",
@@ -6719,16 +5228,16 @@ function __c5(j: number): any {
           browserDeviceCount: S.optional(S.String),
           appId: S.optional(S.String),
           osUserCount: S.optional(S.String),
-          riskAssessment: S.optional(GoogleChromeManagementV1RiskAssessmentData),
+          riskAssessment: S.optional(__S(45, __c5, 5)),
           displayName: S.optional(S.String),
           homepageUri: S.optional(S.String),
           description: S.optional(S.String),
-          appSource: S.optional(GoogleChromeManagementV1InstalledAppAppSourceEnum),
-          appType: S.optional(GoogleChromeManagementV1InstalledAppAppTypeEnum),
-          permissions: S.optional(StringList),
+          appSource: S.optional(S.String),
+          appType: S.optional(S.String),
+          permissions: S.optional(__S(46, __c5, 6)),
           disabled: S.optional(S.Boolean),
           profileCount: S.optional(S.String),
-          appInstallType: S.optional(GoogleChromeManagementV1InstalledAppAppInstallTypeEnum),
+          appInstallType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1InstalledApp",
@@ -6738,11 +5247,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleChromeManagementV1InstalledApp);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          installedApps: S.optional(GoogleChromeManagementV1InstalledAppList),
+          installedApps: S.optional(__S(48, __c6, 0)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
@@ -6782,12 +5291,12 @@ function __c6(j: number): any {
         identifier: "GoogleChromeManagementV1PrinterReport",
       });
     case 4:
-      return S.Array(GoogleChromeManagementV1PrinterReport);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
-          printerReports: S.optional(GoogleChromeManagementV1PrinterReportList),
+          printerReports: S.optional(__S(52, __c6, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6829,13 +5338,13 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleChromeManagementV1UserPrintReport);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
-          userPrintReports: S.optional(GoogleChromeManagementV1UserPrintReportList),
+          userPrintReports: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountPrintJobsByUserResponse",
@@ -6845,25 +5354,19 @@ function __c7(j: number): any {
         S.Struct({
           updateTime: S.optional(S.String),
           failureStartTime: S.optional(S.String),
-          state: S.optional(GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ConnectorConfigStatus",
       });
     case 3:
-      return S.Array(GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          enabledOptInEvents: S.optional(
-            GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList,
-          ),
-          enabledDefaultEvents: S.optional(
-            GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList,
-          ),
-          enabledDeviceEvents: S.optional(
-            GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList,
-          ),
+          enabledOptInEvents: S.optional(__S(59, __c7, 3)),
+          enabledDefaultEvents: S.optional(__S(59, __c7, 3)),
+          enabledDeviceEvents: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingSettings",
@@ -6873,7 +5376,7 @@ function __c7(j: number): any {
         S.Struct({
           apiKey: S.optional(S.String),
           host: S.optional(S.String),
-          reportingSettings: S.optional(GoogleChromeManagementVersionsV1ReportingSettings),
+          reportingSettings: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1CrowdStrikeConfig",
@@ -6883,7 +5386,7 @@ function __c7(j: number): any {
         S.Struct({
           host: S.optional(S.String),
           apiKey: S.optional(S.String),
-          reportingSettings: S.optional(GoogleChromeManagementVersionsV1ReportingSettings),
+          reportingSettings: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1GoogleSecOpsConfig",
@@ -6903,7 +5406,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          xdrSettings: S.optional(GoogleChromeManagementVersionsV1XdrSettings),
+          xdrSettings: S.optional(__S(63, __c7, 7)),
           host: S.optional(S.String),
           apiKey: S.optional(S.String),
         }),
@@ -6914,7 +5417,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           microsoftTenantId: S.optional(S.String),
-          domains: S.optional(StringList),
+          domains: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1MipLabelConfig",
@@ -6922,7 +5425,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reportingSettings: S.optional(GoogleChromeManagementVersionsV1ReportingSettings),
+          reportingSettings: S.optional(__S(60, __c7, 4)),
           topicFullPath: S.optional(S.String),
         }),
       ).annotate({
@@ -6931,7 +5434,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reportingSettings: S.optional(GoogleChromeManagementVersionsV1ReportingSettings),
+          reportingSettings: S.optional(__S(60, __c7, 4)),
           apiKey: S.optional(S.String),
           host: S.optional(S.String),
         }),
@@ -6944,7 +5447,7 @@ function __c8(j: number): any {
           portNumber: S.optional(S.Number),
           source: S.optional(S.String),
           hecToken: S.optional(S.String),
-          reportingSettings: S.optional(GoogleChromeManagementVersionsV1ReportingSettings),
+          reportingSettings: S.optional(__S(60, __c7, 4)),
           unsecureScheme: S.optional(S.Boolean),
           host: S.optional(S.String),
         }),
@@ -6955,7 +5458,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
-          reportingSettings: S.optional(GoogleChromeManagementVersionsV1ReportingSettings),
+          reportingSettings: S.optional(__S(60, __c7, 4)),
           apiKey: S.optional(S.String),
         }),
       ).annotate({
@@ -6965,7 +5468,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           topicFullPath: S.optional(S.String),
-          xdrSettings: S.optional(GoogleChromeManagementVersionsV1XdrSettings),
+          xdrSettings: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1PubSubXdrConfig",
@@ -6973,12 +5476,10 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum),
-          serviceAccounts: S.optional(StringList),
-          urlMatchers: S.optional(StringList),
-          serviceProvider: S.optional(
-            GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum,
-          ),
+          scope: S.optional(S.String),
+          serviceAccounts: S.optional(__S(46, __c5, 6)),
+          urlMatchers: S.optional(__S(46, __c5, 6)),
+          serviceProvider: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1DeviceTrustConfig",
@@ -6990,9 +5491,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          enabledPlatforms: S.optional(
-            GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnumList,
-          ),
+          enabledPlatforms: S.optional(__S(59, __c7, 3)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -7001,21 +5500,17 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          crowdStrikeConfig: S.optional(GoogleChromeManagementVersionsV1CrowdStrikeConfig),
-          googleSecOpsConfig: S.optional(GoogleChromeManagementVersionsV1GoogleSecOpsConfig),
-          crowdStrikeXdrConfig: S.optional(GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig),
-          mipLabelConfig: S.optional(GoogleChromeManagementVersionsV1MipLabelConfig),
-          pubSubConfig: S.optional(GoogleChromeManagementVersionsV1PubSubConfig),
-          crowdStrikeFalconNextGenConfig: S.optional(
-            GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig,
-          ),
-          splunkConfig: S.optional(GoogleChromeManagementVersionsV1SplunkConfig),
-          paloAltoNetworksConfig: S.optional(
-            GoogleChromeManagementVersionsV1PaloAltoNetworksConfig,
-          ),
-          pubSubXdrConfig: S.optional(GoogleChromeManagementVersionsV1PubSubXdrConfig),
-          deviceTrustConfig: S.optional(GoogleChromeManagementVersionsV1DeviceTrustConfig),
-          secureGatewayConfig: S.optional(GoogleChromeManagementVersionsV1SecureGatewayConfig),
+          crowdStrikeConfig: S.optional(__S(61, __c7, 5)),
+          googleSecOpsConfig: S.optional(__S(62, __c7, 6)),
+          crowdStrikeXdrConfig: S.optional(__S(64, __c8, 0)),
+          mipLabelConfig: S.optional(__S(65, __c8, 1)),
+          pubSubConfig: S.optional(__S(66, __c8, 2)),
+          crowdStrikeFalconNextGenConfig: S.optional(__S(67, __c8, 3)),
+          splunkConfig: S.optional(__S(68, __c8, 4)),
+          paloAltoNetworksConfig: S.optional(__S(69, __c8, 5)),
+          pubSubXdrConfig: S.optional(__S(70, __c8, 6)),
+          deviceTrustConfig: S.optional(__S(71, __c8, 7)),
+          secureGatewayConfig: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ConnectorConfigDetails",
@@ -7024,10 +5519,10 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          type: S.optional(GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum),
-          status: S.optional(GoogleChromeManagementVersionsV1ConnectorConfigStatus),
+          type: S.optional(S.String),
+          status: S.optional(__S(58, __c7, 2)),
           name: S.optional(S.String),
-          details: S.optional(GoogleChromeManagementVersionsV1ConnectorConfigDetails),
+          details: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ConnectorConfig",
@@ -7037,7 +5532,7 @@ function __c9(j: number): any {
         S.Struct({
           connectorConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleChromeManagementVersionsV1ConnectorConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7053,9 +5548,7 @@ function __c9(j: number): any {
         S.Struct({
           resultCode: S.optional(S.String),
           clientExecutionTime: S.optional(S.String),
-          resultType: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum,
-          ),
+          resultType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult",
@@ -7065,16 +5558,12 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          commandResult: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult,
-          ),
+          commandResult: S.optional(__S(76, __c9, 4)),
           validDuration: S.optional(S.String),
           commandType: S.optional(S.String),
-          commandState: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum,
-          ),
+          commandState: S.optional(S.String),
           name: S.optional(S.String),
-          payload: S.optional(DocumentMap),
+          payload: S.optional(__S(77, __c9, 5)),
           issueTime: S.optional(S.String),
         }),
       ).annotate({
@@ -7084,9 +5573,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7104,9 +5591,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          eventTypes: S.optional(
-            GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList,
-          ),
+          eventTypes: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryEventNotificationFilter",
@@ -7114,9 +5599,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          telemetryEventNotificationFilter: S.optional(
-            GoogleChromeManagementV1TelemetryEventNotificationFilter,
-          ),
+          telemetryEventNotificationFilter: S.optional(__S(80, __c10, 0)),
           deviceOrgUnitId: S.optional(S.String),
           deviceId: S.optional(S.String),
           userOrgUnitId: S.optional(S.String),
@@ -7129,7 +5612,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
-          filter: S.optional(GoogleChromeManagementV1TelemetryNotificationFilter),
+          filter: S.optional(__S(81, __c10, 1)),
           googleCloudPubsubTopic: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -7140,7 +5623,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleChromeManagementV1TelemetryNotificationConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7213,7 +5696,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7227,9 +5710,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          insightsState: S.optional(
-            GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum,
-          ),
+          insightsState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1DisableInsightsResponse",
@@ -7237,7 +5718,7 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          targetOus: S.optional(StringList),
+          targetOus: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1EnableInsightsRequest",
@@ -7246,9 +5727,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleChromeManagementVersionsV1EnableInsightsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7285,25 +5764,25 @@ function __c11(j: number): any {
           documentPageCount: S.optional(S.Number),
           createTime: S.optional(S.String),
           completeTime: S.optional(S.String),
-          colorMode: S.optional(GoogleChromeManagementV1PrintJobColorModeEnum),
-          duplexMode: S.optional(GoogleChromeManagementV1PrintJobDuplexModeEnum),
+          colorMode: S.optional(S.String),
+          duplexMode: S.optional(S.String),
           id: S.optional(S.String),
           printerId: S.optional(S.String),
           title: S.optional(S.String),
           copyCount: S.optional(S.Number),
           printer: S.optional(S.String),
-          state: S.optional(GoogleChromeManagementV1PrintJobStateEnum),
+          state: S.optional(S.String),
           userId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1PrintJob",
       });
     case 6:
-      return S.Array(GoogleChromeManagementV1PrintJob);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          printJobs: S.optional(GoogleChromeManagementV1PrintJobList),
+          printJobs: S.optional(__S(94, __c11, 6)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
         }),
@@ -7342,12 +5821,12 @@ function __c12(j: number): any {
         identifier: "GoogleChromeManagementV1DeviceRequestingExtensionDetails",
       });
     case 2:
-      return S.Array(GoogleChromeManagementV1DeviceRequestingExtensionDetails);
+      return S.Array(__S(97, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          deviceDetails: S.optional(GoogleChromeManagementV1DeviceRequestingExtensionDetailsList),
+          deviceDetails: S.optional(__S(98, __c12, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7381,13 +5860,13 @@ function __c12(j: number): any {
         identifier: "GoogleChromeManagementV1UserRequestingExtensionDetails",
       });
     case 6:
-      return S.Array(GoogleChromeManagementV1UserRequestingExtensionDetails);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          userDetails: S.optional(GoogleChromeManagementV1UserRequestingExtensionDetailsList),
+          userDetails: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FetchUsersRequestingExtensionResponse",
@@ -7400,7 +5879,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String.pipe(T.Query())),
-          appType: S.optional(FindInstalledAppDevicesCustomersReportsAppTypeEnum.pipe(T.Query())),
+          appType: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -7427,13 +5906,13 @@ function __c13(j: number): any {
         identifier: "GoogleChromeManagementV1Device",
       });
     case 2:
-      return S.Array(GoogleChromeManagementV1Device);
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          devices: S.optional(GoogleChromeManagementV1DeviceList),
+          devices: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FindInstalledAppDevicesResponse",
@@ -7444,7 +5923,7 @@ function __c13(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           customer: S.String.pipe(T.Label()),
-          appType: S.optional(FindInstalledAppProfilesCustomersReportsAppTypeEnum.pipe(T.Query())),
+          appType: S.optional(S.String.pipe(T.Query())),
           appId: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -7471,12 +5950,12 @@ function __c13(j: number): any {
         identifier: "GoogleChromeManagementV1ProfileAppInstallInstance",
       });
     case 6:
-      return S.Array(GoogleChromeManagementV1ProfileAppInstallInstance);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          profiles: S.optional(GoogleChromeManagementV1ProfileAppInstallInstanceList),
+          profiles: S.optional(__S(110, __c13, 6)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
@@ -7509,7 +5988,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orgUnitId: S.optional(S.String),
-          osPlatform: S.optional(GoogleChromeManagementV1SaasUsageBrowserOsPlatformEnum),
+          osPlatform: S.optional(S.String),
           devicePermanentId: S.optional(S.String),
           lastNavigationTime: S.optional(S.String),
           firstNavigationTime: S.optional(S.String),
@@ -7520,11 +5999,11 @@ function __c14(j: number): any {
         identifier: "GoogleChromeManagementV1SaasUsageBrowser",
       });
     case 2:
-      return S.Array(GoogleChromeManagementV1SaasUsageBrowser);
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          saasUsageBrowsers: S.optional(GoogleChromeManagementV1SaasUsageBrowserList),
+          saasUsageBrowsers: S.optional(__S(114, __c14, 2)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
         }),
@@ -7564,25 +6043,23 @@ function __c14(j: number): any {
           category: S.optional(S.String),
           primaryDomain: S.optional(S.String),
           distinctBrowsersCount: S.optional(S.String),
-          contentTransferDetails: S.optional(
-            GoogleChromeManagementV1SaasUsageReportContentTransferDetails,
-          ),
+          contentTransferDetails: S.optional(__S(117, __c14, 5)),
           orgUnitId: S.optional(S.String),
-          encryptionProtocols: S.optional(StringList),
+          encryptionProtocols: S.optional(__S(46, __c5, 6)),
           firstNavigationTime: S.optional(S.String),
           app: S.optional(S.String),
           organization: S.optional(S.String),
           foundedYear: S.optional(S.Number),
           lastNavigationTime: S.optional(S.String),
           distinctUsersCount: S.optional(S.String),
-          domains: S.optional(StringList),
+          domains: S.optional(__S(46, __c5, 6)),
           visitsCount: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1SaasUsageReport",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1SaasUsageReport);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c15(j: number): any {
@@ -7591,7 +6068,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          saasReports: S.optional(GoogleChromeManagementV1SaasUsageReportList),
+          saasReports: S.optional(__S(119, __c14, 7)),
           totalSize: S.optional(S.String),
         }),
       ).annotate({
@@ -7620,7 +6097,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orgUnitId: S.optional(S.String),
-          osPlatform: S.optional(GoogleChromeManagementV1SaasUsageProfileReportOsPlatformEnum),
+          osPlatform: S.optional(S.String),
           lastNavigationTime: S.optional(S.String),
           osVersion: S.optional(S.String),
           email: S.optional(S.String),
@@ -7631,13 +6108,13 @@ function __c15(j: number): any {
         identifier: "GoogleChromeManagementV1SaasUsageProfileReport",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1SaasUsageProfileReport);
+      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          profileReports: S.optional(GoogleChromeManagementV1SaasUsageProfileReportList),
+          profileReports: S.optional(__S(123, __c15, 3)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FindSaasUsageProfilesResponse",
@@ -7665,7 +6142,7 @@ function __c15(j: number): any {
         identifier: "GoogleChromeManagementV1ChromeAppSiteAccess",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1ChromeAppSiteAccess);
+      return S.Array(__S(126, __c15, 6));
   }
 }
 function __c16(j: number): any {
@@ -7681,7 +6158,7 @@ function __c16(j: number): any {
         identifier: "GoogleChromeManagementV1ChromeAppPermission",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1ChromeAppPermission);
+      return S.Array(__S(128, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7692,22 +6169,22 @@ function __c16(j: number): any {
           kioskEnabled: S.optional(S.Boolean),
           supportEnabled: S.optional(S.Boolean),
           isTheme: S.optional(S.Boolean),
-          siteAccess: S.optional(GoogleChromeManagementV1ChromeAppSiteAccessList),
-          permissions: S.optional(GoogleChromeManagementV1ChromeAppPermissionList),
+          siteAccess: S.optional(__S(127, __c15, 7)),
+          permissions: S.optional(__S(129, __c16, 1)),
           isCwsHosted: S.optional(S.Boolean),
           isExtensionPolicySupported: S.optional(S.Boolean),
-          type: S.optional(GoogleChromeManagementV1ChromeAppInfoTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1ChromeAppInfo",
       });
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(77, __c9, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(131, __c16, 3)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
@@ -7720,11 +6197,11 @@ function __c16(j: number): any {
         identifier: "GoogleChromeManagementV1AndroidAppPermission",
       });
     case 6:
-      return S.Array(GoogleChromeManagementV1AndroidAppPermission);
+      return S.Array(__S(133, __c16, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(GoogleChromeManagementV1AndroidAppPermissionList),
+          permissions: S.optional(__S(134, __c16, 6)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1AndroidAppInfo",
@@ -7737,21 +6214,21 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           publisher: S.optional(S.String),
-          chromeAppInfo: S.optional(GoogleChromeManagementV1ChromeAppInfo),
+          chromeAppInfo: S.optional(__S(130, __c16, 2)),
           displayName: S.optional(S.String),
           isPaidApp: S.optional(S.Boolean),
           reviewNumber: S.optional(S.String),
-          serviceError: S.optional(GoogleRpcStatus),
+          serviceError: S.optional(__S(132, __c16, 4)),
           reviewRating: S.optional(S.Number),
           detailUri: S.optional(S.String),
           privacyPolicyUri: S.optional(S.String),
           latestPublishTime: S.optional(S.String),
           appId: S.optional(S.String),
-          categoryIds: S.optional(StringList),
-          androidAppInfo: S.optional(GoogleChromeManagementV1AndroidAppInfo),
+          categoryIds: S.optional(__S(46, __c5, 6)),
+          androidAppInfo: S.optional(__S(135, __c16, 7)),
           iconUri: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(GoogleChromeManagementV1AppDetailsTypeEnum),
+          type: S.optional(S.String),
           homepageUri: S.optional(S.String),
           revisionId: S.optional(S.String),
           description: S.optional(S.String),
@@ -7813,14 +6290,14 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum),
+          type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1SubjectAltName",
       });
     case 6:
-      return S.Array(GoogleChromeManagementVersionsV1SubjectAltName);
+      return S.Array(__S(141, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -7828,10 +6305,10 @@ function __c17(j: number): any {
           state: S.optional(S.String),
           organization: S.optional(S.String),
           country: S.optional(S.String),
-          organizationalUnits: S.optional(StringList),
-          keyUsages: S.optional(GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList),
+          organizationalUnits: S.optional(__S(46, __c5, 6)),
+          keyUsages: S.optional(__S(59, __c7, 3)),
           subjectCommonName: S.optional(S.String),
-          subjectAltNames: S.optional(GoogleChromeManagementVersionsV1SubjectAltNameList),
+          subjectAltNames: S.optional(__S(142, __c17, 6)),
           certificateTemplateName: S.optional(S.String),
         }),
       ).annotate({
@@ -7854,7 +6331,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userDirectoryApiId: S.optional(S.String),
-          chromeOsDevice: S.optional(GoogleChromeManagementVersionsV1ChromeOsDevice),
+          chromeOsDevice: S.optional(__S(144, __c18, 0)),
           userPrimaryEmail: S.optional(S.String),
         }),
       ).annotate({
@@ -7873,20 +6350,18 @@ function __c18(j: number): any {
         S.Struct({
           signData: S.optional(S.String),
           signature: S.optional(S.String),
-          signatureAlgorithm: S.optional(
-            GoogleChromeManagementVersionsV1CertificateProvisioningProcessSignatureAlgorithmEnum,
-          ),
+          signatureAlgorithm: S.optional(S.String),
           startTime: S.optional(S.String),
-          genericCaConnection: S.optional(GoogleChromeManagementVersionsV1GenericCaConnection),
-          scepProfile: S.optional(GoogleChromeManagementVersionsV1ScepProfile),
-          chromeOsUserSession: S.optional(GoogleChromeManagementVersionsV1ChromeOsUserSession),
+          genericCaConnection: S.optional(__S(140, __c17, 4)),
+          scepProfile: S.optional(__S(143, __c17, 7)),
+          chromeOsUserSession: S.optional(__S(145, __c18, 1)),
           issuedCertificate: S.optional(S.String),
-          scepCaConnection: S.optional(GoogleChromeManagementVersionsV1GenericCaConnection),
+          scepCaConnection: S.optional(__S(140, __c17, 4)),
           provisioningProfileId: S.optional(S.String),
           name: S.optional(S.String),
-          chromeOsDevice: S.optional(GoogleChromeManagementVersionsV1ChromeOsDevice),
+          chromeOsDevice: S.optional(__S(144, __c18, 0)),
           failureMessage: S.optional(S.String),
-          genericProfile: S.optional(GoogleChromeManagementVersionsV1GenericProfile),
+          genericProfile: S.optional(__S(146, __c18, 2)),
           subjectPublicKeyInfo: S.optional(S.String),
         }),
       ).annotate({
@@ -7909,11 +6384,11 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(77, __c9, 5)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          response: S.optional(DocumentMap),
-          error: S.optional(GoogleRpcStatus),
+          response: S.optional(__S(77, __c9, 5)),
+          error: S.optional(__S(132, __c16, 4)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -7954,7 +6429,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           machine: S.optional(S.String),
-          deviceType: S.optional(GoogleChromeManagementVersionsV1DeviceInfoDeviceTypeEnum),
+          deviceType: S.optional(S.String),
           affiliatedDeviceId: S.optional(S.String),
           hostname: S.optional(S.String),
         }),
@@ -7964,59 +6439,51 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(
-            GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSourceEnum,
-          ),
+          source: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData",
       });
     case 2:
-      return S.Array(GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData);
+      return S.Array(__S(153, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
           name: S.optional(S.String),
-          source: S.optional(GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum),
+          source: S.optional(S.String),
           value: S.optional(S.String),
-          conflicts: S.optional(
-            GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList,
-          ),
+          conflicts: S.optional(__S(154, __c19, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingDataPolicyData",
       });
     case 4:
-      return S.Array(GoogleChromeManagementVersionsV1ReportingDataPolicyData);
+      return S.Array(__S(155, __c19, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           extensionName: S.optional(S.String),
           extensionId: S.optional(S.String),
-          policyData: S.optional(GoogleChromeManagementVersionsV1ReportingDataPolicyDataList),
+          policyData: S.optional(__S(156, __c19, 4)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData",
       });
     case 6:
-      return S.Array(GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData);
+      return S.Array(__S(157, __c19, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           isDisabled: S.optional(S.Boolean),
-          permissions: S.optional(StringList),
-          installationType: S.optional(
-            GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallationTypeEnum,
-          ),
+          permissions: S.optional(__S(46, __c5, 6)),
+          installationType: S.optional(S.String),
           extensionId: S.optional(S.String),
           manifestVersion: S.optional(S.Number),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          extensionType: S.optional(
-            GoogleChromeManagementVersionsV1ReportingDataExtensionDataExtensionTypeEnum,
-          ),
+          extensionType: S.optional(S.String),
           isWebstoreExtension: S.optional(S.Boolean),
           homepageUri: S.optional(S.String),
         }),
@@ -8028,17 +6495,15 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleChromeManagementVersionsV1ReportingDataExtensionData);
+      return S.Array(__S(159, __c19, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          policyData: S.optional(GoogleChromeManagementVersionsV1ReportingDataPolicyDataList),
+          policyData: S.optional(__S(156, __c19, 4)),
           profilePath: S.optional(S.String),
           installedBrowserVersion: S.optional(S.String),
-          extensionPolicyData: S.optional(
-            GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList,
-          ),
-          extensionData: S.optional(GoogleChromeManagementVersionsV1ReportingDataExtensionDataList),
+          extensionPolicyData: S.optional(__S(158, __c19, 6)),
+          extensionData: S.optional(__S(160, __c20, 0)),
           browserExecutablePath: S.optional(S.String),
         }),
       ).annotate({
@@ -8047,10 +6512,8 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keyTrustLevel: S.optional(
-            GoogleChromeManagementVersionsV1AttestationCredentialKeyTrustLevelEnum,
-          ),
-          keyType: S.optional(GoogleChromeManagementVersionsV1AttestationCredentialKeyTypeEnum),
+          keyTrustLevel: S.optional(S.String),
+          keyType: S.optional(S.String),
           keyRotationTime: S.optional(S.String),
           publicKey: S.optional(S.String),
         }),
@@ -8060,20 +6523,18 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          deviceInfo: S.optional(GoogleChromeManagementVersionsV1DeviceInfo),
+          deviceInfo: S.optional(__S(152, __c19, 0)),
           etag: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           firstEnrollmentTime: S.optional(S.String),
           supportsFcmNotifications: S.optional(S.Boolean),
           profileId: S.optional(S.String),
-          affiliationState: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationStateEnum,
-          ),
+          affiliationState: S.optional(S.String),
           extensionCount: S.optional(S.String),
           profilePermanentId: S.optional(S.String),
           userEmail: S.optional(S.String),
-          reportingData: S.optional(GoogleChromeManagementVersionsV1ReportingData),
+          reportingData: S.optional(__S(161, __c20, 1)),
           policyCount: S.optional(S.String),
           osPlatformType: S.optional(S.String),
           osVersion: S.optional(S.String),
@@ -8083,10 +6544,8 @@ function __c20(j: number): any {
           lastPolicyFetchTime: S.optional(S.String),
           lastPolicySyncTime: S.optional(S.String),
           annotatedUser: S.optional(S.String),
-          identityProvider: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileIdentityProviderEnum,
-          ),
-          attestationCredential: S.optional(GoogleChromeManagementVersionsV1AttestationCredential),
+          identityProvider: S.optional(S.String),
+          attestationCredential: S.optional(__S(162, __c20, 2)),
           annotatedLocation: S.optional(S.String),
           browserVersion: S.optional(S.String),
           osPlatformVersion: S.optional(S.String),
@@ -8134,7 +6593,7 @@ function __c20(j: number): any {
         identifier: "GoogleChromeManagementV1CpuTemperatureInfo",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1CpuTemperatureInfo);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -8143,7 +6602,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sampleFrequency: S.optional(S.String),
-          cpuTemperatureInfo: S.optional(GoogleChromeManagementV1CpuTemperatureInfoList),
+          cpuTemperatureInfo: S.optional(__S(167, __c20, 7)),
           reportTime: S.optional(S.String),
           cpuUtilizationPct: S.optional(S.Number),
         }),
@@ -8151,7 +6610,7 @@ function __c21(j: number): any {
         identifier: "GoogleChromeManagementV1CpuStatusReport",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1CpuStatusReport);
+      return S.Array(__S(168, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8160,15 +6619,13 @@ function __c21(j: number): any {
           reportTime: S.optional(S.String),
           shutdownTime: S.optional(S.String),
           bootUpDuration: S.optional(S.String),
-          shutdownReason: S.optional(
-            GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum,
-          ),
+          shutdownReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1BootPerformanceReport",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1BootPerformanceReport);
+      return S.Array(__S(170, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8181,7 +6638,7 @@ function __c21(j: number): any {
         identifier: "GoogleChromeManagementV1MemoryStatusReport",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1MemoryStatusReport);
+      return S.Array(__S(172, __c21, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8198,7 +6655,7 @@ function __c21(j: number): any {
         identifier: "GoogleChromeManagementV1BatterySampleReport",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1BatterySampleReport);
+      return S.Array(__S(174, __c21, 6));
   }
 }
 function __c22(j: number): any {
@@ -8208,22 +6665,22 @@ function __c22(j: number): any {
         S.Struct({
           cycleCount: S.optional(S.Number),
           fullChargeCapacity: S.optional(S.String),
-          batteryHealth: S.optional(GoogleChromeManagementV1BatteryStatusReportBatteryHealthEnum),
+          batteryHealth: S.optional(S.String),
           serialNumber: S.optional(S.String),
           reportTime: S.optional(S.String),
-          sample: S.optional(GoogleChromeManagementV1BatterySampleReportList),
+          sample: S.optional(__S(175, __c21, 7)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1BatteryStatusReport",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1BatteryStatusReport);
+      return S.Array(__S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           vid: S.optional(S.Number),
           vendor: S.optional(S.String),
-          categories: S.optional(StringList),
+          categories: S.optional(__S(46, __c5, 6)),
           firmwareVersion: S.optional(S.String),
           pid: S.optional(S.Number),
           subclassId: S.optional(S.Number),
@@ -8234,28 +6691,28 @@ function __c22(j: number): any {
         identifier: "GoogleChromeManagementV1UsbPeripheralReport",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1UsbPeripheralReport);
+      return S.Array(__S(178, __c22, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           reportTime: S.optional(S.String),
-          usbPeripheralReport: S.optional(GoogleChromeManagementV1UsbPeripheralReportList),
+          usbPeripheralReport: S.optional(__S(179, __c22, 3)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1PeripheralsReport",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1PeripheralsReport);
+      return S.Array(__S(180, __c22, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          securityLevel: S.optional(GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum),
+          securityLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1ThunderboltInfo",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1ThunderboltInfo);
+      return S.Array(__S(182, __c22, 6));
   }
 }
 function __c23(j: number): any {
@@ -8273,40 +6730,36 @@ function __c23(j: number): any {
         identifier: "GoogleChromeManagementV1RuntimeCountersReport",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1RuntimeCountersReport);
+      return S.Array(__S(184, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           appInstanceId: S.optional(S.String),
           runningDuration: S.optional(S.String),
           appId: S.optional(S.String),
-          appType: S.optional(GoogleChromeManagementV1AppUsageDataAppTypeEnum),
+          appType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1AppUsageData",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1AppUsageData);
+      return S.Array(__S(186, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          usageData: S.optional(GoogleChromeManagementV1AppUsageDataList),
+          usageData: S.optional(__S(187, __c23, 3)),
           reportTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1AppReport",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1AppReport);
+      return S.Array(__S(188, __c23, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          encryptionAlgorithm: S.optional(
-            GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionAlgorithmEnum,
-          ),
-          encryptionState: S.optional(
-            GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionStateEnum,
-          ),
+          encryptionAlgorithm: S.optional(S.String),
+          encryptionState: S.optional(S.String),
           maxKeys: S.optional(S.String),
           keyLength: S.optional(S.String),
         }),
@@ -8318,7 +6771,7 @@ function __c23(j: number): any {
         S.Struct({
           availableRamBytes: S.optional(S.String),
           totalRamBytes: S.optional(S.String),
-          totalMemoryEncryption: S.optional(GoogleChromeManagementV1TotalMemoryEncryptionInfo),
+          totalMemoryEncryption: S.optional(__S(190, __c23, 6)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1MemoryInfo",
@@ -8337,18 +6790,18 @@ function __c24(j: number): any {
         identifier: "GoogleChromeManagementV1NetworkBandwidthReport",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1NetworkBandwidthReport);
+      return S.Array(__S(192, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           reportTime: S.optional(S.String),
-          state: S.optional(GoogleChromeManagementV1HeartbeatStatusReportStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1HeartbeatStatusReport",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1HeartbeatStatusReport);
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8360,7 +6813,7 @@ function __c24(j: number): any {
         identifier: "GoogleChromeManagementV1KioskAppStatusReport",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1KioskAppStatusReport);
+      return S.Array(__S(196, __c24, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8376,7 +6829,7 @@ function __c24(j: number): any {
         identifier: "GoogleChromeManagementV1AudioStatusReport",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1AudioStatusReport);
+      return S.Array(__S(198, __c24, 6));
   }
 }
 function __c25(j: number): any {
@@ -8385,7 +6838,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
-          architecture: S.optional(GoogleChromeManagementV1CpuInfoArchitectureEnum),
+          architecture: S.optional(S.String),
           maxClockSpeed: S.optional(S.Number),
           keylockerSupported: S.optional(S.Boolean),
           keylockerConfigured: S.optional(S.Boolean),
@@ -8394,7 +6847,7 @@ function __c25(j: number): any {
         identifier: "GoogleChromeManagementV1CpuInfo",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1CpuInfo);
+      return S.Array(__S(200, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8411,25 +6864,25 @@ function __c25(j: number): any {
         identifier: "GoogleChromeManagementV1DisplayInfo",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1DisplayInfo);
+      return S.Array(__S(202, __c25, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          displays: S.optional(GoogleChromeManagementV1DisplayInfoList),
+          displays: S.optional(__S(203, __c25, 3)),
           reportTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1GraphicsStatusReport",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1GraphicsStatusReport);
+      return S.Array(__S(204, __c25, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           manufacturer: S.optional(S.String),
           designMinVoltage: S.optional(S.Number),
           technology: S.optional(S.String),
-          manufactureDate: S.optional(GoogleTypeDate),
+          manufactureDate: S.optional(__S(17, __c2, 1)),
           serialNumber: S.optional(S.String),
           designCapacity: S.optional(S.String),
         }),
@@ -8437,7 +6890,7 @@ function __c25(j: number): any {
         identifier: "GoogleChromeManagementV1BatteryInfo",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1BatteryInfo);
+      return S.Array(__S(206, __c25, 6));
   }
 }
 function __c26(j: number): any {
@@ -8453,13 +6906,13 @@ function __c26(j: number): any {
         identifier: "GoogleChromeManagementV1StorageInfoDiskVolume",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1StorageInfoDiskVolume);
+      return S.Array(__S(208, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           totalDiskBytes: S.optional(S.String),
           availableDiskBytes: S.optional(S.String),
-          volume: S.optional(GoogleChromeManagementV1StorageInfoDiskVolumeList),
+          volume: S.optional(__S(209, __c26, 1)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1StorageInfo",
@@ -8469,19 +6922,17 @@ function __c26(j: number): any {
         S.Struct({
           wifiPowerManagementEnabled: S.optional(S.Boolean),
           gatewayIpAddress: S.optional(S.String),
-          ipv6Address: S.optional(StringList),
+          ipv6Address: S.optional(__S(46, __c5, 6)),
           signalStrengthDbm: S.optional(S.Number),
           linkDownSpeedKbps: S.optional(S.String),
           transmissionBitRateMbps: S.optional(S.String),
           lanIpAddress: S.optional(S.String),
-          connectionState: S.optional(
-            GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum,
-          ),
+          connectionState: S.optional(S.String),
           receivingBitRateMbps: S.optional(S.String),
           sampleFrequency: S.optional(S.String),
           reportTime: S.optional(S.String),
           metered: S.optional(S.Boolean),
-          connectionType: S.optional(GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum),
+          connectionType: S.optional(S.String),
           transmissionPowerDbm: S.optional(S.Number),
           guid: S.optional(S.String),
           encryptionOn: S.optional(S.Boolean),
@@ -8492,12 +6943,12 @@ function __c26(j: number): any {
         identifier: "GoogleChromeManagementV1NetworkStatusReport",
       });
     case 4:
-      return S.Array(GoogleChromeManagementV1NetworkStatusReport);
+      return S.Array(__S(211, __c26, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           lastUpdateTime: S.optional(S.String),
-          updateState: S.optional(GoogleChromeManagementV1OsUpdateStatusUpdateStateEnum),
+          updateState: S.optional(S.String),
           lastRebootTime: S.optional(S.String),
           lastUpdateCheckTime: S.optional(S.String),
           newRequestedPlatformVersion: S.optional(S.String),
@@ -8507,7 +6958,7 @@ function __c26(j: number): any {
         identifier: "GoogleChromeManagementV1OsUpdateStatus",
       });
     case 6:
-      return S.Array(GoogleChromeManagementV1OsUpdateStatus);
+      return S.Array(__S(213, __c26, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8529,7 +6980,7 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleChromeManagementV1DisplayDevice);
+      return S.Array(__S(215, __c26, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8541,11 +6992,11 @@ function __c27(j: number): any {
         identifier: "GoogleChromeManagementV1TouchScreenDevice",
       });
     case 2:
-      return S.Array(GoogleChromeManagementV1TouchScreenDevice);
+      return S.Array(__S(217, __c27, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(GoogleChromeManagementV1TouchScreenDeviceList),
+          devices: S.optional(__S(218, __c27, 2)),
           touchpadLibrary: S.optional(S.String),
         }),
       ).annotate({
@@ -8564,10 +7015,10 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          displayDevices: S.optional(GoogleChromeManagementV1DisplayDeviceList),
+          displayDevices: S.optional(__S(216, __c27, 0)),
           eprivacySupported: S.optional(S.Boolean),
-          touchScreenInfo: S.optional(GoogleChromeManagementV1TouchScreenInfo),
-          adapterInfo: S.optional(GoogleChromeManagementV1GraphicsAdapterInfo),
+          touchScreenInfo: S.optional(__S(219, __c27, 3)),
+          adapterInfo: S.optional(__S(220, __c27, 4)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1GraphicsInfo",
@@ -8578,7 +7029,7 @@ function __c27(j: number): any {
           macAddress: S.optional(S.String),
           imei: S.optional(S.String),
           meid: S.optional(S.String),
-          type: S.optional(GoogleChromeManagementV1NetworkDeviceTypeEnum),
+          type: S.optional(S.String),
           iccid: S.optional(S.String),
           mdn: S.optional(S.String),
         }),
@@ -8586,7 +7037,7 @@ function __c27(j: number): any {
         identifier: "GoogleChromeManagementV1NetworkDevice",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1NetworkDevice);
+      return S.Array(__S(222, __c27, 6));
   }
 }
 function __c28(j: number): any {
@@ -8594,7 +7045,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          networkDevices: S.optional(GoogleChromeManagementV1NetworkDeviceList),
+          networkDevices: S.optional(__S(223, __c27, 7)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1NetworkInfo",
@@ -8606,7 +7057,7 @@ function __c28(j: number): any {
           discardTimeThisSession: S.optional(S.String),
           health: S.optional(S.String),
           model: S.optional(S.String),
-          volumeIds: S.optional(StringList),
+          volumeIds: S.optional(__S(46, __c5, 6)),
           readTimeThisSession: S.optional(S.String),
           bytesWrittenThisSession: S.optional(S.String),
           serialNumber: S.optional(S.String),
@@ -8620,23 +7071,23 @@ function __c28(j: number): any {
         identifier: "GoogleChromeManagementV1DiskInfo",
       });
     case 2:
-      return S.Array(GoogleChromeManagementV1DiskInfo);
+      return S.Array(__S(225, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          disk: S.optional(GoogleChromeManagementV1DiskInfoList),
+          disk: S.optional(__S(226, __c28, 2)),
           reportTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1StorageStatusReport",
       });
     case 4:
-      return S.Array(GoogleChromeManagementV1StorageStatusReport);
+      return S.Array(__S(227, __c28, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           latency: S.optional(S.String),
-          problem: S.optional(GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum),
+          problem: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1HttpsLatencyRoutineData",
@@ -8644,14 +7095,14 @@ function __c28(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          httpsLatencyData: S.optional(GoogleChromeManagementV1HttpsLatencyRoutineData),
+          httpsLatencyData: S.optional(__S(229, __c28, 5)),
           reportTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1NetworkDiagnosticsReport",
       });
     case 7:
-      return S.Array(GoogleChromeManagementV1NetworkDiagnosticsReport);
+      return S.Array(__S(230, __c28, 6));
   }
 }
 function __c29(j: number): any {
@@ -8659,36 +7110,34 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cpuStatusReport: S.optional(GoogleChromeManagementV1CpuStatusReportList),
+          cpuStatusReport: S.optional(__S(169, __c21, 1)),
           deviceId: S.optional(S.String),
-          bootPerformanceReport: S.optional(GoogleChromeManagementV1BootPerformanceReportList),
-          memoryStatusReport: S.optional(GoogleChromeManagementV1MemoryStatusReportList),
-          batteryStatusReport: S.optional(GoogleChromeManagementV1BatteryStatusReportList),
+          bootPerformanceReport: S.optional(__S(171, __c21, 3)),
+          memoryStatusReport: S.optional(__S(173, __c21, 5)),
+          batteryStatusReport: S.optional(__S(177, __c22, 1)),
           customer: S.optional(S.String),
-          peripheralsReport: S.optional(GoogleChromeManagementV1PeripheralsReportList),
-          thunderboltInfo: S.optional(GoogleChromeManagementV1ThunderboltInfoList),
-          runtimeCountersReport: S.optional(GoogleChromeManagementV1RuntimeCountersReportList),
-          appReport: S.optional(GoogleChromeManagementV1AppReportList),
-          memoryInfo: S.optional(GoogleChromeManagementV1MemoryInfo),
-          networkBandwidthReport: S.optional(GoogleChromeManagementV1NetworkBandwidthReportList),
-          heartbeatStatusReport: S.optional(GoogleChromeManagementV1HeartbeatStatusReportList),
-          kioskAppStatusReport: S.optional(GoogleChromeManagementV1KioskAppStatusReportList),
-          audioStatusReport: S.optional(GoogleChromeManagementV1AudioStatusReportList),
-          cpuInfo: S.optional(GoogleChromeManagementV1CpuInfoList),
+          peripheralsReport: S.optional(__S(181, __c22, 5)),
+          thunderboltInfo: S.optional(__S(183, __c22, 7)),
+          runtimeCountersReport: S.optional(__S(185, __c23, 1)),
+          appReport: S.optional(__S(189, __c23, 5)),
+          memoryInfo: S.optional(__S(191, __c23, 7)),
+          networkBandwidthReport: S.optional(__S(193, __c24, 1)),
+          heartbeatStatusReport: S.optional(__S(195, __c24, 3)),
+          kioskAppStatusReport: S.optional(__S(197, __c24, 5)),
+          audioStatusReport: S.optional(__S(199, __c24, 7)),
+          cpuInfo: S.optional(__S(201, __c25, 1)),
           serialNumber: S.optional(S.String),
-          graphicsStatusReport: S.optional(GoogleChromeManagementV1GraphicsStatusReportList),
-          batteryInfo: S.optional(GoogleChromeManagementV1BatteryInfoList),
-          storageInfo: S.optional(GoogleChromeManagementV1StorageInfo),
+          graphicsStatusReport: S.optional(__S(205, __c25, 5)),
+          batteryInfo: S.optional(__S(207, __c25, 7)),
+          storageInfo: S.optional(__S(210, __c26, 2)),
           name: S.optional(S.String),
-          networkStatusReport: S.optional(GoogleChromeManagementV1NetworkStatusReportList),
-          osUpdateStatus: S.optional(GoogleChromeManagementV1OsUpdateStatusList),
-          graphicsInfo: S.optional(GoogleChromeManagementV1GraphicsInfo),
+          networkStatusReport: S.optional(__S(212, __c26, 4)),
+          osUpdateStatus: S.optional(__S(214, __c26, 6)),
+          graphicsInfo: S.optional(__S(221, __c27, 5)),
           orgUnitId: S.optional(S.String),
-          networkInfo: S.optional(GoogleChromeManagementV1NetworkInfo),
-          storageStatusReport: S.optional(GoogleChromeManagementV1StorageStatusReportList),
-          networkDiagnosticsReport: S.optional(
-            GoogleChromeManagementV1NetworkDiagnosticsReportList,
-          ),
+          networkInfo: S.optional(__S(224, __c28, 0)),
+          storageStatusReport: S.optional(__S(228, __c28, 4)),
+          networkDiagnosticsReport: S.optional(__S(231, __c28, 7)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryDevice",
@@ -8712,30 +7161,28 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reportTime: S.optional(S.String),
-          deviceActivityState: S.optional(
-            GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum,
-          ),
+          deviceActivityState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1DeviceActivityReport",
       });
     case 3:
-      return S.Array(GoogleChromeManagementV1DeviceActivityReport);
+      return S.Array(__S(234, __c29, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          audioStatusReport: S.optional(GoogleChromeManagementV1AudioStatusReportList),
+          audioStatusReport: S.optional(__S(199, __c24, 7)),
           deviceId: S.optional(S.String),
-          deviceActivityReport: S.optional(GoogleChromeManagementV1DeviceActivityReportList),
-          peripheralsReport: S.optional(GoogleChromeManagementV1PeripheralsReportList),
-          appReport: S.optional(GoogleChromeManagementV1AppReportList),
-          networkBandwidthReport: S.optional(GoogleChromeManagementV1NetworkBandwidthReportList),
+          deviceActivityReport: S.optional(__S(235, __c29, 3)),
+          peripheralsReport: S.optional(__S(181, __c22, 5)),
+          appReport: S.optional(__S(189, __c23, 5)),
+          networkBandwidthReport: S.optional(__S(193, __c24, 1)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryUserDevice",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1TelemetryUserDevice);
+      return S.Array(__S(236, __c29, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8743,7 +7190,7 @@ function __c29(j: number): any {
           userEmail: S.optional(S.String),
           orgUnitId: S.optional(S.String),
           customer: S.optional(S.String),
-          userDevice: S.optional(GoogleChromeManagementV1TelemetryUserDeviceList),
+          userDevice: S.optional(__S(237, __c29, 5)),
           userId: S.optional(S.String),
         }),
       ).annotate({
@@ -8770,11 +7217,11 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleChromeManagementVersionsV1ConnectorConfig);
+      return S.Array(__S(74, __c9, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          connectorConfigs: S.optional(GoogleChromeManagementVersionsV1ConnectorConfigList),
+          connectorConfigs: S.optional(__S(240, __c30, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8799,14 +7246,12 @@ function __c30(j: number): any {
         identifier: "ListCustomersProfilesRequest",
       });
     case 3:
-      return S.Array(GoogleChromeManagementVersionsV1ChromeBrowserProfile);
+      return S.Array(__S(163, __c20, 3));
     case 4:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
-          chromeBrowserProfiles: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileList,
-          ),
+          chromeBrowserProfiles: S.optional(__S(243, __c30, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8829,13 +7274,11 @@ function __c30(j: number): any {
         identifier: "ListCustomersProfilesCommandsRequest",
       });
     case 6:
-      return S.Array(GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand);
+      return S.Array(__S(78, __c9, 6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          chromeBrowserProfileCommands: S.optional(
-            GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList,
-          ),
+          chromeBrowserProfileCommands: S.optional(__S(246, __c30, 6)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
         }),
@@ -8865,11 +7308,11 @@ function __c31(j: number): any {
         identifier: "ListCustomersTelemetryDevicesRequest",
       });
     case 1:
-      return S.Array(GoogleChromeManagementV1TelemetryDevice);
+      return S.Array(__S(232, __c29, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(GoogleChromeManagementV1TelemetryDeviceList),
+          devices: S.optional(__S(249, __c31, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8896,17 +7339,11 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          appInstallSource: S.optional(
-            GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum,
-          ),
-          appType: S.optional(GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum),
+          appInstallSource: S.optional(S.String),
+          appType: S.optional(S.String),
           appId: S.optional(S.String),
-          appInstallReason: S.optional(
-            GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum,
-          ),
-          appInstallTime: S.optional(
-            GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum,
-          ),
+          appInstallReason: S.optional(S.String),
+          appInstallTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryAppInstallEvent",
@@ -8925,11 +7362,11 @@ function __c31(j: number): any {
         identifier: "GoogleChromeManagementV1TelemetryExternalDisplayData",
       });
     case 6:
-      return S.Array(GoogleChromeManagementV1TelemetryExternalDisplayData);
+      return S.Array(__S(253, __c31, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          externalDisplayData: S.optional(GoogleChromeManagementV1TelemetryExternalDisplayDataList),
+          externalDisplayData: S.optional(__S(254, __c31, 6)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryExternalDisplayEvent",
@@ -8941,10 +7378,8 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          httpsLatencyState: S.optional(
-            GoogleChromeManagementV1TelemetryHttpsLatencyChangeEventHttpsLatencyStateEnum,
-          ),
-          httpsLatencyRoutineData: S.optional(GoogleChromeManagementV1HttpsLatencyRoutineData),
+          httpsLatencyState: S.optional(S.String),
+          httpsLatencyRoutineData: S.optional(__S(229, __c28, 5)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent",
@@ -8953,9 +7388,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guid: S.optional(S.String),
-          connectionState: S.optional(
-            GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventConnectionStateEnum,
-          ),
+          connectionState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent",
@@ -8963,7 +7396,7 @@ function __c32(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          usbPeripheralReport: S.optional(GoogleChromeManagementV1UsbPeripheralReportList),
+          usbPeripheralReport: S.optional(__S(179, __c22, 3)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryUsbPeripheralsEvent",
@@ -8972,10 +7405,8 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
-          appType: S.optional(GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum),
-          appUninstallSource: S.optional(
-            GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSourceEnum,
-          ),
+          appType: S.optional(S.String),
+          appUninstallSource: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryAppUninstallEvent",
@@ -8983,10 +7414,8 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          appLaunchSource: S.optional(
-            GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum,
-          ),
-          appType: S.optional(GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum),
+          appLaunchSource: S.optional(S.String),
+          appType: S.optional(S.String),
           appId: S.optional(S.String),
         }),
       ).annotate({
@@ -9005,8 +7434,8 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           crashId: S.optional(S.String),
-          sessionType: S.optional(GoogleChromeManagementV1TelemetryOsCrashEventSessionTypeEnum),
-          crashType: S.optional(GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum),
+          sessionType: S.optional(S.String),
+          crashType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryOsCrashEvent",
@@ -9036,40 +7465,32 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          appInstallEvent: S.optional(GoogleChromeManagementV1TelemetryAppInstallEvent),
+          appInstallEvent: S.optional(__S(252, __c31, 4)),
           name: S.optional(S.String),
-          eventType: S.optional(GoogleChromeManagementV1TelemetryEventEventTypeEnum),
-          externalDisplaysEvent: S.optional(GoogleChromeManagementV1TelemetryExternalDisplayEvent),
-          httpsLatencyChangeEvent: S.optional(
-            GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent,
-          ),
-          networkStateChangeEvent: S.optional(
-            GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent,
-          ),
-          vpnConnectionStateChangeEvent: S.optional(
-            GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent,
-          ),
-          usbPeripheralsEvent: S.optional(GoogleChromeManagementV1TelemetryUsbPeripheralsEvent),
-          appUninstallEvent: S.optional(GoogleChromeManagementV1TelemetryAppUninstallEvent),
-          appLaunchEvent: S.optional(GoogleChromeManagementV1TelemetryAppLaunchEvent),
-          wifiSignalStrengthEvent: S.optional(
-            GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent,
-          ),
-          osCrashEvent: S.optional(GoogleChromeManagementV1TelemetryOsCrashEvent),
+          eventType: S.optional(S.String),
+          externalDisplaysEvent: S.optional(__S(255, __c31, 7)),
+          httpsLatencyChangeEvent: S.optional(__S(256, __c32, 0)),
+          networkStateChangeEvent: S.optional(__S(257, __c32, 1)),
+          vpnConnectionStateChangeEvent: S.optional(__S(257, __c32, 1)),
+          usbPeripheralsEvent: S.optional(__S(258, __c32, 2)),
+          appUninstallEvent: S.optional(__S(259, __c32, 3)),
+          appLaunchEvent: S.optional(__S(260, __c32, 4)),
+          wifiSignalStrengthEvent: S.optional(__S(261, __c32, 5)),
+          osCrashEvent: S.optional(__S(262, __c32, 6)),
           reportTime: S.optional(S.String),
-          device: S.optional(GoogleChromeManagementV1TelemetryDeviceInfo),
-          audioSevereUnderrunEvent: S.optional(GoogleLongrunningCancelOperationRequest),
-          user: S.optional(GoogleChromeManagementV1TelemetryUserInfo),
+          device: S.optional(__S(263, __c32, 7)),
+          audioSevereUnderrunEvent: S.optional(__S(0, __c0, 0)),
+          user: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryEvent",
       });
     case 2:
-      return S.Array(GoogleChromeManagementV1TelemetryEvent);
+      return S.Array(__S(265, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          telemetryEvents: S.optional(GoogleChromeManagementV1TelemetryEventList),
+          telemetryEvents: S.optional(__S(266, __c33, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9092,13 +7513,11 @@ function __c33(j: number): any {
         identifier: "ListCustomersTelemetryNotificationConfigsRequest",
       });
     case 5:
-      return S.Array(GoogleChromeManagementV1TelemetryNotificationConfig);
+      return S.Array(__S(82, __c10, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          telemetryNotificationConfigs: S.optional(
-            GoogleChromeManagementV1TelemetryNotificationConfigList,
-          ),
+          telemetryNotificationConfigs: S.optional(__S(269, __c33, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9127,11 +7546,11 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleChromeManagementV1TelemetryUser);
+      return S.Array(__S(238, __c29, 6));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          telemetryUsers: S.optional(GoogleChromeManagementV1TelemetryUserList),
+          telemetryUsers: S.optional(__S(272, __c34, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9154,12 +7573,12 @@ function __c34(j: number): any {
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 3:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(149, __c18, 5));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(GoogleLongrunningOperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(275, __c34, 3)),
+          unreachable: S.optional(__S(46, __c5, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9177,9 +7596,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(277, __c34, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9206,7 +7623,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          thirdPartyProfileUser: S.optional(GoogleChromeManagementVersionsV1ThirdPartyProfileUser),
+          thirdPartyProfileUser: S.optional(__S(279, __c34, 7)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse",
@@ -9216,7 +7633,7 @@ function __c35(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleChromeManagementVersionsV1ConnectorConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9231,22 +7648,10 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          fixedTimeRange: S.optional(
-            QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum.pipe(
-              T.Query(),
-            ),
-          ),
+          fixedTimeRange: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          breakdown: S.optional(
-            QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum.pipe(
-              T.Query(),
-            ),
-          ),
-          metric: S.optional(
-            QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum.pipe(
-              T.Query(),
-            ),
-          ),
+          breakdown: S.optional(S.String.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
           customer: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -9263,7 +7668,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          metric: S.optional(GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum),
+          metric: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ContentTransfersSummary",
@@ -9271,7 +7676,7 @@ function __c35(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(GoogleChromeManagementVersionsV1ContentTransfersSummary),
+          summary: S.optional(__S(283, __c35, 3)),
           contentCategory: S.optional(S.String),
           eventDomain: S.optional(S.String),
           user: S.optional(S.String),
@@ -9280,14 +7685,12 @@ function __c35(j: number): any {
         identifier: "GoogleChromeManagementVersionsV1ContentTransfersBreakdown",
       });
     case 5:
-      return S.Array(GoogleChromeManagementVersionsV1ContentTransfersBreakdown);
+      return S.Array(__S(284, __c35, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          contentTransfersBreakdowns: S.optional(
-            GoogleChromeManagementVersionsV1ContentTransfersBreakdownList,
-          ),
+          contentTransfersBreakdowns: S.optional(__S(285, __c35, 5)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse",
@@ -9312,11 +7715,11 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleChromeManagementVersionsV1ContentTransfersSummary);
+      return S.Array(__S(283, __c35, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(GoogleChromeManagementVersionsV1ContentTransfersSummaryList),
+          summaries: S.optional(__S(288, __c36, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1QueryContentTransfersResponse",
@@ -9325,19 +7728,9 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          breakdown: S.optional(
-            QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum.pipe(
-              T.Query(),
-            ),
-          ),
-          fixedTimeRange: S.optional(
-            QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum.pipe(
-              T.Query(),
-            ),
-          ),
-          metric: S.optional(
-            QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum.pipe(T.Query()),
-          ),
+          breakdown: S.optional(S.String.pipe(T.Query())),
+          fixedTimeRange: S.optional(S.String.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           customer: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -9354,7 +7747,7 @@ function __c36(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(GoogleChromeManagementVersionsV1UrlVisitsSummary),
+          summary: S.optional(__S(283, __c35, 3)),
           user: S.optional(S.String),
           eventDomain: S.optional(S.String),
         }),
@@ -9362,11 +7755,11 @@ function __c36(j: number): any {
         identifier: "GoogleChromeManagementVersionsV1UrlVisitsBreakdown",
       });
     case 4:
-      return S.Array(GoogleChromeManagementVersionsV1UrlVisitsBreakdown);
+      return S.Array(__S(291, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          urlVisitsBreakdowns: S.optional(GoogleChromeManagementVersionsV1UrlVisitsBreakdownList),
+          urlVisitsBreakdowns: S.optional(__S(292, __c36, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9390,7 +7783,7 @@ function __c36(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(GoogleChromeManagementVersionsV1UrlVisitsSummaryList),
+          summaries: S.optional(__S(288, __c36, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1QueryUrlVisitsResponse",
@@ -9411,7 +7804,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleChromeManagementVersionsV1SetFailureRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(296, __c37, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9425,9 +7818,7 @@ function __c37(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          signatureAlgorithm: S.optional(
-            GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum,
-          ),
+          signatureAlgorithm: S.optional(S.String),
           signData: S.optional(S.String),
         }),
       ).annotate({
@@ -9437,7 +7828,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleChromeManagementVersionsV1SignDataRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(298, __c37, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9460,9 +7851,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleChromeManagementVersionsV1UploadCertificateRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9478,4 +7867,9 @@ function __c37(j: number): any {
         identifier: "GoogleChromeManagementVersionsV1UploadCertificateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

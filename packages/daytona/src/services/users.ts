@@ -6,51 +6,22 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface AcceptPrivacyPoliciesRequest {}
-const AcceptPrivacyPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptPrivacyPoliciesRequest>;
-
 export interface AcceptPrivacyPoliciesResponse {}
-const AcceptPrivacyPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptPrivacyPoliciesResponse>;
-
 export interface ConfirmPendingSsoLinkRequest {
   id: string;
 }
-const ConfirmPendingSsoLinkRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ConfirmPendingSsoLinkRequest>;
-
 export interface ConfirmPendingSsoLinkResponse {}
-const ConfirmPendingSsoLinkResponse =
-  AcceptPrivacyPoliciesResponse as any as S.Schema<ConfirmPendingSsoLinkResponse>;
-
 export interface DismissPendingSsoLinkRequest {
   id: string;
 }
-const DismissPendingSsoLinkRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DismissPendingSsoLinkRequest>;
-
 export interface DismissPendingSsoLinkResponse {}
-const DismissPendingSsoLinkResponse =
-  AcceptPrivacyPoliciesResponse as any as S.Schema<DismissPendingSsoLinkResponse>;
-
 export interface GetAccountProvidersRequest {}
-const GetAccountProvidersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetAccountProvidersRequest>;
-
 export interface AccountProvider {
   /** WorkOS identity provider, e.g. GoogleOAuth or GitHubOAuth */
   provider: string;
@@ -59,38 +30,17 @@ export interface AccountProvider {
   /** Whether the authenticated user has an identity from this provider */
   linked: boolean;
 }
-const AccountProvider = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AccountProvider>;
-
 export type GetAccountProvidersResponseBodyList = Array<AccountProvider>;
-const GetAccountProvidersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetAccountProvidersResponseBodyList>;
-
 export type GetAccountProvidersResponse = GetAccountProvidersResponseBodyList;
-const GetAccountProvidersResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetAccountProvidersResponse>;
-
 export interface GetAuthenticatedUserRequest {}
-const GetAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetAuthenticatedUserRequest>;
-
 export interface UserPublicKey {
   /** Public key */
   key: string;
   /** Key name */
   name: string;
 }
-const UserPublicKey = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UserPublicKey>;
-
 /** User public keys */
 export type UserPublicKeysList = Array<UserPublicKey>;
-const UserPublicKeysList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<UserPublicKeysList>;
-
 export interface User {
   /** User ID */
   id: string;
@@ -109,14 +59,7 @@ export interface User {
   /** Creation timestamp */
   createdAt: string;
 }
-const User = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<User>;
-
 export interface ListPendingSsoLinksRequest {}
-const ListPendingSsoLinksRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListPendingSsoLinksRequest>;
-
 export interface PendingSsoLink {
   id: string;
   /** Display name of the identity provider requesting to be linked */
@@ -128,26 +71,10 @@ export interface PendingSsoLink {
   createdAt: string;
   expiresAt: string;
 }
-const PendingSsoLink = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PendingSsoLink>;
-
 export type ListPendingSsoLinksResponseBodyList = Array<PendingSsoLink>;
-const ListPendingSsoLinksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListPendingSsoLinksResponseBodyList>;
-
 export type ListPendingSsoLinksResponse = ListPendingSsoLinksResponseBodyList;
-const ListPendingSsoLinksResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListPendingSsoLinksResponse>;
-
 export interface LoginRecordRequest {}
-const LoginRecordRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<LoginRecordRequest>;
-
 export interface LoginRecordResponse {}
-const LoginRecordResponse = AcceptPrivacyPoliciesResponse as any as S.Schema<LoginRecordResponse>;
-
 export type AcceptPrivacyPoliciesError = DaytonaOpError;
 /** Accept the current privacy policies */
 export const acceptPrivacyPolicies: API.OperationMethod<
@@ -156,8 +83,8 @@ export const acceptPrivacyPolicies: API.OperationMethod<
   AcceptPrivacyPoliciesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptPrivacyPoliciesRequest,
-  output: AcceptPrivacyPoliciesResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AcceptPrivacyPoliciesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AcceptPrivacyPoliciesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -171,8 +98,8 @@ export const confirmPendingSsoLink: API.OperationMethod<
   ConfirmPendingSsoLinkError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmPendingSsoLinkRequest,
-  output: ConfirmPendingSsoLinkResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ConfirmPendingSsoLinkRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ConfirmPendingSsoLinkResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -186,8 +113,8 @@ export const dismissPendingSsoLink: API.OperationMethod<
   DismissPendingSsoLinkError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DismissPendingSsoLinkRequest,
-  output: DismissPendingSsoLinkResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<DismissPendingSsoLinkRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DismissPendingSsoLinkResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -201,8 +128,8 @@ export const getAccountProviders: API.OperationMethod<
   GetAccountProvidersError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountProvidersRequest,
-  output: GetAccountProvidersResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<GetAccountProvidersRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<GetAccountProvidersResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -216,8 +143,8 @@ export const getAuthenticatedUser: API.OperationMethod<
   GetAuthenticatedUserError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthenticatedUserRequest,
-  output: User,
+  input: __S(8, __c1, 0) as any as S.Schema<GetAuthenticatedUserRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<User>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -231,8 +158,8 @@ export const listPendingSsoLinks: API.OperationMethod<
   ListPendingSsoLinksError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPendingSsoLinksRequest,
-  output: ListPendingSsoLinksResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<ListPendingSsoLinksRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<ListPendingSsoLinksResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -246,8 +173,8 @@ export const loginRecord: API.OperationMethod<
   LoginRecordError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LoginRecordRequest,
-  output: LoginRecordResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<LoginRecordRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<LoginRecordResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -301,11 +228,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AccountProvider" });
     case 6:
-      return S.Array(AccountProvider);
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.suspend(() =>
-        GetAccountProvidersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAccountProvidersResponse",
       });
   }
@@ -326,7 +251,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserPublicKey" });
     case 2:
-      return S.Array(UserPublicKey);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -336,7 +261,7 @@ function __c1(j: number): any {
           emailVerified: S.Boolean,
           pylonEmailHash: S.optional(S.String),
           privacyPoliciesAccepted: S.optional(S.Boolean),
-          publicKeys: UserPublicKeysList,
+          publicKeys: __S(10, __c1, 2),
           createdAt: S.String,
         }),
       ).annotate({ identifier: "User" });
@@ -358,11 +283,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PendingSsoLink" });
     case 6:
-      return S.Array(PendingSsoLink);
+      return S.Array(__S(13, __c1, 5));
     case 7:
-      return S.suspend(() =>
-        ListPendingSsoLinksResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPendingSsoLinksResponse",
       });
   }
@@ -374,4 +297,9 @@ function __c2(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/users/me/logins", code: 200 })),
       ).annotate({ identifier: "LoginRecordRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

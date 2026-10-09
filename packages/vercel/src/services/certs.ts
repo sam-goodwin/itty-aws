@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -53,14 +55,7 @@ export interface GetCertRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetCertRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetCertRequest>;
-
 export type GetCertResponseCnsList = Array<string>;
-const GetCertResponseCnsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetCertResponseCnsList>;
-
 export interface GetCertResponse {
   autoRenew: boolean;
   cns: GetCertResponseCnsList;
@@ -68,20 +63,13 @@ export interface GetCertResponse {
   expiresAt: number;
   id: string;
 }
-const GetCertResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetCertResponse>;
-
 export interface GetCertsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetCertsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetCertsRequest>;
-
 export type GetCertsResponseCertsItemCnsList = Array<string>;
-const GetCertsResponseCertsItemCnsList =
-  GetCertResponseCnsList as any as S.Schema<GetCertsResponseCertsItemCnsList>;
-
 export interface GetCertsResponseCertsItem {
   autoRenew: boolean;
   cns: GetCertsResponseCertsItemCnsList;
@@ -89,17 +77,7 @@ export interface GetCertsResponseCertsItem {
   expiresAt: number;
   id: string;
 }
-const GetCertsResponseCertsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetCertsResponseCertsItem>;
-
 export type GetCertsResponseCertsList = Array<GetCertsResponseCertsItem>;
-const GetCertsResponseCertsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetCertsResponseCertsList>;
-
 /** This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. */
 export interface Pagination {
   /** Amount of items in the current page. */
@@ -109,18 +87,12 @@ export interface Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
-const Pagination = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Pagination>;
-
 export interface GetCertsResponse {
   certs: GetCertsResponseCertsList;
   pagination: Pagination;
 }
-const GetCertsResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetCertsResponse>;
-
 /** The common names the cert should be issued for */
 export type IssueCertRequestCnsList = Array<string>;
-const IssueCertRequestCnsList = GetCertResponseCnsList as any as S.Schema<IssueCertRequestCnsList>;
-
 export interface IssueCertRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -129,8 +101,6 @@ export interface IssueCertRequest {
   /** The common names the cert should be issued for */
   cns?: IssueCertRequestCnsList;
 }
-const IssueCertRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<IssueCertRequest>;
-
 export type IssueCertResponseCnsList = Array<string>;
 export interface IssueCertResponse {
   autoRenew: boolean;
@@ -139,8 +109,6 @@ export interface IssueCertResponse {
   expiresAt: number;
   id: string;
 }
-const IssueCertResponse = GetCertResponse as any as S.Schema<IssueCertResponse>;
-
 export interface RemoveCertRequest {
   /** The cert id to remove */
   id: string;
@@ -149,11 +117,7 @@ export interface RemoveCertRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const RemoveCertRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RemoveCertRequest>;
-
 export type RemoveCertResponse = unknown;
-const RemoveCertResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<RemoveCertResponse>;
-
 export interface UploadCertRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -168,8 +132,6 @@ export interface UploadCertRequest {
   /** Skip validation of the certificate */
   skipValidation?: boolean;
 }
-const UploadCertRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UploadCertRequest>;
-
 export type UploadCertResponseCnsList = Array<string>;
 export interface UploadCertResponse {
   autoRenew: boolean;
@@ -178,8 +140,6 @@ export interface UploadCertResponse {
   expiresAt: number;
   id: string;
 }
-const UploadCertResponse = GetCertResponse as any as S.Schema<UploadCertResponse>;
-
 export type GetCertError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Get cert by id Get cert by id */
 export const getCert: API.OperationMethod<
@@ -188,8 +148,8 @@ export const getCert: API.OperationMethod<
   GetCertError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertRequest,
-  output: GetCertResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCertRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetCertResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -203,8 +163,8 @@ export const getCerts: API.OperationMethod<
   GetCertsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertsRequest,
-  output: GetCertsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<GetCertsRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<GetCertsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -218,8 +178,8 @@ export const issueCert: API.OperationMethod<
   IssueCertError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IssueCertRequest,
-  output: IssueCertResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<IssueCertRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<IssueCertResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -233,8 +193,8 @@ export const removeCert: API.OperationMethod<
   RemoveCertError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveCertRequest,
-  output: RemoveCertResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<RemoveCertRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<RemoveCertResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -248,8 +208,8 @@ export const uploadCert: API.OperationMethod<
   UploadCertError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadCertRequest,
-  output: UploadCertResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<UploadCertRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<UploadCertResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -272,7 +232,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.Boolean,
-          cns: GetCertResponseCnsList,
+          cns: __S(1, __c0, 1),
           createdAt: S.Number,
           expiresAt: S.Number,
           id: S.String,
@@ -289,7 +249,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.Boolean,
-          cns: GetCertsResponseCertsItemCnsList,
+          cns: __S(1, __c0, 1),
           createdAt: S.Number,
           expiresAt: S.Number,
           id: S.String,
@@ -298,7 +258,7 @@ function __c0(j: number): any {
         identifier: "GetCertsResponseCertsItem",
       });
     case 5:
-      return S.Array(GetCertsResponseCertsItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -310,8 +270,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          certs: GetCertsResponseCertsList,
-          pagination: Pagination,
+          certs: __S(5, __c0, 5),
+          pagination: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "GetCertsResponse" });
   }
@@ -323,7 +283,7 @@ function __c1(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          cns: S.optional(IssueCertRequestCnsList),
+          cns: S.optional(__S(1, __c0, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/v8/certs", code: 200 })),
       ).annotate({ identifier: "IssueCertRequest" });
     case 1:
@@ -350,4 +310,9 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "PUT", uri: "/v8/certs", code: 200 })),
       ).annotate({ identifier: "UploadCertRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -8,6 +8,8 @@ import { UnknownDiscordError } from "../errors.ts";
 import { DiscordProtocol, type DiscordOpError, type DiscordOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DiscordOpError, DiscordOpContext };
 
@@ -26,25 +28,13 @@ export interface AddGroupDmUserRequest {
   access_token?: string | Redacted.Redacted<string> | null;
   nick?: string | null;
 }
-const AddGroupDmUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddGroupDmUserRequest>;
-
 export type ChannelTypes = 1 | 3 | 0 | 2 | 4 | 5 | 10 | 11 | 12 | 13 | 14 | 15;
-const ChannelTypes = S.Number;
-
 export interface UserAvatarDecorationResponse {
   /** the avatar decoration hash */
   asset: string;
   /** id of the avatar decoration's SKU */
   sku_id: string | null;
 }
-const UserAvatarDecorationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserAvatarDecorationResponse>;
-
 export type NameplatePalette =
   | "crimson"
   | "berry"
@@ -58,8 +48,6 @@ export type NameplatePalette =
   | "lemon"
   | "white"
   | "black";
-const NameplatePalette = S.String;
-
 export interface UserNameplateResponse {
   /** ID of the nameplate SKU */
   sku_id: string | null;
@@ -70,20 +58,10 @@ export interface UserNameplateResponse {
   /** Background color of the nameplate */
   palette: NameplatePalette;
 }
-const UserNameplateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UserNameplateResponse>;
-
 export interface UserCollectiblesResponse {
   /** Object mapping of nameplate data */
   nameplate: UserNameplateResponse | null;
 }
-const UserCollectiblesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UserCollectiblesResponse>;
-
 export interface UserPrimaryGuildResponse {
   /** the id of the user's primary guild */
   identity_guild_id: string | null;
@@ -94,11 +72,6 @@ export interface UserPrimaryGuildResponse {
   /** the server tag badge hash */
   badge: string | null;
 }
-const UserPrimaryGuildResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<UserPrimaryGuildResponse>;
-
 export interface UserResponse {
   /** the user's id */
   id: string;
@@ -129,14 +102,7 @@ export interface UserResponse {
   /** the user's primary guild */
   primary_guild: UserPrimaryGuildResponse | null;
 }
-const UserResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<UserResponse>;
-
 export type PrivateChannelResponseRecipientsList = Array<UserResponse>;
-const PrivateChannelResponseRecipientsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PrivateChannelResponseRecipientsList>;
-
 export interface PrivateChannelResponse {
   id: string;
   type: ChannelTypes;
@@ -160,20 +126,8 @@ export interface PrivateGroupChannelResponse {
   application_id?: string;
 }
 export type AddGroupDmUserResponseBody = PrivateChannelResponse | PrivateGroupChannelResponse;
-const AddGroupDmUserResponseBody = /*@__PURE__*/ __L.at(__c0, 7);
-
 export type AddGroupDmUserResponse = AddGroupDmUserResponseBody;
-const AddGroupDmUserResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddGroupDmUserResponse>;
-
 export type AddGuildMemberRequestRolesList = Array<string>;
-const AddGuildMemberRequestRolesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AddGuildMemberRequestRolesList>;
-
 export interface AddGuildMemberRequest {
   guild_id: string;
   user_id: string;
@@ -184,16 +138,8 @@ export interface AddGuildMemberRequest {
   access_token: string | Redacted.Redacted<string>;
   flags?: number | null;
 }
-const AddGuildMemberRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AddGuildMemberRequest>;
-
 /** array of role object ids */
 export type GuildMemberResponseRolesList = Array<string>;
-const GuildMemberResponseRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<GuildMemberResponseRolesList>;
-
 export interface GuildMemberResponse {
   /** the member's guild avatar hash */
   avatar: string | null;
@@ -224,46 +170,19 @@ export interface GuildMemberResponse {
   /** whether the user is deafened in voice channels */
   deaf: boolean;
 }
-const GuildMemberResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GuildMemberResponse>;
-
 export interface AddGuildMemberRoleRequest {
   guild_id: string;
   user_id: string;
   role_id: string;
 }
-const AddGuildMemberRoleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddGuildMemberRoleRequest>;
-
 export interface AddGuildMemberRoleResponse {}
-const AddGuildMemberRoleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AddGuildMemberRoleResponse>;
-
 export interface AddInviteTargetUserRequest {
   code: string;
   user_id: string;
 }
-const AddInviteTargetUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AddInviteTargetUserRequest>;
-
 export interface AddInviteTargetUserResponse {}
-const AddInviteTargetUserResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<AddInviteTargetUserResponse>;
-
 export type AddLobbyMemberRequestMetadataMap = { [key: string]: string | undefined };
-const AddLobbyMemberRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AddLobbyMemberRequestMetadataMap>;
-
 export type AddLobbyMemberRequestFlags = 1;
-const AddLobbyMemberRequestFlags = S.Number;
-
 export interface AddLobbyMemberRequest {
   lobby_id: string;
   user_id: string;
@@ -271,79 +190,37 @@ export interface AddLobbyMemberRequest {
   flags?: AddLobbyMemberRequestFlags | (number & {}) | null;
   additional_name?: string | null;
 }
-const AddLobbyMemberRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AddLobbyMemberRequest>;
-
 export type LobbyMemberResponseMetadataMap = { [key: string]: string | undefined };
-const LobbyMemberResponseMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<LobbyMemberResponseMetadataMap>;
-
 export interface LobbyMemberResponse {
   id: string;
   metadata: LobbyMemberResponseMetadataMap | null;
   flags: number;
   additional_name?: string;
 }
-const LobbyMemberResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LobbyMemberResponse>;
-
 export interface AddMyMessageReactionRequest {
   channel_id: string;
   message_id: string;
   emoji_name: string;
 }
-const AddMyMessageReactionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AddMyMessageReactionRequest>;
-
 export interface AddMyMessageReactionResponse {}
-const AddMyMessageReactionResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<AddMyMessageReactionResponse>;
-
 export interface AddThreadMemberRequest {
   channel_id: string;
   user_id: string;
 }
-const AddThreadMemberRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AddThreadMemberRequest>;
-
 export interface AddThreadMemberResponse {}
-const AddThreadMemberResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<AddThreadMemberResponse>;
-
 export interface BanUserFromGuildRequest {
   guild_id: string;
   user_id: string;
   delete_message_seconds?: number | null;
   delete_message_days?: number | null;
 }
-const BanUserFromGuildRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<BanUserFromGuildRequest>;
-
 export interface BanUserFromGuildResponse {}
-const BanUserFromGuildResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<BanUserFromGuildResponse>;
-
 export interface BotPartnerSdkTokenRequest {
   provisional_user_id?: string | null;
   external_user_id: string;
   preferred_global_name?: string | null;
 }
-const BotPartnerSdkTokenRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BotPartnerSdkTokenRequest>;
-
 export type ProvisionalTokenResponseScopesList = Array<string>;
-const ProvisionalTokenResponseScopesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<ProvisionalTokenResponseScopesList>;
-
 export interface ProvisionalTokenResponse {
   token_type: string;
   access_token: string | Redacted.Redacted<string>;
@@ -354,120 +231,50 @@ export interface ProvisionalTokenResponse {
   scopes?: ProvisionalTokenResponseScopesList | null;
   expires_at_s?: number | null;
 }
-const ProvisionalTokenResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ProvisionalTokenResponse>;
-
 export interface BotPartnerSdkUnmergeProvisionalAccountRequest {
   external_user_id: string;
 }
-const BotPartnerSdkUnmergeProvisionalAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountRequest>;
-
 export interface BotPartnerSdkUnmergeProvisionalAccountResponse {}
-const BotPartnerSdkUnmergeProvisionalAccountResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountResponse>;
-
 /** The IDs of the users to target. */
 export type BulkAddInviteTargetUsersRequestUserIdsList = Array<string>;
-const BulkAddInviteTargetUsersRequestUserIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BulkAddInviteTargetUsersRequestUserIdsList>;
-
 export interface BulkAddInviteTargetUsersRequest {
   code: string;
   /** The IDs of the users to target. */
   user_ids: BulkAddInviteTargetUsersRequestUserIdsList;
 }
-const BulkAddInviteTargetUsersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BulkAddInviteTargetUsersRequest>;
-
 export interface BulkAddInviteTargetUsersResponse {}
-const BulkAddInviteTargetUsersResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<BulkAddInviteTargetUsersResponse>;
-
 export type BulkBanUsersFromGuildRequestUserIdsList = Array<string>;
-const BulkBanUsersFromGuildRequestUserIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BulkBanUsersFromGuildRequestUserIdsList>;
-
 export interface BulkBanUsersFromGuildRequest {
   guild_id: string;
   user_ids: BulkBanUsersFromGuildRequestUserIdsList;
   delete_message_seconds?: number | null;
 }
-const BulkBanUsersFromGuildRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BulkBanUsersFromGuildRequest>;
-
 export type BulkBanUsersResponseBannedUsersList = Array<string>;
-const BulkBanUsersResponseBannedUsersList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BulkBanUsersResponseBannedUsersList>;
-
 export type BulkBanUsersResponseFailedUsersList = Array<string>;
-const BulkBanUsersResponseFailedUsersList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BulkBanUsersResponseFailedUsersList>;
-
 export interface BulkBanUsersResponse {
   banned_users: BulkBanUsersResponseBannedUsersList;
   failed_users: BulkBanUsersResponseFailedUsersList;
 }
-const BulkBanUsersResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<BulkBanUsersResponse>;
-
 export type BulkDeleteMessagesRequestMessagesList = Array<string>;
-const BulkDeleteMessagesRequestMessagesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BulkDeleteMessagesRequestMessagesList>;
-
 export interface BulkDeleteMessagesRequest {
   channel_id: string;
   messages: BulkDeleteMessagesRequestMessagesList;
 }
-const BulkDeleteMessagesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<BulkDeleteMessagesRequest>;
-
 export interface BulkDeleteMessagesResponse {}
-const BulkDeleteMessagesResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<BulkDeleteMessagesResponse>;
-
 /** The IDs of the users to stop targeting. */
 export type BulkRemoveInviteTargetUsersRequestUserIdsList = Array<string>;
-const BulkRemoveInviteTargetUsersRequestUserIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BulkRemoveInviteTargetUsersRequestUserIdsList>;
-
 export interface BulkRemoveInviteTargetUsersRequest {
   code: string;
   /** The IDs of the users to stop targeting. */
   user_ids: BulkRemoveInviteTargetUsersRequestUserIdsList;
 }
-const BulkRemoveInviteTargetUsersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<BulkRemoveInviteTargetUsersRequest>;
-
 export interface BulkRemoveInviteTargetUsersResponse {}
-const BulkRemoveInviteTargetUsersResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<BulkRemoveInviteTargetUsersResponse>;
-
 export type ApplicationCommandUpdateRequestNameLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationCommandUpdateRequestNameLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<ApplicationCommandUpdateRequestNameLocalizationsMap>;
-
 export type ApplicationCommandUpdateRequestDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationCommandUpdateRequestDescriptionLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<ApplicationCommandUpdateRequestDescriptionLocalizationsMap>;
-
 export type ApplicationCommandOptionType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 export type ApplicationCommandAttachmentOptionNameLocalizationsMap = {
   [key: string]: string | undefined;
@@ -506,11 +313,6 @@ export type ApplicationCommandChannelOptionDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
 export type ApplicationCommandChannelOptionChannelTypesList = Array<ChannelTypes | (number & {})>;
-const ApplicationCommandChannelOptionChannelTypesList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ApplicationCommandChannelOptionChannelTypesList>;
-
 export interface ApplicationCommandChannelOption {
   type: ApplicationCommandOptionType | (number & {});
   name: string;
@@ -554,11 +356,6 @@ export type ApplicationCommandMentionableOptionNameLocalizationsMap = {
 export type ApplicationCommandMentionableOptionDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationCommandMentionableOptionDescriptionLocalizationsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ApplicationCommandMentionableOptionDescriptionLocalizationsMap>;
-
 export interface ApplicationCommandMentionableOption {
   type: ApplicationCommandOptionType | (number & {});
   name: string;
@@ -705,35 +502,18 @@ export type ApplicationCommandUpdateRequestOptionsItem =
   | ApplicationCommandSubcommandGroupOption
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
-const ApplicationCommandUpdateRequestOptionsItem = /*@__PURE__*/ __L.at(__c4, 0);
-
 export type ApplicationCommandUpdateRequestOptionsList =
   Array<ApplicationCommandUpdateRequestOptionsItem>;
-const ApplicationCommandUpdateRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ApplicationCommandUpdateRequestOptionsList>;
-
 export type InteractionContextType = 0 | 1 | 2;
 export type ApplicationCommandUpdateRequestContextsList = Array<
   InteractionContextType | (number & {})
 >;
-const ApplicationCommandUpdateRequestContextsList =
-  ApplicationCommandChannelOptionChannelTypesList as any as S.Schema<ApplicationCommandUpdateRequestContextsList>;
-
 export type ApplicationIntegrationType = 0 | 1;
 export type ApplicationCommandUpdateRequestIntegrationTypesList = Array<
   ApplicationIntegrationType | (number & {})
 >;
-const ApplicationCommandUpdateRequestIntegrationTypesList =
-  ApplicationCommandChannelOptionChannelTypesList as any as S.Schema<ApplicationCommandUpdateRequestIntegrationTypesList>;
-
 export type ApplicationCommandHandler = 1 | 2;
-const ApplicationCommandHandler = S.Number;
-
 export type ApplicationCommandType = 1 | 2 | 3 | 4;
-const ApplicationCommandType = S.Number;
-
 export interface ApplicationCommandUpdateRequest {
   name: string;
   name_localizations?: ApplicationCommandUpdateRequestNameLocalizationsMap | null;
@@ -749,44 +529,17 @@ export interface ApplicationCommandUpdateRequest {
   type?: ApplicationCommandType | (number & {}) | null;
   id?: string | null;
 }
-const ApplicationCommandUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ApplicationCommandUpdateRequest>;
-
 export type BulkSetApplicationCommandsRequestBodyList = Array<ApplicationCommandUpdateRequest>;
-const BulkSetApplicationCommandsRequestBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<BulkSetApplicationCommandsRequestBodyList>;
-
 export interface BulkSetApplicationCommandsRequest {
   application_id: string;
   body: BulkSetApplicationCommandsRequestBodyList | null;
 }
-const BulkSetApplicationCommandsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<BulkSetApplicationCommandsRequest>;
-
 export type ApplicationCommandResponseNameLocalizationsMap = { [key: string]: string | undefined };
-const ApplicationCommandResponseNameLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<ApplicationCommandResponseNameLocalizationsMap>;
-
 export type ApplicationCommandResponseDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationCommandResponseDescriptionLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<ApplicationCommandResponseDescriptionLocalizationsMap>;
-
 export type ApplicationCommandResponseContextsList = Array<InteractionContextType>;
-const ApplicationCommandResponseContextsList =
-  ApplicationCommandUpdateRequestContextsList as any as S.Schema<ApplicationCommandResponseContextsList>;
-
 export type ApplicationCommandResponseIntegrationTypesList = Array<ApplicationIntegrationType>;
-const ApplicationCommandResponseIntegrationTypesList =
-  ApplicationCommandUpdateRequestIntegrationTypesList as any as S.Schema<ApplicationCommandResponseIntegrationTypesList>;
-
 export type ApplicationCommandAttachmentOptionResponseNameLocalizationsMap = {
   [key: string]: string | undefined;
 };
@@ -1040,14 +793,7 @@ export type ApplicationCommandResponseOptionsItem =
   | ApplicationCommandSubcommandGroupOptionResponse
   | ApplicationCommandSubcommandOptionResponse
   | ApplicationCommandUserOptionResponse;
-const ApplicationCommandResponseOptionsItem = /*@__PURE__*/ __L.at(__c4, 5);
-
 export type ApplicationCommandResponseOptionsList = Array<ApplicationCommandResponseOptionsItem>;
-const ApplicationCommandResponseOptionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ApplicationCommandResponseOptionsList>;
-
 export interface ApplicationCommandResponse {
   id: string;
   application_id: string;
@@ -1069,109 +815,43 @@ export interface ApplicationCommandResponse {
   /** Determines whether the interaction is handled by the app's interactions handler or by Discord */
   handler?: ApplicationCommandHandler;
 }
-const ApplicationCommandResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ApplicationCommandResponse>;
-
 export type BulkSetApplicationCommandsResponseBodyList = Array<ApplicationCommandResponse>;
-const BulkSetApplicationCommandsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<BulkSetApplicationCommandsResponseBodyList>;
-
 export type BulkSetApplicationCommandsResponse = BulkSetApplicationCommandsResponseBodyList;
-const BulkSetApplicationCommandsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<BulkSetApplicationCommandsResponse>;
-
 export type BulkSetGuildApplicationCommandsRequestBodyList = Array<ApplicationCommandUpdateRequest>;
-const BulkSetGuildApplicationCommandsRequestBodyList =
-  BulkSetApplicationCommandsRequestBodyList as any as S.Schema<BulkSetGuildApplicationCommandsRequestBodyList>;
-
 export interface BulkSetGuildApplicationCommandsRequest {
   application_id: string;
   guild_id: string;
   body: BulkSetGuildApplicationCommandsRequestBodyList | null;
 }
-const BulkSetGuildApplicationCommandsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<BulkSetGuildApplicationCommandsRequest>;
-
 export type BulkSetGuildApplicationCommandsResponseBodyList = Array<ApplicationCommandResponse>;
 export type BulkSetGuildApplicationCommandsResponse =
   BulkSetGuildApplicationCommandsResponseBodyList;
-const BulkSetGuildApplicationCommandsResponse =
-  BulkSetApplicationCommandsResponse as any as S.Schema<BulkSetGuildApplicationCommandsResponse>;
-
 export interface BulkUpdateGuildChannelsRequestBodyItem {
   id?: string | null;
   position?: number | null;
   parent_id?: string | null;
   lock_permissions?: boolean | null;
 }
-const BulkUpdateGuildChannelsRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<BulkUpdateGuildChannelsRequestBodyItem>;
-
 export type BulkUpdateGuildChannelsRequestBodyList = Array<BulkUpdateGuildChannelsRequestBodyItem>;
-const BulkUpdateGuildChannelsRequestBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<BulkUpdateGuildChannelsRequestBodyList>;
-
 export interface BulkUpdateGuildChannelsRequest {
   guild_id: string;
   body: BulkUpdateGuildChannelsRequestBodyList;
 }
-const BulkUpdateGuildChannelsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<BulkUpdateGuildChannelsRequest>;
-
 export interface BulkUpdateGuildChannelsResponse {}
-const BulkUpdateGuildChannelsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<BulkUpdateGuildChannelsResponse>;
-
 export interface UpdateRolePositionsRequest {
   id?: string | null;
   position?: number | null;
 }
-const UpdateRolePositionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UpdateRolePositionsRequest>;
-
 export type BulkUpdateGuildRolesRequestBodyList = Array<UpdateRolePositionsRequest>;
-const BulkUpdateGuildRolesRequestBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<BulkUpdateGuildRolesRequestBodyList>;
-
 export interface BulkUpdateGuildRolesRequest {
   guild_id: string;
   body: BulkUpdateGuildRolesRequestBodyList;
 }
-const BulkUpdateGuildRolesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<BulkUpdateGuildRolesRequest>;
-
 export interface GuildRoleColorsResponse {
   primary_color: number;
   secondary_color: number | null;
   tertiary_color: number | null;
 }
-const GuildRoleColorsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GuildRoleColorsResponse>;
-
 export interface GuildRoleTagsResponse {
   premium_subscriber?: unknown | null;
   bot_id?: string;
@@ -1180,11 +860,6 @@ export interface GuildRoleTagsResponse {
   available_for_purchase?: unknown | null;
   guild_connections?: unknown | null;
 }
-const GuildRoleTagsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GuildRoleTagsResponse>;
-
 export interface GuildRoleResponse {
   id: string;
   name: string;
@@ -1200,27 +875,10 @@ export interface GuildRoleResponse {
   tags?: GuildRoleTagsResponse;
   flags: number;
 }
-const GuildRoleResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GuildRoleResponse>;
-
 export type BulkUpdateGuildRolesResponseBodyList = Array<GuildRoleResponse>;
-const BulkUpdateGuildRolesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<BulkUpdateGuildRolesResponseBodyList>;
-
 export type BulkUpdateGuildRolesResponse = BulkUpdateGuildRolesResponseBodyList;
-const BulkUpdateGuildRolesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<BulkUpdateGuildRolesResponse>;
-
 export type BulkLobbyMemberRequestMetadataMap = { [key: string]: string | undefined };
-const BulkLobbyMemberRequestMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<BulkLobbyMemberRequestMetadataMap>;
-
 export type BulkLobbyMemberRequestFlags = 1;
-const BulkLobbyMemberRequestFlags = S.Number;
-
 export interface BulkLobbyMemberRequest {
   id: string;
   metadata?: BulkLobbyMemberRequestMetadataMap | null;
@@ -1228,100 +886,40 @@ export interface BulkLobbyMemberRequest {
   additional_name?: string | null;
   remove_member?: boolean | null;
 }
-const BulkLobbyMemberRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<BulkLobbyMemberRequest>;
-
 export type BulkUpdateLobbyMembersRequestBodyList = Array<BulkLobbyMemberRequest>;
-const BulkUpdateLobbyMembersRequestBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<BulkUpdateLobbyMembersRequestBodyList>;
-
 export interface BulkUpdateLobbyMembersRequest {
   lobby_id: string;
   body: BulkUpdateLobbyMembersRequestBodyList | null;
 }
-const BulkUpdateLobbyMembersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<BulkUpdateLobbyMembersRequest>;
-
 export type BulkUpdateLobbyMembersResponseBodyList = Array<LobbyMemberResponse>;
-const BulkUpdateLobbyMembersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<BulkUpdateLobbyMembersResponseBodyList>;
-
 export type BulkUpdateLobbyMembersResponse = BulkUpdateLobbyMembersResponseBodyList;
-const BulkUpdateLobbyMembersResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<BulkUpdateLobbyMembersResponse>;
-
 export interface ConsumeEntitlementRequest {
   application_id: string;
   entitlement_id: string;
 }
-const ConsumeEntitlementRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ConsumeEntitlementRequest>;
-
 export interface ConsumeEntitlementResponse {}
-const ConsumeEntitlementResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<ConsumeEntitlementResponse>;
-
 export type CountGuildScheduledEventUsersRequestGuildScheduledEventExceptionIdsList = Array<string>;
-const CountGuildScheduledEventUsersRequestGuildScheduledEventExceptionIdsList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    5,
-  ) as any as S.Schema<CountGuildScheduledEventUsersRequestGuildScheduledEventExceptionIdsList>;
-
 export interface CountGuildScheduledEventUsersRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
   guild_scheduled_event_exception_ids?: CountGuildScheduledEventUsersRequestGuildScheduledEventExceptionIdsList;
 }
-const CountGuildScheduledEventUsersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CountGuildScheduledEventUsersRequest>;
-
 /** Map of exception IDs to user counts for each exception */
 export type ScheduledEventUserCountResponseGuildScheduledEventExceptionCountsMap = {
   [key: string]: number | undefined;
 };
-const ScheduledEventUserCountResponseGuildScheduledEventExceptionCountsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ScheduledEventUserCountResponseGuildScheduledEventExceptionCountsMap>;
-
 export interface ScheduledEventUserCountResponse {
   /** The number of users subscribed to the scheduled event */
   guild_scheduled_event_count: number;
   /** Map of exception IDs to user counts for each exception */
   guild_scheduled_event_exception_counts: ScheduledEventUserCountResponseGuildScheduledEventExceptionCountsMap;
 }
-const ScheduledEventUserCountResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ScheduledEventUserCountResponse>;
-
 export type CreateApplicationCommandRequestNameLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const CreateApplicationCommandRequestNameLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<CreateApplicationCommandRequestNameLocalizationsMap>;
-
 export type CreateApplicationCommandRequestDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const CreateApplicationCommandRequestDescriptionLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<CreateApplicationCommandRequestDescriptionLocalizationsMap>;
-
 export type CreateApplicationCommandRequestOptionsItem =
   | ApplicationCommandAttachmentOption
   | ApplicationCommandBooleanOption
@@ -1334,27 +932,14 @@ export type CreateApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandGroupOption
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
-const CreateApplicationCommandRequestOptionsItem = /*@__PURE__*/ __L.at(__c8, 1);
-
 export type CreateApplicationCommandRequestOptionsList =
   Array<CreateApplicationCommandRequestOptionsItem>;
-const CreateApplicationCommandRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateApplicationCommandRequestOptionsList>;
-
 export type CreateApplicationCommandRequestContextsList = Array<
   InteractionContextType | (number & {})
 >;
-const CreateApplicationCommandRequestContextsList =
-  ApplicationCommandUpdateRequestContextsList as any as S.Schema<CreateApplicationCommandRequestContextsList>;
-
 export type CreateApplicationCommandRequestIntegrationTypesList = Array<
   ApplicationIntegrationType | (number & {})
 >;
-const CreateApplicationCommandRequestIntegrationTypesList =
-  ApplicationCommandUpdateRequestIntegrationTypesList as any as S.Schema<CreateApplicationCommandRequestIntegrationTypesList>;
-
 export interface CreateApplicationCommandRequest {
   application_id: string;
   name: string;
@@ -1370,25 +955,12 @@ export interface CreateApplicationCommandRequest {
   handler?: ApplicationCommandHandler | (number & {}) | null;
   type?: ApplicationCommandType | (number & {}) | null;
 }
-const CreateApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateApplicationCommandRequest>;
-
 export interface CreateApplicationEmojiRequest {
   application_id: string;
   name: string;
   image: string;
 }
-const CreateApplicationEmojiRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateApplicationEmojiRequest>;
-
 export type EmojiResponseRolesList = Array<string>;
-const EmojiResponseRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<EmojiResponseRolesList>;
-
 export interface EmojiResponse {
   id: string;
   name: string;
@@ -1399,8 +971,6 @@ export interface EmojiResponse {
   animated: boolean;
   available: boolean;
 }
-const EmojiResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<EmojiResponse>;
-
 export type AutomodEventType = 1 | 2;
 export type AutomodActionType = 1 | 2 | 3 | 4;
 export interface BlockMessageActionMetadata {
@@ -1555,17 +1125,10 @@ export type CreateAutoModerationRuleRequestBody =
   | MLSpamUpsertRequest
   | MentionSpamUpsertRequest
   | UserProfileUpsertRequest;
-const CreateAutoModerationRuleRequestBody = /*@__PURE__*/ __L.at(__c8, 6);
-
 export interface CreateAutoModerationRuleRequest {
   guild_id: string;
   body: CreateAutoModerationRuleRequestBody;
 }
-const CreateAutoModerationRuleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateAutoModerationRuleRequest>;
-
 export interface BlockMessageActionMetadataResponse {
   custom_message?: string;
 }
@@ -1726,14 +1289,7 @@ export type CreateAutoModerationRuleResponseBody =
   | MLSpamRuleResponse
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
-const CreateAutoModerationRuleResponseBody = /*@__PURE__*/ __L.at(__c9, 0);
-
 export type CreateAutoModerationRuleResponse = CreateAutoModerationRuleResponseBody;
-const CreateAutoModerationRuleResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateAutoModerationRuleResponse>;
-
 export interface CreateGroupDMInviteRequest {
   max_age?: number | null;
 }
@@ -1758,17 +1314,10 @@ export interface CreateGuildInviteRequest {
   target_user_ids?: CreateGuildInviteRequestTargetUserIds | null;
 }
 export type CreateChannelInviteRequestBody = CreateGroupDMInviteRequest | CreateGuildInviteRequest;
-const CreateChannelInviteRequestBody = /*@__PURE__*/ __L.at(__c9, 2);
-
 export interface CreateChannelInviteRequest {
   channel_id: string;
   body: CreateChannelInviteRequestBody;
 }
-const CreateChannelInviteRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateChannelInviteRequest>;
-
 export type InviteTypes = 0 | 1 | 2;
 export interface InviteChannelRecipientResponse {
   id: string;
@@ -1838,20 +1387,9 @@ export type GuildFeatures =
   | "VIP_REGIONS"
   | "WELCOME_SCREEN_ENABLED"
   | "OFFICIAL_GAME_GUILD";
-const GuildFeatures = S.String;
-
 export type InviteGuildResponseFeaturesList = Array<GuildFeatures>;
-const InviteGuildResponseFeaturesList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<InviteGuildResponseFeaturesList>;
-
 export type VerificationLevels = 0 | 1 | 2 | 3 | 4;
-const VerificationLevels = S.Number;
-
 export type GuildNSFWContentLevel = 0 | 1 | 2 | 3;
-const GuildNSFWContentLevel = S.Number;
-
 export interface InviteGuildResponse {
   id: string;
   name: string;
@@ -1867,8 +1405,6 @@ export interface InviteGuildResponse {
   premium_subscription_count: number;
 }
 export type ApplicationTypes = 4;
-const ApplicationTypes = S.Number;
-
 export type InviteApplicationResponseRpcOriginsList = Array<string>;
 export type OAuth2Scopes =
   | "identify"
@@ -1906,34 +1442,16 @@ export type OAuth2Scopes =
   | "role_connections.write"
   | "openid";
 export type ApplicationOAuth2InstallParamsResponseScopesList = Array<OAuth2Scopes>;
-const ApplicationOAuth2InstallParamsResponseScopesList =
-  InviteGuildResponseFeaturesList as any as S.Schema<ApplicationOAuth2InstallParamsResponseScopesList>;
-
 export interface ApplicationOAuth2InstallParamsResponse {
   scopes: ApplicationOAuth2InstallParamsResponseScopesList;
   permissions: string;
 }
-const ApplicationOAuth2InstallParamsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ApplicationOAuth2InstallParamsResponse>;
-
 export interface ApplicationIntegrationTypeConfigurationResponse {
   oauth2_install_params?: ApplicationOAuth2InstallParamsResponse;
 }
-const ApplicationIntegrationTypeConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ApplicationIntegrationTypeConfigurationResponse>;
-
 export type InviteApplicationResponseIntegrationTypesConfigMap = {
   [key: string]: ApplicationIntegrationTypeConfigurationResponse | undefined;
 };
-const InviteApplicationResponseIntegrationTypesConfigMap = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<InviteApplicationResponseIntegrationTypesConfigMap>;
-
 export type InviteApplicationResponseTagsList = Array<string>;
 export interface InviteApplicationResponse {
   id: string;
@@ -2006,8 +1524,6 @@ export interface RecurrenceRuleResponse {
 }
 export type GuildScheduledEventPrivacyLevels = 2;
 export type GuildScheduledEventUserResponses = 0 | 1;
-const GuildScheduledEventUserResponses = S.Number;
-
 export interface ScheduledEventUserResponse {
   /** ID of the scheduled event */
   guild_scheduled_event_id: string;
@@ -2022,11 +1538,6 @@ export interface ScheduledEventUserResponse {
   /** User's RSVP status for the event */
   response: GuildScheduledEventUserResponses;
 }
-const ScheduledEventUserResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ScheduledEventUserResponse>;
-
 export interface GuildScheduledEventExceptionResponse {
   /** ID of the scheduled event this exception belongs to */
   event_id: string;
@@ -2039,11 +1550,6 @@ export interface GuildScheduledEventExceptionResponse {
   /** Whether this occurrence is canceled */
   is_canceled: boolean;
 }
-const GuildScheduledEventExceptionResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GuildScheduledEventExceptionResponse>;
-
 export type ScheduledEventResponseGuildScheduledEventExceptionsList =
   Array<GuildScheduledEventExceptionResponse>;
 export interface ScheduledEventResponse {
@@ -2123,53 +1629,22 @@ export type CreateChannelInviteResponseBody =
   | FriendInviteResponse
   | GroupDMInviteResponse
   | GuildInviteResponse;
-const CreateChannelInviteResponseBody = /*@__PURE__*/ __L.at(__c10, 2);
-
 export type CreateChannelInviteResponse = CreateChannelInviteResponseBody;
-const CreateChannelInviteResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateChannelInviteResponse>;
-
 export interface CreateDeprecatedPinRequest {
   channel_id: string;
   message_id: string;
 }
-const CreateDeprecatedPinRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateDeprecatedPinRequest>;
-
 export interface CreateDeprecatedPinResponse {}
-const CreateDeprecatedPinResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<CreateDeprecatedPinResponse>;
-
 export type CreateDmRequestAccessTokensList = Array<string>;
-const CreateDmRequestAccessTokensList =
-  AddGuildMemberRequestRolesList as any as S.Schema<CreateDmRequestAccessTokensList>;
-
 export type CreateDmRequestNicksMap = { [key: string]: string | null | undefined };
-const CreateDmRequestNicksMap = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateDmRequestNicksMap>;
-
 export interface CreateDmRequest {
   recipient_id?: string | null;
   access_tokens?: CreateDmRequestAccessTokensList | null;
   nicks?: CreateDmRequestNicksMap | null;
 }
-const CreateDmRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<CreateDmRequest>;
-
 export type CreateDmResponseBody = PrivateChannelResponse | PrivateGroupChannelResponse;
-const CreateDmResponseBody = /*@__PURE__*/ __L.at(__c10, 7);
-
 export type CreateDmResponse = CreateDmResponseBody;
-const CreateDmResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<CreateDmResponse>;
-
 export type EntitlementOwnerTypes = 1 | 2;
-const EntitlementOwnerTypes = S.Number;
-
 export interface CreateEntitlementRequest {
   application_id: string;
   /** ID of the SKU to grant the entitlement to */
@@ -2179,17 +1654,8 @@ export interface CreateEntitlementRequest {
   /** 1 for a guild subscription, 2 for a user subscription */
   owner_type: EntitlementOwnerTypes | (number & {});
 }
-const CreateEntitlementRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateEntitlementRequest>;
-
 export type EntitlementTypes = 8 | 10;
-const EntitlementTypes = S.Number;
-
 export type EntitlementTenantFulfillmentStatusResponse = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
-const EntitlementTenantFulfillmentStatusResponse = S.Number;
-
 export interface EntitlementResponse {
   id: string;
   sku_id: string;
@@ -2206,20 +1672,12 @@ export interface EntitlementResponse {
   gifter_user_id?: string | null;
   parent_id?: string | null;
 }
-const EntitlementResponse = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<EntitlementResponse>;
-
 export type CreateGuildApplicationCommandRequestNameLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const CreateGuildApplicationCommandRequestNameLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<CreateGuildApplicationCommandRequestNameLocalizationsMap>;
-
 export type CreateGuildApplicationCommandRequestDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const CreateGuildApplicationCommandRequestDescriptionLocalizationsMap =
-  ApplicationCommandMentionableOptionDescriptionLocalizationsMap as any as S.Schema<CreateGuildApplicationCommandRequestDescriptionLocalizationsMap>;
-
 export type CreateGuildApplicationCommandRequestOptionsItem =
   | ApplicationCommandAttachmentOption
   | ApplicationCommandBooleanOption
@@ -2232,27 +1690,14 @@ export type CreateGuildApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandGroupOption
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
-const CreateGuildApplicationCommandRequestOptionsItem = /*@__PURE__*/ __L.at(__c11, 3);
-
 export type CreateGuildApplicationCommandRequestOptionsList =
   Array<CreateGuildApplicationCommandRequestOptionsItem>;
-const CreateGuildApplicationCommandRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateGuildApplicationCommandRequestOptionsList>;
-
 export type CreateGuildApplicationCommandRequestContextsList = Array<
   InteractionContextType | (number & {})
 >;
-const CreateGuildApplicationCommandRequestContextsList =
-  ApplicationCommandUpdateRequestContextsList as any as S.Schema<CreateGuildApplicationCommandRequestContextsList>;
-
 export type CreateGuildApplicationCommandRequestIntegrationTypesList = Array<
   ApplicationIntegrationType | (number & {})
 >;
-const CreateGuildApplicationCommandRequestIntegrationTypesList =
-  ApplicationCommandUpdateRequestIntegrationTypesList as any as S.Schema<CreateGuildApplicationCommandRequestIntegrationTypesList>;
-
 export interface CreateGuildApplicationCommandRequest {
   application_id: string;
   guild_id: string;
@@ -2269,74 +1714,32 @@ export interface CreateGuildApplicationCommandRequest {
   handler?: ApplicationCommandHandler | (number & {}) | null;
   type?: ApplicationCommandType | (number & {}) | null;
 }
-const CreateGuildApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateGuildApplicationCommandRequest>;
-
 export type ChannelPermissionOverwrites = 0 | 1;
-const ChannelPermissionOverwrites = S.Number;
-
 export interface ChannelPermissionOverwriteRequest {
   id: string;
   type?: ChannelPermissionOverwrites | (number & {}) | null;
   allow?: number | null;
   deny?: number | null;
 }
-const ChannelPermissionOverwriteRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ChannelPermissionOverwriteRequest>;
-
 export type CreateGuildChannelRequestPermissionOverwritesList =
   Array<ChannelPermissionOverwriteRequest>;
-const CreateGuildChannelRequestPermissionOverwritesList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CreateGuildChannelRequestPermissionOverwritesList>;
-
 export type VideoQualityModes = 1 | 2;
-const VideoQualityModes = S.Number;
-
 export type ThreadAutoArchiveDuration = 60 | 1440 | 4320 | 10080;
-const ThreadAutoArchiveDuration = S.Number;
-
 export interface UpdateDefaultReactionEmojiRequest {
   emoji_id?: string | null;
   emoji_name?: string | null;
 }
-const UpdateDefaultReactionEmojiRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UpdateDefaultReactionEmojiRequest>;
-
 export type ThreadSortOrder = 0 | 1;
-const ThreadSortOrder = S.Number;
-
 export type ForumLayout = 0 | 1 | 2;
-const ForumLayout = S.Number;
-
 export type ThreadSearchTagSetting = "match_all" | "match_some";
-const ThreadSearchTagSetting = S.String;
-
 export interface CreateOrUpdateThreadTagRequest {
   name: string;
   emoji_id?: string | null;
   emoji_name?: string | null;
   moderated?: boolean | null;
 }
-const CreateOrUpdateThreadTagRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateOrUpdateThreadTagRequest>;
-
 export type CreateGuildChannelRequestAvailableTagsList =
   Array<CreateOrUpdateThreadTagRequest | null>;
-const CreateGuildChannelRequestAvailableTagsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateGuildChannelRequestAvailableTagsList>;
-
 export interface CreateGuildChannelRequest {
   guild_id: string;
   type?: ChannelTypes | (number & {}) | null;
@@ -2359,29 +1762,14 @@ export interface CreateGuildChannelRequest {
   default_tag_setting?: ThreadSearchTagSetting | (string & {}) | null;
   available_tags?: CreateGuildChannelRequestAvailableTagsList | null;
 }
-const CreateGuildChannelRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateGuildChannelRequest>;
-
 export interface ChannelPermissionOverwriteResponse {
   id: string;
   type: ChannelPermissionOverwrites;
   allow: string;
   deny: string;
 }
-const ChannelPermissionOverwriteResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ChannelPermissionOverwriteResponse>;
-
 export type GuildChannelResponsePermissionOverwritesList =
   Array<ChannelPermissionOverwriteResponse>;
-const GuildChannelResponsePermissionOverwritesList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GuildChannelResponsePermissionOverwritesList>;
-
 export interface ForumTagResponse {
   id: string;
   name: string;
@@ -2389,23 +1777,11 @@ export interface ForumTagResponse {
   emoji_id: string | null;
   emoji_name: string | null;
 }
-const ForumTagResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ForumTagResponse>;
-
 export type GuildChannelResponseAvailableTagsList = Array<ForumTagResponse>;
-const GuildChannelResponseAvailableTagsList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GuildChannelResponseAvailableTagsList>;
-
 export interface DefaultReactionEmojiResponse {
   emoji_id: string | null;
   emoji_name: string | null;
 }
-const DefaultReactionEmojiResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DefaultReactionEmojiResponse>;
-
 export interface GuildChannelResponse {
   id: string;
   type: ChannelTypes;
@@ -2433,35 +1809,18 @@ export interface GuildChannelResponse {
   default_forum_layout?: ForumLayout;
   default_tag_setting?: ThreadSearchTagSetting | null;
 }
-const GuildChannelResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GuildChannelResponse>;
-
 export type CreateGuildEmojiRequestRolesList = Array<string | null>;
-const CreateGuildEmojiRequestRolesList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateGuildEmojiRequestRolesList>;
-
 export interface CreateGuildEmojiRequest {
   guild_id: string;
   name: string;
   image: string;
   roles?: CreateGuildEmojiRequestRolesList | null;
 }
-const CreateGuildEmojiRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateGuildEmojiRequest>;
-
 export interface RoleColors {
   primary_color?: number | null;
   secondary_color?: number | null;
   tertiary_color?: number | null;
 }
-const RoleColors = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<RoleColors>;
-
 export interface CreateGuildRoleRequest {
   guild_id: string;
   name?: string | null;
@@ -2473,11 +1832,6 @@ export interface CreateGuildRoleRequest {
   icon?: string | null;
   unicode_emoji?: string | null;
 }
-const CreateGuildRoleRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateGuildRoleRequest>;
-
 /** Set of specific days within a week for the event to recur on */
 export type RecurrenceRuleByWeekdayList = Array<RecurrenceRuleWeekdays | (number & {})>;
 export interface ByNWeekday {
@@ -2550,17 +1904,10 @@ export type CreateGuildScheduledEventRequestBody =
   | ExternalScheduledEventCreateRequest
   | StageScheduledEventCreateRequest
   | StageScheduledEventCreateRequest;
-const CreateGuildScheduledEventRequestBody = /*@__PURE__*/ __L.at(__c13, 6);
-
 export interface CreateGuildScheduledEventRequest {
   guild_id: string;
   body: CreateGuildScheduledEventRequestBody;
 }
-const CreateGuildScheduledEventRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateGuildScheduledEventRequest>;
-
 export type ExternalScheduledEventResponseGuildScheduledEventExceptionsList =
   Array<GuildScheduledEventExceptionResponse>;
 export interface EntityMetadataExternalResponse {
@@ -2686,14 +2033,7 @@ export type CreateGuildScheduledEventResponseBody =
   | ExternalScheduledEventResponse
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
-const CreateGuildScheduledEventResponseBody = /*@__PURE__*/ __L.at(__c14, 0);
-
 export type CreateGuildScheduledEventResponse = CreateGuildScheduledEventResponseBody;
-const CreateGuildScheduledEventResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreateGuildScheduledEventResponse>;
-
 export interface CreateGuildScheduledEventExceptionRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
@@ -2706,11 +2046,6 @@ export interface CreateGuildScheduledEventExceptionRequest {
   /** Whether this occurrence is canceled */
   is_canceled?: boolean | null;
 }
-const CreateGuildScheduledEventExceptionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateGuildScheduledEventExceptionRequest>;
-
 export interface CreateGuildSoundboardSoundRequest {
   guild_id: string;
   name: string;
@@ -2719,11 +2054,6 @@ export interface CreateGuildSoundboardSoundRequest {
   emoji_name?: string | null;
   sound: string;
 }
-const CreateGuildSoundboardSoundRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateGuildSoundboardSoundRequest>;
-
 export interface SoundboardSoundResponse {
   name: string;
   sound_id: string;
@@ -2734,11 +2064,6 @@ export interface SoundboardSoundResponse {
   available: boolean;
   user?: UserResponse;
 }
-const SoundboardSoundResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<SoundboardSoundResponse>;
-
 export interface CreateGuildStickerRequest {
   guild_id: string;
   name: string;
@@ -2746,17 +2071,8 @@ export interface CreateGuildStickerRequest {
   description?: string | null;
   file: File | Blob;
 }
-const CreateGuildStickerRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateGuildStickerRequest>;
-
 export type StickerTypes = 1 | 2;
-const StickerTypes = S.Number;
-
 export type StickerFormatTypes = 1 | 2 | 3 | 4;
-const StickerFormatTypes = S.Number;
-
 export interface GuildStickerResponse {
   id: string;
   name: string;
@@ -2768,27 +2084,13 @@ export interface GuildStickerResponse {
   guild_id: string;
   user?: UserResponse;
 }
-const GuildStickerResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GuildStickerResponse>;
-
 export interface CreateGuildTemplateRequest {
   guild_id: string;
   name: string;
   description?: string | null;
 }
-const CreateGuildTemplateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreateGuildTemplateRequest>;
-
 export type UserNotificationSettings = 0 | 1;
-const UserNotificationSettings = S.Number;
-
 export type GuildExplicitContentFilterTypes = 0 | 1 | 2;
-const GuildExplicitContentFilterTypes = S.Number;
-
 export type AvailableLocalesEnum =
   | "ar"
   | "bg"
@@ -2824,11 +2126,7 @@ export type AvailableLocalesEnum =
   | "vi"
   | "zh-CN"
   | "zh-TW";
-const AvailableLocalesEnum = S.String;
-
 export type AfkTimeouts = 60 | 300 | 900 | 1800 | 3600;
-const AfkTimeouts = S.Number;
-
 export type GuildTemplateRoleColorsResponse = GuildRoleColorsResponse;
 export interface GuildTemplateRoleResponse {
   id: number;
@@ -2841,22 +2139,9 @@ export interface GuildTemplateRoleResponse {
   icon: string | null;
   unicode_emoji: string | null;
 }
-const GuildTemplateRoleResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GuildTemplateRoleResponse>;
-
 export type GuildTemplateSnapshotResponseRolesList = Array<GuildTemplateRoleResponse>;
-const GuildTemplateSnapshotResponseRolesList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GuildTemplateSnapshotResponseRolesList>;
-
 export type GuildTemplateChannelResponsePermissionOverwritesList =
   Array<ChannelPermissionOverwriteResponse>;
-const GuildTemplateChannelResponsePermissionOverwritesList =
-  GuildChannelResponsePermissionOverwritesList as any as S.Schema<GuildTemplateChannelResponsePermissionOverwritesList>;
-
 export interface GuildTemplateChannelTags {
   id: number | null;
   name: string;
@@ -2864,17 +2149,7 @@ export interface GuildTemplateChannelTags {
   emoji_name: string | null;
   moderated: boolean | null;
 }
-const GuildTemplateChannelTags = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GuildTemplateChannelTags>;
-
 export type GuildTemplateChannelResponseAvailableTagsList = Array<GuildTemplateChannelTags>;
-const GuildTemplateChannelResponseAvailableTagsList = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GuildTemplateChannelResponseAvailableTagsList>;
-
 export interface GuildTemplateChannelResponse {
   id: number | null;
   type: ChannelTypes;
@@ -2897,17 +2172,7 @@ export interface GuildTemplateChannelResponse {
   default_tag_setting: ThreadSearchTagSetting | null;
   theme_color: number | null;
 }
-const GuildTemplateChannelResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GuildTemplateChannelResponse>;
-
 export type GuildTemplateSnapshotResponseChannelsList = Array<GuildTemplateChannelResponse>;
-const GuildTemplateSnapshotResponseChannelsList = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GuildTemplateSnapshotResponseChannelsList>;
-
 export interface GuildTemplateSnapshotResponse {
   name: string;
   description: string | null;
@@ -2923,11 +2188,6 @@ export interface GuildTemplateSnapshotResponse {
   roles: GuildTemplateSnapshotResponseRolesList;
   channels: GuildTemplateSnapshotResponseChannelsList;
 }
-const GuildTemplateSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GuildTemplateSnapshotResponse>;
-
 export interface GuildTemplateResponse {
   code: string;
   name: string;
@@ -2941,11 +2201,6 @@ export interface GuildTemplateResponse {
   serialized_source_guild: GuildTemplateSnapshotResponse;
   is_dirty: boolean | null;
 }
-const GuildTemplateResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GuildTemplateResponse>;
-
 export type InteractionCallbackTypes = 1 | 4 | 5 | 6 | 7 | 8 | 9 | 12 | 13;
 export type InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesList =
   Array<ApplicationCommandOptionIntegerChoice | null>;
@@ -2975,8 +2230,6 @@ export interface RichEmbedAuthor {
   url?: string | null;
   icon_url?: string | null;
 }
-const RichEmbedAuthor = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<RichEmbedAuthor>;
-
 export interface RichEmbedImage {
   url?: string | null;
   width?: number | null;
@@ -2986,31 +2239,21 @@ export interface RichEmbedImage {
   is_animated?: boolean | null;
   description?: string | null;
 }
-const RichEmbedImage = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<RichEmbedImage>;
-
 export type RichEmbedThumbnail = RichEmbedImage;
 export interface RichEmbedFooter {
   text?: string | null;
   icon_url?: string | null;
 }
-const RichEmbedFooter = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<RichEmbedFooter>;
-
 export interface RichEmbedField {
   name: string;
   value: string;
   inline?: boolean | null;
 }
-const RichEmbedField = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<RichEmbedField>;
-
 export type RichEmbedFieldsList = Array<RichEmbedField>;
-const RichEmbedFieldsList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<RichEmbedFieldsList>;
-
 export interface RichEmbedProvider {
   name?: string | null;
   url?: string | null;
 }
-const RichEmbedProvider = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<RichEmbedProvider>;
-
 export type RichEmbedVideo = RichEmbedImage;
 export interface RichEmbed {
   type?: string | null;
@@ -3027,44 +2270,19 @@ export interface RichEmbed {
   provider?: RichEmbedProvider | null;
   video?: RichEmbedImage | null;
 }
-const RichEmbed = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<RichEmbed>;
-
 export type IncomingWebhookInteractionRequestEmbedsList = Array<RichEmbed>;
-const IncomingWebhookInteractionRequestEmbedsList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<IncomingWebhookInteractionRequestEmbedsList>;
-
 export type AllowedMentionTypes = "users" | "roles" | "everyone";
-const AllowedMentionTypes = S.String;
-
 export type MessageAllowedMentionsRequestParseList = Array<
   AllowedMentionTypes | (string & {}) | null
 >;
-const MessageAllowedMentionsRequestParseList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<MessageAllowedMentionsRequestParseList>;
-
 export type MessageAllowedMentionsRequestUsersList = Array<string | null>;
-const MessageAllowedMentionsRequestUsersList =
-  CreateGuildEmojiRequestRolesList as any as S.Schema<MessageAllowedMentionsRequestUsersList>;
-
 export type MessageAllowedMentionsRequestRolesList = Array<string | null>;
-const MessageAllowedMentionsRequestRolesList =
-  CreateGuildEmojiRequestRolesList as any as S.Schema<MessageAllowedMentionsRequestRolesList>;
-
 export interface MessageAllowedMentionsRequest {
   parse?: MessageAllowedMentionsRequestParseList | null;
   users?: MessageAllowedMentionsRequestUsersList | null;
   roles?: MessageAllowedMentionsRequestRolesList | null;
   replied_user?: boolean | null;
 }
-const MessageAllowedMentionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<MessageAllowedMentionsRequest>;
-
 export type MessageComponentTypes =
   | 1
   | 2
@@ -3086,8 +2304,6 @@ export type MessageComponentTypes =
   | 21
   | 22
   | 23;
-const MessageComponentTypes = S.Number;
-
 export type ButtonStyleTypes = 1 | 2 | 3 | 4 | 5 | 6;
 export interface ComponentEmojiForRequest {
   id?: string | null;
@@ -3289,17 +2505,7 @@ export interface MessageAttachmentRequest {
   title?: string | null;
   is_spoiler?: boolean | null;
 }
-const MessageAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<MessageAttachmentRequest>;
-
 export type IncomingWebhookInteractionRequestAttachmentsList = Array<MessageAttachmentRequest>;
-const IncomingWebhookInteractionRequestAttachmentsList = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<IncomingWebhookInteractionRequestAttachmentsList>;
-
 export interface PollEmoji {
   /** The ID of the custom emoji */
   id?: string | null;
@@ -3308,37 +2514,21 @@ export interface PollEmoji {
   /** Whether the emoji is animated */
   animated?: boolean | null;
 }
-const PollEmoji = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<PollEmoji>;
-
 export interface PollMedia {
   /** The text of the field */
   text?: string | null;
   /** The emoji of the field */
   emoji?: PollEmoji | null;
 }
-const PollMedia = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<PollMedia>;
-
 export type PollEmojiCreateRequest = PollEmoji;
 export type PollMediaCreateRequest = PollMedia;
 export interface PollAnswerCreateRequest {
   /** The data of the answer */
   poll_media: PollMedia;
 }
-const PollAnswerCreateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<PollAnswerCreateRequest>;
-
 /** Each of the answers available in the poll, up to 10 */
 export type PollCreateRequestAnswersList = Array<PollAnswerCreateRequest>;
-const PollCreateRequestAnswersList = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<PollCreateRequestAnswersList>;
-
 export type PollLayoutTypes = 1;
-const PollLayoutTypes = S.Number;
-
 export interface PollCreateRequest {
   /** The question of the poll. Only `text` is supported. */
   question: PollMedia;
@@ -3351,8 +2541,6 @@ export interface PollCreateRequest {
   /** Number of hours the poll should be open for, up to 32 days. Defaults to 24 */
   duration?: number | null;
 }
-const PollCreateRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<PollCreateRequest>;
-
 export interface IncomingWebhookInteractionRequest {
   content?: string | null;
   embeds?: IncomingWebhookInteractionRequestEmbedsList | null;
@@ -3578,22 +2766,13 @@ export type CreateInteractionResponseRequestBody =
   | LaunchActivityInteractionCallbackRequest
   | SocialLayerSKUPurchaseEligibilityInteractionCallbackRequest
   | UpdateMessageInteractionCallbackRequest;
-const CreateInteractionResponseRequestBody = /*@__PURE__*/ __L.at(__c18, 1);
-
 export interface CreateInteractionResponseRequest {
   interaction_id: string;
   interaction_token: string;
   with_response?: boolean;
   body: CreateInteractionResponseRequestBody;
 }
-const CreateInteractionResponseRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CreateInteractionResponseRequest>;
-
 export type InteractionTypes = 1 | 2 | 3 | 4 | 5 | 6;
-const InteractionTypes = S.Number;
-
 export interface InteractionResponse {
   id: string;
   type: InteractionTypes;
@@ -3604,8 +2783,6 @@ export interface InteractionResponse {
   channel_id?: string;
   guild_id?: string;
 }
-const InteractionResponse = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<InteractionResponse>;
-
 export type MessageType =
   | 0
   | 1
@@ -3644,30 +2821,13 @@ export type MessageType =
   | 39
   | 46
   | 55;
-const MessageType = S.Number;
-
 export type MessageResponseMentionsList = Array<UserResponse>;
-const MessageResponseMentionsList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<MessageResponseMentionsList>;
-
 export type MessageResponseMentionRolesList = Array<string>;
-const MessageResponseMentionRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<MessageResponseMentionRolesList>;
-
 export type ApplicationResponseRpcOriginsList = Array<string>;
-const ApplicationResponseRpcOriginsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<ApplicationResponseRpcOriginsList>;
-
 export type ApplicationResponseIntegrationTypesConfigMap = {
   [key: string]: ApplicationIntegrationTypeConfigurationResponse | undefined;
 };
-const ApplicationResponseIntegrationTypesConfigMap =
-  InviteApplicationResponseIntegrationTypesConfigMap as any as S.Schema<ApplicationResponseIntegrationTypesConfigMap>;
-
 export type ApplicationResponseTagsList = Array<string>;
-const ApplicationResponseTagsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<ApplicationResponseTagsList>;
-
 export interface ApplicationResponse {
   id: string;
   name: string;
@@ -3694,12 +2854,7 @@ export interface ApplicationResponse {
   max_participants?: number | null;
   tags?: ApplicationResponseTagsList;
 }
-const ApplicationResponse = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<ApplicationResponse>;
-
 export type MessageAttachmentResponseClipParticipantsList = Array<UserResponse>;
-const MessageAttachmentResponseClipParticipantsList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<MessageAttachmentResponseClipParticipantsList>;
-
 export interface MessageAttachmentResponse {
   id: string;
   filename: string;
@@ -3721,53 +2876,23 @@ export interface MessageAttachmentResponse {
   clip_created_at?: string;
   clip_participants?: MessageAttachmentResponseClipParticipantsList;
 }
-const MessageAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<MessageAttachmentResponse>;
-
 export type MessageResponseAttachmentsList = Array<MessageAttachmentResponse>;
-const MessageResponseAttachmentsList = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<MessageResponseAttachmentsList>;
-
 export interface MessageEmbedFieldResponse {
   name: string;
   value: string;
   inline: boolean;
 }
-const MessageEmbedFieldResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<MessageEmbedFieldResponse>;
-
 export type MessageEmbedResponseFieldsList = Array<MessageEmbedFieldResponse>;
-const MessageEmbedResponseFieldsList = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<MessageEmbedResponseFieldsList>;
-
 export interface MessageEmbedAuthorResponse {
   name: string;
   url?: string;
   icon_url?: string;
   proxy_icon_url?: string;
 }
-const MessageEmbedAuthorResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<MessageEmbedAuthorResponse>;
-
 export interface MessageEmbedProviderResponse {
   name: string;
   url?: string;
 }
-const MessageEmbedProviderResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<MessageEmbedProviderResponse>;
-
 export interface MessageEmbedImageResponse {
   url?: string;
   proxy_url?: string;
@@ -3779,22 +2904,12 @@ export interface MessageEmbedImageResponse {
   description?: string;
   flags?: number;
 }
-const MessageEmbedImageResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<MessageEmbedImageResponse>;
-
 export type MessageEmbedVideoResponse = MessageEmbedImageResponse;
 export interface MessageEmbedFooterResponse {
   text: string;
   icon_url?: string;
   proxy_icon_url?: string;
 }
-const MessageEmbedFooterResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<MessageEmbedFooterResponse>;
-
 export interface ComponentEmojiResponse {
   id?: string;
   name: string;
@@ -3976,15 +3091,8 @@ export type ContainerComponentResponseComponentsItem =
   | SectionComponentResponse
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
-const ContainerComponentResponseComponentsItem = /*@__PURE__*/ __L.at(__c19, 5);
-
 export type ContainerComponentResponseComponentsList =
   Array<ContainerComponentResponseComponentsItem>;
-const ContainerComponentResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ContainerComponentResponseComponentsList>;
-
 export interface ContainerComponentResponse {
   type: MessageComponentTypes;
   id: number;
@@ -3992,17 +3100,7 @@ export interface ContainerComponentResponse {
   components: ContainerComponentResponseComponentsList;
   spoiler: boolean;
 }
-const ContainerComponentResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ContainerComponentResponse>;
-
 export type MessageEmbedResponseComponentsList = Array<ContainerComponentResponse>;
-const MessageEmbedResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<MessageEmbedResponseComponentsList>;
-
 export interface MessageEmbedResponse {
   type: string;
   url?: string;
@@ -4020,17 +3118,7 @@ export interface MessageEmbedResponse {
   flags?: number | null;
   components?: MessageEmbedResponseComponentsList;
 }
-const MessageEmbedResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<MessageEmbedResponse>;
-
 export type MessageResponseEmbedsList = Array<MessageEmbedResponse>;
-const MessageResponseEmbedsList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<MessageResponseEmbedsList>;
-
 export type MessageResponseComponentsItem =
   | ActionRowComponentResponse
   | ContainerComponentResponse
@@ -4039,14 +3127,7 @@ export type MessageResponseComponentsItem =
   | SectionComponentResponse
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
-const MessageResponseComponentsItem = /*@__PURE__*/ __L.at(__c20, 3);
-
 export type MessageResponseComponentsList = Array<MessageResponseComponentsItem>;
-const MessageResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<MessageResponseComponentsList>;
-
 export interface StandardStickerResponse {
   id: string;
   name: string;
@@ -4057,58 +3138,24 @@ export interface StandardStickerResponse {
   pack_id: string;
   sort_value: number;
 }
-const StandardStickerResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<StandardStickerResponse>;
-
 export type MessageResponseStickersItem = GuildStickerResponse | StandardStickerResponse;
-const MessageResponseStickersItem = /*@__PURE__*/ __L.at(__c20, 6);
-
 export type MessageResponseStickersList = Array<MessageResponseStickersItem>;
-const MessageResponseStickersList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<MessageResponseStickersList>;
-
 export interface MessageStickerItemResponse {
   id: string;
   name: string;
   format_type: StickerFormatTypes;
 }
-const MessageStickerItemResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<MessageStickerItemResponse>;
-
 export type MessageResponseStickerItemsList = Array<MessageStickerItemResponse>;
-const MessageResponseStickerItemsList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<MessageResponseStickerItemsList>;
-
 export type MessageCallResponseParticipantsList = Array<string>;
-const MessageCallResponseParticipantsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<MessageCallResponseParticipantsList>;
-
 export interface MessageCallResponse {
   ended_timestamp?: string | null;
   participants: MessageCallResponseParticipantsList;
 }
-const MessageCallResponse = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<MessageCallResponse>;
-
 export type ActivityActionTypes = 1 | 2 | 3 | 5 | 6;
-const ActivityActionTypes = S.Number;
-
 export interface MessageActivityResponse {
   type: ActivityActionTypes;
   party_id?: string;
 }
-const MessageActivityResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<MessageActivityResponse>;
-
 export interface BasicApplicationResponseWithBot {
   id: string;
   name: string;
@@ -4121,11 +3168,6 @@ export interface BasicApplicationResponseWithBot {
   flags_new: string;
   bot?: UserResponse;
 }
-const BasicApplicationResponseWithBot = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<BasicApplicationResponseWithBot>;
-
 export interface MessageInteractionResponse {
   id: string;
   type: InteractionTypes;
@@ -4133,28 +3175,14 @@ export interface MessageInteractionResponse {
   user?: UserResponse;
   name_localized?: string;
 }
-const MessageInteractionResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<MessageInteractionResponse>;
-
 export type MessageResponseNonce = number | string;
-const MessageResponseNonce = /*@__PURE__*/ __L.at(__c21, 6);
-
 export type MessageReferenceType = 0;
-const MessageReferenceType = S.Number;
-
 export interface MessageReferenceResponse {
   type: MessageReferenceType;
   channel_id: string;
   message_id?: string;
   guild_id?: string;
 }
-const MessageReferenceResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<MessageReferenceResponse>;
-
 export interface ThreadMetadataResponse {
   archived: boolean;
   archive_timestamp: string | null;
@@ -4163,15 +3191,7 @@ export interface ThreadMetadataResponse {
   create_timestamp?: string;
   invitable?: boolean;
 }
-const ThreadMetadataResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ThreadMetadataResponse>;
-
 export type ThreadResponseAppliedTagsList = Array<string>;
-const ThreadResponseAppliedTagsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<ThreadResponseAppliedTagsList>;
-
 export interface ThreadMemberResponse {
   id: string;
   user_id: string;
@@ -4179,11 +3199,6 @@ export interface ThreadMemberResponse {
   flags: number;
   member?: GuildMemberResponse;
 }
-const ThreadMemberResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ThreadMemberResponse>;
-
 export interface ThreadResponse {
   id: string;
   type: ChannelTypes;
@@ -4207,68 +3222,31 @@ export interface ThreadResponse {
   applied_tags?: ThreadResponseAppliedTagsList;
   member?: ThreadMemberResponse;
 }
-const ThreadResponse = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<ThreadResponse>;
-
 export interface MessageMentionChannelResponse {
   id: string;
   name: string;
   type: ChannelTypes;
   guild_id: string;
 }
-const MessageMentionChannelResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<MessageMentionChannelResponse>;
-
 export type MessageResponseMentionChannelsList = Array<MessageMentionChannelResponse>;
-const MessageResponseMentionChannelsList = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<MessageResponseMentionChannelsList>;
-
 export interface MessageRoleSubscriptionDataResponse {
   role_subscription_listing_id: string;
   tier_name: string;
   total_months_subscribed: number;
   is_renewal: boolean;
 }
-const MessageRoleSubscriptionDataResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<MessageRoleSubscriptionDataResponse>;
-
 export type PurchaseType = 0;
-const PurchaseType = S.Number;
-
 export interface GuildProductPurchaseResponse {
   listing_id: string;
   product_name: string;
 }
-const GuildProductPurchaseResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GuildProductPurchaseResponse>;
-
 export interface PurchaseNotificationResponse {
   type: PurchaseType;
   guild_product_purchase?: GuildProductPurchaseResponse;
 }
-const PurchaseNotificationResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<PurchaseNotificationResponse>;
-
 export type ResolvedObjectsResponseUsersMap = { [key: string]: UserResponse | undefined };
-const ResolvedObjectsResponseUsersMap = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ResolvedObjectsResponseUsersMap>;
-
 /** array of role object ids */
 export type BasicGuildMemberResponseRolesList = Array<string>;
-const BasicGuildMemberResponseRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BasicGuildMemberResponseRolesList>;
-
 export interface BasicGuildMemberResponse {
   /** the member's guild avatar hash */
   avatar: string | null;
@@ -4293,84 +3271,43 @@ export interface BasicGuildMemberResponse {
   /** data for the member's collectibles */
   collectibles?: UserCollectiblesResponse | null;
 }
-const BasicGuildMemberResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<BasicGuildMemberResponse>;
-
 export type ResolvedObjectsResponseMembersMap = {
   [key: string]: BasicGuildMemberResponse | undefined;
 };
-const ResolvedObjectsResponseMembersMap = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ResolvedObjectsResponseMembersMap>;
-
 export type ResolvedObjectsResponseChannelsValue =
   | GuildChannelResponse
   | PrivateChannelResponse
   | PrivateGroupChannelResponse
   | ThreadResponse;
-const ResolvedObjectsResponseChannelsValue = /*@__PURE__*/ __L.at(__c23, 3);
-
 export type ResolvedObjectsResponseChannelsMap = {
   [key: string]: ResolvedObjectsResponseChannelsValue | undefined;
 };
-const ResolvedObjectsResponseChannelsMap = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ResolvedObjectsResponseChannelsMap>;
-
 export type ResolvedObjectsResponseRolesMap = { [key: string]: GuildRoleResponse | undefined };
-const ResolvedObjectsResponseRolesMap = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ResolvedObjectsResponseRolesMap>;
-
 export interface ResolvedObjectsResponse {
   users?: ResolvedObjectsResponseUsersMap | null;
   members?: ResolvedObjectsResponseMembersMap | null;
   channels?: ResolvedObjectsResponseChannelsMap | null;
   roles?: ResolvedObjectsResponseRolesMap | null;
 }
-const ResolvedObjectsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ResolvedObjectsResponse>;
-
 export interface MessageReactionEmojiResponse {
   id: string | null;
   name: string | null;
   animated?: boolean;
 }
-const MessageReactionEmojiResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<MessageReactionEmojiResponse>;
-
 export interface PollMediaResponse {
   /** The text of the field */
   text?: string;
   /** The emoji of the field */
   emoji?: MessageReactionEmojiResponse;
 }
-const PollMediaResponse = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<PollMediaResponse>;
-
 export interface PollAnswerResponse {
   /** The ID of the answer */
   answer_id: number;
   /** The data of the answer */
   poll_media: PollMediaResponse;
 }
-const PollAnswerResponse = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<PollAnswerResponse>;
-
 /** Each of the answers available in the poll */
 export type PollResponseAnswersList = Array<PollAnswerResponse>;
-const PollResponseAnswersList = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<PollResponseAnswersList>;
-
 export interface PollResultsEntryResponse {
   /** The answer_id */
   id: number;
@@ -4379,26 +3316,14 @@ export interface PollResultsEntryResponse {
   /** Whether the current user voted for this answer */
   me_voted: boolean;
 }
-const PollResultsEntryResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<PollResultsEntryResponse>;
-
 /** The counts for each answer */
 export type PollResultsResponseAnswerCountsList = Array<PollResultsEntryResponse>;
-const PollResultsResponseAnswerCountsList = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<PollResultsResponseAnswerCountsList>;
-
 export interface PollResultsResponse {
   /** The counts for each answer */
   answer_counts: PollResultsResponseAnswerCountsList;
   /** Whether the votes have been precisely counted */
   is_finalized: boolean;
 }
-const PollResultsResponse = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<PollResultsResponse>;
-
 export interface PollResponse {
   /** The question of the poll. Only `text` is supported. */
   question: PollMediaResponse;
@@ -4413,26 +3338,14 @@ export interface PollResponse {
   /** The results of the poll */
   results: PollResultsResponse;
 }
-const PollResponse = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<PollResponse>;
-
 export type CustomClientThemeResponseColorsList = Array<string>;
-const CustomClientThemeResponseColorsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<CustomClientThemeResponseColorsList>;
-
 export type MessageShareCustomUserThemeBaseTheme = 0 | 1 | 2 | 3 | 4;
-const MessageShareCustomUserThemeBaseTheme = S.Number;
-
 export interface CustomClientThemeResponse {
   colors: CustomClientThemeResponseColorsList;
   gradient_angle: number;
   base_mix: number;
   base_theme: MessageShareCustomUserThemeBaseTheme;
 }
-const CustomClientThemeResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<CustomClientThemeResponse>;
-
 export type ApplicationCommandInteractionMetadataResponseAuthorizingIntegrationOwnersMap = {
   [key: string]: string | undefined;
 };
@@ -4474,24 +3387,10 @@ export type MessageResponseInteractionMetadata =
   | ApplicationCommandInteractionMetadataResponse
   | MessageComponentInteractionMetadataResponse
   | ModalSubmitInteractionMetadataResponse;
-const MessageResponseInteractionMetadata = /*@__PURE__*/ __L.at(__c25, 0);
-
 export type MinimalContentMessageResponseMentionsList = Array<UserResponse>;
-const MinimalContentMessageResponseMentionsList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<MinimalContentMessageResponseMentionsList>;
-
 export type MinimalContentMessageResponseMentionRolesList = Array<string>;
-const MinimalContentMessageResponseMentionRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<MinimalContentMessageResponseMentionRolesList>;
-
 export type MinimalContentMessageResponseAttachmentsList = Array<MessageAttachmentResponse>;
-const MinimalContentMessageResponseAttachmentsList =
-  MessageResponseAttachmentsList as any as S.Schema<MinimalContentMessageResponseAttachmentsList>;
-
 export type MinimalContentMessageResponseEmbedsList = Array<MessageEmbedResponse>;
-const MinimalContentMessageResponseEmbedsList =
-  MessageResponseEmbedsList as any as S.Schema<MinimalContentMessageResponseEmbedsList>;
-
 export type MinimalContentMessageResponseComponentsItem =
   | ActionRowComponentResponse
   | ContainerComponentResponse
@@ -4500,31 +3399,14 @@ export type MinimalContentMessageResponseComponentsItem =
   | SectionComponentResponse
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
-const MinimalContentMessageResponseComponentsItem = /*@__PURE__*/ __L.at(__c25, 1);
-
 export type MinimalContentMessageResponseComponentsList =
   Array<MinimalContentMessageResponseComponentsItem>;
-const MinimalContentMessageResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<MinimalContentMessageResponseComponentsList>;
-
 export type MinimalContentMessageResponseStickersItem =
   | GuildStickerResponse
   | StandardStickerResponse;
-const MinimalContentMessageResponseStickersItem = /*@__PURE__*/ __L.at(__c25, 3);
-
 export type MinimalContentMessageResponseStickersList =
   Array<MinimalContentMessageResponseStickersItem>;
-const MinimalContentMessageResponseStickersList = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<MinimalContentMessageResponseStickersList>;
-
 export type MinimalContentMessageResponseStickerItemsList = Array<MessageStickerItemResponse>;
-const MinimalContentMessageResponseStickerItemsList =
-  MessageResponseStickerItemsList as any as S.Schema<MinimalContentMessageResponseStickerItemsList>;
-
 export interface MinimalContentMessageResponse {
   type: MessageType;
   content: string;
@@ -4539,46 +3421,18 @@ export interface MinimalContentMessageResponse {
   stickers?: MinimalContentMessageResponseStickersList;
   sticker_items?: MinimalContentMessageResponseStickerItemsList;
 }
-const MinimalContentMessageResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<MinimalContentMessageResponse>;
-
 export interface MessageSnapshotResponse {
   message: MinimalContentMessageResponse;
 }
-const MessageSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<MessageSnapshotResponse>;
-
 export type MessageResponseMessageSnapshotsList = Array<MessageSnapshotResponse>;
-const MessageResponseMessageSnapshotsList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<MessageResponseMessageSnapshotsList>;
-
 export interface MessageLobbyMemberResponse {
   additional_name: string;
 }
-const MessageLobbyMemberResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<MessageLobbyMemberResponse>;
-
 export interface MessageReactionCountDetailsResponse {
   burst: number;
   normal: number;
 }
-const MessageReactionCountDetailsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<MessageReactionCountDetailsResponse>;
-
 export type MessageReactionResponseBurstColorsList = Array<string>;
-const MessageReactionResponseBurstColorsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<MessageReactionResponseBurstColorsList>;
-
 export interface MessageReactionResponse {
   emoji: MessageReactionEmojiResponse;
   count: number;
@@ -4587,33 +3441,11 @@ export interface MessageReactionResponse {
   me_burst: boolean;
   me: boolean;
 }
-const MessageReactionResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<MessageReactionResponse>;
-
 export type MessageResponseReactionsList = Array<MessageReactionResponse>;
-const MessageResponseReactionsList = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<MessageResponseReactionsList>;
-
 export type BasicMessageResponseMentionsList = Array<UserResponse>;
-const BasicMessageResponseMentionsList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<BasicMessageResponseMentionsList>;
-
 export type BasicMessageResponseMentionRolesList = Array<string>;
-const BasicMessageResponseMentionRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<BasicMessageResponseMentionRolesList>;
-
 export type BasicMessageResponseAttachmentsList = Array<MessageAttachmentResponse>;
-const BasicMessageResponseAttachmentsList =
-  MessageResponseAttachmentsList as any as S.Schema<BasicMessageResponseAttachmentsList>;
-
 export type BasicMessageResponseEmbedsList = Array<MessageEmbedResponse>;
-const BasicMessageResponseEmbedsList =
-  MessageResponseEmbedsList as any as S.Schema<BasicMessageResponseEmbedsList>;
-
 export type BasicMessageResponseComponentsItem =
   | ActionRowComponentResponse
   | ContainerComponentResponse
@@ -4622,44 +3454,17 @@ export type BasicMessageResponseComponentsItem =
   | SectionComponentResponse
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
-const BasicMessageResponseComponentsItem = /*@__PURE__*/ __L.at(__c26, 4);
-
 export type BasicMessageResponseComponentsList = Array<BasicMessageResponseComponentsItem>;
-const BasicMessageResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<BasicMessageResponseComponentsList>;
-
 export type BasicMessageResponseStickersItem = GuildStickerResponse | StandardStickerResponse;
-const BasicMessageResponseStickersItem = /*@__PURE__*/ __L.at(__c26, 6);
-
 export type BasicMessageResponseStickersList = Array<BasicMessageResponseStickersItem>;
-const BasicMessageResponseStickersList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<BasicMessageResponseStickersList>;
-
 export type BasicMessageResponseStickerItemsList = Array<MessageStickerItemResponse>;
-const BasicMessageResponseStickerItemsList =
-  MessageResponseStickerItemsList as any as S.Schema<BasicMessageResponseStickerItemsList>;
-
 export type BasicMessageResponseNonce = number | string;
-const BasicMessageResponseNonce = /*@__PURE__*/ __L.at(__c27, 0);
-
 export type BasicMessageResponseMentionChannelsList = Array<MessageMentionChannelResponse>;
-const BasicMessageResponseMentionChannelsList =
-  MessageResponseMentionChannelsList as any as S.Schema<BasicMessageResponseMentionChannelsList>;
-
 export type BasicMessageResponseInteractionMetadata =
   | ApplicationCommandInteractionMetadataResponse
   | MessageComponentInteractionMetadataResponse
   | ModalSubmitInteractionMetadataResponse;
-const BasicMessageResponseInteractionMetadata = /*@__PURE__*/ __L.at(__c27, 1);
-
 export type BasicMessageResponseMessageSnapshotsList = Array<MessageSnapshotResponse>;
-const BasicMessageResponseMessageSnapshotsList =
-  MessageResponseMessageSnapshotsList as any as S.Schema<BasicMessageResponseMessageSnapshotsList>;
-
 export interface BasicMessageResponse {
   type: MessageType;
   content: string;
@@ -4699,11 +3504,6 @@ export interface BasicMessageResponse {
   message_snapshots?: BasicMessageResponseMessageSnapshotsList;
   lobby_member?: MessageLobbyMemberResponse;
 }
-const BasicMessageResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<BasicMessageResponse>;
-
 export interface MessageResponse {
   type: MessageType;
   content: string;
@@ -4745,8 +3545,6 @@ export interface MessageResponse {
   reactions?: MessageResponseReactionsList;
   referenced_message?: BasicMessageResponse | null;
 }
-const MessageResponse = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<MessageResponse>;
-
 export interface CreateMessageInteractionCallbackResponse {
   type: InteractionCallbackTypes;
   message: MessageResponse;
@@ -4763,70 +3561,31 @@ export type InteractionCallbackResponseResource =
   | CreateMessageInteractionCallbackResponse
   | LaunchActivityInteractionCallbackResponse
   | CreateMessageInteractionCallbackResponse;
-const InteractionCallbackResponseResource = /*@__PURE__*/ __L.at(__c27, 4);
-
 export interface InteractionCallbackResponse {
   interaction: InteractionResponse;
   resource?: InteractionCallbackResponseResource;
 }
-const InteractionCallbackResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<InteractionCallbackResponse>;
-
 export interface CreateLinkedLobbyGuildInviteForSelfRequest {
   lobby_id: string;
 }
-const CreateLinkedLobbyGuildInviteForSelfRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<CreateLinkedLobbyGuildInviteForSelfRequest>;
-
 export interface LobbyGuildInviteResponse {
   code: string;
 }
-const LobbyGuildInviteResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<LobbyGuildInviteResponse>;
-
 export interface CreateLinkedLobbyGuildInviteForUserRequest {
   lobby_id: string;
   user_id: string;
 }
-const CreateLinkedLobbyGuildInviteForUserRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<CreateLinkedLobbyGuildInviteForUserRequest>;
-
 export type LobbyMemberRequestMetadataMap = { [key: string]: string | undefined };
-const LobbyMemberRequestMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<LobbyMemberRequestMetadataMap>;
-
 export type LobbyMemberRequestFlags = 1;
-const LobbyMemberRequestFlags = S.Number;
-
 export interface LobbyMemberRequest {
   id: string;
   metadata?: LobbyMemberRequestMetadataMap | null;
   flags?: LobbyMemberRequestFlags | (number & {}) | null;
   additional_name?: string | null;
 }
-const LobbyMemberRequest = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<LobbyMemberRequest>;
-
 export type CreateLobbyRequestMembersList = Array<LobbyMemberRequest>;
-const CreateLobbyRequestMembersList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<CreateLobbyRequestMembersList>;
-
 export type CreateLobbyRequestMetadataMap = { [key: string]: string | undefined };
-const CreateLobbyRequestMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<CreateLobbyRequestMetadataMap>;
-
 export type CreateLobbyRequestFlags = 1;
-const CreateLobbyRequestFlags = S.Number;
-
 export interface CreateLobbyRequest {
   idle_timeout_seconds?: number | null;
   members?: CreateLobbyRequestMembersList | null;
@@ -4834,16 +3593,8 @@ export interface CreateLobbyRequest {
   flags?: CreateLobbyRequestFlags | (number & {}) | null;
   override_event_webhooks_url?: string | null;
 }
-const CreateLobbyRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<CreateLobbyRequest>;
-
 export type LobbyResponseMetadataMap = { [key: string]: string | undefined };
-const LobbyResponseMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<LobbyResponseMetadataMap>;
-
 export type LobbyResponseMembersList = Array<LobbyMemberResponse>;
-const LobbyResponseMembersList =
-  BulkUpdateLobbyMembersResponseBodyList as any as S.Schema<LobbyResponseMembersList>;
-
 export interface LobbyResponse {
   id: string;
   application_id: string;
@@ -4853,16 +3604,8 @@ export interface LobbyResponse {
   flags: number;
   override_event_webhooks_url?: string | null;
 }
-const LobbyResponse = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<LobbyResponse>;
-
 export type CreateLobbyMessageRequestEmbedsList = Array<RichEmbed>;
-const CreateLobbyMessageRequestEmbedsList =
-  IncomingWebhookInteractionRequestEmbedsList as any as S.Schema<CreateLobbyMessageRequestEmbedsList>;
-
 export type CreateLobbyMessageRequestStickerIdsList = Array<string>;
-const CreateLobbyMessageRequestStickerIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<CreateLobbyMessageRequestStickerIdsList>;
-
 export type CreateLobbyMessageRequestComponentsItem =
   | ActionRowComponentForMessageRequest
   | ContainerComponentForMessageRequest
@@ -4871,34 +3614,16 @@ export type CreateLobbyMessageRequestComponentsItem =
   | SectionComponentForMessageRequest
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
-const CreateLobbyMessageRequestComponentsItem = /*@__PURE__*/ __L.at(__c28, 5);
-
 export type CreateLobbyMessageRequestComponentsList =
   Array<CreateLobbyMessageRequestComponentsItem>;
-const CreateLobbyMessageRequestComponentsList = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<CreateLobbyMessageRequestComponentsList>;
-
 export type CreateLobbyMessageRequestAttachmentsList = Array<MessageAttachmentRequest>;
-const CreateLobbyMessageRequestAttachmentsList =
-  IncomingWebhookInteractionRequestAttachmentsList as any as S.Schema<CreateLobbyMessageRequestAttachmentsList>;
-
 export type CustomClientThemeShareRequestColorsList = Array<string>;
-const CustomClientThemeShareRequestColorsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<CustomClientThemeShareRequestColorsList>;
-
 export interface CustomClientThemeShareRequest {
   colors: CustomClientThemeShareRequestColorsList;
   gradient_angle: number;
   base_mix: number;
   base_theme?: MessageShareCustomUserThemeBaseTheme | (number & {}) | null;
 }
-const CustomClientThemeShareRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<CustomClientThemeShareRequest>;
-
 export interface MessageReferenceRequest {
   guild_id?: string | null;
   channel_id?: string | null;
@@ -4906,14 +3631,7 @@ export interface MessageReferenceRequest {
   fail_if_not_exists?: boolean | null;
   type?: MessageReferenceType | (number & {}) | null;
 }
-const MessageReferenceRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<MessageReferenceRequest>;
-
 export type CreateLobbyMessageRequestNonce = number | string;
-const CreateLobbyMessageRequestNonce = /*@__PURE__*/ __L.at(__c29, 1);
-
 export interface CreateLobbyMessageRequest {
   lobby_id: string;
   content?: string | null;
@@ -4930,19 +3648,8 @@ export interface CreateLobbyMessageRequest {
   enforce_nonce?: boolean | null;
   tts?: boolean | null;
 }
-const CreateLobbyMessageRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<CreateLobbyMessageRequest>;
-
 export type LobbyMessageResponseMetadataMap = { [key: string]: string | undefined };
-const LobbyMessageResponseMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<LobbyMessageResponseMetadataMap>;
-
 export type LobbyMessageResponseModerationMetadataMap = { [key: string]: string | undefined };
-const LobbyMessageResponseModerationMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<LobbyMessageResponseModerationMetadataMap>;
-
 export interface LobbyMessageResponse {
   id: string;
   type: MessageType;
@@ -4956,19 +3663,8 @@ export interface LobbyMessageResponse {
   flags: number;
   application_id?: string;
 }
-const LobbyMessageResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<LobbyMessageResponse>;
-
 export type CreateMessageRequestEmbedsList = Array<RichEmbed>;
-const CreateMessageRequestEmbedsList =
-  IncomingWebhookInteractionRequestEmbedsList as any as S.Schema<CreateMessageRequestEmbedsList>;
-
 export type CreateMessageRequestStickerIdsList = Array<string>;
-const CreateMessageRequestStickerIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<CreateMessageRequestStickerIdsList>;
-
 export type CreateMessageRequestComponentsItem =
   | ActionRowComponentForMessageRequest
   | ContainerComponentForMessageRequest
@@ -4977,21 +3673,9 @@ export type CreateMessageRequestComponentsItem =
   | SectionComponentForMessageRequest
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
-const CreateMessageRequestComponentsItem = /*@__PURE__*/ __L.at(__c29, 4);
-
 export type CreateMessageRequestComponentsList = Array<CreateMessageRequestComponentsItem>;
-const CreateMessageRequestComponentsList = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<CreateMessageRequestComponentsList>;
-
 export type CreateMessageRequestAttachmentsList = Array<MessageAttachmentRequest>;
-const CreateMessageRequestAttachmentsList =
-  IncomingWebhookInteractionRequestAttachmentsList as any as S.Schema<CreateMessageRequestAttachmentsList>;
-
 export type CreateMessageRequestNonce = number | string;
-const CreateMessageRequestNonce = /*@__PURE__*/ __L.at(__c29, 6);
-
 export interface CreateMessageRequest {
   channel_id: string;
   content?: string | null;
@@ -5008,22 +3692,9 @@ export interface CreateMessageRequest {
   enforce_nonce?: boolean | null;
   tts?: boolean | null;
 }
-const CreateMessageRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<CreateMessageRequest>;
-
 export type CreateOrJoinLobbyRequestLobbyMetadataMap = { [key: string]: string | undefined };
-const CreateOrJoinLobbyRequestLobbyMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<CreateOrJoinLobbyRequestLobbyMetadataMap>;
-
 export type CreateOrJoinLobbyRequestMemberMetadataMap = { [key: string]: string | undefined };
-const CreateOrJoinLobbyRequestMemberMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<CreateOrJoinLobbyRequestMemberMetadataMap>;
-
 export type CreateOrJoinLobbyRequestFlags = 1;
-const CreateOrJoinLobbyRequestFlags = S.Number;
-
 export interface CreateOrJoinLobbyRequest {
   idle_timeout_seconds?: number | null;
   lobby_metadata?: CreateOrJoinLobbyRequestLobbyMetadataMap | null;
@@ -5031,23 +3702,12 @@ export interface CreateOrJoinLobbyRequest {
   secret: string | Redacted.Redacted<string>;
   flags?: CreateOrJoinLobbyRequestFlags | (number & {}) | null;
 }
-const CreateOrJoinLobbyRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<CreateOrJoinLobbyRequest>;
-
 export interface CreatePinRequest {
   channel_id: string;
   message_id: string;
 }
-const CreatePinRequest = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<CreatePinRequest>;
-
 export interface CreatePinResponse {}
-const CreatePinResponse = AddGuildMemberRoleResponse as any as S.Schema<CreatePinResponse>;
-
 export type StageInstancesPrivacyLevels = 1 | 2;
-const StageInstancesPrivacyLevels = S.Number;
-
 export interface CreateStageInstanceRequest {
   topic: string;
   channel_id: string;
@@ -5055,11 +3715,6 @@ export interface CreateStageInstanceRequest {
   guild_scheduled_event_id?: string | null;
   send_start_notification?: boolean | null;
 }
-const CreateStageInstanceRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<CreateStageInstanceRequest>;
-
 export interface StageInstanceResponse {
   guild_id: string;
   channel_id: string;
@@ -5069,11 +3724,6 @@ export interface StageInstanceResponse {
   discoverable_disabled: boolean;
   guild_scheduled_event_id: string | null;
 }
-const StageInstanceResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<StageInstanceResponse>;
-
 export type CreateForumThreadRequestAppliedTagsList = Array<string>;
 export type BaseCreateMessageCreateRequestEmbedsList = Array<RichEmbed>;
 export type BaseCreateMessageCreateRequestStickerIdsList = Array<string>;
@@ -5116,14 +3766,10 @@ export interface CreateTextThreadWithoutMessageRequest {
 export type CreateThreadRequestBody =
   | CreateForumThreadRequest
   | CreateTextThreadWithoutMessageRequest;
-const CreateThreadRequestBody = /*@__PURE__*/ __L.at(__c30, 4);
-
 export interface CreateThreadRequest {
   channel_id: string;
   body: CreateThreadRequestBody;
 }
-const CreateThreadRequest = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<CreateThreadRequest>;
-
 export type CreatedThreadResponseAppliedTagsList = Array<string>;
 export interface CreatedThreadResponse {
   id: string;
@@ -5148,8 +3794,6 @@ export interface CreatedThreadResponse {
   applied_tags?: CreatedThreadResponseAppliedTagsList;
   member?: ThreadMemberResponse;
 }
-const CreatedThreadResponse = ThreadResponse as any as S.Schema<CreatedThreadResponse>;
-
 export interface CreateThreadFromMessageRequest {
   channel_id: string;
   message_id: string;
@@ -5157,24 +3801,12 @@ export interface CreateThreadFromMessageRequest {
   auto_archive_duration?: ThreadAutoArchiveDuration | (number & {}) | null;
   rate_limit_per_user?: number | null;
 }
-const CreateThreadFromMessageRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<CreateThreadFromMessageRequest>;
-
 export interface CreateWebhookRequest {
   channel_id: string;
   name: string;
   avatar?: string | null;
 }
-const CreateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<CreateWebhookRequest>;
-
 export type WebhookTypes = 1 | 2 | 3;
-const WebhookTypes = S.Number;
-
 export interface GuildIncomingWebhookResponse {
   application_id: string | null;
   avatar: string | null;
@@ -5187,473 +3819,192 @@ export interface GuildIncomingWebhookResponse {
   token?: string;
   url?: string;
 }
-const GuildIncomingWebhookResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GuildIncomingWebhookResponse>;
-
 export interface CrosspostMessageRequest {
   channel_id: string;
   message_id: string;
 }
-const CrosspostMessageRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<CrosspostMessageRequest>;
-
 export interface DeleteAllMessageReactionsRequest {
   channel_id: string;
   message_id: string;
 }
-const DeleteAllMessageReactionsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<DeleteAllMessageReactionsRequest>;
-
 export interface DeleteAllMessageReactionsResponse {}
-const DeleteAllMessageReactionsResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteAllMessageReactionsResponse>;
-
 export interface DeleteAllMessageReactionsByEmojiRequest {
   channel_id: string;
   message_id: string;
   emoji_name: string;
 }
-const DeleteAllMessageReactionsByEmojiRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<DeleteAllMessageReactionsByEmojiRequest>;
-
 export interface DeleteAllMessageReactionsByEmojiResponse {}
-const DeleteAllMessageReactionsByEmojiResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteAllMessageReactionsByEmojiResponse>;
-
 export interface DeleteApplicationCommandRequest {
   application_id: string;
   command_id: string;
 }
-const DeleteApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<DeleteApplicationCommandRequest>;
-
 export interface DeleteApplicationCommandResponse {}
-const DeleteApplicationCommandResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteApplicationCommandResponse>;
-
 export interface DeleteApplicationEmojiRequest {
   application_id: string;
   emoji_id: string;
 }
-const DeleteApplicationEmojiRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<DeleteApplicationEmojiRequest>;
-
 export interface DeleteApplicationEmojiResponse {}
-const DeleteApplicationEmojiResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteApplicationEmojiResponse>;
-
 export interface DeleteApplicationUserRoleConnectionRequest {
   application_id: string;
 }
-const DeleteApplicationUserRoleConnectionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<DeleteApplicationUserRoleConnectionRequest>;
-
 export interface DeleteApplicationUserRoleConnectionResponse {}
-const DeleteApplicationUserRoleConnectionResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteApplicationUserRoleConnectionResponse>;
-
 export interface DeleteAutoModerationRuleRequest {
   guild_id: string;
   rule_id: string;
 }
-const DeleteAutoModerationRuleRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<DeleteAutoModerationRuleRequest>;
-
 export interface DeleteAutoModerationRuleResponse {}
-const DeleteAutoModerationRuleResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteAutoModerationRuleResponse>;
-
 export interface DeleteChannelRequest {
   channel_id: string;
 }
-const DeleteChannelRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<DeleteChannelRequest>;
-
 export type DeleteChannelResponseBody =
   | GuildChannelResponse
   | PrivateChannelResponse
   | PrivateGroupChannelResponse
   | ThreadResponse;
-const DeleteChannelResponseBody = /*@__PURE__*/ __L.at(__c32, 1);
-
 export type DeleteChannelResponse = DeleteChannelResponseBody;
-const DeleteChannelResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<DeleteChannelResponse>;
-
 export interface DeleteChannelPermissionOverwriteRequest {
   channel_id: string;
   overwrite_id: string;
 }
-const DeleteChannelPermissionOverwriteRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<DeleteChannelPermissionOverwriteRequest>;
-
 export interface DeleteChannelPermissionOverwriteResponse {}
-const DeleteChannelPermissionOverwriteResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteChannelPermissionOverwriteResponse>;
-
 export interface DeleteDeprecatedPinRequest {
   channel_id: string;
   message_id: string;
 }
-const DeleteDeprecatedPinRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<DeleteDeprecatedPinRequest>;
-
 export interface DeleteDeprecatedPinResponse {}
-const DeleteDeprecatedPinResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteDeprecatedPinResponse>;
-
 export interface DeleteEntitlementRequest {
   application_id: string;
   entitlement_id: string;
 }
-const DeleteEntitlementRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<DeleteEntitlementRequest>;
-
 export interface DeleteEntitlementResponse {}
-const DeleteEntitlementResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteEntitlementResponse>;
-
 export interface DeleteGroupDmUserRequest {
   channel_id: string;
   user_id: string;
 }
-const DeleteGroupDmUserRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<DeleteGroupDmUserRequest>;
-
 export interface DeleteGroupDmUserResponse {}
-const DeleteGroupDmUserResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteGroupDmUserResponse>;
-
 export interface DeleteGuildApplicationCommandRequest {
   application_id: string;
   guild_id: string;
   command_id: string;
 }
-const DeleteGuildApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<DeleteGuildApplicationCommandRequest>;
-
 export interface DeleteGuildApplicationCommandResponse {}
-const DeleteGuildApplicationCommandResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteGuildApplicationCommandResponse>;
-
 export interface DeleteGuildEmojiRequest {
   guild_id: string;
   emoji_id: string;
 }
-const DeleteGuildEmojiRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<DeleteGuildEmojiRequest>;
-
 export interface DeleteGuildEmojiResponse {}
-const DeleteGuildEmojiResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteGuildEmojiResponse>;
-
 export interface DeleteGuildIntegrationRequest {
   guild_id: string;
   integration_id: string;
 }
-const DeleteGuildIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<DeleteGuildIntegrationRequest>;
-
 export interface DeleteGuildIntegrationResponse {}
-const DeleteGuildIntegrationResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteGuildIntegrationResponse>;
-
 export interface DeleteGuildMemberRequest {
   guild_id: string;
   user_id: string;
 }
-const DeleteGuildMemberRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<DeleteGuildMemberRequest>;
-
 export interface DeleteGuildMemberResponse {}
-const DeleteGuildMemberResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteGuildMemberResponse>;
-
 export interface DeleteGuildMemberRoleRequest {
   guild_id: string;
   user_id: string;
   role_id: string;
 }
-const DeleteGuildMemberRoleRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<DeleteGuildMemberRoleRequest>;
-
 export interface DeleteGuildMemberRoleResponse {}
-const DeleteGuildMemberRoleResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteGuildMemberRoleResponse>;
-
 export interface DeleteGuildRoleRequest {
   guild_id: string;
   role_id: string;
 }
-const DeleteGuildRoleRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<DeleteGuildRoleRequest>;
-
 export interface DeleteGuildRoleResponse {}
-const DeleteGuildRoleResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteGuildRoleResponse>;
-
 export interface DeleteGuildScheduledEventRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
 }
-const DeleteGuildScheduledEventRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<DeleteGuildScheduledEventRequest>;
-
 export interface DeleteGuildScheduledEventResponse {}
-const DeleteGuildScheduledEventResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteGuildScheduledEventResponse>;
-
 export interface DeleteGuildScheduledEventExceptionRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
   exception_id: string;
 }
-const DeleteGuildScheduledEventExceptionRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<DeleteGuildScheduledEventExceptionRequest>;
-
 export interface DeleteGuildScheduledEventExceptionResponse {}
-const DeleteGuildScheduledEventExceptionResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteGuildScheduledEventExceptionResponse>;
-
 export interface DeleteGuildSoundboardSoundRequest {
   guild_id: string;
   sound_id: string;
 }
-const DeleteGuildSoundboardSoundRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<DeleteGuildSoundboardSoundRequest>;
-
 export interface DeleteGuildSoundboardSoundResponse {}
-const DeleteGuildSoundboardSoundResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteGuildSoundboardSoundResponse>;
-
 export interface DeleteGuildStickerRequest {
   guild_id: string;
   sticker_id: string;
 }
-const DeleteGuildStickerRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<DeleteGuildStickerRequest>;
-
 export interface DeleteGuildStickerResponse {}
-const DeleteGuildStickerResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteGuildStickerResponse>;
-
 export interface DeleteGuildTemplateRequest {
   guild_id: string;
   code: string;
 }
-const DeleteGuildTemplateRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<DeleteGuildTemplateRequest>;
-
 export interface DeleteLobbyRequest {
   lobby_id: string;
 }
-const DeleteLobbyRequest = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<DeleteLobbyRequest>;
-
 export interface DeleteLobbyResponse {}
-const DeleteLobbyResponse = AddGuildMemberRoleResponse as any as S.Schema<DeleteLobbyResponse>;
-
 export interface DeleteLobbyMemberRequest {
   lobby_id: string;
   user_id: string;
 }
-const DeleteLobbyMemberRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<DeleteLobbyMemberRequest>;
-
 export interface DeleteLobbyMemberResponse {}
-const DeleteLobbyMemberResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteLobbyMemberResponse>;
-
 export interface DeleteMessageRequest {
   channel_id: string;
   message_id: string;
 }
-const DeleteMessageRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<DeleteMessageRequest>;
-
 export interface DeleteMessageResponse {}
-const DeleteMessageResponse = AddGuildMemberRoleResponse as any as S.Schema<DeleteMessageResponse>;
-
 export interface DeleteMyMessageReactionRequest {
   channel_id: string;
   message_id: string;
   emoji_name: string;
 }
-const DeleteMyMessageReactionRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<DeleteMyMessageReactionRequest>;
-
 export interface DeleteMyMessageReactionResponse {}
-const DeleteMyMessageReactionResponse =
-  BulkUpdateGuildChannelsResponse as any as S.Schema<DeleteMyMessageReactionResponse>;
-
 export interface DeleteOriginalWebhookMessageRequest {
   webhook_id: string;
   webhook_token: string;
   thread_id?: string;
 }
-const DeleteOriginalWebhookMessageRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<DeleteOriginalWebhookMessageRequest>;
-
 export interface DeleteOriginalWebhookMessageResponse {}
-const DeleteOriginalWebhookMessageResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteOriginalWebhookMessageResponse>;
-
 export interface DeletePinRequest {
   channel_id: string;
   message_id: string;
 }
-const DeletePinRequest = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<DeletePinRequest>;
-
 export interface DeletePinResponse {}
-const DeletePinResponse = AddGuildMemberRoleResponse as any as S.Schema<DeletePinResponse>;
-
 export interface DeleteStageInstanceRequest {
   channel_id: string;
 }
-const DeleteStageInstanceRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<DeleteStageInstanceRequest>;
-
 export interface DeleteStageInstanceResponse {}
-const DeleteStageInstanceResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteStageInstanceResponse>;
-
 export interface DeleteThreadMemberRequest {
   channel_id: string;
   user_id: string;
 }
-const DeleteThreadMemberRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<DeleteThreadMemberRequest>;
-
 export interface DeleteThreadMemberResponse {}
-const DeleteThreadMemberResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteThreadMemberResponse>;
-
 export interface DeleteUserMessageReactionRequest {
   channel_id: string;
   message_id: string;
   emoji_name: string;
   user_id: string;
 }
-const DeleteUserMessageReactionRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<DeleteUserMessageReactionRequest>;
-
 export interface DeleteUserMessageReactionResponse {}
-const DeleteUserMessageReactionResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<DeleteUserMessageReactionResponse>;
-
 export interface DeleteWebhookRequest {
   webhook_id: string;
 }
-const DeleteWebhookRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<DeleteWebhookRequest>;
-
 export interface DeleteWebhookResponse {}
-const DeleteWebhookResponse = AddGuildMemberRoleResponse as any as S.Schema<DeleteWebhookResponse>;
-
 export interface DeleteWebhookByTokenRequest {
   webhook_id: string;
   webhook_token: string;
 }
-const DeleteWebhookByTokenRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<DeleteWebhookByTokenRequest>;
-
 export interface DeleteWebhookByTokenResponse {}
-const DeleteWebhookByTokenResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteWebhookByTokenResponse>;
-
 export interface DeleteWebhookMessageRequest {
   webhook_id: string;
   webhook_token: string;
   message_id: string;
   thread_id?: string;
 }
-const DeleteWebhookMessageRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<DeleteWebhookMessageRequest>;
-
 export interface DeleteWebhookMessageResponse {}
-const DeleteWebhookMessageResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<DeleteWebhookMessageResponse>;
-
 export type EditLobbyRequestMetadataMap = { [key: string]: string | undefined };
-const EditLobbyRequestMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<EditLobbyRequestMetadataMap>;
-
 export type EditLobbyRequestMembersList = Array<LobbyMemberRequest>;
-const EditLobbyRequestMembersList =
-  CreateLobbyRequestMembersList as any as S.Schema<EditLobbyRequestMembersList>;
-
 export type EditLobbyRequestFlags = 1;
-const EditLobbyRequestFlags = S.Number;
-
 export interface EditLobbyRequest {
   lobby_id: string;
   idle_timeout_seconds?: number | null;
@@ -5662,25 +4013,16 @@ export interface EditLobbyRequest {
   flags?: EditLobbyRequestFlags | (number & {}) | null;
   override_event_webhooks_url?: string | null;
 }
-const EditLobbyRequest = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<EditLobbyRequest>;
-
 export interface EditLobbyChannelLinkRequest {
   lobby_id: string;
   channel_id?: string | null;
 }
-const EditLobbyChannelLinkRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<EditLobbyChannelLinkRequest>;
-
 export interface GithubUser {
   id: number;
   login: string;
   html_url: string;
   avatar_url: string;
 }
-const GithubUser = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<GithubUser>;
-
 export interface GithubComment {
   id: number;
   html_url: string;
@@ -5688,8 +4030,6 @@ export interface GithubComment {
   commit_id?: string | null;
   body: string;
 }
-const GithubComment = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<GithubComment>;
-
 export interface GithubIssue {
   id: number;
   number: number;
@@ -5699,71 +4039,42 @@ export interface GithubIssue {
   body?: string | null;
   pull_request?: unknown;
 }
-const GithubIssue = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<GithubIssue>;
-
 export interface GithubRepository {
   id: number;
   html_url: string;
   name: string;
   full_name: string;
 }
-const GithubRepository = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<GithubRepository>;
-
 export interface GithubRelease {
   id: number;
   tag_name: string;
   html_url: string;
   author: GithubUser;
 }
-const GithubRelease = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<GithubRelease>;
-
 export interface GithubAuthor {
   username?: string | null;
   name: string;
 }
-const GithubAuthor = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<GithubAuthor>;
-
 export interface GithubCommit {
   id: string;
   url: string;
   message: string;
   author: GithubAuthor;
 }
-const GithubCommit = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<GithubCommit>;
-
 export type ExecuteGithubCompatibleWebhookRequestCommitsList = Array<GithubCommit>;
-const ExecuteGithubCompatibleWebhookRequestCommitsList = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<ExecuteGithubCompatibleWebhookRequestCommitsList>;
-
 export interface GithubReview {
   user: GithubUser;
   body?: string | null;
   html_url: string;
   state: string;
 }
-const GithubReview = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<GithubReview>;
-
 export interface GithubCheckPullRequest {
   number: number;
 }
-const GithubCheckPullRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GithubCheckPullRequest>;
-
 export type GithubCheckSuitePullRequestsList = Array<GithubCheckPullRequest>;
-const GithubCheckSuitePullRequestsList = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GithubCheckSuitePullRequestsList>;
-
 export interface GithubCheckApp {
   name: string;
 }
-const GithubCheckApp = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<GithubCheckApp>;
-
 export interface GithubCheckSuite {
   conclusion?: string | null;
   head_branch?: string | null;
@@ -5771,21 +4082,11 @@ export interface GithubCheckSuite {
   pull_requests?: GithubCheckSuitePullRequestsList | null;
   app: GithubCheckApp;
 }
-const GithubCheckSuite = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<GithubCheckSuite>;
-
 export interface GithubCheckRunOutput {
   title?: string | null;
   summary?: string | null;
 }
-const GithubCheckRunOutput = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GithubCheckRunOutput>;
-
 export type GithubCheckRunPullRequestsList = Array<GithubCheckPullRequest>;
-const GithubCheckRunPullRequestsList =
-  GithubCheckSuitePullRequestsList as any as S.Schema<GithubCheckRunPullRequestsList>;
-
 export interface GithubCheckRun {
   conclusion?: string | null;
   name: string;
@@ -5795,8 +4096,6 @@ export interface GithubCheckRun {
   output?: GithubCheckRunOutput | null;
   pull_requests?: GithubCheckRunPullRequestsList | null;
 }
-const GithubCheckRun = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<GithubCheckRun>;
-
 export interface GithubDiscussion {
   title: string;
   number: number;
@@ -5805,8 +4104,6 @@ export interface GithubDiscussion {
   body?: string | null;
   user: GithubUser;
 }
-const GithubDiscussion = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<GithubDiscussion>;
-
 export interface ExecuteGithubCompatibleWebhookRequest {
   webhook_id: string;
   webhook_token: string;
@@ -5833,31 +4130,13 @@ export interface ExecuteGithubCompatibleWebhookRequest {
   discussion?: GithubDiscussion | null;
   answer?: GithubComment | null;
 }
-const ExecuteGithubCompatibleWebhookRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<ExecuteGithubCompatibleWebhookRequest>;
-
 export interface ExecuteGithubCompatibleWebhookResponse {}
-const ExecuteGithubCompatibleWebhookResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<ExecuteGithubCompatibleWebhookResponse>;
-
 export interface WebhookSlackEmbedField {
   name?: string | null;
   value?: string | null;
   inline?: boolean | null;
 }
-const WebhookSlackEmbedField = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<WebhookSlackEmbedField>;
-
 export type WebhookSlackEmbedFieldsList = Array<WebhookSlackEmbedField>;
-const WebhookSlackEmbedFieldsList = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<WebhookSlackEmbedFieldsList>;
-
 export interface WebhookSlackEmbed {
   title?: string | null;
   title_link?: string | null;
@@ -5874,14 +4153,7 @@ export interface WebhookSlackEmbed {
   thumb_url?: string | null;
   fields?: WebhookSlackEmbedFieldsList | null;
 }
-const WebhookSlackEmbed = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<WebhookSlackEmbed>;
-
 export type ExecuteSlackCompatibleWebhookRequestAttachmentsList = Array<WebhookSlackEmbed>;
-const ExecuteSlackCompatibleWebhookRequestAttachmentsList = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<ExecuteSlackCompatibleWebhookRequestAttachmentsList>;
-
 export interface ExecuteSlackCompatibleWebhookRequest {
   webhook_id: string;
   webhook_token: string;
@@ -5892,17 +4164,7 @@ export interface ExecuteSlackCompatibleWebhookRequest {
   icon_url?: string | null;
   attachments?: ExecuteSlackCompatibleWebhookRequestAttachmentsList | null;
 }
-const ExecuteSlackCompatibleWebhookRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<ExecuteSlackCompatibleWebhookRequest>;
-
 export type ExecuteSlackCompatibleWebhookResponse = string;
-const ExecuteSlackCompatibleWebhookResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<ExecuteSlackCompatibleWebhookResponse>;
-
 export type IncomingWebhookRequestPartialEmbedsList = Array<RichEmbed>;
 export type IncomingWebhookRequestPartialComponentsItem =
   | ActionRowComponentForMessageRequest
@@ -5954,8 +4216,6 @@ export interface IncomingWebhookUpdateRequestPartial {
 export type ExecuteWebhookRequestBody =
   | IncomingWebhookRequestPartial
   | IncomingWebhookUpdateRequestPartial;
-const ExecuteWebhookRequestBody = /*@__PURE__*/ __L.at(__c38, 7);
-
 export interface ExecuteWebhookRequest {
   webhook_id: string;
   webhook_token: string;
@@ -5964,63 +4224,26 @@ export interface ExecuteWebhookRequest {
   with_components?: boolean;
   body: ExecuteWebhookRequestBody;
 }
-const ExecuteWebhookRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<ExecuteWebhookRequest>;
-
 export interface FollowChannelRequest {
   channel_id: string;
   webhook_channel_id: string;
 }
-const FollowChannelRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<FollowChannelRequest>;
-
 export interface ChannelFollowerResponse {
   channel_id: string;
   webhook_id: string;
 }
-const ChannelFollowerResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<ChannelFollowerResponse>;
-
 export interface GetActiveGuildThreadsRequest {
   guild_id: string;
 }
-const GetActiveGuildThreadsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetActiveGuildThreadsRequest>;
-
 export type ThreadsResponseThreadsList = Array<ThreadResponse>;
-const ThreadsResponseThreadsList = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<ThreadsResponseThreadsList>;
-
 export type ThreadsResponseMembersList = Array<ThreadMemberResponse>;
-const ThreadsResponseMembersList = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<ThreadsResponseMembersList>;
-
 export type ThreadsResponseFirstMessagesList = Array<MessageResponse>;
-const ThreadsResponseFirstMessagesList = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<ThreadsResponseFirstMessagesList>;
-
 export interface ThreadsResponse {
   threads: ThreadsResponseThreadsList;
   members: ThreadsResponseMembersList;
   has_more: boolean;
   first_messages?: ThreadsResponseFirstMessagesList;
 }
-const ThreadsResponse = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<ThreadsResponse>;
-
 export interface GetAnswerVotersRequest {
   channel_id: string;
   message_id: string;
@@ -6028,52 +4251,20 @@ export interface GetAnswerVotersRequest {
   after?: string;
   limit?: number;
 }
-const GetAnswerVotersRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<GetAnswerVotersRequest>;
-
 export type PollAnswerDetailsResponseUsersList = Array<UserResponse>;
-const PollAnswerDetailsResponseUsersList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<PollAnswerDetailsResponseUsersList>;
-
 export interface PollAnswerDetailsResponse {
   users: PollAnswerDetailsResponseUsersList;
 }
-const PollAnswerDetailsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<PollAnswerDetailsResponse>;
-
 export interface GetApplicationRequest {
   application_id: string;
 }
-const GetApplicationRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetApplicationRequest>;
-
 export type PrivateApplicationResponseRpcOriginsList = Array<string>;
-const PrivateApplicationResponseRpcOriginsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<PrivateApplicationResponseRpcOriginsList>;
-
 export type PrivateApplicationResponseIntegrationTypesConfigMap = {
   [key: string]: ApplicationIntegrationTypeConfigurationResponse | undefined;
 };
-const PrivateApplicationResponseIntegrationTypesConfigMap =
-  InviteApplicationResponseIntegrationTypesConfigMap as any as S.Schema<PrivateApplicationResponseIntegrationTypesConfigMap>;
-
 export type PrivateApplicationResponseTagsList = Array<string>;
-const PrivateApplicationResponseTagsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<PrivateApplicationResponseTagsList>;
-
 export type PrivateApplicationResponseRedirectUrisList = Array<string>;
-const PrivateApplicationResponseRedirectUrisList =
-  AddGuildMemberRequestRolesList as any as S.Schema<PrivateApplicationResponseRedirectUrisList>;
-
 export type ApplicationEventWebhooksStatus = 1 | 2 | 3;
-const ApplicationEventWebhooksStatus = S.Number;
-
 export type ActionTypes =
   | "TYPING_START"
   | "INVITE_CREATE"
@@ -6155,22 +4346,10 @@ export type ActionTypes =
   | "QUEST_USER_ENROLLMENT"
   | "RATE_LIMITED";
 export type PrivateApplicationResponseEventWebhooksTypesList = Array<ActionTypes>;
-const PrivateApplicationResponseEventWebhooksTypesList =
-  InviteGuildResponseFeaturesList as any as S.Schema<PrivateApplicationResponseEventWebhooksTypesList>;
-
 export type ApplicationExplicitContentFilterTypes = 0 | 1;
-const ApplicationExplicitContentFilterTypes = S.Number;
-
 export type TeamMembershipStates = 1 | 2;
-const TeamMembershipStates = S.Number;
-
 export type TeamMemberRoles = "admin" | "developer" | "read_only";
-const TeamMemberRoles = S.String;
-
 export type TeamMemberResponsePermissionsList = Array<string>;
-const TeamMemberResponsePermissionsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<TeamMemberResponsePermissionsList>;
-
 export interface TeamMemberResponse {
   user: UserResponse;
   team_id: string;
@@ -6178,14 +4357,7 @@ export interface TeamMemberResponse {
   role: TeamMemberRoles;
   permissions: TeamMemberResponsePermissionsList;
 }
-const TeamMemberResponse = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<TeamMemberResponse>;
-
 export type TeamResponseMembersList = Array<TeamMemberResponse>;
-const TeamResponseMembersList = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<TeamResponseMembersList>;
-
 export interface TeamResponse {
   id: string;
   icon: string | null;
@@ -6193,12 +4365,7 @@ export interface TeamResponse {
   owner_user_id: string;
   members: TeamResponseMembersList;
 }
-const TeamResponse = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<TeamResponse>;
-
 export type PrivateApplicationResponseEligibleOauth2ScopesList = Array<OAuth2Scopes>;
-const PrivateApplicationResponseEligibleOauth2ScopesList =
-  ApplicationOAuth2InstallParamsResponseScopesList as any as S.Schema<PrivateApplicationResponseEligibleOauth2ScopesList>;
-
 export interface PrivateApplicationResponse {
   id: string;
   name: string;
@@ -6238,20 +4405,10 @@ export interface PrivateApplicationResponse {
   team: TeamResponse | null;
   eligible_oauth2_scopes: PrivateApplicationResponseEligibleOauth2ScopesList;
 }
-const PrivateApplicationResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<PrivateApplicationResponse>;
-
 export interface GetApplicationActivityInstanceRequest {
   application_id: string;
   instance_id: string;
 }
-const GetApplicationActivityInstanceRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetApplicationActivityInstanceRequest>;
-
 export type EmbeddedActivityLocationKind = "gc" | "pc" | "party";
 export interface GuildChannelLocation {
   id: string;
@@ -6265,12 +4422,7 @@ export interface PrivateChannelLocation {
   channel_id: string;
 }
 export type EmbeddedActivityInstanceLocation = GuildChannelLocation | PrivateChannelLocation;
-const EmbeddedActivityInstanceLocation = /*@__PURE__*/ __L.at(__c41, 0);
-
 export type EmbeddedActivityInstanceUsersList = Array<string>;
-const EmbeddedActivityInstanceUsersList =
-  AddGuildMemberRequestRolesList as any as S.Schema<EmbeddedActivityInstanceUsersList>;
-
 export interface EmbeddedActivityInstance {
   application_id: string;
   instance_id: string;
@@ -6278,52 +4430,24 @@ export interface EmbeddedActivityInstance {
   location: EmbeddedActivityInstanceLocation;
   users: EmbeddedActivityInstanceUsersList;
 }
-const EmbeddedActivityInstance = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<EmbeddedActivityInstance>;
-
 export interface GetApplicationCommandRequest {
   application_id: string;
   command_id: string;
 }
-const GetApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<GetApplicationCommandRequest>;
-
 export interface GetApplicationEmojiRequest {
   application_id: string;
   emoji_id: string;
 }
-const GetApplicationEmojiRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<GetApplicationEmojiRequest>;
-
 export interface GetApplicationRoleConnectionsMetadataRequest {
   application_id: string;
 }
-const GetApplicationRoleConnectionsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<GetApplicationRoleConnectionsMetadataRequest>;
-
 export type MetadataItemTypes = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-const MetadataItemTypes = S.Number;
-
 export type ApplicationRoleConnectionsMetadataItemResponseNameLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationRoleConnectionsMetadataItemResponseNameLocalizationsMap =
-  ApplicationCommandMentionableOptionDescriptionLocalizationsMap as any as S.Schema<ApplicationRoleConnectionsMetadataItemResponseNameLocalizationsMap>;
-
 export type ApplicationRoleConnectionsMetadataItemResponseDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationRoleConnectionsMetadataItemResponseDescriptionLocalizationsMap =
-  ApplicationCommandMentionableOptionDescriptionLocalizationsMap as any as S.Schema<ApplicationRoleConnectionsMetadataItemResponseDescriptionLocalizationsMap>;
-
 export interface ApplicationRoleConnectionsMetadataItemResponse {
   type: MetadataItemTypes;
   key: string;
@@ -6332,153 +4456,71 @@ export interface ApplicationRoleConnectionsMetadataItemResponse {
   description: string;
   description_localizations?: ApplicationRoleConnectionsMetadataItemResponseDescriptionLocalizationsMap | null;
 }
-const ApplicationRoleConnectionsMetadataItemResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<ApplicationRoleConnectionsMetadataItemResponse>;
-
 export type GetApplicationRoleConnectionsMetadataResponseBodyList =
   Array<ApplicationRoleConnectionsMetadataItemResponse>;
-const GetApplicationRoleConnectionsMetadataResponseBodyList = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<GetApplicationRoleConnectionsMetadataResponseBodyList>;
-
 export type GetApplicationRoleConnectionsMetadataResponse =
   GetApplicationRoleConnectionsMetadataResponseBodyList;
-const GetApplicationRoleConnectionsMetadataResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<GetApplicationRoleConnectionsMetadataResponse>;
-
 export interface GetApplicationUserRoleConnectionRequest {
   application_id: string;
 }
-const GetApplicationUserRoleConnectionRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<GetApplicationUserRoleConnectionRequest>;
-
 export type ApplicationUserRoleConnectionResponseMetadataMap = {
   [key: string]: string | undefined;
 };
-const ApplicationUserRoleConnectionResponseMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<ApplicationUserRoleConnectionResponseMetadataMap>;
-
 export interface ApplicationUserRoleConnectionResponse {
   platform_name?: string;
   platform_username?: string | null;
   metadata?: ApplicationUserRoleConnectionResponseMetadataMap;
 }
-const ApplicationUserRoleConnectionResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ApplicationUserRoleConnectionResponse>;
-
 export interface GetAutoModerationRuleRequest {
   guild_id: string;
   rule_id: string;
 }
-const GetAutoModerationRuleRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<GetAutoModerationRuleRequest>;
-
 export type GetAutoModerationRuleResponseBody =
   | DefaultKeywordRuleResponse
   | KeywordRuleResponse
   | MLSpamRuleResponse
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
-const GetAutoModerationRuleResponseBody = /*@__PURE__*/ __L.at(__c42, 3);
-
 export type GetAutoModerationRuleResponse = GetAutoModerationRuleResponseBody;
-const GetAutoModerationRuleResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<GetAutoModerationRuleResponse>;
-
 export interface GetBotGatewayRequest {}
-const GetBotGatewayRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<GetBotGatewayRequest>;
-
 export interface GatewayBotSessionStartLimitResponse {
   max_concurrency: number;
   remaining: number;
   reset_after: number;
   total: number;
 }
-const GatewayBotSessionStartLimitResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<GatewayBotSessionStartLimitResponse>;
-
 export interface GatewayBotResponse {
   url: string;
   session_start_limit: GatewayBotSessionStartLimitResponse;
   shards: number;
 }
-const GatewayBotResponse = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<GatewayBotResponse>;
-
 export interface GetChannelRequest {
   channel_id: string;
 }
-const GetChannelRequest = /*@__PURE__*/ __L.at(__c43, 0) as any as S.Schema<GetChannelRequest>;
-
 export type GetChannelResponseBody =
   | GuildChannelResponse
   | PrivateChannelResponse
   | PrivateGroupChannelResponse
   | ThreadResponse;
-const GetChannelResponseBody = /*@__PURE__*/ __L.at(__c43, 1);
-
 export type GetChannelResponse = GetChannelResponseBody;
-const GetChannelResponse = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<GetChannelResponse>;
-
 export type GetCurrentUserApplicationEntitlementsRequestSkuIdsCase1List = Array<string | null>;
 export type GetCurrentUserApplicationEntitlementsRequestSkuIds =
   | string
   | GetCurrentUserApplicationEntitlementsRequestSkuIdsCase1List;
-const GetCurrentUserApplicationEntitlementsRequestSkuIds = /*@__PURE__*/ __L.at(__c43, 3);
-
 export interface GetCurrentUserApplicationEntitlementsRequest {
   application_id: string;
   sku_ids?: GetCurrentUserApplicationEntitlementsRequestSkuIds;
   exclude_consumed?: boolean;
 }
-const GetCurrentUserApplicationEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<GetCurrentUserApplicationEntitlementsRequest>;
-
 export type GetCurrentUserApplicationEntitlementsResponseBodyList = Array<EntitlementResponse>;
-const GetCurrentUserApplicationEntitlementsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<GetCurrentUserApplicationEntitlementsResponseBodyList>;
-
 export type GetCurrentUserApplicationEntitlementsResponse =
   GetCurrentUserApplicationEntitlementsResponseBodyList;
-const GetCurrentUserApplicationEntitlementsResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<GetCurrentUserApplicationEntitlementsResponse>;
-
 export interface GetEntitlementRequest {
   application_id: string;
   entitlement_id: string;
 }
-const GetEntitlementRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<GetEntitlementRequest>;
-
 export type GetEntitlementsRequestSkuIdsCase1List = Array<string | null>;
 export type GetEntitlementsRequestSkuIds = string | GetEntitlementsRequestSkuIdsCase1List;
-const GetEntitlementsRequestSkuIds = /*@__PURE__*/ __L.at(__c44, 0);
-
 export interface GetEntitlementsRequest {
   application_id: string;
   user_id?: string;
@@ -6491,72 +4533,28 @@ export interface GetEntitlementsRequest {
   exclude_deleted?: boolean;
   only_active?: boolean;
 }
-const GetEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<GetEntitlementsRequest>;
-
 export type GetEntitlementsResponseBodyList = Array<EntitlementResponse>;
-const GetEntitlementsResponseBodyList =
-  GetCurrentUserApplicationEntitlementsResponseBodyList as any as S.Schema<GetEntitlementsResponseBodyList>;
-
 export type GetEntitlementsResponse = GetEntitlementsResponseBodyList;
-const GetEntitlementsResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<GetEntitlementsResponse>;
-
 export interface GetGatewayRequest {}
-const GetGatewayRequest = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<GetGatewayRequest>;
-
 export interface GatewayResponse {
   url: string;
 }
-const GatewayResponse = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<GatewayResponse>;
-
 export interface GetGuildRequest {
   guild_id: string;
   with_counts?: boolean;
 }
-const GetGuildRequest = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<GetGuildRequest>;
-
 export type GuildWithCountsResponseFeaturesList = Array<GuildFeatures>;
-const GuildWithCountsResponseFeaturesList =
-  InviteGuildResponseFeaturesList as any as S.Schema<GuildWithCountsResponseFeaturesList>;
-
 export type GuildWithCountsResponseRolesList = Array<GuildRoleResponse>;
-const GuildWithCountsResponseRolesList =
-  BulkUpdateGuildRolesResponseBodyList as any as S.Schema<GuildWithCountsResponseRolesList>;
-
 export type GuildMFALevel = 0 | 1;
-const GuildMFALevel = S.Number;
-
 export type PremiumGuildTiers = 0 | 1 | 2 | 3;
-const PremiumGuildTiers = S.Number;
-
 export type GuildWithCountsResponseEmojisList = Array<EmojiResponse>;
-const GuildWithCountsResponseEmojisList = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<GuildWithCountsResponseEmojisList>;
-
 export type GuildWithCountsResponseStickersList = Array<GuildStickerResponse>;
-const GuildWithCountsResponseStickersList = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<GuildWithCountsResponseStickersList>;
-
 export interface GuildIncidentsDataResponse {
   /** When invites get enabled again */
   invites_disabled_until: string | null;
   /** When direct messages get enabled again */
   dms_disabled_until: string | null;
 }
-const GuildIncidentsDataResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<GuildIncidentsDataResponse>;
-
 export interface GuildWithCountsResponse {
   id: string;
   name: string;
@@ -6602,85 +4600,42 @@ export interface GuildWithCountsResponse {
   approximate_member_count?: number | null;
   approximate_presence_count?: number | null;
 }
-const GuildWithCountsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<GuildWithCountsResponse>;
-
 export interface GetGuildApplicationCommandRequest {
   application_id: string;
   guild_id: string;
   command_id: string;
 }
-const GetGuildApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<GetGuildApplicationCommandRequest>;
-
 export interface GetGuildApplicationCommandPermissionsRequest {
   application_id: string;
   guild_id: string;
   command_id: string;
 }
-const GetGuildApplicationCommandPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<GetGuildApplicationCommandPermissionsRequest>;
-
 export type ApplicationCommandPermissionType = 1 | 2 | 3;
-const ApplicationCommandPermissionType = S.Number;
-
 export interface CommandPermissionResponse {
   id: string;
   type: ApplicationCommandPermissionType;
   permission: boolean;
 }
-const CommandPermissionResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<CommandPermissionResponse>;
-
 export type CommandPermissionsResponsePermissionsList = Array<CommandPermissionResponse>;
-const CommandPermissionsResponsePermissionsList = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<CommandPermissionsResponsePermissionsList>;
-
 export interface CommandPermissionsResponse {
   id: string;
   application_id: string;
   guild_id: string;
   permissions: CommandPermissionsResponsePermissionsList;
 }
-const CommandPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<CommandPermissionsResponse>;
-
 export interface GetGuildBanRequest {
   guild_id: string;
   user_id: string;
 }
-const GetGuildBanRequest = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<GetGuildBanRequest>;
-
 export interface GuildBanResponse {
   user: UserResponse;
   reason: string | null;
 }
-const GuildBanResponse = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<GuildBanResponse>;
-
 export interface GetGuildEmojiRequest {
   guild_id: string;
   emoji_id: string;
 }
-const GetGuildEmojiRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<GetGuildEmojiRequest>;
-
 export type GuildJoinRequestApplicationStatus = "STARTED" | "SUBMITTED" | "REJECTED" | "APPROVED";
-const GuildJoinRequestApplicationStatus = S.String;
-
 export interface GetGuildJoinRequestsRequest {
   guild_id: string;
   status?: GuildJoinRequestApplicationStatus | (string & {});
@@ -6688,11 +4643,6 @@ export interface GetGuildJoinRequestsRequest {
   before?: string;
   after?: string;
 }
-const GetGuildJoinRequestsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<GetGuildJoinRequestsRequest>;
-
 export type GuildMemberVerificationFormFieldType =
   | "TERMS"
   | "TEXT_INPUT"
@@ -6750,16 +4700,9 @@ export type GuildJoinRequestResponseFormResponsesItem =
   | ParagraphFormFieldResponse
   | TermsFormFieldResponse
   | ParagraphFormFieldResponse;
-const GuildJoinRequestResponseFormResponsesItem = /*@__PURE__*/ __L.at(__c46, 3);
-
 /** Applicant's responses on join request form */
 export type GuildJoinRequestResponseFormResponsesList =
   Array<GuildJoinRequestResponseFormResponsesItem>;
-const GuildJoinRequestResponseFormResponsesList = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<GuildJoinRequestResponseFormResponsesList>;
-
 export interface GuildJoinRequestResponse {
   id: string;
   created_at: string;
@@ -6774,69 +4717,29 @@ export interface GuildJoinRequestResponse {
   form_responses?: GuildJoinRequestResponseFormResponsesList | null;
   actioned_by_user?: UserResponse | null;
 }
-const GuildJoinRequestResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<GuildJoinRequestResponse>;
-
 export type GuildJoinRequestsListResponseGuildJoinRequestsList = Array<GuildJoinRequestResponse>;
-const GuildJoinRequestsListResponseGuildJoinRequestsList = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<GuildJoinRequestsListResponseGuildJoinRequestsList>;
-
 export interface GuildJoinRequestsListResponse {
   total?: number;
   guild_join_requests?: GuildJoinRequestsListResponseGuildJoinRequestsList;
 }
-const GuildJoinRequestsListResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<GuildJoinRequestsListResponse>;
-
 export interface GetGuildMemberRequest {
   guild_id: string;
   user_id: string;
 }
-const GetGuildMemberRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<GetGuildMemberRequest>;
-
 export interface GetGuildNewMemberWelcomeRequest {
   guild_id: string;
 }
-const GetGuildNewMemberWelcomeRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<GetGuildNewMemberWelcomeRequest>;
-
 export type WelcomeMessageResponseAuthorIdsList = Array<string>;
-const WelcomeMessageResponseAuthorIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<WelcomeMessageResponseAuthorIdsList>;
-
 export interface WelcomeMessageResponse {
   author_ids: WelcomeMessageResponseAuthorIdsList;
   message: string;
 }
-const WelcomeMessageResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<WelcomeMessageResponse>;
-
 export type NewMemberActionType = 0 | 1;
-const NewMemberActionType = S.Number;
-
 export interface SettingsEmojiResponse {
   id: string | null;
   name: string | null;
   animated: boolean;
 }
-const SettingsEmojiResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<SettingsEmojiResponse>;
-
 export interface NewMemberActionResponse {
   channel_id: string;
   action_type: NewMemberActionType;
@@ -6845,17 +4748,7 @@ export interface NewMemberActionResponse {
   emoji?: SettingsEmojiResponse;
   icon?: string;
 }
-const NewMemberActionResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<NewMemberActionResponse>;
-
 export type GuildHomeSettingsResponseNewMemberActionsList = Array<NewMemberActionResponse>;
-const GuildHomeSettingsResponseNewMemberActionsList = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<GuildHomeSettingsResponseNewMemberActionsList>;
-
 export interface ResourceChannelResponse {
   channel_id: string;
   title: string;
@@ -6863,17 +4756,7 @@ export interface ResourceChannelResponse {
   icon?: string;
   description: string;
 }
-const ResourceChannelResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ResourceChannelResponse>;
-
 export type GuildHomeSettingsResponseResourceChannelsList = Array<ResourceChannelResponse>;
-const GuildHomeSettingsResponseResourceChannelsList = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<GuildHomeSettingsResponseResourceChannelsList>;
-
 export interface GuildHomeSettingsResponse {
   guild_id: string;
   enabled: boolean;
@@ -6881,31 +4764,12 @@ export interface GuildHomeSettingsResponse {
   new_member_actions: GuildHomeSettingsResponseNewMemberActionsList;
   resource_channels: GuildHomeSettingsResponseResourceChannelsList;
 }
-const GuildHomeSettingsResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<GuildHomeSettingsResponse>;
-
 export interface GetGuildPreviewRequest {
   guild_id: string;
 }
-const GetGuildPreviewRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<GetGuildPreviewRequest>;
-
 export type GuildPreviewResponseFeaturesList = Array<GuildFeatures>;
-const GuildPreviewResponseFeaturesList =
-  InviteGuildResponseFeaturesList as any as S.Schema<GuildPreviewResponseFeaturesList>;
-
 export type GuildPreviewResponseEmojisList = Array<EmojiResponse>;
-const GuildPreviewResponseEmojisList =
-  GuildWithCountsResponseEmojisList as any as S.Schema<GuildPreviewResponseEmojisList>;
-
 export type GuildPreviewResponseStickersList = Array<GuildStickerResponse>;
-const GuildPreviewResponseStickersList =
-  GuildWithCountsResponseStickersList as any as S.Schema<GuildPreviewResponseStickersList>;
-
 export interface GuildPreviewResponse {
   id: string;
   name: string;
@@ -6920,55 +4784,25 @@ export interface GuildPreviewResponse {
   emojis: GuildPreviewResponseEmojisList;
   stickers: GuildPreviewResponseStickersList;
 }
-const GuildPreviewResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<GuildPreviewResponse>;
-
 export interface GetGuildRoleRequest {
   guild_id: string;
   role_id: string;
 }
-const GetGuildRoleRequest = /*@__PURE__*/ __L.at(__c48, 3) as any as S.Schema<GetGuildRoleRequest>;
-
 export interface GetGuildScheduledEventRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
   with_user_count?: boolean;
 }
-const GetGuildScheduledEventRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<GetGuildScheduledEventRequest>;
-
 export type GetGuildScheduledEventResponseBody =
   | ExternalScheduledEventResponse
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
-const GetGuildScheduledEventResponseBody = /*@__PURE__*/ __L.at(__c48, 5);
-
 export type GetGuildScheduledEventResponse = GetGuildScheduledEventResponseBody;
-const GetGuildScheduledEventResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<GetGuildScheduledEventResponse>;
-
 export interface GetGuildsOnboardingRequest {
   guild_id: string;
 }
-const GetGuildsOnboardingRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<GetGuildsOnboardingRequest>;
-
 export type OnboardingPromptOptionResponseRoleIdsList = Array<string>;
-const OnboardingPromptOptionResponseRoleIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<OnboardingPromptOptionResponseRoleIdsList>;
-
 export type OnboardingPromptOptionResponseChannelIdsList = Array<string>;
-const OnboardingPromptOptionResponseChannelIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<OnboardingPromptOptionResponseChannelIdsList>;
-
 export interface OnboardingPromptOptionResponse {
   id: string;
   title: string;
@@ -6977,20 +4811,8 @@ export interface OnboardingPromptOptionResponse {
   role_ids: OnboardingPromptOptionResponseRoleIdsList;
   channel_ids: OnboardingPromptOptionResponseChannelIdsList;
 }
-const OnboardingPromptOptionResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<OnboardingPromptOptionResponse>;
-
 export type OnboardingPromptResponseOptionsList = Array<OnboardingPromptOptionResponse>;
-const OnboardingPromptResponseOptionsList = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<OnboardingPromptResponseOptionsList>;
-
 export type OnboardingPromptType = 0 | 1;
-const OnboardingPromptType = S.Number;
-
 export interface OnboardingPromptResponse {
   id: string;
   title: string;
@@ -7000,24 +4822,9 @@ export interface OnboardingPromptResponse {
   in_onboarding: boolean;
   type: OnboardingPromptType;
 }
-const OnboardingPromptResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<OnboardingPromptResponse>;
-
 export type UserGuildOnboardingResponsePromptsList = Array<OnboardingPromptResponse>;
-const UserGuildOnboardingResponsePromptsList = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<UserGuildOnboardingResponsePromptsList>;
-
 export type UserGuildOnboardingResponseDefaultChannelIdsList = Array<string>;
-const UserGuildOnboardingResponseDefaultChannelIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<UserGuildOnboardingResponseDefaultChannelIdsList>;
-
 export type GuildOnboardingMode = 0 | 1;
-const GuildOnboardingMode = S.Number;
-
 export interface UserGuildOnboardingResponse {
   guild_id: string;
   prompts: UserGuildOnboardingResponsePromptsList;
@@ -7025,69 +4832,32 @@ export interface UserGuildOnboardingResponse {
   enabled: boolean;
   mode: GuildOnboardingMode;
 }
-const UserGuildOnboardingResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<UserGuildOnboardingResponse>;
-
 export interface GetGuildSoundboardSoundRequest {
   guild_id: string;
   sound_id: string;
 }
-const GetGuildSoundboardSoundRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<GetGuildSoundboardSoundRequest>;
-
 export interface GetGuildStickerRequest {
   guild_id: string;
   sticker_id: string;
 }
-const GetGuildStickerRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<GetGuildStickerRequest>;
-
 export interface GetGuildTemplateRequest {
   code: string;
 }
-const GetGuildTemplateRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<GetGuildTemplateRequest>;
-
 export interface GetGuildVanityUrlRequest {
   guild_id: string;
 }
-const GetGuildVanityUrlRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<GetGuildVanityUrlRequest>;
-
 export interface VanityURLErrorResponse {
   message: string;
   code: number;
 }
-const VanityURLErrorResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<VanityURLErrorResponse>;
-
 export interface VanityURLResponse {
   code: string | null;
   uses: number;
   error?: VanityURLErrorResponse | null;
 }
-const VanityURLResponse = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<VanityURLResponse>;
-
 export interface GetGuildWebhooksRequest {
   guild_id: string;
 }
-const GetGuildWebhooksRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<GetGuildWebhooksRequest>;
-
 export interface ApplicationIncomingWebhookResponse {
   application_id: string | null;
   avatar: string | null;
@@ -7123,79 +4893,33 @@ export type GetGuildWebhooksResponseBodyItem =
   | ApplicationIncomingWebhookResponse
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
-const GetGuildWebhooksResponseBodyItem = /*@__PURE__*/ __L.at(__c50, 4);
-
 export type GetGuildWebhooksResponseBodyList = Array<GetGuildWebhooksResponseBodyItem>;
-const GetGuildWebhooksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<GetGuildWebhooksResponseBodyList>;
-
 export type GetGuildWebhooksResponse = GetGuildWebhooksResponseBodyList;
-const GetGuildWebhooksResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<GetGuildWebhooksResponse>;
-
 export interface GetGuildWelcomeScreenRequest {
   guild_id: string;
 }
-const GetGuildWelcomeScreenRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<GetGuildWelcomeScreenRequest>;
-
 export interface GuildWelcomeScreenChannelResponse {
   channel_id: string;
   description: string;
   emoji_id: string | null;
   emoji_name: string | null;
 }
-const GuildWelcomeScreenChannelResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<GuildWelcomeScreenChannelResponse>;
-
 export type GuildWelcomeScreenResponseWelcomeChannelsList =
   Array<GuildWelcomeScreenChannelResponse>;
-const GuildWelcomeScreenResponseWelcomeChannelsList = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<GuildWelcomeScreenResponseWelcomeChannelsList>;
-
 export interface GuildWelcomeScreenResponse {
   description: string | null;
   welcome_channels: GuildWelcomeScreenResponseWelcomeChannelsList;
 }
-const GuildWelcomeScreenResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<GuildWelcomeScreenResponse>;
-
 export interface GetGuildWidgetRequest {
   guild_id: string;
 }
-const GetGuildWidgetRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<GetGuildWidgetRequest>;
-
 export interface WidgetChannel {
   id: string;
   name: string;
   position: number;
 }
-const WidgetChannel = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<WidgetChannel>;
-
 export type WidgetResponseChannelsList = Array<WidgetChannel>;
-const WidgetResponseChannelsList = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<WidgetResponseChannelsList>;
-
 export type WidgetUserDiscriminator = "0000";
-const WidgetUserDiscriminator = S.String;
-
 export type WidgetActivity = GithubCheckApp;
 export interface WidgetMember {
   id: string;
@@ -7212,14 +4936,7 @@ export interface WidgetMember {
   suppress?: boolean;
   channel_id?: string;
 }
-const WidgetMember = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<WidgetMember>;
-
 export type WidgetResponseMembersList = Array<WidgetMember>;
-const WidgetResponseMembersList = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<WidgetResponseMembersList>;
-
 export interface WidgetResponse {
   id: string;
   name: string;
@@ -7228,64 +4945,27 @@ export interface WidgetResponse {
   members: WidgetResponseMembersList;
   presence_count: number;
 }
-const WidgetResponse = /*@__PURE__*/ __L.at(__c52, 0) as any as S.Schema<WidgetResponse>;
-
 export type WidgetImageStyles = "shield" | "banner1" | "banner2" | "banner3" | "banner4";
-const WidgetImageStyles = S.String;
-
 export interface GetGuildWidgetPngRequest {
   guild_id: string;
   style?: WidgetImageStyles | (string & {});
 }
-const GetGuildWidgetPngRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<GetGuildWidgetPngRequest>;
-
 export interface GetGuildWidgetPngResponse {}
-const GetGuildWidgetPngResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<GetGuildWidgetPngResponse>;
-
 export interface GetGuildWidgetSettingsRequest {
   guild_id: string;
 }
-const GetGuildWidgetSettingsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<GetGuildWidgetSettingsRequest>;
-
 export interface WidgetSettingsResponse {
   enabled: boolean;
   channel_id: string | null;
 }
-const WidgetSettingsResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<WidgetSettingsResponse>;
-
 export interface GetInviteTargetUsersRequest {
   code: string;
 }
-const GetInviteTargetUsersRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<GetInviteTargetUsersRequest>;
-
 export interface GetInviteTargetUsersResponse {}
-const GetInviteTargetUsersResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<GetInviteTargetUsersResponse>;
-
 export interface GetInviteTargetUsersJobStatusRequest {
   code: string;
 }
-const GetInviteTargetUsersJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<GetInviteTargetUsersJobStatusRequest>;
-
 export type TargetUsersJobStatusTypes = 0 | 1 | 2 | 3;
-const TargetUsersJobStatusTypes = S.Number;
-
 export interface TargetUsersJobStatusResponse {
   /** The status of the job processing the target users. */
   status: TargetUsersJobStatusTypes;
@@ -7300,62 +4980,25 @@ export interface TargetUsersJobStatusResponse {
   /** The error message if the job failed. */
   error_message: string | null;
 }
-const TargetUsersJobStatusResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<TargetUsersJobStatusResponse>;
-
 export interface GetLobbyRequest {
   lobby_id: string;
 }
-const GetLobbyRequest = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<GetLobbyRequest>;
-
 export interface GetLobbyMessagesRequest {
   lobby_id: string;
   limit?: number;
 }
-const GetLobbyMessagesRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<GetLobbyMessagesRequest>;
-
 export type GetLobbyMessagesResponseBodyList = Array<LobbyMessageResponse>;
-const GetLobbyMessagesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<GetLobbyMessagesResponseBodyList>;
-
 export type GetLobbyMessagesResponse = GetLobbyMessagesResponseBodyList;
-const GetLobbyMessagesResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<GetLobbyMessagesResponse>;
-
 export interface GetMessageRequest {
   channel_id: string;
   message_id: string;
 }
-const GetMessageRequest = /*@__PURE__*/ __L.at(__c53, 3) as any as S.Schema<GetMessageRequest>;
-
 export interface GetMyApplicationRequest {}
-const GetMyApplicationRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<GetMyApplicationRequest>;
-
 export interface GetMyGuildMemberRequest {
   guild_id: string;
 }
-const GetMyGuildMemberRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<GetMyGuildMemberRequest>;
-
 /** array of role object ids */
 export type PrivateGuildMemberResponseRolesList = Array<string>;
-const PrivateGuildMemberResponseRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<PrivateGuildMemberResponseRolesList>;
-
 export interface PrivateGuildMemberResponse {
   /** the member's guild avatar hash */
   avatar: string | null;
@@ -7387,44 +5030,17 @@ export interface PrivateGuildMemberResponse {
   deaf: boolean;
   permissions?: string;
 }
-const PrivateGuildMemberResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<PrivateGuildMemberResponse>;
-
 export interface GetMyOauth2ApplicationRequest {}
-const GetMyOauth2ApplicationRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<GetMyOauth2ApplicationRequest>;
-
 export interface GetMyOauth2AuthorizationRequest {}
-const GetMyOauth2AuthorizationRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<GetMyOauth2AuthorizationRequest>;
-
 export type OAuth2GetAuthorizationResponseScopesList = Array<OAuth2Scopes>;
-const OAuth2GetAuthorizationResponseScopesList =
-  ApplicationOAuth2InstallParamsResponseScopesList as any as S.Schema<OAuth2GetAuthorizationResponseScopesList>;
-
 export interface OAuth2GetAuthorizationResponse {
   application: ApplicationResponse;
   expires: string;
   scopes: OAuth2GetAuthorizationResponseScopesList;
   user?: UserResponse;
 }
-const OAuth2GetAuthorizationResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<OAuth2GetAuthorizationResponse>;
-
 export interface GetMyUserRequest {}
-const GetMyUserRequest = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<GetMyUserRequest>;
-
 export type PremiumTypes = 0 | 1 | 2 | 3;
-const PremiumTypes = S.Number;
-
 export interface UserPIIResponse {
   /** the user's id */
   id: string;
@@ -7459,14 +5075,7 @@ export interface UserPIIResponse {
   email?: string | null;
   verified?: boolean;
 }
-const UserPIIResponse = /*@__PURE__*/ __L.at(__c54, 3) as any as S.Schema<UserPIIResponse>;
-
 export interface GetOpenidConnectUserinfoRequest {}
-const GetOpenidConnectUserinfoRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<GetOpenidConnectUserinfoRequest>;
-
 export interface OAuth2GetOpenIDConnectUserInfoResponse {
   sub: string;
   email?: string | null;
@@ -7476,27 +5085,12 @@ export interface OAuth2GetOpenIDConnectUserInfoResponse {
   picture?: string;
   locale?: string;
 }
-const OAuth2GetOpenIDConnectUserInfoResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<OAuth2GetOpenIDConnectUserInfoResponse>;
-
 export interface GetOriginalWebhookMessageRequest {
   webhook_id: string;
   webhook_token: string;
   thread_id?: string;
 }
-const GetOriginalWebhookMessageRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<GetOriginalWebhookMessageRequest>;
-
 export interface GetPublicKeysRequest {}
-const GetPublicKeysRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<GetPublicKeysRequest>;
-
 export interface OAuth2Key {
   kty: string;
   use: string;
@@ -7505,27 +5099,13 @@ export interface OAuth2Key {
   e: string;
   alg: string;
 }
-const OAuth2Key = /*@__PURE__*/ __L.at(__c55, 0) as any as S.Schema<OAuth2Key>;
-
 export type OAuth2GetKeysKeysList = Array<OAuth2Key>;
-const OAuth2GetKeysKeysList = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<OAuth2GetKeysKeysList>;
-
 export interface OAuth2GetKeys {
   keys: OAuth2GetKeysKeysList;
 }
-const OAuth2GetKeys = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<OAuth2GetKeys>;
-
 export interface GetSelfVoiceStateRequest {
   guild_id: string;
 }
-const GetSelfVoiceStateRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<GetSelfVoiceStateRequest>;
-
 export interface VoiceStateResponse {
   channel_id: string | null;
   deaf: boolean;
@@ -7541,36 +5121,18 @@ export interface VoiceStateResponse {
   session_id: string;
   user_id: string;
 }
-const VoiceStateResponse = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<VoiceStateResponse>;
-
 export interface GetSkuSubscriptionRequest {
   sku_id: string;
   subscription_id: string;
   user_id?: string;
 }
-const GetSkuSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<GetSkuSubscriptionRequest>;
-
 /** List of SKUs subscribed to */
 export type SubscriptionResponseSkuIdsList = Array<string>;
-const SubscriptionResponseSkuIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SubscriptionResponseSkuIdsList>;
-
 /** List of SKUs that this user will be subscribed to at renewal */
 export type SubscriptionResponseRenewalSkuIdsList = Array<string>;
-const SubscriptionResponseRenewalSkuIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SubscriptionResponseRenewalSkuIdsList>;
-
 /** List of entitlements granted for this subscription */
 export type SubscriptionResponseEntitlementIdsList = Array<string>;
-const SubscriptionResponseEntitlementIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SubscriptionResponseEntitlementIdsList>;
-
 export type SubscriptionResponseStatusType = 0 | 1 | 2;
-const SubscriptionResponseStatusType = S.Number;
-
 export interface SubscriptionResponse {
   /** ID of the subscription */
   id: string;
@@ -7593,11 +5155,6 @@ export interface SubscriptionResponse {
   /** ISO3166-1 alpha-2 country code of the payment source used to purchase the subscription */
   country?: string | null;
 }
-const SubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<SubscriptionResponse>;
-
 export interface GetSkuSubscriptionsRequest {
   sku_id: string;
   before?: string;
@@ -7605,74 +5162,23 @@ export interface GetSkuSubscriptionsRequest {
   limit?: number;
   user_id?: string;
 }
-const GetSkuSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<GetSkuSubscriptionsRequest>;
-
 export type GetSkuSubscriptionsResponseBodyList = Array<SubscriptionResponse>;
-const GetSkuSubscriptionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<GetSkuSubscriptionsResponseBodyList>;
-
 export type GetSkuSubscriptionsResponse = GetSkuSubscriptionsResponseBodyList;
-const GetSkuSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<GetSkuSubscriptionsResponse>;
-
 export interface GetSoundboardDefaultSoundsRequest {}
-const GetSoundboardDefaultSoundsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<GetSoundboardDefaultSoundsRequest>;
-
 export type GetSoundboardDefaultSoundsResponseBodyList = Array<SoundboardSoundResponse>;
-const GetSoundboardDefaultSoundsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<GetSoundboardDefaultSoundsResponseBodyList>;
-
 export type GetSoundboardDefaultSoundsResponse = GetSoundboardDefaultSoundsResponseBodyList;
-const GetSoundboardDefaultSoundsResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<GetSoundboardDefaultSoundsResponse>;
-
 export interface GetStageInstanceRequest {
   channel_id: string;
 }
-const GetStageInstanceRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<GetStageInstanceRequest>;
-
 export interface GetStickerRequest {
   sticker_id: string;
 }
-const GetStickerRequest = /*@__PURE__*/ __L.at(__c56, 6) as any as S.Schema<GetStickerRequest>;
-
 export type GetStickerResponseBody = GuildStickerResponse | StandardStickerResponse;
-const GetStickerResponseBody = /*@__PURE__*/ __L.at(__c56, 7);
-
 export type GetStickerResponse = GetStickerResponseBody;
-const GetStickerResponse = /*@__PURE__*/ __L.at(__c57, 0) as any as S.Schema<GetStickerResponse>;
-
 export interface GetStickerPackRequest {
   pack_id: string;
 }
-const GetStickerPackRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<GetStickerPackRequest>;
-
 export type StickerPackResponseStickersList = Array<StandardStickerResponse>;
-const StickerPackResponseStickersList = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<StickerPackResponseStickersList>;
-
 export interface StickerPackResponse {
   id: string;
   sku_id: string;
@@ -7682,98 +5188,46 @@ export interface StickerPackResponse {
   cover_sticker_id?: string;
   banner_asset_id?: string;
 }
-const StickerPackResponse = /*@__PURE__*/ __L.at(__c57, 3) as any as S.Schema<StickerPackResponse>;
-
 export interface GetThreadMemberRequest {
   channel_id: string;
   user_id: string;
   with_member?: boolean;
 }
-const GetThreadMemberRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<GetThreadMemberRequest>;
-
 export interface GetUserRequest {
   user_id: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c57, 5) as any as S.Schema<GetUserRequest>;
-
 export interface GetVoiceStateRequest {
   guild_id: string;
   user_id: string;
 }
-const GetVoiceStateRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<GetVoiceStateRequest>;
-
 export interface GetWebhookRequest {
   webhook_id: string;
 }
-const GetWebhookRequest = /*@__PURE__*/ __L.at(__c57, 7) as any as S.Schema<GetWebhookRequest>;
-
 export type GetWebhookResponseBody =
   | ApplicationIncomingWebhookResponse
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
-const GetWebhookResponseBody = /*@__PURE__*/ __L.at(__c58, 0);
-
 export type GetWebhookResponse = GetWebhookResponseBody;
-const GetWebhookResponse = /*@__PURE__*/ __L.at(__c58, 1) as any as S.Schema<GetWebhookResponse>;
-
 export interface GetWebhookByTokenRequest {
   webhook_id: string;
   webhook_token: string;
 }
-const GetWebhookByTokenRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<GetWebhookByTokenRequest>;
-
 export type GetWebhookByTokenResponseBody =
   | ApplicationIncomingWebhookResponse
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
-const GetWebhookByTokenResponseBody = /*@__PURE__*/ __L.at(__c58, 3);
-
 export type GetWebhookByTokenResponse = GetWebhookByTokenResponseBody;
-const GetWebhookByTokenResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<GetWebhookByTokenResponse>;
-
 export interface GetWebhookMessageRequest {
   webhook_id: string;
   webhook_token: string;
   message_id: string;
   thread_id?: string;
 }
-const GetWebhookMessageRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<GetWebhookMessageRequest>;
-
 export interface GuildRoleMemberCountsRequest {
   guild_id: string;
 }
-const GuildRoleMemberCountsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<GuildRoleMemberCountsRequest>;
-
 export type GuildRoleMemberCountsResponseBodyMap = { [key: string]: number | undefined };
-const GuildRoleMemberCountsResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<GuildRoleMemberCountsResponseBodyMap>;
-
 export type GuildRoleMemberCountsResponse = GuildRoleMemberCountsResponseBodyMap;
-const GuildRoleMemberCountsResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<GuildRoleMemberCountsResponse>;
-
 export interface InviteResolveRequest {
   code: string;
   with_counts?: boolean;
@@ -7781,23 +5235,11 @@ export interface InviteResolveRequest {
   target_channel_id?: string;
   target_message_id?: string;
 }
-const InviteResolveRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<InviteResolveRequest>;
-
 export type InviteResolveResponseBody =
   | FriendInviteResponse
   | GroupDMInviteResponse
   | GuildInviteResponse;
-const InviteResolveResponseBody = /*@__PURE__*/ __L.at(__c59, 2);
-
 export type InviteResolveResponse = InviteResolveResponseBody;
-const InviteResolveResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<InviteResolveResponse>;
-
 export interface JoinActionGuildRequestRequest {
   guild_id: string;
   request_id: string;
@@ -7806,214 +5248,85 @@ export interface JoinActionGuildRequestRequest {
   /** Reason for rejection. Only used when action is REJECTED */
   rejection_reason?: string | null;
 }
-const JoinActionGuildRequestRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<JoinActionGuildRequestRequest>;
-
 export interface JoinThreadRequest {
   channel_id: string;
 }
-const JoinThreadRequest = /*@__PURE__*/ __L.at(__c59, 5) as any as S.Schema<JoinThreadRequest>;
-
 export interface JoinThreadResponse {}
-const JoinThreadResponse = AddGuildMemberRoleResponse as any as S.Schema<JoinThreadResponse>;
-
 export interface LeaveGuildRequest {
   guild_id: string;
 }
-const LeaveGuildRequest = /*@__PURE__*/ __L.at(__c59, 6) as any as S.Schema<LeaveGuildRequest>;
-
 export interface LeaveGuildResponse {}
-const LeaveGuildResponse = AddGuildMemberRoleResponse as any as S.Schema<LeaveGuildResponse>;
-
 export interface LeaveLobbyRequest {
   lobby_id: string;
 }
-const LeaveLobbyRequest = /*@__PURE__*/ __L.at(__c59, 7) as any as S.Schema<LeaveLobbyRequest>;
-
 export interface LeaveLobbyResponse {}
-const LeaveLobbyResponse = AddGuildMemberRoleResponse as any as S.Schema<LeaveLobbyResponse>;
-
 export interface LeaveThreadRequest {
   channel_id: string;
 }
-const LeaveThreadRequest = /*@__PURE__*/ __L.at(__c60, 0) as any as S.Schema<LeaveThreadRequest>;
-
 export interface LeaveThreadResponse {}
-const LeaveThreadResponse = AddGuildMemberRoleResponse as any as S.Schema<LeaveThreadResponse>;
-
 export interface ListApplicationCommandsRequest {
   application_id: string;
   with_localizations?: boolean;
 }
-const ListApplicationCommandsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<ListApplicationCommandsRequest>;
-
 export type ListApplicationCommandsResponseBodyList = Array<ApplicationCommandResponse>;
 export type ListApplicationCommandsResponse = ListApplicationCommandsResponseBodyList;
-const ListApplicationCommandsResponse =
-  BulkSetApplicationCommandsResponse as any as S.Schema<ListApplicationCommandsResponse>;
-
 export interface ListApplicationEmojisRequest {
   application_id: string;
 }
-const ListApplicationEmojisRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<ListApplicationEmojisRequest>;
-
 export type ListApplicationEmojisResponseItemsList = Array<EmojiResponse>;
-const ListApplicationEmojisResponseItemsList =
-  GuildWithCountsResponseEmojisList as any as S.Schema<ListApplicationEmojisResponseItemsList>;
-
 export interface ListApplicationEmojisResponse {
   items: ListApplicationEmojisResponseItemsList;
 }
-const ListApplicationEmojisResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<ListApplicationEmojisResponse>;
-
 export interface ListAutoModerationRulesRequest {
   guild_id: string;
 }
-const ListAutoModerationRulesRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<ListAutoModerationRulesRequest>;
-
 export type ListAutoModerationRulesResponseBodyItem =
   | DefaultKeywordRuleResponse
   | KeywordRuleResponse
   | MLSpamRuleResponse
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
-const ListAutoModerationRulesResponseBodyItem = /*@__PURE__*/ __L.at(__c60, 5);
-
 export type ListAutoModerationRulesResponseBodyList =
   Array<ListAutoModerationRulesResponseBodyItem | null>;
-const ListAutoModerationRulesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<ListAutoModerationRulesResponseBodyList>;
-
 export type ListAutoModerationRulesResponse = ListAutoModerationRulesResponseBodyList;
-const ListAutoModerationRulesResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<ListAutoModerationRulesResponse>;
-
 export interface ListChannelInvitesRequest {
   channel_id: string;
 }
-const ListChannelInvitesRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<ListChannelInvitesRequest>;
-
 export type ListChannelInvitesResponseBodyItem =
   | FriendInviteResponse
   | GroupDMInviteResponse
   | GuildInviteResponse;
-const ListChannelInvitesResponseBodyItem = /*@__PURE__*/ __L.at(__c61, 1);
-
 export type ListChannelInvitesResponseBodyList = Array<ListChannelInvitesResponseBodyItem | null>;
-const ListChannelInvitesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<ListChannelInvitesResponseBodyList>;
-
 export type ListChannelInvitesResponse = ListChannelInvitesResponseBodyList;
-const ListChannelInvitesResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<ListChannelInvitesResponse>;
-
 export interface ListChannelWebhooksRequest {
   channel_id: string;
 }
-const ListChannelWebhooksRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<ListChannelWebhooksRequest>;
-
 export type ListChannelWebhooksResponseBodyItem =
   | ApplicationIncomingWebhookResponse
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
-const ListChannelWebhooksResponseBodyItem = /*@__PURE__*/ __L.at(__c61, 5);
-
 export type ListChannelWebhooksResponseBodyList = Array<ListChannelWebhooksResponseBodyItem>;
-const ListChannelWebhooksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<ListChannelWebhooksResponseBodyList>;
-
 export type ListChannelWebhooksResponse = ListChannelWebhooksResponseBodyList;
-const ListChannelWebhooksResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<ListChannelWebhooksResponse>;
-
 export interface ListDeprecatedPinsRequest {
   channel_id: string;
 }
-const ListDeprecatedPinsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<ListDeprecatedPinsRequest>;
-
 export type ListDeprecatedPinsResponseBodyList = Array<MessageResponse>;
-const ListDeprecatedPinsResponseBodyList =
-  ThreadsResponseFirstMessagesList as any as S.Schema<ListDeprecatedPinsResponseBodyList>;
-
 export type ListDeprecatedPinsResponse = ListDeprecatedPinsResponseBodyList;
-const ListDeprecatedPinsResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<ListDeprecatedPinsResponse>;
-
 export interface ListGuildApplicationCommandPermissionsRequest {
   application_id: string;
   guild_id: string;
 }
-const ListGuildApplicationCommandPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<ListGuildApplicationCommandPermissionsRequest>;
-
 export type ListGuildApplicationCommandPermissionsResponseBodyList =
   Array<CommandPermissionsResponse>;
-const ListGuildApplicationCommandPermissionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<ListGuildApplicationCommandPermissionsResponseBodyList>;
-
 export type ListGuildApplicationCommandPermissionsResponse =
   ListGuildApplicationCommandPermissionsResponseBodyList;
-const ListGuildApplicationCommandPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<ListGuildApplicationCommandPermissionsResponse>;
-
 export interface ListGuildApplicationCommandsRequest {
   application_id: string;
   guild_id: string;
   with_localizations?: boolean;
 }
-const ListGuildApplicationCommandsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<ListGuildApplicationCommandsRequest>;
-
 export type ListGuildApplicationCommandsResponseBodyList = Array<ApplicationCommandResponse>;
 export type ListGuildApplicationCommandsResponse = ListGuildApplicationCommandsResponseBodyList;
-const ListGuildApplicationCommandsResponse =
-  BulkSetApplicationCommandsResponse as any as S.Schema<ListGuildApplicationCommandsResponse>;
-
 export type AuditLogActionTypes =
   | 1
   | 10
@@ -8091,8 +5404,6 @@ export type AuditLogActionTypes =
   | 201
   | 202
   | 211;
-const AuditLogActionTypes = S.Number;
-
 export interface ListGuildAuditLogEntriesRequest {
   guild_id: string;
   user_id?: string;
@@ -8102,31 +5413,13 @@ export interface ListGuildAuditLogEntriesRequest {
   after?: string;
   limit?: number;
 }
-const ListGuildAuditLogEntriesRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<ListGuildAuditLogEntriesRequest>;
-
 export interface AuditLogObjectChangeResponse {
   key: string | null;
   new_value?: unknown;
   old_value?: unknown;
 }
-const AuditLogObjectChangeResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<AuditLogObjectChangeResponse>;
-
 export type AuditLogEntryResponseChangesList = Array<AuditLogObjectChangeResponse>;
-const AuditLogEntryResponseChangesList = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<AuditLogEntryResponseChangesList>;
-
 export type AuditLogEntryResponseOptionsMap = { [key: string]: string | undefined };
-const AuditLogEntryResponseOptionsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<AuditLogEntryResponseOptionsMap>;
-
 export interface AuditLogEntryResponse {
   id: string;
   action_type: AuditLogActionTypes;
@@ -8136,30 +5429,13 @@ export interface AuditLogEntryResponse {
   options?: AuditLogEntryResponseOptionsMap;
   reason?: string;
 }
-const AuditLogEntryResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<AuditLogEntryResponse>;
-
 export type GuildAuditLogResponseAuditLogEntriesList = Array<AuditLogEntryResponse>;
-const GuildAuditLogResponseAuditLogEntriesList = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<GuildAuditLogResponseAuditLogEntriesList>;
-
 export type GuildAuditLogResponseUsersList = Array<UserResponse>;
-const GuildAuditLogResponseUsersList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<GuildAuditLogResponseUsersList>;
-
 export type IntegrationTypes = "discord" | "twitch" | "youtube" | "guild_subscription";
-const IntegrationTypes = S.String;
-
 export interface AccountResponse {
   id: string;
   name: string | null;
 }
-const AccountResponse = /*@__PURE__*/ __L.at(__c63, 3) as any as S.Schema<AccountResponse>;
-
 export interface PartialDiscordIntegrationResponse {
   id: string;
   type: IntegrationTypes;
@@ -8179,62 +5455,28 @@ export type GuildAuditLogResponseIntegrationsItem =
   | PartialDiscordIntegrationResponse
   | PartialExternalConnectionIntegrationResponse
   | PartialExternalConnectionIntegrationResponse;
-const GuildAuditLogResponseIntegrationsItem = /*@__PURE__*/ __L.at(__c63, 4);
-
 export type GuildAuditLogResponseIntegrationsList = Array<GuildAuditLogResponseIntegrationsItem>;
-const GuildAuditLogResponseIntegrationsList = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<GuildAuditLogResponseIntegrationsList>;
-
 export type GuildAuditLogResponseWebhooksItem =
   | ApplicationIncomingWebhookResponse
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
-const GuildAuditLogResponseWebhooksItem = /*@__PURE__*/ __L.at(__c63, 6);
-
 export type GuildAuditLogResponseWebhooksList = Array<GuildAuditLogResponseWebhooksItem>;
-const GuildAuditLogResponseWebhooksList = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<GuildAuditLogResponseWebhooksList>;
-
 export type GuildAuditLogResponseGuildScheduledEventsItem =
   | ExternalScheduledEventResponse
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
-const GuildAuditLogResponseGuildScheduledEventsItem = /*@__PURE__*/ __L.at(__c64, 0);
-
 export type GuildAuditLogResponseGuildScheduledEventsList =
   Array<GuildAuditLogResponseGuildScheduledEventsItem>;
-const GuildAuditLogResponseGuildScheduledEventsList = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<GuildAuditLogResponseGuildScheduledEventsList>;
-
 export type GuildAuditLogResponseThreadsList = Array<ThreadResponse>;
-const GuildAuditLogResponseThreadsList =
-  ThreadsResponseThreadsList as any as S.Schema<GuildAuditLogResponseThreadsList>;
-
 export type GuildAuditLogResponseApplicationCommandsList = Array<ApplicationCommandResponse>;
-const GuildAuditLogResponseApplicationCommandsList =
-  BulkSetApplicationCommandsResponseBodyList as any as S.Schema<GuildAuditLogResponseApplicationCommandsList>;
-
 export type GuildAuditLogResponseAutoModerationRulesItem =
   | DefaultKeywordRuleResponse
   | KeywordRuleResponse
   | MLSpamRuleResponse
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
-const GuildAuditLogResponseAutoModerationRulesItem = /*@__PURE__*/ __L.at(__c64, 2);
-
 export type GuildAuditLogResponseAutoModerationRulesList =
   Array<GuildAuditLogResponseAutoModerationRulesItem | null>;
-const GuildAuditLogResponseAutoModerationRulesList = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<GuildAuditLogResponseAutoModerationRulesList>;
-
 export interface GuildAuditLogResponse {
   audit_log_entries: GuildAuditLogResponseAuditLogEntriesList;
   users: GuildAuditLogResponseUsersList;
@@ -8245,87 +5487,32 @@ export interface GuildAuditLogResponse {
   application_commands: GuildAuditLogResponseApplicationCommandsList;
   auto_moderation_rules: GuildAuditLogResponseAutoModerationRulesList;
 }
-const GuildAuditLogResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<GuildAuditLogResponse>;
-
 export interface ListGuildBansRequest {
   guild_id: string;
   limit?: number;
   before?: string;
   after?: string;
 }
-const ListGuildBansRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<ListGuildBansRequest>;
-
 export type ListGuildBansResponseBodyList = Array<GuildBanResponse>;
-const ListGuildBansResponseBodyList = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<ListGuildBansResponseBodyList>;
-
 export type ListGuildBansResponse = ListGuildBansResponseBodyList;
-const ListGuildBansResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<ListGuildBansResponse>;
-
 export interface ListGuildChannelsRequest {
   guild_id: string;
 }
-const ListGuildChannelsRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<ListGuildChannelsRequest>;
-
 export type ListGuildChannelsResponseBodyItem =
   | GuildChannelResponse
   | PrivateChannelResponse
   | PrivateGroupChannelResponse
   | ThreadResponse;
-const ListGuildChannelsResponseBodyItem = /*@__PURE__*/ __L.at(__c65, 1);
-
 export type ListGuildChannelsResponseBodyList = Array<ListGuildChannelsResponseBodyItem>;
-const ListGuildChannelsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<ListGuildChannelsResponseBodyList>;
-
 export type ListGuildChannelsResponse = ListGuildChannelsResponseBodyList;
-const ListGuildChannelsResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<ListGuildChannelsResponse>;
-
 export interface ListGuildEmojisRequest {
   guild_id: string;
 }
-const ListGuildEmojisRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<ListGuildEmojisRequest>;
-
 export type ListGuildEmojisResponseBodyList = Array<EmojiResponse>;
-const ListGuildEmojisResponseBodyList =
-  GuildWithCountsResponseEmojisList as any as S.Schema<ListGuildEmojisResponseBodyList>;
-
 export type ListGuildEmojisResponse = ListGuildEmojisResponseBodyList;
-const ListGuildEmojisResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<ListGuildEmojisResponse>;
-
 export interface ListGuildIntegrationsRequest {
   guild_id: string;
 }
-const ListGuildIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<ListGuildIntegrationsRequest>;
-
 export type IntegrationApplicationResponse = BasicApplicationResponseWithBot;
 export type DiscordIntegrationResponseScopesList = Array<OAuth2Scopes>;
 export interface DiscordIntegrationResponse {
@@ -8367,86 +5554,29 @@ export type ListGuildIntegrationsResponseBodyItem =
   | DiscordIntegrationResponse
   | ExternalConnectionIntegrationResponse
   | GuildSubscriptionIntegrationResponse;
-const ListGuildIntegrationsResponseBodyItem = /*@__PURE__*/ __L.at(__c65, 7);
-
 export type ListGuildIntegrationsResponseBodyList = Array<ListGuildIntegrationsResponseBodyItem>;
-const ListGuildIntegrationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<ListGuildIntegrationsResponseBodyList>;
-
 export type ListGuildIntegrationsResponse = ListGuildIntegrationsResponseBodyList;
-const ListGuildIntegrationsResponse = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<ListGuildIntegrationsResponse>;
-
 export interface ListGuildInvitesRequest {
   guild_id: string;
 }
-const ListGuildInvitesRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<ListGuildInvitesRequest>;
-
 export type ListGuildInvitesResponseBodyItem =
   | FriendInviteResponse
   | GroupDMInviteResponse
   | GuildInviteResponse;
-const ListGuildInvitesResponseBodyItem = /*@__PURE__*/ __L.at(__c66, 3);
-
 export type ListGuildInvitesResponseBodyList = Array<ListGuildInvitesResponseBodyItem | null>;
-const ListGuildInvitesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<ListGuildInvitesResponseBodyList>;
-
 export type ListGuildInvitesResponse = ListGuildInvitesResponseBodyList;
-const ListGuildInvitesResponse = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<ListGuildInvitesResponse>;
-
 export interface ListGuildMembersRequest {
   guild_id: string;
   limit?: number;
   after?: string;
 }
-const ListGuildMembersRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<ListGuildMembersRequest>;
-
 export type ListGuildMembersResponseBodyList = Array<GuildMemberResponse>;
-const ListGuildMembersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<ListGuildMembersResponseBodyList>;
-
 export type ListGuildMembersResponse = ListGuildMembersResponseBodyList;
-const ListGuildMembersResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<ListGuildMembersResponse>;
-
 export interface ListGuildRolesRequest {
   guild_id: string;
 }
-const ListGuildRolesRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<ListGuildRolesRequest>;
-
 export type ListGuildRolesResponseBodyList = Array<GuildRoleResponse>;
-const ListGuildRolesResponseBodyList =
-  BulkUpdateGuildRolesResponseBodyList as any as S.Schema<ListGuildRolesResponseBodyList>;
-
 export type ListGuildRolesResponse = ListGuildRolesResponseBodyList;
-const ListGuildRolesResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<ListGuildRolesResponse>;
-
 export interface ListGuildScheduledEventExceptionUsersRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
@@ -8456,53 +5586,21 @@ export interface ListGuildScheduledEventExceptionUsersRequest {
   before?: string;
   after?: string;
 }
-const ListGuildScheduledEventExceptionUsersRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<ListGuildScheduledEventExceptionUsersRequest>;
-
 export type ListGuildScheduledEventExceptionUsersResponseBodyList =
   Array<ScheduledEventUserResponse>;
-const ListGuildScheduledEventExceptionUsersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<ListGuildScheduledEventExceptionUsersResponseBodyList>;
-
 export type ListGuildScheduledEventExceptionUsersResponse =
   ListGuildScheduledEventExceptionUsersResponseBodyList;
-const ListGuildScheduledEventExceptionUsersResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<ListGuildScheduledEventExceptionUsersResponse>;
-
 export interface ListGuildScheduledEventsRequest {
   guild_id: string;
   with_user_count?: boolean;
 }
-const ListGuildScheduledEventsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<ListGuildScheduledEventsRequest>;
-
 export type ListGuildScheduledEventsResponseBodyItem =
   | ExternalScheduledEventResponse
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
-const ListGuildScheduledEventsResponseBodyItem = /*@__PURE__*/ __L.at(__c67, 7);
-
 export type ListGuildScheduledEventsResponseBodyList =
   Array<ListGuildScheduledEventsResponseBodyItem>;
-const ListGuildScheduledEventsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<ListGuildScheduledEventsResponseBodyList>;
-
 export type ListGuildScheduledEventsResponse = ListGuildScheduledEventsResponseBodyList;
-const ListGuildScheduledEventsResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<ListGuildScheduledEventsResponse>;
-
 export interface ListGuildScheduledEventUsersRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
@@ -8511,82 +5609,28 @@ export interface ListGuildScheduledEventUsersRequest {
   before?: string;
   after?: string;
 }
-const ListGuildScheduledEventUsersRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<ListGuildScheduledEventUsersRequest>;
-
 export type ListGuildScheduledEventUsersResponseBodyList = Array<ScheduledEventUserResponse>;
 export type ListGuildScheduledEventUsersResponse = ListGuildScheduledEventUsersResponseBodyList;
-const ListGuildScheduledEventUsersResponse =
-  ListGuildScheduledEventExceptionUsersResponse as any as S.Schema<ListGuildScheduledEventUsersResponse>;
-
 export interface ListGuildSoundboardSoundsRequest {
   guild_id: string;
 }
-const ListGuildSoundboardSoundsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<ListGuildSoundboardSoundsRequest>;
-
 export type ListGuildSoundboardSoundsResponseItemsList = Array<SoundboardSoundResponse>;
-const ListGuildSoundboardSoundsResponseItemsList =
-  GetSoundboardDefaultSoundsResponseBodyList as any as S.Schema<ListGuildSoundboardSoundsResponseItemsList>;
-
 export interface ListGuildSoundboardSoundsResponse {
   items: ListGuildSoundboardSoundsResponseItemsList;
 }
-const ListGuildSoundboardSoundsResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<ListGuildSoundboardSoundsResponse>;
-
 export interface ListGuildStickersRequest {
   guild_id: string;
 }
-const ListGuildStickersRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<ListGuildStickersRequest>;
-
 export type ListGuildStickersResponseBodyList = Array<GuildStickerResponse>;
-const ListGuildStickersResponseBodyList =
-  GuildWithCountsResponseStickersList as any as S.Schema<ListGuildStickersResponseBodyList>;
-
 export type ListGuildStickersResponse = ListGuildStickersResponseBodyList;
-const ListGuildStickersResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<ListGuildStickersResponse>;
-
 export interface ListGuildTemplatesRequest {
   guild_id: string;
 }
-const ListGuildTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<ListGuildTemplatesRequest>;
-
 export type ListGuildTemplatesResponseBodyList = Array<GuildTemplateResponse>;
-const ListGuildTemplatesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<ListGuildTemplatesResponseBodyList>;
-
 export type ListGuildTemplatesResponse = ListGuildTemplatesResponseBodyList;
-const ListGuildTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<ListGuildTemplatesResponse>;
-
 export interface ListGuildVoiceRegionsRequest {
   guild_id: string;
 }
-const ListGuildVoiceRegionsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<ListGuildVoiceRegionsRequest>;
-
 export interface VoiceRegionResponse {
   id: string;
   name: string;
@@ -8594,23 +5638,9 @@ export interface VoiceRegionResponse {
   deprecated: boolean;
   optimal: boolean;
 }
-const VoiceRegionResponse = /*@__PURE__*/ __L.at(__c69, 3) as any as S.Schema<VoiceRegionResponse>;
-
 export type ListGuildVoiceRegionsResponseBodyList = Array<VoiceRegionResponse>;
-const ListGuildVoiceRegionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<ListGuildVoiceRegionsResponseBodyList>;
-
 export type ListGuildVoiceRegionsResponse = ListGuildVoiceRegionsResponseBodyList;
-const ListGuildVoiceRegionsResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<ListGuildVoiceRegionsResponse>;
-
 export type ReactionTypes = 0 | 1;
-const ReactionTypes = S.Number;
-
 export interface ListMessageReactionsByEmojiRequest {
   channel_id: string;
   message_id: string;
@@ -8619,21 +5649,8 @@ export interface ListMessageReactionsByEmojiRequest {
   limit?: number;
   type?: ReactionTypes | (number & {});
 }
-const ListMessageReactionsByEmojiRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  6,
-) as any as S.Schema<ListMessageReactionsByEmojiRequest>;
-
 export type ListMessageReactionsByEmojiResponseBodyList = Array<UserResponse>;
-const ListMessageReactionsByEmojiResponseBodyList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<ListMessageReactionsByEmojiResponseBodyList>;
-
 export type ListMessageReactionsByEmojiResponse = ListMessageReactionsByEmojiResponseBodyList;
-const ListMessageReactionsByEmojiResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<ListMessageReactionsByEmojiResponse>;
-
 export interface ListMessagesRequest {
   channel_id: string;
   around?: string;
@@ -8641,24 +5658,9 @@ export interface ListMessagesRequest {
   after?: string;
   limit?: number;
 }
-const ListMessagesRequest = /*@__PURE__*/ __L.at(__c70, 0) as any as S.Schema<ListMessagesRequest>;
-
 export type ListMessagesResponseBodyList = Array<MessageResponse>;
-const ListMessagesResponseBodyList =
-  ThreadsResponseFirstMessagesList as any as S.Schema<ListMessagesResponseBodyList>;
-
 export type ListMessagesResponse = ListMessagesResponseBodyList;
-const ListMessagesResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<ListMessagesResponse>;
-
 export interface ListMyConnectionsRequest {}
-const ListMyConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<ListMyConnectionsRequest>;
-
 export type ConnectedAccountProviders =
   | "battlenet"
   | "bluesky"
@@ -8684,38 +5686,19 @@ export type ConnectedAccountProviders =
   | "xbox"
   | "youtube"
   | "domain";
-const ConnectedAccountProviders = S.String;
-
 export interface ConnectedAccountGuildResponse {
   id: string;
   name: string;
   icon: string | null;
 }
-const ConnectedAccountGuildResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<ConnectedAccountGuildResponse>;
-
 export interface ConnectedAccountIntegrationResponse {
   id: string;
   type: IntegrationTypes;
   account: AccountResponse;
   guild: ConnectedAccountGuildResponse;
 }
-const ConnectedAccountIntegrationResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<ConnectedAccountIntegrationResponse>;
-
 export type ConnectedAccountResponseIntegrationsList = Array<ConnectedAccountIntegrationResponse>;
-const ConnectedAccountResponseIntegrationsList = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<ConnectedAccountResponseIntegrationsList>;
-
 export type ConnectedAccountVisibility = 0 | 1;
-const ConnectedAccountVisibility = S.Number;
-
 export interface ConnectedAccountResponse {
   id: string;
   name: string | null;
@@ -8728,23 +5711,8 @@ export interface ConnectedAccountResponse {
   visibility: ConnectedAccountVisibility;
   revoked?: boolean;
 }
-const ConnectedAccountResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  6,
-) as any as S.Schema<ConnectedAccountResponse>;
-
 export type ListMyConnectionsResponseBodyList = Array<ConnectedAccountResponse>;
-const ListMyConnectionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<ListMyConnectionsResponseBodyList>;
-
 export type ListMyConnectionsResponse = ListMyConnectionsResponseBodyList;
-const ListMyConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<ListMyConnectionsResponse>;
-
 export interface ListMyGuildsRequest {
   before?: string;
   after?: string;
@@ -8752,12 +5720,7 @@ export interface ListMyGuildsRequest {
   shard?: number;
   with_counts?: boolean;
 }
-const ListMyGuildsRequest = /*@__PURE__*/ __L.at(__c71, 1) as any as S.Schema<ListMyGuildsRequest>;
-
 export type MyGuildResponseFeaturesList = Array<GuildFeatures>;
-const MyGuildResponseFeaturesList =
-  InviteGuildResponseFeaturesList as any as S.Schema<MyGuildResponseFeaturesList>;
-
 export interface MyGuildResponse {
   id: string;
   name: string;
@@ -8769,138 +5732,53 @@ export interface MyGuildResponse {
   approximate_member_count?: number | null;
   approximate_presence_count?: number | null;
 }
-const MyGuildResponse = /*@__PURE__*/ __L.at(__c71, 2) as any as S.Schema<MyGuildResponse>;
-
 export type ListMyGuildsResponseBodyList = Array<MyGuildResponse>;
-const ListMyGuildsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<ListMyGuildsResponseBodyList>;
-
 export type ListMyGuildsResponse = ListMyGuildsResponseBodyList;
-const ListMyGuildsResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  4,
-) as any as S.Schema<ListMyGuildsResponse>;
-
 export interface ListMyPrivateArchivedThreadsRequest {
   channel_id: string;
   before?: string;
   limit?: number;
 }
-const ListMyPrivateArchivedThreadsRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<ListMyPrivateArchivedThreadsRequest>;
-
 export interface ListPinsRequest {
   channel_id: string;
   before?: string;
   limit?: number;
 }
-const ListPinsRequest = /*@__PURE__*/ __L.at(__c71, 6) as any as S.Schema<ListPinsRequest>;
-
 export interface PinnedMessageResponse {
   pinned_at: string;
   message: MessageResponse;
 }
-const PinnedMessageResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<PinnedMessageResponse>;
-
 export type PinnedMessagesResponseItemsList = Array<PinnedMessageResponse>;
-const PinnedMessagesResponseItemsList = /*@__PURE__*/ __L.at(
-  __c72,
-  0,
-) as any as S.Schema<PinnedMessagesResponseItemsList>;
-
 export interface PinnedMessagesResponse {
   items: PinnedMessagesResponseItemsList;
   has_more: boolean;
 }
-const PinnedMessagesResponse = /*@__PURE__*/ __L.at(
-  __c72,
-  1,
-) as any as S.Schema<PinnedMessagesResponse>;
-
 export interface ListPrivateArchivedThreadsRequest {
   channel_id: string;
   before?: string;
   limit?: number;
 }
-const ListPrivateArchivedThreadsRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  2,
-) as any as S.Schema<ListPrivateArchivedThreadsRequest>;
-
 export interface ListPublicArchivedThreadsRequest {
   channel_id: string;
   before?: string;
   limit?: number;
 }
-const ListPublicArchivedThreadsRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  3,
-) as any as S.Schema<ListPublicArchivedThreadsRequest>;
-
 export interface ListStickerPacksRequest {}
-const ListStickerPacksRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  4,
-) as any as S.Schema<ListStickerPacksRequest>;
-
 export type StickerPackCollectionResponseStickerPacksList = Array<StickerPackResponse>;
-const StickerPackCollectionResponseStickerPacksList = /*@__PURE__*/ __L.at(
-  __c72,
-  5,
-) as any as S.Schema<StickerPackCollectionResponseStickerPacksList>;
-
 export interface StickerPackCollectionResponse {
   sticker_packs: StickerPackCollectionResponseStickerPacksList;
 }
-const StickerPackCollectionResponse = /*@__PURE__*/ __L.at(
-  __c72,
-  6,
-) as any as S.Schema<StickerPackCollectionResponse>;
-
 export interface ListThreadMembersRequest {
   channel_id: string;
   with_member?: boolean;
   limit?: number;
   after?: string;
 }
-const ListThreadMembersRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  7,
-) as any as S.Schema<ListThreadMembersRequest>;
-
 export type ListThreadMembersResponseBodyList = Array<ThreadMemberResponse>;
-const ListThreadMembersResponseBodyList =
-  ThreadsResponseMembersList as any as S.Schema<ListThreadMembersResponseBodyList>;
-
 export type ListThreadMembersResponse = ListThreadMembersResponseBodyList;
-const ListThreadMembersResponse = /*@__PURE__*/ __L.at(
-  __c73,
-  0,
-) as any as S.Schema<ListThreadMembersResponse>;
-
 export interface ListVoiceRegionsRequest {}
-const ListVoiceRegionsRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  1,
-) as any as S.Schema<ListVoiceRegionsRequest>;
-
 export type ListVoiceRegionsResponseBodyList = Array<VoiceRegionResponse>;
-const ListVoiceRegionsResponseBodyList =
-  ListGuildVoiceRegionsResponseBodyList as any as S.Schema<ListVoiceRegionsResponseBodyList>;
-
 export type ListVoiceRegionsResponse = ListVoiceRegionsResponseBodyList;
-const ListVoiceRegionsResponse = /*@__PURE__*/ __L.at(
-  __c73,
-  2,
-) as any as S.Schema<ListVoiceRegionsResponse>;
-
 export type ApplicationIdentityProviderAuthType =
   | "OIDC"
   | "EPIC_ONLINE_SERVICES_ACCESS_TOKEN"
@@ -8910,81 +5788,45 @@ export type ApplicationIdentityProviderAuthType =
   | "DISCORD_BOT_ISSUED_ACCESS_TOKEN"
   | "APPLE_ID_TOKEN"
   | "PLAYSTATION_NETWORK_ID_TOKEN";
-const ApplicationIdentityProviderAuthType = S.String;
-
 export interface PartnerSdkTokenRequest {
   client_id: string;
   client_secret?: string | Redacted.Redacted<string> | null;
   external_auth_token: string;
   external_auth_type: ApplicationIdentityProviderAuthType | (string & {});
 }
-const PartnerSdkTokenRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  3,
-) as any as S.Schema<PartnerSdkTokenRequest>;
-
 export interface PartnerSdkUnmergeProvisionalAccountRequest {
   client_id: string;
   client_secret?: string | Redacted.Redacted<string> | null;
   external_auth_token: string;
   external_auth_type: ApplicationIdentityProviderAuthType | (string & {});
 }
-const PartnerSdkUnmergeProvisionalAccountRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  4,
-) as any as S.Schema<PartnerSdkUnmergeProvisionalAccountRequest>;
-
 export interface PartnerSdkUnmergeProvisionalAccountResponse {}
-const PartnerSdkUnmergeProvisionalAccountResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<PartnerSdkUnmergeProvisionalAccountResponse>;
-
 export interface PollExpireRequest {
   channel_id: string;
   message_id: string;
 }
-const PollExpireRequest = /*@__PURE__*/ __L.at(__c73, 5) as any as S.Schema<PollExpireRequest>;
-
 export type PreviewPruneGuildRequestIncludeRolesCase1List = Array<string | null>;
 export type PreviewPruneGuildRequestIncludeRoles =
   | string
   | PreviewPruneGuildRequestIncludeRolesCase1List;
-const PreviewPruneGuildRequestIncludeRoles = /*@__PURE__*/ __L.at(__c73, 6);
-
 export interface PreviewPruneGuildRequest {
   guild_id: string;
   days?: number;
   include_roles?: PreviewPruneGuildRequestIncludeRoles;
 }
-const PreviewPruneGuildRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  7,
-) as any as S.Schema<PreviewPruneGuildRequest>;
-
 export interface GuildPruneResponse {
   pruned: number | null;
 }
-const GuildPruneResponse = /*@__PURE__*/ __L.at(__c74, 0) as any as S.Schema<GuildPruneResponse>;
-
 export type PruneGuildRequestIncludeRolesCase1List = Array<string>;
 export type PruneGuildRequestIncludeRoles = string | PruneGuildRequestIncludeRolesCase1List;
-const PruneGuildRequestIncludeRoles = /*@__PURE__*/ __L.at(__c74, 1);
-
 export interface PruneGuildRequest {
   guild_id: string;
   days?: number | null;
   compute_prune_count?: boolean | null;
   include_roles?: PruneGuildRequestIncludeRoles | null;
 }
-const PruneGuildRequest = /*@__PURE__*/ __L.at(__c74, 2) as any as S.Schema<PruneGuildRequest>;
-
 export type OnboardingPromptOptionRequestRoleIdsList = Array<string>;
-const OnboardingPromptOptionRequestRoleIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<OnboardingPromptOptionRequestRoleIdsList>;
-
 export type OnboardingPromptOptionRequestChannelIdsList = Array<string>;
-const OnboardingPromptOptionRequestChannelIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<OnboardingPromptOptionRequestChannelIdsList>;
-
 export interface OnboardingPromptOptionRequest {
   id?: string | null;
   title: string;
@@ -8995,17 +5837,7 @@ export interface OnboardingPromptOptionRequest {
   role_ids?: OnboardingPromptOptionRequestRoleIdsList | null;
   channel_ids?: OnboardingPromptOptionRequestChannelIdsList | null;
 }
-const OnboardingPromptOptionRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  3,
-) as any as S.Schema<OnboardingPromptOptionRequest>;
-
 export type UpdateOnboardingPromptRequestOptionsList = Array<OnboardingPromptOptionRequest>;
-const UpdateOnboardingPromptRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c74,
-  4,
-) as any as S.Schema<UpdateOnboardingPromptRequestOptionsList>;
-
 export interface UpdateOnboardingPromptRequest {
   title: string;
   options: UpdateOnboardingPromptRequestOptionsList;
@@ -9015,21 +5847,8 @@ export interface UpdateOnboardingPromptRequest {
   type?: OnboardingPromptType | (number & {}) | null;
   id: string;
 }
-const UpdateOnboardingPromptRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  5,
-) as any as S.Schema<UpdateOnboardingPromptRequest>;
-
 export type PutGuildsOnboardingRequestPromptsList = Array<UpdateOnboardingPromptRequest>;
-const PutGuildsOnboardingRequestPromptsList = /*@__PURE__*/ __L.at(
-  __c74,
-  6,
-) as any as S.Schema<PutGuildsOnboardingRequestPromptsList>;
-
 export type PutGuildsOnboardingRequestDefaultChannelIdsList = Array<string>;
-const PutGuildsOnboardingRequestDefaultChannelIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<PutGuildsOnboardingRequestDefaultChannelIdsList>;
-
 export interface PutGuildsOnboardingRequest {
   guild_id: string;
   prompts?: PutGuildsOnboardingRequestPromptsList | null;
@@ -9037,19 +5856,8 @@ export interface PutGuildsOnboardingRequest {
   default_channel_ids?: PutGuildsOnboardingRequestDefaultChannelIdsList | null;
   mode?: GuildOnboardingMode | (number & {}) | null;
 }
-const PutGuildsOnboardingRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  7,
-) as any as S.Schema<PutGuildsOnboardingRequest>;
-
 export type GuildOnboardingResponsePromptsList = Array<OnboardingPromptResponse>;
-const GuildOnboardingResponsePromptsList =
-  UserGuildOnboardingResponsePromptsList as any as S.Schema<GuildOnboardingResponsePromptsList>;
-
 export type GuildOnboardingResponseDefaultChannelIdsList = Array<string>;
-const GuildOnboardingResponseDefaultChannelIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<GuildOnboardingResponseDefaultChannelIdsList>;
-
 export interface GuildOnboardingResponse {
   guild_id: string;
   prompts: GuildOnboardingResponsePromptsList;
@@ -9057,72 +5865,28 @@ export interface GuildOnboardingResponse {
   enabled: boolean;
   mode: GuildOnboardingMode;
 }
-const GuildOnboardingResponse = /*@__PURE__*/ __L.at(
-  __c75,
-  0,
-) as any as S.Schema<GuildOnboardingResponse>;
-
 export interface RemoveInviteTargetUserRequest {
   code: string;
   user_id: string;
 }
-const RemoveInviteTargetUserRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  1,
-) as any as S.Schema<RemoveInviteTargetUserRequest>;
-
 export interface RemoveInviteTargetUserResponse {}
-const RemoveInviteTargetUserResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<RemoveInviteTargetUserResponse>;
-
 export interface RevokeInviteRequest {
   code: string;
 }
-const RevokeInviteRequest = /*@__PURE__*/ __L.at(__c75, 2) as any as S.Schema<RevokeInviteRequest>;
-
 export type RevokeInviteResponseBody =
   | FriendInviteResponse
   | GroupDMInviteResponse
   | GuildInviteResponse;
-const RevokeInviteResponseBody = /*@__PURE__*/ __L.at(__c75, 3);
-
 export type RevokeInviteResponse = RevokeInviteResponseBody;
-const RevokeInviteResponse = /*@__PURE__*/ __L.at(
-  __c75,
-  4,
-) as any as S.Schema<RevokeInviteResponse>;
-
 export type SortingMode = "relevance" | "timestamp";
-const SortingMode = S.String;
-
 export type SortingOrder = "asc" | "desc";
-const SortingOrder = S.String;
-
 export type SearchGuildRequestAuthorIdList = Array<string>;
-const SearchGuildRequestAuthorIdList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestAuthorIdList>;
-
 export type AuthorType = "user" | "bot" | "webhook" | "-user" | "-bot" | "-webhook";
 export type SearchGuildRequestAuthorTypeList = Array<AuthorType | (string & {})>;
-const SearchGuildRequestAuthorTypeList =
-  InviteGuildResponseFeaturesList as any as S.Schema<SearchGuildRequestAuthorTypeList>;
-
 export type SearchGuildRequestMentionsList = Array<string>;
-const SearchGuildRequestMentionsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestMentionsList>;
-
 export type SearchGuildRequestMentionsRoleIdList = Array<string>;
-const SearchGuildRequestMentionsRoleIdList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestMentionsRoleIdList>;
-
 export type SearchGuildRequestRepliedToUserIdList = Array<string>;
-const SearchGuildRequestRepliedToUserIdList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestRepliedToUserIdList>;
-
 export type SearchGuildRequestRepliedToMessageIdList = Array<string>;
-const SearchGuildRequestRepliedToMessageIdList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestRepliedToMessageIdList>;
-
 export type HasOption =
   | "link"
   | "embed"
@@ -9143,34 +5907,13 @@ export type HasOption =
   | "-poll"
   | "-snapshot";
 export type SearchGuildRequestHasList = Array<HasOption | (string & {})>;
-const SearchGuildRequestHasList =
-  InviteGuildResponseFeaturesList as any as S.Schema<SearchGuildRequestHasList>;
-
 export type SearchGuildRequestLinkHostnameList = Array<string>;
-const SearchGuildRequestLinkHostnameList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestLinkHostnameList>;
-
 export type SearchGuildRequestEmbedProviderList = Array<string>;
-const SearchGuildRequestEmbedProviderList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestEmbedProviderList>;
-
 export type SearchableEmbedType = "image" | "video" | "gif" | "sound" | "article";
 export type SearchGuildRequestEmbedTypeList = Array<SearchableEmbedType | (string & {})>;
-const SearchGuildRequestEmbedTypeList =
-  InviteGuildResponseFeaturesList as any as S.Schema<SearchGuildRequestEmbedTypeList>;
-
 export type SearchGuildRequestAttachmentExtensionList = Array<string>;
-const SearchGuildRequestAttachmentExtensionList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestAttachmentExtensionList>;
-
 export type SearchGuildRequestAttachmentFilenameList = Array<string>;
-const SearchGuildRequestAttachmentFilenameList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestAttachmentFilenameList>;
-
 export type SearchGuildRequestChannelIdList = Array<string>;
-const SearchGuildRequestChannelIdList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchGuildRequestChannelIdList>;
-
 export interface SearchGuildRequest {
   guild_id: string;
   sort_by?: SortingMode | (string & {});
@@ -9198,24 +5941,10 @@ export interface SearchGuildRequest {
   include_nsfw?: boolean;
   channel_id?: SearchGuildRequestChannelIdList;
 }
-const SearchGuildRequest = /*@__PURE__*/ __L.at(__c75, 5) as any as S.Schema<SearchGuildRequest>;
-
 export type SearchMessageResponseMentionsList = Array<UserResponse>;
-const SearchMessageResponseMentionsList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<SearchMessageResponseMentionsList>;
-
 export type SearchMessageResponseMentionRolesList = Array<string>;
-const SearchMessageResponseMentionRolesList =
-  AddGuildMemberRequestRolesList as any as S.Schema<SearchMessageResponseMentionRolesList>;
-
 export type SearchMessageResponseAttachmentsList = Array<MessageAttachmentResponse>;
-const SearchMessageResponseAttachmentsList =
-  MessageResponseAttachmentsList as any as S.Schema<SearchMessageResponseAttachmentsList>;
-
 export type SearchMessageResponseEmbedsList = Array<MessageEmbedResponse>;
-const SearchMessageResponseEmbedsList =
-  MessageResponseEmbedsList as any as S.Schema<SearchMessageResponseEmbedsList>;
-
 export type SearchMessageResponseComponentsItem =
   | ActionRowComponentResponse
   | ContainerComponentResponse
@@ -9224,48 +5953,18 @@ export type SearchMessageResponseComponentsItem =
   | SectionComponentResponse
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
-const SearchMessageResponseComponentsItem = /*@__PURE__*/ __L.at(__c75, 6);
-
 export type SearchMessageResponseComponentsList = Array<SearchMessageResponseComponentsItem>;
-const SearchMessageResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c75,
-  7,
-) as any as S.Schema<SearchMessageResponseComponentsList>;
-
 export type SearchMessageResponseStickersItem = GuildStickerResponse | StandardStickerResponse;
-const SearchMessageResponseStickersItem = /*@__PURE__*/ __L.at(__c76, 0);
-
 export type SearchMessageResponseStickersList = Array<SearchMessageResponseStickersItem>;
-const SearchMessageResponseStickersList = /*@__PURE__*/ __L.at(
-  __c76,
-  1,
-) as any as S.Schema<SearchMessageResponseStickersList>;
-
 export type SearchMessageResponseStickerItemsList = Array<MessageStickerItemResponse>;
-const SearchMessageResponseStickerItemsList =
-  MessageResponseStickerItemsList as any as S.Schema<SearchMessageResponseStickerItemsList>;
-
 export type SearchMessageResponseNonce = number | string;
-const SearchMessageResponseNonce = /*@__PURE__*/ __L.at(__c76, 2);
-
 export type SearchMessageResponseMentionChannelsList = Array<MessageMentionChannelResponse>;
-const SearchMessageResponseMentionChannelsList =
-  MessageResponseMentionChannelsList as any as S.Schema<SearchMessageResponseMentionChannelsList>;
-
 export type SearchMessageResponseInteractionMetadata =
   | ApplicationCommandInteractionMetadataResponse
   | MessageComponentInteractionMetadataResponse
   | ModalSubmitInteractionMetadataResponse;
-const SearchMessageResponseInteractionMetadata = /*@__PURE__*/ __L.at(__c76, 3);
-
 export type SearchMessageResponseMessageSnapshotsList = Array<MessageSnapshotResponse>;
-const SearchMessageResponseMessageSnapshotsList =
-  MessageResponseMessageSnapshotsList as any as S.Schema<SearchMessageResponseMessageSnapshotsList>;
-
 export type SearchMessageResponseReactionsList = Array<MessageReactionResponse>;
-const SearchMessageResponseReactionsList =
-  MessageResponseReactionsList as any as S.Schema<SearchMessageResponseReactionsList>;
-
 export interface SearchMessageResponse {
   type: MessageType;
   content: string;
@@ -9309,31 +6008,10 @@ export interface SearchMessageResponse {
   hit: boolean;
   restriction_count?: number;
 }
-const SearchMessageResponse = /*@__PURE__*/ __L.at(
-  __c76,
-  4,
-) as any as S.Schema<SearchMessageResponse>;
-
 export type GuildSearchResponseMessagesItemList = Array<SearchMessageResponse>;
-const GuildSearchResponseMessagesItemList = /*@__PURE__*/ __L.at(
-  __c76,
-  5,
-) as any as S.Schema<GuildSearchResponseMessagesItemList>;
-
 export type GuildSearchResponseMessagesList = Array<GuildSearchResponseMessagesItemList>;
-const GuildSearchResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c76,
-  6,
-) as any as S.Schema<GuildSearchResponseMessagesList>;
-
 export type GuildSearchResponseThreadsList = Array<ThreadResponse>;
-const GuildSearchResponseThreadsList =
-  ThreadsResponseThreadsList as any as S.Schema<GuildSearchResponseThreadsList>;
-
 export type GuildSearchResponseMembersList = Array<ThreadMemberResponse>;
-const GuildSearchResponseMembersList =
-  ThreadsResponseMembersList as any as S.Schema<GuildSearchResponseMembersList>;
-
 export interface GuildSearchResponse {
   messages: GuildSearchResponseMessagesList;
   doing_deep_historical_index: boolean;
@@ -9342,39 +6020,20 @@ export interface GuildSearchResponse {
   members?: GuildSearchResponseMembersList | null;
   documents_indexed?: number | null;
 }
-const GuildSearchResponse = /*@__PURE__*/ __L.at(__c76, 7) as any as S.Schema<GuildSearchResponse>;
-
 export interface SearchGuildMembersRequest {
   guild_id: string;
   limit?: number;
   query: string;
 }
-const SearchGuildMembersRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  0,
-) as any as S.Schema<SearchGuildMembersRequest>;
-
 export type SearchGuildMembersResponseBodyList = Array<GuildMemberResponse>;
-const SearchGuildMembersResponseBodyList =
-  ListGuildMembersResponseBodyList as any as S.Schema<SearchGuildMembersResponseBodyList>;
-
 export type SearchGuildMembersResponse = SearchGuildMembersResponseBodyList;
-const SearchGuildMembersResponse = /*@__PURE__*/ __L.at(
-  __c77,
-  1,
-) as any as S.Schema<SearchGuildMembersResponse>;
-
 export type SearchThreadRequestTagCase1List = Array<string>;
 export type SearchThreadRequestTag = string | SearchThreadRequestTagCase1List;
-const SearchThreadRequestTag = /*@__PURE__*/ __L.at(__c77, 2);
-
 export type ThreadSortingMode =
   | "relevance"
   | "creation_time"
   | "last_message_time"
   | "archive_time";
-const ThreadSortingMode = S.String;
-
 export interface SearchThreadRequest {
   channel_id: string;
   name?: string;
@@ -9389,20 +6048,9 @@ export interface SearchThreadRequest {
   limit?: number;
   offset?: number;
 }
-const SearchThreadRequest = /*@__PURE__*/ __L.at(__c77, 3) as any as S.Schema<SearchThreadRequest>;
-
 export type ThreadSearchResponseThreadsList = Array<ThreadResponse>;
-const ThreadSearchResponseThreadsList =
-  ThreadsResponseThreadsList as any as S.Schema<ThreadSearchResponseThreadsList>;
-
 export type ThreadSearchResponseMembersList = Array<ThreadMemberResponse>;
-const ThreadSearchResponseMembersList =
-  ThreadsResponseMembersList as any as S.Schema<ThreadSearchResponseMembersList>;
-
 export type ThreadSearchResponseFirstMessagesList = Array<MessageResponse>;
-const ThreadSearchResponseFirstMessagesList =
-  ThreadsResponseFirstMessagesList as any as S.Schema<ThreadSearchResponseFirstMessagesList>;
-
 export interface ThreadSearchResponse {
   threads: ThreadSearchResponseThreadsList;
   members: ThreadSearchResponseMembersList;
@@ -9410,25 +6058,12 @@ export interface ThreadSearchResponse {
   first_messages?: ThreadSearchResponseFirstMessagesList;
   total_results: number;
 }
-const ThreadSearchResponse = /*@__PURE__*/ __L.at(
-  __c77,
-  4,
-) as any as S.Schema<ThreadSearchResponse>;
-
 export interface SendSoundboardSoundRequest {
   channel_id: string;
   sound_id: string;
   source_guild_id?: string | null;
 }
-const SendSoundboardSoundRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  5,
-) as any as S.Schema<SendSoundboardSoundRequest>;
-
 export interface SendSoundboardSoundResponse {}
-const SendSoundboardSoundResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<SendSoundboardSoundResponse>;
-
 export interface SetChannelPermissionOverwriteRequest {
   channel_id: string;
   overwrite_id: string;
@@ -9436,15 +6071,7 @@ export interface SetChannelPermissionOverwriteRequest {
   allow?: number | null;
   deny?: number | null;
 }
-const SetChannelPermissionOverwriteRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  6,
-) as any as S.Schema<SetChannelPermissionOverwriteRequest>;
-
 export interface SetChannelPermissionOverwriteResponse {}
-const SetChannelPermissionOverwriteResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<SetChannelPermissionOverwriteResponse>;
-
 export interface ApplicationCommandPermission {
   id: string;
   type: ApplicationCommandPermissionType | (number & {});
@@ -9452,108 +6079,45 @@ export interface ApplicationCommandPermission {
 }
 export type SetGuildApplicationCommandPermissionsRequestPermissionsList =
   Array<ApplicationCommandPermission>;
-const SetGuildApplicationCommandPermissionsRequestPermissionsList =
-  CommandPermissionsResponsePermissionsList as any as S.Schema<SetGuildApplicationCommandPermissionsRequestPermissionsList>;
-
 export interface SetGuildApplicationCommandPermissionsRequest {
   application_id: string;
   guild_id: string;
   command_id: string;
   permissions?: SetGuildApplicationCommandPermissionsRequestPermissionsList | null;
 }
-const SetGuildApplicationCommandPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  7,
-) as any as S.Schema<SetGuildApplicationCommandPermissionsRequest>;
-
 export interface SyncGuildTemplateRequest {
   guild_id: string;
   code: string;
 }
-const SyncGuildTemplateRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  0,
-) as any as S.Schema<SyncGuildTemplateRequest>;
-
 export interface TriggerTypingIndicatorRequest {
   channel_id: string;
 }
-const TriggerTypingIndicatorRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  1,
-) as any as S.Schema<TriggerTypingIndicatorRequest>;
-
 export type TriggerTypingIndicatorResponse = unknown;
-const TriggerTypingIndicatorResponse = /*@__PURE__*/ __L.at(
-  __c78,
-  2,
-) as any as S.Schema<TriggerTypingIndicatorResponse>;
-
 export interface UnbanUserFromGuildRequest2 {
   guild_id: string;
   user_id: string;
 }
-const UnbanUserFromGuildRequest2 = /*@__PURE__*/ __L.at(
-  __c78,
-  3,
-) as any as S.Schema<UnbanUserFromGuildRequest2>;
-
 export interface UnbanUserFromGuildResponse {}
-const UnbanUserFromGuildResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<UnbanUserFromGuildResponse>;
-
 export type UpdateApplicationRequestDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const UpdateApplicationRequestDescriptionLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<UpdateApplicationRequestDescriptionLocalizationsMap>;
-
 export interface UpdateApplicationRequestDescription {
   default: string;
   localizations?: UpdateApplicationRequestDescriptionLocalizationsMap | null;
 }
-const UpdateApplicationRequestDescription = /*@__PURE__*/ __L.at(
-  __c78,
-  4,
-) as any as S.Schema<UpdateApplicationRequestDescription>;
-
 export type UpdateApplicationRequestTagsList = Array<string>;
-const UpdateApplicationRequestTagsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<UpdateApplicationRequestTagsList>;
-
 export type ApplicationOAuth2InstallParamsScopesList = Array<OAuth2Scopes | (string & {})>;
-const ApplicationOAuth2InstallParamsScopesList =
-  ApplicationOAuth2InstallParamsResponseScopesList as any as S.Schema<ApplicationOAuth2InstallParamsScopesList>;
-
 export interface ApplicationOAuth2InstallParams {
   scopes?: ApplicationOAuth2InstallParamsScopesList | null;
   permissions?: number | null;
 }
-const ApplicationOAuth2InstallParams = /*@__PURE__*/ __L.at(
-  __c78,
-  5,
-) as any as S.Schema<ApplicationOAuth2InstallParams>;
-
 export interface ApplicationIntegrationTypeConfiguration {
   oauth2_install_params?: ApplicationOAuth2InstallParams | null;
 }
-const ApplicationIntegrationTypeConfiguration = /*@__PURE__*/ __L.at(
-  __c78,
-  6,
-) as any as S.Schema<ApplicationIntegrationTypeConfiguration>;
-
 export type UpdateApplicationRequestIntegrationTypesConfigMap = {
   [key: string]: ApplicationIntegrationTypeConfiguration | null | undefined;
 };
-const UpdateApplicationRequestIntegrationTypesConfigMap = /*@__PURE__*/ __L.at(
-  __c78,
-  7,
-) as any as S.Schema<UpdateApplicationRequestIntegrationTypesConfigMap>;
-
 export type UpdateApplicationRequestEventWebhooksTypesList = Array<ActionTypes | (string & {})>;
-const UpdateApplicationRequestEventWebhooksTypesList =
-  PrivateApplicationResponseEventWebhooksTypesList as any as S.Schema<UpdateApplicationRequestEventWebhooksTypesList>;
-
 export interface UpdateApplicationRequest {
   application_id: string;
   description?: UpdateApplicationRequestDescription | null;
@@ -9575,23 +6139,12 @@ export interface UpdateApplicationRequest {
   event_webhooks_url?: string | null;
   event_webhooks_types?: UpdateApplicationRequestEventWebhooksTypesList | null;
 }
-const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  0,
-) as any as S.Schema<UpdateApplicationRequest>;
-
 export type UpdateApplicationCommandRequestNameLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const UpdateApplicationCommandRequestNameLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<UpdateApplicationCommandRequestNameLocalizationsMap>;
-
 export type UpdateApplicationCommandRequestDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const UpdateApplicationCommandRequestDescriptionLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<UpdateApplicationCommandRequestDescriptionLocalizationsMap>;
-
 export type UpdateApplicationCommandRequestOptionsItem =
   | ApplicationCommandAttachmentOption
   | ApplicationCommandBooleanOption
@@ -9604,27 +6157,14 @@ export type UpdateApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandGroupOption
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
-const UpdateApplicationCommandRequestOptionsItem = /*@__PURE__*/ __L.at(__c79, 1);
-
 export type UpdateApplicationCommandRequestOptionsList =
   Array<UpdateApplicationCommandRequestOptionsItem>;
-const UpdateApplicationCommandRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c79,
-  2,
-) as any as S.Schema<UpdateApplicationCommandRequestOptionsList>;
-
 export type UpdateApplicationCommandRequestContextsList = Array<
   InteractionContextType | (number & {})
 >;
-const UpdateApplicationCommandRequestContextsList =
-  ApplicationCommandUpdateRequestContextsList as any as S.Schema<UpdateApplicationCommandRequestContextsList>;
-
 export type UpdateApplicationCommandRequestIntegrationTypesList = Array<
   ApplicationIntegrationType | (number & {})
 >;
-const UpdateApplicationCommandRequestIntegrationTypesList =
-  ApplicationCommandUpdateRequestIntegrationTypesList as any as S.Schema<UpdateApplicationCommandRequestIntegrationTypesList>;
-
 export interface UpdateApplicationCommandRequest {
   application_id: string;
   command_id: string;
@@ -9640,35 +6180,17 @@ export interface UpdateApplicationCommandRequest {
   /** Determines whether the interaction is handled by the app's interactions handler or by Discord */
   handler?: ApplicationCommandHandler | (number & {}) | null;
 }
-const UpdateApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  3,
-) as any as S.Schema<UpdateApplicationCommandRequest>;
-
 export interface UpdateApplicationEmojiRequest {
   application_id: string;
   emoji_id: string;
   name?: string;
 }
-const UpdateApplicationEmojiRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  4,
-) as any as S.Schema<UpdateApplicationEmojiRequest>;
-
 export type ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap = {
   [key: string]: string | null | undefined;
 };
-const ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap = /*@__PURE__*/ __L.at(
-  __c79,
-  5,
-) as any as S.Schema<ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap>;
-
 export type ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap = {
   [key: string]: string | null | undefined;
 };
-const ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap =
-  ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap as any as S.Schema<ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap>;
-
 export interface ApplicationRoleConnectionsMetadataItemRequest {
   type: MetadataItemTypes | (number & {});
   key: string;
@@ -9677,51 +6199,25 @@ export interface ApplicationRoleConnectionsMetadataItemRequest {
   description: string;
   description_localizations?: ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap | null;
 }
-const ApplicationRoleConnectionsMetadataItemRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  6,
-) as any as S.Schema<ApplicationRoleConnectionsMetadataItemRequest>;
-
 export type UpdateApplicationRoleConnectionsMetadataRequestBodyList =
   Array<ApplicationRoleConnectionsMetadataItemRequest>;
-const UpdateApplicationRoleConnectionsMetadataRequestBodyList = /*@__PURE__*/ __L.at(
-  __c79,
-  7,
-) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataRequestBodyList>;
-
 export interface UpdateApplicationRoleConnectionsMetadataRequest {
   application_id: string;
   body: UpdateApplicationRoleConnectionsMetadataRequestBodyList | null;
 }
-const UpdateApplicationRoleConnectionsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  0,
-) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataRequest>;
-
 export type UpdateApplicationRoleConnectionsMetadataResponseBodyList =
   Array<ApplicationRoleConnectionsMetadataItemResponse>;
 export type UpdateApplicationRoleConnectionsMetadataResponse =
   UpdateApplicationRoleConnectionsMetadataResponseBodyList;
-const UpdateApplicationRoleConnectionsMetadataResponse =
-  GetApplicationRoleConnectionsMetadataResponse as any as S.Schema<UpdateApplicationRoleConnectionsMetadataResponse>;
-
 export type UpdateApplicationUserRoleConnectionRequestMetadataMap = {
   [key: string]: string | undefined;
 };
-const UpdateApplicationUserRoleConnectionRequestMetadataMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<UpdateApplicationUserRoleConnectionRequestMetadataMap>;
-
 export interface UpdateApplicationUserRoleConnectionRequest {
   application_id: string;
   platform_name?: string | null;
   platform_username?: string | null;
   metadata?: UpdateApplicationUserRoleConnectionRequestMetadataMap | null;
 }
-const UpdateApplicationUserRoleConnectionRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  1,
-) as any as S.Schema<UpdateApplicationUserRoleConnectionRequest>;
-
 export type DefaultKeywordListUpsertRequestPartialActionsItem =
   | BlockMessageAction
   | FlagToChannelAction
@@ -9821,32 +6317,18 @@ export type UpdateAutoModerationRuleRequestBody =
   | MLSpamUpsertRequestPartial
   | MentionSpamUpsertRequestPartial
   | UserProfileUpsertRequestPartial;
-const UpdateAutoModerationRuleRequestBody = /*@__PURE__*/ __L.at(__c80, 2);
-
 export interface UpdateAutoModerationRuleRequest {
   guild_id: string;
   rule_id: string;
   body: UpdateAutoModerationRuleRequestBody;
 }
-const UpdateAutoModerationRuleRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  3,
-) as any as S.Schema<UpdateAutoModerationRuleRequest>;
-
 export type UpdateAutoModerationRuleResponseBody =
   | DefaultKeywordRuleResponse
   | KeywordRuleResponse
   | MLSpamRuleResponse
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
-const UpdateAutoModerationRuleResponseBody = /*@__PURE__*/ __L.at(__c80, 4);
-
 export type UpdateAutoModerationRuleResponse = UpdateAutoModerationRuleResponseBody;
-const UpdateAutoModerationRuleResponse = /*@__PURE__*/ __L.at(
-  __c80,
-  5,
-) as any as S.Schema<UpdateAutoModerationRuleResponse>;
-
 export interface UpdateDMRequestPartial {
   name?: string | null;
 }
@@ -9906,34 +6388,17 @@ export type UpdateChannelRequestBody =
   | UpdateGroupDMRequestPartial
   | UpdateGuildChannelRequestPartial
   | UpdateThreadRequestPartial;
-const UpdateChannelRequestBody = /*@__PURE__*/ __L.at(__c80, 6);
-
 export interface UpdateChannelRequest {
   channel_id: string;
   body: UpdateChannelRequestBody;
 }
-const UpdateChannelRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  7,
-) as any as S.Schema<UpdateChannelRequest>;
-
 export type UpdateChannelResponseBody =
   | GuildChannelResponse
   | PrivateChannelResponse
   | PrivateGroupChannelResponse
   | ThreadResponse;
-const UpdateChannelResponseBody = /*@__PURE__*/ __L.at(__c81, 0);
-
 export type UpdateChannelResponse = UpdateChannelResponseBody;
-const UpdateChannelResponse = /*@__PURE__*/ __L.at(
-  __c81,
-  1,
-) as any as S.Schema<UpdateChannelResponse>;
-
 export type UpdateGuildRequestFeaturesList = Array<string | null>;
-const UpdateGuildRequestFeaturesList =
-  CreateGuildEmojiRequestRolesList as any as S.Schema<UpdateGuildRequestFeaturesList>;
-
 export interface UpdateGuildRequest {
   guild_id: string;
   name?: string;
@@ -9958,24 +6423,10 @@ export interface UpdateGuildRequest {
   public_updates_channel_id?: string | null;
   premium_progress_bar_enabled?: boolean | null;
 }
-const UpdateGuildRequest = /*@__PURE__*/ __L.at(__c81, 2) as any as S.Schema<UpdateGuildRequest>;
-
 export type GuildResponseFeaturesList = Array<GuildFeatures>;
-const GuildResponseFeaturesList =
-  InviteGuildResponseFeaturesList as any as S.Schema<GuildResponseFeaturesList>;
-
 export type GuildResponseRolesList = Array<GuildRoleResponse>;
-const GuildResponseRolesList =
-  BulkUpdateGuildRolesResponseBodyList as any as S.Schema<GuildResponseRolesList>;
-
 export type GuildResponseEmojisList = Array<EmojiResponse>;
-const GuildResponseEmojisList =
-  GuildWithCountsResponseEmojisList as any as S.Schema<GuildResponseEmojisList>;
-
 export type GuildResponseStickersList = Array<GuildStickerResponse>;
-const GuildResponseStickersList =
-  GuildWithCountsResponseStickersList as any as S.Schema<GuildResponseStickersList>;
-
 export interface GuildResponse {
   id: string;
   name: string;
@@ -10019,20 +6470,12 @@ export interface GuildResponse {
   stickers: GuildResponseStickersList;
   incidents_data: GuildIncidentsDataResponse | null;
 }
-const GuildResponse = /*@__PURE__*/ __L.at(__c81, 3) as any as S.Schema<GuildResponse>;
-
 export type UpdateGuildApplicationCommandRequestNameLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const UpdateGuildApplicationCommandRequestNameLocalizationsMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<UpdateGuildApplicationCommandRequestNameLocalizationsMap>;
-
 export type UpdateGuildApplicationCommandRequestDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
-const UpdateGuildApplicationCommandRequestDescriptionLocalizationsMap =
-  ApplicationCommandMentionableOptionDescriptionLocalizationsMap as any as S.Schema<UpdateGuildApplicationCommandRequestDescriptionLocalizationsMap>;
-
 export type UpdateGuildApplicationCommandRequestOptionsItem =
   | ApplicationCommandAttachmentOption
   | ApplicationCommandBooleanOption
@@ -10045,27 +6488,14 @@ export type UpdateGuildApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandGroupOption
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
-const UpdateGuildApplicationCommandRequestOptionsItem = /*@__PURE__*/ __L.at(__c81, 4);
-
 export type UpdateGuildApplicationCommandRequestOptionsList =
   Array<UpdateGuildApplicationCommandRequestOptionsItem>;
-const UpdateGuildApplicationCommandRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c81,
-  5,
-) as any as S.Schema<UpdateGuildApplicationCommandRequestOptionsList>;
-
 export type UpdateGuildApplicationCommandRequestContextsList = Array<
   InteractionContextType | (number & {})
 >;
-const UpdateGuildApplicationCommandRequestContextsList =
-  ApplicationCommandUpdateRequestContextsList as any as S.Schema<UpdateGuildApplicationCommandRequestContextsList>;
-
 export type UpdateGuildApplicationCommandRequestIntegrationTypesList = Array<
   ApplicationIntegrationType | (number & {})
 >;
-const UpdateGuildApplicationCommandRequestIntegrationTypesList =
-  ApplicationCommandUpdateRequestIntegrationTypesList as any as S.Schema<UpdateGuildApplicationCommandRequestIntegrationTypesList>;
-
 export interface UpdateGuildApplicationCommandRequest {
   application_id: string;
   guild_id: string;
@@ -10082,26 +6512,13 @@ export interface UpdateGuildApplicationCommandRequest {
   /** Determines whether the interaction is handled by the app's interactions handler or by Discord */
   handler?: ApplicationCommandHandler | (number & {}) | null;
 }
-const UpdateGuildApplicationCommandRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  6,
-) as any as S.Schema<UpdateGuildApplicationCommandRequest>;
-
 export type UpdateGuildEmojiRequestRolesList = Array<string | null>;
-const UpdateGuildEmojiRequestRolesList =
-  CreateGuildEmojiRequestRolesList as any as S.Schema<UpdateGuildEmojiRequestRolesList>;
-
 export interface UpdateGuildEmojiRequest {
   guild_id: string;
   emoji_id: string;
   name?: string;
   roles?: UpdateGuildEmojiRequestRolesList | null;
 }
-const UpdateGuildEmojiRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  7,
-) as any as S.Schema<UpdateGuildEmojiRequest>;
-
 export interface UpdateGuildIncidentActionsRequest {
   guild_id: string;
   /** When invites will be enabled again */
@@ -10109,15 +6526,7 @@ export interface UpdateGuildIncidentActionsRequest {
   /** When direct messages will be enabled again */
   dms_disabled_until?: string | null;
 }
-const UpdateGuildIncidentActionsRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  0,
-) as any as S.Schema<UpdateGuildIncidentActionsRequest>;
-
 export type UpdateGuildMemberRequestRolesList = Array<string | null>;
-const UpdateGuildMemberRequestRolesList =
-  CreateGuildEmojiRequestRolesList as any as S.Schema<UpdateGuildMemberRequestRolesList>;
-
 export interface UpdateGuildMemberRequest {
   guild_id: string;
   user_id: string;
@@ -10129,11 +6538,6 @@ export interface UpdateGuildMemberRequest {
   communication_disabled_until?: string | null;
   flags?: number | null;
 }
-const UpdateGuildMemberRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  1,
-) as any as S.Schema<UpdateGuildMemberRequest>;
-
 export interface UpdateGuildRoleRequest {
   guild_id: string;
   role_id: string;
@@ -10146,11 +6550,6 @@ export interface UpdateGuildRoleRequest {
   icon?: string | null;
   unicode_emoji?: string | null;
 }
-const UpdateGuildRoleRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  2,
-) as any as S.Schema<UpdateGuildRoleRequest>;
-
 export interface ExternalScheduledEventPatchRequestPartial {
   status?: GuildScheduledEventStatuses | (number & {}) | null;
   name?: string;
@@ -10184,30 +6583,16 @@ export type UpdateGuildScheduledEventRequestBody =
   | ExternalScheduledEventPatchRequestPartial
   | StageScheduledEventPatchRequestPartial
   | StageScheduledEventPatchRequestPartial;
-const UpdateGuildScheduledEventRequestBody = /*@__PURE__*/ __L.at(__c82, 3);
-
 export interface UpdateGuildScheduledEventRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
   body: UpdateGuildScheduledEventRequestBody;
 }
-const UpdateGuildScheduledEventRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  4,
-) as any as S.Schema<UpdateGuildScheduledEventRequest>;
-
 export type UpdateGuildScheduledEventResponseBody =
   | ExternalScheduledEventResponse
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
-const UpdateGuildScheduledEventResponseBody = /*@__PURE__*/ __L.at(__c82, 5);
-
 export type UpdateGuildScheduledEventResponse = UpdateGuildScheduledEventResponseBody;
-const UpdateGuildScheduledEventResponse = /*@__PURE__*/ __L.at(
-  __c82,
-  6,
-) as any as S.Schema<UpdateGuildScheduledEventResponse>;
-
 export interface UpdateGuildScheduledEventExceptionRequest {
   guild_id: string;
   guild_scheduled_event_id: string;
@@ -10219,11 +6604,6 @@ export interface UpdateGuildScheduledEventExceptionRequest {
   /** Whether this occurrence is canceled */
   is_canceled?: boolean | null;
 }
-const UpdateGuildScheduledEventExceptionRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  7,
-) as any as S.Schema<UpdateGuildScheduledEventExceptionRequest>;
-
 export interface UpdateGuildSoundboardSoundRequest {
   guild_id: string;
   sound_id: string;
@@ -10232,11 +6612,6 @@ export interface UpdateGuildSoundboardSoundRequest {
   emoji_id?: string | null;
   emoji_name?: string | null;
 }
-const UpdateGuildSoundboardSoundRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  0,
-) as any as S.Schema<UpdateGuildSoundboardSoundRequest>;
-
 export interface UpdateGuildStickerRequest {
   guild_id: string;
   sticker_id: string;
@@ -10244,99 +6619,47 @@ export interface UpdateGuildStickerRequest {
   tags?: string;
   description?: string | null;
 }
-const UpdateGuildStickerRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  1,
-) as any as S.Schema<UpdateGuildStickerRequest>;
-
 export interface UpdateGuildTemplateRequest {
   guild_id: string;
   code: string;
   name?: string;
   description?: string | null;
 }
-const UpdateGuildTemplateRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  2,
-) as any as S.Schema<UpdateGuildTemplateRequest>;
-
 export interface GuildWelcomeChannel {
   channel_id: string;
   description: string;
   emoji_id?: string | null;
   emoji_name?: string | null;
 }
-const GuildWelcomeChannel = /*@__PURE__*/ __L.at(__c83, 3) as any as S.Schema<GuildWelcomeChannel>;
-
 export type UpdateGuildWelcomeScreenRequestWelcomeChannelsList = Array<GuildWelcomeChannel>;
-const UpdateGuildWelcomeScreenRequestWelcomeChannelsList = /*@__PURE__*/ __L.at(
-  __c83,
-  4,
-) as any as S.Schema<UpdateGuildWelcomeScreenRequestWelcomeChannelsList>;
-
 export interface UpdateGuildWelcomeScreenRequest {
   guild_id: string;
   description?: string | null;
   welcome_channels?: UpdateGuildWelcomeScreenRequestWelcomeChannelsList | null;
   enabled?: boolean | null;
 }
-const UpdateGuildWelcomeScreenRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  5,
-) as any as S.Schema<UpdateGuildWelcomeScreenRequest>;
-
 export interface UpdateGuildWidgetSettingsRequest {
   guild_id: string;
   channel_id?: string | null;
   enabled?: boolean | null;
 }
-const UpdateGuildWidgetSettingsRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  6,
-) as any as S.Schema<UpdateGuildWidgetSettingsRequest>;
-
 export interface UpdateInviteTargetUsersRequest {
   code: string;
   target_users_file: File | Blob;
 }
-const UpdateInviteTargetUsersRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  7,
-) as any as S.Schema<UpdateInviteTargetUsersRequest>;
-
 export interface UpdateInviteTargetUsersResponse {}
-const UpdateInviteTargetUsersResponse =
-  BulkUpdateGuildChannelsResponse as any as S.Schema<UpdateInviteTargetUsersResponse>;
-
 /** The moderation metadata attached to the message */
 export type UpdateLobbyMessageExternalModerationMetadataRequestBodyMap = {
   [key: string]: string | undefined;
 };
-const UpdateLobbyMessageExternalModerationMetadataRequestBodyMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataRequestBodyMap>;
-
 export interface UpdateLobbyMessageExternalModerationMetadataRequest {
   lobby_id: string;
   message_id: string;
   body: UpdateLobbyMessageExternalModerationMetadataRequestBodyMap;
 }
-const UpdateLobbyMessageExternalModerationMetadataRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  0,
-) as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataRequest>;
-
 export interface UpdateLobbyMessageExternalModerationMetadataResponse {}
-const UpdateLobbyMessageExternalModerationMetadataResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataResponse>;
-
 export type UpdateMessageRequestEmbedsList = Array<RichEmbed>;
-const UpdateMessageRequestEmbedsList =
-  IncomingWebhookInteractionRequestEmbedsList as any as S.Schema<UpdateMessageRequestEmbedsList>;
-
 export type UpdateMessageRequestStickerIdsList = Array<string>;
-const UpdateMessageRequestStickerIdsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<UpdateMessageRequestStickerIdsList>;
-
 export type UpdateMessageRequestComponentsItem =
   | ActionRowComponentForMessageRequest
   | ContainerComponentForMessageRequest
@@ -10345,18 +6668,8 @@ export type UpdateMessageRequestComponentsItem =
   | SectionComponentForMessageRequest
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
-const UpdateMessageRequestComponentsItem = /*@__PURE__*/ __L.at(__c84, 1);
-
 export type UpdateMessageRequestComponentsList = Array<UpdateMessageRequestComponentsItem>;
-const UpdateMessageRequestComponentsList = /*@__PURE__*/ __L.at(
-  __c84,
-  2,
-) as any as S.Schema<UpdateMessageRequestComponentsList>;
-
 export type UpdateMessageRequestAttachmentsList = Array<MessageAttachmentRequest>;
-const UpdateMessageRequestAttachmentsList =
-  IncomingWebhookInteractionRequestAttachmentsList as any as S.Schema<UpdateMessageRequestAttachmentsList>;
-
 export interface UpdateMessageRequest {
   channel_id: string;
   message_id: string;
@@ -10368,11 +6681,6 @@ export interface UpdateMessageRequest {
   components?: UpdateMessageRequestComponentsList | null;
   attachments?: UpdateMessageRequestAttachmentsList | null;
 }
-const UpdateMessageRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  3,
-) as any as S.Schema<UpdateMessageRequest>;
-
 export type UpdateMyApplicationRequestDescriptionLocalizationsMap = {
   [key: string]: string | undefined;
 };
@@ -10380,23 +6688,11 @@ export interface UpdateMyApplicationRequestDescription {
   default: string;
   localizations?: UpdateMyApplicationRequestDescriptionLocalizationsMap | null;
 }
-const UpdateMyApplicationRequestDescription =
-  UpdateApplicationRequestDescription as any as S.Schema<UpdateMyApplicationRequestDescription>;
-
 export type UpdateMyApplicationRequestTagsList = Array<string>;
-const UpdateMyApplicationRequestTagsList =
-  AddGuildMemberRequestRolesList as any as S.Schema<UpdateMyApplicationRequestTagsList>;
-
 export type UpdateMyApplicationRequestIntegrationTypesConfigMap = {
   [key: string]: ApplicationIntegrationTypeConfiguration | null | undefined;
 };
-const UpdateMyApplicationRequestIntegrationTypesConfigMap =
-  UpdateApplicationRequestIntegrationTypesConfigMap as any as S.Schema<UpdateMyApplicationRequestIntegrationTypesConfigMap>;
-
 export type UpdateMyApplicationRequestEventWebhooksTypesList = Array<ActionTypes | (string & {})>;
-const UpdateMyApplicationRequestEventWebhooksTypesList =
-  PrivateApplicationResponseEventWebhooksTypesList as any as S.Schema<UpdateMyApplicationRequestEventWebhooksTypesList>;
-
 export interface UpdateMyApplicationRequest {
   description?: UpdateMyApplicationRequestDescription | null;
   icon?: string | null;
@@ -10417,11 +6713,6 @@ export interface UpdateMyApplicationRequest {
   event_webhooks_url?: string | null;
   event_webhooks_types?: UpdateMyApplicationRequestEventWebhooksTypesList | null;
 }
-const UpdateMyApplicationRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  4,
-) as any as S.Schema<UpdateMyApplicationRequest>;
-
 export interface UpdateMyGuildMemberRequest {
   guild_id: string;
   nick?: string | null;
@@ -10429,22 +6720,12 @@ export interface UpdateMyGuildMemberRequest {
   bio?: string | null;
   banner?: string | null;
 }
-const UpdateMyGuildMemberRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  5,
-) as any as S.Schema<UpdateMyGuildMemberRequest>;
-
 export interface UpdateMyUserRequest {
   username: string;
   avatar?: string | null;
   banner?: string | null;
 }
-const UpdateMyUserRequest = /*@__PURE__*/ __L.at(__c84, 6) as any as S.Schema<UpdateMyUserRequest>;
-
 export type UpdateOriginalWebhookMessageRequestEmbedsList = Array<RichEmbed>;
-const UpdateOriginalWebhookMessageRequestEmbedsList =
-  IncomingWebhookInteractionRequestEmbedsList as any as S.Schema<UpdateOriginalWebhookMessageRequestEmbedsList>;
-
 export type UpdateOriginalWebhookMessageRequestComponentsItem =
   | ActionRowComponentForMessageRequest
   | ContainerComponentForMessageRequest
@@ -10453,19 +6734,9 @@ export type UpdateOriginalWebhookMessageRequestComponentsItem =
   | SectionComponentForMessageRequest
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
-const UpdateOriginalWebhookMessageRequestComponentsItem = /*@__PURE__*/ __L.at(__c84, 7);
-
 export type UpdateOriginalWebhookMessageRequestComponentsList =
   Array<UpdateOriginalWebhookMessageRequestComponentsItem>;
-const UpdateOriginalWebhookMessageRequestComponentsList = /*@__PURE__*/ __L.at(
-  __c85,
-  0,
-) as any as S.Schema<UpdateOriginalWebhookMessageRequestComponentsList>;
-
 export type UpdateOriginalWebhookMessageRequestAttachmentsList = Array<MessageAttachmentRequest>;
-const UpdateOriginalWebhookMessageRequestAttachmentsList =
-  IncomingWebhookInteractionRequestAttachmentsList as any as S.Schema<UpdateOriginalWebhookMessageRequestAttachmentsList>;
-
 export interface UpdateOriginalWebhookMessageRequest {
   webhook_id: string;
   webhook_token: string;
@@ -10479,137 +6750,65 @@ export interface UpdateOriginalWebhookMessageRequest {
   poll?: PollCreateRequest | null;
   flags?: number | null;
 }
-const UpdateOriginalWebhookMessageRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  1,
-) as any as S.Schema<UpdateOriginalWebhookMessageRequest>;
-
 export interface UpdateSelfVoiceStateRequest {
   guild_id: string;
   request_to_speak_timestamp?: string | null;
   suppress?: boolean | null;
   channel_id?: string | null;
 }
-const UpdateSelfVoiceStateRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  2,
-) as any as S.Schema<UpdateSelfVoiceStateRequest>;
-
 export interface UpdateSelfVoiceStateResponse {}
-const UpdateSelfVoiceStateResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<UpdateSelfVoiceStateResponse>;
-
 export interface UpdateStageInstanceRequest {
   channel_id: string;
   topic?: string;
   privacy_level?: StageInstancesPrivacyLevels | (number & {});
 }
-const UpdateStageInstanceRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  3,
-) as any as S.Schema<UpdateStageInstanceRequest>;
-
 /** The moderation metadata attached to the message */
 export type UpdateUserMessageExternalModerationMetadataRequestBodyMap = {
   [key: string]: string | undefined;
 };
-const UpdateUserMessageExternalModerationMetadataRequestBodyMap =
-  AddLobbyMemberRequestMetadataMap as any as S.Schema<UpdateUserMessageExternalModerationMetadataRequestBodyMap>;
-
 export interface UpdateUserMessageExternalModerationMetadataRequest {
   user_id_1: string;
   user_id_2: string;
   message_id: string;
   body: UpdateUserMessageExternalModerationMetadataRequestBodyMap;
 }
-const UpdateUserMessageExternalModerationMetadataRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  4,
-) as any as S.Schema<UpdateUserMessageExternalModerationMetadataRequest>;
-
 export interface UpdateUserMessageExternalModerationMetadataResponse {}
-const UpdateUserMessageExternalModerationMetadataResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<UpdateUserMessageExternalModerationMetadataResponse>;
-
 export interface UpdateVoiceChannelStatusRequest {
   channel_id: string;
   /** The new voice channel status */
   status?: string | null;
 }
-const UpdateVoiceChannelStatusRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  5,
-) as any as S.Schema<UpdateVoiceChannelStatusRequest>;
-
 export interface UpdateVoiceChannelStatusResponse {}
-const UpdateVoiceChannelStatusResponse =
-  BotPartnerSdkUnmergeProvisionalAccountResponse as any as S.Schema<UpdateVoiceChannelStatusResponse>;
-
 export interface UpdateVoiceStateRequest {
   guild_id: string;
   user_id: string;
   suppress?: boolean | null;
   channel_id?: string | null;
 }
-const UpdateVoiceStateRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  6,
-) as any as S.Schema<UpdateVoiceStateRequest>;
-
 export interface UpdateVoiceStateResponse {}
-const UpdateVoiceStateResponse =
-  AddGuildMemberRoleResponse as any as S.Schema<UpdateVoiceStateResponse>;
-
 export interface UpdateWebhookRequest {
   webhook_id: string;
   name?: string;
   avatar?: string | null;
   channel_id?: string | null;
 }
-const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  7,
-) as any as S.Schema<UpdateWebhookRequest>;
-
 export type UpdateWebhookResponseBody =
   | ApplicationIncomingWebhookResponse
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
-const UpdateWebhookResponseBody = /*@__PURE__*/ __L.at(__c86, 0);
-
 export type UpdateWebhookResponse = UpdateWebhookResponseBody;
-const UpdateWebhookResponse = /*@__PURE__*/ __L.at(
-  __c86,
-  1,
-) as any as S.Schema<UpdateWebhookResponse>;
-
 export interface UpdateWebhookByTokenRequest {
   webhook_id: string;
   webhook_token: string;
   name?: string;
   avatar?: string | null;
 }
-const UpdateWebhookByTokenRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  2,
-) as any as S.Schema<UpdateWebhookByTokenRequest>;
-
 export type UpdateWebhookByTokenResponseBody =
   | ApplicationIncomingWebhookResponse
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
-const UpdateWebhookByTokenResponseBody = /*@__PURE__*/ __L.at(__c86, 3);
-
 export type UpdateWebhookByTokenResponse = UpdateWebhookByTokenResponseBody;
-const UpdateWebhookByTokenResponse = /*@__PURE__*/ __L.at(
-  __c86,
-  4,
-) as any as S.Schema<UpdateWebhookByTokenResponse>;
-
 export type UpdateWebhookMessageRequestEmbedsList = Array<RichEmbed>;
-const UpdateWebhookMessageRequestEmbedsList =
-  IncomingWebhookInteractionRequestEmbedsList as any as S.Schema<UpdateWebhookMessageRequestEmbedsList>;
-
 export type UpdateWebhookMessageRequestComponentsItem =
   | ActionRowComponentForMessageRequest
   | ContainerComponentForMessageRequest
@@ -10618,19 +6817,9 @@ export type UpdateWebhookMessageRequestComponentsItem =
   | SectionComponentForMessageRequest
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
-const UpdateWebhookMessageRequestComponentsItem = /*@__PURE__*/ __L.at(__c86, 5);
-
 export type UpdateWebhookMessageRequestComponentsList =
   Array<UpdateWebhookMessageRequestComponentsItem>;
-const UpdateWebhookMessageRequestComponentsList = /*@__PURE__*/ __L.at(
-  __c86,
-  6,
-) as any as S.Schema<UpdateWebhookMessageRequestComponentsList>;
-
 export type UpdateWebhookMessageRequestAttachmentsList = Array<MessageAttachmentRequest>;
-const UpdateWebhookMessageRequestAttachmentsList =
-  IncomingWebhookInteractionRequestAttachmentsList as any as S.Schema<UpdateWebhookMessageRequestAttachmentsList>;
-
 export interface UpdateWebhookMessageRequest {
   webhook_id: string;
   webhook_token: string;
@@ -10645,24 +6834,11 @@ export interface UpdateWebhookMessageRequest {
   poll?: PollCreateRequest | null;
   flags?: number | null;
 }
-const UpdateWebhookMessageRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  7,
-) as any as S.Schema<UpdateWebhookMessageRequest>;
-
 export interface UploadApplicationAttachmentRequest {
   application_id: string;
   file: File | Blob;
 }
-const UploadApplicationAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  0,
-) as any as S.Schema<UploadApplicationAttachmentRequest>;
-
 export type AttachmentResponseClipParticipantsList = Array<UserResponse>;
-const AttachmentResponseClipParticipantsList =
-  PrivateChannelResponseRecipientsList as any as S.Schema<AttachmentResponseClipParticipantsList>;
-
 export interface AttachmentResponse {
   id: string;
   filename: string;
@@ -10684,16 +6860,9 @@ export interface AttachmentResponse {
   clip_created_at?: string;
   clip_participants?: AttachmentResponseClipParticipantsList;
 }
-const AttachmentResponse = /*@__PURE__*/ __L.at(__c87, 1) as any as S.Schema<AttachmentResponse>;
-
 export interface ActivitiesAttachmentResponse {
   attachment: AttachmentResponse;
 }
-const ActivitiesAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c87,
-  2,
-) as any as S.Schema<ActivitiesAttachmentResponse>;
-
 export type AddGroupDmUserError = DiscordOpError;
 export const addGroupDmUser: API.OperationMethod<
   AddGroupDmUserRequest,
@@ -10701,8 +6870,8 @@ export const addGroupDmUser: API.OperationMethod<
   AddGroupDmUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddGroupDmUserRequest,
-  output: AddGroupDmUserResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddGroupDmUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddGroupDmUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10715,8 +6884,8 @@ export const addGuildMember: API.OperationMethod<
   AddGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddGuildMemberRequest,
-  output: GuildMemberResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<AddGuildMemberRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10729,8 +6898,8 @@ export const addGuildMemberRole: API.OperationMethod<
   AddGuildMemberRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddGuildMemberRoleRequest,
-  output: AddGuildMemberRoleResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<AddGuildMemberRoleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AddGuildMemberRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10744,8 +6913,8 @@ export const addInviteTargetUser: API.OperationMethod<
   AddInviteTargetUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddInviteTargetUserRequest,
-  output: AddInviteTargetUserResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<AddInviteTargetUserRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AddInviteTargetUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10758,8 +6927,8 @@ export const addLobbyMember: API.OperationMethod<
   AddLobbyMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddLobbyMemberRequest,
-  output: LobbyMemberResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<AddLobbyMemberRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<LobbyMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10772,8 +6941,8 @@ export const addMyMessageReaction: API.OperationMethod<
   AddMyMessageReactionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddMyMessageReactionRequest,
-  output: AddMyMessageReactionResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<AddMyMessageReactionRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AddMyMessageReactionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10786,8 +6955,8 @@ export const addThreadMember: API.OperationMethod<
   AddThreadMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddThreadMemberRequest,
-  output: AddThreadMemberResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<AddThreadMemberRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<AddThreadMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10800,8 +6969,8 @@ export const banUserFromGuild: API.OperationMethod<
   BanUserFromGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BanUserFromGuildRequest,
-  output: BanUserFromGuildResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<BanUserFromGuildRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BanUserFromGuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10814,8 +6983,8 @@ export const botPartnerSdkToken: API.OperationMethod<
   BotPartnerSdkTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BotPartnerSdkTokenRequest,
-  output: ProvisionalTokenResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<BotPartnerSdkTokenRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<ProvisionalTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10828,8 +6997,8 @@ export const botPartnerSdkUnmergeProvisionalAccount: API.OperationMethod<
   BotPartnerSdkUnmergeProvisionalAccountError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BotPartnerSdkUnmergeProvisionalAccountRequest,
-  output: BotPartnerSdkUnmergeProvisionalAccountResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<BotPartnerSdkUnmergeProvisionalAccountResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10843,8 +7012,8 @@ export const bulkAddInviteTargetUsers: API.OperationMethod<
   BulkAddInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkAddInviteTargetUsersRequest,
-  output: BulkAddInviteTargetUsersResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<BulkAddInviteTargetUsersRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<BulkAddInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10857,8 +7026,8 @@ export const bulkBanUsersFromGuild: API.OperationMethod<
   BulkBanUsersFromGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkBanUsersFromGuildRequest,
-  output: BulkBanUsersResponse,
+  input: __S(26, __c3, 2) as any as S.Schema<BulkBanUsersFromGuildRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<BulkBanUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10871,8 +7040,8 @@ export const bulkDeleteMessages: API.OperationMethod<
   BulkDeleteMessagesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteMessagesRequest,
-  output: BulkDeleteMessagesResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<BulkDeleteMessagesRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BulkDeleteMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10886,8 +7055,8 @@ export const bulkRemoveInviteTargetUsers: API.OperationMethod<
   BulkRemoveInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkRemoveInviteTargetUsersRequest,
-  output: BulkRemoveInviteTargetUsersResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<BulkRemoveInviteTargetUsersRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<BulkRemoveInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10900,8 +7069,8 @@ export const bulkSetApplicationCommands: API.OperationMethod<
   BulkSetApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkSetApplicationCommandsRequest,
-  output: BulkSetApplicationCommandsResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<BulkSetApplicationCommandsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<BulkSetApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10914,8 +7083,8 @@ export const bulkSetGuildApplicationCommands: API.OperationMethod<
   BulkSetGuildApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkSetGuildApplicationCommandsRequest,
-  output: BulkSetGuildApplicationCommandsResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<BulkSetGuildApplicationCommandsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<BulkSetGuildApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10928,8 +7097,8 @@ export const bulkUpdateGuildChannels: API.OperationMethod<
   BulkUpdateGuildChannelsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkUpdateGuildChannelsRequest,
-  output: BulkUpdateGuildChannelsResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<BulkUpdateGuildChannelsRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<BulkUpdateGuildChannelsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10942,8 +7111,8 @@ export const bulkUpdateGuildRoles: API.OperationMethod<
   BulkUpdateGuildRolesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkUpdateGuildRolesRequest,
-  output: BulkUpdateGuildRolesResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<BulkUpdateGuildRolesRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<BulkUpdateGuildRolesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10956,8 +7125,8 @@ export const bulkUpdateLobbyMembers: API.OperationMethod<
   BulkUpdateLobbyMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkUpdateLobbyMembersRequest,
-  output: BulkUpdateLobbyMembersResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<BulkUpdateLobbyMembersRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<BulkUpdateLobbyMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10970,8 +7139,8 @@ export const consumeEntitlement: API.OperationMethod<
   ConsumeEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConsumeEntitlementRequest,
-  output: ConsumeEntitlementResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<ConsumeEntitlementRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ConsumeEntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10985,8 +7154,8 @@ export const countGuildScheduledEventUsers: API.OperationMethod<
   CountGuildScheduledEventUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountGuildScheduledEventUsersRequest,
-  output: ScheduledEventUserCountResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<CountGuildScheduledEventUsersRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ScheduledEventUserCountResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -10999,8 +7168,8 @@ export const createApplicationCommand: API.OperationMethod<
   CreateApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationCommandRequest,
-  output: ApplicationCommandResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<CreateApplicationCommandRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11013,8 +7182,8 @@ export const createApplicationEmoji: API.OperationMethod<
   CreateApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationEmojiRequest,
-  output: EmojiResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<CreateApplicationEmojiRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11027,8 +7196,8 @@ export const createAutoModerationRule: API.OperationMethod<
   CreateAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAutoModerationRuleRequest,
-  output: CreateAutoModerationRuleResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<CreateAutoModerationRuleRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<CreateAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11041,8 +7210,8 @@ export const createChannelInvite: API.OperationMethod<
   CreateChannelInviteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelInviteRequest,
-  output: CreateChannelInviteResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<CreateChannelInviteRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<CreateChannelInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11055,8 +7224,8 @@ export const createDeprecatedPin: API.OperationMethod<
   CreateDeprecatedPinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeprecatedPinRequest,
-  output: CreateDeprecatedPinResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<CreateDeprecatedPinRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreateDeprecatedPinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11069,8 +7238,8 @@ export const createDm: API.OperationMethod<
   CreateDmError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDmRequest,
-  output: CreateDmResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<CreateDmRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateDmResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11083,8 +7252,8 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEntitlementRequest,
-  output: EntitlementResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<CreateEntitlementRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<EntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11097,8 +7266,8 @@ export const createGuildApplicationCommand: API.OperationMethod<
   CreateGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildApplicationCommandRequest,
-  output: ApplicationCommandResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<CreateGuildApplicationCommandRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11111,8 +7280,8 @@ export const createGuildChannel: API.OperationMethod<
   CreateGuildChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildChannelRequest,
-  output: GuildChannelResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<CreateGuildChannelRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GuildChannelResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11125,8 +7294,8 @@ export const createGuildEmoji: API.OperationMethod<
   CreateGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildEmojiRequest,
-  output: EmojiResponse,
+  input: __S(107, __c13, 3) as any as S.Schema<CreateGuildEmojiRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11139,8 +7308,8 @@ export const createGuildRole: API.OperationMethod<
   CreateGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildRoleRequest,
-  output: GuildRoleResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<CreateGuildRoleRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11153,8 +7322,8 @@ export const createGuildScheduledEvent: API.OperationMethod<
   CreateGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildScheduledEventRequest,
-  output: CreateGuildScheduledEventResponse,
+  input: __S(111, __c13, 7) as any as S.Schema<CreateGuildScheduledEventRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<CreateGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11168,8 +7337,8 @@ export const createGuildScheduledEventException: API.OperationMethod<
   CreateGuildScheduledEventExceptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildScheduledEventExceptionRequest,
-  output: GuildScheduledEventExceptionResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<CreateGuildScheduledEventExceptionRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GuildScheduledEventExceptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11182,8 +7351,8 @@ export const createGuildSoundboardSound: API.OperationMethod<
   CreateGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildSoundboardSoundRequest,
-  output: SoundboardSoundResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<CreateGuildSoundboardSoundRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<SoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11196,8 +7365,8 @@ export const createGuildSticker: API.OperationMethod<
   CreateGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildStickerRequest,
-  output: GuildStickerResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<CreateGuildStickerRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<GuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11210,8 +7379,8 @@ export const createGuildTemplate: API.OperationMethod<
   CreateGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGuildTemplateRequest,
-  output: GuildTemplateResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<CreateGuildTemplateRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11224,8 +7393,8 @@ export const createInteractionResponse: API.OperationMethod<
   CreateInteractionResponseError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInteractionResponseRequest,
-  output: InteractionCallbackResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<CreateInteractionResponseRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<InteractionCallbackResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11238,8 +7407,8 @@ export const createLinkedLobbyGuildInviteForSelf: API.OperationMethod<
   CreateLinkedLobbyGuildInviteForSelfError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLinkedLobbyGuildInviteForSelfRequest,
-  output: LobbyGuildInviteResponse,
+  input: __S(222, __c27, 6) as any as S.Schema<CreateLinkedLobbyGuildInviteForSelfRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<LobbyGuildInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11252,8 +7421,8 @@ export const createLinkedLobbyGuildInviteForUser: API.OperationMethod<
   CreateLinkedLobbyGuildInviteForUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLinkedLobbyGuildInviteForUserRequest,
-  output: LobbyGuildInviteResponse,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateLinkedLobbyGuildInviteForUserRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<LobbyGuildInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11266,8 +7435,8 @@ export const createLobby: API.OperationMethod<
   CreateLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLobbyRequest,
-  output: LobbyResponse,
+  input: __S(227, __c28, 3) as any as S.Schema<CreateLobbyRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11280,8 +7449,8 @@ export const createLobbyMessage: API.OperationMethod<
   CreateLobbyMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLobbyMessageRequest,
-  output: LobbyMessageResponse,
+  input: __S(234, __c29, 2) as any as S.Schema<CreateLobbyMessageRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<LobbyMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11294,8 +7463,8 @@ export const createMessage: API.OperationMethod<
   CreateMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMessageRequest,
-  output: MessageResponse,
+  input: __S(239, __c29, 7) as any as S.Schema<CreateMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11308,8 +7477,8 @@ export const createOrJoinLobby: API.OperationMethod<
   CreateOrJoinLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrJoinLobbyRequest,
-  output: LobbyResponse,
+  input: __S(240, __c30, 0) as any as S.Schema<CreateOrJoinLobbyRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11322,8 +7491,8 @@ export const createPin: API.OperationMethod<
   CreatePinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePinRequest,
-  output: CreatePinResponse,
+  input: __S(241, __c30, 1) as any as S.Schema<CreatePinRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreatePinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11336,8 +7505,8 @@ export const createStageInstance: API.OperationMethod<
   CreateStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStageInstanceRequest,
-  output: StageInstanceResponse,
+  input: __S(242, __c30, 2) as any as S.Schema<CreateStageInstanceRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<StageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11350,8 +7519,8 @@ export const createThread: API.OperationMethod<
   CreateThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateThreadRequest,
-  output: CreatedThreadResponse,
+  input: __S(245, __c30, 5) as any as S.Schema<CreateThreadRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<CreatedThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11364,8 +7533,8 @@ export const createThreadFromMessage: API.OperationMethod<
   CreateThreadFromMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateThreadFromMessageRequest,
-  output: ThreadResponse,
+  input: __S(246, __c30, 6) as any as S.Schema<CreateThreadFromMessageRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11378,8 +7547,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookRequest,
-  output: GuildIncomingWebhookResponse,
+  input: __S(247, __c30, 7) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<GuildIncomingWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11392,8 +7561,8 @@ export const crosspostMessage: API.OperationMethod<
   CrosspostMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CrosspostMessageRequest,
-  output: MessageResponse,
+  input: __S(249, __c31, 1) as any as S.Schema<CrosspostMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11406,8 +7575,8 @@ export const deleteAllMessageReactions: API.OperationMethod<
   DeleteAllMessageReactionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAllMessageReactionsRequest,
-  output: DeleteAllMessageReactionsResponse,
+  input: __S(250, __c31, 2) as any as S.Schema<DeleteAllMessageReactionsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteAllMessageReactionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11420,8 +7589,8 @@ export const deleteAllMessageReactionsByEmoji: API.OperationMethod<
   DeleteAllMessageReactionsByEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAllMessageReactionsByEmojiRequest,
-  output: DeleteAllMessageReactionsByEmojiResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<DeleteAllMessageReactionsByEmojiRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteAllMessageReactionsByEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11434,8 +7603,8 @@ export const deleteApplicationCommand: API.OperationMethod<
   DeleteApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationCommandRequest,
-  output: DeleteApplicationCommandResponse,
+  input: __S(252, __c31, 4) as any as S.Schema<DeleteApplicationCommandRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11448,8 +7617,8 @@ export const deleteApplicationEmoji: API.OperationMethod<
   DeleteApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationEmojiRequest,
-  output: DeleteApplicationEmojiResponse,
+  input: __S(253, __c31, 5) as any as S.Schema<DeleteApplicationEmojiRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteApplicationEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11462,8 +7631,8 @@ export const deleteApplicationUserRoleConnection: API.OperationMethod<
   DeleteApplicationUserRoleConnectionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationUserRoleConnectionRequest,
-  output: DeleteApplicationUserRoleConnectionResponse,
+  input: __S(254, __c31, 6) as any as S.Schema<DeleteApplicationUserRoleConnectionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteApplicationUserRoleConnectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11476,8 +7645,8 @@ export const deleteAutoModerationRule: API.OperationMethod<
   DeleteAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutoModerationRuleRequest,
-  output: DeleteAutoModerationRuleResponse,
+  input: __S(255, __c31, 7) as any as S.Schema<DeleteAutoModerationRuleRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11490,8 +7659,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelRequest,
-  output: DeleteChannelResponse,
+  input: __S(256, __c32, 0) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(258, __c32, 2) as any as S.Schema<DeleteChannelResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11504,8 +7673,8 @@ export const deleteChannelPermissionOverwrite: API.OperationMethod<
   DeleteChannelPermissionOverwriteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelPermissionOverwriteRequest,
-  output: DeleteChannelPermissionOverwriteResponse,
+  input: __S(259, __c32, 3) as any as S.Schema<DeleteChannelPermissionOverwriteRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteChannelPermissionOverwriteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11518,8 +7687,8 @@ export const deleteDeprecatedPin: API.OperationMethod<
   DeleteDeprecatedPinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeprecatedPinRequest,
-  output: DeleteDeprecatedPinResponse,
+  input: __S(260, __c32, 4) as any as S.Schema<DeleteDeprecatedPinRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteDeprecatedPinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11532,8 +7701,8 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEntitlementRequest,
-  output: DeleteEntitlementResponse,
+  input: __S(261, __c32, 5) as any as S.Schema<DeleteEntitlementRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteEntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11546,8 +7715,8 @@ export const deleteGroupDmUser: API.OperationMethod<
   DeleteGroupDmUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupDmUserRequest,
-  output: DeleteGroupDmUserResponse,
+  input: __S(262, __c32, 6) as any as S.Schema<DeleteGroupDmUserRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteGroupDmUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11560,8 +7729,8 @@ export const deleteGuildApplicationCommand: API.OperationMethod<
   DeleteGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildApplicationCommandRequest,
-  output: DeleteGuildApplicationCommandResponse,
+  input: __S(263, __c32, 7) as any as S.Schema<DeleteGuildApplicationCommandRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11574,8 +7743,8 @@ export const deleteGuildEmoji: API.OperationMethod<
   DeleteGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildEmojiRequest,
-  output: DeleteGuildEmojiResponse,
+  input: __S(264, __c33, 0) as any as S.Schema<DeleteGuildEmojiRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11588,8 +7757,8 @@ export const deleteGuildIntegration: API.OperationMethod<
   DeleteGuildIntegrationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildIntegrationRequest,
-  output: DeleteGuildIntegrationResponse,
+  input: __S(265, __c33, 1) as any as S.Schema<DeleteGuildIntegrationRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildIntegrationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11602,8 +7771,8 @@ export const deleteGuildMember: API.OperationMethod<
   DeleteGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildMemberRequest,
-  output: DeleteGuildMemberResponse,
+  input: __S(266, __c33, 2) as any as S.Schema<DeleteGuildMemberRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11616,8 +7785,8 @@ export const deleteGuildMemberRole: API.OperationMethod<
   DeleteGuildMemberRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildMemberRoleRequest,
-  output: DeleteGuildMemberRoleResponse,
+  input: __S(267, __c33, 3) as any as S.Schema<DeleteGuildMemberRoleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildMemberRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11630,8 +7799,8 @@ export const deleteGuildRole: API.OperationMethod<
   DeleteGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildRoleRequest,
-  output: DeleteGuildRoleResponse,
+  input: __S(268, __c33, 4) as any as S.Schema<DeleteGuildRoleRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11644,8 +7813,8 @@ export const deleteGuildScheduledEvent: API.OperationMethod<
   DeleteGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildScheduledEventRequest,
-  output: DeleteGuildScheduledEventResponse,
+  input: __S(269, __c33, 5) as any as S.Schema<DeleteGuildScheduledEventRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11659,8 +7828,8 @@ export const deleteGuildScheduledEventException: API.OperationMethod<
   DeleteGuildScheduledEventExceptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildScheduledEventExceptionRequest,
-  output: DeleteGuildScheduledEventExceptionResponse,
+  input: __S(270, __c33, 6) as any as S.Schema<DeleteGuildScheduledEventExceptionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildScheduledEventExceptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11673,8 +7842,8 @@ export const deleteGuildSoundboardSound: API.OperationMethod<
   DeleteGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildSoundboardSoundRequest,
-  output: DeleteGuildSoundboardSoundResponse,
+  input: __S(271, __c33, 7) as any as S.Schema<DeleteGuildSoundboardSoundRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteGuildSoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11687,8 +7856,8 @@ export const deleteGuildSticker: API.OperationMethod<
   DeleteGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildStickerRequest,
-  output: DeleteGuildStickerResponse,
+  input: __S(272, __c34, 0) as any as S.Schema<DeleteGuildStickerRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteGuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11701,8 +7870,8 @@ export const deleteGuildTemplate: API.OperationMethod<
   DeleteGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGuildTemplateRequest,
-  output: GuildTemplateResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<DeleteGuildTemplateRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11716,8 +7885,8 @@ export const deleteLobby: API.OperationMethod<
   DeleteLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLobbyRequest,
-  output: DeleteLobbyResponse,
+  input: __S(274, __c34, 2) as any as S.Schema<DeleteLobbyRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteLobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11730,8 +7899,8 @@ export const deleteLobbyMember: API.OperationMethod<
   DeleteLobbyMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLobbyMemberRequest,
-  output: DeleteLobbyMemberResponse,
+  input: __S(275, __c34, 3) as any as S.Schema<DeleteLobbyMemberRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteLobbyMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11744,8 +7913,8 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMessageRequest,
-  output: DeleteMessageResponse,
+  input: __S(276, __c34, 4) as any as S.Schema<DeleteMessageRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11758,8 +7927,8 @@ export const deleteMyMessageReaction: API.OperationMethod<
   DeleteMyMessageReactionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMyMessageReactionRequest,
-  output: DeleteMyMessageReactionResponse,
+  input: __S(277, __c34, 5) as any as S.Schema<DeleteMyMessageReactionRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<DeleteMyMessageReactionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11772,8 +7941,8 @@ export const deleteOriginalWebhookMessage: API.OperationMethod<
   DeleteOriginalWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOriginalWebhookMessageRequest,
-  output: DeleteOriginalWebhookMessageResponse,
+  input: __S(278, __c34, 6) as any as S.Schema<DeleteOriginalWebhookMessageRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteOriginalWebhookMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11786,8 +7955,8 @@ export const deletePin: API.OperationMethod<
   DeletePinError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePinRequest,
-  output: DeletePinResponse,
+  input: __S(279, __c34, 7) as any as S.Schema<DeletePinRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeletePinResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11800,8 +7969,8 @@ export const deleteStageInstance: API.OperationMethod<
   DeleteStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStageInstanceRequest,
-  output: DeleteStageInstanceResponse,
+  input: __S(280, __c35, 0) as any as S.Schema<DeleteStageInstanceRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteStageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11814,8 +7983,8 @@ export const deleteThreadMember: API.OperationMethod<
   DeleteThreadMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteThreadMemberRequest,
-  output: DeleteThreadMemberResponse,
+  input: __S(281, __c35, 1) as any as S.Schema<DeleteThreadMemberRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteThreadMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11828,8 +7997,8 @@ export const deleteUserMessageReaction: API.OperationMethod<
   DeleteUserMessageReactionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserMessageReactionRequest,
-  output: DeleteUserMessageReactionResponse,
+  input: __S(282, __c35, 2) as any as S.Schema<DeleteUserMessageReactionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteUserMessageReactionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11842,8 +8011,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookRequest,
-  output: DeleteWebhookResponse,
+  input: __S(283, __c35, 3) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11856,8 +8025,8 @@ export const deleteWebhookByToken: API.OperationMethod<
   DeleteWebhookByTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookByTokenRequest,
-  output: DeleteWebhookByTokenResponse,
+  input: __S(284, __c35, 4) as any as S.Schema<DeleteWebhookByTokenRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteWebhookByTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11870,8 +8039,8 @@ export const deleteWebhookMessage: API.OperationMethod<
   DeleteWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookMessageRequest,
-  output: DeleteWebhookMessageResponse,
+  input: __S(285, __c35, 5) as any as S.Schema<DeleteWebhookMessageRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteWebhookMessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11884,8 +8053,8 @@ export const editLobby: API.OperationMethod<
   EditLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditLobbyRequest,
-  output: LobbyResponse,
+  input: __S(286, __c35, 6) as any as S.Schema<EditLobbyRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11898,8 +8067,8 @@ export const editLobbyChannelLink: API.OperationMethod<
   EditLobbyChannelLinkError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditLobbyChannelLinkRequest,
-  output: LobbyResponse,
+  input: __S(287, __c35, 7) as any as S.Schema<EditLobbyChannelLinkRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11912,8 +8081,8 @@ export const executeGithubCompatibleWebhook: API.OperationMethod<
   ExecuteGithubCompatibleWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteGithubCompatibleWebhookRequest,
-  output: ExecuteGithubCompatibleWebhookResponse,
+  input: __S(304, __c38, 0) as any as S.Schema<ExecuteGithubCompatibleWebhookRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<ExecuteGithubCompatibleWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11926,8 +8095,8 @@ export const executeSlackCompatibleWebhook: API.OperationMethod<
   ExecuteSlackCompatibleWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteSlackCompatibleWebhookRequest,
-  output: ExecuteSlackCompatibleWebhookResponse,
+  input: __S(309, __c38, 5) as any as S.Schema<ExecuteSlackCompatibleWebhookRequest>,
+  output: __S(310, __c38, 6) as any as S.Schema<ExecuteSlackCompatibleWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11940,8 +8109,8 @@ export const executeWebhook: API.OperationMethod<
   ExecuteWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteWebhookRequest,
-  output: MessageResponse,
+  input: __S(312, __c39, 0) as any as S.Schema<ExecuteWebhookRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11954,8 +8123,8 @@ export const followChannel: API.OperationMethod<
   FollowChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FollowChannelRequest,
-  output: ChannelFollowerResponse,
+  input: __S(313, __c39, 1) as any as S.Schema<FollowChannelRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<ChannelFollowerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11968,8 +8137,8 @@ export const getActiveGuildThreads: API.OperationMethod<
   GetActiveGuildThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveGuildThreadsRequest,
-  output: ThreadsResponse,
+  input: __S(315, __c39, 3) as any as S.Schema<GetActiveGuildThreadsRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11982,8 +8151,8 @@ export const getAnswerVoters: API.OperationMethod<
   GetAnswerVotersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnswerVotersRequest,
-  output: PollAnswerDetailsResponse,
+  input: __S(320, __c40, 0) as any as S.Schema<GetAnswerVotersRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<PollAnswerDetailsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -11996,8 +8165,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationRequest,
-  output: PrivateApplicationResponse,
+  input: __S(322, __c40, 2) as any as S.Schema<GetApplicationRequest>,
+  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12010,8 +8179,8 @@ export const getApplicationActivityInstance: API.OperationMethod<
   GetApplicationActivityInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationActivityInstanceRequest,
-  output: EmbeddedActivityInstance,
+  input: __S(327, __c40, 7) as any as S.Schema<GetApplicationActivityInstanceRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<EmbeddedActivityInstance>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12024,8 +8193,8 @@ export const getApplicationCommand: API.OperationMethod<
   GetApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationCommandRequest,
-  output: ApplicationCommandResponse,
+  input: __S(330, __c41, 2) as any as S.Schema<GetApplicationCommandRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12038,8 +8207,8 @@ export const getApplicationEmoji: API.OperationMethod<
   GetApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationEmojiRequest,
-  output: EmojiResponse,
+  input: __S(331, __c41, 3) as any as S.Schema<GetApplicationEmojiRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12052,8 +8221,8 @@ export const getApplicationRoleConnectionsMetadata: API.OperationMethod<
   GetApplicationRoleConnectionsMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationRoleConnectionsMetadataRequest,
-  output: GetApplicationRoleConnectionsMetadataResponse,
+  input: __S(332, __c41, 4) as any as S.Schema<GetApplicationRoleConnectionsMetadataRequest>,
+  output: __S(335, __c41, 7) as any as S.Schema<GetApplicationRoleConnectionsMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12066,8 +8235,8 @@ export const getApplicationUserRoleConnection: API.OperationMethod<
   GetApplicationUserRoleConnectionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationUserRoleConnectionRequest,
-  output: ApplicationUserRoleConnectionResponse,
+  input: __S(336, __c42, 0) as any as S.Schema<GetApplicationUserRoleConnectionRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<ApplicationUserRoleConnectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12080,8 +8249,8 @@ export const getAutoModerationRule: API.OperationMethod<
   GetAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoModerationRuleRequest,
-  output: GetAutoModerationRuleResponse,
+  input: __S(338, __c42, 2) as any as S.Schema<GetAutoModerationRuleRequest>,
+  output: __S(340, __c42, 4) as any as S.Schema<GetAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12094,8 +8263,8 @@ export const getBotGateway: API.OperationMethod<
   GetBotGatewayError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotGatewayRequest,
-  output: GatewayBotResponse,
+  input: __S(341, __c42, 5) as any as S.Schema<GetBotGatewayRequest>,
+  output: __S(343, __c42, 7) as any as S.Schema<GatewayBotResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12108,8 +8277,8 @@ export const getChannel: API.OperationMethod<
   GetChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelRequest,
-  output: GetChannelResponse,
+  input: __S(344, __c43, 0) as any as S.Schema<GetChannelRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<GetChannelResponse>,
   errors: [NotFound, UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12122,8 +8291,8 @@ export const getCurrentUserApplicationEntitlements: API.OperationMethod<
   GetCurrentUserApplicationEntitlementsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCurrentUserApplicationEntitlementsRequest,
-  output: GetCurrentUserApplicationEntitlementsResponse,
+  input: __S(348, __c43, 4) as any as S.Schema<GetCurrentUserApplicationEntitlementsRequest>,
+  output: __S(350, __c43, 6) as any as S.Schema<GetCurrentUserApplicationEntitlementsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12136,8 +8305,8 @@ export const getEntitlement: API.OperationMethod<
   GetEntitlementError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntitlementRequest,
-  output: EntitlementResponse,
+  input: __S(351, __c43, 7) as any as S.Schema<GetEntitlementRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<EntitlementResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12150,8 +8319,8 @@ export const getEntitlements: API.OperationMethod<
   GetEntitlementsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntitlementsRequest,
-  output: GetEntitlementsResponse,
+  input: __S(353, __c44, 1) as any as S.Schema<GetEntitlementsRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<GetEntitlementsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12164,8 +8333,8 @@ export const getGateway: API.OperationMethod<
   GetGatewayError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayRequest,
-  output: GatewayResponse,
+  input: __S(355, __c44, 3) as any as S.Schema<GetGatewayRequest>,
+  output: __S(356, __c44, 4) as any as S.Schema<GatewayResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12178,8 +8347,8 @@ export const getGuild: API.OperationMethod<
   GetGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildRequest,
-  output: GuildWithCountsResponse,
+  input: __S(357, __c44, 5) as any as S.Schema<GetGuildRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<GuildWithCountsResponse>,
   errors: [NotFound, UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12192,8 +8361,8 @@ export const getGuildApplicationCommand: API.OperationMethod<
   GetGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildApplicationCommandRequest,
-  output: ApplicationCommandResponse,
+  input: __S(362, __c45, 2) as any as S.Schema<GetGuildApplicationCommandRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12206,8 +8375,8 @@ export const getGuildApplicationCommandPermissions: API.OperationMethod<
   GetGuildApplicationCommandPermissionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildApplicationCommandPermissionsRequest,
-  output: CommandPermissionsResponse,
+  input: __S(363, __c45, 3) as any as S.Schema<GetGuildApplicationCommandPermissionsRequest>,
+  output: __S(366, __c45, 6) as any as S.Schema<CommandPermissionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12220,8 +8389,8 @@ export const getGuildBan: API.OperationMethod<
   GetGuildBanError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildBanRequest,
-  output: GuildBanResponse,
+  input: __S(367, __c45, 7) as any as S.Schema<GetGuildBanRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<GuildBanResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12234,8 +8403,8 @@ export const getGuildEmoji: API.OperationMethod<
   GetGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildEmojiRequest,
-  output: EmojiResponse,
+  input: __S(369, __c46, 1) as any as S.Schema<GetGuildEmojiRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12249,8 +8418,8 @@ export const getGuildJoinRequests: API.OperationMethod<
   GetGuildJoinRequestsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildJoinRequestsRequest,
-  output: GuildJoinRequestsListResponse,
+  input: __S(370, __c46, 2) as any as S.Schema<GetGuildJoinRequestsRequest>,
+  output: __S(375, __c46, 7) as any as S.Schema<GuildJoinRequestsListResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12263,8 +8432,8 @@ export const getGuildMember: API.OperationMethod<
   GetGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildMemberRequest,
-  output: GuildMemberResponse,
+  input: __S(376, __c47, 0) as any as S.Schema<GetGuildMemberRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12277,8 +8446,8 @@ export const getGuildNewMemberWelcome: API.OperationMethod<
   GetGuildNewMemberWelcomeError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildNewMemberWelcomeRequest,
-  output: GuildHomeSettingsResponse,
+  input: __S(377, __c47, 1) as any as S.Schema<GetGuildNewMemberWelcomeRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<GuildHomeSettingsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12291,8 +8460,8 @@ export const getGuildPreview: API.OperationMethod<
   GetGuildPreviewError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildPreviewRequest,
-  output: GuildPreviewResponse,
+  input: __S(385, __c48, 1) as any as S.Schema<GetGuildPreviewRequest>,
+  output: __S(386, __c48, 2) as any as S.Schema<GuildPreviewResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12305,8 +8474,8 @@ export const getGuildRole: API.OperationMethod<
   GetGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildRoleRequest,
-  output: GuildRoleResponse,
+  input: __S(387, __c48, 3) as any as S.Schema<GetGuildRoleRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12319,8 +8488,8 @@ export const getGuildScheduledEvent: API.OperationMethod<
   GetGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildScheduledEventRequest,
-  output: GetGuildScheduledEventResponse,
+  input: __S(388, __c48, 4) as any as S.Schema<GetGuildScheduledEventRequest>,
+  output: __S(390, __c48, 6) as any as S.Schema<GetGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12333,8 +8502,8 @@ export const getGuildsOnboarding: API.OperationMethod<
   GetGuildsOnboardingError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildsOnboardingRequest,
-  output: UserGuildOnboardingResponse,
+  input: __S(391, __c48, 7) as any as S.Schema<GetGuildsOnboardingRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<UserGuildOnboardingResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12347,8 +8516,8 @@ export const getGuildSoundboardSound: API.OperationMethod<
   GetGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildSoundboardSoundRequest,
-  output: SoundboardSoundResponse,
+  input: __S(397, __c49, 5) as any as S.Schema<GetGuildSoundboardSoundRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<SoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12361,8 +8530,8 @@ export const getGuildSticker: API.OperationMethod<
   GetGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildStickerRequest,
-  output: GuildStickerResponse,
+  input: __S(398, __c49, 6) as any as S.Schema<GetGuildStickerRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<GuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12375,8 +8544,8 @@ export const getGuildTemplate: API.OperationMethod<
   GetGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildTemplateRequest,
-  output: GuildTemplateResponse,
+  input: __S(399, __c49, 7) as any as S.Schema<GetGuildTemplateRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12389,8 +8558,8 @@ export const getGuildVanityUrl: API.OperationMethod<
   GetGuildVanityUrlError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildVanityUrlRequest,
-  output: VanityURLResponse,
+  input: __S(400, __c50, 0) as any as S.Schema<GetGuildVanityUrlRequest>,
+  output: __S(402, __c50, 2) as any as S.Schema<VanityURLResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12403,8 +8572,8 @@ export const getGuildWebhooks: API.OperationMethod<
   GetGuildWebhooksError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildWebhooksRequest,
-  output: GetGuildWebhooksResponse,
+  input: __S(403, __c50, 3) as any as S.Schema<GetGuildWebhooksRequest>,
+  output: __S(406, __c50, 6) as any as S.Schema<GetGuildWebhooksResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12417,8 +8586,8 @@ export const getGuildWelcomeScreen: API.OperationMethod<
   GetGuildWelcomeScreenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildWelcomeScreenRequest,
-  output: GuildWelcomeScreenResponse,
+  input: __S(407, __c50, 7) as any as S.Schema<GetGuildWelcomeScreenRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<GuildWelcomeScreenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12431,8 +8600,8 @@ export const getGuildWidget: API.OperationMethod<
   GetGuildWidgetError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildWidgetRequest,
-  output: WidgetResponse,
+  input: __S(411, __c51, 3) as any as S.Schema<GetGuildWidgetRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<WidgetResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12445,8 +8614,8 @@ export const getGuildWidgetPng: API.OperationMethod<
   GetGuildWidgetPngError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildWidgetPngRequest,
-  output: GetGuildWidgetPngResponse,
+  input: __S(417, __c52, 1) as any as S.Schema<GetGuildWidgetPngRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetGuildWidgetPngResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12459,8 +8628,8 @@ export const getGuildWidgetSettings: API.OperationMethod<
   GetGuildWidgetSettingsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuildWidgetSettingsRequest,
-  output: WidgetSettingsResponse,
+  input: __S(418, __c52, 2) as any as S.Schema<GetGuildWidgetSettingsRequest>,
+  output: __S(419, __c52, 3) as any as S.Schema<WidgetSettingsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12474,8 +8643,8 @@ export const getInviteTargetUsers: API.OperationMethod<
   GetInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInviteTargetUsersRequest,
-  output: GetInviteTargetUsersResponse,
+  input: __S(420, __c52, 4) as any as S.Schema<GetInviteTargetUsersRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12489,8 +8658,8 @@ export const getInviteTargetUsersJobStatus: API.OperationMethod<
   GetInviteTargetUsersJobStatusError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInviteTargetUsersJobStatusRequest,
-  output: TargetUsersJobStatusResponse,
+  input: __S(421, __c52, 5) as any as S.Schema<GetInviteTargetUsersJobStatusRequest>,
+  output: __S(422, __c52, 6) as any as S.Schema<TargetUsersJobStatusResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12503,8 +8672,8 @@ export const getLobby: API.OperationMethod<
   GetLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLobbyRequest,
-  output: LobbyResponse,
+  input: __S(423, __c52, 7) as any as S.Schema<GetLobbyRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<LobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12517,8 +8686,8 @@ export const getLobbyMessages: API.OperationMethod<
   GetLobbyMessagesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLobbyMessagesRequest,
-  output: GetLobbyMessagesResponse,
+  input: __S(424, __c53, 0) as any as S.Schema<GetLobbyMessagesRequest>,
+  output: __S(426, __c53, 2) as any as S.Schema<GetLobbyMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12531,8 +8700,8 @@ export const getMessage: API.OperationMethod<
   GetMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMessageRequest,
-  output: MessageResponse,
+  input: __S(427, __c53, 3) as any as S.Schema<GetMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12545,8 +8714,8 @@ export const getMyApplication: API.OperationMethod<
   GetMyApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMyApplicationRequest,
-  output: PrivateApplicationResponse,
+  input: __S(428, __c53, 4) as any as S.Schema<GetMyApplicationRequest>,
+  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12559,8 +8728,8 @@ export const getMyGuildMember: API.OperationMethod<
   GetMyGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMyGuildMemberRequest,
-  output: PrivateGuildMemberResponse,
+  input: __S(429, __c53, 5) as any as S.Schema<GetMyGuildMemberRequest>,
+  output: __S(430, __c53, 6) as any as S.Schema<PrivateGuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12573,8 +8742,8 @@ export const getMyOauth2Application: API.OperationMethod<
   GetMyOauth2ApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMyOauth2ApplicationRequest,
-  output: PrivateApplicationResponse,
+  input: __S(431, __c53, 7) as any as S.Schema<GetMyOauth2ApplicationRequest>,
+  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12587,8 +8756,8 @@ export const getMyOauth2Authorization: API.OperationMethod<
   GetMyOauth2AuthorizationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMyOauth2AuthorizationRequest,
-  output: OAuth2GetAuthorizationResponse,
+  input: __S(432, __c54, 0) as any as S.Schema<GetMyOauth2AuthorizationRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<OAuth2GetAuthorizationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12601,8 +8770,8 @@ export const getMyUser: API.OperationMethod<
   GetMyUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMyUserRequest,
-  output: UserPIIResponse,
+  input: __S(434, __c54, 2) as any as S.Schema<GetMyUserRequest>,
+  output: __S(435, __c54, 3) as any as S.Schema<UserPIIResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12615,8 +8784,8 @@ export const getOpenidConnectUserinfo: API.OperationMethod<
   GetOpenidConnectUserinfoError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOpenidConnectUserinfoRequest,
-  output: OAuth2GetOpenIDConnectUserInfoResponse,
+  input: __S(436, __c54, 4) as any as S.Schema<GetOpenidConnectUserinfoRequest>,
+  output: __S(437, __c54, 5) as any as S.Schema<OAuth2GetOpenIDConnectUserInfoResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12629,8 +8798,8 @@ export const getOriginalWebhookMessage: API.OperationMethod<
   GetOriginalWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOriginalWebhookMessageRequest,
-  output: MessageResponse,
+  input: __S(438, __c54, 6) as any as S.Schema<GetOriginalWebhookMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12643,8 +8812,8 @@ export const getPublicKeys: API.OperationMethod<
   GetPublicKeysError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicKeysRequest,
-  output: OAuth2GetKeys,
+  input: __S(439, __c54, 7) as any as S.Schema<GetPublicKeysRequest>,
+  output: __S(442, __c55, 2) as any as S.Schema<OAuth2GetKeys>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12657,8 +8826,8 @@ export const getSelfVoiceState: API.OperationMethod<
   GetSelfVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSelfVoiceStateRequest,
-  output: VoiceStateResponse,
+  input: __S(443, __c55, 3) as any as S.Schema<GetSelfVoiceStateRequest>,
+  output: __S(444, __c55, 4) as any as S.Schema<VoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12672,8 +8841,8 @@ export const getSkuSubscription: API.OperationMethod<
   GetSkuSubscriptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSkuSubscriptionRequest,
-  output: SubscriptionResponse,
+  input: __S(445, __c55, 5) as any as S.Schema<GetSkuSubscriptionRequest>,
+  output: __S(446, __c55, 6) as any as S.Schema<SubscriptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12687,8 +8856,8 @@ export const getSkuSubscriptions: API.OperationMethod<
   GetSkuSubscriptionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSkuSubscriptionsRequest,
-  output: GetSkuSubscriptionsResponse,
+  input: __S(447, __c55, 7) as any as S.Schema<GetSkuSubscriptionsRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<GetSkuSubscriptionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12701,8 +8870,8 @@ export const getSoundboardDefaultSounds: API.OperationMethod<
   GetSoundboardDefaultSoundsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSoundboardDefaultSoundsRequest,
-  output: GetSoundboardDefaultSoundsResponse,
+  input: __S(450, __c56, 2) as any as S.Schema<GetSoundboardDefaultSoundsRequest>,
+  output: __S(452, __c56, 4) as any as S.Schema<GetSoundboardDefaultSoundsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12715,8 +8884,8 @@ export const getStageInstance: API.OperationMethod<
   GetStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStageInstanceRequest,
-  output: StageInstanceResponse,
+  input: __S(453, __c56, 5) as any as S.Schema<GetStageInstanceRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<StageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12729,8 +8898,8 @@ export const getSticker: API.OperationMethod<
   GetStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStickerRequest,
-  output: GetStickerResponse,
+  input: __S(454, __c56, 6) as any as S.Schema<GetStickerRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<GetStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12743,8 +8912,8 @@ export const getStickerPack: API.OperationMethod<
   GetStickerPackError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStickerPackRequest,
-  output: StickerPackResponse,
+  input: __S(457, __c57, 1) as any as S.Schema<GetStickerPackRequest>,
+  output: __S(459, __c57, 3) as any as S.Schema<StickerPackResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12757,8 +8926,8 @@ export const getThreadMember: API.OperationMethod<
   GetThreadMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThreadMemberRequest,
-  output: ThreadMemberResponse,
+  input: __S(460, __c57, 4) as any as S.Schema<GetThreadMemberRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<ThreadMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12771,8 +8940,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: UserResponse,
+  input: __S(461, __c57, 5) as any as S.Schema<GetUserRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<UserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12785,8 +8954,8 @@ export const getVoiceState: API.OperationMethod<
   GetVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVoiceStateRequest,
-  output: VoiceStateResponse,
+  input: __S(462, __c57, 6) as any as S.Schema<GetVoiceStateRequest>,
+  output: __S(444, __c55, 4) as any as S.Schema<VoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12799,8 +8968,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookRequest,
-  output: GetWebhookResponse,
+  input: __S(463, __c57, 7) as any as S.Schema<GetWebhookRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<GetWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12813,8 +8982,8 @@ export const getWebhookByToken: API.OperationMethod<
   GetWebhookByTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookByTokenRequest,
-  output: GetWebhookByTokenResponse,
+  input: __S(466, __c58, 2) as any as S.Schema<GetWebhookByTokenRequest>,
+  output: __S(468, __c58, 4) as any as S.Schema<GetWebhookByTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12827,8 +8996,8 @@ export const getWebhookMessage: API.OperationMethod<
   GetWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookMessageRequest,
-  output: MessageResponse,
+  input: __S(469, __c58, 5) as any as S.Schema<GetWebhookMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12841,8 +9010,8 @@ export const guildRoleMemberCounts: API.OperationMethod<
   GuildRoleMemberCountsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GuildRoleMemberCountsRequest,
-  output: GuildRoleMemberCountsResponse,
+  input: __S(470, __c58, 6) as any as S.Schema<GuildRoleMemberCountsRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<GuildRoleMemberCountsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12855,8 +9024,8 @@ export const inviteResolve: API.OperationMethod<
   InviteResolveError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InviteResolveRequest,
-  output: InviteResolveResponse,
+  input: __S(473, __c59, 1) as any as S.Schema<InviteResolveRequest>,
+  output: __S(475, __c59, 3) as any as S.Schema<InviteResolveResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12870,8 +9039,8 @@ export const joinActionGuildRequest: API.OperationMethod<
   JoinActionGuildRequestError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JoinActionGuildRequestRequest,
-  output: GuildJoinRequestResponse,
+  input: __S(476, __c59, 4) as any as S.Schema<JoinActionGuildRequestRequest>,
+  output: __S(373, __c46, 5) as any as S.Schema<GuildJoinRequestResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12884,8 +9053,8 @@ export const joinThread: API.OperationMethod<
   JoinThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JoinThreadRequest,
-  output: JoinThreadResponse,
+  input: __S(477, __c59, 5) as any as S.Schema<JoinThreadRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<JoinThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12898,8 +9067,8 @@ export const leaveGuild: API.OperationMethod<
   LeaveGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LeaveGuildRequest,
-  output: LeaveGuildResponse,
+  input: __S(478, __c59, 6) as any as S.Schema<LeaveGuildRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<LeaveGuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12912,8 +9081,8 @@ export const leaveLobby: API.OperationMethod<
   LeaveLobbyError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LeaveLobbyRequest,
-  output: LeaveLobbyResponse,
+  input: __S(479, __c59, 7) as any as S.Schema<LeaveLobbyRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<LeaveLobbyResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12926,8 +9095,8 @@ export const leaveThread: API.OperationMethod<
   LeaveThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LeaveThreadRequest,
-  output: LeaveThreadResponse,
+  input: __S(480, __c60, 0) as any as S.Schema<LeaveThreadRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<LeaveThreadResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12940,8 +9109,8 @@ export const listApplicationCommands: API.OperationMethod<
   ListApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationCommandsRequest,
-  output: ListApplicationCommandsResponse,
+  input: __S(481, __c60, 1) as any as S.Schema<ListApplicationCommandsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12954,8 +9123,8 @@ export const listApplicationEmojis: API.OperationMethod<
   ListApplicationEmojisError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationEmojisRequest,
-  output: ListApplicationEmojisResponse,
+  input: __S(482, __c60, 2) as any as S.Schema<ListApplicationEmojisRequest>,
+  output: __S(483, __c60, 3) as any as S.Schema<ListApplicationEmojisResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12968,8 +9137,8 @@ export const listAutoModerationRules: API.OperationMethod<
   ListAutoModerationRulesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutoModerationRulesRequest,
-  output: ListAutoModerationRulesResponse,
+  input: __S(484, __c60, 4) as any as S.Schema<ListAutoModerationRulesRequest>,
+  output: __S(487, __c60, 7) as any as S.Schema<ListAutoModerationRulesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12982,8 +9151,8 @@ export const listChannelInvites: API.OperationMethod<
   ListChannelInvitesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChannelInvitesRequest,
-  output: ListChannelInvitesResponse,
+  input: __S(488, __c61, 0) as any as S.Schema<ListChannelInvitesRequest>,
+  output: __S(491, __c61, 3) as any as S.Schema<ListChannelInvitesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -12996,8 +9165,8 @@ export const listChannelWebhooks: API.OperationMethod<
   ListChannelWebhooksError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChannelWebhooksRequest,
-  output: ListChannelWebhooksResponse,
+  input: __S(492, __c61, 4) as any as S.Schema<ListChannelWebhooksRequest>,
+  output: __S(495, __c61, 7) as any as S.Schema<ListChannelWebhooksResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13010,8 +9179,8 @@ export const listDeprecatedPins: API.OperationMethod<
   ListDeprecatedPinsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeprecatedPinsRequest,
-  output: ListDeprecatedPinsResponse,
+  input: __S(496, __c62, 0) as any as S.Schema<ListDeprecatedPinsRequest>,
+  output: __S(497, __c62, 1) as any as S.Schema<ListDeprecatedPinsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13024,8 +9193,8 @@ export const listGuildApplicationCommandPermissions: API.OperationMethod<
   ListGuildApplicationCommandPermissionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildApplicationCommandPermissionsRequest,
-  output: ListGuildApplicationCommandPermissionsResponse,
+  input: __S(498, __c62, 2) as any as S.Schema<ListGuildApplicationCommandPermissionsRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<ListGuildApplicationCommandPermissionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13038,8 +9207,8 @@ export const listGuildApplicationCommands: API.OperationMethod<
   ListGuildApplicationCommandsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildApplicationCommandsRequest,
-  output: ListGuildApplicationCommandsResponse,
+  input: __S(501, __c62, 5) as any as S.Schema<ListGuildApplicationCommandsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListGuildApplicationCommandsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13052,8 +9221,8 @@ export const listGuildAuditLogEntries: API.OperationMethod<
   ListGuildAuditLogEntriesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildAuditLogEntriesRequest,
-  output: GuildAuditLogResponse,
+  input: __S(502, __c62, 6) as any as S.Schema<ListGuildAuditLogEntriesRequest>,
+  output: __S(516, __c64, 4) as any as S.Schema<GuildAuditLogResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13066,8 +9235,8 @@ export const listGuildBans: API.OperationMethod<
   ListGuildBansError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildBansRequest,
-  output: ListGuildBansResponse,
+  input: __S(517, __c64, 5) as any as S.Schema<ListGuildBansRequest>,
+  output: __S(519, __c64, 7) as any as S.Schema<ListGuildBansResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13080,8 +9249,8 @@ export const listGuildChannels: API.OperationMethod<
   ListGuildChannelsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildChannelsRequest,
-  output: ListGuildChannelsResponse,
+  input: __S(520, __c65, 0) as any as S.Schema<ListGuildChannelsRequest>,
+  output: __S(523, __c65, 3) as any as S.Schema<ListGuildChannelsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13094,8 +9263,8 @@ export const listGuildEmojis: API.OperationMethod<
   ListGuildEmojisError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildEmojisRequest,
-  output: ListGuildEmojisResponse,
+  input: __S(524, __c65, 4) as any as S.Schema<ListGuildEmojisRequest>,
+  output: __S(525, __c65, 5) as any as S.Schema<ListGuildEmojisResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13108,8 +9277,8 @@ export const listGuildIntegrations: API.OperationMethod<
   ListGuildIntegrationsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildIntegrationsRequest,
-  output: ListGuildIntegrationsResponse,
+  input: __S(526, __c65, 6) as any as S.Schema<ListGuildIntegrationsRequest>,
+  output: __S(529, __c66, 1) as any as S.Schema<ListGuildIntegrationsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13122,8 +9291,8 @@ export const listGuildInvites: API.OperationMethod<
   ListGuildInvitesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildInvitesRequest,
-  output: ListGuildInvitesResponse,
+  input: __S(530, __c66, 2) as any as S.Schema<ListGuildInvitesRequest>,
+  output: __S(533, __c66, 5) as any as S.Schema<ListGuildInvitesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13136,8 +9305,8 @@ export const listGuildMembers: API.OperationMethod<
   ListGuildMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildMembersRequest,
-  output: ListGuildMembersResponse,
+  input: __S(534, __c66, 6) as any as S.Schema<ListGuildMembersRequest>,
+  output: __S(536, __c67, 0) as any as S.Schema<ListGuildMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13150,8 +9319,8 @@ export const listGuildRoles: API.OperationMethod<
   ListGuildRolesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildRolesRequest,
-  output: ListGuildRolesResponse,
+  input: __S(537, __c67, 1) as any as S.Schema<ListGuildRolesRequest>,
+  output: __S(538, __c67, 2) as any as S.Schema<ListGuildRolesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13165,8 +9334,8 @@ export const listGuildScheduledEventExceptionUsers: API.OperationMethod<
   ListGuildScheduledEventExceptionUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildScheduledEventExceptionUsersRequest,
-  output: ListGuildScheduledEventExceptionUsersResponse,
+  input: __S(539, __c67, 3) as any as S.Schema<ListGuildScheduledEventExceptionUsersRequest>,
+  output: __S(541, __c67, 5) as any as S.Schema<ListGuildScheduledEventExceptionUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13179,8 +9348,8 @@ export const listGuildScheduledEvents: API.OperationMethod<
   ListGuildScheduledEventsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildScheduledEventsRequest,
-  output: ListGuildScheduledEventsResponse,
+  input: __S(542, __c67, 6) as any as S.Schema<ListGuildScheduledEventsRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<ListGuildScheduledEventsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13193,8 +9362,8 @@ export const listGuildScheduledEventUsers: API.OperationMethod<
   ListGuildScheduledEventUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildScheduledEventUsersRequest,
-  output: ListGuildScheduledEventUsersResponse,
+  input: __S(546, __c68, 2) as any as S.Schema<ListGuildScheduledEventUsersRequest>,
+  output: __S(541, __c67, 5) as any as S.Schema<ListGuildScheduledEventUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13207,8 +9376,8 @@ export const listGuildSoundboardSounds: API.OperationMethod<
   ListGuildSoundboardSoundsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildSoundboardSoundsRequest,
-  output: ListGuildSoundboardSoundsResponse,
+  input: __S(547, __c68, 3) as any as S.Schema<ListGuildSoundboardSoundsRequest>,
+  output: __S(548, __c68, 4) as any as S.Schema<ListGuildSoundboardSoundsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13221,8 +9390,8 @@ export const listGuildStickers: API.OperationMethod<
   ListGuildStickersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildStickersRequest,
-  output: ListGuildStickersResponse,
+  input: __S(549, __c68, 5) as any as S.Schema<ListGuildStickersRequest>,
+  output: __S(550, __c68, 6) as any as S.Schema<ListGuildStickersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13235,8 +9404,8 @@ export const listGuildTemplates: API.OperationMethod<
   ListGuildTemplatesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildTemplatesRequest,
-  output: ListGuildTemplatesResponse,
+  input: __S(551, __c68, 7) as any as S.Schema<ListGuildTemplatesRequest>,
+  output: __S(553, __c69, 1) as any as S.Schema<ListGuildTemplatesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13249,8 +9418,8 @@ export const listGuildVoiceRegions: API.OperationMethod<
   ListGuildVoiceRegionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGuildVoiceRegionsRequest,
-  output: ListGuildVoiceRegionsResponse,
+  input: __S(554, __c69, 2) as any as S.Schema<ListGuildVoiceRegionsRequest>,
+  output: __S(557, __c69, 5) as any as S.Schema<ListGuildVoiceRegionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13263,8 +9432,8 @@ export const listMessageReactionsByEmoji: API.OperationMethod<
   ListMessageReactionsByEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMessageReactionsByEmojiRequest,
-  output: ListMessageReactionsByEmojiResponse,
+  input: __S(558, __c69, 6) as any as S.Schema<ListMessageReactionsByEmojiRequest>,
+  output: __S(559, __c69, 7) as any as S.Schema<ListMessageReactionsByEmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13277,8 +9446,8 @@ export const listMessages: API.OperationMethod<
   ListMessagesError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMessagesRequest,
-  output: ListMessagesResponse,
+  input: __S(560, __c70, 0) as any as S.Schema<ListMessagesRequest>,
+  output: __S(561, __c70, 1) as any as S.Schema<ListMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13291,8 +9460,8 @@ export const listMyConnections: API.OperationMethod<
   ListMyConnectionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMyConnectionsRequest,
-  output: ListMyConnectionsResponse,
+  input: __S(562, __c70, 2) as any as S.Schema<ListMyConnectionsRequest>,
+  output: __S(568, __c71, 0) as any as S.Schema<ListMyConnectionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13305,8 +9474,8 @@ export const listMyGuilds: API.OperationMethod<
   ListMyGuildsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMyGuildsRequest,
-  output: ListMyGuildsResponse,
+  input: __S(569, __c71, 1) as any as S.Schema<ListMyGuildsRequest>,
+  output: __S(572, __c71, 4) as any as S.Schema<ListMyGuildsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13319,8 +9488,8 @@ export const listMyPrivateArchivedThreads: API.OperationMethod<
   ListMyPrivateArchivedThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMyPrivateArchivedThreadsRequest,
-  output: ThreadsResponse,
+  input: __S(573, __c71, 5) as any as S.Schema<ListMyPrivateArchivedThreadsRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13333,8 +9502,8 @@ export const listPins: API.OperationMethod<
   ListPinsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPinsRequest,
-  output: PinnedMessagesResponse,
+  input: __S(574, __c71, 6) as any as S.Schema<ListPinsRequest>,
+  output: __S(577, __c72, 1) as any as S.Schema<PinnedMessagesResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13347,8 +9516,8 @@ export const listPrivateArchivedThreads: API.OperationMethod<
   ListPrivateArchivedThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateArchivedThreadsRequest,
-  output: ThreadsResponse,
+  input: __S(578, __c72, 2) as any as S.Schema<ListPrivateArchivedThreadsRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13361,8 +9530,8 @@ export const listPublicArchivedThreads: API.OperationMethod<
   ListPublicArchivedThreadsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPublicArchivedThreadsRequest,
-  output: ThreadsResponse,
+  input: __S(579, __c72, 3) as any as S.Schema<ListPublicArchivedThreadsRequest>,
+  output: __S(319, __c39, 7) as any as S.Schema<ThreadsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13375,8 +9544,8 @@ export const listStickerPacks: API.OperationMethod<
   ListStickerPacksError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStickerPacksRequest,
-  output: StickerPackCollectionResponse,
+  input: __S(580, __c72, 4) as any as S.Schema<ListStickerPacksRequest>,
+  output: __S(582, __c72, 6) as any as S.Schema<StickerPackCollectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13389,8 +9558,8 @@ export const listThreadMembers: API.OperationMethod<
   ListThreadMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListThreadMembersRequest,
-  output: ListThreadMembersResponse,
+  input: __S(583, __c72, 7) as any as S.Schema<ListThreadMembersRequest>,
+  output: __S(584, __c73, 0) as any as S.Schema<ListThreadMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13403,8 +9572,8 @@ export const listVoiceRegions: API.OperationMethod<
   ListVoiceRegionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVoiceRegionsRequest,
-  output: ListVoiceRegionsResponse,
+  input: __S(585, __c73, 1) as any as S.Schema<ListVoiceRegionsRequest>,
+  output: __S(586, __c73, 2) as any as S.Schema<ListVoiceRegionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13417,8 +9586,8 @@ export const partnerSdkToken: API.OperationMethod<
   PartnerSdkTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartnerSdkTokenRequest,
-  output: ProvisionalTokenResponse,
+  input: __S(587, __c73, 3) as any as S.Schema<PartnerSdkTokenRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<ProvisionalTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13431,8 +9600,8 @@ export const partnerSdkUnmergeProvisionalAccount: API.OperationMethod<
   PartnerSdkUnmergeProvisionalAccountError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartnerSdkUnmergeProvisionalAccountRequest,
-  output: PartnerSdkUnmergeProvisionalAccountResponse,
+  input: __S(588, __c73, 4) as any as S.Schema<PartnerSdkUnmergeProvisionalAccountRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<PartnerSdkUnmergeProvisionalAccountResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13445,8 +9614,8 @@ export const pollExpire: API.OperationMethod<
   PollExpireError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PollExpireRequest,
-  output: MessageResponse,
+  input: __S(589, __c73, 5) as any as S.Schema<PollExpireRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13459,8 +9628,8 @@ export const previewPruneGuild: API.OperationMethod<
   PreviewPruneGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewPruneGuildRequest,
-  output: GuildPruneResponse,
+  input: __S(591, __c73, 7) as any as S.Schema<PreviewPruneGuildRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<GuildPruneResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13473,8 +9642,8 @@ export const pruneGuild: API.OperationMethod<
   PruneGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PruneGuildRequest,
-  output: GuildPruneResponse,
+  input: __S(594, __c74, 2) as any as S.Schema<PruneGuildRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<GuildPruneResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13487,8 +9656,8 @@ export const putGuildsOnboarding: API.OperationMethod<
   PutGuildsOnboardingError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutGuildsOnboardingRequest,
-  output: GuildOnboardingResponse,
+  input: __S(599, __c74, 7) as any as S.Schema<PutGuildsOnboardingRequest>,
+  output: __S(600, __c75, 0) as any as S.Schema<GuildOnboardingResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13502,8 +9671,8 @@ export const removeInviteTargetUser: API.OperationMethod<
   RemoveInviteTargetUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveInviteTargetUserRequest,
-  output: RemoveInviteTargetUserResponse,
+  input: __S(601, __c75, 1) as any as S.Schema<RemoveInviteTargetUserRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<RemoveInviteTargetUserResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13516,8 +9685,8 @@ export const revokeInvite: API.OperationMethod<
   RevokeInviteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeInviteRequest,
-  output: RevokeInviteResponse,
+  input: __S(602, __c75, 2) as any as S.Schema<RevokeInviteRequest>,
+  output: __S(604, __c75, 4) as any as S.Schema<RevokeInviteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13530,8 +9699,8 @@ export const searchGuild: API.OperationMethod<
   SearchGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchGuildRequest,
-  output: GuildSearchResponse,
+  input: __S(605, __c75, 5) as any as S.Schema<SearchGuildRequest>,
+  output: __S(615, __c76, 7) as any as S.Schema<GuildSearchResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13544,8 +9713,8 @@ export const searchGuildMembers: API.OperationMethod<
   SearchGuildMembersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchGuildMembersRequest,
-  output: SearchGuildMembersResponse,
+  input: __S(616, __c77, 0) as any as S.Schema<SearchGuildMembersRequest>,
+  output: __S(617, __c77, 1) as any as S.Schema<SearchGuildMembersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13558,8 +9727,8 @@ export const searchThread: API.OperationMethod<
   SearchThreadError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchThreadRequest,
-  output: ThreadSearchResponse,
+  input: __S(619, __c77, 3) as any as S.Schema<SearchThreadRequest>,
+  output: __S(620, __c77, 4) as any as S.Schema<ThreadSearchResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13572,8 +9741,8 @@ export const sendSoundboardSound: API.OperationMethod<
   SendSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendSoundboardSoundRequest,
-  output: SendSoundboardSoundResponse,
+  input: __S(621, __c77, 5) as any as S.Schema<SendSoundboardSoundRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<SendSoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13586,8 +9755,8 @@ export const setChannelPermissionOverwrite: API.OperationMethod<
   SetChannelPermissionOverwriteError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetChannelPermissionOverwriteRequest,
-  output: SetChannelPermissionOverwriteResponse,
+  input: __S(622, __c77, 6) as any as S.Schema<SetChannelPermissionOverwriteRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<SetChannelPermissionOverwriteResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13600,8 +9769,8 @@ export const setGuildApplicationCommandPermissions: API.OperationMethod<
   SetGuildApplicationCommandPermissionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetGuildApplicationCommandPermissionsRequest,
-  output: CommandPermissionsResponse,
+  input: __S(623, __c77, 7) as any as S.Schema<SetGuildApplicationCommandPermissionsRequest>,
+  output: __S(366, __c45, 6) as any as S.Schema<CommandPermissionsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13614,8 +9783,8 @@ export const syncGuildTemplate: API.OperationMethod<
   SyncGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncGuildTemplateRequest,
-  output: GuildTemplateResponse,
+  input: __S(624, __c78, 0) as any as S.Schema<SyncGuildTemplateRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13628,8 +9797,8 @@ export const triggerTypingIndicator: API.OperationMethod<
   TriggerTypingIndicatorError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerTypingIndicatorRequest,
-  output: TriggerTypingIndicatorResponse,
+  input: __S(625, __c78, 1) as any as S.Schema<TriggerTypingIndicatorRequest>,
+  output: __S(626, __c78, 2) as any as S.Schema<TriggerTypingIndicatorResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13642,8 +9811,8 @@ export const unbanUserFromGuild: API.OperationMethod<
   UnbanUserFromGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnbanUserFromGuildRequest2,
-  output: UnbanUserFromGuildResponse,
+  input: __S(627, __c78, 3) as any as S.Schema<UnbanUserFromGuildRequest2>,
+  output: __S(13, __c1, 5) as any as S.Schema<UnbanUserFromGuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13656,8 +9825,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationRequest,
-  output: PrivateApplicationResponse,
+  input: __S(632, __c79, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13670,8 +9839,8 @@ export const updateApplicationCommand: API.OperationMethod<
   UpdateApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationCommandRequest,
-  output: ApplicationCommandResponse,
+  input: __S(635, __c79, 3) as any as S.Schema<UpdateApplicationCommandRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13684,8 +9853,8 @@ export const updateApplicationEmoji: API.OperationMethod<
   UpdateApplicationEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationEmojiRequest,
-  output: EmojiResponse,
+  input: __S(636, __c79, 4) as any as S.Schema<UpdateApplicationEmojiRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13698,8 +9867,8 @@ export const updateApplicationRoleConnectionsMetadata: API.OperationMethod<
   UpdateApplicationRoleConnectionsMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationRoleConnectionsMetadataRequest,
-  output: UpdateApplicationRoleConnectionsMetadataResponse,
+  input: __S(640, __c80, 0) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataRequest>,
+  output: __S(335, __c41, 7) as any as S.Schema<UpdateApplicationRoleConnectionsMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13712,8 +9881,8 @@ export const updateApplicationUserRoleConnection: API.OperationMethod<
   UpdateApplicationUserRoleConnectionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationUserRoleConnectionRequest,
-  output: ApplicationUserRoleConnectionResponse,
+  input: __S(641, __c80, 1) as any as S.Schema<UpdateApplicationUserRoleConnectionRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<ApplicationUserRoleConnectionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13726,8 +9895,8 @@ export const updateAutoModerationRule: API.OperationMethod<
   UpdateAutoModerationRuleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAutoModerationRuleRequest,
-  output: UpdateAutoModerationRuleResponse,
+  input: __S(643, __c80, 3) as any as S.Schema<UpdateAutoModerationRuleRequest>,
+  output: __S(645, __c80, 5) as any as S.Schema<UpdateAutoModerationRuleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13740,8 +9909,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChannelRequest,
-  output: UpdateChannelResponse,
+  input: __S(647, __c80, 7) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(649, __c81, 1) as any as S.Schema<UpdateChannelResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13754,8 +9923,8 @@ export const updateGuild: API.OperationMethod<
   UpdateGuildError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildRequest,
-  output: GuildResponse,
+  input: __S(650, __c81, 2) as any as S.Schema<UpdateGuildRequest>,
+  output: __S(651, __c81, 3) as any as S.Schema<GuildResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13768,8 +9937,8 @@ export const updateGuildApplicationCommand: API.OperationMethod<
   UpdateGuildApplicationCommandError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildApplicationCommandRequest,
-  output: ApplicationCommandResponse,
+  input: __S(654, __c81, 6) as any as S.Schema<UpdateGuildApplicationCommandRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApplicationCommandResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13782,8 +9951,8 @@ export const updateGuildEmoji: API.OperationMethod<
   UpdateGuildEmojiError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildEmojiRequest,
-  output: EmojiResponse,
+  input: __S(655, __c81, 7) as any as S.Schema<UpdateGuildEmojiRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<EmojiResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13797,8 +9966,8 @@ export const updateGuildIncidentActions: API.OperationMethod<
   UpdateGuildIncidentActionsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildIncidentActionsRequest,
-  output: GuildIncidentsDataResponse,
+  input: __S(656, __c82, 0) as any as S.Schema<UpdateGuildIncidentActionsRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<GuildIncidentsDataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13811,8 +9980,8 @@ export const updateGuildMember: API.OperationMethod<
   UpdateGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildMemberRequest,
-  output: GuildMemberResponse,
+  input: __S(657, __c82, 1) as any as S.Schema<UpdateGuildMemberRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13825,8 +9994,8 @@ export const updateGuildRole: API.OperationMethod<
   UpdateGuildRoleError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildRoleRequest,
-  output: GuildRoleResponse,
+  input: __S(658, __c82, 2) as any as S.Schema<UpdateGuildRoleRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GuildRoleResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13839,8 +10008,8 @@ export const updateGuildScheduledEvent: API.OperationMethod<
   UpdateGuildScheduledEventError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildScheduledEventRequest,
-  output: UpdateGuildScheduledEventResponse,
+  input: __S(660, __c82, 4) as any as S.Schema<UpdateGuildScheduledEventRequest>,
+  output: __S(662, __c82, 6) as any as S.Schema<UpdateGuildScheduledEventResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13854,8 +10023,8 @@ export const updateGuildScheduledEventException: API.OperationMethod<
   UpdateGuildScheduledEventExceptionError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildScheduledEventExceptionRequest,
-  output: GuildScheduledEventExceptionResponse,
+  input: __S(663, __c82, 7) as any as S.Schema<UpdateGuildScheduledEventExceptionRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GuildScheduledEventExceptionResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13868,8 +10037,8 @@ export const updateGuildSoundboardSound: API.OperationMethod<
   UpdateGuildSoundboardSoundError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildSoundboardSoundRequest,
-  output: SoundboardSoundResponse,
+  input: __S(664, __c83, 0) as any as S.Schema<UpdateGuildSoundboardSoundRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<SoundboardSoundResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13882,8 +10051,8 @@ export const updateGuildSticker: API.OperationMethod<
   UpdateGuildStickerError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildStickerRequest,
-  output: GuildStickerResponse,
+  input: __S(665, __c83, 1) as any as S.Schema<UpdateGuildStickerRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<GuildStickerResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13896,8 +10065,8 @@ export const updateGuildTemplate: API.OperationMethod<
   UpdateGuildTemplateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildTemplateRequest,
-  output: GuildTemplateResponse,
+  input: __S(666, __c83, 2) as any as S.Schema<UpdateGuildTemplateRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<GuildTemplateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13910,8 +10079,8 @@ export const updateGuildWelcomeScreen: API.OperationMethod<
   UpdateGuildWelcomeScreenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildWelcomeScreenRequest,
-  output: GuildWelcomeScreenResponse,
+  input: __S(669, __c83, 5) as any as S.Schema<UpdateGuildWelcomeScreenRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<GuildWelcomeScreenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13924,8 +10093,8 @@ export const updateGuildWidgetSettings: API.OperationMethod<
   UpdateGuildWidgetSettingsError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuildWidgetSettingsRequest,
-  output: WidgetSettingsResponse,
+  input: __S(670, __c83, 6) as any as S.Schema<UpdateGuildWidgetSettingsRequest>,
+  output: __S(419, __c52, 3) as any as S.Schema<WidgetSettingsResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13939,8 +10108,8 @@ export const updateInviteTargetUsers: API.OperationMethod<
   UpdateInviteTargetUsersError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInviteTargetUsersRequest,
-  output: UpdateInviteTargetUsersResponse,
+  input: __S(671, __c83, 7) as any as S.Schema<UpdateInviteTargetUsersRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<UpdateInviteTargetUsersResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13954,8 +10123,8 @@ export const updateLobbyMessageExternalModerationMetadata: API.OperationMethod<
   UpdateLobbyMessageExternalModerationMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLobbyMessageExternalModerationMetadataRequest,
-  output: UpdateLobbyMessageExternalModerationMetadataResponse,
+  input: __S(672, __c84, 0) as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateLobbyMessageExternalModerationMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13968,8 +10137,8 @@ export const updateMessage: API.OperationMethod<
   UpdateMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMessageRequest,
-  output: MessageResponse,
+  input: __S(675, __c84, 3) as any as S.Schema<UpdateMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13982,8 +10151,8 @@ export const updateMyApplication: API.OperationMethod<
   UpdateMyApplicationError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMyApplicationRequest,
-  output: PrivateApplicationResponse,
+  input: __S(676, __c84, 4) as any as S.Schema<UpdateMyApplicationRequest>,
+  output: __S(326, __c40, 6) as any as S.Schema<PrivateApplicationResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -13996,8 +10165,8 @@ export const updateMyGuildMember: API.OperationMethod<
   UpdateMyGuildMemberError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMyGuildMemberRequest,
-  output: PrivateGuildMemberResponse,
+  input: __S(677, __c84, 5) as any as S.Schema<UpdateMyGuildMemberRequest>,
+  output: __S(430, __c53, 6) as any as S.Schema<PrivateGuildMemberResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14010,8 +10179,8 @@ export const updateMyUser: API.OperationMethod<
   UpdateMyUserError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMyUserRequest,
-  output: UserPIIResponse,
+  input: __S(678, __c84, 6) as any as S.Schema<UpdateMyUserRequest>,
+  output: __S(435, __c54, 3) as any as S.Schema<UserPIIResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14024,8 +10193,8 @@ export const updateOriginalWebhookMessage: API.OperationMethod<
   UpdateOriginalWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOriginalWebhookMessageRequest,
-  output: MessageResponse,
+  input: __S(681, __c85, 1) as any as S.Schema<UpdateOriginalWebhookMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14038,8 +10207,8 @@ export const updateSelfVoiceState: API.OperationMethod<
   UpdateSelfVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSelfVoiceStateRequest,
-  output: UpdateSelfVoiceStateResponse,
+  input: __S(682, __c85, 2) as any as S.Schema<UpdateSelfVoiceStateRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<UpdateSelfVoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14052,8 +10221,8 @@ export const updateStageInstance: API.OperationMethod<
   UpdateStageInstanceError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStageInstanceRequest,
-  output: StageInstanceResponse,
+  input: __S(683, __c85, 3) as any as S.Schema<UpdateStageInstanceRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<StageInstanceResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14067,8 +10236,8 @@ export const updateUserMessageExternalModerationMetadata: API.OperationMethod<
   UpdateUserMessageExternalModerationMetadataError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserMessageExternalModerationMetadataRequest,
-  output: UpdateUserMessageExternalModerationMetadataResponse,
+  input: __S(684, __c85, 4) as any as S.Schema<UpdateUserMessageExternalModerationMetadataRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateUserMessageExternalModerationMetadataResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14082,8 +10251,8 @@ export const updateVoiceChannelStatus: API.OperationMethod<
   UpdateVoiceChannelStatusError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVoiceChannelStatusRequest,
-  output: UpdateVoiceChannelStatusResponse,
+  input: __S(685, __c85, 5) as any as S.Schema<UpdateVoiceChannelStatusRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateVoiceChannelStatusResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14096,8 +10265,8 @@ export const updateVoiceState: API.OperationMethod<
   UpdateVoiceStateError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVoiceStateRequest,
-  output: UpdateVoiceStateResponse,
+  input: __S(686, __c85, 6) as any as S.Schema<UpdateVoiceStateRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<UpdateVoiceStateResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14110,8 +10279,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookRequest,
-  output: UpdateWebhookResponse,
+  input: __S(687, __c85, 7) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(689, __c86, 1) as any as S.Schema<UpdateWebhookResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14124,8 +10293,8 @@ export const updateWebhookByToken: API.OperationMethod<
   UpdateWebhookByTokenError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookByTokenRequest,
-  output: UpdateWebhookByTokenResponse,
+  input: __S(690, __c86, 2) as any as S.Schema<UpdateWebhookByTokenRequest>,
+  output: __S(692, __c86, 4) as any as S.Schema<UpdateWebhookByTokenResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14138,8 +10307,8 @@ export const updateWebhookMessage: API.OperationMethod<
   UpdateWebhookMessageError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookMessageRequest,
-  output: MessageResponse,
+  input: __S(695, __c86, 7) as any as S.Schema<UpdateWebhookMessageRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MessageResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14152,8 +10321,8 @@ export const uploadApplicationAttachment: API.OperationMethod<
   UploadApplicationAttachmentError,
   DiscordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadApplicationAttachmentRequest,
-  output: ActivitiesAttachmentResponse,
+  input: __S(696, __c87, 0) as any as S.Schema<UploadApplicationAttachmentRequest>,
+  output: __S(698, __c87, 2) as any as S.Schema<ActivitiesAttachmentResponse>,
   errors: [UnknownDiscordError],
   protocol: DiscordProtocol,
   retry: Retry.Retry,
@@ -14188,13 +10357,13 @@ function __c0(j: number): any {
           sku_id: S.NullOr(S.String),
           asset: S.String,
           label: S.String,
-          palette: NameplatePalette,
+          palette: S.String,
         }),
       ).annotate({ identifier: "UserNameplateResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          nameplate: S.NullOr(UserNameplateResponse),
+          nameplate: S.NullOr(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "UserCollectiblesResponse" });
     case 4:
@@ -14220,13 +10389,13 @@ function __c0(j: number): any {
           banner: S.optional(S.NullOr(S.String)),
           accent_color: S.optional(S.NullOr(S.Number)),
           global_name: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(UserAvatarDecorationResponse)),
-          collectibles: S.optional(S.NullOr(UserCollectiblesResponse)),
-          primary_guild: S.NullOr(UserPrimaryGuildResponse),
+          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
+          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
+          primary_guild: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "UserResponse" });
     case 6:
-      return S.Array(UserResponse);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -14251,7 +10420,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => AddGroupDmUserResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "AddGroupDmUserResponse",
       });
     case 1:
@@ -14262,7 +10431,7 @@ function __c1(j: number): any {
           guild_id: S.String.pipe(T.Label()),
           user_id: S.String.pipe(T.Label()),
           nick: S.optional(S.NullOr(S.String)),
-          roles: S.optional(S.NullOr(AddGuildMemberRequestRolesList)),
+          roles: S.optional(S.NullOr(__S(9, __c1, 1))),
           mute: S.optional(S.NullOr(S.Boolean)),
           deaf: S.optional(S.NullOr(S.Boolean)),
           access_token: S.String.pipe(T.SensitiveValue({})),
@@ -14273,7 +10442,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           avatar: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(UserAvatarDecorationResponse)),
+          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
           banner: S.NullOr(S.String),
           communication_disabled_until: S.NullOr(S.String),
           flags: S.Number,
@@ -14281,9 +10450,9 @@ function __c1(j: number): any {
           nick: S.NullOr(S.String),
           pending: S.Boolean,
           premium_since: S.NullOr(S.String),
-          roles: GuildMemberResponseRolesList,
-          collectibles: S.optional(S.NullOr(UserCollectiblesResponse)),
-          user: UserResponse,
+          roles: __S(9, __c1, 1),
+          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
+          user: __S(5, __c0, 5),
           mute: S.Boolean,
           deaf: S.Boolean,
         }),
@@ -14330,8 +10499,8 @@ function __c2(j: number): any {
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
           user_id: S.String.pipe(T.Label()),
-          metadata: S.optional(S.NullOr(AddLobbyMemberRequestMetadataMap)),
-          flags: S.optional(S.NullOr(AddLobbyMemberRequestFlags)),
+          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
+          flags: S.optional(S.NullOr(S.Number)),
           additional_name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/lobbies/{lobby_id}/members/{user_id}", code: 200 })),
       ).annotate({ identifier: "AddLobbyMemberRequest" });
@@ -14339,7 +10508,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadata: S.NullOr(LobbyMemberResponseMetadataMap),
+          metadata: S.NullOr(__S(15, __c1, 7)),
           flags: S.Number,
           additional_name: S.optional(S.String),
         }),
@@ -14401,7 +10570,7 @@ function __c2(j: number): any {
           scope: S.String,
           id_token: S.String,
           refresh_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          scopes: S.optional(S.NullOr(ProvisionalTokenResponseScopesList)),
+          scopes: S.optional(S.NullOr(__S(9, __c1, 1))),
           expires_at_s: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ProvisionalTokenResponse" });
@@ -14431,7 +10600,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
-          user_ids: BulkAddInviteTargetUsersRequestUserIdsList,
+          user_ids: __S(9, __c1, 1),
         }).pipe(
           T.Http({ method: "POST", uri: "/invites/{code}/target-users/bulk-add", code: 200 }),
         ),
@@ -14442,7 +10611,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          user_ids: BulkBanUsersFromGuildRequestUserIdsList,
+          user_ids: __S(9, __c1, 1),
           delete_message_seconds: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/bulk-ban", code: 200 })),
       ).annotate({
@@ -14451,15 +10620,15 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          banned_users: BulkBanUsersResponseBannedUsersList,
-          failed_users: BulkBanUsersResponseFailedUsersList,
+          banned_users: __S(9, __c1, 1),
+          failed_users: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "BulkBanUsersResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
-          messages: BulkDeleteMessagesRequestMessagesList,
+          messages: __S(9, __c1, 1),
         }).pipe(
           T.Http({ method: "POST", uri: "/channels/{channel_id}/messages/bulk-delete", code: 200 }),
         ),
@@ -14470,7 +10639,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
-          user_ids: BulkRemoveInviteTargetUsersRequestUserIdsList,
+          user_ids: __S(9, __c1, 1),
         }).pipe(
           T.Http({ method: "POST", uri: "/invites/{code}/target-users/bulk-delete", code: 200 }),
         ),
@@ -14478,7 +10647,7 @@ function __c3(j: number): any {
         identifier: "BulkRemoveInviteTargetUsersRequest",
       });
     case 6:
-      return S.Array(ChannelTypes);
+      return S.Array(S.Number);
     case 7:
       return S.Record(S.String, S.String);
   }
@@ -14595,39 +10764,33 @@ function __c4(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(ApplicationCommandUpdateRequestOptionsItem);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          name_localizations: S.optional(
-            S.NullOr(ApplicationCommandUpdateRequestNameLocalizationsMap),
-          ),
+          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
           description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(
-            S.NullOr(ApplicationCommandUpdateRequestDescriptionLocalizationsMap),
-          ),
-          options: S.optional(S.NullOr(ApplicationCommandUpdateRequestOptionsList)),
+          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
+          options: S.optional(S.NullOr(__S(33, __c4, 1))),
           default_member_permissions: S.optional(S.NullOr(S.Number)),
           dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(ApplicationCommandUpdateRequestContextsList)),
-          integration_types: S.optional(
-            S.NullOr(ApplicationCommandUpdateRequestIntegrationTypesList),
-          ),
-          handler: S.optional(S.NullOr(ApplicationCommandHandler)),
-          type: S.optional(S.NullOr(ApplicationCommandType)),
+          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
+          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
+          handler: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.Number)),
           id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ApplicationCommandUpdateRequest",
       });
     case 3:
-      return S.Array(ApplicationCommandUpdateRequest);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
-          body: S.NullOr(BulkSetApplicationCommandsRequestBodyList).pipe(T.HttpBody()),
+          body: S.NullOr(__S(35, __c4, 3)).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PUT", uri: "/applications/{application_id}/commands", code: 200 }),
         ),
@@ -14766,7 +10929,7 @@ function __c4(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(ApplicationCommandResponseOptionsItem);
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -14774,22 +10937,20 @@ function __c4(j: number): any {
           application_id: S.String,
           version: S.String,
           default_member_permissions: S.NullOr(S.String),
-          type: ApplicationCommandType,
+          type: S.Number,
           name: S.String,
           name_localized: S.optional(S.String),
-          name_localizations: S.optional(S.NullOr(ApplicationCommandResponseNameLocalizationsMap)),
+          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
           description: S.String,
           description_localized: S.optional(S.String),
-          description_localizations: S.optional(
-            S.NullOr(ApplicationCommandResponseDescriptionLocalizationsMap),
-          ),
+          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
           guild_id: S.optional(S.String),
           dm_permission: S.optional(S.Boolean),
-          contexts: S.optional(S.NullOr(ApplicationCommandResponseContextsList)),
-          integration_types: S.optional(ApplicationCommandResponseIntegrationTypesList),
-          options: S.optional(ApplicationCommandResponseOptionsList),
+          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
+          integration_types: S.optional(__S(30, __c3, 6)),
+          options: S.optional(__S(38, __c4, 6)),
           nsfw: S.optional(S.Boolean),
-          handler: S.optional(ApplicationCommandHandler),
+          handler: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ApplicationCommandResponse",
@@ -14799,11 +10960,9 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApplicationCommandResponse);
+      return S.Array(__S(39, __c4, 7));
     case 1:
-      return S.suspend(() =>
-        BulkSetApplicationCommandsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(40, __c5, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "BulkSetApplicationCommandsResponse",
       });
     case 2:
@@ -14811,7 +10970,7 @@ function __c5(j: number): any {
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           guild_id: S.String.pipe(T.Label()),
-          body: S.NullOr(BulkSetGuildApplicationCommandsRequestBodyList).pipe(T.HttpBody()),
+          body: S.NullOr(__S(35, __c4, 3)).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14834,12 +10993,12 @@ function __c5(j: number): any {
         identifier: "BulkUpdateGuildChannelsRequestBodyItem",
       });
     case 4:
-      return S.Array(BulkUpdateGuildChannelsRequestBodyItem);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          body: BulkUpdateGuildChannelsRequestBodyList.pipe(T.HttpBody()),
+          body: __S(44, __c5, 4).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/channels", code: 200 })),
       ).annotate({
         identifier: "BulkUpdateGuildChannelsRequest",
@@ -14862,12 +11021,12 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateRolePositionsRequest);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          body: BulkUpdateGuildRolesRequestBodyList.pipe(T.HttpBody()),
+          body: __S(48, __c6, 0).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/roles", code: 200 })),
       ).annotate({
         identifier: "BulkUpdateGuildRolesRequest",
@@ -14899,30 +11058,28 @@ function __c6(j: number): any {
           permissions: S.String,
           position: S.Number,
           color: S.Number,
-          colors: GuildRoleColorsResponse,
+          colors: __S(50, __c6, 2),
           hoist: S.Boolean,
           managed: S.Boolean,
           mentionable: S.Boolean,
           icon: S.NullOr(S.String),
           unicode_emoji: S.NullOr(S.String),
-          tags: S.optional(GuildRoleTagsResponse),
+          tags: S.optional(__S(51, __c6, 3)),
           flags: S.Number,
         }),
       ).annotate({ identifier: "GuildRoleResponse" });
     case 5:
-      return S.Array(GuildRoleResponse);
+      return S.Array(__S(52, __c6, 4));
     case 6:
-      return S.suspend(() =>
-        BulkUpdateGuildRolesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "BulkUpdateGuildRolesResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadata: S.optional(S.NullOr(BulkLobbyMemberRequestMetadataMap)),
-          flags: S.optional(S.NullOr(BulkLobbyMemberRequestFlags)),
+          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
+          flags: S.optional(S.NullOr(S.Number)),
           additional_name: S.optional(S.NullOr(S.String)),
           remove_member: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -14932,22 +11089,20 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BulkLobbyMemberRequest);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
-          body: S.NullOr(BulkUpdateLobbyMembersRequestBodyList).pipe(T.HttpBody()),
+          body: S.NullOr(__S(56, __c7, 0)).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/members/bulk", code: 200 })),
       ).annotate({
         identifier: "BulkUpdateLobbyMembersRequest",
       });
     case 2:
-      return S.Array(LobbyMemberResponse);
+      return S.Array(__S(17, __c2, 1));
     case 3:
-      return S.suspend(() =>
-        BulkUpdateLobbyMembersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "BulkUpdateLobbyMembersResponse",
       });
     case 4:
@@ -14972,9 +11127,7 @@ function __c7(j: number): any {
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           guild_scheduled_event_id: S.String.pipe(T.Label()),
-          guild_scheduled_event_exception_ids: S.optional(
-            CountGuildScheduledEventUsersRequestGuildScheduledEventExceptionIdsList.pipe(T.Query()),
-          ),
+          guild_scheduled_event_exception_ids: S.optional(__S(61, __c7, 5).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -14995,8 +11148,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guild_scheduled_event_count: S.Number,
-          guild_scheduled_event_exception_counts:
-            ScheduledEventUserCountResponseGuildScheduledEventExceptionCountsMap,
+          guild_scheduled_event_exception_counts: __S(63, __c7, 7),
         }),
       ).annotate({
         identifier: "ScheduledEventUserCountResponse",
@@ -15111,28 +11263,22 @@ function __c8(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(CreateApplicationCommandRequestOptionsItem);
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           name: S.String,
-          name_localizations: S.optional(
-            S.NullOr(CreateApplicationCommandRequestNameLocalizationsMap),
-          ),
+          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
           description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(
-            S.NullOr(CreateApplicationCommandRequestDescriptionLocalizationsMap),
-          ),
-          options: S.optional(S.NullOr(CreateApplicationCommandRequestOptionsList)),
+          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
+          options: S.optional(S.NullOr(__S(66, __c8, 2))),
           default_member_permissions: S.optional(S.NullOr(S.Number)),
           dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(CreateApplicationCommandRequestContextsList)),
-          integration_types: S.optional(
-            S.NullOr(CreateApplicationCommandRequestIntegrationTypesList),
-          ),
-          handler: S.optional(S.NullOr(ApplicationCommandHandler)),
-          type: S.optional(S.NullOr(ApplicationCommandType)),
+          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
+          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
+          handler: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({ method: "POST", uri: "/applications/{application_id}/commands", code: 200 }),
         ),
@@ -15156,8 +11302,8 @@ function __c8(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          user: S.optional(UserResponse),
-          roles: EmojiResponseRolesList,
+          user: S.optional(__S(5, __c0, 5)),
+          roles: __S(9, __c1, 1),
           require_colons: S.Boolean,
           managed: S.Boolean,
           animated: S.Boolean,
@@ -15223,7 +11369,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          body: CreateAutoModerationRuleRequestBody.pipe(T.HttpBody()),
+          body: __S(70, __c8, 6).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "POST", uri: "/guilds/{guild_id}/auto-moderation/rules", code: 200 }),
         ),
@@ -15305,9 +11451,7 @@ function __c9(j: number): any {
         ]),
       );
     case 1:
-      return S.suspend(() =>
-        CreateAutoModerationRuleResponseBody.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(72, __c9, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateAutoModerationRuleResponse",
       });
     case 2:
@@ -15331,17 +11475,17 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
-          body: CreateChannelInviteRequestBody.pipe(T.HttpBody()),
+          body: __S(74, __c9, 2).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/invites", code: 200 })),
       ).annotate({
         identifier: "CreateChannelInviteRequest",
       });
     case 4:
-      return S.Array(GuildFeatures);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scopes: ApplicationOAuth2InstallParamsResponseScopesList,
+          scopes: __S(76, __c9, 4),
           permissions: S.String,
         }),
       ).annotate({
@@ -15350,13 +11494,13 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          oauth2_install_params: S.optional(ApplicationOAuth2InstallParamsResponse),
+          oauth2_install_params: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({
         identifier: "ApplicationIntegrationTypeConfigurationResponse",
       });
     case 7:
-      return S.Record(S.String, ApplicationIntegrationTypeConfigurationResponse);
+      return S.Record(S.String, __S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -15367,9 +11511,9 @@ function __c10(j: number): any {
           guild_scheduled_event_id: S.String,
           guild_scheduled_event_exception_id: S.optional(S.NullOr(S.String)),
           user_id: S.String,
-          user: S.optional(UserResponse),
-          member: S.optional(GuildMemberResponse),
-          response: GuildScheduledEventUserResponses,
+          user: S.optional(__S(5, __c0, 5)),
+          member: S.optional(__S(11, __c1, 3)),
+          response: S.Number,
         }),
       ).annotate({
         identifier: "ScheduledEventUserResponse",
@@ -15442,7 +11586,7 @@ function __c10(j: number): any {
         ]),
       );
     case 3:
-      return S.suspend(() => CreateChannelInviteResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(82, __c10, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateChannelInviteResponse",
       });
     case 4:
@@ -15462,8 +11606,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           recipient_id: S.optional(S.NullOr(S.String)),
-          access_tokens: S.optional(S.NullOr(CreateDmRequestAccessTokensList)),
-          nicks: S.optional(S.NullOr(CreateDmRequestNicksMap)),
+          access_tokens: S.optional(S.NullOr(__S(9, __c1, 1))),
+          nicks: S.optional(S.NullOr(__S(85, __c10, 5))),
         }).pipe(T.Http({ method: "POST", uri: "/users/@me/channels", code: 200 })),
       ).annotate({ identifier: "CreateDmRequest" });
     case 7:
@@ -15490,7 +11634,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => CreateDmResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(87, __c10, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDmResponse",
       });
     case 1:
@@ -15499,7 +11643,7 @@ function __c11(j: number): any {
           application_id: S.String.pipe(T.Label()),
           sku_id: S.String,
           owner_id: S.String,
-          owner_type: EntitlementOwnerTypes,
+          owner_type: S.Number,
         }).pipe(
           T.Http({ method: "POST", uri: "/applications/{application_id}/entitlements", code: 200 }),
         ),
@@ -15515,9 +11659,9 @@ function __c11(j: number): any {
           deleted: S.Boolean,
           starts_at: S.NullOr(S.String),
           ends_at: S.NullOr(S.String),
-          type: EntitlementTypes,
+          type: S.Number,
           fulfilled_at: S.optional(S.NullOr(S.String)),
-          fulfillment_status: S.optional(S.NullOr(EntitlementTenantFulfillmentStatusResponse)),
+          fulfillment_status: S.optional(S.NullOr(S.Number)),
           consumed: S.optional(S.Boolean),
           gifter_user_id: S.optional(S.NullOr(S.String)),
           parent_id: S.optional(S.NullOr(S.String)),
@@ -15633,29 +11777,23 @@ function __c11(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(CreateGuildApplicationCommandRequestOptionsItem);
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           guild_id: S.String.pipe(T.Label()),
           name: S.String,
-          name_localizations: S.optional(
-            S.NullOr(CreateGuildApplicationCommandRequestNameLocalizationsMap),
-          ),
+          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
           description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(
-            S.NullOr(CreateGuildApplicationCommandRequestDescriptionLocalizationsMap),
-          ),
-          options: S.optional(S.NullOr(CreateGuildApplicationCommandRequestOptionsList)),
+          description_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
+          options: S.optional(S.NullOr(__S(92, __c11, 4))),
           default_member_permissions: S.optional(S.NullOr(S.Number)),
           dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(CreateGuildApplicationCommandRequestContextsList)),
-          integration_types: S.optional(
-            S.NullOr(CreateGuildApplicationCommandRequestIntegrationTypesList),
-          ),
-          handler: S.optional(S.NullOr(ApplicationCommandHandler)),
-          type: S.optional(S.NullOr(ApplicationCommandType)),
+          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
+          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
+          handler: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15670,7 +11808,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: S.optional(S.NullOr(ChannelPermissionOverwrites)),
+          type: S.optional(S.NullOr(S.Number)),
           allow: S.optional(S.NullOr(S.Number)),
           deny: S.optional(S.NullOr(S.Number)),
         }),
@@ -15678,7 +11816,7 @@ function __c11(j: number): any {
         identifier: "ChannelPermissionOverwriteRequest",
       });
     case 7:
-      return S.Array(ChannelPermissionOverwriteRequest);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -15704,12 +11842,12 @@ function __c12(j: number): any {
         identifier: "CreateOrUpdateThreadTagRequest",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(CreateOrUpdateThreadTagRequest));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(97, __c12, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          type: S.optional(S.NullOr(ChannelTypes)),
+          type: S.optional(S.NullOr(S.Number)),
           name: S.String,
           position: S.optional(S.NullOr(S.Number)),
           topic: S.optional(S.NullOr(S.String)),
@@ -15718,18 +11856,16 @@ function __c12(j: number): any {
           nsfw: S.optional(S.NullOr(S.Boolean)),
           rate_limit_per_user: S.optional(S.NullOr(S.Number)),
           parent_id: S.optional(S.NullOr(S.String)),
-          permission_overwrites: S.optional(
-            S.NullOr(CreateGuildChannelRequestPermissionOverwritesList),
-          ),
+          permission_overwrites: S.optional(S.NullOr(__S(95, __c11, 7))),
           rtc_region: S.optional(S.NullOr(S.String)),
-          video_quality_mode: S.optional(S.NullOr(VideoQualityModes)),
-          default_auto_archive_duration: S.optional(S.NullOr(ThreadAutoArchiveDuration)),
-          default_reaction_emoji: S.optional(S.NullOr(UpdateDefaultReactionEmojiRequest)),
+          video_quality_mode: S.optional(S.NullOr(S.Number)),
+          default_auto_archive_duration: S.optional(S.NullOr(S.Number)),
+          default_reaction_emoji: S.optional(S.NullOr(__S(96, __c12, 0))),
           default_thread_rate_limit_per_user: S.optional(S.NullOr(S.Number)),
-          default_sort_order: S.optional(S.NullOr(ThreadSortOrder)),
-          default_forum_layout: S.optional(S.NullOr(ForumLayout)),
-          default_tag_setting: S.optional(S.NullOr(ThreadSearchTagSetting)),
-          available_tags: S.optional(S.NullOr(CreateGuildChannelRequestAvailableTagsList)),
+          default_sort_order: S.optional(S.NullOr(S.Number)),
+          default_forum_layout: S.optional(S.NullOr(S.Number)),
+          default_tag_setting: S.optional(S.NullOr(S.String)),
+          available_tags: S.optional(S.NullOr(__S(98, __c12, 2))),
         }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/channels", code: 200 })),
       ).annotate({
         identifier: "CreateGuildChannelRequest",
@@ -15738,7 +11874,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ChannelPermissionOverwrites,
+          type: S.Number,
           allow: S.String,
           deny: S.String,
         }),
@@ -15746,7 +11882,7 @@ function __c12(j: number): any {
         identifier: "ChannelPermissionOverwriteResponse",
       });
     case 5:
-      return S.Array(ChannelPermissionOverwriteResponse);
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -15758,7 +11894,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ForumTagResponse" });
     case 7:
-      return S.Array(ForumTagResponse);
+      return S.Array(__S(102, __c12, 6));
   }
 }
 function __c13(j: number): any {
@@ -15776,7 +11912,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ChannelTypes,
+          type: S.Number,
           last_message_id: S.optional(S.NullOr(S.String)),
           flags: S.Number,
           last_pin_timestamp: S.optional(S.NullOr(S.String)),
@@ -15787,19 +11923,19 @@ function __c13(j: number): any {
           bitrate: S.optional(S.Number),
           user_limit: S.optional(S.Number),
           rtc_region: S.optional(S.NullOr(S.String)),
-          video_quality_mode: S.optional(VideoQualityModes),
+          video_quality_mode: S.optional(S.Number),
           permissions: S.optional(S.String),
           topic: S.optional(S.NullOr(S.String)),
-          default_auto_archive_duration: S.optional(ThreadAutoArchiveDuration),
+          default_auto_archive_duration: S.optional(S.Number),
           default_thread_rate_limit_per_user: S.optional(S.Number),
           position: S.Number,
-          permission_overwrites: S.optional(GuildChannelResponsePermissionOverwritesList),
+          permission_overwrites: S.optional(__S(101, __c12, 5)),
           nsfw: S.optional(S.Boolean),
-          available_tags: S.optional(GuildChannelResponseAvailableTagsList),
-          default_reaction_emoji: S.optional(S.NullOr(DefaultReactionEmojiResponse)),
-          default_sort_order: S.optional(S.NullOr(ThreadSortOrder)),
-          default_forum_layout: S.optional(ForumLayout),
-          default_tag_setting: S.optional(S.NullOr(ThreadSearchTagSetting)),
+          available_tags: S.optional(__S(103, __c12, 7)),
+          default_reaction_emoji: S.optional(S.NullOr(__S(104, __c13, 0))),
+          default_sort_order: S.optional(S.NullOr(S.Number)),
+          default_forum_layout: S.optional(S.Number),
+          default_tag_setting: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GuildChannelResponse" });
     case 2:
@@ -15810,7 +11946,7 @@ function __c13(j: number): any {
           guild_id: S.String.pipe(T.Label()),
           name: S.String,
           image: S.String,
-          roles: S.optional(S.NullOr(CreateGuildEmojiRequestRolesList)),
+          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
         }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/emojis", code: 200 })),
       ).annotate({ identifier: "CreateGuildEmojiRequest" });
     case 4:
@@ -15828,7 +11964,7 @@ function __c13(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           permissions: S.optional(S.NullOr(S.Number)),
           color: S.optional(S.NullOr(S.Number)),
-          colors: S.optional(S.NullOr(RoleColors)),
+          colors: S.optional(S.NullOr(__S(108, __c13, 4))),
           hoist: S.optional(S.NullOr(S.Boolean)),
           mentionable: S.optional(S.NullOr(S.Boolean)),
           icon: S.optional(S.NullOr(S.String)),
@@ -15880,7 +12016,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          body: CreateGuildScheduledEventRequestBody.pipe(T.HttpBody()),
+          body: __S(110, __c13, 6).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/scheduled-events", code: 200 })),
       ).annotate({
         identifier: "CreateGuildScheduledEventRequest",
@@ -15958,9 +12094,7 @@ function __c14(j: number): any {
         ]),
       );
     case 1:
-      return S.suspend(() =>
-        CreateGuildScheduledEventResponseBody.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(112, __c14, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateGuildScheduledEventResponse",
       });
     case 2:
@@ -16005,7 +12139,7 @@ function __c14(j: number): any {
           emoji_name: S.NullOr(S.String),
           guild_id: S.optional(S.String),
           available: S.Boolean,
-          user: S.optional(UserResponse),
+          user: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "SoundboardSoundResponse" });
     case 5:
@@ -16033,12 +12167,12 @@ function __c14(j: number): any {
           id: S.String,
           name: S.String,
           tags: S.String,
-          type: StickerTypes,
-          format_type: S.NullOr(StickerFormatTypes),
+          type: S.Number,
+          format_type: S.NullOr(S.Number),
           description: S.NullOr(S.String),
           available: S.Boolean,
           guild_id: S.String,
-          user: S.optional(UserResponse),
+          user: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "GuildStickerResponse" });
     case 7:
@@ -16062,7 +12196,7 @@ function __c15(j: number): any {
           name: S.String,
           permissions: S.String,
           color: S.Number,
-          colors: S.NullOr(GuildRoleColorsResponse),
+          colors: S.NullOr(__S(50, __c6, 2)),
           hoist: S.Boolean,
           mentionable: S.Boolean,
           icon: S.NullOr(S.String),
@@ -16072,7 +12206,7 @@ function __c15(j: number): any {
         identifier: "GuildTemplateRoleResponse",
       });
     case 1:
-      return S.Array(GuildTemplateRoleResponse);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -16084,12 +12218,12 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "GuildTemplateChannelTags" });
     case 3:
-      return S.Array(GuildTemplateChannelTags);
+      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.Number),
-          type: ChannelTypes,
+          type: S.Number,
           name: S.NullOr(S.String),
           position: S.NullOr(S.Number),
           topic: S.NullOr(S.String),
@@ -16098,38 +12232,38 @@ function __c15(j: number): any {
           nsfw: S.Boolean,
           rate_limit_per_user: S.Number,
           parent_id: S.NullOr(S.String),
-          default_auto_archive_duration: S.NullOr(ThreadAutoArchiveDuration),
-          permission_overwrites: GuildTemplateChannelResponsePermissionOverwritesList,
-          available_tags: S.NullOr(GuildTemplateChannelResponseAvailableTagsList),
+          default_auto_archive_duration: S.NullOr(S.Number),
+          permission_overwrites: __S(101, __c12, 5),
+          available_tags: S.NullOr(__S(123, __c15, 3)),
           template: S.String,
-          default_reaction_emoji: S.NullOr(DefaultReactionEmojiResponse),
+          default_reaction_emoji: S.NullOr(__S(104, __c13, 0)),
           default_thread_rate_limit_per_user: S.NullOr(S.Number),
-          default_sort_order: S.NullOr(ThreadSortOrder),
-          default_forum_layout: S.NullOr(ForumLayout),
-          default_tag_setting: S.NullOr(ThreadSearchTagSetting),
+          default_sort_order: S.NullOr(S.Number),
+          default_forum_layout: S.NullOr(S.Number),
+          default_tag_setting: S.NullOr(S.String),
           theme_color: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "GuildTemplateChannelResponse",
       });
     case 5:
-      return S.Array(GuildTemplateChannelResponse);
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.NullOr(S.String),
           region: S.NullOr(S.String),
-          verification_level: VerificationLevels,
-          default_message_notifications: UserNotificationSettings,
-          explicit_content_filter: GuildExplicitContentFilterTypes,
-          preferred_locale: AvailableLocalesEnum,
+          verification_level: S.Number,
+          default_message_notifications: S.Number,
+          explicit_content_filter: S.Number,
+          preferred_locale: S.String,
           afk_channel_id: S.NullOr(S.String),
-          afk_timeout: AfkTimeouts,
+          afk_timeout: S.Number,
           system_channel_id: S.NullOr(S.String),
           system_channel_flags: S.Number,
-          roles: GuildTemplateSnapshotResponseRolesList,
-          channels: GuildTemplateSnapshotResponseChannelsList,
+          roles: __S(121, __c15, 1),
+          channels: __S(125, __c15, 5),
         }),
       ).annotate({
         identifier: "GuildTemplateSnapshotResponse",
@@ -16142,11 +12276,11 @@ function __c15(j: number): any {
           description: S.NullOr(S.String),
           usage_count: S.Number,
           creator_id: S.String,
-          creator: S.NullOr(UserResponse),
+          creator: S.NullOr(__S(5, __c0, 5)),
           created_at: S.String,
           updated_at: S.String,
           source_guild_id: S.String,
-          serialized_source_guild: GuildTemplateSnapshotResponse,
+          serialized_source_guild: __S(126, __c15, 6),
           is_dirty: S.NullOr(S.Boolean),
         }),
       ).annotate({ identifier: "GuildTemplateResponse" });
@@ -16190,7 +12324,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "RichEmbedField" });
     case 4:
-      return S.Array(RichEmbedField);
+      return S.Array(__S(131, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -16207,29 +12341,29 @@ function __c16(j: number): any {
           color: S.optional(S.NullOr(S.Number)),
           timestamp: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          author: S.optional(S.NullOr(RichEmbedAuthor)),
-          image: S.optional(S.NullOr(RichEmbedImage)),
-          thumbnail: S.optional(S.NullOr(RichEmbedImage)),
-          footer: S.optional(S.NullOr(RichEmbedFooter)),
-          fields: S.optional(S.NullOr(RichEmbedFieldsList)),
-          provider: S.optional(S.NullOr(RichEmbedProvider)),
-          video: S.optional(S.NullOr(RichEmbedImage)),
+          author: S.optional(S.NullOr(__S(128, __c16, 0))),
+          image: S.optional(S.NullOr(__S(129, __c16, 1))),
+          thumbnail: S.optional(S.NullOr(__S(129, __c16, 1))),
+          footer: S.optional(S.NullOr(__S(130, __c16, 2))),
+          fields: S.optional(S.NullOr(__S(132, __c16, 4))),
+          provider: S.optional(S.NullOr(__S(133, __c16, 5))),
+          video: S.optional(S.NullOr(__S(129, __c16, 1))),
         }),
       ).annotate({ identifier: "RichEmbed" });
     case 7:
-      return S.Array(RichEmbed);
+      return S.Array(__S(134, __c16, 6));
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.NullOr(AllowedMentionTypes));
+      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          parse: S.optional(S.NullOr(MessageAllowedMentionsRequestParseList)),
-          users: S.optional(S.NullOr(MessageAllowedMentionsRequestUsersList)),
-          roles: S.optional(S.NullOr(MessageAllowedMentionsRequestRolesList)),
+          parse: S.optional(S.NullOr(__S(136, __c17, 0))),
+          users: S.optional(S.NullOr(__S(106, __c13, 2))),
+          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
           replied_user: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -16248,7 +12382,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "MessageAttachmentRequest" });
     case 3:
-      return S.Array(MessageAttachmentRequest);
+      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -16261,17 +12395,17 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.NullOr(S.String)),
-          emoji: S.optional(S.NullOr(PollEmoji)),
+          emoji: S.optional(S.NullOr(__S(140, __c17, 4))),
         }),
       ).annotate({ identifier: "PollMedia" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          poll_media: PollMedia,
+          poll_media: __S(141, __c17, 5),
         }),
       ).annotate({ identifier: "PollAnswerCreateRequest" });
     case 7:
-      return S.Array(PollAnswerCreateRequest);
+      return S.Array(__S(142, __c17, 6));
   }
 }
 function __c18(j: number): any {
@@ -16279,10 +12413,10 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          question: PollMedia,
-          answers: PollCreateRequestAnswersList,
+          question: __S(141, __c17, 5),
+          answers: __S(143, __c17, 7),
           allow_multiselect: S.optional(S.NullOr(S.Boolean)),
-          layout_type: S.optional(S.NullOr(PollLayoutTypes)),
+          layout_type: S.optional(S.NullOr(S.Number)),
           duration: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "PollCreateRequest" });
@@ -16304,7 +12438,7 @@ function __c18(j: number): any {
           interaction_id: S.String.pipe(T.Label()),
           interaction_token: S.String.pipe(T.Label()),
           with_response: S.optional(S.Boolean.pipe(T.Query())),
-          body: CreateInteractionResponseRequestBody.pipe(T.HttpBody()),
+          body: __S(145, __c18, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16319,7 +12453,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: InteractionTypes,
+          type: S.Number,
           activity_instance_id: S.optional(S.NullOr(S.String)),
           response_message_id: S.optional(S.String),
           response_message_loading: S.optional(S.Boolean),
@@ -16335,26 +12469,26 @@ function __c18(j: number): any {
           name: S.String,
           icon: S.NullOr(S.String),
           description: S.String,
-          type: S.NullOr(ApplicationTypes),
+          type: S.NullOr(S.Number),
           cover_image: S.optional(S.String),
           primary_sku_id: S.optional(S.String),
           flags: S.Number,
           flags_new: S.String,
-          bot: S.optional(UserResponse),
+          bot: S.optional(__S(5, __c0, 5)),
           slug: S.optional(S.String),
           vibegrations_project_id: S.optional(S.String),
           guild_id: S.optional(S.String),
-          rpc_origins: S.optional(ApplicationResponseRpcOriginsList),
+          rpc_origins: S.optional(__S(9, __c1, 1)),
           bot_public: S.optional(S.Boolean),
           bot_require_code_grant: S.optional(S.Boolean),
           terms_of_service_url: S.optional(S.String),
           privacy_policy_url: S.optional(S.String),
           custom_install_url: S.optional(S.String),
-          install_params: S.optional(ApplicationOAuth2InstallParamsResponse),
-          integration_types_config: S.optional(ApplicationResponseIntegrationTypesConfigMap),
+          install_params: S.optional(__S(77, __c9, 5)),
+          integration_types_config: S.optional(__S(79, __c9, 7)),
           verify_key: S.String,
           max_participants: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(ApplicationResponseTagsList),
+          tags: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "ApplicationResponse" });
     case 5:
@@ -16376,15 +12510,15 @@ function __c18(j: number): any {
           placeholder: S.optional(S.String),
           placeholder_version: S.optional(S.Number),
           title: S.optional(S.NullOr(S.String)),
-          application: S.optional(ApplicationResponse),
+          application: S.optional(__S(148, __c18, 4)),
           clip_created_at: S.optional(S.String),
-          clip_participants: S.optional(MessageAttachmentResponseClipParticipantsList),
+          clip_participants: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "MessageAttachmentResponse",
       });
     case 6:
-      return S.Array(MessageAttachmentResponse);
+      return S.Array(__S(149, __c18, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -16400,7 +12534,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MessageEmbedFieldResponse);
+      return S.Array(__S(151, __c18, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16459,14 +12593,14 @@ function __c19(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(ContainerComponentResponseComponentsItem);
+      return S.Array(__S(157, __c19, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: MessageComponentTypes,
+          type: S.Number,
           id: S.Number,
           accent_color: S.NullOr(S.Number),
-          components: ContainerComponentResponseComponentsList,
+          components: __S(158, __c19, 6),
           spoiler: S.Boolean,
         }),
       ).annotate({
@@ -16477,7 +12611,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ContainerComponentResponse);
+      return S.Array(__S(159, __c19, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16487,19 +12621,19 @@ function __c20(j: number): any {
           description: S.optional(S.String),
           color: S.optional(S.Number),
           timestamp: S.optional(S.String),
-          fields: S.optional(MessageEmbedResponseFieldsList),
-          author: S.optional(MessageEmbedAuthorResponse),
-          provider: S.optional(MessageEmbedProviderResponse),
-          image: S.optional(MessageEmbedImageResponse),
-          thumbnail: S.optional(MessageEmbedImageResponse),
-          video: S.optional(MessageEmbedImageResponse),
-          footer: S.optional(MessageEmbedFooterResponse),
+          fields: S.optional(__S(152, __c19, 0)),
+          author: S.optional(__S(153, __c19, 1)),
+          provider: S.optional(__S(154, __c19, 2)),
+          image: S.optional(__S(155, __c19, 3)),
+          thumbnail: S.optional(__S(155, __c19, 3)),
+          video: S.optional(__S(155, __c19, 3)),
+          footer: S.optional(__S(156, __c19, 4)),
           flags: S.optional(S.NullOr(S.Number)),
-          components: S.optional(MessageEmbedResponseComponentsList),
+          components: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "MessageEmbedResponse" });
     case 2:
-      return S.Array(MessageEmbedResponse);
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -16513,15 +12647,15 @@ function __c20(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(MessageResponseComponentsItem);
+      return S.Array(__S(163, __c20, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           tags: S.String,
-          type: StickerTypes,
-          format_type: S.NullOr(StickerFormatTypes),
+          type: S.Number,
+          format_type: S.NullOr(S.Number),
           description: S.NullOr(S.String),
           pack_id: S.String,
           sort_value: S.Number,
@@ -16545,7 +12679,7 @@ function __c20(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(MessageResponseStickersItem);
+      return S.Array(__S(166, __c20, 6));
   }
 }
 function __c21(j: number): any {
@@ -16555,24 +12689,24 @@ function __c21(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          format_type: StickerFormatTypes,
+          format_type: S.Number,
         }),
       ).annotate({
         identifier: "MessageStickerItemResponse",
       });
     case 1:
-      return S.Array(MessageStickerItemResponse);
+      return S.Array(__S(168, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ended_timestamp: S.optional(S.NullOr(S.String)),
-          participants: MessageCallResponseParticipantsList,
+          participants: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "MessageCallResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ActivityActionTypes,
+          type: S.Number,
           party_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageActivityResponse" });
@@ -16583,12 +12717,12 @@ function __c21(j: number): any {
           name: S.String,
           icon: S.NullOr(S.String),
           description: S.String,
-          type: S.NullOr(ApplicationTypes),
+          type: S.NullOr(S.Number),
           cover_image: S.optional(S.String),
           primary_sku_id: S.optional(S.String),
           flags: S.Number,
           flags_new: S.String,
-          bot: S.optional(UserResponse),
+          bot: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "BasicApplicationResponseWithBot",
@@ -16597,9 +12731,9 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: InteractionTypes,
+          type: S.Number,
           name: S.String,
-          user: S.optional(UserResponse),
+          user: S.optional(__S(5, __c0, 5)),
           name_localized: S.optional(S.String),
         }),
       ).annotate({
@@ -16610,7 +12744,7 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: MessageReferenceType,
+          type: S.Number,
           channel_id: S.String,
           message_id: S.optional(S.String),
           guild_id: S.optional(S.String),
@@ -16625,7 +12759,7 @@ function __c22(j: number): any {
         S.Struct({
           archived: S.Boolean,
           archive_timestamp: S.NullOr(S.String),
-          auto_archive_duration: ThreadAutoArchiveDuration,
+          auto_archive_duration: S.Number,
           locked: S.Boolean,
           create_timestamp: S.optional(S.String),
           invitable: S.optional(S.Boolean),
@@ -16638,14 +12772,14 @@ function __c22(j: number): any {
           user_id: S.String,
           join_timestamp: S.String,
           flags: S.Number,
-          member: S.optional(GuildMemberResponse),
+          member: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "ThreadMemberResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ChannelTypes,
+          type: S.Number,
           last_message_id: S.optional(S.NullOr(S.String)),
           flags: S.Number,
           last_pin_timestamp: S.optional(S.NullOr(S.String)),
@@ -16656,15 +12790,15 @@ function __c22(j: number): any {
           bitrate: S.optional(S.Number),
           user_limit: S.optional(S.Number),
           rtc_region: S.optional(S.NullOr(S.String)),
-          video_quality_mode: S.optional(VideoQualityModes),
+          video_quality_mode: S.optional(S.Number),
           permissions: S.optional(S.String),
           owner_id: S.String,
-          thread_metadata: ThreadMetadataResponse,
+          thread_metadata: __S(176, __c22, 0),
           message_count: S.Number,
           member_count: S.Number,
           total_message_sent: S.Number,
-          applied_tags: S.optional(ThreadResponseAppliedTagsList),
-          member: S.optional(ThreadMemberResponse),
+          applied_tags: S.optional(__S(9, __c1, 1)),
+          member: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "ThreadResponse" });
     case 3:
@@ -16672,14 +12806,14 @@ function __c22(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: ChannelTypes,
+          type: S.Number,
           guild_id: S.String,
         }),
       ).annotate({
         identifier: "MessageMentionChannelResponse",
       });
     case 4:
-      return S.Array(MessageMentionChannelResponse);
+      return S.Array(__S(179, __c22, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -16703,8 +12837,8 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: PurchaseType,
-          guild_product_purchase: S.optional(GuildProductPurchaseResponse),
+          type: S.Number,
+          guild_product_purchase: S.optional(__S(182, __c22, 6)),
         }),
       ).annotate({
         identifier: "PurchaseNotificationResponse",
@@ -16714,12 +12848,12 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserResponse);
+      return S.Record(S.String, __S(5, __c0, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
           avatar: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(UserAvatarDecorationResponse)),
+          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
           banner: S.NullOr(S.String),
           communication_disabled_until: S.NullOr(S.String),
           flags: S.Number,
@@ -16727,12 +12861,12 @@ function __c23(j: number): any {
           nick: S.NullOr(S.String),
           pending: S.Boolean,
           premium_since: S.NullOr(S.String),
-          roles: BasicGuildMemberResponseRolesList,
-          collectibles: S.optional(S.NullOr(UserCollectiblesResponse)),
+          roles: __S(9, __c1, 1),
+          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
         }),
       ).annotate({ identifier: "BasicGuildMemberResponse" });
     case 2:
-      return S.Record(S.String, BasicGuildMemberResponse);
+      return S.Record(S.String, __S(185, __c23, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -16803,16 +12937,16 @@ function __c23(j: number): any {
         ]),
       );
     case 4:
-      return S.Record(S.String, ResolvedObjectsResponseChannelsValue);
+      return S.Record(S.String, __S(187, __c23, 3));
     case 5:
-      return S.Record(S.String, GuildRoleResponse);
+      return S.Record(S.String, __S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(S.NullOr(ResolvedObjectsResponseUsersMap)),
-          members: S.optional(S.NullOr(ResolvedObjectsResponseMembersMap)),
-          channels: S.optional(S.NullOr(ResolvedObjectsResponseChannelsMap)),
-          roles: S.optional(S.NullOr(ResolvedObjectsResponseRolesMap)),
+          users: S.optional(S.NullOr(__S(184, __c23, 0))),
+          members: S.optional(S.NullOr(__S(186, __c23, 2))),
+          channels: S.optional(S.NullOr(__S(188, __c23, 4))),
+          roles: S.optional(S.NullOr(__S(189, __c23, 5))),
         }),
       ).annotate({ identifier: "ResolvedObjectsResponse" });
     case 7:
@@ -16833,18 +12967,18 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          emoji: S.optional(MessageReactionEmojiResponse),
+          emoji: S.optional(__S(191, __c23, 7)),
         }),
       ).annotate({ identifier: "PollMediaResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           answer_id: S.Number,
-          poll_media: PollMediaResponse,
+          poll_media: __S(192, __c24, 0),
         }),
       ).annotate({ identifier: "PollAnswerResponse" });
     case 2:
-      return S.Array(PollAnswerResponse);
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -16854,32 +12988,32 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "PollResultsEntryResponse" });
     case 4:
-      return S.Array(PollResultsEntryResponse);
+      return S.Array(__S(195, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          answer_counts: PollResultsResponseAnswerCountsList,
+          answer_counts: __S(196, __c24, 4),
           is_finalized: S.Boolean,
         }),
       ).annotate({ identifier: "PollResultsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          question: PollMediaResponse,
-          answers: PollResponseAnswersList,
+          question: __S(192, __c24, 0),
+          answers: __S(194, __c24, 2),
           expiry: S.String,
           allow_multiselect: S.Boolean,
-          layout_type: PollLayoutTypes,
-          results: PollResultsResponse,
+          layout_type: S.Number,
+          results: __S(197, __c24, 5),
         }),
       ).annotate({ identifier: "PollResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          colors: CustomClientThemeResponseColorsList,
+          colors: __S(9, __c1, 1),
           gradient_angle: S.Number,
           base_mix: S.Number,
-          base_theme: MessageShareCustomUserThemeBaseTheme,
+          base_theme: S.Number,
         }),
       ).annotate({
         identifier: "CustomClientThemeResponse",
@@ -16931,7 +13065,7 @@ function __c25(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(MinimalContentMessageResponseComponentsItem);
+      return S.Array(__S(201, __c25, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -16950,22 +13084,22 @@ function __c25(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(MinimalContentMessageResponseStickersItem);
+      return S.Array(__S(203, __c25, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: MessageType,
+          type: S.Number,
           content: S.String,
-          mentions: MinimalContentMessageResponseMentionsList,
-          mention_roles: MinimalContentMessageResponseMentionRolesList,
-          attachments: MinimalContentMessageResponseAttachmentsList,
-          embeds: MinimalContentMessageResponseEmbedsList,
+          mentions: __S(6, __c0, 6),
+          mention_roles: __S(9, __c1, 1),
+          attachments: __S(150, __c18, 6),
+          embeds: __S(162, __c20, 2),
           timestamp: S.String,
           edited_timestamp: S.NullOr(S.String),
           flags: S.Number,
-          components: MinimalContentMessageResponseComponentsList,
-          stickers: S.optional(MinimalContentMessageResponseStickersList),
-          sticker_items: S.optional(MinimalContentMessageResponseStickerItemsList),
+          components: __S(202, __c25, 2),
+          stickers: S.optional(__S(204, __c25, 4)),
+          sticker_items: S.optional(__S(169, __c21, 1)),
         }),
       ).annotate({
         identifier: "MinimalContentMessageResponse",
@@ -16973,11 +13107,11 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          message: MinimalContentMessageResponse,
+          message: __S(205, __c25, 5),
         }),
       ).annotate({ identifier: "MessageSnapshotResponse" });
     case 7:
-      return S.Array(MessageSnapshotResponse);
+      return S.Array(__S(206, __c25, 6));
   }
 }
 function __c26(j: number): any {
@@ -17002,16 +13136,16 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          emoji: MessageReactionEmojiResponse,
+          emoji: __S(191, __c23, 7),
           count: S.Number,
-          count_details: MessageReactionCountDetailsResponse,
-          burst_colors: MessageReactionResponseBurstColorsList,
+          count_details: __S(209, __c26, 1),
+          burst_colors: __S(9, __c1, 1),
           me_burst: S.Boolean,
           me: S.Boolean,
         }),
       ).annotate({ identifier: "MessageReactionResponse" });
     case 3:
-      return S.Array(MessageReactionResponse);
+      return S.Array(__S(210, __c26, 2));
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -17025,7 +13159,7 @@ function __c26(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(BasicMessageResponseComponentsItem);
+      return S.Array(__S(212, __c26, 4));
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -17044,7 +13178,7 @@ function __c26(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(BasicMessageResponseStickersItem);
+      return S.Array(__S(214, __c26, 6));
   }
 }
 function __c27(j: number): any {
@@ -17084,87 +13218,87 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: MessageType,
+          type: S.Number,
           content: S.String,
-          mentions: BasicMessageResponseMentionsList,
-          mention_roles: BasicMessageResponseMentionRolesList,
-          attachments: BasicMessageResponseAttachmentsList,
-          embeds: BasicMessageResponseEmbedsList,
+          mentions: __S(6, __c0, 6),
+          mention_roles: __S(9, __c1, 1),
+          attachments: __S(150, __c18, 6),
+          embeds: __S(162, __c20, 2),
           timestamp: S.String,
           edited_timestamp: S.NullOr(S.String),
           flags: S.Number,
-          components: BasicMessageResponseComponentsList,
-          stickers: S.optional(BasicMessageResponseStickersList),
-          sticker_items: S.optional(BasicMessageResponseStickerItemsList),
+          components: __S(213, __c26, 5),
+          stickers: S.optional(__S(215, __c26, 7)),
+          sticker_items: S.optional(__S(169, __c21, 1)),
           id: S.String,
           channel_id: S.String,
-          author: UserResponse,
+          author: __S(5, __c0, 5),
           pinned: S.Boolean,
           mention_everyone: S.Boolean,
           tts: S.Boolean,
-          call: S.optional(MessageCallResponse),
-          activity: S.optional(MessageActivityResponse),
-          application: S.optional(BasicApplicationResponseWithBot),
+          call: S.optional(__S(170, __c21, 2)),
+          activity: S.optional(__S(171, __c21, 3)),
+          application: S.optional(__S(172, __c21, 4)),
           application_id: S.optional(S.String),
-          interaction: S.optional(MessageInteractionResponse),
-          nonce: S.optional(BasicMessageResponseNonce),
+          interaction: S.optional(__S(173, __c21, 5)),
+          nonce: S.optional(__S(216, __c27, 0)),
           webhook_id: S.optional(S.String),
-          message_reference: S.optional(MessageReferenceResponse),
-          thread: S.optional(ThreadResponse),
-          mention_channels: S.optional(BasicMessageResponseMentionChannelsList),
-          role_subscription_data: S.optional(MessageRoleSubscriptionDataResponse),
-          purchase_notification: S.optional(PurchaseNotificationResponse),
+          message_reference: S.optional(__S(175, __c21, 7)),
+          thread: S.optional(__S(178, __c22, 2)),
+          mention_channels: S.optional(__S(180, __c22, 4)),
+          role_subscription_data: S.optional(__S(181, __c22, 5)),
+          purchase_notification: S.optional(__S(183, __c22, 7)),
           position: S.optional(S.Number),
-          resolved: S.optional(ResolvedObjectsResponse),
-          poll: S.optional(PollResponse),
-          shared_client_theme: S.optional(CustomClientThemeResponse),
-          interaction_metadata: S.optional(BasicMessageResponseInteractionMetadata),
-          message_snapshots: S.optional(BasicMessageResponseMessageSnapshotsList),
-          lobby_member: S.optional(MessageLobbyMemberResponse),
+          resolved: S.optional(__S(190, __c23, 6)),
+          poll: S.optional(__S(198, __c24, 6)),
+          shared_client_theme: S.optional(__S(199, __c24, 7)),
+          interaction_metadata: S.optional(__S(217, __c27, 1)),
+          message_snapshots: S.optional(__S(207, __c25, 7)),
+          lobby_member: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({ identifier: "BasicMessageResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: MessageType,
+          type: S.Number,
           content: S.String,
-          mentions: MessageResponseMentionsList,
-          mention_roles: MessageResponseMentionRolesList,
-          attachments: MessageResponseAttachmentsList,
-          embeds: MessageResponseEmbedsList,
+          mentions: __S(6, __c0, 6),
+          mention_roles: __S(9, __c1, 1),
+          attachments: __S(150, __c18, 6),
+          embeds: __S(162, __c20, 2),
           timestamp: S.String,
           edited_timestamp: S.NullOr(S.String),
           flags: S.Number,
-          components: MessageResponseComponentsList,
-          stickers: S.optional(MessageResponseStickersList),
-          sticker_items: S.optional(MessageResponseStickerItemsList),
+          components: __S(164, __c20, 4),
+          stickers: S.optional(__S(167, __c20, 7)),
+          sticker_items: S.optional(__S(169, __c21, 1)),
           id: S.String,
           channel_id: S.String,
-          author: UserResponse,
+          author: __S(5, __c0, 5),
           pinned: S.Boolean,
           mention_everyone: S.Boolean,
           tts: S.Boolean,
-          call: S.optional(MessageCallResponse),
-          activity: S.optional(MessageActivityResponse),
-          application: S.optional(BasicApplicationResponseWithBot),
+          call: S.optional(__S(170, __c21, 2)),
+          activity: S.optional(__S(171, __c21, 3)),
+          application: S.optional(__S(172, __c21, 4)),
           application_id: S.optional(S.String),
-          interaction: S.optional(MessageInteractionResponse),
-          nonce: S.optional(MessageResponseNonce),
+          interaction: S.optional(__S(173, __c21, 5)),
+          nonce: S.optional(__S(174, __c21, 6)),
           webhook_id: S.optional(S.String),
-          message_reference: S.optional(MessageReferenceResponse),
-          thread: S.optional(ThreadResponse),
-          mention_channels: S.optional(MessageResponseMentionChannelsList),
-          role_subscription_data: S.optional(MessageRoleSubscriptionDataResponse),
-          purchase_notification: S.optional(PurchaseNotificationResponse),
+          message_reference: S.optional(__S(175, __c21, 7)),
+          thread: S.optional(__S(178, __c22, 2)),
+          mention_channels: S.optional(__S(180, __c22, 4)),
+          role_subscription_data: S.optional(__S(181, __c22, 5)),
+          purchase_notification: S.optional(__S(183, __c22, 7)),
           position: S.optional(S.Number),
-          resolved: S.optional(ResolvedObjectsResponse),
-          poll: S.optional(PollResponse),
-          shared_client_theme: S.optional(CustomClientThemeResponse),
-          interaction_metadata: S.optional(MessageResponseInteractionMetadata),
-          message_snapshots: S.optional(MessageResponseMessageSnapshotsList),
-          lobby_member: S.optional(MessageLobbyMemberResponse),
-          reactions: S.optional(MessageResponseReactionsList),
-          referenced_message: S.optional(S.NullOr(BasicMessageResponse)),
+          resolved: S.optional(__S(190, __c23, 6)),
+          poll: S.optional(__S(198, __c24, 6)),
+          shared_client_theme: S.optional(__S(199, __c24, 7)),
+          interaction_metadata: S.optional(__S(200, __c25, 0)),
+          message_snapshots: S.optional(__S(207, __c25, 7)),
+          lobby_member: S.optional(__S(208, __c26, 0)),
+          reactions: S.optional(__S(211, __c26, 3)),
+          referenced_message: S.optional(S.NullOr(__S(218, __c27, 2))),
         }),
       ).annotate({ identifier: "MessageResponse" });
     case 4:
@@ -17178,8 +13312,8 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          interaction: InteractionResponse,
-          resource: S.optional(InteractionCallbackResponseResource),
+          interaction: __S(147, __c18, 3),
+          resource: S.optional(__S(220, __c27, 4)),
         }),
       ).annotate({
         identifier: "InteractionCallbackResponse",
@@ -17223,20 +13357,20 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadata: S.optional(S.NullOr(LobbyMemberRequestMetadataMap)),
-          flags: S.optional(S.NullOr(LobbyMemberRequestFlags)),
+          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
+          flags: S.optional(S.NullOr(S.Number)),
           additional_name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "LobbyMemberRequest" });
     case 2:
-      return S.Array(LobbyMemberRequest);
+      return S.Array(__S(225, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
-          members: S.optional(S.NullOr(CreateLobbyRequestMembersList)),
-          metadata: S.optional(S.NullOr(CreateLobbyRequestMetadataMap)),
-          flags: S.optional(S.NullOr(CreateLobbyRequestFlags)),
+          members: S.optional(S.NullOr(__S(226, __c28, 2))),
+          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
+          flags: S.optional(S.NullOr(S.Number)),
           override_event_webhooks_url: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/lobbies", code: 200 })),
       ).annotate({ identifier: "CreateLobbyRequest" });
@@ -17245,9 +13379,9 @@ function __c28(j: number): any {
         S.Struct({
           id: S.String,
           application_id: S.String,
-          metadata: S.NullOr(LobbyResponseMetadataMap),
-          members: LobbyResponseMembersList,
-          linked_channel: S.optional(GuildChannelResponse),
+          metadata: S.NullOr(__S(15, __c1, 7)),
+          members: __S(58, __c7, 2),
+          linked_channel: S.optional(__S(105, __c13, 1)),
           flags: S.Number,
           override_event_webhooks_url: S.optional(S.NullOr(S.String)),
         }),
@@ -17265,14 +13399,14 @@ function __c28(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(CreateLobbyMessageRequestComponentsItem);
+      return S.Array(__S(229, __c28, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          colors: CustomClientThemeShareRequestColorsList,
+          colors: __S(9, __c1, 1),
           gradient_angle: S.Number,
           base_mix: S.Number,
-          base_theme: S.optional(S.NullOr(MessageShareCustomUserThemeBaseTheme)),
+          base_theme: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "CustomClientThemeShareRequest",
@@ -17288,7 +13422,7 @@ function __c29(j: number): any {
           channel_id: S.optional(S.NullOr(S.String)),
           message_id: S.String,
           fail_if_not_exists: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(MessageReferenceType)),
+          type: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "MessageReferenceRequest" });
     case 1:
@@ -17298,16 +13432,16 @@ function __c29(j: number): any {
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(CreateLobbyMessageRequestEmbedsList)),
-          allowed_mentions: S.optional(S.NullOr(MessageAllowedMentionsRequest)),
-          sticker_ids: S.optional(S.NullOr(CreateLobbyMessageRequestStickerIdsList)),
-          components: S.optional(S.NullOr(CreateLobbyMessageRequestComponentsList)),
+          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
+          sticker_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
+          components: S.optional(S.NullOr(__S(230, __c28, 6))),
           flags: S.optional(S.NullOr(S.Number)),
-          attachments: S.optional(S.NullOr(CreateLobbyMessageRequestAttachmentsList)),
-          poll: S.optional(S.NullOr(PollCreateRequest)),
-          shared_client_theme: S.optional(S.NullOr(CustomClientThemeShareRequest)),
-          message_reference: S.optional(S.NullOr(MessageReferenceRequest)),
-          nonce: S.optional(S.NullOr(CreateLobbyMessageRequestNonce)),
+          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
+          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
+          shared_client_theme: S.optional(S.NullOr(__S(231, __c28, 7))),
+          message_reference: S.optional(S.NullOr(__S(232, __c29, 0))),
+          nonce: S.optional(S.NullOr(__S(233, __c29, 1))),
           enforce_nonce: S.optional(S.NullOr(S.Boolean)),
           tts: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/lobbies/{lobby_id}/messages", code: 200 })),
@@ -17318,14 +13452,14 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: MessageType,
+          type: S.Number,
           content: S.String,
           lobby_id: S.String,
           channel_id: S.String,
-          author: UserResponse,
-          lobby_member: S.optional(MessageLobbyMemberResponse),
-          metadata: S.optional(LobbyMessageResponseMetadataMap),
-          moderation_metadata: S.optional(LobbyMessageResponseModerationMetadataMap),
+          author: __S(5, __c0, 5),
+          lobby_member: S.optional(__S(208, __c26, 0)),
+          metadata: S.optional(__S(15, __c1, 7)),
+          moderation_metadata: S.optional(__S(15, __c1, 7)),
           flags: S.Number,
           application_id: S.optional(S.String),
         }),
@@ -17343,7 +13477,7 @@ function __c29(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(CreateMessageRequestComponentsItem);
+      return S.Array(__S(236, __c29, 4));
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 7:
@@ -17351,16 +13485,16 @@ function __c29(j: number): any {
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(CreateMessageRequestEmbedsList)),
-          allowed_mentions: S.optional(S.NullOr(MessageAllowedMentionsRequest)),
-          sticker_ids: S.optional(S.NullOr(CreateMessageRequestStickerIdsList)),
-          components: S.optional(S.NullOr(CreateMessageRequestComponentsList)),
+          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
+          sticker_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
+          components: S.optional(S.NullOr(__S(237, __c29, 5))),
           flags: S.optional(S.NullOr(S.Number)),
-          attachments: S.optional(S.NullOr(CreateMessageRequestAttachmentsList)),
-          poll: S.optional(S.NullOr(PollCreateRequest)),
-          shared_client_theme: S.optional(S.NullOr(CustomClientThemeShareRequest)),
-          message_reference: S.optional(S.NullOr(MessageReferenceRequest)),
-          nonce: S.optional(S.NullOr(CreateMessageRequestNonce)),
+          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
+          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
+          shared_client_theme: S.optional(S.NullOr(__S(231, __c28, 7))),
+          message_reference: S.optional(S.NullOr(__S(232, __c29, 0))),
+          nonce: S.optional(S.NullOr(__S(238, __c29, 6))),
           enforce_nonce: S.optional(S.NullOr(S.Boolean)),
           tts: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/messages", code: 200 })),
@@ -17373,10 +13507,10 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
-          lobby_metadata: S.optional(S.NullOr(CreateOrJoinLobbyRequestLobbyMetadataMap)),
-          member_metadata: S.optional(S.NullOr(CreateOrJoinLobbyRequestMemberMetadataMap)),
+          lobby_metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
+          member_metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
           secret: S.String.pipe(T.SensitiveValue({})),
-          flags: S.optional(S.NullOr(CreateOrJoinLobbyRequestFlags)),
+          flags: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/lobbies", code: 200 })),
       ).annotate({ identifier: "CreateOrJoinLobbyRequest" });
     case 1:
@@ -17397,7 +13531,7 @@ function __c30(j: number): any {
         S.Struct({
           topic: S.String,
           channel_id: S.String,
-          privacy_level: S.optional(S.NullOr(StageInstancesPrivacyLevels)),
+          privacy_level: S.optional(S.NullOr(S.Number)),
           guild_scheduled_event_id: S.optional(S.NullOr(S.String)),
           send_start_notification: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/stage-instances", code: 200 })),
@@ -17410,7 +13544,7 @@ function __c30(j: number): any {
           guild_id: S.String,
           channel_id: S.String,
           topic: S.String,
-          privacy_level: StageInstancesPrivacyLevels,
+          privacy_level: S.Number,
           id: S.String,
           discoverable_disabled: S.Boolean,
           guild_scheduled_event_id: S.NullOr(S.String),
@@ -17427,7 +13561,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
-          body: CreateThreadRequestBody.pipe(T.HttpBody()),
+          body: __S(244, __c30, 4).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/channels/{channel_id}/threads", code: 200 })),
       ).annotate({ identifier: "CreateThreadRequest" });
     case 6:
@@ -17436,7 +13570,7 @@ function __c30(j: number): any {
           channel_id: S.String.pipe(T.Label()),
           message_id: S.String.pipe(T.Label()),
           name: S.String,
-          auto_archive_duration: S.optional(S.NullOr(ThreadAutoArchiveDuration)),
+          auto_archive_duration: S.optional(S.NullOr(S.Number)),
           rate_limit_per_user: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -17469,8 +13603,8 @@ function __c31(j: number): any {
           guild_id: S.optional(S.NullOr(S.String)),
           id: S.String,
           name: S.String,
-          type: WebhookTypes,
-          user: S.optional(UserResponse),
+          type: S.Number,
+          user: S.optional(__S(5, __c0, 5)),
           token: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -17660,7 +13794,7 @@ function __c32(j: number): any {
         ]),
       );
     case 2:
-      return S.suspend(() => DeleteChannelResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(257, __c32, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteChannelResponse",
       });
     case 3:
@@ -18019,9 +14153,9 @@ function __c35(j: number): any {
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
           idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(S.NullOr(EditLobbyRequestMetadataMap)),
-          members: S.optional(S.NullOr(EditLobbyRequestMembersList)),
-          flags: S.optional(S.NullOr(EditLobbyRequestFlags)),
+          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
+          members: S.optional(S.NullOr(__S(226, __c28, 2))),
+          flags: S.optional(S.NullOr(S.Number)),
           override_event_webhooks_url: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/lobbies/{lobby_id}", code: 200 })),
       ).annotate({ identifier: "EditLobbyRequest" });
@@ -18052,7 +14186,7 @@ function __c36(j: number): any {
         S.Struct({
           id: S.Number,
           html_url: S.String,
-          user: GithubUser,
+          user: __S(288, __c36, 0),
           commit_id: S.optional(S.NullOr(S.String)),
           body: S.String,
         }),
@@ -18063,7 +14197,7 @@ function __c36(j: number): any {
           id: S.Number,
           number: S.Number,
           html_url: S.String,
-          user: GithubUser,
+          user: __S(288, __c36, 0),
           title: S.String,
           body: S.optional(S.NullOr(S.String)),
           pull_request: S.optional(S.Unknown),
@@ -18084,7 +14218,7 @@ function __c36(j: number): any {
           id: S.Number,
           tag_name: S.String,
           html_url: S.String,
-          author: GithubUser,
+          author: __S(288, __c36, 0),
         }),
       ).annotate({ identifier: "GithubRelease" });
     case 5:
@@ -18100,11 +14234,11 @@ function __c36(j: number): any {
           id: S.String,
           url: S.String,
           message: S.String,
-          author: GithubAuthor,
+          author: __S(293, __c36, 5),
         }),
       ).annotate({ identifier: "GithubCommit" });
     case 7:
-      return S.Array(GithubCommit);
+      return S.Array(__S(294, __c36, 6));
   }
 }
 function __c37(j: number): any {
@@ -18112,7 +14246,7 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          user: GithubUser,
+          user: __S(288, __c36, 0),
           body: S.optional(S.NullOr(S.String)),
           html_url: S.String,
           state: S.String,
@@ -18125,7 +14259,7 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "GithubCheckPullRequest" });
     case 2:
-      return S.Array(GithubCheckPullRequest);
+      return S.Array(__S(297, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18138,8 +14272,8 @@ function __c37(j: number): any {
           conclusion: S.optional(S.NullOr(S.String)),
           head_branch: S.optional(S.NullOr(S.String)),
           head_sha: S.String,
-          pull_requests: S.optional(S.NullOr(GithubCheckSuitePullRequestsList)),
-          app: GithubCheckApp,
+          pull_requests: S.optional(S.NullOr(__S(298, __c37, 2))),
+          app: __S(299, __c37, 3),
         }),
       ).annotate({ identifier: "GithubCheckSuite" });
     case 5:
@@ -18155,10 +14289,10 @@ function __c37(j: number): any {
           conclusion: S.optional(S.NullOr(S.String)),
           name: S.String,
           html_url: S.String,
-          check_suite: GithubCheckSuite,
+          check_suite: __S(300, __c37, 4),
           details_url: S.optional(S.NullOr(S.String)),
-          output: S.optional(S.NullOr(GithubCheckRunOutput)),
-          pull_requests: S.optional(S.NullOr(GithubCheckRunPullRequestsList)),
+          output: S.optional(S.NullOr(__S(301, __c37, 5))),
+          pull_requests: S.optional(S.NullOr(__S(298, __c37, 2))),
         }),
       ).annotate({ identifier: "GithubCheckRun" });
     case 7:
@@ -18169,7 +14303,7 @@ function __c37(j: number): any {
           html_url: S.String,
           answer_html_url: S.optional(S.NullOr(S.String)),
           body: S.optional(S.NullOr(S.String)),
-          user: GithubUser,
+          user: __S(288, __c36, 0),
         }),
       ).annotate({ identifier: "GithubDiscussion" });
   }
@@ -18186,23 +14320,23 @@ function __c38(j: number): any {
           action: S.optional(S.NullOr(S.String)),
           ref: S.optional(S.NullOr(S.String)),
           ref_type: S.optional(S.NullOr(S.String)),
-          comment: S.optional(S.NullOr(GithubComment)),
-          issue: S.optional(S.NullOr(GithubIssue)),
-          pull_request: S.optional(S.NullOr(GithubIssue)),
-          repository: S.optional(S.NullOr(GithubRepository)),
-          forkee: S.optional(S.NullOr(GithubRepository)),
-          sender: GithubUser,
-          member: S.optional(S.NullOr(GithubUser)),
-          release: S.optional(S.NullOr(GithubRelease)),
-          head_commit: S.optional(S.NullOr(GithubCommit)),
-          commits: S.optional(S.NullOr(ExecuteGithubCompatibleWebhookRequestCommitsList)),
+          comment: S.optional(S.NullOr(__S(289, __c36, 1))),
+          issue: S.optional(S.NullOr(__S(290, __c36, 2))),
+          pull_request: S.optional(S.NullOr(__S(290, __c36, 2))),
+          repository: S.optional(S.NullOr(__S(291, __c36, 3))),
+          forkee: S.optional(S.NullOr(__S(291, __c36, 3))),
+          sender: __S(288, __c36, 0),
+          member: S.optional(S.NullOr(__S(288, __c36, 0))),
+          release: S.optional(S.NullOr(__S(292, __c36, 4))),
+          head_commit: S.optional(S.NullOr(__S(294, __c36, 6))),
+          commits: S.optional(S.NullOr(__S(295, __c36, 7))),
           forced: S.optional(S.NullOr(S.Boolean)),
           compare: S.optional(S.NullOr(S.String)),
-          review: S.optional(S.NullOr(GithubReview)),
-          check_run: S.optional(S.NullOr(GithubCheckRun)),
-          check_suite: S.optional(S.NullOr(GithubCheckSuite)),
-          discussion: S.optional(S.NullOr(GithubDiscussion)),
-          answer: S.optional(S.NullOr(GithubComment)),
+          review: S.optional(S.NullOr(__S(296, __c37, 0))),
+          check_run: S.optional(S.NullOr(__S(302, __c37, 6))),
+          check_suite: S.optional(S.NullOr(__S(300, __c37, 4))),
+          discussion: S.optional(S.NullOr(__S(303, __c37, 7))),
+          answer: S.optional(S.NullOr(__S(289, __c36, 1))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18222,7 +14356,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "WebhookSlackEmbedField" });
     case 2:
-      return S.Array(WebhookSlackEmbedField);
+      return S.Array(__S(305, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18239,11 +14373,11 @@ function __c38(j: number): any {
           author_icon: S.optional(S.NullOr(S.String)),
           image_url: S.optional(S.NullOr(S.String)),
           thumb_url: S.optional(S.NullOr(S.String)),
-          fields: S.optional(S.NullOr(WebhookSlackEmbedFieldsList)),
+          fields: S.optional(S.NullOr(__S(306, __c38, 2))),
         }),
       ).annotate({ identifier: "WebhookSlackEmbed" });
     case 4:
-      return S.Array(WebhookSlackEmbed);
+      return S.Array(__S(307, __c38, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -18254,7 +14388,7 @@ function __c38(j: number): any {
           text: S.optional(S.NullOr(S.String)),
           username: S.optional(S.NullOr(S.String)),
           icon_url: S.optional(S.NullOr(S.String)),
-          attachments: S.optional(S.NullOr(ExecuteSlackCompatibleWebhookRequestAttachmentsList)),
+          attachments: S.optional(S.NullOr(__S(308, __c38, 4))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18301,7 +14435,7 @@ function __c39(j: number): any {
           wait: S.optional(S.Boolean.pipe(T.Query())),
           thread_id: S.optional(S.String.pipe(T.Query())),
           with_components: S.optional(S.Boolean.pipe(T.Query())),
-          body: ExecuteWebhookRequestBody.pipe(T.HttpBody()),
+          body: __S(311, __c38, 7).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "POST", uri: "/webhooks/{webhook_id}/{webhook_token}", code: 200 }),
         ),
@@ -18329,18 +14463,18 @@ function __c39(j: number): any {
         identifier: "GetActiveGuildThreadsRequest",
       });
     case 4:
-      return S.Array(ThreadResponse);
+      return S.Array(__S(178, __c22, 2));
     case 5:
-      return S.Array(ThreadMemberResponse);
+      return S.Array(__S(177, __c22, 1));
     case 6:
-      return S.Array(MessageResponse);
+      return S.Array(__S(219, __c27, 3));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          threads: ThreadsResponseThreadsList,
-          members: ThreadsResponseMembersList,
+          threads: __S(316, __c39, 4),
+          members: __S(317, __c39, 5),
           has_more: S.Boolean,
-          first_messages: S.optional(ThreadsResponseFirstMessagesList),
+          first_messages: S.optional(__S(318, __c39, 6)),
         }),
       ).annotate({ identifier: "ThreadsResponse" });
   }
@@ -18366,7 +14500,7 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          users: PollAnswerDetailsResponseUsersList,
+          users: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "PollAnswerDetailsResponse",
@@ -18380,15 +14514,15 @@ function __c40(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          user: UserResponse,
+          user: __S(5, __c0, 5),
           team_id: S.String,
-          membership_state: TeamMembershipStates,
-          role: TeamMemberRoles,
-          permissions: TeamMemberResponsePermissionsList,
+          membership_state: S.Number,
+          role: S.String,
+          permissions: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "TeamMemberResponse" });
     case 4:
-      return S.Array(TeamMemberResponse);
+      return S.Array(__S(323, __c40, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -18396,7 +14530,7 @@ function __c40(j: number): any {
           icon: S.NullOr(S.String),
           name: S.String,
           owner_user_id: S.String,
-          members: TeamResponseMembersList,
+          members: __S(324, __c40, 4),
         }),
       ).annotate({ identifier: "TeamResponse" });
     case 6:
@@ -18406,39 +14540,39 @@ function __c40(j: number): any {
           name: S.String,
           icon: S.NullOr(S.String),
           description: S.String,
-          type: S.NullOr(ApplicationTypes),
+          type: S.NullOr(S.Number),
           cover_image: S.optional(S.String),
           primary_sku_id: S.optional(S.String),
           flags: S.Number,
           flags_new: S.String,
-          bot: S.optional(UserResponse),
+          bot: S.optional(__S(5, __c0, 5)),
           slug: S.optional(S.String),
           vibegrations_project_id: S.optional(S.String),
           guild_id: S.optional(S.String),
-          rpc_origins: S.optional(PrivateApplicationResponseRpcOriginsList),
+          rpc_origins: S.optional(__S(9, __c1, 1)),
           bot_public: S.optional(S.Boolean),
           bot_require_code_grant: S.optional(S.Boolean),
           terms_of_service_url: S.optional(S.String),
           privacy_policy_url: S.optional(S.String),
           custom_install_url: S.optional(S.String),
-          install_params: S.optional(ApplicationOAuth2InstallParamsResponse),
-          integration_types_config: S.optional(PrivateApplicationResponseIntegrationTypesConfigMap),
+          install_params: S.optional(__S(77, __c9, 5)),
+          integration_types_config: S.optional(__S(79, __c9, 7)),
           verify_key: S.String,
           max_participants: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(PrivateApplicationResponseTagsList),
-          redirect_uris: PrivateApplicationResponseRedirectUrisList,
+          tags: S.optional(__S(9, __c1, 1)),
+          redirect_uris: __S(9, __c1, 1),
           interactions_endpoint_url: S.NullOr(S.String),
           role_connections_verification_url: S.NullOr(S.String),
-          owner: UserResponse,
+          owner: __S(5, __c0, 5),
           approximate_guild_count: S.Number,
           approximate_user_install_count: S.Number,
           approximate_user_authorization_count: S.Number,
           event_webhooks_url: S.optional(S.NullOr(S.String)),
-          event_webhooks_status: S.optional(ApplicationEventWebhooksStatus),
-          event_webhooks_types: S.optional(PrivateApplicationResponseEventWebhooksTypesList),
-          explicit_content_filter: ApplicationExplicitContentFilterTypes,
-          team: S.NullOr(TeamResponse),
-          eligible_oauth2_scopes: PrivateApplicationResponseEligibleOauth2ScopesList,
+          event_webhooks_status: S.optional(S.Number),
+          event_webhooks_types: S.optional(__S(76, __c9, 4)),
+          explicit_content_filter: S.Number,
+          team: S.NullOr(__S(325, __c40, 5)),
+          eligible_oauth2_scopes: __S(76, __c9, 4),
         }),
       ).annotate({
         identifier: "PrivateApplicationResponse",
@@ -18475,8 +14609,8 @@ function __c41(j: number): any {
           application_id: S.String,
           instance_id: S.String,
           launch_id: S.String,
-          location: EmbeddedActivityInstanceLocation,
-          users: EmbeddedActivityInstanceUsersList,
+          location: __S(328, __c41, 0),
+          users: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "EmbeddedActivityInstance" });
     case 2:
@@ -18526,26 +14660,20 @@ function __c41(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: MetadataItemTypes,
+          type: S.Number,
           key: S.String,
           name: S.String,
-          name_localizations: S.optional(
-            S.NullOr(ApplicationRoleConnectionsMetadataItemResponseNameLocalizationsMap),
-          ),
+          name_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
           description: S.String,
-          description_localizations: S.optional(
-            S.NullOr(ApplicationRoleConnectionsMetadataItemResponseDescriptionLocalizationsMap),
-          ),
+          description_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
         }),
       ).annotate({
         identifier: "ApplicationRoleConnectionsMetadataItemResponse",
       });
     case 6:
-      return S.Array(ApplicationRoleConnectionsMetadataItemResponse);
+      return S.Array(__S(333, __c41, 5));
     case 7:
-      return S.suspend(() =>
-        GetApplicationRoleConnectionsMetadataResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(334, __c41, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetApplicationRoleConnectionsMetadataResponse",
       });
   }
@@ -18571,7 +14699,7 @@ function __c42(j: number): any {
         S.Struct({
           platform_name: S.optional(S.String),
           platform_username: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(ApplicationUserRoleConnectionResponseMetadataMap),
+          metadata: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
         identifier: "ApplicationUserRoleConnectionResponse",
@@ -18662,7 +14790,7 @@ function __c42(j: number): any {
         ]),
       );
     case 4:
-      return S.suspend(() => GetAutoModerationRuleResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(339, __c42, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAutoModerationRuleResponse",
       });
     case 5:
@@ -18684,7 +14812,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          session_start_limit: GatewayBotSessionStartLimitResponse,
+          session_start_limit: __S(342, __c42, 6),
           shards: S.Number,
         }),
       ).annotate({ identifier: "GatewayBotResponse" });
@@ -18768,7 +14896,7 @@ function __c43(j: number): any {
         ]),
       );
     case 2:
-      return S.suspend(() => GetChannelResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(345, __c43, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetChannelResponse",
       });
     case 3:
@@ -18777,7 +14905,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
-          sku_ids: S.optional(GetCurrentUserApplicationEntitlementsRequestSkuIds.pipe(T.Query())),
+          sku_ids: S.optional(__S(347, __c43, 3).pipe(T.Query())),
           exclude_consumed: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -18790,11 +14918,9 @@ function __c43(j: number): any {
         identifier: "GetCurrentUserApplicationEntitlementsRequest",
       });
     case 5:
-      return S.Array(EntitlementResponse);
+      return S.Array(__S(90, __c11, 2));
     case 6:
-      return S.suspend(() =>
-        GetCurrentUserApplicationEntitlementsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(349, __c43, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCurrentUserApplicationEntitlementsResponse",
       });
     case 7:
@@ -18821,7 +14947,7 @@ function __c44(j: number): any {
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           user_id: S.optional(S.String.pipe(T.Query())),
-          sku_ids: S.optional(GetEntitlementsRequestSkuIds.pipe(T.Query())),
+          sku_ids: S.optional(__S(352, __c44, 0).pipe(T.Query())),
           guild_id: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -18834,7 +14960,7 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "GetEntitlementsRequest" });
     case 2:
-      return S.suspend(() => GetEntitlementsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(349, __c43, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEntitlementsResponse",
       });
     case 3:
@@ -18855,9 +14981,9 @@ function __c44(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}", code: 200 })),
       ).annotate({ identifier: "GetGuildRequest" });
     case 6:
-      return S.Array(EmojiResponse);
+      return S.Array(__S(69, __c8, 5));
     case 7:
-      return S.Array(GuildStickerResponse);
+      return S.Array(__S(118, __c14, 6));
   }
 }
 function __c45(j: number): any {
@@ -18881,40 +15007,40 @@ function __c45(j: number): any {
           home_header: S.NullOr(S.String),
           splash: S.NullOr(S.String),
           discovery_splash: S.NullOr(S.String),
-          features: GuildWithCountsResponseFeaturesList,
+          features: __S(76, __c9, 4),
           banner: S.NullOr(S.String),
           owner_id: S.String,
           application_id: S.NullOr(S.String),
           region: S.String,
           afk_channel_id: S.NullOr(S.String),
-          afk_timeout: AfkTimeouts,
+          afk_timeout: S.Number,
           system_channel_id: S.NullOr(S.String),
           system_channel_flags: S.Number,
           widget_enabled: S.Boolean,
           widget_channel_id: S.NullOr(S.String),
-          verification_level: VerificationLevels,
-          roles: GuildWithCountsResponseRolesList,
-          default_message_notifications: UserNotificationSettings,
-          mfa_level: GuildMFALevel,
-          explicit_content_filter: GuildExplicitContentFilterTypes,
+          verification_level: S.Number,
+          roles: __S(53, __c6, 5),
+          default_message_notifications: S.Number,
+          mfa_level: S.Number,
+          explicit_content_filter: S.Number,
           max_presences: S.NullOr(S.Number),
           max_members: S.Number,
           max_stage_video_channel_users: S.Number,
           max_video_channel_users: S.Number,
           vanity_url_code: S.NullOr(S.String),
-          premium_tier: PremiumGuildTiers,
+          premium_tier: S.Number,
           premium_subscription_count: S.Number,
-          preferred_locale: AvailableLocalesEnum,
+          preferred_locale: S.String,
           rules_channel_id: S.NullOr(S.String),
           safety_alerts_channel_id: S.NullOr(S.String),
           public_updates_channel_id: S.NullOr(S.String),
           premium_progress_bar_enabled: S.Boolean,
           premium_progress_bar_enabled_user_updated_at: S.optional(S.NullOr(S.String)),
           nsfw: S.Boolean,
-          nsfw_level: GuildNSFWContentLevel,
-          emojis: GuildWithCountsResponseEmojisList,
-          stickers: GuildWithCountsResponseStickersList,
-          incidents_data: S.NullOr(GuildIncidentsDataResponse),
+          nsfw_level: S.Number,
+          emojis: __S(358, __c44, 6),
+          stickers: __S(359, __c44, 7),
+          incidents_data: S.NullOr(__S(360, __c45, 0)),
           approximate_member_count: S.optional(S.NullOr(S.Number)),
           approximate_presence_count: S.optional(S.NullOr(S.Number)),
         }),
@@ -18955,21 +15081,21 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ApplicationCommandPermissionType,
+          type: S.Number,
           permission: S.Boolean,
         }),
       ).annotate({
         identifier: "CommandPermissionResponse",
       });
     case 5:
-      return S.Array(CommandPermissionResponse);
+      return S.Array(__S(364, __c45, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           application_id: S.String,
           guild_id: S.String,
-          permissions: CommandPermissionsResponsePermissionsList,
+          permissions: __S(365, __c45, 5),
         }),
       ).annotate({
         identifier: "CommandPermissionsResponse",
@@ -18988,7 +15114,7 @@ function __c46(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          user: UserResponse,
+          user: __S(5, __c0, 5),
           reason: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GuildBanResponse" });
@@ -19003,7 +15129,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          status: S.optional(GuildJoinRequestApplicationStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -19021,29 +15147,29 @@ function __c46(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(GuildJoinRequestResponseFormResponsesItem);
+      return S.Array(__S(371, __c46, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
           reviewed_at: S.NullOr(S.String),
-          application_status: S.NullOr(GuildJoinRequestApplicationStatus),
+          application_status: S.NullOr(S.String),
           rejection_reason: S.NullOr(S.String),
           guild_id: S.String,
           user_id: S.String,
-          user: S.optional(S.NullOr(UserResponse)),
-          form_responses: S.optional(S.NullOr(GuildJoinRequestResponseFormResponsesList)),
-          actioned_by_user: S.optional(S.NullOr(UserResponse)),
+          user: S.optional(S.NullOr(__S(5, __c0, 5))),
+          form_responses: S.optional(S.NullOr(__S(372, __c46, 4))),
+          actioned_by_user: S.optional(S.NullOr(__S(5, __c0, 5))),
         }),
       ).annotate({ identifier: "GuildJoinRequestResponse" });
     case 6:
-      return S.Array(GuildJoinRequestResponse);
+      return S.Array(__S(373, __c46, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           total: S.optional(S.Number),
-          guild_join_requests: S.optional(GuildJoinRequestsListResponseGuildJoinRequestsList),
+          guild_join_requests: S.optional(__S(374, __c46, 6)),
         }),
       ).annotate({
         identifier: "GuildJoinRequestsListResponse",
@@ -19070,7 +15196,7 @@ function __c47(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          author_ids: WelcomeMessageResponseAuthorIdsList,
+          author_ids: __S(9, __c1, 1),
           message: S.String,
         }),
       ).annotate({ identifier: "WelcomeMessageResponse" });
@@ -19086,27 +15212,27 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          action_type: NewMemberActionType,
+          action_type: S.Number,
           title: S.String,
           description: S.String,
-          emoji: S.optional(SettingsEmojiResponse),
+          emoji: S.optional(__S(379, __c47, 3)),
           icon: S.optional(S.String),
         }),
       ).annotate({ identifier: "NewMemberActionResponse" });
     case 5:
-      return S.Array(NewMemberActionResponse);
+      return S.Array(__S(380, __c47, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
           title: S.String,
-          emoji: S.optional(SettingsEmojiResponse),
+          emoji: S.optional(__S(379, __c47, 3)),
           icon: S.optional(S.String),
           description: S.String,
         }),
       ).annotate({ identifier: "ResourceChannelResponse" });
     case 7:
-      return S.Array(ResourceChannelResponse);
+      return S.Array(__S(382, __c47, 6));
   }
 }
 function __c48(j: number): any {
@@ -19116,9 +15242,9 @@ function __c48(j: number): any {
         S.Struct({
           guild_id: S.String,
           enabled: S.Boolean,
-          welcome_message: S.optional(WelcomeMessageResponse),
-          new_member_actions: GuildHomeSettingsResponseNewMemberActionsList,
-          resource_channels: GuildHomeSettingsResponseResourceChannelsList,
+          welcome_message: S.optional(__S(378, __c47, 2)),
+          new_member_actions: __S(381, __c47, 5),
+          resource_channels: __S(383, __c47, 7),
         }),
       ).annotate({
         identifier: "GuildHomeSettingsResponse",
@@ -19139,11 +15265,11 @@ function __c48(j: number): any {
           home_header: S.NullOr(S.String),
           splash: S.NullOr(S.String),
           discovery_splash: S.NullOr(S.String),
-          features: GuildPreviewResponseFeaturesList,
+          features: __S(76, __c9, 4),
           approximate_member_count: S.Number,
           approximate_presence_count: S.Number,
-          emojis: GuildPreviewResponseEmojisList,
-          stickers: GuildPreviewResponseStickersList,
+          emojis: __S(358, __c44, 6),
+          stickers: __S(359, __c44, 7),
         }),
       ).annotate({ identifier: "GuildPreviewResponse" });
     case 3:
@@ -19238,11 +15364,9 @@ function __c48(j: number): any {
         ]),
       );
     case 6:
-      return S.suspend(() => GetGuildScheduledEventResponseBody.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "GetGuildScheduledEventResponse",
-        },
-      );
+      return S.suspend(() => __S(389, __c48, 5).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetGuildScheduledEventResponse",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -19261,37 +15385,37 @@ function __c49(j: number): any {
           id: S.String,
           title: S.String,
           description: S.String,
-          emoji: SettingsEmojiResponse,
-          role_ids: OnboardingPromptOptionResponseRoleIdsList,
-          channel_ids: OnboardingPromptOptionResponseChannelIdsList,
+          emoji: __S(379, __c47, 3),
+          role_ids: __S(9, __c1, 1),
+          channel_ids: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "OnboardingPromptOptionResponse",
       });
     case 1:
-      return S.Array(OnboardingPromptOptionResponse);
+      return S.Array(__S(392, __c49, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
-          options: OnboardingPromptResponseOptionsList,
+          options: __S(393, __c49, 1),
           single_select: S.Boolean,
           required: S.Boolean,
           in_onboarding: S.Boolean,
-          type: OnboardingPromptType,
+          type: S.Number,
         }),
       ).annotate({ identifier: "OnboardingPromptResponse" });
     case 3:
-      return S.Array(OnboardingPromptResponse);
+      return S.Array(__S(394, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String,
-          prompts: UserGuildOnboardingResponsePromptsList,
-          default_channel_ids: UserGuildOnboardingResponseDefaultChannelIdsList,
+          prompts: __S(395, __c49, 3),
+          default_channel_ids: __S(9, __c1, 1),
           enabled: S.Boolean,
-          mode: GuildOnboardingMode,
+          mode: S.Number,
         }),
       ).annotate({
         identifier: "UserGuildOnboardingResponse",
@@ -19348,7 +15472,7 @@ function __c50(j: number): any {
         S.Struct({
           code: S.NullOr(S.String),
           uses: S.Number,
-          error: S.optional(S.NullOr(VanityURLErrorResponse)),
+          error: S.optional(S.NullOr(__S(401, __c50, 1))),
         }),
       ).annotate({ identifier: "VanityURLResponse" });
     case 3:
@@ -19388,9 +15512,9 @@ function __c50(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(GetGuildWebhooksResponseBodyItem);
+      return S.Array(__S(404, __c50, 4));
     case 6:
-      return S.suspend(() => GetGuildWebhooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(405, __c50, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetGuildWebhooksResponse",
       });
     case 7:
@@ -19417,12 +15541,12 @@ function __c51(j: number): any {
         identifier: "GuildWelcomeScreenChannelResponse",
       });
     case 1:
-      return S.Array(GuildWelcomeScreenChannelResponse);
+      return S.Array(__S(408, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.NullOr(S.String),
-          welcome_channels: GuildWelcomeScreenResponseWelcomeChannelsList,
+          welcome_channels: __S(409, __c51, 1),
         }),
       ).annotate({
         identifier: "GuildWelcomeScreenResponse",
@@ -19442,17 +15566,17 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "WidgetChannel" });
     case 5:
-      return S.Array(WidgetChannel);
+      return S.Array(__S(412, __c51, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           username: S.String,
-          discriminator: WidgetUserDiscriminator,
+          discriminator: S.String,
           avatar: S.NullOr(S.Unknown),
           status: S.String,
           avatar_url: S.String,
-          activity: S.optional(GithubCheckApp),
+          activity: S.optional(__S(299, __c37, 3)),
           deaf: S.optional(S.Boolean),
           mute: S.optional(S.Boolean),
           self_deaf: S.optional(S.Boolean),
@@ -19462,7 +15586,7 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "WidgetMember" });
     case 7:
-      return S.Array(WidgetMember);
+      return S.Array(__S(414, __c51, 6));
   }
 }
 function __c52(j: number): any {
@@ -19473,8 +15597,8 @@ function __c52(j: number): any {
           id: S.String,
           name: S.String,
           instant_invite: S.NullOr(S.String),
-          channels: WidgetResponseChannelsList,
-          members: WidgetResponseMembersList,
+          channels: __S(413, __c51, 5),
+          members: __S(415, __c51, 7),
           presence_count: S.Number,
         }),
       ).annotate({ identifier: "WidgetResponse" });
@@ -19482,7 +15606,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          style: S.optional(WidgetImageStyles.pipe(T.Query())),
+          style: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/widget.png", code: 200 })),
       ).annotate({ identifier: "GetGuildWidgetPngRequest" });
     case 2:
@@ -19521,7 +15645,7 @@ function __c52(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: TargetUsersJobStatusTypes,
+          status: S.Number,
           total_users: S.Number,
           processed_users: S.Number,
           created_at: S.NullOr(S.String),
@@ -19549,9 +15673,9 @@ function __c53(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/lobbies/{lobby_id}/messages", code: 200 })),
       ).annotate({ identifier: "GetLobbyMessagesRequest" });
     case 1:
-      return S.Array(LobbyMessageResponse);
+      return S.Array(__S(235, __c29, 3));
     case 2:
-      return S.suspend(() => GetLobbyMessagesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(425, __c53, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetLobbyMessagesResponse",
       });
     case 3:
@@ -19577,7 +15701,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           avatar: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(UserAvatarDecorationResponse)),
+          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
           banner: S.NullOr(S.String),
           communication_disabled_until: S.NullOr(S.String),
           flags: S.Number,
@@ -19585,9 +15709,9 @@ function __c53(j: number): any {
           nick: S.NullOr(S.String),
           pending: S.Boolean,
           premium_since: S.NullOr(S.String),
-          roles: PrivateGuildMemberResponseRolesList,
-          collectibles: S.optional(S.NullOr(UserCollectiblesResponse)),
-          user: UserResponse,
+          roles: __S(9, __c1, 1),
+          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
+          user: __S(5, __c0, 5),
           mute: S.Boolean,
           deaf: S.Boolean,
           permissions: S.optional(S.String),
@@ -19614,10 +15738,10 @@ function __c54(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          application: ApplicationResponse,
+          application: __S(148, __c18, 4),
           expires: S.String,
-          scopes: OAuth2GetAuthorizationResponseScopesList,
-          user: S.optional(UserResponse),
+          scopes: __S(76, __c9, 4),
+          user: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "OAuth2GetAuthorizationResponse",
@@ -19640,12 +15764,12 @@ function __c54(j: number): any {
           banner: S.optional(S.NullOr(S.String)),
           accent_color: S.optional(S.NullOr(S.Number)),
           global_name: S.NullOr(S.String),
-          avatar_decoration_data: S.optional(S.NullOr(UserAvatarDecorationResponse)),
-          collectibles: S.optional(S.NullOr(UserCollectiblesResponse)),
-          primary_guild: S.optional(S.NullOr(UserPrimaryGuildResponse)),
+          avatar_decoration_data: S.optional(S.NullOr(__S(1, __c0, 1))),
+          collectibles: S.optional(S.NullOr(__S(3, __c0, 3))),
+          primary_guild: S.optional(S.NullOr(__S(4, __c0, 4))),
           mfa_enabled: S.Boolean,
-          locale: AvailableLocalesEnum,
-          premium_type: S.optional(PremiumTypes),
+          locale: S.String,
+          premium_type: S.optional(S.Number),
           email: S.optional(S.NullOr(S.String)),
           verified: S.optional(S.Boolean),
         }),
@@ -19706,11 +15830,11 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "OAuth2Key" });
     case 1:
-      return S.Array(OAuth2Key);
+      return S.Array(__S(440, __c55, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: OAuth2GetKeysKeysList,
+          keys: __S(441, __c55, 1),
         }),
       ).annotate({ identifier: "OAuth2GetKeys" });
     case 3:
@@ -19725,7 +15849,7 @@ function __c55(j: number): any {
           channel_id: S.NullOr(S.String),
           deaf: S.Boolean,
           guild_id: S.NullOr(S.String),
-          member: S.optional(GuildMemberResponse),
+          member: S.optional(__S(11, __c1, 3)),
           mute: S.Boolean,
           request_to_speak_timestamp: S.NullOr(S.String),
           suppress: S.Boolean,
@@ -19758,12 +15882,12 @@ function __c55(j: number): any {
         S.Struct({
           id: S.String,
           user_id: S.String,
-          sku_ids: SubscriptionResponseSkuIdsList,
-          renewal_sku_ids: S.NullOr(SubscriptionResponseRenewalSkuIdsList),
-          entitlement_ids: SubscriptionResponseEntitlementIdsList,
+          sku_ids: __S(9, __c1, 1),
+          renewal_sku_ids: S.NullOr(__S(9, __c1, 1)),
+          entitlement_ids: __S(9, __c1, 1),
           current_period_start: S.String,
           current_period_end: S.String,
-          status: SubscriptionResponseStatusType,
+          status: S.Number,
           canceled_at: S.NullOr(S.String),
           country: S.optional(S.NullOr(S.String)),
         }),
@@ -19785,11 +15909,9 @@ function __c55(j: number): any {
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SubscriptionResponse);
+      return S.Array(__S(446, __c55, 6));
     case 1:
-      return S.suspend(() =>
-        GetSkuSubscriptionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(448, __c56, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSkuSubscriptionsResponse",
       });
     case 2:
@@ -19799,11 +15921,9 @@ function __c56(j: number): any {
         identifier: "GetSoundboardDefaultSoundsRequest",
       });
     case 3:
-      return S.Array(SoundboardSoundResponse);
+      return S.Array(__S(116, __c14, 4));
     case 4:
-      return S.suspend(() =>
-        GetSoundboardDefaultSoundsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(451, __c56, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSoundboardDefaultSoundsResponse",
       });
     case 5:
@@ -19840,7 +15960,7 @@ function __c56(j: number): any {
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => GetStickerResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(455, __c56, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetStickerResponse",
       });
     case 1:
@@ -19850,7 +15970,7 @@ function __c57(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sticker-packs/{pack_id}", code: 200 })),
       ).annotate({ identifier: "GetStickerPackRequest" });
     case 2:
-      return S.Array(StandardStickerResponse);
+      return S.Array(__S(165, __c20, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19858,7 +15978,7 @@ function __c57(j: number): any {
           sku_id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          stickers: StickerPackResponseStickersList,
+          stickers: __S(458, __c57, 2),
           cover_sticker_id: S.optional(S.String),
           banner_asset_id: S.optional(S.String),
         }),
@@ -19933,7 +16053,7 @@ function __c58(j: number): any {
         ]),
       );
     case 1:
-      return S.suspend(() => GetWebhookResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(464, __c58, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetWebhookResponse",
       });
     case 2:
@@ -19976,7 +16096,7 @@ function __c58(j: number): any {
         ]),
       );
     case 4:
-      return S.suspend(() => GetWebhookByTokenResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(467, __c58, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetWebhookByTokenResponse",
       });
     case 5:
@@ -20011,9 +16131,7 @@ function __c58(j: number): any {
 function __c59(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        GuildRoleMemberCountsResponseBodyMap.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(471, __c58, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "GuildRoleMemberCountsResponse",
       });
     case 1:
@@ -20082,7 +16200,7 @@ function __c59(j: number): any {
         ]),
       );
     case 3:
-      return S.suspend(() => InviteResolveResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(474, __c59, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "InviteResolveResponse",
       });
     case 4:
@@ -20090,7 +16208,7 @@ function __c59(j: number): any {
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           request_id: S.String.pipe(T.Label()),
-          action: S.optional(GuildJoinRequestApplicationStatus),
+          action: S.optional(S.String),
           rejection_reason: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/requests/{request_id}", code: 200 }),
@@ -20152,7 +16270,7 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: ListApplicationEmojisResponseItemsList,
+          items: __S(358, __c44, 6),
         }),
       ).annotate({
         identifier: "ListApplicationEmojisResponse",
@@ -20238,11 +16356,9 @@ function __c60(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(/*@__PURE__*/ S.NullOr(ListAutoModerationRulesResponseBodyItem));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(485, __c60, 5)));
     case 7:
-      return S.suspend(() =>
-        ListAutoModerationRulesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(486, __c60, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAutoModerationRulesResponse",
       });
   }
@@ -20313,13 +16429,11 @@ function __c61(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(ListChannelInvitesResponseBodyItem));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(489, __c61, 1)));
     case 3:
-      return S.suspend(() => ListChannelInvitesResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListChannelInvitesResponse",
-        },
-      );
+      return S.suspend(() => __S(490, __c61, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListChannelInvitesResponse",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -20359,11 +16473,9 @@ function __c61(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(ListChannelWebhooksResponseBodyItem);
+      return S.Array(__S(493, __c61, 5));
     case 7:
-      return S.suspend(() =>
-        ListChannelWebhooksResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(494, __c61, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListChannelWebhooksResponse",
       });
   }
@@ -20379,11 +16491,9 @@ function __c62(j: number): any {
         identifier: "ListDeprecatedPinsRequest",
       });
     case 1:
-      return S.suspend(() => ListDeprecatedPinsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListDeprecatedPinsResponse",
-        },
-      );
+      return S.suspend(() => __S(318, __c39, 6).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDeprecatedPinsResponse",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20400,11 +16510,9 @@ function __c62(j: number): any {
         identifier: "ListGuildApplicationCommandPermissionsRequest",
       });
     case 3:
-      return S.Array(CommandPermissionsResponse);
+      return S.Array(__S(366, __c45, 6));
     case 4:
-      return S.suspend(() =>
-        ListGuildApplicationCommandPermissionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(499, __c62, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildApplicationCommandPermissionsResponse",
       });
     case 5:
@@ -20429,7 +16537,7 @@ function __c62(j: number): any {
           guild_id: S.String.pipe(T.Label()),
           user_id: S.optional(S.String.pipe(T.Query())),
           target_id: S.optional(S.String.pipe(T.Query())),
-          action_type: S.optional(AuditLogActionTypes.pipe(T.Query())),
+          action_type: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -20452,21 +16560,21 @@ function __c62(j: number): any {
 function __c63(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AuditLogObjectChangeResponse);
+      return S.Array(__S(503, __c62, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          action_type: AuditLogActionTypes,
+          action_type: S.Number,
           user_id: S.NullOr(S.String),
           target_id: S.NullOr(S.String),
-          changes: S.optional(AuditLogEntryResponseChangesList),
-          options: S.optional(AuditLogEntryResponseOptionsMap),
+          changes: S.optional(__S(504, __c63, 0)),
+          options: S.optional(__S(15, __c1, 7)),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogEntryResponse" });
     case 2:
-      return S.Array(AuditLogEntryResponse);
+      return S.Array(__S(505, __c63, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -20483,7 +16591,7 @@ function __c63(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(GuildAuditLogResponseIntegrationsItem);
+      return S.Array(__S(508, __c63, 4));
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -20515,7 +16623,7 @@ function __c63(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(GuildAuditLogResponseWebhooksItem);
+      return S.Array(__S(510, __c63, 6));
   }
 }
 function __c64(j: number): any {
@@ -20589,7 +16697,7 @@ function __c64(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(GuildAuditLogResponseGuildScheduledEventsItem);
+      return S.Array(__S(512, __c64, 0));
     case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -20661,18 +16769,18 @@ function __c64(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(/*@__PURE__*/ S.NullOr(GuildAuditLogResponseAutoModerationRulesItem));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(514, __c64, 2)));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          audit_log_entries: GuildAuditLogResponseAuditLogEntriesList,
-          users: GuildAuditLogResponseUsersList,
-          integrations: GuildAuditLogResponseIntegrationsList,
-          webhooks: GuildAuditLogResponseWebhooksList,
-          guild_scheduled_events: GuildAuditLogResponseGuildScheduledEventsList,
-          threads: GuildAuditLogResponseThreadsList,
-          application_commands: GuildAuditLogResponseApplicationCommandsList,
-          auto_moderation_rules: GuildAuditLogResponseAutoModerationRulesList,
+          audit_log_entries: __S(506, __c63, 2),
+          users: __S(6, __c0, 6),
+          integrations: __S(509, __c63, 5),
+          webhooks: __S(511, __c63, 7),
+          guild_scheduled_events: __S(513, __c64, 1),
+          threads: __S(316, __c39, 4),
+          application_commands: __S(40, __c5, 0),
+          auto_moderation_rules: __S(515, __c64, 3),
         }),
       ).annotate({ identifier: "GuildAuditLogResponse" });
     case 5:
@@ -20685,9 +16793,9 @@ function __c64(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/bans", code: 200 })),
       ).annotate({ identifier: "ListGuildBansRequest" });
     case 6:
-      return S.Array(GuildBanResponse);
+      return S.Array(__S(368, __c46, 0));
     case 7:
-      return S.suspend(() => ListGuildBansResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(518, __c64, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildBansResponse",
       });
   }
@@ -20770,9 +16878,9 @@ function __c65(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(ListGuildChannelsResponseBodyItem);
+      return S.Array(__S(521, __c65, 1));
     case 3:
-      return S.suspend(() => ListGuildChannelsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(522, __c65, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildChannelsResponse",
       });
     case 4:
@@ -20782,7 +16890,7 @@ function __c65(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/emojis", code: 200 })),
       ).annotate({ identifier: "ListGuildEmojisRequest" });
     case 5:
-      return S.suspend(() => ListGuildEmojisResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(358, __c44, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildEmojisResponse",
       });
     case 6:
@@ -20821,11 +16929,9 @@ function __c65(j: number): any {
 function __c66(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListGuildIntegrationsResponseBodyItem);
+      return S.Array(__S(527, __c65, 7));
     case 1:
-      return S.suspend(() =>
-        ListGuildIntegrationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(528, __c66, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildIntegrationsResponse",
       });
     case 2:
@@ -20890,9 +16996,9 @@ function __c66(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(/*@__PURE__*/ S.NullOr(ListGuildInvitesResponseBodyItem));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(531, __c66, 3)));
     case 5:
-      return S.suspend(() => ListGuildInvitesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(532, __c66, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildInvitesResponse",
       });
     case 6:
@@ -20904,13 +17010,13 @@ function __c66(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/members", code: 200 })),
       ).annotate({ identifier: "ListGuildMembersRequest" });
     case 7:
-      return S.Array(GuildMemberResponse);
+      return S.Array(__S(11, __c1, 3));
   }
 }
 function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListGuildMembersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(535, __c66, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildMembersResponse",
       });
     case 1:
@@ -20920,7 +17026,7 @@ function __c67(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/roles", code: 200 })),
       ).annotate({ identifier: "ListGuildRolesRequest" });
     case 2:
-      return S.suspend(() => ListGuildRolesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildRolesResponse",
       });
     case 3:
@@ -20944,11 +17050,9 @@ function __c67(j: number): any {
         identifier: "ListGuildScheduledEventExceptionUsersRequest",
       });
     case 4:
-      return S.Array(ScheduledEventUserResponse);
+      return S.Array(__S(80, __c10, 0));
     case 5:
-      return S.suspend(() =>
-        ListGuildScheduledEventExceptionUsersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(540, __c67, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildScheduledEventExceptionUsersResponse",
       });
     case 6:
@@ -21033,11 +17137,9 @@ function __c67(j: number): any {
 function __c68(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListGuildScheduledEventsResponseBodyItem);
+      return S.Array(__S(543, __c67, 7));
     case 1:
-      return S.suspend(() =>
-        ListGuildScheduledEventsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(544, __c68, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildScheduledEventsResponse",
       });
     case 2:
@@ -21070,7 +17172,7 @@ function __c68(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: ListGuildSoundboardSoundsResponseItemsList,
+          items: __S(451, __c56, 3),
         }),
       ).annotate({
         identifier: "ListGuildSoundboardSoundsResponse",
@@ -21082,7 +17184,7 @@ function __c68(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/stickers", code: 200 })),
       ).annotate({ identifier: "ListGuildStickersRequest" });
     case 6:
-      return S.suspend(() => ListGuildStickersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(359, __c44, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildStickersResponse",
       });
     case 7:
@@ -21098,13 +17200,11 @@ function __c68(j: number): any {
 function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GuildTemplateResponse);
+      return S.Array(__S(127, __c15, 7));
     case 1:
-      return S.suspend(() => ListGuildTemplatesResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListGuildTemplatesResponse",
-        },
-      );
+      return S.suspend(() => __S(552, __c69, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListGuildTemplatesResponse",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -21124,11 +17224,9 @@ function __c69(j: number): any {
         }),
       ).annotate({ identifier: "VoiceRegionResponse" });
     case 4:
-      return S.Array(VoiceRegionResponse);
+      return S.Array(__S(555, __c69, 3));
     case 5:
-      return S.suspend(() =>
-        ListGuildVoiceRegionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(556, __c69, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGuildVoiceRegionsResponse",
       });
     case 6:
@@ -21139,7 +17237,7 @@ function __c69(j: number): any {
           emoji_name: S.String.pipe(T.Label()),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(ReactionTypes.pipe(T.Query())),
+          type: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -21151,9 +17249,7 @@ function __c69(j: number): any {
         identifier: "ListMessageReactionsByEmojiRequest",
       });
     case 7:
-      return S.suspend(() =>
-        ListMessageReactionsByEmojiResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMessageReactionsByEmojiResponse",
       });
   }
@@ -21171,7 +17267,7 @@ function __c70(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/channels/{channel_id}/messages", code: 200 })),
       ).annotate({ identifier: "ListMessagesRequest" });
     case 1:
-      return S.suspend(() => ListMessagesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(318, __c39, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMessagesResponse",
       });
     case 2:
@@ -21192,38 +17288,38 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: IntegrationTypes,
-          account: AccountResponse,
-          guild: ConnectedAccountGuildResponse,
+          type: S.String,
+          account: __S(507, __c63, 3),
+          guild: __S(563, __c70, 3),
         }),
       ).annotate({
         identifier: "ConnectedAccountIntegrationResponse",
       });
     case 5:
-      return S.Array(ConnectedAccountIntegrationResponse);
+      return S.Array(__S(564, __c70, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          type: ConnectedAccountProviders,
+          type: S.String,
           friend_sync: S.Boolean,
-          integrations: S.optional(ConnectedAccountResponseIntegrationsList),
+          integrations: S.optional(__S(565, __c70, 5)),
           show_activity: S.Boolean,
           two_way_link: S.Boolean,
           verified: S.Boolean,
-          visibility: ConnectedAccountVisibility,
+          visibility: S.Number,
           revoked: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ConnectedAccountResponse" });
     case 7:
-      return S.Array(ConnectedAccountResponse);
+      return S.Array(__S(566, __c70, 6));
   }
 }
 function __c71(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListMyConnectionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(567, __c70, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMyConnectionsResponse",
       });
     case 1:
@@ -21245,15 +17341,15 @@ function __c71(j: number): any {
           banner: S.NullOr(S.String),
           owner: S.Boolean,
           permissions: S.String,
-          features: MyGuildResponseFeaturesList,
+          features: __S(76, __c9, 4),
           approximate_member_count: S.optional(S.NullOr(S.Number)),
           approximate_presence_count: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "MyGuildResponse" });
     case 3:
-      return S.Array(MyGuildResponse);
+      return S.Array(__S(570, __c71, 2));
     case 4:
-      return S.suspend(() => ListMyGuildsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(571, __c71, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMyGuildsResponse",
       });
     case 5:
@@ -21284,7 +17380,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pinned_at: S.String,
-          message: MessageResponse,
+          message: __S(219, __c27, 3),
         }),
       ).annotate({ identifier: "PinnedMessageResponse" });
   }
@@ -21292,11 +17388,11 @@ function __c71(j: number): any {
 function __c72(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PinnedMessageResponse);
+      return S.Array(__S(575, __c71, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: PinnedMessagesResponseItemsList,
+          items: __S(576, __c72, 0),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "PinnedMessagesResponse" });
@@ -21337,11 +17433,11 @@ function __c72(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/sticker-packs", code: 200 })),
       ).annotate({ identifier: "ListStickerPacksRequest" });
     case 5:
-      return S.Array(StickerPackResponse);
+      return S.Array(__S(459, __c57, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sticker_packs: StickerPackCollectionResponseStickerPacksList,
+          sticker_packs: __S(581, __c72, 5),
         }),
       ).annotate({
         identifier: "StickerPackCollectionResponse",
@@ -21360,7 +17456,7 @@ function __c72(j: number): any {
 function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListThreadMembersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(317, __c39, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListThreadMembersResponse",
       });
     case 1:
@@ -21368,7 +17464,7 @@ function __c73(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/voice/regions", code: 200 })),
       ).annotate({ identifier: "ListVoiceRegionsRequest" });
     case 2:
-      return S.suspend(() => ListVoiceRegionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(556, __c69, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVoiceRegionsResponse",
       });
     case 3:
@@ -21377,7 +17473,7 @@ function __c73(j: number): any {
           client_id: S.String,
           client_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           external_auth_token: S.String,
-          external_auth_type: ApplicationIdentityProviderAuthType,
+          external_auth_type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/partner-sdk/token", code: 200 })),
       ).annotate({ identifier: "PartnerSdkTokenRequest" });
     case 4:
@@ -21386,7 +17482,7 @@ function __c73(j: number): any {
           client_id: S.String,
           client_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           external_auth_token: S.String,
-          external_auth_type: ApplicationIdentityProviderAuthType,
+          external_auth_type: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/partner-sdk/provisional-accounts/unmerge", code: 200 }),
         ),
@@ -21413,7 +17509,7 @@ function __c73(j: number): any {
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           days: S.optional(S.Number.pipe(T.Query())),
-          include_roles: S.optional(PreviewPruneGuildRequestIncludeRoles.pipe(T.Query())),
+          include_roles: S.optional(__S(590, __c73, 6).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/prune", code: 200 })),
       ).annotate({ identifier: "PreviewPruneGuildRequest" });
   }
@@ -21434,7 +17530,7 @@ function __c74(j: number): any {
           guild_id: S.String.pipe(T.Label()),
           days: S.optional(S.NullOr(S.Number)),
           compute_prune_count: S.optional(S.NullOr(S.Boolean)),
-          include_roles: S.optional(S.NullOr(PruneGuildRequestIncludeRoles)),
+          include_roles: S.optional(S.NullOr(__S(593, __c74, 1))),
         }).pipe(T.Http({ method: "POST", uri: "/guilds/{guild_id}/prune", code: 200 })),
       ).annotate({ identifier: "PruneGuildRequest" });
     case 3:
@@ -21446,40 +17542,38 @@ function __c74(j: number): any {
           emoji_id: S.optional(S.NullOr(S.String)),
           emoji_name: S.optional(S.NullOr(S.String)),
           emoji_animated: S.optional(S.NullOr(S.Boolean)),
-          role_ids: S.optional(S.NullOr(OnboardingPromptOptionRequestRoleIdsList)),
-          channel_ids: S.optional(S.NullOr(OnboardingPromptOptionRequestChannelIdsList)),
+          role_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
+          channel_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
         }),
       ).annotate({
         identifier: "OnboardingPromptOptionRequest",
       });
     case 4:
-      return S.Array(OnboardingPromptOptionRequest);
+      return S.Array(__S(595, __c74, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
-          options: UpdateOnboardingPromptRequestOptionsList,
+          options: __S(596, __c74, 4),
           single_select: S.optional(S.NullOr(S.Boolean)),
           required: S.optional(S.NullOr(S.Boolean)),
           in_onboarding: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(OnboardingPromptType)),
+          type: S.optional(S.NullOr(S.Number)),
           id: S.String,
         }),
       ).annotate({
         identifier: "UpdateOnboardingPromptRequest",
       });
     case 6:
-      return S.Array(UpdateOnboardingPromptRequest);
+      return S.Array(__S(597, __c74, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          prompts: S.optional(S.NullOr(PutGuildsOnboardingRequestPromptsList)),
+          prompts: S.optional(S.NullOr(__S(598, __c74, 6))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          default_channel_ids: S.optional(
-            S.NullOr(PutGuildsOnboardingRequestDefaultChannelIdsList),
-          ),
-          mode: S.optional(S.NullOr(GuildOnboardingMode)),
+          default_channel_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
+          mode: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/guilds/{guild_id}/onboarding", code: 200 })),
       ).annotate({
         identifier: "PutGuildsOnboardingRequest",
@@ -21492,10 +17586,10 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String,
-          prompts: GuildOnboardingResponsePromptsList,
-          default_channel_ids: GuildOnboardingResponseDefaultChannelIdsList,
+          prompts: __S(395, __c49, 3),
+          default_channel_ids: __S(9, __c1, 1),
           enabled: S.Boolean,
-          mode: GuildOnboardingMode,
+          mode: S.Number,
         }),
       ).annotate({ identifier: "GuildOnboardingResponse" });
     case 1:
@@ -21571,41 +17665,37 @@ function __c75(j: number): any {
         ]),
       );
     case 4:
-      return S.suspend(() => RevokeInviteResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(603, __c75, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "RevokeInviteResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
-          sort_by: S.optional(SortingMode.pipe(T.Query())),
-          sort_order: S.optional(SortingOrder.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
           content: S.optional(S.String.pipe(T.Query())),
           slop: S.optional(S.Number.pipe(T.Query())),
-          author_id: S.optional(SearchGuildRequestAuthorIdList.pipe(T.Query())),
-          author_type: S.optional(SearchGuildRequestAuthorTypeList.pipe(T.Query())),
-          mentions: S.optional(SearchGuildRequestMentionsList.pipe(T.Query())),
-          mentions_role_id: S.optional(SearchGuildRequestMentionsRoleIdList.pipe(T.Query())),
-          replied_to_user_id: S.optional(SearchGuildRequestRepliedToUserIdList.pipe(T.Query())),
-          replied_to_message_id: S.optional(
-            SearchGuildRequestRepliedToMessageIdList.pipe(T.Query()),
-          ),
+          author_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          author_type: S.optional(__S(76, __c9, 4).pipe(T.Query())),
+          mentions: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          mentions_role_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          replied_to_user_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          replied_to_message_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
           mention_everyone: S.optional(S.Boolean.pipe(T.Query())),
           min_id: S.optional(S.String.pipe(T.Query())),
           max_id: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          has: S.optional(SearchGuildRequestHasList.pipe(T.Query())),
-          link_hostname: S.optional(SearchGuildRequestLinkHostnameList.pipe(T.Query())),
-          embed_provider: S.optional(SearchGuildRequestEmbedProviderList.pipe(T.Query())),
-          embed_type: S.optional(SearchGuildRequestEmbedTypeList.pipe(T.Query())),
-          attachment_extension: S.optional(
-            SearchGuildRequestAttachmentExtensionList.pipe(T.Query()),
-          ),
-          attachment_filename: S.optional(SearchGuildRequestAttachmentFilenameList.pipe(T.Query())),
+          has: S.optional(__S(76, __c9, 4).pipe(T.Query())),
+          link_hostname: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          embed_provider: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          embed_type: S.optional(__S(76, __c9, 4).pipe(T.Query())),
+          attachment_extension: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          attachment_filename: S.optional(__S(9, __c1, 1).pipe(T.Query())),
           pinned: S.optional(S.Boolean.pipe(T.Query())),
           include_nsfw: S.optional(S.Boolean.pipe(T.Query())),
-          channel_id: S.optional(SearchGuildRequestChannelIdList.pipe(T.Query())),
+          channel_id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/guilds/{guild_id}/messages/search", code: 200 })),
       ).annotate({ identifier: "SearchGuildRequest" });
     case 6:
@@ -21621,7 +17711,7 @@ function __c75(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(SearchMessageResponseComponentsItem);
+      return S.Array(__S(606, __c75, 6));
   }
 }
 function __c76(j: number): any {
@@ -21644,7 +17734,7 @@ function __c76(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(SearchMessageResponseStickersItem);
+      return S.Array(__S(608, __c76, 0));
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 3:
@@ -21680,61 +17770,61 @@ function __c76(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: MessageType,
+          type: S.Number,
           content: S.String,
-          mentions: SearchMessageResponseMentionsList,
-          mention_roles: SearchMessageResponseMentionRolesList,
-          attachments: SearchMessageResponseAttachmentsList,
-          embeds: SearchMessageResponseEmbedsList,
+          mentions: __S(6, __c0, 6),
+          mention_roles: __S(9, __c1, 1),
+          attachments: __S(150, __c18, 6),
+          embeds: __S(162, __c20, 2),
           timestamp: S.String,
           edited_timestamp: S.NullOr(S.String),
           flags: S.Number,
-          components: SearchMessageResponseComponentsList,
-          stickers: S.optional(SearchMessageResponseStickersList),
-          sticker_items: S.optional(SearchMessageResponseStickerItemsList),
+          components: __S(607, __c75, 7),
+          stickers: S.optional(__S(609, __c76, 1)),
+          sticker_items: S.optional(__S(169, __c21, 1)),
           id: S.String,
           channel_id: S.String,
-          author: UserResponse,
+          author: __S(5, __c0, 5),
           pinned: S.Boolean,
           mention_everyone: S.Boolean,
           tts: S.Boolean,
-          call: S.optional(MessageCallResponse),
-          activity: S.optional(MessageActivityResponse),
-          application: S.optional(BasicApplicationResponseWithBot),
+          call: S.optional(__S(170, __c21, 2)),
+          activity: S.optional(__S(171, __c21, 3)),
+          application: S.optional(__S(172, __c21, 4)),
           application_id: S.optional(S.String),
-          interaction: S.optional(MessageInteractionResponse),
-          nonce: S.optional(SearchMessageResponseNonce),
+          interaction: S.optional(__S(173, __c21, 5)),
+          nonce: S.optional(__S(610, __c76, 2)),
           webhook_id: S.optional(S.String),
-          message_reference: S.optional(MessageReferenceResponse),
-          thread: S.optional(ThreadResponse),
-          mention_channels: S.optional(SearchMessageResponseMentionChannelsList),
-          role_subscription_data: S.optional(MessageRoleSubscriptionDataResponse),
-          purchase_notification: S.optional(PurchaseNotificationResponse),
+          message_reference: S.optional(__S(175, __c21, 7)),
+          thread: S.optional(__S(178, __c22, 2)),
+          mention_channels: S.optional(__S(180, __c22, 4)),
+          role_subscription_data: S.optional(__S(181, __c22, 5)),
+          purchase_notification: S.optional(__S(183, __c22, 7)),
           position: S.optional(S.Number),
-          resolved: S.optional(ResolvedObjectsResponse),
-          poll: S.optional(PollResponse),
-          shared_client_theme: S.optional(CustomClientThemeResponse),
-          interaction_metadata: S.optional(SearchMessageResponseInteractionMetadata),
-          message_snapshots: S.optional(SearchMessageResponseMessageSnapshotsList),
-          lobby_member: S.optional(MessageLobbyMemberResponse),
-          reactions: S.optional(SearchMessageResponseReactionsList),
-          referenced_message: S.optional(S.NullOr(BasicMessageResponse)),
+          resolved: S.optional(__S(190, __c23, 6)),
+          poll: S.optional(__S(198, __c24, 6)),
+          shared_client_theme: S.optional(__S(199, __c24, 7)),
+          interaction_metadata: S.optional(__S(611, __c76, 3)),
+          message_snapshots: S.optional(__S(207, __c25, 7)),
+          lobby_member: S.optional(__S(208, __c26, 0)),
+          reactions: S.optional(__S(211, __c26, 3)),
+          referenced_message: S.optional(S.NullOr(__S(218, __c27, 2))),
           hit: S.Boolean,
           restriction_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SearchMessageResponse" });
     case 5:
-      return S.Array(SearchMessageResponse);
+      return S.Array(__S(612, __c76, 4));
     case 6:
-      return S.Array(GuildSearchResponseMessagesItemList);
+      return S.Array(__S(613, __c76, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          messages: GuildSearchResponseMessagesList,
+          messages: __S(614, __c76, 6),
           doing_deep_historical_index: S.Boolean,
           total_results: S.Number,
-          threads: S.optional(S.NullOr(GuildSearchResponseThreadsList)),
-          members: S.optional(S.NullOr(GuildSearchResponseMembersList)),
+          threads: S.optional(S.NullOr(__S(316, __c39, 4))),
+          members: S.optional(S.NullOr(__S(317, __c39, 5))),
           documents_indexed: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GuildSearchResponse" });
@@ -21753,11 +17843,9 @@ function __c77(j: number): any {
         identifier: "SearchGuildMembersRequest",
       });
     case 1:
-      return S.suspend(() => SearchGuildMembersResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "SearchGuildMembersResponse",
-        },
-      );
+      return S.suspend(() => __S(535, __c66, 7).pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchGuildMembersResponse",
+      });
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 3:
@@ -21768,11 +17856,11 @@ function __c77(j: number): any {
           slop: S.optional(S.Number.pipe(T.Query())),
           min_id: S.optional(S.String.pipe(T.Query())),
           max_id: S.optional(S.String.pipe(T.Query())),
-          tag: S.optional(SearchThreadRequestTag.pipe(T.Query())),
-          tag_setting: S.optional(ThreadSearchTagSetting.pipe(T.Query())),
+          tag: S.optional(__S(618, __c77, 2).pipe(T.Query())),
+          tag_setting: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
-          sort_by: S.optional(ThreadSortingMode.pipe(T.Query())),
-          sort_order: S.optional(SortingOrder.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/channels/{channel_id}/threads/search", code: 200 })),
@@ -21780,10 +17868,10 @@ function __c77(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          threads: ThreadSearchResponseThreadsList,
-          members: ThreadSearchResponseMembersList,
+          threads: __S(316, __c39, 4),
+          members: __S(317, __c39, 5),
           has_more: S.Boolean,
-          first_messages: S.optional(ThreadSearchResponseFirstMessagesList),
+          first_messages: S.optional(__S(318, __c39, 6)),
           total_results: S.Number,
         }),
       ).annotate({ identifier: "ThreadSearchResponse" });
@@ -21808,7 +17896,7 @@ function __c77(j: number): any {
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
           overwrite_id: S.String.pipe(T.Label()),
-          type: S.optional(S.NullOr(ChannelPermissionOverwrites)),
+          type: S.optional(S.NullOr(S.Number)),
           allow: S.optional(S.NullOr(S.Number)),
           deny: S.optional(S.NullOr(S.Number)),
         }).pipe(
@@ -21827,9 +17915,7 @@ function __c77(j: number): any {
           application_id: S.String.pipe(T.Label()),
           guild_id: S.String.pipe(T.Label()),
           command_id: S.String.pipe(T.Label()),
-          permissions: S.optional(
-            S.NullOr(SetGuildApplicationCommandPermissionsRequestPermissionsList),
-          ),
+          permissions: S.optional(S.NullOr(__S(365, __c45, 5))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21876,7 +17962,7 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           default: S.String,
-          localizations: S.optional(S.NullOr(UpdateApplicationRequestDescriptionLocalizationsMap)),
+          localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
         }),
       ).annotate({
         identifier: "UpdateApplicationRequestDescription",
@@ -21884,7 +17970,7 @@ function __c78(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(S.NullOr(ApplicationOAuth2InstallParamsScopesList)),
+          scopes: S.optional(S.NullOr(__S(76, __c9, 4))),
           permissions: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -21893,13 +17979,13 @@ function __c78(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          oauth2_install_params: S.optional(S.NullOr(ApplicationOAuth2InstallParams)),
+          oauth2_install_params: S.optional(S.NullOr(__S(629, __c78, 5))),
         }),
       ).annotate({
         identifier: "ApplicationIntegrationTypeConfiguration",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(ApplicationIntegrationTypeConfiguration));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(630, __c78, 6)));
   }
 }
 function __c79(j: number): any {
@@ -21908,27 +17994,23 @@ function __c79(j: number): any {
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(UpdateApplicationRequestDescription)),
+          description: S.optional(S.NullOr(__S(628, __c78, 4))),
           icon: S.optional(S.NullOr(S.String)),
           cover_image: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.NullOr(S.String)),
           flags: S.optional(S.NullOr(S.Number)),
           interactions_endpoint_url: S.optional(S.NullOr(S.String)),
-          explicit_content_filter: S.optional(S.NullOr(ApplicationExplicitContentFilterTypes)),
+          explicit_content_filter: S.optional(S.NullOr(S.Number)),
           max_participants: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(ApplicationTypes)),
-          tags: S.optional(S.NullOr(UpdateApplicationRequestTagsList)),
+          type: S.optional(S.NullOr(S.Number)),
+          tags: S.optional(S.NullOr(__S(9, __c1, 1))),
           custom_install_url: S.optional(S.NullOr(S.String)),
-          install_params: S.optional(S.NullOr(ApplicationOAuth2InstallParams)),
+          install_params: S.optional(S.NullOr(__S(629, __c78, 5))),
           role_connections_verification_url: S.optional(S.NullOr(S.String)),
-          integration_types_config: S.optional(
-            S.NullOr(UpdateApplicationRequestIntegrationTypesConfigMap),
-          ),
-          event_webhooks_status: S.optional(S.NullOr(ApplicationEventWebhooksStatus)),
+          integration_types_config: S.optional(S.NullOr(__S(631, __c78, 7))),
+          event_webhooks_status: S.optional(S.NullOr(S.Number)),
           event_webhooks_url: S.optional(S.NullOr(S.String)),
-          event_webhooks_types: S.optional(
-            S.NullOr(UpdateApplicationRequestEventWebhooksTypesList),
-          ),
+          event_webhooks_types: S.optional(S.NullOr(__S(76, __c9, 4))),
         }).pipe(T.Http({ method: "PATCH", uri: "/applications/{application_id}", code: 200 })),
       ).annotate({ identifier: "UpdateApplicationRequest" });
     case 1:
@@ -22041,28 +18123,22 @@ function __c79(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(UpdateApplicationCommandRequestOptionsItem);
+      return S.Array(__S(633, __c79, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
           command_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          name_localizations: S.optional(
-            S.NullOr(UpdateApplicationCommandRequestNameLocalizationsMap),
-          ),
+          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
           description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(
-            S.NullOr(UpdateApplicationCommandRequestDescriptionLocalizationsMap),
-          ),
-          options: S.optional(S.NullOr(UpdateApplicationCommandRequestOptionsList)),
+          description_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
+          options: S.optional(S.NullOr(__S(634, __c79, 2))),
           default_member_permissions: S.optional(S.NullOr(S.Number)),
           dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(UpdateApplicationCommandRequestContextsList)),
-          integration_types: S.optional(
-            S.NullOr(UpdateApplicationCommandRequestIntegrationTypesList),
-          ),
-          handler: S.optional(S.NullOr(ApplicationCommandHandler)),
+          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
+          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
+          handler: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22094,22 +18170,18 @@ function __c79(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: MetadataItemTypes,
+          type: S.Number,
           key: S.String,
           name: S.String,
-          name_localizations: S.optional(
-            S.NullOr(ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap),
-          ),
+          name_localizations: S.optional(S.NullOr(__S(637, __c79, 5))),
           description: S.String,
-          description_localizations: S.optional(
-            S.NullOr(ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap),
-          ),
+          description_localizations: S.optional(S.NullOr(__S(637, __c79, 5))),
         }),
       ).annotate({
         identifier: "ApplicationRoleConnectionsMetadataItemRequest",
       });
     case 7:
-      return S.Array(ApplicationRoleConnectionsMetadataItemRequest);
+      return S.Array(__S(638, __c79, 6));
   }
 }
 function __c80(j: number): any {
@@ -22118,9 +18190,7 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           application_id: S.String.pipe(T.Label()),
-          body: S.NullOr(UpdateApplicationRoleConnectionsMetadataRequestBodyList).pipe(
-            T.HttpBody(),
-          ),
+          body: S.NullOr(__S(639, __c79, 7)).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22137,7 +18207,7 @@ function __c80(j: number): any {
           application_id: S.String.pipe(T.Label()),
           platform_name: S.optional(S.NullOr(S.String)),
           platform_username: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(UpdateApplicationUserRoleConnectionRequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(15, __c1, 7))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22208,7 +18278,7 @@ function __c80(j: number): any {
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           rule_id: S.String.pipe(T.Label()),
-          body: UpdateAutoModerationRuleRequestBody.pipe(T.HttpBody()),
+          body: __S(642, __c80, 2).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22290,9 +18360,7 @@ function __c80(j: number): any {
         ]),
       );
     case 5:
-      return S.suspend(() =>
-        UpdateAutoModerationRuleResponseBody.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(644, __c80, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateAutoModerationRuleResponse",
       });
     case 6:
@@ -22342,7 +18410,7 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
-          body: UpdateChannelRequestBody.pipe(T.HttpBody()),
+          body: __S(646, __c80, 6).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/channels/{channel_id}", code: 200 })),
       ).annotate({ identifier: "UpdateChannelRequest" });
   }
@@ -22419,7 +18487,7 @@ function __c81(j: number): any {
         ]),
       );
     case 1:
-      return S.suspend(() => UpdateChannelResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(648, __c81, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateChannelResponse",
       });
     case 2:
@@ -22430,17 +18498,17 @@ function __c81(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           region: S.optional(S.NullOr(S.String)),
           icon: S.optional(S.NullOr(S.String)),
-          verification_level: S.optional(S.NullOr(VerificationLevels)),
-          default_message_notifications: S.optional(S.NullOr(UserNotificationSettings)),
-          explicit_content_filter: S.optional(S.NullOr(GuildExplicitContentFilterTypes)),
-          preferred_locale: S.optional(S.NullOr(AvailableLocalesEnum)),
-          afk_timeout: S.optional(S.NullOr(AfkTimeouts)),
+          verification_level: S.optional(S.NullOr(S.Number)),
+          default_message_notifications: S.optional(S.NullOr(S.Number)),
+          explicit_content_filter: S.optional(S.NullOr(S.Number)),
+          preferred_locale: S.optional(S.NullOr(S.String)),
+          afk_timeout: S.optional(S.NullOr(S.Number)),
           afk_channel_id: S.optional(S.NullOr(S.String)),
           system_channel_id: S.optional(S.NullOr(S.String)),
           splash: S.optional(S.NullOr(S.String)),
           banner: S.optional(S.NullOr(S.String)),
           system_channel_flags: S.optional(S.NullOr(S.Number)),
-          features: S.optional(S.NullOr(UpdateGuildRequestFeaturesList)),
+          features: S.optional(S.NullOr(__S(106, __c13, 2))),
           discovery_splash: S.optional(S.NullOr(S.String)),
           home_header: S.optional(S.NullOr(S.String)),
           rules_channel_id: S.optional(S.NullOr(S.String)),
@@ -22459,40 +18527,40 @@ function __c81(j: number): any {
           home_header: S.NullOr(S.String),
           splash: S.NullOr(S.String),
           discovery_splash: S.NullOr(S.String),
-          features: GuildResponseFeaturesList,
+          features: __S(76, __c9, 4),
           banner: S.NullOr(S.String),
           owner_id: S.String,
           application_id: S.NullOr(S.String),
           region: S.String,
           afk_channel_id: S.NullOr(S.String),
-          afk_timeout: AfkTimeouts,
+          afk_timeout: S.Number,
           system_channel_id: S.NullOr(S.String),
           system_channel_flags: S.Number,
           widget_enabled: S.Boolean,
           widget_channel_id: S.NullOr(S.String),
-          verification_level: VerificationLevels,
-          roles: GuildResponseRolesList,
-          default_message_notifications: UserNotificationSettings,
-          mfa_level: GuildMFALevel,
-          explicit_content_filter: GuildExplicitContentFilterTypes,
+          verification_level: S.Number,
+          roles: __S(53, __c6, 5),
+          default_message_notifications: S.Number,
+          mfa_level: S.Number,
+          explicit_content_filter: S.Number,
           max_presences: S.NullOr(S.Number),
           max_members: S.Number,
           max_stage_video_channel_users: S.Number,
           max_video_channel_users: S.Number,
           vanity_url_code: S.NullOr(S.String),
-          premium_tier: PremiumGuildTiers,
+          premium_tier: S.Number,
           premium_subscription_count: S.Number,
-          preferred_locale: AvailableLocalesEnum,
+          preferred_locale: S.String,
           rules_channel_id: S.NullOr(S.String),
           safety_alerts_channel_id: S.NullOr(S.String),
           public_updates_channel_id: S.NullOr(S.String),
           premium_progress_bar_enabled: S.Boolean,
           premium_progress_bar_enabled_user_updated_at: S.optional(S.NullOr(S.String)),
           nsfw: S.Boolean,
-          nsfw_level: GuildNSFWContentLevel,
-          emojis: GuildResponseEmojisList,
-          stickers: GuildResponseStickersList,
-          incidents_data: S.NullOr(GuildIncidentsDataResponse),
+          nsfw_level: S.Number,
+          emojis: __S(358, __c44, 6),
+          stickers: __S(359, __c44, 7),
+          incidents_data: S.NullOr(__S(360, __c45, 0)),
         }),
       ).annotate({ identifier: "GuildResponse" });
     case 4:
@@ -22605,7 +18673,7 @@ function __c81(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(UpdateGuildApplicationCommandRequestOptionsItem);
+      return S.Array(__S(652, __c81, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -22613,21 +18681,15 @@ function __c81(j: number): any {
           guild_id: S.String.pipe(T.Label()),
           command_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          name_localizations: S.optional(
-            S.NullOr(UpdateGuildApplicationCommandRequestNameLocalizationsMap),
-          ),
+          name_localizations: S.optional(S.NullOr(__S(15, __c1, 7))),
           description: S.optional(S.NullOr(S.String)),
-          description_localizations: S.optional(
-            S.NullOr(UpdateGuildApplicationCommandRequestDescriptionLocalizationsMap),
-          ),
-          options: S.optional(S.NullOr(UpdateGuildApplicationCommandRequestOptionsList)),
+          description_localizations: S.optional(S.NullOr(__S(31, __c3, 7))),
+          options: S.optional(S.NullOr(__S(653, __c81, 5))),
           default_member_permissions: S.optional(S.NullOr(S.Number)),
           dm_permission: S.optional(S.NullOr(S.Boolean)),
-          contexts: S.optional(S.NullOr(UpdateGuildApplicationCommandRequestContextsList)),
-          integration_types: S.optional(
-            S.NullOr(UpdateGuildApplicationCommandRequestIntegrationTypesList),
-          ),
-          handler: S.optional(S.NullOr(ApplicationCommandHandler)),
+          contexts: S.optional(S.NullOr(__S(30, __c3, 6))),
+          integration_types: S.optional(S.NullOr(__S(30, __c3, 6))),
+          handler: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22644,7 +18706,7 @@ function __c81(j: number): any {
           guild_id: S.String.pipe(T.Label()),
           emoji_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          roles: S.optional(S.NullOr(UpdateGuildEmojiRequestRolesList)),
+          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/emojis/{emoji_id}", code: 200 }),
         ),
@@ -22669,7 +18731,7 @@ function __c82(j: number): any {
           guild_id: S.String.pipe(T.Label()),
           user_id: S.String.pipe(T.Label()),
           nick: S.optional(S.NullOr(S.String)),
-          roles: S.optional(S.NullOr(UpdateGuildMemberRequestRolesList)),
+          roles: S.optional(S.NullOr(__S(106, __c13, 2))),
           mute: S.optional(S.NullOr(S.Boolean)),
           deaf: S.optional(S.NullOr(S.Boolean)),
           channel_id: S.optional(S.NullOr(S.String)),
@@ -22687,7 +18749,7 @@ function __c82(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           permissions: S.optional(S.NullOr(S.Number)),
           color: S.optional(S.NullOr(S.Number)),
-          colors: S.optional(S.NullOr(RoleColors)),
+          colors: S.optional(S.NullOr(__S(108, __c13, 4))),
           hoist: S.optional(S.NullOr(S.Boolean)),
           mentionable: S.optional(S.NullOr(S.Boolean)),
           icon: S.optional(S.NullOr(S.String)),
@@ -22743,7 +18805,7 @@ function __c82(j: number): any {
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           guild_scheduled_event_id: S.String.pipe(T.Label()),
-          body: UpdateGuildScheduledEventRequestBody.pipe(T.HttpBody()),
+          body: __S(659, __c82, 3).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22823,9 +18885,7 @@ function __c82(j: number): any {
         ]),
       );
     case 6:
-      return S.suspend(() =>
-        UpdateGuildScheduledEventResponseBody.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(661, __c82, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateGuildScheduledEventResponse",
       });
     case 7:
@@ -22905,15 +18965,13 @@ function __c83(j: number): any {
         }),
       ).annotate({ identifier: "GuildWelcomeChannel" });
     case 4:
-      return S.Array(GuildWelcomeChannel);
+      return S.Array(__S(667, __c83, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           guild_id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          welcome_channels: S.optional(
-            S.NullOr(UpdateGuildWelcomeScreenRequestWelcomeChannelsList),
-          ),
+          welcome_channels: S.optional(S.NullOr(__S(668, __c83, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/guilds/{guild_id}/welcome-screen", code: 200 })),
       ).annotate({
@@ -22954,7 +19012,7 @@ function __c84(j: number): any {
         S.Struct({
           lobby_id: S.String.pipe(T.Label()),
           message_id: S.String.pipe(T.Label()),
-          body: UpdateLobbyMessageExternalModerationMetadataRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(15, __c1, 7).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22978,19 +19036,19 @@ function __c84(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(UpdateMessageRequestComponentsItem);
+      return S.Array(__S(673, __c84, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
           message_id: S.String.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(UpdateMessageRequestEmbedsList)),
+          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
           flags: S.optional(S.NullOr(S.Number)),
-          allowed_mentions: S.optional(S.NullOr(MessageAllowedMentionsRequest)),
-          sticker_ids: S.optional(S.NullOr(UpdateMessageRequestStickerIdsList)),
-          components: S.optional(S.NullOr(UpdateMessageRequestComponentsList)),
-          attachments: S.optional(S.NullOr(UpdateMessageRequestAttachmentsList)),
+          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
+          sticker_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
+          components: S.optional(S.NullOr(__S(674, __c84, 2))),
+          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23002,27 +19060,23 @@ function __c84(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.NullOr(UpdateMyApplicationRequestDescription)),
+          description: S.optional(S.NullOr(__S(628, __c78, 4))),
           icon: S.optional(S.NullOr(S.String)),
           cover_image: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.NullOr(S.String)),
           flags: S.optional(S.NullOr(S.Number)),
           interactions_endpoint_url: S.optional(S.NullOr(S.String)),
-          explicit_content_filter: S.optional(S.NullOr(ApplicationExplicitContentFilterTypes)),
+          explicit_content_filter: S.optional(S.NullOr(S.Number)),
           max_participants: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(ApplicationTypes)),
-          tags: S.optional(S.NullOr(UpdateMyApplicationRequestTagsList)),
+          type: S.optional(S.NullOr(S.Number)),
+          tags: S.optional(S.NullOr(__S(9, __c1, 1))),
           custom_install_url: S.optional(S.NullOr(S.String)),
-          install_params: S.optional(S.NullOr(ApplicationOAuth2InstallParams)),
+          install_params: S.optional(S.NullOr(__S(629, __c78, 5))),
           role_connections_verification_url: S.optional(S.NullOr(S.String)),
-          integration_types_config: S.optional(
-            S.NullOr(UpdateMyApplicationRequestIntegrationTypesConfigMap),
-          ),
-          event_webhooks_status: S.optional(S.NullOr(ApplicationEventWebhooksStatus)),
+          integration_types_config: S.optional(S.NullOr(__S(631, __c78, 7))),
+          event_webhooks_status: S.optional(S.NullOr(S.Number)),
           event_webhooks_url: S.optional(S.NullOr(S.String)),
-          event_webhooks_types: S.optional(
-            S.NullOr(UpdateMyApplicationRequestEventWebhooksTypesList),
-          ),
+          event_webhooks_types: S.optional(S.NullOr(__S(76, __c9, 4))),
         }).pipe(T.Http({ method: "PATCH", uri: "/applications/@me", code: 200 })),
       ).annotate({
         identifier: "UpdateMyApplicationRequest",
@@ -23064,7 +19118,7 @@ function __c84(j: number): any {
 function __c85(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateOriginalWebhookMessageRequestComponentsItem);
+      return S.Array(__S(679, __c84, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -23073,11 +19127,11 @@ function __c85(j: number): any {
           thread_id: S.optional(S.String.pipe(T.Query())),
           with_components: S.optional(S.Boolean.pipe(T.Query())),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(UpdateOriginalWebhookMessageRequestEmbedsList)),
-          allowed_mentions: S.optional(S.NullOr(MessageAllowedMentionsRequest)),
-          components: S.optional(S.NullOr(UpdateOriginalWebhookMessageRequestComponentsList)),
-          attachments: S.optional(S.NullOr(UpdateOriginalWebhookMessageRequestAttachmentsList)),
-          poll: S.optional(S.NullOr(PollCreateRequest)),
+          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
+          components: S.optional(S.NullOr(__S(680, __c85, 0))),
+          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
+          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
           flags: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -23105,7 +19159,7 @@ function __c85(j: number): any {
         S.Struct({
           channel_id: S.String.pipe(T.Label()),
           topic: S.optional(S.String),
-          privacy_level: S.optional(StageInstancesPrivacyLevels),
+          privacy_level: S.optional(S.Number),
         }).pipe(T.Http({ method: "PATCH", uri: "/stage-instances/{channel_id}", code: 200 })),
       ).annotate({
         identifier: "UpdateStageInstanceRequest",
@@ -23116,7 +19170,7 @@ function __c85(j: number): any {
           user_id_1: S.String.pipe(T.Label()),
           user_id_2: S.String.pipe(T.Label()),
           message_id: S.String.pipe(T.Label()),
-          body: UpdateUserMessageExternalModerationMetadataRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(15, __c1, 7).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -23191,7 +19245,7 @@ function __c86(j: number): any {
         ]),
       );
     case 1:
-      return S.suspend(() => UpdateWebhookResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(688, __c86, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateWebhookResponse",
       });
     case 2:
@@ -23238,7 +19292,7 @@ function __c86(j: number): any {
         ]),
       );
     case 4:
-      return S.suspend(() => UpdateWebhookByTokenResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(691, __c86, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateWebhookByTokenResponse",
       });
     case 5:
@@ -23254,7 +19308,7 @@ function __c86(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(UpdateWebhookMessageRequestComponentsItem);
+      return S.Array(__S(693, __c86, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -23264,11 +19318,11 @@ function __c86(j: number): any {
           thread_id: S.optional(S.String.pipe(T.Query())),
           with_components: S.optional(S.Boolean.pipe(T.Query())),
           content: S.optional(S.NullOr(S.String)),
-          embeds: S.optional(S.NullOr(UpdateWebhookMessageRequestEmbedsList)),
-          allowed_mentions: S.optional(S.NullOr(MessageAllowedMentionsRequest)),
-          components: S.optional(S.NullOr(UpdateWebhookMessageRequestComponentsList)),
-          attachments: S.optional(S.NullOr(UpdateWebhookMessageRequestAttachmentsList)),
-          poll: S.optional(S.NullOr(PollCreateRequest)),
+          embeds: S.optional(S.NullOr(__S(135, __c16, 7))),
+          allowed_mentions: S.optional(S.NullOr(__S(137, __c17, 1))),
+          components: S.optional(S.NullOr(__S(694, __c86, 6))),
+          attachments: S.optional(S.NullOr(__S(139, __c17, 3))),
+          poll: S.optional(S.NullOr(__S(144, __c18, 0))),
           flags: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -23319,18 +19373,23 @@ function __c87(j: number): any {
           placeholder: S.optional(S.String),
           placeholder_version: S.optional(S.Number),
           title: S.optional(S.NullOr(S.String)),
-          application: S.optional(ApplicationResponse),
+          application: S.optional(__S(148, __c18, 4)),
           clip_created_at: S.optional(S.String),
-          clip_participants: S.optional(AttachmentResponseClipParticipantsList),
+          clip_participants: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "AttachmentResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attachment: AttachmentResponse,
+          attachment: __S(697, __c87, 1),
         }),
       ).annotate({
         identifier: "ActivitiesAttachmentResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

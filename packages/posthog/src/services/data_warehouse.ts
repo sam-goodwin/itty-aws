@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -41,39 +43,19 @@ export interface CreateDataWarehouseDeprovisionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const CreateDataWarehouseDeprovisionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDataWarehouseDeprovisionRequest>;
-
 export interface CreateDataWarehouseDeprovisionResponse {}
-const CreateDataWarehouseDeprovisionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDataWarehouseDeprovisionResponse>;
-
 export interface CreateDataWarehouseOnboardTeamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Schema name for this project's data in the organization's warehouse. Lowercase letters, numbers, and underscores only, max 63 characters. Must be unique within the organization and cannot be changed later. */
   schema_name: string;
 }
-const CreateDataWarehouseOnboardTeamRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDataWarehouseOnboardTeamRequest>;
-
 export interface OnboardWarehouseTeamResponse {
   /** Whether this project is now onboarded onto the managed warehouse */
   onboarded: boolean;
   /** Schema this project's data lands in */
   schema_name: string;
 }
-const OnboardWarehouseTeamResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<OnboardWarehouseTeamResponse>;
-
 export interface CreateDataWarehouseProvisionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -82,101 +64,49 @@ export interface CreateDataWarehouseProvisionRequest {
   /** Schema name for the provisioning project's data in the warehouse. Lowercase letters, numbers, and underscores only, max 63 characters. Cannot be changed later. Required -- the first project gets its own schema, and other projects pick theirs when they join. */
   schema_name: string;
 }
-const CreateDataWarehouseProvisionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDataWarehouseProvisionRequest>;
-
 export interface CreateDataWarehouseProvisionResponse {}
-const CreateDataWarehouseProvisionResponse =
-  CreateDataWarehouseDeprovisionResponse as any as S.Schema<CreateDataWarehouseProvisionResponse>;
-
 export interface DataWarehouseResetPasswordCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const DataWarehouseResetPasswordCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DataWarehouseResetPasswordCreateRequest>;
-
 export interface ResetPasswordResponse {
   username: string;
   password: string | Redacted.Redacted<string>;
 }
-const ResetPasswordResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ResetPasswordResponse>;
-
 export interface DeleteDataWarehouseOrgDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const DeleteDataWarehouseOrgDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteDataWarehouseOrgDestroyRequest>;
-
 export interface DeleteWarehouseOrgResponse {
   /** Deletion lifecycle message from the provisioner */
   status?: string;
   /** duckgres org identifier (the PostHog organization id) */
   org?: string;
 }
-const DeleteWarehouseOrgResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteWarehouseOrgResponse>;
-
 export interface GetDataWarehouseCheckDatabaseNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Database name to check */
   name: string;
 }
-const GetDataWarehouseCheckDatabaseNameRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetDataWarehouseCheckDatabaseNameRequest>;
-
 export interface CheckDatabaseNameResponse {
   name: string;
   available: boolean;
 }
-const CheckDatabaseNameResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CheckDatabaseNameResponse>;
-
 export interface GetDataWarehouseCheckSchemaNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Schema name to check */
   name: string;
 }
-const GetDataWarehouseCheckSchemaNameRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetDataWarehouseCheckSchemaNameRequest>;
-
 export interface CheckSchemaNameResponse {
   /** The schema name that was checked */
   name: string;
   /** Whether the schema name is free within the organization's warehouse */
   available: boolean;
 }
-const CheckSchemaNameResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CheckSchemaNameResponse>;
-
 export type GetDataWarehouseCompletedActivityRequestKind = "all" | "import" | "model";
-const GetDataWarehouseCompletedActivityRequestKind = S.String;
-
 export type GetDataWarehouseCompletedActivityRequestOutcome = "completed" | "failed" | "all";
-const GetDataWarehouseCompletedActivityRequestOutcome = S.String;
-
 export interface GetDataWarehouseCompletedActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -191,11 +121,6 @@ export interface GetDataWarehouseCompletedActivityRequest {
   /** Which outcome to return: 'completed', 'failed', or 'all' for every run that finished either way. Defaults to 'completed'. Running jobs come from `running_activity` instead. * `completed` - completed * `failed` - failed * `all` - all */
   outcome?: GetDataWarehouseCompletedActivityRequestOutcome | (string & {});
 }
-const GetDataWarehouseCompletedActivityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetDataWarehouseCompletedActivityRequest>;
-
 export interface PipelineActivityRow {
   /** Run id. */
   id: string;
@@ -220,15 +145,8 @@ export interface PipelineActivityRow {
   /** Id of the source the run belongs to, for linking to it. Null for model runs. */
   source_id?: string | null;
 }
-const PipelineActivityRow = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PipelineActivityRow>;
-
 /** Runs, newest first. */
 export type PipelineActivityResponseResultsList = Array<PipelineActivityRow>;
-const PipelineActivityResponseResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PipelineActivityResponseResultsList>;
-
 export interface PipelineActivityResponse {
   /** Runs, newest first. */
   results: PipelineActivityResponseResultsList;
@@ -237,20 +155,10 @@ export interface PipelineActivityResponse {
   /** Query string for the previous page, or null on the first. */
   previous: string | null;
 }
-const PipelineActivityResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<PipelineActivityResponse>;
-
 export interface GetDataWarehouseDataHealthIssueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehouseDataHealthIssueRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetDataWarehouseDataHealthIssueRequest>;
-
 export interface DataHealthIssue {
   /** Id of the thing that is unhealthy. */
   id: string;
@@ -271,72 +179,35 @@ export interface DataHealthIssue {
   /** Where to go to fix it. */
   url: string | null;
 }
-const DataHealthIssue = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DataHealthIssue>;
-
 /** Everything currently unhealthy. */
 export type DataHealthIssuesResponseResultsList = Array<DataHealthIssue>;
-const DataHealthIssuesResponseResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DataHealthIssuesResponseResultsList>;
-
 export interface DataHealthIssuesResponse {
   /** Everything currently unhealthy. */
   results: DataHealthIssuesResponseResultsList;
   /** How many issues are in `results`. */
   count: number;
 }
-const DataHealthIssuesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DataHealthIssuesResponse>;
-
 export interface GetDataWarehouseDataOpsDashboardRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehouseDataOpsDashboardRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetDataWarehouseDataOpsDashboardRequest>;
-
 export interface GetDataWarehouseDataOpsDashboardResponse {}
-const GetDataWarehouseDataOpsDashboardResponse =
-  CreateDataWarehouseDeprovisionResponse as any as S.Schema<GetDataWarehouseDataOpsDashboardResponse>;
-
 export interface GetDataWarehouseDataQualityGateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehouseDataQualityGateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetDataWarehouseDataQualityGateRequest>;
-
 /** The team-level materialization gate. Checks always run and warn; this only toggles blocking. */
 export interface DataQualityGateConfig {
   /** When true, a materialization whose error-severity checks fail is not published; the previous version keeps serving and downstream models are skipped. */
   gate_materialization_on_checks: boolean;
 }
-const DataQualityGateConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DataQualityGateConfig>;
-
 export type GetDataWarehouseJobStatRequestDays = 1 | 7 | 30;
-const GetDataWarehouseJobStatRequestDays = S.Number;
-
 export interface GetDataWarehouseJobStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Window the counts should cover, in days. One of 1, 7 or 30. Defaults to 7. * `1` - 1 * `7` - 7 * `30` - 30 */
   days?: GetDataWarehouseJobStatRequestDays | (number & {});
 }
-const GetDataWarehouseJobStatRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetDataWarehouseJobStatRequest>;
-
 export interface JobCounts {
   /** Runs that finished inside the window. */
   total: number;
@@ -347,23 +218,14 @@ export interface JobCounts {
   /** Runs that errored or that billing stopped. */
   failed: number;
 }
-const JobCounts = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<JobCounts>;
-
 export interface JobStatsBucket {
   /** Runs that completed in this bucket. */
   successful: number;
   /** Runs that failed in this bucket. */
   failed: number;
 }
-const JobStatsBucket = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<JobStatsBucket>;
-
 /** Runs per time bucket, keyed by ISO hour when days=1 and by ISO date otherwise. Buckets with no runs are absent rather than zero. */
 export type PipelineJobStatsResponseBreakdownMap = { [key: string]: JobStatsBucket | undefined };
-const PipelineJobStatsResponseBreakdownMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PipelineJobStatsResponseBreakdownMap>;
-
 export interface PipelineJobStatsResponse {
   /** Window the counts cover, in days. One of 1, 7 or 30. */
   days: number;
@@ -382,20 +244,10 @@ export interface PipelineJobStatsResponse {
   /** Runs per time bucket, keyed by ISO hour when days=1 and by ISO date otherwise. Buckets with no runs are absent rather than zero. */
   breakdown: PipelineJobStatsResponseBreakdownMap;
 }
-const PipelineJobStatsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PipelineJobStatsResponse>;
-
 export interface GetDataWarehouseManagedWarehouseDataStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehouseManagedWarehouseDataStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetDataWarehouseManagedWarehouseDataStatusRequest>;
-
 /** * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
 export type ManagedWarehouseReadinessStateEnum =
   | "not_configured"
@@ -404,12 +256,8 @@ export type ManagedWarehouseReadinessStateEnum =
   | "up_to_date"
   | "needs_attention"
   | "sync_paused";
-const ManagedWarehouseReadinessStateEnum = S.String;
-
 /** * `events` - events * `persons` - persons */
 export type DatasetEnum = "events" | "persons";
-const DatasetEnum = S.String;
-
 export interface ManagedWarehouseDatasetStatus {
   /** Warehouse dataset represented by this status. * `events` - events * `persons` - persons */
   dataset: DatasetEnum;
@@ -426,11 +274,6 @@ export interface ManagedWarehouseDatasetStatus {
   /** When the durable backfill status last changed. */
   last_updated_at: string | null;
 }
-const ManagedWarehouseDatasetStatus = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ManagedWarehouseDatasetStatus>;
-
 export interface ManagedWarehouseSourceSummary {
   /** Imported source connection identifier. */
   source_id: string;
@@ -451,18 +294,8 @@ export interface ManagedWarehouseSourceSummary {
   /** Most recent upstream source import completion across this source's schemas. */
   last_synced_at: string | null;
 }
-const ManagedWarehouseSourceSummary = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ManagedWarehouseSourceSummary>;
-
 /** Per-source rollup of copy and register workflow statuses for configured warehouse source imports. */
 export type ManagedWarehouseSourcesStatusSourcesList = Array<ManagedWarehouseSourceSummary>;
-const ManagedWarehouseSourcesStatusSourcesList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ManagedWarehouseSourcesStatusSourcesList>;
-
 export interface ManagedWarehouseSourcesStatus {
   /** Rolled-up readiness state for imported sources. * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
   readiness_state: ManagedWarehouseReadinessStateEnum;
@@ -471,11 +304,6 @@ export interface ManagedWarehouseSourcesStatus {
   /** Per-source rollup of copy and register workflow statuses for configured warehouse source imports. */
   sources: ManagedWarehouseSourcesStatusSourcesList;
 }
-const ManagedWarehouseSourcesStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ManagedWarehouseSourcesStatus>;
-
 export interface ManagedWarehouseDataStatusResponse {
   /** Highest-priority readiness state across all warehouse datasets. * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
   overall_readiness_state: ManagedWarehouseReadinessStateEnum;
@@ -488,29 +316,14 @@ export interface ManagedWarehouseDataStatusResponse {
   /** When this status snapshot was generated. */
   generated_at: string;
 }
-const ManagedWarehouseDataStatusResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ManagedWarehouseDataStatusResponse>;
-
 export interface GetDataWarehouseManagedWarehouseMonitoringRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehouseManagedWarehouseMonitoringRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetDataWarehouseManagedWarehouseMonitoringRequest>;
-
 export interface ManagedWarehouseMonitoringWarehouse {
   /** Current managed warehouse lifecycle state, such as ready, provisioning, or resharding. */
   state: string;
 }
-const ManagedWarehouseMonitoringWarehouse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ManagedWarehouseMonitoringWarehouse>;
-
 export interface ManagedWarehouseMonitoringLimits {
   /** Maximum concurrent workers for the organization. Zero means no organization-specific limit. */
   max_workers: number;
@@ -525,11 +338,6 @@ export interface ManagedWarehouseMonitoringLimits {
   /** Minimum number of idle workers the organization keeps warm. */
   default_worker_min_hot_idle: number;
 }
-const ManagedWarehouseMonitoringLimits = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ManagedWarehouseMonitoringLimits>;
-
 export interface ManagedWarehouseMonitoringTotals {
   /** Number of current non-terminal workers. */
   workers: number;
@@ -544,11 +352,6 @@ export interface ManagedWarehouseMonitoringTotals {
   /** Number of connections waiting for worker capacity. */
   queued_connections: number;
 }
-const ManagedWarehouseMonitoringTotals = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ManagedWarehouseMonitoringTotals>;
-
 export interface ManagedWarehouseMonitoringWorkerSession {
   /** Connection protocol, such as pg or flight. */
   protocol: string;
@@ -565,11 +368,6 @@ export interface ManagedWarehouseMonitoringWorkerSession {
   /** Whether the current query appears stalled. */
   stalled: boolean;
 }
-const ManagedWarehouseMonitoringWorkerSession = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ManagedWarehouseMonitoringWorkerSession>;
-
 export interface ManagedWarehouseMonitoringWorker {
   /** Opaque identifier for the worker. */
   id: string;
@@ -588,19 +386,9 @@ export interface ManagedWarehouseMonitoringWorker {
   /** Sanitized live session assigned to the worker, when one exists. */
   session?: ManagedWarehouseMonitoringWorkerSession | null;
 }
-const ManagedWarehouseMonitoringWorker = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ManagedWarehouseMonitoringWorker>;
-
 /** Current non-terminal workers with tenant-safe runtime details. */
 export type ManagedWarehouseMonitoringSnapshotResponseWorkersList =
   Array<ManagedWarehouseMonitoringWorker>;
-const ManagedWarehouseMonitoringSnapshotResponseWorkersList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ManagedWarehouseMonitoringSnapshotResponseWorkersList>;
-
 export interface ManagedWarehouseMonitoringCoverage {
   /** Number of control planes that contributed live data. */
   cp_responders: number;
@@ -609,11 +397,6 @@ export interface ManagedWarehouseMonitoringCoverage {
   /** Whether one or more control planes failed to contribute live data. */
   partial: boolean;
 }
-const ManagedWarehouseMonitoringCoverage = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ManagedWarehouseMonitoringCoverage>;
-
 export interface ManagedWarehouseMonitoringSnapshotResponse {
   /** Version of the managed warehouse monitoring response schema. */
   schema_version: number;
@@ -632,11 +415,6 @@ export interface ManagedWarehouseMonitoringSnapshotResponse {
   /** Completeness of the cross-control-plane live data. */
   coverage: ManagedWarehouseMonitoringCoverage;
 }
-const ManagedWarehouseMonitoringSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ManagedWarehouseMonitoringSnapshotResponse>;
-
 export type GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestMetric =
   | "query_rate"
   | "error_ratio"
@@ -647,16 +425,12 @@ export type GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestMetric =
   | "acquire_by_source"
   | "storage_bytes"
   | "worker_crash_rate";
-const GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestMetric = S.String;
-
 export type GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestWindow =
   | "1h"
   | "6h"
   | "24h"
   | "7d"
   | "30d";
-const GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestWindow = S.String;
-
 export interface GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -665,55 +439,25 @@ export interface GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest {
   /** Trailing time window to retrieve. Defaults to 24h. * `1h` - 1h * `6h` - 6h * `24h` - 24h * `7d` - 7d * `30d` - 30d */
   window?: GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestWindow | (string & {});
 }
-const GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest>;
-
 /** Allow-listed labels distinguishing this series, such as query outcome or acquisition source. */
 export type ManagedWarehouseMonitoringSeriesLabelsMap = { [key: string]: string | undefined };
-const ManagedWarehouseMonitoringSeriesLabelsMap = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ManagedWarehouseMonitoringSeriesLabelsMap>;
-
 export interface ManagedWarehouseMonitoringPoint {
   /** UTC timestamp of the sample. */
   timestamp: string;
   /** Metric value at the sample timestamp. */
   value: number;
 }
-const ManagedWarehouseMonitoringPoint = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ManagedWarehouseMonitoringPoint>;
-
 /** Chronologically ordered metric samples. */
 export type ManagedWarehouseMonitoringSeriesPointsList = Array<ManagedWarehouseMonitoringPoint>;
-const ManagedWarehouseMonitoringSeriesPointsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ManagedWarehouseMonitoringSeriesPointsList>;
-
 export interface ManagedWarehouseMonitoringSeries {
   /** Allow-listed labels distinguishing this series, such as query outcome or acquisition source. */
   labels: ManagedWarehouseMonitoringSeriesLabelsMap;
   /** Chronologically ordered metric samples. */
   points: ManagedWarehouseMonitoringSeriesPointsList;
 }
-const ManagedWarehouseMonitoringSeries = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ManagedWarehouseMonitoringSeries>;
-
 /** Metric series grouped by their allow-listed labels. */
 export type ManagedWarehouseMonitoringSeriesResponseSeriesList =
   Array<ManagedWarehouseMonitoringSeries>;
-const ManagedWarehouseMonitoringSeriesResponseSeriesList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ManagedWarehouseMonitoringSeriesResponseSeriesList>;
-
 export interface ManagedWarehouseMonitoringSeriesResponse {
   /** Version of the managed warehouse monitoring response schema. */
   schema_version: number;
@@ -732,30 +476,16 @@ export interface ManagedWarehouseMonitoringSeriesResponse {
   /** Metric series grouped by their allow-listed labels. */
   series: ManagedWarehouseMonitoringSeriesResponseSeriesList;
 }
-const ManagedWarehouseMonitoringSeriesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ManagedWarehouseMonitoringSeriesResponse>;
-
 export interface GetDataWarehouseManagedWarehouseSourceSchemaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Imported source connection to fetch per-schema detail for. */
   source_id: string;
 }
-const GetDataWarehouseManagedWarehouseSourceSchemaRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetDataWarehouseManagedWarehouseSourceSchemaRequest>;
-
 /** * `copy` - copy * `register` - register */
 export type WorkflowTypeEnum = "copy" | "register";
-const WorkflowTypeEnum = S.String;
-
 /** * `running` - running * `completed` - completed * `failed` - failed * `skipped` - skipped * `stale` - stale */
 export type WorkflowStatusEnum = "running" | "completed" | "failed" | "skipped" | "stale";
-const WorkflowStatusEnum = S.String;
-
 export interface ManagedWarehouseSourceTableStatus {
   /** Imported source schema identifier. */
   schema_id: string;
@@ -784,44 +514,19 @@ export interface ManagedWarehouseSourceTableStatus {
   /** When PostHog most recently completed the upstream source import. */
   last_synced_at: string | null;
 }
-const ManagedWarehouseSourceTableStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ManagedWarehouseSourceTableStatus>;
-
 /** Per-schema copy or register workflow status for the requested source. */
 export type ManagedWarehouseSourceSchemasResponseSchemasList =
   Array<ManagedWarehouseSourceTableStatus>;
-const ManagedWarehouseSourceSchemasResponseSchemasList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ManagedWarehouseSourceSchemasResponseSchemasList>;
-
 export interface ManagedWarehouseSourceSchemasResponse {
   /** Per-schema copy or register workflow status for the requested source. */
   schemas: ManagedWarehouseSourceSchemasResponseSchemasList;
 }
-const ManagedWarehouseSourceSchemasResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ManagedWarehouseSourceSchemasResponse>;
-
 export interface GetDataWarehousePropertyValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehousePropertyValueRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetDataWarehousePropertyValueRequest>;
-
 export interface GetDataWarehousePropertyValueResponse {}
-const GetDataWarehousePropertyValueResponse =
-  CreateDataWarehouseDeprovisionResponse as any as S.Schema<GetDataWarehousePropertyValueResponse>;
-
 export type GetDataWarehouseRunningActivityRequestKind = "all" | "import" | "model";
-const GetDataWarehouseRunningActivityRequestKind = S.String;
-
 export interface GetDataWarehouseRunningActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -834,29 +539,14 @@ export interface GetDataWarehouseRunningActivityRequest {
   /** Rows to skip, for pagination. Defaults to 0. */
   offset?: number;
 }
-const GetDataWarehouseRunningActivityRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetDataWarehouseRunningActivityRequest>;
-
 export interface GetDataWarehouseTotalRowsStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehouseTotalRowsStatRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetDataWarehouseTotalRowsStatRequest>;
-
 /** Rows synced in the billing period, keyed by source id. */
 export type PipelineRowsStatsResponseBreakdownOfRowsBySourceMap = {
   [key: string]: number | undefined;
 };
-const PipelineRowsStatsResponseBreakdownOfRowsBySourceMap = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<PipelineRowsStatsResponseBreakdownOfRowsBySourceMap>;
-
 export interface PipelineRowsStatsResponse {
   /** Whether billing answered. When false, only the counts derived from runs are meaningful. */
   billing_available: boolean;
@@ -877,20 +567,10 @@ export interface PipelineRowsStatsResponse {
   /** Rows synced in the billing period, keyed by source id. */
   breakdown_of_rows_by_source: PipelineRowsStatsResponseBreakdownOfRowsBySourceMap;
 }
-const PipelineRowsStatsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<PipelineRowsStatsResponse>;
-
 export interface GetDataWarehouseWarehouseStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataWarehouseWarehouseStatusRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetDataWarehouseWarehouseStatusRequest>;
-
 /** * `pending` - pending * `provisioning` - provisioning * `ready` - ready * `failed` - failed * `deleting` - deleting * `deleted` - deleted */
 export type WarehouseStatusResponseStateEnum =
   | "pending"
@@ -899,8 +579,6 @@ export type WarehouseStatusResponseStateEnum =
   | "failed"
   | "deleting"
   | "deleted";
-const WarehouseStatusResponseStateEnum = S.String;
-
 export interface WarehouseConnection {
   /** Connection host -- the warehouse name is the SNI subdomain, e.g. my-warehouse.dw.us.postwh.com */
   host: string;
@@ -911,8 +589,6 @@ export interface WarehouseConnection {
   /** Root database username */
   username: string;
 }
-const WarehouseConnection = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<WarehouseConnection>;
-
 export interface WarehouseStatusResponse {
   /** duckgres org identifier (the PostHog organization id) */
   org_id: string;
@@ -942,22 +618,12 @@ export interface WarehouseStatusResponse {
   /** Schema this project's data lands in. Null when the project is not onboarded. */
   schema_name: string | null;
 }
-const WarehouseStatusResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<WarehouseStatusResponse>;
-
 export interface UpdateDataWarehouseDataQualityGatePartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** When true, a materialization whose error-severity checks fail is not published; the previous version keeps serving and downstream models are skipped. */
   gate_materialization_on_checks?: boolean;
 }
-const UpdateDataWarehouseDataQualityGatePartialRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<UpdateDataWarehouseDataQualityGatePartialRequest>;
-
 export type CreateDataWarehouseDeprovisionError = PosthogOpError;
 /** Start deprovisioning the organization's managed warehouse. Restricted to organization admins. */
 export const createDataWarehouseDeprovision: API.OperationMethod<
@@ -966,8 +632,8 @@ export const createDataWarehouseDeprovision: API.OperationMethod<
   CreateDataWarehouseDeprovisionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataWarehouseDeprovisionRequest,
-  output: CreateDataWarehouseDeprovisionResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDataWarehouseDeprovisionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateDataWarehouseDeprovisionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -981,8 +647,8 @@ export const createDataWarehouseOnboardTeam: API.OperationMethod<
   CreateDataWarehouseOnboardTeamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataWarehouseOnboardTeamRequest,
-  output: OnboardWarehouseTeamResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateDataWarehouseOnboardTeamRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<OnboardWarehouseTeamResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -996,8 +662,8 @@ export const createDataWarehouseProvision: API.OperationMethod<
   CreateDataWarehouseProvisionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataWarehouseProvisionRequest,
-  output: CreateDataWarehouseProvisionResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateDataWarehouseProvisionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateDataWarehouseProvisionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1011,8 +677,8 @@ export const dataWarehouseResetPasswordCreate: API.OperationMethod<
   DataWarehouseResetPasswordCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataWarehouseResetPasswordCreateRequest,
-  output: ResetPasswordResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<DataWarehouseResetPasswordCreateRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ResetPasswordResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1026,8 +692,8 @@ export const deleteDataWarehouseOrgDestroy: API.OperationMethod<
   DeleteDataWarehouseOrgDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataWarehouseOrgDestroyRequest,
-  output: DeleteWarehouseOrgResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<DeleteDataWarehouseOrgDestroyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteWarehouseOrgResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1041,8 +707,8 @@ export const getDataWarehouseCheckDatabaseName: API.OperationMethod<
   GetDataWarehouseCheckDatabaseNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseCheckDatabaseNameRequest,
-  output: CheckDatabaseNameResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<GetDataWarehouseCheckDatabaseNameRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CheckDatabaseNameResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1056,8 +722,8 @@ export const getDataWarehouseCheckSchemaName: API.OperationMethod<
   GetDataWarehouseCheckSchemaNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseCheckSchemaNameRequest,
-  output: CheckSchemaNameResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<GetDataWarehouseCheckSchemaNameRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<CheckSchemaNameResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1071,8 +737,8 @@ export const getDataWarehouseCompletedActivity: API.OperationMethod<
   GetDataWarehouseCompletedActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseCompletedActivityRequest,
-  output: PipelineActivityResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetDataWarehouseCompletedActivityRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PipelineActivityResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1086,8 +752,8 @@ export const getDataWarehouseDataHealthIssue: API.OperationMethod<
   GetDataWarehouseDataHealthIssueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseDataHealthIssueRequest,
-  output: DataHealthIssuesResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetDataWarehouseDataHealthIssueRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<DataHealthIssuesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1101,8 +767,8 @@ export const getDataWarehouseDataOpsDashboard: API.OperationMethod<
   GetDataWarehouseDataOpsDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseDataOpsDashboardRequest,
-  output: GetDataWarehouseDataOpsDashboardResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<GetDataWarehouseDataOpsDashboardRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetDataWarehouseDataOpsDashboardResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1116,8 +782,8 @@ export const getDataWarehouseDataQualityGate: API.OperationMethod<
   GetDataWarehouseDataQualityGateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseDataQualityGateRequest,
-  output: DataQualityGateConfig,
+  input: __S(22, __c2, 6) as any as S.Schema<GetDataWarehouseDataQualityGateRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DataQualityGateConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1131,8 +797,8 @@ export const getDataWarehouseJobStat: API.OperationMethod<
   GetDataWarehouseJobStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseJobStatRequest,
-  output: PipelineJobStatsResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<GetDataWarehouseJobStatRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<PipelineJobStatsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1146,8 +812,8 @@ export const getDataWarehouseManagedWarehouseDataStatus: API.OperationMethod<
   GetDataWarehouseManagedWarehouseDataStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseManagedWarehouseDataStatusRequest,
-  output: ManagedWarehouseDataStatusResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<GetDataWarehouseManagedWarehouseDataStatusRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ManagedWarehouseDataStatusResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1165,8 +831,8 @@ export const getDataWarehouseManagedWarehouseMonitoring: API.OperationMethod<
   GetDataWarehouseManagedWarehouseMonitoringError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseManagedWarehouseMonitoringRequest,
-  output: ManagedWarehouseMonitoringSnapshotResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<GetDataWarehouseManagedWarehouseMonitoringRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ManagedWarehouseMonitoringSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1184,8 +850,12 @@ export const getDataWarehouseManagedWarehouseMonitoringTimeseries: API.Operation
   GetDataWarehouseManagedWarehouseMonitoringTimeseriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest,
-  output: ManagedWarehouseMonitoringSeriesResponse,
+  input: __S(
+    44,
+    __c5,
+    4,
+  ) as any as S.Schema<GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ManagedWarehouseMonitoringSeriesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1199,8 +869,8 @@ export const getDataWarehouseManagedWarehouseSourceSchema: API.OperationMethod<
   GetDataWarehouseManagedWarehouseSourceSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseManagedWarehouseSourceSchemaRequest,
-  output: ManagedWarehouseSourceSchemasResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<GetDataWarehouseManagedWarehouseSourceSchemaRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<ManagedWarehouseSourceSchemasResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1214,8 +884,8 @@ export const getDataWarehousePropertyValue: API.OperationMethod<
   GetDataWarehousePropertyValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehousePropertyValueRequest,
-  output: GetDataWarehousePropertyValueResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<GetDataWarehousePropertyValueRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetDataWarehousePropertyValueResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1229,8 +899,8 @@ export const getDataWarehouseRunningActivity: API.OperationMethod<
   GetDataWarehouseRunningActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseRunningActivityRequest,
-  output: PipelineActivityResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<GetDataWarehouseRunningActivityRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PipelineActivityResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1244,8 +914,8 @@ export const getDataWarehouseTotalRowsStat: API.OperationMethod<
   GetDataWarehouseTotalRowsStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseTotalRowsStatRequest,
-  output: PipelineRowsStatsResponse,
+  input: __S(57, __c7, 1) as any as S.Schema<GetDataWarehouseTotalRowsStatRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<PipelineRowsStatsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1259,8 +929,8 @@ export const getDataWarehouseWarehouseStatus: API.OperationMethod<
   GetDataWarehouseWarehouseStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataWarehouseWarehouseStatusRequest,
-  output: WarehouseStatusResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<GetDataWarehouseWarehouseStatusRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<WarehouseStatusResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1274,8 +944,8 @@ export const updateDataWarehouseDataQualityGatePartial: API.OperationMethod<
   UpdateDataWarehouseDataQualityGatePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataWarehouseDataQualityGatePartialRequest,
-  output: DataQualityGateConfig,
+  input: __S(63, __c7, 7) as any as S.Schema<UpdateDataWarehouseDataQualityGatePartialRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DataQualityGateConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1441,10 +1111,10 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           cutoff_days: S.optional(S.Number.pipe(T.Query())),
-          kind: S.optional(GetDataWarehouseCompletedActivityRequestKind.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          outcome: S.optional(GetDataWarehouseCompletedActivityRequestOutcome.pipe(T.Query())),
+          outcome: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1472,7 +1142,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PipelineActivityRow" });
     case 7:
-      return S.Array(PipelineActivityRow);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -1480,7 +1150,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: PipelineActivityResponseResultsList,
+          results: __S(15, __c1, 7),
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
         }),
@@ -1514,11 +1184,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DataHealthIssue" });
     case 3:
-      return S.Array(DataHealthIssue);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: DataHealthIssuesResponseResultsList,
+          results: __S(19, __c2, 3),
           count: S.Number,
         }),
       ).annotate({ identifier: "DataHealthIssuesResponse" });
@@ -1564,7 +1234,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          days: S.optional(GetDataWarehouseJobStatRequestDays.pipe(T.Query())),
+          days: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1592,7 +1262,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "JobStatsBucket" });
     case 3:
-      return S.Record(S.String, JobStatsBucket);
+      return S.Record(S.String, __S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1601,9 +1271,9 @@ function __c3(j: number): any {
           total_jobs: S.Number,
           successful_jobs: S.Number,
           failed_jobs: S.Number,
-          external_data_jobs: JobCounts,
-          modeling_jobs: JobCounts,
-          breakdown: PipelineJobStatsResponseBreakdownMap,
+          external_data_jobs: __S(25, __c3, 1),
+          modeling_jobs: __S(25, __c3, 1),
+          breakdown: __S(27, __c3, 3),
         }),
       ).annotate({ identifier: "PipelineJobStatsResponse" });
     case 5:
@@ -1623,8 +1293,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dataset: DatasetEnum,
-          readiness_state: ManagedWarehouseReadinessStateEnum,
+          dataset: S.String,
+          readiness_state: S.String,
           detail: S.String,
           completed_partitions: S.Number,
           total_partitions: S.NullOr(S.Number),
@@ -1640,7 +1310,7 @@ function __c3(j: number): any {
           source_id: S.String,
           source_name: S.String,
           source_type: S.String,
-          readiness_state: ManagedWarehouseReadinessStateEnum,
+          readiness_state: S.String,
           detail: S.String,
           total_schemas: S.Number,
           applied_schemas: S.Number,
@@ -1655,13 +1325,13 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ManagedWarehouseSourceSummary);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          readiness_state: ManagedWarehouseReadinessStateEnum,
+          readiness_state: S.String,
           detail: S.String,
-          sources: ManagedWarehouseSourcesStatusSourcesList,
+          sources: __S(32, __c4, 0),
         }),
       ).annotate({
         identifier: "ManagedWarehouseSourcesStatus",
@@ -1669,10 +1339,10 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          overall_readiness_state: ManagedWarehouseReadinessStateEnum,
-          events: ManagedWarehouseDatasetStatus,
-          persons: ManagedWarehouseDatasetStatus,
-          sources: ManagedWarehouseSourcesStatus,
+          overall_readiness_state: S.String,
+          events: __S(30, __c3, 6),
+          persons: __S(30, __c3, 6),
+          sources: __S(33, __c4, 1),
           generated_at: S.String,
         }),
       ).annotate({
@@ -1754,13 +1424,13 @@ function __c5(j: number): any {
           ttl_seconds: S.Number,
           created_at: S.String,
           last_heartbeat_at: S.String,
-          session: S.optional(S.NullOr(ManagedWarehouseMonitoringWorkerSession)),
+          session: S.optional(S.NullOr(__S(39, __c4, 7))),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringWorker",
       });
     case 1:
-      return S.Array(ManagedWarehouseMonitoringWorker);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1777,11 +1447,11 @@ function __c5(j: number): any {
           schema_version: S.Number,
           org_id: S.String,
           as_of: S.String,
-          warehouse: ManagedWarehouseMonitoringWarehouse,
-          limits: ManagedWarehouseMonitoringLimits,
-          totals: ManagedWarehouseMonitoringTotals,
-          workers: ManagedWarehouseMonitoringSnapshotResponseWorkersList,
-          coverage: ManagedWarehouseMonitoringCoverage,
+          warehouse: __S(36, __c4, 4),
+          limits: __S(37, __c4, 5),
+          totals: __S(38, __c4, 6),
+          workers: __S(41, __c5, 1),
+          coverage: __S(42, __c5, 2),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringSnapshotResponse",
@@ -1790,10 +1460,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          metric: GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestMetric.pipe(T.Query()),
-          window: S.optional(
-            GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequestWindow.pipe(T.Query()),
-          ),
+          metric: S.String.pipe(T.Query()),
+          window: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1816,7 +1484,7 @@ function __c5(j: number): any {
         identifier: "ManagedWarehouseMonitoringPoint",
       });
     case 7:
-      return S.Array(ManagedWarehouseMonitoringPoint);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -1824,14 +1492,14 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: ManagedWarehouseMonitoringSeriesLabelsMap,
-          points: ManagedWarehouseMonitoringSeriesPointsList,
+          labels: __S(45, __c5, 5),
+          points: __S(47, __c5, 7),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringSeries",
       });
     case 1:
-      return S.Array(ManagedWarehouseMonitoringSeries);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1842,7 +1510,7 @@ function __c6(j: number): any {
           start: S.String,
           end: S.String,
           step_seconds: S.Number,
-          series: ManagedWarehouseMonitoringSeriesResponseSeriesList,
+          series: __S(49, __c6, 1),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringSeriesResponse",
@@ -1870,10 +1538,10 @@ function __c6(j: number): any {
           source_name: S.String,
           source_type: S.String,
           table_name: S.String,
-          readiness_state: ManagedWarehouseReadinessStateEnum,
+          readiness_state: S.String,
           detail: S.String,
-          workflow_type: S.NullOr(WorkflowTypeEnum),
-          workflow_status: S.NullOr(WorkflowStatusEnum),
+          workflow_type: S.NullOr(S.String),
+          workflow_status: S.NullOr(S.String),
           workflow_started_at: S.NullOr(S.String),
           applied: S.Boolean,
           last_applied_at: S.NullOr(S.String),
@@ -1883,11 +1551,11 @@ function __c6(j: number): any {
         identifier: "ManagedWarehouseSourceTableStatus",
       });
     case 5:
-      return S.Array(ManagedWarehouseSourceTableStatus);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          schemas: ManagedWarehouseSourceSchemasResponseSchemasList,
+          schemas: __S(53, __c6, 5),
         }),
       ).annotate({
         identifier: "ManagedWarehouseSourceSchemasResponse",
@@ -1915,7 +1583,7 @@ function __c7(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           cutoff_days: S.optional(S.Number.pipe(T.Query())),
-          kind: S.optional(GetDataWarehouseRunningActivityRequestKind.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1955,7 +1623,7 @@ function __c7(j: number): any {
           tracked_billing_rows: S.Number,
           pending_billing_rows: S.Number,
           materialized_rows_in_billing_period: S.Number,
-          breakdown_of_rows_by_source: PipelineRowsStatsResponseBreakdownOfRowsBySourceMap,
+          breakdown_of_rows_by_source: __S(58, __c7, 2),
         }),
       ).annotate({
         identifier: "PipelineRowsStatsResponse",
@@ -1987,7 +1655,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org_id: S.String,
-          state: WarehouseStatusResponseStateEnum,
+          state: S.String,
           status_message: S.String,
           s3_state: S.String,
           metadata_store_state: S.String,
@@ -1995,7 +1663,7 @@ function __c7(j: number): any {
           secrets_state: S.String,
           ready_at: S.NullOr(S.String),
           failed_at: S.NullOr(S.String),
-          connection: S.optional(S.NullOr(WarehouseConnection)),
+          connection: S.optional(S.NullOr(__S(61, __c7, 5))),
           has_backfill: S.Boolean,
           table_suffix: S.NullOr(S.String),
           team_onboarded: S.Boolean,
@@ -2018,4 +1686,9 @@ function __c7(j: number): any {
         identifier: "UpdateDataWarehouseDataQualityGatePartialRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

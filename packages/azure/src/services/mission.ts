@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Specifies the action performed by the approver */
 export type ActionPerformed = "Approved" | "Rejected";
-const ActionPerformed = S.String;
-
 /** Approver Metadata for approvals request. */
 export interface ApproverInput {
   /** Entra ObjectID of the approver */
@@ -22,15 +22,8 @@ export interface ApproverInput {
   /** approval request last updated at */
   lastUpdatedAt: string;
 }
-const ApproverInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ApproverInput>;
-
 /** List of approvers for the approval request */
 export type ApprovalPropertiesInputApproversList = Array<ApproverInput>;
-const ApprovalPropertiesInputApproversList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApprovalPropertiesInputApproversList>;
-
 /** Status of the approval. Uses ApprovalStatus enum. */
 export type RequestMetadataApprovalStatus =
   | "Approved"
@@ -38,8 +31,6 @@ export type RequestMetadataApprovalStatus =
   | "Pending"
   | "Deleted"
   | "Expired";
-const RequestMetadataApprovalStatus = S.String;
-
 /** Request Metadata for approvals request. */
 export interface RequestMetadata {
   /** Resource Action of the item being approved or declined. */
@@ -51,8 +42,6 @@ export interface RequestMetadata {
   /** Status of the approval. Uses ApprovalStatus enum. */
   approvalStatus?: RequestMetadataApprovalStatus | (string & {});
 }
-const RequestMetadata = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RequestMetadata>;
-
 /** Approval Base model. */
 export interface ApprovalPropertiesInput {
   /** Parameter for optimizing query results */
@@ -70,11 +59,6 @@ export interface ApprovalPropertiesInput {
   /** Request metadata for the approval request. */
   requestMetadata: RequestMetadata;
 }
-const ApprovalPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ApprovalPropertiesInput>;
-
 export interface ApprovalCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -83,19 +67,10 @@ export interface ApprovalCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ApprovalPropertiesInput;
 }
-const ApprovalCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ApprovalCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -111,8 +86,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SystemData>;
-
 /** The provisioning status of the resource. */
 export type ProvisioningState =
   | "Succeeded"
@@ -124,15 +97,8 @@ export type ProvisioningState =
   | "NotSpecified"
   | "Running"
   | "Updating";
-const ProvisioningState = S.String;
-
 /** Indicates if this approver is part of a mandatory approver group with list of Entra IDs */
 export type ApproverMandatoryApprovalGroupMembershipIdsList = Array<string>;
-const ApproverMandatoryApprovalGroupMembershipIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ApproverMandatoryApprovalGroupMembershipIdsList>;
-
 /** Approver Metadata for approvals request. */
 export interface Approver {
   /** Entra ObjectID of the approver */
@@ -144,34 +110,17 @@ export interface Approver {
   /** Indicates if this approver is part of a mandatory approver group with list of Entra IDs */
   mandatoryApprovalGroupMembershipIds?: ApproverMandatoryApprovalGroupMembershipIdsList;
 }
-const Approver = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Approver>;
-
 /** List of approvers for the approval request */
 export type ApprovalPropertiesApproversList = Array<Approver>;
-const ApprovalPropertiesApproversList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ApprovalPropertiesApproversList>;
-
 /** Approver Metadata for approvals request. */
 export interface MandatoryApprover {
   /** EntraId of the approver */
   approverEntraId: string;
 }
-const MandatoryApprover = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MandatoryApprover>;
-
 /** List of mandatory approvers for the approval request */
 export type ApprovalPropertiesMandatoryApproversList = Array<MandatoryApprover>;
-const ApprovalPropertiesMandatoryApproversList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ApprovalPropertiesMandatoryApproversList>;
-
 /** Array of Entra IDs of approvers who have approved the approval request */
 export type ApprovalPropertiesApprovedByEntraIdsList = Array<string>;
-const ApprovalPropertiesApprovedByEntraIdsList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<ApprovalPropertiesApprovedByEntraIdsList>;
-
 /** Approval Base model. */
 export interface ApprovalProperties {
   /** Provisioning State. */
@@ -201,8 +150,6 @@ export interface ApprovalProperties {
   /** Request metadata for the approval request. */
   requestMetadata: RequestMetadata;
 }
-const ApprovalProperties = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ApprovalProperties>;
-
 export interface ApprovalCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -215,11 +162,6 @@ export interface ApprovalCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
 }
-const ApprovalCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ApprovalCreateOrUpdateResponse>;
-
 /** Subnet Configuration */
 export interface SubnetConfigurationInput {
   /** Subnet name. */
@@ -229,19 +171,9 @@ export interface SubnetConfigurationInput {
   /** Subnet delegation. */
   subnetDelegation?: string;
 }
-const SubnetConfigurationInput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<SubnetConfigurationInput>;
-
 /** Subnet Configurations. */
 export type EnclaveVirtualNetworkModelInputSubnetConfigurationsList =
   Array<SubnetConfigurationInput>;
-const EnclaveVirtualNetworkModelInputSubnetConfigurationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<EnclaveVirtualNetworkModelInputSubnetConfigurationsList>;
-
 /** Enclave Virtual Network Properties */
 export interface EnclaveVirtualNetworkModelInput {
   /** Network Name. */
@@ -255,11 +187,6 @@ export interface EnclaveVirtualNetworkModelInput {
   /** Allow Subnet Communication. */
   allowSubnetCommunication?: boolean;
 }
-const EnclaveVirtualNetworkModelInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<EnclaveVirtualNetworkModelInput>;
-
 export interface CheckCommunityAddressSpaceAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -272,33 +199,15 @@ export interface CheckCommunityAddressSpaceAvailabilityRequest {
   /** Information about the enclave virtual network */
   enclaveVirtualNetwork: EnclaveVirtualNetworkModelInput;
 }
-const CheckCommunityAddressSpaceAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CheckCommunityAddressSpaceAvailabilityRequest>;
-
 /** Response of availability of the requested address space. */
 export interface CheckAddressSpaceAvailabilityResponse {
   /** Boolean representing whether the address space is available. */
   value: boolean;
 }
-const CheckAddressSpaceAvailabilityResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CheckAddressSpaceAvailabilityResponse>;
-
 /** Resource tags. */
 export type CommunityCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const CommunityCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CommunityCreateOrUpdateRequestTagsMap>;
-
 /** DNS Servers. */
 export type CommunityPropertiesInputDnsServersList = Array<string>;
-const CommunityPropertiesInputDnsServersList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesInputDnsServersList>;
-
 /** Identifier for governed services. */
 export type ServiceIdentifier =
   | "AKS"
@@ -316,20 +225,12 @@ export type ServiceIdentifier =
   | "PrivateDNSZones"
   | "ServiceBus"
   | "Storage";
-const ServiceIdentifier = S.String;
-
 /** Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable). */
 export type GovernedServiceItemInputOption = "Allow" | "Deny" | "ExceptionOnly" | "NotApplicable";
-const GovernedServiceItemInputOption = S.String;
-
 /** Initiative enforcement (Enabled or Disabled). */
 export type GovernedServiceItemInputEnforcement = "Enabled" | "Disabled";
-const GovernedServiceItemInputEnforcement = S.String;
-
 /** Enforcement mode for policy. AuditOnly, Enforce, or None. */
 export type GovernedServiceItemInputPolicyAction = "AuditOnly" | "Enforce" | "None";
-const GovernedServiceItemInputPolicyAction = S.String;
-
 /** GovernedServiceItem Properties */
 export interface GovernedServiceItemInput {
   /** Service ID */
@@ -341,26 +242,12 @@ export interface GovernedServiceItemInput {
   /** Enforcement mode for policy. AuditOnly, Enforce, or None. */
   policyAction?: GovernedServiceItemInputPolicyAction | (string & {});
 }
-const GovernedServiceItemInput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GovernedServiceItemInput>;
-
 /** List of services governed by a community. */
 export type CommunityPropertiesInputGovernedServiceListList = Array<GovernedServiceItemInput>;
-const CommunityPropertiesInputGovernedServiceListList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CommunityPropertiesInputGovernedServiceListList>;
-
 /** Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement. */
 export type CommunityPropertiesInputPolicyOverride = "Enclave" | "None";
-const CommunityPropertiesInputPolicyOverride = S.String;
-
 /** The type of the object id. We currently allow users, groups, and service principals */
 export type PrincipalType = "User" | "Group" | "ServicePrincipal";
-const PrincipalType = S.String;
-
 /** Principal for maintenance mode or role assignments */
 export interface Principal {
   /** The object id associated with the principal */
@@ -368,15 +255,8 @@ export interface Principal {
   /** The type of the object id. We currently allow users, groups, and service principals */
   type: PrincipalType | (string & {});
 }
-const Principal = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Principal>;
-
 /** List of principal IDs to which to assign this role definition */
 export type RoleAssignmentItemPrincipalsList = Array<Principal>;
-const RoleAssignmentItemPrincipalsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<RoleAssignmentItemPrincipalsList>;
-
 /** Role assignment item that indicates which principals should be assigned this role definition */
 export interface RoleAssignmentItem {
   /** Role definition identifier */
@@ -386,28 +266,14 @@ export interface RoleAssignmentItem {
   /** Condition under which the principal can be granted permission */
   condition?: string;
 }
-const RoleAssignmentItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<RoleAssignmentItem>;
-
 /** Community role assignments */
 export type CommunityPropertiesInputCommunityRoleAssignmentsList = Array<RoleAssignmentItem>;
-const CommunityPropertiesInputCommunityRoleAssignmentsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CommunityPropertiesInputCommunityRoleAssignmentsList>;
-
 /** SKU of the community's Azure Firewall (Basic, Standard, Premium). Standard is the default */
 export type CommunityPropertiesInputFirewallSku = "Basic" | "Standard" | "Premium";
-const CommunityPropertiesInputFirewallSku = S.String;
-
 /** Approval Policy. */
 export type ApprovalPolicy = "Required" | "NotRequired";
-const ApprovalPolicy = S.String;
-
 /** List of mandatory approvers for this approval setting. */
 export type ApprovalSettingConfigurationMandatoryApproversList = Array<MandatoryApprover>;
-const ApprovalSettingConfigurationMandatoryApproversList =
-  ApprovalPropertiesMandatoryApproversList as any as S.Schema<ApprovalSettingConfigurationMandatoryApproversList>;
-
 /** Granular approval setting configuration with policy, minimum approvers, and mandatory approvers. */
 export interface ApprovalSettingConfiguration {
   /** Approval policy (Required or NotRequired). */
@@ -417,11 +283,6 @@ export interface ApprovalSettingConfiguration {
   /** List of mandatory approvers for this approval setting. */
   mandatoryApprovers?: ApprovalSettingConfigurationMandatoryApproversList;
 }
-const ApprovalSettingConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ApprovalSettingConfiguration>;
-
 /** Granular ApprovalSettings Properties for 2025-11-01-preview and later versions */
 export interface ApprovalSettings {
   /** Approval configuration for community endpoint updates. */
@@ -439,8 +300,6 @@ export interface ApprovalSettings {
   /** Approval configuration for enclave maintenance mode. */
   enclaveMaintenanceMode?: ApprovalSettingConfiguration;
 }
-const ApprovalSettings = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ApprovalSettings>;
-
 /** Current mode of Maintenance Mode Configuration */
 export type MaintenanceModeConfigurationModelMode =
   | "On"
@@ -448,17 +307,10 @@ export type MaintenanceModeConfigurationModelMode =
   | "Off"
   | "General"
   | "Advanced";
-const MaintenanceModeConfigurationModelMode = S.String;
-
 /** The user, group or service principal object affected by Maintenance Mode */
 export type MaintenanceModeConfigurationModelPrincipalsList = Array<Principal>;
-const MaintenanceModeConfigurationModelPrincipalsList =
-  RoleAssignmentItemPrincipalsList as any as S.Schema<MaintenanceModeConfigurationModelPrincipalsList>;
-
 /** Justification for entering or exiting Maintenance Mode */
 export type MaintenanceModeConfigurationModelJustification = "Networking" | "Governance" | "Off";
-const MaintenanceModeConfigurationModelJustification = S.String;
-
 /** Maintenance Mode */
 export interface MaintenanceModeConfigurationModel {
   /** Current mode of Maintenance Mode Configuration */
@@ -468,18 +320,11 @@ export interface MaintenanceModeConfigurationModel {
   /** Justification for entering or exiting Maintenance Mode */
   justification?: MaintenanceModeConfigurationModelJustification | (string & {});
 }
-const MaintenanceModeConfigurationModel = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MaintenanceModeConfigurationModel>;
-
 /** The type of monitoring workspace destination */
 export type MonitoringDestinationDestinationType =
   | "CommunityWorkspace"
   | "EnclaveWorkspace"
   | "CustomWorkspace";
-const MonitoringDestinationDestinationType = S.String;
-
 /** Monitoring destination configuration with multiple workspaces */
 export interface MonitoringDestination {
   /** The type of monitoring workspace destination */
@@ -489,18 +334,8 @@ export interface MonitoringDestination {
   /** Custom name for diagnostic settings */
   diagnosticSettingsName?: string;
 }
-const MonitoringDestination = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<MonitoringDestination>;
-
 /** Log Analytics workspace destinations where diagnostic logs will be stored. */
 export type MonitoringSettingsModelDiagnosticDestinationsList = Array<MonitoringDestination>;
-const MonitoringSettingsModelDiagnosticDestinationsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<MonitoringSettingsModelDiagnosticDestinationsList>;
-
 /** Monitoring Settings */
 export interface MonitoringSettingsModel {
   /** Log Analytics workspace destinations where diagnostic logs will be stored. */
@@ -508,16 +343,8 @@ export interface MonitoringSettingsModel {
   /** Log Analytics workspace destination where virtual network flow logs will be stored. */
   flowLogDestination?: MonitoringDestination;
 }
-const MonitoringSettingsModel = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<MonitoringSettingsModel>;
-
 /** Address spaces list */
 export type CommunityPropertiesInputAddressSpacesList = Array<string>;
-const CommunityPropertiesInputAddressSpacesList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesInputAddressSpacesList>;
-
 /** Community Resource Properties */
 export interface CommunityPropertiesInput {
   /** Address Space. */
@@ -541,45 +368,23 @@ export interface CommunityPropertiesInput {
   /** Address spaces list */
   addressSpaces?: CommunityPropertiesInputAddressSpacesList;
 }
-const CommunityPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CommunityPropertiesInput>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CommunityCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const CommunityCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CommunityCreateOrUpdateRequestIdentity>;
-
 export interface CommunityCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -596,69 +401,33 @@ export interface CommunityCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateRequestIdentity;
 }
-const CommunityCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CommunityCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type CommunityCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const CommunityCreateOrUpdateResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityCreateOrUpdateResponseTagsMap>;
-
 /** DNS Servers. */
 export type CommunityPropertiesDnsServersList = Array<string>;
-const CommunityPropertiesDnsServersList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesDnsServersList>;
-
 /** List of resource ids created by communities. */
 export type CommunityPropertiesResourceCollectionList = Array<string>;
-const CommunityPropertiesResourceCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesResourceCollectionList>;
-
 /** Managed-On-Behalf-Of broker resource. This resource is created by the Resource Provider to manage some resources on behalf of the user. */
 export interface MoboBrokerResource {
   /** Resource identifier of a Managed-On-Behalf-Of broker resource */
   id?: string;
 }
-const MoboBrokerResource = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MoboBrokerResource>;
-
 /** Managed-On-Behalf-Of broker resources */
 export type CommunityPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
   Array<MoboBrokerResource>;
-const CommunityPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    5,
-  ) as any as S.Schema<CommunityPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList>;
-
 /** Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner. */
 export interface CommunityPropertiesManagedOnBehalfOfConfiguration {
   /** Managed-On-Behalf-Of broker resources */
   moboBrokerResources?: CommunityPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList;
 }
-const CommunityPropertiesManagedOnBehalfOfConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CommunityPropertiesManagedOnBehalfOfConfiguration>;
-
 /** Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable). */
 export type GovernedServiceItemOption = "Allow" | "Deny" | "ExceptionOnly" | "NotApplicable";
-const GovernedServiceItemOption = S.String;
-
 /** Initiative enforcement (Enabled or Disabled). */
 export type GovernedServiceItemEnforcement = "Enabled" | "Disabled";
-const GovernedServiceItemEnforcement = S.String;
-
 /** Enforcement mode for policy. AuditOnly, Enforce, or None. */
 export type GovernedServiceItemPolicyAction = "AuditOnly" | "Enforce" | "None";
-const GovernedServiceItemPolicyAction = S.String;
-
 /** Initiatives associated with this service. */
 export type GovernedServiceItemInitiativesList = Array<string>;
-const GovernedServiceItemInitiativesList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<GovernedServiceItemInitiativesList>;
-
 /** GovernedServiceItem Properties */
 export interface GovernedServiceItem {
   /** Service ID */
@@ -674,37 +443,18 @@ export interface GovernedServiceItem {
   /** Initiatives associated with this service. */
   initiatives?: GovernedServiceItemInitiativesList;
 }
-const GovernedServiceItem = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GovernedServiceItem>;
-
 /** List of services governed by a community. */
 export type CommunityPropertiesGovernedServiceListList = Array<GovernedServiceItem>;
-const CommunityPropertiesGovernedServiceListList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CommunityPropertiesGovernedServiceListList>;
-
 /** Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement. */
 export type CommunityPropertiesPolicyOverride = "Enclave" | "None";
-const CommunityPropertiesPolicyOverride = S.String;
-
 /** Community role assignments */
 export type CommunityPropertiesCommunityRoleAssignmentsList = Array<RoleAssignmentItem>;
-const CommunityPropertiesCommunityRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<CommunityPropertiesCommunityRoleAssignmentsList>;
-
 /** SKU of the community's Azure Firewall (Basic, Standard, Premium). Standard is the default */
 export type CommunityPropertiesFirewallSku = "Basic" | "Standard" | "Premium";
-const CommunityPropertiesFirewallSku = S.String;
-
 /** Resource tags. */
 export type DedicatedHubResourceTagsMap = { [key: string]: string | undefined };
-const DedicatedHubResourceTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<DedicatedHubResourceTagsMap>;
-
 /** Specifies the designation of the dedicated hub. */
 export type Designation = "Pooled" | "Reserved";
-const Designation = S.String;
-
 /** Describes the properties of a Dedicated Hub. */
 export interface DedicatedHubProperties {
   /** Virtual Hub Resource ID */
@@ -718,11 +468,6 @@ export interface DedicatedHubProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const DedicatedHubProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DedicatedHubProperties>;
-
 /** DedicatedHub Model Resource */
 export interface DedicatedHubResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -740,20 +485,10 @@ export interface DedicatedHubResource {
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
 }
-const DedicatedHubResource = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DedicatedHubResource>;
-
 /** DedicatedHub List. */
 export type CommunityPropertiesDedicatedHubListList = Array<DedicatedHubResource>;
-const CommunityPropertiesDedicatedHubListList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CommunityPropertiesDedicatedHubListList>;
-
 /** Address spaces list */
 export type CommunityPropertiesAddressSpacesList = Array<string>;
-const CommunityPropertiesAddressSpacesList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPropertiesAddressSpacesList>;
-
 /** Community Resource Properties */
 export interface CommunityProperties {
   /** Address Space. */
@@ -787,8 +522,6 @@ export interface CommunityProperties {
   /** Address spaces list */
   addressSpaces?: CommunityPropertiesAddressSpacesList;
 }
-const CommunityProperties = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CommunityProperties>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -796,15 +529,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CommunityCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -814,11 +540,6 @@ export interface CommunityCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const CommunityCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CommunityCreateOrUpdateResponseIdentity>;
-
 export interface CommunityCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -837,20 +558,10 @@ export interface CommunityCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const CommunityCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CommunityCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type CommunityEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const CommunityEndpointsCreateOrUpdateRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityEndpointsCreateOrUpdateRequestTagsMap>;
-
 /** Destination Type Enum */
 export type DestinationType = "FQDN" | "FQDNTag" | "IPAddress" | "PrivateNetwork" | "ServiceTag";
-const DestinationType = S.String;
-
 /** Community Endpoint Protocol Enum */
 export type CommunityEndpointProtocol =
   | "ANY"
@@ -861,17 +572,10 @@ export type CommunityEndpointProtocol =
   | "AH"
   | "HTTPS"
   | "HTTP";
-const CommunityEndpointProtocol = S.String;
-
 /** Protocols. Options specified by Endpoint Protocol Enum. */
 export type CommunityEndpointDestinationRuleProtocolsList = Array<
   CommunityEndpointProtocol | (string & {})
 >;
-const CommunityEndpointDestinationRuleProtocolsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CommunityEndpointDestinationRuleProtocolsList>;
-
 /** Base type for destination rules. */
 export interface CommunityEndpointDestinationRule {
   /** Destination Type. */
@@ -887,23 +591,11 @@ export interface CommunityEndpointDestinationRule {
   /** Port. Can include multiple ports separated by commas or a range indicated by a hyphen. */
   ports?: string;
 }
-const CommunityEndpointDestinationRule = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CommunityEndpointDestinationRule>;
-
 /** Community Endpoint Rule Collection. */
 export type CommunityEndpointPropertiesInputRuleCollectionList =
   Array<CommunityEndpointDestinationRule>;
-const CommunityEndpointPropertiesInputRuleCollectionList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CommunityEndpointPropertiesInputRuleCollectionList>;
-
 /** Update Mode */
 export type UpdateMode = "Automatic" | "Manual";
-const UpdateMode = S.String;
-
 /** Community Endpoint Resource properties */
 export interface CommunityEndpointPropertiesInput {
   /** Community Endpoint Rule Collection. */
@@ -911,11 +603,6 @@ export interface CommunityEndpointPropertiesInput {
   /** Whether update mode is automatic or manual. */
   updateMode?: UpdateMode | (string & {});
 }
-const CommunityEndpointPropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CommunityEndpointPropertiesInput>;
-
 export interface CommunityEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -932,26 +619,12 @@ export interface CommunityEndpointsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointPropertiesInput;
 }
-const CommunityEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CommunityEndpointsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type CommunityEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const CommunityEndpointsCreateOrUpdateResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<CommunityEndpointsCreateOrUpdateResponseTagsMap>;
-
 /** Community Endpoint Rule Collection. */
 export type CommunityEndpointPropertiesRuleCollectionList = Array<CommunityEndpointDestinationRule>;
-const CommunityEndpointPropertiesRuleCollectionList =
-  CommunityEndpointPropertiesInputRuleCollectionList as any as S.Schema<CommunityEndpointPropertiesRuleCollectionList>;
-
 /** List of resource ids created by community endpoint. */
 export type CommunityEndpointPropertiesResourceCollectionList = Array<string>;
-const CommunityEndpointPropertiesResourceCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityEndpointPropertiesResourceCollectionList>;
-
 /** Community Endpoint Resource properties */
 export interface CommunityEndpointProperties {
   /** Community Endpoint Rule Collection. */
@@ -963,11 +636,6 @@ export interface CommunityEndpointProperties {
   /** Whether update mode is automatic or manual. */
   updateMode?: UpdateMode;
 }
-const CommunityEndpointProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CommunityEndpointProperties>;
-
 export interface CommunityEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -984,23 +652,14 @@ export interface CommunityEndpointsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
 }
-const CommunityEndpointsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CommunityEndpointsCreateOrUpdateResponse>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type CommunityEndpointsHandleApprovalCreationRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update"
   | "Reset";
-const CommunityEndpointsHandleApprovalCreationRequestResourceRequestAction = S.String;
-
 /** Approval status indicating 'Approved' or 'Rejected' */
 export type CommunityEndpointsHandleApprovalCreationRequestApprovalStatus = "Approved" | "Rejected";
-const CommunityEndpointsHandleApprovalCreationRequestApprovalStatus = S.String;
-
 export interface CommunityEndpointsHandleApprovalCreationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1019,28 +678,16 @@ export interface CommunityEndpointsHandleApprovalCreationRequest {
   /** Payload requested by client upon approval action */
   approvalCallbackPayload?: string;
 }
-const CommunityEndpointsHandleApprovalCreationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CommunityEndpointsHandleApprovalCreationRequest>;
-
 /** Response body after handling of approvalCallbackRequest */
 export interface ApprovalActionResponse {
   /** Confirmation message indicating the result of the operation. */
   message: string;
 }
-const ApprovalActionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ApprovalActionResponse>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-deletion-callback post action */
 export type CommunityEndpointsHandleApprovalDeletionRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update";
-const CommunityEndpointsHandleApprovalDeletionRequestResourceRequestAction = S.String;
-
 export interface CommunityEndpointsHandleApprovalDeletionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1055,26 +702,13 @@ export interface CommunityEndpointsHandleApprovalDeletionRequest {
     | CommunityEndpointsHandleApprovalDeletionRequestResourceRequestAction
     | (string & {});
 }
-const CommunityEndpointsHandleApprovalDeletionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CommunityEndpointsHandleApprovalDeletionRequest>;
-
 /** Resource tags. */
 export type DedicatedHubCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const DedicatedHubCreateOrUpdateRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<DedicatedHubCreateOrUpdateRequestTagsMap>;
-
 /** Describes the properties of a Dedicated Hub. */
 export interface DedicatedHubPropertiesInput {
   /** Designation of hub resource allocation (Pooled or Reserved) */
   designation?: Designation | (string & {});
 }
-const DedicatedHubPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DedicatedHubPropertiesInput>;
-
 export interface DedicatedHubCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1091,16 +725,8 @@ export interface DedicatedHubCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubPropertiesInput;
 }
-const DedicatedHubCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DedicatedHubCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type DedicatedHubCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const DedicatedHubCreateOrUpdateResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<DedicatedHubCreateOrUpdateResponseTagsMap>;
-
 export interface DedicatedHubCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1117,25 +743,13 @@ export interface DedicatedHubCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
 }
-const DedicatedHubCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DedicatedHubCreateOrUpdateResponse>;
-
 export interface DeleteApprovalRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the approvals resource. */
   approvalName: string;
 }
-const DeleteApprovalRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteApprovalRequest>;
-
 export interface DeleteApprovalResponse {}
-const DeleteApprovalResponse = UserAssignedIdentityInput as any as S.Schema<DeleteApprovalResponse>;
-
 export interface DeleteCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1144,15 +758,7 @@ export interface DeleteCommunityRequest {
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const DeleteCommunityRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteCommunityRequest>;
-
 export interface DeleteCommunityResponse {}
-const DeleteCommunityResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteCommunityResponse>;
-
 export interface DeleteCommunityEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1163,17 +769,7 @@ export interface DeleteCommunityEndpointRequest {
   /** The name of the Community Endpoint Resource */
   communityEndpointName: string;
 }
-const DeleteCommunityEndpointRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteCommunityEndpointRequest>;
-
 export interface DeleteCommunityEndpointResponse {}
-const DeleteCommunityEndpointResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteCommunityEndpointResponse>;
-
 export interface DeleteDedicatedHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1184,15 +780,7 @@ export interface DeleteDedicatedHubRequest {
   /** The name of the Dedicated Hub Resource */
   dedicatedHubName: string;
 }
-const DeleteDedicatedHubRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteDedicatedHubRequest>;
-
 export interface DeleteDedicatedHubResponse {}
-const DeleteDedicatedHubResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteDedicatedHubResponse>;
-
 export interface DeleteEnclaveConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1201,15 +789,7 @@ export interface DeleteEnclaveConnectionRequest {
   /** The name of the Enclave Connection Resource */
   enclaveConnectionName: string;
 }
-const DeleteEnclaveConnectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteEnclaveConnectionRequest>;
-
 export interface DeleteEnclaveConnectionResponse {}
-const DeleteEnclaveConnectionResponse =
-  DeleteCommunityEndpointResponse as any as S.Schema<DeleteEnclaveConnectionResponse>;
-
 export interface DeleteEnclaveEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1220,15 +800,7 @@ export interface DeleteEnclaveEndpointRequest {
   /** The name of the Enclave Endpoint Resource */
   enclaveEndpointName: string;
 }
-const DeleteEnclaveEndpointRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteEnclaveEndpointRequest>;
-
 export interface DeleteEnclaveEndpointResponse {}
-const DeleteEnclaveEndpointResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteEnclaveEndpointResponse>;
-
 export interface DeleteTransitHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1239,15 +811,7 @@ export interface DeleteTransitHubRequest {
   /** The name of the TransitHub Resource */
   transitHubName: string;
 }
-const DeleteTransitHubRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteTransitHubRequest>;
-
 export interface DeleteTransitHubResponse {}
-const DeleteTransitHubResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteTransitHubResponse>;
-
 export interface DeleteVirtualEnclaveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1256,15 +820,7 @@ export interface DeleteVirtualEnclaveRequest {
   /** The name of the enclaveResource Resource */
   virtualEnclaveName: string;
 }
-const DeleteVirtualEnclaveRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteVirtualEnclaveRequest>;
-
 export interface DeleteVirtualEnclaveResponse {}
-const DeleteVirtualEnclaveResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteVirtualEnclaveResponse>;
-
 export interface DeleteWorkloadRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1275,19 +831,9 @@ export interface DeleteWorkloadRequest {
   /** The name of the workloadResource Resource */
   workloadName: string;
 }
-const DeleteWorkloadRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteWorkloadRequest>;
-
 export interface DeleteWorkloadResponse {}
-const DeleteWorkloadResponse = UserAssignedIdentityInput as any as S.Schema<DeleteWorkloadResponse>;
-
 /** Resource tags. */
 export type EnclaveConnectionCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const EnclaveConnectionCreateOrUpdateRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveConnectionCreateOrUpdateRequestTagsMap>;
-
 /** Enclave Connection Resource properties */
 export interface EnclaveConnectionPropertiesInput {
   /** Community Resource Id. */
@@ -1299,11 +845,6 @@ export interface EnclaveConnectionPropertiesInput {
   /** Destination Endpoint Resource Id. */
   destinationEndpointId: string;
 }
-const EnclaveConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<EnclaveConnectionPropertiesInput>;
-
 export interface EnclaveConnectionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1318,16 +859,8 @@ export interface EnclaveConnectionCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionPropertiesInput;
 }
-const EnclaveConnectionCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<EnclaveConnectionCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type EnclaveConnectionCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const EnclaveConnectionCreateOrUpdateResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveConnectionCreateOrUpdateResponseTagsMap>;
-
 /** Specifies the state of the enclave connection. */
 export type EnclaveConnectionState =
   | "PendingApproval"
@@ -1337,13 +870,8 @@ export type EnclaveConnectionState =
   | "Failed"
   | "Connected"
   | "Disconnected";
-const EnclaveConnectionState = S.String;
-
 /** List of resource ids modified by enclave Connections. */
 export type EnclaveConnectionPropertiesResourceCollectionList = Array<string>;
-const EnclaveConnectionPropertiesResourceCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<EnclaveConnectionPropertiesResourceCollectionList>;
-
 /** Enclave Connection Resource properties */
 export interface EnclaveConnectionProperties {
   /** The state of the enclaveConnection. */
@@ -1363,11 +891,6 @@ export interface EnclaveConnectionProperties {
   /** Destination Endpoint supports automatic or manual updates. */
   updateMode?: UpdateMode;
 }
-const EnclaveConnectionProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EnclaveConnectionProperties>;
-
 export interface EnclaveConnectionCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1384,23 +907,14 @@ export interface EnclaveConnectionCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
 }
-const EnclaveConnectionCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<EnclaveConnectionCreateOrUpdateResponse>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type EnclaveConnectionHandleApprovalCreationRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update"
   | "Reset";
-const EnclaveConnectionHandleApprovalCreationRequestResourceRequestAction = S.String;
-
 /** Approval status indicating 'Approved' or 'Rejected' */
 export type EnclaveConnectionHandleApprovalCreationRequestApprovalStatus = "Approved" | "Rejected";
-const EnclaveConnectionHandleApprovalCreationRequestApprovalStatus = S.String;
-
 export interface EnclaveConnectionHandleApprovalCreationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1417,18 +931,11 @@ export interface EnclaveConnectionHandleApprovalCreationRequest {
   /** Payload requested by client upon approval action */
   approvalCallbackPayload?: string;
 }
-const EnclaveConnectionHandleApprovalCreationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<EnclaveConnectionHandleApprovalCreationRequest>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-deletion-callback post action */
 export type EnclaveConnectionHandleApprovalDeletionRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update";
-const EnclaveConnectionHandleApprovalDeletionRequestResourceRequestAction = S.String;
-
 export interface EnclaveConnectionHandleApprovalDeletionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1441,25 +948,14 @@ export interface EnclaveConnectionHandleApprovalDeletionRequest {
     | EnclaveConnectionHandleApprovalDeletionRequestResourceRequestAction
     | (string & {});
 }
-const EnclaveConnectionHandleApprovalDeletionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<EnclaveConnectionHandleApprovalDeletionRequest>;
-
 /** Resource tags. */
 export type EnclaveEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const EnclaveEndpointsCreateOrUpdateRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequestTagsMap>;
-
 /** Enclave Endpoint Protocol Enum */
 export type EnclaveEndpointProtocol = "ANY" | "TCP" | "UDP" | "ICMP" | "ESP" | "AH";
 /** Protocols. Options specified by Endpoint Protocol Enum. */
 export type EnclaveEndpointDestinationRuleProtocolsList = Array<
   EnclaveEndpointProtocol | (string & {})
 >;
-const EnclaveEndpointDestinationRuleProtocolsList =
-  CommunityEndpointDestinationRuleProtocolsList as any as S.Schema<EnclaveEndpointDestinationRuleProtocolsList>;
-
 /** Enclave Endpoint Rule Properties */
 export interface EnclaveEndpointDestinationRule {
   /** Protocols. Options specified by Endpoint Protocol Enum. */
@@ -1471,19 +967,9 @@ export interface EnclaveEndpointDestinationRule {
   /** Port. Can include multiple ports separated by commas or a range indicated by a hyphen. */
   ports?: string;
 }
-const EnclaveEndpointDestinationRule = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<EnclaveEndpointDestinationRule>;
-
 /** Enclave Endpoint Rule Collection. */
 export type EnclaveEndpointPropertiesInputRuleCollectionList =
   Array<EnclaveEndpointDestinationRule>;
-const EnclaveEndpointPropertiesInputRuleCollectionList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<EnclaveEndpointPropertiesInputRuleCollectionList>;
-
 /** Enclave Endpoint Resource properties */
 export interface EnclaveEndpointPropertiesInput {
   /** Enclave Endpoint Rule Collection. */
@@ -1491,11 +977,6 @@ export interface EnclaveEndpointPropertiesInput {
   /** Whether update mode is automatic or manual. */
   updateMode?: UpdateMode | (string & {});
 }
-const EnclaveEndpointPropertiesInput = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<EnclaveEndpointPropertiesInput>;
-
 export interface EnclaveEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1512,26 +993,12 @@ export interface EnclaveEndpointsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointPropertiesInput;
 }
-const EnclaveEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type EnclaveEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const EnclaveEndpointsCreateOrUpdateResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponseTagsMap>;
-
 /** Enclave Endpoint Rule Collection. */
 export type EnclaveEndpointPropertiesRuleCollectionList = Array<EnclaveEndpointDestinationRule>;
-const EnclaveEndpointPropertiesRuleCollectionList =
-  EnclaveEndpointPropertiesInputRuleCollectionList as any as S.Schema<EnclaveEndpointPropertiesRuleCollectionList>;
-
 /** List of resource ids created by community endpoint. */
 export type EnclaveEndpointPropertiesResourceCollectionList = Array<string>;
-const EnclaveEndpointPropertiesResourceCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<EnclaveEndpointPropertiesResourceCollectionList>;
-
 /** Enclave Endpoint Resource properties */
 export interface EnclaveEndpointProperties {
   /** Enclave Endpoint Rule Collection. */
@@ -1543,11 +1010,6 @@ export interface EnclaveEndpointProperties {
   /** Whether update mode is automatic or manual. */
   updateMode?: UpdateMode;
 }
-const EnclaveEndpointProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<EnclaveEndpointProperties>;
-
 export interface EnclaveEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1564,23 +1026,14 @@ export interface EnclaveEndpointsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
 }
-const EnclaveEndpointsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponse>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type EnclaveEndpointsHandleApprovalCreationRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update"
   | "Reset";
-const EnclaveEndpointsHandleApprovalCreationRequestResourceRequestAction = S.String;
-
 /** Approval status indicating 'Approved' or 'Rejected' */
 export type EnclaveEndpointsHandleApprovalCreationRequestApprovalStatus = "Approved" | "Rejected";
-const EnclaveEndpointsHandleApprovalCreationRequestApprovalStatus = S.String;
-
 export interface EnclaveEndpointsHandleApprovalCreationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1599,18 +1052,11 @@ export interface EnclaveEndpointsHandleApprovalCreationRequest {
   /** Payload requested by client upon approval action */
   approvalCallbackPayload?: string;
 }
-const EnclaveEndpointsHandleApprovalCreationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<EnclaveEndpointsHandleApprovalCreationRequest>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-deletion-callback post action */
 export type EnclaveEndpointsHandleApprovalDeletionRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update";
-const EnclaveEndpointsHandleApprovalDeletionRequestResourceRequestAction = S.String;
-
 export interface EnclaveEndpointsHandleApprovalDeletionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1625,19 +1071,12 @@ export interface EnclaveEndpointsHandleApprovalDeletionRequest {
     | EnclaveEndpointsHandleApprovalDeletionRequestResourceRequestAction
     | (string & {});
 }
-const EnclaveEndpointsHandleApprovalDeletionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<EnclaveEndpointsHandleApprovalDeletionRequest>;
-
 export interface GetApprovalRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the approvals resource. */
   approvalName: string;
 }
-const GetApprovalRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetApprovalRequest>;
-
 export interface GetApprovalResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1650,8 +1089,6 @@ export interface GetApprovalResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
 }
-const GetApprovalResponse = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetApprovalResponse>;
-
 export interface GetCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1660,13 +1097,8 @@ export interface GetCommunityRequest {
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const GetCommunityRequest = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetCommunityRequest>;
-
 /** Resource tags. */
 export type GetCommunityResponseTagsMap = { [key: string]: string | undefined };
-const GetCommunityResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetCommunityResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetCommunityResponseIdentity = CommunityCreateOrUpdateResponseIdentity;
 export interface GetCommunityResponse {
@@ -1687,11 +1119,6 @@ export interface GetCommunityResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const GetCommunityResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetCommunityResponse>;
-
 export interface GetCommunityEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1702,11 +1129,6 @@ export interface GetCommunityEndpointRequest {
   /** The name of the Community Endpoint Resource */
   communityEndpointName: string;
 }
-const GetCommunityEndpointRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetCommunityEndpointRequest>;
-
 /** Resource tags. */
 export type GetCommunityEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface GetCommunityEndpointResponse {
@@ -1725,9 +1147,6 @@ export interface GetCommunityEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
 }
-const GetCommunityEndpointResponse =
-  CommunityEndpointsCreateOrUpdateResponse as any as S.Schema<GetCommunityEndpointResponse>;
-
 export interface GetDedicatedHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1738,11 +1157,6 @@ export interface GetDedicatedHubRequest {
   /** The name of the Dedicated Hub Resource */
   dedicatedHubName: string;
 }
-const GetDedicatedHubRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetDedicatedHubRequest>;
-
 /** Resource tags. */
 export type GetDedicatedHubResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDedicatedHubResponse {
@@ -1761,8 +1175,6 @@ export interface GetDedicatedHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
 }
-const GetDedicatedHubResponse = DedicatedHubResource as any as S.Schema<GetDedicatedHubResponse>;
-
 export interface GetEnclaveConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1771,11 +1183,6 @@ export interface GetEnclaveConnectionRequest {
   /** The name of the Enclave Connection Resource */
   enclaveConnectionName: string;
 }
-const GetEnclaveConnectionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetEnclaveConnectionRequest>;
-
 /** Resource tags. */
 export type GetEnclaveConnectionResponseTagsMap = { [key: string]: string | undefined };
 export interface GetEnclaveConnectionResponse {
@@ -1794,9 +1201,6 @@ export interface GetEnclaveConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
 }
-const GetEnclaveConnectionResponse =
-  EnclaveConnectionCreateOrUpdateResponse as any as S.Schema<GetEnclaveConnectionResponse>;
-
 export interface GetEnclaveEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1807,11 +1211,6 @@ export interface GetEnclaveEndpointRequest {
   /** The name of the Enclave Endpoint Resource */
   enclaveEndpointName: string;
 }
-const GetEnclaveEndpointRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetEnclaveEndpointRequest>;
-
 /** Resource tags. */
 export type GetEnclaveEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface GetEnclaveEndpointResponse {
@@ -1830,9 +1229,6 @@ export interface GetEnclaveEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
 }
-const GetEnclaveEndpointResponse =
-  EnclaveEndpointsCreateOrUpdateResponse as any as S.Schema<GetEnclaveEndpointResponse>;
-
 export interface GetTransitHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1843,16 +1239,8 @@ export interface GetTransitHubRequest {
   /** The name of the TransitHub Resource */
   transitHubName: string;
 }
-const GetTransitHubRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetTransitHubRequest>;
-
 /** Resource tags. */
 export type GetTransitHubResponseTagsMap = { [key: string]: string | undefined };
-const GetTransitHubResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetTransitHubResponseTagsMap>;
-
 /** Specifies the state of the transitHub. */
 export type TransitHubState =
   | "PendingApproval"
@@ -1860,12 +1248,8 @@ export type TransitHubState =
   | "PendingUpdate"
   | "Active"
   | "Failed";
-const TransitHubState = S.String;
-
 /** Specifies the type of the transitOption. */
 export type TransitOptionType = "ExpressRoute" | "Gateway" | "Peering";
-const TransitOptionType = S.String;
-
 /** TransitOptionParams Properties */
 export interface TransitOptionParams {
   /** Transit Option Params scaleUnits. */
@@ -1873,8 +1257,6 @@ export interface TransitOptionParams {
   /** Transit Option Params remoteVirtualNetworkId. */
   remoteVirtualNetworkId?: string;
 }
-const TransitOptionParams = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<TransitOptionParams>;
-
 /** TransitOption Properties */
 export interface TransitOption {
   /** Transit Option Type. */
@@ -1882,17 +1264,10 @@ export interface TransitOption {
   /** Transit Option Params */
   params?: TransitOptionParams;
 }
-const TransitOption = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TransitOption>;
-
 /** List of resource ids modified by transitHubs. */
 export type TransitHubPropertiesResourceCollectionList = Array<string>;
-const TransitHubPropertiesResourceCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<TransitHubPropertiesResourceCollectionList>;
-
 /** Specifies the security provider for the transit hub. */
 export type SecurityProvider = "None" | "AzureFirewall";
-const SecurityProvider = S.String;
-
 /** Describes the properties of an Transit Hub. */
 export interface TransitHubProperties {
   /** The status of the last operation. */
@@ -1906,11 +1281,6 @@ export interface TransitHubProperties {
   /** Specifies the security provider for the transit hub. */
   securityProvider?: SecurityProvider;
 }
-const TransitHubProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<TransitHubProperties>;
-
 export interface GetTransitHubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1927,11 +1297,6 @@ export interface GetTransitHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
 }
-const GetTransitHubResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetTransitHubResponse>;
-
 export interface GetVirtualEnclaveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1940,16 +1305,8 @@ export interface GetVirtualEnclaveRequest {
   /** The name of the enclaveResource Resource */
   virtualEnclaveName: string;
 }
-const GetVirtualEnclaveRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetVirtualEnclaveRequest>;
-
 /** Resource tags. */
 export type GetVirtualEnclaveResponseTagsMap = { [key: string]: string | undefined };
-const GetVirtualEnclaveResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualEnclaveResponseTagsMap>;
-
 /** Subnet Configuration */
 export interface SubnetConfiguration {
   /** Subnet name. */
@@ -1965,15 +1322,8 @@ export interface SubnetConfiguration {
   /** Network security group ID. */
   networkSecurityGroupResourceId?: string;
 }
-const SubnetConfiguration = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<SubnetConfiguration>;
-
 /** Subnet Configurations. */
 export type EnclaveVirtualNetworkModelSubnetConfigurationsList = Array<SubnetConfiguration>;
-const EnclaveVirtualNetworkModelSubnetConfigurationsList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<EnclaveVirtualNetworkModelSubnetConfigurationsList>;
-
 /** Enclave Virtual Network Properties */
 export interface EnclaveVirtualNetworkModel {
   /** Network Name. */
@@ -1987,11 +1337,6 @@ export interface EnclaveVirtualNetworkModel {
   /** Allow Subnet Communication. */
   allowSubnetCommunication?: boolean;
 }
-const EnclaveVirtualNetworkModel = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<EnclaveVirtualNetworkModel>;
-
 /** Enclave Address Spaces */
 export interface EnclaveAddressSpacesModel {
   /** Enclave Address Space */
@@ -1999,16 +1344,8 @@ export interface EnclaveAddressSpacesModel {
   /** Managed Address Space */
   managedAddressSpace?: string;
 }
-const EnclaveAddressSpacesModel = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<EnclaveAddressSpacesModel>;
-
 /** List of resource ids created by Virtual Enclave. */
 export type VirtualEnclavePropertiesResourceCollectionList = Array<string>;
-const VirtualEnclavePropertiesResourceCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<VirtualEnclavePropertiesResourceCollectionList>;
-
 /** Managed-On-Behalf-Of broker resources */
 export type VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
   Array<MoboBrokerResource>;
@@ -2017,46 +1354,23 @@ export interface VirtualEnclavePropertiesManagedOnBehalfOfConfiguration {
   /** Managed-On-Behalf-Of broker resources */
   moboBrokerResources?: VirtualEnclavePropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList;
 }
-const VirtualEnclavePropertiesManagedOnBehalfOfConfiguration =
-  CommunityPropertiesManagedOnBehalfOfConfiguration as any as S.Schema<VirtualEnclavePropertiesManagedOnBehalfOfConfiguration>;
-
 /** Specifies whether resources in the workload resource group(s) are visible through standard RBAC */
 export type VirtualEnclavePropertiesWorkloadResourceVisibility = "Enabled" | "Disabled";
-const VirtualEnclavePropertiesWorkloadResourceVisibility = S.String;
-
 /** Controls whether standard Azure RBAC role inheritance applies to the workload resource group(s) */
 export type VirtualEnclavePropertiesRbacInheritance = "Enabled" | "Disabled";
-const VirtualEnclavePropertiesRbacInheritance = S.String;
-
 /** Enclave role assignments */
 export type VirtualEnclavePropertiesEnclaveRoleAssignmentsList = Array<RoleAssignmentItem>;
-const VirtualEnclavePropertiesEnclaveRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesEnclaveRoleAssignmentsList>;
-
 /** Workload role assignments */
 export type VirtualEnclavePropertiesWorkloadRoleAssignmentsList = Array<RoleAssignmentItem>;
-const VirtualEnclavePropertiesWorkloadRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesWorkloadRoleAssignmentsList>;
-
 /** Enclave specific policies */
 export type VirtualEnclavePropertiesGovernedServiceListList = Array<GovernedServiceItem>;
-const VirtualEnclavePropertiesGovernedServiceListList =
-  CommunityPropertiesGovernedServiceListList as any as S.Schema<VirtualEnclavePropertiesGovernedServiceListList>;
-
 /** Log Analytics Resource Ids. */
 export type EnclaveDefaultSettingsModelLogAnalyticsResourceIdCollectionList = Array<string>;
-const EnclaveDefaultSettingsModelLogAnalyticsResourceIdCollectionList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<EnclaveDefaultSettingsModelLogAnalyticsResourceIdCollectionList>;
-
 /** Diagnostic Destination. */
 export type EnclaveDefaultSettingsModelDiagnosticDestination =
   | "CommunityOnly"
   | "EnclaveOnly"
   | "Both";
-const EnclaveDefaultSettingsModelDiagnosticDestination = S.String;
-
 /** Virtual Enclave Default Settings */
 export interface EnclaveDefaultSettingsModel {
   /** Key Vault Resource Id. */
@@ -2068,11 +1382,6 @@ export interface EnclaveDefaultSettingsModel {
   /** Diagnostic Destination. */
   diagnosticDestination?: EnclaveDefaultSettingsModelDiagnosticDestination;
 }
-const EnclaveDefaultSettingsModel = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<EnclaveDefaultSettingsModel>;
-
 /** Virtual Enclave ApprovalSettings Properties for 2025-11-01-preview and later versions */
 export interface VirtualEnclaveApprovalSettings {
   /** Approval configuration for enclave endpoint updates. */
@@ -2084,11 +1393,6 @@ export interface VirtualEnclaveApprovalSettings {
   /** Approval configuration for enclave maintenance mode. */
   enclaveMaintenanceMode?: ApprovalSettingConfiguration;
 }
-const VirtualEnclaveApprovalSettings = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<VirtualEnclaveApprovalSettings>;
-
 /** Virtual Enclave Resource properties */
 export interface VirtualEnclaveProperties {
   /** Provisioning State. */
@@ -2128,11 +1432,6 @@ export interface VirtualEnclaveProperties {
   /** Virtual Enclave Monitoring Settings for diagnostic and virtual network flow logs */
   monitoringSettings?: MonitoringSettingsModel;
 }
-const VirtualEnclaveProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<VirtualEnclaveProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetVirtualEnclaveResponseIdentity = CommunityCreateOrUpdateResponseIdentity;
 export interface GetVirtualEnclaveResponse {
@@ -2153,11 +1452,6 @@ export interface GetVirtualEnclaveResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const GetVirtualEnclaveResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetVirtualEnclaveResponse>;
-
 export interface GetWorkloadRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2168,18 +1462,10 @@ export interface GetWorkloadRequest {
   /** The name of the workloadResource Resource */
   workloadName: string;
 }
-const GetWorkloadRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetWorkloadRequest>;
-
 /** Resource tags. */
 export type GetWorkloadResponseTagsMap = { [key: string]: string | undefined };
-const GetWorkloadResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkloadResponseTagsMap>;
-
 /** List of resource group ids. */
 export type WorkloadPropertiesResourceGroupCollectionList = Array<string>;
-const WorkloadPropertiesResourceGroupCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<WorkloadPropertiesResourceGroupCollectionList>;
-
 /** Managed-On-Behalf-Of broker resources */
 export type WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
   Array<MoboBrokerResource>;
@@ -2188,9 +1474,6 @@ export interface WorkloadPropertiesManagedOnBehalfOfConfiguration {
   /** Managed-On-Behalf-Of broker resources */
   moboBrokerResources?: WorkloadPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList;
 }
-const WorkloadPropertiesManagedOnBehalfOfConfiguration =
-  CommunityPropertiesManagedOnBehalfOfConfiguration as any as S.Schema<WorkloadPropertiesManagedOnBehalfOfConfiguration>;
-
 /** Workload Resource properties */
 export interface WorkloadProperties {
   /** Provisioning State. */
@@ -2200,8 +1483,6 @@ export interface WorkloadProperties {
   /** Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner. */
   managedOnBehalfOfConfiguration?: WorkloadPropertiesManagedOnBehalfOfConfiguration;
 }
-const WorkloadProperties = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<WorkloadProperties>;
-
 export interface GetWorkloadResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2218,17 +1499,10 @@ export interface GetWorkloadResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
 }
-const GetWorkloadResponse = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GetWorkloadResponse>;
-
 export interface ListApprovalByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-const ListApprovalByParentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListApprovalByParentRequest>;
-
 /** Approval Model Resource */
 export interface ApprovalResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2242,15 +1516,8 @@ export interface ApprovalResource {
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
 }
-const ApprovalResource = GetApprovalResponse as any as S.Schema<ApprovalResource>;
-
 /** The ApprovalResource items on this page */
 export type ApprovalResourceListResultValueList = Array<ApprovalResource>;
-const ApprovalResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ApprovalResourceListResultValueList>;
-
 /** The response of a ApprovalResource list operation. */
 export interface ApprovalResourceListResult {
   /** The ApprovalResource items on this page */
@@ -2258,22 +1525,12 @@ export interface ApprovalResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApprovalResourceListResult = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ApprovalResourceListResult>;
-
 export interface ListCommunityByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListCommunityByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListCommunityByResourceGroupRequest>;
-
 /** Resource tags. */
 export type CommunityResourceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2297,15 +1554,8 @@ export interface CommunityResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const CommunityResource = GetCommunityResponse as any as S.Schema<CommunityResource>;
-
 /** The CommunityResource items on this page */
 export type CommunityResourceListResultValueList = Array<CommunityResource>;
-const CommunityResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CommunityResourceListResultValueList>;
-
 /** The response of a CommunityResource list operation. */
 export interface CommunityResourceListResult {
   /** The CommunityResource items on this page */
@@ -2313,20 +1563,10 @@ export interface CommunityResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CommunityResourceListResult = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CommunityResourceListResult>;
-
 export interface ListCommunityBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListCommunityBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListCommunityBySubscriptionRequest>;
-
 export interface ListCommunityEndpointByCommunityResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2335,11 +1575,6 @@ export interface ListCommunityEndpointByCommunityResourceRequest {
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const ListCommunityEndpointByCommunityResourceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListCommunityEndpointByCommunityResourceRequest>;
-
 /** Resource tags. */
 export type CommunityEndpointResourceTagsMap = { [key: string]: string | undefined };
 /** CommunityEndpoint Model Resource */
@@ -2359,16 +1594,8 @@ export interface CommunityEndpointResource {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
 }
-const CommunityEndpointResource =
-  CommunityEndpointsCreateOrUpdateResponse as any as S.Schema<CommunityEndpointResource>;
-
 /** The CommunityEndpointResource items on this page */
 export type CommunityEndpointResourceListResultValueList = Array<CommunityEndpointResource>;
-const CommunityEndpointResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CommunityEndpointResourceListResultValueList>;
-
 /** The response of a CommunityEndpointResource list operation. */
 export interface CommunityEndpointResourceListResult {
   /** The CommunityEndpointResource items on this page */
@@ -2376,22 +1603,12 @@ export interface CommunityEndpointResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CommunityEndpointResourceListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CommunityEndpointResourceListResult>;
-
 export interface ListCommunityEndpointBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const ListCommunityEndpointBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ListCommunityEndpointBySubscriptionRequest>;
-
 export interface ListDedicatedHubByCommunityResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2400,16 +1617,8 @@ export interface ListDedicatedHubByCommunityResourceRequest {
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const ListDedicatedHubByCommunityResourceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListDedicatedHubByCommunityResourceRequest>;
-
 /** The DedicatedHubResource items on this page */
 export type DedicatedHubResourceListResultValueList = Array<DedicatedHubResource>;
-const DedicatedHubResourceListResultValueList =
-  CommunityPropertiesDedicatedHubListList as any as S.Schema<DedicatedHubResourceListResultValueList>;
-
 /** The response of a DedicatedHubResource list operation. */
 export interface DedicatedHubResourceListResult {
   /** The DedicatedHubResource items on this page */
@@ -2417,33 +1626,18 @@ export interface DedicatedHubResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DedicatedHubResourceListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DedicatedHubResourceListResult>;
-
 export interface ListDedicatedHubBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const ListDedicatedHubBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ListDedicatedHubBySubscriptionRequest>;
-
 export interface ListEnclaveConnectionByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListEnclaveConnectionByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListEnclaveConnectionByResourceGroupRequest>;
-
 /** Resource tags. */
 export type EnclaveConnectionResourceTagsMap = { [key: string]: string | undefined };
 /** EnclaveConnection Model Resource */
@@ -2463,16 +1657,8 @@ export interface EnclaveConnectionResource {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
 }
-const EnclaveConnectionResource =
-  EnclaveConnectionCreateOrUpdateResponse as any as S.Schema<EnclaveConnectionResource>;
-
 /** The EnclaveConnectionResource items on this page */
 export type EnclaveConnectionResourceListResultValueList = Array<EnclaveConnectionResource>;
-const EnclaveConnectionResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<EnclaveConnectionResourceListResultValueList>;
-
 /** The response of a EnclaveConnectionResource list operation. */
 export interface EnclaveConnectionResourceListResult {
   /** The EnclaveConnectionResource items on this page */
@@ -2480,20 +1666,10 @@ export interface EnclaveConnectionResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EnclaveConnectionResourceListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<EnclaveConnectionResourceListResult>;
-
 export interface ListEnclaveConnectionBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListEnclaveConnectionBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListEnclaveConnectionBySubscriptionRequest>;
-
 export interface ListEnclaveEndpointByEnclaveResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2502,16 +1678,8 @@ export interface ListEnclaveEndpointByEnclaveResourceRequest {
   /** The name of the enclaveResource Resource */
   virtualEnclaveName: string;
 }
-const ListEnclaveEndpointByEnclaveResourceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListEnclaveEndpointByEnclaveResourceRequest>;
-
 /** Resource tags. */
 export type EnclaveEndpointResourceTagsMap = { [key: string]: string | undefined };
-const EnclaveEndpointResourceTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveEndpointResourceTagsMap>;
-
 /** EnclaveEndpoint Model Resource */
 export interface EnclaveEndpointResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2529,18 +1697,8 @@ export interface EnclaveEndpointResource {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
 }
-const EnclaveEndpointResource = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<EnclaveEndpointResource>;
-
 /** The EnclaveEndpointResource items on this page */
 export type EnclaveEndpointResourceListResultValueList = Array<EnclaveEndpointResource>;
-const EnclaveEndpointResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<EnclaveEndpointResourceListResultValueList>;
-
 /** The response of a EnclaveEndpointResource list operation. */
 export interface EnclaveEndpointResourceListResult {
   /** The EnclaveEndpointResource items on this page */
@@ -2548,28 +1706,13 @@ export interface EnclaveEndpointResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EnclaveEndpointResourceListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<EnclaveEndpointResourceListResult>;
-
 export interface ListEnclaveEndpointBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the enclaveResource Resource */
   virtualEnclaveName: string;
 }
-const ListEnclaveEndpointBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListEnclaveEndpointBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2581,16 +1724,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -2604,26 +1741,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListTransitHubByCommunityResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2632,11 +1757,6 @@ export interface ListTransitHubByCommunityResourceRequest {
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const ListTransitHubByCommunityResourceRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListTransitHubByCommunityResourceRequest>;
-
 /** Resource tags. */
 export type TransitHubResourceTagsMap = { [key: string]: string | undefined };
 /** TransitHub Model Resource */
@@ -2656,15 +1776,8 @@ export interface TransitHubResource {
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
 }
-const TransitHubResource = GetTransitHubResponse as any as S.Schema<TransitHubResource>;
-
 /** The TransitHubResource items on this page */
 export type TransitHubResourceListResultValueList = Array<TransitHubResource>;
-const TransitHubResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<TransitHubResourceListResultValueList>;
-
 /** The response of a TransitHubResource list operation. */
 export interface TransitHubResourceListResult {
   /** The TransitHubResource items on this page */
@@ -2672,38 +1785,20 @@ export interface TransitHubResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TransitHubResourceListResult = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<TransitHubResourceListResult>;
-
 export interface ListTransitHubBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the communityResource Resource */
   communityName: string;
 }
-const ListTransitHubBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListTransitHubBySubscriptionRequest>;
-
 export interface ListVirtualEnclaveByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListVirtualEnclaveByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListVirtualEnclaveByResourceGroupRequest>;
-
 /** Resource tags. */
 export type EnclaveResourceTagsMap = { [key: string]: string | undefined };
-const EnclaveResourceTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<EnclaveResourceTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type EnclaveResourceIdentity = CommunityCreateOrUpdateResponseIdentity;
 /** Virtual Enclave Model Resource */
@@ -2725,15 +1820,8 @@ export interface EnclaveResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const EnclaveResource = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<EnclaveResource>;
-
 /** The EnclaveResource items on this page */
 export type EnclaveResourceListResultValueList = Array<EnclaveResource>;
-const EnclaveResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<EnclaveResourceListResultValueList>;
-
 /** The response of a EnclaveResource list operation. */
 export interface EnclaveResourceListResult {
   /** The EnclaveResource items on this page */
@@ -2741,20 +1829,10 @@ export interface EnclaveResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EnclaveResourceListResult = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<EnclaveResourceListResult>;
-
 export interface ListVirtualEnclaveBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListVirtualEnclaveBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListVirtualEnclaveBySubscriptionRequest>;
-
 export interface ListWorkloadByEnclaveResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2763,11 +1841,6 @@ export interface ListWorkloadByEnclaveResourceRequest {
   /** The name of the enclaveResource Resource */
   virtualEnclaveName: string;
 }
-const ListWorkloadByEnclaveResourceRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListWorkloadByEnclaveResourceRequest>;
-
 /** Resource tags. */
 export type WorkloadResourceTagsMap = { [key: string]: string | undefined };
 /** Workload Model Resource */
@@ -2787,15 +1860,8 @@ export interface WorkloadResource {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
 }
-const WorkloadResource = GetWorkloadResponse as any as S.Schema<WorkloadResource>;
-
 /** The WorkloadResource items on this page */
 export type WorkloadResourceListResultValueList = Array<WorkloadResource>;
-const WorkloadResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<WorkloadResourceListResultValueList>;
-
 /** The response of a WorkloadResource list operation. */
 export interface WorkloadResourceListResult {
   /** The WorkloadResource items on this page */
@@ -2803,26 +1869,14 @@ export interface WorkloadResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const WorkloadResourceListResult = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<WorkloadResourceListResult>;
-
 export interface ListWorkloadBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the enclaveResource Resource */
   virtualEnclaveName: string;
 }
-const ListWorkloadBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListWorkloadBySubscriptionRequest>;
-
 /** Approval status indicating 'Approved' or 'Rejected' */
 export type NotifyApprovalInitiatorRequestApprovalStatus = "Approved" | "Rejected";
-const NotifyApprovalInitiatorRequestApprovalStatus = S.String;
-
 export interface NotifyApprovalInitiatorRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -2831,16 +1885,8 @@ export interface NotifyApprovalInitiatorRequest {
   /** Approval status indicating 'Approved' or 'Rejected' */
   approvalStatus: NotifyApprovalInitiatorRequestApprovalStatus | (string & {});
 }
-const NotifyApprovalInitiatorRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<NotifyApprovalInitiatorRequest>;
-
 /** Resource tags. */
 export type TransitHubCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const TransitHubCreateOrUpdateRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<TransitHubCreateOrUpdateRequestTagsMap>;
-
 /** Describes the properties of an Transit Hub. */
 export interface TransitHubPropertiesInput {
   /** The state of the transitHub. */
@@ -2850,11 +1896,6 @@ export interface TransitHubPropertiesInput {
   /** Specifies the security provider for the transit hub. */
   securityProvider?: SecurityProvider | (string & {});
 }
-const TransitHubPropertiesInput = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<TransitHubPropertiesInput>;
-
 export interface TransitHubCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2871,16 +1912,8 @@ export interface TransitHubCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: TransitHubPropertiesInput;
 }
-const TransitHubCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<TransitHubCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type TransitHubCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const TransitHubCreateOrUpdateResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<TransitHubCreateOrUpdateResponseTagsMap>;
-
 export interface TransitHubCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2897,20 +1930,10 @@ export interface TransitHubCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
 }
-const TransitHubCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<TransitHubCreateOrUpdateResponse>;
-
 /** List of approvers for the approval request */
 export type ApprovalPatchPropertiesInputApproversList = Array<ApproverInput>;
-const ApprovalPatchPropertiesInputApproversList =
-  ApprovalPropertiesInputApproversList as any as S.Schema<ApprovalPatchPropertiesInputApproversList>;
-
 /** Approval Status. It can be Approved, Rejected, Pending, Deleted or Expired. */
 export type ApprovalStatus = "Approved" | "Rejected" | "Pending" | "Deleted" | "Expired";
-const ApprovalStatus = S.String;
-
 /** Request Metadata patch properties. */
 export interface RequestMetadataUpdatableProperties {
   /** Resource Action of the item being approved or declined. */
@@ -2922,11 +1945,6 @@ export interface RequestMetadataUpdatableProperties {
   /** Status of the approval. Uses ApprovalStatus enum. */
   approvalStatus?: ApprovalStatus | (string & {});
 }
-const RequestMetadataUpdatableProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<RequestMetadataUpdatableProperties>;
-
 /** Approvals patch properties. */
 export interface ApprovalPatchPropertiesInput {
   /** Parameter for optimizing query results */
@@ -2944,11 +1962,6 @@ export interface ApprovalPatchPropertiesInput {
   /** Request metadata for the approval request. */
   requestMetadata?: RequestMetadataUpdatableProperties;
 }
-const ApprovalPatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ApprovalPatchPropertiesInput>;
-
 export interface UpdateApprovalRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -2957,11 +1970,6 @@ export interface UpdateApprovalRequest {
   /** Approval Patch properties */
   properties?: ApprovalPatchPropertiesInput;
 }
-const UpdateApprovalRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<UpdateApprovalRequest>;
-
 export interface UpdateApprovalResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2974,31 +1982,16 @@ export interface UpdateApprovalResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
 }
-const UpdateApprovalResponse = GetApprovalResponse as any as S.Schema<UpdateApprovalResponse>;
-
 /** DNS Servers. */
 export type CommunityPatchPropertiesInputDnsServersList = Array<string>;
-const CommunityPatchPropertiesInputDnsServersList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPatchPropertiesInputDnsServersList>;
-
 /** List of services governed by a community. */
 export type CommunityPatchPropertiesInputGovernedServiceListList = Array<GovernedServiceItemInput>;
-const CommunityPatchPropertiesInputGovernedServiceListList =
-  CommunityPropertiesInputGovernedServiceListList as any as S.Schema<CommunityPatchPropertiesInputGovernedServiceListList>;
-
 /** Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement. */
 export type CommunityPatchPropertiesInputPolicyOverride = "Enclave" | "None";
-const CommunityPatchPropertiesInputPolicyOverride = S.String;
-
 /** Community role assignments */
 export type CommunityPatchPropertiesInputCommunityRoleAssignmentsList = Array<RoleAssignmentItem>;
-const CommunityPatchPropertiesInputCommunityRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<CommunityPatchPropertiesInputCommunityRoleAssignmentsList>;
-
 /** Azure Firewall SKU */
 export type FirewallSKU = "Basic" | "Standard" | "Premium";
-const FirewallSKU = S.String;
-
 /** Granular ApprovalSettings Patch Properties */
 export type ApprovalSettingsPatchProperties = ApprovalSettings;
 /** Current mode of Maintenance Mode Configuration */
@@ -3008,20 +2001,13 @@ export type MaintenanceModeConfigurationPatchModelMode =
   | "Off"
   | "General"
   | "Advanced";
-const MaintenanceModeConfigurationPatchModelMode = S.String;
-
 /** The user, group or service principal object affected by Maintenance Mode */
 export type MaintenanceModeConfigurationPatchModelPrincipalsList = Array<Principal>;
-const MaintenanceModeConfigurationPatchModelPrincipalsList =
-  RoleAssignmentItemPrincipalsList as any as S.Schema<MaintenanceModeConfigurationPatchModelPrincipalsList>;
-
 /** Justification for entering or exiting Maintenance Mode */
 export type MaintenanceModeConfigurationPatchModelJustification =
   | "Networking"
   | "Governance"
   | "Off";
-const MaintenanceModeConfigurationPatchModelJustification = S.String;
-
 /** Maintenance Mode Patch Model */
 export interface MaintenanceModeConfigurationPatchModel {
   /** Current mode of Maintenance Mode Configuration */
@@ -3031,18 +2017,11 @@ export interface MaintenanceModeConfigurationPatchModel {
   /** Justification for entering or exiting Maintenance Mode */
   justification?: MaintenanceModeConfigurationPatchModelJustification | (string & {});
 }
-const MaintenanceModeConfigurationPatchModel = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<MaintenanceModeConfigurationPatchModel>;
-
 /** List of destination types for monitoring logs */
 export type MonitoringDestinationType =
   | "CommunityWorkspace"
   | "EnclaveWorkspace"
   | "CustomWorkspace";
-const MonitoringDestinationType = S.String;
-
 /** Monitoring Destination Patch Model */
 export interface MonitoringDestinationPatchModel {
   /** The type of monitoring workspace destination */
@@ -3052,19 +2031,9 @@ export interface MonitoringDestinationPatchModel {
   /** Custom name for diagnostic settings */
   diagnosticSettingsName?: string;
 }
-const MonitoringDestinationPatchModel = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<MonitoringDestinationPatchModel>;
-
 /** Log Analytics workspace destinations where diagnostic logs will be stored. */
 export type MonitoringSettingsPatchModelDiagnosticDestinationsList =
   Array<MonitoringDestinationPatchModel>;
-const MonitoringSettingsPatchModelDiagnosticDestinationsList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<MonitoringSettingsPatchModelDiagnosticDestinationsList>;
-
 /** Monitoring Destination Patch Model */
 export interface MonitoringDestinationPatchModelUpdate {
   /** The type of monitoring workspace destination */
@@ -3074,11 +2043,6 @@ export interface MonitoringDestinationPatchModelUpdate {
   /** Custom name for diagnostic settings */
   diagnosticSettingsName?: string;
 }
-const MonitoringDestinationPatchModelUpdate = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<MonitoringDestinationPatchModelUpdate>;
-
 /** Monitoring Settings Patch Model */
 export interface MonitoringSettingsPatchModel {
   /** Log Analytics workspace destinations where diagnostic logs will be stored. */
@@ -3086,16 +2050,8 @@ export interface MonitoringSettingsPatchModel {
   /** Log Analytics workspace destination where virtual network flow logs will be stored. */
   flowLogDestination?: MonitoringDestinationPatchModelUpdate;
 }
-const MonitoringSettingsPatchModel = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<MonitoringSettingsPatchModel>;
-
 /** Address spaces list */
 export type CommunityPatchPropertiesInputAddressSpacesList = Array<string>;
-const CommunityPatchPropertiesInputAddressSpacesList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<CommunityPatchPropertiesInputAddressSpacesList>;
-
 /** Community Resource Properties without default values */
 export interface CommunityPatchPropertiesInput {
   /** DNS Servers. */
@@ -3117,36 +2073,20 @@ export interface CommunityPatchPropertiesInput {
   /** Address spaces list */
   addressSpaces?: CommunityPatchPropertiesInputAddressSpacesList;
 }
-const CommunityPatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<CommunityPatchPropertiesInput>;
-
 /** Resource tags. */
 export type UpdateCommunityRequestTagsMap = { [key: string]: string | undefined };
-const UpdateCommunityRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunityRequestTagsMap>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType = S.String;
-
 /** User assigned identity properties */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
   UserAssignedIdentityInput;
 /** The identities assigned to this resource by the user. */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   { [key: string]: UserAssignedIdentityInput | undefined };
-const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    6,
-  ) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -3154,11 +2094,6 @@ export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInpu
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
-const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput>;
-
 export interface UpdateCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3173,11 +2108,6 @@ export interface UpdateCommunityRequest {
   /** The managed service identities assigned to this resource. */
   identity?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput;
 }
-const UpdateCommunityRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<UpdateCommunityRequest>;
-
 /** Resource tags. */
 export type UpdateCommunityResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3200,14 +2130,9 @@ export interface UpdateCommunityResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const UpdateCommunityResponse = GetCommunityResponse as any as S.Schema<UpdateCommunityResponse>;
-
 /** Community Endpoint Rule Collection. */
 export type CommunityEndpointPatchPropertiesRuleCollectionList =
   Array<CommunityEndpointDestinationRule>;
-const CommunityEndpointPatchPropertiesRuleCollectionList =
-  CommunityEndpointPropertiesInputRuleCollectionList as any as S.Schema<CommunityEndpointPatchPropertiesRuleCollectionList>;
-
 /** Community Endpoint patchable Properties */
 export interface CommunityEndpointPatchProperties {
   /** Community Endpoint Rule Collection. */
@@ -3215,16 +2140,8 @@ export interface CommunityEndpointPatchProperties {
   /** Whether update mode is automatic or manual. */
   updateMode?: UpdateMode | (string & {});
 }
-const CommunityEndpointPatchProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<CommunityEndpointPatchProperties>;
-
 /** Resource tags. */
 export type UpdateCommunityEndpointRequestTagsMap = { [key: string]: string | undefined };
-const UpdateCommunityEndpointRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunityEndpointRequestTagsMap>;
-
 export interface UpdateCommunityEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3239,11 +2156,6 @@ export interface UpdateCommunityEndpointRequest {
   /** Resource tags. */
   tags?: UpdateCommunityEndpointRequestTagsMap;
 }
-const UpdateCommunityEndpointRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<UpdateCommunityEndpointRequest>;
-
 /** Resource tags. */
 export type UpdateCommunityEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateCommunityEndpointResponse {
@@ -3262,16 +2174,10 @@ export interface UpdateCommunityEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
 }
-const UpdateCommunityEndpointResponse =
-  CommunityEndpointsCreateOrUpdateResponse as any as S.Schema<UpdateCommunityEndpointResponse>;
-
 /** Dedicated Hub patchable Properties */
 export type DedicatedHubPatchProperties = DedicatedHubPropertiesInput;
 /** Resource tags. */
 export type UpdateDedicatedHubRequestTagsMap = { [key: string]: string | undefined };
-const UpdateDedicatedHubRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDedicatedHubRequestTagsMap>;
-
 export interface UpdateDedicatedHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3286,11 +2192,6 @@ export interface UpdateDedicatedHubRequest {
   /** Resource tags. */
   tags?: UpdateDedicatedHubRequestTagsMap;
 }
-const UpdateDedicatedHubRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<UpdateDedicatedHubRequest>;
-
 /** Resource tags. */
 export type UpdateDedicatedHubResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDedicatedHubResponse {
@@ -3309,24 +2210,13 @@ export interface UpdateDedicatedHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
 }
-const UpdateDedicatedHubResponse =
-  DedicatedHubCreateOrUpdateResponse as any as S.Schema<UpdateDedicatedHubResponse>;
-
 /** Enclave Connection patchable Properties */
 export interface EnclaveConnectionPatchProperties {
   /** Source CIDR. */
   sourceCidr?: string;
 }
-const EnclaveConnectionPatchProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<EnclaveConnectionPatchProperties>;
-
 /** Resource tags. */
 export type UpdateEnclaveConnectionRequestTagsMap = { [key: string]: string | undefined };
-const UpdateEnclaveConnectionRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnclaveConnectionRequestTagsMap>;
-
 export interface UpdateEnclaveConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3339,11 +2229,6 @@ export interface UpdateEnclaveConnectionRequest {
   /** Resource tags. */
   tags?: UpdateEnclaveConnectionRequestTagsMap;
 }
-const UpdateEnclaveConnectionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<UpdateEnclaveConnectionRequest>;
-
 /** Resource tags. */
 export type UpdateEnclaveConnectionResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEnclaveConnectionResponse {
@@ -3362,15 +2247,9 @@ export interface UpdateEnclaveConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
 }
-const UpdateEnclaveConnectionResponse =
-  EnclaveConnectionCreateOrUpdateResponse as any as S.Schema<UpdateEnclaveConnectionResponse>;
-
 /** Enclave Endpoint Rule Collection. */
 export type EnclaveEndpointPatchPropertiesRuleCollectionList =
   Array<EnclaveEndpointDestinationRule>;
-const EnclaveEndpointPatchPropertiesRuleCollectionList =
-  EnclaveEndpointPropertiesInputRuleCollectionList as any as S.Schema<EnclaveEndpointPatchPropertiesRuleCollectionList>;
-
 /** Enclave Endpoint patchable Properties */
 export interface EnclaveEndpointPatchProperties {
   /** Enclave Endpoint Rule Collection. */
@@ -3378,16 +2257,8 @@ export interface EnclaveEndpointPatchProperties {
   /** Whether update mode is automatic or manual. */
   updateMode?: UpdateMode | (string & {});
 }
-const EnclaveEndpointPatchProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<EnclaveEndpointPatchProperties>;
-
 /** Resource tags. */
 export type UpdateEnclaveEndpointRequestTagsMap = { [key: string]: string | undefined };
-const UpdateEnclaveEndpointRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnclaveEndpointRequestTagsMap>;
-
 export interface UpdateEnclaveEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3402,11 +2273,6 @@ export interface UpdateEnclaveEndpointRequest {
   /** Resource tags. */
   tags?: UpdateEnclaveEndpointRequestTagsMap;
 }
-const UpdateEnclaveEndpointRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<UpdateEnclaveEndpointRequest>;
-
 /** Resource tags. */
 export type UpdateEnclaveEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEnclaveEndpointResponse {
@@ -3425,16 +2291,10 @@ export interface UpdateEnclaveEndpointResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
 }
-const UpdateEnclaveEndpointResponse =
-  EnclaveEndpointsCreateOrUpdateResponse as any as S.Schema<UpdateEnclaveEndpointResponse>;
-
 /** Transit Hub patchable Properties */
 export type TransitHubPatchProperties = TransitHubPropertiesInput;
 /** Resource tags. */
 export type UpdateTransitHubRequestTagsMap = { [key: string]: string | undefined };
-const UpdateTransitHubRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTransitHubRequestTagsMap>;
-
 export interface UpdateTransitHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3449,11 +2309,6 @@ export interface UpdateTransitHubRequest {
   /** Resource tags. */
   tags?: UpdateTransitHubRequestTagsMap;
 }
-const UpdateTransitHubRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<UpdateTransitHubRequest>;
-
 /** Resource tags. */
 export type UpdateTransitHubResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateTransitHubResponse {
@@ -3472,48 +2327,26 @@ export interface UpdateTransitHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
 }
-const UpdateTransitHubResponse = GetTransitHubResponse as any as S.Schema<UpdateTransitHubResponse>;
-
 /** Resource Visibility Mode */
 export type ResourceVisibilityMode = "Enabled" | "Disabled";
-const ResourceVisibilityMode = S.String;
-
 /** Rbac Inheritance Mode */
 export type RbacInheritanceMode = "Enabled" | "Disabled";
-const RbacInheritanceMode = S.String;
-
 /** Enclave role assignments */
 export type VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList =
   Array<RoleAssignmentItem>;
-const VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList>;
-
 /** Workload role assignments */
 export type VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList =
   Array<RoleAssignmentItem>;
-const VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList>;
-
 /** Enclave specific policies */
 export type VirtualEnclavePatchPropertiesInputGovernedServiceListList =
   Array<GovernedServiceItemInput>;
-const VirtualEnclavePatchPropertiesInputGovernedServiceListList =
-  CommunityPropertiesInputGovernedServiceListList as any as S.Schema<VirtualEnclavePatchPropertiesInputGovernedServiceListList>;
-
 /** Specifies the destination of where to store diagnostic logs. */
 export type DiagnosticDestination = "CommunityOnly" | "EnclaveOnly" | "Both";
-const DiagnosticDestination = S.String;
-
 /** Virtual Enclave Default Settings */
 export interface EnclaveDefaultSettingsPatchModel {
   /** Diagnostic Destination. */
   diagnosticDestination?: DiagnosticDestination | (string & {});
 }
-const EnclaveDefaultSettingsPatchModel = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<EnclaveDefaultSettingsPatchModel>;
-
 /** Virtual Enclave ApprovalSettings Patch Properties */
 export type VirtualEnclaveApprovalSettingsPatchProperties = VirtualEnclaveApprovalSettings;
 /** Virtual Enclave Patchable Properties */
@@ -3543,16 +2376,8 @@ export interface VirtualEnclavePatchPropertiesInput {
   /** Virtual Enclave Monitoring Settings for diagnostic and virtual network flow logs */
   monitoringSettings?: MonitoringSettingsPatchModel;
 }
-const VirtualEnclavePatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<VirtualEnclavePatchPropertiesInput>;
-
 /** Resource tags. */
 export type UpdateVirtualEnclaveRequestTagsMap = { [key: string]: string | undefined };
-const UpdateVirtualEnclaveRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualEnclaveRequestTagsMap>;
-
 export interface UpdateVirtualEnclaveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3567,11 +2392,6 @@ export interface UpdateVirtualEnclaveRequest {
   /** Resource tags. */
   tags?: UpdateVirtualEnclaveRequestTagsMap;
 }
-const UpdateVirtualEnclaveRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<UpdateVirtualEnclaveRequest>;
-
 /** Resource tags. */
 export type UpdateVirtualEnclaveResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3594,29 +2414,15 @@ export interface UpdateVirtualEnclaveResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const UpdateVirtualEnclaveResponse =
-  GetVirtualEnclaveResponse as any as S.Schema<UpdateVirtualEnclaveResponse>;
-
 /** List of resource group ids. */
 export type WorkloadPatchPropertiesResourceGroupCollectionList = Array<string>;
-const WorkloadPatchPropertiesResourceGroupCollectionList =
-  ApproverMandatoryApprovalGroupMembershipIdsList as any as S.Schema<WorkloadPatchPropertiesResourceGroupCollectionList>;
-
 /** Workload patchable Properties */
 export interface WorkloadPatchProperties {
   /** List of resource group ids. */
   resourceGroupCollection?: WorkloadPatchPropertiesResourceGroupCollectionList;
 }
-const WorkloadPatchProperties = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<WorkloadPatchProperties>;
-
 /** Resource tags. */
 export type UpdateWorkloadRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWorkloadRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkloadRequestTagsMap>;
-
 export interface UpdateWorkloadRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3631,11 +2437,6 @@ export interface UpdateWorkloadRequest {
   /** Resource tags. */
   tags?: UpdateWorkloadRequestTagsMap;
 }
-const UpdateWorkloadRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<UpdateWorkloadRequest>;
-
 /** Resource tags. */
 export type UpdateWorkloadResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWorkloadResponse {
@@ -3654,36 +2455,18 @@ export interface UpdateWorkloadResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
 }
-const UpdateWorkloadResponse = GetWorkloadResponse as any as S.Schema<UpdateWorkloadResponse>;
-
 /** Resource tags. */
 export type VirtualEnclaveCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const VirtualEnclaveCreateOrUpdateRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualEnclaveCreateOrUpdateRequestTagsMap>;
-
 /** Specifies whether resources in the workload resource group(s) are visible through standard RBAC */
 export type VirtualEnclavePropertiesInputWorkloadResourceVisibility = "Enabled" | "Disabled";
-const VirtualEnclavePropertiesInputWorkloadResourceVisibility = S.String;
-
 /** Controls whether standard Azure RBAC role inheritance applies to the workload resource group(s) */
 export type VirtualEnclavePropertiesInputRbacInheritance = "Enabled" | "Disabled";
-const VirtualEnclavePropertiesInputRbacInheritance = S.String;
-
 /** Enclave role assignments */
 export type VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList = Array<RoleAssignmentItem>;
-const VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList>;
-
 /** Workload role assignments */
 export type VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList = Array<RoleAssignmentItem>;
-const VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList =
-  CommunityPropertiesInputCommunityRoleAssignmentsList as any as S.Schema<VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList>;
-
 /** Enclave specific policies */
 export type VirtualEnclavePropertiesInputGovernedServiceListList = Array<GovernedServiceItemInput>;
-const VirtualEnclavePropertiesInputGovernedServiceListList =
-  CommunityPropertiesInputGovernedServiceListList as any as S.Schema<VirtualEnclavePropertiesInputGovernedServiceListList>;
-
 /** Diagnostic Destination. */
 export type EnclaveDefaultSettingsModelInputDiagnosticDestination =
   | "CommunityOnly"
@@ -3694,9 +2477,6 @@ export interface EnclaveDefaultSettingsModelInput {
   /** Diagnostic Destination. */
   diagnosticDestination?: EnclaveDefaultSettingsModelInputDiagnosticDestination | (string & {});
 }
-const EnclaveDefaultSettingsModelInput =
-  EnclaveDefaultSettingsPatchModel as any as S.Schema<EnclaveDefaultSettingsModelInput>;
-
 /** Virtual Enclave Resource properties */
 export interface VirtualEnclavePropertiesInput {
   /** Virtual Network. */
@@ -3728,11 +2508,6 @@ export interface VirtualEnclavePropertiesInput {
   /** Virtual Enclave Monitoring Settings for diagnostic and virtual network flow logs */
   monitoringSettings?: MonitoringSettingsModel;
 }
-const VirtualEnclavePropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<VirtualEnclavePropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type VirtualEnclaveCreateOrUpdateRequestIdentity = CommunityCreateOrUpdateRequestIdentity;
 export interface VirtualEnclaveCreateOrUpdateRequest {
@@ -3751,11 +2526,6 @@ export interface VirtualEnclaveCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateRequestIdentity;
 }
-const VirtualEnclaveCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<VirtualEnclaveCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type VirtualEnclaveCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3778,21 +2548,14 @@ export interface VirtualEnclaveCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
 }
-const VirtualEnclaveCreateOrUpdateResponse =
-  GetVirtualEnclaveResponse as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type VirtualEnclaveHandleApprovalCreationRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update"
   | "Reset";
-const VirtualEnclaveHandleApprovalCreationRequestResourceRequestAction = S.String;
-
 /** Approval status indicating 'Approved' or 'Rejected' */
 export type VirtualEnclaveHandleApprovalCreationRequestApprovalStatus = "Approved" | "Rejected";
-const VirtualEnclaveHandleApprovalCreationRequestApprovalStatus = S.String;
-
 export interface VirtualEnclaveHandleApprovalCreationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3809,18 +2572,11 @@ export interface VirtualEnclaveHandleApprovalCreationRequest {
   /** Payload requested by client upon approval action */
   approvalCallbackPayload?: string;
 }
-const VirtualEnclaveHandleApprovalCreationRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<VirtualEnclaveHandleApprovalCreationRequest>;
-
 /** Resource request action indicating action which needed to be performed upon calling approval-deletion-callback post action */
 export type VirtualEnclaveHandleApprovalDeletionRequestResourceRequestAction =
   | "Create"
   | "Delete"
   | "Update";
-const VirtualEnclaveHandleApprovalDeletionRequestResourceRequestAction = S.String;
-
 export interface VirtualEnclaveHandleApprovalDeletionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3833,16 +2589,8 @@ export interface VirtualEnclaveHandleApprovalDeletionRequest {
     | VirtualEnclaveHandleApprovalDeletionRequestResourceRequestAction
     | (string & {});
 }
-const VirtualEnclaveHandleApprovalDeletionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<VirtualEnclaveHandleApprovalDeletionRequest>;
-
 /** Resource tags. */
 export type WorkloadCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WorkloadCreateOrUpdateRequestTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<WorkloadCreateOrUpdateRequestTagsMap>;
-
 /** List of resource group ids. */
 export type WorkloadPropertiesInputResourceGroupCollectionList = Array<string>;
 /** Workload Resource properties */
@@ -3850,8 +2598,6 @@ export interface WorkloadPropertiesInput {
   /** List of resource group ids. */
   resourceGroupCollection?: WorkloadPropertiesInputResourceGroupCollectionList;
 }
-const WorkloadPropertiesInput = WorkloadPatchProperties as any as S.Schema<WorkloadPropertiesInput>;
-
 export interface WorkloadCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3868,16 +2614,8 @@ export interface WorkloadCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadPropertiesInput;
 }
-const WorkloadCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<WorkloadCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type WorkloadCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const WorkloadCreateOrUpdateResponseTagsMap =
-  CommunityCreateOrUpdateRequestTagsMap as any as S.Schema<WorkloadCreateOrUpdateResponseTagsMap>;
-
 export interface WorkloadCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3894,11 +2632,6 @@ export interface WorkloadCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
 }
-const WorkloadCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<WorkloadCreateOrUpdateResponse>;
-
 export type ApprovalCreateOrUpdateError = AzureOpError;
 /** Create a ApprovalResource */
 export const ApprovalCreateOrUpdate: API.OperationMethod<
@@ -3907,8 +2640,8 @@ export const ApprovalCreateOrUpdate: API.OperationMethod<
   ApprovalCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApprovalCreateOrUpdateRequest,
-  output: ApprovalCreateOrUpdateResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<ApprovalCreateOrUpdateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ApprovalCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3922,8 +2655,8 @@ export const CheckCommunityAddressSpaceAvailability: API.OperationMethod<
   CheckCommunityAddressSpaceAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCommunityAddressSpaceAvailabilityRequest,
-  output: CheckAddressSpaceAvailabilityResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<CheckCommunityAddressSpaceAvailabilityRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CheckAddressSpaceAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3937,8 +2670,8 @@ export const CommunityCreateOrUpdate: API.OperationMethod<
   CommunityCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunityCreateOrUpdateRequest,
-  output: CommunityCreateOrUpdateResponse,
+  input: __S(35, __c4, 3) as any as S.Schema<CommunityCreateOrUpdateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CommunityCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3952,8 +2685,8 @@ export const CommunityEndpointsCreateOrUpdate: API.OperationMethod<
   CommunityEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunityEndpointsCreateOrUpdateRequest,
-  output: CommunityEndpointsCreateOrUpdateResponse,
+  input: __S(53, __c6, 5) as any as S.Schema<CommunityEndpointsCreateOrUpdateRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<CommunityEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3967,8 +2700,8 @@ export const CommunityEndpointsHandleApprovalCreation: API.OperationMethod<
   CommunityEndpointsHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunityEndpointsHandleApprovalCreationRequest,
-  output: ApprovalActionResponse,
+  input: __S(56, __c7, 0) as any as S.Schema<CommunityEndpointsHandleApprovalCreationRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3982,8 +2715,8 @@ export const CommunityEndpointsHandleApprovalDeletion: API.OperationMethod<
   CommunityEndpointsHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunityEndpointsHandleApprovalDeletionRequest,
-  output: ApprovalActionResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<CommunityEndpointsHandleApprovalDeletionRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3997,8 +2730,8 @@ export const DedicatedHubCreateOrUpdate: API.OperationMethod<
   DedicatedHubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DedicatedHubCreateOrUpdateRequest,
-  output: DedicatedHubCreateOrUpdateResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<DedicatedHubCreateOrUpdateRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<DedicatedHubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4012,8 +2745,8 @@ export const DeleteApproval: API.OperationMethod<
   DeleteApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApprovalRequest,
-  output: DeleteApprovalResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<DeleteApprovalRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4027,8 +2760,8 @@ export const DeleteCommunity: API.OperationMethod<
   DeleteCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommunityRequest,
-  output: DeleteCommunityResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<DeleteCommunityRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4042,8 +2775,8 @@ export const DeleteCommunityEndpoint: API.OperationMethod<
   DeleteCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommunityEndpointRequest,
-  output: DeleteCommunityEndpointResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteCommunityEndpointRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4057,8 +2790,8 @@ export const DeleteDedicatedHub: API.OperationMethod<
   DeleteDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedHubRequest,
-  output: DeleteDedicatedHubResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<DeleteDedicatedHubRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4072,8 +2805,8 @@ export const DeleteEnclaveConnection: API.OperationMethod<
   DeleteEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnclaveConnectionRequest,
-  output: DeleteEnclaveConnectionResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<DeleteEnclaveConnectionRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4087,8 +2820,8 @@ export const DeleteEnclaveEndpoint: API.OperationMethod<
   DeleteEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnclaveEndpointRequest,
-  output: DeleteEnclaveEndpointResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<DeleteEnclaveEndpointRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4102,8 +2835,8 @@ export const DeleteTransitHub: API.OperationMethod<
   DeleteTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTransitHubRequest,
-  output: DeleteTransitHubResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<DeleteTransitHubRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4117,8 +2850,8 @@ export const DeleteVirtualEnclave: API.OperationMethod<
   DeleteVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVirtualEnclaveRequest,
-  output: DeleteVirtualEnclaveResponse,
+  input: __S(70, __c8, 6) as any as S.Schema<DeleteVirtualEnclaveRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4132,8 +2865,8 @@ export const DeleteWorkload: API.OperationMethod<
   DeleteWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkloadRequest,
-  output: DeleteWorkloadResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<DeleteWorkloadRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4147,8 +2880,8 @@ export const EnclaveConnectionCreateOrUpdate: API.OperationMethod<
   EnclaveConnectionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnclaveConnectionCreateOrUpdateRequest,
-  output: EnclaveConnectionCreateOrUpdateResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<EnclaveConnectionCreateOrUpdateRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<EnclaveConnectionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4162,8 +2895,8 @@ export const EnclaveConnectionHandleApprovalCreation: API.OperationMethod<
   EnclaveConnectionHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnclaveConnectionHandleApprovalCreationRequest,
-  output: ApprovalActionResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<EnclaveConnectionHandleApprovalCreationRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4177,8 +2910,8 @@ export const EnclaveConnectionHandleApprovalDeletion: API.OperationMethod<
   EnclaveConnectionHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnclaveConnectionHandleApprovalDeletionRequest,
-  output: ApprovalActionResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<EnclaveConnectionHandleApprovalDeletionRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4192,8 +2925,8 @@ export const EnclaveEndpointsCreateOrUpdate: API.OperationMethod<
   EnclaveEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnclaveEndpointsCreateOrUpdateRequest,
-  output: EnclaveEndpointsCreateOrUpdateResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4207,8 +2940,8 @@ export const EnclaveEndpointsHandleApprovalCreation: API.OperationMethod<
   EnclaveEndpointsHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnclaveEndpointsHandleApprovalCreationRequest,
-  output: ApprovalActionResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<EnclaveEndpointsHandleApprovalCreationRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4222,8 +2955,8 @@ export const EnclaveEndpointsHandleApprovalDeletion: API.OperationMethod<
   EnclaveEndpointsHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnclaveEndpointsHandleApprovalDeletionRequest,
-  output: ApprovalActionResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<EnclaveEndpointsHandleApprovalDeletionRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4237,8 +2970,8 @@ export const GetApproval: API.OperationMethod<
   GetApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApprovalRequest,
-  output: GetApprovalResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<GetApprovalRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<GetApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4252,8 +2985,8 @@ export const GetCommunity: API.OperationMethod<
   GetCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommunityRequest,
-  output: GetCommunityResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<GetCommunityRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<GetCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4267,8 +3000,8 @@ export const GetCommunityEndpoint: API.OperationMethod<
   GetCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommunityEndpointRequest,
-  output: GetCommunityEndpointResponse,
+  input: __S(90, __c11, 2) as any as S.Schema<GetCommunityEndpointRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<GetCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4282,8 +3015,8 @@ export const GetDedicatedHub: API.OperationMethod<
   GetDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedHubRequest,
-  output: GetDedicatedHubResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<GetDedicatedHubRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4297,8 +3030,8 @@ export const GetEnclaveConnection: API.OperationMethod<
   GetEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnclaveConnectionRequest,
-  output: GetEnclaveConnectionResponse,
+  input: __S(92, __c11, 4) as any as S.Schema<GetEnclaveConnectionRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4312,8 +3045,8 @@ export const GetEnclaveEndpoint: API.OperationMethod<
   GetEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnclaveEndpointRequest,
-  output: GetEnclaveEndpointResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<GetEnclaveEndpointRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<GetEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4327,8 +3060,8 @@ export const GetTransitHub: API.OperationMethod<
   GetTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransitHubRequest,
-  output: GetTransitHubResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<GetTransitHubRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<GetTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4342,8 +3075,8 @@ export const GetVirtualEnclave: API.OperationMethod<
   GetVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualEnclaveRequest,
-  output: GetVirtualEnclaveResponse,
+  input: __S(99, __c12, 3) as any as S.Schema<GetVirtualEnclaveRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<GetVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4357,8 +3090,8 @@ export const GetWorkload: API.OperationMethod<
   GetWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkloadRequest,
-  output: GetWorkloadResponse,
+  input: __S(109, __c13, 5) as any as S.Schema<GetWorkloadRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4372,8 +3105,8 @@ export const ListApprovalByParent: API.OperationMethod<
   ListApprovalByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApprovalByParentRequest,
-  output: ApprovalResourceListResult,
+  input: __S(112, __c14, 0) as any as S.Schema<ListApprovalByParentRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ApprovalResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4387,8 +3120,8 @@ export const ListCommunityByResourceGroup: API.OperationMethod<
   ListCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommunityByResourceGroupRequest,
-  output: CommunityResourceListResult,
+  input: __S(115, __c14, 3) as any as S.Schema<ListCommunityByResourceGroupRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<CommunityResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4402,8 +3135,8 @@ export const ListCommunityBySubscription: API.OperationMethod<
   ListCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommunityBySubscriptionRequest,
-  output: CommunityResourceListResult,
+  input: __S(118, __c14, 6) as any as S.Schema<ListCommunityBySubscriptionRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<CommunityResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4417,8 +3150,8 @@ export const ListCommunityEndpointByCommunityResource: API.OperationMethod<
   ListCommunityEndpointByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommunityEndpointByCommunityResourceRequest,
-  output: CommunityEndpointResourceListResult,
+  input: __S(119, __c14, 7) as any as S.Schema<ListCommunityEndpointByCommunityResourceRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4432,8 +3165,8 @@ export const ListCommunityEndpointBySubscription: API.OperationMethod<
   ListCommunityEndpointBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommunityEndpointBySubscriptionRequest,
-  output: CommunityEndpointResourceListResult,
+  input: __S(122, __c15, 2) as any as S.Schema<ListCommunityEndpointBySubscriptionRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4447,8 +3180,8 @@ export const ListDedicatedHubByCommunityResource: API.OperationMethod<
   ListDedicatedHubByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedHubByCommunityResourceRequest,
-  output: DedicatedHubResourceListResult,
+  input: __S(123, __c15, 3) as any as S.Schema<ListDedicatedHubByCommunityResourceRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<DedicatedHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4462,8 +3195,8 @@ export const ListDedicatedHubBySubscription: API.OperationMethod<
   ListDedicatedHubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedHubBySubscriptionRequest,
-  output: DedicatedHubResourceListResult,
+  input: __S(125, __c15, 5) as any as S.Schema<ListDedicatedHubBySubscriptionRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<DedicatedHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4477,8 +3210,8 @@ export const ListEnclaveConnectionByResourceGroup: API.OperationMethod<
   ListEnclaveConnectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnclaveConnectionByResourceGroupRequest,
-  output: EnclaveConnectionResourceListResult,
+  input: __S(126, __c15, 6) as any as S.Schema<ListEnclaveConnectionByResourceGroupRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<EnclaveConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4492,8 +3225,8 @@ export const ListEnclaveConnectionBySubscription: API.OperationMethod<
   ListEnclaveConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnclaveConnectionBySubscriptionRequest,
-  output: EnclaveConnectionResourceListResult,
+  input: __S(129, __c16, 1) as any as S.Schema<ListEnclaveConnectionBySubscriptionRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<EnclaveConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4507,8 +3240,8 @@ export const ListEnclaveEndpointByEnclaveResource: API.OperationMethod<
   ListEnclaveEndpointByEnclaveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnclaveEndpointByEnclaveResourceRequest,
-  output: EnclaveEndpointResourceListResult,
+  input: __S(130, __c16, 2) as any as S.Schema<ListEnclaveEndpointByEnclaveResourceRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<EnclaveEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4522,8 +3255,8 @@ export const ListEnclaveEndpointBySubscription: API.OperationMethod<
   ListEnclaveEndpointBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnclaveEndpointBySubscriptionRequest,
-  output: EnclaveEndpointResourceListResult,
+  input: __S(134, __c16, 6) as any as S.Schema<ListEnclaveEndpointBySubscriptionRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<EnclaveEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4537,8 +3270,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(135, __c16, 7) as any as S.Schema<ListOperationsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4552,8 +3285,8 @@ export const ListTransitHubByCommunityResource: API.OperationMethod<
   ListTransitHubByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransitHubByCommunityResourceRequest,
-  output: TransitHubResourceListResult,
+  input: __S(140, __c17, 4) as any as S.Schema<ListTransitHubByCommunityResourceRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<TransitHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4567,8 +3300,8 @@ export const ListTransitHubBySubscription: API.OperationMethod<
   ListTransitHubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransitHubBySubscriptionRequest,
-  output: TransitHubResourceListResult,
+  input: __S(143, __c17, 7) as any as S.Schema<ListTransitHubBySubscriptionRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<TransitHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4582,8 +3315,8 @@ export const ListVirtualEnclaveByResourceGroup: API.OperationMethod<
   ListVirtualEnclaveByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualEnclaveByResourceGroupRequest,
-  output: EnclaveResourceListResult,
+  input: __S(144, __c18, 0) as any as S.Schema<ListVirtualEnclaveByResourceGroupRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<EnclaveResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4597,8 +3330,8 @@ export const ListVirtualEnclaveBySubscription: API.OperationMethod<
   ListVirtualEnclaveBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualEnclaveBySubscriptionRequest,
-  output: EnclaveResourceListResult,
+  input: __S(148, __c18, 4) as any as S.Schema<ListVirtualEnclaveBySubscriptionRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<EnclaveResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4612,8 +3345,8 @@ export const ListWorkloadByEnclaveResource: API.OperationMethod<
   ListWorkloadByEnclaveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkloadByEnclaveResourceRequest,
-  output: WorkloadResourceListResult,
+  input: __S(149, __c18, 5) as any as S.Schema<ListWorkloadByEnclaveResourceRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<WorkloadResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4627,8 +3360,8 @@ export const ListWorkloadBySubscription: API.OperationMethod<
   ListWorkloadBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkloadBySubscriptionRequest,
-  output: WorkloadResourceListResult,
+  input: __S(152, __c19, 0) as any as S.Schema<ListWorkloadBySubscriptionRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<WorkloadResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4642,8 +3375,8 @@ export const NotifyApprovalInitiator: API.OperationMethod<
   NotifyApprovalInitiatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NotifyApprovalInitiatorRequest,
-  output: ApprovalActionResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<NotifyApprovalInitiatorRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4657,8 +3390,8 @@ export const TransitHubCreateOrUpdate: API.OperationMethod<
   TransitHubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransitHubCreateOrUpdateRequest,
-  output: TransitHubCreateOrUpdateResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<TransitHubCreateOrUpdateRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<TransitHubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4672,8 +3405,8 @@ export const UpdateApproval: API.OperationMethod<
   UpdateApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApprovalRequest,
-  output: UpdateApprovalResponse,
+  input: __S(159, __c19, 7) as any as S.Schema<UpdateApprovalRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<UpdateApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4687,8 +3420,8 @@ export const UpdateCommunity: API.OperationMethod<
   UpdateCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCommunityRequest,
-  output: UpdateCommunityResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<UpdateCommunityRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<UpdateCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4702,8 +3435,8 @@ export const UpdateCommunityEndpoint: API.OperationMethod<
   UpdateCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCommunityEndpointRequest,
-  output: UpdateCommunityEndpointResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<UpdateCommunityEndpointRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<UpdateCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4717,8 +3450,8 @@ export const UpdateDedicatedHub: API.OperationMethod<
   UpdateDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDedicatedHubRequest,
-  output: UpdateDedicatedHubResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<UpdateDedicatedHubRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<UpdateDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4732,8 +3465,8 @@ export const UpdateEnclaveConnection: API.OperationMethod<
   UpdateEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnclaveConnectionRequest,
-  output: UpdateEnclaveConnectionResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<UpdateEnclaveConnectionRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<UpdateEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4747,8 +3480,8 @@ export const UpdateEnclaveEndpoint: API.OperationMethod<
   UpdateEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnclaveEndpointRequest,
-  output: UpdateEnclaveEndpointResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<UpdateEnclaveEndpointRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<UpdateEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4762,8 +3495,8 @@ export const UpdateTransitHub: API.OperationMethod<
   UpdateTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTransitHubRequest,
-  output: UpdateTransitHubResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateTransitHubRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UpdateTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4777,8 +3510,8 @@ export const UpdateVirtualEnclave: API.OperationMethod<
   UpdateVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVirtualEnclaveRequest,
-  output: UpdateVirtualEnclaveResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<UpdateVirtualEnclaveRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<UpdateVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4792,8 +3525,8 @@ export const UpdateWorkload: API.OperationMethod<
   UpdateWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkloadRequest,
-  output: UpdateWorkloadResponse,
+  input: __S(181, __c22, 5) as any as S.Schema<UpdateWorkloadRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<UpdateWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4807,8 +3540,8 @@ export const VirtualEnclaveCreateOrUpdate: API.OperationMethod<
   VirtualEnclaveCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VirtualEnclaveCreateOrUpdateRequest,
-  output: VirtualEnclaveCreateOrUpdateResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<VirtualEnclaveCreateOrUpdateRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4822,8 +3555,8 @@ export const VirtualEnclaveHandleApprovalCreation: API.OperationMethod<
   VirtualEnclaveHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VirtualEnclaveHandleApprovalCreationRequest,
-  output: ApprovalActionResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<VirtualEnclaveHandleApprovalCreationRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4837,8 +3570,8 @@ export const VirtualEnclaveHandleApprovalDeletion: API.OperationMethod<
   VirtualEnclaveHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VirtualEnclaveHandleApprovalDeletionRequest,
-  output: ApprovalActionResponse,
+  input: __S(185, __c23, 1) as any as S.Schema<VirtualEnclaveHandleApprovalDeletionRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4852,8 +3585,8 @@ export const WorkloadCreateOrUpdate: API.OperationMethod<
   WorkloadCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkloadCreateOrUpdateRequest,
-  output: WorkloadCreateOrUpdateResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<WorkloadCreateOrUpdateRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<WorkloadCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4866,19 +3599,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           approverEntraId: S.String,
-          actionPerformed: S.optional(ActionPerformed),
+          actionPerformed: S.optional(S.String),
           lastUpdatedAt: S.String,
         }),
       ).annotate({ identifier: "ApproverInput" });
     case 1:
-      return S.Array(ApproverInput);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           resourceAction: S.String,
           approvalCallbackRoute: S.optional(S.String),
           approvalCallbackPayload: S.optional(S.String),
-          approvalStatus: S.optional(RequestMetadataApprovalStatus),
+          approvalStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestMetadata" });
     case 3:
@@ -4886,11 +3619,11 @@ function __c0(j: number): any {
         S.Struct({
           parentResourceId: S.optional(S.String),
           grandparentResourceId: S.optional(S.String),
-          approvers: S.optional(ApprovalPropertiesInputApproversList),
+          approvers: S.optional(__S(1, __c0, 1)),
           ticketId: S.optional(S.String),
           createdAt: S.optional(S.String),
           stateChangedAt: S.optional(S.String),
-          requestMetadata: RequestMetadata,
+          requestMetadata: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "ApprovalPropertiesInput" });
     case 4:
@@ -4898,7 +3631,7 @@ function __c0(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           approvalName: S.String.pipe(T.Label()),
-          properties: S.optional(ApprovalPropertiesInput),
+          properties: S.optional(__S(3, __c0, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4914,10 +3647,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -4927,11 +3660,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           approverEntraId: S.String,
-          actionPerformed: S.optional(ActionPerformed),
+          actionPerformed: S.optional(S.String),
           lastUpdatedAt: S.String,
-          mandatoryApprovalGroupMembershipIds: S.optional(
-            ApproverMandatoryApprovalGroupMembershipIdsList,
-          ),
+          mandatoryApprovalGroupMembershipIds: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Approver" });
   }
@@ -4939,7 +3670,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Approver);
+      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4947,23 +3678,23 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MandatoryApprover" });
     case 2:
-      return S.Array(MandatoryApprover);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           parentResourceId: S.optional(S.String),
           grandparentResourceId: S.optional(S.String),
-          approvers: S.optional(ApprovalPropertiesApproversList),
+          approvers: S.optional(__S(8, __c1, 0)),
           ticketId: S.optional(S.String),
           createdAt: S.optional(S.String),
           stateChangedAt: S.optional(S.String),
-          mandatoryApprovers: S.optional(ApprovalPropertiesMandatoryApproversList),
+          mandatoryApprovers: S.optional(__S(10, __c1, 2)),
           minimumApproversRequired: S.optional(S.Number),
           approversApprovedCount: S.optional(S.Number),
           mandatoryApproversApprovedCount: S.optional(S.Number),
-          approvedByEntraIds: S.optional(ApprovalPropertiesApprovedByEntraIdsList),
-          requestMetadata: RequestMetadata,
+          approvedByEntraIds: S.optional(__S(6, __c0, 6)),
+          requestMetadata: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "ApprovalProperties" });
     case 4:
@@ -4972,8 +3703,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApprovalProperties),
+          systemData: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "ApprovalCreateOrUpdateResponse",
@@ -4987,14 +3718,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SubnetConfigurationInput" });
     case 6:
-      return S.Array(SubnetConfigurationInput);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           networkName: S.optional(S.String),
           networkSize: S.optional(S.String),
           customCidrRange: S.optional(S.String),
-          subnetConfigurations: S.optional(EnclaveVirtualNetworkModelInputSubnetConfigurationsList),
+          subnetConfigurations: S.optional(__S(14, __c1, 6)),
           allowSubnetCommunication: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5011,7 +3742,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityResourceId: S.String,
-          enclaveVirtualNetwork: EnclaveVirtualNetworkModelInput,
+          enclaveVirtualNetwork: __S(15, __c1, 7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5036,28 +3767,28 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceId: ServiceIdentifier,
-          option: S.optional(GovernedServiceItemInputOption),
-          enforcement: S.optional(GovernedServiceItemInputEnforcement),
-          policyAction: S.optional(GovernedServiceItemInputPolicyAction),
+          serviceId: S.String,
+          option: S.optional(S.String),
+          enforcement: S.optional(S.String),
+          policyAction: S.optional(S.String),
         }),
       ).annotate({ identifier: "GovernedServiceItemInput" });
     case 4:
-      return S.Array(GovernedServiceItemInput);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: PrincipalType,
+          type: S.String,
         }),
       ).annotate({ identifier: "Principal" });
     case 6:
-      return S.Array(Principal);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           roleDefinitionId: S.String,
-          principals: S.optional(RoleAssignmentItemPrincipalsList),
+          principals: S.optional(__S(22, __c2, 6)),
           condition: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentItem" });
@@ -5066,13 +3797,13 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RoleAssignmentItem);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          approvalPolicy: S.optional(ApprovalPolicy),
+          approvalPolicy: S.optional(S.String),
           minimumApproversRequired: S.optional(S.Number),
-          mandatoryApprovers: S.optional(ApprovalSettingConfigurationMandatoryApproversList),
+          mandatoryApprovers: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ApprovalSettingConfiguration",
@@ -5080,21 +3811,21 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          communityEndpointUpdate: S.optional(ApprovalSettingConfiguration),
-          enclaveEndpointUpdate: S.optional(ApprovalSettingConfiguration),
-          enclaveCreation: S.optional(ApprovalSettingConfiguration),
-          connectionCreation: S.optional(ApprovalSettingConfiguration),
-          connectionUpdate: S.optional(ApprovalSettingConfiguration),
-          communityMaintenanceMode: S.optional(ApprovalSettingConfiguration),
-          enclaveMaintenanceMode: S.optional(ApprovalSettingConfiguration),
+          communityEndpointUpdate: S.optional(__S(25, __c3, 1)),
+          enclaveEndpointUpdate: S.optional(__S(25, __c3, 1)),
+          enclaveCreation: S.optional(__S(25, __c3, 1)),
+          connectionCreation: S.optional(__S(25, __c3, 1)),
+          connectionUpdate: S.optional(__S(25, __c3, 1)),
+          communityMaintenanceMode: S.optional(__S(25, __c3, 1)),
+          enclaveMaintenanceMode: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "ApprovalSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mode: MaintenanceModeConfigurationModelMode,
-          principals: S.optional(MaintenanceModeConfigurationModelPrincipalsList),
-          justification: S.optional(MaintenanceModeConfigurationModelJustification),
+          mode: S.String,
+          principals: S.optional(__S(22, __c2, 6)),
+          justification: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MaintenanceModeConfigurationModel",
@@ -5102,35 +3833,33 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinationType: MonitoringDestinationDestinationType,
+          destinationType: S.String,
           customWorkspaceResourceId: S.optional(S.String),
           diagnosticSettingsName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitoringDestination" });
     case 5:
-      return S.Array(MonitoringDestination);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          diagnosticDestinations: S.optional(MonitoringSettingsModelDiagnosticDestinationsList),
-          flowLogDestination: S.optional(MonitoringDestination),
+          diagnosticDestinations: S.optional(__S(29, __c3, 5)),
+          flowLogDestination: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "MonitoringSettingsModel" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           addressSpace: S.optional(S.String),
-          dnsServers: S.optional(CommunityPropertiesInputDnsServersList),
-          governedServiceList: S.optional(CommunityPropertiesInputGovernedServiceListList),
-          policyOverride: S.optional(CommunityPropertiesInputPolicyOverride),
-          communityRoleAssignments: S.optional(
-            CommunityPropertiesInputCommunityRoleAssignmentsList,
-          ),
-          firewallSku: S.optional(CommunityPropertiesInputFirewallSku),
-          approvalSettings: S.optional(ApprovalSettings),
-          maintenanceModeConfiguration: S.optional(MaintenanceModeConfigurationModel),
-          monitoringSettings: S.optional(MonitoringSettingsModel),
-          addressSpaces: S.optional(CommunityPropertiesInputAddressSpacesList),
+          dnsServers: S.optional(__S(6, __c0, 6)),
+          governedServiceList: S.optional(__S(20, __c2, 4)),
+          policyOverride: S.optional(S.String),
+          communityRoleAssignments: S.optional(__S(24, __c3, 0)),
+          firewallSku: S.optional(S.String),
+          approvalSettings: S.optional(__S(26, __c3, 2)),
+          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
+          monitoringSettings: S.optional(__S(30, __c3, 6)),
+          addressSpaces: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CommunityPropertiesInput" });
   }
@@ -5142,12 +3871,12 @@ function __c4(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c4, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "CommunityCreateOrUpdateRequestIdentity",
@@ -5158,10 +3887,10 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
-          tags: S.optional(CommunityCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(CommunityPropertiesInput),
-          identity: S.optional(CommunityCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(31, __c3, 7)),
+          identity: S.optional(__S(34, __c4, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5180,13 +3909,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "MoboBrokerResource" });
     case 5:
-      return S.Array(MoboBrokerResource);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          moboBrokerResources: S.optional(
-            CommunityPropertiesManagedOnBehalfOfConfigurationMoboBrokerResourcesList,
-          ),
+          moboBrokerResources: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "CommunityPropertiesManagedOnBehalfOfConfiguration",
@@ -5194,12 +3921,12 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceId: ServiceIdentifier,
+          serviceId: S.String,
           serviceName: S.optional(S.String),
-          option: S.optional(GovernedServiceItemOption),
-          enforcement: S.optional(GovernedServiceItemEnforcement),
-          policyAction: S.optional(GovernedServiceItemPolicyAction),
-          initiatives: S.optional(GovernedServiceItemInitiativesList),
+          option: S.optional(S.String),
+          enforcement: S.optional(S.String),
+          policyAction: S.optional(S.String),
+          initiatives: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "GovernedServiceItem" });
   }
@@ -5207,15 +3934,15 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GovernedServiceItem);
+      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           vHubResourceId: S.optional(S.String),
           firewallResourceId: S.optional(S.String),
           firewallPolicyResourceId: S.optional(S.String),
-          designation: S.optional(Designation),
-          provisioningState: S.optional(ProvisioningState),
+          designation: S.optional(S.String),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHubProperties" });
     case 2:
@@ -5224,34 +3951,32 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(DedicatedHubResourceTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(DedicatedHubProperties),
+          properties: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "DedicatedHubResource" });
     case 3:
-      return S.Array(DedicatedHubResource);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           addressSpace: S.optional(S.String),
-          dnsServers: S.optional(CommunityPropertiesDnsServersList),
-          provisioningState: S.optional(ProvisioningState),
-          resourceCollection: S.optional(CommunityPropertiesResourceCollectionList),
+          dnsServers: S.optional(__S(6, __c0, 6)),
+          provisioningState: S.optional(S.String),
+          resourceCollection: S.optional(__S(6, __c0, 6)),
           managedResourceGroupName: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(
-            CommunityPropertiesManagedOnBehalfOfConfiguration,
-          ),
-          governedServiceList: S.optional(CommunityPropertiesGovernedServiceListList),
-          policyOverride: S.optional(CommunityPropertiesPolicyOverride),
-          communityRoleAssignments: S.optional(CommunityPropertiesCommunityRoleAssignmentsList),
-          firewallSku: S.optional(CommunityPropertiesFirewallSku),
-          approvalSettings: S.optional(ApprovalSettings),
-          maintenanceModeConfiguration: S.optional(MaintenanceModeConfigurationModel),
-          dedicatedHubList: S.optional(CommunityPropertiesDedicatedHubListList),
-          monitoringSettings: S.optional(MonitoringSettingsModel),
-          addressSpaces: S.optional(CommunityPropertiesAddressSpacesList),
+          managedOnBehalfOfConfiguration: S.optional(__S(38, __c4, 6)),
+          governedServiceList: S.optional(__S(40, __c5, 0)),
+          policyOverride: S.optional(S.String),
+          communityRoleAssignments: S.optional(__S(24, __c3, 0)),
+          firewallSku: S.optional(S.String),
+          approvalSettings: S.optional(__S(26, __c3, 2)),
+          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
+          dedicatedHubList: S.optional(__S(43, __c5, 3)),
+          monitoringSettings: S.optional(__S(30, __c3, 6)),
+          addressSpaces: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "CommunityProperties" });
     case 5:
@@ -5262,14 +3987,14 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(45, __c5, 5)));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({
         identifier: "CommunityCreateOrUpdateResponseIdentity",
@@ -5284,22 +4009,22 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CommunityCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(CommunityProperties),
-          identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
+          properties: S.optional(__S(44, __c5, 4)),
+          identity: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "CommunityCreateOrUpdateResponse",
       });
     case 1:
-      return S.Array(CommunityEndpointProtocol);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destinationType: S.optional(DestinationType),
-          protocols: S.optional(CommunityEndpointDestinationRuleProtocolsList),
+          destinationType: S.optional(S.String),
+          protocols: S.optional(__S(49, __c6, 1)),
           transitHubResourceId: S.optional(S.String),
           endpointRuleName: S.optional(S.String),
           destination: S.optional(S.String),
@@ -5309,12 +4034,12 @@ function __c6(j: number): any {
         identifier: "CommunityEndpointDestinationRule",
       });
     case 3:
-      return S.Array(CommunityEndpointDestinationRule);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: CommunityEndpointPropertiesInputRuleCollectionList,
-          updateMode: S.optional(UpdateMode),
+          ruleCollection: __S(51, __c6, 3),
+          updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CommunityEndpointPropertiesInput",
@@ -5326,9 +4051,9 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(CommunityEndpointsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(CommunityEndpointPropertiesInput),
+          properties: S.optional(__S(52, __c6, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5343,10 +4068,10 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: CommunityEndpointPropertiesRuleCollectionList,
-          resourceCollection: S.optional(CommunityEndpointPropertiesResourceCollectionList),
-          provisioningState: S.optional(ProvisioningState),
-          updateMode: S.optional(UpdateMode),
+          ruleCollection: __S(51, __c6, 3),
+          resourceCollection: S.optional(__S(6, __c0, 6)),
+          provisioningState: S.optional(S.String),
+          updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CommunityEndpointProperties",
@@ -5357,10 +4082,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CommunityEndpointsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(CommunityEndpointProperties),
+          properties: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({
         identifier: "CommunityEndpointsCreateOrUpdateResponse",
@@ -5376,9 +4101,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          resourceRequestAction:
-            CommunityEndpointsHandleApprovalCreationRequestResourceRequestAction,
-          approvalStatus: CommunityEndpointsHandleApprovalCreationRequestApprovalStatus,
+          resourceRequestAction: S.String,
+          approvalStatus: S.String,
           approvalCallbackPayload: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5404,8 +4128,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          resourceRequestAction:
-            CommunityEndpointsHandleApprovalDeletionRequestResourceRequestAction,
+          resourceRequestAction: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5420,7 +4143,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          designation: S.optional(Designation),
+          designation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedHubPropertiesInput",
@@ -5432,9 +4155,9 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           dedicatedHubName: S.String.pipe(T.Label()),
-          tags: S.optional(DedicatedHubCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(DedicatedHubPropertiesInput),
+          properties: S.optional(__S(59, __c7, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5452,10 +4175,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(DedicatedHubCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(DedicatedHubProperties),
+          properties: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({
         identifier: "DedicatedHubCreateOrUpdateResponse",
@@ -5638,9 +4361,9 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           enclaveConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(EnclaveConnectionCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(EnclaveConnectionPropertiesInput),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5655,14 +4378,14 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(EnclaveConnectionState),
+          state: S.optional(S.String),
           communityResourceId: S.String,
           sourceResourceId: S.String,
           sourceCidr: S.optional(S.String),
           destinationEndpointId: S.String,
-          provisioningState: S.optional(ProvisioningState),
-          resourceCollection: S.optional(EnclaveConnectionPropertiesResourceCollectionList),
-          updateMode: S.optional(UpdateMode),
+          provisioningState: S.optional(S.String),
+          resourceCollection: S.optional(__S(6, __c0, 6)),
+          updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnclaveConnectionProperties",
@@ -5673,10 +4396,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(EnclaveConnectionCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(EnclaveConnectionProperties),
+          properties: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({
         identifier: "EnclaveConnectionCreateOrUpdateResponse",
@@ -5687,9 +4410,8 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           enclaveConnectionName: S.String.pipe(T.Label()),
-          resourceRequestAction:
-            EnclaveConnectionHandleApprovalCreationRequestResourceRequestAction,
-          approvalStatus: EnclaveConnectionHandleApprovalCreationRequestApprovalStatus,
+          resourceRequestAction: S.String,
+          approvalStatus: S.String,
           approvalCallbackPayload: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5708,8 +4430,7 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           enclaveConnectionName: S.String.pipe(T.Label()),
-          resourceRequestAction:
-            EnclaveConnectionHandleApprovalDeletionRequestResourceRequestAction,
+          resourceRequestAction: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5724,7 +4445,7 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          protocols: S.optional(EnclaveEndpointDestinationRuleProtocolsList),
+          protocols: S.optional(__S(49, __c6, 1)),
           endpointRuleName: S.optional(S.String),
           destination: S.optional(S.String),
           ports: S.optional(S.String),
@@ -5733,7 +4454,7 @@ function __c9(j: number): any {
         identifier: "EnclaveEndpointDestinationRule",
       });
     case 7:
-      return S.Array(EnclaveEndpointDestinationRule);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -5741,8 +4462,8 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: EnclaveEndpointPropertiesInputRuleCollectionList,
-          updateMode: S.optional(UpdateMode),
+          ruleCollection: __S(79, __c9, 7),
+          updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnclaveEndpointPropertiesInput",
@@ -5754,9 +4475,9 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           enclaveEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(EnclaveEndpointsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(EnclaveEndpointPropertiesInput),
+          properties: S.optional(__S(80, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5771,10 +4492,10 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: EnclaveEndpointPropertiesRuleCollectionList,
-          resourceCollection: S.optional(EnclaveEndpointPropertiesResourceCollectionList),
-          provisioningState: S.optional(ProvisioningState),
-          updateMode: S.optional(UpdateMode),
+          ruleCollection: __S(79, __c9, 7),
+          resourceCollection: S.optional(__S(6, __c0, 6)),
+          provisioningState: S.optional(S.String),
+          updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnclaveEndpointProperties",
@@ -5785,10 +4506,10 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(EnclaveEndpointsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(EnclaveEndpointProperties),
+          properties: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({
         identifier: "EnclaveEndpointsCreateOrUpdateResponse",
@@ -5800,8 +4521,8 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           enclaveEndpointName: S.String.pipe(T.Label()),
-          resourceRequestAction: EnclaveEndpointsHandleApprovalCreationRequestResourceRequestAction,
-          approvalStatus: EnclaveEndpointsHandleApprovalCreationRequestApprovalStatus,
+          resourceRequestAction: S.String,
+          approvalStatus: S.String,
           approvalCallbackPayload: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5821,7 +4542,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           enclaveEndpointName: S.String.pipe(T.Label()),
-          resourceRequestAction: EnclaveEndpointsHandleApprovalDeletionRequestResourceRequestAction,
+          resourceRequestAction: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5853,8 +4574,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApprovalProperties),
+          systemData: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "GetApprovalResponse" });
   }
@@ -5882,11 +4603,11 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetCommunityResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(CommunityProperties),
-          identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
+          properties: S.optional(__S(44, __c5, 4)),
+          identity: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "GetCommunityResponse" });
     case 2:
@@ -5988,18 +4709,18 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(TransitOptionType),
-          params: S.optional(TransitOptionParams),
+          type: S.optional(S.String),
+          params: S.optional(__S(95, __c11, 7)),
         }),
       ).annotate({ identifier: "TransitOption" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          state: S.optional(TransitHubState),
-          transitOption: S.optional(TransitOption),
-          resourceCollection: S.optional(TransitHubPropertiesResourceCollectionList),
-          securityProvider: S.optional(SecurityProvider),
+          provisioningState: S.optional(S.String),
+          state: S.optional(S.String),
+          transitOption: S.optional(__S(96, __c12, 0)),
+          resourceCollection: S.optional(__S(6, __c0, 6)),
+          securityProvider: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransitHubProperties" });
     case 2:
@@ -6008,10 +4729,10 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetTransitHubResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(TransitHubProperties),
+          properties: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "GetTransitHubResponse" });
     case 3:
@@ -6041,14 +4762,14 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "SubnetConfiguration" });
     case 5:
-      return S.Array(SubnetConfiguration);
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           networkName: S.optional(S.String),
           networkSize: S.optional(S.String),
           customCidrRange: S.optional(S.String),
-          subnetConfigurations: S.optional(EnclaveVirtualNetworkModelSubnetConfigurationsList),
+          subnetConfigurations: S.optional(__S(101, __c12, 5)),
           allowSubnetCommunication: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6074,10 +4795,8 @@ function __c13(j: number): any {
         S.Struct({
           keyVaultResourceId: S.optional(S.String),
           storageAccountResourceId: S.optional(S.String),
-          logAnalyticsResourceIdCollection: S.optional(
-            EnclaveDefaultSettingsModelLogAnalyticsResourceIdCollectionList,
-          ),
-          diagnosticDestination: S.optional(EnclaveDefaultSettingsModelDiagnosticDestination),
+          logAnalyticsResourceIdCollection: S.optional(__S(104, __c13, 0)),
+          diagnosticDestination: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnclaveDefaultSettingsModel",
@@ -6085,10 +4804,10 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          enclaveEndpointUpdate: S.optional(ApprovalSettingConfiguration),
-          connectionCreation: S.optional(ApprovalSettingConfiguration),
-          connectionUpdate: S.optional(ApprovalSettingConfiguration),
-          enclaveMaintenanceMode: S.optional(ApprovalSettingConfiguration),
+          enclaveEndpointUpdate: S.optional(__S(25, __c3, 1)),
+          connectionCreation: S.optional(__S(25, __c3, 1)),
+          connectionUpdate: S.optional(__S(25, __c3, 1)),
+          enclaveMaintenanceMode: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "VirtualEnclaveApprovalSettings",
@@ -6096,28 +4815,24 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          enclaveVirtualNetwork: EnclaveVirtualNetworkModel,
-          enclaveAddressSpaces: S.optional(EnclaveAddressSpacesModel),
+          provisioningState: S.optional(S.String),
+          enclaveVirtualNetwork: __S(102, __c12, 6),
+          enclaveAddressSpaces: S.optional(__S(103, __c12, 7)),
           communityResourceId: S.String,
-          resourceCollection: S.optional(VirtualEnclavePropertiesResourceCollectionList),
+          resourceCollection: S.optional(__S(6, __c0, 6)),
           managedResourceGroupName: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(
-            VirtualEnclavePropertiesManagedOnBehalfOfConfiguration,
-          ),
+          managedOnBehalfOfConfiguration: S.optional(__S(38, __c4, 6)),
           bastionEnabled: S.optional(S.Boolean),
-          workloadResourceVisibility: S.optional(
-            VirtualEnclavePropertiesWorkloadResourceVisibility,
-          ),
-          rbacInheritance: S.optional(VirtualEnclavePropertiesRbacInheritance),
-          enclaveRoleAssignments: S.optional(VirtualEnclavePropertiesEnclaveRoleAssignmentsList),
-          workloadRoleAssignments: S.optional(VirtualEnclavePropertiesWorkloadRoleAssignmentsList),
-          governedServiceList: S.optional(VirtualEnclavePropertiesGovernedServiceListList),
-          enclaveDefaultSettings: S.optional(EnclaveDefaultSettingsModel),
-          maintenanceModeConfiguration: S.optional(MaintenanceModeConfigurationModel),
+          workloadResourceVisibility: S.optional(S.String),
+          rbacInheritance: S.optional(S.String),
+          enclaveRoleAssignments: S.optional(__S(24, __c3, 0)),
+          workloadRoleAssignments: S.optional(__S(24, __c3, 0)),
+          governedServiceList: S.optional(__S(40, __c5, 0)),
+          enclaveDefaultSettings: S.optional(__S(105, __c13, 1)),
+          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(VirtualEnclaveApprovalSettings),
-          monitoringSettings: S.optional(MonitoringSettingsModel),
+          approvalSettings: S.optional(__S(106, __c13, 2)),
+          monitoringSettings: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "VirtualEnclaveProperties" });
     case 4:
@@ -6126,11 +4841,11 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetVirtualEnclaveResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(VirtualEnclaveProperties),
-          identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
+          properties: S.optional(__S(107, __c13, 3)),
+          identity: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({
         identifier: "GetVirtualEnclaveResponse",
@@ -6154,11 +4869,9 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          resourceGroupCollection: S.optional(WorkloadPropertiesResourceGroupCollectionList),
-          managedOnBehalfOfConfiguration: S.optional(
-            WorkloadPropertiesManagedOnBehalfOfConfiguration,
-          ),
+          provisioningState: S.optional(S.String),
+          resourceGroupCollection: S.optional(__S(6, __c0, 6)),
+          managedOnBehalfOfConfiguration: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "WorkloadProperties" });
     case 7:
@@ -6167,10 +4880,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetWorkloadResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(WorkloadProperties),
+          properties: S.optional(__S(110, __c13, 6)),
         }),
       ).annotate({ identifier: "GetWorkloadResponse" });
   }
@@ -6193,11 +4906,11 @@ function __c14(j: number): any {
         identifier: "ListApprovalByParentRequest",
       });
     case 1:
-      return S.Array(ApprovalResource);
+      return S.Array(__S(87, __c10, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ApprovalResourceListResultValueList,
+          value: __S(113, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6220,11 +4933,11 @@ function __c14(j: number): any {
         identifier: "ListCommunityByResourceGroupRequest",
       });
     case 4:
-      return S.Array(CommunityResource);
+      return S.Array(__S(89, __c11, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: CommunityResourceListResultValueList,
+          value: __S(116, __c14, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6267,11 +4980,11 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CommunityEndpointResource);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: CommunityEndpointResourceListResultValueList,
+          value: __S(120, __c15, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6313,7 +5026,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: DedicatedHubResourceListResultValueList,
+          value: __S(43, __c5, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6352,7 +5065,7 @@ function __c15(j: number): any {
         identifier: "ListEnclaveConnectionByResourceGroupRequest",
       });
     case 7:
-      return S.Array(EnclaveConnectionResource);
+      return S.Array(__S(75, __c9, 3));
   }
 }
 function __c16(j: number): any {
@@ -6360,7 +5073,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: EnclaveConnectionResourceListResultValueList,
+          value: __S(127, __c15, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6404,18 +5117,18 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(EnclaveEndpointResourceTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(EnclaveEndpointProperties),
+          properties: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "EnclaveEndpointResource" });
     case 4:
-      return S.Array(EnclaveEndpointResource);
+      return S.Array(__S(131, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: EnclaveEndpointResourceListResultValueList,
+          value: __S(132, __c16, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6466,17 +5179,17 @@ function __c17(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(136, __c17, 0)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(Operation);
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(138, __c17, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -6498,11 +5211,11 @@ function __c17(j: number): any {
         identifier: "ListTransitHubByCommunityResourceRequest",
       });
     case 5:
-      return S.Array(TransitHubResource);
+      return S.Array(__S(98, __c12, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: TransitHubResourceListResultValueList,
+          value: __S(141, __c17, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6550,19 +5263,19 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(EnclaveResourceTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(VirtualEnclaveProperties),
-          identity: S.optional(CommunityCreateOrUpdateResponseIdentity),
+          properties: S.optional(__S(107, __c13, 3)),
+          identity: S.optional(__S(47, __c5, 7)),
         }),
       ).annotate({ identifier: "EnclaveResource" });
     case 2:
-      return S.Array(EnclaveResource);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: EnclaveResourceListResultValueList,
+          value: __S(146, __c18, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6601,11 +5314,11 @@ function __c18(j: number): any {
         identifier: "ListWorkloadByEnclaveResourceRequest",
       });
     case 6:
-      return S.Array(WorkloadResource);
+      return S.Array(__S(111, __c13, 7));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: WorkloadResourceListResultValueList,
+          value: __S(150, __c18, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6636,7 +5349,7 @@ function __c19(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           approvalName: S.String.pipe(T.Label()),
-          approvalStatus: NotifyApprovalInitiatorRequestApprovalStatus,
+          approvalStatus: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6651,9 +5364,9 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(TransitHubState),
-          transitOption: S.optional(TransitOption),
-          securityProvider: S.optional(SecurityProvider),
+          state: S.optional(S.String),
+          transitOption: S.optional(__S(96, __c12, 0)),
+          securityProvider: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TransitHubPropertiesInput",
@@ -6665,9 +5378,9 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           transitHubName: S.String.pipe(T.Label()),
-          tags: S.optional(TransitHubCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(TransitHubPropertiesInput),
+          properties: S.optional(__S(154, __c19, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6685,10 +5398,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(TransitHubCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(TransitHubProperties),
+          properties: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({
         identifier: "TransitHubCreateOrUpdateResponse",
@@ -6699,7 +5412,7 @@ function __c19(j: number): any {
           resourceAction: S.optional(S.String),
           approvalCallbackRoute: S.optional(S.String),
           approvalCallbackPayload: S.optional(S.String),
-          approvalStatus: S.optional(ApprovalStatus),
+          approvalStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RequestMetadataUpdatableProperties",
@@ -6709,11 +5422,11 @@ function __c19(j: number): any {
         S.Struct({
           parentResourceId: S.optional(S.String),
           grandparentResourceId: S.optional(S.String),
-          approvers: S.optional(ApprovalPatchPropertiesInputApproversList),
+          approvers: S.optional(__S(1, __c0, 1)),
           ticketId: S.optional(S.String),
           createdAt: S.optional(S.String),
           stateChangedAt: S.optional(S.String),
-          requestMetadata: S.optional(RequestMetadataUpdatableProperties),
+          requestMetadata: S.optional(__S(157, __c19, 5)),
         }),
       ).annotate({
         identifier: "ApprovalPatchPropertiesInput",
@@ -6723,7 +5436,7 @@ function __c19(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           approvalName: S.String.pipe(T.Label()),
-          properties: S.optional(ApprovalPatchPropertiesInput),
+          properties: S.optional(__S(158, __c19, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6740,9 +5453,9 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(MaintenanceModeConfigurationPatchModelMode),
-          principals: S.optional(MaintenanceModeConfigurationPatchModelPrincipalsList),
-          justification: S.optional(MaintenanceModeConfigurationPatchModelJustification),
+          mode: S.optional(S.String),
+          principals: S.optional(__S(22, __c2, 6)),
+          justification: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MaintenanceModeConfigurationPatchModel",
@@ -6750,7 +5463,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destinationType: MonitoringDestinationType,
+          destinationType: S.String,
           customWorkspaceResourceId: S.optional(S.String),
           diagnosticSettingsName: S.optional(S.String),
         }),
@@ -6758,11 +5471,11 @@ function __c20(j: number): any {
         identifier: "MonitoringDestinationPatchModel",
       });
     case 2:
-      return S.Array(MonitoringDestinationPatchModel);
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destinationType: S.optional(MonitoringDestinationType),
+          destinationType: S.optional(S.String),
           customWorkspaceResourceId: S.optional(S.String),
           diagnosticSettingsName: S.optional(S.String),
         }),
@@ -6772,10 +5485,8 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          diagnosticDestinations: S.optional(
-            MonitoringSettingsPatchModelDiagnosticDestinationsList,
-          ),
-          flowLogDestination: S.optional(MonitoringDestinationPatchModelUpdate),
+          diagnosticDestinations: S.optional(__S(162, __c20, 2)),
+          flowLogDestination: S.optional(__S(163, __c20, 3)),
         }),
       ).annotate({
         identifier: "MonitoringSettingsPatchModel",
@@ -6783,30 +5494,26 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dnsServers: S.optional(CommunityPatchPropertiesInputDnsServersList),
-          governedServiceList: S.optional(CommunityPatchPropertiesInputGovernedServiceListList),
-          policyOverride: S.optional(CommunityPatchPropertiesInputPolicyOverride),
-          communityRoleAssignments: S.optional(
-            CommunityPatchPropertiesInputCommunityRoleAssignmentsList,
-          ),
-          firewallSku: S.optional(FirewallSKU),
-          approvalSettings: S.optional(ApprovalSettings),
-          maintenanceModeConfiguration: S.optional(MaintenanceModeConfigurationPatchModel),
-          monitoringSettings: S.optional(MonitoringSettingsPatchModel),
-          addressSpaces: S.optional(CommunityPatchPropertiesInputAddressSpacesList),
+          dnsServers: S.optional(__S(6, __c0, 6)),
+          governedServiceList: S.optional(__S(20, __c2, 4)),
+          policyOverride: S.optional(S.String),
+          communityRoleAssignments: S.optional(__S(24, __c3, 0)),
+          firewallSku: S.optional(S.String),
+          approvalSettings: S.optional(__S(26, __c3, 2)),
+          maintenanceModeConfiguration: S.optional(__S(160, __c20, 0)),
+          monitoringSettings: S.optional(__S(164, __c20, 4)),
+          addressSpaces: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "CommunityPatchPropertiesInput",
       });
     case 6:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(32, __c4, 0));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType),
-          userAssignedIdentities: S.optional(
-            AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap,
-          ),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(166, __c20, 6)),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
@@ -6821,9 +5528,9 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
-          properties: S.optional(CommunityPatchPropertiesInput),
-          tags: S.optional(UpdateCommunityRequestTagsMap),
-          identity: S.optional(AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput),
+          properties: S.optional(__S(165, __c20, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
+          identity: S.optional(__S(167, __c20, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6836,8 +5543,8 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: S.optional(CommunityEndpointPatchPropertiesRuleCollectionList),
-          updateMode: S.optional(UpdateMode),
+          ruleCollection: S.optional(__S(51, __c6, 3)),
+          updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CommunityEndpointPatchProperties",
@@ -6849,8 +5556,8 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(CommunityEndpointPatchProperties),
-          tags: S.optional(UpdateCommunityEndpointRequestTagsMap),
+          properties: S.optional(__S(169, __c21, 1)),
+          tags: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6869,8 +5576,8 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           dedicatedHubName: S.String.pipe(T.Label()),
-          properties: S.optional(DedicatedHubPropertiesInput),
-          tags: S.optional(UpdateDedicatedHubRequestTagsMap),
+          properties: S.optional(__S(59, __c7, 3)),
+          tags: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6896,8 +5603,8 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           enclaveConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(EnclaveConnectionPatchProperties),
-          tags: S.optional(UpdateEnclaveConnectionRequestTagsMap),
+          properties: S.optional(__S(172, __c21, 4)),
+          tags: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6912,8 +5619,8 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: S.optional(EnclaveEndpointPatchPropertiesRuleCollectionList),
-          updateMode: S.optional(UpdateMode),
+          ruleCollection: S.optional(__S(79, __c9, 7)),
+          updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnclaveEndpointPatchProperties",
@@ -6925,8 +5632,8 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           enclaveEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(EnclaveEndpointPatchProperties),
-          tags: S.optional(UpdateEnclaveEndpointRequestTagsMap),
+          properties: S.optional(__S(174, __c21, 6)),
+          tags: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6949,8 +5656,8 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           transitHubName: S.String.pipe(T.Label()),
-          properties: S.optional(TransitHubPropertiesInput),
-          tags: S.optional(UpdateTransitHubRequestTagsMap),
+          properties: S.optional(__S(154, __c19, 2)),
+          tags: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6963,7 +5670,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          diagnosticDestination: S.optional(DiagnosticDestination),
+          diagnosticDestination: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnclaveDefaultSettingsPatchModel",
@@ -6971,24 +5678,18 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          enclaveVirtualNetwork: S.optional(EnclaveVirtualNetworkModelInput),
+          enclaveVirtualNetwork: S.optional(__S(15, __c1, 7)),
           bastionEnabled: S.optional(S.Boolean),
-          workloadResourceVisibility: S.optional(ResourceVisibilityMode),
-          rbacInheritance: S.optional(RbacInheritanceMode),
-          enclaveRoleAssignments: S.optional(
-            VirtualEnclavePatchPropertiesInputEnclaveRoleAssignmentsList,
-          ),
-          workloadRoleAssignments: S.optional(
-            VirtualEnclavePatchPropertiesInputWorkloadRoleAssignmentsList,
-          ),
-          governedServiceList: S.optional(
-            VirtualEnclavePatchPropertiesInputGovernedServiceListList,
-          ),
-          enclaveDefaultSettings: S.optional(EnclaveDefaultSettingsPatchModel),
-          maintenanceModeConfiguration: S.optional(MaintenanceModeConfigurationPatchModel),
+          workloadResourceVisibility: S.optional(S.String),
+          rbacInheritance: S.optional(S.String),
+          enclaveRoleAssignments: S.optional(__S(24, __c3, 0)),
+          workloadRoleAssignments: S.optional(__S(24, __c3, 0)),
+          governedServiceList: S.optional(__S(20, __c2, 4)),
+          enclaveDefaultSettings: S.optional(__S(177, __c22, 1)),
+          maintenanceModeConfiguration: S.optional(__S(160, __c20, 0)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(VirtualEnclaveApprovalSettings),
-          monitoringSettings: S.optional(MonitoringSettingsPatchModel),
+          approvalSettings: S.optional(__S(106, __c13, 2)),
+          monitoringSettings: S.optional(__S(164, __c20, 4)),
         }),
       ).annotate({
         identifier: "VirtualEnclavePatchPropertiesInput",
@@ -6999,9 +5700,9 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          properties: S.optional(VirtualEnclavePatchPropertiesInput),
-          identity: S.optional(AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput),
-          tags: S.optional(UpdateVirtualEnclaveRequestTagsMap),
+          properties: S.optional(__S(178, __c22, 2)),
+          identity: S.optional(__S(167, __c20, 7)),
+          tags: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7016,7 +5717,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceGroupCollection: S.optional(WorkloadPatchPropertiesResourceGroupCollectionList),
+          resourceGroupCollection: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "WorkloadPatchProperties" });
     case 5:
@@ -7026,8 +5727,8 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           workloadName: S.String.pipe(T.Label()),
-          properties: S.optional(WorkloadPatchProperties),
-          tags: S.optional(UpdateWorkloadRequestTagsMap),
+          properties: S.optional(__S(180, __c22, 4)),
+          tags: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7040,25 +5741,19 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          enclaveVirtualNetwork: EnclaveVirtualNetworkModelInput,
+          enclaveVirtualNetwork: __S(15, __c1, 7),
           communityResourceId: S.String,
           bastionEnabled: S.optional(S.Boolean),
-          workloadResourceVisibility: S.optional(
-            VirtualEnclavePropertiesInputWorkloadResourceVisibility,
-          ),
-          rbacInheritance: S.optional(VirtualEnclavePropertiesInputRbacInheritance),
-          enclaveRoleAssignments: S.optional(
-            VirtualEnclavePropertiesInputEnclaveRoleAssignmentsList,
-          ),
-          workloadRoleAssignments: S.optional(
-            VirtualEnclavePropertiesInputWorkloadRoleAssignmentsList,
-          ),
-          governedServiceList: S.optional(VirtualEnclavePropertiesInputGovernedServiceListList),
-          enclaveDefaultSettings: S.optional(EnclaveDefaultSettingsModelInput),
-          maintenanceModeConfiguration: S.optional(MaintenanceModeConfigurationModel),
+          workloadResourceVisibility: S.optional(S.String),
+          rbacInheritance: S.optional(S.String),
+          enclaveRoleAssignments: S.optional(__S(24, __c3, 0)),
+          workloadRoleAssignments: S.optional(__S(24, __c3, 0)),
+          governedServiceList: S.optional(__S(20, __c2, 4)),
+          enclaveDefaultSettings: S.optional(__S(177, __c22, 1)),
+          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(VirtualEnclaveApprovalSettings),
-          monitoringSettings: S.optional(MonitoringSettingsModel),
+          approvalSettings: S.optional(__S(106, __c13, 2)),
+          monitoringSettings: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({
         identifier: "VirtualEnclavePropertiesInput",
@@ -7069,10 +5764,10 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          tags: S.optional(VirtualEnclaveCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(VirtualEnclavePropertiesInput),
-          identity: S.optional(CommunityCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(182, __c22, 6)),
+          identity: S.optional(__S(34, __c4, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7094,8 +5789,8 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          resourceRequestAction: VirtualEnclaveHandleApprovalCreationRequestResourceRequestAction,
-          approvalStatus: VirtualEnclaveHandleApprovalCreationRequestApprovalStatus,
+          resourceRequestAction: S.String,
+          approvalStatus: S.String,
           approvalCallbackPayload: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7114,7 +5809,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          resourceRequestAction: VirtualEnclaveHandleApprovalDeletionRequestResourceRequestAction,
+          resourceRequestAction: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7133,9 +5828,9 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           workloadName: S.String.pipe(T.Label()),
-          tags: S.optional(WorkloadCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(WorkloadPropertiesInput),
+          properties: S.optional(__S(180, __c22, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7153,13 +5848,18 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(WorkloadCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18, __c2, 2)),
           location: S.String,
-          properties: S.optional(WorkloadProperties),
+          properties: S.optional(__S(110, __c13, 6)),
         }),
       ).annotate({
         identifier: "WorkloadCreateOrUpdateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

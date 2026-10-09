@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,43 +69,26 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyEr
   /** This identifier is returned in the `ErrorInfo.metadata` with key 'error_info_id' when an access requests is denied by the IAM service. */
   errorInfoId?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorRequest =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    0,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorRequest>;
-
 export interface TroubleshootErrorIamRequest {
   /** Request body */
   body?: GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorRequest;
 }
-const TroubleshootErrorIamRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<TroubleshootErrorIamRequest>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceDenyAccessStateEnum =
   | "DENY_ACCESS_STATE_UNSPECIFIED"
   | "DENY_ACCESS_STATE_DENIED"
   | "DENY_ACCESS_STATE_NOT_DENIED"
   | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
   | "DENY_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceDenyAccessStateEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyDenyAccessStateEnum =
   | "DENY_ACCESS_STATE_UNSPECIFIED"
   | "DENY_ACCESS_STATE_DENIED"
   | "DENY_ACCESS_STATE_NOT_DENIED"
   | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
   | "DENY_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyDenyAccessStateEnum = S.String;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -115,11 +100,7 @@ export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-const GoogleTypeExpr = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GoogleTypeExpr>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
-
 /** A deny rule in an IAM deny policy. */
 export interface GoogleIamV2DenyRule {
   /** The condition that determines whether this deny rule applies to a request. If the condition expression evaluates to `true`, then the deny rule is applied; otherwise, the deny rule is not applied. Each deny rule is evaluated independently. If this deny rule does not apply to a request, other deny rules might still apply. The condition can use CEL functions that evaluate [resource tags](https://cloud.google.com/iam/help/conditions/resource-tags). Other functions and operators are not supported. */
@@ -133,8 +114,6 @@ export interface GoogleIamV2DenyRule {
   /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
   exceptionPrincipals?: StringList;
 }
-const GoogleIamV2DenyRule = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GoogleIamV2DenyRule>;
-
 /** A single rule in a `Policy`. */
 export interface GoogleIamV2PolicyRule {
   /** A user-specified description of the rule. This value can be up to 256 characters. */
@@ -142,20 +121,8 @@ export interface GoogleIamV2PolicyRule {
   /** A rule for a deny policy. */
   denyRule?: GoogleIamV2DenyRule;
 }
-const GoogleIamV2PolicyRule = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleIamV2PolicyRule>;
-
 export type GoogleIamV2PolicyRuleList = Array<GoogleIamV2PolicyRule>;
-const GoogleIamV2PolicyRuleList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleIamV2PolicyRuleList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringMap>;
-
 /** Data for an IAM policy. */
 export interface GoogleIamV2Policy {
   /** Output only. The time when the `Policy` was deleted. Empty if the policy is not deleted. */
@@ -179,30 +146,20 @@ export interface GoogleIamV2Policy {
   /** A key-value map to store arbitrary metadata for the `Policy`. Keys can be up to 63 characters. Values can be up to 255 characters. */
   annotations?: StringMap;
 }
-const GoogleIamV2Policy = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GoogleIamV2Policy>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingRelevanceEnum =
-  S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMembershipEnum =
   | "MEMBERSHIP_MATCHING_STATE_UNSPECIFIED"
   | "MEMBERSHIP_MATCHED"
   | "MEMBERSHIP_NOT_MATCHED"
   | "MEMBERSHIP_UNKNOWN_INFO"
   | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMembershipEnum =
-  S.String;
-
 /** Details about whether the principal in the request is listed as a denied principal in the deny rule, either directly or through membership in a principal set. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching {
   /** The relevance of the principal's status to the overall determination for the role binding. */
@@ -210,52 +167,30 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnno
   /** Indicates whether the principal is listed as a denied principal in the deny rule, either directly or through membership in a principal set. */
   membership?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMembershipEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    1,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMap =
   {
     [key: string]:
       | GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching
       | undefined;
   };
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMap =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    2,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMap>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationDenyAccessStateEnum =
   | "DENY_ACCESS_STATE_UNSPECIFIED"
   | "DENY_ACCESS_STATE_DENIED"
   | "DENY_ACCESS_STATE_NOT_DENIED"
   | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
   | "DENY_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationDenyAccessStateEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingPermissionMatchingStateEnum =
   | "PERMISSION_PATTERN_MATCHING_STATE_UNSPECIFIED"
   | "PERMISSION_PATTERN_MATCHED"
   | "PERMISSION_PATTERN_NOT_MATCHED";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingPermissionMatchingStateEnum =
-  S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingRelevanceEnum =
-  S.String;
-
 /** Details about whether the permission in the request is denied by the deny rule. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching {
   /** Indicates whether the permission in the request is denied by the deny rule. */
@@ -263,30 +198,14 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnno
   /** The relevance of the permission status to the overall determination for the rule. */
   relevance?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingRelevanceEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    3,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingMap =
   {
     [key: string]:
       | GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching
       | undefined;
   };
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingMap =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    4,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingMap>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -296,11 +215,7 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GoogleRpcStatus>;
-
 export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
-const GoogleRpcStatusList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GoogleRpcStatusList>;
-
 /** Evaluated state of a condition expression. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState {
   /** Start position of an expression in the condition, by character. */
@@ -312,20 +227,8 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEva
   /** End position of an expression in the condition, by character, end included, for example: the end position of the first part of `a==b || c==d` would be 4. */
   end?: number;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    1,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationStateList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState>;
-const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationStateList =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    2,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationStateList>;
-
 /** Explanation for how a condition affects a principal's access */
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation {
   /** Any errors that prevented complete evaluation of the condition expression. */
@@ -335,11 +238,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation {
   /** The value of each statement of the condition expression. The value can be `true`, `false`, or `null`. The value is `null` if the statement can't be evaluated. */
   evaluationStates?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationStateList;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation>;
-
 /** Details about how a deny rule in a deny policy affects a principal's ability to use a permission. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation {
   /** Lists all denied principals in the deny rule and indicates whether each principal matches the principal in the request, either directly or through membership in a principal set. Each key identifies a denied principal in the rule, and each value indicates whether the denied principal matches the principal in the request. */
@@ -367,18 +265,8 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation {
   /** Indicates whether the permission in the request is listed as a denied permission in the deny rule. */
   combinedDeniedPermission?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation>;
-const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationList>;
-
 /** Details about how a specific IAM deny policy Policy contributed to the access check. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy {
   /** Required. Indicates whether _this policy_ denies the specified permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another policy that overrides this policy. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
@@ -390,18 +278,8 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy {
   /** Details about how each rule in the policy affects the principal's inability to use the permission for the resource. The order of the deny rule matches the order of the rules in the deny policy. If the sender of the request does not have access to the policy, this field is omitted. */
   ruleExplanations?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationList;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy>;
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList>;
-
 /** Details about how a specific resource contributed to the deny policy evaluation. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource {
   /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of the request does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
@@ -413,32 +291,18 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource {
   /** List of IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. */
   explainedPolicies?: GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource>;
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceList>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationDenyAccessStateEnum =
   | "DENY_ACCESS_STATE_UNSPECIFIED"
   | "DENY_ACCESS_STATE_DENIED"
   | "DENY_ACCESS_STATE_NOT_DENIED"
   | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
   | "DENY_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationDenyAccessStateEnum = S.String;
-
 /** Details about how the relevant IAM deny policies affect the final access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation {
   /** List of resources with IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. The list of resources includes the policy for the resource itself, as well as policies that are inherited from higher levels of the resource hierarchy, including the organization, the folder, and the project. The order of the resources starts from the resource and climbs up the resource hierarchy. To learn more about the resource hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy. */
@@ -450,25 +314,16 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation {
   /** Indicates whether the permission to troubleshoot is supported in deny policies. */
   permissionDeniable?: boolean;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationAllowAccessStateEnum =
   | "ALLOW_ACCESS_STATE_UNSPECIFIED"
   | "ALLOW_ACCESS_STATE_GRANTED"
   | "ALLOW_ACCESS_STATE_NOT_GRANTED"
   | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
   | "ALLOW_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationAllowAccessStateEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationRelevanceEnum = S.String;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -478,21 +333,12 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
-const GoogleIamV1Binding = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GoogleIamV1Binding>;
-
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-const GoogleIamV1BindingList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GoogleIamV1BindingList>;
-
 export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -500,17 +346,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const GoogleIamV1AuditLogConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleIamV1AuditLogConfig>;
-
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -518,17 +354,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-const GoogleIamV1AuditConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GoogleIamV1AuditConfig>;
-
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-const GoogleIamV1AuditConfigList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GoogleIamV1AuditConfigList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -540,44 +366,29 @@ export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: GoogleIamV1AuditConfigList;
 }
-const GoogleIamV1Policy = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GoogleIamV1Policy>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionRelevanceEnum =
-  S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionEnum =
   | "ROLE_PERMISSION_INCLUSION_STATE_UNSPECIFIED"
   | "ROLE_PERMISSION_INCLUDED"
   | "ROLE_PERMISSION_NOT_INCLUDED"
   | "ROLE_PERMISSION_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMembershipEnum =
   | "MEMBERSHIP_MATCHING_STATE_UNSPECIFIED"
   | "MEMBERSHIP_MATCHED"
   | "MEMBERSHIP_NOT_MATCHED"
   | "MEMBERSHIP_UNKNOWN_INFO"
   | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMembershipEnum =
-  S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipRelevanceEnum =
-  S.String;
-
 /** Details about whether the role binding includes the principal. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership {
   /** Indicates whether the role binding includes the principal. */
@@ -585,33 +396,18 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation
   /** The relevance of the principal's status to the overall determination for the role binding. */
   relevance?: GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipRelevanceEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    2,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAllowAccessStateEnum =
   | "ALLOW_ACCESS_STATE_UNSPECIFIED"
   | "ALLOW_ACCESS_STATE_GRANTED"
   | "ALLOW_ACCESS_STATE_NOT_GRANTED"
   | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
   | "ALLOW_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAllowAccessStateEnum =
-  S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMap =
   {
     [key: string]:
       | GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership
       | undefined;
   };
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMap =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    3,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMap>;
-
 /** Details about how a role binding in an allow policy affects a principal's ability to use a permission. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation {
   /** The relevance of the permission's existence, or nonexistence, in the role to the overall determination for the entire policy. */
@@ -633,32 +429,18 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation
   /** The role that this role binding grants. For example, `roles/compute.admin`. For a complete list of predefined IAM roles, as well as the permissions in each role, see https://cloud.google.com/iam/help/roles/reference. */
   role?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation>;
-const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationList>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyAllowAccessStateEnum =
   | "ALLOW_ACCESS_STATE_UNSPECIFIED"
   | "ALLOW_ACCESS_STATE_GRANTED"
   | "ALLOW_ACCESS_STATE_NOT_GRANTED"
   | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
   | "ALLOW_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyAllowAccessStateEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyRelevanceEnum = S.String;
-
 /** Details about how a specific IAM allow policy contributed to the final access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy {
   /** The IAM allow policy attached to the resource. If the sender of the request does not have access to the policy, this field is empty. */
@@ -672,18 +454,8 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy {
   /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of the request does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
   fullResourceName?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy>;
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList>;
-
 /** Details about how the relevant IAM allow policies affect the final access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation {
   /** Indicates whether the principal has the specified permission for the specified resource, based on evaluating all applicable IAM allow policies. */
@@ -693,11 +465,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation 
   /** List of IAM allow policies that were evaluated to check the principal's permissions, with annotations to indicate how each policy contributed to the final result. The list of policies includes the policy for the resource itself, as well as allow policies that are inherited from higher levels of the resource hierarchy, including the organization, the folder, and the project. To learn more about the resource hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy. */
   explainedPolicies?: GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation>;
-
 /** Information about the principal, resource, and permission for the ErrorInfoId. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaAccessContext {
   /** The full resource name of the parent where IAM policy is configured. For example, `//cloudresourcemanager.googleapis.com/folders/444446666` */
@@ -709,11 +476,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaAccessContext {
   /** The email address of the principal who requested access. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must be a Google Account or a service account. Other types of principals are not supported. */
   principal?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaAccessContext = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAccessContext>;
-
 /** The full resource name of the resource to which the policy will be bound. Immutable once set. */
 export interface GoogleIamV3PolicyBindingTarget {
   /** Immutable. The full resource name that's used for principal access boundary policy bindings. The principal set must be directly parented by the policy binding's parent or same as the parent if the target is a project, folder, or organization. Examples: * For bindings parented by an organization: * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID` * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID` * For bindings parented by a folder: * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * For bindings parented by a project: * Project: * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID` * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID` */
@@ -721,17 +483,10 @@ export interface GoogleIamV3PolicyBindingTarget {
   /** Immutable. The full resource name that's used for access policy bindings. Examples: * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * Project: * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID` */
   resource?: string;
 }
-const GoogleIamV3PolicyBindingTarget = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GoogleIamV3PolicyBindingTarget>;
-
 export type GoogleIamV3PolicyBindingPolicyKindEnum =
   | "POLICY_KIND_UNSPECIFIED"
   | "PRINCIPAL_ACCESS_BOUNDARY"
   | "ACCESS";
-const GoogleIamV3PolicyBindingPolicyKindEnum = S.String;
-
 /** IAM policy binding resource. */
 export interface GoogleIamV3PolicyBinding {
   /** Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag. */
@@ -759,24 +514,14 @@ export interface GoogleIamV3PolicyBinding {
   /** Identifier. The name of the policy binding, in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`. The binding parent is the closest Resource Manager resource (project, folder, or organization) to the binding target. Format: * `projects/{project_id}/locations/{location}/policyBindings/{policy_binding_id}` * `projects/{project_number}/locations/{location}/policyBindings/{policy_binding_id}` * `folders/{folder_id}/locations/{location}/policyBindings/{policy_binding_id}` * `organizations/{organization_id}/locations/{location}/policyBindings/{policy_binding_id}` */
   name?: string;
 }
-const GoogleIamV3PolicyBinding = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GoogleIamV3PolicyBinding>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingPolicyBindingStateEnum =
   | "POLICY_BINDING_STATE_UNSPECIFIED"
   | "POLICY_BINDING_STATE_ENFORCED"
   | "POLICY_BINDING_STATE_NOT_ENFORCED";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingPolicyBindingStateEnum =
-  S.String;
-
 /** Details about how a policy binding contributes to the policy explanation, with annotations to indicate how the policy binding contributes to the overall access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding {
   /** The policy binding that is explained. */
@@ -788,24 +533,14 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding 
   /** Optional. Explanation of the condition in the policy binding. If the policy binding doesn't have a condition, this field is omitted. */
   conditionExplanation?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersionEnforcementStateEnum =
   | "PAB_POLICY_ENFORCEMENT_STATE_UNSPECIFIED"
   | "PAB_POLICY_ENFORCEMENT_STATE_ENFORCED"
   | "PAB_POLICY_ENFORCEMENT_STATE_NOT_ENFORCED";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersionEnforcementStateEnum =
-  S.String;
-
 /** Details about how a principal access boundary policy's version contributes to the policy's enforcement state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion {
   /** Output only. The actual version of the policy. - If the policy uses static version, this field is the chosen static version. - If the policy uses dynamic version, this field is the effective latest version. */
@@ -813,47 +548,30 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersi
   /** Output only. Indicates whether the policy is enforced based on its version. */
   enforcementState?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersionEnforcementStateEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRuleAccessStateEnum =
   | "PAB_ACCESS_STATE_UNSPECIFIED"
   | "PAB_ACCESS_STATE_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ENFORCED"
   | "PAB_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRuleAccessStateEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleEffectEnum =
   | "EFFECT_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleEffectEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceResourceInclusionStateEnum =
   | "RESOURCE_INCLUSION_STATE_UNSPECIFIED"
   | "RESOURCE_INCLUSION_STATE_INCLUDED"
   | "RESOURCE_INCLUSION_STATE_NOT_INCLUDED"
   | "RESOURCE_INCLUSION_STATE_UNKNOWN_INFO"
   | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceResourceInclusionStateEnum =
-  S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceRelevanceEnum =
-  S.String;
-
 /** Details about how a resource contributes to the explanation, with annotations to indicate how the resource contributes to the overall access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource {
   /** Output only. Indicates whether the resource is the specified resource or includes the specified resource. */
@@ -863,36 +581,18 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplain
   /** The relevance of this resource to the overall access state. */
   relevance?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceRelevanceEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    6,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource>;
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    7,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceList>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceInclusionStateEnum =
   | "RESOURCE_INCLUSION_STATE_UNSPECIFIED"
   | "RESOURCE_INCLUSION_STATE_INCLUDED"
   | "RESOURCE_INCLUSION_STATE_NOT_INCLUDED"
   | "RESOURCE_INCLUSION_STATE_UNKNOWN_INFO"
   | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceInclusionStateEnum =
-  S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceRelevanceEnum =
-  S.String;
-
 /** Details about how a principal access boundary rule contributes to the explanation, with annotations to indicate how the rule contributes to the overall access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule {
   /** Output only. Indicates whether the rule allows access to the specified resource. */
@@ -910,18 +610,8 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule {
   /** The relevance of the combined resource inclusion state to the overall access state. */
   combinedResourceRelevance?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceRelevanceEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule>;
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleList>;
-
 /** An operation attribute that defines the permissions applicable to this rule. */
 export interface GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation {
   /** Optional. Specifies the permissions that this rule excludes from the set of affected permissions given by `permissions`. The number of excluded permission strings in this field is limited to 50 across all rules in the policy. If a permission appears in both `permissions` and `excluded_permissions` then it will _not_ be subject to the policy effect. The excluded permissions can be specified using the same syntax as `permissions`. */
@@ -929,17 +619,10 @@ export interface GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation {
   /** Optional. The permissions that are explicitly affected by this rule. The number of permission strings in this field is limited to 50 across all rules in the policy. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the service. `*` can be used as a wildcard to match all permissions for a specific service, resource type, or verb. The following formats are supported: * `{service_fqdn}/{resource}.{verb}`: A specific permission. * `{service_fqdn}/{resource}.*`: All permissions for a specific resource type. * `{service_fqdn}/*.*`: All permissions for all resource types under a specific service. * `{service_fqdn}/*.{verb}`: All permissions with a specific verb under a specific service. * `*`: All permissions across all services. For example, `compute.googleapis.com/*.setIamPolicy` refers to all setIamPolicy permissions for any compute resource. Wildcards expand only to the permissions specified in the `enforcement_version` of the policy. If the `enforcement_version` is updated, the wildcard will automatically expand to include new permissions in the updated version. */
   permissions?: StringList;
 }
-const GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation>;
-
 export type GoogleIamV3PrincipalAccessBoundaryPolicyRuleEffectEnum =
   | "EFFECT_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-const GoogleIamV3PrincipalAccessBoundaryPolicyRuleEffectEnum = S.String;
-
 /** Principal access boundary policy rule that defines the resource boundary. */
 export interface GoogleIamV3PrincipalAccessBoundaryPolicyRule {
   /** Required. A list of Resource Manager resources. If a resource is listed in the rule, then the rule applies for that resource and its descendants. The number of resources in a policy is limited to 500 across all rules in the policy. The following resource types are supported: * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`. * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`. * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123` or `//cloudresourcemanager.googleapis.com/projects/my-project-id`. */
@@ -953,18 +636,8 @@ export interface GoogleIamV3PrincipalAccessBoundaryPolicyRule {
   /** Required. The access relationship of principals to the resources in this rule. */
   effect?: GoogleIamV3PrincipalAccessBoundaryPolicyRuleEffectEnum;
 }
-const GoogleIamV3PrincipalAccessBoundaryPolicyRule = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyRule>;
-
 export type GoogleIamV3PrincipalAccessBoundaryPolicyRuleList =
   Array<GoogleIamV3PrincipalAccessBoundaryPolicyRule>;
-const GoogleIamV3PrincipalAccessBoundaryPolicyRuleList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyRuleList>;
-
 /** Principal access boundary policy details */
 export interface GoogleIamV3PrincipalAccessBoundaryPolicyDetails {
   /** Required. A list of principal access boundary policy rules. The number of rules in a policy is limited to 500. */
@@ -972,11 +645,6 @@ export interface GoogleIamV3PrincipalAccessBoundaryPolicyDetails {
   /** Optional. The version number (for example, `1` or `latest`) that indicates which permissions are able to be blocked by the policy. If empty, the PAB policy version will be set to the most recent version number at the time of the policy's creation. */
   enforcementVersion?: string;
 }
-const GoogleIamV3PrincipalAccessBoundaryPolicyDetails = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyDetails>;
-
 /** An IAM principal access boundary policy resource. */
 export interface GoogleIamV3PrincipalAccessBoundaryPolicy {
   /** Output only. The time when the principal access boundary policy was created. */
@@ -996,19 +664,12 @@ export interface GoogleIamV3PrincipalAccessBoundaryPolicy {
   /** Output only. The time when the principal access boundary policy was most recently updated. */
   updateTime?: string;
 }
-const GoogleIamV3PrincipalAccessBoundaryPolicy = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GoogleIamV3PrincipalAccessBoundaryPolicy>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyPolicyAccessStateEnum =
   | "PAB_ACCESS_STATE_UNSPECIFIED"
   | "PAB_ACCESS_STATE_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ENFORCED"
   | "PAB_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyPolicyAccessStateEnum = S.String;
-
 /** Details about how a principal access boundary policy contributes to the explanation, with annotations to indicate how the policy contributes to the overall access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy {
   /** The relevance of this policy to the overall access state. */
@@ -1022,26 +683,16 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy {
   /** Output only. Indicates whether the policy allows access to the specified resource. */
   policyAccessState?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyPolicyAccessStateEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyBindingAndPolicyAccessStateEnum =
   | "PAB_ACCESS_STATE_UNSPECIFIED"
   | "PAB_ACCESS_STATE_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ENFORCED"
   | "PAB_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyBindingAndPolicyAccessStateEnum =
-  S.String;
-
 /** Details about how a principal access boundary binding and policy contributes to the principal access boundary explanation, with annotations to indicate how the binding and policy contribute to the overall access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy {
   /** Details about how this binding contributes to the principal access boundary explanation, with annotations to indicate how the binding contributes to the overall access state. */
@@ -1053,34 +704,18 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndP
   /** Output only. Indicates whether the principal is allowed to access the specified resource based on evaluating the binding and policy. */
   bindingAndPolicyAccessState?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyBindingAndPolicyAccessStateEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy>;
-const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    1,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyList>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "HEURISTIC_RELEVANCE_NORMAL"
   | "HEURISTIC_RELEVANCE_HIGH";
-const GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationRelevanceEnum = S.String;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationPrincipalAccessBoundaryAccessStateEnum =
   | "PAB_ACCESS_STATE_UNSPECIFIED"
   | "PAB_ACCESS_STATE_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ALLOWED"
   | "PAB_ACCESS_STATE_NOT_ENFORCED"
   | "PAB_ACCESS_STATE_UNKNOWN_INFO";
-const GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationPrincipalAccessBoundaryAccessStateEnum =
-  S.String;
-
 /** Details about how the relevant principal access boundary policies affect the overall access state. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation {
   /** List of principal access boundary policies and bindings that are applicable to the principal's access state, with annotations to indicate how each binding and policy contributes to the overall access state. */
@@ -1090,20 +725,12 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation {
   /** Output only. Indicates whether the principal is allowed to access specified resource, based on evaluating all applicable principal access boundary bindings and policies. */
   principalAccessBoundaryAccessState?: GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationPrincipalAccessBoundaryAccessStateEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponseOverallAccessStateEnum =
   | "OVERALL_ACCESS_STATE_UNSPECIFIED"
   | "OVERALL_ACCESS_STATE_CAN_ACCESS"
   | "OVERALL_ACCESS_STATE_CANNOT_ACCESS"
   | "OVERALL_ACCESS_STATE_UNKNOWN_INFO"
   | "OVERALL_ACCESS_STATE_UNKNOWN_CONDITIONAL";
-const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponseOverallAccessStateEnum =
-  S.String;
-
 /** Response for troubleshoot access denial with the IAM error identifier. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponse {
   /** An explanation of how the applicable IAM deny policies affect the final access state. */
@@ -1117,12 +744,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyEr
   /** Indicates whether the principal has the permission to access the resource, based on evaluating all types of the applicable IAM policies. */
   overallAccessState?: GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponseOverallAccessStateEnum;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponse =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    3,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponse>;
-
 /** Core attributes for a resource. A resource is an addressable (named) entity provided by the destination service. For example, a Compute Engine instance. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource {
   /** The stable identifier (name) of a resource on the `service`. A resource can be logically identified as `//{resource.service}/{resource.name}`. Unlike the resource URI, the resource name doesn't contain any protocol and version information. For a list of full resource name formats, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names */
@@ -1132,11 +753,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextResourc
   /** The name of the service that this resource belongs to, such as `compute.googleapis.com`. The service name might not match the DNS hostname that actually serves the request. For a full list of resource service values, see https://cloud.google.com/iam/help/conditions/resource-services */
   service?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource>;
-
 /** This message defines attributes for a node that handles a network request. The node can be either a service or an application that sends, forwards, or receives the request. Service peers should fill in `principal` and `labels` as appropriate. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer {
   /** The IPv4 or IPv6 address of the peer. */
@@ -1144,11 +760,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer {
   /** The network port of the peer. */
   port?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer>;
-
 /** A tag that applies to a resource during policy evaluation. Tags can be either directly bound to a resource or inherited from its ancestor. `EffectiveTag` contains the `name` and `namespaced_name` of the tag value and tag key, with additional fields of `inherited` to indicate the inheritance status of the effective tag. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag {
   /** Output only. The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`. */
@@ -1164,29 +775,13 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffecti
   /** Output only. Resource name for TagValue in the format `tagValues/456`. */
   tagValue?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTagList =
   Array<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag>;
-const GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTagList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    7,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTagList>;
-
 /** This message defines attributes for an HTTP request. If the actual request is not an HTTP request, the runtime system should try to map the actual request to an equivalent HTTP request. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest {
   /** Optional. The timestamp when the destination service receives the first byte of the request. */
   receiveTime?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest>;
-
 /** Additional context for troubleshooting conditional role bindings and deny rules. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContext {
   /** Represents a target resource that is involved with a network activity. If multiple resources are involved with an activity, this must be the primary one. */
@@ -1198,11 +793,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContext {
   /** Represents a network request, such as an HTTP request. */
   request?: GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaConditionContext = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContext>;
-
 /** Information about the principal, resource, and permission to check. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaAccessTuple {
   /** Required. The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
@@ -1216,39 +806,21 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaAccessTuple {
   /** Required. The email address of the principal whose access you want to check. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must be a Google Account or a service account. Other types of principals are not supported. */
   principal?: string;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaAccessTuple = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAccessTuple>;
-
 /** Request for TroubleshootIamPolicy. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest {
   /** The information to use for checking whether a principal has a permission for a resource. */
   accessTuple?: GoogleCloudPolicytroubleshooterIamV3betaAccessTuple;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest>;
-
 export interface TroubleshootIamRequest {
   /** Request body */
   body?: GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest;
 }
-const TroubleshootIamRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<TroubleshootIamRequest>;
-
 export type GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponseOverallAccessStateEnum =
   | "OVERALL_ACCESS_STATE_UNSPECIFIED"
   | "CAN_ACCESS"
   | "CANNOT_ACCESS"
   | "UNKNOWN_INFO"
   | "UNKNOWN_CONDITIONAL";
-const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponseOverallAccessStateEnum =
-  S.String;
-
 /** Response for TroubleshootIamPolicy. */
 export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse {
   /** An explanation of how the applicable principal access boundary policies affect the final access state. */
@@ -1262,11 +834,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRe
   /** An explanation of how the applicable IAM deny policies affect the final access state. */
   denyPolicyExplanation?: GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation;
 }
-const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse>;
-
 export type TroubleshootErrorIamError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Checks the access request associated with the error identifier and explains why the access is denied by IAM policies. */
 export const troubleshootErrorIam: API.OperationMethod<
@@ -1275,8 +842,12 @@ export const troubleshootErrorIam: API.OperationMethod<
   TroubleshootErrorIamError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TroubleshootErrorIamRequest,
-  output: GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<TroubleshootErrorIamRequest>,
+  output: __S(
+    59,
+    __c7,
+    3,
+  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1290,8 +861,12 @@ export const troubleshootIam: API.OperationMethod<
   TroubleshootIamError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TroubleshootIamRequest,
-  output: GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse,
+  input: __S(68, __c8, 4) as any as S.Schema<TroubleshootIamRequest>,
+  output: __S(
+    69,
+    __c8,
+    5,
+  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1311,11 +886,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorRequest.pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1340,22 +911,22 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          denialCondition: S.optional(GoogleTypeExpr),
-          deniedPermissions: S.optional(StringList),
-          deniedPrincipals: S.optional(StringList),
-          exceptionPermissions: S.optional(StringList),
-          exceptionPrincipals: S.optional(StringList),
+          denialCondition: S.optional(__S(2, __c0, 2)),
+          deniedPermissions: S.optional(__S(3, __c0, 3)),
+          deniedPrincipals: S.optional(__S(3, __c0, 3)),
+          exceptionPermissions: S.optional(__S(3, __c0, 3)),
+          exceptionPrincipals: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "GoogleIamV2DenyRule" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          denyRule: S.optional(GoogleIamV2DenyRule),
+          denyRule: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "GoogleIamV2PolicyRule" });
     case 6:
-      return S.Array(GoogleIamV2PolicyRule);
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.Record(S.String, S.String);
   }
@@ -1366,7 +937,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deleteTime: S.optional(S.String),
-          rules: S.optional(GoogleIamV2PolicyRuleList),
+          rules: S.optional(__S(6, __c0, 6)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -1374,57 +945,43 @@ function __c1(j: number): any {
           uid: S.optional(S.String),
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "GoogleIamV2Policy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingRelevanceEnum,
-          ),
-          membership: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMembershipEnum,
-          ),
+          relevance: S.optional(S.String),
+          membership: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching",
       });
     case 2:
-      return S.Record(
-        S.String,
-        GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
-      );
+      return S.Record(S.String, __S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissionMatchingState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingPermissionMatchingStateEnum,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingRelevanceEnum,
-          ),
+          permissionMatchingState: S.optional(S.String),
+          relevance: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching",
       });
     case 4:
-      return S.Record(
-        S.String,
-        GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
-      );
+      return S.Record(S.String, __S(11, __c1, 3));
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(DocumentMap);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
   }
@@ -1432,12 +989,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleRpcStatus);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.Number),
-          errors: S.optional(GoogleRpcStatusList),
+          errors: S.optional(__S(16, __c2, 0)),
           value: S.optional(S.Unknown),
           end: S.optional(S.Number),
         }),
@@ -1445,15 +1002,13 @@ function __c2(j: number): any {
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState",
       });
     case 2:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(GoogleRpcStatusList),
+          errors: S.optional(__S(16, __c2, 0)),
           value: S.optional(S.Unknown),
-          evaluationStates: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationStateList,
-          ),
+          evaluationStates: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation",
@@ -1461,65 +1016,37 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deniedPrincipals: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMap,
-          ),
-          denyAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationDenyAccessStateEnum,
-          ),
-          exceptionPrincipals: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMap,
-          ),
-          combinedDeniedPrincipal: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationRelevanceEnum,
-          ),
-          combinedExceptionPermission: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
-          ),
-          deniedPermissions: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingMap,
-          ),
-          combinedExceptionPrincipal: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
-          ),
-          exceptionPermissions: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingMap,
-          ),
-          condition: S.optional(GoogleTypeExpr),
-          conditionExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
-          ),
-          combinedDeniedPermission: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
-          ),
+          deniedPrincipals: S.optional(__S(10, __c1, 2)),
+          denyAccessState: S.optional(S.String),
+          exceptionPrincipals: S.optional(__S(10, __c1, 2)),
+          combinedDeniedPrincipal: S.optional(__S(9, __c1, 1)),
+          relevance: S.optional(S.String),
+          combinedExceptionPermission: S.optional(__S(11, __c1, 3)),
+          deniedPermissions: S.optional(__S(12, __c1, 4)),
+          combinedExceptionPrincipal: S.optional(__S(9, __c1, 1)),
+          exceptionPermissions: S.optional(__S(12, __c1, 4)),
+          condition: S.optional(__S(2, __c0, 2)),
+          conditionExplanation: S.optional(__S(19, __c2, 3)),
+          combinedDeniedPermission: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation",
       });
     case 5:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          denyAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyDenyAccessStateEnum,
-          ),
-          policy: S.optional(GoogleIamV2Policy),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyRelevanceEnum,
-          ),
-          ruleExplanations: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationList,
-          ),
+          denyAccessState: S.optional(S.String),
+          policy: S.optional(__S(8, __c1, 0)),
+          relevance: S.optional(S.String),
+          ruleExplanations: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy",
       });
     case 7:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -1528,33 +1055,21 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullResourceName: S.optional(S.String),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceRelevanceEnum,
-          ),
-          denyAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceDenyAccessStateEnum,
-          ),
-          explainedPolicies: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList,
-          ),
+          relevance: S.optional(S.String),
+          denyAccessState: S.optional(S.String),
+          explainedPolicies: S.optional(__S(23, __c2, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource",
       });
     case 1:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource);
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          explainedResources: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceList,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationRelevanceEnum,
-          ),
-          denyAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationDenyAccessStateEnum,
-          ),
+          explainedResources: S.optional(__S(25, __c3, 1)),
+          relevance: S.optional(S.String),
+          denyAccessState: S.optional(S.String),
           permissionDeniable: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1563,28 +1078,28 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(StringList),
+          members: S.optional(__S(3, __c0, 3)),
           role: S.optional(S.String),
-          condition: S.optional(GoogleTypeExpr),
+          condition: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
     case 4:
-      return S.Array(GoogleIamV1Binding);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
     case 6:
-      return S.Array(GoogleIamV1AuditLogConfig);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(30, __c3, 6)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
@@ -1593,87 +1108,60 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleIamV1AuditConfig);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          bindings: S.optional(GoogleIamV1BindingList),
+          bindings: S.optional(__S(28, __c3, 4)),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(GoogleIamV1AuditConfigList),
+          auditConfigs: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          membership: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMembershipEnum,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipRelevanceEnum,
-          ),
+          membership: S.optional(S.String),
+          relevance: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership",
       });
     case 3:
-      return S.Record(
-        S.String,
-        GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership,
-      );
+      return S.Record(S.String, __S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rolePermissionRelevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionRelevanceEnum,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRelevanceEnum,
-          ),
-          conditionExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
-          ),
-          rolePermission: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionEnum,
-          ),
-          combinedMembership: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership,
-          ),
-          condition: S.optional(GoogleTypeExpr),
-          allowAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAllowAccessStateEnum,
-          ),
-          memberships: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMap,
-          ),
+          rolePermissionRelevance: S.optional(S.String),
+          relevance: S.optional(S.String),
+          conditionExplanation: S.optional(__S(19, __c2, 3)),
+          rolePermission: S.optional(S.String),
+          combinedMembership: S.optional(__S(34, __c4, 2)),
+          condition: S.optional(__S(2, __c0, 2)),
+          allowAccessState: S.optional(S.String),
+          memberships: S.optional(__S(35, __c4, 3)),
           role: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation",
       });
     case 5:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(GoogleIamV1Policy),
-          bindingExplanations: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationList,
-          ),
-          allowAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyAllowAccessStateEnum,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyRelevanceEnum,
-          ),
+          policy: S.optional(__S(33, __c4, 1)),
+          bindingExplanations: S.optional(__S(37, __c4, 5)),
+          allowAccessState: S.optional(S.String),
+          relevance: S.optional(S.String),
           fullResourceName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy",
       });
     case 7:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1681,15 +1169,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationAllowAccessStateEnum,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationRelevanceEnum,
-          ),
-          explainedPolicies: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList,
-          ),
+          allowAccessState: S.optional(S.String),
+          relevance: S.optional(S.String),
+          explainedPolicies: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation",
@@ -1719,14 +1201,14 @@ function __c5(j: number): any {
         S.Struct({
           etag: S.optional(S.String),
           displayName: S.optional(S.String),
-          target: S.optional(GoogleIamV3PolicyBindingTarget),
-          condition: S.optional(GoogleTypeExpr),
+          target: S.optional(__S(42, __c5, 2)),
+          condition: S.optional(__S(2, __c0, 2)),
           policyUid: S.optional(S.String),
           updateTime: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(7, __c0, 7)),
           policy: S.optional(S.String),
           uid: S.optional(S.String),
-          policyKind: S.optional(GoogleIamV3PolicyBindingPolicyKindEnum),
+          policyKind: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1734,16 +1216,10 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          policyBinding: S.optional(GoogleIamV3PolicyBinding),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingRelevanceEnum,
-          ),
-          policyBindingState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingPolicyBindingStateEnum,
-          ),
-          conditionExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
-          ),
+          policyBinding: S.optional(__S(43, __c5, 3)),
+          relevance: S.optional(S.String),
+          policyBindingState: S.optional(S.String),
+          conditionExplanation: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding",
@@ -1752,9 +1228,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          enforcementState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersionEnforcementStateEnum,
-          ),
+          enforcementState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion",
@@ -1762,19 +1236,15 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resourceInclusionState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceResourceInclusionStateEnum,
-          ),
+          resourceInclusionState: S.optional(S.String),
           resource: S.optional(S.String),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceRelevanceEnum,
-          ),
+          relevance: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource",
       });
     case 7:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource);
+      return S.Array(__S(46, __c5, 6));
   }
 }
 function __c6(j: number): any {
@@ -1782,34 +1252,24 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ruleAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRuleAccessStateEnum,
-          ),
-          pabUnsupportedFeatures: S.optional(StringList),
-          effect: S.optional(GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleEffectEnum),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRelevanceEnum,
-          ),
-          explainedResources: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceList,
-          ),
-          combinedResourceInclusionState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceInclusionStateEnum,
-          ),
-          combinedResourceRelevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceRelevanceEnum,
-          ),
+          ruleAccessState: S.optional(S.String),
+          pabUnsupportedFeatures: S.optional(__S(3, __c0, 3)),
+          effect: S.optional(S.String),
+          relevance: S.optional(S.String),
+          explainedResources: S.optional(__S(47, __c5, 7)),
+          combinedResourceInclusionState: S.optional(S.String),
+          combinedResourceRelevance: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule",
       });
     case 1:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          excludedPermissions: S.optional(StringList),
-          permissions: S.optional(StringList),
+          excludedPermissions: S.optional(__S(3, __c0, 3)),
+          permissions: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation",
@@ -1817,21 +1277,21 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(StringList),
-          excludedResources: S.optional(StringList),
+          resources: S.optional(__S(3, __c0, 3)),
+          excludedResources: S.optional(__S(3, __c0, 3)),
           description: S.optional(S.String),
-          operation: S.optional(GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation),
-          effect: S.optional(GoogleIamV3PrincipalAccessBoundaryPolicyRuleEffectEnum),
+          operation: S.optional(__S(50, __c6, 2)),
+          effect: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleIamV3PrincipalAccessBoundaryPolicyRule",
       });
     case 4:
-      return S.Array(GoogleIamV3PrincipalAccessBoundaryPolicyRule);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(GoogleIamV3PrincipalAccessBoundaryPolicyRuleList),
+          rules: S.optional(__S(52, __c6, 4)),
           enforcementVersion: S.optional(S.String),
         }),
       ).annotate({
@@ -1843,9 +1303,9 @@ function __c6(j: number): any {
           createTime: S.optional(S.String),
           etag: S.optional(S.String),
           displayName: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(7, __c0, 7)),
           uid: S.optional(S.String),
-          details: S.optional(GoogleIamV3PrincipalAccessBoundaryPolicyDetails),
+          details: S.optional(__S(53, __c6, 5)),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -1855,17 +1315,11 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyRelevanceEnum,
-          ),
-          policyVersion: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion,
-          ),
-          explainedRules: S.optional(GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleList),
-          policy: S.optional(GoogleIamV3PrincipalAccessBoundaryPolicy),
-          policyAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyPolicyAccessStateEnum,
-          ),
+          relevance: S.optional(S.String),
+          policyVersion: S.optional(__S(45, __c5, 5)),
+          explainedRules: S.optional(__S(49, __c6, 1)),
+          policy: S.optional(__S(54, __c6, 6)),
+          policyAccessState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy",
@@ -1877,34 +1331,22 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          explainedPolicyBinding: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding,
-          ),
-          explainedPolicy: S.optional(GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyRelevanceEnum,
-          ),
-          bindingAndPolicyAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyBindingAndPolicyAccessStateEnum,
-          ),
+          explainedPolicyBinding: S.optional(__S(44, __c5, 4)),
+          explainedPolicy: S.optional(__S(55, __c6, 7)),
+          relevance: S.optional(S.String),
+          bindingAndPolicyAccessState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy",
       });
     case 1:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          explainedBindingsAndPolicies: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyList,
-          ),
-          relevance: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationRelevanceEnum,
-          ),
-          principalAccessBoundaryAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationPrincipalAccessBoundaryAccessStateEnum,
-          ),
+          explainedBindingsAndPolicies: S.optional(__S(57, __c7, 1)),
+          relevance: S.optional(S.String),
+          principalAccessBoundaryAccessState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation",
@@ -1912,19 +1354,11 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          denyPolicyExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation,
-          ),
-          allowPolicyExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation,
-          ),
-          accessContext: S.optional(GoogleCloudPolicytroubleshooterIamV3betaAccessContext),
-          pabPolicyExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation,
-          ),
-          overallAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponseOverallAccessStateEnum,
-          ),
+          denyPolicyExplanation: S.optional(__S(26, __c3, 2)),
+          allowPolicyExplanation: S.optional(__S(40, __c5, 0)),
+          accessContext: S.optional(__S(41, __c5, 1)),
+          pabPolicyExplanation: S.optional(__S(58, __c7, 2)),
+          overallAccessState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponse",
@@ -1962,7 +1396,7 @@ function __c7(j: number): any {
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag",
       });
     case 7:
-      return S.Array(GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -1978,12 +1412,10 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource),
-          destination: S.optional(GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer),
-          effectiveTags: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTagList,
-          ),
-          request: S.optional(GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest),
+          resource: S.optional(__S(60, __c7, 4)),
+          destination: S.optional(__S(61, __c7, 5)),
+          effectiveTags: S.optional(__S(63, __c7, 7)),
+          request: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionContext",
@@ -1992,7 +1424,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullResourceName: S.optional(S.String),
-          conditionContext: S.optional(GoogleCloudPolicytroubleshooterIamV3betaConditionContext),
+          conditionContext: S.optional(__S(65, __c8, 1)),
           permissionFqdn: S.optional(S.String),
           permission: S.optional(S.String),
           principal: S.optional(S.String),
@@ -2003,7 +1435,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessTuple: S.optional(GoogleCloudPolicytroubleshooterIamV3betaAccessTuple),
+          accessTuple: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest",
@@ -2011,9 +1443,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2025,22 +1455,19 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pabPolicyExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation,
-          ),
-          allowPolicyExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation,
-          ),
-          accessTuple: S.optional(GoogleCloudPolicytroubleshooterIamV3betaAccessTuple),
-          overallAccessState: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponseOverallAccessStateEnum,
-          ),
-          denyPolicyExplanation: S.optional(
-            GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation,
-          ),
+          pabPolicyExplanation: S.optional(__S(58, __c7, 2)),
+          allowPolicyExplanation: S.optional(__S(40, __c5, 0)),
+          accessTuple: S.optional(__S(66, __c8, 2)),
+          overallAccessState: S.optional(S.String),
+          denyPolicyExplanation: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

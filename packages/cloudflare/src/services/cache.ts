@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -80,11 +82,6 @@ export interface BulkDeleteOriginCloudRegionsRequest {
   /** Identifier. */
   zoneId: string;
 }
-const BulkDeleteOriginCloudRegionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<BulkDeleteOriginCloudRegionsRequest>;
-
 export interface OriginCloudRegionsBulkDeleteResponseFailedItem {
   /** The origin IP address for this item. */
   originIp: string;
@@ -95,25 +92,12 @@ export interface OriginCloudRegionsBulkDeleteResponseFailedItem {
   /** Cloud vendor identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
   vendor?: string | null;
 }
-const OriginCloudRegionsBulkDeleteResponseFailedItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseFailedItem>;
-
 export type OriginCloudRegionsBulkDeleteResponseFailedList =
   Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
-const OriginCloudRegionsBulkDeleteResponseFailedList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseFailedList>;
-
 export type OriginCloudRegionsBulkDeleteResponseSucceededItem =
   OriginCloudRegionsBulkDeleteResponseFailedItem;
 export type OriginCloudRegionsBulkDeleteResponseSucceededList =
   Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
-const OriginCloudRegionsBulkDeleteResponseSucceededList =
-  OriginCloudRegionsBulkDeleteResponseFailedList as any as S.Schema<OriginCloudRegionsBulkDeleteResponseSucceededList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkDeleteOriginCloudRegionsResponse {
   /** Items that could not be applied, with error details. */
@@ -121,14 +105,7 @@ export interface BulkDeleteOriginCloudRegionsResponse {
   /** Items that were successfully applied. */
   succeeded: OriginCloudRegionsBulkDeleteResponseSucceededList;
 }
-const BulkDeleteOriginCloudRegionsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BulkDeleteOriginCloudRegionsResponse>;
-
 export type OriginCloudRegionsBulkUpdateRequestBodyItemVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsBulkUpdateRequestBodyItemVendor = S.String;
-
 export interface OriginCloudRegionsBulkUpdateRequestBodyItem {
   /** Origin IP address (IPv4 or IPv6). For the single PUT endpoint (`PUT /origin/cloud_regions/{origin_ip}`), this field must match the path parameter or the request will be rejected with a 400 error. For the batch PUT endpoint, this field identifies which mapping to upsert. */
   originIp: string;
@@ -137,28 +114,13 @@ export interface OriginCloudRegionsBulkUpdateRequestBodyItem {
   /** Cloud vendor hosting the origin. Must be one of the supported vendors. */
   vendor: OriginCloudRegionsBulkUpdateRequestBodyItemVendor | (string & {});
 }
-const OriginCloudRegionsBulkUpdateRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<OriginCloudRegionsBulkUpdateRequestBodyItem>;
-
 export type OriginCloudRegionsBulkUpdateRequestBodyList =
   Array<OriginCloudRegionsBulkUpdateRequestBodyItem>;
-const OriginCloudRegionsBulkUpdateRequestBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<OriginCloudRegionsBulkUpdateRequestBodyList>;
-
 export interface BulkPutOriginCloudRegionsRequest {
   /** Identifier. */
   zoneId: string;
   body: OriginCloudRegionsBulkUpdateRequestBodyList;
 }
-const BulkPutOriginCloudRegionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BulkPutOriginCloudRegionsRequest>;
-
 export type OriginCloudRegionsBulkUpdateResponseFailedItem =
   OriginCloudRegionsBulkDeleteResponseFailedItem;
 export type OriginCloudRegionsBulkUpdateResponseFailedList =
@@ -174,24 +136,12 @@ export interface BulkPutOriginCloudRegionsResponse {
   /** Items that were successfully applied. */
   succeeded: OriginCloudRegionsBulkUpdateResponseSucceededList;
 }
-const BulkPutOriginCloudRegionsResponse =
-  BulkDeleteOriginCloudRegionsResponse as any as S.Schema<BulkPutOriginCloudRegionsResponse>;
-
 export interface ClearCacheReserveRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ClearCacheReserveRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ClearCacheReserveRequest>;
-
 export type CacheReserveClearResponseId = "cache_reserve_clear";
-const CacheReserveClearResponseId = S.String;
-
 export type CacheReserveClearResponseState = "In-progress" | "Completed";
-const CacheReserveClearResponseState = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ClearCacheReserveResponse {
   /** ID of the zone setting. */
@@ -205,31 +155,15 @@ export interface ClearCacheReserveResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ClearCacheReserveResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ClearCacheReserveResponse>;
-
 export type SmartTieredCacheCreateRequestValue = "on" | "off";
-const SmartTieredCacheCreateRequestValue = S.String;
-
 export interface CreateSmartTieredCacheRequest {
   /** Identifier. */
   zoneId: string;
   /** Enable or disable the Smart Tiered Cache. */
   value: SmartTieredCacheCreateRequestValue | (string & {});
 }
-const CreateSmartTieredCacheRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateSmartTieredCacheRequest>;
-
 export type SmartTieredCacheCreateResponseId = "tiered_cache_smart_topology_enable";
-const SmartTieredCacheCreateResponseId = S.String;
-
 export type SmartTieredCacheCreateResponseValue = "on" | "off";
-const SmartTieredCacheCreateResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSmartTieredCacheResponse {
   /** The identifier of the caching setting. */
@@ -241,43 +175,21 @@ export interface CreateSmartTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const CreateSmartTieredCacheResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateSmartTieredCacheResponse>;
-
 export interface DeleteOriginCloudRegionRequest {
   /** Identifier. */
   zoneId: string;
   originIP: string;
 }
-const DeleteOriginCloudRegionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteOriginCloudRegionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteOriginCloudRegionResponse {
   /** The origin IP address whose mapping was deleted. */
   originIp: string;
 }
-const DeleteOriginCloudRegionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteOriginCloudRegionResponse>;
-
 export interface DeleteSmartTieredCacheRequest {
   /** Identifier. */
   zoneId: string;
 }
-const DeleteSmartTieredCacheRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteSmartTieredCacheRequest>;
-
 export type SmartTieredCacheDeleteResponseId = "tiered_cache_smart_topology_enable";
-const SmartTieredCacheDeleteResponseId = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSmartTieredCacheResponse {
   /** The identifier of the caching setting. */
@@ -287,20 +199,11 @@ export interface DeleteSmartTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const DeleteSmartTieredCacheResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteSmartTieredCacheResponse>;
-
 export interface DeleteVariantRequest {
   /** Identifier. */
   zoneId: string;
 }
-const DeleteVariantRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteVariantRequest>;
-
 export type VariantsDeleteResponseId = "variants";
-const VariantsDeleteResponseId = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteVariantResponse {
   /** The identifier of the caching setting. */
@@ -310,26 +213,12 @@ export interface DeleteVariantResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const DeleteVariantResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteVariantResponse>;
-
 export interface GetCacheReserveRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetCacheReserveRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetCacheReserveRequest>;
-
 export type CacheReserveGetResponseId = "cache_reserve";
-const CacheReserveGetResponseId = S.String;
-
 export type CacheReserveGetResponseValue = "on" | "off";
-const CacheReserveGetResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCacheReserveResponse {
   /** The identifier of the caching setting. */
@@ -341,24 +230,12 @@ export interface GetCacheReserveResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const GetCacheReserveResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetCacheReserveResponse>;
-
 export interface GetOriginCloudRegionRequest {
   /** Identifier. */
   zoneId: string;
   originIP: string;
 }
-const GetOriginCloudRegionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetOriginCloudRegionRequest>;
-
 export type OriginCloudRegionsGetResponseVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsGetResponseVendor = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginCloudRegionResponse {
   /** The origin IP address (IPv4 or IPv6). Normalized to canonical form (RFC 5952 for IPv6). */
@@ -370,20 +247,10 @@ export interface GetOriginCloudRegionResponse {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-const GetOriginCloudRegionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetOriginCloudRegionResponse>;
-
 export interface GetRegionalTieredCacheRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetRegionalTieredCacheRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetRegionalTieredCacheRequest>;
-
 export type RegionalTieredCacheGetResponseId = "tc_regional";
 export type RegionalTieredCacheGetResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -397,18 +264,10 @@ export interface GetRegionalTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const GetRegionalTieredCacheResponse =
-  CreateSmartTieredCacheResponse as any as S.Schema<GetRegionalTieredCacheResponse>;
-
 export interface GetSmartTieredCacheRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetSmartTieredCacheRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetSmartTieredCacheRequest>;
-
 export type SmartTieredCacheGetResponseId = "tiered_cache_smart_topology_enable";
 export type SmartTieredCacheGetResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -422,64 +281,22 @@ export interface GetSmartTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const GetSmartTieredCacheResponse =
-  CreateSmartTieredCacheResponse as any as S.Schema<GetSmartTieredCacheResponse>;
-
 export interface GetVariantRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetVariantRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetVariantRequest>;
-
 export type VariantsGetResponseId = "variants";
-const VariantsGetResponseId = S.String;
-
 export type VariantsGetResponseValueAvifList = Array<string>;
-const VariantsGetResponseValueAvifList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<VariantsGetResponseValueAvifList>;
-
 export type VariantsGetResponseValueBmpList = Array<string>;
-const VariantsGetResponseValueBmpList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueBmpList>;
-
 export type VariantsGetResponseValueGifList = Array<string>;
-const VariantsGetResponseValueGifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueGifList>;
-
 export type VariantsGetResponseValueJp2List = Array<string>;
-const VariantsGetResponseValueJp2List =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJp2List>;
-
 export type VariantsGetResponseValueJpegList = Array<string>;
-const VariantsGetResponseValueJpegList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJpegList>;
-
 export type VariantsGetResponseValueJpgList = Array<string>;
-const VariantsGetResponseValueJpgList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJpgList>;
-
 export type VariantsGetResponseValueJpg2List = Array<string>;
-const VariantsGetResponseValueJpg2List =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJpg2List>;
-
 export type VariantsGetResponseValuePngList = Array<string>;
-const VariantsGetResponseValuePngList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValuePngList>;
-
 export type VariantsGetResponseValueTifList = Array<string>;
-const VariantsGetResponseValueTifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueTifList>;
-
 export type VariantsGetResponseValueTiffList = Array<string>;
-const VariantsGetResponseValueTiffList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueTiffList>;
-
 export type VariantsGetResponseValueWebpList = Array<string>;
-const VariantsGetResponseValueWebpList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueWebpList>;
-
 export interface VariantsGetResponseValue {
   /** List of strings with the MIME types of all the variants that should be served for avif. */
   avif?: VariantsGetResponseValueAvifList | null;
@@ -504,11 +321,6 @@ export interface VariantsGetResponseValue {
   /** List of strings with the MIME types of all the variants that should be served for webp. */
   webp?: VariantsGetResponseValueWebpList | null;
 }
-const VariantsGetResponseValue = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<VariantsGetResponseValue>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetVariantResponse {
   /** The identifier of the caching setting. */
@@ -520,20 +332,9 @@ export interface GetVariantResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const GetVariantResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetVariantResponse>;
-
 export type InvalidateRequestTagsList = Array<string>;
-const InvalidateRequestTagsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateRequestTagsList>;
-
 export type InvalidateRequestHostsList = Array<string>;
-const InvalidateRequestHostsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateRequestHostsList>;
-
 export type InvalidateRequestPrefixesList = Array<string>;
-const InvalidateRequestPrefixesList =
-  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateRequestPrefixesList>;
-
 export type InvalidateRequestFilesCachePurgeSingleFileList = Array<string>;
 export type InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
@@ -549,8 +350,6 @@ export type InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
 export type InvalidateRequestFiles =
   | InvalidateRequestFilesCachePurgeSingleFileList
   | InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
-const InvalidateRequestFiles = /*@__PURE__*/ __L.at(__c3, 3);
-
 export interface InvalidateRequest {
   zoneId: string;
   /** Cache tags. Targets all content whose `Cache-Tag` response header contains at least one of these tags. See [Purge cache by cache-tags](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
@@ -564,26 +363,13 @@ export interface InvalidateRequest {
   /** Full URLs, such as `https://www.example.com/css/styles.css`. Targets the content cached for each URL. If your cache key includes request headers, send objects with `url` and `headers` instead. See [Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
   files?: InvalidateRequestFiles;
 }
-const InvalidateRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<InvalidateRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InvalidateResponse {
   id: string;
 }
-const InvalidateResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<InvalidateResponse>;
-
 export type InvalidateEnvironmentRequestTagsList = Array<string>;
-const InvalidateEnvironmentRequestTagsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateEnvironmentRequestTagsList>;
-
 export type InvalidateEnvironmentRequestHostsList = Array<string>;
-const InvalidateEnvironmentRequestHostsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateEnvironmentRequestHostsList>;
-
 export type InvalidateEnvironmentRequestPrefixesList = Array<string>;
-const InvalidateEnvironmentRequestPrefixesList =
-  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateEnvironmentRequestPrefixesList>;
-
 export type InvalidateEnvironmentRequestFilesCachePurgeSingleFileList = Array<string>;
 export type InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
@@ -599,8 +385,6 @@ export type InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeade
 export type InvalidateEnvironmentRequestFiles =
   | InvalidateEnvironmentRequestFilesCachePurgeSingleFileList
   | InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
-const InvalidateEnvironmentRequestFiles = /*@__PURE__*/ __L.at(__c3, 6);
-
 export interface InvalidateEnvironmentRequest {
   zoneId: string;
   environmentId: string;
@@ -615,20 +399,10 @@ export interface InvalidateEnvironmentRequest {
   /** Full URLs, such as `https://www.example.com/css/styles.css`. Targets the content cached for each URL. If your cache key includes request headers, send objects with `url` and `headers` instead. See [Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
   files?: InvalidateEnvironmentRequestFiles;
 }
-const InvalidateEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<InvalidateEnvironmentRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InvalidateEnvironmentResponse {
   id: string;
 }
-const InvalidateEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<InvalidateEnvironmentResponse>;
-
 export interface ListOriginCloudRegionsRequest {
   /** Identifier. */
   zoneId: string;
@@ -637,14 +411,7 @@ export interface ListOriginCloudRegionsRequest {
   /** Number of items per page. */
   perPage?: number;
 }
-const ListOriginCloudRegionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListOriginCloudRegionsRequest>;
-
 export type OriginCloudRegionsListResultItemVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsListResultItemVendor = S.String;
-
 export interface OriginCloudRegionsListResultItem {
   /** The origin IP address (IPv4 or IPv6). Normalized to canonical form (RFC 5952 for IPv6). */
   originIp: string;
@@ -655,40 +422,18 @@ export interface OriginCloudRegionsListResultItem {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsListResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<OriginCloudRegionsListResultItem>;
-
 export type OriginCloudRegionsListResultList = Array<OriginCloudRegionsListResultItem>;
-const OriginCloudRegionsListResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<OriginCloudRegionsListResultList>;
-
 export interface ListOriginCloudRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: OriginCloudRegionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListOriginCloudRegionsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListOriginCloudRegionsResponse>;
-
 export interface OriginCloudRegionsBulkDeleteV1Request {
   /** Identifier. */
   zoneId: string;
 }
-const OriginCloudRegionsBulkDeleteV1Request = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteV1Request>;
-
 export type OriginCloudRegionsBulkDeleteV1ResponseId = "origin_public_cloud_region";
-const OriginCloudRegionsBulkDeleteV1ResponseId = S.String;
-
 export interface OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem {
   /** The origin IP address for this item. */
   originIp: string;
@@ -699,36 +444,18 @@ export interface OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem {
   /** Cloud vendor identifier. Present on succeeded items for patch operations. */
   vendor?: string | null;
 }
-const OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
-
 export type OriginCloudRegionsBulkDeleteV1ResponseValueFailedList =
   Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
-const OriginCloudRegionsBulkDeleteV1ResponseValueFailedList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueFailedList>;
-
 export type OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem =
   OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 export type OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
   Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
-const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
-  OriginCloudRegionsBulkDeleteV1ResponseValueFailedList as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList>;
-
 export interface OriginCloudRegionsBulkDeleteV1ResponseValue {
   /** Items that could not be applied, with error details. */
   failed: OriginCloudRegionsBulkDeleteV1ResponseValueFailedList;
   /** Items that were successfully applied. */
   succeeded: OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList;
 }
-const OriginCloudRegionsBulkDeleteV1ResponseValue = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValue>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsBulkDeleteV1Response {
   id: OriginCloudRegionsBulkDeleteV1ResponseId;
@@ -738,14 +465,7 @@ export interface OriginCloudRegionsBulkDeleteV1Response {
   /** Time the mapping set was last modified. Null when no items were successfully applied. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsBulkDeleteV1Response = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteV1Response>;
-
 export type OriginCloudRegionsBulkEditV1RequestBodyItemVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsBulkEditV1RequestBodyItemVendor = S.String;
-
 export interface OriginCloudRegionsBulkEditV1RequestBodyItem {
   /** Origin IP address (IPv4 or IPv6). Normalized to canonical form before storage (RFC 5952 for IPv6). */
   ip: string;
@@ -754,31 +474,14 @@ export interface OriginCloudRegionsBulkEditV1RequestBodyItem {
   /** Cloud vendor hosting the origin. Must be one of the supported vendors. */
   vendor: OriginCloudRegionsBulkEditV1RequestBodyItemVendor | (string & {});
 }
-const OriginCloudRegionsBulkEditV1RequestBodyItem = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<OriginCloudRegionsBulkEditV1RequestBodyItem>;
-
 export type OriginCloudRegionsBulkEditV1RequestBodyList =
   Array<OriginCloudRegionsBulkEditV1RequestBodyItem>;
-const OriginCloudRegionsBulkEditV1RequestBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<OriginCloudRegionsBulkEditV1RequestBodyList>;
-
 export interface OriginCloudRegionsBulkEditV1Request {
   /** Identifier. */
   zoneId: string;
   body: OriginCloudRegionsBulkEditV1RequestBodyList;
 }
-const OriginCloudRegionsBulkEditV1Request = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<OriginCloudRegionsBulkEditV1Request>;
-
 export type OriginCloudRegionsBulkEditV1ResponseId = "origin_public_cloud_region";
-const OriginCloudRegionsBulkEditV1ResponseId = S.String;
-
 export type OriginCloudRegionsBulkEditV1ResponseValueFailedItem =
   OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 export type OriginCloudRegionsBulkEditV1ResponseValueFailedList =
@@ -793,9 +496,6 @@ export interface OriginCloudRegionsBulkEditV1ResponseValue {
   /** Items that were successfully applied. */
   succeeded: OriginCloudRegionsBulkEditV1ResponseValueSucceededList;
 }
-const OriginCloudRegionsBulkEditV1ResponseValue =
-  OriginCloudRegionsBulkDeleteV1ResponseValue as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValue>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsBulkEditV1Response {
   id: OriginCloudRegionsBulkEditV1ResponseId;
@@ -805,14 +505,7 @@ export interface OriginCloudRegionsBulkEditV1Response {
   /** Time the mapping set was last modified. Null when no items were successfully applied. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsBulkEditV1Response = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<OriginCloudRegionsBulkEditV1Response>;
-
 export type OriginCloudRegionsCreateV1RequestVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsCreateV1RequestVendor = S.String;
-
 export interface OriginCloudRegionsCreateV1Request {
   /** Identifier. */
   zoneId: string;
@@ -823,17 +516,8 @@ export interface OriginCloudRegionsCreateV1Request {
   /** Cloud vendor hosting the origin. Must be one of the supported vendors. */
   vendor: OriginCloudRegionsCreateV1RequestVendor | (string & {});
 }
-const OriginCloudRegionsCreateV1Request = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<OriginCloudRegionsCreateV1Request>;
-
 export type OriginCloudRegionsCreateV1ResponseId = "origin_public_cloud_region";
-const OriginCloudRegionsCreateV1ResponseId = S.String;
-
 export type OriginCloudRegionsCreateV1ResponseValueVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsCreateV1ResponseValueVendor = S.String;
-
 export interface OriginCloudRegionsCreateV1ResponseValue {
   /** The origin IP address (IPv4 or IPv6, canonicalized). */
   originIp: string;
@@ -844,11 +528,6 @@ export interface OriginCloudRegionsCreateV1ResponseValue {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsCreateV1ResponseValue = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<OriginCloudRegionsCreateV1ResponseValue>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsCreateV1Response {
   id: OriginCloudRegionsCreateV1ResponseId;
@@ -859,21 +538,11 @@ export interface OriginCloudRegionsCreateV1Response {
   /** Time the mapping was last modified. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsCreateV1Response = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<OriginCloudRegionsCreateV1Response>;
-
 export interface OriginCloudRegionsDeleteV1Request {
   /** Identifier. */
   zoneId: string;
   originIp: string;
 }
-const OriginCloudRegionsDeleteV1Request = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<OriginCloudRegionsDeleteV1Request>;
-
 export type OriginCloudRegionsDeleteV1ResponseId = "origin_public_cloud_region";
 export type OriginCloudRegionsDeleteV1ResponseValueVendor = "aws" | "azure" | "gcp" | "oci";
 export interface OriginCloudRegionsDeleteV1ResponseValue {
@@ -896,12 +565,7 @@ export interface OriginCloudRegionsDeleteV1Response {
   /** Time the mapping was last modified. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsDeleteV1Response =
-  OriginCloudRegionsCreateV1Response as any as S.Schema<OriginCloudRegionsDeleteV1Response>;
-
 export type OriginCloudRegionsEditV1RequestVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsEditV1RequestVendor = S.String;
-
 export interface OriginCloudRegionsEditV1Request {
   /** Identifier. */
   zoneId: string;
@@ -912,14 +576,7 @@ export interface OriginCloudRegionsEditV1Request {
   /** Cloud vendor hosting the origin. Must be one of the supported vendors. */
   vendor: OriginCloudRegionsEditV1RequestVendor | (string & {});
 }
-const OriginCloudRegionsEditV1Request = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<OriginCloudRegionsEditV1Request>;
-
 export type OriginCloudRegionsEditV1ResponseId = "origin_public_cloud_region";
-const OriginCloudRegionsEditV1ResponseId = S.String;
-
 export type OriginCloudRegionsEditV1ResponseValueItemVendor = "aws" | "azure" | "gcp" | "oci";
 export interface OriginCloudRegionsEditV1ResponseValueItem {
   /** The origin IP address (IPv4 or IPv6, canonicalized). */
@@ -931,16 +588,8 @@ export interface OriginCloudRegionsEditV1ResponseValueItem {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsEditV1ResponseValueItem =
-  OriginCloudRegionsCreateV1ResponseValue as any as S.Schema<OriginCloudRegionsEditV1ResponseValueItem>;
-
 export type OriginCloudRegionsEditV1ResponseValueList =
   Array<OriginCloudRegionsEditV1ResponseValueItem>;
-const OriginCloudRegionsEditV1ResponseValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<OriginCloudRegionsEditV1ResponseValueList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsEditV1Response {
   id: OriginCloudRegionsEditV1ResponseId;
@@ -950,21 +599,11 @@ export interface OriginCloudRegionsEditV1Response {
   /** Time the mapping set was last modified. Null when no mappings exist. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsEditV1Response = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<OriginCloudRegionsEditV1Response>;
-
 export interface OriginCloudRegionsGetV1Request {
   /** Identifier. */
   zoneId: string;
   originIp: string;
 }
-const OriginCloudRegionsGetV1Request = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<OriginCloudRegionsGetV1Request>;
-
 export type OriginCloudRegionsGetV1ResponseId = "origin_public_cloud_region";
 export type OriginCloudRegionsGetV1ResponseValueVendor = "aws" | "azure" | "gcp" | "oci";
 export interface OriginCloudRegionsGetV1ResponseValue {
@@ -987,18 +626,10 @@ export interface OriginCloudRegionsGetV1Response {
   /** Time the mapping was last modified. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsGetV1Response =
-  OriginCloudRegionsCreateV1Response as any as S.Schema<OriginCloudRegionsGetV1Response>;
-
 export interface OriginCloudRegionsListV1Request {
   /** Identifier. */
   zoneId: string;
 }
-const OriginCloudRegionsListV1Request = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<OriginCloudRegionsListV1Request>;
-
 export type OriginCloudRegionsListV1ResponseId = "origin_public_cloud_region";
 export type OriginCloudRegionsListV1ResponseValueItemVendor = "aws" | "azure" | "gcp" | "oci";
 export interface OriginCloudRegionsListV1ResponseValueItem {
@@ -1022,52 +653,23 @@ export interface OriginCloudRegionsListV1Response {
   /** Time the mapping set was last modified. Null when no mappings exist. */
   modifiedOn?: string | null;
 }
-const OriginCloudRegionsListV1Response =
-  OriginCloudRegionsEditV1Response as any as S.Schema<OriginCloudRegionsListV1Response>;
-
 export interface OriginCloudRegionsSupportedRegionsV1Request {
   /** Identifier. */
   zoneId: string;
 }
-const OriginCloudRegionsSupportedRegionsV1Request = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1Request>;
-
 export type OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList =
   Array<string>;
-const OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    0,
-  ) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList>;
-
 export interface OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem {
   /** Cloud vendor region identifier. */
   name: string;
   /** Cloudflare Tiered Cache upper-tier colocation codes co-located with this cloud region. Requests from zones with a matching origin mapping will be routed through these colos. */
   upperTierColos: OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList;
 }
-const OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem>;
-
 export type OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList =
   Array<OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem>;
-const OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList>;
-
 export type OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap = {
   [key: string]: OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList | undefined;
 };
-const OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsSupportedRegionsV1Response {
   /** Whether Cloudflare airport codes (IATA colo identifiers) were successfully resolved for the `upper_tier_colos` field on each region. When `false`, the `upper_tier_colos` arrays may be empty or incomplete. */
@@ -1075,25 +677,13 @@ export interface OriginCloudRegionsSupportedRegionsV1Response {
   /** Map of vendor name to list of supported regions. */
   vendors: OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap;
 }
-const OriginCloudRegionsSupportedRegionsV1Response = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1Response>;
-
 export type CacheReserveEditRequestValue = "on" | "off";
-const CacheReserveEditRequestValue = S.String;
-
 export interface PatchCacheReserveRequest {
   /** Identifier. */
   zoneId: string;
   /** Value of the Cache Reserve zone setting. */
   value: CacheReserveEditRequestValue | (string & {});
 }
-const PatchCacheReserveRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<PatchCacheReserveRequest>;
-
 export type CacheReserveEditResponseId = "cache_reserve";
 export type CacheReserveEditResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1107,23 +697,13 @@ export interface PatchCacheReserveResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PatchCacheReserveResponse =
-  CreateSmartTieredCacheResponse as any as S.Schema<PatchCacheReserveResponse>;
-
 export type RegionalTieredCacheEditRequestValue = "on" | "off";
-const RegionalTieredCacheEditRequestValue = S.String;
-
 export interface PatchRegionalTieredCacheRequest {
   /** Identifier. */
   zoneId: string;
   /** Value of the Regional Tiered Cache zone setting. */
   value: RegionalTieredCacheEditRequestValue | (string & {});
 }
-const PatchRegionalTieredCacheRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<PatchRegionalTieredCacheRequest>;
-
 export type RegionalTieredCacheEditResponseId = "tc_regional";
 export type RegionalTieredCacheEditResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1137,23 +717,13 @@ export interface PatchRegionalTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PatchRegionalTieredCacheResponse =
-  CreateSmartTieredCacheResponse as any as S.Schema<PatchRegionalTieredCacheResponse>;
-
 export type SmartTieredCacheEditRequestValue = "on" | "off";
-const SmartTieredCacheEditRequestValue = S.String;
-
 export interface PatchSmartTieredCacheRequest {
   /** Identifier. */
   zoneId: string;
   /** Enable or disable the Smart Tiered Cache. */
   value: SmartTieredCacheEditRequestValue | (string & {});
 }
-const PatchSmartTieredCacheRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PatchSmartTieredCacheRequest>;
-
 export type SmartTieredCacheEditResponseId = "tiered_cache_smart_topology_enable";
 export type SmartTieredCacheEditResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1167,53 +737,17 @@ export interface PatchSmartTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PatchSmartTieredCacheResponse =
-  CreateSmartTieredCacheResponse as any as S.Schema<PatchSmartTieredCacheResponse>;
-
 export type VariantsEditRequestValueAvifList = Array<string>;
-const VariantsEditRequestValueAvifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueAvifList>;
-
 export type VariantsEditRequestValueBmpList = Array<string>;
-const VariantsEditRequestValueBmpList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueBmpList>;
-
 export type VariantsEditRequestValueGifList = Array<string>;
-const VariantsEditRequestValueGifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueGifList>;
-
 export type VariantsEditRequestValueJp2List = Array<string>;
-const VariantsEditRequestValueJp2List =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJp2List>;
-
 export type VariantsEditRequestValueJpegList = Array<string>;
-const VariantsEditRequestValueJpegList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJpegList>;
-
 export type VariantsEditRequestValueJpgList = Array<string>;
-const VariantsEditRequestValueJpgList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJpgList>;
-
 export type VariantsEditRequestValueJpg2List = Array<string>;
-const VariantsEditRequestValueJpg2List =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJpg2List>;
-
 export type VariantsEditRequestValuePngList = Array<string>;
-const VariantsEditRequestValuePngList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValuePngList>;
-
 export type VariantsEditRequestValueTifList = Array<string>;
-const VariantsEditRequestValueTifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueTifList>;
-
 export type VariantsEditRequestValueTiffList = Array<string>;
-const VariantsEditRequestValueTiffList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueTiffList>;
-
 export type VariantsEditRequestValueWebpList = Array<string>;
-const VariantsEditRequestValueWebpList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueWebpList>;
-
 export interface VariantsEditRequestValue {
   /** List of strings with the MIME types of all the variants that should be served for avif. */
   avif?: VariantsEditRequestValueAvifList;
@@ -1238,66 +772,24 @@ export interface VariantsEditRequestValue {
   /** List of strings with the MIME types of all the variants that should be served for webp. */
   webp?: VariantsEditRequestValueWebpList;
 }
-const VariantsEditRequestValue = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<VariantsEditRequestValue>;
-
 export interface PatchVariantRequest {
   /** Identifier. */
   zoneId: string;
   /** Value of the zone setting. */
   value: VariantsEditRequestValue;
 }
-const PatchVariantRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PatchVariantRequest>;
-
 export type VariantsEditResponseId = "variants";
-const VariantsEditResponseId = S.String;
-
 export type VariantsEditResponseValueAvifList = Array<string>;
-const VariantsEditResponseValueAvifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueAvifList>;
-
 export type VariantsEditResponseValueBmpList = Array<string>;
-const VariantsEditResponseValueBmpList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueBmpList>;
-
 export type VariantsEditResponseValueGifList = Array<string>;
-const VariantsEditResponseValueGifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueGifList>;
-
 export type VariantsEditResponseValueJp2List = Array<string>;
-const VariantsEditResponseValueJp2List =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJp2List>;
-
 export type VariantsEditResponseValueJpegList = Array<string>;
-const VariantsEditResponseValueJpegList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJpegList>;
-
 export type VariantsEditResponseValueJpgList = Array<string>;
-const VariantsEditResponseValueJpgList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJpgList>;
-
 export type VariantsEditResponseValueJpg2List = Array<string>;
-const VariantsEditResponseValueJpg2List =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJpg2List>;
-
 export type VariantsEditResponseValuePngList = Array<string>;
-const VariantsEditResponseValuePngList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValuePngList>;
-
 export type VariantsEditResponseValueTifList = Array<string>;
-const VariantsEditResponseValueTifList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueTifList>;
-
 export type VariantsEditResponseValueTiffList = Array<string>;
-const VariantsEditResponseValueTiffList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueTiffList>;
-
 export type VariantsEditResponseValueWebpList = Array<string>;
-const VariantsEditResponseValueWebpList =
-  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueWebpList>;
-
 export interface VariantsEditResponseValue {
   /** List of strings with the MIME types of all the variants that should be served for avif. */
   avif?: VariantsEditResponseValueAvifList | null;
@@ -1322,11 +814,6 @@ export interface VariantsEditResponseValue {
   /** List of strings with the MIME types of all the variants that should be served for webp. */
   webp?: VariantsEditResponseValueWebpList | null;
 }
-const VariantsEditResponseValue = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<VariantsEditResponseValue>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchVariantResponse {
   /** The identifier of the caching setting. */
@@ -1338,20 +825,9 @@ export interface PatchVariantResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PatchVariantResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<PatchVariantResponse>;
-
 export type PurgeRequestTagsList = Array<string>;
-const PurgeRequestTagsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<PurgeRequestTagsList>;
-
 export type PurgeRequestHostsList = Array<string>;
-const PurgeRequestHostsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<PurgeRequestHostsList>;
-
 export type PurgeRequestPrefixesList = Array<string>;
-const PurgeRequestPrefixesList =
-  VariantsGetResponseValueAvifList as any as S.Schema<PurgeRequestPrefixesList>;
-
 export type PurgeRequestFilesCachePurgeSingleFileList = Array<string>;
 export type PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
@@ -1367,8 +843,6 @@ export type PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
 export type PurgeRequestFiles =
   | PurgeRequestFilesCachePurgeSingleFileList
   | PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
-const PurgeRequestFiles = /*@__PURE__*/ __L.at(__c8, 4);
-
 export interface PurgeCacheRequest {
   zoneId: string;
   /** Cache tags. Targets all content whose `Cache-Tag` response header contains at least one of these tags. See [Purge cache by cache-tags](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
@@ -1382,26 +856,13 @@ export interface PurgeCacheRequest {
   /** Full URLs, such as `https://www.example.com/css/styles.css`. Targets the content cached for each URL. If your cache key includes request headers, send objects with `url` and `headers` instead. See [Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
   files?: PurgeRequestFiles;
 }
-const PurgeCacheRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<PurgeCacheRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PurgeCacheResponse {
   id: string;
 }
-const PurgeCacheResponse = InvalidateResponse as any as S.Schema<PurgeCacheResponse>;
-
 export type PurgeEnvironmentRequestTagsList = Array<string>;
-const PurgeEnvironmentRequestTagsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<PurgeEnvironmentRequestTagsList>;
-
 export type PurgeEnvironmentRequestHostsList = Array<string>;
-const PurgeEnvironmentRequestHostsList =
-  VariantsGetResponseValueAvifList as any as S.Schema<PurgeEnvironmentRequestHostsList>;
-
 export type PurgeEnvironmentRequestPrefixesList = Array<string>;
-const PurgeEnvironmentRequestPrefixesList =
-  VariantsGetResponseValueAvifList as any as S.Schema<PurgeEnvironmentRequestPrefixesList>;
-
 export type PurgeEnvironmentRequestFilesCachePurgeSingleFileList = Array<string>;
 export type PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
@@ -1417,8 +878,6 @@ export type PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersLis
 export type PurgeEnvironmentRequestFiles =
   | PurgeEnvironmentRequestFilesCachePurgeSingleFileList
   | PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
-const PurgeEnvironmentRequestFiles = /*@__PURE__*/ __L.at(__c8, 6);
-
 export interface PurgeEnvironmentCacheRequest {
   zoneId: string;
   environmentId: string;
@@ -1433,21 +892,11 @@ export interface PurgeEnvironmentCacheRequest {
   /** Full URLs, such as `https://www.example.com/css/styles.css`. Targets the content cached for each URL. If your cache key includes request headers, send objects with `url` and `headers` instead. See [Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
   files?: PurgeEnvironmentRequestFiles;
 }
-const PurgeEnvironmentCacheRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<PurgeEnvironmentCacheRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PurgeEnvironmentCacheResponse {
   id: string;
 }
-const PurgeEnvironmentCacheResponse =
-  InvalidateEnvironmentResponse as any as S.Schema<PurgeEnvironmentCacheResponse>;
-
 export type OriginCloudRegionsUpdateRequestVendor = "aws" | "azure" | "gcp" | "oci";
-const OriginCloudRegionsUpdateRequestVendor = S.String;
-
 export interface PutOriginCloudRegionRequest {
   /** Identifier. */
   zoneId: string;
@@ -1459,11 +908,6 @@ export interface PutOriginCloudRegionRequest {
   /** Origin IP address (IPv4 or IPv6). For the single PUT endpoint (`PUT /origin/cloud_regions/{origin_ip}`), this field must match the path parameter or the request will be rejected with a 400 error. For the batch PUT endpoint, this field identifies which mapping to upsert. */
   originIp: string;
 }
-const PutOriginCloudRegionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<PutOriginCloudRegionRequest>;
-
 export type OriginCloudRegionsUpdateResponseVendor = "aws" | "azure" | "gcp" | "oci";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutOriginCloudRegionResponse {
@@ -1476,18 +920,10 @@ export interface PutOriginCloudRegionResponse {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-const PutOriginCloudRegionResponse =
-  GetOriginCloudRegionResponse as any as S.Schema<PutOriginCloudRegionResponse>;
-
 export interface StatusCacheReserveRequest {
   /** Identifier. */
   zoneId: string;
 }
-const StatusCacheReserveRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<StatusCacheReserveRequest>;
-
 export type CacheReserveStatusResponseId = "cache_reserve_clear";
 export type CacheReserveStatusResponseState = "In-progress" | "Completed";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1503,18 +939,10 @@ export interface StatusCacheReserveResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const StatusCacheReserveResponse =
-  ClearCacheReserveResponse as any as S.Schema<StatusCacheReserveResponse>;
-
 export interface SupportedRegionsOriginCloudRegionRequest {
   /** Identifier. */
   zoneId: string;
 }
-const SupportedRegionsOriginCloudRegionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<SupportedRegionsOriginCloudRegionRequest>;
-
 export type OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList =
   Array<string>;
 export interface OriginCloudRegionsSupportedRegionsResponseVendorsValueItem {
@@ -1535,9 +963,6 @@ export interface SupportedRegionsOriginCloudRegionResponse {
   /** Map of vendor name to list of supported regions. */
   vendors: OriginCloudRegionsSupportedRegionsResponseVendorsMap;
 }
-const SupportedRegionsOriginCloudRegionResponse =
-  OriginCloudRegionsSupportedRegionsV1Response as any as S.Schema<SupportedRegionsOriginCloudRegionResponse>;
-
 export type BulkDeleteOriginCloudRegionsError = CloudflareOpError;
 /** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently -- successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */
 export const bulkDeleteOriginCloudRegions: API.OperationMethod<
@@ -1546,8 +971,8 @@ export const bulkDeleteOriginCloudRegions: API.OperationMethod<
   BulkDeleteOriginCloudRegionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteOriginCloudRegionsRequest,
-  output: BulkDeleteOriginCloudRegionsResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<BulkDeleteOriginCloudRegionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<BulkDeleteOriginCloudRegionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1561,8 +986,8 @@ export const bulkPutOriginCloudRegions: API.OperationMethod<
   BulkPutOriginCloudRegionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkPutOriginCloudRegionsRequest,
-  output: BulkPutOriginCloudRegionsResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<BulkPutOriginCloudRegionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<BulkPutOriginCloudRegionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1001,8 @@ export const clearCacheReserve: API.OperationMethod<
   ClearCacheReserveError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClearCacheReserveRequest,
-  output: ClearCacheReserveResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<ClearCacheReserveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ClearCacheReserveResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1016,8 @@ export const createSmartTieredCache: API.OperationMethod<
   CreateSmartTieredCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmartTieredCacheRequest,
-  output: CreateSmartTieredCacheResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateSmartTieredCacheRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateSmartTieredCacheResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1609,8 +1034,8 @@ export const deleteOriginCloudRegion: API.OperationMethod<
   DeleteOriginCloudRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOriginCloudRegionRequest,
-  output: DeleteOriginCloudRegionResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteOriginCloudRegionRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DeleteOriginCloudRegionResponse>,
   errors: [OriginCloudRegionNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1624,8 +1049,8 @@ export const deleteSmartTieredCache: API.OperationMethod<
   DeleteSmartTieredCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmartTieredCacheRequest,
-  output: DeleteSmartTieredCacheResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<DeleteSmartTieredCacheRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<DeleteSmartTieredCacheResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1639,8 +1064,8 @@ export const deleteVariant: API.OperationMethod<
   DeleteVariantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVariantRequest,
-  output: DeleteVariantResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteVariantRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteVariantResponse>,
   errors: [VariantsNotConfigured, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1654,8 +1079,8 @@ export const getCacheReserve: API.OperationMethod<
   GetCacheReserveError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCacheReserveRequest,
-  output: GetCacheReserveResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<GetCacheReserveRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetCacheReserveResponse>,
   errors: [SettingUnavailableForPlan, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1669,8 +1094,8 @@ export const getOriginCloudRegion: API.OperationMethod<
   GetOriginCloudRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOriginCloudRegionRequest,
-  output: GetOriginCloudRegionResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<GetOriginCloudRegionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetOriginCloudRegionResponse>,
   errors: [OriginCloudRegionNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1688,8 +1113,8 @@ export const getRegionalTieredCache: API.OperationMethod<
   GetRegionalTieredCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegionalTieredCacheRequest,
-  output: GetRegionalTieredCacheResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<GetRegionalTieredCacheRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetRegionalTieredCacheResponse>,
   errors: [
     SettingUnavailableForPlan,
     Forbidden,
@@ -1709,8 +1134,8 @@ export const getSmartTieredCache: API.OperationMethod<
   GetSmartTieredCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmartTieredCacheRequest,
-  output: GetSmartTieredCacheResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetSmartTieredCacheRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetSmartTieredCacheResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1149,8 @@ export const getVariant: API.OperationMethod<
   GetVariantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVariantRequest,
-  output: GetVariantResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<GetVariantRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetVariantResponse>,
   errors: [VariantsNotConfigured, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1739,8 +1164,8 @@ export const invalidate: API.OperationMethod<
   InvalidateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateRequest,
-  output: InvalidateResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<InvalidateRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<InvalidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1179,8 @@ export const invalidateEnvironment: API.OperationMethod<
   InvalidateEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateEnvironmentRequest,
-  output: InvalidateEnvironmentResponse,
+  input: __S(31, __c3, 7) as any as S.Schema<InvalidateEnvironmentRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<InvalidateEnvironmentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1196,8 @@ export const listOriginCloudRegions: API.PaginatedOperationMethod<
   OriginCloudRegionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListOriginCloudRegionsRequest,
-    output: ListOriginCloudRegionsResponse,
+    input: __S(33, __c4, 1) as any as S.Schema<ListOriginCloudRegionsRequest>,
+    output: __S(36, __c4, 4) as any as S.Schema<ListOriginCloudRegionsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1795,8 +1220,8 @@ export const originCloudRegionsBulkDeleteV1: API.OperationMethod<
   OriginCloudRegionsBulkDeleteV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsBulkDeleteV1Request,
-  output: OriginCloudRegionsBulkDeleteV1Response,
+  input: __S(37, __c4, 5) as any as S.Schema<OriginCloudRegionsBulkDeleteV1Request>,
+  output: __S(41, __c5, 1) as any as S.Schema<OriginCloudRegionsBulkDeleteV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1810,8 +1235,8 @@ export const originCloudRegionsBulkEditV1: API.OperationMethod<
   OriginCloudRegionsBulkEditV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsBulkEditV1Request,
-  output: OriginCloudRegionsBulkEditV1Response,
+  input: __S(44, __c5, 4) as any as S.Schema<OriginCloudRegionsBulkEditV1Request>,
+  output: __S(45, __c5, 5) as any as S.Schema<OriginCloudRegionsBulkEditV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1825,8 +1250,8 @@ export const originCloudRegionsCreateV1: API.OperationMethod<
   OriginCloudRegionsCreateV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsCreateV1Request,
-  output: OriginCloudRegionsCreateV1Response,
+  input: __S(46, __c5, 6) as any as S.Schema<OriginCloudRegionsCreateV1Request>,
+  output: __S(48, __c6, 0) as any as S.Schema<OriginCloudRegionsCreateV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1840,8 +1265,8 @@ export const originCloudRegionsDeleteV1: API.OperationMethod<
   OriginCloudRegionsDeleteV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsDeleteV1Request,
-  output: OriginCloudRegionsDeleteV1Response,
+  input: __S(49, __c6, 1) as any as S.Schema<OriginCloudRegionsDeleteV1Request>,
+  output: __S(48, __c6, 0) as any as S.Schema<OriginCloudRegionsDeleteV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1855,8 +1280,8 @@ export const originCloudRegionsEditV1: API.OperationMethod<
   OriginCloudRegionsEditV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsEditV1Request,
-  output: OriginCloudRegionsEditV1Response,
+  input: __S(50, __c6, 2) as any as S.Schema<OriginCloudRegionsEditV1Request>,
+  output: __S(52, __c6, 4) as any as S.Schema<OriginCloudRegionsEditV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1870,8 +1295,8 @@ export const originCloudRegionsGetV1: API.OperationMethod<
   OriginCloudRegionsGetV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsGetV1Request,
-  output: OriginCloudRegionsGetV1Response,
+  input: __S(53, __c6, 5) as any as S.Schema<OriginCloudRegionsGetV1Request>,
+  output: __S(48, __c6, 0) as any as S.Schema<OriginCloudRegionsGetV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1885,8 +1310,8 @@ export const originCloudRegionsListV1: API.OperationMethod<
   OriginCloudRegionsListV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsListV1Request,
-  output: OriginCloudRegionsListV1Response,
+  input: __S(54, __c6, 6) as any as S.Schema<OriginCloudRegionsListV1Request>,
+  output: __S(52, __c6, 4) as any as S.Schema<OriginCloudRegionsListV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1900,8 +1325,8 @@ export const originCloudRegionsSupportedRegionsV1: API.OperationMethod<
   OriginCloudRegionsSupportedRegionsV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginCloudRegionsSupportedRegionsV1Request,
-  output: OriginCloudRegionsSupportedRegionsV1Response,
+  input: __S(55, __c6, 7) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1Request>,
+  output: __S(60, __c7, 4) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1Response>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1915,8 +1340,8 @@ export const patchCacheReserve: API.OperationMethod<
   PatchCacheReserveError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCacheReserveRequest,
-  output: PatchCacheReserveResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<PatchCacheReserveRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PatchCacheReserveResponse>,
   errors: [SettingUnavailableForPlan, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1933,8 +1358,8 @@ export const patchRegionalTieredCache: API.OperationMethod<
   PatchRegionalTieredCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchRegionalTieredCacheRequest,
-  output: PatchRegionalTieredCacheResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<PatchRegionalTieredCacheRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PatchRegionalTieredCacheResponse>,
   errors: [SettingUnavailableForPlan, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1373,8 @@ export const patchSmartTieredCache: API.OperationMethod<
   PatchSmartTieredCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSmartTieredCacheRequest,
-  output: PatchSmartTieredCacheResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<PatchSmartTieredCacheRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<PatchSmartTieredCacheResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1963,8 +1388,8 @@ export const patchVariant: API.OperationMethod<
   PatchVariantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchVariantRequest,
-  output: PatchVariantResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<PatchVariantRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<PatchVariantResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1978,8 +1403,8 @@ export const purgeCache: API.OperationMethod<
   PurgeCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeCacheRequest,
-  output: PurgeCacheResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<PurgeCacheRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<PurgeCacheResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1418,8 @@ export const purgeEnvironmentCache: API.OperationMethod<
   PurgeEnvironmentCacheError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeEnvironmentCacheRequest,
-  output: PurgeEnvironmentCacheResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<PurgeEnvironmentCacheRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PurgeEnvironmentCacheResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2008,8 +1433,8 @@ export const putOriginCloudRegion: API.OperationMethod<
   PutOriginCloudRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOriginCloudRegionRequest,
-  output: PutOriginCloudRegionResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<PutOriginCloudRegionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<PutOriginCloudRegionResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2023,8 +1448,8 @@ export const statusCacheReserve: API.OperationMethod<
   StatusCacheReserveError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StatusCacheReserveRequest,
-  output: StatusCacheReserveResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<StatusCacheReserveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<StatusCacheReserveResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2038,8 +1463,8 @@ export const supportedRegionsOriginCloudRegion: API.OperationMethod<
   SupportedRegionsOriginCloudRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SupportedRegionsOriginCloudRegionRequest,
-  output: SupportedRegionsOriginCloudRegionResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<SupportedRegionsOriginCloudRegionRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<SupportedRegionsOriginCloudRegionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2076,12 +1501,12 @@ function __c0(j: number): any {
         identifier: "OriginCloudRegionsBulkDeleteResponseFailedItem",
       });
     case 2:
-      return S.Array(OriginCloudRegionsBulkDeleteResponseFailedItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          failed: OriginCloudRegionsBulkDeleteResponseFailedList,
-          succeeded: OriginCloudRegionsBulkDeleteResponseSucceededList,
+          failed: __S(2, __c0, 2),
+          succeeded: __S(2, __c0, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkDeleteOriginCloudRegionsResponse",
@@ -2091,18 +1516,18 @@ function __c0(j: number): any {
         S.Struct({
           originIp: S.String.pipe(T.Body("origin_ip")),
           region: S.String,
-          vendor: OriginCloudRegionsBulkUpdateRequestBodyItemVendor,
+          vendor: S.String,
         }),
       ).annotate({
         identifier: "OriginCloudRegionsBulkUpdateRequestBodyItem",
       });
     case 5:
-      return S.Array(OriginCloudRegionsBulkUpdateRequestBodyItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: OriginCloudRegionsBulkUpdateRequestBodyList.pipe(T.HttpBody()),
+          body: __S(5, __c0, 5).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -2136,9 +1561,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: CacheReserveClearResponseId,
+          id: S.String,
           startTs: S.String.pipe(T.Body("start_ts")),
-          state: CacheReserveClearResponseState,
+          state: S.String,
           endTs: S.optional(S.NullOr(S.String).pipe(T.Body("end_ts"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2149,7 +1574,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: SmartTieredCacheCreateRequestValue,
+          value: S.String,
         })
           .pipe(
             T.Http({
@@ -2165,9 +1590,9 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: SmartTieredCacheCreateResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: SmartTieredCacheCreateResponseValue,
+          value: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2217,7 +1642,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: SmartTieredCacheDeleteResponseId,
+          id: S.String,
           editable: S.Boolean,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2239,7 +1664,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: VariantsDeleteResponseId,
+          id: S.String,
           editable: S.Boolean,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2255,9 +1680,9 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: CacheReserveGetResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: CacheReserveGetResponseValue,
+          value: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCacheReserveResponse" });
@@ -2283,7 +1708,7 @@ function __c2(j: number): any {
         S.Struct({
           originIp: S.String.pipe(T.Body("origin_ip")),
           region: S.String,
-          vendor: OriginCloudRegionsGetResponseVendor,
+          vendor: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2338,25 +1763,25 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          avif: S.optional(S.NullOr(VariantsGetResponseValueAvifList)),
-          bmp: S.optional(S.NullOr(VariantsGetResponseValueBmpList)),
-          gif: S.optional(S.NullOr(VariantsGetResponseValueGifList)),
-          jp2: S.optional(S.NullOr(VariantsGetResponseValueJp2List)),
-          jpeg: S.optional(S.NullOr(VariantsGetResponseValueJpegList)),
-          jpg: S.optional(S.NullOr(VariantsGetResponseValueJpgList)),
-          jpg2: S.optional(S.NullOr(VariantsGetResponseValueJpg2List)),
-          png: S.optional(S.NullOr(VariantsGetResponseValuePngList)),
-          tif: S.optional(S.NullOr(VariantsGetResponseValueTifList)),
-          tiff: S.optional(S.NullOr(VariantsGetResponseValueTiffList)),
-          webp: S.optional(S.NullOr(VariantsGetResponseValueWebpList)),
+          avif: S.optional(S.NullOr(__S(24, __c3, 0))),
+          bmp: S.optional(S.NullOr(__S(24, __c3, 0))),
+          gif: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jp2: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jpeg: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jpg: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jpg2: S.optional(S.NullOr(__S(24, __c3, 0))),
+          png: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tif: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tiff: S.optional(S.NullOr(__S(24, __c3, 0))),
+          webp: S.optional(S.NullOr(__S(24, __c3, 0))),
         }),
       ).annotate({ identifier: "VariantsGetResponseValue" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: VariantsGetResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: VariantsGetResponseValue,
+          value: __S(25, __c3, 1),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetVariantResponse" });
@@ -2366,11 +1791,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          tags: S.optional(InvalidateRequestTagsList),
-          hosts: S.optional(InvalidateRequestHostsList),
-          prefixes: S.optional(InvalidateRequestPrefixesList),
+          tags: S.optional(__S(24, __c3, 0)),
+          hosts: S.optional(__S(24, __c3, 0)),
+          prefixes: S.optional(__S(24, __c3, 0)),
           purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
-          files: S.optional(InvalidateRequestFiles),
+          files: S.optional(__S(27, __c3, 3)),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/invalidate_cache", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2388,11 +1813,11 @@ function __c3(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           environmentId: S.String.pipe(T.Label("environment_id")),
-          tags: S.optional(InvalidateEnvironmentRequestTagsList),
-          hosts: S.optional(InvalidateEnvironmentRequestHostsList),
-          prefixes: S.optional(InvalidateEnvironmentRequestPrefixesList),
+          tags: S.optional(__S(24, __c3, 0)),
+          hosts: S.optional(__S(24, __c3, 0)),
+          prefixes: S.optional(__S(24, __c3, 0)),
           purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
-          files: S.optional(InvalidateEnvironmentRequestFiles),
+          files: S.optional(__S(30, __c3, 6)),
         })
           .pipe(
             T.Http({
@@ -2434,18 +1859,18 @@ function __c4(j: number): any {
         S.Struct({
           originIp: S.String.pipe(T.Body("origin_ip")),
           region: S.String,
-          vendor: OriginCloudRegionsListResultItemVendor,
+          vendor: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }),
       ).annotate({
         identifier: "OriginCloudRegionsListResultItem",
       });
     case 3:
-      return S.Array(OriginCloudRegionsListResultItem);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: OriginCloudRegionsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(35, __c4, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2479,7 +1904,7 @@ function __c4(j: number): any {
         identifier: "OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem",
       });
     case 7:
-      return S.Array(OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -2487,8 +1912,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          failed: OriginCloudRegionsBulkDeleteV1ResponseValueFailedList,
-          succeeded: OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList,
+          failed: __S(39, __c4, 7),
+          succeeded: __S(39, __c4, 7),
         }),
       ).annotate({
         identifier: "OriginCloudRegionsBulkDeleteV1ResponseValue",
@@ -2496,9 +1921,9 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: OriginCloudRegionsBulkDeleteV1ResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: OriginCloudRegionsBulkDeleteV1ResponseValue,
+          value: __S(40, __c5, 0),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2509,18 +1934,18 @@ function __c5(j: number): any {
         S.Struct({
           ip: S.String,
           region: S.String,
-          vendor: OriginCloudRegionsBulkEditV1RequestBodyItemVendor,
+          vendor: S.String,
         }),
       ).annotate({
         identifier: "OriginCloudRegionsBulkEditV1RequestBodyItem",
       });
     case 3:
-      return S.Array(OriginCloudRegionsBulkEditV1RequestBodyItem);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: OriginCloudRegionsBulkEditV1RequestBodyList.pipe(T.HttpBody()),
+          body: __S(43, __c5, 3).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -2536,9 +1961,9 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: OriginCloudRegionsBulkEditV1ResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: OriginCloudRegionsBulkEditV1ResponseValue,
+          value: __S(40, __c5, 0),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2550,7 +1975,7 @@ function __c5(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           ip: S.String,
           region: S.String,
-          vendor: OriginCloudRegionsCreateV1RequestVendor,
+          vendor: S.String,
         })
           .pipe(
             T.Http({
@@ -2568,7 +1993,7 @@ function __c5(j: number): any {
         S.Struct({
           originIp: S.String.pipe(T.Body("origin-ip")),
           region: S.String,
-          vendor: OriginCloudRegionsCreateV1ResponseValueVendor,
+          vendor: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }),
       ).annotate({
@@ -2581,9 +2006,9 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: OriginCloudRegionsCreateV1ResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: OriginCloudRegionsCreateV1ResponseValue,
+          value: __S(47, __c5, 7),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2612,7 +2037,7 @@ function __c6(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           ip: S.String,
           region: S.String,
-          vendor: OriginCloudRegionsEditV1RequestVendor,
+          vendor: S.String,
         })
           .pipe(
             T.Http({
@@ -2626,13 +2051,13 @@ function __c6(j: number): any {
         identifier: "OriginCloudRegionsEditV1Request",
       });
     case 3:
-      return S.Array(OriginCloudRegionsEditV1ResponseValueItem);
+      return S.Array(__S(47, __c5, 7));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: OriginCloudRegionsEditV1ResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: OriginCloudRegionsEditV1ResponseValueList,
+          value: __S(51, __c6, 3),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2697,23 +2122,20 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          upperTierColos:
-            OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList.pipe(
-              T.Body("upper_tier_colos"),
-            ),
+          upperTierColos: __S(56, __c7, 0).pipe(T.Body("upper_tier_colos")),
         }),
       ).annotate({
         identifier: "OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem",
       });
     case 2:
-      return S.Array(OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem);
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.Record(S.String, OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList);
+      return S.Record(S.String, __S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           obtainedCodes: S.Boolean.pipe(T.Body("obtained_codes")),
-          vendors: OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap,
+          vendors: __S(59, __c7, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "OriginCloudRegionsSupportedRegionsV1Response",
@@ -2722,7 +2144,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: CacheReserveEditRequestValue,
+          value: S.String,
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/cache/cache_reserve", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2731,7 +2153,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: RegionalTieredCacheEditRequestValue,
+          value: S.String,
         })
           .pipe(
             T.Http({
@@ -2748,7 +2170,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: SmartTieredCacheEditRequestValue,
+          value: S.String,
         })
           .pipe(
             T.Http({
@@ -2768,24 +2190,24 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          avif: S.optional(VariantsEditRequestValueAvifList),
-          bmp: S.optional(VariantsEditRequestValueBmpList),
-          gif: S.optional(VariantsEditRequestValueGifList),
-          jp2: S.optional(VariantsEditRequestValueJp2List),
-          jpeg: S.optional(VariantsEditRequestValueJpegList),
-          jpg: S.optional(VariantsEditRequestValueJpgList),
-          jpg2: S.optional(VariantsEditRequestValueJpg2List),
-          png: S.optional(VariantsEditRequestValuePngList),
-          tif: S.optional(VariantsEditRequestValueTifList),
-          tiff: S.optional(VariantsEditRequestValueTiffList),
-          webp: S.optional(VariantsEditRequestValueWebpList),
+          avif: S.optional(__S(24, __c3, 0)),
+          bmp: S.optional(__S(24, __c3, 0)),
+          gif: S.optional(__S(24, __c3, 0)),
+          jp2: S.optional(__S(24, __c3, 0)),
+          jpeg: S.optional(__S(24, __c3, 0)),
+          jpg: S.optional(__S(24, __c3, 0)),
+          jpg2: S.optional(__S(24, __c3, 0)),
+          png: S.optional(__S(24, __c3, 0)),
+          tif: S.optional(__S(24, __c3, 0)),
+          tiff: S.optional(__S(24, __c3, 0)),
+          webp: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "VariantsEditRequestValue" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: VariantsEditRequestValue,
+          value: __S(64, __c8, 0),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/cache/variants", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2793,17 +2215,17 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          avif: S.optional(S.NullOr(VariantsEditResponseValueAvifList)),
-          bmp: S.optional(S.NullOr(VariantsEditResponseValueBmpList)),
-          gif: S.optional(S.NullOr(VariantsEditResponseValueGifList)),
-          jp2: S.optional(S.NullOr(VariantsEditResponseValueJp2List)),
-          jpeg: S.optional(S.NullOr(VariantsEditResponseValueJpegList)),
-          jpg: S.optional(S.NullOr(VariantsEditResponseValueJpgList)),
-          jpg2: S.optional(S.NullOr(VariantsEditResponseValueJpg2List)),
-          png: S.optional(S.NullOr(VariantsEditResponseValuePngList)),
-          tif: S.optional(S.NullOr(VariantsEditResponseValueTifList)),
-          tiff: S.optional(S.NullOr(VariantsEditResponseValueTiffList)),
-          webp: S.optional(S.NullOr(VariantsEditResponseValueWebpList)),
+          avif: S.optional(S.NullOr(__S(24, __c3, 0))),
+          bmp: S.optional(S.NullOr(__S(24, __c3, 0))),
+          gif: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jp2: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jpeg: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jpg: S.optional(S.NullOr(__S(24, __c3, 0))),
+          jpg2: S.optional(S.NullOr(__S(24, __c3, 0))),
+          png: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tif: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tiff: S.optional(S.NullOr(__S(24, __c3, 0))),
+          webp: S.optional(S.NullOr(__S(24, __c3, 0))),
         }),
       ).annotate({
         identifier: "VariantsEditResponseValue",
@@ -2811,9 +2233,9 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: VariantsEditResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: VariantsEditResponseValue,
+          value: __S(66, __c8, 2),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchVariantResponse" });
@@ -2823,11 +2245,11 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          tags: S.optional(PurgeRequestTagsList),
-          hosts: S.optional(PurgeRequestHostsList),
-          prefixes: S.optional(PurgeRequestPrefixesList),
+          tags: S.optional(__S(24, __c3, 0)),
+          hosts: S.optional(__S(24, __c3, 0)),
+          prefixes: S.optional(__S(24, __c3, 0)),
           purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
-          files: S.optional(PurgeRequestFiles),
+          files: S.optional(__S(68, __c8, 4)),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/purge_cache", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2839,11 +2261,11 @@ function __c8(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           environmentId: S.String.pipe(T.Label("environment_id")),
-          tags: S.optional(PurgeEnvironmentRequestTagsList),
-          hosts: S.optional(PurgeEnvironmentRequestHostsList),
-          prefixes: S.optional(PurgeEnvironmentRequestPrefixesList),
+          tags: S.optional(__S(24, __c3, 0)),
+          hosts: S.optional(__S(24, __c3, 0)),
+          prefixes: S.optional(__S(24, __c3, 0)),
           purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
-          files: S.optional(PurgeEnvironmentRequestFiles),
+          files: S.optional(__S(70, __c8, 6)),
         })
           .pipe(
             T.Http({
@@ -2865,7 +2287,7 @@ function __c9(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           region: S.String,
-          vendor: OriginCloudRegionsUpdateRequestVendor,
+          vendor: S.String,
           originIP: S.String.pipe(T.Label()),
           originIp: S.String.pipe(T.Body("origin_ip")),
         })
@@ -2909,4 +2331,9 @@ function __c9(j: number): any {
         identifier: "SupportedRegionsOriginCloudRegionRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

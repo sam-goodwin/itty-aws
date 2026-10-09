@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -44,31 +46,14 @@ export interface CreateWarehouseSavedQueriesAncestorRequest {
   /** How many hops to walk, so 1 gives the immediate neighbours. Omit to walk the whole cone. */
   level?: number | null;
 }
-const CreateWarehouseSavedQueriesAncestorRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateWarehouseSavedQueriesAncestorRequest>;
-
 /** Ids of the saved queries and warehouse tables this query reads from, directly or through other queries, and the names of the PostHog tables among them. */
 export type SavedQueryAncestorsAncestorsList = Array<string>;
-const SavedQueryAncestorsAncestorsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SavedQueryAncestorsAncestorsList>;
-
 export interface SavedQueryAncestors {
   /** Ids of the saved queries and warehouse tables this query reads from, directly or through other queries, and the names of the PostHog tables among them. */
   ancestors: SavedQueryAncestorsAncestorsList;
 }
-const SavedQueryAncestors = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SavedQueryAncestors>;
-
 /** Output columns that identify a row. Must include every GROUP BY column. */
 export type CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList = Array<string>;
-const CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList>;
-
 export interface CreateWarehouseSavedQueriesCheckIncrementalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -81,38 +66,16 @@ export interface CreateWarehouseSavedQueriesCheckIncrementalRequest {
   /** How far back before the watermark to re-read each run, to pick up late-arriving data. */
   lookback_seconds?: number;
 }
-const CreateWarehouseSavedQueriesCheckIncrementalRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateWarehouseSavedQueriesCheckIncrementalRequest>;
-
 /** Output columns that could be used as the incremental key. Excludes aggregates, columns whose type cannot serve as an advancing watermark (strings, booleans, arrays), and for a union only includes columns every branch produces. */
 export type IncrementalEligibilityKeyCandidatesList = Array<string>;
-const IncrementalEligibilityKeyCandidatesList =
-  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityKeyCandidatesList>;
-
 /** Output columns the unique key may be built from. A superset of key_candidates: identifying a row only needs equality, so strings qualify here even though they cannot be the incremental key. */
 export type IncrementalEligibilityUniqueKeyCandidatesList = Array<string>;
-const IncrementalEligibilityUniqueKeyCandidatesList =
-  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityUniqueKeyCandidatesList>;
-
 /** Coarse type per candidate, keyed by column name: datetime, date, integer, decimal, float, string, or uuid. A candidate with no entry has a type the check could not determine. */
 export type IncrementalEligibilityKeyCandidateTypesMap = { [key: string]: string | undefined };
-const IncrementalEligibilityKeyCandidateTypesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IncrementalEligibilityKeyCandidateTypesMap>;
-
 /** Reasons this query cannot be incremental. Each names the construct responsible. */
 export type IncrementalEligibilityBlockersList = Array<string>;
-const IncrementalEligibilityBlockersList =
-  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityBlockersList>;
-
 /** Things that still work but are worth knowing, such as a filter that cannot be pushed down so each run reads as much data as a full refresh. */
 export type IncrementalEligibilityWarningsList = Array<string>;
-const IncrementalEligibilityWarningsList =
-  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityWarningsList>;
-
 /** Whether a query can be materialized incrementally, and what stands in the way. */
 export interface IncrementalEligibility {
   /** True when nothing blocks incremental materialization. */
@@ -128,11 +91,6 @@ export interface IncrementalEligibility {
   /** Things that still work but are worth knowing, such as a filter that cannot be pushed down so each run reads as much data as a full refresh. */
   warnings: IncrementalEligibilityWarningsList;
 }
-const IncrementalEligibility = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IncrementalEligibility>;
-
 export interface CreateWarehouseSavedQueriesDescendantRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -141,25 +99,12 @@ export interface CreateWarehouseSavedQueriesDescendantRequest {
   /** How many hops to walk, so 1 gives the immediate neighbours. Omit to walk the whole cone. */
   level?: number | null;
 }
-const CreateWarehouseSavedQueriesDescendantRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateWarehouseSavedQueriesDescendantRequest>;
-
 /** Ids of the saved queries that read from this query, directly or through other queries. */
 export type SavedQueryDescendantsDescendantsList = Array<string>;
-const SavedQueryDescendantsDescendantsList =
-  SavedQueryAncestorsAncestorsList as any as S.Schema<SavedQueryDescendantsDescendantsList>;
-
 export interface SavedQueryDescendants {
   /** Ids of the saved queries that read from this query, directly or through other queries. */
   descendants: SavedQueryDescendantsDescendantsList;
 }
-const SavedQueryDescendants = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<SavedQueryDescendants>;
-
 /** * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
 export type MaterializeSyncFrequencyEnum =
   | "15min"
@@ -170,8 +115,6 @@ export type MaterializeSyncFrequencyEnum =
   | "24hour"
   | "7day"
   | "30day";
-const MaterializeSyncFrequencyEnum = S.String;
-
 export interface CreateWarehouseSavedQueriesMaterializeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -180,35 +123,15 @@ export interface CreateWarehouseSavedQueriesMaterializeRequest {
   /** How often to refresh the materialized table, defaulting to daily. Rejected with a 400 when it falls outside what the query's lineage allows: no more often than its sources deliver new data, and no less often than a downstream view or endpoint needs. * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
   sync_frequency?: MaterializeSyncFrequencyEnum | (string & {});
 }
-const CreateWarehouseSavedQueriesMaterializeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeRequest>;
-
 export interface CreateWarehouseSavedQueriesMaterializeResponse {}
-const CreateWarehouseSavedQueriesMaterializeResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeResponse>;
-
 export type CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind = "HogQLQuery";
-const CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind = S.String;
-
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface CreateWarehouseSavedQueriesRevertMaterializationRequestQuery {
   kind?: CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind | (string & {});
   query: string;
 }
-const CreateWarehouseSavedQueriesRevertMaterializationRequestQuery = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateWarehouseSavedQueriesRevertMaterializationRequestQuery>;
-
 /** Output columns that identify a row, used to match recomputed rows against stored ones. Must include every GROUP BY column. These columns can never be null. */
 export type IncrementalConfigUniqueKeyList = Array<string>;
-const IncrementalConfigUniqueKeyList =
-  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalConfigUniqueKeyList>;
-
 /** How a view updates its materialized table in place rather than rebuilding it. */
 export interface IncrementalConfig {
   /** Whether runs update the table incrementally instead of rebuilding it. */
@@ -220,8 +143,6 @@ export interface IncrementalConfig {
   /** How far back before the last run's high point to re-read, so late-arriving data is picked up. Only applies when the incremental key is a date or time. */
   lookback_seconds?: number;
 }
-const IncrementalConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<IncrementalConfig>;
-
 /** * `never` - never * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
 export type SavedQuerySyncFrequencyEnum =
   | "never"
@@ -233,8 +154,6 @@ export type SavedQuerySyncFrequencyEnum =
   | "24hour"
   | "7day"
   | "30day";
-const SavedQuerySyncFrequencyEnum = S.String;
-
 export interface CreateWarehouseSavedQueriesRevertMaterializationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -261,28 +180,14 @@ export interface CreateWarehouseSavedQueriesRevertMaterializationRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-const CreateWarehouseSavedQueriesRevertMaterializationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateWarehouseSavedQueriesRevertMaterializationRequest>;
-
 export type DataWarehouseSavedQueryOutputQueryKind = "HogQLQuery";
-const DataWarehouseSavedQueryOutputQueryKind = S.String;
-
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface DataWarehouseSavedQueryOutputQuery {
   kind?: DataWarehouseSavedQueryOutputQueryKind;
   query: string;
 }
-const DataWarehouseSavedQueryOutputQuery = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DataWarehouseSavedQueryOutputQuery>;
-
 /** * `incremental` - incremental * `full_refresh` - full_refresh */
 export type LastRunModeEnum = "incremental" | "full_refresh";
-const LastRunModeEnum = S.String;
-
 /** Read-only progress written by the materialization run. */
 export interface IncrementalState {
   /** Highest incremental key value written so far. The next run starts here. */
@@ -294,14 +199,7 @@ export interface IncrementalState {
   /** Whether the last run updated the table or rebuilt it. * `incremental` - incremental * `full_refresh` - full_refresh */
   last_run_mode?: LastRunModeEnum | null;
 }
-const IncrementalState = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IncrementalState>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -315,8 +213,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -328,16 +224,10 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UserBasic>;
-
 /** * `tiered` - tiered * `managed_viewset` - managed_viewset * `no_node` - no_node */
 export type FrequencyModeEnum = "tiered" | "managed_viewset" | "no_node";
-const FrequencyModeEnum = S.String;
-
 /** * `source` - source * `consumer` - consumer */
 export type SyncFrequencyBlockedByEnum = "source" | "consumer";
-const SyncFrequencyBlockedByEnum = S.String;
-
 /** The node holding a cadence back, named so a refusal points at something a person can open. */
 export interface SyncFrequencyBlocker {
   /** Data modeling node ID of the source or view. */
@@ -345,8 +235,6 @@ export interface SyncFrequencyBlocker {
   /** Node name, as it appears in the data modeling graph. */
   name: string;
 }
-const SyncFrequencyBlocker = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SyncFrequencyBlocker>;
-
 export interface SyncFrequencyOption {
   /** A `sync_frequency` value. * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
   cadence: MaterializeSyncFrequencyEnum;
@@ -357,30 +245,16 @@ export interface SyncFrequencyOption {
   /** The source or consumer named in `blocked_by`. Null when allowed, and also when the blocker sits outside the caller's access grants, where `blocked_by` still gives the direction. */
   blocker: SyncFrequencyBlocker | null;
 }
-const SyncFrequencyOption = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SyncFrequencyOption>;
-
 /** Every cadence a picker may show, coarsest-last, each marked allowed or blocked with its cause. Empty outside 'tiered' mode. */
 export type SyncFrequencyBoundsOptionsList = Array<SyncFrequencyOption>;
-const SyncFrequencyBoundsOptionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SyncFrequencyBoundsOptionsList>;
-
 export interface SyncFrequencyBound {
   /** The bounding cadence in plain English, for example '6 hours'. Matches the wording used in the error raised when an out-of-bounds cadence is written. Prose rather than a `sync_frequency` value because a source can deliver on a cadence no `sync_frequency` names. */
   label: string;
   /** Node that set this bound. Null when nothing identifiable set it, and also when it sits outside the caller's access grants: the bound still applies, it just goes unnamed. */
   blocker: SyncFrequencyBlocker | null;
 }
-const SyncFrequencyBound = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SyncFrequencyBound>;
-
 /** Upstream sources with no sync schedule, so the floor is a guess: these arrive when someone runs them, and refreshing more often than they really sync will serve stale data. Only sources the caller may read are listed. */
 export type SyncFrequencyBoundsBestEffortSourcesList = Array<SyncFrequencyBlocker>;
-const SyncFrequencyBoundsBestEffortSourcesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<SyncFrequencyBoundsBestEffortSourcesList>;
-
 export interface SyncFrequencyBounds {
   /** What governs this view's cadence. 'tiered' is the only mode where `options` is meaningful and `sync_frequency` is writable per view. 'managed_viewset' means PostHog owns the view, and 'no_node' means the view has no data modeling node to store a cadence on. * `tiered` - tiered * `managed_viewset` - managed_viewset * `no_node` - no_node */
   frequency_mode: FrequencyModeEnum;
@@ -395,19 +269,9 @@ export interface SyncFrequencyBounds {
   /** True when at least one such source sits outside the caller's access grants, so the list above is incomplete and the caveat still applies. */
   best_effort_sources_withheld: boolean;
 }
-const SyncFrequencyBounds = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SyncFrequencyBounds>;
-
 export type DataWarehouseSavedQueryOutputColumnsItemMap = { [key: string]: unknown | undefined };
-const DataWarehouseSavedQueryOutputColumnsItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DataWarehouseSavedQueryOutputColumnsItemMap>;
-
 export type DataWarehouseSavedQueryOutputColumnsList =
   Array<DataWarehouseSavedQueryOutputColumnsItemMap>;
-const DataWarehouseSavedQueryOutputColumnsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DataWarehouseSavedQueryOutputColumnsList>;
-
 /** * `Cancelled` - Cancelled * `Modified` - Modified * `Completed` - Completed * `Failed` - Failed * `Running` - Running * `Skipped` - Skipped */
 export type DataWarehouseSavedQueryStatusEnum =
   | "Cancelled"
@@ -416,12 +280,8 @@ export type DataWarehouseSavedQueryStatusEnum =
   | "Failed"
   | "Running"
   | "Skipped";
-const DataWarehouseSavedQueryStatusEnum = S.String;
-
 /** * `data_warehouse` - Data Warehouse * `endpoint` - Endpoint * `managed_viewset` - Managed Viewset */
 export type DataWarehouseSavedQueryOriginEnum = "data_warehouse" | "endpoint" | "managed_viewset";
-const DataWarehouseSavedQueryOriginEnum = S.String;
-
 export interface SavedQuerySuspension {
   /** When materialization was suspended. */
   at: string;
@@ -430,17 +290,10 @@ export interface SavedQuerySuspension {
   /** Materialization job that tripped suspension. */
   job_id: string;
 }
-const SavedQuerySuspension = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SavedQuerySuspension>;
-
 /** Engines this query's materialization is suspended for after repeated failures. Suspended engines are skipped by scheduled runs until the query is resumed. */
 export type DataWarehouseSavedQueryOutputSuspendedMap = {
   [key: string]: SavedQuerySuspension | undefined;
 };
-const DataWarehouseSavedQueryOutputSuspendedMap = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DataWarehouseSavedQueryOutputSuspendedMap>;
-
 /** Shared methods for DataWarehouseSavedQuery serializers. This mixin is intended to be used with serializers.ModelSerializer subclasses. */
 export interface DataWarehouseSavedQueryOutput {
   id?: string;
@@ -487,11 +340,6 @@ export interface DataWarehouseSavedQueryOutput {
   /** Engines this query's materialization is suspended for after repeated failures. Suspended engines are skipped by scheduled runs until the query is resumed. */
   suspended?: DataWarehouseSavedQueryOutputSuspendedMap;
 }
-const DataWarehouseSavedQueryOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DataWarehouseSavedQueryOutput>;
-
 export interface CreateWarehouseSavedQueriesRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -500,24 +348,13 @@ export interface CreateWarehouseSavedQueriesRunRequest {
   /** Rebuild the whole table instead of updating it incrementally. Has no effect on a view that is not incremental. This is how you reprocess history after changing what the query means without changing its text, or after upstream data was corrected. */
   full_refresh?: boolean;
 }
-const CreateWarehouseSavedQueriesRunRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateWarehouseSavedQueriesRunRequest>;
-
 export interface CreateWarehouseSavedQueriesRunResponse {}
-const CreateWarehouseSavedQueriesRunResponse =
-  CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<CreateWarehouseSavedQueriesRunResponse>;
-
 export type CreateWarehouseSavedQueryRequestQueryKind = "HogQLQuery";
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface CreateWarehouseSavedQueryRequestQuery {
   kind?: CreateWarehouseSavedQueryRequestQueryKind | (string & {});
   query: string;
 }
-const CreateWarehouseSavedQueryRequestQuery =
-  DataWarehouseSavedQueryOutputQuery as any as S.Schema<CreateWarehouseSavedQueryRequestQuery>;
-
 export interface CreateWarehouseSavedQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -542,66 +379,36 @@ export interface CreateWarehouseSavedQueryRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-const CreateWarehouseSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateWarehouseSavedQueryRequest>;
-
 export interface GetWarehouseSavedQueriesActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-const GetWarehouseSavedQueriesActivityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetWarehouseSavedQueriesActivityRequest>;
-
 export interface GetWarehouseSavedQueriesDependencyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-const GetWarehouseSavedQueriesDependencyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetWarehouseSavedQueriesDependencyRequest>;
-
 export interface SavedQueryDependencies {
   /** How many tables and queries this query reads from directly. */
   upstream_count: number;
   /** How many queries read from this query directly. */
   downstream_count: number;
 }
-const SavedQueryDependencies = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<SavedQueryDependencies>;
-
 export interface GetWarehouseSavedQueriesRunHistoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-const GetWarehouseSavedQueriesRunHistoryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetWarehouseSavedQueriesRunHistoryRequest>;
-
 export interface GetWarehouseSavedQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-const GetWarehouseSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetWarehouseSavedQueryRequest>;
-
 export interface ListWarehouseSavedQueriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -612,17 +419,9 @@ export interface ListWarehouseSavedQueriesRequest {
   /** A search term. */
   search?: string;
 }
-const ListWarehouseSavedQueriesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListWarehouseSavedQueriesRequest>;
-
 export type DataWarehouseSavedQueryMinimalColumnsItemMap = { [key: string]: unknown | undefined };
 export type DataWarehouseSavedQueryMinimalColumnsList =
   Array<DataWarehouseSavedQueryMinimalColumnsItemMap>;
-const DataWarehouseSavedQueryMinimalColumnsList =
-  DataWarehouseSavedQueryOutputColumnsList as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsList>;
-
 /** Lightweight serializer for list views - excludes large query field to reduce memory usage. */
 export interface DataWarehouseSavedQueryMinimal {
   id?: string;
@@ -652,38 +451,20 @@ export interface DataWarehouseSavedQueryMinimal {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-const DataWarehouseSavedQueryMinimal = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DataWarehouseSavedQueryMinimal>;
-
 export type PaginatedDataWarehouseSavedQueryMinimalListResultsList =
   Array<DataWarehouseSavedQueryMinimal>;
-const PaginatedDataWarehouseSavedQueryMinimalListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalListResultsList>;
-
 export interface PaginatedDataWarehouseSavedQueryMinimalList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedDataWarehouseSavedQueryMinimalListResultsList;
 }
-const PaginatedDataWarehouseSavedQueryMinimalList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalList>;
-
 export type UpdateWarehouseSavedQueriesPartialRequestQueryKind = "HogQLQuery";
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface UpdateWarehouseSavedQueriesPartialRequestQuery {
   kind?: UpdateWarehouseSavedQueriesPartialRequestQueryKind | (string & {});
   query: string;
 }
-const UpdateWarehouseSavedQueriesPartialRequestQuery =
-  DataWarehouseSavedQueryOutputQuery as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequestQuery>;
-
 export interface UpdateWarehouseSavedQueriesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -710,20 +491,12 @@ export interface UpdateWarehouseSavedQueriesPartialRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-const UpdateWarehouseSavedQueriesPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequest>;
-
 export type UpdateWarehouseSavedQueryRequestQueryKind = "HogQLQuery";
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface UpdateWarehouseSavedQueryRequestQuery {
   kind?: UpdateWarehouseSavedQueryRequestQueryKind | (string & {});
   query: string;
 }
-const UpdateWarehouseSavedQueryRequestQuery =
-  DataWarehouseSavedQueryOutputQuery as any as S.Schema<UpdateWarehouseSavedQueryRequestQuery>;
-
 export interface UpdateWarehouseSavedQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -750,20 +523,12 @@ export interface UpdateWarehouseSavedQueryRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-const UpdateWarehouseSavedQueryRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UpdateWarehouseSavedQueryRequest>;
-
 export type WarehouseSavedQueriesCancelCreateRequestQueryKind = "HogQLQuery";
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface WarehouseSavedQueriesCancelCreateRequestQuery {
   kind?: WarehouseSavedQueriesCancelCreateRequestQueryKind | (string & {});
   query: string;
 }
-const WarehouseSavedQueriesCancelCreateRequestQuery =
-  DataWarehouseSavedQueryOutputQuery as any as S.Schema<WarehouseSavedQueriesCancelCreateRequestQuery>;
-
 export interface WarehouseSavedQueriesCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -790,63 +555,32 @@ export interface WarehouseSavedQueriesCancelCreateRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-const WarehouseSavedQueriesCancelCreateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<WarehouseSavedQueriesCancelCreateRequest>;
-
 export interface WarehouseSavedQueriesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-const WarehouseSavedQueriesDestroyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<WarehouseSavedQueriesDestroyRequest>;
-
 export interface WarehouseSavedQueriesDestroyResponse {}
-const WarehouseSavedQueriesDestroyResponse =
-  CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<WarehouseSavedQueriesDestroyResponse>;
-
 export interface WarehouseSavedQueriesResumeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-const WarehouseSavedQueriesResumeCreateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<WarehouseSavedQueriesResumeCreateRequest>;
-
 export interface SavedQueryResume {
   /** False when the query's materialization was not suspended. */
   resumed: boolean;
 }
-const SavedQueryResume = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SavedQueryResume>;
-
 /** Ids of the saved queries to resume. An id is ignored when it is not in this project, has been deleted, or you cannot edit it. */
 export type WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList = Array<string>;
-const WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList =
-  SavedQueryAncestorsAncestorsList as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList>;
-
 export interface WarehouseSavedQueriesResumeSchedulesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Ids of the saved queries to resume. An id is ignored when it is not in this project, has been deleted, or you cannot edit it. */
   view_ids: WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList;
 }
-const WarehouseSavedQueriesResumeSchedulesCreateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequest>;
-
 export interface WarehouseSavedQueriesResumeSchedulesCreateResponse {}
-const WarehouseSavedQueriesResumeSchedulesCreateResponse =
-  CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateResponse>;
-
 export type CreateWarehouseSavedQueriesAncestorError =
   | BadRequest
   | Forbidden
@@ -859,8 +593,8 @@ export const createWarehouseSavedQueriesAncestor: API.OperationMethod<
   CreateWarehouseSavedQueriesAncestorError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWarehouseSavedQueriesAncestorRequest,
-  output: SavedQueryAncestors,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWarehouseSavedQueriesAncestorRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<SavedQueryAncestors>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -874,8 +608,8 @@ export const createWarehouseSavedQueriesCheckIncremental: API.OperationMethod<
   CreateWarehouseSavedQueriesCheckIncrementalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWarehouseSavedQueriesCheckIncrementalRequest,
-  output: IncrementalEligibility,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateWarehouseSavedQueriesCheckIncrementalRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<IncrementalEligibility>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -893,8 +627,8 @@ export const createWarehouseSavedQueriesDescendant: API.OperationMethod<
   CreateWarehouseSavedQueriesDescendantError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWarehouseSavedQueriesDescendantRequest,
-  output: SavedQueryDescendants,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateWarehouseSavedQueriesDescendantRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SavedQueryDescendants>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -912,8 +646,8 @@ export const createWarehouseSavedQueriesMaterialize: API.OperationMethod<
   CreateWarehouseSavedQueriesMaterializeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWarehouseSavedQueriesMaterializeRequest,
-  output: CreateWarehouseSavedQueriesMaterializeResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -931,8 +665,12 @@ export const createWarehouseSavedQueriesRevertMaterialization: API.OperationMeth
   CreateWarehouseSavedQueriesRevertMaterializationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWarehouseSavedQueriesRevertMaterializationRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(
+    13,
+    __c1,
+    5,
+  ) as any as S.Schema<CreateWarehouseSavedQueriesRevertMaterializationRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -950,8 +688,8 @@ export const createWarehouseSavedQueriesRun: API.OperationMethod<
   CreateWarehouseSavedQueriesRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWarehouseSavedQueriesRunRequest,
-  output: CreateWarehouseSavedQueriesRunResponse,
+  input: __S(28, __c3, 4) as any as S.Schema<CreateWarehouseSavedQueriesRunRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateWarehouseSavedQueriesRunResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -965,8 +703,8 @@ export const createWarehouseSavedQuery: API.OperationMethod<
   CreateWarehouseSavedQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWarehouseSavedQueryRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(29, __c3, 5) as any as S.Schema<CreateWarehouseSavedQueryRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -980,8 +718,8 @@ export const getWarehouseSavedQueriesActivity: API.OperationMethod<
   GetWarehouseSavedQueriesActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWarehouseSavedQueriesActivityRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(30, __c3, 6) as any as S.Schema<GetWarehouseSavedQueriesActivityRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -995,8 +733,8 @@ export const getWarehouseSavedQueriesDependency: API.OperationMethod<
   GetWarehouseSavedQueriesDependencyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWarehouseSavedQueriesDependencyRequest,
-  output: SavedQueryDependencies,
+  input: __S(31, __c3, 7) as any as S.Schema<GetWarehouseSavedQueriesDependencyRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SavedQueryDependencies>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1010,8 +748,8 @@ export const getWarehouseSavedQueriesRunHistory: API.OperationMethod<
   GetWarehouseSavedQueriesRunHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWarehouseSavedQueriesRunHistoryRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(33, __c4, 1) as any as S.Schema<GetWarehouseSavedQueriesRunHistoryRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1025,8 +763,8 @@ export const getWarehouseSavedQuery: API.OperationMethod<
   GetWarehouseSavedQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWarehouseSavedQueryRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(34, __c4, 2) as any as S.Schema<GetWarehouseSavedQueryRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1040,8 +778,8 @@ export const listWarehouseSavedQueries: API.OperationMethod<
   ListWarehouseSavedQueriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWarehouseSavedQueriesRequest,
-  output: PaginatedDataWarehouseSavedQueryMinimalList,
+  input: __S(35, __c4, 3) as any as S.Schema<ListWarehouseSavedQueriesRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1059,8 +797,8 @@ export const updateWarehouseSavedQueriesPartial: API.OperationMethod<
   UpdateWarehouseSavedQueriesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWarehouseSavedQueriesPartialRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(39, __c4, 7) as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1074,8 +812,8 @@ export const updateWarehouseSavedQuery: API.OperationMethod<
   UpdateWarehouseSavedQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWarehouseSavedQueryRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateWarehouseSavedQueryRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1093,8 +831,8 @@ export const warehouseSavedQueriesCancelCreate: API.OperationMethod<
   WarehouseSavedQueriesCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseSavedQueriesCancelCreateRequest,
-  output: DataWarehouseSavedQueryOutput,
+  input: __S(41, __c5, 1) as any as S.Schema<WarehouseSavedQueriesCancelCreateRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1108,8 +846,8 @@ export const warehouseSavedQueriesDestroy: API.OperationMethod<
   WarehouseSavedQueriesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseSavedQueriesDestroyRequest,
-  output: WarehouseSavedQueriesDestroyResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<WarehouseSavedQueriesDestroyRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<WarehouseSavedQueriesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1123,8 +861,8 @@ export const warehouseSavedQueriesResumeCreate: API.OperationMethod<
   WarehouseSavedQueriesResumeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseSavedQueriesResumeCreateRequest,
-  output: SavedQueryResume,
+  input: __S(43, __c5, 3) as any as S.Schema<WarehouseSavedQueriesResumeCreateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<SavedQueryResume>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1142,8 +880,8 @@ export const warehouseSavedQueriesResumeSchedulesCreate: API.OperationMethod<
   WarehouseSavedQueriesResumeSchedulesCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseSavedQueriesResumeSchedulesCreateRequest,
-  output: WarehouseSavedQueriesResumeSchedulesCreateResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1173,7 +911,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ancestors: SavedQueryAncestorsAncestorsList,
+          ancestors: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "SavedQueryAncestors" });
     case 3:
@@ -1184,9 +922,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           query: S.String,
           incremental_key: S.optional(S.NullOr(S.String)),
-          unique_key: S.optional(
-            S.NullOr(CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList),
-          ),
+          unique_key: S.optional(S.NullOr(__S(3, __c0, 3))),
           lookback_seconds: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -1204,11 +940,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eligible: S.Boolean,
-          key_candidates: IncrementalEligibilityKeyCandidatesList,
-          unique_key_candidates: IncrementalEligibilityUniqueKeyCandidatesList,
-          key_candidate_types: IncrementalEligibilityKeyCandidateTypesMap,
-          blockers: IncrementalEligibilityBlockersList,
-          warnings: IncrementalEligibilityWarningsList,
+          key_candidates: __S(1, __c0, 1),
+          unique_key_candidates: __S(1, __c0, 1),
+          key_candidate_types: __S(5, __c0, 5),
+          blockers: __S(1, __c0, 1),
+          warnings: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "IncrementalEligibility" });
     case 7:
@@ -1234,7 +970,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          descendants: SavedQueryDescendantsDescendantsList,
+          descendants: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "SavedQueryDescendants" });
     case 1:
@@ -1242,7 +978,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          sync_frequency: S.optional(MaterializeSyncFrequencyEnum),
+          sync_frequency: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1260,7 +996,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind),
+          kind: S.optional(S.String),
           query: S.String,
         }),
       ).annotate({
@@ -1271,7 +1007,7 @@ function __c1(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           incremental_key: S.String,
-          unique_key: IncrementalConfigUniqueKeyList,
+          unique_key: __S(1, __c0, 1),
           lookback_seconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IncrementalConfig" });
@@ -1281,10 +1017,10 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(CreateWarehouseSavedQueriesRevertMaterializationRequestQuery),
-          incremental: S.optional(S.NullOr(IncrementalConfig)),
+          query: S.optional(__S(11, __c1, 3)),
+          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
           description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(SavedQuerySyncFrequencyEnum)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
           edited_history_id: S.optional(S.NullOr(S.String)),
           soft_update: S.optional(S.NullOr(S.Boolean)),
@@ -1303,7 +1039,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(DataWarehouseSavedQueryOutputQueryKind),
+          kind: S.optional(S.String),
           query: S.String,
         }),
       ).annotate({
@@ -1315,7 +1051,7 @@ function __c1(j: number): any {
           watermark: S.optional(S.NullOr(S.String)),
           definition_fingerprint: S.optional(S.NullOr(S.String)),
           last_full_refresh_at: S.optional(S.NullOr(S.String)),
-          last_run_mode: S.optional(S.NullOr(LastRunModeEnum)),
+          last_run_mode: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IncrementalState" });
   }
@@ -1334,8 +1070,8 @@ function __c2(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(16, __c2, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 2:
@@ -1348,31 +1084,31 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cadence: MaterializeSyncFrequencyEnum,
+          cadence: S.String,
           allowed: S.Boolean,
-          blocked_by: S.NullOr(SyncFrequencyBlockedByEnum),
-          blocker: S.NullOr(SyncFrequencyBlocker),
+          blocked_by: S.NullOr(S.String),
+          blocker: S.NullOr(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "SyncFrequencyOption" });
     case 4:
-      return S.Array(SyncFrequencyOption);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
-          blocker: S.NullOr(SyncFrequencyBlocker),
+          blocker: S.NullOr(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "SyncFrequencyBound" });
     case 6:
-      return S.Array(SyncFrequencyBlocker);
+      return S.Array(__S(18, __c2, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          frequency_mode: FrequencyModeEnum,
-          options: SyncFrequencyBoundsOptionsList,
-          floor: S.NullOr(SyncFrequencyBound),
-          ceiling: S.NullOr(SyncFrequencyBound),
-          best_effort_sources: SyncFrequencyBoundsBestEffortSourcesList,
+          frequency_mode: S.String,
+          options: __S(20, __c2, 4),
+          floor: S.NullOr(__S(21, __c2, 5)),
+          ceiling: S.NullOr(__S(21, __c2, 5)),
+          best_effort_sources: __S(22, __c2, 6),
           best_effort_sources_withheld: S.Boolean,
         }),
       ).annotate({ identifier: "SyncFrequencyBounds" });
@@ -1381,7 +1117,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataWarehouseSavedQueryOutputColumnsItemMap);
+      return S.Array(__S(16, __c2, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1391,25 +1127,25 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "SavedQuerySuspension" });
     case 2:
-      return S.Record(S.String, SavedQuerySuspension);
+      return S.Record(S.String, __S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          query: S.optional(DataWarehouseSavedQueryOutputQuery),
-          incremental: S.optional(S.NullOr(IncrementalConfig)),
-          incremental_state: S.optional(S.NullOr(IncrementalState)),
+          query: S.optional(__S(14, __c1, 6)),
+          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
+          incremental_state: S.optional(S.NullOr(__S(15, __c1, 7))),
           has_incremental_history: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(17, __c2, 1))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(SavedQuerySyncFrequencyEnum)),
-          sync_frequency_bounds: S.optional(SyncFrequencyBounds),
-          columns: S.optional(DataWarehouseSavedQueryOutputColumnsList),
-          status: S.optional(S.NullOr(DataWarehouseSavedQueryStatusEnum)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
+          sync_frequency_bounds: S.optional(__S(23, __c2, 7)),
+          columns: S.optional(__S(24, __c3, 0)),
+          status: S.optional(S.NullOr(S.String)),
           last_run_at: S.optional(S.NullOr(S.String)),
           managed_viewset_kind: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
@@ -1417,11 +1153,11 @@ function __c3(j: number): any {
           latest_error: S.optional(S.NullOr(S.String)),
           latest_history_id: S.optional(S.NullOr(S.String)),
           is_materialized: S.optional(S.NullOr(S.Boolean)),
-          origin: S.optional(S.NullOr(DataWarehouseSavedQueryOriginEnum)),
+          origin: S.optional(S.NullOr(S.String)),
           is_test: S.optional(S.Boolean),
           expires_at: S.optional(S.NullOr(S.String)),
           user_access_level: S.optional(S.NullOr(S.String)),
-          suspended: S.optional(DataWarehouseSavedQueryOutputSuspendedMap),
+          suspended: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "DataWarehouseSavedQueryOutput",
@@ -1447,10 +1183,10 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(CreateWarehouseSavedQueryRequestQuery),
-          incremental: S.optional(S.NullOr(IncrementalConfig)),
+          query: S.optional(__S(14, __c1, 6)),
+          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
           description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(SavedQuerySyncFrequencyEnum)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
           edited_history_id: S.optional(S.NullOr(S.String)),
           soft_update: S.optional(S.NullOr(S.Boolean)),
@@ -1560,12 +1296,12 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(17, __c2, 1))),
           created_at: S.optional(S.String),
           description: S.optional(S.String),
           sync_frequency: S.optional(S.NullOr(S.String)),
-          columns: S.optional(DataWarehouseSavedQueryMinimalColumnsList),
-          status: S.optional(S.NullOr(DataWarehouseSavedQueryStatusEnum)),
+          columns: S.optional(__S(24, __c3, 0)),
+          status: S.optional(S.NullOr(S.String)),
           last_run_at: S.optional(S.NullOr(S.String)),
           managed_viewset_kind: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
@@ -1573,7 +1309,7 @@ function __c4(j: number): any {
           latest_error: S.optional(S.NullOr(S.String)),
           is_materialized: S.optional(S.NullOr(S.Boolean)),
           is_incremental: S.optional(S.Boolean),
-          origin: S.optional(S.NullOr(DataWarehouseSavedQueryOriginEnum)),
+          origin: S.optional(S.NullOr(S.String)),
           is_test: S.optional(S.Boolean),
           expires_at: S.optional(S.NullOr(S.String)),
           user_access_level: S.optional(S.NullOr(S.String)),
@@ -1582,14 +1318,14 @@ function __c4(j: number): any {
         identifier: "DataWarehouseSavedQueryMinimal",
       });
     case 5:
-      return S.Array(DataWarehouseSavedQueryMinimal);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedDataWarehouseSavedQueryMinimalListResultsList),
+          results: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({
         identifier: "PaginatedDataWarehouseSavedQueryMinimalList",
@@ -1600,10 +1336,10 @@ function __c4(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(UpdateWarehouseSavedQueriesPartialRequestQuery),
-          incremental: S.optional(S.NullOr(IncrementalConfig)),
+          query: S.optional(__S(14, __c1, 6)),
+          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
           description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(SavedQuerySyncFrequencyEnum)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
           edited_history_id: S.optional(S.NullOr(S.String)),
           soft_update: S.optional(S.NullOr(S.Boolean)),
@@ -1629,10 +1365,10 @@ function __c5(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(UpdateWarehouseSavedQueryRequestQuery),
-          incremental: S.optional(S.NullOr(IncrementalConfig)),
+          query: S.optional(__S(14, __c1, 6)),
+          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
           description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(SavedQuerySyncFrequencyEnum)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
           edited_history_id: S.optional(S.NullOr(S.String)),
           soft_update: S.optional(S.NullOr(S.Boolean)),
@@ -1654,10 +1390,10 @@ function __c5(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(WarehouseSavedQueriesCancelCreateRequestQuery),
-          incremental: S.optional(S.NullOr(IncrementalConfig)),
+          query: S.optional(__S(14, __c1, 6)),
+          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
           description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(SavedQuerySyncFrequencyEnum)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
           edited_history_id: S.optional(S.NullOr(S.String)),
           soft_update: S.optional(S.NullOr(S.Boolean)),
@@ -1713,7 +1449,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          view_ids: WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList,
+          view_ids: __S(1, __c0, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1725,4 +1461,9 @@ function __c5(j: number): any {
         identifier: "WarehouseSavedQueriesResumeSchedulesCreateRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

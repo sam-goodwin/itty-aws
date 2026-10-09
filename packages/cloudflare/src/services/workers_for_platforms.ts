@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -269,24 +271,12 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSe
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue =
   | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText
   | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey;
-const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue = /*@__PURE__*/ __L.at(__c0, 0);
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap = {
   [key: string]: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue | undefined;
 };
-const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap>;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap = {
   [key: string]: unknown | undefined;
 };
-const DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap>;
-
 export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
   /** Identifier. */
   accountId: string;
@@ -299,11 +289,6 @@ export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
   /** Optional version tags to apply to the new script version. */
   versionTags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap;
 }
-const BulkUpdateDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsRequest>;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretTextType = "secret_text";
 export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText {
   /** A JavaScript variable name for the binding. */
@@ -349,34 +334,17 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey 
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValue =
   | DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText
   | DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey;
-const DispatchNamespacesScriptsSecretsBulkUpdateResultValue = /*@__PURE__*/ __L.at(__c0, 4);
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultMap = {
   [key: string]: DispatchNamespacesScriptsSecretsBulkUpdateResultValue | undefined;
 };
-const DispatchNamespacesScriptsSecretsBulkUpdateResultMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultMap>;
-
 export type BulkUpdateDispatchNamespaceScriptSecretsResponse =
   DispatchNamespacesScriptsSecretsBulkUpdateResultMap;
-const BulkUpdateDispatchNamespaceScriptSecretsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsResponse>;
-
 export interface CreateDispatchNamespaceRequest {
   /** Identifier. */
   accountId: string;
   /** The name of the dispatch namespace. */
   name?: string;
 }
-const CreateDispatchNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateDispatchNamespaceRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDispatchNamespaceResponse {
   /** Identifier. */
@@ -396,30 +364,15 @@ export interface CreateDispatchNamespaceResponse {
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
   trustedWorkers?: boolean | null;
 }
-const CreateDispatchNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateDispatchNamespaceResponse>;
-
 export interface DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue {
   /** The hash of the file. */
   hash: string;
   /** The size of the file in bytes. */
   size: number;
 }
-const DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue>;
-
 export type DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap = {
   [key: string]: DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue | undefined;
 };
-const DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap>;
-
 export interface CreateDispatchNamespaceScriptAssetUploadRequest {
   /** Identifier. */
   accountId: string;
@@ -430,24 +383,9 @@ export interface CreateDispatchNamespaceScriptAssetUploadRequest {
   /** A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key. */
   manifest: DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap;
 }
-const CreateDispatchNamespaceScriptAssetUploadRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateDispatchNamespaceScriptAssetUploadRequest>;
-
 export type DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList = Array<string>;
-const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList>;
-
 export type DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList =
   Array<DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList>;
-const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDispatchNamespaceScriptAssetUploadResponse {
   /** The requests to make to upload assets. */
@@ -455,28 +393,13 @@ export interface CreateDispatchNamespaceScriptAssetUploadResponse {
   /** A JWT to use as authentication for uploading assets. */
   jwt?: string | null;
 }
-const CreateDispatchNamespaceScriptAssetUploadResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateDispatchNamespaceScriptAssetUploadResponse>;
-
 export interface DeleteDispatchNamespaceRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the Workers for Platforms dispatch namespace. */
   dispatchNamespace: string;
 }
-const DeleteDispatchNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteDispatchNamespaceRequest>;
-
 export type DeleteDispatchNamespaceResponse = unknown;
-const DeleteDispatchNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteDispatchNamespaceResponse>;
-
 export interface DeleteDispatchNamespaceScriptRequest {
   /** Identifier. */
   accountId: string;
@@ -487,15 +410,7 @@ export interface DeleteDispatchNamespaceScriptRequest {
   /** If true, delete the script even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted script are deleted even if other Workers reference them. */
   force?: boolean;
 }
-const DeleteDispatchNamespaceScriptRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteDispatchNamespaceScriptRequest>;
-
 export type DeleteDispatchNamespaceScriptResponse = unknown;
-const DeleteDispatchNamespaceScriptResponse =
-  DeleteDispatchNamespaceResponse as any as S.Schema<DeleteDispatchNamespaceScriptResponse>;
-
 export interface DeleteDispatchNamespaceScriptSecretRequest {
   /** Identifier. */
   accountId: string;
@@ -508,15 +423,7 @@ export interface DeleteDispatchNamespaceScriptSecretRequest {
   /** Flag that indicates whether the secret name is URL encoded. */
   urlEncoded?: boolean;
 }
-const DeleteDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteDispatchNamespaceScriptSecretRequest>;
-
 export type DeleteDispatchNamespaceScriptSecretResponse = unknown;
-const DeleteDispatchNamespaceScriptSecretResponse =
-  DeleteDispatchNamespaceResponse as any as S.Schema<DeleteDispatchNamespaceScriptSecretResponse>;
-
 export interface DeleteDispatchNamespaceScriptTagRequest {
   /** Identifier. */
   accountId: string;
@@ -528,34 +435,14 @@ export interface DeleteDispatchNamespaceScriptTagRequest {
   tag: string;
   apiVersion?: string;
 }
-const DeleteDispatchNamespaceScriptTagRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteDispatchNamespaceScriptTagRequest>;
-
 export type DispatchNamespacesScriptsTagsDeleteResultMap = { [key: string]: string | undefined };
-const DispatchNamespacesScriptsTagsDeleteResultMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsTagsDeleteResultMap>;
-
 export type DeleteDispatchNamespaceScriptTagResponse = DispatchNamespacesScriptsTagsDeleteResultMap;
-const DeleteDispatchNamespaceScriptTagResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteDispatchNamespaceScriptTagResponse>;
-
 export interface GetDispatchNamespaceRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the Workers for Platforms dispatch namespace. */
   dispatchNamespace: string;
 }
-const GetDispatchNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetDispatchNamespaceRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceResponse {
   /** Identifier. */
@@ -575,9 +462,6 @@ export interface GetDispatchNamespaceResponse {
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
   trustedWorkers?: boolean | null;
 }
-const GetDispatchNamespaceResponse =
-  CreateDispatchNamespaceResponse as any as S.Schema<GetDispatchNamespaceResponse>;
-
 export interface GetDispatchNamespaceScriptRequest {
   /** Identifier. */
   accountId: string;
@@ -586,26 +470,13 @@ export interface GetDispatchNamespaceScriptRequest {
   /** Name of the script. */
   scriptName: string;
 }
-const GetDispatchNamespaceScriptRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetDispatchNamespaceScriptRequest>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version uploads. This is independent of `enabled`. It can stay true while caching is off, so the preference survives turning caching off and back on. */
   crossVersionCache?: boolean | null;
 }
-const DispatchNamespacesScriptsGetResponseScriptCacheOptions = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCacheOptions>;
-
 export type DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList = Array<string>;
-const DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerType = "worker";
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache {
   /** Whether caching is enabled for this entrypoint. */
@@ -697,58 +568,25 @@ export type DispatchNamespacesScriptsGetResponseScriptExportsValue =
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport;
-const DispatchNamespacesScriptsGetResponseScriptExportsValue = /*@__PURE__*/ __L.at(__c3, 1);
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsMap = {
   [key: string]: DispatchNamespacesScriptsGetResponseScriptExportsValue | undefined;
 };
-const DispatchNamespacesScriptsGetResponseScriptExportsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsMap>;
-
 export type DispatchNamespacesScriptsGetResponseScriptHandlersList = Array<string>;
-const DispatchNamespacesScriptsGetResponseScriptHandlersList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptHandlersList>;
-
 export type DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList = Array<string>;
-const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
   handlers?: DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList | null;
   /** The name of the export. */
   name?: string | null;
 }
-const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem>;
-
 export type DispatchNamespacesScriptsGetResponseScriptNamedHandlersList =
   Array<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem>;
-const DispatchNamespacesScriptsGetResponseScriptNamedHandlersList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersList>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptObservabilityIssues {
   /** Whether real-time Issues are enabled for the Worker. */
   enabled?: boolean | null;
 }
-const DispatchNamespacesScriptsGetResponseScriptObservabilityIssues = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityIssues>;
-
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -761,21 +599,11 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-const DispatchNamespacesScriptsGetResponseScriptObservabilityLogs = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogs>;
-
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList>;
-
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList | null;
@@ -788,11 +616,6 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy | null;
 }
-const DispatchNamespacesScriptsGetResponseScriptObservabilityTraces = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTraces>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -807,11 +630,6 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsGetResponseScriptObservabilityTraces | null;
 }
-const DispatchNamespacesScriptsGetResponseScriptObservability = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservability>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode = "smart";
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status =
   | "SUCCESS"
@@ -948,21 +766,12 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacement =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase5
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase6
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7;
-const DispatchNamespacesScriptsGetResponseScriptPlacement = /*@__PURE__*/ __L.at(__c4, 2);
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementMode = "smart" | "targeted";
-const DispatchNamespacesScriptsGetResponseScriptPlacementMode = S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-const DispatchNamespacesScriptsGetResponseScriptPlacementStatus = S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptTagsList = Array<string>;
-const DispatchNamespacesScriptsGetResponseScriptTagsList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTagsList>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
   service: string;
@@ -971,24 +780,12 @@ export interface DispatchNamespacesScriptsGetResponseScriptTailConsumersItem {
   /** Optional dispatch namespace the script belongs to. */
   namespace?: string | null;
 }
-const DispatchNamespacesScriptsGetResponseScriptTailConsumersItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-
 export type DispatchNamespacesScriptsGetResponseScriptTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-const DispatchNamespacesScriptsGetResponseScriptTailConsumersList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTailConsumersList>;
-
 export type DispatchNamespacesScriptsGetResponseScriptUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-const DispatchNamespacesScriptsGetResponseScriptUsageModel = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScript {
   /** The name used to identify the script. */
   id?: string | null;
@@ -1037,11 +834,6 @@ export interface DispatchNamespacesScriptsGetResponseScript {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsGetResponseScriptUsageModel | null;
 }
-const DispatchNamespacesScriptsGetResponseScript = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsGetResponseScript>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceScriptResponse {
   /** When the script was created. */
@@ -1052,11 +844,6 @@ export interface GetDispatchNamespaceScriptResponse {
   modifiedOn?: string | null;
   script?: DispatchNamespacesScriptsGetResponseScript | null;
 }
-const GetDispatchNamespaceScriptResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetDispatchNamespaceScriptResponse>;
-
 export interface GetDispatchNamespaceScriptBindingRequest {
   /** Identifier. */
   accountId: string;
@@ -1065,11 +852,6 @@ export interface GetDispatchNamespaceScriptBindingRequest {
   /** Name of the script. */
   scriptName: string;
 }
-const GetDispatchNamespaceScriptBindingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetDispatchNamespaceScriptBindingRequest>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemAIType = "ai";
 export interface DispatchNamespacesScriptsBindingsGetResultItemAI {
   /** A JavaScript variable name for the binding. */
@@ -1544,26 +1326,14 @@ export type DispatchNamespacesScriptsBindingsGetResultItem =
   | DispatchNamespacesScriptsBindingsGetResultItemWasmModule
   | DispatchNamespacesScriptsBindingsGetResultItemVPCService
   | DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork;
-const DispatchNamespacesScriptsBindingsGetResultItem = /*@__PURE__*/ __L.at(__c5, 0);
-
 export type DispatchNamespacesScriptsBindingsGetResultList =
   Array<DispatchNamespacesScriptsBindingsGetResultItem>;
-const DispatchNamespacesScriptsBindingsGetResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultList>;
-
 export interface GetDispatchNamespaceScriptBindingResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DispatchNamespacesScriptsBindingsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetDispatchNamespaceScriptBindingResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetDispatchNamespaceScriptBindingResponse>;
-
 export interface GetDispatchNamespaceScriptContentRequest {
   /** Identifier. */
   accountId: string;
@@ -1572,17 +1342,7 @@ export interface GetDispatchNamespaceScriptContentRequest {
   /** Name of the script. */
   scriptName: string;
 }
-const GetDispatchNamespaceScriptContentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetDispatchNamespaceScriptContentRequest>;
-
 export interface GetDispatchNamespaceScriptContentResponse {}
-const GetDispatchNamespaceScriptContentResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetDispatchNamespaceScriptContentResponse>;
-
 export interface GetDispatchNamespaceScriptSecretRequest {
   /** Identifier. */
   accountId: string;
@@ -1595,11 +1355,6 @@ export interface GetDispatchNamespaceScriptSecretRequest {
   /** Flag that indicates whether the secret name is URL encoded. */
   urlEncoded?: boolean;
 }
-const GetDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetDispatchNamespaceScriptSecretRequest>;
-
 export type DispatchNamespacesScriptsSecretsGetResultSecretTextType = "secret_text";
 export interface DispatchNamespacesScriptsSecretsGetResultSecretText {
   /** A JavaScript variable name for the binding. */
@@ -1624,15 +1379,8 @@ export type DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-const DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem = S.String;
-
 export type DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem>;
-const DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSecretsGetResultSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -1652,14 +1400,7 @@ export interface DispatchNamespacesScriptsSecretsGetResultSecretKey {
 export type DispatchNamespacesScriptsSecretsGetResult =
   | DispatchNamespacesScriptsSecretsGetResultSecretText
   | DispatchNamespacesScriptsSecretsGetResultSecretKey;
-const DispatchNamespacesScriptsSecretsGetResult = /*@__PURE__*/ __L.at(__c5, 7);
-
 export type GetDispatchNamespaceScriptSecretResponse = DispatchNamespacesScriptsSecretsGetResult;
-const GetDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetDispatchNamespaceScriptSecretResponse>;
-
 export interface GetDispatchNamespaceScriptSettingRequest {
   /** Identifier. */
   accountId: string;
@@ -1668,11 +1409,6 @@ export interface GetDispatchNamespaceScriptSettingRequest {
   /** Name of the script. */
   scriptName: string;
 }
-const GetDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetDispatchNamespaceScriptSettingRequest>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType = "ai";
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -2137,21 +1873,11 @@ export type DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork;
-const DispatchNamespacesScriptsSettingsGetResponseBindingsItem = /*@__PURE__*/ __L.at(__c6, 2);
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsList =
   Array<DispatchNamespacesScriptsSettingsGetResponseBindingsItem>;
-const DispatchNamespacesScriptsSettingsGetResponseBindingsList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
 export type DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList = Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerType = "worker";
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
@@ -2241,26 +1967,13 @@ export type DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-const DispatchNamespacesScriptsSettingsGetResponseExportsValue = /*@__PURE__*/ __L.at(__c6, 4);
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsSettingsGetResponseExportsValue | undefined;
 };
-const DispatchNamespacesScriptsSettingsGetResponseExportsMap = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsMap>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -2295,13 +2008,8 @@ export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInf
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -2314,70 +2022,28 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem =
-  /*@__PURE__*/ __L.at(
-    __c6,
-    6,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList =
-  /*@__PURE__*/ __L.at(
-    __c6,
-    7,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem {
   /** The original (source) class name. */
   from: string;
   /** The new class name (`renamed_to`). */
   to: string;
 }
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    0,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    1,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem {
   /** The target-side class name awaiting transfer. */
   class: string;
   /** The source script the namespace will be transferred from. */
   from: string;
 }
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    2,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    3,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItemPhase =
   "committed";
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItemPhase =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem {
   /** The source class name that was transferred. */
   class: string;
@@ -2386,25 +2052,10 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** The destination script that now owns the namespace. */
   to: string;
 }
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    4,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    5,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -2439,9 +2090,6 @@ export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWar
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItemScenario =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem {
   /** The class name the warning is about. */
   class: string;
@@ -2452,20 +2100,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string | null;
 }
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    6,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem>;
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    7,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList;
@@ -2486,22 +2122,12 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList;
 }
-const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
   cpuMs?: number | null;
   /** The number of subrequests this Worker can make per request. */
   subrequests?: number | null;
 }
-const DispatchNamespacesScriptsSettingsGetResponseLimits = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseLimits>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
@@ -2576,15 +2202,10 @@ export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMu
 export type DispatchNamespacesScriptsSettingsGetResponseMigrations =
   | DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations;
-const DispatchNamespacesScriptsSettingsGetResponseMigrations = /*@__PURE__*/ __L.at(__c8, 2);
-
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -2597,21 +2218,11 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList | null;
@@ -2624,11 +2235,6 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy | null;
 }
-const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -2643,11 +2249,6 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces | null;
 }
-const DispatchNamespacesScriptsSettingsGetResponseObservability = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservability>;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode = "smart";
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -2712,25 +2313,15 @@ export type DispatchNamespacesScriptsSettingsGetResponsePlacement =
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase5
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase6
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7;
-const DispatchNamespacesScriptsSettingsGetResponsePlacement = /*@__PURE__*/ __L.at(__c8, 6);
-
 export type DispatchNamespacesScriptsSettingsGetResponseTagsList = Array<string>;
-const DispatchNamespacesScriptsSettingsGetResponseTagsList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTagsList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
 export type DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-const DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTailConsumersList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-const DispatchNamespacesScriptsSettingsGetResponseUsageModel = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceScriptSettingResponse {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
@@ -2762,20 +2353,10 @@ export interface GetDispatchNamespaceScriptSettingResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsSettingsGetResponseUsageModel | null;
 }
-const GetDispatchNamespaceScriptSettingResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetDispatchNamespaceScriptSettingResponse>;
-
 export interface ListDispatchNamespacesRequest {
   /** Identifier. */
   accountId: string;
 }
-const ListDispatchNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListDispatchNamespacesRequest>;
-
 export interface DispatchNamespacesListResultItem {
   /** Identifier. */
   createdBy?: string | null;
@@ -2794,28 +2375,13 @@ export interface DispatchNamespacesListResultItem {
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
   trustedWorkers?: boolean | null;
 }
-const DispatchNamespacesListResultItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DispatchNamespacesListResultItem>;
-
 export type DispatchNamespacesListResultList = Array<DispatchNamespacesListResultItem>;
-const DispatchNamespacesListResultList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DispatchNamespacesListResultList>;
-
 export interface ListDispatchNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DispatchNamespacesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDispatchNamespacesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListDispatchNamespacesResponse>;
-
 export interface ListDispatchNamespaceScriptSecretsRequest {
   /** Identifier. */
   accountId: string;
@@ -2824,11 +2390,6 @@ export interface ListDispatchNamespaceScriptSecretsRequest {
   /** Name of the script. */
   scriptName: string;
 }
-const ListDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListDispatchNamespaceScriptSecretsRequest>;
-
 export type DispatchNamespacesScriptsSecretsListResultItemSecretTextType = "secret_text";
 export interface DispatchNamespacesScriptsSecretsListResultItemSecretText {
   /** A JavaScript variable name for the binding. */
@@ -2874,26 +2435,14 @@ export interface DispatchNamespacesScriptsSecretsListResultItemSecretKey {
 export type DispatchNamespacesScriptsSecretsListResultItem =
   | DispatchNamespacesScriptsSecretsListResultItemSecretText
   | DispatchNamespacesScriptsSecretsListResultItemSecretKey;
-const DispatchNamespacesScriptsSecretsListResultItem = /*@__PURE__*/ __L.at(__c9, 5);
-
 export type DispatchNamespacesScriptsSecretsListResultList =
   Array<DispatchNamespacesScriptsSecretsListResultItem>;
-const DispatchNamespacesScriptsSecretsListResultList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultList>;
-
 export interface ListDispatchNamespaceScriptSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DispatchNamespacesScriptsSecretsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDispatchNamespaceScriptSecretsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListDispatchNamespaceScriptSecretsResponse>;
-
 export interface ListDispatchNamespaceScriptTagsRequest {
   /** Identifier. */
   accountId: string;
@@ -2902,26 +2451,13 @@ export interface ListDispatchNamespaceScriptTagsRequest {
   /** Name of the script. */
   scriptName: string;
 }
-const ListDispatchNamespaceScriptTagsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListDispatchNamespaceScriptTagsRequest>;
-
 export type DispatchNamespacesScriptsTagsListResultList = Array<string>;
-const DispatchNamespacesScriptsTagsListResultList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsListResultList>;
-
 export interface ListDispatchNamespaceScriptTagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DispatchNamespacesScriptsTagsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListDispatchNamespaceScriptTagsResponse>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAIType = "ai";
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -3426,34 +2962,16 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetwork;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-);
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version uploads. This is independent of `enabled`. It can stay true while caching is off, so the preference survives turning caching off and back on. */
   crossVersionCache?: boolean;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerType = "worker";
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
@@ -3551,29 +3069,13 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExport;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-);
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap = {
   [key: string]: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue | undefined;
 };
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -3608,14 +3110,8 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcili
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemScenario =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -3630,44 +3126,20 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    7,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    0,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItemPhase =
   "committed";
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItemPhase =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem {
   /** The source class name that was transferred. */
   class: string;
@@ -3678,25 +3150,10 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** The destination script that now owns the namespace. */
   to: string;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    1,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    2,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -3731,9 +3188,6 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcili
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItemScenario =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem {
   /** The class name the warning is about. */
   class: string;
@@ -3746,20 +3200,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    3,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    4,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList;
@@ -3780,23 +3222,12 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliation =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    5,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliation>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
   cpuMs?: number;
   /** The number of subrequests this Worker can make per request. */
   subrequests?: number;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsLimits = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsLimits>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList =
@@ -3871,26 +3302,12 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsW
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrations;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-);
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIssues {
   /** Whether real-time Issues are enabled for the Worker. */
   enabled?: boolean;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIssues =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    0,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIssues>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -3903,22 +3320,11 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabili
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList;
@@ -3933,12 +3339,6 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabili
     | DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy
     | (string & {});
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    2,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -3953,11 +3353,6 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabili
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsObservability = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservability>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementModeMode = "smart";
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -4018,15 +3413,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-);
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList = Array<string>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
   service: string;
@@ -4035,24 +3422,12 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsume
   /** Optional dispatch namespace the script belongs to. */
   namespace?: string;
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem>;
-const DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-const DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettings {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList;
@@ -4083,11 +3458,6 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettings {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel | (string & {});
 }
-const DispatchNamespacesScriptsSettingsEditRequestSettings = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettings>;
-
 export interface PatchDispatchNamespaceScriptSettingRequest {
   /** Identifier. */
   accountId: string;
@@ -4098,11 +3468,6 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
   /** Script and version settings for Workers for Platforms namespace scripts. Same as script-and-version-settings-item but without annotations, which are not supported for namespace scripts. */
   settings?: DispatchNamespacesScriptsSettingsEditRequestSettings;
 }
-const PatchDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<PatchDispatchNamespaceScriptSettingRequest>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType = "ai";
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -4567,21 +3932,11 @@ export type DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork;
-const DispatchNamespacesScriptsSettingsEditResponseBindingsItem = /*@__PURE__*/ __L.at(__c13, 1);
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseBindingsItem>;
-const DispatchNamespacesScriptsSettingsEditResponseBindingsList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
 export type DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList = Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerType = "worker";
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
@@ -4671,26 +4026,13 @@ export type DispatchNamespacesScriptsSettingsEditResponseExportsValue =
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-const DispatchNamespacesScriptsSettingsEditResponseExportsValue = /*@__PURE__*/ __L.at(__c13, 3);
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsSettingsEditResponseExportsValue | undefined;
 };
-const DispatchNamespacesScriptsSettingsEditResponseExportsMap = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsMap>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -4725,13 +4067,8 @@ export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationIn
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -4744,39 +4081,18 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    5,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    6,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItemPhase =
   "committed";
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem {
@@ -4789,14 +4105,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
 }
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -4843,9 +4153,6 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
 }
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem>;
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList;
@@ -4866,11 +4173,6 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList;
 }
-const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseLimits =
   DispatchNamespacesScriptsSettingsGetResponseLimits;
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
@@ -4942,8 +4244,6 @@ export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersM
 export type DispatchNamespacesScriptsSettingsEditResponseMigrations =
   | DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations;
-const DispatchNamespacesScriptsSettingsEditResponseMigrations = /*@__PURE__*/ __L.at(__c14, 0);
-
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList =
@@ -4960,19 +4260,11 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs 
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs =
-  DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList | null;
@@ -4985,11 +4277,6 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityTrace
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy | null;
 }
-const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -5004,11 +4291,6 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces | null;
 }
-const DispatchNamespacesScriptsSettingsEditResponseObservability = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservability>;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode = "smart";
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -5069,25 +4351,15 @@ export type DispatchNamespacesScriptsSettingsEditResponsePlacement =
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase5
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase6
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7;
-const DispatchNamespacesScriptsSettingsEditResponsePlacement = /*@__PURE__*/ __L.at(__c14, 3);
-
 export type DispatchNamespacesScriptsSettingsEditResponseTagsList = Array<string>;
-const DispatchNamespacesScriptsSettingsEditResponseTagsList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTagsList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
 export type DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-const DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTailConsumersList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-const DispatchNamespacesScriptsSettingsEditResponseUsageModel = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDispatchNamespaceScriptSettingResponse {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
@@ -5119,47 +4391,26 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsSettingsEditResponseUsageModel | null;
 }
-const PatchDispatchNamespaceScriptSettingResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<PatchDispatchNamespaceScriptSettingResponse>;
-
 export type DispatchNamespacesScriptsUpdateRequestBindingsInherit = "strict";
-const DispatchNamespacesScriptsUpdateRequestBindingsInherit = S.String;
-
 export interface PutDispatchNamespaceScriptMetadataAnnotations {
   workersMessage?: string;
   workersTag?: string;
   /** Alias to point at this version (e.g. for gradual deployments). */
   workersAlias?: string;
 }
-const PutDispatchNamespaceScriptMetadataAnnotations = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataAnnotations>;
-
 export type PutDispatchNamespaceScriptAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
-const PutDispatchNamespaceScriptAssetsConfigHtmlHandling = S.String;
-
 export type PutDispatchNamespaceScriptAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
   | "single-page-application";
-const PutDispatchNamespaceScriptAssetsConfigNotFoundHandling = S.String;
-
 export type PutDispatchNamespaceScriptMetadataStringList = Array<string>;
-const PutDispatchNamespaceScriptMetadataStringList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<PutDispatchNamespaceScriptMetadataStringList>;
-
 export type PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst =
   | PutDispatchNamespaceScriptMetadataStringList
   | boolean;
-const PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ __L.at(__c14, 6);
-
 export interface PutDispatchNamespaceScriptAssetsConfig {
   htmlHandling?: PutDispatchNamespaceScriptAssetsConfigHtmlHandling | (string & {});
   notFoundHandling?: PutDispatchNamespaceScriptAssetsConfigNotFoundHandling | (string & {});
@@ -5168,20 +4419,10 @@ export interface PutDispatchNamespaceScriptAssetsConfig {
   headers?: string;
   redirects?: string;
 }
-const PutDispatchNamespaceScriptAssetsConfig = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<PutDispatchNamespaceScriptAssetsConfig>;
-
 export interface PutDispatchNamespaceScriptMetadataAssets {
   config?: PutDispatchNamespaceScriptAssetsConfig;
   jwt?: string;
 }
-const PutDispatchNamespaceScriptMetadataAssets = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataAssets>;
-
 export type PutDispatchNamespaceScriptBindingAiType = "ai";
 export interface PutDispatchNamespaceScriptBindingAi {
   name: string;
@@ -5508,45 +4749,20 @@ export type PutDispatchNamespaceScriptBinding =
   | PutDispatchNamespaceScriptBindingArtifacts
   | PutDispatchNamespaceScriptBindingStream
   | PutDispatchNamespaceScriptBindingK2;
-const PutDispatchNamespaceScriptBinding = /*@__PURE__*/ __L.at(__c15, 1);
-
 export type PutDispatchNamespaceScriptMetadataBindingsList =
   Array<PutDispatchNamespaceScriptBinding>;
-const PutDispatchNamespaceScriptMetadataBindingsList = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataBindingsList>;
-
 export type ContainerImageMap = { [key: string]: string | undefined };
-const ContainerImageMap =
-  DispatchNamespacesScriptsTagsDeleteResultMap as any as S.Schema<ContainerImageMap>;
-
 export interface PutDispatchNamespaceScriptContainer {
   className: string;
   name?: string;
   images?: ContainerImageMap;
 }
-const PutDispatchNamespaceScriptContainer = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<PutDispatchNamespaceScriptContainer>;
-
 export type PutDispatchNamespaceScriptMetadataContainersList =
   Array<PutDispatchNamespaceScriptContainer>;
-const PutDispatchNamespaceScriptMetadataContainersList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataContainersList>;
-
 export interface PutDispatchNamespaceScriptMetadataLimits {
   cpuMs?: number;
   subrequests?: number;
 }
-const PutDispatchNamespaceScriptMetadataLimits = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataLimits>;
-
 export type PutDispatchNamespaceScriptMigrationRenamedClass =
   DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem;
 export type PutDispatchNamespaceScriptMigrationRenamedClassesList =
@@ -5581,8 +4797,6 @@ export interface PutDispatchNamespaceScriptMultipleStepMigrations {
 export type PutDispatchNamespaceScriptMetadataMigrations =
   | PutDispatchNamespaceScriptSingleStepMigration
   | PutDispatchNamespaceScriptMultipleStepMigrations;
-const PutDispatchNamespaceScriptMetadataMigrations = /*@__PURE__*/ __L.at(__c15, 6);
-
 export interface PutDispatchNamespaceScriptObservabilityLogs {
   enabled: boolean;
   invocationLogs: boolean;
@@ -5590,16 +4804,9 @@ export interface PutDispatchNamespaceScriptObservabilityLogs {
   headSamplingRate?: number | null;
   persist?: boolean;
 }
-const PutDispatchNamespaceScriptObservabilityLogs = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<PutDispatchNamespaceScriptObservabilityLogs>;
-
 export type PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-const PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy = S.String;
-
 export interface PutDispatchNamespaceScriptObservabilityTraces {
   destinations?: PutDispatchNamespaceScriptMetadataStringList;
   enabled?: boolean;
@@ -5609,20 +4816,10 @@ export interface PutDispatchNamespaceScriptObservabilityTraces {
     | PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy
     | (string & {});
 }
-const PutDispatchNamespaceScriptObservabilityTraces = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<PutDispatchNamespaceScriptObservabilityTraces>;
-
 export interface PutDispatchNamespaceScriptObservabilityIssues {
   /** Whether Workers Issues error monitoring is enabled. */
   enabled: boolean;
 }
-const PutDispatchNamespaceScriptObservabilityIssues = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<PutDispatchNamespaceScriptObservabilityIssues>;
-
 export interface PutDispatchNamespaceScriptMetadataObservability {
   enabled?: boolean;
   headSamplingRate?: number | null;
@@ -5630,11 +4827,6 @@ export interface PutDispatchNamespaceScriptMetadataObservability {
   traces?: PutDispatchNamespaceScriptObservabilityTraces | null;
   issues?: PutDispatchNamespaceScriptObservabilityIssues;
 }
-const PutDispatchNamespaceScriptMetadataObservability = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataObservability>;
-
 export type PutDispatchNamespaceScriptPlacementSmartMode = "smart";
 export interface PutDispatchNamespaceScriptPlacementSmart {
   mode: PutDispatchNamespaceScriptPlacementSmartMode;
@@ -5685,42 +4877,20 @@ export type PutDispatchNamespaceScriptMetadataPlacement =
   | PutDispatchNamespaceScriptPlacementTargetedHostname
   | PutDispatchNamespaceScriptPlacementTargetedHost
   | PutDispatchNamespaceScriptPlacementTargetedList;
-const PutDispatchNamespaceScriptMetadataPlacement = /*@__PURE__*/ __L.at(__c16, 3);
-
 export interface PutDispatchNamespaceScriptTailConsumer {
   service: string;
   environment?: string;
   namespace?: string;
 }
-const PutDispatchNamespaceScriptTailConsumer = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<PutDispatchNamespaceScriptTailConsumer>;
-
 export type PutDispatchNamespaceScriptMetadataTailConsumersList =
   Array<PutDispatchNamespaceScriptTailConsumer>;
-const PutDispatchNamespaceScriptMetadataTailConsumersList = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataTailConsumersList>;
-
 export type PutDispatchNamespaceScriptMetadataUsageModel = "standard" | "bundled" | "unbound";
-const PutDispatchNamespaceScriptMetadataUsageModel = S.String;
-
 export interface PutDispatchNamespaceScriptMetadataCache {
   enabled?: boolean;
   crossVersionCache?: boolean;
 }
-const PutDispatchNamespaceScriptMetadataCache = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadataCache>;
-
 export type PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
   Array<PutDispatchNamespaceScriptTailConsumer>;
-const PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
-  PutDispatchNamespaceScriptMetadataTailConsumersList as any as S.Schema<PutDispatchNamespaceScriptMetadataStreamingTailConsumersList>;
-
 export interface PutDispatchNamespaceScriptMetadata {
   annotations?: PutDispatchNamespaceScriptMetadataAnnotations;
   assets?: PutDispatchNamespaceScriptMetadataAssets;
@@ -5743,11 +4913,6 @@ export interface PutDispatchNamespaceScriptMetadata {
   cacheOptions?: PutDispatchNamespaceScriptMetadataCache;
   streamingTailConsumers?: PutDispatchNamespaceScriptMetadataStreamingTailConsumersList | null;
 }
-const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<PutDispatchNamespaceScriptMetadata>;
-
 export interface PutDispatchNamespaceScriptRequest {
   /** Identifier. */
   accountId: string;
@@ -5761,17 +4926,9 @@ export interface PutDispatchNamespaceScriptRequest {
   /** Module / asset file parts, appended under their own filenames. */
   files?: File | Blob | (File | Blob)[];
 }
-const PutDispatchNamespaceScriptRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<PutDispatchNamespaceScriptRequest>;
-
 export type DispatchNamespacesScriptsUpdateResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
 export type DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList = Array<string>;
-const DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList>;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkerType = "worker";
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
@@ -5861,20 +5018,10 @@ export type DispatchNamespacesScriptsUpdateResponseExportsValue =
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-const DispatchNamespacesScriptsUpdateResponseExportsValue = /*@__PURE__*/ __L.at(__c17, 1);
-
 export type DispatchNamespacesScriptsUpdateResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsUpdateResponseExportsValue | undefined;
 };
-const DispatchNamespacesScriptsUpdateResponseExportsMap = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsMap>;
-
 export type DispatchNamespacesScriptsUpdateResponseHandlersList = Array<string>;
-const DispatchNamespacesScriptsUpdateResponseHandlersList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseHandlersList>;
-
 export type DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList = Array<string>;
 export interface DispatchNamespacesScriptsUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -5884,9 +5031,6 @@ export interface DispatchNamespacesScriptsUpdateResponseNamedHandlersItem {
 }
 export type DispatchNamespacesScriptsUpdateResponseNamedHandlersList =
   Array<DispatchNamespacesScriptsUpdateResponseNamedHandlersItem>;
-const DispatchNamespacesScriptsUpdateResponseNamedHandlersList =
-  DispatchNamespacesScriptsGetResponseScriptNamedHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersList>;
-
 export type DispatchNamespacesScriptsUpdateResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
 export type DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList =
@@ -5903,19 +5047,11 @@ export interface DispatchNamespacesScriptsUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-const DispatchNamespacesScriptsUpdateResponseObservabilityLogs =
-  DispatchNamespacesScriptsGetResponseScriptObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogs>;
-
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList>;
-
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-const DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList | null;
@@ -5928,11 +5064,6 @@ export interface DispatchNamespacesScriptsUpdateResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
-const DispatchNamespacesScriptsUpdateResponseObservabilityTraces = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTraces>;
-
 export interface DispatchNamespacesScriptsUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -5947,11 +5078,6 @@ export interface DispatchNamespacesScriptsUpdateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsUpdateResponseObservabilityTraces | null;
 }
-const DispatchNamespacesScriptsUpdateResponseObservability = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservability>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode = "smart";
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase0Status =
   | "SUCCESS"
@@ -6082,31 +5208,17 @@ export type DispatchNamespacesScriptsUpdateResponsePlacement =
   | DispatchNamespacesScriptsUpdateResponsePlacementCase5
   | DispatchNamespacesScriptsUpdateResponsePlacementCase6
   | DispatchNamespacesScriptsUpdateResponsePlacementCase7;
-const DispatchNamespacesScriptsUpdateResponsePlacement = /*@__PURE__*/ __L.at(__c17, 5);
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementMode = "smart" | "targeted";
-const DispatchNamespacesScriptsUpdateResponsePlacementMode = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-const DispatchNamespacesScriptsUpdateResponsePlacementStatus = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseTagsList = Array<string>;
-const DispatchNamespacesScriptsUpdateResponseTagsList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTagsList>;
-
 export type DispatchNamespacesScriptsUpdateResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
 export type DispatchNamespacesScriptsUpdateResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-const DispatchNamespacesScriptsUpdateResponseTailConsumersList =
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTailConsumersList>;
-
 export type DispatchNamespacesScriptsUpdateResponseUsageModel = "standard" | "bundled" | "unbound";
-const DispatchNamespacesScriptsUpdateResponseUsageModel = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDispatchNamespaceScriptResponse {
   startupTimeMs: number;
@@ -6157,26 +5269,13 @@ export interface PutDispatchNamespaceScriptResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsUpdateResponseUsageModel | null;
 }
-const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<PutDispatchNamespaceScriptResponse>;
-
 export interface DispatchNamespacesScriptsContentUpdateRequestMetadata {
   /** Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker. */
   bodyPart?: string;
   /** Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker. */
   mainModule?: string;
 }
-const DispatchNamespacesScriptsContentUpdateRequestMetadata = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequestMetadata>;
-
 export type DispatchNamespacesScriptsContentUpdateRequestFilesList = Array<string>;
-const DispatchNamespacesScriptsContentUpdateRequestFilesList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequestFilesList>;
-
 export interface PutDispatchNamespaceScriptContentRequest {
   /** Identifier. */
   accountId: string;
@@ -6191,17 +5290,9 @@ export interface PutDispatchNamespaceScriptContentRequest {
   cfworkerbodypart?: string;
   cfworkermainmodulepart?: string;
 }
-const PutDispatchNamespaceScriptContentRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<PutDispatchNamespaceScriptContentRequest>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
 export type DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList = Array<string>;
-const DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerType = "worker";
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
@@ -6291,43 +5382,20 @@ export type DispatchNamespacesScriptsContentUpdateResponseExportsValue =
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-const DispatchNamespacesScriptsContentUpdateResponseExportsValue = /*@__PURE__*/ __L.at(__c18, 1);
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsContentUpdateResponseExportsValue | undefined;
 };
-const DispatchNamespacesScriptsContentUpdateResponseExportsMap = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsMap>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseHandlersList = Array<string>;
-const DispatchNamespacesScriptsContentUpdateResponseHandlersList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseHandlersList>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
   Array<string>;
-const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
   handlers?: DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList | null;
   /** The name of the export. */
   name?: string | null;
 }
-const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList =
   Array<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem>;
-const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList =
@@ -6344,19 +5412,11 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs =
-  DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
   Array<string>;
-const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList | null;
@@ -6369,11 +5429,6 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityTrac
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
-const DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces>;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -6388,11 +5443,6 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces | null;
 }
-const DispatchNamespacesScriptsContentUpdateResponseObservability = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservability>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode = "smart";
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status =
   | "SUCCESS"
@@ -6523,36 +5573,20 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacement =
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase5
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase6
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7;
-const DispatchNamespacesScriptsContentUpdateResponsePlacement = /*@__PURE__*/ __L.at(__c18, 7);
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode = "smart" | "targeted";
-const DispatchNamespacesScriptsContentUpdateResponsePlacementMode = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseTagsList = Array<string>;
-const DispatchNamespacesScriptsContentUpdateResponseTagsList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTagsList>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
 export type DispatchNamespacesScriptsContentUpdateResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-const DispatchNamespacesScriptsContentUpdateResponseTailConsumersList = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTailConsumersList>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-const DispatchNamespacesScriptsContentUpdateResponseUsageModel = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDispatchNamespaceScriptContentResponse {
   /** The name used to identify the script. */
@@ -6602,17 +5636,8 @@ export interface PutDispatchNamespaceScriptContentResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsContentUpdateResponseUsageModel | null;
 }
-const PutDispatchNamespaceScriptContentResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<PutDispatchNamespaceScriptContentResponse>;
-
 export type DispatchNamespacesScriptsSecretsUpdateRequestType = "secret_text" | "secret_key";
-const DispatchNamespacesScriptsSecretsUpdateRequestType = S.String;
-
 export type DispatchNamespacesScriptsSecretsUpdateRequestFormat = "raw" | "pkcs8" | "spki" | "jwk";
-const DispatchNamespacesScriptsSecretsUpdateRequestFormat = S.String;
-
 export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -6625,9 +5650,6 @@ export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
 export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesList = Array<
   DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem | (string & {})
 >;
-const DispatchNamespacesScriptsSecretsUpdateRequestUsagesList =
-  DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestUsagesList>;
-
 export interface PutDispatchNamespaceScriptSecretRequest {
   /** Identifier. */
   accountId: string;
@@ -6652,11 +5674,6 @@ export interface PutDispatchNamespaceScriptSecretRequest {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown;
 }
-const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<PutDispatchNamespaceScriptSecretRequest>;
-
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretTextType = "secret_text";
 export interface DispatchNamespacesScriptsSecretsUpdateResultSecretText {
   /** A JavaScript variable name for the binding. */
@@ -6702,18 +5719,8 @@ export interface DispatchNamespacesScriptsSecretsUpdateResultSecretKey {
 export type DispatchNamespacesScriptsSecretsUpdateResult =
   | DispatchNamespacesScriptsSecretsUpdateResultSecretText
   | DispatchNamespacesScriptsSecretsUpdateResultSecretKey;
-const DispatchNamespacesScriptsSecretsUpdateResult = /*@__PURE__*/ __L.at(__c19, 3);
-
 export type PutDispatchNamespaceScriptSecretResponse = DispatchNamespacesScriptsSecretsUpdateResult;
-const PutDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<PutDispatchNamespaceScriptSecretResponse>;
-
 export type DispatchNamespacesScriptsTagsUpdateRequestBodyList = Array<string>;
-const DispatchNamespacesScriptsTagsUpdateRequestBodyList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsUpdateRequestBodyList>;
-
 export interface PutDispatchNamespaceScriptTagRequest {
   /** Identifier. */
   accountId: string;
@@ -6724,11 +5731,6 @@ export interface PutDispatchNamespaceScriptTagRequest {
   /** Tags associated with the Worker. */
   body: DispatchNamespacesScriptsTagsUpdateRequestBodyList;
 }
-const PutDispatchNamespaceScriptTagRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<PutDispatchNamespaceScriptTagRequest>;
-
 export type DispatchNamespacesScriptsTagsUpdateResultList = Array<string>;
 export interface PutDispatchNamespaceScriptTagResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -6736,9 +5738,6 @@ export interface PutDispatchNamespaceScriptTagResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const PutDispatchNamespaceScriptTagResponse =
-  ListDispatchNamespaceScriptTagsResponse as any as S.Schema<PutDispatchNamespaceScriptTagResponse>;
-
 export type BulkUpdateDispatchNamespaceScriptSecretsError = CloudflareOpError;
 /** Create, update, or delete multiple secrets on a Workers for Platforms script in a single operation using JSON Merge Patch (RFC 7396). This operation creates a single version with all changes included. Prefer this API instead of changing many secrets individually. Usage: - To create or update a secret, set its value to a secret object. - To delete a secret, set its value to `null`. - Secrets not included in the request are left unchanged. */
 export const bulkUpdateDispatchNamespaceScriptSecrets: API.OperationMethod<
@@ -6747,8 +5746,8 @@ export const bulkUpdateDispatchNamespaceScriptSecrets: API.OperationMethod<
   BulkUpdateDispatchNamespaceScriptSecretsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkUpdateDispatchNamespaceScriptSecretsRequest,
-  output: BulkUpdateDispatchNamespaceScriptSecretsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6765,8 +5764,8 @@ export const createDispatchNamespace: API.OperationMethod<
   CreateDispatchNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDispatchNamespaceRequest,
-  output: CreateDispatchNamespaceResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<CreateDispatchNamespaceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDispatchNamespaceResponse>,
   errors: [DispatchNamespaceAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6780,8 +5779,8 @@ export const createDispatchNamespaceScriptAssetUpload: API.OperationMethod<
   CreateDispatchNamespaceScriptAssetUploadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDispatchNamespaceScriptAssetUploadRequest,
-  output: CreateDispatchNamespaceScriptAssetUploadResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<CreateDispatchNamespaceScriptAssetUploadRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateDispatchNamespaceScriptAssetUploadResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6798,8 +5797,8 @@ export const deleteDispatchNamespace: API.OperationMethod<
   DeleteDispatchNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDispatchNamespaceRequest,
-  output: DeleteDispatchNamespaceResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<DeleteDispatchNamespaceRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDispatchNamespaceResponse>,
   errors: [DispatchNamespaceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6817,8 +5816,8 @@ export const deleteDispatchNamespaceScript: API.OperationMethod<
   DeleteDispatchNamespaceScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDispatchNamespaceScriptRequest,
-  output: DeleteDispatchNamespaceScriptResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteDispatchNamespaceScriptRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDispatchNamespaceScriptResponse>,
   errors: [
     DispatchNamespaceScriptNotFound,
     DispatchNamespaceNotFound,
@@ -6838,8 +5837,8 @@ export const deleteDispatchNamespaceScriptSecret: API.OperationMethod<
   DeleteDispatchNamespaceScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDispatchNamespaceScriptSecretRequest,
-  output: DeleteDispatchNamespaceScriptSecretResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<DeleteDispatchNamespaceScriptSecretRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDispatchNamespaceScriptSecretResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6853,8 +5852,8 @@ export const deleteDispatchNamespaceScriptTag: API.OperationMethod<
   DeleteDispatchNamespaceScriptTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDispatchNamespaceScriptTagRequest,
-  output: DeleteDispatchNamespaceScriptTagResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteDispatchNamespaceScriptTagRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<DeleteDispatchNamespaceScriptTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6868,8 +5867,8 @@ export const getDispatchNamespace: API.OperationMethod<
   GetDispatchNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDispatchNamespaceRequest,
-  output: GetDispatchNamespaceResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<GetDispatchNamespaceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDispatchNamespaceResponse>,
   errors: [DispatchNamespaceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6887,8 +5886,8 @@ export const getDispatchNamespaceScript: API.OperationMethod<
   GetDispatchNamespaceScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDispatchNamespaceScriptRequest,
-  output: GetDispatchNamespaceScriptResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<GetDispatchNamespaceScriptRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<GetDispatchNamespaceScriptResponse>,
   errors: [
     DispatchNamespaceNotFound,
     DispatchNamespaceScriptNotFound,
@@ -6910,8 +5909,8 @@ export const getDispatchNamespaceScriptBinding: API.PaginatedOperationMethod<
   DispatchNamespacesScriptsBindingsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetDispatchNamespaceScriptBindingRequest,
-    output: GetDispatchNamespaceScriptBindingResponse,
+    input: __S(39, __c4, 7) as any as S.Schema<GetDispatchNamespaceScriptBindingRequest>,
+    output: __S(42, __c5, 2) as any as S.Schema<GetDispatchNamespaceScriptBindingResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6928,8 +5927,8 @@ export const getDispatchNamespaceScriptContent: API.OperationMethod<
   GetDispatchNamespaceScriptContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDispatchNamespaceScriptContentRequest,
-  output: GetDispatchNamespaceScriptContentResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<GetDispatchNamespaceScriptContentRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetDispatchNamespaceScriptContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6943,8 +5942,8 @@ export const getDispatchNamespaceScriptSecret: API.OperationMethod<
   GetDispatchNamespaceScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDispatchNamespaceScriptSecretRequest,
-  output: GetDispatchNamespaceScriptSecretResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<GetDispatchNamespaceScriptSecretRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetDispatchNamespaceScriptSecretResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6962,8 +5961,8 @@ export const getDispatchNamespaceScriptSetting: API.OperationMethod<
   GetDispatchNamespaceScriptSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDispatchNamespaceScriptSettingRequest,
-  output: GetDispatchNamespaceScriptSettingResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<GetDispatchNamespaceScriptSettingRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<GetDispatchNamespaceScriptSettingResponse>,
   errors: [
     DispatchNamespaceNotFound,
     DispatchNamespaceScriptNotFound,
@@ -6985,8 +5984,8 @@ export const listDispatchNamespaces: API.PaginatedOperationMethod<
   DispatchNamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDispatchNamespacesRequest,
-    output: ListDispatchNamespacesResponse,
+    input: __S(72, __c9, 0) as any as S.Schema<ListDispatchNamespacesRequest>,
+    output: __S(75, __c9, 3) as any as S.Schema<ListDispatchNamespacesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -7005,8 +6004,8 @@ export const listDispatchNamespaceScriptSecrets: API.PaginatedOperationMethod<
   DispatchNamespacesScriptsSecretsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDispatchNamespaceScriptSecretsRequest,
-    output: ListDispatchNamespaceScriptSecretsResponse,
+    input: __S(76, __c9, 4) as any as S.Schema<ListDispatchNamespaceScriptSecretsRequest>,
+    output: __S(79, __c9, 7) as any as S.Schema<ListDispatchNamespaceScriptSecretsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -7025,8 +6024,8 @@ export const listDispatchNamespaceScriptTags: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDispatchNamespaceScriptTagsRequest,
-    output: ListDispatchNamespaceScriptTagsResponse,
+    input: __S(80, __c10, 0) as any as S.Schema<ListDispatchNamespaceScriptTagsRequest>,
+    output: __S(81, __c10, 1) as any as S.Schema<ListDispatchNamespaceScriptTagsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -7043,8 +6042,8 @@ export const patchDispatchNamespaceScriptSetting: API.OperationMethod<
   PatchDispatchNamespaceScriptSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchDispatchNamespaceScriptSettingRequest,
-  output: PatchDispatchNamespaceScriptSettingResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<PatchDispatchNamespaceScriptSettingRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<PatchDispatchNamespaceScriptSettingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7071,8 +6070,8 @@ export const putDispatchNamespaceScript: API.OperationMethod<
   PutDispatchNamespaceScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDispatchNamespaceScriptRequest,
-  output: PutDispatchNamespaceScriptResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<PutDispatchNamespaceScriptRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<PutDispatchNamespaceScriptResponse>,
   errors: [
     DispatchNamespaceNotFound,
     Forbidden,
@@ -7101,8 +6100,8 @@ export const putDispatchNamespaceScriptContent: API.OperationMethod<
   PutDispatchNamespaceScriptContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDispatchNamespaceScriptContentRequest,
-  output: PutDispatchNamespaceScriptContentResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<PutDispatchNamespaceScriptContentRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<PutDispatchNamespaceScriptContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7116,8 +6115,8 @@ export const putDispatchNamespaceScriptSecret: API.OperationMethod<
   PutDispatchNamespaceScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDispatchNamespaceScriptSecretRequest,
-  output: PutDispatchNamespaceScriptSecretResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<PutDispatchNamespaceScriptSecretRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<PutDispatchNamespaceScriptSecretResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7133,8 +6132,8 @@ export const putDispatchNamespaceScriptTag: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PutDispatchNamespaceScriptTagRequest,
-    output: PutDispatchNamespaceScriptTagResponse,
+    input: __S(157, __c19, 5) as any as S.Schema<PutDispatchNamespaceScriptTagRequest>,
+    output: __S(81, __c10, 1) as any as S.Schema<PutDispatchNamespaceScriptTagResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -7157,7 +6156,7 @@ function __c0(j: number): any {
         ),
       );
     case 1:
-      return S.Record(S.String, DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue);
+      return S.Record(S.String, __S(0, __c0, 0));
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
@@ -7166,12 +6165,8 @@ function __c0(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          secrets: S.optional(DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap),
-          versionTags: S.optional(
-            DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap.pipe(
-              T.Body("version_tags"),
-            ),
-          ),
+          secrets: S.optional(__S(1, __c0, 1)),
+          versionTags: S.optional(__S(2, __c0, 2).pipe(T.Body("version_tags"))),
         })
           .pipe(
             T.Http({
@@ -7195,13 +6190,10 @@ function __c0(j: number): any {
         ),
       );
     case 5:
-      return S.Record(S.String, DispatchNamespacesScriptsSecretsBulkUpdateResultValue);
+      return S.Record(S.String, __S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
-        DispatchNamespacesScriptsSecretsBulkUpdateResultMap.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(5, __c0, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkUpdateDispatchNamespaceScriptSecretsResponse",
       });
@@ -7251,14 +6243,14 @@ function __c1(j: number): any {
         identifier: "DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue",
       });
     case 2:
-      return S.Record(S.String, DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue);
+      return S.Record(S.String, __S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          manifest: DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap,
+          manifest: __S(10, __c1, 2),
         })
           .pipe(
             T.Http({
@@ -7274,13 +6266,11 @@ function __c1(j: number): any {
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Array(DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          buckets: S.optional(
-            S.NullOr(DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList),
-          ),
+          buckets: S.optional(S.NullOr(__S(13, __c1, 5))),
           jwt: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7376,10 +6366,7 @@ function __c2(j: number): any {
       return S.Record(S.String, S.String);
     case 5:
       return S.suspend(() =>
-        DispatchNamespacesScriptsTagsDeleteResultMap.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(20, __c2, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteDispatchNamespaceScriptTagResponse",
       });
@@ -7443,22 +6430,20 @@ function __c3(j: number): any {
         ]),
       );
     case 2:
-      return S.Record(S.String, DispatchNamespacesScriptsGetResponseScriptExportsValue);
+      return S.Record(S.String, __S(25, __c3, 1));
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          handlers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList),
-          ),
+          handlers: S.optional(S.NullOr(__S(12, __c1, 4))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem",
       });
     case 5:
-      return S.Array(DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7472,9 +6457,7 @@ function __c3(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList),
-          ),
+          destinations: S.optional(S.NullOr(__S(12, __c1, 4))),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -7488,17 +6471,11 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList),
-          ),
+          destinations: S.optional(S.NullOr(__S(12, __c1, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy,
-            ).pipe(T.Body("propagation_policy")),
-          ),
+          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityTraces",
@@ -7508,14 +6485,10 @@ function __c4(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues),
-          ),
-          logs: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityLogs)),
+          issues: S.optional(S.NullOr(__S(30, __c3, 6))),
+          logs: S.optional(S.NullOr(__S(31, __c3, 7))),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityTraces),
-          ),
+          traces: S.optional(S.NullOr(__S(32, __c4, 0))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsGetResponseScriptObservability",
@@ -7544,63 +6517,35 @@ function __c4(j: number): any {
         identifier: "DispatchNamespacesScriptsGetResponseScriptTailConsumersItem",
       });
     case 4:
-      return S.Array(DispatchNamespacesScriptsGetResponseScriptTailConsumersItem);
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          cacheOptions: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptCacheOptions).pipe(
-              T.Body("cache_options"),
-            ),
-          ),
+          cacheOptions: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList).pipe(
-              T.Body("compatibility_flags"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("compatibility_flags")),
           ),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           etag: S.optional(S.NullOr(S.String)),
-          exports: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptExportsMap)),
-          handlers: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptHandlersList)),
+          exports: S.optional(S.NullOr(__S(26, __c3, 2))),
+          handlers: S.optional(S.NullOr(__S(27, __c3, 3))),
           hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
           hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptNamedHandlersList).pipe(
-              T.Body("named_handlers"),
-            ),
-          ),
-          observability: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservability),
-          ),
-          placement: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacement)),
-          placementMode: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementMode).pipe(
-              T.Body("placement_mode"),
-            ),
-          ),
-          placementStatus: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementStatus).pipe(
-              T.Body("placement_status"),
-            ),
-          ),
+          namedHandlers: S.optional(S.NullOr(__S(29, __c3, 5)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(33, __c4, 1))),
+          placement: S.optional(S.NullOr(__S(34, __c4, 2))),
+          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
+          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
           tag: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptTagsList)),
-          tailConsumers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptTailConsumersList).pipe(
-              T.Body("tail_consumers"),
-            ),
-          ),
-          usageModel: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptUsageModel).pipe(
-              T.Body("usage_model"),
-            ),
-          ),
+          tags: S.optional(S.NullOr(__S(27, __c3, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsGetResponseScript",
@@ -7611,7 +6556,7 @@ function __c4(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          script: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScript)),
+          script: S.optional(S.NullOr(__S(37, __c4, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetDispatchNamespaceScriptResponse",
@@ -7741,11 +6686,11 @@ function __c5(j: number): any {
         ),
       );
     case 1:
-      return S.Array(DispatchNamespacesScriptsBindingsGetResultItem);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: DispatchNamespacesScriptsBindingsGetResultList.pipe(T.EnvelopePayload()),
+          result: __S(41, __c5, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7794,7 +6739,7 @@ function __c5(j: number): any {
         identifier: "GetDispatchNamespaceScriptSecretRequest",
       });
     case 6:
-      return S.Array(DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem);
+      return S.Array(S.String);
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -7811,10 +6756,7 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        DispatchNamespacesScriptsSecretsGetResult.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(47, __c5, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetDispatchNamespaceScriptSecretResponse",
       });
@@ -7939,7 +6881,7 @@ function __c6(j: number): any {
         ),
       );
     case 3:
-      return S.Array(DispatchNamespacesScriptsSettingsGetResponseBindingsItem);
+      return S.Array(__S(50, __c6, 2));
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -7952,26 +6894,23 @@ function __c6(j: number): any {
         ]),
       );
     case 5:
-      return S.Record(S.String, DispatchNamespacesScriptsSettingsGetResponseExportsValue);
+      return S.Record(S.String, __S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario:
-            DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario,
+          scenario: S.String,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
           referencingScripts: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList,
-            ).pipe(T.Body("referencing_scripts")),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("referencing_scripts")),
           ),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem",
       });
     case 7:
-      return S.Array(DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -7986,7 +6925,7 @@ function __c7(j: number): any {
         identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem",
       });
     case 1:
-      return S.Array(DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7998,15 +6937,12 @@ function __c7(j: number): any {
           "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem",
       });
     case 3:
-      return S.Array(
-        DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem,
-      );
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
-          phase:
-            DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItemPhase,
+          phase: S.String,
           to: S.String,
         }),
       ).annotate({
@@ -8014,23 +6950,20 @@ function __c7(j: number): any {
           "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem",
       });
     case 5:
-      return S.Array(
-        DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem,
-      );
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario:
-            DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItemScenario,
+          scenario: S.String,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem",
       });
     case 7:
-      return S.Array(DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -8038,22 +6971,15 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          created: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList,
-          deleted: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList,
-          info: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList,
-          removableEntries:
-            DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList.pipe(
-              T.Body("removable_entries"),
-            ),
-          renamed: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList,
-          transferPending:
-            DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList.pipe(
-              T.Body("transfer_pending"),
-            ),
-          transferred:
-            DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList,
-          updated: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList,
-          warnings: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList,
+          created: __S(12, __c1, 4),
+          deleted: __S(12, __c1, 4),
+          info: __S(55, __c6, 7),
+          removableEntries: __S(12, __c1, 4).pipe(T.Body("removable_entries")),
+          renamed: __S(57, __c7, 1),
+          transferPending: __S(59, __c7, 3).pipe(T.Body("transfer_pending")),
+          transferred: __S(61, __c7, 5),
+          updated: __S(12, __c1, 4),
+          warnings: __S(63, __c7, 7),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation",
@@ -8087,9 +7013,7 @@ function __c8(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList),
-          ),
+          destinations: S.optional(S.NullOr(__S(12, __c1, 4))),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -8099,19 +7023,11 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList,
-            ),
-          ),
+          destinations: S.optional(S.NullOr(__S(12, __c1, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy,
-            ).pipe(T.Body("propagation_policy")),
-          ),
+          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces",
@@ -8121,14 +7037,10 @@ function __c8(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues),
-          ),
-          logs: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs)),
+          issues: S.optional(S.NullOr(__S(30, __c3, 6))),
+          logs: S.optional(S.NullOr(__S(67, __c8, 3))),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces),
-          ),
+          traces: S.optional(S.NullOr(__S(68, __c8, 4))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsGetResponseObservability",
@@ -8149,42 +7061,24 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseBindingsList)),
-          cacheOptions: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptCacheOptions).pipe(
-              T.Body("cache_options"),
-            ),
-          ),
+          bindings: S.optional(S.NullOr(__S(51, __c6, 3))),
+          cacheOptions: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList).pipe(
-              T.Body("compatibility_flags"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("compatibility_flags")),
           ),
-          exports: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportsMap)),
+          exports: S.optional(S.NullOr(__S(53, __c6, 5))),
           exportsReconciliation: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation).pipe(
-              T.Body("exports_reconciliation"),
-            ),
+            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("exports_reconciliation")),
           ),
-          limits: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseLimits)),
+          limits: S.optional(S.NullOr(__S(65, __c8, 1))),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          migrations: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseMigrations)),
-          observability: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservability),
-          ),
-          placement: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponsePlacement)),
-          tags: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseTagsList)),
-          tailConsumers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsGetResponseTailConsumersList).pipe(
-              T.Body("tail_consumers"),
-            ),
-          ),
-          usageModel: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsGetResponseUsageModel).pipe(
-              T.Body("usage_model"),
-            ),
-          ),
+          migrations: S.optional(S.NullOr(__S(66, __c8, 2))),
+          observability: S.optional(S.NullOr(__S(69, __c8, 5))),
+          placement: S.optional(S.NullOr(__S(70, __c8, 6))),
+          tags: S.optional(S.NullOr(__S(27, __c3, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetDispatchNamespaceScriptSettingResponse",
@@ -8225,11 +7119,11 @@ function __c9(j: number): any {
         identifier: "DispatchNamespacesListResultItem",
       });
     case 2:
-      return S.Array(DispatchNamespacesListResultItem);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: DispatchNamespacesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(74, __c9, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8264,11 +7158,11 @@ function __c9(j: number): any {
         ),
       );
     case 6:
-      return S.Array(DispatchNamespacesScriptsSecretsListResultItem);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: DispatchNamespacesScriptsSecretsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(78, __c9, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8299,7 +7193,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: DispatchNamespacesScriptsTagsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(27, __c3, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8408,7 +7302,7 @@ function __c10(j: number): any {
         ),
       );
     case 3:
-      return S.Array(DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8430,20 +7324,15 @@ function __c10(j: number): any {
         ]),
       );
     case 6:
-      return S.Record(S.String, DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue);
+      return S.Record(S.String, __S(85, __c10, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemScenario,
+          scenario: S.String,
           namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-          referencingScripts: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList.pipe(
-              T.Body("referencing_scripts"),
-            ),
-          ),
+          referencingScripts: S.optional(__S(12, __c1, 4).pipe(T.Body("referencing_scripts"))),
         }),
       ).annotate({
         identifier:
@@ -8454,15 +7343,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem,
-      );
+      return S.Array(__S(87, __c10, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
-          phase:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItemPhase,
+          phase: S.String,
           to: S.String,
         }),
       ).annotate({
@@ -8470,16 +7356,13 @@ function __c11(j: number): any {
           "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem",
       });
     case 2:
-      return S.Array(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem,
-      );
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItemScenario,
+          scenario: S.String,
           namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
         }),
       ).annotate({
@@ -8487,33 +7370,19 @@ function __c11(j: number): any {
           "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem",
       });
     case 4:
-      return S.Array(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem,
-      );
+      return S.Array(__S(91, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          created:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList,
-          deleted:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList,
-          info: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList,
-          removableEntries:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList.pipe(
-              T.Body("removable_entries"),
-            ),
-          renamed:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList,
-          transferPending:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList.pipe(
-              T.Body("transfer_pending"),
-            ),
-          transferred:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList,
-          updated:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList,
-          warnings:
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList,
+          created: __S(12, __c1, 4),
+          deleted: __S(12, __c1, 4),
+          info: __S(88, __c11, 0),
+          removableEntries: __S(12, __c1, 4).pipe(T.Body("removable_entries")),
+          renamed: __S(57, __c7, 1),
+          transferPending: __S(59, __c7, 3).pipe(T.Body("transfer_pending")),
+          transferred: __S(90, __c11, 2),
+          updated: __S(12, __c1, 4),
+          warnings: __S(92, __c11, 4),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliation",
@@ -8559,9 +7428,7 @@ function __c12(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList,
-          ),
+          destinations: S.optional(__S(12, __c1, 4)),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
         }),
@@ -8571,17 +7438,11 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList,
-          ),
+          destinations: S.optional(__S(12, __c1, 4)),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy.pipe(
-              T.Body("propagation_policy"),
-            ),
-          ),
+          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces",
@@ -8591,14 +7452,10 @@ function __c12(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIssues,
-          ),
-          logs: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs),
+          issues: S.optional(__S(96, __c12, 0)),
+          logs: S.optional(__S(97, __c12, 1)),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces,
-          ),
+          traces: S.optional(__S(98, __c12, 2)),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsObservability",
@@ -8627,46 +7484,26 @@ function __c12(j: number): any {
         identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem",
       });
     case 6:
-      return S.Array(DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem);
+      return S.Array(__S(101, __c12, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList),
-          cacheOptions: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions.pipe(
-              T.Body("cache_options"),
-            ),
-          ),
+          bindings: S.optional(__S(83, __c10, 3)),
+          cacheOptions: S.optional(__S(84, __c10, 4).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList.pipe(
-              T.Body("compatibility_flags"),
-            ),
-          ),
-          exports: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap),
+          compatibilityFlags: S.optional(__S(12, __c1, 4).pipe(T.Body("compatibility_flags"))),
+          exports: S.optional(__S(86, __c10, 6)),
           exportsReconciliation: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliation.pipe(
-              T.Body("exports_reconciliation"),
-            ),
+            __S(93, __c11, 5).pipe(T.Body("exports_reconciliation")),
           ),
-          limits: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsLimits),
+          limits: S.optional(__S(94, __c11, 6)),
           logpush: S.optional(S.Boolean),
-          migrations: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations),
-          observability: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsObservability,
-          ),
-          placement: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement),
-          tags: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList),
-          tailConsumers: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList.pipe(
-              T.Body("tail_consumers"),
-            ),
-          ),
-          usageModel: S.optional(
-            DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel.pipe(
-              T.Body("usage_model"),
-            ),
-          ),
+          migrations: S.optional(__S(95, __c11, 7)),
+          observability: S.optional(__S(99, __c12, 3)),
+          placement: S.optional(__S(100, __c12, 4)),
+          tags: S.optional(__S(27, __c3, 3)),
+          tailConsumers: S.optional(__S(102, __c12, 6).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditRequestSettings",
@@ -8681,7 +7518,7 @@ function __c13(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          settings: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettings),
+          settings: S.optional(__S(103, __c12, 7)),
         })
           .pipe(
             T.Http({
@@ -8797,7 +7634,7 @@ function __c13(j: number): any {
         ),
       );
     case 2:
-      return S.Array(DispatchNamespacesScriptsSettingsEditResponseBindingsItem);
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -8810,45 +7647,35 @@ function __c13(j: number): any {
         ]),
       );
     case 4:
-      return S.Record(S.String, DispatchNamespacesScriptsSettingsEditResponseExportsValue);
+      return S.Record(S.String, __S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario:
-            DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario,
+          scenario: S.String,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
           referencingScripts: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList,
-            ).pipe(T.Body("referencing_scripts")),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("referencing_scripts")),
           ),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem",
       });
     case 6:
-      return S.Array(DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem);
+      return S.Array(__S(109, __c13, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          created: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList,
-          deleted: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList,
-          info: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList,
-          removableEntries:
-            DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList.pipe(
-              T.Body("removable_entries"),
-            ),
-          renamed: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList,
-          transferPending:
-            DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList.pipe(
-              T.Body("transfer_pending"),
-            ),
-          transferred:
-            DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList,
-          updated: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList,
-          warnings: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList,
+          created: __S(12, __c1, 4),
+          deleted: __S(12, __c1, 4),
+          info: __S(110, __c13, 6),
+          removableEntries: __S(12, __c1, 4).pipe(T.Body("removable_entries")),
+          renamed: __S(57, __c7, 1),
+          transferPending: __S(59, __c7, 3).pipe(T.Body("transfer_pending")),
+          transferred: __S(61, __c7, 5),
+          updated: __S(12, __c1, 4),
+          warnings: __S(63, __c7, 7),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation",
@@ -8875,19 +7702,11 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList,
-            ),
-          ),
+          destinations: S.optional(S.NullOr(__S(12, __c1, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy,
-            ).pipe(T.Body("propagation_policy")),
-          ),
+          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces",
@@ -8897,16 +7716,10 @@ function __c14(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues),
-          ),
-          logs: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs),
-          ),
+          issues: S.optional(S.NullOr(__S(30, __c3, 6))),
+          logs: S.optional(S.NullOr(__S(67, __c8, 3))),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces),
-          ),
+          traces: S.optional(S.NullOr(__S(113, __c14, 1))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsSettingsEditResponseObservability",
@@ -8927,42 +7740,24 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseBindingsList)),
-          cacheOptions: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptCacheOptions).pipe(
-              T.Body("cache_options"),
-            ),
-          ),
+          bindings: S.optional(S.NullOr(__S(106, __c13, 2))),
+          cacheOptions: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList).pipe(
-              T.Body("compatibility_flags"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("compatibility_flags")),
           ),
-          exports: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseExportsMap)),
+          exports: S.optional(S.NullOr(__S(108, __c13, 4))),
           exportsReconciliation: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation).pipe(
-              T.Body("exports_reconciliation"),
-            ),
+            S.NullOr(__S(111, __c13, 7)).pipe(T.Body("exports_reconciliation")),
           ),
-          limits: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseLimits)),
+          limits: S.optional(S.NullOr(__S(65, __c8, 1))),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          migrations: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseMigrations)),
-          observability: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservability),
-          ),
-          placement: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponsePlacement)),
-          tags: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseTagsList)),
-          tailConsumers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsEditResponseTailConsumersList).pipe(
-              T.Body("tail_consumers"),
-            ),
-          ),
-          usageModel: S.optional(
-            S.NullOr(DispatchNamespacesScriptsSettingsEditResponseUsageModel).pipe(
-              T.Body("usage_model"),
-            ),
-          ),
+          migrations: S.optional(S.NullOr(__S(112, __c14, 0))),
+          observability: S.optional(S.NullOr(__S(114, __c14, 2))),
+          placement: S.optional(S.NullOr(__S(115, __c14, 3))),
+          tags: S.optional(S.NullOr(__S(27, __c3, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchDispatchNamespaceScriptSettingResponse",
@@ -8982,17 +7777,9 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          htmlHandling: S.optional(
-            PutDispatchNamespaceScriptAssetsConfigHtmlHandling.pipe(T.Body("html_handling")),
-          ),
-          notFoundHandling: S.optional(
-            PutDispatchNamespaceScriptAssetsConfigNotFoundHandling.pipe(
-              T.Body("not_found_handling"),
-            ),
-          ),
-          runWorkerFirst: S.optional(
-            PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst.pipe(T.Body("run_worker_first")),
-          ),
+          htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
+          runWorkerFirst: S.optional(__S(118, __c14, 6).pipe(T.Body("run_worker_first"))),
           serveDirectly: S.optional(S.Boolean.pipe(T.Body("serve_directly"))),
           headers: S.optional(S.String.pipe(T.Body("_headers"))),
           redirects: S.optional(S.String.pipe(T.Body("_redirects"))),
@@ -9007,7 +7794,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(PutDispatchNamespaceScriptAssetsConfig),
+          config: S.optional(__S(119, __c14, 7)),
           jwt: S.optional(S.String),
         }),
       ).annotate({
@@ -9118,19 +7905,19 @@ function __c15(j: number): any {
         ),
       );
     case 2:
-      return S.Array(PutDispatchNamespaceScriptBinding);
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           className: S.String.pipe(T.Body("class_name")),
           name: S.optional(S.String),
-          images: S.optional(ContainerImageMap.pipe(T.KeyDictionary({}))),
+          images: S.optional(__S(20, __c2, 4).pipe(T.KeyDictionary({}))),
         }),
       ).annotate({
         identifier: "PutDispatchNamespaceScriptContainer",
       });
     case 4:
-      return S.Array(PutDispatchNamespaceScriptContainer);
+      return S.Array(__S(123, __c15, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -9160,7 +7947,7 @@ function __c15(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(PutDispatchNamespaceScriptMetadataStringList),
+          destinations: S.optional(__S(27, __c3, 3)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
         }),
@@ -9174,15 +7961,11 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(PutDispatchNamespaceScriptMetadataStringList),
+          destinations: S.optional(__S(27, __c3, 3)),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(
-            PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy.pipe(
-              T.Body("propagation_policy"),
-            ),
-          ),
+          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
         }),
       ).annotate({
         identifier: "PutDispatchNamespaceScriptObservabilityTraces",
@@ -9200,9 +7983,9 @@ function __c16(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          logs: S.optional(S.NullOr(PutDispatchNamespaceScriptObservabilityLogs)),
-          traces: S.optional(S.NullOr(PutDispatchNamespaceScriptObservabilityTraces)),
-          issues: S.optional(PutDispatchNamespaceScriptObservabilityIssues),
+          logs: S.optional(S.NullOr(__S(127, __c15, 7))),
+          traces: S.optional(S.NullOr(__S(128, __c16, 0))),
+          issues: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({
         identifier: "PutDispatchNamespaceScriptMetadataObservability",
@@ -9231,7 +8014,7 @@ function __c16(j: number): any {
         identifier: "PutDispatchNamespaceScriptTailConsumer",
       });
     case 5:
-      return S.Array(PutDispatchNamespaceScriptTailConsumer);
+      return S.Array(__S(132, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9244,41 +8027,27 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(PutDispatchNamespaceScriptMetadataAnnotations),
-          assets: S.optional(PutDispatchNamespaceScriptMetadataAssets),
-          bindings: S.optional(PutDispatchNamespaceScriptMetadataBindingsList),
+          annotations: S.optional(__S(117, __c14, 5)),
+          assets: S.optional(__S(120, __c15, 0)),
+          bindings: S.optional(__S(122, __c15, 2)),
           bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(
-            PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("compatibility_flags")),
-          ),
-          containers: S.optional(PutDispatchNamespaceScriptMetadataContainersList),
+          compatibilityFlags: S.optional(__S(27, __c3, 3).pipe(T.Body("compatibility_flags"))),
+          containers: S.optional(__S(124, __c15, 4)),
           keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
-          keepBindings: S.optional(
-            PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("keep_bindings")),
-          ),
-          limits: S.optional(PutDispatchNamespaceScriptMetadataLimits),
+          keepBindings: S.optional(__S(27, __c3, 3).pipe(T.Body("keep_bindings"))),
+          limits: S.optional(__S(125, __c15, 5)),
           logpush: S.optional(S.Boolean),
           mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
-          migrations: S.optional(PutDispatchNamespaceScriptMetadataMigrations),
-          observability: S.optional(PutDispatchNamespaceScriptMetadataObservability),
-          placement: S.optional(PutDispatchNamespaceScriptMetadataPlacement),
-          tags: S.optional(PutDispatchNamespaceScriptMetadataStringList),
-          tailConsumers: S.optional(
-            S.NullOr(PutDispatchNamespaceScriptMetadataTailConsumersList).pipe(
-              T.Body("tail_consumers"),
-            ),
-          ),
-          usageModel: S.optional(
-            PutDispatchNamespaceScriptMetadataUsageModel.pipe(T.Body("usage_model")),
-          ),
-          cacheOptions: S.optional(
-            PutDispatchNamespaceScriptMetadataCache.pipe(T.Body("cache_options")),
-          ),
+          migrations: S.optional(__S(126, __c15, 6)),
+          observability: S.optional(__S(130, __c16, 2)),
+          placement: S.optional(__S(131, __c16, 3)),
+          tags: S.optional(__S(27, __c3, 3)),
+          tailConsumers: S.optional(S.NullOr(__S(133, __c16, 5)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+          cacheOptions: S.optional(__S(134, __c16, 6).pipe(T.Body("cache_options"))),
           streamingTailConsumers: S.optional(
-            S.NullOr(PutDispatchNamespaceScriptMetadataStreamingTailConsumersList).pipe(
-              T.Body("streaming_tail_consumers"),
-            ),
+            S.NullOr(__S(133, __c16, 5)).pipe(T.Body("streaming_tail_consumers")),
           ),
         }),
       ).annotate({
@@ -9294,10 +8063,8 @@ function __c17(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          bindingsInherit: S.optional(
-            DispatchNamespacesScriptsUpdateRequestBindingsInherit.pipe(T.Query("bindings_inherit")),
-          ),
-          metadata: PutDispatchNamespaceScriptMetadata.pipe(
+          bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
+          metadata: __S(135, __c16, 7).pipe(
             T.KeyDictionary({
               abrLevel: "abr_level",
               allowedDestinationAddresses: "allowed_destination_addresses",
@@ -9427,21 +8194,15 @@ function __c17(j: number): any {
         ]),
       );
     case 2:
-      return S.Record(S.String, DispatchNamespacesScriptsUpdateResponseExportsValue);
+      return S.Record(S.String, __S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(
-            S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList),
-          ),
+          destinations: S.optional(S.NullOr(__S(12, __c1, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy,
-            ).pipe(T.Body("propagation_policy")),
-          ),
+          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsUpdateResponseObservabilityTraces",
@@ -9451,12 +8212,10 @@ function __c17(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues),
-          ),
-          logs: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityLogs)),
+          issues: S.optional(S.NullOr(__S(30, __c3, 6))),
+          logs: S.optional(S.NullOr(__S(31, __c3, 7))),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityTraces)),
+          traces: S.optional(S.NullOr(__S(139, __c17, 3))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsUpdateResponseObservability",
@@ -9479,55 +8238,31 @@ function __c17(j: number): any {
         S.Struct({
           startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
           id: S.optional(S.NullOr(S.String)),
-          cacheOptions: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptCacheOptions).pipe(
-              T.Body("cache_options"),
-            ),
-          ),
+          cacheOptions: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
-            S.NullOr(DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList).pipe(
-              T.Body("compatibility_flags"),
-            ),
+            S.NullOr(__S(27, __c3, 3)).pipe(T.Body("compatibility_flags")),
           ),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           entryPoint: S.optional(S.NullOr(S.String).pipe(T.Body("entry_point"))),
           etag: S.optional(S.NullOr(S.String)),
-          exports: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseExportsMap)),
-          handlers: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseHandlersList)),
+          exports: S.optional(S.NullOr(__S(138, __c17, 2))),
+          handlers: S.optional(S.NullOr(__S(27, __c3, 3))),
           hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
           hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsUpdateResponseNamedHandlersList).pipe(
-              T.Body("named_handlers"),
-            ),
-          ),
-          observability: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseObservability)),
-          placement: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacement)),
-          placementMode: S.optional(
-            S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementMode).pipe(
-              T.Body("placement_mode"),
-            ),
-          ),
-          placementStatus: S.optional(
-            S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementStatus).pipe(
-              T.Body("placement_status"),
-            ),
-          ),
+          namedHandlers: S.optional(S.NullOr(__S(29, __c3, 5)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(140, __c17, 4))),
+          placement: S.optional(S.NullOr(__S(141, __c17, 5))),
+          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
+          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
           tag: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseTagsList)),
-          tailConsumers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsUpdateResponseTailConsumersList).pipe(
-              T.Body("tail_consumers"),
-            ),
-          ),
-          usageModel: S.optional(
-            S.NullOr(DispatchNamespacesScriptsUpdateResponseUsageModel).pipe(T.Body("usage_model")),
-          ),
+          tags: S.optional(S.NullOr(__S(27, __c3, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutDispatchNamespaceScriptResponse",
@@ -9551,8 +8286,8 @@ function __c18(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          metadata: DispatchNamespacesScriptsContentUpdateRequestMetadata,
-          files: S.optional(DispatchNamespacesScriptsContentUpdateRequestFilesList),
+          metadata: __S(143, __c17, 7),
+          files: S.optional(__S(27, __c3, 3)),
           cfworkerbodypart: S.optional(S.String.pipe(T.Header("CF-WORKER-BODY-PART"))),
           cfworkermainmodulepart: S.optional(S.String.pipe(T.Header("CF-WORKER-MAIN-MODULE-PART"))),
         })
@@ -9579,36 +8314,26 @@ function __c18(j: number): any {
         ]),
       );
     case 2:
-      return S.Record(S.String, DispatchNamespacesScriptsContentUpdateResponseExportsValue);
+      return S.Record(S.String, __S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          handlers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList),
-          ),
+          handlers: S.optional(S.NullOr(__S(12, __c1, 4))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem",
       });
     case 4:
-      return S.Array(DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem);
+      return S.Array(__S(147, __c18, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList,
-            ),
-          ),
+          destinations: S.optional(S.NullOr(__S(12, __c1, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(
-            S.NullOr(
-              DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy,
-            ).pipe(T.Body("propagation_policy")),
-          ),
+          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces",
@@ -9618,16 +8343,10 @@ function __c18(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues),
-          ),
-          logs: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs),
-          ),
+          issues: S.optional(S.NullOr(__S(30, __c3, 6))),
+          logs: S.optional(S.NullOr(__S(67, __c8, 3))),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces),
-          ),
+          traces: S.optional(S.NullOr(__S(149, __c18, 5))),
         }),
       ).annotate({
         identifier: "DispatchNamespacesScriptsContentUpdateResponseObservability",
@@ -9650,65 +8369,35 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DispatchNamespacesScriptsGetResponseScriptTailConsumersItem);
+      return S.Array(__S(35, __c4, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          cacheOptions: S.optional(
-            S.NullOr(DispatchNamespacesScriptsGetResponseScriptCacheOptions).pipe(
-              T.Body("cache_options"),
-            ),
-          ),
+          cacheOptions: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList).pipe(
-              T.Body("compatibility_flags"),
-            ),
+            S.NullOr(__S(12, __c1, 4)).pipe(T.Body("compatibility_flags")),
           ),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           etag: S.optional(S.NullOr(S.String)),
-          exports: S.optional(S.NullOr(DispatchNamespacesScriptsContentUpdateResponseExportsMap)),
-          handlers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseHandlersList),
-          ),
+          exports: S.optional(S.NullOr(__S(146, __c18, 2))),
+          handlers: S.optional(S.NullOr(__S(27, __c3, 3))),
           hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
           hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList).pipe(
-              T.Body("named_handlers"),
-            ),
-          ),
-          observability: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservability),
-          ),
-          placement: S.optional(S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacement)),
-          placementMode: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementMode).pipe(
-              T.Body("placement_mode"),
-            ),
-          ),
-          placementStatus: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementStatus).pipe(
-              T.Body("placement_status"),
-            ),
-          ),
+          namedHandlers: S.optional(S.NullOr(__S(148, __c18, 4)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(150, __c18, 6))),
+          placement: S.optional(S.NullOr(__S(151, __c18, 7))),
+          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
+          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
           tag: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(DispatchNamespacesScriptsContentUpdateResponseTagsList)),
-          tailConsumers: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseTailConsumersList).pipe(
-              T.Body("tail_consumers"),
-            ),
-          ),
-          usageModel: S.optional(
-            S.NullOr(DispatchNamespacesScriptsContentUpdateResponseUsageModel).pipe(
-              T.Body("usage_model"),
-            ),
-          ),
+          tags: S.optional(S.NullOr(__S(27, __c3, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(152, __c19, 0)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutDispatchNamespaceScriptContentResponse",
@@ -9721,10 +8410,10 @@ function __c19(j: number): any {
           scriptName: S.String.pipe(T.Label("script_name")),
           name: S.String,
           text: S.optional(S.String),
-          type: DispatchNamespacesScriptsSecretsUpdateRequestType,
+          type: S.String,
           algorithm: S.optional(S.Unknown),
-          format: S.optional(DispatchNamespacesScriptsSecretsUpdateRequestFormat),
-          usages: S.optional(DispatchNamespacesScriptsSecretsUpdateRequestUsagesList),
+          format: S.optional(S.String),
+          usages: S.optional(__S(46, __c5, 6)),
           keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
           keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
         })
@@ -9751,10 +8440,7 @@ function __c19(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        DispatchNamespacesScriptsSecretsUpdateResult.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(155, __c19, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutDispatchNamespaceScriptSecretResponse",
       });
@@ -9764,7 +8450,7 @@ function __c19(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          body: DispatchNamespacesScriptsTagsUpdateRequestBodyList.pipe(T.HttpBody()),
+          body: __S(27, __c3, 3).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -9778,4 +8464,9 @@ function __c19(j: number): any {
         identifier: "PutDispatchNamespaceScriptTagRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Greengrass", serviceShapeName: "Greengrass" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "greengrass" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2017-06-07");
@@ -104,7 +106,7 @@ export class BadRequestException
     "BadRequestException",
     {
       ErrorDetails: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+        /*@__PURE__*/ S.suspend(() => __S(85, __c10, 5)).annotate({ identifier: "ErrorDetails" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -115,7 +117,7 @@ export class InternalServerErrorException
     "InternalServerErrorException",
     {
       ErrorDetails: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+        /*@__PURE__*/ S.suspend(() => __S(85, __c10, 5)).annotate({ identifier: "ErrorDetails" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -125,29 +127,15 @@ export interface AssociateRoleToGroupRequest {
   GroupId: string;
   RoleArn?: string;
 }
-const AssociateRoleToGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateRoleToGroupRequest>;
 export interface AssociateRoleToGroupResponse {
   AssociatedAt?: string;
 }
-const AssociateRoleToGroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateRoleToGroupResponse>;
 export interface AssociateServiceRoleToAccountRequest {
   RoleArn?: string;
 }
-const AssociateServiceRoleToAccountRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AssociateServiceRoleToAccountRequest>;
 export interface AssociateServiceRoleToAccountResponse {
   AssociatedAt?: string;
 }
-const AssociateServiceRoleToAccountResponse =
-  AssociateRoleToGroupResponse as any as S.Schema<AssociateServiceRoleToAccountResponse>;
 export type __mapOf__string = { [key: string]: string | undefined };
 const __mapOf__string = /*@__PURE__*/ __L.at(__c0, 3);
 export interface Connector {
@@ -155,28 +143,18 @@ export interface Connector {
   Id?: string;
   Parameters?: { [key: string]: string | undefined };
 }
-const Connector = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Connector>;
 export type __listOfConnector = Connector[];
 const __listOfConnector = /*@__PURE__*/ __L.at(__c0, 5);
 export interface ConnectorDefinitionVersion {
   Connectors?: Connector[];
 }
-const ConnectorDefinitionVersion = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ConnectorDefinitionVersion>;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c0, 7);
 export interface CreateConnectorDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: ConnectorDefinitionVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateConnectorDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateConnectorDefinitionRequest>;
 export interface CreateConnectorDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -186,55 +164,34 @@ export interface CreateConnectorDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateConnectorDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateConnectorDefinitionResponse>;
 export interface CreateConnectorDefinitionVersionRequest {
   AmznClientToken?: string;
   ConnectorDefinitionId: string;
   Connectors?: Connector[];
 }
-const CreateConnectorDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateConnectorDefinitionVersionRequest>;
 export interface CreateConnectorDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateConnectorDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateConnectorDefinitionVersionResponse>;
 export interface Core {
   CertificateArn?: string;
   Id?: string;
   SyncShadow?: boolean;
   ThingArn?: string;
 }
-const Core = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Core>;
 export type __listOfCore = Core[];
 const __listOfCore = /*@__PURE__*/ __L.at(__c1, 5);
 export interface CoreDefinitionVersion {
   Cores?: Core[];
 }
-const CoreDefinitionVersion = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CoreDefinitionVersion>;
 export interface CreateCoreDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: CoreDefinitionVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateCoreDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateCoreDefinitionRequest>;
 export interface CreateCoreDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -244,33 +201,23 @@ export interface CreateCoreDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateCoreDefinitionResponse =
-  CreateConnectorDefinitionResponse as any as S.Schema<CreateCoreDefinitionResponse>;
 export interface CreateCoreDefinitionVersionRequest {
   AmznClientToken?: string;
   CoreDefinitionId: string;
   Cores?: Core[];
 }
-const CreateCoreDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateCoreDefinitionVersionRequest>;
 export interface CreateCoreDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateCoreDefinitionVersionResponse =
-  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateCoreDefinitionVersionResponse>;
 export type DeploymentType =
   | "NewDeployment"
   | "Redeployment"
   | "ResetDeployment"
   | "ForceResetDeployment"
   | (string & {});
-const DeploymentType = S.String;
-
 export interface CreateDeploymentRequest {
   AmznClientToken?: string;
   DeploymentId?: string;
@@ -278,18 +225,10 @@ export interface CreateDeploymentRequest {
   GroupId: string;
   GroupVersionId?: string;
 }
-const CreateDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateDeploymentRequest>;
 export interface CreateDeploymentResponse {
   DeploymentArn?: string;
   DeploymentId?: string;
 }
-const CreateDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateDeploymentResponse>;
 export interface Device {
   CertificateArn?: string;
   Id?: string;
@@ -301,20 +240,12 @@ const __listOfDevice = __listOfCore as any as S.Schema<__listOfDevice>;
 export interface DeviceDefinitionVersion {
   Devices?: Device[];
 }
-const DeviceDefinitionVersion = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeviceDefinitionVersion>;
 export interface CreateDeviceDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: DeviceDefinitionVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDeviceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateDeviceDefinitionRequest>;
 export interface CreateDeviceDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -324,67 +255,39 @@ export interface CreateDeviceDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateDeviceDefinitionResponse =
-  CreateConnectorDefinitionResponse as any as S.Schema<CreateDeviceDefinitionResponse>;
 export interface CreateDeviceDefinitionVersionRequest {
   AmznClientToken?: string;
   DeviceDefinitionId: string;
   Devices?: Device[];
 }
-const CreateDeviceDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateDeviceDefinitionVersionRequest>;
 export interface CreateDeviceDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateDeviceDefinitionVersionResponse =
-  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateDeviceDefinitionVersionResponse>;
 export type FunctionIsolationMode = "GreengrassContainer" | "NoContainer" | (string & {});
-const FunctionIsolationMode = S.String;
-
 export interface FunctionRunAsConfig {
   Gid?: number;
   Uid?: number;
 }
-const FunctionRunAsConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<FunctionRunAsConfig>;
 export interface FunctionDefaultExecutionConfig {
   IsolationMode?: FunctionIsolationMode;
   RunAs?: FunctionRunAsConfig;
 }
-const FunctionDefaultExecutionConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<FunctionDefaultExecutionConfig>;
 export interface FunctionDefaultConfig {
   Execution?: FunctionDefaultExecutionConfig;
 }
-const FunctionDefaultConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<FunctionDefaultConfig>;
 export type EncodingType = "binary" | "json" | (string & {});
-const EncodingType = S.String;
-
 export interface FunctionExecutionConfig {
   IsolationMode?: FunctionIsolationMode;
   RunAs?: FunctionRunAsConfig;
 }
-const FunctionExecutionConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<FunctionExecutionConfig>;
 export type Permission = "ro" | "rw" | (string & {});
-const Permission = S.String;
-
 export interface ResourceAccessPolicy {
   Permission?: Permission;
   ResourceId?: string;
 }
-const ResourceAccessPolicy = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ResourceAccessPolicy>;
 export type __listOfResourceAccessPolicy = ResourceAccessPolicy[];
 const __listOfResourceAccessPolicy = /*@__PURE__*/ __L.at(__c3, 3);
 export interface FunctionConfigurationEnvironment {
@@ -393,10 +296,6 @@ export interface FunctionConfigurationEnvironment {
   ResourceAccessPolicies?: ResourceAccessPolicy[];
   Variables?: { [key: string]: string | undefined };
 }
-const FunctionConfigurationEnvironment = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<FunctionConfigurationEnvironment>;
 export interface FunctionConfiguration {
   EncodingType?: EncodingType;
   Environment?: FunctionConfigurationEnvironment;
@@ -407,36 +306,23 @@ export interface FunctionConfiguration {
   Timeout?: number;
   FunctionRuntimeOverride?: string;
 }
-const FunctionConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<FunctionConfiguration>;
 export interface Function {
   FunctionArn?: string;
   FunctionConfiguration?: FunctionConfiguration;
   Id?: string;
 }
-const Function = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Function>;
 export type __listOfFunction = Function[];
 const __listOfFunction = /*@__PURE__*/ __L.at(__c3, 7);
 export interface FunctionDefinitionVersion {
   DefaultConfig?: FunctionDefaultConfig;
   Functions?: Function[];
 }
-const FunctionDefinitionVersion = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<FunctionDefinitionVersion>;
 export interface CreateFunctionDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: FunctionDefinitionVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateFunctionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateFunctionDefinitionRequest>;
 export interface CreateFunctionDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -446,26 +332,18 @@ export interface CreateFunctionDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateFunctionDefinitionResponse =
-  CreateConnectorDefinitionResponse as any as S.Schema<CreateFunctionDefinitionResponse>;
 export interface CreateFunctionDefinitionVersionRequest {
   AmznClientToken?: string;
   DefaultConfig?: FunctionDefaultConfig;
   FunctionDefinitionId: string;
   Functions?: Function[];
 }
-const CreateFunctionDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateFunctionDefinitionVersionRequest>;
 export interface CreateFunctionDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateFunctionDefinitionVersionResponse =
-  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateFunctionDefinitionVersionResponse>;
 export interface GroupVersion {
   ConnectorDefinitionVersionArn?: string;
   CoreDefinitionVersionArn?: string;
@@ -475,14 +353,12 @@ export interface GroupVersion {
   ResourceDefinitionVersionArn?: string;
   SubscriptionDefinitionVersionArn?: string;
 }
-const GroupVersion = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GroupVersion>;
 export interface CreateGroupRequest {
   AmznClientToken?: string;
   InitialVersion?: GroupVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateGroupRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateGroupRequest>;
 export interface CreateGroupResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -492,22 +368,13 @@ export interface CreateGroupResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateGroupResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CreateGroupResponse>;
 export interface CreateGroupCertificateAuthorityRequest {
   AmznClientToken?: string;
   GroupId: string;
 }
-const CreateGroupCertificateAuthorityRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateGroupCertificateAuthorityRequest>;
 export interface CreateGroupCertificateAuthorityResponse {
   GroupCertificateAuthorityArn?: string;
 }
-const CreateGroupCertificateAuthorityResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateGroupCertificateAuthorityResponse>;
 export interface CreateGroupVersionRequest {
   AmznClientToken?: string;
   ConnectorDefinitionVersionArn?: string;
@@ -519,27 +386,15 @@ export interface CreateGroupVersionRequest {
   ResourceDefinitionVersionArn?: string;
   SubscriptionDefinitionVersionArn?: string;
 }
-const CreateGroupVersionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateGroupVersionRequest>;
 export interface CreateGroupVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateGroupVersionResponse =
-  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateGroupVersionResponse>;
 export type LoggerComponent = "GreengrassSystem" | "Lambda" | (string & {});
-const LoggerComponent = S.String;
-
 export type LoggerLevel = "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | (string & {});
-const LoggerLevel = S.String;
-
 export type LoggerType = "FileSystem" | "AWSCloudWatch" | (string & {});
-const LoggerType = S.String;
-
 export interface Logger {
   Component?: LoggerComponent;
   Id?: string;
@@ -547,26 +402,17 @@ export interface Logger {
   Space?: number;
   Type?: LoggerType;
 }
-const Logger = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Logger>;
 export type __listOfLogger = Logger[];
 const __listOfLogger = /*@__PURE__*/ __L.at(__c5, 2);
 export interface LoggerDefinitionVersion {
   Loggers?: Logger[];
 }
-const LoggerDefinitionVersion = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<LoggerDefinitionVersion>;
 export interface CreateLoggerDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: LoggerDefinitionVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateLoggerDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateLoggerDefinitionRequest>;
 export interface CreateLoggerDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -576,83 +422,50 @@ export interface CreateLoggerDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateLoggerDefinitionResponse =
-  CreateConnectorDefinitionResponse as any as S.Schema<CreateLoggerDefinitionResponse>;
 export interface CreateLoggerDefinitionVersionRequest {
   AmznClientToken?: string;
   LoggerDefinitionId: string;
   Loggers?: Logger[];
 }
-const CreateLoggerDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateLoggerDefinitionVersionRequest>;
 export interface CreateLoggerDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateLoggerDefinitionVersionResponse =
-  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateLoggerDefinitionVersionResponse>;
 export interface GroupOwnerSetting {
   AutoAddGroupOwner?: boolean;
   GroupOwner?: string;
 }
-const GroupOwnerSetting = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GroupOwnerSetting>;
 export interface LocalDeviceResourceData {
   GroupOwnerSetting?: GroupOwnerSetting;
   SourcePath?: string;
 }
-const LocalDeviceResourceData = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<LocalDeviceResourceData>;
 export interface LocalVolumeResourceData {
   DestinationPath?: string;
   GroupOwnerSetting?: GroupOwnerSetting;
   SourcePath?: string;
 }
-const LocalVolumeResourceData = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<LocalVolumeResourceData>;
 export interface ResourceDownloadOwnerSetting {
   GroupOwner?: string;
   GroupPermission?: Permission;
 }
-const ResourceDownloadOwnerSetting = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ResourceDownloadOwnerSetting>;
 export interface S3MachineLearningModelResourceData {
   DestinationPath?: string;
   OwnerSetting?: ResourceDownloadOwnerSetting;
   S3Uri?: string;
 }
-const S3MachineLearningModelResourceData = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<S3MachineLearningModelResourceData>;
 export interface SageMakerMachineLearningModelResourceData {
   DestinationPath?: string;
   OwnerSetting?: ResourceDownloadOwnerSetting;
   SageMakerJobArn?: string;
 }
-const SageMakerMachineLearningModelResourceData = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<SageMakerMachineLearningModelResourceData>;
 export type __listOf__string = string[];
 const __listOf__string = /*@__PURE__*/ __L.at(__c6, 4);
 export interface SecretsManagerSecretResourceData {
   ARN?: string;
   AdditionalStagingLabelsToDownload?: string[];
 }
-const SecretsManagerSecretResourceData = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<SecretsManagerSecretResourceData>;
 export interface ResourceDataContainer {
   LocalDeviceResourceData?: LocalDeviceResourceData;
   LocalVolumeResourceData?: LocalVolumeResourceData;
@@ -660,35 +473,22 @@ export interface ResourceDataContainer {
   SageMakerMachineLearningModelResourceData?: SageMakerMachineLearningModelResourceData;
   SecretsManagerSecretResourceData?: SecretsManagerSecretResourceData;
 }
-const ResourceDataContainer = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ResourceDataContainer>;
 export interface Resource {
   Id?: string;
   Name?: string;
   ResourceDataContainer?: ResourceDataContainer;
 }
-const Resource = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Resource>;
 export type __listOfResource = Resource[];
 const __listOfResource = /*@__PURE__*/ __L.at(__c7, 0);
 export interface ResourceDefinitionVersion {
   Resources?: Resource[];
 }
-const ResourceDefinitionVersion = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ResourceDefinitionVersion>;
 export interface CreateResourceDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: ResourceDefinitionVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateResourceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateResourceDefinitionRequest>;
 export interface CreateResourceDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -698,29 +498,19 @@ export interface CreateResourceDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateResourceDefinitionResponse =
-  CreateConnectorDefinitionResponse as any as S.Schema<CreateResourceDefinitionResponse>;
 export interface CreateResourceDefinitionVersionRequest {
   AmznClientToken?: string;
   ResourceDefinitionId: string;
   Resources?: Resource[];
 }
-const CreateResourceDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateResourceDefinitionVersionRequest>;
 export interface CreateResourceDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateResourceDefinitionVersionResponse =
-  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateResourceDefinitionVersionResponse>;
 export type S3UrlSignerRole = string;
 export type SoftwareToUpdate = "core" | "ota_agent" | (string & {});
-const SoftwareToUpdate = S.String;
-
 export type UpdateAgentLogLevel =
   | "NONE"
   | "TRACE"
@@ -731,21 +521,15 @@ export type UpdateAgentLogLevel =
   | "ERROR"
   | "FATAL"
   | (string & {});
-const UpdateAgentLogLevel = S.String;
-
 export type UpdateTargets = string[];
 const UpdateTargets = __listOf__string as any as S.Schema<UpdateTargets>;
 export type UpdateTargetsArchitecture = "armv6l" | "armv7l" | "x86_64" | "aarch64" | (string & {});
-const UpdateTargetsArchitecture = S.String;
-
 export type UpdateTargetsOperatingSystem =
   | "ubuntu"
   | "raspbian"
   | "amazon_linux"
   | "openwrt"
   | (string & {});
-const UpdateTargetsOperatingSystem = S.String;
-
 export interface CreateSoftwareUpdateJobRequest {
   AmznClientToken?: string;
   S3UrlSignerRole?: string;
@@ -755,45 +539,28 @@ export interface CreateSoftwareUpdateJobRequest {
   UpdateTargetsArchitecture?: UpdateTargetsArchitecture;
   UpdateTargetsOperatingSystem?: UpdateTargetsOperatingSystem;
 }
-const CreateSoftwareUpdateJobRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateSoftwareUpdateJobRequest>;
 export interface CreateSoftwareUpdateJobResponse {
   IotJobArn?: string;
   IotJobId?: string;
   PlatformSoftwareVersion?: string;
 }
-const CreateSoftwareUpdateJobResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateSoftwareUpdateJobResponse>;
 export interface Subscription {
   Id?: string;
   Source?: string;
   Subject?: string;
   Target?: string;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Subscription>;
 export type __listOfSubscription = Subscription[];
 const __listOfSubscription = /*@__PURE__*/ __L.at(__c7, 7);
 export interface SubscriptionDefinitionVersion {
   Subscriptions?: Subscription[];
 }
-const SubscriptionDefinitionVersion = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<SubscriptionDefinitionVersion>;
 export interface CreateSubscriptionDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: SubscriptionDefinitionVersion;
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateSubscriptionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateSubscriptionDefinitionRequest>;
 export interface CreateSubscriptionDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -803,160 +570,74 @@ export interface CreateSubscriptionDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-const CreateSubscriptionDefinitionResponse =
-  CreateConnectorDefinitionResponse as any as S.Schema<CreateSubscriptionDefinitionResponse>;
 export interface CreateSubscriptionDefinitionVersionRequest {
   AmznClientToken?: string;
   SubscriptionDefinitionId: string;
   Subscriptions?: Subscription[];
 }
-const CreateSubscriptionDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateSubscriptionDefinitionVersionRequest>;
 export interface CreateSubscriptionDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const CreateSubscriptionDefinitionVersionResponse =
-  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateSubscriptionDefinitionVersionResponse>;
 export interface DeleteConnectorDefinitionRequest {
   ConnectorDefinitionId: string;
 }
-const DeleteConnectorDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteConnectorDefinitionRequest>;
 export interface DeleteConnectorDefinitionResponse {}
-const DeleteConnectorDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteConnectorDefinitionResponse>;
 export interface DeleteCoreDefinitionRequest {
   CoreDefinitionId: string;
 }
-const DeleteCoreDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteCoreDefinitionRequest>;
 export interface DeleteCoreDefinitionResponse {}
-const DeleteCoreDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteCoreDefinitionResponse>;
 export interface DeleteDeviceDefinitionRequest {
   DeviceDefinitionId: string;
 }
-const DeleteDeviceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteDeviceDefinitionRequest>;
 export interface DeleteDeviceDefinitionResponse {}
-const DeleteDeviceDefinitionResponse =
-  DeleteCoreDefinitionResponse as any as S.Schema<DeleteDeviceDefinitionResponse>;
 export interface DeleteFunctionDefinitionRequest {
   FunctionDefinitionId: string;
 }
-const DeleteFunctionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteFunctionDefinitionRequest>;
 export interface DeleteFunctionDefinitionResponse {}
-const DeleteFunctionDefinitionResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<DeleteFunctionDefinitionResponse>;
 export interface DeleteGroupRequest {
   GroupId: string;
 }
-const DeleteGroupRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-const DeleteGroupResponse = DeleteCoreDefinitionResponse as any as S.Schema<DeleteGroupResponse>;
 export interface DeleteLoggerDefinitionRequest {
   LoggerDefinitionId: string;
 }
-const DeleteLoggerDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteLoggerDefinitionRequest>;
 export interface DeleteLoggerDefinitionResponse {}
-const DeleteLoggerDefinitionResponse =
-  DeleteCoreDefinitionResponse as any as S.Schema<DeleteLoggerDefinitionResponse>;
 export interface DeleteResourceDefinitionRequest {
   ResourceDefinitionId: string;
 }
-const DeleteResourceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteResourceDefinitionRequest>;
 export interface DeleteResourceDefinitionResponse {}
-const DeleteResourceDefinitionResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<DeleteResourceDefinitionResponse>;
 export interface DeleteSubscriptionDefinitionRequest {
   SubscriptionDefinitionId: string;
 }
-const DeleteSubscriptionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteSubscriptionDefinitionRequest>;
 export interface DeleteSubscriptionDefinitionResponse {}
-const DeleteSubscriptionDefinitionResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<DeleteSubscriptionDefinitionResponse>;
 export interface DisassociateRoleFromGroupRequest {
   GroupId: string;
 }
-const DisassociateRoleFromGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DisassociateRoleFromGroupRequest>;
 export interface DisassociateRoleFromGroupResponse {
   DisassociatedAt?: string;
 }
-const DisassociateRoleFromGroupResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DisassociateRoleFromGroupResponse>;
 export interface DisassociateServiceRoleFromAccountRequest {}
-const DisassociateServiceRoleFromAccountRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DisassociateServiceRoleFromAccountRequest>;
 export interface DisassociateServiceRoleFromAccountResponse {
   DisassociatedAt?: string;
 }
-const DisassociateServiceRoleFromAccountResponse =
-  DisassociateRoleFromGroupResponse as any as S.Schema<DisassociateServiceRoleFromAccountResponse>;
 export interface GetAssociatedRoleRequest {
   GroupId: string;
 }
-const GetAssociatedRoleRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetAssociatedRoleRequest>;
 export interface GetAssociatedRoleResponse {
   AssociatedAt?: string;
   RoleArn?: string;
 }
-const GetAssociatedRoleResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetAssociatedRoleResponse>;
 export interface GetBulkDeploymentStatusRequest {
   BulkDeploymentId: string;
 }
-const GetBulkDeploymentStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetBulkDeploymentStatusRequest>;
 export interface BulkDeploymentMetrics {
   InvalidInputRecords?: number;
   RecordsProcessed?: number;
   RetryAttempts?: number;
 }
-const BulkDeploymentMetrics = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<BulkDeploymentMetrics>;
 export type BulkDeploymentStatus =
   | "Initializing"
   | "Running"
@@ -965,15 +646,11 @@ export type BulkDeploymentStatus =
   | "Stopped"
   | "Failed"
   | (string & {});
-const BulkDeploymentStatus = S.String;
-
 export interface ErrorDetail {
   DetailedErrorCode?: string;
   DetailedErrorMessage?: string;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ErrorDetail>;
 export type ErrorDetails = ErrorDetail[];
-const ErrorDetails = /*@__PURE__*/ __L.at(__c10, 5);
 export interface GetBulkDeploymentStatusResponse {
   BulkDeploymentMetrics?: BulkDeploymentMetrics;
   BulkDeploymentStatus?: BulkDeploymentStatus;
@@ -982,41 +659,24 @@ export interface GetBulkDeploymentStatusResponse {
   ErrorMessage?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetBulkDeploymentStatusResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetBulkDeploymentStatusResponse>;
 export interface GetConnectivityInfoRequest {
   ThingName: string;
 }
-const GetConnectivityInfoRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetConnectivityInfoRequest>;
 export interface ConnectivityInfo {
   HostAddress?: string;
   Id?: string;
   Metadata?: string;
   PortNumber?: number;
 }
-const ConnectivityInfo = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ConnectivityInfo>;
 export type __listOfConnectivityInfo = ConnectivityInfo[];
 const __listOfConnectivityInfo = /*@__PURE__*/ __L.at(__c11, 1);
 export interface GetConnectivityInfoResponse {
   ConnectivityInfo?: ConnectivityInfo[];
   Message?: string;
 }
-const GetConnectivityInfoResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetConnectivityInfoResponse>;
 export interface GetConnectorDefinitionRequest {
   ConnectorDefinitionId: string;
 }
-const GetConnectorDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetConnectorDefinitionRequest>;
 export interface GetConnectorDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1027,19 +687,11 @@ export interface GetConnectorDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetConnectorDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetConnectorDefinitionResponse>;
 export interface GetConnectorDefinitionVersionRequest {
   ConnectorDefinitionId: string;
   ConnectorDefinitionVersionId: string;
   NextToken?: string;
 }
-const GetConnectorDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetConnectorDefinitionVersionRequest>;
 export interface GetConnectorDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1050,17 +702,9 @@ export interface GetConnectorDefinitionVersionResponse {
   NextToken?: string;
   Version?: string;
 }
-const GetConnectorDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetConnectorDefinitionVersionResponse>;
 export interface GetCoreDefinitionRequest {
   CoreDefinitionId: string;
 }
-const GetCoreDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetCoreDefinitionRequest>;
 export interface GetCoreDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1071,16 +715,10 @@ export interface GetCoreDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetCoreDefinitionResponse =
-  GetConnectorDefinitionResponse as any as S.Schema<GetCoreDefinitionResponse>;
 export interface GetCoreDefinitionVersionRequest {
   CoreDefinitionId: string;
   CoreDefinitionVersionId: string;
 }
-const GetCoreDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetCoreDefinitionVersionRequest>;
 export interface GetCoreDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1091,18 +729,10 @@ export interface GetCoreDefinitionVersionResponse {
   NextToken?: string;
   Version?: string;
 }
-const GetCoreDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetCoreDefinitionVersionResponse>;
 export interface GetDeploymentStatusRequest {
   DeploymentId: string;
   GroupId: string;
 }
-const GetDeploymentStatusRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetDeploymentStatusRequest>;
 export interface GetDeploymentStatusResponse {
   DeploymentStatus?: string;
   DeploymentType?: DeploymentType;
@@ -1110,17 +740,9 @@ export interface GetDeploymentStatusResponse {
   ErrorMessage?: string;
   UpdatedAt?: string;
 }
-const GetDeploymentStatusResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetDeploymentStatusResponse>;
 export interface GetDeviceDefinitionRequest {
   DeviceDefinitionId: string;
 }
-const GetDeviceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetDeviceDefinitionRequest>;
 export interface GetDeviceDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1131,17 +753,11 @@ export interface GetDeviceDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetDeviceDefinitionResponse =
-  GetConnectorDefinitionResponse as any as S.Schema<GetDeviceDefinitionResponse>;
 export interface GetDeviceDefinitionVersionRequest {
   DeviceDefinitionId: string;
   DeviceDefinitionVersionId: string;
   NextToken?: string;
 }
-const GetDeviceDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetDeviceDefinitionVersionRequest>;
 export interface GetDeviceDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1152,17 +768,9 @@ export interface GetDeviceDefinitionVersionResponse {
   NextToken?: string;
   Version?: string;
 }
-const GetDeviceDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetDeviceDefinitionVersionResponse>;
 export interface GetFunctionDefinitionRequest {
   FunctionDefinitionId: string;
 }
-const GetFunctionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetFunctionDefinitionRequest>;
 export interface GetFunctionDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1173,17 +781,11 @@ export interface GetFunctionDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetFunctionDefinitionResponse =
-  GetConnectorDefinitionResponse as any as S.Schema<GetFunctionDefinitionResponse>;
 export interface GetFunctionDefinitionVersionRequest {
   FunctionDefinitionId: string;
   FunctionDefinitionVersionId: string;
   NextToken?: string;
 }
-const GetFunctionDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetFunctionDefinitionVersionRequest>;
 export interface GetFunctionDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1201,14 +803,9 @@ export interface GetFunctionDefinitionVersionResponse {
   NextToken?: string;
   Version?: string;
 }
-const GetFunctionDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetFunctionDefinitionVersionResponse>;
 export interface GetGroupRequest {
   GroupId: string;
 }
-const GetGroupRequest = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetGroupRequest>;
 export interface GetGroupResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1219,48 +816,27 @@ export interface GetGroupResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetGroupResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetGroupResponse>;
 export interface GetGroupCertificateAuthorityRequest {
   CertificateAuthorityId: string;
   GroupId: string;
 }
-const GetGroupCertificateAuthorityRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetGroupCertificateAuthorityRequest>;
 export interface GetGroupCertificateAuthorityResponse {
   GroupCertificateAuthorityArn?: string;
   GroupCertificateAuthorityId?: string;
   PemEncodedCertificate?: string;
 }
-const GetGroupCertificateAuthorityResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetGroupCertificateAuthorityResponse>;
 export interface GetGroupCertificateConfigurationRequest {
   GroupId: string;
 }
-const GetGroupCertificateConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetGroupCertificateConfigurationRequest>;
 export interface GetGroupCertificateConfigurationResponse {
   CertificateAuthorityExpiryInMilliseconds?: string;
   CertificateExpiryInMilliseconds?: string;
   GroupId?: string;
 }
-const GetGroupCertificateConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetGroupCertificateConfigurationResponse>;
 export interface GetGroupVersionRequest {
   GroupId: string;
   GroupVersionId: string;
 }
-const GetGroupVersionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetGroupVersionRequest>;
 export interface GetGroupVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1268,17 +844,9 @@ export interface GetGroupVersionResponse {
   Id?: string;
   Version?: string;
 }
-const GetGroupVersionResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetGroupVersionResponse>;
 export interface GetLoggerDefinitionRequest {
   LoggerDefinitionId: string;
 }
-const GetLoggerDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetLoggerDefinitionRequest>;
 export interface GetLoggerDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1289,17 +857,11 @@ export interface GetLoggerDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetLoggerDefinitionResponse =
-  GetConnectorDefinitionResponse as any as S.Schema<GetLoggerDefinitionResponse>;
 export interface GetLoggerDefinitionVersionRequest {
   LoggerDefinitionId: string;
   LoggerDefinitionVersionId: string;
   NextToken?: string;
 }
-const GetLoggerDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetLoggerDefinitionVersionRequest>;
 export interface GetLoggerDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1314,17 +876,9 @@ export interface GetLoggerDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-const GetLoggerDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetLoggerDefinitionVersionResponse>;
 export interface GetResourceDefinitionRequest {
   ResourceDefinitionId: string;
 }
-const GetResourceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetResourceDefinitionRequest>;
 export interface GetResourceDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1335,16 +889,10 @@ export interface GetResourceDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetResourceDefinitionResponse =
-  GetConnectorDefinitionResponse as any as S.Schema<GetResourceDefinitionResponse>;
 export interface GetResourceDefinitionVersionRequest {
   ResourceDefinitionId: string;
   ResourceDefinitionVersionId: string;
 }
-const GetResourceDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetResourceDefinitionVersionRequest>;
 export interface GetResourceDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1371,28 +919,14 @@ export interface GetResourceDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-const GetResourceDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetResourceDefinitionVersionResponse>;
 export interface GetServiceRoleForAccountRequest {}
-const GetServiceRoleForAccountRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetServiceRoleForAccountRequest>;
 export interface GetServiceRoleForAccountResponse {
   AssociatedAt?: string;
   RoleArn?: string;
 }
-const GetServiceRoleForAccountResponse =
-  GetAssociatedRoleResponse as any as S.Schema<GetServiceRoleForAccountResponse>;
 export interface GetSubscriptionDefinitionRequest {
   SubscriptionDefinitionId: string;
 }
-const GetSubscriptionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetSubscriptionDefinitionRequest>;
 export interface GetSubscriptionDefinitionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1403,17 +937,11 @@ export interface GetSubscriptionDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetSubscriptionDefinitionResponse =
-  GetConnectorDefinitionResponse as any as S.Schema<GetSubscriptionDefinitionResponse>;
 export interface GetSubscriptionDefinitionVersionRequest {
   NextToken?: string;
   SubscriptionDefinitionId: string;
   SubscriptionDefinitionVersionId: string;
 }
-const GetSubscriptionDefinitionVersionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetSubscriptionDefinitionVersionRequest>;
 export interface GetSubscriptionDefinitionVersionResponse {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1429,56 +957,28 @@ export interface GetSubscriptionDefinitionVersionResponse {
   NextToken?: string;
   Version?: string;
 }
-const GetSubscriptionDefinitionVersionResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetSubscriptionDefinitionVersionResponse>;
 export interface GetThingRuntimeConfigurationRequest {
   ThingName: string;
 }
-const GetThingRuntimeConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetThingRuntimeConfigurationRequest>;
 export type ConfigurationSyncStatus = "InSync" | "OutOfSync" | (string & {});
-const ConfigurationSyncStatus = S.String;
-
 export type Telemetry = "On" | "Off" | (string & {});
-const Telemetry = S.String;
-
 export interface TelemetryConfiguration {
   ConfigurationSyncStatus?: ConfigurationSyncStatus;
   Telemetry?: Telemetry;
 }
-const TelemetryConfiguration = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<TelemetryConfiguration>;
 export interface RuntimeConfiguration {
   TelemetryConfiguration?: TelemetryConfiguration;
 }
-const RuntimeConfiguration = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<RuntimeConfiguration>;
 export interface GetThingRuntimeConfigurationResponse {
   RuntimeConfiguration?: RuntimeConfiguration & {
     TelemetryConfiguration: TelemetryConfiguration & { Telemetry: Telemetry };
   };
 }
-const GetThingRuntimeConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetThingRuntimeConfigurationResponse>;
 export interface ListBulkDeploymentDetailedReportsRequest {
   BulkDeploymentId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListBulkDeploymentDetailedReportsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ListBulkDeploymentDetailedReportsRequest>;
 export interface BulkDeploymentResult {
   CreatedAt?: string;
   DeploymentArn?: string;
@@ -1489,52 +989,29 @@ export interface BulkDeploymentResult {
   ErrorMessage?: string;
   GroupArn?: string;
 }
-const BulkDeploymentResult = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<BulkDeploymentResult>;
 export type BulkDeploymentResults = BulkDeploymentResult[];
-const BulkDeploymentResults = /*@__PURE__*/ __L.at(__c16, 2);
 export interface ListBulkDeploymentDetailedReportsResponse {
   Deployments?: BulkDeploymentResult[];
   NextToken?: string;
 }
-const ListBulkDeploymentDetailedReportsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListBulkDeploymentDetailedReportsResponse>;
 export interface ListBulkDeploymentsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListBulkDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListBulkDeploymentsRequest>;
 export interface BulkDeployment {
   BulkDeploymentArn?: string;
   BulkDeploymentId?: string;
   CreatedAt?: string;
 }
-const BulkDeployment = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<BulkDeployment>;
 export type BulkDeployments = BulkDeployment[];
-const BulkDeployments = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ListBulkDeploymentsResponse {
   BulkDeployments?: BulkDeployment[];
   NextToken?: string;
 }
-const ListBulkDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListBulkDeploymentsResponse>;
 export interface ListConnectorDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListConnectorDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListConnectorDefinitionsRequest>;
 export interface DefinitionInformation {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1545,84 +1022,51 @@ export interface DefinitionInformation {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const DefinitionInformation = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<DefinitionInformation>;
 export type __listOfDefinitionInformation = DefinitionInformation[];
 const __listOfDefinitionInformation = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListConnectorDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-const ListConnectorDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListConnectorDefinitionsResponse>;
 export interface ListConnectorDefinitionVersionsRequest {
   ConnectorDefinitionId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListConnectorDefinitionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListConnectorDefinitionVersionsRequest>;
 export interface VersionInformation {
   Arn?: string;
   CreationTimestamp?: string;
   Id?: string;
   Version?: string;
 }
-const VersionInformation = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<VersionInformation>;
 export type __listOfVersionInformation = VersionInformation[];
 const __listOfVersionInformation = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListConnectorDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListConnectorDefinitionVersionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListConnectorDefinitionVersionsResponse>;
 export interface ListCoreDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListCoreDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListCoreDefinitionsRequest>;
 export interface ListCoreDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-const ListCoreDefinitionsResponse =
-  ListConnectorDefinitionsResponse as any as S.Schema<ListCoreDefinitionsResponse>;
 export interface ListCoreDefinitionVersionsRequest {
   CoreDefinitionId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListCoreDefinitionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListCoreDefinitionVersionsRequest>;
 export interface ListCoreDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListCoreDefinitionVersionsResponse =
-  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListCoreDefinitionVersionsResponse>;
 export interface ListDeploymentsRequest {
   GroupId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListDeploymentsRequest>;
 export interface Deployment {
   CreatedAt?: string;
   DeploymentArn?: string;
@@ -1630,104 +1074,61 @@ export interface Deployment {
   DeploymentType?: DeploymentType;
   GroupArn?: string;
 }
-const Deployment = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<Deployment>;
 export type Deployments = Deployment[];
-const Deployments = /*@__PURE__*/ __L.at(__c18, 4);
 export interface ListDeploymentsResponse {
   Deployments?: Deployment[];
   NextToken?: string;
 }
-const ListDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListDeploymentsResponse>;
 export interface ListDeviceDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListDeviceDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListDeviceDefinitionsRequest>;
 export interface ListDeviceDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-const ListDeviceDefinitionsResponse =
-  ListConnectorDefinitionsResponse as any as S.Schema<ListDeviceDefinitionsResponse>;
 export interface ListDeviceDefinitionVersionsRequest {
   DeviceDefinitionId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListDeviceDefinitionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListDeviceDefinitionVersionsRequest>;
 export interface ListDeviceDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListDeviceDefinitionVersionsResponse =
-  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListDeviceDefinitionVersionsResponse>;
 export interface ListFunctionDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListFunctionDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListFunctionDefinitionsRequest>;
 export interface ListFunctionDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-const ListFunctionDefinitionsResponse =
-  ListConnectorDefinitionsResponse as any as S.Schema<ListFunctionDefinitionsResponse>;
 export interface ListFunctionDefinitionVersionsRequest {
   FunctionDefinitionId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListFunctionDefinitionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListFunctionDefinitionVersionsRequest>;
 export interface ListFunctionDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListFunctionDefinitionVersionsResponse =
-  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListFunctionDefinitionVersionsResponse>;
 export interface ListGroupCertificateAuthoritiesRequest {
   GroupId: string;
 }
-const ListGroupCertificateAuthoritiesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListGroupCertificateAuthoritiesRequest>;
 export interface GroupCertificateAuthorityProperties {
   GroupCertificateAuthorityArn?: string;
   GroupCertificateAuthorityId?: string;
 }
-const GroupCertificateAuthorityProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GroupCertificateAuthorityProperties>;
 export type __listOfGroupCertificateAuthorityProperties = GroupCertificateAuthorityProperties[];
 const __listOfGroupCertificateAuthorityProperties = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ListGroupCertificateAuthoritiesResponse {
   GroupCertificateAuthorities?: GroupCertificateAuthorityProperties[];
 }
-const ListGroupCertificateAuthoritiesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListGroupCertificateAuthoritiesResponse>;
 export interface ListGroupsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListGroupsRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<ListGroupsRequest>;
 export interface GroupInformation {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1737,324 +1138,176 @@ export interface GroupInformation {
   LatestVersionArn?: string;
   Name?: string;
 }
-const GroupInformation = CreateGroupResponse as any as S.Schema<GroupInformation>;
 export type __listOfGroupInformation = GroupInformation[];
 const __listOfGroupInformation = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListGroupsResponse {
   Groups?: GroupInformation[];
   NextToken?: string;
 }
-const ListGroupsResponse = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ListGroupsResponse>;
 export interface ListGroupVersionsRequest {
   GroupId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListGroupVersionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListGroupVersionsRequest>;
 export interface ListGroupVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListGroupVersionsResponse =
-  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListGroupVersionsResponse>;
 export interface ListLoggerDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListLoggerDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListLoggerDefinitionsRequest>;
 export interface ListLoggerDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-const ListLoggerDefinitionsResponse =
-  ListConnectorDefinitionsResponse as any as S.Schema<ListLoggerDefinitionsResponse>;
 export interface ListLoggerDefinitionVersionsRequest {
   LoggerDefinitionId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-const ListLoggerDefinitionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListLoggerDefinitionVersionsRequest>;
 export interface ListLoggerDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListLoggerDefinitionVersionsResponse =
-  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListLoggerDefinitionVersionsResponse>;
 export interface ListResourceDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListResourceDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListResourceDefinitionsRequest>;
 export interface ListResourceDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-const ListResourceDefinitionsResponse =
-  ListConnectorDefinitionsResponse as any as S.Schema<ListResourceDefinitionsResponse>;
 export interface ListResourceDefinitionVersionsRequest {
   MaxResults?: string;
   NextToken?: string;
   ResourceDefinitionId: string;
 }
-const ListResourceDefinitionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListResourceDefinitionVersionsRequest>;
 export interface ListResourceDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListResourceDefinitionVersionsResponse =
-  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListResourceDefinitionVersionsResponse>;
 export interface ListSubscriptionDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-const ListSubscriptionDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListSubscriptionDefinitionsRequest>;
 export interface ListSubscriptionDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-const ListSubscriptionDefinitionsResponse =
-  ListConnectorDefinitionsResponse as any as S.Schema<ListSubscriptionDefinitionsResponse>;
 export interface ListSubscriptionDefinitionVersionsRequest {
   MaxResults?: string;
   NextToken?: string;
   SubscriptionDefinitionId: string;
 }
-const ListSubscriptionDefinitionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListSubscriptionDefinitionVersionsRequest>;
 export interface ListSubscriptionDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-const ListSubscriptionDefinitionVersionsResponse =
-  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListSubscriptionDefinitionVersionsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ResetDeploymentsRequest {
   AmznClientToken?: string;
   Force?: boolean;
   GroupId: string;
 }
-const ResetDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ResetDeploymentsRequest>;
 export interface ResetDeploymentsResponse {
   DeploymentArn?: string;
   DeploymentId?: string;
 }
-const ResetDeploymentsResponse =
-  CreateDeploymentResponse as any as S.Schema<ResetDeploymentsResponse>;
 export interface StartBulkDeploymentRequest {
   AmznClientToken?: string;
   ExecutionRoleArn?: string;
   InputFileUri?: string;
   tags?: { [key: string]: string | undefined };
 }
-const StartBulkDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<StartBulkDeploymentRequest>;
 export interface StartBulkDeploymentResponse {
   BulkDeploymentArn?: string;
   BulkDeploymentId?: string;
 }
-const StartBulkDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<StartBulkDeploymentResponse>;
 export interface StopBulkDeploymentRequest {
   BulkDeploymentId: string;
 }
-const StopBulkDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<StopBulkDeploymentRequest>;
 export interface StopBulkDeploymentResponse {}
-const StopBulkDeploymentResponse =
-  DeleteCoreDefinitionResponse as any as S.Schema<StopBulkDeploymentResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   tags?: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteCoreDefinitionResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  DeleteCoreDefinitionResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectivityInfoRequest {
   ConnectivityInfo?: ConnectivityInfo[];
   ThingName: string;
 }
-const UpdateConnectivityInfoRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<UpdateConnectivityInfoRequest>;
 export interface UpdateConnectivityInfoResponse {
   Message?: string;
   Version?: string;
 }
-const UpdateConnectivityInfoResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<UpdateConnectivityInfoResponse>;
 export interface UpdateConnectorDefinitionRequest {
   ConnectorDefinitionId: string;
   Name?: string;
 }
-const UpdateConnectorDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<UpdateConnectorDefinitionRequest>;
 export interface UpdateConnectorDefinitionResponse {}
-const UpdateConnectorDefinitionResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateConnectorDefinitionResponse>;
 export interface UpdateCoreDefinitionRequest {
   CoreDefinitionId: string;
   Name?: string;
 }
-const UpdateCoreDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<UpdateCoreDefinitionRequest>;
 export interface UpdateCoreDefinitionResponse {}
-const UpdateCoreDefinitionResponse =
-  DeleteCoreDefinitionResponse as any as S.Schema<UpdateCoreDefinitionResponse>;
 export interface UpdateDeviceDefinitionRequest {
   DeviceDefinitionId: string;
   Name?: string;
 }
-const UpdateDeviceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<UpdateDeviceDefinitionRequest>;
 export interface UpdateDeviceDefinitionResponse {}
-const UpdateDeviceDefinitionResponse =
-  DeleteCoreDefinitionResponse as any as S.Schema<UpdateDeviceDefinitionResponse>;
 export interface UpdateFunctionDefinitionRequest {
   FunctionDefinitionId: string;
   Name?: string;
 }
-const UpdateFunctionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<UpdateFunctionDefinitionRequest>;
 export interface UpdateFunctionDefinitionResponse {}
-const UpdateFunctionDefinitionResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateFunctionDefinitionResponse>;
 export interface UpdateGroupRequest {
   GroupId: string;
   Name?: string;
 }
-const UpdateGroupRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResponse {}
-const UpdateGroupResponse = DeleteCoreDefinitionResponse as any as S.Schema<UpdateGroupResponse>;
 export interface UpdateGroupCertificateConfigurationRequest {
   CertificateExpiryInMilliseconds?: string;
   GroupId: string;
 }
-const UpdateGroupCertificateConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<UpdateGroupCertificateConfigurationRequest>;
 export interface UpdateGroupCertificateConfigurationResponse {
   CertificateAuthorityExpiryInMilliseconds?: string;
   CertificateExpiryInMilliseconds?: string;
   GroupId?: string;
 }
-const UpdateGroupCertificateConfigurationResponse =
-  GetGroupCertificateConfigurationResponse as any as S.Schema<UpdateGroupCertificateConfigurationResponse>;
 export interface UpdateLoggerDefinitionRequest {
   LoggerDefinitionId: string;
   Name?: string;
 }
-const UpdateLoggerDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<UpdateLoggerDefinitionRequest>;
 export interface UpdateLoggerDefinitionResponse {}
-const UpdateLoggerDefinitionResponse =
-  DeleteCoreDefinitionResponse as any as S.Schema<UpdateLoggerDefinitionResponse>;
 export interface UpdateResourceDefinitionRequest {
   Name?: string;
   ResourceDefinitionId: string;
 }
-const UpdateResourceDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<UpdateResourceDefinitionRequest>;
 export interface UpdateResourceDefinitionResponse {}
-const UpdateResourceDefinitionResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateResourceDefinitionResponse>;
 export interface UpdateSubscriptionDefinitionRequest {
   Name?: string;
   SubscriptionDefinitionId: string;
 }
-const UpdateSubscriptionDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<UpdateSubscriptionDefinitionRequest>;
 export interface UpdateSubscriptionDefinitionResponse {}
-const UpdateSubscriptionDefinitionResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateSubscriptionDefinitionResponse>;
 export interface TelemetryConfigurationUpdate {
   Telemetry?: Telemetry;
 }
-const TelemetryConfigurationUpdate = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<TelemetryConfigurationUpdate>;
 export interface UpdateThingRuntimeConfigurationRequest {
   TelemetryConfiguration?: TelemetryConfigurationUpdate;
   ThingName: string;
 }
-const UpdateThingRuntimeConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UpdateThingRuntimeConfigurationRequest>;
 export interface UpdateThingRuntimeConfigurationResponse {}
-const UpdateThingRuntimeConfigurationResponse =
-  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateThingRuntimeConfigurationResponse>;
 export type AssociateRoleToGroupError =
   | BadRequestException
   | InternalServerErrorException
@@ -2068,8 +1321,8 @@ export const associateRoleToGroup: API.OperationMethod<
   AssociateRoleToGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateRoleToGroupRequest,
-  output: AssociateRoleToGroupResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateRoleToGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateRoleToGroupResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2089,8 +1342,8 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   AssociateServiceRoleToAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateServiceRoleToAccountRequest,
-  output: AssociateServiceRoleToAccountResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<AssociateServiceRoleToAccountRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AssociateServiceRoleToAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2107,8 +1360,8 @@ export const createConnectorDefinition: API.OperationMethod<
   CreateConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectorDefinitionRequest,
-  output: CreateConnectorDefinitionResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateConnectorDefinitionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2125,8 +1378,8 @@ export const createConnectorDefinitionVersion: API.OperationMethod<
   CreateConnectorDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectorDefinitionVersionRequest,
-  output: CreateConnectorDefinitionVersionResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateConnectorDefinitionVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateConnectorDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2143,8 +1396,8 @@ export const createCoreDefinition: API.OperationMethod<
   CreateCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoreDefinitionRequest,
-  output: CreateCoreDefinitionResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<CreateCoreDefinitionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2161,8 +1414,8 @@ export const createCoreDefinitionVersion: API.OperationMethod<
   CreateCoreDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCoreDefinitionVersionRequest,
-  output: CreateCoreDefinitionVersionResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateCoreDefinitionVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateCoreDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2179,8 +1432,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentRequest,
-  output: CreateDeploymentResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CreateDeploymentResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2197,8 +1450,8 @@ export const createDeviceDefinition: API.OperationMethod<
   CreateDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeviceDefinitionRequest,
-  output: CreateDeviceDefinitionResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<CreateDeviceDefinitionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2215,8 +1468,8 @@ export const createDeviceDefinitionVersion: API.OperationMethod<
   CreateDeviceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeviceDefinitionVersionRequest,
-  output: CreateDeviceDefinitionVersionResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<CreateDeviceDefinitionVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateDeviceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2233,8 +1486,8 @@ export const createFunctionDefinition: API.OperationMethod<
   CreateFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFunctionDefinitionRequest,
-  output: CreateFunctionDefinitionResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateFunctionDefinitionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2251,8 +1504,8 @@ export const createFunctionDefinitionVersion: API.OperationMethod<
   CreateFunctionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFunctionDefinitionVersionRequest,
-  output: CreateFunctionDefinitionVersionResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<CreateFunctionDefinitionVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateFunctionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2269,8 +1522,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupRequest,
-  output: CreateGroupResponse,
+  input: __S(36, __c4, 4) as any as S.Schema<CreateGroupRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<CreateGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2290,8 +1543,8 @@ export const createGroupCertificateAuthority: API.OperationMethod<
   CreateGroupCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupCertificateAuthorityRequest,
-  output: CreateGroupCertificateAuthorityResponse,
+  input: __S(38, __c4, 6) as any as S.Schema<CreateGroupCertificateAuthorityRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<CreateGroupCertificateAuthorityResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2308,8 +1561,8 @@ export const createGroupVersion: API.OperationMethod<
   CreateGroupVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupVersionRequest,
-  output: CreateGroupVersionResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateGroupVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateGroupVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2326,8 +1579,8 @@ export const createLoggerDefinition: API.OperationMethod<
   CreateLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLoggerDefinitionRequest,
-  output: CreateLoggerDefinitionResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<CreateLoggerDefinitionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2344,8 +1597,8 @@ export const createLoggerDefinitionVersion: API.OperationMethod<
   CreateLoggerDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLoggerDefinitionVersionRequest,
-  output: CreateLoggerDefinitionVersionResponse,
+  input: __S(45, __c5, 5) as any as S.Schema<CreateLoggerDefinitionVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateLoggerDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2362,8 +1615,8 @@ export const createResourceDefinition: API.OperationMethod<
   CreateResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourceDefinitionRequest,
-  output: CreateResourceDefinitionResponse,
+  input: __S(58, __c7, 2) as any as S.Schema<CreateResourceDefinitionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2380,8 +1633,8 @@ export const createResourceDefinitionVersion: API.OperationMethod<
   CreateResourceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourceDefinitionVersionRequest,
-  output: CreateResourceDefinitionVersionResponse,
+  input: __S(59, __c7, 3) as any as S.Schema<CreateResourceDefinitionVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateResourceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2401,8 +1654,8 @@ export const createSoftwareUpdateJob: API.OperationMethod<
   CreateSoftwareUpdateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSoftwareUpdateJobRequest,
-  output: CreateSoftwareUpdateJobResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<CreateSoftwareUpdateJobRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateSoftwareUpdateJobResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2419,8 +1672,8 @@ export const createSubscriptionDefinition: API.OperationMethod<
   CreateSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionDefinitionRequest,
-  output: CreateSubscriptionDefinitionResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateSubscriptionDefinitionRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2437,8 +1690,8 @@ export const createSubscriptionDefinitionVersion: API.OperationMethod<
   CreateSubscriptionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionDefinitionVersionRequest,
-  output: CreateSubscriptionDefinitionVersionResponse,
+  input: __S(66, __c8, 2) as any as S.Schema<CreateSubscriptionDefinitionVersionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateSubscriptionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2455,8 +1708,8 @@ export const deleteConnectorDefinition: API.OperationMethod<
   DeleteConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorDefinitionRequest,
-  output: DeleteConnectorDefinitionResponse,
+  input: __S(67, __c8, 3) as any as S.Schema<DeleteConnectorDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<DeleteConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2473,8 +1726,8 @@ export const deleteCoreDefinition: API.OperationMethod<
   DeleteCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCoreDefinitionRequest,
-  output: DeleteCoreDefinitionResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<DeleteCoreDefinitionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<DeleteCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2491,8 +1744,8 @@ export const deleteDeviceDefinition: API.OperationMethod<
   DeleteDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceDefinitionRequest,
-  output: DeleteDeviceDefinitionResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<DeleteDeviceDefinitionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<DeleteDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2509,8 +1762,8 @@ export const deleteFunctionDefinition: API.OperationMethod<
   DeleteFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFunctionDefinitionRequest,
-  output: DeleteFunctionDefinitionResponse,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteFunctionDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<DeleteFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2527,8 +1780,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupRequest,
-  output: DeleteGroupResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<DeleteGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2545,8 +1798,8 @@ export const deleteLoggerDefinition: API.OperationMethod<
   DeleteLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLoggerDefinitionRequest,
-  output: DeleteLoggerDefinitionResponse,
+  input: __S(74, __c9, 2) as any as S.Schema<DeleteLoggerDefinitionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<DeleteLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2563,8 +1816,8 @@ export const deleteResourceDefinition: API.OperationMethod<
   DeleteResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourceDefinitionRequest,
-  output: DeleteResourceDefinitionResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteResourceDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<DeleteResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2581,8 +1834,8 @@ export const deleteSubscriptionDefinition: API.OperationMethod<
   DeleteSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionDefinitionRequest,
-  output: DeleteSubscriptionDefinitionResponse,
+  input: __S(76, __c9, 4) as any as S.Schema<DeleteSubscriptionDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<DeleteSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2602,8 +1855,8 @@ export const disassociateRoleFromGroup: API.OperationMethod<
   DisassociateRoleFromGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateRoleFromGroupRequest,
-  output: DisassociateRoleFromGroupResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DisassociateRoleFromGroupRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<DisassociateRoleFromGroupResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2620,8 +1873,8 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   DisassociateServiceRoleFromAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateServiceRoleFromAccountRequest,
-  output: DisassociateServiceRoleFromAccountResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DisassociateServiceRoleFromAccountRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>,
   errors: [InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2641,8 +1894,8 @@ export const getAssociatedRole: API.OperationMethod<
   GetAssociatedRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssociatedRoleRequest,
-  output: GetAssociatedRoleResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<GetAssociatedRoleRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetAssociatedRoleResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2659,8 +1912,8 @@ export const getBulkDeploymentStatus: API.OperationMethod<
   GetBulkDeploymentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBulkDeploymentStatusRequest,
-  output: GetBulkDeploymentStatusResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<GetBulkDeploymentStatusRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<GetBulkDeploymentStatusResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2680,8 +1933,8 @@ export const getConnectivityInfo: API.OperationMethod<
   GetConnectivityInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectivityInfoRequest,
-  output: GetConnectivityInfoResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<GetConnectivityInfoRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetConnectivityInfoResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2698,8 +1951,8 @@ export const getConnectorDefinition: API.OperationMethod<
   GetConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorDefinitionRequest,
-  output: GetConnectorDefinitionResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<GetConnectorDefinitionRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2716,8 +1969,8 @@ export const getConnectorDefinitionVersion: API.OperationMethod<
   GetConnectorDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorDefinitionVersionRequest,
-  output: GetConnectorDefinitionVersionResponse,
+  input: __S(93, __c11, 5) as any as S.Schema<GetConnectorDefinitionVersionRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetConnectorDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2734,8 +1987,8 @@ export const getCoreDefinition: API.OperationMethod<
   GetCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoreDefinitionRequest,
-  output: GetCoreDefinitionResponse,
+  input: __S(95, __c11, 7) as any as S.Schema<GetCoreDefinitionRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2752,8 +2005,8 @@ export const getCoreDefinitionVersion: API.OperationMethod<
   GetCoreDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCoreDefinitionVersionRequest,
-  output: GetCoreDefinitionVersionResponse,
+  input: __S(96, __c12, 0) as any as S.Schema<GetCoreDefinitionVersionRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetCoreDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2770,8 +2023,8 @@ export const getDeploymentStatus: API.OperationMethod<
   GetDeploymentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentStatusRequest,
-  output: GetDeploymentStatusResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<GetDeploymentStatusRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<GetDeploymentStatusResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2788,8 +2041,8 @@ export const getDeviceDefinition: API.OperationMethod<
   GetDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceDefinitionRequest,
-  output: GetDeviceDefinitionResponse,
+  input: __S(100, __c12, 4) as any as S.Schema<GetDeviceDefinitionRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2806,8 +2059,8 @@ export const getDeviceDefinitionVersion: API.OperationMethod<
   GetDeviceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceDefinitionVersionRequest,
-  output: GetDeviceDefinitionVersionResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<GetDeviceDefinitionVersionRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<GetDeviceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2824,8 +2077,8 @@ export const getFunctionDefinition: API.OperationMethod<
   GetFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFunctionDefinitionRequest,
-  output: GetFunctionDefinitionResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<GetFunctionDefinitionRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2842,8 +2095,8 @@ export const getFunctionDefinitionVersion: API.OperationMethod<
   GetFunctionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFunctionDefinitionVersionRequest,
-  output: GetFunctionDefinitionVersionResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<GetFunctionDefinitionVersionRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetFunctionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2860,8 +2113,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupRequest,
-  output: GetGroupResponse,
+  input: __S(106, __c13, 2) as any as S.Schema<GetGroupRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<GetGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2881,8 +2134,8 @@ export const getGroupCertificateAuthority: API.OperationMethod<
   GetGroupCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupCertificateAuthorityRequest,
-  output: GetGroupCertificateAuthorityResponse,
+  input: __S(108, __c13, 4) as any as S.Schema<GetGroupCertificateAuthorityRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<GetGroupCertificateAuthorityResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2902,8 +2155,8 @@ export const getGroupCertificateConfiguration: API.OperationMethod<
   GetGroupCertificateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupCertificateConfigurationRequest,
-  output: GetGroupCertificateConfigurationResponse,
+  input: __S(110, __c13, 6) as any as S.Schema<GetGroupCertificateConfigurationRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<GetGroupCertificateConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2920,8 +2173,8 @@ export const getGroupVersion: API.OperationMethod<
   GetGroupVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupVersionRequest,
-  output: GetGroupVersionResponse,
+  input: __S(112, __c14, 0) as any as S.Schema<GetGroupVersionRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetGroupVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2938,8 +2191,8 @@ export const getLoggerDefinition: API.OperationMethod<
   GetLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoggerDefinitionRequest,
-  output: GetLoggerDefinitionResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<GetLoggerDefinitionRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2956,8 +2209,8 @@ export const getLoggerDefinitionVersion: API.OperationMethod<
   GetLoggerDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoggerDefinitionVersionRequest,
-  output: GetLoggerDefinitionVersionResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<GetLoggerDefinitionVersionRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GetLoggerDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2974,8 +2227,8 @@ export const getResourceDefinition: API.OperationMethod<
   GetResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceDefinitionRequest,
-  output: GetResourceDefinitionResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<GetResourceDefinitionRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2992,8 +2245,8 @@ export const getResourceDefinitionVersion: API.OperationMethod<
   GetResourceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceDefinitionVersionRequest,
-  output: GetResourceDefinitionVersionResponse,
+  input: __S(118, __c14, 6) as any as S.Schema<GetResourceDefinitionVersionRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<GetResourceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3010,8 +2263,8 @@ export const getServiceRoleForAccount: API.OperationMethod<
   GetServiceRoleForAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRoleForAccountRequest,
-  output: GetServiceRoleForAccountResponse,
+  input: __S(120, __c15, 0) as any as S.Schema<GetServiceRoleForAccountRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetServiceRoleForAccountResponse>,
   errors: [InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3028,8 +2281,8 @@ export const getSubscriptionDefinition: API.OperationMethod<
   GetSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionDefinitionRequest,
-  output: GetSubscriptionDefinitionResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<GetSubscriptionDefinitionRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<GetSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3046,8 +2299,8 @@ export const getSubscriptionDefinitionVersion: API.OperationMethod<
   GetSubscriptionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionDefinitionVersionRequest,
-  output: GetSubscriptionDefinitionVersionResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<GetSubscriptionDefinitionVersionRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<GetSubscriptionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3067,8 +2320,8 @@ export const getThingRuntimeConfiguration: API.OperationMethod<
   GetThingRuntimeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThingRuntimeConfigurationRequest,
-  output: GetThingRuntimeConfigurationResponse,
+  input: __S(124, __c15, 4) as any as S.Schema<GetThingRuntimeConfigurationRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<GetThingRuntimeConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3085,8 +2338,8 @@ export const listBulkDeploymentDetailedReports: API.OperationMethod<
   ListBulkDeploymentDetailedReportsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBulkDeploymentDetailedReportsRequest,
-  output: ListBulkDeploymentDetailedReportsResponse,
+  input: __S(128, __c16, 0) as any as S.Schema<ListBulkDeploymentDetailedReportsRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<ListBulkDeploymentDetailedReportsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3103,8 +2356,8 @@ export const listBulkDeployments: API.OperationMethod<
   ListBulkDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBulkDeploymentsRequest,
-  output: ListBulkDeploymentsResponse,
+  input: __S(132, __c16, 4) as any as S.Schema<ListBulkDeploymentsRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<ListBulkDeploymentsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3121,8 +2374,8 @@ export const listConnectorDefinitions: API.OperationMethod<
   ListConnectorDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorDefinitionsRequest,
-  output: ListConnectorDefinitionsResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<ListConnectorDefinitionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListConnectorDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3139,8 +2392,8 @@ export const listConnectorDefinitionVersions: API.OperationMethod<
   ListConnectorDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorDefinitionVersionsRequest,
-  output: ListConnectorDefinitionVersionsResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<ListConnectorDefinitionVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListConnectorDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3157,8 +2410,8 @@ export const listCoreDefinitions: API.OperationMethod<
   ListCoreDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCoreDefinitionsRequest,
-  output: ListCoreDefinitionsResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<ListCoreDefinitionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListCoreDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3175,8 +2428,8 @@ export const listCoreDefinitionVersions: API.OperationMethod<
   ListCoreDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCoreDefinitionVersionsRequest,
-  output: ListCoreDefinitionVersionsResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<ListCoreDefinitionVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListCoreDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3193,8 +2446,8 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentsRequest,
-  output: ListDeploymentsResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<ListDeploymentsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3211,8 +2464,8 @@ export const listDeviceDefinitions: API.OperationMethod<
   ListDeviceDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceDefinitionsRequest,
-  output: ListDeviceDefinitionsResponse,
+  input: __S(150, __c18, 6) as any as S.Schema<ListDeviceDefinitionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListDeviceDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3229,8 +2482,8 @@ export const listDeviceDefinitionVersions: API.OperationMethod<
   ListDeviceDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceDefinitionVersionsRequest,
-  output: ListDeviceDefinitionVersionsResponse,
+  input: __S(151, __c18, 7) as any as S.Schema<ListDeviceDefinitionVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListDeviceDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3247,8 +2500,8 @@ export const listFunctionDefinitions: API.OperationMethod<
   ListFunctionDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFunctionDefinitionsRequest,
-  output: ListFunctionDefinitionsResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<ListFunctionDefinitionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListFunctionDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3265,8 +2518,8 @@ export const listFunctionDefinitionVersions: API.OperationMethod<
   ListFunctionDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFunctionDefinitionVersionsRequest,
-  output: ListFunctionDefinitionVersionsResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<ListFunctionDefinitionVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListFunctionDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3286,8 +2539,8 @@ export const listGroupCertificateAuthorities: API.OperationMethod<
   ListGroupCertificateAuthoritiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupCertificateAuthoritiesRequest,
-  output: ListGroupCertificateAuthoritiesResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<ListGroupCertificateAuthoritiesRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ListGroupCertificateAuthoritiesResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3304,8 +2557,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupsRequest,
-  output: ListGroupsResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<ListGroupsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ListGroupsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3322,8 +2575,8 @@ export const listGroupVersions: API.OperationMethod<
   ListGroupVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupVersionsRequest,
-  output: ListGroupVersionsResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<ListGroupVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListGroupVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3340,8 +2593,8 @@ export const listLoggerDefinitions: API.OperationMethod<
   ListLoggerDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLoggerDefinitionsRequest,
-  output: ListLoggerDefinitionsResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<ListLoggerDefinitionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListLoggerDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3358,8 +2611,8 @@ export const listLoggerDefinitionVersions: API.OperationMethod<
   ListLoggerDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLoggerDefinitionVersionsRequest,
-  output: ListLoggerDefinitionVersionsResponse,
+  input: __S(163, __c20, 3) as any as S.Schema<ListLoggerDefinitionVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListLoggerDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3376,8 +2629,8 @@ export const listResourceDefinitions: API.OperationMethod<
   ListResourceDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceDefinitionsRequest,
-  output: ListResourceDefinitionsResponse,
+  input: __S(164, __c20, 4) as any as S.Schema<ListResourceDefinitionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListResourceDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3394,8 +2647,8 @@ export const listResourceDefinitionVersions: API.OperationMethod<
   ListResourceDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceDefinitionVersionsRequest,
-  output: ListResourceDefinitionVersionsResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<ListResourceDefinitionVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListResourceDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3412,8 +2665,8 @@ export const listSubscriptionDefinitions: API.OperationMethod<
   ListSubscriptionDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSubscriptionDefinitionsRequest,
-  output: ListSubscriptionDefinitionsResponse,
+  input: __S(166, __c20, 6) as any as S.Schema<ListSubscriptionDefinitionsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListSubscriptionDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3430,8 +2683,8 @@ export const listSubscriptionDefinitionVersions: API.OperationMethod<
   ListSubscriptionDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSubscriptionDefinitionVersionsRequest,
-  output: ListSubscriptionDefinitionVersionsResponse,
+  input: __S(167, __c20, 7) as any as S.Schema<ListSubscriptionDefinitionVersionsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<ListSubscriptionDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3448,8 +2701,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3466,8 +2719,8 @@ export const resetDeployments: API.OperationMethod<
   ResetDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetDeploymentsRequest,
-  output: ResetDeploymentsResponse,
+  input: __S(170, __c21, 2) as any as S.Schema<ResetDeploymentsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ResetDeploymentsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3484,8 +2737,8 @@ export const startBulkDeployment: API.OperationMethod<
   StartBulkDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartBulkDeploymentRequest,
-  output: StartBulkDeploymentResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<StartBulkDeploymentRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<StartBulkDeploymentResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3502,8 +2755,8 @@ export const stopBulkDeployment: API.OperationMethod<
   StopBulkDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopBulkDeploymentRequest,
-  output: StopBulkDeploymentResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<StopBulkDeploymentRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<StopBulkDeploymentResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3520,8 +2773,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<TagResourceRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3538,8 +2791,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(175, __c21, 7) as any as S.Schema<UntagResourceRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3559,8 +2812,8 @@ export const updateConnectivityInfo: API.OperationMethod<
   UpdateConnectivityInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectivityInfoRequest,
-  output: UpdateConnectivityInfoResponse,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateConnectivityInfoRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<UpdateConnectivityInfoResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3577,8 +2830,8 @@ export const updateConnectorDefinition: API.OperationMethod<
   UpdateConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectorDefinitionRequest,
-  output: UpdateConnectorDefinitionResponse,
+  input: __S(178, __c22, 2) as any as S.Schema<UpdateConnectorDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<UpdateConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3595,8 +2848,8 @@ export const updateCoreDefinition: API.OperationMethod<
   UpdateCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCoreDefinitionRequest,
-  output: UpdateCoreDefinitionResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<UpdateCoreDefinitionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<UpdateCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3613,8 +2866,8 @@ export const updateDeviceDefinition: API.OperationMethod<
   UpdateDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceDefinitionRequest,
-  output: UpdateDeviceDefinitionResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<UpdateDeviceDefinitionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<UpdateDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3631,8 +2884,8 @@ export const updateFunctionDefinition: API.OperationMethod<
   UpdateFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFunctionDefinitionRequest,
-  output: UpdateFunctionDefinitionResponse,
+  input: __S(181, __c22, 5) as any as S.Schema<UpdateFunctionDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<UpdateFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3649,8 +2902,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupRequest,
-  output: UpdateGroupResponse,
+  input: __S(182, __c22, 6) as any as S.Schema<UpdateGroupRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<UpdateGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3670,8 +2923,8 @@ export const updateGroupCertificateConfiguration: API.OperationMethod<
   UpdateGroupCertificateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupCertificateConfigurationRequest,
-  output: UpdateGroupCertificateConfigurationResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<UpdateGroupCertificateConfigurationRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<UpdateGroupCertificateConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3688,8 +2941,8 @@ export const updateLoggerDefinition: API.OperationMethod<
   UpdateLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLoggerDefinitionRequest,
-  output: UpdateLoggerDefinitionResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<UpdateLoggerDefinitionRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<UpdateLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3706,8 +2959,8 @@ export const updateResourceDefinition: API.OperationMethod<
   UpdateResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceDefinitionRequest,
-  output: UpdateResourceDefinitionResponse,
+  input: __S(185, __c23, 1) as any as S.Schema<UpdateResourceDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<UpdateResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3724,8 +2977,8 @@ export const updateSubscriptionDefinition: API.OperationMethod<
   UpdateSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionDefinitionRequest,
-  output: UpdateSubscriptionDefinitionResponse,
+  input: __S(186, __c23, 2) as any as S.Schema<UpdateSubscriptionDefinitionRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<UpdateSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3745,8 +2998,8 @@ export const updateThingRuntimeConfiguration: API.OperationMethod<
   UpdateThingRuntimeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateThingRuntimeConfigurationRequest,
-  output: UpdateThingRuntimeConfigurationResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<UpdateThingRuntimeConfigurationRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<UpdateThingRuntimeConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3804,7 +3057,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Connector" });
     case 5:
-      return S.Array(Connector);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() => S.Struct({ Connectors: S.optional(__listOfConnector) })).annotate({
         identifier: "ConnectorDefinitionVersion",
@@ -3819,9 +3072,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(ConnectorDefinitionVersion),
+          InitialVersion: S.optional(__S(6, __c0, 6)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/connectors" }),
@@ -3892,7 +3145,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Core" });
     case 5:
-      return S.Array(Core);
+      return S.Array(__S(12, __c1, 4));
     case 6:
       return S.suspend(() => S.Struct({ Cores: S.optional(__listOfCore) })).annotate({
         identifier: "CoreDefinitionVersion",
@@ -3901,9 +3154,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(CoreDefinitionVersion),
+          InitialVersion: S.optional(__S(14, __c1, 6)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/cores" }),
@@ -3948,7 +3201,7 @@ function __c2(j: number): any {
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
           DeploymentId: S.optional(S.String),
-          DeploymentType: S.optional(DeploymentType),
+          DeploymentType: S.optional(S.String),
           GroupId: S.String.pipe(T.HttpLabel("GroupId")),
           GroupVersionId: S.optional(S.String),
         }).pipe(
@@ -3974,9 +3227,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(DeviceDefinitionVersion),
+          InitialVersion: S.optional(__S(19, __c2, 3)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/devices" }),
@@ -4019,8 +3272,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          IsolationMode: S.optional(FunctionIsolationMode),
-          RunAs: S.optional(FunctionRunAsConfig),
+          IsolationMode: S.optional(S.String),
+          RunAs: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "FunctionDefaultExecutionConfig",
@@ -4030,27 +3283,27 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Execution: S.optional(FunctionDefaultExecutionConfig) }),
-      ).annotate({ identifier: "FunctionDefaultConfig" });
+      return S.suspend(() => S.Struct({ Execution: S.optional(__S(23, __c2, 7)) })).annotate({
+        identifier: "FunctionDefaultConfig",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          IsolationMode: S.optional(FunctionIsolationMode),
-          RunAs: S.optional(FunctionRunAsConfig),
+          IsolationMode: S.optional(S.String),
+          RunAs: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "FunctionExecutionConfig" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Permission: S.optional(Permission), ResourceId: S.optional(S.String) }),
+        S.Struct({ Permission: S.optional(S.String), ResourceId: S.optional(S.String) }),
       ).annotate({ identifier: "ResourceAccessPolicy" });
     case 3:
-      return S.Array(ResourceAccessPolicy);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           AccessSysfs: S.optional(S.Boolean),
-          Execution: S.optional(FunctionExecutionConfig),
+          Execution: S.optional(__S(25, __c3, 1)),
           ResourceAccessPolicies: S.optional(__listOfResourceAccessPolicy),
           Variables: S.optional(__mapOf__string),
         }),
@@ -4060,8 +3313,8 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          EncodingType: S.optional(EncodingType),
-          Environment: S.optional(FunctionConfigurationEnvironment),
+          EncodingType: S.optional(S.String),
+          Environment: S.optional(__S(28, __c3, 4)),
           ExecArgs: S.optional(S.String),
           Executable: S.optional(S.String),
           MemorySize: S.optional(S.Number),
@@ -4074,12 +3327,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FunctionArn: S.optional(S.String),
-          FunctionConfiguration: S.optional(FunctionConfiguration),
+          FunctionConfiguration: S.optional(__S(29, __c3, 5)),
           Id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Function" });
     case 7:
-      return S.Array(Function);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -4087,7 +3340,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DefaultConfig: S.optional(FunctionDefaultConfig),
+          DefaultConfig: S.optional(__S(24, __c3, 0)),
           Functions: S.optional(__listOfFunction),
         }),
       ).annotate({
@@ -4097,9 +3350,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(FunctionDefinitionVersion),
+          InitialVersion: S.optional(__S(32, __c4, 0)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/functions" }),
@@ -4117,7 +3370,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          DefaultConfig: S.optional(FunctionDefaultConfig),
+          DefaultConfig: S.optional(__S(24, __c3, 0)),
           FunctionDefinitionId: S.String.pipe(T.HttpLabel("FunctionDefinitionId")),
           Functions: S.optional(__listOfFunction),
         }).pipe(
@@ -4152,9 +3405,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(GroupVersion),
+          InitialVersion: S.optional(__S(35, __c4, 3)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/groups" }),
@@ -4234,15 +3487,15 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Component: S.optional(LoggerComponent),
+          Component: S.optional(S.String),
           Id: S.optional(S.String),
-          Level: S.optional(LoggerLevel),
+          Level: S.optional(S.String),
           Space: S.optional(S.Number),
-          Type: S.optional(LoggerType),
+          Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Logger" });
     case 2:
-      return S.Array(Logger);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() => S.Struct({ Loggers: S.optional(__listOfLogger) })).annotate({
         identifier: "LoggerDefinitionVersion",
@@ -4251,9 +3504,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(LoggerDefinitionVersion),
+          InitialVersion: S.optional(__S(43, __c5, 3)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/loggers" }),
@@ -4296,7 +3549,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          GroupOwnerSetting: S.optional(GroupOwnerSetting),
+          GroupOwnerSetting: S.optional(__S(46, __c5, 6)),
           SourcePath: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalDeviceResourceData" });
@@ -4308,13 +3561,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DestinationPath: S.optional(S.String),
-          GroupOwnerSetting: S.optional(GroupOwnerSetting),
+          GroupOwnerSetting: S.optional(__S(46, __c5, 6)),
           SourcePath: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalVolumeResourceData" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ GroupOwner: S.optional(S.String), GroupPermission: S.optional(Permission) }),
+        S.Struct({ GroupOwner: S.optional(S.String), GroupPermission: S.optional(S.String) }),
       ).annotate({
         identifier: "ResourceDownloadOwnerSetting",
       });
@@ -4322,7 +3575,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DestinationPath: S.optional(S.String),
-          OwnerSetting: S.optional(ResourceDownloadOwnerSetting),
+          OwnerSetting: S.optional(__S(49, __c6, 1)),
           S3Uri: S.optional(S.String),
         }),
       ).annotate({
@@ -4332,7 +3585,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DestinationPath: S.optional(S.String),
-          OwnerSetting: S.optional(ResourceDownloadOwnerSetting),
+          OwnerSetting: S.optional(__S(49, __c6, 1)),
           SageMakerJobArn: S.optional(S.String),
         }),
       ).annotate({
@@ -4352,13 +3605,11 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LocalDeviceResourceData: S.optional(LocalDeviceResourceData),
-          LocalVolumeResourceData: S.optional(LocalVolumeResourceData),
-          S3MachineLearningModelResourceData: S.optional(S3MachineLearningModelResourceData),
-          SageMakerMachineLearningModelResourceData: S.optional(
-            SageMakerMachineLearningModelResourceData,
-          ),
-          SecretsManagerSecretResourceData: S.optional(SecretsManagerSecretResourceData),
+          LocalDeviceResourceData: S.optional(__S(47, __c5, 7)),
+          LocalVolumeResourceData: S.optional(__S(48, __c6, 0)),
+          S3MachineLearningModelResourceData: S.optional(__S(50, __c6, 2)),
+          SageMakerMachineLearningModelResourceData: S.optional(__S(51, __c6, 3)),
+          SecretsManagerSecretResourceData: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({ identifier: "ResourceDataContainer" });
     case 7:
@@ -4366,7 +3617,7 @@ function __c6(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          ResourceDataContainer: S.optional(ResourceDataContainer),
+          ResourceDataContainer: S.optional(__S(54, __c6, 6)),
         }),
       ).annotate({ identifier: "Resource" });
   }
@@ -4374,7 +3625,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Resource);
+      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.suspend(() => S.Struct({ Resources: S.optional(__listOfResource) })).annotate({
         identifier: "ResourceDefinitionVersion",
@@ -4383,9 +3634,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(ResourceDefinitionVersion),
+          InitialVersion: S.optional(__S(57, __c7, 1)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/resources" }),
@@ -4426,11 +3677,11 @@ function __c7(j: number): any {
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
           S3UrlSignerRole: S.optional(S.String),
-          SoftwareToUpdate: S.optional(SoftwareToUpdate),
-          UpdateAgentLogLevel: S.optional(UpdateAgentLogLevel),
+          SoftwareToUpdate: S.optional(S.String),
+          UpdateAgentLogLevel: S.optional(S.String),
           UpdateTargets: S.optional(UpdateTargets),
-          UpdateTargetsArchitecture: S.optional(UpdateTargetsArchitecture),
-          UpdateTargetsOperatingSystem: S.optional(UpdateTargetsOperatingSystem),
+          UpdateTargetsArchitecture: S.optional(S.String),
+          UpdateTargetsOperatingSystem: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/updates" }),
@@ -4464,7 +3715,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "Subscription" });
     case 7:
-      return S.Array(Subscription);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -4479,9 +3730,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(SubscriptionDefinitionVersion),
+          InitialVersion: S.optional(__S(64, __c8, 0)),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/subscriptions" }),
@@ -4760,16 +4011,16 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 5:
-      return S.Array(ErrorDetail);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          BulkDeploymentMetrics: S.optional(BulkDeploymentMetrics),
-          BulkDeploymentStatus: S.optional(BulkDeploymentStatus),
+          BulkDeploymentMetrics: S.optional(__S(83, __c10, 3)),
+          BulkDeploymentStatus: S.optional(S.String),
           CreatedAt: S.optional(S.String),
-          ErrorDetails: S.optional(ErrorDetails),
+          ErrorDetails: S.optional(__S(85, __c10, 5)),
           ErrorMessage: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "GetBulkDeploymentStatusResponse",
@@ -4803,7 +4054,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ConnectivityInfo" });
     case 1:
-      return S.Array(ConnectivityInfo);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4843,7 +4094,7 @@ function __c11(j: number): any {
           LatestVersion: S.optional(S.String),
           LatestVersionArn: S.optional(S.String),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({
         identifier: "GetConnectorDefinitionResponse",
@@ -4875,7 +4126,7 @@ function __c11(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(ConnectorDefinitionVersion),
+          Definition: S.optional(__S(6, __c0, 6)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -4926,7 +4177,7 @@ function __c12(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(CoreDefinitionVersion),
+          Definition: S.optional(__S(14, __c1, 6)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -4959,8 +4210,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeploymentStatus: S.optional(S.String),
-          DeploymentType: S.optional(DeploymentType),
-          ErrorDetails: S.optional(ErrorDetails),
+          DeploymentType: S.optional(S.String),
+          ErrorDetails: S.optional(__S(85, __c10, 5)),
           ErrorMessage: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
         }),
@@ -5009,7 +4260,7 @@ function __c12(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(DeviceDefinitionVersion),
+          Definition: S.optional(__S(19, __c2, 3)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -5066,7 +4317,7 @@ function __c13(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(FunctionDefinitionVersion),
+          Definition: S.optional(__S(32, __c4, 0)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -5097,7 +4348,7 @@ function __c13(j: number): any {
           LatestVersion: S.optional(S.String),
           LatestVersionArn: S.optional(S.String),
           Name: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "GetGroupResponse" });
     case 4:
@@ -5187,7 +4438,7 @@ function __c14(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(GroupVersion),
+          Definition: S.optional(__S(35, __c4, 3)),
           Id: S.optional(S.String),
           Version: S.optional(S.String),
         }),
@@ -5234,7 +4485,7 @@ function __c14(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(LoggerDefinitionVersion),
+          Definition: S.optional(__S(43, __c5, 3)),
           Id: S.optional(S.String),
           Version: S.optional(S.String),
         }),
@@ -5285,7 +4536,7 @@ function __c14(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(ResourceDefinitionVersion),
+          Definition: S.optional(__S(57, __c7, 1)),
           Id: S.optional(S.String),
           Version: S.optional(S.String),
         }),
@@ -5360,7 +4611,7 @@ function __c15(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(SubscriptionDefinitionVersion),
+          Definition: S.optional(__S(64, __c8, 0)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -5386,17 +4637,17 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationSyncStatus: S.optional(ConfigurationSyncStatus),
-          Telemetry: S.optional(Telemetry),
+          ConfigurationSyncStatus: S.optional(S.String),
+          Telemetry: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelemetryConfiguration" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ TelemetryConfiguration: S.optional(TelemetryConfiguration) }),
+        S.Struct({ TelemetryConfiguration: S.optional(__S(125, __c15, 5)) }),
       ).annotate({ identifier: "RuntimeConfiguration" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ RuntimeConfiguration: S.optional(RuntimeConfiguration) }),
+        S.Struct({ RuntimeConfiguration: S.optional(__S(126, __c15, 6)) }),
       ).annotate({
         identifier: "GetThingRuntimeConfigurationResponse",
       });
@@ -5433,18 +4684,18 @@ function __c16(j: number): any {
           DeploymentArn: S.optional(S.String),
           DeploymentId: S.optional(S.String),
           DeploymentStatus: S.optional(S.String),
-          DeploymentType: S.optional(DeploymentType),
-          ErrorDetails: S.optional(ErrorDetails),
+          DeploymentType: S.optional(S.String),
+          ErrorDetails: S.optional(__S(85, __c10, 5)),
           ErrorMessage: S.optional(S.String),
           GroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkDeploymentResult" });
     case 2:
-      return S.Array(BulkDeploymentResult);
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Deployments: S.optional(BulkDeploymentResults),
+          Deployments: S.optional(__S(130, __c16, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5477,10 +4728,13 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "BulkDeployment" });
     case 6:
-      return S.Array(BulkDeployment);
+      return S.Array(__S(133, __c16, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ BulkDeployments: S.optional(BulkDeployments), NextToken: S.optional(S.String) }),
+        S.Struct({
+          BulkDeployments: S.optional(__S(134, __c16, 6)),
+          NextToken: S.optional(S.String),
+        }),
       ).annotate({
         identifier: "ListBulkDeploymentsResponse",
       });
@@ -5516,11 +4770,11 @@ function __c17(j: number): any {
           LatestVersion: S.optional(S.String),
           LatestVersionArn: S.optional(S.String),
           Name: S.optional(S.String),
-          Tags: S.optional(Tags),
+          Tags: S.optional(__S(7, __c0, 7)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "DefinitionInformation" });
     case 2:
-      return S.Array(DefinitionInformation);
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5562,7 +4816,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "VersionInformation" });
     case 6:
-      return S.Array(VersionInformation);
+      return S.Array(__S(141, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5639,15 +4893,15 @@ function __c18(j: number): any {
           CreatedAt: S.optional(S.String),
           DeploymentArn: S.optional(S.String),
           DeploymentId: S.optional(S.String),
-          DeploymentType: S.optional(DeploymentType),
+          DeploymentType: S.optional(S.String),
           GroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Deployment" });
     case 4:
-      return S.Array(Deployment);
+      return S.Array(__S(147, __c18, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Deployments: S.optional(Deployments), NextToken: S.optional(S.String) }),
+        S.Struct({ Deployments: S.optional(__S(148, __c18, 4)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDeploymentsResponse" });
     case 6:
       return S.suspend(() =>
@@ -5758,7 +5012,7 @@ function __c19(j: number): any {
         identifier: "GroupCertificateAuthorityProperties",
       });
     case 4:
-      return S.Array(GroupCertificateAuthorityProperties);
+      return S.Array(__S(155, __c19, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5777,7 +5031,7 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
     case 7:
-      return S.Array(GroupInformation);
+      return S.Array(__S(37, __c4, 5));
   }
 }
 function __c20(j: number): any {
@@ -5943,7 +5197,7 @@ function __c21(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(7, __c0, 7)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 2:
@@ -5969,7 +5223,7 @@ function __c21(j: number): any {
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
           ExecutionRoleArn: S.optional(S.String),
           InputFileUri: S.optional(S.String),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/bulk/deployments" }),
@@ -6011,7 +5265,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7, __c0, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -6249,13 +5503,13 @@ function __c23(j: number): any {
         identifier: "UpdateSubscriptionDefinitionRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Telemetry: S.optional(Telemetry) })).annotate({
+      return S.suspend(() => S.Struct({ Telemetry: S.optional(S.String) })).annotate({
         identifier: "TelemetryConfigurationUpdate",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TelemetryConfiguration: S.optional(TelemetryConfigurationUpdate),
+          TelemetryConfiguration: S.optional(__S(187, __c23, 3)),
           ThingName: S.String.pipe(T.HttpLabel("ThingName")),
         }).pipe(
           T.all(
@@ -6271,4 +5525,9 @@ function __c23(j: number): any {
         identifier: "UpdateThingRuntimeConfigurationRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

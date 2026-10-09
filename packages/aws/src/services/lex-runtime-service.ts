@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Lex Runtime Service",
   serviceShapeName: "AWSDeepSenseRunTimeService",
@@ -167,17 +169,12 @@ export interface DeleteSessionRequest {
   botAlias: string;
   userId: string;
 }
-const DeleteSessionRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteSessionRequest>;
 export interface DeleteSessionResponse {
   botName?: string;
   botAlias?: string;
   userId?: string;
   sessionId?: string;
 }
-const DeleteSessionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteSessionResponse>;
 export type IntentSummaryCheckpointLabel = string;
 export interface GetSessionRequest {
   botName: string;
@@ -185,13 +182,9 @@ export interface GetSessionRequest {
   userId: string;
   checkpointLabelFilter?: string;
 }
-const GetSessionRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetSessionRequest>;
 export type IntentName = string;
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 3);
 export type ConfirmationStatus = "None" | "Confirmed" | "Denied" | (string & {});
-const ConfirmationStatus = S.String;
-
 export type DialogActionType =
   | "ElicitIntent"
   | "ConfirmIntent"
@@ -199,11 +192,7 @@ export type DialogActionType =
   | "Close"
   | "Delegate"
   | (string & {});
-const DialogActionType = S.String;
-
 export type FulfillmentState = "Fulfilled" | "Failed" | "ReadyForFulfillment" | (string & {});
-const FulfillmentState = S.String;
-
 export interface IntentSummary {
   intentName?: string;
   checkpointLabel?: string;
@@ -213,9 +202,7 @@ export interface IntentSummary {
   fulfillmentState?: FulfillmentState;
   slotToElicit?: string;
 }
-const IntentSummary = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IntentSummary>;
 export type IntentSummaryList = IntentSummary[];
-const IntentSummaryList = /*@__PURE__*/ __L.at(__c0, 5);
 export type Text = string | redacted.Redacted<string>;
 export type MessageFormatType =
   | "PlainText"
@@ -223,8 +210,6 @@ export type MessageFormatType =
   | "SSML"
   | "Composite"
   | (string & {});
-const MessageFormatType = S.String;
-
 export interface DialogAction {
   type: DialogActionType;
   intentName?: string;
@@ -234,7 +219,6 @@ export interface DialogAction {
   message?: string | redacted.Redacted<string>;
   messageFormat?: MessageFormatType;
 }
-const DialogAction = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DialogAction>;
 export type ActiveContextName = string;
 export type ActiveContextTimeToLiveInSeconds = number;
 export type ActiveContextTurnsToLive = number;
@@ -242,23 +226,16 @@ export interface ActiveContextTimeToLive {
   timeToLiveInSeconds?: number;
   turnsToLive?: number;
 }
-const ActiveContextTimeToLive = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ActiveContextTimeToLive>;
 export type ParameterName = string;
 export type ActiveContextParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-const ActiveContextParametersMap = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ActiveContext {
   name: string;
   timeToLive: ActiveContextTimeToLive;
   parameters: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const ActiveContext = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ActiveContext>;
 export type ActiveContextsList = ActiveContext[];
-const ActiveContextsList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface GetSessionResponse {
   recentIntentSummaryView?: IntentSummary[];
   sessionAttributes?: { [key: string]: string | undefined };
@@ -266,7 +243,6 @@ export interface GetSessionResponse {
   dialogAction?: DialogAction;
   activeContexts?: ActiveContext[];
 }
-const GetSessionResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetSessionResponse>;
 export type SynthesizedJsonAttributesString = string | redacted.Redacted<string>;
 export type HttpContentType = string;
 export type Accept = string;
@@ -282,7 +258,6 @@ export interface PostContentRequest {
   inputStream: T.StreamingInputBody;
   activeContexts?: string | redacted.Redacted<string>;
 }
-const PostContentRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PostContentRequest>;
 export type SynthesizedJsonString = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type DialogState =
@@ -293,8 +268,6 @@ export type DialogState =
   | "ReadyForFulfillment"
   | "Failed"
   | (string & {});
-const DialogState = S.String;
-
 export type SensitiveStringUnbounded = string | redacted.Redacted<string>;
 export type BotVersion = string;
 export interface PostContentResponse {
@@ -317,7 +290,6 @@ export interface PostContentResponse {
   sessionId?: string;
   activeContexts?: string | redacted.Redacted<string>;
 }
-const PostContentResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PostContentResponse>;
 export interface PostTextRequest {
   botName: string;
   botAlias: string;
@@ -327,29 +299,22 @@ export interface PostTextRequest {
   inputText: string | redacted.Redacted<string>;
   activeContexts?: ActiveContext[];
 }
-const PostTextRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PostTextRequest>;
 export interface IntentConfidence {
   score?: number;
 }
-const IntentConfidence = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IntentConfidence>;
 export interface PredictedIntent {
   intentName?: string;
   nluIntentConfidence?: IntentConfidence;
   slots?: { [key: string]: string | undefined };
 }
-const PredictedIntent = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PredictedIntent>;
 export type IntentList = PredictedIntent[];
-const IntentList = /*@__PURE__*/ __L.at(__c2, 1);
 export type SentimentLabel = string;
 export type SentimentScore = string;
 export interface SentimentResponse {
   sentimentLabel?: string;
   sentimentScore?: string;
 }
-const SentimentResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SentimentResponse>;
 export type ContentType = "application/vnd.amazonaws.card.generic" | (string & {});
-const ContentType = S.String;
-
 export type StringWithLength = string;
 export type StringUrlWithLength = string;
 export type ButtonTextStringWithLength = string;
@@ -358,9 +323,7 @@ export interface Button {
   text: string;
   value: string;
 }
-const Button = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Button>;
 export type ListOfButtons = Button[];
-const ListOfButtons = /*@__PURE__*/ __L.at(__c2, 4);
 export interface GenericAttachment {
   title?: string;
   subTitle?: string;
@@ -368,15 +331,12 @@ export interface GenericAttachment {
   imageUrl?: string;
   buttons?: Button[];
 }
-const GenericAttachment = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GenericAttachment>;
 export type GenericAttachmentList = GenericAttachment[];
-const GenericAttachmentList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ResponseCard {
   version?: string;
   contentType?: ContentType;
   genericAttachments?: GenericAttachment[];
 }
-const ResponseCard = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ResponseCard>;
 export interface PostTextResponse {
   intentName?: string;
   nluIntentConfidence?: IntentConfidence;
@@ -393,7 +353,6 @@ export interface PostTextResponse {
   botVersion?: string;
   activeContexts?: ActiveContext[];
 }
-const PostTextResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PostTextResponse>;
 export interface PutSessionRequest {
   botName: string;
   botAlias: string;
@@ -404,7 +363,6 @@ export interface PutSessionRequest {
   accept?: string;
   activeContexts?: ActiveContext[];
 }
-const PutSessionRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PutSessionRequest>;
 export interface PutSessionResponse {
   contentType?: string;
   intentName?: string;
@@ -419,7 +377,6 @@ export interface PutSessionResponse {
   sessionId?: string;
   activeContexts?: string | redacted.Redacted<string>;
 }
-const PutSessionResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PutSessionResponse>;
 export type ErrorMessage = string;
 export type DeleteSessionError =
   | BadRequestException
@@ -437,8 +394,8 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSessionRequest,
-  output: DeleteSessionResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteSessionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSessionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -467,8 +424,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionRequest,
-  output: GetSessionResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<GetSessionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetSessionResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -560,8 +517,8 @@ export const postContent: API.OperationMethod<
   PostContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostContentRequest,
-  output: PostContentResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<PostContentRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<PostContentResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -654,8 +611,8 @@ export const postText: API.OperationMethod<
   PostTextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostTextRequest,
-  output: PostTextResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<PostTextRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<PostTextResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -695,8 +652,8 @@ export const putSession: API.OperationMethod<
   PutSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSessionRequest,
-  output: PutSessionResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<PutSessionRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<PutSessionResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -769,25 +726,25 @@ function __c0(j: number): any {
         S.Struct({
           intentName: S.optional(S.String),
           checkpointLabel: S.optional(S.String),
-          slots: S.optional(StringMap),
-          confirmationStatus: S.optional(ConfirmationStatus),
-          dialogActionType: DialogActionType,
-          fulfillmentState: S.optional(FulfillmentState),
+          slots: S.optional(__S(3, __c0, 3)),
+          confirmationStatus: S.optional(S.String),
+          dialogActionType: S.String,
+          fulfillmentState: S.optional(S.String),
           slotToElicit: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntentSummary" });
     case 5:
-      return S.Array(IntentSummary);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: DialogActionType,
+          type: S.String,
           intentName: S.optional(S.String),
-          slots: S.optional(StringMap),
+          slots: S.optional(__S(3, __c0, 3)),
           slotToElicit: S.optional(S.String),
-          fulfillmentState: S.optional(FulfillmentState),
+          fulfillmentState: S.optional(S.String),
           message: S.optional(SensitiveString),
-          messageFormat: S.optional(MessageFormatType),
+          messageFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "DialogAction" });
     case 7:
@@ -804,20 +761,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          timeToLive: ActiveContextTimeToLive,
-          parameters: ActiveContextParametersMap,
+          timeToLive: __S(7, __c0, 7),
+          parameters: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "ActiveContext" });
     case 2:
-      return S.Array(ActiveContext);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          recentIntentSummaryView: S.optional(IntentSummaryList),
-          sessionAttributes: S.optional(StringMap),
+          recentIntentSummaryView: S.optional(__S(5, __c0, 5)),
+          sessionAttributes: S.optional(__S(3, __c0, 3)),
           sessionId: S.optional(S.String),
-          dialogAction: S.optional(DialogAction),
-          activeContexts: S.optional(ActiveContextsList),
+          dialogAction: S.optional(__S(6, __c0, 6)),
+          activeContexts: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "GetSessionResponse" });
     case 4:
@@ -872,10 +829,8 @@ function __c1(j: number): any {
           encodedMessage: S.optional(SensitiveString).pipe(
             T.HttpHeader("x-amz-lex-encoded-message"),
           ),
-          messageFormat: S.optional(MessageFormatType).pipe(
-            T.HttpHeader("x-amz-lex-message-format"),
-          ),
-          dialogState: S.optional(DialogState).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
+          messageFormat: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-message-format")),
+          dialogState: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
           slotToElicit: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slot-to-elicit")),
           inputTranscript: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-input-transcript")),
           encodedInputTranscript: S.optional(SensitiveString).pipe(
@@ -895,10 +850,10 @@ function __c1(j: number): any {
           botName: S.String.pipe(T.HttpLabel("botName")),
           botAlias: S.String.pipe(T.HttpLabel("botAlias")),
           userId: S.String.pipe(T.HttpLabel("userId")),
-          sessionAttributes: S.optional(StringMap),
-          requestAttributes: S.optional(StringMap),
+          sessionAttributes: S.optional(__S(3, __c0, 3)),
+          requestAttributes: S.optional(__S(3, __c0, 3)),
           inputText: SensitiveString,
-          activeContexts: S.optional(ActiveContextsList),
+          activeContexts: S.optional(__S(10, __c1, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/text" }),
@@ -922,12 +877,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           intentName: S.optional(S.String),
-          nluIntentConfidence: S.optional(IntentConfidence),
-          slots: S.optional(StringMap),
+          nluIntentConfidence: S.optional(__S(15, __c1, 7)),
+          slots: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "PredictedIntent" });
     case 1:
-      return S.Array(PredictedIntent);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ sentimentLabel: S.optional(S.String), sentimentScore: S.optional(S.String) }),
@@ -937,7 +892,7 @@ function __c2(j: number): any {
         identifier: "Button",
       });
     case 4:
-      return S.Array(Button);
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -945,17 +900,17 @@ function __c2(j: number): any {
           subTitle: S.optional(S.String),
           attachmentLinkUrl: S.optional(S.String),
           imageUrl: S.optional(S.String),
-          buttons: S.optional(ListOfButtons),
+          buttons: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({ identifier: "GenericAttachment" });
     case 6:
-      return S.Array(GenericAttachment);
+      return S.Array(__S(21, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          contentType: S.optional(ContentType),
-          genericAttachments: S.optional(GenericAttachmentList),
+          contentType: S.optional(S.String),
+          genericAttachments: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "ResponseCard" });
   }
@@ -966,19 +921,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           intentName: S.optional(S.String),
-          nluIntentConfidence: S.optional(IntentConfidence),
-          alternativeIntents: S.optional(IntentList),
-          slots: S.optional(StringMap),
-          sessionAttributes: S.optional(StringMap),
+          nluIntentConfidence: S.optional(__S(15, __c1, 7)),
+          alternativeIntents: S.optional(__S(17, __c2, 1)),
+          slots: S.optional(__S(3, __c0, 3)),
+          sessionAttributes: S.optional(__S(3, __c0, 3)),
           message: S.optional(SensitiveString),
-          sentimentResponse: S.optional(SentimentResponse),
-          messageFormat: S.optional(MessageFormatType),
-          dialogState: S.optional(DialogState),
+          sentimentResponse: S.optional(__S(18, __c2, 2)),
+          messageFormat: S.optional(S.String),
+          dialogState: S.optional(S.String),
           slotToElicit: S.optional(S.String),
-          responseCard: S.optional(ResponseCard),
+          responseCard: S.optional(__S(23, __c2, 7)),
           sessionId: S.optional(S.String),
           botVersion: S.optional(S.String),
-          activeContexts: S.optional(ActiveContextsList),
+          activeContexts: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "PostTextResponse" });
     case 1:
@@ -987,11 +942,11 @@ function __c3(j: number): any {
           botName: S.String.pipe(T.HttpLabel("botName")),
           botAlias: S.String.pipe(T.HttpLabel("botAlias")),
           userId: S.String.pipe(T.HttpLabel("userId")),
-          sessionAttributes: S.optional(StringMap),
-          dialogAction: S.optional(DialogAction),
-          recentIntentSummaryView: S.optional(IntentSummaryList),
+          sessionAttributes: S.optional(__S(3, __c0, 3)),
+          dialogAction: S.optional(__S(6, __c0, 6)),
+          recentIntentSummaryView: S.optional(__S(5, __c0, 5)),
           accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
-          activeContexts: S.optional(ActiveContextsList),
+          activeContexts: S.optional(__S(10, __c1, 2)),
         }).pipe(
           T.all(
             T.Http({
@@ -1019,10 +974,8 @@ function __c3(j: number): any {
           encodedMessage: S.optional(SensitiveString).pipe(
             T.HttpHeader("x-amz-lex-encoded-message"),
           ),
-          messageFormat: S.optional(MessageFormatType).pipe(
-            T.HttpHeader("x-amz-lex-message-format"),
-          ),
-          dialogState: S.optional(DialogState).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
+          messageFormat: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-message-format")),
+          dialogState: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
           slotToElicit: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slot-to-elicit")),
           audioStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
           sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-session-id")),
@@ -1032,4 +985,9 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "PutSessionResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

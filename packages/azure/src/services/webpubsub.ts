@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,11 +21,6 @@ export interface CheckWebPubSubNameAvailabilityRequest {
   /** The resource name to validate. e.g."my-resource-name" */
   name: string;
 }
-const CheckWebPubSubNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckWebPubSubNameAvailabilityRequest>;
-
 /** Result of the request to check name availability. It contains a flag and possible reason of failure. */
 export interface NameAvailability {
   /** Indicates whether the name is available or not. */
@@ -33,8 +30,6 @@ export interface NameAvailability {
   /** The message of the operation. */
   message?: string;
 }
-const NameAvailability = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<NameAvailability>;
-
 export interface DeleteWebPubSubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -43,17 +38,7 @@ export interface DeleteWebPubSubRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const DeleteWebPubSubRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteWebPubSubRequest>;
-
 export interface DeleteWebPubSubResponse {}
-const DeleteWebPubSubResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteWebPubSubResponse>;
-
 export interface DeleteWebPubSubCustomCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -64,17 +49,7 @@ export interface DeleteWebPubSubCustomCertificateRequest {
   /** Custom certificate name */
   certificateName: string;
 }
-const DeleteWebPubSubCustomCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteWebPubSubCustomCertificateRequest>;
-
 export interface DeleteWebPubSubCustomCertificateResponse {}
-const DeleteWebPubSubCustomCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteWebPubSubCustomCertificateResponse>;
-
 export interface DeleteWebPubSubCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -85,15 +60,7 @@ export interface DeleteWebPubSubCustomDomainRequest {
   /** Custom domain name. */
   name: string;
 }
-const DeleteWebPubSubCustomDomainRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteWebPubSubCustomDomainRequest>;
-
 export interface DeleteWebPubSubCustomDomainResponse {}
-const DeleteWebPubSubCustomDomainResponse =
-  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<DeleteWebPubSubCustomDomainResponse>;
-
 export interface DeleteWebPubSubHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -104,15 +71,7 @@ export interface DeleteWebPubSubHubRequest {
   /** The hub name. */
   hubName: string;
 }
-const DeleteWebPubSubHubRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteWebPubSubHubRequest>;
-
 export interface DeleteWebPubSubHubResponse {}
-const DeleteWebPubSubHubResponse =
-  DeleteWebPubSubResponse as any as S.Schema<DeleteWebPubSubHubResponse>;
-
 export interface DeleteWebPubSubPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -123,15 +82,7 @@ export interface DeleteWebPubSubPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const DeleteWebPubSubPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionRequest>;
-
 export interface DeleteWebPubSubPrivateEndpointConnectionResponse {}
-const DeleteWebPubSubPrivateEndpointConnectionResponse =
-  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionResponse>;
-
 export interface DeleteWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -142,17 +93,7 @@ export interface DeleteWebPubSubReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const DeleteWebPubSubReplicasRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteWebPubSubReplicasRequest>;
-
 export interface DeleteWebPubSubReplicasResponse {}
-const DeleteWebPubSubReplicasResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteWebPubSubReplicasResponse>;
-
 export interface DeleteWebPubSubSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -163,15 +104,7 @@ export interface DeleteWebPubSubSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
 }
-const DeleteWebPubSubSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceRequest>;
-
 export interface DeleteWebPubSubSharedPrivateLinkResourceResponse {}
-const DeleteWebPubSubSharedPrivateLinkResourceResponse =
-  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceResponse>;
-
 export interface GetWebPubSubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -180,16 +113,10 @@ export interface GetWebPubSubRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const GetWebPubSubRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetWebPubSubRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -205,19 +132,10 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type GetWebPubSubResponseTagsMap = { [key: string]: string | undefined };
-const GetWebPubSubResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetWebPubSubResponseTagsMap>;
-
 /** Optional tier of this particular SKU. 'Standard' or 'Free'. `Basic` is deprecated, use `Standard` instead. */
 export type WebPubSubSkuTier = "Free" | "Basic" | "Standard" | "Premium";
-const WebPubSubSkuTier = S.String;
-
 /** The billing information of the resource. */
 export interface ResourceSku {
   /** The name of the SKU. Required. Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2 */
@@ -230,8 +148,6 @@ export interface ResourceSku {
   /** Optional, integer. The unit count of the resource. 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default. If present, following values are allowed: Free_F1: 1; Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P2: 100,200,300,400,500,600,700,800,900,1000; */
   capacity?: number;
 }
-const ResourceSku = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ResourceSku>;
-
 /** Provisioning state of the resource. */
 export type ProvisioningState =
   | "Unknown"
@@ -243,30 +159,19 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Moving";
-const ProvisioningState = S.String;
-
 /** Private endpoint */
 export interface PrivateEndpoint {
   /** Full qualified Id of the private endpoint */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PrivateEndpoint>;
-
 /** Group IDs */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
 export type PrivateLinkServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
   | "Disconnected";
-const PrivateLinkServiceConnectionStatus = S.String;
-
 /** Connection state of the private endpoint connection */
 export interface PrivateLinkServiceConnectionState {
   status?: PrivateLinkServiceConnectionStatus | (string & {});
@@ -275,11 +180,6 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** Private endpoint connection properties */
 export interface PrivateEndpointConnectionProperties {
   provisioningState?: ProvisioningState;
@@ -288,11 +188,6 @@ export interface PrivateEndpointConnectionProperties {
   groupIds?: PrivateEndpointConnectionPropertiesGroupIdsList;
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** A private endpoint connection to an azure resource */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -305,18 +200,8 @@ export interface PrivateEndpointConnection {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** Private endpoint connections to the resource. */
 export type WebPubSubPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const WebPubSubPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<WebPubSubPropertiesPrivateEndpointConnectionsList>;
-
 /** Status of the shared private link resource */
 export type SharedPrivateLinkResourceStatus =
   | "Pending"
@@ -324,8 +209,6 @@ export type SharedPrivateLinkResourceStatus =
   | "Rejected"
   | "Disconnected"
   | "Timeout";
-const SharedPrivateLinkResourceStatus = S.String;
-
 /** Describes the properties of an existing Shared Private Link Resource */
 export interface SharedPrivateLinkResourceProperties {
   /** The group id from the provider of resource the shared private link resource is for */
@@ -337,11 +220,6 @@ export interface SharedPrivateLinkResourceProperties {
   requestMessage?: string;
   status?: SharedPrivateLinkResourceStatus;
 }
-const SharedPrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<SharedPrivateLinkResourceProperties>;
-
 /** Describes a Shared Private Link Resource */
 export interface SharedPrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -354,25 +232,13 @@ export interface SharedPrivateLinkResource {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const SharedPrivateLinkResource = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<SharedPrivateLinkResource>;
-
 /** The list of shared private link resources. */
 export type WebPubSubPropertiesSharedPrivateLinkResourcesList = Array<SharedPrivateLinkResource>;
-const WebPubSubPropertiesSharedPrivateLinkResourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<WebPubSubPropertiesSharedPrivateLinkResourcesList>;
-
 /** TLS settings for the resource */
 export interface WebPubSubTlsSettings {
   /** Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier. */
   clientCertEnabled?: boolean;
 }
-const WebPubSubTlsSettings = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<WebPubSubTlsSettings>;
-
 /** Live trace category configuration of a Microsoft.SignalRService resource. */
 export interface LiveTraceCategory {
   /** Gets or sets the live trace category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
@@ -380,15 +246,8 @@ export interface LiveTraceCategory {
   /** Indicates whether or the live trace category is enabled. Available values: true, false. Case insensitive. */
   enabled?: string;
 }
-const LiveTraceCategory = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LiveTraceCategory>;
-
 /** Gets or sets the list of category configurations. */
 export type LiveTraceConfigurationCategoriesList = Array<LiveTraceCategory>;
-const LiveTraceConfigurationCategoriesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<LiveTraceConfigurationCategoriesList>;
-
 /** Live trace configuration of a Microsoft.SignalRService resource. */
 export interface LiveTraceConfiguration {
   /** Indicates whether or not enable live trace. When it's set to true, live trace client can connect to the service. Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories". Available values: true, false. Case insensitive. */
@@ -396,11 +255,6 @@ export interface LiveTraceConfiguration {
   /** Gets or sets the list of category configurations. */
   categories?: LiveTraceConfigurationCategoriesList;
 }
-const LiveTraceConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<LiveTraceConfiguration>;
-
 /** Resource log category configuration of a Microsoft.SignalRService resource. */
 export interface ResourceLogCategory {
   /** Gets or sets the resource log category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
@@ -410,35 +264,19 @@ export interface ResourceLogCategory {
 }
 /** Gets or sets the list of category configurations. */
 export type ResourceLogConfigurationCategoriesList = Array<ResourceLogCategory>;
-const ResourceLogConfigurationCategoriesList =
-  LiveTraceConfigurationCategoriesList as any as S.Schema<ResourceLogConfigurationCategoriesList>;
-
 /** Resource log configuration of a Microsoft.SignalRService resource. */
 export interface ResourceLogConfiguration {
   /** Gets or sets the list of category configurations. */
   categories?: ResourceLogConfigurationCategoriesList;
 }
-const ResourceLogConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ResourceLogConfiguration>;
-
 /** Azure Networking ACL Action. */
 export type ACLAction = "Allow" | "Deny";
-const ACLAction = S.String;
-
 /** The incoming request type to the service */
 export type WebPubSubRequestType = "ClientConnection" | "ServerConnection" | "RESTAPI" | "Trace";
-const WebPubSubRequestType = S.String;
-
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type NetworkACLAllowList = Array<WebPubSubRequestType | (string & {})>;
-const NetworkACLAllowList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<NetworkACLAllowList>;
-
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type NetworkACLDenyList = Array<WebPubSubRequestType | (string & {})>;
-const NetworkACLDenyList = NetworkACLAllowList as any as S.Schema<NetworkACLDenyList>;
-
 /** Network ACL */
 export interface NetworkACL {
   /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
@@ -446,18 +284,10 @@ export interface NetworkACL {
   /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
   deny?: NetworkACLDenyList;
 }
-const NetworkACL = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<NetworkACL>;
-
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type PrivateEndpointACLAllowList = Array<WebPubSubRequestType | (string & {})>;
-const PrivateEndpointACLAllowList =
-  NetworkACLAllowList as any as S.Schema<PrivateEndpointACLAllowList>;
-
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type PrivateEndpointACLDenyList = Array<WebPubSubRequestType | (string & {})>;
-const PrivateEndpointACLDenyList =
-  NetworkACLAllowList as any as S.Schema<PrivateEndpointACLDenyList>;
-
 /** ACL for a private endpoint */
 export interface PrivateEndpointACL {
   /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
@@ -467,30 +297,16 @@ export interface PrivateEndpointACL {
   /** Name of the private endpoint connection */
   name: string;
 }
-const PrivateEndpointACL = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PrivateEndpointACL>;
-
 /** ACLs for requests from private endpoints */
 export type WebPubSubNetworkACLsPrivateEndpointsList = Array<PrivateEndpointACL>;
-const WebPubSubNetworkACLsPrivateEndpointsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<WebPubSubNetworkACLsPrivateEndpointsList>;
-
 /** An IP rule */
 export interface IPRule {
   /** An IP or CIDR or ServiceTag */
   value?: string;
   action?: ACLAction | (string & {});
 }
-const IPRule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<IPRule>;
-
 /** IP rules for filtering public traffic */
 export type WebPubSubNetworkACLsIpRulesList = Array<IPRule>;
-const WebPubSubNetworkACLsIpRulesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<WebPubSubNetworkACLsIpRulesList>;
-
 /** Network ACLs for the resource */
 export interface WebPubSubNetworkACLs {
   defaultAction?: ACLAction | (string & {});
@@ -500,18 +316,11 @@ export interface WebPubSubNetworkACLs {
   /** IP rules for filtering public traffic */
   ipRules?: WebPubSubNetworkACLsIpRulesList;
 }
-const WebPubSubNetworkACLs = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<WebPubSubNetworkACLs>;
-
 /** SocketIO settings for the resource */
 export interface WebPubSubSocketIOSettings {
   /** The service mode of Web PubSub for Socket.IO. Values allowed: "Default": have your own backend Socket.IO server "Serverless": your application doesn't have a backend server */
   serviceMode?: string;
 }
-const WebPubSubSocketIOSettings = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<WebPubSubSocketIOSettings>;
-
 /** A class that describes the properties of the resource */
 export interface WebPubSubProperties {
   provisioningState?: ProvisioningState;
@@ -547,16 +356,10 @@ export interface WebPubSubProperties {
   resourceStopped?: string;
   socketIO?: WebPubSubSocketIOSettings;
 }
-const WebPubSubProperties = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<WebPubSubProperties>;
-
 /** The kind of the service */
 export type ServiceKind = "WebPubSub" | "SocketIO";
-const ServiceKind = S.String;
-
 /** Represents the identity type: systemAssigned, userAssigned, None */
 export type ManagedIdentityType = "None" | "SystemAssigned" | "UserAssigned";
-const ManagedIdentityType = S.String;
-
 /** Properties of user assigned identity. */
 export interface UserAssignedIdentityProperty {
   /** Get the principal id for the user assigned identity */
@@ -564,20 +367,10 @@ export interface UserAssignedIdentityProperty {
   /** Get the client id for the user assigned identity */
   clientId?: string;
 }
-const UserAssignedIdentityProperty = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UserAssignedIdentityProperty>;
-
 /** Get or set the user assigned identities */
 export type ManagedIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityProperty | undefined;
 };
-const ManagedIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ManagedIdentityUserAssignedIdentitiesMap>;
-
 /** A class represent managed identities used for request and response */
 export interface ManagedIdentity {
   type?: ManagedIdentityType;
@@ -588,8 +381,6 @@ export interface ManagedIdentity {
   /** Get the tenant id for the system assigned identity. Only be used in response */
   tenantId?: string;
 }
-const ManagedIdentity = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ManagedIdentity>;
-
 export interface GetWebPubSubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -608,8 +399,6 @@ export interface GetWebPubSubResponse {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const GetWebPubSubResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetWebPubSubResponse>;
-
 export interface GetWebPubSubCustomCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -620,11 +409,6 @@ export interface GetWebPubSubCustomCertificateRequest {
   /** Custom certificate name */
   certificateName: string;
 }
-const GetWebPubSubCustomCertificateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetWebPubSubCustomCertificateRequest>;
-
 /** Custom certificate properties. */
 export interface CustomCertificateProperties {
   provisioningState?: ProvisioningState;
@@ -635,11 +419,6 @@ export interface CustomCertificateProperties {
   /** Certificate secret version. */
   keyVaultSecretVersion?: string;
 }
-const CustomCertificateProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CustomCertificateProperties>;
-
 export interface GetWebPubSubCustomCertificateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -651,11 +430,6 @@ export interface GetWebPubSubCustomCertificateResponse {
   systemData?: SystemData;
   properties: CustomCertificateProperties;
 }
-const GetWebPubSubCustomCertificateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetWebPubSubCustomCertificateResponse>;
-
 export interface GetWebPubSubCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -666,18 +440,11 @@ export interface GetWebPubSubCustomDomainRequest {
   /** Custom domain name. */
   name: string;
 }
-const GetWebPubSubCustomDomainRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetWebPubSubCustomDomainRequest>;
-
 /** Reference to a resource. */
 export interface ResourceReference {
   /** Resource ID. */
   id?: string;
 }
-const ResourceReference = PrivateEndpoint as any as S.Schema<ResourceReference>;
-
 /** Properties of a custom domain. */
 export interface CustomDomainProperties {
   provisioningState?: ProvisioningState;
@@ -685,11 +452,6 @@ export interface CustomDomainProperties {
   domainName: string;
   customCertificate: ResourceReference;
 }
-const CustomDomainProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CustomDomainProperties>;
-
 export interface GetWebPubSubCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -701,11 +463,6 @@ export interface GetWebPubSubCustomDomainResponse {
   systemData?: SystemData;
   properties: CustomDomainProperties;
 }
-const GetWebPubSubCustomDomainResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetWebPubSubCustomDomainResponse>;
-
 export interface GetWebPubSubHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -716,37 +473,20 @@ export interface GetWebPubSubHubRequest {
   /** The hub name. */
   hubName: string;
 }
-const GetWebPubSubHubRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetWebPubSubHubRequest>;
-
 /** Gets or sets the list of system events. */
 export type EventHandlerSystemEventsList = Array<string>;
-const EventHandlerSystemEventsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<EventHandlerSystemEventsList>;
-
 /** Upstream auth type enum. */
 export type UpstreamAuthType = "None" | "ManagedIdentity";
-const UpstreamAuthType = S.String;
-
 /** Managed identity settings for upstream. */
 export interface ManagedIdentitySettings {
   /** The Resource indicating the App ID URI of the target resource. It also appears in the aud (audience) claim of the issued token. */
   resource?: string;
 }
-const ManagedIdentitySettings = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ManagedIdentitySettings>;
-
 /** Upstream auth settings. If not set, no auth is used for upstream messages. */
 export interface UpstreamAuthSettings {
   type?: UpstreamAuthType | (string & {});
   managedIdentity?: ManagedIdentitySettings;
 }
-const UpstreamAuthSettings = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<UpstreamAuthSettings>;
-
 /** Properties of event handler. */
 export interface EventHandler {
   /** Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in. For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters. */
@@ -757,18 +497,9 @@ export interface EventHandler {
   systemEvents?: EventHandlerSystemEventsList;
   auth?: UpstreamAuthSettings;
 }
-const EventHandler = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<EventHandler>;
-
 /** Event handler of a hub. */
 export type WebPubSubHubPropertiesEventHandlersList = Array<EventHandler>;
-const WebPubSubHubPropertiesEventHandlersList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<WebPubSubHubPropertiesEventHandlersList>;
-
 export type EventListenerFilterType = "EventName";
-const EventListenerFilterType = S.String;
-
 /** A base class for event filter which determines whether an event should be sent to an event listener. */
 export interface EventListenerFilter {
   type: EventListenerFilterType | (string & {});
@@ -777,11 +508,7 @@ export interface EventListenerFilter {
   /** EventNameFilter: matching pattern for user event names (`*`, `event1,event2`, or a single name). */
   userEventPattern?: string;
 }
-const EventListenerFilter = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<EventListenerFilter>;
-
 export type EventListenerEndpointType = "EventHub";
-const EventListenerEndpointType = S.String;
-
 /** An endpoint specifying where Web PubSub should send events to. */
 export interface EventListenerEndpoint {
   type: EventListenerEndpointType | (string & {});
@@ -790,25 +517,13 @@ export interface EventListenerEndpoint {
   /** EventHubEndpoint: name of the event hub. */
   eventHubName?: string;
 }
-const EventListenerEndpoint = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<EventListenerEndpoint>;
-
 /** A setting defines which kinds of events should be sent to which endpoint. */
 export interface EventListener {
   filter: EventListenerFilter;
   endpoint: EventListenerEndpoint;
 }
-const EventListener = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<EventListener>;
-
 /** Event listener settings for forwarding your client events to listeners. Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients. One event can be sent to multiple listeners, as long as it matches the filters in those listeners. The order of the array elements doesn't matter. Maximum count of event listeners among all hubs is 10. */
 export type WebPubSubHubPropertiesEventListenersList = Array<EventListener>;
-const WebPubSubHubPropertiesEventListenersList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<WebPubSubHubPropertiesEventListenersList>;
-
 /** Properties of a hub. */
 export interface WebPubSubHubProperties {
   /** Event handler of a hub. */
@@ -820,11 +535,6 @@ export interface WebPubSubHubProperties {
   /** The settings for configuring the WebSocket ping-pong interval in seconds for all clients in the hub. Valid range: 1 to 120. Default to 20 seconds. */
   webSocketKeepAliveIntervalInSeconds?: number;
 }
-const WebPubSubHubProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<WebPubSubHubProperties>;
-
 export interface GetWebPubSubHubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -836,11 +546,6 @@ export interface GetWebPubSubHubResponse {
   systemData?: SystemData;
   properties: WebPubSubHubProperties;
 }
-const GetWebPubSubHubResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetWebPubSubHubResponse>;
-
 export interface GetWebPubSubPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -851,11 +556,6 @@ export interface GetWebPubSubPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-const GetWebPubSubPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetWebPubSubPrivateEndpointConnectionRequest>;
-
 export interface GetWebPubSubPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -867,9 +567,6 @@ export interface GetWebPubSubPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetWebPubSubPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetWebPubSubPrivateEndpointConnectionResponse>;
-
 export interface GetWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -880,16 +577,8 @@ export interface GetWebPubSubReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const GetWebPubSubReplicasRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetWebPubSubReplicasRequest>;
-
 /** Resource tags. */
 export type GetWebPubSubReplicasResponseTagsMap = { [key: string]: string | undefined };
-const GetWebPubSubReplicasResponseTagsMap =
-  GetWebPubSubResponseTagsMap as any as S.Schema<GetWebPubSubReplicasResponseTagsMap>;
-
 export interface ReplicaProperties {
   provisioningState?: ProvisioningState;
   /** Enable or disable the regional endpoint. Default to "Enabled". When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected. */
@@ -897,8 +586,6 @@ export interface ReplicaProperties {
   /** Stop or start the resource. Default to "false". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
   resourceStopped?: string;
 }
-const ReplicaProperties = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ReplicaProperties>;
-
 export interface GetWebPubSubReplicasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -915,11 +602,6 @@ export interface GetWebPubSubReplicasResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const GetWebPubSubReplicasResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetWebPubSubReplicasResponse>;
-
 export interface GetWebPubSubReplicaSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -932,11 +614,6 @@ export interface GetWebPubSubReplicaSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
 }
-const GetWebPubSubReplicaSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceRequest>;
-
 export interface GetWebPubSubReplicaSharedPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -948,9 +625,6 @@ export interface GetWebPubSubReplicaSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const GetWebPubSubReplicaSharedPrivateLinkResourceResponse =
-  SharedPrivateLinkResource as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceResponse>;
-
 export interface GetWebPubSubSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -961,11 +635,6 @@ export interface GetWebPubSubSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
 }
-const GetWebPubSubSharedPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceRequest>;
-
 export interface GetWebPubSubSharedPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -977,15 +646,7 @@ export interface GetWebPubSubSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const GetWebPubSubSharedPrivateLinkResourceResponse =
-  SharedPrivateLinkResource as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The object that describes a operation. */
 export interface OperationDisplay {
   /** Friendly name of the resource provider */
@@ -997,8 +658,6 @@ export interface OperationDisplay {
   /** The localized friendly description for the operation */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<OperationDisplay>;
-
 /** Specifications of the Dimension of metrics. */
 export interface Dimension {
   /** The public facing name of the dimension. */
@@ -1010,15 +669,8 @@ export interface Dimension {
   /** A Boolean flag indicating whether this dimension should be included for the shoebox export scenario. */
   toBeExportedForShoebox?: boolean;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Dimension>;
-
 /** The dimensions of the metrics. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<MetricSpecificationDimensionsList>;
-
 /** Specifications of the Metrics for Azure Monitoring. */
 export interface MetricSpecification {
   /** Name of the metric. */
@@ -1038,15 +690,8 @@ export interface MetricSpecification {
   /** The dimensions of the metrics. */
   dimensions?: MetricSpecificationDimensionsList;
 }
-const MetricSpecification = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MetricSpecification>;
-
 /** Specifications of the Metrics for Azure Monitoring. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
 /** Specifications of the Logs for Azure Monitoring. */
 export interface LogSpecification {
   /** Name of the log. */
@@ -1054,15 +699,8 @@ export interface LogSpecification {
   /** Localized friendly display name of the log. */
   displayName?: string;
 }
-const LogSpecification = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<LogSpecification>;
-
 /** Specifications of the Logs for Azure Monitoring. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
-
 /** An object that describes a specification. */
 export interface ServiceSpecification {
   /** Specifications of the Metrics for Azure Monitoring. */
@@ -1070,14 +708,10 @@ export interface ServiceSpecification {
   /** Specifications of the Logs for Azure Monitoring. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-const ServiceSpecification = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ServiceSpecification>;
-
 /** Extra Operation properties. */
 export interface OperationProperties {
   serviceSpecification?: ServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<OperationProperties>;
-
 /** REST API operation supported by resource provider. */
 export interface Operation {
   /** Name of the operation with format: {provider}/{resource}/{operation} */
@@ -1089,15 +723,8 @@ export interface Operation {
   origin?: string;
   properties?: OperationProperties;
 }
-const Operation = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider. */
 export type OperationListValueList = Array<Operation>;
-const OperationListValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<OperationListValueList>;
-
 /** Result of the request to list REST API operations. It contains a list of operations. */
 export interface OperationList {
   /** List of operations supported by the resource provider. */
@@ -1105,16 +732,12 @@ export interface OperationList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const OperationList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<OperationList>;
-
 export interface ListUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** the location like "eastus" */
   location: string;
 }
-const ListUsagesRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListUsagesRequest>;
-
 /** Localizable String object containing the name and a localized value. */
 export interface SignalRServiceUsageName {
   /** The identifier of the usage. */
@@ -1122,11 +745,6 @@ export interface SignalRServiceUsageName {
   /** Localized name of the usage. */
   localizedValue?: string;
 }
-const SignalRServiceUsageName = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<SignalRServiceUsageName>;
-
 /** Object that describes a specific usage of the resources. */
 export interface SignalRServiceUsage {
   /** Fully qualified ARM resource id */
@@ -1139,15 +757,8 @@ export interface SignalRServiceUsage {
   /** Representing the units of the usage quota. Possible values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond. */
   unit?: string;
 }
-const SignalRServiceUsage = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<SignalRServiceUsage>;
-
 /** List of the resource usages */
 export type SignalRServiceUsageListValueList = Array<SignalRServiceUsage>;
-const SignalRServiceUsageListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<SignalRServiceUsageListValueList>;
-
 /** Object that includes an array of the resource usages and a possible link for next set. */
 export interface SignalRServiceUsageList {
   /** List of the resource usages */
@@ -1155,22 +766,12 @@ export interface SignalRServiceUsageList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const SignalRServiceUsageList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<SignalRServiceUsageList>;
-
 export interface ListWebPubSubByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListWebPubSubByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListWebPubSubByResourceGroupRequest>;
-
 /** Resource tags. */
 export type WebPubSubResourceTagsMap = { [key: string]: string | undefined };
 /** A class represent a resource. */
@@ -1192,15 +793,8 @@ export interface WebPubSubResource {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const WebPubSubResource = GetWebPubSubResponse as any as S.Schema<WebPubSubResource>;
-
 /** List of the resources */
 export type WebPubSubResourceListValueList = Array<WebPubSubResource>;
-const WebPubSubResourceListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<WebPubSubResourceListValueList>;
-
 /** Object that includes an array of resources and a possible link for next set. */
 export interface WebPubSubResourceList {
   /** List of the resources */
@@ -1208,20 +802,10 @@ export interface WebPubSubResourceList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const WebPubSubResourceList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<WebPubSubResourceList>;
-
 export interface ListWebPubSubBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListWebPubSubBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListWebPubSubBySubscriptionRequest>;
-
 export interface ListWebPubSubCustomCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1230,11 +814,6 @@ export interface ListWebPubSubCustomCertificatesRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubCustomCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListWebPubSubCustomCertificatesRequest>;
-
 /** A custom certificate. */
 export interface CustomCertificate {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1247,15 +826,8 @@ export interface CustomCertificate {
   systemData?: SystemData;
   properties: CustomCertificateProperties;
 }
-const CustomCertificate = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<CustomCertificate>;
-
 /** List of custom certificates of this resource. */
 export type CustomCertificateListValueList = Array<CustomCertificate>;
-const CustomCertificateListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CustomCertificateListValueList>;
-
 /** Custom certificates list. */
 export interface CustomCertificateList {
   /** List of custom certificates of this resource. */
@@ -1263,11 +835,6 @@ export interface CustomCertificateList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const CustomCertificateList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CustomCertificateList>;
-
 export interface ListWebPubSubCustomDomainsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1276,11 +843,6 @@ export interface ListWebPubSubCustomDomainsRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubCustomDomainsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListWebPubSubCustomDomainsRequest>;
-
 /** A custom domain */
 export interface CustomDomain {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1293,15 +855,8 @@ export interface CustomDomain {
   systemData?: SystemData;
   properties: CustomDomainProperties;
 }
-const CustomDomain = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CustomDomain>;
-
 /** List of custom domains that bind to this resource. */
 export type CustomDomainListValueList = Array<CustomDomain>;
-const CustomDomainListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CustomDomainListValueList>;
-
 /** Custom domains list */
 export interface CustomDomainList {
   /** List of custom domains that bind to this resource. */
@@ -1309,8 +864,6 @@ export interface CustomDomainList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const CustomDomainList = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CustomDomainList>;
-
 export interface ListWebPubSubHubsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1319,11 +872,6 @@ export interface ListWebPubSubHubsRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubHubsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListWebPubSubHubsRequest>;
-
 /** A hub setting */
 export interface WebPubSubHub {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1336,15 +884,8 @@ export interface WebPubSubHub {
   systemData?: SystemData;
   properties: WebPubSubHubProperties;
 }
-const WebPubSubHub = GetWebPubSubHubResponse as any as S.Schema<WebPubSubHub>;
-
 /** List of hub settings to this resource. */
 export type WebPubSubHubListValueList = Array<WebPubSubHub>;
-const WebPubSubHubListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<WebPubSubHubListValueList>;
-
 /** Hub setting list */
 export interface WebPubSubHubList {
   /** List of hub settings to this resource. */
@@ -1352,8 +893,6 @@ export interface WebPubSubHubList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const WebPubSubHubList = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<WebPubSubHubList>;
-
 export interface ListWebPubSubKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1362,11 +901,6 @@ export interface ListWebPubSubKeysRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubKeysRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListWebPubSubKeysRequest>;
-
 /** A class represents the access keys of the resource. */
 export interface WebPubSubKeys {
   /** The primary access key. */
@@ -1378,8 +912,6 @@ export interface WebPubSubKeys {
   /** Connection string constructed via the secondaryKey */
   secondaryConnectionString?: string;
 }
-const WebPubSubKeys = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<WebPubSubKeys>;
-
 export interface ListWebPubSubPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1388,16 +920,8 @@ export interface ListWebPubSubPrivateEndpointConnectionsRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListWebPubSubPrivateEndpointConnectionsRequest>;
-
 /** The list of the private endpoint connections */
 export type PrivateEndpointConnectionListValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListValueList =
-  WebPubSubPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListValueList>;
-
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionList {
   /** The list of the private endpoint connections */
@@ -1405,11 +929,6 @@ export interface PrivateEndpointConnectionList {
   /** Request URL that can be used to query next page of private endpoint connections. Returned when the total number of requested private endpoint connections exceed maximum page size. */
   nextLink?: string;
 }
-const PrivateEndpointConnectionList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<PrivateEndpointConnectionList>;
-
 export interface ListWebPubSubPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1418,21 +937,10 @@ export interface ListWebPubSubPrivateLinkResourcesRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListWebPubSubPrivateLinkResourcesRequest>;
-
 /** Required members of the private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** Required private DNS zone names */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Describes the properties of a resource type that has been onboarded to private link service */
 export interface ShareablePrivateLinkResourceProperties {
   /** The description of the resource type that has been onboarded to private link service */
@@ -1442,30 +950,15 @@ export interface ShareablePrivateLinkResourceProperties {
   /** The resource provider type for the resource that has been onboarded to private link service */
   type?: string;
 }
-const ShareablePrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ShareablePrivateLinkResourceProperties>;
-
 /** Describes a resource type that has been onboarded to private link service */
 export interface ShareablePrivateLinkResourceType {
   /** The name of the resource type that has been onboarded to private link service */
   name?: string;
   properties?: ShareablePrivateLinkResourceProperties;
 }
-const ShareablePrivateLinkResourceType = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ShareablePrivateLinkResourceType>;
-
 /** The list of resources that are onboarded to private link service */
 export type PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
   Array<ShareablePrivateLinkResourceType>;
-const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList>;
-
 /** Private link resource properties */
 export interface PrivateLinkResourceProperties {
   /** Group Id of the private link resource */
@@ -1477,11 +970,6 @@ export interface PrivateLinkResourceProperties {
   /** The list of resources that are onboarded to private link service */
   shareablePrivateLinkResourceTypes?: PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** Private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1494,15 +982,8 @@ export interface PrivateLinkResource {
   systemData?: SystemData;
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<PrivateLinkResource>;
-
 /** List of PrivateLinkResource */
 export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<PrivateLinkResourceListValueList>;
-
 /** Contains a list of PrivateLinkResource and a possible link to query more results */
 export interface PrivateLinkResourceList {
   /** List of PrivateLinkResource */
@@ -1510,11 +991,6 @@ export interface PrivateLinkResourceList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const PrivateLinkResourceList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<PrivateLinkResourceList>;
-
 export interface ListWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1523,15 +999,8 @@ export interface ListWebPubSubReplicasRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubReplicasRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListWebPubSubReplicasRequest>;
-
 /** Resource tags. */
 export type ReplicaTagsMap = { [key: string]: string | undefined };
-const ReplicaTagsMap = GetWebPubSubResponseTagsMap as any as S.Schema<ReplicaTagsMap>;
-
 /** A class represent a replica resource. */
 export interface Replica {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1549,23 +1018,14 @@ export interface Replica {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const Replica = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<Replica>;
-
 /** List of the replica */
 export type ReplicaListValueList = Array<Replica>;
-const ReplicaListValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ReplicaListValueList>;
-
 export interface ReplicaList {
   /** List of the replica */
   value?: ReplicaListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const ReplicaList = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ReplicaList>;
-
 export interface ListWebPubSubReplicaSharedPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1576,16 +1036,8 @@ export interface ListWebPubSubReplicaSharedPrivateLinkResourcesRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const ListWebPubSubReplicaSharedPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListWebPubSubReplicaSharedPrivateLinkResourcesRequest>;
-
 /** The list of the shared private link resources */
 export type SharedPrivateLinkResourceListValueList = Array<SharedPrivateLinkResource>;
-const SharedPrivateLinkResourceListValueList =
-  WebPubSubPropertiesSharedPrivateLinkResourcesList as any as S.Schema<SharedPrivateLinkResourceListValueList>;
-
 /** A list of shared private link resources */
 export interface SharedPrivateLinkResourceList {
   /** The list of the shared private link resources */
@@ -1593,11 +1045,6 @@ export interface SharedPrivateLinkResourceList {
   /** Request URL that can be used to query next page of private endpoint connections. Returned when the total number of requested private endpoint connections exceed maximum page size. */
   nextLink?: string;
 }
-const SharedPrivateLinkResourceList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<SharedPrivateLinkResourceList>;
-
 export interface ListWebPubSubReplicaSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1608,22 +1055,10 @@ export interface ListWebPubSubReplicaSkusRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const ListWebPubSubReplicaSkusRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ListWebPubSubReplicaSkusRequest>;
-
 /** Allows capacity value list. */
 export type SkuCapacityAllowedValuesList = Array<number>;
-const SkuCapacityAllowedValuesList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<SkuCapacityAllowedValuesList>;
-
 /** The scale type applicable to the sku. */
 export type ScaleType = "None" | "Manual" | "Automatic";
-const ScaleType = S.String;
-
 /** Describes scaling information of a sku. */
 export interface SkuCapacity {
   /** The lowest permitted capacity for this resource */
@@ -1636,8 +1071,6 @@ export interface SkuCapacity {
   allowedValues?: SkuCapacityAllowedValuesList;
   scaleType?: ScaleType;
 }
-const SkuCapacity = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SkuCapacity>;
-
 /** Describes an available sku." */
 export interface Sku {
   /** The resource type that this object applies to */
@@ -1645,12 +1078,8 @@ export interface Sku {
   sku?: ResourceSku;
   capacity?: SkuCapacity;
 }
-const Sku = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<Sku>;
-
 /** The list of skus available for the resource. */
 export type SkuListValueList = Array<Sku>;
-const SkuListValueList = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<SkuListValueList>;
-
 /** The list skus operation response */
 export interface SkuList {
   /** The list of skus available for the resource. */
@@ -1658,8 +1087,6 @@ export interface SkuList {
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-const SkuList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<SkuList>;
-
 export interface ListWebPubSubSharedPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1668,11 +1095,6 @@ export interface ListWebPubSubSharedPrivateLinkResourcesRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubSharedPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListWebPubSubSharedPrivateLinkResourcesRequest>;
-
 export interface ListWebPubSubSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1681,15 +1103,8 @@ export interface ListWebPubSubSkusRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const ListWebPubSubSkusRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ListWebPubSubSkusRequest>;
-
 /** The type of access key. */
 export type KeyType = "Primary" | "Secondary" | "Salt";
-const KeyType = S.String;
-
 export interface RegenerateWebPubSubKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1699,11 +1114,6 @@ export interface RegenerateWebPubSubKeyRequest {
   resourceName: string;
   keyType?: KeyType | (string & {});
 }
-const RegenerateWebPubSubKeyRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<RegenerateWebPubSubKeyRequest>;
-
 export interface RestartWebPubSubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1712,15 +1122,7 @@ export interface RestartWebPubSubRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-const RestartWebPubSubRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<RestartWebPubSubRequest>;
-
 export interface RestartWebPubSubResponse {}
-const RestartWebPubSubResponse =
-  DeleteWebPubSubResponse as any as S.Schema<RestartWebPubSubResponse>;
-
 export interface RestartWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1731,20 +1133,9 @@ export interface RestartWebPubSubReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-const RestartWebPubSubReplicasRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<RestartWebPubSubReplicasRequest>;
-
 export interface RestartWebPubSubReplicasResponse {}
-const RestartWebPubSubReplicasResponse =
-  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<RestartWebPubSubReplicasResponse>;
-
 /** Resource tags. */
 export type UpdateWebPubSubRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWebPubSubRequestTagsMap =
-  GetWebPubSubResponseTagsMap as any as S.Schema<UpdateWebPubSubRequestTagsMap>;
-
 /** The billing information of the resource. */
 export interface ResourceSkuInput {
   /** The name of the SKU. Required. Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2 */
@@ -1753,8 +1144,6 @@ export interface ResourceSkuInput {
   /** Optional, integer. The unit count of the resource. 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default. If present, following values are allowed: Free_F1: 1; Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P2: 100,200,300,400,500,600,700,800,900,1000; */
   capacity?: number;
 }
-const ResourceSkuInput = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ResourceSkuInput>;
-
 /** A class that describes the properties of the resource */
 export interface WebPubSubPropertiesInput {
   tls?: WebPubSubTlsSettings;
@@ -1773,36 +1162,18 @@ export interface WebPubSubPropertiesInput {
   resourceStopped?: string;
   socketIO?: WebPubSubSocketIOSettings;
 }
-const WebPubSubPropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<WebPubSubPropertiesInput>;
-
 /** Properties of user assigned identity. */
 export interface UserAssignedIdentityPropertyInput {}
-const UserAssignedIdentityPropertyInput =
-  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<UserAssignedIdentityPropertyInput>;
-
 /** Get or set the user assigned identities */
 export type ManagedIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityPropertyInput | undefined;
 };
-const ManagedIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ManagedIdentityInputUserAssignedIdentitiesMap>;
-
 /** A class represent managed identities used for request and response */
 export interface ManagedIdentityInput {
   type?: ManagedIdentityType | (string & {});
   /** Get or set the user assigned identities */
   userAssignedIdentities?: ManagedIdentityInputUserAssignedIdentitiesMap;
 }
-const ManagedIdentityInput = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ManagedIdentityInput>;
-
 export interface UpdateWebPubSubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1819,11 +1190,6 @@ export interface UpdateWebPubSubRequest {
   kind?: ServiceKind | (string & {});
   identity?: ManagedIdentityInput;
 }
-const UpdateWebPubSubRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<UpdateWebPubSubRequest>;
-
 /** Resource tags. */
 export type UpdateWebPubSubResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWebPubSubResponse {
@@ -1844,18 +1210,11 @@ export interface UpdateWebPubSubResponse {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const UpdateWebPubSubResponse = GetWebPubSubResponse as any as S.Schema<UpdateWebPubSubResponse>;
-
 /** Private endpoint connection properties */
 export interface PrivateEndpointConnectionPropertiesInput {
   privateEndpoint?: PrivateEndpoint;
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface UpdateWebPubSubPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1867,11 +1226,6 @@ export interface UpdateWebPubSubPrivateEndpointConnectionRequest {
   privateEndpointConnectionName: string;
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-const UpdateWebPubSubPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionRequest>;
-
 export interface UpdateWebPubSubPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1883,25 +1237,14 @@ export interface UpdateWebPubSubPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-const UpdateWebPubSubPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionResponse>;
-
 /** Resource tags. */
 export type UpdateWebPubSubReplicasRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWebPubSubReplicasRequestTagsMap =
-  GetWebPubSubResponseTagsMap as any as S.Schema<UpdateWebPubSubReplicasRequestTagsMap>;
-
 export interface ReplicaPropertiesInput {
   /** Enable or disable the regional endpoint. Default to "Enabled". When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected. */
   regionEndpointEnabled?: string;
   /** Stop or start the resource. Default to "false". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
   resourceStopped?: string;
 }
-const ReplicaPropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ReplicaPropertiesInput>;
-
 export interface UpdateWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1918,11 +1261,6 @@ export interface UpdateWebPubSubReplicasRequest {
   sku?: ResourceSkuInput;
   properties?: ReplicaPropertiesInput;
 }
-const UpdateWebPubSubReplicasRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<UpdateWebPubSubReplicasRequest>;
-
 /** Resource tags. */
 export type UpdateWebPubSubReplicasResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWebPubSubReplicasResponse {
@@ -1941,14 +1279,8 @@ export interface UpdateWebPubSubReplicasResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const UpdateWebPubSubReplicasResponse =
-  GetWebPubSubReplicasResponse as any as S.Schema<UpdateWebPubSubReplicasResponse>;
-
 /** Resource tags. */
 export type WebPubSubCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WebPubSubCreateOrUpdateRequestTagsMap =
-  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubCreateOrUpdateRequestTagsMap>;
-
 export interface WebPubSubCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1965,16 +1297,8 @@ export interface WebPubSubCreateOrUpdateRequest {
   kind?: ServiceKind | (string & {});
   identity?: ManagedIdentityInput;
 }
-const WebPubSubCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<WebPubSubCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type WebPubSubCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const WebPubSubCreateOrUpdateResponseTagsMap =
-  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubCreateOrUpdateResponseTagsMap>;
-
 export interface WebPubSubCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1993,11 +1317,6 @@ export interface WebPubSubCreateOrUpdateResponse {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-const WebPubSubCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<WebPubSubCreateOrUpdateResponse>;
-
 /** Custom certificate properties. */
 export interface CustomCertificatePropertiesInput {
   /** Base uri of the KeyVault that stores certificate. */
@@ -2007,11 +1326,6 @@ export interface CustomCertificatePropertiesInput {
   /** Certificate secret version. */
   keyVaultSecretVersion?: string;
 }
-const CustomCertificatePropertiesInput = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CustomCertificatePropertiesInput>;
-
 export interface WebPubSubCustomCertificatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2023,11 +1337,6 @@ export interface WebPubSubCustomCertificatesCreateOrUpdateRequest {
   certificateName: string;
   properties: CustomCertificatePropertiesInput;
 }
-const WebPubSubCustomCertificatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateRequest>;
-
 export interface WebPubSubCustomCertificatesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2039,20 +1348,12 @@ export interface WebPubSubCustomCertificatesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: CustomCertificateProperties;
 }
-const WebPubSubCustomCertificatesCreateOrUpdateResponse =
-  GetWebPubSubCustomCertificateResponse as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateResponse>;
-
 /** Properties of a custom domain. */
 export interface CustomDomainPropertiesInput {
   /** The custom domain name. */
   domainName: string;
   customCertificate: ResourceReference;
 }
-const CustomDomainPropertiesInput = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CustomDomainPropertiesInput>;
-
 export interface WebPubSubCustomDomainsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2064,11 +1365,6 @@ export interface WebPubSubCustomDomainsCreateOrUpdateRequest {
   name: string;
   properties: CustomDomainPropertiesInput;
 }
-const WebPubSubCustomDomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateRequest>;
-
 export interface WebPubSubCustomDomainsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2080,9 +1376,6 @@ export interface WebPubSubCustomDomainsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: CustomDomainProperties;
 }
-const WebPubSubCustomDomainsCreateOrUpdateResponse =
-  GetWebPubSubCustomDomainResponse as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateResponse>;
-
 export interface WebPubSubHubsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2094,11 +1387,6 @@ export interface WebPubSubHubsCreateOrUpdateRequest {
   hubName: string;
   properties: WebPubSubHubProperties;
 }
-const WebPubSubHubsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<WebPubSubHubsCreateOrUpdateRequest>;
-
 export interface WebPubSubHubsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2110,16 +1398,8 @@ export interface WebPubSubHubsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: WebPubSubHubProperties;
 }
-const WebPubSubHubsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<WebPubSubHubsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type WebPubSubReplicasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WebPubSubReplicasCreateOrUpdateRequestTagsMap =
-  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubReplicasCreateOrUpdateRequestTagsMap>;
-
 export interface WebPubSubReplicasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2136,11 +1416,6 @@ export interface WebPubSubReplicasCreateOrUpdateRequest {
   sku?: ResourceSkuInput;
   properties?: ReplicaPropertiesInput;
 }
-const WebPubSubReplicasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<WebPubSubReplicasCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type WebPubSubReplicasCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface WebPubSubReplicasCreateOrUpdateResponse {
@@ -2159,9 +1434,6 @@ export interface WebPubSubReplicasCreateOrUpdateResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-const WebPubSubReplicasCreateOrUpdateResponse =
-  GetWebPubSubReplicasResponse as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponse>;
-
 /** Describes the properties of an existing Shared Private Link Resource */
 export interface SharedPrivateLinkResourcePropertiesInput {
   /** The group id from the provider of resource the shared private link resource is for */
@@ -2171,11 +1443,6 @@ export interface SharedPrivateLinkResourcePropertiesInput {
   /** The request message for requesting approval of the shared private link resource */
   requestMessage?: string;
 }
-const SharedPrivateLinkResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<SharedPrivateLinkResourcePropertiesInput>;
-
 export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2189,11 +1456,6 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest
   sharedPrivateLinkResourceName: string;
   properties?: SharedPrivateLinkResourcePropertiesInput;
 }
-const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest>;
-
 export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2205,11 +1467,6 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRespons
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse>;
-
 export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2221,11 +1478,6 @@ export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest {
   sharedPrivateLinkResourceName: string;
   properties?: SharedPrivateLinkResourcePropertiesInput;
 }
-const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest>;
-
 export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2237,11 +1489,6 @@ export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse>;
-
 export type CheckWebPubSubNameAvailabilityError = AzureOpError;
 /** Checks that the resource name is valid and is not already in use. */
 export const CheckWebPubSubNameAvailability: API.OperationMethod<
@@ -2250,8 +1497,8 @@ export const CheckWebPubSubNameAvailability: API.OperationMethod<
   CheckWebPubSubNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckWebPubSubNameAvailabilityRequest,
-  output: NameAvailability,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckWebPubSubNameAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<NameAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2265,8 +1512,8 @@ export const DeleteWebPubSub: API.OperationMethod<
   DeleteWebPubSubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebPubSubRequest,
-  output: DeleteWebPubSubResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<DeleteWebPubSubRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteWebPubSubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2280,8 +1527,8 @@ export const DeleteWebPubSubCustomCertificate: API.OperationMethod<
   DeleteWebPubSubCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebPubSubCustomCertificateRequest,
-  output: DeleteWebPubSubCustomCertificateResponse,
+  input: __S(4, __c0, 4) as any as S.Schema<DeleteWebPubSubCustomCertificateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteWebPubSubCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2295,8 +1542,8 @@ export const DeleteWebPubSubCustomDomain: API.OperationMethod<
   DeleteWebPubSubCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebPubSubCustomDomainRequest,
-  output: DeleteWebPubSubCustomDomainResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<DeleteWebPubSubCustomDomainRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteWebPubSubCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2310,8 +1557,8 @@ export const DeleteWebPubSubHub: API.OperationMethod<
   DeleteWebPubSubHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebPubSubHubRequest,
-  output: DeleteWebPubSubHubResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<DeleteWebPubSubHubRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteWebPubSubHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2325,8 +1572,8 @@ export const DeleteWebPubSubPrivateEndpointConnection: API.OperationMethod<
   DeleteWebPubSubPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebPubSubPrivateEndpointConnectionRequest,
-  output: DeleteWebPubSubPrivateEndpointConnectionResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2340,8 +1587,8 @@ export const DeleteWebPubSubReplicas: API.OperationMethod<
   DeleteWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebPubSubReplicasRequest,
-  output: DeleteWebPubSubReplicasResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<DeleteWebPubSubReplicasRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DeleteWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2355,8 +1602,8 @@ export const DeleteWebPubSubSharedPrivateLinkResource: API.OperationMethod<
   DeleteWebPubSubSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebPubSubSharedPrivateLinkResourceRequest,
-  output: DeleteWebPubSubSharedPrivateLinkResourceResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2370,8 +1617,8 @@ export const GetWebPubSub: API.OperationMethod<
   GetWebPubSubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubRequest,
-  output: GetWebPubSubResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetWebPubSubRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetWebPubSubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2385,8 +1632,8 @@ export const GetWebPubSubCustomCertificate: API.OperationMethod<
   GetWebPubSubCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubCustomCertificateRequest,
-  output: GetWebPubSubCustomCertificateResponse,
+  input: __S(43, __c5, 3) as any as S.Schema<GetWebPubSubCustomCertificateRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GetWebPubSubCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2400,8 +1647,8 @@ export const GetWebPubSubCustomDomain: API.OperationMethod<
   GetWebPubSubCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubCustomDomainRequest,
-  output: GetWebPubSubCustomDomainResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<GetWebPubSubCustomDomainRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetWebPubSubCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2415,8 +1662,8 @@ export const GetWebPubSubHub: API.OperationMethod<
   GetWebPubSubHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubHubRequest,
-  output: GetWebPubSubHubResponse,
+  input: __S(49, __c6, 1) as any as S.Schema<GetWebPubSubHubRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<GetWebPubSubHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2430,8 +1677,8 @@ export const GetWebPubSubPrivateEndpointConnection: API.OperationMethod<
   GetWebPubSubPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubPrivateEndpointConnectionRequest,
-  output: GetWebPubSubPrivateEndpointConnectionResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<GetWebPubSubPrivateEndpointConnectionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetWebPubSubPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2445,8 +1692,8 @@ export const GetWebPubSubReplicas: API.OperationMethod<
   GetWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubReplicasRequest,
-  output: GetWebPubSubReplicasResponse,
+  input: __S(61, __c7, 5) as any as S.Schema<GetWebPubSubReplicasRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<GetWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2460,8 +1707,8 @@ export const GetWebPubSubReplicaSharedPrivateLinkResource: API.OperationMethod<
   GetWebPubSubReplicaSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubReplicaSharedPrivateLinkResourceRequest,
-  output: GetWebPubSubReplicaSharedPrivateLinkResourceResponse,
+  input: __S(64, __c8, 0) as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2475,8 +1722,8 @@ export const GetWebPubSubSharedPrivateLinkResource: API.OperationMethod<
   GetWebPubSubSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebPubSubSharedPrivateLinkResourceRequest,
-  output: GetWebPubSubSharedPrivateLinkResourceResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2490,8 +1737,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationList,
+  input: __S(66, __c8, 2) as any as S.Schema<ListOperationsRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2505,8 +1752,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsagesRequest,
-  output: SignalRServiceUsageList,
+  input: __S(79, __c9, 7) as any as S.Schema<ListUsagesRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<SignalRServiceUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2520,8 +1767,8 @@ export const ListWebPubSubByResourceGroup: API.OperationMethod<
   ListWebPubSubByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubByResourceGroupRequest,
-  output: WebPubSubResourceList,
+  input: __S(84, __c10, 4) as any as S.Schema<ListWebPubSubByResourceGroupRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<WebPubSubResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2535,8 +1782,8 @@ export const ListWebPubSubBySubscription: API.OperationMethod<
   ListWebPubSubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubBySubscriptionRequest,
-  output: WebPubSubResourceList,
+  input: __S(87, __c10, 7) as any as S.Schema<ListWebPubSubBySubscriptionRequest>,
+  output: __S(86, __c10, 6) as any as S.Schema<WebPubSubResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2550,8 +1797,8 @@ export const ListWebPubSubCustomCertificates: API.OperationMethod<
   ListWebPubSubCustomCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubCustomCertificatesRequest,
-  output: CustomCertificateList,
+  input: __S(88, __c11, 0) as any as S.Schema<ListWebPubSubCustomCertificatesRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<CustomCertificateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2565,8 +1812,8 @@ export const ListWebPubSubCustomDomains: API.OperationMethod<
   ListWebPubSubCustomDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubCustomDomainsRequest,
-  output: CustomDomainList,
+  input: __S(92, __c11, 4) as any as S.Schema<ListWebPubSubCustomDomainsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<CustomDomainList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2580,8 +1827,8 @@ export const ListWebPubSubHubs: API.OperationMethod<
   ListWebPubSubHubsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubHubsRequest,
-  output: WebPubSubHubList,
+  input: __S(96, __c12, 0) as any as S.Schema<ListWebPubSubHubsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<WebPubSubHubList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2595,8 +1842,8 @@ export const ListWebPubSubKeys: API.OperationMethod<
   ListWebPubSubKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubKeysRequest,
-  output: WebPubSubKeys,
+  input: __S(99, __c12, 3) as any as S.Schema<ListWebPubSubKeysRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<WebPubSubKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2610,8 +1857,8 @@ export const ListWebPubSubPrivateEndpointConnections: API.OperationMethod<
   ListWebPubSubPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionList,
+  input: __S(101, __c12, 5) as any as S.Schema<ListWebPubSubPrivateEndpointConnectionsRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<PrivateEndpointConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2625,8 +1872,8 @@ export const ListWebPubSubPrivateLinkResources: API.OperationMethod<
   ListWebPubSubPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubPrivateLinkResourcesRequest,
-  output: PrivateLinkResourceList,
+  input: __S(103, __c12, 7) as any as S.Schema<ListWebPubSubPrivateLinkResourcesRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<PrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2640,8 +1887,8 @@ export const ListWebPubSubReplicas: API.OperationMethod<
   ListWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubReplicasRequest,
-  output: ReplicaList,
+  input: __S(111, __c13, 7) as any as S.Schema<ListWebPubSubReplicasRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ReplicaList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2655,8 +1902,12 @@ export const ListWebPubSubReplicaSharedPrivateLinkResources: API.OperationMethod
   ListWebPubSubReplicaSharedPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubReplicaSharedPrivateLinkResourcesRequest,
-  output: SharedPrivateLinkResourceList,
+  input: __S(
+    115,
+    __c14,
+    3,
+  ) as any as S.Schema<ListWebPubSubReplicaSharedPrivateLinkResourcesRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2670,8 +1921,8 @@ export const ListWebPubSubReplicaSkus: API.OperationMethod<
   ListWebPubSubReplicaSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubReplicaSkusRequest,
-  output: SkuList,
+  input: __S(117, __c14, 5) as any as S.Schema<ListWebPubSubReplicaSkusRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<SkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2685,8 +1936,8 @@ export const ListWebPubSubSharedPrivateLinkResources: API.OperationMethod<
   ListWebPubSubSharedPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubSharedPrivateLinkResourcesRequest,
-  output: SharedPrivateLinkResourceList,
+  input: __S(123, __c15, 3) as any as S.Schema<ListWebPubSubSharedPrivateLinkResourcesRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2700,8 +1951,8 @@ export const ListWebPubSubSkus: API.OperationMethod<
   ListWebPubSubSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebPubSubSkusRequest,
-  output: SkuList,
+  input: __S(124, __c15, 4) as any as S.Schema<ListWebPubSubSkusRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<SkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2715,8 +1966,8 @@ export const RegenerateWebPubSubKey: API.OperationMethod<
   RegenerateWebPubSubKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateWebPubSubKeyRequest,
-  output: WebPubSubKeys,
+  input: __S(125, __c15, 5) as any as S.Schema<RegenerateWebPubSubKeyRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<WebPubSubKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2730,8 +1981,8 @@ export const RestartWebPubSub: API.OperationMethod<
   RestartWebPubSubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartWebPubSubRequest,
-  output: RestartWebPubSubResponse,
+  input: __S(126, __c15, 6) as any as S.Schema<RestartWebPubSubRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<RestartWebPubSubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2745,8 +1996,8 @@ export const RestartWebPubSubReplicas: API.OperationMethod<
   RestartWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartWebPubSubReplicasRequest,
-  output: RestartWebPubSubReplicasResponse,
+  input: __S(127, __c15, 7) as any as S.Schema<RestartWebPubSubReplicasRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<RestartWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2011,8 @@ export const UpdateWebPubSub: API.OperationMethod<
   UpdateWebPubSubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebPubSubRequest,
-  output: UpdateWebPubSubResponse,
+  input: __S(132, __c16, 4) as any as S.Schema<UpdateWebPubSubRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<UpdateWebPubSubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2026,8 @@ export const UpdateWebPubSubPrivateEndpointConnection: API.OperationMethod<
   UpdateWebPubSubPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebPubSubPrivateEndpointConnectionRequest,
-  output: UpdateWebPubSubPrivateEndpointConnectionResponse,
+  input: __S(134, __c16, 6) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2041,8 @@ export const UpdateWebPubSubReplicas: API.OperationMethod<
   UpdateWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebPubSubReplicasRequest,
-  output: UpdateWebPubSubReplicasResponse,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateWebPubSubReplicasRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<UpdateWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2056,8 @@ export const WebPubSubCreateOrUpdate: API.OperationMethod<
   WebPubSubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebPubSubCreateOrUpdateRequest,
-  output: WebPubSubCreateOrUpdateResponse,
+  input: __S(137, __c17, 1) as any as S.Schema<WebPubSubCreateOrUpdateRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<WebPubSubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2071,8 @@ export const WebPubSubCustomCertificatesCreateOrUpdate: API.OperationMethod<
   WebPubSubCustomCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebPubSubCustomCertificatesCreateOrUpdateRequest,
-  output: WebPubSubCustomCertificatesCreateOrUpdateResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2086,8 @@ export const WebPubSubCustomDomainsCreateOrUpdate: API.OperationMethod<
   WebPubSubCustomDomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebPubSubCustomDomainsCreateOrUpdateRequest,
-  output: WebPubSubCustomDomainsCreateOrUpdateResponse,
+  input: __S(142, __c17, 6) as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2101,8 @@ export const WebPubSubHubsCreateOrUpdate: API.OperationMethod<
   WebPubSubHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebPubSubHubsCreateOrUpdateRequest,
-  output: WebPubSubHubsCreateOrUpdateResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<WebPubSubHubsCreateOrUpdateRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<WebPubSubHubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2116,8 @@ export const WebPubSubReplicasCreateOrUpdate: API.OperationMethod<
   WebPubSubReplicasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebPubSubReplicasCreateOrUpdateRequest,
-  output: WebPubSubReplicasCreateOrUpdateResponse,
+  input: __S(145, __c18, 1) as any as S.Schema<WebPubSubReplicasCreateOrUpdateRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2880,8 +2131,16 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdate: API.Opera
   WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest,
-  output: WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse,
+  input: __S(
+    147,
+    __c18,
+    3,
+  ) as any as S.Schema<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest>,
+  output: __S(
+    148,
+    __c18,
+    4,
+  ) as any as S.Schema<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2895,8 +2154,16 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdate: API.OperationMet
   WebPubSubSharedPrivateLinkResourcesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest,
-  output: WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse,
+  input: __S(
+    149,
+    __c18,
+    5,
+  ) as any as S.Schema<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest>,
+  output: __S(
+    150,
+    __c18,
+    6,
+  ) as any as S.Schema<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3089,10 +2356,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -3102,7 +2369,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(WebPubSubSkuTier),
+          tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -3123,7 +2390,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateLinkServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -3133,10 +2400,10 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(16, __c2, 0)),
+          groupIds: S.optional(__S(17, __c2, 1)),
+          privateLinkServiceConnectionState: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -3147,22 +2414,22 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 5:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String,
           privateLinkResourceId: S.String,
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           requestMessage: S.optional(S.String),
-          status: S.optional(SharedPrivateLinkResourceStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResourceProperties",
@@ -3173,8 +2440,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SharedPrivateLinkResourceProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResource",
@@ -3184,7 +2451,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SharedPrivateLinkResource);
+      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3199,27 +2466,27 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "LiveTraceCategory" });
     case 3:
-      return S.Array(LiveTraceCategory);
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.String),
-          categories: S.optional(LiveTraceConfigurationCategoriesList),
+          categories: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "LiveTraceConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(ResourceLogConfigurationCategoriesList),
+          categories: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "ResourceLogConfiguration" });
     case 6:
-      return S.Array(WebPubSubRequestType);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allow: S.optional(NetworkACLAllowList),
-          deny: S.optional(NetworkACLDenyList),
+          allow: S.optional(__S(30, __c3, 6)),
+          deny: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "NetworkACL" });
   }
@@ -3229,29 +2496,29 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allow: S.optional(PrivateEndpointACLAllowList),
-          deny: S.optional(PrivateEndpointACLDenyList),
+          allow: S.optional(__S(30, __c3, 6)),
+          deny: S.optional(__S(30, __c3, 6)),
           name: S.String,
         }),
       ).annotate({ identifier: "PrivateEndpointACL" });
     case 1:
-      return S.Array(PrivateEndpointACL);
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          action: S.optional(ACLAction),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "IPRule" });
     case 3:
-      return S.Array(IPRule);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          defaultAction: S.optional(ACLAction),
-          publicNetwork: S.optional(NetworkACL),
-          privateEndpoints: S.optional(WebPubSubNetworkACLsPrivateEndpointsList),
-          ipRules: S.optional(WebPubSubNetworkACLsIpRulesList),
+          defaultAction: S.optional(S.String),
+          publicNetwork: S.optional(__S(31, __c3, 7)),
+          privateEndpoints: S.optional(__S(33, __c4, 1)),
+          ipRules: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "WebPubSubNetworkACLs" });
     case 5:
@@ -3265,25 +2532,25 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           externalIP: S.optional(S.String),
           hostName: S.optional(S.String),
           publicPort: S.optional(S.Number),
           serverPort: S.optional(S.Number),
           version: S.optional(S.String),
-          privateEndpointConnections: S.optional(WebPubSubPropertiesPrivateEndpointConnectionsList),
-          sharedPrivateLinkResources: S.optional(WebPubSubPropertiesSharedPrivateLinkResourcesList),
-          tls: S.optional(WebPubSubTlsSettings),
+          privateEndpointConnections: S.optional(__S(21, __c2, 5)),
+          sharedPrivateLinkResources: S.optional(__S(24, __c3, 0)),
+          tls: S.optional(__S(25, __c3, 1)),
           hostNamePrefix: S.optional(S.String),
-          liveTraceConfiguration: S.optional(LiveTraceConfiguration),
-          resourceLogConfiguration: S.optional(ResourceLogConfiguration),
-          networkACLs: S.optional(WebPubSubNetworkACLs),
+          liveTraceConfiguration: S.optional(__S(28, __c3, 4)),
+          resourceLogConfiguration: S.optional(__S(29, __c3, 5)),
+          networkACLs: S.optional(__S(36, __c4, 4)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           disableAadAuth: S.optional(S.Boolean),
           regionEndpointEnabled: S.optional(S.String),
           resourceStopped: S.optional(S.String),
-          socketIO: S.optional(WebPubSubSocketIOSettings),
+          socketIO: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "WebPubSubProperties" });
     case 7:
@@ -3300,12 +2567,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentityProperty);
+      return S.Record(S.String, __S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(ManagedIdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(40, __c5, 0)),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
@@ -3316,13 +2583,13 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetWebPubSubResponseTagsMap),
+          systemData: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(WebPubSubProperties),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentity),
+          sku: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(38, __c4, 6)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "GetWebPubSubResponse" });
     case 3:
@@ -3346,7 +2613,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           keyVaultBaseUri: S.String,
           keyVaultSecretName: S.String,
           keyVaultSecretVersion: S.optional(S.String),
@@ -3360,8 +2627,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomCertificateProperties,
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: __S(44, __c5, 4),
         }),
       ).annotate({
         identifier: "GetWebPubSubCustomCertificateResponse",
@@ -3387,9 +2654,9 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           domainName: S.String,
-          customCertificate: ResourceReference,
+          customCertificate: __S(16, __c2, 0),
         }),
       ).annotate({ identifier: "CustomDomainProperties" });
   }
@@ -3402,8 +2669,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomDomainProperties,
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: __S(47, __c5, 7),
         }),
       ).annotate({
         identifier: "GetWebPubSubCustomDomainResponse",
@@ -3433,8 +2700,8 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(UpstreamAuthType),
-          managedIdentity: S.optional(ManagedIdentitySettings),
+          type: S.optional(S.String),
+          managedIdentity: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "UpstreamAuthSettings" });
     case 4:
@@ -3442,24 +2709,24 @@ function __c6(j: number): any {
         S.Struct({
           urlTemplate: S.String,
           userEventPattern: S.optional(S.String),
-          systemEvents: S.optional(EventHandlerSystemEventsList),
-          auth: S.optional(UpstreamAuthSettings),
+          systemEvents: S.optional(__S(17, __c2, 1)),
+          auth: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "EventHandler" });
     case 5:
-      return S.Array(EventHandler);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: EventListenerFilterType,
-          systemEvents: S.optional(EventHandlerSystemEventsList),
+          type: S.String,
+          systemEvents: S.optional(__S(17, __c2, 1)),
           userEventPattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventListenerFilter" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: EventListenerEndpointType,
+          type: S.String,
           fullyQualifiedNamespace: S.optional(S.String),
           eventHubName: S.optional(S.String),
         }),
@@ -3471,17 +2738,17 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filter: EventListenerFilter,
-          endpoint: EventListenerEndpoint,
+          filter: __S(54, __c6, 6),
+          endpoint: __S(55, __c6, 7),
         }),
       ).annotate({ identifier: "EventListener" });
     case 1:
-      return S.Array(EventListener);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          eventHandlers: S.optional(WebPubSubHubPropertiesEventHandlersList),
-          eventListeners: S.optional(WebPubSubHubPropertiesEventListenersList),
+          eventHandlers: S.optional(__S(53, __c6, 5)),
+          eventListeners: S.optional(__S(57, __c7, 1)),
           anonymousConnectPolicy: S.optional(S.String),
           webSocketKeepAliveIntervalInSeconds: S.optional(S.Number),
         }),
@@ -3492,8 +2759,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: WebPubSubHubProperties,
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: __S(58, __c7, 2),
         }),
       ).annotate({ identifier: "GetWebPubSubHubResponse" });
     case 4:
@@ -3535,7 +2802,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           regionEndpointEnabled: S.optional(S.String),
           resourceStopped: S.optional(S.String),
         }),
@@ -3546,11 +2813,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetWebPubSubReplicasResponseTagsMap),
+          systemData: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(ReplicaProperties),
+          sku: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({
         identifier: "GetWebPubSubReplicasResponse",
@@ -3626,7 +2893,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 5:
-      return S.Array(Dimension);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3637,11 +2904,11 @@ function __c8(j: number): any {
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.String),
           category: S.optional(S.String),
-          dimensions: S.optional(MetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 7:
-      return S.Array(MetricSpecification);
+      return S.Array(__S(70, __c8, 6));
   }
 }
 function __c9(j: number): any {
@@ -3654,18 +2921,18 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 1:
-      return S.Array(LogSpecification);
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
-          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
+          metricSpecifications: S.optional(__S(71, __c8, 7)),
+          logSpecifications: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ServiceSpecification),
+          serviceSpecification: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 4:
@@ -3673,17 +2940,17 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(67, __c8, 3)),
           origin: S.optional(S.String),
-          properties: S.optional(OperationProperties),
+          properties: S.optional(__S(75, __c9, 3)),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListValueList),
+          value: S.optional(__S(77, __c9, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
@@ -3718,16 +2985,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(SignalRServiceUsageName),
+          name: S.optional(__S(80, __c10, 0)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRServiceUsage" });
     case 2:
-      return S.Array(SignalRServiceUsage);
+      return S.Array(__S(81, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SignalRServiceUsageListValueList),
+          value: S.optional(__S(82, __c10, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRServiceUsageList" });
@@ -3748,11 +3015,11 @@ function __c10(j: number): any {
         identifier: "ListWebPubSubByResourceGroupRequest",
       });
     case 5:
-      return S.Array(WebPubSubResource);
+      return S.Array(__S(42, __c5, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WebPubSubResourceListValueList),
+          value: S.optional(__S(85, __c10, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebPubSubResourceList" });
@@ -3798,16 +3065,16 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomCertificateProperties,
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: __S(44, __c5, 4),
         }),
       ).annotate({ identifier: "CustomCertificate" });
     case 2:
-      return S.Array(CustomCertificate);
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CustomCertificateListValueList),
+          value: S.optional(__S(90, __c11, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomCertificateList" });
@@ -3834,16 +3101,16 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomDomainProperties,
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: __S(47, __c5, 7),
         }),
       ).annotate({ identifier: "CustomDomain" });
     case 6:
-      return S.Array(CustomDomain);
+      return S.Array(__S(93, __c11, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CustomDomainListValueList),
+          value: S.optional(__S(94, __c11, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainList" });
@@ -3867,11 +3134,11 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListWebPubSubHubsRequest" });
     case 1:
-      return S.Array(WebPubSubHub);
+      return S.Array(__S(59, __c7, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WebPubSubHubListValueList),
+          value: S.optional(__S(97, __c12, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebPubSubHubList" });
@@ -3919,7 +3186,7 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListValueList),
+          value: S.optional(__S(21, __c2, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3960,22 +3227,20 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(ShareablePrivateLinkResourceProperties),
+          properties: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({
         identifier: "ShareablePrivateLinkResourceType",
       });
     case 2:
-      return S.Array(ShareablePrivateLinkResourceType);
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
-          shareablePrivateLinkResourceTypes: S.optional(
-            PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList,
-          ),
+          requiredMembers: S.optional(__S(17, __c2, 1)),
+          requiredZoneNames: S.optional(__S(17, __c2, 1)),
+          shareablePrivateLinkResourceTypes: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -3986,16 +3251,16 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(107, __c13, 3)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 5:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(108, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourceListValueList),
+          value: S.optional(__S(109, __c13, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceList" });
@@ -4026,19 +3291,19 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ReplicaTagsMap),
+          systemData: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(ReplicaProperties),
+          sku: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({ identifier: "Replica" });
     case 1:
-      return S.Array(Replica);
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReplicaListValueList),
+          value: S.optional(__S(113, __c14, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaList" });
@@ -4063,7 +3328,7 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SharedPrivateLinkResourceListValueList),
+          value: S.optional(__S(24, __c3, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4095,8 +3360,8 @@ function __c14(j: number): any {
           minimum: S.optional(S.Number),
           maximum: S.optional(S.Number),
           default: S.optional(S.Number),
-          allowedValues: S.optional(SkuCapacityAllowedValuesList),
-          scaleType: S.optional(ScaleType),
+          allowedValues: S.optional(__S(118, __c14, 6)),
+          scaleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuCapacity" });
   }
@@ -4107,16 +3372,16 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(ResourceSku),
-          capacity: S.optional(SkuCapacity),
+          sku: S.optional(__S(15, __c1, 7)),
+          capacity: S.optional(__S(119, __c14, 7)),
         }),
       ).annotate({ identifier: "Sku" });
     case 1:
-      return S.Array(Sku);
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SkuListValueList),
+          value: S.optional(__S(121, __c15, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuList" });
@@ -4158,7 +3423,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          keyType: S.optional(KeyType),
+          keyType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4211,32 +3476,32 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(WebPubSubSkuTier),
+          tier: S.optional(S.String),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResourceSkuInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tls: S.optional(WebPubSubTlsSettings),
-          liveTraceConfiguration: S.optional(LiveTraceConfiguration),
-          resourceLogConfiguration: S.optional(ResourceLogConfiguration),
-          networkACLs: S.optional(WebPubSubNetworkACLs),
+          tls: S.optional(__S(25, __c3, 1)),
+          liveTraceConfiguration: S.optional(__S(28, __c3, 4)),
+          resourceLogConfiguration: S.optional(__S(29, __c3, 5)),
+          networkACLs: S.optional(__S(36, __c4, 4)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           disableAadAuth: S.optional(S.Boolean),
           regionEndpointEnabled: S.optional(S.String),
           resourceStopped: S.optional(S.String),
-          socketIO: S.optional(WebPubSubSocketIOSettings),
+          socketIO: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "WebPubSubPropertiesInput" });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityPropertyInput);
+      return S.Record(S.String, __S(5, __c0, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(ManagedIdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(130, __c16, 2)),
         }),
       ).annotate({ identifier: "ManagedIdentityInput" });
     case 4:
@@ -4245,12 +3510,12 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateWebPubSubRequestTagsMap),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(WebPubSubPropertiesInput),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentityInput),
+          sku: S.optional(__S(128, __c16, 0)),
+          properties: S.optional(__S(129, __c16, 1)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(131, __c16, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4263,8 +3528,8 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          privateEndpoint: S.optional(__S(16, __c2, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -4276,7 +3541,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(133, __c16, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4306,10 +3571,10 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateWebPubSubReplicasRequestTagsMap),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(ReplicaPropertiesInput),
+          sku: S.optional(__S(128, __c16, 0)),
+          properties: S.optional(__S(135, __c16, 7)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4327,12 +3592,12 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(WebPubSubCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(WebPubSubPropertiesInput),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentityInput),
+          sku: S.optional(__S(128, __c16, 0)),
+          properties: S.optional(__S(129, __c16, 1)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(131, __c16, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4350,13 +3615,13 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(WebPubSubCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSku),
-          properties: S.optional(WebPubSubProperties),
-          kind: S.optional(ServiceKind),
-          identity: S.optional(ManagedIdentity),
+          sku: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(38, __c4, 6)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({
         identifier: "WebPubSubCreateOrUpdateResponse",
@@ -4378,7 +3643,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          properties: CustomCertificatePropertiesInput,
+          properties: __S(139, __c17, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4394,7 +3659,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
-          customCertificate: ResourceReference,
+          customCertificate: __S(16, __c2, 0),
         }),
       ).annotate({
         identifier: "CustomDomainPropertiesInput",
@@ -4406,7 +3671,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: CustomDomainPropertiesInput,
+          properties: __S(141, __c17, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4425,7 +3690,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
-          properties: WebPubSubHubProperties,
+          properties: __S(58, __c7, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4447,8 +3712,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: WebPubSubHubProperties,
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: __S(58, __c7, 2),
         }),
       ).annotate({
         identifier: "WebPubSubHubsCreateOrUpdateResponse",
@@ -4460,10 +3725,10 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(WebPubSubReplicasCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(14, __c1, 6)),
           location: S.String,
-          sku: S.optional(ResourceSkuInput),
-          properties: S.optional(ReplicaPropertiesInput),
+          sku: S.optional(__S(128, __c16, 0)),
+          properties: S.optional(__S(135, __c16, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4493,7 +3758,7 @@ function __c18(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
+          properties: S.optional(__S(146, __c18, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4511,8 +3776,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SharedPrivateLinkResourceProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse",
@@ -4524,7 +3789,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
+          properties: S.optional(__S(146, __c18, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4542,11 +3807,16 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SharedPrivateLinkResourceProperties),
+          systemData: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({
         identifier: "WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

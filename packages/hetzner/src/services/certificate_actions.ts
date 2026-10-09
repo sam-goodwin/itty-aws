@@ -7,6 +7,8 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -14,34 +16,17 @@ export interface GetCertificatesActionRequest {
   /** ID of the Action. */
   id: number;
 }
-const GetCertificatesActionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetCertificatesActionRequest>;
-
 /** Status of the Action. */
 export type GetCertificatesActionResponseActionStatus = "running" | "success" | "error";
-const GetCertificatesActionResponseActionStatus = S.String;
-
 export interface GetCertificatesActionResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const GetCertificatesActionResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetCertificatesActionResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type GetCertificatesActionResponseActionResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-const GetCertificatesActionResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetCertificatesActionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface GetCertificatesActionResponseActionError {
   /** Fixed error code for machines. */
@@ -49,11 +34,6 @@ export interface GetCertificatesActionResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const GetCertificatesActionResponseActionError = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetCertificatesActionResponseActionError>;
-
 export interface GetCertificatesActionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -72,19 +52,9 @@ export interface GetCertificatesActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-const GetCertificatesActionResponseAction = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetCertificatesActionResponseAction>;
-
 export interface GetCertificatesActionResponse {
   action: GetCertificatesActionResponseAction;
 }
-const GetCertificatesActionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetCertificatesActionResponse>;
-
 export type ListCertificateActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -101,24 +71,14 @@ export type ListCertificateActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-const ListCertificateActionsRequestSortItem = S.String;
-
 export type ListCertificateActionsRequestSortList = Array<
   ListCertificateActionsRequestSortItem | (string & {})
 >;
-const ListCertificateActionsRequestSortList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListCertificateActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListCertificateActionsRequestStatusItem = "running" | "success" | "error";
 export type ListCertificateActionsRequestStatusList = Array<
   ListCertificateActionsRequestStatusItem | (string & {})
 >;
-const ListCertificateActionsRequestStatusList =
-  ListCertificateActionsRequestSortList as any as S.Schema<ListCertificateActionsRequestStatusList>;
-
 export interface ListCertificateActionsRequest {
   /** ID of the Certificate. */
   id: number;
@@ -131,23 +91,13 @@ export interface ListCertificateActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListCertificateActionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListCertificateActionsRequest>;
-
 /** Status of the Action. */
 export type ListCertificateActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListCertificateActionsResponseActionsItemStatus = S.String;
-
 export type ListCertificateActionsResponseActionsItemResourcesItem =
   GetCertificatesActionResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListCertificateActionsResponseActionsItemResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-const ListCertificateActionsResponseActionsItemResourcesList =
-  GetCertificatesActionResponseActionResourcesList as any as S.Schema<ListCertificateActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListCertificateActionsResponseActionsItemError =
   GetCertificatesActionResponseActionError;
@@ -169,18 +119,8 @@ export interface ListCertificateActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-const ListCertificateActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListCertificateActionsResponseActionsItem>;
-
 export type ListCertificateActionsResponseActionsList =
   Array<ListCertificateActionsResponseActionsItem>;
-const ListCertificateActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListCertificateActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListCertificateActionsResponseMetaPagination {
   /** Current page number. */
@@ -196,35 +136,15 @@ export interface ListCertificateActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListCertificateActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListCertificateActionsResponseMetaPagination>;
-
 export interface ListCertificateActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListCertificateActionsResponseMetaPagination;
 }
-const ListCertificateActionsResponseMeta = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListCertificateActionsResponseMeta>;
-
 export interface ListCertificateActionsResponse {
   actions: ListCertificateActionsResponseActionsList;
   meta: ListCertificateActionsResponseMeta;
 }
-const ListCertificateActionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListCertificateActionsResponse>;
-
 export type ListCertificatesActionsRequestIdList = Array<number>;
-const ListCertificatesActionsRequestIdList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListCertificatesActionsRequestIdList>;
-
 export type ListCertificatesActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -244,17 +164,11 @@ export type ListCertificatesActionsRequestSortItem =
 export type ListCertificatesActionsRequestSortList = Array<
   ListCertificatesActionsRequestSortItem | (string & {})
 >;
-const ListCertificatesActionsRequestSortList =
-  ListCertificateActionsRequestSortList as any as S.Schema<ListCertificatesActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListCertificatesActionsRequestStatusItem = "running" | "success" | "error";
 export type ListCertificatesActionsRequestStatusList = Array<
   ListCertificatesActionsRequestStatusItem | (string & {})
 >;
-const ListCertificatesActionsRequestStatusList =
-  ListCertificateActionsRequestSortList as any as S.Schema<ListCertificatesActionsRequestStatusList>;
-
 export interface ListCertificatesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListCertificatesActionsRequestIdList;
@@ -267,23 +181,13 @@ export interface ListCertificatesActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListCertificatesActionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListCertificatesActionsRequest>;
-
 /** Status of the Action. */
 export type ListCertificatesActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListCertificatesActionsResponseActionsItemStatus = S.String;
-
 export type ListCertificatesActionsResponseActionsItemResourcesItem =
   GetCertificatesActionResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListCertificatesActionsResponseActionsItemResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-const ListCertificatesActionsResponseActionsItemResourcesList =
-  GetCertificatesActionResponseActionResourcesList as any as S.Schema<ListCertificatesActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListCertificatesActionsResponseActionsItemError =
   GetCertificatesActionResponseActionError;
@@ -305,18 +209,8 @@ export interface ListCertificatesActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-const ListCertificatesActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListCertificatesActionsResponseActionsItem>;
-
 export type ListCertificatesActionsResponseActionsList =
   Array<ListCertificatesActionsResponseActionsItem>;
-const ListCertificatesActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListCertificatesActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListCertificatesActionsResponseMetaPagination =
   ListCertificateActionsResponseMetaPagination;
@@ -325,32 +219,17 @@ export interface ListCertificatesActionsResponse {
   actions: ListCertificatesActionsResponseActionsList;
   meta: ListCertificateActionsResponseMeta;
 }
-const ListCertificatesActionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListCertificatesActionsResponse>;
-
 export interface RetryCertificateRequest {
   /** ID of the Certificate. */
   id: number;
 }
-const RetryCertificateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RetryCertificateRequest>;
-
 /** Status of the Action. */
 export type RetryCertificateResponseActionStatus = "running" | "success" | "error";
-const RetryCertificateResponseActionStatus = S.String;
-
 export type RetryCertificateResponseActionResourcesItem =
   GetCertificatesActionResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type RetryCertificateResponseActionResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-const RetryCertificateResponseActionResourcesList =
-  GetCertificatesActionResponseActionResourcesList as any as S.Schema<RetryCertificateResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RetryCertificateResponseActionError = GetCertificatesActionResponseActionError;
 export interface RetryCertificateResponseAction {
@@ -371,19 +250,9 @@ export interface RetryCertificateResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-const RetryCertificateResponseAction = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<RetryCertificateResponseAction>;
-
 export interface RetryCertificateResponse {
   action: RetryCertificateResponseAction;
 }
-const RetryCertificateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RetryCertificateResponse>;
-
 export type GetCertificatesActionError = HetznerOpError;
 /** Get an Action Returns a specific Action object. */
 export const getCertificatesAction: API.OperationMethod<
@@ -392,8 +261,8 @@ export const getCertificatesAction: API.OperationMethod<
   GetCertificatesActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificatesActionRequest,
-  output: GetCertificatesActionResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCertificatesActionRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetCertificatesActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -409,8 +278,8 @@ export const listCertificateActions: API.PaginatedOperationMethod<
   ListCertificateActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCertificateActionsRequest,
-    output: ListCertificateActionsResponse,
+    input: __S(7, __c0, 7) as any as S.Schema<ListCertificateActionsRequest>,
+    output: __S(12, __c1, 4) as any as S.Schema<ListCertificateActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -435,8 +304,8 @@ export const listCertificatesActions: API.PaginatedOperationMethod<
   ListCertificatesActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCertificatesActionsRequest,
-    output: ListCertificatesActionsResponse,
+    input: __S(14, __c1, 6) as any as S.Schema<ListCertificatesActionsRequest>,
+    output: __S(17, __c2, 1) as any as S.Schema<ListCertificatesActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -459,8 +328,8 @@ export const retryCertificate: API.OperationMethod<
   RetryCertificateError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RetryCertificateRequest,
-  output: RetryCertificateResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<RetryCertificateRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<RetryCertificateResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -487,7 +356,7 @@ function __c0(j: number): any {
         identifier: "GetCertificatesActionResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(GetCertificatesActionResponseActionResourcesItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -502,12 +371,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: GetCertificatesActionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: GetCertificatesActionResponseActionResourcesList,
-          error: S.NullOr(GetCertificatesActionResponseActionError),
+          resources: __S(2, __c0, 2),
+          error: S.NullOr(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "GetCertificatesActionResponseAction",
@@ -515,19 +384,19 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: GetCertificatesActionResponseAction,
+          action: __S(4, __c0, 4),
         }),
       ).annotate({
         identifier: "GetCertificatesActionResponse",
       });
     case 6:
-      return S.Array(ListCertificateActionsRequestSortItem);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(ListCertificateActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListCertificateActionsRequestStatusList.pipe(T.Query())),
+          sort: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          status: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/certificates/{id}/actions", code: 200 })),
@@ -543,18 +412,18 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListCertificateActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListCertificateActionsResponseActionsItemResourcesList,
-          error: S.NullOr(GetCertificatesActionResponseActionError),
+          resources: __S(2, __c0, 2),
+          error: S.NullOr(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "ListCertificateActionsResponseActionsItem",
       });
     case 1:
-      return S.Array(ListCertificateActionsResponseActionsItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -571,7 +440,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListCertificateActionsResponseMetaPagination,
+          pagination: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "ListCertificateActionsResponseMeta",
@@ -579,8 +448,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: ListCertificateActionsResponseActionsList,
-          meta: ListCertificateActionsResponseMeta,
+          actions: __S(9, __c1, 1),
+          meta: __S(11, __c1, 3),
         }),
       ).annotate({
         identifier: "ListCertificateActionsResponse",
@@ -590,9 +459,9 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(ListCertificatesActionsRequestIdList.pipe(T.Query())),
-          sort: S.optional(ListCertificatesActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListCertificatesActionsRequestStatusList.pipe(T.Query())),
+          id: S.optional(__S(13, __c1, 5).pipe(T.Query())),
+          sort: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          status: S.optional(__S(6, __c0, 6).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/certificates/actions", code: 200 })),
@@ -604,12 +473,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListCertificatesActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListCertificatesActionsResponseActionsItemResourcesList,
-          error: S.NullOr(GetCertificatesActionResponseActionError),
+          resources: __S(2, __c0, 2),
+          error: S.NullOr(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "ListCertificatesActionsResponseActionsItem",
@@ -619,12 +488,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListCertificatesActionsResponseActionsItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: ListCertificatesActionsResponseActionsList,
-          meta: ListCertificateActionsResponseMeta,
+          actions: __S(16, __c2, 0),
+          meta: __S(11, __c1, 3),
         }),
       ).annotate({
         identifier: "ListCertificatesActionsResponse",
@@ -640,12 +509,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: RetryCertificateResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: RetryCertificateResponseActionResourcesList,
-          error: S.NullOr(GetCertificatesActionResponseActionError),
+          resources: __S(2, __c0, 2),
+          error: S.NullOr(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "RetryCertificateResponseAction",
@@ -653,8 +522,13 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: RetryCertificateResponseAction,
+          action: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "RetryCertificateResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

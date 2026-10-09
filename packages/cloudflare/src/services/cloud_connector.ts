@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -36,25 +38,16 @@ export interface ListRulesRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ListRulesRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListRulesRequest>;
-
 export interface RulesListResultItemParameters {
   /** Host to perform Cloud Connection to */
   host?: string | null;
 }
-const RulesListResultItemParameters = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<RulesListResultItemParameters>;
-
 export type RulesListResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
   | "azure_storage"
   | "oci_storage";
-const RulesListResultItemProvider = S.String;
-
 export interface RulesListResultItem {
   id?: string | null;
   description?: string | null;
@@ -65,36 +58,23 @@ export interface RulesListResultItem {
   /** Cloud Provider type */
   provider?: RulesListResultItemProvider | null;
 }
-const RulesListResultItem = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RulesListResultItem>;
-
 export type RulesListResultList = Array<RulesListResultItem>;
-const RulesListResultList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RulesListResultList>;
-
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListRulesResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListRulesResponse>;
-
 export interface RulesUpdateRequestRulesItemParameters {
   /** Host to perform Cloud Connection to */
   host?: string;
 }
-const RulesUpdateRequestRulesItemParameters = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<RulesUpdateRequestRulesItemParameters>;
-
 export type RulesUpdateRequestRulesItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
   | "azure_storage"
   | "oci_storage";
-const RulesUpdateRequestRulesItemProvider = S.String;
-
 export interface RulesUpdateRequestRulesItem {
   id?: string;
   description?: string;
@@ -105,24 +85,12 @@ export interface RulesUpdateRequestRulesItem {
   /** Cloud Provider type */
   provider?: RulesUpdateRequestRulesItemProvider | (string & {});
 }
-const RulesUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<RulesUpdateRequestRulesItem>;
-
 export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
-const RulesUpdateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<RulesUpdateRequestRulesList>;
-
 export interface PutRuleRequest {
   /** Identifier. */
   zoneId: string;
   rules?: RulesUpdateRequestRulesList;
 }
-const PutRuleRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PutRuleRequest>;
-
 export type RulesUpdateResultItemParameters = RulesListResultItemParameters;
 export type RulesUpdateResultItemProvider =
   | "aws_s3"
@@ -147,8 +115,6 @@ export interface PutRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const PutRuleResponse = ListRulesResponse as any as S.Schema<PutRuleResponse>;
-
 export type ListRulesError = Forbidden | CloudConnectorRulesNotFound | CloudflareOpError;
 /** Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services. */
 export const listRules: API.PaginatedOperationMethod<
@@ -159,8 +125,8 @@ export const listRules: API.PaginatedOperationMethod<
   RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRulesRequest,
-    output: ListRulesResponse,
+    input: __S(0, __c0, 0) as any as S.Schema<ListRulesRequest>,
+    output: __S(4, __c0, 4) as any as S.Schema<ListRulesResponse>,
     errors: [Forbidden, CloudConnectorRulesNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -179,8 +145,8 @@ export const putRule: API.PaginatedOperationMethod<
   RulesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PutRuleRequest,
-    output: PutRuleResponse,
+    input: __S(8, __c1, 0) as any as S.Schema<PutRuleRequest>,
+    output: __S(4, __c0, 4) as any as S.Schema<PutRuleResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -215,16 +181,16 @@ function __c0(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           expression: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(RulesListResultItemParameters)),
-          provider: S.optional(S.NullOr(RulesListResultItemProvider)),
+          parameters: S.optional(S.NullOr(__S(1, __c0, 1))),
+          provider: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "RulesListResultItem" });
     case 3:
-      return S.Array(RulesListResultItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: RulesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(3, __c0, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }),
       ).annotate({ identifier: "ListRulesResponse" });
@@ -243,14 +209,14 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           expression: S.optional(S.String),
-          parameters: S.optional(RulesUpdateRequestRulesItemParameters),
-          provider: S.optional(RulesUpdateRequestRulesItemProvider),
+          parameters: S.optional(__S(5, __c0, 5)),
+          provider: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RulesUpdateRequestRulesItem",
       });
     case 7:
-      return S.Array(RulesUpdateRequestRulesItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -259,10 +225,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          rules: S.optional(RulesUpdateRequestRulesList.pipe(T.HttpBody())),
+          rules: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "/zones/{zone_id}/cloud_connector/rules", code: 200 }),
         ),
       ).annotate({ identifier: "PutRuleRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

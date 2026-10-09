@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -16,11 +18,6 @@ export interface ApiDefinitionPropertiesSpecification {
   /** Specification version. */
   version?: string;
 }
-const ApiDefinitionPropertiesSpecification = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApiDefinitionPropertiesSpecification>;
-
 /** API definition properties entity. */
 export interface ApiDefinitionProperties {
   /** API definition title. */
@@ -30,11 +27,6 @@ export interface ApiDefinitionProperties {
   /** API specification details. */
   specification?: ApiDefinitionPropertiesSpecification;
 }
-const ApiDefinitionProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApiDefinitionProperties>;
-
 export interface ApiDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -53,19 +45,10 @@ export interface ApiDefinitionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ApiDefinitionProperties;
 }
-const ApiDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ApiDefinitionsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -81,8 +64,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
-
 export interface ApiDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -95,15 +76,8 @@ export interface ApiDefinitionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApiDefinitionProperties;
 }
-const ApiDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ApiDefinitionsCreateOrUpdateResponse>;
-
 /** The kind of the API */
 export type ApiKind = "rest" | "graphql" | "grpc" | "soap" | "webhook" | "websocket";
-const ApiKind = S.String;
-
 /** The stage of the Api development lifecycle */
 export type LifecycleStage =
   | "design"
@@ -113,15 +87,11 @@ export type LifecycleStage =
   | "production"
   | "deprecated"
   | "retired";
-const LifecycleStage = S.String;
-
 /** Terms of service for the API. */
 export interface TermsOfService {
   /** URL pointing to the terms of service. */
   url: string;
 }
-const TermsOfService = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TermsOfService>;
-
 /** Additional, external documentation for the API. */
 export interface ExternalDocumentation {
   /** Title of the documentation. */
@@ -131,18 +101,8 @@ export interface ExternalDocumentation {
   /** URL pointing to the documentation. */
   url: string;
 }
-const ExternalDocumentation = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ExternalDocumentation>;
-
 /** The set of external documentation */
 export type ApiPropertiesExternalDocumentationList = Array<ExternalDocumentation>;
-const ApiPropertiesExternalDocumentationList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ApiPropertiesExternalDocumentationList>;
-
 /** Contact information */
 export interface Contact {
   /** Name of the contact. */
@@ -152,15 +112,8 @@ export interface Contact {
   /** Email address of the contact. */
   email?: string;
 }
-const Contact = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Contact>;
-
 /** The set of contacts */
 export type ApiPropertiesContactsList = Array<Contact>;
-const ApiPropertiesContactsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ApiPropertiesContactsList>;
-
 /** The license information for the API. */
 export interface License {
   /** Name of the license. */
@@ -170,8 +123,6 @@ export interface License {
   /** SPDX license information for the API. The identifier field is mutually exclusive of the URL field. */
   identifier?: string;
 }
-const License = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<License>;
-
 /** API properties. */
 export interface ApiProperties {
   /** API title. */
@@ -195,8 +146,6 @@ export interface ApiProperties {
   /** The custom metadata defined for API catalog entities. */
   customProperties?: unknown;
 }
-const ApiProperties = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ApiProperties>;
-
 export interface ApisCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -211,11 +160,6 @@ export interface ApisCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ApiProperties;
 }
-const ApisCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ApisCreateOrUpdateRequest>;
-
 export interface ApisCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -228,11 +172,6 @@ export interface ApisCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApiProperties;
 }
-const ApisCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ApisCreateOrUpdateResponse>;
-
 /** API version properties entity. */
 export interface ApiVersionProperties {
   /** API version title. */
@@ -240,8 +179,6 @@ export interface ApiVersionProperties {
   /** Current lifecycle stage of the API. */
   lifecycleStage: LifecycleStage | (string & {});
 }
-const ApiVersionProperties = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ApiVersionProperties>;
-
 export interface ApiVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -258,11 +195,6 @@ export interface ApiVersionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ApiVersionProperties;
 }
-const ApiVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ApiVersionsCreateOrUpdateRequest>;
-
 export interface ApiVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -275,11 +207,6 @@ export interface ApiVersionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApiVersionProperties;
 }
-const ApiVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ApiVersionsCreateOrUpdateResponse>;
-
 export interface DeleteApiDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -296,17 +223,7 @@ export interface DeleteApiDefinitionRequest {
   /** The name of the API definition. */
   definitionName: string;
 }
-const DeleteApiDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteApiDefinitionRequest>;
-
 export interface DeleteApiDefinitionResponse {}
-const DeleteApiDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteApiDefinitionResponse>;
-
 export interface DeleteApisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -319,11 +236,7 @@ export interface DeleteApisRequest {
   /** The name of the API. */
   apiName: string;
 }
-const DeleteApisRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteApisRequest>;
-
 export interface DeleteApisResponse {}
-const DeleteApisResponse = DeleteApiDefinitionResponse as any as S.Schema<DeleteApisResponse>;
-
 export interface DeleteApiVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -338,15 +251,7 @@ export interface DeleteApiVersionRequest {
   /** The name of the API version. */
   versionName: string;
 }
-const DeleteApiVersionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteApiVersionRequest>;
-
 export interface DeleteApiVersionResponse {}
-const DeleteApiVersionResponse =
-  DeleteApiDefinitionResponse as any as S.Schema<DeleteApiVersionResponse>;
-
 export interface DeleteDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -361,15 +266,7 @@ export interface DeleteDeploymentRequest {
   /** The name of the API deployment. */
   deploymentName: string;
 }
-const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteDeploymentRequest>;
-
 export interface DeleteDeploymentResponse {}
-const DeleteDeploymentResponse =
-  DeleteApiDefinitionResponse as any as S.Schema<DeleteDeploymentResponse>;
-
 export interface DeleteEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -382,15 +279,7 @@ export interface DeleteEnvironmentRequest {
   /** The name of the environment. */
   environmentName: string;
 }
-const DeleteEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteEnvironmentRequest>;
-
 export interface DeleteEnvironmentResponse {}
-const DeleteEnvironmentResponse =
-  DeleteApiDefinitionResponse as any as S.Schema<DeleteEnvironmentResponse>;
-
 export interface DeleteMetadataSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -401,15 +290,7 @@ export interface DeleteMetadataSchemaRequest {
   /** The name of the metadata schema. */
   metadataSchemaName: string;
 }
-const DeleteMetadataSchemaRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteMetadataSchemaRequest>;
-
 export interface DeleteMetadataSchemaResponse {}
-const DeleteMetadataSchemaResponse =
-  DeleteApiDefinitionResponse as any as S.Schema<DeleteMetadataSchemaResponse>;
-
 export interface DeleteServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -418,11 +299,7 @@ export interface DeleteServiceRequest {
   /** The name of Azure API Center service. */
   serviceName: string;
 }
-const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteServiceRequest>;
-
 export interface DeleteServiceResponse {}
-const DeleteServiceResponse = DeleteApiDefinitionResponse as any as S.Schema<DeleteServiceResponse>;
-
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -433,33 +310,16 @@ export interface DeleteWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteWorkspaceRequest>;
-
 export interface DeleteWorkspaceResponse {}
-const DeleteWorkspaceResponse =
-  DeleteApiDefinitionResponse as any as S.Schema<DeleteWorkspaceResponse>;
-
 /** State of the Deployment */
 export type DeploymentState = "active" | "inactive";
-const DeploymentState = S.String;
-
 /** Base runtime URLs for this deployment. */
 export type DeploymentServerRuntimeUriList = Array<string>;
-const DeploymentServerRuntimeUriList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeploymentServerRuntimeUriList>;
-
 /** Server */
 export interface DeploymentServer {
   /** Base runtime URLs for this deployment. */
   runtimeUri?: DeploymentServerRuntimeUriList;
 }
-const DeploymentServer = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeploymentServer>;
-
 /** API deployment entity properties. */
 export interface DeploymentProperties {
   /** API deployment title */
@@ -477,8 +337,6 @@ export interface DeploymentProperties {
   /** The custom metadata defined for API catalog entities. */
   customProperties?: unknown;
 }
-const DeploymentProperties = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeploymentProperties>;
-
 export interface DeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -495,11 +353,6 @@ export interface DeploymentsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeploymentsCreateOrUpdateRequest>;
-
 export interface DeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -512,15 +365,8 @@ export interface DeploymentsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-const DeploymentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeploymentsCreateOrUpdateResponse>;
-
 /** The kind of environment */
 export type EnvironmentKind = "development" | "testing" | "staging" | "production";
-const EnvironmentKind = S.String;
-
 /** The type of environment server */
 export type EnvironmentServerType =
   | "Azure API Management"
@@ -530,13 +376,8 @@ export type EnvironmentServerType =
   | "Kong API Gateway"
   | "Kubernetes"
   | "MuleSoft API Management";
-const EnvironmentServerType = S.String;
-
 /** The location of the management portal */
 export type EnvironmentServerManagementPortalUriList = Array<string>;
-const EnvironmentServerManagementPortalUriList =
-  DeploymentServerRuntimeUriList as any as S.Schema<EnvironmentServerManagementPortalUriList>;
-
 /** Server information of the environment. */
 export interface EnvironmentServer {
   /** Type of the server that represents the environment. */
@@ -544,13 +385,8 @@ export interface EnvironmentServer {
   /** The location of the management portal */
   managementPortalUri?: EnvironmentServerManagementPortalUriList;
 }
-const EnvironmentServer = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EnvironmentServer>;
-
 /** The location of the development portal */
 export type OnboardingDeveloperPortalUriList = Array<string>;
-const OnboardingDeveloperPortalUriList =
-  DeploymentServerRuntimeUriList as any as S.Schema<OnboardingDeveloperPortalUriList>;
-
 /** Onboarding information */
 export interface Onboarding {
   /** Onboarding guide. */
@@ -558,8 +394,6 @@ export interface Onboarding {
   /** The location of the development portal */
   developerPortalUri?: OnboardingDeveloperPortalUriList;
 }
-const Onboarding = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Onboarding>;
-
 /** Environment properties entity. */
 export interface EnvironmentProperties {
   /** Environment title. */
@@ -575,11 +409,6 @@ export interface EnvironmentProperties {
   /** The custom metadata defined for API catalog entities. */
   customProperties?: unknown;
 }
-const EnvironmentProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<EnvironmentProperties>;
-
 export interface EnvironmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -594,11 +423,6 @@ export interface EnvironmentsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EnvironmentProperties;
 }
-const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>;
-
 export interface EnvironmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -611,11 +435,6 @@ export interface EnvironmentsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnvironmentProperties;
 }
-const EnvironmentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<EnvironmentsCreateOrUpdateResponse>;
-
 export interface ExportApiDefinitionSpecificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -632,15 +451,8 @@ export interface ExportApiDefinitionSpecificationRequest {
   /** The name of the API definition. */
   definitionName: string;
 }
-const ExportApiDefinitionSpecificationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ExportApiDefinitionSpecificationRequest>;
-
 /** Result format for exported Api spec */
 export type ApiSpecExportResultFormat = "inline" | "link";
-const ApiSpecExportResultFormat = S.String;
-
 /** The API specification export result. */
 export interface ApiSpecExportResult {
   /** The format of exported result */
@@ -648,12 +460,8 @@ export interface ApiSpecExportResult {
   /** The result of the export operation. */
   value?: string;
 }
-const ApiSpecExportResult = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ApiSpecExportResult>;
-
 /** Assignment entity for Metadata */
 export type MetadataAssignmentEntity = "api" | "environment" | "deployment";
-const MetadataAssignmentEntity = S.String;
-
 export interface ExportServiceMetadataSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -664,15 +472,8 @@ export interface ExportServiceMetadataSchemaRequest {
   /** An entity the metadata schema is requested for. */
   assignedTo?: MetadataAssignmentEntity | (string & {});
 }
-const ExportServiceMetadataSchemaRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ExportServiceMetadataSchemaRequest>;
-
 /** The format for schema export */
 export type MetadataSchemaExportFormat = "inline" | "link";
-const MetadataSchemaExportFormat = S.String;
-
 /** The metadata schema export result. */
 export interface MetadataSchemaExportResult {
   /** The export format for the schema */
@@ -680,11 +481,6 @@ export interface MetadataSchemaExportResult {
   /** The result of the export operation. */
   value?: string;
 }
-const MetadataSchemaExportResult = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<MetadataSchemaExportResult>;
-
 export interface GetApiDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -701,11 +497,6 @@ export interface GetApiDefinitionRequest {
   /** The name of the API definition. */
   definitionName: string;
 }
-const GetApiDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetApiDefinitionRequest>;
-
 export interface GetApiDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -718,11 +509,6 @@ export interface GetApiDefinitionResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApiDefinitionProperties;
 }
-const GetApiDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetApiDefinitionResponse>;
-
 export interface GetApisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -735,8 +521,6 @@ export interface GetApisRequest {
   /** The name of the API. */
   apiName: string;
 }
-const GetApisRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetApisRequest>;
-
 export interface GetApisResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -749,8 +533,6 @@ export interface GetApisResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApiProperties;
 }
-const GetApisResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetApisResponse>;
-
 export interface GetApiVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -765,8 +547,6 @@ export interface GetApiVersionRequest {
   /** The name of the API version. */
   versionName: string;
 }
-const GetApiVersionRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetApiVersionRequest>;
-
 export interface GetApiVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -779,11 +559,6 @@ export interface GetApiVersionResponse {
   /** The resource-specific properties for this resource. */
   properties?: ApiVersionProperties;
 }
-const GetApiVersionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetApiVersionResponse>;
-
 export interface GetDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -798,8 +573,6 @@ export interface GetDeploymentRequest {
   /** The name of the API deployment. */
   deploymentName: string;
 }
-const GetDeploymentRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetDeploymentRequest>;
-
 export interface GetDeploymentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -812,11 +585,6 @@ export interface GetDeploymentResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-const GetDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetDeploymentResponse>;
-
 export interface GetEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -829,11 +597,6 @@ export interface GetEnvironmentRequest {
   /** The name of the environment. */
   environmentName: string;
 }
-const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetEnvironmentRequest>;
-
 export interface GetEnvironmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -846,11 +609,6 @@ export interface GetEnvironmentResponse {
   /** The resource-specific properties for this resource. */
   properties?: EnvironmentProperties;
 }
-const GetEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetEnvironmentResponse>;
-
 export interface GetMetadataSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -861,11 +619,6 @@ export interface GetMetadataSchemaRequest {
   /** The name of the metadata schema. */
   metadataSchemaName: string;
 }
-const GetMetadataSchemaRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetMetadataSchemaRequest>;
-
 /** Assignment metadata */
 export interface MetadataAssignment {
   /** The entities this metadata schema component gets applied to. */
@@ -875,15 +628,8 @@ export interface MetadataAssignment {
   /** Deprecated assignment */
   deprecated?: boolean;
 }
-const MetadataAssignment = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<MetadataAssignment>;
-
 /** The assignees */
 export type MetadataSchemaPropertiesAssignedToList = Array<MetadataAssignment>;
-const MetadataSchemaPropertiesAssignedToList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<MetadataSchemaPropertiesAssignedToList>;
-
 /** Metadata schema properties. */
 export interface MetadataSchemaProperties {
   /** The schema defining the type. */
@@ -891,11 +637,6 @@ export interface MetadataSchemaProperties {
   /** The assignees */
   assignedTo?: MetadataSchemaPropertiesAssignedToList;
 }
-const MetadataSchemaProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<MetadataSchemaProperties>;
-
 export interface GetMetadataSchemaResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -908,11 +649,6 @@ export interface GetMetadataSchemaResponse {
   /** The resource-specific properties for this resource. */
   properties?: MetadataSchemaProperties;
 }
-const GetMetadataSchemaResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetMetadataSchemaResponse>;
-
 export interface GetServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -921,34 +657,21 @@ export interface GetServiceRequest {
   /** The name of Azure API Center service. */
   serviceName: string;
 }
-const GetServiceRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetServiceRequest>;
-
 /** Resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-const GetServiceResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetServiceResponseTagsMap>;
-
 /** The provisioning state of the resource */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const ProvisioningState = S.String;
-
 /** The properties of the service. */
 export interface ServiceProperties {
   /** Provisioning state of the service. */
   provisioningState?: ProvisioningState;
 }
-const ServiceProperties = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ServiceProperties>;
-
 /** The type of managed service identity */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -956,15 +679,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetServiceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -974,11 +690,6 @@ export interface GetServiceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const GetServiceResponseIdentity = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetServiceResponseIdentity>;
-
 export interface GetServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -997,8 +708,6 @@ export interface GetServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetServiceResponseIdentity;
 }
-const GetServiceResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetServiceResponse>;
-
 export interface GetWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1009,8 +718,6 @@ export interface GetWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetWorkspaceRequest>;
-
 /** Workspace properties. */
 export interface WorkspaceProperties {
   /** Workspace title. */
@@ -1018,8 +725,6 @@ export interface WorkspaceProperties {
   /** Workspace description. */
   description?: string;
 }
-const WorkspaceProperties = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<WorkspaceProperties>;
-
 export interface GetWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1032,12 +737,8 @@ export interface GetWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
-const GetWorkspaceResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetWorkspaceResponse>;
-
 /** Source format for imported Api spec */
 export type ApiSpecImportSourceFormat = "inline" | "link";
-const ApiSpecImportSourceFormat = S.String;
-
 /** API specification details. */
 export type ApiSpecImportRequestSpecification = ApiDefinitionPropertiesSpecification;
 export interface ImportApiDefinitionSpecificationRequest {
@@ -1062,17 +763,7 @@ export interface ImportApiDefinitionSpecificationRequest {
   /** API specification details. */
   specification?: ApiDefinitionPropertiesSpecification;
 }
-const ImportApiDefinitionSpecificationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ImportApiDefinitionSpecificationRequest>;
-
 export interface ImportApiDefinitionSpecificationResponse {}
-const ImportApiDefinitionSpecificationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ImportApiDefinitionSpecificationResponse>;
-
 export interface ListApiDefinitionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1089,11 +780,6 @@ export interface ListApiDefinitionsRequest {
   /** OData filter parameter. */
   _filter?: string;
 }
-const ListApiDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListApiDefinitionsRequest>;
-
 /** API definition entity. */
 export interface ApiDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1107,15 +793,8 @@ export interface ApiDefinition {
   /** The resource-specific properties for this resource. */
   properties?: ApiDefinitionProperties;
 }
-const ApiDefinition = GetApiDefinitionResponse as any as S.Schema<ApiDefinition>;
-
 /** The ApiDefinition items on this page */
 export type ApiDefinitionListResultValueList = Array<ApiDefinition>;
-const ApiDefinitionListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ApiDefinitionListResultValueList>;
-
 /** The response of a ApiDefinition list operation. */
 export interface ApiDefinitionListResult {
   /** The ApiDefinition items on this page */
@@ -1123,11 +802,6 @@ export interface ApiDefinitionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApiDefinitionListResult = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ApiDefinitionListResult>;
-
 export interface ListApisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1140,8 +814,6 @@ export interface ListApisRequest {
   /** OData filter parameter. */
   _filter?: string;
 }
-const ListApisRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListApisRequest>;
-
 /** API entity. */
 export interface Api {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1155,15 +827,8 @@ export interface Api {
   /** The resource-specific properties for this resource. */
   properties?: ApiProperties;
 }
-const Api = GetApisResponse as any as S.Schema<Api>;
-
 /** The Api items on this page */
 export type ApiListResultValueList = Array<Api>;
-const ApiListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ApiListResultValueList>;
-
 /** The response of a Api list operation. */
 export interface ApiListResult {
   /** The Api items on this page */
@@ -1171,8 +836,6 @@ export interface ApiListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApiListResult = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ApiListResult>;
-
 export interface ListApiVersionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1187,11 +850,6 @@ export interface ListApiVersionsRequest {
   /** OData filter parameter. */
   _filter?: string;
 }
-const ListApiVersionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListApiVersionsRequest>;
-
 /** API version entity. */
 export interface ApiVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1205,15 +863,8 @@ export interface ApiVersion {
   /** The resource-specific properties for this resource. */
   properties?: ApiVersionProperties;
 }
-const ApiVersion = GetApiVersionResponse as any as S.Schema<ApiVersion>;
-
 /** The ApiVersion items on this page */
 export type ApiVersionListResultValueList = Array<ApiVersion>;
-const ApiVersionListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ApiVersionListResultValueList>;
-
 /** The response of a ApiVersion list operation. */
 export interface ApiVersionListResult {
   /** The ApiVersion items on this page */
@@ -1221,8 +872,6 @@ export interface ApiVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApiVersionListResult = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ApiVersionListResult>;
-
 export interface ListDeploymentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1237,11 +886,6 @@ export interface ListDeploymentsRequest {
   /** OData filter parameter. */
   _filter?: string;
 }
-const ListDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListDeploymentsRequest>;
-
 /** API deployment entity. */
 export interface Deployment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1255,15 +899,8 @@ export interface Deployment {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-const Deployment = GetDeploymentResponse as any as S.Schema<Deployment>;
-
 /** The Deployment items on this page */
 export type DeploymentListResultValueList = Array<Deployment>;
-const DeploymentListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeploymentListResultValueList>;
-
 /** The response of a Deployment list operation. */
 export interface DeploymentListResult {
   /** The Deployment items on this page */
@@ -1271,8 +908,6 @@ export interface DeploymentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeploymentListResult = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DeploymentListResult>;
-
 export interface ListEnvironmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1285,11 +920,6 @@ export interface ListEnvironmentsRequest {
   /** OData filter parameter. */
   _filter?: string;
 }
-const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListEnvironmentsRequest>;
-
 /** Environment entity. */
 export interface Environment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1303,15 +933,8 @@ export interface Environment {
   /** The resource-specific properties for this resource. */
   properties?: EnvironmentProperties;
 }
-const Environment = GetEnvironmentResponse as any as S.Schema<Environment>;
-
 /** The Environment items on this page */
 export type EnvironmentListResultValueList = Array<Environment>;
-const EnvironmentListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<EnvironmentListResultValueList>;
-
 /** The response of a Environment list operation. */
 export interface EnvironmentListResult {
   /** The Environment items on this page */
@@ -1319,11 +942,6 @@ export interface EnvironmentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EnvironmentListResult = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<EnvironmentListResult>;
-
 export interface ListMetadataSchemasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1334,11 +952,6 @@ export interface ListMetadataSchemasRequest {
   /** OData filter parameter. */
   _filter?: string;
 }
-const ListMetadataSchemasRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListMetadataSchemasRequest>;
-
 /** Metadata schema entity. Used to define metadata for the entities in API catalog. */
 export interface MetadataSchema {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1352,15 +965,8 @@ export interface MetadataSchema {
   /** The resource-specific properties for this resource. */
   properties?: MetadataSchemaProperties;
 }
-const MetadataSchema = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<MetadataSchema>;
-
 /** The MetadataSchema items on this page */
 export type MetadataSchemaListResultValueList = Array<MetadataSchema>;
-const MetadataSchemaListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<MetadataSchemaListResultValueList>;
-
 /** The response of a MetadataSchema list operation. */
 export interface MetadataSchemaListResult {
   /** The MetadataSchema items on this page */
@@ -1368,17 +974,7 @@ export interface MetadataSchemaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MetadataSchemaListResult = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<MetadataSchemaListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1390,16 +986,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1413,37 +1003,20 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListServiceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ServiceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1467,15 +1040,8 @@ export interface Service {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetServiceResponseIdentity;
 }
-const Service = GetServiceResponse as any as S.Schema<Service>;
-
 /** The Service items on this page */
 export type ServiceListResultValueList = Array<Service>;
-const ServiceListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ServiceListResultValueList>;
-
 /** The response of a Service list operation. */
 export interface ServiceListResult {
   /** The Service items on this page */
@@ -1483,17 +1049,10 @@ export interface ServiceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ServiceListResult = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ServiceListResult>;
-
 export interface ListServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListServiceBySubscriptionRequest>;
-
 export interface ListWorkspacesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1504,11 +1063,6 @@ export interface ListWorkspacesRequest {
   /** OData filter parameter. */
   _filter?: string;
 }
-const ListWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListWorkspacesRequest>;
-
 /** Workspace entity. */
 export interface Workspace {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1522,15 +1076,8 @@ export interface Workspace {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
-const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
-
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
-const WorkspaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<WorkspaceListResultValueList>;
-
 /** The response of a Workspace list operation. */
 export interface WorkspaceListResult {
   /** The Workspace items on this page */
@@ -1538,8 +1085,6 @@ export interface WorkspaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const WorkspaceListResult = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<WorkspaceListResult>;
-
 export interface MetadataSchemasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1552,11 +1097,6 @@ export interface MetadataSchemasCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: MetadataSchemaProperties;
 }
-const MetadataSchemasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<MetadataSchemasCreateOrUpdateRequest>;
-
 export interface MetadataSchemasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1569,40 +1109,21 @@ export interface MetadataSchemasCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: MetadataSchemaProperties;
 }
-const MetadataSchemasCreateOrUpdateResponse =
-  GetMetadataSchemaResponse as any as S.Schema<MetadataSchemasCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServicesCreateOrUpdateRequestTagsMap =
-  GetServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
-
 /** The properties of the service. */
 export interface ServicePropertiesInput {}
-const ServicePropertiesInput =
-  DeleteApiDefinitionResponse as any as S.Schema<ServicePropertiesInput>;
-
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = ServicePropertiesInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: ServicePropertiesInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ServicesCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const ServicesCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ServicesCreateOrUpdateRequestIdentity>;
-
 export interface ServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1619,16 +1140,8 @@ export interface ServicesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ServicesCreateOrUpdateRequestIdentity;
 }
-const ServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ServicesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ServicesCreateOrUpdateResponseTagsMap =
-  GetServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ServicesCreateOrUpdateResponseIdentity = GetServiceResponseIdentity;
 export interface ServicesCreateOrUpdateResponse {
@@ -1649,18 +1162,10 @@ export interface ServicesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetServiceResponseIdentity;
 }
-const ServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ServicesCreateOrUpdateResponse>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateServiceRequestIdentity = ServicesCreateOrUpdateRequestIdentity;
 /** Resource tags. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateServiceRequestTagsMap =
-  GetServiceResponseTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
-
 export interface UpdateServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1673,11 +1178,6 @@ export interface UpdateServiceRequest {
   /** Resource tags. */
   tags?: UpdateServiceRequestTagsMap;
 }
-const UpdateServiceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<UpdateServiceRequest>;
-
 /** Resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1700,8 +1200,6 @@ export interface UpdateServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetServiceResponseIdentity;
 }
-const UpdateServiceResponse = GetServiceResponse as any as S.Schema<UpdateServiceResponse>;
-
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1714,11 +1212,6 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
-const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
-
 export interface WorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1731,11 +1224,6 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
-const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<WorkspacesCreateOrUpdateResponse>;
-
 export type ApiDefinitionsCreateOrUpdateError = AzureOpError;
 /** Creates new or updates existing API definition. */
 export const ApiDefinitionsCreateOrUpdate: API.OperationMethod<
@@ -1744,8 +1232,8 @@ export const ApiDefinitionsCreateOrUpdate: API.OperationMethod<
   ApiDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApiDefinitionsCreateOrUpdateRequest,
-  output: ApiDefinitionsCreateOrUpdateResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ApiDefinitionsCreateOrUpdateRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ApiDefinitionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1759,8 +1247,8 @@ export const ApisCreateOrUpdate: API.OperationMethod<
   ApisCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApisCreateOrUpdateRequest,
-  output: ApisCreateOrUpdateResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<ApisCreateOrUpdateRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ApisCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1774,8 +1262,8 @@ export const ApiVersionsCreateOrUpdate: API.OperationMethod<
   ApiVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApiVersionsCreateOrUpdateRequest,
-  output: ApiVersionsCreateOrUpdateResponse,
+  input: __S(15, __c1, 7) as any as S.Schema<ApiVersionsCreateOrUpdateRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ApiVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1789,8 +1277,8 @@ export const DeleteApiDefinition: API.OperationMethod<
   DeleteApiDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApiDefinitionRequest,
-  output: DeleteApiDefinitionResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<DeleteApiDefinitionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteApiDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1804,8 +1292,8 @@ export const DeleteApis: API.OperationMethod<
   DeleteApisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApisRequest,
-  output: DeleteApisResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<DeleteApisRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteApisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1819,8 +1307,8 @@ export const DeleteApiVersion: API.OperationMethod<
   DeleteApiVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApiVersionRequest,
-  output: DeleteApiVersionResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<DeleteApiVersionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteApiVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1834,8 +1322,8 @@ export const DeleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentRequest,
-  output: DeleteDeploymentResponse,
+  input: __S(21, __c2, 5) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1849,8 +1337,8 @@ export const DeleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentRequest,
-  output: DeleteEnvironmentResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1864,8 +1352,8 @@ export const DeleteMetadataSchema: API.OperationMethod<
   DeleteMetadataSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMetadataSchemaRequest,
-  output: DeleteMetadataSchemaResponse,
+  input: __S(23, __c2, 7) as any as S.Schema<DeleteMetadataSchemaRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteMetadataSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1879,8 +1367,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceRequest,
-  output: DeleteServiceResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1894,8 +1382,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkspaceRequest,
-  output: DeleteWorkspaceResponse,
+  input: __S(25, __c3, 1) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1909,8 +1397,8 @@ export const DeploymentsCreateOrUpdate: API.OperationMethod<
   DeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentsCreateOrUpdateRequest,
-  output: DeploymentsCreateOrUpdateResponse,
+  input: __S(29, __c3, 5) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1924,8 +1412,8 @@ export const EnvironmentsCreateOrUpdate: API.OperationMethod<
   EnvironmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsCreateOrUpdateRequest,
-  output: EnvironmentsCreateOrUpdateResponse,
+  input: __S(34, __c4, 2) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<EnvironmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1939,8 +1427,8 @@ export const ExportApiDefinitionSpecification: API.OperationMethod<
   ExportApiDefinitionSpecificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportApiDefinitionSpecificationRequest,
-  output: ApiSpecExportResult,
+  input: __S(36, __c4, 4) as any as S.Schema<ExportApiDefinitionSpecificationRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<ApiSpecExportResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1954,8 +1442,8 @@ export const ExportServiceMetadataSchema: API.OperationMethod<
   ExportServiceMetadataSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportServiceMetadataSchemaRequest,
-  output: MetadataSchemaExportResult,
+  input: __S(38, __c4, 6) as any as S.Schema<ExportServiceMetadataSchemaRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<MetadataSchemaExportResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1969,8 +1457,8 @@ export const GetApiDefinition: API.OperationMethod<
   GetApiDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiDefinitionRequest,
-  output: GetApiDefinitionResponse,
+  input: __S(40, __c5, 0) as any as S.Schema<GetApiDefinitionRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetApiDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1984,8 +1472,8 @@ export const GetApis: API.OperationMethod<
   GetApisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApisRequest,
-  output: GetApisResponse,
+  input: __S(42, __c5, 2) as any as S.Schema<GetApisRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetApisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1999,8 +1487,8 @@ export const GetApiVersion: API.OperationMethod<
   GetApiVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiVersionRequest,
-  output: GetApiVersionResponse,
+  input: __S(44, __c5, 4) as any as S.Schema<GetApiVersionRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<GetApiVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2014,8 +1502,8 @@ export const GetDeployment: API.OperationMethod<
   GetDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentRequest,
-  output: GetDeploymentResponse,
+  input: __S(46, __c5, 6) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<GetDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2029,8 +1517,8 @@ export const GetEnvironment: API.OperationMethod<
   GetEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: GetEnvironmentResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2044,8 +1532,8 @@ export const GetMetadataSchema: API.OperationMethod<
   GetMetadataSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetadataSchemaRequest,
-  output: GetMetadataSchemaResponse,
+  input: __S(50, __c6, 2) as any as S.Schema<GetMetadataSchemaRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<GetMetadataSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2059,8 +1547,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRequest,
-  output: GetServiceResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<GetServiceRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2074,8 +1562,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkspaceRequest,
-  output: GetWorkspaceResponse,
+  input: __S(62, __c7, 6) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2089,8 +1577,8 @@ export const ImportApiDefinitionSpecification: API.OperationMethod<
   ImportApiDefinitionSpecificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportApiDefinitionSpecificationRequest,
-  output: ImportApiDefinitionSpecificationResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<ImportApiDefinitionSpecificationRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ImportApiDefinitionSpecificationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2104,8 +1592,8 @@ export const ListApiDefinitions: API.OperationMethod<
   ListApiDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApiDefinitionsRequest,
-  output: ApiDefinitionListResult,
+  input: __S(67, __c8, 3) as any as S.Schema<ListApiDefinitionsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<ApiDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2119,8 +1607,8 @@ export const ListApis: API.OperationMethod<
   ListApisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApisRequest,
-  output: ApiListResult,
+  input: __S(70, __c8, 6) as any as S.Schema<ListApisRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ApiListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2134,8 +1622,8 @@ export const ListApiVersions: API.OperationMethod<
   ListApiVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApiVersionsRequest,
-  output: ApiVersionListResult,
+  input: __S(73, __c9, 1) as any as S.Schema<ListApiVersionsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<ApiVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2149,8 +1637,8 @@ export const ListDeployments: API.OperationMethod<
   ListDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentsRequest,
-  output: DeploymentListResult,
+  input: __S(76, __c9, 4) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(78, __c9, 6) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2164,8 +1652,8 @@ export const ListEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnvironmentsRequest,
-  output: EnvironmentListResult,
+  input: __S(79, __c9, 7) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<EnvironmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2179,8 +1667,8 @@ export const ListMetadataSchemas: API.OperationMethod<
   ListMetadataSchemasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMetadataSchemasRequest,
-  output: MetadataSchemaListResult,
+  input: __S(82, __c10, 2) as any as S.Schema<ListMetadataSchemasRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<MetadataSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2194,8 +1682,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<ListOperationsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2209,8 +1697,8 @@ export const ListServiceByResourceGroup: API.OperationMethod<
   ListServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceByResourceGroupRequest,
-  output: ServiceListResult,
+  input: __S(91, __c11, 3) as any as S.Schema<ListServiceByResourceGroupRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<ServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2224,8 +1712,8 @@ export const ListServiceBySubscription: API.OperationMethod<
   ListServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceBySubscriptionRequest,
-  output: ServiceListResult,
+  input: __S(94, __c11, 6) as any as S.Schema<ListServiceBySubscriptionRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<ServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2239,8 +1727,8 @@ export const ListWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspacesRequest,
-  output: WorkspaceListResult,
+  input: __S(95, __c11, 7) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2254,8 +1742,8 @@ export const MetadataSchemasCreateOrUpdate: API.OperationMethod<
   MetadataSchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetadataSchemasCreateOrUpdateRequest,
-  output: MetadataSchemasCreateOrUpdateResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<MetadataSchemasCreateOrUpdateRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<MetadataSchemasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2269,8 +1757,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesCreateOrUpdateRequest,
-  output: ServicesCreateOrUpdateResponse,
+  input: __S(101, __c12, 5) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2284,8 +1772,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceRequest,
-  output: UpdateServiceResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<UpdateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2299,8 +1787,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacesCreateOrUpdateRequest,
-  output: WorkspacesCreateOrUpdateResponse,
+  input: __S(104, __c13, 0) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2323,7 +1811,7 @@ function __c0(j: number): any {
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          specification: S.optional(ApiDefinitionPropertiesSpecification),
+          specification: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ApiDefinitionProperties" });
     case 2:
@@ -2336,7 +1824,7 @@ function __c0(j: number): any {
           apiName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
           definitionName: S.String.pipe(T.Label()),
-          properties: S.optional(ApiDefinitionProperties),
+          properties: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2352,10 +1840,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2365,8 +1853,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApiDefinitionProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "ApiDefinitionsCreateOrUpdateResponse",
@@ -2386,7 +1874,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ExternalDocumentation" });
     case 7:
-      return S.Array(ExternalDocumentation);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -2400,7 +1888,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Contact" });
     case 1:
-      return S.Array(Contact);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2413,14 +1901,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.String,
-          kind: ApiKind,
+          kind: S.String,
           description: S.optional(S.String),
           summary: S.optional(S.String),
-          lifecycleStage: S.optional(LifecycleStage),
-          termsOfService: S.optional(TermsOfService),
-          externalDocumentation: S.optional(ApiPropertiesExternalDocumentationList),
-          contacts: S.optional(ApiPropertiesContactsList),
-          license: S.optional(License),
+          lifecycleStage: S.optional(S.String),
+          termsOfService: S.optional(__S(5, __c0, 5)),
+          externalDocumentation: S.optional(__S(7, __c0, 7)),
+          contacts: S.optional(__S(9, __c1, 1)),
+          license: S.optional(__S(10, __c1, 2)),
           customProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ApiProperties" });
@@ -2432,7 +1920,7 @@ function __c1(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           apiName: S.String.pipe(T.Label()),
-          properties: S.optional(ApiProperties),
+          properties: S.optional(__S(11, __c1, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2450,8 +1938,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApiProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "ApisCreateOrUpdateResponse",
@@ -2460,7 +1948,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.String,
-          lifecycleStage: LifecycleStage,
+          lifecycleStage: S.String,
         }),
       ).annotate({ identifier: "ApiVersionProperties" });
     case 7:
@@ -2472,7 +1960,7 @@ function __c1(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           apiName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          properties: S.optional(ApiVersionProperties),
+          properties: S.optional(__S(14, __c1, 6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2494,8 +1982,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApiVersionProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({
         identifier: "ApiVersionsCreateOrUpdateResponse",
@@ -2653,7 +2141,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          runtimeUri: S.optional(DeploymentServerRuntimeUriList),
+          runtimeUri: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "DeploymentServer" });
     case 4:
@@ -2663,8 +2151,8 @@ function __c3(j: number): any {
           description: S.optional(S.String),
           environmentId: S.optional(S.String),
           definitionId: S.optional(S.String),
-          state: S.optional(DeploymentState),
-          server: S.optional(DeploymentServer),
+          state: S.optional(S.String),
+          server: S.optional(__S(27, __c3, 3)),
           customProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DeploymentProperties" });
@@ -2677,7 +2165,7 @@ function __c3(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           apiName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(DeploymentProperties),
+          properties: S.optional(__S(28, __c3, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2695,8 +2183,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "DeploymentsCreateOrUpdateResponse",
@@ -2704,8 +2192,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(EnvironmentServerType),
-          managementPortalUri: S.optional(EnvironmentServerManagementPortalUriList),
+          type: S.optional(S.String),
+          managementPortalUri: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "EnvironmentServer" });
   }
@@ -2716,7 +2204,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instructions: S.optional(S.String),
-          developerPortalUri: S.optional(OnboardingDeveloperPortalUriList),
+          developerPortalUri: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "Onboarding" });
     case 1:
@@ -2724,9 +2212,9 @@ function __c4(j: number): any {
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          kind: EnvironmentKind,
-          server: S.optional(EnvironmentServer),
-          onboarding: S.optional(Onboarding),
+          kind: S.String,
+          server: S.optional(__S(31, __c3, 7)),
+          onboarding: S.optional(__S(32, __c4, 0)),
           customProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "EnvironmentProperties" });
@@ -2738,7 +2226,7 @@ function __c4(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
-          properties: S.optional(EnvironmentProperties),
+          properties: S.optional(__S(33, __c4, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2756,8 +2244,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EnvironmentProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "EnvironmentsCreateOrUpdateResponse",
@@ -2786,7 +2274,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(ApiSpecExportResultFormat),
+          format: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiSpecExportResult" });
@@ -2796,7 +2284,7 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          assignedTo: S.optional(MetadataAssignmentEntity),
+          assignedTo: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2811,7 +2299,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(MetadataSchemaExportFormat),
+          format: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
@@ -2846,8 +2334,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApiDefinitionProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "GetApiDefinitionResponse" });
     case 2:
@@ -2873,8 +2361,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApiProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "GetApisResponse" });
     case 4:
@@ -2901,8 +2389,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApiVersionProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "GetApiVersionResponse" });
     case 6:
@@ -2929,8 +2417,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "GetDeploymentResponse" });
   }
@@ -2960,8 +2448,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EnvironmentProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "GetEnvironmentResponse" });
     case 2:
@@ -2983,18 +2471,18 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entity: S.optional(MetadataAssignmentEntity),
+          entity: S.optional(S.String),
           required: S.optional(S.Boolean),
           deprecated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetadataAssignment" });
     case 4:
-      return S.Array(MetadataAssignment);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           schema: S.String,
-          assignedTo: S.optional(MetadataSchemaPropertiesAssignedToList),
+          assignedTo: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({ identifier: "MetadataSchemaProperties" });
     case 6:
@@ -3003,8 +2491,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MetadataSchemaProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({
         identifier: "GetMetadataSchemaResponse",
@@ -3033,7 +2521,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceProperties" });
     case 2:
@@ -3044,14 +2532,14 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(58, __c7, 2)));
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({
         identifier: "GetServiceResponseIdentity",
@@ -3062,11 +2550,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetServiceResponseTagsMap),
+          systemData: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(56, __c7, 0)),
           location: S.String,
-          properties: S.optional(ServiceProperties),
-          identity: S.optional(GetServiceResponseIdentity),
+          properties: S.optional(__S(57, __c7, 1)),
+          identity: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
     case 6:
@@ -3102,8 +2590,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(WorkspaceProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
     case 1:
@@ -3117,8 +2605,8 @@ function __c8(j: number): any {
           versionName: S.String.pipe(T.Label()),
           definitionName: S.String.pipe(T.Label()),
           value: S.optional(S.String),
-          format: S.optional(ApiSpecImportSourceFormat),
-          specification: S.optional(ApiDefinitionPropertiesSpecification),
+          format: S.optional(S.String),
+          specification: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3156,11 +2644,11 @@ function __c8(j: number): any {
         identifier: "ListApiDefinitionsRequest",
       });
     case 4:
-      return S.Array(ApiDefinition);
+      return S.Array(__S(41, __c5, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ApiDefinitionListResultValueList,
+          value: __S(68, __c8, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiDefinitionListResult" });
@@ -3182,7 +2670,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListApisRequest" });
     case 7:
-      return S.Array(Api);
+      return S.Array(__S(43, __c5, 3));
   }
 }
 function __c9(j: number): any {
@@ -3190,7 +2678,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ApiListResultValueList,
+          value: __S(71, __c8, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiListResult" });
@@ -3213,11 +2701,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListApiVersionsRequest" });
     case 2:
-      return S.Array(ApiVersion);
+      return S.Array(__S(45, __c5, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ApiVersionListResultValueList,
+          value: __S(74, __c9, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiVersionListResult" });
@@ -3240,11 +2728,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListDeploymentsRequest" });
     case 5:
-      return S.Array(Deployment);
+      return S.Array(__S(47, __c5, 7));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: DeploymentListResultValueList,
+          value: __S(77, __c9, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentListResult" });
@@ -3270,11 +2758,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Environment);
+      return S.Array(__S(49, __c6, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: EnvironmentListResultValueList,
+          value: __S(80, __c10, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentListResult" });
@@ -3302,16 +2790,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MetadataSchemaProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(53, __c6, 5)),
         }),
       ).annotate({ identifier: "MetadataSchema" });
     case 4:
-      return S.Array(MetadataSchema);
+      return S.Array(__S(83, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: MetadataSchemaListResultValueList,
+          value: __S(84, __c10, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataSchemaListResult" });
@@ -3344,17 +2832,17 @@ function __c11(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(87, __c10, 7)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(89, __c11, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3375,11 +2863,11 @@ function __c11(j: number): any {
         identifier: "ListServiceByResourceGroupRequest",
       });
     case 4:
-      return S.Array(Service);
+      return S.Array(__S(61, __c7, 5));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ServiceListResultValueList,
+          value: __S(92, __c11, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceListResult" });
@@ -3419,11 +2907,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Workspace);
+      return S.Array(__S(64, __c8, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: WorkspaceListResultValueList,
+          value: __S(96, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
@@ -3434,7 +2922,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           metadataSchemaName: S.String.pipe(T.Label()),
-          properties: S.optional(MetadataSchemaProperties),
+          properties: S.optional(__S(53, __c6, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3447,12 +2935,12 @@ function __c12(j: number): any {
         identifier: "MetadataSchemasCreateOrUpdateRequest",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(ServicePropertiesInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(18, __c2, 2)));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({
         identifier: "ServicesCreateOrUpdateRequestIdentity",
@@ -3463,10 +2951,10 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(56, __c7, 0)),
           location: S.String,
-          properties: S.optional(ServicePropertiesInput),
-          identity: S.optional(ServicesCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(18, __c2, 2)),
+          identity: S.optional(__S(100, __c12, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3484,11 +2972,11 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ServicesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(56, __c7, 0)),
           location: S.String,
-          properties: S.optional(ServiceProperties),
-          identity: S.optional(GetServiceResponseIdentity),
+          properties: S.optional(__S(57, __c7, 1)),
+          identity: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({
         identifier: "ServicesCreateOrUpdateResponse",
@@ -3499,8 +2987,8 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          identity: S.optional(ServicesCreateOrUpdateRequestIdentity),
-          tags: S.optional(UpdateServiceRequestTagsMap),
+          identity: S.optional(__S(100, __c12, 4)),
+          tags: S.optional(__S(56, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3521,7 +3009,7 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(WorkspaceProperties),
+          properties: S.optional(__S(63, __c7, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3539,11 +3027,16 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(WorkspaceProperties),
+          systemData: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

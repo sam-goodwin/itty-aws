@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -75,28 +77,14 @@ export type CreateStorageStoresBlobRequestRegion =
   | "sin1"
   | "syd1"
   | "yul1";
-const CreateStorageStoresBlobRequestRegion = S.String;
-
 export type CreateStorageStoresBlobRequestAccess = "public" | "private";
-const CreateStorageStoresBlobRequestAccess = S.String;
-
 export interface CreateStorageStoresBlobRequest {
   name: string;
   region?: CreateStorageStoresBlobRequestRegion | (string & {});
   access?: CreateStorageStoresBlobRequestAccess | (string & {});
   projectId?: string;
 }
-const CreateStorageStoresBlobRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateStorageStoresBlobRequest>;
-
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList = Array<string>;
-const CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList>;
-
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0Item =
   | "bitbucket"
   | "github"
@@ -107,76 +95,31 @@ export type CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase1 =
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitProviders =
   | CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0List
   | CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase1;
-const CreateStorageStoresBlobResponseStoreProjectFilterGitProviders =
-  S.Unknown as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitProviders>;
-
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitReposList = Array<string>;
-const CreateStorageStoresBlobResponseStoreProjectFilterGitReposList =
-  CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitReposList>;
-
 export interface CreateStorageStoresBlobResponseStoreProjectFilterGit {
   owners?: CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList;
   providers: CreateStorageStoresBlobResponseStoreProjectFilterGitProviders;
   repos?: CreateStorageStoresBlobResponseStoreProjectFilterGitReposList;
 }
-const CreateStorageStoresBlobResponseStoreProjectFilterGit = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGit>;
-
 export interface CreateStorageStoresBlobResponseStoreProjectFilter {
   git?: CreateStorageStoresBlobResponseStoreProjectFilterGit;
 }
-const CreateStorageStoresBlobResponseStoreProjectFilter = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilter>;
-
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    4,
-  ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
-
 export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem {
   environments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList;
   slug: string;
 }
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    5,
-  ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList =
   Array<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    6,
-  ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList>;
-
 export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments {
   actions: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList;
   required: boolean;
 }
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments>;
-
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList =
   Array<string>;
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList =
-  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList>;
-
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList =
-  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
-
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework =
   | "actix-web"
   | "angular"
@@ -252,8 +195,6 @@ export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework = S.String;
-
 export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
   deployments?: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments;
   environments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList;
@@ -266,18 +207,8 @@ export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
   name: string;
   projectId: string;
 }
-const CreateStorageStoresBlobResponseStoreProjectsMetadataItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItem>;
-
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataList =
   Array<CreateStorageStoresBlobResponseStoreProjectsMetadataItem>;
-const CreateStorageStoresBlobResponseStoreProjectsMetadataList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataList>;
-
 export type CreateStorageStoresBlobResponseStoreStatus =
   | "available"
   | "error"
@@ -287,15 +218,9 @@ export type CreateStorageStoresBlobResponseStoreStatus =
   | "onboarding"
   | "suspended"
   | "uninstalled";
-const CreateStorageStoresBlobResponseStoreStatus = S.String;
-
 export type CreateStorageStoresBlobResponseStoreAccess = "private" | "public";
-const CreateStorageStoresBlobResponseStoreAccess = S.String;
-
 /** A project-default store is a private blob store that is lazily created per-project, uses OIDC auth instead of read-write tokens, and cannot be modified through standard store mutation APIs. Undefined for legacy stores. */
 export type CreateStorageStoresBlobResponseStoreKind = "project-default" | "user-created";
-const CreateStorageStoresBlobResponseStoreKind = S.String;
-
 export type CreateStorageStoresBlobResponseStoreRegion =
   | "arn1"
   | "bom1"
@@ -317,8 +242,6 @@ export type CreateStorageStoresBlobResponseStoreRegion =
   | "sin1"
   | "syd1"
   | "yul1";
-const CreateStorageStoresBlobResponseStoreRegion = S.String;
-
 export interface CreateStorageStoresBlobResponseStore {
   projectFilter?: CreateStorageStoresBlobResponseStoreProjectFilter;
   projectsMetadata: CreateStorageStoresBlobResponseStoreProjectsMetadataList;
@@ -335,49 +258,21 @@ export interface CreateStorageStoresBlobResponseStore {
   region: CreateStorageStoresBlobResponseStoreRegion;
   size: number;
 }
-const CreateStorageStoresBlobResponseStore = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateStorageStoresBlobResponseStore>;
-
 export interface CreateStorageStoresBlobResponse {
   store: CreateStorageStoresBlobResponseStore | null;
 }
-const CreateStorageStoresBlobResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateStorageStoresBlobResponse>;
-
 export interface DeleteStorageStoresBlobRequest {
   id: string;
 }
-const DeleteStorageStoresBlobRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteStorageStoresBlobRequest>;
-
 export interface DeleteStorageStoresBlobResponse {
   id: string;
 }
-const DeleteStorageStoresBlobResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteStorageStoresBlobResponse>;
-
 export interface GetStorageStoreRequest {
   id: string;
   skip_metadata?: boolean;
   include_guides?: boolean;
 }
-const GetStorageStoreRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetStorageStoreRequest>;
-
 export type GetStorageStoreResponseStoreProjectFilterGitOwnersList = Array<string>;
-const GetStorageStoreResponseStoreProjectFilterGitOwnersList =
-  CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitOwnersList>;
-
 export type GetStorageStoreResponseStoreProjectFilterGitProvidersCase0Item =
   | "bitbucket"
   | "github"
@@ -388,31 +283,15 @@ export type GetStorageStoreResponseStoreProjectFilterGitProvidersCase1 = "*";
 export type GetStorageStoreResponseStoreProjectFilterGitProviders =
   | GetStorageStoreResponseStoreProjectFilterGitProvidersCase0List
   | GetStorageStoreResponseStoreProjectFilterGitProvidersCase1;
-const GetStorageStoreResponseStoreProjectFilterGitProviders =
-  S.Unknown as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitProviders>;
-
 export type GetStorageStoreResponseStoreProjectFilterGitReposList = Array<string>;
-const GetStorageStoreResponseStoreProjectFilterGitReposList =
-  CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitReposList>;
-
 export interface GetStorageStoreResponseStoreProjectFilterGit {
   owners?: GetStorageStoreResponseStoreProjectFilterGitOwnersList;
   providers: GetStorageStoreResponseStoreProjectFilterGitProviders;
   repos?: GetStorageStoreResponseStoreProjectFilterGitReposList;
 }
-const GetStorageStoreResponseStoreProjectFilterGit = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGit>;
-
 export interface GetStorageStoreResponseStoreProjectFilter {
   git?: GetStorageStoreResponseStoreProjectFilterGit;
 }
-const GetStorageStoreResponseStoreProjectFilter = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectFilter>;
-
 export type GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
 export interface GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem {
@@ -421,27 +300,13 @@ export interface GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActi
 }
 export type GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList =
   Array<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList =
-  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList>;
-
 export interface GetStorageStoreResponseStoreProjectsMetadataItemDeployments {
   actions: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList;
   required: boolean;
 }
-const GetStorageStoreResponseStoreProjectsMetadataItemDeployments = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeployments>;
-
 export type GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList = Array<string>;
-const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList =
-  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList>;
-
 export type GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
-const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList =
-  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
-
 export type GetStorageStoreResponseStoreProjectsMetadataItemFramework =
   | "actix-web"
   | "angular"
@@ -517,8 +382,6 @@ export type GetStorageStoreResponseStoreProjectsMetadataItemFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-const GetStorageStoreResponseStoreProjectsMetadataItemFramework = S.String;
-
 export interface GetStorageStoreResponseStoreProjectsMetadataItem {
   deployments?: GetStorageStoreResponseStoreProjectsMetadataItemDeployments;
   environments: GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList;
@@ -531,18 +394,8 @@ export interface GetStorageStoreResponseStoreProjectsMetadataItem {
   name: string;
   projectId: string;
 }
-const GetStorageStoreResponseStoreProjectsMetadataItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItem>;
-
 export type GetStorageStoreResponseStoreProjectsMetadataList =
   Array<GetStorageStoreResponseStoreProjectsMetadataItem>;
-const GetStorageStoreResponseStoreProjectsMetadataList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataList>;
-
 export type GetStorageStoreResponseStoreStatus =
   | "available"
   | "error"
@@ -552,8 +405,6 @@ export type GetStorageStoreResponseStoreStatus =
   | "onboarding"
   | "suspended"
   | "uninstalled";
-const GetStorageStoreResponseStoreStatus = S.String;
-
 export interface GetStorageStoreResponseStore {
   projectFilter?: GetStorageStoreResponseStoreProjectFilter;
   projectsMetadata: GetStorageStoreResponseStoreProjectsMetadataList;
@@ -561,19 +412,9 @@ export interface GetStorageStoreResponseStore {
   totalConnectedProjects?: number;
   usageQuotaExceeded: boolean;
 }
-const GetStorageStoreResponseStore = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetStorageStoreResponseStore>;
-
 export interface GetStorageStoreResponse {
   store: GetStorageStoreResponseStore;
 }
-const GetStorageStoreResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetStorageStoreResponse>;
-
 export type CreateStorageStoresBlobError =
   | BadRequest
   | PaymentRequired
@@ -588,8 +429,8 @@ export const createStorageStoresBlob: API.OperationMethod<
   CreateStorageStoresBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStorageStoresBlobRequest,
-  output: CreateStorageStoresBlobResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateStorageStoresBlobRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateStorageStoresBlobResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -608,8 +449,8 @@ export const deleteStorageStoresBlob: API.OperationMethod<
   DeleteStorageStoresBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageStoresBlobRequest,
-  output: DeleteStorageStoresBlobResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<DeleteStorageStoresBlobRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<DeleteStorageStoresBlobResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -623,8 +464,8 @@ export const getStorageStore: API.OperationMethod<
   GetStorageStoreError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageStoreRequest,
-  output: GetStorageStoreResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetStorageStoreRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<GetStorageStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -637,8 +478,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          region: S.optional(CreateStorageStoresBlobRequestRegion),
-          access: S.optional(CreateStorageStoresBlobRequestAccess),
+          region: S.optional(S.String),
+          access: S.optional(S.String),
           projectId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/storage/stores/blob", code: 200 })),
       ).annotate({
@@ -649,9 +490,9 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          owners: S.optional(CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList),
-          providers: CreateStorageStoresBlobResponseStoreProjectFilterGitProviders,
-          repos: S.optional(CreateStorageStoresBlobResponseStoreProjectFilterGitReposList),
+          owners: S.optional(__S(1, __c0, 1)),
+          providers: S.Unknown,
+          repos: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CreateStorageStoresBlobResponseStoreProjectFilterGit",
@@ -659,7 +500,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          git: S.optional(CreateStorageStoresBlobResponseStoreProjectFilterGit),
+          git: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({
         identifier: "CreateStorageStoresBlobResponseStoreProjectFilter",
@@ -669,8 +510,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          environments:
-            CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList,
+          environments: __S(4, __c0, 4),
           slug: S.String,
         }),
       ).annotate({
@@ -678,13 +518,11 @@ function __c0(j: number): any {
           "CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem",
       });
     case 6:
-      return S.Array(
-        CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem,
-      );
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList,
+          actions: __S(6, __c0, 6),
           required: S.Boolean,
         }),
       ).annotate({
@@ -697,16 +535,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(
-            CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments,
-          ),
-          environments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList,
-          environmentVariables:
-            CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList,
+          deployments: S.optional(__S(7, __c0, 7)),
+          environments: __S(4, __c0, 4),
+          environmentVariables: __S(4, __c0, 4),
           envVarPrefix: S.NullOr(S.String),
-          framework: S.optional(
-            S.NullOr(CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework),
-          ),
+          framework: S.optional(S.NullOr(S.String)),
           id: S.String,
           latestDeployment: S.optional(S.String),
           makeEnvVarsSensitive: S.optional(S.Boolean),
@@ -717,21 +550,21 @@ function __c1(j: number): any {
         identifier: "CreateStorageStoresBlobResponseStoreProjectsMetadataItem",
       });
     case 1:
-      return S.Array(CreateStorageStoresBlobResponseStoreProjectsMetadataItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          projectFilter: S.optional(CreateStorageStoresBlobResponseStoreProjectFilter),
-          projectsMetadata: CreateStorageStoresBlobResponseStoreProjectsMetadataList,
-          status: S.NullOr(CreateStorageStoresBlobResponseStoreStatus),
+          projectFilter: S.optional(__S(3, __c0, 3)),
+          projectsMetadata: __S(9, __c1, 1),
+          status: S.NullOr(S.String),
           totalConnectedProjects: S.optional(S.Number),
           usageQuotaExceeded: S.Boolean,
-          access: S.optional(CreateStorageStoresBlobResponseStoreAccess),
-          kind: S.optional(CreateStorageStoresBlobResponseStoreKind),
+          access: S.optional(S.String),
+          kind: S.optional(S.String),
           projectId: S.optional(S.String),
           count: S.Number,
           isTokenExpired: S.Boolean,
-          region: CreateStorageStoresBlobResponseStoreRegion,
+          region: S.String,
           size: S.Number,
         }),
       ).annotate({
@@ -740,7 +573,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          store: S.NullOr(CreateStorageStoresBlobResponseStore),
+          store: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "CreateStorageStoresBlobResponse",
@@ -772,9 +605,9 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          owners: S.optional(GetStorageStoreResponseStoreProjectFilterGitOwnersList),
-          providers: GetStorageStoreResponseStoreProjectFilterGitProviders,
-          repos: S.optional(GetStorageStoreResponseStoreProjectFilterGitReposList),
+          owners: S.optional(__S(1, __c0, 1)),
+          providers: S.Unknown,
+          repos: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "GetStorageStoreResponseStoreProjectFilterGit",
@@ -786,7 +619,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          git: S.optional(GetStorageStoreResponseStoreProjectFilterGit),
+          git: S.optional(__S(15, __c1, 7)),
         }),
       ).annotate({
         identifier: "GetStorageStoreResponseStoreProjectFilter",
@@ -794,7 +627,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList,
+          actions: __S(6, __c0, 6),
           required: S.Boolean,
         }),
       ).annotate({
@@ -803,14 +636,11 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(GetStorageStoreResponseStoreProjectsMetadataItemDeployments),
-          environments: GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList,
-          environmentVariables:
-            GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList,
+          deployments: S.optional(__S(17, __c2, 1)),
+          environments: __S(4, __c0, 4),
+          environmentVariables: __S(4, __c0, 4),
           envVarPrefix: S.NullOr(S.String),
-          framework: S.optional(
-            S.NullOr(GetStorageStoreResponseStoreProjectsMetadataItemFramework),
-          ),
+          framework: S.optional(S.NullOr(S.String)),
           id: S.String,
           latestDeployment: S.optional(S.String),
           makeEnvVarsSensitive: S.optional(S.Boolean),
@@ -821,13 +651,13 @@ function __c2(j: number): any {
         identifier: "GetStorageStoreResponseStoreProjectsMetadataItem",
       });
     case 3:
-      return S.Array(GetStorageStoreResponseStoreProjectsMetadataItem);
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          projectFilter: S.optional(GetStorageStoreResponseStoreProjectFilter),
-          projectsMetadata: GetStorageStoreResponseStoreProjectsMetadataList,
-          status: S.NullOr(GetStorageStoreResponseStoreStatus),
+          projectFilter: S.optional(__S(16, __c2, 0)),
+          projectsMetadata: __S(19, __c2, 3),
+          status: S.NullOr(S.String),
           totalConnectedProjects: S.optional(S.Number),
           usageQuotaExceeded: S.Boolean,
         }),
@@ -837,8 +667,13 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          store: GetStorageStoreResponseStore,
+          store: __S(20, __c2, 4),
         }),
       ).annotate({ identifier: "GetStorageStoreResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

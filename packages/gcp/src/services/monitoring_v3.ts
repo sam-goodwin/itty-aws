@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,8 +71,6 @@ export interface MutationRecord {
   /** The email address of the user making the change. */
   mutatedBy?: string;
 }
-const MutationRecord = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<MutationRecord>;
-
 /** Links to content such as playbooks, repositories, and other resources. */
 export interface Link {
   /** A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook". */
@@ -78,11 +78,7 @@ export interface Link {
   /** The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}" */
   url?: string;
 }
-const Link = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Link>;
-
 export type LinkList = Array<Link>;
-const LinkList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LinkList>;
-
 /** Documentation that is included in the notifications and incidents pertaining to this policy. */
 export interface Documentation {
   /** Optional. Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries. */
@@ -94,24 +90,14 @@ export interface Documentation {
   /** The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). */
   content?: string;
 }
-const Documentation = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Documentation>;
-
 export type AlertPolicySeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "ERROR" | "WARNING";
-const AlertPolicySeverityEnum = S.String;
-
 export type AlertPolicyCombinerEnum =
   | "COMBINE_UNSPECIFIED"
   | "AND"
   | "OR"
   | "AND_WITH_MATCHING_RESOURCE";
-const AlertPolicyCombinerEnum = S.String;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMapList>;
-
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -121,14 +107,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Status>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringMap>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringList>;
-
 /** Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis. */
 export interface NotificationChannelStrategy {
   /** The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] */
@@ -136,41 +116,19 @@ export interface NotificationChannelStrategy {
   /** The frequency at which to send reminder notifications for open incidents. The value must be between 30 minutes and 24 hours. */
   renotifyInterval?: string;
 }
-const NotificationChannelStrategy = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<NotificationChannelStrategy>;
-
 export type NotificationChannelStrategyList = Array<NotificationChannelStrategy>;
-const NotificationChannelStrategyList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<NotificationChannelStrategyList>;
-
 /** Control over the rate of notifications sent to this alerting policy's notification channels. */
 export interface NotificationRateLimit {
   /** Not more than one notification per period. */
   period?: string;
 }
-const NotificationRateLimit = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<NotificationRateLimit>;
-
 export type AlertStrategyNotificationPromptsItemEnum =
   | "NOTIFICATION_PROMPT_UNSPECIFIED"
   | "OPENED"
   | "CLOSED";
-const AlertStrategyNotificationPromptsItemEnum = S.String;
-
 export type AlertStrategyNotificationPromptsItemEnumList = Array<
   AlertStrategyNotificationPromptsItemEnum | (string & {})
 >;
-const AlertStrategyNotificationPromptsItemEnumList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AlertStrategyNotificationPromptsItemEnumList>;
-
 /** Control over how the notification channels in notification_channels are notified when this alert fires. */
 export interface AlertStrategy {
   /** If an alerting policy that was active has no data for this long, any open incidents will close */
@@ -182,8 +140,6 @@ export interface AlertStrategy {
   /** For log-based alert policies, the notification prompts is always OPENED. For non log-based alert policies, the notification prompts can be OPENED or OPENED, CLOSED. */
   notificationPrompts?: AlertStrategyNotificationPromptsItemEnumList;
 }
-const AlertStrategy = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AlertStrategy>;
-
 /** A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated. */
 export interface LogMatch {
   /** Required. A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed. */
@@ -191,8 +147,6 @@ export interface LogMatch {
   /** Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples. */
   labelExtractors?: StringMap;
 }
-const LogMatch = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<LogMatch>;
-
 export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -208,8 +162,6 @@ export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const AggregationCrossSeriesReducerEnum = S.String;
-
 export type AggregationPerSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -230,8 +182,6 @@ export type AggregationPerSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const AggregationPerSeriesAlignerEnum = S.String;
-
 /** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
 export interface Aggregation {
   /** The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned. */
@@ -243,11 +193,7 @@ export interface Aggregation {
   /** An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned. */
   perSeriesAligner?: AggregationPerSeriesAlignerEnum | (string & {});
 }
-const Aggregation = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Aggregation>;
-
 export type AggregationList = Array<Aggregation>;
-const AggregationList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AggregationList>;
-
 /** Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used. */
 export interface Trigger {
   /** The absolute number of time series that must fail the predicate for the condition to be triggered. */
@@ -255,8 +201,6 @@ export interface Trigger {
   /** The percentage of time series that must fail the predicate for the condition to be triggered. */
   percent?: number;
 }
-const Trigger = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Trigger>;
-
 /** A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration. */
 export interface MetricAbsence {
   /** Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length. */
@@ -268,8 +212,6 @@ export interface MetricAbsence {
   /** The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations. */
   trigger?: Trigger;
 }
-const MetricAbsence = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<MetricAbsence>;
-
 /** A condition type that allows alerting policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26). */
 export interface PrometheusQueryLanguageCondition {
   /** Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length. */
@@ -287,18 +229,11 @@ export interface PrometheusQueryLanguageCondition {
   /** Required. The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty. */
   query?: string;
 }
-const PrometheusQueryLanguageCondition = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PrometheusQueryLanguageCondition>;
-
 /** A test that uses an alerting result in a boolean column produced by the SQL query. */
 export interface BooleanTest {
   /** Required. The name of the column containing the boolean value. If the value in a row is NULL, that row is ignored. */
   column?: string;
 }
-const BooleanTest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<BooleanTest>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and google.protobuf.Timestamp. */
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -310,8 +245,6 @@ export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TimeOfDay>;
-
 /** Used to schedule the query to run every so many days. */
 export interface Daily {
   /** Required. The number of days between runs. Must be greater than or equal to 1 day and less than or equal to 31 days. */
@@ -319,15 +252,11 @@ export interface Daily {
   /** Optional. The time of day (in UTC) at which the query should run. If left unspecified, the server picks an arbitrary time of day and runs the query at the same time each day. */
   executionTime?: TimeOfDay;
 }
-const Daily = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Daily>;
-
 /** Used to schedule the query to run every so many minutes. */
 export interface Minutes {
   /** Required. Number of minutes between runs. The interval must be greater than or equal to 5 minutes and less than or equal to 1440 minutes. */
   periodicity?: number;
 }
-const Minutes = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Minutes>;
-
 export type RowCountTestComparisonEnum =
   | "COMPARISON_UNSPECIFIED"
   | "COMPARISON_GT"
@@ -336,8 +265,6 @@ export type RowCountTestComparisonEnum =
   | "COMPARISON_LE"
   | "COMPARISON_EQ"
   | "COMPARISON_NE";
-const RowCountTestComparisonEnum = S.String;
-
 /** A test that checks if the number of rows in the result set violates some threshold. */
 export interface RowCountTest {
   /** Required. The comparison to apply between the number of rows returned by the query and the threshold. */
@@ -345,8 +272,6 @@ export interface RowCountTest {
   /** Required. The value against which to compare the row count. */
   threshold?: string;
 }
-const RowCountTest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<RowCountTest>;
-
 /** Used to schedule the query to run every so many hours. */
 export interface Hourly {
   /** Optional. The number of minutes after the hour (in UTC) to run the query. Must be greater than or equal to 0 minutes and less than or equal to 59 minutes. If left unspecified, then an arbitrary offset is used. */
@@ -354,8 +279,6 @@ export interface Hourly {
   /** Required. The number of hours between runs. Must be greater than or equal to 1 hour and less than or equal to 48 hours. */
   periodicity?: number;
 }
-const Hourly = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Hourly>;
-
 /** A condition that allows alerting policies to be defined using GoogleSQL. SQL conditions examine a sliding window of logs using GoogleSQL. Alert policies with SQL conditions may incur additional billing. */
 export interface SqlCondition {
   /** Test the boolean value in the indicated column. */
@@ -371,15 +294,11 @@ export interface SqlCondition {
   /** Schedule the query to execute every so many hours. */
   hourly?: Hourly;
 }
-const SqlCondition = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<SqlCondition>;
-
 export type MonitoringQueryLanguageConditionEvaluationMissingDataEnum =
   | "EVALUATION_MISSING_DATA_UNSPECIFIED"
   | "EVALUATION_MISSING_DATA_INACTIVE"
   | "EVALUATION_MISSING_DATA_ACTIVE"
   | "EVALUATION_MISSING_DATA_NO_OP";
-const MonitoringQueryLanguageConditionEvaluationMissingDataEnum = S.String;
-
 /** A condition type that allows alerting policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql). */
 export interface MonitoringQueryLanguageCondition {
   /** Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream. */
@@ -391,18 +310,11 @@ export interface MonitoringQueryLanguageCondition {
   /** A condition control that determines how metric-threshold conditions are evaluated when data stops arriving. */
   evaluationMissingData?: MonitoringQueryLanguageConditionEvaluationMissingDataEnum | (string & {});
 }
-const MonitoringQueryLanguageCondition = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MonitoringQueryLanguageCondition>;
-
 export type MetricThresholdEvaluationMissingDataEnum =
   | "EVALUATION_MISSING_DATA_UNSPECIFIED"
   | "EVALUATION_MISSING_DATA_INACTIVE"
   | "EVALUATION_MISSING_DATA_ACTIVE"
   | "EVALUATION_MISSING_DATA_NO_OP";
-const MetricThresholdEvaluationMissingDataEnum = S.String;
-
 export type MetricThresholdComparisonEnum =
   | "COMPARISON_UNSPECIFIED"
   | "COMPARISON_GT"
@@ -411,15 +323,11 @@ export type MetricThresholdComparisonEnum =
   | "COMPARISON_LE"
   | "COMPARISON_EQ"
   | "COMPARISON_NE";
-const MetricThresholdComparisonEnum = S.String;
-
 /** Options used when forecasting the time series and testing the predicted value against the threshold. */
 export interface ForecastOptions {
   /** Required. The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours. */
   forecastHorizon?: string;
 }
-const ForecastOptions = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ForecastOptions>;
-
 /** A condition type that compares a collection of time series against a threshold. */
 export interface MetricThreshold {
   /** Required. The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly. */
@@ -443,8 +351,6 @@ export interface MetricThreshold {
   /** The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified. */
   trigger?: Trigger;
 }
-const MetricThreshold = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<MetricThreshold>;
-
 /** A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong. */
 export interface Condition {
   /** A condition that checks for log messages matching given constraints. If set, no other conditions can be present. */
@@ -464,11 +370,7 @@ export interface Condition {
   /** A condition that compares a time series against a threshold. */
   conditionThreshold?: MetricThreshold;
 }
-const Condition = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Condition>;
-
 export type ConditionList = Array<Condition>;
-const ConditionList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ConditionList>;
-
 /** A description of the conditions under which some aspect of your system is considered to be "unhealthy" and the ways to notify people or services about this state. For an overview of alerting policies, see Introduction to Alerting (https://cloud.google.com/monitoring/alerts/). */
 export interface AlertPolicy {
   /** A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored. */
@@ -498,19 +400,12 @@ export interface AlertPolicy {
   /** Whether or not the policy is enabled. On write, the default interpretation if unset is that the policy is enabled. On read, clients should not make any assumption about the state if it has not been populated. The field should always be populated on List and Get operations, unless a field projection has been specified that strips it out. */
   enabled?: boolean;
 }
-const AlertPolicy = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AlertPolicy>;
-
 export interface CreateProjectsAlertPoliciesRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the alerting policy. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting policy will be written, not the name of the created policy. |name| must be a host project of a Metrics Scope, otherwise INVALID_ARGUMENT error will return. The alerting policy that is returned will have a name that contains a normalized representation of this name as a prefix but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container. */
   name: string;
   /** Request body */
   body?: AlertPolicy;
 }
-const CreateProjectsAlertPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateProjectsAlertPoliciesRequest>;
-
 /** An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} */
 export interface MonitoredResource {
   /** Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
@@ -518,18 +413,12 @@ export interface MonitoredResource {
   /** Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone". */
   labels?: StringMap;
 }
-const MonitoredResource = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MonitoredResource>;
-
 export type DoubleList = Array<number>;
-const DoubleList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DoubleList>;
-
 /** Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets. */
 export interface Explicit {
   /** The values must be monotonically increasing. */
   bounds?: DoubleList;
 }
-const Explicit = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Explicit>;
-
 /** Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)). */
 export interface Linear {
   /** Lower bound of the first bucket. */
@@ -539,8 +428,6 @@ export interface Linear {
   /** Must be greater than 0. */
   width?: number;
 }
-const Linear = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Linear>;
-
 /** Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)). */
 export interface Exponential {
   /** Must be greater than 0. */
@@ -550,8 +437,6 @@ export interface Exponential {
   /** Must be greater than 0. */
   scale?: number;
 }
-const Exponential = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Exponential>;
-
 /** BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite. */
 export interface BucketOptions {
   /** The explicit buckets. */
@@ -561,8 +446,6 @@ export interface BucketOptions {
   /** The exponential buckets. */
   exponentialBuckets?: Exponential;
 }
-const BucketOptions = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<BucketOptions>;
-
 /** The range of the population values. */
 export interface Range {
   /** The minimum of the population values. */
@@ -570,8 +453,6 @@ export interface Range {
   /** The maximum of the population values. */
   max?: number;
 }
-const Range = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Range>;
-
 /** Exemplars are example points that may be used to annotate aggregated distribution values. They are metadata that gives information about a particular value added to a Distribution bucket, such as a trace ID that was active when a value was added. They may contain further information, such as a example values and timestamps, origin, etc. */
 export interface Exemplar {
   /** The observation (sampling) time of the above value. */
@@ -581,11 +462,7 @@ export interface Exemplar {
   /** Value of the exemplar point. This value determines to which bucket the exemplar belongs. */
   value?: number;
 }
-const Exemplar = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Exemplar>;
-
 export type ExemplarList = Array<Exemplar>;
-const ExemplarList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ExemplarList>;
-
 /** Distribution contains summary statistics for a population of values. It optionally contains a histogram representing the distribution of those values across a set of buckets.The summary statistics are the count, mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of population of values. The histogram is based on a sequence of buckets and gives a count of values that fall into each bucket. The boundaries of the buckets are given either explicitly or by formulas for buckets of fixed or exponentially increasing widths.Although it is not forbidden, it is generally a bad idea to include non-finite values (infinities or NaNs) in the population of values, as this will render the mean and sum_of_squared_deviation fields meaningless. */
 export interface Distribution {
   /** Required in the Cloud Monitoring API v3. The values for each bucket specified in bucket_options. The sum of the values in bucketCounts must equal the value in the count field of the Distribution object. The order of the bucket counts follows the numbering schemes described for the three bucket types. The underflow bucket has number 0; the finite buckets, if any, have numbers 1 through N-2; and the overflow bucket has number N-1. The size of bucket_counts must not be greater than N. If the size is less than N, then the remaining buckets are assigned values of zero. */
@@ -603,8 +480,6 @@ export interface Distribution {
   /** The sum of squared deviations from the mean of the values in the population. For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's method for accumulating this sum in one pass.If count is zero then this field must be zero. */
   sumOfSquaredDeviation?: number;
 }
-const Distribution = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Distribution>;
-
 /** A single strongly-typed value. */
 export interface TypedValue {
   /** A 64-bit integer. Its range is approximately ±9.2x1018. */
@@ -618,16 +493,12 @@ export interface TypedValue {
   /** A 64-bit double-precision floating-point number. Its magnitude is approximately ±10±300 and it has 16 significant digits of precision. */
   doubleValue?: number;
 }
-const TypedValue = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TypedValue>;
-
 export type CollectdValueDataSourceTypeEnum =
   | "UNSPECIFIED_DATA_SOURCE_TYPE"
   | "GAUGE"
   | "COUNTER"
   | "DERIVE"
   | "ABSOLUTE";
-const CollectdValueDataSourceTypeEnum = S.String;
-
 /** A single data point from a collectd-based plugin. */
 export interface CollectdValue {
   /** The measurement value. */
@@ -637,14 +508,8 @@ export interface CollectdValue {
   /** The data source for the collectd value. For example, there are two data sources for network measurements: "rx" and "tx". */
   dataSourceName?: string;
 }
-const CollectdValue = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CollectdValue>;
-
 export type CollectdValueList = Array<CollectdValue>;
-const CollectdValueList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CollectdValueList>;
-
 export type TypedValueMap = { [key: string]: TypedValue | undefined };
-const TypedValueMap = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TypedValueMap>;
-
 /** A collection of data points sent from a collectd-based plugin. See the collectd documentation for more information. */
 export interface CollectdPayload {
   /** The measurement type instance. Example: "used". */
@@ -664,11 +529,7 @@ export interface CollectdPayload {
   /** The name of the plugin. Example: "disk". */
   plugin?: string;
 }
-const CollectdPayload = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<CollectdPayload>;
-
 export type CollectdPayloadList = Array<CollectdPayload>;
-const CollectdPayloadList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CollectdPayloadList>;
-
 /** The CreateCollectdTimeSeries request. */
 export interface CreateCollectdTimeSeriesRequest {
   /** The monitored resource associated with the time series. */
@@ -678,22 +539,12 @@ export interface CreateCollectdTimeSeriesRequest {
   /** The collectd payloads representing the time series data. You must not include more than a single point for each time series, so no two payloads can have the same values for all of the fields plugin, plugin_instance, type, and type_instance. */
   collectdPayloads?: CollectdPayloadList;
 }
-const CreateCollectdTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateCollectdTimeSeriesRequest>;
-
 export interface CreateProjectsCollectdTimeSeriesRequest {
   /** The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the time series. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   name: string;
   /** Request body */
   body?: CreateCollectdTimeSeriesRequest;
 }
-const CreateProjectsCollectdTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateProjectsCollectdTimeSeriesRequest>;
-
 /** Describes the error status for values that were not written. */
 export interface CollectdValueError {
   /** Records the error status for the value. */
@@ -701,14 +552,7 @@ export interface CollectdValueError {
   /** The zero-based index in CollectdPayload.values within the parent CreateCollectdTimeSeriesRequest.collectd_payloads. */
   index?: number;
 }
-const CollectdValueError = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CollectdValueError>;
-
 export type CollectdValueErrorList = Array<CollectdValueError>;
-const CollectdValueErrorList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CollectdValueErrorList>;
-
 /** Describes the error status for payloads that were not written. */
 export interface CollectdPayloadError {
   /** Records the error status for the payload. If this field is present, the partial errors for nested values won't be populated. */
@@ -718,14 +562,7 @@ export interface CollectdPayloadError {
   /** The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads. */
   index?: number;
 }
-const CollectdPayloadError = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CollectdPayloadError>;
-
 export type CollectdPayloadErrorList = Array<CollectdPayloadError>;
-const CollectdPayloadErrorList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CollectdPayloadErrorList>;
-
 /** Detailed information about an error category. */
 export interface Monitoring_Error {
   /** The status of the requested write operation. */
@@ -733,11 +570,7 @@ export interface Monitoring_Error {
   /** The number of points that couldn't be written because of status. */
   pointCount?: number;
 }
-const Monitoring_Error = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Monitoring_Error>;
-
 export type Monitoring_ErrorList = Array<Monitoring_Error>;
-const Monitoring_ErrorList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Monitoring_ErrorList>;
-
 /** Summary of the result of a failed request to write data to a time series. */
 export interface CreateTimeSeriesSummary {
   /** The number of points that were successfully written. */
@@ -747,11 +580,6 @@ export interface CreateTimeSeriesSummary {
   /** The number of points in the request. */
   totalPointCount?: number;
 }
-const CreateTimeSeriesSummary = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateTimeSeriesSummary>;
-
 /** The CreateCollectdTimeSeries response. */
 export interface CreateCollectdTimeSeriesResponse {
   /** Records the error status for points that were not written due to an error in the request.Failed requests for which nothing is written will return an error response instead. Requests where data points were rejected by the backend will set summary instead. */
@@ -759,11 +587,6 @@ export interface CreateCollectdTimeSeriesResponse {
   /** Aggregate statistics from writing the payloads. This field is omitted if all points were successfully written, so that the response is empty. This is for backwards compatibility with clients that log errors on any non-empty response. */
   summary?: CreateTimeSeriesSummary;
 }
-const CreateCollectdTimeSeriesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateCollectdTimeSeriesResponse>;
-
 /** The description of a dynamic collection of monitored resources. Each group has a filter that is matched against monitored resources and their associated metadata. If a group's filter matches an available monitored resource, then that resource is a member of that group. Groups can contain any number of monitored resources, and each monitored resource can be a member of any number of groups.Groups can be nested in parent-child hierarchies. The parentName field identifies an optional parent for each group. If a group has a parent, then the only monitored resources available to be matched by the group's filter are the resources contained in the parent group. In other words, a group contains the monitored resources that match its filter and the filters of all the group's ancestors. A group without a parent can contain any monitored resource.For example, consider an infrastructure running a set of instances with two user-defined tags: "environment" and "role". A parent group has a filter, environment="production". A child of that parent group has a filter, role="transcoder". The parent group contains all instances in the production environment, regardless of their roles. The child group contains instances that have the transcoder role and are in the production environment.The monitored resources contained in a group can change at any moment, depending on what resources exist and what filters are associated with the group and its ancestors. */
 export interface Group {
   /** The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "". */
@@ -777,8 +600,6 @@ export interface Group {
   /** Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically. */
   name?: string;
 }
-const Group = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Group>;
-
 export interface CreateProjectsGroupsRequest {
   /** If true, validate this request but do not create the group. */
   validateOnly?: boolean;
@@ -787,11 +608,6 @@ export interface CreateProjectsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-const CreateProjectsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateProjectsGroupsRequest>;
-
 export type MetricDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -801,11 +617,7 @@ export type MetricDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const MetricDescriptorLaunchStageEnum = S.String;
-
 export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
-const LabelDescriptorValueTypeEnum = S.String;
-
 /** A description of a label. */
 export interface LabelDescriptor {
   /** A human-readable description for the label. */
@@ -815,18 +627,12 @@ export interface LabelDescriptor {
   /** The type of data that can be assigned to the label. */
   valueType?: LabelDescriptorValueTypeEnum | (string & {});
 }
-const LabelDescriptor = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<LabelDescriptor>;
-
 export type LabelDescriptorList = Array<LabelDescriptor>;
-const LabelDescriptorList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<LabelDescriptorList>;
-
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
   | "CUMULATIVE";
-const MetricDescriptorMetricKindEnum = S.String;
-
 export type MetricDescriptorValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -835,23 +641,14 @@ export type MetricDescriptorValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
-const MetricDescriptorValueTypeEnum = S.String;
-
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
   | "FOLDER";
-const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum = S.String;
-
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = Array<
   MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum | (string & {})
 >;
-const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList>;
-
 export type MetricDescriptorMetadataLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -861,8 +658,6 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const MetricDescriptorMetadataLaunchStageEnum = S.String;
-
 /** Additional annotations that can be used to guide the usage of a metric. */
 export interface MetricDescriptorMetadata {
   /** The scope of the timeseries data of the metric. */
@@ -874,11 +669,6 @@ export interface MetricDescriptorMetadata {
   /** Deprecated. Must use the MetricDescriptor.launch_stage instead. */
   launchStage?: MetricDescriptorMetadataLaunchStageEnum | (string & {});
 }
-const MetricDescriptorMetadata = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<MetricDescriptorMetadata>;
-
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
 export interface MetricDescriptor {
   /** The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" */
@@ -904,28 +694,17 @@ export interface MetricDescriptor {
   /** Optional. Metadata which can be used to guide usage of the metric. */
   metadata?: MetricDescriptorMetadata;
 }
-const MetricDescriptor = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<MetricDescriptor>;
-
 export interface CreateProjectsMetricDescriptorsRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the request. The format is: 4 projects/PROJECT_ID_OR_NUMBER */
   name: string;
   /** Request body */
   body?: MetricDescriptor;
 }
-const CreateProjectsMetricDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateProjectsMetricDescriptorsRequest>;
-
 export type MutationRecordList = Array<MutationRecord>;
-const MutationRecordList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<MutationRecordList>;
-
 export type NotificationChannelVerificationStatusEnum =
   | "VERIFICATION_STATUS_UNSPECIFIED"
   | "UNVERIFIED"
   | "VERIFIED";
-const NotificationChannelVerificationStatusEnum = S.String;
-
 /** A NotificationChannel is a medium through which an alert is delivered when a policy violation is detected. Examples of channels include email, SMS, and third-party messaging applications. Fields containing sensitive information like authentication tokens or contact info are only partially populated on retrieval. */
 export interface NotificationChannel {
   /** The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. */
@@ -949,19 +728,12 @@ export interface NotificationChannel {
   /** Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel. */
   verificationStatus?: NotificationChannelVerificationStatusEnum | (string & {});
 }
-const NotificationChannel = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<NotificationChannel>;
-
 export interface CreateProjectsNotificationChannelsRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] This names the container into which the channel will be written, this does not name the newly created channel. The resulting channel's name will have a normalized version of this field as a prefix, but will add /notificationChannels/[CHANNEL_ID] to identify the channel. */
   name: string;
   /** Request body */
   body?: NotificationChannel;
 }
-const CreateProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateProjectsNotificationChannelsRequest>;
-
 /** Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied. */
 export interface Criteria {
   /** The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation. Exactly 1 alert policy is required if filter is specified at the same time. */
@@ -969,8 +741,6 @@ export interface Criteria {
   /** Optional. When you define a snooze, you can also define a filter for that snooze. The filter is a string containing one or more key-value pairs. The string uses the standard https://google.aip.dev/160 filter syntax. If you define a filter for a snooze, then the snooze can only apply to one alert policy. When the snooze is active, incidents won't be created when the incident would have key-value pairs (labels) that match those specified by the filter in the snooze.Snooze filters support resource, metric, and metadata labels. If multiple labels are used, then they must be connected with an AND operator. For example, the following filter applies the snooze to incidents that have a resource label with an instance ID of 1234567890, a metric label with an instance name of test_group, a metadata user label with a key of foo and a value of bar, and a metadata system label with a key of region and a value of us-central1: "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\"" */
   filter?: string;
 }
-const Criteria = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Criteria>;
-
 /** Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time. */
 export interface TimeInterval {
   /** Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time. */
@@ -978,8 +748,6 @@ export interface TimeInterval {
   /** Required. The end of the time interval. */
   endTime?: string;
 }
-const TimeInterval = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<TimeInterval>;
-
 /** A Snooze will prevent any alerts from being opened, and close any that are already open. The Snooze will work on alerts that match the criteria defined in the Snooze. The Snooze will be active from interval.start_time through interval.end_time. */
 export interface Snooze {
   /** Required. This defines the criteria for applying the Snooze. See Criteria for more information. */
@@ -991,19 +759,12 @@ export interface Snooze {
   /** Required. Identifier. The name of the Snooze. The format is: projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID] The ID of the Snooze will be generated by the system. */
   name?: string;
 }
-const Snooze = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Snooze>;
-
 export interface CreateProjectsSnoozesRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which a Snooze should be created. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   parent: string;
   /** Request body */
   body?: Snooze;
 }
-const CreateProjectsSnoozesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateProjectsSnoozesRequest>;
-
 export type TimeSeriesValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -1012,11 +773,7 @@ export type TimeSeriesValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
-const TimeSeriesValueTypeEnum = S.String;
-
 export type TimeSeriesMetricKindEnum = "METRIC_KIND_UNSPECIFIED" | "GAUGE" | "DELTA" | "CUMULATIVE";
-const TimeSeriesMetricKindEnum = S.String;
-
 /** A specific metric, identified by specifying values for all of the labels of a MetricDescriptor. */
 export interface Metric {
   /** An existing metric type, see google.api.MetricDescriptor. For example, custom.googleapis.com/invoice/paid/amount. */
@@ -1024,8 +781,6 @@ export interface Metric {
   /** The set of label values that uniquely identify this metric. All labels listed in the MetricDescriptor must be assigned values. */
   labels?: StringMap;
 }
-const Metric = MonitoredResource as any as S.Schema<Metric>;
-
 /** Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata. Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store the metadata in this message. */
 export interface MonitoredResourceMetadata {
   /** Output only. A map of user-defined metadata labels. */
@@ -1033,11 +788,6 @@ export interface MonitoredResourceMetadata {
   /** Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } */
   systemLabels?: DocumentMap;
 }
-const MonitoredResourceMetadata = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<MonitoredResourceMetadata>;
-
 /** A single data point in a time series. */
 export interface Point {
   /** The value of the data point. */
@@ -1045,11 +795,7 @@ export interface Point {
   /** The time interval to which the data point applies. For GAUGE metrics, the start time is optional, but if it is supplied, it must equal the end time. For DELTA metrics, the start and end time should specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For CUMULATIVE metrics, the start and end time should specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. */
   interval?: TimeInterval;
 }
-const Point = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Point>;
-
 export type PointList = Array<Point>;
-const PointList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PointList>;
-
 /** A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series. */
 export interface TimeSeries {
   /** The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field. */
@@ -1069,36 +815,20 @@ export interface TimeSeries {
   /** The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION. */
   points?: PointList;
 }
-const TimeSeries = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<TimeSeries>;
-
 export type TimeSeriesList = Array<TimeSeries>;
-const TimeSeriesList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<TimeSeriesList>;
-
 /** The CreateTimeSeries request. */
 export interface CreateTimeSeriesRequest {
   /** Required. The new data to be added to a list of time series. Adds at most one data point to each of several time series. The new data point must be more recent than any other point in its time series. Each TimeSeries value must fully specify a unique time series by supplying all label values for the metric and the monitored resource.The maximum number of TimeSeries objects per Create request is 200. */
   timeSeries?: TimeSeriesList;
 }
-const CreateTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateTimeSeriesRequest>;
-
 export interface CreateProjectsTimeSeriesRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   name: string;
   /** Request body */
   body?: CreateTimeSeriesRequest;
 }
-const CreateProjectsTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateProjectsTimeSeriesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<Empty>;
-
 export type UptimeCheckConfigSelectedRegionsItemEnum =
   | "REGION_UNSPECIFIED"
   | "USA"
@@ -1111,15 +841,10 @@ export type UptimeCheckConfigSelectedRegionsItemEnum =
 export type UptimeCheckConfigSelectedRegionsItemEnumList = Array<
   UptimeCheckConfigSelectedRegionsItemEnum | (string & {})
 >;
-const UptimeCheckConfigSelectedRegionsItemEnumList =
-  AlertStrategyNotificationPromptsItemEnumList as any as S.Schema<UptimeCheckConfigSelectedRegionsItemEnumList>;
-
 export type JsonPathMatcherJsonMatcherEnum =
   | "JSON_PATH_MATCHER_OPTION_UNSPECIFIED"
   | "EXACT_MATCH"
   | "REGEX_MATCH";
-const JsonPathMatcherJsonMatcherEnum = S.String;
-
 /** Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH. */
 export interface JsonPathMatcher {
   /** The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content) */
@@ -1127,8 +852,6 @@ export interface JsonPathMatcher {
   /** JSONPath within the response output pointing to the expected ContentMatcher::content to match against. */
   jsonPath?: string;
 }
-const JsonPathMatcher = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<JsonPathMatcher>;
-
 export type ContentMatcherMatcherEnum =
   | "CONTENT_MATCHER_OPTION_UNSPECIFIED"
   | "CONTAINS_STRING"
@@ -1137,8 +860,6 @@ export type ContentMatcherMatcherEnum =
   | "NOT_MATCHES_REGEX"
   | "MATCHES_JSON_PATH"
   | "NOT_MATCHES_JSON_PATH";
-const ContentMatcherMatcherEnum = S.String;
-
 /** Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching. */
 export interface ContentMatcher {
   /** String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed. */
@@ -1148,11 +869,7 @@ export interface ContentMatcher {
   /** The type of content matcher that will be applied to the server output, compared to the content string when the check is run. */
   matcher?: ContentMatcherMatcherEnum | (string & {});
 }
-const ContentMatcher = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ContentMatcher>;
-
 export type ContentMatcherList = Array<ContentMatcher>;
-const ContentMatcherList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ContentMatcherList>;
-
 /** A Synthetic Monitor deployed to a Cloud Functions V2 instance. */
 export interface CloudFunctionV2Target {
   /** Required. Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required. */
@@ -1160,21 +877,11 @@ export interface CloudFunctionV2Target {
   /** Output only. The cloud_run_revision Monitored Resource associated with the GCFv2. The Synthetic Monitor execution results (metrics, logs, and spans) are reported against this Monitored Resource. This field is output only. */
   cloudRunRevision?: MonitoredResource;
 }
-const CloudFunctionV2Target = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CloudFunctionV2Target>;
-
 /** Describes a Synthetic Monitor to be invoked by Uptime. */
 export interface SyntheticMonitorTarget {
   /** Target a Synthetic Monitor GCFv2 instance. */
   cloudFunctionV2?: CloudFunctionV2Target;
 }
-const SyntheticMonitorTarget = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<SyntheticMonitorTarget>;
-
 export type ResponseStatusCodeStatusClassEnum =
   | "STATUS_CLASS_UNSPECIFIED"
   | "STATUS_CLASS_1XX"
@@ -1183,8 +890,6 @@ export type ResponseStatusCodeStatusClassEnum =
   | "STATUS_CLASS_4XX"
   | "STATUS_CLASS_5XX"
   | "STATUS_CLASS_ANY";
-const ResponseStatusCodeStatusClassEnum = S.String;
-
 /** A status to accept. Either a status code class like "2xx", or an integer status code like "200". */
 export interface ResponseStatusCode {
   /** A class of status codes to accept. */
@@ -1192,42 +897,22 @@ export interface ResponseStatusCode {
   /** A status code to accept. */
   statusValue?: number;
 }
-const ResponseStatusCode = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ResponseStatusCode>;
-
 export type ResponseStatusCodeList = Array<ResponseStatusCode>;
-const ResponseStatusCodeList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ResponseStatusCodeList>;
-
 export type ServiceAgentAuthenticationTypeEnum =
   | "SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED"
   | "OIDC_TOKEN";
-const ServiceAgentAuthenticationTypeEnum = S.String;
-
 /** Contains information needed for generating either an OpenID Connect token (https://developers.google.com/identity/protocols/OpenIDConnect) or OAuth token (https://developers.google.com/identity/protocols/oauth2). The token will be generated for the Monitoring service agent service account. */
 export interface ServiceAgentAuthentication {
   /** Type of authentication. */
   type?: ServiceAgentAuthenticationTypeEnum | (string & {});
 }
-const ServiceAgentAuthentication = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ServiceAgentAuthentication>;
-
 export type HttpCheckRequestMethodEnum = "METHOD_UNSPECIFIED" | "GET" | "POST";
-const HttpCheckRequestMethodEnum = S.String;
-
 export type HttpCheckContentTypeEnum = "TYPE_UNSPECIFIED" | "URL_ENCODED" | "USER_PROVIDED";
-const HttpCheckContentTypeEnum = S.String;
-
 /** Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain. */
 export interface PingConfig {
   /** Number of ICMP pings. A maximum of 3 ICMP pings is currently supported. */
   pingsCount?: number;
 }
-const PingConfig = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<PingConfig>;
-
 /** The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks. */
 export interface BasicAuthentication {
   /** The username to use when authenticating with the HTTP server. */
@@ -1235,8 +920,6 @@ export interface BasicAuthentication {
   /** The password to use when authenticating with the HTTP server. */
   password?: string;
 }
-const BasicAuthentication = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<BasicAuthentication>;
-
 /** Information involved in an HTTP/HTTPS Uptime check request. */
 export interface HttpCheck {
   /** If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299. */
@@ -1268,17 +951,11 @@ export interface HttpCheck {
   /** A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set. */
   customContentType?: string;
 }
-const HttpCheck = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<HttpCheck>;
-
 export type UptimeCheckConfigCheckerTypeEnum =
   | "CHECKER_TYPE_UNSPECIFIED"
   | "STATIC_IP_CHECKERS"
   | "VPC_CHECKERS";
-const UptimeCheckConfigCheckerTypeEnum = S.String;
-
 export type InternalCheckerStateEnum = "UNSPECIFIED" | "CREATING" | "RUNNING";
-const InternalCheckerStateEnum = S.String;
-
 /** An internal checker allows Uptime checks to run on private/internal GCP resources. */
 export interface InternalChecker {
   /** The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project. */
@@ -1294,11 +971,7 @@ export interface InternalChecker {
   /** The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified. */
   gcpZone?: string;
 }
-const InternalChecker = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<InternalChecker>;
-
 export type InternalCheckerList = Array<InternalChecker>;
-const InternalCheckerList = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<InternalCheckerList>;
-
 /** Information required for a TCP Uptime check request. */
 export interface TcpCheck {
   /** The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required. */
@@ -1306,14 +979,10 @@ export interface TcpCheck {
   /** Contains information needed to add pings to a TCP check. */
   pingConfig?: PingConfig;
 }
-const TcpCheck = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TcpCheck>;
-
 export type ResourceGroupResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "INSTANCE"
   | "AWS_ELB_LOAD_BALANCER";
-const ResourceGroupResourceTypeEnum = S.String;
-
 /** The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored. */
 export interface ResourceGroup {
   /** The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]. */
@@ -1321,8 +990,6 @@ export interface ResourceGroup {
   /** The resource type of the group members. */
   resourceType?: ResourceGroupResourceTypeEnum | (string & {});
 }
-const ResourceGroup = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ResourceGroup>;
-
 /** This message configures which resources and services to monitor for availability. */
 export interface UptimeCheckConfig {
   /** The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions. */
@@ -1360,30 +1027,18 @@ export interface UptimeCheckConfig {
   /** A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required. */
   displayName?: string;
 }
-const UptimeCheckConfig = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<UptimeCheckConfig>;
-
 export interface CreateProjectsUptimeCheckConfigsRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the Uptime check. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   parent: string;
   /** Request body */
   body?: UptimeCheckConfig;
 }
-const CreateProjectsUptimeCheckConfigsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateProjectsUptimeCheckConfigsRequest>;
-
 export interface CreateServiceProjectsTimeSeriesRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   name: string;
   /** Request body */
   body?: CreateTimeSeriesRequest;
 }
-const CreateServiceProjectsTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateServiceProjectsTimeSeriesRequest>;
-
 /** Cloud Run service. Learn more at https://cloud.google.com/run. */
 export interface CloudRun {
   /** The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision). */
@@ -1391,15 +1046,11 @@ export interface CloudRun {
   /** The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision). */
   location?: string;
 }
-const CloudRun = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<CloudRun>;
-
 /** Configuration for how to query telemetry on a Service. */
 export interface Telemetry {
   /** The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names. */
   resourceName?: string;
 }
-const Telemetry = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<Telemetry>;
-
 /** Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type. */
 export interface ClusterIstio {
   /** The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources. */
@@ -1411,8 +1062,6 @@ export interface ClusterIstio {
   /** The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics. */
   serviceNamespace?: string;
 }
-const ClusterIstio = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ClusterIstio>;
-
 /** Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type. */
 export interface MeshIstio {
   /** The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics. */
@@ -1422,15 +1071,11 @@ export interface MeshIstio {
   /** The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics. */
   serviceNamespace?: string;
 }
-const MeshIstio = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<MeshIstio>;
-
 /** Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints. */
 export interface CloudEndpoints {
   /** The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api). */
   service?: string;
 }
-const CloudEndpoints = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CloudEndpoints>;
-
 /** A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli). */
 export interface BasicService {
   /** The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli). */
@@ -1438,12 +1083,8 @@ export interface BasicService {
   /** Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli). */
   serviceLabels?: StringMap;
 }
-const BasicService = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<BasicService>;
-
 /** Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service. */
 export interface Custom {}
-const Custom = Empty as any as S.Schema<Custom>;
-
 /** GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service). */
 export interface GkeService {
   /** The name of the parent namespace. */
@@ -1457,8 +1098,6 @@ export interface GkeService {
   /** The location of the parent cluster. This may be a zone or region. */
   location?: string;
 }
-const GkeService = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GkeService>;
-
 /** A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod). */
 export interface GkeWorkload {
   /** The type of this workload (for example, "Deployment" or "DaemonSet") */
@@ -1474,15 +1113,11 @@ export interface GkeWorkload {
   /** The name of this workload. */
   topLevelControllerName?: string;
 }
-const GkeWorkload = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GkeWorkload>;
-
 /** App Engine service. Learn more at https://cloud.google.com/appengine. */
 export interface AppEngine {
   /** The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app). */
   moduleId?: string;
 }
-const AppEngine = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<AppEngine>;
-
 /** GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod). */
 export interface GkeNamespace {
   /** Output only. The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself. */
@@ -1494,8 +1129,6 @@ export interface GkeNamespace {
   /** The name of the parent cluster. */
   clusterName?: string;
 }
-const GkeNamespace = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GkeNamespace>;
-
 /** Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type. */
 export interface IstioCanonicalService {
   /** Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio). */
@@ -1505,11 +1138,6 @@ export interface IstioCanonicalService {
   /** The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio). */
   canonicalService?: string;
 }
-const IstioCanonicalService = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<IstioCanonicalService>;
-
 /** A Service is a discrete, autonomous, and network-accessible unit, designed to solve an individual concern (Wikipedia (https://en.wikipedia.org/wiki/Service-orientation)). In Cloud Monitoring, a Service acts as the root resource under which operational aspects of the service are accessible. */
 export interface Service {
   /** Type used for Cloud Run services. */
@@ -1543,8 +1171,6 @@ export interface Service {
   /** Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/) */
   istioCanonicalService?: IstioCanonicalService;
 }
-const Service = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<Service>;
-
 export interface CreateServicesRequest {
   /** Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+ */
   serviceId?: string;
@@ -1553,11 +1179,6 @@ export interface CreateServicesRequest {
   /** Request body */
   body?: Service;
 }
-const CreateServicesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreateServicesRequest>;
-
 /** Future parameters for the availability SLI. */
 export type AvailabilityCriteria = Custom;
 /** Parameters for a latency threshold SLI. */
@@ -1565,8 +1186,6 @@ export interface LatencyCriteria {
   /** Good service is defined to be the count of requests made to this service that return in no more than threshold. */
   threshold?: string;
 }
-const LatencyCriteria = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<LatencyCriteria>;
-
 /** An SLI measuring performance on a well-known service type. Performance will be computed on the basis of pre-defined metrics. The type of the service_resource determines the metrics to use and the service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down to just the data relevant to this service. */
 export interface BasicSli {
   /** Good service is defined to be the count of requests made to this service that return successfully. */
@@ -1580,8 +1199,6 @@ export interface BasicSli {
   /** Good service is defined to be the count of requests made to this service that are fast enough with respect to latency.threshold. */
   latency?: LatencyCriteria;
 }
-const BasicSli = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<BasicSli>;
-
 /** Range of numerical values within min and max. */
 export interface GoogleMonitoringV3Range {
   /** Range maximum. */
@@ -1589,11 +1206,6 @@ export interface GoogleMonitoringV3Range {
   /** Range minimum. */
   min?: number;
 }
-const GoogleMonitoringV3Range = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GoogleMonitoringV3Range>;
-
 /** A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE. */
 export interface MetricRange {
   /** A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality. */
@@ -1601,8 +1213,6 @@ export interface MetricRange {
   /** Range of values considered "good." For a one-sided range, set one bound to an infinite value. */
   range?: GoogleMonitoringV3Range;
 }
-const MetricRange = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<MetricRange>;
-
 /** A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed. */
 export interface TimeSeriesRatio {
   /** A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. */
@@ -1612,8 +1222,6 @@ export interface TimeSeriesRatio {
   /** A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. */
   badServiceFilter?: string;
 }
-const TimeSeriesRatio = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<TimeSeriesRatio>;
-
 /** A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max. */
 export interface DistributionCut {
   /** A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. */
@@ -1621,8 +1229,6 @@ export interface DistributionCut {
   /** Range of values considered "good." For a one-sided range, set one bound to an infinite value. */
   range?: GoogleMonitoringV3Range;
 }
-const DistributionCut = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<DistributionCut>;
-
 /** Service Level Indicators for which atomic units of service are counted directly. */
 export interface RequestBasedSli {
   /** good_total_ratio is used when the ratio of good_service to total_service is computed from two TimeSeries. */
@@ -1630,8 +1236,6 @@ export interface RequestBasedSli {
   /** distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution. */
   distributionCut?: DistributionCut;
 }
-const RequestBasedSli = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<RequestBasedSli>;
-
 /** A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance. */
 export interface PerformanceThreshold {
   /** BasicSli to evaluate to judge window quality. */
@@ -1641,11 +1245,6 @@ export interface PerformanceThreshold {
   /** RequestBasedSli to evaluate to judge window quality. */
   performance?: RequestBasedSli;
 }
-const PerformanceThreshold = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<PerformanceThreshold>;
-
 /** A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion. */
 export interface WindowsBasedSli {
   /** Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s. */
@@ -1659,8 +1258,6 @@ export interface WindowsBasedSli {
   /** A window is good if its performance is high enough. */
   goodTotalRatioThreshold?: PerformanceThreshold;
 }
-const WindowsBasedSli = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<WindowsBasedSli>;
-
 /** A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An SLI is defined to be good_service / total_service over any queried time interval. The value of performance always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or counting time windows in which the service complies with a criterion. For separation of concerns, a single Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of successful queries or fast-enough queries. */
 export interface ServiceLevelIndicator {
   /** Basic SLI on a well-known service type. */
@@ -1670,11 +1267,6 @@ export interface ServiceLevelIndicator {
   /** Request-based SLIs */
   requestBased?: RequestBasedSli;
 }
-const ServiceLevelIndicator = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ServiceLevelIndicator>;
-
 export type ServiceLevelObjectiveCalendarPeriodEnum =
   | "CALENDAR_PERIOD_UNSPECIFIED"
   | "DAY"
@@ -1684,8 +1276,6 @@ export type ServiceLevelObjectiveCalendarPeriodEnum =
   | "QUARTER"
   | "HALF"
   | "YEAR";
-const ServiceLevelObjectiveCalendarPeriodEnum = S.String;
-
 /** A Service-Level Objective (SLO) describes a level of desired good service. It consists of a service-level indicator (SLI), a performance goal, and a period over which the objective is to be evaluated against that goal. The SLO can use SLIs defined in a number of different manners. Typical SLOs might include "99% of requests in each rolling week have latency below 200 milliseconds" or "99.5% of requests in each calendar month return successfully." */
 export interface ServiceLevelObjective {
   /** The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality. */
@@ -1703,11 +1293,6 @@ export interface ServiceLevelObjective {
   /** A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days. */
   rollingPeriod?: string;
 }
-const ServiceLevelObjective = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ServiceLevelObjective>;
-
 export interface CreateServicesServiceLevelObjectivesRequest {
   /** Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$ */
   serviceLevelObjectiveId?: string;
@@ -1716,99 +1301,47 @@ export interface CreateServicesServiceLevelObjectivesRequest {
   /** Request body */
   body?: ServiceLevelObjective;
 }
-const CreateServicesServiceLevelObjectivesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<CreateServicesServiceLevelObjectivesRequest>;
-
 export interface DeleteProjectsAlertPoliciesRequest {
   /** Required. The alerting policy to delete. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] For more information, see AlertPolicy. */
   name: string;
 }
-const DeleteProjectsAlertPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeleteProjectsAlertPoliciesRequest>;
-
 export interface DeleteProjectsGroupsRequest {
   /** Required. The group to delete. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] */
   name: string;
   /** If this field is true, then the request means to delete a group with all its descendants. Otherwise, the request means to delete a group only when it has no descendants. The default value is false. */
   recursive?: boolean;
 }
-const DeleteProjectsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DeleteProjectsGroupsRequest>;
-
 export interface DeleteProjectsMetricDescriptorsRequest {
   /** Required. The metric descriptor on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example of [METRIC_ID] is: "custom.googleapis.com/my_test_metric". */
   name: string;
 }
-const DeleteProjectsMetricDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DeleteProjectsMetricDescriptorsRequest>;
-
 export interface DeleteProjectsNotificationChannelsRequest {
   /** If true, the notification channel will be deleted regardless of its use in alert policies (the policies will be updated to remove the channel). If false, this operation will fail if the notification channel is referenced by existing alerting policies. */
   force?: boolean;
   /** Required. The channel for which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] */
   name: string;
 }
-const DeleteProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DeleteProjectsNotificationChannelsRequest>;
-
 export interface DeleteProjectsUptimeCheckConfigsRequest {
   /** Required. The Uptime check configuration to delete. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] */
   name: string;
 }
-const DeleteProjectsUptimeCheckConfigsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<DeleteProjectsUptimeCheckConfigsRequest>;
-
 export interface DeleteServicesRequest {
   /** Required. Resource name of the Service to delete. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] */
   name: string;
 }
-const DeleteServicesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DeleteServicesRequest>;
-
 export interface DeleteServicesServiceLevelObjectivesRequest {
   /** Required. Resource name of the ServiceLevelObjective to delete. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] */
   name: string;
 }
-const DeleteServicesServiceLevelObjectivesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<DeleteServicesServiceLevelObjectivesRequest>;
-
 export interface GetProjectsAlertPoliciesRequest {
   /** Required. The alerting policy to retrieve. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] */
   name: string;
 }
-const GetProjectsAlertPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetProjectsAlertPoliciesRequest>;
-
 export interface GetProjectsAlertsRequest {
   /** Required. The name of the alert.The format is: projects/[PROJECT_ID_OR_NUMBER]/alerts/[ALERT_ID] The [ALERT_ID] is a system-assigned unique identifier for the alert. */
   name: string;
 }
-const GetProjectsAlertsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetProjectsAlertsRequest>;
-
 export type PolicySnapshotSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "ERROR" | "WARNING";
-const PolicySnapshotSeverityEnum = S.String;
-
 /** The state of the policy at the time the alert was generated. */
 export interface PolicySnapshot {
   /** The severity of the alert policy. */
@@ -1820,18 +1353,12 @@ export interface PolicySnapshot {
   /** The name of the alert policy resource. In the form of "projects/PROJECT_ID_OR_NUMBER/alertPolicies/ALERT_POLICY_ID". */
   name?: string;
 }
-const PolicySnapshot = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<PolicySnapshot>;
-
 /** Information about the log for log-based alerts. */
 export interface LogMetadata {
   /** The labels extracted from the log. */
   extractedLabels?: StringMap;
 }
-const LogMetadata = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<LogMetadata>;
-
 export type AlertStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED";
-const AlertStateEnum = S.String;
-
 /** An alert is the representation of a violation of an alert policy. It is a read-only resource that cannot be modified by the accompanied API. */
 export interface Alert {
   /** The monitored resource type and any monitored resource labels preserved from the incident's generating condition. */
@@ -1853,35 +1380,18 @@ export interface Alert {
   /** The metric type and any metric labels preserved from the incident's generating condition. */
   metric?: Metric;
 }
-const Alert = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Alert>;
-
 export interface GetProjectsGroupsRequest {
   /** Required. The group to retrieve. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] */
   name: string;
 }
-const GetProjectsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetProjectsGroupsRequest>;
-
 export interface GetProjectsMetricDescriptorsRequest {
   /** Required. The metric descriptor on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example value of [METRIC_ID] is "compute.googleapis.com/instance/disk/read_bytes_count". */
   name: string;
 }
-const GetProjectsMetricDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetProjectsMetricDescriptorsRequest>;
-
 export interface GetProjectsMonitoredResourceDescriptorsRequest {
   /** Required. The monitored resource descriptor to get. The format is: projects/[PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE] The [RESOURCE_TYPE] is a predefined type, such as cloudsql_database. */
   name: string;
 }
-const GetProjectsMonitoredResourceDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetProjectsMonitoredResourceDescriptorsRequest>;
-
 export type MonitoredResourceDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -1891,8 +1401,6 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const MonitoredResourceDescriptorLaunchStageEnum = S.String;
-
 /** An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM instances.Different APIs can support different monitored resource types. APIs generally provide a list method that returns the monitored resource descriptors used by the API. */
 export interface MonitoredResourceDescriptor {
   /** Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels "database_id" and "zone". */
@@ -1908,29 +1416,16 @@ export interface MonitoredResourceDescriptor {
   /** Optional. A detailed description of the monitored resource type that might be used in documentation. */
   description?: string;
 }
-const MonitoredResourceDescriptor = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<MonitoredResourceDescriptor>;
-
 export interface GetProjectsNotificationChannelDescriptorsRequest {
   /** Required. The channel type for which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[CHANNEL_TYPE] */
   name: string;
 }
-const GetProjectsNotificationChannelDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetProjectsNotificationChannelDescriptorsRequest>;
-
 export type NotificationChannelDescriptorSupportedTiersItemEnum =
   | "SERVICE_TIER_UNSPECIFIED"
   | "SERVICE_TIER_BASIC"
   | "SERVICE_TIER_PREMIUM";
 export type NotificationChannelDescriptorSupportedTiersItemEnumList =
   Array<NotificationChannelDescriptorSupportedTiersItemEnum>;
-const NotificationChannelDescriptorSupportedTiersItemEnumList =
-  AlertStrategyNotificationPromptsItemEnumList as any as S.Schema<NotificationChannelDescriptorSupportedTiersItemEnumList>;
-
 export type NotificationChannelDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -1940,8 +1435,6 @@ export type NotificationChannelDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const NotificationChannelDescriptorLaunchStageEnum = S.String;
-
 /** A description of a notification channel. The descriptor includes the properties of the channel and the set of labels or fields that must be specified to configure channels of a given type. */
 export interface NotificationChannelDescriptor {
   /** The tiers that support this notification channel; the project service tier must be one of the supported_tiers. */
@@ -1959,79 +1452,40 @@ export interface NotificationChannelDescriptor {
   /** The type of notification channel, such as "email" and "sms". To view the full list of channels, see Channel descriptors (https://cloud.google.com/monitoring/alerts/using-channels-api#ncd). Notification channel types are globally unique. */
   type?: string;
 }
-const NotificationChannelDescriptor = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<NotificationChannelDescriptor>;
-
 export interface GetProjectsNotificationChannelsRequest {
   /** Required. The channel for which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] */
   name: string;
 }
-const GetProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetProjectsNotificationChannelsRequest>;
-
 export interface GetProjectsSnoozesRequest {
   /** Required. The ID of the Snooze to retrieve. The format is: projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID] */
   name: string;
 }
-const GetProjectsSnoozesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetProjectsSnoozesRequest>;
-
 export interface GetProjectsUptimeCheckConfigsRequest {
   /** Required. The Uptime check configuration to retrieve. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] */
   name: string;
 }
-const GetProjectsUptimeCheckConfigsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetProjectsUptimeCheckConfigsRequest>;
-
 export interface GetServicesRequest {
   /** Required. Resource name of the Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] */
   name: string;
 }
-const GetServicesRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<GetServicesRequest>;
-
 export type GetServicesServiceLevelObjectivesViewEnum = "VIEW_UNSPECIFIED" | "FULL" | "EXPLICIT";
-const GetServicesServiceLevelObjectivesViewEnum = S.String;
-
 export interface GetServicesServiceLevelObjectivesRequest {
   /** Required. Resource name of the ServiceLevelObjective to get. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] */
   name: string;
   /** View of the ServiceLevelObjective to return. If DEFAULT, return the ServiceLevelObjective as originally defined. If EXPLICIT and the ServiceLevelObjective is defined in terms of a BasicSli, replace the BasicSli with a RequestBasedSli spelling out how the SLI is computed. */
   view?: GetServicesServiceLevelObjectivesViewEnum | (string & {});
 }
-const GetServicesServiceLevelObjectivesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetServicesServiceLevelObjectivesRequest>;
-
 /** The GetNotificationChannelVerificationCode request. */
 export interface GetNotificationChannelVerificationCodeRequest {
   /** The desired expiration time. If specified, the API will guarantee that the returned code will not be valid after the specified timestamp; however, the API cannot guarantee that the returned code will be valid for at least as long as the requested time (the API puts an upper bound on the amount of time for which a code may be valid). If omitted, a default expiration will be used, which may be less than the max permissible expiration (so specifying an expiration may extend the code's lifetime over omitting an expiration, even though the API does impose an upper limit on the maximum expiration that is permitted). */
   expireTime?: string;
 }
-const GetNotificationChannelVerificationCodeRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetNotificationChannelVerificationCodeRequest>;
-
 export interface GetVerificationCodeProjectsNotificationChannelsRequest {
   /** Required. The notification channel for which a verification code is to be generated and retrieved. This must name a channel that is already verified; if the specified channel is not verified, the request will fail. */
   name: string;
   /** Request body */
   body?: GetNotificationChannelVerificationCodeRequest;
 }
-const GetVerificationCodeProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetVerificationCodeProjectsNotificationChannelsRequest>;
-
 /** The GetNotificationChannelVerificationCode request. */
 export interface GetNotificationChannelVerificationCodeResponse {
   /** The verification code, which may be used to verify other channels that have an equivalent identity (i.e. other channels of the same type with the same fingerprint such as other email channels with the same email address or other sms channels with the same number). */
@@ -2039,11 +1493,6 @@ export interface GetNotificationChannelVerificationCodeResponse {
   /** The expiration time associated with the code that was returned. If an expiration was provided in the request, this is the minimum of the requested expiration in the request and the max permitted expiration. */
   expireTime?: string;
 }
-const GetNotificationChannelVerificationCodeResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetNotificationChannelVerificationCodeResponse>;
-
 export type ListFoldersTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -2064,8 +1513,6 @@ export type ListFoldersTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const ListFoldersTimeSeriesAggregation_perSeriesAlignerEnum = S.String;
-
 export type ListFoldersTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -2081,8 +1528,6 @@ export type ListFoldersTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const ListFoldersTimeSeriesAggregation_crossSeriesReducerEnum = S.String;
-
 export type ListFoldersTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -2103,8 +1548,6 @@ export type ListFoldersTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const ListFoldersTimeSeriesSecondaryAggregation_perSeriesAlignerEnum = S.String;
-
 export type ListFoldersTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -2120,11 +1563,7 @@ export type ListFoldersTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const ListFoldersTimeSeriesSecondaryAggregation_crossSeriesReducerEnum = S.String;
-
 export type ListFoldersTimeSeriesViewEnum = "FULL" | "HEADERS";
-const ListFoldersTimeSeriesViewEnum = S.String;
-
 export interface ListFoldersTimeSeriesRequest {
   /** Required. The end of the time interval. */
   "interval.endTime"?: string;
@@ -2167,14 +1606,7 @@ export interface ListFoldersTimeSeriesRequest {
   /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
   "secondaryAggregation.groupByFields"?: StringList;
 }
-const ListFoldersTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListFoldersTimeSeriesRequest>;
-
 export type StatusList = Array<Status>;
-const StatusList = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<StatusList>;
-
 /** The ListTimeSeries response. */
 export interface ListTimeSeriesResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -2188,11 +1620,6 @@ export interface ListTimeSeriesResponse {
   /** The unit in which all time_series point values are reported. unit follows the UCUM format for units as seen in https://unitsofmeasure.org/ucum.html. If different time_series have different units (for example, because they come from different metric types, or a unit is absent), then unit will be "{not_a_unit}". */
   unit?: string;
 }
-const ListTimeSeriesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListTimeSeriesResponse>;
-
 export type ListOrganizationsTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -2213,8 +1640,6 @@ export type ListOrganizationsTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const ListOrganizationsTimeSeriesAggregation_perSeriesAlignerEnum = S.String;
-
 export type ListOrganizationsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -2230,8 +1655,6 @@ export type ListOrganizationsTimeSeriesSecondaryAggregation_crossSeriesReducerEn
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const ListOrganizationsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum = S.String;
-
 export type ListOrganizationsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -2252,11 +1675,7 @@ export type ListOrganizationsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const ListOrganizationsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum = S.String;
-
 export type ListOrganizationsTimeSeriesViewEnum = "FULL" | "HEADERS";
-const ListOrganizationsTimeSeriesViewEnum = S.String;
-
 export type ListOrganizationsTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -2272,8 +1691,6 @@ export type ListOrganizationsTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const ListOrganizationsTimeSeriesAggregation_crossSeriesReducerEnum = S.String;
-
 export interface ListOrganizationsTimeSeriesRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID] */
   name: string;
@@ -2316,11 +1733,6 @@ export interface ListOrganizationsTimeSeriesRequest {
     | ListOrganizationsTimeSeriesAggregation_crossSeriesReducerEnum
     | (string & {});
 }
-const ListOrganizationsTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListOrganizationsTimeSeriesRequest>;
-
 export interface ListProjectsAlertPoliciesRequest {
   /** Optional. The maximum number of results to return in a single response. */
   pageSize?: number;
@@ -2333,14 +1745,7 @@ export interface ListProjectsAlertPoliciesRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose alert policies are to be listed. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting policies to be listed are stored. To retrieve a single alerting policy by name, use the GetAlertPolicy operation, instead. */
   name: string;
 }
-const ListProjectsAlertPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListProjectsAlertPoliciesRequest>;
-
 export type AlertPolicyList = Array<AlertPolicy>;
-const AlertPolicyList = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<AlertPolicyList>;
-
 /** The protocol for the ListAlertPolicies response. */
 export interface ListAlertPoliciesResponse {
   /** The returned alert policies. */
@@ -2350,11 +1755,6 @@ export interface ListAlertPoliciesResponse {
   /** The total number of alert policies in all pages. This number is only an estimate, and may change in subsequent pages. https://aip.dev/158 */
   totalSize?: number;
 }
-const ListAlertPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListAlertPoliciesResponse>;
-
 export interface ListProjectsAlertsRequest {
   /** Optional. An alert is returned if there is a match on any fields belonging to the alert or its subfields. */
   filter?: string;
@@ -2367,14 +1767,7 @@ export interface ListProjectsAlertsRequest {
   /** Optional. If non-empty, page_token must contain a value returned as the next_page_token in a previous response to request the next set of results. */
   pageToken?: string;
 }
-const ListProjectsAlertsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListProjectsAlertsRequest>;
-
 export type AlertList = Array<Alert>;
-const AlertList = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<AlertList>;
-
 /** The ListAlerts response. */
 export interface ListAlertsResponse {
   /** If not empty, indicates that there may be more results that match the request. Use the value in the page_token field in a subsequent request to fetch the next set of results. The token is encrypted and only guaranteed to return correct results for 72 hours after it is created. If empty, all results have been returned. */
@@ -2384,8 +1777,6 @@ export interface ListAlertsResponse {
   /** The estimated total number of matching results for this query. */
   totalSize?: number;
 }
-const ListAlertsResponse = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListAlertsResponse>;
-
 export interface ListProjectsGroupsRequest {
   /** A group name. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns the descendants of the specified group. This is a superset of the results returned by the children_of_group filter, and includes children-of-children, and so forth. */
   descendantsOfGroup?: string;
@@ -2400,14 +1791,7 @@ export interface ListProjectsGroupsRequest {
   /** A positive number that is the maximum number of results to return. */
   pageSize?: number;
 }
-const ListProjectsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListProjectsGroupsRequest>;
-
 export type GroupList = Array<Group>;
-const GroupList = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<GroupList>;
-
 /** The ListGroups response. */
 export interface ListGroupsResponse {
   /** The groups that match the specified filters. */
@@ -2415,8 +1799,6 @@ export interface ListGroupsResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
-const ListGroupsResponse = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ListGroupsResponse>;
-
 export interface ListProjectsGroupsMembersRequest {
   /** If this field is not empty then it must contain the next_page_token value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call. */
   pageToken?: string;
@@ -2431,17 +1813,7 @@ export interface ListProjectsGroupsMembersRequest {
   /** A positive number that is the maximum number of results to return. */
   pageSize?: number;
 }
-const ListProjectsGroupsMembersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListProjectsGroupsMembersRequest>;
-
 export type MonitoredResourceList = Array<MonitoredResource>;
-const MonitoredResourceList = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<MonitoredResourceList>;
-
 /** The ListGroupMembers response. */
 export interface ListGroupMembersResponse {
   /** The total number of elements matching this request. */
@@ -2451,11 +1823,6 @@ export interface ListGroupMembersResponse {
   /** A set of monitored resources in the group. */
   members?: MonitoredResourceList;
 }
-const ListGroupMembersResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListGroupMembersResponse>;
-
 export interface ListProjectsMetricDescriptorsRequest {
   /** Optional. If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call. */
   pageToken?: string;
@@ -2468,17 +1835,7 @@ export interface ListProjectsMetricDescriptorsRequest {
   /** Optional. If true, only metrics and monitored resource types that have recent data (within roughly 25 hours) will be included in the response. - If a metric descriptor enumerates monitored resource types, only the monitored resource types for which the metric type has recent data will be included in the returned metric descriptor, and if none of them have recent data, the metric descriptor will not be returned. - If a metric descriptor does not enumerate the compatible monitored resource types, it will be returned only if the metric type has recent data for some monitored resource type. The returned descriptor will not enumerate any monitored resource types. */
   activeOnly?: boolean;
 }
-const ListProjectsMetricDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListProjectsMetricDescriptorsRequest>;
-
 export type MetricDescriptorList = Array<MetricDescriptor>;
-const MetricDescriptorList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<MetricDescriptorList>;
-
 /** The ListMetricDescriptors response. */
 export interface ListMetricDescriptorsResponse {
   /** The metric descriptors that are available to the project and that match the value of filter, if present. */
@@ -2486,11 +1843,6 @@ export interface ListMetricDescriptorsResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
-const ListMetricDescriptorsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListMetricDescriptorsResponse>;
-
 export interface ListProjectsMonitoredResourceDescriptorsRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   name: string;
@@ -2501,17 +1853,7 @@ export interface ListProjectsMonitoredResourceDescriptorsRequest {
   /** An optional filter (https://cloud.google.com/monitoring/api/v3/filters) describing the descriptors to be returned. The filter can reference the descriptor's type and labels. For example, the following filter returns only Google Compute Engine descriptors that have an id label: resource.type = starts_with("gce_") AND resource.label:id */
   filter?: string;
 }
-const ListProjectsMonitoredResourceDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListProjectsMonitoredResourceDescriptorsRequest>;
-
 export type MonitoredResourceDescriptorList = Array<MonitoredResourceDescriptor>;
-const MonitoredResourceDescriptorList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<MonitoredResourceDescriptorList>;
-
 /** The ListMonitoredResourceDescriptors response. */
 export interface ListMonitoredResourceDescriptorsResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -2519,11 +1861,6 @@ export interface ListMonitoredResourceDescriptorsResponse {
   /** The monitored resource descriptors that are available to this project and that match filter, if present. */
   resourceDescriptors?: MonitoredResourceDescriptorList;
 }
-const ListMonitoredResourceDescriptorsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListMonitoredResourceDescriptorsResponse>;
-
 export interface ListProjectsNotificationChannelDescriptorsRequest {
   /** Required. The REST resource name of the parent from which to retrieve the notification channel descriptors. The expected syntax is: projects/[PROJECT_ID_OR_NUMBER] Note that this names (https://cloud.google.com/monitoring/api/v3#project_name) the parent container in which to look for the descriptors; to retrieve a single descriptor by name, use the GetNotificationChannelDescriptor operation, instead. */
   name: string;
@@ -2532,17 +1869,7 @@ export interface ListProjectsNotificationChannelDescriptorsRequest {
   /** If non-empty, page_token must contain a value returned as the next_page_token in a previous response to request the next set of results. */
   pageToken?: string;
 }
-const ListProjectsNotificationChannelDescriptorsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListProjectsNotificationChannelDescriptorsRequest>;
-
 export type NotificationChannelDescriptorList = Array<NotificationChannelDescriptor>;
-const NotificationChannelDescriptorList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<NotificationChannelDescriptorList>;
-
 /** The ListNotificationChannelDescriptors response. */
 export interface ListNotificationChannelDescriptorsResponse {
   /** If not empty, indicates that there may be more results that match the request. Use the value in the page_token field in a subsequent request to fetch the next set of results. If empty, all results have been returned. */
@@ -2550,11 +1877,6 @@ export interface ListNotificationChannelDescriptorsResponse {
   /** The monitored resource descriptors supported for the specified project, optionally filtered. */
   channelDescriptors?: NotificationChannelDescriptorList;
 }
-const ListNotificationChannelDescriptorsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListNotificationChannelDescriptorsResponse>;
-
 export interface ListProjectsNotificationChannelsRequest {
   /** Optional. The maximum number of results to return in a single response. If not set to a positive number, a reasonable value will be chosen by the service. */
   pageSize?: number;
@@ -2567,17 +1889,7 @@ export interface ListProjectsNotificationChannelsRequest {
   /** Optional. If provided, this field specifies the criteria that must be met by notification channels to be included in the response.For more details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering). */
   filter?: string;
 }
-const ListProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListProjectsNotificationChannelsRequest>;
-
 export type NotificationChannelList = Array<NotificationChannel>;
-const NotificationChannelList = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<NotificationChannelList>;
-
 /** The ListNotificationChannels response. */
 export interface ListNotificationChannelsResponse {
   /** The notification channels defined for the specified project. */
@@ -2587,11 +1899,6 @@ export interface ListNotificationChannelsResponse {
   /** The total number of notification channels in all pages. This number is only an estimate, and may change in subsequent pages. https://aip.dev/158 */
   totalSize?: number;
 }
-const ListNotificationChannelsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListNotificationChannelsResponse>;
-
 export interface ListProjectsSnoozesRequest {
   /** Optional. Optional filter to restrict results to the given criteria. The following fields are supported. interval.start_time interval.end_timeFor example: interval.start_time > "2022-03-11T00:00:00-08:00" AND interval.end_time < "2022-03-12T00:00:00-08:00" */
   filter?: string;
@@ -2602,14 +1909,7 @@ export interface ListProjectsSnoozesRequest {
   /** Optional. The next_page_token from a previous call to ListSnoozesRequest to get the next page of results. */
   pageToken?: string;
 }
-const ListProjectsSnoozesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<ListProjectsSnoozesRequest>;
-
 export type SnoozeList = Array<Snooze>;
-const SnoozeList = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<SnoozeList>;
-
 /** The results of a successful ListSnoozes call, containing the matching Snoozes. */
 export interface ListSnoozesResponse {
   /** Snoozes matching this list call. */
@@ -2617,8 +1917,6 @@ export interface ListSnoozesResponse {
   /** Page token for repeated calls to ListSnoozes, to fetch additional pages of results. If this is empty or missing, there are no more pages. */
   nextPageToken?: string;
 }
-const ListSnoozesResponse = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<ListSnoozesResponse>;
-
 export type ListProjectsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -2639,8 +1937,6 @@ export type ListProjectsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const ListProjectsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum = S.String;
-
 export type ListProjectsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -2656,8 +1952,6 @@ export type ListProjectsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const ListProjectsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum = S.String;
-
 export type ListProjectsTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -2678,11 +1972,7 @@ export type ListProjectsTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const ListProjectsTimeSeriesAggregation_perSeriesAlignerEnum = S.String;
-
 export type ListProjectsTimeSeriesViewEnum = "FULL" | "HEADERS";
-const ListProjectsTimeSeriesViewEnum = S.String;
-
 export type ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -2698,8 +1988,6 @@ export type ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum = S.String;
-
 export interface ListProjectsTimeSeriesRequest {
   /** Required. A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that specifies which time series should be returned. The filter must specify a single metric type, and can additionally specify metric labels and other information. For example: metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND metric.labels.instance_name = "my-instance-name" */
   filter?: string;
@@ -2742,11 +2030,6 @@ export interface ListProjectsTimeSeriesRequest {
     | ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum
     | (string & {});
 }
-const ListProjectsTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListProjectsTimeSeriesRequest>;
-
 export interface ListProjectsUptimeCheckConfigsRequest {
   /** If provided, this field specifies the criteria that must be met by uptime checks to be included in the response.For more details, see Filtering syntax (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering#filter_syntax). */
   filter?: string;
@@ -2757,17 +2040,7 @@ export interface ListProjectsUptimeCheckConfigsRequest {
   /** The maximum number of results to return in a single response. The server may further constrain the maximum number of results returned in a single page. If the page_size is <=0, the server will decide the number of results to be returned. */
   pageSize?: number;
 }
-const ListProjectsUptimeCheckConfigsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ListProjectsUptimeCheckConfigsRequest>;
-
 export type UptimeCheckConfigList = Array<UptimeCheckConfig>;
-const UptimeCheckConfigList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<UptimeCheckConfigList>;
-
 /** The protocol for the ListUptimeCheckConfigs response. */
 export interface ListUptimeCheckConfigsResponse {
   /** This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field). */
@@ -2777,11 +2050,6 @@ export interface ListUptimeCheckConfigsResponse {
   /** The total number of Uptime check configurations for the project, irrespective of any pagination. */
   totalSize?: number;
 }
-const ListUptimeCheckConfigsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListUptimeCheckConfigsResponse>;
-
 export interface ListServicesRequest {
   /** A non-negative number that is the maximum number of results to return. When 0, use default page size. */
   pageSize?: number;
@@ -2792,11 +2060,7 @@ export interface ListServicesRequest {
   /** A filter specifying what Services to return. The filter supports filtering on a particular service-identifier type or one of its attributes.To filter on a particular service-identifier type, the identifier_case refers to which option in the identifier field is populated. For example, the filter identifier_case = "CUSTOM" would match all services with a value for the custom field. Valid options include "CUSTOM", "APP_ENGINE", "MESH_ISTIO", and the other options listed at https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#ServiceTo filter on an attribute of a service-identifier type, apply the filter name by using the snake case of the service-identifier type and the attribute of that service-identifier type, and join the two with a period. For example, to filter by the meshUid field of the MeshIstio service-identifier type, you must filter on mesh_istio.mesh_uid = "123" to match all services with mesh UID "123". Service-identifier types and their attributes are described at https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#Service */
   filter?: string;
 }
-const ListServicesRequest = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<ListServicesRequest>;
-
 export type ServiceList = Array<Service>;
-const ServiceList = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<ServiceList>;
-
 /** The ListServices response. */
 export interface ListServicesResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -2804,14 +2068,7 @@ export interface ListServicesResponse {
   /** The Services matching the specified filter. */
   services?: ServiceList;
 }
-const ListServicesResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListServicesResponse>;
-
 export type ListServicesServiceLevelObjectivesViewEnum = "VIEW_UNSPECIFIED" | "FULL" | "EXPLICIT";
-const ListServicesServiceLevelObjectivesViewEnum = S.String;
-
 export interface ListServicesServiceLevelObjectivesRequest {
   /** Required. Resource name of the parent containing the listed SLOs, either a project or a Monitoring Metrics Scope. The formats are: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] workspaces/[HOST_PROJECT_ID_OR_NUMBER]/services/- */
   parent: string;
@@ -2824,17 +2081,7 @@ export interface ListServicesServiceLevelObjectivesRequest {
   /** If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call. */
   pageToken?: string;
 }
-const ListServicesServiceLevelObjectivesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListServicesServiceLevelObjectivesRequest>;
-
 export type ServiceLevelObjectiveList = Array<ServiceLevelObjective>;
-const ServiceLevelObjectiveList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ServiceLevelObjectiveList>;
-
 /** The ListServiceLevelObjectives response. */
 export interface ListServiceLevelObjectivesResponse {
   /** The ServiceLevelObjectives matching the specified filter. */
@@ -2842,22 +2089,12 @@ export interface ListServiceLevelObjectivesResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
-const ListServiceLevelObjectivesResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListServiceLevelObjectivesResponse>;
-
 export interface ListUptimeCheckIpsRequest {
   /** The maximum number of results to return in a single response. The server may further constrain the maximum number of results returned in a single page. If the page_size is <=0, the server will decide the number of results to be returned. NOTE: this field is not yet implemented */
   pageSize?: number;
   /** If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return more results from the previous method call. NOTE: this field is not yet implemented */
   pageToken?: string;
 }
-const ListUptimeCheckIpsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListUptimeCheckIpsRequest>;
-
 export type UptimeCheckIpRegionEnum =
   | "REGION_UNSPECIFIED"
   | "USA"
@@ -2867,8 +2104,6 @@ export type UptimeCheckIpRegionEnum =
   | "USA_OREGON"
   | "USA_IOWA"
   | "USA_VIRGINIA";
-const UptimeCheckIpRegionEnum = S.String;
-
 /** Contains the region, location, and list of IP addresses where checkers in the location run from. */
 export interface UptimeCheckIp {
   /** A broad region category in which the IP address is located. */
@@ -2878,11 +2113,7 @@ export interface UptimeCheckIp {
   /** A more specific location within the region that typically encodes a particular city/town/metro (and its containing state/province or country) within the broader umbrella region category. */
   location?: string;
 }
-const UptimeCheckIp = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<UptimeCheckIp>;
-
 export type UptimeCheckIpList = Array<UptimeCheckIp>;
-const UptimeCheckIpList = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<UptimeCheckIpList>;
-
 /** The protocol for the ListUptimeCheckIps response. */
 export interface ListUptimeCheckIpsResponse {
   /** This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field). NOTE: this field is not yet implemented */
@@ -2890,11 +2121,6 @@ export interface ListUptimeCheckIpsResponse {
   /** The returned list of IP addresses (including region and location) that the checkers run from. */
   uptimeCheckIps?: UptimeCheckIpList;
 }
-const ListUptimeCheckIpsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListUptimeCheckIpsResponse>;
-
 export interface PatchProjectsAlertPoliciesRequest {
   /** Optional. A list of alerting policy field names. If this field is not empty, each listed field in the existing alerting policy is set to the value of the corresponding field in the supplied policy (alert_policy), or to the field's default value if the field is not in the supplied alerting policy. Fields not listed retain their previous value.Examples of valid field masks include display_name, documentation, documentation.content, documentation.mime_type, user_labels, user_label.nameofkey, enabled, conditions, combiner, etc.If this field is empty, then the supplied alerting policy replaces the existing policy. It is the same as deleting the existing policy and adding the supplied policy, except for the following: The new policy will have the same [ALERT_POLICY_ID] as the former policy. This gives you continuity with the former policy in your notifications and incidents. Conditions in the new policy will keep their former [CONDITION_ID] if the supplied condition includes the name field with that [CONDITION_ID]. If the supplied condition omits the name field, then a new [CONDITION_ID] is created. */
   updateMask?: string;
@@ -2903,11 +2129,6 @@ export interface PatchProjectsAlertPoliciesRequest {
   /** Request body */
   body?: AlertPolicy;
 }
-const PatchProjectsAlertPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<PatchProjectsAlertPoliciesRequest>;
-
 export interface PatchProjectsNotificationChannelsRequest {
   /** Identifier. The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation. */
   name: string;
@@ -2916,11 +2137,6 @@ export interface PatchProjectsNotificationChannelsRequest {
   /** Request body */
   body?: NotificationChannel;
 }
-const PatchProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<PatchProjectsNotificationChannelsRequest>;
-
 export interface PatchProjectsSnoozesRequest {
   /** Required. Identifier. The name of the Snooze. The format is: projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID] The ID of the Snooze will be generated by the system. */
   name: string;
@@ -2929,11 +2145,6 @@ export interface PatchProjectsSnoozesRequest {
   /** Request body */
   body?: Snooze;
 }
-const PatchProjectsSnoozesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<PatchProjectsSnoozesRequest>;
-
 export interface PatchProjectsUptimeCheckConfigsRequest {
   /** Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response. */
   name: string;
@@ -2942,11 +2153,6 @@ export interface PatchProjectsUptimeCheckConfigsRequest {
   /** Request body */
   body?: UptimeCheckConfig;
 }
-const PatchProjectsUptimeCheckConfigsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<PatchProjectsUptimeCheckConfigsRequest>;
-
 export interface PatchServicesRequest {
   /** A set of field paths defining which fields to use for the update. */
   updateMask?: string;
@@ -2955,11 +2161,6 @@ export interface PatchServicesRequest {
   /** Request body */
   body?: Service;
 }
-const PatchServicesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<PatchServicesRequest>;
-
 export interface PatchServicesServiceLevelObjectivesRequest {
   /** Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] */
   name: string;
@@ -2968,11 +2169,6 @@ export interface PatchServicesServiceLevelObjectivesRequest {
   /** Request body */
   body?: ServiceLevelObjective;
 }
-const PatchServicesServiceLevelObjectivesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<PatchServicesServiceLevelObjectivesRequest>;
-
 /** The QueryTimeSeries request. For information about the status of Monitoring Query Language (MQL), see the MQL deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql). */
 export interface QueryTimeSeriesRequest {
   /** A positive number that is the maximum number of time_series_data to return. */
@@ -2982,25 +2178,13 @@ export interface QueryTimeSeriesRequest {
   /** Required. The query in the Monitoring Query Language (https://cloud.google.com/monitoring/mql/reference) format. The default time zone is in UTC. */
   query?: string;
 }
-const QueryTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<QueryTimeSeriesRequest>;
-
 export interface QueryProjectsTimeSeriesRequest {
   /** Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   name: string;
   /** Request body */
   body?: QueryTimeSeriesRequest;
 }
-const QueryProjectsTimeSeriesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<QueryProjectsTimeSeriesRequest>;
-
 export type TypedValueList = Array<TypedValue>;
-const TypedValueList = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<TypedValueList>;
-
 /** A point's value columns and time interval. Each point has one or more point values corresponding to the entries in point_descriptors field in the TimeSeriesDescriptor associated with this object. */
 export interface PointData {
   /** The values that make up the point. */
@@ -3008,11 +2192,7 @@ export interface PointData {
   /** The time interval associated with the point. */
   timeInterval?: TimeInterval;
 }
-const PointData = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<PointData>;
-
 export type PointDataList = Array<PointData>;
-const PointDataList = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<PointDataList>;
-
 /** A label value. */
 export interface LabelValue {
   /** An int64 label value. */
@@ -3022,11 +2202,7 @@ export interface LabelValue {
   /** A string label value. */
   stringValue?: string;
 }
-const LabelValue = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<LabelValue>;
-
 export type LabelValueList = Array<LabelValue>;
-const LabelValueList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<LabelValueList>;
-
 /** Represents the values of a time series associated with a TimeSeriesDescriptor. */
 export interface TimeSeriesData {
   /** The points in the time series. */
@@ -3034,18 +2210,12 @@ export interface TimeSeriesData {
   /** The values of the labels in the time series identifier, given in the same order as the label_descriptors field of the TimeSeriesDescriptor associated with this object. Each value must have a value of the type given in the corresponding entry of label_descriptors. */
   labelValues?: LabelValueList;
 }
-const TimeSeriesData = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<TimeSeriesData>;
-
 export type TimeSeriesDataList = Array<TimeSeriesData>;
-const TimeSeriesDataList = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<TimeSeriesDataList>;
-
 export type ValueDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
   | "CUMULATIVE";
-const ValueDescriptorMetricKindEnum = S.String;
-
 export type ValueDescriptorValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -3054,8 +2224,6 @@ export type ValueDescriptorValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
-const ValueDescriptorValueTypeEnum = S.String;
-
 /** A descriptor for the value columns in a data point. */
 export interface ValueDescriptor {
   /** The value stream kind. */
@@ -3067,11 +2235,7 @@ export interface ValueDescriptor {
   /** The value type. */
   valueType?: ValueDescriptorValueTypeEnum;
 }
-const ValueDescriptor = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<ValueDescriptor>;
-
 export type ValueDescriptorList = Array<ValueDescriptor>;
-const ValueDescriptorList = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<ValueDescriptorList>;
-
 /** A descriptor for the labels and points in a time series. */
 export interface TimeSeriesDescriptor {
   /** Descriptors for the labels. */
@@ -3079,11 +2243,6 @@ export interface TimeSeriesDescriptor {
   /** Descriptors for the point data value columns. */
   pointDescriptors?: ValueDescriptorList;
 }
-const TimeSeriesDescriptor = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<TimeSeriesDescriptor>;
-
 /** The QueryTimeSeries response. For information about the status of Monitoring Query Language (MQL), see the MQL deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql). */
 export interface QueryTimeSeriesResponse {
   /** Query execution errors that may have caused the time series data returned to be incomplete. The available data will be available in the response. */
@@ -3095,11 +2254,6 @@ export interface QueryTimeSeriesResponse {
   /** The descriptor for the time series data. */
   timeSeriesDescriptor?: TimeSeriesDescriptor;
 }
-const QueryTimeSeriesResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<QueryTimeSeriesResponse>;
-
 /** The SendNotificationChannelVerificationCode request. */
 export type SendNotificationChannelVerificationCodeRequest = Custom;
 export interface SendVerificationCodeProjectsNotificationChannelsRequest {
@@ -3108,11 +2262,6 @@ export interface SendVerificationCodeProjectsNotificationChannelsRequest {
   /** Request body */
   body?: Custom;
 }
-const SendVerificationCodeProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<SendVerificationCodeProjectsNotificationChannelsRequest>;
-
 export interface UpdateProjectsGroupsRequest {
   /** If true, validate this request but do not update the existing group. */
   validateOnly?: boolean;
@@ -3121,32 +2270,17 @@ export interface UpdateProjectsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-const UpdateProjectsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<UpdateProjectsGroupsRequest>;
-
 /** The VerifyNotificationChannel request. */
 export interface VerifyNotificationChannelRequest {
   /** Required. The verification code that was delivered to the channel as a result of invoking the SendNotificationChannelVerificationCode API method or that was retrieved from a verified channel via GetNotificationChannelVerificationCode. For example, one might have "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv" (in general, one is only guaranteed that the code is valid UTF-8; one should not make any assumptions regarding the structure or format of the code). */
   code?: string;
 }
-const VerifyNotificationChannelRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<VerifyNotificationChannelRequest>;
-
 export interface VerifyProjectsNotificationChannelsRequest {
   /** Required. The notification channel to verify. */
   name: string;
   /** Request body */
   body?: VerifyNotificationChannelRequest;
 }
-const VerifyProjectsNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<VerifyProjectsNotificationChannelsRequest>;
-
 export type CreateProjectsAlertPoliciesError =
   | NotFound
   | Forbidden
@@ -3160,8 +2294,8 @@ export const createProjectsAlertPolicies: API.OperationMethod<
   CreateProjectsAlertPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsAlertPoliciesRequest,
-  output: AlertPolicy,
+  input: __S(33, __c4, 1) as any as S.Schema<CreateProjectsAlertPoliciesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AlertPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3180,8 +2314,8 @@ export const createProjectsCollectdTimeSeries: API.OperationMethod<
   CreateProjectsCollectdTimeSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsCollectdTimeSeriesRequest,
-  output: CreateCollectdTimeSeriesResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<CreateProjectsCollectdTimeSeriesRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<CreateCollectdTimeSeriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3195,8 +2329,8 @@ export const createProjectsGroups: API.OperationMethod<
   CreateProjectsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsGroupsRequest,
-  output: Group,
+  input: __S(61, __c7, 5) as any as S.Schema<CreateProjectsGroupsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3215,8 +2349,8 @@ export const createProjectsMetricDescriptors: API.OperationMethod<
   CreateProjectsMetricDescriptorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsMetricDescriptorsRequest,
-  output: MetricDescriptor,
+  input: __S(67, __c8, 3) as any as S.Schema<CreateProjectsMetricDescriptorsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<MetricDescriptor>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3235,8 +2369,8 @@ export const createProjectsNotificationChannels: API.OperationMethod<
   CreateProjectsNotificationChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsNotificationChannelsRequest,
-  output: NotificationChannel,
+  input: __S(70, __c8, 6) as any as S.Schema<CreateProjectsNotificationChannelsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<NotificationChannel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3250,8 +2384,8 @@ export const createProjectsSnoozes: API.OperationMethod<
   CreateProjectsSnoozesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsSnoozesRequest,
-  output: Snooze,
+  input: __S(74, __c9, 2) as any as S.Schema<CreateProjectsSnoozesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<Snooze>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3270,8 +2404,8 @@ export const createProjectsTimeSeries: API.OperationMethod<
   CreateProjectsTimeSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTimeSeriesRequest,
-  output: Empty,
+  input: __S(81, __c10, 1) as any as S.Schema<CreateProjectsTimeSeriesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3290,8 +2424,8 @@ export const createProjectsUptimeCheckConfigs: API.OperationMethod<
   CreateProjectsUptimeCheckConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsUptimeCheckConfigsRequest,
-  output: UptimeCheckConfig,
+  input: __S(99, __c12, 3) as any as S.Schema<CreateProjectsUptimeCheckConfigsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UptimeCheckConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3310,8 +2444,8 @@ export const createServiceProjectsTimeSeries: API.OperationMethod<
   CreateServiceProjectsTimeSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceProjectsTimeSeriesRequest,
-  output: Empty,
+  input: __S(100, __c12, 4) as any as S.Schema<CreateServiceProjectsTimeSeriesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3325,8 +2459,8 @@ export const createServices: API.OperationMethod<
   CreateServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServicesRequest,
-  output: Service,
+  input: __S(113, __c14, 1) as any as S.Schema<CreateServicesRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3345,8 +2479,8 @@ export const createServicesServiceLevelObjectives: API.OperationMethod<
   CreateServicesServiceLevelObjectivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServicesServiceLevelObjectivesRequest,
-  output: ServiceLevelObjective,
+  input: __S(125, __c15, 5) as any as S.Schema<CreateServicesServiceLevelObjectivesRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<ServiceLevelObjective>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3365,8 +2499,8 @@ export const deleteProjectsAlertPolicies: API.OperationMethod<
   DeleteProjectsAlertPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsAlertPoliciesRequest,
-  output: Empty,
+  input: __S(126, __c15, 6) as any as S.Schema<DeleteProjectsAlertPoliciesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3380,8 +2514,8 @@ export const deleteProjectsGroups: API.OperationMethod<
   DeleteProjectsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsGroupsRequest,
-  output: Empty,
+  input: __S(127, __c15, 7) as any as S.Schema<DeleteProjectsGroupsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3400,8 +2534,8 @@ export const deleteProjectsMetricDescriptors: API.OperationMethod<
   DeleteProjectsMetricDescriptorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsMetricDescriptorsRequest,
-  output: Empty,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteProjectsMetricDescriptorsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3420,8 +2554,8 @@ export const deleteProjectsNotificationChannels: API.OperationMethod<
   DeleteProjectsNotificationChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsNotificationChannelsRequest,
-  output: Empty,
+  input: __S(129, __c16, 1) as any as S.Schema<DeleteProjectsNotificationChannelsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3440,8 +2574,8 @@ export const deleteProjectsUptimeCheckConfigs: API.OperationMethod<
   DeleteProjectsUptimeCheckConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsUptimeCheckConfigsRequest,
-  output: Empty,
+  input: __S(130, __c16, 2) as any as S.Schema<DeleteProjectsUptimeCheckConfigsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3455,8 +2589,8 @@ export const deleteServices: API.OperationMethod<
   DeleteServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServicesRequest,
-  output: Empty,
+  input: __S(131, __c16, 3) as any as S.Schema<DeleteServicesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3475,8 +2609,8 @@ export const deleteServicesServiceLevelObjectives: API.OperationMethod<
   DeleteServicesServiceLevelObjectivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServicesServiceLevelObjectivesRequest,
-  output: Empty,
+  input: __S(132, __c16, 4) as any as S.Schema<DeleteServicesServiceLevelObjectivesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3490,8 +2624,8 @@ export const getProjectsAlertPolicies: API.OperationMethod<
   GetProjectsAlertPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsAlertPoliciesRequest,
-  output: AlertPolicy,
+  input: __S(133, __c16, 5) as any as S.Schema<GetProjectsAlertPoliciesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AlertPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3505,8 +2639,8 @@ export const getProjectsAlerts: API.OperationMethod<
   GetProjectsAlertsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsAlertsRequest,
-  output: Alert,
+  input: __S(134, __c16, 6) as any as S.Schema<GetProjectsAlertsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<Alert>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3520,8 +2654,8 @@ export const getProjectsGroups: API.OperationMethod<
   GetProjectsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsGroupsRequest,
-  output: Group,
+  input: __S(138, __c17, 2) as any as S.Schema<GetProjectsGroupsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3535,8 +2669,8 @@ export const getProjectsMetricDescriptors: API.OperationMethod<
   GetProjectsMetricDescriptorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsMetricDescriptorsRequest,
-  output: MetricDescriptor,
+  input: __S(139, __c17, 3) as any as S.Schema<GetProjectsMetricDescriptorsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<MetricDescriptor>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3550,8 +2684,8 @@ export const getProjectsMonitoredResourceDescriptors: API.OperationMethod<
   GetProjectsMonitoredResourceDescriptorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsMonitoredResourceDescriptorsRequest,
-  output: MonitoredResourceDescriptor,
+  input: __S(140, __c17, 4) as any as S.Schema<GetProjectsMonitoredResourceDescriptorsRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<MonitoredResourceDescriptor>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3565,8 +2699,8 @@ export const getProjectsNotificationChannelDescriptors: API.OperationMethod<
   GetProjectsNotificationChannelDescriptorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsNotificationChannelDescriptorsRequest,
-  output: NotificationChannelDescriptor,
+  input: __S(142, __c17, 6) as any as S.Schema<GetProjectsNotificationChannelDescriptorsRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<NotificationChannelDescriptor>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3580,8 +2714,8 @@ export const getProjectsNotificationChannels: API.OperationMethod<
   GetProjectsNotificationChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsNotificationChannelsRequest,
-  output: NotificationChannel,
+  input: __S(144, __c18, 0) as any as S.Schema<GetProjectsNotificationChannelsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<NotificationChannel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3595,8 +2729,8 @@ export const getProjectsSnoozes: API.OperationMethod<
   GetProjectsSnoozesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsSnoozesRequest,
-  output: Snooze,
+  input: __S(145, __c18, 1) as any as S.Schema<GetProjectsSnoozesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<Snooze>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3610,8 +2744,8 @@ export const getProjectsUptimeCheckConfigs: API.OperationMethod<
   GetProjectsUptimeCheckConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsUptimeCheckConfigsRequest,
-  output: UptimeCheckConfig,
+  input: __S(146, __c18, 2) as any as S.Schema<GetProjectsUptimeCheckConfigsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UptimeCheckConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3625,8 +2759,8 @@ export const getServices: API.OperationMethod<
   GetServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServicesRequest,
-  output: Service,
+  input: __S(147, __c18, 3) as any as S.Schema<GetServicesRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3640,8 +2774,8 @@ export const getServicesServiceLevelObjectives: API.OperationMethod<
   GetServicesServiceLevelObjectivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServicesServiceLevelObjectivesRequest,
-  output: ServiceLevelObjective,
+  input: __S(148, __c18, 4) as any as S.Schema<GetServicesServiceLevelObjectivesRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<ServiceLevelObjective>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3660,8 +2794,12 @@ export const getVerificationCodeProjectsNotificationChannels: API.OperationMetho
   GetVerificationCodeProjectsNotificationChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVerificationCodeProjectsNotificationChannelsRequest,
-  output: GetNotificationChannelVerificationCodeResponse,
+  input: __S(
+    150,
+    __c18,
+    6,
+  ) as any as S.Schema<GetVerificationCodeProjectsNotificationChannelsRequest>,
+  output: __S(151, __c18, 7) as any as S.Schema<GetNotificationChannelVerificationCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3676,8 +2814,8 @@ export const listFoldersTimeSeries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTimeSeriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersTimeSeriesRequest,
-  output: ListTimeSeriesResponse,
+  input: __S(152, __c19, 0) as any as S.Schema<ListFoldersTimeSeriesRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListTimeSeriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3693,8 +2831,8 @@ export const listOrganizationsTimeSeries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTimeSeriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsTimeSeriesRequest,
-  output: ListTimeSeriesResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<ListOrganizationsTimeSeriesRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListTimeSeriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3710,8 +2848,8 @@ export const listProjectsAlertPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAlertPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsAlertPoliciesRequest,
-  output: ListAlertPoliciesResponse,
+  input: __S(156, __c19, 4) as any as S.Schema<ListProjectsAlertPoliciesRequest>,
+  output: __S(158, __c19, 6) as any as S.Schema<ListAlertPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3727,8 +2865,8 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAlertsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsAlertsRequest,
-  output: ListAlertsResponse,
+  input: __S(159, __c19, 7) as any as S.Schema<ListProjectsAlertsRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListAlertsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3744,8 +2882,8 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsGroupsRequest,
-  output: ListGroupsResponse,
+  input: __S(162, __c20, 2) as any as S.Schema<ListProjectsGroupsRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<ListGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3761,8 +2899,8 @@ export const listProjectsGroupsMembers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGroupMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsGroupsMembersRequest,
-  output: ListGroupMembersResponse,
+  input: __S(165, __c20, 5) as any as S.Schema<ListProjectsGroupsMembersRequest>,
+  output: __S(167, __c20, 7) as any as S.Schema<ListGroupMembersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3778,8 +2916,8 @@ export const listProjectsMetricDescriptors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMetricDescriptorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsMetricDescriptorsRequest,
-  output: ListMetricDescriptorsResponse,
+  input: __S(168, __c21, 0) as any as S.Schema<ListProjectsMetricDescriptorsRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<ListMetricDescriptorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3795,8 +2933,8 @@ export const listProjectsMonitoredResourceDescriptors: API.PaginatedOperationMet
   GcpOpContext,
   ListMonitoredResourceDescriptorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsMonitoredResourceDescriptorsRequest,
-  output: ListMonitoredResourceDescriptorsResponse,
+  input: __S(171, __c21, 3) as any as S.Schema<ListProjectsMonitoredResourceDescriptorsRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<ListMonitoredResourceDescriptorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3812,8 +2950,8 @@ export const listProjectsNotificationChannelDescriptors: API.PaginatedOperationM
   GcpOpContext,
   ListNotificationChannelDescriptorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsNotificationChannelDescriptorsRequest,
-  output: ListNotificationChannelDescriptorsResponse,
+  input: __S(174, __c21, 6) as any as S.Schema<ListProjectsNotificationChannelDescriptorsRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<ListNotificationChannelDescriptorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3829,8 +2967,8 @@ export const listProjectsNotificationChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNotificationChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsNotificationChannelsRequest,
-  output: ListNotificationChannelsResponse,
+  input: __S(177, __c22, 1) as any as S.Schema<ListProjectsNotificationChannelsRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListNotificationChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3846,8 +2984,8 @@ export const listProjectsSnoozes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSnoozesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsSnoozesRequest,
-  output: ListSnoozesResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<ListProjectsSnoozesRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<ListSnoozesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3863,8 +3001,8 @@ export const listProjectsTimeSeries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTimeSeriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTimeSeriesRequest,
-  output: ListTimeSeriesResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<ListProjectsTimeSeriesRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListTimeSeriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3880,8 +3018,8 @@ export const listProjectsUptimeCheckConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUptimeCheckConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsUptimeCheckConfigsRequest,
-  output: ListUptimeCheckConfigsResponse,
+  input: __S(184, __c23, 0) as any as S.Schema<ListProjectsUptimeCheckConfigsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListUptimeCheckConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3897,8 +3035,8 @@ export const listServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesRequest,
-  output: ListServicesResponse,
+  input: __S(187, __c23, 3) as any as S.Schema<ListServicesRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<ListServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3914,8 +3052,8 @@ export const listServicesServiceLevelObjectives: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServiceLevelObjectivesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesServiceLevelObjectivesRequest,
-  output: ListServiceLevelObjectivesResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<ListServicesServiceLevelObjectivesRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<ListServiceLevelObjectivesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3931,8 +3069,8 @@ export const listUptimeCheckIps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUptimeCheckIpsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUptimeCheckIpsRequest,
-  output: ListUptimeCheckIpsResponse,
+  input: __S(193, __c24, 1) as any as S.Schema<ListUptimeCheckIpsRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<ListUptimeCheckIpsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3952,8 +3090,8 @@ export const patchProjectsAlertPolicies: API.OperationMethod<
   PatchProjectsAlertPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsAlertPoliciesRequest,
-  output: AlertPolicy,
+  input: __S(197, __c24, 5) as any as S.Schema<PatchProjectsAlertPoliciesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AlertPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3972,8 +3110,8 @@ export const patchProjectsNotificationChannels: API.OperationMethod<
   PatchProjectsNotificationChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsNotificationChannelsRequest,
-  output: NotificationChannel,
+  input: __S(198, __c24, 6) as any as S.Schema<PatchProjectsNotificationChannelsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<NotificationChannel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3987,8 +3125,8 @@ export const patchProjectsSnoozes: API.OperationMethod<
   PatchProjectsSnoozesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsSnoozesRequest,
-  output: Snooze,
+  input: __S(199, __c24, 7) as any as S.Schema<PatchProjectsSnoozesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<Snooze>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4007,8 +3145,8 @@ export const patchProjectsUptimeCheckConfigs: API.OperationMethod<
   PatchProjectsUptimeCheckConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsUptimeCheckConfigsRequest,
-  output: UptimeCheckConfig,
+  input: __S(200, __c25, 0) as any as S.Schema<PatchProjectsUptimeCheckConfigsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<UptimeCheckConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4022,8 +3160,8 @@ export const patchServices: API.OperationMethod<
   PatchServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchServicesRequest,
-  output: Service,
+  input: __S(201, __c25, 1) as any as S.Schema<PatchServicesRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Service>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4042,8 +3180,8 @@ export const patchServicesServiceLevelObjectives: API.OperationMethod<
   PatchServicesServiceLevelObjectivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchServicesServiceLevelObjectivesRequest,
-  output: ServiceLevelObjective,
+  input: __S(202, __c25, 2) as any as S.Schema<PatchServicesServiceLevelObjectivesRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<ServiceLevelObjective>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4062,8 +3200,8 @@ export const queryProjectsTimeSeries: API.OperationMethod<
   QueryProjectsTimeSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryProjectsTimeSeriesRequest,
-  output: QueryTimeSeriesResponse,
+  input: __S(204, __c25, 4) as any as S.Schema<QueryProjectsTimeSeriesRequest>,
+  output: __S(215, __c26, 7) as any as S.Schema<QueryTimeSeriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4082,8 +3220,12 @@ export const sendVerificationCodeProjectsNotificationChannels: API.OperationMeth
   SendVerificationCodeProjectsNotificationChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendVerificationCodeProjectsNotificationChannelsRequest,
-  output: Empty,
+  input: __S(
+    216,
+    __c27,
+    0,
+  ) as any as S.Schema<SendVerificationCodeProjectsNotificationChannelsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4097,8 +3239,8 @@ export const updateProjectsGroups: API.OperationMethod<
   UpdateProjectsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsGroupsRequest,
-  output: Group,
+  input: __S(217, __c27, 1) as any as S.Schema<UpdateProjectsGroupsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4117,8 +3259,8 @@ export const verifyProjectsNotificationChannels: API.OperationMethod<
   VerifyProjectsNotificationChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyProjectsNotificationChannelsRequest,
-  output: NotificationChannel,
+  input: __S(219, __c27, 3) as any as S.Schema<VerifyProjectsNotificationChannelsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<NotificationChannel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4142,11 +3284,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Link" });
     case 2:
-      return S.Array(Link);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(LinkList),
+          links: S.optional(__S(2, __c0, 2)),
           mimeType: S.optional(S.String),
           subject: S.optional(S.String),
           content: S.optional(S.String),
@@ -4155,11 +3297,11 @@ function __c0(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(5, __c0, 5)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -4175,14 +3317,14 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          notificationChannelNames: S.optional(StringList),
+          notificationChannelNames: S.optional(__S(8, __c1, 0)),
           renotifyInterval: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NotificationChannelStrategy",
       });
     case 2:
-      return S.Array(NotificationChannelStrategy);
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4190,30 +3332,30 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "NotificationRateLimit" });
     case 4:
-      return S.Array(AlertStrategyNotificationPromptsItemEnum);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           autoClose: S.optional(S.String),
-          notificationChannelStrategy: S.optional(NotificationChannelStrategyList),
-          notificationRateLimit: S.optional(NotificationRateLimit),
-          notificationPrompts: S.optional(AlertStrategyNotificationPromptsItemEnumList),
+          notificationChannelStrategy: S.optional(__S(10, __c1, 2)),
+          notificationRateLimit: S.optional(__S(11, __c1, 3)),
+          notificationPrompts: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "AlertStrategy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          labelExtractors: S.optional(StringMap),
+          labelExtractors: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "LogMatch" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          crossSeriesReducer: S.optional(AggregationCrossSeriesReducerEnum),
-          groupByFields: S.optional(StringList),
+          crossSeriesReducer: S.optional(S.String),
+          groupByFields: S.optional(__S(8, __c1, 0)),
           alignmentPeriod: S.optional(S.String),
-          perSeriesAligner: S.optional(AggregationPerSeriesAlignerEnum),
+          perSeriesAligner: S.optional(S.String),
         }),
       ).annotate({ identifier: "Aggregation" });
   }
@@ -4221,7 +3363,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Aggregation);
+      return S.Array(__S(15, __c1, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4233,9 +3375,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          aggregations: S.optional(AggregationList),
+          aggregations: S.optional(__S(16, __c2, 0)),
           duration: S.optional(S.String),
-          trigger: S.optional(Trigger),
+          trigger: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "MetricAbsence" });
     case 3:
@@ -4243,7 +3385,7 @@ function __c2(j: number): any {
         S.Struct({
           alertRule: S.optional(S.String),
           ruleGroup: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(7, __c0, 7)),
           disableMetricValidation: S.optional(S.Boolean),
           duration: S.optional(S.String),
           evaluationInterval: S.optional(S.String),
@@ -4271,7 +3413,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           periodicity: S.optional(S.Number),
-          executionTime: S.optional(TimeOfDay),
+          executionTime: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "Daily" });
     case 7:
@@ -4287,7 +3429,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          comparison: S.optional(RowCountTestComparisonEnum),
+          comparison: S.optional(S.String),
           threshold: S.optional(S.String),
         }),
       ).annotate({ identifier: "RowCountTest" });
@@ -4301,23 +3443,21 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          booleanTest: S.optional(BooleanTest),
+          booleanTest: S.optional(__S(20, __c2, 4)),
           query: S.optional(S.String),
-          daily: S.optional(Daily),
-          minutes: S.optional(Minutes),
-          rowCountTest: S.optional(RowCountTest),
-          hourly: S.optional(Hourly),
+          daily: S.optional(__S(22, __c2, 6)),
+          minutes: S.optional(__S(23, __c2, 7)),
+          rowCountTest: S.optional(__S(24, __c3, 0)),
+          hourly: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "SqlCondition" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          trigger: S.optional(Trigger),
+          trigger: S.optional(__S(17, __c2, 1)),
           duration: S.optional(S.String),
-          evaluationMissingData: S.optional(
-            MonitoringQueryLanguageConditionEvaluationMissingDataEnum,
-          ),
+          evaluationMissingData: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MonitoringQueryLanguageCondition",
@@ -4332,32 +3472,32 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
-          aggregations: S.optional(AggregationList),
-          denominatorAggregations: S.optional(AggregationList),
-          evaluationMissingData: S.optional(MetricThresholdEvaluationMissingDataEnum),
+          aggregations: S.optional(__S(16, __c2, 0)),
+          denominatorAggregations: S.optional(__S(16, __c2, 0)),
+          evaluationMissingData: S.optional(S.String),
           denominatorFilter: S.optional(S.String),
           filter: S.optional(S.String),
-          comparison: S.optional(MetricThresholdComparisonEnum),
-          forecastOptions: S.optional(ForecastOptions),
+          comparison: S.optional(S.String),
+          forecastOptions: S.optional(__S(28, __c3, 4)),
           thresholdValue: S.optional(S.Number),
-          trigger: S.optional(Trigger),
+          trigger: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "MetricThreshold" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditionMatchedLog: S.optional(LogMatch),
-          conditionAbsent: S.optional(MetricAbsence),
+          conditionMatchedLog: S.optional(__S(14, __c1, 6)),
+          conditionAbsent: S.optional(__S(18, __c2, 2)),
           name: S.optional(S.String),
-          conditionPrometheusQueryLanguage: S.optional(PrometheusQueryLanguageCondition),
-          conditionSql: S.optional(SqlCondition),
+          conditionPrometheusQueryLanguage: S.optional(__S(19, __c2, 3)),
+          conditionSql: S.optional(__S(26, __c3, 2)),
           displayName: S.optional(S.String),
-          conditionMonitoringQueryLanguage: S.optional(MonitoringQueryLanguageCondition),
-          conditionThreshold: S.optional(MetricThreshold),
+          conditionMonitoringQueryLanguage: S.optional(__S(27, __c3, 3)),
+          conditionThreshold: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "Condition" });
     case 7:
-      return S.Array(Condition);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -4365,18 +3505,18 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mutationRecord: S.optional(MutationRecord),
+          mutationRecord: S.optional(__S(0, __c0, 0)),
           name: S.optional(S.String),
-          documentation: S.optional(Documentation),
-          severity: S.optional(AlertPolicySeverityEnum),
-          combiner: S.optional(AlertPolicyCombinerEnum),
-          validity: S.optional(Status),
-          userLabels: S.optional(StringMap),
+          documentation: S.optional(__S(3, __c0, 3)),
+          severity: S.optional(S.String),
+          combiner: S.optional(S.String),
+          validity: S.optional(__S(6, __c0, 6)),
+          userLabels: S.optional(__S(7, __c0, 7)),
           displayName: S.optional(S.String),
-          alertStrategy: S.optional(AlertStrategy),
-          conditions: S.optional(ConditionList),
-          creationRecord: S.optional(MutationRecord),
-          notificationChannels: S.optional(StringList),
+          alertStrategy: S.optional(__S(13, __c1, 5)),
+          conditions: S.optional(__S(31, __c3, 7)),
+          creationRecord: S.optional(__S(0, __c0, 0)),
+          notificationChannels: S.optional(__S(8, __c1, 0)),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AlertPolicy" });
@@ -4384,7 +3524,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AlertPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4399,7 +3539,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "MonitoredResource" });
     case 3:
@@ -4407,7 +3547,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bounds: S.optional(DoubleList),
+          bounds: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "Explicit" });
     case 5:
@@ -4429,9 +3569,9 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          explicitBuckets: S.optional(Explicit),
-          linearBuckets: S.optional(Linear),
-          exponentialBuckets: S.optional(Exponential),
+          explicitBuckets: S.optional(__S(36, __c4, 4)),
+          linearBuckets: S.optional(__S(37, __c4, 5)),
+          exponentialBuckets: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "BucketOptions" });
   }
@@ -4449,21 +3589,21 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
-          attachments: S.optional(DocumentMapList),
+          attachments: S.optional(__S(5, __c0, 5)),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Exemplar" });
     case 2:
-      return S.Array(Exemplar);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bucketCounts: S.optional(StringList),
+          bucketCounts: S.optional(__S(8, __c1, 0)),
           count: S.optional(S.String),
-          bucketOptions: S.optional(BucketOptions),
-          range: S.optional(Range),
+          bucketOptions: S.optional(__S(39, __c4, 7)),
+          range: S.optional(__S(40, __c5, 0)),
           mean: S.optional(S.Number),
-          exemplars: S.optional(ExemplarList),
+          exemplars: S.optional(__S(42, __c5, 2)),
           sumOfSquaredDeviation: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Distribution" });
@@ -4473,22 +3613,22 @@ function __c5(j: number): any {
           int64Value: S.optional(S.String),
           stringValue: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
-          distributionValue: S.optional(Distribution),
+          distributionValue: S.optional(__S(43, __c5, 3)),
           doubleValue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TypedValue" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(TypedValue),
-          dataSourceType: S.optional(CollectdValueDataSourceTypeEnum),
+          value: S.optional(__S(44, __c5, 4)),
+          dataSourceType: S.optional(S.String),
           dataSourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectdValue" });
     case 6:
-      return S.Array(CollectdValue);
+      return S.Array(__S(45, __c5, 5));
     case 7:
-      return S.Record(S.String, TypedValue);
+      return S.Record(S.String, __S(44, __c5, 4));
   }
 }
 function __c6(j: number): any {
@@ -4499,21 +3639,21 @@ function __c6(j: number): any {
           typeInstance: S.optional(S.String),
           type: S.optional(S.String),
           startTime: S.optional(S.String),
-          values: S.optional(CollectdValueList),
+          values: S.optional(__S(46, __c5, 6)),
           pluginInstance: S.optional(S.String),
           endTime: S.optional(S.String),
-          metadata: S.optional(TypedValueMap),
+          metadata: S.optional(__S(47, __c5, 7)),
           plugin: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectdPayload" });
     case 1:
-      return S.Array(CollectdPayload);
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(MonitoredResource),
+          resource: S.optional(__S(34, __c4, 2)),
           collectdVersion: S.optional(S.String),
-          collectdPayloads: S.optional(CollectdPayloadList),
+          collectdPayloads: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({
         identifier: "CreateCollectdTimeSeriesRequest",
@@ -4522,7 +3662,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CreateCollectdTimeSeriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4536,22 +3676,22 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
+          error: S.optional(__S(6, __c0, 6)),
           index: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CollectdValueError" });
     case 5:
-      return S.Array(CollectdValueError);
+      return S.Array(__S(52, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
-          valueErrors: S.optional(CollectdValueErrorList),
+          error: S.optional(__S(6, __c0, 6)),
+          valueErrors: S.optional(__S(53, __c6, 5)),
           index: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CollectdPayloadError" });
     case 7:
-      return S.Array(CollectdPayloadError);
+      return S.Array(__S(54, __c6, 6));
   }
 }
 function __c7(j: number): any {
@@ -4559,25 +3699,25 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(Status),
+          status: S.optional(__S(6, __c0, 6)),
           pointCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Monitoring_Error" });
     case 1:
-      return S.Array(Monitoring_Error);
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           successPointCount: S.optional(S.Number),
-          errors: S.optional(Monitoring_ErrorList),
+          errors: S.optional(__S(57, __c7, 1)),
           totalPointCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CreateTimeSeriesSummary" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          payloadErrors: S.optional(CollectdPayloadErrorList),
-          summary: S.optional(CreateTimeSeriesSummary),
+          payloadErrors: S.optional(__S(55, __c6, 7)),
+          summary: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "CreateCollectdTimeSeriesResponse",
@@ -4597,7 +3737,7 @@ function __c7(j: number): any {
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Group.pipe(T.HttpBody())),
+          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4613,49 +3753,47 @@ function __c7(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           key: S.optional(S.String),
-          valueType: S.optional(LabelDescriptorValueTypeEnum),
+          valueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelDescriptor" });
     case 7:
-      return S.Array(LabelDescriptor);
+      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          timeSeriesResourceHierarchyLevel: S.optional(
-            MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList,
-          ),
+          timeSeriesResourceHierarchyLevel: S.optional(__S(64, __c8, 0)),
           samplePeriod: S.optional(S.String),
           ingestDelay: S.optional(S.String),
-          launchStage: S.optional(MetricDescriptorMetadataLaunchStageEnum),
+          launchStage: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDescriptorMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          launchStage: S.optional(MetricDescriptorLaunchStageEnum),
+          launchStage: S.optional(S.String),
           unit: S.optional(S.String),
-          labels: S.optional(LabelDescriptorList),
+          labels: S.optional(__S(63, __c7, 7)),
           name: S.optional(S.String),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          metricKind: S.optional(MetricDescriptorMetricKindEnum),
-          valueType: S.optional(MetricDescriptorValueTypeEnum),
-          monitoredResourceTypes: S.optional(StringList),
-          metadata: S.optional(MetricDescriptorMetadata),
+          metricKind: S.optional(S.String),
+          valueType: S.optional(S.String),
+          monitoredResourceTypes: S.optional(__S(8, __c1, 0)),
+          metadata: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "MetricDescriptor" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(MetricDescriptor.pipe(T.HttpBody())),
+          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4667,27 +3805,27 @@ function __c8(j: number): any {
         identifier: "CreateProjectsMetricDescriptorsRequest",
       });
     case 4:
-      return S.Array(MutationRecord);
+      return S.Array(__S(0, __c0, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          creationRecord: S.optional(MutationRecord),
-          userLabels: S.optional(StringMap),
+          creationRecord: S.optional(__S(0, __c0, 0)),
+          userLabels: S.optional(__S(7, __c0, 7)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(StringMap),
-          mutationRecords: S.optional(MutationRecordList),
-          verificationStatus: S.optional(NotificationChannelVerificationStatusEnum),
+          labels: S.optional(__S(7, __c0, 7)),
+          mutationRecords: S.optional(__S(68, __c8, 4)),
+          verificationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationChannel" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(NotificationChannel.pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4701,7 +3839,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(StringList),
+          policies: S.optional(__S(8, __c1, 0)),
           filter: S.optional(S.String),
         }),
       ).annotate({ identifier: "Criteria" });
@@ -4719,9 +3857,9 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          criteria: S.optional(Criteria),
+          criteria: S.optional(__S(71, __c8, 7)),
           displayName: S.optional(S.String),
-          interval: S.optional(TimeInterval),
+          interval: S.optional(__S(72, __c9, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Snooze" });
@@ -4729,7 +3867,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Snooze.pipe(T.HttpBody())),
+          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4743,8 +3881,8 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          userLabels: S.optional(StringMap),
-          systemLabels: S.optional(DocumentMap),
+          userLabels: S.optional(__S(7, __c0, 7)),
+          systemLabels: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "MonitoredResourceMetadata",
@@ -4752,27 +3890,27 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(TypedValue),
-          interval: S.optional(TimeInterval),
+          value: S.optional(__S(44, __c5, 4)),
+          interval: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "Point" });
     case 5:
-      return S.Array(Point);
+      return S.Array(__S(76, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          valueType: S.optional(TimeSeriesValueTypeEnum),
+          valueType: S.optional(S.String),
           description: S.optional(S.String),
-          metricKind: S.optional(TimeSeriesMetricKindEnum),
-          resource: S.optional(MonitoredResource),
-          metric: S.optional(Metric),
-          metadata: S.optional(MonitoredResourceMetadata),
+          metricKind: S.optional(S.String),
+          resource: S.optional(__S(34, __c4, 2)),
+          metric: S.optional(__S(34, __c4, 2)),
+          metadata: S.optional(__S(75, __c9, 3)),
           unit: S.optional(S.String),
-          points: S.optional(PointList),
+          points: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({ identifier: "TimeSeries" });
     case 7:
-      return S.Array(TimeSeries);
+      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -4780,14 +3918,14 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timeSeries: S.optional(TimeSeriesList),
+          timeSeries: S.optional(__S(79, __c9, 7)),
         }),
       ).annotate({ identifier: "CreateTimeSeriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CreateTimeSeriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4805,7 +3943,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          jsonMatcher: S.optional(JsonPathMatcherJsonMatcherEnum),
+          jsonMatcher: S.optional(S.String),
           jsonPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "JsonPathMatcher" });
@@ -4813,23 +3951,23 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
-          jsonPathMatcher: S.optional(JsonPathMatcher),
-          matcher: S.optional(ContentMatcherMatcherEnum),
+          jsonPathMatcher: S.optional(__S(83, __c10, 3)),
+          matcher: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentMatcher" });
     case 5:
-      return S.Array(ContentMatcher);
+      return S.Array(__S(84, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          cloudRunRevision: S.optional(MonitoredResource),
+          cloudRunRevision: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "CloudFunctionV2Target" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cloudFunctionV2: S.optional(CloudFunctionV2Target),
+          cloudFunctionV2: S.optional(__S(86, __c10, 6)),
         }),
       ).annotate({ identifier: "SyntheticMonitorTarget" });
   }
@@ -4839,16 +3977,16 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          statusClass: S.optional(ResponseStatusCodeStatusClassEnum),
+          statusClass: S.optional(S.String),
           statusValue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResponseStatusCode" });
     case 1:
-      return S.Array(ResponseStatusCode);
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ServiceAgentAuthenticationTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServiceAgentAuthentication",
@@ -4869,19 +4007,19 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          acceptedResponseStatusCodes: S.optional(ResponseStatusCodeList),
-          headers: S.optional(StringMap),
+          acceptedResponseStatusCodes: S.optional(__S(89, __c11, 1)),
+          headers: S.optional(__S(7, __c0, 7)),
           port: S.optional(S.Number),
           validateSsl: S.optional(S.Boolean),
-          serviceAgentAuthentication: S.optional(ServiceAgentAuthentication),
-          requestMethod: S.optional(HttpCheckRequestMethodEnum),
-          contentType: S.optional(HttpCheckContentTypeEnum),
+          serviceAgentAuthentication: S.optional(__S(90, __c11, 2)),
+          requestMethod: S.optional(S.String),
+          contentType: S.optional(S.String),
           path: S.optional(S.String),
-          pingConfig: S.optional(PingConfig),
+          pingConfig: S.optional(__S(91, __c11, 3)),
           maskHeaders: S.optional(S.Boolean),
           body: S.optional(S.String),
           useSsl: S.optional(S.Boolean),
-          authInfo: S.optional(BasicAuthentication),
+          authInfo: S.optional(__S(92, __c11, 4)),
           customContentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpCheck" });
@@ -4889,7 +4027,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           peerProjectId: S.optional(S.String),
-          state: S.optional(InternalCheckerStateEnum),
+          state: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           network: S.optional(S.String),
@@ -4897,7 +4035,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "InternalChecker" });
     case 7:
-      return S.Array(InternalChecker);
+      return S.Array(__S(94, __c11, 6));
   }
 }
 function __c12(j: number): any {
@@ -4906,34 +4044,34 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
-          pingConfig: S.optional(PingConfig),
+          pingConfig: S.optional(__S(91, __c11, 3)),
         }),
       ).annotate({ identifier: "TcpCheck" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          resourceType: S.optional(ResourceGroupResourceTypeEnum),
+          resourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceGroup" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          selectedRegions: S.optional(UptimeCheckConfigSelectedRegionsItemEnumList),
-          monitoredResource: S.optional(MonitoredResource),
-          contentMatchers: S.optional(ContentMatcherList),
+          selectedRegions: S.optional(__S(12, __c1, 4)),
+          monitoredResource: S.optional(__S(34, __c4, 2)),
+          contentMatchers: S.optional(__S(85, __c10, 5)),
           isInternal: S.optional(S.Boolean),
-          syntheticMonitor: S.optional(SyntheticMonitorTarget),
+          syntheticMonitor: S.optional(__S(87, __c10, 7)),
           logCheckFailures: S.optional(S.Boolean),
-          httpCheck: S.optional(HttpCheck),
+          httpCheck: S.optional(__S(93, __c11, 5)),
           period: S.optional(S.String),
-          checkerType: S.optional(UptimeCheckConfigCheckerTypeEnum),
+          checkerType: S.optional(S.String),
           timeout: S.optional(S.String),
-          userLabels: S.optional(StringMap),
-          internalCheckers: S.optional(InternalCheckerList),
-          tcpCheck: S.optional(TcpCheck),
+          userLabels: S.optional(__S(7, __c0, 7)),
+          internalCheckers: S.optional(__S(95, __c11, 7)),
+          tcpCheck: S.optional(__S(96, __c12, 0)),
           name: S.optional(S.String),
-          resourceGroup: S.optional(ResourceGroup),
+          resourceGroup: S.optional(__S(97, __c12, 1)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
         }),
@@ -4942,7 +4080,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UptimeCheckConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4957,7 +4095,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CreateTimeSeriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5012,7 +4150,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceType: S.optional(S.String),
-          serviceLabels: S.optional(StringMap),
+          serviceLabels: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "BasicService" });
     case 3:
@@ -5066,21 +4204,21 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cloudRun: S.optional(CloudRun),
-          telemetry: S.optional(Telemetry),
-          clusterIstio: S.optional(ClusterIstio),
-          meshIstio: S.optional(MeshIstio),
-          cloudEndpoints: S.optional(CloudEndpoints),
-          basicService: S.optional(BasicService),
+          cloudRun: S.optional(__S(101, __c12, 5)),
+          telemetry: S.optional(__S(102, __c12, 6)),
+          clusterIstio: S.optional(__S(103, __c12, 7)),
+          meshIstio: S.optional(__S(104, __c13, 0)),
+          cloudEndpoints: S.optional(__S(105, __c13, 1)),
+          basicService: S.optional(__S(106, __c13, 2)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          userLabels: S.optional(StringMap),
-          custom: S.optional(Custom),
-          gkeService: S.optional(GkeService),
-          gkeWorkload: S.optional(GkeWorkload),
-          appEngine: S.optional(AppEngine),
-          gkeNamespace: S.optional(GkeNamespace),
-          istioCanonicalService: S.optional(IstioCanonicalService),
+          userLabels: S.optional(__S(7, __c0, 7)),
+          custom: S.optional(__S(82, __c10, 2)),
+          gkeService: S.optional(__S(107, __c13, 3)),
+          gkeWorkload: S.optional(__S(108, __c13, 4)),
+          appEngine: S.optional(__S(109, __c13, 5)),
+          gkeNamespace: S.optional(__S(110, __c13, 6)),
+          istioCanonicalService: S.optional(__S(111, __c13, 7)),
         }),
       ).annotate({ identifier: "Service" });
     case 1:
@@ -5088,7 +4226,7 @@ function __c14(j: number): any {
         S.Struct({
           serviceId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Service.pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5106,11 +4244,11 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(Custom),
-          version: S.optional(StringList),
-          method: S.optional(StringList),
-          location: S.optional(StringList),
-          latency: S.optional(LatencyCriteria),
+          availability: S.optional(__S(82, __c10, 2)),
+          version: S.optional(__S(8, __c1, 0)),
+          method: S.optional(__S(8, __c1, 0)),
+          location: S.optional(__S(8, __c1, 0)),
+          latency: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({ identifier: "BasicSli" });
     case 4:
@@ -5124,7 +4262,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timeSeries: S.optional(S.String),
-          range: S.optional(GoogleMonitoringV3Range),
+          range: S.optional(__S(116, __c14, 4)),
         }),
       ).annotate({ identifier: "MetricRange" });
     case 6:
@@ -5139,7 +4277,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           distributionFilter: S.optional(S.String),
-          range: S.optional(GoogleMonitoringV3Range),
+          range: S.optional(__S(116, __c14, 4)),
         }),
       ).annotate({ identifier: "DistributionCut" });
   }
@@ -5149,42 +4287,42 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          goodTotalRatio: S.optional(TimeSeriesRatio),
-          distributionCut: S.optional(DistributionCut),
+          goodTotalRatio: S.optional(__S(118, __c14, 6)),
+          distributionCut: S.optional(__S(119, __c14, 7)),
         }),
       ).annotate({ identifier: "RequestBasedSli" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          basicSliPerformance: S.optional(BasicSli),
+          basicSliPerformance: S.optional(__S(115, __c14, 3)),
           threshold: S.optional(S.Number),
-          performance: S.optional(RequestBasedSli),
+          performance: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "PerformanceThreshold" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           windowPeriod: S.optional(S.String),
-          metricSumInRange: S.optional(MetricRange),
+          metricSumInRange: S.optional(__S(117, __c14, 5)),
           goodBadMetricFilter: S.optional(S.String),
-          metricMeanInRange: S.optional(MetricRange),
-          goodTotalRatioThreshold: S.optional(PerformanceThreshold),
+          metricMeanInRange: S.optional(__S(117, __c14, 5)),
+          goodTotalRatioThreshold: S.optional(__S(121, __c15, 1)),
         }),
       ).annotate({ identifier: "WindowsBasedSli" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          basicSli: S.optional(BasicSli),
-          windowsBased: S.optional(WindowsBasedSli),
-          requestBased: S.optional(RequestBasedSli),
+          basicSli: S.optional(__S(115, __c14, 3)),
+          windowsBased: S.optional(__S(122, __c15, 2)),
+          requestBased: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "ServiceLevelIndicator" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          serviceLevelIndicator: S.optional(ServiceLevelIndicator),
-          userLabels: S.optional(StringMap),
-          calendarPeriod: S.optional(ServiceLevelObjectiveCalendarPeriodEnum),
+          serviceLevelIndicator: S.optional(__S(123, __c15, 3)),
+          userLabels: S.optional(__S(7, __c0, 7)),
+          calendarPeriod: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           goal: S.optional(S.Number),
@@ -5196,7 +4334,7 @@ function __c15(j: number): any {
         S.Struct({
           serviceLevelObjectiveId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ServiceLevelObjective.pipe(T.HttpBody())),
+          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5338,8 +4476,8 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(PolicySnapshotSeverityEnum),
-          userLabels: S.optional(StringMap),
+          severity: S.optional(S.String),
+          userLabels: S.optional(__S(7, __c0, 7)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -5351,21 +4489,21 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          extractedLabels: S.optional(StringMap),
+          extractedLabels: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "LogMetadata" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(MonitoredResource),
+          resource: S.optional(__S(34, __c4, 2)),
           closeTime: S.optional(S.String),
           openTime: S.optional(S.String),
           name: S.optional(S.String),
-          policy: S.optional(PolicySnapshot),
-          log: S.optional(LogMetadata),
-          state: S.optional(AlertStateEnum),
-          metadata: S.optional(MonitoredResourceMetadata),
-          metric: S.optional(Metric),
+          policy: S.optional(__S(135, __c16, 7)),
+          log: S.optional(__S(136, __c17, 0)),
+          state: S.optional(S.String),
+          metadata: S.optional(__S(75, __c9, 3)),
+          metric: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "Alert" });
     case 2:
@@ -5411,9 +4549,9 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(LabelDescriptorList),
+          labels: S.optional(__S(63, __c7, 7)),
           type: S.optional(S.String),
-          launchStage: S.optional(MonitoredResourceDescriptorLaunchStageEnum),
+          launchStage: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
@@ -5438,12 +4576,12 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          supportedTiers: S.optional(NotificationChannelDescriptorSupportedTiersItemEnumList),
+          supportedTiers: S.optional(__S(12, __c1, 4)),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          launchStage: S.optional(NotificationChannelDescriptorLaunchStageEnum),
-          labels: S.optional(LabelDescriptorList),
+          launchStage: S.optional(S.String),
+          labels: S.optional(__S(63, __c7, 7)),
           type: S.optional(S.String),
         }),
       ).annotate({
@@ -5511,7 +4649,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetServicesServiceLevelObjectivesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5534,7 +4672,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GetNotificationChannelVerificationCodeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(149, __c18, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5562,29 +4700,21 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           "interval.endTime": S.optional(S.String.pipe(T.Query())),
-          "aggregation.perSeriesAligner": S.optional(
-            ListFoldersTimeSeriesAggregation_perSeriesAlignerEnum.pipe(T.Query()),
-          ),
+          "aggregation.perSeriesAligner": S.optional(S.String.pipe(T.Query())),
           "interval.startTime": S.optional(S.String.pipe(T.Query())),
-          "aggregation.crossSeriesReducer": S.optional(
-            ListFoldersTimeSeriesAggregation_crossSeriesReducerEnum.pipe(T.Query()),
-          ),
-          "secondaryAggregation.perSeriesAligner": S.optional(
-            ListFoldersTimeSeriesSecondaryAggregation_perSeriesAlignerEnum.pipe(T.Query()),
-          ),
+          "aggregation.crossSeriesReducer": S.optional(S.String.pipe(T.Query())),
+          "secondaryAggregation.perSeriesAligner": S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          "aggregation.groupByFields": S.optional(StringList.pipe(T.Query())),
+          "aggregation.groupByFields": S.optional(__S(8, __c1, 0).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           orderBy: S.optional(S.String.pipe(T.Query())),
           "secondaryAggregation.alignmentPeriod": S.optional(S.String.pipe(T.Query())),
           "aggregation.alignmentPeriod": S.optional(S.String.pipe(T.Query())),
-          "secondaryAggregation.crossSeriesReducer": S.optional(
-            ListFoldersTimeSeriesSecondaryAggregation_crossSeriesReducerEnum.pipe(T.Query()),
-          ),
-          view: S.optional(ListFoldersTimeSeriesViewEnum.pipe(T.Query())),
+          "secondaryAggregation.crossSeriesReducer": S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          "secondaryAggregation.groupByFields": S.optional(StringList.pipe(T.Query())),
+          "secondaryAggregation.groupByFields": S.optional(__S(8, __c1, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5596,14 +4726,14 @@ function __c19(j: number): any {
         identifier: "ListFoldersTimeSeriesRequest",
       });
     case 1:
-      return S.Array(Status);
+      return S.Array(__S(6, __c0, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          timeSeries: S.optional(TimeSeriesList),
-          unreachable: S.optional(StringList),
-          executionErrors: S.optional(StatusList),
+          timeSeries: S.optional(__S(79, __c9, 7)),
+          unreachable: S.optional(__S(8, __c1, 0)),
+          executionErrors: S.optional(__S(153, __c19, 1)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTimeSeriesResponse" });
@@ -5613,27 +4743,19 @@ function __c19(j: number): any {
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           "secondaryAggregation.alignmentPeriod": S.optional(S.String.pipe(T.Query())),
-          "aggregation.perSeriesAligner": S.optional(
-            ListOrganizationsTimeSeriesAggregation_perSeriesAlignerEnum.pipe(T.Query()),
-          ),
-          "aggregation.groupByFields": S.optional(StringList.pipe(T.Query())),
+          "aggregation.perSeriesAligner": S.optional(S.String.pipe(T.Query())),
+          "aggregation.groupByFields": S.optional(__S(8, __c1, 0).pipe(T.Query())),
           "aggregation.alignmentPeriod": S.optional(S.String.pipe(T.Query())),
-          "secondaryAggregation.crossSeriesReducer": S.optional(
-            ListOrganizationsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum.pipe(T.Query()),
-          ),
+          "secondaryAggregation.crossSeriesReducer": S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
-          "secondaryAggregation.perSeriesAligner": S.optional(
-            ListOrganizationsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum.pipe(T.Query()),
-          ),
-          view: S.optional(ListOrganizationsTimeSeriesViewEnum.pipe(T.Query())),
-          "secondaryAggregation.groupByFields": S.optional(StringList.pipe(T.Query())),
+          "secondaryAggregation.perSeriesAligner": S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+          "secondaryAggregation.groupByFields": S.optional(__S(8, __c1, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           "interval.startTime": S.optional(S.String.pipe(T.Query())),
           "interval.endTime": S.optional(S.String.pipe(T.Query())),
-          "aggregation.crossSeriesReducer": S.optional(
-            ListOrganizationsTimeSeriesAggregation_crossSeriesReducerEnum.pipe(T.Query()),
-          ),
+          "aggregation.crossSeriesReducer": S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5663,11 +4785,11 @@ function __c19(j: number): any {
         identifier: "ListProjectsAlertPoliciesRequest",
       });
     case 5:
-      return S.Array(AlertPolicy);
+      return S.Array(__S(32, __c4, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          alertPolicies: S.optional(AlertPolicyList),
+          alertPolicies: S.optional(__S(157, __c19, 5)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -5697,12 +4819,12 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Alert);
+      return S.Array(__S(137, __c17, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          alerts: S.optional(AlertList),
+          alerts: S.optional(__S(160, __c20, 0)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListAlertsResponse" });
@@ -5726,11 +4848,11 @@ function __c20(j: number): any {
         identifier: "ListProjectsGroupsRequest",
       });
     case 3:
-      return S.Array(Group);
+      return S.Array(__S(60, __c7, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          group: S.optional(GroupList),
+          group: S.optional(__S(163, __c20, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
@@ -5754,13 +4876,13 @@ function __c20(j: number): any {
         identifier: "ListProjectsGroupsMembersRequest",
       });
     case 6:
-      return S.Array(MonitoredResource);
+      return S.Array(__S(34, __c4, 2));
     case 7:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          members: S.optional(MonitoredResourceList),
+          members: S.optional(__S(166, __c20, 6)),
         }),
       ).annotate({ identifier: "ListGroupMembersResponse" });
   }
@@ -5786,11 +4908,11 @@ function __c21(j: number): any {
         identifier: "ListProjectsMetricDescriptorsRequest",
       });
     case 1:
-      return S.Array(MetricDescriptor);
+      return S.Array(__S(66, __c8, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metricDescriptors: S.optional(MetricDescriptorList),
+          metricDescriptors: S.optional(__S(169, __c21, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5814,12 +4936,12 @@ function __c21(j: number): any {
         identifier: "ListProjectsMonitoredResourceDescriptorsRequest",
       });
     case 4:
-      return S.Array(MonitoredResourceDescriptor);
+      return S.Array(__S(141, __c17, 5));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          resourceDescriptors: S.optional(MonitoredResourceDescriptorList),
+          resourceDescriptors: S.optional(__S(172, __c21, 4)),
         }),
       ).annotate({
         identifier: "ListMonitoredResourceDescriptorsResponse",
@@ -5841,7 +4963,7 @@ function __c21(j: number): any {
         identifier: "ListProjectsNotificationChannelDescriptorsRequest",
       });
     case 7:
-      return S.Array(NotificationChannelDescriptor);
+      return S.Array(__S(143, __c17, 7));
   }
 }
 function __c22(j: number): any {
@@ -5850,7 +4972,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          channelDescriptors: S.optional(NotificationChannelDescriptorList),
+          channelDescriptors: S.optional(__S(175, __c21, 7)),
         }),
       ).annotate({
         identifier: "ListNotificationChannelDescriptorsResponse",
@@ -5874,11 +4996,11 @@ function __c22(j: number): any {
         identifier: "ListProjectsNotificationChannelsRequest",
       });
     case 2:
-      return S.Array(NotificationChannel);
+      return S.Array(__S(69, __c8, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          notificationChannels: S.optional(NotificationChannelList),
+          notificationChannels: S.optional(__S(178, __c22, 2)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -5903,11 +5025,11 @@ function __c22(j: number): any {
         identifier: "ListProjectsSnoozesRequest",
       });
     case 5:
-      return S.Array(Snooze);
+      return S.Array(__S(73, __c9, 1));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          snoozes: S.optional(SnoozeList),
+          snoozes: S.optional(__S(181, __c22, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSnoozesResponse" });
@@ -5915,29 +5037,21 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          "secondaryAggregation.perSeriesAligner": S.optional(
-            ListProjectsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum.pipe(T.Query()),
-          ),
-          "aggregation.groupByFields": S.optional(StringList.pipe(T.Query())),
+          "secondaryAggregation.perSeriesAligner": S.optional(S.String.pipe(T.Query())),
+          "aggregation.groupByFields": S.optional(__S(8, __c1, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          "secondaryAggregation.crossSeriesReducer": S.optional(
-            ListProjectsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum.pipe(T.Query()),
-          ),
-          "secondaryAggregation.groupByFields": S.optional(StringList.pipe(T.Query())),
+          "secondaryAggregation.crossSeriesReducer": S.optional(S.String.pipe(T.Query())),
+          "secondaryAggregation.groupByFields": S.optional(__S(8, __c1, 0).pipe(T.Query())),
           "interval.endTime": S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          "aggregation.perSeriesAligner": S.optional(
-            ListProjectsTimeSeriesAggregation_perSeriesAlignerEnum.pipe(T.Query()),
-          ),
+          "aggregation.perSeriesAligner": S.optional(S.String.pipe(T.Query())),
           "secondaryAggregation.alignmentPeriod": S.optional(S.String.pipe(T.Query())),
           "interval.startTime": S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListProjectsTimeSeriesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           "aggregation.alignmentPeriod": S.optional(S.String.pipe(T.Query())),
-          "aggregation.crossSeriesReducer": S.optional(
-            ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum.pipe(T.Query()),
-          ),
+          "aggregation.crossSeriesReducer": S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5970,12 +5084,12 @@ function __c23(j: number): any {
         identifier: "ListProjectsUptimeCheckConfigsRequest",
       });
     case 1:
-      return S.Array(UptimeCheckConfig);
+      return S.Array(__S(98, __c12, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          uptimeCheckConfigs: S.optional(UptimeCheckConfigList),
+          uptimeCheckConfigs: S.optional(__S(185, __c23, 1)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
@@ -5997,12 +5111,12 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListServicesRequest" });
     case 4:
-      return S.Array(Service);
+      return S.Array(__S(112, __c14, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          services: S.optional(ServiceList),
+          services: S.optional(__S(188, __c23, 4)),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
     case 6:
@@ -6011,7 +5125,7 @@ function __c23(j: number): any {
           parent: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListServicesServiceLevelObjectivesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6024,7 +5138,7 @@ function __c23(j: number): any {
         identifier: "ListServicesServiceLevelObjectivesRequest",
       });
     case 7:
-      return S.Array(ServiceLevelObjective);
+      return S.Array(__S(124, __c15, 4));
   }
 }
 function __c24(j: number): any {
@@ -6032,7 +5146,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceLevelObjectives: S.optional(ServiceLevelObjectiveList),
+          serviceLevelObjectives: S.optional(__S(191, __c23, 7)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6056,18 +5170,18 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          region: S.optional(UptimeCheckIpRegionEnum),
+          region: S.optional(S.String),
           ipAddress: S.optional(S.String),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "UptimeCheckIp" });
     case 3:
-      return S.Array(UptimeCheckIp);
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          uptimeCheckIps: S.optional(UptimeCheckIpList),
+          uptimeCheckIps: S.optional(__S(195, __c24, 3)),
         }),
       ).annotate({
         identifier: "ListUptimeCheckIpsResponse",
@@ -6077,7 +5191,7 @@ function __c24(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(AlertPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6093,7 +5207,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(NotificationChannel.pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6109,7 +5223,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Snooze.pipe(T.HttpBody())),
+          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6129,7 +5243,7 @@ function __c25(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(UptimeCheckConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6145,7 +5259,7 @@ function __c25(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Service.pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6159,7 +5273,7 @@ function __c25(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ServiceLevelObjective.pipe(T.HttpBody())),
+          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6182,7 +5296,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(QueryTimeSeriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(203, __c25, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6194,16 +5308,16 @@ function __c25(j: number): any {
         identifier: "QueryProjectsTimeSeriesRequest",
       });
     case 5:
-      return S.Array(TypedValue);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(TypedValueList),
-          timeInterval: S.optional(TimeInterval),
+          values: S.optional(__S(205, __c25, 5)),
+          timeInterval: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({ identifier: "PointData" });
     case 7:
-      return S.Array(PointData);
+      return S.Array(__S(206, __c25, 6));
   }
 }
 function __c26(j: number): any {
@@ -6217,41 +5331,41 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "LabelValue" });
     case 1:
-      return S.Array(LabelValue);
+      return S.Array(__S(208, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pointData: S.optional(PointDataList),
-          labelValues: S.optional(LabelValueList),
+          pointData: S.optional(__S(207, __c25, 7)),
+          labelValues: S.optional(__S(209, __c26, 1)),
         }),
       ).annotate({ identifier: "TimeSeriesData" });
     case 3:
-      return S.Array(TimeSeriesData);
+      return S.Array(__S(210, __c26, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metricKind: S.optional(ValueDescriptorMetricKindEnum),
+          metricKind: S.optional(S.String),
           unit: S.optional(S.String),
           key: S.optional(S.String),
-          valueType: S.optional(ValueDescriptorValueTypeEnum),
+          valueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValueDescriptor" });
     case 5:
-      return S.Array(ValueDescriptor);
+      return S.Array(__S(212, __c26, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labelDescriptors: S.optional(LabelDescriptorList),
-          pointDescriptors: S.optional(ValueDescriptorList),
+          labelDescriptors: S.optional(__S(63, __c7, 7)),
+          pointDescriptors: S.optional(__S(213, __c26, 5)),
         }),
       ).annotate({ identifier: "TimeSeriesDescriptor" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          partialErrors: S.optional(StatusList),
-          timeSeriesData: S.optional(TimeSeriesDataList),
+          partialErrors: S.optional(__S(153, __c19, 1)),
+          timeSeriesData: S.optional(__S(211, __c26, 3)),
           nextPageToken: S.optional(S.String),
-          timeSeriesDescriptor: S.optional(TimeSeriesDescriptor),
+          timeSeriesDescriptor: S.optional(__S(214, __c26, 6)),
         }),
       ).annotate({ identifier: "QueryTimeSeriesResponse" });
   }
@@ -6262,7 +5376,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Custom.pipe(T.HttpBody())),
+          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6278,7 +5392,7 @@ function __c27(j: number): any {
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Group.pipe(T.HttpBody())),
+          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6301,7 +5415,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(VerifyNotificationChannelRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6313,4 +5427,9 @@ function __c27(j: number): any {
         identifier: "VerifyProjectsNotificationChannelsRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

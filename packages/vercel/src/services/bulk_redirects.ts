@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -38,11 +40,6 @@ export class NotFound
 
 /** The redirects to delete. The source of the redirect is used to match the redirect to delete. */
 export type DeleteRedirectsRequestRedirectsList = Array<string>;
-const DeleteRedirectsRequestRedirectsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteRedirectsRequestRedirectsList>;
-
 export interface DeleteRedirectsRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -53,11 +50,6 @@ export interface DeleteRedirectsRequest {
   /** The redirects to delete. The source of the redirect is used to match the redirect to delete. */
   redirects: DeleteRedirectsRequestRedirectsList;
 }
-const DeleteRedirectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteRedirectsRequest>;
-
 export interface DeleteRedirectsResponseBodyCase0Version {
   /** The staging link for previewing redirects in this version. */
   alias?: string;
@@ -76,11 +68,6 @@ export interface DeleteRedirectsResponseBodyCase0Version {
   /** The number of redirects in this version. */
   redirectCount?: number;
 }
-const DeleteRedirectsResponseBodyCase0Version = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteRedirectsResponseBodyCase0Version>;
-
 export interface DeleteRedirectsResponseBodyCase0 {
   alias?: string;
   version: DeleteRedirectsResponseBodyCase0Version;
@@ -99,14 +86,7 @@ export type DeleteRedirectsResponseBody =
   | DeleteRedirectsResponseBodyCase0
   | DeleteRedirectsResponseBodyCase1
   | DeleteRedirectsResponseBodyCase2;
-const DeleteRedirectsResponseBody = S.Unknown as any as S.Schema<DeleteRedirectsResponseBody>;
-
 export type DeleteRedirectsResponse = DeleteRedirectsResponseBody;
-const DeleteRedirectsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteRedirectsResponse>;
-
 /** The redirect object to edit. The source field is used to match the redirect to modify. */
 export interface EditRedirectRequestRedirect {
   source: string;
@@ -117,11 +97,6 @@ export interface EditRedirectRequestRedirect {
   query?: boolean;
   preserveQueryParams?: boolean;
 }
-const EditRedirectRequestRedirect = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EditRedirectRequestRedirect>;
-
 export interface EditRedirectRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -134,25 +109,15 @@ export interface EditRedirectRequest {
   /** If true, restores the redirect from the latest production version to staging. */
   restore?: boolean;
 }
-const EditRedirectRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EditRedirectRequest>;
-
 export type EditRedirectResponseVersion = DeleteRedirectsResponseBodyCase0Version;
 export interface EditRedirectResponse {
   alias: string | null;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-const EditRedirectResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EditRedirectResponse>;
-
 export type GetRedirectsRequestDiffCase1 = "only";
 export type GetRedirectsRequestDiff = boolean | GetRedirectsRequestDiffCase1;
-const GetRedirectsRequestDiff = S.Unknown as any as S.Schema<GetRedirectsRequestDiff>;
-
 export type GetRedirectsRequestSortBy = "source" | "destination" | "statusCode";
-const GetRedirectsRequestSortBy = S.String;
-
 export type GetRedirectsRequestSortOrder = "asc" | "desc";
-const GetRedirectsRequestSortOrder = S.String;
-
 export interface GetRedirectsRequest {
   projectId: string;
   versionId?: string;
@@ -167,8 +132,6 @@ export interface GetRedirectsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetRedirectsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetRedirectsRequest>;
-
 export type GetRedirectsResponseBodyCase0Map = { [key: string]: unknown | undefined };
 export interface GetRedirectsResponseBodyCase1Pagination {
   numPages: number;
@@ -207,11 +170,7 @@ export type GetRedirectsResponseBody =
   | GetRedirectsResponseBodyCase0Map
   | GetRedirectsResponseBodyCase1
   | GetRedirectsResponseBodyCase2;
-const GetRedirectsResponseBody = S.Unknown as any as S.Schema<GetRedirectsResponseBody>;
-
 export type GetRedirectsResponse = GetRedirectsResponseBody;
-const GetRedirectsResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetRedirectsResponse>;
-
 export interface GetVersionsRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -219,25 +178,13 @@ export interface GetVersionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetVersionsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetVersionsRequest>;
-
 export type GetVersionsResponseVersionsItem = DeleteRedirectsResponseBodyCase0Version;
 export type GetVersionsResponseVersionsList = Array<DeleteRedirectsResponseBodyCase0Version>;
-const GetVersionsResponseVersionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetVersionsResponseVersionsList>;
-
 export interface GetVersionsResponse {
   versions: GetVersionsResponseVersionsList;
 }
-const GetVersionsResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetVersionsResponse>;
-
 /** The redirects to restore. The source of the redirect is used to match the redirect to restore. */
 export type RestoreRedirectsRequestRedirectsList = Array<string>;
-const RestoreRedirectsRequestRedirectsList =
-  DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsRequestRedirectsList>;
-
 export interface RestoreRedirectsRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -248,34 +195,15 @@ export interface RestoreRedirectsRequest {
   /** The redirects to restore. The source of the redirect is used to match the redirect to restore. */
   redirects: RestoreRedirectsRequestRedirectsList;
 }
-const RestoreRedirectsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RestoreRedirectsRequest>;
-
 export type RestoreRedirectsResponseFailedToRestoreList = Array<string>;
-const RestoreRedirectsResponseFailedToRestoreList =
-  DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsResponseFailedToRestoreList>;
-
 export type RestoreRedirectsResponseRestoredList = Array<string>;
-const RestoreRedirectsResponseRestoredList =
-  DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsResponseRestoredList>;
-
 export type RestoreRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
 export interface RestoreRedirectsResponse {
   failedToRestore: RestoreRedirectsResponseFailedToRestoreList;
   restored: RestoreRedirectsResponseRestoredList;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-const RestoreRedirectsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<RestoreRedirectsResponse>;
-
 export type StageRedirectsRequestRedirectsItemStatusCode = number | string;
-const StageRedirectsRequestRedirectsItemStatusCode =
-  S.Unknown as any as S.Schema<StageRedirectsRequestRedirectsItemStatusCode>;
-
 export interface StageRedirectsRequestRedirectsItem {
   source: string;
   destination: string;
@@ -285,17 +213,7 @@ export interface StageRedirectsRequestRedirectsItem {
   query?: boolean;
   preserveQueryParams?: boolean;
 }
-const StageRedirectsRequestRedirectsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<StageRedirectsRequestRedirectsItem>;
-
 export type StageRedirectsRequestRedirectsList = Array<StageRedirectsRequestRedirectsItem>;
-const StageRedirectsRequestRedirectsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<StageRedirectsRequestRedirectsList>;
-
 export interface StageRedirectsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -306,21 +224,12 @@ export interface StageRedirectsRequest {
   name?: string;
   redirects?: StageRedirectsRequestRedirectsList;
 }
-const StageRedirectsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<StageRedirectsRequest>;
-
 export type StageRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
 export interface StageRedirectsResponse {
   alias: string | null;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-const StageRedirectsResponse = EditRedirectResponse as any as S.Schema<StageRedirectsResponse>;
-
 export type UpdateVersionRequestAction = "promote" | "restore" | "discard";
-const UpdateVersionRequestAction = S.String;
-
 export interface UpdateVersionRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -331,17 +240,10 @@ export interface UpdateVersionRequest {
   action: UpdateVersionRequestAction | (string & {});
   name?: string;
 }
-const UpdateVersionRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UpdateVersionRequest>;
-
 export type UpdateVersionResponseVersion = DeleteRedirectsResponseBodyCase0Version;
 export interface UpdateVersionResponse {
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-const UpdateVersionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UpdateVersionResponse>;
-
 export type DeleteRedirectsError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Delete project-level redirects. Deletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with the new redirects and returns the alias for the new version in the response. */
 export const deleteRedirects: API.OperationMethod<
@@ -350,8 +252,8 @@ export const deleteRedirects: API.OperationMethod<
   DeleteRedirectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRedirectsRequest,
-  output: DeleteRedirectsResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<DeleteRedirectsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<DeleteRedirectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -365,8 +267,8 @@ export const editRedirect: API.OperationMethod<
   EditRedirectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditRedirectRequest,
-  output: EditRedirectResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<EditRedirectRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<EditRedirectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -380,8 +282,8 @@ export const getRedirects: API.OperationMethod<
   GetRedirectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRedirectsRequest,
-  output: GetRedirectsResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetRedirectsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetRedirectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -395,8 +297,8 @@ export const getVersions: API.OperationMethod<
   GetVersionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVersionsRequest,
-  output: GetVersionsResponse,
+  input: __S(9, __c1, 1) as any as S.Schema<GetVersionsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -410,8 +312,8 @@ export const restoreRedirects: API.OperationMethod<
   RestoreRedirectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreRedirectsRequest,
-  output: RestoreRedirectsResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<RestoreRedirectsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<RestoreRedirectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -425,8 +327,8 @@ export const stageRedirects: API.OperationMethod<
   StageRedirectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StageRedirectsRequest,
-  output: StageRedirectsResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<StageRedirectsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<StageRedirectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -440,8 +342,8 @@ export const updateVersion: API.OperationMethod<
   UpdateVersionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVersionRequest,
-  output: UpdateVersionResponse,
+  input: __S(17, __c2, 1) as any as S.Schema<UpdateVersionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<UpdateVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -459,7 +361,7 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
-          redirects: DeleteRedirectsRequestRedirectsList,
+          redirects: __S(0, __c0, 0),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/bulk-redirects", code: 200 })),
       ).annotate({ identifier: "DeleteRedirectsRequest" });
     case 2:
@@ -479,7 +381,7 @@ function __c0(j: number): any {
         identifier: "DeleteRedirectsResponseBodyCase0Version",
       });
     case 3:
-      return S.suspend(() => DeleteRedirectsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteRedirectsResponse",
       });
     case 4:
@@ -503,7 +405,7 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
-          redirect: EditRedirectRequestRedirect,
+          redirect: __S(4, __c0, 4),
           restore: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/bulk-redirects", code: 200 })),
       ).annotate({ identifier: "EditRedirectRequest" });
@@ -511,7 +413,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alias: S.NullOr(S.String),
-          version: DeleteRedirectsResponseBodyCase0Version,
+          version: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "EditRedirectResponse" });
     case 7:
@@ -520,11 +422,11 @@ function __c0(j: number): any {
           projectId: S.String.pipe(T.Query()),
           versionId: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
-          diff: S.optional(GetRedirectsRequestDiff.pipe(T.Query())),
+          diff: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          sort_by: S.optional(GetRedirectsRequestSortBy.pipe(T.Query())),
-          sort_order: S.optional(GetRedirectsRequestSortOrder.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/bulk-redirects", code: 200 })),
@@ -534,7 +436,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => GetRedirectsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRedirectsResponse",
       });
     case 1:
@@ -546,11 +448,11 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/bulk-redirects/versions", code: 200 })),
       ).annotate({ identifier: "GetVersionsRequest" });
     case 2:
-      return S.Array(DeleteRedirectsResponseBodyCase0Version);
+      return S.Array(__S(2, __c0, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          versions: GetVersionsResponseVersionsList,
+          versions: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "GetVersionsResponse" });
     case 4:
@@ -560,15 +462,15 @@ function __c1(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
-          redirects: RestoreRedirectsRequestRedirectsList,
+          redirects: __S(0, __c0, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/bulk-redirects/restore", code: 200 })),
       ).annotate({ identifier: "RestoreRedirectsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          failedToRestore: RestoreRedirectsResponseFailedToRestoreList,
-          restored: RestoreRedirectsResponseRestoredList,
-          version: DeleteRedirectsResponseBodyCase0Version,
+          failedToRestore: __S(0, __c0, 0),
+          restored: __S(0, __c0, 0),
+          version: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "RestoreRedirectsResponse" });
     case 6:
@@ -576,7 +478,7 @@ function __c1(j: number): any {
         S.Struct({
           source: S.String,
           destination: S.String,
-          statusCode: S.optional(StageRedirectsRequestRedirectsItemStatusCode),
+          statusCode: S.optional(S.Unknown),
           permanent: S.optional(S.Boolean),
           caseSensitive: S.optional(S.Boolean),
           query: S.optional(S.Boolean),
@@ -586,7 +488,7 @@ function __c1(j: number): any {
         identifier: "StageRedirectsRequestRedirectsItem",
       });
     case 7:
-      return S.Array(StageRedirectsRequestRedirectsItem);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -599,7 +501,7 @@ function __c2(j: number): any {
           projectId: S.String,
           overwrite: S.optional(S.Boolean),
           name: S.optional(S.String),
-          redirects: S.optional(StageRedirectsRequestRedirectsList),
+          redirects: S.optional(__S(15, __c1, 7)),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/bulk-redirects", code: 200 })),
       ).annotate({ identifier: "StageRedirectsRequest" });
     case 1:
@@ -609,15 +511,20 @@ function __c2(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           id: S.String,
-          action: UpdateVersionRequestAction,
+          action: S.String,
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/bulk-redirects/versions", code: 200 })),
       ).annotate({ identifier: "UpdateVersionRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          version: DeleteRedirectsResponseBodyCase0Version,
+          version: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "UpdateVersionResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

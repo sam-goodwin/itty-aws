@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -70,8 +72,6 @@ export interface GetGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
 }
-const GetGroupsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetGroupsRequest>;
-
 /** JSON template for Group resource */
 export interface Groups {
   /** Deprecated. This is merged into the new whoCanAssistContent setting. Permission to enter free form tags for topics in a forum. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY - OWNERS_ONLY - NONE */
@@ -201,24 +201,18 @@ export interface Groups {
   /** Deprecated. This functionality is no longer supported in the Google Groups UI. The value is always "NONE". */
   whoCanAddReferences?: string;
 }
-const Groups = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Groups>;
-
 export interface PatchGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
   /** Request body */
   body?: Groups;
 }
-const PatchGroupsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PatchGroupsRequest>;
-
 export interface UpdateGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
   /** Request body */
   body?: Groups;
 }
-const UpdateGroupsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UpdateGroupsRequest>;
-
 export type GetGroupsError = NotFound | Forbidden | GoogleWorkspaceOpError;
 /** Gets one resource by id. */
 export const getGroups: API.OperationMethod<
@@ -227,8 +221,8 @@ export const getGroups: API.OperationMethod<
   GetGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupsRequest,
-  output: Groups,
+  input: __S(0, __c0, 0) as any as S.Schema<GetGroupsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -247,8 +241,8 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchGroupsRequest,
-  output: Groups,
+  input: __S(2, __c0, 2) as any as S.Schema<PatchGroupsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -267,8 +261,8 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupsRequest,
-  output: Groups,
+  input: __S(3, __c0, 3) as any as S.Schema<UpdateGroupsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -361,7 +355,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupUniqueId: S.String.pipe(T.Label()),
-          body: S.optional(Groups.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -374,7 +368,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupUniqueId: S.String.pipe(T.Label()),
-          body: S.optional(Groups.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -384,4 +378,9 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "UpdateGroupsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

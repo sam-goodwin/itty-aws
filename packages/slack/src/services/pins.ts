@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -15,23 +17,15 @@ export interface AddPinRequest {
   /** Timestamp of the message to pin. You must also include the `channel`. */
   timestamp?: string;
 }
-const AddPinRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddPinRequest>;
-
 export interface AddPinResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const AddPinResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddPinResponse>;
-
 export interface ListPinsRequest {
   /** Channel to get pinned items for. */
   channel: string;
 }
-const ListPinsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListPinsRequest>;
-
 export type ListPinsResponseItemsItemType = "file" | "message" | "file_comment";
-const ListPinsResponseItemsItemType = S.String;
-
 export interface ListPinsResponseItemsItem {
   type: ListPinsResponseItemsItemType;
   created: number;
@@ -41,39 +35,23 @@ export interface ListPinsResponseItemsItem {
   file?: unknown;
   comment?: string;
 }
-const ListPinsResponseItemsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListPinsResponseItemsItem>;
-
 export type ListPinsResponseItemsList = Array<ListPinsResponseItemsItem>;
-const ListPinsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListPinsResponseItemsList>;
-
 export interface ListPinsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   items?: ListPinsResponseItemsList;
   count?: number;
 }
-const ListPinsResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListPinsResponse>;
-
 export interface RemovePinRequest {
   /** Channel where the item is pinned to. */
   channel: string;
   /** Timestamp of the message to un-pin. */
   timestamp?: string;
 }
-const RemovePinRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RemovePinRequest>;
-
 export interface RemovePinResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const RemovePinResponse = AddPinResponse as any as S.Schema<RemovePinResponse>;
-
 export type AddPinError = SlackOpError;
 /** Pins an item to a channel. Required scopes -- bot: `pins:write`; user: `pins:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `already_pinned` -- The specified item is already pinned to the channel. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- The `channel` argument was not specified or was invalid - `external_channel_migrating` -- Channel is undergoing an active migration. - `file_not_found` -- File not found. - `file_not_shared` -- File specified by `file` is not public nor shared to the channel. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- One of `file`, `file_comment`, or `timestamp` was not specified. - `not_in_channel` -- Item is not in channel. - `not_pinnable` -- This message type is not pinnable. - `restricted_action` -- The user does not have permission to add pins to the channel. - `too_many_pins` -- Too many pins in channel. See https://docs.slack.dev/reference/methods/pins.add */
 export const addPin: API.OperationMethod<
@@ -82,8 +60,8 @@ export const addPin: API.OperationMethod<
   AddPinError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddPinRequest,
-  output: AddPinResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<AddPinRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddPinResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -97,8 +75,8 @@ export const listPins: API.OperationMethod<
   ListPinsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPinsRequest,
-  output: ListPinsResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<ListPinsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<ListPinsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -112,8 +90,8 @@ export const removePin: API.OperationMethod<
   RemovePinError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemovePinRequest,
-  output: RemovePinResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<RemovePinRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<RemovePinResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -144,7 +122,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ListPinsResponseItemsItemType,
+          type: S.String,
           created: S.Number,
           created_by: S.String,
           channel: S.optional(S.String),
@@ -156,12 +134,12 @@ function __c0(j: number): any {
         identifier: "ListPinsResponseItemsItem",
       });
     case 4:
-      return S.Array(ListPinsResponseItemsItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: S.optional(ListPinsResponseItemsList),
+          items: S.optional(__S(4, __c0, 4)),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPinsResponse" });
@@ -173,4 +151,9 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/pins.remove", code: 200 })),
       ).annotate({ identifier: "RemovePinRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

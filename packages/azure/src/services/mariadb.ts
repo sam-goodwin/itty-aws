@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,11 +19,7 @@ export interface StartServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-const StartServerRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StartServerRequest>;
-
 export interface StartServerResponse {}
-const StartServerResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StartServerResponse>;
-
 export interface StopServerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -30,11 +28,7 @@ export interface StopServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-const StopServerRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StopServerRequest>;
-
 export interface StopServerResponse {}
-const StopServerResponse = StartServerResponse as any as S.Schema<StopServerResponse>;
-
 export type StartServerError = AzureOpError;
 /** Starts a stopped server. */
 export const StartServer: API.OperationMethod<
@@ -43,8 +37,8 @@ export const StartServer: API.OperationMethod<
   StartServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartServerRequest,
-  output: StartServerResponse,
+  input: __S(0, __c0, 0) as any as S.Schema<StartServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<StartServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -58,8 +52,8 @@ export const StopServer: API.OperationMethod<
   StopServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopServerRequest,
-  output: StopServerResponse,
+  input: __S(2, __c0, 2) as any as S.Schema<StopServerRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<StopServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -103,4 +97,9 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "StopServerRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

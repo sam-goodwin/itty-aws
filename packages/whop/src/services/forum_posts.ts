@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -51,18 +53,8 @@ export interface CreateForumPostRequestAttachmentsItem {
   /** The ID of an existing file object. */
   id: string;
 }
-const CreateForumPostRequestAttachmentsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateForumPostRequestAttachmentsItem>;
-
 /** A list of file attachments to include with the post, such as images or videos. */
 export type CreateForumPostRequestAttachmentsList = Array<CreateForumPostRequestAttachmentsItem>;
-const CreateForumPostRequestAttachmentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateForumPostRequestAttachmentsList>;
-
 /** The available currencies on the platform */
 export type LegacyCurrencies =
   | "usd"
@@ -155,8 +147,6 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-const LegacyCurrencies = S.String;
-
 /** Input type for a single poll option */
 export interface CreateForumPostRequestPollOptionsItem {
   /** Sequential ID for the poll option (starting from '1') */
@@ -164,32 +154,15 @@ export interface CreateForumPostRequestPollOptionsItem {
   /** The text of the poll option */
   text: string;
 }
-const CreateForumPostRequestPollOptionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateForumPostRequestPollOptionsItem>;
-
 /** The options for the poll. Must have sequential IDs starting from 1 */
 export type CreateForumPostRequestPollOptionsList = Array<CreateForumPostRequestPollOptionsItem>;
-const CreateForumPostRequestPollOptionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateForumPostRequestPollOptionsList>;
-
 /** A poll to attach to this post, allowing members to vote on options. */
 export interface CreateForumPostRequestPoll {
   /** The options for the poll. Must have sequential IDs starting from 1 */
   options: CreateForumPostRequestPollOptionsList;
 }
-const CreateForumPostRequestPoll = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateForumPostRequestPoll>;
-
 /** The visibility types for forum posts */
 export type ForumPostVisibilityTypes = "members_only" | "globally_visible";
-const ForumPostVisibilityTypes = S.String;
-
 export interface CreateForumPostRequest {
   /** The unique identifier of the company whose public forum to post in. Required when experience_id is 'public'. For example, 'biz_xxxxx'. */
   account_id?: string | null;
@@ -218,11 +191,6 @@ export interface CreateForumPostRequest {
   /** Controls who can see this forum post, such as members only or public. */
   visibility?: ForumPostVisibilityTypes | (string & {}) | null;
 }
-const CreateForumPostRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateForumPostRequest>;
-
 /** Represents an image attachment */
 export interface ForumPostAttachmentsItem {
   /** Uploaded file MIME type, such as image/jpeg, video/mp4, or audio/mpeg. */
@@ -234,18 +202,8 @@ export interface ForumPostAttachmentsItem {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-const ForumPostAttachmentsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ForumPostAttachmentsItem>;
-
 /** All file attachments on this post, such as images, documents, and videos. */
 export type ForumPostAttachmentsList = Array<ForumPostAttachmentsItem>;
-const ForumPostAttachmentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ForumPostAttachmentsList>;
-
 /** The user who authored this forum post. */
 export interface ForumPostUser {
   /** The unique identifier for the user. */
@@ -255,8 +213,6 @@ export interface ForumPostUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const ForumPostUser = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ForumPostUser>;
-
 /** A post or comment in a forum feed, supporting rich text, attachments, polls, and reactions. */
 export interface ForumPost {
   /** All file attachments on this post, such as images, documents, and videos. */
@@ -288,14 +244,10 @@ export interface ForumPost {
   /** The total number of times this post has been viewed by users. */
   view_count: number | null;
 }
-const ForumPost = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ForumPost>;
-
 export interface GetForumPostRequest {
   /** The unique identifier of the forum post to retrieve. */
   id: string;
 }
-const GetForumPostRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetForumPostRequest>;
-
 export interface ListForumPostRequest {
   after?: string;
   before?: string;
@@ -306,8 +258,6 @@ export interface ListForumPostRequest {
   parent_id?: string;
   pinned?: boolean;
 }
-const ListForumPostRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListForumPostRequest>;
-
 /** Represents an image attachment */
 export type ForumPostListItemAttachmentsItem = ForumPostAttachmentsItem;
 /** All file attachments on this post, such as images, documents, and videos. */
@@ -345,15 +295,8 @@ export interface ForumPostListItem {
   /** The total number of times this post has been viewed by users. */
   view_count: number | null;
 }
-const ForumPostListItem = ForumPost as any as S.Schema<ForumPostListItem>;
-
 /** A list of nodes. */
 export type ListForumPostResponseDataList = Array<ForumPostListItem>;
-const ListForumPostResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListForumPostResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -365,26 +308,16 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PageInfo>;
-
 export interface ListForumPostResponse {
   /** A list of nodes. */
   data: ListForumPostResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListForumPostResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListForumPostResponse>;
-
 /** Input for an attachment */
 export type UpdateForumPostRequestAttachmentsItem = CreateForumPostRequestAttachmentsItem;
 /** A replacement list of file attachments for this post, such as images or videos. */
 export type UpdateForumPostRequestAttachmentsList = Array<CreateForumPostRequestAttachmentsItem>;
-const UpdateForumPostRequestAttachmentsList =
-  CreateForumPostRequestAttachmentsList as any as S.Schema<UpdateForumPostRequestAttachmentsList>;
-
 export interface UpdateForumPostRequest {
   /** The unique identifier of the forum post to update. */
   id: string;
@@ -399,11 +332,6 @@ export interface UpdateForumPostRequest {
   /** Controls who can see this forum post, such as members only or public. */
   visibility?: ForumPostVisibilityTypes | (string & {}) | null;
 }
-const UpdateForumPostRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UpdateForumPostRequest>;
-
 export type CreateForumPostError =
   | BadRequest
   | Forbidden
@@ -417,8 +345,8 @@ export const createForumPost: API.OperationMethod<
   CreateForumPostError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForumPostRequest,
-  output: ForumPost,
+  input: __S(5, __c0, 5) as any as S.Schema<CreateForumPostRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ForumPost>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -437,8 +365,8 @@ export const getForumPost: API.OperationMethod<
   GetForumPostError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetForumPostRequest,
-  output: ForumPost,
+  input: __S(10, __c1, 2) as any as S.Schema<GetForumPostRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ForumPost>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -459,8 +387,8 @@ export const listForumPost: API.PaginatedOperationMethod<
   ForumPostListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListForumPostRequest,
-    output: ListForumPostResponse,
+    input: __S(11, __c1, 3) as any as S.Schema<ListForumPostRequest>,
+    output: __S(14, __c1, 6) as any as S.Schema<ListForumPostResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -489,8 +417,8 @@ export const updateForumPost: API.OperationMethod<
   UpdateForumPostError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateForumPostRequest,
-  output: ForumPost,
+  input: __S(15, __c1, 7) as any as S.Schema<UpdateForumPostRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ForumPost>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -508,7 +436,7 @@ function __c0(j: number): any {
         identifier: "CreateForumPostRequestAttachmentsItem",
       });
     case 1:
-      return S.Array(CreateForumPostRequestAttachmentsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -519,11 +447,11 @@ function __c0(j: number): any {
         identifier: "CreateForumPostRequestPollOptionsItem",
       });
     case 3:
-      return S.Array(CreateForumPostRequestPollOptionsItem);
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          options: CreateForumPostRequestPollOptionsList,
+          options: __S(3, __c0, 3),
         }),
       ).annotate({
         identifier: "CreateForumPostRequestPoll",
@@ -532,18 +460,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.NullOr(S.String)),
-          attachments: S.optional(S.NullOr(CreateForumPostRequestAttachmentsList)),
+          attachments: S.optional(S.NullOr(__S(1, __c0, 1))),
           content: S.optional(S.NullOr(S.String)),
           experience_id: S.String,
           is_mention: S.optional(S.NullOr(S.Boolean)),
           parent_id: S.optional(S.NullOr(S.String)),
           paywall_amount: S.optional(S.NullOr(S.Number)),
-          paywall_currency: S.optional(S.NullOr(LegacyCurrencies)),
+          paywall_currency: S.optional(S.NullOr(S.String)),
           pinned: S.optional(S.NullOr(S.Boolean)),
-          poll: S.optional(S.NullOr(CreateForumPostRequestPoll)),
+          poll: S.optional(S.NullOr(__S(4, __c0, 4))),
           rich_content: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
-          visibility: S.optional(S.NullOr(ForumPostVisibilityTypes)),
+          visibility: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/forum_posts", code: 200 })),
       ).annotate({ identifier: "CreateForumPostRequest" });
     case 6:
@@ -556,7 +484,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ForumPostAttachmentsItem" });
     case 7:
-      return S.Array(ForumPostAttachmentsItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -572,7 +500,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attachments: ForumPostAttachmentsList,
+          attachments: __S(7, __c0, 7),
           comment_count: S.Number,
           content: S.NullOr(S.String),
           created_at: S.String,
@@ -584,7 +512,7 @@ function __c1(j: number): any {
           parent_id: S.NullOr(S.String),
           title: S.NullOr(S.String),
           updated_at: S.String,
-          user: ForumPostUser,
+          user: __S(8, __c1, 0),
           view_count: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "ForumPost" });
@@ -608,7 +536,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/forum_posts", code: 200 })),
       ).annotate({ identifier: "ListForumPostRequest" });
     case 4:
-      return S.Array(ForumPostListItem);
+      return S.Array(__S(9, __c1, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -621,20 +549,25 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ListForumPostResponseDataList,
-          page_info: PageInfo,
+          data: __S(12, __c1, 4),
+          page_info: __S(13, __c1, 5),
         }),
       ).annotate({ identifier: "ListForumPostResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(S.NullOr(UpdateForumPostRequestAttachmentsList)),
+          attachments: S.optional(S.NullOr(__S(1, __c0, 1))),
           content: S.optional(S.NullOr(S.String)),
           is_pinned: S.optional(S.NullOr(S.Boolean)),
           title: S.optional(S.NullOr(S.String)),
-          visibility: S.optional(S.NullOr(ForumPostVisibilityTypes)),
+          visibility: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/forum_posts/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateForumPostRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

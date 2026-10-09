@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -49,11 +51,6 @@ export interface GetLedgerAccountRequest {
   /** The identifier to look up the ledger account. Accepts a user ID ('user_xxx'), company ID ('biz_xxx'), or ledger account ID ('ldgr_xxx'). */
   id: string;
 }
-const GetLedgerAccountRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetLedgerAccountRequest>;
-
 /** The available currencies on the platform */
 export type LegacyCurrencies =
   | "usd"
@@ -146,8 +143,6 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-const LegacyCurrencies = S.String;
-
 /** A cached balance for a LedgerAccount in respect to a currency. */
 export interface LedgerAccountBalancesItem {
   /** The amount of the balance. */
@@ -159,22 +154,10 @@ export interface LedgerAccountBalancesItem {
   /** The amount of the balance that is reserved. */
   reserve_balance: number;
 }
-const LedgerAccountBalancesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<LedgerAccountBalancesItem>;
-
 /** The balances associated with the account. */
 export type LedgerAccountBalancesList = Array<LedgerAccountBalancesItem>;
-const LedgerAccountBalancesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<LedgerAccountBalancesList>;
-
 /** The types of ledgers that can be created. */
 export type LedgerTypes = "primary" | "pool";
-const LedgerTypes = S.String;
-
 /** A user account on Whop. Contains profile information, identity details, and social connections. */
 export interface LedgerAccountOwnerCase0 {
   /** The unique identifier for the user. */
@@ -199,12 +182,8 @@ export interface LedgerAccountOwnerCase1 {
 }
 /** The owner of the ledger account. */
 export type LedgerAccountOwner = LedgerAccountOwnerCase0 | LedgerAccountOwnerCase1;
-const LedgerAccountOwner = S.Unknown as any as S.Schema<LedgerAccountOwner>;
-
 /** The different approval statuses an account can have. */
 export type PaymentsApprovalStatuses = "pending" | "approved" | "monitoring" | "rejected";
-const PaymentsApprovalStatuses = S.String;
-
 /** The physical address associated with this payout account */
 export interface LedgerAccountPayoutAccountDetailsAddress {
   /** The city of the address. */
@@ -220,11 +199,6 @@ export interface LedgerAccountPayoutAccountDetailsAddress {
   /** The state of the address. */
   state: string | null;
 }
-const LedgerAccountPayoutAccountDetailsAddress = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<LedgerAccountPayoutAccountDetailsAddress>;
-
 /** The business representative for this payout account */
 export interface LedgerAccountPayoutAccountDetailsBusinessRepresentative {
   /** The date of birth of the business representative in ISO 8601 format (YYYY-MM-DD). */
@@ -236,11 +210,6 @@ export interface LedgerAccountPayoutAccountDetailsBusinessRepresentative {
   /** The middle name of the business representative. */
   middle_name: string | null;
 }
-const LedgerAccountPayoutAccountDetailsBusinessRepresentative = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<LedgerAccountPayoutAccountDetailsBusinessRepresentative>;
-
 /** An error code for a verification attempt. */
 export type VerificationErrorCodes =
   | "abandoned"
@@ -262,8 +231,6 @@ export type VerificationErrorCodes =
   | "selfie_manipulated"
   | "selfie_unverified_other"
   | "under_supported_age";
-const VerificationErrorCodes = S.String;
-
 /** A status for a verification. */
 export type VerificationStatuses =
   | "requires_input"
@@ -281,8 +248,6 @@ export type VerificationStatuses =
   | "review"
   | "action_required"
   | "manual_review";
-const VerificationStatuses = S.String;
-
 /** The latest verification for the connected account. */
 export interface LedgerAccountPayoutAccountDetailsLatestVerification {
   /** The numeric id of the verification record. */
@@ -294,11 +259,6 @@ export interface LedgerAccountPayoutAccountDetailsLatestVerification {
   /** The current status of this verification session. */
   status: VerificationStatuses;
 }
-const LedgerAccountPayoutAccountDetailsLatestVerification = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<LedgerAccountPayoutAccountDetailsLatestVerification>;
-
 /** The granular calculated statuses reflecting payout account KYC and payout readiness. */
 export type PayoutAccountCalculatedStatuses =
   | "connected"
@@ -310,8 +270,6 @@ export type PayoutAccountCalculatedStatuses =
   | "denied"
   | "not_started"
   | "blocked_by_parent";
-const PayoutAccountCalculatedStatuses = S.String;
-
 /** The payout account associated with the LedgerAccount, if any. */
 export interface LedgerAccountPayoutAccountDetails {
   /** The physical address associated with this payout account */
@@ -331,11 +289,6 @@ export interface LedgerAccountPayoutAccountDetails {
   /** The granular calculated status of the payout account reflecting its current KYC and payout readiness state. */
   status: PayoutAccountCalculatedStatuses | null;
 }
-const LedgerAccountPayoutAccountDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<LedgerAccountPayoutAccountDetails>;
-
 /** The balance cache associated with the account by currency. */
 export interface LedgerAccountTreasuryBalance {
   /** The amount of the balance. */
@@ -351,11 +304,6 @@ export interface LedgerAccountTreasuryBalance {
   /** The amount of the balance that is withdrawable. */
   total_withdrawable_balance: number;
 }
-const LedgerAccountTreasuryBalance = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<LedgerAccountTreasuryBalance>;
-
 /** A ledger account represents a financial account on Whop that can hold many balances. */
 export interface LedgerAccount {
   /** The balances associated with the account. */
@@ -379,8 +327,6 @@ export interface LedgerAccount {
   /** The balance cache associated with the account by currency. */
   treasury_balance: LedgerAccountTreasuryBalance | null;
 }
-const LedgerAccount = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LedgerAccount>;
-
 export type GetLedgerAccountError =
   | BadRequest
   | Forbidden
@@ -394,8 +340,8 @@ export const getLedgerAccount: API.OperationMethod<
   GetLedgerAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLedgerAccountRequest,
-  output: LedgerAccount,
+  input: __S(0, __c0, 0) as any as S.Schema<GetLedgerAccountRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<LedgerAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -414,7 +360,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           balance: S.Number,
-          currency: LegacyCurrencies,
+          currency: S.String,
           pending_balance: S.Number,
           reserve_balance: S.Number,
         }),
@@ -422,7 +368,7 @@ function __c0(j: number): any {
         identifier: "LedgerAccountBalancesItem",
       });
     case 2:
-      return S.Array(LedgerAccountBalancesItem);
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -451,9 +397,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          last_error_code: S.NullOr(VerificationErrorCodes),
+          last_error_code: S.NullOr(S.String),
           last_error_reason: S.NullOr(S.String),
-          status: VerificationStatuses,
+          status: S.String,
         }),
       ).annotate({
         identifier: "LedgerAccountPayoutAccountDetailsLatestVerification",
@@ -461,16 +407,14 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          address: S.NullOr(LedgerAccountPayoutAccountDetailsAddress),
+          address: S.NullOr(__S(3, __c0, 3)),
           business_name: S.NullOr(S.String),
-          business_representative: S.NullOr(
-            LedgerAccountPayoutAccountDetailsBusinessRepresentative,
-          ),
+          business_representative: S.NullOr(__S(4, __c0, 4)),
           email: S.NullOr(S.String),
           id: S.String,
-          latest_verification: S.NullOr(LedgerAccountPayoutAccountDetailsLatestVerification),
+          latest_verification: S.NullOr(__S(5, __c0, 5)),
           phone: S.NullOr(S.String),
-          status: S.NullOr(PayoutAccountCalculatedStatuses),
+          status: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "LedgerAccountPayoutAccountDetails",
@@ -480,7 +424,7 @@ function __c0(j: number): any {
         S.Struct({
           balance: S.Number,
           balance_usd: S.Number,
-          currency: LegacyCurrencies,
+          currency: S.String,
           pending_balance: S.Number,
           reserve_balance: S.Number,
           total_withdrawable_balance: S.Number,
@@ -495,17 +439,22 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          balances: LedgerAccountBalancesList,
+          balances: __S(2, __c0, 2),
           id: S.String,
-          ledger_type: LedgerTypes,
-          owner: LedgerAccountOwner,
-          payments_approval_status: S.NullOr(PaymentsApprovalStatuses),
-          payout_account_details: S.NullOr(LedgerAccountPayoutAccountDetails),
+          ledger_type: S.String,
+          owner: S.Unknown,
+          payments_approval_status: S.NullOr(S.String),
+          payout_account_details: S.NullOr(__S(6, __c0, 6)),
           payout_quote_required: S.Boolean,
           settlement_time_at: S.NullOr(S.String),
           transfer_fee: S.NullOr(S.Number),
-          treasury_balance: S.NullOr(LedgerAccountTreasuryBalance),
+          treasury_balance: S.NullOr(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "LedgerAccount" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

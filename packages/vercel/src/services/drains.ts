@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -47,14 +49,7 @@ export class PaymentRequired
   ) {}
 
 export type CreateDrainRequestProjects = "some" | "all";
-const CreateDrainRequestProjects = S.String;
-
 export type CreateDrainRequestProjectIdsList = Array<string>;
-const CreateDrainRequestProjectIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDrainRequestProjectIdsList>;
-
 export type CreateDrainRequestFilterFilterCase0ProjectIdsList = Array<string>;
 export interface CreateDrainRequestFilterFilterCase0Project {
   ids?: CreateDrainRequestFilterFilterCase0ProjectIdsList;
@@ -95,33 +90,16 @@ export interface CreateDrainRequestFilterFilterCase1 {
 export type CreateDrainRequestFilterFilter =
   | CreateDrainRequestFilterFilterCase0
   | CreateDrainRequestFilterFilterCase1;
-const CreateDrainRequestFilterFilter = S.Unknown as any as S.Schema<CreateDrainRequestFilterFilter>;
-
 export interface CreateDrainRequestFilter {
   version: string;
   filter: CreateDrainRequestFilterFilter;
 }
-const CreateDrainRequestFilter = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDrainRequestFilter>;
-
 export interface CreateDrainRequestSchemasValue {
   version: string;
 }
-const CreateDrainRequestSchemasValue = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDrainRequestSchemasValue>;
-
 export type CreateDrainRequestSchemasMap = {
   [key: string]: CreateDrainRequestSchemasValue | undefined;
 };
-const CreateDrainRequestSchemasMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateDrainRequestSchemasMap>;
-
 export type CreateDrainRequestDeliveryCase0Compression = "gzip" | "none";
 export type CreateDrainRequestDeliveryCase0Encoding = "json" | "ndjson";
 export type CreateDrainRequestDeliveryCase0HeadersMap = { [key: string]: string | undefined };
@@ -171,12 +149,8 @@ export type CreateDrainRequestDelivery =
   | CreateDrainRequestDeliveryCase0
   | CreateDrainRequestDeliveryCase1
   | CreateDrainRequestDeliveryCase2;
-const CreateDrainRequestDelivery = S.Unknown as any as S.Schema<CreateDrainRequestDelivery>;
-
 /** Environment to apply sampling to */
 export type CreateDrainRequestSamplingItemEnv = "production" | "preview";
-const CreateDrainRequestSamplingItemEnv = S.String;
-
 export interface CreateDrainRequestSamplingItem {
   type: string;
   /** Sampling rate from 0 to 1 (e.g., 0.1 for 10%) */
@@ -186,31 +160,11 @@ export interface CreateDrainRequestSamplingItem {
   /** Request path prefix to apply the sampling rule to */
   requestPath?: string;
 }
-const CreateDrainRequestSamplingItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDrainRequestSamplingItem>;
-
 export type CreateDrainRequestSamplingList = Array<CreateDrainRequestSamplingItem>;
-const CreateDrainRequestSamplingList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateDrainRequestSamplingList>;
-
 export interface CreateDrainRequestTransformsItem {
   id: string;
 }
-const CreateDrainRequestTransformsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDrainRequestTransformsItem>;
-
 export type CreateDrainRequestTransformsList = Array<CreateDrainRequestTransformsItem>;
-const CreateDrainRequestTransformsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateDrainRequestTransformsList>;
-
 export interface CreateDrainRequestSourceCase0Case0 {
   kind?: string;
   externalResourceId: string;
@@ -230,8 +184,6 @@ export type CreateDrainRequestSourceCase1 = CreateDrainRequestSourceCase0Case2;
 export type CreateDrainRequestSource =
   | CreateDrainRequestSourceCase0
   | CreateDrainRequestSourceCase0Case2;
-const CreateDrainRequestSource = S.Unknown as any as S.Schema<CreateDrainRequestSource>;
-
 export interface CreateDrainRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -247,8 +199,6 @@ export interface CreateDrainRequest {
   transforms?: CreateDrainRequestTransformsList;
   source?: CreateDrainRequestSource;
 }
-const CreateDrainRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateDrainRequest>;
-
 export type CreateDrainResponseBodyCase0DeliveryCase0Compression = "gzip" | "none";
 export type CreateDrainResponseBodyCase0DeliveryCase0Encoding = "json" | "ndjson";
 export type CreateDrainResponseBodyCase0DeliveryCase0HeadersMap = {
@@ -659,11 +609,7 @@ export interface CreateDrainResponseBodyCase1 {
   projectAccess?: CreateDrainResponseBodyCase1ProjectAccess;
 }
 export type CreateDrainResponseBody = CreateDrainResponseBodyCase0 | CreateDrainResponseBodyCase1;
-const CreateDrainResponseBody = S.Unknown as any as S.Schema<CreateDrainResponseBody>;
-
 export type CreateDrainResponse = CreateDrainResponseBody;
-const CreateDrainResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateDrainResponse>;
-
 export interface DeleteDrainRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -671,11 +617,7 @@ export interface DeleteDrainRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteDrainRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteDrainRequest>;
-
 export interface DeleteDrainResponse {}
-const DeleteDrainResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteDrainResponse>;
-
 export interface GetDrainRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -683,8 +625,6 @@ export interface GetDrainRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDrainRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetDrainRequest>;
-
 export type GetDrainResponseBodyCase0DeliveryCase0Compression = "gzip" | "none";
 export type GetDrainResponseBodyCase0DeliveryCase0Encoding = "json" | "ndjson";
 export type GetDrainResponseBodyCase0DeliveryCase0HeadersMap = {
@@ -1085,11 +1025,7 @@ export interface GetDrainResponseBodyCase1 {
   projectAccess?: GetDrainResponseBodyCase1ProjectAccess;
 }
 export type GetDrainResponseBody = GetDrainResponseBodyCase0 | GetDrainResponseBodyCase1;
-const GetDrainResponseBody = S.Unknown as any as S.Schema<GetDrainResponseBody>;
-
 export type GetDrainResponse = GetDrainResponseBody;
-const GetDrainResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetDrainResponse>;
-
 export interface GetDrainsRequest {
   projectId?: string;
   includeMetadata?: boolean;
@@ -1098,8 +1034,6 @@ export interface GetDrainsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDrainsRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetDrainsRequest>;
-
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase0Compression = "gzip" | "none";
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase0Encoding = "json" | "ndjson";
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase0HeadersMap = {
@@ -1506,20 +1440,13 @@ export type GetDrainsResponseDrainsCase1List = Array<GetDrainsResponseDrainsCase
 export type GetDrainsResponseDrains =
   | GetDrainsResponseDrainsCase0List
   | GetDrainsResponseDrainsCase1List;
-const GetDrainsResponseDrains = S.Unknown as any as S.Schema<GetDrainsResponseDrains>;
-
 export interface GetDrainsResponse {
   drains: GetDrainsResponseDrains;
 }
-const GetDrainsResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetDrainsResponse>;
-
 export type TestDrainRequestSchemasValue = CreateDrainRequestSchemasValue;
 export type TestDrainRequestSchemasMap = {
   [key: string]: CreateDrainRequestSchemasValue | undefined;
 };
-const TestDrainRequestSchemasMap =
-  CreateDrainRequestSchemasMap as any as S.Schema<TestDrainRequestSchemasMap>;
-
 export type TestDrainRequestDeliveryCase0Compression = "gzip" | "none";
 export type TestDrainRequestDeliveryCase0Encoding = "json" | "ndjson";
 export type TestDrainRequestDeliveryCase0HeadersMap = { [key: string]: string | undefined };
@@ -1567,8 +1494,6 @@ export type TestDrainRequestDelivery =
   | TestDrainRequestDeliveryCase0
   | TestDrainRequestDeliveryCase1
   | TestDrainRequestDeliveryCase2;
-const TestDrainRequestDelivery = S.Unknown as any as S.Schema<TestDrainRequestDelivery>;
-
 export interface TestDrainRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -1577,26 +1502,15 @@ export interface TestDrainRequest {
   schemas: TestDrainRequestSchemasMap;
   delivery: TestDrainRequestDelivery;
 }
-const TestDrainRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<TestDrainRequest>;
-
 export interface TestDrainResponseBodyCase1 {
   endpoint: string;
   error: string;
   status: string;
 }
 export type TestDrainResponseBody = unknown | TestDrainResponseBodyCase1;
-const TestDrainResponseBody = S.Unknown as any as S.Schema<TestDrainResponseBody>;
-
 export type TestDrainResponse = TestDrainResponseBody;
-const TestDrainResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TestDrainResponse>;
-
 export type UpdateDrainRequestProjects = "some" | "all";
-const UpdateDrainRequestProjects = S.String;
-
 export type UpdateDrainRequestProjectIdsList = Array<string>;
-const UpdateDrainRequestProjectIdsList =
-  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainRequestProjectIdsList>;
-
 export type UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList = Array<string>;
 export interface UpdateDrainRequestFilterCase1FilterCase0Project {
   ids?: UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList;
@@ -1639,15 +1553,10 @@ export interface UpdateDrainRequestFilterCase1 {
   filter: UpdateDrainRequestFilterCase1Filter;
 }
 export type UpdateDrainRequestFilter = string | UpdateDrainRequestFilterCase1;
-const UpdateDrainRequestFilter = S.Unknown as any as S.Schema<UpdateDrainRequestFilter>;
-
 export type UpdateDrainRequestSchemasValue = CreateDrainRequestSchemasValue;
 export type UpdateDrainRequestSchemasMap = {
   [key: string]: CreateDrainRequestSchemasValue | undefined;
 };
-const UpdateDrainRequestSchemasMap =
-  CreateDrainRequestSchemasMap as any as S.Schema<UpdateDrainRequestSchemasMap>;
-
 export type UpdateDrainRequestDeliveryCase0Compression = "gzip" | "none";
 export type UpdateDrainRequestDeliveryCase0Encoding = "json" | "ndjson";
 export type UpdateDrainRequestDeliveryCase0HeadersMap = { [key: string]: string | undefined };
@@ -1695,8 +1604,6 @@ export type UpdateDrainRequestDelivery =
   | UpdateDrainRequestDeliveryCase0
   | UpdateDrainRequestDeliveryCase1
   | UpdateDrainRequestDeliveryCase2;
-const UpdateDrainRequestDelivery = S.Unknown as any as S.Schema<UpdateDrainRequestDelivery>;
-
 /** Environment to apply sampling to */
 export type UpdateDrainRequestSamplingItemEnv = "production" | "preview";
 export interface UpdateDrainRequestSamplingItem {
@@ -1709,17 +1616,9 @@ export interface UpdateDrainRequestSamplingItem {
   requestPath?: string;
 }
 export type UpdateDrainRequestSamplingList = Array<UpdateDrainRequestSamplingItem>;
-const UpdateDrainRequestSamplingList =
-  CreateDrainRequestSamplingList as any as S.Schema<UpdateDrainRequestSamplingList>;
-
 export type UpdateDrainRequestTransformsItem = CreateDrainRequestTransformsItem;
 export type UpdateDrainRequestTransformsList = Array<CreateDrainRequestTransformsItem>;
-const UpdateDrainRequestTransformsList =
-  CreateDrainRequestTransformsList as any as S.Schema<UpdateDrainRequestTransformsList>;
-
 export type UpdateDrainRequestStatus = "enabled" | "disabled";
-const UpdateDrainRequestStatus = S.String;
-
 export type UpdateDrainRequestSourceCase0Case0 = CreateDrainRequestSourceCase0Case0;
 export type UpdateDrainRequestSourceCase0Case1 = CreateDrainRequestSourceCase0Case1;
 export type UpdateDrainRequestSourceCase0Case2 = CreateDrainRequestSourceCase0Case2;
@@ -1731,8 +1630,6 @@ export type UpdateDrainRequestSourceCase1 = CreateDrainRequestSourceCase0Case2;
 export type UpdateDrainRequestSource =
   | UpdateDrainRequestSourceCase0
   | CreateDrainRequestSourceCase0Case2;
-const UpdateDrainRequestSource = S.Unknown as any as S.Schema<UpdateDrainRequestSource>;
-
 export interface UpdateDrainRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -1750,8 +1647,6 @@ export interface UpdateDrainRequest {
   status?: UpdateDrainRequestStatus | (string & {});
   source?: UpdateDrainRequestSource;
 }
-const UpdateDrainRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<UpdateDrainRequest>;
-
 export type UpdateDrainResponseBodyCase0DeliveryCase0Compression = "gzip" | "none";
 export type UpdateDrainResponseBodyCase0DeliveryCase0Encoding = "json" | "ndjson";
 export type UpdateDrainResponseBodyCase0DeliveryCase0HeadersMap = {
@@ -2154,11 +2049,7 @@ export interface UpdateDrainResponseBodyCase1 {
   projectAccess?: UpdateDrainResponseBodyCase1ProjectAccess;
 }
 export type UpdateDrainResponseBody = UpdateDrainResponseBodyCase0 | UpdateDrainResponseBodyCase1;
-const UpdateDrainResponseBody = S.Unknown as any as S.Schema<UpdateDrainResponseBody>;
-
 export type UpdateDrainResponse = UpdateDrainResponseBody;
-const UpdateDrainResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UpdateDrainResponse>;
-
 export type CreateDrainError = BadRequest | PaymentRequired | Forbidden | NotFound | VercelOpError;
 /** Create a new Drain Create a new Drain with the provided configuration. */
 export const createDrain: API.OperationMethod<
@@ -2167,8 +2058,8 @@ export const createDrain: API.OperationMethod<
   CreateDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDrainRequest,
-  output: CreateDrainResponse,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateDrainRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateDrainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2182,8 +2073,8 @@ export const deleteDrain: API.OperationMethod<
   DeleteDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDrainRequest,
-  output: DeleteDrainResponse,
+  input: __S(10, __c1, 2) as any as S.Schema<DeleteDrainRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<DeleteDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2197,8 +2088,8 @@ export const getDrain: API.OperationMethod<
   GetDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDrainRequest,
-  output: GetDrainResponse,
+  input: __S(12, __c1, 4) as any as S.Schema<GetDrainRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<GetDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2212,8 +2103,8 @@ export const getDrains: API.OperationMethod<
   GetDrainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDrainsRequest,
-  output: GetDrainsResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetDrainsRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<GetDrainsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2227,8 +2118,8 @@ export const testDrain: API.OperationMethod<
   TestDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestDrainRequest,
-  output: TestDrainResponse,
+  input: __S(16, __c2, 0) as any as S.Schema<TestDrainRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<TestDrainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2242,8 +2133,8 @@ export const updateDrain: API.OperationMethod<
   UpdateDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDrainRequest,
-  output: UpdateDrainResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<UpdateDrainRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<UpdateDrainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2258,7 +2149,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.String,
-          filter: CreateDrainRequestFilterFilter,
+          filter: S.Unknown,
         }),
       ).annotate({ identifier: "CreateDrainRequestFilter" });
     case 2:
@@ -2270,20 +2161,20 @@ function __c0(j: number): any {
         identifier: "CreateDrainRequestSchemasValue",
       });
     case 3:
-      return S.Record(S.String, CreateDrainRequestSchemasValue);
+      return S.Record(S.String, __S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           rate: S.Number,
-          env: S.optional(CreateDrainRequestSamplingItemEnv),
+          env: S.optional(S.String),
           requestPath: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateDrainRequestSamplingItem",
       });
     case 5:
-      return S.Array(CreateDrainRequestSamplingItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2293,7 +2184,7 @@ function __c0(j: number): any {
         identifier: "CreateDrainRequestTransformsItem",
       });
     case 7:
-      return S.Array(CreateDrainRequestTransformsItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -2304,18 +2195,18 @@ function __c1(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.String,
-          projects: CreateDrainRequestProjects,
-          projectIds: S.optional(CreateDrainRequestProjectIdsList),
-          filter: S.optional(CreateDrainRequestFilter),
-          schemas: CreateDrainRequestSchemasMap,
-          delivery: S.optional(CreateDrainRequestDelivery),
-          sampling: S.optional(CreateDrainRequestSamplingList),
-          transforms: S.optional(CreateDrainRequestTransformsList),
-          source: S.optional(CreateDrainRequestSource),
+          projects: S.String,
+          projectIds: S.optional(__S(0, __c0, 0)),
+          filter: S.optional(__S(1, __c0, 1)),
+          schemas: __S(3, __c0, 3),
+          delivery: S.optional(S.Unknown),
+          sampling: S.optional(__S(5, __c0, 5)),
+          transforms: S.optional(__S(7, __c0, 7)),
+          source: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v1/drains", code: 200 })),
       ).annotate({ identifier: "CreateDrainRequest" });
     case 1:
-      return S.suspend(() => CreateDrainResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDrainResponse",
       });
     case 2:
@@ -2339,7 +2230,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/drains/{id}", code: 200 })),
       ).annotate({ identifier: "GetDrainRequest" });
     case 5:
-      return S.suspend(() => GetDrainResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDrainResponse",
       });
     case 6:
@@ -2354,7 +2245,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          drains: GetDrainsResponseDrains,
+          drains: S.Unknown,
         }),
       ).annotate({ identifier: "GetDrainsResponse" });
   }
@@ -2366,12 +2257,12 @@ function __c2(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          schemas: TestDrainRequestSchemasMap,
-          delivery: TestDrainRequestDelivery,
+          schemas: __S(3, __c0, 3),
+          delivery: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/v1/drains/test", code: 200 })),
       ).annotate({ identifier: "TestDrainRequest" });
     case 1:
-      return S.suspend(() => TestDrainResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "TestDrainResponse",
       });
     case 2:
@@ -2381,20 +2272,25 @@ function __c2(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
-          projects: S.optional(UpdateDrainRequestProjects),
-          projectIds: S.optional(S.NullOr(UpdateDrainRequestProjectIdsList)),
-          filter: S.optional(UpdateDrainRequestFilter),
-          schemas: S.optional(UpdateDrainRequestSchemasMap),
-          delivery: S.optional(UpdateDrainRequestDelivery),
-          sampling: S.optional(S.NullOr(UpdateDrainRequestSamplingList)),
-          transforms: S.optional(S.NullOr(UpdateDrainRequestTransformsList)),
-          status: S.optional(UpdateDrainRequestStatus),
-          source: S.optional(UpdateDrainRequestSource),
+          projects: S.optional(S.String),
+          projectIds: S.optional(S.NullOr(__S(0, __c0, 0))),
+          filter: S.optional(S.Unknown),
+          schemas: S.optional(__S(3, __c0, 3)),
+          delivery: S.optional(S.Unknown),
+          sampling: S.optional(S.NullOr(__S(5, __c0, 5))),
+          transforms: S.optional(S.NullOr(__S(7, __c0, 7))),
+          status: S.optional(S.String),
+          source: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/drains/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateDrainRequest" });
     case 3:
-      return S.suspend(() => UpdateDrainResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDrainResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

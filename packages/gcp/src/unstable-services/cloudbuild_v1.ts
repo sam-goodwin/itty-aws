@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type ApprovalResultDecisionEnum = "DECISION_UNSPECIFIED" | "APPROVED" | "REJECTED";
-const ApprovalResultDecisionEnum = S.String;
-
 /** ApprovalResult describes the decision and associated metadata of a manual approval of a build. */
 export interface ApprovalResult {
   /** Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called. */
@@ -78,32 +78,19 @@ export interface ApprovalResult {
   /** Output only. The time when the approval decision was made. */
   approvalTime?: string;
 }
-const ApprovalResult = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ApprovalResult>;
-
 /** Request to approve or reject a pending build. */
 export interface ApproveBuildRequest {
   /** Approval decision and metadata. */
   approvalResult?: ApprovalResult;
 }
-const ApproveBuildRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ApproveBuildRequest>;
-
 export interface ApproveProjectsBuildsRequest {
   /** Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" */
   name: string;
   /** Request body */
   body?: ApproveBuildRequest;
 }
-const ApproveProjectsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ApproveProjectsBuildsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -113,8 +100,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -128,19 +113,12 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
-
 export interface ApproveProjectsLocationsBuildsRequest {
   /** Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" */
   name: string;
   /** Request body */
   body?: ApproveBuildRequest;
 }
-const ApproveProjectsLocationsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ApproveProjectsLocationsBuildsRequest>;
-
 /** BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server. */
 export interface BitbucketServerRepositoryId {
   /** Required. Identifier for the project storing the repository. */
@@ -150,11 +128,6 @@ export interface BitbucketServerRepositoryId {
   /** Required. Identifier for the repository. */
   repoSlug?: string;
 }
-const BitbucketServerRepositoryId = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BitbucketServerRepositoryId>;
-
 /** / BitbucketServerConnectedRepository represents a connected Bitbucket Server / repository. */
 export interface BitbucketServerConnectedRepository {
   /** The Bitbucket Server repositories to connect. */
@@ -164,11 +137,6 @@ export interface BitbucketServerConnectedRepository {
   /** Output only. The status of the repo connection request. */
   status?: Status;
 }
-const BitbucketServerConnectedRepository = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BitbucketServerConnectedRepository>;
-
 /** Request to connect a repository from a connected Bitbucket Server host. */
 export interface CreateBitbucketServerConnectedRepositoryRequest {
   /** Required. The Bitbucket Server repository to connect. */
@@ -176,62 +144,29 @@ export interface CreateBitbucketServerConnectedRepositoryRequest {
   /** Required. The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
   parent?: string;
 }
-const CreateBitbucketServerConnectedRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateBitbucketServerConnectedRepositoryRequest>;
-
 export type CreateBitbucketServerConnectedRepositoryRequestList =
   Array<CreateBitbucketServerConnectedRepositoryRequest>;
-const CreateBitbucketServerConnectedRepositoryRequestList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateBitbucketServerConnectedRepositoryRequestList>;
-
 /** RPC request object accepted by BatchCreateBitbucketServerConnectedRepositories RPC method. */
 export interface BatchCreateBitbucketServerConnectedRepositoriesRequest {
   /** Required. Requests to connect Bitbucket Server repositories. */
   requests?: CreateBitbucketServerConnectedRepositoryRequestList;
 }
-const BatchCreateBitbucketServerConnectedRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BatchCreateBitbucketServerConnectedRepositoriesRequest>;
-
 export interface BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest {
   /** The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
   parent: string;
   /** Request body */
   body?: BatchCreateBitbucketServerConnectedRepositoriesRequest;
 }
-const BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    5,
-  ) as any as S.Schema<BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CancelOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 /** Request to cancel an ongoing build. */
 export interface CancelBuildRequest {
   /** The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}` */
@@ -241,8 +176,6 @@ export interface CancelBuildRequest {
   /** Required. ID of the build. */
   id?: string;
 }
-const CancelBuildRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CancelBuildRequest>;
-
 export interface CancelProjectsBuildsRequest {
   /** Required. ID of the project. */
   projectId: string;
@@ -251,14 +184,7 @@ export interface CancelProjectsBuildsRequest {
   /** Request body */
   body?: CancelBuildRequest;
 }
-const CancelProjectsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CancelProjectsBuildsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<StringMap>;
-
 /** Represents a generic artifact as a build dependency. */
 export interface GenericArtifactDependency {
   /** Required. The location to download the artifact files from. Ex: projects/p1/locations/us/repositories/r1/packages/p1/versions/v1 */
@@ -266,11 +192,6 @@ export interface GenericArtifactDependency {
   /** Required. Where the artifact files should be placed on the worker. */
   destPath?: string;
 }
-const GenericArtifactDependency = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GenericArtifactDependency>;
-
 /** A repository for a git source. */
 export interface GitSourceRepository {
   /** The Developer Connect Git repository link formatted as `projects/*\/locations/*\/connections/*\/gitRepositoryLink/*` */
@@ -278,8 +199,6 @@ export interface GitSourceRepository {
   /** Location of the Git repository. */
   url?: string;
 }
-const GitSourceRepository = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GitSourceRepository>;
-
 /** Represents a git repository as a build dependency. */
 export interface GitSourceDependency {
   /** Optional. True if remote tags should be fetched too (default false). Note: when depth is 1 (default), git fetch only retrieves tags pointing to commits within the shallow boundary. Set depth to -1 to fetch all historical tags. */
@@ -295,8 +214,6 @@ export interface GitSourceDependency {
   /** Required. Where should the files be placed on the worker. */
   destPath?: string;
 }
-const GitSourceDependency = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GitSourceDependency>;
-
 /** A dependency that the Cloud Build worker will fetch before executing user steps. */
 export interface Dependency {
   /** If set to true disable all dependency fetching (ignoring the default source as well). */
@@ -306,17 +223,9 @@ export interface Dependency {
   /** Represents a git repository as a build dependency. */
   gitSource?: GitSourceDependency;
 }
-const Dependency = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Dependency>;
-
 export type DependencyList = Array<Dependency>;
-const DependencyList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DependencyList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<StringList>;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<IntegerList>;
-
 /** Start and end times for a build execution phase. */
 export interface TimeSpan {
   /** End of time span. */
@@ -324,8 +233,6 @@ export interface TimeSpan {
   /** Start of time span. */
   startTime?: string;
 }
-const TimeSpan = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<TimeSpan>;
-
 export type BuildStepStatusEnum =
   | "STATUS_UNKNOWN"
   | "PENDING"
@@ -337,8 +244,6 @@ export type BuildStepStatusEnum =
   | "TIMEOUT"
   | "CANCELLED"
   | "EXPIRED";
-const BuildStepStatusEnum = S.String;
-
 /** Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution. */
 export interface Volume {
   /** Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps. */
@@ -346,11 +251,7 @@ export interface Volume {
   /** Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths. */
   path?: string;
 }
-const Volume = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Volume>;
-
 export type VolumeList = Array<Volume>;
-const VolumeList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<VolumeList>;
-
 /** StepResult is the declaration of a result for a build step. */
 export interface StepResult {
   /** Optional. The type of attestation to be generated. */
@@ -360,11 +261,7 @@ export interface StepResult {
   /** Optional. The content of the attestation to be generated. */
   attestationContent?: string;
 }
-const StepResult = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<StepResult>;
-
 export type StepResultList = Array<StepResult>;
-const StepResultList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<StepResultList>;
-
 /** A step in the build pipeline. */
 export interface BuildStep {
   /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
@@ -406,11 +303,7 @@ export interface BuildStep {
   /** Declaration of results for this build step. */
   results?: StepResultList;
 }
-const BuildStep = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<BuildStep>;
-
 export type BuildStepList = Array<BuildStep>;
-const BuildStepList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<BuildStepList>;
-
 /** Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository. */
 export interface PythonPackage {
   /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
@@ -418,11 +311,7 @@ export interface PythonPackage {
   /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
   paths?: StringList;
 }
-const PythonPackage = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PythonPackage>;
-
 export type PythonPackageList = Array<PythonPackage>;
-const PythonPackageList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PythonPackageList>;
-
 /** Files in the workspace to upload to Cloud Storage upon successful completion of all build steps. */
 export interface ArtifactObjects {
   /** Path globs used to match files in the build's workspace. */
@@ -432,8 +321,6 @@ export interface ArtifactObjects {
   /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
   location?: string;
 }
-const ArtifactObjects = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ArtifactObjects>;
-
 /** Npm package to upload to Artifact Registry upon successful completion of all build steps. */
 export interface NpmPackage {
   /** Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix. */
@@ -441,11 +328,7 @@ export interface NpmPackage {
   /** Optional. Path to the package.json. e.g. workspace/path/to/package Only one of `archive` or `package_path` can be specified. */
   packagePath?: string;
 }
-const NpmPackage = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<NpmPackage>;
-
 export type NpmPackageList = Array<NpmPackage>;
-const NpmPackageList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<NpmPackageList>;
-
 /** Go module to upload to Artifact Registry upon successful completion of all build steps. A module refers to all dependencies in a go.mod file. */
 export interface GoModule {
   /** Optional. Project ID of the Artifact Registry repository. Defaults to the build project. */
@@ -461,11 +344,7 @@ export interface GoModule {
   /** Optional. Artifact Registry repository name. Specified Go modules will be zipped and uploaded to Artifact Registry with this location as a prefix. e.g. my-go-repo */
   repositoryName?: string;
 }
-const GoModule = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GoModule>;
-
 export type GoModuleList = Array<GoModule>;
-const GoModuleList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GoModuleList>;
-
 /** OCI image to upload to Artifact Registry upon successful completion of all build steps. */
 export interface Oci {
   /** Required. Path on the local file system where to find the container to upload. e.g. /workspace/my-image.tar */
@@ -475,11 +354,7 @@ export interface Oci {
   /** Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image */
   registryPath?: string;
 }
-const Oci = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Oci>;
-
 export type OciList = Array<Oci>;
-const OciList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<OciList>;
-
 /** A Maven artifact to upload to Artifact Registry upon successful completion of all build steps. */
 export interface MavenArtifact {
   /** Optional. Path to a folder containing the files to upload to Artifact Registry. This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a relative path from /workspace, e.g. `my-app/target/`. This field is mutually exclusive with the `path` field. */
@@ -495,11 +370,7 @@ export interface MavenArtifact {
   /** Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix. */
   repository?: string;
 }
-const MavenArtifact = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<MavenArtifact>;
-
 export type MavenArtifactList = Array<MavenArtifact>;
-const MavenArtifactList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<MavenArtifactList>;
-
 /** Generic artifact to upload to Artifact Registry upon successful completion of all build steps. */
 export interface GenericArtifact {
   /** Required. Path to the generic artifact in the build's workspace to be uploaded to Artifact Registry. */
@@ -507,11 +378,7 @@ export interface GenericArtifact {
   /** Required. Registry path to upload the generic artifact to, in the form projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/versions/$VERSION */
   registryPath?: string;
 }
-const GenericArtifact = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GenericArtifact>;
-
 export type GenericArtifactList = Array<GenericArtifact>;
-const GenericArtifactList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GenericArtifactList>;
-
 /** Artifacts produced by a build that should be uploaded upon successful completion of all build steps. */
 export interface Artifacts {
   /** A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE. */
@@ -531,8 +398,6 @@ export interface Artifacts {
   /** Optional. A list of generic artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. If any artifacts fail to be pushed, the build is marked FAILURE. */
   genericArtifacts?: GenericArtifactList;
 }
-const Artifacts = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Artifacts>;
-
 /** Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials. */
 export interface Secret {
   /** Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets. */
@@ -540,11 +405,7 @@ export interface Secret {
   /** Cloud KMS key name to use to decrypt these envs. */
   kmsKeyName?: string;
 }
-const Secret = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Secret>;
-
 export type SecretList = Array<Secret>;
-const SecretList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SecretList>;
-
 /** Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value. */
 export interface InlineSecret {
   /** Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*\/locations/*\/keyRings/*\/cryptoKeys/* */
@@ -552,11 +413,7 @@ export interface InlineSecret {
   /** Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets. */
   envMap?: StringMap;
 }
-const InlineSecret = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<InlineSecret>;
-
 export type InlineSecretList = Array<InlineSecret>;
-const InlineSecretList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<InlineSecretList>;
-
 /** Pairs a secret environment variable with a SecretVersion in Secret Manager. */
 export interface SecretManagerSecret {
   /** Resource name of the SecretVersion. In format: projects/*\/secrets/*\/versions/* */
@@ -564,14 +421,7 @@ export interface SecretManagerSecret {
   /** Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. */
   env?: string;
 }
-const SecretManagerSecret = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SecretManagerSecret>;
-
 export type SecretManagerSecretList = Array<SecretManagerSecret>;
-const SecretManagerSecretList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SecretManagerSecretList>;
-
 /** Secrets and secret environment variables. */
 export interface Secrets {
   /** Secrets encrypted with KMS key and the associated secret environment variable. */
@@ -579,23 +429,17 @@ export interface Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
   secretManager?: SecretManagerSecretList;
 }
-const Secrets = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Secrets>;
-
 export type BuildApprovalStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "APPROVED"
   | "REJECTED"
   | "CANCELLED";
-const BuildApprovalStateEnum = S.String;
-
 /** ApprovalConfig describes configuration for manual approval of a build. */
 export interface ApprovalConfig {
   /** Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start. */
   approvalRequired?: boolean;
 }
-const ApprovalConfig = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ApprovalConfig>;
-
 /** BuildApproval describes a build's approval configuration, state, and result. */
 export interface BuildApproval {
   /** Output only. The state of this build's approval. */
@@ -605,8 +449,6 @@ export interface BuildApproval {
   /** Output only. Result of manual approval for this Build. */
   result?: ApprovalResult;
 }
-const BuildApproval = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<BuildApproval>;
-
 /** Location of the source in a 2nd-gen Google Cloud Build repository resource. */
 export interface ConnectedRepository {
   /** Required. Name of the Google Cloud Build repository, formatted as `projects/*\/locations/*\/connections/*\/repositories/*`. */
@@ -616,14 +458,10 @@ export interface ConnectedRepository {
   /** Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. */
   revision?: string;
 }
-const ConnectedRepository = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ConnectedRepository>;
-
 export type StorageSourceSourceFetcherEnum =
   | "SOURCE_FETCHER_UNSPECIFIED"
   | "GSUTIL"
   | "GCS_FETCHER";
-const StorageSourceSourceFetcherEnum = S.String;
-
 /** Location of the source in an archive file in Cloud Storage. */
 export interface StorageSource {
   /** Optional. Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used. */
@@ -635,8 +473,6 @@ export interface StorageSource {
   /** Required. Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build. */
   object?: string;
 }
-const StorageSource = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<StorageSource>;
-
 /** Location of the source in any accessible Git repository. */
 export interface GitSource {
   /** Required. Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote. */
@@ -646,8 +482,6 @@ export interface GitSource {
   /** Optional. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch. */
   revision?: string;
 }
-const GitSource = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GitSource>;
-
 /** This config defines the location of a source through Developer Connect. */
 export interface DeveloperConnectConfig {
   /** Required. Directory, relative to the source root, in which to run the build. */
@@ -657,11 +491,6 @@ export interface DeveloperConnectConfig {
   /** Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. */
   revision?: string;
 }
-const DeveloperConnectConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeveloperConnectConfig>;
-
 /** Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher). */
 export interface StorageSourceManifest {
   /** Required. Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
@@ -671,11 +500,6 @@ export interface StorageSourceManifest {
   /** Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used. */
   generation?: string;
 }
-const StorageSourceManifest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<StorageSourceManifest>;
-
 /** Location of the source in a Google Cloud Source Repository. */
 export interface RepoSource {
   /** Optional. Only trigger a build if the revision regex does NOT match the revision regex. */
@@ -695,8 +519,6 @@ export interface RepoSource {
   /** Explicit commit SHA to build. */
   commitSha?: string;
 }
-const RepoSource = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<RepoSource>;
-
 /** Location of the source in a supported storage service. */
 export interface Source {
   /** Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource. */
@@ -712,28 +534,18 @@ export interface Source {
   /** If provided, get the source from this location in a Cloud Source Repository. */
   repoSource?: RepoSource;
 }
-const Source = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Source>;
-
 /** HttpConfig is a configuration for HTTP related git operations. */
 export interface HttpConfig {
   /** SecretVersion resource of the HTTP proxy URL. The Service Account used in the build (either the default Service Account or user-specified Service Account) should have `secretmanager.versions.access` permissions on this secret. The proxy URL should be in format `protocol://@]proxyhost[:port]`. */
   proxySecretVersionName?: string;
 }
-const HttpConfig = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<HttpConfig>;
-
 /** GitConfig is a configuration for git operations. */
 export interface GitConfig {
   /** Configuration for HTTP related git operations. */
   http?: HttpConfig;
 }
-const GitConfig = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GitConfig>;
-
 export type BuildOptionsRequestedVerifyOptionEnum = "NOT_VERIFIED" | "VERIFIED";
-const BuildOptionsRequestedVerifyOptionEnum = S.String;
-
 export type BuildOptionsLogStreamingOptionEnum = "STREAM_DEFAULT" | "STREAM_ON" | "STREAM_OFF";
-const BuildOptionsLogStreamingOptionEnum = S.String;
-
 export type BuildOptionsSourceProvenanceHashItemEnum =
   | "NONE"
   | "SHA256"
@@ -741,19 +553,10 @@ export type BuildOptionsSourceProvenanceHashItemEnum =
   | "GO_MODULE_H1"
   | "SHA512"
   | "DIRSUM_SHA256";
-const BuildOptionsSourceProvenanceHashItemEnum = S.String;
-
 export type BuildOptionsSourceProvenanceHashItemEnumList = Array<
   BuildOptionsSourceProvenanceHashItemEnum | (string & {})
 >;
-const BuildOptionsSourceProvenanceHashItemEnumList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<BuildOptionsSourceProvenanceHashItemEnumList>;
-
 export type BuildOptionsSubstitutionOptionEnum = "MUST_MATCH" | "ALLOW_LOOSE";
-const BuildOptionsSubstitutionOptionEnum = S.String;
-
 export type BuildOptionsLoggingEnum =
   | "LOGGING_UNSPECIFIED"
   | "LEGACY"
@@ -761,14 +564,10 @@ export type BuildOptionsLoggingEnum =
   | "STACKDRIVER_ONLY"
   | "CLOUD_LOGGING_ONLY"
   | "NONE";
-const BuildOptionsLoggingEnum = S.String;
-
 export type BuildOptionsDefaultLogsBucketBehaviorEnum =
   | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
   | "REGIONAL_USER_OWNED_BUCKET"
   | "LEGACY_BUCKET";
-const BuildOptionsDefaultLogsBucketBehaviorEnum = S.String;
-
 /** Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information. */
 export interface PoolOption {
   /** Output only. OUTPUT_ONLY. The release or release channel used to run the Build. This is set to the same value as `PrivatePoolV1Config.WorkerConfig.worker_release` for the UI to easily access. */
@@ -778,8 +577,6 @@ export interface PoolOption {
   /** The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} */
   name?: string;
 }
-const PoolOption = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<PoolOption>;
-
 export type BuildOptionsMachineTypeEnum =
   | "UNSPECIFIED"
   | "N1_HIGHCPU_8"
@@ -788,8 +585,6 @@ export type BuildOptionsMachineTypeEnum =
   | "E2_HIGHCPU_32"
   | "E2_MEDIUM"
   | "E2_STANDARD_2";
-const BuildOptionsMachineTypeEnum = S.String;
-
 /** Optional arguments to enable specific features of builds. */
 export interface BuildOptions {
   /** A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
@@ -831,11 +626,7 @@ export interface BuildOptions {
   /** Option to include built-in and custom substitutions as env variables for all build steps. */
   automapSubstitutions?: boolean;
 }
-const BuildOptions = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<BuildOptions>;
-
 export type HashTypeEnum = "NONE" | "SHA256" | "MD5" | "GO_MODULE_H1" | "SHA512" | "DIRSUM_SHA256";
-const HashTypeEnum = S.String;
-
 /** Container message for hash values. */
 export interface Hash {
   /** The hash value. */
@@ -843,18 +634,12 @@ export interface Hash {
   /** The type of hash that was performed. */
   type?: HashTypeEnum | (string & {});
 }
-const Hash = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Hash>;
-
 export type HashList = Array<Hash>;
-const HashList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<HashList>;
-
 /** Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. */
 export interface FileHashes {
   /** Collection of file hashes. */
   fileHash?: HashList;
 }
-const FileHashes = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<FileHashes>;
-
 /** A Maven artifact uploaded using the MavenArtifact directive. */
 export interface UploadedMavenArtifact {
   /** Hash types and values of the Maven Artifact. */
@@ -866,23 +651,11 @@ export interface UploadedMavenArtifact {
   /** URI of the uploaded artifact. */
   uri?: string;
 }
-const UploadedMavenArtifact = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UploadedMavenArtifact>;
-
 export type UploadedMavenArtifactList = Array<UploadedMavenArtifact>;
-const UploadedMavenArtifactList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UploadedMavenArtifactList>;
-
 export type BuiltImageOciMediaTypeEnum =
   | "OCI_MEDIA_TYPE_UNSPECIFIED"
   | "IMAGE_MANIFEST"
   | "IMAGE_INDEX";
-const BuiltImageOciMediaTypeEnum = S.String;
-
 /** An image built by the pipeline. */
 export interface BuiltImage {
   /** Output only. The OCI media type of the artifact. Non-OCI images, such as Docker images, will have an unspecified value. */
@@ -896,11 +669,7 @@ export interface BuiltImage {
   /** Docker Registry 2.0 digest. */
   digest?: string;
 }
-const BuiltImage = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<BuiltImage>;
-
 export type BuiltImageList = Array<BuiltImage>;
-const BuiltImageList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<BuiltImageList>;
-
 /** A Go module artifact uploaded to Artifact Registry using the GoModule directive. */
 export interface UploadedGoModule {
   /** Hash types and values of the Go Module Artifact. */
@@ -913,18 +682,12 @@ export interface UploadedGoModule {
   uri?: string;
 }
 export type UploadedGoModuleList = Array<UploadedGoModule>;
-const UploadedGoModuleList = UploadedMavenArtifactList as any as S.Schema<UploadedGoModuleList>;
-
 /** Results for a build step. */
 export interface BuildStepResults {
   /** Results for a build step. */
   results?: StringMap;
 }
-const BuildStepResults = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<BuildStepResults>;
-
 export type BuildStepResultsMap = { [key: string]: BuildStepResults | undefined };
-const BuildStepResultsMap = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<BuildStepResultsMap>;
-
 /** An npm package uploaded to Artifact Registry using the NpmPackage directive. */
 export interface UploadedNpmPackage {
   /** URI of the uploaded npm package. */
@@ -936,14 +699,7 @@ export interface UploadedNpmPackage {
   /** Hash types and values of the npm package. */
   fileHashes?: FileHashes;
 }
-const UploadedNpmPackage = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<UploadedNpmPackage>;
-
 export type UploadedNpmPackageList = Array<UploadedNpmPackage>;
-const UploadedNpmPackageList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<UploadedNpmPackageList>;
-
 /** Artifact uploaded using the PythonPackage directive. */
 export interface UploadedPythonPackage {
   /** Hash types and values of the Python Artifact. */
@@ -955,20 +711,8 @@ export interface UploadedPythonPackage {
   /** Output only. Path to the artifact in Artifact Registry. */
   artifactRegistryPackage?: string;
 }
-const UploadedPythonPackage = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<UploadedPythonPackage>;
-
 export type UploadedPythonPackageList = Array<UploadedPythonPackage>;
-const UploadedPythonPackageList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<UploadedPythonPackageList>;
-
 export type FileHashesMap = { [key: string]: FileHashes | undefined };
-const FileHashesMap = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<FileHashesMap>;
-
 /** A generic artifact uploaded to Artifact Registry using the GenericArtifact directive. */
 export interface UploadedGenericArtifact {
   /** Output only. The hash of the whole artifact. */
@@ -982,17 +726,7 @@ export interface UploadedGenericArtifact {
   /** Output only. Path to the artifact in Artifact Registry. */
   artifactRegistryPackage?: string;
 }
-const UploadedGenericArtifact = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<UploadedGenericArtifact>;
-
 export type UploadedGenericArtifactList = Array<UploadedGenericArtifact>;
-const UploadedGenericArtifactList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<UploadedGenericArtifactList>;
-
 /** Artifacts created by the build pipeline. */
 export interface Results {
   /** Time to push all non-container artifacts to Cloud Storage. */
@@ -1020,8 +754,6 @@ export interface Results {
   /** Output only. Generic artifacts uploaded to Artifact Registry at the end of the build. */
   genericArtifacts?: UploadedGenericArtifactList;
 }
-const Results = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Results>;
-
 export type FailureInfoTypeEnum =
   | "FAILURE_TYPE_UNSPECIFIED"
   | "PUSH_FAILED"
@@ -1030,8 +762,6 @@ export type FailureInfoTypeEnum =
   | "LOGGING_FAILURE"
   | "USER_BUILD_STEP"
   | "FETCH_SOURCE_FAILED";
-const FailureInfoTypeEnum = S.String;
-
 /** A fatal problem encountered during the execution of the build. */
 export interface FailureInfo {
   /** The name of the failure. */
@@ -1039,8 +769,6 @@ export interface FailureInfo {
   /** Explains the failure issue in more detail using hard-coded text. */
   detail?: string;
 }
-const FailureInfo = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<FailureInfo>;
-
 /** Provenance of the source. Ways to find the original source, or verify that some source was used for this build. */
 export interface SourceProvenance {
   /** Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved. */
@@ -1056,8 +784,6 @@ export interface SourceProvenance {
   /** Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved. */
   resolvedGitSource?: GitSource;
 }
-const SourceProvenance = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<SourceProvenance>;
-
 export type BuildStatusEnum =
   | "STATUS_UNKNOWN"
   | "PENDING"
@@ -1069,11 +795,7 @@ export type BuildStatusEnum =
   | "TIMEOUT"
   | "CANCELLED"
   | "EXPIRED";
-const BuildStatusEnum = S.String;
-
 export type WarningPriorityEnum = "PRIORITY_UNSPECIFIED" | "INFO" | "WARNING" | "ALERT";
-const WarningPriorityEnum = S.String;
-
 /** A non-fatal problem encountered during the execution of the build. */
 export interface Warning {
   /** Explanation of the warning generated. */
@@ -1081,14 +803,8 @@ export interface Warning {
   /** The priority for this warning. */
   priority?: WarningPriorityEnum | (string & {});
 }
-const Warning = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Warning>;
-
 export type WarningList = Array<Warning>;
-const WarningList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<WarningList>;
-
 export type TimeSpanMap = { [key: string]: TimeSpan | undefined };
-const TimeSpanMap = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<TimeSpanMap>;
-
 /** A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA. */
 export interface Build {
   /** Substitutions data for `Build` resource. */
@@ -1154,30 +870,18 @@ export interface Build {
   /** Output only. Unique identifier of the build. */
   id?: string;
 }
-const Build = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Build>;
-
 export interface CancelProjectsLocationsBuildsRequest {
   /** The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}` */
   name: string;
   /** Request body */
   body?: CancelBuildRequest;
 }
-const CancelProjectsLocationsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CancelProjectsLocationsBuildsRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 export interface CreateProjectsBuildsRequest {
   /** Required. ID of the project. */
   projectId: string;
@@ -1186,11 +890,6 @@ export interface CreateProjectsBuildsRequest {
   /** Request body */
   body?: Build;
 }
-const CreateProjectsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateProjectsBuildsRequest>;
-
 /** GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/. */
 export interface GitHubEnterpriseSecrets {
   /** The resource name for the OAuth secret in Secret Manager. */
@@ -1210,11 +909,6 @@ export interface GitHubEnterpriseSecrets {
   /** The resource name for the OAuth client ID secret version in Secret Manager. */
   oauthClientIdVersionName?: string;
 }
-const GitHubEnterpriseSecrets = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GitHubEnterpriseSecrets>;
-
 /** GitHubEnterpriseConfig represents a configuration for a GitHub Enterprise server. */
 export interface GitHubEnterpriseConfig {
   /** Optional. Names of secrets in Secret Manager. */
@@ -1236,11 +930,6 @@ export interface GitHubEnterpriseConfig {
   /** Required. The GitHub app id of the Cloud Build app on the GitHub Enterprise server. */
   appId?: string;
 }
-const GitHubEnterpriseConfig = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GitHubEnterpriseConfig>;
-
 export interface CreateProjectsGithubEnterpriseConfigsRequest {
   /** Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character */
   gheConfigId?: string;
@@ -1251,11 +940,6 @@ export interface CreateProjectsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-const CreateProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<CreateProjectsGithubEnterpriseConfigsRequest>;
-
 /** BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server. */
 export interface BitbucketServerSecrets {
   /** Required. The resource name for the read access token's secret version. */
@@ -1265,17 +949,7 @@ export interface BitbucketServerSecrets {
   /** Required. The resource name for the admin access token's secret version. */
   adminAccessTokenVersionName?: string;
 }
-const BitbucketServerSecrets = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<BitbucketServerSecrets>;
-
 export type BitbucketServerRepositoryIdList = Array<BitbucketServerRepositoryId>;
-const BitbucketServerRepositoryIdList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<BitbucketServerRepositoryIdList>;
-
 /** BitbucketServerConfig represents the configuration for a Bitbucket Server. */
 export interface BitbucketServerConfig {
   /** Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt. */
@@ -1301,11 +975,6 @@ export interface BitbucketServerConfig {
   /** Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set. */
   peeredNetworkIpRange?: string;
 }
-const BitbucketServerConfig = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<BitbucketServerConfig>;
-
 export interface CreateProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. Name of the parent resource. */
   parent: string;
@@ -1314,11 +983,6 @@ export interface CreateProjectsLocationsBitbucketServerConfigsRequest {
   /** Request body */
   body?: BitbucketServerConfig;
 }
-const CreateProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateProjectsLocationsBitbucketServerConfigsRequest>;
-
 export interface CreateProjectsLocationsBuildsRequest {
   /** The parent resource where this build will be created. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -1327,11 +991,6 @@ export interface CreateProjectsLocationsBuildsRequest {
   /** Request body */
   body?: Build;
 }
-const CreateProjectsLocationsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateProjectsLocationsBuildsRequest>;
-
 export interface CreateProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
   parent: string;
@@ -1342,16 +1001,9 @@ export interface CreateProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-const CreateProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CreateProjectsLocationsGithubEnterpriseConfigsRequest>;
-
 export type BuildTriggerIncludeBuildLogsEnum =
   | "INCLUDE_BUILD_LOGS_UNSPECIFIED"
   | "INCLUDE_BUILD_LOGS_WITH_STATUS";
-const BuildTriggerIncludeBuildLogsEnum = S.String;
-
 /** Push contains filter properties for matching GitHub git pushes. */
 export interface PushFilter {
   /** Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
@@ -1361,8 +1013,6 @@ export interface PushFilter {
   /** Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
   tag?: string;
 }
-const PushFilter = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<PushFilter>;
-
 export type DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
   | "GIT_REPOSITORY_LINK_TYPE_UNSPECIFIED"
   | "GITHUB"
@@ -1371,14 +1021,10 @@ export type DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
   | "GITLAB_ENTERPRISE"
   | "BITBUCKET_DATA_CENTER"
   | "BITBUCKET_CLOUD";
-const DeveloperConnectEventConfigGitRepositoryLinkTypeEnum = S.String;
-
 export type PullRequestFilterCommentControlEnum =
   | "COMMENTS_DISABLED"
   | "COMMENTS_ENABLED"
   | "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY";
-const PullRequestFilterCommentControlEnum = S.String;
-
 /** PullRequestFilter contains filter properties for matching GitHub Pull Requests. */
 export interface PullRequestFilter {
   /** If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run. */
@@ -1388,8 +1034,6 @@ export interface PullRequestFilter {
   /** Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
   branch?: string;
 }
-const PullRequestFilter = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<PullRequestFilter>;
-
 /** The configuration of a trigger that creates a build whenever an event from the DeveloperConnect API is received. */
 export interface DeveloperConnectEventConfig {
   /** Required. The Developer Connect Git repository link, formatted as `projects/*\/locations/*\/connections/*\/gitRepositoryLink/*`. */
@@ -1401,19 +1045,12 @@ export interface DeveloperConnectEventConfig {
   /** Filter to match changes in pull requests. */
   pullRequest?: PullRequestFilter;
 }
-const DeveloperConnectEventConfig = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeveloperConnectEventConfig>;
-
 export type PubsubConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "OK"
   | "SUBSCRIPTION_DELETED"
   | "TOPIC_DELETED"
   | "SUBSCRIPTION_MISCONFIGURED";
-const PubsubConfigStateEnum = S.String;
-
 /** PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published. */
 export interface PubsubConfig {
   /** Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests. */
@@ -1425,8 +1062,6 @@ export interface PubsubConfig {
   /** Service account that will make the push request. */
   serviceAccountEmail?: string;
 }
-const PubsubConfig = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<PubsubConfig>;
-
 export type RepositoryEventConfigRepositoryTypeEnum =
   | "REPOSITORY_TYPE_UNSPECIFIED"
   | "GITHUB"
@@ -1434,8 +1069,6 @@ export type RepositoryEventConfigRepositoryTypeEnum =
   | "GITLAB_ENTERPRISE"
   | "BITBUCKET_DATA_CENTER"
   | "BITBUCKET_CLOUD";
-const RepositoryEventConfigRepositoryTypeEnum = S.String;
-
 /** The configuration of a trigger that creates a build whenever an event from Repo API is received. */
 export interface RepositoryEventConfig {
   /** Output only. The type of the SCM vendor the repository points to. */
@@ -1447,14 +1080,7 @@ export interface RepositoryEventConfig {
   /** Filter to match changes in pull requests. */
   pullRequest?: PullRequestFilter;
 }
-const RepositoryEventConfig = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<RepositoryEventConfig>;
-
 export type WebhookConfigStateEnum = "STATE_UNSPECIFIED" | "OK" | "SECRET_DELETED";
-const WebhookConfigStateEnum = S.String;
-
 /** WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL. */
 export interface WebhookConfig {
   /** Required. Resource name for the secret required as a URL parameter. */
@@ -1462,16 +1088,12 @@ export interface WebhookConfig {
   /** Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests. */
   state?: WebhookConfigStateEnum | (string & {});
 }
-const WebhookConfig = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<WebhookConfig>;
-
 export type BuildTriggerEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "REPO"
   | "WEBHOOK"
   | "PUBSUB"
   | "MANUAL";
-const BuildTriggerEventTypeEnum = S.String;
-
 export type GitRepoSourceRepoTypeEnum =
   | "UNKNOWN"
   | "CLOUD_SOURCE_REPOSITORIES"
@@ -1479,8 +1101,6 @@ export type GitRepoSourceRepoTypeEnum =
   | "BITBUCKET_SERVER"
   | "GITLAB"
   | "BITBUCKET_CLOUD";
-const GitRepoSourceRepoTypeEnum = S.String;
-
 /** GitRepoSource describes a repo and ref of a code repository. */
 export interface GitRepoSource {
   /** The branch or tag to use. Must start with "refs/" (required). */
@@ -1496,8 +1116,6 @@ export interface GitRepoSource {
   /** The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required. */
   uri?: string;
 }
-const GitRepoSource = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GitRepoSource>;
-
 export type GitFileSourceRepoTypeEnum =
   | "UNKNOWN"
   | "CLOUD_SOURCE_REPOSITORIES"
@@ -1505,8 +1123,6 @@ export type GitFileSourceRepoTypeEnum =
   | "BITBUCKET_SERVER"
   | "GITLAB"
   | "BITBUCKET_CLOUD";
-const GitFileSourceRepoTypeEnum = S.String;
-
 /** GitFileSource describes a file within a (possibly remote) code repository. */
 export interface GitFileSource {
   /** The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`. */
@@ -1524,8 +1140,6 @@ export interface GitFileSource {
   /** The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path. */
   revision?: string;
 }
-const GitFileSource = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GitFileSource>;
-
 /** BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received. */
 export interface BitbucketServerTriggerConfig {
   /** Filter to match changes in pull requests. */
@@ -1541,11 +1155,6 @@ export interface BitbucketServerTriggerConfig {
   /** Filter to match changes in refs like branches, tags. */
   push?: PushFilter;
 }
-const BitbucketServerTriggerConfig = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<BitbucketServerTriggerConfig>;
-
 /** GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. */
 export interface GitHubEventsConfig {
   /** The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
@@ -1561,8 +1170,6 @@ export interface GitHubEventsConfig {
   /** Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders". */
   name?: string;
 }
-const GitHubEventsConfig = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<GitHubEventsConfig>;
-
 /** Configuration for an automated build in response to source repository changes. */
 export interface BuildTrigger {
   /** Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml). */
@@ -1620,8 +1227,6 @@ export interface BuildTrigger {
   /** GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`. */
   github?: GitHubEventsConfig;
 }
-const BuildTrigger = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<BuildTrigger>;
-
 export interface CreateProjectsLocationsTriggersRequest {
   /** The parent resource where this trigger will be created. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -1630,11 +1235,6 @@ export interface CreateProjectsLocationsTriggersRequest {
   /** Request body */
   body?: BuildTrigger;
 }
-const CreateProjectsLocationsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateProjectsLocationsTriggersRequest>;
-
 export type WorkerPoolStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1642,8 +1242,6 @@ export type WorkerPoolStateEnum =
   | "DELETING"
   | "DELETED"
   | "UPDATING";
-const WorkerPoolStateEnum = S.String;
-
 /** Defines the Private Service Connect network configuration for the pool. */
 export interface PrivateServiceConnect {
   /** Required. Immutable. The network attachment that the worker network interface is peered to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments) */
@@ -1653,11 +1251,6 @@ export interface PrivateServiceConnect {
   /** Required. Immutable. Disable public IP on the primary network interface. If true, workers are created without any public address, which prevents network egress to public IPs unless a network proxy is configured. If false, workers are created with a public address which allows for public internet egress. The public address only applies to traffic through the primary network interface. If `route_all_traffic` is set to true, all traffic will go through the non-primary network interface, this boolean has no effect. */
   publicIpAddressDisabled?: boolean;
 }
-const PrivateServiceConnect = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<PrivateServiceConnect>;
-
 /** Defines the configuration to be used for creating workers in the pool. */
 export interface WorkerConfig {
   /** Optional. Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default. */
@@ -1669,14 +1262,10 @@ export interface WorkerConfig {
   /** Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 4000. If `0` is specified, Cloud Build will use a standard disk size. */
   diskSizeGb?: string;
 }
-const WorkerConfig = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<WorkerConfig>;
-
 export type NetworkConfigEgressOptionEnum =
   | "EGRESS_OPTION_UNSPECIFIED"
   | "NO_PUBLIC_EGRESS"
   | "PUBLIC_EGRESS";
-const NetworkConfigEgressOptionEnum = S.String;
-
 /** Defines the network configuration for the pool. */
 export interface NetworkConfig {
   /** Option to configure network egress for the workers. */
@@ -1686,8 +1275,6 @@ export interface NetworkConfig {
   /** Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment) */
   peeredNetwork?: string;
 }
-const NetworkConfig = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<NetworkConfig>;
-
 /** Configuration for a V1 `PrivatePool`. */
 export interface PrivatePoolV1Config {
   /** Immutable. Private Service Connect(PSC) Network configuration for the pool. */
@@ -1697,8 +1284,6 @@ export interface PrivatePoolV1Config {
   /** Network configuration for the pool. */
   networkConfig?: NetworkConfig;
 }
-const PrivatePoolV1Config = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<PrivatePoolV1Config>;
-
 /** Configuration for a `WorkerPool`. Cloud Build owns and maintains a pool of workers for general use and have no access to a project's private network. By default, builds submitted to Cloud Build will use a worker from this pool. If your build needs access to resources on a private network, create and use a `WorkerPool` to run your builds. Private `WorkerPool`s give your builds access to any single VPC network that you administer, including any on-prem resources connected to that VPC network. For an overview of private pools, see [Private pools overview](https://cloud.google.com/build/docs/private-pools/private-pools-overview). */
 export interface WorkerPool {
   /** Output only. Time at which the request to update the `WorkerPool` was received. */
@@ -1722,8 +1307,6 @@ export interface WorkerPool {
   /** A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters. */
   displayName?: string;
 }
-const WorkerPool = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<WorkerPool>;
-
 export interface CreateProjectsLocationsWorkerPoolsRequest {
   /** Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -1734,11 +1317,6 @@ export interface CreateProjectsLocationsWorkerPoolsRequest {
   /** Request body */
   body?: WorkerPool;
 }
-const CreateProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>;
-
 export interface CreateProjectsTriggersRequest {
   /** Required. ID of the project for which to configure automatic builds. */
   projectId: string;
@@ -1747,11 +1325,6 @@ export interface CreateProjectsTriggersRequest {
   /** Request body */
   body?: BuildTrigger;
 }
-const CreateProjectsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreateProjectsTriggersRequest>;
-
 export interface DeleteProjectsGithubEnterpriseConfigsRequest {
   /** ID of the project */
   projectId?: string;
@@ -1760,20 +1333,10 @@ export interface DeleteProjectsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
   name: string;
 }
-const DeleteProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>;
-
 export interface DeleteProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. The config resource name. */
   name: string;
 }
-const DeleteProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsBitbucketServerConfigsRequest>;
-
 export interface DeleteProjectsLocationsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
   name: string;
@@ -1782,11 +1345,6 @@ export interface DeleteProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Unique identifier of the `GitHubEnterpriseConfig` */
   configId?: string;
 }
-const DeleteProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>;
-
 export interface DeleteProjectsLocationsTriggersRequest {
   /** Required. ID of the `BuildTrigger` to delete. */
   triggerId?: string;
@@ -1795,11 +1353,6 @@ export interface DeleteProjectsLocationsTriggersRequest {
   /** Required. ID of the project that owns the trigger. */
   projectId?: string;
 }
-const DeleteProjectsLocationsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>;
-
 export interface DeleteProjectsLocationsWorkerPoolsRequest {
   /** If set to true, and the `WorkerPool` is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
@@ -1810,11 +1363,6 @@ export interface DeleteProjectsLocationsWorkerPoolsRequest {
   /** If set, validate the request and preview the response, but do not actually post it. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>;
-
 export interface DeleteProjectsTriggersRequest {
   /** The name of the `Trigger` to delete. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
   name?: string;
@@ -1823,20 +1371,10 @@ export interface DeleteProjectsTriggersRequest {
   /** Required. ID of the project that owns the trigger. */
   projectId: string;
 }
-const DeleteProjectsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DeleteProjectsTriggersRequest>;
-
 export interface GetDefaultServiceAccountProjectsLocationsRequest {
   /** Required. The name of the `DefaultServiceAccount` to retrieve. Format: `projects/{project}/locations/{location}/defaultServiceAccount` */
   name: string;
 }
-const GetDefaultServiceAccountProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetDefaultServiceAccountProjectsLocationsRequest>;
-
 /** The default service account used for `Builds`. */
 export interface DefaultServiceAccount {
   /** Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount`. */
@@ -1844,20 +1382,10 @@ export interface DefaultServiceAccount {
   /** Output only. The email address of the service account identity that will be used for a build by default. This is returned in the format `projects/{project}/serviceAccounts/{service_account}` where `{service_account}` could be the legacy Cloud Build SA, in the format [PROJECT_NUMBER]@cloudbuild.gserviceaccount.com or the Compute SA, in the format [PROJECT_NUMBER]-compute@developer.gserviceaccount.com. If no service account will be used by default, this will be empty. */
   serviceAccountEmail?: string;
 }
-const DefaultServiceAccount = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DefaultServiceAccount>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetProjectsBuildsRequest {
   /** Required. ID of the build. */
   id: string;
@@ -1866,11 +1394,6 @@ export interface GetProjectsBuildsRequest {
   /** Required. ID of the project. */
   projectId: string;
 }
-const GetProjectsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetProjectsBuildsRequest>;
-
 export interface GetProjectsGithubEnterpriseConfigsRequest {
   /** Unique identifier of the `GitHubEnterpriseConfig` */
   configId?: string;
@@ -1879,20 +1402,10 @@ export interface GetProjectsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
   name: string;
 }
-const GetProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetProjectsGithubEnterpriseConfigsRequest>;
-
 export interface GetProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. The config resource name. */
   name: string;
 }
-const GetProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetProjectsLocationsBitbucketServerConfigsRequest>;
-
 export interface GetProjectsLocationsBuildsRequest {
   /** Required. ID of the build. */
   id?: string;
@@ -1901,11 +1414,6 @@ export interface GetProjectsLocationsBuildsRequest {
   /** Required. ID of the project. */
   projectId?: string;
 }
-const GetProjectsLocationsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetProjectsLocationsBuildsRequest>;
-
 export interface GetProjectsLocationsGithubEnterpriseConfigsRequest {
   /** ID of the project */
   projectId?: string;
@@ -1914,20 +1422,10 @@ export interface GetProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Unique identifier of the `GitHubEnterpriseConfig` */
   configId?: string;
 }
-const GetProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsTriggersRequest {
   /** The name of the `Trigger` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
   name: string;
@@ -1936,20 +1434,10 @@ export interface GetProjectsLocationsTriggersRequest {
   /** Required. ID of the project that owns the trigger. */
   projectId?: string;
 }
-const GetProjectsLocationsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetProjectsLocationsTriggersRequest>;
-
 export interface GetProjectsLocationsWorkerPoolsRequest {
   /** Required. The name of the `WorkerPool` to retrieve. Format: `projects/{project}/locations/{location}/workerPools/{workerPool}`. */
   name: string;
 }
-const GetProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>;
-
 export interface GetProjectsTriggersRequest {
   /** The name of the `Trigger` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
   name?: string;
@@ -1958,11 +1446,6 @@ export interface GetProjectsTriggersRequest {
   /** Required. Identifier (`id` or `name`) of the `BuildTrigger` to get. */
   triggerId: string;
 }
-const GetProjectsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetProjectsTriggersRequest>;
-
 export interface ListProjectsBuildsRequest {
   /** Number of results to return in the list. */
   pageSize?: number;
@@ -1975,14 +1458,7 @@ export interface ListProjectsBuildsRequest {
   /** The page token for the next page of Builds. If unspecified, the first page of results is returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this case, the token should be discarded, and pagination should be restarted from the first page of results. See https://google.aip.dev/158 for more. */
   pageToken?: string;
 }
-const ListProjectsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListProjectsBuildsRequest>;
-
 export type BuildList = Array<Build>;
-const BuildList = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<BuildList>;
-
 /** Response including listed builds. */
 export interface ListBuildsResponse {
   /** Builds will be sorted by `create_time`, descending. */
@@ -1990,35 +1466,18 @@ export interface ListBuildsResponse {
   /** Token to receive the next page of results. This will be absent if the end of the response list has been reached. */
   nextPageToken?: string;
 }
-const ListBuildsResponse = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ListBuildsResponse>;
-
 export interface ListProjectsGithubEnterpriseConfigsRequest {
   /** ID of the project */
   projectId?: string;
   /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
   parent: string;
 }
-const ListProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListProjectsGithubEnterpriseConfigsRequest>;
-
 export type GitHubEnterpriseConfigList = Array<GitHubEnterpriseConfig>;
-const GitHubEnterpriseConfigList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GitHubEnterpriseConfigList>;
-
 /** RPC response object returned by ListGithubEnterpriseConfigs RPC method. */
 export interface ListGithubEnterpriseConfigsResponse {
   /** A list of GitHubEnterpriseConfigs */
   configs?: GitHubEnterpriseConfigList;
 }
-const ListGithubEnterpriseConfigsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListGithubEnterpriseConfigsResponse>;
-
 export interface ListProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. Name of the parent resource. */
   parent: string;
@@ -2027,17 +1486,7 @@ export interface ListProjectsLocationsBitbucketServerConfigsRequest {
   /** A page token, received from a previous `ListBitbucketServerConfigsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBitbucketServerConfigsRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>;
-
 export type BitbucketServerConfigList = Array<BitbucketServerConfig>;
-const BitbucketServerConfigList = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<BitbucketServerConfigList>;
-
 /** RPC response object returned by ListBitbucketServerConfigs RPC method. */
 export interface ListBitbucketServerConfigsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2045,11 +1494,6 @@ export interface ListBitbucketServerConfigsResponse {
   /** A list of BitbucketServerConfigs */
   bitbucketServerConfigs?: BitbucketServerConfigList;
 }
-const ListBitbucketServerConfigsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListBitbucketServerConfigsResponse>;
-
 export interface ListProjectsLocationsBitbucketServerConfigsReposRequest {
   /** A page token, received from a previous `ListBitbucketServerRepositoriesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBitbucketServerConfigsRequest` must match the call that provided the page token. */
   pageToken?: string;
@@ -2058,11 +1502,6 @@ export interface ListProjectsLocationsBitbucketServerConfigsReposRequest {
   /** Required. Name of the parent resource. */
   parent: string;
 }
-const ListProjectsLocationsBitbucketServerConfigsReposRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>;
-
 /** BitbucketServerRepository represents a repository hosted on a Bitbucket Server. */
 export interface BitbucketServerRepository {
   /** Identifier for a repository hosted on a Bitbucket Server. */
@@ -2076,17 +1515,7 @@ export interface BitbucketServerRepository {
   /** The resource name of the repository. */
   name?: string;
 }
-const BitbucketServerRepository = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<BitbucketServerRepository>;
-
 export type BitbucketServerRepositoryList = Array<BitbucketServerRepository>;
-const BitbucketServerRepositoryList = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<BitbucketServerRepositoryList>;
-
 /** RPC response object returned by the ListBitbucketServerRepositories RPC method. */
 export interface ListBitbucketServerRepositoriesResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2094,11 +1523,6 @@ export interface ListBitbucketServerRepositoriesResponse {
   /** List of Bitbucket Server repositories. */
   bitbucketServerRepositories?: BitbucketServerRepositoryList;
 }
-const ListBitbucketServerRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListBitbucketServerRepositoriesResponse>;
-
 export interface ListProjectsLocationsBuildsRequest {
   /** The page token for the next page of Builds. If unspecified, the first page of results is returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this case, the token should be discarded, and pagination should be restarted from the first page of results. See https://google.aip.dev/158 for more. */
   pageToken?: string;
@@ -2111,22 +1535,12 @@ export interface ListProjectsLocationsBuildsRequest {
   /** Number of results to return in the list. */
   pageSize?: number;
 }
-const ListProjectsLocationsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListProjectsLocationsBuildsRequest>;
-
 export interface ListProjectsLocationsGithubEnterpriseConfigsRequest {
   /** ID of the project */
   projectId?: string;
   /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
   parent: string;
 }
-const ListProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>;
-
 export interface ListProjectsLocationsTriggersRequest {
   /** Required. ID of the project for which to list BuildTriggers. */
   projectId?: string;
@@ -2137,14 +1551,7 @@ export interface ListProjectsLocationsTriggersRequest {
   /** Token to provide to skip to a particular spot in the list. */
   pageToken?: string;
 }
-const ListProjectsLocationsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListProjectsLocationsTriggersRequest>;
-
 export type BuildTriggerList = Array<BuildTrigger>;
-const BuildTriggerList = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<BuildTriggerList>;
-
 /** Response containing existing `BuildTriggers`. */
 export interface ListBuildTriggersResponse {
   /** `BuildTriggers` for the project, sorted by `create_time` descending. */
@@ -2152,11 +1559,6 @@ export interface ListBuildTriggersResponse {
   /** Token to receive the next page of results. */
   nextPageToken?: string;
 }
-const ListBuildTriggersResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListBuildTriggersResponse>;
-
 export interface ListProjectsLocationsWorkerPoolsRequest {
   /** The maximum number of `WorkerPool`s to return. The service may return fewer than this value. If omitted, the server will use a sensible default. */
   pageSize?: number;
@@ -2165,14 +1567,7 @@ export interface ListProjectsLocationsWorkerPoolsRequest {
   /** A page token, received from a previous `ListWorkerPools` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>;
-
 export type WorkerPoolList = Array<WorkerPool>;
-const WorkerPoolList = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<WorkerPoolList>;
-
 /** Response containing existing `WorkerPools`. */
 export interface ListWorkerPoolsResponse {
   /** Continuation token used to page through large result sets. Provide this value in a subsequent ListWorkerPoolsRequest to return the next page of results. */
@@ -2180,11 +1575,6 @@ export interface ListWorkerPoolsResponse {
   /** `WorkerPools` for the specified project. */
   workerPools?: WorkerPoolList;
 }
-const ListWorkerPoolsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListWorkerPoolsResponse>;
-
 export interface ListProjectsTriggersRequest {
   /** Token to provide to skip to a particular spot in the list. */
   pageToken?: string;
@@ -2195,11 +1585,6 @@ export interface ListProjectsTriggersRequest {
   /** Required. ID of the project for which to list BuildTriggers. */
   projectId: string;
 }
-const ListProjectsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListProjectsTriggersRequest>;
-
 export interface PatchProjectsGithubEnterpriseConfigsRequest {
   /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
   updateMask?: string;
@@ -2208,11 +1593,6 @@ export interface PatchProjectsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-const PatchProjectsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<PatchProjectsGithubEnterpriseConfigsRequest>;
-
 export interface PatchProjectsLocationsBitbucketServerConfigsRequest {
   /** Identifier. The resource name for the config. */
   name: string;
@@ -2221,11 +1601,6 @@ export interface PatchProjectsLocationsBitbucketServerConfigsRequest {
   /** Request body */
   body?: BitbucketServerConfig;
 }
-const PatchProjectsLocationsBitbucketServerConfigsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>;
-
 export interface PatchProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
   updateMask?: string;
@@ -2234,11 +1609,6 @@ export interface PatchProjectsLocationsGithubEnterpriseConfigsRequest {
   /** Request body */
   body?: GitHubEnterpriseConfig;
 }
-const PatchProjectsLocationsGithubEnterpriseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>;
-
 export interface PatchProjectsLocationsTriggersRequest {
   /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
   updateMask?: string;
@@ -2251,11 +1621,6 @@ export interface PatchProjectsLocationsTriggersRequest {
   /** Request body */
   body?: BuildTrigger;
 }
-const PatchProjectsLocationsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<PatchProjectsLocationsTriggersRequest>;
-
 export interface PatchProjectsLocationsWorkerPoolsRequest {
   /** If set, validate the request and preview the response, but do not actually post it. */
   validateOnly?: boolean;
@@ -2266,11 +1631,6 @@ export interface PatchProjectsLocationsWorkerPoolsRequest {
   /** Request body */
   body?: WorkerPool;
 }
-const PatchProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
-
 export interface PatchProjectsTriggersRequest {
   /** Required. ID of the `BuildTrigger` to update. */
   triggerId: string;
@@ -2281,11 +1641,6 @@ export interface PatchProjectsTriggersRequest {
   /** Request body */
   body?: BuildTrigger;
 }
-const PatchProjectsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<PatchProjectsTriggersRequest>;
-
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -2295,19 +1650,12 @@ export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-const HttpBody = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<HttpBody>;
-
 export interface ReceiveGithubDotComWebhookRequest {
   /** For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. */
   webhookKey?: string;
   /** Request body */
   body?: HttpBody;
 }
-const ReceiveGithubDotComWebhookRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ReceiveGithubDotComWebhookRequest>;
-
 export interface RegionalWebhookLocationsRequest {
   /** Required. The location where the webhook should be sent. */
   location: string;
@@ -2316,33 +1664,17 @@ export interface RegionalWebhookLocationsRequest {
   /** Request body */
   body?: HttpBody;
 }
-const RegionalWebhookLocationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<RegionalWebhookLocationsRequest>;
-
 /** RPC request object accepted by RemoveBitbucketServerConnectedRepository RPC method. */
 export interface RemoveBitbucketServerConnectedRepositoryRequest {
   /** The connected repository to remove. */
   connectedRepository?: BitbucketServerRepositoryId;
 }
-const RemoveBitbucketServerConnectedRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryRequest>;
-
 export interface RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. The name of the `BitbucketServerConfig` to remove a connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
   config: string;
   /** Request body */
   body?: RemoveBitbucketServerConnectedRepositoryRequest;
 }
-const RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    4,
-  ) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest>;
-
 /** Specifies a build to retry. */
 export interface RetryBuildRequest {
   /** The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` */
@@ -2352,8 +1684,6 @@ export interface RetryBuildRequest {
   /** Required. ID of the project. */
   projectId?: string;
 }
-const RetryBuildRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<RetryBuildRequest>;
-
 export interface RetryProjectsBuildsRequest {
   /** Required. Build ID of the original build. */
   id: string;
@@ -2362,22 +1692,12 @@ export interface RetryProjectsBuildsRequest {
   /** Request body */
   body?: RetryBuildRequest;
 }
-const RetryProjectsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<RetryProjectsBuildsRequest>;
-
 export interface RetryProjectsLocationsBuildsRequest {
   /** The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` */
   name: string;
   /** Request body */
   body?: RetryBuildRequest;
 }
-const RetryProjectsLocationsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<RetryProjectsLocationsBuildsRequest>;
-
 /** Specifies a build trigger to run and the source to use. */
 export interface RunBuildTriggerRequest {
   /** Required. ID of the trigger. */
@@ -2387,22 +1707,12 @@ export interface RunBuildTriggerRequest {
   /** Required. ID of the project. */
   projectId?: string;
 }
-const RunBuildTriggerRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<RunBuildTriggerRequest>;
-
 export interface RunProjectsLocationsTriggersRequest {
   /** The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
   name: string;
   /** Request body */
   body?: RunBuildTriggerRequest;
 }
-const RunProjectsLocationsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<RunProjectsLocationsTriggersRequest>;
-
 export interface RunProjectsTriggersRequest {
   /** Required. ID of the project. */
   projectId: string;
@@ -2413,11 +1723,6 @@ export interface RunProjectsTriggersRequest {
   /** Request body */
   body?: RepoSource;
 }
-const RunProjectsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<RunProjectsTriggersRequest>;
-
 export interface WebhookProjectsLocationsTriggersRequest {
   /** The name of the `ReceiveTriggerWebhook` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
   name: string;
@@ -2430,16 +1735,8 @@ export interface WebhookProjectsLocationsTriggersRequest {
   /** Request body */
   body?: HttpBody;
 }
-const WebhookProjectsLocationsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<WebhookProjectsLocationsTriggersRequest>;
-
 /** ReceiveTriggerWebhookResponse [Experimental] is the response object for the ReceiveTriggerWebhook method. */
 export interface ReceiveTriggerWebhookResponse {}
-const ReceiveTriggerWebhookResponse =
-  CancelOperationRequest as any as S.Schema<ReceiveTriggerWebhookResponse>;
-
 export interface WebhookProjectsTriggersRequest {
   /** Secret token used for authorization if an OAuth token isn't provided. */
   secret?: string;
@@ -2452,19 +1749,12 @@ export interface WebhookProjectsTriggersRequest {
   /** Request body */
   body?: HttpBody;
 }
-const WebhookProjectsTriggersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<WebhookProjectsTriggersRequest>;
-
 export interface WebhookV1Request {
   /** For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. */
   webhookKey?: string;
   /** Request body */
   body?: HttpBody;
 }
-const WebhookV1Request = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<WebhookV1Request>;
-
 export type ApproveProjectsBuildsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
 export const approveProjectsBuilds: API.OperationMethod<
@@ -2473,8 +1763,8 @@ export const approveProjectsBuilds: API.OperationMethod<
   ApproveProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveProjectsBuildsRequest,
-  output: Operation,
+  input: __S(2, __c0, 2) as any as S.Schema<ApproveProjectsBuildsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2493,8 +1783,8 @@ export const approveProjectsLocationsBuilds: API.OperationMethod<
   ApproveProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveProjectsLocationsBuildsRequest,
-  output: Operation,
+  input: __S(7, __c0, 7) as any as S.Schema<ApproveProjectsLocationsBuildsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2513,8 +1803,12 @@ export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
   BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest,
-  output: Operation,
+  input: __S(
+    13,
+    __c1,
+    5,
+  ) as any as S.Schema<BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2528,8 +1822,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOperationsRequest,
-  output: Empty,
+  input: __S(15, __c1, 7) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2543,8 +1837,8 @@ export const cancelProjectsBuilds: API.OperationMethod<
   CancelProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsBuildsRequest,
-  output: Build,
+  input: __S(17, __c2, 1) as any as S.Schema<CancelProjectsBuildsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2563,8 +1857,8 @@ export const cancelProjectsLocationsBuilds: API.OperationMethod<
   CancelProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsBuildsRequest,
-  output: Build,
+  input: __S(91, __c11, 3) as any as S.Schema<CancelProjectsLocationsBuildsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2583,8 +1877,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(92, __c11, 4) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2598,8 +1892,8 @@ export const createProjectsBuilds: API.OperationMethod<
   CreateProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsBuildsRequest,
-  output: Operation,
+  input: __S(93, __c11, 5) as any as S.Schema<CreateProjectsBuildsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2618,8 +1912,8 @@ export const createProjectsGithubEnterpriseConfigs: API.OperationMethod<
   CreateProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsGithubEnterpriseConfigsRequest,
-  output: Operation,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2638,8 +1932,12 @@ export const createProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   CreateProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBitbucketServerConfigsRequest,
-  output: Operation,
+  input: __S(
+    100,
+    __c12,
+    4,
+  ) as any as S.Schema<CreateProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2658,8 +1956,8 @@ export const createProjectsLocationsBuilds: API.OperationMethod<
   CreateProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBuildsRequest,
-  output: Operation,
+  input: __S(101, __c12, 5) as any as S.Schema<CreateProjectsLocationsBuildsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2678,8 +1976,12 @@ export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
   CreateProjectsLocationsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: Operation,
+  input: __S(
+    102,
+    __c12,
+    6,
+  ) as any as S.Schema<CreateProjectsLocationsGithubEnterpriseConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2698,8 +2000,8 @@ export const createProjectsLocationsTriggers: API.OperationMethod<
   CreateProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsTriggersRequest,
-  output: BuildTrigger,
+  input: __S(114, __c14, 2) as any as S.Schema<CreateProjectsLocationsTriggersRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2718,8 +2020,8 @@ export const createProjectsLocationsWorkerPools: API.OperationMethod<
   CreateProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsWorkerPoolsRequest,
-  output: Operation,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2733,8 +2035,8 @@ export const createProjectsTriggers: API.OperationMethod<
   CreateProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTriggersRequest,
-  output: BuildTrigger,
+  input: __S(121, __c15, 1) as any as S.Schema<CreateProjectsTriggersRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2753,8 +2055,8 @@ export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
   DeleteProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsGithubEnterpriseConfigsRequest,
-  output: Operation,
+  input: __S(122, __c15, 2) as any as S.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2773,8 +2075,12 @@ export const deleteProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   DeleteProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBitbucketServerConfigsRequest,
-  output: Operation,
+  input: __S(
+    123,
+    __c15,
+    3,
+  ) as any as S.Schema<DeleteProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2793,8 +2099,12 @@ export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
   DeleteProjectsLocationsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: Operation,
+  input: __S(
+    124,
+    __c15,
+    4,
+  ) as any as S.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2123,8 @@ export const deleteProjectsLocationsTriggers: API.OperationMethod<
   DeleteProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsTriggersRequest,
-  output: Empty,
+  input: __S(125, __c15, 5) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2833,8 +2143,8 @@ export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
   DeleteProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsWorkerPoolsRequest,
-  output: Operation,
+  input: __S(126, __c15, 6) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2848,8 +2158,8 @@ export const deleteProjectsTriggers: API.OperationMethod<
   DeleteProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTriggersRequest,
-  output: Empty,
+  input: __S(127, __c15, 7) as any as S.Schema<DeleteProjectsTriggersRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2173,8 @@ export const getDefaultServiceAccountProjectsLocations: API.OperationMethod<
   GetDefaultServiceAccountProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultServiceAccountProjectsLocationsRequest,
-  output: DefaultServiceAccount,
+  input: __S(128, __c16, 0) as any as S.Schema<GetDefaultServiceAccountProjectsLocationsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DefaultServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2878,8 +2188,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(130, __c16, 2) as any as S.Schema<GetOperationsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2893,8 +2203,8 @@ export const getProjectsBuilds: API.OperationMethod<
   GetProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsBuildsRequest,
-  output: Build,
+  input: __S(131, __c16, 3) as any as S.Schema<GetProjectsBuildsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2908,8 +2218,8 @@ export const getProjectsGithubEnterpriseConfigs: API.OperationMethod<
   GetProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsGithubEnterpriseConfigsRequest,
-  output: GitHubEnterpriseConfig,
+  input: __S(132, __c16, 4) as any as S.Schema<GetProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GitHubEnterpriseConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2923,8 +2233,8 @@ export const getProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   GetProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBitbucketServerConfigsRequest,
-  output: BitbucketServerConfig,
+  input: __S(133, __c16, 5) as any as S.Schema<GetProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<BitbucketServerConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2938,8 +2248,8 @@ export const getProjectsLocationsBuilds: API.OperationMethod<
   GetProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBuildsRequest,
-  output: Build,
+  input: __S(134, __c16, 6) as any as S.Schema<GetProjectsLocationsBuildsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2953,8 +2263,8 @@ export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   GetProjectsLocationsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: GitHubEnterpriseConfig,
+  input: __S(135, __c16, 7) as any as S.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GitHubEnterpriseConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2968,8 +2278,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(136, __c17, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2983,8 +2293,8 @@ export const getProjectsLocationsTriggers: API.OperationMethod<
   GetProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsTriggersRequest,
-  output: BuildTrigger,
+  input: __S(137, __c17, 1) as any as S.Schema<GetProjectsLocationsTriggersRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2998,8 +2308,8 @@ export const getProjectsLocationsWorkerPools: API.OperationMethod<
   GetProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsWorkerPoolsRequest,
-  output: WorkerPool,
+  input: __S(138, __c17, 2) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>,
+  output: __S(119, __c14, 7) as any as S.Schema<WorkerPool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3013,8 +2323,8 @@ export const getProjectsTriggers: API.OperationMethod<
   GetProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsTriggersRequest,
-  output: BuildTrigger,
+  input: __S(139, __c17, 3) as any as S.Schema<GetProjectsTriggersRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3029,8 +2339,8 @@ export const listProjectsBuilds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsBuildsRequest,
-  output: ListBuildsResponse,
+  input: __S(140, __c17, 4) as any as S.Schema<ListProjectsBuildsRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<ListBuildsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3045,8 +2355,8 @@ export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
   ListProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsGithubEnterpriseConfigsRequest,
-  output: ListGithubEnterpriseConfigsResponse,
+  input: __S(143, __c17, 7) as any as S.Schema<ListProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListGithubEnterpriseConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3061,8 +2371,8 @@ export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperation
   GcpOpContext,
   ListBitbucketServerConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBitbucketServerConfigsRequest,
-  output: ListBitbucketServerConfigsResponse,
+  input: __S(146, __c18, 2) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<ListBitbucketServerConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3081,8 +2391,12 @@ export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOper
   GcpOpContext,
   ListBitbucketServerRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBitbucketServerConfigsReposRequest,
-  output: ListBitbucketServerRepositoriesResponse,
+  input: __S(
+    149,
+    __c18,
+    5,
+  ) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<ListBitbucketServerRepositoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3098,8 +2412,8 @@ export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBuildsRequest,
-  output: ListBuildsResponse,
+  input: __S(153, __c19, 1) as any as S.Schema<ListProjectsLocationsBuildsRequest>,
+  output: __S(142, __c17, 6) as any as S.Schema<ListBuildsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3114,8 +2428,8 @@ export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   ListProjectsLocationsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: ListGithubEnterpriseConfigsResponse,
+  input: __S(154, __c19, 2) as any as S.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListGithubEnterpriseConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3130,8 +2444,8 @@ export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsTriggersRequest,
-  output: ListBuildTriggersResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<ListProjectsLocationsTriggersRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ListBuildTriggersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3147,8 +2461,8 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWorkerPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsWorkerPoolsRequest,
-  output: ListWorkerPoolsResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ListWorkerPoolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3164,8 +2478,8 @@ export const listProjectsTriggers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTriggersRequest,
-  output: ListBuildTriggersResponse,
+  input: __S(161, __c20, 1) as any as S.Schema<ListProjectsTriggersRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ListBuildTriggersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3185,8 +2499,8 @@ export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
   PatchProjectsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsGithubEnterpriseConfigsRequest,
-  output: Operation,
+  input: __S(162, __c20, 2) as any as S.Schema<PatchProjectsGithubEnterpriseConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3205,8 +2519,8 @@ export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   PatchProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBitbucketServerConfigsRequest,
-  output: Operation,
+  input: __S(163, __c20, 3) as any as S.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3225,8 +2539,12 @@ export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
   PatchProjectsLocationsGithubEnterpriseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: Operation,
+  input: __S(
+    164,
+    __c20,
+    4,
+  ) as any as S.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3245,8 +2563,8 @@ export const patchProjectsLocationsTriggers: API.OperationMethod<
   PatchProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsTriggersRequest,
-  output: BuildTrigger,
+  input: __S(165, __c20, 5) as any as S.Schema<PatchProjectsLocationsTriggersRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3265,8 +2583,8 @@ export const patchProjectsLocationsWorkerPools: API.OperationMethod<
   PatchProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsWorkerPoolsRequest,
-  output: Operation,
+  input: __S(166, __c20, 6) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3280,8 +2598,8 @@ export const patchProjectsTriggers: API.OperationMethod<
   PatchProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsTriggersRequest,
-  output: BuildTrigger,
+  input: __S(167, __c20, 7) as any as S.Schema<PatchProjectsTriggersRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<BuildTrigger>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3300,8 +2618,8 @@ export const receiveGithubDotComWebhook: API.OperationMethod<
   ReceiveGithubDotComWebhookError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReceiveGithubDotComWebhookRequest,
-  output: Empty,
+  input: __S(169, __c21, 1) as any as S.Schema<ReceiveGithubDotComWebhookRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3320,8 +2638,8 @@ export const regionalWebhookLocations: API.OperationMethod<
   RegionalWebhookLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegionalWebhookLocationsRequest,
-  output: Empty,
+  input: __S(170, __c21, 2) as any as S.Schema<RegionalWebhookLocationsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3340,8 +2658,12 @@ export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
   RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest,
-  output: Empty,
+  input: __S(
+    172,
+    __c21,
+    4,
+  ) as any as S.Schema<RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3355,8 +2677,8 @@ export const retryProjectsBuilds: API.OperationMethod<
   RetryProjectsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RetryProjectsBuildsRequest,
-  output: Operation,
+  input: __S(174, __c21, 6) as any as S.Schema<RetryProjectsBuildsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3375,8 +2697,8 @@ export const retryProjectsLocationsBuilds: API.OperationMethod<
   RetryProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RetryProjectsLocationsBuildsRequest,
-  output: Operation,
+  input: __S(175, __c21, 7) as any as S.Schema<RetryProjectsLocationsBuildsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3395,8 +2717,8 @@ export const runProjectsLocationsTriggers: API.OperationMethod<
   RunProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunProjectsLocationsTriggersRequest,
-  output: Operation,
+  input: __S(177, __c22, 1) as any as S.Schema<RunProjectsLocationsTriggersRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3410,8 +2732,8 @@ export const runProjectsTriggers: API.OperationMethod<
   RunProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunProjectsTriggersRequest,
-  output: Operation,
+  input: __S(178, __c22, 2) as any as S.Schema<RunProjectsTriggersRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3430,8 +2752,8 @@ export const webhookProjectsLocationsTriggers: API.OperationMethod<
   WebhookProjectsLocationsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhookProjectsLocationsTriggersRequest,
-  output: ReceiveTriggerWebhookResponse,
+  input: __S(179, __c22, 3) as any as S.Schema<WebhookProjectsLocationsTriggersRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ReceiveTriggerWebhookResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3450,8 +2772,8 @@ export const webhookProjectsTriggers: API.OperationMethod<
   WebhookProjectsTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhookProjectsTriggersRequest,
-  output: ReceiveTriggerWebhookResponse,
+  input: __S(180, __c22, 4) as any as S.Schema<WebhookProjectsTriggersRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ReceiveTriggerWebhookResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3461,8 +2783,8 @@ export type WebhookV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpO
 /** ReceiveWebhook is called when the API receives a GitHub webhook. */
 export const webhookV1: API.OperationMethod<WebhookV1Request, Empty, WebhookV1Error, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: WebhookV1Request,
-    output: Empty,
+    input: __S(181, __c22, 5) as any as S.Schema<WebhookV1Request>,
+    output: __S(14, __c1, 6) as any as S.Schema<Empty>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3477,21 +2799,21 @@ function __c0(j: number): any {
           approverAccount: S.optional(S.String),
           comment: S.optional(S.String),
           url: S.optional(S.String),
-          decision: S.optional(ApprovalResultDecisionEnum),
+          decision: S.optional(S.String),
           approvalTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApprovalResult" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          approvalResult: S.optional(ApprovalResult),
+          approvalResult: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "ApproveBuildRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ApproveBuildRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3505,30 +2827,30 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(3, __c0, 3)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
+          error: S.optional(__S(5, __c0, 5)),
+          metadata: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ApproveBuildRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3556,9 +2878,9 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repo: S.optional(BitbucketServerRepositoryId),
+          repo: S.optional(__S(8, __c1, 0)),
           parent: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "BitbucketServerConnectedRepository",
@@ -3566,18 +2888,18 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bitbucketServerConnectedRepository: S.optional(BitbucketServerConnectedRepository),
+          bitbucketServerConnectedRepository: S.optional(__S(9, __c1, 1)),
           parent: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateBitbucketServerConnectedRepositoryRequest",
       });
     case 3:
-      return S.Array(CreateBitbucketServerConnectedRepositoryRequest);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(CreateBitbucketServerConnectedRepositoryRequestList),
+          requests: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest",
@@ -3586,9 +2908,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            BatchCreateBitbucketServerConnectedRepositoriesRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3608,7 +2928,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3634,7 +2954,7 @@ function __c2(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(CancelBuildRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3670,7 +2990,7 @@ function __c2(j: number): any {
           depth: S.optional(S.String),
           recurseSubmodules: S.optional(S.Boolean),
           revision: S.optional(S.String),
-          repository: S.optional(GitSourceRepository),
+          repository: S.optional(__S(20, __c2, 4)),
           destPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitSourceDependency" });
@@ -3678,12 +2998,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           empty: S.optional(S.Boolean),
-          genericArtifact: S.optional(GenericArtifactDependency),
-          gitSource: S.optional(GitSourceDependency),
+          genericArtifact: S.optional(__S(19, __c2, 3)),
+          gitSource: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "Dependency" });
     case 7:
-      return S.Array(Dependency);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -3707,7 +3027,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Volume" });
     case 4:
-      return S.Array(Volume);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3717,29 +3037,29 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "StepResult" });
     case 6:
-      return S.Array(StepResult);
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          waitFor: S.optional(StringList),
-          allowExitCodes: S.optional(IntegerList),
+          waitFor: S.optional(__S(24, __c3, 0)),
+          allowExitCodes: S.optional(__S(25, __c3, 1)),
           timeout: S.optional(S.String),
-          args: S.optional(StringList),
-          pullTiming: S.optional(TimeSpan),
+          args: S.optional(__S(24, __c3, 0)),
+          pullTiming: S.optional(__S(26, __c3, 2)),
           script: S.optional(S.String),
-          status: S.optional(BuildStepStatusEnum),
-          secretEnv: S.optional(StringList),
+          status: S.optional(S.String),
+          secretEnv: S.optional(__S(24, __c3, 0)),
           automapSubstitutions: S.optional(S.Boolean),
-          timing: S.optional(TimeSpan),
+          timing: S.optional(__S(26, __c3, 2)),
           entrypoint: S.optional(S.String),
-          volumes: S.optional(VolumeList),
+          volumes: S.optional(__S(28, __c3, 4)),
           allowFailure: S.optional(S.Boolean),
-          env: S.optional(StringList),
+          env: S.optional(__S(24, __c3, 0)),
           exitCode: S.optional(S.Number),
           id: S.optional(S.String),
           dir: S.optional(S.String),
-          results: S.optional(StepResultList),
+          results: S.optional(__S(30, __c3, 6)),
         }),
       ).annotate({ identifier: "BuildStep" });
   }
@@ -3747,21 +3067,21 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BuildStep);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           repository: S.optional(S.String),
-          paths: S.optional(StringList),
+          paths: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "PythonPackage" });
     case 2:
-      return S.Array(PythonPackage);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          paths: S.optional(StringList),
-          timing: S.optional(TimeSpan),
+          paths: S.optional(__S(24, __c3, 0)),
+          timing: S.optional(__S(26, __c3, 2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactObjects" });
@@ -3773,7 +3093,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "NpmPackage" });
     case 5:
-      return S.Array(NpmPackage);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3786,7 +3106,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "GoModule" });
     case 7:
-      return S.Array(GoModule);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -3795,12 +3115,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           file: S.optional(S.String),
-          tags: S.optional(StringList),
+          tags: S.optional(__S(24, __c3, 0)),
           registryPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "Oci" });
     case 1:
-      return S.Array(Oci);
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3813,7 +3133,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MavenArtifact" });
     case 3:
-      return S.Array(MavenArtifact);
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3822,24 +3142,24 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "GenericArtifact" });
     case 5:
-      return S.Array(GenericArtifact);
+      return S.Array(__S(44, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pythonPackages: S.optional(PythonPackageList),
-          objects: S.optional(ArtifactObjects),
-          images: S.optional(StringList),
-          npmPackages: S.optional(NpmPackageList),
-          goModules: S.optional(GoModuleList),
-          oci: S.optional(OciList),
-          mavenArtifacts: S.optional(MavenArtifactList),
-          genericArtifacts: S.optional(GenericArtifactList),
+          pythonPackages: S.optional(__S(34, __c4, 2)),
+          objects: S.optional(__S(35, __c4, 3)),
+          images: S.optional(__S(24, __c3, 0)),
+          npmPackages: S.optional(__S(37, __c4, 5)),
+          goModules: S.optional(__S(39, __c4, 7)),
+          oci: S.optional(__S(41, __c5, 1)),
+          mavenArtifacts: S.optional(__S(43, __c5, 3)),
+          genericArtifacts: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "Artifacts" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          secretEnv: S.optional(StringMap),
+          secretEnv: S.optional(__S(18, __c2, 2)),
           kmsKeyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Secret" });
@@ -3848,16 +3168,16 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Secret);
+      return S.Array(__S(47, __c5, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           kmsKeyName: S.optional(S.String),
-          envMap: S.optional(StringMap),
+          envMap: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "InlineSecret" });
     case 2:
-      return S.Array(InlineSecret);
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3866,12 +3186,12 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SecretManagerSecret" });
     case 4:
-      return S.Array(SecretManagerSecret);
+      return S.Array(__S(51, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          inline: S.optional(InlineSecretList),
-          secretManager: S.optional(SecretManagerSecretList),
+          inline: S.optional(__S(50, __c6, 2)),
+          secretManager: S.optional(__S(52, __c6, 4)),
         }),
       ).annotate({ identifier: "Secrets" });
     case 6:
@@ -3883,9 +3203,9 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(BuildApprovalStateEnum),
-          config: S.optional(ApprovalConfig),
-          result: S.optional(ApprovalResult),
+          state: S.optional(S.String),
+          config: S.optional(__S(54, __c6, 6)),
+          result: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "BuildApproval" });
   }
@@ -3904,7 +3224,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           generation: S.optional(S.String),
-          sourceFetcher: S.optional(StorageSourceSourceFetcherEnum),
+          sourceFetcher: S.optional(S.String),
           bucket: S.optional(S.String),
           object: S.optional(S.String),
         }),
@@ -3939,7 +3259,7 @@ function __c7(j: number): any {
           invertRegex: S.optional(S.Boolean),
           projectId: S.optional(S.String),
           repoName: S.optional(S.String),
-          substitutions: S.optional(StringMap),
+          substitutions: S.optional(__S(18, __c2, 2)),
           branchName: S.optional(S.String),
           tagName: S.optional(S.String),
           dir: S.optional(S.String),
@@ -3949,12 +3269,12 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          connectedRepository: S.optional(ConnectedRepository),
-          storageSource: S.optional(StorageSource),
-          gitSource: S.optional(GitSource),
-          developerConnectConfig: S.optional(DeveloperConnectConfig),
-          storageSourceManifest: S.optional(StorageSourceManifest),
-          repoSource: S.optional(RepoSource),
+          connectedRepository: S.optional(__S(56, __c7, 0)),
+          storageSource: S.optional(__S(57, __c7, 1)),
+          gitSource: S.optional(__S(58, __c7, 2)),
+          developerConnectConfig: S.optional(__S(59, __c7, 3)),
+          storageSourceManifest: S.optional(__S(60, __c7, 4)),
+          repoSource: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "Source" });
     case 7:
@@ -3970,11 +3290,11 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          http: S.optional(HttpConfig),
+          http: S.optional(__S(63, __c7, 7)),
         }),
       ).annotate({ identifier: "GitConfig" });
     case 1:
-      return S.Array(BuildOptionsSourceProvenanceHashItemEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3986,24 +3306,24 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          env: S.optional(StringList),
+          env: S.optional(__S(24, __c3, 0)),
           pubsubTopic: S.optional(S.String),
-          requestedVerifyOption: S.optional(BuildOptionsRequestedVerifyOptionEnum),
+          requestedVerifyOption: S.optional(S.String),
           workerPool: S.optional(S.String),
-          volumes: S.optional(VolumeList),
+          volumes: S.optional(__S(28, __c3, 4)),
           resolvedWorkerRelease: S.optional(S.String),
-          logStreamingOption: S.optional(BuildOptionsLogStreamingOptionEnum),
+          logStreamingOption: S.optional(S.String),
           dynamicSubstitutions: S.optional(S.Boolean),
           workerRelease: S.optional(S.String),
-          sourceProvenanceHash: S.optional(BuildOptionsSourceProvenanceHashItemEnumList),
-          substitutionOption: S.optional(BuildOptionsSubstitutionOptionEnum),
+          sourceProvenanceHash: S.optional(__S(65, __c8, 1)),
+          substitutionOption: S.optional(S.String),
           diskSizeGb: S.optional(S.String),
-          logging: S.optional(BuildOptionsLoggingEnum),
-          defaultLogsBucketBehavior: S.optional(BuildOptionsDefaultLogsBucketBehaviorEnum),
+          logging: S.optional(S.String),
+          defaultLogsBucketBehavior: S.optional(S.String),
           enableStructuredLogging: S.optional(S.Boolean),
-          secretEnv: S.optional(StringList),
-          pool: S.optional(PoolOption),
-          machineType: S.optional(BuildOptionsMachineTypeEnum),
+          secretEnv: S.optional(__S(24, __c3, 0)),
+          pool: S.optional(__S(66, __c8, 2)),
+          machineType: S.optional(S.String),
           automapSubstitutions: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BuildOptions" });
@@ -4011,23 +3331,23 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          type: S.optional(HashTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Hash" });
     case 5:
-      return S.Array(Hash);
+      return S.Array(__S(68, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          fileHash: S.optional(HashList),
+          fileHash: S.optional(__S(69, __c8, 5)),
         }),
       ).annotate({ identifier: "FileHashes" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fileHashes: S.optional(FileHashes),
+          fileHashes: S.optional(__S(70, __c8, 6)),
           artifactRegistryPackage: S.optional(S.String),
-          pushTiming: S.optional(TimeSpan),
+          pushTiming: S.optional(__S(26, __c3, 2)),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "UploadedMavenArtifact" });
@@ -4036,44 +3356,44 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UploadedMavenArtifact);
+      return S.Array(__S(71, __c8, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ociMediaType: S.optional(BuiltImageOciMediaTypeEnum),
-          pushTiming: S.optional(TimeSpan),
+          ociMediaType: S.optional(S.String),
+          pushTiming: S.optional(__S(26, __c3, 2)),
           name: S.optional(S.String),
           artifactRegistryPackage: S.optional(S.String),
           digest: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuiltImage" });
     case 2:
-      return S.Array(BuiltImage);
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(StringMap),
+          results: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "BuildStepResults" });
     case 4:
-      return S.Record(S.String, BuildStepResults);
+      return S.Record(S.String, __S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
           artifactRegistryPackage: S.optional(S.String),
-          pushTiming: S.optional(TimeSpan),
-          fileHashes: S.optional(FileHashes),
+          pushTiming: S.optional(__S(26, __c3, 2)),
+          fileHashes: S.optional(__S(70, __c8, 6)),
         }),
       ).annotate({ identifier: "UploadedNpmPackage" });
     case 6:
-      return S.Array(UploadedNpmPackage);
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fileHashes: S.optional(FileHashes),
+          fileHashes: S.optional(__S(70, __c8, 6)),
           uri: S.optional(S.String),
-          pushTiming: S.optional(TimeSpan),
+          pushTiming: S.optional(__S(26, __c3, 2)),
           artifactRegistryPackage: S.optional(S.String),
         }),
       ).annotate({ identifier: "UploadedPythonPackage" });
@@ -4082,61 +3402,61 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UploadedPythonPackage);
+      return S.Array(__S(79, __c9, 7));
     case 1:
-      return S.Record(S.String, FileHashes);
+      return S.Record(S.String, __S(70, __c8, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          artifactFingerprint: S.optional(FileHashes),
-          fileHashes: S.optional(FileHashesMap),
-          pushTiming: S.optional(TimeSpan),
+          artifactFingerprint: S.optional(__S(70, __c8, 6)),
+          fileHashes: S.optional(__S(81, __c10, 1)),
+          pushTiming: S.optional(__S(26, __c3, 2)),
           uri: S.optional(S.String),
           artifactRegistryPackage: S.optional(S.String),
         }),
       ).annotate({ identifier: "UploadedGenericArtifact" });
     case 3:
-      return S.Array(UploadedGenericArtifact);
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          artifactTiming: S.optional(TimeSpan),
-          mavenArtifacts: S.optional(UploadedMavenArtifactList),
+          artifactTiming: S.optional(__S(26, __c3, 2)),
+          mavenArtifacts: S.optional(__S(72, __c9, 0)),
           artifactManifest: S.optional(S.String),
-          buildStepImages: S.optional(StringList),
+          buildStepImages: S.optional(__S(24, __c3, 0)),
           numArtifacts: S.optional(S.String),
-          images: S.optional(BuiltImageList),
-          buildStepOutputs: S.optional(StringList),
-          goModules: S.optional(UploadedGoModuleList),
-          buildStepResults: S.optional(BuildStepResultsMap),
-          npmPackages: S.optional(UploadedNpmPackageList),
-          pythonPackages: S.optional(UploadedPythonPackageList),
-          genericArtifacts: S.optional(UploadedGenericArtifactList),
+          images: S.optional(__S(74, __c9, 2)),
+          buildStepOutputs: S.optional(__S(24, __c3, 0)),
+          goModules: S.optional(__S(72, __c9, 0)),
+          buildStepResults: S.optional(__S(76, __c9, 4)),
+          npmPackages: S.optional(__S(78, __c9, 6)),
+          pythonPackages: S.optional(__S(80, __c10, 0)),
+          genericArtifacts: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "Results" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(FailureInfoTypeEnum),
+          type: S.optional(S.String),
           detail: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailureInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resolvedConnectedRepository: S.optional(ConnectedRepository),
-          resolvedStorageSource: S.optional(StorageSource),
-          resolvedRepoSource: S.optional(RepoSource),
-          fileHashes: S.optional(FileHashesMap),
-          resolvedStorageSourceManifest: S.optional(StorageSourceManifest),
-          resolvedGitSource: S.optional(GitSource),
+          resolvedConnectedRepository: S.optional(__S(56, __c7, 0)),
+          resolvedStorageSource: S.optional(__S(57, __c7, 1)),
+          resolvedRepoSource: S.optional(__S(61, __c7, 5)),
+          fileHashes: S.optional(__S(81, __c10, 1)),
+          resolvedStorageSourceManifest: S.optional(__S(60, __c7, 4)),
+          resolvedGitSource: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "SourceProvenance" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          priority: S.optional(WarningPriorityEnum),
+          priority: S.optional(S.String),
         }),
       ).annotate({ identifier: "Warning" });
   }
@@ -4144,42 +3464,42 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Warning);
+      return S.Array(__S(87, __c10, 7));
     case 1:
-      return S.Record(S.String, TimeSpan);
+      return S.Record(S.String, __S(26, __c3, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          substitutions: S.optional(StringMap),
+          substitutions: S.optional(__S(18, __c2, 2)),
           logsBucket: S.optional(S.String),
-          dependencies: S.optional(DependencyList),
+          dependencies: S.optional(__S(23, __c2, 7)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          steps: S.optional(BuildStepList),
-          artifacts: S.optional(Artifacts),
+          steps: S.optional(__S(32, __c4, 0)),
+          artifacts: S.optional(__S(46, __c5, 6)),
           logUrl: S.optional(S.String),
           startTime: S.optional(S.String),
           statusDetail: S.optional(S.String),
-          secrets: S.optional(SecretList),
-          availableSecrets: S.optional(Secrets),
+          secrets: S.optional(__S(48, __c6, 0)),
+          availableSecrets: S.optional(__S(53, __c6, 5)),
           serviceAccount: S.optional(S.String),
           queueTtl: S.optional(S.String),
-          approval: S.optional(BuildApproval),
-          source: S.optional(Source),
-          gitConfig: S.optional(GitConfig),
+          approval: S.optional(__S(55, __c6, 7)),
+          source: S.optional(__S(62, __c7, 6)),
+          gitConfig: S.optional(__S(64, __c8, 0)),
           timeout: S.optional(S.String),
-          options: S.optional(BuildOptions),
+          options: S.optional(__S(67, __c8, 3)),
           projectId: S.optional(S.String),
           finishTime: S.optional(S.String),
-          images: S.optional(StringList),
-          results: S.optional(Results),
-          tags: S.optional(StringList),
-          failureInfo: S.optional(FailureInfo),
-          sourceProvenance: S.optional(SourceProvenance),
+          images: S.optional(__S(24, __c3, 0)),
+          results: S.optional(__S(84, __c10, 4)),
+          tags: S.optional(__S(24, __c3, 0)),
+          failureInfo: S.optional(__S(85, __c10, 5)),
+          sourceProvenance: S.optional(__S(86, __c10, 6)),
           buildTriggerId: S.optional(S.String),
-          status: S.optional(BuildStatusEnum),
-          warnings: S.optional(WarningList),
-          timing: S.optional(TimeSpanMap),
+          status: S.optional(S.String),
+          warnings: S.optional(__S(88, __c11, 0)),
+          timing: S.optional(__S(89, __c11, 1)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Build" });
@@ -4187,7 +3507,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelBuildRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4202,7 +3522,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4218,7 +3538,7 @@ function __c11(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Build.pipe(T.HttpBody())),
+          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4245,7 +3565,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(GitHubEnterpriseSecrets),
+          secrets: S.optional(__S(94, __c11, 6)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -4266,7 +3586,7 @@ function __c12(j: number): any {
           gheConfigId: S.optional(S.String.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4286,7 +3606,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "BitbucketServerSecrets" });
     case 2:
-      return S.Array(BitbucketServerRepositoryId);
+      return S.Array(__S(8, __c1, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4295,11 +3615,11 @@ function __c12(j: number): any {
           hostUri: S.optional(S.String),
           peeredNetwork: S.optional(S.String),
           username: S.optional(S.String),
-          secrets: S.optional(BitbucketServerSecrets),
+          secrets: S.optional(__S(97, __c12, 1)),
           name: S.optional(S.String),
           apiKey: S.optional(S.String),
           webhookKey: S.optional(S.String),
-          connectedRepositories: S.optional(BitbucketServerRepositoryIdList),
+          connectedRepositories: S.optional(__S(98, __c12, 2)),
           peeredNetworkIpRange: S.optional(S.String),
         }),
       ).annotate({ identifier: "BitbucketServerConfig" });
@@ -4308,7 +3628,7 @@ function __c12(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bitbucketServerConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BitbucketServerConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4324,7 +3644,7 @@ function __c12(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           projectId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Build.pipe(T.HttpBody())),
+          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4341,7 +3661,7 @@ function __c12(j: number): any {
           parent: S.String.pipe(T.Label()),
           gheConfigId: S.optional(S.String.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4367,7 +3687,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          commentControl: S.optional(PullRequestFilterCommentControlEnum),
+          commentControl: S.optional(S.String),
           invertRegex: S.optional(S.Boolean),
           branch: S.optional(S.String),
         }),
@@ -4376,9 +3696,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gitRepositoryLink: S.optional(S.String),
-          push: S.optional(PushFilter),
-          gitRepositoryLinkType: S.optional(DeveloperConnectEventConfigGitRepositoryLinkTypeEnum),
-          pullRequest: S.optional(PullRequestFilter),
+          push: S.optional(__S(103, __c12, 7)),
+          gitRepositoryLinkType: S.optional(S.String),
+          pullRequest: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({
         identifier: "DeveloperConnectEventConfig",
@@ -4386,7 +3706,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(PubsubConfigStateEnum),
+          state: S.optional(S.String),
           subscription: S.optional(S.String),
           topic: S.optional(S.String),
           serviceAccountEmail: S.optional(S.String),
@@ -4395,17 +3715,17 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          repositoryType: S.optional(RepositoryEventConfigRepositoryTypeEnum),
-          push: S.optional(PushFilter),
+          repositoryType: S.optional(S.String),
+          push: S.optional(__S(103, __c12, 7)),
           repository: S.optional(S.String),
-          pullRequest: S.optional(PullRequestFilter),
+          pullRequest: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "RepositoryEventConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           secret: S.optional(S.String),
-          state: S.optional(WebhookConfigStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebhookConfig" });
     case 5:
@@ -4414,7 +3734,7 @@ function __c13(j: number): any {
           ref: S.optional(S.String),
           bitbucketServerConfig: S.optional(S.String),
           repository: S.optional(S.String),
-          repoType: S.optional(GitRepoSourceRepoTypeEnum),
+          repoType: S.optional(S.String),
           githubEnterpriseConfig: S.optional(S.String),
           uri: S.optional(S.String),
         }),
@@ -4426,7 +3746,7 @@ function __c13(j: number): any {
           repository: S.optional(S.String),
           path: S.optional(S.String),
           uri: S.optional(S.String),
-          repoType: S.optional(GitFileSourceRepoTypeEnum),
+          repoType: S.optional(S.String),
           bitbucketServerConfig: S.optional(S.String),
           revision: S.optional(S.String),
         }),
@@ -4434,12 +3754,12 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pullRequest: S.optional(PullRequestFilter),
-          bitbucketServerConfig: S.optional(BitbucketServerConfig),
+          pullRequest: S.optional(__S(104, __c13, 0)),
+          bitbucketServerConfig: S.optional(__S(99, __c12, 3)),
           projectKey: S.optional(S.String),
           repoSlug: S.optional(S.String),
           bitbucketServerConfigResource: S.optional(S.String),
-          push: S.optional(PushFilter),
+          push: S.optional(__S(103, __c12, 7)),
         }),
       ).annotate({
         identifier: "BitbucketServerTriggerConfig",
@@ -4454,8 +3774,8 @@ function __c14(j: number): any {
           enterpriseConfigResourceName: S.optional(S.String),
           installationId: S.optional(S.String),
           owner: S.optional(S.String),
-          pullRequest: S.optional(PullRequestFilter),
-          push: S.optional(PushFilter),
+          pullRequest: S.optional(__S(104, __c13, 0)),
+          push: S.optional(__S(103, __c12, 7)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitHubEventsConfig" });
@@ -4464,31 +3784,31 @@ function __c14(j: number): any {
         S.Struct({
           filename: S.optional(S.String),
           description: S.optional(S.String),
-          includeBuildLogs: S.optional(BuildTriggerIncludeBuildLogsEnum),
+          includeBuildLogs: S.optional(S.String),
           autodetect: S.optional(S.Boolean),
           id: S.optional(S.String),
-          developerConnectEventConfig: S.optional(DeveloperConnectEventConfig),
+          developerConnectEventConfig: S.optional(__S(105, __c13, 1)),
           createTime: S.optional(S.String),
-          pubsubConfig: S.optional(PubsubConfig),
-          tags: S.optional(StringList),
+          pubsubConfig: S.optional(__S(106, __c13, 2)),
+          tags: S.optional(__S(24, __c3, 0)),
           filter: S.optional(S.String),
-          repositoryEventConfig: S.optional(RepositoryEventConfig),
-          build: S.optional(Build),
-          approvalConfig: S.optional(ApprovalConfig),
-          webhookConfig: S.optional(WebhookConfig),
-          eventType: S.optional(BuildTriggerEventTypeEnum),
-          sourceToBuild: S.optional(GitRepoSource),
-          triggerTemplate: S.optional(RepoSource),
-          includedFiles: S.optional(StringList),
+          repositoryEventConfig: S.optional(__S(107, __c13, 3)),
+          build: S.optional(__S(90, __c11, 2)),
+          approvalConfig: S.optional(__S(54, __c6, 6)),
+          webhookConfig: S.optional(__S(108, __c13, 4)),
+          eventType: S.optional(S.String),
+          sourceToBuild: S.optional(__S(109, __c13, 5)),
+          triggerTemplate: S.optional(__S(61, __c7, 5)),
+          includedFiles: S.optional(__S(24, __c3, 0)),
           name: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           serviceAccount: S.optional(S.String),
-          gitFileSource: S.optional(GitFileSource),
-          ignoredFiles: S.optional(StringList),
+          gitFileSource: S.optional(__S(110, __c13, 6)),
+          ignoredFiles: S.optional(__S(24, __c3, 0)),
           resourceName: S.optional(S.String),
-          bitbucketServerTriggerConfig: S.optional(BitbucketServerTriggerConfig),
-          substitutions: S.optional(StringMap),
-          github: S.optional(GitHubEventsConfig),
+          bitbucketServerTriggerConfig: S.optional(__S(111, __c13, 7)),
+          substitutions: S.optional(__S(18, __c2, 2)),
+          github: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({ identifier: "BuildTrigger" });
     case 2:
@@ -4496,7 +3816,7 @@ function __c14(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           projectId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BuildTrigger.pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4527,7 +3847,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          egressOption: S.optional(NetworkConfigEgressOptionEnum),
+          egressOption: S.optional(S.String),
           peeredNetworkIpRange: S.optional(S.String),
           peeredNetwork: S.optional(S.String),
         }),
@@ -4535,23 +3855,23 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          privateServiceConnect: S.optional(PrivateServiceConnect),
-          workerConfig: S.optional(WorkerConfig),
-          networkConfig: S.optional(NetworkConfig),
+          privateServiceConnect: S.optional(__S(115, __c14, 3)),
+          workerConfig: S.optional(__S(116, __c14, 4)),
+          networkConfig: S.optional(__S(117, __c14, 5)),
         }),
       ).annotate({ identifier: "PrivatePoolV1Config" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(18, __c2, 2)),
           name: S.optional(S.String),
           uid: S.optional(S.String),
-          state: S.optional(WorkerPoolStateEnum),
+          state: S.optional(S.String),
           deleteTime: S.optional(S.String),
           createTime: S.optional(S.String),
           etag: S.optional(S.String),
-          privatePoolV1Config: S.optional(PrivatePoolV1Config),
+          privatePoolV1Config: S.optional(__S(118, __c14, 6)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkerPool" });
@@ -4565,7 +3885,7 @@ function __c15(j: number): any {
           parent: S.String.pipe(T.Label()),
           workerPoolId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(WorkerPool.pipe(T.HttpBody())),
+          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4581,7 +3901,7 @@ function __c15(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BuildTrigger.pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4883,11 +4203,11 @@ function __c17(j: number): any {
         identifier: "ListProjectsBuildsRequest",
       });
     case 5:
-      return S.Array(Build);
+      return S.Array(__S(90, __c11, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          builds: S.optional(BuildList),
+          builds: S.optional(__S(141, __c17, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBuildsResponse" });
@@ -4911,11 +4231,11 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GitHubEnterpriseConfig);
+      return S.Array(__S(95, __c11, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          configs: S.optional(GitHubEnterpriseConfigList),
+          configs: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({
         identifier: "ListGithubEnterpriseConfigsResponse",
@@ -4937,12 +4257,12 @@ function __c18(j: number): any {
         identifier: "ListProjectsLocationsBitbucketServerConfigsRequest",
       });
     case 3:
-      return S.Array(BitbucketServerConfig);
+      return S.Array(__S(99, __c12, 3));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          bitbucketServerConfigs: S.optional(BitbucketServerConfigList),
+          bitbucketServerConfigs: S.optional(__S(147, __c18, 3)),
         }),
       ).annotate({
         identifier: "ListBitbucketServerConfigsResponse",
@@ -4966,7 +4286,7 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repoId: S.optional(BitbucketServerRepositoryId),
+          repoId: S.optional(__S(8, __c1, 0)),
           displayName: S.optional(S.String),
           browseUri: S.optional(S.String),
           description: S.optional(S.String),
@@ -4976,7 +4296,7 @@ function __c18(j: number): any {
         identifier: "BitbucketServerRepository",
       });
     case 7:
-      return S.Array(BitbucketServerRepository);
+      return S.Array(__S(150, __c18, 6));
   }
 }
 function __c19(j: number): any {
@@ -4985,7 +4305,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          bitbucketServerRepositories: S.optional(BitbucketServerRepositoryList),
+          bitbucketServerRepositories: S.optional(__S(151, __c18, 7)),
         }),
       ).annotate({
         identifier: "ListBitbucketServerRepositoriesResponse",
@@ -5041,11 +4361,11 @@ function __c19(j: number): any {
         identifier: "ListProjectsLocationsTriggersRequest",
       });
     case 4:
-      return S.Array(BuildTrigger);
+      return S.Array(__S(113, __c14, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          triggers: S.optional(BuildTriggerList),
+          triggers: S.optional(__S(156, __c19, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5068,7 +4388,7 @@ function __c19(j: number): any {
         identifier: "ListProjectsLocationsWorkerPoolsRequest",
       });
     case 7:
-      return S.Array(WorkerPool);
+      return S.Array(__S(119, __c14, 7));
   }
 }
 function __c20(j: number): any {
@@ -5077,7 +4397,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workerPools: S.optional(WorkerPoolList),
+          workerPools: S.optional(__S(159, __c19, 7)),
         }),
       ).annotate({ identifier: "ListWorkerPoolsResponse" });
     case 1:
@@ -5102,7 +4422,7 @@ function __c20(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5118,7 +4438,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BitbucketServerConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5134,7 +4454,7 @@ function __c20(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GitHubEnterpriseConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5152,7 +4472,7 @@ function __c20(j: number): any {
           triggerId: S.optional(S.String.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(BuildTrigger.pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5169,7 +4489,7 @@ function __c20(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(WorkerPool.pipe(T.HttpBody())),
+          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5186,7 +4506,7 @@ function __c20(j: number): any {
           triggerId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(BuildTrigger.pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5205,7 +4525,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          extensions: S.optional(DocumentMapList),
+          extensions: S.optional(__S(4, __c0, 4)),
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpBody" });
@@ -5213,7 +4533,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           webhookKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(HttpBody.pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5229,7 +4549,7 @@ function __c21(j: number): any {
         S.Struct({
           location: S.String.pipe(T.Label()),
           webhookKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(HttpBody.pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5243,7 +4563,7 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          connectedRepository: S.optional(BitbucketServerRepositoryId),
+          connectedRepository: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "RemoveBitbucketServerConnectedRepositoryRequest",
@@ -5252,7 +4572,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           config: S.String.pipe(T.Label()),
-          body: S.optional(RemoveBitbucketServerConnectedRepositoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5277,7 +4597,7 @@ function __c21(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(RetryBuildRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5292,7 +4612,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RetryBuildRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5311,7 +4631,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           triggerId: S.optional(S.String),
-          source: S.optional(RepoSource),
+          source: S.optional(__S(61, __c7, 5)),
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunBuildTriggerRequest" });
@@ -5319,7 +4639,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RunBuildTriggerRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5336,7 +4656,7 @@ function __c22(j: number): any {
           projectId: S.String.pipe(T.Label()),
           triggerId: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RepoSource.pipe(T.HttpBody())),
+          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5354,7 +4674,7 @@ function __c22(j: number): any {
           projectId: S.optional(S.String.pipe(T.Query())),
           secret: S.optional(S.String.pipe(T.Query())),
           trigger: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(HttpBody.pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5372,7 +4692,7 @@ function __c22(j: number): any {
           name: S.optional(S.String.pipe(T.Query())),
           trigger: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(HttpBody.pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5387,7 +4707,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           webhookKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(HttpBody.pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5397,4 +4717,9 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "WebhookV1Request" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

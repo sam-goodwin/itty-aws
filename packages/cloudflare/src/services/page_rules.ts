@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -421,56 +423,28 @@ export type CreateRequestActionsItem =
   | CreateRequestActionsItemSSL
   | CreateRequestActionsItemTrueClientIPHeader
   | CreateRequestActionsItemWAF;
-const CreateRequestActionsItem = /*@__PURE__*/ __L.at(__c0, 0);
-
 export type CreateRequestActionsList = Array<CreateRequestActionsItem>;
-const CreateRequestActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRequestActionsList>;
-
 export type CreateRequestTargetsItemConstraintOperator =
   | "matches"
   | "contains"
   | "equals"
   | "not_equal"
   | "not_contain";
-const CreateRequestTargetsItemConstraintOperator = S.String;
-
 export interface CreateRequestTargetsItemConstraint {
   /** The matches operator can use asterisks and pipes as wildcard and 'or' operators. */
   operator: CreateRequestTargetsItemConstraintOperator | (string & {});
   /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders. */
   value: string;
 }
-const CreateRequestTargetsItemConstraint = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateRequestTargetsItemConstraint>;
-
 export type CreateRequestTargetsItemTarget = "url";
-const CreateRequestTargetsItemTarget = S.String;
-
 export interface CreateRequestTargetsItem {
   /** String constraint. */
   constraint?: CreateRequestTargetsItemConstraint;
   /** A target based on the URL of the request. */
   target?: CreateRequestTargetsItemTarget | (string & {});
 }
-const CreateRequestTargetsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateRequestTargetsItem>;
-
 export type CreateRequestTargetsList = Array<CreateRequestTargetsItem>;
-const CreateRequestTargetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateRequestTargetsList>;
-
 export type CreateRequestStatus = "active" | "disabled";
-const CreateRequestStatus = S.String;
-
 export interface CreatePageRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -483,11 +457,6 @@ export interface CreatePageRuleRequest {
   /** The status of the Page Rule. */
   status?: CreateRequestStatus | (string & {});
 }
-const CreatePageRuleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreatePageRuleRequest>;
-
 export type CreateResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
 export interface CreateResponseActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to` https://` through a 301 redirect. */
@@ -856,17 +825,8 @@ export type CreateResponseActionsItem =
   | CreateResponseActionsItemSSL
   | CreateResponseActionsItemTrueClientIPHeader
   | CreateResponseActionsItemWAF;
-const CreateResponseActionsItem = /*@__PURE__*/ __L.at(__c0, 6);
-
 export type CreateResponseActionsList = Array<CreateResponseActionsItem>;
-const CreateResponseActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateResponseActionsList>;
-
 export type CreateResponseStatus = "active" | "disabled";
-const CreateResponseStatus = S.String;
-
 export type CreateResponseTargetsItemConstraintOperator =
   | "matches"
   | "contains"
@@ -879,29 +839,14 @@ export interface CreateResponseTargetsItemConstraint {
   /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders. */
   value: string;
 }
-const CreateResponseTargetsItemConstraint =
-  CreateRequestTargetsItemConstraint as any as S.Schema<CreateResponseTargetsItemConstraint>;
-
 export type CreateResponseTargetsItemTarget = "url";
-const CreateResponseTargetsItemTarget = S.String;
-
 export interface CreateResponseTargetsItem {
   /** String constraint. */
   constraint?: CreateResponseTargetsItemConstraint | null;
   /** A target based on the URL of the request. */
   target?: CreateResponseTargetsItemTarget | null;
 }
-const CreateResponseTargetsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateResponseTargetsItem>;
-
 export type CreateResponseTargetsList = Array<CreateResponseTargetsItem>;
-const CreateResponseTargetsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateResponseTargetsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePageRuleResponse {
   /** Identifier. */
@@ -919,40 +864,23 @@ export interface CreatePageRuleResponse {
   /** The rule targets to evaluate on each request. */
   targets: CreateResponseTargetsList;
 }
-const CreatePageRuleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreatePageRuleResponse>;
-
 export interface DeletePageRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   pageruleId: string;
 }
-const DeletePageRuleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeletePageRuleRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeletePageRuleResponse {
   /** Identifier. */
   id: string;
 }
-const DeletePageRuleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeletePageRuleResponse>;
-
 export interface GetPageRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   pageruleId: string;
 }
-const GetPageRuleRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetPageRuleRequest>;
-
 export type GetResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
 export interface GetResponseActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to` https://` through a 301 redirect. */
@@ -1308,17 +1236,8 @@ export type GetResponseActionsItem =
   | GetResponseActionsItemSSL
   | GetResponseActionsItemTrueClientIPHeader
   | GetResponseActionsItemWAF;
-const GetResponseActionsItem = /*@__PURE__*/ __L.at(__c1, 6);
-
 export type GetResponseActionsList = Array<GetResponseActionsItem>;
-const GetResponseActionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetResponseActionsList>;
-
 export type GetResponseStatus = "active" | "disabled";
-const GetResponseStatus = S.String;
-
 export type GetResponseTargetsItemConstraintOperator =
   | "matches"
   | "contains"
@@ -1331,29 +1250,14 @@ export interface GetResponseTargetsItemConstraint {
   /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders. */
   value: string;
 }
-const GetResponseTargetsItemConstraint =
-  CreateRequestTargetsItemConstraint as any as S.Schema<GetResponseTargetsItemConstraint>;
-
 export type GetResponseTargetsItemTarget = "url";
-const GetResponseTargetsItemTarget = S.String;
-
 export interface GetResponseTargetsItem {
   /** String constraint. */
   constraint?: GetResponseTargetsItemConstraint | null;
   /** A target based on the URL of the request. */
   target?: GetResponseTargetsItemTarget | null;
 }
-const GetResponseTargetsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetResponseTargetsItem>;
-
 export type GetResponseTargetsList = Array<GetResponseTargetsItem>;
-const GetResponseTargetsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetResponseTargetsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPageRuleResponse {
   /** Identifier. */
@@ -1371,20 +1275,10 @@ export interface GetPageRuleResponse {
   /** The rule targets to evaluate on each request. */
   targets: GetResponseTargetsList;
 }
-const GetPageRuleResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetPageRuleResponse>;
-
 export type ListRequestDirection = "asc" | "desc";
-const ListRequestDirection = S.String;
-
 export type ListRequestMatch = "any" | "all";
-const ListRequestMatch = S.String;
-
 export type ListRequestOrder = "status" | "priority";
-const ListRequestOrder = S.String;
-
 export type ListRequestStatus = "active" | "disabled";
-const ListRequestStatus = S.String;
-
 export interface ListPageRulesRequest {
   /** Identifier. */
   zoneId: string;
@@ -1397,8 +1291,6 @@ export interface ListPageRulesRequest {
   /** The status of the Page Rule. */
   status?: ListRequestStatus | (string & {});
 }
-const ListPageRulesRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListPageRulesRequest>;
-
 export type ListResultItemActionsItemAlwaysUseHTTPSId = "always_use_https";
 export interface ListResultItemActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to` https://` through a 301 redirect. */
@@ -1759,17 +1651,8 @@ export type ListResultItemActionsItem =
   | ListResultItemActionsItemSSL
   | ListResultItemActionsItemTrueClientIPHeader
   | ListResultItemActionsItemWAF;
-const ListResultItemActionsItem = /*@__PURE__*/ __L.at(__c2, 4);
-
 export type ListResultItemActionsList = Array<ListResultItemActionsItem>;
-const ListResultItemActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListResultItemActionsList>;
-
 export type ListResultItemStatus = "active" | "disabled";
-const ListResultItemStatus = S.String;
-
 export type ListResultItemTargetsItemConstraintOperator =
   | "matches"
   | "contains"
@@ -1790,9 +1673,6 @@ export interface ListResultItemTargetsItem {
   target?: ListResultItemTargetsItemTarget | null;
 }
 export type ListResultItemTargetsList = Array<ListResultItemTargetsItem>;
-const ListResultItemTargetsList =
-  CreateResponseTargetsList as any as S.Schema<ListResultItemTargetsList>;
-
 export interface ListResultItem {
   /** Identifier. */
   id: string;
@@ -1809,17 +1689,8 @@ export interface ListResultItem {
   /** The rule targets to evaluate on each request. */
   targets: ListResultItemTargetsList;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListResultList>;
-
 export type ListPageRulesResponse = ListResultList;
-const ListPageRulesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListPageRulesResponse>;
-
 export type EditRequestActionsItemAlwaysUseHTTPSId = "always_use_https";
 export interface EditRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to` https://` through a 301 redirect. */
@@ -2178,17 +2049,8 @@ export type EditRequestActionsItem =
   | EditRequestActionsItemSSL
   | EditRequestActionsItemTrueClientIPHeader
   | EditRequestActionsItemWAF;
-const EditRequestActionsItem = /*@__PURE__*/ __L.at(__c3, 1);
-
 export type EditRequestActionsList = Array<EditRequestActionsItem>;
-const EditRequestActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<EditRequestActionsList>;
-
 export type EditRequestStatus = "active" | "disabled";
-const EditRequestStatus = S.String;
-
 export type EditRequestTargetsItemConstraintOperator =
   | "matches"
   | "contains"
@@ -2209,8 +2071,6 @@ export interface EditRequestTargetsItem {
   target?: EditRequestTargetsItemTarget | (string & {});
 }
 export type EditRequestTargetsList = Array<EditRequestTargetsItem>;
-const EditRequestTargetsList = CreateRequestTargetsList as any as S.Schema<EditRequestTargetsList>;
-
 export interface PatchPageRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -2225,8 +2085,6 @@ export interface PatchPageRuleRequest {
   /** The rule targets to evaluate on each request. */
   targets?: EditRequestTargetsList;
 }
-const PatchPageRuleRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PatchPageRuleRequest>;
-
 export type EditResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
 export interface EditResponseActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to` https://` through a 301 redirect. */
@@ -2587,17 +2445,8 @@ export type EditResponseActionsItem =
   | EditResponseActionsItemSSL
   | EditResponseActionsItemTrueClientIPHeader
   | EditResponseActionsItemWAF;
-const EditResponseActionsItem = /*@__PURE__*/ __L.at(__c3, 4);
-
 export type EditResponseActionsList = Array<EditResponseActionsItem>;
-const EditResponseActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<EditResponseActionsList>;
-
 export type EditResponseStatus = "active" | "disabled";
-const EditResponseStatus = S.String;
-
 export type EditResponseTargetsItemConstraintOperator =
   | "matches"
   | "contains"
@@ -2618,8 +2467,6 @@ export interface EditResponseTargetsItem {
   target?: EditResponseTargetsItemTarget | null;
 }
 export type EditResponseTargetsList = Array<EditResponseTargetsItem>;
-const EditResponseTargetsList = GetResponseTargetsList as any as S.Schema<EditResponseTargetsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchPageRuleResponse {
   /** Identifier. */
@@ -2637,11 +2484,6 @@ export interface PatchPageRuleResponse {
   /** The rule targets to evaluate on each request. */
   targets: EditResponseTargetsList;
 }
-const PatchPageRuleResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PatchPageRuleResponse>;
-
 export type UpdateRequestActionsItemAlwaysUseHTTPSId = "always_use_https";
 export interface UpdateRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to` https://` through a 301 redirect. */
@@ -3005,14 +2847,7 @@ export type UpdateRequestActionsItem =
   | UpdateRequestActionsItemSSL
   | UpdateRequestActionsItemTrueClientIPHeader
   | UpdateRequestActionsItemWAF;
-const UpdateRequestActionsItem = /*@__PURE__*/ __L.at(__c3, 7);
-
 export type UpdateRequestActionsList = Array<UpdateRequestActionsItem>;
-const UpdateRequestActionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UpdateRequestActionsList>;
-
 export type UpdateRequestTargetsItemConstraintOperator =
   | "matches"
   | "contains"
@@ -3033,12 +2868,7 @@ export interface UpdateRequestTargetsItem {
   target?: UpdateRequestTargetsItemTarget | (string & {});
 }
 export type UpdateRequestTargetsList = Array<UpdateRequestTargetsItem>;
-const UpdateRequestTargetsList =
-  CreateRequestTargetsList as any as S.Schema<UpdateRequestTargetsList>;
-
 export type UpdateRequestStatus = "active" | "disabled";
-const UpdateRequestStatus = S.String;
-
 export interface UpdatePageRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -3053,11 +2883,6 @@ export interface UpdatePageRuleRequest {
   /** The status of the Page Rule. */
   status?: UpdateRequestStatus | (string & {});
 }
-const UpdatePageRuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UpdatePageRuleRequest>;
-
 export type UpdateResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
 export interface UpdateResponseActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to` https://` through a 301 redirect. */
@@ -3418,17 +3243,8 @@ export type UpdateResponseActionsItem =
   | UpdateResponseActionsItemSSL
   | UpdateResponseActionsItemTrueClientIPHeader
   | UpdateResponseActionsItemWAF;
-const UpdateResponseActionsItem = /*@__PURE__*/ __L.at(__c4, 2);
-
 export type UpdateResponseActionsList = Array<UpdateResponseActionsItem>;
-const UpdateResponseActionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateResponseActionsList>;
-
 export type UpdateResponseStatus = "active" | "disabled";
-const UpdateResponseStatus = S.String;
-
 export type UpdateResponseTargetsItemConstraintOperator =
   | "matches"
   | "contains"
@@ -3449,9 +3265,6 @@ export interface UpdateResponseTargetsItem {
   target?: UpdateResponseTargetsItemTarget | null;
 }
 export type UpdateResponseTargetsList = Array<UpdateResponseTargetsItem>;
-const UpdateResponseTargetsList =
-  CreateResponseTargetsList as any as S.Schema<UpdateResponseTargetsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdatePageRuleResponse {
   /** Identifier. */
@@ -3469,11 +3282,6 @@ export interface UpdatePageRuleResponse {
   /** The rule targets to evaluate on each request. */
   targets: UpdateResponseTargetsList;
 }
-const UpdatePageRuleResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<UpdatePageRuleResponse>;
-
 export type CreatePageRuleError = Forbidden | CloudflareOpError;
 /** Creates a new Page Rule. */
 export const createPageRule: API.OperationMethod<
@@ -3482,8 +3290,8 @@ export const createPageRule: API.OperationMethod<
   CreatePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePageRuleRequest,
-  output: CreatePageRuleResponse,
+  input: __S(5, __c0, 5) as any as S.Schema<CreatePageRuleRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreatePageRuleResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3497,8 +3305,8 @@ export const deletePageRule: API.OperationMethod<
   DeletePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePageRuleRequest,
-  output: DeletePageRuleResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<DeletePageRuleRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DeletePageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3512,8 +3320,8 @@ export const getPageRule: API.OperationMethod<
   GetPageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPageRuleRequest,
-  output: GetPageRuleResponse,
+  input: __S(13, __c1, 5) as any as S.Schema<GetPageRuleRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetPageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3527,8 +3335,8 @@ export const listPageRules: API.OperationMethod<
   ListPageRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPageRulesRequest,
-  output: ListPageRulesResponse,
+  input: __S(19, __c2, 3) as any as S.Schema<ListPageRulesRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<ListPageRulesResponse>,
   errors: [Forbidden, InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3542,8 +3350,8 @@ export const patchPageRule: API.OperationMethod<
   PatchPageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchPageRuleRequest,
-  output: PatchPageRuleResponse,
+  input: __S(27, __c3, 3) as any as S.Schema<PatchPageRuleRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<PatchPageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3557,8 +3365,8 @@ export const updatePageRule: API.OperationMethod<
   UpdatePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePageRuleRequest,
-  output: UpdatePageRuleResponse,
+  input: __S(33, __c4, 1) as any as S.Schema<UpdatePageRuleRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<UpdatePageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3648,11 +3456,11 @@ function __c0(j: number): any {
         ),
       );
     case 1:
-      return S.Array(CreateRequestActionsItem);
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operator: CreateRequestTargetsItemConstraintOperator,
+          operator: S.String,
           value: S.String,
         }),
       ).annotate({
@@ -3661,20 +3469,20 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          constraint: S.optional(CreateRequestTargetsItemConstraint),
-          target: S.optional(CreateRequestTargetsItemTarget),
+          constraint: S.optional(__S(2, __c0, 2)),
+          target: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateRequestTargetsItem" });
     case 4:
-      return S.Array(CreateRequestTargetsItem);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          actions: CreateRequestActionsList,
-          targets: CreateRequestTargetsList,
+          actions: __S(1, __c0, 1),
+          targets: __S(4, __c0, 4),
           priority: S.optional(S.Number),
-          status: S.optional(CreateRequestStatus),
+          status: S.optional(S.String),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/pagerules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3760,7 +3568,7 @@ function __c0(j: number): any {
         ),
       );
     case 7:
-      return S.Array(CreateResponseActionsItem);
+      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -3768,24 +3576,24 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          constraint: S.optional(S.NullOr(CreateResponseTargetsItemConstraint)),
-          target: S.optional(S.NullOr(CreateResponseTargetsItemTarget)),
+          constraint: S.optional(S.NullOr(__S(2, __c0, 2))),
+          target: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateResponseTargetsItem",
       });
     case 1:
-      return S.Array(CreateResponseTargetsItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: CreateResponseActionsList,
+          actions: __S(7, __c0, 7),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
-          status: CreateResponseStatus,
-          targets: CreateResponseTargetsList,
+          status: S.String,
+          targets: __S(9, __c1, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePageRuleResponse" });
     case 3:
@@ -3901,7 +3709,7 @@ function __c1(j: number): any {
         ),
       );
     case 7:
-      return S.Array(GetResponseActionsItem);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -3909,32 +3717,32 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          constraint: S.optional(S.NullOr(GetResponseTargetsItemConstraint)),
-          target: S.optional(S.NullOr(GetResponseTargetsItemTarget)),
+          constraint: S.optional(S.NullOr(__S(2, __c0, 2))),
+          target: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetResponseTargetsItem" });
     case 1:
-      return S.Array(GetResponseTargetsItem);
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: GetResponseActionsList,
+          actions: __S(15, __c1, 7),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
-          status: GetResponseStatus,
-          targets: GetResponseTargetsList,
+          status: S.String,
+          targets: __S(17, __c2, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPageRuleResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(ListRequestDirection.pipe(T.Query())),
-          match: S.optional(ListRequestMatch.pipe(T.Query())),
-          order: S.optional(ListRequestOrder.pipe(T.Query())),
-          status: S.optional(ListRequestStatus.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          match: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/pagerules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -4020,28 +3828,28 @@ function __c2(j: number): any {
         ),
       );
     case 5:
-      return S.Array(ListResultItemActionsItem);
+      return S.Array(__S(20, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: ListResultItemActionsList,
+          actions: __S(21, __c2, 5),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
-          status: ListResultItemStatus,
-          targets: ListResultItemTargetsList,
+          status: S.String,
+          targets: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 7:
-      return S.Array(ListResultItem);
+      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        ListResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(23, __c2, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPageRulesResponse" });
     case 1:
       return S.Unknown.pipe(
@@ -4124,16 +3932,16 @@ function __c3(j: number): any {
         ),
       );
     case 2:
-      return S.Array(EditRequestActionsItem);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           pageruleId: S.String.pipe(T.Label("pagerule_id")),
-          actions: S.optional(EditRequestActionsList),
+          actions: S.optional(__S(26, __c3, 2)),
           priority: S.optional(S.Number),
-          status: S.optional(EditRequestStatus),
-          targets: S.optional(EditRequestTargetsList),
+          status: S.optional(S.String),
+          targets: S.optional(__S(4, __c0, 4)),
         })
           .pipe(
             T.Http({ method: "PATCH", uri: "/zones/{zone_id}/pagerules/{pagerule_id}", code: 200 }),
@@ -4221,17 +4029,17 @@ function __c3(j: number): any {
         ),
       );
     case 5:
-      return S.Array(EditResponseActionsItem);
+      return S.Array(__S(28, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: EditResponseActionsList,
+          actions: __S(29, __c3, 5),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
-          status: EditResponseStatus,
-          targets: EditResponseTargetsList,
+          status: S.String,
+          targets: __S(17, __c2, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPageRuleResponse" });
     case 7:
@@ -4319,16 +4127,16 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateRequestActionsItem);
+      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           pageruleId: S.String.pipe(T.Label("pagerule_id")),
-          actions: UpdateRequestActionsList,
-          targets: UpdateRequestTargetsList,
+          actions: __S(32, __c4, 0),
+          targets: __S(4, __c0, 4),
           priority: S.optional(S.Number),
-          status: S.optional(UpdateRequestStatus),
+          status: S.optional(S.String),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/pagerules/{pagerule_id}", code: 200 }),
@@ -4416,18 +4224,23 @@ function __c4(j: number): any {
         ),
       );
     case 3:
-      return S.Array(UpdateResponseActionsItem);
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: UpdateResponseActionsList,
+          actions: __S(35, __c4, 3),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
-          status: UpdateResponseStatus,
-          targets: UpdateResponseTargetsList,
+          status: S.String,
+          targets: __S(9, __c1, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePageRuleResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

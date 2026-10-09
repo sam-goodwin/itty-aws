@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -56,15 +58,8 @@ export class UnprocessableEntity
 
 /** Dimensions to group results by. JSON dimensions support nested refs, for example event_data/checkout_step. Nested keys containing characters that OData cannot parse as an identifier, such as '-', spaces, quotes, or '/', must be wrapped in single quotes (escape embedded single quotes by doubling them), for example flags/'enable-comments-view' or event_data/'some property''s/value'. */
 export type CreateObservabilityQueryRequestGroupByList = Array<string>;
-const CreateObservabilityQueryRequestGroupByList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateObservabilityQueryRequestGroupByList>;
-
 /** Direction to order grouped results by. Defaults to desc. */
 export type CreateObservabilityQueryRequestOrderDirection = "asc" | "desc";
-const CreateObservabilityQueryRequestOrderDirection = S.String;
-
 export interface CreateObservabilityQueryRequest {
   /** Metric id */
   metric: string;
@@ -91,114 +86,44 @@ export interface CreateObservabilityQueryRequest {
   /** IANA timezone (e.g. Europe/Paris) used only to align calendar buckets (1d/1mo) to that zone's day/month boundaries. startTime/endTime and all output timestamps are always UTC. No effect on sub-day granularities. */
   bucketTimezone?: string;
 }
-const CreateObservabilityQueryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateObservabilityQueryRequest>;
-
 export type CreateObservabilityQueryResponse = unknown;
-const CreateObservabilityQueryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateObservabilityQueryResponse>;
-
 export interface GetObservabilityConfigurationProjectsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetObservabilityConfigurationProjectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetObservabilityConfigurationProjectsRequest>;
-
 export interface GetObservabilityConfigurationProjectsResponseDisabledProjectsItem {
   disabledAt: number;
   id: string;
   name?: string;
 }
-const GetObservabilityConfigurationProjectsResponseDisabledProjectsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetObservabilityConfigurationProjectsResponseDisabledProjectsItem>;
-
 export type GetObservabilityConfigurationProjectsResponseDisabledProjectsList =
   Array<GetObservabilityConfigurationProjectsResponseDisabledProjectsItem>;
-const GetObservabilityConfigurationProjectsResponseDisabledProjectsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetObservabilityConfigurationProjectsResponseDisabledProjectsList>;
-
 export interface GetObservabilityConfigurationProjectsResponse {
   disabledProjects: GetObservabilityConfigurationProjectsResponseDisabledProjectsList;
 }
-const GetObservabilityConfigurationProjectsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetObservabilityConfigurationProjectsResponse>;
-
 export interface GetObservabilitySchemaRequest {}
-const GetObservabilitySchemaRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetObservabilitySchemaRequest>;
-
 export interface GetObservabilitySchemaResponseMetricsItem {
   description: string;
   id: string;
 }
-const GetObservabilitySchemaResponseMetricsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetObservabilitySchemaResponseMetricsItem>;
-
 export type GetObservabilitySchemaResponseMetricsList =
   Array<GetObservabilitySchemaResponseMetricsItem>;
-const GetObservabilitySchemaResponseMetricsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetObservabilitySchemaResponseMetricsList>;
-
 export interface GetObservabilitySchemaResponse {
   metrics: GetObservabilitySchemaResponseMetricsList;
 }
-const GetObservabilitySchemaResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetObservabilitySchemaResponse>;
-
 export interface GetObservabilitySchemaByMetricIdRequest {
   metricId: string;
 }
-const GetObservabilitySchemaByMetricIdRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetObservabilitySchemaByMetricIdRequest>;
-
 export type GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList = Array<string>;
-const GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList>;
-
 export interface GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem {
   description?: string;
   label: string;
   name: string;
 }
-const GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem>;
-
 export type GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList =
   Array<GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem>;
-const GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList>;
-
 export interface GetObservabilitySchemaByMetricIdResponseBodyItem {
   aggregations: GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList;
   defaultAggregation: string;
@@ -207,25 +132,10 @@ export interface GetObservabilitySchemaByMetricIdResponseBodyItem {
   id: string;
   unit: string;
 }
-const GetObservabilitySchemaByMetricIdResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItem>;
-
 export type GetObservabilitySchemaByMetricIdResponseBodyList =
   Array<GetObservabilitySchemaByMetricIdResponseBodyItem>;
-const GetObservabilitySchemaByMetricIdResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyList>;
-
 export type GetObservabilitySchemaByMetricIdResponse =
   GetObservabilitySchemaByMetricIdResponseBodyList;
-const GetObservabilitySchemaByMetricIdResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetObservabilitySchemaByMetricIdResponse>;
-
 export interface UpdateObservabilityConfigurationProjectRequest {
   /** The ID or name of the project to update */
   projectIdOrName: string;
@@ -236,20 +146,10 @@ export interface UpdateObservabilityConfigurationProjectRequest {
   /** Whether Observability Plus should be disabled for the project */
   disabled: boolean;
 }
-const UpdateObservabilityConfigurationProjectRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UpdateObservabilityConfigurationProjectRequest>;
-
 export interface UpdateObservabilityConfigurationProjectResponse {
   disabledAt?: number;
   id: string;
 }
-const UpdateObservabilityConfigurationProjectResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdateObservabilityConfigurationProjectResponse>;
-
 export type CreateObservabilityQueryError =
   | BadRequest
   | PaymentRequired
@@ -263,8 +163,8 @@ export const createObservabilityQuery: API.OperationMethod<
   CreateObservabilityQueryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateObservabilityQueryRequest,
-  output: CreateObservabilityQueryResponse,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateObservabilityQueryRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateObservabilityQueryResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -282,8 +182,8 @@ export const getObservabilityConfigurationProjects: API.OperationMethod<
   GetObservabilityConfigurationProjectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObservabilityConfigurationProjectsRequest,
-  output: GetObservabilityConfigurationProjectsResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<GetObservabilityConfigurationProjectsRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetObservabilityConfigurationProjectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -296,8 +196,8 @@ export const getObservabilitySchema: API.OperationMethod<
   GetObservabilitySchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObservabilitySchemaRequest,
-  output: GetObservabilitySchemaResponse,
+  input: __S(7, __c0, 7) as any as S.Schema<GetObservabilitySchemaRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetObservabilitySchemaResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -314,8 +214,8 @@ export const getObservabilitySchemaByMetricId: API.OperationMethod<
   GetObservabilitySchemaByMetricIdError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObservabilitySchemaByMetricIdRequest,
-  output: GetObservabilitySchemaByMetricIdResponse,
+  input: __S(11, __c1, 3) as any as S.Schema<GetObservabilitySchemaByMetricIdRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetObservabilitySchemaByMetricIdResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -333,8 +233,8 @@ export const updateObservabilityConfigurationProject: API.OperationMethod<
   UpdateObservabilityConfigurationProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateObservabilityConfigurationProjectRequest,
-  output: UpdateObservabilityConfigurationProjectResponse,
+  input: __S(18, __c2, 2) as any as S.Schema<UpdateObservabilityConfigurationProjectRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<UpdateObservabilityConfigurationProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -351,11 +251,11 @@ function __c0(j: number): any {
           metric: S.String,
           scope: S.Unknown,
           aggregation: S.optional(S.String),
-          groupBy: S.optional(CreateObservabilityQueryRequestGroupByList),
+          groupBy: S.optional(__S(0, __c0, 0)),
           filter: S.optional(S.String),
           limit: S.optional(S.Number),
           orderBy: S.optional(S.String),
-          orderDirection: S.optional(CreateObservabilityQueryRequestOrderDirection),
+          orderDirection: S.optional(S.String),
           granularity: S.optional(S.Unknown),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
@@ -394,11 +294,11 @@ function __c0(j: number): any {
         identifier: "GetObservabilityConfigurationProjectsResponseDisabledProjectsItem",
       });
     case 5:
-      return S.Array(GetObservabilityConfigurationProjectsResponseDisabledProjectsItem);
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disabledProjects: GetObservabilityConfigurationProjectsResponseDisabledProjectsList,
+          disabledProjects: __S(5, __c0, 5),
         }),
       ).annotate({
         identifier: "GetObservabilityConfigurationProjectsResponse",
@@ -423,11 +323,11 @@ function __c1(j: number): any {
         identifier: "GetObservabilitySchemaResponseMetricsItem",
       });
     case 1:
-      return S.Array(GetObservabilitySchemaResponseMetricsItem);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metrics: GetObservabilitySchemaResponseMetricsList,
+          metrics: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "GetObservabilitySchemaResponse",
@@ -453,14 +353,14 @@ function __c1(j: number): any {
         identifier: "GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem",
       });
     case 6:
-      return S.Array(GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem);
+      return S.Array(__S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aggregations: GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList,
+          aggregations: __S(12, __c1, 4),
           defaultAggregation: S.String,
           description: S.String,
-          dimensions: GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList,
+          dimensions: __S(14, __c1, 6),
           id: S.String,
           unit: S.String,
         }),
@@ -472,11 +372,9 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetObservabilitySchemaByMetricIdResponseBodyItem);
+      return S.Array(__S(15, __c1, 7));
     case 1:
-      return S.suspend(() =>
-        GetObservabilitySchemaByMetricIdResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetObservabilitySchemaByMetricIdResponse",
       });
     case 2:
@@ -506,4 +404,9 @@ function __c2(j: number): any {
         identifier: "UpdateObservabilityConfigurationProjectResponse",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

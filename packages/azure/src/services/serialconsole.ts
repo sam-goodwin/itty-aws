@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -24,29 +26,15 @@ export interface ConnectSerialPortRequest {
   /** The name of the serial port to connect to. */
   serialPort: string;
 }
-const ConnectSerialPortRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConnectSerialPortRequest>;
-
 /** Returns a connection string to the serial port of the resource. */
 export interface SerialPortConnectResult {
   /** Connection string to the serial port of the resource. */
   connectionString?: string | Redacted.Redacted<string>;
 }
-const SerialPortConnectResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SerialPortConnectResult>;
-
 /** Specifies whether the port is enabled for a serial console connection. */
 export type SerialPortState = "enabled" | "disabled";
-const SerialPortState = S.String;
-
 /** Specifies whether the port is currently active. */
 export type SerialPortConnectionState = "active" | "inactive";
-const SerialPortConnectionState = S.String;
-
 /** The properties of the serial port. */
 export interface SerialPortProperties {
   /** Specifies whether the port is enabled for a serial console connection. */
@@ -54,8 +42,6 @@ export interface SerialPortProperties {
   /** Specifies whether the port is currently active. */
   connectionState?: SerialPortConnectionState | (string & {});
 }
-const SerialPortProperties = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SerialPortProperties>;
-
 export interface CreateSerialPortRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -72,19 +58,10 @@ export interface CreateSerialPortRequest {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-const CreateSerialPortRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateSerialPortRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -100,8 +77,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemData>;
-
 export interface CreateSerialPortResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -114,11 +89,6 @@ export interface CreateSerialPortResponse {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-const CreateSerialPortResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateSerialPortResponse>;
-
 export interface DeleteSerialPortRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -133,80 +103,43 @@ export interface DeleteSerialPortRequest {
   /** The name of the serial port to delete. */
   serialPort: string;
 }
-const DeleteSerialPortRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteSerialPortRequest>;
-
 export interface DeleteSerialPortResponse {}
-const DeleteSerialPortResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteSerialPortResponse>;
-
 export interface DisableConsoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Default parameter. Leave the value as "default". */
   default: string;
 }
-const DisableConsoleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DisableConsoleRequest>;
-
 export interface DisableSerialConsoleResultProperties {
   /** Whether or not Serial Console is disabled. */
   disabled?: boolean;
 }
-const DisableSerialConsoleResultProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DisableSerialConsoleResultProperties>;
-
 /** Returns whether or not Serial Console is disabled. */
 export interface DisableSerialConsoleResult {
   properties?: DisableSerialConsoleResultProperties;
 }
-const DisableSerialConsoleResult = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DisableSerialConsoleResult>;
-
 export interface EnableConsoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Default parameter. Leave the value as "default". */
   default: string;
 }
-const EnableConsoleRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EnableConsoleRequest>;
-
 export type EnableSerialConsoleResultProperties = DisableSerialConsoleResultProperties;
 /** Returns whether or not Serial Console is disabled (enabled). */
 export interface EnableSerialConsoleResult {
   properties?: DisableSerialConsoleResultProperties;
 }
-const EnableSerialConsoleResult =
-  DisableSerialConsoleResult as any as S.Schema<EnableSerialConsoleResult>;
-
 export interface GetConsoleStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Default parameter. Leave the value as "default". */
   default: string;
 }
-const GetConsoleStatusRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetConsoleStatusRequest>;
-
 export type SerialConsoleStatusProperties = DisableSerialConsoleResultProperties;
 /** Returns whether or not Serial Console is disabled. */
 export interface SerialConsoleStatus {
   properties?: DisableSerialConsoleResultProperties;
 }
-const SerialConsoleStatus = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SerialConsoleStatus>;
-
 export interface GetSerialPortRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -221,8 +154,6 @@ export interface GetSerialPortRequest {
   /** The name of the serial port to connect to. */
   serialPort: string;
 }
-const GetSerialPortRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetSerialPortRequest>;
-
 export interface GetSerialPortResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -235,61 +166,29 @@ export interface GetSerialPortResponse {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-const GetSerialPortResponse = CreateSerialPortResponse as any as S.Schema<GetSerialPortResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListOperationsRequest>;
-
 export interface SerialConsoleOperationsValueItemDisplay {
   provider?: string;
   resource?: string;
   operation?: string;
   description?: string;
 }
-const SerialConsoleOperationsValueItemDisplay = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SerialConsoleOperationsValueItemDisplay>;
-
 export interface SerialConsoleOperationsValueItem {
   name?: string;
   isDataAction?: string;
   display?: SerialConsoleOperationsValueItemDisplay;
 }
-const SerialConsoleOperationsValueItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SerialConsoleOperationsValueItem>;
-
 /** A list of Serial Console operations */
 export type SerialConsoleOperationsValueList = Array<SerialConsoleOperationsValueItem>;
-const SerialConsoleOperationsValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SerialConsoleOperationsValueList>;
-
 /** Serial Console operations */
 export interface SerialConsoleOperations {
   /** A list of Serial Console operations */
   value?: SerialConsoleOperationsValueList;
 }
-const SerialConsoleOperations = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SerialConsoleOperations>;
-
 export interface ListSerialPortBySubscriptionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListSerialPortBySubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListSerialPortBySubscriptionsRequest>;
-
 /** Represents the serial port of the parent resource. */
 export interface SerialPort {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -303,22 +202,13 @@ export interface SerialPort {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-const SerialPort = CreateSerialPortResponse as any as S.Schema<SerialPort>;
-
 /** The list of serial ports. */
 export type SerialPortListResultValueList = Array<SerialPort>;
-const SerialPortListResultValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SerialPortListResultValueList>;
-
 /** The list serial ports operation response. */
 export interface SerialPortListResult {
   /** The list of serial ports. */
   value?: SerialPortListResultValueList;
 }
-const SerialPortListResult = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SerialPortListResult>;
-
 export interface ListSerialPortsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -331,11 +221,6 @@ export interface ListSerialPortsRequest {
   /** The name of the parent resource. */
   parentResource: string;
 }
-const ListSerialPortsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListSerialPortsRequest>;
-
 export type ConnectSerialPortError = AzureOpError;
 /** Connect to serial port of the target resource */
 export const ConnectSerialPort: API.OperationMethod<
@@ -344,8 +229,8 @@ export const ConnectSerialPort: API.OperationMethod<
   ConnectSerialPortError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectSerialPortRequest,
-  output: SerialPortConnectResult,
+  input: __S(0, __c0, 0) as any as S.Schema<ConnectSerialPortRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<SerialPortConnectResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -359,8 +244,8 @@ export const CreateSerialPort: API.OperationMethod<
   CreateSerialPortError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSerialPortRequest,
-  output: CreateSerialPortResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateSerialPortRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateSerialPortResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -374,8 +259,8 @@ export const DeleteSerialPort: API.OperationMethod<
   DeleteSerialPortError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSerialPortRequest,
-  output: DeleteSerialPortResponse,
+  input: __S(6, __c0, 6) as any as S.Schema<DeleteSerialPortRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<DeleteSerialPortResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -389,8 +274,8 @@ export const DisableConsole: API.OperationMethod<
   DisableConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableConsoleRequest,
-  output: DisableSerialConsoleResult,
+  input: __S(8, __c1, 0) as any as S.Schema<DisableConsoleRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<DisableSerialConsoleResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -404,8 +289,8 @@ export const EnableConsole: API.OperationMethod<
   EnableConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableConsoleRequest,
-  output: EnableSerialConsoleResult,
+  input: __S(11, __c1, 3) as any as S.Schema<EnableConsoleRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<EnableSerialConsoleResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -419,8 +304,8 @@ export const GetConsoleStatus: API.OperationMethod<
   GetConsoleStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConsoleStatusRequest,
-  output: SerialConsoleStatus,
+  input: __S(12, __c1, 4) as any as S.Schema<GetConsoleStatusRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<SerialConsoleStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -434,8 +319,8 @@ export const GetSerialPort: API.OperationMethod<
   GetSerialPortError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSerialPortRequest,
-  output: GetSerialPortResponse,
+  input: __S(14, __c1, 6) as any as S.Schema<GetSerialPortRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetSerialPortResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -449,8 +334,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: SerialConsoleOperations,
+  input: __S(15, __c1, 7) as any as S.Schema<ListOperationsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<SerialConsoleOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -464,8 +349,8 @@ export const ListSerialPortBySubscriptions: API.OperationMethod<
   ListSerialPortBySubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSerialPortBySubscriptionsRequest,
-  output: SerialPortListResult,
+  input: __S(20, __c2, 4) as any as S.Schema<ListSerialPortBySubscriptionsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<SerialPortListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -479,8 +364,8 @@ export const ListSerialPorts: API.OperationMethod<
   ListSerialPortsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSerialPortsRequest,
-  output: SerialPortListResult,
+  input: __S(23, __c2, 7) as any as S.Schema<ListSerialPortsRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<SerialPortListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -516,8 +401,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(SerialPortState),
-          connectionState: S.optional(SerialPortConnectionState),
+          state: S.optional(S.String),
+          connectionState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SerialPortProperties" });
     case 3:
@@ -529,7 +414,7 @@ function __c0(j: number): any {
           parentResourceType: S.String.pipe(T.Label()),
           parentResource: S.String.pipe(T.Label()),
           serialPort: S.String.pipe(T.Label()),
-          properties: S.optional(SerialPortProperties),
+          properties: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -543,10 +428,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -556,8 +441,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SerialPortProperties),
+          systemData: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "CreateSerialPortResponse" });
     case 6:
@@ -611,7 +496,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(DisableSerialConsoleResultProperties),
+          properties: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "DisableSerialConsoleResult",
@@ -647,7 +532,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(DisableSerialConsoleResultProperties),
+          properties: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "SerialConsoleStatus" });
     case 6:
@@ -699,17 +584,17 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.String),
-          display: S.optional(SerialConsoleOperationsValueItemDisplay),
+          display: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "SerialConsoleOperationsValueItem",
       });
     case 2:
-      return S.Array(SerialConsoleOperationsValueItem);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SerialConsoleOperationsValueList),
+          value: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "SerialConsoleOperations" });
     case 4:
@@ -728,11 +613,11 @@ function __c2(j: number): any {
         identifier: "ListSerialPortBySubscriptionsRequest",
       });
     case 5:
-      return S.Array(SerialPort);
+      return S.Array(__S(5, __c0, 5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SerialPortListResultValueList),
+          value: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "SerialPortListResult" });
     case 7:
@@ -753,4 +638,9 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListSerialPortsRequest" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

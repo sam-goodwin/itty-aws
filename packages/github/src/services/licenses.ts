@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -30,20 +32,9 @@ export class NotFound
 export interface GetRequest {
   license: string;
 }
-const GetRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetRequest>;
-
 export type LicensePermissionsList = Array<string>;
-const LicensePermissionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<LicensePermissionsList>;
-
 export type LicenseConditionsList = Array<string>;
-const LicenseConditionsList = LicensePermissionsList as any as S.Schema<LicenseConditionsList>;
-
 export type LicenseLimitationsList = Array<string>;
-const LicenseLimitationsList = LicensePermissionsList as any as S.Schema<LicenseLimitationsList>;
-
 /** License */
 export interface License {
   key: string;
@@ -60,8 +51,6 @@ export interface License {
   body: string;
   featured: boolean;
 }
-const License = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<License>;
-
 export interface GetAllCommonlyUsedRequest {
   featured?: boolean;
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
@@ -69,11 +58,6 @@ export interface GetAllCommonlyUsedRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetAllCommonlyUsedRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetAllCommonlyUsedRequest>;
-
 /** License Simple */
 export interface LicenseSimple {
   key: string;
@@ -83,20 +67,8 @@ export interface LicenseSimple {
   node_id: string;
   html_url?: string;
 }
-const LicenseSimple = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LicenseSimple>;
-
 export type GetAllCommonlyUsedResponseBodyList = Array<LicenseSimple>;
-const GetAllCommonlyUsedResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetAllCommonlyUsedResponseBodyList>;
-
 export type GetAllCommonlyUsedResponse = GetAllCommonlyUsedResponseBodyList;
-const GetAllCommonlyUsedResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetAllCommonlyUsedResponse>;
-
 export interface GetForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -105,15 +77,11 @@ export interface GetForRepoRequest {
   /** The Git reference for the results you want to list. The `ref` for a branch can be formatted either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use `refs/pull/<number>/merge`. */
   ref?: string;
 }
-const GetForRepoRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetForRepoRequest>;
-
 export interface LicenseContentLinks {
   git: string | null;
   html: string | null;
   self: string;
 }
-const LicenseContentLinks = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LicenseContentLinks>;
-
 /** License Simple */
 export type NullableLicenseSimple = LicenseSimple;
 /** License Content */
@@ -132,14 +100,12 @@ export interface LicenseContent {
   _links: LicenseContentLinks;
   license: LicenseSimple | null;
 }
-const LicenseContent = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LicenseContent>;
-
 export type GetError = Forbidden | NotFound | GithubOpError;
 /** Get a license Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)." */
 export const get: API.OperationMethod<GetRequest, License, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: License,
+    input: __S(0, __c0, 0) as any as S.Schema<GetRequest>,
+    output: __S(2, __c0, 2) as any as S.Schema<License>,
     errors: [Forbidden, NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -153,8 +119,8 @@ export const getAllCommonlyUsed: API.OperationMethod<
   GetAllCommonlyUsedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllCommonlyUsedRequest,
-  output: GetAllCommonlyUsedResponse,
+  input: __S(3, __c0, 3) as any as S.Schema<GetAllCommonlyUsedRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<GetAllCommonlyUsedResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -168,8 +134,8 @@ export const getForRepo: API.OperationMethod<
   GetForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetForRepoRequest,
-  output: LicenseContent,
+  input: __S(7, __c0, 7) as any as S.Schema<GetForRepoRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<LicenseContent>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -197,9 +163,9 @@ function __c0(j: number): any {
           html_url: S.String,
           description: S.String,
           implementation: S.String,
-          permissions: LicensePermissionsList,
-          conditions: LicenseConditionsList,
-          limitations: LicenseLimitationsList,
+          permissions: __S(1, __c0, 1),
+          conditions: __S(1, __c0, 1),
+          limitations: __S(1, __c0, 1),
           body: S.String,
           featured: S.Boolean,
         }),
@@ -226,13 +192,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "LicenseSimple" });
     case 5:
-      return S.Array(LicenseSimple);
+      return S.Array(__S(4, __c0, 4));
     case 6:
-      return S.suspend(() => GetAllCommonlyUsedResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "GetAllCommonlyUsedResponse",
-        },
-      );
+      return S.suspend(() => __S(5, __c0, 5).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetAllCommonlyUsedResponse",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -267,9 +231,14 @@ function __c1(j: number): any {
           type: S.String,
           content: S.String,
           encoding: S.String,
-          _links: LicenseContentLinks,
-          license: S.NullOr(LicenseSimple),
+          _links: __S(8, __c1, 0),
+          license: S.NullOr(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "LicenseContent" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

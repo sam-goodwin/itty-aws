@@ -7,23 +7,18 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** List of tags that can be used for describing the data flow. */
 export type DataFlowAnnotationsList = Array<unknown>;
-const DataFlowAnnotationsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DataFlowAnnotationsList>;
-
 /** The folder that this data flow is in. If not specified, Data flow will appear at the root level. */
 export interface DataFlowFolder {
   /** The name of the folder that this data flow is in. */
   name?: string;
 }
-const DataFlowFolder = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DataFlowFolder>;
-
 /** Azure Data Factory nested object which contains a flow with data movements and transformations. */
 export interface DataFlow {
   /** Type of data flow. */
@@ -37,8 +32,6 @@ export interface DataFlow {
   /** Type-specific data flow properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-const DataFlow = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataFlow>;
-
 /** Data flow debug resource. */
 export interface DataFlowDebugResource {
   /** The resource name. */
@@ -46,29 +39,12 @@ export interface DataFlowDebugResource {
   /** Data flow properties. */
   properties: DataFlow;
 }
-const DataFlowDebugResource = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DataFlowDebugResource>;
-
 /** List of Data flows */
 export type AddDataFlowDebugSessionDataFlowRequestDataFlowsList = Array<DataFlowDebugResource>;
-const AddDataFlowDebugSessionDataFlowRequestDataFlowsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequestDataFlowsList>;
-
 /** Linked service reference type. */
 export type Type = "LinkedServiceReference";
-const Type = S.String;
-
 /** Arguments for LinkedService. */
 export type LinkedServiceReferenceParametersMap = { [key: string]: unknown | undefined };
-const LinkedServiceReferenceParametersMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<LinkedServiceReferenceParametersMap>;
-
 /** Linked service reference type. */
 export interface LinkedServiceReference {
   /** Linked service reference type. */
@@ -78,11 +54,6 @@ export interface LinkedServiceReference {
   /** Arguments for LinkedService. */
   parameters?: LinkedServiceReferenceParametersMap;
 }
-const LinkedServiceReference = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<LinkedServiceReference>;
-
 /** Parameter type. */
 export type ParameterType =
   | "Object"
@@ -92,8 +63,6 @@ export type ParameterType =
   | "Bool"
   | "Array"
   | "SecureString";
-const ParameterType = S.String;
-
 /** Definition of a single parameter for an entity. */
 export interface ParameterSpecification {
   /** Parameter type. */
@@ -101,26 +70,15 @@ export interface ParameterSpecification {
   /** Default value of parameter. */
   defaultValue?: unknown;
 }
-const ParameterSpecification = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ParameterSpecification>;
-
 /** Parameters for dataset. */
 export type DatasetParametersMap = { [key: string]: ParameterSpecification | undefined };
-const DatasetParametersMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DatasetParametersMap>;
-
 /** List of tags that can be used for describing the Dataset. */
 export type DatasetAnnotationsList = Array<unknown>;
-const DatasetAnnotationsList = DataFlowAnnotationsList as any as S.Schema<DatasetAnnotationsList>;
-
 /** The folder that this Dataset is in. If not specified, Dataset will appear at the root level. */
 export interface DatasetFolder {
   /** The name of the folder that this Dataset is in. */
   name?: string;
 }
-const DatasetFolder = DataFlowFolder as any as S.Schema<DatasetFolder>;
-
 /** The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents. */
 export interface Dataset {
   /** Type of dataset. */
@@ -142,8 +100,6 @@ export interface Dataset {
   /** Type-specific dataset properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-const Dataset = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Dataset>;
-
 /** Dataset debug resource. */
 export interface DatasetDebugResource {
   /** The resource name. */
@@ -151,24 +107,12 @@ export interface DatasetDebugResource {
   /** Dataset properties. */
   properties: Dataset;
 }
-const DatasetDebugResource = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DatasetDebugResource>;
-
 /** List of datasets. */
 export type AddDataFlowDebugSessionDataFlowRequestDatasetsList = Array<DatasetDebugResource>;
-const AddDataFlowDebugSessionDataFlowRequestDatasetsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequestDatasetsList>;
-
 /** Type of integration runtime. */
 export type IntegrationRuntimeReferenceType = "IntegrationRuntimeReference";
-const IntegrationRuntimeReferenceType = S.String;
-
 /** Arguments for integration runtime. */
 export type IntegrationRuntimeReferenceParametersMap = { [key: string]: unknown | undefined };
-const IntegrationRuntimeReferenceParametersMap =
-  LinkedServiceReferenceParametersMap as any as S.Schema<IntegrationRuntimeReferenceParametersMap>;
-
 /** Integration runtime reference type. */
 export interface IntegrationRuntimeReference {
   /** Type of integration runtime. */
@@ -178,21 +122,10 @@ export interface IntegrationRuntimeReference {
   /** Arguments for integration runtime. */
   parameters?: IntegrationRuntimeReferenceParametersMap;
 }
-const IntegrationRuntimeReference = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IntegrationRuntimeReference>;
-
 /** Parameters for linked service. */
 export type LinkedServiceParametersMap = { [key: string]: ParameterSpecification | undefined };
-const LinkedServiceParametersMap =
-  DatasetParametersMap as any as S.Schema<LinkedServiceParametersMap>;
-
 /** List of tags that can be used for describing the linked service. */
 export type LinkedServiceAnnotationsList = Array<unknown>;
-const LinkedServiceAnnotationsList =
-  DataFlowAnnotationsList as any as S.Schema<LinkedServiceAnnotationsList>;
-
 /** The nested object which contains the information and credential which can be used to connect with related store or compute resource. */
 export interface LinkedService {
   /** Type of linked service. */
@@ -210,8 +143,6 @@ export interface LinkedService {
   /** Type-specific linked service properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-const LinkedService = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<LinkedService>;
-
 /** Linked service debug resource. */
 export interface LinkedServiceDebugResource {
   /** The resource name. */
@@ -219,19 +150,9 @@ export interface LinkedServiceDebugResource {
   /** Properties of linked service. */
   properties: LinkedService;
 }
-const LinkedServiceDebugResource = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<LinkedServiceDebugResource>;
-
 /** List of linked services. */
 export type AddDataFlowDebugSessionDataFlowRequestLinkedServicesList =
   Array<LinkedServiceDebugResource>;
-const AddDataFlowDebugSessionDataFlowRequestLinkedServicesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequestLinkedServicesList>;
-
 /** Staging info for execute data flow activity. */
 export interface DataFlowStagingInfo {
   /** Staging linked service reference. */
@@ -239,8 +160,6 @@ export interface DataFlowStagingInfo {
   /** Folder path for staging blob. Type: string (or Expression with resultType string) */
   folderPath?: unknown;
 }
-const DataFlowStagingInfo = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DataFlowStagingInfo>;
-
 /** Definition of data flow source setting for debug. */
 export interface DataFlowSourceSetting {
   /** The data flow source name. */
@@ -248,23 +167,10 @@ export interface DataFlowSourceSetting {
   /** Defines the row limit of data flow source in debug. */
   rowLimit?: number;
 }
-const DataFlowSourceSetting = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DataFlowSourceSetting>;
-
 /** Source setting for data flow debug. */
 export type DataFlowDebugPackageDebugSettingsSourceSettingsList = Array<DataFlowSourceSetting>;
-const DataFlowDebugPackageDebugSettingsSourceSettingsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DataFlowDebugPackageDebugSettingsSourceSettingsList>;
-
 /** Data flow parameters. */
 export type DataFlowDebugPackageDebugSettingsParametersMap = { [key: string]: unknown | undefined };
-const DataFlowDebugPackageDebugSettingsParametersMap =
-  LinkedServiceReferenceParametersMap as any as S.Schema<DataFlowDebugPackageDebugSettingsParametersMap>;
-
 /** Data flow debug settings. */
 export interface DataFlowDebugPackageDebugSettings {
   /** Source setting for data flow debug. */
@@ -274,11 +180,6 @@ export interface DataFlowDebugPackageDebugSettings {
   /** Parameters for dataset. */
   datasetParameters?: unknown;
 }
-const DataFlowDebugPackageDebugSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DataFlowDebugPackageDebugSettings>;
-
 export interface AddDataFlowDebugSessionDataFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -301,21 +202,11 @@ export interface AddDataFlowDebugSessionDataFlowRequest {
   /** Data flow debug settings. */
   debugSettings?: DataFlowDebugPackageDebugSettings;
 }
-const AddDataFlowDebugSessionDataFlowRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequest>;
-
 /** Response body structure for starting data flow debug session. */
 export interface AddDataFlowToDebugSessionResponse {
   /** The ID of data flow debug job version. */
   jobVersion?: string;
 }
-const AddDataFlowToDebugSessionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AddDataFlowToDebugSessionResponse>;
-
 export interface CancelPipelineRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -327,17 +218,7 @@ export interface CancelPipelineRunRequest {
   /** If true, cancel all the Child pipelines that are triggered by the current pipeline. */
   isRecursive?: boolean;
 }
-const CancelPipelineRunRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CancelPipelineRunRequest>;
-
 export interface CancelPipelineRunResponse {}
-const CancelPipelineRunResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CancelPipelineRunResponse>;
-
 export interface CancelTriggerRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -348,22 +229,12 @@ export interface CancelTriggerRunRequest {
   /** The pipeline run identifier. */
   runId: string;
 }
-const CancelTriggerRunRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CancelTriggerRunRequest>;
-
 export interface CancelTriggerRunResponse {}
-const CancelTriggerRunResponse =
-  CancelPipelineRunResponse as any as S.Schema<CancelTriggerRunResponse>;
-
 /** The folder that this CDC is in. If not specified, CDC will appear at the root level. */
 export interface ChangeDataCaptureFolder {
   /** The name of the folder that this CDC is in. */
   name?: string;
 }
-const ChangeDataCaptureFolder = DataFlowFolder as any as S.Schema<ChangeDataCaptureFolder>;
-
 /** Schema of a CDC table in terms of column names and their corresponding data types. */
 export interface MapperTableSchema {
   /** Name of the column. */
@@ -371,15 +242,8 @@ export interface MapperTableSchema {
   /** Data type of the column. */
   dataType?: string;
 }
-const MapperTableSchema = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<MapperTableSchema>;
-
 /** List of columns for the source table. */
 export type MapperTablePropertiesSchemaList = Array<MapperTableSchema>;
-const MapperTablePropertiesSchemaList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<MapperTablePropertiesSchemaList>;
-
 /** Connector properties of a CDC table in terms of name / value pairs. */
 export interface MapperDslConnectorProperties {
   /** Name of the property. */
@@ -387,18 +251,8 @@ export interface MapperDslConnectorProperties {
   /** Value of the property. */
   value?: unknown;
 }
-const MapperDslConnectorProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MapperDslConnectorProperties>;
-
 /** List of name/value pairs for connection properties. */
 export type MapperTablePropertiesDslConnectorPropertiesList = Array<MapperDslConnectorProperties>;
-const MapperTablePropertiesDslConnectorPropertiesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<MapperTablePropertiesDslConnectorPropertiesList>;
-
 /** Properties for a CDC table. */
 export interface MapperTableProperties {
   /** List of columns for the source table. */
@@ -406,11 +260,6 @@ export interface MapperTableProperties {
   /** List of name/value pairs for connection properties. */
   dslConnectorProperties?: MapperTablePropertiesDslConnectorPropertiesList;
 }
-const MapperTableProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<MapperTableProperties>;
-
 /** CDC table details. */
 export interface MapperTable {
   /** Name of the table. */
@@ -418,24 +267,12 @@ export interface MapperTable {
   /** Table properties. */
   properties?: MapperTableProperties;
 }
-const MapperTable = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<MapperTable>;
-
 /** List of source tables for a source connection. */
 export type MapperSourceConnectionsInfoSourceEntitiesList = Array<MapperTable>;
-const MapperSourceConnectionsInfoSourceEntitiesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<MapperSourceConnectionsInfoSourceEntitiesList>;
-
 /** Type of connection via linked service or dataset. */
 export type ConnectionType = "linkedservicetype";
-const ConnectionType = S.String;
-
 /** List of name/value pairs for connection properties. */
 export type MapperConnectionCommonDslConnectorPropertiesList = Array<MapperDslConnectorProperties>;
-const MapperConnectionCommonDslConnectorPropertiesList =
-  MapperTablePropertiesDslConnectorPropertiesList as any as S.Schema<MapperConnectionCommonDslConnectorPropertiesList>;
-
 /** Source connection details. */
 export interface MapperConnection {
   /** Linked service reference. */
@@ -449,8 +286,6 @@ export interface MapperConnection {
   /** List of name/value pairs for connection properties. */
   commonDslConnectorProperties?: MapperConnectionCommonDslConnectorPropertiesList;
 }
-const MapperConnection = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MapperConnection>;
-
 /** A object which contains list of tables and connection details for a source connection. */
 export interface MapperSourceConnectionsInfo {
   /** List of source tables for a source connection. */
@@ -458,23 +293,10 @@ export interface MapperSourceConnectionsInfo {
   /** Source connection details. */
   connection?: MapperConnection;
 }
-const MapperSourceConnectionsInfo = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<MapperSourceConnectionsInfo>;
-
 /** List of sources connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureSourceConnectionsInfoList = Array<MapperSourceConnectionsInfo>;
-const ChangeDataCaptureSourceConnectionsInfoList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ChangeDataCaptureSourceConnectionsInfoList>;
-
 /** List of source tables for a target connection. */
 export type MapperTargetConnectionsInfoTargetEntitiesList = Array<MapperTable>;
-const MapperTargetConnectionsInfoTargetEntitiesList =
-  MapperSourceConnectionsInfoSourceEntitiesList as any as S.Schema<MapperTargetConnectionsInfoTargetEntitiesList>;
-
 /** Source or target connection reference details. */
 export interface MapperConnectionReference {
   /** Name of the connection */
@@ -482,15 +304,8 @@ export interface MapperConnectionReference {
   /** Type of connection via linked service or dataset. */
   type?: ConnectionType | (string & {});
 }
-const MapperConnectionReference = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<MapperConnectionReference>;
-
 /** Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'. */
 export type MappingType = "Direct" | "Derived" | "Aggregate";
-const MappingType = S.String;
-
 /** Attribute reference details for the referred column. */
 export interface MapperAttributeReference {
   /** Name of the column. */
@@ -500,18 +315,8 @@ export interface MapperAttributeReference {
   /** The connection reference for the connection. */
   entityConnectionReference?: MapperConnectionReference;
 }
-const MapperAttributeReference = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<MapperAttributeReference>;
-
 /** List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only. */
 export type MapperAttributeMappingAttributeReferencesList = Array<MapperAttributeReference>;
-const MapperAttributeMappingAttributeReferencesList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<MapperAttributeMappingAttributeReferencesList>;
-
 /** Source and target column mapping details. */
 export interface MapperAttributeMapping {
   /** Name of the target column. */
@@ -527,28 +332,13 @@ export interface MapperAttributeMapping {
   /** List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only. */
   attributeReferences?: MapperAttributeMappingAttributeReferencesList;
 }
-const MapperAttributeMapping = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<MapperAttributeMapping>;
-
 /** List of attribute mappings. */
 export type MapperAttributeMappingsAttributeMappingsList = Array<MapperAttributeMapping>;
-const MapperAttributeMappingsAttributeMappingsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<MapperAttributeMappingsAttributeMappingsList>;
-
 /** Attribute mapping details. */
 export interface MapperAttributeMappings {
   /** List of attribute mappings. */
   attributeMappings?: MapperAttributeMappingsAttributeMappingsList;
 }
-const MapperAttributeMappings = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<MapperAttributeMappings>;
-
 /** Source and target table mapping details. */
 export interface DataMapperMapping {
   /** Name of the target table */
@@ -562,20 +352,10 @@ export interface DataMapperMapping {
   /** This holds the source denormalization information used while joining multiple sources. */
   sourceDenormalizeInfo?: unknown;
 }
-const DataMapperMapping = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DataMapperMapping>;
-
 /** List of table mappings. */
 export type MapperTargetConnectionsInfoDataMapperMappingsList = Array<DataMapperMapping>;
-const MapperTargetConnectionsInfoDataMapperMappingsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<MapperTargetConnectionsInfoDataMapperMappingsList>;
-
 /** List of relationship info among the tables. */
 export type MapperTargetConnectionsInfoRelationshipsList = Array<unknown>;
-const MapperTargetConnectionsInfoRelationshipsList =
-  DataFlowAnnotationsList as any as S.Schema<MapperTargetConnectionsInfoRelationshipsList>;
-
 /** A object which contains list of tables and connection details for a target connection. */
 export interface MapperTargetConnectionsInfo {
   /** List of source tables for a target connection. */
@@ -587,22 +367,10 @@ export interface MapperTargetConnectionsInfo {
   /** List of relationship info among the tables. */
   relationships?: MapperTargetConnectionsInfoRelationshipsList;
 }
-const MapperTargetConnectionsInfo = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<MapperTargetConnectionsInfo>;
-
 /** List of target connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureTargetConnectionsInfoList = Array<MapperTargetConnectionsInfo>;
-const ChangeDataCaptureTargetConnectionsInfoList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ChangeDataCaptureTargetConnectionsInfoList>;
-
 /** Frequency of period in terms of 'Hour', 'Minute' or 'Second'. */
 export type FrequencyType = "Hour" | "Minute" | "Second";
-const FrequencyType = S.String;
-
 /** CDC policy recurrence details. */
 export interface MapperPolicyRecurrence {
   /** Frequency of period in terms of 'Hour', 'Minute' or 'Second'. */
@@ -610,11 +378,6 @@ export interface MapperPolicyRecurrence {
   /** Actual interval value as per chosen frequency. */
   interval?: number;
 }
-const MapperPolicyRecurrence = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<MapperPolicyRecurrence>;
-
 /** CDC Policy. */
 export interface MapperPolicy {
   /** Mode of running the CDC: batch vs continuous. */
@@ -622,8 +385,6 @@ export interface MapperPolicy {
   /** Defines the frequency and interval for running the CDC for batch mode. */
   recurrence?: MapperPolicyRecurrence;
 }
-const MapperPolicy = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<MapperPolicy>;
-
 /** A Azure Data Factory object which automatically detects data changes at the source and then sends the updated data to the destination. */
 export interface ChangeDataCapture {
   /** The folder that this CDC is in. If not specified, CDC will appear at the root level. */
@@ -641,8 +402,6 @@ export interface ChangeDataCapture {
   /** Status of the CDC as to if it is running or stopped. */
   status?: string;
 }
-const ChangeDataCapture = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ChangeDataCapture>;
-
 export interface ChangeDataCaptureCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -655,19 +414,10 @@ export interface ChangeDataCaptureCreateOrUpdateRequest {
   /** Properties of the change data capture. */
   properties: ChangeDataCapture;
 }
-const ChangeDataCaptureCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ChangeDataCaptureCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -683,8 +433,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SystemData>;
-
 export interface ChangeDataCaptureCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -699,11 +447,6 @@ export interface ChangeDataCaptureCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const ChangeDataCaptureCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ChangeDataCaptureCreateOrUpdateResponse>;
-
 export interface ChangeDataCaptureStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -714,21 +457,9 @@ export interface ChangeDataCaptureStatusRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-const ChangeDataCaptureStatusRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ChangeDataCaptureStatusRequest>;
-
 export type ChangeDataCaptureStatusResponse = string;
-const ChangeDataCaptureStatusResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ChangeDataCaptureStatusResponse>;
-
 /** The type of integration runtime. */
 export type IntegrationRuntimeType = "Managed" | "SelfHosted";
-const IntegrationRuntimeType = S.String;
-
 /** Azure Data Factory nested object which serves as a compute resource for activities. */
 export interface IntegrationRuntime {
   /** Type of integration runtime. */
@@ -740,8 +471,6 @@ export interface IntegrationRuntime {
   /** Managed Virtual Network reference (Managed integration runtimes). */
   managedVirtualNetwork?: unknown;
 }
-const IntegrationRuntime = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<IntegrationRuntime>;
-
 /** Integration runtime debug resource. */
 export interface IntegrationRuntimeDebugResource {
   /** The resource name. */
@@ -749,11 +478,6 @@ export interface IntegrationRuntimeDebugResource {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-const IntegrationRuntimeDebugResource = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<IntegrationRuntimeDebugResource>;
-
 export interface CreateDataFlowDebugSessionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -770,11 +494,6 @@ export interface CreateDataFlowDebugSessionRequest {
   /** Set to use integration runtime setting for data flow debug session. */
   integrationRuntime?: IntegrationRuntimeDebugResource;
 }
-const CreateDataFlowDebugSessionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateDataFlowDebugSessionRequest>;
-
 /** Response body structure for creating data flow debug session. */
 export interface CreateDataFlowDebugSessionResponse {
   /** The state of the debug session. */
@@ -782,11 +501,6 @@ export interface CreateDataFlowDebugSessionResponse {
   /** The ID of data flow debug session. */
   sessionId?: string;
 }
-const CreateDataFlowDebugSessionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateDataFlowDebugSessionResponse>;
-
 export interface CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -803,11 +517,6 @@ export interface CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest {
   /** The location of the data factory that the linked integration runtime belongs to. */
   dataFactoryLocation?: string;
 }
-const CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest>;
-
 /** The state of integration runtime. */
 export type IntegrationRuntimeState =
   | "Initial"
@@ -820,8 +529,6 @@ export type IntegrationRuntimeState =
   | "Limited"
   | "Offline"
   | "AccessDenied";
-const IntegrationRuntimeState = S.String;
-
 /** Integration runtime status. */
 export interface IntegrationRuntimeStatus {
   /** Type of integration runtime. */
@@ -831,11 +538,6 @@ export interface IntegrationRuntimeStatus {
   /** The state of integration runtime. */
   state?: IntegrationRuntimeState;
 }
-const IntegrationRuntimeStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<IntegrationRuntimeStatus>;
-
 /** Integration runtime status response. */
 export interface IntegrationRuntimeStatusResponse {
   /** The integration runtime name. */
@@ -843,15 +545,7 @@ export interface IntegrationRuntimeStatusResponse {
   /** Integration runtime properties. */
   properties: IntegrationRuntimeStatus;
 }
-const IntegrationRuntimeStatusResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<IntegrationRuntimeStatusResponse>;
-
 export type CreatePipelineRunRequestBodyMap = { [key: string]: unknown | undefined };
-const CreatePipelineRunRequestBodyMap =
-  LinkedServiceReferenceParametersMap as any as S.Schema<CreatePipelineRunRequestBodyMap>;
-
 export interface CreatePipelineRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -871,23 +565,13 @@ export interface CreatePipelineRunRequest {
   startFromFailure?: boolean;
   body?: CreatePipelineRunRequestBodyMap;
 }
-const CreatePipelineRunRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreatePipelineRunRequest>;
-
 /** Response body with a run identifier. */
 export interface CreateRunResponse {
   /** Identifier of a run. */
   runId: string;
 }
-const CreateRunResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<CreateRunResponse>;
-
 /** List of tags that can be used for describing the Credential. */
 export type CredentialAnnotationsList = Array<unknown>;
-const CredentialAnnotationsList =
-  DataFlowAnnotationsList as any as S.Schema<CredentialAnnotationsList>;
-
 /** The Azure Data Factory nested object which contains the information and credential which can be used to connect with related store or compute resource. */
 export interface Credential {
   /** Type of credential. */
@@ -899,8 +583,6 @@ export interface Credential {
   /** Type-specific credential properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-const Credential = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Credential>;
-
 export interface CredentialOperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -913,11 +595,6 @@ export interface CredentialOperationsCreateOrUpdateRequest {
   /** Properties of credentials. */
   properties: Credential;
 }
-const CredentialOperationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CredentialOperationsCreateOrUpdateRequest>;
-
 export interface CredentialOperationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -932,11 +609,6 @@ export interface CredentialOperationsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const CredentialOperationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CredentialOperationsCreateOrUpdateResponse>;
-
 export interface DataFlowDebugSessionQueryByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -945,11 +617,6 @@ export interface DataFlowDebugSessionQueryByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const DataFlowDebugSessionQueryByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DataFlowDebugSessionQueryByFactoryRequest>;
-
 /** Data flow debug session info. */
 export interface DataFlowDebugSessionInfo {
   /** The name of the data flow. */
@@ -971,18 +638,8 @@ export interface DataFlowDebugSessionInfo {
   /** Last activity time of data flow debug session. */
   lastActivityTime?: string;
 }
-const DataFlowDebugSessionInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DataFlowDebugSessionInfo>;
-
 /** The DataFlowDebugSessionInfo items on this page */
 export type QueryDataFlowDebugSessionsResponseValueList = Array<DataFlowDebugSessionInfo>;
-const QueryDataFlowDebugSessionsResponseValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<QueryDataFlowDebugSessionsResponseValueList>;
-
 /** Paged collection of DataFlowDebugSessionInfo items */
 export interface QueryDataFlowDebugSessionsResponse {
   /** The DataFlowDebugSessionInfo items on this page */
@@ -990,11 +647,6 @@ export interface QueryDataFlowDebugSessionsResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const QueryDataFlowDebugSessionsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<QueryDataFlowDebugSessionsResponse>;
-
 export interface DataFlowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1007,11 +659,6 @@ export interface DataFlowsCreateOrUpdateRequest {
   /** Data flow properties. */
   properties: DataFlow;
 }
-const DataFlowsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DataFlowsCreateOrUpdateRequest>;
-
 export interface DataFlowsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1026,11 +673,6 @@ export interface DataFlowsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const DataFlowsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DataFlowsCreateOrUpdateResponse>;
-
 export interface DatasetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1043,11 +685,6 @@ export interface DatasetsCreateOrUpdateRequest {
   /** Dataset properties. */
   properties: Dataset;
 }
-const DatasetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DatasetsCreateOrUpdateRequest>;
-
 export interface DatasetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1062,11 +699,6 @@ export interface DatasetsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const DatasetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DatasetsCreateOrUpdateResponse>;
-
 export interface DeleteChangeDataCaptureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1077,17 +709,7 @@ export interface DeleteChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-const DeleteChangeDataCaptureRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteChangeDataCaptureRequest>;
-
 export interface DeleteChangeDataCaptureResponse {}
-const DeleteChangeDataCaptureResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteChangeDataCaptureResponse>;
-
 export interface DeleteCredentialOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1098,17 +720,7 @@ export interface DeleteCredentialOperationRequest {
   /** Credential name */
   credentialName: string;
 }
-const DeleteCredentialOperationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteCredentialOperationRequest>;
-
 export interface DeleteCredentialOperationResponse {}
-const DeleteCredentialOperationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteCredentialOperationResponse>;
-
 export interface DeleteDataFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1119,14 +731,7 @@ export interface DeleteDataFlowRequest {
   /** The data flow name. */
   dataFlowName: string;
 }
-const DeleteDataFlowRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteDataFlowRequest>;
-
 export interface DeleteDataFlowResponse {}
-const DeleteDataFlowResponse = CancelPipelineRunResponse as any as S.Schema<DeleteDataFlowResponse>;
-
 export interface DeleteDataFlowDebugSessionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1137,15 +742,7 @@ export interface DeleteDataFlowDebugSessionRequest {
   /** The ID of data flow debug session. */
   sessionId?: string;
 }
-const DeleteDataFlowDebugSessionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteDataFlowDebugSessionRequest>;
-
 export interface DeleteDataFlowDebugSessionResponse {}
-const DeleteDataFlowDebugSessionResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<DeleteDataFlowDebugSessionResponse>;
-
 export interface DeleteDatasetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1156,11 +753,7 @@ export interface DeleteDatasetRequest {
   /** The dataset name. */
   datasetName: string;
 }
-const DeleteDatasetRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<DeleteDatasetRequest>;
-
 export interface DeleteDatasetResponse {}
-const DeleteDatasetResponse = CancelPipelineRunResponse as any as S.Schema<DeleteDatasetResponse>;
-
 export interface DeleteFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1169,14 +762,7 @@ export interface DeleteFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const DeleteFactoryRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteFactoryRequest>;
-
 export interface DeleteFactoryResponse {}
-const DeleteFactoryResponse = CancelPipelineRunResponse as any as S.Schema<DeleteFactoryResponse>;
-
 export interface DeleteGlobalParameterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1187,15 +773,7 @@ export interface DeleteGlobalParameterRequest {
   /** The global parameter name. */
   globalParameterName: string;
 }
-const DeleteGlobalParameterRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteGlobalParameterRequest>;
-
 export interface DeleteGlobalParameterResponse {}
-const DeleteGlobalParameterResponse =
-  CancelPipelineRunResponse as any as S.Schema<DeleteGlobalParameterResponse>;
-
 export interface DeleteIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1206,15 +784,7 @@ export interface DeleteIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteIntegrationRuntimeRequest>;
-
 export interface DeleteIntegrationRuntimeResponse {}
-const DeleteIntegrationRuntimeResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<DeleteIntegrationRuntimeResponse>;
-
 export interface DeleteIntegrationRuntimeNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1225,15 +795,7 @@ export interface DeleteIntegrationRuntimeNodeRequest {
   /** The integration runtime node name. */
   nodeName: string;
 }
-const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteIntegrationRuntimeNodeRequest>;
-
 export interface DeleteIntegrationRuntimeNodeResponse {}
-const DeleteIntegrationRuntimeNodeResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>;
-
 export interface DeleteLinkedServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1244,15 +806,7 @@ export interface DeleteLinkedServiceRequest {
   /** The linked service name. */
   linkedServiceName: string;
 }
-const DeleteLinkedServiceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteLinkedServiceRequest>;
-
 export interface DeleteLinkedServiceResponse {}
-const DeleteLinkedServiceResponse =
-  CancelPipelineRunResponse as any as S.Schema<DeleteLinkedServiceResponse>;
-
 export interface DeleteManagedPrivateEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1265,15 +819,7 @@ export interface DeleteManagedPrivateEndpointRequest {
   /** Managed private endpoint name */
   managedPrivateEndpointName: string;
 }
-const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteManagedPrivateEndpointRequest>;
-
 export interface DeleteManagedPrivateEndpointResponse {}
-const DeleteManagedPrivateEndpointResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<DeleteManagedPrivateEndpointResponse>;
-
 export interface DeletePipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1284,14 +830,7 @@ export interface DeletePipelineRequest {
   /** The pipeline name. */
   pipelineName: string;
 }
-const DeletePipelineRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeletePipelineRequest>;
-
 export interface DeletePipelineResponse {}
-const DeletePipelineResponse = CancelPipelineRunResponse as any as S.Schema<DeletePipelineResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1302,15 +841,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1321,14 +852,7 @@ export interface DeleteTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-const DeleteTriggerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteTriggerRequest>;
-
 export interface DeleteTriggerResponse {}
-const DeleteTriggerResponse = CancelPipelineRunResponse as any as S.Schema<DeleteTriggerResponse>;
-
 export interface DisableIntegrationRuntimeInteractiveQueryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1339,11 +863,6 @@ export interface DisableIntegrationRuntimeInteractiveQueryRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const DisableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryRequest>;
-
 export interface DisableIntegrationRuntimeInteractiveQueryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1358,11 +877,6 @@ export interface DisableIntegrationRuntimeInteractiveQueryResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const DisableIntegrationRuntimeInteractiveQueryResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryResponse>;
-
 export interface EnableIntegrationRuntimeInteractiveQueryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1375,11 +889,6 @@ export interface EnableIntegrationRuntimeInteractiveQueryRequest {
   /** The allowed idle time for interactive authoring. */
   autoTerminationMinutes?: number;
 }
-const EnableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryRequest>;
-
 export interface EnableIntegrationRuntimeInteractiveQueryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1394,23 +903,13 @@ export interface EnableIntegrationRuntimeInteractiveQueryResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const EnableIntegrationRuntimeInteractiveQueryResponse =
-  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>;
-
 /** The command type. */
 export type DataFlowDebugCommandType =
   | "executePreviewQuery"
   | "executeStatisticsQuery"
   | "executeExpressionQuery";
-const DataFlowDebugCommandType = S.String;
-
 /** Array of column names. */
 export type DataFlowDebugCommandPayloadColumnsList = Array<string>;
-const DataFlowDebugCommandPayloadColumnsList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DataFlowDebugCommandPayloadColumnsList>;
-
 /** Structure of command payload. */
 export interface DataFlowDebugCommandPayload {
   /** The stream name which is used for preview. */
@@ -1422,11 +921,6 @@ export interface DataFlowDebugCommandPayload {
   /** The expression which is used for preview. */
   expression?: string;
 }
-const DataFlowDebugCommandPayload = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DataFlowDebugCommandPayload>;
-
 export interface ExecuteDataFlowDebugSessionCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1441,11 +935,6 @@ export interface ExecuteDataFlowDebugSessionCommandRequest {
   /** The command payload object. */
   commandPayload?: DataFlowDebugCommandPayload;
 }
-const ExecuteDataFlowDebugSessionCommandRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ExecuteDataFlowDebugSessionCommandRequest>;
-
 /** Response body structure of data flow result for data preview, statistics or expression preview. */
 export interface DataFlowDebugCommandResponse {
   /** The run status of data preview, statistics or expression preview. */
@@ -1453,11 +942,6 @@ export interface DataFlowDebugCommandResponse {
   /** The result data of data preview, statistics or expression preview. */
   data?: string;
 }
-const DataFlowDebugCommandResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DataFlowDebugCommandResponse>;
-
 /** The exposure control request. */
 export interface ExposureControlRequest {
   /** The feature name. */
@@ -1465,20 +949,9 @@ export interface ExposureControlRequest {
   /** The feature type. */
   featureType?: string;
 }
-const ExposureControlRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ExposureControlRequest>;
-
 /** List of exposure control features. */
 export type ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
   Array<ExposureControlRequest>;
-const ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    1,
-  ) as any as S.Schema<ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList>;
-
 export interface ExposureControlQueryFeatureValuesByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1489,11 +962,6 @@ export interface ExposureControlQueryFeatureValuesByFactoryRequest {
   /** List of exposure control features. */
   exposureControlRequests: ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList;
 }
-const ExposureControlQueryFeatureValuesByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ExposureControlQueryFeatureValuesByFactoryRequest>;
-
 /** The exposure control response. */
 export interface ExposureControlResponse {
   /** The feature name. */
@@ -1501,29 +969,14 @@ export interface ExposureControlResponse {
   /** The feature value. */
   value?: string;
 }
-const ExposureControlResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ExposureControlResponse>;
-
 /** List of exposure control feature values. */
 export type ExposureControlBatchResponseExposureControlResponsesList =
   Array<ExposureControlResponse>;
-const ExposureControlBatchResponseExposureControlResponsesList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ExposureControlBatchResponseExposureControlResponsesList>;
-
 /** A list of exposure control feature values. */
 export interface ExposureControlBatchResponse {
   /** List of exposure control feature values. */
   exposureControlResponses: ExposureControlBatchResponseExposureControlResponsesList;
 }
-const ExposureControlBatchResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ExposureControlBatchResponse>;
-
 /** Factory's git repo information. */
 export interface FactoryRepoConfiguration {
   /** Type of repo configuration. */
@@ -1541,11 +994,6 @@ export interface FactoryRepoConfiguration {
   /** Disable manual publish operation in ADF studio to favor automated publish. */
   disablePublish?: boolean;
 }
-const FactoryRepoConfiguration = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<FactoryRepoConfiguration>;
-
 export interface FactoriesConfigureFactoryRepoRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1556,25 +1004,13 @@ export interface FactoriesConfigureFactoryRepoRequest {
   /** Git repo information of the factory. */
   repoConfiguration?: FactoryRepoConfiguration;
 }
-const FactoriesConfigureFactoryRepoRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<FactoriesConfigureFactoryRepoRequest>;
-
 /** Purview configuration. */
 export interface PurviewConfiguration {
   /** Purview resource id. */
   purviewResourceId?: string;
 }
-const PurviewConfiguration = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<PurviewConfiguration>;
-
 /** Global Parameter type. */
 export type GlobalParameterType = "Object" | "String" | "Int" | "Float" | "Bool" | "Array";
-const GlobalParameterType = S.String;
-
 /** Definition of a single parameter for an entity. */
 export interface GlobalParameterSpecification {
   /** Global Parameter type. */
@@ -1582,30 +1018,15 @@ export interface GlobalParameterSpecification {
   /** Value of parameter. */
   value: unknown;
 }
-const GlobalParameterSpecification = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GlobalParameterSpecification>;
-
 /** List of parameters for factory. */
 export type FactoryPropertiesGlobalParametersMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-const FactoryPropertiesGlobalParametersMap = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<FactoryPropertiesGlobalParametersMap>;
-
 /** Managed Identity used for CMK. */
 export interface CMKIdentityDefinition {
   /** The resource id of the user assigned identity to authenticate to customer's key vault. */
   userAssignedIdentity?: string;
 }
-const CMKIdentityDefinition = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CMKIdentityDefinition>;
-
 /** Definition of CMK for the factory. */
 export interface EncryptionConfiguration {
   /** The name of the key in Azure Key Vault to use as Customer Managed Key. */
@@ -1617,15 +1038,8 @@ export interface EncryptionConfiguration {
   /** User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used. */
   identity?: CMKIdentityDefinition;
 }
-const EncryptionConfiguration = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<EncryptionConfiguration>;
-
 /** Whether or not public network access is allowed for the data factory. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** Factory resource properties. */
 export interface FactoryProperties {
   /** Factory provisioning state, example Succeeded. */
@@ -1645,17 +1059,10 @@ export interface FactoryProperties {
   /** Whether or not public network access is allowed for the data factory. */
   publicNetworkAccess?: PublicNetworkAccess;
 }
-const FactoryProperties = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<FactoryProperties>;
-
 /** The identity type. */
 export type FactoryIdentityType = "SystemAssigned" | "UserAssigned" | "SystemAssigned,UserAssigned";
-const FactoryIdentityType = S.String;
-
 /** List of user assigned identities for the factory. */
 export type FactoryIdentityUserAssignedIdentitiesMap = { [key: string]: unknown | undefined };
-const FactoryIdentityUserAssignedIdentitiesMap =
-  LinkedServiceReferenceParametersMap as any as S.Schema<FactoryIdentityUserAssignedIdentitiesMap>;
-
 /** Identity properties of the factory resource. */
 export interface FactoryIdentity {
   /** The identity type. */
@@ -1667,15 +1074,8 @@ export interface FactoryIdentity {
   /** List of user assigned identities for the factory. */
   userAssignedIdentities?: FactoryIdentityUserAssignedIdentitiesMap;
 }
-const FactoryIdentity = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<FactoryIdentity>;
-
 /** The resource tags. */
 export type FactoriesConfigureFactoryRepoResponseTagsMap = { [key: string]: string | undefined };
-const FactoriesConfigureFactoryRepoResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<FactoriesConfigureFactoryRepoResponseTagsMap>;
-
 export interface FactoriesConfigureFactoryRepoResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1696,18 +1096,10 @@ export interface FactoriesConfigureFactoryRepoResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const FactoriesConfigureFactoryRepoResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<FactoriesConfigureFactoryRepoResponse>;
-
 /** List of parameters for factory. */
 export type FactoryPropertiesInputGlobalParametersMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-const FactoryPropertiesInputGlobalParametersMap =
-  FactoryPropertiesGlobalParametersMap as any as S.Schema<FactoryPropertiesInputGlobalParametersMap>;
-
 /** Factory resource properties. */
 export interface FactoryPropertiesInput {
   /** Purview information of the factory. */
@@ -1721,16 +1113,8 @@ export interface FactoryPropertiesInput {
   /** Whether or not public network access is allowed for the data factory. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-const FactoryPropertiesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<FactoryPropertiesInput>;
-
 /** The resource tags. */
 export type FactoriesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const FactoriesCreateOrUpdateRequestTagsMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<FactoriesCreateOrUpdateRequestTagsMap>;
-
 export interface FactoriesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1747,11 +1131,6 @@ export interface FactoriesCreateOrUpdateRequest {
   /** The resource tags. */
   tags?: FactoriesCreateOrUpdateRequestTagsMap;
 }
-const FactoriesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<FactoriesCreateOrUpdateRequest>;
-
 /** The resource tags. */
 export type FactoriesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface FactoriesCreateOrUpdateResponse {
@@ -1774,9 +1153,6 @@ export interface FactoriesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const FactoriesCreateOrUpdateResponse =
-  FactoriesConfigureFactoryRepoResponse as any as S.Schema<FactoriesCreateOrUpdateResponse>;
-
 export interface GetChangeDataCaptureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1787,11 +1163,6 @@ export interface GetChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-const GetChangeDataCaptureRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetChangeDataCaptureRequest>;
-
 export interface GetChangeDataCaptureResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1806,9 +1177,6 @@ export interface GetChangeDataCaptureResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetChangeDataCaptureResponse =
-  ChangeDataCaptureCreateOrUpdateResponse as any as S.Schema<GetChangeDataCaptureResponse>;
-
 export interface GetCredentialOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1819,11 +1187,6 @@ export interface GetCredentialOperationRequest {
   /** Credential name */
   credentialName: string;
 }
-const GetCredentialOperationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetCredentialOperationRequest>;
-
 export interface GetCredentialOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1838,9 +1201,6 @@ export interface GetCredentialOperationResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetCredentialOperationResponse =
-  CredentialOperationsCreateOrUpdateResponse as any as S.Schema<GetCredentialOperationResponse>;
-
 export interface GetDataFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1851,8 +1211,6 @@ export interface GetDataFlowRequest {
   /** The data flow name. */
   dataFlowName: string;
 }
-const GetDataFlowRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetDataFlowRequest>;
-
 export interface GetDataFlowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1867,8 +1225,6 @@ export interface GetDataFlowResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetDataFlowResponse = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GetDataFlowResponse>;
-
 export interface GetDatasetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1879,8 +1235,6 @@ export interface GetDatasetRequest {
   /** The dataset name. */
   datasetName: string;
 }
-const GetDatasetRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<GetDatasetRequest>;
-
 export interface GetDatasetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1895,8 +1249,6 @@ export interface GetDatasetResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetDatasetResponse = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<GetDatasetResponse>;
-
 export interface GetExposureControlFeatureValueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1907,11 +1259,6 @@ export interface GetExposureControlFeatureValueRequest {
   /** The feature type. */
   featureType?: string;
 }
-const GetExposureControlFeatureValueRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetExposureControlFeatureValueRequest>;
-
 export interface GetExposureControlFeatureValueByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1924,11 +1271,6 @@ export interface GetExposureControlFeatureValueByFactoryRequest {
   /** The feature type. */
   featureType?: string;
 }
-const GetExposureControlFeatureValueByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetExposureControlFeatureValueByFactoryRequest>;
-
 export interface GetFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1937,13 +1279,8 @@ export interface GetFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const GetFactoryRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetFactoryRequest>;
-
 /** The resource tags. */
 export type GetFactoryResponseTagsMap = { [key: string]: string | undefined };
-const GetFactoryResponseTagsMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<GetFactoryResponseTagsMap>;
-
 export interface GetFactoryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1964,8 +1301,6 @@ export interface GetFactoryResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetFactoryResponse = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GetFactoryResponse>;
-
 export interface GetFactoryDataPlaneAccessRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1984,11 +1319,6 @@ export interface GetFactoryDataPlaneAccessRequest {
   /** Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours. */
   expireTime?: string;
 }
-const GetFactoryDataPlaneAccessRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetFactoryDataPlaneAccessRequest>;
-
 /** Get Data Plane read only token request definition. */
 export interface UserAccessPolicy {
   /** The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access. */
@@ -2002,8 +1332,6 @@ export interface UserAccessPolicy {
   /** Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours. */
   expireTime?: string;
 }
-const UserAccessPolicy = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<UserAccessPolicy>;
-
 /** Get Data Plane read only token response definition. */
 export interface AccessPolicyResponse {
   /** The user access policy. */
@@ -2013,11 +1341,6 @@ export interface AccessPolicyResponse {
   /** Data Plane service base URL. */
   dataPlaneUrl?: string;
 }
-const AccessPolicyResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<AccessPolicyResponse>;
-
 /** Client secret information for factory's bring your own app repository configuration. */
 export interface GitHubClientSecret {
   /** Bring your own app client secret AKV URL. */
@@ -2025,8 +1348,6 @@ export interface GitHubClientSecret {
   /** Bring your own app client secret name in AKV. */
   byoaSecretName?: string;
 }
-const GitHubClientSecret = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<GitHubClientSecret>;
-
 export interface GetFactoryGitHubAccessTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2043,21 +1364,11 @@ export interface GetFactoryGitHubAccessTokenRequest {
   /** GitHub access token base URL. */
   gitHubAccessTokenBaseUrl: string;
 }
-const GetFactoryGitHubAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetFactoryGitHubAccessTokenRequest>;
-
 /** Get GitHub access token response definition. */
 export interface GitHubAccessTokenResponse {
   /** GitHub access token. */
   gitHubAccessToken?: string;
 }
-const GitHubAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GitHubAccessTokenResponse>;
-
 export interface GetGlobalParameterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2068,18 +1379,10 @@ export interface GetGlobalParameterRequest {
   /** The global parameter name. */
   globalParameterName: string;
 }
-const GetGlobalParameterRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetGlobalParameterRequest>;
-
 /** Properties of the global parameter. */
 export type GetGlobalParameterResponsePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-const GetGlobalParameterResponsePropertiesMap =
-  FactoryPropertiesGlobalParametersMap as any as S.Schema<GetGlobalParameterResponsePropertiesMap>;
-
 export interface GetGlobalParameterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2094,11 +1397,6 @@ export interface GetGlobalParameterResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetGlobalParameterResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetGlobalParameterResponse>;
-
 export interface GetIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2109,11 +1407,6 @@ export interface GetIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const GetIntegrationRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetIntegrationRuntimeRequest>;
-
 export interface GetIntegrationRuntimeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2128,9 +1421,6 @@ export interface GetIntegrationRuntimeResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetIntegrationRuntimeResponse =
-  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<GetIntegrationRuntimeResponse>;
-
 export interface GetIntegrationRuntimeConnectionInfoRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2141,11 +1431,6 @@ export interface GetIntegrationRuntimeConnectionInfoRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const GetIntegrationRuntimeConnectionInfoRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetIntegrationRuntimeConnectionInfoRequest>;
-
 /** Connection information for encrypting the on-premises data source credentials. */
 export interface IntegrationRuntimeConnectionInfo {
   /** The token generated in service. Callers use this token to authenticate to integration runtime. */
@@ -2161,11 +1446,6 @@ export interface IntegrationRuntimeConnectionInfo {
   /** Whether the identity certificate is expired. */
   isIdentityCertExprired?: boolean;
 }
-const IntegrationRuntimeConnectionInfo = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<IntegrationRuntimeConnectionInfo>;
-
 export interface GetIntegrationRuntimeMonitoringDataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2176,11 +1456,6 @@ export interface GetIntegrationRuntimeMonitoringDataRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const GetIntegrationRuntimeMonitoringDataRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetIntegrationRuntimeMonitoringDataRequest>;
-
 /** Monitoring data for integration runtime node. */
 export interface IntegrationRuntimeNodeMonitoringData {
   /** Name of the integration runtime node. */
@@ -2200,18 +1475,8 @@ export interface IntegrationRuntimeNodeMonitoringData {
   /** Received bytes on the integration runtime node. */
   receivedBytes?: number;
 }
-const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<IntegrationRuntimeNodeMonitoringData>;
-
 /** Integration runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList = Array<IntegrationRuntimeNodeMonitoringData>;
-const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
-
 /** Get monitoring data response. */
 export interface IntegrationRuntimeMonitoringData {
   /** Integration runtime name. */
@@ -2219,11 +1484,6 @@ export interface IntegrationRuntimeMonitoringData {
   /** Integration runtime node monitoring data. */
   nodes?: IntegrationRuntimeMonitoringDataNodesList;
 }
-const IntegrationRuntimeMonitoringData = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<IntegrationRuntimeMonitoringData>;
-
 export interface GetIntegrationRuntimeNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2234,11 +1494,6 @@ export interface GetIntegrationRuntimeNodeRequest {
   /** The integration runtime node name. */
   nodeName: string;
 }
-const GetIntegrationRuntimeNodeRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetIntegrationRuntimeNodeRequest>;
-
 /** Status of the integration runtime node. */
 export type SelfHostedIntegrationRuntimeNodeStatus =
   | "NeedRegistration"
@@ -2248,17 +1503,10 @@ export type SelfHostedIntegrationRuntimeNodeStatus =
   | "Upgrading"
   | "Initializing"
   | "InitializeFailed";
-const SelfHostedIntegrationRuntimeNodeStatus = S.String;
-
 /** The integration runtime capabilities dictionary */
 export type SelfHostedIntegrationRuntimeNodeCapabilitiesMap = { [key: string]: string | undefined };
-const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<SelfHostedIntegrationRuntimeNodeCapabilitiesMap>;
-
 /** The result of the last integration runtime node update. */
 export type IntegrationRuntimeUpdateResult = "None" | "Succeed" | "Fail";
-const IntegrationRuntimeUpdateResult = S.String;
-
 /** Properties of Self-hosted integration runtime node. */
 export interface SelfHostedIntegrationRuntimeNode {
   /** Name of the integration runtime node. */
@@ -2298,11 +1546,6 @@ export interface SelfHostedIntegrationRuntimeNode {
   /** The maximum concurrent jobs in this integration runtime. */
   maxConcurrentJobs?: number;
 }
-const SelfHostedIntegrationRuntimeNode = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<SelfHostedIntegrationRuntimeNode>;
-
 export interface GetIntegrationRuntimeNodeIpAddressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2313,21 +1556,11 @@ export interface GetIntegrationRuntimeNodeIpAddressRequest {
   /** The integration runtime node name. */
   nodeName: string;
 }
-const GetIntegrationRuntimeNodeIpAddressRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetIntegrationRuntimeNodeIpAddressRequest>;
-
 /** The IP address of self-hosted integration runtime node. */
 export interface IntegrationRuntimeNodeIpAddress {
   /** The IP address of self-hosted integration runtime node. */
   ipAddress?: string;
 }
-const IntegrationRuntimeNodeIpAddress = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<IntegrationRuntimeNodeIpAddress>;
-
 export interface GetIntegrationRuntimeObjectMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2340,15 +1573,8 @@ export interface GetIntegrationRuntimeObjectMetadataRequest {
   /** Metadata path. */
   metadataPath?: string;
 }
-const GetIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetIntegrationRuntimeObjectMetadataRequest>;
-
 /** The type of SSIS object metadata. */
 export type SsisObjectMetadataType = "Folder" | "Project" | "Package" | "Environment";
-const SsisObjectMetadataType = S.String;
-
 /** SSIS object metadata. */
 export interface SsisObjectMetadata {
   /** Type of metadata. */
@@ -2360,15 +1586,8 @@ export interface SsisObjectMetadata {
   /** Metadata description. */
   description?: string;
 }
-const SsisObjectMetadata = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<SsisObjectMetadata>;
-
 /** The SsisObjectMetadata items on this page */
 export type SsisObjectMetadataListResponseValueList = Array<SsisObjectMetadata>;
-const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<SsisObjectMetadataListResponseValueList>;
-
 /** A list of SSIS object metadata. */
 export interface SsisObjectMetadataListResponse {
   /** The SsisObjectMetadata items on this page */
@@ -2376,11 +1595,6 @@ export interface SsisObjectMetadataListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SsisObjectMetadataListResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<SsisObjectMetadataListResponse>;
-
 export interface GetIntegrationRuntimeStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2391,11 +1605,6 @@ export interface GetIntegrationRuntimeStatusRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const GetIntegrationRuntimeStatusRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetIntegrationRuntimeStatusRequest>;
-
 export interface GetLinkedServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2406,11 +1615,6 @@ export interface GetLinkedServiceRequest {
   /** The linked service name. */
   linkedServiceName: string;
 }
-const GetLinkedServiceRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetLinkedServiceRequest>;
-
 export interface GetLinkedServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2425,11 +1629,6 @@ export interface GetLinkedServiceResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetLinkedServiceResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetLinkedServiceResponse>;
-
 export interface GetManagedPrivateEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2442,11 +1641,6 @@ export interface GetManagedPrivateEndpointRequest {
   /** Managed private endpoint name */
   managedPrivateEndpointName: string;
 }
-const GetManagedPrivateEndpointRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetManagedPrivateEndpointRequest>;
-
 /** The connection state of a managed private endpoint */
 export interface ConnectionStateProperties {
   /** The actions required on the managed private endpoint */
@@ -2456,16 +1650,8 @@ export interface ConnectionStateProperties {
   /** The approval status */
   status?: string;
 }
-const ConnectionStateProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ConnectionStateProperties>;
-
 /** Fully qualified domain names */
 export type ManagedPrivateEndpointFqdnsList = Array<string>;
-const ManagedPrivateEndpointFqdnsList =
-  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<ManagedPrivateEndpointFqdnsList>;
-
 /** Properties of a managed private endpoint */
 export interface ManagedPrivateEndpoint {
   /** The managed private endpoint connection state */
@@ -2487,11 +1673,6 @@ export interface ManagedPrivateEndpoint {
   /** Private IP address of the endpoint in the managed virtual network. */
   ipAddress?: string;
 }
-const ManagedPrivateEndpoint = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ManagedPrivateEndpoint>;
-
 export interface GetManagedPrivateEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2506,11 +1687,6 @@ export interface GetManagedPrivateEndpointResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetManagedPrivateEndpointResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetManagedPrivateEndpointResponse>;
-
 export interface GetManagedVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2521,11 +1697,6 @@ export interface GetManagedVirtualNetworkRequest {
   /** Managed virtual network name */
   managedVirtualNetworkName: string;
 }
-const GetManagedVirtualNetworkRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetManagedVirtualNetworkRequest>;
-
 /** A managed Virtual Network associated with the Azure Data Factory */
 export interface ManagedVirtualNetwork {
   /** Managed Virtual Network ID. */
@@ -2533,11 +1704,6 @@ export interface ManagedVirtualNetwork {
   /** Managed Virtual Network alias. */
   alias?: string;
 }
-const ManagedVirtualNetwork = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ManagedVirtualNetwork>;
-
 export interface GetManagedVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2552,11 +1718,6 @@ export interface GetManagedVirtualNetworkResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetManagedVirtualNetworkResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetManagedVirtualNetworkResponse>;
-
 export interface GetPipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2567,26 +1728,13 @@ export interface GetPipelineRequest {
   /** The pipeline name. */
   pipelineName: string;
 }
-const GetPipelineRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<GetPipelineRequest>;
-
 /** Activity state. This is an optional property and if not provided, the state will be Active by default. */
 export type ActivityState = "Active" | "Inactive";
-const ActivityState = S.String;
-
 /** Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default. */
 export type ActivityOnInactiveMarkAs = "Succeeded" | "Failed" | "Skipped";
-const ActivityOnInactiveMarkAs = S.String;
-
 export type DependencyCondition = "Succeeded" | "Failed" | "Skipped" | "Completed";
-const DependencyCondition = S.String;
-
 /** Match-Condition for the dependency. */
 export type ActivityDependencyDependencyConditionsList = Array<DependencyCondition | (string & {})>;
-const ActivityDependencyDependencyConditionsList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ActivityDependencyDependencyConditionsList>;
-
 /** Activity dependency information. */
 export interface ActivityDependency {
   /** Activity name. */
@@ -2594,15 +1742,8 @@ export interface ActivityDependency {
   /** Match-Condition for the dependency. */
   dependencyConditions: ActivityDependencyDependencyConditionsList;
 }
-const ActivityDependency = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ActivityDependency>;
-
 /** Activity depends on condition. */
 export type ActivityDependsOnList = Array<ActivityDependency>;
-const ActivityDependsOnList = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ActivityDependsOnList>;
-
 /** User property. */
 export interface UserProperty {
   /** User property name. */
@@ -2610,15 +1751,8 @@ export interface UserProperty {
   /** User property value. Type: string (or Expression with resultType string). */
   value: unknown;
 }
-const UserProperty = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<UserProperty>;
-
 /** Activity user properties. */
 export type ActivityUserPropertiesList = Array<UserProperty>;
-const ActivityUserPropertiesList = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ActivityUserPropertiesList>;
-
 /** A pipeline activity. */
 export interface Activity {
   /** Activity name. */
@@ -2646,19 +1780,10 @@ export interface Activity {
   /** List of outputs for the activity (Copy / data movement activities). */
   outputs?: unknown;
 }
-const Activity = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<Activity>;
-
 /** List of activities in pipeline. */
 export type PipelineActivitiesList = Array<Activity>;
-const PipelineActivitiesList = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<PipelineActivitiesList>;
-
 /** List of parameters for pipeline. */
 export type PipelineParametersMap = { [key: string]: ParameterSpecification | undefined };
-const PipelineParametersMap = DatasetParametersMap as any as S.Schema<PipelineParametersMap>;
-
 /** Variable type. */
 export type VariableType = "String" | "Bool" | "Array";
 /** Definition of a single variable for a Pipeline. */
@@ -2670,41 +1795,25 @@ export interface VariableSpecification {
 }
 /** List of variables for pipeline. */
 export type PipelineVariablesMap = { [key: string]: VariableSpecification | undefined };
-const PipelineVariablesMap = DatasetParametersMap as any as S.Schema<PipelineVariablesMap>;
-
 /** List of tags that can be used for describing the Pipeline. */
 export type PipelineAnnotationsList = Array<unknown>;
-const PipelineAnnotationsList = DataFlowAnnotationsList as any as S.Schema<PipelineAnnotationsList>;
-
 /** Dimensions emitted by Pipeline. */
 export type PipelineRunDimensionsMap = { [key: string]: unknown | undefined };
-const PipelineRunDimensionsMap =
-  LinkedServiceReferenceParametersMap as any as S.Schema<PipelineRunDimensionsMap>;
-
 /** The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level. */
 export interface PipelineFolder {
   /** The name of the folder that this Pipeline is in. */
   name?: string;
 }
-const PipelineFolder = DataFlowFolder as any as S.Schema<PipelineFolder>;
-
 /** Pipeline ElapsedTime Metric Policy. */
 export interface PipelineElapsedTimeMetricPolicy {
   /** TimeSpan value, after which an Azure Monitoring Metric is fired. */
   duration?: unknown;
 }
-const PipelineElapsedTimeMetricPolicy = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<PipelineElapsedTimeMetricPolicy>;
-
 /** Pipeline Policy. */
 export interface PipelinePolicy {
   /** Pipeline ElapsedTime Metric Policy. */
   elapsedTimeMetric?: PipelineElapsedTimeMetricPolicy;
 }
-const PipelinePolicy = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<PipelinePolicy>;
-
 /** A data factory pipeline. */
 export interface Pipeline {
   /** The description of the pipeline. */
@@ -2726,8 +1835,6 @@ export interface Pipeline {
   /** Pipeline Policy. */
   policy?: PipelinePolicy;
 }
-const Pipeline = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<Pipeline>;
-
 export interface GetPipelineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2742,8 +1849,6 @@ export interface GetPipelineResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetPipelineResponse = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<GetPipelineResponse>;
-
 export interface GetPipelineRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2753,21 +1858,10 @@ export interface GetPipelineRunRequest {
   /** The pipeline run identifier. */
   runId: string;
 }
-const GetPipelineRunRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetPipelineRunRequest>;
-
 /** The full or partial list of parameter name, value pair used in the pipeline run. */
 export type PipelineRunParametersMap = { [key: string]: string | undefined };
-const PipelineRunParametersMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<PipelineRunParametersMap>;
-
 /** Run dimensions emitted by Pipeline run. */
 export type PipelineRunRunDimensionsMap = { [key: string]: string | undefined };
-const PipelineRunRunDimensionsMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<PipelineRunRunDimensionsMap>;
-
 /** Provides entity name and id that started the pipeline run. */
 export interface PipelineRunInvokedBy {
   /** Name of the entity that started the pipeline run. */
@@ -2781,11 +1875,6 @@ export interface PipelineRunInvokedBy {
   /** The run id of the pipeline that triggered the run, if any. */
   pipelineRunId?: string;
 }
-const PipelineRunInvokedBy = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<PipelineRunInvokedBy>;
-
 /** Information about a pipeline run. */
 export interface PipelineRun {
   /** Identifier of a run. */
@@ -2815,8 +1904,6 @@ export interface PipelineRun {
   /** The message from a pipeline run. */
   message?: string;
 }
-const PipelineRun = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<PipelineRun>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2827,17 +1914,10 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 /** A wrapper for an ARM resource id */
 export interface ArmIdWrapper {
   id?: string;
 }
-const ArmIdWrapper = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ArmIdWrapper>;
-
 /** The state of a private link connection */
 export interface PrivateLinkConnectionState {
   /** Status of a private link connection */
@@ -2847,11 +1927,6 @@ export interface PrivateLinkConnectionState {
   /** ActionsRequired for a private link connection */
   actionsRequired?: string;
 }
-const PrivateLinkConnectionState = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<PrivateLinkConnectionState>;
-
 /** A remote private endpoint connection */
 export interface RemotePrivateEndpointConnection {
   provisioningState?: string;
@@ -2860,11 +1935,6 @@ export interface RemotePrivateEndpointConnection {
   /** The state of a private link connection */
   privateLinkServiceConnectionState?: PrivateLinkConnectionState;
 }
-const RemotePrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<RemotePrivateEndpointConnection>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2879,11 +1949,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2892,21 +1957,10 @@ export interface GetPrivateLinkResourceRequest {
   /** The factory name. */
   factoryName: string;
 }
-const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetPrivateLinkResourceRequest>;
-
 /** RequiredMembers of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** RequiredZoneNames of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource */
 export interface PrivateLinkResourceProperties {
   /** GroupId of a private link resource */
@@ -2916,11 +1970,6 @@ export interface PrivateLinkResourceProperties {
   /** RequiredZoneNames of a private link resource */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** The resource identifier. */
@@ -2934,23 +1983,11 @@ export interface PrivateLinkResource {
   /** Core resource properties */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<PrivateLinkResource>;
-
 export type PrivateLinkResourcesWrapperValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourcesWrapperValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<PrivateLinkResourcesWrapperValueList>;
-
 /** Wrapper for a collection of private link resources */
 export interface PrivateLinkResourcesWrapper {
   value: PrivateLinkResourcesWrapperValueList;
 }
-const PrivateLinkResourcesWrapper = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<PrivateLinkResourcesWrapper>;
-
 export interface GetTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2961,16 +1998,10 @@ export interface GetTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-const GetTriggerRequest = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<GetTriggerRequest>;
-
 /** Enumerates possible state of Triggers. */
 export type TriggerRuntimeState = "Started" | "Stopped" | "Disabled";
-const TriggerRuntimeState = S.String;
-
 /** List of tags that can be used for describing the trigger. */
 export type TriggerAnnotationsList = Array<unknown>;
-const TriggerAnnotationsList = DataFlowAnnotationsList as any as S.Schema<TriggerAnnotationsList>;
-
 /** Azure data factory nested object which contains information about creating pipeline run */
 export interface Trigger {
   /** Trigger type. */
@@ -2988,8 +2019,6 @@ export interface Trigger {
   /** Pipeline for which runs are created (TumblingWindowTrigger / ChainingTrigger). */
   pipeline?: unknown;
 }
-const Trigger = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<Trigger>;
-
 export interface GetTriggerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3004,8 +2033,6 @@ export interface GetTriggerResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GetTriggerResponse = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<GetTriggerResponse>;
-
 export interface GetTriggerEventSubscriptionStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3016,11 +2043,6 @@ export interface GetTriggerEventSubscriptionStatusRequest {
   /** The trigger name. */
   triggerName: string;
 }
-const GetTriggerEventSubscriptionStatusRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetTriggerEventSubscriptionStatusRequest>;
-
 /** Event Subscription Status. */
 export type EventSubscriptionStatus =
   | "Enabled"
@@ -3028,8 +2050,6 @@ export type EventSubscriptionStatus =
   | "Deprovisioning"
   | "Disabled"
   | "Unknown";
-const EventSubscriptionStatus = S.String;
-
 /** Defines the response of a trigger subscription operation. */
 export interface TriggerSubscriptionOperationStatus {
   /** Trigger name. */
@@ -3037,18 +2057,10 @@ export interface TriggerSubscriptionOperationStatus {
   /** Event Subscription Status. */
   status?: EventSubscriptionStatus;
 }
-const TriggerSubscriptionOperationStatus = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<TriggerSubscriptionOperationStatus>;
-
 /** Properties of the global parameter. */
 export type GlobalParametersCreateOrUpdateRequestPropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-const GlobalParametersCreateOrUpdateRequestPropertiesMap =
-  FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParametersCreateOrUpdateRequestPropertiesMap>;
-
 export interface GlobalParametersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3061,11 +2073,6 @@ export interface GlobalParametersCreateOrUpdateRequest {
   /** Properties of the global parameter. */
   properties: GlobalParametersCreateOrUpdateRequestPropertiesMap;
 }
-const GlobalParametersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GlobalParametersCreateOrUpdateRequest>;
-
 /** Properties of the global parameter. */
 export type GlobalParametersCreateOrUpdateResponsePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
@@ -3084,9 +2091,6 @@ export interface GlobalParametersCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GlobalParametersCreateOrUpdateResponse =
-  GetGlobalParameterResponse as any as S.Schema<GlobalParametersCreateOrUpdateResponse>;
-
 export interface IntegrationRuntimesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3099,11 +2103,6 @@ export interface IntegrationRuntimesCreateOrUpdateRequest {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-const IntegrationRuntimesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<IntegrationRuntimesCreateOrUpdateRequest>;
-
 export interface IntegrationRuntimesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3118,9 +2117,6 @@ export interface IntegrationRuntimesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const IntegrationRuntimesCreateOrUpdateResponse =
-  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<IntegrationRuntimesCreateOrUpdateResponse>;
-
 export interface IntegrationRuntimesUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3131,15 +2127,7 @@ export interface IntegrationRuntimesUpgradeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<IntegrationRuntimesUpgradeRequest>;
-
 export interface IntegrationRuntimesUpgradeResponse {}
-const IntegrationRuntimesUpgradeResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<IntegrationRuntimesUpgradeResponse>;
-
 export interface LinkedServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3152,11 +2140,6 @@ export interface LinkedServicesCreateOrUpdateRequest {
   /** Properties of linked service. */
   properties: LinkedService;
 }
-const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<LinkedServicesCreateOrUpdateRequest>;
-
 export interface LinkedServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3171,11 +2154,6 @@ export interface LinkedServicesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const LinkedServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<LinkedServicesCreateOrUpdateResponse>;
-
 export interface ListChangeDataCaptureByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3184,11 +2162,6 @@ export interface ListChangeDataCaptureByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListChangeDataCaptureByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListChangeDataCaptureByFactoryRequest>;
-
 /** Change data capture resource type. */
 export interface ChangeDataCaptureResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3204,16 +2177,8 @@ export interface ChangeDataCaptureResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const ChangeDataCaptureResource =
-  ChangeDataCaptureCreateOrUpdateResponse as any as S.Schema<ChangeDataCaptureResource>;
-
 /** The ChangeDataCaptureResource items on this page */
 export type ChangeDataCaptureListResponseValueList = Array<ChangeDataCaptureResource>;
-const ChangeDataCaptureListResponseValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ChangeDataCaptureListResponseValueList>;
-
 /** A list of change data capture resources. */
 export interface ChangeDataCaptureListResponse {
   /** The ChangeDataCaptureResource items on this page */
@@ -3221,11 +2186,6 @@ export interface ChangeDataCaptureListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ChangeDataCaptureListResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ChangeDataCaptureListResponse>;
-
 export interface ListCredentialOperationByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3234,11 +2194,6 @@ export interface ListCredentialOperationByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListCredentialOperationByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListCredentialOperationByFactoryRequest>;
-
 /** Credential resource type. */
 export interface CredentialResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3254,15 +2209,8 @@ export interface CredentialResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const CredentialResource = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<CredentialResource>;
-
 /** The CredentialResource items on this page */
 export type CredentialListResponseValueList = Array<CredentialResource>;
-const CredentialListResponseValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<CredentialListResponseValueList>;
-
 /** A list of credential resources. */
 export interface CredentialListResponse {
   /** The CredentialResource items on this page */
@@ -3270,11 +2218,6 @@ export interface CredentialListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CredentialListResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<CredentialListResponse>;
-
 export interface ListDataFlowByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3283,11 +2226,6 @@ export interface ListDataFlowByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListDataFlowByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListDataFlowByFactoryRequest>;
-
 /** Data flow resource type. */
 export interface DataFlowResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3303,15 +2241,8 @@ export interface DataFlowResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const DataFlowResource = GetDataFlowResponse as any as S.Schema<DataFlowResource>;
-
 /** The DataFlowResource items on this page */
 export type DataFlowListResponseValueList = Array<DataFlowResource>;
-const DataFlowListResponseValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<DataFlowListResponseValueList>;
-
 /** A list of data flow resources. */
 export interface DataFlowListResponse {
   /** The DataFlowResource items on this page */
@@ -3319,11 +2250,6 @@ export interface DataFlowListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DataFlowListResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<DataFlowListResponse>;
-
 export interface ListDatasetByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3332,11 +2258,6 @@ export interface ListDatasetByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListDatasetByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListDatasetByFactoryRequest>;
-
 /** Dataset resource type. */
 export interface DatasetResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3352,15 +2273,8 @@ export interface DatasetResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const DatasetResource = GetDatasetResponse as any as S.Schema<DatasetResource>;
-
 /** The DatasetResource items on this page */
 export type DatasetListResponseValueList = Array<DatasetResource>;
-const DatasetListResponseValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DatasetListResponseValueList>;
-
 /** A list of dataset resources. */
 export interface DatasetListResponse {
   /** The DatasetResource items on this page */
@@ -3368,17 +2282,10 @@ export interface DatasetListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DatasetListResponse = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<DatasetListResponse>;
-
 export interface ListFactoriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListFactoriesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListFactoriesRequest>;
-
 /** The resource tags. */
 export type FactoryTagsMap = { [key: string]: string | undefined };
 /** Factory resource type. */
@@ -3402,15 +2309,8 @@ export interface Factory {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const Factory = GetFactoryResponse as any as S.Schema<Factory>;
-
 /** The Factory items on this page */
 export type FactoryListResponseValueList = Array<Factory>;
-const FactoryListResponseValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<FactoryListResponseValueList>;
-
 /** A list of factory resources. */
 export interface FactoryListResponse {
   /** The Factory items on this page */
@@ -3418,19 +2318,12 @@ export interface FactoryListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FactoryListResponse = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<FactoryListResponse>;
-
 export interface ListFactoryByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListFactoryByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ListFactoryByResourceGroupRequest>;
-
 export interface ListGlobalParameterByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3439,18 +2332,10 @@ export interface ListGlobalParameterByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListGlobalParameterByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListGlobalParameterByFactoryRequest>;
-
 /** Properties of the global parameter. */
 export type GlobalParameterResourcePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-const GlobalParameterResourcePropertiesMap =
-  FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParameterResourcePropertiesMap>;
-
 /** Global parameters resource type. */
 export interface GlobalParameterResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3466,18 +2351,8 @@ export interface GlobalParameterResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const GlobalParameterResource = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GlobalParameterResource>;
-
 /** The GlobalParameterResource items on this page */
 export type GlobalParameterListResponseValueList = Array<GlobalParameterResource>;
-const GlobalParameterListResponseValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<GlobalParameterListResponseValueList>;
-
 /** A list of Global parameters. */
 export interface GlobalParameterListResponse {
   /** The GlobalParameterResource items on this page */
@@ -3485,11 +2360,6 @@ export interface GlobalParameterListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const GlobalParameterListResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GlobalParameterListResponse>;
-
 export interface ListIntegrationRuntimeAuthKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3500,11 +2370,6 @@ export interface ListIntegrationRuntimeAuthKeysRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const ListIntegrationRuntimeAuthKeysRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListIntegrationRuntimeAuthKeysRequest>;
-
 /** The integration runtime authentication keys. */
 export interface IntegrationRuntimeAuthKeys {
   /** The primary integration runtime authentication key. */
@@ -3512,11 +2377,6 @@ export interface IntegrationRuntimeAuthKeys {
   /** The secondary integration runtime authentication key. */
   authKey2?: string;
 }
-const IntegrationRuntimeAuthKeys = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<IntegrationRuntimeAuthKeys>;
-
 export interface ListIntegrationRuntimeByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3525,11 +2385,6 @@ export interface ListIntegrationRuntimeByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListIntegrationRuntimeByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListIntegrationRuntimeByFactoryRequest>;
-
 /** Integration runtime resource type. */
 export interface IntegrationRuntimeResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3545,16 +2400,8 @@ export interface IntegrationRuntimeResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const IntegrationRuntimeResource =
-  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<IntegrationRuntimeResource>;
-
 /** The IntegrationRuntimeResource items on this page */
 export type IntegrationRuntimeListResponseValueList = Array<IntegrationRuntimeResource>;
-const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<IntegrationRuntimeListResponseValueList>;
-
 /** A list of integration runtime resources. */
 export interface IntegrationRuntimeListResponse {
   /** The IntegrationRuntimeResource items on this page */
@@ -3562,11 +2409,6 @@ export interface IntegrationRuntimeListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const IntegrationRuntimeListResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<IntegrationRuntimeListResponse>;
-
 export interface ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3577,30 +2419,14 @@ export interface ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsReque
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest>;
-
 /** The details of Azure-SSIS integration runtime outbound network dependency endpoint. */
 export interface IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails {
   /** The port of endpoint. */
   port?: number;
 }
-const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
-
 /** The details of endpoint. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
-const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
-  /*@__PURE__*/ __L.at(
-    __c27,
-    5,
-  ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList>;
-
 /** The endpoint for Azure-SSIS integration runtime outbound network dependency. */
 export interface IntegrationRuntimeOutboundNetworkDependenciesEndpoint {
   /** The domain name of endpoint. */
@@ -3608,20 +2434,9 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesEndpoint {
   /** The details of endpoint. */
   endpointDetails?: IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList;
 }
-const IntegrationRuntimeOutboundNetworkDependenciesEndpoint = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
-
 /** The endpoints for outbound network dependency. */
 export type IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
-const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
-  /*@__PURE__*/ __L.at(
-    __c27,
-    7,
-  ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList>;
-
 /** Azure-SSIS integration runtime outbound network dependency endpoints for one category. */
 export interface IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint {
   /** The category of outbound network dependency. */
@@ -3629,30 +2444,14 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint {
   /** The endpoints for outbound network dependency. */
   endpoints?: IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList;
 }
-const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
-
 /** The list of outbound network dependency endpoints. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
-const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
-  /*@__PURE__*/ __L.at(
-    __c28,
-    1,
-  ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList>;
-
 /** Azure-SSIS integration runtime outbound network dependency endpoints. */
 export interface IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse {
   /** The list of outbound network dependency endpoints. */
   value?: IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList;
 }
-const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>;
-
 export interface ListLinkedServiceByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3661,11 +2460,6 @@ export interface ListLinkedServiceByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListLinkedServiceByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ListLinkedServiceByFactoryRequest>;
-
 /** Linked service resource type. */
 export interface LinkedServiceResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3681,15 +2475,8 @@ export interface LinkedServiceResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const LinkedServiceResource = GetLinkedServiceResponse as any as S.Schema<LinkedServiceResource>;
-
 /** The LinkedServiceResource items on this page */
 export type LinkedServiceListResponseValueList = Array<LinkedServiceResource>;
-const LinkedServiceListResponseValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<LinkedServiceListResponseValueList>;
-
 /** A list of linked service resources. */
 export interface LinkedServiceListResponse {
   /** The LinkedServiceResource items on this page */
@@ -3697,11 +2484,6 @@ export interface LinkedServiceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const LinkedServiceListResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<LinkedServiceListResponse>;
-
 export interface ListManagedPrivateEndpointByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3712,11 +2494,6 @@ export interface ListManagedPrivateEndpointByFactoryRequest {
   /** Managed virtual network name */
   managedVirtualNetworkName: string;
 }
-const ListManagedPrivateEndpointByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ListManagedPrivateEndpointByFactoryRequest>;
-
 /** Managed private endpoint resource type. */
 export interface ManagedPrivateEndpointResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3732,16 +2509,8 @@ export interface ManagedPrivateEndpointResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const ManagedPrivateEndpointResource =
-  GetManagedPrivateEndpointResponse as any as S.Schema<ManagedPrivateEndpointResource>;
-
 /** The ManagedPrivateEndpointResource items on this page */
 export type ManagedPrivateEndpointListResponseValueList = Array<ManagedPrivateEndpointResource>;
-const ManagedPrivateEndpointListResponseValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ManagedPrivateEndpointListResponseValueList>;
-
 /** Paged collection of ManagedPrivateEndpointResource items */
 export interface ManagedPrivateEndpointListResponse {
   /** The ManagedPrivateEndpointResource items on this page */
@@ -3749,11 +2518,6 @@ export interface ManagedPrivateEndpointListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedPrivateEndpointListResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ManagedPrivateEndpointListResponse>;
-
 export interface ListManagedVirtualNetworkByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3762,11 +2526,6 @@ export interface ListManagedVirtualNetworkByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListManagedVirtualNetworkByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<ListManagedVirtualNetworkByFactoryRequest>;
-
 /** Managed Virtual Network resource type. */
 export interface ManagedVirtualNetworkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3782,16 +2541,8 @@ export interface ManagedVirtualNetworkResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const ManagedVirtualNetworkResource =
-  GetManagedVirtualNetworkResponse as any as S.Schema<ManagedVirtualNetworkResource>;
-
 /** The ManagedVirtualNetworkResource items on this page */
 export type ManagedVirtualNetworkListResponseValueList = Array<ManagedVirtualNetworkResource>;
-const ManagedVirtualNetworkListResponseValueList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ManagedVirtualNetworkListResponseValueList>;
-
 /** A list of managed Virtual Network resources. */
 export interface ManagedVirtualNetworkListResponse {
   /** The ManagedVirtualNetworkResource items on this page */
@@ -3799,17 +2550,7 @@ export interface ManagedVirtualNetworkListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedVirtualNetworkListResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ManagedVirtualNetworkListResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Metadata associated with the operation. */
 export interface OperationDisplay {
   /** The description of the operation. */
@@ -3821,8 +2562,6 @@ export interface OperationDisplay {
   /** The type of operation: get, read, delete, etc. */
   operation?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<OperationDisplay>;
-
 /** Details about an operation related to logs. */
 export interface OperationLogSpecification {
   /** The name of the log category. */
@@ -3832,18 +2571,8 @@ export interface OperationLogSpecification {
   /** Blobs created in the customer storage account, per hour. */
   blobDuration?: string;
 }
-const OperationLogSpecification = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<OperationLogSpecification>;
-
 /** Details about operations related to logs. */
 export type OperationServiceSpecificationLogSpecificationsList = Array<OperationLogSpecification>;
-const OperationServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<OperationServiceSpecificationLogSpecificationsList>;
-
 /** Defines how often data for a metric becomes available. */
 export interface OperationMetricAvailability {
   /** The granularity for the metric. */
@@ -3851,18 +2580,8 @@ export interface OperationMetricAvailability {
   /** Blob created in the customer storage account, per hour. */
   blobDuration?: string;
 }
-const OperationMetricAvailability = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<OperationMetricAvailability>;
-
 /** Defines how often data for metrics becomes available. */
 export type OperationMetricSpecificationAvailabilitiesList = Array<OperationMetricAvailability>;
-const OperationMetricSpecificationAvailabilitiesList = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<OperationMetricSpecificationAvailabilitiesList>;
-
 /** Defines the metric dimension. */
 export interface OperationMetricDimension {
   /** The name of the dimension for the metric. */
@@ -3872,18 +2591,8 @@ export interface OperationMetricDimension {
   /** Whether the dimension should be exported to Azure Monitor. */
   toBeExportedForShoebox?: boolean;
 }
-const OperationMetricDimension = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<OperationMetricDimension>;
-
 /** Defines the metric dimension. */
 export type OperationMetricSpecificationDimensionsList = Array<OperationMetricDimension>;
-const OperationMetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<OperationMetricSpecificationDimensionsList>;
-
 /** Details about an operation related to metrics. */
 export interface OperationMetricSpecification {
   /** The name of the metric. */
@@ -3907,19 +2616,9 @@ export interface OperationMetricSpecification {
   /** Defines the metric dimension. */
   dimensions?: OperationMetricSpecificationDimensionsList;
 }
-const OperationMetricSpecification = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<OperationMetricSpecification>;
-
 /** Details about operations related to metrics. */
 export type OperationServiceSpecificationMetricSpecificationsList =
   Array<OperationMetricSpecification>;
-const OperationServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<OperationServiceSpecificationMetricSpecificationsList>;
-
 /** Details about a service operation. */
 export interface OperationServiceSpecification {
   /** Details about operations related to logs. */
@@ -3927,18 +2626,11 @@ export interface OperationServiceSpecification {
   /** Details about operations related to metrics. */
   metricSpecifications?: OperationServiceSpecificationMetricSpecificationsList;
 }
-const OperationServiceSpecification = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<OperationServiceSpecification>;
-
 /** Additional details about an operation. */
 export interface OperationProperties {
   /** Details about a service operation. */
   serviceSpecification?: OperationServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<OperationProperties>;
-
 /** Azure Data Factory API operation definition. */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -3950,15 +2642,8 @@ export interface Operation {
   /** Additional details about the operation. */
   properties?: OperationProperties;
 }
-const Operation = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<Operation>;
-
 /** List of Data Factory operations supported by the Data Factory resource provider. */
 export type OperationListResponseValueList = Array<Operation>;
-const OperationListResponseValueList = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<OperationListResponseValueList>;
-
 /** A list of operations that can be performed by the Data Factory service. */
 export interface OperationListResponse {
   /** List of Data Factory operations supported by the Data Factory resource provider. */
@@ -3966,11 +2651,6 @@ export interface OperationListResponse {
   /** The link to the next page of results, if any remaining results exist. */
   nextLink?: string;
 }
-const OperationListResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<OperationListResponse>;
-
 export interface ListPipelineByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3979,11 +2659,6 @@ export interface ListPipelineByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListPipelineByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ListPipelineByFactoryRequest>;
-
 /** Pipeline resource type. */
 export interface PipelineResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3999,15 +2674,8 @@ export interface PipelineResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const PipelineResource = GetPipelineResponse as any as S.Schema<PipelineResource>;
-
 /** The PipelineResource items on this page */
 export type PipelineListResponseValueList = Array<PipelineResource>;
-const PipelineListResponseValueList = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<PipelineListResponseValueList>;
-
 /** A list of pipeline resources. */
 export interface PipelineListResponse {
   /** The PipelineResource items on this page */
@@ -4015,11 +2683,6 @@ export interface PipelineListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PipelineListResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<PipelineListResponse>;
-
 export interface ListPrivateEndPointConnectionByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4028,11 +2691,6 @@ export interface ListPrivateEndPointConnectionByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListPrivateEndPointConnectionByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ListPrivateEndPointConnectionByFactoryRequest>;
-
 /** Private Endpoint Connection ARM resource. */
 export interface PrivateEndpointConnectionResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4048,17 +2706,9 @@ export interface PrivateEndpointConnectionResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const PrivateEndpointConnectionResource =
-  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionResource>;
-
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionListResponseValueList =
   Array<PrivateEndpointConnectionResource>;
-const PrivateEndpointConnectionListResponseValueList = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<PrivateEndpointConnectionListResponseValueList>;
-
 /** A list of linked service resources. */
 export interface PrivateEndpointConnectionListResponse {
   /** The PrivateEndpointConnectionResource items on this page */
@@ -4066,11 +2716,6 @@ export interface PrivateEndpointConnectionListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionListResponse>;
-
 export interface ListTriggerByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4079,11 +2724,6 @@ export interface ListTriggerByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-const ListTriggerByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ListTriggerByFactoryRequest>;
-
 /** Trigger resource type. */
 export interface TriggerResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4099,15 +2739,8 @@ export interface TriggerResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const TriggerResource = GetTriggerResponse as any as S.Schema<TriggerResource>;
-
 /** The TriggerResource items on this page */
 export type TriggerListResponseValueList = Array<TriggerResource>;
-const TriggerListResponseValueList = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<TriggerListResponseValueList>;
-
 /** A list of trigger resources. */
 export interface TriggerListResponse {
   /** The TriggerResource items on this page */
@@ -4115,18 +2748,10 @@ export interface TriggerListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TriggerListResponse = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<TriggerListResponse>;
-
 /** The connection state of a managed private endpoint */
 export interface ConnectionStatePropertiesInput {}
-const ConnectionStatePropertiesInput =
-  CancelPipelineRunResponse as any as S.Schema<ConnectionStatePropertiesInput>;
-
 /** Fully qualified domain names */
 export type ManagedPrivateEndpointInputFqdnsList = Array<string>;
-const ManagedPrivateEndpointInputFqdnsList =
-  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<ManagedPrivateEndpointInputFqdnsList>;
-
 /** Properties of a managed private endpoint */
 export interface ManagedPrivateEndpointInput {
   /** The managed private endpoint connection state */
@@ -4138,11 +2763,6 @@ export interface ManagedPrivateEndpointInput {
   /** The ARM resource ID of the resource to which the managed private endpoint is created */
   privateLinkResourceId?: string;
 }
-const ManagedPrivateEndpointInput = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ManagedPrivateEndpointInput>;
-
 export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4157,11 +2777,6 @@ export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
   /** Managed private endpoint properties. */
   properties: ManagedPrivateEndpointInput;
 }
-const ManagedPrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateRequest>;
-
 export interface ManagedPrivateEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4176,9 +2791,6 @@ export interface ManagedPrivateEndpointsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const ManagedPrivateEndpointsCreateOrUpdateResponse =
-  GetManagedPrivateEndpointResponse as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>;
-
 /** A managed Virtual Network associated with the Azure Data Factory */
 export type ManagedVirtualNetworkInput = ConnectionStatePropertiesInput;
 export interface ManagedVirtualNetworksCreateOrUpdateRequest {
@@ -4193,11 +2805,6 @@ export interface ManagedVirtualNetworksCreateOrUpdateRequest {
   /** Managed Virtual Network properties. */
   properties: ConnectionStatePropertiesInput;
 }
-const ManagedVirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ManagedVirtualNetworksCreateOrUpdateRequest>;
-
 export interface ManagedVirtualNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4212,9 +2819,6 @@ export interface ManagedVirtualNetworksCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const ManagedVirtualNetworksCreateOrUpdateResponse =
-  GetManagedVirtualNetworkResponse as any as S.Schema<ManagedVirtualNetworksCreateOrUpdateResponse>;
-
 /** Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status. */
 export type RunQueryFilterOperand =
   | "PipelineName"
@@ -4229,17 +2833,10 @@ export type RunQueryFilterOperand =
   | "TriggerRunTimestamp"
   | "RunGroupId"
   | "LatestOnly";
-const RunQueryFilterOperand = S.String;
-
 /** Operator to be used for filter. */
 export type RunQueryFilterOperator = "Equals" | "NotEquals" | "In" | "NotIn";
-const RunQueryFilterOperator = S.String;
-
 /** List of filter values. */
 export type RunQueryFilterValuesList = Array<string>;
-const RunQueryFilterValuesList =
-  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<RunQueryFilterValuesList>;
-
 /** Query filter option for listing runs. */
 export interface RunQueryFilter {
   /** Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status. */
@@ -4249,15 +2846,8 @@ export interface RunQueryFilter {
   /** List of filter values. */
   values: RunQueryFilterValuesList;
 }
-const RunQueryFilter = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<RunQueryFilter>;
-
 /** List of filters. */
 export type PipelineRunsQueryByFactoryRequestFiltersList = Array<RunQueryFilter>;
-const PipelineRunsQueryByFactoryRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<PipelineRunsQueryByFactoryRequestFiltersList>;
-
 /** Parameter name to be used for order by. The allowed parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd and Status; for activity runs are ActivityName, ActivityRunStart, ActivityRunEnd and Status; for trigger runs are TriggerName, TriggerRunTimestamp and Status. */
 export type RunQueryOrderByField =
   | "RunStart"
@@ -4269,12 +2859,8 @@ export type RunQueryOrderByField =
   | "ActivityRunEnd"
   | "TriggerName"
   | "TriggerRunTimestamp";
-const RunQueryOrderByField = S.String;
-
 /** Sorting order of the parameter. */
 export type RunQueryOrder = "ASC" | "DESC";
-const RunQueryOrder = S.String;
-
 /** An object to provide order by options for listing runs. */
 export interface RunQueryOrderBy {
   /** Parameter name to be used for order by. The allowed parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd and Status; for activity runs are ActivityName, ActivityRunStart, ActivityRunEnd and Status; for trigger runs are TriggerName, TriggerRunTimestamp and Status. */
@@ -4282,15 +2868,8 @@ export interface RunQueryOrderBy {
   /** Sorting order of the parameter. */
   order: RunQueryOrder | (string & {});
 }
-const RunQueryOrderBy = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<RunQueryOrderBy>;
-
 /** List of OrderBy option. */
 export type PipelineRunsQueryByFactoryRequestOrderByList = Array<RunQueryOrderBy>;
-const PipelineRunsQueryByFactoryRequestOrderByList = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<PipelineRunsQueryByFactoryRequestOrderByList>;
-
 export interface PipelineRunsQueryByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4309,18 +2888,8 @@ export interface PipelineRunsQueryByFactoryRequest {
   /** List of OrderBy option. */
   orderBy?: PipelineRunsQueryByFactoryRequestOrderByList;
 }
-const PipelineRunsQueryByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<PipelineRunsQueryByFactoryRequest>;
-
 /** List of pipeline runs. */
 export type PipelineRunsQueryResponseValueList = Array<PipelineRun>;
-const PipelineRunsQueryResponseValueList = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<PipelineRunsQueryResponseValueList>;
-
 /** A list pipeline runs. */
 export interface PipelineRunsQueryResponse {
   /** List of pipeline runs. */
@@ -4328,11 +2897,6 @@ export interface PipelineRunsQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-const PipelineRunsQueryResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<PipelineRunsQueryResponse>;
-
 export interface PipelinesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4345,11 +2909,6 @@ export interface PipelinesCreateOrUpdateRequest {
   /** Properties of the pipeline. */
   properties: Pipeline;
 }
-const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<PipelinesCreateOrUpdateRequest>;
-
 export interface PipelinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4364,18 +2923,11 @@ export interface PipelinesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const PipelinesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<PipelinesCreateOrUpdateResponse>;
-
 /** Private endpoint which a connection belongs to. */
 export interface PrivateEndpoint {
   /** The resource Id for private endpoint */
   id?: string;
 }
-const PrivateEndpoint = ArmIdWrapper as any as S.Schema<PrivateEndpoint>;
-
 /** A request to approve or reject a private endpoint connection */
 export interface PrivateLinkConnectionApprovalRequest {
   /** The state of a private link connection */
@@ -4383,11 +2935,6 @@ export interface PrivateLinkConnectionApprovalRequest {
   /** The resource of private endpoint. */
   privateEndpoint?: PrivateEndpoint;
 }
-const PrivateLinkConnectionApprovalRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<PrivateLinkConnectionApprovalRequest>;
-
 export interface PrivateEndpointConnectionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4400,11 +2947,6 @@ export interface PrivateEndpointConnectionCreateOrUpdateRequest {
   /** Core resource properties */
   properties?: PrivateLinkConnectionApprovalRequest;
 }
-const PrivateEndpointConnectionCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateRequest>;
-
 export interface PrivateEndpointConnectionCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4419,9 +2961,6 @@ export interface PrivateEndpointConnectionCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const PrivateEndpointConnectionCreateOrUpdateResponse =
-  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateResponse>;
-
 export interface RefreshIntegrationRuntimeObjectMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4432,11 +2971,6 @@ export interface RefreshIntegrationRuntimeObjectMetadataRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const RefreshIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<RefreshIntegrationRuntimeObjectMetadataRequest>;
-
 /** The status of the operation. */
 export interface SsisObjectMetadataStatusResponse {
   /** The status of the operation. */
@@ -4448,15 +2982,8 @@ export interface SsisObjectMetadataStatusResponse {
   /** The operation error message. */
   error?: string;
 }
-const SsisObjectMetadataStatusResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<SsisObjectMetadataStatusResponse>;
-
 /** The name of the authentication key to regenerate. */
 export type IntegrationRuntimeAuthKeyName = "authKey1" | "authKey2";
-const IntegrationRuntimeAuthKeyName = S.String;
-
 export interface RegenerateIntegrationRuntimeAuthKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4469,11 +2996,6 @@ export interface RegenerateIntegrationRuntimeAuthKeyRequest {
   /** The name of the authentication key to regenerate. */
   keyName?: IntegrationRuntimeAuthKeyName | (string & {});
 }
-const RegenerateIntegrationRuntimeAuthKeyRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<RegenerateIntegrationRuntimeAuthKeyRequest>;
-
 export interface RemoveIntegrationRuntimeLinksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4484,25 +3006,11 @@ export interface RemoveIntegrationRuntimeLinksRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const RemoveIntegrationRuntimeLinksRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<RemoveIntegrationRuntimeLinksRequest>;
-
 export interface RemoveIntegrationRuntimeLinksResponse {}
-const RemoveIntegrationRuntimeLinksResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<RemoveIntegrationRuntimeLinksResponse>;
-
 /** List of filters. */
 export type RunActivityRunsQueryByPipelineRequestFiltersList = Array<RunQueryFilter>;
-const RunActivityRunsQueryByPipelineRequestFiltersList =
-  PipelineRunsQueryByFactoryRequestFiltersList as any as S.Schema<RunActivityRunsQueryByPipelineRequestFiltersList>;
-
 /** List of OrderBy option. */
 export type RunActivityRunsQueryByPipelineRequestOrderByList = Array<RunQueryOrderBy>;
-const RunActivityRunsQueryByPipelineRequestOrderByList =
-  PipelineRunsQueryByFactoryRequestOrderByList as any as S.Schema<RunActivityRunsQueryByPipelineRequestOrderByList>;
-
 export interface RunActivityRunsQueryByPipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4522,11 +3030,6 @@ export interface RunActivityRunsQueryByPipelineRequest {
   /** List of OrderBy option. */
   orderBy?: RunActivityRunsQueryByPipelineRequestOrderByList;
 }
-const RunActivityRunsQueryByPipelineRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<RunActivityRunsQueryByPipelineRequest>;
-
 /** Information about an activity run in a pipeline. */
 export interface ActivityRun {
   /** The name of the pipeline. */
@@ -4556,15 +3059,8 @@ export interface ActivityRun {
   /** The error if any from the activity run. */
   error?: unknown;
 }
-const ActivityRun = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<ActivityRun>;
-
 /** List of activity runs. */
 export type ActivityRunsQueryResponseValueList = Array<ActivityRun>;
-const ActivityRunsQueryResponseValueList = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<ActivityRunsQueryResponseValueList>;
-
 /** A list activity runs. */
 export interface ActivityRunsQueryResponse {
   /** List of activity runs. */
@@ -4572,11 +3068,6 @@ export interface ActivityRunsQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-const ActivityRunsQueryResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<ActivityRunsQueryResponse>;
-
 export interface StartChangeDataCaptureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4587,15 +3078,7 @@ export interface StartChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-const StartChangeDataCaptureRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<StartChangeDataCaptureRequest>;
-
 export interface StartChangeDataCaptureResponse {}
-const StartChangeDataCaptureResponse =
-  CancelPipelineRunResponse as any as S.Schema<StartChangeDataCaptureResponse>;
-
 export interface StartIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4606,11 +3089,6 @@ export interface StartIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const StartIntegrationRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<StartIntegrationRuntimeRequest>;
-
 export interface StartTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4621,11 +3099,7 @@ export interface StartTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-const StartTriggerRequest = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<StartTriggerRequest>;
-
 export interface StartTriggerResponse {}
-const StartTriggerResponse = CancelPipelineRunResponse as any as S.Schema<StartTriggerResponse>;
-
 export interface StopChangeDataCaptureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4636,15 +3110,7 @@ export interface StopChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-const StopChangeDataCaptureRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<StopChangeDataCaptureRequest>;
-
 export interface StopChangeDataCaptureResponse {}
-const StopChangeDataCaptureResponse =
-  CancelPipelineRunResponse as any as S.Schema<StopChangeDataCaptureResponse>;
-
 export interface StopIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4655,15 +3121,7 @@ export interface StopIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const StopIntegrationRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<StopIntegrationRuntimeRequest>;
-
 export interface StopIntegrationRuntimeResponse {}
-const StopIntegrationRuntimeResponse =
-  CancelPipelineRunResponse as any as S.Schema<StopIntegrationRuntimeResponse>;
-
 export interface StopTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4674,11 +3132,7 @@ export interface StopTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-const StopTriggerRequest = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<StopTriggerRequest>;
-
 export interface StopTriggerResponse {}
-const StopTriggerResponse = CancelPipelineRunResponse as any as S.Schema<StopTriggerResponse>;
-
 export interface SubscribeTriggerToEventsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4689,11 +3143,6 @@ export interface SubscribeTriggerToEventsRequest {
   /** The trigger name. */
   triggerName: string;
 }
-const SubscribeTriggerToEventsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<SubscribeTriggerToEventsRequest>;
-
 export interface SyncIntegrationRuntimeCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4704,25 +3153,11 @@ export interface SyncIntegrationRuntimeCredentialsRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<SyncIntegrationRuntimeCredentialsRequest>;
-
 export interface SyncIntegrationRuntimeCredentialsResponse {}
-const SyncIntegrationRuntimeCredentialsResponse =
-  DeleteCredentialOperationResponse as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>;
-
 /** List of filters. */
 export type TriggerRunsQueryByFactoryRequestFiltersList = Array<RunQueryFilter>;
-const TriggerRunsQueryByFactoryRequestFiltersList =
-  PipelineRunsQueryByFactoryRequestFiltersList as any as S.Schema<TriggerRunsQueryByFactoryRequestFiltersList>;
-
 /** List of OrderBy option. */
 export type TriggerRunsQueryByFactoryRequestOrderByList = Array<RunQueryOrderBy>;
-const TriggerRunsQueryByFactoryRequestOrderByList =
-  PipelineRunsQueryByFactoryRequestOrderByList as any as S.Schema<TriggerRunsQueryByFactoryRequestOrderByList>;
-
 export interface TriggerRunsQueryByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4741,35 +3176,16 @@ export interface TriggerRunsQueryByFactoryRequest {
   /** List of OrderBy option. */
   orderBy?: TriggerRunsQueryByFactoryRequestOrderByList;
 }
-const TriggerRunsQueryByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<TriggerRunsQueryByFactoryRequest>;
-
 /** Trigger run status. */
 export type TriggerRunStatus = "Succeeded" | "Failed" | "Inprogress";
-const TriggerRunStatus = S.String;
-
 /** List of property name and value related to trigger run. Name, value pair depends on type of trigger. */
 export type TriggerRunPropertiesMap = { [key: string]: string | undefined };
-const TriggerRunPropertiesMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunPropertiesMap>;
-
 /** List of pipeline name and run Id triggered by the trigger run. */
 export type TriggerRunTriggeredPipelinesMap = { [key: string]: string | undefined };
-const TriggerRunTriggeredPipelinesMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunTriggeredPipelinesMap>;
-
 /** Run dimension for which trigger was fired. */
 export type TriggerRunRunDimensionMap = { [key: string]: string | undefined };
-const TriggerRunRunDimensionMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunRunDimensionMap>;
-
 /** Status of the upstream pipelines. */
 export type TriggerRunDependencyStatusMap = { [key: string]: unknown | undefined };
-const TriggerRunDependencyStatusMap =
-  LinkedServiceReferenceParametersMap as any as S.Schema<TriggerRunDependencyStatusMap>;
-
 /** Trigger runs. */
 export interface TriggerRun {
   /** Trigger run id. */
@@ -4793,15 +3209,8 @@ export interface TriggerRun {
   /** Status of the upstream pipelines. */
   dependencyStatus?: TriggerRunDependencyStatusMap;
 }
-const TriggerRun = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<TriggerRun>;
-
 /** List of trigger runs. */
 export type TriggerRunsQueryResponseValueList = Array<TriggerRun>;
-const TriggerRunsQueryResponseValueList = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<TriggerRunsQueryResponseValueList>;
-
 /** A list of trigger runs. */
 export interface TriggerRunsQueryResponse {
   /** List of trigger runs. */
@@ -4809,11 +3218,6 @@ export interface TriggerRunsQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-const TriggerRunsQueryResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<TriggerRunsQueryResponse>;
-
 export interface TriggerRunsRerunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4824,15 +3228,7 @@ export interface TriggerRunsRerunRequest {
   /** The pipeline run identifier. */
   runId: string;
 }
-const TriggerRunsRerunRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<TriggerRunsRerunRequest>;
-
 export interface TriggerRunsRerunResponse {}
-const TriggerRunsRerunResponse =
-  CancelPipelineRunResponse as any as S.Schema<TriggerRunsRerunResponse>;
-
 export interface TriggersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4845,11 +3241,6 @@ export interface TriggersCreateOrUpdateRequest {
   /** Properties of the trigger. */
   properties: Trigger;
 }
-const TriggersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<TriggersCreateOrUpdateRequest>;
-
 export interface TriggersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4864,11 +3255,6 @@ export interface TriggersCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const TriggersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<TriggersCreateOrUpdateResponse>;
-
 export interface TriggersQueryByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4881,16 +3267,8 @@ export interface TriggersQueryByFactoryRequest {
   /** The name of the parent TumblingWindowTrigger to get the child rerun triggers */
   parentTriggerName?: string;
 }
-const TriggersQueryByFactoryRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<TriggersQueryByFactoryRequest>;
-
 /** List of triggers. */
 export type TriggerQueryResponseValueList = Array<TriggerResource>;
-const TriggerQueryResponseValueList =
-  TriggerListResponseValueList as any as S.Schema<TriggerQueryResponseValueList>;
-
 /** A query of triggers. */
 export interface TriggerQueryResponse {
   /** List of triggers. */
@@ -4898,11 +3276,6 @@ export interface TriggerQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-const TriggerQueryResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<TriggerQueryResponse>;
-
 export interface UnsubscribeTriggerFromEventsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4913,26 +3286,13 @@ export interface UnsubscribeTriggerFromEventsRequest {
   /** The trigger name. */
   triggerName: string;
 }
-const UnsubscribeTriggerFromEventsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<UnsubscribeTriggerFromEventsRequest>;
-
 /** The resource tags. */
 export type UpdateFactoryRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFactoryRequestTagsMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<UpdateFactoryRequestTagsMap>;
-
 /** Factory update resource properties. */
 export interface FactoryUpdateProperties {
   /** Whether or not public network access is allowed for the data factory. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-const FactoryUpdateProperties = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<FactoryUpdateProperties>;
-
 export interface UpdateFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4947,11 +3307,6 @@ export interface UpdateFactoryRequest {
   /** Properties of update the factory. */
   properties?: FactoryUpdateProperties;
 }
-const UpdateFactoryRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<UpdateFactoryRequest>;
-
 /** The resource tags. */
 export type UpdateFactoryResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateFactoryResponse {
@@ -4974,12 +3329,8 @@ export interface UpdateFactoryResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateFactoryResponse = GetFactoryResponse as any as S.Schema<UpdateFactoryResponse>;
-
 /** The state of integration runtime auto update. */
 export type IntegrationRuntimeAutoUpdate = "On" | "Off";
-const IntegrationRuntimeAutoUpdate = S.String;
-
 export interface UpdateIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4994,11 +3345,6 @@ export interface UpdateIntegrationRuntimeRequest {
   /** The time offset (in hours) in the day, e.g., PT03H is 3 hours. The integration runtime auto update will happen on that time. */
   updateDelayOffset?: string;
 }
-const UpdateIntegrationRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<UpdateIntegrationRuntimeRequest>;
-
 export interface UpdateIntegrationRuntimeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5013,9 +3359,6 @@ export interface UpdateIntegrationRuntimeResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-const UpdateIntegrationRuntimeResponse =
-  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<UpdateIntegrationRuntimeResponse>;
-
 export interface UpdateIntegrationRuntimeNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5028,11 +3371,6 @@ export interface UpdateIntegrationRuntimeNodeRequest {
   /** The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs(inclusive) are allowed. */
   concurrentJobsLimit?: number;
 }
-const UpdateIntegrationRuntimeNodeRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<UpdateIntegrationRuntimeNodeRequest>;
-
 export type AddDataFlowDebugSessionDataFlowError = AzureOpError;
 /** Add a data flow into debug session. */
 export const AddDataFlowDebugSessionDataFlow: API.OperationMethod<
@@ -5041,8 +3379,8 @@ export const AddDataFlowDebugSessionDataFlow: API.OperationMethod<
   AddDataFlowDebugSessionDataFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddDataFlowDebugSessionDataFlowRequest,
-  output: AddDataFlowToDebugSessionResponse,
+  input: __S(20, __c2, 4) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<AddDataFlowToDebugSessionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5056,8 +3394,8 @@ export const CancelPipelineRun: API.OperationMethod<
   CancelPipelineRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelPipelineRunRequest,
-  output: CancelPipelineRunResponse,
+  input: __S(22, __c2, 6) as any as S.Schema<CancelPipelineRunRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CancelPipelineRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5071,8 +3409,8 @@ export const CancelTriggerRun: API.OperationMethod<
   CancelTriggerRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTriggerRunRequest,
-  output: CancelTriggerRunResponse,
+  input: __S(24, __c3, 0) as any as S.Schema<CancelTriggerRunRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CancelTriggerRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5086,8 +3424,8 @@ export const ChangeDataCaptureCreateOrUpdate: API.OperationMethod<
   ChangeDataCaptureCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeDataCaptureCreateOrUpdateRequest,
-  output: ChangeDataCaptureCreateOrUpdateResponse,
+  input: __S(48, __c6, 0) as any as S.Schema<ChangeDataCaptureCreateOrUpdateRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ChangeDataCaptureCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5101,8 +3439,8 @@ export const ChangeDataCaptureStatus: API.OperationMethod<
   ChangeDataCaptureStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeDataCaptureStatusRequest,
-  output: ChangeDataCaptureStatusResponse,
+  input: __S(51, __c6, 3) as any as S.Schema<ChangeDataCaptureStatusRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ChangeDataCaptureStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5116,8 +3454,8 @@ export const CreateDataFlowDebugSession: API.OperationMethod<
   CreateDataFlowDebugSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataFlowDebugSessionRequest,
-  output: CreateDataFlowDebugSessionResponse,
+  input: __S(55, __c6, 7) as any as S.Schema<CreateDataFlowDebugSessionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateDataFlowDebugSessionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5131,8 +3469,12 @@ export const CreateIntegrationRuntimeLinkedIntegrationRuntime: API.OperationMeth
   CreateIntegrationRuntimeLinkedIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest,
-  output: IntegrationRuntimeStatusResponse,
+  input: __S(
+    57,
+    __c7,
+    1,
+  ) as any as S.Schema<CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<IntegrationRuntimeStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5146,8 +3488,8 @@ export const CreatePipelineRun: API.OperationMethod<
   CreatePipelineRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePipelineRunRequest,
-  output: CreateRunResponse,
+  input: __S(60, __c7, 4) as any as S.Schema<CreatePipelineRunRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CreateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5161,8 +3503,8 @@ export const CredentialOperationsCreateOrUpdate: API.OperationMethod<
   CredentialOperationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CredentialOperationsCreateOrUpdateRequest,
-  output: CredentialOperationsCreateOrUpdateResponse,
+  input: __S(63, __c7, 7) as any as S.Schema<CredentialOperationsCreateOrUpdateRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<CredentialOperationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5176,8 +3518,8 @@ export const DataFlowDebugSessionQueryByFactory: API.OperationMethod<
   DataFlowDebugSessionQueryByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataFlowDebugSessionQueryByFactoryRequest,
-  output: QueryDataFlowDebugSessionsResponse,
+  input: __S(65, __c8, 1) as any as S.Schema<DataFlowDebugSessionQueryByFactoryRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<QueryDataFlowDebugSessionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5191,8 +3533,8 @@ export const DataFlowsCreateOrUpdate: API.OperationMethod<
   DataFlowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataFlowsCreateOrUpdateRequest,
-  output: DataFlowsCreateOrUpdateResponse,
+  input: __S(69, __c8, 5) as any as S.Schema<DataFlowsCreateOrUpdateRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<DataFlowsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5206,8 +3548,8 @@ export const DatasetsCreateOrUpdate: API.OperationMethod<
   DatasetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatasetsCreateOrUpdateRequest,
-  output: DatasetsCreateOrUpdateResponse,
+  input: __S(71, __c8, 7) as any as S.Schema<DatasetsCreateOrUpdateRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DatasetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5221,8 +3563,8 @@ export const DeleteChangeDataCapture: API.OperationMethod<
   DeleteChangeDataCaptureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChangeDataCaptureRequest,
-  output: DeleteChangeDataCaptureResponse,
+  input: __S(73, __c9, 1) as any as S.Schema<DeleteChangeDataCaptureRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<DeleteChangeDataCaptureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5236,8 +3578,8 @@ export const DeleteCredentialOperation: API.OperationMethod<
   DeleteCredentialOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCredentialOperationRequest,
-  output: DeleteCredentialOperationResponse,
+  input: __S(75, __c9, 3) as any as S.Schema<DeleteCredentialOperationRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<DeleteCredentialOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5251,8 +3593,8 @@ export const DeleteDataFlow: API.OperationMethod<
   DeleteDataFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataFlowRequest,
-  output: DeleteDataFlowResponse,
+  input: __S(77, __c9, 5) as any as S.Schema<DeleteDataFlowRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeleteDataFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5266,8 +3608,8 @@ export const DeleteDataFlowDebugSession: API.OperationMethod<
   DeleteDataFlowDebugSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataFlowDebugSessionRequest,
-  output: DeleteDataFlowDebugSessionResponse,
+  input: __S(78, __c9, 6) as any as S.Schema<DeleteDataFlowDebugSessionRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<DeleteDataFlowDebugSessionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5281,8 +3623,8 @@ export const DeleteDataset: API.OperationMethod<
   DeleteDatasetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetRequest,
-  output: DeleteDatasetResponse,
+  input: __S(79, __c9, 7) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeleteDatasetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5296,8 +3638,8 @@ export const DeleteFactory: API.OperationMethod<
   DeleteFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFactoryRequest,
-  output: DeleteFactoryResponse,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteFactoryRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeleteFactoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5311,8 +3653,8 @@ export const DeleteGlobalParameter: API.OperationMethod<
   DeleteGlobalParameterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGlobalParameterRequest,
-  output: DeleteGlobalParameterResponse,
+  input: __S(81, __c10, 1) as any as S.Schema<DeleteGlobalParameterRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeleteGlobalParameterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5326,8 +3668,8 @@ export const DeleteIntegrationRuntime: API.OperationMethod<
   DeleteIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationRuntimeRequest,
-  output: DeleteIntegrationRuntimeResponse,
+  input: __S(82, __c10, 2) as any as S.Schema<DeleteIntegrationRuntimeRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<DeleteIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5341,8 +3683,8 @@ export const DeleteIntegrationRuntimeNode: API.OperationMethod<
   DeleteIntegrationRuntimeNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationRuntimeNodeRequest,
-  output: DeleteIntegrationRuntimeNodeResponse,
+  input: __S(83, __c10, 3) as any as S.Schema<DeleteIntegrationRuntimeNodeRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5356,8 +3698,8 @@ export const DeleteLinkedService: API.OperationMethod<
   DeleteLinkedServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLinkedServiceRequest,
-  output: DeleteLinkedServiceResponse,
+  input: __S(84, __c10, 4) as any as S.Schema<DeleteLinkedServiceRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeleteLinkedServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5371,8 +3713,8 @@ export const DeleteManagedPrivateEndpoint: API.OperationMethod<
   DeleteManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedPrivateEndpointRequest,
-  output: DeleteManagedPrivateEndpointResponse,
+  input: __S(85, __c10, 5) as any as S.Schema<DeleteManagedPrivateEndpointRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<DeleteManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5386,8 +3728,8 @@ export const DeletePipeline: API.OperationMethod<
   DeletePipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePipelineRequest,
-  output: DeletePipelineResponse,
+  input: __S(86, __c10, 6) as any as S.Schema<DeletePipelineRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeletePipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5401,8 +3743,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(87, __c10, 7) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5416,8 +3758,8 @@ export const DeleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTriggerRequest,
-  output: DeleteTriggerResponse,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<DeleteTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5431,8 +3773,8 @@ export const DisableIntegrationRuntimeInteractiveQuery: API.OperationMethod<
   DisableIntegrationRuntimeInteractiveQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableIntegrationRuntimeInteractiveQueryRequest,
-  output: DisableIntegrationRuntimeInteractiveQueryResponse,
+  input: __S(89, __c11, 1) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5446,8 +3788,8 @@ export const EnableIntegrationRuntimeInteractiveQuery: API.OperationMethod<
   EnableIntegrationRuntimeInteractiveQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableIntegrationRuntimeInteractiveQueryRequest,
-  output: EnableIntegrationRuntimeInteractiveQueryResponse,
+  input: __S(91, __c11, 3) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5461,8 +3803,8 @@ export const ExecuteDataFlowDebugSessionCommand: API.OperationMethod<
   ExecuteDataFlowDebugSessionCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteDataFlowDebugSessionCommandRequest,
-  output: DataFlowDebugCommandResponse,
+  input: __S(94, __c11, 6) as any as S.Schema<ExecuteDataFlowDebugSessionCommandRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<DataFlowDebugCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5476,8 +3818,8 @@ export const ExposureControlQueryFeatureValuesByFactory: API.OperationMethod<
   ExposureControlQueryFeatureValuesByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExposureControlQueryFeatureValuesByFactoryRequest,
-  output: ExposureControlBatchResponse,
+  input: __S(98, __c12, 2) as any as S.Schema<ExposureControlQueryFeatureValuesByFactoryRequest>,
+  output: __S(101, __c12, 5) as any as S.Schema<ExposureControlBatchResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5491,8 +3833,8 @@ export const FactoriesConfigureFactoryRepo: API.OperationMethod<
   FactoriesConfigureFactoryRepoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FactoriesConfigureFactoryRepoRequest,
-  output: FactoriesConfigureFactoryRepoResponse,
+  input: __S(103, __c12, 7) as any as S.Schema<FactoriesConfigureFactoryRepoRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<FactoriesConfigureFactoryRepoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5506,8 +3848,8 @@ export const FactoriesCreateOrUpdate: API.OperationMethod<
   FactoriesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FactoriesCreateOrUpdateRequest,
-  output: FactoriesCreateOrUpdateResponse,
+  input: __S(114, __c14, 2) as any as S.Schema<FactoriesCreateOrUpdateRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<FactoriesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5521,8 +3863,8 @@ export const GetChangeDataCapture: API.OperationMethod<
   GetChangeDataCaptureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChangeDataCaptureRequest,
-  output: GetChangeDataCaptureResponse,
+  input: __S(115, __c14, 3) as any as S.Schema<GetChangeDataCaptureRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetChangeDataCaptureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5536,8 +3878,8 @@ export const GetCredentialOperation: API.OperationMethod<
   GetCredentialOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCredentialOperationRequest,
-  output: GetCredentialOperationResponse,
+  input: __S(116, __c14, 4) as any as S.Schema<GetCredentialOperationRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetCredentialOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5551,8 +3893,8 @@ export const GetDataFlow: API.OperationMethod<
   GetDataFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataFlowRequest,
-  output: GetDataFlowResponse,
+  input: __S(117, __c14, 5) as any as S.Schema<GetDataFlowRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<GetDataFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5566,8 +3908,8 @@ export const GetDataset: API.OperationMethod<
   GetDatasetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetRequest,
-  output: GetDatasetResponse,
+  input: __S(119, __c14, 7) as any as S.Schema<GetDatasetRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GetDatasetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5581,8 +3923,8 @@ export const GetExposureControlFeatureValue: API.OperationMethod<
   GetExposureControlFeatureValueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExposureControlFeatureValueRequest,
-  output: ExposureControlResponse,
+  input: __S(121, __c15, 1) as any as S.Schema<GetExposureControlFeatureValueRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ExposureControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5596,8 +3938,8 @@ export const GetExposureControlFeatureValueByFactory: API.OperationMethod<
   GetExposureControlFeatureValueByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExposureControlFeatureValueByFactoryRequest,
-  output: ExposureControlResponse,
+  input: __S(122, __c15, 2) as any as S.Schema<GetExposureControlFeatureValueByFactoryRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ExposureControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5611,8 +3953,8 @@ export const GetFactory: API.OperationMethod<
   GetFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFactoryRequest,
-  output: GetFactoryResponse,
+  input: __S(123, __c15, 3) as any as S.Schema<GetFactoryRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<GetFactoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5626,8 +3968,8 @@ export const GetFactoryDataPlaneAccess: API.OperationMethod<
   GetFactoryDataPlaneAccessError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFactoryDataPlaneAccessRequest,
-  output: AccessPolicyResponse,
+  input: __S(125, __c15, 5) as any as S.Schema<GetFactoryDataPlaneAccessRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<AccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5641,8 +3983,8 @@ export const GetFactoryGitHubAccessToken: API.OperationMethod<
   GetFactoryGitHubAccessTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFactoryGitHubAccessTokenRequest,
-  output: GitHubAccessTokenResponse,
+  input: __S(129, __c16, 1) as any as S.Schema<GetFactoryGitHubAccessTokenRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<GitHubAccessTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5656,8 +3998,8 @@ export const GetGlobalParameter: API.OperationMethod<
   GetGlobalParameterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGlobalParameterRequest,
-  output: GetGlobalParameterResponse,
+  input: __S(131, __c16, 3) as any as S.Schema<GetGlobalParameterRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetGlobalParameterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5671,8 +4013,8 @@ export const GetIntegrationRuntime: API.OperationMethod<
   GetIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRuntimeRequest,
-  output: GetIntegrationRuntimeResponse,
+  input: __S(133, __c16, 5) as any as S.Schema<GetIntegrationRuntimeRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5686,8 +4028,8 @@ export const GetIntegrationRuntimeConnectionInfo: API.OperationMethod<
   GetIntegrationRuntimeConnectionInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRuntimeConnectionInfoRequest,
-  output: IntegrationRuntimeConnectionInfo,
+  input: __S(134, __c16, 6) as any as S.Schema<GetIntegrationRuntimeConnectionInfoRequest>,
+  output: __S(135, __c16, 7) as any as S.Schema<IntegrationRuntimeConnectionInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5701,8 +4043,8 @@ export const GetIntegrationRuntimeMonitoringData: API.OperationMethod<
   GetIntegrationRuntimeMonitoringDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRuntimeMonitoringDataRequest,
-  output: IntegrationRuntimeMonitoringData,
+  input: __S(136, __c17, 0) as any as S.Schema<GetIntegrationRuntimeMonitoringDataRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<IntegrationRuntimeMonitoringData>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5716,8 +4058,8 @@ export const GetIntegrationRuntimeNode: API.OperationMethod<
   GetIntegrationRuntimeNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRuntimeNodeRequest,
-  output: SelfHostedIntegrationRuntimeNode,
+  input: __S(140, __c17, 4) as any as S.Schema<GetIntegrationRuntimeNodeRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<SelfHostedIntegrationRuntimeNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5731,8 +4073,8 @@ export const GetIntegrationRuntimeNodeIpAddress: API.OperationMethod<
   GetIntegrationRuntimeNodeIpAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRuntimeNodeIpAddressRequest,
-  output: IntegrationRuntimeNodeIpAddress,
+  input: __S(142, __c17, 6) as any as S.Schema<GetIntegrationRuntimeNodeIpAddressRequest>,
+  output: __S(143, __c17, 7) as any as S.Schema<IntegrationRuntimeNodeIpAddress>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5746,8 +4088,8 @@ export const GetIntegrationRuntimeObjectMetadata: API.OperationMethod<
   GetIntegrationRuntimeObjectMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRuntimeObjectMetadataRequest,
-  output: SsisObjectMetadataListResponse,
+  input: __S(144, __c18, 0) as any as S.Schema<GetIntegrationRuntimeObjectMetadataRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<SsisObjectMetadataListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5761,8 +4103,8 @@ export const GetIntegrationRuntimeStatus: API.OperationMethod<
   GetIntegrationRuntimeStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRuntimeStatusRequest,
-  output: IntegrationRuntimeStatusResponse,
+  input: __S(148, __c18, 4) as any as S.Schema<GetIntegrationRuntimeStatusRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<IntegrationRuntimeStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5776,8 +4118,8 @@ export const GetLinkedService: API.OperationMethod<
   GetLinkedServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLinkedServiceRequest,
-  output: GetLinkedServiceResponse,
+  input: __S(149, __c18, 5) as any as S.Schema<GetLinkedServiceRequest>,
+  output: __S(150, __c18, 6) as any as S.Schema<GetLinkedServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5791,8 +4133,8 @@ export const GetManagedPrivateEndpoint: API.OperationMethod<
   GetManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedPrivateEndpointRequest,
-  output: GetManagedPrivateEndpointResponse,
+  input: __S(151, __c18, 7) as any as S.Schema<GetManagedPrivateEndpointRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<GetManagedPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5806,8 +4148,8 @@ export const GetManagedVirtualNetwork: API.OperationMethod<
   GetManagedVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedVirtualNetworkRequest,
-  output: GetManagedVirtualNetworkResponse,
+  input: __S(155, __c19, 3) as any as S.Schema<GetManagedVirtualNetworkRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<GetManagedVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5821,8 +4163,8 @@ export const GetPipeline: API.OperationMethod<
   GetPipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPipelineRequest,
-  output: GetPipelineResponse,
+  input: __S(158, __c19, 6) as any as S.Schema<GetPipelineRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetPipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5836,8 +4178,8 @@ export const GetPipelineRun: API.OperationMethod<
   GetPipelineRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPipelineRunRequest,
-  output: PipelineRun,
+  input: __S(170, __c21, 2) as any as S.Schema<GetPipelineRunRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<PipelineRun>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5851,8 +4193,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(173, __c21, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5866,8 +4208,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkResourceRequest,
-  output: PrivateLinkResourcesWrapper,
+  input: __S(178, __c22, 2) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<PrivateLinkResourcesWrapper>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5881,8 +4223,8 @@ export const GetTrigger: API.OperationMethod<
   GetTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTriggerRequest,
-  output: GetTriggerResponse,
+  input: __S(183, __c22, 7) as any as S.Schema<GetTriggerRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<GetTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5896,8 +4238,8 @@ export const GetTriggerEventSubscriptionStatus: API.OperationMethod<
   GetTriggerEventSubscriptionStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTriggerEventSubscriptionStatusRequest,
-  output: TriggerSubscriptionOperationStatus,
+  input: __S(186, __c23, 2) as any as S.Schema<GetTriggerEventSubscriptionStatusRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<TriggerSubscriptionOperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5911,8 +4253,8 @@ export const GlobalParametersCreateOrUpdate: API.OperationMethod<
   GlobalParametersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GlobalParametersCreateOrUpdateRequest,
-  output: GlobalParametersCreateOrUpdateResponse,
+  input: __S(188, __c23, 4) as any as S.Schema<GlobalParametersCreateOrUpdateRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GlobalParametersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5926,8 +4268,8 @@ export const IntegrationRuntimesCreateOrUpdate: API.OperationMethod<
   IntegrationRuntimesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationRuntimesCreateOrUpdateRequest,
-  output: IntegrationRuntimesCreateOrUpdateResponse,
+  input: __S(189, __c23, 5) as any as S.Schema<IntegrationRuntimesCreateOrUpdateRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<IntegrationRuntimesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5941,8 +4283,8 @@ export const IntegrationRuntimesUpgrade: API.OperationMethod<
   IntegrationRuntimesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationRuntimesUpgradeRequest,
-  output: IntegrationRuntimesUpgradeResponse,
+  input: __S(190, __c23, 6) as any as S.Schema<IntegrationRuntimesUpgradeRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<IntegrationRuntimesUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5956,8 +4298,8 @@ export const LinkedServicesCreateOrUpdate: API.OperationMethod<
   LinkedServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkedServicesCreateOrUpdateRequest,
-  output: LinkedServicesCreateOrUpdateResponse,
+  input: __S(191, __c23, 7) as any as S.Schema<LinkedServicesCreateOrUpdateRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<LinkedServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5971,8 +4313,8 @@ export const ListChangeDataCaptureByFactory: API.OperationMethod<
   ListChangeDataCaptureByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChangeDataCaptureByFactoryRequest,
-  output: ChangeDataCaptureListResponse,
+  input: __S(193, __c24, 1) as any as S.Schema<ListChangeDataCaptureByFactoryRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<ChangeDataCaptureListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5986,8 +4328,8 @@ export const ListCredentialOperationByFactory: API.OperationMethod<
   ListCredentialOperationByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCredentialOperationByFactoryRequest,
-  output: CredentialListResponse,
+  input: __S(196, __c24, 4) as any as S.Schema<ListCredentialOperationByFactoryRequest>,
+  output: __S(199, __c24, 7) as any as S.Schema<CredentialListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6001,8 +4343,8 @@ export const ListDataFlowByFactory: API.OperationMethod<
   ListDataFlowByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataFlowByFactoryRequest,
-  output: DataFlowListResponse,
+  input: __S(200, __c25, 0) as any as S.Schema<ListDataFlowByFactoryRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<DataFlowListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6016,8 +4358,8 @@ export const ListDatasetByFactory: API.OperationMethod<
   ListDatasetByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatasetByFactoryRequest,
-  output: DatasetListResponse,
+  input: __S(203, __c25, 3) as any as S.Schema<ListDatasetByFactoryRequest>,
+  output: __S(205, __c25, 5) as any as S.Schema<DatasetListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6031,8 +4373,8 @@ export const ListFactories: API.OperationMethod<
   ListFactoriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFactoriesRequest,
-  output: FactoryListResponse,
+  input: __S(206, __c25, 6) as any as S.Schema<ListFactoriesRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<FactoryListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6046,8 +4388,8 @@ export const ListFactoryByResourceGroup: API.OperationMethod<
   ListFactoryByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFactoryByResourceGroupRequest,
-  output: FactoryListResponse,
+  input: __S(209, __c26, 1) as any as S.Schema<ListFactoryByResourceGroupRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<FactoryListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6061,8 +4403,8 @@ export const ListGlobalParameterByFactory: API.OperationMethod<
   ListGlobalParameterByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGlobalParameterByFactoryRequest,
-  output: GlobalParameterListResponse,
+  input: __S(210, __c26, 2) as any as S.Schema<ListGlobalParameterByFactoryRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<GlobalParameterListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6076,8 +4418,8 @@ export const ListIntegrationRuntimeAuthKeys: API.OperationMethod<
   ListIntegrationRuntimeAuthKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntegrationRuntimeAuthKeysRequest,
-  output: IntegrationRuntimeAuthKeys,
+  input: __S(214, __c26, 6) as any as S.Schema<ListIntegrationRuntimeAuthKeysRequest>,
+  output: __S(215, __c26, 7) as any as S.Schema<IntegrationRuntimeAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6091,8 +4433,8 @@ export const ListIntegrationRuntimeByFactory: API.OperationMethod<
   ListIntegrationRuntimeByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntegrationRuntimeByFactoryRequest,
-  output: IntegrationRuntimeListResponse,
+  input: __S(216, __c27, 0) as any as S.Schema<ListIntegrationRuntimeByFactoryRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<IntegrationRuntimeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6106,8 +4448,16 @@ export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpoints: API.Ope
   ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest,
-  output: IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse,
+  input: __S(
+    219,
+    __c27,
+    3,
+  ) as any as S.Schema<ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest>,
+  output: __S(
+    226,
+    __c28,
+    2,
+  ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6121,8 +4471,8 @@ export const ListLinkedServiceByFactory: API.OperationMethod<
   ListLinkedServiceByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLinkedServiceByFactoryRequest,
-  output: LinkedServiceListResponse,
+  input: __S(227, __c28, 3) as any as S.Schema<ListLinkedServiceByFactoryRequest>,
+  output: __S(229, __c28, 5) as any as S.Schema<LinkedServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6136,8 +4486,8 @@ export const ListManagedPrivateEndpointByFactory: API.OperationMethod<
   ListManagedPrivateEndpointByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedPrivateEndpointByFactoryRequest,
-  output: ManagedPrivateEndpointListResponse,
+  input: __S(230, __c28, 6) as any as S.Schema<ListManagedPrivateEndpointByFactoryRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<ManagedPrivateEndpointListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6151,8 +4501,8 @@ export const ListManagedVirtualNetworkByFactory: API.OperationMethod<
   ListManagedVirtualNetworkByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedVirtualNetworkByFactoryRequest,
-  output: ManagedVirtualNetworkListResponse,
+  input: __S(233, __c29, 1) as any as S.Schema<ListManagedVirtualNetworkByFactoryRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<ManagedVirtualNetworkListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6166,8 +4516,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResponse,
+  input: __S(236, __c29, 4) as any as S.Schema<ListOperationsRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<OperationListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6181,8 +4531,8 @@ export const ListPipelineByFactory: API.OperationMethod<
   ListPipelineByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPipelineByFactoryRequest,
-  output: PipelineListResponse,
+  input: __S(251, __c31, 3) as any as S.Schema<ListPipelineByFactoryRequest>,
+  output: __S(253, __c31, 5) as any as S.Schema<PipelineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6196,8 +4546,8 @@ export const ListPrivateEndPointConnectionByFactory: API.OperationMethod<
   ListPrivateEndPointConnectionByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndPointConnectionByFactoryRequest,
-  output: PrivateEndpointConnectionListResponse,
+  input: __S(254, __c31, 6) as any as S.Schema<ListPrivateEndPointConnectionByFactoryRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<PrivateEndpointConnectionListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6211,8 +4561,8 @@ export const ListTriggerByFactory: API.OperationMethod<
   ListTriggerByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTriggerByFactoryRequest,
-  output: TriggerListResponse,
+  input: __S(257, __c32, 1) as any as S.Schema<ListTriggerByFactoryRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<TriggerListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6226,8 +4576,8 @@ export const ManagedPrivateEndpointsCreateOrUpdate: API.OperationMethod<
   ManagedPrivateEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedPrivateEndpointsCreateOrUpdateRequest,
-  output: ManagedPrivateEndpointsCreateOrUpdateResponse,
+  input: __S(261, __c32, 5) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6241,8 +4591,8 @@ export const ManagedVirtualNetworksCreateOrUpdate: API.OperationMethod<
   ManagedVirtualNetworksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedVirtualNetworksCreateOrUpdateRequest,
-  output: ManagedVirtualNetworksCreateOrUpdateResponse,
+  input: __S(262, __c32, 6) as any as S.Schema<ManagedVirtualNetworksCreateOrUpdateRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<ManagedVirtualNetworksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6256,8 +4606,8 @@ export const PipelineRunsQueryByFactory: API.OperationMethod<
   PipelineRunsQueryByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PipelineRunsQueryByFactoryRequest,
-  output: PipelineRunsQueryResponse,
+  input: __S(267, __c33, 3) as any as S.Schema<PipelineRunsQueryByFactoryRequest>,
+  output: __S(269, __c33, 5) as any as S.Schema<PipelineRunsQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6271,8 +4621,8 @@ export const PipelinesCreateOrUpdate: API.OperationMethod<
   PipelinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PipelinesCreateOrUpdateRequest,
-  output: PipelinesCreateOrUpdateResponse,
+  input: __S(270, __c33, 6) as any as S.Schema<PipelinesCreateOrUpdateRequest>,
+  output: __S(271, __c33, 7) as any as S.Schema<PipelinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6286,8 +4636,8 @@ export const PrivateEndpointConnectionCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionCreateOrUpdateRequest,
-  output: PrivateEndpointConnectionCreateOrUpdateResponse,
+  input: __S(273, __c34, 1) as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6301,8 +4651,8 @@ export const RefreshIntegrationRuntimeObjectMetadata: API.OperationMethod<
   RefreshIntegrationRuntimeObjectMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshIntegrationRuntimeObjectMetadataRequest,
-  output: SsisObjectMetadataStatusResponse,
+  input: __S(274, __c34, 2) as any as S.Schema<RefreshIntegrationRuntimeObjectMetadataRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<SsisObjectMetadataStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6316,8 +4666,8 @@ export const RegenerateIntegrationRuntimeAuthKey: API.OperationMethod<
   RegenerateIntegrationRuntimeAuthKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateIntegrationRuntimeAuthKeyRequest,
-  output: IntegrationRuntimeAuthKeys,
+  input: __S(276, __c34, 4) as any as S.Schema<RegenerateIntegrationRuntimeAuthKeyRequest>,
+  output: __S(215, __c26, 7) as any as S.Schema<IntegrationRuntimeAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6331,8 +4681,8 @@ export const RemoveIntegrationRuntimeLinks: API.OperationMethod<
   RemoveIntegrationRuntimeLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveIntegrationRuntimeLinksRequest,
-  output: RemoveIntegrationRuntimeLinksResponse,
+  input: __S(277, __c34, 5) as any as S.Schema<RemoveIntegrationRuntimeLinksRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<RemoveIntegrationRuntimeLinksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6346,8 +4696,8 @@ export const RunActivityRunsQueryByPipeline: API.OperationMethod<
   RunActivityRunsQueryByPipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunActivityRunsQueryByPipelineRequest,
-  output: ActivityRunsQueryResponse,
+  input: __S(278, __c34, 6) as any as S.Schema<RunActivityRunsQueryByPipelineRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<ActivityRunsQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6361,8 +4711,8 @@ export const StartChangeDataCapture: API.OperationMethod<
   StartChangeDataCaptureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartChangeDataCaptureRequest,
-  output: StartChangeDataCaptureResponse,
+  input: __S(282, __c35, 2) as any as S.Schema<StartChangeDataCaptureRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<StartChangeDataCaptureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6376,8 +4726,8 @@ export const StartIntegrationRuntime: API.OperationMethod<
   StartIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartIntegrationRuntimeRequest,
-  output: IntegrationRuntimeStatusResponse,
+  input: __S(283, __c35, 3) as any as S.Schema<StartIntegrationRuntimeRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<IntegrationRuntimeStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6391,8 +4741,8 @@ export const StartTrigger: API.OperationMethod<
   StartTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartTriggerRequest,
-  output: StartTriggerResponse,
+  input: __S(284, __c35, 4) as any as S.Schema<StartTriggerRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<StartTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6406,8 +4756,8 @@ export const StopChangeDataCapture: API.OperationMethod<
   StopChangeDataCaptureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopChangeDataCaptureRequest,
-  output: StopChangeDataCaptureResponse,
+  input: __S(285, __c35, 5) as any as S.Schema<StopChangeDataCaptureRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<StopChangeDataCaptureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6421,8 +4771,8 @@ export const StopIntegrationRuntime: API.OperationMethod<
   StopIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopIntegrationRuntimeRequest,
-  output: StopIntegrationRuntimeResponse,
+  input: __S(286, __c35, 6) as any as S.Schema<StopIntegrationRuntimeRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<StopIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6436,8 +4786,8 @@ export const StopTrigger: API.OperationMethod<
   StopTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopTriggerRequest,
-  output: StopTriggerResponse,
+  input: __S(287, __c35, 7) as any as S.Schema<StopTriggerRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<StopTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6451,8 +4801,8 @@ export const SubscribeTriggerToEvents: API.OperationMethod<
   SubscribeTriggerToEventsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscribeTriggerToEventsRequest,
-  output: TriggerSubscriptionOperationStatus,
+  input: __S(288, __c36, 0) as any as S.Schema<SubscribeTriggerToEventsRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<TriggerSubscriptionOperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6466,8 +4816,8 @@ export const SyncIntegrationRuntimeCredentials: API.OperationMethod<
   SyncIntegrationRuntimeCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncIntegrationRuntimeCredentialsRequest,
-  output: SyncIntegrationRuntimeCredentialsResponse,
+  input: __S(289, __c36, 1) as any as S.Schema<SyncIntegrationRuntimeCredentialsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6481,8 +4831,8 @@ export const TriggerRunsQueryByFactory: API.OperationMethod<
   TriggerRunsQueryByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerRunsQueryByFactoryRequest,
-  output: TriggerRunsQueryResponse,
+  input: __S(290, __c36, 2) as any as S.Schema<TriggerRunsQueryByFactoryRequest>,
+  output: __S(293, __c36, 5) as any as S.Schema<TriggerRunsQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6496,8 +4846,8 @@ export const TriggerRunsRerun: API.OperationMethod<
   TriggerRunsRerunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerRunsRerunRequest,
-  output: TriggerRunsRerunResponse,
+  input: __S(294, __c36, 6) as any as S.Schema<TriggerRunsRerunRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<TriggerRunsRerunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6511,8 +4861,8 @@ export const TriggersCreateOrUpdate: API.OperationMethod<
   TriggersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggersCreateOrUpdateRequest,
-  output: TriggersCreateOrUpdateResponse,
+  input: __S(295, __c36, 7) as any as S.Schema<TriggersCreateOrUpdateRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<TriggersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6526,8 +4876,8 @@ export const TriggersQueryByFactory: API.OperationMethod<
   TriggersQueryByFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggersQueryByFactoryRequest,
-  output: TriggerQueryResponse,
+  input: __S(297, __c37, 1) as any as S.Schema<TriggersQueryByFactoryRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<TriggerQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6541,8 +4891,8 @@ export const UnsubscribeTriggerFromEvents: API.OperationMethod<
   UnsubscribeTriggerFromEventsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnsubscribeTriggerFromEventsRequest,
-  output: TriggerSubscriptionOperationStatus,
+  input: __S(299, __c37, 3) as any as S.Schema<UnsubscribeTriggerFromEventsRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<TriggerSubscriptionOperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6556,8 +4906,8 @@ export const UpdateFactory: API.OperationMethod<
   UpdateFactoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFactoryRequest,
-  output: UpdateFactoryResponse,
+  input: __S(301, __c37, 5) as any as S.Schema<UpdateFactoryRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<UpdateFactoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6571,8 +4921,8 @@ export const UpdateIntegrationRuntime: API.OperationMethod<
   UpdateIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationRuntimeRequest,
-  output: UpdateIntegrationRuntimeResponse,
+  input: __S(302, __c37, 6) as any as S.Schema<UpdateIntegrationRuntimeRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<UpdateIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6586,8 +4936,8 @@ export const UpdateIntegrationRuntimeNode: API.OperationMethod<
   UpdateIntegrationRuntimeNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationRuntimeNodeRequest,
-  output: SelfHostedIntegrationRuntimeNode,
+  input: __S(303, __c37, 7) as any as S.Schema<UpdateIntegrationRuntimeNodeRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<SelfHostedIntegrationRuntimeNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6609,8 +4959,8 @@ function __c0(j: number): any {
         S.Struct({
           type: S.String,
           description: S.optional(S.String),
-          annotations: S.optional(DataFlowAnnotationsList),
-          folder: S.optional(DataFlowFolder),
+          annotations: S.optional(__S(0, __c0, 0)),
+          folder: S.optional(__S(1, __c0, 1)),
           typeProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DataFlow" });
@@ -6618,25 +4968,25 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: DataFlow,
+          properties: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "DataFlowDebugResource" });
     case 4:
-      return S.Array(DataFlowDebugResource);
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: Type,
+          type: S.String,
           referenceName: S.String,
-          parameters: S.optional(LinkedServiceReferenceParametersMap),
+          parameters: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "LinkedServiceReference" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: ParameterType,
+          type: S.String,
           defaultValue: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ParameterSpecification" });
@@ -6645,7 +4995,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, ParameterSpecification);
+      return S.Record(S.String, __S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6653,10 +5003,10 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           structure: S.optional(S.Unknown),
           schema: S.optional(S.Unknown),
-          linkedServiceName: LinkedServiceReference,
-          parameters: S.optional(DatasetParametersMap),
-          annotations: S.optional(DatasetAnnotationsList),
-          folder: S.optional(DatasetFolder),
+          linkedServiceName: __S(6, __c0, 6),
+          parameters: S.optional(__S(8, __c1, 0)),
+          annotations: S.optional(__S(0, __c0, 0)),
+          folder: S.optional(__S(1, __c0, 1)),
           typeProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Dataset" });
@@ -6664,17 +5014,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: Dataset,
+          properties: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "DatasetDebugResource" });
     case 3:
-      return S.Array(DatasetDebugResource);
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: IntegrationRuntimeReferenceType,
+          type: S.String,
           referenceName: S.String,
-          parameters: S.optional(IntegrationRuntimeReferenceParametersMap),
+          parameters: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeReference",
@@ -6684,10 +5034,10 @@ function __c1(j: number): any {
         S.Struct({
           type: S.String,
           version: S.optional(S.String),
-          connectVia: S.optional(IntegrationRuntimeReference),
+          connectVia: S.optional(__S(12, __c1, 4)),
           description: S.optional(S.String),
-          parameters: S.optional(LinkedServiceParametersMap),
-          annotations: S.optional(LinkedServiceAnnotationsList),
+          parameters: S.optional(__S(8, __c1, 0)),
+          annotations: S.optional(__S(0, __c0, 0)),
           typeProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "LinkedService" });
@@ -6695,13 +5045,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: LinkedService,
+          properties: __S(13, __c1, 5),
         }),
       ).annotate({
         identifier: "LinkedServiceDebugResource",
       });
     case 7:
-      return S.Array(LinkedServiceDebugResource);
+      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
@@ -6709,7 +5059,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          linkedService: S.optional(LinkedServiceReference),
+          linkedService: S.optional(__S(6, __c0, 6)),
           folderPath: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DataFlowStagingInfo" });
@@ -6721,12 +5071,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DataFlowSourceSetting" });
     case 2:
-      return S.Array(DataFlowSourceSetting);
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceSettings: S.optional(DataFlowDebugPackageDebugSettingsSourceSettingsList),
-          parameters: S.optional(DataFlowDebugPackageDebugSettingsParametersMap),
+          sourceSettings: S.optional(__S(18, __c2, 2)),
+          parameters: S.optional(__S(5, __c0, 5)),
           datasetParameters: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -6739,12 +5089,12 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           sessionId: S.optional(S.String),
-          dataFlow: S.optional(DataFlowDebugResource),
-          dataFlows: S.optional(AddDataFlowDebugSessionDataFlowRequestDataFlowsList),
-          datasets: S.optional(AddDataFlowDebugSessionDataFlowRequestDatasetsList),
-          linkedServices: S.optional(AddDataFlowDebugSessionDataFlowRequestLinkedServicesList),
-          staging: S.optional(DataFlowStagingInfo),
-          debugSettings: S.optional(DataFlowDebugPackageDebugSettings),
+          dataFlow: S.optional(__S(3, __c0, 3)),
+          dataFlows: S.optional(__S(4, __c0, 4)),
+          datasets: S.optional(__S(11, __c1, 3)),
+          linkedServices: S.optional(__S(15, __c1, 7)),
+          staging: S.optional(__S(16, __c2, 0)),
+          debugSettings: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6814,7 +5164,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "MapperTableSchema" });
     case 2:
-      return S.Array(MapperTableSchema);
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6825,23 +5175,23 @@ function __c3(j: number): any {
         identifier: "MapperDslConnectorProperties",
       });
     case 4:
-      return S.Array(MapperDslConnectorProperties);
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          schema: S.optional(MapperTablePropertiesSchemaList),
-          dslConnectorProperties: S.optional(MapperTablePropertiesDslConnectorPropertiesList),
+          schema: S.optional(__S(26, __c3, 2)),
+          dslConnectorProperties: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "MapperTableProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(MapperTableProperties),
+          properties: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "MapperTable" });
     case 7:
-      return S.Array(MapperTable);
+      return S.Array(__S(30, __c3, 6));
   }
 }
 function __c4(j: number): any {
@@ -6849,31 +5199,29 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          linkedService: S.optional(LinkedServiceReference),
+          linkedService: S.optional(__S(6, __c0, 6)),
           linkedServiceType: S.optional(S.String),
-          type: ConnectionType,
+          type: S.String,
           isInlineDataset: S.optional(S.Boolean),
-          commonDslConnectorProperties: S.optional(
-            MapperConnectionCommonDslConnectorPropertiesList,
-          ),
+          commonDslConnectorProperties: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "MapperConnection" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sourceEntities: S.optional(MapperSourceConnectionsInfoSourceEntitiesList),
-          connection: S.optional(MapperConnection),
+          sourceEntities: S.optional(__S(31, __c3, 7)),
+          connection: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "MapperSourceConnectionsInfo",
       });
     case 2:
-      return S.Array(MapperSourceConnectionsInfo);
+      return S.Array(__S(33, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           connectionName: S.optional(S.String),
-          type: S.optional(ConnectionType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MapperConnectionReference",
@@ -6883,24 +5231,24 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           entity: S.optional(S.String),
-          entityConnectionReference: S.optional(MapperConnectionReference),
+          entityConnectionReference: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "MapperAttributeReference" });
     case 5:
-      return S.Array(MapperAttributeReference);
+      return S.Array(__S(36, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(MappingType),
+          type: S.optional(S.String),
           functionName: S.optional(S.String),
           expression: S.optional(S.String),
-          attributeReference: S.optional(MapperAttributeReference),
-          attributeReferences: S.optional(MapperAttributeMappingAttributeReferencesList),
+          attributeReference: S.optional(__S(36, __c4, 4)),
+          attributeReferences: S.optional(__S(37, __c4, 5)),
         }),
       ).annotate({ identifier: "MapperAttributeMapping" });
     case 7:
-      return S.Array(MapperAttributeMapping);
+      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -6908,7 +5256,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributeMappings: S.optional(MapperAttributeMappingsAttributeMappingsList),
+          attributeMappings: S.optional(__S(39, __c4, 7)),
         }),
       ).annotate({ identifier: "MapperAttributeMappings" });
     case 1:
@@ -6916,30 +5264,30 @@ function __c5(j: number): any {
         S.Struct({
           targetEntityName: S.optional(S.String),
           sourceEntityName: S.optional(S.String),
-          sourceConnectionReference: S.optional(MapperConnectionReference),
-          attributeMappingInfo: S.optional(MapperAttributeMappings),
+          sourceConnectionReference: S.optional(__S(35, __c4, 3)),
+          attributeMappingInfo: S.optional(__S(40, __c5, 0)),
           sourceDenormalizeInfo: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DataMapperMapping" });
     case 2:
-      return S.Array(DataMapperMapping);
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetEntities: S.optional(MapperTargetConnectionsInfoTargetEntitiesList),
-          connection: S.optional(MapperConnection),
-          dataMapperMappings: S.optional(MapperTargetConnectionsInfoDataMapperMappingsList),
-          relationships: S.optional(MapperTargetConnectionsInfoRelationshipsList),
+          targetEntities: S.optional(__S(31, __c3, 7)),
+          connection: S.optional(__S(32, __c4, 0)),
+          dataMapperMappings: S.optional(__S(42, __c5, 2)),
+          relationships: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "MapperTargetConnectionsInfo",
       });
     case 4:
-      return S.Array(MapperTargetConnectionsInfo);
+      return S.Array(__S(43, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(FrequencyType),
+          frequency: S.optional(S.String),
           interval: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MapperPolicyRecurrence" });
@@ -6947,17 +5295,17 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          recurrence: S.optional(MapperPolicyRecurrence),
+          recurrence: S.optional(__S(45, __c5, 5)),
         }),
       ).annotate({ identifier: "MapperPolicy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(ChangeDataCaptureFolder),
+          folder: S.optional(__S(1, __c0, 1)),
           description: S.optional(S.String),
-          sourceConnectionsInfo: ChangeDataCaptureSourceConnectionsInfoList,
-          targetConnectionsInfo: ChangeDataCaptureTargetConnectionsInfoList,
-          policy: MapperPolicy,
+          sourceConnectionsInfo: __S(34, __c4, 2),
+          targetConnectionsInfo: __S(44, __c5, 4),
+          policy: __S(46, __c5, 6),
           allowVNetOverride: S.optional(S.Boolean),
           status: S.optional(S.String),
         }),
@@ -6973,7 +5321,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           changeDataCaptureName: S.String.pipe(T.Label()),
-          properties: ChangeDataCapture,
+          properties: __S(47, __c5, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6989,10 +5337,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -7002,8 +5350,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ChangeDataCapture,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(47, __c5, 7),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7034,7 +5382,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: IntegrationRuntimeType,
+          type: S.String,
           description: S.optional(S.String),
           typeProperties: S.optional(S.Unknown),
           managedVirtualNetwork: S.optional(S.Unknown),
@@ -7044,7 +5392,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: IntegrationRuntime,
+          properties: __S(53, __c6, 5),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeDebugResource",
@@ -7058,7 +5406,7 @@ function __c6(j: number): any {
           computeType: S.optional(S.String),
           coreCount: S.optional(S.Number),
           timeToLive: S.optional(S.Number),
-          integrationRuntime: S.optional(IntegrationRuntimeDebugResource),
+          integrationRuntime: S.optional(__S(54, __c6, 6)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7107,16 +5455,16 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: IntegrationRuntimeType,
+          type: S.String,
           dataFactoryName: S.optional(S.String),
-          state: S.optional(IntegrationRuntimeState),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationRuntimeStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: IntegrationRuntimeStatus,
+          properties: __S(58, __c7, 2),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeStatusResponse",
@@ -7132,7 +5480,7 @@ function __c7(j: number): any {
           isRecovery: S.optional(S.Boolean.pipe(T.Query())),
           startActivityName: S.optional(S.String.pipe(T.Query())),
           startFromFailure: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(CreatePipelineRunRequestBodyMap.pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7153,7 +5501,7 @@ function __c7(j: number): any {
         S.Struct({
           type: S.String,
           description: S.optional(S.String),
-          annotations: S.optional(CredentialAnnotationsList),
+          annotations: S.optional(__S(0, __c0, 0)),
           typeProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Credential" });
@@ -7164,7 +5512,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           credentialName: S.String.pipe(T.Label()),
-          properties: Credential,
+          properties: __S(62, __c7, 6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7186,8 +5534,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Credential,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(62, __c7, 6),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7225,11 +5573,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "DataFlowDebugSessionInfo" });
     case 3:
-      return S.Array(DataFlowDebugSessionInfo);
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: QueryDataFlowDebugSessionsResponseValueList,
+          value: __S(67, __c8, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7242,7 +5590,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           dataFlowName: S.String.pipe(T.Label()),
-          properties: DataFlow,
+          properties: __S(2, __c0, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7260,8 +5608,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DataFlow,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(2, __c0, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7274,7 +5622,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           datasetName: S.String.pipe(T.Label()),
-          properties: Dataset,
+          properties: __S(9, __c1, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7296,8 +5644,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Dataset,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(9, __c1, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7586,8 +5934,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: IntegrationRuntime,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(53, __c6, 5),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7619,7 +5967,7 @@ function __c11(j: number): any {
         S.Struct({
           streamName: S.String,
           rowLimits: S.optional(S.Number),
-          columns: S.optional(DataFlowDebugCommandPayloadColumnsList),
+          columns: S.optional(__S(92, __c11, 4)),
           expression: S.optional(S.String),
         }),
       ).annotate({
@@ -7632,8 +5980,8 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           sessionId: S.optional(S.String),
-          command: S.optional(DataFlowDebugCommandType),
-          commandPayload: S.optional(DataFlowDebugCommandPayload),
+          command: S.optional(S.String),
+          commandPayload: S.optional(__S(93, __c11, 5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7666,15 +6014,14 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ExposureControlRequest" });
     case 1:
-      return S.Array(ExposureControlRequest);
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
-          exposureControlRequests:
-            ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList,
+          exposureControlRequests: __S(97, __c12, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7694,11 +6041,11 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ExposureControlResponse" });
     case 4:
-      return S.Array(ExposureControlResponse);
+      return S.Array(__S(99, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exposureControlResponses: ExposureControlBatchResponseExposureControlResponsesList,
+          exposureControlResponses: __S(100, __c12, 4),
         }),
       ).annotate({
         identifier: "ExposureControlBatchResponse",
@@ -7721,7 +6068,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           locationId: S.String.pipe(T.Label()),
           factoryResourceId: S.optional(S.String),
-          repoConfiguration: S.optional(FactoryRepoConfiguration),
+          repoConfiguration: S.optional(__S(102, __c12, 6)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7746,14 +6093,14 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: GlobalParameterType,
+          type: S.String,
           value: S.Unknown,
         }),
       ).annotate({
         identifier: "GlobalParameterSpecification",
       });
     case 2:
-      return S.Record(S.String, GlobalParameterSpecification);
+      return S.Record(S.String, __S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7766,7 +6113,7 @@ function __c13(j: number): any {
           keyName: S.String,
           vaultBaseUrl: S.String,
           keyVersion: S.optional(S.String),
-          identity: S.optional(CMKIdentityDefinition),
+          identity: S.optional(__S(107, __c13, 3)),
         }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 5:
@@ -7775,20 +6122,20 @@ function __c13(j: number): any {
           provisioningState: S.optional(S.String),
           createTime: S.optional(S.String),
           version: S.optional(S.String),
-          purviewConfiguration: S.optional(PurviewConfiguration),
-          repoConfiguration: S.optional(FactoryRepoConfiguration),
-          globalParameters: S.optional(FactoryPropertiesGlobalParametersMap),
-          encryption: S.optional(EncryptionConfiguration),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          purviewConfiguration: S.optional(__S(104, __c13, 0)),
+          repoConfiguration: S.optional(__S(102, __c12, 6)),
+          globalParameters: S.optional(__S(106, __c13, 2)),
+          encryption: S.optional(__S(108, __c13, 4)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "FactoryProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: FactoryIdentityType,
+          type: S.String,
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(FactoryIdentityUserAssignedIdentitiesMap),
+          userAssignedIdentities: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "FactoryIdentity" });
     case 7:
@@ -7803,11 +6150,11 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FactoryProperties),
-          identity: S.optional(FactoryIdentity),
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: S.optional(__S(109, __c13, 5)),
+          identity: S.optional(__S(110, __c13, 6)),
           location: S.optional(S.String),
-          tags: S.optional(FactoriesConfigureFactoryRepoResponseTagsMap),
+          tags: S.optional(__S(111, __c13, 7)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -7816,11 +6163,11 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          purviewConfiguration: S.optional(PurviewConfiguration),
-          repoConfiguration: S.optional(FactoryRepoConfiguration),
-          globalParameters: S.optional(FactoryPropertiesInputGlobalParametersMap),
-          encryption: S.optional(EncryptionConfiguration),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          purviewConfiguration: S.optional(__S(104, __c13, 0)),
+          repoConfiguration: S.optional(__S(102, __c12, 6)),
+          globalParameters: S.optional(__S(106, __c13, 2)),
+          encryption: S.optional(__S(108, __c13, 4)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "FactoryPropertiesInput" });
     case 2:
@@ -7829,10 +6176,10 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
-          properties: S.optional(FactoryPropertiesInput),
-          identity: S.optional(FactoryIdentity),
+          properties: S.optional(__S(113, __c14, 1)),
+          identity: S.optional(__S(110, __c13, 6)),
           location: S.optional(S.String),
-          tags: S.optional(FactoriesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(111, __c13, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7902,8 +6249,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DataFlow,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(2, __c0, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDataFlowResponse" });
@@ -7933,8 +6280,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Dataset,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(9, __c1, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDatasetResponse" });
@@ -7996,11 +6343,11 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FactoryProperties),
-          identity: S.optional(FactoryIdentity),
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: S.optional(__S(109, __c13, 5)),
+          identity: S.optional(__S(110, __c13, 6)),
           location: S.optional(S.String),
-          tags: S.optional(GetFactoryResponseTagsMap),
+          tags: S.optional(__S(111, __c13, 7)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetFactoryResponse" });
@@ -8039,7 +6386,7 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(UserAccessPolicy),
+          policy: S.optional(__S(126, __c15, 6)),
           accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
           dataPlaneUrl: S.optional(S.String),
         }),
@@ -8063,7 +6410,7 @@ function __c16(j: number): any {
           factoryName: S.String.pipe(T.Label()),
           gitHubAccessCode: S.String,
           gitHubClientId: S.optional(S.String),
-          gitHubClientSecret: S.optional(GitHubClientSecret),
+          gitHubClientSecret: S.optional(__S(128, __c16, 0)),
           gitHubAccessTokenBaseUrl: S.String,
         }).pipe(
           T.Http({
@@ -8108,8 +6455,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: GetGlobalParameterResponsePropertiesMap,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(106, __c13, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -8202,12 +6549,12 @@ function __c17(j: number): any {
         identifier: "IntegrationRuntimeNodeMonitoringData",
       });
     case 2:
-      return S.Array(IntegrationRuntimeNodeMonitoringData);
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          nodes: S.optional(IntegrationRuntimeMonitoringDataNodesList),
+          nodes: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeMonitoringData",
@@ -8237,8 +6584,8 @@ function __c17(j: number): any {
           nodeName: S.optional(S.String),
           machineName: S.optional(S.String),
           hostServiceUri: S.optional(S.String),
-          status: S.optional(SelfHostedIntegrationRuntimeNodeStatus),
-          capabilities: S.optional(SelfHostedIntegrationRuntimeNodeCapabilitiesMap),
+          status: S.optional(S.String),
+          capabilities: S.optional(__S(111, __c13, 7)),
           versionStatus: S.optional(S.String),
           version: S.optional(S.String),
           registerTime: S.optional(S.String),
@@ -8246,7 +6593,7 @@ function __c17(j: number): any {
           expiryTime: S.optional(S.String),
           lastStartTime: S.optional(S.String),
           lastStopTime: S.optional(S.String),
-          lastUpdateResult: S.optional(IntegrationRuntimeUpdateResult),
+          lastUpdateResult: S.optional(S.String),
           lastStartUpdateTime: S.optional(S.String),
           lastEndUpdateTime: S.optional(S.String),
           isActiveDispatcher: S.optional(S.Boolean),
@@ -8309,18 +6656,18 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: SsisObjectMetadataType,
+          type: S.String,
           id: S.optional(S.Number),
           name: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "SsisObjectMetadata" });
     case 2:
-      return S.Array(SsisObjectMetadata);
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: SsisObjectMetadataListResponseValueList,
+          value: __S(146, __c18, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8366,8 +6713,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LinkedService,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(13, __c1, 5),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetLinkedServiceResponse" });
@@ -8407,8 +6754,8 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          connectionState: S.optional(ConnectionStateProperties),
-          fqdns: S.optional(ManagedPrivateEndpointFqdnsList),
+          connectionState: S.optional(__S(152, __c19, 0)),
+          fqdns: S.optional(__S(92, __c11, 4)),
           groupId: S.optional(S.String),
           isReserved: S.optional(S.Boolean),
           privateLinkResourceId: S.optional(S.String),
@@ -8424,8 +6771,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ManagedPrivateEndpoint,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(153, __c19, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -8462,8 +6809,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ManagedVirtualNetwork,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(156, __c19, 4),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -8486,7 +6833,7 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "GetPipelineRequest" });
     case 7:
-      return S.Array(DependencyCondition);
+      return S.Array(S.String);
   }
 }
 function __c20(j: number): any {
@@ -8495,11 +6842,11 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           activity: S.String,
-          dependencyConditions: ActivityDependencyDependencyConditionsList,
+          dependencyConditions: __S(159, __c19, 7),
         }),
       ).annotate({ identifier: "ActivityDependency" });
     case 1:
-      return S.Array(ActivityDependency);
+      return S.Array(__S(160, __c20, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8508,17 +6855,17 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "UserProperty" });
     case 3:
-      return S.Array(UserProperty);
+      return S.Array(__S(162, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           type: S.String,
           description: S.optional(S.String),
-          state: S.optional(ActivityState),
-          onInactiveMarkAs: S.optional(ActivityOnInactiveMarkAs),
-          dependsOn: S.optional(ActivityDependsOnList),
-          userProperties: S.optional(ActivityUserPropertiesList),
+          state: S.optional(S.String),
+          onInactiveMarkAs: S.optional(S.String),
+          dependsOn: S.optional(__S(161, __c20, 1)),
+          userProperties: S.optional(__S(163, __c20, 3)),
           typeProperties: S.optional(S.Unknown),
           linkedServiceName: S.optional(S.Unknown),
           policy: S.optional(S.Unknown),
@@ -8527,7 +6874,7 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "Activity" });
     case 5:
-      return S.Array(Activity);
+      return S.Array(__S(164, __c20, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8539,7 +6886,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          elapsedTimeMetric: S.optional(PipelineElapsedTimeMetricPolicy),
+          elapsedTimeMetric: S.optional(__S(166, __c20, 6)),
         }),
       ).annotate({ identifier: "PipelinePolicy" });
   }
@@ -8550,14 +6897,14 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          activities: S.optional(PipelineActivitiesList),
-          parameters: S.optional(PipelineParametersMap),
-          variables: S.optional(PipelineVariablesMap),
+          activities: S.optional(__S(165, __c20, 5)),
+          parameters: S.optional(__S(8, __c1, 0)),
+          variables: S.optional(__S(8, __c1, 0)),
           concurrency: S.optional(S.Number),
-          annotations: S.optional(PipelineAnnotationsList),
-          runDimensions: S.optional(PipelineRunDimensionsMap),
-          folder: S.optional(PipelineFolder),
-          policy: S.optional(PipelinePolicy),
+          annotations: S.optional(__S(0, __c0, 0)),
+          runDimensions: S.optional(__S(5, __c0, 5)),
+          folder: S.optional(__S(1, __c0, 1)),
+          policy: S.optional(__S(167, __c20, 7)),
         }),
       ).annotate({ identifier: "Pipeline" });
     case 1:
@@ -8566,8 +6913,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Pipeline,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(168, __c21, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPipelineResponse" });
@@ -8604,9 +6951,9 @@ function __c21(j: number): any {
           runGroupId: S.optional(S.String),
           isLatest: S.optional(S.Boolean),
           pipelineName: S.optional(S.String),
-          parameters: S.optional(PipelineRunParametersMap),
-          runDimensions: S.optional(PipelineRunRunDimensionsMap),
-          invokedBy: S.optional(PipelineRunInvokedBy),
+          parameters: S.optional(__S(111, __c13, 7)),
+          runDimensions: S.optional(__S(111, __c13, 7)),
+          invokedBy: S.optional(__S(171, __c21, 3)),
           lastUpdated: S.optional(S.String),
           runStart: S.optional(S.String),
           runEnd: S.optional(S.String),
@@ -8657,8 +7004,8 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(ArmIdWrapper),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkConnectionState),
+          privateEndpoint: S.optional(__S(174, __c21, 6)),
+          privateLinkServiceConnectionState: S.optional(__S(175, __c21, 7)),
         }),
       ).annotate({
         identifier: "RemotePrivateEndpointConnection",
@@ -8669,8 +7016,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RemotePrivateEndpointConnection),
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: S.optional(__S(176, __c22, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -8697,8 +7044,8 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(92, __c11, 4)),
+          requiredZoneNames: S.optional(__S(92, __c11, 4)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -8710,15 +7057,15 @@ function __c22(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(PrivateLinkResourceProperties),
+          properties: S.optional(__S(179, __c22, 3)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 5:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(180, __c22, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateLinkResourcesWrapperValueList,
+          value: __S(181, __c22, 5),
         }),
       ).annotate({
         identifier: "PrivateLinkResourcesWrapper",
@@ -8748,8 +7095,8 @@ function __c23(j: number): any {
         S.Struct({
           type: S.String,
           description: S.optional(S.String),
-          runtimeState: S.optional(TriggerRuntimeState),
-          annotations: S.optional(TriggerAnnotationsList),
+          runtimeState: S.optional(S.String),
+          annotations: S.optional(__S(0, __c0, 0)),
           typeProperties: S.optional(S.Unknown),
           pipelines: S.optional(S.Unknown),
           pipeline: S.optional(S.Unknown),
@@ -8761,8 +7108,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Trigger,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(184, __c23, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTriggerResponse" });
@@ -8788,7 +7135,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           triggerName: S.optional(S.String),
-          status: S.optional(EventSubscriptionStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TriggerSubscriptionOperationStatus",
@@ -8800,7 +7147,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           globalParameterName: S.String.pipe(T.Label()),
-          properties: GlobalParametersCreateOrUpdateRequestPropertiesMap,
+          properties: __S(106, __c13, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8819,7 +7166,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           integrationRuntimeName: S.String.pipe(T.Label()),
-          properties: IntegrationRuntime,
+          properties: __S(53, __c6, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8856,7 +7203,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           linkedServiceName: S.String.pipe(T.Label()),
-          properties: LinkedService,
+          properties: __S(13, __c1, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8878,8 +7225,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LinkedService,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(13, __c1, 5),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -8903,11 +7250,11 @@ function __c24(j: number): any {
         identifier: "ListChangeDataCaptureByFactoryRequest",
       });
     case 2:
-      return S.Array(ChangeDataCaptureResource);
+      return S.Array(__S(50, __c6, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ChangeDataCaptureListResponseValueList,
+          value: __S(194, __c24, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8936,17 +7283,17 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Credential,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(62, __c7, 6),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "CredentialResource" });
     case 6:
-      return S.Array(CredentialResource);
+      return S.Array(__S(197, __c24, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: CredentialListResponseValueList,
+          value: __S(198, __c24, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CredentialListResponse" });
@@ -8972,11 +7319,11 @@ function __c25(j: number): any {
         identifier: "ListDataFlowByFactoryRequest",
       });
     case 1:
-      return S.Array(DataFlowResource);
+      return S.Array(__S(118, __c14, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: DataFlowListResponseValueList,
+          value: __S(201, __c25, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataFlowListResponse" });
@@ -8998,11 +7345,11 @@ function __c25(j: number): any {
         identifier: "ListDatasetByFactoryRequest",
       });
     case 4:
-      return S.Array(DatasetResource);
+      return S.Array(__S(120, __c15, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: DatasetListResponseValueList,
+          value: __S(204, __c25, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetListResponse" });
@@ -9020,7 +7367,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListFactoriesRequest" });
     case 7:
-      return S.Array(Factory);
+      return S.Array(__S(124, __c15, 4));
   }
 }
 function __c26(j: number): any {
@@ -9028,7 +7375,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: FactoryListResponseValueList,
+          value: __S(207, __c25, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FactoryListResponse" });
@@ -9071,17 +7418,17 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: GlobalParameterResourcePropertiesMap,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(106, __c13, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlobalParameterResource" });
     case 4:
-      return S.Array(GlobalParameterResource);
+      return S.Array(__S(211, __c26, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: GlobalParameterListResponseValueList,
+          value: __S(212, __c26, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9136,11 +7483,11 @@ function __c27(j: number): any {
         identifier: "ListIntegrationRuntimeByFactoryRequest",
       });
     case 1:
-      return S.Array(IntegrationRuntimeResource);
+      return S.Array(__S(90, __c11, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: IntegrationRuntimeListResponseValueList,
+          value: __S(217, __c27, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9173,20 +7520,18 @@ function __c27(j: number): any {
         identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails",
       });
     case 5:
-      return S.Array(IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails);
+      return S.Array(__S(220, __c27, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(
-            IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList,
-          ),
+          endpointDetails: S.optional(__S(221, __c27, 5)),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpoint",
       });
     case 7:
-      return S.Array(IntegrationRuntimeOutboundNetworkDependenciesEndpoint);
+      return S.Array(__S(222, __c27, 6));
   }
 }
 function __c28(j: number): any {
@@ -9195,21 +7540,17 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(
-            IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList,
-          ),
+          endpoints: S.optional(__S(223, __c27, 7)),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint",
       });
     case 1:
-      return S.Array(IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint);
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(
-            IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList,
-          ),
+          value: S.optional(__S(225, __c28, 1)),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
@@ -9232,11 +7573,11 @@ function __c28(j: number): any {
         identifier: "ListLinkedServiceByFactoryRequest",
       });
     case 4:
-      return S.Array(LinkedServiceResource);
+      return S.Array(__S(150, __c18, 6));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: LinkedServiceListResponseValueList,
+          value: __S(228, __c28, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9261,7 +7602,7 @@ function __c28(j: number): any {
         identifier: "ListManagedPrivateEndpointByFactoryRequest",
       });
     case 7:
-      return S.Array(ManagedPrivateEndpointResource);
+      return S.Array(__S(154, __c19, 2));
   }
 }
 function __c29(j: number): any {
@@ -9269,7 +7610,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedPrivateEndpointListResponseValueList,
+          value: __S(231, __c28, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9293,11 +7634,11 @@ function __c29(j: number): any {
         identifier: "ListManagedVirtualNetworkByFactoryRequest",
       });
     case 2:
-      return S.Array(ManagedVirtualNetworkResource);
+      return S.Array(__S(157, __c19, 5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedVirtualNetworkListResponseValueList,
+          value: __S(234, __c29, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9334,7 +7675,7 @@ function __c29(j: number): any {
         identifier: "OperationLogSpecification",
       });
     case 7:
-      return S.Array(OperationLogSpecification);
+      return S.Array(__S(238, __c29, 6));
   }
 }
 function __c30(j: number): any {
@@ -9349,7 +7690,7 @@ function __c30(j: number): any {
         identifier: "OperationMetricAvailability",
       });
     case 1:
-      return S.Array(OperationMetricAvailability);
+      return S.Array(__S(240, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9359,7 +7700,7 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "OperationMetricDimension" });
     case 3:
-      return S.Array(OperationMetricDimension);
+      return S.Array(__S(242, __c30, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9371,19 +7712,19 @@ function __c30(j: number): any {
           enableRegionalMdmAccount: S.optional(S.String),
           sourceMdmAccount: S.optional(S.String),
           sourceMdmNamespace: S.optional(S.String),
-          availabilities: S.optional(OperationMetricSpecificationAvailabilitiesList),
-          dimensions: S.optional(OperationMetricSpecificationDimensionsList),
+          availabilities: S.optional(__S(241, __c30, 1)),
+          dimensions: S.optional(__S(243, __c30, 3)),
         }),
       ).annotate({
         identifier: "OperationMetricSpecification",
       });
     case 5:
-      return S.Array(OperationMetricSpecification);
+      return S.Array(__S(244, __c30, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(OperationServiceSpecificationLogSpecificationsList),
-          metricSpecifications: S.optional(OperationServiceSpecificationMetricSpecificationsList),
+          logSpecifications: S.optional(__S(239, __c29, 7)),
+          metricSpecifications: S.optional(__S(245, __c30, 5)),
         }),
       ).annotate({
         identifier: "OperationServiceSpecification",
@@ -9391,7 +7732,7 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(OperationServiceSpecification),
+          serviceSpecification: S.optional(__S(246, __c30, 6)),
         }),
       ).annotate({ identifier: "OperationProperties" });
   }
@@ -9403,16 +7744,16 @@ function __c31(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           origin: S.optional(S.String),
-          display: S.optional(OperationDisplay),
-          properties: S.optional(OperationProperties),
+          display: S.optional(__S(237, __c29, 5)),
+          properties: S.optional(__S(247, __c30, 7)),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(248, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResponseValueList),
+          value: S.optional(__S(249, __c31, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResponse" });
@@ -9434,11 +7775,11 @@ function __c31(j: number): any {
         identifier: "ListPipelineByFactoryRequest",
       });
     case 4:
-      return S.Array(PipelineResource);
+      return S.Array(__S(169, __c21, 1));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: PipelineListResponseValueList,
+          value: __S(252, __c31, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineListResponse" });
@@ -9460,7 +7801,7 @@ function __c31(j: number): any {
         identifier: "ListPrivateEndPointConnectionByFactoryRequest",
       });
     case 7:
-      return S.Array(PrivateEndpointConnectionResource);
+      return S.Array(__S(177, __c22, 1));
   }
 }
 function __c32(j: number): any {
@@ -9468,7 +7809,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateEndpointConnectionListResponseValueList,
+          value: __S(255, __c31, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9492,19 +7833,19 @@ function __c32(j: number): any {
         identifier: "ListTriggerByFactoryRequest",
       });
     case 2:
-      return S.Array(TriggerResource);
+      return S.Array(__S(185, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: TriggerListResponseValueList,
+          value: __S(258, __c32, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerListResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connectionState: S.optional(ConnectionStatePropertiesInput),
-          fqdns: S.optional(ManagedPrivateEndpointInputFqdnsList),
+          connectionState: S.optional(__S(23, __c2, 7)),
+          fqdns: S.optional(__S(92, __c11, 4)),
           groupId: S.optional(S.String),
           privateLinkResourceId: S.optional(S.String),
         }),
@@ -9519,7 +7860,7 @@ function __c32(j: number): any {
           factoryName: S.String.pipe(T.Label()),
           managedVirtualNetworkName: S.String.pipe(T.Label()),
           managedPrivateEndpointName: S.String.pipe(T.Label()),
-          properties: ManagedPrivateEndpointInput,
+          properties: __S(260, __c32, 4),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9538,7 +7879,7 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           managedVirtualNetworkName: S.String.pipe(T.Label()),
-          properties: ConnectionStatePropertiesInput,
+          properties: __S(23, __c2, 7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9553,9 +7894,9 @@ function __c32(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operand: RunQueryFilterOperand,
-          operator: RunQueryFilterOperator,
-          values: RunQueryFilterValuesList,
+          operand: S.String,
+          operator: S.String,
+          values: __S(92, __c11, 4),
         }),
       ).annotate({ identifier: "RunQueryFilter" });
   }
@@ -9563,16 +7904,16 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RunQueryFilter);
+      return S.Array(__S(263, __c32, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          orderBy: RunQueryOrderByField,
-          order: RunQueryOrder,
+          orderBy: S.String,
+          order: S.String,
         }),
       ).annotate({ identifier: "RunQueryOrderBy" });
     case 2:
-      return S.Array(RunQueryOrderBy);
+      return S.Array(__S(265, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -9582,8 +7923,8 @@ function __c33(j: number): any {
           continuationToken: S.optional(S.String),
           lastUpdatedAfter: S.String,
           lastUpdatedBefore: S.String,
-          filters: S.optional(PipelineRunsQueryByFactoryRequestFiltersList),
-          orderBy: S.optional(PipelineRunsQueryByFactoryRequestOrderByList),
+          filters: S.optional(__S(264, __c33, 0)),
+          orderBy: S.optional(__S(266, __c33, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9596,11 +7937,11 @@ function __c33(j: number): any {
         identifier: "PipelineRunsQueryByFactoryRequest",
       });
     case 4:
-      return S.Array(PipelineRun);
+      return S.Array(__S(172, __c21, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: PipelineRunsQueryResponseValueList,
+          value: __S(268, __c33, 4),
           continuationToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9613,7 +7954,7 @@ function __c33(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          properties: Pipeline,
+          properties: __S(168, __c21, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9631,8 +7972,8 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Pipeline,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(168, __c21, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -9645,8 +7986,8 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateLinkServiceConnectionState: S.optional(PrivateLinkConnectionState),
-          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: S.optional(__S(175, __c21, 7)),
+          privateEndpoint: S.optional(__S(174, __c21, 6)),
         }),
       ).annotate({
         identifier: "PrivateLinkConnectionApprovalRequest",
@@ -9658,7 +7999,7 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateLinkConnectionApprovalRequest),
+          properties: S.optional(__S(272, __c34, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9706,7 +8047,7 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           integrationRuntimeName: S.String.pipe(T.Label()),
-          keyName: S.optional(IntegrationRuntimeAuthKeyName),
+          keyName: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9746,8 +8087,8 @@ function __c34(j: number): any {
           continuationToken: S.optional(S.String),
           lastUpdatedAfter: S.String,
           lastUpdatedBefore: S.String,
-          filters: S.optional(RunActivityRunsQueryByPipelineRequestFiltersList),
-          orderBy: S.optional(RunActivityRunsQueryByPipelineRequestOrderByList),
+          filters: S.optional(__S(264, __c33, 0)),
+          orderBy: S.optional(__S(266, __c33, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9782,11 +8123,11 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ActivityRun);
+      return S.Array(__S(279, __c34, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ActivityRunsQueryResponseValueList,
+          value: __S(280, __c35, 0),
           continuationToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9945,8 +8286,8 @@ function __c36(j: number): any {
           continuationToken: S.optional(S.String),
           lastUpdatedAfter: S.String,
           lastUpdatedBefore: S.String,
-          filters: S.optional(TriggerRunsQueryByFactoryRequestFiltersList),
-          orderBy: S.optional(TriggerRunsQueryByFactoryRequestOrderByList),
+          filters: S.optional(__S(264, __c33, 0)),
+          orderBy: S.optional(__S(266, __c33, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9965,20 +8306,20 @@ function __c36(j: number): any {
           triggerName: S.optional(S.String),
           triggerType: S.optional(S.String),
           triggerRunTimestamp: S.optional(S.String),
-          status: S.optional(TriggerRunStatus),
+          status: S.optional(S.String),
           message: S.optional(S.String),
-          properties: S.optional(TriggerRunPropertiesMap),
-          triggeredPipelines: S.optional(TriggerRunTriggeredPipelinesMap),
-          runDimension: S.optional(TriggerRunRunDimensionMap),
-          dependencyStatus: S.optional(TriggerRunDependencyStatusMap),
+          properties: S.optional(__S(111, __c13, 7)),
+          triggeredPipelines: S.optional(__S(111, __c13, 7)),
+          runDimension: S.optional(__S(111, __c13, 7)),
+          dependencyStatus: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "TriggerRun" });
     case 4:
-      return S.Array(TriggerRun);
+      return S.Array(__S(291, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: TriggerRunsQueryResponseValueList,
+          value: __S(292, __c36, 4),
           continuationToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerRunsQueryResponse" });
@@ -10006,7 +8347,7 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           triggerName: S.String.pipe(T.Label()),
-          properties: Trigger,
+          properties: __S(184, __c23, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10028,8 +8369,8 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: Trigger,
+          systemData: S.optional(__S(49, __c6, 1)),
+          properties: __S(184, __c23, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -10057,7 +8398,7 @@ function __c37(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: TriggerQueryResponseValueList,
+          value: __S(258, __c32, 2),
           continuationToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerQueryResponse" });
@@ -10082,7 +8423,7 @@ function __c37(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "FactoryUpdateProperties" });
     case 5:
@@ -10091,9 +8432,9 @@ function __c37(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateFactoryRequestTagsMap),
-          identity: S.optional(FactoryIdentity),
-          properties: S.optional(FactoryUpdateProperties),
+          tags: S.optional(__S(111, __c13, 7)),
+          identity: S.optional(__S(110, __c13, 6)),
+          properties: S.optional(__S(300, __c37, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10110,7 +8451,7 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           integrationRuntimeName: S.String.pipe(T.Label()),
-          autoUpdate: S.optional(IntegrationRuntimeAutoUpdate),
+          autoUpdate: S.optional(S.String),
           updateDelayOffset: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10144,4 +8485,9 @@ function __c37(j: number): any {
         identifier: "UpdateIntegrationRuntimeNodeRequest",
       });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

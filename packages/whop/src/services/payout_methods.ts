@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,18 +52,11 @@ export interface GetPayoutMethodRequest {
   /** The unique identifier of the payout method to retrieve. */
   id: string;
 }
-const GetPayoutMethodRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetPayoutMethodRequest>;
-
 /** The company associated with this payout destination. Null if not linked to a specific company. */
 export interface PayoutMethodCompany {
   /** The unique identifier for the company. */
   id: string;
 }
-const PayoutMethodCompany = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PayoutMethodCompany>;
-
 /** The category of a payout destination. */
 export type PayoutDestinationCategory =
   | "crypto"
@@ -70,8 +65,6 @@ export type PayoutDestinationCategory =
   | "bank_wire"
   | "digital_wallet"
   | "unknown";
-const PayoutDestinationCategory = S.String;
-
 /** The payout destination configuration linked to this token. Null if not yet configured. */
 export interface PayoutMethodDestination {
   /** The category of the payout destination */
@@ -81,11 +74,6 @@ export interface PayoutMethodDestination {
   /** The name of the payer associated with the payout destination */
   name: string;
 }
-const PayoutMethodDestination = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PayoutMethodDestination>;
-
 /** A configured payout destination where a user receives earned funds, such as a bank account or digital wallet. */
 export interface PayoutMethod {
   /** A masked identifier for the payout destination, such as the last four digits of a bank account or an email address. Null if no reference is available. */
@@ -107,8 +95,6 @@ export interface PayoutMethod {
   /** A user-defined label to help identify this payout destination. Not sent to the provider. Null if no nickname has been set. */
   nickname: string | null;
 }
-const PayoutMethod = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PayoutMethod>;
-
 export interface ListPayoutMethodRequest {
   after?: string;
   before?: string;
@@ -116,11 +102,6 @@ export interface ListPayoutMethodRequest {
   last?: number;
   account_id: string;
 }
-const ListPayoutMethodRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListPayoutMethodRequest>;
-
 /** The company associated with this payout destination. Null if not linked to a specific company. */
 export type PayoutMethodListItemCompany = PayoutMethodCompany;
 /** The payout destination configuration linked to this token. Null if not yet configured. */
@@ -146,15 +127,8 @@ export interface PayoutMethodListItem {
   /** A user-defined label to help identify this payout destination. Not sent to the provider. Null if no nickname has been set. */
   nickname: string | null;
 }
-const PayoutMethodListItem = PayoutMethod as any as S.Schema<PayoutMethodListItem>;
-
 /** A list of nodes. */
 export type ListPayoutMethodResponseDataList = Array<PayoutMethodListItem>;
-const ListPayoutMethodResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListPayoutMethodResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -166,19 +140,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PageInfo>;
-
 export interface ListPayoutMethodResponse {
   /** A list of nodes. */
   data: ListPayoutMethodResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListPayoutMethodResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListPayoutMethodResponse>;
-
 export type GetPayoutMethodError =
   | BadRequest
   | Forbidden
@@ -192,8 +159,8 @@ export const getPayoutMethod: API.OperationMethod<
   GetPayoutMethodError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPayoutMethodRequest,
-  output: PayoutMethod,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPayoutMethodRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<PayoutMethod>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -214,8 +181,8 @@ export const listPayoutMethod: API.PaginatedOperationMethod<
   PayoutMethodListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPayoutMethodRequest,
-    output: ListPayoutMethodResponse,
+    input: __S(4, __c0, 4) as any as S.Schema<ListPayoutMethodRequest>,
+    output: __S(7, __c0, 7) as any as S.Schema<ListPayoutMethodResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -249,7 +216,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          category: PayoutDestinationCategory,
+          category: S.String,
           country_code: S.String,
           name: S.String,
         }),
@@ -258,10 +225,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_reference: S.NullOr(S.String),
-          company: S.NullOr(PayoutMethodCompany),
+          company: S.NullOr(__S(1, __c0, 1)),
           created_at: S.String,
           currency: S.String,
-          destination: S.NullOr(PayoutMethodDestination),
+          destination: S.NullOr(__S(2, __c0, 2)),
           id: S.String,
           institution_name: S.NullOr(S.String),
           is_default: S.Boolean,
@@ -279,7 +246,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/payout_methods", code: 200 })),
       ).annotate({ identifier: "ListPayoutMethodRequest" });
     case 5:
-      return S.Array(PayoutMethodListItem);
+      return S.Array(__S(3, __c0, 3));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -292,9 +259,14 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ListPayoutMethodResponseDataList,
-          page_info: PageInfo,
+          data: __S(5, __c0, 5),
+          page_info: __S(6, __c0, 6),
         }),
       ).annotate({ identifier: "ListPayoutMethodResponse" });
   }
+}
+
+// Schema table: entry i is schema j of builder f, made on first reach.
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }
